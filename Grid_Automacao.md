@@ -66,6 +66,10 @@ E o limite, que é o que impede isso de virar um jogo eletrônico:
 
 ## 3. As emendas, na ordem do proveito
 
+> Escritas antes de qualquer código, no tempo verbal de quem ainda vai fazer. **Sete das oito
+> entraram no mesmo dia**, e o que cada uma virou está na §7. O texto abaixo fica como estava
+> porque é ele que guarda o PORQUÊ, e o porquê não muda quando a coisa fica pronta.
+
 ### A · O gesto único: arrastar do atacante ao alvo
 
 Hoje atacar são três toques antes de qualquer decisão (menu, item, alvo). O tabuleiro já sabe
@@ -185,18 +189,60 @@ passar quando o mestre insiste.
 
 ## 6. Ordem sugerida
 
-| Ordem | O quê | Custo | Por quê primeiro |
+| Ordem | O quê | Custo | Estado |
 |---|---|---|---|
-| 1 | `rolarExpr` numa lib, modo do dano vindo da arma, dano pré-rolado | P | é a metade barata da emenda B, e desatravanca o resto |
-| 2 | A folha da ação (caixa única) | M | é onde os quatro toques de datilografia moram |
-| 3 | O arrasto que ataca | P | dois toques a menos por ação |
-| 4 | Modo de rolagem por mesa (na mesa / no site / misto) | P | tira metade das transcrições |
-| 5 | Deslocamento pago em Ticks (K20) | M | fecha o relógio automático e aposenta o "próximo" |
-| 6 | Alcance e distância na conta | M | é a informação que só o Grid tem |
-| 7 | Modo TV e atalhos | P | conforto, e não mecânica |
+| 1 | `rolarExpr` numa lib, modo do dano vindo da arma, dano pré-rolado | P | **feito** em 21/08 |
+| 2 | A folha da ação (caixa única) | M | **feito** em 21/08 |
+| 3 | O arrasto que ataca | P | **feito** em 21/08 |
+| 4 | Modo de rolagem por mesa (na mesa / no site / misto) | P | **feito** em 21/08, padrão `mesa` |
+| 5 | Deslocamento pago em Ticks (K20) | M | **feito** em 21/08, só na Recuperação |
+| 6 | Alcance e distância na conta | M | **parcial**: avisa, não modifica |
+| 7 | Atalhos de teclado | P | **feito** em 21/08 (A · 1-9 · Z, com Espaço e F que já havia) |
+| 8 | Modo TV | P | aberto |
 
-O item 1 é de uma tarde e já corta um número digitado e uma escolha errada por ataque. O item 2 é o
-que responde de verdade à pergunta da mesa.
+---
+
+## 7. O que entrou em 21/08
+
+Sete das oito emendas, no mesmo dia da conversa que abriu este documento.
+
+**A folha da ação.** Uma caixa só, do acerto ao dano. Abre sabendo a Defesa com a escada, o bolo de
+dados de quem ataca (já com o ferimento e as condições **dele**, mais a penalidade da manobra), o
+modo do dano lido da arma, o custo em Ticks e a Absorção do alvo descontada ao vivo. O botão que a
+conta indica vira o principal, então o caminho comum é **um clique**. Sumiu a segunda caixa.
+
+**O ajuste avulso, com motivo.** Um campo de número e um de texto na própria folha. O número entra
+no acerto; o motivo vai para o registro junto do resultado, e é o que faz a linha continuar
+contando a história certa uma semana depois.
+
+**Quem rola os dados.** Três modos no painel ⏱, ao lado do sistema de tempo: `mesa` (o padrão:
+ninguém rola no site), `misto` (as criaturas e NPCs do mestre rolam sozinhas) e `site`. O modo
+decide só **o que acontece sozinho**; o botão "rolar" continua na caixa para o caso avulso, mesmo
+na mesa que rola tudo na mão.
+
+**O arrasto que ataca.** Soltar uma peça em cima de outra abre a folha. O gesto não fazia nada
+antes: a casa ocupada recusa o movimento, então o mestre arrastava, a peça voltava, e ele ia pelo
+menu de qualquer jeito.
+
+**Os atalhos.** `A` ataca com quem age, `1`–`9` abrem o menu da enésima peça da fila (no lugar
+dela, e não no canto da tela), `Z` desfaz. Nenhum deles inventa ação: todos abrem a mesma caixa que
+o mouse abriria, e por isso não há atalho para "acertou" nem para aplicar dano.
+
+**O deslocamento pago.** Andar durante a Recuperação custa 2 Ticks por metro, e o Grid é o único
+que sabe quantos metros foram: cobra sozinho, o número sobe da peça e a linha entra no registro.
+Não cobra de quem está livre, porque **a regra não decidiu esse caso**, e inventar um preço aqui
+seria escrever regra na tela. No Preparo o que existe é o abortar, que tem preço próprio.
+
+**O alcance, pela metade.** A folha avisa quando o corpo a corpo passa de um hexágono (dois na
+haste) e quando o tiro passa do `distMax` da arma. **Avisa e não impede**, e por enquanto não
+modifica nada: transformar distância em penalidade é decisão de regra, e as armas de mão não
+declaram alcance em metros no catálogo. Fica como a pendência da emenda E.
+
+**A conta nova do ataque comum:** arrastar até o alvo, conferir, um clique. **Dois toques e nenhum
+número digitado** quando a mesa deixa o site rolar; dois toques e dois números quando ela rola na
+mão, que era o pedido.
+
+---
 
 ---
 

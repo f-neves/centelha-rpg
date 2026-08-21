@@ -217,7 +217,7 @@ const SETAS = [
       <div class="al-sec">
         <span class="al-sec-h">O acerto</span>
         <span class="al-pool" id="al-pool"></span>
-        <button type="button" class="btn mini" id="al-rolar" title="Rolar aqui, só desta vez">⚄</button>
+        <button type="button" class="btn mini al-rola" id="al-rolar" title="Rolar aqui, só desta vez">rolar</button>
         <input type="number" id="al-total" placeholder="total" title="O que saiu nos dados" />
         <span class="al-vered" id="al-vered"></span>
       </div>
@@ -233,7 +233,7 @@ const SETAS = [
       <div class="al-sec">
         <span class="al-sec-h">O dano</span>
         <span class="al-pool" id="al-dn-pool"></span>
-        <button type="button" class="btn mini" id="al-dn-rolar" title="Rolar o dano aqui">⚄</button>
+        <button type="button" class="btn mini al-rola" id="al-dn-rolar" title="Rolar o dano aqui">rolar</button>
         <input type="number" id="al-dn" min="0" placeholder="bruto" />
         <select id="al-dn-tipo">
           <option value="impacto">Impacto</option>
@@ -1027,6 +1027,9 @@ const SETAS = [
     font-variant-numeric: tabular-nums; }
   .al-sec input.al-motivo { flex: 1 1 8rem; min-width: 0; }
   .al-sec select { flex: 0 0 auto; }
+  /* "rolar" e não o glifo de dado: ⚄ não existe na Cinzel e saía como a
+     caixinha de caractere ausente. */
+  .al-rola { flex: 0 0 auto; }
   /* O bolo de dados, e depois da rolagem os dados que saíram. Ele cresce e
      encolhe, então ganha a sobra da fileira em vez de largura fixa. */
   .al-pool { flex: 1 1 6rem; min-width: 0; font-size: var(--fs-micro); color: var(--ink-soft);

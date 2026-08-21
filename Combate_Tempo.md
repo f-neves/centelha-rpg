@@ -1560,6 +1560,36 @@ O smoke passou a cobrar as duas coisas: que a tira fica **em cima** do tabuleiro
 que as peças correm para o lado, que a linha do tempo **nasce desligada**, e que o ▤ a acende e o ✕
 a apaga.
 
+### 15.9. O Grid deixa de perguntar o que já sabe (21/08/2026)
+
+A §15.5 e a §15.6 puseram o tabuleiro DENTRO do relógio. Esta fecha o outro lado: **o tabuleiro
+parou de pedir ao mestre os números que ele mesmo tinha.**
+
+Medido antes: um ataque custava **seis toques e um número digitado**, e só três dos sete eram
+escolha (a intenção, o alvo e, às vezes, a manobra). Os outros quatro eram transcrição.
+
+**A folha da ação** juntou as duas caixas numa só. Ela abre sabendo a Defesa **com a escada**, o
+bolo de dados de quem ataca (com o ferimento e as condições dele, mais a penalidade da manobra), o
+modo do dano **lido da arma**, o custo em Ticks pela régua e a Absorção do alvo descontada ao vivo.
+O botão que a conta indica vira o principal, então o caminho comum passou a ser **um clique**.
+
+**Quem rola os dados virou escolha de mesa**, ao lado do sistema de tempo: `mesa` (padrão, ninguém
+rola no site), `misto` (as criaturas do mestre rolam sozinhas) e `site`. Não muda regra nenhuma,
+muda quem digita. E o modo decide só o que acontece **sozinho**: o botão de rolar continua na caixa
+para o caso avulso.
+
+**O deslocamento pago entrou** (K20): andar durante a Recuperação custa **2 Ticks por metro**, e o
+Grid cobra sozinho, porque ele é o único que sabe quantos metros foram. Fica de fora quem está
+livre, e de propósito: **mover fora da Recuperação não tem preço escrito na regra**, e inventar um
+na tela seria escrever regra pela porta dos fundos.
+
+**O alcance entrou pela metade.** A folha avisa quando o corpo a corpo passa de um hexágono (dois
+na haste) e quando o tiro passa do `distMax` da arma. Avisa e não impede, e não penaliza: a
+distância virar modificador é decisão de regra que ainda não foi tomada, e as armas de mão não
+declaram alcance em metros no catálogo.
+
+O desenho inteiro, com a conta do atrito e o contrato do improviso, está no **`Grid_Automacao.md`**.
+
 ## Apêndice: como rodar
 
 ```

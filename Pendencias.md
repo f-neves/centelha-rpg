@@ -776,10 +776,14 @@ revistos por ela.
   age. Junto veio o conserto de que o Grid só digeria fichas para o mestre, e por isso a régua do
   jogador caía no atalho `leve/5`.
 
-  **O que a mesa ainda não faz** está na §15.4, e são duas: a **ação fora de hora** com dívida e
-  espelho, e o **deslocamento pago na Recuperação**. As duas já são conta pronta em
-  `combate-tempo.ts`; falta o gesto na tela, e o mestre resolve na mão empurrando o Tick. As duas,
-  mais o abortar do lado do jogador, pedem outra função `jogador_*`: hoje só o ataque tem a dele.
+  **O deslocamento pago entrou em 21/08** (K20). Arrastar uma peça que está na **Recuperação** cobra
+  2 Ticks por metro, sozinho: o Grid é o único que sabe quantos metros foram, o número sobe da peça
+  e a linha entra no registro. Não cobra de quem está livre, porque a regra não decidiu esse caso, e
+  não cobra no Preparo, que tem o abortar. Vale para o jogador também, pela `jogador_declara`.
+
+  **O que a mesa ainda não faz** está na §15.4: a **ação fora de hora**, com dívida e espelho. A
+  conta já está pronta em `combate-tempo.ts`; falta o gesto na tela, e o mestre resolve na mão
+  empurrando o Tick. Ela, mais o abortar do lado do jogador, pedem outra função `jogador_*`.
 
   **A Arte entrou em 21/08** (§15.6). Conjurar declara a ação com a anatomia própria da Arte
   (Preparo = ciclo − 1, Golpe no ÚLTIMO Tick, Recuperação 0), empurra o relógio pela Velocidade
@@ -900,15 +904,33 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   se move durante o preparo escapa; com ela travada tarde, não escapa. Junto continua faltando a
   janela de **identificar o feitiço** (Inteligência + Ocultismo, Dificuldade caindo a cada Tick),
   que hoje é o +2 ou +4 que o mestre marca à mão.
-- [ ] **I12 · [DECIDIR] O Grid como copiloto: menos toque, mais escolha.** Aberto em 21/08 a partir
-  de uma pergunta da mesa. Medido: **um ataque custa seis toques e um número digitado, e só três
-  desses sete são escolha**; o resto é o mestre transcrevendo para o Grid um número que o Grid já
-  tinha. O documento é o `Grid_Automacao.md`: a conta do atrito, o princípio (nunca perguntar o que
-  dá para calcular · todo número calculado é campo editável · a mesa escolhe a intenção e o Grid faz
-  a conta), oito emendas em ordem de proveito e o **contrato do improviso** em três degraus (digitar
-  por cima · modificador avulso com motivo · resolver na mão). A primeira fatia é de uma tarde:
-  `rolarExpr` numa lib, o modo do dano vindo da arma e o dano pré-rolado. Falta decidir por onde
-  começar.
+- [~] **I12 · O Grid como copiloto: menos toque, mais escolha. QUASE TUDO FEITO em 21/08.** Medido
+  antes: **um ataque custava seis toques e um número digitado, e só três dos sete eram escolha**; o
+  resto era o mestre transcrevendo para o Grid um número que o Grid já tinha. O documento é o
+  `Grid_Automacao.md`: a conta do atrito, o princípio (nunca perguntar o que dá para calcular · todo
+  número calculado é campo editável · a mesa escolhe a intenção e o Grid faz a conta), oito emendas
+  e o **contrato do improviso** em três degraus.
+
+  **Entraram sete das oito:** a **folha da ação** (uma caixa só, do acerto ao dano, com a Defesa
+  pela escada, o bolo de dados de quem ataca, o modo do dano lido da arma e a Absorção ao vivo, tudo
+  editável); o **ajuste avulso com motivo**, que vai para o registro; os **três modos de rolagem**
+  no painel ⏱ (`mesa` é o padrão: ninguém rola no site); o **arrasto que ataca**; os **atalhos**
+  (A · 1-9 · Z); o **deslocamento pago** (K20); e o **aviso de alcance**. A conta nova do ataque
+  comum é **dois toques**.
+
+  **O que falta:**
+  - **[DECIDIR] a distância virar modificador**, e não só aviso. Hoje a folha avisa quando o corpo a
+    corpo passa de um hexágono (dois na haste) e quando o tiro passa do `distMax`, mas não penaliza
+    nada. As armas de mão **não declaram alcance em metros** no `armas.json`, e a convenção de 1 e 2
+    hexágonos foi escrita na tela, não na regra: ou ela sobe para o `regras.json`, ou vira campo do
+    catálogo.
+  - **[FAZER] o modo TV** (emenda G): a tela dos jogadores sem a mobília do mestre. Só o tabuleiro e
+    a tira da ordem; a tela cheia é meio caminho, falta ela ser um modo.
+  - **[FAZER] a ação "outra coisa"** (emenda F): a válvula do improviso a um toque, com custo em
+    Ticks pré-preenchido e motivo obrigatório. Hoje o mestre resolve na mão, empurrando o Tick pelo
+    menu, o que é mais caro do que um ataque comum, e é exatamente o que a emenda existe para
+    corrigir.
+
 ---
 
 ## J. Infraestrutura · endereço, hospedagem e versão

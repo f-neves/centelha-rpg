@@ -224,7 +224,7 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
       totalVazio: document.getElementById('al-total')?.value === '',
       danoVazio: document.getElementById('al-dn')?.value === '',
     };
-    // O ⚄ avulso continua ali mesmo na mesa que rola tudo na mao.
+    // O botao de rolar avulso continua ali mesmo na mesa que rola tudo na mao.
     document.getElementById('al-rolar').click();
     document.getElementById('al-dn-rolar').click();
     await new Promise((r) => setTimeout(r, 200));
@@ -260,7 +260,7 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
     ok(esperado ? f.dnTipo === esperado : true,
       `o modo do dano vem da arma (${f.danoDaArma} -> ${f.dnTipo})`);
     ok(f.totalVazio && f.danoVazio, 'no modo padrao (dados na mesa) nada rola sozinho');
-    ok(f.rolouAcerto && f.rolouDano, 'e o ⚄ avulso rola quando alguem pede');
+    ok(f.rolouAcerto && f.rolouDano, 'e o botao de rolar avulso rola quando alguem pede');
     ok(/acerta|erra/.test(f.vered || ''), `com o veredito escrito ao lado (${f.vered})`);
   }
 

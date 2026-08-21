@@ -42,9 +42,17 @@ export function rolarExpr(expr: string, extraDados = 0, extraFlat = 0): Rolada {
   return { dados, flat, rolls, total: rolls.reduce((a, b) => a + b, 0) + flat };
 }
 
-/** `[3, 5, 1] +2 = 11`, que é como a mesa lê uma rolagem. */
-export const descreverRolada = (r: Rolada) =>
-  `[${r.rolls.join(', ')}]${r.flat ? ` ${r.flat > 0 ? '+' : '−'}${Math.abs(r.flat)}` : ''} = ${r.total}`;
+/**
+ * `[3, 5, 1] +2 = 11`, que é como a mesa lê uma rolagem.
+ *
+ * Sem dado nenhum não se escreve `[]`: o colchete vazio parece defeito, e o
+ * caso é real (uma criatura com bônus fixo e nenhum dado, um ataque que a
+ * penalidade zerou).
+ */
+export const descreverRolada = (r: Rolada) => {
+  const fixo = r.flat ? ` ${r.flat > 0 ? '+' : '−'}${Math.abs(r.flat)}` : '';
+  return r.rolls.length ? `[${r.rolls.join(', ')}]${fixo} = ${r.total}` : `sem dados${fixo} = ${r.total}`;
+};
 
 export type TipoDano = 'impacto' | 'corte' | 'perfurante';
 
