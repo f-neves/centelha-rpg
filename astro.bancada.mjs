@@ -35,6 +35,9 @@ export default defineConfig({
   // Sem sitemap e sem PWA: a bancada não publica nada, e o service worker só
   // atrapalharia um teste (ele guarda a página velha entre voltas).
   integrations: [],
+  // Sem a barra de ferramentas do Astro: ela mora no pé da tela, no meio, e numa
+  // foto de celular ela tapa justamente a barra de comandos que se quer olhar.
+  devToolbar: { enabled: false },
   vite: {
     resolve: {
       alias: [{ find: /^@supabase\/supabase-js$/, replacement: AQUI + 'scripts/mesa-mock.mjs' }],

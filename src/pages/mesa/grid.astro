@@ -175,8 +175,10 @@ const SETAS = [
             <h3 class="col-h">Em campo</h3>
             <button class="btn mini" id="gr-npc" hidden title="Um figurante só para esta cena">+ NPC</button>
           </div>
-          <p class="muted nota-mini" id="gr-dica" hidden>Arraste o retrato até um hexágono para pôr no mapa.
-            Arraste de um hexágono para outro para mover, e para cá para tirar do mapa.</p>
+          <p class="muted nota-mini" id="gr-dica" hidden><span class="so-largo">Arraste o retrato até um hexágono para pôr no mapa.
+            Arraste de um hexágono para outro para mover, e para cá para tirar do mapa.</span><span
+            class="so-estreito">Arraste o retrato para fora desta folha: ela sai da frente e o hexágono
+            debaixo do dedo recebe a peça.</span></p>
           <div id="gr-lista" class="gr-lista"></div>
 
           <div id="gr-ef-lista" class="gr-ef-lista" hidden></div>
@@ -190,6 +192,23 @@ const SETAS = [
           <div id="gr-log" class="gr-log"></div>
         </aside>
       </div>
+
+      {/* ---- o telefone: o escurecido e a barra do polegar ----
+          Só aparecem abaixo de 900px, e o que elas comandam não é uma segunda
+          tela: são as MESMAS caixas do desktop (a barra da arena, a coluna
+          lateral, a barra da mesa) presas no pé e deslizando para dentro. Uma
+          cópia para o celular divergiria da primeira no primeiro conserto. */}
+      <div class="gr-scrim" id="gr-scrim" aria-hidden="true"></div>
+      <nav class="gr-app" id="gr-app" aria-label="Comandos do tabuleiro">
+        {/* O relógio não é botão: é o número do qual todos os outros dependem, e
+            no telefone ele perdeu o canto da tira da iniciativa. */}
+        <span class="ga-b ga-rel"><b id="ga-tk">0</b><small id="ga-rd">rodada 1</small></span>
+        <button type="button" class="ga-b ga-prox" id="ga-prox" hidden><i aria-hidden="true">⏭</i><small>próximo</small></button>
+        <button type="button" class="ga-b" id="ga-agir"><i aria-hidden="true">⚔</i><small>agir</small></button>
+        <button type="button" class="ga-b" id="ga-campo" aria-expanded="false"><i aria-hidden="true">☰</i><small>campo</small></button>
+        <button type="button" class="ga-b" id="ga-arena" aria-expanded="false" hidden><i aria-hidden="true">⧉</i><small>arena</small></button>
+        <button type="button" class="ga-b" id="ga-mais" aria-expanded="false"><i aria-hidden="true">⋯</i><small>mais</small></button>
+      </nav>
     </div>
 
   </MesaCab>
@@ -1262,6 +1281,11 @@ const SETAS = [
      ícones em cada uma viram uma parede de ícones e o texto some no meio. */
   .rg-acs { display: flex; gap: .1rem; opacity: 0; }
   .rg-l:hover .rg-acs, .rg-l:focus-within .rg-acs { opacity: 1; }
+  /* Num aparelho sem ponteiro que paira não existe o gesto que acende estes
+     botões, e a caixa que existe PARA arrumar o registro não mostrava como
+     arrumá-lo. A pergunta é de capacidade, e não de largura: um tablet de
+     1024px sofre disto igual a um telefone de 360. */
+  @media (hover: none) { .rg-acs { opacity: 1; } }
   .rg-acs button { background: none; border: 0; color: var(--ink-soft); cursor: pointer;
     font: inherit; padding: 0 .25rem; line-height: 1; }
   .rg-acs button:hover { color: var(--accent); }
@@ -1297,6 +1321,247 @@ const SETAS = [
   /* A arte em pe e a que o tabuleiro nao sabe usar: ela se anuncia. */
   .fd-item.fd-empe .fd-med { color: var(--perigo); }
   .fd-item.ocupado { opacity: .45; pointer-events: none; }
+  /* ==================================================== O GRID NO TELEFONE ===
+     No notebook o Grid mostra quatro coisas ao mesmo tempo (barra, fila, mapa,
+     coluna), e está certo: sobra largura. No telefone não sobra nada, e
+     empilhar as mesmas quatro transforma um painel em documento, onde se rola
+     atrás do que no notebook está sempre à vista. Medido em 21/08 num aparelho
+     de 390×844: 456px de mobília antes do tabuleiro, 54% da tela, e a página
+     inteira com 1953px, duas telas e meia de rolagem.
+
+     A gramática muda: UMA SUPERFÍCIE DE CADA VEZ. O tabuleiro é o aplicativo, o
+     polegar manda numa barra fixa no pé, e o que era coluna vira folha que
+     sobe. Nada aqui é uma segunda cópia: a barra da arena, a coluna lateral e a
+     barra da mesa são as mesmas caixas do desktop, presas no pé da tela e
+     esperando fora dela. O quadro inteiro está no `Grid_Mobile.md`. */
+  body.grid-mob { overflow: hidden; overscroll-behavior: none;
+    --ga-h: calc(3.4rem + env(safe-area-inset-bottom)); }
+  /* A barra do site sai (não tem nada que o tabuleiro precise) e a da mesa vira
+     a folha do ⋯. São 155px de volta para o mapa. */
+  body.grid-mob .topbar { display: none; }
+  body.grid-mob main#conteudo, body.grid-mob .content { padding: 0 !important; }
+  body.grid-mob #mesa-topo { margin: 0; }
+
+  /* ---- as folhas ----
+     Presas no pé, esperando fora da tela. `visibility` entra junto do
+     `transform` porque uma caixa só empurrada para baixo continua recebendo
+     foco: o Tab caminharia por dentro de uma folha fechada. */
+  body.grid-mob .gr-barra,
+  body.grid-mob .gr-lado,
+  body.grid-mob .mesa-barra {
+    position: fixed; left: 0; right: 0; bottom: 0; top: auto; z-index: 130;
+    max-height: 80dvh; overflow-y: auto; margin: 0; width: auto;
+    border: 1px solid var(--rule); border-bottom: 0;
+    border-radius: var(--r-lg) var(--r-lg) 0 0; background: var(--panel);
+    box-shadow: 0 -12px 40px rgba(0,0,0,.5);
+    padding: .55rem .7rem calc(var(--ga-h) + .5rem);
+    transform: translateY(101%); visibility: hidden;
+    transition: transform .22s ease, visibility 0s linear .22s; }
+  body.grid-mob.folha-arena .gr-barra,
+  body.grid-mob.folha-campo .gr-lado,
+  body.grid-mob.folha-mais .mesa-barra {
+    transform: none; visibility: visible; transition: transform .22s ease, visibility 0s; }
+  @media (prefers-reduced-motion: reduce) {
+    body.grid-mob .gr-barra, body.grid-mob .gr-lado, body.grid-mob .mesa-barra { transition: none; }
+  }
+  .so-estreito { display: none; }
+  body.grid-mob .so-largo { display: none; }
+  body.grid-mob .so-estreito { display: inline; }
+  .gr-scrim { display: none; }
+  body.grid-mob.com-folha .gr-scrim { display: block; position: fixed; inset: 0; z-index: 125;
+    background: rgba(0,0,0,.5); }
+
+  /* A folha da arena: os onze comandos que se espremiam em seis fileiras de
+     ícones viram linhas de 48px com o nome por extenso, que é mais legível e
+     mais fácil de acertar. */
+  body.grid-mob .gr-barra { align-content: flex-start; gap: .35rem; }
+  body.grid-mob .gr-barra .gr-id { flex-basis: 100%; margin-bottom: .2rem; }
+  body.grid-mob .gr-barra .espaco { display: none; }
+  body.grid-mob .gr-btns { flex-basis: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: .3rem; }
+  body.grid-mob .gr-barra .btn.mini { min-height: 48px; justify-content: flex-start;
+    font-size: var(--fs-rotulo); padding: .3rem .6rem; }
+  body.grid-mob .gr-barra .btn-fant { min-width: 44px; min-height: 44px; font-size: 1.05rem; }
+  body.grid-mob .gr-zoom { flex-basis: 100%; justify-content: space-between;
+    border-top: 1px solid var(--rule); margin-top: .35rem; padding-top: .45rem; }
+  /* Ícone sozinho vira palavra: numa fileira apertada o ⚙ ao lado do ✦ se
+     explicava pela vizinhança, e numa lista de linhas ele fica órfão. */
+  body.grid-mob #gr-fx-cfg, body.grid-mob #gr-excluir, body.grid-mob #ini-rolar {
+    grid-column: 1 / -1; min-height: 44px; border: 1px solid var(--rule);
+    border-radius: var(--r-md); justify-content: flex-start; padding: .3rem .6rem;
+    font-size: var(--fs-rotulo); display: inline-flex; align-items: center; gap: .4rem; }
+  body.grid-mob #gr-fx-cfg::after { content: 'ajustar os efeitos'; }
+  body.grid-mob #gr-excluir::after { content: 'excluir esta arena'; }
+  body.grid-mob #ini-rolar::after { content: 'rolar a iniciativa de todos'; }
+  body.grid-mob #gr-excluir { border-color: var(--perigo); color: var(--perigo); }
+  /* O custo da próxima ação e o ⚄ moram no canto do relógio, que no telefone
+     não existe mais: eles descem para cá, que é onde o resto do controle da
+     cena está. Trocam de casa pelo JS, e não por cópia. */
+  body.grid-mob .gr-btns .ini-custo { grid-column: 1 / -1; display: flex;
+    align-items: center; font-size: var(--fs-rotulo); }
+  body.grid-mob .gr-btns .ini-custo input { min-height: 44px; width: 4.5rem; }
+
+  /* A folha da mesa (o ⋯): identidade, convite e as abas com o nome à mostra.
+     No topo elas eram oito ícones de 36px sem rótulo; aqui cabem por extenso. */
+  body.grid-mob .mesa-barra { backdrop-filter: none; }
+  body.grid-mob .mb-linha { padding: 0 0 .5rem; }
+  body.grid-mob .mesa-abas { display: grid; grid-template-columns: 1fr 1fr; gap: .25rem;
+    overflow: visible; }
+  body.grid-mob .mesa-abas a { min-height: 48px; border: 1px solid var(--rule);
+    border-radius: var(--r-md); border-bottom-width: 1px; padding: .3rem .6rem;
+    font-size: var(--fs-rotulo); }
+  body.grid-mob .mesa-abas a.atual { border-color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 14%, transparent); }
+  body.grid-mob .mesa-abas .ab-n { display: inline; }
+  body.grid-mob .mesa-abas .ab-i { font-size: var(--fs-aux); }
+
+  /* A folha de Em campo: a lista e o registro dividem a altura da folha, e não
+     a da janela, senão os dois somados passariam de uma tela. */
+  body.grid-mob .gr-lado { display: flex; }
+  body.grid-mob .gr-lista { max-height: 42dvh; }
+  body.grid-mob .gr-log { max-height: 30dvh; }
+  body.grid-mob .gr-ficha { min-height: 48px; }
+
+  /* ---- a grade: duas fileiras e nada mais ----
+     `dvh` e não `vh`: a barra do navegador do celular entra e sai, e `vh` mede
+     sempre a maior das duas alturas, o que deixava um pedaço do tabuleiro
+     debaixo dela. */
+  body.grid-mob .gr-grade, body.grid-mob .gr-grade.sem-linha {
+    height: calc(100dvh - var(--ga-h)); gap: .3rem; padding: .3rem .3rem 0;
+    grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr);
+    grid-template-areas: "ini" "palco"; }
+  /* Um tabuleiro deitado numa tela em pé sobra altura depois de caber: sem isto
+     ele encosta no topo e deixa meia tela de vazio embaixo. */
+  /* O palco entrega o gesto: sem isto o navegador rola e amplia a página por
+     conta própria, e a pinça do tabuleiro nunca chega ao `pointermove`. O preço
+     é que o empurrão de um dedo passa a ser nosso também, e ele é. */
+  body.grid-mob .gr-palco { max-height: none; min-height: 0; align-content: center;
+    touch-action: none; }
+  /* O piso de toque de 44px vale dentro das folhas, e só. O `global.css` isenta
+     o `.mini` de propósito (são os controles densos de /mesa e /admin, que
+     viram grade se esticados), e a isenção continua valendo no notebook. */
+  body.grid-mob :is(.gr-barra, .gr-lado, .mesa-barra) :is(button, a, select) { min-height: 44px; }
+  body.grid-mob :is(.gr-barra, .gr-lado, .mesa-barra) :is(.btn-fant, .mb-icone, #gr-recarregar) { min-width: 44px; }
+  /* A régua de Ticks é leitura de tela larga: numa de 390px ela caberia em três
+     colunas e não se leria. Continua no ▤ do notebook. */
+  body.grid-mob .gr-linha { display: none; }
+  /* A tira da iniciativa perde o canto do relógio (que virou a barra de baixo) e
+     fica só com o que ela tem de melhor: os cartões, que já rolam na horizontal. */
+  body.grid-mob .gr-ini .ini-cab { display: none; }
+  body.grid-mob .gr-ini { padding: .25rem .3rem; }
+  body.grid-mob .ini-chao { max-width: 32%; }
+
+  /* ---- a barra do polegar ----
+     O ⏭ Próximo é o botão mais apertado de uma sessão inteira, e no notebook ele
+     é um `.mini` de 24px na terceira fileira de um painel. Aqui ele é o alvo
+     mais gordo da tela, e a sessão cabe num polegar. */
+  .gr-app { display: none; }
+  body.grid-mob .gr-app { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr;
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 140; gap: .1rem;
+    padding: .15rem .25rem calc(.15rem + env(safe-area-inset-bottom));
+    background: color-mix(in srgb, var(--panel) 95%, transparent);
+    border-top: 1px solid var(--rule); backdrop-filter: blur(8px); }
+  .ga-b { display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: .12rem; min-height: 44px; padding: .2rem .1rem; border: 0; border-radius: var(--r-md);
+    background: none; color: var(--ink); font: inherit; cursor: pointer; }
+  .ga-b i { font-size: 1.1rem; line-height: 1; font-style: normal; }
+  .ga-b small { font-family: 'Cinzel'; font-size: calc(var(--fs-micro) * .8);
+    text-transform: uppercase; letter-spacing: .03em; color: var(--ink-soft); line-height: 1;
+    max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: clip; }
+  .ga-b[aria-expanded="true"] { background: color-mix(in srgb, var(--accent) 20%, transparent); }
+  .ga-b[aria-expanded="true"] small { color: var(--accent-texto); }
+  .ga-b:disabled { opacity: .35; }
+  .ga-rel { cursor: default; }
+  .ga-rel b { font-family: 'Cinzel'; font-size: 1.4rem; line-height: 1;
+    color: var(--accent-texto); font-variant-numeric: tabular-nums; }
+  .ga-prox { background: color-mix(in srgb, var(--accent) 16%, transparent); }
+  .ga-prox i { color: var(--accent-texto); }
+
+  /* ---- os diálogos viram folhas de baixo ----
+     A caixa centrada é o desenho certo para um mouse: ela cai no meio do campo
+     de visão e o ponteiro chega a qualquer canto dela com o mesmo esforço. No
+     telefone o esforço não é igual: o topo da tela é longe e o pé é perto, e uma
+     caixa de 745px numa janela de 844 nasce com a decisão fora da tela.
+
+     Medido em 21/08, na folha da ação: 813px de conteúdo em 743 visíveis, e o
+     que ficava embaixo da dobra era justamente o par "Errou / Acertou ·
+     aplicar". A emenda que trouxe o ataque de sete toques para dois se desfazia
+     no celular, onde o último toque virava "role a caixa até achar o botão".
+
+     Por que aqui e não no `MesaCab`, que é o dono do molde: o `.mesa-dlg` serve
+     seis telas da mesa, e três delas são de outra frente. A regra nasce presa ao
+     `body.grid-mob`, que só o Grid põe; quando o desenho tiver rodado em mesa de
+     verdade, ele sobe para o molde e vale para todas. */
+  body.grid-mob .mesa-dlg, body.grid-mob .mesa-dlg.dlg-larga {
+    position: fixed; inset: auto 0 0 0; margin: 0; width: 100%; max-width: none;
+    max-height: 94dvh; border-bottom: 0;
+    border-radius: var(--r-lg) var(--r-lg) 0 0; }
+  body.grid-mob .mesa-dlg form { max-height: 94dvh; padding: .85rem .9rem 0; }
+  @keyframes folha-sobe { from { transform: translateY(14%); opacity: .5; } }
+  body.grid-mob .mesa-dlg[open] { animation: folha-sobe .2s ease-out; }
+  @media (prefers-reduced-motion: reduce) {
+    body.grid-mob .mesa-dlg[open] { animation: none; }
+  }
+  /* O título fica: rolando a folha, ela continua dizendo o que é. */
+  body.grid-mob .mesa-dlg h3 { position: sticky; top: 0; z-index: 2;
+    background: var(--panel); margin: -.85rem -.9rem .35rem; padding: .7rem .9rem .5rem;
+    border-bottom: 1px solid var(--rule); }
+  /* A DECISÃO NÃO ROLA. */
+  body.grid-mob .mesa-dlg .dlg-btns { position: sticky; bottom: 0; z-index: 2;
+    background: var(--panel); margin: .3rem -.9rem 0;
+    padding: .55rem .9rem calc(.55rem + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--rule); }
+  body.grid-mob .mesa-dlg .dlg-btns .btn { flex: 1 1 auto; min-height: 46px;
+    justify-content: center; }
+  body.grid-mob .mesa-dlg .dlg-btns .btn.mini { flex: 0 1 auto; }
+  /* Piso de toque dentro da folha. O campo já vinha de 44px pelo `global.css`;
+     o botão é que não vinha, e a folha da ação é feita de botão pequeno. */
+  body.grid-mob .mesa-dlg :is(button, select) { min-height: 44px; }
+  body.grid-mob .mesa-dlg .btn.mini { padding: .3rem .8rem; }
+  body.grid-mob .mesa-dlg .grade3 { grid-template-columns: 1fr; }
+  body.grid-mob .mesa-dlg .dlg-txt { font-size: var(--fs-rotulo); }
+
+  /* A folha da ação: o rótulo ganha a linha dele, e o que era uma fileira de
+     seis coisas espremidas vira duas fileiras que se leem. */
+  body.grid-mob .al-sec { row-gap: .4rem; }
+  body.grid-mob .al-sec-h { flex: 1 0 100%; }
+  body.grid-mob .al-sec input[type="number"] { flex: 1 1 5rem; width: auto; min-width: 0; }
+  body.grid-mob .al-sec input.al-motivo { flex: 1 1 100%; }
+  body.grid-mob .al-def { grid-template-columns: 1fr 1fr; gap: .25rem; }
+  body.grid-mob .al-def .d { padding: .25rem .45rem; }
+  body.grid-mob .al-def .d-v { font-size: var(--fs-aux); }
+  body.grid-mob #al-golpes { flex: 0 0 4.5rem; }
+  /* O AJUSTE é a exceção, e não a regra: ele custava três fileiras (rótulo,
+     número, motivo) em toda abertura da folha, por causa de uma jogada em vinte.
+     Aqui ele nasce numa fileira só, e o campo do motivo, que é obrigatório
+     quando há ajuste, aparece no instante em que um número é digitado. */
+  body.grid-mob .al-sec:has(#al-mod) { flex-wrap: nowrap; }
+  body.grid-mob .al-sec:has(#al-mod) .al-sec-h { flex: 0 0 4.6rem; }
+  body.grid-mob #al-motivo { display: none; }
+  body.grid-mob .al-sec:has(#al-mod:not(:placeholder-shown)) { flex-wrap: wrap; }
+  body.grid-mob .al-sec:has(#al-mod:not(:placeholder-shown)) #al-motivo { display: block; }
+
+  /* O ajuste da arte é MEIA folha: o gesto dele é arrastar o mapa, e um mapa
+     coberto não se arrasta. */
+  body.grid-mob #arte-dlg, body.grid-mob #arte-dlg form { max-height: 54dvh; }
+
+  /* A caixa do fundo: os chips da miniatura tinham 24px, e o ✕ (que apaga um
+     mapa) encostava no ↻ (que o deita). Um erro de dedo de quatro pixels não
+     pode custar um mapa. */
+  body.grid-mob .fd-acs { gap: .25rem; }
+  body.grid-mob .fd-acs button { min-width: 44px; min-height: 44px; font-size: 1.05rem; }
+  body.grid-mob .fd-acs button.perigo { margin-left: .5rem; }
+  body.grid-mob .fd-item img { height: 6rem; }
+
+  /* O menu da peça também desce. Ele tinha 439px de altura e itens de 36px:
+     em paisagem não cabia na tela, e o encaixe da borda devolvia topo negativo,
+     que é o menu saindo por cima sem nada que role. */
+  body.grid-mob .tok-menu { left: 0; right: 0; top: auto; bottom: var(--ga-h);
+    min-width: 0; max-height: 66dvh; overflow-y: auto;
+    border-radius: var(--r-lg) var(--r-lg) 0 0; padding: .3rem .5rem .5rem; }
+  body.grid-mob .tok-menu button { min-height: 48px; font-size: var(--fs-aux); }
+  body.grid-mob .tok-menu .tm-cab { position: sticky; top: 0; background: var(--panel);
+    padding-top: .45rem; }
+
 </style>
 
 <script>
@@ -1573,6 +1838,7 @@ const SETAS = [
     document.body.classList.add('pagina-grid');
     if (MESTRE) { el('gr-btns').hidden = false; el('gr-dica').hidden = false; }
     ligarBarra();
+    ligarCelular();
     ligarAparencia();
     ligarArrasto();
     ligarMenuToken();
@@ -1580,6 +1846,7 @@ const SETAS = [
     ligarNevoa();
     ligarSom();
     ligarReguaENavegacao();
+    ligarDedo();
     ligarTelaCheia();
     ligarCusto();
     ligarIniciativa();
@@ -1588,6 +1855,10 @@ const SETAS = [
     // que mantém o mapa colado no pé da tela quando a janela muda de tamanho.
     addEventListener('resize', debounce(() => ajustarAltura(), 150));
     await carregar();
+    // O telefone abre a cena INTEIRA. A 100% de zoom, uma arena de 24 colunas
+    // mostra seis hexágonos numa tela de 390px: quem chega não vê a cena, vê um
+    // pedaço dela sem saber de quê.
+    if (MOB && ARENA) requestAnimationFrame(() => caber(true));
     // Depois do primeiro desenho, e não antes: quem acaba de ler tudo não tem o
     // que ressincronizar, e um aviso chegando no meio do carregamento pediria
     // uma segunda leitura da mesma coisa.
@@ -3190,6 +3461,7 @@ const SETAS = [
     })), tick, { marcacao: TEMPO.marcacao });
     reconciliar(box, itens);
     pintarLinhaDoTempo(tick);
+    sincronizarApp();
   }
 
   /**
@@ -3604,10 +3876,22 @@ const SETAS = [
   }
   const mudarZoom = (z: number) => { ZOOM = Math.max(0.3, Math.min(2.5, z)); aplicarZoom(); };
 
-  function caber() {
+  /**
+   * O tabuleiro inteiro na tela. Com um piso, quando quem olha é um dedo.
+   *
+   * Numa arena de 24 colunas e numa tela de 390px, "caber" dá 30% de zoom, e
+   * 30% é um hexágono de 17px: dá para ver a cena e não dá para tocar nela. O
+   * piso de 55% é o tamanho em que a casa tem 32px, que é onde o dedo passa a
+   * acertar qual delas. Arena pequena continua cabendo inteira, porque o piso
+   * só entra quando a conta desce abaixo dele; arena grande abre num pedaço
+   * usável, e o toque duplo mostra o resto.
+   */
+  const PISO_DEDO = 0.55;
+  function caber(comPiso = false) {
     const med = medida();
     const palco = el('gr-palco');
-    mudarZoom(Math.min((palco.clientWidth - 8) / med.largura, (palco.clientHeight - 8) / med.altura));
+    const z = Math.min((palco.clientWidth - 8) / med.largura, (palco.clientHeight - 8) / med.altura);
+    mudarZoom(comPiso ? Math.max(z, PISO_DEDO) : z);
   }
 
   // ============================================================== arrastar
@@ -3638,6 +3922,11 @@ const SETAS = [
       // arrastar o goblin é gesto exploratório, não erro, e um aviso a cada
       // toque no mapa alheio viraria ruído.
       if (!mandoNela(c)) return;
+      // No telefone a lista mora numa folha que TAPA o tabuleiro, e arrastar
+      // para um hexágono que não se vê é arrastar às cegas. A folha sai da
+      // frente no primeiro toque; o arrasto segue o ponteiro pelo documento e
+      // não se perde com ela.
+      if (MOB && naLista) abrirFolha(null);
       ev.preventDefault();
 
       const ghost = document.createElement('div');
@@ -4245,10 +4534,16 @@ const SETAS = [
         bloco ? '<span class="tm-card-i" aria-hidden="true">▤</span>' : ''}</div>`
       + linhas.filter(Boolean).join('');
     m.hidden = false;
-    // Encosta na borda? O menu volta para dentro em vez de sair da tela.
-    const r = m.getBoundingClientRect();
-    m.style.left = Math.min(x, innerWidth - r.width - 8) + 'px';
-    m.style.top = Math.min(y, innerHeight - r.height - 8) + 'px';
+    // No telefone o menu é folha de baixo, e quem manda no lugar dele é o CSS:
+    // posição vinda daqui, em `style`, venceria a folha e a devolveria para o
+    // meio da tela. Limpar é o que faz a regra valer.
+    if (MOB) { m.style.left = ''; m.style.top = ''; m.scrollTop = 0; }
+    else {
+      // Encosta na borda? O menu volta para dentro em vez de sair da tela.
+      const r = m.getBoundingClientRect();
+      m.style.left = Math.min(x, innerWidth - r.width - 8) + 'px';
+      m.style.top = Math.min(y, innerHeight - r.height - 8) + 'px';
+    }
     const cab = m.querySelector<HTMLElement>('.tm-cab.tem-card');
     if (cab) cab.onclick = () => { fecharMenu(); abrirCard(cid); };
     m.querySelectorAll<HTMLElement>('button').forEach((b) => b.onclick = () => {
@@ -4436,6 +4731,10 @@ const SETAS = [
       }
       if (ev.button !== 0) return;
       if ((ev.target as HTMLElement).closest('.gr-token')) return;   // peça é assunto do arrasto
+      // No dedo, arrastar o vazio é empurrar o mapa, e não medir: são o mesmo
+      // gesto, e disputá-lo desenhava uma linha de régua por cima de cada
+      // rolagem. A régua continua inteira no mouse, que tem três botões.
+      if (MOB && ev.pointerType === 'touch') return;
       regua = { x: ev.clientX, y: ev.clientY };
     });
 
@@ -4474,6 +4773,84 @@ const SETAS = [
       palco.scrollLeft = (palco.scrollLeft + ev.clientX - r.left) * f - (ev.clientX - r.left);
       palco.scrollTop = (palco.scrollTop + ev.clientY - r.top) * f - (ev.clientY - r.top);
     }, { passive: false });
+  }
+
+  /* ==================================================== o mapa no dedo ======
+   * Pinça para o zoom, um dedo para empurrar, dois toques para caber.
+   *
+   * POR QUE À MÃO, E NÃO PELO NAVEGADOR
+   * A pinça do navegador amplia a PÁGINA: o mapa cresce junto com a barra de
+   * comandos, com a fila e com a letra, e o que se queria era chegar perto do
+   * chão da cena. Interceptar o gesto exige `touch-action: none` no palco, e aí
+   * a rolagem nativa some junto: por isso o empurrão de um dedo também é feito
+   * aqui. São as duas metades de uma decisão só.
+   *
+   * O arrasto da PEÇA continua sendo do `ligarArrasto`, que escuta antes no
+   * documento: quem começa em cima de um retrato não empurra o mapa.
+   */
+  function ligarDedo() {
+    const palco = el('gr-palco');
+    const dedos = new Map<number, { x: number; y: number }>();
+    let empurra: { x: number; y: number; sx: number; sy: number } | null = null;
+    let pinca: { d: number; zoom: number } | null = null;
+    let ultimoToque = 0;
+
+    const dist = () => {
+      const [a, b] = [...dedos.values()];
+      return Math.hypot(a.x - b.x, a.y - b.y);
+    };
+    const meio = () => {
+      const [a, b] = [...dedos.values()];
+      return { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+    };
+
+    palco.addEventListener('pointerdown', (ev) => {
+      if (!MOB || ev.pointerType !== 'touch' || AJUSTANDO || MIRA || ARR || NEVOANDO) return;
+      dedos.set(ev.pointerId, { x: ev.clientX, y: ev.clientY });
+      if (dedos.size === 2) {
+        // O segundo dedo cancela o empurrão: o gesto virou outro no meio.
+        empurra = null;
+        pinca = { d: dist() || 1, zoom: ZOOM };
+        return;
+      }
+      if (dedos.size > 2 || (ev.target as HTMLElement).closest('.gr-token')) return;
+      empurra = { x: ev.clientX, y: ev.clientY, sx: palco.scrollLeft, sy: palco.scrollTop };
+      // Dois toques no vazio devolvem o enquadramento de abertura, que é o gesto
+      // de mapa que todo mundo já traz de casa. Com o piso, e não sem ele: um
+      // toque duplo que devolve 30% de zoom devolve uma cena que não se toca, e
+      // aí a saída seria pinçar de volta.
+      const agora = performance.now();
+      if (agora - ultimoToque < 320) { caber(true); ultimoToque = 0; empurra = null; }
+      else ultimoToque = agora;
+    });
+
+    palco.addEventListener('pointermove', (ev) => {
+      if (!dedos.has(ev.pointerId)) return;
+      dedos.set(ev.pointerId, { x: ev.clientX, y: ev.clientY });
+      if (pinca && dedos.size >= 2) {
+        const c = meio();
+        const antes = ZOOM;
+        mudarZoom(pinca.zoom * (dist() / pinca.d));
+        // O ponto entre os dedos fica parado: é o que faz a pinça parecer que se
+        // está chegando perto daquele lugar, e não do canto do tabuleiro.
+        const f = ZOOM / antes;
+        const r = palco.getBoundingClientRect();
+        palco.scrollLeft = (palco.scrollLeft + c.x - r.left) * f - (c.x - r.left);
+        palco.scrollTop = (palco.scrollTop + c.y - r.top) * f - (c.y - r.top);
+        return;
+      }
+      if (!empurra) return;
+      palco.scrollLeft = empurra.sx - (ev.clientX - empurra.x);
+      palco.scrollTop = empurra.sy - (ev.clientY - empurra.y);
+    });
+
+    const solta = (ev: PointerEvent) => {
+      dedos.delete(ev.pointerId);
+      if (dedos.size < 2) pinca = null;
+      if (!dedos.size) empurra = null;
+    };
+    palco.addEventListener('pointerup', solta);
+    palco.addEventListener('pointercancel', solta);
   }
 
   /** A linha da régua entre dois pontos da tela, com a distância em metros. */
@@ -6069,6 +6446,120 @@ const SETAS = [
     const fechar = el('lt-fechar');
     if (fechar) fechar.onclick = () => virar(false);
     aplica();
+  }
+
+  /* ====================================================== o telefone ========
+   * O app-shell: a barra do polegar, as folhas e a troca de modo.
+   *
+   * A classe no `body` é o interruptor: todo o desenho está no CSS lá em cima, e
+   * aqui só se decide QUANDO ela entra e o que cada botão comanda. Nenhum
+   * comando é reimplementado: o ⏭ da barra clica o `ini-prox` de verdade, e o
+   * ⚔ abre o mesmo menu da peça que o toque longo abre. Dois lugares fazendo a
+   * mesma conta divergem no primeiro conserto.
+   */
+  const MQ_MOB = matchMedia('(max-width: 900px)');
+  const FOLHAS = ['arena', 'campo', 'mais'] as const;
+  type Folha = (typeof FOLHAS)[number];
+  let MOB = false;
+
+  const folhaAberta = (): Folha | null =>
+    FOLHAS.find((f) => document.body.classList.contains('folha-' + f)) || null;
+
+  /** Uma folha por vez: abrir a segunda fecha a primeira. Empilhar folha sobre
+   *  folha é como se perde o rumo num telefone. */
+  function abrirFolha(qual: Folha | null) {
+    const b = document.body;
+    FOLHAS.forEach((f) => {
+      b.classList.toggle('folha-' + f, f === qual);
+      document.getElementById('ga-' + f)?.setAttribute('aria-expanded', String(f === qual));
+    });
+    b.classList.toggle('com-folha', !!qual);
+  }
+
+  /**
+   * A peça que o ⚔ da barra comanda.
+   *
+   * A da vez, se ela for minha (é a pergunta que o jogador faz olhando a tela);
+   * senão, a minha que estiver no mapa. O mestre manda em todas, e para ele a
+   * da vez é sempre a resposta certa.
+   */
+  function pecaParaAgir(): any | null {
+    const v = daVez();
+    if (v && mandoNela(v) && TOKENS[v.id]) return v;
+    const minha = COMBS.find((c: any) => minhaPeca(c) && TOKENS[c.id]);
+    return minha || (MESTRE ? v : null);
+  }
+
+  /** O relógio e o ⏭ da barra, copiados dos de verdade a cada repintura da fila. */
+  function sincronizarApp() {
+    if (!MOB) return;
+    el('ga-tk').textContent = el('ini-tk').textContent || '0';
+    el('ga-rd').textContent = (el('ini-rd').textContent || '').toLowerCase() || 'rodada 1';
+    const fonte = el('ini-prox') as HTMLButtonElement;
+    const meu = el('ga-prox') as HTMLButtonElement;
+    meu.hidden = fonte.hidden;
+    meu.disabled = fonte.disabled;
+    // O "+5t" sai do rótulo do botão de verdade: a conta do custo mora num lugar
+    // só, e este aqui só a lê.
+    const c = (fonte.textContent || '').match(/\+(\d+)t/);
+    (meu.querySelector('small') as HTMLElement).textContent = c ? `+${c[1]}t` : 'próximo';
+    (el('ga-agir') as HTMLButtonElement).disabled = !pecaParaAgir();
+  }
+
+  /** Muda de casa sem duplicar: guarda de onde veio para saber voltar. */
+  const MORADA = new WeakMap<HTMLElement, HTMLElement>();
+  function mudarDeCasa(quem: HTMLElement | null, destino: HTMLElement | null, antes?: HTMLElement | null) {
+    if (!quem || !destino || quem.parentElement === destino) return;
+    if (!MORADA.has(quem)) MORADA.set(quem, quem.parentElement!);
+    destino.insertBefore(quem, antes || null);
+  }
+  function voltarParaCasa(quem: HTMLElement | null) {
+    const casa = quem && MORADA.get(quem);
+    if (quem && casa && quem.parentElement !== casa) casa.appendChild(quem);
+  }
+
+  function ligarCelular() {
+    const custo = document.querySelector<HTMLElement>('.ini-custo');
+    const rolar = el('ini-rolar');
+
+    const aplicar = () => {
+      MOB = MQ_MOB.matches;
+      document.body.classList.toggle('grid-mob', MOB);
+      if (!MOB) abrirFolha(null);
+      // O ⚄ e o campo do custo moram no canto do relógio, que some no telefone.
+      // Antes do ✕: o que apaga a arena é a última linha da lista, e nada
+      // entra depois dele.
+      if (MOB) {
+        const fim = el('gr-excluir');
+        mudarDeCasa(rolar, el('gr-btns'), fim);
+        mudarDeCasa(custo, el('gr-btns'), fim);
+      }
+      else { voltarParaCasa(custo); voltarParaCasa(rolar); }
+      (el('ga-arena') as HTMLElement).hidden = !MESTRE;
+      sincronizarApp();
+      // O tabuleiro acabou de mudar de tamanho: reencaixar é o gesto que a mão
+      // faria em seguida.
+      requestAnimationFrame(() => { ajustarAltura(); if (ARENA && MOB) caber(true); });
+    };
+
+    el('gr-scrim').onclick = () => abrirFolha(null);
+    const alterna = (f: Folha) => () => abrirFolha(folhaAberta() === f ? null : f);
+    el('ga-arena').onclick = alterna('arena');
+    el('ga-campo').onclick = alterna('campo');
+    el('ga-mais').onclick = alterna('mais');
+    el('ga-prox').onclick = () => { abrirFolha(null); (el('ini-prox') as HTMLButtonElement).click(); };
+    el('ga-agir').onclick = () => {
+      const c = pecaParaAgir(); if (!c) return;
+      abrirFolha(null);
+      // Acima da barra e no meio, porque não há ponteiro de onde nascer: o menu
+      // se encaixa sozinho na borda se não couber.
+      abrirMenu(c.id, Math.max(8, innerWidth / 2 - 88), Math.max(8, innerHeight * 0.3));
+    };
+    addEventListener('keydown', (ev) => {
+      if (ev.key === 'Escape' && folhaAberta()) { ev.stopPropagation(); abrirFolha(null); }
+    }, true);
+    MQ_MOB.addEventListener('change', aplicar);
+    aplicar();
   }
 
   function ligarBarra() {
