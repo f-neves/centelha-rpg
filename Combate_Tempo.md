@@ -803,6 +803,11 @@ Três leituras:
   é o que dá saída ao arqueiro e ao feiticeiro, que têm `R=0`. Quem quiser ignorar o perigo e
   levar o golpe adiante pode, com um **teste de Virtude** (ver K12 no `Pendencias.md`: como se
   conta um teste de Virtude ainda não está decidido).
+  **O preço, fechado em 21/08:** você fica livre **no Tick de agora**, e não no Tick em que
+  declarou. Tudo o que gastou montando o gesto foi para o lixo, e é isso que impede abortar de ser
+  de graça: a arma pesada, que tem o Preparo mais longo, é quem mais perde ao desistir. O
+  movimento custa **1 Tick por metro**, o mesmo preço do desvio de emergência da §5.5 (e metade do
+  que custa se deslocar na Recuperação, o que é a assimetria dita em números).
 - **No Golpe:** nada. Não se aborta, não se reage, não se interrompe.
 - **Na Recuperação:** uma **ação fora de hora** do catálogo da §4.3, pagando a Velocidade dela em
   dívida, uma por ação; uma **Técnica Reflexiva**, que custa 0 Ticks e se paga em Energia; e testes
@@ -1366,18 +1371,30 @@ aberta, e espera K12 e K17.
 
 ### 15.4. O que a mesa ainda não faz
 
-O que está no site é o **rastreio**: a mesa desenha o tempo, cobra a escada e conta os golpes. O
-que ela ainda não faz são as três ações que a §14.6 descreve e que dependem de um botão que
-ninguém desenhou:
+O que está no site é o **rastreio** mais o **abortar**: a mesa desenha o tempo, cobra a escada,
+conta os golpes e deixa desistir do gesto. O que ela ainda não faz são duas das ações da §14.6:
 
-- **abortar o Preparo** (perdendo os Ticks investidos, e só para mover, desviar ou se interpor);
 - **a ação fora de hora** com a dívida somada sozinha, e o **espelho** que atrasa quem foi
   interrompido em tantos Ticks quantos o interruptor pagou;
 - **o deslocamento pago na Recuperação** (2 Ticks por metro, K20).
 
-As três são conta pronta em `combate-tempo.ts` (`podeAgirForaDeHora`, `custoDeReagir`,
-`ticksDeDeslocamento`); falta o gesto na tela. O mestre resolve as três na mão hoje, empurrando o
+As duas são conta pronta em `combate-tempo.ts` (`podeAgirForaDeHora`, `custoDeReagir`,
+`ticksDeDeslocamento`); falta o gesto na tela. O mestre resolve as duas na mão hoje, empurrando o
 Tick, que é o que ele já fazia antes desta revisão.
+
+**O abortar foi feito em 21/08.** `abortar()` no motor da tela, travado no
+`test-combate-tempo.mjs` (só no Preparo, os Ticks investidos perdidos, 1 Tick por metro, e nada
+no sistema normal, que não tem Preparo). Na mesa é um botão **✋** que **só acende quando cabe**:
+ele aparece no card e no painel do turno de quem está em Preparo, e no menu da peça no tabuleiro.
+No Golpe e na Recuperação ele simplesmente não está lá, e a regra se ensina pela ausência em vez
+de por um aviso depois do clique. A caixa mostra a conta antes de confirmar (quantos Ticks se
+perde, quantos do ciclo voltam, em que Tick se fica livre) e pergunta **para quê**: desviar, mover
+ou se interpor. Atacar não está na lista, que é o ponto.
+
+**No tabuleiro é do mestre**, como todo o resto que mexe no relógio: o jogador escreve em
+`combatentes` pelas funções `jogador_*` da migração 22, e não há uma para isto. Dar o botão a ele
+é uma `jogador_abortar` e uma decisão de segurança, e vai junto com a ação fora de hora, que tem
+o mesmo problema.
 
 ---
 

@@ -450,6 +450,9 @@ import MesaCab from '../../components/MesaCab.astro';
   .pt-fita-n { flex: 0 0 5.5rem; font-size: var(--fs-micro); color: var(--ink-soft);
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .pt-fita-dica { font-size: var(--fs-micro); color: var(--ink-soft); margin-top: .25rem; line-height: 1.3; }
+  .pt-abortar { padding: 0 .2rem; font-size: var(--fs-micro); line-height: 1; opacity: .75; }
+  .pt-abortar:hover { opacity: 1; }
+  .cbt-acoes .abortar { border-color: color-mix(in srgb, var(--gold) 55%, transparent); }
 
   /* ---------------- log ---------------- */
   .log-caixa { border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel); padding: .6rem .75rem; }
@@ -526,7 +529,9 @@ import MesaCab from '../../components/MesaCab.astro';
   import { abrirCanal, nomeParaPresenca, type Canal } from '../../lib/mesa-tempo-real';
   import type { Condicao, NivelVida, Revelar } from '../../lib/mesa-core';
   import { abrirRevelacao, resumoRevelacao } from '../../lib/mesa-revelacao';
-  import { abrirEscolhaDoTempo, resumoDoTempo, fitaHTML, seloFaseHTML } from '../../lib/mesa-tempo-ui';
+  import {
+    abrirEscolhaDoTempo, resumoDoTempo, fitaHTML, seloFaseHTML, abrirAbortar, podeAbortar,
+  } from '../../lib/mesa-tempo-ui';
   import {
     combateDaMesa, COMBATE_PADRAO, anatomia, declarar, faseEm, defesaPerdida, acaoVazia,
     classeDeTempo, velocidadeDaArma, tetoDaRajada, FASE_ROTULO,
@@ -932,8 +937,14 @@ import MesaCab from '../../components/MesaCab.astro';
       ${c.mana_max ? `<div class="cbt-linha"><div class="hpbar mini mnbar" title="Mana"><div class="hpbar-fill" style="width:${Math.max(0, Math.min(100, ((c.mana_atual ?? 0) / c.mana_max) * 100))}%"></div><span class="hpbar-txt">Mn ${c.mana_atual ?? 0}<span class="hp-sep">/</span>${c.mana_max}</span></div></div>` : ''}
     </div>` : '';
     const chip = vida !== 'numero' && vida !== 'nada' ? estadoChipHTML(pct) : '';
+    // O botão que SÓ ACENDE QUANDO CABE: abortar aparece exclusivamente para
+    // quem está em Preparo. Assim o jogador nunca pergunta "posso?", e a regra
+    // (no Golpe não se aborta, na Recuperação não há o que abortar) se ensina
+    // pela ausência do botão em vez de por um aviso depois do clique.
+    const abt = podeAbortar(acaoDe(c), AGORA)
+      ? `<button class="btn mini abortar" data-c="${c.id}" title="Desistir do gesto: perde os Ticks já investidos e fica livre agora. Só para mover, desviar ou se interpor.">✋ abortar</button>` : '';
     const acoes = EH_MESTRE ? `<div class="cbt-acoes">
-      <button class="btn mini agir" data-c="${c.id}">agir ▸</button>
+      <button class="btn mini agir" data-c="${c.id}">agir ▸</button>${abt}
       <input type="number" class="hp-amt" data-c="${c.id}" min="1" value="5" title="Quantidade" aria-label="Quantidade" />
       <select class="hp-tipo" data-c="${c.id}" title="Tipo de dano"><option value="impacto">I</option><option value="corte">C</option><option value="perfurante">P</option></select>
       <button class="btn mini perigo hp-dano" data-c="${c.id}" title="Aplicar dano abatendo a Absorção">−</button>
@@ -989,9 +1000,12 @@ import MesaCab from '../../components/MesaCab.astro';
     return `<div class="pt-fitas">
       ${linhas.map((c) => `<div class="pt-fita-l" title="${esc(c.nome)}">
         <span class="pt-fita-n">${esc(c.nome)}</span>${fitaHTML(acaoDe(c), AGORA, { largura: 10 })}
+        ${EH_MESTRE && podeAbortar(acaoDe(c), AGORA)
+          ? `<button class="btn-fant pt-abortar" data-c="${c.id}" title="Abortar o gesto de ${esc(c.nome)}">✋</button>` : ''}
       </div>`).join('')}
       ${prep.length ? `<div class="pt-fita-dica">Montando o gesto: <b>${prep.map((c) => esc(c.nome)).join(', ')}</b>.
-        Só quem está em Preparo pode ser interrompido, e interromper atrasa o alvo em tantos Ticks quantos você pagar.</div>` : ''}
+        Só quem está em Preparo pode ser interrompido, e interromper atrasa o alvo em tantos Ticks quantos você pagar.
+        Quem está montando também é quem ainda pode <b>desistir</b>: o ✋ aborta, perdendo os Ticks já investidos.</div>` : ''}
     </div>`;
   }
 
@@ -1029,6 +1043,11 @@ import MesaCab from '../../components/MesaCab.astro';
     if (EH_MESTRE) {
       box.querySelector<HTMLElement>('.agir')?.addEventListener('click', () => abrirAcao(atual.id));
       el('pt-esperar')?.addEventListener('click', () => avancarTick(atual.id, 1, `${atual.nome} esperou 1 tick.`));
+      // `pt-abortar` e não `abortar`: este painel está DENTRO de `enc-tudo`, que
+      // é onde `ligarCards` varre. Com a mesma classe dos cards, o botão ganharia
+      // dois ouvintes e abriria duas caixas empilhadas.
+      box.querySelectorAll<HTMLElement>('.pt-abortar').forEach((b) =>
+        b.addEventListener('click', () => abortarGesto(b.dataset.c!)));
     }
   }
 
@@ -1186,6 +1205,37 @@ import MesaCab from '../../components/MesaCab.astro';
     return vencidas.length > 0;
   }
 
+  /**
+   * Abortar o gesto de alguém que está em Preparo.
+   *
+   * Ao contrário de `avancarTick`, aqui o Tick novo é um valor ABSOLUTO e não
+   * um acréscimo: quem aborta fica livre no Tick de agora (mais o deslocamento),
+   * e não no Tick em que teria terminado. Somar não serviria, porque o que se
+   * faz é justamente cancelar uma soma que já foi feita.
+   *
+   * A ação sai junto: sem ela a fita continuaria desenhando um golpe que não
+   * vai sair, e a escada continuaria cobrando a Defesa de um gesto abortado.
+   */
+  function abortarGesto(cid: string) {
+    const c = COMBS.find((x) => x.id === cid); if (!c) return;
+    const a = acaoDe(c); if (!a) return;
+    abrirAbortar({ nome: c.nome, acao: a, tick: AGORA }, async (r) => {
+      const antesTick = c.tick, antesAcao = c.acao;
+      c.tick = r.novoTick; c.acao = {};
+      await upComb(cid, { tick: r.novoTick, acao: {} });
+      registrarDesfazer(`Abortar de ${c.nome} (tick ${antesTick} → ${r.novoTick})`, async () => {
+        c.tick = antesTick; c.acao = antesAcao;
+        await upComb(cid, { tick: antesTick, acao: antesAcao || {} }); await carregar();
+      });
+      // A frase pública é a mesma: abortar é gesto visível, e esconder que o
+      // ogro desistiu do golpe tiraria do grupo a informação que eles
+      // compraram prestando atenção. O que fica de fora é só a conta.
+      await logar(`${r.frase} · próxima ação no tick ${r.novoTick} (sairia no ${a.livre}).`,
+        'sistema', `${r.frase}.`);
+      await carregar();
+    });
+  }
+
   async function avancarTick(cid: string, quanto: number, txt: string, acao: any = null) {
     const c = COMBS.find((x) => x.id === cid); if (!c) return;
     const antes = c.tick;
@@ -1291,6 +1341,7 @@ import MesaCab from '../../components/MesaCab.astro';
       pintar();
     }));
     raiz.querySelectorAll<HTMLElement>('.agir').forEach((b) => b.addEventListener('click', () => abrirAcao(b.dataset.c!)));
+    raiz.querySelectorAll<HTMLElement>('.abortar').forEach((b) => b.addEventListener('click', () => abortarGesto(b.dataset.c!)));
     raiz.querySelectorAll<HTMLElement>('.editc').forEach((b) => b.addEventListener('click', () => {
       const c = COMBS.find((x) => x.id === b.dataset.c); if (c) abrirEditar(c, RESUMO[c.id]);
     }));

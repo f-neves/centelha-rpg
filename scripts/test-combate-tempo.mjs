@@ -141,6 +141,50 @@ eq(T.anatomia({ classe: 'media', velocidade: 6, sistema: 'normal', manobra: 'dup
   eq(T.defesaPerdida(a, 3).total, -6, 'a Recuperação da rajada de 3: −2 por golpe dado');
 }
 
+// ------------------------------------------------------------ 3b. o abortar
+// §14.6: só no Preparo, perdendo os Ticks investidos, e só para mover, desviar
+// ou se interpor. 1 Tick por metro, o preço do desvio de emergência da §5.5.
+{
+  // martelo (pesada, 7t): declara no 10, Preparo 10-11, Golpe 12, Recuperação 13-16
+  const a = T.declarar(10, T.anatomia({ classe: 'pesada', velocidade: 7, sistema: 'pgr' }));
+  eq([a.desde, a.golpes, a.livre], [10, [12], 17], 'a agenda do martelo declarado no Tick 10');
+
+  const noAto = T.abortar(a, 10, 0);
+  eq([noAto.pode, noAto.perdidos, noAto.custo, noAto.novoTick], [true, 0, 0, 10],
+    'abortar no mesmo Tick da declaração não perde nada');
+
+  const tarde = T.abortar(a, 11, 0);
+  eq([tarde.pode, tarde.perdidos, tarde.novoTick, tarde.devolvidos], [true, 1, 11, 6],
+    'abortar no segundo Tick de Preparo perde 1 Tick e devolve 6 do ciclo');
+
+  const fugindo = T.abortar(a, 11, 3);
+  eq([fugindo.custo, fugindo.novoTick], [3, 14], 'recuar 3 m ao abortar custa 3 Ticks (1 por metro)');
+
+  eq(T.abortar(a, 12, 0).pode, false, 'no Golpe não se aborta');
+  ok(/braço/.test(T.abortar(a, 12, 0).porque), 'e o motivo é dito');
+  eq(T.abortar(a, 13, 0).pode, false, 'na Recuperação não há o que abortar');
+  ok(/2 Ticks por metro/.test(T.abortar(a, 13, 0).porque), 'e a Recuperação aponta o que cabe nela');
+  eq(T.abortar(a, 17, 0).pode, false, 'quem está livre não tem gesto para abortar');
+  eq(T.abortar(null, 3, 0).pode, false, 'sem ação nenhuma, não há abortar');
+
+  // Quem tem Preparo 0 nunca pode abortar, e é o preço de ser rápido: a leve
+  // já está golpeando no Tick em que declara.
+  const leve = T.declarar(4, T.anatomia({ classe: 'leve', velocidade: 5, sistema: 'pgr' }));
+  eq(T.abortar(leve, 4, 0).pode, false, 'a arma leve não tem Preparo para abortar');
+
+  // O arqueiro é o caso que a regra existe para socorrer: Recuperação 0, e
+  // portanto cinco Ticks de Preparo em que a única saída é desistir.
+  const arco = T.declarar(0, T.anatomia({ classe: 'distancia', velocidade: 6, sistema: 'pgr' }));
+  eq([0, 1, 2, 3, 4].every((t) => T.abortar(arco, t, 0).pode), true,
+    'o arqueiro pode abortar em qualquer Tick da mira');
+  eq(T.abortar(arco, 4, 0).perdidos, 4, 'e perde os quatro Ticks que já investiu');
+}
+// no sistema normal ninguém aborta: não existe Preparo para desistir
+for (const w of armas) {
+  const a = T.declarar(3, T.anatomia({ classe: w.classe, velocidade: w.ticks, sistema: 'normal' }));
+  eq(T.abortar(a, 3, 0).pode, false, `no sistema normal ${w.id} não tem o que abortar`);
+}
+
 // -------------------------------------- 4. o sistema normal degenera direito
 for (const w of armas) {
   eq(T.preparoDe(w.classe, w.ticks, 'normal'), 0, `no sistema normal ${w.id} não tem Preparo`);

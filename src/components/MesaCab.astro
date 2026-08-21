@@ -583,6 +583,19 @@ const { aba } = Astro.props;
   .tempo-am-l { display: flex; align-items: center; gap: .5rem; }
   .tempo-am-r { flex: 0 0 6.5rem; font-size: var(--fs-micro); color: var(--ink-soft); text-align: right; }
   .tempo-am-n { font-size: var(--fs-micro); color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+
+  /* ---------------- abortar o Preparo ----------------
+     Os dois números da decisão lado a lado, antes das opções: o que se perde e
+     o que volta. É a conta que o jogador faria de cabeça no meio da luta, e a
+     única razão de a caixa existir. */
+  .ab-conta { display: flex; flex-wrap: wrap; gap: .3rem .9rem; margin: 0 0 .6rem;
+    padding: .4rem .6rem; border: 1px solid var(--rule); border-radius: var(--r-md);
+    background: color-mix(in srgb, var(--gold) 8%, transparent); font-size: var(--fs-rotulo); }
+  .ab-conta b { font-family: 'Cinzel'; color: var(--accent-strong); font-variant-numeric: tabular-nums; }
+  .mesa-dlg label.ab-m { display: flex; flex-direction: column; gap: .15rem; margin: .5rem 0;
+    text-transform: none; letter-spacing: normal; font-family: 'EB Garamond'; text-align: left; }
+  .ab-m input { max-width: 6rem; }
+  .ab-m small { font-size: var(--fs-micro); color: var(--ink-soft); line-height: 1.3; }
 </style>
 
 <script>

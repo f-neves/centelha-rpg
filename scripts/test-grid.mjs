@@ -158,6 +158,46 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
   ok(d.golpes + d.montando > 0,
     `as peças com gesto no ar estão marcadas (${d.golpes} golpeando, ${d.montando} montando)`);
 
+  // -------------------------------------------------- abortar o Preparo
+  // O item so aparece para quem esta em Preparo: no Golpe e na Recuperacao a
+  // regra se ensina pela ausencia do botao. E o clique tem de mexer no relogio.
+  const abort = await p.evaluate(async () => {
+    const emPreparo = [...document.querySelectorAll('#gr-tokens .gr-token.montando')];
+    const noGolpe = [...document.querySelectorAll('#gr-tokens .gr-token.golpe')];
+    const menu = (t) => {
+      t.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, clientX: 400, clientY: 300 }));
+      const tem = !!document.querySelector('#tok-menu button[data-a="abortar"]');
+      return tem;
+    };
+    if (!emPreparo.length) return null;
+    const temNoPreparo = menu(emPreparo[0]);
+    const temNoGolpe = noGolpe.length ? menu(noGolpe[0]) : false;
+    // volta ao de Preparo e aborta de verdade
+    menu(emPreparo[0]);
+    const cid = emPreparo[0].dataset.c;
+    const tAntes = [...document.querySelectorAll('#gr-ini .ini-item')]
+      .find((x) => x.dataset.c === cid)?.dataset.t;
+    document.querySelector('#tok-menu button[data-a="abortar"]').click();
+    await new Promise((r) => setTimeout(r, 300));
+    const dlg = document.querySelector('dialog.tempo-dlg');
+    if (!dlg) return { temNoPreparo, temNoGolpe, abriu: false };
+    const conta = dlg.querySelector('.ab-conta')?.textContent.replace(/\s+/g, ' ').trim();
+    dlg.querySelector('#ab-ok').click();
+    await new Promise((r) => setTimeout(r, 600));
+    const tDepois = [...document.querySelectorAll('#gr-ini .ini-item')]
+      .find((x) => x.dataset.c === cid)?.dataset.t;
+    return { temNoPreparo, temNoGolpe, abriu: true, conta, tAntes, tDepois,
+      aindaMontando: !!document.querySelector(`.gr-token[data-c="${cid}"].montando`) };
+  });
+  if (abort) {
+    ok(abort.temNoPreparo, 'quem esta em Preparo tem "abortar" no menu da peca');
+    ok(!abort.temNoGolpe, 'quem esta no Golpe nao tem (no Golpe nao se aborta)');
+    ok(abort.abriu, 'o item abre a caixa de abortar');
+    ok(/perdidos/.test(abort.conta || ''), `a caixa mostra a conta (${abort.conta})`);
+    ok(abort.tAntes !== abort.tDepois, `abortar mexeu no relogio dele (t${abort.tAntes} -> t${abort.tDepois})`);
+    ok(!abort.aindaMontando, 'e a peca deixou de estar montando o gesto');
+  }
+
   // ------------------------------------------ o painel "como o tempo passa"
   const tempo = await p.evaluate(async () => {
     document.getElementById('gr-tempo')?.click();

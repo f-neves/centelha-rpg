@@ -2309,6 +2309,21 @@
       "declaraAcaoNova": false,
       "refazGuarda": false
     },
+    "abortar": {
+      "nota": "Abortar o gesto que ainda não saiu. Só no Preparo: no Golpe não se aborta (não há como interromper o próprio braço no instante em que ele cai) e na Recuperação não há o que abortar, o golpe já foi. É o desvio de emergência da §5.5 do Arcano virado regra geral, e é o que dá saída ao arqueiro e ao feiticeiro, que têm Recuperação zero.",
+      "fase": "preparo",
+      "ticksPorMetro": 1,
+      "ticksPorMetroNota": "O mesmo preço do desvio de emergência contra área (§5.5). Mais barato que os 2 Ticks por metro da Recuperação, e a diferença é a regra inteira: no Preparo você ainda pode desistir, na Recuperação você já não pode, só pode pagar.",
+      "para": [
+        "mover",
+        "desviar",
+        "interpor"
+      ],
+      "nuncaPara": "atacar",
+      "perdeOInvestido": true,
+      "perdeOInvestidoNota": "Os Ticks já gastos no Preparo não voltam: você fica livre no Tick de agora, e não no Tick em que declarou. É esse o preço, e é ele que impede abortar de ser de graça.",
+      "levarAdiante": "Quem quiser ignorar o perigo e levar o golpe adiante pode, com um teste de Virtude. Como se conta um teste de Virtude ainda não está decidido (K12): não entram Atributos nem Perícias, só Virtudes."
+    },
     "foraDeHora": {
       "nota": "Agir fora da sua vez: paga a Velocidade da ação empurrada para o seu próprio futuro, a guarda não se refaz, uma por ação. Interromper atrasa o alvo em tantos Ticks quantos o interruptor pagou (o espelho).",
       "umaPorAcao": true,

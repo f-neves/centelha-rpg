@@ -1072,7 +1072,9 @@ const SETAS = [
   } from '../../lib/grid-golpe-fx';
   import { armaDoSlot } from '../../lib/equip';
   import { reconciliar, esquecerCaixa } from '../../lib/reconciliar';
-  import { abrirEscolhaDoTempo, resumoDoTempo, fitaHTML } from '../../lib/mesa-tempo-ui';
+  import {
+    abrirEscolhaDoTempo, resumoDoTempo, fitaHTML, abrirAbortar, podeAbortar,
+  } from '../../lib/mesa-tempo-ui';
   import {
     combateDaMesa, COMBATE_PADRAO, faseEm, acaoVazia, resumoDaAcao,
     type CombateMesa,
@@ -3080,6 +3082,28 @@ const SETAS = [
     await verificarEfeitos(ctxArtes());
   }
 
+  /**
+   * Abortar o gesto de quem está em Preparo, do tabuleiro.
+   *
+   * Ao contrário de `encerrarVez`, o Tick aqui é ABSOLUTO: quem desiste fica
+   * livre no Tick de agora mais o deslocamento, e não onde o ciclo terminaria.
+   * A ação sai junto, senão o anel de Golpe continuaria acendendo para um golpe
+   * que não vai mais sair.
+   */
+  async function abortarGesto(cid: string) {
+    const c = COMBS.find((x: any) => x.id === cid); if (!c) return;
+    const a = acaoNo(c); if (!a) return;
+    abrirAbortar({ nome: c.nome, acao: a, tick: relogio() }, async (r) => {
+      const { error } = await SB.from('combatentes')
+        .update({ tick: r.novoTick, acao: {} }).eq('id', cid);
+      if (error) return uiErro('Erro: ' + error.message);
+      c.tick = r.novoTick; c.acao = {};
+      pintarIniciativa(); pintarTokens();
+      avisarAgora('combatentes');
+      await logar(c, `${r.frase} · próxima ação no tick ${r.novoTick} (sairia no ${a.livre})`, { acao: null });
+    });
+  }
+
   function pintarLista() {
     const box = el('gr-lista');
     if (!ENC) {
@@ -3734,6 +3758,12 @@ const SETAS = [
       sep,
       item('alcance', ALCANCE?.cid === cid ? '◎ Apagar o alcance' : '◎ Mostrar alcance'),
       MESTRE ? sep : '',
+      // Abortar só aparece para quem está em Preparo, e é assim que a regra se
+      // ensina: no Golpe e na Recuperação o item simplesmente não está lá.
+      // Mestre só, como o resto do que mexe no relógio: o jogador escreve em
+      // `combatentes` pelas funções `jogador_*` da migração 22, e não há uma
+      // para isto ainda.
+      MESTRE && podeAbortar(acaoNo(c), relogio()) ? item('abortar', '✋ Abortar o gesto') : '',
       MESTRE ? item('encerrar', `⏭ ${ehAVez ? 'Agiu' : 'Adiantar o relógio dele'} (+${custoAtual()} ticks)`) : '',
       MESTRE ? item('ordem', '↕ Iniciativa e ticks') : '',
       MESTRE ? sep : '',
@@ -3760,6 +3790,7 @@ const SETAS = [
       else if (a === 'mana') ajustarMana(cid);
       else if (a === 'arte') usarArte(cid);
       else if (a === 'alcance') alternarAlcance(cid);
+      else if (a === 'abortar') abortarGesto(cid);
       else if (a === 'encerrar') encerrarVez(cid);
       else if (a === 'ordem') editarIniciativa(cid);
       else if (a === 'tirar') tirarDoMapa(cid);

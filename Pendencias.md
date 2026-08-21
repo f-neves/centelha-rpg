@@ -763,10 +763,17 @@ revistos por ela.
   - **4 capítulo IX** — a única que falta, e espera **K12** (teste de Virtude) e **K17**
     (arqueiro).
 
-  **O que a mesa ainda não faz** está na §15.4: abortar o Preparo, a ação fora de hora com dívida
-  e espelho, e o deslocamento pago na Recuperação. As três já são conta pronta em
+  **O abortar entrou em 21/08.** Botão **✋** que só acende para quem está em Preparo (no card, no
+  painel do turno e no menu da peça no Grid), com a conta na caixa antes de confirmar. Preço
+  fechado: fica livre no Tick de agora, os Ticks investidos vão para o lixo, e o movimento custa
+  **1 Tick por metro**, o do desvio de emergência da §5.5. Mora em `regras.json` (`combate.abortar`)
+  e está travado no `test-combate-tempo.mjs`.
+
+  **O que a mesa ainda não faz** está na §15.4, e são duas: a **ação fora de hora** com dívida e
+  espelho, e o **deslocamento pago na Recuperação**. As duas já são conta pronta em
   `combate-tempo.ts`; falta o gesto na tela, e o mestre resolve na mão empurrando o Tick, como
-  antes desta revisão.
+  antes desta revisão. As duas, mais o abortar do lado do jogador, pedem uma função
+  `jogador_*` nova (migração 22): hoje quem mexe no relógio é só o mestre.
 
 ## H. Arremesso
 

@@ -57,6 +57,21 @@ const FICHA_PC = {
   efeito: null,
 };
 
+/**
+ * Uma ação no ar a cada três peças, e as três fases representadas: uma ainda
+ * montando o gesto, uma golpeando agora, uma se recompondo. Sem isso a fita e o
+ * anel de Golpe nunca seriam desenhados na bancada.
+ *
+ * `desde` é o Tick da declaração, e o abortar precisa dele para dizer quantos
+ * Ticks foram para o lixo.
+ */
+const ACAO = Array.from({ length: N_COMB }, (_, i) => (
+  i % 3 === 0 ? {}
+    : i % 3 === 1
+      ? { golpes: [(i % 4) + 2], livre: (i % 4) + 6, desde: 0, tipo: 'simples', arma: 'Espada Longa', pressao: i % 2 }
+      : { golpes: [i % 4], livre: (i % 4) + 4, desde: 0, tipo: 'dupla', arma: 'Adaga', pressao: 0 }
+));
+
 const COMBS = [];
 for (let i = 0; i < N_COMB; i++) {
   const ehPC = i < Math.min(4, N_COMB);
@@ -70,13 +85,11 @@ for (let i = 0; i < N_COMB; i++) {
     personagem_id: ehPC ? `p${String(i).padStart(3, '0')}` : null,
     pv_max: 40, pv_atual: 40 - (i % 7) * 3,
     mana_max: ehPC ? 8 : null, mana_atual: ehPC ? 8 - (i % 3) : null,
-    tick: i % 4, iniciativa: 20 - i,
-    // Uma ação no ar a cada três peças, e as tres fases representadas: uma
-    // ainda montando o gesto, uma golpeando agora, uma se recompondo. Sem isso
-    // a fita e o anel de Golpe nunca seriam desenhados na bancada.
-    acao: i % 3 === 0 ? {}
-      : i % 3 === 1 ? { golpes: [(i % 4) + 2], livre: (i % 4) + 6, tipo: 'simples', arma: 'Espada Longa', pressao: i % 2 }
-      : { golpes: [i % 4], livre: (i % 4) + 4, tipo: 'dupla', arma: 'Adaga', pressao: 0 },
+    tick: ACAO[i].livre ?? (i % 4), iniciativa: 20 - i,
+    // O tick de quem tem ação no ar É o fim do ciclo dela: é a invariante que o
+    // rastreador mantém (`avancarTick` grava os dois juntos), e a bancada tem de
+    // respeitá-la, senão abortar não muda número nenhum e o teste mente.
+    acao: ACAO[i],
     condicoes: i % 3 === 0 ? [{ id: 'cego' }] : [],
     ativo: true, oculto: false, imagem: null, retrato: null,
   });

@@ -52,6 +52,7 @@ export const MARCACOES: { id: Marcacao; nome: string; resumo: string }[] = C?.ma
 export interface Acao {
   golpes: number[];
   livre: number;
+  desde?: number;         // o Tick em que foi declarada (o abortar precisa dele)
   tipo?: Manobra;
   arma?: string | null;   // só o mestre vê (a view mascara para o jogador)
   alvo?: string | null;   // idem
@@ -192,6 +193,7 @@ export function declarar(tickAgora: number, a: Anatomia, extra: Partial<Acao> = 
   return {
     golpes: a.offs.map((o) => tickAgora + o),
     livre: tickAgora + a.ciclo,
+    desde: tickAgora,
     divida: 0, pressao: 0,
     ...extra,
   };
@@ -247,6 +249,54 @@ export function podeAgirForaDeHora(acao: Acao | null | undefined, tick: number) 
   if (f === 'recuperacao') return { pode: true, como: 'pagando a Velocidade da ação em dívida' };
   if (f === 'preparo') return { pode: true, como: 'abortando o Preparo, e só para mover, desviar ou se interpor' };
   return { pode: false, como: 'está no Golpe: não se aborta, não se reage, não se interrompe' };
+}
+
+// ---------------------------------------------------------------- o abortar
+/**
+ * Abortar o gesto que ainda não saiu.
+ *
+ * A ASSIMETRIA É O CORAÇÃO DA COISA: **no Preparo você ainda pode desistir; na
+ * Recuperação você já não pode, só pode pagar.** Por isso o abortar só existe
+ * numa fase. No Golpe não se aborta (não há como parar o próprio braço no
+ * instante em que ele cai) e na Recuperação não há o que abortar, o golpe já foi.
+ *
+ * O PREÇO SÃO OS TICKS INVESTIDOS. Você fica livre no Tick de AGORA, e não no
+ * Tick em que declarou: tudo o que gastou montando o gesto foi para o lixo. É
+ * isso que impede abortar de ser de graça, e é por isso que a arma pesada, que
+ * tem o Preparo mais longo, é quem mais perde ao desistir.
+ *
+ * E SÓ PARA MOVER, DESVIAR OU SE INTERPOR, nunca para atacar: quem aborta não
+ * ganha um ataque mais rápido, ganha uma saída. O movimento custa 1 Tick por
+ * metro, o mesmo preço do desvio de emergência da §5.5 do Arcano, de que esta
+ * regra é a generalização.
+ *
+ * Devolve a conta inteira, incluindo o caso em que não dá: quem chama decide se
+ * mostra o botão ou o porquê de ele não estar lá.
+ */
+export function abortar(acao: Acao | null | undefined, tick: number, metros = 0) {
+  const A = C?.abortar || {};
+  const fase = faseEm(acao, tick);
+  if (fase !== 'preparo') {
+    return {
+      pode: false, fase, perdidos: 0, custo: 0, novoTick: tick, devolvidos: 0,
+      porque: fase === 'golpe'
+        ? 'No Golpe não se aborta: o braço já está caindo.'
+        : fase === 'recuperacao'
+          ? 'Na Recuperação não há o que abortar, o golpe já saiu. O que cabe aqui é pagar: uma ação fora de hora, ou 2 Ticks por metro para se deslocar.'
+          : 'Não há gesto no ar para abortar.',
+    };
+  }
+  const a = acao as Acao;
+  const custo = Math.max(0, Math.round(metros * (A.ticksPorMetro ?? 1)));
+  // `desde` é opcional: ação escrita antes deste campo existir só não sabe
+  // narrar quanto se perdeu, e zero é mais honesto do que um palpite.
+  const perdidos = a.desde != null ? Math.max(0, tick - a.desde) : 0;
+  return {
+    pode: true, fase, perdidos, custo,
+    novoTick: tick + custo,
+    devolvidos: Math.max(0, a.livre - tick),   // o resto do ciclo, que volta
+    porque: '',
+  };
 }
 
 /** Quanto custa reagir agora: o que falta do ciclo mais a Velocidade da reação. */

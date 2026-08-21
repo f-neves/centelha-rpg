@@ -16,7 +16,7 @@ import { esc } from './mesa-core';
 import type { CtxMesa } from './mesa-core';
 import { uiPainel, uiErro } from './ui-dialog';
 import {
-  faseEm, fita, defesaPerdida, resumoDaAcao, acaoVazia, anatomia, declarar,
+  faseEm, fita, defesaPerdida, resumoDaAcao, acaoVazia, anatomia, declarar, abortar,
   combateDaMesa, COMBATE_PADRAO, SISTEMAS, MARCACOES, FASE_ROTULO,
   type Acao, type Fase, type CombateMesa, type Sistema, type Marcacao, type ClasseArma,
 } from './combate-tempo';
@@ -57,6 +57,91 @@ export function seloFaseHTML(acao: Acao | null | undefined, tick: number) {
   const falta = Math.max(0, (acao as Acao).livre - tick);
   return `<span class="fase-selo ${CLS[f]}" title="${esc(`${FASE_ROTULO[f]} · Defesa ${dv.total} · livre em ${falta} Tick(s)`)}">
     ${FASE_ROTULO[f]}${dv.total ? ` <b>${dv.total}</b>` : ''}</span>`;
+}
+
+// ------------------------------------------------------------- o abortar
+/** Dá para mostrar o botão de abortar para esta pessoa agora? */
+export const podeAbortar = (acao: Acao | null | undefined, tick: number) => abortar(acao, tick).pode;
+
+/** O que se aborta PARA: narração, mas é ela que deixa a regra visível na tela. */
+const SAIDAS: { v: string; t: string; d: string }[] = [
+  { v: 'desviar', t: 'Desviar', d: 'Sai da linha do golpe e recompõe a guarda. É o desvio de emergência da §5.5, virado regra geral.' },
+  { v: 'mover', t: 'Mover', d: 'Recua, avança, muda de posição. O que o gesto abortado vira é passo, não ataque.' },
+  { v: 'interpor', t: 'Se interpor', d: 'Entra na frente de alguém e leva o golpe no lugar dele. O gesto morre para salvar o outro.' },
+];
+
+/**
+ * O diálogo de abortar.
+ *
+ * Ele existe porque a conta é chata e a decisão é rápida: no meio da luta o
+ * jogador precisa saber "quanto me custa desistir?" em um olhar, e não fazer a
+ * subtração. A caixa responde com o número pronto e diz o que se perde.
+ *
+ * `aoConfirmar` recebe a conta já fechada. Quem persiste é a página: aqui não
+ * há banco.
+ */
+export function abrirAbortar(
+  quem: { nome: string; acao: Acao; tick: number },
+  aoConfirmar: (r: { novoTick: number; perdidos: number; custo: number; metros: number; saida: string; frase: string }) => void | Promise<void>,
+) {
+  const { nome, acao, tick } = quem;
+  const base = abortar(acao, tick, 0);
+  const { corpo, fechar } = uiPainel(`Abortar o gesto de ${nome}`, { classe: 'mesa-dlg tempo-dlg' });
+
+  if (!base.pode) {
+    corpo.innerHTML = `<p class="tempo-intro">${esc(base.porque)}</p>
+      <div class="ui-dlg-btns"><button type="button" class="btn" id="ab-fechar">Fechar</button></div>`;
+    (corpo.querySelector('#ab-fechar') as HTMLElement).onclick = () => fechar();
+    return;
+  }
+
+  corpo.innerHTML = `
+    <p class="tempo-intro">${esc(nome)} está no <b>Preparo</b>, e o golpe ainda não saiu. Dá para
+      desistir dele: <b>os Ticks já investidos não voltam</b>, e o que sobrava do ciclo volta.
+      Só para <b>mover, desviar ou se interpor</b> — nunca para atacar.</p>
+    <div class="ab-conta">
+      <span><b>${base.perdidos}</b> Tick(s) investidos, perdidos</span>
+      <span><b>${base.devolvidos}</b> Tick(s) do ciclo, devolvidos</span>
+    </div>
+    <div class="rev-h">Para quê</div>
+    <div class="rev-ops">${SAIDAS.map((o, i) => `<label class="rev-op" title="${esc(o.d)}">
+      <input type="radio" name="ab-saida" value="${o.v}"${i === 0 ? ' checked' : ''} />
+      <span class="rev-op-corpo"><span class="rev-op-t">${o.t}</span><span class="rev-op-d">${esc(o.d)}</span></span>
+    </label>`).join('')}</div>
+    <label class="ab-m">Metros percorridos
+      <input type="number" id="ab-metros" min="0" step="1" value="0" />
+      <small>1 Tick por metro, o preço do desvio de emergência. Zero: fica onde está e recompõe a guarda.</small>
+    </label>
+    <div class="acao-conta" id="ab-res"></div>
+    <div class="ui-dlg-btns">
+      <button type="button" class="btn" id="ab-cancelar">Cancelar</button>
+      <button type="button" class="btn primary" id="ab-ok">Abortar</button>
+    </div>`;
+
+  const inp = corpo.querySelector('#ab-metros') as HTMLInputElement;
+  const metros = () => Math.max(0, parseInt(inp.value || '0', 10) || 0);
+  const conta = () => abortar(acao, tick, metros());
+  const pintar = () => {
+    const r = conta();
+    (corpo.querySelector('#ab-res') as HTMLElement).innerHTML =
+      `<div>Fica livre no <b>Tick ${r.novoTick}</b>${r.custo ? ` <span class="muted">(${tick} + ${r.custo} do deslocamento)</span>` : ' <span class="muted">(agora mesmo)</span>'}</div>`
+      + `<div class="muted">Sem abortar, a próxima ação dele sairia no Tick ${acao.livre}.</div>`;
+  };
+  inp.oninput = pintar; pintar();
+
+  (corpo.querySelector('#ab-cancelar') as HTMLElement).onclick = () => fechar();
+  (corpo.querySelector('#ab-ok') as HTMLElement).onclick = async () => {
+    const r = conta();
+    const saida = (corpo.querySelector('input[name="ab-saida"]:checked') as HTMLInputElement)?.value || 'desviar';
+    const verbo = saida === 'mover' ? 'e se moveu' : saida === 'interpor' ? 'e se interpôs' : 'e desviou';
+    const m = metros();
+    fechar();
+    await aoConfirmar({
+      novoTick: r.novoTick, perdidos: r.perdidos, custo: r.custo, metros: m, saida,
+      frase: `${nome} abortou o gesto ${verbo}${m ? ` ${m} m` : ' sem sair do lugar'}`
+        + `${r.perdidos ? ` · perdeu ${r.perdidos} Tick(s) de Preparo` : ''}`,
+    });
+  };
 }
 
 /** Uma linha para o botão da barra: o que esta mesa escolheu. */
