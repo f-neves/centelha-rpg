@@ -99,6 +99,16 @@ for (let i = 0; i < N_COMB; i++) {
     // rastreador mantém (`avancarTick` grava os dois juntos), e a bancada tem de
     // respeitá-la, senão abortar não muda número nenhum e o teste mente.
     acao: ACAO[i],
+    // UM ARQUEIRO NA CENA. A ficha da bancada não tem equipamento, então todo
+    // mundo cai no punho, e o ramo de DISTÂNCIA da folha da ação (as quatro
+    // faixas de alcance) nunca era desenhado. `dados` é o mesmo campo que o
+    // mestre usa para dar números próprios a uma peça.
+    // Besta pequena e não arco: o alcance livre dela é 40 m, e o tabuleiro da
+    // bancada tem 40 hexágonos de largura. Com o arco (livre 83 m) nenhuma
+    // distância do mapa sairia do livre, e a faixa nunca seria desenhada.
+    dados: i === 1
+      ? { arma: 'besta-pequena', ataque: '3d6 +2', dano: '1d6 +1 (P)' }
+      : undefined,
     condicoes: i % 3 === 0 ? [{ id: 'cego' }] : [],
     ativo: true, oculto: false, imagem: null, retrato: null,
   });

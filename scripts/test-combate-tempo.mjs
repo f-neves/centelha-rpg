@@ -12,6 +12,10 @@
 //   3. o sistema normal degenera como prometido: Preparo 0, Golpe no Tick da
 //      declaração, o resto Recuperação, e a dupla no mesmo ciclo em toda classe.
 //
+// Depois cresceu para o resto das réguas que a mesa usa e ninguém guardava: a
+// ENTRADA na linha de Ticks pela iniciativa (`derivados.iniciativa`) e as
+// FAIXAS DE DISTÂNCIA (`combate.alcance`, com a régua do `Arremesso.md`).
+//
 // Entra no `npm run validate`: é barato e trava o contrato.
 import { build } from 'esbuild';
 import path from 'node:path';
@@ -244,6 +248,22 @@ eq([T.rolaNoSite('mesa', false), T.rolaNoSite('mesa', true)], [false, false], 'n
 eq([T.rolaNoSite('site', false), T.rolaNoSite('site', true)], [true, true], 'no modo site ele rola tudo');
 eq([T.rolaNoSite('misto', false), T.rolaNoSite('misto', true)], [true, false],
   'no misto a criatura rola sozinha e o personagem não');
+// A ENTRADA NA LINHA DE TICKS, pela iniciativa.
+// A regra e do `derivados.iniciativa` e do capitulo de Combate, e o exemplo de
+// la e este: com a maior em 14, quem tirou de 9 a 13 comeca no Tick 1 sem
+// perda; de 3 a 8, Tick 2 e -1d6; 1 ou 2, Tick 3 e -2d6.
+{
+  const e = T.ticksDeEntrada([14, 13, 9, 8, 3, 2]);
+  eq(e.map((x) => x.tick), [0, 1, 1, 2, 2, 3], 'a iniciativa decide em que Tick cada um entra');
+  eq(e.map((x) => x.penDados), [0, 0, 0, -1, -1, -2], 'e quantos dados o contrape custa na primeira acao');
+  eq(T.ticksDeEntrada([12, 12, 10]).map((x) => x.tick), [0, 0, 1],
+    'empate no topo: os dois entram no Tick 0, e a ordem entre eles e desempate');
+  // 7 pontos atras ja passa do vao de 6: entra no Tick 2, e nao no 1.
+  eq(T.ticksDeEntrada([12, 5]).map((x) => x.tick), [0, 2], 'o vao de 6 e degrau, e nao arredondamento');
+  eq(T.ticksDeEntrada([]).length, 0, 'cena vazia nao quebra');
+  eq(T.ticksDeEntrada([7]).map((x) => x.tick), [0], 'sozinho em cena, comeca no Tick 0');
+}
+
 // A acao que a regua nao previu: derrubar a estante, arrombar a porta.
 {
   const ag = T.anatomiaLivre(5, 'agora', 'pgr');
@@ -261,9 +281,39 @@ eq(T.classeDaArma('Espada Longa'), 'media', 'e também do nome, que é o que a m
 eq(T.classeDaArma(null), 'leve', 'sem arma, o punho é rápido');
 eq(T.velocidadeDaArma('martelo-de-guerra'), 7, 'a Velocidade sai do catálogo');
 
+// ------------------------------------------------------- 6. a distância
+// A régua do `Arremesso.md`: o que se corta em quatro não é o alcance total, é
+// o que SOBRA entre o livre e o máximo. É isso que faz a mesma regra servir ao
+// dardo (vão minúsculo, quase todo o alcance é bom) e ao machado (vão enorme,
+// ele chega muito além de onde ainda acerta).
+const AL = await carregar('src/lib/alcance.ts');
+{
+  ok(regras.combate.alcance, 'regras.json não tem o bloco `combate.alcance`');
+  eq([AL.HEX_CORPO_A_CORPO, AL.HEX_HASTE], [1, 2], 'o braço alcança o vizinho; a haste, o vizinho do vizinho');
+  eq([AL.alcancaNoCorpoACorpo(1, false), AL.alcancaNoCorpoACorpo(2, false)], [true, false],
+    'a dois hexágonos a espada não chega');
+  eq([AL.alcancaNoCorpoACorpo(2, true), AL.alcancaNoCorpoACorpo(3, true)], [true, false],
+    'e a haste chega a dois, e não a três');
+
+  // Arco curto: máximo 120, livre 1/3 = 40. Sobram 80, em quatro de 20.
+  const a = AL.alcanceDaArma('arco-curto');
+  eq([a.livre, a.max], [40, 120], 'o alcance livre é a fração que a arma declara');
+  const f = (m) => { const x = AL.faixaDeDistancia('arco-curto', m); return [x.faixa, x.pen, x.alem]; };
+  eq(f(10), [0, 0, false], 'dentro do livre a distância não conta para nada');
+  eq(f(40), [0, 0, false], 'e o limite do livre ainda é livre');
+  eq(f(41), [1, -3, false], 'o primeiro metro além do livre já é a primeira faixa');
+  eq(f(60), [1, -3, false], 'a faixa vai até o fim do quarto');
+  eq(f(61), [2, -6, false], 'e o quarto seguinte custa o dobro');
+  eq(f(120), [4, -12, false], 'no limite do máximo, a última faixa');
+  eq(f(121)[2], true, 'passou do máximo: não chega, e não há jogada a fazer');
+  ok(AL.faixaDeDistancia('espada-longa', 30) === null,
+    'arma sem alcance no catálogo não inventa faixa (o arremesso depende de quem joga)');
+}
+
 for (const f of tmp) { try { fs.unlinkSync(f); } catch {} }
 if (falhas.length) {
   console.error(`\n✘ combate-tempo: ${falhas.length} falha(s)\n` + falhas.map((f) => '  · ' + f).join('\n'));
   process.exit(1);
 }
-console.log('✓ combate-tempo: a régua dos dois sistemas bate com o catálogo e com a §14.11');
+console.log('✓ combate-tempo: a régua dos dois sistemas bate com o catálogo e com a §14.11,'
+  + ' a iniciativa distribui os Ticks de entrada e a distância cai nas quatro faixas');

@@ -571,7 +571,7 @@ import MesaCab from '../../components/MesaCab.astro';
     itensDaFila,
   } from '../../lib/mesa-tempo-ui';
   import {
-    combateDaMesa, COMBATE_PADRAO, anatomia, declarar, faseEm, defesaPerdida, acaoVazia,
+    combateDaMesa, COMBATE_PADRAO, anatomia, declarar, faseEm, defesaPerdida, acaoVazia, ticksDeEntrada,
     classeDeTempo, velocidadeDaArma, tetoDaRajada, temGesto, FASE_ROTULO,
     type CombateMesa, type Manobra,
   } from '../../lib/combate-tempo';
@@ -930,6 +930,7 @@ import MesaCab from '../../components/MesaCab.astro';
         pct: verVida(c) === 'numero' ? pctVida(c) : null,
         acao: acaoDe(c), segura: acaoDe(c)?.tipo === 'segura',
         vez: (c.tick ?? 0) === tick, age: c.id === age,
+        extra: c.acao?.penPrimeira ? `contrapé ${c.acao.penPrimeira}d6` : undefined,
       })), tick, { marcacao: TEMPO.marcacao }).map((i) => i.html).join('')
       : '<p class="ini-vazio">Ninguém em campo.</p>';
     medirTira();
@@ -2031,7 +2032,21 @@ import MesaCab from '../../components/MesaCab.astro';
       const zTick = on('rs-tick'), zIni = on('rs-ini'), zPv = on('rs-pv'),
         zCond = on('rs-cond'), zFora = on('rs-fora'), zLog = on('rs-log');
       dlg.close();
-      for (const c of COMBS) {
+      // A iniciativa é rolada ANTES de escrever, porque a régua de entrada é
+      // relativa: o Tick de cada um depende do maior valor da cena inteira, e
+      // não dá para saber isso peça por peça.
+      const ini: Record<string, number> = {};
+      if (zIni) {
+        for (const c of COMBS) {
+          ini[c.id] = c.tipo === 'pc' && FICHAS[c.personagem_id]
+            ? rolarIniciativaPC(FICHAS[c.personagem_id])
+            : c.tipo === 'criatura' && MON[c.monstro_id] ? iniDeMonstro(MON[c.monstro_id]) : d6();
+        }
+      }
+      const ordem = COMBS.map((c) => c.id);
+      const entradas = zIni ? ticksDeEntrada(ordem.map((id) => ini[id])) : [];
+      for (let i = 0; i < COMBS.length; i++) {
+        const c = COMBS[i];
         const cols: any = {};
         // Zerar os Ticks apaga a ação junto: uma fita que aponta para o Tick 9
         // de um relógio que voltou ao zero é pior que fita nenhuma.
@@ -2040,11 +2055,25 @@ import MesaCab from '../../components/MesaCab.astro';
         if (zCond) cols.condicoes = [];
         if (zFora) cols.ativo = true;
         if (zIni) {
-          cols.iniciativa = c.tipo === 'pc' && FICHAS[c.personagem_id]
-            ? rolarIniciativaPC(FICHAS[c.personagem_id])
-            : c.tipo === 'criatura' && MON[c.monstro_id] ? iniDeMonstro(MON[c.monstro_id]) : d6();
+          cols.iniciativa = ini[c.id];
+          // A ENTRADA NA LINHA DE TICKS só é aplicada quando a cena está
+          // começando de verdade, que é o que "zerar os Ticks" quer dizer.
+          // Rolar a iniciativa no meio de uma luta é outra coisa (um reforço
+          // que chegou), e ali o relógio de quem já está em campo não se mexe.
+          if (zTick) {
+            const e = entradas[i];
+            cols.tick = e.tick;
+            cols.acao = e.penDados ? { golpes: [], livre: e.tick, penPrimeira: e.penDados } : {};
+          }
         }
         if (Object.keys(cols).length) await upComb(c.id, cols);
+      }
+      if (zIni && zTick) {
+        const linha = COMBS.map((c, i) => ({ c, e: entradas[i] }))
+          .sort((a, b) => (ini[b.c.id] || 0) - (ini[a.c.id] || 0))
+          .map(({ c, e }) => `${c.nome} ${ini[c.id]} (t${e.tick}${e.penDados ? `, ${e.penDados}d6` : ''})`)
+          .join(' · ');
+        await logar(`Iniciativa: ${linha}`, 'sistema');
       }
       if (zLog) { LOG = []; await persistLog(); }
       await logar('Combate reiniciado.', 'sistema');

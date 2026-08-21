@@ -373,6 +373,202 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
     ok(outra.contou, 'e o custo em Ticks vai junto');
   }
 
+  // ------------------------------- a iniciativa distribui os Ticks de entrada
+  //
+  // O defeito que isto guarda: todos entravam no Tick 0, e a primeira rodada
+  // inteira acontecia no mesmo instante. A regra (`derivados.iniciativa`) diz
+  // que o maior entra no Tick 0, os demais no 1, e mais um Tick a cada seis
+  // pontos de atraso, com -1d6 na primeira acao de quem foi pego no contrape.
+  const ini = await p.evaluate(async () => {
+    const btn = document.getElementById('ini-rolar');
+    if (!btn || btn.hidden) return null;
+    btn.click();
+    await new Promise((r) => setTimeout(r, 400));
+    // A confirmacao e um dialogo do site, e o "Rolar" e o botao principal dele.
+    const dlg = [...document.querySelectorAll('dialog[open]')].pop();
+    const ok2 = dlg && [...dlg.querySelectorAll('button')].find((b) => /rolar/i.test(b.textContent));
+    if (!ok2) return { pediu: false };
+    ok2.click();
+    await new Promise((r) => setTimeout(r, 1600));
+    const itens = [...document.querySelectorAll('#gr-ini .ini-item')];
+    const linhas = itens.map((i) => ({
+      t: Number(i.dataset.t),
+      ini: Number((i.querySelector('.ini-num b')?.textContent || '0').trim()),
+      contrape: /contrapé/.test(i.querySelector('.ini-num')?.textContent || ''),
+    }));
+    return { pediu: true, linhas,
+      degraus: [...document.querySelectorAll('#gr-ini .ini-grupo')].length,
+      registro: [...document.querySelectorAll('#gr-log .lg')].map((l) => l.textContent).join(' | ') };
+  });
+  if (ini && ini.pediu) {
+    const ts = ini.linhas.map((l) => l.t);
+    const maior = Math.max(...ini.linhas.map((l) => l.ini));
+    ok(new Set(ts).size > 1, `a cena nao comeca toda no mesmo Tick (ticks: ${[...new Set(ts)].join(', ')})`);
+    ok(ini.linhas.filter((l) => l.ini === maior).every((l) => l.t === 0),
+      'quem tirou o maior entra no Tick 0');
+    ok(ini.linhas.filter((l) => l.ini !== maior).every((l) => l.t >= 1),
+      'e todos os demais entram depois dele');
+    // A regua nao e um Tick por ponto: e 1 + (atraso / 6).
+    ok(ini.linhas.every((l) => l.ini === maior || l.t === 1 + Math.floor((maior - l.ini) / 6)),
+      'o atraso segue a regua: Tick 1 mais um a cada seis pontos');
+    ok(ini.linhas.every((l) => l.contrape === (Math.floor((maior - l.ini) / 6) > 0)),
+      'e o contrape aparece escrito na fila de quem foi pego atrasado');
+    ok(ini.degraus > 1, `a escada tem mais de um degrau (${ini.degraus})`);
+    ok(/Iniciativa rolada/.test(ini.registro || ''), 'o registro guarda a rolagem com os Ticks');
+  }
+
+  // ----------------------------------------- a distancia, mostrada e nao aplicada
+  //
+  // O Grid e o unico que sabe quantos metros separam duas pecas. A folha diz em
+  // que faixa o alvo esta e o que ela custa, e NAO desconta nada: quem poe o
+  // valor final do ataque e o mestre, conforme o que o jogador rolou.
+  const dist = await p.evaluate(async () => {
+    const pal = document.getElementById('gr-palco').getBoundingClientRect();
+    const naTela = (t) => { const r = t.getBoundingClientRect();
+      return r.left > pal.left + 4 && r.top > pal.top + 4
+        && r.right < pal.right - 4 && r.bottom < pal.bottom - 4; };
+    const toks = [...document.querySelectorAll('#gr-tokens .gr-token')].filter(naTela);
+    const a = toks[0], b = toks.find((t) => t !== a);
+    if (!a || !b) return null;
+    const ra = a.getBoundingClientRect(), rb = b.getBoundingClientRect();
+    const em = (el, t, x, y) => el.dispatchEvent(new PointerEvent(t, {
+      bubbles: true, clientX: x, clientY: y, pointerId: 1 }));
+    em(a, 'pointerdown', ra.left + ra.width / 2, ra.top + ra.height / 2);
+    em(document, 'pointermove', rb.left + rb.width / 2, rb.top + rb.height / 2);
+    em(document, 'pointerup', rb.left + rb.width / 2, rb.top + rb.height / 2);
+    await new Promise((r) => setTimeout(r, 1300));
+    const dlg = document.getElementById('alvo-dlg');
+    if (!dlg?.open) return { abriu: false };
+    const aviso = document.getElementById('al-aviso');
+    // O bolo mostrado tem de ser o da ficha, sem a distancia embutida: mostrar
+    // e aplicar sao coisas diferentes, e a caixa faz so a primeira.
+    const pool = document.getElementById('al-pool')?.textContent.trim();
+    const r = { abriu: true, linha: document.getElementById('al-linha')?.textContent.trim(),
+      aviso: aviso?.hidden ? '' : aviso?.textContent.trim(), pool };
+    dlg.close();
+    await new Promise((x) => setTimeout(x, 200));
+    return r;
+  });
+  // O MESMO, com uma arma que tem alcance: a bancada dá um arco longo ao
+  // Herói 2, e é ele que faz a folha desenhar as quatro faixas.
+  const arco = await p.evaluate(async () => {
+    const nome = (t) => t.querySelector('.gr-tn')?.textContent.trim() || '';
+    // O mapa inteiro na tela antes de escolher: com o zoom de trabalho, as
+    // peças visíveis estão todas perto, e nenhuma sairia do alcance livre.
+    document.getElementById('gr-caber')?.click();
+    await new Promise((r) => setTimeout(r, 400));
+    const pal = document.getElementById('gr-palco').getBoundingClientRect();
+    const naTela = (t) => { const r = t.getBoundingClientRect();
+      return r.left > pal.left + 4 && r.top > pal.top + 4
+        && r.right < pal.right - 4 && r.bottom < pal.bottom - 4; };
+    const toks = [...document.querySelectorAll('#gr-tokens .gr-token')].filter(naTela);
+    const a = toks.find((t) => /Her[oó]i 2/i.test(nome(t)));
+    if (!a) return null;
+    // As peças da bancada nascem agrupadas nas primeiras fileiras, e a maior
+    // distância entre duas delas não sai do alcance livre. O arqueiro vai para
+    // o canto de baixo primeiro: é o mesmo gesto de um mestre posicionando o
+    // atirador, e é o que faz a faixa existir.
+    {
+      const r0 = a.getBoundingClientRect();
+      const em0 = (el, t, x, y) => el.dispatchEvent(new PointerEvent(t, {
+        bubbles: true, clientX: x, clientY: y, pointerId: 1 }));
+      em0(a, 'pointerdown', r0.left + r0.width / 2, r0.top + r0.height / 2);
+      em0(document, 'pointermove', pal.right - 60, pal.bottom - 60);
+      em0(document, 'pointerup', pal.right - 60, pal.bottom - 60);
+      await new Promise((r) => setTimeout(r, 900));
+    }
+    // O alvo MAIS LONGE que ainda está na tela: é o único que pode sair do
+    // alcance livre num tabuleiro deste tamanho.
+    const arq = [...document.querySelectorAll('#gr-tokens .gr-token')]
+      .find((t) => /Her[oó]i 2/i.test(nome(t))) || a;
+    const ra0 = arq.getBoundingClientRect();
+    const b = toks.filter((t) => t !== arq && nome(t) !== nome(arq))
+      .sort((x, y) => {
+        const rx = x.getBoundingClientRect(), ry = y.getBoundingClientRect();
+        return Math.hypot(ry.left - ra0.left, ry.top - ra0.top)
+          - Math.hypot(rx.left - ra0.left, rx.top - ra0.top);
+      })[0];
+    if (!b) return null;
+    const ra = a.getBoundingClientRect(), rb = b.getBoundingClientRect();
+    const em = (el, t, x, y) => el.dispatchEvent(new PointerEvent(t, {
+      bubbles: true, clientX: x, clientY: y, pointerId: 1 }));
+    em(a, 'pointerdown', ra.left + ra.width / 2, ra.top + ra.height / 2);
+    em(document, 'pointermove', rb.left + rb.width / 2, rb.top + rb.height / 2);
+    em(document, 'pointerup', rb.left + rb.width / 2, rb.top + rb.height / 2);
+    await new Promise((r) => setTimeout(r, 1300));
+    const dlg = document.getElementById('alvo-dlg');
+    if (!dlg?.open) return { abriu: false };
+    const av = document.getElementById('al-aviso');
+    const r = { abriu: true, pool: document.getElementById('al-pool')?.textContent.trim(),
+      linha: document.getElementById('al-linha')?.textContent.trim(),
+      aviso: av?.hidden ? '(calada)' : av?.textContent.trim(),
+      conta: !!av?.classList.contains('al-aviso-conta'),
+      tempo: document.getElementById('al-tempo')?.textContent.replace(/\s+/g, ' ').trim() };
+    dlg.close();
+    await new Promise((x) => setTimeout(x, 200));
+    return r;
+  });
+  if (arco && arco.abriu) {
+    // A CONTA CONFERIDA CONTRA A REGRA, e não contra o que a tela escreveu:
+    // besta pequena tem livre 40 m e máximo 100 m, então sobram 60 em quatro
+    // faixas de 15 (−3, −6, −9, −12). Dentro do livre a linha CALA, porque
+    // "sem penalidade" é o caso comum e escrevê-lo a cada tiro ensinaria a
+    // mesa a não ler esta linha nas vezes em que ela tem algo a dizer.
+    const met = parseFloat(((arco.linha || '').match(/([0-9]+(?:[.,][0-9]+)?)\s*m/) || [])[1]?.replace(',', '.') || '0');
+    const faixa = met <= 40 ? 0 : Math.min(4, Math.ceil((met - 40) / 15));
+    ok(faixa === 0 ? arco.aviso === '(calada)' : new RegExp(`${faixa}ª faixa`).test(arco.aviso),
+      `a ${met} m a folha diz a faixa certa (faixa ${faixa}: ${arco.aviso})`);
+    ok(faixa === 0 || new RegExp(`${-3 * faixa} no acerto`).test(arco.aviso),
+      `e o preço dela (${arco.aviso})`);
+    // NOTA: no tabuleiro da bancada (40 hexágonos de largura) a maior distância
+    // possível fica dentro do alcance livre da besta pequena, então o caso que
+    // esta prova costuma exercitar é o da linha CALADA. As quatro faixas em si
+    // estão travadas no `test-combate-tempo.mjs`, contra a régua do
+    // `Arremesso.md`, oito casos incluindo as bordas.
+    ok(!/hex[áa]gono/.test(arco.aviso), 'a régua do corpo a corpo não vale para quem atira');
+    ok(/3d6/.test(arco.pool || ''), `e o bolo é o da arma dele (${arco.pool})`);
+    // A arma de distância tem Preparo próprio: o arco encaixa a flecha e solta.
+    ok(/Preparo/.test(arco.tempo || '') || /Ticks/.test(arco.tempo || ''),
+      `com o tempo da arma de distância (${arco.tempo})`);
+  }
+
+  if (dist && dist.abriu) {
+    ok(/Dist[âa]ncia/.test(dist.linha || ''), `a folha diz a distancia (${dist.linha})`);
+    // No corpo a corpo longe demais, a linha e de impedimento; a arma de
+    // distancia diz a faixa e o preco. Uma das duas, nunca as duas.
+    ok(!dist.aviso || /alcan[çc]a|faixa|n[ãa]o chega/.test(dist.aviso),
+      `e a linha do alcance fala a lingua da regra (${dist.aviso || 'dentro do alcance, calada'})`);
+    ok(!/−\d+ no acerto/.test(dist.pool || '') || /somar/.test(dist.aviso || ''),
+      'a penalidade da distancia nao entra no bolo sozinha');
+  }
+
+  // ------------------------------------------ a tela cheia leva a ordem junto
+  //
+  // Era o PALCO que ia a tela cheia, e a ordem de combate sumia justamente
+  // quando a mesa mais precisava dela: projetada na TV, a cena virava um mapa
+  // sem relogio. Agora vai a GRADE, com o modo TV ligado por cima.
+  const cheia = await p.evaluate(() => {
+    const grade = document.querySelector('.gr-grade');
+    const pal = document.getElementById('gr-palco');
+    return {
+      // O alvo do pedido de tela cheia: sem navegador de verdade nao da para
+      // ENTRAR nela num teste, entao o que se prova e que o alvo mudou e que a
+      // regra de reserva (a que vale quando o navegador recusa) cobre a grade.
+      temGrade: !!grade,
+      reservaNaGrade: [...document.styleSheets].some((f) => {
+        try { return [...f.cssRules].some((r) => /tela-cheia.*gr-grade/.test(r.cssText)); } catch { return false; }
+      }),
+      // E que o par que a mesa le (tira + tabuleiro) esta dentro do alvo.
+      tiraNaGrade: !!grade?.contains(document.getElementById('gr-ini-col')),
+      palcoNaGrade: !!grade?.contains(pal),
+    };
+  });
+  if (cheia) {
+    ok(cheia.tiraNaGrade && cheia.palcoNaGrade,
+      'a ordem de combate e o tabuleiro estao no mesmo alvo de tela cheia');
+    ok(cheia.reservaNaGrade, 'e a rede de seguranca da tela cheia cobre a grade, e nao so o palco');
+  }
+
   // --------------------------------------------------------- o modo TV
   //
   // A tela dos jogadores sem a mobilia do mestre: some a barra da mesa, a barra

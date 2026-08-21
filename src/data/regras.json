@@ -2248,6 +2248,22 @@
         }
       ]
     },
+    "alcance": {
+      "nota": "Até onde o golpe chega, e o que custa mirar longe. Estava escrito na tela do Grid e subiu para cá: o tabuleiro é o único que sabe a distância entre duas peças, e a régua que ele usa tem de ser a mesma que o livro usa.",
+      "corpoACorpo": {
+        "hexagonos": 1,
+        "hasteHexagonos": 2,
+        "nota": "Uma criatura de porte médio ocupa um hexágono, e o braço alcança o vizinho. A haste alcança o vizinho do vizinho, que é a razão de ela existir. Passou disso não há penalidade: há um passo a dar antes de bater."
+      },
+      "faixas": {
+        "nota": "O que sobra entre o alcance LIVRE e o MÁXIMO, cortado em partes iguais. Cada parte custa penPorParte no acerto. Ver Arremesso.md: os quartos são do que sobra, e não do total, e é isso que faz a mesma regra servir ao dardo e ao machado.",
+        "partes": 4,
+        "penPorParte": -3,
+        "ondeEntra": "na jogada de acerto, e não na Defesa do alvo: o alvo não ficou mais difícil, você é que ficou pior de mira. Por isso não respeita o teto de +/-6 dos modificadores de Defesa.",
+        "alemDoMaximo": "não chega: o objeto cai antes e não há jogada a fazer."
+      },
+      "mostraNaoAplica": "O Grid MOSTRA a faixa e a penalidade, e não desconta nada sozinho. Quem põe o valor final do ataque é o mestre, de acordo com o que o jogador rolou na mesa."
+    },
     "pgr": {
       "nota": "A régua P/G/R por classe de arma: em que Tick o golpe sai, contado da declaração. O Golpe é sempre 1 Tick; a Recuperação é o que sobra da Velocidade (P + G + R = Velocidade).",
       "preparo": {

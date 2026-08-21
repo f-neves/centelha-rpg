@@ -22,6 +22,7 @@ import regras from '../data/regras.json';
 import { ARMA } from './equip';
 
 const C = (regras as any).combate;
+const R = regras as any;
 
 export type Sistema = 'normal' | 'pgr';
 export type Marcacao = 'fita' | 'numeros';
@@ -229,6 +230,46 @@ export function anatomia(opts: {
     preparo, golpes: 1, recuperacao: Math.max(0, vel - preparo - 1), ciclo: vel,
     offs: [preparo], penDados: [0],
   };
+}
+
+/**
+ * ONDE CADA UM ENTRA NA LINHA DE TICKS, pela iniciativa que rolou.
+ *
+ * A regra está escrita desde sempre (`derivados.iniciativa`, e o capítulo de
+ * Combate com exemplo), e a mesa não a aplicava: a fila punha todo mundo no
+ * Tick 0, e a primeira rodada inteira acontecia no mesmo instante. O valor da
+ * iniciativa servia só para desempatar dentro do Tick, que é metade do que ele
+ * faz.
+ *
+ * A régua, e ela NÃO é um Tick por ponto:
+ *
+ *   · quem tirou o MAIOR começa no Tick 0;
+ *   · todos os demais começam no Tick 1 (`baseTickNaoPrimeiro`);
+ *   · e a cada `gapPorPenalidade` pontos abaixo do maior, mais 1 Tick de
+ *     atraso E −1d6 na PRIMEIRA ação, por ter sido pego no contrapé.
+ *
+ * Empate no topo: os dois entram no Tick 0. Quem age primeiro dentro dele é o
+ * desempate do capítulo (maior Raciocínio, depois o dado), que é ordem e não
+ * instante, e a fila já resolve arrastando.
+ *
+ * Devolve na MESMA ORDEM que recebeu: quem chama costuma ter a lista de peças
+ * ao lado e não quer casar nada por nome.
+ */
+export function ticksDeEntrada(
+  iniciativas: number[],
+): { tick: number; penDados: number; atras: number }[] {
+  if (!iniciativas.length) return [];
+  const I = (R as any)?.derivados?.iniciativa;
+  const base = I?.baseTickNaoPrimeiro ?? 1;
+  const gap = Math.max(1, I?.gapPorPenalidade ?? 6);
+  const maior = Math.max(...iniciativas.map((v) => v || 0));
+  return iniciativas.map((v0) => {
+    const v = v0 || 0;
+    const atras = maior - v;
+    if (atras <= 0) return { tick: 0, penDados: 0, atras: 0 };
+    const passos = Math.floor(atras / gap);
+    return { tick: base + passos, penDados: -passos, atras };
+  });
 }
 
 /**

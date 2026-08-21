@@ -373,7 +373,8 @@
     ],
     "notas": "Pequeno e fácil de guardar; alcance curto. Soma Força até +3 (a haste curta não aguenta mais tração). Perfura couro e malha (N1), resvala na placa.",
     "danoBonus": -1,
-    "distMax": 120
+    "distMax": 120,
+    "alcanceLivreFrac": 0.333
   },
   {
     "id": "arco-longo",
@@ -406,7 +407,8 @@
     ],
     "notas": "Grande, de alcance longo. Soma a Força inteira ao dano. Perfura couro e malha (N1), resvala na placa.",
     "danoBonus": 0,
-    "distMax": 250
+    "distMax": 250,
+    "alcanceLivreFrac": 0.333
   },
   {
     "id": "arco-composto",
@@ -441,7 +443,8 @@
     ],
     "notas": "Laminado de chifre e tendão: exige Força 4 para armar, e soma Força×2 ao dano. Grande, alcance longo, arma cara. Perfura couro e malha (N1), resvala na placa.",
     "danoBonus": 2,
-    "distMax": 300
+    "distMax": 300,
+    "alcanceLivreFrac": 0.333
   },
   {
     "id": "besta-pequena",
@@ -475,7 +478,8 @@
     ],
     "notas": "Mira e dispara sem Força (mecanismo faz a tração); requer recarga. Alcance médio. Perfura couro e malha (N1).",
     "danoBonus": 2,
-    "distMax": 100
+    "distMax": 100,
+    "alcanceLivreFrac": 0.4
   },
   {
     "id": "besta-media",
@@ -509,7 +513,8 @@
     ],
     "notas": "O virote (N1) fura couro e malha e resvala na placa; recarga lenta. Alcance longo. A resposta de longe contra tropa e cavalo.",
     "danoBonus": 4,
-    "distMax": 200
+    "distMax": 200,
+    "alcanceLivreFrac": 0.3
   },
   {
     "id": "besta-grande",
@@ -544,7 +549,8 @@
     ],
     "notas": "Arbalesta de manivela: o virote pesado (N2) fura malha e brigandina, mas ainda resvala na placa completa (N3). Recarga muito lenta, alcance longo; o dano bruto derruba homem e cavalo.",
     "danoBonus": 8,
-    "distMax": 300
+    "distMax": 300,
+    "alcanceLivreFrac": 0.27
   },
   {
     "id": "adaga-de-arremesso",

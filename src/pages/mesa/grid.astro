@@ -663,17 +663,24 @@ const SETAS = [
      `position: fixed` no documento é frágil: basta um ancestral com `transform`
      ou `filter` para o "fixo" passar a ser relativo a ele, e aí a cobertura
      total vira cobertura da caixa. */
-  /* Quem vai a tela cheia é o PALCO, e só ele: em cena não se projeta a barra
-     de ferramentas nem a lista lateral, projeta-se o mapa. O navegador coloca o
-     elemento no monitor inteiro por conta própria, e o resto da página nem é
-     desenhado. */
-  #gr-palco:fullscreen { max-height: none; height: 100%; width: 100%;
-    border: 0; border-radius: 0; background: var(--bg); }
+  /* QUEM VAI A TELA CHEIA É A GRADE, e não o palco sozinho.
+     Era o palco, e por isso a ordem de combate sumia justamente quando a mesa
+     mais precisava dela: projetada na TV, a cena virava um mapa sem relógio,
+     e quem quisesse saber de quem era a vez tinha de sair da tela cheia. Indo a
+     grade, entram o tabuleiro e a tira da ordem, que é o par que a mesa lê.
+     O resto (barra da arena, coluna lateral) sai pelo modo TV, que a tela cheia
+     liga sozinha enquanto dura: são a mesma intenção, e separá-las obrigaria a
+     dois cliques para uma coisa só. */
+  .gr-grade:fullscreen { height: 100%; width: 100%; padding: .4rem;
+    background: var(--bg); border-radius: 0; }
   /* A rede de segurança: se o navegador recusar (uma moldura sem permissão,
-     por exemplo), a classe entra assim mesmo e o palco toma a janela. */
-  body.tela-cheia:not(:has(#gr-palco:fullscreen)) #gr-palco {
-    position: fixed; inset: 0; z-index: 100; max-height: none; height: auto;
+     por exemplo), a classe entra assim mesmo e a grade toma a janela. */
+  body.tela-cheia:not(:has(.gr-grade:fullscreen)) .gr-grade {
+    position: fixed; inset: 0; z-index: 100; padding: .4rem;
     border-radius: 0; background: var(--bg); }
+  /* Em tela cheia a saída é o X do canto, que já existe: dois botões de sair
+     no mesmo canto seriam um a mais. */
+  body.tela-cheia .gr-tv-sai { display: none; }
   /* O X de saída fica por cima de tudo, no canto de sempre. O Esc também sai
      (é o navegador que trata), mas num telão de mesa o mouse é o que está à
      mão, e um canto vazio não avisa que dá para voltar. */
@@ -1117,6 +1124,11 @@ const SETAS = [
   /* Palavra solta no meio da fileira ("Ticks", "contra"): não é o bolo de
      dados, então não fica com a sobra da linha. */
   .al-rot { flex: 0 0 auto; font-size: var(--fs-micro); color: var(--ink-soft); }
+  /* A linha de distância só é vermelha quando é impedimento ("não chega", "não
+     alcança"). Quando é conta a somar, é nota: gritar em vermelho a cada tiro
+     de arco ensinaria a mesa a ignorá-la. */
+  .al-aviso-conta { color: var(--ink-soft) !important; font-style: italic; }
+  .al-nota { color: var(--ink-soft); font-style: italic; }
   .al-vered { flex: 1 1 100%; font-size: var(--fs-micro); }
   .al-vered .ok { color: var(--accent-texto); font-weight: 700; }
   .al-vered .ruim { color: #cf3327; }
@@ -1318,6 +1330,9 @@ const SETAS = [
   } from '../../lib/grid-golpe-fx';
   import { armaDoSlot } from '../../lib/equip';
   import { rolarExpr, descreverRolada, tipoDeDano } from '../../lib/rolagem';
+  import {
+    faixaDeDistancia, alcancaNoCorpoACorpo, HEX_CORPO_A_CORPO, HEX_HASTE,
+  } from '../../lib/alcance';
   import { reconciliar, esquecerCaixa } from '../../lib/reconciliar';
   import {
     abrirEscolhaDoTempo, resumoDoTempo, fitaHTML, seloFaseHTML, abrirAbortar, podeAbortar,
@@ -1326,7 +1341,7 @@ const SETAS = [
   import {
     combateDaMesa, COMBATE_PADRAO, faseEm, acaoVazia, temGesto, resumoDaAcao,
     anatomia, anatomiaLivre, declarar, defesaPerdida, classeDeTempo, velocidadeDaArma, tetoDaRajada,
-    rolaNoSite, ticksDeDeslocamento, armaDoCatalogo,
+    rolaNoSite, ticksDeDeslocamento, armaDoCatalogo, ticksDeEntrada,
     FASE_ROTULO, type CombateMesa, type Manobra,
   } from '../../lib/combate-tempo';
 
@@ -3145,6 +3160,10 @@ const SETAS = [
       grupo: c.grupo, avatar: avatarDe(c, 'av-p'), pct: pctDe100(c),
       acao: acaoNo(c), segura: c.acao?.tipo === 'segura',
       vez: naVez.has(c.id), age: c.id === age,
+      // O contrapé da iniciativa fica escrito na fila até a pessoa agir: é uma
+      // penalidade que a mesa tem de lembrar na hora de rolar, e o único lugar
+      // onde ela caberia sem ser esquecida é ao lado do nome.
+      extra: c.acao?.penPrimeira ? `contrapé ${c.acao.penPrimeira}d6` : undefined,
     })), tick, { marcacao: TEMPO.marcacao });
     reconciliar(box, itens);
     pintarLinhaDoTempo(tick);
@@ -3343,7 +3362,8 @@ const SETAS = [
   async function rolarIniciativas() {
     const fila = naFila();
     if (!fila.length) return;
-    if (!await uiConfirmar(`Rolar a iniciativa dos ${fila.length} no tabuleiro? Os ticks voltam a zero.`,
+    if (!await uiConfirmar(`Rolar a iniciativa dos ${fila.length} no tabuleiro?`
+      + ' Quem tirar o maior entra no Tick 0; os demais entram mais tarde, pela régua da iniciativa.',
       { titulo: 'Rolar iniciativa', ok: 'Rolar' })) return;
     const fichas: Record<string, any> = {};
     const ids = [...new Set(fila.map((c: any) => c.personagem_id).filter(Boolean))];
@@ -3359,13 +3379,30 @@ const SETAS = [
       else v = d6();
       rolado.push({ c, v });
     }
-    for (const r of rolado) {
-      await SB.from('combatentes').update({ iniciativa: r.v, tick: 0 }).eq('id', r.c.id);
-      r.c.iniciativa = r.v; r.c.tick = 0;
+    // A INICIATIVA DISTRIBUI OS TICKS DE ENTRADA.
+    //
+    // Todos entravam no Tick 0, e a primeira rodada inteira acontecia no mesmo
+    // instante: o número rolado servia só para desempatar dentro do Tick, que é
+    // metade do que ele faz. A régua está em `derivados.iniciativa` desde
+    // sempre, e agora é ela que decide: o maior no Tick 0, os demais no 1, e
+    // mais um Tick a cada seis pontos de atraso.
+    //
+    // O −1d6 do contrapé fica GUARDADO na ação e MOSTRADO, e não descontado: o
+    // valor final da jogada é do mestre, como o da distância.
+    const entradas = ticksDeEntrada(rolado.map((r) => r.v));
+    for (let i = 0; i < rolado.length; i++) {
+      const r = rolado[i];
+      const e = entradas[i];
+      const acao = e.penDados ? { golpes: [], livre: e.tick, penPrimeira: e.penDados } : {};
+      await SB.from('combatentes').update({ iniciativa: r.v, tick: e.tick, acao }).eq('id', r.c.id);
+      r.c.iniciativa = r.v; r.c.tick = e.tick; r.c.acao = acao;
     }
     pintarIniciativa(); pintarTokens();
     avisarAgora('combatentes');
-    const ordem = rolado.slice().sort((a, b) => b.v - a.v).map((r) => `${r.c.nome} ${r.v}`).join(' · ');
+    const ordem = rolado.map((r, i) => ({ r, e: entradas[i] }))
+      .sort((a, b) => b.r.v - a.r.v)
+      .map(({ r, e }) => `${r.c.nome} ${r.v} (t${e.tick}${e.penDados ? `, ${e.penDados}d6` : ''})`)
+      .join(' · ');
     await logar(null, `Iniciativa rolada: ${ordem}`, { acao: null });
     await verificarEfeitos(ctxArtes());
   }
@@ -4225,9 +4262,13 @@ const SETAS = [
       // O menu do token é irmão do tabuleiro, e em tela cheia de ELEMENTO só o
       // elemento é desenhado: fora dele, o menu simplesmente não apareceria.
       // Mudá-lo de casa é o preço de projetar só o tabuleiro.
-      const palco = el('gr-palco');
-      const casa = document.fullscreenElement === palco ? palco : document.body;
-      for (const id of ['tok-menu', 'gr-sair-cheia', 'arte-dlg']) {
+      const fe = document.fullscreenElement;
+      const casa = fe && fe !== document.documentElement ? (fe as HTMLElement) : document.body;
+      // O modo TV entra junto e sai junto, sem tocar na preferência guardada:
+      // quem projetava a TV continua na TV depois de sair da tela cheia, e quem
+      // não usava a TV volta para a página inteira.
+      aplicarTV();
+      for (const id of ['tok-menu', 'gr-sair-cheia', 'arte-dlg', 'outra-dlg', 'alvo-dlg']) {
         const n = document.getElementById(id);
         if (n && n.parentElement !== casa) casa.appendChild(n);
       }
@@ -4252,7 +4293,7 @@ const SETAS = [
      */
     const alterna = async () => {
       if (document.fullscreenElement) { try { await document.exitFullscreen(); } catch {} return; }
-      const alvo = el('gr-palco');
+      const alvo = document.querySelector('.gr-grade') as HTMLElement;
       let erro: any = null;
       try {
         await alvo.requestFullscreen({ navigationUI: 'hide' } as any);
@@ -5105,21 +5146,32 @@ const SETAS = [
     // Ninguém mais na mesa sabe quantos metros separam duas peças, e até agora
     // esse número não entrava em nada. Ele AVISA e não impede: a caixa não
     // recusa ataque nenhum, porque a última palavra é de quem está mestrando.
-    const arma = armaDoCatalogo(ra?.arma);
+    const fx = hexes == null ? null : faixaDeDistancia(ra?.arma, dist!);
     const avisoAlcance = (() => {
       if (hexes == null) return '';
       if (classe === 'distancia' || classe === 'arremesso') {
-        const max = arma?.distMax;
-        return max && dist! > max ? `Além do alcance da arma (${max} m).` : '';
+        if (!fx) return '';
+        if (fx.alem) return `Além do alcance máximo da arma (${fx.max} m): não chega.`;
+        // MOSTRA E NÃO APLICA. A penalidade por distância entra na jogada de
+        // acerto (e não na Defesa), mas quem põe o número final é o mestre,
+        // conforme o que o jogador rolou na mesa. O Grid sabe a distância e diz
+        // o que ela custa; a conta continua sendo da mesa.
+        return fx.faixa
+          ? `${fx.faixa}ª faixa de distância (livre até ${fx.livre} m, máximo ${fx.max} m):`
+            + ` ${fx.pen} no acerto, para somar à mão.`
+          : '';
       }
-      const teto = classe === 'haste' ? 2 : 1;
-      return hexes > teto
-        ? `Corpo a corpo a ${fmtM(dist!)}: ${classe === 'haste' ? 'a haste alcança 2' : 'a arma alcança 1'} hexágono.`
-        : '';
+      return alcancaNoCorpoACorpo(hexes, classe === 'haste') ? ''
+        : `Corpo a corpo a ${fmtM(dist!)}: ${classe === 'haste'
+          ? `a haste alcança ${HEX_HASTE}` : `a arma alcança ${HEX_CORPO_A_CORPO}`} hexágono(s).`;
     })();
     const cxAviso = el('al-aviso') as HTMLElement;
     cxAviso.hidden = !avisoAlcance;
     cxAviso.textContent = avisoAlcance;
+    // Dentro do alcance livre a caixa fica calada: "sem penalidade" é a coisa
+    // mais comum do jogo, e escrevê-la a cada ataque ensinaria a mesa a não ler
+    // esta linha justamente nas vezes em que ela tem algo a dizer.
+    cxAviso.classList.toggle('al-aviso-conta', !!fx && !fx.alem && fx.faixa > 0);
 
     // ---- o acerto, o ajuste e o dano ----
     const totalInp = el('al-total') as HTMLInputElement;
@@ -5139,11 +5191,15 @@ const SETAS = [
       return { flat: f + (c2.acao || 0) + (c2.ataque || 0), dados: c2.dados || 0 };
     })();
     let rolado = '';
+    // O CONTRAPÉ da iniciativa: quem entrou atrasado perde dados na PRIMEIRA
+    // ação. Mostrado, e não somado, pelo mesmo motivo da distância.
+    const contrape = Number(atacante.acao?.penPrimeira) || 0;
     const pintarPool = () => {
       const pen = anat().penDados[0] || 0;
       const partes = [esc(ra?.ataque || '—')];
       if (ajAtq.flat) partes.push(sinalTxt(ajAtq.flat));
       if (ajAtq.dados + pen) partes.push(`${sinalTxt(ajAtq.dados + pen)}d6`);
+      if (contrape) partes.push(`<i class="al-nota">· contrapé ${contrape}d6 na 1ª ação, para somar à mão</i>`);
       (el('al-pool') as HTMLElement).innerHTML = partes.join(' ');
       (el('al-dn-pool') as HTMLElement).innerHTML = esc(ra?.dano || '—');
     };
@@ -5869,9 +5925,19 @@ const SETAS = [
    */
   const TV_KEY = 'centelha:grid:tv';
   let TV = false;
+  /**
+   * A TELA CHEIA LIGA O MODO TV enquanto dura, sem mexer na preferência.
+   *
+   * São a mesma intenção com dois alcances: uma tira as bordas do navegador, a
+   * outra tira os controles, e quem projeta quer as duas. Separá-las obrigaria
+   * a dois cliques para uma coisa só, e a lembrar do segundo.
+   */
+  function aplicarTV() {
+    document.body.classList.toggle('grid-tv', TV || !!document.fullscreenElement);
+  }
   function modoTV(liga: boolean) {
     TV = liga;
-    document.body.classList.toggle('grid-tv', liga);
+    aplicarTV();
     const btn = el('gr-tv');
     btn?.setAttribute('aria-pressed', String(liga));
     if (btn) btn.title = liga ? 'Sair do modo TV (T)' : 'Modo TV: só o tabuleiro e a ordem de combate (T)';
