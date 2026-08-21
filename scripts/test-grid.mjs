@@ -264,6 +264,50 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
     ok(/acerta|erra/.test(f.vered || ''), `com o veredito escrito ao lado (${f.vered})`);
   }
 
+  // ------------------------------- o arrasto que ataca e o atalho do teclado
+  //
+  // Soltar uma peca em cima de outra abre a folha da acao: a casa ocupada
+  // recusava o movimento, e o gesto terminava em nada. E a tecla A faz o mesmo
+  // pela peca da vez, sem a mao sair do teclado.
+  const gesto = await p.evaluate(async () => {
+    // Só peças dentro da JANELA DO TABULEIRO: o palco rola, e a peça que saiu
+    // dele está atrás da coluna lateral ou fora da tela. `elementFromPoint`, que
+    // é como o arrasto descobre em quem se soltou, enxerga o que um dedo de
+    // verdade alcançaria, e não o que o `getBoundingClientRect` calcula.
+    const pal = document.getElementById('gr-palco').getBoundingClientRect();
+    const naTela = (t) => { const r = t.getBoundingClientRect();
+      return r.left > pal.left + 4 && r.top > pal.top + 4
+        && r.right < pal.right - 4 && r.bottom < pal.bottom - 4; };
+    const toks = [...document.querySelectorAll('#gr-tokens .gr-token')].filter(naTela);
+    const a = toks[0], b = toks.find((t) => t !== a);
+    if (!a || !b) return null;
+    const ra = a.getBoundingClientRect(), rb = b.getBoundingClientRect();
+    const em = (el, tipo, x, y) => el.dispatchEvent(new PointerEvent(tipo, {
+      bubbles: true, clientX: x, clientY: y, pointerId: 1 }));
+    em(a, 'pointerdown', ra.left + ra.width / 2, ra.top + ra.height / 2);
+    em(document, 'pointermove', rb.left + rb.width / 2, rb.top + rb.height / 2);
+    em(document, 'pointerup', rb.left + rb.width / 2, rb.top + rb.height / 2);
+    await new Promise((r) => setTimeout(r, 1300));
+    const dlg = document.getElementById('alvo-dlg');
+    const abriu = !!dlg?.open;
+    // O título só vale se a caixa estiver aberta AGORA: ele fica no DOM depois
+    // de fechar, e a prova anterior já tinha atacado com a mesma peça. Sem isto,
+    // um arrasto que não fez nada passava lendo a sobra do teste de cima.
+    const titulo = abriu ? (document.getElementById('al-titulo')?.textContent || '') : '';
+    if (abriu) { dlg.close(); await new Promise((r) => setTimeout(r, 250)); }
+    // E a tecla: sem caixa aberta, "a" comeca a mira de quem age.
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'a', bubbles: true }));
+    await new Promise((r) => setTimeout(r, 250));
+    const mirando = !!document.getElementById('mira-aviso');
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+    return { abriu, titulo, mirando };
+  });
+  if (gesto) {
+    ok(gesto.abriu, 'arrastar uma peca em cima de outra abre a folha da acao');
+    ok(/ataca/.test(gesto.titulo), `e a caixa diz quem ataca quem (${gesto.titulo})`);
+    ok(gesto.mirando, 'a tecla A comeca a mira de quem age');
+  }
+
   // -------------------------------------------------- abortar o Preparo
   // O item so aparece para quem esta em Preparo: no Golpe e na Recuperacao a
   // regra se ensina pela ausencia do botao. E o clique tem de mexer no relogio.
@@ -381,8 +425,11 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
       if (volta !== 'mede') continue;
       ok(andou, 'a peça saiu do lugar');
       ok(selecao === '', `arrastar não seleciona texto (veio "${selecao.slice(0, 40)}")`);
-      ok(r.consultas >= 2 && r.consultas <= 5,
-        `mover custa de 2 a 5 idas ao banco (foram ${r.consultas})`);
+      // O teto subiu de 5 para 7 em 21/08, e de propósito: quem anda durante a
+      // Recuperação passou a PAGAR o deslocamento (2 Ticks por metro, K20), e
+      // isso são duas escritas a mais (o relógio da peça e a linha do registro).
+      ok(r.consultas >= 2 && r.consultas <= 7,
+        `mover custa de 2 a 7 idas ao banco (foram ${r.consultas})`);
       const t = TETOS[chave];
       if (VER || !t) {
         console.log(`    ${r.repinturas} repinturas · ${r.kb} KB · ${r.nos} nós (${r.iguais} idênticos) · ${r.por}`);

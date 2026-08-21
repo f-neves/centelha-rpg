@@ -805,6 +805,9 @@ const SETAS = [
   .gr-num.dano { color: #ff6b5e; }
   .gr-num.cura { color: #5fd977; }
   .gr-num.mana { color: #4db3ec; font-size: 1rem; }
+  /* O Tick cobrado por andar. Dourado como o resto do tempo, e menor: é uma
+     conta que aconteceu, e não uma pancada. */
+  .gr-num.tempo { color: var(--gold); font-size: .95rem; }
   /* O tranco no começo é o que dá peso: o número salta, freia e sobe morrendo.
      Sem ele a coisa parece um balão, e não uma pancada. */
   @keyframes gr-sobe {
@@ -2696,7 +2699,7 @@ const SETAS = [
    * das peças, e um número que morasse lá dentro sumiria no meio da animação
    * assim que qualquer coisa fosse repintada.
    */
-  function flutuar(cid: string, texto: string, tipo: 'dano' | 'cura' | 'mana') {
+  function flutuar(cid: string, texto: string, tipo: 'dano' | 'cura' | 'mana' | 'tempo') {
     const caixa = document.getElementById('gr-nums');
     const t = TOKENS[cid];
     if (!caixa || !t) return;
@@ -3514,6 +3517,18 @@ const SETAS = [
       ARR = null;
 
       if (deOnde === 'mapa' && sobreALista(ev.clientX, ev.clientY)) { await tirarDoMapa(id); return; }
+      // SOLTAR EM CIMA DE ALGUÉM É ATACAR.
+      //
+      // A casa ocupada recusa o movimento, então este gesto terminava em nada:
+      // o mestre arrastava, a peça voltava, e ele ia pelo menu. Três toques
+      // (botão direito, ⚔, clique) viraram um arrasto, que é o gesto que a mão
+      // já estava fazendo.
+      const sob = document.elementFromPoint(ev.clientX, ev.clientY) as HTMLElement | null;
+      const tokAlvo = sob?.closest<HTMLElement>('.gr-token');
+      const outro = tokAlvo && tokAlvo.dataset.c && tokAlvo.dataset.c !== id
+        ? COMBS.find((c: any) => c.id === tokAlvo.dataset.c) : null;
+      const eu = COMBS.find((c: any) => c.id === id);
+      if (outro && eu && TOKENS[id]) { await resolverAtaque(eu, outro); return; }
       if (!destino) return;
       await porNoMapa(id, destino.q, destino.r);
     });
@@ -3856,6 +3871,49 @@ const SETAS = [
     noChao(a) || noChao(b) || (diametroM(a) <= 0.5 && diametroM(b) <= 0.5);
 
   /**
+   * O DESLOCAMENTO PAGO (K20, §14.10 do `Combate_Tempo.md`).
+   *
+   * Andar durante a Recuperação custa **2 Ticks por metro**: o golpe já saiu, a
+   * guarda ainda não voltou, e sair do lugar nesse intervalo é comprar tempo
+   * com tempo. O Grid é o único que sabe quantos metros foram, então é ele que
+   * cobra, e cobra sozinho: o número aparece em cima da peça e a linha entra no
+   * registro, que é o que o mestre desfaz se a mesa decidiu outra coisa.
+   *
+   * QUANDO NÃO COBRA: quem está livre, quem está montando o gesto e quem está
+   * no Golpe. Livre é o caso que a regra não decidiu (mover fora da Recuperação
+   * ainda não tem preço escrito), e inventar um aqui seria escrever regra na
+   * tela. No Preparo o que existe é o abortar, que tem preço próprio (1 Tick
+   * por metro) e caixa própria.
+   */
+  async function cobrarDeslocamento(c: any, metros: number) {
+    if (!c || !(metros > 0)) return;
+    const acao = acaoNo(c);
+    if (faseEm(acao, relogio()) !== 'recuperacao') return;
+    const custo = ticksDeDeslocamento(metros);
+    if (!custo) return;
+    const novoTick = (c.tick ?? 0) + custo;
+    // A Recuperação ESTICA junto: o relógio dela é o mesmo `livre`, e mover os
+    // dois separados deixaria a fita dizendo "livre no 9" numa peça que só age
+    // no 15.
+    const nova = { ...(acao || {}), livre: novoTick };
+    if (MESTRE) {
+      const { error } = await SB.from('combatentes')
+        .update({ tick: novoTick, acao: nova }).eq('id', c.id);
+      if (error) return avisarSemTempo(error);
+    } else {
+      const { error } = await SB.rpc('jogador_declara',
+        { p_comb: c.id, p_tick: novoTick, p_acao: nova, p_alvo: null, p_golpes: 0 });
+      if (error) return avisarSemTempo(error);
+    }
+    c.tick = novoTick; c.acao = nova;
+    flutuar(c.id, `+${custo} ⏱`, 'tempo');
+    pintarIniciativa(); pintarTokens();
+    avisarAgora('combatentes');
+    await logar(c, `${c.nome} andou ${fmtM(metros)} na Recuperação: +${custo} Ticks (livre no ${novoTick})`,
+      { acao: null });
+  }
+
+  /**
    * Se este ponto está bloqueado. A conta é em METROS, e não em hexágonos.
    *
    * Comparar a casa exata funcionava enquanto todo mundo ocupava um hexágono.
@@ -3908,6 +3966,7 @@ const SETAS = [
     } else {
       await logar(c, `${c?.nome} entrou em ${casa}`, { acao: 'por', cid, de: null, para: { q, r } });
     }
+    if (antes) await cobrarDeslocamento(c, distanciaHex(antes, { q, r }) * (Number(ARENA.escala_m) || 1));
     // Andar é o gesto que faz alguém pisar numa zona de fogo ou sair de uma
     // aura, então é aqui que os efeitos são reconferidos.
     await verificarEfeitos(ctxArtes());
@@ -4599,7 +4658,19 @@ const SETAS = [
     const atacante = COMBS.find((c: any) => c.id === MIRA!.atacante);
     const alvo = COMBS.find((c: any) => c.id === cid);
     cancelarMira();
-    if (!atacante || !alvo) return;
+    if (atacante && alvo) await resolverAtaque(atacante, alvo);
+  }
+
+  /**
+   * Um ataque, do começo ao fim.
+   *
+   * Separado da mira porque agora há dois caminhos até aqui: o menu da peça
+   * (botão direito, ⚔, clique no alvo) e o ARRASTO de uma peça em cima de
+   * outra, que antes não fazia nada, porque a casa ocupada recusava o
+   * movimento. Um gesto que não significava coisa alguma passou a significar a
+   * única coisa que se faz com quem está no caminho.
+   */
+  async function resolverAtaque(atacante: any, alvo: any) {
     const res = await folhaDaAcao(atacante, alvo);
     if (!res) return;                       // fechou a caixa: desistiu, não gastou nada
     const { acertou, an, manobra } = res;
@@ -5598,13 +5669,59 @@ const SETAS = [
     el('ini-prox').onclick = () => { const v = daVez(); if (v) encerrarVez(v.id); };
     // Espaço encerra a vez de quem está agindo: é o gesto mais repetido de uma
     // sessão inteira, e tirar a mão do teclado para caçar o menu custa caro.
+    /**
+     * OS ATALHOS.
+     *
+     * A sequência de uma luta é sempre a mesma: escolher quem, escolher o que,
+     * passar a vez. Com o teclado ela vira três teclas e a mão não sai do
+     * lugar. Nenhum deles inventa ação nenhuma: todos abrem a mesma caixa que o
+     * mouse abriria, e por isso não há atalho para "aplicar dano" nem para
+     * "acertou" — o que decide continua passando pela caixa.
+     *
+     *   Espaço  encerra a vez de quem age
+     *   A       ataca com quem age (abre a mira)
+     *   1..9    abre o menu da enésima peça da fila
+     *   Z       desfaz a última coisa
+     *   F       tela cheia · Esc cancela o que estiver no ar
+     */
     document.addEventListener('keydown', (ev) => {
-      if (ev.code !== 'Space' || !MESTRE) return;
       const a = document.activeElement as HTMLElement | null;
       if (a && (a.tagName === 'INPUT' || a.tagName === 'TEXTAREA' || a.tagName === 'SELECT' || a.isContentEditable)) return;
-      if (document.querySelector('dialog[open]') || MIRA || AJUSTANDO) return;
-      const v = daVez(); if (!v) return;
-      ev.preventDefault(); encerrarVez(v.id);
+      if (document.querySelector('dialog[open]') || AJUSTANDO) return;
+      if (ev.ctrlKey || ev.metaKey || ev.altKey) return;
+      if (ev.code === 'Space') {
+        if (!MESTRE || MIRA) return;
+        const v = daVez(); if (!v) return;
+        ev.preventDefault(); encerrarVez(v.id);
+        return;
+      }
+      if (ev.key === 'z' || ev.key === 'Z') {
+        if (!MESTRE || MIRA) return;
+        ev.preventDefault(); desfazer();
+        return;
+      }
+      if (ev.key === 'a' || ev.key === 'A') {
+        if (MIRA) return;
+        // Ataca com quem está agindo, quando essa peça é sua: para o jogador é a
+        // dele, para o mestre é a da vez. Sem peça na mão, a tecla não faz nada,
+        // que é melhor do que escolher alguém por ele.
+        const v = daVez();
+        if (!v || !mandoNela(v) || !TOKENS[v.id]) return;
+        ev.preventDefault(); iniciarMira(v.id);
+        return;
+      }
+      if (/^[1-9]$/.test(ev.key)) {
+        if (MIRA) return;
+        const fila = naFila().filter((c: any) => !noChao(c));
+        const c = fila[parseInt(ev.key, 10) - 1];
+        if (!c) return;
+        ev.preventDefault();
+        // No lugar da peça, e não no canto da tela: o menu que abre longe de
+        // quem ele governa faz o olho procurar duas vezes.
+        const t = document.querySelector<HTMLElement>(`.gr-token[data-c="${CSS.escape(c.id)}"]`);
+        const r = t?.getBoundingClientRect();
+        abrirMenu(c.id, r ? r.right : innerWidth / 2, r ? r.top : innerHeight / 2);
+      }
     });
     el('gr-desfazer').onclick = () => desfazer();
     el('gr-registro').onclick = () => abrirRegistro();
