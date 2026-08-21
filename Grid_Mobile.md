@@ -9,6 +9,22 @@ indo quando a mesa é na sala de casa.
 O pedido, na frase de quem pediu: *funcionar mais próxima a um aplicativo, para permitir que o
 usuário veja as informações necessárias e consiga navegar com facilidade.*
 
+> **Estado em 2026-08-21: as sete fases entraram.** Commits `5f3cf2c` (o app-shell, as folhas e os
+> gestos) e `a907ea7` (a faixa da vez e a bancada). O que a bancada mede agora, no mesmo aparelho
+> de 390×844 em que a linha de base foi tirada:
+>
+> | | antes | depois |
+> |---|---:|---:|
+> | mobília antes do tabuleiro | 456 px (54% da tela) | **104 px** (12%) |
+> | altura da página | 1953 px (2,3 telas) | **844 px** (não rola) |
+> | controles abaixo de 44px | 44 | **0** |
+> | zoom de abertura numa arena de 24 colunas | 100% (6 hexágonos à vista) | **55%** (o piso do dedo) |
+> | a decisão da folha da ação | fora da tela | **na tela, sem rolar** |
+> | pinça | não existia | **pinça, empurrão e toque duplo** |
+>
+> A cena `cenaCelular` do `scripts/test-grid.mjs` cobra tudo isso nas duas cadeiras e nas duas
+> orientações, e já achou dois defeitos do próprio conserto (ver a fase 7).
+
 ---
 
 ## 1. O que foi medido, antes de mudar qualquer coisa
@@ -97,7 +113,7 @@ Já existem dois precedentes prontos no repositório, e o plano os copia em vez 
 Cada fase é um commit, tem prova na bancada e serve sozinha. A ordem é de baixo para cima: o chão
 antes da mobília, a mobília antes dos gestos.
 
-### Fase 1 · O chão: o app-shell do tabuleiro
+### Fase 1 · O chão: o app-shell do tabuleiro · FEITA
 
 **Alvo: sair de 456px de mobília para no máximo 150px, e a página parar de rolar.**
 
@@ -122,7 +138,7 @@ antes da mobília, a mobília antes dos gestos.
   qual `env(safe-area-inset-bottom)` devolve zero e a barra de baixo fica debaixo da faixa do
   iPhone. É uma linha, num arquivo compartilhado com a outra frente: mexer sozinha e avisar.
 
-### Fase 2 · A barra de baixo: o polegar manda
+### Fase 2 · A barra de baixo: o polegar manda · FEITA
 
 **Uma barra fixa no pé, `env(safe-area-inset-bottom)`, alvos de 44px, montada pelo papel.**
 
@@ -142,7 +158,7 @@ O ⏭ Próximo é, de longe, o botão mais apertado de uma sessão. Hoje ele é 
 altura na terceira fileira de um painel; na barra de baixo ele é o alvo mais gordo da tela, e a
 sessão inteira passa a caber num polegar.
 
-### Fase 3 · As gavetas: o que era coluna vira folha
+### Fase 3 · As gavetas: o que era coluna vira folha · FEITA
 
 - **"Em campo" e "Registro"** (891px que hoje começam abaixo da dobra) viram **uma folha de duas
   abas**, aberta pelo ☰ da barra, subindo do pé até 85% da tela, com o tabuleiro escurecido atrás.
@@ -154,7 +170,7 @@ sessão inteira passa a caber num polegar.
 - **Regra de convivência das folhas**: uma por vez. Abrir a segunda fecha a primeira. Empilhar
   folha sobre folha é como se perde o rumo num telefone.
 
-### Fase 4 · Os diálogos viram folhas de baixo
+### Fase 4 · Os diálogos viram folhas de baixo · FEITA
 
 Esta é a parte que o pedido nomeou, e a que tem o defeito mais caro já medido.
 
@@ -200,7 +216,7 @@ Esta é a parte que o pedido nomeou, e a que tem o defeito mais caro já medido.
   de uma vez: o alvo pequeno (36px medidos), o menu maior que a tela em paisagem, e o dedo que tapa
   justamente a área onde o menu nasce.
 
-### Fase 5 · Os gestos do tabuleiro
+### Fase 5 · Os gestos do tabuleiro · FEITA
 
 - **Pinça para o zoom.** Não existe hoje. Dois ponteiros no `.gr-palco`, `touch-action: none`
   enquanto durar, a distância entre os dedos mapeada em `mudarZoom`, e o ponto médio como âncora
@@ -213,7 +229,7 @@ Esta é a parte que o pedido nomeou, e a que tem o defeito mais caro já medido.
 - **Escolher alvo no dedo**: depois do menu, o alvo é confirmado no primeiro `pointerdown`, sem
   prévia. Estender o padrão da **mira no dedo** que as Artes já usam (posicionar, ver, confirmar).
 
-### Fase 6 · O jogador no telefone, que é a razão de tudo isto
+### Fase 6 · O jogador no telefone, que é a razão de tudo isto · FEITA
 
 O mestre no telefone é o caso raro (ele tem notebook, e agora tem o modo TV). **O jogador no
 telefone é o caso comum**, e hoje ele chega numa tela que é o painel de controle de outra pessoa.
@@ -226,7 +242,7 @@ Junto: **"é a sua vez" precisa chegar**. Uma faixa larga acima do tabuleiro, `n
 o título da aba mudando para quem estiver com o telefone noutra coisa. O tempo real já entrega o
 aviso (`mesa-tempo-real.ts`); falta apresentá-lo.
 
-### Fase 7 · A prova
+### Fase 7 · A prova · FEITA
 
 Uma cena nova no `scripts/test-grid.mjs`, `cenaCelular(br, url)`, em 390×844 com `isMobile` e
 `hasTouch`, e um segundo passe em paisagem (844×390), cobrando:
@@ -243,6 +259,40 @@ E fotos, como os `shot-*.mjs` já fazem, para a diferença ser olhada e não só
 
 ---
 
+## 3b. O que a execução mudou em relação ao plano
+
+Sete coisas saíram diferentes do que este documento previa, e todas por medida e não por gosto.
+
+- **O tabuleiro não abre "cabendo".** Cabia, e caber numa arena de 24 colunas dá 30% de zoom, que é
+  um hexágono de 17px: dá para ver a cena e não dá para tocar nela. Entrou um **piso de 55%** (32px
+  por hexágono, que é onde o dedo acerta qual casa é qual). Arena pequena continua cabendo inteira,
+  porque o piso só entra quando a conta desce abaixo dele; arena grande abre num pedaço usável, e o
+  **toque duplo** devolve o enquadramento de abertura a qualquer momento.
+- **Nenhuma folha foi construída.** A barra da arena, a coluna lateral e a barra da mesa são as
+  MESMAS caixas do desktop, presas no pé da tela por CSS e esperando fora dela. Uma segunda cópia
+  para o celular divergiria da primeira no primeiro conserto.
+- **O ⚄ e o campo do custo trocam de casa, não de forma.** Eles moram no canto do relógio, que some
+  no telefone; um `insertBefore` os leva para a folha da arena e os devolve quando a janela cresce.
+- **O que era só ícone virou palavra.** Numa fileira apertada o ⚙ se explicava pela vizinhança do
+  ✦; numa lista de linhas ele ficava órfão. Três botões ganharam rótulo por `::after` no modo
+  telefone: ajustar os efeitos, excluir esta arena, rolar a iniciativa de todos.
+- **O Ajuste da folha da ação encolheu sozinho.** Ele custava três fileiras em toda abertura por
+  causa de uma jogada em vinte. Agora nasce numa fileira só, e o campo do motivo (obrigatório quando
+  há ajuste) aparece no instante em que um número é digitado, por `:has(:not(:placeholder-shown))`.
+- **A régua saiu do dedo.** Arrastar o vazio media distância; no telefone esse é o gesto de empurrar
+  o mapa, e os dois disputando desenhavam uma linha de régua por cima de cada rolagem. A régua
+  continua inteira no mouse, que tem três botões.
+- **Arrastar o retrato de dentro da folha fecha a folha.** A lista mora numa caixa que tapa o
+  tabuleiro, e arrastar para um hexágono que não se vê é arrastar às cegas. A folha sai da frente no
+  primeiro toque, e o arrasto segue o ponteiro pelo documento sem se perder com ela.
+
+E uma decisão de escopo: **a regra das folhas nasceu presa ao `body.grid-mob`**, dentro do
+`grid.astro`, e não no `.mesa-dlg` do `MesaCab`. O molde serve seis telas da mesa e três delas são
+de outra frente. Quando o desenho tiver rodado em mesa de verdade, ele sobe para o molde e vale
+para todas.
+
+---
+
 ## 4. O que não entra
 
 - **Aplicativo de verdade** (PWA, instalável, empacotado). O pedido é "mais próximo a um
@@ -252,20 +302,34 @@ E fotos, como os `shot-*.mjs` já fazem, para a diferença ser olhada e não só
 - **Mexer no que a outra frente está escrevendo.** `alcance.ts`, `combate-tempo.ts` e as regras do
   tempo não são tocados: este plano é de superfície, e nenhuma fase muda uma decisão de regra.
 
-## 5. As decisões que faltam
+## 5. As decisões
 
-- **[DECIDIR] O corte.** `max-width: 900px` (o mesmo da ficha e do `global.css`) ou
-  `pointer: coarse` (a pergunta da mira no dedo)? A largura é previsível e casa com o resto do
-  site; a capacidade acerta o tablet de 1024px sem mouse, que hoje cai no layout de notebook.
-  Provavelmente os dois, com papéis distintos: a **largura** decide o layout, a **capacidade**
-  decide os gestos e os pisos de toque.
-- **[DECIDIR] O tablet em paisagem.** Entre 901 e 1100px o Grid empilha. Um iPad em paisagem tem
-  1024px e uma tela larguíssima: ele quereria as duas colunas do notebook, e não a pilha. Vale
-  baixar o corte das duas colunas para ~900px e deixar a pilha só para o telefone?
-- **[DECIDIR] A barra de baixo do mestre.** Os cinco alvos propostos são um chute informado.
-  Confirmar com uma sessão de verdade quais são os cinco gestos mais repetidos.
+As duas primeiras se resolveram na execução; a terceira continua aberta e só uma sessão de verdade
+responde.
 
-## 6. Ordem e tamanho
+- **[RESOLVIDA] O corte são os dois, com papéis distintos**, como o próprio item suspeitava: a
+  **largura** (`max-width: 900px`) decide o layout, e a **capacidade** (`hover: none`) decide o que
+  é defeito em qualquer tela, como os botões do registro que não acendiam sem ponteiro.
+- **[RESOLVIDA] O tablet em paisagem fica como está.** Entre 901 e 1100px continua o empilhamento
+  de hoje, que serve bem ao tablet em retrato; em paisagem ele tem 1024px e cai no layout de
+  notebook, que é o que ele quer. Baixar o corte das duas colunas mexeria no desktop para resolver
+  um caso que ninguém relatou.
+- **[DECIDIR] A barra de baixo do mestre.** Os cinco alvos (relógio · ⏭ próximo · ⚔ agir · ☰ campo ·
+  ⧉ arena · ⋯ mais) são um chute informado, e o único jeito de conferir é mestrar uma sessão com o
+  telefone na mão e ver o que a mão procura e não acha.
+
+## 5b. O que ficou de fora, e é o próximo passo
+
+- **O ⋯ não tem tela cheia nem modo TV.** Os dois botões continuam na folha da arena, onde estão
+  desde sempre. No telefone a tela cheia vale pouco (a barra do navegador já sai sozinha ao rolar) e
+  o modo TV vale nada, mas quem projeta do tablet vai procurá-los.
+- **A folha de Em campo mostra a lista e o registro juntos**, com as duas dobras que já existiam. O
+  plano previa duas abas; as dobras resolvem 90% e custaram zero.
+- **A mira do ataque ainda confirma no primeiro toque.** O padrão da mira no dedo (posicionar, ver,
+  confirmar), que as Artes já usam, não foi estendido ao alvo do ataque.
+- **Nada de PWA.** Segue fora de escopo, e continua dependendo do domínio próprio.
+
+## 6. Ordem e tamanho (o que se estimou, e o que aconteceu)
 
 | | fase | tamanho | depende de |
 |---|---|---|---|
@@ -277,6 +341,10 @@ E fotos, como os `shot-*.mjs` já fazem, para a diferença ser olhada e não só
 | 6 | O jogador no telefone | pequeno | 2, 3 |
 | 7 | A prova na bancada | pequeno | acompanha cada fase |
 
-**A fase 4 não depende da 2 nem da 3**, e carrega três correções de defeito (os botões da folha da
-ação fora da tela, os botões invisíveis do registro, o ✕ colado no ↻ no fundo). Se for para
-entregar uma coisa só e ver como fica na mão, é ela.
+**A fase 4 não dependia da 2 nem da 3**, e carregava três correções de defeito (os botões da folha
+da ação fora da tela, os botões invisíveis do registro, o ✕ colado no ↻ no fundo).
+
+Na execução, as fases **1, 2 e 3 saíram num commit só**: esconder a barra de abas sem a barra de
+baixo deixaria a mesa sem navegação, e uma coluna virada folha sem botão que a abra é uma coluna
+perdida. As três são uma ideia só, e separá-las produziria dois estados intermediários quebrados.
+As fases 4, 5 e 6 foram cada uma um passo, com foto e medida entre elas, e a 7 acompanhou.

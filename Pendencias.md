@@ -9,8 +9,8 @@
 > **[FAZER]** = já decidido, é trabalho de execução.
 > **[AUTOR]** = frente de escrita sua, não minha.
 
-**Placar:** 76 itens abertos · 40 [DECIDIR] · 28 [FAZER] · 6 [AUTOR]
-Por frente: **Arcano 20** · **Mesa 11** · **Ações & Sistema 11** · **Bestiário 9** · Lore 6 ·
+**Placar:** 75 itens abertos · 40 [DECIDIR] · 27 [FAZER] · 6 [AUTOR]
+Por frente: **Arcano 20** · **Ações & Sistema 11** · **Mesa 10** · **Bestiário 9** · Lore 6 ·
 Proezas 5 · Trilhas 4 · Arremesso 4 · Infraestrutura 4 · Social 2
 
 > **Mesa, 2026-08-12:** fechou **I7** (névoa de guerra) e entraram **I9** (caderno de melhorias do
@@ -988,7 +988,7 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   atirada sai da Força de Arremesso de QUEM joga, e não da arma, e esse número não chega ao Grid
   (o `RESUMO` não o carrega). Enquanto não chegar, a folha cala para o arremesso, que é melhor do
   que mostrar uma faixa inventada.
-- [ ] **I13 · [FAZER] O Grid no telefone.** O tabuleiro cresceu inteiro numa tela de notebook, e as
+- [x] **I13 · O Grid no telefone. FEITO em 2026-08-21**, nas sete fases. O tabuleiro cresceu inteiro numa tela de notebook, e as
   oito emendas do I12 foram desenhadas com mouse na mão. Medido na bancada em 21/08, num viewport de
   390×844 com dedo: **456px de mobília antes do tabuleiro (54% da tela)**, a barra da arena quebrando
   em **6 fileiras**, a página com **1953px** (2,3 telas de rolagem), **44 controles abaixo do piso de
@@ -1000,9 +1000,22 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   paisagem e o encaixe da borda devolve topo negativo. Não existe **pinça** em nenhum lugar do
   `src/`. O plano em sete fases está no `Grid_Mobile.md`, com o princípio (uma superfície de cada
   vez, o tabuleiro é o app), os precedentes que ele copia (a ficha em abas e a mira no dedo) e a
-  bateria de bancada que cobra o resultado. A **fase 4** (os diálogos viram folhas de baixo) não
-  depende das outras e carrega as três correções acima. Três decisões em aberto no doc: o corte
-  (largura ou `pointer: coarse`), o tablet em paisagem, e quais são os cinco gestos da barra de baixo.
+  bateria de bancada que cobra o resultado.
+
+  **O resultado, medido no mesmo aparelho:** a mobília caiu de 456px para **104**, a página deixou
+  de rolar (1953px → 844), os 44 controles abaixo do piso de toque viraram **zero**, a decisão da
+  folha da ação está na tela sem rolar, e o tabuleiro abre a 55% em vez de 100%. A barra da arena,
+  a coluna lateral e a barra da mesa viraram folhas que sobem do pé, e no lugar delas há uma barra
+  de polegar montada pelo papel. Entraram a **pinça**, o empurrão de um dedo e o toque duplo, e o
+  jogador ganhou a **faixa da vez** (com vibração e título de aba). Tudo cercado pela `cenaCelular`
+  do `test-grid.mjs`, nas duas cadeiras e nas duas orientações, que já achou dois defeitos do
+  próprio conserto (a altura estimada da barra e o primeiro dedo da pinça contando como toque).
+
+  Duas das três decisões se resolveram na execução (o corte são os dois, largura para o layout e
+  `hover: none` para o defeito; o tablet em paisagem fica como está). **Continua aberta uma:** quais
+  são de fato os cinco gestos da barra de baixo do mestre, que só uma sessão com o telefone na mão
+  responde. Ficaram de fora, listados na seção 5b do doc: a tela cheia e o modo TV no ⋯, as duas
+  abas da folha de Em campo, e a mira no dedo estendida ao alvo do ataque.
 
 ---
 
