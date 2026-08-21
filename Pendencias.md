@@ -715,12 +715,22 @@ revistos por ela.
   os dois últimos entram no MESMO Tick 1. Empate no topo entra junto no Tick 0, e a ordem entre eles
   é o desempate do capítulo, que a fila já resolve arrastando.
 
-  A outra metade da regra, o **−1d6 na primeira ação** de quem foi pego no contrapé, fica guardada
-  em `acao.penPrimeira` e é **mostrada** (na fila, ao lado do nome, e no bolo da folha da ação), e
-  não descontada: mesma decisão da distância, o valor final é do mestre. Vale nas duas telas; no
-  rastreador, só quando a cena está começando (a caixa "Reiniciar" com "zerar os Ticks" marcado),
-  porque rolar iniciativa no meio de uma luta é outra coisa, e ali o relógio de quem já está em
-  campo não se mexe.
+  **Revisada na mesa no mesmo dia, depois de medida.** A régua final é `Tick = 1 + ⌈atraso ÷ 6⌉`: o
+  maior entra **sozinho no Tick 1** (um Tick de frente, que num motor de Tick é vantagem
+  permanente), 1 a 6 atrás entram no 2, 7 a 12 no 3, 13 a 18 no 4. Teto garantido no Tick 4, porque
+  a iniciativa vai de 2 a 18.
+
+  **O contrapé decai.** A medição achou um buraco: num pool de PC (3d6 +5) contra Defesa 12, −1d6
+  leva a chance de acertar de 84% para 42%, e **−2d6 a leva a zero**, porque 1d6+5 não supera 12 —
+  erro matemático, não dificuldade. A saída é o tempo: **o contrapé cai 1d6 por Tick que passa**.
+  Quem entrou no Tick 3 com −2d6 bate no 3 por −2d6, no 4 por −1d6 ou no 5 inteiro.
+
+  E ele é do **relógio**, não da ação: agir não o apaga. Antes apagava, e por isso a jogada ótima
+  era comprar a limpeza gastando um Tick em qualquer bobagem. Agora atravessa a declaração, o
+  abortar e o deslocamento pago. Continua **mostrado e não descontado**; o menu da peça e o painel
+  do turno ganharam o gesto de **esperar um Tick**, com o antes e o depois no rótulo. Vale nas duas
+  telas; no rastreador, só quando a cena está começando (a caixa "Reiniciar" com "zerar os Ticks"),
+  porque rolar iniciativa no meio de uma luta é outra coisa.
 
 - [ ] **K25 · [DECIDIR] A Defesa da arma e a do escudo somam, e o escudeiro vira parede.** A
   `defesas.md` escreve "**+ defesa da arma/escudo**", no singular, mas a ficha **soma as duas**

@@ -1608,14 +1608,43 @@ primeira ação**. O Grid rolava a iniciativa e zerava o relógio de todo mundo:
 desempate, e a primeira rodada inteira acontecia no mesmo instante, que é justamente o que um
 relógio de Ticks não deveria deixar acontecer.
 
-Agora é `ticksDeEntrada` quem responde, e vale reforçar o que ela **não** é: não é um Tick por
-ponto de diferença. Com 12, 11 e 10 na mesa, o primeiro entra no Tick 0 e **os outros dois entram
-juntos no Tick 1**, porque nenhum deles está seis pontos atrás. O degrau é de seis, e é isso que
-impede uma cena de dez virar dez instantes diferentes.
+A régua foi revisada na mesa em 21/08, depois de medida, e ficou assim:
 
-O **−1d6 do contrapé** fica guardado na ação (`penPrimeira`) e é **mostrado**, não descontado: na
-fila, ao lado do nome, e no bolo da folha da ação. Some sozinho quando a pessoa declara, porque a
-ação nova nasce limpa.
+<p class="formula">Tick de entrada = 1 + arredonda para cima(atraso ÷ 6)</p>
+
+O maior entra **sozinho no Tick 1**; 1 a 6 atrás entram no 2, 7 a 12 no 3, 13 a 18 no 4. Duas coisas
+que vale reforçar. A primeira: **não é um Tick por ponto** — com 12, 11 e 10 na mesa, o primeiro
+entra sozinho e os outros dois entram **juntos** no Tick 2, porque nenhum está seis pontos atrás. A
+segunda: como a iniciativa vai de 2 a 18, o vão máximo possível é 16, e **ninguém nunca entra depois
+do Tick 4**, role o que rolar. Medido numa cena de oito, o vão típico é de 7 a 9 pontos e a cena se
+parte em três instantes.
+
+O Tick 1 e não o Tick 0 é escolha de mesa: o primeiro sai **um Tick à frente do pelotão**, e num
+motor de Tick essa vantagem é permanente (a agenda inteira dele fica deslocada até o fim da luta).
+Dois Ticks de frente seriam um terço de ação, para sempre.
+
+### O contrapé desce com o relógio
+
+Cada degrau custa também **1d6 na ação**, e aqui a medição mudou a regra. Num pool de PC (3d6 +5)
+contra Defesa 12, a chance de acertar é 84%; com **−1d6** cai para **42%**, e com **−2d6** vai a
+**zero**, porque 1d6+5 não tem como superar 12. Uma penalidade que pode ser **erro matemático**
+precisa de saída, e a saída escolhida foi o tempo:
+
+<p class="formula">O contrapé cai 1d6 a cada Tick que passa</p>
+
+Quem entrou no Tick 3 com −2d6 escolhe entre bater no 3 por −2d6, no 4 por −1d6 ou no 5 inteiro. A
+vantagem de quem rolou bem deixa de ser "o outro erra" e passa a ser **"o outro chega depois"**, que
+é a moeda deste motor.
+
+E ele é do **relógio**, não da ação: não se apaga por a pessoa fazer alguma coisa. Isso não é
+detalhe de implementação, é o que fecha o buraco: enquanto qualquer ação declarada o apagava, a
+jogada ótima era **comprar a limpeza por um Tick de bobagem**, e uma penalidade que vale metade da
+chance de acertar não pode custar um instante. Ele atravessa a declaração, o abortar e o
+deslocamento pago; só o relógio o derruba.
+
+Continua **mostrado e não descontado**, como a distância. Para a decisão caber na mão, o menu da
+peça e o painel do turno ganharam o gesto de **esperar um Tick**, com o antes e o depois no próprio
+rótulo (`Esperar 1 Tick · contrapé −2d6 → −1d6`), que é a regra se ensinando sozinha.
 
 **A distância.** A régua é a do `Arremesso.md`, e a sutileza dela é o que a faz funcionar: o que se
 corta em quatro **não é o alcance total**, é o que sobra entre o **alcance livre** e o **máximo**.
