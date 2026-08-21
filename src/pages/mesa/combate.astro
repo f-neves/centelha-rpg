@@ -579,6 +579,7 @@ import MesaCab from '../../components/MesaCab.astro';
   import { rolarIniciativaPC } from '../../lib/mesa-ficha';
   import { pv as pvDe, mana as manaDe } from '../../lib/calc';
   import { armaDoSlot } from '../../lib/equip';
+  import { rolarExpr, tipoDeDano } from '../../lib/rolagem';
   import { uiConfirmar, uiErro, uiPerguntar } from '../../lib/ui-dialog';
 
   const el = (i: string) => document.getElementById(i)!;
@@ -1768,17 +1769,6 @@ import MesaCab from '../../components/MesaCab.astro';
   }
 
   // ================================================================== ação
-  /** Rola uma expressão do tipo "4d6+2 −1" ou "3d6 +5 (C)". */
-  function rolarExpr(expr: string, extraDados = 0, extraFlat = 0) {
-    const limpo = String(expr || '').replace(/[−–—]/g, '-').replace(/\([^)]*\)/g, ' ');
-    let dados = 0;
-    const semDados = limpo.replace(/(\d*)d6/gi, (_m, n) => { dados += n === '' ? 1 : parseInt(n, 10); return ' '; });
-    let flat = 0;
-    for (const m of semDados.matchAll(/[+-]\s*\d+/g)) flat += parseInt(m[0].replace(/\s+/g, ''), 10);
-    dados = Math.max(0, dados + extraDados); flat += extraFlat;
-    const rolls = Array.from({ length: dados }, d6);
-    return { dados, flat, rolls, total: rolls.reduce((a, b) => a + b, 0) + flat };
-  }
 
   function abrirAcao(cid: string) {
     const ator = COMBS.find((x) => x.id === cid); if (!ator) return;

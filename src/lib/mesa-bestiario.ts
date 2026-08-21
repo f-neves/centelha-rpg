@@ -16,6 +16,7 @@ import artesData from '../data/artes.json';
 import { resumoCombatePC } from './combate-resumo';
 import { esc, u, norm, fmtDano } from './mesa-core';
 import { sparkSVG } from './centelha-spark';
+import { d6 } from './rolagem';
 
 export const MONSTROS = monstersData as any[];
 export const MON: Record<string, any> = Object.fromEntries(MONSTROS.map((m) => [m.id, m]));
@@ -50,13 +51,14 @@ const apMod = (n: number) => (n > 10 ? 4 + (n - 10) : n < 1 ? -5 - (0 - n) : (AP
 export const estrelas = (a: number) => '★'.repeat(a) + '☆'.repeat(Math.max(0, 6 - a));
 
 /** Dado de iniciativa da criatura: 1d6 + o bônus escrito no bloco. */
-const d6 = () => 1 + Math.floor(Math.random() * 6);
 export function iniDeMonstro(m: any): number {
   const s = m?.combate?.iniciativa || '';
   const mt = /([+-]?\s*\d+)\s*$/.exec(String(s).replace(/\dd6/, ''));
   const bonus = mt ? parseInt(mt[1].replace(/\s/g, ''), 10) : 0;
   return d6() + (isNaN(bonus) ? 0 : bonus);
 }
+// O dado mora em `rolagem.ts` agora, com o resto do acaso do combate. Fica
+// reexportado porque meia dúzia de telas o importam daqui.
 export { d6 };
 
 export interface ResumoCombate {

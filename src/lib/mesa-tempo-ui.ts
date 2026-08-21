@@ -17,8 +17,9 @@ import type { CtxMesa } from './mesa-core';
 import { uiPainel, uiErro } from './ui-dialog';
 import {
   faseEm, fita, defesaPerdida, resumoDaAcao, acaoVazia, anatomia, declarar, abortar,
-  combateDaMesa, COMBATE_PADRAO, SISTEMAS, MARCACOES, FASE_ROTULO,
-  type Acao, type Fase, type CombateMesa, type Sistema, type Marcacao, type ClasseArma,
+  combateDaMesa, COMBATE_PADRAO, SISTEMAS, MARCACOES, ROLAGENS, FASE_ROTULO,
+  type Acao, type Fase, type CombateMesa, type Sistema, type Marcacao, type Rolagem,
+  type ClasseArma,
 } from './combate-tempo';
 
 const CLS: Record<Fase, string> = { livre: 'f-livre', preparo: 'f-prep', golpe: 'f-golpe', recuperacao: 'f-rec' };
@@ -247,8 +248,13 @@ export function abrirAbortar(
 /** Uma linha para o botão da barra: o que esta mesa escolheu. */
 export function resumoDoTempo(c: CombateMesa) {
   const s = SISTEMAS.find((x) => x.id === c.sistema)?.nome || c.sistema;
-  return `${s} · ${c.marcacao === 'fita' ? 'fita' : 'números'}`;
+  // Os dados só entram no resumo quando NÃO são o padrão: a barra é estreita, e
+  // "na mesa" é o que toda mesa faz até decidir o contrário.
+  const dados = c.rolagem === 'site' ? ' · dados no site'
+    : c.rolagem === 'misto' ? ' · criaturas rolam sozinhas' : '';
+  return `${s} · ${c.marcacao === 'fita' ? 'fita' : 'números'}${dados}`;
 }
+
 
 // ------------------------------------------------------- a amostra do painel
 /**
@@ -319,6 +325,11 @@ export async function abrirEscolhaDoTempo(
     <div class="rev-h">A marcação</div>
     <p class="tempo-nota">Só como a mesa desenha. Não muda regra nenhuma.</p>
     ${opsHTML('tp-marc', MARCACOES, atual.marcacao)}
+    <div class="rev-h">Os dados</div>
+    <p class="tempo-nota">Quem rola. Também não muda regra nenhuma: muda quem digita o resultado.
+      O que o site rolar continua num campo editável, e o mestre escreve por cima quando a mesa
+      decidir outra coisa.</p>
+    ${opsHTML('tp-rol', ROLAGENS, atual.rolagem)}
     <div class="ui-dlg-btns">
       <button type="button" class="btn" id="tp-cancelar">Cancelar</button>
       <button type="button" class="btn primary" id="tp-salvar">Salvar</button>
@@ -333,6 +344,7 @@ export async function abrirEscolhaDoTempo(
     const novo: CombateMesa = {
       sistema: (marcado('tp-sis') as Sistema) || COMBATE_PADRAO.sistema,
       marcacao: (marcado('tp-marc') as Marcacao) || COMBATE_PADRAO.marcacao,
+      rolagem: (marcado('tp-rol') as Rolagem) || COMBATE_PADRAO.rolagem,
     };
     fechar();
     const { error } = await sb.from('mesas').update({ combate: novo }).eq('id', id);

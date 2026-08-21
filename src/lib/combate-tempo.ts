@@ -29,16 +29,39 @@ export type Fase = 'livre' | 'preparo' | 'golpe' | 'recuperacao';
 export type Manobra = 'simples' | 'dupla' | 'segura' | 'rajada';
 export type ClasseArma = 'leve' | 'media' | 'haste' | 'pesada' | 'distancia' | 'arremesso' | 'arte';
 
-/** O que uma mesa escolheu: o sistema de tempo e como ele aparece na tela. */
-export interface CombateMesa { sistema: Sistema; marcacao: Marcacao }
+/**
+ * Quem rola os dados.
+ *
+ * Não é regra: nenhum número muda. É uma escolha de MESA sobre quem digita o
+ * resultado, e por isso mora junto do sistema de tempo, no mesmo painel. O
+ * padrão é `mesa` (ninguém rola no site) porque o dado na mão é metade da mesa,
+ * e o `misto` existe porque metade das transcrições de uma sessão é o mestre
+ * rolando pelos próprios monstros, que é a parte que ninguém sente falta.
+ */
+export type Rolagem = 'mesa' | 'misto' | 'site';
+
+/** O que uma mesa escolheu: o sistema de tempo, o desenho dele e os dados. */
+export interface CombateMesa { sistema: Sistema; marcacao: Marcacao; rolagem: Rolagem }
 export const COMBATE_PADRAO: CombateMesa = {
   sistema: (C?.sistemaPadrao as Sistema) || 'normal',
   marcacao: (C?.marcacao?.padrao as Marcacao) || 'fita',
+  rolagem: (C?.rolagem?.padrao as Rolagem) || 'mesa',
 };
 export const combateDaMesa = (mesa: any): CombateMesa => ({ ...COMBATE_PADRAO, ...(mesa?.combate || {}) });
 
 export const SISTEMAS: { id: Sistema; nome: string; resumo: string; detalhe: string }[] = C?.sistemas || [];
 export const MARCACOES: { id: Marcacao; nome: string; resumo: string }[] = C?.marcacao?.modos || [];
+export const ROLAGENS: { id: Rolagem; nome: string; resumo: string }[] = C?.rolagem?.modos || [];
+
+/**
+ * O site rola por esta peça?
+ *
+ * A pergunta é sempre sobre QUEM AGE, e não sobre quem está olhando: no misto,
+ * o goblin rola sozinho mesmo quando é o jogador que aperta o botão de dano
+ * nele, porque quem está rolando ali é o ataque do goblin.
+ */
+export const rolaNoSite = (rolagem: Rolagem, ehPersonagem: boolean) =>
+  rolagem === 'site' || (rolagem === 'misto' && !ehPersonagem);
 
 /**
  * A ação declarada, do jeito que ela mora no banco (`combatentes.acao`, jsonb).
@@ -77,12 +100,21 @@ export const temGesto = (a: any): boolean => !!a && Array.isArray(a.golpes) && a
 
 // ------------------------------------------------------------------ a régua
 /** A classe de tempo de uma arma. Sem arma, é `leve`: o punho é rápido. */
+/**
+ * A arma do catálogo, pelo id OU pelo nome.
+ *
+ * A mesa guarda ora um ora outro: a ficha grava `espada-longa`, o bestiário
+ * escreve "Espada Longa" e o mestre digita o que quiser num figurante. Quem
+ * precisa do catálogo precisa das duas portas, e a busca por nome mora aqui
+ * para não ser reescrita em cada tela que resolve uma arma.
+ */
+export function armaDoCatalogo(idOuNome?: string | null): any | null {
+  if (!idOuNome) return null;
+  return ARMA[idOuNome] || Object.values(ARMA).find((x: any) => x.nome === idOuNome) || null;
+}
+
 export function classeDaArma(idOuNome?: string | null): ClasseArma {
-  if (!idOuNome) return 'leve';
-  const w = ARMA[idOuNome];
-  if (w?.classe) return w.classe as ClasseArma;
-  const achou = Object.values(ARMA).find((x: any) => x.nome === idOuNome);
-  return ((achou as any)?.classe as ClasseArma) || 'leve';
+  return (armaDoCatalogo(idOuNome)?.classe as ClasseArma) || 'leve';
 }
 
 /**
@@ -95,16 +127,14 @@ export function classeDaArma(idOuNome?: string | null): ClasseArma {
  * escada que o catálogo desenha (5 leve, 6 média, 7+ pesada).
  */
 export function classeDeTempo(arma?: string | null, velocidade?: number | null): ClasseArma {
-  if (arma && (ARMA[arma] || Object.values(ARMA).some((x: any) => x.nome === arma))) return classeDaArma(arma);
+  if (armaDoCatalogo(arma)) return classeDaArma(arma);
   const v = velocidade ?? 5;
   return v <= 5 ? 'leve' : v === 6 ? 'media' : 'pesada';
 }
 
 /** A Velocidade da arma em Ticks (o ciclo inteiro), com fallback razoável. */
 export function velocidadeDaArma(idOuNome?: string | null, padrao = 5): number {
-  if (!idOuNome) return padrao;
-  const w = ARMA[idOuNome] || Object.values(ARMA).find((x: any) => x.nome === idOuNome);
-  return (w as any)?.ticks ?? padrao;
+  return armaDoCatalogo(idOuNome)?.ticks ?? padrao;
 }
 
 /**

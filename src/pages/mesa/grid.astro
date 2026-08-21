@@ -188,10 +188,17 @@ const SETAS = [
   <!-- menu de ações do token (botão direito, ou toque longo no celular) -->
   <div id="tok-menu" class="tok-menu" hidden role="menu"></div>
 
-  <dialog id="alvo-dlg" class="mesa-dlg">
+  {/* A FOLHA DA AÇÃO: uma caixa só, do acerto ao dano.
+       Eram duas em sequência, e a segunda não sabia nada da primeira: abria com
+       zero no campo e Impacto no modo, mesmo quando quem bateu levava uma
+       espada. Aqui tudo o que o Grid já sabe vem preenchido (a Defesa com a
+       escada, o custo em Ticks, o bolo de dados, o modo do dano da arma) e tudo
+       continua editável, que é o contrato: o Grid propõe, a mesa decide. */}
+  <dialog id="alvo-dlg" class="mesa-dlg dlg-larga">
     <form method="dialog">
       <h3 id="al-titulo">Ataque</h3>
       <p class="muted dlg-txt" id="al-linha"></p>
+      <p class="ruim dlg-txt" id="al-aviso" hidden></p>
       <div id="al-defesas" class="al-def"></div>
       {/* A manobra manda no tempo: um golpe, uma arma em cada mão, ou a mesma
           arma várias vezes. A lista é filtrada pelo que a arma permite, e o que
@@ -206,31 +213,38 @@ const SETAS = [
         <input type="number" id="al-golpes" min="2" max="3" value="2" title="Quantos golpes" />
       </label>
       <div id="al-tempo" class="al-tempo"></div>
-      <p class="muted dlg-txt">Role o acerto na mesa e responda.</p>
+
+      <div class="al-sec">
+        <span class="al-sec-h">O acerto</span>
+        <span class="al-pool" id="al-pool"></span>
+        <button type="button" class="btn mini" id="al-rolar" title="Rolar aqui, só desta vez">⚄</button>
+        <input type="number" id="al-total" placeholder="total" title="O que saiu nos dados" />
+        <span class="al-vered" id="al-vered"></span>
+      </div>
+      {/* O AJUSTE AVULSO é a válvula do improviso: quando a mesa inventa uma
+          regra no meio da luta ("estava em cima do barril"), ela entra aqui e
+          vai para o registro com o motivo junto. Sem o motivo, o registro
+          contaria a história errada uma semana depois. */}
+      <div class="al-sec">
+        <span class="al-sec-h">Ajuste</span>
+        <input type="number" id="al-mod" placeholder="0" title="Somado ao acerto" />
+        <input type="text" id="al-motivo" class="al-motivo" placeholder="por quê (vai para o registro)" />
+      </div>
+      <div class="al-sec">
+        <span class="al-sec-h">O dano</span>
+        <span class="al-pool" id="al-dn-pool"></span>
+        <button type="button" class="btn mini" id="al-dn-rolar" title="Rolar o dano aqui">⚄</button>
+        <input type="number" id="al-dn" min="0" placeholder="bruto" />
+        <select id="al-dn-tipo">
+          <option value="impacto">Impacto</option>
+          <option value="corte">Cortante</option>
+          <option value="perfurante">Perfurante</option>
+        </select>
+      </div>
+      <div id="al-dn-conta" class="al-conta"></div>
       <div class="dlg-btns">
         <button type="button" class="btn" id="al-nao">Errou</button>
-        <button type="button" class="btn primary" id="al-sim">Acertou</button>
-      </div>
-    </form>
-  </dialog>
-
-  <dialog id="dano-dlg" class="mesa-dlg">
-    <form method="dialog">
-      <h3 id="dn-titulo">Dano</h3>
-      <div class="grade2">
-        <label>Dano rolado <input type="number" id="dn-valor" min="0" value="0" /></label>
-        <label>Modo
-          <select id="dn-tipo">
-            <option value="impacto">Impacto</option>
-            <option value="corte">Cortante</option>
-            <option value="perfurante">Perfurante</option>
-          </select>
-        </label>
-      </div>
-      <div id="dn-conta" class="al-conta"></div>
-      <div class="dlg-btns">
-        <button type="button" class="btn" id="dn-cancelar">Cancelar</button>
-        <button type="button" class="btn primary" id="dn-ok">Aplicar o dano</button>
+        <button type="button" class="btn primary" id="al-sim">Acertou · aplicar</button>
       </div>
     </form>
   </dialog>
@@ -997,6 +1011,27 @@ const SETAS = [
   .al-tempo b { font-family: 'Cinzel'; color: var(--accent-strong); font-variant-numeric: tabular-nums; }
   .al-tempo .muted { color: var(--ink-soft); }
 
+  /* ---- as faixas da folha da ação ----
+     Uma fileira por assunto (o acerto, o ajuste, o dano), com o rótulo à
+     esquerda e os campos correndo até a borda. Fileira e não grade porque cada
+     faixa tem um número diferente de peças, e alinhar colunas entre elas
+     alinharia coisas que não têm relação nenhuma. */
+  .al-sec { display: flex; flex-flow: row wrap; align-items: center; gap: .35rem;
+    margin-top: .45rem; }
+  .al-sec-h { flex: 0 0 4.6rem; font-family: 'Cinzel'; font-size: var(--fs-micro);
+    text-transform: uppercase; letter-spacing: .05em; color: var(--accent-strong); }
+  .al-sec input[type="number"] { width: 4.6rem; flex: 0 0 auto; text-align: center;
+    font-variant-numeric: tabular-nums; }
+  .al-sec input.al-motivo { flex: 1 1 8rem; min-width: 0; }
+  .al-sec select { flex: 0 0 auto; }
+  /* O bolo de dados, e depois da rolagem os dados que saíram. Ele cresce e
+     encolhe, então ganha a sobra da fileira em vez de largura fixa. */
+  .al-pool { flex: 1 1 6rem; min-width: 0; font-size: var(--fs-micro); color: var(--ink-soft);
+    font-variant-numeric: tabular-nums; }
+  .al-vered { flex: 1 1 100%; font-size: var(--fs-micro); }
+  .al-vered .ok { color: var(--accent-texto); font-weight: 700; }
+  .al-vered .ruim { color: #cf3327; }
+
   .gr-token.montando .av { outline: 2px dashed color-mix(in srgb, var(--gold) 70%, transparent);
     outline-offset: -2px; }
   .gr-token.golpe .tok-quadro {
@@ -1190,6 +1225,7 @@ const SETAS = [
     camadaDeGolpes, baterNoAlvo, voarProjetil, projetilDe,
   } from '../../lib/grid-golpe-fx';
   import { armaDoSlot } from '../../lib/equip';
+  import { rolarExpr, descreverRolada, tipoDeDano } from '../../lib/rolagem';
   import { reconciliar, esquecerCaixa } from '../../lib/reconciliar';
   import {
     abrirEscolhaDoTempo, resumoDoTempo, fitaHTML, seloFaseHTML, abrirAbortar, podeAbortar,
@@ -1198,6 +1234,7 @@ const SETAS = [
   import {
     combateDaMesa, COMBATE_PADRAO, faseEm, acaoVazia, temGesto, resumoDaAcao,
     anatomia, declarar, defesaPerdida, classeDeTempo, velocidadeDaArma, tetoDaRajada,
+    rolaNoSite, ticksDeDeslocamento, armaDoCatalogo,
     FASE_ROTULO, type CombateMesa, type Manobra,
   } from '../../lib/combate-tempo';
 
@@ -4563,9 +4600,14 @@ const SETAS = [
     const alvo = COMBS.find((c: any) => c.id === cid);
     cancelarMira();
     if (!atacante || !alvo) return;
-    const res = await perguntarAcerto(atacante, alvo);
+    const res = await folhaDaAcao(atacante, alvo);
     if (!res) return;                       // fechou a caixa: desistiu, não gastou nada
     const { acertou, an, manobra } = res;
+    // O motivo do ajuste avulso vai junto de tudo o que este ataque escrever no
+    // registro: uma semana depois, "+2" sozinho não conta história nenhuma.
+    const porque = res.ajuste && res.motivo ? ` [${sinalTxt(res.ajuste)}: ${res.motivo}]`
+      : res.ajuste ? ` [${sinalTxt(res.ajuste)}]` : '';
+    const dados = res.rolado ? ` (${res.rolado})` : '';
 
     // O TIRO SAI QUANDO A MESA JÁ DECIDIU, E NUNCA ANTES.
     //
@@ -4608,10 +4650,14 @@ const SETAS = [
 
     if (!acertou) {
       await atirar();
-      await logar(atacante, `${atacante.nome} atacou ${alvo.nome} e errou`, { acao: null });
+      await logar(atacante, `${atacante.nome} atacou ${alvo.nome} e errou${dados}${porque}`, { acao: null });
       return;
     }
-    await pedirDano(atacante, alvo, atirar);
+    // A caixa já fechou, o projétil voa, e só então a Vida muda: o tabuleiro
+    // está livre para ser olhado, e o número no anel do alvo cai no instante em
+    // que a ponta encosta, e não meio segundo antes dela sair.
+    const voou = await atirar();
+    await aplicarDano(atacante, alvo, res.dano, res.tipo, voou ? 0 : undefined, dados + porque);
   }
 
   /**
@@ -4672,27 +4718,47 @@ const SETAS = [
   }
 
   /**
-   * O modal das Defesas do alvo, e a manobra de quem ataca.
+   * A FOLHA DA AÇÃO: uma caixa só, do acerto ao dano.
    *
-   * A Defesa mostrada aqui JÁ VEM COM A ESCADA. Quem está no Tick do próprio
-   * Golpe defende a −4, quem está montando o gesto a −2, e quem apanhou neste
-   * ciclo carrega −2 por ataque recebido. Antes esta caixa mostrava a Defesa
-   * cheia e o rastreador mostrava a descontada: dois números para a mesma
-   * criatura, dependendo da aba em que o mestre estivesse olhando.
+   * Eram duas em sequência. A primeira mostrava as Defesas e perguntava
+   * "acertou?"; a segunda abria com ZERO no campo e Impacto no modo, sem saber
+   * quem tinha batido nem com o quê. Entre as duas, o mestre transcrevia dois
+   * números que estavam escritos na tela um centímetro acima.
    *
-   * Devolve o que aconteceu MAIS o que foi declarado, porque quem chamou precisa
-   * dos dois para empurrar o relógio.
+   * Agora tudo o que o Grid já sabe vem preenchido:
+   *
+   *   · a Defesa do alvo COM A ESCADA do P/G/R (§14.11), somada ao ferimento e
+   *     às condições, e com a conta escrita embaixo;
+   *   · o bolo de dados de quem ataca, já descontado o ferimento e as condições
+   *     DELE, mais a penalidade da manobra;
+   *   · o modo do dano, lido da arma (`1d6 +2 (C)` abre em Cortante);
+   *   · o custo em Ticks pela régua P/G/R;
+   *   · a Absorção do alvo, descontada ao vivo.
+   *
+   * E tudo continua editável, que é o contrato: o Grid propõe, a mesa decide.
+   * Quem rola os dados é escolha da mesa (`combate.rolagem`), e o modo decide
+   * só o que acontece SOZINHO: o ⚄ continua ali para o caso avulso, mesmo na
+   * mesa que rola tudo na mão.
+   *
+   * Devolve `null` quando a caixa é fechada no Escape: desistir não gasta o
+   * Tick de ninguém, e quem chamou distingue isso de "errou".
    */
-  function perguntarAcerto(atacante: any, alvo: any): Promise<{ acertou: boolean; an: any; manobra: string } | null> {
+  interface Folha {
+    acertou: boolean; an: any; manobra: string;
+    dano: number; tipo: string; ajuste: number; motivo: string; rolado: string;
+  }
+  function folhaDaAcao(atacante: any, alvo: any): Promise<Folha | null> {
     const dlg = el('alvo-dlg') as HTMLDialogElement;
     const r = RESUMO[alvo.id];
+    const ra = RESUMO[atacante.id];
     const cd = somarCondicoes((alvo.condicoes || []).map((k: any) => ({ ...(COND[k.id] || {}), ...k })));
     const fer = tierDe(alvo.pv_atual, alvo.pv_max).penDefesa ?? 0;
     const dv = defesaPerdida(acaoNo(alvo), relogio(), { segura: alvo.acao?.tipo === 'segura' });
     const def = r?.defesa != null ? r.defesa + fer + (cd.defesaCaC || 0) + dv.total : null;
     const men = r?.defesaMental ?? null;
     const de = TOKENS[atacante.id], pa = TOKENS[alvo.id];
-    const dist = de && pa ? distanciaHex(de, pa) * (Number(ARENA.escala_m) || 1) : null;
+    const hexes = de && pa ? distanciaHex(de, pa) : null;
+    const dist = hexes != null ? hexes * (Number(ARENA.escala_m) || 1) : null;
     (el('al-titulo') as HTMLElement).textContent = `${atacante.nome} ataca ${alvo.nome}`;
     (el('al-linha') as HTMLElement).textContent = dist != null
       ? `Distância: ${fmtM(dist)}${pa ? ` · alvo em ${nomeHex(pa.q, pa.r)}` : ''}` : '';
@@ -4716,7 +4782,6 @@ const SETAS = [
         r?.resistPerf ? `gate N${r.resistPerf}` : '');
 
     // ---- a manobra de quem ataca, e o tempo que ela custa ----
-    const ra = RESUMO[atacante.id];
     const classe = classeDeTempo(ra?.arma, ra?.velocidade);
     const vel = ra?.velocidade ?? velocidadeDaArma(ra?.arma, 5);
     const manSel = el('al-manobra') as HTMLSelectElement;
@@ -4736,6 +4801,93 @@ const SETAS = [
       classe, velocidade: vel, sistema: TEMPO.sistema, manobra: manSel.value as Manobra,
       golpes: Math.max(2, parseInt(golInp.value || '2', 10) || 2),
     });
+
+    // ---- O ALCANCE: a única coisa que só o tabuleiro sabe ----
+    //
+    // Ninguém mais na mesa sabe quantos metros separam duas peças, e até agora
+    // esse número não entrava em nada. Ele AVISA e não impede: a caixa não
+    // recusa ataque nenhum, porque a última palavra é de quem está mestrando.
+    const arma = armaDoCatalogo(ra?.arma);
+    const avisoAlcance = (() => {
+      if (hexes == null) return '';
+      if (classe === 'distancia' || classe === 'arremesso') {
+        const max = arma?.distMax;
+        return max && dist! > max ? `Além do alcance da arma (${max} m).` : '';
+      }
+      const teto = classe === 'haste' ? 2 : 1;
+      return hexes > teto
+        ? `Corpo a corpo a ${fmtM(dist!)}: ${classe === 'haste' ? 'a haste alcança 2' : 'a arma alcança 1'} hexágono.`
+        : '';
+    })();
+    const cxAviso = el('al-aviso') as HTMLElement;
+    cxAviso.hidden = !avisoAlcance;
+    cxAviso.textContent = avisoAlcance;
+
+    // ---- o acerto, o ajuste e o dano ----
+    const totalInp = el('al-total') as HTMLInputElement;
+    const modInp = el('al-mod') as HTMLInputElement;
+    const motivoInp = el('al-motivo') as HTMLInputElement;
+    const dnInp = el('al-dn') as HTMLInputElement;
+    const dnTipo = el('al-dn-tipo') as HTMLSelectElement;
+    totalInp.value = ''; modInp.value = ''; motivoInp.value = ''; dnInp.value = '';
+    // O modo do dano vem da arma. Perguntar o que está escrito na linha de cima
+    // era o atrito mais barato de tirar da frente, e o mais fácil de errar: a
+    // caixa abria em Impacto e o mestre aplicava couro contra espada.
+    dnTipo.value = tipoDeDano(ra?.dano || '') || 'impacto';
+    // O bolo de quem ataca, já com o que a situação cobra DELE.
+    const ajAtq = (() => {
+      const f = tierDe(atacante.pv_atual, atacante.pv_max).penAcao ?? 0;
+      const c2 = somarCondicoes((atacante.condicoes || []).map((k: any) => ({ ...(COND[k.id] || {}), ...k })));
+      return { flat: f + (c2.acao || 0) + (c2.ataque || 0), dados: c2.dados || 0 };
+    })();
+    let rolado = '';
+    const pintarPool = () => {
+      const pen = anat().penDados[0] || 0;
+      const partes = [esc(ra?.ataque || '—')];
+      if (ajAtq.flat) partes.push(sinalTxt(ajAtq.flat));
+      if (ajAtq.dados + pen) partes.push(`${sinalTxt(ajAtq.dados + pen)}d6`);
+      (el('al-pool') as HTMLElement).innerHTML = partes.join(' ');
+      (el('al-dn-pool') as HTMLElement).innerHTML = esc(ra?.dano || '—');
+    };
+    const pintarVeredito = () => {
+      const t = parseInt(totalInp.value || '', 10);
+      const m = parseInt(modInp.value || '0', 10) || 0;
+      const cx = el('al-vered') as HTMLElement;
+      const sim = el('al-sim') as HTMLElement, nao = el('al-nao') as HTMLElement;
+      if (!Number.isFinite(t) || def == null) {
+        cx.innerHTML = '';
+        sim.classList.add('primary'); nao.classList.remove('primary');
+        return;
+      }
+      const soma = t + m;
+      // A regra é `total > Defesa`, e não `>=`: empate não passa.
+      const ok = soma > def;
+      cx.innerHTML = ok
+        ? `<span class="ok">acerta (${soma} &gt; ${def})</span>`
+        : `<span class="ruim">erra por ${def - soma + 1}</span>`;
+      // O botão que a conta indica vira o principal: com a rolagem no site, o
+      // caminho comum passa a ser um clique só, e ele já está debaixo do dedo.
+      sim.classList.toggle('primary', ok);
+      nao.classList.toggle('primary', !ok);
+    };
+    const pintarDano = () => {
+      const bruto = Math.max(0, parseInt(dnInp.value || '0', 10) || 0);
+      const cx = el('al-dn-conta') as HTMLElement;
+      if (!bruto) { cx.innerHTML = ''; return; }
+      // A Absorção do alvo é informação do mestre: ela sai do bloco do bestiário
+      // ou da ficha, e o jogador não lê nem um nem outro. Então na tela dele o
+      // dano vai inteiro e a caixa diz isso, em vez de descontar zero calado e
+      // deixá-lo achar que o couro do ogro não valeu nada.
+      if (!MESTRE) {
+        cx.innerHTML = `Vai <b>${bruto}</b> inteiro · a Absorção do alvo quem desconta é o mestre`;
+        return;
+      }
+      const sk = soakDe(alvo, dnTipo.value);
+      const liq = Math.max(0, bruto - sk);
+      const pv = Math.max(0, (alvo.pv_atual ?? 0) - liq);
+      cx.innerHTML = `Absorção <b>${sk}</b> · passa <b>${liq}</b>`
+        + (alvo.pv_max ? ` · Vida ficaria <b>${pv}/${alvo.pv_max}</b> (${tierDe(pv, alvo.pv_max).estado})` : '');
+    };
     const pintarTempo = () => {
       el('al-golpes').style.display = manSel.value === 'rajada' ? '' : 'none';
       const a = anat();
@@ -4749,15 +4901,49 @@ const SETAS = [
          <div class="muted">golpe${a.golpes > 1 ? 's' : ''} no Tick ${a.offs.map((o) => t0 + o).join(', ')}
            · livre no ${t0 + a.ciclo} · dados: ${esc(dados)}</div>
          ${a.aviso ? `<div class="ruim">${esc(a.aviso)}</div>` : ''}`;
+      pintarPool();
     };
-    manSel.onchange = pintarTempo; golInp.oninput = pintarTempo; pintarTempo();
+    // UM GOLPE, UMA ROLAGEM: a rajada e a empunhadura dupla têm penalidade
+    // própria por golpe, e somá-las numa jogada só seria mentir na primeira e na
+    // última ao mesmo tempo. O campo fica com o PRIMEIRO golpe, que é o que
+    // decide se o ataque pegou; os outros aparecem escritos ao lado.
+    const rolarAcerto = () => {
+      const pen = anat().penDados;
+      const linhas = pen.map((pn) => rolarExpr(ra?.ataque || '0d6', ajAtq.dados + pn, ajAtq.flat));
+      totalInp.value = String(linhas[0].total);
+      rolado = linhas.map(descreverRolada).join(' · ');
+      (el('al-pool') as HTMLElement).textContent = rolado;
+      pintarVeredito();
+    };
+    const rolarDano = () => {
+      const d = rolarExpr(ra?.dano || '0d6');
+      dnInp.value = String(d.total);
+      (el('al-dn-pool') as HTMLElement).textContent = descreverRolada(d);
+      pintarDano();
+    };
+    manSel.onchange = pintarTempo; golInp.oninput = pintarTempo;
+    totalInp.oninput = pintarVeredito; modInp.oninput = pintarVeredito;
+    dnInp.oninput = pintarDano; dnTipo.onchange = pintarDano;
+    (el('al-rolar') as HTMLElement).onclick = rolarAcerto;
+    (el('al-dn-rolar') as HTMLElement).onclick = rolarDano;
+    pintarTempo(); pintarVeredito(); pintarDano();
+    // O MODO DA MESA DECIDE O QUE ACONTECE SOZINHO. No `mesa` (o padrão) nada
+    // rola: os campos abrem vazios e quem joga escreve o que caiu na mão.
+    if (rolaNoSite(TEMPO.rolagem, atacante.tipo === 'pc')) { rolarAcerto(); rolarDano(); }
 
     return new Promise((resolve) => {
       let respondeu = false;
       const fim = (v: boolean) => {
         respondeu = true; dlg.close();
         const a = anat();
-        resolve({ acertou: v, an: a, manobra: a.golpes > 1 ? manSel.value : 'simples' });
+        resolve({
+          acertou: v, an: a, manobra: a.golpes > 1 ? manSel.value : 'simples',
+          dano: Math.max(0, parseInt(dnInp.value || '0', 10) || 0),
+          tipo: dnTipo.value,
+          ajuste: parseInt(modInp.value || '0', 10) || 0,
+          motivo: motivoInp.value.trim(),
+          rolado,
+        });
       };
       (el('al-sim') as HTMLElement).onclick = () => fim(true);
       (el('al-nao') as HTMLElement).onclick = () => fim(false);
@@ -4768,57 +4954,8 @@ const SETAS = [
     });
   }
 
-  /**
-   * O dano rolado, com a absorção descontada na frente do mestre.
-   *
-   * @param antesDoDano o que acontece no tabuleiro no instante do "Aplicar", e
-   *   antes de a Vida mudar: hoje é o voo do projétil. Fica aqui, e não em quem
-   *   chamou, porque o momento certo é o clique, e o clique mora nesta caixa.
-   *   Cancelar não dispara nada: o ataque não terminou de acontecer. Devolve se
-   *   algo voou, porque isso decide se a marca do golpe ainda espera ou não.
-   */
-  function pedirDano(
-    atacante: any, alvo: any, antesDoDano?: () => Promise<boolean>,
-  ): Promise<void> {
-    const dlg = el('dano-dlg') as HTMLDialogElement;
-    const val = el('dn-valor') as HTMLInputElement;
-    const tipo = el('dn-tipo') as HTMLSelectElement;
-    (el('dn-titulo') as HTMLElement).textContent = `Dano em ${alvo.nome}`;
-    val.value = '0';
-    const conta = () => {
-      const bruto = Math.max(0, +val.value || 0);
-      // A Absorção do alvo é informação do mestre: ela sai do bloco do bestiário
-      // ou da ficha, e o jogador não lê nem um nem outro. Então na tela dele o
-      // dano vai inteiro e a caixa diz isso, em vez de descontar zero calado e
-      // deixá-lo achar que o couro do ogro não valeu nada.
-      if (!MESTRE) {
-        el('dn-conta').innerHTML = `Vai <b>${bruto}</b> inteiro · a Absorção do alvo`
-          + ' quem desconta é o mestre';
-        return;
-      }
-      const s = soakDe(alvo, tipo.value);
-      const liq = Math.max(0, bruto - s);
-      const pv = Math.max(0, (alvo.pv_atual ?? 0) - liq);
-      el('dn-conta').innerHTML = `Absorção <b>${s}</b> · passa <b>${liq}</b>`
-        + (alvo.pv_max ? ` · Vida ficaria <b>${pv}/${alvo.pv_max}</b> (${tierDe(pv, alvo.pv_max).estado})` : '');
-    };
-    val.oninput = conta; tipo.onchange = conta; conta();
-    return new Promise((resolve) => {
-      (el('dn-cancelar') as HTMLElement).onclick = () => { dlg.close(); resolve(); };
-      (el('dn-ok') as HTMLElement).onclick = async () => {
-        dlg.close();
-        // A caixa fecha primeiro, depois a flecha voa, e só então a Vida muda:
-        // o tabuleiro está livre para ser olhado, e o número no anel do alvo cai
-        // no instante em que o projétil chega, e não antes dele sair.
-        const voou = antesDoDano ? await antesDoDano() : false;
-        await aplicarDano(
-          atacante, alvo, Math.max(0, +val.value || 0), tipo.value, voou ? 0 : undefined,
-        );
-        resolve();
-      };
-      dlg.showModal();
-    });
-  }
+  /** `+2` ou `−1`, com o menos do projeto. */
+  const sinalTxt = (n: number) => (n > 0 ? `+${n}` : `−${Math.abs(n)}`);
 
   const CAT_SOAK: Record<string, string> = { impacto: 'impacto', corte: 'corte', perfurante: 'perfuracao' };
   const TIPO_LBL: Record<string, string> = { impacto: 'Impacto', corte: 'Corte', perfurante: 'Perfuração' };
@@ -4868,9 +5005,9 @@ const SETAS = [
    *   no golpe corpo a corpo, para a marca esperar o olhar chegar ao tabuleiro.
    */
   async function aplicarDano(
-    atacante: any, alvo: any, bruto: number, tipo: string, esperaMarca?: number,
+    atacante: any, alvo: any, bruto: number, tipo: string, esperaMarca?: number, nota = '',
   ) {
-    // Pelo lado do jogador a Absorção não existe (ver `pedirDano`): o dano vai
+    // Pelo lado do jogador a Absorção não existe (ver `folhaDaAcao`): o dano vai
     // inteiro, o registro diz que foi inteiro, e o mestre corrige se for o caso.
     const s = MESTRE ? soakDe(alvo, tipo) : 0;
     const liquido = Math.max(0, bruto - s);
@@ -4885,7 +5022,7 @@ const SETAS = [
     atualizarAnel(alvo); pintarLista(); pintarIniciativa();
     avisarAgora('combatentes');
     await logar(alvo, `${atacante.nome} acertou ${alvo.nome}: ${liquido} de dano (${TIPO_LBL[tipo]})`
-      + (s > 0 ? ` [${bruto} − ${s} abs]` : '') + (MESTRE ? '' : ' [sem Absorção]') + r.estado,
+      + (s > 0 ? ` [${bruto} − ${s} abs]` : '') + (MESTRE ? '' : ' [sem Absorção]') + nota + r.estado,
       r.inverso);
   }
 

@@ -2227,6 +2227,27 @@
         }
       ]
     },
+    "rolagem": {
+      "nota": "Quem rola os dados. Não muda regra nenhuma: muda quem digita o resultado. O padrão é ninguém rolar no site, porque o dado na mão é metade da mesa.",
+      "padrao": "mesa",
+      "modos": [
+        {
+          "id": "mesa",
+          "nome": "Na mesa",
+          "resumo": "Ninguém rola no site. O Grid mostra o bolo de dados e a Defesa a superar; quem joga rola de verdade e escreve o número."
+        },
+        {
+          "id": "misto",
+          "nome": "Misto: as criaturas rolam sozinhas",
+          "resumo": "Os jogadores rolam os deles na mesa; as criaturas e os NPCs do mestre rolam no site. Metade das transcrições de uma sessão é o mestre rolando pelos próprios monstros."
+        },
+        {
+          "id": "site",
+          "nome": "No site",
+          "resumo": "Todo acerto e todo dano saem do Grid, dos dois lados, com os dados aparecendo um a um. O campo continua editável: rolar no site não impede digitar por cima."
+        }
+      ]
+    },
     "pgr": {
       "nota": "A régua P/G/R por classe de arma: em que Tick o golpe sai, contado da declaração. O Golpe é sempre 1 Tick; a Recuperação é o que sobra da Velocidade (P + G + R = Velocidade).",
       "preparo": {

@@ -233,9 +233,17 @@ eq(T.fita(null, 4, 3).map((c) => c.fase), ['livre', 'livre', 'livre'], 'a fita d
   eq([g6.preparo, g6.ciclo], [8, 9], 'Arte de grau 6: Preparo 8, ciclo 9 (§5.3 do Arcano)');
   eq(T.reguaDaArte(6, 'normal').preparo, 0, 'no sistema normal a Arte também resolve no primeiro Tick');
 }
-eq(T.combateDaMesa(null), { sistema: 'normal', marcacao: 'fita' }, 'a mesa sem escolha usa o padrão');
-eq(T.combateDaMesa({ combate: { sistema: 'pgr' } }), { sistema: 'pgr', marcacao: 'fita' },
+eq(T.combateDaMesa(null), { sistema: 'normal', marcacao: 'fita', rolagem: 'mesa' },
+  'a mesa sem escolha usa o padrão');
+eq(T.combateDaMesa({ combate: { sistema: 'pgr' } }), { sistema: 'pgr', marcacao: 'fita', rolagem: 'mesa' },
   'a escolha da mesa se sobrepõe ao padrão, campo a campo');
+// O padrão dos dados é a mesa rolando: o site só rola onde a mesa pedir, e uma
+// mesa antiga (sem a chave) não pode começar a rolar sozinha depois de um deploy.
+eq(T.COMBATE_PADRAO.rolagem, 'mesa', 'e o padrão dos dados é ninguém rolar no site');
+eq([T.rolaNoSite('mesa', false), T.rolaNoSite('mesa', true)], [false, false], 'no modo mesa o site não rola nada');
+eq([T.rolaNoSite('site', false), T.rolaNoSite('site', true)], [true, true], 'no modo site ele rola tudo');
+eq([T.rolaNoSite('misto', false), T.rolaNoSite('misto', true)], [true, false],
+  'no misto a criatura rola sozinha e o personagem não');
 eq(T.classeDaArma('espada-longa'), 'media', 'a classe sai do id');
 eq(T.classeDaArma('Espada Longa'), 'media', 'e também do nome, que é o que a mesa guarda');
 eq(T.classeDaArma(null), 'leve', 'sem arma, o punho é rápido');

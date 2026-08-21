@@ -212,14 +212,33 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
     const tempo = document.getElementById('al-tempo')?.textContent.replace(/\s+/g, ' ').trim();
     const manobras = [...document.getElementById('al-manobra').options]
       .filter((o) => !o.hidden).map((o) => o.value);
-    document.getElementById('al-nao').click();   // errou: nao abre a caixa de dano
+    // A FOLHA DA ACAO: acerto, ajuste e dano na mesma caixa, e o modo do dano
+    // vindo da arma em vez de nascer sempre em Impacto.
+    const folha = {
+      secoes: dlg.querySelectorAll('.al-sec').length,
+      pool: document.getElementById('al-pool')?.textContent.trim(),
+      dnTipo: document.getElementById('al-dn-tipo')?.value,
+      danoDaArma: (document.getElementById('al-dn-pool')?.textContent || '').trim(),
+      temMotivo: !!document.getElementById('al-motivo'),
+      // O modo padrao e "na mesa": nada rola sozinho, os campos abrem vazios.
+      totalVazio: document.getElementById('al-total')?.value === '',
+      danoVazio: document.getElementById('al-dn')?.value === '',
+    };
+    // O ⚄ avulso continua ali mesmo na mesa que rola tudo na mao.
+    document.getElementById('al-rolar').click();
+    document.getElementById('al-dn-rolar').click();
+    await new Promise((r) => setTimeout(r, 200));
+    folha.rolouAcerto = document.getElementById('al-total')?.value !== '';
+    folha.rolouDano = document.getElementById('al-dn')?.value !== '';
+    folha.vered = document.getElementById('al-vered')?.textContent.trim();
+    document.getElementById('al-nao').click();   // errou: nada de dano
     // A LEITURA E IMEDIATA, e nao depois de esperar. O Supabase de mentira da
     // bancada aceita o `update` e nao guarda nada, entao o primeiro recarregamento
     // devolve a peca sem acao e apaga a marca. O que se mede aqui e o que a tela
     // desenhou com o que acabou de acontecer, que e o que importa.
     await new Promise((r) => setTimeout(r, 450));
     const linha = [...document.querySelectorAll('#gr-ini .ini-item')].find((x) => x.dataset.c === antes.t);
-    return { abriu: true, tempo, manobras, antes: antes.tick, depois: linha?.dataset.t,
+    return { abriu: true, tempo, manobras, folha, antes: antes.tick, depois: linha?.dataset.t,
       fita: !!linha?.querySelector('.ini-fita')
         || !!document.querySelector(`.gr-token[data-c="${antes.t}"]`)?.className.match(/montando|golpe/) };
   });
@@ -229,6 +248,20 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
     ok((atq.manobras || []).includes('simples'), 'com a lista de manobras filtrada');
     ok(atq.antes !== atq.depois, `atacar empurrou o relogio (t${atq.antes} -> t${atq.depois})`);
     ok(atq.fita, 'e a peca ficou marcada com o gesto no ar');
+    const f = atq.folha || {};
+    ok(f.secoes === 3, `a folha da acao tem as tres faixas: acerto, ajuste e dano (${f.secoes})`);
+    ok(/d6|—/.test(f.pool || ''), `o bolo de dados de quem ataca vem escrito (${f.pool})`);
+    ok(f.temMotivo, 'e o ajuste avulso pede o motivo, que vai para o registro');
+    // A letra entre parenteses na linha de dano decide o modo: `1d6 +2 (C)`
+    // abre em Cortante. Antes a caixa abria em Impacto sempre, e o mestre
+    // aplicava couro contra espada sem perceber.
+    const LETRA = { I: 'impacto', C: 'corte', P: 'perfurante' };
+    const esperado = LETRA[(/\(([ICP])\)/.exec(f.danoDaArma || '') || [])[1]] || null;
+    ok(esperado ? f.dnTipo === esperado : true,
+      `o modo do dano vem da arma (${f.danoDaArma} -> ${f.dnTipo})`);
+    ok(f.totalVazio && f.danoVazio, 'no modo padrao (dados na mesa) nada rola sozinho');
+    ok(f.rolouAcerto && f.rolouDano, 'e o ⚄ avulso rola quando alguem pede');
+    ok(/acerta|erra/.test(f.vered || ''), `com o veredito escrito ao lado (${f.vered})`);
   }
 
   // -------------------------------------------------- abortar o Preparo
