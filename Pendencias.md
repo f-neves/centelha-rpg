@@ -888,18 +888,27 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   dele**, a **caixa de acerto vem vazia** do lado dele, o **número de dano só aparece para quem
   enxerga o número**, e o adaptador `sbDoJogador` conhece cinco formas de escrita (nota de
   manutenção, para quando o módulo das Artes ganhar outra).
-- [ ] **I11 · [FAZER] A Arte sair no ÚLTIMO Tick, no tabuleiro.** Aberta em 2026-08-18, junto com o
-  desvio de emergência, que **já entrou** (`oferecerSaida` em `artes-grid-mesa.ts`: os metros até a
-  borda são medidos na figura, 1 Tick por metro, `5 + 5 × m` para metade e o dobro para nada, mais o
-  teste de coragem para ficar parado, e o bloco novo na aba Referência). O que **não** entrou é a
-  outra metade da §5.5: no Grid a conjuração ainda resolve na hora, e o livro manda resolver no
-  último Tick dos cinco a sete de preparo. Fazer isso direito pede um estado de **conjuração em
-  preparo** que sobreviva entre a declaração e a saída, e ele não cabe em `arena_efeitos`: a linha de
-  lá exige forma e figura, e a §5.5 diz justamente que **a mira e a forma só travam no fim**, então o
-  molde não pode ter lugar no chão durante o preparo. É migração nova mais um gancho no relógio, e
-  junto vai a janela de **identificar o feitiço** (Inteligência + Ocultismo, com a Dificuldade caindo
-  a cada Tick), que hoje entra na caixa da saída só como o bônus de +2 ou +4 que o mestre marca à mão.
-
+- [~] **I11 · A Arte sai no ÚLTIMO Tick, no tabuleiro. PARCIAL em 2026-08-21.** O que entrou
+  (§15.6 do `Combate_Tempo.md`): conjurar declara a ação com a anatomia da Arte (Preparo = ciclo − 1,
+  Golpe no último Tick), o relógio anda a Velocidade inteira, e o efeito **nasce no Tick do Golpe**
+  em vez de na hora do clique; enquanto o relógio não o alcança ele não queima ninguém e não é
+  obstáculo, e a mancha aparece tracejada só para o mestre. O estado de preparo coube em
+  `arena_efeitos` porque a linha guarda o Tick de nascimento, e `montando()` responde o resto.
+  **O que NÃO entrou, e é a parte que esta pendência dizia ser a difícil:** a §5.5 manda a mira e a
+  forma travarem **no fim** do preparo, e hoje elas travam na declaração (o mestre escolhe onde a
+  bola cai antes de montar). A diferença é de regra e não de tela: com a forma travada cedo, quem
+  se move durante o preparo escapa; com ela travada tarde, não escapa. Junto continua faltando a
+  janela de **identificar o feitiço** (Inteligência + Ocultismo, Dificuldade caindo a cada Tick),
+  que hoje é o +2 ou +4 que o mestre marca à mão.
+- [ ] **I12 · [DECIDIR] O Grid como copiloto: menos toque, mais escolha.** Aberto em 21/08 a partir
+  de uma pergunta da mesa. Medido: **um ataque custa seis toques e um número digitado, e só três
+  desses sete são escolha**; o resto é o mestre transcrevendo para o Grid um número que o Grid já
+  tinha. O documento é o `Grid_Automacao.md`: a conta do atrito, o princípio (nunca perguntar o que
+  dá para calcular · todo número calculado é campo editável · a mesa escolhe a intenção e o Grid faz
+  a conta), oito emendas em ordem de proveito e o **contrato do improviso** em três degraus (digitar
+  por cima · modificador avulso com motivo · resolver na mão). A primeira fatia é de uma tarde:
+  `rolarExpr` numa lib, o modo do dano vindo da arma e o dano pré-rolado. Falta decidir por onde
+  começar.
 ---
 
 ## J. Infraestrutura · endereço, hospedagem e versão

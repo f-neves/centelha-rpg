@@ -121,12 +121,19 @@ Nenhuma delas impede jogar; todas são de uma tarde.
 
 Ordenado pelo que eu faria primeiro. **P** = uma tarde · **M** = médio · **G** = grande.
 
+> Esta lista é de **funcionalidades**. A lista de **atritos** (quantos toques uma ação custa e
+> quantos deles são datilografia) está no `Grid_Automacao.md`, aberto em 21/08, e ela reordena
+> vários itens daqui: a prévia do golpe, o alcance da arma equipada, o rolador no tabuleiro e os
+> atalhos de teclado deixam de ser conforto e viram peças da mesma emenda.
+
 ### O relógio de Ticks (é o que temos de mais nosso)
 
-- [ ] **Linha do tempo de Ticks** · **M** · uma régua sob o tabuleiro com os próximos ~20 ticks e os
-      retratos onde cada um vai agir, **inclusive os efeitos vencendo**. Nenhuma mesa virtual tem
-      isso, porque quase nenhum sistema de mesa é por ticks. Grandia, Trails e FFT provam que
-      funciona.
+- [x] **Linha do tempo de Ticks** · FEITA em 2026-08-21, e **desligada por padrão**. A régua está
+      lá (Ticks em colunas, pessoas em linhas, a coluna do agora atravessando todas), liga no ▤ da
+      barra e some inteira quando se desliga. O veredito da mesa foi que ela **não ajudava**: a tira
+      da ordem, que subiu para cima do tabuleiro no mesmo dia, já responde o que se precisa saber, e
+      a régua cobrava 224px de mapa para responder de novo. Fica para quem precisar comparar dois
+      gestos no ar. Falta nela: **os efeitos vencendo**, que era metade da ideia original.
 - [ ] **Prévia do custo** · **P** · mexer no campo "a ação custa" mostra na hora **onde a peça vai
       cair** na fila. Decidir entre um golpe de 3 e um de 7 vira leitura, e não conta de cabeça.
 - [ ] **Aviso da vez para quem está longe da tela** · **P** · título da aba piscando, um bipe curto
