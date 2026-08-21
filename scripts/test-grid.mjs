@@ -559,6 +559,84 @@ async function cenaRastreador(br, url) {
   await p.close();
 }
 
+/**
+ * A CAIXA DE FUNDO, ONDE A ARTE SE ARRUMA.
+ *
+ * Uma arte que subiu em pé fica em pé no arquivo, e por isso está torta na aba
+ * Mapas, na miniatura da escolha e em toda arena que a use. O giro aqui é nos
+ * pixels, e é o tipo de conserto que ninguém confere de olho depois: se a conta
+ * do canvas errar a troca de largura por altura, a arte volta pior do que
+ * estava e o mestre só descobre com a mesa montada.
+ *
+ * Os dois mapas da bancada têm dez por seis e seis por dez pixels, então a
+ * medida escrita embaixo da miniatura é a prova direta do que aconteceu.
+ */
+async function cenaMapas(br, url) {
+  console.log('\n· a caixa de fundo: girar e excluir a arte');
+  const p = await br.newPage();
+  await p.setViewport({ width: 1400, height: 950 });
+  const erros = [];
+  p.on('pageerror', (e) => erros.push(e.message));
+  await p.goto(`${url}/mesa/grid?id=${MESA}&bench=6&cols=24&rows=16&nevoa=0`,
+    { waitUntil: 'networkidle0', timeout: 60000 });
+  await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
+
+  await p.evaluate(() => document.getElementById('gr-fundo-btn').click());
+  await p.waitForSelector('#fundo-dlg[open] .fd-item', { timeout: 15000 });
+  const medidas = () => p.evaluate(() => [...document.querySelectorAll('.fd-item')].map((i) => ({
+    nome: i.querySelector('.fd-nome')?.textContent || '',
+    med: i.querySelector('.fd-med')?.textContent || '',
+    empe: i.classList.contains('fd-empe'),
+  })));
+  // A medida só existe depois que a miniatura carrega.
+  await p.waitForFunction(() => [...document.querySelectorAll('.fd-med')].every((m) => m.textContent),
+    { timeout: 15000 });
+  const antes = await medidas();
+  ok(antes.length === 2, `as duas artes da mesa aparecem na caixa (${antes.length})`);
+  ok(antes.some((m) => m.med === '10×6 · paisagem'), 'a deitada se diz deitada');
+  const empe = antes.find((m) => m.empe);
+  ok(empe?.med === '6×10 · retrato', `a que subiu em pé se denuncia (${empe?.med || 'nenhuma'})`);
+
+  // ---------------------------------- girar não é escolher, e gira de verdade
+  await p.evaluate(() => {
+    const it = [...document.querySelectorAll('.fd-item')].find((i) => i.classList.contains('fd-empe'));
+    it.querySelector('[data-g="90"]').click();
+  });
+  await p.waitForFunction(
+    () => [...document.querySelectorAll('.fd-item')].every((i) => !i.classList.contains('fd-empe'))
+      && [...document.querySelectorAll('.fd-med')].every((m) => m.textContent),
+    { timeout: 20000 });
+  const depois = await medidas();
+  const virada = depois.find((m) => m.nome === empe.nome);
+  ok(virada?.med === '10×6 · paisagem', `a arte em pé deitou (${empe?.med} → ${virada?.med})`);
+  const aberto = await p.evaluate(() => !!document.getElementById('fundo-dlg')?.open);
+  ok(aberto, 'a caixa continua aberta: girar não escolheu a arte nem fechou tudo');
+  const subiu = await p.evaluate(() => ({
+    up: (window.__SB.log || []).filter((x) => x.tipo === 'upload').length,
+    rm: (window.__SB.log || []).filter((x) => x.tipo === 'remove').length,
+  }));
+  ok(subiu.up === 1 && subiu.rm === 1,
+    `o arquivo novo subiu e o velho saiu do balde (${subiu.up} sobe, ${subiu.rm} sai)`);
+
+  // ------------------------------------------- excluir pergunta antes de tirar
+  await p.evaluate(() => {
+    const it = [...document.querySelectorAll('.fd-item')].find((i) => /torre/i.test(i.textContent));
+    it.querySelector('[data-rm]').click();
+  });
+  await p.waitForSelector('dialog.ui-dlg[open] .ui-dlg-ok', { timeout: 15000 });
+  const pergunta = await p.evaluate(() =>
+    document.querySelector('dialog.ui-dlg[open] .ui-dlg-msg')?.textContent || '');
+  ok(/excluir/i.test(pergunta), 'excluir pergunta antes, e não some com a arte no clique');
+  await p.evaluate(() => document.querySelector('dialog.ui-dlg[open] .ui-dlg-ok').click());
+  await p.waitForFunction(() => document.querySelectorAll('.fd-item').length === 1, { timeout: 15000 });
+  const sobrou = await medidas();
+  ok(sobrou.length === 1 && !/torre/i.test(sobrou[0].nome),
+    `sobrou só a outra arte na caixa (${sobrou.map((m) => m.nome).join(', ')})`);
+
+  ok(erros.length === 0, `nenhum erro de página (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
+  await p.close();
+}
+
 const dev = await subirDev({ config: 'astro.bancada.mjs' });
 const br = await puppeteer.launch({ executablePath: NAV, headless: 'new', args: ['--no-sandbox'] });
 try {
@@ -566,6 +644,7 @@ try {
   await cena(br, dev.url, { pecas: 30, cols: 40, rows: 30, nevoa: true });
   await cenaJogador(br, dev.url);
   await cenaRastreador(br, dev.url);
+  await cenaMapas(br, dev.url);
 } finally {
   await br.close();
   await dev.parar();
@@ -577,4 +656,5 @@ if (falhas.length) {
   process.exit(1);
 }
 console.log('\n✓ Grid OK · desenho, movimento, registro, névoa e card, nas duas cenas, dentro dos tetos'
-  + ' de repintura, a mesma mesa vista pelo jogador, e a tira da ordem no rastreador');
+  + ' de repintura, a mesma mesa vista pelo jogador, a tira da ordem no rastreador,'
+  + ' e a caixa de fundo girando e excluindo arte');

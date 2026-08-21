@@ -149,6 +149,17 @@ const paraJogador = (c) => {
   return { ...c, acao: resto };
 };
 
+// O BALDE DE ARQUIVOS DA BANCADA: caminho para conteúdo, em memória.
+// Os dois PNGs abaixo têm dez por seis e seis por dez pixels. Um mapa de
+// verdade não caberia aqui e não provaria mais nada: o que a tela precisa ler
+// da imagem é o tamanho natural dela.
+const PNG_DEITADO = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAAdElEQVR4nAXBwQAAIBBFwQ5BhPAOwSzEQnyIhViIDxFEECE0MxRU0IGDE9zgBTNYwQ6Gkko6cXKSm7xkJivZyZAo0cLiiCuemGKJLYaKKrpwcYpbvGIWq9jFUFNNN25Oc5vXzGY1uxkyZdrYHHPNM9Mss80HifJHEa5LbAkAAAAASUVORK5CYII=';
+const PNG_EM_PE = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAKCAIAAAAYbLhkAAAAeklEQVR4nAXBIQEAIAwAwSUgx0J8iGn09PQ0epoQhCAEIQiB4k60Q8c63slOdUQDAgs8yKAC0QEDG/ggBzUQnTCxiU9yUhPRBQtb+CIXtRDdsLGNb3JTG9EDBzv4IQ91EL1wsYtf8lIX0QcPe/gjH/UQbdCwhjeyUY0PfB1HWV1jrxEAAAAASUVORK5CYII=';
+const BALDE = new Map([
+  [`${MESA}/mapas/1-deitado.png`, PNG_DEITADO],
+  [`${MESA}/mapas/2-em-pe.png`, PNG_EM_PE],
+]);
+
 const TABELAS = {
   mesas: [{
     id: MESA, nome: 'Mesa de bancada', descricao: 'bancada de teste',
@@ -170,7 +181,18 @@ const TABELAS = {
     .map((c) => ({ id: c.personagem_id, imagem_path: null, ficha: { ...FICHA_PC, nome: c.nome } })),
   profiles: [],
   mesa_membros: [],
-  arquivos: [],
+  // OS DOIS MAPAS DA BANCADA, um deitado e um em pé.
+  //
+  // Miúdos de propósito (dez por seis pixels e seis por dez): o que se prova
+  // aqui é a MEDIDA e o encanamento, e não a beleza da arte. O mapa em pé é o
+  // caso que existe na vida real, que é a arte que subiu na orientação errada
+  // e precisa deitar sem que ninguém abra editor de imagem.
+  arquivos: [
+    { id: 'aq-mapa-1', mesa_id: MESA, nome: 'A ponte, deitada', categoria: 'mapa',
+      bucket: 'mesa', tipo: 'image/png', storage_path: `${MESA}/mapas/1-deitado.png` },
+    { id: 'aq-mapa-2', mesa_id: MESA, nome: 'A torre, em pé', categoria: 'mapa',
+      bucket: 'mesa', tipo: 'image/png', storage_path: `${MESA}/mapas/2-em-pe.png` },
+  ],
   mesa_criaturas: [],
   mesa_codex: [],
   mesa_notas: [],
@@ -255,15 +277,44 @@ function rpcJogador(nome, args) {
   return [];
 }
 
+/**
+ * O `update` e o `delete` MEXEM na tabela, e para isso o `eq` precisa ser lembrado.
+ *
+ * Enquanto os dois devolviam lista vazia sem tocar em nada, todo caminho de
+ * escrita passava no teste sem escrever: a tela mandava, a bancada respondia
+ * "pronto" e a leitura seguinte trazia o estado velho. Um `filtros` vazio não
+ * apaga a tabela inteira de propósito, ainda que o Postgres fizesse isso: um
+ * engano meu aqui derrubaria a cena toda e o erro apareceria longe daqui.
+ */
+const casa = (linha, filtros) => filtros.every(([c, v]) => linha[c] === v);
+
+function mudar(tabela, campos, filtros) {
+  const arr = TABELAS[tabela];
+  if (!Array.isArray(arr) || !filtros.length) return [];
+  const tocadas = arr.filter((l) => casa(l, filtros));
+  for (const l of tocadas) Object.assign(l, campos);
+  return tocadas;
+}
+
+function remover(tabela, filtros) {
+  const arr = TABELAS[tabela];
+  if (!Array.isArray(arr) || !filtros.length) return [];
+  const fora = arr.filter((l) => casa(l, filtros));
+  TABELAS[tabela] = arr.filter((l) => !casa(l, filtros));
+  return fora;
+}
+
 function encadeavel(tabela, verbo, valor) {
+  const filtros = [];
   const o = {
-    select: () => o, eq: () => o, in: () => o, order: () => o, limit: () => o,
+    select: () => o, in: () => o, order: () => o, limit: () => o,
+    eq: (col, val) => { filtros.push([col, val]); return o; },
     neq: () => o, is: () => o, not: () => o, or: () => o, gte: () => o, lte: () => o,
     maybeSingle: () => { o.__um = true; return o; },
     single: () => { o.__um = true; return o; },
     then: (ok, ko) => {
       anotar(verbo, tabela);
-      const dado = typeof valor === 'function' ? valor() : valor;
+      const dado = typeof valor === 'function' ? valor(filtros) : valor;
       // A recusa também é resposta. Nada aqui erra por acidente (consulta que
       // ninguém ensinou devolve lista vazia, de propósito), mas quem imita uma
       // função do banco precisa poder dizer "não": sem isto, a bancada só
@@ -298,18 +349,33 @@ export function createClient() {
       select: () => encadeavel(tab, 'select', () => TABELAS[tab] ?? []),
       insert: (l) => encadeavel(tab, 'insert', () => guardar(tab, l)),
       upsert: (l) => encadeavel(tab, 'upsert', () => guardar(tab, l)),
-      update: () => encadeavel(tab, 'update', () => []),
-      delete: () => encadeavel(tab, 'delete', () => []),
+      update: (l) => encadeavel(tab, 'update', (f) => mudar(tab, l, f)),
+      delete: () => encadeavel(tab, 'delete', (f) => remover(tab, f)),
     }),
     rpc: (nome, args) => encadeavel('rpc:' + nome, 'rpc', () => rpcJogador(nome, args)),
     channel: () => canal,
     removeChannel: () => Promise.resolve('ok'),
     storage: {
       from: () => ({
-        createSignedUrl: async () => ({ data: null, error: null }),
-        createSignedUrls: async () => ({ data: [], error: null }),
-        upload: async () => ({ data: null, error: { message: 'bancada: não sobe arquivo' } }),
-        getPublicUrl: () => ({ data: { publicUrl: '' } }),
+        createSignedUrl: async (c) => ({ data: BALDE.has(c) ? { signedUrl: BALDE.get(c) } : null, error: null }),
+        createSignedUrls: async (cs) => ({
+          data: (cs || []).filter((c) => BALDE.has(c)).map((c) => ({ path: c, signedUrl: BALDE.get(c) })),
+          error: null,
+        }),
+        // O que sobe fica guardado como URL de objeto, e não como promessa
+        // devolvida e esquecida: quem acabou de gravar uma arte girada volta
+        // para a lista e precisa VER a arte girada, com a medida nova.
+        upload: async (c, corpo) => {
+          BALDE.set(c, corpo instanceof Blob ? URL.createObjectURL(corpo) : String(corpo));
+          anotar('upload', c);
+          return { data: { path: c }, error: null };
+        },
+        remove: async (cs) => {
+          for (const c of cs || []) BALDE.delete(c);
+          anotar('remove', (cs || []).join(','));
+          return { data: [], error: null };
+        },
+        getPublicUrl: (c) => ({ data: { publicUrl: BALDE.get(c) || '' } }),
         list: async () => ({ data: [], error: null }),
       }),
     },

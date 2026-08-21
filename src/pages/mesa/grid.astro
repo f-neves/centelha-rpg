@@ -369,7 +369,8 @@ const SETAS = [
     <form method="dialog">
       <h3>Arte por baixo dos hexágonos</h3>
       <p class="muted dlg-txt">Escolha um mapa já enviado na aba Mapas, ou envie um agora (ele passa a
-        aparecer lá também). Enquanto esta arena estiver em jogo, o grupo enxerga a arte.</p>
+        aparecer lá também). Enquanto esta arena estiver em jogo, o grupo enxerga a arte.
+        Os botões na miniatura deitam ou excluem: o giro é no arquivo, e vale em toda arena.</p>
       <div id="fd-lista" class="fd-lista"></div>
       <div class="dlg-btns">
         <label class="btn mini">Enviar imagem<input type="file" id="fd-file" accept="image/*" hidden /></label>
@@ -1144,6 +1145,22 @@ const SETAS = [
   .fd-item img { width: 100%; height: 5rem; object-fit: cover; display: block; }
   .fd-item span { display: block; padding: .2rem .35rem; font-size: var(--fs-micro);
     overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .fd-arte { position: relative; }
+  /* Os botoes ficam SEMPRE a vista, e nao so sob o ponteiro: o mestre no tablet
+     nao tem passagem de mouse, e e justamente la que ele arruma a mesa antes da
+     sessao. A tarja atras deles e o que os salva de sumir num mapa claro. */
+  .fd-acs { position: absolute; top: .2rem; right: .2rem; display: flex; gap: .1rem;
+    padding: .1rem; border-radius: var(--r-sm);
+    background: color-mix(in srgb, var(--bg) 72%, transparent); }
+  .fd-acs button { background: none; border: 0; color: var(--ink); cursor: pointer;
+    font: inherit; font-size: var(--fs-micro); line-height: 1; padding: .12rem .28rem;
+    border-radius: var(--r-sm); }
+  .fd-acs button:hover { background: var(--accent); color: var(--on-accent, var(--bg)); }
+  .fd-acs button.perigo:hover { background: var(--perigo); color: var(--on-perigo, #fff); }
+  .fd-med { color: var(--ink-soft); padding-top: 0 !important; }
+  /* A arte em pe e a que o tabuleiro nao sabe usar: ela se anuncia. */
+  .fd-item.fd-empe .fd-med { color: var(--perigo); }
+  .fd-item.ocupado { opacity: .45; pointer-events: none; }
 </style>
 
 <script>
@@ -1163,6 +1180,7 @@ const SETAS = [
     offsetParaAxial, letraColuna,
   } from '../../lib/hex';
   import { uiConfirmar, uiErro, uiFormulario } from '../../lib/ui-dialog';
+  import { girarMapa, excluirMapa, medidaDeMapa, type Giro } from '../../lib/mesa-mapas';
   import { caminhoSeta, SETA_PADRAO, type EstiloSeta, type TipoSeta } from '../../lib/seta';
   import {
     carregarEfeitos, efeitosAtivos, pintarEfeitos, pintarPainelEfeitos, conjurar,
@@ -5523,20 +5541,7 @@ const SETAS = [
   // ---- a arte de fundo ----
   async function abrirFundo() {
     const dlg = el('fundo-dlg') as HTMLDialogElement;
-    const { data } = await SB.from('arquivos').select('id, nome, storage_path')
-      .eq('mesa_id', ID).eq('categoria', 'mapa').order('criado_em', { ascending: false });
-    const mapas = data || [];
-    const urls = await urlsImagens(SB, mapas.map((m: any) => m.storage_path), 'mesa');
-    el('fd-lista').innerHTML = mapas.length
-      ? mapas.map((m: any) => `<div class="fd-item${m.storage_path === ARENA.fundo_path ? ' sel' : ''}"
-          data-p="${esc(m.storage_path)}" data-a="${m.id}">
-          <img src="${esc(urls[m.storage_path] || '')}" alt="" loading="lazy" /><span>${esc(m.nome)}</span>
-        </div>`).join('')
-      : '<p class="vazio">Nenhum mapa na aba Mapas ainda. Envie um aqui embaixo.</p>';
-    el('fd-lista').querySelectorAll<HTMLElement>('.fd-item').forEach((it) => it.onclick = async () => {
-      dlg.close();
-      await gravarFundo(it.dataset.p!, it.dataset.a!);
-    });
+    await pintarMapas(dlg);
     (el('fd-file') as HTMLInputElement).onchange = async (e) => {
       const file = (e.target as HTMLInputElement).files?.[0];
       if (!file) return;
@@ -5546,6 +5551,87 @@ const SETAS = [
     el('fd-tirar').onclick = async () => { dlg.close(); await gravarFundo(null, null); };
     el('fd-cancelar').onclick = () => dlg.close();
     dlg.showModal();
+    // O `showModal` acende o PRIMEIRO focável de dentro, e aqui o primeiro é uma
+    // palavra do texto de ajuda que o glossário virou link. Com ele aceso, um
+    // Enter distraído leva o mestre para fora da mesa no meio da sessão.
+    (el('fd-cancelar') as HTMLElement).focus();
+  }
+
+  /**
+   * A lista de artes da caixa, com o que dá para fazer com cada uma.
+   *
+   * Está fora da `abrirFundo` porque girar e excluir REFAZEM a lista sem fechar
+   * a caixa: quem entrou aqui para arrumar três mapas tortos arruma os três de
+   * uma vez, e não reabre o diálogo entre um e outro.
+   *
+   * A medida ("1024×1792 · retrato") só existe depois que a miniatura carrega,
+   * porque é dela que sai o tamanho natural. É a legenda que responde à única
+   * pergunta que se faz aqui, que é qual das artes está em pé.
+   */
+  async function pintarMapas(dlg: HTMLDialogElement) {
+    const { data } = await SB.from('arquivos').select('id, nome, storage_path')
+      .eq('mesa_id', ID).eq('categoria', 'mapa').order('criado_em', { ascending: false });
+    const mapas = data || [];
+    const urls = await urlsImagens(SB, mapas.map((m: any) => m.storage_path), 'mesa');
+    const lista = el('fd-lista');
+    lista.innerHTML = mapas.length
+      ? mapas.map((m: any) => `<div class="fd-item${m.storage_path === ARENA.fundo_path ? ' sel' : ''}"
+          data-p="${esc(m.storage_path)}" data-a="${m.id}" data-n="${esc(m.nome || '')}">
+          <div class="fd-arte">
+            <img src="${esc(urls[m.storage_path] || '')}" alt="" loading="lazy" />
+            <div class="fd-acs">
+              <button type="button" data-g="-90" title="Deitar a arte para a esquerda">↺</button>
+              <button type="button" data-g="90" title="Deitar a arte para a direita">↻</button>
+              <button type="button" data-rm="1" class="perigo" title="Excluir esta arte da mesa">✕</button>
+            </div>
+          </div>
+          <span class="fd-nome">${esc(m.nome)}</span><span class="fd-med"></span>
+        </div>`).join('')
+      : '<p class="vazio">Nenhum mapa na aba Mapas ainda. Envie um aqui embaixo.</p>';
+
+    lista.querySelectorAll<HTMLElement>('.fd-item').forEach((it) => {
+      const arq = { id: it.dataset.a!, nome: it.dataset.n!, storage_path: it.dataset.p! };
+      const img = it.querySelector('img') as HTMLImageElement;
+      const medir = () => {
+        if (!img.naturalWidth) return;
+        it.querySelector('.fd-med')!.textContent = medidaDeMapa(img.naturalWidth, img.naturalHeight);
+        it.classList.toggle('fd-empe', img.naturalHeight > img.naturalWidth);
+      };
+      if (img.complete) medir(); else img.onload = medir;
+
+      it.onclick = async () => { dlg.close(); await gravarFundo(arq.storage_path, arq.id); };
+
+      // O clique nos botões não pode subir até o item: lá em cima ele significa
+      // "usa esta arte", e girar não é escolher.
+      it.querySelectorAll<HTMLElement>('[data-g]').forEach((b) => b.onclick = async (ev) => {
+        ev.stopPropagation();
+        it.classList.add('ocupado');
+        const novo = await girarMapa(SB, {
+          mesaId: ID, arquivo: arq, url: img.src, graus: Number(b.dataset.g) as Giro,
+        });
+        it.classList.remove('ocupado');
+        if (novo) await depoisDeMexerNoMapa(dlg, arq.storage_path);
+      });
+      (it.querySelector('[data-rm]') as HTMLElement).onclick = async (ev) => {
+        ev.stopPropagation();
+        if (await excluirMapa(SB, { mesaId: ID, arquivo: arq })) {
+          await depoisDeMexerNoMapa(dlg, arq.storage_path);
+        }
+      };
+    });
+  }
+
+  /**
+   * O arquivo mudou de endereço (ou sumiu). Quem estava olhando precisa saber.
+   *
+   * `carregar` só é chamado se a arte mexida for a DESTA arena: sem isso o
+   * tabuleiro continuaria com a URL antiga, que aponta para um arquivo que já
+   * não existe, e a arte sumiria na próxima vez que alguém abrisse a página,
+   * sem nada na tela explicando por quê.
+   */
+  async function depoisDeMexerNoMapa(dlg: HTMLDialogElement, caminho: string) {
+    if (ARENA.fundo_path === caminho) { await carregar(); RT?.avisar('arena'); }
+    await pintarMapas(dlg);
   }
 
   /** Envia para o mesmo bucket e registra em `arquivos`: a arte aparece na aba Mapas também. */
