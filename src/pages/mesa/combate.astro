@@ -900,7 +900,16 @@ import MesaCab from '../../components/MesaCab.astro';
     // uma fita inteira apagada ao lado do card diria "esta montando alguma
     // coisa" para quem esta parado apanhando.
     if (!temGesto(a)) return '';
-    const o = a.arma && EH_MESTRE ? `<span class="fita-alvo">${esc(String(a.arma))}${a.alvo ? ` → ${esc(nomeDe(a.alvo))}` : ''}</span>` : '';
+    // A ARMA E O ALVO SÃO DE QUEM DECLAROU, e não só do mestre.
+    //
+    // A view já resolve o sigilo: a migração 27 manda os dois campos para o
+    // DONO da peça (`m1.meu`) e os corta para o resto da mesa. A condição aqui
+    // era `EH_MESTRE`, e com ela o cliente ficava mais restrito que o banco:
+    // quem declarou um ataque não conseguia conferir contra quem o declarou.
+    // `FICHAS` serve de prova de posse porque a RLS de `personagens` só devolve
+    // ao jogador a ficha dele (para o mestre vêm todas, e aí ele já passou).
+    const meu = EH_MESTRE || !!(c.personagem_id && FICHAS[c.personagem_id]);
+    const o = a.arma && meu ? `<span class="fita-alvo">${esc(String(a.arma))}${a.alvo ? ` → ${esc(nomeDe(a.alvo))}` : ''}</span>` : '';
     return `<div class="cbt-fita">${fitaHTML(a, AGORA, { largura: 12, rotulo: true })}${o}</div>`;
   }
   const nomeDe = (id: string) => COMBS.find((x) => x.id === id)?.nome || 'alguém';

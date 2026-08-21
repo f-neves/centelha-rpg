@@ -362,11 +362,115 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
   await p.close();
 }
 
+/**
+ * A MESMA MESA, DA CADEIRA DO JOGADOR.
+ *
+ * Tudo o que este arquivo prova até aqui é a tela do mestre, e metade do
+ * desenho do tempo é justamente o que o jogador vê: ele não tem o rastreador
+ * para consultar, então o que não estiver no tabuleiro não existe para ele. E
+ * desde a migração 28 ele também ESCREVE (o ataque dele empurra o próprio
+ * relógio), o que é o caminho mais fácil de quebrar sem ninguém notar: a
+ * bancada respondia a qualquer `rpc` com lista vazia e sem erro, então um
+ * relógio parado passava por sucesso.
+ */
+async function cenaJogador(br, url) {
+  console.log('\n· a mesma cena, da cadeira do jogador');
+  const p = await br.newPage();
+  await p.setViewport({ width: 1400, height: 950 });
+  const erros = [];
+  p.on('pageerror', (e) => erros.push(e.message));
+  await p.goto(`${url}/mesa/grid?id=${MESA}&bench=8&cols=14&rows=10&nevoa=0&papel=jogador`,
+    { waitUntil: 'networkidle0', timeout: 60000 });
+  await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
+  await espera(600);
+
+  const v = await p.evaluate(() => ({
+    jogador: document.body.classList.contains('sou-jogador'),
+    // `offsetParent` nulo é a leitura honesta: o botão pode não estar `hidden`
+    // e o contêiner dele estar.
+    barra: !!document.getElementById('gr-btns')?.offsetParent,
+    rolar: !!document.getElementById('ini-rolar')?.offsetParent,
+    fitas: document.querySelectorAll('#gr-ini .ini-fita .fita-c').length,
+    selos: document.querySelectorAll('#gr-ini .fase-selo').length,
+    montando: document.querySelectorAll('.gr-token.montando').length,
+    // A intenção não vaza: a view corta arma e alvo de quem não é dono, e a
+    // tela não tem por onde escrevê-los.
+    vazou: /Espada Longa|Adaga/.test(document.body.innerText),
+  }));
+  ok(v.jogador, 'a página abre como jogador');
+  ok(!v.barra && !v.rolar, 'sem os botões do mestre (arena, tempo, rolar iniciativa)');
+  ok(v.fitas > 0, `a fita do tempo chega ao jogador (${v.fitas} células)`);
+  ok(v.selos > 0, `e a fase vem ESCRITA, não só em cor (${v.selos} selos)`);
+  ok(v.montando > 0, `as peças com gesto no ar estão marcadas (${v.montando} montando)`);
+  ok(!v.vazou, 'a arma de quem declarou não aparece na tela do jogador');
+
+  // ---- o ataque dele empurra o próprio relógio, pela `jogador_declara` ----
+  const tickDe = (nome) => p.evaluate((n) => {
+    const it = [...document.querySelectorAll('#gr-ini .ini-item')]
+      .find((x) => (x.textContent || '').includes(n));
+    return it ? parseInt(it.querySelector('.ini-num b')?.textContent || '-1', 10) : -1;
+  }, nome);
+  const antes = await tickDe('Herói 1');
+  const abriu = await p.evaluate(async () => {
+    const meu = [...document.querySelectorAll('#gr-tokens .gr-token')]
+      .find((t) => /Herói 1/.test(t.getAttribute('title') || ''));
+    if (!meu) return 'sem peça minha no mapa';
+    meu.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, clientX: 500, clientY: 400 }));
+    await new Promise((r) => setTimeout(r, 350));
+    const it = [...document.querySelectorAll('#tok-menu button')].find((b) => /Ataque/.test(b.textContent));
+    if (!it) return 'o jogador não tem o item de ataque na peça dele';
+    it.click();
+    await new Promise((r) => setTimeout(r, 350));
+    const alvo = [...document.querySelectorAll('#gr-tokens .gr-token')]
+      .find((t) => /Criatura/.test(t.getAttribute('title') || ''));
+    const r0 = alvo.getBoundingClientRect();
+    alvo.dispatchEvent(new PointerEvent('pointerdown', {
+      bubbles: true, pointerId: 7, button: 0,
+      clientX: r0.left + r0.width / 2, clientY: r0.top + r0.height / 2,
+    }));
+    await new Promise((r) => setTimeout(r, 500));
+    const d = document.querySelector('#alvo-dlg');
+    if (!d?.open) return 'a caixa de ataque não abriu';
+    return {
+      // Sem o bloco do inimigo do lado dele, o número não existe e os
+      // descontos não podem sair sozinhos.
+      defesa: (document.querySelector('#al-defesas')?.innerText || '').replace(/\s+/g, ' ').trim(),
+      tempo: (document.querySelector('#al-tempo')?.innerText || '').replace(/\s+/g, ' ').trim(),
+    };
+  });
+  if (typeof abriu === 'string') {
+    ok(false, `o ataque do jogador: ${abriu}`);
+  } else {
+    ok(/Preparo|Resolve agora/.test(abriu.tempo),
+      `a caixa mostra o tempo em palavras (${abriu.tempo.slice(0, 44)})`);
+    ok(!/condições|ferimento|pressão/.test(abriu.defesa),
+      `sem número, os modificadores calam (${abriu.defesa.slice(0, 44)})`);
+    // ERRAR GASTA O MESMO: o braço que passou perto custou o mesmo tempo.
+    await p.evaluate(() => document.getElementById('al-nao').click());
+    await espera(1400);
+    const depois = await tickDe('Herói 1');
+    const chamou = await p.evaluate(() =>
+      (window.__SB.log || []).some((x) => x.alvo === 'rpc:jogador_declara'));
+    ok(chamou, 'o relógio dele passa pela `jogador_declara`, e não por um update direto');
+    ok(depois > antes, `errar gasta o mesmo: o tick dele andou (${antes} → ${depois})`);
+    const fita = await p.evaluate(() => {
+      const it = [...document.querySelectorAll('#gr-ini .ini-item')]
+        .find((x) => (x.textContent || '').includes('Herói 1'));
+      return !!it?.querySelector('.fase-selo');
+    });
+    ok(fita, 'e o gesto dele passa a aparecer na fila, com a fase escrita');
+  }
+
+  ok(erros.length === 0, `nenhum erro de página (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
+  await p.close();
+}
+
 const dev = await subirDev({ config: 'astro.bancada.mjs' });
 const br = await puppeteer.launch({ executablePath: NAV, headless: 'new', args: ['--no-sandbox'] });
 try {
   await cena(br, dev.url, { pecas: 12, cols: 24, rows: 16, nevoa: false });
   await cena(br, dev.url, { pecas: 30, cols: 40, rows: 30, nevoa: true });
+  await cenaJogador(br, dev.url);
 } finally {
   await br.close();
   await dev.parar();
@@ -377,4 +481,5 @@ if (falhas.length) {
   for (const f of falhas) console.error('  • ' + f);
   process.exit(1);
 }
-console.log('\n✓ Grid OK · desenho, movimento, registro, névoa e card, nas duas cenas, dentro dos tetos de repintura');
+console.log('\n✓ Grid OK · desenho, movimento, registro, névoa e card, nas duas cenas, dentro dos tetos'
+  + ' de repintura, e a mesma mesa vista pelo jogador');

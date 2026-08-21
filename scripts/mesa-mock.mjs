@@ -205,6 +205,56 @@ function guardar(tabela, linhas) {
   return novas;
 }
 
+/**
+ * AS DUAS FUNÇÕES COM QUE O JOGADOR ESCREVE (migrações 22 e 28).
+ *
+ * O mock não tem RLS nem `security definer`, e não é para ter. Mas estas duas
+ * decidem o que a TELA consegue fazer, e sem elas o caminho do jogador passava
+ * por um `rpc` que devolvia lista vazia e sem erro: o ataque dele "funcionava"
+ * na bancada com o relógio parado, e um teste ali passaria sem provar nada.
+ *
+ * A regra que importa é a da posse, e é a que está imitada: a `jogador_declara`
+ * mexe no relógio da PRÓPRIA peça e em mais nenhuma; sobre o alvo ela só soma
+ * Guarda sob pressão, sem tocar na agenda dele.
+ */
+function rpcJogador(nome, args) {
+  const a = args || {};
+  const acha = (id) => TABELAS.combatentes.find((c) => c.id === id);
+  const refazerVisao = () => {
+    if (PAPEL === 'jogador') TABELAS.combate_visao = TABELAS.combatentes.map(paraJogador);
+  };
+  if (nome === 'jogador_declara') {
+    const c = acha(a.p_comb);
+    if (!c) return { __erro: 'Esta peca nao e de uma mesa sua.' };
+    if (c.personagem_id !== MEU_PC) {
+      return { __erro: 'So o mestre empurra o relogio de uma peca que nao e sua.' };
+    }
+    c.tick = Math.max(0, a.p_tick ?? c.tick);
+    c.acao = a.p_acao || {};
+    const alvo = a.p_alvo ? acha(a.p_alvo) : null;
+    if (alvo && (a.p_golpes || 0) > 0) {
+      const antes = alvo.acao && Object.keys(alvo.acao).length
+        ? alvo.acao : { golpes: [], livre: alvo.tick ?? 0 };
+      alvo.acao = { ...antes, pressao: (antes.pressao || 0) + a.p_golpes };
+    }
+    refazerVisao();
+    return [];
+  }
+  if (nome === 'jogador_muda_peca') {
+    // Quatro colunas, e o que não for isso ela ignora calada: é o que a
+    // migração 22 faz, e é por isso que o relógio precisou da 28.
+    const c = acha(a.p_comb);
+    if (c) {
+      for (const k of ['pv_atual', 'mana_atual', 'condicoes', 'ativo']) {
+        if (a.p_dados && k in a.p_dados) c[k] = a.p_dados[k];
+      }
+      refazerVisao();
+    }
+    return [];
+  }
+  return [];
+}
+
 function encadeavel(tabela, verbo, valor) {
   const o = {
     select: () => o, eq: () => o, in: () => o, order: () => o, limit: () => o,
@@ -214,6 +264,13 @@ function encadeavel(tabela, verbo, valor) {
     then: (ok, ko) => {
       anotar(verbo, tabela);
       const dado = typeof valor === 'function' ? valor() : valor;
+      // A recusa também é resposta. Nada aqui erra por acidente (consulta que
+      // ninguém ensinou devolve lista vazia, de propósito), mas quem imita uma
+      // função do banco precisa poder dizer "não": sem isto, a bancada só
+      // saberia contar o caminho feliz.
+      if (dado && dado.__erro) {
+        return Promise.resolve({ data: null, error: { message: dado.__erro } }).then(ok, ko);
+      }
       const r = { data: o.__um ? (Array.isArray(dado) ? dado[0] ?? null : dado) : dado, error: null };
       return Promise.resolve(r).then(ok, ko);
     },
@@ -244,7 +301,7 @@ export function createClient() {
       update: () => encadeavel(tab, 'update', () => []),
       delete: () => encadeavel(tab, 'delete', () => []),
     }),
-    rpc: (nome) => encadeavel('rpc:' + nome, 'rpc', () => []),
+    rpc: (nome, args) => encadeavel('rpc:' + nome, 'rpc', () => rpcJogador(nome, args)),
     channel: () => canal,
     removeChannel: () => Promise.resolve('ok'),
     storage: {

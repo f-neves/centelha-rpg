@@ -436,8 +436,15 @@ const SETAS = [
     font-variant-numeric: tabular-nums; }
   .ini-num b { color: var(--accent-texto); }
   /* A fita ocupa a terceira linha da grade, alinhada com o nome e os números.
-     O desenho dela está no MesaCab: o rastreador de combate usa a mesma. */
-  .ini-fita { grid-column: 2; line-height: 0; }
+     O desenho dela está no MesaCab: o rastreador de combate usa a mesma.
+     Agora a linha leva DUAS coisas, o selo com a palavra e a fita com a cor, e
+     por isso ela virou uma fileira: com `line-height: 0` valendo para os dois
+     (ele existe para matar a sobra embaixo das células da fita), o selo perdia
+     a altura da própria caixa e era desenhado por cima da fita. */
+  .ini-fita { grid-column: 2; display: flex; align-items: center; gap: .3rem; flex-wrap: wrap; }
+  .ini-fita .fita { line-height: 0; }
+  /* Na coluna estreita o selo cede um pouco: ele e a fita dividem a linha. */
+  .ini-fita .fase-selo { font-size: calc(var(--fs-micro) * .9); padding: .02rem .28rem; }
   .ini-item.g-aliado  { border-left: 3px solid var(--accent); }
   .ini-item.g-inimigo { border-left: 3px solid #c1352c; }
   .ini-item.g-neutro  { border-left: 3px solid var(--gold); }
@@ -1099,7 +1106,7 @@ const SETAS = [
   import { armaDoSlot } from '../../lib/equip';
   import { reconciliar, esquecerCaixa } from '../../lib/reconciliar';
   import {
-    abrirEscolhaDoTempo, resumoDoTempo, fitaHTML, abrirAbortar, podeAbortar,
+    abrirEscolhaDoTempo, resumoDoTempo, fitaHTML, seloFaseHTML, abrirAbortar, podeAbortar,
   } from '../../lib/mesa-tempo-ui';
   import {
     combateDaMesa, COMBATE_PADRAO, faseEm, acaoVazia, temGesto, resumoDaAcao,
@@ -2918,8 +2925,16 @@ const SETAS = [
       // A fita mede o tempo DESTA pessoa a partir do relógio da cena, e todas
       // começam na mesma coluna: é o alinhamento que deixa comparar duas linhas
       // sem contar casas. Só aparece quando a mesa pediu fita e há gesto no ar.
-      const f = (a && TEMPO.marcacao === 'fita')
-        ? `<span class="ini-fita" title="${esc(resumoDaAcao(a, tick))}">${fitaHTML(a, tick, { largura: 9, mini: true })}</span>` : '';
+      // A PALAVRA VAI JUNTO COM A COR.
+      //
+      // A fita e o anel diziam a fase só em tom e em `title`, e `title` é gesto
+      // de mouse: no tablet, que é o aparelho de quem joga, a fase ficava muda.
+      // O selo é a mesma leitura escrita ("Preparo −2"), e por isso aparece nas
+      // duas marcações: quem escolheu números em vez de fita continua tendo a
+      // palavra. O jogador precisa dela mais que o mestre, que tem o rastreador.
+      const f = a
+        ? `<span class="ini-fita" title="${esc(resumoDaAcao(a, tick))}">${seloFaseHTML(a, tick)}${
+          TEMPO.marcacao === 'fita' ? fitaHTML(a, tick, { largura: 9, mini: true }) : ''}</span>` : '';
       return { chave: c.id, html: `<div class="ini-item g-${esc(c.grupo || 'inimigo')}${ehVez ? ' vez' : ''}${
         c.id === age ? ' age' : ''}"
         data-c="${c.id}" data-t="${c.tick ?? 0}" title="${esc(c.nome)}${dica}${a ? ' · ' + esc(resumoDaAcao(a, tick)) : ''}">
@@ -3827,6 +3842,7 @@ const SETAS = [
     m.innerHTML = `<div class="tm-cab${bloco ? ' tem-card' : ''}"${bloco
         ? ' role="button" tabindex="0" title="Ver o card completo da criatura"' : ''}
       >${avatarDe(c, 'av-p')}<span class="tm-nome">${esc(c.nome)}</span>${
+        seloFaseHTML(acaoNo(c), relogio())}${
         bloco ? '<span class="tm-card-i" aria-hidden="true">▤</span>' : ''}</div>`
       + linhas.filter(Boolean).join('');
     m.hidden = false;
@@ -4545,8 +4561,14 @@ const SETAS = [
       ? `Distância: ${fmtM(dist)}${pa ? ` · alvo em ${nomeHex(pa.q, pa.r)}` : ''}` : '';
     const cel = (l: string, v: any, n = '') => `<div class="d"><span class="d-l">${l}</span>
       <span class="d-v">${v ?? '—'}</span>${n ? `<span class="d-n">${n}</span>` : ''}</div>`;
+    // SEM O NÚMERO, OS MODIFICADORES CALAM.
+    //
+    // Do lado do jogador o bloco do inimigo não é montado (é o que impede a
+    // Absorção do ogro de viajar até o navegador do grupo), então a Defesa sai
+    // como travessão. Os descontos continuavam escritos embaixo, e "— condições
+    // −4" não é leitura de coisa nenhuma: é um desconto sem conta de onde sair.
     el('al-defesas').innerHTML =
-      cel('Defesa', def, [
+      cel('Defesa', def, def == null ? 'o mestre tem o número' : [
         fer ? `ferimento ${fer}` : '',
         cd.defesaCaC ? `condições ${cd.defesaCaC}` : '',
         dv.acao ? `${FASE_ROTULO[dv.fase]} ${dv.acao}` : '',
