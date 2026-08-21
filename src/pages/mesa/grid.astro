@@ -1304,7 +1304,10 @@ const SETAS = [
     offsetParaAxial, letraColuna,
   } from '../../lib/hex';
   import { uiConfirmar, uiErro, uiFormulario } from '../../lib/ui-dialog';
-  import { girarMapa, excluirMapa, medidaDeMapa, type Giro } from '../../lib/mesa-mapas';
+  import {
+    girarMapa, excluirMapa, medidaDeMapa, giroParaCaber, enquadramentoPadrao, medirImagem,
+    type Giro,
+  } from '../../lib/mesa-mapas';
   import { caminhoSeta, SETA_PADRAO, type EstiloSeta, type TipoSeta } from '../../lib/seta';
   import {
     carregarEfeitos, efeitosAtivos, pintarEfeitos, pintarPainelEfeitos, conjurar,
@@ -6138,7 +6141,7 @@ const SETAS = [
           mesaId: ID, arquivo: arq, url: img.src, graus: Number(b.dataset.g) as Giro,
         });
         it.classList.remove('ocupado');
-        if (novo) await depoisDeMexerNoMapa(dlg, arq.storage_path);
+        if (novo) await depoisDeMexerNoMapa(dlg, arq.storage_path, novo);
       });
       (it.querySelector('[data-rm]') as HTMLElement).onclick = async (ev) => {
         ev.stopPropagation();
@@ -6157,8 +6160,21 @@ const SETAS = [
    * não existe, e a arte sumiria na próxima vez que alguém abrisse a página,
    * sem nada na tela explicando por quê.
    */
-  async function depoisDeMexerNoMapa(dlg: HTMLDialogElement, caminho: string) {
-    if (ARENA.fundo_path === caminho) { await carregar(); RT?.avisar('arena'); }
+  async function depoisDeMexerNoMapa(dlg: HTMLDialogElement, caminho: string, novo?: string) {
+    // Os DOIS nomes: a arte que esta arena usava é a mesma antes e depois de
+    // mudar de endereço, e quem pergunta aqui pode já ter recebido a linha
+    // reapontada. Comparar só com o caminho velho deixaria a arena com o giro
+    // antigo por cima de pixels novos, que é justamente o giro duplo.
+    if (ARENA.fundo_path === caminho || (novo && ARENA.fundo_path === novo)) {
+      // Girar o ARQUIVO vira a orientação por baixo do enquadramento desta
+      // arena. Sem refazer a conta, uma arte que estava deitada por giro de
+      // arena entraria girada duas vezes, e o conserto pioraria a imagem.
+      if (novo) {
+        const fundo = await enquadrarNova(novo);
+        if (fundo) await SB.from('mesa_arenas').update({ fundo }).eq('id', ARENA.id);
+      }
+      await carregar(); RT?.avisar('arena');
+    }
     await pintarMapas(dlg);
   }
 
@@ -6176,9 +6192,32 @@ const SETAS = [
     await gravarFundo(path, data.id);
   }
 
+  /**
+   * O enquadramento com que uma arte entra nesta arena.
+   *
+   * Mede a imagem antes de gravar, e não depois de desenhar, por dois motivos.
+   * O primeiro é que a escolha fica GUARDADA: o giro vai para o banco junto com
+   * o caminho, então o tabuleiro do grupo abre já certo, e não gira sozinho
+   * meio segundo depois na cara de todo mundo. O segundo é que decidir no
+   * desenho significaria decidir toda vez que a página carrega, e aí o mestre
+   * não conseguiria escolher o contrário: o automático desfaria a mão dele.
+   */
+  async function enquadrarNova(path: string | null) {
+    if (!path) return null;
+    const urls = await urlsImagens(SB, [path], 'mesa');
+    const m = await medirImagem(urls[path] || '');
+    if (!m) return enquadramentoPadrao(0);
+    const med = medida();
+    return enquadramentoPadrao(giroParaCaber(m.largura, m.altura, med.largura, med.altura));
+  }
+
   async function gravarFundo(path: string | null, arquivoId: string | null) {
-    const { error } = await SB.from('mesa_arenas')
-      .update({ fundo_path: path, arquivo_id: arquivoId, fundo_url: null }).eq('id', ARENA.id);
+    // O enquadramento antigo era do mapa antigo: o zoom e o arrasto que
+    // encaixavam a taverna não querem dizer nada sobre a ponte que entra agora.
+    const fundo = await enquadrarNova(path);
+    const linha: any = { fundo_path: path, arquivo_id: arquivoId, fundo_url: null };
+    if (fundo) linha.fundo = fundo;
+    const { error } = await SB.from('mesa_arenas').update(linha).eq('id', ARENA.id);
     if (error) return uiErro('Erro: ' + error.message);
     await carregar();
     RT?.avisar('arena');

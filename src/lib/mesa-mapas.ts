@@ -42,6 +42,40 @@ export const medidaDeMapa = (largura: number, altura: number) =>
   `${largura}×${altura} · ${orientacaoDe(largura, altura)}`;
 
 /**
+ * O giro com que uma arte NASCE numa arena: 0 ou 90 graus.
+ *
+ * A regra é uma só: fica valendo o giro em que a arte inteira ocupa mais do
+ * tabuleiro. Num tabuleiro deitado, que é o caso de quase toda arena, isso quer
+ * dizer deitar a arte que veio em pé, em vez de mostrá-la como uma tira estreita
+ * com dois vazios do lado. Num tabuleiro em pé (mais linhas que colunas) a mesma
+ * conta faz o contrário, sem precisar de outra regra.
+ *
+ * Isto NÃO é girar o arquivo: é o enquadramento desta arena, que sai junto com
+ * a arte e que o painel "Ajustar a arte" desfaz num clique.
+ */
+export function giroParaCaber(imgL: number, imgA: number, tabL: number, tabA: number): 0 | 90 {
+  if (!(imgL > 0 && imgA > 0 && tabL > 0 && tabA > 0)) return 0;
+  const cabe = (l: number, a: number) => Math.min(tabL / l, tabA / a);
+  // Empate fica em 0: arte quadrada não tem lado melhor, e girar por girar só
+  // confundiria quem escolheu.
+  return cabe(imgA, imgL) > cabe(imgL, imgA) ? 90 : 0;
+}
+
+/** Centrada, inteira, e no giro que cabe. É como toda arte entra. */
+export const enquadramentoPadrao = (giro: 0 | 90) => ({ x: 0, y: 0, z: 1, rot: giro });
+
+/** O tamanho natural de uma imagem, ou null se ela não carregar. */
+export function medirImagem(url: string): Promise<{ largura: number; altura: number } | null> {
+  return new Promise((pronto) => {
+    if (!url) { pronto(null); return; }
+    const im = new Image();
+    im.onload = () => pronto({ largura: im.naturalWidth, altura: im.naturalHeight });
+    im.onerror = () => pronto(null);
+    im.src = url;
+  });
+}
+
+/**
  * Gira os pixels de verdade.
  *
  * `imageOrientation: 'from-image'` não é detalhe: foto de celular costuma vir

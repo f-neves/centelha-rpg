@@ -775,6 +775,31 @@ async function cenaMapas(br, url) {
   const empe = antes.find((m) => m.empe);
   ok(empe?.med === '6×10 · retrato', `a que subiu em pé se denuncia (${empe?.med || 'nenhuma'})`);
 
+  // -------------------------------- a arte em pé entra DEITADA no tabuleiro
+  //
+  // O mestre escolhe o mapa e ele tem de cair usável. Uma arte em pé num
+  // tabuleiro deitado, sem giro, entra como uma tira estreita entre dois
+  // vazios, e a conta que evita isso é a mesma do "caber": vale o giro em que a
+  // arte inteira ocupa mais tabuleiro.
+  const giroDaArte = () => p.evaluate(() => {
+    const t = document.getElementById('gr-fundo')?.style.transform || '';
+    const m = /rotate\(([-\d.]+)deg\)/.exec(t);
+    return { giro: m ? Math.round(parseFloat(m[1])) : null, arte: !!document.querySelector('.gr-mundo.com-arte') };
+  });
+  await p.evaluate(() => {
+    [...document.querySelectorAll('.fd-item')].find((i) => i.classList.contains('fd-empe')).click();
+  });
+  await p.waitForFunction(() => !!document.querySelector('.gr-mundo.com-arte')
+    && /rotate/.test(document.getElementById('gr-fundo')?.style.transform || ''), { timeout: 20000 });
+  const posta = await giroDaArte();
+  ok(posta.arte && posta.giro === 90,
+    `a arte em pé entrou deitada no tabuleiro (giro ${posta.giro}°)`);
+
+  await p.evaluate(() => document.getElementById('gr-fundo-btn').click());
+  await p.waitForSelector('#fundo-dlg[open] .fd-item', { timeout: 15000 });
+  await p.waitForFunction(() => [...document.querySelectorAll('.fd-med')].every((m) => m.textContent),
+    { timeout: 15000 });
+
   // ---------------------------------- girar não é escolher, e gira de verdade
   await p.evaluate(() => {
     const it = [...document.querySelectorAll('.fd-item')].find((i) => i.classList.contains('fd-empe'));
@@ -789,6 +814,14 @@ async function cenaMapas(br, url) {
   ok(virada?.med === '10×6 · paisagem', `a arte em pé deitou (${empe?.med} → ${virada?.med})`);
   const aberto = await p.evaluate(() => !!document.getElementById('fundo-dlg')?.open);
   ok(aberto, 'a caixa continua aberta: girar não escolheu a arte nem fechou tudo');
+  // O arquivo virou deitado, e o giro da ARENA tinha de sair junto: sem isso a
+  // mesma arte apareceria girada duas vezes, e o conserto pioraria a imagem.
+  await p.waitForFunction(() => /rotate\(0/.test(document.getElementById('gr-fundo')?.style.transform || ''),
+    { timeout: 20000 }).catch(() => {});
+  const depoisDoGiro = await giroDaArte();
+  ok(depoisDoGiro.giro === 0,
+    `girar o arquivo desfez o giro da arena, e não girou duas vezes (giro ${depoisDoGiro.giro}°)`);
+
   const subiu = await p.evaluate(() => ({
     up: (window.__SB.log || []).filter((x) => x.tipo === 'upload').length,
     rm: (window.__SB.log || []).filter((x) => x.tipo === 'remove').length,
