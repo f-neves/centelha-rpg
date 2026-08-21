@@ -1161,6 +1161,201 @@ async function cenaMapas(br, url) {
   await p.close();
 }
 
+/**
+ * O GRID NUM TELEFONE.
+ *
+ * O tabuleiro cresceu inteiro numa tela de notebook, e em 21/08 uma medição num
+ * viewport de 390×844 achou o estrago: 456px de mobília antes do mapa (54% da
+ * tela), a página com 1953px de rolagem, 44 controles abaixo do piso de toque de
+ * 44px, e três defeitos de verdade (os botões da folha da ação nascendo fora da
+ * tela, os do registro invisíveis sem hover, e o menu da peça sem caber em
+ * paisagem). O conserto está no `Grid_Mobile.md`; esta cena é a cerca dele.
+ *
+ * Ela cobra o que se pode medir sozinho: quanto de tela sobra para o mapa, se a
+ * página rola, se todo alvo alcança 44px, se cada folha cabe na janela, e se a
+ * DECISÃO da folha da ação está visível sem rolar, que é o defeito que mais
+ * custava. Os gestos entram por evento sintético: o que se prova aqui é a nossa
+ * conta, e não o dedo do navegador.
+ */
+const TETO_MOBILIA = 150;
+
+async function cenaCelular(br, url, { papel = 'mestre' } = {}) {
+  console.log(`\n· o Grid num telefone de 390×844, na cadeira do ${papel}`);
+  const p = await br.newPage();
+  await p.setViewport({ width: 390, height: 844, isMobile: true, hasTouch: true, deviceScaleFactor: 2 });
+  const erros = [];
+  p.on('pageerror', (e) => erros.push(e.message));
+  await p.goto(`${url}/mesa/grid?id=${MESA}&bench=12&cols=24&rows=16&nevoa=0`
+    + (papel === 'jogador' ? '&papel=jogador' : ''), { waitUntil: 'networkidle0', timeout: 60000 });
+  await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
+  await espera(1200);
+
+  // Todo alvo que o dedo alcança, e o que sobrou de tela para o mapa.
+  const pisoDeToque = () => p.evaluate(() => {
+    const curtos = [];
+    for (const b of document.querySelectorAll('button, select, input, a')) {
+      const r = b.getBoundingClientRect();
+      if (!r.height || !r.width) continue;
+      if (r.bottom < 0 || r.top > innerHeight || r.right < 0 || r.left > innerWidth) continue;
+      if (b.matches('a.ref, .prose a')) continue;   // link em texto corrido: o WCAG 2.5.8 isenta
+      if (getComputedStyle(b).visibility === 'hidden') continue;
+      if (r.height < 44 || r.width < 44) curtos.push(`${b.id || b.className}(${Math.round(r.width)}×${Math.round(r.height)})`);
+    }
+    return curtos;
+  });
+
+  const chao = await p.evaluate(() => ({
+    mobilia: Math.round(document.querySelector('.gr-palco').getBoundingClientRect().top),
+    rola: document.documentElement.scrollHeight > innerHeight + 1,
+    barra: !document.querySelector('.gr-app').hidden
+      && getComputedStyle(document.querySelector('.gr-app')).display !== 'none',
+    zoom: parseInt(document.getElementById('gr-zval').textContent, 10),
+    arena: !document.getElementById('ga-arena').hidden,
+  }));
+  ok(chao.mobilia <= TETO_MOBILIA,
+    `a mobília antes do tabuleiro cabe em ${TETO_MOBILIA}px (são ${chao.mobilia})`);
+  ok(!chao.rola, 'a página não rola: o que não cabe virou folha, e não pilha');
+  ok(chao.barra, 'a barra do polegar está no ar');
+  // Caber numa arena de 24 colunas daria 30%, que é um hexágono de 17px.
+  ok(chao.zoom >= 50 && chao.zoom <= 100,
+    `o tabuleiro abre enquadrado, e não menor do que o dedo alcança (${chao.zoom}%)`);
+  ok(chao.arena === (papel === 'mestre'),
+    `a barra é montada pelo papel (⧉ arena ${chao.arena ? 'presente' : 'ausente'})`);
+  const curtos = await pisoDeToque();
+  ok(curtos.length === 0, `todo alvo na tela chega a 44px (${curtos.slice(0, 3).join(', ') || 'nenhum abaixo'})`);
+
+  // ------------------------------------------------------------- as folhas
+  const folhas = [['ga-campo', '.gr-lado', 'em campo'], ['ga-mais', '.mesa-barra', 'mais']];
+  if (papel === 'mestre') folhas.splice(1, 0, ['ga-arena', '.gr-barra', 'arena']);
+  for (const [botao, caixa, nome] of folhas) {
+    const r = await p.evaluate(async (botao, caixa) => {
+      document.getElementById(botao).click();
+      await new Promise((r) => setTimeout(r, 420));
+      const q = document.querySelector(caixa).getBoundingClientRect();
+      const barra = document.querySelector('.gr-app').getBoundingClientRect();
+      return { dentro: q.top >= 0 && q.bottom <= innerHeight + 1,
+        acimaDaBarra: q.bottom <= barra.top + 2 || q.bottom - barra.top < 60,
+        escurece: document.body.classList.contains('com-folha') };
+    }, botao, caixa);
+    ok(r.dentro && r.escurece, `a folha "${nome}" sobe inteira, com o tabuleiro escurecido atrás`);
+    const c = await pisoDeToque();
+    ok(c.length === 0, `e nada dentro dela fica abaixo de 44px (${c.slice(0, 3).join(', ') || 'nenhum'})`);
+    await p.evaluate((b) => document.getElementById(b).click(), botao);
+    await espera(350);
+  }
+  const fechou = await p.evaluate(() => document.body.classList.contains('com-folha'));
+  ok(!fechou, 'e o mesmo botão que abriu fecha');
+
+  // ------------------------------------------------- os gestos de dois dedos
+  const gestos = await p.evaluate(async () => {
+    const palco = document.getElementById('gr-palco');
+    const r = palco.getBoundingClientRect();
+    const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+    const zoom = () => parseInt(document.getElementById('gr-zval').textContent, 10);
+    const pe = (t, id, x, y) => palco.dispatchEvent(new PointerEvent(t, { bubbles: true,
+      pointerId: id, pointerType: 'touch', clientX: x, clientY: y, isPrimary: id === 1 }));
+    const pausa = () => new Promise((r) => setTimeout(r, 40));
+    const antes = zoom();
+    pe('pointerdown', 1, cx - 40, cy); pe('pointerdown', 2, cx + 40, cy); await pausa();
+    pe('pointermove', 1, cx - 100, cy); pe('pointermove', 2, cx + 100, cy); await pausa();
+    const pincou = zoom();
+    pe('pointerup', 1, cx - 100, cy); pe('pointerup', 2, cx + 100, cy); await pausa();
+    const sx = palco.scrollLeft;
+    pe('pointerdown', 3, cx, cy); await pausa();
+    pe('pointermove', 3, cx - 90, cy); await pausa();
+    const empurrou = palco.scrollLeft !== sx;
+    pe('pointerup', 3, cx - 90, cy); await pausa();
+    pe('pointerdown', 4, cx, cy); pe('pointerup', 4, cx, cy); await pausa();
+    pe('pointerdown', 5, cx, cy); pe('pointerup', 5, cx, cy); await pausa();
+    return { antes, pincou, empurrou, duploToque: zoom() };
+  });
+  ok(gestos.pincou > gestos.antes * 1.5,
+    `a pinça amplia o tabuleiro, e não a página (${gestos.antes}% → ${gestos.pincou}%)`);
+  ok(gestos.empurrou, 'um dedo no vazio empurra o mapa');
+  ok(gestos.duploToque === gestos.antes,
+    `e o toque duplo devolve o enquadramento de abertura (${gestos.duploToque}%)`);
+
+  // -------------------------------------------- o menu da peça vira folha
+  const menu = await p.evaluate(async () => {
+    document.getElementById('ga-agir').click();
+    await new Promise((r) => setTimeout(r, 450));
+    const m = document.getElementById('tok-menu');
+    if (!m || m.hidden) return { abriu: false };
+    const r = m.getBoundingClientRect();
+    const itens = [...m.querySelectorAll('button')].map((z) => z.getBoundingClientRect().height);
+    return { abriu: true, dentro: r.top >= 0 && r.bottom <= innerHeight + 1,
+      colado: Math.abs(r.left) < 2 && Math.abs(r.right - innerWidth) < 2,
+      menor: Math.round(Math.min(...itens)), n: itens.length };
+  });
+  ok(menu.abriu && menu.colado, 'o ⚔ da barra abre o menu da peça, e ele nasce colado no pé');
+  ok(menu.dentro, 'o menu inteiro cabe na tela');
+  ok(menu.menor >= 44, `e cada linha dele alcança 44px (a menor tem ${menu.menor})`);
+
+  // ---------------------------------------- a folha da ação decide sem rolar
+  const acao = await p.evaluate(async () => {
+    const at = document.querySelector('#tok-menu button[data-a="ataque"]');
+    if (!at) return { semAtaque: true };
+    at.click();
+    await new Promise((r) => setTimeout(r, 350));
+    const alvo = [...document.querySelectorAll('#gr-tokens .gr-token')]
+      .find((z) => !z.classList.contains('atacante'));
+    const rb = alvo.getBoundingClientRect();
+    alvo.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true,
+      clientX: rb.left + rb.width / 2, clientY: rb.top + rb.height / 2 }));
+    await new Promise((r) => setTimeout(r, 900));
+    const dlg = document.getElementById('alvo-dlg');
+    if (!dlg?.open) return { abriu: false };
+    const r = dlg.getBoundingClientRect();
+    const btns = dlg.querySelector('.dlg-btns').getBoundingClientRect();
+    return { abriu: true,
+      folha: Math.abs(r.left) < 2 && Math.abs(r.bottom - innerHeight) < 2,
+      decideSemRolar: btns.top >= 0 && btns.bottom <= innerHeight + 1,
+      rolaPorDentro: dlg.querySelector('form').scrollHeight > r.height + 2 };
+  });
+  ok(acao.abriu && acao.folha, 'a folha da ação sobe do pé, na largura da tela');
+  // O defeito medido em 21/08: 813px de conteúdo em 743 visíveis, e o que ficava
+  // embaixo da dobra era justamente o par "Errou / Acertou · aplicar".
+  ok(acao.decideSemRolar, 'e a decisão fica na tela sem rolar nada');
+  await p.evaluate(() => document.getElementById('alvo-dlg').close());
+  await espera(250);
+
+  // -------------------------------------------------------- de lado, na mão
+  await p.setViewport({ width: 844, height: 390, isMobile: true, hasTouch: true, deviceScaleFactor: 2 });
+  await espera(600);
+  const deitado = await p.evaluate(async () => {
+    document.getElementById('ga-agir').click();
+    await new Promise((r) => setTimeout(r, 450));
+    const m = document.getElementById('tok-menu');
+    const r = m.getBoundingClientRect();
+    return { dentro: r.top >= 0 && r.bottom <= innerHeight + 1, alt: Math.round(r.height),
+      rola: m.scrollHeight > m.clientHeight };
+  });
+  // Em pé o menu tinha 439px de altura, e o encaixe da borda devolvia topo
+  // negativo numa tela de 390: ele saía por cima, sem nada que rolasse.
+  ok(deitado.dentro, `de lado o menu continua dentro da tela (${deitado.alt}px numa janela de 390)`);
+  await p.setViewport({ width: 390, height: 844, isMobile: true, hasTouch: true, deviceScaleFactor: 2 });
+  await espera(400);
+
+  // ------------------------------------------------------- a faixa da vez
+  if (papel === 'jogador') {
+    const vez = await p.evaluate(() => {
+      const f = document.getElementById('gr-vez');
+      const barra = document.querySelector('.gr-app').getBoundingClientRect();
+      if (!f || f.hidden) return { visivel: false };
+      const r = f.getBoundingClientRect();
+      return { visivel: true, texto: f.textContent.replace(/\s+/g, ' ').trim(),
+        acimaDaBarra: Math.abs(r.bottom - barra.top) < 3, titulo: document.title };
+    });
+    ok(vez.visivel && vez.acimaDaBarra, 'a faixa da vez aparece acima da barra do polegar');
+    ok(/a sua vez/i.test(vez.texto || ''), `e diz de quem é (${(vez.texto || '').slice(0, 40)})`);
+    ok(/sua vez/i.test(vez.titulo || ''),
+      `o título da aba avisa quem está com o telefone noutra coisa (${vez.titulo})`);
+  }
+
+  ok(erros.length === 0, `nenhum erro de página (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
+  await p.close();
+}
+
 const dev = await subirDev({ config: 'astro.bancada.mjs' });
 const br = await puppeteer.launch({ executablePath: NAV, headless: 'new', args: ['--no-sandbox'] });
 try {
@@ -1169,6 +1364,8 @@ try {
   await cenaJogador(br, dev.url);
   await cenaRastreador(br, dev.url);
   await cenaMapas(br, dev.url);
+  await cenaCelular(br, dev.url);
+  await cenaCelular(br, dev.url, { papel: 'jogador' });
 } finally {
   await br.close();
   await dev.parar();
@@ -1181,4 +1378,4 @@ if (falhas.length) {
 }
 console.log('\n✓ Grid OK · desenho, movimento, registro, névoa e card, nas duas cenas, dentro dos tetos'
   + ' de repintura, a mesma mesa vista pelo jogador, a tira da ordem no rastreador,'
-  + ' e a caixa de fundo girando e excluindo arte');
+  + ' a caixa de fundo girando e excluindo arte, e o telefone nas duas cadeiras');

@@ -199,6 +199,11 @@ const SETAS = [
           lateral, a barra da mesa) presas no pé e deslizando para dentro. Uma
           cópia para o celular divergiria da primeira no primeiro conserto. */}
       <div class="gr-scrim" id="gr-scrim" aria-hidden="true"></div>
+      {/* A FAIXA DA VEZ, do jogador. O mestre conduz o relógio e sabe de quem é
+          a vez porque foi ele quem a passou; o jogador está com o telefone na
+          mão, às vezes na conversa ao lado, e a única pergunta que ele faz à
+          tela é "já é comigo?". Ela responde antes de ele perguntar. */}
+      <button type="button" class="gr-vez" id="gr-vez" hidden></button>
       <nav class="gr-app" id="gr-app" aria-label="Comandos do tabuleiro">
         {/* O relógio não é botão: é o número do qual todos os outros dependem, e
             no telefone ele perdeu o canto da tira da iniciativa. */}
@@ -1475,6 +1480,26 @@ const SETAS = [
     color: var(--accent-texto); font-variant-numeric: tabular-nums; }
   .ga-prox { background: color-mix(in srgb, var(--accent) 16%, transparent); }
   .ga-prox i { color: var(--accent-texto); }
+
+  /* ---- a faixa da vez ---- */
+  .gr-vez { display: none; }
+  body.grid-mob .gr-vez:not([hidden]) { display: flex; align-items: center; gap: .5rem;
+    position: fixed; left: 0; right: 0; bottom: var(--ga-h); z-index: 120;
+    padding: .4rem .7rem; min-height: 46px; border: 0; border-top: 1px solid var(--accent);
+    background: color-mix(in srgb, var(--accent) 24%, var(--panel));
+    color: var(--ink); font: inherit; text-align: left; cursor: pointer;
+    box-shadow: 0 -6px 20px rgba(0,0,0,.35); }
+  .gr-vez .gv-t { font-family: 'Cinzel'; font-weight: 700; font-size: var(--fs-rotulo);
+    text-transform: uppercase; letter-spacing: .05em; color: var(--accent-texto); }
+  .gr-vez .gv-n { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis;
+    white-space: nowrap; }
+  .gr-vez .gv-v { font-variant-numeric: tabular-nums; font-size: var(--fs-micro); color: var(--ink-soft); }
+  .gr-vez .av { --av-t: 1.9rem; flex: 0 0 auto; }
+  @keyframes gv-pulsa { 50% { background: color-mix(in srgb, var(--accent) 38%, var(--panel)); } }
+  body.grid-mob .gr-vez:not([hidden]) { animation: gv-pulsa 1.8s ease-in-out 3; }
+  @media (prefers-reduced-motion: reduce) { body.grid-mob .gr-vez { animation: none !important; } }
+  /* Com a faixa no ar, a folha da peça sobe para não ficar debaixo dela. */
+  body.grid-mob.com-vez .tok-menu { bottom: calc(var(--ga-h) + 46px); }
 
   /* ---- os diálogos viram folhas de baixo ----
      A caixa centrada é o desenho certo para um mouse: ela cai no meio do campo
@@ -4449,7 +4474,13 @@ const SETAS = [
       const t = (ev.target as HTMLElement).closest<HTMLElement>('.gr-token');
       if (!t) return;
       x0 = ev.clientX; y0 = ev.clientY;
-      toque = setTimeout(() => { toque = null; abrirMenu(t.dataset.c!, x0, y0); }, 500);
+      toque = setTimeout(() => {
+        toque = null;
+        // O menu nasce debaixo do dedo, que o tapa: sem um tranco, o toque longo
+        // parece não ter funcionado até a mão sair da frente.
+        try { navigator.vibrate?.(12); } catch {}
+        abrirMenu(t.dataset.c!, x0, y0);
+      }, 500);
     });
     const desiste = (ev?: PointerEvent) => {
       if (!toque) return;
@@ -4793,6 +4824,9 @@ const SETAS = [
     const dedos = new Map<number, { x: number; y: number }>();
     let empurra: { x: number; y: number; sx: number; sy: number } | null = null;
     let pinca: { d: number; zoom: number } | null = null;
+    // O toque só se conhece no fim: enquanto o dedo está no vidro, ele ainda
+    // pode virar empurrão (se andar) ou pinça (se chegar companhia).
+    let toque: { x: number; y: number } | null = null;
     let ultimoToque = 0;
 
     const dist = () => {
@@ -4808,20 +4842,18 @@ const SETAS = [
       if (!MOB || ev.pointerType !== 'touch' || AJUSTANDO || MIRA || ARR || NEVOANDO) return;
       dedos.set(ev.pointerId, { x: ev.clientX, y: ev.clientY });
       if (dedos.size === 2) {
-        // O segundo dedo cancela o empurrão: o gesto virou outro no meio.
-        empurra = null;
+        // O segundo dedo cancela o empurrão E o toque: o gesto virou outro no
+        // meio. Sem cancelar o toque, o primeiro dedo de uma pinça ficava
+        // guardado como "meio toque duplo", e o toque seguinte, mesmo a um
+        // segundo de distância, reenquadrava o mapa na cara de quem só queria
+        // encostar nele.
+        empurra = null; toque = null; ultimoToque = 0;
         pinca = { d: dist() || 1, zoom: ZOOM };
         return;
       }
       if (dedos.size > 2 || (ev.target as HTMLElement).closest('.gr-token')) return;
       empurra = { x: ev.clientX, y: ev.clientY, sx: palco.scrollLeft, sy: palco.scrollTop };
-      // Dois toques no vazio devolvem o enquadramento de abertura, que é o gesto
-      // de mapa que todo mundo já traz de casa. Com o piso, e não sem ele: um
-      // toque duplo que devolve 30% de zoom devolve uma cena que não se toca, e
-      // aí a saída seria pinçar de volta.
-      const agora = performance.now();
-      if (agora - ultimoToque < 320) { caber(true); ultimoToque = 0; empurra = null; }
-      else ultimoToque = agora;
+      toque = { x: ev.clientX, y: ev.clientY };
     });
 
     palco.addEventListener('pointermove', (ev) => {
@@ -4840,6 +4872,8 @@ const SETAS = [
         return;
       }
       if (!empurra) return;
+      // Andou: não era toque, era empurrão.
+      if (toque && Math.hypot(ev.clientX - toque.x, ev.clientY - toque.y) > 10) toque = null;
       palco.scrollLeft = empurra.sx - (ev.clientX - empurra.x);
       palco.scrollTop = empurra.sy - (ev.clientY - empurra.y);
     });
@@ -4848,6 +4882,15 @@ const SETAS = [
       dedos.delete(ev.pointerId);
       if (dedos.size < 2) pinca = null;
       if (!dedos.size) empurra = null;
+      if (!toque) return;
+      toque = null;
+      // Dois toques no vazio devolvem o enquadramento de abertura, que é o gesto
+      // de mapa que todo mundo já traz de casa. Com o piso, e não sem ele: um
+      // toque duplo que devolvesse 30% de zoom devolveria uma cena que não se
+      // toca, e a saída seria pinçar de volta.
+      const agora = performance.now();
+      if (agora - ultimoToque < 320) { caber(true); ultimoToque = 0; }
+      else ultimoToque = agora;
     };
     palco.addEventListener('pointerup', solta);
     palco.addEventListener('pointercancel', solta);
@@ -6490,6 +6533,22 @@ const SETAS = [
     return minha || (MESTRE ? v : null);
   }
 
+  /**
+   * O aviso de "chegou a sua vez", uma vez por vez.
+   *
+   * O jogador está com o telefone na mão e a cabeça na mesa: se o único sinal
+   * for a peça mudando de cor no alto da tela, ele descobre que é a vez dele
+   * quando alguém falar o nome dele. `vibrate` não existe em desktop nem no
+   * iOS, e nesses o título da aba faz o serviço.
+   */
+  let AVISEI = '';
+  function avisarVez(cid: string | null) {
+    if (AVISEI === (cid || '')) return;
+    AVISEI = cid || '';
+    document.title = cid ? '● A sua vez · Grid' : 'Grid';
+    if (cid) { try { navigator.vibrate?.([18, 60, 18]); } catch {} }
+  }
+
   /** O relógio e o ⏭ da barra, copiados dos de verdade a cada repintura da fila. */
   function sincronizarApp() {
     if (!MOB) return;
@@ -6504,6 +6563,21 @@ const SETAS = [
     const c = (fonte.textContent || '').match(/\+(\d+)t/);
     (meu.querySelector('small') as HTMLElement).textContent = c ? `+${c[1]}t` : 'próximo';
     (el('ga-agir') as HTMLButtonElement).disabled = !pecaParaAgir();
+
+    // A faixa é do jogador: o mestre passa o relógio, e quem passa sabe para
+    // quem passou.
+    const vez = daVez();
+    const minha = !MESTRE && vez && minhaPeca(vez) ? vez : null;
+    const faixa = el('gr-vez') as HTMLButtonElement;
+    faixa.hidden = !minha;
+    document.body.classList.toggle('com-vez', !!minha);
+    if (minha) {
+      const mana = minha.mana_max ? `<span class="gv-v">✦ ${minha.mana_atual ?? 0}/${minha.mana_max}</span>` : '';
+      faixa.innerHTML = `${avatarDe(minha, 'av-p')}<span class="gv-t">a sua vez</span>`
+        + `<span class="gv-n">${esc(minha.nome)}</span>`
+        + `<span class="gv-v">${pctDe100(minha)}%</span>${mana}`;
+    }
+    avisarVez(minha ? minha.id : null);
   }
 
   /** Muda de casa sem duplicar: guarda de onde veio para saber voltar. */
@@ -6522,9 +6596,24 @@ const SETAS = [
     const custo = document.querySelector<HTMLElement>('.ini-custo');
     const rolar = el('ini-rolar');
 
+    /**
+     * A altura da barra publicada em `--ga-h`, medida e não estimada.
+     *
+     * O CSS chuta `3.4rem + safe-area`, e o chute erra por uns quatro pixels:
+     * a faixa da vez ficava flutuando acima da barra em vez de encostar nela, e
+     * a grade sobrava o mesmo tanto no pé. Quem sabe a altura da barra é a
+     * barra. (O molde é o mesmo do `--mesa-barra-h`, no MesaCab.)
+     */
+    const medirBarra = () => {
+      const h = (el('gr-app') as HTMLElement).offsetHeight;
+      if (h) document.body.style.setProperty('--ga-h', h + 'px');
+    };
+    try { new ResizeObserver(medirBarra).observe(el('gr-app')); } catch {}
+
     const aplicar = () => {
       MOB = MQ_MOB.matches;
       document.body.classList.toggle('grid-mob', MOB);
+      if (MOB) requestAnimationFrame(medirBarra); else document.body.style.removeProperty('--ga-h');
       if (!MOB) abrirFolha(null);
       // O ⚄ e o campo do custo moram no canto do relógio, que some no telefone.
       // Antes do ✕: o que apaga a arena é a última linha da lista, e nada
@@ -6548,6 +6637,7 @@ const SETAS = [
     el('ga-campo').onclick = alterna('campo');
     el('ga-mais').onclick = alterna('mais');
     el('ga-prox').onclick = () => { abrirFolha(null); (el('ini-prox') as HTMLButtonElement).click(); };
+    el('gr-vez').onclick = () => (el('ga-agir') as HTMLButtonElement).click();
     el('ga-agir').onclick = () => {
       const c = pecaParaAgir(); if (!c) return;
       abrirFolha(null);
