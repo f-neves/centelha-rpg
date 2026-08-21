@@ -391,7 +391,12 @@ async function cenaJogador(br, url) {
     barra: !!document.getElementById('gr-btns')?.offsetParent,
     rolar: !!document.getElementById('ini-rolar')?.offsetParent,
     fitas: document.querySelectorAll('#gr-ini .ini-fita .fita-c').length,
-    selos: document.querySelectorAll('#gr-ini .fase-selo').length,
+    // A FASE ESCRITA MUDOU DE CASA, e nao de existencia. Era um selo ao lado da
+    // fita e passou a ser a linha `.ini-fase`, que diz a fase POR EXTENSO em
+    // toda linha e nas duas marcacoes ("Preparo - golpe no 9", "livre"). O que
+    // esta prova guarda continua sendo o mesmo: a fase nao pode existir so em
+    // cor, porque no tablet nao ha `title` para consultar.
+    selos: document.querySelectorAll('#gr-ini .ini-fase').length,
     montando: document.querySelectorAll('.gr-token.montando').length,
     // A intenção não vaza: a view corta arma e alvo de quem não é dono, e a
     // tela não tem por onde escrevê-los.
@@ -408,7 +413,10 @@ async function cenaJogador(br, url) {
   const tickDe = (nome) => p.evaluate((n) => {
     const it = [...document.querySelectorAll('#gr-ini .ini-item')]
       .find((x) => (x.textContent || '').includes(n));
-    return it ? parseInt(it.querySelector('.ini-num b')?.textContent || '-1', 10) : -1;
+    // `data-t` e nao `.ini-num b`: a linha da fila passou a mostrar "em N ticks"
+    // no cabecalho do degrau em vez do Tick absoluto em cada linha, e o numero
+    // que sobrou em `.ini-num` e a iniciativa. O atributo e o campo estavel.
+    return it ? parseInt(it.dataset.t || '-1', 10) : -1;
   }, nome);
   const antes = await tickDe('Herói 1');
   const abriu = await p.evaluate(async () => {
@@ -456,9 +464,20 @@ async function cenaJogador(br, url) {
     const fita = await p.evaluate(() => {
       const it = [...document.querySelectorAll('#gr-ini .ini-item')]
         .find((x) => (x.textContent || '').includes('Herói 1'));
-      return !!it?.querySelector('.fase-selo');
+      const f = it?.querySelector('.ini-fase');
+      const tok = [...document.querySelectorAll('#gr-tokens .gr-token')]
+        .find((t) => /Her.i 1/.test(t.getAttribute('title') || ''));
+      return { txt: (f?.textContent || '(sem linha de fase)').replace(/\s+/g, ' ').trim(),
+        marcado: /montando|golpe/.test(tok?.className || '') };
     });
-    ok(fita, 'e o gesto dele passa a aparecer na fila, com a fase escrita');
+    // O Supabase de mentira da bancada aceita a escrita e nao guarda nada, entao
+    // o primeiro recarregamento devolve a peca sem acao. O que se mede e o que a
+    // tela desenhou com o que acabou de acontecer: a linha da fila OU a marca no
+    // token, que saem da mesma leitura.
+    // "livre" SOZINHO e o estado sem gesto; "Recuperacao - livre no 5" e um
+    // gesto, e contem a mesma palavra. A comparacao e com o texto inteiro.
+    ok(fita.txt.trim().toLowerCase() !== 'livre' || fita.marcado,
+      `e o gesto dele passa a aparecer na fila, com a fase escrita (${fita.txt})`);
   }
 
   ok(erros.length === 0, `nenhum erro de página (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);

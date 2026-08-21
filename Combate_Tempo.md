@@ -1430,6 +1430,43 @@ estrita que a irmã de propósito: exige ser **dono** da peça que age, porque o
 coisa que mais decide a luta. Sobre o alvo a regra volta a ser a da mesa, e só a chave `pressao` é
 tocada, por soma.
 
+### 15.7. A leitura da ordem de combate (21/08/2026)
+
+A coluna de iniciativa foi desenhada para responder **"de quem é a vez"**, que é uma pergunta de
+ordem. O P/G/R trocou a pergunta por **"o que acontece quando"**, que é de simultaneidade, e uma
+lista ordenada não tem como respondê-la: ela empilha **pessoas**, e o que se precisa comparar são
+**instantes**.
+
+O que a coluna fazia de errado, medido numa cena de doze:
+
+- o Tick corrente era a **menor letra do painel**, menor que a rodada, sendo o número do qual todos
+  os outros dependem;
+- cada linha trazia o Tick **absoluto** (`t 0`), e não quanto falta: com oito no mesmo Tick, a
+  coluna dizia "t 0" oito vezes e o leitor subtraía de cabeça;
+- a aura de "na vez" acendia nessas oito linhas ao mesmo tempo, e portanto **não distinguia
+  ninguém**;
+- a fase existia só em cor, numa fita de nove células sem escala;
+- e não havia como ver que **o martelo cai no Tick 9 enquanto a flecha sai no 11**.
+
+**As duas leituras passaram a conviver, e cada uma recolhe sozinha** (a escolha fica no aparelho,
+como as dobras de "Em campo" e do "Registro").
+
+**A fila**, na coluna, virou uma **escada**: o relógio em corpo grande no alto, e as linhas
+entrando debaixo de um degrau (`Agora`, `em 2 ticks`, `em 5 ticks`) em vez de cada uma carregar um
+número absoluto. Cada linha diz a fase **por extenso** com o número que importa nela: no Preparo,
+em que Tick o golpe sai; no Golpe, qual dos golpes está saindo e a Defesa; na Recuperação, quando a
+guarda volta. A iniciativa e a Vida desceram para uma linha secundária.
+
+**A linha do tempo**, numa faixa sob o tabuleiro, é a régua: Ticks são colunas, pessoas são linhas,
+e a coluna do agora é uma régua vertical que atravessa todas. Duas fitas quaisquer se comparam com
+o olho parado. Mostra **quem tem gesto no ar mais os próximos a agir**, e não a cena inteira: doze
+linhas em que nada salta seriam uma parede, e o que interessa é sempre o punhado que está prestes a
+acontecer. A largura se ajusta ao ciclo mais longo em cena, entre 8 e 16 Ticks.
+
+A resposta à pergunta "a coluna ainda faz sentido", então, é: **faz, como fila; deixou de bastar
+como relógio.** As duas coisas são leituras diferentes do mesmo estado, e nenhuma substitui a
+outra.
+
 ### 15.6. E a Arte também (21/08/2026)
 
 Mesma emenda, do outro lado do tabuleiro. Conjurar gravava o efeito com
