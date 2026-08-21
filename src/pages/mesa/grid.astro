@@ -1342,6 +1342,7 @@ const SETAS = [
     combateDaMesa, COMBATE_PADRAO, faseEm, acaoVazia, temGesto, resumoDaAcao,
     anatomia, anatomiaLivre, declarar, defesaPerdida, classeDeTempo, velocidadeDaArma, tetoDaRajada,
     rolaNoSite, ticksDeDeslocamento, armaDoCatalogo, ticksDeEntrada,
+    contrapeEm, contrapeDe, contrapeAcaba,
     FASE_ROTULO, type CombateMesa, type Manobra,
   } from '../../lib/combate-tempo';
 
@@ -3163,7 +3164,11 @@ const SETAS = [
       // O contrapé da iniciativa fica escrito na fila até a pessoa agir: é uma
       // penalidade que a mesa tem de lembrar na hora de rolar, e o único lugar
       // onde ela caberia sem ser esquecida é ao lado do nome.
-      extra: c.acao?.penPrimeira ? `contrapé ${c.acao.penPrimeira}d6` : undefined,
+      // O contrapé mostrado é o que ela pagaria SE AGISSE no próprio Tick: é a
+      // pergunta que a mesa faz olhando a fila. Ele desce sozinho, então esperar
+      // um Tick muda o número aqui.
+      extra: contrapeEm(c.acao, c.tick ?? 0)
+        ? `contrapé ${contrapeEm(c.acao, c.tick ?? 0)}d6` : undefined,
     })), tick, { marcacao: TEMPO.marcacao });
     reconciliar(box, itens);
     pintarLinhaDoTempo(tick);
@@ -3393,7 +3398,11 @@ const SETAS = [
     for (let i = 0; i < rolado.length; i++) {
       const r = rolado[i];
       const e = entradas[i];
-      const acao = e.penDados ? { golpes: [], livre: e.tick, penPrimeira: e.penDados } : {};
+      // `contrapeDesde` é o Tick de entrada, e é dele que a penalidade começa a
+      // descer: um dado por Tick. Sem essa data o contrapé seria um número solto
+      // e não teria como decair.
+      const acao = e.penDados
+        ? { golpes: [], livre: e.tick, contrape: e.penDados, contrapeDesde: e.tick } : {};
       await SB.from('combatentes').update({ iniciativa: r.v, tick: e.tick, acao }).eq('id', r.c.id);
       r.c.iniciativa = r.v; r.c.tick = e.tick; r.c.acao = acao;
     }
@@ -3401,7 +3410,8 @@ const SETAS = [
     avisarAgora('combatentes');
     const ordem = rolado.map((r, i) => ({ r, e: entradas[i] }))
       .sort((a, b) => b.r.v - a.r.v)
-      .map(({ r, e }) => `${r.c.nome} ${r.v} (t${e.tick}${e.penDados ? `, ${e.penDados}d6` : ''})`)
+      .map(({ r, e }) => `${r.c.nome} ${r.v} (t${e.tick}${
+        e.penDados ? `, contrapé ${e.penDados}d6 até o tick ${e.tick + Math.abs(e.penDados)}` : ''})`)
       .join(' · ');
     await logar(null, `Iniciativa rolada: ${ordem}`, { acao: null });
     await verificarEfeitos(ctxArtes());
@@ -3467,10 +3477,13 @@ const SETAS = [
     const c = COMBS.find((x: any) => x.id === cid); if (!c) return;
     const a = acaoNo(c); if (!a) return;
     abrirAbortar({ nome: c.nome, acao: a, tick: relogio() }, async (r) => {
+      // O contrapé sobrevive ao abortar: ele é do relógio, e desistir do gesto
+      // não devolve o equilíbrio que a entrada atrasada tirou.
+      const limpa = contrapeDe(c.acao);
       const { error } = await SB.from('combatentes')
-        .update({ tick: r.novoTick, acao: {} }).eq('id', cid);
+        .update({ tick: r.novoTick, acao: limpa }).eq('id', cid);
       if (error) return uiErro('Erro: ' + error.message);
-      c.tick = r.novoTick; c.acao = {};
+      c.tick = r.novoTick; c.acao = limpa;
       pintarIniciativa(); pintarTokens();
       avisarAgora('combatentes');
       await logar(c, `${r.frase} · próxima ação no tick ${r.novoTick} (sairia no ${a.livre})`, { acao: null });
@@ -4021,7 +4034,7 @@ const SETAS = [
     // A Recuperação ESTICA junto: o relógio dela é o mesmo `livre`, e mover os
     // dois separados deixaria a fita dizendo "livre no 9" numa peça que só age
     // no 15.
-    const nova = { ...(acao || {}), livre: novoTick };
+    const nova = { ...(acao || {}), ...contrapeDe(c.acao), livre: novoTick };
     if (!await gravarRelogio(c, novoTick, nova)) return;
     flutuar(c.id, `+${custo} ⏱`, 'tempo');
     await logar(c, `${c.nome} andou ${fmtM(metros)} na Recuperação: +${custo} Ticks (livre no ${novoTick})`,
@@ -4182,6 +4195,13 @@ const SETAS = [
       // com o que mexe no relógio: ela É uma ação comum, só que a régua não a
       // previu. Tecla O faz o mesmo pela peça da vez.
       meu ? item('outra', '✎ Outra coisa') : '',
+      // ESPERAR UM TICK só aparece para quem tem contrapé, e é a regra se
+      // ensinando pela presença do botão: o número no rótulo diz o que a espera
+      // compra. Sem contrapé, esperar um Tick não faz nada e o item some.
+      meu && contrapeEm(c.acao, c.tick ?? 0)
+        ? item('esperar', `⏳ Esperar 1 Tick (contrapé ${contrapeEm(c.acao, c.tick ?? 0)}d6 → ${
+          contrapeEm(c.acao, (c.tick ?? 0) + 1)
+            ? `${contrapeEm(c.acao, (c.tick ?? 0) + 1)}d6` : 'nenhum'})`) : '',
       sep,
       item('alcance', ALCANCE?.cid === cid ? '◎ Apagar o alcance' : '◎ Mostrar alcance'),
       MESTRE ? sep : '',
@@ -4218,6 +4238,7 @@ const SETAS = [
       else if (a === 'mana') ajustarMana(cid);
       else if (a === 'arte') usarArte(cid);
       else if (a === 'outra') abrirOutra(cid);
+      else if (a === 'esperar') esperarUmTick(cid);
       else if (a === 'alcance') alternarAlcance(cid);
       else if (a === 'abortar') abortarGesto(cid);
       else if (a === 'encerrar') encerrarVez(cid);
@@ -4881,6 +4902,8 @@ const SETAS = [
       tipo: (an.golpes > 1 ? manobra : 'simples') as Manobra,
       arma: RESUMO[atacante.id]?.arma || null,
       alvo: alvo?.id || null,
+      // O contrapé é do relógio, e não da ação: agir não o apaga.
+      ...contrapeDe(atacante.acao),
     });
     await gravarRelogio(atacante, acao.livre, acao, alvo, an.golpes);
   }
@@ -4936,6 +4959,30 @@ const SETAS = [
       ? 'O ataque não conseguiu empurrar o relógio: falta a migração 28 (supabase/migracao-28.sql).'
       + ' O dano continua funcionando; o Tick você empurra no ⏭.'
       : 'Erro ao declarar a ação: ' + error.message);
+  }
+
+  /**
+   * ESPERAR UM TICK, para o contrapé descer.
+   *
+   * O contrapé cai 1d6 por Tick, e a decisão que ele cria ("bato agora pela
+   * metade da chance, ou espero e chego depois?") precisa de um gesto do
+   * tamanho dela. Adiantar o relógio pelo menu geral custa mexer no campo do
+   * custo e voltar; aqui é um clique, e o rótulo já diz o que se compra.
+   *
+   * Não é ação: não declara gesto, não abre a guarda, não entra na agenda. É só
+   * o relógio de uma pessoa andando um instante, que é exatamente o que
+   * "esperar" quer dizer num motor de Ticks.
+   */
+  async function esperarUmTick(cid: string) {
+    const c = COMBS.find((x: any) => x.id === cid); if (!c) return;
+    const antes = contrapeEm(c.acao, c.tick ?? 0);
+    const novoTick = (c.tick ?? 0) + 1;
+    const nova = { ...contrapeDe(c.acao), golpes: [], livre: novoTick };
+    if (!await gravarRelogio(c, novoTick, nova)) return;
+    const agora = contrapeEm(nova, novoTick);
+    flutuar(c.id, '+1 ⏱', 'tempo');
+    await logar(c, `${c.nome} esperou um Tick para recompor a guarda: contrapé ${antes}d6 → ${
+      agora ? `${agora}d6` : 'nenhum'} (age no tick ${novoTick})`, { acao: null });
   }
 
   /**
@@ -5044,7 +5091,9 @@ const SETAS = [
       // Custo zero é ação livre: não empurra o relógio e não cria gesto, então
       // só o registro acontece. É a mesma regra da Arte de Velocidade 0.
       if (custo > 0) {
-        const acao = declarar(t0, a, { tipo: 'simples' as Manobra, arma: null, alvo: null });
+        const acao = declarar(t0, a, {
+          tipo: 'simples' as Manobra, arma: null, alvo: null, ...contrapeDe(c.acao),
+        });
         if (!await gravarRelogio(c, acao.livre, acao)) return;
         flutuar(c.id, `+${custo} ⏱`, 'tempo');
       }
@@ -5193,7 +5242,7 @@ const SETAS = [
     let rolado = '';
     // O CONTRAPÉ da iniciativa: quem entrou atrasado perde dados na PRIMEIRA
     // ação. Mostrado, e não somado, pelo mesmo motivo da distância.
-    const contrape = Number(atacante.acao?.penPrimeira) || 0;
+    const contrape = contrapeEm(atacante.acao, atacante.tick ?? relogio());
     const pintarPool = () => {
       const pen = anat().penDados[0] || 0;
       const partes = [esc(ra?.ataque || '—')];

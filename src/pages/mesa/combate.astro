@@ -572,6 +572,7 @@ import MesaCab from '../../components/MesaCab.astro';
   } from '../../lib/mesa-tempo-ui';
   import {
     combateDaMesa, COMBATE_PADRAO, anatomia, declarar, faseEm, defesaPerdida, acaoVazia, ticksDeEntrada,
+    contrapeEm, contrapeDe,
     classeDeTempo, velocidadeDaArma, tetoDaRajada, temGesto, FASE_ROTULO,
     type CombateMesa, type Manobra,
   } from '../../lib/combate-tempo';
@@ -930,7 +931,8 @@ import MesaCab from '../../components/MesaCab.astro';
         pct: verVida(c) === 'numero' ? pctVida(c) : null,
         acao: acaoDe(c), segura: acaoDe(c)?.tipo === 'segura',
         vez: (c.tick ?? 0) === tick, age: c.id === age,
-        extra: c.acao?.penPrimeira ? `contrapé ${c.acao.penPrimeira}d6` : undefined,
+        extra: contrapeEm(c.acao, c.tick ?? 0)
+          ? `contrapé ${contrapeEm(c.acao, c.tick ?? 0)}d6` : undefined,
       })), tick, { marcacao: TEMPO.marcacao }).map((i) => i.html).join('')
       : '<p class="ini-vazio">Ninguém em campo.</p>';
     medirTira();
@@ -1168,10 +1170,15 @@ import MesaCab from '../../components/MesaCab.astro';
         ${r ? `<div><b>Absorve</b> I ${r.soak.impacto} · C ${r.soak.corte} · P ${r.soak.perfuracao}${r.resistPerf ? ` · gate N${r.resistPerf}` : ''}</div>` : ''}
         ${cd.porRodada ? `<div><b>Por rodada</b> <span class="ruim">−${cd.porRodada}</span> ao agir</div>` : ''}
         ${a.ferimento ? `<div><b>Ferimento</b> ${sinal(a.ferimento)} em ações</div>` : ''}
+        ${contrapeEm(atual.acao, atual.tick ?? 0) ? `<div><b>Contrapé</b> <span class="ruim">${
+          contrapeEm(atual.acao, atual.tick ?? 0)}d6</span> na ação · cai 1d6 por tick de espera</div>` : ''}
       </div>
       ${EH_MESTRE ? `<div class="pt-btns">
         <button class="btn primary mini agir" data-c="${atual.id}">Resolver ação</button>
-        <button class="btn mini" id="pt-esperar" data-c="${atual.id}">Esperar 1 tick</button>
+        <button class="btn mini" id="pt-esperar" data-c="${atual.id}">Esperar 1 tick${
+          contrapeEm(atual.acao, atual.tick ?? 0)
+            ? ` (contrapé → ${contrapeEm(atual.acao, (atual.tick ?? 0) + 1)
+              ? `${contrapeEm(atual.acao, (atual.tick ?? 0) + 1)}d6` : 'nenhum'})` : ''}</button>
       </div>` : ''}
       ${prox.length ? `<div class="pt-prox">A seguir: ${prox.map((c) => `${avatarDe(c).replace('class="av', 'class="av av-p')} ${esc(c.nome)} <small>(t${c.tick})</small>`).join(' · ')}</div>` : ''}`;
     if (EH_MESTRE) {
@@ -1387,7 +1394,9 @@ import MesaCab from '../../components/MesaCab.astro';
     // A ação e o Tick andam juntos: a ação diz o que acontece DENTRO do ciclo
     // que o Tick acabou de reservar. Gravar em duas idas daria uma janela em
     // que a fita mostra um ciclo e o relógio mostra outro.
-    c.acao = acao || {};
+    // O contrapé atravessa: ele é do RELÓGIO e não da ação, então agir (ou
+    // esperar) não o apaga. Ele desce sozinho, um dado por Tick.
+    c.acao = { ...contrapeDe(antesAcao), ...(acao || {}) };
     await upComb(cid, { tick: novo, acao: c.acao });
     registrarDesfazer(`Tick de ${c.nome} (${antes} → ${novo})`, async () => {
       c.tick = antes; c.acao = antesAcao;
@@ -2063,7 +2072,8 @@ import MesaCab from '../../components/MesaCab.astro';
           if (zTick) {
             const e = entradas[i];
             cols.tick = e.tick;
-            cols.acao = e.penDados ? { golpes: [], livre: e.tick, penPrimeira: e.penDados } : {};
+            cols.acao = e.penDados
+              ? { golpes: [], livre: e.tick, contrape: e.penDados, contrapeDesde: e.tick } : {};
           }
         }
         if (Object.keys(cols).length) await upComb(c.id, cols);
@@ -2071,7 +2081,8 @@ import MesaCab from '../../components/MesaCab.astro';
       if (zIni && zTick) {
         const linha = COMBS.map((c, i) => ({ c, e: entradas[i] }))
           .sort((a, b) => (ini[b.c.id] || 0) - (ini[a.c.id] || 0))
-          .map(({ c, e }) => `${c.nome} ${ini[c.id]} (t${e.tick}${e.penDados ? `, ${e.penDados}d6` : ''})`)
+          .map(({ c, e }) => `${c.nome} ${ini[c.id]} (t${e.tick}${
+            e.penDados ? `, contrapé ${e.penDados}d6 até o tick ${e.tick + Math.abs(e.penDados)}` : ''})`)
           .join(' · ');
         await logar(`Iniciativa: ${linha}`, 'sistema');
       }

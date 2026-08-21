@@ -235,22 +235,22 @@ export function anatomia(opts: {
 /**
  * ONDE CADA UM ENTRA NA LINHA DE TICKS, pela iniciativa que rolou.
  *
- * A regra está escrita desde sempre (`derivados.iniciativa`, e o capítulo de
- * Combate com exemplo), e a mesa não a aplicava: a fila punha todo mundo no
- * Tick 0, e a primeira rodada inteira acontecia no mesmo instante. O valor da
- * iniciativa servia só para desempatar dentro do Tick, que é metade do que ele
- * faz.
+ * A régua (`derivados.iniciativa`), e ela NÃO é um Tick por ponto:
  *
- * A régua, e ela NÃO é um Tick por ponto:
+ *   · quem tirou o MAIOR entra sozinho no Tick 1;
+ *   · os demais entram um Tick depois por DEGRAU de atraso, arredondando para
+ *     cima: 1 a 6 pontos atrás entram no 2, 7 a 12 no 3, 13 a 18 no 4;
+ *   · cada degrau custa também 1d6 na ação, o contrapé (ver `contrapeEm`).
  *
- *   · quem tirou o MAIOR começa no Tick 0;
- *   · todos os demais começam no Tick 1 (`baseTickNaoPrimeiro`);
- *   · e a cada `gapPorPenalidade` pontos abaixo do maior, mais 1 Tick de
- *     atraso E −1d6 na PRIMEIRA ação, por ter sido pego no contrapé.
+ * O degrau de 6 não é gosto: a iniciativa vai de 2 a 18, então o vão máximo
+ * possível é 16, e com degrau 6 ninguém nunca entra depois do Tick 4, role o
+ * que rolar. Medido numa cena de oito (quatro PCs e quatro criaturas do
+ * bestiário), o vão típico é de 7 a 9 pontos e a cena se parte em três
+ * instantes: é o suficiente para a ordem importar sem virar fila de banco.
  *
- * Empate no topo: os dois entram no Tick 0. Quem age primeiro dentro dele é o
- * desempate do capítulo (maior Raciocínio, depois o dado), que é ordem e não
- * instante, e a fila já resolve arrastando.
+ * Empate no topo: os dois entram juntos no Tick 1, e quem age primeiro dentro
+ * do instante é o desempate do capítulo (maior Raciocínio, depois o dado), que
+ * é ordem e não tempo, e a fila já resolve arrastando.
  *
  * Devolve na MESMA ORDEM que recebeu: quem chama costuma ter a lista de peças
  * ao lado e não quer casar nada por nome.
@@ -260,16 +260,62 @@ export function ticksDeEntrada(
 ): { tick: number; penDados: number; atras: number }[] {
   if (!iniciativas.length) return [];
   const I = (R as any)?.derivados?.iniciativa;
-  const base = I?.baseTickNaoPrimeiro ?? 1;
+  const primeiro = I?.tickDoPrimeiro ?? 1;
   const gap = Math.max(1, I?.gapPorPenalidade ?? 6);
+  const porDegrau = I?.contrapeDadosPorDegrau ?? -1;
   const maior = Math.max(...iniciativas.map((v) => v || 0));
   return iniciativas.map((v0) => {
-    const v = v0 || 0;
-    const atras = maior - v;
-    if (atras <= 0) return { tick: 0, penDados: 0, atras: 0 };
-    const passos = Math.floor(atras / gap);
-    return { tick: base + passos, penDados: -passos, atras };
+    const atras = Math.max(0, maior - (v0 || 0));
+    const degrau = Math.ceil(atras / gap);
+    return { tick: primeiro + degrau, penDados: porDegrau * degrau, atras };
   });
+}
+
+/**
+ * O CONTRAPÉ, E POR QUE ELE É DO RELÓGIO E NÃO DA AÇÃO.
+ *
+ * Quem entrou atrasado age pego no contrapé: 1d6 a menos por degrau de atraso.
+ * Num sistema em que a jogada é `total > Defesa`, um dado não é um arranhão:
+ * medido num pool de PC (3d6 +5) contra Defesa 12, ele leva a chance de acertar
+ * de 84% para 42%, e dois dados a levam a zero, porque 1d6+5 não tem como
+ * superar 12. Uma penalidade que pode ser erro matemático precisa de saída.
+ *
+ * A saída é o TEMPO: a penalidade cai 1d6 a cada Tick que passa. Quem entrou no
+ * Tick 3 com −2d6 escolhe entre bater no 3 por −2d6, no 4 por −1d6 ou no 5
+ * inteiro. A vantagem de quem rolou bem deixa de ser "o outro erra" e passa a
+ * ser "o outro chega depois", que é a moeda deste motor.
+ *
+ * E ela desce SOZINHA, sem depender de a pessoa fazer ou deixar de fazer nada.
+ * Foi de propósito: se qualquer ação declarada apagasse o contrapé, a jogada
+ * ótima seria comprá-lo por um Tick de bobagem, e uma penalidade que vale
+ * metade da chance de acertar não pode custar um Tick.
+ */
+export function contrapeEm(acao: any, tick: number): number {
+  const n = Number(acao?.contrape) || 0;
+  if (!n) return 0;
+  const decai = (R as any)?.derivados?.iniciativa?.contrapeDecaiPorTick ?? 1;
+  const desde = Number(acao?.contrapeDesde) || 0;
+  return Math.min(0, n + Math.max(0, tick - desde) * decai);
+}
+
+/**
+ * O contrapé atravessa a declaração de uma ação nova.
+ *
+ * `declarar` monta uma ação limpa, e é isso que faz a Pressão zerar quando a
+ * pessoa age, que é a regra. O contrapé é o contrário: ele não é da ação, é do
+ * relógio, então tem de ser carregado à mão para o outro lado.
+ */
+export const contrapeDe = (acao: any): { contrape?: number; contrapeDesde?: number } =>
+  (Number(acao?.contrape) || 0)
+    ? { contrape: acao.contrape, contrapeDesde: Number(acao.contrapeDesde) || 0 }
+    : {};
+
+/** Em que Tick o contrapé desta ação chega a zero. */
+export function contrapeAcaba(acao: any): number | null {
+  const n = Number(acao?.contrape) || 0;
+  if (!n) return null;
+  const decai = (R as any)?.derivados?.iniciativa?.contrapeDecaiPorTick ?? 1;
+  return (Number(acao?.contrapeDesde) || 0) + Math.ceil(Math.abs(n) / decai);
 }
 
 /**

@@ -726,9 +726,13 @@
         "raciocinio",
         "prontidao"
       ],
-      "nota": "Role 1d6 + Raciocínio + Prontidão. O maior começa no Tick 0; os demais no Tick 1. A cada 'gapPorPenalidade' pontos abaixo da maior iniciativa, o participante começa 1 Tick depois E perde 1d6 na primeira ação. Penalidade = [(maior − sua) / gapPorPenalidade] (em Ticks somados ao baseTickNaoPrimeiro, e em d6 da 1ª ação).",
-      "baseTickNaoPrimeiro": 1,
-      "gapPorPenalidade": 6
+      "nota": "Role 1d6 + Raciocínio + Prontidão, de 2 a 18. Quem tirar o MAIOR entra sozinho no Tick 1; os demais entram um Tick depois por degrau de atraso: Tick = tickDoPrimeiro + arredonda-para-cima(atraso ÷ gapPorPenalidade). Cada degrau também custa 1d6 na ação (o contrapé), e essa penalidade DECAI 1d6 por Tick que passa: quem entrou no Tick 3 com −2d6 age no 3 por −2d6, no 4 por −1d6 ou no 5 inteiro. A iniciativa não é rolada de novo: depois da entrada, quem manda é o Tick de cada um.",
+      "tickDoPrimeiro": 1,
+      "gapPorPenalidade": 6,
+      "contrapeDadosPorDegrau": -1,
+      "contrapeDecaiPorTick": 1,
+      "contrapeNota": "O contrapé é do RELÓGIO, e não da ação: ele não se apaga por a pessoa fazer alguma coisa, e por isso não há como comprá-lo barato gastando um Tick em qualquer bobagem. Ele desce sozinho, um dado por Tick, e some quando o relógio anda o tanto de dados que ele valia.",
+      "empateNoTopo": "Os dois entram juntos no Tick 1. Quem age primeiro dentro do instante é o desempate: maior Raciocínio, e persistindo o empate, o dado."
     },
     "deslocamento": {
       "nota": "Tick ≈ 1 segundo. Livre = distância grátis (m) na ação. Corrida (Velocidade 3, interrompível a qualquer Tick): Arranque nos 3 primeiros Ticks, Corrida do 4º em diante (m/s = m por Tick). Salto (Velocidade 3, NÃO interrompível): Vertical em CM, Horizontais em M (o Correndo soma a velocidade atual — na ficha, a de Corrida, impulso pleno; coef. já expandidos). Arredonda ao inteiro.",

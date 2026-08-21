@@ -395,6 +395,7 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
       t: Number(i.dataset.t),
       ini: Number((i.querySelector('.ini-num b')?.textContent || '0').trim()),
       contrape: /contrapé/.test(i.querySelector('.ini-num')?.textContent || ''),
+      dados: Number((/contrapé (-?\d+)d6/.exec(i.querySelector('.ini-num')?.textContent || '') || [])[1] || 0),
     }));
     return { pediu: true, linhas,
       degraus: [...document.querySelectorAll('#gr-ini .ini-grupo')].length,
@@ -403,18 +404,67 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
   if (ini && ini.pediu) {
     const ts = ini.linhas.map((l) => l.t);
     const maior = Math.max(...ini.linhas.map((l) => l.ini));
+    // A regua: o maior entra SOZINHO no Tick 1, e os demais um Tick depois por
+    // degrau de 6, arredondando para cima.
+    const degrau = (v) => Math.ceil((maior - v) / 6);
     ok(new Set(ts).size > 1, `a cena nao comeca toda no mesmo Tick (ticks: ${[...new Set(ts)].join(', ')})`);
-    ok(ini.linhas.filter((l) => l.ini === maior).every((l) => l.t === 0),
-      'quem tirou o maior entra no Tick 0');
-    ok(ini.linhas.filter((l) => l.ini !== maior).every((l) => l.t >= 1),
-      'e todos os demais entram depois dele');
-    // A regua nao e um Tick por ponto: e 1 + (atraso / 6).
-    ok(ini.linhas.every((l) => l.ini === maior || l.t === 1 + Math.floor((maior - l.ini) / 6)),
-      'o atraso segue a regua: Tick 1 mais um a cada seis pontos');
-    ok(ini.linhas.every((l) => l.contrape === (Math.floor((maior - l.ini) / 6) > 0)),
+    ok(ini.linhas.filter((l) => l.ini === maior).every((l) => l.t === 1),
+      'quem tirou o maior entra sozinho no Tick 1');
+    ok(ini.linhas.filter((l) => l.ini !== maior).every((l) => l.t >= 2),
+      'e todos os demais entram pelo menos um Tick depois dele');
+    ok(ini.linhas.every((l) => l.t === 1 + degrau(l.ini)),
+      'o atraso segue a regua: um Tick por degrau de seis pontos, para cima');
+    // O contrape mostrado e o do proprio Tick de entrada, ou seja, o cheio.
+    ok(ini.linhas.every((l) => l.contrape === (degrau(l.ini) > 0)),
       'e o contrape aparece escrito na fila de quem foi pego atrasado');
+    ok(ini.linhas.every((l) => !l.contrape || l.dados === -degrau(l.ini)),
+      `com um dado por degrau (${ini.linhas.filter((l) => l.contrape).map((l) => l.dados).join(', ')})`);
     ok(ini.degraus > 1, `a escada tem mais de um degrau (${ini.degraus})`);
     ok(/Iniciativa rolada/.test(ini.registro || ''), 'o registro guarda a rolagem com os Ticks');
+  }
+
+  // ------------------------------------- o contrape desce com o relogio
+  //
+  // A regra que a mesa fechou: cada Tick de espera devolve 1d6. E ela e do
+  // RELOGIO e nao da acao, entao nao ha como comprar a limpeza gastando um Tick
+  // em qualquer bobagem: o botao de esperar custa exatamente o Tick que a regra
+  // manda custar, e o rotulo dele ja diz o que se compra.
+  const cp = await p.evaluate(async () => {
+    const linha = (nome) => [...document.querySelectorAll('#gr-ini .ini-item')]
+      .find((i) => (i.querySelector('.ini-nome')?.textContent || '').includes(nome));
+    // Alguem com contrape na fila.
+    const alvo = [...document.querySelectorAll('#gr-ini .ini-item')]
+      .find((i) => /contrapé/.test(i.querySelector('.ini-num')?.textContent || ''));
+    if (!alvo) return null;
+    const nome = alvo.querySelector('.ini-nome')?.textContent.trim();
+    const leia = () => {
+      const l = linha(nome);
+      return { t: Number(l?.dataset.t),
+        dados: Number((/contrapé (-?\d+)d6/.exec(l?.querySelector('.ini-num')?.textContent || '') || [])[1] || 0) };
+    };
+    const antes = leia();
+    // O menu da peca tem o item de esperar, e o rotulo diz o antes e o depois.
+    const tok = document.querySelector(`.gr-token[data-c="${CSS.escape(alvo.dataset.c)}"]`);
+    if (!tok) return { semToken: true, antes };
+    tok.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, clientX: 400, clientY: 300 }));
+    await new Promise((r) => setTimeout(r, 350));
+    const it = document.querySelector('#tok-menu button[data-a="esperar"]');
+    const rotulo = it?.textContent.trim();
+    if (!it) return { semItem: true, antes };
+    it.click();
+    await new Promise((r) => setTimeout(r, 900));
+    const depois = leia();
+    const registro = [...document.querySelectorAll('#gr-log .lg')].map((l) => l.textContent).join(' | ');
+    return { antes, depois, rotulo, nome,
+      escreveu: /recompor a guarda/.test(registro) };
+  });
+  if (cp && cp.antes) {
+    ok(!!cp.rotulo, `o menu de quem tem contrape oferece esperar (${cp.rotulo || 'nao ofereceu'})`);
+    ok(cp.depois && cp.depois.t === cp.antes.t + 1,
+      `esperar custa exatamente um Tick (t${cp.antes?.t} -> t${cp.depois?.t})`);
+    ok(cp.depois && cp.depois.dados === Math.min(0, cp.antes.dados + 1),
+      `e devolve exatamente um dado (${cp.antes.dados}d6 -> ${cp.depois?.dados}d6)`);
+    ok(cp.escreveu, 'e a espera entra no registro, com o antes e o depois');
   }
 
   // ----------------------------------------- a distancia, mostrada e nao aplicada

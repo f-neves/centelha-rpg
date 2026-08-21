@@ -249,19 +249,39 @@ eq([T.rolaNoSite('site', false), T.rolaNoSite('site', true)], [true, true], 'no 
 eq([T.rolaNoSite('misto', false), T.rolaNoSite('misto', true)], [true, false],
   'no misto a criatura rola sozinha e o personagem não');
 // A ENTRADA NA LINHA DE TICKS, pela iniciativa.
-// A regra e do `derivados.iniciativa` e do capitulo de Combate, e o exemplo de
-// la e este: com a maior em 14, quem tirou de 9 a 13 comeca no Tick 1 sem
-// perda; de 3 a 8, Tick 2 e -1d6; 1 ou 2, Tick 3 e -2d6.
+// A regua (`derivados.iniciativa`): o maior entra SOZINHO no Tick 1, e os
+// demais um Tick depois por degrau de 6 pontos, arredondando para cima. O
+// exemplo da mesa: 13, 12, 10, 9 e 5 -> 1, 2, 2, 2 e 3.
 {
-  const e = T.ticksDeEntrada([14, 13, 9, 8, 3, 2]);
-  eq(e.map((x) => x.tick), [0, 1, 1, 2, 2, 3], 'a iniciativa decide em que Tick cada um entra');
-  eq(e.map((x) => x.penDados), [0, 0, 0, -1, -1, -2], 'e quantos dados o contrape custa na primeira acao');
-  eq(T.ticksDeEntrada([12, 12, 10]).map((x) => x.tick), [0, 0, 1],
-    'empate no topo: os dois entram no Tick 0, e a ordem entre eles e desempate');
-  // 7 pontos atras ja passa do vao de 6: entra no Tick 2, e nao no 1.
-  eq(T.ticksDeEntrada([12, 5]).map((x) => x.tick), [0, 2], 'o vao de 6 e degrau, e nao arredondamento');
+  const e = T.ticksDeEntrada([13, 12, 10, 9, 5]);
+  eq(e.map((x) => x.tick), [1, 2, 2, 2, 3], 'o maior entra sozinho no Tick 1, e os degraus sao de 6');
+  eq(e.map((x) => x.penDados), [0, -1, -1, -1, -2], 'e cada degrau custa 1d6 de contrape');
+  // As bordas do degrau: 6 atras ainda e o primeiro degrau, 7 ja e o segundo.
+  eq(T.ticksDeEntrada([18, 12, 11, 6, 5, 2]).map((x) => x.tick), [1, 2, 3, 3, 4, 4],
+    'a borda do degrau cai no lugar certo (6 atras ainda e o primeiro)');
+  eq(T.ticksDeEntrada([12, 12, 10]).map((x) => x.tick), [1, 1, 2],
+    'empate no topo: os dois entram juntos no Tick 1');
   eq(T.ticksDeEntrada([]).length, 0, 'cena vazia nao quebra');
-  eq(T.ticksDeEntrada([7]).map((x) => x.tick), [0], 'sozinho em cena, comeca no Tick 0');
+  eq(T.ticksDeEntrada([7]).map((x) => x.tick), [1], 'sozinho em cena, entra no Tick 1');
+  // O teto: a iniciativa vai de 2 a 18, entao o vao maximo e 16 e ninguem
+  // NUNCA entra depois do Tick 4. E o que faz o degrau de 6 ser seguro.
+  eq(T.ticksDeEntrada([18, 2]).map((x) => x.tick), [1, 4], 'o pior atraso possivel para no Tick 4');
+}
+
+// O CONTRAPE DECAI COM O RELOGIO, e nao com o que a pessoa faz.
+{
+  const a = { contrape: -2, contrapeDesde: 3 };
+  eq([3, 4, 5, 6].map((t) => T.contrapeEm(a, t)), [-2, -1, 0, 0],
+    'cada Tick de espera devolve 1d6, e ele para em zero');
+  eq(T.contrapeEm({}, 9), 0, 'sem contrape, nao ha o que descontar');
+  eq(T.contrapeEm(a, 1), -2, 'antes da hora dele, o contrape e o cheio');
+  eq(T.contrapeAcaba(a), 5, 'e da para dizer em que Tick ele acaba');
+  eq(T.contrapeAcaba({}), null, 'quem nao tem contrape nao tem prazo');
+  // Ele atravessa a declaracao: nao se compra a limpeza gastando um Tick.
+  eq(T.contrapeDe(a), { contrape: -2, contrapeDesde: 3 }, 'o contrape e carregado para a acao nova');
+  eq(T.contrapeDe({ golpes: [4], livre: 9 }), {}, 'e quem nao tem nao carrega nada');
+  const nova = T.declarar(4, T.anatomiaLivre(5, 'agora', 'pgr'), T.contrapeDe(a));
+  eq(T.contrapeEm(nova, 4), -1, 'declarar no Tick 4 preserva o contrape ja decaido');
 }
 
 // A acao que a regua nao previu: derrubar a estante, arrombar a porta.

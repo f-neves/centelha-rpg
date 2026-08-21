@@ -11,7 +11,7 @@ O combate não corre em turnos rígidos: corre numa **linha do tempo de Ticks** 
 
 Antes dos detalhes, o esqueleto de uma briga, do começo ao fim:
 
-1. **Role a Iniciativa** (1d6 + Raciocínio + Prontidão) — ela diz quem age primeiro na linha de Ticks.
+1. **Role a Iniciativa** (1d6 + Raciocínio + Prontidão) — ela diz **em que Tick cada um entra** na linha de Ticks.
 2. **Na sua vez, escolha uma ação.** Cada ação custa um tempo (a **Velocidade**); após agir, você só volta quando esses Ticks passarem.
 3. **Para acertar, role seu pool de ataque** e compare com a **Defesa** do alvo — um número fixo. Se o total **superar** a Defesa, você acerta (empate erra).
 4. **Quanto melhor o acerto, mais forte o golpe:** a cada **6 pontos acima da Defesa**, o dano ganha **+1d6** — isso se chama **Margem**.
@@ -24,9 +24,28 @@ No osso, é só isso. O resto do capítulo são as camadas que dão profundidade
 
 ## A linha do tempo: Ticks, Velocidade e Iniciativa
 
-No início, cada um rola a **Iniciativa = 1d6 + Raciocínio + Prontidão**. Quem tirar o maior valor começa no **Tick 0**; todos os demais começam no **Tick 1**. A partir daí, a distância pesa: a cada **6 pontos** abaixo da maior iniciativa, o retardatário **começa 1 Tick mais tarde** e **perde 1d6 na primeira ação** (pego no contrapé). A penalidade é [(maior − sua) ÷ 6], em Ticks e em dados. (Empate na maior iniciativa: começa quem tiver o maior Raciocínio; persistindo, decidam no 1d6.)
+No início, cada um rola a **Iniciativa = 1d6 + Raciocínio + Prontidão** (de 2 a 18). Ela é rolada **uma vez só** e serve para uma coisa: dizer **em que Tick cada um entra na luta**. Depois disso quem manda é o relógio de cada um.
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>A maior iniciativa da cena foi <strong>14</strong>. Quem tirou de <strong>9 a 13</strong> (1–5 atrás) começa no Tick 1, sem perda. Quem tirou de <strong>3 a 8</strong> (6–11 atrás) começa no <strong>Tick 2</strong> e <strong>perde 1d6</strong> na primeira ação. Quem tirou <strong>1 ou 2</strong> (12–13 atrás) começa no <strong>Tick 3</strong> e <strong>perde 2d6</strong>. A perda vale só para a <em>primeira</em> ação — depois, todos jogam em pé de igualdade na linha de Ticks.</div>
+<p class="formula">Quem tirar o maior entra sozinho no <strong>Tick 1</strong> · os demais entram <strong>um Tick depois por degrau de 6 pontos</strong> de atraso, arredondando para cima</p>
+
+Cada degrau custa também **1d6 na ação** — é o **contrapé**, de quem chegou atrasado à briga e ainda está reencontrando o eixo. (Empate na maior iniciativa: entram juntos no Tick 1, e age primeiro quem tiver o maior Raciocínio; persistindo, decidam no 1d6.)
+
+| Atrás da maior | Entra no | Contrapé |
+|---|:---:|:---:|
+| — (é a maior) | Tick 1 | — |
+| 1 a 6 | Tick 2 | −1d6 |
+| 7 a 12 | Tick 3 | −2d6 |
+| 13 a 18 | Tick 4 | −3d6 |
+
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Cinco combatentes rolam <strong>13, 12, 10, 9 e 5</strong>. O 13 entra sozinho no <strong>Tick 1</strong>. O 12, o 10 e o 9 estão de 1 a 4 atrás, um degrau: entram no <strong>Tick 2</strong>, com <strong>−1d6</strong>. O 5 está 8 atrás, dois degraus: entra no <strong>Tick 3</strong>, com <strong>−2d6</strong>.</div>
+
+### O contrapé desce sozinho
+
+O contrapé **cai 1d6 a cada Tick que passa**, e não depende de você fazer nada: ele é do relógio, e não da sua ação. Quem entrou no Tick 3 com −2d6 escolhe entre **bater no Tick 3 por −2d6**, **no Tick 4 por −1d6** ou **no Tick 5 inteiro**.
+
+Essa é a decisão que a iniciativa cria, e ela é real: num sistema em que a jogada é *total supera a Defesa*, **um dado a menos corta a chance de acertar quase pela metade**. Esperar custa tempo — e tempo, aqui, é a moeda de tudo. A vantagem de quem rolou bem não é "o outro erra": é **o outro chega depois**.
+
+<p class="muted">E é por isso que o contrapé não se apaga fazendo qualquer coisa. Se bastasse gastar um Tick com uma bobagem para limpá-lo, a jogada certa seria sempre essa, e uma penalidade que vale metade da luta não pode custar um instante.</p>
 
 Cada ação tem uma **Velocidade** — quantos Ticks ela custa antes de você poder agir de novo:
 
