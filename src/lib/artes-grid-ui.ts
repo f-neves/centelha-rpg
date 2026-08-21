@@ -575,7 +575,10 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
             <button type="button" class="ag-p-b" data-par="${esc(p.nome)}" data-d="1"
               ${n >= max ? 'disabled' : ''} aria-label="mais">+</button>
           </span>
-          <span class="ag-p-v">${n ? `${esc(valor(n))}${extra}` : ''}</span>
+          ${/* O número e a unidade não se separam: na coluna estreita "27 m³"
+                quebrava em "27" e "m³" em duas linhas, e "1 turno" idem. O resto
+                da frase quebra à vontade ("5 m / de diâmetro"). */''}
+          <span class="ag-p-v">${n ? `${esc(valor(n)).replace(/^(\S+) /, '$1&nbsp;')}${extra}` : ''}</span>
           ${acima ? `<span class="ag-p-est" title="acima do nível da Arte: custa ${acima + 1}× por nível">
             ↑${acima}</span>` : ''}
         </div>`;
