@@ -1601,8 +1601,8 @@ O desenho inteiro, com a conta do atrito e o contrato do improviso, está no **`
 
 Duas réguas que **já estavam escritas** e que a mesa não usava.
 
-**A iniciativa.** `derivados.iniciativa` e a §"A linha do tempo" do capítulo de Combate dizem a
-mesma coisa, com exemplo: quem tira o maior começa no **Tick 0**, todos os demais no **Tick 1**, e a
+**A iniciativa.** `derivados.iniciativa` e a §"A linha do tempo" do capítulo de Combate diziam a
+mesma coisa (é a régua ANTIGA, revisada logo abaixo): quem tira o maior começa no **Tick 0**, todos os demais no **Tick 1**, e a
 cada **6 pontos** abaixo do maior o retardatário começa **um Tick mais tarde** e **perde 1d6 na
 primeira ação**. O Grid rolava a iniciativa e zerava o relógio de todo mundo: a ordem existia como
 desempate, e a primeira rodada inteira acontecia no mesmo instante, que é justamente o que um
@@ -1711,6 +1711,33 @@ Com a correção, o duelo de adagas volta a 49,7%.
 **O contrapé ficou como estava**, −1d6 por degrau, decidido depois de a bancada mostrar o preço: por
 1 ponto de iniciativa, o segundo colocado perde 16 pontos percentuais de chance de vencer (9 do Tick,
 7 do dado). A mesa olhou o número e manteve.
+
+### 15.12. As pontas soltas da iniciativa (21/08/2026)
+
+Varredura atrás de mais inconsistências, depois de a régua fechar. Foram quatro, três com conserto.
+
+**Quem chegava no meio da luta entrava no Tick 0.** O molde do NPC de cena nasce com zero, e tanto
+o "+ NPC" do Grid quanto o "+ PCs", "+ criatura", "+ NPC" e "+ avulso" do rastreador inseriam com
+esse zero. No meio de uma briga que já vai no Tick 14, isso é pior do que parece: o relógio da cena
+é o **menor Tick de quem está de pé**, então o recém-chegado **puxava a cena inteira de volta ao
+Tick 0** e agia antes de todo mundo. A invocação de Arte já fazia certo (`tick: tickAtual(ctx)`), e
+agora as outras cinco portas fazem igual. O defeito é antigo, mas ficou visível agora: com o líder
+entrando no Tick 1, até no começo da cena um "+ NPC" agiria antes de quem ganhou a iniciativa.
+
+**Os caídos entravam na conta da entrada.** `rolarIniciativas` rolava para todo mundo no tabuleiro,
+inconsciente incluído, e a entrada é RELATIVA ao maior da cena: um caído que tirasse 17 definiria o
+passo de uma luta em que ele não vai agir, e todos os outros entrariam um degrau mais tarde por
+causa dele. Agora a rolagem é só de quem está de pé.
+
+**O desempate por Raciocínio não existia.** A regra manda desempatar iniciativa igual pelo maior
+Raciocínio, e a fila caía direto no carimbo de quando a peça foi posta no mapa, que não é regra de
+coisa nenhuma. Os dois lados têm o número (o PC na ficha, a criatura em `atributos.raciocinio` do
+bloco), e agora ele entra no ordenamento das duas telas, entre a iniciativa e o critério de
+estabilidade.
+
+**A que ficou:** a nota do `regras.json` diz que a iniciativa vai "de 2 a 18", e a fórmula admite 1
+(1d6 com Raciocínio e Prontidão zerados, que é o caso de um bicho embotado). Não vale mexer na régua
+por causa disso; fica anotado que a faixa escrita é a de quem tem ficha.
 
 ## Apêndice: como rodar
 

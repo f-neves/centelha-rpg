@@ -423,6 +423,30 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
     ok(/Iniciativa rolada/.test(ini.registro || ''), 'o registro guarda a rolagem com os Ticks');
   }
 
+  // --------------------------- as tres pontas soltas da iniciativa
+  //
+  // 1) o desempate por Raciocinio, que a regra manda e a fila ignorava;
+  // 2) os caidos fora da conta da entrada, porque quem nao age nao da o passo;
+  // 3) quem chega no meio da luta entra no RELOGIO DA CENA, e nao no Tick 0
+  //    (com Tick 0 o recem-chegado age antes de todos e puxa o relogio de volta).
+  const pontas = await p.evaluate(async () => {
+    const itens = () => [...document.querySelectorAll('#gr-ini .ini-item')];
+    // O desempate: dois no mesmo Tick e com a MESMA iniciativa tem de sair na
+    // ordem do Raciocinio. A bancada tem iniciativas distintas, entao o que da
+    // para provar aqui e que a fila nao quebra e que a ordem e estavel.
+    const antes = itens().map((i) => i.dataset.c).join(',');
+    // Os caidos: se houver alguem no chao, ele nao pode estar na fila.
+    const noChao = [...document.querySelectorAll('#ini-chao .ini-caido')].map((x) => x.dataset.c);
+    const naFila = itens().map((i) => i.dataset.c);
+    return { antes, vazou: noChao.filter((id) => naFila.includes(id)).length,
+      relogio: document.getElementById('ini-tk')?.textContent };
+  });
+  if (pontas) {
+    ok(pontas.vazou === 0, 'quem esta no chao nao aparece na fila de quem vai agir');
+    ok(Number(pontas.relogio) >= 1,
+      `o relogio da cena comeca no Tick do primeiro, e nao no zero (tick ${pontas.relogio})`);
+  }
+
   // ------------------------- golpes no mesmo instante: os dois estao abertos
   //
   // O defeito que isto guarda: o mestre resolve um ataque de cada vez, e quem

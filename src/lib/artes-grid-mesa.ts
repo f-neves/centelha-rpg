@@ -1593,7 +1593,12 @@ function abrirAjustesFx(mudou: () => void): void {
 /** O botão + NPC, agora com ficha avançada. */
 export async function novoNPC(ctx: CtxGrid): Promise<void> {
   if (!ctx.enc) return uiErro('Não há combate em andamento. O tabuleiro puxa quem está no encontro ativo.');
-  const d = await abrirNPC('NPC da cena', {}, {
+  // QUEM CHEGA ENTRA NO RELÓGIO DA CENA, e não no Tick 0. O molde vazio nasce
+  // com zero, e no meio de uma luta isso é pior do que parece: o relógio da cena
+  // é o MENOR Tick de quem está de pé, então o recém-chegado puxava a cena
+  // inteira de volta para o Tick 0 e agia antes de todo mundo. É o mesmo que a
+  // invocação já faz, e pelo mesmo motivo.
+  const d = await abrirNPC('NPC da cena', { tick: tickAtual(ctx) }, {
     msg: 'Vale só para este combate: não entra no compêndio nem no bestiário.',
   });
   if (!d) return;

@@ -2962,9 +2962,24 @@ const SETAS = [
    * postos no grid": sem ele, dez peças zeradas ficariam numa ordem qualquer,
    * mudando a cada repintura.
    */
+  /**
+   * O Raciocínio de uma peça, para o desempate da iniciativa.
+   *
+   * A regra (capítulo de Combate e `derivados.iniciativa`) manda desempatar a
+   * iniciativa igual pelo maior Raciocínio, e a fila ignorava isso: caía direto
+   * no carimbo de quando a peça foi posta no mapa, que não é regra de coisa
+   * nenhuma. Os dois lados têm o número: o PC na ficha, a criatura no bloco do
+   * bestiário. Quem não tem (o figurante de cena) desempata como antes.
+   */
+  const raciocinioDe = (c: any): number =>
+    FICHAS[c.personagem_id]?.attrs?.raciocinio
+    ?? MON[c.monstro_id]?.atributos?.raciocinio
+    ?? -1;
+
   const naFila = () => COMBS.filter((c: any) => TOKENS[c.id]).slice().sort((a: any, b: any) =>
     ((a.tick ?? 0) - (b.tick ?? 0))
     || ((b.iniciativa ?? 0) - (a.iniciativa ?? 0))
+    || (raciocinioDe(b) - raciocinioDe(a))
     || String(TOKENS[a.id]?.em || '').localeCompare(String(TOKENS[b.id]?.em || ''))
     || String(a.nome).localeCompare(String(b.nome)));
 
@@ -3365,7 +3380,11 @@ const SETAS = [
    * iniciativa nova é uma cena nova.
    */
   async function rolarIniciativas() {
-    const fila = naFila();
+    // OS CAÍDOS FICAM DE FORA. A entrada é relativa ao MAIOR da cena, e um
+    // inconsciente que tirasse o maior valor definiria o passo de uma luta em
+    // que ele não vai agir: todo mundo entraria um degrau mais tarde por causa
+    // de quem está no chão.
+    const fila = naFila().filter((c: any) => !noChao(c));
     if (!fila.length) return;
     if (!await uiConfirmar(`Rolar a iniciativa dos ${fila.length} no tabuleiro?`
       + ' Quem tirar o maior entra no Tick 0; os demais entram mais tarde, pela régua da iniciativa.',

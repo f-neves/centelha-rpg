@@ -894,7 +894,20 @@ import MesaCab from '../../components/MesaCab.astro';
     return { ferimento, acao: cd.acao, ataque: cd.ataque, dados: cd.dados, flat: ferimento + cd.acao + cd.ataque };
   }
 
-  const ordenar = (a: any, b: any) => (a.tick - b.tick) || ((b.iniciativa || 0) - (a.iniciativa || 0)) || String(a.nome).localeCompare(String(b.nome));
+  /**
+   * O Raciocínio de um combatente, para o desempate que a regra manda fazer:
+   * iniciativa igual, age primeiro quem tem o maior Raciocínio. O PC traz da
+   * ficha, a criatura do bloco; quem não tem cai no nome, como antes.
+   */
+  const raciocinioDe = (c: any): number =>
+    FICHAS[c.personagem_id]?.attrs?.raciocinio
+    ?? MON[c.monstro_id]?.atributos?.raciocinio
+    ?? -1;
+
+  const ordenar = (a: any, b: any) => (a.tick - b.tick)
+    || ((b.iniciativa || 0) - (a.iniciativa || 0))
+    || (raciocinioDe(b) - raciocinioDe(a))
+    || String(a.nome).localeCompare(String(b.nome));
 
   function visiveis() {
     return COMBS.filter((c) => (EH_MESTRE ? (VER_OCULTOS || !c.oculto) : !c.oculto));
@@ -1472,7 +1485,11 @@ import MesaCab from '../../components/MesaCab.astro';
     el('add-pcs').onclick = adicionarPCs;
     el('add-criatura').onclick = () => abrirAdicionar('criatura');
     el('add-npc').onclick = () => abrirAdicionar('npc');
-    el('add-avulso').onclick = () => abrirEditar({ tipo: 'custom', nome: '', grupo: 'inimigo', tick: 0, iniciativa: 0 }, null);
+    // QUEM CHEGA ENTRA NO RELÓGIO DA CENA. Com Tick 0 no meio de uma luta que
+    // já vai no 14, o recém-chegado age antes de todo mundo e puxa o relógio da
+    // cena de volta ao começo, porque ele é o menor Tick de quem está de pé.
+    el('add-avulso').onclick = () => abrirEditar(
+      { tipo: 'custom', nome: '', grupo: 'inimigo', tick: AGORA, iniciativa: 0 }, null);
     (el('ver-ocultos') as HTMLInputElement).onchange = (e) => { VER_OCULTOS = (e.target as HTMLInputElement).checked; pintar(); };
     el('btn-recarregar').onclick = () => carregar();
     el('btn-desfazer').onclick = async () => {
@@ -1571,7 +1588,7 @@ import MesaCab from '../../components/MesaCab.astro';
         encontro_id: ENC.id, tipo: 'pc', personagem_id: p.id, nome: p.nome || 'PC',
         pv_max: pvv, pv_atual: pvv, energia_max: en, energia_atual: en,
         mana_max: mn, mana_atual: mn,
-        tick: 0, iniciativa: rolarIniciativaPC(S), grupo: 'aliado', condicoes: [],
+        tick: AGORA, iniciativa: rolarIniciativaPC(S), grupo: 'aliado', condicoes: [],
       };
     });
     if (!novos.length) { await uiErro('Todos os personagens da mesa já estão no encontro.'); return; }
@@ -1637,14 +1654,14 @@ import MesaCab from '../../components/MesaCab.astro';
           linhas.push({
             encontro_id: ENC.id, tipo: 'criatura', monstro_id: m.id, nome: `${m.nome}${sufixo}`,
             pv_max: m.combate?.pv ?? null, pv_atual: m.combate?.pv ?? null,
-            tick: 0, iniciativa: iniDeMonstro(m), grupo, oculto, condicoes: [],
+            tick: AGORA, iniciativa: iniDeMonstro(m), grupo, oculto, condicoes: [],
           });
         } else {
           const npc = ADD_SEL.npc;
           const d = npc.dados || {};
           linhas.push({
             encontro_id: ENC.id, tipo: 'custom', codex_id: npc.id, nome: `${npc.nome}${sufixo}`,
-            pv_max: d.pv ?? null, pv_atual: d.pv ?? null, tick: 0,
+            pv_max: d.pv ?? null, pv_atual: d.pv ?? null, tick: AGORA,
             iniciativa: d6() + (d.iniciativa || 0), grupo, oculto, imagem: npc.imagem || null,
             condicoes: [],
             dados: {
