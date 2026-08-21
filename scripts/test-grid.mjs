@@ -158,6 +158,35 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
   ok(d.golpes + d.montando > 0,
     `as peças com gesto no ar estão marcadas (${d.golpes} golpeando, ${d.montando} montando)`);
 
+  // ------------------------------------------- o lugar de cada coisa na tela
+  // A ordem de combate deitou e subiu para cima do tabuleiro, porque é a única
+  // informação do painel que interessa à mesa inteira. A linha do tempo é a
+  // leitura EXTRA, e nasce desligada: quem a quiser liga no ▤ da barra.
+  const lug = await p.evaluate(() => {
+    const r = (s) => { const e = document.querySelector(s); if (!e) return null;
+      const b = e.getBoundingClientRect(); return { t: b.top, l: b.left, w: b.width, h: b.height }; };
+    return { ini: r('.gr-ini'), palco: r('.gr-palco'), lado: r('.gr-lado'),
+      linha: document.getElementById('gr-linha').hidden,
+      deitada: (() => { const it = document.querySelectorAll('#gr-ini .ini-item');
+        return it.length > 1 && it[1].getBoundingClientRect().left > it[0].getBoundingClientRect().left; })() };
+  });
+  ok(lug.ini.t < lug.palco.t && Math.abs(lug.ini.l - lug.palco.l) < 2,
+    'a iniciativa fica em cima do tabuleiro, na largura dele');
+  ok(lug.ini.w > lug.lado.w * 2, `e é uma tira larga, não uma coluna (${Math.round(lug.ini.w)}px)`);
+  ok(lug.deitada, 'as peças da fila correm para o lado, e não para baixo');
+  ok(lug.linha, 'a linha do tempo nasce desligada');
+  const lt = await p.evaluate(async () => {
+    document.getElementById('gr-linha-btn').click();
+    await new Promise((r) => setTimeout(r, 350));
+    const ligada = !document.getElementById('gr-linha').hidden;
+    const celas = document.querySelectorAll('#lt-corpo .lt-c').length;
+    document.getElementById('lt-fechar').click();
+    await new Promise((r) => setTimeout(r, 350));
+    return { ligada, celas, fechou: document.getElementById('gr-linha').hidden };
+  });
+  ok(lt.ligada && lt.celas > 0, `o ▤ da barra acende a régua de Ticks (${lt.celas} células)`);
+  ok(lt.fechou, 'e o ✕ dela some com a faixa inteira');
+
   // ------------------------------------- o ataque entra na linha do tempo
   // Desde a migracao 28 atacar pelo tabuleiro declara a acao, empurra o relogio
   // e cobra a Guarda sob pressao no alvo. Este passo confere as tres coisas, e

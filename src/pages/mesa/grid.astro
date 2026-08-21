@@ -56,11 +56,56 @@ const SETAS = [
                arena. O mestre escolhe a música; quem está ouvindo decide o
                volume dela na casa dele, e o silêncio fica guardado. -->
           <button class="btn-fant" id="gr-som-btn" hidden title="Volume da trilha">🔊</button>
+          <!-- A LINHA DO TEMPO É OPCIONAL, e nasce desligada. Ela é uma segunda
+               leitura do mesmo relógio: útil para quem quer comparar dois gestos
+               no ar, atravancada para quem não quer. Aqui e não no ⏱ porque isto
+               é preferência de quem olha, e o ⏱ é decisão da mesa. -->
+          <button class="btn-fant" id="gr-linha-btn" aria-pressed="false"
+            title="Linha do tempo: uma régua de Ticks debaixo do tabuleiro">▤</button>
         </span>
         <button class="btn-fant" id="gr-cheia" title="Tela cheia (F)">⛶</button>
         <span class="gr-vivo" id="gr-vivo" hidden><span class="pt"></span><span id="gr-vivo-n"></span></span>
         <button class="btn mini" id="gr-recarregar" title="Buscar as posições mais recentes">↻</button>
       </div>
+
+        <aside class="gr-ini" id="gr-ini-col">
+          {/* O CANTO DO RELÓGIO. Cabeçalho, Tick, rodada, custo e o "próximo"
+              num bloco só: a tira agora é horizontal, e o que não é peça em
+              fila fica ancorado à esquerda, fora da rolagem. */}
+          <div class="ini-cab">
+          <div class="gr-reg-cab">
+            <button class="btn-fant gr-dobra" id="ini-dobrar" aria-expanded="true"
+              aria-controls="gr-ini" title="Recolher a fila">▾</button>
+            <h3 class="col-h">Iniciativa</h3>
+            <button class="btn-fant" id="ini-rolar" hidden title="Rolar a iniciativa de todos no tabuleiro">⚄</button>
+          </div>
+          {/* O RELÓGIO DA CENA, e não uma etiqueta.
+              O Tick corrente era a menor letra do painel, menor que a rodada, e
+              é o número do qual todos os outros dependem: cada linha da fila
+              diz "em quantos" contando a partir dele. */}
+          <div class="ini-relogio">
+            <span class="ini-tk-n" id="ini-tk"></span>
+            <span class="ini-tk-rot">Tick</span>
+            <span class="ini-rd" id="ini-rd"></span>
+          </div>
+          <div class="ini-rodada">
+            <!-- O custo em Ticks da PRÓXIMA ação. Fica na mesma linha da rodada
+                 porque é o outro número do relógio: um diz onde a cena está, o
+                 outro diz quanto o próximo golpe vai adiantá-la. -->
+            <label class="ini-custo" id="ini-custo-cx" hidden
+              title="Quantos Ticks a próxima ação custa. O 'próximo' soma este número ao tick de quem está agindo.">
+              <span>a ação custa</span><input type="number" id="ini-custo" min="1" max="60" step="1" value="5" /><span>t</span>
+            </label>
+          </div>
+          <button class="btn mini primary ini-prox" id="ini-prox" hidden>⏭ próximo</button>
+          </div>
+          <div id="gr-ini" class="gr-ini-lista"></div>
+          <!-- Quem está no chão sai da FILA, mas não da vista. A fila é a ordem
+               de quem vai agir, e um inconsciente não age; deixá-lo lá só empurra
+               os vivos para baixo. Aqui embaixo ele continua a um clique, que é
+               por onde a cura passa. -->
+          <div id="ini-chao" class="ini-chao" hidden></div>
+        </aside>
 
         <div class="gr-palco" id="gr-palco">
           <div class="gr-mundo" id="gr-mundo">
@@ -91,58 +136,24 @@ const SETAS = [
           </div>
         </div>
 
-        {/* A LINHA DO TEMPO, sob o tabuleiro.
-            A coluna ao lado responde "de quem é a vez", que é uma fila. Esta
+        {/* A LINHA DO TEMPO, sob o tabuleiro. Opcional, e desligada por padrão:
+            liga no ▤ da barra.
+            A tira lá em cima responde "de quem é a vez", que é uma fila. Esta
             faixa responde "o que acontece quando", que é outra pergunta e não
             cabe numa lista ordenada: é aqui que se vê que o martelo cai no Tick
             9 enquanto a flecha sai no 11. Mostra quem tem gesto no ar mais os
             próximos a agir, e não a cena inteira, para não virar parede. */}
         <aside class="gr-linha" id="gr-linha" hidden>
           <div class="gr-reg-cab">
-            <button class="btn-fant gr-dobra" id="lt-dobrar" aria-expanded="true"
-              aria-controls="lt-corpo" title="Recolher a linha do tempo">▾</button>
             <h3 class="col-h">Linha do tempo</h3>
             <span class="lt-legenda" aria-hidden="true">
               <i class="fita-c f-prep"></i>Preparo
               <i class="fita-c f-golpe"></i>Golpe
               <i class="fita-c f-rec"></i>Recuperação
             </span>
+            <button class="btn-fant" id="lt-fechar" title="Esconder a linha do tempo">✕</button>
           </div>
           <div id="lt-corpo" class="lt-corpo"></div>
-        </aside>
-
-        <aside class="gr-ini" id="gr-ini-col">
-          <div class="gr-reg-cab">
-            <button class="btn-fant gr-dobra" id="ini-dobrar" aria-expanded="true"
-              aria-controls="gr-ini" title="Recolher a fila">▾</button>
-            <h3 class="col-h">Iniciativa</h3>
-            <button class="btn-fant" id="ini-rolar" hidden title="Rolar a iniciativa de todos no tabuleiro">⚄</button>
-          </div>
-          {/* O RELÓGIO DA CENA, e não uma etiqueta.
-              O Tick corrente era a menor letra do painel, menor que a rodada, e
-              é o número do qual todos os outros dependem: cada linha da fila
-              diz "em quantos" contando a partir dele. */}
-          <div class="ini-relogio">
-            <span class="ini-tk-n" id="ini-tk"></span>
-            <span class="ini-tk-rot">Tick</span>
-            <span class="ini-rd" id="ini-rd"></span>
-          </div>
-          <div class="ini-rodada">
-            <!-- O custo em Ticks da PRÓXIMA ação. Fica na mesma linha da rodada
-                 porque é o outro número do relógio: um diz onde a cena está, o
-                 outro diz quanto o próximo golpe vai adiantá-la. -->
-            <label class="ini-custo" id="ini-custo-cx" hidden
-              title="Quantos Ticks a próxima ação custa. O 'próximo' soma este número ao tick de quem está agindo.">
-              <span>a ação custa</span><input type="number" id="ini-custo" min="1" max="60" step="1" value="5" /><span>t</span>
-            </label>
-          </div>
-          <button class="btn mini primary ini-prox" id="ini-prox" hidden>⏭ próximo</button>
-          <div id="gr-ini" class="gr-ini-lista"></div>
-          <!-- Quem está no chão sai da FILA, mas não da vista. A fila é a ordem
-               de quem vai agir, e um inconsciente não age; deixá-lo lá só empurra
-               os vivos para baixo. Aqui embaixo ele continua a um clique, que é
-               por onde a cura passa. -->
-          <div id="ini-chao" class="ini-chao" hidden></div>
         </aside>
 
         <aside class="gr-lado" id="gr-lado">
@@ -409,6 +420,14 @@ const SETAS = [
   .gr-barra .sep-v { display: none; }
   .gr-barra .espaco { flex-basis: 100%; height: 0; }
   .gr-id { flex-basis: 100%; }
+  /* Na tela larga a barra voltou a atravessar a página, e o que a coluna
+     estreita obrigava a quebrar cabe de novo numa fileira só: cada quebra que
+     sobrava aqui saía da altura do mapa, que agora começa logo abaixo dela. */
+  @media (min-width: 1101px) {
+    .gr-id { flex-basis: auto; }
+    .gr-barra .espaco { flex: 1 1 auto; flex-basis: auto; }
+    .gr-barra .btn.mini { padding: .12rem .45rem; font-size: var(--fs-micro); }
+  }
   .gr-medida { font-size: calc(var(--fs-micro) * .9); }
   .gr-barra input[type="range"] { width: 5.5rem; }
   .gr-id { display: flex; align-items: baseline; gap: .4rem; flex-wrap: wrap; }
@@ -417,6 +436,11 @@ const SETAS = [
   .gr-medida { font-size: var(--fs-micro); }
   .gr-btns { display: flex; align-items: center; gap: .3rem; flex-wrap: wrap; }
   .gr-zoom { display: flex; align-items: center; gap: .2rem; }
+  /* Botão de duas posições: apagado quando desligado, aceso quando ligado. Sem
+     isto o ▤ da linha do tempo dizia o mesmo nos dois estados. */
+  .gr-barra [aria-pressed="true"] { color: var(--accent-texto);
+    background: color-mix(in srgb, var(--accent) 20%, transparent);
+    border-radius: var(--r-sm); }
   .gr-zoom #gr-zval { font-size: var(--fs-micro); min-width: 2.8rem; text-align: center;
     font-variant-numeric: tabular-nums; }
 
@@ -426,21 +450,21 @@ const SETAS = [
      afetada e nenhum arquivo compartilhado precisa mudar. */
   body.pagina-grid main#conteudo { padding-bottom: 0; }
 
-  /* ---- as três colunas ----
-     A barra deixou de ser uma faixa por cima de tudo e passou a ocupar só a
-     largura das duas colunas da direita. O palco ganha essa altura porque
-     atravessa as duas linhas: numa tela de notebook são uns 40px a mais de
-     mapa, que é uma fileira inteira de hexágonos. */
-  /* A faixa da linha do tempo mora DEBAIXO do tabuleiro e na largura dele: ela
-     é uma régua de Ticks, e régua curta não se lê. A coluna e a lateral descem
-     ao lado dela. Quando ela está oculta, a linha some da grade e o tabuleiro
-     recupera a altura inteira. */
+  /* ---- duas colunas, duas fileiras ----
+     A ESQUERDA É A CENA e a direita é o aparelho: em cima da cena, a ordem de
+     combate; em cima do aparelho, a barra da arena. A iniciativa deitou porque
+     ela é de TODOS, e não só do mestre: numa coluna estreita à direita ela era
+     um apêndice do painel de controle, e agora é uma tira larga colada no topo
+     do tabuleiro, que é para onde a mesa inteira olha.
+     A faixa da linha do tempo mora DEBAIXO do tabuleiro e na largura dele: ela
+     é uma régua de Ticks, e régua curta não se lê. Quando está escondida (o que
+     é o padrão), a fileira dela some da grade e o mapa recupera a altura. */
   .gr-grade { display: grid; gap: .5rem;
-    grid-template-columns: minmax(0, 1fr) 9.5rem 13rem;
-    grid-template-rows: auto minmax(0, 1fr) auto;
-    grid-template-areas: "palco barra barra" "palco ini lado" "linha ini lado"; }
-  .gr-grade.sem-linha { grid-template-rows: auto minmax(0, 1fr);
-    grid-template-areas: "palco barra barra" "palco ini lado"; }
+    grid-template-columns: minmax(0, 1fr) 13.5rem;
+    grid-template-rows: auto auto minmax(0, 1fr) auto;
+    grid-template-areas: "barra barra" "ini lado" "palco lado" "linha lado"; }
+  .gr-grade.sem-linha { grid-template-rows: auto auto minmax(0, 1fr);
+    grid-template-areas: "barra barra" "ini lado" "palco lado"; }
   .gr-grade > .gr-barra { grid-area: barra; }
   .gr-grade > .gr-palco { grid-area: palco; }
   .gr-grade > .gr-ini   { grid-area: ini; }
@@ -449,7 +473,7 @@ const SETAS = [
   @media (max-width: 1100px) {
     .gr-grade, .gr-grade.sem-linha { grid-template-columns: 1fr;
       grid-template-rows: auto auto auto auto auto;
-      grid-template-areas: "barra" "palco" "linha" "ini" "lado"; }
+      grid-template-areas: "barra" "ini" "palco" "linha" "lado"; }
   }
 
   /* ---- a linha do tempo ----
@@ -463,15 +487,17 @@ const SETAS = [
     font-size: var(--fs-micro); color: var(--ink-soft); }
   .lt-legenda .fita-c { width: .7rem; height: .7rem; margin-left: .5rem; }
   .lt-legenda .fita-c:first-child { margin-left: 0; }
-  .gr-linha.linha-dobrada .lt-corpo { display: none; }
-  .gr-linha.linha-dobrada { padding-bottom: .3rem; }
   /* A fila recolhida deixa só o cabeçalho e o relógio: o Tick da cena é a
      última coisa que alguém quer esconder. */
   .gr-ini.fila-dobrada .gr-ini-lista,
   .gr-ini.fila-dobrada .ini-chao,
-  .gr-ini.fila-dobrada .ini-prox,
-  .gr-ini.fila-dobrada .ini-rodada { display: none; }
-  .gr-ini.fila-dobrada { flex: 0 0 auto; }
+  .gr-ini.fila-dobrada .ini-prox { display: none; }
+  /* Recolhida, a tira vira uma régua fina: o relógio e a rodada deitam lado a
+     lado e devolvem ao mapa a altura dos cartões. */
+  .gr-ini.fila-dobrada .ini-cab { grid-template-areas: "rel cab" "rel custo";
+    border-right: none; padding-right: 0; }
+  .gr-ini.fila-dobrada .ini-relogio { padding-bottom: 0; }
+  .gr-ini.fila-dobrada .ini-rodada { padding: 0; }
   .gr-dobra { transition: transform .12s ease; }
   .gr-dobra[aria-expanded="false"] { transform: rotate(-90deg); }
   .lt-corpo { display: grid; gap: 1px 0; margin-top: .3rem; overflow-x: auto; }
@@ -497,12 +523,32 @@ const SETAS = [
   .lt-vazio { font-size: var(--fs-micro); color: var(--ink-soft); font-style: italic;
     padding: .2rem 0; }
 
-  /* ---- coluna da iniciativa ---- */
+  /* ---- a tira da iniciativa ----
+     Ela era uma coluna estreita à direita, encostada nos controles do mestre, e
+     virou uma TIRA DEITADA no topo do tabuleiro. A razão é de quem olha: a ordem
+     de combate é a única informação do painel que interessa à mesa inteira, e
+     numa coluna de 9,5rem ela cabia mal (nome cortado, fase quebrada em duas
+     linhas) e ficava longe do mapa, que é para onde todos os olhos estão.
+     Deitada, cada peça é um cartão do tamanho certo e a fila rola na horizontal
+     quando a cena é grande. */
   .gr-ini { border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel);
-    padding: .4rem .35rem; display: flex; flex-direction: column; min-height: 0; }
+    padding: .35rem .4rem; display: flex; flex-direction: row; align-items: stretch;
+    gap: .45rem; min-width: 0; }
+  /* O canto fixo: relógio e comandos ficam ANCORADOS à esquerda, fora da
+     rolagem. É o número do qual todos os outros dependem, e um relógio que sai
+     da tela quando se rola a fila não é relógio. */
+  .ini-cab { flex: 0 0 auto; display: grid; align-items: center; gap: .1rem .45rem;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas: "rel cab" "rel prox" "custo custo";
+    padding-right: .5rem; border-right: 1px solid var(--rule); }
+  .ini-cab > .gr-reg-cab { grid-area: cab; flex-wrap: nowrap; }
+  .ini-cab > .ini-relogio { grid-area: rel; }
+  .ini-cab > .ini-prox { grid-area: prox; }
+  .ini-cab > .ini-rodada { grid-area: custo; }
   .gr-ini .gr-reg-cab { margin-top: 0; }
-  .gr-ini-lista { display: flex; flex-direction: column; gap: .2rem; overflow-y: auto; min-height: 0;
-    margin-top: .3rem; }
+  .gr-ini-lista { display: flex; flex-direction: row; align-items: stretch; gap: .3rem;
+    flex: 1 1 auto; min-width: 0; overflow-x: auto; overflow-y: hidden;
+    margin-top: 0; padding-bottom: .1rem; scrollbar-width: thin; }
   /* ---- o relógio da cena ----
      O Tick em corpo grande, com a rodada de acompanhante. Tabular para o número
      não dançar de largura ao virar de 9 para 10. */
@@ -520,12 +566,18 @@ const SETAS = [
      "AGORA", "em 2 ticks", "em 5 ticks". A fila deixou de ser uma lista lisa e
      passou a ser uma escada: quem está no mesmo degrau age no mesmo instante, e
      isso o olho lê antes de ler qualquer nome. */
-  .ini-grupo { display: flex; align-items: center; gap: .35rem; margin: .35rem 0 .1rem;
-    font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
+  /* Deitada, a fila lê da esquerda para a direita, então o degrau virou um
+     DIVISOR VERTICAL com o rótulo de pé: ele custa 1,1rem de largura, separa os
+     grupos sem linha em branco e diz "daqui para a frente é outro instante". */
+  .ini-grupo { flex: 0 0 auto; align-self: stretch; margin: 0; padding: .15rem .1rem;
+    display: flex; align-items: center; justify-content: center;
+    writing-mode: vertical-rl; white-space: nowrap;
+    border-left: 1px solid var(--rule);
+    font-family: 'Cinzel'; font-size: calc(var(--fs-micro) * .88); text-transform: uppercase;
     letter-spacing: .08em; color: var(--ink-soft); }
-  .ini-grupo::after { content: ''; flex: 1 1 auto; height: 1px; background: var(--rule); }
-  .ini-grupo.agora { color: var(--vez-cor, #ffd76a); }
-  .ini-grupo.agora::after { background: color-mix(in srgb, var(--vez-cor, #ffd76a) 45%, transparent); }
+  .gr-ini-lista > .ini-grupo:first-child { border-left: none; padding-left: 0; }
+  .ini-grupo.agora { color: var(--vez-cor, #ffd76a);
+    border-left-color: color-mix(in srgb, var(--vez-cor, #ffd76a) 45%, transparent); }
 
   /* A fase POR EXTENSO. A cor da fita diz depressa e a palavra diz sem dúvida:
      quem chega na mesa no meio da luta não decorou a legenda. */
@@ -539,8 +591,9 @@ const SETAS = [
   /* Cada linha é uma peça na fila: retrato, nome e os dois números que decidem
      a ordem. Compacta de propósito, porque a coluna toda precisa caber sem
      rolagem numa cena de dez. */
-  .ini-item { display: grid; grid-template-columns: auto 1fr; gap: .1rem .4rem;
-    align-items: center; padding: .22rem .3rem; border-radius: var(--r-md);
+  .ini-item { flex: 0 0 11.5rem; display: grid; grid-template-columns: auto 1fr;
+    gap: .1rem .4rem; align-items: center; align-content: center;
+    padding: .22rem .3rem; border-radius: var(--r-md);
     border: 1px solid transparent; cursor: pointer; }
   .ini-item:hover { background: color-mix(in srgb, var(--accent) 14%, transparent); }
   .ini-item .av { --av-t: 1.9rem; }
@@ -592,11 +645,13 @@ const SETAS = [
   /* Os caídos: fora da fila, ainda em cena. Uma tira no pé da coluna, sem tick
      e sem iniciativa, porque nenhum dos dois números vale para quem não vai
      agir. Clicar abre o menu da peça, o mesmo da fila. */
-  .ini-chao { flex: 0 0 auto; margin-top: .35rem; padding-top: .3rem;
-    border-top: 1px solid var(--rule); display: flex; flex-direction: column; gap: .1rem;
-    max-height: 34%; overflow-y: auto; }
+  .ini-chao { flex: 0 1 auto; max-width: 26%; margin-top: 0; padding: 0 0 0 .45rem;
+    border-left: 1px solid var(--rule); display: flex; flex-direction: row; align-items: center;
+    gap: .25rem; overflow-x: auto; overflow-y: hidden; }
   .ini-chao-h { font-size: calc(var(--fs-micro) * .8); color: var(--ink-soft);
-    text-transform: uppercase; letter-spacing: .05em; padding: 0 .2rem .1rem; }
+    text-transform: uppercase; letter-spacing: .05em; padding: 0; white-space: nowrap;
+    writing-mode: vertical-rl; align-self: stretch; display: flex; align-items: center; }
+  .ini-caido { flex: 0 0 auto; max-width: 8rem; }
   .ini-caido { display: flex; align-items: center; gap: .35rem; padding: .12rem .25rem;
     border-radius: var(--r-sm); cursor: pointer; opacity: .55; }
   .ini-caido:hover { opacity: 1; background: color-mix(in srgb, var(--accent) 14%, transparent); }
@@ -782,7 +837,7 @@ const SETAS = [
      altura quando falta espaço, e a lista, que tem rolagem própria, deveria ser
      a única a ceder. Sem isto, o "próximo" chegou a ficar com ZERO de altura
      numa cena de doze, e virava um botão que existe e não dá para clicar. */
-  .gr-ini > .gr-reg-cab, .gr-ini > .ini-rodada, .gr-ini > .ini-prox { flex: 0 0 auto; }
+  .gr-ini > .ini-cab, .gr-ini > .ini-chao { flex-shrink: 0; }
   .ini-prox { width: 100%; margin-bottom: .3rem; }
   .gr-palco.arrastando-mapa { cursor: grabbing; }
   .seta-txt, .seta-sub { text-anchor: middle; font-family: 'Cinzel', serif; fill: var(--accent-texto);
@@ -3093,7 +3148,7 @@ const SETAS = [
   /**
    * A LINHA DO TEMPO: uma régua de Ticks, e não uma fila.
    *
-   * A coluna ao lado responde "de quem é a vez", que é uma pergunta de ordem. O
+   * A tira de iniciativa responde "de quem é a vez", que é uma pergunta de ordem. O
    * P/G/R criou outra, que é de simultaneidade: o martelo cai antes ou depois de
    * a flecha sair? Uma lista ordenada não tem como responder isso, porque ela
    * empilha PESSOAS e o que se precisa comparar são INSTANTES.
@@ -3107,7 +3162,7 @@ const SETAS = [
    */
   function pintarLinhaDoTempo(tick: number) {
     const cx = el('gr-linha');
-    if (!ARENA || TEMPO.marcacao !== 'fita') { cx.hidden = true; aplicarLinha(); return; }
+    if (!ARENA || !LINHA_LIGADA || TEMPO.marcacao !== 'fita') { cx.hidden = true; aplicarLinha(); return; }
     const emPe = naFila().filter((c: any) => !noChao(c));
     const comGesto = emPe.filter((c: any) => gestoNo(c));
     const proximos = emPe.filter((c: any) => !gestoNo(c)).slice(0, Math.max(0, 6 - comGesto.length));
@@ -3180,7 +3235,9 @@ const SETAS = [
     if (!MESTRE) return;
     const box = el('gr-ini');
     let arr: { id: string; tick: string; no: HTMLElement } | null = null;
-    let mexeu = false, y0 = 0;
+    // A tira deitou, então o arrasto deitou junto: quem reordena um tick agora
+    // empurra a peça para os lados, e não para cima e para baixo.
+    let mexeu = false, x0 = 0;
 
     box.addEventListener('click', (ev) => {
       const it = (ev.target as HTMLElement).closest<HTMLElement>('.ini-item');
@@ -3207,12 +3264,12 @@ const SETAS = [
       const it = (ev.target as HTMLElement).closest<HTMLElement>('.ini-item');
       if (!it) return;
       arr = { id: it.dataset.c!, tick: it.dataset.t!, no: it };
-      mexeu = false; y0 = ev.clientY;
+      mexeu = false; x0 = ev.clientX;
     });
     box.addEventListener('pointermove', (ev) => {
       if (!arr) return;
       if (!mexeu) {
-        if (Math.abs(ev.clientY - y0) < 6) return;   // ainda pode ser um clique
+        if (Math.abs(ev.clientX - x0) < 6) return;   // ainda pode ser um clique
         mexeu = true;
         arr.no.classList.add('movendo');
         box.setPointerCapture?.(ev.pointerId);
@@ -3222,7 +3279,7 @@ const SETAS = [
       // não do mestre. Arrastar para fora do grupo não faz nada, de propósito.
       if (!sob || sob === arr.no || sob.dataset.t !== arr.tick) return;
       const r = sob.getBoundingClientRect();
-      sob.parentElement!.insertBefore(arr.no, ev.clientY > r.top + r.height / 2 ? sob.nextSibling : sob);
+      sob.parentElement!.insertBefore(arr.no, ev.clientX > r.left + r.width / 2 ? sob.nextSibling : sob);
     });
     const soltar = async () => {
       if (!arr) return;
@@ -5435,17 +5492,15 @@ const SETAS = [
     };
   }
   /**
-   * As dobras da fila e da linha do tempo.
+   * As dobras das caixas do painel.
    *
-   * Duas leituras do mesmo relógio, e cada mesa usa a que enxerga melhor: a
-   * FILA responde "de quem é a vez" e a LINHA responde "o que acontece quando".
-   * Quem joga sem P/G/R provavelmente só quer a fila; quem joga com ele
-   * provavelmente quer as duas. Nenhuma some de vez: as duas recolhem para o
-   * próprio cabeçalho, que é como "Em campo" e "Registro" já fazem, e a escolha
-   * fica no aparelho de quem está olhando.
+   * Recolher não é esconder: a caixa fica reduzida ao próprio cabeçalho, que é
+   * como "Em campo" e "Registro" já fazem, e a escolha fica no aparelho de quem
+   * está olhando. A tira de iniciativa recolhida guarda o relógio, que é a
+   * última coisa que alguém quer perder de vista.
    */
   const DOBRA_INI_KEY = 'centelha:grid:fila-dobrada';
-  const DOBRA_LT_KEY = 'centelha:grid:linha-dobrada';
+  const LINHA_KEY = 'centelha:grid:linha-tempo';
   function dobraCaixa(btnId: string, caixaId: string, classe: string, chave: string,
     dicaAbre: string, dicaFecha: string) {
     const btn = el(btnId);
@@ -5473,8 +5528,42 @@ const SETAS = [
       'Mostrar o registro', 'Recolher o registro e dar a altura a Em campo');
     dobraCaixa('ini-dobrar', 'gr-ini-col', 'fila-dobrada', DOBRA_INI_KEY,
       'Mostrar a fila de iniciativa', 'Recolher a fila e dar o espaço ao tabuleiro');
-    dobraCaixa('lt-dobrar', 'gr-linha', 'linha-dobrada', DOBRA_LT_KEY,
-      'Mostrar a linha do tempo', 'Recolher a linha do tempo e dar a altura ao tabuleiro');
+    ligarLinhaDoTempo();
+  }
+
+  /**
+   * O INTERRUPTOR DA LINHA DO TEMPO.
+   *
+   * Ela não é uma terceira coluna a recolher: é uma leitura EXTRA do mesmo
+   * relógio que a tira já dá, e uma leitura extra que não está ajudando é peso.
+   * Por isso nasce desligada e some inteira quando se desliga (a fileira sai da
+   * grade e o mapa recebe a altura de volta), em vez de recolher para um
+   * cabeçalho que continuaria ocupando lugar.
+   *
+   * Fica no aparelho de quem olha, e não na mesa: o mestre com dois monitores
+   * pode querê-la, e o jogador no tablet quase certamente não.
+   */
+  let LINHA_LIGADA = false;
+  function ligarLinhaDoTempo() {
+    try { LINHA_LIGADA = localStorage.getItem(LINHA_KEY) === '1'; } catch {}
+    const btn = el('gr-linha-btn');
+    const aplica = () => {
+      btn?.setAttribute('aria-pressed', String(LINHA_LIGADA));
+      if (btn) btn.title = LINHA_LIGADA
+        ? 'Esconder a linha do tempo'
+        : 'Mostrar a linha do tempo: uma régua de Ticks debaixo do tabuleiro';
+      pintarLinhaDoTempo(relogio());
+      ajustarAltura();
+    };
+    const virar = (ligada: boolean) => {
+      LINHA_LIGADA = ligada;
+      try { localStorage.setItem(LINHA_KEY, ligada ? '1' : '0'); } catch {}
+      aplica();
+    };
+    if (btn) btn.onclick = () => virar(!LINHA_LIGADA);
+    const fechar = el('lt-fechar');
+    if (fechar) fechar.onclick = () => virar(false);
+    aplica();
   }
 
   function ligarBarra() {

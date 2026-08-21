@@ -791,6 +791,13 @@ revistos por ela.
   Esquiva a opor (se a Pressão cabe é decisão de regra), e para a Arte **mirada** deveria caber,
   mas o assistente ainda não separa uma da outra.
 
+  **A leitura mudou de lugar em 21/08** (§15.7 e §15.8). A fila virou escada (relógio grande,
+  degraus `Agora`/`em N ticks`, fase por extenso) e depois **deitou**: saiu da coluna estreita da
+  direita e virou uma tira horizontal colada no topo do tabuleiro, que é onde a mesa inteira olha.
+  A **linha do tempo** (a régua de Ticks) continua existindo, mas **nasce desligada** e liga no ▤
+  da barra: é leitura extra, e quem não a usa não devia pagar a altura dela. Só no Grid, por ora;
+  o rastreador de combate ainda tem a coluna vertical antiga.
+
 ## H. Arremesso
 
 Frente aberta em **2026-08-10** e até agora sem linha neste mapa. Três documentos:

@@ -1517,6 +1517,49 @@ montado do lado dele, que é o que impede a Absorção do ogro de viajar até o 
 
 ---
 
+### 15.8. Onde a ordem de combate mora (21/08/2026)
+
+A §15.7 arrumou **o que** a fila diz. Faltava **onde** ela fica, e a mesa achou dois defeitos no uso:
+
+**A linha do tempo não estava ajudando.** É uma segunda leitura do mesmo relógio, e uma leitura
+extra que não se usa é peso: custava 224px do mapa e ficava lá. Ela **passou a nascer desligada**,
+e some inteira quando se desliga (a fileira sai da grade e o tabuleiro recebe a altura de volta),
+em vez de recolher para um cabeçalho que continuaria ocupando lugar. Liga e desliga no **▤ da
+barra** ou no **✕ do próprio cabeçalho**, e a escolha fica no aparelho de quem olha: o mestre com
+dois monitores pode querê-la, o jogador no tablet quase certamente não.
+
+Ela não foi apagada porque a leitura continua certa, e é a única que compara instantes. O que
+mudou é quem paga por ela: agora só quem a pediu.
+
+**A fila deitou e subiu.** Ela era uma coluna de 9,5rem à direita, encostada nos controles do
+mestre, e virou uma **tira horizontal colada no topo do tabuleiro**. Duas razões:
+
+- **é a única informação do painel que interessa à mesa inteira.** O resto da lateral é aparelho de
+  mestre (arenas, névoa, registro); a ordem de combate é do grupo, e estava no canto onde ninguém
+  olha, longe do mapa, que é para onde todos os olhos estão;
+- **numa coluna estreita ela cabia mal**: nome cortado, fase quebrada em duas linhas, fita de nove
+  células espremida. Deitada, cada peça é um cartão de 11,5rem com nome inteiro, fase por extenso,
+  fita e os números, e a fila rola na horizontal quando a cena é grande.
+
+O degrau virou um **divisor vertical** com o rótulo de pé (`AGORA`, `EM 2 TICKS`): custa 1,1rem de
+largura e separa os grupos sem gastar uma linha em branco. O relógio, o custo e o "próximo" ficam
+**ancorados à esquerda, fora da rolagem** (um relógio que sai da tela quando se rola a fila não é
+relógio), e os caídos foram para a ponta direita da mesma tira. Recolhida, ela vira uma régua fina
+que ainda mostra o Tick.
+
+**A conta da altura, medida e não chutada.** O pedido era emparelhar as caixas em duas colunas
+(`ini` sobre `palco`, `barra` sobre `lado`). Foi feito assim primeiro e medido: numa coluna de
+320px **a barra da arena quebra em cinco fileiras, 172px**, e essa altura sairia toda do mapa, sem
+que nada nela precisasse dela. A barra voltou então a atravessar a página, que é onde ela cabe em
+**uma fileira de 37px**; as duas colunas continuam sendo `palco` à esquerda e `lado` à direita, com
+a tira da iniciativa entre a barra e o tabuleiro. O saldo, a 1600×1000: o tabuleiro ficou **151px
+mais largo** e 163px mais baixo, e o painel lateral ganhou a altura que a coluna de iniciativa
+ocupava.
+
+O smoke passou a cobrar as duas coisas: que a tira fica **em cima** do tabuleiro e na largura dele,
+que as peças correm para o lado, que a linha do tempo **nasce desligada**, e que o ▤ a acende e o ✕
+a apaga.
+
 ## Apêndice: como rodar
 
 ```
