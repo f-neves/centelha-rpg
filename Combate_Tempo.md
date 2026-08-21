@@ -1588,6 +1588,13 @@ na haste) e quando o tiro passa do `distMax` da arma. Avisa e não impede, e nã
 distância virar modificador é decisão de regra que ainda não foi tomada, e as armas de mão não
 declaram alcance em metros no catálogo.
 
+**A ação "outra coisa" entrou junto**, e com ela uma régua nova no motor: `anatomiaLivre`. A régua
+por classe cobre o que tem catálogo (arma, arremesso, Arte); o resto do jogo (derrubar a estante,
+arrombar a porta, acalmar o cavalo) não tem classe nenhuma, e é onde a mesa mais improvisa. Duas
+formas, e a escolha é de quem mestra: **resolve agora** (o Tick da declaração, e o resto do ciclo é
+Recuperação) ou **resolve no fim** (o caminho todo é Preparo, telegrafa e dá para interromper, como
+a Arte e o arco). No sistema normal as duas colapsam na primeira, porque lá nada telegrafa.
+
 O desenho inteiro, com a conta do atrito e o contrato do improviso, está no **`Grid_Automacao.md`**.
 
 ## Apêndice: como rodar

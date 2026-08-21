@@ -197,14 +197,16 @@ passar quando o mestre insiste.
 | 4 | Modo de rolagem por mesa (na mesa / no site / misto) | P | **feito** em 21/08, padrão `mesa` |
 | 5 | Deslocamento pago em Ticks (K20) | M | **feito** em 21/08, só na Recuperação |
 | 6 | Alcance e distância na conta | M | **parcial**: avisa, não modifica |
-| 7 | Atalhos de teclado | P | **feito** em 21/08 (A · 1-9 · Z, com Espaço e F que já havia) |
-| 8 | Modo TV | P | aberto |
+| 7 | Atalhos de teclado | P | **feito** em 21/08 (A · O · T · 1-9 · Z, com Espaço e F que já havia) |
+| 8 | Modo TV | P | **feito** em 21/08 |
+| 9 | A ação "outra coisa" (emenda F) | P | **feito** em 21/08 |
 
 ---
 
 ## 7. O que entrou em 21/08
 
-Sete das oito emendas, no mesmo dia da conversa que abriu este documento.
+**As oito emendas**, no mesmo dia da conversa que abriu este documento. Sobrou uma decisão de
+regra (a distância virar modificador), e nenhuma tarefa.
 
 **A folha da ação.** Uma caixa só, do acerto ao dano. Abre sabendo a Defesa com a escada, o bolo de
 dados de quem ataca (já com o ferimento e as condições **dele**, mais a penalidade da manobra), o
@@ -237,6 +239,29 @@ seria escrever regra na tela. No Preparo o que existe é o abortar, que tem pre�
 haste) e quando o tiro passa do `distMax` da arma. **Avisa e não impede**, e por enquanto não
 modifica nada: transformar distância em penalidade é decisão de regra, e as armas de mão não
 declaram alcance em metros no catálogo. Fica como a pendência da emenda E.
+
+**A ação "outra coisa".** A emenda F, que é a que fecha o contrato. Item no menu da peça e tecla
+`O`. Escolhe quem, escreve o que é, e a caixa cobra o tempo **com a mesma régua do resto** (a agenda
+nasce, a fita desenha, a escada cobra a Defesa como cobraria de um ataque), rola o bolo que a mesa
+digitar, compara com a Dificuldade se houver, e escreve no registro a frase que quem está mestrando
+escolheu.
+
+Três decisões dentro dela:
+
+- **a frase é obrigatória.** Sem ela o registro guardaria "alguém gastou 5 Ticks", que uma semana
+  depois não é história nenhuma. É o mesmo motivo do motivo obrigatório no ajuste avulso.
+- **custo zero é ação livre**: não gasta a vez e não cria gesto para interromper. É a mesma regra da
+  Arte de Velocidade 0, e dizê-la na caixa evita a pergunta "por que a fita não apareceu?".
+- **resolve agora ou resolve no fim.** Duas formas, porque as ações de verdade têm as duas: beber a
+  poção acontece e depois se paga; empurrar a estante telegrafa e dá para interromper. No motor é
+  `anatomiaLivre`, e no sistema normal as duas colapsam numa só, como o resto.
+
+**O modo TV.** A tela dos jogadores sem a mobília do mestre: somem a barra da mesa (nome e abas), a
+barra da arena, a coluna lateral e o campo do custo; ficam **o tabuleiro e a ordem de combate**. Não
+é tela cheia, e por isso é outro botão: tela cheia tira as bordas do navegador, o modo TV tira os
+controles, e quem projeta quer os dois. Botão na barra, tecla `T`, `Esc`, e uma **porta de saída
+flutuante**, porque um modo sem saída visível é uma armadilha. Fica no aparelho: quem tem a segunda
+tela é uma pessoa, e a escolha dela não deve virar a tela de todo mundo.
 
 **A conta nova do ataque comum:** arrastar até o alvo, conferir, um clique. **Dois toques e nenhum
 número digitado** quando a mesa deixa o site rolar; dois toques e dois números quando ela rola na

@@ -904,32 +904,34 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   se move durante o preparo escapa; com ela travada tarde, não escapa. Junto continua faltando a
   janela de **identificar o feitiço** (Inteligência + Ocultismo, Dificuldade caindo a cada Tick),
   que hoje é o +2 ou +4 que o mestre marca à mão.
-- [~] **I12 · O Grid como copiloto: menos toque, mais escolha. QUASE TUDO FEITO em 21/08.** Medido
+- [~] **I12 · O Grid como copiloto: menos toque, mais escolha. FEITO em 21/08, menos uma decisão de regra.** Medido
   antes: **um ataque custava seis toques e um número digitado, e só três dos sete eram escolha**; o
   resto era o mestre transcrevendo para o Grid um número que o Grid já tinha. O documento é o
   `Grid_Automacao.md`: a conta do atrito, o princípio (nunca perguntar o que dá para calcular · todo
   número calculado é campo editável · a mesa escolhe a intenção e o Grid faz a conta), oito emendas
   e o **contrato do improviso** em três degraus.
 
-  **Entraram sete das oito:** a **folha da ação** (uma caixa só, do acerto ao dano, com a Defesa
+  **Entraram as oito:** a **folha da ação** (uma caixa só, do acerto ao dano, com a Defesa
   pela escada, o bolo de dados de quem ataca, o modo do dano lido da arma e a Absorção ao vivo, tudo
   editável); o **ajuste avulso com motivo**, que vai para o registro; os **três modos de rolagem**
   no painel ⏱ (`mesa` é o padrão: ninguém rola no site); o **arrasto que ataca**; os **atalhos**
-  (A · 1-9 · Z); o **deslocamento pago** (K20); e o **aviso de alcance**. A conta nova do ataque
-  comum é **dois toques**.
+  (A · O · T · 1-9 · Z); o **deslocamento pago** (K20); o **aviso de alcance**; a ação **"outra
+  coisa"**; e o **modo TV**. A conta nova do ataque comum é **dois toques**.
 
-  **O que falta:**
+  **As duas últimas entraram no mesmo dia.** A ação **"outra coisa"** (emenda F, item no menu e
+  tecla `O`) cobra o tempo com a mesma régua do resto, rola o bolo que a mesa digitar, compara com a
+  Dificuldade e escreve no registro a frase do mestre, que é obrigatória; custo zero é ação livre.
+  No motor entrou `anatomiaLivre`: a ação sem classe resolve **agora** ou **no fim**, e no sistema
+  normal as duas colapsam. O **modo TV** (emenda G) esconde a barra da mesa, a da arena, a coluna
+  lateral e o campo do custo, deixando o tabuleiro e a ordem de combate; botão, tecla `T`, `Esc` e
+  porta de saída flutuante, guardado no aparelho.
+
+  **O que falta é uma decisão de regra, e não uma tarefa:**
   - **[DECIDIR] a distância virar modificador**, e não só aviso. Hoje a folha avisa quando o corpo a
     corpo passa de um hexágono (dois na haste) e quando o tiro passa do `distMax`, mas não penaliza
     nada. As armas de mão **não declaram alcance em metros** no `armas.json`, e a convenção de 1 e 2
     hexágonos foi escrita na tela, não na regra: ou ela sobe para o `regras.json`, ou vira campo do
     catálogo.
-  - **[FAZER] o modo TV** (emenda G): a tela dos jogadores sem a mobília do mestre. Só o tabuleiro e
-    a tira da ordem; a tela cheia é meio caminho, falta ela ser um modo.
-  - **[FAZER] a ação "outra coisa"** (emenda F): a válvula do improviso a um toque, com custo em
-    Ticks pré-preenchido e motivo obrigatório. Hoje o mestre resolve na mão, empurrando o Tick pelo
-    menu, o que é mais caro do que um ataque comum, e é exatamente o que a emenda existe para
-    corrigir.
 
 ---
 
