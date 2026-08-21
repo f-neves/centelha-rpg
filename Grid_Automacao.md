@@ -196,7 +196,7 @@ passar quando o mestre insiste.
 | 3 | O arrasto que ataca | P | **feito** em 21/08 |
 | 4 | Modo de rolagem por mesa (na mesa / no site / misto) | P | **feito** em 21/08, padrão `mesa` |
 | 5 | Deslocamento pago em Ticks (K20) | M | **feito** em 21/08, só na Recuperação |
-| 6 | Alcance e distância na conta | M | **parcial**: avisa, não modifica |
+| 6 | Alcance e distância na conta | M | **feito** em 21/08: mostra a faixa e o preço, não aplica |
 | 7 | Atalhos de teclado | P | **feito** em 21/08 (A · O · T · 1-9 · Z, com Espaço e F que já havia) |
 | 8 | Modo TV | P | **feito** em 21/08 |
 | 9 | A ação "outra coisa" (emenda F) | P | **feito** em 21/08 |
@@ -235,10 +235,22 @@ que sabe quantos metros foram: cobra sozinho, o número sobe da peça e a linha 
 Não cobra de quem está livre, porque **a regra não decidiu esse caso**, e inventar um preço aqui
 seria escrever regra na tela. No Preparo o que existe é o abortar, que tem preço próprio.
 
-**O alcance, pela metade.** A folha avisa quando o corpo a corpo passa de um hexágono (dois na
-haste) e quando o tiro passa do `distMax` da arma. **Avisa e não impede**, e por enquanto não
-modifica nada: transformar distância em penalidade é decisão de regra, e as armas de mão não
-declaram alcance em metros no catálogo. Fica como a pendência da emenda E.
+**O alcance.** A folha diz em que faixa o alvo está e o que ela custa: as **quatro faixas de −3**
+do `Arremesso.md`, que são quartos do que SOBRA entre o alcance livre e o máximo (por isso a mesma
+regra serve ao dardo, de vão minúsculo, e ao machado, que chega muito além de onde ainda acerta).
+No corpo a corpo, um hexágono, dois na haste. A convenção subiu para o `regras.json`
+(`combate.alcance`) e a fração do alcance livre virou campo do catálogo, que é o que a regra manda
+a arma dizer.
+
+**Mostra e não aplica**, e essa é a decisão: o Grid sabe a distância e diz o que ela custa, mas
+quem põe o número final do ataque é quem está mestrando, conforme o que o jogador rolou. Vale
+também para o **contrapé** da iniciativa (o −1d6 na primeira ação de quem entrou atrasado), que
+aparece escrito na fila e no bolo da folha sem ser descontado. É o mesmo princípio do documento,
+lido ao pé da letra: *todo número calculado é um campo à vista*, e nenhum deles decide sozinho.
+
+Fica de fora o **arremesso**: o alcance máximo de uma adaga atirada sai da Força de Arremesso de
+quem joga, e não da arma, e esse número ainda não chega ao Grid. Enquanto não chegar, a folha cala,
+que é melhor do que mostrar uma faixa inventada.
 
 **A ação "outra coisa".** A emenda F, que é a que fecha o contrato. Item no menu da peça e tecla
 `O`. Escolhe quem, escreve o que é, e a caixa cobra o tempo **com a mesma régua do resto** (a agenda

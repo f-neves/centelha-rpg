@@ -1597,6 +1597,46 @@ a Arte e o arco). No sistema normal as duas colapsam na primeira, porque lá nad
 
 O desenho inteiro, com a conta do atrito e o contrato do improviso, está no **`Grid_Automacao.md`**.
 
+### 15.10. A iniciativa volta a valer, e a distância vira número (21/08/2026)
+
+Duas réguas que **já estavam escritas** e que a mesa não usava.
+
+**A iniciativa.** `derivados.iniciativa` e a §"A linha do tempo" do capítulo de Combate dizem a
+mesma coisa, com exemplo: quem tira o maior começa no **Tick 0**, todos os demais no **Tick 1**, e a
+cada **6 pontos** abaixo do maior o retardatário começa **um Tick mais tarde** e **perde 1d6 na
+primeira ação**. O Grid rolava a iniciativa e zerava o relógio de todo mundo: a ordem existia como
+desempate, e a primeira rodada inteira acontecia no mesmo instante, que é justamente o que um
+relógio de Ticks não deveria deixar acontecer.
+
+Agora é `ticksDeEntrada` quem responde, e vale reforçar o que ela **não** é: não é um Tick por
+ponto de diferença. Com 12, 11 e 10 na mesa, o primeiro entra no Tick 0 e **os outros dois entram
+juntos no Tick 1**, porque nenhum deles está seis pontos atrás. O degrau é de seis, e é isso que
+impede uma cena de dez virar dez instantes diferentes.
+
+O **−1d6 do contrapé** fica guardado na ação (`penPrimeira`) e é **mostrado**, não descontado: na
+fila, ao lado do nome, e no bolo da folha da ação. Some sozinho quando a pessoa declara, porque a
+ação nova nasce limpa.
+
+**A distância.** A régua é a do `Arremesso.md`, e a sutileza dela é o que a faz funcionar: o que se
+corta em quatro **não é o alcance total**, é o que sobra entre o **alcance livre** e o **máximo**.
+Cada quarto custa **−3 no acerto**, até −12; passou do máximo, não chega. Entra na jogada de acerto
+e não na Defesa, e por isso não respeita o teto de ±6 dos modificadores de posição: o alvo não ficou
+mais difícil, quem atira é que ficou pior de mira.
+
+No corpo a corpo a régua é o tabuleiro: **um hexágono**, dois na haste. Isso estava escrito na tela
+do Grid e subiu para o `regras.json` (`combate.alcance`), junto com as faixas; a fração do alcance
+livre virou campo do catálogo de armas, que é o que a regra manda a arma dizer.
+
+**As duas MOSTRAM e não APLICAM.** O Grid é o único que sabe a distância, então é ele que diz em que
+faixa o alvo está e quanto ela custa; quem soma é quem está mestrando, conforme o que o jogador
+rolou na mesa. É a mesma linha do contrato do `Grid_Automacao.md`: todo número calculado é um campo
+à vista, e nenhum deles decide sozinho.
+
+**E a tela cheia passou a levar a ordem junto.** Quem ia para a tela cheia era o palco, e a fila
+sumia justamente quando a mesa mais precisava dela: projetada na TV, a cena virava um mapa sem
+relógio. Agora vai a **grade**, com o modo TV ligado por cima enquanto dura, e o que aparece no
+monitor é o par que a mesa lê: a tira da ordem em cima, o tabuleiro embaixo.
+
 ## Apêndice: como rodar
 
 ```

@@ -705,6 +705,23 @@ revistos por ela.
   26,5; +1 dado leva a 68,7% e 31,8. **O conserto tem de ser por arma, não por classe**, e conversa
   com o K11 (Alabarda), o K21 (versáteis) e o K14 (o Bloqueio que o motor não vê, que é justamente
   o que a arma de duas mãos abre mão). Fica agrupado com eles.
+- [x] **K26 · FEITO em 2026-08-21. A iniciativa distribui os Ticks de entrada.** A regra estava
+  escrita desde sempre em dois lugares (`derivados.iniciativa` e a §"A linha do tempo" do capítulo
+  de Combate, com exemplo) e **a mesa não a aplicava**: `rolarIniciativas` zerava o tick de todo
+  mundo, e a primeira rodada inteira acontecia no mesmo instante. O valor rolado só desempatava
+  dentro do Tick, que é metade do que ele faz. Agora `ticksDeEntrada` (em `combate-tempo.ts`)
+  responde: **o maior no Tick 0, os demais no Tick 1, e mais um Tick a cada seis pontos de atraso**.
+  Não é um Tick por ponto, e vale a pena repetir porque a leitura intuitiva é essa: com 12, 11 e 10,
+  os dois últimos entram no MESMO Tick 1. Empate no topo entra junto no Tick 0, e a ordem entre eles
+  é o desempate do capítulo, que a fila já resolve arrastando.
+
+  A outra metade da regra, o **−1d6 na primeira ação** de quem foi pego no contrapé, fica guardada
+  em `acao.penPrimeira` e é **mostrada** (na fila, ao lado do nome, e no bolo da folha da ação), e
+  não descontada: mesma decisão da distância, o valor final é do mestre. Vale nas duas telas; no
+  rastreador, só quando a cena está começando (a caixa "Reiniciar" com "zerar os Ticks" marcado),
+  porque rolar iniciativa no meio de uma luta é outra coisa, e ali o relógio de quem já está em
+  campo não se mexe.
+
 - [ ] **K25 · [DECIDIR] A Defesa da arma e a do escudo somam, e o escudeiro vira parede.** A
   `defesas.md` escreve "**+ defesa da arma/escudo**", no singular, mas a ficha **soma as duas**
   (`ficha-engine.ts:1467`: "Bloqueio soma a Defesa das armas/escudos do conjunto EM USO"). Com
@@ -926,12 +943,17 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   lateral e o campo do custo, deixando o tabuleiro e a ordem de combate; botão, tecla `T`, `Esc` e
   porta de saída flutuante, guardado no aparelho.
 
-  **O que falta é uma decisão de regra, e não uma tarefa:**
-  - **[DECIDIR] a distância virar modificador**, e não só aviso. Hoje a folha avisa quando o corpo a
-    corpo passa de um hexágono (dois na haste) e quando o tiro passa do `distMax`, mas não penaliza
-    nada. As armas de mão **não declaram alcance em metros** no `armas.json`, e a convenção de 1 e 2
-    hexágonos foi escrita na tela, não na regra: ou ela sobe para o `regras.json`, ou vira campo do
-    catálogo.
+  **A distância virou número em 21/08, e a decisão foi MOSTRAR E NÃO APLICAR.** A convenção subiu
+  para o `regras.json` (`combate.alcance`): um hexágono no corpo a corpo, dois na haste, e as
+  **quatro faixas de −3** do `Arremesso.md`, que são quartos do que SOBRA entre o alcance livre e o
+  máximo. As armas de distância ganharam `alcanceLivreFrac` no catálogo, que é o que a regra manda a
+  arma dizer ("a arma diz a fração; você diz o resto"). A conta está em `src/lib/alcance.ts` e a
+  folha escreve a faixa e o preço; **quem soma é o mestre**, conforme o que o jogador rolou na mesa.
+
+  Ficou de fora, e é o mesmo buraco de sempre: **o arremesso**. O alcance máximo de uma adaga
+  atirada sai da Força de Arremesso de QUEM joga, e não da arma, e esse número não chega ao Grid
+  (o `RESUMO` não o carrega). Enquanto não chegar, a folha cala para o arremesso, que é melhor do
+  que mostrar uma faixa inventada.
 
 ---
 
