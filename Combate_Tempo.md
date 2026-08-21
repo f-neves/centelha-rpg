@@ -1371,8 +1371,9 @@ aberta, e espera K12 e K17.
 
 ### 15.4. O que a mesa ainda não faz
 
-O que está no site é o **rastreio** mais o **abortar**: a mesa desenha o tempo, cobra a escada,
-conta os golpes e deixa desistir do gesto. O que ela ainda não faz são duas das ações da §14.6:
+O que está no site é o **rastreio**, o **abortar** e, desde 21/08, o **ataque do tabuleiro ligado
+à régua**: a mesa desenha o tempo, cobra a escada, conta os golpes, deixa desistir do gesto e
+declara a ação por onde a luta for resolvida. O que ela ainda não faz são duas das ações da §14.6:
 
 - **a ação fora de hora** com a dívida somada sozinha, e o **espelho** que atrasa quem foi
   interrompido em tantos Ticks quantos o interruptor pagou;
@@ -1394,7 +1395,48 @@ ou se interpor. Atacar não está na lista, que é o ponto.
 **No tabuleiro é do mestre**, como todo o resto que mexe no relógio: o jogador escreve em
 `combatentes` pelas funções `jogador_*` da migração 22, e não há uma para isto. Dar o botão a ele
 é uma `jogador_abortar` e uma decisão de segurança, e vai junto com a ação fora de hora, que tem
-o mesmo problema.
+o mesmo problema. (O ataque já tem a dele: a `jogador_declara` da migração 28.)
+
+### 15.5. O ataque do tabuleiro entra na linha do tempo (21/08/2026)
+
+Até aqui o Grid **desenhava** o P/G/R e não **participava** dele. Atacar pelo tabuleiro aplicava o
+dano e mais nada: não gastava o Tick, não criava a agenda de golpes (então a fita só enchia por
+quem passasse pela aba Combate) e não somava a Guarda sob pressão no alvo. Quem declarava pelo
+rastreador tinha tudo; quem jogava pelo tabuleiro, que é onde a luta acontece, não tinha nada.
+
+**O que passou a acontecer**, no mesmo caminho que o rastreador já usava:
+
+| ao atacar pelo Grid | antes | agora |
+|---|:---:|:---:|
+| o dano chega | sim | sim |
+| a agenda de golpes nasce | **não** | **sim** |
+| o relógio do atacante anda | **não** (o `⏭` à mão) | **sim**, o ciclo inteiro |
+| o alvo leva Guarda sob pressão | **não** | **sim**, uma por golpe |
+| a Defesa mostrada traz a escada | **não** | **sim** |
+
+**Errar gasta o mesmo.** A declaração acontece entre os dois caminhos, e não dentro de um: a
+Pressão conta o *ataque*, não o acerto, e o braço que passou perto gastou o mesmo tempo do braço
+que pegou. Fechar a caixa no Escape, isso sim, não gasta nada: desistir não é errar.
+
+**A manobra entrou na caixa do alvo**, filtrada como no rastreador (a rajada só para quem pode, a
+dupla só para quem tem arma na mão inábil), com o P/G/R e a penalidade de dados por golpe à vista
+antes de responder.
+
+**E o jogador também**, o que pediu duas coisas. A primeira é a **migração 28**: a `jogador_muda_peca`
+da migração 22 abre quatro colunas (`pv_atual`, `mana_atual`, `condicoes`, `ativo`) e ignora em
+silêncio o que não reconhece, então sem uma função nova o ataque do jogador aplicaria o dano e o
+relógio dele ficaria parado, que é pior do que o comportamento antigo. A `jogador_declara` é mais
+estrita que a irmã de propósito: exige ser **dono** da peça que age, porque o relógio de alguém é a
+coisa que mais decide a luta. Sobre o alvo a regra volta a ser a da mesa, e só a chave `pressao` é
+tocada, por soma.
+
+A segunda foi um achado: **o Grid só digeria fichas para o mestre.** O bloco inteiro de `RESUMO`,
+`PERFIL` e `FICHAS` vivia dentro de um `if (MESTRE)`, e do lado do jogador nem a peça dele tinha
+bloco de combate. Dava para viver com isso enquanto o tabuleiro só desenhava; com a régua saindo
+da arma, deixou de dar: um jogador de martelo declarava 5 Ticks em vez de 7, porque sem ficha a
+classe caía no atalho. Agora o jogador digere **a própria ficha, e só ela** — a RLS de
+`personagens` já responde quais são as dele. O bloco de combate dos outros continua sem ser
+montado do lado dele, que é o que impede a Absorção do ogro de viajar até o navegador do grupo.
 
 ---
 

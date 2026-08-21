@@ -158,6 +158,50 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
   ok(d.golpes + d.montando > 0,
     `as peças com gesto no ar estão marcadas (${d.golpes} golpeando, ${d.montando} montando)`);
 
+  // ------------------------------------- o ataque entra na linha do tempo
+  // Desde a migracao 28 atacar pelo tabuleiro declara a acao, empurra o relogio
+  // e cobra a Guarda sob pressao no alvo. Este passo confere as tres coisas, e
+  // que a caixa mostra o P/G/R de quem esta batendo.
+  const atq = await p.evaluate(async () => {
+    const nome = (el) => el?.querySelector('.gr-tn')?.textContent.trim();
+    const toks = [...document.querySelectorAll('#gr-tokens .gr-token')];
+    const a = toks.find((t) => /Her/.test(nome(t)));
+    const b = toks.find((t) => /Criatura/.test(nome(t)));
+    if (!a || !b) return null;
+    const antes = { t: a.dataset.c, tick: [...document.querySelectorAll('#gr-ini .ini-item')]
+      .find((x) => x.dataset.c === a.dataset.c)?.dataset.t };
+    a.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, clientX: 500, clientY: 400 }));
+    await new Promise((r) => setTimeout(r, 300));
+    document.querySelector('#tok-menu button[data-a="ataque"]')?.click();
+    await new Promise((r) => setTimeout(r, 300));
+    const rb = b.getBoundingClientRect();
+    b.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true,
+      clientX: rb.left + rb.width / 2, clientY: rb.top + rb.height / 2 }));
+    await new Promise((r) => setTimeout(r, 700));
+    const dlg = document.getElementById('alvo-dlg');
+    if (!dlg?.open) return { abriu: false };
+    const tempo = document.getElementById('al-tempo')?.textContent.replace(/\s+/g, ' ').trim();
+    const manobras = [...document.getElementById('al-manobra').options]
+      .filter((o) => !o.hidden).map((o) => o.value);
+    document.getElementById('al-nao').click();   // errou: nao abre a caixa de dano
+    // A LEITURA E IMEDIATA, e nao depois de esperar. O Supabase de mentira da
+    // bancada aceita o `update` e nao guarda nada, entao o primeiro recarregamento
+    // devolve a peca sem acao e apaga a marca. O que se mede aqui e o que a tela
+    // desenhou com o que acabou de acontecer, que e o que importa.
+    await new Promise((r) => setTimeout(r, 450));
+    const linha = [...document.querySelectorAll('#gr-ini .ini-item')].find((x) => x.dataset.c === antes.t);
+    return { abriu: true, tempo, manobras, antes: antes.tick, depois: linha?.dataset.t,
+      fita: !!linha?.querySelector('.ini-fita')
+        || !!document.querySelector(`.gr-token[data-c="${antes.t}"]`)?.className.match(/montando|golpe/) };
+  });
+  if (atq) {
+    ok(atq.abriu, 'o menu da peca abre a caixa de alvo');
+    ok(/Ticks/.test(atq.tempo || ''), `a caixa mostra o P/G/R de quem ataca (${atq.tempo})`);
+    ok((atq.manobras || []).includes('simples'), 'com a lista de manobras filtrada');
+    ok(atq.antes !== atq.depois, `atacar empurrou o relogio (t${atq.antes} -> t${atq.depois})`);
+    ok(atq.fita, 'e a peca ficou marcada com o gesto no ar');
+  }
+
   // -------------------------------------------------- abortar o Preparo
   // O item so aparece para quem esta em Preparo: no Golpe e na Recuperacao a
   // regra se ensina pela ausencia do botao. E o clique tem de mexer no relogio.

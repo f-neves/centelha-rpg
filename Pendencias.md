@@ -769,11 +769,22 @@ revistos por ela.
   **1 Tick por metro**, o do desvio de emergência da §5.5. Mora em `regras.json` (`combate.abortar`)
   e está travado no `test-combate-tempo.mjs`.
 
+  **O ataque do tabuleiro entrou em 21/08** (§15.5, migração 28). Atacar pelo Grid passou a
+  declarar a ação, empurrar o relógio pelo ciclo inteiro e cobrar a Guarda sob pressão no alvo,
+  acertando ou errando; a caixa do alvo mostra a Defesa **com a escada** e traz a manobra
+  filtrada. Vale para o jogador também, pela `jogador_declara`, que exige ser dono da peça que
+  age. Junto veio o conserto de que o Grid só digeria fichas para o mestre, e por isso a régua do
+  jogador caía no atalho `leve/5`.
+
   **O que a mesa ainda não faz** está na §15.4, e são duas: a **ação fora de hora** com dívida e
   espelho, e o **deslocamento pago na Recuperação**. As duas já são conta pronta em
-  `combate-tempo.ts`; falta o gesto na tela, e o mestre resolve na mão empurrando o Tick, como
-  antes desta revisão. As duas, mais o abortar do lado do jogador, pedem uma função
-  `jogador_*` nova (migração 22): hoje quem mexe no relógio é só o mestre.
+  `combate-tempo.ts`; falta o gesto na tela, e o mestre resolve na mão empurrando o Tick. As duas,
+  mais o abortar do lado do jogador, pedem outra função `jogador_*`: hoje só o ataque tem a dele.
+
+  **A Arte continua fora da régua.** Conjurar grava o efeito com `desde_tick` = agora, então ele
+  cai na hora em vez de sair no último Tick da montagem, que é a §5.3 do Arcano e o motivo de a
+  Arte ter Preparo 2 + nível. Também não gasta o Tick da conjuradora nem a Mana. É a próxima peça
+  óbvia depois do ataque, e mora em `artes-grid-mesa.ts` (`gravarEfeito`).
 
 ## H. Arremesso
 

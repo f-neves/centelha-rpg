@@ -153,6 +153,19 @@ const SETAS = [
       <h3 id="al-titulo">Ataque</h3>
       <p class="muted dlg-txt" id="al-linha"></p>
       <div id="al-defesas" class="al-def"></div>
+      {/* A manobra manda no tempo: um golpe, uma arma em cada mão, ou a mesma
+          arma várias vezes. A lista é filtrada pelo que a arma permite, e o que
+          sair daqui vira a agenda de Ticks da peça. */}
+      <label class="al-man" id="al-man-wrap">Manobra
+        <select id="al-manobra">
+          <option value="simples">Um golpe</option>
+          <option value="dupla">Uma arma em cada mão (dois golpes)</option>
+          <option value="segura">Segura a segunda e golpeia com uma</option>
+          <option value="rajada">Rajada (a mesma arma, várias vezes)</option>
+        </select>
+        <input type="number" id="al-golpes" min="2" max="3" value="2" title="Quantos golpes" />
+      </label>
+      <div id="al-tempo" class="al-tempo"></div>
       <p class="muted dlg-txt">Role o acerto na mesa e responda.</p>
       <div class="dlg-btns">
         <button type="button" class="btn" id="al-nao">Errou</button>
@@ -895,6 +908,19 @@ const SETAS = [
      forte e pulsado, curto: ele dura UM Tick, e é a peça que torna a
      sincronização jogável, porque o jogador vê que o martelo cai agora e
      decide. Ver Combate_Tempo.md §14.7.1. */
+  /* A manobra e o tempo, no diálogo do alvo. A linha da manobra é estreita de
+     propósito: ela é a exceção, e o caso comum (um golpe) não deve pedir
+     nenhum clique. */
+  .mesa-dlg label.al-man { display: flex; flex-flow: row nowrap; align-items: center; gap: .4rem;
+    margin: .5rem 0 .3rem; text-transform: none; letter-spacing: normal;
+    font-family: 'EB Garamond'; text-align: left; font-size: var(--fs-rotulo); }
+  .al-man select { flex: 1 1 auto; min-width: 0; }
+  .al-man input { width: 3.4rem; flex: 0 0 auto; }
+  .al-tempo { font-size: var(--fs-micro); border: 1px solid var(--rule); border-radius: var(--r-md);
+    padding: .35rem .55rem; background: color-mix(in srgb, var(--gold) 7%, transparent); }
+  .al-tempo b { font-family: 'Cinzel'; color: var(--accent-strong); font-variant-numeric: tabular-nums; }
+  .al-tempo .muted { color: var(--ink-soft); }
+
   .gr-token.montando .av { outline: 2px dashed color-mix(in srgb, var(--gold) 70%, transparent);
     outline-offset: -2px; }
   .gr-token.golpe .tok-quadro {
@@ -1077,7 +1103,8 @@ const SETAS = [
   } from '../../lib/mesa-tempo-ui';
   import {
     combateDaMesa, COMBATE_PADRAO, faseEm, acaoVazia, temGesto, resumoDaAcao,
-    type CombateMesa,
+    anatomia, declarar, defesaPerdida, classeDeTempo, velocidadeDaArma, tetoDaRajada,
+    FASE_ROTULO, type CombateMesa, type Manobra,
   } from '../../lib/combate-tempo';
 
   const el = (i: string) => document.getElementById(i)!;
@@ -1473,9 +1500,35 @@ const SETAS = [
     PC_IMG = {}; RESUMO = {}; PERFIL = {};
     // Quais personagens são deste jogador. A RLS de `personagens` já responde
     // isso sozinha: ao jogador ela devolve só os dele.
-    if (!MESTRE && !MEUS.size) {
-      const { data: meus } = await SB.from('personagens').select('id').eq('mesa_id', ID);
+    if (!MESTRE) {
+      // O JOGADOR DIGERE A PRÓPRIA FICHA, E SÓ ELA.
+      //
+      // Antes ele não digeria nenhuma: o bloco todo era do mestre, e do lado do
+      // jogador `RESUMO` ficava vazio até para a peça dele. Dava para viver com
+      // isso enquanto o tabuleiro só desenhava; com o ataque ligado ao P/G/R
+      // deixou de dar, porque a régua sai da arma, e sem ficha ela caía no
+      // atalho (leve, 5 Ticks): um jogador de martelo declararia 5 Ticks em vez
+      // de 7, e o relógio dele andaria errado.
+      //
+      // A RLS de `personagens` responde "quais são as minhas" sozinha, então
+      // esta consulta não vaza nada: a ficha do colega não vem, e a do inimigo
+      // não existe. O bloco de combate dos OUTROS continua sem ser montado aqui
+      // de propósito — montá-lo seria pôr a Absorção do ogro no navegador do
+      // jogador, a um console.log de distância.
+      const { data: meus } = await SB.from('personagens')
+        .select('id, imagem_path, ficha').eq('mesa_id', ID);
       MEUS = new Set((meus || []).map((p: any) => p.id));
+      const fichas: Record<string, any> = {};
+      for (const p of meus || []) {
+        if (p.imagem_path) PC_IMG[p.id] = p.imagem_path;
+        if (p.ficha) fichas[p.id] = p.ficha;
+      }
+      for (const c of COMBS) {
+        if (!c.personagem_id || !fichas[c.personagem_id]) continue;
+        try { RESUMO[c.id] = resumoDe(c, fichas); } catch { /* ficha velha: segue sem */ }
+        try { PERFIL[c.id] = perfilDe(c, fichas); } catch { /* idem */ }
+      }
+      FICHAS = fichas;
     }
     if (MESTRE) {
       const ids = [...new Set(COMBS.map((c: any) => c.personagem_id).filter(Boolean))];
@@ -4357,7 +4410,9 @@ const SETAS = [
     const alvo = COMBS.find((c: any) => c.id === cid);
     cancelarMira();
     if (!atacante || !alvo) return;
-    const acertou = await perguntarAcerto(atacante, alvo);
+    const res = await perguntarAcerto(atacante, alvo);
+    if (!res) return;                       // fechou a caixa: desistiu, não gastou nada
+    const { acertou, an, manobra } = res;
 
     // O TIRO SAI QUANDO A MESA JÁ DECIDIU, E NUNCA ANTES.
     //
@@ -4390,6 +4445,14 @@ const SETAS = [
       return true;
     };
 
+    // O GESTO SAI DO MESMO JEITO, ACERTANDO OU NÃO.
+    //
+    // Errar não devolve o Tick nem fecha a guarda de quem apanhou: a Guarda sob
+    // pressão conta o ATAQUE, e não o acerto, e o braço que passou perto gastou
+    // o mesmo tempo do braço que pegou. Por isso a declaração acontece aqui, no
+    // meio dos dois caminhos, e não dentro de um deles.
+    await declararNoTabuleiro(atacante, alvo, an, manobra);
+
     if (!acertou) {
       await atirar();
       await logar(atacante, `${atacante.nome} atacou ${alvo.nome} e errou`, { acao: null });
@@ -4398,13 +4461,82 @@ const SETAS = [
     await pedirDano(atacante, alvo, atirar);
   }
 
-  /** O modal das Defesas do alvo: o número contra o qual a rolagem foi feita. */
-  function perguntarAcerto(atacante: any, alvo: any): Promise<boolean> {
+  /**
+   * O ataque do tabuleiro entra na linha do tempo.
+   *
+   * É o que faltava para o Grid PARTICIPAR do P/G/R em vez de só desenhá-lo:
+   * a agenda de golpes nasce, o relógio do atacante anda até o fim do ciclo, e
+   * o alvo leva a Guarda sob pressão. É o mesmo trio que `avancarTick` faz na
+   * aba Combate, e de propósito: as duas telas escrevem a mesma coisa, senão a
+   * fita conta uma história diferente conforme onde a luta foi resolvida.
+   *
+   * Quem escreve depende de quem está jogando. O mestre vai direto na tabela; o
+   * jogador passa por `jogador_declara` (migração 28), que confere que a peça é
+   * dele antes de deixar o relógio andar. Banco sem a 28: o ataque continua
+   * valendo, o dano continua chegando, e o que não acontece é o relógio andar
+   * sozinho — exatamente o que acontecia antes desta mudança.
+   */
+  async function declararNoTabuleiro(atacante: any, alvo: any, an: any, manobra: string) {
+    const t0 = atacante.tick ?? 0;
+    const acao = declarar(t0, an, {
+      tipo: (an.golpes > 1 ? manobra : 'simples') as Manobra,
+      arma: RESUMO[atacante.id]?.arma || null,
+      alvo: alvo?.id || null,
+    });
+    const novoTick = acao.livre;
+    if (MESTRE) {
+      const { error } = await SB.from('combatentes')
+        .update({ tick: novoTick, acao }).eq('id', atacante.id);
+      if (error) return avisarSemTempo(error);
+      // A Pressão no alvo: soma na chave e preserva o resto, porque o alvo pode
+      // estar no meio do próprio golpe e a agenda dele não é da conta de quem ataca.
+      const antes = alvo.acao && Object.keys(alvo.acao).length
+        ? alvo.acao : { golpes: [], livre: alvo.tick ?? 0 };
+      const nova = { ...antes, pressao: (antes.pressao || 0) + an.golpes };
+      await SB.from('combatentes').update({ acao: nova }).eq('id', alvo.id);
+      alvo.acao = nova;
+    } else {
+      const { error } = await SB.rpc('jogador_declara', {
+        p_comb: atacante.id, p_tick: novoTick, p_acao: acao,
+        p_alvo: alvo?.id || null, p_golpes: an.golpes,
+      });
+      if (error) return avisarSemTempo(error);
+    }
+    atacante.tick = novoTick; atacante.acao = acao;
+    pintarIniciativa(); pintarTokens();
+    avisarAgora('combatentes');
+  }
+
+  /** Banco velho: diz o que falta, uma vez, sem travar o ataque. */
+  let JA_AVISOU_TEMPO = false;
+  function avisarSemTempo(error: any) {
+    if (JA_AVISOU_TEMPO) return;
+    JA_AVISOU_TEMPO = true;
+    uiErro(/jogador_declara|function|acao/i.test(error.message || '')
+      ? 'O ataque não conseguiu empurrar o relógio: falta a migração 28 (supabase/migracao-28.sql).'
+      + ' O dano continua funcionando; o Tick você empurra no ⏭.'
+      : 'Erro ao declarar a ação: ' + error.message);
+  }
+
+  /**
+   * O modal das Defesas do alvo, e a manobra de quem ataca.
+   *
+   * A Defesa mostrada aqui JÁ VEM COM A ESCADA. Quem está no Tick do próprio
+   * Golpe defende a −4, quem está montando o gesto a −2, e quem apanhou neste
+   * ciclo carrega −2 por ataque recebido. Antes esta caixa mostrava a Defesa
+   * cheia e o rastreador mostrava a descontada: dois números para a mesma
+   * criatura, dependendo da aba em que o mestre estivesse olhando.
+   *
+   * Devolve o que aconteceu MAIS o que foi declarado, porque quem chamou precisa
+   * dos dois para empurrar o relógio.
+   */
+  function perguntarAcerto(atacante: any, alvo: any): Promise<{ acertou: boolean; an: any; manobra: string } | null> {
     const dlg = el('alvo-dlg') as HTMLDialogElement;
     const r = RESUMO[alvo.id];
     const cd = somarCondicoes((alvo.condicoes || []).map((k: any) => ({ ...(COND[k.id] || {}), ...k })));
     const fer = tierDe(alvo.pv_atual, alvo.pv_max).penDefesa ?? 0;
-    const def = r?.defesa != null ? r.defesa + fer + (cd.defesaCaC || 0) : null;
+    const dv = defesaPerdida(acaoNo(alvo), relogio(), { segura: alvo.acao?.tipo === 'segura' });
+    const def = r?.defesa != null ? r.defesa + fer + (cd.defesaCaC || 0) + dv.total : null;
     const men = r?.defesaMental ?? null;
     const de = TOKENS[atacante.id], pa = TOKENS[alvo.id];
     const dist = de && pa ? distanciaHex(de, pa) * (Number(ARENA.escala_m) || 1) : null;
@@ -4414,16 +4546,65 @@ const SETAS = [
     const cel = (l: string, v: any, n = '') => `<div class="d"><span class="d-l">${l}</span>
       <span class="d-v">${v ?? '—'}</span>${n ? `<span class="d-n">${n}</span>` : ''}</div>`;
     el('al-defesas').innerHTML =
-      cel('Defesa', def, [fer ? `ferimento ${fer}` : '', cd.defesaCaC ? `condições ${cd.defesaCaC}` : '']
-        .filter(Boolean).join(' · '))
+      cel('Defesa', def, [
+        fer ? `ferimento ${fer}` : '',
+        cd.defesaCaC ? `condições ${cd.defesaCaC}` : '',
+        dv.acao ? `${FASE_ROTULO[dv.fase]} ${dv.acao}` : '',
+        dv.pressao ? `pressão ${dv.pressao}` : '',
+      ].filter(Boolean).join(' · '))
       + cel('Mental', men)
       + cel('Absorção', r ? `${r.soak.impacto}/${r.soak.corte}/${r.soak.perfuracao}` : null,
         r?.resistPerf ? `gate N${r.resistPerf}` : '');
+
+    // ---- a manobra de quem ataca, e o tempo que ela custa ----
+    const ra = RESUMO[atacante.id];
+    const classe = classeDeTempo(ra?.arma, ra?.velocidade);
+    const vel = ra?.velocidade ?? velocidadeDaArma(ra?.arma, 5);
+    const manSel = el('al-manobra') as HTMLSelectElement;
+    const golInp = el('al-golpes') as HTMLInputElement;
+    const cj = (FICHAS[atacante.personagem_id]?.conjuntos || []).find((x: any) => x.ativo);
+    const inabil = cj ? armaDoSlot(cj.inabil) : null;
+    const duasMaos = cj ? armaDoSlot(cj.habil)?.maos === 2 : false;
+    const podeDupla = !cj || (!!inabil && !duasMaos);
+    const podeRajada = tetoDaRajada(classe) > 1;
+    for (const o of Array.from(manSel.options)) {
+      const cabe = o.value === 'simples' || (o.value === 'rajada' ? podeRajada : podeDupla);
+      o.hidden = !cabe; o.disabled = !cabe;
+    }
+    manSel.value = 'simples'; golInp.value = '2';
+    golInp.max = String(Math.max(2, tetoDaRajada(classe)));
+    const anat = () => anatomia({
+      classe, velocidade: vel, sistema: TEMPO.sistema, manobra: manSel.value as Manobra,
+      golpes: Math.max(2, parseInt(golInp.value || '2', 10) || 2),
+    });
+    const pintarTempo = () => {
+      el('al-golpes').style.display = manSel.value === 'rajada' ? '' : 'none';
+      const a = anat();
+      const t0 = atacante.tick ?? 0;
+      const linha = TEMPO.sistema === 'pgr'
+        ? `<b>Preparo ${a.preparo}</b> · <b>Golpe ${a.golpes}</b> · <b>Recuperação ${a.recuperacao}</b>`
+        : `Resolve agora · <b>${a.ciclo} Ticks</b>`;
+      const dados = a.penDados.map((x, i) => `${i + 1}º ${x ? `${x}d6` : 'cheio'}`).join(' · ');
+      (el('al-tempo') as HTMLElement).innerHTML =
+        `<div>${linha} = <b>${a.ciclo}</b> Ticks</div>
+         <div class="muted">golpe${a.golpes > 1 ? 's' : ''} no Tick ${a.offs.map((o) => t0 + o).join(', ')}
+           · livre no ${t0 + a.ciclo} · dados: ${esc(dados)}</div>
+         ${a.aviso ? `<div class="ruim">${esc(a.aviso)}</div>` : ''}`;
+    };
+    manSel.onchange = pintarTempo; golInp.oninput = pintarTempo; pintarTempo();
+
     return new Promise((resolve) => {
-      const fim = (v: boolean) => { dlg.close(); resolve(v); };
+      let respondeu = false;
+      const fim = (v: boolean) => {
+        respondeu = true; dlg.close();
+        const a = anat();
+        resolve({ acertou: v, an: a, manobra: a.golpes > 1 ? manSel.value : 'simples' });
+      };
       (el('al-sim') as HTMLElement).onclick = () => fim(true);
       (el('al-nao') as HTMLElement).onclick = () => fim(false);
-      dlg.addEventListener('close', () => resolve(false), { once: true });
+      // Fechar no Escape é DESISTIR, e não "errou": desistir não gasta o Tick de
+      // ninguém. Por isso o null, que quem chamou distingue do erro.
+      dlg.addEventListener('close', () => { if (!respondeu) resolve(null); }, { once: true });
       dlg.showModal();
     });
   }
