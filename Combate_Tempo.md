@@ -1749,6 +1749,27 @@ a ordem de chegada **invertida**, para provar que quem mandou foi o Raciocínio 
 reserva. Raciocínio ausente vale −1 e não zero, para o figurante de cena não ganhar a vez por
 omissão.
 
+### 15.13. O Golpe sai depois, e a mesa resolve antes (21/08/2026)
+
+Estudo próprio, em **`Golpe_Tardio.md`**, porque a pergunta é grande demais para uma seção: agora
+que o Golpe não cai no primeiro Tick, o que muda para quem declara e executa ações?
+
+O diagnóstico em uma frase: **a régua está inteira nos dados e na tela, e vazia no motor.** A
+`combate.pgr.preparo` diz que o golpe cai em `T + Preparo`, a fita e o anel de Golpe desenham isso,
+e a folha da ação resolve tudo (rolagem, dano, morte) no Tick da declaração. O Preparo cobra Defesa
+pela escada e não adia coisa nenhuma.
+
+Medido com o motor da calibragem, que resolve no Tick do Golpe: no duelo a diferença é ~1%, na
+refrega 3×3 com arma de Preparo **7,3% a 8,1% dos golpes declarados nunca chegam a cair**. O
+equilíbrio aguenta; o que não aguenta é a §4 (interromper), a §8 (ler o sinal, fintar) e a ficção do
+registro.
+
+O estudo mede o atrito das saídas, propõe onde a **Firula** entra (anunciada no Preparo, confirmada
+no Golpe) e desenha o aviso que a tela precisa dar para a espera não virar contabilidade. Seis
+decisões esperando a mesa, listadas na §9 de lá e na **K27** do `Pendencias.md`.
+
+---
+
 ## Apêndice: como rodar
 
 ```

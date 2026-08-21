@@ -732,6 +732,30 @@ revistos por ela.
   telas; no rastreador, só quando a cena está começando (a caixa "Reiniciar" com "zerar os Ticks"),
   porque rolar iniciativa no meio de uma luta é outra coisa.
 
+- [ ] **K27 · [DECIDIR] O Golpe sai depois, e a mesa ainda resolve na declaração.** Estudo completo
+  em **`Golpe_Tardio.md`** (21/08), sem nenhuma mudança feita. O buraco: a régua diz que o golpe cai
+  em `T + Preparo`, a tela desenha isso (fita, anel de Golpe, linha do tempo), e o motor resolve
+  tudo no Tick da declaração — rolagem, dano e morte. O Preparo cobra Defesa e não adia nada.
+
+  **Medido** com o motor que calibrou a régua (`lib-tempo.mjs`, que resolve no Tick do Golpe): num
+  duelo a diferença é ~1%, mas numa refrega 3×3 com arma de Preparo **um em cada treze golpes
+  declarados nunca chega a cair** (7,3% com espada, 8,1% com martelo) porque o alvo caiu antes. O
+  equilíbrio não desaba (a vitória mexe 1 ponto), mas somem quatro coisas: a **interrupção** (a §4
+  inteira), o alvo poder **sair de baixo**, a **ficção** (o registro promete um golpe que já
+  aconteceu) e a **leitura do sinal** com a finta (§8).
+
+  O estudo propõe três saídas, e recomenda a **C · rolar na declaração e aplicar no Golpe**: o
+  jogador descreve e rola quando fala (o ritmo de mesa não muda), o resultado fica na agenda, e o
+  Grid confere contra a Defesa do alvo **no instante do golpe**. É o que a Arte já faz desde 21/08 e
+  o que a folha da ação já faz pela metade. A alternativa fiel (resolver tudo no Tick do Golpe)
+  **dobra os toques por ação**, desfazendo a frente de automação, e separa o dado da descrição.
+
+  **Seis decisões esperando** (§9 do estudo): a saída; onde entra a **Firula** (a proposta é
+  anunciada no Preparo e confirmada no Golpe, caindo junto se o cenário que ela usava sumiu); o que
+  acontece com o golpe cujo **alvo caiu** (perde ou redireciona: 1 vez por cena numa refrega de
+  martelos); o alvo que **sai do alcance** durante o Preparo; o **dano simultâneo** de três ou mais
+  golpes no mesmo Tick; e se a resolução é **automática ou pedida**.
+
 - [ ] **K25 · [DECIDIR] A Defesa da arma e a do escudo somam, e o escudeiro vira parede.** A
   `defesas.md` escreve "**+ defesa da arma/escudo**", no singular, mas a ficha **soma as duas**
   (`ficha-engine.ts:1467`: "Bloqueio soma a Defesa das armas/escudos do conjunto EM USO"). Com
