@@ -579,7 +579,7 @@ import MesaCab from '../../components/MesaCab.astro';
   import { rolarIniciativaPC } from '../../lib/mesa-ficha';
   import { pv as pvDe, mana as manaDe } from '../../lib/calc';
   import { armaDoSlot } from '../../lib/equip';
-  import { rolarExpr, tipoDeDano } from '../../lib/rolagem';
+  import { rolarExpr, descreverRolada, tipoDeDano } from '../../lib/rolagem';
   import { uiConfirmar, uiErro, uiPerguntar } from '../../lib/ui-dialog';
 
   const el = (i: string) => document.getElementById(i)!;
@@ -1904,7 +1904,7 @@ import MesaCab from '../../components/MesaCab.astro';
             : ` <span class="ruim">errou por ${erroPor}</span>${erroPor <= 3 ? ' <span class="muted">· cabe Quase-Acerto?</span>' : ''}`;
         }
         const rot = pen.length > 1 ? `<b>${i + 1}º</b>${p ? ` <span class="ruim">${p}d6</span>` : ''} ` : '';
-        return `<div>${rot}[${rolagem.rolls.join(', ')}]${rolagem.flat ? ` ${sinal(rolagem.flat)}` : ''} = <b>${rolagem.total}</b>${veredito}</div>`;
+        return `<div>${rot}${esc(descreverRolada(rolagem))}${veredito}</div>`;
       });
       (el('acao-res-atq') as HTMLElement).innerHTML = linhas.join('');
     };
@@ -1919,9 +1919,9 @@ import MesaCab from '../../components/MesaCab.astro';
         const rz = RESUMO[alvo.id];
         const cd = somarCondicoes(condsDe(alvo));
         const soak = (rz?.soak?.[CAT_SOAK[danoTipo.value]] ?? 0) + (cd.soak || 0);
-        caixa.innerHTML = `[${rolagem.rolls.join(', ')}]${rolagem.flat ? ` ${sinal(rolagem.flat)}` : ''} = <b>${rolagem.total}</b> bruto · absorção ${soak} → <b>${Math.max(0, rolagem.total - soak)}</b> em ${esc(alvo.nome)}`;
+        caixa.innerHTML = `${esc(descreverRolada(rolagem))} bruto · absorção ${soak} → <b>${Math.max(0, rolagem.total - soak)}</b> em ${esc(alvo.nome)}`;
       } else {
-        caixa.innerHTML = `[${rolagem.rolls.join(', ')}] = <b>${rolagem.total}</b>`;
+        caixa.innerHTML = esc(descreverRolada(rolagem));
       }
     };
 
