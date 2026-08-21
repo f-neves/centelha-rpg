@@ -534,12 +534,13 @@ import MesaCab from '../../components/MesaCab.astro';
   } from '../../lib/mesa-tempo-ui';
   import {
     combateDaMesa, COMBATE_PADRAO, anatomia, declarar, faseEm, defesaPerdida, acaoVazia,
-    classeDeTempo, velocidadeDaArma, tetoDaRajada, FASE_ROTULO,
+    classeDeTempo, velocidadeDaArma, tetoDaRajada, temGesto, FASE_ROTULO,
     type CombateMesa, type Manobra,
   } from '../../lib/combate-tempo';
   import { MON, MON_LIST, cardCriaturaHTML, criaturaCompleta, resumoDe, iniDeMonstro, d6 } from '../../lib/mesa-bestiario';
   import { rolarIniciativaPC } from '../../lib/mesa-ficha';
   import { pv as pvDe, mana as manaDe } from '../../lib/calc';
+  import { armaDoSlot } from '../../lib/equip';
   import { uiConfirmar, uiErro, uiPerguntar } from '../../lib/ui-dialog';
 
   const el = (i: string) => document.getElementById(i)!;
@@ -895,7 +896,10 @@ import MesaCab from '../../components/MesaCab.astro';
   function fitaDoCard(c: any) {
     if (TEMPO.marcacao !== 'fita') return '';
     const a = acaoDe(c);
-    if (!a) return '';
+    // `temGesto` e nao `acaoDe`: quem so acumulou Pressao nao tem gesto no ar, e
+    // uma fita inteira apagada ao lado do card diria "esta montando alguma
+    // coisa" para quem esta parado apanhando.
+    if (!temGesto(a)) return '';
     const o = a.arma && EH_MESTRE ? `<span class="fita-alvo">${esc(String(a.arma))}${a.alvo ? ` → ${esc(nomeDe(a.alvo))}` : ''}</span>` : '';
     return `<div class="cbt-fita">${fitaHTML(a, AGORA, { largura: 12, rotulo: true })}${o}</div>`;
   }
@@ -994,7 +998,7 @@ import MesaCab from '../../components/MesaCab.astro';
    */
   function lidoNaFila(fila: any[]) {
     if (TEMPO.marcacao !== 'fita') return '';
-    const linhas = fila.filter((c) => acaoDe(c)).slice(0, 6);
+    const linhas = fila.filter((c) => temGesto(acaoDe(c))).slice(0, 6);
     if (!linhas.length) return '';
     const prep = linhas.filter((c) => faseEm(acaoDe(c), AGORA) === 'preparo');
     return `<div class="pt-fitas">
@@ -1201,7 +1205,14 @@ import MesaCab from '../../components/MesaCab.astro';
       const a = acaoDe(c);
       return a && AGORA >= a.livre && c.tick <= AGORA;
     });
-    for (const c of vencidas) { c.acao = {}; await upComb(c.id, { acao: {} }); }
+    for (const c of vencidas) {
+      // A Pressao SOBREVIVE ao fim do ciclo: ela so zera quando a pessoa AGE,
+      // e quem age passa por `avancarTick`, que troca a acao inteira. Apagar
+      // aqui devolveria a guarda de graca a quem so ficou esperando.
+      const p = c.acao?.pressao || 0;
+      const novo = p > 0 ? { golpes: [], livre: c.tick, pressao: p } : {};
+      c.acao = novo; await upComb(c.id, { acao: novo });
+    }
     return vencidas.length > 0;
   }
 
@@ -1283,7 +1294,7 @@ import MesaCab from '../../components/MesaCab.astro';
       await carregar();
     });
     el('btn-tempo').onclick = () => abrirEscolhaDoTempo(
-      CTX!, { emAndamento: COMBS.filter((c) => acaoDe(c)).length },
+      CTX!, { emAndamento: COMBS.filter((c) => temGesto(acaoDe(c))).length },
       async (novo) => {
         TEMPO = novo;
         await logar(`O combate desta mesa passa a ser: ${resumoDoTempo(novo)}.`, 'sistema',
@@ -1676,6 +1687,22 @@ import MesaCab from '../../components/MesaCab.astro';
     const golpesInp = el('acao-golpes') as HTMLInputElement;
     const classe = classeDeTempo(r?.arma, r?.velocidade);
     const velBase = r?.velocidade ?? velocidadeDaArma(r?.arma, 5);
+    // SÓ OFERECE O QUE CABE. A rajada é corpo a corpo (não se dispara duas
+    // flechas no mesmo gesto), e a dupla precisa de arma na mão inábil. Deixar
+    // as duas sempre na lista fazia o mestre escolher uma manobra impossível e
+    // descobrir pelo aviso em letra miúda, depois de escolher.
+    const cj = (FICHAS[ator.personagem_id]?.conjuntos || []).find((x: any) => x.ativo);
+    const inabil = cj ? armaDoSlot(cj.inabil) : null;
+    const duasMaos = cj ? armaDoSlot(cj.habil)?.maos === 2 : false;
+    // Sem ficha (criatura, NPC) o mestre decide: as opções ficam, porque o
+    // bestiário não diz quantas mãos o bicho tem.
+    const podeDupla = !cj || (!!inabil && !duasMaos);
+    const podeRajada = tetoDaRajada(classe) > 1;
+    for (const o of Array.from(manSel.options)) {
+      const cabe = o.value === 'simples'
+        || (o.value === 'rajada' ? podeRajada : podeDupla);
+      o.hidden = !cabe; o.disabled = !cabe;
+    }
     manSel.value = 'simples'; golpesInp.value = '2';
     golpesInp.max = String(Math.max(2, tetoDaRajada(classe)));
 
@@ -1796,9 +1823,14 @@ import MesaCab from '../../components/MesaCab.astro';
       dlg.close();
       // A ação declarada, antes do Tick andar: ela nasce no Tick de AGORA, que
       // é onde o ator está, e é dela que a fita e a escada saem.
+      // O tipo gravado é o que a manobra VIROU, e não o que se pediu: uma
+      // rajada com arma de arremesso degenera para um golpe só, e guardá-la
+      // como "rajada" faria a fita e o registro contarem uma história que não
+      // aconteceu.
+      const an = anat();
       const decl = tipoSel.value === 'ataque'
-        ? declarar(ator.tick, anat(), {
-            tipo: manSel.value as Manobra,
+        ? declarar(ator.tick, an, {
+            tipo: (an.golpes > 1 ? manSel.value : 'simples') as Manobra,
             arma: r?.arma || null,
             alvo: alvo?.id || null,
           })

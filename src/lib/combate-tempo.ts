@@ -60,7 +60,20 @@ export interface Acao {
   pressao?: number;       // ataques recebidos neste ciclo (cada um −2 de Defesa)
 }
 
-export const acaoVazia = (a: any): boolean => !a || !Array.isArray(a.golpes) || !a.golpes.length;
+/**
+ * Nada aqui dentro? Então esta pessoa está livre e de guarda inteira.
+ *
+ * A PRESSÃO CONTA. Quem levou três ataques e ainda não agiu não tem agenda de
+ * golpe nenhuma, mas tem a guarda aberta em −6, e é justamente essa a regra
+ * mais antiga do capítulo IX. Tratar `{pressao: 3}` como vazio fazia a Pressão
+ * ser gravada no banco e nunca mais lida: acumulava em silêncio e não descontava
+ * Defesa de ninguém.
+ */
+export const acaoVazia = (a: any): boolean =>
+  !a || ((!Array.isArray(a.golpes) || !a.golpes.length) && !(a.pressao > 0));
+
+/** Tem gesto no ar? (Agenda de golpes, e não só Pressão acumulada.) */
+export const temGesto = (a: any): boolean => !!a && Array.isArray(a.golpes) && a.golpes.length > 0;
 
 // ------------------------------------------------------------------ a régua
 /** A classe de tempo de uma arma. Sem arma, é `leve`: o punho é rápido. */
@@ -210,6 +223,10 @@ export function declarar(tickAgora: number, a: Anatomia, extra: Partial<Acao> = 
 export function faseEm(acao: Acao | null | undefined, tick: number): Fase {
   if (acaoVazia(acao)) return 'livre';
   const a = acao as Acao;
+  // Só Pressão, sem agenda: a guarda está aberta, mas a pessoa não está preso a
+  // gesto nenhum. Sem esta linha, `Math.max()` de uma lista vazia dá −Infinito e
+  // ela seria lida como Recuperação para sempre.
+  if (!temGesto(a)) return 'livre';
   if (tick >= a.livre) return 'livre';
   if (a.golpes.includes(tick)) return 'golpe';
   if (tick < Math.max(...a.golpes)) return 'preparo';

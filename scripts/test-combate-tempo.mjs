@@ -185,6 +185,36 @@ for (const w of armas) {
   eq(T.abortar(a, 3, 0).pode, false, `no sistema normal ${w.id} não tem o que abortar`);
 }
 
+// --------------------------- 3c. a Pressão sozinha, sem gesto nenhum
+// Guarda sob pressão é a regra mais antiga do capítulo IX: −2 por ataque
+// recebido, acumulando até você agir. Quem apanha SEM ter ação declarada não
+// tem agenda de golpe, e mesmo assim está com a guarda aberta. Isto vive aqui
+// porque já quebrou uma vez: a ação `{golpes: [], pressao: 3}` contava como
+// vazia, e a Pressão era gravada no banco e nunca mais lida.
+{
+  const so = { golpes: [], livre: 0, pressao: 3 };
+  eq(T.acaoVazia(so), false, 'uma ação que carrega Pressão NÃO é vazia');
+  eq(T.temGesto(so), false, 'mas ela também não é um gesto no ar');
+  eq(T.faseEm(so, 0), 'livre', 'quem só apanhou está livre (preso a gesto nenhum)');
+  eq(T.faseEm(so, 9), 'livre', 'e continua livre em qualquer Tick, sem virar Recuperação');
+  eq(T.defesaPerdida(so, 0).total, -6, 'três ataques recebidos abrem a guarda em −6');
+  eq(T.defesaPerdida(so, 0).acao, 0, 'sem gesto, nada da escada da ação');
+  eq(T.podeSerInterrompido(so, 0), false, 'e não há gesto para interromper');
+  eq(T.abortar(so, 0).pode, false, 'nem para abortar');
+
+  eq(T.acaoVazia({}), true, 'ação vazia continua vazia');
+  eq(T.acaoVazia({ golpes: [], livre: 0, pressao: 0 }), true, 'e Pressão zero também');
+  eq(T.acaoVazia(null), true, 'e null também');
+
+  // Pressão MAIS gesto: as duas se somam, que é o caso do martelo apanhando
+  // enquanto monta o golpe.
+  const ambos = T.declarar(0, T.anatomia({ classe: 'pesada', velocidade: 7, sistema: 'pgr' }));
+  ambos.pressao = 2;
+  eq(T.defesaPerdida(ambos, 0).total, -6, 'Preparo −2 mais dois ataques recebidos −4');
+  eq(T.defesaPerdida(ambos, 2).total, -8, 'e no Tick do Golpe, −4 mais os mesmos −4');
+  eq(T.temGesto(ambos), true, 'e isso continua sendo um gesto no ar');
+}
+
 // -------------------------------------- 4. o sistema normal degenera direito
 for (const w of armas) {
   eq(T.preparoDe(w.classe, w.ticks, 'normal'), 0, `no sistema normal ${w.id} não tem Preparo`);
