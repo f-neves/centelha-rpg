@@ -244,6 +244,18 @@ eq([T.rolaNoSite('mesa', false), T.rolaNoSite('mesa', true)], [false, false], 'n
 eq([T.rolaNoSite('site', false), T.rolaNoSite('site', true)], [true, true], 'no modo site ele rola tudo');
 eq([T.rolaNoSite('misto', false), T.rolaNoSite('misto', true)], [true, false],
   'no misto a criatura rola sozinha e o personagem não');
+// A acao que a regua nao previu: derrubar a estante, arrombar a porta.
+{
+  const ag = T.anatomiaLivre(5, 'agora', 'pgr');
+  eq([ag.preparo, ag.offs[0], ag.recuperacao, ag.ciclo], [0, 0, 4, 5],
+    'a acao livre que resolve agora: Preparo 0, o resto e Recuperacao');
+  const fim = T.anatomiaLivre(5, 'fim', 'pgr');
+  eq([fim.preparo, fim.offs[0], fim.recuperacao, fim.ciclo], [4, 4, 0, 5],
+    'e a que resolve no fim telegrafa o caminho inteiro, como a Arte');
+  eq(T.anatomiaLivre(5, 'fim', 'normal').preparo, 0,
+    'no sistema normal as duas colapsam: la nada telegrafa');
+  eq(T.anatomiaLivre(0, 'agora', 'pgr').ciclo, 1, 'e ninguem gasta menos de 1 Tick');
+}
 eq(T.classeDaArma('espada-longa'), 'media', 'a classe sai do id');
 eq(T.classeDaArma('Espada Longa'), 'media', 'e também do nome, que é o que a mesa guarda');
 eq(T.classeDaArma(null), 'leve', 'sem arma, o punho é rápido');

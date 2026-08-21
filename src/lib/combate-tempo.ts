@@ -231,6 +231,39 @@ export function anatomia(opts: {
   };
 }
 
+/**
+ * A ANATOMIA DE UMA AÇÃO QUALQUER, a que a régua não previu.
+ *
+ * A régua por classe cobre o que tem catálogo: arma, arremesso, Arte. O resto
+ * do jogo (derrubar a estante, arrombar a porta, amarrar a corda, acalmar o
+ * cavalo) não tem classe nenhuma, e é justamente onde a mesa mais improvisa.
+ * Sem uma forma para isso, "outra coisa" só existiria como o mestre empurrando
+ * o Tick na mão, e o improviso ficaria MAIS CARO que o ataque comum, que é o
+ * contrário do que se quer.
+ *
+ * Duas formas, e a escolha é de quem está mestrando:
+ *
+ *   `agora` · resolve no Tick da declaração e o resto do ciclo é Recuperação.
+ *     É a forma de beber a poção, abrir a porta, gritar a ordem: acontece, e
+ *     depois se paga.
+ *   `fim` · resolve no ÚLTIMO Tick, e o caminho todo é Preparo. É a forma da
+ *     Arte e do arco: telegrafa, dá para ler e dá para interromper. É o que
+ *     serve para mirar, montar a emboscada, empurrar a estante.
+ *
+ * No sistema normal as duas colapsam na primeira, porque lá nada telegrafa: é
+ * a mesma degeneração elegante do resto do motor.
+ */
+export function anatomiaLivre(
+  velocidade: number, quando: 'agora' | 'fim', sistema: Sistema,
+): Anatomia {
+  const vel = Math.max(1, Math.round(velocidade) || 1);
+  const preparo = sistema === 'pgr' && quando === 'fim' ? vel - 1 : 0;
+  return {
+    preparo, golpes: 1, recuperacao: Math.max(0, vel - preparo - 1), ciclo: vel,
+    offs: [preparo], penDados: [0],
+  };
+}
+
 /** Monta a ação a partir do Tick em que ela é declarada. */
 export function declarar(tickAgora: number, a: Anatomia, extra: Partial<Acao> = {}): Acao {
   return {

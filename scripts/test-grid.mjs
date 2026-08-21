@@ -308,6 +308,104 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
     ok(gesto.mirando, 'a tecla A comeca a mira de quem age');
   }
 
+  // ------------------------------------------- a acao "outra coisa"
+  //
+  // A valvula do improviso. O que ela guarda: que o item existe no menu, que a
+  // frase e OBRIGATORIA (sem ela o registro guardaria "alguem gastou 5 Ticks"),
+  // que o tempo e cobrado com a mesma regua do resto, e que a linha do registro
+  // sai com a frase que o mestre escreveu.
+  const outra = await p.evaluate(async () => {
+    const pal = document.getElementById('gr-palco').getBoundingClientRect();
+    const naTela = (t) => { const r = t.getBoundingClientRect();
+      return r.left > pal.left + 4 && r.top > pal.top + 4
+        && r.right < pal.right - 4 && r.bottom < pal.bottom - 4; };
+    const a = [...document.querySelectorAll('#gr-tokens .gr-token')].filter(naTela)[0];
+    if (!a) return null;
+    const cid = a.dataset.c;
+    a.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, clientX: 400, clientY: 300 }));
+    await new Promise((r) => setTimeout(r, 350));
+    const item = document.querySelector('#tok-menu button[data-a="outra"]');
+    const temItem = !!item;
+    item?.click();
+    await new Promise((r) => setTimeout(r, 450));
+    const dlg = document.getElementById('outra-dlg');
+    if (!dlg?.open) return { temItem, abriu: false };
+    // Sem a frase, "Fazer" nao faz: a caixa continua aberta.
+    document.getElementById('ou-ok').click();
+    await new Promise((r) => setTimeout(r, 250));
+    const travou = dlg.open;
+    const oque = document.getElementById('ou-oque');
+    oque.value = 'derruba a estante em cima do goblin';
+    const tk = document.getElementById('ou-ticks');
+    tk.value = '7'; tk.dispatchEvent(new Event('input', { bubbles: true }));
+    await new Promise((r) => setTimeout(r, 120));
+    const tempo = document.getElementById('ou-tempo').textContent.replace(/\s+/g, ' ').trim();
+    document.getElementById('ou-pool').value = '3d6 +1';
+    document.getElementById('ou-rolar').click();
+    await new Promise((r) => setTimeout(r, 150));
+    const total = document.getElementById('ou-total').value;
+    const dif = document.getElementById('ou-dif');
+    dif.value = '3'; dif.dispatchEvent(new Event('input', { bubbles: true }));
+    await new Promise((r) => setTimeout(r, 120));
+    const vered = document.getElementById('ou-vered').textContent.trim();
+    const linhaDe = () => [...document.querySelectorAll('#gr-ini .ini-item')]
+      .find((x) => x.dataset.c === cid)?.dataset.t;
+    const antes = linhaDe();
+    const logAntes = document.querySelectorAll('#gr-log .lg').length;
+    document.getElementById('ou-ok').click();
+    await new Promise((r) => setTimeout(r, 900));
+    const registro = [...document.querySelectorAll('#gr-log .lg')]
+      .map((l) => l.textContent).join(' | ');
+    return { temItem, abriu: true, travou, tempo, total, vered,
+      antes, depois: linhaDe(), logAntes, logDepois: document.querySelectorAll('#gr-log .lg').length,
+      escreveu: /derruba a estante/.test(registro),
+      contou: /7 Ticks/.test(registro) };
+  });
+  if (outra) {
+    ok(outra.temItem, 'a peca tem "Outra coisa" no menu');
+    ok(outra.abriu, 'e o item abre a caixa do improviso');
+    ok(outra.travou, 'sem a frase, "Fazer" nao faz: o registro nao guarda acao muda');
+    ok(/7/.test(outra.tempo || ''), `o tempo e cobrado com a mesma regua (${outra.tempo})`);
+    ok(Number(outra.total) >= 4, `a rolagem avulsa rola o bolo que a mesa digitou (3d6+1 = ${outra.total})`);
+    ok(/passa|falha/.test(outra.vered || ''), `com veredito contra a Dificuldade (${outra.vered})`);
+    ok(outra.antes !== outra.depois, `e o relogio anda (t${outra.antes} -> t${outra.depois})`);
+    ok(outra.escreveu, 'a frase do mestre vai inteira para o registro');
+    ok(outra.contou, 'e o custo em Ticks vai junto');
+  }
+
+  // --------------------------------------------------------- o modo TV
+  //
+  // A tela dos jogadores sem a mobilia do mestre: some a barra da mesa, a barra
+  // da arena e a coluna lateral; ficam o tabuleiro e a ordem de combate. E tem
+  // porta de saida visivel, porque um modo sem saida e uma armadilha.
+  const tv = await p.evaluate(async () => {
+    const larg = () => Math.round(document.getElementById('gr-palco').getBoundingClientRect().width);
+    const vis = (s) => { const e = document.querySelector(s);
+      return !!e && getComputedStyle(e).display !== 'none'; };
+    const antes = { palco: larg(), barra: vis('.gr-barra'), lado: vis('.gr-lado') };
+    document.getElementById('gr-tv').click();
+    await new Promise((r) => setTimeout(r, 500));
+    const dentro = { palco: larg(), barra: vis('.gr-barra'), lado: vis('.gr-lado'),
+      mesa: vis('.mesa-barra'), tira: vis('.gr-ini'), sai: vis('#gr-tv-sai'),
+      guardado: (() => { try { return localStorage.getItem('centelha:grid:tv'); } catch { return null; } })() };
+    // A tecla T tambem, e ela devolve tudo.
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 't', bubbles: true }));
+    await new Promise((r) => setTimeout(r, 500));
+    const depois = { palco: larg(), barra: vis('.gr-barra'), lado: vis('.gr-lado') };
+    return { antes, dentro, depois };
+  });
+  if (tv) {
+    ok(!tv.dentro.barra && !tv.dentro.lado && !tv.dentro.mesa,
+      'no modo TV somem a barra da mesa, a da arena e a coluna lateral');
+    ok(tv.dentro.tira, 'e a ordem de combate FICA, que e o que a mesa precisa ver');
+    ok(tv.dentro.palco > tv.antes.palco,
+      `o tabuleiro toma a largura que sobrou (${tv.antes.palco} -> ${tv.dentro.palco}px)`);
+    ok(tv.dentro.sai, 'com porta de saida visivel: modo sem saida e armadilha');
+    ok(tv.dentro.guardado === '1', 'a escolha fica no aparelho');
+    ok(tv.depois.barra && tv.depois.lado && tv.depois.palco === tv.antes.palco,
+      'e a tecla T devolve tudo como estava');
+  }
+
   // -------------------------------------------------- abortar o Preparo
   // O item so aparece para quem esta em Preparo: no Golpe e na Recuperacao a
   // regra se ensina pela ausencia do botao. E o clique tem de mexer no relogio.

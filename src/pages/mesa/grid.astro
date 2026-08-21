@@ -16,6 +16,12 @@ const SETAS = [
     <div id="gr-aviso"></div>
 
     <div id="gr-tudo" hidden>
+      {/* A saída do modo TV. Fica FORA da grade e presa na tela: no modo TV a
+          barra que abriga o botão de entrar está escondida, e um modo sem porta
+          de saída visível é uma armadilha (o Esc e o T continuam valendo, mas
+          quem entrou por engano não sabe disso). */}
+      <button class="btn-fant gr-tv-sai" id="gr-tv-sai"
+        title="Sair do modo TV (Esc)">▭ sair da TV</button>
       <div class="gr-grade">
       <div class="gr-barra">
         <span class="gr-id">
@@ -63,6 +69,12 @@ const SETAS = [
           <button class="btn-fant" id="gr-linha-btn" aria-pressed="false"
             title="Linha do tempo: uma régua de Ticks debaixo do tabuleiro">▤</button>
         </span>
+        {/* O MODO TV: a tela dos jogadores sem a mobília do mestre. Ao lado da
+            tela cheia porque é o mesmo gesto (preparar a tela para ser olhada
+            de longe), e separado dela porque são coisas diferentes: uma tira as
+            bordas do navegador, a outra tira os controles. */}
+        <button class="btn-fant" id="gr-tv" aria-pressed="false"
+          title="Modo TV: só o tabuleiro e a ordem de combate (T)">▭</button>
         <button class="btn-fant" id="gr-cheia" title="Tela cheia (F)">⛶</button>
         <span class="gr-vivo" id="gr-vivo" hidden><span class="pt"></span><span id="gr-vivo-n"></span></span>
         <button class="btn mini" id="gr-recarregar" title="Buscar as posições mais recentes">↻</button>
@@ -245,6 +257,45 @@ const SETAS = [
       <div class="dlg-btns">
         <button type="button" class="btn" id="al-nao">Errou</button>
         <button type="button" class="btn primary" id="al-sim">Acertou · aplicar</button>
+      </div>
+    </form>
+  </dialog>
+
+  {/* A AÇÃO "OUTRA COISA": a válvula do improviso.
+       O que o Grid não abarca não pode custar mais caro do que o que ele
+       abarca, senão o mestre mente para o tabuleiro em vez de usá-lo. Derrubar
+       a estante, arrombar a porta, acalmar o cavalo: escolhe quem, escreve o
+       que é, e o resto (o tempo, a rolagem, o registro) sai daqui. */}
+  <dialog id="outra-dlg" class="mesa-dlg dlg-larga">
+    <form method="dialog">
+      <h3 id="ou-titulo">Outra coisa</h3>
+      <p class="muted dlg-txt">O que a regra não previu. O tempo é cobrado igual, e o
+        que você escrever aqui é o que a mesa vai ler no registro.</p>
+      <label class="al-man ou-frase">O que faz
+        <input type="text" id="ou-oque" placeholder="derruba a estante em cima do goblin" />
+      </label>
+      <div class="al-sec">
+        <span class="al-sec-h">Custa</span>
+        <input type="number" id="ou-ticks" min="0" max="60" value="5" />
+        <span class="al-rot">Ticks</span>
+        <select id="ou-quando">
+          <option value="agora">resolve agora</option>
+          <option value="fim">resolve no fim · telegrafa</option>
+        </select>
+      </div>
+      <div id="ou-tempo" class="al-tempo"></div>
+      <div class="al-sec">
+        <span class="al-sec-h">Rolagem</span>
+        <input type="text" id="ou-pool" class="al-motivo" placeholder="4d6 +2 · opcional" />
+        <button type="button" class="btn mini al-rola" id="ou-rolar">rolar</button>
+        <input type="number" id="ou-total" placeholder="total" />
+        <span class="al-rot">contra</span>
+        <input type="number" id="ou-dif" placeholder="dif" />
+        <span class="al-vered" id="ou-vered"></span>
+      </div>
+      <div class="dlg-btns">
+        <button type="button" class="btn" id="ou-cancelar">Cancelar</button>
+        <button type="button" class="btn primary" id="ou-ok">Fazer</button>
       </div>
     </form>
   </dialog>
@@ -464,6 +515,32 @@ const SETAS = [
      respirar. A classe entra pelo JS desta página, então nenhuma outra é
      afetada e nenhum arquivo compartilhado precisa mudar. */
   body.pagina-grid main#conteudo { padding-bottom: 0; }
+
+  /* ---- o modo TV ----
+     A tela que os jogadores olham não devia mostrar o painel de quem mestra:
+     some a barra da mesa (nome, abas), a barra da arena e a coluna lateral (Em
+     campo, Registro), e o que fica é o que a mesa inteira precisa ver, que é o
+     tabuleiro e a ordem de combate.
+     Não é tela cheia, e por isso é outro botão: tela cheia tira as bordas do
+     navegador, o modo TV tira os controles. Quem projeta quer os dois, e quem
+     joga no notebook às vezes quer só um. */
+  body.grid-tv .mesa-barra,
+  body.grid-tv .gr-barra,
+  body.grid-tv .gr-lado { display: none; }
+  /* O campo do custo some junto: campo de digitar numa TV lê como coisa
+     quebrada. O "próximo" fica, porque ele carrega o número no próprio rótulo
+     e porque continua sendo o gesto que o mestre faz por cima do ombro. */
+  body.grid-tv .ini-custo { display: none; }
+  body.grid-tv .gr-grade,
+  body.grid-tv .gr-grade.sem-linha { grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    grid-template-areas: "ini" "palco" "linha"; }
+  .gr-tv-sai { position: fixed; z-index: 240; right: .6rem; top: .5rem; display: none;
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    border: 1px solid var(--rule); border-radius: var(--r-md);
+    padding: .15rem .5rem; font-size: var(--fs-micro); opacity: .35; }
+  body.grid-tv .gr-tv-sai { display: block; }
+  .gr-tv-sai:hover { opacity: 1; }
 
   /* ---- duas colunas, duas fileiras ----
      A ESQUERDA É A CENA e a direita é o aparelho: em cima da cena, a ordem de
@@ -1034,6 +1111,12 @@ const SETAS = [
      encolhe, então ganha a sobra da fileira em vez de largura fixa. */
   .al-pool { flex: 1 1 6rem; min-width: 0; font-size: var(--fs-micro); color: var(--ink-soft);
     font-variant-numeric: tabular-nums; }
+  /* A frase do improviso é o campo mais importante da caixa, e herdava a
+     largura de 3,4rem do contador de golpes da manobra. */
+  .ou-frase input { flex: 1 1 auto; width: auto; min-width: 0; }
+  /* Palavra solta no meio da fileira ("Ticks", "contra"): não é o bolo de
+     dados, então não fica com a sobra da linha. */
+  .al-rot { flex: 0 0 auto; font-size: var(--fs-micro); color: var(--ink-soft); }
   .al-vered { flex: 1 1 100%; font-size: var(--fs-micro); }
   .al-vered .ok { color: var(--accent-texto); font-weight: 700; }
   .al-vered .ruim { color: #cf3327; }
@@ -1239,7 +1322,7 @@ const SETAS = [
   } from '../../lib/mesa-tempo-ui';
   import {
     combateDaMesa, COMBATE_PADRAO, faseEm, acaoVazia, temGesto, resumoDaAcao,
-    anatomia, declarar, defesaPerdida, classeDeTempo, velocidadeDaArma, tetoDaRajada,
+    anatomia, anatomiaLivre, declarar, defesaPerdida, classeDeTempo, velocidadeDaArma, tetoDaRajada,
     rolaNoSite, ticksDeDeslocamento, armaDoCatalogo,
     FASE_ROTULO, type CombateMesa, type Manobra,
   } from '../../lib/combate-tempo';
@@ -3899,19 +3982,8 @@ const SETAS = [
     // dois separados deixaria a fita dizendo "livre no 9" numa peça que só age
     // no 15.
     const nova = { ...(acao || {}), livre: novoTick };
-    if (MESTRE) {
-      const { error } = await SB.from('combatentes')
-        .update({ tick: novoTick, acao: nova }).eq('id', c.id);
-      if (error) return avisarSemTempo(error);
-    } else {
-      const { error } = await SB.rpc('jogador_declara',
-        { p_comb: c.id, p_tick: novoTick, p_acao: nova, p_alvo: null, p_golpes: 0 });
-      if (error) return avisarSemTempo(error);
-    }
-    c.tick = novoTick; c.acao = nova;
+    if (!await gravarRelogio(c, novoTick, nova)) return;
     flutuar(c.id, `+${custo} ⏱`, 'tempo');
-    pintarIniciativa(); pintarTokens();
-    avisarAgora('combatentes');
     await logar(c, `${c.nome} andou ${fmtM(metros)} na Recuperação: +${custo} Ticks (livre no ${novoTick})`,
       { acao: null });
   }
@@ -4027,6 +4099,11 @@ const SETAS = [
     }, true);
     document.addEventListener('keydown', (ev) => {
       if (ev.key !== 'Escape') return;
+      // O Esc sai do modo TV, mas SÓ quando não há mais nada para cancelar:
+      // fechar o menu da peça e sair do modo no mesmo toque seria duas coisas
+      // num gesto, e a segunda delas surpresa.
+      const menuAberto = !(el('tok-menu') as HTMLElement).hidden;
+      if (TV && !MIRA && !AJUSTANDO && !menuAberto && !document.querySelector('dialog[open]')) modoTV(false);
       fecharMenu(); cancelarMira();
       // O Esc do ajuste passa por AQUI antes de chegar ao diálogo, e fechar na
       // mão dispara `close` sem disparar `cancel`. Sem desfazer explicitamente,
@@ -4061,6 +4138,10 @@ const SETAS = [
       item('dano', '✖ Tirar Vida'),
       temMana(c) && meu ? item('mana', '✦ Mana') : '',
       meu ? item('arte', '✶ Arte') : '',
+      // A válvula do improviso fica ao lado das ações comuns, e não escondida
+      // com o que mexe no relógio: ela É uma ação comum, só que a régua não a
+      // previu. Tecla O faz o mesmo pela peça da vez.
+      meu ? item('outra', '✎ Outra coisa') : '',
       sep,
       item('alcance', ALCANCE?.cid === cid ? '◎ Apagar o alcance' : '◎ Mostrar alcance'),
       MESTRE ? sep : '',
@@ -4096,6 +4177,7 @@ const SETAS = [
       else if (a === 'dano') tirarVida(cid);
       else if (a === 'mana') ajustarMana(cid);
       else if (a === 'arte') usarArte(cid);
+      else if (a === 'outra') abrirOutra(cid);
       else if (a === 'alcance') alternarAlcance(cid);
       else if (a === 'abortar') abortarGesto(cid);
       else if (a === 'encerrar') encerrarVez(cid);
@@ -4756,28 +4838,49 @@ const SETAS = [
       arma: RESUMO[atacante.id]?.arma || null,
       alvo: alvo?.id || null,
     });
-    const novoTick = acao.livre;
+    await gravarRelogio(atacante, acao.livre, acao, alvo, an.golpes);
+  }
+
+  /**
+   * O relógio e a agenda de uma peça, escritos do jeito de quem está pedindo.
+   *
+   * Três coisas empurram o relógio agora (o ataque, o deslocamento pago e a ação
+   * "outra coisa"), e as três escreviam a mesma sequência à mão. Uma delas
+   * esquecer a Pressão, o aviso de migração ou a repintura seria um bug que só
+   * aparece na mesa, num caminho e não no outro.
+   *
+   * Quem escreve depende de quem está jogando. O mestre vai direto na tabela; o
+   * jogador passa por `jogador_declara` (migração 28), que confere que a peça é
+   * dele antes de deixar o relógio andar. Banco sem a 28: a ação continua
+   * valendo e o que não acontece é o relógio andar sozinho.
+   */
+  async function gravarRelogio(
+    c: any, novoTick: number, acao: any, alvo?: any, golpes = 0,
+  ): Promise<boolean> {
     if (MESTRE) {
       const { error } = await SB.from('combatentes')
-        .update({ tick: novoTick, acao }).eq('id', atacante.id);
-      if (error) return avisarSemTempo(error);
+        .update({ tick: novoTick, acao }).eq('id', c.id);
+      if (error) { avisarSemTempo(error); return false; }
       // A Pressão no alvo: soma na chave e preserva o resto, porque o alvo pode
       // estar no meio do próprio golpe e a agenda dele não é da conta de quem ataca.
-      const antes = alvo.acao && Object.keys(alvo.acao).length
-        ? alvo.acao : { golpes: [], livre: alvo.tick ?? 0 };
-      const nova = { ...antes, pressao: (antes.pressao || 0) + an.golpes };
-      await SB.from('combatentes').update({ acao: nova }).eq('id', alvo.id);
-      alvo.acao = nova;
+      if (alvo && golpes > 0) {
+        const antes = alvo.acao && Object.keys(alvo.acao).length
+          ? alvo.acao : { golpes: [], livre: alvo.tick ?? 0 };
+        const nova = { ...antes, pressao: (antes.pressao || 0) + golpes };
+        await SB.from('combatentes').update({ acao: nova }).eq('id', alvo.id);
+        alvo.acao = nova;
+      }
     } else {
       const { error } = await SB.rpc('jogador_declara', {
-        p_comb: atacante.id, p_tick: novoTick, p_acao: acao,
-        p_alvo: alvo?.id || null, p_golpes: an.golpes,
+        p_comb: c.id, p_tick: novoTick, p_acao: acao,
+        p_alvo: alvo?.id || null, p_golpes: golpes,
       });
-      if (error) return avisarSemTempo(error);
+      if (error) { avisarSemTempo(error); return false; }
     }
-    atacante.tick = novoTick; atacante.acao = acao;
+    c.tick = novoTick; c.acao = acao;
     pintarIniciativa(); pintarTokens();
     avisarAgora('combatentes');
+    return true;
   }
 
   /** Banco velho: diz o que falta, uma vez, sem travar o ataque. */
@@ -4789,6 +4892,124 @@ const SETAS = [
       ? 'O ataque não conseguiu empurrar o relógio: falta a migração 28 (supabase/migracao-28.sql).'
       + ' O dano continua funcionando; o Tick você empurra no ⏭.'
       : 'Erro ao declarar a ação: ' + error.message);
+  }
+
+  /**
+   * A AÇÃO "OUTRA COISA": a válvula do improviso.
+   *
+   * O contrato do `Grid_Automacao.md` diz que **o que o Grid não abarca não pode
+   * ficar mais caro do que o que ele abarca**. Até aqui era o contrário: um
+   * ataque custava um arrasto, e derrubar a estante custava abrir o menu, achar
+   * "Iniciativa e ticks", somar de cabeça e digitar o Tick novo. Quando o
+   * improviso é mais caro que o comum, o mestre para de contar o improviso ao
+   * tabuleiro, e o registro passa a mentir por omissão.
+   *
+   * O que a caixa faz, e é tudo o que ela faz:
+   *
+   *   · cobra o TEMPO, com a mesma régua do resto (a agenda nasce, a fita
+   *     desenha, a escada cobra a Defesa como cobraria de um ataque);
+   *   · rola, quando há o que rolar, com o bolo que a mesa digitar;
+   *   · escreve no registro a frase que quem está mestrando escolheu.
+   *
+   * O que ela NÃO faz: decidir se a coisa é possível, ou qual é a Dificuldade.
+   * Isso é do mestre, e a caixa não opina.
+   */
+  function abrirOutra(cid: string) {
+    const c = COMBS.find((x: any) => x.id === cid); if (!c) return;
+    if (!mandoNela(c)) return;
+    const dlg = el('outra-dlg') as HTMLDialogElement;
+    const oque = el('ou-oque') as HTMLInputElement;
+    const ticks = el('ou-ticks') as HTMLInputElement;
+    const quando = el('ou-quando') as HTMLSelectElement;
+    const pool = el('ou-pool') as HTMLInputElement;
+    const total = el('ou-total') as HTMLInputElement;
+    const dif = el('ou-dif') as HTMLInputElement;
+    (el('ou-titulo') as HTMLElement).textContent = `Outra coisa · ${c.nome}`;
+    oque.value = ''; pool.value = ''; total.value = ''; dif.value = '';
+    // O custo já vem do campo que a mesa vinha usando para isto na mão: é o
+    // mesmo número, agora no lugar certo.
+    ticks.value = String(custoAtual());
+    quando.value = 'agora';
+    // A escolha de telegrafar só existe onde telegrafar existe.
+    (quando as HTMLElement).style.display = TEMPO.sistema === 'pgr' ? '' : 'none';
+
+    const an = () => anatomiaLivre(
+      Math.max(0, parseInt(ticks.value || '0', 10) || 0),
+      quando.value as 'agora' | 'fim', TEMPO.sistema,
+    );
+    const pintarTempo = () => {
+      const custo = Math.max(0, parseInt(ticks.value || '0', 10) || 0);
+      const cx = el('ou-tempo') as HTMLElement;
+      // Zero Ticks é ação livre, e ação livre não cria gesto: dizer isso aqui
+      // evita a pergunta "por que a fita não apareceu?".
+      if (!custo) {
+        cx.innerHTML = '<div>Ação livre: <b>não gasta a vez</b> e não cria gesto para interromper.</div>';
+        return;
+      }
+      const a = an();
+      const t0 = c.tick ?? 0;
+      const linha = TEMPO.sistema === 'pgr'
+        ? `<b>Preparo ${a.preparo}</b> · <b>Golpe ${a.golpes}</b> · <b>Recuperação ${a.recuperacao}</b>`
+        : `Resolve agora · <b>${a.ciclo} Ticks</b>`;
+      cx.innerHTML = `<div>${linha} = <b>${a.ciclo}</b> Ticks</div>
+        <div class="muted">resolve no Tick ${t0 + a.offs[0]} · livre no ${t0 + a.ciclo}</div>`;
+    };
+    const pintarVered = () => {
+      const t = parseInt(total.value || '', 10);
+      const d = parseInt(dif.value || '', 10);
+      const cx = el('ou-vered') as HTMLElement;
+      if (!Number.isFinite(t) || !Number.isFinite(d)) { cx.innerHTML = ''; return; }
+      // A mesma regra do resto: `total > Dificuldade`, e empate não passa.
+      cx.innerHTML = t > d
+        ? `<span class="ok">passa (${t} &gt; ${d})</span>`
+        : `<span class="ruim">falha por ${d - t + 1}</span>`;
+    };
+    const rolar = () => {
+      if (!pool.value.trim()) return;
+      const r = rolarExpr(pool.value);
+      total.value = String(r.total);
+      (el('ou-vered') as HTMLElement).dataset.rolado = descreverRolada(r);
+      pintarVered();
+    };
+    ticks.oninput = pintarTempo; quando.onchange = pintarTempo;
+    total.oninput = pintarVered; dif.oninput = pintarVered;
+    (el('ou-rolar') as HTMLElement).onclick = rolar;
+    // O modo da mesa decide o que acontece sozinho: com os dados no site, sair
+    // do campo do bolo já rola. Com os dados na mesa, o botão espera.
+    pool.onchange = () => { if (rolaNoSite(TEMPO.rolagem, c.tipo === 'pc')) rolar(); };
+    (el('ou-vered') as HTMLElement).dataset.rolado = '';
+    pintarTempo(); pintarVered();
+
+    (el('ou-cancelar') as HTMLElement).onclick = () => dlg.close();
+    (el('ou-ok') as HTMLElement).onclick = async () => {
+      const txt = oque.value.trim();
+      // A FRASE É OBRIGATÓRIA, e não por burocracia: sem ela o registro guarda
+      // "alguém gastou 5 Ticks", que uma semana depois não é história nenhuma.
+      if (!txt) { oque.focus(); oque.placeholder = 'escreva o que aconteceu'; return; }
+      dlg.close();
+      const custo = Math.max(0, parseInt(ticks.value || '0', 10) || 0);
+      const a = an();
+      const t0 = c.tick ?? 0;
+      const rolado = (el('ou-vered') as HTMLElement).dataset.rolado || '';
+      const t = parseInt(total.value || '', 10);
+      const d = parseInt(dif.value || '', 10);
+      const conta = [
+        rolado || (Number.isFinite(t) ? `total ${t}` : ''),
+        Number.isFinite(t) && Number.isFinite(d) ? (t > d ? `passou (${t} > ${d})` : `falhou por ${d - t + 1}`) : '',
+      ].filter(Boolean).join(' · ');
+      // Custo zero é ação livre: não empurra o relógio e não cria gesto, então
+      // só o registro acontece. É a mesma regra da Arte de Velocidade 0.
+      if (custo > 0) {
+        const acao = declarar(t0, a, { tipo: 'simples' as Manobra, arma: null, alvo: null });
+        if (!await gravarRelogio(c, acao.livre, acao)) return;
+        flutuar(c.id, `+${custo} ⏱`, 'tempo');
+      }
+      await logar(c, `${c.nome}: ${txt}`
+        + (custo > 0 ? ` · ${custo} Tick${custo > 1 ? 's' : ''} (livre no ${t0 + a.ciclo})` : ' · ação livre')
+        + (conta ? ` · ${conta}` : ''), { acao: null });
+    };
+    dlg.showModal();
+    oque.focus();
   }
 
   /**
@@ -5616,6 +5837,7 @@ const SETAS = [
     dobraCaixa('ini-dobrar', 'gr-ini-col', 'fila-dobrada', DOBRA_INI_KEY,
       'Mostrar a fila de iniciativa', 'Recolher a fila e dar o espaço ao tabuleiro');
     ligarLinhaDoTempo();
+    ligarTV();
   }
 
   /**
@@ -5631,6 +5853,41 @@ const SETAS = [
    * pode querê-la, e o jogador no tablet quase certamente não.
    */
   let LINHA_LIGADA = false;
+  /**
+   * O MODO TV.
+   *
+   * Fica no aparelho, e não na mesa: quem tem a segunda tela é uma pessoa, e a
+   * escolha dela não deve virar a tela de todo mundo. Guardado no navegador, o
+   * mestre pluga o projetor uma vez e não refaz o gesto a cada sessão.
+   *
+   * `ajustarAltura` é chamada depois porque a barra da mesa some junto, e a
+   * grade tem de reclamar a altura que ela ocupava: sem isso, o tabuleiro
+   * ficaria com uma faixa morta do tamanho exato do que acabou de sumir.
+   */
+  const TV_KEY = 'centelha:grid:tv';
+  let TV = false;
+  function modoTV(liga: boolean) {
+    TV = liga;
+    document.body.classList.toggle('grid-tv', liga);
+    const btn = el('gr-tv');
+    btn?.setAttribute('aria-pressed', String(liga));
+    if (btn) btn.title = liga ? 'Sair do modo TV (T)' : 'Modo TV: só o tabuleiro e a ordem de combate (T)';
+    try { localStorage.setItem(TV_KEY, liga ? '1' : '0'); } catch {}
+    ajustarAltura();
+    // O tabuleiro ganhou (ou perdeu) a largura da coluna lateral: quem estava
+    // com o mapa enquadrado quer continuar com ele enquadrado. Depois do
+    // reflow, e só com arena na mão: isto roda uma vez na abertura, antes de a
+    // arena existir.
+    requestAnimationFrame(() => { ajustarAltura(); if (ARENA) pintarTokens(); });
+  }
+  function ligarTV() {
+    let guardado = false;
+    try { guardado = localStorage.getItem(TV_KEY) === '1'; } catch {}
+    el('gr-tv').onclick = () => modoTV(!TV);
+    el('gr-tv-sai').onclick = () => modoTV(false);
+    if (guardado) modoTV(true); else modoTV(false);
+  }
+
   function ligarLinhaDoTempo() {
     try { LINHA_LIGADA = localStorage.getItem(LINHA_KEY) === '1'; } catch {}
     const btn = el('gr-linha-btn');
@@ -5681,8 +5938,10 @@ const SETAS = [
      * mouse abriria, e por isso não há atalho para "aplicar dano" nem para
      * "acertou" — o que decide continua passando pela caixa.
      *
+     *   T       modo TV (esconde a mobília do mestre)
      *   Espaço  encerra a vez de quem age
      *   A       ataca com quem age (abre a mira)
+     *   O       "outra coisa" com quem age (a válvula do improviso)
      *   1..9    abre o menu da enésima peça da fila
      *   Z       desfaz a última coisa
      *   F       tela cheia · Esc cancela o que estiver no ar
@@ -5711,6 +5970,18 @@ const SETAS = [
         const v = daVez();
         if (!v || !mandoNela(v) || !TOKENS[v.id]) return;
         ev.preventDefault(); iniciarMira(v.id);
+        return;
+      }
+      if (ev.key === 't' || ev.key === 'T') {
+        if (MIRA) return;
+        ev.preventDefault(); modoTV(!TV);
+        return;
+      }
+      if (ev.key === 'o' || ev.key === 'O') {
+        if (MIRA) return;
+        const v = daVez();
+        if (!v || !mandoNela(v)) return;
+        ev.preventDefault(); abrirOutra(v.id);
         return;
       }
       if (/^[1-9]$/.test(ev.key)) {
