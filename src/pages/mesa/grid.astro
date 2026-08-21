@@ -1342,7 +1342,7 @@ const SETAS = [
     combateDaMesa, COMBATE_PADRAO, faseEm, acaoVazia, temGesto, resumoDaAcao,
     anatomia, anatomiaLivre, declarar, defesaPerdida, classeDeTempo, velocidadeDaArma, tetoDaRajada,
     rolaNoSite, ticksDeDeslocamento, armaDoCatalogo, ticksDeEntrada,
-    contrapeEm, contrapeDe, contrapeAcaba, faseDeQuemVaiAgir, preparoDe,
+    contrapeEm, contrapeDe, contrapeAcaba, faseDeQuemVaiAgir, preparoDe, ordemDaFila,
     FASE_ROTULO, type CombateMesa, type Manobra,
   } from '../../lib/combate-tempo';
 
@@ -2976,12 +2976,15 @@ const SETAS = [
     ?? MON[c.monstro_id]?.atributos?.raciocinio
     ?? -1;
 
-  const naFila = () => COMBS.filter((c: any) => TOKENS[c.id]).slice().sort((a: any, b: any) =>
-    ((a.tick ?? 0) - (b.tick ?? 0))
-    || ((b.iniciativa ?? 0) - (a.iniciativa ?? 0))
-    || (raciocinioDe(b) - raciocinioDe(a))
-    || String(TOKENS[a.id]?.em || '').localeCompare(String(TOKENS[b.id]?.em || ''))
-    || String(a.nome).localeCompare(String(b.nome)));
+  /** Como a peça entra no comparador da fila (`ordemDaFila`, no motor). */
+  const naOrdem = (c: any) => ({
+    tick: c.tick, iniciativa: c.iniciativa, raciocinio: raciocinioDe(c),
+    // O carimbo de quando a peça foi posta no mapa é só o critério de
+    // estabilidade: sem ele, dez peças zeradas dançariam a cada repintura.
+    chegada: TOKENS[c.id]?.em, nome: c.nome,
+  });
+  const naFila = () => COMBS.filter((c: any) => TOKENS[c.id]).slice()
+    .sort((a: any, b: any) => ordemDaFila(naOrdem(a), naOrdem(b)));
 
   /**
    * O tick em que a cena está: o menor entre quem ainda pode agir.
@@ -3430,7 +3433,7 @@ const SETAS = [
     const ordem = rolado.map((r, i) => ({ r, e: entradas[i] }))
       .sort((a, b) => b.r.v - a.r.v)
       .map(({ r, e }) => `${r.c.nome} ${r.v} (t${e.tick}${
-        e.penDados ? `, contrapé ${e.penDados}d6 até o tick ${e.tick + Math.abs(e.penDados)}` : ''})`)
+        e.penDados ? `, contrapé ${e.penDados}d6, limpo no tick ${e.tick + Math.abs(e.penDados)}` : ''})`)
       .join(' · ');
     await logar(null, `Iniciativa rolada: ${ordem}`, { acao: null });
     await verificarEfeitos(ctxArtes());

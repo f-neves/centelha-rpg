@@ -272,6 +272,41 @@ export function ticksDeEntrada(
 }
 
 /**
+ * A ORDEM DA FILA, num lugar só.
+ *
+ * As duas telas ordenavam a fila com o mesmo comparador escrito duas vezes, e
+ * as duas cópias tinham o mesmo defeito: pulavam o **Raciocínio**, que a regra
+ * manda usar para desempatar iniciativa igual, e caíam direto num critério de
+ * estabilidade (a hora em que a peça foi posta no mapa) que não é regra de
+ * coisa nenhuma.
+ *
+ * Os quatro degraus, nesta ordem:
+ *
+ *   1. o **Tick**, menor primeiro: é o relógio, e ele manda em tudo;
+ *   2. a **iniciativa**, maior primeiro, dentro do mesmo Tick;
+ *   3. o **Raciocínio**, maior primeiro, que é o desempate do capítulo;
+ *   4. e o que sobrar, só para a ordem não dançar a cada repintura.
+ *
+ * `raciocinio` ausente vale −1, e não zero: quem a mesa não conhece (o
+ * figurante de cena) fica atrás de quem tem o número, em vez de empatar com
+ * quem tem Raciocínio 0.
+ */
+export interface NaOrdem {
+  tick?: number | null;
+  iniciativa?: number | null;
+  raciocinio?: number | null;
+  /** O critério de estabilidade: um carimbo, um id, o que a tela tiver. */
+  chegada?: string | null;
+  nome?: string | null;
+}
+export const ordemDaFila = (a: NaOrdem, b: NaOrdem): number =>
+  ((a.tick ?? 0) - (b.tick ?? 0))
+  || ((b.iniciativa ?? 0) - (a.iniciativa ?? 0))
+  || ((b.raciocinio ?? -1) - (a.raciocinio ?? -1))
+  || String(a.chegada || '').localeCompare(String(b.chegada || ''))
+  || String(a.nome || '').localeCompare(String(b.nome || ''));
+
+/**
  * A FASE DE QUEM AINDA NÃO DECLAROU, MAS AGE NESTE INSTANTE.
  *
  * O problema que ela resolve: dois duelistas de adaga agem no mesmo Tick. O

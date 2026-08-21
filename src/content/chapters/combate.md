@@ -24,7 +24,7 @@ No osso, é só isso. O resto do capítulo são as camadas que dão profundidade
 
 ## A linha do tempo: Ticks, Velocidade e Iniciativa
 
-No início, cada um rola a **Iniciativa = 1d6 + Raciocínio + Prontidão** (de 2 a 18). Ela é rolada **uma vez só** e serve para uma coisa: dizer **em que Tick cada um entra na luta**. Depois disso quem manda é o relógio de cada um.
+No início, cada um rola a **Iniciativa = 1d6 + Raciocínio + Prontidão** (de 2 a 18 em quem tem ficha). Ela é rolada **uma vez só** e serve para uma coisa: dizer **em que Tick cada um entra na luta**. Depois disso quem manda é o relógio de cada um.
 
 <p class="formula">Quem tirar o maior entra sozinho no <strong>Tick 1</strong> · os demais entram <strong>um Tick depois por degrau de 6 pontos</strong> de atraso, arredondando para cima</p>
 

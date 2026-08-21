@@ -726,7 +726,7 @@
         "raciocinio",
         "prontidao"
       ],
-      "nota": "Role 1d6 + Raciocínio + Prontidão, de 2 a 18. Quem tirar o MAIOR entra sozinho no Tick 1; os demais entram um Tick depois por degrau de atraso: Tick = tickDoPrimeiro + arredonda-para-cima(atraso ÷ gapPorPenalidade). Cada degrau também custa 1d6 na ação (o contrapé), e essa penalidade DECAI 1d6 por Tick que passa: quem entrou no Tick 3 com −2d6 age no 3 por −2d6, no 4 por −1d6 ou no 5 inteiro. A iniciativa não é rolada de novo: depois da entrada, quem manda é o Tick de cada um.",
+      "nota": "Role 1d6 + Raciocínio + Prontidão. Em quem tem ficha o resultado vai de 2 a 18; um bicho de Raciocínio e Prontidão zerados pode tirar 1. Quem tirar o MAIOR entra sozinho no Tick 1; os demais entram um Tick depois por degrau de atraso: Tick = tickDoPrimeiro + arredonda-para-cima(atraso ÷ gapPorPenalidade). Cada degrau também custa 1d6 na ação (o contrapé), e essa penalidade DECAI 1d6 por Tick que passa: quem entrou no Tick 3 com −2d6 age no 3 por −2d6, no 4 por −1d6 ou no 5 inteiro. A iniciativa não é rolada de novo: depois da entrada, quem manda é o Tick de cada um.",
       "tickDoPrimeiro": 1,
       "gapPorPenalidade": 6,
       "contrapeDadosPorDegrau": -1,

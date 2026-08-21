@@ -268,6 +268,40 @@ eq([T.rolaNoSite('misto', false), T.rolaNoSite('misto', true)], [true, false],
   eq(T.ticksDeEntrada([18, 2]).map((x) => x.tick), [1, 4], 'o pior atraso possivel para no Tick 4');
 }
 
+// A ORDEM DA FILA, com o desempate por Raciocinio que a regra manda fazer.
+// O que isto guarda: as duas telas escreviam o mesmo comparador, e as duas
+// pulavam o Raciocinio, caindo direto num criterio de estabilidade (a hora em
+// que a peca entrou no mapa) que nao e regra de coisa nenhuma.
+{
+  const fila = (xs) => xs.slice().sort(T.ordemDaFila).map((x) => x.nome);
+  eq(fila([
+    { nome: 'tarde', tick: 5, iniciativa: 20 },
+    { nome: 'cedo', tick: 2, iniciativa: 3 },
+  ]), ['cedo', 'tarde'], 'o Tick manda em tudo: iniciativa alta nao adianta a vez');
+  eq(fila([
+    { nome: 'baixa', tick: 2, iniciativa: 8 },
+    { nome: 'alta', tick: 2, iniciativa: 15 },
+  ]), ['alta', 'baixa'], 'dentro do Tick, a maior iniciativa age primeiro');
+  // O caso que ninguem cobria: iniciativa IGUAL, e o Raciocinio decide. A
+  // ordem de chegada e a INVERSA de proposito, para provar que foi o
+  // Raciocinio que mandou, e nao o criterio de reserva.
+  eq(fila([
+    { nome: 'lerdo', tick: 2, iniciativa: 12, raciocinio: 2, chegada: 'a' },
+    { nome: 'esperto', tick: 2, iniciativa: 12, raciocinio: 5, chegada: 'b' },
+  ]), ['esperto', 'lerdo'], 'iniciativa igual: o maior Raciocinio age primeiro');
+  // E sem Raciocinio nenhum, o criterio de reserva volta a valer.
+  eq(fila([
+    { nome: 'depois', tick: 2, iniciativa: 12, chegada: 'b' },
+    { nome: 'antes', tick: 2, iniciativa: 12, chegada: 'a' },
+  ]), ['antes', 'depois'], 'sem Raciocinio, decide a ordem de chegada');
+  // Quem a mesa nao conhece fica ATRAS de quem tem o numero, e nao empata com
+  // Raciocinio 0: o figurante de cena nao ganha a vez por omissao.
+  eq(fila([
+    { nome: 'figurante', tick: 2, iniciativa: 12, chegada: 'a' },
+    { nome: 'com ficha', tick: 2, iniciativa: 12, raciocinio: 0, chegada: 'b' },
+  ]), ['com ficha', 'figurante'], 'Raciocinio ausente perde para Raciocinio zero');
+}
+
 // GOLPES NO MESMO INSTANTE: os dois estao abertos, e nao so quem declarou
 // primeiro. Sem isto, num duelo de adagas quem o mestre resolve por ultimo
 // vence 97% das vezes.

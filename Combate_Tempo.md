@@ -1735,9 +1735,19 @@ coisa nenhuma. Os dois lados têm o número (o PC na ficha, a criatura em `atrib
 bloco), e agora ele entra no ordenamento das duas telas, entre a iniciativa e o critério de
 estabilidade.
 
-**A que ficou:** a nota do `regras.json` diz que a iniciativa vai "de 2 a 18", e a fórmula admite 1
-(1d6 com Raciocínio e Prontidão zerados, que é o caso de um bicho embotado). Não vale mexer na régua
-por causa disso; fica anotado que a faixa escrita é a de quem tem ficha.
+**A quarta, e mais uma que apareceu ao consertar as outras.** A nota do `regras.json` dizia que a
+iniciativa vai "de 2 a 18", e a fórmula admite 1 (1d6 com Raciocínio e Prontidão zerados, que é o
+caso de um bicho embotado): a nota e o capítulo passaram a dizer "de 2 a 18 **em quem tem ficha**".
+E o registro da rolagem escrevia "contrapé −1d6 **até** o tick 3" quando no Tick 3 ele já está
+zerado; agora diz "**limpo no** tick 3", que é o instante que a mesa precisa saber.
+
+**O comparador da fila virou peça do motor.** As duas telas ordenavam a fila com o mesmo comparador
+escrito duas vezes, e foi por isso que o desempate por Raciocínio faltava nas duas. Agora é
+`ordemDaFila`, em `combate-tempo.ts`, com os quatro degraus na ordem (Tick, iniciativa, Raciocínio,
+estabilidade) e travado no teste do motor, inclusive o caso que ninguém cobria: iniciativa igual com
+a ordem de chegada **invertida**, para provar que quem mandou foi o Raciocínio e não o critério de
+reserva. Raciocínio ausente vale −1 e não zero, para o figurante de cena não ganhar a vez por
+omissão.
 
 ## Apêndice: como rodar
 
