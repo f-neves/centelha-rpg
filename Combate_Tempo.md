@@ -1430,6 +1430,46 @@ estrita que a irmã de propósito: exige ser **dono** da peça que age, porque o
 coisa que mais decide a luta. Sobre o alvo a regra volta a ser a da mesa, e só a chave `pressao` é
 tocada, por soma.
 
+### 15.6. E a Arte também (21/08/2026)
+
+Mesma emenda, do outro lado do tabuleiro. Conjurar gravava o efeito com
+`desde_tick` = agora: a bola de fogo caía no instante do clique, o relógio da conjuradora não
+andava, e a montagem que a §5.3 do Arcano descreve, e que é o exemplo mais antigo de gesto
+telegrafado no sistema, não existia em lugar nenhum.
+
+**A anatomia da Arte é própria, e já estava escrita:** ela resolve no **último** Tick da montagem,
+e não no primeiro. Então o Preparo é o ciclo menos um, o Golpe é o último Tick e não há
+Recuperação. É a mesma forma da arma de distância, e pelo mesmo motivo: o que custa é armar, não
+recompor.
+
+**A Velocidade vem da caixa**, não de uma régua nova. O assistente de conjuração já tinha o campo
+editável (padrão 6, zero para o Efeito de ação livre), com o comentário de que `regras.json` tem
+uma régua própria "que nem sempre é a que a mesa quer usar". Ligar a Arte à régua é usar esse
+número, e não passar por cima dele. Zero continua sendo zero: **ação livre não gasta a vez e não
+cria gesto para interromper**, que é o que ela é.
+
+**O efeito nasce no Tick do Golpe.** Com Velocidade 6, quem conjura no Tick 3 vê a Aura nascer no
+8, e a duração conta a partir dali. Enquanto o relógio não a alcança, `montando()` diz que ela
+ainda está na mão de quem conjura: **não queima ninguém e não é obstáculo**. Cobrar a mordida antes
+da hora daria de graça os Ticks que a regra existe para cobrar.
+
+**E aqui a assimetria da §14.7.1 vale igual:** a mancha em montagem é desenhada **só para o
+mestre**, apagada e tracejada. O grupo vê que a feiticeira está montando alguma coisa, porque a
+fita dela diz isso; onde a coisa vai cair é informação que se compra prestando atenção na mesa. O
+painel lateral troca o número da direita enquanto isso: em vez do que falta para acabar, o que
+falta para **cair**.
+
+*(A Mana já era descontada desde antes, no `finally` do `conjurar`. O que faltava era o tempo, e
+ele passou a sair pelo mesmo lugar, pelo mesmo motivo: o módulo sabe quanto custou, a aba sabe
+quem pode escrever.)*
+
+**O que a Arte ainda não faz:** somar Guarda sob pressão em quem ela pega. Para a Arte de área a
+§5.4 diz que não há Esquiva a opor, e se a Pressão cabe aí é decisão de regra, não de código; para
+a Arte **mirada**, que rola Percepção + Acerto Arcano, ela deveria caber, e o assistente ainda não
+separa uma da outra.
+
+---
+
 A segunda foi um achado: **o Grid só digeria fichas para o mestre.** O bloco inteiro de `RESUMO`,
 `PERFIL` e `FICHAS` vivia dentro de um `if (MESTRE)`, e do lado do jogador nem a peça dele tinha
 bloco de combate. Dava para viver com isso enquanto o tabuleiro só desenhava; com a régua saindo

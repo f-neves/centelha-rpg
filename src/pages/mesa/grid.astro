@@ -906,6 +906,11 @@ const SETAS = [
   @keyframes vez-pulsa { 50% { opacity: .82; } }
   @media (prefers-reduced-motion: reduce) { .gr-token.vez .tok-quadro { animation: none; } }
 
+  /* A Arte que ainda esta sendo montada: so o mestre a ve, e ela vem apagada e
+     tracejada, para nao se confundir com a que ja caiu no chao. O grupo ve o
+     gesto na fita do conjurador, e nao a figura. */
+  .gr-ef-montando { stroke-dasharray: 6 5; }
+
   /* ---- o gesto no ar: Preparo e Golpe ----
      Vem ANTES da mira e DEPOIS da vez, e a ordem é a mesma lógica: quem está
      prestes a levar o golpe importa mais do que quem está prestes a dá-lo.
@@ -1292,6 +1297,9 @@ const SETAS = [
     // sabe o que é reserva; a aba é dona do banco, da barra e da regra de não
     // ficar devendo.
     gastarMana,
+    // O tempo sai do mesmo lugar que a Mana, e pela mesma razão: o módulo sabe
+    // quanto custou, a aba sabe quem está jogando e quem pode escrever.
+    declararTempo,
     // A moldura dos rótulos empurra o tabuleiro: quem desenha a grade é quem
     // sabe onde ela começa, então as camadas das Artes pedem em vez de calcular.
     margem, medida,
@@ -4850,6 +4858,47 @@ const SETAS = [
    * não sabe o que é uma reserva. Vai a zero e para: a regra de ficar devendo
    * Mana é da mesa, e inventá-la em silêncio seria pior que travar.
    */
+  /**
+   * A conjuração entra na linha do tempo.
+   *
+   * A ANATOMIA DA ARTE É PRÓPRIA: ela resolve no ÚLTIMO Tick da montagem, e não
+   * no primeiro. Então o ciclo inteiro é Preparo menos um, o Golpe é o último
+   * Tick, e não há Recuperação — a mesma forma que a arma de distância tem, e
+   * pelo mesmo motivo: o que custa é armar, não recompor.
+   *
+   * A Velocidade vem da caixa de conjuração (`plano.velocidadeTicks`), que a
+   * mesa negocia, e não de uma régua nova. Zero é ação livre: não há gesto para
+   * mostrar nem relógio para mexer.
+   *
+   * A guarda do "desistiu no meio" é a mesma da Mana, e pela mesma razão: o
+   * assistente pode ser abandonado depois de escolher tudo, e o que separa uma
+   * conjuração feita de uma abandonada é a linha no registro.
+   */
+  async function declararTempo(cid: string, ticks: number) {
+    if (MARCO_LOG >= 0 && LOG.length <= MARCO_LOG) return;
+    if (!(ticks > 0)) return;                     // ação livre: não gasta a vez
+    const c = COMBS.find((x: any) => x.id === cid);
+    if (!c) return;
+    const t0 = c.tick ?? 0;
+    const acao = declarar(t0, {
+      preparo: ticks - 1, golpes: 1, recuperacao: 0, ciclo: ticks,
+      offs: [ticks - 1], penDados: [0],
+    }, { tipo: 'simples' as Manobra, arma: 'Arte', alvo: null });
+    if (MESTRE) {
+      const { error } = await SB.from('combatentes')
+        .update({ tick: acao.livre, acao }).eq('id', cid);
+      if (error) return avisarSemTempo(error);
+    } else {
+      const { error } = await SB.rpc('jogador_declara', {
+        p_comb: cid, p_tick: acao.livre, p_acao: acao, p_alvo: null, p_golpes: 0,
+      });
+      if (error) return avisarSemTempo(error);
+    }
+    c.tick = acao.livre; c.acao = acao;
+    pintarIniciativa(); pintarTokens();
+    avisarAgora('combatentes');
+  }
+
   async function gastarMana(cid: string, quanto: number) {
     // Desistir de posicionar a Arte não paga. O assistente avisa o custo ao sair
     // (inclusive quando a pessoa desistiu no meio), e o que separa uma

@@ -13,7 +13,7 @@ import {
   raioEmMetros, danoNoAlvo, rolar,
   turnosRestantes, venceu, jaMordido, rodadaDoTick, dentroDoEfeito,
   metrosParaSair, metrosParaSairDosHexes, desvioDaArea, desEsqDaDefesa,
-  rotuloDuracao, TICKS_POR_TURNO, LARGURA_LINHA,
+  rotuloDuracao, TICKS_POR_TURNO, LARGURA_LINHA, montando,
   type EfeitoAtivo, type Forma, type Figura, type Encaixe, type Desvio,
 } from './artes-grid';
 import { pool } from './calc';
@@ -85,6 +85,18 @@ export interface CtxGrid {
    * mora na linha do combatente, e quem escreve nela é a aba.
    */
   gastarMana?: (cid: string, quanto: number) => Promise<void>;
+  /**
+   * Os Ticks que a conjuração custou, e a agenda que ela cria.
+   *
+   * Mesmo desenho do `gastarMana`: aqui só se avisa o número, e quem escreve na
+   * linha do combatente é a aba, que sabe se quem está jogando é o mestre (vai
+   * direto na tabela) ou o jogador (passa pela `jogador_declara`).
+   *
+   * `ticks` é a Velocidade da conjuração, a mesma que a caixa mostra e a mesa
+   * pode discordar. Zero quer dizer ação livre: não há gesto nem relógio a
+   * mexer, e a aba não faz nada.
+   */
+  declararTempo?: (cid: string, ticks: number) => Promise<void>;
 }
 
 let ATIVOS: EfeitoAtivo[] = [];
@@ -178,16 +190,23 @@ export function pintarEfeitos(ctx: CtxGrid, svg: SVGElement): void {
   ajustarQuadro(ctx, svg);
   ajustarQuadro(ctx, document.getElementById('gr-previa') as unknown as SVGElement | null);
   const t = tickAtual(ctx);
-  const vivos = ATIVOS.filter((e) => !venceu(e, t));
+  // O QUE AINDA ESTÁ SENDO MONTADO É SÓ DO MESTRE, E SAI APAGADO.
+  //
+  // É a assimetria da §14.7.1 aplicada às Artes: o grupo vê QUE alguém está
+  // montando alguma coisa (a fita do conjurador diz isso), e o mestre vê O QUÊ
+  // e ONDE. Desenhar a bola de fogo inteira para todos entregaria de graça a
+  // informação que se compra prestando atenção na mesa.
+  const vivos = ATIVOS.filter((e) => !venceu(e, t) && (ctx.mestre || !montando(e, t)));
   // Os <defs> saem UMA vez, e só dos elementos presentes: dez fogueiras dividem
   // o mesmo gradiente e o mesmo filtro.
   const defs = FX.ligado ? defsHTML(vivos.map((e) => e.elemento || '')) : '';
   svg.innerHTML = defs + vivos.map((ef) => {
     const restam = turnosRestantes(ef, t);
     const vel = Math.max(0.25, FX.velocidade / 100);
+    const emMontagem = montando(ef, t);
     return `<g class="gr-ef gr-ef-${esc(ef.forma)}${
-      FX.ligado && ehElemental(ef.elemento) ? ' com-fx' : ''}" data-ef="${esc(ef.id)}"
-      style="--ef-cor:${corDe(ef)};--fx-v:${vel}" opacity="${restam <= 1 ? 0.55 : 1}">
+      FX.ligado && ehElemental(ef.elemento) ? ' com-fx' : ''}${emMontagem ? ' gr-ef-montando' : ''}" data-ef="${esc(ef.id)}"
+      style="--ef-cor:${corDe(ef)};--fx-v:${vel}" opacity="${emMontagem ? 0.3 : restam <= 1 ? 0.55 : 1}">
       <title>${esc(ef.nome)} · ${esc(rotuloDuracao(restam))}</title>${tracoDe(ctx, ef)}</g>`;
   }).join('');
 }
@@ -377,6 +396,10 @@ export function pintarPainelEfeitos(ctx: CtxGrid, box: HTMLElement): void {
   box.hidden = false;
   box.innerHTML = vivos.map((ef) => {
     const restam = turnosRestantes(ef, t);
+    // Ainda na mão de quem conjura: o número da direita passa a ser o que falta
+    // para ela CAIR, e não o que falta para acabar. Sem isso a Aura que sai no
+    // Tick 8 aparecia com a duração inteira já correndo.
+    const falta = montando(ef, t) ? (ef.desde_tick ?? 0) - t : 0;
     const dentro = ef.forma === 'alvo' || ef.forma === 'token'
       ? (ef.alvos || []) : dentroDoEfeito(vigente(ctx, ef), ctx.tokens, escalaM(ctx));
     const quem = dentro.map((id) => combDe(ctx, id)?.nome).filter(Boolean);
@@ -390,10 +413,12 @@ export function pintarPainelEfeitos(ctx: CtxGrid, box: HTMLElement): void {
           ef.dano_bonus ? `+${ef.dano_bonus}` : '',
           cond ? `${cond.icone} ${cond.nome}` : '',
           ef.item ? esc(ef.item) : '',
+          falta ? `montando · cai em ${falta} Tick${falta > 1 ? 's' : ''}` : '',
           quem.length ? `em ${quem.map(esc).join(', ')}` : '',
         ].filter(Boolean).join(' · ')}</small>
       </span>
-      <span class="gr-efl-t" title="turnos restantes">${restam > 99 ? '∞' : restam}</span>
+      <span class="gr-efl-t" title="${falta ? 'Ticks até a Arte cair' : 'turnos restantes'}">${
+        falta ? `+${falta}` : restam > 99 ? '∞' : restam}</span>
       ${ctx.mestre ? `<button class="btn-fant gr-efl-x" data-fim="${esc(ef.id)}"
         title="Desfazer este efeito agora">✕</button>` : ''}
     </div>`;
@@ -710,7 +735,11 @@ export async function conjurar(ctx: CtxGrid, cid: string, palco: HTMLElement): P
     if (forma === 'alvo') return await grudarNoAlvo(ctx, c, plano, palco);
     await marcarNoChao(ctx, c, plano, palco, forma);
   } finally {
+    // A Mana e o TEMPO saem juntos, e no `finally` pelo mesmo motivo: os cinco
+    // caminhos acima (chão, token, movimento, cadeia, alvo) terminam em lugares
+    // diferentes, e a conjuração custou o mesmo em todos.
     await ctx.gastarMana?.(c.id, plano.custo.mana);
+    await ctx.declararTempo?.(c.id, plano.velocidadeTicks ?? 0);
   }
 }
 
@@ -879,7 +908,9 @@ async function dissipar(ctx: CtxGrid, c: any, plano: Plano): Promise<void> {
       valor: alcanca ? e.id : `__alto:${e.id}`,
       rotulo: e.nome,
       nota: alcanca
-        ? `nível ${e.nivel} · ${rotuloDuracao(turnosRestantes(e, t))} restantes`
+        ? `nível ${e.nivel} · ${montando(e, t)
+            ? `ainda sendo montada, cai em ${(e.desde_tick ?? 0) - t} Tick(s)`
+            : `${rotuloDuracao(turnosRestantes(e, t))} restantes`}`
         : `nível ${e.nivel} · acima dos ${meu} pontos investidos`,
       grupo: alcanca ? 'Ao seu alcance' : 'Forte demais',
     };
@@ -1062,7 +1093,12 @@ async function gravarEfeito(ctx: CtxGrid, c: any, plano: Plano, extra: {
   item?: string | null; turnos?: number;
 }): Promise<void> {
   const g = plano.efeito?.grid;
-  const t = tickAtual(ctx);
+  const agora = tickAtual(ctx);
+  // A ARTE SAI NO ÚLTIMO TICK DA MONTAGEM (§5.3 do Arcano), e não no primeiro
+  // como a ação comum. Com Velocidade 6, quem conjura no Tick 3 vê o efeito
+  // nascer no 8: cinco Ticks de gesto à vista, e é essa janela que dá o que
+  // interromper. Ação livre (Velocidade 0) sai agora, que é o que ela é.
+  const t = agora + Math.max(0, (plano.velocidadeTicks ?? 0) - 1);
   const turnos = extra.turnos ?? plano.turnos;
   const fig = extra.figura || null;
   // A lista de casas continua sendo gravada, mas como CONSEQUÊNCIA da figura, e
@@ -1423,6 +1459,10 @@ export async function verificarEfeitos(ctx: CtxGrid, palco?: HTMLElement): Promi
   const pendentes: { ef: EfeitoAtivo; alvo: any }[] = [];
   for (const ef of ATIVOS) {
     if (!ef.dano_dados && !ef.condicao) continue;
+    // Ainda na mão do conjurador: não queima ninguém. O muro de fogo que sai no
+    // Tick 8 não é obstáculo no 5, e cobrar a mordida antes da hora seria dar de
+    // graça os Ticks de montagem que a regra existe para cobrar.
+    if (montando(ef, t)) continue;
     if (ef.gatilho === 'armadilha' || ef.gatilho === 'passivo' || ef.gatilho === 'ao-tocar') continue;
     const dentro = ef.forma === 'alvo' || ef.forma === 'token'
       ? (ef.alvos || []) : dentroDoEfeito(vigente(ctx, ef), ctx.tokens, escalaM(ctx));

@@ -781,10 +781,15 @@ revistos por ela.
   `combate-tempo.ts`; falta o gesto na tela, e o mestre resolve na mão empurrando o Tick. As duas,
   mais o abortar do lado do jogador, pedem outra função `jogador_*`: hoje só o ataque tem a dele.
 
-  **A Arte continua fora da régua.** Conjurar grava o efeito com `desde_tick` = agora, então ele
-  cai na hora em vez de sair no último Tick da montagem, que é a §5.3 do Arcano e o motivo de a
-  Arte ter Preparo 2 + nível. Também não gasta o Tick da conjuradora nem a Mana. É a próxima peça
-  óbvia depois do ataque, e mora em `artes-grid-mesa.ts` (`gravarEfeito`).
+  **A Arte entrou em 21/08** (§15.6). Conjurar declara a ação com a anatomia própria da Arte
+  (Preparo = ciclo − 1, Golpe no ÚLTIMO Tick, Recuperação 0), empurra o relógio pela Velocidade
+  que a caixa mostra, e o efeito passa a **nascer no Tick do Golpe**: enquanto o relógio não o
+  alcança ele não queima ninguém e não é obstáculo, e a mancha aparece tracejada **só para o
+  mestre**. Ação livre (Velocidade 0) segue sem gastar a vez. A Mana já era descontada antes.
+
+  Falta à Arte somar **Guarda sob pressão** em quem ela pega: para a área a §5.4 diz que não há
+  Esquiva a opor (se a Pressão cabe é decisão de regra), e para a Arte **mirada** deveria caber,
+  mas o assistente ainda não separa uma da outra.
 
 ## H. Arremesso
 

@@ -1391,6 +1391,20 @@ export const turnosRestantes = (ef: EfeitoAtivo, tickAtual: number): number =>
 
 export const venceu = (ef: EfeitoAtivo, tickAtual: number): boolean => tickAtual >= ef.ate_tick;
 
+/**
+ * A Arte ainda está sendo montada: o efeito foi gravado, mas não chegou.
+ *
+ * A Arte resolve no ÚLTIMO Tick da montagem, e não no primeiro (§5.3 do
+ * Arcano). Enquanto o relógio não alcança o `desde_tick`, o muro de fogo existe
+ * no banco e não existe no mundo: não queima ninguém e não é obstáculo. O que
+ * existe nesse intervalo é o GESTO, e quem o mostra é a fita do conjurador.
+ *
+ * `desde_tick` no passado (todo efeito gravado antes desta regra, e toda Arte de
+ * ação livre) responde false, que é o comportamento de sempre.
+ */
+export const montando = (ef: EfeitoAtivo, tickAtual: number): boolean =>
+  tickAtual < (ef.desde_tick ?? 0);
+
 /** Se este combatente já levou a mordida deste efeito na rodada corrente. */
 export const jaMordido = (ef: EfeitoAtivo, cid: string, tickAtual: number): boolean =>
   (ef.mordidos || {})[cid] === rodadaDoTick(tickAtual);
