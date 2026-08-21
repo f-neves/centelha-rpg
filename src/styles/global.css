@@ -793,6 +793,31 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
    onde o teclado está, e aqui ele não está em lugar nenhum de propósito. */
 .ui-dlg[tabindex]:focus, .ui-dlg[tabindex]:focus-visible { outline: none; }
 
+/* ENQUANTO SE ARRASTA, NADA SE SELECIONA.
+   A classe entra no corpo quando o botão desce em cima de algo que se pega e
+   sai quando ele sobe (ver `pegarNaoESelecionar`, em mesa-core.ts). Vale para a
+   página inteira de propósito: a seleção que mais atrapalha é a que começa
+   dentro da peça e varre o texto que está FORA dela. O cursor de mão fechada
+   vale pelo mesmo motivo: ele diz, em qualquer canto da tela, que o gesto em
+   curso é um arrasto e não uma seleção. */
+body.arrastando, body.arrastando * {
+  user-select: none !important; -webkit-user-select: none !important;
+}
+body.arrastando { cursor: grabbing; }
+/* E o que se pega não se seleciona nunca, nem antes de o arrasto começar: o
+   nome embaixo da peça, o número da fila e as letras das colunas são rótulo, e
+   não texto para copiar. A regra mora aqui, e não no <style> de cada aba da
+   mesa, porque a mesma peça aparece em mais de uma. */
+.gr-token, .gr-ficha, .gr-ini-lista .ini-item, .gr-palco, .mp-palco {
+  user-select: none; -webkit-user-select: none;
+}
+/* Imagem tem arrasto NATIVO do navegador, que é outra coisa ainda: sai
+   voando com fantasma próprio e atravessa o arrasto de verdade. Nenhum retrato
+   da mesa quer isso. */
+.av img, .gr-token img, .gr-ficha img, .mp-mundo img, .ini-item img {
+  -webkit-user-drag: none; user-select: none;
+}
+
 /* Arrastada, a caixa toma para si a posição que o navegador dava a ela. */
 .ui-dlg.arrastado { position: fixed; margin: 0; }
 .ui-dlg-pega { cursor: grab; user-select: none; touch-action: none; }
@@ -985,7 +1010,8 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
 .ag-p-n { min-width: 1rem; text-align: center; font-variant-numeric: tabular-nums; font-weight: 700; }
 .ag-p-v { font-size: var(--fs-micro); color: var(--ink-soft); line-height: 1.2; }
 .ag-p-eq { color: var(--accent); }
-.ag-p-est { font-size: var(--fs-micro); color: var(--gold, #c9a227); font-weight: 700; }
+.ag-p-est { font-size: var(--fs-micro); color: var(--gold, #c9a227); font-weight: 700;
+  padding-left: .2rem; }
 .ag-fixos { display: flex; flex-wrap: wrap; gap: .1rem .8rem; margin-top: .3rem;
   font-size: var(--fs-micro); color: var(--ink-soft); }
 

@@ -349,6 +349,57 @@ export interface CtxMesa {
 }
 
 const elo = (id: string) => document.getElementById(id);
+
+/**
+ * PEGAR NÃO É SELECIONAR.
+ *
+ * No desktop, apertar o botão e arrastar tem dois significados possíveis, e
+ * quem decide qual é o navegador: se o gesto começa em cima de texto, ele
+ * entende SELEÇÃO, e a peça fica para trás enquanto meia tela pinta de azul.
+ * Acontecia na fila da iniciativa, na régua do tabuleiro, em toda parte em que
+ * o que se agarra tem letra dentro, que é quase tudo.
+ *
+ * A trava fica num lugar só, e não espalhada por cada arrasto:
+ *
+ * 1. enquanto o botão estiver apertado em cima de algo que se PEGA, o corpo
+ *    ganha uma classe, e o CSS desliga a seleção da página inteira. Isso mata
+ *    também a seleção que começa dentro do alvo e varre o que está fora dele,
+ *    que é a que mais incomoda;
+ * 2. o `selectstart` é cancelado nesse intervalo, que é a maneira de impedir a
+ *    seleção sem tocar no clique. `preventDefault` no `pointerdown` resolveria
+ *    igual e levaria junto o foco e, em alguns navegadores, o próprio clique:
+ *    a fila da iniciativa abre menu no clique, e quebrá-lo para consertar o
+ *    arrasto seria trocar um defeito por outro.
+ *
+ * O que é "algo que se pega" está na lista abaixo. Um elemento novo entra nela
+ * ou declara `data-pega`, e passa a valer sem mais nada.
+ */
+const PEGAVEIS = '.gr-token, .gr-ficha, .ini-item, .gr-palco, .mp-palco, [data-pega]';
+let arrastoLigado = false;
+export function pegarNaoESelecionar() {
+  if (arrastoLigado) return;
+  arrastoLigado = true;
+  const solta = () => document.body.classList.remove('arrastando');
+  document.addEventListener('pointerdown', (e) => {
+    // Só o botão principal: o do meio empurra o mapa e o da direita abre menu,
+    // e nenhum dos dois seleciona nada.
+    if (e.button !== 0) return;
+    const alvo = e.target as HTMLElement | null;
+    if (!alvo?.closest?.(PEGAVEIS)) return;
+    // Campo de texto dentro de algo que se pega continua sendo campo de texto.
+    if (alvo.closest('input, textarea, select, [contenteditable=""], [contenteditable="true"]')) return;
+    document.body.classList.add('arrastando');
+  }, true);
+  document.addEventListener('pointerup', solta, true);
+  document.addEventListener('pointercancel', solta, true);
+  // Sem isto, a seleção que o navegador ia começar no `mousedown` ainda começa:
+  // a classe pinta a página de "não selecionável", mas o gesto já estava a
+  // caminho. Cancelar o `selectstart` é o que o interrompe.
+  document.addEventListener('selectstart', (e) => {
+    if (document.body.classList.contains('arrastando')) e.preventDefault();
+  });
+}
+
 function falhar(txt: string) {
   const c = elo('mesa-carregando'); if (c) c.hidden = true;
   const e = elo('mesa-erro'); if (e) { e.hidden = false; e.textContent = txt; }
@@ -394,6 +445,8 @@ export async function abrirMesa(aba: string): Promise<CtxMesa | null> {
   const topo = elo('mesa-topo'); if (topo) topo.hidden = false;
   const corpo = elo('mesa-corpo'); if (corpo) corpo.hidden = false;
   document.body.classList.add('area-mesa', ehMestre ? 'sou-mestre' : 'sou-jogador');
+
+  pegarNaoESelecionar();
 
   const nome = elo('mesa-nome'); if (nome) nome.textContent = mesa.nome;
   const desc = elo('mesa-desc'); if (desc) desc.textContent = mesa.descricao || '';

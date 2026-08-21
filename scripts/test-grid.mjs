@@ -244,6 +244,12 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
       await p.mouse.down();
       await p.mouse.move((q.de.x + q.para.x) / 2, (q.de.y + q.para.y) / 2, { steps: 4 });
       await p.mouse.move(q.para.x, q.para.y, { steps: 4 });
+      // ARRASTAR NÃO SELECIONA. Com o botão apertado em cima da peça, o
+      // navegador tem dois caminhos possíveis, e sem trava ele escolhe o
+      // errado: em vez de levar a peça, pinta de azul o nome dela, a fila
+      // inteira e o que mais o ponteiro varrer. A leitura vem AQUI, com o botão
+      // ainda em baixo, porque soltar limpa a seleção e o defeito sumiria.
+      const selecao = await p.evaluate(() => (getSelection()?.toString() || '').trim());
       await p.mouse.up();
       await espera(700);
       const r = await p.evaluate(() => {
@@ -268,6 +274,7 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
       }, q.de.x, q.de.y);
       if (volta !== 'mede') continue;
       ok(andou, 'a peça saiu do lugar');
+      ok(selecao === '', `arrastar não seleciona texto (veio "${selecao.slice(0, 40)}")`);
       ok(r.consultas >= 2 && r.consultas <= 5,
         `mover custa de 2 a 5 idas ao banco (foram ${r.consultas})`);
       const t = TETOS[chave];
