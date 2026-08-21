@@ -272,6 +272,38 @@ export function ticksDeEntrada(
 }
 
 /**
+ * A FASE DE QUEM AINDA NÃO DECLAROU, MAS AGE NESTE INSTANTE.
+ *
+ * O problema que ela resolve: dois duelistas de adaga agem no mesmo Tick. O
+ * mestre resolve um de cada vez, e quando o primeiro ataca, o segundo ainda não
+ * declarou nada, então a agenda dele está vazia e ele lê como **livre**, com a
+ * guarda inteira. Quando o segundo ataca de volta, o primeiro já declarou e
+ * está em Golpe, com −4. Medido num duelo de iguais: quem o mestre resolve por
+ * último ganha **97%** das vezes, e a jogada certa passa a ser nunca declarar
+ * primeiro, que é uma regra se voltando contra si mesma.
+ *
+ * A correção é ler a escada pela REGRA e não pela ordem de digitação: se a
+ * agenda dos dois diz Golpe no mesmo Tick, os dois estão abertos nesse Tick.
+ * Quem age no Tick T com Preparo P golpeia em T+P, e é isso que esta função
+ * responde para quem ainda não escreveu a agenda.
+ *
+ * Com Preparo ≥ 1 nada muda (os dois já liam −4, porque a agenda do primeiro
+ * marca o Golpe num Tick futuro que o segundo também alcança). O conserto vale
+ * para o Preparo 0: a arma leve no P/G/R, e todo mundo no sistema normal.
+ *
+ * É uma PRESUNÇÃO, e assumida: o alvo pode acabar movendo em vez de golpear.
+ * Por isso a tela escreve o motivo ao lado do número, e o ajuste avulso da
+ * folha continua ali para quem quiser desfazer a conta.
+ */
+export function faseDeQuemVaiAgir(
+  tickDoAlvo: number, preparoDoAlvo: number, tickDoGolpe: number,
+): Fase {
+  const golpe = tickDoAlvo + Math.max(0, preparoDoAlvo);
+  if (tickDoGolpe < tickDoAlvo || tickDoGolpe > golpe) return 'livre';
+  return tickDoGolpe === golpe ? 'golpe' : 'preparo';
+}
+
+/**
  * O CONTRAPÉ, E POR QUE ELE É DO RELÓGIO E NÃO DA AÇÃO.
  *
  * Quem entrou atrasado age pego no contrapé: 1d6 a menos por degrau de atraso.
@@ -395,9 +427,14 @@ export const golpesDados = (acao: Acao | null | undefined, tick: number): number
  * acumula sem teto e só zera quando o ciclo fecha. Devolve número NEGATIVO ou
  * zero, para somar direto na Defesa.
  */
-export function defesaPerdida(acao: Acao | null | undefined, tick: number, opts: { segura?: boolean } = {}) {
+export function defesaPerdida(
+  acao: Acao | null | undefined, tick: number,
+  opts: { segura?: boolean; fase?: Fase } = {},
+) {
   const e = C?.escada || {};
-  const fase = faseEm(acao, tick);
+  // `opts.fase` é a fase FORÇADA de quem ainda não declarou mas já está
+  // comprometido com este instante: ver `faseDeQuemVaiAgir`.
+  const fase = opts.fase || faseEm(acao, tick);
   const pressao = (acao?.pressao || 0) * (e.pressaoPorAtaque ?? -2);
   let acaoDV = 0;
   if (fase === 'preparo') acaoDV = e.preparo ?? -2;

@@ -1342,7 +1342,7 @@ const SETAS = [
     combateDaMesa, COMBATE_PADRAO, faseEm, acaoVazia, temGesto, resumoDaAcao,
     anatomia, anatomiaLivre, declarar, defesaPerdida, classeDeTempo, velocidadeDaArma, tetoDaRajada,
     rolaNoSite, ticksDeDeslocamento, armaDoCatalogo, ticksDeEntrada,
-    contrapeEm, contrapeDe, contrapeAcaba,
+    contrapeEm, contrapeDe, contrapeAcaba, faseDeQuemVaiAgir, preparoDe,
     FASE_ROTULO, type CombateMesa, type Manobra,
   } from '../../lib/combate-tempo';
 
@@ -5141,7 +5141,28 @@ const SETAS = [
     const ra = RESUMO[atacante.id];
     const cd = somarCondicoes((alvo.condicoes || []).map((k: any) => ({ ...(COND[k.id] || {}), ...k })));
     const fer = tierDe(alvo.pv_atual, alvo.pv_max).penDefesa ?? 0;
-    const dv = defesaPerdida(acaoNo(alvo), relogio(), { segura: alvo.acao?.tipo === 'segura' });
+    // ONDE O MEU GOLPE CAI. É contra a guarda DAQUELE instante que a jogada
+    // corre, e não contra a guarda do instante em que eu declarei: no P/G/R as
+    // duas coisas são Ticks diferentes.
+    const classeAtq = classeDeTempo(ra?.arma, ra?.velocidade);
+    const velAtq = ra?.velocidade ?? velocidadeDaArma(ra?.arma, 5);
+    const tGolpe = (atacante.tick ?? 0) + preparoDe(classeAtq, velAtq, TEMPO.sistema);
+    // E SE O ALVO AINDA NÃO DECLAROU, mas age neste mesmo instante, ele está
+    // tão comprometido quanto eu: a escada se lê pela regra, e não pela ordem em
+    // que o mestre digitou. Ver `faseDeQuemVaiAgir`.
+    const rAlvo = RESUMO[alvo.id];
+    const presumida = !temGesto(alvo.acao)
+      ? faseDeQuemVaiAgir(
+        alvo.tick ?? 0,
+        preparoDe(classeDeTempo(rAlvo?.arma, rAlvo?.velocidade),
+          rAlvo?.velocidade ?? velocidadeDaArma(rAlvo?.arma, 5), TEMPO.sistema),
+        tGolpe,
+      )
+      : 'livre';
+    const dv = defesaPerdida(acaoNo(alvo), tGolpe, {
+      segura: alvo.acao?.tipo === 'segura',
+      ...(presumida !== 'livre' ? { fase: presumida } : {}),
+    });
     const def = r?.defesa != null ? r.defesa + fer + (cd.defesaCaC || 0) + dv.total : null;
     const men = r?.defesaMental ?? null;
     const de = TOKENS[atacante.id], pa = TOKENS[alvo.id];
@@ -5162,7 +5183,8 @@ const SETAS = [
       cel('Defesa', def, def == null ? 'o mestre tem o número' : [
         fer ? `ferimento ${fer}` : '',
         cd.defesaCaC ? `condições ${cd.defesaCaC}` : '',
-        dv.acao ? `${FASE_ROTULO[dv.fase]} ${dv.acao}` : '',
+        dv.acao ? `${FASE_ROTULO[dv.fase]} ${dv.acao}${
+          presumida !== 'livre' ? ' (age neste instante)' : ''}` : '',
         dv.pressao ? `pressão ${dv.pressao}` : '',
       ].filter(Boolean).join(' · '))
       + cel('Mental', men)
@@ -5170,8 +5192,7 @@ const SETAS = [
         r?.resistPerf ? `gate N${r.resistPerf}` : '');
 
     // ---- a manobra de quem ataca, e o tempo que ela custa ----
-    const classe = classeDeTempo(ra?.arma, ra?.velocidade);
-    const vel = ra?.velocidade ?? velocidadeDaArma(ra?.arma, 5);
+    const classe = classeAtq, vel = velAtq;
     const manSel = el('al-manobra') as HTMLSelectElement;
     const golInp = el('al-golpes') as HTMLInputElement;
     const cj = (FICHAS[atacante.personagem_id]?.conjuntos || []).find((x: any) => x.ativo);

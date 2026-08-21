@@ -1666,6 +1666,52 @@ sumia justamente quando a mesa mais precisava dela: projetada na TV, a cena vira
 relógio. Agora vai a **grade**, com o modo TV ligado por cima enquanto dura, e o que aparece no
 monitor é o par que a mesa lê: a tira da ordem em cima, o tabuleiro embaixo.
 
+### 15.11. Golpes no mesmo instante, e o preço de um dado (21/08/2026)
+
+Duas medições que revisaram decisões tomadas horas antes.
+
+**Quanto vale entrar um Tick antes.** Duelo de iguais, 50 mil por linha, com o golpe resolvendo no
+Tick do Golpe (e não no da declaração, que no P/G/R é outro instante):
+
+| Ambos com | controle | A entra 1 Tick antes | + B com −1d6 de contrapé |
+|---|---|---|---|
+| leve (Preparo 0) | 50,4% | 54,1% | 61,9% |
+| média (Preparo 1) | 49,8% | **58,7%** | 66,1% |
+| pesada (Preparo 2) | 50,1% | 59,0% | 66,0% |
+
+O achado: **no P/G/R um Tick de vantagem vale mais que o dobro do que vale no sistema normal**
+(9 pontos percentuais contra 4). O motivo é a mecânica funcionando como prometido: com Preparo, o
+seu golpe cai **enquanto o outro ainda monta o dele**, e você acerta um alvo em Preparo (−2) em vez
+de um alvo livre. Antecipar deixa de ser "chegar antes" e vira "chegar enquanto ele está aberto".
+
+**E o defeito que a mesma bancada encontrou.** A escada era lida pela ORDEM EM QUE O MESTRE
+DIGITAVA, e não pela regra. O mestre resolve um ataque de cada vez; quando o primeiro atacava, o
+segundo ainda não tinha declarado, então a agenda dele estava vazia e ele lia como **livre**, de
+guarda inteira. Quando o segundo revidava, o primeiro já estava em Golpe, com −4.
+
+Medido, num duelo de iguais na mesma entrada:
+
+| Ambos com | quem é resolvido primeiro vence |
+|---|---|
+| leve (Preparo 0) | **3,2%** |
+| média (Preparo 1) | 49,9% |
+| pesada (Preparo 2) | 49,9% |
+
+Com Preparo ≥ 1 não muda nada, porque a agenda do primeiro já marca o Golpe num Tick futuro que o
+segundo também alcança. O buraco é do **Preparo 0**: a arma leve no P/G/R, e todo mundo no sistema
+normal. E ele é pior do que parece, porque a jogada ótima que ele cria é **nunca declarar primeiro**
+— a vantagem de ter rolado bem na Iniciativa virando desvantagem.
+
+**A regra, decidida na mesa:** golpes que caem no mesmo Tick deixam os dois abertos. `faseDeQuemVaiAgir`
+responde em que fase está quem ainda não declarou mas age naquele instante, e a folha da ação escreve
+o motivo ao lado do número ("Golpe −4 · age neste instante"). É uma presunção assumida (o alvo pode
+acabar movendo em vez de golpear), e por isso ela é dita na tela e o ajuste avulso continua ali.
+Com a correção, o duelo de adagas volta a 49,7%.
+
+**O contrapé ficou como estava**, −1d6 por degrau, decidido depois de a bancada mostrar o preço: por
+1 ponto de iniciativa, o segundo colocado perde 16 pontos percentuais de chance de vencer (9 do Tick,
+7 do dado). A mesa olhou o número e manteve.
+
 ## Apêndice: como rodar
 
 ```

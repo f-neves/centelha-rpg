@@ -268,6 +268,23 @@ eq([T.rolaNoSite('misto', false), T.rolaNoSite('misto', true)], [true, false],
   eq(T.ticksDeEntrada([18, 2]).map((x) => x.tick), [1, 4], 'o pior atraso possivel para no Tick 4');
 }
 
+// GOLPES NO MESMO INSTANTE: os dois estao abertos, e nao so quem declarou
+// primeiro. Sem isto, num duelo de adagas quem o mestre resolve por ultimo
+// vence 97% das vezes.
+{
+  // Adaga contra adaga (Preparo 0), os dois agindo no Tick 4.
+  eq(T.faseDeQuemVaiAgir(4, 0, 4), 'golpe', 'quem age agora com Preparo 0 ja esta no Golpe');
+  // Arma media (Preparo 1) agindo no 4: no 4 esta montando, no 5 e que bate.
+  eq(T.faseDeQuemVaiAgir(4, 1, 4), 'preparo', 'com Preparo 1, no Tick da declaracao ele so montou');
+  eq(T.faseDeQuemVaiAgir(4, 1, 5), 'golpe', 'e o golpe dele cai um Tick depois');
+  // Fora da janela do gesto dele, nada se presume.
+  eq(T.faseDeQuemVaiAgir(4, 1, 6), 'livre', 'depois do golpe dele nao ha o que presumir');
+  eq(T.faseDeQuemVaiAgir(6, 0, 4), 'livre', 'e quem so age depois esta com a guarda inteira');
+  // A fase forcada entra na escada como qualquer outra.
+  const dv = T.defesaPerdida(null, 4, { fase: 'golpe' });
+  eq([dv.fase, dv.total], ['golpe', -4], 'a fase presumida cobra o mesmo que a declarada');
+}
+
 // O CONTRAPE DECAI COM O RELOGIO, e nao com o que a pessoa faz.
 {
   const a = { contrape: -2, contrapeDesde: 3 };

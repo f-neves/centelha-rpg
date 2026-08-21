@@ -572,7 +572,7 @@ import MesaCab from '../../components/MesaCab.astro';
   } from '../../lib/mesa-tempo-ui';
   import {
     combateDaMesa, COMBATE_PADRAO, anatomia, declarar, faseEm, defesaPerdida, acaoVazia, ticksDeEntrada,
-    contrapeEm, contrapeDe,
+    contrapeEm, contrapeDe, faseDeQuemVaiAgir, preparoDe,
     classeDeTempo, velocidadeDaArma, tetoDaRajada, temGesto, FASE_ROTULO,
     type CombateMesa, type Manobra,
   } from '../../lib/combate-tempo';
@@ -851,7 +851,15 @@ import MesaCab from '../../components/MesaCab.astro';
     (Array.isArray(c.condicoes) ? c.condicoes : []).map((k: any) => ({ ...(COND[k.id] || {}), ...k }));
 
   /** Defesa que vale AGORA: base do bloco + ferimento + condições. */
-  function defesaAtual(c: any, alcance: 'cac' | 'dist' = 'cac') {
+  /**
+   * A Defesa que vale AGORA, e contra quem.
+   *
+   * `contra` é quem está atacando: com ele, a conta passa a correr no Tick em
+   * que o golpe DELE cai (que no P/G/R não é o Tick da declaração), e o alvo
+   * que ainda não declarou mas age no mesmo instante entra comprometido, como
+   * manda `faseDeQuemVaiAgir`. Sem ele, é a leitura solta do card.
+   */
+  function defesaAtual(c: any, alcance: 'cac' | 'dist' = 'cac', contra: any = null) {
     const base = RESUMO[c.id]?.defesa ?? null;
     if (base == null) return null;
     const ferimento = tierDe(c.pv_atual, c.pv_max).penDefesa ?? 0;
@@ -861,9 +869,19 @@ import MesaCab from '../../components/MesaCab.astro';
     // da Guarda sob pressão do capítulo IX. Vale nos DOIS sistemas: no normal
     // ela colapsa para o −4 no Tick em que o golpe sai, mais −2 por golpe dado
     // até a próxima ação. Ver `combate-tempo.ts` e Combate_Tempo.md §14.11.
-    const dv = defesaPerdida(acaoDe(c), AGORA, { segura: acaoDe(c)?.tipo === 'segura' });
+    // Onde o golpe de quem ataca cai, e o que o alvo estará fazendo lá.
+    const pre = (x: any) => preparoDe(
+      classeDeTempo(RESUMO[x.id]?.arma, RESUMO[x.id]?.velocidade),
+      RESUMO[x.id]?.velocidade ?? velocidadeDaArma(RESUMO[x.id]?.arma, 5), TEMPO.sistema);
+    const tGolpe = contra ? (contra.tick ?? AGORA) + pre(contra) : AGORA;
+    const presumida = contra && !temGesto(c.acao)
+      ? faseDeQuemVaiAgir(c.tick ?? 0, pre(c), tGolpe) : 'livre';
+    const dv = defesaPerdida(acaoDe(c), tGolpe, {
+      segura: acaoDe(c)?.tipo === 'segura',
+      ...(presumida !== 'livre' ? { fase: presumida } : {}),
+    });
     return { base, ferimento, cond, escada: dv.acao, pressao: dv.pressao, fase: dv.fase,
-      total: base + ferimento + cond + dv.total };
+      presumida: presumida !== 'livre', total: base + ferimento + cond + dv.total };
   }
 
   /** A ação declarada de um combatente, tolerando banco sem a migração 27. */
@@ -1877,7 +1895,7 @@ import MesaCab from '../../components/MesaCab.astro';
       const rz = RESUMO[alvo.id];
       let alvoDef: number | null = null, detalhe = '';
       if (tipoSel.value === 'ataque') {
-        const d = defesaAtual(alvo, alcSel.value as 'cac' | 'dist');
+        const d = defesaAtual(alvo, alcSel.value as 'cac' | 'dist', ator);
         if (d) { alvoDef = d.total; detalhe = `base ${d.base}${d.ferimento ? ` · ferimento ${d.ferimento}` : ''}${d.cond ? ` · condições ${sinal(d.cond)}` : ''}`; }
       } else if (tipoSel.value === 'social') { alvoDef = rz?.defesaSocial ?? null; detalhe = 'Defesa Social'; }
       else { alvoDef = rz?.defesaMental ?? null; detalhe = 'Defesa Mental'; }
@@ -1896,7 +1914,7 @@ import MesaCab from '../../components/MesaCab.astro';
     el('acao-rolar-atq').onclick = () => {
       const alvo = alvoAtual();
       const d = alvo
-        ? (tipoSel.value === 'ataque' ? defesaAtual(alvo, alcSel.value as 'cac' | 'dist')?.total
+        ? (tipoSel.value === 'ataque' ? defesaAtual(alvo, alcSel.value as 'cac' | 'dist', ator)?.total
           : tipoSel.value === 'social' ? RESUMO[alvo.id]?.defesaSocial : RESUMO[alvo.id]?.defesaMental)
         : null;
       // Um golpe, uma rolagem. A rajada e a empunhadura dupla têm penalidade

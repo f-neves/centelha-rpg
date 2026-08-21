@@ -230,6 +230,14 @@ Posição, cobertura e postura mudam o combate sem mudar suas fichas: todos eles
 
 <p class="formula">Cobertura total — sem nenhuma linha de visão — não pode ser alvejada; primeiro é preciso flanquear ou destruir o anteparo.</p>
 
+### Golpes no mesmo instante
+
+Quando dois golpes caem no **mesmo Tick**, os dois atacantes estão abertos ao mesmo tempo: cada um ataca contra a guarda comprometida do outro. Não importa quem a mesa resolveu primeiro — a escada se lê pela **agenda**, e não pela ordem em que as jogadas foram narradas.
+
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Duas adagas (Preparo 0) agem no <strong>Tick 4</strong>. As duas golpeiam nesse instante, então as duas estão em <strong>−4</strong>: cada uma ataca uma Defesa aberta. Se uma delas fosse uma espada longa (Preparo 1) declarada no Tick 3, o golpe dela também cairia no 4, e valeria o mesmo.</div>
+
+<p class="muted">Vale a pena dizer por que a regra é essa: se a guarda de quem ainda não narrou a jogada contasse como inteira, a jogada certa seria sempre <em>deixar o outro atacar primeiro</em>, e a vantagem de ter rolado bem na Iniciativa se voltaria contra quem a ganhou.</p>
+
 ### Porte: o grande é fácil de acertar, o pequeno é difícil
 
 O tamanho conta na **jogada de acerto** dos **ataques físicos** (corpo a corpo e à distância): quanto **maior** o alvo em relação a quem o ataca, mais fácil cravar o golpe; quanto **menor**, mais difícil. Vale a diferença de **categorias de porte** (Minúsculo · Pequeno · Médio · Grande · Enorme · Imenso · Colossal):

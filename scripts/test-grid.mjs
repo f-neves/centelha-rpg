@@ -423,6 +423,49 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
     ok(/Iniciativa rolada/.test(ini.registro || ''), 'o registro guarda a rolagem com os Ticks');
   }
 
+  // ------------------------- golpes no mesmo instante: os dois estao abertos
+  //
+  // O defeito que isto guarda: o mestre resolve um ataque de cada vez, e quem
+  // ainda nao declarou lia como LIVRE, com a guarda inteira. Num duelo de
+  // adagas no mesmo Tick, quem fosse resolvido por ultimo vencia 97% das vezes.
+  // Agora a escada se le pela REGRA: quem age neste instante esta comprometido.
+  const juntos = await p.evaluate(async () => {
+    const pal = document.getElementById('gr-palco').getBoundingClientRect();
+    const naTela = (t) => { const r = t.getBoundingClientRect();
+      return r.left > pal.left + 4 && r.top > pal.top + 4
+        && r.right < pal.right - 4 && r.bottom < pal.bottom - 4; };
+    const toks = [...document.querySelectorAll('#gr-tokens .gr-token')].filter(naTela);
+    const tickDe = (id) => [...document.querySelectorAll('#gr-ini .ini-item')]
+      .find((i) => i.dataset.c === id)?.dataset.t;
+    // Dois que agem no MESMO Tick e ainda nao declararam nada.
+    let a = null, b = null;
+    for (const x of toks) { for (const y of toks) {
+      if (x === y) continue;
+      if (tickDe(x.dataset.c) && tickDe(x.dataset.c) === tickDe(y.dataset.c)) { a = x; b = y; break; }
+    } if (a) break; }
+    if (!a || !b) return null;
+    const ra = a.getBoundingClientRect(), rb = b.getBoundingClientRect();
+    const em = (el, t, x, y) => el.dispatchEvent(new PointerEvent(t, {
+      bubbles: true, clientX: x, clientY: y, pointerId: 1 }));
+    em(a, 'pointerdown', ra.left + ra.width / 2, ra.top + ra.height / 2);
+    em(document, 'pointermove', rb.left + rb.width / 2, rb.top + rb.height / 2);
+    em(document, 'pointerup', rb.left + rb.width / 2, rb.top + rb.height / 2);
+    await new Promise((r) => setTimeout(r, 1300));
+    const dlg = document.getElementById('alvo-dlg');
+    if (!dlg?.open) return { abriu: false };
+    const cx = document.getElementById('al-defesas');
+    const r = { abriu: true, tick: tickDe(a.dataset.c),
+      texto: (cx?.textContent || '').replace(/\s+/g, ' ').trim() };
+    dlg.close();
+    await new Promise((x) => setTimeout(x, 200));
+    return r;
+  });
+  if (juntos && juntos.abriu) {
+    ok(/age neste instante/.test(juntos.texto),
+      `quem age no mesmo instante entra comprometido (${juntos.texto.slice(0, 70)})`);
+    ok(/Golpe|Preparo/.test(juntos.texto), 'e a fase presumida aparece escrita, com a conta ao lado');
+  }
+
   // ------------------------------------- o contrape desce com o relogio
   //
   // A regra que a mesa fechou: cada Tick de espera devolve 1d6. E ela e do
