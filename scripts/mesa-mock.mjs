@@ -31,8 +31,17 @@ const POSTOS = parseInt(P.get('postos') || String(N_COMB), 10);
 // O sistema de tempo da mesa de bancada. `pgr` de propósito: é o caminho novo,
 // e o que o smoke precisa exercitar. `?tempo=normal` volta ao de sempre.
 const TEMPO = P.get('tempo') === 'normal' ? 'normal' : 'pgr';
+// DE QUE CADEIRA SE OLHA. `?papel=jogador` tira o mestre do lugar e devolve a
+// mesa como ela chega para quem só tem um personagem: sem os botões do relógio,
+// sem o menu que mexe na cena, e com a `acao` alheia MASCARADA como a
+// `combate_visao` da migração 27 a mascara (o tempo é público, a intenção não).
+// Sem isto não havia como olhar a tela do jogador: a bancada sempre foi mestre,
+// e metade do desenho novo do tempo é justamente o que ele vê.
+const PAPEL = P.get('papel') === 'jogador' ? 'jogador' : 'mestre';
 
 const UID = '00000000-0000-4000-8000-000000000001';
+/** Quem manda na mesa quando quem olha é jogador. */
+const OUTRO_UID = '00000000-0000-4000-8000-0000000000ff';
 const MESA = P.get('id') || '00000000-0000-4000-8000-0000000000aa';
 const ARENA = '00000000-0000-4000-8000-0000000000bb';
 const ENC = '00000000-0000-4000-8000-0000000000cc';
@@ -121,10 +130,29 @@ const ARENAS = [{
   trilha: {}, log: LOG,
 }];
 
+/**
+ * A cena como o JOGADOR a recebe, imitando a `combate_visao` da migração 27.
+ *
+ * Só o pedaço que interessa aqui: a agenda do gesto (`golpes`, `livre`) é
+ * pública, porque é o que se vê olhando para o sujeito; a ARMA e o ALVO só
+ * chegam para quem é dono da peça. Saber que o ogro está montando um gesto é
+ * leitura de mesa; saber que ele está montando contra o mago é o que se compra
+ * prestando atenção.
+ *
+ * Não é o Postgres: aqui "meu" é o primeiro PC, e não há RLS por trás.
+ */
+const MEU_PC = 'p000';
+const paraJogador = (c) => {
+  const meu = c.personagem_id === MEU_PC;
+  if (meu || !c.acao) return c;
+  const { arma, alvo, ...resto } = c.acao;
+  return { ...c, acao: resto };
+};
+
 const TABELAS = {
   mesas: [{
     id: MESA, nome: 'Mesa de bancada', descricao: 'bancada de teste',
-    mestre_id: UID, codigo_convite: 'BENCH1', revelar: {},
+    mestre_id: PAPEL === 'mestre' ? UID : OUTRO_UID, codigo_convite: 'BENCH1', revelar: {},
     combate: { sistema: TEMPO, marcacao: 'fita' },
   }],
   mesa_arenas: ARENAS,
@@ -132,7 +160,7 @@ const TABELAS = {
   encontros: [{ id: ENC, mesa_id: MESA, ativo: true, tick_atual: 0, nome: 'Cena' }],
   encontro_visao: [{ id: ENC, mesa_id: MESA, ativo: true, tick_atual: 0, nome: 'Cena' }],
   combatentes: COMBS,
-  combate_visao: COMBS,
+  combate_visao: PAPEL === 'jogador' ? COMBS.map(paraJogador) : COMBS,
   arena_tokens: TOKENS,
   token_visao: TOKENS,
   arena_efeitos: [],
