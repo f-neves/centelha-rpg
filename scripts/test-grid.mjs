@@ -1282,6 +1282,85 @@ async function cenaCelular(br, url, { papel = 'mestre' } = {}) {
         const e = document.querySelector('.gr-lado #gr-ef-lista');
         return !!e && getComputedStyle(e).display !== 'none';
       })), 'e os efeitos também saíram: a folha do Campo é de "Em campo", e de mais nada');
+
+      // PARA CIMA ROLA, PARA O LADO ARRASTA.
+      // O retrato pedia `touch-action: none` desde que o arrasto existe, e no
+      // telefone isso queria dizer que o dedo em cima de um nome não rolava
+      // nada: a lista cortava no fim da tela e não havia como ver o resto.
+      // Toque de verdade, pelo CDP: o que se prova aqui é a decisão do
+      // navegador sobre o gesto, e evento sintético não passa por ela.
+      const onde = await p.evaluate(() => {
+        const cx = document.getElementById('gr-lista').getBoundingClientRect();
+        const f = [...document.querySelectorAll('#gr-lista .gr-ficha')]
+          .find((z) => { const r = z.getBoundingClientRect(); return r.top > cx.top + 20 && r.bottom < cx.bottom - 30; });
+        if (!f) return null;
+        const r = f.getBoundingClientRect();
+        return { x: Math.round(r.left + 40), y: Math.round(r.top + r.height / 2),
+          rolavel: document.getElementById('gr-lista').scrollHeight
+            > document.getElementById('gr-lista').clientHeight + 2 };
+      });
+      if (onde) {
+        await p.touchscreen.touchStart(onde.x, onde.y);
+        for (let i = 1; i <= 6; i++) await p.touchscreen.touchMove(onde.x, onde.y - i * 22);
+        await p.touchscreen.touchEnd();
+        await espera(500);
+        const subiu = await p.evaluate(() => ({
+          rolou: document.getElementById('gr-lista').scrollTop,
+          folha: document.body.classList.contains('folha-campo'),
+          fantasma: document.querySelectorAll('.gr-ghost').length }));
+        ok(subiu.folha && subiu.fantasma === 0 && (!onde.rolavel || subiu.rolou > 0),
+          `o dedo para cima rola a lista, sem levar a peça (${subiu.rolou}px, folha aberta)`);
+
+        // E a barra de rolar, que é o alvo de quem prefere arrastar a rolagem.
+        const barra = await p.evaluate(() => {
+          const b = document.getElementById('gr-rolar');
+          if (b.hidden) return null;
+          const r = b.getBoundingClientRect();
+          return { x: Math.round(r.left + r.width / 2), topo: Math.round(r.top + 12),
+            base: Math.round(r.bottom - 12), largura: Math.round(r.width) };
+        });
+        if (barra) {
+          await p.touchscreen.touchStart(barra.x, barra.topo);
+          await p.touchscreen.touchMove(barra.x, barra.base);
+          await p.touchscreen.touchEnd();
+          await espera(400);
+          const fim = await p.evaluate(() => {
+            const l = document.getElementById('gr-lista');
+            return { no: l.scrollTop, max: l.scrollHeight - l.clientHeight };
+          });
+          ok(fim.no >= fim.max - 4 && barra.largura >= 20,
+            `e a barra lateral leva ao fim da lista (${fim.no} de ${fim.max})`);
+        }
+
+        // Para o lado, o gesto é outro: a folha sai da frente e o retrato vira
+        // fantasma. Solta em cima da barra do polegar, que não é hexágono, para
+        // a prova não mexer no tabuleiro.
+        const daVez = await p.evaluate(() => {
+          const cx = document.getElementById('gr-lista').getBoundingClientRect();
+          const f = [...document.querySelectorAll('#gr-lista .gr-ficha')]
+            .find((z) => { const q = z.getBoundingClientRect(); return q.top > cx.top + 20 && q.bottom < cx.bottom - 30; });
+          const q = f.getBoundingClientRect();
+          return { x: Math.round(q.left + 40), y: Math.round(q.top + q.height / 2) };
+        });
+        await p.touchscreen.touchStart(daVez.x, daVez.y);
+        for (let i = 1; i <= 6; i++) await p.touchscreen.touchMove(daVez.x + i * 30, daVez.y + 2);
+        await espera(250);
+        const saiu = await p.evaluate(() => ({
+          folha: document.body.classList.contains('folha-campo'),
+          fantasma: document.querySelectorAll('.gr-ghost').length }));
+        await p.touchscreen.touchEnd();
+        await espera(400);
+        ok(!saiu.folha && saiu.fantasma === 1,
+          'e para o lado a folha sai da frente, com o retrato no dedo');
+        ok(await p.evaluate(() => document.querySelectorAll('.gr-ghost').length === 0),
+          'o fantasma não fica pendurado depois de soltar');
+        // A folha saiu da frente para o arrasto: reabre, para o laço lá fora
+        // fechar como fecha as outras.
+        await p.evaluate(() => {
+          if (!document.body.classList.contains('folha-campo')) document.getElementById('ga-campo').click();
+        });
+        await espera(400);
+      }
     }
     const c = await pisoDeToque();
     ok(c.length === 0, `e nada dentro dela fica abaixo de 44px (${c.slice(0, 3).join(', ') || 'nenhum'})`);

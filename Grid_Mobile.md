@@ -363,6 +363,18 @@ responde.
   para outra caixa, e a **ordem inteira** abre como folha com os cartões completos (a fita, a
   iniciativa, a Vida), os degraus de volta na horizontal e quem caiu no pé da lista. Tocar numa
   peça de lá abre o menu dela.
+- **Para cima rola, para o lado arrasta.** O retrato da lista pedia
+  `touch-action: none` desde que o arrasto existe, e no telefone isso queria dizer que **o dedo em
+  cima de um nome não rolava nada**: a lista cortava no fim da tela e não havia como ver o resto.
+  `pan-y` devolve o eixo vertical ao navegador e deixa o horizontal para o arrasto, que é justamente
+  a direção em que a peça sai da folha para o tabuleiro. A folha só sai da frente quando o gesto se
+  decide (12px para o lado, e mais para o lado do que para cima), e não no primeiro toque; e o
+  `pointercancel`, que não existia, passou a limpar o fantasma quando o navegador toma o gesto para
+  rolar, senão o retrato ficava pendurado no dedo para sempre.
+- **A lista ganhou barra de rolar própria.** A do navegador, no celular, é um risco de dois pixels
+  que aparece meio segundo depois do gesto e não recebe toque: ela avisa que rolou, não deixa rolar.
+  Esta tem 24px de alvo, fica à vista enquanto houver o que rolar, e o tamanho do polegar diz que
+  fatia da lista está na tela. Arrastá-la leva ao fim da lista, e encostar no meio leva ao meio.
 - **A régua não tem substituto no dedo.** Medir distância continua sendo gesto de mouse. No
   telefone o que responde "cabe?" é o ◎ do alcance, no menu da peça.
 - **A mira do ataque ainda confirma no primeiro toque.** O padrão da mira no dedo (posicionar, ver,

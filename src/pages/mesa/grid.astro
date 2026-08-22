@@ -192,9 +192,17 @@ const SETAS = [
           </div>
           <p class="muted nota-mini" id="gr-dica" hidden><span class="so-largo">Arraste o retrato até um hexágono para pôr no mapa.
             Arraste de um hexágono para outro para mover, e para cá para tirar do mapa.</span><span
-            class="so-estreito">Arraste o retrato para fora desta folha: ela sai da frente e o hexágono
-            debaixo do dedo recebe a peça.</span></p>
-          <div id="gr-lista" class="gr-lista"></div>
+            class="so-estreito">Arraste o retrato <b>para o lado</b>: a folha sai da frente e o hexágono
+            debaixo do dedo recebe a peça. Para cima e para baixo, a lista rola.</span></p>
+          {/* A lista e a barra de rolar, na mesma caixa: a barra precisa de um
+              pai posicionado para se encostar na borda direita dela. No
+              notebook a caixa é `display: contents` e não existe para o layout,
+              então a coluna continua exatamente como era. */}
+          <div class="gr-lista-cx">
+            <div id="gr-lista" class="gr-lista"></div>
+            <div class="gr-rolar" id="gr-rolar" hidden aria-hidden="true"><span
+              class="gr-rolar-p" id="gr-rolar-p"></span></div>
+          </div>
 
           {/* OS EFEITOS NO AR, em caixa própria. Eram uma lista solta entre a
               gente e o registro, sem cabeçalho e sem como recolher: numa cena
@@ -1515,8 +1523,37 @@ const SETAS = [
      inteira. Os efeitos saíram para a folha do ✦, e o registro para a da Arena,
      porque as duas eram vizinhas que só tiravam altura de quem se consulta no
      meio da luta. */
-  body.grid-mob .gr-lista { flex: 1 1 auto; min-height: 6rem; max-height: none; overflow-y: auto; }
-  body.grid-mob .gr-lado > :not(.gr-lista) { flex: 0 0 auto; }
+  .gr-lista-cx { display: contents; }
+  body.grid-mob .gr-lista-cx { display: flex; position: relative; flex: 1 1 auto;
+    min-height: 6rem; min-width: 0; }
+  body.grid-mob .gr-lista-cx > .gr-lista { flex: 1 1 auto; min-height: 0;
+    max-height: none; overflow-y: auto; padding-right: 1.5rem; }
+  body.grid-mob .gr-lado > :not(.gr-lista-cx) { flex: 0 0 auto; }
+  body.grid-mob .gr-lado.dobrada .gr-lista-cx { display: none; }
+  /* PARA O LADO ARRASTA A PEÇA, PARA CIMA E PARA BAIXO ROLA A LISTA.
+     O retrato pedia `touch-action: none` desde que o arrasto existe, e no
+     telefone isso queria dizer que o dedo em cima de um nome não rolava nada: a
+     lista era um bloco parado que cortava no fim da tela. `pan-y` devolve o
+     eixo vertical ao navegador e deixa o horizontal para o arrasto, que é
+     justamente a direção em que a peça sai da folha para o tabuleiro. */
+  body.grid-mob .gr-lista .gr-ficha { touch-action: pan-y; }
+
+  /* ---- a barra de rolar da lista ----
+     Feita à mão, e não a do navegador: no celular a barra nativa é um risco
+     fininho que aparece meio segundo e não recebe toque. Esta tem 1,5rem de
+     alvo, fica sempre à vista quando há o que rolar, e diz de relance QUANTO
+     da lista está na tela. */
+  .gr-rolar { display: none; }
+  body.grid-mob .gr-rolar:not([hidden]) { display: block; position: absolute;
+    right: 0; top: .15rem; bottom: .15rem; width: 1.5rem; touch-action: none; cursor: grab; }
+  .gr-rolar::before { content: ''; position: absolute; left: 50%; transform: translateX(-50%);
+    top: 0; bottom: 0; width: 4px; border-radius: 999px;
+    background: color-mix(in srgb, var(--ink-soft) 20%, transparent); }
+  .gr-rolar-p { position: absolute; left: 50%; transform: translateX(-50%); width: 9px;
+    border-radius: 999px; background: color-mix(in srgb, var(--accent) 75%, transparent);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--bg) 60%, transparent); }
+  .gr-rolar.pegando { cursor: grabbing; }
+  .gr-rolar.pegando .gr-rolar-p { background: var(--accent); width: 11px; }
 
   /* A folha dos efeitos: cabeçalho e lista, do tamanho do que tem. */
   .gr-ef-folha { display: none; }
@@ -2056,6 +2093,7 @@ const SETAS = [
     ligarBarra();
     ligarCelular();
     ligarFilaDeslizante();
+    ligarBarraDaLista();
     ligarAparencia();
     ligarArrasto();
     ligarMenuToken();
@@ -3722,6 +3760,60 @@ const SETAS = [
     lista.classList.toggle('mais-dir', desliza && !noFim);
   }
 
+  /**
+   * A BARRA DE ROLAR DA LISTA, à mão.
+   *
+   * A nativa do celular é um risco de dois pixels que aparece meio segundo
+   * depois do gesto e não recebe toque nenhum: ela avisa que rolou, não deixa
+   * rolar. Esta é um alvo de 1,5rem, fica à vista enquanto houver o que rolar,
+   * e o tamanho do polegar diz que fatia da lista está na tela.
+   */
+  let ATUALIZAR_ROLAR: (() => void) | null = null;
+  function ligarBarraDaLista() {
+    const lista = el('gr-lista');
+    const barra = el('gr-rolar');
+    const polegar = el('gr-rolar-p');
+
+    const atualizar = () => {
+      const h = lista.clientHeight;
+      const total = lista.scrollHeight;
+      const precisa = MOB && total > h + 2;
+      (barra as HTMLElement).hidden = !precisa;
+      if (!precisa) return;
+      // Piso de 28px no polegar: proporcional é honesto, mas numa lista de
+      // cinquenta ele viraria um ponto que o dedo não pega.
+      const alt = Math.max(28, Math.round((h * h) / total));
+      const andar = Math.max(1, total - h);
+      polegar.style.height = `${alt}px`;
+      polegar.style.top = `${Math.round((h - alt) * (lista.scrollTop / andar))}px`;
+    };
+    ATUALIZAR_ROLAR = atualizar;
+
+    // Onde o dedo tocou, a lista vai: o meio do polegar acompanha o dedo, então
+    // encostar no meio da barra leva ao meio da lista sem arrastar nada.
+    const irPara = (y: number) => {
+      const r = barra.getBoundingClientRect();
+      const alt = polegar.offsetHeight || 28;
+      const p = Math.min(1, Math.max(0, (y - r.top - alt / 2) / Math.max(1, r.height - alt)));
+      lista.scrollTop = p * Math.max(0, lista.scrollHeight - lista.clientHeight);
+    };
+    let pegando = false;
+    barra.addEventListener('pointerdown', (ev) => {
+      pegando = true;
+      barra.setPointerCapture?.(ev.pointerId);
+      barra.classList.add('pegando');
+      irPara(ev.clientY);
+      ev.preventDefault();
+    });
+    barra.addEventListener('pointermove', (ev) => { if (pegando) irPara(ev.clientY); });
+    const soltar = () => { pegando = false; barra.classList.remove('pegando'); };
+    barra.addEventListener('pointerup', soltar);
+    barra.addEventListener('pointercancel', soltar);
+    lista.addEventListener('scroll', atualizar, { passive: true });
+    try { new ResizeObserver(atualizar).observe(lista); } catch {}
+    atualizar();
+  }
+
   function ligarFilaDeslizante() {
     const lista = el('gr-ini');
     const passo = () => Math.max(90, Math.round(lista.clientWidth * 0.7));
@@ -4116,6 +4208,8 @@ const SETAS = [
         ${t ? `<span class="gr-fq">no mapa</span>` : ''}
       </div>`;
     };
+    // A lista mudou de tamanho: a barra de rolar mede de novo.
+    requestAnimationFrame(() => ATUALIZAR_ROLAR?.());
     const gente = COMBS.filter((c: any) => c.tipo !== 'criatura');
     const bichos = COMBS.filter((c: any) => c.tipo === 'criatura');
     // O rótulo do grupo só aparece quando há os dois: com uma cena só de
@@ -4210,6 +4304,8 @@ const SETAS = [
    * parecer um tabuleiro e não um formulário.
    */
   let ARR: { id: string; deOnde: 'lista' | 'mapa'; ghost: HTMLElement } | null = null;
+  /** Onde o dedo pousou num retrato da folha, enquanto o gesto não se decidiu. */
+  let SAIR: { x: number; y: number } | null = null;
   let ALVO: { q: number; r: number } | null = null;
 
   function ligarArrasto() {
@@ -4228,11 +4324,12 @@ const SETAS = [
       // arrastar o goblin é gesto exploratório, não erro, e um aviso a cada
       // toque no mapa alheio viraria ruído.
       if (!mandoNela(c)) return;
-      // No telefone a lista mora numa folha que TAPA o tabuleiro, e arrastar
-      // para um hexágono que não se vê é arrastar às cegas. A folha sai da
-      // frente no primeiro toque; o arrasto segue o ponteiro pelo documento e
-      // não se perde com ela.
-      if (MOB && naLista) abrirFolha(null);
+      // No telefone a folha só sai da frente quando o gesto se decidir: sair no
+      // primeiro toque fechava a lista de quem só queria rolá-la. Quem decide é
+      // a direção, no `pointermove` (para o lado é arrasto, para cima e para
+      // baixo é rolagem), e é o `pointercancel` que limpa o fantasma quando o
+      // navegador toma o gesto para rolar.
+      if (MOB && naLista) SAIR = { x: ev.clientX, y: ev.clientY };
       ev.preventDefault();
 
       const ghost = document.createElement('div');
@@ -4249,12 +4346,27 @@ const SETAS = [
       moverGhost(ghost, ev.clientX, ev.clientY);
 
       ARR = { id: cid, deOnde: naLista ? 'lista' : 'mapa', ghost };
+      // Enquanto o gesto não se decidiu, o fantasma não aparece: quem só ia
+      // rolar a lista veria um retrato colado no dedo por meio segundo.
+      if (SAIR) ghost.style.display = 'none';
       if (noMapa) noMapa.classList.add('arrastando');
       (ev.target as HTMLElement).setPointerCapture?.(ev.pointerId);
     });
 
     document.addEventListener('pointermove', (ev) => {
       if (!ARR) return;
+      // O GESTO SE DECIDE AQUI. Para o lado é arrasto, e aí a folha sai da
+      // frente para o hexágono aparecer debaixo do dedo; para cima e para baixo
+      // é rolagem, e quem cuida dela é o navegador (o `touch-action: pan-y` do
+      // retrato), que avisa por `pointercancel`.
+      if (SAIR) {
+        const dx = Math.abs(ev.clientX - SAIR.x), dy = Math.abs(ev.clientY - SAIR.y);
+        if (dy > 10 && dy >= dx) return;
+        if (dx <= 10) return;
+        SAIR = null;
+        ARR.ghost.style.display = '';
+        abrirFolha(null);
+      }
       moverGhost(ARR.ghost, ev.clientX, ev.clientY);
       marcarAlvo(ev.clientX, ev.clientY);
       // Soltar sobre a lista tira do mapa: destacar a coluna diz isso antes de
@@ -4262,7 +4374,21 @@ const SETAS = [
       el('gr-lado').classList.toggle('solta', ARR.deOnde === 'mapa' && sobreALista(ev.clientX, ev.clientY));
     });
 
+    // O navegador tomou o gesto para rolar a lista: o fantasma sai de cena sem
+    // pousar peça nenhuma. Sem isto ele ficava pendurado no dedo para sempre.
+    document.addEventListener('pointercancel', () => {
+      SAIR = null;
+      if (!ARR) return;
+      ARR.ghost.remove();
+      ARR = null;
+      el('gr-lado').classList.remove('solta');
+      document.querySelectorAll('.gr-token.arrastando').forEach((t) => t.classList.remove('arrastando'));
+      limparAlvo(); limparSeta();
+    });
+
     document.addEventListener('pointerup', async (ev) => {
+      const rolava = !!SAIR;
+      SAIR = null;
       if (!ARR) return;
       const { id, deOnde } = ARR;
       ARR.ghost.remove();
@@ -4271,6 +4397,9 @@ const SETAS = [
       const destino = ALVO;
       limparAlvo(); limparSeta();
       ARR = null;
+      // O dedo pousou num retrato e levantou sem sair do lugar: era toque, e
+      // não arrasto. A folha continua aberta e nada vai para o mapa.
+      if (rolava) return;
 
       if (deOnde === 'mapa' && sobreALista(ev.clientX, ev.clientY)) { await tirarDoMapa(id); return; }
       // SOLTAR EM CIMA DE ALGUÉM É ATACAR.
@@ -6823,6 +6952,8 @@ const SETAS = [
       document.getElementById('ga-' + f)?.setAttribute('aria-expanded', String(f === qual));
     });
     b.classList.toggle('com-folha', !!qual);
+    // A lista só tem altura depois de a folha abrir: medir antes dá zero.
+    if (qual === 'campo') requestAnimationFrame(() => ATUALIZAR_ROLAR?.());
   }
 
   /**
