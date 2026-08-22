@@ -292,11 +292,16 @@ Sete coisas saíram diferentes do que este documento previa, e todas por medida 
   lê DEPOIS da cena, e não durante); o ↶ desfazer foi junto, porque é do registro que ele fala. Os
   **efeitos ganharam cabeçalho, contagem e dobra**, como "Em campo" sempre teve.
 
-  A repartição entre as duas não é meio a meio: **os efeitos pedem o tamanho do que têm** (até um
-  teto de 40dvh, senão uma cena de oito Artes tomaria a folha) e **"Em campo" fica com todo o
-  resto**. É isso que faz recolher os Efeitos DEVOLVER o espaço em vez de reparti-lo de novo: com as
-  duas flexíveis, cada dobra redistribuía as duas e a lista encolhia junto com a caixa que se
-  fechara. Medido na bancada: recolher os efeitos leva a lista de 344px para 628.
+  E depois os efeitos saíram também: a caixa deles virou **folha própria**, atrás de um slot **✦**
+  na barra do polegar, que só existe quando há algo no ar e leva a contagem num selo. É a mesma
+  troca das outras duas, pelo mesmo motivo: numa folha que se consulta no meio da luta, quem divide
+  a altura com "Em campo" tem de merecer a metade. A folha do Campo ficou de "Em campo", e de mais
+  nada.
+
+  O painel dos efeitos **não foi duplicado**: ele muda de casa (o `mudarDeCasa`, o mesmo do ⚄ e do
+  custo) e volta para o meio da coluna do notebook quando a janela cresce. Isso obrigou a memória
+  das mudanças de casa a guardar o **lugar**, e não só o pai: o painel mora entre a lista e o
+  registro, e um `appendChild` na volta o jogaria para o fim da coluna.
 
   De quebra, o registro aberto pelo jogador não mostra mais o ✎ nem o ✕: ler é dele, arrumar
   continua sendo da mesa. E a folha, tomando a tela toda, ganhou um **✕**: o ☰ da barra continua

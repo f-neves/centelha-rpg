@@ -1278,25 +1278,10 @@ async function cenaCelular(br, url, { papel = 'mestre' } = {}) {
         'a folha toma a tela inteira, e diz por onde se sai');
       ok(caixas.lista && caixas.dobrou && caixas.voltou,
         'e a caixa de quem está em campo recolhe e volta');
-      // Recolher os Efeitos DEVOLVE o espaço a Em campo. As duas linhas de
-      // efeito são de mentira: o que se prova aqui é a regra de layout, e a
-      // bancada não tem Arte no ar.
-      const espaco = await p.evaluate(async () => {
-        const box = document.getElementById('gr-ef-lista');
-        box.innerHTML = '<div class="gr-efl">a</div>'.repeat(6);
-        box.hidden = false;
-        document.getElementById('gr-ef-cab').hidden = false;
-        await new Promise((r) => setTimeout(r, 120));
-        const lista = document.getElementById('gr-lista');
-        const comEfeitos = lista.getBoundingClientRect().height;
-        document.getElementById('gr-ef-dobrar').click();
-        await new Promise((r) => setTimeout(r, 120));
-        const semEfeitos = lista.getBoundingClientRect().height;
-        document.getElementById('gr-ef-dobrar').click();
-        return { comEfeitos: Math.round(comEfeitos), semEfeitos: Math.round(semEfeitos) };
-      });
-      ok(espaco.semEfeitos >= espaco.comEfeitos,
-        `recolher os Efeitos devolve o espaço a Em campo (${espaco.comEfeitos} → ${espaco.semEfeitos}px)`);
+      ok(!(await p.evaluate(() => {
+        const e = document.querySelector('.gr-lado #gr-ef-lista');
+        return !!e && getComputedStyle(e).display !== 'none';
+      })), 'e os efeitos também saíram: a folha do Campo é de "Em campo", e de mais nada');
     }
     const c = await pisoDeToque();
     ok(c.length === 0, `e nada dentro dela fica abaixo de 44px (${c.slice(0, 3).join(', ') || 'nenhum'})`);
@@ -1305,6 +1290,39 @@ async function cenaCelular(br, url, { papel = 'mestre' } = {}) {
   }
   const fechou = await p.evaluate(() => document.body.classList.contains('com-folha'));
   ok(!fechou, 'e o mesmo botão que abriu fecha');
+
+  // -------------------------------------------- a folha do ✦, e o slot dela
+  // As duas linhas de efeito são de mentira: a bancada não tem Arte no ar, e o
+  // que se prova aqui é o encanamento (o slot que acende com a conta, a folha
+  // que abre, e o painel que é o MESMO da coluna, e não uma segunda lista).
+  if (papel === 'mestre') {
+    const noAr = await p.evaluate(async () => {
+      const box = document.getElementById('gr-ef-lista');
+      box.innerHTML = '<div class="gr-efl">a</div><div class="gr-efl">b</div>';
+      box.hidden = false;
+      document.getElementById('gr-ef-cab').hidden = false;
+      // O ⏭ repinta a fila, e é a fila que sincroniza a barra do polegar.
+      document.getElementById('ini-prox').click();
+      await new Promise((r) => setTimeout(r, 700));
+      const slot = document.getElementById('ga-efeitos');
+      const antes = { aceso: !slot.hidden, conta: document.getElementById('ga-ef-n').textContent };
+      slot.click();
+      await new Promise((r) => setTimeout(r, 450));
+      const f = document.getElementById('gr-ef-folha');
+      const r = f.getBoundingClientRect();
+      return { ...antes, alt: Math.round(r.height),
+        colada: Math.abs(r.bottom - innerHeight) < 2 && Math.abs(r.left) < 2,
+        painel: !!f.querySelector('#gr-ef-lista'),
+        linhas: f.querySelectorAll('.gr-efl').length };
+    });
+    ok(noAr.aceso && noAr.conta === '2',
+      `o ✦ acende na barra quando há Arte no ar, com a conta (${noAr.conta || 'vazia'})`);
+    ok(noAr.colada && noAr.linhas === 2,
+      `e abre a folha dos efeitos, do tamanho do que tem (${noAr.alt}px)`);
+    ok(noAr.painel, 'a folha usa o MESMO painel da coluna, e não uma segunda lista');
+    await p.evaluate(() => document.getElementById('gr-ef-x').click());
+    await espera(350);
+  }
 
   // ------------------------------------------------------ a tira da ordem
   // O cartão inteiro tem 11,5rem e diz cinco coisas: numa janela de 390px cabem

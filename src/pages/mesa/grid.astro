@@ -205,6 +205,8 @@ const SETAS = [
               aria-controls="gr-ef-lista" title="Recolher os efeitos no ar">▾</button>
             <h3 class="col-h">Efeitos no ar</h3>
             <span class="gr-ef-n" id="gr-ef-n"></span>
+            <button type="button" class="btn-fant gr-folha-x" id="gr-ef-x"
+              aria-label="Fechar" title="Fechar">✕</button>
           </div>
           <div id="gr-ef-lista" class="gr-ef-lista" hidden></div>
 
@@ -224,6 +226,13 @@ const SETAS = [
           lateral, a barra da mesa) presas no pé e deslizando para dentro. Uma
           cópia para o celular divergiria da primeira no primeiro conserto. */}
       <div class="gr-scrim" id="gr-scrim" aria-hidden="true"></div>
+      {/* A CASA DOS EFEITOS NO TELEFONE. Nasce vazia: o painel é o MESMO da
+          coluna do notebook, e ele muda de casa quando a janela encolhe. Uma
+          segunda lista de efeitos divergiria da primeira no primeiro campo
+          novo, e as duas leem o mesmo `ATIVOS`.
+          `ef-folha` e não `efeitos`: `gr-efeitos` já é a CAMADA do tabuleiro
+          onde as Artes são desenhadas, e ela é repintada por innerHTML. */}
+      <aside class="gr-ef-folha" id="gr-ef-folha"></aside>
       {/* A FAIXA DA VEZ, do jogador. O mestre conduz o relógio e sabe de quem é
           a vez porque foi ele quem a passou; o jogador está com o telefone na
           mão, às vezes na conversa ao lado, e a única pergunta que ele faz à
@@ -236,6 +245,11 @@ const SETAS = [
         <button type="button" class="ga-b ga-prox" id="ga-prox" hidden><i aria-hidden="true">⏭</i><small>próximo</small></button>
         <button type="button" class="ga-b" id="ga-agir"><i aria-hidden="true">⚔</i><small>agir</small></button>
         <button type="button" class="ga-b" id="ga-campo" aria-expanded="false"><i aria-hidden="true">☰</i><small>campo</small></button>
+        {/* O ✦ só existe quando há algo no ar, e leva a conta junto: um slot que
+            abre folha vazia é ruído, e o número na barra responde "quantas
+            Artes estão de pé?" sem abrir nada. */}
+        <button type="button" class="ga-b" id="ga-efeitos" aria-expanded="false" hidden><i
+          aria-hidden="true">✦</i><small>efeitos</small><span class="ga-n" id="ga-ef-n"></span></button>
         <button type="button" class="ga-b" id="ga-arena" aria-expanded="false" hidden><i aria-hidden="true">⧉</i><small>arena</small></button>
         <button type="button" class="ga-b" id="ga-mais" aria-expanded="false"><i aria-hidden="true">⋯</i><small>mais</small></button>
       </nav>
@@ -1415,6 +1429,7 @@ const SETAS = [
      foco: o Tab caminharia por dentro de uma folha fechada. */
   body.grid-mob .gr-barra,
   body.grid-mob .gr-lado,
+  body.grid-mob .gr-ef-folha,
   body.grid-mob .mesa-barra {
     position: fixed; left: 0; right: 0; bottom: 0; top: auto; z-index: 130;
     max-height: 80dvh; overflow-y: auto; margin: 0; width: auto;
@@ -1426,10 +1441,12 @@ const SETAS = [
     transition: transform .22s ease, visibility 0s linear .22s; }
   body.grid-mob.folha-arena .gr-barra,
   body.grid-mob.folha-campo .gr-lado,
+  body.grid-mob.folha-efeitos .gr-ef-folha,
   body.grid-mob.folha-mais .mesa-barra {
     transform: none; visibility: visible; transition: transform .22s ease, visibility 0s; }
   @media (prefers-reduced-motion: reduce) {
-    body.grid-mob .gr-barra, body.grid-mob .gr-lado, body.grid-mob .mesa-barra { transition: none; }
+    body.grid-mob .gr-barra, body.grid-mob .gr-lado,
+    body.grid-mob .gr-ef-folha, body.grid-mob .mesa-barra { transition: none; }
   }
   .so-estreito { display: none; }
   body.grid-mob .so-largo { display: none; }
@@ -1494,17 +1511,20 @@ const SETAS = [
     top: 0; height: 100dvh; max-height: none;
     border-radius: 0; border-top: 0; border-left: 0; border-right: 0;
     padding-bottom: calc(var(--ga-h) + .5rem); }
-  /* QUEM MANDA NA ALTURA É "EM CAMPO". Os efeitos pedem o tamanho do que têm
-     (com teto, senão uma cena de oito Artes tomaria a folha) e a lista fica com
-     todo o resto. É isto que faz recolher os Efeitos DEVOLVER o espaço em vez
-     de reparti-lo de novo: com as duas flexíveis, cada dobra redistribuía as
-     duas, e a lista encolhia junto com a caixa que se fechou. */
+  /* A folha do Campo é de "Em campo", e de mais nada: a lista toma a altura
+     inteira. Os efeitos saíram para a folha do ✦, e o registro para a da Arena,
+     porque as duas eram vizinhas que só tiravam altura de quem se consulta no
+     meio da luta. */
   body.grid-mob .gr-lista { flex: 1 1 auto; min-height: 6rem; max-height: none; overflow-y: auto; }
-  /* Sem encolher: os efeitos pedem o tamanho do que têm (até o teto) e quem
-     cede é a lista, que tem doze linhas e um piso. Com os dois encolhendo, o que
-     estava no ar era espremido junto e nenhuma das duas caixas ficava legível. */
-  body.grid-mob .gr-ef-lista { flex: 0 0 auto; max-height: 40dvh; overflow-y: auto; }
-  body.grid-mob .gr-lado > :not(.gr-lista):not(.gr-ef-lista) { flex: 0 0 auto; }
+  body.grid-mob .gr-lado > :not(.gr-lista) { flex: 0 0 auto; }
+
+  /* A folha dos efeitos: cabeçalho e lista, do tamanho do que tem. */
+  .gr-ef-folha { display: none; }
+  body.grid-mob .gr-ef-folha { display: flex; flex-direction: column; }
+  body.grid-mob .gr-ef-folha .gr-reg-cab { margin-top: 0; }
+  /* A dobra do cabeçalho não faz sentido aqui: a folha inteira é a dobra. */
+  body.grid-mob #gr-ef-dobrar { display: none; }
+  body.grid-mob .gr-ef-folha .gr-ef-lista { max-height: 68dvh; overflow-y: auto; }
   body.grid-mob .gr-reg-log, body.grid-mob .gr-log { display: none; }
   /* O ✕ da folha de tela inteira. */
   .gr-folha-x { display: none; }
@@ -1641,6 +1661,11 @@ const SETAS = [
   .ga-b[aria-expanded="true"] { background: color-mix(in srgb, var(--accent) 20%, transparent); }
   .ga-b[aria-expanded="true"] small { color: var(--accent-texto); }
   .ga-b:disabled { opacity: .35; }
+  .ga-b { position: relative; }
+  .ga-n { position: absolute; top: .1rem; right: .55rem; min-width: 1.05rem; padding: 0 .18rem;
+    border-radius: 999px; background: var(--accent); color: var(--on-accent, #10231f);
+    font-family: 'Cinzel'; font-size: calc(var(--fs-micro) * .78); font-weight: 700;
+    line-height: 1.25; text-align: center; font-variant-numeric: tabular-nums; }
   .ga-rel { cursor: default; }
   .ga-rel b { font-family: 'Cinzel'; font-size: 1.4rem; line-height: 1;
     color: var(--accent-texto); font-variant-numeric: tabular-nums; }
@@ -6676,6 +6701,7 @@ const SETAS = [
     (el('gr-ef-cab') as HTMLElement).hidden = box.hidden;
     const n = box.querySelectorAll('.gr-efl').length;
     el('gr-ef-n').textContent = n ? String(n) : '';
+    sincronizarApp();
   }
 
   function ligarDobra() {
@@ -6781,7 +6807,7 @@ const SETAS = [
    * mesma conta divergem no primeiro conserto.
    */
   const MQ_MOB = matchMedia('(max-width: 900px)');
-  const FOLHAS = ['arena', 'campo', 'mais'] as const;
+  const FOLHAS = ['arena', 'campo', 'efeitos', 'mais'] as const;
   type Folha = (typeof FOLHAS)[number];
   let MOB = false;
 
@@ -6844,6 +6870,16 @@ const SETAS = [
     (meu.querySelector('small') as HTMLElement).textContent = c ? `+${c[1]}t` : 'próximo';
     (el('ga-agir') as HTMLButtonElement).disabled = !pecaParaAgir();
 
+    // O ✦ lê o painel, como o ⏭ lê o botão de verdade: quem conta os efeitos é
+    // `pintarColunaEfeitos`, e aqui só se olha o que ele deixou na tela.
+    const caixa = el('gr-ef-lista');
+    const noAr = caixa.hidden ? 0 : caixa.querySelectorAll('.gr-efl').length;
+    (el('ga-efeitos') as HTMLElement).hidden = !noAr;
+    el('ga-ef-n').textContent = noAr ? String(noAr) : '';
+    // A última Arte caiu com a folha aberta: ela fecha sozinha, em vez de ficar
+    // no ar dizendo que não há nada no ar.
+    if (!noAr && folhaAberta() === 'efeitos') abrirFolha(null);
+
     // A faixa é do jogador: o mestre passa o relógio, e quem passa sabe para
     // quem passou.
     const vez = daVez();
@@ -6861,15 +6897,26 @@ const SETAS = [
   }
 
   /** Muda de casa sem duplicar: guarda de onde veio para saber voltar. */
-  const MORADA = new WeakMap<HTMLElement, HTMLElement>();
+  /**
+   * O LUGAR, e não só o pai: quem volta para casa volta para a mesma prateleira.
+   *
+   * Guardar só o pai bastava enquanto o que mudava de casa era o último filho.
+   * O painel de efeitos mora no MEIO da coluna do notebook, entre a lista e o
+   * registro, e um `appendChild` na volta o jogaria para o fim: a janela do
+   * mestre mudaria de ordem depois de encolher e crescer de novo.
+   */
+  const MORADA = new WeakMap<HTMLElement, { pai: HTMLElement; depois: Element | null }>();
   function mudarDeCasa(quem: HTMLElement | null, destino: HTMLElement | null, antes?: HTMLElement | null) {
     if (!quem || !destino || quem.parentElement === destino) return;
-    if (!MORADA.has(quem)) MORADA.set(quem, quem.parentElement!);
+    if (!MORADA.has(quem)) MORADA.set(quem, { pai: quem.parentElement!, depois: quem.nextElementSibling });
     destino.insertBefore(quem, antes || null);
   }
   function voltarParaCasa(quem: HTMLElement | null) {
     const casa = quem && MORADA.get(quem);
-    if (quem && casa && quem.parentElement !== casa) casa.appendChild(quem);
+    if (!quem || !casa || quem.parentElement === casa.pai) return;
+    // A vizinha pode ter mudado de casa também: nesse caso vale o fim da fila.
+    const depois = casa.depois && casa.depois.parentElement === casa.pai ? casa.depois : null;
+    casa.pai.insertBefore(quem, depois);
   }
 
   function ligarCelular() {
@@ -6904,8 +6951,13 @@ const SETAS = [
         mudarDeCasa(rolar, el('gr-btns'), fim);
         mudarDeCasa(custo, el('gr-btns'), fim);
         mudarDeCasa(el('gr-desfazer'), el('gr-btns'), fim);
+        // O painel dos efeitos sai da coluna e vira folha: é o mesmo painel, e
+        // não uma segunda lista.
+        mudarDeCasa(el('gr-ef-cab'), el('gr-ef-folha'));
+        mudarDeCasa(el('gr-ef-lista'), el('gr-ef-folha'));
       } else {
         voltarParaCasa(custo); voltarParaCasa(rolar); voltarParaCasa(el('gr-desfazer'));
+        voltarParaCasa(el('gr-ef-cab')); voltarParaCasa(el('gr-ef-lista'));
       }
       (el('ga-arena') as HTMLElement).hidden = !MESTRE;
       sincronizarApp();
@@ -6920,6 +6972,8 @@ const SETAS = [
     const alterna = (f: Folha) => () => abrirFolha(folhaAberta() === f ? null : f);
     el('ga-arena').onclick = alterna('arena');
     el('ga-campo').onclick = alterna('campo');
+    el('ga-efeitos').onclick = alterna('efeitos');
+    el('gr-ef-x').onclick = () => abrirFolha(null);
     el('ga-mais').onclick = alterna('mais');
     el('ga-prox').onclick = () => { abrirFolha(null); (el('ini-prox') as HTMLButtonElement).click(); };
     el('gr-vez').onclick = () => (el('ga-agir') as HTMLButtonElement).click();
