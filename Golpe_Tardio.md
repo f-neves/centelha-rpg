@@ -321,6 +321,88 @@ antes de fechar.
 
 ---
 
+## 11. Todas as regras de deslocamento que existem
+
+Varredura feita a pedido da mesa, antes de fechar a decisão 11. São **seis** regras, e três delas
+mudam a conversa.
+
+### As seis
+
+| Regra | Onde | Quanto |
+|---|---|---|
+| **Deslocamento livre** | `derivados.deslocamento.normal`, capítulo de Combate | (Des + Atl) ÷ 2 metros, **de graça**, durante qualquer ação |
+| **Corrida** | `derivados.deslocamento.arranque` e `.corrida` | Velocidade 3, interrompível a qualquer Tick. Arranque nos 3 primeiros Ticks: (For + Atl) ÷ 2 + Des metros **por Tick**; depois Des × 1,5 + Atl |
+| **Salto** | `.saltoVertical`, `.saltoHorizontal*` | Velocidade 3, **não** interrompível |
+| **Desvio de emergência** | §5.5 do Arcano, capítulo de Combate | **1 Tick por metro**, fora da própria vez, e os Ticks empurram a próxima ação |
+| **Abortar o Preparo** | `combate.abortar.ticksPorMetro` | **1 Tick por metro** |
+| **Deslocamento na Recuperação** | `combate.recuperacao.deslocamentoTicksPorMetro` | **2 Ticks por metro** |
+
+Mais dois modificadores que ninguém tinha trazido para esta conversa:
+
+- **A armadura tira metade da Penalidade em metros** (`dano.penalidade.movimento`): a pesada custa
+  −1 m no Livre, no Arranque, na Corrida e no Salto Horizontal.
+- **Anão, gnomo e halfling andam metade** (`racas.json`, "Baixa estatura").
+
+E uma ausência que importa: **não existe zona de controle nem ataque de oportunidade.** Ninguém é
+punido por sair de perto de ninguém. A única reação do sistema é a **ação fora de hora**, que é
+paga e voluntária, e não um gatilho.
+
+### Achado 1 · o passo é muito maior que o alcance
+
+| Perfil | Deslocamento livre | Anão / gnomo | Arranque |
+|---|:---:|:---:|:---:|
+| camponês (Des 1, Atl 2) | 1,5 m | 0,75 m | 3,0 m/Tick |
+| aventureiro (Des 3, Atl 4) | 3,5 m | 1,75 m | 6,5 m/Tick |
+| guerreiro de placa (Des 2, Atl 3) | **1,5 m** | 0,75 m | 5,0 m/Tick |
+| duelista leve (Des 5, Atl 4) | **4,5 m** | 2,25 m | 8,5 m/Tick |
+| herói (Des 5, Atl 6) | 4,5 m | 2,25 m | 9,5 m/Tick |
+
+O alcance do corpo a corpo é **1 metro** (dois na haste). Ou seja: **todo mundo desliza de graça
+mais do que o braço alcança**, e o guerreiro de placa é justamente quem desliza menos.
+
+Entre **iguais** (3,5 m de cada lado), o alvo desliza 3,5 e o atacante acompanha 3,5 mais 1 de
+alcance: o golpe cai. Entre o **duelista e o guerreiro de placa**, o duelista desliza 4,5 e o
+guerreiro só cobre 2,5: **o golpe erra, e erra sempre**, porque nada nisso é aleatório.
+
+Isso é bonito como fantasia (o ágil não é alcançado pelo lento) e perigoso como regra: **é
+determinístico, é de graça e não tem contrapartida.** O duelista entra, bate e sai, todo turno, e
+o martelo nunca encosta.
+
+### Achado 2 · o Arcano já decidiu isto, do outro lado
+
+`arcano.tempoDaArte.area.deslocamentoLivre` diz, sobre escapar de uma área que está sendo montada:
+
+> *"Quem leu o sinal com Ticks de sobra simplesmente não está mais lá, e **não paga nada por
+> isso**."*
+
+E `.contraOPasso` explica o princípio: *"Um molde só prende quem não sai dele de graça. O
+Deslocamento livre humano vai de 1,5 a 5 m, e a escada do lado da base (0,5 · 1 · 2 · 3 · 4 · 5 ·
+6 m) atravessa exatamente essa faixa."* Ou seja: **a Arte foi calibrada contra o passo**, de
+propósito, e o grau baixo serve para pegar quem está preso.
+
+O corpo a corpo não foi. O alcance de 1 m está abaixo do passo de **todo mundo**, inclusive o do
+camponês. Pela mesma lógica que rege a Arte, **o golpe corpo a corpo nunca deveria alcançar quem
+tem Ticks de sobra** — e é isso que a decisão 11 precisa aceitar ou recusar.
+
+### Achado 3 · o preço de andar varia treze vezes
+
+Postos no mesmo eixo, para um aventureiro:
+
+| Como | Ticks por metro |
+|---|:---:|
+| Deslocamento livre, na própria ação | **0,00** |
+| Corrida (Velocidade 3, 6,5 m por Tick) | **0,15** |
+| Desvio de emergência, fora da vez | 1,00 |
+| Abortar o Preparo | 1,00 |
+| **Deslocamento na Recuperação (K20)** | **2,00** |
+
+Andar na Recuperação custa **treze vezes** o preço de correr na própria vez. A diferença tem
+justificativa (é movimento fora da vez, sem gastar ação), mas o número faz dela uma regra que
+ninguém vai usar: 3 metros na Recuperação custam 6 Ticks, quase uma ação inteira, e a mesma
+distância na própria vez sai por uma fração disso. **Vale reabrir o K20 com esse número na mão.**
+
+---
+
 ## Fontes internas
 
 - `Combate_Tempo.md` §4 (o que interromper compra), §8 (ler o sinal), §14.6 e §14.7 (o que cabe em
