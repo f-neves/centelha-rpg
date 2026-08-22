@@ -1498,7 +1498,7 @@ export function montarFicha(opts: FichaOpts) {
         const mp = (v: number) => Math.max(0, v - penMov);
         const cmp = (v: number) => Math.max(0, v - penMov * 10);
         const ps = penMov ? ` − ½ penalidade (${penMov})` : '';
-        return r('Deslocamento livre', `${mp(dz.normal)} m`, `2 + (Destreza ${dex} + Atletismo ${SK('atletismo')}) ÷ 4${notaR}${ps} = ${mp(dz.normal)} m na ação · é um Tick de movimento, ou seja ${mp(dz.normal)} m/s`, true) +
+        return r('Desloc. de Batalha', `${mp(dz.normal)} m/Tick`, `2 + (Destreza ${dex} + Atletismo ${SK('atletismo')}) ÷ 4${notaR}${ps} = ${mp(dz.normal)} m por Tick · o PRIMEIRO Tick é grátis durante outra ação (atacar, conjurar); daí em diante custa 1 Tick por Tick de movimento. Como o Tick é ~1 segundo, o número também é a sua velocidade em m/s: andar são 1,5 e correr passa de 5`, true) +
           r('Vel. de Arranque', `${mp(dz.arranque)} m/s`, `2 + Força ${A('forca')} ÷ 4 + Atletismo ${SK('atletismo')} ÷ 4 + Destreza ${dex} ÷ 2 · Ticks 1–3${notaR}${ps}`, true) +
           r('Vel. de Corrida', `${mp(dz.corrida)} m/s`, `4 + Destreza ${dex} × ¾ + Atletismo ${SK('atletismo')} ÷ 2 · Tick 4+${notaR}${ps}`, true) +
           r('Salto Vertical', `${cmp(dz.saltoVertical)} cm`, `Força ${A('forca')}×20 + Atletismo ${SK('atletismo')}×10 + Destreza ${dex}×4 + Centelha ${C}×50${notaR}`, true) +

@@ -176,13 +176,20 @@ A **Centelha rompe o limite mortal:** cada ponto de Centelha do defensor **sobe 
 
 Mas **nem tudo se bloqueia ou se esquiva**: uma avalanche, uma onda de fogo, uma rede bem lançada cobram outra saída.
 
-**Contra área, a saída é sair.** Área não vem de uma direção, ela ocupa o espaço, então não há número de Esquiva nem de Bloqueio a opor. Quem está dentro ou sai **de graça na própria vez**, pelo Deslocamento livre, ou paga **1 Tick por metro** num desvio de emergência fora da vez, e esses Ticks empurram a próxima ação dele para frente. A regra inteira, com as Dificuldades e o que ainda assim se sofre, está em [O tempo da Arte](/artes/regras#tempo).
+**Contra área, a saída é sair.** Área não vem de uma direção, ela ocupa o espaço, então não há número de Esquiva nem de Bloqueio a opor. Quem está dentro ou sai **de graça na própria vez**, pelo primeiro Tick do Deslocamento de Batalha, ou paga **1 Tick por metro** num desvio de emergência fora da vez, e esses Ticks empurram a próxima ação dele para frente. A regra inteira, com as Dificuldades e o que ainda assim se sofre, está em [O tempo da Arte](/artes/regras#tempo).
 
 ## Movimento: Deslocamento, Corrida e Salto
 
-O **Deslocamento livre** é a distância que você desliza **de graça durante outra ação** (atacar, conjurar) — em qualquer direção, sem gastar a vez. É o arqueiro que recua e dispara, o duelista que circula enquanto golpeia:
+O jogo tem **um só número de andar em combate**, e ele serve para duas coisas: o passo que você dá de graça enquanto faz outra coisa, e o quanto você cobre por Tick quando decide que andar é a ação.
 
-<p class="formula">Deslocamento livre (m) = 2 + (Destreza + Atletismo) ÷ 4</p>
+<p class="formula">Deslocamento de Batalha (m por Tick) = 2 + (Destreza + Atletismo) ÷ 4</p>
+
+- **O primeiro Tick é de graça durante outra ação** (atacar, conjurar), em qualquer direção e sem gastar a vez. É o arqueiro que recua e dispara, o duelista que circula enquanto golpeia.
+- **Para ir além, cada Tick a mais rende outro tanto.** Não há ação separada nem tabela: andar cobra Tick como qualquer outra coisa, e você para quando quiser.
+
+Ele é, na prática, **um Tick de movimento**: como um Tick é mais ou menos um segundo, o número em metros é também a sua velocidade em metros por segundo. A faixa é humana de propósito — **de 2 a 5 m/s**. Andar tranquilo são 1,4; fechar distância numa briga, sem perder a guarda nem o equilíbrio, fica entre 2 e 4; e o teto de 5 é o acrobata. O resto do tempo da ação você não está andando, está lutando.
+
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Kael anda <strong>4 m por Tick</strong>. O inimigo está a <strong>9 metros</strong>. Ele gasta <strong>2 Ticks</strong> fechando a distância (8 m) e ataca do terceiro, com o último metro saindo no passo grátis da própria investida. Se preferisse correr, cobriria os 9 m em menos de dois Ticks — mas correndo não se ataca, e a guarda vai junto.</div>
 
 Ele é, na prática, **um Tick de movimento**: como um Tick é mais ou menos um segundo, o número em metros é também a sua velocidade em metros por segundo. A faixa é humana de propósito — **de 2 a 5 m/s**. Andar tranquilo são 1,4 m/s; fechar distância numa briga, sem perder a guarda nem o equilíbrio, fica entre 2 e 4; e o teto de 5 é o acrobata. O resto do tempo da ação você não está andando, está lutando.
 

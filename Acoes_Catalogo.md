@@ -103,6 +103,15 @@ muda o **tom** do capítulo.
 
 ### Movimento e corpo
 
+**Deslocar-se em combate** · Andar dentro da briga sem abrir a guarda: fechar distância, circular
+para o flanco, recuar do alcance de quem está montando um golpe.
+**Decide:** quantos metros por Tick, e quantos Ticks isso custa da sua vez.
+`refs:` `D35`/`D5` chamam de passo e movimento, e o Dash gasta a ação para dobrar. `PF2` dá três
+ações de Stride. `EX2` move de graça por Tick e cobra o resto. **Centelha: `MOTOR`** (Deslocamento
+de Batalha na ficha, o primeiro Tick de graça durante outra ação e 1 Tick por Tick daí em diante).
+*Entrou em 22/08: o catálogo tinha Correr e Saltar, e o meio — andar com a guarda de pé — estava
+vazio.*
+
 **Correr** · Cobrir distância no próprio pé, do arranque ao ritmo sustentado, e a diferença entre
 os dois. Inclui perseguição, que é corrida com um segundo corpo no meio.
 **Decide:** quanta distância por Tick, quanto tempo se sustenta, quem alcança quem.
