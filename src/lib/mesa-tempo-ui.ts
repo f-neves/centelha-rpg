@@ -123,7 +123,7 @@ export function itensDaFila(
     // quando a guarda volta. A cor diz depressa, a palavra diz sem dúvida, e
     // quem chega no meio da luta não decorou a legenda.
     const futuros = a ? a.golpes.filter((g) => g >= tick) : [];
-    const prox = futuros.length ? Math.min(...futuros) : 0;
+    const prox = futuros.length ? Math.min(...futuros) : (a ? a.livre : 0);
     const qual = a && a.golpes.length > 1 ? ` ${a.golpes.indexOf(tick) + 1}/${a.golpes.length}` : '';
     const fraseFase = !a ? '<b>livre</b>'
       : fase === 'preparo' ? `<b>Preparo</b> · golpe no ${prox}`
@@ -143,6 +143,14 @@ export function itensDaFila(
       <span class="ini-av">${c.avatar}</span>
       <span class="ini-nome">${esc(c.nome)}</span>
       <span class="ini-fase ${cls}">${fraseFase}</span>
+      ${/* O MESMO em número, para o cartão que não tem largura para a frase.
+            Nasce escondido: no cartão inteiro a fase vem por extenso, e dizer a
+            mesma coisa duas vezes na mesma caixa é ruído. Quem o acende é a
+            tira estreita do telefone. Com gesto no ar, o número é o Tick em que
+            o golpe sai; sem gesto, é o Tick em que a pessoa age. */ ''}
+      <span class="ini-quando ${cls}"><small>${
+        a ? (fase === 'recuperacao' ? 'livre' : 'golpe') : 'age'}</small><b>${
+        a ? prox : (c.tick ?? 0)}</b></span>
       ${f}
       <span class="ini-num">ini <b>${c.iniciativa ?? 0}</b>${
         c.pct != null ? ` · ${Math.round(c.pct)}%` : ''}${c.extra ? ` · ${esc(c.extra)}` : ''}</span>

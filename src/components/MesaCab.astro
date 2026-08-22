@@ -662,6 +662,10 @@ const { aba } = Astro.props;
     text-overflow: ellipsis; white-space: nowrap; }
   .ini-num { font-size: calc(var(--fs-micro) * .85); color: var(--ink-soft);
     font-variant-numeric: tabular-nums; }
+  /* O Tick em número, para o cartão estreito. Escondido em toda tela larga: lá
+     a fase vem por extenso, na linha de cima. Quem o acende é o Grid no
+     telefone, e o desenho dele mora lá. */
+  .ini-quando { display: none; }
   .ini-num b { color: var(--accent-texto); }
   /* A fita ocupa a terceira linha da grade, alinhada com o nome e os números.
      O desenho dela está no MesaCab: o rastreador de combate usa a mesma.

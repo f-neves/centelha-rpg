@@ -111,7 +111,17 @@ const SETAS = [
           </div>
           <button class="btn mini primary ini-prox" id="ini-prox" hidden>⏭ próximo</button>
           </div>
+          {/* Deslizar a tira sem depender do dedo certo no lugar certo: no
+              telefone ela guarda doze cartões numa janela de cinco, e a rolagem
+              lateral é o gesto que mais gente não descobre sozinha. As setas só
+              aparecem quando há o que deslizar, e o ⤢ abre a ordem inteira. */}
+          <button type="button" class="btn-fant fila-seta" id="ini-esq" hidden
+            aria-label="Deslizar para quem age antes" title="Quem age antes">‹</button>
           <div id="gr-ini" class="gr-ini-lista fila-lista"></div>
+          <button type="button" class="btn-fant fila-seta" id="ini-dir" hidden
+            aria-label="Deslizar para quem age depois" title="Quem age depois">›</button>
+          <button type="button" class="btn-fant fila-tudo" id="ini-tudo" hidden
+            aria-label="Ver a ordem inteira" title="A ordem inteira do combate">⤢</button>
           <!-- Quem está no chão sai da FILA, mas não da vista. A fila é a ordem
                de quem vai agir, e um inconsciente não age; deixá-lo lá só empurra
                os vivos para baixo. Aqui embaixo ele continua a um clique, que é
@@ -335,6 +345,22 @@ const SETAS = [
       <div class="dlg-btns">
         <button type="button" class="btn" id="ou-cancelar">Cancelar</button>
         <button type="button" class="btn primary" id="ou-ok">Fazer</button>
+      </div>
+    </form>
+  </dialog>
+
+  {/* A ORDEM INTEIRA. A tira responde "quem agora e quem em seguida", que é o
+       que a mesa pergunta o tempo todo; esta caixa responde "como está a fila",
+       que é a pergunta que se faz uma vez por cena e não cabe numa janela de
+       cinco cartões. Os mesmos cartões, deitados numa coluna, com os degraus de
+       volta na horizontal e quem caiu no pé da lista. */}
+  <dialog id="ordem-dlg" class="mesa-dlg dlg-larga">
+    <form method="dialog">
+      <h3>A ordem do combate</h3>
+      <p class="muted dlg-txt" id="ord-conta"></p>
+      <div id="ord-lista" class="ord-lista"></div>
+      <div class="dlg-btns">
+        <button type="button" class="btn" id="ord-fechar">Fechar</button>
       </div>
     </form>
   </dialog>
@@ -660,6 +686,24 @@ const SETAS = [
     background: var(--panel-2, var(--panel)); color: var(--ink);
     border: 1px solid var(--rule); border-radius: var(--r-sm); }
   .ini-custo input:focus { border-color: var(--accent); outline: none; }
+
+  /* ---- a ordem inteira, em caixa ---- */
+  .ord-lista { display: flex; flex-direction: column; gap: .12rem;
+    max-height: 62dvh; overflow-y: auto; }
+  .ord-lista .ini-item { flex: 1 1 auto; width: 100%; }
+  /* O retrato acompanha o cartão inteiro: com ele parado em duas linhas de
+     quatro, a iniciativa e a Vida caíam sozinhas debaixo dele. */
+  .ord-lista .ini-av { grid-row: 1 / -1; }
+  /* O degrau volta a ser uma linha: deitado ele é divisor de coluna, e aqui a
+     coluna é a lista. */
+  .ord-lista .ini-grupo { writing-mode: horizontal-tb; align-self: stretch;
+    justify-content: flex-start; border-left: 0; border-top: 1px solid var(--rule);
+    padding: .45rem .2rem .12rem; }
+  .ord-lista .ini-grupo:first-child { border-top: 0; padding-top: .1rem; }
+  .ord-chao { margin-top: .5rem; padding-top: .4rem; border-top: 1px solid var(--rule); }
+  .ord-chao h4 { margin: 0 0 .25rem; font-family: 'Cinzel'; font-size: var(--fs-micro);
+    text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); font-weight: 400; }
+  .ord-chao .ini-caido { max-width: none; opacity: .7; }
 
   /* Só o Grid reordena a fila arrastando: no rastreador a ordem vem do relógio
      e do desempate, e não da mão. */
@@ -1482,11 +1526,89 @@ const SETAS = [
   /* A régua de Ticks é leitura de tela larga: numa de 390px ela caberia em três
      colunas e não se leria. Continua no ▤ do notebook. */
   body.grid-mob .gr-linha { display: none; }
-  /* A tira da iniciativa perde o canto do relógio (que virou a barra de baixo) e
-     fica só com o que ela tem de melhor: os cartões, que já rolam na horizontal. */
+  /* ---- a tira da ordem, no telefone ----
+     O cartão inteiro tem 11,5rem e diz cinco coisas (retrato, nome, fase por
+     extenso, fita e os números): numa janela de 390px cabem três, e a mesa
+     pergunta "quem agora e quem em seguida", que são pelo menos cinco.
+     O cartão daqui diz TRÊS: quem é (retrato quadrado, que aproveita melhor a
+     caixa e deixa a arte maior), o nome, e o Tick que importa. A fase continua
+     dita, mas pela COR da tarja e pela palavra de uma sílaba embaixo do número.
+     O resto (fita, iniciativa, Vida em %) está a um toque, no ⤢. */
   body.grid-mob .gr-ini .ini-cab { display: none; }
-  body.grid-mob .gr-ini { padding: .25rem .3rem; }
-  body.grid-mob .ini-chao { max-width: 32%; }
+  body.grid-mob .gr-ini { padding: .25rem .3rem; position: relative; padding-right: 2.85rem; }
+  body.grid-mob .ini-chao { max-width: 26%; }
+  body.grid-mob .gr-ini .ini-item {
+    flex: 0 0 4.9rem; grid-template-columns: minmax(0, 1fr); gap: .1rem;
+    justify-items: center; text-align: center; padding: .22rem .18rem .25rem;
+    border-left-width: 0; border-top: 3px solid transparent; }
+  body.grid-mob .gr-ini .ini-item.g-aliado  { border-top-color: var(--accent); }
+  body.grid-mob .gr-ini .ini-item.g-inimigo { border-top-color: #c1352c; }
+  body.grid-mob .gr-ini .ini-item.g-neutro  { border-top-color: var(--gold); }
+  body.grid-mob .gr-ini .ini-av { grid-row: auto; }
+  /* Quadrado, e não redondo: o retrato é a única coisa do cartão que se lê de
+     longe, e o círculo joga fora os cantos da caixa que já é estreita. */
+  body.grid-mob .gr-ini .ini-item .av { --av-t: 3rem; border-radius: var(--r-md); }
+  body.grid-mob .gr-ini .ini-nome { max-width: 100%; font-size: calc(var(--fs-micro) * .92); }
+  body.grid-mob .gr-ini :is(.ini-fase, .ini-fita, .ini-num) { display: none; }
+  body.grid-mob .gr-ini .ini-quando { display: flex; align-items: baseline; gap: .18rem;
+    line-height: 1; padding: .05rem .3rem; border-radius: 999px;
+    background: color-mix(in srgb, var(--ink-soft) 16%, transparent); }
+  body.grid-mob .gr-ini .ini-quando b { font-family: 'Cinzel'; font-size: var(--fs-rotulo);
+    font-variant-numeric: tabular-nums; color: var(--ink); }
+  body.grid-mob .gr-ini .ini-quando small { font-family: 'Cinzel'; font-size: calc(var(--fs-micro) * .72);
+    text-transform: uppercase; letter-spacing: .04em; color: var(--ink-soft); }
+  /* A tarja do número é a mesma cor da fita: a fase se lê sem legenda. */
+  body.grid-mob .gr-ini .ini-quando.f-prep { background: color-mix(in srgb, var(--gold) 30%, transparent); }
+  body.grid-mob .gr-ini .ini-quando.f-golpe { background: var(--gold); }
+  body.grid-mob .gr-ini .ini-quando.f-golpe :is(b, small) { color: #2a2109; }
+  body.grid-mob .gr-ini .ini-quando.f-rec { background: color-mix(in srgb, var(--ink-soft) 26%, transparent); }
+  body.grid-mob .gr-ini .ini-item.age .ini-nome::before { content: ''; }
+  /* Quem age agora ganha o triângulo em cima do retrato, e não antes do nome:
+     no cartão estreito ele comia duas letras do nome. */
+  body.grid-mob .gr-ini .ini-item.age .ini-av::after { content: '▸'; position: absolute;
+    left: -.55rem; top: 50%; transform: translateY(-50%); color: var(--vez-cor, #ffd76a);
+    font-size: var(--fs-rotulo); line-height: 1; }
+  body.grid-mob .gr-ini .ini-grupo { font-size: calc(var(--fs-micro) * .8); padding: .15rem .05rem; }
+
+  /* As setas e o ⤢. As duas primeiras pairam sobre as bordas da lista, o
+     terceiro tem faixa própria (o `padding-right` da tira) para nunca cobrir
+     um cartão. */
+  .fila-seta, .fila-tudo { display: none; }
+  body.grid-mob .gr-ini :is(.fila-seta, .fila-tudo):not([hidden]) {
+    display: flex; align-items: center; justify-content: center;
+    position: absolute; z-index: 3; padding: 0; opacity: 1; color: var(--ink); }
+  /* As setas PAIRAM sobre as bordas da fila, como as de um carrossel. Elas
+     medem 44px porque é o dedo que as aperta, mas o que se VÊ é a seta sobre um
+     esfumado: uma pastilha opaca desse tamanho taparia um cartão inteiro, e a
+     borda da fila já está esmaecida pela máscara. */
+  body.grid-mob .gr-ini .fila-seta:not([hidden]) {
+    top: 50%; transform: translateY(-50%); width: 2.75rem; height: 2.9rem;
+    font-size: 1.35rem; border: 0; border-radius: var(--r-md); }
+  body.grid-mob #ini-esq { left: 0;
+    background: linear-gradient(90deg, var(--panel) 40%, transparent); }
+  body.grid-mob #ini-dir { right: 2.85rem;
+    background: linear-gradient(270deg, var(--panel) 40%, transparent); }
+  /* No fim da fila a seta some, em vez de ficar cinza: ela é um esfumado sobre
+     o cartão, e um esfumado apagado continua tapando o nome de quem está
+     debaixo. Quem ensina o gesto é a outra seta, que continua acesa. */
+  body.grid-mob .gr-ini .fila-seta:disabled { opacity: 0; pointer-events: none; }
+  /* O ⤢ tem FAIXA própria, e não paira: ele não é navegação da tira, é uma
+     porta para outra caixa, e a faixa com fio à esquerda diz isso sem palavra.
+     É o `padding-right` da tira que reserva o lugar dela. */
+  body.grid-mob .gr-ini .fila-tudo:not([hidden]) {
+    top: .2rem; bottom: .2rem; right: 0; width: 2.75rem; font-size: 1.1rem;
+    border: 0; border-left: 1px solid var(--rule); border-radius: 0;
+    background: none; color: var(--ink-soft); }
+  body.grid-mob .gr-ini .fila-tudo:hover { color: var(--accent-texto);
+    background: color-mix(in srgb, var(--accent) 12%, transparent); }
+  /* A borda esfumada diz que há mais fila do lado, mesmo com a seta apagada. */
+  .fila-lista.mais-esq { -webkit-mask-image: linear-gradient(90deg, transparent, #000 2.2rem);
+    mask-image: linear-gradient(90deg, transparent, #000 2.2rem); }
+  .fila-lista.mais-dir { -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 2.2rem), transparent);
+    mask-image: linear-gradient(90deg, #000 calc(100% - 2.2rem), transparent); }
+  .fila-lista.mais-esq.mais-dir {
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 2.2rem, #000 calc(100% - 2.2rem), transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 2.2rem, #000 calc(100% - 2.2rem), transparent); }
 
   /* ---- a barra do polegar ----
      O ⏭ Próximo é o botão mais apertado de uma sessão inteira, e no notebook ele
@@ -1897,6 +2019,7 @@ const SETAS = [
     if (MESTRE) { el('gr-btns').hidden = false; el('gr-dica').hidden = false; }
     ligarBarra();
     ligarCelular();
+    ligarFilaDeslizante();
     ligarAparencia();
     ligarArrasto();
     ligarMenuToken();
@@ -3477,9 +3600,6 @@ const SETAS = [
         : 'Ninguém em cena.'}</p>`;
       return;
     }
-    const grupo = grupoDaVez();
-    const naVez = new Set(grupo.map((c: any) => c.id));
-    const age = grupo[0]?.id;
     // A rodada sai do tick, como no rastreador: seis ticks fecham uma rodada.
     const tick = relogio();
     // Só o NÚMERO: a palavra "Tick" é estática no cabeçalho, ao lado dele, e
@@ -3503,7 +3623,26 @@ const SETAS = [
     // Quem monta os cartões é `itensDaFila`, no `mesa-tempo-ui`: o rastreador
     // de combate desenha a mesma tira, e duas cópias da mesma escada divergiriam
     // no primeiro conserto.
-    const itens = itensDaFila(emPe.map((c: any) => ({
+    const itens = itensDaFila(pecasDaFila(emPe), tick, { marcacao: TEMPO.marcacao });
+    reconciliar(box, itens);
+    atualizarSetasDaFila();
+    if ((el('ordem-dlg') as HTMLDialogElement).open) pintarOrdem();
+    pintarLinhaDoTempo(tick);
+    sincronizarApp();
+  }
+
+  /**
+   * As peças no molde da tira, para as duas caixas que a desenham.
+   *
+   * A tira do alto e a caixa da ordem inteira mostram os MESMOS cartões: uma
+   * segunda cópia deste mapeamento divergiria da primeira no primeiro campo
+   * novo, e a mesa veria duas filas diferentes na mesma tela.
+   */
+  function pecasDaFila(emPe: any[]) {
+    const grupo = grupoDaVez();
+    const naVez = new Set(grupo.map((c: any) => c.id));
+    const age = grupo[0]?.id;
+    return emPe.map((c: any) => ({
       id: c.id, nome: c.nome, tick: c.tick ?? 0, iniciativa: c.iniciativa ?? 0,
       grupo: c.grupo, avatar: avatarDe(c, 'av-p'), pct: pctDe100(c),
       acao: acaoNo(c), segura: c.acao?.tipo === 'segura',
@@ -3516,10 +3655,83 @@ const SETAS = [
       // um Tick muda o número aqui.
       extra: contrapeEm(c.acao, c.tick ?? 0)
         ? `contrapé ${contrapeEm(c.acao, c.tick ?? 0)}d6` : undefined,
-    })), tick, { marcacao: TEMPO.marcacao });
-    reconciliar(box, itens);
-    pintarLinhaDoTempo(tick);
-    sincronizarApp();
+    }));
+  }
+
+  // ------------------------------------------------ deslizar e abrir a fila
+  /**
+   * As setas da tira, e a névoa nas bordas.
+   *
+   * Rolagem lateral é o gesto que mais gente não descobre sozinha, e num
+   * telefone a tira guarda doze cartões numa janela de cinco. As setas só
+   * existem quando há o que deslizar; a máscara esfumada diz que há mais fila
+   * do lado mesmo quando a seta está apagada.
+   */
+  function atualizarSetasDaFila() {
+    const lista = document.getElementById('gr-ini');
+    const esq = document.getElementById('ini-esq') as HTMLButtonElement | null;
+    const dir = document.getElementById('ini-dir') as HTMLButtonElement | null;
+    const tudo = document.getElementById('ini-tudo') as HTMLElement | null;
+    if (!lista || !esq || !dir || !tudo) return;
+    const sobra = lista.scrollWidth - lista.clientWidth - 1;
+    const desliza = MOB && sobra > 0;
+    esq.hidden = !desliza; dir.hidden = !desliza;
+    // O ⤢ fica mesmo sem sobra: a caixa da ordem mostra o que a tira não mostra
+    // (a iniciativa, a Vida, a fita) mesmo com três peças em cena.
+    tudo.hidden = !MOB;
+    const noComeco = lista.scrollLeft <= 2;
+    const noFim = lista.scrollLeft >= sobra - 2;
+    esq.disabled = noComeco; dir.disabled = noFim;
+    lista.classList.toggle('mais-esq', desliza && !noComeco);
+    lista.classList.toggle('mais-dir', desliza && !noFim);
+  }
+
+  function ligarFilaDeslizante() {
+    const lista = el('gr-ini');
+    const passo = () => Math.max(90, Math.round(lista.clientWidth * 0.7));
+    const anda = (d: number) => lista.scrollBy({ left: d * passo(), behavior: 'smooth' });
+    el('ini-esq').onclick = () => anda(-1);
+    el('ini-dir').onclick = () => anda(1);
+    el('ini-tudo').onclick = () => abrirOrdem();
+    el('ord-fechar').onclick = () => (el('ordem-dlg') as HTMLDialogElement).close();
+    lista.addEventListener('scroll', atualizarSetasDaFila, { passive: true });
+    try { new ResizeObserver(atualizarSetasDaFila).observe(lista); } catch {}
+    atualizarSetasDaFila();
+  }
+
+  /** A ordem inteira, deitada numa coluna. */
+  function abrirOrdem() {
+    pintarOrdem();
+    (el('ordem-dlg') as HTMLDialogElement).showModal();
+    (el('ord-fechar') as HTMLElement).focus();
+  }
+
+  function pintarOrdem() {
+    const box = el('ord-lista');
+    const fila = naFila();
+    const emPe = fila.filter((c: any) => !noChao(c));
+    const caidos = fila.filter((c: any) => noChao(c));
+    const tick = relogio();
+    if (!emPe.length && !caidos.length) {
+      box.innerHTML = '<p class="ini-vazio">Ninguém em cena.</p>';
+      el('ord-conta').textContent = '';
+      return;
+    }
+    el('ord-conta').textContent = `Tick ${tick} · rodada ${Math.floor(tick / 6) + 1} · `
+      + `${emPe.length} de pé${caidos.length ? `, ${caidos.length} no chão` : ''}. `
+      + 'Toque numa peça para abrir o menu dela.';
+    const itens = itensDaFila(pecasDaFila(emPe), tick, { marcacao: TEMPO.marcacao });
+    box.innerHTML = itens.map((i) => i.html).join('')
+      + (caidos.length ? `<div class="ord-chao"><h4>No chão, fora da fila</h4>${
+        caidos.map((c: any) => `<div class="ini-caido" data-c="${c.id}">${
+          avatarDe(c, 'av-p')}<span class="nm">${esc(c.nome)}</span></div>`).join('')}</div>` : '');
+    box.querySelectorAll<HTMLElement>('[data-c]').forEach((linha) => {
+      linha.onclick = () => {
+        const cid = linha.dataset.c!;
+        (el('ordem-dlg') as HTMLDialogElement).close();
+        abrirMenu(cid, Math.max(8, innerWidth / 2 - 88), Math.max(8, innerHeight * 0.3));
+      };
+    });
   }
 
   /**
@@ -6682,6 +6894,7 @@ const SETAS = [
       else { voltarParaCasa(custo); voltarParaCasa(rolar); }
       (el('ga-arena') as HTMLElement).hidden = !MESTRE;
       sincronizarApp();
+      atualizarSetasDaFila();
       // O tabuleiro acabou de mudar de tamanho: reencaixar é o gesto que a mão
       // faria em seguida.
       requestAnimationFrame(() => { ajustarAltura(); if (ARENA && MOB) caber(true); });

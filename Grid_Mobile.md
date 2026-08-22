@@ -334,6 +334,22 @@ responde.
 - **O ⋯ não tem tela cheia nem modo TV.** Os dois botões continuam na folha da arena, onde estão
   desde sempre. No telefone a tela cheia vale pouco (a barra do navegador já sai sozinha ao rolar) e
   o modo TV vale nada, mas quem projeta do tablet vai procurá-los.
+- **A tira da ordem virou cartão resumido.** O cartão inteiro tem 11,5rem e diz cinco coisas
+  (retrato, nome, fase por extenso, fita e os números): numa janela de 390px cabiam três, e a
+  pergunta da mesa ("quem agora e quem em seguida") são pelo menos cinco. O cartão do telefone diz
+  **três**: quem é (retrato **quadrado**, que aproveita os cantos da caixa estreita e deixa a arte
+  maior), o nome, e **o Tick que importa**, numa tarja com a cor da fase e uma palavra de uma
+  sílaba: `AGE 0` para quem está livre, `GOLPE 3` para quem tem gesto no ar, `LIVRE 5` para quem
+  está se recompondo. O número sai do mesmo `itensDaFila` que serve o rastreador, num `<span>` que
+  nasce escondido: o cartão largo continua dizendo a fase por extenso, e a tela de notebook não
+  mudou uma linha.
+- **Duas setas e um ⤢.** Rolagem lateral é o gesto que mais gente não descobre sozinha. As setas
+  medem 44px porque é o dedo que as aperta, mas o que se vê é a seta sobre um esfumado (uma
+  pastilha opaca desse tamanho taparia um cartão), e a que chega ao fim da fila **some** em vez de
+  ficar cinza. O **⤢** tem faixa própria, com fio à esquerda: ele não é navegação da tira, é porta
+  para outra caixa, e a **ordem inteira** abre como folha com os cartões completos (a fita, a
+  iniciativa, a Vida), os degraus de volta na horizontal e quem caiu no pé da lista. Tocar numa
+  peça de lá abre o menu dela.
 - **A régua não tem substituto no dedo.** Medir distância continua sendo gesto de mouse. No
   telefone o que responde "cabe?" é o ◎ do alcance, no menu da peça.
 - **A mira do ataque ainda confirma no primeiro toque.** O padrão da mira no dedo (posicionar, ver,

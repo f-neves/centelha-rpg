@@ -1282,6 +1282,74 @@ async function cenaCelular(br, url, { papel = 'mestre' } = {}) {
   const fechou = await p.evaluate(() => document.body.classList.contains('com-folha'));
   ok(!fechou, 'e o mesmo botão que abriu fecha');
 
+  // ------------------------------------------------------ a tira da ordem
+  // O cartão inteiro tem 11,5rem e diz cinco coisas: numa janela de 390px cabem
+  // três, e a mesa pergunta "quem agora e quem em seguida", que são pelo menos
+  // cinco. O daqui diz três (quem é, o nome, e o Tick que importa).
+  const tira = await p.evaluate(() => {
+    const lista = document.getElementById('gr-ini');
+    const um = lista.querySelector('.ini-item');
+    if (!um) return { vazia: true };
+    const r = um.getBoundingClientRect();
+    const av = um.querySelector('.av');
+    const escondido = (sel) => {
+      const e = um.querySelector(sel);
+      return !e || getComputedStyle(e).display === 'none';
+    };
+    return {
+      largura: Math.round(r.width),
+      cabem: Math.floor(lista.clientWidth / r.width),
+      quando: (um.querySelector('.ini-quando')?.textContent || '').replace(/\s+/g, ' ').trim(),
+      quadrado: !!av && getComputedStyle(av).borderRadius !== '50%',
+      resumido: escondido('.ini-fase') && escondido('.ini-num'),
+      rola: lista.scrollWidth - lista.clientWidth,
+    };
+  });
+  ok(tira.cabem >= 4, `cabem ${tira.cabem} cartões na tira (o cartão tem ${tira.largura}px)`);
+  ok(tira.quadrado && tira.resumido,
+    'o cartão é resumido, com o retrato quadrado: retrato, nome e o Tick');
+  ok(/^(age|golpe|livre)\s*\d+$/i.test(tira.quando),
+    `e o Tick que importa vem escrito no cartão ("${tira.quando}")`);
+
+  const desliza = await p.evaluate(async () => {
+    const lista = document.getElementById('gr-ini');
+    const antes = lista.scrollLeft;
+    const esqAntes = document.getElementById('ini-esq').disabled;
+    document.getElementById('ini-dir').click();
+    await new Promise((r) => setTimeout(r, 700));
+    return { andou: lista.scrollLeft > antes + 20, esqAntes,
+      esqDepois: document.getElementById('ini-esq').disabled,
+      nevoa: lista.classList.contains('mais-esq') };
+  });
+  ok(desliza.andou, 'a seta desliza a tira');
+  ok(desliza.esqAntes && !desliza.esqDepois && desliza.nevoa,
+    'e a seta de voltar acende junto com a névoa da borda');
+
+  const ordem = await p.evaluate(async () => {
+    document.getElementById('ini-tudo').click();
+    await new Promise((r) => setTimeout(r, 450));
+    const dlg = document.getElementById('ordem-dlg');
+    if (!dlg?.open) return { abriu: false };
+    const box = document.getElementById('ord-lista');
+    const r = dlg.getBoundingClientRect();
+    return { abriu: true, pecas: box.querySelectorAll('.ini-item').length,
+      degraus: box.querySelectorAll('.ini-grupo').length,
+      folha: Math.abs(r.bottom - innerHeight) < 2,
+      conta: (document.getElementById('ord-conta').textContent || '').slice(0, 30) };
+  });
+  ok(ordem.abriu && ordem.folha, 'o ⤢ abre a ordem inteira, como folha');
+  ok(ordem.pecas === 12 && ordem.degraus > 1,
+    `com todas as peças e os degraus (${ordem.pecas} peças, ${ordem.degraus} degraus)`);
+  const pelaOrdem = await p.evaluate(async () => {
+    document.querySelector('#ord-lista .ini-item').click();
+    await new Promise((r) => setTimeout(r, 400));
+    return { fechou: !document.getElementById('ordem-dlg').open,
+      menu: !document.getElementById('tok-menu').hidden };
+  });
+  ok(pelaOrdem.fechou && pelaOrdem.menu, 'e tocar numa peça de lá abre o menu dela');
+  await p.evaluate(() => document.getElementById('tok-menu').hidden = true);
+  await espera(200);
+
   // ------------------------------------------------- os gestos de dois dedos
   const gestos = await p.evaluate(async () => {
     const palco = document.getElementById('gr-palco');
