@@ -2345,10 +2345,11 @@
     },
     "recuperacao": {
       "nota": "O que se pode fazer depois que o golpe saiu e antes de a guarda se refazer.",
-      "deslocamentoTicksPorMetro": 2,
+      "deslocamentoTicksPorMetro": 1,
       "penDadosAcaoNaFase": -1,
       "declaraAcaoNova": false,
-      "refazGuarda": false
+      "refazGuarda": false,
+      "deslocamentoNota": "Baixado de 2 para 1 em 21/08, depois de a bancada pôr os quatro preços de andar no mesmo eixo: a 2 Ticks por metro, mover 3 m na Recuperação custava 6 Ticks (quase uma ação inteira) e treze vezes o preço de correr na própria vez, o que fazia dela uma regra que ninguém pagaria. A 1, ela empata com o desvio de emergência da §5.5 e com o abortar do Preparo: andar fora da sua vez custa 1 Tick por metro, seja qual for o motivo. Os três números continuam separados aqui, de propósito, para dar para calibrar um sem mexer nos outros."
     },
     "abortar": {
       "nota": "Abortar o gesto que ainda não saiu. Só no Preparo: no Golpe não se aborta (não há como interromper o próprio braço no instante em que ele cai) e na Recuperação não há o que abortar, o golpe já foi. É o desvio de emergência da §5.5 do Arcano virado regra geral, e é o que dá saída ao arqueiro e ao feiticeiro, que têm Recuperação zero.",

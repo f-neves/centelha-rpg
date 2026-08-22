@@ -813,7 +813,7 @@ Três leituras:
   dívida, uma por ação; uma **Técnica Reflexiva**, que custa 0 Ticks e se paga em Energia; e testes
   que envolvem ação (pulo, acrobacia, oferecer ajuda, se interpor), todos a **−1d6**. **O
   deslocamento aqui não é livre** (decidido em 20/08): custa Ticks, mais caro que o desvio de
-  emergência da §5.5 (proposta: 2 Ticks por metro; K20). Não se declara ação nova, não se refaz a
+  emergência da §5.5 (era a proposta de 2 Ticks por metro, K20; **baixou para 1 em 21/08**, ver §15.14). Não se declara ação nova, não se refaz a
   guarda, e não há o que abortar.
 
 A assimetria é o coração da coisa, e vale escrever assim no capítulo: **no Preparo você ainda
@@ -1262,7 +1262,7 @@ Velocidade, dados de rolagem e pontos de Defesa, nunca em termos que só existem
 | **rajada** | ataque N vezes numa ação: **Velocidade +2 por golpe extra**, −1d6 acumulativo, teto 3/3/2/2 por classe | o mesmo +2, na anatomia: +1 Tick de Golpe e +1 de Recuperação por golpe extra |
 | **dupla (dois golpes)** | **mesma Velocidade**, −1d6 nas duas mãos | par de leves: mesmo ciclo · com média: **ciclo +1** |
 | **dupla (segura e golpeia com uma)** | no Tick do golpe, −2 em vez de −4 | idem (é a fase G) |
-| **deslocar-se depois de atacar** | 2 Ticks por metro, pagos como dívida | idem (é a fase R) |
+| **deslocar-se depois de atacar** | 1 Tick por metro, pago como dívida *(era 2 até 21/08)* | idem (é a fase R) |
 | **ação fora de hora, dívida, espelho** | igual | igual |
 | **abortar o que ainda não saiu** | só as Artes (as únicas com montagem visível) | qualquer Preparo |
 | **ler e interromper o gesto** | só as Artes telegrafam | tudo com P ≥ 1 telegrafa |
@@ -1377,7 +1377,7 @@ declara a ação por onde a luta for resolvida. O que ela ainda não faz são du
 
 - **a ação fora de hora** com a dívida somada sozinha, e o **espelho** que atrasa quem foi
   interrompido em tantos Ticks quantos o interruptor pagou;
-- **o deslocamento pago na Recuperação** (2 Ticks por metro, K20).
+- **o deslocamento pago na Recuperação** (1 Tick por metro desde 21/08, K20).
 
 As duas são conta pronta em `combate-tempo.ts` (`podeAgirForaDeHora`, `custoDeReagir`,
 `ticksDeDeslocamento`); falta o gesto na tela. O mestre resolve as duas na mão hoje, empurrando o
@@ -1578,7 +1578,7 @@ rola no site), `misto` (as criaturas do mestre rolam sozinhas) e `site`. Não mu
 muda quem digita. E o modo decide só o que acontece **sozinho**: o botão de rolar continua na caixa
 para o caso avulso.
 
-**O deslocamento pago entrou** (K20): andar durante a Recuperação custa **2 Ticks por metro**, e o
+**O deslocamento pago entrou** (K20): andar durante a Recuperação custa **1 Ticks por metro**, e o
 Grid cobra sozinho, porque ele é o único que sabe quantos metros foram. Fica de fora quem está
 livre, e de propósito: **mover fora da Recuperação não tem preço escrito na regra**, e inventar um
 na tela seria escrever regra pela porta dos fundos.
@@ -1767,6 +1767,41 @@ registro.
 O estudo mede o atrito das saídas, propõe onde a **Firula** entra (anunciada no Preparo, confirmada
 no Golpe) e desenha o aviso que a tela precisa dar para a espera não virar contabilidade. Seis
 decisões esperando a mesa, listadas na §9 de lá e na **K27** do `Pendencias.md`.
+
+---
+
+### 15.14. As sete decisões de deslocamento (21/08/2026)
+
+Varredura feita antes de fechar a questão do golpe tardio, e ela achou **seis regras de andar**
+espalhadas por quatro lugares, mais dois modificadores que ninguém tinha trazido para a conversa (a
+armadura tira metade da Penalidade em metros; anão, gnomo e halfling andam metade) e uma ausência
+que importa: **não existe zona de controle nem ataque de oportunidade**. O quadro completo está na
+§11 do `Golpe_Tardio.md`.
+
+Três achados, e os três mexeram em decisão:
+
+**O passo é maior que o alcance, para todo mundo.** O Deslocamento livre vai de 1,5 m (camponês) a
+4,5 m (duelista), e o alcance do corpo a corpo é 1 m. Quem age durante o Preparo de alguém
+simplesmente não está mais lá. O guerreiro de placa é justamente quem desliza menos.
+
+**O Arcano já tinha decidido isso, do outro lado.** *"Quem leu o sinal com Ticks de sobra
+simplesmente não está mais lá, e não paga nada por isso"*, e a escada de tamanhos da área foi
+**calibrada contra o passo**, de propósito. O corpo a corpo nunca foi.
+
+**O preço de andar variava treze vezes** conforme o momento: 0 no passo livre, 0,15 Tick/m numa
+Corrida, 1 no desvio de emergência e no abortar, **2 na Recuperação**. A 2, mover 3 m na
+Recuperação custava quase uma ação inteira, e a regra não seria usada por ninguém.
+
+**O que a mesa decidiu:** o Grid **não cobra** o passo (só mostra ao arrastar); o passo é gasto **no
+instante em que se age**, e não guardado como esquiva; ele **tira do alcance** de quem já declarou,
+e o atacante **acompanha com o próprio passo**; a Recuperação **baixou para 1 Tick por metro**;
+"baixa estatura" corta **só a Corrida e os Saltos**; e os três preços de andar fora da vez ficam
+**escritos separados**, ainda que hoje valham o mesmo.
+
+O que isso quer dizer junto: **o Grid mede e mostra, e quem julga se o golpe alcançou é o mestre.**
+E a mesa aceitou, de olhos abertos, que o duelista leve não seja alcançado pelo guerreiro de placa
+em campo aberto: 4,5 m de passo contra 1,5 m mais 1 m de alcance, sem dado nenhum. A contrapartida
+que existe é o agarrão, que é uma ação inteira.
 
 ---
 

@@ -767,6 +767,26 @@ revistos por ela.
   ver nada, resolver no Tick do Golpe), a coluna `acao` passa a guardar alvo, manobra e contrapé, o
   relógio deixa de pular Ticks com golpe agendado, e a tira ganha a faixa de pendências.
 
+- [~] **K28 · Deslocamento: sete decisões tomadas em 21/08, uma com código pendente.** A varredura
+  (§11 do `Golpe_Tardio.md`) achou **seis regras de andar** espalhadas por quatro lugares, mais dois
+  modificadores esquecidos (a armadura tira metade da Penalidade em metros; baixa estatura) e uma
+  ausência: **não há zona de controle nem ataque de oportunidade**.
+
+  **Decidido:** o Grid **não cobra** o passo grátis, só **mostra ao arrastar**; o passo é gasto **no
+  instante em que se age** (não é esquiva guardada); ele **tira do alcance** de quem já declarou, e
+  o atacante **acompanha com o próprio passo**; a Recuperação **baixou de 2 para 1 Tick por metro**;
+  "baixa estatura" corta **só a Corrida e os Saltos**; e os três preços de andar fora da vez ficam
+  escritos separados.
+
+  **Feito:** o número novo no `regras.json` (o Grid já lia de lá, então o deslocamento pago passou a
+  custar metade sem tocar em código), o texto das três raças, e as menções ao 2 nos documentos e no
+  motor.
+
+  **Falta:** a decisão 6, que é a única com código. E ela tem um problema aberto: o passo grátis sai
+  de **Destreza + Atletismo**, e o bestiário guarda Atributos mas **não guarda perícias**. Para o PC
+  o número está na ficha; para a criatura não existe. Ou o bloco do bestiário ganha um campo de
+  deslocamento, ou a seta escreve o passo só para quem tem ficha.
+
 - [ ] **K25 · [DECIDIR] A Defesa da arma e a do escudo somam, e o escudeiro vira parede.** A
   `defesas.md` escreve "**+ defesa da arma/escudo**", no singular, mas a ficha **soma as duas**
   (`ficha-engine.ts:1467`: "Bloqueio soma a Defesa das armas/escudos do conjunto EM USO"). Com

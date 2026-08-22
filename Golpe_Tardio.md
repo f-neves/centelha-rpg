@@ -399,7 +399,50 @@ Postos no mesmo eixo, para um aventureiro:
 Andar na Recuperação custa **treze vezes** o preço de correr na própria vez. A diferença tem
 justificativa (é movimento fora da vez, sem gastar ação), mas o número faz dela uma regra que
 ninguém vai usar: 3 metros na Recuperação custam 6 Ticks, quase uma ação inteira, e a mesma
-distância na própria vez sai por uma fração disso. **Vale reabrir o K20 com esse número na mão.**
+distância na própria vez sai por uma fração disso.
+
+---
+
+## 12. O que a mesa decidiu sobre deslocamento (21/08/2026)
+
+Sete decisões, com a varredura da §11 na mão.
+
+| # | Decisão | Escolhido |
+|---|---|---|
+| 1 | O Grid cobra o passo grátis? | **Não.** Mover quando livre segue de graça e ilimitado no tabuleiro; o orçamento do passo é da mesa |
+| 2 | Quando o passo é gasto | **No instante em que você age.** Ele faz parte da declaração, e não é uma esquiva guardada para quando alguém declara contra você |
+| 3 | O passo tira do alcance de quem declarou? | **Tira, e o atacante acompanha com o próprio passo.** Entre iguais o golpe cai; o ágil escapa do lento |
+| 4 | O deslocamento na Recuperação | **1 Tick por metro** (era 2) |
+| 5 | Baixa estatura | corta **só a Corrida e os Saltos**; o Deslocamento livre não muda |
+| 6 | O Grid mostra o passo? | **Mostra ao arrastar, e não impede**: a seta escreve quanto do trecho é grátis |
+| 7 | Unificar os três preços no livro | **Não.** Ficam escritos separados, para dar para calibrar um sem mexer nos outros |
+
+### O que isso quer dizer junto
+
+As decisões 1, 2 e 3 se combinam numa frase: **o Grid mede e mostra, e quem julga se o golpe
+alcançou é o mestre.** Ele não guarda o orçamento do passo de ninguém, então também não tem como
+decidir sozinho se o alvo escapou ou se o atacante acompanhou: o que ele faz é escrever a
+distância e a faixa de alcance na folha, como já escreve. É a mesma linha da distância e do
+contrapé, e ela já está construída.
+
+A decisão 3 aceita, de olhos abertos, que **o duelista leve nunca seja alcançado pelo guerreiro de
+placa** em campo aberto: 4,5 m de passo contra 1,5 m mais 1 m de alcance. Isso é determinístico e
+não tem dado nenhum. A contrapartida existente é o **agarrão**, que é uma ação inteira, e o
+terreno, que o Grid já desenha. Se a mesa achar pouco, o lugar de mexer é numa trava de
+engajamento, e não no preço do passo.
+
+A decisão 4 fecha a assimetria que a bancada mostrou: **1 Tick por metro para andar fora da sua
+vez**, seja no desvio de emergência contra área, no abortar do Preparo ou na Recuperação. Os
+três números continuam separados no `regras.json` (decisão 7), mas hoje valem o mesmo.
+
+### O que falta construir
+
+- **A decisão 6** é a única com código, e tem um problema aberto: o passo grátis sai de
+  **Destreza + Atletismo**, e o bestiário guarda Atributos mas **não guarda perícias**. Para o PC
+  o número está na ficha; para a criatura ele não existe. Ou o bloco do bestiário ganha um campo
+  de deslocamento, ou a seta escreve o passo só para quem tem ficha.
+- **A K20 muda de número** no `regras.json` (feito), e o Grid já lê de lá: o deslocamento pago
+  passou a custar metade sem tocar em uma linha de código.
 
 ---
 

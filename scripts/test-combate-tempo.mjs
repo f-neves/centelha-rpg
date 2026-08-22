@@ -167,7 +167,7 @@ eq(T.anatomia({ classe: 'media', velocidade: 6, sistema: 'normal', manobra: 'dup
   eq(T.abortar(a, 12, 0).pode, false, 'no Golpe não se aborta');
   ok(/braço/.test(T.abortar(a, 12, 0).porque), 'e o motivo é dito');
   eq(T.abortar(a, 13, 0).pode, false, 'na Recuperação não há o que abortar');
-  ok(/2 Ticks por metro/.test(T.abortar(a, 13, 0).porque), 'e a Recuperação aponta o que cabe nela');
+  ok(new RegExp(`${regras.combate.recuperacao.deslocamentoTicksPorMetro} Tick`).test(T.abortar(a, 13, 0).porque), 'e a Recuperação aponta o que cabe nela');
   eq(T.abortar(a, 17, 0).pode, false, 'quem está livre não tem gesto para abortar');
   eq(T.abortar(null, 3, 0).pode, false, 'sem ação nenhuma, não há abortar');
 

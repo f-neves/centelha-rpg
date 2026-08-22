@@ -521,7 +521,8 @@ export function abortar(acao: Acao | null | undefined, tick: number, metros = 0)
       porque: fase === 'golpe'
         ? 'No Golpe não se aborta: o braço já está caindo.'
         : fase === 'recuperacao'
-          ? 'Na Recuperação não há o que abortar, o golpe já saiu. O que cabe aqui é pagar: uma ação fora de hora, ou 2 Ticks por metro para se deslocar.'
+          ? `Na Recuperação não há o que abortar, o golpe já saiu. O que cabe aqui é pagar: uma ação fora de hora, ou ${
+            C?.recuperacao?.deslocamentoTicksPorMetro ?? 1} Tick(s) por metro para se deslocar.`
           : 'Não há gesto no ar para abortar.',
     };
   }
