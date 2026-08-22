@@ -181,12 +181,27 @@ const SETAS = [
             debaixo do dedo recebe a peça.</span></p>
           <div id="gr-lista" class="gr-lista"></div>
 
+          {/* OS EFEITOS NO AR, em caixa própria. Eram uma lista solta entre a
+              gente e o registro, sem cabeçalho e sem como recolher: numa cena
+              com quatro Artes no chão, ela empurrava os dois vizinhos para fora
+              da vista. Agora é irmã de "Em campo", com a mesma dobra. */}
+          <div class="gr-reg-cab gr-reg-ef" id="gr-ef-cab" hidden>
+            <button class="btn-fant gr-dobra" id="gr-ef-dobrar" aria-expanded="true"
+              aria-controls="gr-ef-lista" title="Recolher os efeitos no ar">▾</button>
+            <h3 class="col-h">Efeitos no ar</h3>
+            <span class="gr-ef-n" id="gr-ef-n"></span>
+          </div>
           <div id="gr-ef-lista" class="gr-ef-lista" hidden></div>
 
           <div class="gr-reg-cab gr-reg-log">
             <button class="btn-fant gr-dobra" id="gr-dobrar-log" aria-expanded="true"
               aria-controls="gr-log" title="Recolher o registro e dar a altura a Em campo">▾</button>
             <h3 class="col-h">Registro</h3>
+            {/* No telefone a lista do registro sai da coluna: ela é a terceira
+                caixa de uma folha que já tem duas, e é a única das três que se
+                lê depois da cena, e não durante. Fica esta porta, que abre o
+                registro inteiro (onde ele já podia ser arrumado). */}
+            <button class="btn mini gr-log-abrir" id="gr-log-abrir">abrir</button>
             <button class="btn-fant" id="gr-desfazer" title="Desfazer a última ação" hidden disabled>↶</button>
           </div>
           <div id="gr-log" class="gr-log"></div>
@@ -1256,6 +1271,10 @@ const SETAS = [
   /* Recolhido, o cabeçalho do Registro desce e encosta no pé da coluna: é onde
      a mão vai procurá-lo para abrir de novo. */
   .gr-lado.log-dobrado .gr-reg-log { margin-top: auto; }
+  .gr-ef-n { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft);
+    font-variant-numeric: tabular-nums; opacity: .8; }
+  .gr-lado.ef-dobrado .gr-ef-lista { display: none; }
+  .gr-log-abrir { display: none; }
   .gr-log { display: flex; flex-direction: column; gap: .1rem; max-height: 30vh; overflow-y: auto;
     font-size: var(--fs-micro); margin-top: .3rem; }
   .gr-log .lg { display: flex; gap: .35rem; align-items: baseline;
@@ -1421,10 +1440,24 @@ const SETAS = [
 
   /* A folha de Em campo: a lista e o registro dividem a altura da folha, e não
      a da janela, senão os dois somados passariam de uma tela. */
-  body.grid-mob .gr-lado { display: flex; }
-  body.grid-mob .gr-lista { max-height: 42dvh; }
-  body.grid-mob .gr-log { max-height: 30dvh; }
+  /* A folha de Em campo são DUAS caixas, e não três espremidas: quem está em
+     campo e o que está no ar, cada uma abrindo e fechando por conta. O registro
+     sai daqui e fica no Registro, atrás do "abrir": ele é o único dos três que
+     se lê depois da cena, e não durante. */
+  body.grid-mob .gr-lado { display: flex; overflow: hidden; }
+  /* As duas caixas DIVIDEM a folha, cada uma com a própria rolagem, em vez de
+     empilharem duas rolagens dentro de uma terceira. Com teto fixo em cada uma
+     (46dvh e 40dvh), as duas somadas passavam da folha e o que sobrava era rolar
+     por fora para achar a de baixo, que é o esmagado de antes. */
+  body.grid-mob :is(.gr-lista, .gr-ef-lista) { flex: 1 1 auto; min-height: 5rem;
+    max-height: none; overflow-y: auto; }
+  body.grid-mob .gr-lado > :not(.gr-lista):not(.gr-ef-lista) { flex: 0 0 auto; }
+  body.grid-mob .gr-log { display: none; }
+  body.grid-mob .gr-reg-log #gr-dobrar-log { display: none; }
+  body.grid-mob .gr-log-abrir { display: inline-flex; }
   body.grid-mob .gr-ficha { min-height: 48px; }
+  /* Recolhida, a caixa vira o próprio cabeçalho, e o vizinho fica com a folha. */
+  body.grid-mob .gr-lado.dobrada .gr-lista { display: none; }
 
   /* ---- a grade: duas fileiras e nada mais ----
      `dvh` e não `vh`: a barra do navegador do celular entra e sai, e `vh` mede
@@ -1846,7 +1879,7 @@ const SETAS = [
   function repintarEfeitos() {
     pintarNevoa();
     pintarEfeitos(ctxArtes(), el('gr-efeitos') as unknown as SVGElement);
-    pintarPainelEfeitos(ctxArtes(), el('gr-ef-lista'));
+    pintarColunaEfeitos();
     avisarMudancas();
   }
 
@@ -2380,7 +2413,7 @@ const SETAS = [
     pintarEfeitos(ctxArtes(), el('gr-efeitos') as unknown as SVGElement);
     pintarTokens();
     pintarLista();
-    pintarPainelEfeitos(ctxArtes(), el('gr-ef-lista'));
+    pintarColunaEfeitos();
     pintarIniciativa();
     pintarAlcance();
     pintarLog();
@@ -3905,13 +3938,13 @@ const SETAS = [
    * O tabuleiro inteiro na tela. Com um piso, quando quem olha é um dedo.
    *
    * Numa arena de 24 colunas e numa tela de 390px, "caber" dá 30% de zoom, e
-   * 30% é um hexágono de 17px: dá para ver a cena e não dá para tocar nela. O
-   * piso de 55% é o tamanho em que a casa tem 32px, que é onde o dedo passa a
-   * acertar qual delas. Arena pequena continua cabendo inteira, porque o piso
-   * só entra quando a conta desce abaixo dele; arena grande abre num pedaço
-   * usável, e o toque duplo mostra o resto.
+   * 30% é um hexágono de 17px. O piso de 35% (21px por casa) é o ponto em que a
+   * cena grande ainda entra quase inteira e a casa já se distingue: quem toca
+   * uma peça toca no retrato dela, que é maior do que o hexágono, e para
+   * escolher casa vazia existe a pinça. Arena pequena continua cabendo inteira,
+   * porque o piso só entra quando a conta desce abaixo dele.
    */
-  const PISO_DEDO = 0.55;
+  const PISO_DEDO = 0.35;
   function caber(comPiso = false) {
     const med = medida();
     const palco = el('gr-palco');
@@ -5025,7 +5058,7 @@ const SETAS = [
     if (assuntos.has('efeitos')) {
       await carregarEfeitos(ctxArtes());
       pintarEfeitos(ctxArtes(), el('gr-efeitos') as unknown as SVGElement);
-      pintarPainelEfeitos(ctxArtes(), el('gr-ef-lista'));
+      pintarColunaEfeitos();
     }
     if (assuntos.has('registro')) { await carregarLog(true); pintarLog(); }
     // O que veio de fora não é mudança minha: guardar o estado agora evita que a
@@ -6216,6 +6249,7 @@ const SETAS = [
    * conjurado três vezes até a mesa entender a regra. É isto aqui.
    */
   function abrirRegistro() {
+    (el('rg-refazer') as HTMLElement).hidden = !MESTRE;
     pintarRegistro();
     (el('reg-dlg') as HTMLDialogElement).showModal();
   }
@@ -6223,8 +6257,12 @@ const SETAS = [
   function pintarRegistro() {
     const box = el('rg-lista');
     const n = LOG.length;
+    // O registro também abre do lado do jogador agora (no telefone ele é a
+    // única porta para o histórico). Ler é dele; arrumar continua sendo da mesa,
+    // e um ✎ que não vai a lugar nenhum é pior do que ✎ nenhum.
     el('rg-conta').textContent = n
-      ? `${n} linha${n > 1 ? 's' : ''}, a mais nova em cima. O ✎ corrige o texto e o ✕ apaga a linha.`
+      ? `${n} linha${n > 1 ? 's' : ''}, a mais nova em cima.`
+        + (MESTRE ? ' O ✎ corrige o texto e o ✕ apaga a linha.' : '')
       : '';
     if (!n) { box.innerHTML = '<p class="rg-vazio">Nada registrado nesta arena ainda.</p>'; return; }
     const hora = (ts: string) => {
@@ -6236,10 +6274,10 @@ const SETAS = [
       <span>${e.pub == null ? '<span class="rg-so" title="Só você lê esta linha">🔒</span>' : ''}${
         e.ef ? '<span class="rg-ef rg-so" title="Linha de Arte: o &quot;refazer&quot; troca estas">✶</span>' : ''}</span>
       <span class="rg-t">${realcarCasas(e.txt)}</span>
-      <span class="rg-acs">
+      ${MESTRE ? `<span class="rg-acs">
         <button type="button" data-a="ed" title="Editar o texto">✎</button>
         <button type="button" data-a="rm" class="perigo" title="Excluir esta linha">✕</button>
-      </span>
+      </span>` : '<span></span>'}
     </div>`).join('');
     box.querySelectorAll<HTMLElement>('.rg-acs button').forEach((b) => b.onclick = () => {
       const id = b.closest<HTMLElement>('.rg-l')!.dataset.id!;
@@ -6346,6 +6384,7 @@ const SETAS = [
    */
   const DOBRA_KEY = 'centelha:grid:lista-dobrada';
   const DOBRA_LOG_KEY = 'centelha:grid:log-dobrado';
+  const DOBRA_EF_KEY = 'centelha:grid:efeitos-dobrados';
   /**
    * Duas dobras, uma para cada lado.
    *
@@ -6400,7 +6439,24 @@ const SETAS = [
     };
   }
 
+  /**
+   * O painel dos efeitos, mais o cabeçalho que o recolhe.
+   *
+   * `pintarPainelEfeitos` decide sozinho se a caixa some (ela some quando não há
+   * nada no ar), e o cabeçalho tem de sumir junto: um "Efeitos no ar" com nada
+   * embaixo é uma linha que só ocupa espaço.
+   */
+  function pintarColunaEfeitos() {
+    const box = el('gr-ef-lista');
+    pintarPainelEfeitos(ctxArtes(), box);
+    (el('gr-ef-cab') as HTMLElement).hidden = box.hidden;
+    const n = box.querySelectorAll('.gr-efl').length;
+    el('gr-ef-n').textContent = n ? String(n) : '';
+  }
+
   function ligarDobra() {
+    dobra('gr-ef-dobrar', 'ef-dobrado', DOBRA_EF_KEY,
+      'Mostrar os efeitos no ar', 'Recolher os efeitos no ar');
     dobra('gr-dobrar', 'dobrada', DOBRA_KEY,
       'Mostrar a lista de quem está em campo', 'Ocultar a lista e dar a altura ao Registro');
     dobra('gr-dobrar-log', 'log-dobrado', DOBRA_LOG_KEY,
@@ -6655,8 +6711,12 @@ const SETAS = [
   function ligarBarra() {
     ligarDobra();
     el('gr-recarregar').onclick = () => carregar();
-    el('gr-menos').onclick = () => mudarZoom(ZOOM - 0.15);
-    el('gr-mais').onclick = () => mudarZoom(ZOOM + 0.15);
+    // O passo é do aparelho: no mouse a roda faz o ajuste fino e o botão serve
+    // para saltos, no dedo o botão É o ajuste fino (a pinça é que salta), e um
+    // degrau de 15% passa direto pelo enquadramento que se queria.
+    const passo = () => (MOB ? 0.05 : 0.15);
+    el('gr-menos').onclick = () => mudarZoom(ZOOM - passo());
+    el('gr-mais').onclick = () => mudarZoom(ZOOM + passo());
     el('gr-caber').onclick = () => caber();
     (el('gr-sel') as HTMLSelectElement).onchange = async (e) => {
       ARENA = ARENAS.find((a) => a.id === (e.target as HTMLSelectElement).value) || ARENA;
@@ -6741,6 +6801,7 @@ const SETAS = [
     });
     el('gr-desfazer').onclick = () => desfazer();
     el('gr-registro').onclick = () => abrirRegistro();
+    el('gr-log-abrir').onclick = () => abrirRegistro();
     el('rg-fechar').onclick = () => (el('reg-dlg') as HTMLDialogElement).close();
     el('rg-refazer').onclick = () => refazerLogEfeitos();
     el('gr-nova').onclick = () => abrirArena(null);

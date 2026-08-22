@@ -18,7 +18,7 @@ usuário veja as informações necessárias e consiga navegar com facilidade.*
 > | mobília antes do tabuleiro | 456 px (54% da tela) | **104 px** (12%) |
 > | altura da página | 1953 px (2,3 telas) | **844 px** (não rola) |
 > | controles abaixo de 44px | 44 | **0** |
-> | zoom de abertura numa arena de 24 colunas | 100% (6 hexágonos à vista) | **55%** (o piso do dedo) |
+> | zoom de abertura numa arena de 24 colunas | 100% (6 hexágonos à vista) | **35%** (o piso do dedo) |
 > | a decisão da folha da ação | fora da tela | **na tela, sem rolar** |
 > | pinça | não existia | **pinça, empurrão e toque duplo** |
 >
@@ -264,10 +264,13 @@ E fotos, como os `shot-*.mjs` já fazem, para a diferença ser olhada e não só
 Sete coisas saíram diferentes do que este documento previa, e todas por medida e não por gosto.
 
 - **O tabuleiro não abre "cabendo".** Cabia, e caber numa arena de 24 colunas dá 30% de zoom, que é
-  um hexágono de 17px: dá para ver a cena e não dá para tocar nela. Entrou um **piso de 55%** (32px
-  por hexágono, que é onde o dedo acerta qual casa é qual). Arena pequena continua cabendo inteira,
-  porque o piso só entra quando a conta desce abaixo dele; arena grande abre num pedaço usável, e o
-  **toque duplo** devolve o enquadramento de abertura a qualquer momento.
+  um hexágono de 17px: dá para ver a cena e não dá para tocar nela. Entrou um **piso de 35%** (21px
+  por hexágono), que na mão se mostrou o ponto certo: a cena grande ainda entra quase inteira, e
+  quem toca uma peça toca no retrato dela, que é maior do que o hexágono. Arena pequena continua
+  cabendo inteira, porque o piso só entra quando a conta desce abaixo dele, e o **toque duplo**
+  devolve o enquadramento de abertura a qualquer momento. Os botões − e + andam **de 5 em 5** no
+  dedo (contra 15 no mouse): lá a roda faz o ajuste fino e o botão serve para saltos; aqui o botão
+  É o ajuste fino, porque quem salta é a pinça.
 - **Nenhuma folha foi construída.** A barra da arena, a coluna lateral e a barra da mesa são as
   MESMAS caixas do desktop, presas no pé da tela por CSS e esperando fora dela. Uma segunda cópia
   para o celular divergiria da primeira no primeiro conserto.
@@ -282,6 +285,14 @@ Sete coisas saíram diferentes do que este documento previa, e todas por medida 
 - **A régua saiu do dedo.** Arrastar o vazio media distância; no telefone esse é o gesto de empurrar
   o mapa, e os dois disputando desenhavam uma linha de régua por cima de cada rolagem. A régua
   continua inteira no mouse, que tem três botões.
+- **A folha de Em campo são duas caixas, e não três.** Ela nasceu com quem está em campo, os
+  efeitos no ar e o registro empilhados, cada um com a própria rolagem dentro de uma terceira, e o
+  resultado era esmagado: rolava-se por fora para achar a lista de baixo. O **registro saiu** (ele é
+  o único dos três que se lê depois da cena, e não durante) e ficou atrás de um "abrir", que leva ao
+  Registro inteiro, onde ele já podia ser arrumado. Os **efeitos ganharam cabeçalho, contagem e
+  dobra**, como "Em campo" sempre teve, e as duas caixas passaram a **dividir a folha** por flex,
+  cada uma com a própria rolagem. De quebra, o registro aberto pelo jogador não mostra mais o ✎ nem
+  o ✕: ler é dele, arrumar continua sendo da mesa.
 - **Arrastar o retrato de dentro da folha fecha a folha.** A lista mora numa caixa que tapa o
   tabuleiro, e arrastar para um hexágono que não se vê é arrastar às cegas. A folha sai da frente no
   primeiro toque, e o arrasto segue o ponteiro pelo documento sem se perder com ela.
@@ -323,8 +334,8 @@ responde.
 - **O ⋯ não tem tela cheia nem modo TV.** Os dois botões continuam na folha da arena, onde estão
   desde sempre. No telefone a tela cheia vale pouco (a barra do navegador já sai sozinha ao rolar) e
   o modo TV vale nada, mas quem projeta do tablet vai procurá-los.
-- **A folha de Em campo mostra a lista e o registro juntos**, com as duas dobras que já existiam. O
-  plano previa duas abas; as dobras resolvem 90% e custaram zero.
+- **A régua não tem substituto no dedo.** Medir distância continua sendo gesto de mouse. No
+  telefone o que responde "cabe?" é o ◎ do alcance, no menu da peça.
 - **A mira do ataque ainda confirma no primeiro toque.** O padrão da mira no dedo (posicionar, ver,
   confirmar), que as Artes já usam, não foi estendido ao alvo do ataque.
 - **Nada de PWA.** Segue fora de escopo, e continua dependendo do domínio próprio.

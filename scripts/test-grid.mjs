@@ -1217,12 +1217,27 @@ async function cenaCelular(br, url, { papel = 'mestre' } = {}) {
   ok(!chao.rola, 'a página não rola: o que não cabe virou folha, e não pilha');
   ok(chao.barra, 'a barra do polegar está no ar');
   // Caber numa arena de 24 colunas daria 30%, que é um hexágono de 17px.
-  ok(chao.zoom >= 50 && chao.zoom <= 100,
-    `o tabuleiro abre enquadrado, e não menor do que o dedo alcança (${chao.zoom}%)`);
+  ok(chao.zoom >= 35 && chao.zoom <= 100,
+    `o tabuleiro abre enquadrado, e não menor do que o piso do dedo (${chao.zoom}%)`);
   ok(chao.arena === (papel === 'mestre'),
     `a barra é montada pelo papel (⧉ arena ${chao.arena ? 'presente' : 'ausente'})`);
   const curtos = await pisoDeToque();
   ok(curtos.length === 0, `todo alvo na tela chega a 44px (${curtos.slice(0, 3).join(', ') || 'nenhum abaixo'})`);
+
+  // O botão de zoom é o ajuste fino no dedo, e a pinça é que salta: um degrau
+  // de 15% passa direto pelo enquadramento que se queria.
+  const degrau = papel !== 'mestre' ? null : await p.evaluate(async () => {
+    const z = () => parseInt(document.getElementById('gr-zval').textContent, 10);
+    document.getElementById('ga-arena')?.click();
+    await new Promise((r) => setTimeout(r, 400));
+    const antes = z();
+    document.getElementById('gr-mais').click();
+    const depois = z();
+    document.getElementById('ga-arena')?.click();
+    await new Promise((r) => setTimeout(r, 350));
+    return depois - antes;
+  });
+  if (degrau !== null) ok(degrau === 5, `o botão de zoom anda de 5 em 5 no dedo (andou ${degrau})`);
 
   // ------------------------------------------------------------- as folhas
   const folhas = [['ga-campo', '.gr-lado', 'em campo'], ['ga-mais', '.mesa-barra', 'mais']];
@@ -1238,6 +1253,27 @@ async function cenaCelular(br, url, { papel = 'mestre' } = {}) {
         escurece: document.body.classList.contains('com-folha') };
     }, botao, caixa);
     ok(r.dentro && r.escurece, `a folha "${nome}" sobe inteira, com o tabuleiro escurecido atrás`);
+    if (nome === 'em campo') {
+      // Eram três caixas espremidas numa folha; o registro saiu para trás do
+      // "abrir", e ficaram duas que abrem e fecham.
+      const caixas = await p.evaluate(() => {
+        const vis = (id) => {
+          const e = document.getElementById(id);
+          if (!e) return false;
+          const r = e.getBoundingClientRect();
+          return !!r.height && getComputedStyle(e).display !== 'none';
+        };
+        const dobrar = document.getElementById('gr-dobrar');
+        dobrar.click();
+        const depoisDeDobrar = vis('gr-lista');
+        dobrar.click();
+        return { log: vis('gr-log'), porta: vis('gr-log-abrir'),
+          lista: vis('gr-lista'), dobrou: !depoisDeDobrar, voltou: vis('gr-lista') };
+      });
+      ok(!caixas.log && caixas.porta, 'o registro sai da folha e fica atrás do "abrir"');
+      ok(caixas.lista && caixas.dobrou && caixas.voltou,
+        'e a caixa de quem está em campo recolhe e volta');
+    }
     const c = await pisoDeToque();
     ok(c.length === 0, `e nada dentro dela fica abaixo de 44px (${c.slice(0, 3).join(', ') || 'nenhum'})`);
     await p.evaluate((b) => document.getElementById(b).click(), botao);
@@ -1272,8 +1308,10 @@ async function cenaCelular(br, url, { papel = 'mestre' } = {}) {
   ok(gestos.pincou > gestos.antes * 1.5,
     `a pinça amplia o tabuleiro, e não a página (${gestos.antes}% → ${gestos.pincou}%)`);
   ok(gestos.empurrou, 'um dedo no vazio empurra o mapa');
-  ok(gestos.duploToque === gestos.antes,
-    `e o toque duplo devolve o enquadramento de abertura (${gestos.duploToque}%)`);
+  // Contra o zoom de ABERTURA, e não contra o de antes da pinça: o toque duplo
+  // promete o enquadramento com que a cena abriu, e não o último que a mão deixou.
+  ok(gestos.duploToque === chao.zoom,
+    `e o toque duplo devolve o enquadramento de abertura (${gestos.duploToque}% de ${chao.zoom}%)`);
 
   // -------------------------------------------- o menu da peça vira folha
   const menu = await p.evaluate(async () => {
