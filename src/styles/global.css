@@ -886,9 +886,41 @@ body.arrastando { cursor: grabbing; }
   .ui-dlg-conj .ag-col-forma { border-left: none; padding-left: 0;
     border-top: 1px solid var(--rule); padding-top: .5rem; }
   .ui-dlg-conj .ag-col-par, .ui-dlg-conj .ag-col-forma { overflow: visible; }
+  /* `min-height: 0` é o que deixa cada coluna rolar por dentro no notebook.
+     Numa fileira só ele vira defeito: a linha da grade encolhe abaixo do
+     conteúdo, e como aqui as colunas transbordam em vez de rolar, os
+     parâmetros eram desenhados POR CIMA da manifestação. Quem rola aqui é a
+     fileira inteira, e cada bloco pede a altura do que tem. */
+  .ui-dlg-conj :is(.ag-col-ef, .ag-col-par, .ag-col-forma) { min-height: auto; }
   /* E o pé continua ao alcance da mão, grudado no fundo da fileira que rola. */
   .ui-dlg-conj .ag-pe { position: sticky; bottom: 0; z-index: 1; background: var(--panel);
     padding-bottom: .2rem; }
+
+  /* ---- a caixa vira folha de baixo ----
+     No telefone o alto da tela é longe e o pé é perto, e uma caixa de 40rem
+     centrada nasce com o "Conjurar" no meio do caminho. Encostada no pé, ela
+     fala a mesma língua das folhas do tabuleiro e ganha a altura que o miolo
+     pedia. O `margin-right` que a encosta na direita no notebook (para o mapa
+     aparecer ao lado) não tem o que fazer aqui: não sobra lado nenhum. */
+  .ui-dlg-conj.ui-dlg-arte { width: 100%; max-width: none; }
+  .ui-dlg-conj { margin: auto 0 0; border-radius: var(--r-lg) var(--r-lg) 0 0;
+    border-bottom: 0; }
+  .ui-dlg-conj .ui-dlg-form { height: 92dvh; max-height: 92dvh;
+    padding-bottom: env(safe-area-inset-bottom); }
+
+  /* A CONTA EM TRÊS LINHAS, e não em três colunas de 105px.
+     Cada célula leva o número e a explicação de onde ele saiu; em três colunas
+     estreitas as explicações quebravam em duas linhas cada uma e o pé comia um
+     terço da caixa. Deitadas, as três cabem numa linha cada. */
+  .ui-dlg-conj .ag-cst-l { grid-template-columns: minmax(0, 1fr); gap: .1rem; }
+  .ui-dlg-conj .ag-cst-c { flex-wrap: nowrap; gap: .3rem; }
+  .ui-dlg-conj .ag-cst-c small { flex: 0 1 auto; overflow: hidden; text-overflow: ellipsis;
+    white-space: nowrap; }
+  /* E os dois botões dividem a linha inteira: são a decisão da caixa, e no
+     canto direito eles ficavam com 40% da largura e 30px de altura. */
+  .ui-dlg-conj .ag-pe-fim { flex-wrap: wrap; gap: .3rem; }
+  .ui-dlg-conj .ag-acoes { flex: 1 1 100%; }
+  .ui-dlg-conj .ag-acoes .btn { flex: 1 1 0; min-height: 44px; justify-content: center; }
 }
 
 .ui-dlg-arte .ag-h { display: block; font-size: var(--fs-micro); text-transform: uppercase;
@@ -994,7 +1026,11 @@ body.arrastando { cursor: grabbing; }
 
 /* os parâmetros: nome, contador, e o que aquilo VALE, que é a coluna que importa */
 .ag-pars { display: grid; gap: .18rem; max-width: 26rem; }
-.ag-p { display: grid; grid-template-columns: 4.5rem auto minmax(0, 1fr) auto; align-items: center; gap: .4rem;
+/* A coluna do nome é fixa para os ± alinharem entre si, mas "Comprimento" mede
+   6,5rem e transbordava por cima do −. `max-content` mantém o alinhamento (a
+   coluna é uma só para todas as fileiras) e para de cortar o nome mais longo. */
+.ag-p { display: grid; grid-template-columns: minmax(4.5rem, max-content) auto minmax(0, 1fr) auto;
+  align-items: center; gap: .4rem;
   padding: .06rem .2rem; border-radius: var(--r-2, 6px); }
 .ag-p.esticado { background: color-mix(in srgb, var(--gold, #c9a227) 12%, transparent); }
 .ag-p-nm { font-size: var(--fs-aux); }
@@ -1062,7 +1098,10 @@ body.arrastando { cursor: grabbing; }
    palavras; na coluna fixa eles ainda alinham entre si, que é o que fazia a
    pilha ser legível. Os botões quebram dentro do próprio espaço, então nenhum
    fica órfão embaixo do rótulo. */
-.ag-angs { display: grid; grid-template-columns: 4.2rem minmax(0, 1fr);
+/* 5.2rem e não 4.2: a coluna do rótulo é FIXA para as fileiras alinharem entre
+   si, e "CURVATURA" mede 4,7rem. Na coluna curta ela transbordava por cima da
+   primeira pastilha, e o que se lia era "CURVATURAReta". */
+.ag-angs { display: grid; grid-template-columns: 5.2rem minmax(0, 1fr);
   align-items: baseline; gap: .15rem .4rem; margin-bottom: .35rem; }
 .ag-ang-l { font-size: var(--fs-micro); color: var(--ink-soft);
   text-transform: uppercase; letter-spacing: .06em; margin: 0; }
@@ -1442,4 +1481,37 @@ body.arrastando { cursor: grabbing; }
   /* o nome de quem foi empurrado ganha a linha; os números vêm embaixo */
   .ui-dlg-emp .ag-emp-l { grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr); gap: .2rem .5rem; }
   .ui-dlg-emp .ag-emp-nm { grid-column: 1 / -1; }
+}
+
+/* ---- os alvos de dedo dos painéis de Arte ----
+   Medido numa varredura pelas cinco Artes da bancada e pelos 37 Efeitos que
+   elas alcançam, num aparelho de 390px: o − e o + tinham 24px, o ✕ de fechar
+   tinha 23×19, e as pastilhas de ângulo, de sólido e de molde tinham 26 a 31px
+   de altura. O ± é o controle MAIS apertado desta caixa (cada parâmetro sobe de
+   um em um, e uma conjuração mexe em quatro deles), e era justamente o menor.
+
+   Mora no FIM do arquivo de propósito: as regras base destes mesmos seletores
+   vêm depois do bloco de layout lá em cima, e com a mesma especificidade elas
+   ganhavam. Aqui elas não têm como ganhar. */
+@media (max-width: 46rem) {
+  .ag-p-b { width: 2.75rem; height: 2.75rem; font-size: var(--fs-h3); }
+  .ag-p-ctr { gap: .45rem; }
+  .ag-ang, .ag-sol, .ag-molde, .ag-md { min-height: 2.75rem; }
+  /* As pastilhas de ângulo dizem "60°", e três letras dão 28px de largura. */
+  .ag-ang { min-width: 2.75rem; justify-content: center; }
+  /* E o rótulo ganha a linha: com as pastilhas em 44px, sobrar 5,2rem para
+     "CURVATURA" numa tela de 390 é tirar espaço de quem precisa dele. */
+  .ag-angs { grid-template-columns: minmax(0, 1fr); gap: .2rem; }
+  .ag-ang-l { grid-column: 1 / -1; }
+  .ag-chip { min-height: 2.6rem; }
+  .ag-efs .ag-ef { min-height: 2.75rem; }
+  /* O ✕ vale para toda a família `ui-dlg`, e não só para a conjuração. */
+  .ui-dlg-x { min-width: 44px; min-height: 44px; display: inline-flex;
+    align-items: center; justify-content: center; font-size: var(--fs-aux); }
+  /* E o resto do que estes painéis põem na mão: o `.mini` do bestiário no NPC
+     tinha 26px de altura, e o "▸ Ficha avançada" tinha 37. O `global.css`
+     isenta o `.mini` de propósito nas telas densas da mesa, e aqui não é uma
+     tela densa: é um formulário. */
+  .ui-dlg .btn.mini, .ui-dlg .ag-mais { min-height: 44px; }
+  .ui-dlg :is(input[type="checkbox"], input[type="radio"]) { width: 1.15rem; height: 1.15rem; }
 }

@@ -22,6 +22,9 @@
 // Toda consulta desconhecida devolve lista vazia, e não erro, de propósito: assim
 // a página segue o caminho normal em vez do caminho de "rode a migração".
 
+// Os Efeitos do jogo, para a ficha de mentira poder comprar todos.
+import EFEITOS_D from '../src/data/efeitos.json';
+
 const P = new URLSearchParams(typeof location !== 'undefined' ? location.search : '');
 const N_COMB = parseInt(P.get('bench') || '12', 10);
 const COLS = parseInt(P.get('cols') || '24', 10);
@@ -57,13 +60,19 @@ const offsetParaAxial = (col, row) => ({ q: col - Math.floor(row / 2), r: row })
 // dos 309 blocos do bestiário declara `arte`), e a conjuração era a única parte
 // grande do Grid que não dava para exercitar aqui.
 //
-// `efeito` fica nulo de propósito: nulo é "alcança o que a Arte comporta", que é
-// a regra da criatura, e com ele a lista de Efeitos vem cheia sem ter de listar
-// id por id. O improviso continua no topo, como no jogo.
+// `efeito` era nulo, com a intenção de dizer "alcança o que a Arte comporta".
+// Não era o que acontecia: `fonteDe`, no artes-grid-mesa, lê `f.efeito || {}`, e
+// nulo virava mapa vazio, ou seja NENHUM Efeito Especial comprado. A bancada
+// passou meses conjurando só o improviso, e a metade grande do painel (139
+// Efeitos, com parâmetros e formas próprios) nunca era desenhada aqui.
+//
+// A regra do PC é essa mesmo: quem não comprou não tem. Então a ficha de
+// mentira COMPRA TUDO, que é o que uma bancada quer: id por id, tirado do mesmo
+// `efeitos.json` que o site lê, para a lista não envelhecer separada dele.
 const FICHA_PC = {
   centelha: 3,
   arte: { fogo: 5, terra: 4, vento: 5, protecao: 3, cura: 2 },
-  efeito: null,
+  efeito: Object.fromEntries(EFEITOS_D.map((e) => [e.id, true])),
 };
 
 /**

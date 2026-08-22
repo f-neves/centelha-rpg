@@ -1771,6 +1771,15 @@ const SETAS = [
   body.grid-mob .mesa-dlg :is(button, select) { min-height: 44px; }
   body.grid-mob .mesa-dlg .btn.mini { padding: .3rem .8rem; }
   body.grid-mob .mesa-dlg .grade3 { grid-template-columns: 1fr; }
+  /* O ✎ e o ✕ de cada linha do registro tinham 19px de largura: eles ganham a
+     altura pela regra de cima, e a largura vinha do glifo. Dois alvos de 19px
+     encostados um no outro, e um deles apaga a linha. */
+  body.grid-mob .rg-acs { gap: .35rem; }
+  body.grid-mob .rg-acs button { min-width: 44px; }
+  /* O quadradinho de marcar: quem recebe o toque é o rótulo inteiro, mas mirar
+     num quadrado de 13px para CONFERIR o estado é outra coisa. */
+  body.grid-mob .mesa-dlg :is(input[type="checkbox"], input[type="radio"]) {
+    width: 1.15rem; height: 1.15rem; }
   body.grid-mob .mesa-dlg .dlg-txt { font-size: var(--fs-rotulo); }
 
   /* A folha da ação: o rótulo ganha a linha dele, e o que era uma fileira de

@@ -429,6 +429,9 @@ const { aba } = Astro.props;
   .card-modal-x { position: absolute; top: .5rem; right: .5rem; z-index: 3; width: 2rem; height: 2rem;
     border-radius: 50%; border: none; background: color-mix(in srgb, var(--ink) 14%, transparent);
     color: var(--ink); font-size: var(--fs-aux); cursor: pointer; }
+  /* No dedo o ✕ do card sobe para 44px: ele é a única saída da janela, que
+     toma a tela inteira no telefone. */
+  @media (max-width: 900px) { .card-modal-x { width: 44px; height: 44px; font-size: var(--fs-aux); } }
   .card-modal .besta { display: flex; flex-direction: column; border: 1px solid var(--panel-border);
     border-radius: var(--r-lg); background: var(--panel); overflow: hidden; }
   .card-modal .arte { position: relative; margin: 0; aspect-ratio: 4 / 3; display: flex; align-items: center;

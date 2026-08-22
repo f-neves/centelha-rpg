@@ -1370,6 +1370,52 @@ async function cenaCelular(br, url, { papel = 'mestre' } = {}) {
   const fechou = await p.evaluate(() => document.body.classList.contains('com-folha'));
   ok(!fechou, 'e o mesmo botão que abriu fecha');
 
+  // ------------------------------------------------- o painel de conjurar
+  // Ele é a caixa mais cheia do Grid (Arte, Efeito, parâmetros, molde, ângulos
+  // e a conta), e a que mais tinha a perder numa tela de 390px: as colunas
+  // nasceram com `min-height: 0` para rolarem por dentro no notebook, e numa
+  // fileira só isso fazia os parâmetros serem desenhados POR CIMA da
+  // manifestação. Uma varredura pelas 5 Artes e pelos 37 Efeitos da bancada não
+  // cabe no smoke; um estado com molde e ângulos cabe, e é o que quebrava.
+  const conj = await p.evaluate(async () => {
+    document.getElementById('ga-agir').click();
+    await new Promise((r) => setTimeout(r, 400));
+    document.querySelector('#tok-menu button[data-a="arte"]')?.click();
+    await new Promise((r) => setTimeout(r, 900));
+    const muro = [...document.querySelectorAll('.ag-efs .ag-ef')].find((b) => /Muro/.test(b.textContent));
+    muro?.click();
+    await new Promise((r) => setTimeout(r, 400));
+    const d = document.querySelector('dialog[open].ui-dlg-conj');
+    if (!d) return { abriu: false };
+    const rd = d.getBoundingClientRect();
+    const fora = [...d.querySelectorAll('*')].filter((e) => {
+      const r = e.getBoundingClientRect();
+      if (!r.width || !r.height || e.closest('svg')) return false;
+      if (getComputedStyle(e).position === 'fixed') return false;
+      return r.right > rd.right + 1 || r.left < rd.left - 1;
+    }).length;
+    const blocos = ['.ag-col-ef', '.ag-col-par', '.ag-col-forma']
+      .map((s) => d.querySelector(s)).filter(Boolean).map((e) => e.getBoundingClientRect());
+    let cruza = 0;
+    for (let i = 0; i < blocos.length; i++) for (let j = i + 1; j < blocos.length; j++) {
+      const a = blocos[i], b = blocos[j];
+      if (a.left < b.right - 1 && b.left < a.right - 1 && a.top < b.bottom - 1 && b.top < a.bottom - 1) cruza++;
+    }
+    const ok = d.querySelector('#ag-ok').getBoundingClientRect();
+    const mais = d.querySelector('.ag-p-ctr .ag-p-b:last-child').getBoundingClientRect();
+    return { abriu: true, fora, cruza,
+      folha: Math.abs(rd.bottom - innerHeight) < 2 && Math.abs(rd.left) < 2,
+      conjurar: ok.top >= 0 && ok.bottom <= innerHeight + 1,
+      passo: Math.round(Math.min(mais.width, mais.height)) };
+  });
+  ok(conj.abriu && conj.folha, 'o painel de conjurar sobe do pé, na largura da tela');
+  ok(conj.fora === 0 && conj.cruza === 0,
+    `e nada sai pelos lados nem é desenhado por cima do vizinho (${conj.fora} fora, ${conj.cruza} cruzando)`);
+  ok(conj.conjurar && conj.passo >= 40,
+    `o Conjurar fica na tela e o ± dá para o dedo (${conj.passo}px)`);
+  await p.evaluate(() => document.querySelector('dialog[open].ui-dlg-conj')?.close());
+  await espera(400);
+
   // -------------------------------------------- a folha do ✦, e o slot dela
   // As duas linhas de efeito são de mentira: a bancada não tem Arte no ar, e o
   // que se prova aqui é o encanamento (o slot que acende com a conta, a folha
