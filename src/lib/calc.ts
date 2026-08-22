@@ -142,7 +142,13 @@ export function iniciativa(traits: Record<string, number>) {
 }
 
 /** Deslocamento: corrida (m/s) e normal (m fixo) de movimento, e pulo (cm). */
-export function deslocamento(traits: { forca?: number; destreza?: number; atletismo?: number; centelha?: number }) {
+export function deslocamento(
+  traits: { forca?: number; destreza?: number; atletismo?: number; centelha?: number },
+  // A fração da raça (baixa estatura: dois terços). Entra ANTES do
+  // arredondamento, senão dois arredondamentos em sequência somam erro: 3,25
+  // vira 3 e 3 × ⅔ vira 2, quando a conta certa é 3,25 × ⅔ = 2,17 → 2.
+  frac = 1,
+) {
   // O bloco tem uma `nota` de texto ao lado das escadas de números, e por isso
   // não é `Record<string, Record<string, number>>`: cada escada é lida à parte,
   // pelo nome, e a nota nunca passa por `calc`.
@@ -152,7 +158,7 @@ export function deslocamento(traits: { forca?: number; destreza?: number; atleti
   // deslocamento em combate ficar na faixa humana de 2 a 5 m/s.
   const calc = (c: Record<string, number>) =>
     Math.round(Object.entries(c).reduce(
-      (s, [k, v]) => s + (k === 'base' ? v : ((traits as Record<string, number>)[k] ?? 0) * v), 0));
+      (s, [k, v]) => s + (k === 'base' ? v : ((traits as Record<string, number>)[k] ?? 0) * v), 0) * frac);
   return {
     arranque: calc(d.arranque), corrida: calc(d.corrida), normal: calc(d.normal),
     saltoVertical: calc(d.saltoVertical),

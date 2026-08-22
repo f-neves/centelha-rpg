@@ -563,6 +563,35 @@ de topo, que é governada pela Destreza.
 uma trava esconde erro de calibragem em vez de mostrar. A ordem passa a depender dos números
 estarem certos, e é assim que ela é verificável.
 
+### E os anões, que não tinham conta nenhuma
+
+A mesa desconfiou dos números de perna curta, e havia dois problemas.
+
+**O primeiro era de calibragem.** A regra escrita (passo ⅔, corrida ½) cortava a **base junto**, e a
+base é o chão de qualquer corpo que corra: cortá-la pela metade diz que um anão parte de 2 m/s onde
+um humano parte de 4. Resultado: o anão de Destreza 1 **circulava mais rápido do que corria** (1,67
+contra 1,63) e o anão soldado "esprintava" a 3,5 m/s, que é o trote de um humano.
+
+Passou a ser **dois terços em tudo** — passo, Arranque, Corrida e Saltos. É a mesma proporção que a
+âncora do andar já dizia (1,0 contra 1,5), e com ela a ordem fecha em todos os perfis.
+
+**O segundo era maior: a regra nunca foi calculada.** O motor da ficha lia a raça só para
+**atributos**; "baixa estatura" era prosa dentro de `tracos` e nenhum código a tocava. A ficha de um
+anão mostrava, até 22/08, **exatamente os mesmos metros de um humano** com os mesmos atributos, e a
+fração — fosse ½ ou ⅔ — não valia em lugar nenhum.
+
+Agora as três raças têm `deslocamentoFrac` no `racas.json`, e a fração entra **dentro** de
+`deslocamento()`, antes do arredondamento: arredondar duas vezes somava erro (3,25 vira 3, e 3 × ⅔
+vira 2, quando a conta certa é 3,25 × ⅔ = 2,17 → 2). A ficha escreve a conta na linha, com o
+`× ⅔ · baixa estatura` à vista.
+
+| Perfil | humano (passo/arranque/corrida) | anão |
+|---|:---:|:---:|
+| camponês | 3 / 3 / 5 | 2 / 2 / 4 |
+| soldado | 3 / 5 / 7 | 2 / 3 / 5 |
+| aventureiro | 4 / 5 / 8 | 3 / 4 / 6 |
+| acrobata | 5 / 8 / 12 | 3 / 5 / 8 |
+
 ---
 
 ## Fontes internas

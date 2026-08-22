@@ -18,12 +18,13 @@
     "atributos": { "vigor": 1, "perspicacia": -1 },
     "aparenciaMod": 0,
     "aparenciaUniversal": false,
+    "deslocamentoFrac": 0.667,
     "descricao": "Baixos e corpulentos, de vida longa (300+ anos). Mestres dos ofícios de pedra e metal.",
     "tracos": [
       "Resistência a venenos: +1d6 em testes de resistência a venenos.",
       "Visão no escuro (sem distinguir cores; leva um tempo para adaptar).",
       "Mestre dos ofícios: +1d6 em qualquer Ofício em que já tenha pontos.",
-      "Baixa estatura: o Deslocamento livre vale dois terços do de um humano, e a Corrida e os Saltos, metade. A perna curta atrapalha um pouco no jogo de pernas e muito na distância percorrida."
+      "Baixa estatura: todo deslocamento vale DOIS TERÇOS do de um humano · o passo em combate, o Arranque, a Corrida e os Saltos. É a mesma proporção do andar (1 m/s contra 1,5), e a ficha já faz a conta."
     ]
   },
   {
@@ -47,12 +48,13 @@
     "atributos": { "vigor": 1, "forca": -1 },
     "aparenciaMod": 0,
     "aparenciaUniversal": false,
+    "deslocamentoFrac": 0.667,
     "descricao": "Pequenos e resistentes, engenhosos e ilusionistas, de vida longa (400+ anos).",
     "tracos": [
       "Feitiçaria ilusória: +2 para criar e detectar feitiçarias de ilusão.",
       "Empatia com animais: +2 ao lidar com animais.",
       "Visão no escuro (sem distinguir cores).",
-      "Baixa estatura: o Deslocamento livre vale dois terços do de um humano, e a Corrida e os Saltos, metade. A perna curta atrapalha um pouco no jogo de pernas e muito na distância percorrida."
+      "Baixa estatura: todo deslocamento vale DOIS TERÇOS do de um humano · o passo em combate, o Arranque, a Corrida e os Saltos. É a mesma proporção do andar (1 m/s contra 1,5), e a ficha já faz a conta."
     ]
   },
   {
@@ -62,10 +64,11 @@
     "atributos": { "destreza": 1, "forca": -1 },
     "aparenciaMod": 0,
     "aparenciaUniversal": false,
+    "deslocamentoFrac": 0.667,
     "descricao": "Pequenos e ágeis, atléticos apesar do porte, de vida longa (300+ anos).",
     "tracos": [
       "Atletas: +1d6 em Atletismo e habilidades secundárias correlatas.",
-      "Baixa estatura: o Deslocamento livre vale dois terços do de um humano, e a Corrida e os Saltos, metade. A perna curta atrapalha um pouco no jogo de pernas e muito na distância percorrida."
+      "Baixa estatura: todo deslocamento vale DOIS TERÇOS do de um humano · o passo em combate, o Arranque, a Corrida e os Saltos. É a mesma proporção do andar (1 m/s contra 1,5), e a ficha já faz a conta."
     ]
   },
   {

@@ -1487,17 +1487,23 @@ export function montarFicha(opts: FichaOpts) {
       r('Mana', mn, `Centelha ${C}×2 + Vontade ${W} = ${mn}`, true) +
       (MODULOS.folego ? r('Fôlego', fo, `10 + Vigor ${vig}×5 + Resistência ${SK('resistencia')}×4 + Vontade ${W}×2 = ${fo} · recupera Vigor/Tick`, true) : '') +
       r('Iniciativa', iniciativa({ raciocinio: A('raciocinio'), prontidao: SK('prontidao') }).str, `1d6 + Raciocínio ${A('raciocinio')} + Prontidão ${SK('prontidao')}`, true) +
-      (() => { const dz = deslocamento({ forca: A('forca'), destreza: dex, atletismo: SK('atletismo'), centelha: C });
+      (() => {
+        // A BAIXA ESTATURA VIRA CONTA. O traço era prosa dentro de `tracos`, e
+        // nenhum código o lia: a ficha do anão mostrava os metros de um humano.
+        // A fração entra dentro de `deslocamento`, antes do arredondamento.
+        const fracR = (RACA[S.raca] as any)?.deslocamentoFrac ?? 1;
+        const notaR = fracR !== 1 ? ` × ⅔ · baixa estatura` : '';
+        const dz = deslocamento({ forca: A('forca'), destreza: dex, atletismo: SK('atletismo'), centelha: C }, fracR);
         const penMov = Math.floor(penFisica / 2);
         const mp = (v: number) => Math.max(0, v - penMov);
         const cmp = (v: number) => Math.max(0, v - penMov * 10);
         const ps = penMov ? ` − ½ penalidade (${penMov})` : '';
-        return r('Deslocamento livre', `${mp(dz.normal)} m`, `2 + (Destreza ${dex} + Atletismo ${SK('atletismo')}) ÷ 4${ps} = ${mp(dz.normal)} m na ação · é um Tick de movimento, ou seja ${mp(dz.normal)} m/s`, true) +
-          r('Vel. de Arranque', `${mp(dz.arranque)} m/s`, `(Força ${A('forca')} + Atletismo ${SK('atletismo')}) ÷ 2 + Destreza ${dex} · Ticks 1–3${ps}`, true) +
-          r('Vel. de Corrida', `${mp(dz.corrida)} m/s`, `Destreza ${dex} × 1,5 + Atletismo ${SK('atletismo')} · Tick 4+${ps}`, true) +
-          r('Salto Vertical', `${cmp(dz.saltoVertical)} cm`, `Força ${A('forca')}×20 + Atletismo ${SK('atletismo')}×10 + Destreza ${dex}×4 + Centelha ${C}×50`, true) +
-          r('Salto Horiz. Parado', `${mp(dz.saltoHorizontalParado)} m`, `(Força ${A('forca')} + Atletismo ${SK('atletismo')} + Centelha ${C}) ÷ 2${ps}`, true) +
-          r('Salto Horiz. Correndo', `${mp(dz.saltoHorizontalCorrendo)} m`, `Vel. de Corrida + Atletismo ${SK('atletismo')} ÷ 2 + Centelha ${C}${ps}`, true); })();
+        return r('Deslocamento livre', `${mp(dz.normal)} m`, `2 + (Destreza ${dex} + Atletismo ${SK('atletismo')}) ÷ 4${notaR}${ps} = ${mp(dz.normal)} m na ação · é um Tick de movimento, ou seja ${mp(dz.normal)} m/s`, true) +
+          r('Vel. de Arranque', `${mp(dz.arranque)} m/s`, `2 + Força ${A('forca')} ÷ 4 + Atletismo ${SK('atletismo')} ÷ 4 + Destreza ${dex} ÷ 2 · Ticks 1–3${notaR}${ps}`, true) +
+          r('Vel. de Corrida', `${mp(dz.corrida)} m/s`, `4 + Destreza ${dex} × ¾ + Atletismo ${SK('atletismo')} ÷ 2 · Tick 4+${notaR}${ps}`, true) +
+          r('Salto Vertical', `${cmp(dz.saltoVertical)} cm`, `Força ${A('forca')}×20 + Atletismo ${SK('atletismo')}×10 + Destreza ${dex}×4 + Centelha ${C}×50${notaR}`, true) +
+          r('Salto Horiz. Parado', `${mp(dz.saltoHorizontalParado)} m`, `(Força ${A('forca')} + Atletismo ${SK('atletismo')} + Centelha ${C}) ÷ 2${notaR}${ps}`, true) +
+          r('Salto Horiz. Correndo', `${mp(dz.saltoHorizontalCorrendo)} m`, `Vel. de Corrida + Atletismo ${SK('atletismo')} ÷ 2 + Centelha ${C}${notaR}${ps}`, true); })();
   }
   function applyDerivCol() {
     el('derived').classList.toggle('collapsed', !!S.derivCol);
@@ -1596,7 +1602,7 @@ export function montarFicha(opts: FichaOpts) {
       + (calcConj(conjAtivo()).penSum || 0)) / 2);
     const vBase = Math.max(0, deslocamento({
       forca, destreza: A('destreza'), atletismo: atl, centelha: S.centelha,
-    }).corrida - penMov);
+    }, (RACA[S.raca] as any)?.deslocamentoFrac ?? 1).corrida - penMov);
     const vel = (w: number) => vBase * velFrac(w);
     const cMin = maxKg / 8, cLeve = maxKg / 4, cMedia = maxKg / 2, cPesada = maxKg * corte;
     const bandas = [
