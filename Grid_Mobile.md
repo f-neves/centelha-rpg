@@ -285,14 +285,22 @@ Sete coisas saíram diferentes do que este documento previa, e todas por medida 
 - **A régua saiu do dedo.** Arrastar o vazio media distância; no telefone esse é o gesto de empurrar
   o mapa, e os dois disputando desenhavam uma linha de régua por cima de cada rolagem. A régua
   continua inteira no mouse, que tem três botões.
-- **A folha de Em campo são duas caixas, e não três.** Ela nasceu com quem está em campo, os
-  efeitos no ar e o registro empilhados, cada um com a própria rolagem dentro de uma terceira, e o
-  resultado era esmagado: rolava-se por fora para achar a lista de baixo. O **registro saiu** (ele é
-  o único dos três que se lê depois da cena, e não durante) e ficou atrás de um "abrir", que leva ao
-  Registro inteiro, onde ele já podia ser arrumado. Os **efeitos ganharam cabeçalho, contagem e
-  dobra**, como "Em campo" sempre teve, e as duas caixas passaram a **dividir a folha** por flex,
-  cada uma com a própria rolagem. De quebra, o registro aberto pelo jogador não mostra mais o ✎ nem
-  o ✕: ler é dele, arrumar continua sendo da mesa.
+- **A folha de Em campo são duas caixas, e não três, e ela toma a tela inteira.** Ela nasceu com
+  quem está em campo, os efeitos no ar e o registro empilhados, cada um com a própria rolagem dentro
+  de uma terceira, e o resultado era esmagado: rolava-se por fora para achar a lista de baixo. O
+  **registro saiu de vez** e passou a morar só na folha da **Arena** (ele é o único dos três que se
+  lê DEPOIS da cena, e não durante); o ↶ desfazer foi junto, porque é do registro que ele fala. Os
+  **efeitos ganharam cabeçalho, contagem e dobra**, como "Em campo" sempre teve.
+
+  A repartição entre as duas não é meio a meio: **os efeitos pedem o tamanho do que têm** (até um
+  teto de 40dvh, senão uma cena de oito Artes tomaria a folha) e **"Em campo" fica com todo o
+  resto**. É isso que faz recolher os Efeitos DEVOLVER o espaço em vez de reparti-lo de novo: com as
+  duas flexíveis, cada dobra redistribuía as duas e a lista encolhia junto com a caixa que se
+  fechara. Medido na bancada: recolher os efeitos leva a lista de 344px para 628.
+
+  De quebra, o registro aberto pelo jogador não mostra mais o ✎ nem o ✕: ler é dele, arrumar
+  continua sendo da mesa. E a folha, tomando a tela toda, ganhou um **✕**: o ☰ da barra continua
+  fechando, mas quem abriu não tem por que saber que o mesmo botão faz as duas coisas.
 - **Arrastar o retrato de dentro da folha fecha a folha.** A lista mora numa caixa que tapa o
   tabuleiro, e arrastar para um hexágono que não se vê é arrastar às cegas. A folha sai da frente no
   primeiro toque, e o arrasto segue o ponteiro pelo documento sem se perder com ela.

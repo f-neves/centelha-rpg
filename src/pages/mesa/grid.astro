@@ -184,6 +184,11 @@ const SETAS = [
               aria-controls="gr-lista" title="Ocultar a lista e dar a altura ao Registro">▾</button>
             <h3 class="col-h">Em campo</h3>
             <button class="btn mini" id="gr-npc" hidden title="Um figurante só para esta cena">+ NPC</button>
+            {/* Tomando a tela inteira, a folha precisa dizer por onde se sai: o
+                ☰ da barra continua fechando, mas quem abriu não tem por que
+                saber que o mesmo botão faz as duas coisas. */}
+            <button type="button" class="btn-fant gr-folha-x" id="gr-campo-x"
+              aria-label="Fechar" title="Fechar">✕</button>
           </div>
           <p class="muted nota-mini" id="gr-dica" hidden><span class="so-largo">Arraste o retrato até um hexágono para pôr no mapa.
             Arraste de um hexágono para outro para mover, e para cá para tirar do mapa.</span><span
@@ -207,11 +212,6 @@ const SETAS = [
             <button class="btn-fant gr-dobra" id="gr-dobrar-log" aria-expanded="true"
               aria-controls="gr-log" title="Recolher o registro e dar a altura a Em campo">▾</button>
             <h3 class="col-h">Registro</h3>
-            {/* No telefone a lista do registro sai da coluna: ela é a terceira
-                caixa de uma folha que já tem duas, e é a única das três que se
-                lê depois da cena, e não durante. Fica esta porta, que abre o
-                registro inteiro (onde ele já podia ser arrumado). */}
-            <button class="btn mini gr-log-abrir" id="gr-log-abrir">abrir</button>
             <button class="btn-fant" id="gr-desfazer" title="Desfazer a última ação" hidden disabled>↶</button>
           </div>
           <div id="gr-log" class="gr-log"></div>
@@ -1318,7 +1318,6 @@ const SETAS = [
   .gr-ef-n { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft);
     font-variant-numeric: tabular-nums; opacity: .8; }
   .gr-lado.ef-dobrado .gr-ef-lista { display: none; }
-  .gr-log-abrir { display: none; }
   .gr-log { display: flex; flex-direction: column; gap: .1rem; max-height: 30vh; overflow-y: auto;
     font-size: var(--fs-micro); margin-top: .3rem; }
   .gr-log .lg { display: flex; gap: .35rem; align-items: baseline;
@@ -1453,7 +1452,9 @@ const SETAS = [
     border-top: 1px solid var(--rule); margin-top: .35rem; padding-top: .45rem; }
   /* Ícone sozinho vira palavra: numa fileira apertada o ⚙ ao lado do ✦ se
      explicava pela vizinhança, e numa lista de linhas ele fica órfão. */
-  body.grid-mob #gr-fx-cfg, body.grid-mob #gr-excluir, body.grid-mob #ini-rolar {
+  body.grid-mob #gr-desfazer::after { content: 'desfazer a última ação'; }
+  body.grid-mob #gr-fx-cfg, body.grid-mob #gr-excluir, body.grid-mob #ini-rolar,
+  body.grid-mob .gr-btns > #gr-desfazer {
     grid-column: 1 / -1; min-height: 44px; border: 1px solid var(--rule);
     border-radius: var(--r-md); justify-content: flex-start; padding: .3rem .6rem;
     font-size: var(--fs-rotulo); display: inline-flex; align-items: center; gap: .4rem; }
@@ -1486,19 +1487,29 @@ const SETAS = [
      a da janela, senão os dois somados passariam de uma tela. */
   /* A folha de Em campo são DUAS caixas, e não três espremidas: quem está em
      campo e o que está no ar, cada uma abrindo e fechando por conta. O registro
-     sai daqui e fica no Registro, atrás do "abrir": ele é o único dos três que
-     se lê depois da cena, e não durante. */
-  body.grid-mob .gr-lado { display: flex; overflow: hidden; }
-  /* As duas caixas DIVIDEM a folha, cada uma com a própria rolagem, em vez de
-     empilharem duas rolagens dentro de uma terceira. Com teto fixo em cada uma
-     (46dvh e 40dvh), as duas somadas passavam da folha e o que sobrava era rolar
-     por fora para achar a de baixo, que é o esmagado de antes. */
-  body.grid-mob :is(.gr-lista, .gr-ef-lista) { flex: 1 1 auto; min-height: 5rem;
-    max-height: none; overflow-y: auto; }
+     saiu daqui de vez e mora na folha da Arena: ele é o único dos três que se lê
+     DEPOIS da cena, e não durante, e numa folha de consulta rápida ele só
+     roubava altura das duas que se consultam no meio da luta. */
+  body.grid-mob .gr-lado { display: flex; overflow: hidden;
+    top: 0; height: 100dvh; max-height: none;
+    border-radius: 0; border-top: 0; border-left: 0; border-right: 0;
+    padding-bottom: calc(var(--ga-h) + .5rem); }
+  /* QUEM MANDA NA ALTURA É "EM CAMPO". Os efeitos pedem o tamanho do que têm
+     (com teto, senão uma cena de oito Artes tomaria a folha) e a lista fica com
+     todo o resto. É isto que faz recolher os Efeitos DEVOLVER o espaço em vez
+     de reparti-lo de novo: com as duas flexíveis, cada dobra redistribuía as
+     duas, e a lista encolhia junto com a caixa que se fechou. */
+  body.grid-mob .gr-lista { flex: 1 1 auto; min-height: 6rem; max-height: none; overflow-y: auto; }
+  /* Sem encolher: os efeitos pedem o tamanho do que têm (até o teto) e quem
+     cede é a lista, que tem doze linhas e um piso. Com os dois encolhendo, o que
+     estava no ar era espremido junto e nenhuma das duas caixas ficava legível. */
+  body.grid-mob .gr-ef-lista { flex: 0 0 auto; max-height: 40dvh; overflow-y: auto; }
   body.grid-mob .gr-lado > :not(.gr-lista):not(.gr-ef-lista) { flex: 0 0 auto; }
-  body.grid-mob .gr-log { display: none; }
-  body.grid-mob .gr-reg-log #gr-dobrar-log { display: none; }
-  body.grid-mob .gr-log-abrir { display: inline-flex; }
+  body.grid-mob .gr-reg-log, body.grid-mob .gr-log { display: none; }
+  /* O ✕ da folha de tela inteira. */
+  .gr-folha-x { display: none; }
+  body.grid-mob .gr-folha-x { display: inline-flex; align-items: center; justify-content: center;
+    margin-left: auto; min-width: 44px; min-height: 44px; font-size: 1.1rem; }
   body.grid-mob .gr-ficha { min-height: 48px; }
   /* Recolhida, a caixa vira o próprio cabeçalho, e o vizinho fica com a folha. */
   body.grid-mob .gr-lado.dobrada .gr-lista { display: none; }
@@ -6886,13 +6897,16 @@ const SETAS = [
       if (!MOB) abrirFolha(null);
       // O ⚄ e o campo do custo moram no canto do relógio, que some no telefone.
       // Antes do ✕: o que apaga a arena é a última linha da lista, e nada
-      // entra depois dele.
+      // entra depois dele. O ↶ vai junto do ☰ registro porque é do registro que
+      // ele fala, e o registro deixou de morar no Campo.
       if (MOB) {
         const fim = el('gr-excluir');
         mudarDeCasa(rolar, el('gr-btns'), fim);
         mudarDeCasa(custo, el('gr-btns'), fim);
+        mudarDeCasa(el('gr-desfazer'), el('gr-btns'), fim);
+      } else {
+        voltarParaCasa(custo); voltarParaCasa(rolar); voltarParaCasa(el('gr-desfazer'));
       }
-      else { voltarParaCasa(custo); voltarParaCasa(rolar); }
       (el('ga-arena') as HTMLElement).hidden = !MESTRE;
       sincronizarApp();
       atualizarSetasDaFila();
@@ -6902,6 +6916,7 @@ const SETAS = [
     };
 
     el('gr-scrim').onclick = () => abrirFolha(null);
+    el('gr-campo-x').onclick = () => abrirFolha(null);
     const alterna = (f: Folha) => () => abrirFolha(folhaAberta() === f ? null : f);
     el('ga-arena').onclick = alterna('arena');
     el('ga-campo').onclick = alterna('campo');
@@ -7015,7 +7030,6 @@ const SETAS = [
     });
     el('gr-desfazer').onclick = () => desfazer();
     el('gr-registro').onclick = () => abrirRegistro();
-    el('gr-log-abrir').onclick = () => abrirRegistro();
     el('rg-fechar').onclick = () => (el('reg-dlg') as HTMLDialogElement).close();
     el('rg-refazer').onclick = () => refazerLogEfeitos();
     el('gr-nova').onclick = () => abrirArena(null);

@@ -1254,25 +1254,49 @@ async function cenaCelular(br, url, { papel = 'mestre' } = {}) {
     }, botao, caixa);
     ok(r.dentro && r.escurece, `a folha "${nome}" sobe inteira, com o tabuleiro escurecido atrás`);
     if (nome === 'em campo') {
-      // Eram três caixas espremidas numa folha; o registro saiu para trás do
-      // "abrir", e ficaram duas que abrem e fecham.
+      // Eram três caixas espremidas numa folha. O registro saiu de vez (ele mora
+      // na Arena) e ficaram duas, numa folha que toma a tela inteira.
       const caixas = await p.evaluate(() => {
-        const vis = (id) => {
-          const e = document.getElementById(id);
+        const vis = (sel) => {
+          const e = document.querySelector(sel);
           if (!e) return false;
           const r = e.getBoundingClientRect();
           return !!r.height && getComputedStyle(e).display !== 'none';
         };
         const dobrar = document.getElementById('gr-dobrar');
         dobrar.click();
-        const depoisDeDobrar = vis('gr-lista');
+        const depoisDeDobrar = vis('#gr-lista');
         dobrar.click();
-        return { log: vis('gr-log'), porta: vis('gr-log-abrir'),
-          lista: vis('gr-lista'), dobrou: !depoisDeDobrar, voltou: vis('gr-lista') };
+        const folha = document.querySelector('.gr-lado').getBoundingClientRect();
+        return { log: vis('#gr-log') || vis('.gr-reg-log'),
+          inteira: Math.round(folha.height) >= innerHeight - 1 && Math.round(folha.top) <= 1,
+          fecha: vis('#gr-campo-x'),
+          lista: vis('#gr-lista'), dobrou: !depoisDeDobrar, voltou: vis('#gr-lista') };
       });
-      ok(!caixas.log && caixas.porta, 'o registro sai da folha e fica atrás do "abrir"');
+      ok(!caixas.log, 'o registro não mora mais no Campo: ele é da Arena');
+      ok(caixas.inteira && caixas.fecha,
+        'a folha toma a tela inteira, e diz por onde se sai');
       ok(caixas.lista && caixas.dobrou && caixas.voltou,
         'e a caixa de quem está em campo recolhe e volta');
+      // Recolher os Efeitos DEVOLVE o espaço a Em campo. As duas linhas de
+      // efeito são de mentira: o que se prova aqui é a regra de layout, e a
+      // bancada não tem Arte no ar.
+      const espaco = await p.evaluate(async () => {
+        const box = document.getElementById('gr-ef-lista');
+        box.innerHTML = '<div class="gr-efl">a</div>'.repeat(6);
+        box.hidden = false;
+        document.getElementById('gr-ef-cab').hidden = false;
+        await new Promise((r) => setTimeout(r, 120));
+        const lista = document.getElementById('gr-lista');
+        const comEfeitos = lista.getBoundingClientRect().height;
+        document.getElementById('gr-ef-dobrar').click();
+        await new Promise((r) => setTimeout(r, 120));
+        const semEfeitos = lista.getBoundingClientRect().height;
+        document.getElementById('gr-ef-dobrar').click();
+        return { comEfeitos: Math.round(comEfeitos), semEfeitos: Math.round(semEfeitos) };
+      });
+      ok(espaco.semEfeitos >= espaco.comEfeitos,
+        `recolher os Efeitos devolve o espaço a Em campo (${espaco.comEfeitos} → ${espaco.semEfeitos}px)`);
     }
     const c = await pisoDeToque();
     ok(c.length === 0, `e nada dentro dela fica abaixo de 44px (${c.slice(0, 3).join(', ') || 'nenhum'})`);
