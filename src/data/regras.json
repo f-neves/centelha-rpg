@@ -735,15 +735,17 @@
       "empateNoTopo": "Os dois entram juntos no Tick 1. Quem age primeiro dentro do instante é o desempate: maior Raciocínio, e persistindo o empate, o dado."
     },
     "deslocamento": {
-      "nota": "Tick ≈ 1 segundo. Livre = distância grátis (m) na ação, e ela é UM TICK de movimento: com Tick ≈ 1 segundo, o número em metros é a velocidade em m/s. A faixa é humana de propósito (2 a 5 m/s): 2 + (Destreza + Atletismo) ÷ 4. Andar normal é 1,4 m/s e fechar distância numa briga fica entre 2 e 4; o teto de 5 é o acrobata. Corrida (Velocidade 3, interrompível a qualquer Tick): Arranque nos 3 primeiros Ticks, Corrida do 4º em diante (m/s = m por Tick). Salto (Velocidade 3, NÃO interrompível): Vertical em CM, Horizontais em M (o Correndo soma a velocidade atual — na ficha, a de Corrida, impulso pleno; coef. já expandidos). Arredonda ao inteiro.",
+      "nota": "Tick ≈ 1 segundo. Livre = distância grátis (m) na ação, e ela é UM TICK de movimento: com Tick ≈ 1 segundo, o número em metros é a velocidade em m/s. A faixa é humana de propósito (2 a 5 m/s): 2 + (Destreza + Atletismo) ÷ 4. Andar normal é 1,4 m/s e fechar distância numa briga fica entre 2 e 4; o teto de 5 é o acrobata. Corrida (Velocidade 3, interrompível a qualquer Tick): Arranque nos 3 primeiros Ticks, Corrida do 4º em diante (m/s = m por Tick). As duas ganharam BASE em 22/08: sem ela o piso caía em trote (o camponês \"corria\" a 2,5 m/s, mais devagar do que um destreinado esprinta) e o teto passava do recorde mundial (15 m/s contra os 12,4 de pico do Bolt). A Força pesa menos no Arranque do que pesava, porque com o peso antigo quem tinha Força alta arrancava mais rápido do que corria, e a média dos três primeiros segundos não pode passar da velocidade de topo. Salto (Velocidade 3, NÃO interrompível): Vertical em CM, Horizontais em M (o Correndo soma a velocidade atual — na ficha, a de Corrida, impulso pleno; coef. já expandidos). Arredonda ao inteiro.",
       "arranque": {
-        "forca": 0.5,
-        "atletismo": 0.5,
-        "destreza": 1
+        "base": 2,
+        "forca": 0.25,
+        "atletismo": 0.25,
+        "destreza": 0.5
       },
       "corrida": {
-        "destreza": 1.5,
-        "atletismo": 1
+        "base": 4,
+        "destreza": 0.75,
+        "atletismo": 0.5
       },
       "normal": {
         "base": 2,

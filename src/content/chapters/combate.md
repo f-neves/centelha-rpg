@@ -196,8 +196,10 @@ Interrompível a **qualquer Tick** — você decide quando parar. A largada acel
 
 | Fase | Quando | m por Tick |
 |---|---|---|
-| **Arranque** | Ticks 1–3 | (Força + Atletismo) ÷ 2 + Destreza |
-| **Corrida** | Tick 4 em diante | Destreza × 1,5 + Atletismo |
+| **Arranque** | Ticks 1–3 | 2 + Força ÷ 4 + Atletismo ÷ 4 + Destreza ÷ 2 |
+| **Corrida** | Tick 4 em diante | 4 + Destreza × ¾ + Atletismo ÷ 2 |
+
+<p class="muted">As duas têm um número fixo na frente porque <strong>qualquer corpo que corra já sai do zero</strong>: sem ele, quem não investiu em Destreza nem em Atletismo "corria" a 2,5 m/s, que é um trote, e quem investiu tudo passava de 15 m/s, que é mais rápido que o recorde mundial. Como referência: andar são 1,4 m/s, um adulto destreinado esprinta a 5 ou 6, um atleta amador a 7 ou 8, e um velocista de elite chega a 11.</p>
 
 ### Salto (Velocidade 3)
 

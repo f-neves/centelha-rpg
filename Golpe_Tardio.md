@@ -509,6 +509,62 @@ pouco.
 
 ---
 
+## 14. As quatro velocidades, comparadas (22/08/2026)
+
+Andar, deslocar em combate, arrancar e correr, no mesmo eixo. A mesa pôs o andar em **1,5 m/s**
+(1,0 para perna curta) como referência narrativa, sem virar regra.
+
+### O que a comparação achou
+
+| Perfil | andar | combate | arranque | corrida | |
+|---|:---:|:---:|:---:|:---:|---|
+| camponês | 1,5 | 2,50 | **2,50** | **2,50** | empata nas três |
+| soldado | 1,5 | 3,25 | 5,50 | 6,00 | ok |
+| **tanque de Força** | 1,5 | 3,00 | **6,00** | **5,00** | arranque > corrida |
+| aventureiro | 1,5 | 3,75 | 6,50 | 8,50 | ok |
+| Kael | 1,5 | 4,00 | 8,00 | 10,00 | ok |
+| acrobata | 1,5 | 5,00 | 11,00 | **15,00** | acima do recorde mundial |
+
+**Três defeitos, e um só motivo.** O camponês circulava, arrancava e corria na mesma velocidade,
+ou seja, correr não adiantava nada para ele. O tanque de Força **arrancava mais rápido do que
+corria**, o que é impossível dentro do próprio modelo, porque o Arranque é a média dos três
+primeiros segundos acelerando e a Corrida é o topo sustentado: a média não passa do topo. E o
+acrobata corria a 15 m/s (54 km/h), contra os 12,4 m/s de pico do Usain Bolt, sem uma gota de
+Centelha.
+
+O motivo comum: **as fórmulas de corrida não tinham base.** Começavam perto de zero e escalavam sem
+freio, então o piso caía em trote e o teto passava do humano. É o mesmo defeito que o passo tinha
+até a §13, e o conserto é o mesmo.
+
+### A régua nova
+
+<p class="formula">Arranque = 2 + Força ÷ 4 + Atletismo ÷ 4 + Destreza ÷ 2</p>
+<p class="formula">Corrida = 4 + Destreza × ¾ + Atletismo ÷ 2</p>
+
+| Perfil | corrida antes | agora | arranque antes | agora | arranque/corrida |
+|---|:---:|:---:|:---:|:---:|:---:|
+| camponês | 2,5 | **5,3** | 2,5 | 3,3 | 100% → 62% |
+| soldado | 6,0 | 7,0 | 5,5 | 4,8 | 92% → 68% |
+| tanque de Força | 5,0 | 6,5 | **6,0** | **5,0** | 120% → 77% |
+| aventureiro | 8,5 | 8,3 | 6,5 | 5,3 | 76% → 64% |
+| Kael | 10,0 | 9,0 | 8,0 | 6,0 | 80% → 67% |
+| acrobata | **15,0** | **11,5** | 11,0 | 7,5 | 73% → 65% |
+
+Contra o mundo (andar 1,4 · trote 2,5-3 · destreinado no sprint 5-6 · amador 7-8 · elite 10-11 ·
+Bolt 12,4): o camponês virou "destreinado correndo" e o acrobata virou "elite, abaixo do recorde".
+A razão arranque/corrida saiu da inversão e foi para 62-68%; na vida real são 50-55%, então ainda
+um pouco alta, mas na vizinhança certa.
+
+A Força pesa **metade do que pesava** no Arranque (÷4 em vez de ÷2), e é isso que conserta a
+inversão do tanque: a explosão inicial continua sendo dela, mas não a ponto de passar da velocidade
+de topo, que é governada pela Destreza.
+
+**A mesa recusou a trava de ordem** ("correr nunca vale menos que circular"), com o argumento de que
+uma trava esconde erro de calibragem em vez de mostrar. A ordem passa a depender dos números
+estarem certos, e é assim que ela é verificável.
+
+---
+
 ## Fontes internas
 
 - `Combate_Tempo.md` §4 (o que interromper compra), §8 (ler o sinal), §14.6 e §14.7 (o que cabe em
