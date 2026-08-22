@@ -20,7 +20,11 @@ const resistencia = 0;
 const fo = D.folego, folego = fo.base + at.vigor * fo.vigorMult + resistencia * fo.resistenciaMult + vont * fo.vontadeMult;
 const ini = at.raciocinio + prontidao;
 const dz = D.deslocamento, traits = { forca: at.forca, destreza: at.destreza, atletismo, centelha: cent };
-const dc = (c) => Math.round(Object.entries(c).reduce((s, [k, v]) => s + (traits[k] || 0) * v, 0));
+// `base` é constante da fórmula, e não um traço: mesma leitura de `calc.ts`.
+// (esta cópia existe porque o teste roda sem o bundler; se as duas divergirem,
+// é aqui que a regressão do Kael mente em vez de acusar)
+const dc = (c) => Math.round(Object.entries(c).reduce(
+  (s, [k, v]) => s + (k === 'base' ? v : (traits[k] || 0) * v), 0));
 const desl = { arr: dc(dz.arranque), cor: dc(dz.corrida), nor: dc(dz.normal), sv: dc(dz.saltoVertical), shp: dc(dz.saltoHorizontalParado), shc: dc(dz.saltoHorizontalCorrendo) };
 
 const esperado = { pv: 37, defesa: 17, defM: 13, energia: 14, mana: 13, folego: 44, ini: 6, deslArr: 7, deslCor: 9, deslNor: 4, saltoV: 256, saltoHP: 5, saltoHC: 14 };

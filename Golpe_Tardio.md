@@ -446,6 +446,69 @@ três números continuam separados no `regras.json` (decisão 7), mas hoje valem
 
 ---
 
+## 13. A régua do passo foi refeita (22/08/2026)
+
+A §11 mediu o passo com a fórmula antiga e chamou o resultado de "mais lento que caminhar". **Essa
+leitura estava errada**, e a mesa a corrigiu: dividir o passo pelo tempo da ação inteira dá um
+CICLO DE TRABALHO, e não uma velocidade. Ninguém desliza durante os seis segundos: anda por um
+instante e passa o resto golpeando.
+
+A leitura certa é outra, e ela vem de graça do próprio sistema: como **Tick ≈ 1 segundo**, o passo
+em metros é a velocidade em m/s **se o movimento durar um Tick**. Ou seja:
+
+<p class="formula">O Deslocamento livre é um Tick de movimento</p>
+
+Com isso dá para calibrar contra o mundo. Andar tranquilo são 1,4 m/s; fechar distância numa briga,
+sem perder guarda nem equilíbrio, fica entre 2 e 4 m/s; correr de verdade passa de 6. A fórmula
+antiga, `(Des + Atl) ÷ 2`, punha o personagem médio no lugar certo (3,5 m/s) e **estourava nas duas
+pontas**: 1,0 m/s no camponês, que é mais lento que caminhar, e 6,0 m/s no acrobata, que já é
+corrida.
+
+**A régua nova, decidida em 22/08:**
+
+<p class="formula">Deslocamento livre (m) = 2 + (Destreza + Atletismo) ÷ 4</p>
+
+| Perfil | antes | agora |
+|---|:---:|:---:|
+| camponês (Des 1, Atl 1) | 1,0 m | **3 m** |
+| soldado (Des 2, Atl 3) | 2,5 m | 3 m |
+| aventureiro (Des 3, Atl 4) | 3,5 m | 4 m |
+| Kael, do livro | 4,0 m | **4 m** (não mudou) |
+| duelista (Des 5, Atl 4) | 4,5 m | 4 m |
+| acrobata (Des 6, Atl 6) | 6,0 m | **5 m** |
+
+E o efeito na decisão 3, que era o risco apontado na §12:
+
+| | antes | agora |
+|---|---|---|
+| duelista foge do guerreiro de placa | escapa por 1 m | **é alcançado** |
+| acrobata foge do camponês | escapa por 4 m | escapa por 0,7 m |
+
+**A faixa estreita conserta a determinística.** Com o passo indo de 1 a 6 m, quem tinha Destreza
+alta simplesmente não era alcançado, e não havia dado nenhum nisso. Com 2 a 5, quase todo mundo
+alcança quase todo mundo, e **sair de baixo volta a exigir uma Corrida de verdade**.
+
+**O que se perde:** Destreza e Atletismo valem menos no tabuleiro. Antes, ir de 2/2 para 6/6
+triplicava o passo; agora sobe 48%. Foi escolha da mesa, e o argumento é que a variação de
+velocidade entre humanos treinados **é mesmo pequena**: o passo deixou de ser uma estatística de
+personagem e virou uma constante humana com pouca folga.
+
+**Duas consequências que vieram junto, e valem estar escritas:**
+
+- **A Centelha não entra.** O semideus circula como um soldado bem treinado; o sobre-humano dele
+  aparece nos Saltos e na Corrida, que já têm Centelha, e não no jogo de pernas.
+- **Os três primeiros graus de área das Artes ficaram menores que o passo de todo mundo.** Com piso
+  de 2 m, um molde de 0,5, 1 ou 2 m não pega mais ninguém que tenha vez: só quem está preso,
+  surpreso ou sem ação. O texto do `arcano.tempoDaArte.area.contraOPasso` foi reescrito com isso
+  dito na cara, porque é uma perda de alcance real para a Arte pequena.
+
+**E as raças de perna curta** passam a andar **dois terços** do passo humano (e metade na Corrida e
+nos Saltos), o que substitui a decisão 5 da §12. Com a faixa nova isso dá 2 a 3,3 m: o anão
+continua deslizando mais que o alcance da espada, então ainda escapa e ainda acompanha, só que por
+pouco.
+
+---
+
 ## Fontes internas
 
 - `Combate_Tempo.md` §4 (o que interromper compra), §8 (ler o sinal), §14.6 e §14.7 (o que cabe em

@@ -147,8 +147,12 @@ export function deslocamento(traits: { forca?: number; destreza?: number; atleti
   // não é `Record<string, Record<string, number>>`: cada escada é lida à parte,
   // pelo nome, e a nota nunca passa por `calc`.
   const d = regras.derivados.deslocamento as unknown as Record<string, Record<string, number>>;
+  // `base` é uma constante da fórmula, e não um traço: o passo livre virou
+  // "2 metros mais um quarto de (Destreza + Atletismo)" em 22/08, para o
+  // deslocamento em combate ficar na faixa humana de 2 a 5 m/s.
   const calc = (c: Record<string, number>) =>
-    Math.round(Object.entries(c).reduce((s, [k, v]) => s + ((traits as Record<string, number>)[k] ?? 0) * v, 0));
+    Math.round(Object.entries(c).reduce(
+      (s, [k, v]) => s + (k === 'base' ? v : ((traits as Record<string, number>)[k] ?? 0) * v), 0));
   return {
     arranque: calc(d.arranque), corrida: calc(d.corrida), normal: calc(d.normal),
     saltoVertical: calc(d.saltoVertical),

@@ -1492,7 +1492,7 @@ export function montarFicha(opts: FichaOpts) {
         const mp = (v: number) => Math.max(0, v - penMov);
         const cmp = (v: number) => Math.max(0, v - penMov * 10);
         const ps = penMov ? ` − ½ penalidade (${penMov})` : '';
-        return r('Deslocamento livre', `${mp(dz.normal)} m`, `(Destreza ${dex} + Atletismo ${SK('atletismo')}) ÷ 2${ps} = ${mp(dz.normal)} m na ação`, true) +
+        return r('Deslocamento livre', `${mp(dz.normal)} m`, `2 + (Destreza ${dex} + Atletismo ${SK('atletismo')}) ÷ 4${ps} = ${mp(dz.normal)} m na ação · é um Tick de movimento, ou seja ${mp(dz.normal)} m/s`, true) +
           r('Vel. de Arranque', `${mp(dz.arranque)} m/s`, `(Força ${A('forca')} + Atletismo ${SK('atletismo')}) ÷ 2 + Destreza ${dex} · Ticks 1–3${ps}`, true) +
           r('Vel. de Corrida', `${mp(dz.corrida)} m/s`, `Destreza ${dex} × 1,5 + Atletismo ${SK('atletismo')} · Tick 4+${ps}`, true) +
           r('Salto Vertical', `${cmp(dz.saltoVertical)} cm`, `Força ${A('forca')}×20 + Atletismo ${SK('atletismo')}×10 + Destreza ${dex}×4 + Centelha ${C}×50`, true) +

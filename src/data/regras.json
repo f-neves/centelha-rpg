@@ -735,7 +735,7 @@
       "empateNoTopo": "Os dois entram juntos no Tick 1. Quem age primeiro dentro do instante é o desempate: maior Raciocínio, e persistindo o empate, o dado."
     },
     "deslocamento": {
-      "nota": "Tick ≈ 1 segundo. Livre = distância grátis (m) na ação. Corrida (Velocidade 3, interrompível a qualquer Tick): Arranque nos 3 primeiros Ticks, Corrida do 4º em diante (m/s = m por Tick). Salto (Velocidade 3, NÃO interrompível): Vertical em CM, Horizontais em M (o Correndo soma a velocidade atual — na ficha, a de Corrida, impulso pleno; coef. já expandidos). Arredonda ao inteiro.",
+      "nota": "Tick ≈ 1 segundo. Livre = distância grátis (m) na ação, e ela é UM TICK de movimento: com Tick ≈ 1 segundo, o número em metros é a velocidade em m/s. A faixa é humana de propósito (2 a 5 m/s): 2 + (Destreza + Atletismo) ÷ 4. Andar normal é 1,4 m/s e fechar distância numa briga fica entre 2 e 4; o teto de 5 é o acrobata. Corrida (Velocidade 3, interrompível a qualquer Tick): Arranque nos 3 primeiros Ticks, Corrida do 4º em diante (m/s = m por Tick). Salto (Velocidade 3, NÃO interrompível): Vertical em CM, Horizontais em M (o Correndo soma a velocidade atual — na ficha, a de Corrida, impulso pleno; coef. já expandidos). Arredonda ao inteiro.",
       "arranque": {
         "forca": 0.5,
         "atletismo": 0.5,
@@ -746,8 +746,9 @@
         "atletismo": 1
       },
       "normal": {
-        "destreza": 0.5,
-        "atletismo": 0.5
+        "base": 2,
+        "destreza": 0.25,
+        "atletismo": 0.25
       },
       "saltoVertical": {
         "forca": 20,
@@ -1792,7 +1793,7 @@
         "regra": "Contra área não existe Esquiva nem Bloqueio. As duas são números contra um golpe que vem de uma direção, e a área não vem de direção nenhuma: ela OCUPA O ESPAÇO. Quem está lá quando ela sai, come. As saídas são duas, e só uma é grátis.",
         "deslocamentoLivre": {
           "titulo": "Na sua vez, o Deslocamento livre",
-          "texto": "(Destreza + Atletismo) ÷ 2 metros, de graça, durante qualquer outra ação, inclusive atacar ou conjurar. São 1,5 m para o camponês, 3,5 para o aventureiro e 5 para o herói. Quem leu o sinal com Ticks de sobra simplesmente não está mais lá, e não paga nada por isso.",
+          "texto": "2 + (Destreza + Atletismo) ÷ 4 metros, de graça, durante qualquer outra ação, inclusive atacar ou conjurar. São 3 m para o camponês, 4 para o aventureiro e 5 para o herói (a fórmula mudou em 22/08: a faixa é humana de propósito, 2 a 5 m/s). Quem leu o sinal com Ticks de sobra simplesmente não está mais lá, e não paga nada por isso.",
           "semGabarito": "Como a mira e a forma só travam no último Tick, durante o preparo o molde AINDA NÃO TEM LUGAR NO CHÃO. Não se sai de uma área que ainda não existe: o que se faz é ficar fora do alcance dela, e o alcance do improviso é o próprio lado da base, porque a área nasce no feiticeiro e nunca é colocada. No grau 6 isso são 5,2 m de raio útil contra um passo grátis de 3,5 m: andando você não escapa, correndo sim (7 m no primeiro Tick da Corrida). Por isso a mesa não precisa de gabarito desenhado durante os sete Ticks: o que está em jogo é distância do feiticeiro, não a borda de um desenho."
         },
         "desvio": {
@@ -1899,7 +1900,7 @@
           },
           "direcoes": "As três direções valem, e todas cobram. Sair pelos lados, jogar-se ao chão (quando a faixa do elemento não encosta no piso) ou saltar por cima (quando ela é rasteira) são a mesma conta: o que importa é quantos metros faltam para o corpo ficar fora, e cada metro é um Tick. É aqui que as duas alturas da manifestação deixam de ser enfeite: faixa que sobe do chão obriga a sair pelos lados ou a saltar, faixa com o pé a um metro do chão se resolve caindo, e cair é barato. Onde o feiticeiro pousa a base decide qual saída ele deixa aberta."
         },
-        "contraOPasso": "Um molde só prende quem não sai dele de graça. O Deslocamento livre humano vai de 1,5 a 5 m, e a escada do lado da base (0,5 · 1 · 2 · 3 · 4 · 5 · 6 m) atravessa exatamente essa faixa: do grau 1 ao 3 o molde é menor que o passo de quase todos, e serve para pegar quem está preso; do 5 ao 6 ele passa do passo do herói."
+        "contraOPasso": "Um molde só prende quem não sai dele de graça. O Deslocamento livre humano vai de 3 a 5 m (a faixa estreitou em 22/08, quando a fórmula virou 2 + (Des + Atl) ÷ 4), e a escada do lado da base (0,5 · 1 · 2 · 3 · 4 · 5 · 6 m) ainda a atravessa, só que mais acima: os três primeiros graus ficaram MENORES QUE O PASSO DE TODO MUNDO e só pegam quem está preso, surpreso ou sem vez; o grau 4 pega o camponês e o aventureiro; o 5 empata com o herói; e só o 6 passa dele. O piso de 2 m do passo é o preço disso, e foi escolhido de olhos abertos."
       },
       "aRevisar": [
         "A calibragem de `8 + 2 × metros` no desvio precisa de mesa: a forma está decidida e os números são provisórios. Os dois botões são o 8 (que move todo mundo) e o 2 por metro (que move só quem está fundo).",

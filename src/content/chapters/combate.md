@@ -182,7 +182,11 @@ Mas **nem tudo se bloqueia ou se esquiva**: uma avalanche, uma onda de fogo, uma
 
 O **Deslocamento livre** é a distância que você desliza **de graça durante outra ação** (atacar, conjurar) — em qualquer direção, sem gastar a vez. É o arqueiro que recua e dispara, o duelista que circula enquanto golpeia:
 
-<p class="formula">Deslocamento livre (m) = (Destreza + Atletismo) ÷ 2</p>
+<p class="formula">Deslocamento livre (m) = 2 + (Destreza + Atletismo) ÷ 4</p>
+
+Ele é, na prática, **um Tick de movimento**: como um Tick é mais ou menos um segundo, o número em metros é também a sua velocidade em metros por segundo. A faixa é humana de propósito — **de 2 a 5 m/s**. Andar tranquilo são 1,4 m/s; fechar distância numa briga, sem perder a guarda nem o equilíbrio, fica entre 2 e 4; e o teto de 5 é o acrobata. O resto do tempo da ação você não está andando, está lutando.
+
+<p class="muted">Quem tem <strong>perna curta</strong> (anão, gnomo, halfling) desliza <strong>dois terços</strong> disso, e corre e salta metade.</p>
 
 Para ir além, gaste a vez numa **ação de movimento** — Corrida ou Salto, ambas **Velocidade 3**.
 
