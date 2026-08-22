@@ -51,6 +51,18 @@
       "fonte": "combateTatico"
     },
     {
+      "id": "correndo", "nome": "Correndo", "icone": "»", "grupo": "posicao", "cor": "perigo",
+      "defesa": -4,
+      "nota": "Esprintando: não apara nem esquiva. Vale enquanto corre e até se recompor. O acerto não sofre: quem parou, parou.",
+      "fonte": "combate · movimento"
+    },
+    {
+      "id": "investindo", "nome": "Investindo", "icone": "⇨", "grupo": "posicao", "cor": "alerta",
+      "defesa": -2,
+      "nota": "Atravessou o Preparo correndo em vez de andando: −2 de Defesa além do que o Preparo já cobra, e +1d6 no dano do golpe (o dado o mestre soma à mão, como o resto do que é situacional).",
+      "fonte": "combate · movimento"
+    },
+    {
       "id": "postura-agressiva", "nome": "Postura agressiva", "icone": "⚔", "grupo": "posicao", "cor": "alerta",
       "defesa": -2, "ataque": 2,
       "nota": "+2 no seu ataque, −2 na sua Defesa, até a próxima ação.",

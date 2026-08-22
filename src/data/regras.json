@@ -2271,6 +2271,29 @@
       },
       "mostraNaoAplica": "O Grid MOSTRA a faixa e a penalidade, e não desconta nada sozinho. Quem põe o valor final do ataque é o mestre, de acordo com o que o jogador rolou na mesa."
     },
+    "movimento": {
+      "nota": "As três maneiras de andar em combate, e o que cada uma cobra. O número de metros por Tick está em derivados.deslocamento; aqui fica o preço.",
+      "batalha": {
+        "titulo": "Deslocamento de Batalha",
+        "custoTicksPorTick": 1,
+        "primeiroTickGratis": true,
+        "penalidade": 0,
+        "texto": "Andar com a guarda de pé. O primeiro Tick é de graça durante outra ação; daí em diante custa 1 Tick por Tick de movimento. NÃO gera penalidade nenhuma, nem de acerto nem de Defesa: quem gera é estar comprometido com um gesto, e disso cuida a escada."
+      },
+      "corrida": {
+        "titulo": "Corrida",
+        "defesa": -4,
+        "ataque": 0,
+        "texto": "Vai 50 a 67% mais longe por Tick, e cobra a guarda: Defesa −4 enquanto corre e até se recompor, que é o mesmo −4 do Tick do Golpe e das condições surpreso, cego e imobilizado. Correndo não se apara nem se esquiva. O acerto não sofre: quem parou, parou."
+      },
+      "investida": {
+        "titulo": "Investida",
+        "danoDados": 1,
+        "defesaExtra": -2,
+        "texto": "Gastar o Preparo CORRENDO em vez de andando: o golpe cobre a distância da Corrida em vez da de Batalha, a Defesa cai −2 além do que o Preparo já cobra, e o golpe sai com +1d6 de dano. Não é regra nova: é o Preparo que a arma já tem, atravessado a outra velocidade.",
+        "semPreparo": "A arma leve tem Preparo 0 e por isso não investe de graça: ela compra Preparo pela carga voluntária (§3 do Combate_Tempo.md) e aí investe. É a arma que ARMA o golpe que investe bem, e a pesada, com Preparo 2, é a que investe melhor."
+      }
+    },
     "pgr": {
       "nota": "A régua P/G/R por classe de arma: em que Tick o golpe sai, contado da declaração. O Golpe é sempre 1 Tick; a Recuperação é o que sobra da Velocidade (P + G + R = Velocidade).",
       "preparo": {

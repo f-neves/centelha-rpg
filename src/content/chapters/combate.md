@@ -199,6 +199,13 @@ Para ir além, gaste a vez numa **ação de movimento** — Corrida ou Salto, am
 
 ### Corrida (Velocidade 3)
 
+Vai **50 a 67% mais longe por Tick** que o Deslocamento de Batalha, e o preço é a guarda:
+
+<p class="formula">Correndo: <strong>Defesa −4</strong>, enquanto corre e até se recompor</p>
+
+É o mesmo −4 do Tick do Golpe e das condições surpreso, cego e imobilizado, e ele diz uma coisa
+só: **correndo não se apara nem se esquiva**. O acerto não sofre, porque quem parou, parou.
+
 Interrompível a **qualquer Tick** — você decide quando parar. A largada acelera: os **3 primeiros Ticks** correm à **Velocidade de Arranque** (a explosão do disparo); do **4º Tick em diante**, à **Velocidade de Corrida** (o ritmo sustentado). Cada valor é em metros por Tick.
 
 | Fase | Quando | m por Tick |
@@ -207,6 +214,22 @@ Interrompível a **qualquer Tick** — você decide quando parar. A largada acel
 | **Corrida** | Tick 4 em diante | 4 + Destreza × ¾ + Atletismo ÷ 2 |
 
 <p class="muted">As duas têm um número fixo na frente porque <strong>qualquer corpo que corra já sai do zero</strong>: sem ele, quem não investiu em Destreza nem em Atletismo "corria" a 2,5 m/s, que é um trote, e quem investiu tudo passava de 15 m/s, que é mais rápido que o recorde mundial. Como referência: andar são 1,4 m/s, um adulto destreinado esprinta a 5 ou 6, um atleta amador a 7 ou 8, e um velocista de elite chega a 11.</p>
+
+### Investida
+
+Investir é **gastar o Preparo correndo** em vez de andando. Não é ação nova nem regra nova: é o
+Preparo que a sua arma já tem, atravessado à velocidade de Corrida.
+
+| | distância coberta | Defesa | dano |
+|---|---|---|---|
+| **Preparo andando** | Deslocamento de Batalha por Tick | o −2 do Preparo | — |
+| **Preparo investindo** | velocidade de Corrida por Tick | −2 **a mais** | **+1d6** |
+
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Kael, de martelo (Preparo 2), anda 4 m por Tick e corre 6. Fechando a distância no Preparo ele cobre <strong>8 metros</strong> com a Defesa em −2. Investindo, cobre <strong>12</strong>, com a Defesa em −4, e o martelo cai com <strong>+1d6</strong>.</div>
+
+A arma **leve tem Preparo 0**, e por isso não investe de graça: ela precisa comprar Preparo antes
+(a carga voluntária). É a arma que **arma** o golpe que investe bem, e a pesada, com Preparo 2, é a
+que investe melhor — que é exatamente a imagem de quem atravessa o salão com o martelo erguido.
 
 ### Salto (Velocidade 3)
 
