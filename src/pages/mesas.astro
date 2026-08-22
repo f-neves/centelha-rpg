@@ -18,8 +18,20 @@ import FichaResumo from '../components/FichaResumo.astro';
     {/* Duas colunas, uma por assunto: à esquerda quem você é, à direita onde você
         joga. As duas listas são independentes (nenhuma decisão de uma muda a
         outra), então lê-las lado a lado poupa a rolagem que havia entre elas. */}
+    {/* AS DUAS ABAS, só no telefone. Empilhadas, as duas listas viravam um
+        documento: quem abre a página para entrar numa mesa passava por todos os
+        personagens antes de chegar nela, e quem abre para escolher personagem
+        rolava até o fim para descobrir que não havia mais nada. São dois
+        assuntos independentes (nenhuma decisão de um muda o outro), e no
+        notebook eles já ficam lado a lado justamente por isso. */}
+    <div class="mf-abas" role="tablist" aria-label="O que mostrar">
+      <button type="button" role="tab" data-p="pers" id="mf-t-pers"
+        aria-selected="true" aria-controls="mf-pers">Fichas <span class="mf-n" id="mf-n-pers"></span></button>
+      <button type="button" role="tab" data-p="mesas" id="mf-t-mesas"
+        aria-selected="false" aria-controls="mf-mesas">Mesas <span class="mf-n" id="mf-n-mesas"></span></button>
+    </div>
     <div class="mesas-colunas">
-      <div class="col-pers">
+      <div class="col-pers" id="mf-pers" role="tabpanel" aria-labelledby="mf-t-pers">
         <section class="secao-fichas">
           <div class="secao-cab">
             <h2>Personagens</h2>
@@ -29,7 +41,7 @@ import FichaResumo from '../components/FichaResumo.astro';
         </section>
       </div>
 
-      <div class="col-mesas">
+      <div class="col-mesas" id="mf-mesas" role="tabpanel" aria-labelledby="mf-t-mesas">
         <section class="secao-mesas">
           <h2>Mesas</h2>
           <div id="lista"></div>
@@ -79,6 +91,7 @@ import FichaResumo from '../components/FichaResumo.astro';
     if (!user) return; // já redirecionou
     document.getElementById('carregando')!.hidden = true;
     document.getElementById('mesas-conteudo')!.hidden = false;
+    ligarAbas();
     await Promise.all([render(user.id), renderPersonagens(user.id)]);
 
     document.getElementById('novo-pers')!.addEventListener('click', async () => {
@@ -115,6 +128,35 @@ import FichaResumo from '../components/FichaResumo.astro';
     });
   }
 
+  /**
+   * As duas abas do telefone.
+   *
+   * A escolha fica no aparelho, e não na conta: é preferência de quem está
+   * olhando, e a mesma pessoa quer coisas diferentes no notebook (onde não há
+   * aba nenhuma) e no celular.
+   */
+  const ABA_KEY = 'centelha:mesas:aba';
+  function ligarAbas() {
+    const caixa = document.getElementById('mesas-conteudo')!;
+    const botoes = [...document.querySelectorAll<HTMLButtonElement>('.mf-abas button')];
+    const mostrar = (qual: string) => {
+      caixa.classList.toggle('aba-pers', qual !== 'mesas');
+      caixa.classList.toggle('aba-mesas', qual === 'mesas');
+      botoes.forEach((b) => b.setAttribute('aria-selected', String(b.dataset.p === qual)));
+      try { localStorage.setItem(ABA_KEY, qual); } catch {}
+    };
+    botoes.forEach((b) => b.addEventListener('click', () => mostrar(b.dataset.p!)));
+    let guardada = 'pers';
+    try { guardada = localStorage.getItem(ABA_KEY) || 'pers'; } catch {}
+    mostrar(guardada);
+  }
+
+  /** Quantos há de cada lado, na aba. Some quando é zero: "Mesas 0" é ruído. */
+  function contarAba(qual: 'pers' | 'mesas', n: number) {
+    const e = document.getElementById(`mf-n-${qual}`);
+    if (e) e.textContent = n ? String(n) : '';
+  }
+
   // Cards dos personagens do usuário: retrato (quando já escolhido) e nome.
   async function renderPersonagens(userId: string) {
     const sb = getSupabase();
@@ -128,6 +170,7 @@ import FichaResumo from '../components/FichaResumo.astro';
       .order('atualizado_em', { ascending: false });
     if (error) { box.innerHTML = `<p class="erro">Erro ao carregar personagens: ${esc(error.message)}</p>`; return; }
     const pers = data || [];
+    contarAba('pers', pers.length);
     if (!pers.length) {
       box.innerHTML = '<p class="muted">Nenhum personagem ainda. Crie um em <strong>Novo Personagem</strong>, ou monte a ficha em Ferramentas › Ficha de Personagem e use <strong>Salvar ficha</strong>.</p>';
       return;
@@ -216,6 +259,7 @@ import FichaResumo from '../components/FichaResumo.astro';
     const lista = document.getElementById('lista')!;
     if (error) { lista.innerHTML = `<p class="erro">Erro ao carregar: ${esc(error.message)}</p>`; return; }
     const linhas = (data || []).filter((r: any) => r.mesa);
+    contarAba('mesas', linhas.length);
     if (!linhas.length) { lista.innerHTML = '<p class="muted">Você ainda não está em nenhuma mesa. Crie uma ou entre com um código abaixo.</p>'; return; }
     lista.classList.add('tem-mesas');
     lista.innerHTML = '<div class="mesa-grid">' + linhas.map((r: any) => {
@@ -253,6 +297,38 @@ import FichaResumo from '../components/FichaResumo.astro';
   /* 900px é o mesmo corte em que o card de personagem vira linha, mais abaixo:
      abaixo disso não há largura para duas colunas de nada. */
   @media (max-width: 900px) { .mesas-colunas { grid-template-columns: 1fr; gap: 2rem; } }
+
+  /* ---- as abas do telefone ----
+     O mesmo corte de 900px: onde as duas colunas deixam de caber lado a lado,
+     elas deixam de ser duas colunas e passam a ser duas abas. Empilhar era a
+     saída anterior, e empilhar transforma um painel em documento. */
+  .mf-abas { display: none; }
+  @media (max-width: 900px) {
+    .mf-abas { display: grid; grid-template-columns: 1fr 1fr; gap: .35rem;
+      margin: .6rem 0 1.1rem; }
+    .mf-abas button { min-height: 46px; display: inline-flex; align-items: center;
+      justify-content: center; gap: .4rem; cursor: pointer;
+      font-family: 'Cinzel'; font-size: var(--fs-aux); letter-spacing: .02em;
+      color: var(--ink-soft); background: var(--panel);
+      border: 1px solid var(--rule); border-radius: var(--r-md); }
+    .mf-abas button[aria-selected='true'] { color: var(--accent-texto); font-weight: 700;
+      border-color: var(--accent);
+      background: color-mix(in srgb, var(--accent) 14%, var(--panel)); }
+    .mf-n { font-size: var(--fs-micro); font-variant-numeric: tabular-nums; opacity: .75; }
+    .mf-abas button[aria-selected='true'] .mf-n { opacity: 1; }
+    /* Uma aba por vez. O padrão é Fichas: quem chega aqui quase sempre vem
+       escolher um personagem, e quem vem para a mesa vem uma vez por semana. */
+    #mesas-conteudo.aba-mesas .col-pers,
+    #mesas-conteudo.aba-pers .col-mesas { display: none; }
+    /* O título da seção repetiria a aba que está acesa logo acima. O botão de
+       criar fica, e toma a linha inteira: é a ação daquela aba.
+       O `#mesas-conteudo` não é enfeite: `.secao-mesas h2 { display: flex }`
+       vem depois no arquivo, com a mesma especificidade, e ganharia. */
+    #mesas-conteudo .secao-cab h2,
+    #mesas-conteudo .secao-mesas h2 { display: none; }
+    #novo-pers { width: 100%; }
+    .mesas-colunas { gap: 1.2rem; }
+  }
 
   .secao-cab { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
   .secao-cab h2, .secao-mesas h2 { margin: 0; }
