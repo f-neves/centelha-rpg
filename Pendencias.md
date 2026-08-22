@@ -750,11 +750,22 @@ revistos por ela.
   o que a folha da ação já faz pela metade. A alternativa fiel (resolver tudo no Tick do Golpe)
   **dobra os toques por ação**, desfazendo a frente de automação, e separa o dado da descrição.
 
-  **Seis decisões esperando** (§9 do estudo): a saída; onde entra a **Firula** (a proposta é
-  anunciada no Preparo e confirmada no Golpe, caindo junto se o cenário que ela usava sumiu); o que
-  acontece com o golpe cujo **alvo caiu** (perde ou redireciona: 1 vez por cena numa refrega de
-  martelos); o alvo que **sai do alcance** durante o Preparo; o **dano simultâneo** de três ou mais
-  golpes no mesmo Tick; e se a resolução é **automática ou pedida**.
+  **DECIDIDO em 21/08: a mesa escolheu o pacote fiel** (§9 do estudo, dez decisões). Resolver
+  **tudo no Tick do Golpe**, com a **Firula** descrita ali, o **mestre confirmando cada golpe**, o
+  golpe cujo alvo caiu **redirecionando** (corpo a corpo só pega quem está no alcance do atacante,
+  um hexágono ou dois na haste; arremesso e tiro pegam qualquer um no alcance), **dano simultâneo**
+  no mesmo Tick, **nada de Defesa na caixa de declaração**, o **contrapé congelado na declaração** e
+  a **Guarda sob pressão cobrada no Golpe**.
+
+  **Falta uma:** quanto custa o atacante **acompanhar** o alvo que se moveu (§10 do estudo). A
+  conversa é maior do que parece porque o **Deslocamento livre** ((Des + Atl) ÷ 2, uns 3 m) é de
+  graça durante qualquer ação e vale **três vezes o alcance da espada**: sem acompanhar, um em cada
+  três golpes pesados erraria de graça. E é a única decisão que a bancada não sabe responder,
+  porque o robô do simulador **nunca foge**: precisa de bateria nova.
+
+  **A implementação não começou**, e ela é grande: a folha da ação se parte em duas (declarar sem
+  ver nada, resolver no Tick do Golpe), a coluna `acao` passa a guardar alvo, manobra e contrapé, o
+  relógio deixa de pular Ticks com golpe agendado, e a tira ganha a faixa de pendências.
 
 - [ ] **K25 · [DECIDIR] A Defesa da arma e a do escudo somam, e o escudeiro vira parede.** A
   `defesas.md` escreve "**+ defesa da arma/escudo**", no singular, mas a ficha **soma as duas**

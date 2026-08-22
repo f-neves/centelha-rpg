@@ -240,16 +240,84 @@ Já há precedente no código: é o que a **Arte** faz desde 21/08, e é o que a
 
 ---
 
-## 9. O que precisa ser decidido
+## 9. O que a mesa decidiu (21/08/2026)
 
-1. **A saída:** A, B ou C.
-2. **A Firula:** na declaração, no Golpe, ou anunciada e confirmada.
-3. **O alvo que cai antes do golpe:** o golpe se perde, ou redireciona?
-4. **O alvo que sai do alcance durante o Preparo:** erra, se perde, ou o atacante escolhe outro?
-5. **O dano simultâneo** de três ou mais golpes no mesmo Tick: soma tudo e confere depois (como o
-   simulador), ou resolve um de cada vez?
-6. **Se a resolução é automática ou pedida.** Automática corta o atrito; pedida deixa o mestre
-   narrar o impacto.
+Dez decisões, tomadas com as tabelas acima na mão. **A mesa escolheu o pacote fiel**, e sabendo o
+preço: mais toques por ação, em troca de a linha do tempo ser verdade.
+
+| # | Decisão | Escolhido |
+|---|---|---|
+| 1 | Quando o golpe resolve | **B · tudo no Tick do Golpe.** Declara-se, espera-se, e rola-se quando o golpe cai |
+| 2 | A Firula | **no Tick do Golpe.** Descreve-se quando o golpe cai, e a descrição sempre casa com o mundo |
+| 3 | Quem resolve | **o mestre confirma cada golpe.** Nada acontece sozinho: a faixa de pendências acende e ele resolve um por um |
+| 4 | O alvo caiu antes | **redireciona, e o alcance depende da arma**: corpo a corpo só pega quem está perto; arremesso e tiro pegam qualquer um no alcance |
+| 5 | O perto do corpo a corpo | **quem está no alcance do atacante**: um hexágono, dois na haste. Ninguém ali, o golpe se perde |
+| 6 | O alvo saiu do alcance | **o atacante acompanha se puder**; não podendo, o Preparo é interrompido ou redirecionado *(o preço de acompanhar está em conversa, §10)* |
+| 7 | Três golpes no mesmo Tick | **tudo simultâneo**: todos rolam contra o estado do começo do Tick, os danos se somam, e só depois se vê quem caiu |
+| 8 | O que se vê ao declarar | **nada**: alvo, manobra e tempo. Toda a conta aparece na hora de resolver |
+| 9 | O contrapé | **medido na declaração.** O Preparo não serve para se recompor: quem declarou no Tick 2 com −1d6 paga −1d6, caia o golpe no 2 ou no 4 |
+| 10 | A Guarda sob pressão | **no Tick do Golpe.** Você recebe o ataque quando o golpe chega, e não quando alguém aponta a arma |
+
+### O que cada uma obriga
+
+**A folha da ação se parte em duas.** A caixa de **declaração** passa a mostrar só alvo, manobra e
+tempo (decisão 8). A caixa de **resolução**, que abre no Tick do Golpe, recebe tudo o que hoje está
+junto: a Defesa com a escada, a distância e a faixa, a Firula, o acerto, o ajuste avulso, o dano e a
+Absorção.
+
+**A agenda passa a guardar a intenção, e não o resultado.** Hoje a coluna `acao` guarda a agenda de
+Ticks; passa a guardar também o alvo, a manobra e o contrapé congelado na declaração (decisão 9).
+
+**O relógio ganha um dono.** Com o mestre confirmando cada golpe (decisão 3), o próximo não pode
+pular um Tick que tenha golpe agendado, e a tira precisa da faixa de pendências. Sem isso a mesa
+perde golpes no meio da cena, que é o defeito mais caro da opção B.
+
+**A Pressão muda de instante** (decisão 10), e com a resolução simultânea (decisão 7) ela não se
+acumula dentro do mesmo Tick: três golpes que caem juntos rolam todos contra a guarda do começo do
+Tick, e o menos seis aparece para quem atacar depois.
+
+---
+
+## 10. A conversa que ficou: quanto custa acompanhar
+
+A decisão 6 diz que o atacante **acompanha o alvo que se moveu, se puder**. O preço ficou em
+aberto, e a razão de ele ser difícil está numa regra que já existe e que muda a pergunta inteira.
+
+<p class="formula">Deslocamento livre (m) = (Destreza + Atletismo) ÷ 2</p>
+
+O capítulo de Combate chama isso de *a distância que você desliza de graça durante outra ação, sem
+gastar a vez · é o arqueiro que recua e dispara, o duelista que circula enquanto golpeia*. Num
+lutador comum (Destreza 3, Atletismo 3) são **3 metros de graça**, toda vez que ele age.
+
+E o alcance do corpo a corpo é **1 metro** (dois na haste).
+
+**Daí sai o problema:** o deslize grátis é três vezes maior que o alcance da espada. Se o alvo agir
+durante o Preparo do martelo, ele desliza 3 m sem pagar nada e o martelo cai no vazio. A chance de
+o turno do alvo cair dentro da janela de 2 Ticks do martelo é de mais ou menos **um terço**. Ou
+seja: **sem acompanhar, um em cada três golpes pesados erra de graça.**
+
+**E a saída elegante é a mesma regra, do outro lado:** quem ataca também tem Deslocamento livre, e
+é exatamente para isso que ele existe (*o duelista que circula enquanto golpeia*). Acompanhar não
+precisa de preço novo: **é o deslize grátis do atacante, que ele já tem.**
+
+O que isso produz, entre iguais: o alvo desliza 3 m, o atacante acompanha 3 m, e o golpe cai. **O
+deslize grátis não escapa de nada entre iguais** — para sair de baixo de verdade é preciso gastar
+a vez numa **Corrida** (Velocidade 3, e 12 a 15 metros nos três primeiros Ticks). E quem tem mais
+Destreza e Atletismo circula para fora do alcance de quem tem menos, que é uma vantagem que a ficha
+já pagou.
+
+As três saídas, e o que cada uma diz sobre o jogo:
+
+| | O que custa acompanhar | O que isso faz com sair de baixo |
+|---|---|---|
+| **Deslocamento livre** | nada: é o que ele já tem | só escapa quem gastar uma ação de Corrida, ou quem for mais rápido de ficha |
+| **1 Tick por metro** | o golpe atrasa o tanto que se andou | escapar compra tempo, e não a ação inteira |
+| **não se acompanha** | — | o deslize grátis anula um em cada três golpes pesados |
+
+**O que a bancada não sabe responder:** o robô do simulador é ganancioso e **nunca foge**. Nenhuma
+das tabelas deste documento mede o que acontece quando o alvo usa o deslize para escapar, porque
+esse comportamento não está modelado. É a única decisão desta lista que precisa de uma bateria nova
+antes de fechar.
 
 ---
 
