@@ -594,6 +594,83 @@ vira 2, quando a conta certa é 3,25 × ⅔ = 2,17 → 2). A ficha escreve a con
 
 ---
 
+## 15. O que a corrida cobra, e o que o passo não cobra (22/08/2026)
+
+A pergunta que abriu esta seção foi direta: **por que a Corrida cobra Defesa e o Deslocamento de
+Batalha não cobra nada?** A resposta que a mesa deu não é de balanceamento, é de descrição.
+
+**O Deslocamento de Batalha não gera penalidade porque ele já é o andar da guarda em pé.** Os 2 a
+5 m/s da faixa são justamente o quanto se cobre *sem* perder a base: é circular, recuar, fechar
+distância mantendo o corpo pronto. Quem quiser mais que isso não anda mais rápido, muda de coisa.
+E o que gera penalidade não é o passo: é **atacar enquanto anda**, e essa penalidade já existe e
+já tem nome, que é o −2 do Preparo.
+
+**A Corrida cobra porque ela desmancha a guarda.** Virou regra escrita: **Defesa −4 enquanto corre
+e até se recompor**, na condição `correndo`. Não é a distância que cobra, é a postura.
+
+**E a Investida é a terceira, que compra dano com guarda.** O Preparo gasto correndo em vez de
+andando: mais **−2** de Defesa (total −6 com a Corrida) e **+1d6** de dano no Golpe, na condição
+`investindo`.
+
+| Jeito de andar | Metros por Tick (Kael) | Defesa | Acerto | Dano |
+|---|:---:|:---:|:---:|:---:|
+| Deslocamento de Batalha | 4 | — | — | — |
+| Preparo andando | 4 | — | o −2 do Preparo | — |
+| Corrida | 8 (Arranque) a 12 | **−4** | — | — |
+| Investida | 8 a 12 | **−6** | o −2 do Preparo | **+1d6** |
+
+O eixo é um só e é legível na mesa: **quanto mais chão você cobre, menos guarda sobra.** Andar não
+cobra nada, atacar andando cobra acerto, correr cobra guarda, e investir cobra guarda de novo para
+comprar dano.
+
+---
+
+## 16. Sair da área nunca foi de graça (23/08/2026)
+
+A §5.5 do Arcano dizia, desde que foi escrita, que **as saídas são duas e só uma é grátis**: na
+própria vez você saía no passo livre sem pagar nada e sem rolar nada; fora da vez pagava 1 Tick por
+metro e rolava. A questão que reabriu isso foi se o **primeiro metro** deveria ser de graça também
+fora da vez, para que o passo de 1 m (que é maior que o alcance da espada) não ficasse mais caro que
+o alcance que ele vence.
+
+**A conta disse que não.** Num molde circular, a distância até a borda tem densidade `2r/R²`, então
+a maior parte da área de um círculo mora perto da borda, e não no miolo. Para cada grau da escada de
+tamanhos:
+
+| Lado da base | Raio | Quem está a menos de 1 m da borda | Saída mediana |
+|---|:---:|:---:|:---:|
+| 0,5 · 1 · 2 m | até 1,0 m | **100%** | 0,07 a 0,29 m |
+| 3 m | 1,5 m | 88,9% | 0,44 m |
+| 4 m | 2,0 m | 75,0% | 0,59 m |
+| 5 m | 2,5 m | 64,0% | 0,73 m |
+| 6 m | 3,0 m | 55,6% | 0,88 m |
+
+Em **todos** os graus a maioria das vítimas está dentro do primeiro metro, e a saída mediana sempre
+arredonda para o mínimo de 1 m. Um primeiro metro grátis não isentaria o caso de borda: isentaria o
+caso **típico**, e a área deixaria de custar Tick para mais da metade de quem ela pega. Ficou
+**1 Tick por metro**, sem brinde.
+
+**Mas a varredura achou a inconsistência do outro lado.** A frase "só uma é grátis" tratava a
+rolagem como se ela fosse parte do preço do desvio, quando ela é a **consequência de ter sido pego
+pela área**. A área não sabe de quem é a vez. O que a mesa fechou:
+
+- **A jogada é a mesma nos dois casos**, na vez e fora dela: Destreza + Esquiva contra os dois
+  patamares, `5 + 5 × metros` para metade e o dobro para nada. Estar livre não dispensa rolar.
+- **O Tick é gasto nos dois casos.** Sair da área *é* o movimento, e não o passo de brinde que
+  acompanha outra ação: quem está livre paga um Tick do próprio Deslocamento de Batalha (ou o
+  Arranque da Corrida, que rende mais).
+- **A vantagem de estar livre é dupla, e continua grande.** O Tick livre cobre *vários metros* em
+  vez de um metro por Tick, a rolagem sai **limpa** (sem a escada de Preparo, Golpe ou Recuperação
+  em cima dos dados), e depois do movimento o personagem **continua livre para agir**. Estar fora da
+  vez quer dizer, por definição, que você já agiu e provavelmente já está com a guarda aberta.
+
+O que isso muda de fato na mesa: quem tem a vez na mão e sai de uma área **rola**, o que antes não
+fazia; e **gasta o Tick**, o que antes não gastava. A calibragem de `contraOPasso` sobrevive, porque
+ela é sobre *distância coberta por Tick*, e essa não mudou: os três primeiros graus continuam
+menores que o passo de todo mundo. O molde só ficou um pouco mais perigoso do que estava escrito.
+
+---
+
 ## Fontes internas
 
 - `Combate_Tempo.md` §4 (o que interromper compra), §8 (ler o sinal), §14.6 e §14.7 (o que cabe em

@@ -1792,18 +1792,18 @@
         "ocultismo": "É o emprego que o Ocultismo ganhou quando o \"Ocultismo + Atributo\" saiu da conjuração: ele não conjura, ele LÊ."
       },
       "area": {
-        "regra": "Contra área não existe Esquiva nem Bloqueio. As duas são números contra um golpe que vem de uma direção, e a área não vem de direção nenhuma: ela OCUPA O ESPAÇO. Quem está lá quando ela sai, come. As saídas são duas, e só uma é grátis.",
+        "regra": "Contra área não existe Esquiva nem Bloqueio. As duas são números contra um golpe que vem de uma direção, e a área não vem de direção nenhuma: ela OCUPA O ESPAÇO. Quem está lá quando ela sai, come. As saídas são duas, e NENHUMA É GRÁTIS: as duas gastam Tick e as duas pedem a mesma jogada. O que muda é de onde sai o Tick e em que estado se rola.",
         "deslocamentoLivre": {
-          "titulo": "Na sua vez, o Deslocamento de Batalha",
-          "texto": "2 + (Destreza + Atletismo) ÷ 4 metros, de graça, durante qualquer outra ação, inclusive atacar ou conjurar. São 3 m para o camponês, 4 para o aventureiro e 5 para o herói (a fórmula mudou em 22/08: a faixa é humana de propósito, 2 a 5 m/s). Quem leu o sinal com Ticks de sobra simplesmente não está mais lá, e não paga nada por isso.",
+          "titulo": "Livre, com a vez na mão: o próprio deslocamento",
+          "texto": "Quem ainda não agiu sai pelas próprias pernas: o Deslocamento de Batalha, 2 + (Destreza + Atletismo) ÷ 4 metros num Tick (3 m para o camponês, 4 para o aventureiro, 5 para o herói), ou o Arranque da Corrida, que rende mais. Esse Tick é GASTO: sair da área é o movimento, e não o passo de brinde que acompanha outra ação. E a jogada é a mesma de quem desvia fora da vez, porque a área pegou os dois. A vantagem de estar livre é dupla e é grande: um Tick só cobre vários metros, em vez de um metro por Tick, e a rolagem sai limpa, sem a escada de Preparo, Golpe ou Recuperação pesando nos dados. Depois do movimento você continua livre para agir.",
           "semGabarito": "Como a mira e a forma só travam no último Tick, durante o preparo o molde AINDA NÃO TEM LUGAR NO CHÃO. Não se sai de uma área que ainda não existe: o que se faz é ficar fora do alcance dela, e o alcance do improviso é o próprio lado da base, porque a área nasce no feiticeiro e nunca é colocada. No grau 6 isso são 5,2 m de raio útil contra um passo grátis de 3,5 m: andando você não escapa, correndo sim (7 m no primeiro Tick da Corrida). Por isso a mesa não precisa de gabarito desenhado durante os sete Ticks: o que está em jogo é distância do feiticeiro, não a borda de um desenho."
         },
         "desvio": {
           "titulo": "Fora da vez, no Tick em que a Arte sai: o desvio de emergência",
-          "texto": "Custa 1 Tick por metro que falte para o corpo sair, e esses Ticks empurram para frente a próxima ação do alvo. É a única coisa do sistema que se faz fora da própria vez, e ela é legítima justamente porque não é grátis: é emprestada do próprio futuro, como uma ação lenta atrasa a seguinte. Precisa de pelo menos 1 metro de deslocamento, porque ninguém sai de uma área ficando parado.",
-          "formula": "Ticks de desvio = metros até ficar fora, pela direção mais barata · Dificuldade (metade do dano) = 5 + 5 × esses mesmos metros · Dificuldade (dano nenhum) = o DOBRO da anterior",
+          "texto": "Quem já agiu não tem Tick na mão, então empresta: custa 1 Tick por metro que falte para o corpo sair, e esses Ticks empurram para frente a próxima ação do alvo. É a única coisa do sistema que se faz fora da própria vez, e ela é legítima justamente porque é cara: o Tick é emprestado do próprio futuro, como uma ação lenta atrasa a seguinte. E ela quase nunca sai limpa, porque estar fora da vez quer dizer estar no meio de um Preparo, de um Golpe ou de uma Recuperação, com a escada aberta. Precisa de pelo menos 1 metro de deslocamento, porque ninguém sai de uma área ficando parado.",
+          "formula": "Metros = o que falta para o corpo ficar fora, pela direção mais barata · Ticks, livre = os do próprio deslocamento (vários metros por Tick) · Ticks, fora da vez = 1 por metro · Dificuldade (metade do dano) = 5 + 5 × metros, nos dois casos · Dificuldade (dano nenhum) = o DOBRO da anterior",
           "numeros": {
-            "nota": "A mesma regra em número, para o tabuleiro não a reescrever. O Grid mede na figura quantos metros faltam para o corpo ficar fora, arredonda para cima com o mínimo de 1 m, e daí saem os Ticks e as duas Dificuldades.",
+            "nota": "A mesma regra em número, para o tabuleiro não a reescrever. O Grid mede na figura quantos metros faltam para o corpo ficar fora, arredonda para cima com o mínimo de 1 m, e daí saem os Ticks e as duas Dificuldades. O `ticksPorMetro` é o preço de quem desvia FORA DA VEZ; quem está livre paga o Tick do próprio deslocamento e cobre a mesma distância por muito menos. As Dificuldades valem para os dois.",
             "ticksPorMetro": 1,
             "metrosMinimo": 1,
             "difBase": 5,
@@ -1862,7 +1862,8 @@
             "porqueDobrar": "Dobrar funciona como teto de propósito. Sair ILESO na borda (Dif 20) é o limite do que um mortal de ponta consegue: a régua já chama esse patamar de Limite humano, e é justamente o teto de Atributo + Habilidade sem Centelha (12). Um passo além da borda, zerar o dano exige Dif 30, Sobre-humano, que a mesma régua reserva a quem tem Centelha, Proeza ou Arte turbinando a rolagem. A partir de 3 metros a Dificuldade dobrada sai da escada inteira: não é regra dizendo que é impossível, é a própria tabela dizendo isso sozinha."
           },
           "condicoes": [
-            "Para rolar é preciso TENTAR SAIR DE VERDADE. Quem fica no lugar não testa e come inteiro. Não existe \"me encolho e rolo os dados\".",
+            "A JOGADA É A MESMA na vez e fora dela: a área pegou os dois, e os dois rolam Destreza + Esquiva contra os mesmos dois patamares. Estar livre não dispensa a rolagem. O que ela dispensa é o preço de um Tick por metro e a escada em cima dos dados.",
+          "Para rolar é preciso TENTAR SAIR DE VERDADE. Quem fica no lugar não testa e come inteiro. Não existe \"me encolho e rolo os dados\".",
             "Os Ticks são gastos de qualquer maneira, passando ou falhando. É o que torna a decisão uma decisão, e não um bônus grátis.",
             "Ter identificado o efeito rende bônus na jogada: +2 no total, ou +4 se a identificação passou com Margem. Lê-se cedo para escapar melhor, e é o prêmio do teste de Ocultismo."
           ],
@@ -1902,7 +1903,7 @@
           },
           "direcoes": "As três direções valem, e todas cobram. Sair pelos lados, jogar-se ao chão (quando a faixa do elemento não encosta no piso) ou saltar por cima (quando ela é rasteira) são a mesma conta: o que importa é quantos metros faltam para o corpo ficar fora, e cada metro é um Tick. É aqui que as duas alturas da manifestação deixam de ser enfeite: faixa que sobe do chão obriga a sair pelos lados ou a saltar, faixa com o pé a um metro do chão se resolve caindo, e cair é barato. Onde o feiticeiro pousa a base decide qual saída ele deixa aberta."
         },
-        "contraOPasso": "Um molde só prende quem não sai dele de graça. O Deslocamento de Batalha humano vai de 3 a 5 m por Tick (a faixa estreitou em 22/08, quando a fórmula virou 2 + (Des + Atl) ÷ 4), e a escada do lado da base (0,5 · 1 · 2 · 3 · 4 · 5 · 6 m) ainda a atravessa, só que mais acima: os três primeiros graus ficaram MENORES QUE O PASSO DE TODO MUNDO e só pegam quem está preso, surpreso ou sem vez; o grau 4 pega o camponês e o aventureiro; o 5 empata com o herói; e só o 6 passa dele. O piso de 2 m do passo é o preço disso, e foi escolhido de olhos abertos."
+        "contraOPasso": "Um molde só prende quem não o atravessa num Tick, e depois de 23/08 atravessar custa o Tick e a jogada mesmo estando livre. O Deslocamento de Batalha humano vai de 3 a 5 m por Tick (a faixa estreitou em 22/08, quando a fórmula virou 2 + (Des + Atl) ÷ 4), e a escada do lado da base (0,5 · 1 · 2 · 3 · 4 · 5 · 6 m) ainda a atravessa, só que mais acima: os três primeiros graus ficaram MENORES QUE O PASSO DE TODO MUNDO e só pegam quem está preso, surpreso ou sem vez; o grau 4 pega o camponês e o aventureiro; o 5 empata com o herói; e só o 6 passa dele. O piso de 2 m do passo é o preço disso, e foi escolhido de olhos abertos."
       },
       "aRevisar": [
         "A calibragem de `8 + 2 × metros` no desvio precisa de mesa: a forma está decidida e os números são provisórios. Os dois botões são o 8 (que move todo mundo) e o 2 por metro (que move só quem está fundo).",

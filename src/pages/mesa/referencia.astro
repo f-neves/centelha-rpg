@@ -117,11 +117,14 @@ const PORTE_NOME: Record<string, string> = {
       <h2>Sair da área</h2>
       <p class="ref-nota"><strong>Contra área não há Esquiva nem Bloqueio.</strong> As duas são números contra um golpe
         que vem de uma direção, e a área não vem de direção nenhuma: ela ocupa o espaço. Quem está lá quando ela sai,
-        come. As saídas são duas, e só uma é grátis.</p>
-      <p class="ref-nota"><strong>1. Na própria vez, o Deslocamento livre</strong>, de graça, durante qualquer outra
-        ação. <strong>2. Fora da vez, o desvio de emergência</strong>, a <strong>1 Tick por metro</strong> que falte
-        para o corpo sair, e esses Ticks empurram para frente a próxima ação do alvo. O tabuleiro mede os metros na
-        figura e já propõe a jogada quando o efeito pega alguém.</p>
+        come. As saídas são duas, e nenhuma é grátis: as duas gastam Tick e as duas pedem a mesma
+        jogada.</p>
+      <p class="ref-nota"><strong>1. Livre</strong>, com a vez na mão: um Tick do próprio Deslocamento de Batalha (ou o
+        Arranque da Corrida), que cobre vários metros e deixa o personagem livre depois.
+        <strong>2. Fora da vez, o desvio de emergência</strong>, a <strong>1 Tick por metro</strong> que falte
+        para o corpo sair, e esses Ticks empurram para frente a próxima ação do alvo. A tabela abaixo é a do caso 2;
+        as Dificuldades valem para os dois. O tabuleiro mede os metros na figura e já propõe a jogada quando o
+        efeito pega alguém.</p>
       <div class="tab-wrap"><table class="tab-mesa">
         <thead><tr><th>Metros até ficar fora</th><th class="num">Custa</th><th class="num">Dif. metade</th>
           <th class="num">Dif. dano nenhum</th></tr></thead>

@@ -181,6 +181,20 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   promoção da pendência 14 do doc: a Dificuldade do teste de concentração virou central, porque
   quebrar a conjuração nos 5 a 7 Ticks de preparo é a contrajogada do corpo a corpo, e falta dizer se
   ela vale para o preparo e se o Mana volta.
+- [x] **A27 · [DECIDIDO 2026-08-23] Sair da área nunca é de graça, e a jogada não depende da vez.**
+  A §5.5 dizia "as saídas são duas, e só uma é grátis": na própria vez saía-se no passo livre sem
+  pagar Tick e sem rolar. Duas correções. **(1) O primeiro metro continua custando.** Num círculo a
+  distância até a borda tem densidade `2r/R²`, então a área mora perto da borda: em todos os graus da
+  escada de tamanhos, de **55,6%** (lado 6 m) a **100%** (até lado 2 m) das vítimas estão a menos de
+  1 m da borda, e a saída mediana vai de 0,07 a 0,88 m, sempre arredondando para o mínimo de 1 m. Um
+  primeiro metro grátis não isentaria o caso de borda, isentaria o **caso típico**. Ficou **1 Tick por
+  metro**, sem brinde. **(2) A rolagem é da área, não da vez.** Quem está livre **também rola**
+  (Destreza + Esquiva contra os mesmos dois patamares) e **também gasta o Tick**, porque sair da área
+  é o movimento e não o passo de brinde que acompanha outra ação. A vantagem de estar livre continua
+  dupla e grande: o Tick cobre vários metros em vez de um, a rolagem sai limpa (sem a escada de
+  Preparo, Golpe ou Recuperação), e depois do movimento o personagem segue livre para agir. Detalhe na
+  **§16** do `Golpe_Tardio.md`. A calibragem de `contraOPasso` sobrevive, porque ela mede distância
+  por Tick, e essa não mudou.
 - [x] **~~A21 · [DECIDIR] A base da fatia fica em corda ou vai para arco.~~ ARCO, em 2026-08-19.** O
   lado do triângulo vira **raio**, a base vira arco e o chão vira setor: `raio = (n ÷ 2k) ÷ sen(θ÷2)`,
   e o volume sai de `arco × altura × raio ÷ 3`. Dois motivos, e o segundo só apareceu ao implementar:
