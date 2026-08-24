@@ -262,36 +262,35 @@ Opções descartadas: **(B)** Lei intrínseca (gradiente metafísico); **(C)** L
 
 ---
 
-## 9. O calendário de Uldun [em construção]
+## 9. O calendário de Uldun
 
 ### 9.1. O esqueleto do tempo [TRAVADO]
 
 - **Dia** = 24 horas.
-- **Semana** = 7 dias.
-- **Mês** = 4 semanas = **28 dias**, que é um ciclo inteiro da lua rápida.
-- **Ano** = 13 meses = **364 dias exatos**. Não sobra dia, não há mês curto, não há bissexto.
+- **Semana** = **8 dias**.
+- **Mês** = 4 semanas = **32 dias**, que é um ciclo inteiro da lua rápida.
+- **Ano** = 12 meses = **384 dias exatos**. Não sobra dia, não há mês curto, não há bissexto.
 
 O que essa grade entrega de graça:
 
 - Todo mês começa no mesmo dia da semana e na mesma fase da lua. O ano inteiro é uma tabela só,
-  repetida treze vezes.
-- **A data já diz a fase.** Dia 14 de qualquer mês é lua cheia; dia 28 é lua nova. Ninguém precisa
+  repetida doze vezes.
+- **A data já diz a fase.** Dia 16 de qualquer mês é lua cheia; dia 32 é lua nova. Ninguém precisa
   de almanaque para saber com quanta luz vai viajar hoje à noite, e o mestre também não.
-- Meia semana, meio mês e meia estação são contas exatas. Um mês é sempre 28 dias, sem exceção de
-  fevereiro, sem "trinta dias tem novembro".
-- **O ano é 52 semanas cravadas** (364 = 52 × 7), e como não sobra dia nenhum, **toda data cai
+- **O ano é 48 semanas cravadas** (384 = 48 × 8), e como não sobra dia nenhum, **toda data cai
   sempre no mesmo dia da semana, para sempre**. O calendário de Uldun não é revisto de ano em ano:
-  é um só, eterno, e vale igual para o bisavô e para o bisneto.
-- **13 é número desconfortável**, e isso é a favor: um ano sem metade exata, que não fecha em par
-  nem em dúzia, é terreno fértil para superstição.
+  é um só, eterno, e o almanaque do bisavô serve ao bisneto.
+- **Uldun conta em oito.** Oito vigílias no dia, oito dias na semana, oito potências de domínio. A
+  base do mundo é 8, e a nossa é 7 e 12 misturados; a diferença aparece em toda frase de tempo sem
+  precisar de explicação nenhuma.
 
-**[PROPOSTA] Os sete dias da semana levam o nome das sete potências de domínio** da §7 (a Guerra, a
-Ceifadora, a Verdejante, o Mar, o Forjador, a Tecelã, o de Muitas Faces), do mesmo jeito que a
-semana da Terra se formou. Cada cultura usa o nome local da potência, então o mesmo dia tem sete
-nomes e todo mundo se entende assim mesmo: é a §7 provando que funciona. Depende de F7 fechar.
+**[TRAVADO] Não existe dia solto.** O ano é 12 meses de 32 dias e nada mais.
 
-**[TRAVADO] Não existe dia solto.** O ano é 13 meses de 28 dias e nada mais. Foi considerada e
-descartada a versão com um 365º dia fora do calendário.
+**[PROPOSTA] Os oito dias da semana levam o nome das oito potências de domínio** da §7, do mesmo
+jeito que a semana da Terra se formou. Isso fecha de quebra a **oitava potência** que a §7 tinha
+deixado em aberto (a de amor, beleza e laços, cara aos elfos): ela existe porque tem dia. Cada
+cultura usa o nome local da potência, então o mesmo dia tem muitos nomes e todo mundo se entende
+assim mesmo, o que é a §7 provando que funciona. Depende de F7 fechar.
 
 ### 9.2. As vigílias [TRAVADO]
 
@@ -304,7 +303,7 @@ descartada a versão com um 365º dia fora do calendário.
 
 ### 9.3. As três luas [PARCIAL]
 
-- **[TRAVADO] Uldun tem três luas**, em velocidades diferentes. A mais rápida fecha **28 dias** e é
+- **[TRAVADO] Uldun tem três luas**, em velocidades diferentes. A mais rápida fecha **32 dias** e é
   ela que dá o mês.
 - **[TRAVADO] Teologia: uma potência, três corpos.** As três luas são a **Errante** da §7, não três
   deusas. "Suas fases são suas faces" ganha a segunda leitura que o nome pedia: ela tem três corpos
@@ -314,93 +313,92 @@ descartada a versão com um 365º dia fora do calendário.
   segue sendo a potência mais entranhada no mundo, só que agora se sabe por quê.
 - **[EM ABERTO] Os períodos da segunda e da terceira lua.** É o cálculo que gera as datas raras
   (conjunções, eclipses, a noite de geração em geração). A decisão de fundo é se os períodos
-  **fecham** com a grade de 364, e a conjunção vira feriado fixo no almanaque, ou se **derrapam**
+  **fecham** com a grade de 384, e a conjunção vira feriado fixo no almanaque, ou se **derrapam**
   por cima dela, e prever a noite dupla vira ofício de astrólogo, com escolas rivais errando por
   dias. Ver F9 no `Pendencias.md`.
 
 ### 9.4. As estações e as meias-estações [TRAVADO]
 
-O ano tem **quatro estações de três meses (84 dias)**, separadas por **uma semana de intervalo** a
+O ano tem **quatro estações de 11 semanas (88 dias)**, separadas por **uma semana de intervalo** a
 que se chama **meia-estação**. A conta fecha exata:
 
-    4 × 84 (estação) + 4 × 7 (meia-estação) = 336 + 28 = 364
+    4 × 88 (estação) + 4 × 8 (meia-estação) = 352 + 32 = 384
 
-Os quatro intervalos somados dão **28 dias**, um mês inteiro de tempo entre-estações espalhado pelo
-ano. O ano tem, na prática, treze meses de vida e um mês de soleira.
+Os quatro intervalos somados dão **32 dias**, um mês inteiro de tempo entre-estações espalhado pelo
+ano. O ano tem, na prática, onze meses de vida e um mês de soleira.
+
+**A meia-estação é sempre a última semana dos meses 3, 6, 9 e 12.** Sem exceção, sem deslocamento,
+igual todo ano. Quem sabe o mês sabe a soleira.
 
 **O ano dia a dia:**
 
-| Faixa | Dias | Onde cai | Lua |
-|---|---|---|---|
-| Estação 1 | 1 a 84 | meses 1, 2 e 3 inteiros | ciclo cheio, 3 luas novas |
-| **Meia-estação 1** | 85 a 91 | **semana 1 do mês 4** | lua crescendo |
-| Estação 2 | 92 a 175 | fim do 4, meses 5 e 6, início do 7 | |
-| **Meia-estação 2** | 176 a 182 | **semana 2 do mês 7** | fecha na **lua cheia** |
-| Estação 3 | 183 a 266 | fim do 7, meses 8 e 9, início do 10 | |
-| **Meia-estação 3** | 267 a 273 | **semana 3 do mês 10** | lua minguante |
-| Estação 4 | 274 a 357 | fim do 10, meses 11 e 12, início do 13 | |
-| **Meia-estação 4** | 358 a 364 | **semana 4 do mês 13** | fecha na **lua nova**, e o ano acaba ali |
+| Faixa | Dias | Onde cai |
+|---|---|---|
+| Estação 1 | 1 a 88 | meses 1 e 2 inteiros, e as 3 primeiras semanas do 3 |
+| **Meia-estação 1** | 89 a 96 | **última semana do mês 3** |
+| Estação 2 | 97 a 184 | meses 4 e 5, e as 3 primeiras semanas do 6 |
+| **Meia-estação 2** | 185 a 192 | **última semana do mês 6** |
+| Estação 3 | 193 a 280 | meses 7 e 8, e as 3 primeiras semanas do 9 |
+| **Meia-estação 3** | 281 a 288 | **última semana do mês 9** |
+| Estação 4 | 289 a 376 | meses 10 e 11, e as 3 primeiras semanas do 12 |
+| **Meia-estação 4** | 377 a 384 | **última semana do mês 12**, e o ano acaba ali |
 
-Três coisas caem prontas dessa grade, e nenhuma delas foi projetada:
+Duas coisas caem prontas dessa grade:
 
-1. **A escada.** A meia-estação anda uma semana para a frente a cada vez: é a semana 1 do mês 4, a
-   semana 2 do mês 7, a semana 3 do mês 10 e a semana 4 do mês 13. Quatro degraus e o ano fecha.
-2. **Cada meia-estação tem sua fase.** Como o mês é lunar, a semana do mês diz a fase: a primeira
-   meia-estação cai na lua crescendo, a segunda **termina na lua cheia**, a terceira na minguante, e
-   a quarta **termina na lua nova**. Quatro intervalos, quatro faces da Errante, exatamente a
-   teologia da §9.3 desenhada no calendário sem ninguém ter desenhado.
-3. **O ano morre no escuro.** A última semana do ano é a semana da lua nova, e é também uma
-   meia-estação, ou seja, **sete noites de céu apagado que não pertencem a estação nenhuma**, e
+1. **Toda meia-estação é a semana escura.** Como o mês é lunar e a meia-estação é sempre a quarta
+   semana, ela é sempre a semana que corre **para a lua nova** e termina nela. As quatro soleiras do
+   ano são, todas, semanas de céu apagado. O que a lua faz ali está na §9.11.
+2. **O ano morre no escuro.** A última semana do ano é a última semana do mês 12: uma meia-estação,
+   correndo para a lua nova, sem pertencer a estação nenhuma. São **oito noites** fechando o ano, e
    depois delas o ano simplesmente acaba. Se existe uma noite em Uldun em que as coisas atravessam,
    é ali.
 
-**Consequência de textura:** a Estação 1 é a única que casa com a borda do mês. Dali em diante o ano
-vai se desencontrando um degrau por vez, até a quarta meia-estação zerar tudo. Ou seja, **o ano começa
-arrumado e termina torto**, e todo ano de novo. Isso é combustível de superstição de graça, e explica
-por que sacerdote (que conta em meses) e lavrador (que conta em estações) brigam sobre quando começa
-a colheita.
-
+**Consequência de textura:** o calendário de Uldun é **rígido**, não escorregadio. Estação, mês,
+semana e fase da lua batem sempre no mesmo lugar, e isso muda o tipo de superstição que o mundo
+produz: não é o medo do irregular, é o **peso do inevitável**. Todo mundo sabe exatamente quando as
+oito noites chegam, e todo ano elas chegam.
 
 ### 9.5. Os quatro pontos do sol [TRAVADO]
 
 **[TRAVADO] As quatro meias-estações são os dois solstícios e os dois equinócios**, e é por isso que
-ficam fora das estações: são a semana em que o sol para antes de virar. O **ponto exato** é o **4º
-dia da semana**, o meio dela. A semana é do povo, o dia exato é de quem calcula.
+ficam fora das estações: são a semana em que o sol para antes de virar.
 
-As quatro datas exatas:
+A semana de 8 dias **não tem dia do meio**, então o ponto exato do sol não cai num dia: cai na
+**virada da meia-noite entre o 4º e o 5º dia da semana**, que é sempre a passagem do **dia 28 para o
+dia 29** dos meses 3, 6, 9 e 12.
 
-| Meia-estação | Semana | Dia exato do sol | Data | Marca da lua |
-|---|---|---|---|---|
-| 1 | 85 a 91 | dia 88 | **mês 4, dia 4** | abre no crescente novo |
-| 2 | 176 a 182 | dia 179 | **mês 7, dia 11** | **fecha na lua cheia** |
-| 3 | 267 a 273 | dia 270 | **mês 10, dia 18** | abre com a lua recém-cheia |
-| 4 | 358 a 364 | dia 361 | **mês 13, dia 25** | **fecha na lua nova** |
+| Meia-estação | Semana | Virada exata do sol |
+|---|---|---|
+| 1 | dias 89 a 96 | entre os dias 92 e 93 · **mês 3, do dia 28 para o 29** |
+| 2 | dias 185 a 192 | entre os dias 188 e 189 · **mês 6, do dia 28 para o 29** |
+| 3 | dias 281 a 288 | entre os dias 284 e 285 · **mês 9, do dia 28 para o 29** |
+| 4 | dias 377 a 384 | entre os dias 380 e 381 · **mês 12, do dia 28 para o 29** |
 
-Segunda escada: os meses andam de 3 em 3 e os dias de 7 em 7 (4/4, 7/11, 10/18, 13/25). Quem decora
-quatro pares de números tem o ano inteiro na cabeça.
+**O sol vira na hora em que ninguém pode olhar para ele.** Não há dia do solstício: há uma
+meia-noite, e antes e depois dela dois dias iguais. Quem quer marcar o instante precisa de
+instrumento e de vigília noturna, ou seja, de astrônomo. O povo comemora a semana; só a universidade
+e o templo sabem o momento.
 
-**[TRAVADO] Qual é qual.** A aritmética decide sozinha. A meia-estação 2 fecha na lua cheia, então é
-o **solstício de verão**: a semana de mais sol do ano termina na lua mais cheia do ano, luz em cima
-de luz. A meia-estação 4 fecha na lua nova e é a última semana do ano, então é o **solstício de
-inverno**: sete noites de escuro e o ano acaba. As meias-estações 1 e 3 são os **equinócios**, a da
-luz que cresce e a da luz que mingua.
+**[TRAVADO] Qual é qual.** A meia-estação 4 fecha o ano, e o ano de Uldun nasce logo depois dela: é
+o **solstício de inverno**, oito noites de escuro, o ponto mais fundo. A meia-estação 2 cai no meio
+exato do ano e é o **solstício de verão**. As meias-estações 1 e 3 são os **equinócios**, o da luz
+que cresce e o da luz que mingua.
 
 Disso sai a ordem das estações: **Estação 1 = inverno** (o ano nasce logo depois da noite mais
 funda), **2 = primavera**, **3 = verão**, **4 = outono**. O ano de Uldun nasce do ponto mais escuro,
 do mesmo jeito que o nosso ano novo nasce dias depois do solstício.
 
-**[PROPOSTA] A briga da semana santa.** Dentro da mesma meia-estação, o sol tem o dia 4 e a lua tem
-o dia 7. Culto solar e culto lunar celebram a mesma soleira em dias diferentes, e cada um trata o
-outro de descuidado ou de herege. As ortodoxias rivais da §7 ganham aqui um motivo concreto de
-cisma, e um que não exige teologia nenhuma para o jogador entender: é briga de data.
-
-
+**[PROPOSTA] A briga da semana santa.** Dentro da mesma meia-estação, o sol vira na meia-noite do 4º
+para o 5º dia e a lua zera no 8º. Culto solar e culto lunar celebram a mesma soleira em dias
+diferentes, e cada um trata o outro de descuidado ou de herege. As ortodoxias rivais da §7 ganham
+aqui um motivo concreto de cisma, e um que não exige teologia nenhuma para o jogador entender: é
+briga de data.
 
 ### 9.6. O céu bom demais [PROPOSTA]
 
-Um mundo cujo ano fecha em número inteiro de dias, cuja lua cabe exatamente treze vezes nele **sem sobrar
-um único dia**, é um mundo **suspeitosamente bem ajustado**. Na Terra isso não acontece, e é por
-isso que nossos calendários são remendos.
+Um mundo cujo ano fecha em número inteiro de dias, cuja lua cabe exatamente doze vezes nele **sem
+sobrar um único dia**, e cuja semana divide o ano em 48 exatas, é um mundo **suspeitosamente bem
+ajustado**. Na Terra isso não acontece, e é por isso que nossos calendários são remendos.
 
 Num cosmos que já reagiu uma vez de forma deliberada (a Lei, §1), um céu que fecha a conta é pista,
 não conveniência. Ninguém em Uldun tem como provar, mas os astrônomos das poucas universidades
@@ -447,8 +445,8 @@ afinam **estreito e fundo**.
 ### 9.8. A aurora e a costura [TRAVADO]
 
 **[TRAVADO] A aurora do norte é a costura da Lei ficando visível** onde ela é mais fina. Não é sol,
-não é clima, e não tem nada a ver com a Fenda: é mais fundo que as duas coisas. O que se vê no céu
-do White Wall é a própria separação entre a ordem mortal e a divina, imposta na Queda élfica.
+não é clima: é mais fundo. O que se vê no céu do White Wall é a própria separação entre a ordem
+mortal e a divina, imposta na Queda élfica.
 
 Ninguém em Uldun sabe disso. As leituras correntes são as de sempre: sinal dos deuses, respiração do
 gelo, fogo dos mortos, mau presságio. Magos poderosos e as poucas universidades sabem apenas que
@@ -460,16 +458,15 @@ existe e que **segue sem explicação**, inclusive para o autor. Ela não é ali
 explica a aurora, não explica a Lei e não deve ser usada para sustentar outra peça do cânone. Se um
 dia a causa dela for decidida, será por decisão própria, não por encaixe.
 
-
 ### 9.9. As cinco camadas de datas [TRAVADO]
 
 O calendário mágico tem cinco escalas, e o mestre pode ignorar as de baixo sem quebrar as de cima.
 
 | Camada | Quando | Porte |
 |---|---|---|
-| **Pulso do mês** | dia 14 (cheia) e dia 28 (nova) de cada mês | 26 noites por ano, fracas; o fundo constante |
-| **As quatro soleiras** | semanas 85-91, 176-182, 267-273 e 358-364 | dia exato do sol em 88, 179, 270 e 361 |
-| **As sete noites** | dias 358 a 364 (a meia-estação 4) | o pico do ano, sete noites de céu apagado |
+| **Pulso do mês** | dia 16 (cheia) e dia 32 (nova) de cada mês | 24 noites por ano, fracas; o fundo constante |
+| **As quatro soleiras** | dias 89-96, 185-192, 281-288 e 377-384 | a última semana dos meses 3, 6, 9 e 12 |
+| **As oito noites** | dias 377 a 384 (a meia-estação 4) | o pico do ano, e o ano acaba nelas |
 | **As conjunções** | a calcular (F9) | de raras a geracionais |
 | **As cicatrizes** | presas à história, não ao céu | estreitas e fundas; vivem de memória (§9.7) |
 
@@ -489,9 +486,8 @@ O que isso paga:
   o tabu; o tabu agora se auto-alimenta sem precisar de deus nenhum. Um mecanismo que continua
   rodando muito depois de quem o ligou ter perdido o interesse.
 
-
 **[TRAVADO] Os grandes dias santos caem em cima das noites finas.** A igreja marca a maior festa do
-ano exatamente na pior noite, para contrapô-la. Nas sete noites que fecham o ano há milhões rezando
+ano exatamente na pior noite, para contrapô-la. Nas oito noites que fecham o ano há milhões rezando
 contra a magia justo quando o céu está mais fino, e o ano inteiro se decide num cabo de guerra. As
 ortodoxias acertaram a data sem saber por quê, o que é mais um indício de que **alguém antigo lhes
 ensinou o calendário**, e liga direto com a origem comum das igrejas (§7).
@@ -509,33 +505,41 @@ e quem perde território perde noites.
 
 **A regra é da lua, e o resto cai dela.**
 
-- **Lua cheia (dia 14 de todo mês): intensifica o que já está aqui.** Bestas, sangue, o que muda de
+- **Lua cheia (dia 16 de todo mês): intensifica o que já está aqui.** Bestas, sangue, o que muda de
   pele, o que é deste mundo. A cheia não abre nada: ela aumenta o volume do que já existe.
-- **Lua nova (dia 28 de todo mês): abre para o que não está aqui.** O que atravessa, o que vem de
+- **Lua nova (dia 32 de todo mês): abre para o que não está aqui.** O que atravessa, o que vem de
   fora, o que estava esperando. A nova não fortalece ninguém: ela destranca.
 
-Com isso, **as soleiras não precisam de regra própria**. A escala não é claro contra escuro, é
-extremo, e o caráter de cada uma sai da fase em que ela termina. Os solstícios são **picos**; os
-equinócios são **portas**.
+E aqui a grade rígida do calendário produz uma divisão limpa de trabalho:
 
-- **Solstício de inverno** · dias 358 a 364, fecha na lua nova, fecha o ano. A lua nova destranca, e
-  o solstício põe o ano inteiro atrás dela: afina o que é **frio, morto, faminto e o que espera do
-  lado de fora**. É o pico do ano: sete noites.
-- **Solstício de verão** · dias 176 a 182, fecha na lua cheia. A cheia aumenta o volume do que já
-  existe, e o sol no auge aumenta junto: afina o que é **vivo demais**:
-  feérico, fértil, excessivo, o que cresce sem parar e o que enlouquece de abundância. Não é a
-  soleira segura, é o perigo oposto. Quem foge do inverno para o verão troca de monstro, não se
-  livra dele.
-- **Equinócio da luz que cresce** · dias 85 a 91, ponto exato no mês 4 dia 4. Porta que abre **para
-  fora**: as coisas voltam para o lado de lá. É a data de **banir**.
-- **Equinócio da luz que mingua** · dias 267 a 273, ponto exato no mês 10 dia 18. Porta que abre
-  **para dentro**: as coisas vêm para cá, e algumas vêm sem ser chamadas. É a data de **invocar**, e
-  a data em que se atravessa sem convite.
+- **A lua cheia nunca cai numa soleira.** Ela é sempre o dia 16, o meio do mês, sempre dentro de uma
+  estação. As doze cheias do ano são todas em tempo comum: o pulso da vida ordinária ficando mais
+  alto uma noite por mês.
+- **As quatro soleiras são todas semanas de lua nova.** Ou seja, **os quatro pontos de virada do ano
+  são portas, e nenhum deles é pico**. A lua abre quatro vezes por ano no mesmo instante em que o
+  sol vira, e é o **sol que diz o que passa**.
 
-O que isso monta: um ano com **dois picos opostos e duas portas de mão única**. Quem precisa mandar
-algo embora espera o equinócio da luz crescente; quem precisa chamar espera o da minguante; e quem
-só quer sobreviver evita as duas pontas. Ironia de graça: as ortodoxias, que marcam festa em cima
-das noites finas (§9.10), rezam com mais força justamente na porta de entrada.
+Com isso as quatro soleiras se dividem em dois pares:
+
+**Os solstícios dizem O QUE passa.**
+
+- **Solstício de inverno** · dias 377 a 384, fecha o ano. Passa o que é **frio, morto, faminto e o
+  que espera do lado de fora**. É o pico do ano: oito noites.
+- **Solstício de verão** · dias 185 a 192, meio exato do ano. Passa o que é **vivo demais**: feérico,
+  fértil, excessivo, o que cresce sem parar e o que enlouquece de abundância. Não é a soleira
+  segura, é o perigo oposto. Quem foge do inverno para o verão troca de monstro, não se livra dele.
+
+**Os equinócios dizem PARA ONDE se passa.**
+
+- **Equinócio da luz que cresce** · dias 89 a 96. Porta de mão única **para fora**: as coisas voltam
+  para o lado de lá. É a data de **banir**.
+- **Equinócio da luz que mingua** · dias 281 a 288. Porta de mão única **para dentro**: as coisas vêm
+  para cá, e algumas vêm sem ser chamadas. É a data de **invocar**, e a data em que se atravessa sem
+  convite.
+
+Quem precisa mandar algo embora espera o equinócio da luz crescente; quem precisa chamar espera o da
+minguante; e quem só quer sobreviver evita as duas pontas do ano. Ironia de graça: as ortodoxias,
+que marcam festa em cima das noites finas (§9.10), rezam com mais força justamente nas portas.
 
 ### 9.12. Os eventos locais [TRAVADO]
 
@@ -551,7 +555,7 @@ lugar ser esquecido, o que é um tipo de solução que quase nenhum RPG oferece.
 
 ### 9.13. A contagem dos anos [TRAVADO]
 
-- **A grade é universal.** Treze meses de 28 dias em toda parte, porque o céu é o mesmo em toda
+- **A grade é universal.** Doze meses de 32 dias em toda parte, porque o céu é o mesmo em toda
   parte. Ninguém precisa converter data ao cruzar uma fronteira.
 - **O número do ano é local.** As ortodoxias impõem a era delas nas cidades onde mandam; o interior
   conta pela fundação da própria vila, pelo reinado atual ou pela última grande cheia. Mercador de
@@ -565,42 +569,41 @@ lugar ser esquecido, o que é um tipo de solução que quase nenhum RPG oferece.
 
 Duas camadas, do mesmo jeito que já ficou com **hora** e **vigília** (§9.2):
 
-- **O povo fala descritivo:** "o mês das águas", "a semana do sol parado", "as sete noites".
+- **O povo fala descritivo:** "o mês das águas", "a semana do sol parado", "as oito noites".
 - **O culto e o erudito falam o nome próprio:** o nome da potência, do concílio ou da palavra morta.
 
 O jogador nunca precisa de glossário para entender a cena, e **quem usa qual palavra já diz de onde
 veio**. Um personagem que chama a meia-estação de inverno pelo nome litúrgico foi criado por
-sacerdotes, e quem a chama de "as sete noites" foi criado por avó.
+sacerdotes, e quem a chama de "as oito noites" foi criado por avó.
 
-**[EM ABERTO]** os nomes em si: 13 meses, 7 dias da semana, 8 vigílias, 4 estações, 4 soleiras e as
-sete noites, cada um nas duas camadas. Ver F5 e F8 no `Pendencias.md`.
+**[EM ABERTO]** os nomes em si: 12 meses, 8 dias da semana, 8 vigílias, 4 estações, 4 soleiras e as
+oito noites, cada um nas duas camadas. Ver F5 e F8 no `Pendencias.md`.
 
 ### 9.15. Versão alternativa do calendário [REGISTRADA, não adotada]
 
-Guardada como alternativa completa, caso a de 13 meses se mostre incômoda na mesa:
+Guardada como alternativa completa, caso a de 12 meses se mostre incômoda:
 
-- **Dia** 24 horas · **semana 8 dias** · **mês** 4 semanas = **32 dias** · **ano** 12 meses = **384
+- **Dia** 24 horas · **semana 7 dias** · **mês** 4 semanas = **28 dias** · **ano** 13 meses = **364
   dias**.
 
-O que ela ganha:
+O que ela ganharia:
 
-- **12 meses é familiar**, e 13 nunca deixa de soar estranho para o jogador.
-- Também fecha sem sobra: 384 = **48 semanas cravadas**, mesma eternidade de calendário.
-- A **semana de 8 casa com as 8 vigílias** e com **8 potências de domínio**, o que resolveria de
-  quebra a oitava potência que a §7 deixou em aberto (a de amor e beleza).
-- As estações ficam regulares em vez de escalonadas: trimestre de 96 dias = 11 semanas de estação
-  (88 dias) mais 1 semana de meia-estação (8 dias). A meia-estação é sempre a **última semana dos
-  meses 3, 6, 9 e 12**, no mesmo lugar toda vez.
+- O ano fica **quase do tamanho do nosso**, então toda intuição de duração do jogador transfere
+  direto, e nenhuma idade precisa de conversão mental.
+- A meia-estação **anda** pelo ano em vez de parar sempre no mesmo lugar: semana 1 do mês 4, semana 2
+  do mês 7, semana 3 do mês 10, semana 4 do mês 13. Uma escada de quatro degraus, e o ano começa
+  arrumado e termina torto, o que é combustível de superstição.
+- Por causa dessa escada, **cada soleira cai numa fase diferente da lua**: crescente, cheia,
+  minguante e nova, uma face por soleira. As quatro faces da Errante desenhadas no calendário.
+- A semana de 7 tem **meio exato**, então o ponto do sol é um dia inteiro (o 4º) e não uma virada de
+  meia-noite.
 
-O que ela perde:
+O que ela perderia:
 
-- **A escada some.** As meias-estações param sempre no mesmo ponto do mês, e o ano não tem mais o
-  desencontro progressivo que gera superstição.
-- **As quatro faces da lua somem.** Com o mês de 32 dias e a meia-estação sempre na semana 4, as
-  quatro terminam todas na **lua nova**. A versão de 13 meses dá crescente, cheia, minguante e nova,
-  uma face por soleira, que é o encaixe mais bonito que o calendário produziu.
-- O ano fica **5% mais longo** que o nosso, então toda idade, prazo e contrato precisa de conversão
-  mental quando se compara com a intuição do jogador.
+- **13 meses nunca deixa de soar estranho** para o jogador, e a conta de meses some da intuição.
+- **A rima do 8 se quebra:** 8 vigílias no dia contra 7 dias na semana, e a oitava potência da §7
+  fica sem dia próprio.
+- O calendário deixa de ser rígido, o que é ganho de sabor e perda de previsibilidade na mesa.
 
 ---
 

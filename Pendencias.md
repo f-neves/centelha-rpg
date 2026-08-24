@@ -421,10 +421,10 @@ Detalhe em `lore/Lore_Centelha.md` §7 e §8. Nada de lore foi ao site ainda.
 - [ ] **F8 · [AUTOR] Os nomes do calendário.** A estrutura inteira fechou na §9 de
   `lore/Lore_Centelha.md` (esqueleto, vigílias, luas, estações, pontos do sol, as cinco camadas de
   datas, o véu que engrossa, os eventos locais, a contagem dos anos). Falta **nomear**, nas duas
-  camadas decididas na §9.14 (descritivo no povo, próprio no culto): 13 meses, 7 dias da semana, 8
-  vigílias, 4 estações, 4 soleiras e as sete noites que fecham o ano.
-- [ ] **F9 · [DECIDIR] Os períodos da segunda e da terceira lua.** A rápida está travada em 28 dias.
-  Falta calcular as outras duas, e antes disso decidir se os períodos **fecham** com a grade de 364
+  camadas decididas na §9.14 (descritivo no povo, próprio no culto): 12 meses, 8 dias da semana, 8
+  vigílias, 4 estações, 4 soleiras e as oito noites que fecham o ano.
+- [ ] **F9 · [DECIDIR] Os períodos da segunda e da terceira lua.** A rápida está travada em 32 dias.
+  Falta calcular as outras duas, e antes disso decidir se os períodos **fecham** com a grade de 384
   (conjunção vira feriado fixo) ou **derrapam** por cima dela (prever a noite dupla vira ofício de
   astrólogo). É esse cálculo que gera as datas raras. Detalhe na §9.3.
 - [ ] **F10 · [DECIDIR] A moeda mecânica das datas afinadas.** O grau de afinamento existe, falta o
