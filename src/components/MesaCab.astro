@@ -746,7 +746,36 @@ const { aba } = Astro.props;
   .fila-tira.fila-dobrada .ini-relogio { padding-bottom: 0; }
 
   /* ---------------- painel "como o tempo passa" ---------------- */
-  .tempo-dlg .ui-dlg-corpo { max-width: 40rem; }
+  /* O PAINEL CABE NA JANELA, e o que passa disso rola POR DENTRO dele.
+     Sem isto o diálogo cresce com o conteúdo e o rodapé de botões vai parar
+     abaixo da borda da tela: dava para ler o painel inteiro e não dava para
+     salvar. Ele já era o mais alto da mesa (sistema, amostra, marcação e
+     dados), e a chave do golpe adiado foi a gota. */
+  .tempo-dlg { max-height: 92vh; }
+  /* A corrente de flex tem de passar pelo `.ui-dlg-form`, que é o filho único
+     do <dialog>: capar a altura só do diálogo não constrange neto nenhum, e o
+     corpo continuava crescendo por dentro dele. */
+  .tempo-dlg .ui-dlg-form { display: flex; flex-direction: column;
+    max-height: 92vh; min-height: 0; }
+  .tempo-dlg .ui-dlg-head { flex: 0 0 auto; }
+  .tempo-dlg .ui-dlg-corpo { max-width: 40rem; flex: 1 1 auto; min-height: 0;
+    overflow-y: auto; padding-bottom: .8rem; }
+  /* E o rodapé de botões para de rolar junto: numa lista longa de opções, a
+     decisão tem de estar sempre à mão. */
+  .tempo-dlg .ui-dlg-btns { position: sticky; bottom: 0; margin-bottom: 0;
+    padding: .6rem 0 .2rem; background: var(--panel);
+    box-shadow: 0 -8px 12px -8px var(--shadow); }
+  /* A chave do golpe adiado: uma caixa de marcar no molde das opções de rádio,
+     para o painel inteiro ter um desenho só. */
+  .tempo-chave { display: flex; align-items: flex-start; gap: .5rem; }
+  .tempo-chave input { flex: 0 0 auto; margin-top: .2rem; }
+  /* A linha que responde ao estado (ligada/desligada/sem efeito) fica em itálico
+     e mais apagada: ela não descreve a opção, ela diz o que está valendo agora. */
+  .tempo-chave-est { font-style: italic; opacity: .85; margin-top: .15rem; }
+  .tempo-tag { font-family: 'EB Garamond', Georgia, serif; font-size: var(--fs-micro);
+    text-transform: none; letter-spacing: 0; color: var(--gold);
+    border: 1px solid color-mix(in srgb, var(--gold) 45%, transparent);
+    border-radius: 999px; padding: .02rem .45rem; margin-left: .4rem; vertical-align: middle; }
   .tempo-intro { margin: 0 0 .5rem; font-size: var(--fs-rotulo); }
   .tempo-nota { margin: .1rem 0 .35rem; font-size: var(--fs-micro); color: var(--ink-soft); }
   .tempo-aviso { margin: 0 0 .5rem; font-size: var(--fs-micro); font-style: italic;

@@ -732,6 +732,58 @@ que mediu o novo.
 
 ---
 
+## 18. A auditoria da primeira fatia (23/08/2026)
+
+Varredura fundo do que a fatia 1 mexeu, mais uma vistoria de **todo modal com a chave ligada**. O
+método vale registrar porque ele achou coisa que teste funcional não acha: uma **régua de
+transbordo** injetada na página, que mede três defeitos diferentes em vez de confiar no olho.
+
+1. filho cujo retângulo sai do retângulo da caixa;
+2. elemento que rola sem ter pedido (`scrollWidth > clientWidth` sem `overflow-x` declarado), que é
+   o desenho estourando por dentro;
+3. texto cortado por `overflow: hidden` ou reticências.
+
+Quem mora dentro de um rolador está fora **por desenho**, e não por defeito: a fila de iniciativa é
+uma tira que desliza, e contar os cartões que sobram dela seria medir a rolagem. A régua sobe a
+árvore antes de acusar, e foi só depois disso que os números pararam de mentir.
+
+**Quatro defeitos, e três eram meus.**
+
+**O painel do tempo passava da janela.** 1264 px numa tela de 1000, e sem rolagem interna: dava para
+ler o painel inteiro e **não dava para salvar**, porque o rodapé de botões ficava abaixo da borda.
+Ele já era o mais alto da mesa (sistema, amostra, marcação, dados) e a chave nova foi a gota.
+Consertado com `max-height: 92vh` mais rolagem no corpo e rodapé grudado. E o conserto só funcionou
+na segunda tentativa: a corrente de flex tem de passar pelo **`.ui-dlg-form`**, que é o filho único
+do `<dialog>`; capar a altura só do diálogo não constrange neto nenhum.
+
+**O "⏭ próximo" continuava aceso no Tick do golpe.** `grupoDaVez()` já devolvia vazio, mas o
+`disabled` do botão só olhava se havia alguém de pé: ele ficava aceso e o clique não fazia nada, que
+é a pior das combinações, porque parece que a mesa travou. E junto veio um erro de regra: a guarda
+era `g < t`, e tinha de ser **`g <= t`**. Um golpe que cai no mesmo Tick em que alguém age chega
+antes, porque foi declarado Ticks atrás.
+
+**A chave do painel gritava.** Eu havia posto a frase inteira em `.rev-op-t`, que é Cinzel em
+versalete e foi feito para duas ou três palavras. O título virou "Adiar o golpe" e a frase desceu
+para a descrição.
+
+**E o quarto não era meu:** existe um auto-linkador de glossário que transforma palavras em `a.ref`
+**dentro dos modais da mesa** (11 deles hoje, em `outra-dlg` e `arte-dlg` inclusive). Parecia
+armadilha de navegação, e não é: o clique abre um cartão local por cima e o diálogo de baixo
+sobrevive. Fica anotado, não consertado.
+
+**O que ficou de prova permanente**, dentro do `test-grid.mjs` e não num script solto: a régua
+(`vistoriarCaixa`), aplicada à caixa da declaração, à folha do golpe que cai e ao painel do tempo;
+a checagem de que o **"Salvar" continua alcançável**; e a caminhada do relógio, que anda a cena no
+"próximo" e prova que ela **para exatamente no Tick agendado, nunca depois**
+(`0 → 1 → … → 11 → 12`), que o cartão acende e que o botão desliga com o motivo escrito.
+
+Também auditado e limpo: cancelar a declaração não pendura gesto nenhum; três golpes no ar ao mesmo
+tempo não empurram a página para o lado (quem rola é a lista da faixa); no telefone a faixa continua
+na tela sem rolagem lateral; a arma de quem declarou continua sem vazar para o jogador; e **com a
+chave desligada arrastar abre direto a folha do acerto e a faixa nem existe**.
+
+---
+
 ## Fontes internas
 
 - `Combate_Tempo.md` §4 (o que interromper compra), §8 (ler o sinal), §14.6 e §14.7 (o que cabe em

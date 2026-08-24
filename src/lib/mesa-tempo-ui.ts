@@ -426,8 +426,12 @@ export async function abrirEscolhaDoTempo(
     <label class="rev-op tempo-chave" title="${esc(GOLPE_ADIADO.resumo || '')}">
       <input type="checkbox" id="tp-adiado"${atual.golpeAdiado ? ' checked' : ''} />
       <span class="rev-op-corpo">
-        <span class="rev-op-t">${esc(GOLPE_ADIADO.resumo || '')}</span>
-        <span class="rev-op-d" id="tp-adiado-d"></span>
+        ${/* O TÍTULO É CURTO, e a frase vai na descrição. `.rev-op-t` é Cinzel em
+             versalete, feito para duas ou três palavras: a frase inteira ali
+             vira um bloco gritando, e foi o que aconteceu na primeira versão. */ ''}
+        <span class="rev-op-t">Adiar o golpe</span>
+        <span class="rev-op-d">${esc(GOLPE_ADIADO.resumo || '')}</span>
+        <span class="rev-op-d tempo-chave-est" id="tp-adiado-d"></span>
       </span>
     </label>
     <div class="ui-dlg-btns">

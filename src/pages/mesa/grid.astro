@@ -3584,8 +3584,12 @@ const SETAS = [
     // foi declarado três Ticks atrás chega antes da próxima escolha de quem quer
     // que seja, e deixar alguém agir por cima dele resolveria a cena fora de
     // ordem: é a mesma razão de `faseDeQuemVaiAgir` existir.
+    // O `<=` e não `<`: um golpe que cai no MESMO Tick em que alguem age chega
+    // antes, porque foi declarado Ticks atrás. Com `<` o "próximo" continuava
+    // ligado no instante da queda, e a mesa podia agir por cima do braço que
+    // estava chegando.
     const g = golpeMaisCedo();
-    if (g != null && g < t) return [];
+    if (g != null && g <= t) return [];
     return naFila().filter((c: any) => !noChao(c) && (c.tick ?? 0) === t);
   }
 
@@ -3777,9 +3781,16 @@ const SETAS = [
       const prox = el('ini-prox') as HTMLButtonElement;
       prox.hidden = false;
       // Sem ninguém de pé não há vez para encerrar, e o botão passaria a ser um
-      // clique que não faz nada.
-      prox.disabled = !emPe.length;
-      prox.title = emPe.length ? '' : 'Ninguém de pé: a cena espera alguém levantar.';
+      // clique que não faz nada. O mesmo vale com um GOLPE CAINDO: o braço
+      // declarado Ticks atrás chega antes da próxima escolha de quem quer que
+      // seja, e enquanto ele não é resolvido não é a vez de ninguém. Sem isto o
+      // botão continuava aceso e o clique não fazia nada, que é a pior das
+      // combinações: parece que a mesa travou.
+      const golpeCaindo = instanteDeGolpe();
+      prox.disabled = !emPe.length || golpeCaindo;
+      prox.title = !emPe.length ? 'Ninguém de pé: a cena espera alguém levantar.'
+        : golpeCaindo ? 'Há golpe caindo neste Tick: resolva na faixa dos golpes no ar.'
+          : '';
     }
     if (!emPe.length) {
       esquecerCaixa(box);
@@ -5945,7 +5956,9 @@ const SETAS = [
       (el('dc-tempo') as HTMLElement).innerHTML =
         `<div><b>Preparo ${a.preparo}</b> · <b>Golpe ${a.golpes}</b> · <b>Recuperação ${a.recuperacao}</b>
            = <b>${a.ciclo}</b> Ticks</div>
-         <div class="muted">o golpe cai no Tick <b>${quando.join(', ')}</b> · livre no ${t0 + a.ciclo}
+         <div class="muted">${quando.length > 1
+          ? `os golpes caem nos Ticks <b>${quando.slice(0, -1).join(', ')} e ${quando[quando.length - 1]}</b>`
+          : `o golpe cai no Tick <b>${quando[0]}</b>`} · livre no ${t0 + a.ciclo}
            · a guarda de ${esc(atacante.nome)} abre em −2 já a partir de agora</div>
          ${a.aviso ? `<div class="ruim">${esc(a.aviso)}</div>` : ''}`;
     };

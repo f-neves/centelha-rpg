@@ -1630,6 +1630,75 @@ async function cenaCelular(br, url, { papel = 'mestre' } = {}) {
 }
 
 
+
+// ------------------------------------------------------- a regua das caixas
+/**
+ * TRANSBORDO MEDIDO, e nao olhado.
+ *
+ * Uma caixa quebrada quase nunca aparece no teste funcional: os cliques
+ * continuam funcionando com a palavra vazando pela borda, e o defeito so
+ * aparece quando alguem abre a tela. Esta regua transforma isso em numero, e
+ * conta tres coisas diferentes:
+ *
+ *   1. filho cujo retangulo sai do retangulo da caixa;
+ *   2. elemento que rola sem ter pedido (`scrollWidth > clientWidth` sem
+ *      `overflow-x` declarado), que e o desenho estourando por dentro;
+ *   3. texto cortado por `overflow: hidden` ou reticencias.
+ *
+ * Quem mora dentro de um rolador esta fora por desenho, e nao por defeito: a
+ * fila de iniciativa e uma tira que desliza, e contar os cartoes que sobram
+ * dela seria medir a rolagem. Por isso a busca sobe a arvore antes de acusar.
+ */
+const REGUA_CAIXA = `(function (sel) {
+  const cx = document.querySelector(sel);
+  if (!cx) return null;
+  const r = cx.getBoundingClientRect();
+  const fora = [], rolando = [], cortado = [];
+  for (const e of cx.querySelectorAll('*')) {
+    const s = getComputedStyle(e);
+    if (s.display === 'none' || s.visibility === 'hidden' || !e.getClientRects().length) continue;
+    const q = e.getBoundingClientRect();
+    if (!q.width && !q.height) continue;
+    const id = (e.id ? '#' + e.id : '') + (typeof e.className === 'string' && e.className.trim()
+      ? '.' + e.className.trim().split(/\\s+/).slice(0, 2).join('.') : '');
+    let rolaX = false, rolaY = false;
+    for (let a = e.parentElement; a; a = a.parentElement) {
+      const os = getComputedStyle(a);
+      if (os.overflowX === 'auto' || os.overflowX === 'scroll') rolaX = true;
+      if (os.overflowY === 'auto' || os.overflowY === 'scroll') rolaY = true;
+      if (a === cx) break;
+    }
+    if ((!rolaX && (q.left < r.left - 2 || q.right > r.right + 2)) || (!rolaY && q.bottom > r.bottom + 2)) {
+      fora.push(id + '(' + Math.round(Math.max(r.left - q.left, q.right - r.right, q.bottom - r.bottom)) + 'px)');
+    }
+    if (e.scrollWidth - e.clientWidth > 1 && s.overflowX !== 'auto' && s.overflowX !== 'scroll') {
+      rolando.push(id + '(+' + (e.scrollWidth - e.clientWidth) + 'px)');
+    }
+    const proprio = [...e.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim());
+    if (proprio && (s.overflow === 'hidden' || s.textOverflow === 'ellipsis')
+      && e.scrollWidth - e.clientWidth > 1) {
+      cortado.push(id + '(+' + (e.scrollWidth - e.clientWidth) + 'px)');
+    }
+  }
+  return {
+    w: Math.round(r.width), h: Math.round(r.height),
+    saiDaJanela: r.right > innerWidth + 2 || r.left < -2 || r.bottom > innerHeight + 2 || r.top < -2,
+    fora, rolando, cortado,
+  };
+})`;
+
+/** Vistoria uma caixa aberta e reclama do que transborda. */
+async function vistoriarCaixa(p, sel, nome) {
+  const m = await p.evaluate(`${REGUA_CAIXA}(${JSON.stringify(sel)})`);
+  if (!m) { ok(false, `${nome}: a caixa nem existe (${sel})`); return; }
+  ok(!m.saiDaJanela, `${nome} cabe na janela (${m.w}x${m.h})`);
+  ok(m.fora.length === 0, `${nome}: nada sai das bordas (${m.fora.slice(0, 3).join(' ') || 'nada'})`);
+  ok(m.rolando.length === 0,
+    `${nome}: nada estoura por dentro (${m.rolando.slice(0, 3).join(' ') || 'nada'})`);
+  ok(m.cortado.length === 0,
+    `${nome}: nenhum texto cortado (${m.cortado.slice(0, 3).join(' ') || 'nenhum'})`);
+}
+
 /**
  * O GOLPE QUE SAI DEPOIS, do começo ao fim.
  *
@@ -1690,8 +1759,13 @@ async function cenaGolpeAdiado(br, url) {
       temDefesa: !!decl?.querySelector('#al-defesas'),
       cego: !!decl?.querySelector('.dc-cego'),
     };
-    if (decl?.open) { document.getElementById('dc-ok').click(); await new Promise((x) => setTimeout(x, 900)); }
     return r;
+  });
+  // MEDIDA ANTES DE CONFIRMAR: a caixa ainda está aberta, e é agora ou nunca.
+  if (dec?.abriuDeclaracao) await vistoriarCaixa(p, '#decl-dlg', 'a caixa da declaração');
+  await p.evaluate(async () => {
+    const d = document.getElementById('decl-dlg');
+    if (d?.open) { document.getElementById('dc-ok').click(); await new Promise((x) => setTimeout(x, 900)); }
   });
   if (dec) {
     ok(dec.abriuDeclaracao && !dec.abriuFolha,
@@ -1741,15 +1815,21 @@ async function cenaGolpeAdiado(br, url) {
       travada: !!document.getElementById('al-manobra')?.disabled,
       temDefesa: !!document.getElementById('al-defesas')?.textContent.trim(),
     };
-    if (folha?.open) {
-      // "Errou" é o caminho mais curto que ainda resolve o golpe: não mexe em
-      // Vida de ninguém e ainda assim tira o gesto do ar.
-      document.getElementById('al-nao').click();
-      await new Promise((x) => setTimeout(x, 1400));
-    }
-    r.depois = document.querySelectorAll('#gr-ar .ar-item').length;
     return r;
   });
+  if (res?.abriu) await vistoriarCaixa(p, '#alvo-dlg', 'a folha do golpe que cai');
+  // "Errou" é o caminho mais curto que ainda resolve o golpe: não mexe em Vida
+  // de ninguém e ainda assim tira o gesto do ar.
+  if (res) {
+    res.depois = await p.evaluate(async () => {
+      const folha = document.getElementById('alvo-dlg');
+      if (folha?.open) {
+        document.getElementById('al-nao').click();
+        await new Promise((x) => setTimeout(x, 1400));
+      }
+      return document.querySelectorAll('#gr-ar .ar-item').length;
+    });
+  }
   if (res) {
     ok(res.abriu, 'clicar no cartão da faixa abre a folha da ação');
     ok(/O golpe de .* cai em /.test(res.titulo),
@@ -1761,6 +1841,98 @@ async function cenaGolpeAdiado(br, url) {
     ok(res.depois < res.antes,
       `resolver tira o golpe do ar (${res.antes} → ${res.depois})`);
   }
+
+  // ---- 6: O RELÓGIO PARA NO TICK DO GOLPE ----
+  //
+  // É o defeito que o estudo previu e que só aparece andando com a cena: o
+  // atacante vai direto para o `livre`, e o Tick em que o braço cai não é a vez
+  // de ninguém, então nada obrigaria a mesa a parar nele. Aqui a cena é
+  // empurrada no "⏭ próximo" até alcançar o golpe agendado, e o que se prova é
+  // que ela para EXATAMENTE ali, nunca depois.
+  await p.evaluate(async () => {
+    const toks = [...document.querySelectorAll('#gr-tokens .gr-token')];
+    const a = toks.find((t) => t.dataset.c === 'c001');   // a besta, Preparo longo
+    const b = toks.find((t) => t !== a && t.dataset.c !== 'c002');
+    if (!a || !b) return;
+    const ra = a.getBoundingClientRect(), rb = b.getBoundingClientRect();
+    const em = (el, t, x, y) => el.dispatchEvent(new PointerEvent(t, {
+      bubbles: true, clientX: x, clientY: y, pointerId: 1 }));
+    em(a, 'pointerdown', ra.left + ra.width / 2, ra.top + ra.height / 2);
+    em(document, 'pointermove', rb.left + rb.width / 2, rb.top + rb.height / 2);
+    em(document, 'pointerup', rb.left + rb.width / 2, rb.top + rb.height / 2);
+    await new Promise((x) => setTimeout(x, 1300));
+    if (document.getElementById('decl-dlg')?.open) {
+      document.getElementById('dc-ok').click();
+      await new Promise((x) => setTimeout(x, 900));
+    }
+  });
+  const andar = await p.evaluate(async () => {
+    const passos = [];
+    // O teto e generoso porque a besta tem Preparo 5 e a cena precisa andar uma
+    // duzia de Ticks para alcancar o golpe. Cada volta e um clique no "proximo",
+    // e varias delas nao movem o relogio (elas encerram a vez de quem divide o
+    // mesmo Tick com outro).
+    for (let i = 0; i < 34; i++) {
+      const btn = document.getElementById('ini-prox');
+      const tk = parseInt(document.getElementById('ini-tk')?.textContent || '0', 10);
+      const item = document.querySelector('#gr-ar .ar-item');
+      const alvo = item ? parseInt(item.dataset.t, 10) : null;
+      passos.push({ tk, alvo, ligado: !btn.disabled,
+        vencido: !!item?.classList.contains('vencido'), dica: btn.title });
+      if (alvo == null || tk >= alvo) break;
+      if (btn.disabled) break;
+      btn.click();
+      await new Promise((r) => setTimeout(r, 450));
+    }
+    return passos;
+  });
+  const fim = andar[andar.length - 1];
+  if (fim && fim.alvo != null) {
+    ok(fim.tk === fim.alvo,
+      `a cena para exatamente no Tick do golpe (parou em ${fim.tk}, agendado ${fim.alvo})`);
+    ok(!andar.some((x) => x.alvo != null && x.tk > x.alvo),
+      `e nunca passa por cima dele (${andar.map((x) => x.tk).join(' → ')})`);
+    ok(fim.vencido, 'o cartão da faixa acende como "resolva isto"');
+    // O "próximo" aceso que não faz nada é a pior das combinações: parece que a
+    // mesa travou. Ele desliga, e o título diz por quê.
+    ok(!fim.ligado, 'e o "próximo" desliga: enquanto o golpe cai, não é a vez de ninguém');
+    ok(/golpe caindo/i.test(fim.dica || ''), `com o motivo escrito ("${fim.dica}")`);
+  }
+
+  // ---- 7: o painel do tempo, que ganhou a chave e ficou o mais alto da mesa ----
+  //
+  // Ele é o caso em que "cabe na janela" deixou de ser de graça: com sistema,
+  // amostra, marcação, dados e agora a chave, o diálogo passava da tela e o
+  // rodapé de botões ficava abaixo da borda. Dava para ler tudo e não dava para
+  // salvar.
+  await p.evaluate(() => document.getElementById('gr-tempo').click());
+  await espera(700);
+  await vistoriarCaixa(p, '.tempo-dlg', 'o painel do tempo');
+  const chave = await p.evaluate(() => {
+    const c = document.getElementById('tp-adiado');
+    const d = document.getElementById('tp-adiado-d');
+    const r = { existe: !!c, marcado: !!c?.checked, ligada: d?.textContent?.trim() };
+    // A linha de estado tem de responder ao rádio do sistema: descobrir que a
+    // chave não faz nada DEPOIS de ligá-la seria tarde.
+    const acha = (v) => [...document.querySelectorAll('input[name="tp-sis"]')].find((i) => i.value === v);
+    const n = acha('normal'); n.checked = true; n.dispatchEvent(new Event('change', { bubbles: true }));
+    r.noNormal = d?.textContent?.trim();
+    const g = acha('pgr'); g.checked = true; g.dispatchEvent(new Event('change', { bubbles: true }));
+    c.checked = false; c.dispatchEvent(new Event('change', { bubbles: true }));
+    r.desligada = d?.textContent?.trim();
+    // E o rodapé de botões tem de estar ALCANÇÁVEL, que é o defeito de verdade
+    // por trás da altura: um painel que rola mas cujo "Salvar" some não salva.
+    const b = document.getElementById('tp-salvar')?.getBoundingClientRect();
+    r.salvarNaTela = !!b && b.bottom <= innerHeight + 2 && b.top >= -2;
+    document.getElementById('tp-cancelar').click();
+    return r;
+  });
+  await espera(400);
+  ok(chave.existe && chave.marcado, 'o painel do tempo tem a chave, marcada quando a mesa a ligou');
+  ok(/sem efeito no sistema normal/i.test(chave.noNormal || ''),
+    `e a linha de estado avisa que no sistema normal ela não faz nada ("${chave.noNormal}")`);
+  ok(/desligada/i.test(chave.desligada || ''), `e muda ao desmarcar ("${chave.desligada}")`);
+  ok(chave.salvarNaTela, 'o "Salvar" do painel continua alcançável, com o painel inteiro');
 
   ok(erros.length === 0, `nenhum erro de página (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
   await p.close();
