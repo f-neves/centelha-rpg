@@ -249,7 +249,10 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
     ok(atq.antes !== atq.depois, `atacar empurrou o relogio (t${atq.antes} -> t${atq.depois})`);
     ok(atq.fita, 'e a peca ficou marcada com o gesto no ar');
     const f = atq.folha || {};
-    ok(f.secoes === 3, `a folha da acao tem as tres faixas: acerto, ajuste e dano (${f.secoes})`);
+    // Quatro faixas desde 24/08: o Quase-Acerto entrou entre o acerto e o
+    // ajuste, porque ele se lê logo depois de saber quanto faltou.
+    ok(f.secoes === 4,
+      `a folha da acao tem as quatro faixas: acerto, Quase-Acerto, ajuste e dano (${f.secoes})`);
     ok(/d6|—/.test(f.pool || ''), `o bolo de dados de quem ataca vem escrito (${f.pool})`);
     ok(f.temMotivo, 'e o ajuste avulso pede o motivo, que vai para o registro');
     // A letra entre parenteses na linha de dano decide o modo: `1d6 +2 (C)`
@@ -684,6 +687,56 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
     ok(cheia.tiraNaGrade && cheia.palcoNaGrade,
       'a ordem de combate e o tabuleiro estao no mesmo alvo de tela cheia');
     ok(cheia.reservaNaGrade, 'e a rede de seguranca da tela cheia cobre a grade, e nao so o palco');
+  }
+
+  // ------------------------------------------- e o segundo alvo: so o mapa
+  //
+  // Sao dois botoes, e a diferenca entre eles e a ordem de combate. Aqui se
+  // ENTRA na tela cheia de verdade (o clique do Puppeteer vale como gesto do
+  // usuario, e o headless novo aceita a Fullscreen API), porque o que precisa
+  // ser provado e qual elemento o navegador projetou.
+  const doisAlvos = await (async () => {
+    const ler = () => p.evaluate(() => {
+      const fe = document.fullscreenElement;
+      const r = document.getElementById('gr-palco').getBoundingClientRect();
+      return { alvo: fe ? (fe.id || fe.className.split(' ')[0]) : null,
+        classe: document.body.className, palco: Math.round(r.height),
+        rot: [document.getElementById('gr-cheia').textContent,
+          document.getElementById('gr-cheia-mapa').textContent] };
+    });
+    const shiftF = async () => { await p.keyboard.down('Shift'); await p.keyboard.press('KeyF'); await p.keyboard.up('Shift'); };
+    try {
+      const fora = await ler();
+      await p.click('#gr-cheia'); await espera(900);
+      const grade = await ler();
+      // A troca de alvo e pela tecla, e nao pelo botao: em tela cheia a barra da
+      // arena esta escondida (o modo TV entra junto), entao o botao nao esta la
+      // para ser clicado. E de proposito: quem projetou nao quer a barra.
+      await shiftF(); await espera(900);
+      const mapa = await ler();
+      await p.keyboard.press('KeyF'); await espera(900);
+      const volta = await ler();
+      await p.evaluate(() => document.getElementById('gr-sair-cheia').click());
+      await espera(700);
+      return { fora, grade, mapa, volta, saiu: await ler() };
+    } catch (e) {
+      try { await p.evaluate(() => document.exitFullscreen?.()); } catch {}
+      return null;
+    }
+  })();
+  if (doisAlvos && doisAlvos.grade.alvo) {
+    const { fora, grade, mapa, volta, saiu } = doisAlvos;
+    ok(grade.alvo === 'gr-grade', `o ⛶ projeta a GRADE, com a ordem de combate junto (${grade.alvo})`);
+    ok(mapa.alvo === 'gr-palco', `e o ▣ projeta so o MAPA (${mapa.alvo})`);
+    ok(mapa.palco > grade.palco,
+      `sem a tira, o tabuleiro fica com a altura dela (${grade.palco} -> ${mapa.palco}px)`);
+    ok(/cheia-mapa/.test(mapa.classe) && !/cheia-mapa/.test(grade.classe),
+      'e a marca no corpo diz qual das duas redes de seguranca vale');
+    ok(mapa.rot[1] === '⤡' && mapa.rot[0] === '⛶',
+      'so o botao que esta de pe vira "sair", e o outro continua oferecendo o alcance dele');
+    ok(volta.alvo === 'gr-grade', 'o F devolve a ordem de combate sem sair e entrar de novo');
+    ok(!saiu.alvo && !/tela-cheia|cheia-mapa/.test(saiu.classe) && saiu.palco === fora.palco,
+      'e o X do canto sai, de qualquer um dos dois');
   }
 
   // --------------------------------------------------------- o modo TV
@@ -1938,6 +1991,120 @@ async function cenaGolpeAdiado(br, url) {
   await p.close();
 }
 
+
+/**
+ * O QUASE-ACERTO NA FOLHA DA AÇÃO.
+ *
+ * O capítulo XII existe desde sempre e o Grid nunca o calculou: a mesa fazia a
+ * conta de cabeça, ou simplesmente não usava a válvula que impede duelo de
+ * guarda alta de virar uma fila de zeros. Esta cena persegue as quatro coisas
+ * que a implementação precisa acertar:
+ *
+ *   1. os dois números (Margem e raspão) chegam PRONTOS e continuam editáveis;
+ *   2. o veredito tem TRÊS estados, e não dois;
+ *   3. mexer na Margem à mão muda o veredito na hora, porque é o mestre quem
+ *      conserta o cavaleiro de placa que o bestiário guardou sem armadura;
+ *   4. o botão do raspão aplica DANO FIXO e o registro diz que ignorou a
+ *      Absorção.
+ */
+async function cenaQuaseAcerto(br, url) {
+  console.log('\n· o Quase-Acerto: errar por pouco ainda raspa');
+  const p = await br.newPage();
+  await p.setViewport({ width: 1400, height: 950 });
+  const erros = [];
+  p.on('pageerror', (e) => erros.push(e.message));
+  await p.goto(`${url}/mesa/grid?id=${MESA}&bench=12&cols=24&rows=16&nevoa=0`,
+    { waitUntil: 'networkidle0', timeout: 60000 });
+  await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
+  await espera(600);
+
+  const v = await p.evaluate(async () => {
+    const toks = [...document.querySelectorAll('#gr-tokens .gr-token')];
+    // `c002` leva espada longa na bancada: dano médio 3,5, arma média, +2 de
+    // Margem e 4 de raspão. Com o punho (leve) os números seriam outros, e o
+    // teste mediria a arma errada sem dizer.
+    const a = toks.find((t) => t.dataset.c === 'c002');
+    const b = toks.find((t) => t !== a && t.dataset.c !== 'c001');
+    if (!a || !b) return null;
+    const ra = a.getBoundingClientRect(), rb = b.getBoundingClientRect();
+    const em = (el, t, x, y) => el.dispatchEvent(new PointerEvent(t, {
+      bubbles: true, clientX: x, clientY: y, pointerId: 1 }));
+    em(a, 'pointerdown', ra.left + ra.width / 2, ra.top + ra.height / 2);
+    em(document, 'pointermove', rb.left + rb.width / 2, rb.top + rb.height / 2);
+    em(document, 'pointerup', rb.left + rb.width / 2, rb.top + rb.height / 2);
+    await new Promise((x) => setTimeout(x, 1300));
+    if (!document.getElementById('alvo-dlg')?.open) return { abriu: false };
+
+    const margem = document.getElementById('al-qa-margem');
+    const dano = document.getElementById('al-qa-dano');
+    const total = document.getElementById('al-total');
+    const vered = document.getElementById('al-vered');
+    const botao = document.getElementById('al-qa');
+    // A Defesa que a folha calculou, para o teste mirar os três casos sem
+    // adivinhar número: ele lê o que está na tela, como a mesa leria.
+    const def = parseInt((document.querySelector('#al-defesas .d-v')?.textContent || '0').trim(), 10);
+    const r = {
+      abriu: true, def,
+      margem: margem?.value, dano: dano?.value,
+      conta: (document.getElementById('al-qa-conta')?.textContent || '').replace(/\s+/g, ' ').trim(),
+      temBotao: !!botao && !botao.hidden,
+    };
+    const digitar = (v) => { total.value = String(v); total.dispatchEvent(new Event('input', { bubbles: true })); };
+    const m = parseInt(margem.value, 10);
+    // Acerto: passar da Defesa.
+    digitar(def + 1); r.acerto = vered.textContent.trim();
+    r.acertoPrimario = document.getElementById('al-sim').classList.contains('primary');
+    // Raspão: errar por exatamente a Margem. "Errou por" é (Defesa + 1) − total,
+    // então o total que erra por `m` é `def + 1 − m`.
+    digitar(def + 1 - m); r.raspao = vered.textContent.trim();
+    r.raspaoPrimario = botao.classList.contains('primary');
+    // Erro seco: um a mais que a Margem.
+    digitar(def - m); r.erro = vered.textContent.trim();
+    r.erroPrimario = document.getElementById('al-nao').classList.contains('primary');
+    // E o mestre mandando: alargar a Margem à mão volta o mesmo total a raspar.
+    margem.value = String(m + 1); margem.dispatchEvent(new Event('input', { bubbles: true }));
+    r.depoisDaMao = vered.textContent.trim();
+    return r;
+  });
+
+  if (v && v.abriu) {
+    ok(/^\d+$/.test(v.margem || '') && Number(v.margem) > 0,
+      `a Margem chega pronta na folha (${v.margem})`);
+    ok(/^\d+$/.test(v.dano || ''), `e o dano do raspão também (${v.dano})`);
+    ok(/arma \w+.*margem/.test(v.conta), `com a conta escrita de onde ela saiu (${v.conta})`);
+    ok(v.temBotao, 'e o botão "Raspou" está na caixa');
+    ok(/acerta/.test(v.acerto) && v.acertoPrimario,
+      `passar da Defesa acerta, e "Acertou" vira o principal (${v.acerto})`);
+    ok(/raspa/.test(v.raspao) && v.raspaoPrimario,
+      `errar por exatamente a Margem raspa, e "Raspou" vira o principal (${v.raspao})`);
+    ok(/erra por/.test(v.erro) && !/raspa/.test(v.erro) && v.erroPrimario,
+      `um a mais que a Margem é erro seco (${v.erro})`);
+    ok(/raspa/.test(v.depoisDaMao),
+      `e alargar a Margem à mão volta o mesmo total a raspar (${v.depoisDaMao})`);
+  }
+
+  // ---- o raspão aplicado: dano FIXO, sem passar pela Absorção ----
+  const bateu = await p.evaluate(async () => {
+    const dano = parseInt(document.getElementById('al-qa-dano').value, 10);
+    // O campo do dano normal fica com outro número de propósito: se o botão do
+    // raspão usasse ELE, o teste não veria a diferença.
+    const dn = document.getElementById('al-dn');
+    dn.value = '99'; dn.dispatchEvent(new Event('input', { bubbles: true }));
+    document.getElementById('al-qa').click();
+    await new Promise((r) => setTimeout(r, 1600));
+    const linhas = [...document.querySelectorAll('#gr-log .lg')].map((l) => l.textContent);
+    return { dano, linha: linhas.find((l) => /raspou/i.test(l)) || linhas[0] || '' };
+  });
+  ok(/raspou/i.test(bateu.linha), `o registro diz que raspou (${(bateu.linha || '').slice(0, 70)})`);
+  ok(new RegExp(`: ${bateu.dano} de dano`).test(bateu.linha),
+    `e o dano é o FIXO do Quase-Acerto (${bateu.dano}), e não o que estava no campo do dano cheio`);
+  ok(/ignora Absor/i.test(bateu.linha), 'com a nota de que ignorou a Absorção');
+  ok(!/abs\]/.test(bateu.linha), 'e sem desconto de Absorção na conta');
+
+  ok(erros.length === 0, `nenhum erro de página (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
+  await p.close();
+}
+
 const dev = await subirDev({ config: 'astro.bancada.mjs' });
 const br = await puppeteer.launch({ executablePath: NAV, headless: 'new', args: ['--no-sandbox'] });
 try {
@@ -1949,6 +2116,7 @@ try {
   await cenaCelular(br, dev.url);
   await cenaCelular(br, dev.url, { papel: 'jogador' });
   await cenaGolpeAdiado(br, dev.url);
+  await cenaQuaseAcerto(br, dev.url);
 } finally {
   await br.close();
   await dev.parar();
@@ -1962,4 +2130,4 @@ if (falhas.length) {
 console.log('\n✓ Grid OK · desenho, movimento, registro, névoa e card, nas duas cenas, dentro dos tetos'
   + ' de repintura, a mesma mesa vista pelo jogador, a tira da ordem no rastreador,'
   + ' a caixa de fundo girando e excluindo arte, o telefone nas duas cadeiras,'
-  + ' e o golpe adiado da declaração à queda');
+  + ' o golpe adiado da declaração à queda, e o Quase-Acerto na folha');

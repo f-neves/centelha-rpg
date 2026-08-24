@@ -982,10 +982,13 @@
     "margem": "Bônus QA da arma + Bônus QA da armadura do alvo",
     "dano": "Dano QA da arma − Redução QA da armadura do alvo (mínimo 0)",
     "ignoraSoak": true,
-    "pesoPorDado": {
-      "1": "leve",
-      "2": "media",
-      "3": "pesada"
+    "errouPor": "(Defesa + 1) − total. É quanto faltou para acertar, e não a diferença crua: a regra do acerto é `total > Defesa` e empate não passa, então quem tira exatamente a Defesa errou por 1.",
+    "classePorDanoMedio": {
+      "nota": "A classe de QA sai do DANO MÉDIO da arma: dado × 3,5 + danoBonus. Até 2 é leve, de 2,5 a 5,5 é média, 6 ou mais é pesada. Substituiu, em 24/08/2026, a regra antiga do número de dados (1d6 leve, 2d6 média, 3d6 pesada): o catálogo mudou por baixo dela, 24 das 26 armas passaram a ter um dado só e nenhuma tem três, e ao pé da letra a espada longa virava leve e a categoria pesada deixava de existir. O dano médio é a mesma ideia (quanto a arma pesa no golpe) medida por um número que ainda varia.",
+      "formula": "dado × 3,5 + danoBonus",
+      "leveAte": 2,
+      "mediaAte": 5.5,
+      "semCatalogo": "Arma fora do catálogo (criatura, item do mestre): o dano médio sai da própria expressão de dano, contando os dados e o fixo. Ali a expressão É a arma."
     },
     "porClasseArma": {
       "leve": {

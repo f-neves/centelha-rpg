@@ -75,7 +75,15 @@ const SETAS = [
             bordas do navegador, a outra tira os controles. */}
         <button class="btn-fant" id="gr-tv" aria-pressed="false"
           title="Modo TV: só o tabuleiro e a ordem de combate (T)">▭</button>
-        <button class="btn-fant" id="gr-cheia" title="Tela cheia (F)">⛶</button>
+        <button class="btn-fant" id="gr-cheia" title="Tela cheia: tabuleiro e ordem de combate (F)">⛶</button>
+        {/* E a tela cheia SÓ DO MAPA. A de cima leva a ordem de combate junto,
+            que é o par que a mesa lê enquanto joga. Esta é para quando o mapa
+            é a coisa: uma cena de perseguição, uma planta de masmorra que se
+            quer olhar de perto, um telão onde a tira rouba uma faixa de altura
+            que o tabuleiro estava usando. Vizinha da outra porque é a mesma
+            intenção com um alcance a menos. */}
+        <button class="btn-fant" id="gr-cheia-mapa"
+          title="Tela cheia só do mapa, sem a ordem de combate (Shift+F)">▣</button>
         <span class="gr-vivo" id="gr-vivo" hidden><span class="pt"></span><span id="gr-vivo-n"></span></span>
         <button class="btn mini" id="gr-recarregar" title="Buscar as posições mais recentes">↻</button>
       </div>
@@ -338,6 +346,22 @@ const SETAS = [
         <input type="number" id="al-total" placeholder="total" title="O que saiu nos dados" />
         <span class="al-vered" id="al-vered"></span>
       </div>
+      {/* O QUASE-ACERTO (capítulo XII): errar por pouco ainda raspa. A regra
+          existe escrita desde sempre e o Grid nunca a calculou, então a mesa
+          fazia a conta de cabeça ou simplesmente não usava a válvula que impede
+          duelo de guarda alta de virar uma fila de zeros.
+
+          Os dois números vêm prontos e continuam EDITÁVEIS, que é o contrato de
+          toda esta caixa. E é por eles que o cavaleiro de placa construído como
+          criatura se conserta: o bestiário não guarda armadura vestida. */}
+      <div class="al-sec">
+        <span class="al-sec-h" title="Quase-Acerto, o capítulo XII">Raspão</span>
+        <span class="al-rot">errar por até</span>
+        <input type="number" id="al-qa-margem" min="0" title="Margem: bônus da arma + bônus da armadura do alvo" />
+        <span class="al-rot">raspa por</span>
+        <input type="number" id="al-qa-dano" min="0" title="Dano fixo do raspão, já com a Redução da armadura. Ignora a Absorção." />
+        <span class="al-qa-conta" id="al-qa-conta"></span>
+      </div>
       {/* O AJUSTE AVULSO é a válvula do improviso: quando a mesa inventa uma
           regra no meio da luta ("estava em cima do barril"), ela entra aqui e
           vai para o registro com o motivo junto. Sem o motivo, o registro
@@ -361,6 +385,7 @@ const SETAS = [
       <div id="al-dn-conta" class="al-conta"></div>
       <div class="dlg-btns">
         <button type="button" class="btn" id="al-nao">Errou</button>
+        <button type="button" class="btn" id="al-qa">Raspou · aplicar</button>
         <button type="button" class="btn primary" id="al-sim">Acertou · aplicar</button>
       </div>
     </form>
@@ -814,9 +839,20 @@ const SETAS = [
     background: var(--bg); border-radius: 0; }
   /* A rede de segurança: se o navegador recusar (uma moldura sem permissão,
      por exemplo), a classe entra assim mesmo e a grade toma a janela. */
-  body.tela-cheia:not(:has(.gr-grade:fullscreen)) .gr-grade {
+  body.tela-cheia:not(.cheia-mapa):not(:has(.gr-grade:fullscreen)) .gr-grade {
     position: fixed; inset: 0; z-index: 100; padding: .4rem;
     border-radius: 0; background: var(--bg); }
+
+  /* ---- e a tela cheia SÓ DO MAPA ----
+     O segundo alvo. A borda e o canto arredondado somem: eles existem para
+     separar o tabuleiro do resto da página, e em tela cheia não há resto. O
+     `max-height` da faixa estreita sai junto, senão a regra de 1100px pararia
+     o mapa em 70% do monitor. */
+  #gr-palco:fullscreen { height: 100%; width: 100%; max-height: none;
+    border: none; border-radius: 0; background: var(--bg); }
+  body.tela-cheia.cheia-mapa:not(:has(#gr-palco:fullscreen)) #gr-palco {
+    position: fixed; inset: 0; z-index: 100; max-height: none;
+    border: none; border-radius: 0; background: var(--bg); }
   /* Em tela cheia a saída é o X do canto, que já existe: dois botões de sair
      no mesmo canto seriam um a mais. */
   body.tela-cheia .gr-tv-sai { display: none; }
@@ -1271,6 +1307,17 @@ const SETAS = [
   .al-vered { flex: 1 1 100%; font-size: var(--fs-micro); }
   .al-vered .ok { color: var(--accent-texto); font-weight: 700; }
   .al-vered .ruim { color: #cf3327; }
+  /* O RASPÃO é a terceira cor, e ela é o meio-termo de propósito: dourado, nem
+     o verde do acerto nem o vermelho do erro. Errar por pouco não é errar de
+     tudo, e a linha tem de dizer isso sem que a mesa leia a frase. */
+  .al-vered .qa { color: var(--gold); }
+  .al-vered .qa b { font-weight: 700; }
+  /* A conta do Quase-Acerto embaixo dos dois campos: de onde saíram os números,
+     para a mesa saber o que corrigir quando eles estiverem errados. */
+  .al-qa-conta { flex: 1 1 100%; font-size: calc(var(--fs-micro) * .92);
+    color: var(--ink-soft); }
+  .al-qa-conta b { color: var(--accent-texto); font-weight: 600; }
+  #al-qa { border-color: color-mix(in srgb, var(--gold) 45%, var(--rule)); }
 
   .gr-token.montando .av { outline: 2px dashed color-mix(in srgb, var(--gold) 70%, transparent);
     outline-offset: -2px; }
@@ -1895,6 +1942,7 @@ const SETAS = [
     faixaDeDistancia, alcancaNoCorpoACorpo, HEX_CORPO_A_CORPO, HEX_HASTE,
   } from '../../lib/alcance';
   import { reconciliar, esquecerCaixa } from '../../lib/reconciliar';
+  import { errouPor, saidaDoAtaque } from '../../lib/quase-acerto';
   import {
     abrirEscolhaDoTempo, resumoDoTempo, fitaHTML, seloFaseHTML, abrirAbortar, podeAbortar,
     itensDaFila, faixaDeGolpesHTML, golpesEmCena,
@@ -5169,11 +5217,46 @@ const SETAS = [
    */
   function ligarTelaCheia() {
     const btn = el('gr-cheia');
+    const btnMapa = el('gr-cheia-mapa');
+    /**
+     * DOIS ALVOS, e a diferença entre eles é a ordem de combate.
+     *
+     * A grade é o par que a mesa lê enquanto joga: tabuleiro mais relógio. O
+     * palco sozinho é para quando o mapa é a coisa, e a tira, que é uma faixa
+     * de mais de 110px de altura, está tomando o lugar dele.
+     *
+     * Qual dos dois está de pé se pergunta ao navegador (`fullscreenElement`) e
+     * não a uma variável nossa: o Esc, o F11 e o botão do próprio navegador
+     * saem da tela cheia sem passar por aqui, e uma variável guardada à parte
+     * ficaria mentindo depois de qualquer um deles.
+     */
+    const alvoDe = (qual: 'grade' | 'mapa') => (qual === 'mapa'
+      ? el('gr-palco')
+      : document.querySelector('.gr-grade') as HTMLElement);
+    const soMapa = () => {
+      const fe = document.fullscreenElement;
+      return !!fe && fe === el('gr-palco');
+    };
     const pinta = () => {
       const cheia = !!document.fullscreenElement;
-      btn.textContent = cheia ? '⤡' : '⛶';
-      btn.title = cheia ? 'Sair da tela cheia (Esc)' : 'Tela cheia (F)';
+      const mapa = soMapa();
+      btn.textContent = cheia && !mapa ? '⤡' : '⛶';
+      btn.title = cheia && !mapa
+        ? 'Sair da tela cheia (Esc)'
+        : 'Tela cheia: tabuleiro e ordem de combate (F)';
+      btnMapa.textContent = mapa ? '⤡' : '▣';
+      btnMapa.title = mapa
+        ? 'Sair da tela cheia (Esc)'
+        : 'Tela cheia só do mapa, sem a ordem de combate (Shift+F)';
       document.body.classList.toggle('tela-cheia', cheia);
+      // Qual das duas redes de segurança vale quando o navegador recusa: sem
+      // esta marca, as duas regras casariam ao mesmo tempo e a grade inteira
+      // tomaria a janela mesmo no pedido de "só o mapa". No caminho da recusa
+      // quem acende a marca é o próprio `alterna`, porque lá não há
+      // `fullscreenElement` nenhum para consultar.
+      if (cheia || !document.body.classList.contains('tela-cheia')) {
+        document.body.classList.toggle('cheia-mapa', mapa);
+      }
       // Quando quem foi para a tela cheia é o DOCUMENTO (o segundo degrau da
       // escada abaixo), o palco continua sendo um elemento comum da página: a
       // regra de reserva do CSS é que o estica, e o menu não pode se mudar para
@@ -5199,20 +5282,32 @@ const SETAS = [
     /**
      * Uma escada de três degraus, e não uma tentativa só.
      *
-     * 1. O PALCO vai para a tela cheia. É o que um player de vídeo faz, e o
+     * 1. O ALVO vai para a tela cheia. É o que um player de vídeo faz, e o
      *    navegador projeta o elemento no monitor inteiro por conta própria.
      * 2. Se o navegador recusar o elemento, tenta o DOCUMENTO. Alguns contextos
      *    liberam um e não o outro, e o resultado na tela é o mesmo: o monitor
-     *    inteiro, com o palco esticado pela regra de reserva do CSS.
-     * 3. Se recusar os dois, o palco toma a janela e a página diz o que houve.
+     *    inteiro, com o alvo esticado pela regra de reserva do CSS.
+     * 3. Se recusar os dois, o alvo toma a janela e a página diz o que houve.
      *
      * O degrau 2 é novo: antes, uma recusa caía direto no 3, e a diferença
      * entre "o navegador não deixou" e "tomou só a janela" ficava por conta de
      * quem estava olhando.
      */
-    const alterna = async () => {
-      if (document.fullscreenElement) { try { await document.exitFullscreen(); } catch {} return; }
-      const alvo = document.querySelector('.gr-grade') as HTMLElement;
+    const alterna = async (qual: 'grade' | 'mapa' = 'grade') => {
+      if (document.fullscreenElement) {
+        const jaEra = soMapa() === (qual === 'mapa');
+        try { await document.exitFullscreen(); } catch {}
+        // Clicar no OUTRO botão troca de alvo em vez de só sair: pedir a grade
+        // estando no mapa é dizer "quero a ordem de combate de volta", e obrigar
+        // a sair e entrar de novo seria dois cliques para uma intenção só.
+        // A permissão do gesto sobrevive ao `exitFullscreen`; se algum navegador
+        // recusar, o `catch` deixa a página fora da tela cheia, que é o estado
+        // que o clique também podia significar.
+        if (jaEra) return;
+        try { await alvoDe(qual).requestFullscreen({ navigationUI: 'hide' } as any); } catch {}
+        return;
+      }
+      const alvo = alvoDe(qual);
       let erro: any = null;
       try {
         await alvo.requestFullscreen({ navigationUI: 'hide' } as any);
@@ -5227,12 +5322,20 @@ const SETAS = [
       // `pinta()` não serve aqui: ele lê `document.fullscreenElement`, que é
       // nulo, e desfaria a classe que acabou de entrar.
       document.body.classList.add('tela-cheia');
-      btn.textContent = '⤡';
+      document.body.classList.toggle('cheia-mapa', qual === 'mapa');
+      (qual === 'mapa' ? btnMapa : btn).textContent = '⤡';
       if (ARENA) setTimeout(() => caber(), 150);
       uiErro('O navegador recusou a tela cheia do monitor, então o tabuleiro tomou só a janela. '
         + 'Isso costuma acontecer quando a página está aberta dentro de outra (um painel de '
         + 'pré-visualização, por exemplo): abrindo em uma aba normal do navegador, a tela cheia funciona.'
         + (erro?.name ? ` (${erro.name})` : ''));
+    };
+    /** O X do canto e o Esc saem, e não trocam: sair é sair, de qualquer alvo. */
+    const sair = async () => {
+      if (document.fullscreenElement) { try { await document.exitFullscreen(); } catch {} return; }
+      document.body.classList.remove('tela-cheia', 'cheia-mapa');
+      btn.textContent = '⛶'; btnMapa.textContent = '▣';
+      if (ARENA) setTimeout(() => caber(), 150);
     };
 
     /**
@@ -5259,17 +5362,20 @@ const SETAS = [
         setTimeout(() => av.remove(), 7000);
       }, 400);
     }
-    btn.onclick = alterna;
-    (el('gr-sair-cheia') as HTMLElement).onclick = alterna;
+    btn.onclick = () => alterna('grade');
+    btnMapa.onclick = () => alterna('mapa');
+    (el('gr-sair-cheia') as HTMLElement).onclick = sair;
     document.addEventListener('fullscreenchange', pinta);
     // "F" só quando não se está digitando: senão escrever "Ferido" numa nota
     // jogaria a página em tela cheia no meio da palavra.
+    // Com Shift vai só o mapa: o mesmo gesto com um alcance a menos merece a
+    // mesma tecla com um modificador, e não uma segunda letra para decorar.
     document.addEventListener('keydown', (ev) => {
       if (ev.key !== 'f' && ev.key !== 'F') return;
       const a = document.activeElement as HTMLElement | null;
       if (a && (a.tagName === 'INPUT' || a.tagName === 'TEXTAREA' || a.tagName === 'SELECT' || a.isContentEditable)) return;
       if (document.querySelector('dialog[open]')) return;
-      ev.preventDefault(); alterna();
+      ev.preventDefault(); alterna(ev.shiftKey ? 'mapa' : 'grade');
     });
   }
 
@@ -5877,7 +5983,8 @@ const SETAS = [
     // está livre para ser olhado, e o número no anel do alvo cai no instante em
     // que a ponta encosta, e não meio segundo antes dela sair.
     const voou = await atirar();
-    await aplicarDano(atacante, alvo, res.dano, res.tipo, voou ? 0 : undefined, dados + porque);
+    await aplicarDano(atacante, alvo, res.dano, res.tipo, voou ? 0 : undefined, dados + porque,
+      { raspao: !!res.raspou });
   }
 
   /** O Preparo que a arma desta peça cobra, pela régua da mesa. */
@@ -6049,7 +6156,8 @@ const SETAS = [
       return;
     }
     const voou = await atirar();
-    await aplicarDano(atacante, alvo, res.dano, res.tipo, voou ? 0 : undefined, dados + porque);
+    await aplicarDano(atacante, alvo, res.dano, res.tipo, voou ? 0 : undefined, dados + porque,
+      { raspao: !!res.raspou });
   }
 
   /**
@@ -6345,6 +6453,8 @@ const SETAS = [
   interface Folha {
     acertou: boolean; an: any; manobra: string;
     dano: number; tipo: string; ajuste: number; motivo: string; rolado: string;
+    /** O golpe raspou: dano fixo, sem dados e SEM ABSORÇÃO (capítulo XII). */
+    raspou?: boolean;
   }
   /**
    * `opts` só existe para o GOLPE ADIADO, e é o que separa a folha que abre na
@@ -6479,6 +6589,37 @@ const SETAS = [
     // esta linha justamente nas vezes em que ela tem algo a dizer.
     cxAviso.classList.toggle('al-aviso-conta', !!fx && !fx.alem && fx.faixa > 0);
 
+    // ---- O QUASE-ACERTO: quanto de erro ainda raspa, e quanto o raspão dói ----
+    //
+    // A Margem é do ENCONTRO, e não de um dos dois: sai do bônus da arma de quem
+    // ataca mais o bônus da armadura de quem apanha. A contramão da armadura é
+    // do capítulo XII e é de propósito: alvo encouraçado é maior e mais lento,
+    // então é raspado com mais frequência, e em troca a Redução come o arranhão.
+    const qaMargemInp = el('al-qa-margem') as HTMLInputElement;
+    const qaDanoInp = el('al-qa-dano') as HTMLInputElement;
+    const qaA = ra?.qa, qaD = r?.qa;
+    const margemBase = (qaA?.armaBonus || 0) + (qaD?.armaduraBonus || 0);
+    const raspaoBase = Math.max(0, (qaA?.armaDano || 0) - (qaD?.armaduraReducao || 0));
+    qaMargemInp.value = String(margemBase);
+    qaDanoInp.value = String(raspaoBase);
+    const margemQA = () => Math.max(0, parseInt(qaMargemInp.value || '0', 10) || 0);
+    const danoQA = () => Math.max(0, parseInt(qaDanoInp.value || '0', 10) || 0);
+    // A conta escrita embaixo existe pelo mesmo motivo da conta da Defesa: sem
+    // ela o número é um oráculo, e a mesa não sabe o que corrigir quando o
+    // inimigo é um cavaleiro de placa que o bestiário guardou sem armadura.
+    // As classes moram nos dados sem acento (são ids), e a tela é para ler.
+    const CLASSE_QA: Record<string, string> = {
+      nenhuma: 'nenhuma', leve: 'leve', media: 'média', pesada: 'pesada',
+    };
+    const emPt = (c?: string | null) => CLASSE_QA[c || ''] || c || '';
+    (el('al-qa-conta') as HTMLElement).innerHTML = qaA?.armaClasse
+      ? `arma ${esc(emPt(qaA.armaClasse))}: margem <b>+${qaA.armaBonus}</b>, raspão <b>${qaA.armaDano}</b>`
+        + (qaD?.armaduraClasses?.length
+          ? ` · armadura ${esc(qaD.armaduraClasses.map(emPt).join(' + '))}:`
+            + ` margem <b>+${qaD.armaduraBonus}</b>, raspão <b>−${qaD.armaduraReducao}</b>`
+          : ' · alvo sem armadura vestida')
+      : '<span class="muted">sem arma no catálogo: os dois números são da mesa</span>';
+
     // ---- o acerto, o ajuste e o dano ----
     const totalInp = el('al-total') as HTMLInputElement;
     const modInp = el('al-mod') as HTMLInputElement;
@@ -6521,21 +6662,33 @@ const SETAS = [
       const m = parseInt(modInp.value || '0', 10) || 0;
       const cx = el('al-vered') as HTMLElement;
       const sim = el('al-sim') as HTMLElement, nao = el('al-nao') as HTMLElement;
+      const qa = el('al-qa') as HTMLElement;
       if (!Number.isFinite(t) || def == null) {
         cx.innerHTML = '';
-        sim.classList.add('primary'); nao.classList.remove('primary');
+        sim.classList.add('primary');
+        nao.classList.remove('primary'); qa.classList.remove('primary');
+        qa.hidden = margemQA() <= 0 && danoQA() <= 0;
         return;
       }
       const soma = t + m;
-      // A regra é `total > Defesa`, e não `>=`: empate não passa.
-      const ok = soma > def;
-      cx.innerHTML = ok
+      // Três saídas, e não duas: entre acertar e errar existe o RASPÃO. A régua
+      // mora no `quase-acerto.ts`, e não aqui, porque o motor da mesa e a
+      // bancada precisam concordar sobre ela.
+      const falta = errouPor(soma, def);
+      const qual = saidaDoAtaque(soma, def, margemQA());
+      cx.innerHTML = qual === 'acerto'
         ? `<span class="ok">acerta (${soma} &gt; ${def})</span>`
-        : `<span class="ruim">erra por ${def - soma + 1}</span>`;
+        : qual === 'raspao'
+          ? `<span class="qa">erra por ${falta}: <b>raspa</b> (margem ${margemQA()})</span>`
+          : `<span class="ruim">erra por ${falta}${margemQA() ? `, além da margem ${margemQA()}` : ''}</span>`;
       // O botão que a conta indica vira o principal: com a rolagem no site, o
       // caminho comum passa a ser um clique só, e ele já está debaixo do dedo.
-      sim.classList.toggle('primary', ok);
-      nao.classList.toggle('primary', !ok);
+      sim.classList.toggle('primary', qual === 'acerto');
+      qa.classList.toggle('primary', qual === 'raspao');
+      nao.classList.toggle('primary', qual === 'erro');
+      // E o botão do raspão some quando não há margem nenhuma: um botão que
+      // aplica zero de dano fixo é ruído na hora de decidir.
+      qa.hidden = margemQA() <= 0 && danoQA() <= 0;
     };
     const pintarDano = () => {
       const bruto = Math.max(0, parseInt(dnInp.value || '0', 10) || 0);
@@ -6596,6 +6749,7 @@ const SETAS = [
     };
     manSel.onchange = pintarTempo; golInp.oninput = pintarTempo;
     totalInp.oninput = pintarVeredito; modInp.oninput = pintarVeredito;
+    qaMargemInp.oninput = pintarVeredito; qaDanoInp.oninput = pintarVeredito;
     dnInp.oninput = pintarDano; dnTipo.onchange = pintarDano;
     (el('al-rolar') as HTMLElement).onclick = rolarAcerto;
     (el('al-dn-rolar') as HTMLElement).onclick = rolarDano;
@@ -6606,19 +6760,23 @@ const SETAS = [
 
     return new Promise((resolve) => {
       let respondeu = false;
-      const fim = (v: boolean) => {
+      // `raspou` é a terceira saída, e ela entra como um ACERTO de dano fixo:
+      // o gesto conectou, só que de raspão. Por isso `acertou: true` com o dano
+      // trocado pelo do Quase-Acerto, e a Absorção desligada mais adiante.
+      const fim = (v: boolean, raspou = false) => {
         respondeu = true; dlg.close();
         const a = anat();
         resolve({
           acertou: v, an: a, manobra: a.golpes > 1 ? manSel.value : 'simples',
-          dano: Math.max(0, parseInt(dnInp.value || '0', 10) || 0),
+          dano: raspou ? danoQA() : Math.max(0, parseInt(dnInp.value || '0', 10) || 0),
           tipo: dnTipo.value,
           ajuste: parseInt(modInp.value || '0', 10) || 0,
           motivo: motivoInp.value.trim(),
-          rolado,
+          rolado, raspou,
         });
       };
       (el('al-sim') as HTMLElement).onclick = () => fim(true);
+      (el('al-qa') as HTMLElement).onclick = () => fim(true, true);
       (el('al-nao') as HTMLElement).onclick = () => fim(false);
       // Fechar no Escape é DESISTIR, e não "errou": desistir não gasta o Tick de
       // ninguém. Por isso o null, que quem chamou distingue do erro.
@@ -6679,10 +6837,14 @@ const SETAS = [
    */
   async function aplicarDano(
     atacante: any, alvo: any, bruto: number, tipo: string, esperaMarca?: number, nota = '',
+    opts: { raspao?: boolean } = {},
   ) {
     // Pelo lado do jogador a Absorção não existe (ver `folhaDaAcao`): o dano vai
     // inteiro, o registro diz que foi inteiro, e o mestre corrige se for o caso.
-    const s = MESTRE ? soakDe(alvo, tipo) : 0;
+    // E o RASPÃO também passa direto, mas por outro motivo: ele já é o que
+    // sobrou de um golpe que quase não conectou, e a Redução da armadura já foi
+    // descontada dele lá atrás (capítulo XII).
+    const s = MESTRE && !opts.raspao ? soakDe(alvo, tipo) : 0;
     const liquido = Math.max(0, bruto - s);
     const r = await baixarVida(alvo, liquido);
     if (r.erro) return uiErro('Erro ao aplicar o dano: ' + r.erro);
@@ -6694,8 +6856,11 @@ const SETAS = [
     // repintura vinda de outro lugar.
     atualizarAnel(alvo); pintarLista(); pintarIniciativa();
     avisarAgora('combatentes');
-    await logar(alvo, `${atacante.nome} acertou ${alvo.nome}: ${liquido} de dano (${TIPO_LBL[tipo]})`
-      + (s > 0 ? ` [${bruto} − ${s} abs]` : '') + (MESTRE ? '' : ' [sem Absorção]') + nota + r.estado,
+    await logar(alvo, `${atacante.nome} ${opts.raspao ? 'raspou' : 'acertou'} ${alvo.nome}: `
+      + `${liquido} de dano (${TIPO_LBL[tipo]})`
+      + (s > 0 ? ` [${bruto} − ${s} abs]` : '')
+      + (opts.raspao ? ' [Quase-Acerto: fixo, ignora Absorção]' : MESTRE ? '' : ' [sem Absorção]')
+      + nota + r.estado,
       r.inverso);
   }
 

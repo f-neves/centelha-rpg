@@ -10,6 +10,7 @@ import {
 } from './calc';
 import { armadurasDe } from './equip';
 import { resumoCombatePC } from './combate-resumo';
+import { qaDaPeca, type QACombate } from './quase-acerto';
 
 export interface Passivo { id: string; nome: string; dados: number; bonus: number; media: number; str: string }
 
@@ -27,6 +28,8 @@ export interface ResumoFicha {
   passivos: Passivo[];
   tecnicas: string[]; artes: { id: string; nivel: number }[];
   armaduras: string[];
+  /** As duas metades do Quase-Acerto: a da arma e a do couro. Ver `QACombate`. */
+  qa: QACombate;
 }
 
 const media = (dados: number, bonus: number) => Math.round(dados * 3.5 + bonus);
@@ -95,6 +98,11 @@ export function resumoFicha(S: any): ResumoFicha {
     tecnicas: Object.keys(S?.tech || {}).filter((k) => S.tech[k]),
     artes: Object.entries(S?.arte || {}).filter(([, v]) => (v as number) > 0).map(([id, nivel]) => ({ id, nivel: nivel as number })),
     armaduras: (S?.equip?.armaduras || []).filter((p: any) => p?.vestida !== false).map((p: any) => p?.nome || p?.base || ''),
+    // O QUASE-ACERTO, com as duas metades. A armadura sai de `armadurasDe`, que
+    // devolve as peças RESOLVIDAS (com a classe), e não os nomes: é a classe que
+    // manda na Margem e na Redução, e o nome pode ser qualquer coisa que o
+    // jogador tenha escrito na peça customizada.
+    qa: combate?.qa ?? qaDaPeca(combate?.arma || '', combate?.dano || '', armadurasDe(S)),
   };
 }
 

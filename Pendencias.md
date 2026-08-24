@@ -586,6 +586,39 @@ hoje) e generalizar o desvio de emergência da §5.5 do Arcano numa **dívida de
 Quando a §14 discordar das §2 a §9, vale a §14, e os itens abaixo marcados `[SUPERADO]` foram
 revistos por ela.
 
+- [x] **K29 · [DECIDIDO 2026-08-24] O Quase-Acerto entrou no Grid, e trouxe duas correções de regra.**
+  O capítulo XII existia escrito desde sempre e o motor nunca o calculava: a mesa fazia a conta de
+  cabeça, ou simplesmente não usava a válvula que impede duelo de guarda alta de virar uma fila de
+  zeros. A folha da ação ganhou uma terceira saída, **"Raspou · aplicar"**, com Margem e dano do
+  raspão vindo prontos e **editáveis**, e o veredito passou a ter três estados em vez de dois.
+
+  **Correção 1, a régua da classe da arma.** Era o número de dados (1d6 leve, 2d6 média, 3d6
+  pesada), e o catálogo andou por baixo dela: hoje **24 das 26 armas têm um dado só e nenhuma tem
+  três**. Ao pé da letra, a espada longa virava leve e a categoria pesada deixava de existir. Passou
+  a ser o **dano médio** da arma (`dado × 3,5 + danoBonus`): até 2 leve, de 2,5 a 5,5 média, 6 ou
+  mais pesada. É o dano da ARMA e não o do personagem, senão o mesmo aço raspava diferente na mão de
+  um brutamontes. Arma fora do catálogo (criatura, item improvisado) tem a média lida da própria
+  expressão de dano, porque ali a expressão *é* a arma.
+
+  **Correção 2, a tabela de armaduras.** O capítulo dizia que a média reduz 2 e a pesada 4; o
+  `regras.json` dizia 4 e 6, e o exemplo do próprio capítulo usava 6. O JSON venceu e o capítulo se
+  corrigiu, que é a regra da casa.
+
+  **E uma convenção que estava implícita:** "errou por X" é `(Defesa + 1) − total`, e não a diferença
+  crua, porque a regra do acerto é `total > Defesa` e empate não passa. O Grid já fazia assim; o
+  capítulo dizia outra coisa no exemplo. Agora está escrito nos dois.
+
+  **Onde a criatura fica devendo:** o bestiário guarda couro grosso como **Absorção**, e não como
+  armadura vestida, então criatura nasce com bônus 0 e redução 0. Foi decisão consciente: o
+  cavaleiro de placa construído como criatura se conserta na própria folha (os dois campos são
+  editáveis) ou pelo ajuste por instância (`combatentes.dados.qa`). Um campo `armadura` no bestiário
+  seria varredura de 309 verbetes, do mesmo tamanho da pendência do deslocamento.
+
+  Provas: `scripts/test-quase-acerto.mjs` (novo portão, com a classe de cada arma do catálogo, o
+  empilhamento das armaduras por duas regras diferentes, e o exemplo do capítulo refeito pelo motor)
+  e a cena `cenaQuaseAcerto` no smoke, que confere os três estados do veredito e que o botão aplica
+  **dano fixo sem passar pela Absorção**.
+
 - [x] **K1 · A régua, decidida (18/08).** `P/R` (leve 0/5 · média 1/5 · haste 0/6 · pesada 2/5), a
   guarda que se refaz **quando o golpe sai**, o Preparo que **não compra nada** e o golpe que
   **redireciona** quando o alvo cai. Medido neutro no catálogo real: maior desvio de 0,7 ponto em

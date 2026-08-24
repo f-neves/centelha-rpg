@@ -17,6 +17,7 @@ import { resumoCombatePC } from './combate-resumo';
 import { esc, u, norm, fmtDano } from './mesa-core';
 import { sparkSVG } from './centelha-spark';
 import { d6 } from './rolagem';
+import { qaDaPeca, type QACombate } from './quase-acerto';
 
 export const MONSTROS = monstersData as any[];
 export const MON: Record<string, any> = Object.fromEntries(MONSTROS.map((m) => [m.id, m]));
@@ -66,6 +67,7 @@ export interface ResumoCombate {
   defesaSocial?: number | null; defesaMental?: number | null;
   soak: { impacto: number; corte: number; perfuracao: number };
   resistPerf: number; velocidade?: number | null;
+  qa?: QACombate;
 }
 
 /** Bloco de combate de origem: da ficha (PC) ou do bestiário (criatura). */
@@ -87,6 +89,10 @@ export function baseResumo(c: any, fichaPorId: Record<string, any> = {}): Resumo
                 : { impacto: 0, corte: 0, perfuracao: 0 },
       resistPerf: cb.resistenciaPerfuracao || 0,
       velocidade: a0?.speed ?? null,
+      // A criatura não tem armadura vestida (ver `QACombate`): só a metade da
+      // arma sai preenchida. O dano médio dela vem da própria expressão de dano,
+      // porque ali a expressão É a arma.
+      qa: qaDaPeca(a0?.nome || '', a0 ? fmtDano(a0.dano) : '', null),
     };
   }
   return null;
@@ -116,6 +122,13 @@ export function resumoDe(c: any, fichaPorId: Record<string, any> = {}): ResumoCo
     },
     resistPerf: ov.resistPerf ?? base?.resistPerf ?? 0,
     velocidade: ov.velocidade ?? base?.velocidade ?? null,
+    // O QUASE-ACERTO SEGUE A ARMA que o ajuste escolheu. Trocar a arma do goblin
+    // por um martelo e deixar o raspão da adaga seria a mesma incoerência que o
+    // `ataque` e o `dano` já evitam vindo do mesmo lugar. E `dados.qa` continua
+    // podendo escrever por cima dos quatro números, um a um, que é como o
+    // cavaleiro de placa construído como criatura se conserta.
+    qa: { ...qaDaPeca(ov.arma ?? base?.arma, ov.dano ?? base?.dano,
+      (ov.armaduras ?? null) as any), ...(ov.qa || {}) },
   };
 }
 

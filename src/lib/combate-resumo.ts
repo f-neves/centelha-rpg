@@ -4,6 +4,7 @@
 // Serve ao rastreador de combate da mesa, que só tem a ficha crua do personagem.
 import { defesa, defesaMental, ataqueCentelha, empilharArmaduras, soakNatural, regras, MODO_ORDEM, MODO_SIGLA } from './calc';
 import { ARMA, ESCUDO, armaDoSlot, escudoDoSlot, armadurasDe } from './equip';
+import { qaDaPeca, type QACombate } from './quase-acerto';
 
 export interface Soak { impacto: number; corte: number; perfuracao: number; }
 export interface ResumoCombate {
@@ -14,6 +15,7 @@ export interface ResumoCombate {
   defesaMental: number; // Defesa Mental (o bloco da criatura já trazia a dela)
   soak: Soak;     // Absorção por tipo (abate o dano bruto sofrido)
   resistPerf: number; // Resistência a Perfuração (Nível) da armadura
+  qa: QACombate;  // Quase-Acerto: o que a arma amplia e o que o couro abate
 }
 
 // As peças saem de equip.ts já com os ajustes que o jogador fez na ficha
@@ -88,5 +90,11 @@ export function resumoCombatePC(S: any): ResumoCombate {
     perfuracao: soakNatural(vig, 'perfuracao') + C * cs + (armSt.soak.perfuracao || 0),
   };
 
-  return { arma: w.nome, ataque, dano, defesa: def, defesaMental: defMental, soak, resistPerf: armSt.resistPerf || 0 };
+  // O QUASE-ACERTO, com as duas metades (ver `QACombate`). Sai daqui porque é
+  // aqui que a arma resolvida e as peças de armadura já estão na mão: refazer
+  // essa resolução na tela era o caminho para as duas divergirem.
+  const qa = qaDaPeca(w.id || w.nome, dano, armadurasDe(S));
+
+  return { arma: w.nome, ataque, dano, defesa: def, defesaMental: defMental, soak,
+    resistPerf: armSt.resistPerf || 0, qa };
 }

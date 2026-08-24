@@ -39,6 +39,15 @@ const PORTE = regras.porteAcerto as any;
 const BLOQ = regras.bloqueioLimite as any;
 const SANG = regras.sangramento as any;
 const QA = regras.quaseAcerto as any;
+// A classe da arma deixou de sair do número de dados em 24/08 (o catálogo andou
+// por baixo daquela régua: 24 das 26 armas passaram a ter um dado só). Agora sai
+// do DANO MÉDIO, `dado × 3,5 + danoBonus`, e a coluna diz a faixa de cada classe
+// em vez do dado que não separa mais nada.
+const FAIXA_QA: Record<string, string> = {
+  leve: `até ${QA.classePorDanoMedio?.leveAte ?? 2}`,
+  media: `${(QA.classePorDanoMedio?.leveAte ?? 2) + 0.5} a ${QA.classePorDanoMedio?.mediaAte ?? 5.5}`,
+  pesada: `${(QA.classePorDanoMedio?.mediaAte ?? 5.5) + 0.5} ou mais`,
+};
 const DANO = regras.dano as any;
 const HORDA = regras.horda as any;
 const ESC_HAB = regras.escalaHabilidade as any[];
@@ -255,12 +264,10 @@ const PORTE_NOME: Record<string, string> = {
         <div>
           <h3>Pela arma</h3>
           <div class="tab-wrap"><table class="tab-mesa">
-            <thead><tr><th>Classe</th><th class="num">Dado</th><th class="num">Bônus à margem</th><th class="num">Dano do raspão</th></tr></thead>
-            <tbody>{Object.entries(QA.porClasseArma).map(([k, v]: any) => {
-              const dado = Object.entries(QA.pesoPorDado).find(([, c]) => c === k)?.[0];
-              return (<tr><td>{k}</td><td class="num">{dado ? `${dado}d6` : '—'}</td>
-                <td class="num">+{v.bonus}</td><td class="num">{v.dano}</td></tr>);
-            })}</tbody>
+            <thead><tr><th>Classe</th><th class="num">Dano médio</th><th class="num">Bônus à margem</th><th class="num">Dano do raspão</th></tr></thead>
+            <tbody>{Object.entries(QA.porClasseArma).map(([k, v]: any) => (
+              <tr><td>{k}</td><td class="num">{FAIXA_QA[k] || '—'}</td>
+                <td class="num">+{v.bonus}</td><td class="num">{v.dano}</td></tr>))}</tbody>
           </table></div>
         </div>
         <div>
@@ -273,6 +280,7 @@ const PORTE_NOME: Record<string, string> = {
         </div>
       </div>
       <p class="ref-nota muted">{QA.nota}</p>
+      <p class="ref-nota muted">{QA.classePorDanoMedio?.nota}</p>
     </section>
 
     <!-- ============ HORDAS ============ -->
