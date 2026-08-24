@@ -237,10 +237,73 @@ eq(T.fita(null, 4, 3).map((c) => c.fase), ['livre', 'livre', 'livre'], 'a fita d
   eq([g6.preparo, g6.ciclo], [8, 9], 'Arte de grau 6: Preparo 8, ciclo 9 (§5.3 do Arcano)');
   eq(T.reguaDaArte(6, 'normal').preparo, 0, 'no sistema normal a Arte também resolve no primeiro Tick');
 }
-eq(T.combateDaMesa(null), { sistema: 'normal', marcacao: 'fita', rolagem: 'mesa' },
+eq(T.combateDaMesa(null),
+  { sistema: 'normal', marcacao: 'fita', rolagem: 'mesa', golpeAdiado: false },
   'a mesa sem escolha usa o padrão');
-eq(T.combateDaMesa({ combate: { sistema: 'pgr' } }), { sistema: 'pgr', marcacao: 'fita', rolagem: 'mesa' },
+eq(T.combateDaMesa({ combate: { sistema: 'pgr' } }),
+  { sistema: 'pgr', marcacao: 'fita', rolagem: 'mesa', golpeAdiado: false },
   'a escolha da mesa se sobrepõe ao padrão, campo a campo');
+
+// -------------------------------------------- 5b. o golpe que sai depois
+//
+// A chave nasce DESLIGADA, e enquanto estiver desligada nada nas ações muda:
+// `aResolver` não existe, e a mesa de sempre continua sendo a mesa de sempre.
+// Este bloco trava as duas metades: que o desligado é mesmo o antigo, e que o
+// ligado agenda, cobra e some na ordem certa.
+{
+  eq(T.COMBATE_PADRAO.golpeAdiado, false, 'o golpe adiado nasce desligado');
+
+  // Só vale no P/G/R: no sistema normal o Preparo é zero em toda classe, e
+  // adiar pediria à mesa um segundo clique para confirmar o que ela acabou de
+  // declarar.
+  eq(T.adiaGolpe({ sistema: 'pgr', golpeAdiado: true }), true, 'ligado no P/G/R, adia');
+  eq(T.adiaGolpe({ sistema: 'normal', golpeAdiado: true }), false,
+    'ligado no sistema normal, não adia: lá o golpe já cai na declaração');
+  eq(T.adiaGolpe({ sistema: 'pgr', golpeAdiado: false }), false, 'desligado, não adia');
+  eq(T.adiaGolpe(null), false, 'e sem mesa nenhuma também não');
+
+  // A espada longa (média, 6 Ticks) declara no 1 e bate no 2.
+  const espada = T.declarar(1, T.anatomia({ classe: 'media', velocidade: 6, sistema: 'pgr' }));
+  eq(espada.golpes, [2], 'espada longa declarada no Tick 1: o golpe cai no 2');
+  eq(T.golpesNoAr(espada), [], 'a ação declarada sem agendar não deve golpe nenhum');
+
+  const ag = T.agendar(espada, 1);
+  eq(T.golpesNoAr(ag), [2], 'agendada, ela deve o golpe do Tick 2');
+  eq(T.proximoGolpe(ag), 2, 'e o próximo golpe dela é esse');
+  eq(T.golpeDevido(ag, 1), null, 'no Tick da declaração ainda não venceu nada');
+  eq(T.golpeDevido(ag, 2), 2, 'no Tick do Golpe ele vence');
+  // Um golpe esquecido não evapora: continua devendo nos Ticks seguintes, e é
+  // por isso que a faixa consegue marcá-lo como atrasado em vez de perdê-lo.
+  eq(T.golpeDevido(ag, 5), 2, 'e continua devendo depois, se a mesa não o resolveu');
+
+  const dep = T.golpeResolvido(ag, 2);
+  eq(T.golpesNoAr(dep), [], 'resolvido, sai da agenda');
+  eq(dep.golpes, [2], 'mas a agenda de golpes fica: ela é história, e a fita a desenha');
+  eq(T.faseEm(dep, 3), 'recuperacao', 'e a fase continua saindo de `golpes`, e não de `aResolver`');
+
+  // A ARMA LEVE NÃO PENDURA NADA. Preparo zero quer dizer que o golpe cai no
+  // mesmo Tick da declaração, e agendar pediria à mesa que confirmasse o que ela
+  // acabou de decidir.
+  const adaga = T.declarar(3, T.anatomia({ classe: 'leve', velocidade: 5, sistema: 'pgr' }));
+  eq(adaga.golpes, [3], 'a adaga bate no Tick em que declara');
+  eq(T.golpesNoAr(T.agendar(adaga, 3)), [],
+    'e por isso agendá-la não pendura nada: ela resolve na hora, como sempre');
+
+  // A EMPUNHADURA DUPLA DEVE DOIS, e cada um sai por si: são duas resoluções
+  // contra a guarda de dois instantes diferentes.
+  const duas = T.agendar(
+    T.declarar(0, T.anatomia({ classe: 'media', velocidade: 6, sistema: 'pgr', manobra: 'dupla' })), 0);
+  eq(T.golpesNoAr(duas).length, 2, 'a empunhadura dupla deve dois golpes');
+  eq(T.golpesNoAr(T.golpeResolvido(duas, T.golpesNoAr(duas)[0])).length, 1,
+    'e resolver o primeiro deixa o segundo no ar');
+
+  // No sistema normal a arma média também tem Preparo zero, então nem lá o
+  // agendamento pega: a degeneração elegante do motor vale aqui também.
+  const normal = T.declarar(0, T.anatomia({ classe: 'media', velocidade: 6, sistema: 'normal' }));
+  eq(T.golpesNoAr(T.agendar(normal, 0)), [],
+    'no sistema normal nada fica no ar: o golpe cai no Tick da declaração');
+}
+
 // O padrão dos dados é a mesa rolando: o site só rola onde a mesa pedir, e uma
 // mesa antiga (sem a chave) não pode começar a rolar sozinha depois de um deploy.
 eq(T.COMBATE_PADRAO.rolagem, 'mesa', 'e o padrão dos dados é ninguém rolar no site');

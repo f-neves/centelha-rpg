@@ -593,7 +593,7 @@ const { aba } = Astro.props;
      quando a cena é grande. */
   .fila-tira { border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel);
     padding: .35rem .4rem; display: flex; flex-direction: row; align-items: stretch;
-    gap: .45rem; min-width: 0; }
+    gap: .45rem; min-width: 0; flex-wrap: wrap; }
   /* O canto fixo: relógio e comandos ficam ANCORADOS à esquerda, fora da
      rolagem. É o número do qual todos os outros dependem, e um relógio que sai
      da tela quando se rola a fila não é relógio. */
@@ -695,6 +695,48 @@ const { aba } = Astro.props;
   .ini-item.movendo { opacity: .6; border-style: dashed; }
 
   .ini-vazio { font-size: var(--fs-micro); color: var(--ink-soft); padding: .3rem; }
+
+  /* ---------------- a faixa dos golpes no ar ----------------
+     Só existe com o golpe adiado ligado, e só quando há gesto pendente. Ela
+     mora ABAIXO da fila e não dentro dela de propósito: a fila responde "quem
+     age", esta responde "o que cai", e misturar as duas listas na mesma linha
+     faria a mesa procurar duas coisas no mesmo lugar. */
+  /* O contêiner quebra a linha da tira: a faixa é a segunda leitura da caixa,
+     e ficar ao LADO da fila a espremeria contra a borda justamente quando há
+     muita coisa no ar, que é quando ela mais importa. */
+  #gr-ar-cx { flex: 1 0 100%; min-width: 0; }
+  #gr-ar-cx:empty { display: none; }
+  .fila-ar { display: flex; align-items: center; gap: .4rem; flex-wrap: nowrap;
+    margin-top: .3rem; padding: .28rem .35rem 0;
+    border-top: 1px dashed var(--rule); min-width: 0; }
+  .ar-h { flex: 0 0 auto; font-size: calc(var(--fs-micro) * .9); color: var(--ink-soft);
+    text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; }
+  .ar-h b { color: var(--gold); }
+  .ar-lista { display: flex; gap: .3rem; overflow-x: auto; scrollbar-width: thin;
+    padding-bottom: .2rem; min-width: 0; flex: 1 1 auto; }
+  .ar-item { display: inline-flex; align-items: center; gap: .25rem; flex: 0 0 auto;
+    font: inherit; font-size: calc(var(--fs-micro) * .9); line-height: 1.1;
+    padding: .18rem .4rem; border-radius: var(--r-md); cursor: pointer;
+    border: 1px solid var(--rule); background: var(--panel); color: var(--ink);
+    border-left-width: 3px; }
+  .ar-item .av { --av-t: 1.2rem; }
+  .ar-item.g-aliado  { border-left-color: var(--accent); }
+  .ar-item.g-inimigo { border-left-color: #c1352c; }
+  .ar-item.g-neutro  { border-left-color: var(--gold); }
+  .ar-item:hover { background: color-mix(in srgb, var(--accent) 14%, transparent); }
+  .ar-seta { color: var(--ink-soft); }
+  .ar-alvo { color: var(--ink-soft); max-width: 7rem; overflow: hidden;
+    text-overflow: ellipsis; white-space: nowrap; }
+  .ar-t { font-variant-numeric: tabular-nums; color: var(--ink-soft); }
+  /* O que já venceu pede clique: o cartão acende e o Tick vira dourado. */
+  .ar-item.vencido { border-color: var(--gold);
+    background: color-mix(in srgb, var(--gold) 16%, transparent); }
+  .ar-item.vencido .ar-t { color: var(--gold); font-weight: 700; }
+  /* E o que venceu e ficou para trás pisca uma vez ao aparecer: golpe esquecido
+     é pior que golpe atrasado, e a faixa não deixa ele passar calado. */
+  .ar-item.atrasado { border-color: #c1352c; }
+  .ar-item.atrasado .ar-t { color: #c1352c; }
+  .fila-tira.fila-dobrada .fila-ar { display: none; }
 
   /* Recolhida, a tira vira uma régua fina: some a fila e o relógio deita ao
      lado do título. O Tick da cena é a última coisa que alguém quer esconder,

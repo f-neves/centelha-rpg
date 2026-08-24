@@ -18,6 +18,7 @@ import { uiPainel, uiErro } from './ui-dialog';
 import {
   faseEm, fita, defesaPerdida, resumoDaAcao, acaoVazia, anatomia, declarar, abortar,
   combateDaMesa, COMBATE_PADRAO, SISTEMAS, MARCACOES, ROLAGENS, FASE_ROTULO,
+  GOLPE_ADIADO, agendar, golpesNoAr, proximoGolpe,
   type Acao, type Fase, type CombateMesa, type Sistema, type Marcacao, type Rolagem,
   type ClasseArma,
 } from './combate-tempo';
@@ -159,6 +160,85 @@ export function itensDaFila(
   return itens;
 }
 
+/** Um golpe agendado que ainda não caiu, do jeito que a faixa o desenha. */
+export interface GolpeNoAr {
+  /** O combatente que declarou. */
+  id: string;
+  nome: string;
+  grupo?: string | null;
+  avatar?: string;
+  /** O Tick em que este golpe cai. */
+  tick: number;
+  /** Nome do alvo, ou nada quando a ação não mirou ninguém. */
+  alvo?: string | null;
+  arma?: string | null;
+}
+
+/**
+ * A FAIXA DOS GOLPES NO AR.
+ *
+ * Com o golpe adiado ligado, a mesa passa a ter uma segunda lista para
+ * carregar: a fila diz quem age, e esta diz o que já foi declarado e ainda não
+ * caiu. Sem ela o gesto vira contabilidade de cabeça, que é exatamente o que o
+ * estudo do golpe tardio disse que não podia acontecer.
+ *
+ * A ordem é por Tick, e não por quem declarou: o que a mesa pergunta olhando
+ * para cá é "o que cai primeiro?". O que venceu e não foi resolvido sobe para o
+ * começo e fica marcado, porque um golpe esquecido é pior que um golpe atrasado.
+ *
+ * Devolve string vazia quando não há nada no ar: a faixa some em vez de mostrar
+ * um cabeçalho vazio, e a mesa com a chave desligada nunca a vê.
+ */
+export function faixaDeGolpesHTML(golpes: GolpeNoAr[], tick: number): string {
+  if (!golpes.length) return '';
+  const ordem = [...golpes].sort((a, b) => a.tick - b.tick || a.nome.localeCompare(b.nome));
+  const cartao = (g: GolpeNoAr) => {
+    const falta = g.tick - tick;
+    const quando = falta <= 0 ? 'agora' : `em ${falta}`;
+    const atrasado = falta < 0;
+    return `<button type="button" class="ar-item g-${esc(g.grupo || 'inimigo')}${
+      falta <= 0 ? ' vencido' : ''}${atrasado ? ' atrasado' : ''}"
+      data-golpe="${esc(g.id)}" data-t="${g.tick}"
+      title="${esc(g.nome)}${g.arma ? ` · ${esc(g.arma)}` : ''} → ${esc(g.alvo || 'sem alvo')} · Tick ${g.tick}${
+        atrasado ? ' (atrasado)' : ''}">
+      ${g.avatar || ''}
+      <span class="ar-quem">${esc(g.nome)}</span>
+      <span class="ar-seta">→</span>
+      <span class="ar-alvo">${esc(g.alvo || '—')}</span>
+      <span class="ar-t">${atrasado ? '⚠ ' : ''}${quando}</span>
+    </button>`;
+  };
+  const vencidos = ordem.filter((g) => g.tick <= tick).length;
+  return `<div class="fila-ar" id="gr-ar">
+    <span class="ar-h">${vencidos ? `<b>${vencidos}</b> golpe${vencidos > 1 ? 's' : ''} para resolver`
+      : 'Golpes no ar'}</span>
+    <div class="ar-lista">${ordem.map(cartao).join('')}</div>
+  </div>`;
+}
+
+/**
+ * O que ainda está no ar em cena, lido das ações de todo mundo.
+ *
+ * Uma peça pode dever mais de um golpe (empunhadura dupla, rajada), e cada um
+ * vira um cartão: são resoluções separadas, com alvos que podem ter mudado
+ * entre um Tick e o outro.
+ */
+export function golpesEmCena(
+  pecas: { id: string; nome: string; grupo?: string | null; avatar?: string; acao?: Acao | null }[],
+  nomeDoAlvo: (id: string | null | undefined) => string | null,
+): GolpeNoAr[] {
+  const fora: GolpeNoAr[] = [];
+  for (const c of pecas) {
+    for (const t of golpesNoAr(c.acao)) {
+      fora.push({
+        id: c.id, nome: c.nome, grupo: c.grupo, avatar: c.avatar, tick: t,
+        alvo: nomeDoAlvo(c.acao?.alvo), arma: c.acao?.arma || null,
+      });
+    }
+  }
+  return fora;
+}
+
 /** O relógio da cena: o Tick em corpo grande, com a rodada de acompanhante. */
 export function relogioHTML(id = 'ini-tk', idRodada = 'ini-rd') {
   return `<div class="ini-relogio">
@@ -260,7 +340,10 @@ export function resumoDoTempo(c: CombateMesa) {
   // "na mesa" é o que toda mesa faz até decidir o contrário.
   const dados = c.rolagem === 'site' ? ' · dados no site'
     : c.rolagem === 'misto' ? ' · criaturas rolam sozinhas' : '';
-  return `${s} · ${c.marcacao === 'fita' ? 'fita' : 'números'}${dados}`;
+  // O golpe adiado entra no resumo SÓ quando está ligado, e pelo mesmo motivo
+  // dos dados: a barra é estreita, e o desligado é o que toda mesa faz.
+  const adiado = c.golpeAdiado && c.sistema === 'pgr' ? ' · golpe adiado' : '';
+  return `${s} · ${c.marcacao === 'fita' ? 'fita' : 'números'}${dados}${adiado}`;
 }
 
 
@@ -338,13 +421,40 @@ export async function abrirEscolhaDoTempo(
       O que o site rolar continua num campo editável, e o mestre escreve por cima quando a mesa
       decidir outra coisa.</p>
     ${opsHTML('tp-rol', ROLAGENS, atual.rolagem)}
+    <div class="rev-h">${esc(GOLPE_ADIADO.nome || 'Golpe adiado')} <span class="tempo-tag">em prova</span></div>
+    <p class="tempo-nota">${esc(GOLPE_ADIADO.detalhe || '')}</p>
+    <label class="rev-op tempo-chave" title="${esc(GOLPE_ADIADO.resumo || '')}">
+      <input type="checkbox" id="tp-adiado"${atual.golpeAdiado ? ' checked' : ''} />
+      <span class="rev-op-corpo">
+        <span class="rev-op-t">${esc(GOLPE_ADIADO.resumo || '')}</span>
+        <span class="rev-op-d" id="tp-adiado-d"></span>
+      </span>
+    </label>
     <div class="ui-dlg-btns">
       <button type="button" class="btn" id="tp-cancelar">Cancelar</button>
       <button type="button" class="btn primary" id="tp-salvar">Salvar</button>
     </div>`;
   pintar(atual.sistema);
+
+  // A CHAVE SÓ TEM EFEITO NO P/G/R, e dizer isso depois de o mestre ligá-la e
+  // não ver nada mudar seria tarde. A linha embaixo da chave muda com o rádio
+  // do sistema, e é a única coisa deste painel que responde a duas escolhas.
+  const chave = corpo.querySelector('#tp-adiado') as HTMLInputElement;
+  const pintarChave = () => {
+    const sis = (corpo.querySelector('input[name="tp-sis"]:checked') as HTMLInputElement)?.value;
+    const d = corpo.querySelector('#tp-adiado-d') as HTMLElement;
+    d.textContent = sis === 'pgr'
+      ? (chave.checked
+        ? 'Ligada: declarar agenda, e o golpe cai no Tick do Preparo.'
+        : 'Desligada: declarar resolve na hora, como a mesa sempre fez.')
+      : 'Sem efeito no sistema normal: lá o Preparo é zero e o golpe já cai na declaração.';
+    d.classList.toggle('muted', sis !== 'pgr');
+  };
+  chave.addEventListener('change', pintarChave);
+  pintarChave();
+
   corpo.querySelectorAll<HTMLInputElement>('input[name="tp-sis"]')
-    .forEach((i) => i.addEventListener('change', () => pintar(i.value as Sistema)));
+    .forEach((i) => i.addEventListener('change', () => { pintar(i.value as Sistema); pintarChave(); }));
 
   const marcado = (n: string) => (corpo.querySelector(`input[name="${n}"]:checked`) as HTMLInputElement)?.value;
   (corpo.querySelector('#tp-cancelar') as HTMLElement).onclick = () => fechar();
@@ -353,6 +463,7 @@ export async function abrirEscolhaDoTempo(
       sistema: (marcado('tp-sis') as Sistema) || COMBATE_PADRAO.sistema,
       marcacao: (marcado('tp-marc') as Marcacao) || COMBATE_PADRAO.marcacao,
       rolagem: (marcado('tp-rol') as Rolagem) || COMBATE_PADRAO.rolagem,
+      golpeAdiado: chave.checked,
     };
     fechar();
     const { error } = await sb.from('mesas').update({ combate: novo }).eq('id', id);

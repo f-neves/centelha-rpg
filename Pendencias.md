@@ -9,8 +9,8 @@
 > **[FAZER]** = já decidido, é trabalho de execução.
 > **[AUTOR]** = frente de escrita sua, não minha.
 
-**Placar:** 75 itens abertos · 40 [DECIDIR] · 27 [FAZER] · 6 [AUTOR]
-Por frente: **Arcano 20** · **Ações & Sistema 11** · **Mesa 10** · **Bestiário 9** · Lore 6 ·
+**Placar:** 78 itens abertos · 43 [DECIDIR] · 27 [FAZER] · 6 [AUTOR]
+Por frente: **Arcano 20** · **Ações & Sistema 11** · **Mesa 10** · **Bestiário 9** · Lore 9 ·
 Proezas 5 · Trilhas 4 · Arremesso 4 · Infraestrutura 4 · Social 2
 
 > **Mesa, 2026-08-12:** fechou **I7** (névoa de guerra) e entraram **I9** (caderno de melhorias do
@@ -414,6 +414,17 @@ Detalhe em `lore/Lore_Centelha.md` §7 e §8. Nada de lore foi ao site ainda.
   as eras, os primeiros deuses e as ortodoxias rivais com seu cisma.
 - [ ] **F6 · [AUTOR] Deuses locais e espíritos de lugar** por cidade e região, casando com as
   cidades que você está escrevendo.
+- [ ] **F7 · [DECIDIR] Travar a §7 (o panteão).** A seção inteira está em [PROPOSTA v1] esperando
+  seu aval: as três famílias de fé, as nove grandes potências, o casamento de cada cultura com uma
+  mitologia real e os seis papéis religiosos. Trava F5 e F6, porque o nome de uma cidade carrega o
+  panteão dela.
+- [ ] **F8 · [DECIDIR] O calendário de Uldun.** Esqueleto, vigílias, luas e estações já TRAVADOS na
+  §9 de `lore/Lore_Centelha.md`. Falta o mapa de datas dos eventos globais (solstícios, auroras, as
+  noites em que o sobrenatural aflora) e os nomes de meses, dias da semana, vigílias e estações.
+- [ ] **F9 · [DECIDIR] Os períodos da segunda e da terceira lua.** A rápida está travada em 28 dias.
+  Falta calcular as outras duas, e antes disso decidir se os períodos **fecham** com a grade de 364
+  (conjunção vira feriado fixo) ou **derrapam** por cima dela (prever a noite dupla vira ofício de
+  astrólogo). É esse cálculo que gera as datas raras. Detalhe na §9.3.
 
 ## G. Ações & Sistema
 
@@ -777,9 +788,19 @@ revistos por ela.
   três golpes pesados erraria de graça. E é a única decisão que a bancada não sabe responder,
   porque o robô do simulador **nunca foge**: precisa de bateria nova.
 
-  **A implementação não começou**, e ela é grande: a folha da ação se parte em duas (declarar sem
-  ver nada, resolver no Tick do Golpe), a coluna `acao` passa a guardar alvo, manobra e contrapé, o
-  relógio deixa de pular Ticks com golpe agendado, e a tira ganha a faixa de pendências.
+  **A primeira fatia entrou em 23/08, atrás de uma chave da mesa que nasce DESLIGADA**
+  (`combate.golpeAdiado`, no painel "Como o tempo passa"). Feito: a folha da ação partida em duas
+  (a caixa da declaração não mostra número nenhum; a folha reabre no Tick do Golpe com a guarda
+  daquele instante e a manobra travada), o campo `aResolver` na `acao`, a **Pressão movida** da
+  declaração para o Tick do Golpe, o relógio que **para de pular** Ticks com golpe agendado
+  (`relogio()` e `grupoDaVez()`), a faixa dos golpes no ar abaixo da fila, e o gesto que morre com
+  quem cai no meio do Preparo. Detalhe na **§17** do `Golpe_Tardio.md`.
+
+  **Falta a fatia 2:** alvo que morre (escolher outro no alcance, e só no alcance se a arma for de
+  corpo a corpo), alvo que sai de baixo (o atacante acompanha com o próprio passo, ou o Preparo é
+  interrompido/redirecionado), e a **Firula no Tick do Golpe**. Até lá o mestre resolve esses três
+  à mão. E falta a **prova de mesa**: a chave existe justamente porque a regra só se aprova jogando,
+  e se reprovar um commit apaga o caminho novo e ela junto.
 
 - [~] **K28 · Deslocamento: sete decisões tomadas em 21/08, uma com código pendente.** A varredura
   (§11 do `Golpe_Tardio.md`) achou **seis regras de andar** espalhadas por quatro lugares, mais dois

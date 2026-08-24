@@ -671,6 +671,67 @@ menores que o passo de todo mundo. O molde só ficou um pouco mais perigoso do q
 
 ---
 
+## 17. A primeira fatia, implementada (23/08/2026)
+
+Atrás de uma **chave da mesa**, e não numa branch. A decisão foi essa porque o risco real não é
+código ruim em git (não há migração nenhuma: `combatentes.acao` é `jsonb`, e `git revert` desfaz
+tudo), é a **regra não ficar boa na mesa**, e isso só se descobre jogando. Uma branch que não abre
+numa sessão de verdade é um teste pior que uma chave que se liga no meio do combate. E branch nesta
+árvore seria armadilho: o worktree é compartilhado com a outra instância, e os commits dela cairiam
+na branch sem que ninguém percebesse.
+
+**A chave.** `combate.golpeAdiado` no `regras.json`, `golpeAdiado` no `CombateMesa`, e um bloco
+próprio no painel "Como o tempo passa nesta mesa". **Nasce desligada.** Só vale no `pgr`
+(`adiaGolpe()`), e a linha embaixo dela muda com o rádio do sistema, porque descobrir que a chave
+não faz nada depois de ligá-la seria tarde.
+
+**O estado novo.** Um campo, `aResolver`, dentro da `acao`: os Ticks de `golpes` cujo golpe ainda
+não caiu. Sem ele não há como separar *o martelo que ainda vai bater no Tick 3* do *martelo que
+bateu e está se recompondo*: os dois têm `golpes: [3]`, e os dois estão em Recuperação depois disso.
+`golpes` fica intacto, porque a agenda é história e a fita continua a desenhá-la; o que muda é a
+dívida. `agendar()` não pendura o que já vence no mesmo Tick em que nasce, então a **arma leve
+resolve na hora como sempre resolveu**, e a mesa não ganha um clique para confirmar o que acabou de
+declarar.
+
+**As duas caixas.** A da declaração é curta, e a falta de números nela é a regra, não economia de
+tela: escolhe-se alvo e manobra, lê-se em que Tick o golpe cai, e mais nada. A folha da ação reabre
+no Tick agendado com `tickDoGolpe`, e aí sim mostra a Defesa **daquele instante**, com a manobra
+travada. Dois detalhes que só apareceram ao implementar: o **contrapé é lido no Tick da declaração**
+(lê-lo na queda daria de brinde ao martelo dois Ticks de decaimento que ele não esperou), e o aviso
+de alcance mudou de tempo verbal, porque entre declarar e bater o alvo anda.
+
+**A Pressão mudou de lugar**, e é a mudança de regra mais real desta fatia: ela sai do instante da
+declaração e passa para o Tick do Golpe. Adiantá-la abria a Defesa do alvo Ticks antes de o braço
+sair.
+
+**O relógio parou de pular.** Era o defeito previsto na §9: o atacante vai direto para o `livre`, e
+o Tick em que o braço cai não é a vez de ninguém, então ninguém pararia nele. Agora `relogio()` é o
+menor entre a vez e o golpe mais próximo, e `grupoDaVez()` devolve vazio enquanto um golpe está
+caindo: **o braço declarado três Ticks atrás chega antes da próxima escolha de quem quer que seja.**
+Golpe vencido e não resolvido não evapora, continua devendo e aparece marcado.
+
+**A faixa dos golpes no ar** mora abaixo da fila, e é a segunda lista que a mesa passa a carregar: a
+fila responde *quem age*, a faixa responde *o que cai*. Um cartão por golpe, e não por peça, porque
+a empunhadura dupla e a rajada devem mais de um contra guardas de instantes diferentes.
+
+**Uma ponta que só apareceu no código:** quem cai no meio do Preparo não solta o braço, e a agenda
+que sobrava voltaria à faixa como golpe atrasado no instante em que ele abrisse os olhos. O gesto
+morre com a queda, e isso está no caminho do levantar.
+
+**O que ficou de fora, e é a fatia 2:** alvo que morre (escolher outro no alcance), alvo que sai de
+baixo (acompanhar com o próprio passo ou interromper), e a Firula no Tick do Golpe. Até lá o mestre
+resolve esses casos à mão, como hoje.
+
+**Provas:** treze asserções novas no `test-combate-tempo.mjs` (a chave desligada não muda ação
+nenhuma, a arma leve não pendura, a dupla deve dois e cada um sai por si, o golpe esquecido continua
+devendo) e uma cena inteira no smoke, `cenaGolpeAdiado`, que arrasta, declara, confere que a caixa
+não mostra Defesa, acha o cartão na faixa, clica, confere que a folha abre com a guarda do instante
+e a manobra travada, e resolve. A bancada ganhou `?adiado=1` e uma **espada longa** numa peça: sem
+arma de Preparo a cena inteira cai no punho, que é leve, e o teste mediria o caminho antigo achando
+que mediu o novo.
+
+---
+
 ## Fontes internas
 
 - `Combate_Tempo.md` §4 (o que interromper compra), §8 (ler o sinal), §14.6 e §14.7 (o que cabe em

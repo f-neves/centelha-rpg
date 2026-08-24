@@ -41,12 +41,46 @@ export type ClasseArma = 'leve' | 'media' | 'haste' | 'pesada' | 'distancia' | '
  */
 export type Rolagem = 'mesa' | 'misto' | 'site';
 
+/**
+ * O golpe sai no Tick agendado, e nao na declaracao?
+ *
+ * E a regra escrita (`combate.pgr.preparo`): declara-se no Tick T e o golpe cai
+ * em T + Preparo. A mesa, ate aqui, resolvia tudo na declaracao, e o que
+ * acontecia em T + Preparo era so desenho. Ligar isto faz o motor obedecer.
+ *
+ * Nasce DESLIGADO de proposito. Nao e uma regra nova: e uma regra antiga que a
+ * tela nunca cumpriu, e cumpri-la muda o ritmo da mesa (declara-se as cegas,
+ * espera-se, e o alvo pode morrer ou sumir no meio). Isso se prova jogando, e
+ * enquanto nao estiver provado a mesa de sempre continua intacta.
+ *
+ * So tem efeito no `pgr`: no sistema normal o Preparo e zero em toda classe, e
+ * o golpe ja cai no Tick da declaracao por construcao.
+ */
+export const GOLPE_ADIADO: {
+  nome?: string; resumo?: string; detalhe?: string; nota?: string;
+  padrao?: boolean; soNoPgr?: boolean;
+} = C?.golpeAdiado || {};
+export const golpeAdiadoPadrao: boolean = !!GOLPE_ADIADO.padrao;
+
+/**
+ * Esta mesa adia o golpe, de verdade, agora?
+ *
+ * Duas condições, e a segunda é a que evita a pergunta boba: no sistema normal
+ * o Preparo é zero em toda classe, então adiar não adiaria nada e a mesa
+ * ganharia um segundo clique para confirmar o golpe que acabou de declarar.
+ */
+export const adiaGolpe = (c: CombateMesa | null | undefined): boolean =>
+  !!c?.golpeAdiado && c.sistema === 'pgr';
+
 /** O que uma mesa escolheu: o sistema de tempo, o desenho dele e os dados. */
-export interface CombateMesa { sistema: Sistema; marcacao: Marcacao; rolagem: Rolagem }
+export interface CombateMesa {
+  sistema: Sistema; marcacao: Marcacao; rolagem: Rolagem; golpeAdiado: boolean;
+}
 export const COMBATE_PADRAO: CombateMesa = {
   sistema: (C?.sistemaPadrao as Sistema) || 'normal',
   marcacao: (C?.marcacao?.padrao as Marcacao) || 'fita',
   rolagem: (C?.rolagem?.padrao as Rolagem) || 'mesa',
+  golpeAdiado: golpeAdiadoPadrao,
 };
 export const combateDaMesa = (mesa: any): CombateMesa => ({ ...COMBATE_PADRAO, ...(mesa?.combate || {}) });
 
@@ -82,6 +116,19 @@ export interface Acao {
   alvo?: string | null;   // idem
   divida?: number;        // Ticks que já foram empurrados para o futuro
   pressao?: number;       // ataques recebidos neste ciclo (cada um −2 de Defesa)
+  /**
+   * Os Ticks de `golpes` cujo golpe AINDA NÃO FOI RESOLVIDO.
+   *
+   * Só existe com o golpe adiado ligado, e é o que separa "o gesto está
+   * agendado" de "o gesto já caiu". Sem ele não há como distinguir o martelo
+   * que ainda vai bater no Tick 3 do martelo que bateu e está se recompondo:
+   * os dois têm `golpes: [3]` e os dois estão em Recuperação depois disso.
+   *
+   * Some um Tick de cada vez, conforme a mesa resolve. Lista vazia (ou ausente)
+   * quer dizer que não há nada no ar, que é o estado de toda ação declarada com
+   * a chave desligada.
+   */
+  aResolver?: number[];
 }
 
 /**
@@ -427,6 +474,64 @@ export function declarar(tickAgora: number, a: Anatomia, extra: Partial<Acao> = 
     divida: 0, pressao: 0,
     ...extra,
   };
+}
+
+// ------------------------------------------------------ o golpe que sai depois
+/**
+ * A ação declarada com os golpes AINDA NO AR.
+ *
+ * É o único ponto em que o golpe adiado entra na construção: `declarar` monta a
+ * agenda como sempre, e isto marca quais desses Ticks ainda devem à mesa uma
+ * resolução. Com a chave desligada ninguém chama esta função, e `aResolver` não
+ * existe em ação nenhuma: o estado antigo continua sendo exatamente o antigo.
+ *
+ * Ela não agenda nada que já venceu no mesmo instante em que nasce: no sistema
+ * normal, e na arma leve do P/G/R, o Preparo é zero e o golpe cai no Tick da
+ * declaração. Esses resolvem na hora, como sempre resolveram, e pendurá-los
+ * seria pedir à mesa um segundo clique para confirmar o que ela acabou de
+ * declarar.
+ */
+export function agendar(acao: Acao, tickAgora: number): Acao {
+  const noAr = acao.golpes.filter((g) => g > tickAgora);
+  return noAr.length ? { ...acao, aResolver: noAr } : acao;
+}
+
+/** Os Ticks de golpe que esta ação ainda deve resolver. Vazio = nada no ar. */
+export const golpesNoAr = (acao: Acao | null | undefined): number[] =>
+  Array.isArray(acao?.aResolver) ? (acao as Acao).aResolver as number[] : [];
+
+/** O primeiro golpe no ar desta ação, resolvido ou não. `null` = nada pendente. */
+export function proximoGolpe(acao: Acao | null | undefined): number | null {
+  const p = golpesNoAr(acao);
+  return p.length ? Math.min(...p) : null;
+}
+
+/**
+ * O golpe desta ação que já venceu neste Tick, se houver.
+ *
+ * "Venceu" é `<=` e não `===` de propósito: um golpe agendado para o Tick 3 que
+ * a mesa não resolveu no 3 continua devendo no 4, e sumir dele por causa de um
+ * clique esquecido seria perder o gesto sem que ninguém decidisse perdê-lo. O
+ * atraso aparece na tela; o golpe não evapora.
+ */
+export function golpeDevido(acao: Acao | null | undefined, tick: number): number | null {
+  const p = golpesNoAr(acao).filter((g) => g <= tick);
+  return p.length ? Math.min(...p) : null;
+}
+
+/**
+ * A ação depois que um dos golpes no ar caiu.
+ *
+ * Tira só aquele Tick, e não a lista: a rajada tem golpes em Ticks seguidos e a
+ * empunhadura dupla tem dois, e cada um é resolvido por si. `golpes` fica
+ * intacto, porque a agenda é história e a fita continua a desenhá-la; o que
+ * muda é a dívida.
+ */
+export function golpeResolvido(acao: Acao, tick: number): Acao {
+  const resta = golpesNoAr(acao).filter((g) => g !== tick);
+  const nova: Acao = { ...acao, aResolver: resta };
+  if (!resta.length) delete nova.aResolver;
+  return nova;
 }
 
 // ------------------------------------------------------------------ a leitura

@@ -2235,6 +2235,14 @@
         }
       ]
     },
+    "golpeAdiado": {
+      "nota": "O golpe sai no Tick agendado, e não na declaração. Não é regra nova: é a regra escrita do Preparo (declara-se em T e o golpe cai em T + Preparo), que o motor da mesa nunca cumpriu. Nasce DESLIGADA porque cumpri-la muda o ritmo da mesa, e isso se prova jogando.",
+      "padrao": false,
+      "nome": "Golpe adiado",
+      "resumo": "Declarar só agenda. O golpe cai em T + Preparo, e a mesa resolve ali: rola o acerto, aplica o dano e cobra a Pressão no alvo. Até lá o gesto fica no ar, e o alvo pode morrer, cair ou sair de baixo.",
+      "detalhe": "Com a chave desligada, declarar e resolver são o mesmo instante: o Grid rola, aplica e empurra o relógio de uma vez, que é o que a mesa faz desde sempre. Ligada, a folha da ação se parte em duas. A primeira só escolhe alvo e manobra, e não mostra número nenhum, porque no Tick da declaração ninguém sabe contra que guarda o golpe vai cair. A segunda abre no Tick do Golpe, com a Defesa daquele instante, e é ali que os dados rolam. Só tem efeito no P/G/R: no sistema normal o Preparo é zero em toda classe, e o golpe já cai na declaração.",
+      "soNoPgr": true
+    },
     "rolagem": {
       "nota": "Quem rola os dados. Não muda regra nenhuma: muda quem digita o resultado. O padrão é ninguém rolar no site, porque o dado na mão é metade da mesa.",
       "padrao": "mesa",

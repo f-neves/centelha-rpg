@@ -1629,6 +1629,143 @@ async function cenaCelular(br, url, { papel = 'mestre' } = {}) {
   await p.close();
 }
 
+
+/**
+ * O GOLPE QUE SAI DEPOIS, do começo ao fim.
+ *
+ * Esta é a única cena que abre a mesa com a chave ligada (`?adiado=1`), e por
+ * isso ela também é a prova de que a chave EXISTE: nas outras cinco cenas o
+ * caminho novo tem de continuar invisível, e é o que elas medem sem saber.
+ *
+ * O que ela persegue é a ida e a volta inteiras:
+ *
+ *   1. arrastar uma peça em cima de outra abre a CAIXA DA DECLARAÇÃO, e não a
+ *      folha da ação: no Tick em que se declara não há Defesa a mostrar;
+ *   2. declarar não tira Vida de ninguém e põe o gesto NO AR;
+ *   3. a faixa dos golpes no ar aparece, com quem, contra quem e em que Tick;
+ *   4. clicar no cartão abre a FOLHA DA AÇÃO, agora com a guarda do instante;
+ *   5. e resolver tira o golpe da faixa.
+ */
+async function cenaGolpeAdiado(br, url) {
+  console.log('\n· o golpe adiado: declarar, esperar, resolver');
+  const p = await br.newPage();
+  await p.setViewport({ width: 1400, height: 950 });
+  const erros = [];
+  p.on('pageerror', (e) => erros.push(e.message));
+  await p.goto(`${url}/mesa/grid?id=${MESA}&bench=12&cols=24&rows=16&nevoa=0&adiado=1`,
+    { waitUntil: 'networkidle0', timeout: 60000 });
+  await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
+  await espera(600);
+
+  // ---- 1 e 2: arrastar declara, e declarar não resolve ----
+  const dec = await p.evaluate(async () => {
+    const pal = document.getElementById('gr-palco').getBoundingClientRect();
+    const naTela = (t) => { const r = t.getBoundingClientRect();
+      return r.left > pal.left + 4 && r.top > pal.top + 4
+        && r.right < pal.right - 4 && r.bottom < pal.bottom - 4; };
+    const toks = [...document.querySelectorAll('#gr-tokens .gr-token')].filter(naTela);
+    // O ATACANTE TEM DE TER PREPARO. `c002` é quem leva espada longa na
+    // bancada (média, Preparo 1); o resto da cena cai no punho, que é leve e
+    // resolve na hora mesmo com a chave ligada, e o teste mediria o caminho
+    // antigo achando que mediu o novo.
+    const a = toks.find((t) => t.dataset.c === 'c002');
+    const b = toks.find((t) => t !== a);
+    if (!a || !b) return null;
+    const ra = a.getBoundingClientRect(), rb = b.getBoundingClientRect();
+    const em = (el, t, x, y) => el.dispatchEvent(new PointerEvent(t, {
+      bubbles: true, clientX: x, clientY: y, pointerId: 1 }));
+    em(a, 'pointerdown', ra.left + ra.width / 2, ra.top + ra.height / 2);
+    em(document, 'pointermove', rb.left + rb.width / 2, rb.top + rb.height / 2);
+    em(document, 'pointerup', rb.left + rb.width / 2, rb.top + rb.height / 2);
+    await new Promise((r) => setTimeout(r, 1300));
+    const decl = document.getElementById('decl-dlg');
+    const folha = document.getElementById('alvo-dlg');
+    const r = {
+      abriuDeclaracao: !!decl?.open,
+      abriuFolha: !!folha?.open,
+      titulo: document.getElementById('dc-titulo')?.textContent || '',
+      tempo: document.getElementById('dc-tempo')?.textContent || '',
+      // A caixa da declaração não pode carregar número de acerto nem de dano:
+      // a regra é que no Tick da declaração eles não existem.
+      temDefesa: !!decl?.querySelector('#al-defesas'),
+      cego: !!decl?.querySelector('.dc-cego'),
+    };
+    if (decl?.open) { document.getElementById('dc-ok').click(); await new Promise((x) => setTimeout(x, 900)); }
+    return r;
+  });
+  if (dec) {
+    ok(dec.abriuDeclaracao && !dec.abriuFolha,
+      'arrastar em cima do alvo abre a caixa da DECLARAÇÃO, e não a folha do acerto');
+    ok(!dec.temDefesa && dec.cego,
+      'e ela não mostra Defesa nem dano: no Tick da declaração esses números não existem');
+    ok(/Preparo/.test(dec.tempo) && /cai no Tick/.test(dec.tempo),
+      `a caixa diz em que Tick o golpe cai (${(dec.tempo || '').replace(/\s+/g, ' ').slice(0, 70)})`);
+  }
+
+  // ---- 3: a faixa dos golpes no ar ----
+  const faixa = await p.evaluate(() => {
+    const cx = document.getElementById('gr-ar');
+    const itens = [...document.querySelectorAll('#gr-ar .ar-item')];
+    return {
+      existe: !!cx,
+      n: itens.length,
+      texto: (cx?.textContent || '').replace(/\s+/g, ' ').trim(),
+      // Cada cartão tem de dizer o Tick em que aquele golpe cai: é o número que
+      // a mesa lê para saber o que vem primeiro.
+      ticks: itens.map((i) => i.dataset.t),
+      // Antes de o Tick chegar, o cartão não pode estar aceso como "resolva".
+      vencidos: itens.filter((i) => i.classList.contains('vencido')).length,
+    };
+  });
+  ok(faixa.existe && faixa.n > 0,
+    `o gesto declarado aparece na faixa dos golpes no ar (${faixa.n} no ar)`);
+  ok(faixa.ticks.every((t) => t != null && t !== ''),
+    `e cada cartão carrega o Tick em que ele cai (${faixa.ticks.join(', ')})`);
+
+  // ---- 4 e 5: o cartão abre a folha, e resolver tira o golpe do ar ----
+  const res = await p.evaluate(async () => {
+    const antes = document.querySelectorAll('#gr-ar .ar-item').length;
+    const cartao = document.querySelector('#gr-ar .ar-item');
+    if (!cartao) return null;
+    cartao.click();
+    await new Promise((r) => setTimeout(r, 1200));
+    const folha = document.getElementById('alvo-dlg');
+    const r = {
+      antes,
+      abriu: !!folha?.open,
+      titulo: document.getElementById('al-titulo')?.textContent || '',
+      // A folha adiada mostra a guarda DAQUELE instante, e diz de onde ela veio.
+      tempo: (document.getElementById('al-tempo')?.textContent || '').replace(/\s+/g, ' '),
+      // A manobra já foi escolhida na declaração: remontá-la agora seria mexer
+      // na agenda depois de o tempo ter passado por cima dela.
+      travada: !!document.getElementById('al-manobra')?.disabled,
+      temDefesa: !!document.getElementById('al-defesas')?.textContent.trim(),
+    };
+    if (folha?.open) {
+      // "Errou" é o caminho mais curto que ainda resolve o golpe: não mexe em
+      // Vida de ninguém e ainda assim tira o gesto do ar.
+      document.getElementById('al-nao').click();
+      await new Promise((x) => setTimeout(x, 1400));
+    }
+    r.depois = document.querySelectorAll('#gr-ar .ar-item').length;
+    return r;
+  });
+  if (res) {
+    ok(res.abriu, 'clicar no cartão da faixa abre a folha da ação');
+    ok(/O golpe de .* cai em /.test(res.titulo),
+      `e ela abre no tempo verbal certo: o golpe está caindo (${res.titulo})`);
+    ok(res.temDefesa, 'com a Defesa do alvo, que na declaração não estava lá');
+    ok(res.travada, 'e com a manobra travada, porque ela foi escolhida três Ticks atrás');
+    ok(/declarado no Tick/.test(res.tempo),
+      `a linha do tempo lembra quando o gesto começou (${(res.tempo || '').slice(0, 60)})`);
+    ok(res.depois < res.antes,
+      `resolver tira o golpe do ar (${res.antes} → ${res.depois})`);
+  }
+
+  ok(erros.length === 0, `nenhum erro de página (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
+  await p.close();
+}
+
 const dev = await subirDev({ config: 'astro.bancada.mjs' });
 const br = await puppeteer.launch({ executablePath: NAV, headless: 'new', args: ['--no-sandbox'] });
 try {
@@ -1639,6 +1776,7 @@ try {
   await cenaMapas(br, dev.url);
   await cenaCelular(br, dev.url);
   await cenaCelular(br, dev.url, { papel: 'jogador' });
+  await cenaGolpeAdiado(br, dev.url);
 } finally {
   await br.close();
   await dev.parar();
@@ -1651,4 +1789,5 @@ if (falhas.length) {
 }
 console.log('\n✓ Grid OK · desenho, movimento, registro, névoa e card, nas duas cenas, dentro dos tetos'
   + ' de repintura, a mesma mesa vista pelo jogador, a tira da ordem no rastreador,'
-  + ' a caixa de fundo girando e excluindo arte, e o telefone nas duas cadeiras');
+  + ' a caixa de fundo girando e excluindo arte, o telefone nas duas cadeiras,'
+  + ' e o golpe adiado da declaração à queda');

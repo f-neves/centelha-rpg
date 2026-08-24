@@ -34,6 +34,10 @@ const POSTOS = parseInt(P.get('postos') || String(N_COMB), 10);
 // O sistema de tempo da mesa de bancada. `pgr` de propósito: é o caminho novo,
 // e o que o smoke precisa exercitar. `?tempo=normal` volta ao de sempre.
 const TEMPO = P.get('tempo') === 'normal' ? 'normal' : 'pgr';
+// O GOLPE ADIADO, que na mesa de verdade nasce desligado. Aqui ele é um knob:
+// `?adiado=1` liga a chave, e é assim que o smoke consegue exercitar o caminho
+// novo sem que a bancada padrão deixe de medir o caminho de sempre.
+const ADIADO = P.get('adiado') === '1';
 // DE QUE CADEIRA SE OLHA. `?papel=jogador` tira o mestre do lugar e devolve a
 // mesa como ela chega para quem só tem um personagem: sem os botões do relógio,
 // sem o menu que mexe na cena, e com a `acao` alheia MASCARADA como a
@@ -115,9 +119,15 @@ for (let i = 0; i < N_COMB; i++) {
     // Besta pequena e não arco: o alcance livre dela é 40 m, e o tabuleiro da
     // bancada tem 40 hexágonos de largura. Com o arco (livre 83 m) nenhuma
     // distância do mapa sairia do livre, e a faixa nunca seria desenhada.
+    // E UMA ARMA DE PREPARO. Sem ela toda a cena cai no punho, que é `leve` e
+    // tem Preparo 0: o golpe adiado não teria o que adiar, e o caminho novo
+    // nunca seria desenhado. A espada longa é `media`, Preparo 1, o caso mais
+    // comum da mesa e o mais barato de ler num teste.
     dados: i === 1
       ? { arma: 'besta-pequena', ataque: '3d6 +2', dano: '1d6 +1 (P)' }
-      : undefined,
+      : i === 2
+        ? { arma: 'espada-longa', ataque: '4d6 +1', dano: '1d6 +2 (C)' }
+        : undefined,
     condicoes: i % 3 === 0 ? [{ id: 'cego' }] : [],
     ativo: true, oculto: false, imagem: null, retrato: null,
   });
@@ -183,7 +193,7 @@ const TABELAS = {
   mesas: [{
     id: MESA, nome: 'Mesa de bancada', descricao: 'bancada de teste',
     mestre_id: PAPEL === 'mestre' ? UID : OUTRO_UID, codigo_convite: 'BENCH1', revelar: {},
-    combate: { sistema: TEMPO, marcacao: 'fita' },
+    combate: { sistema: TEMPO, marcacao: 'fita', golpeAdiado: ADIADO },
   }],
   mesa_arenas: ARENAS,
   arena_visao: ARENAS,

@@ -127,6 +127,10 @@ const SETAS = [
                os vivos para baixo. Aqui embaixo ele continua a um clique, que é
                por onde a cura passa. -->
           <div id="ini-chao" class="ini-chao" hidden></div>
+          <!-- OS GOLPES NO AR. Só existe com o golpe adiado ligado: a fila diz
+               quem age, e esta faixa diz o que já foi declarado e ainda não
+               caiu. Nasce vazia e some sozinha quando não há gesto pendente. -->
+          <div id="gr-ar-cx"></div>
         </aside>
 
         <div class="gr-palco" id="gr-palco">
@@ -277,6 +281,36 @@ const SETAS = [
        espada. Aqui tudo o que o Grid já sabe vem preenchido (a Defesa com a
        escada, o custo em Ticks, o bolo de dados, o modo do dano da arma) e tudo
        continua editável, que é o contrato: o Grid propõe, a mesa decide. */}
+  {/* A CAIXA DA DECLARAÇÃO, que só existe com o golpe adiado ligado.
+       Ela é curta de propósito, e a falta de números nela é a regra e não
+       economia de tela: no Tick em que se declara ninguém sabe contra que
+       guarda o golpe vai cair, nem se o alvo ainda vai estar ali. Escolhe-se o
+       alvo e a manobra, e o resto é espera. Quem mostra número é a folha da
+       ação, que reabre no Tick do Golpe. */}
+  <dialog id="decl-dlg" class="mesa-dlg">
+    <form method="dialog">
+      <h3 id="dc-titulo">Declarar</h3>
+      <p class="muted dlg-txt" id="dc-linha"></p>
+      <p class="ruim dlg-txt" id="dc-aviso" hidden></p>
+      <label class="al-man">Manobra
+        <select id="dc-manobra">
+          <option value="simples">Um golpe</option>
+          <option value="dupla">Uma arma em cada mão (dois golpes)</option>
+          <option value="segura">Segura a segunda e golpeia com uma</option>
+          <option value="rajada">Rajada (a mesma arma, várias vezes)</option>
+        </select>
+        <input type="number" id="dc-golpes" min="2" max="3" value="2" title="Quantos golpes" />
+      </label>
+      <div id="dc-tempo" class="al-tempo"></div>
+      <p class="muted dlg-txt dc-cego">Nada de dados agora: o golpe ainda não saiu. A folha do
+        acerto abre no Tick do Golpe, com a guarda daquele instante.</p>
+      <menu>
+        <button type="button" class="btn" id="dc-cancelar">Cancelar</button>
+        <button type="button" class="btn primary" id="dc-ok">Declarar</button>
+      </menu>
+    </form>
+  </dialog>
+
   <dialog id="alvo-dlg" class="mesa-dlg dlg-larga">
     <form method="dialog">
       <h3 id="al-titulo">Ataque</h3>
@@ -1863,14 +1897,15 @@ const SETAS = [
   import { reconciliar, esquecerCaixa } from '../../lib/reconciliar';
   import {
     abrirEscolhaDoTempo, resumoDoTempo, fitaHTML, seloFaseHTML, abrirAbortar, podeAbortar,
-    itensDaFila,
+    itensDaFila, faixaDeGolpesHTML, golpesEmCena,
   } from '../../lib/mesa-tempo-ui';
   import {
     combateDaMesa, COMBATE_PADRAO, faseEm, acaoVazia, temGesto, resumoDaAcao,
     anatomia, anatomiaLivre, declarar, defesaPerdida, classeDeTempo, velocidadeDaArma, tetoDaRajada,
     rolaNoSite, ticksDeDeslocamento, armaDoCatalogo, ticksDeEntrada,
     contrapeEm, contrapeDe, contrapeAcaba, faseDeQuemVaiAgir, preparoDe, ordemDaFila,
-    FASE_ROTULO, type CombateMesa, type Manobra,
+    adiaGolpe, agendar, golpesNoAr, golpeDevido, golpeResolvido, proximoGolpe,
+    FASE_ROTULO, type CombateMesa, type Manobra, type Acao,
   } from '../../lib/combate-tempo';
 
   const el = (i: string) => document.getElementById(i)!;
@@ -3545,6 +3580,12 @@ const SETAS = [
   function grupoDaVez(): any[] {
     const t = tickDaVez();
     if (t == null) return [];   // todos no chão: não é a vez de ninguém
+    // E TAMBÉM NÃO É A VEZ DE NINGUÉM ENQUANTO UM GOLPE ESTÁ CAINDO. O braço que
+    // foi declarado três Ticks atrás chega antes da próxima escolha de quem quer
+    // que seja, e deixar alguém agir por cima dele resolveria a cena fora de
+    // ordem: é a mesma razão de `faseDeQuemVaiAgir` existir.
+    const g = golpeMaisCedo();
+    if (g != null && g < t) return [];
     return naFila().filter((c: any) => !noChao(c) && (c.tick ?? 0) === t);
   }
 
@@ -3560,10 +3601,43 @@ const SETAS = [
    * alguém levantar.
    */
   function relogio(): number {
+    // O GOLPE NO AR SEGURA O RELÓGIO. Sem isto a cena pula por cima do Tick
+    // agendado: o atacante já foi para o `livre`, e o Tick em que o braço cai
+    // não é a vez de ninguém, então ninguém pararia nele. É o defeito que o
+    // estudo do golpe tardio chamou de "o relógio deixa de pular Ticks com
+    // golpe agendado", e ele mora aqui e em `grupoDaVez`.
+    const g = golpeMaisCedo();
     const t = tickDaVez();
-    if (t != null) return t;
+    if (t != null) return g != null ? Math.min(t, g) : t;
+    if (g != null) return g;
     const f = naFila();
     return f.length ? Math.max(0, ...f.map((c: any) => c.tick ?? 0)) : (ENC?.tick_atual ?? 0);
+  }
+
+  /**
+   * O Tick do golpe agendado mais próximo, entre quem está de pé.
+   *
+   * De pé porque quem caiu não solta o braço: o gesto morre com quem o fazia, e
+   * deixar a agenda dele travando a cena obrigaria a mesa a resolver um golpe
+   * que nunca vai sair. `null` quando não há nada no ar, que é sempre o caso com
+   * a chave desligada.
+   */
+  function golpeMaisCedo(): number | null {
+    let menor: number | null = null;
+    for (const c of naFila()) {
+      if (noChao(c)) continue;
+      const g = proximoGolpe(c.acao);
+      if (g != null && (menor == null || g < menor)) menor = g;
+    }
+    return menor;
+  }
+
+  /** Neste instante o que acontece é um golpe caindo, e não alguém agindo? */
+  function instanteDeGolpe(): boolean {
+    const g = golpeMaisCedo();
+    if (g == null) return false;
+    const t = tickDaVez();
+    return t == null || g <= t;
   }
 
   // ------------------------------------------------ quem caiu, quem levantou
@@ -3623,9 +3697,18 @@ const SETAS = [
         // Quem já estava adiante do atraso não é puxado para trás: o atraso é
         // piso, e não um lugar marcado na fila.
         if ((c.tick ?? 0) >= tick) continue;
-        const { error } = await SB.from('combatentes').update({ tick }).eq('id', c.id);
+        // O GESTO MORREU COM A QUEDA. Quem cai no meio do Preparo não solta o
+        // braço, e a agenda que sobrou no `acao` voltaria à faixa como golpe
+        // atrasado no instante em que ele abrisse os olhos, cobrando da mesa um
+        // golpe que ninguém deu. Some aqui, junto com o atraso de levantar.
+        const limpa = golpesNoAr(c.acao).length
+          ? { acao: golpesNoAr(c.acao).reduce(
+            (a: Acao, t: number) => golpeResolvido(a, t), c.acao as Acao) }
+          : {};
+        const { error } = await SB.from('combatentes').update({ tick, ...limpa }).eq('id', c.id);
         if (error) { uiErro('Erro: ' + error.message); continue; }
         c.tick = tick;
+        if ((limpa as any).acao) c.acao = (limpa as any).acao;
         await logar(c, `${c.nome} está de pé · volta a agir no tick ${tick}`
           + ` (+${DELAY_AO_LEVANTAR} do tick ${agora})`, { acao: null });
       }
@@ -3708,10 +3791,46 @@ const SETAS = [
     // no primeiro conserto.
     const itens = itensDaFila(pecasDaFila(emPe), tick, { marcacao: TEMPO.marcacao });
     reconciliar(box, itens);
+    pintarGolpesNoAr(emPe, tick);
     atualizarSetasDaFila();
     if ((el('ordem-dlg') as HTMLDialogElement).open) pintarOrdem();
     pintarLinhaDoTempo(tick);
     sincronizarApp();
+  }
+
+  /**
+   * A FAIXA DOS GOLPES NO AR, desenhada e ligada.
+   *
+   * Ela é a segunda lista que o golpe adiado obriga a mesa a carregar: a fila
+   * responde "quem age", esta responde "o que cai". Cada cartão é um golpe, e
+   * não uma peça, porque a empunhadura dupla e a rajada devem mais de um, e cada
+   * um é resolvido por si contra a guarda do próprio Tick.
+   *
+   * Some sozinha quando não há nada no ar, que é o estado de toda mesa com a
+   * chave desligada: ali `aResolver` não existe em ação nenhuma.
+   */
+  function pintarGolpesNoAr(emPe: any[], tick: number) {
+    const cx = document.getElementById('gr-ar-cx');
+    if (!cx) return;
+    const nomeDe = (id: string | null | undefined) =>
+      (id ? COMBS.find((c: any) => c.id === id)?.nome : null) || null;
+    const golpes = golpesEmCena(emPe.map((c: any) => ({
+      id: c.id, nome: c.nome, grupo: c.grupo, avatar: avatarDe(c, 'av-p'), acao: acaoNo(c),
+    })), nomeDe);
+    const html = faixaDeGolpesHTML(golpes, tick);
+    if (cx.innerHTML !== html) cx.innerHTML = html;
+    if (!golpes.length) return;
+    cx.querySelectorAll<HTMLElement>('.ar-item').forEach((b) => {
+      b.onclick = () => {
+        const c = COMBS.find((x: any) => x.id === b.dataset.golpe);
+        const t = parseInt(b.dataset.t || '0', 10);
+        // SÓ O MESTRE SOLTA O GOLPE DE QUEM NÃO É DELE. A faixa é visível para
+        // todo mundo, porque saber o que está no ar é o que torna a espera
+        // jogável, mas resolver é outra coisa.
+        if (!c || (!MESTRE && c.personagem_id !== EU)) return;
+        void resolverGolpeNoAr(c, t);
+      };
+    });
   }
 
   /**
@@ -5683,6 +5802,13 @@ const SETAS = [
    * única coisa que se faz com quem está no caminho.
    */
   async function resolverAtaque(atacante: any, alvo: any) {
+    // O GOLPE ADIADO CORTA AQUI, e só aqui: com a chave ligada, atacar declara e
+    // acaba. O que resolve é `resolverGolpeNoAr`, no Tick agendado. Com o
+    // Preparo em zero (arma leve, ou o sistema normal) não há o que adiar, e o
+    // caminho continua sendo este de sempre.
+    if (adiaGolpe(TEMPO) && preparoDoAtaque(atacante) > 0) {
+      return declararGolpe(atacante, alvo);
+    }
     const res = await folhaDaAcao(atacante, alvo);
     if (!res) return;                       // fechou a caixa: desistiu, não gastou nada
     const { acertou, an, manobra } = res;
@@ -5743,6 +5869,210 @@ const SETAS = [
     await aplicarDano(atacante, alvo, res.dano, res.tipo, voou ? 0 : undefined, dados + porque);
   }
 
+  /** O Preparo que a arma desta peça cobra, pela régua da mesa. */
+  function preparoDoAtaque(c: any): number {
+    const r = RESUMO[c.id];
+    return preparoDe(
+      classeDeTempo(r?.arma, r?.velocidade),
+      r?.velocidade ?? velocidadeDaArma(r?.arma, 5),
+      TEMPO.sistema,
+    );
+  }
+
+  /**
+   * DECLARAR SEM VER NADA.
+   *
+   * A caixa curta do golpe adiado. Ela pergunta a manobra, mostra em que Tick o
+   * golpe vai cair, e não mostra Defesa, bolo de dados nem dano: no instante da
+   * declaração essas três coisas ainda não existem, porque a guarda que importa
+   * é a do Tick do Golpe e ela ainda vai ser mexida por tudo o que acontecer até
+   * lá.
+   *
+   * O que ela escreve no banco é a agenda com `aResolver`, e o relógio do
+   * atacante indo até o `livre`. A Pressão NÃO entra aqui: quem ataca ainda não
+   * atacou, e cobrar a guarda do alvo agora a abriria Ticks antes de o braço sair.
+   */
+  async function declararGolpe(atacante: any, alvo: any) {
+    const dlg = el('decl-dlg') as HTMLDialogElement;
+    const ra = RESUMO[atacante.id];
+    const classe = classeDeTempo(ra?.arma, ra?.velocidade);
+    const vel = ra?.velocidade ?? velocidadeDaArma(ra?.arma, 5);
+    const t0 = atacante.tick ?? 0;
+
+    (el('dc-titulo') as HTMLElement).textContent = `${atacante.nome} declara contra ${alvo.nome}`;
+    const de = TOKENS[atacante.id], pa = TOKENS[alvo.id];
+    const hexes = de && pa ? distanciaHex(de, pa) : null;
+    const dist = hexes != null ? hexes * (Number(ARENA.escala_m) || 1) : null;
+    // O NOME DA ARMA, e não o id dela: `RESUMO` guarda `espada-longa`, que é o
+    // que a ficha gravou, e a mesa lê "Espada Longa".
+    const nomeArma = armaDoCatalogo(ra?.arma)?.nome || ra?.arma || 'sem arma';
+    (el('dc-linha') as HTMLElement).textContent =
+      `${nomeArma}${dist != null ? ` · alvo a ${fmtM(dist)}` : ''}`;
+
+    // O AVISO DE ALCANCE VALE DUAS VEZES MAIS AQUI, e por isso ele mudou de
+    // tempo verbal: entre declarar e bater o alvo pode andar, e o que a caixa
+    // diz é onde ele está AGORA, e não onde vai estar.
+    const cx = el('dc-aviso') as HTMLElement;
+    const longe = hexes != null && classe !== 'distancia' && classe !== 'arremesso'
+      && !alcancaNoCorpoACorpo(hexes, classe === 'haste');
+    cx.hidden = !longe;
+    if (longe) {
+      cx.textContent = `Fora do alcance agora, a ${fmtM(dist!)}: o golpe só cai no Tick`
+        + ` ${t0 + preparoDe(classe, vel, TEMPO.sistema)}, e até lá alguém tem de fechar a distância.`;
+    }
+
+    const manSel = el('dc-manobra') as HTMLSelectElement;
+    const golInp = el('dc-golpes') as HTMLInputElement;
+    const cj = (FICHAS[atacante.personagem_id]?.conjuntos || []).find((x: any) => x.ativo);
+    const inabil = cj ? armaDoSlot(cj.inabil) : null;
+    const duasMaos = cj ? armaDoSlot(cj.habil)?.maos === 2 : false;
+    const podeDupla = !cj || (!!inabil && !duasMaos);
+    const podeRajada = tetoDaRajada(classe) > 1;
+    for (const o of Array.from(manSel.options)) {
+      const cabe = o.value === 'simples' || (o.value === 'rajada' ? podeRajada : podeDupla);
+      o.hidden = !cabe; o.disabled = !cabe;
+    }
+    manSel.value = 'simples'; golInp.value = '2';
+    golInp.max = String(Math.max(2, tetoDaRajada(classe)));
+    const anat = () => anatomia({
+      classe, velocidade: vel, sistema: TEMPO.sistema, manobra: manSel.value as Manobra,
+      golpes: Math.max(2, parseInt(golInp.value || '2', 10) || 2),
+    });
+    const pintar = () => {
+      golInp.style.display = manSel.value === 'rajada' ? '' : 'none';
+      const a = anat();
+      const quando = a.offs.map((o: number) => t0 + o);
+      (el('dc-tempo') as HTMLElement).innerHTML =
+        `<div><b>Preparo ${a.preparo}</b> · <b>Golpe ${a.golpes}</b> · <b>Recuperação ${a.recuperacao}</b>
+           = <b>${a.ciclo}</b> Ticks</div>
+         <div class="muted">o golpe cai no Tick <b>${quando.join(', ')}</b> · livre no ${t0 + a.ciclo}
+           · a guarda de ${esc(atacante.nome)} abre em −2 já a partir de agora</div>
+         ${a.aviso ? `<div class="ruim">${esc(a.aviso)}</div>` : ''}`;
+    };
+    manSel.onchange = pintar; golInp.oninput = pintar; pintar();
+
+    const escolha = await new Promise<{ an: any; manobra: string } | null>((resolve) => {
+      let respondeu = false;
+      (el('dc-ok') as HTMLElement).onclick = () => {
+        respondeu = true; dlg.close();
+        const a = anat();
+        resolve({ an: a, manobra: a.golpes > 1 ? manSel.value : 'simples' });
+      };
+      (el('dc-cancelar') as HTMLElement).onclick = () => dlg.close();
+      dlg.addEventListener('close', () => { if (!respondeu) resolve(null); }, { once: true });
+      dlg.showModal();
+    });
+    if (!escolha) return;                   // desistiu: não gastou Tick nenhum
+
+    await declararNoTabuleiro(atacante, alvo, escolha.an, escolha.manobra, { adiar: true });
+    const quando = escolha.an.offs.map((o: number) => t0 + o).join(', ');
+    await logar(atacante,
+      `${atacante.nome} preparou um golpe contra ${alvo.nome}`
+      + ` · cai no Tick ${quando}${ra?.arma ? ` · ${nomeArma}` : ''}`, { acao: null });
+  }
+
+  /**
+   * O GOLPE CAI.
+   *
+   * A segunda metade: a folha da ação abre com a guarda do Tick agendado, os
+   * dados rolam, o dano sai e a Pressão finalmente pesa no alvo. Daqui em
+   * diante é o mesmo caminho de sempre, porque o que mudou foi QUANDO, e não o
+   * que acontece.
+   *
+   * O alvo é o que a ação guardou. Se ele não está mais em cena (morreu, foi
+   * removido), a mesa é avisada e o golpe sai da agenda sem cair em ninguém: é
+   * a regra do estudo, e por ora sem a escolha de outro alvo, que é a fatia
+   * seguinte.
+   */
+  async function resolverGolpeNoAr(atacante: any, tick: number) {
+    const acao = atacante.acao as Acao | null;
+    if (!acao || !golpesNoAr(acao).includes(tick)) return;
+    const alvo = COMBS.find((c: any) => c.id === acao.alvo);
+    if (!alvo) {
+      await tirarDaAgenda(atacante, tick);
+      await logar(atacante,
+        `${atacante.nome} soltou o golpe do Tick ${tick} e o alvo não estava mais lá`, { acao: null });
+      return;
+    }
+    const ra = RESUMO[atacante.id];
+    const an = anatomia({
+      classe: classeDeTempo(ra?.arma, ra?.velocidade),
+      velocidade: ra?.velocidade ?? velocidadeDaArma(ra?.arma, 5),
+      sistema: TEMPO.sistema,
+      manobra: (acao.tipo || 'simples') as Manobra,
+      golpes: Math.max(2, acao.golpes.length),
+    });
+    const res = await folhaDaAcao(atacante, alvo, {
+      tickDoGolpe: tick, an, manobra: acao.tipo || 'simples',
+    });
+    if (!res) return;                       // fechou a caixa: o golpe continua no ar
+
+    const porque = res.ajuste && res.motivo ? ` [${sinalTxt(res.ajuste)}: ${res.motivo}]`
+      : res.ajuste ? ` [${sinalTxt(res.ajuste)}]` : '';
+    const dados = res.rolado ? ` (${res.rolado})` : '';
+    const proj = projetilDe(
+      atacante, FICHAS[atacante.personagem_id], MON[atacante.monstro_id], armaDoSlot,
+    );
+    const de = pontoDaPeca(atacante.id), pa = pontoDaPeca(alvo.id);
+    const atirar = async (): Promise<boolean> => {
+      if (!(proj && de && pa)) return false;
+      await voarProjetil(camadaDeGolpes(), de, pa, {
+        tipo: proj, errou: !res.acertou, raioPx: RAIO,
+        pxPorM: larguraHex(RAIO) / (Number(ARENA?.escala_m) || 1),
+      });
+      return true;
+    };
+
+    // A PRESSÃO É DAQUI, e não da declaração: quem levou o ataque levou agora.
+    // Adiantá-la abriria a Defesa do alvo Ticks antes de o braço sair, e foi por
+    // isso que a declaração passou sem cobrá-la.
+    await tirarDaAgenda(atacante, tick, alvo, 1);
+
+    if (!res.acertou) {
+      await atirar();
+      await logar(atacante,
+        `${atacante.nome} soltou o golpe do Tick ${tick} em ${alvo.nome} e errou${dados}${porque}`,
+        { acao: null });
+      return;
+    }
+    const voou = await atirar();
+    await aplicarDano(atacante, alvo, res.dano, res.tipo, voou ? 0 : undefined, dados + porque);
+  }
+
+  /**
+   * Tira um golpe da agenda, e de quebra cobra a Pressão de quem apanhou.
+   *
+   * As duas coisas juntas porque nunca acontecem separadas: um golpe sai do ar
+   * ou porque caiu (e aí alguém sentiu) ou porque não tinha em quem cair (e aí
+   * ninguém sentiu). Escrever isso em dois lugares deixaria a Pressão de fora
+   * num dos caminhos, que é exatamente o defeito que ela já teve uma vez.
+   */
+  async function tirarDaAgenda(c: any, tick: number, alvo?: any, golpes = 0) {
+    const nova = golpeResolvido(c.acao as Acao, tick);
+    if (MESTRE) {
+      const { error } = await SB.from('combatentes').update({ acao: nova }).eq('id', c.id);
+      if (error) { avisarSemTempo(error); return; }
+      if (alvo && golpes > 0) {
+        const antes = alvo.acao && Object.keys(alvo.acao).length
+          ? alvo.acao : { golpes: [], livre: alvo.tick ?? 0 };
+        const pa = { ...antes, pressao: (antes.pressao || 0) + golpes };
+        await SB.from('combatentes').update({ acao: pa }).eq('id', alvo.id);
+        alvo.acao = pa;
+      }
+    } else {
+      // O jogador não escreve na tabela: o mesmo portão da declaração serve
+      // aqui, porque o que muda é a ação dele e a Pressão do alvo dele.
+      const { error } = await SB.rpc('jogador_declara', {
+        p_comb: c.id, p_tick: c.tick ?? 0, p_acao: nova,
+        p_alvo: alvo?.id || null, p_golpes: golpes,
+      });
+      if (error) { avisarSemTempo(error); return; }
+    }
+    c.acao = nova;
+    pintarIniciativa(); pintarTokens();
+    avisarAgora('combatentes');
+  }
+
   /**
    * O ataque do tabuleiro entra na linha do tempo.
    *
@@ -5758,16 +6088,22 @@ const SETAS = [
    * valendo, o dano continua chegando, e o que não acontece é o relógio andar
    * sozinho — exatamente o que acontecia antes desta mudança.
    */
-  async function declararNoTabuleiro(atacante: any, alvo: any, an: any, manobra: string) {
+  async function declararNoTabuleiro(
+    atacante: any, alvo: any, an: any, manobra: string,
+    opts: { adiar?: boolean } = {},
+  ) {
     const t0 = atacante.tick ?? 0;
-    const acao = declarar(t0, an, {
+    let acao = declarar(t0, an, {
       tipo: (an.golpes > 1 ? manobra : 'simples') as Manobra,
       arma: RESUMO[atacante.id]?.arma || null,
       alvo: alvo?.id || null,
       // O contrapé é do relógio, e não da ação: agir não o apaga.
       ...contrapeDe(atacante.acao),
     });
-    await gravarRelogio(atacante, acao.livre, acao, alvo, an.golpes);
+    // Com o golpe adiado, a agenda nasce DEVENDO, e a Pressão fica para o Tick
+    // do Golpe: o alvo ainda não levou nada. Sem adiar, tudo como sempre foi.
+    if (opts.adiar) acao = agendar(acao, t0);
+    await gravarRelogio(atacante, acao.livre, acao, alvo, opts.adiar ? 0 : an.golpes);
   }
 
   /**
@@ -5997,8 +6333,24 @@ const SETAS = [
     acertou: boolean; an: any; manobra: string;
     dano: number; tipo: string; ajuste: number; motivo: string; rolado: string;
   }
-  function folhaDaAcao(atacante: any, alvo: any): Promise<Folha | null> {
+  /**
+   * `opts` só existe para o GOLPE ADIADO, e é o que separa a folha que abre na
+   * declaração da que reabre no Tick do Golpe.
+   *
+   *   `tickDoGolpe` · em que instante este golpe cai. Sem ele a folha deduz
+   *     do relógio do atacante, que é o certo enquanto declarar e resolver são
+   *     a mesma coisa. Com o golpe adiado o atacante já está lá na frente, no
+   *     `livre`, e deduzir daria a guarda do instante errado.
+   *   `an` e `manobra` · a anatomia JÁ DECLARADA. A manobra foi escolhida no
+   *     Tick da declaração e mudá-la agora seria remontar a agenda depois de o
+   *     tempo ter passado por cima dela, então o seletor fica travado.
+   */
+  function folhaDaAcao(
+    atacante: any, alvo: any,
+    opts: { tickDoGolpe?: number; an?: any; manobra?: string } = {},
+  ): Promise<Folha | null> {
     const dlg = el('alvo-dlg') as HTMLDialogElement;
+    const adiada = opts.tickDoGolpe != null;
     const r = RESUMO[alvo.id];
     const ra = RESUMO[atacante.id];
     const cd = somarCondicoes((alvo.condicoes || []).map((k: any) => ({ ...(COND[k.id] || {}), ...k })));
@@ -6008,7 +6360,8 @@ const SETAS = [
     // duas coisas são Ticks diferentes.
     const classeAtq = classeDeTempo(ra?.arma, ra?.velocidade);
     const velAtq = ra?.velocidade ?? velocidadeDaArma(ra?.arma, 5);
-    const tGolpe = (atacante.tick ?? 0) + preparoDe(classeAtq, velAtq, TEMPO.sistema);
+    const tGolpe = opts.tickDoGolpe
+      ?? ((atacante.tick ?? 0) + preparoDe(classeAtq, velAtq, TEMPO.sistema));
     // E SE O ALVO AINDA NÃO DECLAROU, mas age neste mesmo instante, ele está
     // tão comprometido quanto eu: a escada se lê pela regra, e não pela ordem em
     // que o mestre digitou. Ver `faseDeQuemVaiAgir`.
@@ -6030,7 +6383,9 @@ const SETAS = [
     const de = TOKENS[atacante.id], pa = TOKENS[alvo.id];
     const hexes = de && pa ? distanciaHex(de, pa) : null;
     const dist = hexes != null ? hexes * (Number(ARENA.escala_m) || 1) : null;
-    (el('al-titulo') as HTMLElement).textContent = `${atacante.nome} ataca ${alvo.nome}`;
+    (el('al-titulo') as HTMLElement).textContent = adiada
+      ? `O golpe de ${atacante.nome} cai em ${alvo.nome}`
+      : `${atacante.nome} ataca ${alvo.nome}`;
     (el('al-linha') as HTMLElement).textContent = dist != null
       ? `Distância: ${fmtM(dist)}${pa ? ` · alvo em ${nomeHex(pa.q, pa.r)}` : ''}` : '';
     const cel = (l: string, v: any, n = '') => `<div class="d"><span class="d-l">${l}</span>
@@ -6066,12 +6421,18 @@ const SETAS = [
       const cabe = o.value === 'simples' || (o.value === 'rajada' ? podeRajada : podeDupla);
       o.hidden = !cabe; o.disabled = !cabe;
     }
-    manSel.value = 'simples'; golInp.value = '2';
+    manSel.value = (adiada && opts.manobra) || 'simples'; golInp.value = '2';
     golInp.max = String(Math.max(2, tetoDaRajada(classe)));
-    const anat = () => anatomia({
+    if (adiada && opts.an) {
+      golInp.value = String(Math.max(2, opts.an.golpes || 2));
+      manSel.disabled = true; golInp.disabled = true;
+    } else {
+      manSel.disabled = false; golInp.disabled = false;
+    }
+    const anat = () => (adiada && opts.an ? opts.an : anatomia({
       classe, velocidade: vel, sistema: TEMPO.sistema, manobra: manSel.value as Manobra,
       golpes: Math.max(2, parseInt(golInp.value || '2', 10) || 2),
-    });
+    }));
 
     // ---- O ALCANCE: a única coisa que só o tabuleiro sabe ----
     //
@@ -6125,7 +6486,14 @@ const SETAS = [
     let rolado = '';
     // O CONTRAPÉ da iniciativa: quem entrou atrasado perde dados na PRIMEIRA
     // ação. Mostrado, e não somado, pelo mesmo motivo da distância.
-    const contrape = contrapeEm(atacante.acao, atacante.tick ?? relogio());
+    // O CONTRAPÉ É O DA DECLARAÇÃO, e não o do instante em que a folha reabre.
+    // Foi lá que a escolha foi feita, e o contrapé cai 1d6 por Tick: lê-lo no
+    // Tick do Golpe daria de brinde ao martelo dois Ticks de recuperação que
+    // ele não esperou, só por ter Preparo longo.
+    const contrape = contrapeEm(
+      atacante.acao,
+      adiada ? (atacante.acao?.desde ?? tGolpe) : (atacante.tick ?? relogio()),
+    );
     const pintarPool = () => {
       const pen = anat().penDados[0] || 0;
       const partes = [esc(ra?.ataque || '—')];
@@ -6178,12 +6546,18 @@ const SETAS = [
       el('al-golpes').style.display = manSel.value === 'rajada' ? '' : 'none';
       const a = anat();
       const t0 = atacante.tick ?? 0;
-      const linha = TEMPO.sistema === 'pgr'
-        ? `<b>Preparo ${a.preparo}</b> · <b>Golpe ${a.golpes}</b> · <b>Recuperação ${a.recuperacao}</b>`
-        : `Resolve agora · <b>${a.ciclo} Ticks</b>`;
       const dados = a.penDados.map((x, i) => `${i + 1}º ${x ? `${x}d6` : 'cheio'}`).join(' · ');
-      (el('al-tempo') as HTMLElement).innerHTML =
-        `<div>${linha} = <b>${a.ciclo}</b> Ticks</div>
+      // NA FOLHA ADIADA O TEMPO JÁ FOI GASTO. Repetir a agenda aqui faria a mesa
+      // ler "custa 6 Ticks" um segundo antes de aplicar o dano, e ninguém está
+      // decidindo mais nada sobre tempo: o relógio andou na declaração.
+      (el('al-tempo') as HTMLElement).innerHTML = adiada
+        ? `<div>Golpe declarado no Tick <b>${atacante.acao?.desde ?? '—'}</b>, caindo no <b>${tGolpe}</b>
+             · a guarda lida é a <b>deste instante</b></div>
+           <div class="muted">o relógio de ${esc(atacante.nome)} já foi até o ${atacante.tick ?? 0}
+             · dados: ${esc(dados)}</div>`
+        : `<div>${TEMPO.sistema === 'pgr'
+          ? `<b>Preparo ${a.preparo}</b> · <b>Golpe ${a.golpes}</b> · <b>Recuperação ${a.recuperacao}</b>`
+          : `Resolve agora · <b>${a.ciclo} Ticks</b>`} = <b>${a.ciclo}</b> Ticks</div>
          <div class="muted">golpe${a.golpes > 1 ? 's' : ''} no Tick ${a.offs.map((o) => t0 + o).join(', ')}
            · livre no ${t0 + a.ciclo} · dados: ${esc(dados)}</div>
          ${a.aviso ? `<div class="ruim">${esc(a.aviso)}</div>` : ''}`;
