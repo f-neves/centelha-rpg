@@ -609,8 +609,19 @@ const { aba } = Astro.props;
   .fila-h .col-h { flex: 1 1 auto; margin: 0; white-space: nowrap; border: none; padding: 0; }
   .fila-dobra { flex: 0 0 auto; line-height: 1; transition: transform .18s ease; }
   .fila-dobra[aria-expanded="false"] { transform: rotate(-90deg); }
+  /* BASE ZERO, E NÃO `auto`: é isto que mantém a tira DEITADA.
+     O `flex-wrap: wrap` do pai existe para a faixa dos golpes no ar cair numa
+     linha só dela (ela pede `flex-basis: 100%`). Mas quem decide o que cabe na
+     primeira linha é a base de cada item, ANTES de qualquer encolhimento: com
+     `flex-basis: auto` a base desta lista é a soma dos cartões (doze de 11,5rem
+     dão mais de 2000px), o navegador via que o relógio e ela não cabiam juntos
+     e mandava a fila para a segunda linha. Depois disso o `min-width: 0` até
+     encolhia, mas já na linha de baixo: a tira ficava com 204px de altura, em
+     coluna, com o relógio sozinho em cima. Base zero diz "eu caibo em qualquer
+     sobra", a lista fica ao lado do relógio, e a rolagem lateral (que sempre
+     foi o plano para cena grande) volta a ser o que absorve os doze. */
   .fila-lista { display: flex; flex-direction: row; align-items: stretch; gap: .3rem;
-    flex: 1 1 auto; min-width: 0; overflow-x: auto; overflow-y: hidden;
+    flex: 1 1 0; min-width: 0; overflow-x: auto; overflow-y: hidden;
     margin-top: 0; padding-bottom: .1rem; scrollbar-width: thin; }
   /* ---- o relógio da cena ----
      O Tick em corpo grande, com a rodada de acompanhante. Tabular para o número
