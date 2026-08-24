@@ -801,6 +801,16 @@ revistos por ela.
   o número está na ficha; para a criatura não existe. Ou o bloco do bestiário ganha um campo de
   deslocamento, ou a seta escreve o passo só para quem tem ficha.
 
+  **O caminho já está escolhido, e é trabalho de busca (anotado em 23/08).** As 309 criaturas do
+  bestiário vão ganhar deslocamento próprio, e a fonte é o **deslocamento da criatura original** no
+  material de onde ela veio (D&D 3.5 / Pathfinder, onde vem em pés por round). Não se inventa número
+  por atributo: colhe-se o número da fonte e converte-se. A régua da conversão sai do que já
+  calculamos para as **raças básicas**, que é onde os dois sistemas se tocam: o humano de referência
+  anda 30 ft/round na fonte e 2 + (Des + Atl) ÷ 4 m por Tick aqui, e anão/gnomo/halfling andam 20
+  ft/round na fonte e dois terços aqui. Esses pares dão o fator, e o fator aplica-se ao resto do
+  bestiário. Fica para quando a frente do bestiário abrir: é varredura de 309 verbetes, não é uma
+  decisão de design.
+
 - [ ] **K25 · [DECIDIR] A Defesa da arma e a do escudo somam, e o escudeiro vira parede.** A
   `defesas.md` escreve "**+ defesa da arma/escudo**", no singular, mas a ficha **soma as duas**
   (`ficha-engine.ts:1467`: "Bloqueio soma a Defesa das armas/escudos do conjunto EM USO"). Com
