@@ -9,8 +9,8 @@
 > **[FAZER]** = já decidido, é trabalho de execução.
 > **[AUTOR]** = frente de escrita sua, não minha.
 
-**Placar:** 78 itens abertos · 43 [DECIDIR] · 27 [FAZER] · 6 [AUTOR]
-Por frente: **Arcano 20** · **Ações & Sistema 11** · **Mesa 10** · **Bestiário 9** · Lore 9 ·
+**Placar:** 79 itens abertos · 43 [DECIDIR] · 27 [FAZER] · 7 [AUTOR]
+Por frente: **Arcano 20** · **Ações & Sistema 11** · **Mesa 10** · **Bestiário 9** · Lore 10 ·
 Proezas 5 · Trilhas 4 · Arremesso 4 · Infraestrutura 4 · Social 2
 
 > **Mesa, 2026-08-12:** fechou **I7** (névoa de guerra) e entraram **I9** (caderno de melhorias do
@@ -418,13 +418,19 @@ Detalhe em `lore/Lore_Centelha.md` §7 e §8. Nada de lore foi ao site ainda.
   seu aval: as três famílias de fé, as nove grandes potências, o casamento de cada cultura com uma
   mitologia real e os seis papéis religiosos. Trava F5 e F6, porque o nome de uma cidade carrega o
   panteão dela.
-- [ ] **F8 · [DECIDIR] O calendário de Uldun.** Esqueleto, vigílias, luas e estações já TRAVADOS na
-  §9 de `lore/Lore_Centelha.md`. Falta o mapa de datas dos eventos globais (solstícios, auroras, as
-  noites em que o sobrenatural aflora) e os nomes de meses, dias da semana, vigílias e estações.
+- [ ] **F8 · [AUTOR] Os nomes do calendário.** A estrutura inteira fechou na §9 de
+  `lore/Lore_Centelha.md` (esqueleto, vigílias, luas, estações, pontos do sol, as cinco camadas de
+  datas, o véu que engrossa, os eventos locais, a contagem dos anos). Falta **nomear**, nas duas
+  camadas decididas na §9.14 (descritivo no povo, próprio no culto): 13 meses, 7 dias da semana, 8
+  vigílias, 4 estações, 4 soleiras e as sete noites que fecham o ano.
 - [ ] **F9 · [DECIDIR] Os períodos da segunda e da terceira lua.** A rápida está travada em 28 dias.
   Falta calcular as outras duas, e antes disso decidir se os períodos **fecham** com a grade de 364
   (conjunção vira feriado fixo) ou **derrapam** por cima dela (prever a noite dupla vira ofício de
   astrólogo). É esse cálculo que gera as datas raras. Detalhe na §9.3.
+- [ ] **F10 · [DECIDIR] A moeda mecânica das datas afinadas.** O grau de afinamento existe, falta o
+  número: +1d6 por grau (a moeda de Resistir & Desgaste invertida), um degrau de Dificuldade a
+  menos, recurso (Centelha e Energia rendendo mais), ou nada além de ficção e frequência de
+  encontros. Decidido que a regra é **leve**. Detalhe na §9.7.
 
 ## G. Ações & Sistema
 
