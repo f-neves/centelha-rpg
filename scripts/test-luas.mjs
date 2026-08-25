@@ -360,8 +360,143 @@ async function main() {
      realinhado.lit.map(v => (v*100).toFixed(0)+'%').join(' · '));
   await p.click('#bReset');
 
+  /* ---------------- 7. foco da câmera ---------------- */
+  secao('7 · foco em cada corpo');
+  await p.evaluate(() => window.__bancada.irPara(20));
+  const alvos = await p.$$eval('#alvos button', bs => bs.map(b => b.dataset.alvo));
+  ok(JSON.stringify(alvos) === JSON.stringify(['sol','uldun','pequena','grande','estrangeira']),
+     'há um botão de foco para o Sol, o planeta e cada lua', alvos.join(', '));
+  for (const id of alvos) {
+    const r = await p.evaluate(i => {
+      document.querySelector(`[data-alvo="${i}"]`).click();
+      const t = window.__bancada.posTela(i);
+      return { alvo: window.__bancada.cam.alvo, dist: window.__bancada.cam.dist,
+               desvio: Math.hypot(t.x - t.W/2, t.y - t.H/2), diag: Math.hypot(t.W, t.H),
+               marcado: document.querySelector(`[data-alvo="${i}"]`).classList.contains('on') };
+    }, id);
+    ok(r.alvo === id && r.desvio < r.diag*0.01 && r.marcado,
+       `foco em ${id} centraliza o corpo`, `${r.desvio.toFixed(1)}px do centro · câmera a ${r.dist.toFixed(0)} Mm`);
+  }
+  const vizinho = await p.evaluate(() => {
+    const r = [];
+    for (const id of ['pequena','grande','estrangeira']) {
+      document.querySelector(`[data-alvo="${id}"]`).click();
+      const u = window.__bancada.posTela('uldun');
+      r.push({ id, dentro: !!u && u.x > 0 && u.x < u.W && u.y > 0 && u.y < u.H });
+    }
+    return r;
+  });
+  ok(vizinho.every(x => x.dentro), 'focar uma lua deixa Uldun no enquadramento, atrás dela',
+     vizinho.map(x => x.id + (x.dentro ? ' ok' : ' FORA')).join(' · '));
+
+  /* ---------------- 8. caça aos alinhamentos ---------------- */
+  secao('8 · alinhamentos calculados dos parâmetros');
+  const lerAlinha = () => p.evaluate(() => {
+    const o = {};
+    for (const a of window.__bancada.alinhamentos)
+      o[a.conjunto + '|' + a.tipo] = { prox: a.achados[0] ? +a.achados[0].t.toFixed(1) : null,
+                                       erro: a.achados[0] ? +a.achados[0].desvio.toFixed(1) : null,
+                                       cad: a.cadencia ? +a.cadencia.toFixed(1) : null };
+    return o;
+  });
+  await p.evaluate(() => { const b = window.__bancada; b.cena.t = 0; b.cfgAlinha.tol = 20;
+                           b.sincronizar(); b.recalcularAlinhamentos(); });
+  let al = await lerAlinha();
+  ok(al['as três juntas|nova'].prox === 192 && Math.abs(al['as três juntas|nova'].cad - 192) < 1,
+     'com tolerância estrita, as três só ficam novas de verdade nos solstícios',
+     `próxima no dia ${al['as três juntas|nova'].prox}, a cada ${al['as três juntas|nova'].cad} d`);
+  ok(al['as três juntas|cheia'].prox === null, 'as três nunca ficam cheias juntas');
+  ok(al['Pequena e Grande|cheia'].prox === null, 'a Pequena e a Grande nunca ficam cheias juntas');
+  ok(al['Grande e Estrangeira|cheia'].prox === null, 'a Grande e a Estrangeira nunca ficam cheias juntas');
+  ok(Math.abs(al['Pequena e Grande|nova'].cad - 32) < 0.5, 'a Pequena e a Grande ficam novas juntas todo mês',
+     `a cada ${al['Pequena e Grande|nova'].cad} d`);
+
+  await p.evaluate(() => { document.querySelector('[data-tol="33"]').click(); });
+  al = await lerAlinha();
+  ok(Math.abs(al['as três juntas|nova'].cad - 96) < 2,
+     'afrouxando para o critério de céu apagado, o encontro vira as quatro soleiras',
+     `a cada ${al['as três juntas|nova'].cad} d`);
+  const notaTol = await p.evaluate(() => document.getElementById('painelAlinha').textContent);
+  ok(/8[.,]\d\s*%/.test(notaTol), 'a nota traduz a tolerância em fração iluminada');
+
+  // mudar a velocidade de uma lua muda o alinhamento: é o pedido central
+  const antesCad = al['as três juntas|nova'].cad, antesProx = al['as três juntas|nova'].prox;
+  await p.evaluate(() => {
+    const num = document.querySelector('[data-campo="grande:orb.T"]');
+    num.value = '24'; num.dispatchEvent(new Event('change', { bubbles: true }));
+    window.__bancada.recalcularAlinhamentos();
+  });
+  const al2 = await lerAlinha();
+  ok(al2['as três juntas|nova'].cad !== antesCad || al2['as três juntas|nova'].prox !== antesProx,
+     'trocar o período da Grande muda quando o alinhamento acontece',
+     `antes a cada ${antesCad} d, agora ${al2['as três juntas|nova'].cad} d`);
+  ok(Math.abs(al2['Pequena e Grande|nova'].cad - 32) > 0.5, 'e muda também o encontro do par que a envolve',
+     `agora ${al2['Pequena e Grande|nova'].cad} d`);
+
+  const horizonte = await p.evaluate(() => {
+    const b = window.__bancada;
+    b.cfgAlinha.horizonte = 384; b.sincronizar(); b.recalcularAlinhamentos();
+    const n = b.alinhamentos.find(a => a.conjunto === 'Pequena e Grande' && a.tipo === 'nova').achados.length;
+    b.cfgAlinha.horizonte = 3840; b.sincronizar();
+    return n;
+  });
+  ok(horizonte > 0 && horizonte < 20, 'encurtar o horizonte encurta a lista', horizonte + ' encontros em 1 ano');
+
+  await p.click('#bReset');
+  const painelDOM = await p.evaluate(() => ({
+    blocos: document.querySelectorAll('#painelAlinha .alinha').length,
+    pares: document.querySelectorAll('#painelAlinha .alinha-par').length,
+    txt: document.querySelector('#painelAlinha .alinha').textContent,
+  }));
+  ok(painelDOM.blocos === 4 && painelDOM.pares === 8, 'o painel mostra os quatro conjuntos, nova e cheia',
+     `${painelDOM.blocos} blocos, ${painelDOM.pares} linhas`);
+  ok(/as três juntas/.test(painelDOM.txt), 'o primeiro bloco é o das três juntas');
+
+  /* ---------------- 9. JSON dos parâmetros ---------------- */
+  secao('9 · copiar e aplicar os parâmetros');
+  await p.evaluate(() => document.getElementById('bCopiar').click());
+  const txtJSON = await p.$eval('#jsonParams', e => e.value);
+  let obj = null;
+  try { obj = JSON.parse(txtJSON); } catch {}
+  ok(obj !== null, 'o botão de copiar produz JSON válido', `${txtJSON.length} caracteres`);
+  ok(obj && obj.luas && obj.luas.length === 3 && obj.uldun && obj.camera && obj.cena,
+     'o JSON traz cena, câmera, o planeta e as três luas');
+  ok(obj && obj.luas[1].orb.a === 404.9 && obj.luas[2].orb.retro === true && obj.luas[0].rot.travada === true,
+     'o JSON traz os valores certos, inclusive retrógrada e trava de maré');
+
+  const aplicou = await p.evaluate(() => {
+    const o = JSON.parse(document.getElementById('jsonParams').value);
+    o.luas[1].orb.a = 500; o.luas[1].orb.e = 0.2; o.luas[1].rot.travada = false;
+    o.cena.compressao = 77; o.camera.alvo = 'estrangeira';
+    document.getElementById('jsonParams').value = JSON.stringify(o);
+    document.getElementById('bAplicar').click();
+    const S = window.__bancada.S;
+    return { a: S.luas[1].orb.a, e: S.luas[1].orb.e, travada: S.luas[1].rot.travada,
+             comp: window.__bancada.cena.compressao, alvo: window.__bancada.cam.alvo,
+             aviso: document.getElementById('jsonAviso').textContent,
+             campo: parseFloat(document.querySelector('[data-campo="grande:orb.a"]').value) };
+  });
+  ok(aplicou.a === 500 && aplicou.e === 0.2 && aplicou.travada === false,
+     'aplicar o JSON muda os parâmetros da lua', `a=${aplicou.a} e=${aplicou.e}`);
+  ok(aplicou.comp === 77 && aplicou.alvo === 'estrangeira', 'aplicar o JSON muda cena e câmera');
+  ok(aplicou.campo === 500, 'os controles refletem o JSON aplicado', String(aplicou.campo));
+  ok(/aplicados/i.test(aplicou.aviso), 'o aviso confirma', aplicou.aviso);
+
+  const ruim = await p.evaluate(() => {
+    document.getElementById('jsonParams').value = '{ isso nao e json';
+    document.getElementById('bAplicar').click();
+    return { aviso: document.getElementById('jsonAviso').textContent, a: window.__bancada.S.luas[1].orb.a };
+  });
+  ok(/inválido/i.test(ruim.aviso) && ruim.a === 500, 'JSON quebrado avisa e não estraga o estado', ruim.aviso.slice(0,44));
+
+  await p.click('#bReset');
+  const depoisReset = await p.evaluate(() => ({ a: window.__bancada.S.luas[1].orb.a,
+    comp: window.__bancada.cena.compressao, alvo: window.__bancada.cam.alvo }));
+  ok(depoisReset.a === 404.9 && depoisReset.comp === 50 && depoisReset.alvo === 'sol',
+     'restaurar padrões desfaz o JSON aplicado', JSON.stringify(depoisReset));
+
   /* ---------------- 7. layout estreito ---------------- */
-  secao('7 · tela estreita');
+  secao('10 · tela estreita');
   await p.setViewport({ width: 430, height: 860 });
   await p.evaluate(() => { window.dispatchEvent(new Event('resize')); });
   const estreito = await p.evaluate(() => {
@@ -374,7 +509,7 @@ async function main() {
   await p.evaluate(() => { window.dispatchEvent(new Event('resize')); });
 
   /* ---------------- 8. retratos ---------------- */
-  secao('8 · retratos');
+  secao('11 · retratos');
   await p.evaluate(() => { window.__bancada.cam.alvo='sol'; window.__bancada.cam.dist=7200; window.__bancada.irPara(96); });
   await p.screenshot({ path: `${SHOTS}/luas-sistema.png` });
   await p.evaluate(() => {
@@ -384,10 +519,16 @@ async function main() {
   await p.screenshot({ path: `${SHOTS}/luas-uldun.png` });
   await p.evaluate(() => { const b = window.__bancada; b.cam.dist=900; b.irPara(48); });
   await p.screenshot({ path: `${SHOTS}/luas-cheia.png` });
+  await p.evaluate(() => {
+    const b = window.__bancada;
+    b.irPara(96); document.querySelector('[data-alvo="grande"]').click();
+    document.querySelector('[data-tol="33"]').click();
+  });
+  await p.screenshot({ path: `${SHOTS}/luas-foco.png` });
   ok(fs.existsSync(`${SHOTS}/luas-sistema.png`), 'retrato do sistema salvo');
   ok(fs.existsSync(`${SHOTS}/luas-uldun.png`), 'retrato de perto de Uldun salvo');
 
-  secao('9 · console limpo');
+  secao('12 · console limpo');
   ok(erros.length === 0, 'nenhum erro de página', erros.slice(0,3).join(' | '));
 
   if (!VER) await br.close();

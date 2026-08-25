@@ -75,6 +75,18 @@ details > summary .pt { width: .6rem; height: .6rem; border-radius: 50%; box-sha
 details > div { padding: .15rem .6rem .6rem; border-top: 1px solid #2a231b; }
 
 .nota { color: var(--ink-soft); font-size: .74rem; margin: .45rem 0 0; }
+.alinha { border: 1px solid var(--linha); border-radius: 6px; padding: .4rem .55rem; margin: 0 0 .4rem; background: #17120e; }
+.alinha.destaque { border-color: #5c4a1f; background: #1d1710; }
+.alinha-tit { font-size: .74rem; font-weight: 600; color: var(--acento); margin-bottom: .25rem; }
+.alinha-par { display: grid; grid-template-columns: 5.4rem 1fr; gap: .4rem; align-items: start; font-size: .72rem; margin: .18rem 0; }
+.alinha-par > div { font-family: var(--mono); font-size: .68rem; color: var(--ink-soft); line-height: 1.35; }
+.alinha-par b { color: var(--ink); }
+.alinha-par i { color: #6b6154; font-style: normal; }
+.alinha-par .mm { color: #6b6154; }
+.tag { font-size: .6rem; text-transform: uppercase; letter-spacing: .06em; padding: .1rem .3rem; border-radius: 4px; border: 1px solid; text-align: center; }
+.tag.nova { color: var(--acento2); border-color: #2c4f49; background: #0f2320; }
+.tag.cheia { color: var(--morno); border-color: #5c4a1f; background: #241d0f; }
+textarea#jsonParams { width: 100%; height: 8rem; background: #100d0a; color: var(--ink); border: 1px solid var(--linha); border-radius: 5px; padding: .35rem .45rem; font: 11px/1.4 var(--mono); resize: vertical; }
 .linhainfo { display: flex; justify-content: space-between; font-size: .74rem; font-family: var(--mono); color: var(--ink-soft); padding: .1rem 0; border-bottom: 1px dotted #2a231b; }
 .linhainfo b { color: var(--ink); font-weight: 500; }
 </style>
@@ -113,11 +125,8 @@ details > div { padding: .15rem .6rem .6rem; border-top: 1px solid #2a231b; }
     <div class="botoes" id="atalhos"></div>
 
     <h3>Cena</h3>
-    <div class="botoes">
-      <button class="acao fantasma mini" data-alvo="sol">câmera no Sol</button>
-      <button class="acao fantasma mini" data-alvo="uldun">câmera em Uldun</button>
-      <button class="acao fantasma mini" id="bCam">recentrar</button>
-    </div>
+    <div class="botoes" id="alvos"></div>
+    <div class="botoes"><button class="acao fantasma mini" id="bCam">recentrar a câmera</button></div>
     <div id="ctrlCena"></div>
     <label class="caixa"><input type="checkbox" id="opOrbitas" checked> desenhar as órbitas</label>
     <label class="caixa"><input type="checkbox" id="opEixos" checked> desenhar os eixos de rotação</label>
@@ -127,10 +136,24 @@ details > div { padding: .15rem .6rem .6rem; border-top: 1px solid #2a231b; }
 
     <h3>Corpos</h3>
     <div id="ctrlCorpos"></div>
+
+    <h3>Alinhamentos</h3>
+    <div id="ctrlAlinha"></div>
+    <div class="botoes" id="tolAtalhos"></div>
+    <div class="botoes"><button class="acao fantasma mini" id="bAlinha">recalcular agora</button></div>
+    <div id="painelAlinha"></div>
+
+    <h3>Parâmetros</h3>
     <div class="botoes">
+      <button class="acao" id="bReset">restaurar padrões</button>
       <button class="acao fantasma mini" id="bRealinhar">realinhar no dia 0</button>
-      <button class="acao fantasma mini" id="bReset">valores do cânone</button>
     </div>
+    <div class="botoes">
+      <button class="acao fantasma mini" id="bCopiar">copiar JSON</button>
+      <button class="acao fantasma mini" id="bAplicar">aplicar o JSON abaixo</button>
+    </div>
+    <textarea id="jsonParams" spellcheck="false"></textarea>
+    <p class="nota" id="jsonAviso">Copia tudo: cena, câmera e os quatro corpos. Cole de volta e clique em aplicar para voltar a um estado salvo.</p>
 
     <h3>Leitura</h3>
     <div id="painelInfo"></div>
@@ -180,7 +203,18 @@ const cena = {
   orbitas:true, eixos:true, rastro:false, plano:true, nomes:true,
 };
 const cam = { alvo:'sol', az: -60, el: 26, dist: 7200, fov: 45 };
-const DIST_PADRAO = { sol: 7200, uldun: 1700 };
+function distPadrao(alvo) {
+  if (alvo === 'sol') return 7200;
+  if (alvo === 'uldun') return 1700;
+  const L = S.luas.find(x => x.id === alvo);
+  return L ? Math.max(35, L.raio*cena.exagCorpo*1.6*7) : 1700;
+}
+function nomeAlvo(alvo) {
+  if (alvo === 'sol') return 'Sol';
+  if (alvo === 'uldun') return 'Uldun';
+  const L = S.luas.find(x => x.id === alvo);
+  return L ? L.curto : alvo;
+}
 
 /* ---------- Kepler ---------- */
 function posOrbita(o, t) {
@@ -243,8 +277,13 @@ function medir() {
   W = Math.max(320, Math.round(r.width)); H = Math.max(240, Math.round(r.height));
   cv.width = Math.round(W*DPR); cv.height = Math.round(H*DPR);
 }
+function alvoDaCamera(est) {
+  if (cam.alvo === 'uldun') return est.uldun;
+  const it = est.luas.find(x => x.L.id === cam.alvo);
+  return it ? it.pos : [0,0,0];
+}
 function montarCamera(est) {
-  const alvo = cam.alvo === 'uldun' ? est.uldun : [0,0,0];
+  const alvo = alvoDaCamera(est);
   const el = clamp(cam.el, -88, 88)*D2R, az = cam.az*D2R;
   const dir = [Math.cos(el)*Math.cos(az), Math.cos(el)*Math.sin(az), Math.sin(el)];
   const eye = [alvo[0]+dir[0]*cam.dist, alvo[1]+dir[1]*cam.dist, alvo[2]+dir[2]*cam.dist];
@@ -496,7 +535,7 @@ function decorar(ctx, K, pos, raioDes, rot, giroGraus, info, cor, nome) {
     const p = projetar(K, [pos[0]+m[0]*raioDes, pos[1]+m[1]*raioDes, pos[2]+m[2]*raioDes]);
     if (p) {
       ctx.fillStyle = '#c9a227';
-      ctx.beginPath(); ctx.arc(p.x, p.y, Math.max(1.4, info.R*0.13), 0, TAU); ctx.fill();
+      ctx.beginPath(); ctx.arc(p.x, p.y, clamp(info.R*0.1, 1.4, 5.5), 0, TAU); ctx.fill();
     }
   }
   if (cena.nomes) enfileirarRotulo(info.pr.x, info.pr.y - info.R - 7, nome, cor, info.pr.z);
@@ -672,7 +711,7 @@ function mkCtrl(host, obj, path, rot, unidade, min, max, step, prefixo) {
     v = clamp(parseFloat(v), min, max);
     if (!isFinite(v)) return;
     caminhoSet(obj, path, v);
-    ler(); render();
+    ler(); render(); agendarAlinhamentos();
   };
   rng.addEventListener('input', () => escrever(rng.value));
   num.addEventListener('change', () => escrever(num.value));
@@ -706,6 +745,18 @@ function montarControles() {
   releitura.push(mkCtrl(cc, cena, 'exagSol', 'tamanho do Sol', '×', 0.05, 2, 0.05));
   releitura.push(mkCtrl(cc, cam, 'dist', 'distância da câmera', 'Mm', 60, 20000, 20));
   releitura.push(mkCtrl(cc, cam, 'fov', 'abertura', '°', 15, 90, 1));
+
+  const ca = document.getElementById('ctrlAlinha'); ca.innerHTML = '';
+  releitura.push(mkCtrl(ca, cfgAlinha, 'tol', 'tolerância', 'graus fora do alinhamento', 1, 45, 0.5));
+  releitura.push(mkCtrl(ca, cfgAlinha, 'horizonte', 'até onde procurar', 'dias', 384, 38400, 384));
+
+  const ta = document.getElementById('tolAtalhos'); ta.innerHTML = '';
+  for (const [v, rot, dica] of [[5,'estrito','5 graus, ate 0,2% iluminada'],[20,'novas','20 graus, ate 3% iluminada'],[33,'ceu apagado','33 graus, ate 8%, o mesmo do selo']]) {
+    const b = document.createElement('button');
+    b.className = 'acao fantasma mini'; b.textContent = rot; b.title = dica; b.dataset.tol = v;
+    b.addEventListener('click', () => { cfgAlinha.tol = v; sincronizar(); recalcularAlinhamentos(); });
+    ta.appendChild(b);
+  }
 
   const co = document.getElementById('ctrlCorpos'); co.innerHTML = '';
   bloco(co, S.uldun, 'Uldun', true);
@@ -756,6 +807,168 @@ function sincronizar() {
   for (const f of releitura) f();
 }
 
+/* ---------- caça aos alinhamentos ----------
+   Tudo aqui sai dos parâmetros que estão na tela agora. Mexer no período de uma
+   lua muda o resultado, que é o ponto. A elongação é o ângulo entre a lua e o Sol
+   vistos do centro de Uldun: 0° é lua nova, 180° é lua cheia. */
+
+function elongEm(t) {
+  const pu = posOrbita(S.uldun.orb, t);
+  const dSol = norm([-pu[0], -pu[1], -pu[2]]);
+  return S.luas.map(L => {
+    const r = norm(posOrbita(L.orb, t));
+    return Math.acos(clamp(dot(r, dSol), -1, 1)) * R2D;
+  });
+}
+// desvio do conjunto em relação ao alvo (0 = todas novas, 180 = todas cheias):
+// vale o pior dos participantes, porque alinhamento é o elo mais fraco
+function desvio(el, quais, alvo) {
+  let pior = 0;
+  for (const i of quais) pior = Math.max(pior, Math.abs(el[i] - alvo));
+  return pior;
+}
+
+const CONJUNTOS = [
+  { quais:[0,1,2], rot:'as três juntas' },
+  { quais:[0,1],   rot:'Pequena e Grande' },
+  { quais:[1,2],   rot:'Grande e Estrangeira' },
+  { quais:[0,2],   rot:'Pequena e Estrangeira' },
+];
+
+function caçarAlinhamentos(t0, horizonte, tol) {
+  const passo = 0.4;
+  const N = Math.ceil(horizonte/passo) + 2;
+  const ts = new Float64Array(N), el = new Float64Array(N*3);
+  for (let k = 0; k < N; k++) {
+    const t = t0 + k*passo; ts[k] = t;
+    const e = elongEm(t);
+    el[k*3] = e[0]; el[k*3+1] = e[1]; el[k*3+2] = e[2];
+  }
+  const contInst = (t, quais, alvo) => desvio(elongEm(t), quais, alvo);
+
+  const saida = [];
+  for (const cj of CONJUNTOS) {
+    for (const [alvo, chave] of [[0,'nova'],[180,'cheia']]) {
+      const f = new Float64Array(N);
+      for (let k = 0; k < N; k++) f[k] = desvio([el[k*3], el[k*3+1], el[k*3+2]], cj.quais, alvo);
+      const achados = [];
+      for (let k = 1; k < N-1 && achados.length < 40; k++) {
+        if (!(f[k] <= f[k-1] && f[k] <= f[k+1])) continue;
+        if (f[k] > tol + 60) continue;                    // longe demais, nem refina
+        // refino por seção ternária no intervalo que contém o mínimo
+        let a = ts[k-1], b = ts[k+1];
+        for (let it = 0; it < 44; it++) {
+          const m1 = a + (b-a)/3, m2 = b - (b-a)/3;
+          if (contInst(m1, cj.quais, alvo) < contInst(m2, cj.quais, alvo)) b = m2; else a = m1;
+        }
+        const tm = (a+b)/2, v = contInst(tm, cj.quais, alvo);
+        if (v <= tol) achados.push({ t: tm, desvio: v });
+      }
+      // cadência: mediana dos intervalos, para dizer "a cada tantos dias"
+      let cadencia = null;
+      if (achados.length >= 3) {
+        const dif = achados.slice(1).map((x,i) => x.t - achados[i].t).sort((p,q) => p-q);
+        cadencia = dif[Math.floor(dif.length/2)];
+      }
+      saida.push({ conjunto: cj.rot, quais: cj.quais, tipo: chave, achados, cadencia });
+    }
+  }
+  return saida;
+}
+
+let alinhamentos = [], alinhaBase = null, alinhaTimer = 0;
+const cfgAlinha = { tol: 20, horizonte: 3840 };
+
+function recalcularAlinhamentos() {
+  const t0 = cena.t;
+  const marca = performance.now();
+  alinhamentos = caçarAlinhamentos(t0, cfgAlinha.horizonte, cfgAlinha.tol);
+  alinhaBase = t0;
+  desenharAlinhamentos(performance.now() - marca);
+}
+function agendarAlinhamentos() {
+  clearTimeout(alinhaTimer);
+  alinhaTimer = setTimeout(recalcularAlinhamentos, 260);
+}
+
+function desenharAlinhamentos(ms) {
+  const host = document.getElementById('painelAlinha');
+  if (!host) return;
+  const anos = (cfgAlinha.horizonte/384).toFixed(0);
+  const partes = [];
+  for (const r of alinhamentos) {
+    const prox = r.achados[0];
+    let txt;
+    if (!prox) {
+      txt = `<i>não acontece em ${anos} anos</i>`;
+    } else {
+      // encaixa no dia certo: o refino numérico devolve 192,0000001 e o dia N vai de N-1 a N
+      const tLimpo = Math.abs(prox.t - Math.round(prox.t)) < 1e-3 ? Math.round(prox.t) : prox.t;
+      const c = calendario(tLimpo);
+      const daqui = prox.t - alinhaBase;
+      const cad = r.cadencia ? ` · a cada <b>${r.cadencia.toFixed(1)} d</b>` : (r.achados.length > 1 ? ` · ${r.achados.length} vezes` : ' · só uma vez');
+      txt = `<b>dia ${c.dia}</b> <span class="mm">(mês ${c.mes}, dia ${c.diaMes})</span><br>` +
+            `daqui a ${daqui < 0.05 ? 'agora' : daqui.toFixed(1) + ' d'} · erro ${prox.desvio.toFixed(1)}°${cad}`;
+    }
+    partes.push({ conjunto: r.conjunto, tipo: r.tipo, txt, tem: !!prox });
+  }
+  const linhas = [];
+  for (const cj of CONJUNTOS) {
+    const nova = partes.find(p => p.conjunto === cj.rot && p.tipo === 'nova');
+    const cheia = partes.find(p => p.conjunto === cj.rot && p.tipo === 'cheia');
+    linhas.push(
+      `<div class="alinha ${cj.quais.length === 3 ? 'destaque' : ''}">` +
+      `<div class="alinha-tit">${cj.rot}</div>` +
+      `<div class="alinha-par"><span class="tag nova">todas novas</span><div>${nova.txt}</div></div>` +
+      `<div class="alinha-par"><span class="tag cheia">todas cheias</span><div>${cheia.txt}</div></div>` +
+      `</div>`);
+  }
+  const luz = ((1 - Math.cos(cfgAlinha.tol*D2R))/2*100).toFixed(1);
+  host.innerHTML = linhas.join('') +
+    `<p class="nota">Busca numérica nos próximos <b>${anos} anos</b> a partir do dia ${alinhaBase.toFixed(1)}.` +
+    ` Tolerância de <b>${cfgAlinha.tol}°</b> quer dizer aceitar uma lua com até <b>${luz}%</b> iluminada como nova` +
+    ` (ou com ${luz}% de sombra como cheia). Aumente para incluir alinhamentos frouxos.` +
+    ` ${ms != null ? `Levou ${ms.toFixed(0)} ms.` : ''}</p>`;
+}
+
+/* ---------- parâmetros em JSON ---------- */
+function paramsJSON() {
+  const corpo = c => ({ raio: c.raio, dens: c.dens, orb: { ...c.orb }, rot: { ...c.rot } });
+  return {
+    bancada: 'luas-de-uldun', versao: 1,
+    cena: { t: cena.t, veloc: cena.veloc, compressao: cena.compressao, exagCorpo: cena.exagCorpo, exagSol: cena.exagSol },
+    camera: { alvo: cam.alvo, az: cam.az, el: cam.el, dist: cam.dist, fov: cam.fov },
+    sol: { raio: S.sol.raio },
+    uldun: corpo(S.uldun),
+    luas: S.luas.map(L => ({ id: L.id, nome: L.nome, ...corpo(L) })),
+  };
+}
+function textoJSON() { return JSON.stringify(paramsJSON(), null, 2); }
+
+function aplicarJSON(txt) {
+  const o = JSON.parse(txt);
+  const num = (dest, src, chaves) => { if (!src) return; for (const k of chaves) if (typeof src[k] === 'number' && isFinite(src[k])) dest[k] = src[k]; };
+  const bool = (dest, src, chaves) => { if (!src) return; for (const k of chaves) if (typeof src[k] === 'boolean') dest[k] = src[k]; };
+  const posCorpo = (dest, src) => {
+    if (!src) return;
+    num(dest, src, ['raio','dens']);
+    num(dest.orb, src.orb, ['a','e','i','om','w','T','M0']);
+    bool(dest.orb, src.orb, ['retro']);
+    num(dest.rot, src.rot, ['T','obl','az']);
+    bool(dest.rot, src.rot, ['travada']);
+  };
+  num(cena, o.cena, ['t','veloc','compressao','exagCorpo','exagSol']);
+  num(cam, o.camera, ['az','el','dist','fov']);
+  if (o.camera && ['sol','uldun','pequena','grande','estrangeira'].includes(o.camera.alvo)) cam.alvo = o.camera.alvo;
+  num(S.sol, o.sol, ['raio']);
+  posCorpo(S.uldun, o.uldun);
+  for (const src of (o.luas || [])) {
+    const L = S.luas.find(x => x.id === src.id);
+    if (L) posCorpo(L, src);
+  }
+  return true;
+}
+
 /* ---------- interação ---------- */
 let arrastando = false, ux = 0, uy = 0;
 cv.addEventListener('pointerdown', e => {
@@ -785,35 +998,82 @@ document.getElementById('bPlay').addEventListener('click', e => {
 for (const b of document.querySelectorAll('[data-passo]')) {
   b.addEventListener('click', () => { cena.t += parseFloat(b.dataset.passo); sincronizar(); render(); });
 }
-for (const b of document.querySelectorAll('[data-alvo]')) {
-  b.addEventListener('click', () => {
-    cam.alvo = b.dataset.alvo;
-    cam.dist = DIST_PADRAO[cam.alvo];
-    marcarAlvo(); sincronizar(); render();
-  });
+function montarAlvos() {
+  const host = document.getElementById('alvos');
+  host.innerHTML = '';
+  for (const id of ['sol','uldun', ...S.luas.map(L => L.id)]) {
+    const b = document.createElement('button');
+    b.className = 'acao fantasma mini'; b.dataset.alvo = id; b.textContent = nomeAlvo(id);
+    b.addEventListener('click', () => {
+      cam.alvo = id; cam.dist = distPadrao(id);
+      // ao focar uma lua, põe a câmera do lado de fora dela: assim Uldun fica no
+      // fundo do enquadramento e dá para ver a lua contra o planeta
+      const L = S.luas.find(x => x.id === id);
+      if (L) {
+        const r = posOrbita(L.orb, cena.t);
+        cam.az = Math.atan2(r[1], r[0])*R2D;
+        cam.el = 15;
+      }
+      marcarAlvo(); sincronizar(); render();
+    });
+    host.appendChild(b);
+  }
+  marcarAlvo();
 }
 function marcarAlvo() {
   for (const b of document.querySelectorAll('[data-alvo]')) b.classList.toggle('on', b.dataset.alvo === cam.alvo);
 }
 document.getElementById('bCam').addEventListener('click', () => {
-  cam.az = -60; cam.el = 26; cam.dist = DIST_PADRAO[cam.alvo]; cam.fov = 45;
+  cam.az = -60; cam.el = 26; cam.dist = distPadrao(cam.alvo); cam.fov = 45;
   sincronizar(); render();
 });
 for (const [id, chave] of [['opOrbitas','orbitas'],['opEixos','eixos'],['opRastro','rastro'],['opPlano','plano'],['opNomes','nomes']]) {
   const el = document.getElementById(id);
   el.addEventListener('change', () => { cena[chave] = el.checked; render(); });
 }
+document.getElementById('bAlinha').addEventListener('click', recalcularAlinhamentos);
+
+const areaJSON = document.getElementById('jsonParams');
+const avisoJSON = document.getElementById('jsonAviso');
+function avisar(msg, bom) {
+  avisoJSON.textContent = msg;
+  avisoJSON.style.color = bom === undefined ? '' : (bom ? 'var(--bom)' : 'var(--ruim)');
+  if (bom !== undefined) setTimeout(() => { avisoJSON.textContent =
+    'Copia tudo: cena, câmera e os quatro corpos. Cole de volta e clique em aplicar para voltar a um estado salvo.';
+    avisoJSON.style.color = ''; }, 4000);
+}
+document.getElementById('bCopiar').addEventListener('click', async () => {
+  const txt = textoJSON();
+  areaJSON.value = txt;
+  let copiou = false;
+  try { await navigator.clipboard.writeText(txt); copiou = true; } catch {}
+  if (!copiou) {                       // file:// costuma barrar a área de transferência
+    areaJSON.focus(); areaJSON.select();
+    try { copiou = document.execCommand('copy'); } catch {}
+  }
+  avisar(copiou ? 'Copiado para a área de transferência.' : 'Não deu para copiar sozinho: o texto está aí embaixo, selecionado.', copiou);
+});
+document.getElementById('bAplicar').addEventListener('click', () => {
+  try {
+    aplicarJSON(areaJSON.value);
+    sincronizar(); montarAlvos(); render(); recalcularAlinhamentos();
+    avisar('Parâmetros aplicados.', true);
+  } catch (e) {
+    avisar('JSON inválido: ' + e.message, false);
+  }
+});
+
 document.getElementById('bRealinhar').addEventListener('click', () => {
   for (const L of S.luas) L.orb.M0 = ((180 - L.orb.om - L.orb.w) % 360 + 360) % 360;
   S.uldun.orb.M0 = 0;
-  cena.t = 0; sincronizar(); render();
+  cena.t = 0; sincronizar(); render(); recalcularAlinhamentos();
 });
 document.getElementById('bReset').addEventListener('click', () => {
   S = canone(); cena.t = 0;
   cena.compressao = 50; cena.exagCorpo = 8; cena.exagSol = 0.35; cena.veloc = 1.2;
-  cam.az = -60; cam.el = 26; cam.alvo = 'sol'; cam.dist = DIST_PADRAO.sol; cam.fov = 45;
+  cam.az = -60; cam.el = 26; cam.alvo = 'sol'; cam.dist = distPadrao('sol'); cam.fov = 45;
   releitura.length = 0;
-  montarControles(); montarHudLuas(); marcarAlvo(); render();
+  montarControles(); montarHudLuas(); montarAlvos(); render(); recalcularAlinhamentos();
 });
 
 /* ---------- laço ---------- */
@@ -833,6 +1093,7 @@ function laco(agora) {
     const campo = document.querySelector('[data-campo="t"]');
     if (campo && document.activeElement !== campo) campo.value = cena.t.toFixed(1);
     render();
+    if (alinhaBase != null && Math.abs(cena.t - alinhaBase) > 10) agendarAlinhamentos();
   }
   requestAnimationFrame(laco);
 }
@@ -841,14 +1102,23 @@ window.addEventListener('resize', () => { medir(); render(); });
 medir();
 montarControles();
 montarHudLuas();
-marcarAlvo();
+montarAlvos();
 render();
+recalcularAlinhamentos();
 requestAnimationFrame(laco);
 
 /* expõe para o teste automatizado */
 window.__bancada = {
   get S(){ return S; }, cena, cam, estado, medirLua, calendario, render, sincronizar, canone,
   irPara(d){ cena.t = d; sincronizar(); render(); },
+  get alinhamentos(){ return alinhamentos; }, recalcularAlinhamentos, caçarAlinhamentos,
+  paramsJSON, textoJSON, aplicarJSON, cfgAlinha, distPadrao, montarAlvos,
+  posTela(id) {
+    const e = estado(cena.t), K = montarCamera(e);
+    const pos = id === 'sol' ? [0,0,0] : id === 'uldun' ? e.uldun : (e.luas.find(x => x.L.id === id) || {}).pos;
+    const pr = pos ? projetar(K, pos) : null;
+    return pr ? { x: pr.x, y: pr.y, W, H } : null;
+  },
   medirTudo(d){ const e = estado(d); return e.luas.map(it => ({ id: it.L.id, ...medirLua(e, it) })); },
   mareEm(d){ return mareFasorial(estado(d)); }
 };

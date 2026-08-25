@@ -712,12 +712,34 @@ o compasso é oito, como todo o resto de Uldun.
 
 #### O céu nunca se acende por inteiro
 
-A Grande está cheia nos dias ≡ 16 (mod 32); a Estrangeira, nos dias ≡ 24 (mod 48). Os restos
-possíveis do primeiro conjunto quando divididos por 48 são só 16, 0 e 32. **Nunca 24.**
+Vale mais forte do que parecia: **não são as três que nunca se acendem juntas, são quaisquer duas.**
 
-Logo, as três nunca estão cheias ao mesmo tempo, em ano nenhum, nunca. O céu de Uldun **pode se
-apagar por inteiro e não pode se acender por inteiro**. Toda mitologia lunar do mundo vai ter uma
-explicação para isso, e nenhuma vai estar certa.
+- **A Pequena e a Grande** erram uma à outra por **exatamente 4 dias, sempre.** A Grande enche no dia
+  16 do mês, e a Pequena enche nos dias 4, 12, 20 e 28. O dia 16 é justamente quando a Pequena está
+  **nova**. Meia semana separa as duas cheias, todo mês, para sempre.
+- **A Grande e a Estrangeira** erram por **no mínimo 8 dias**, uma semana cravada. A Grande enche nos
+  dias ≡ 16 (mod 32) e a Estrangeira nos dias ≡ 24 (mod 48); os restos possíveis do primeiro conjunto
+  divididos por 48 são só 16, 0 e 32, e **nunca 24**. O intervalo mais curto entre as duas cheias
+  alterna eternamente entre 8 e 24 dias.
+- Logo **as três, nunca.**
+
+O céu de Uldun **pode se apagar por inteiro e não pode se acender por inteiro**. Toda mitologia lunar
+do mundo vai ter uma explicação para isso, e nenhuma vai estar certa.
+
+#### O escuro total, com rigor
+
+A bancada mede a coisa mais fina do que a §9.4 diz. Com o critério do selo (menos de 8% iluminada,
+que é onde uma lua deixa de dar sombra), **as quatro soleiras são as quatro noites de escuro total**,
+como está escrito. Mas com o critério estrito de lua nova de verdade:
+
+- Nos **dois solstícios** (dias 192 e 384) as três estão **exatamente novas**, porque é lá que a
+  Estrangeira cruza o próprio nó.
+- Nos **dois equinócios** (dias 96 e 288) a Estrangeira está a 30° do Sol, mostrando uma **lasca de
+  7%**, baixa e perto do clarão do poente. Escuro para qualquer efeito prático, mas não nova.
+
+Isso dá aos dois solstícios uma primazia que não estava desenhada: **são as duas únicas noites do ano
+em que o céu está mecanicamente vazio**, e são justamente as noites em que a Estrangeira cruzou o sol
+naquele mesmo dia. Quem quiser hierarquia entre as quatro soleiras, está aqui.
 
 #### Onde caem os eclipses
 
