@@ -206,7 +206,9 @@ Sob todos os nomes locais estão poucas potências reais; cada cultura as batiza
 5. **O Forjador** (forja, ofício, fogo domado, artifício; no mito, o primeiro a ascender pela obra das mãos, caro aos anões).
 6. **A Tecelã** (saber, magia, leitura do destino, oráculos, mistério; a mais malvista pelas ortodoxias).
 7. **O de Muitas Faces** (comércio, estradas, sorte, astúcia, o limiar; o trapaceiro).
-- (Provável 8ª a decidir: uma potência de amor/beleza/laços, cara aos elfos.)
+8. **[CONFIRMADA pela §9.1] A oitava**, de amor, beleza e laços, cara aos elfos. Deixou de ser
+   "provável": a semana de Uldun tem **oito dias**, um por potência de domínio, então ela existe
+   porque tem dia. O calendário fechou esta pendência da §7 sem que ninguém fosse decidi-la.
 
 ### As culturas e seus panteões (inspirações reais) [PROPOSTA v1 · tentativo, ajusta às cidades]
 
@@ -301,21 +303,100 @@ assim mesmo, o que é a §7 provando que funciona. Depende de F7 fechar.
 - **[EM ABERTO]** os nomes das oito vigílias, e se a contagem abre no nascer do sol (natural, muda
   com a estação) ou na meia-noite (abstrato, coisa de astrônomo e de burocrata).
 
-### 9.3. As três luas [PARCIAL]
+### 9.3. As três luas [TRAVADO]
 
-- **[TRAVADO] Uldun tem três luas**, em velocidades diferentes. A mais rápida fecha **32 dias** e é
-  ela que dá o mês.
-- **[TRAVADO] Teologia: uma potência, três corpos.** As três luas são a **Errante** da §7, não três
-  deusas. "Suas fases são suas faces" ganha a segunda leitura que o nome pedia: ela tem três corpos
-  no céu, e cada um mostra uma face diferente da mesma potência. A leitura mais comum (varia por
-  cultura) é a **rápida como o capricho**, a **média como a ordem** que governa as estações, e a
-  **lenta como o destino** que quase ninguém vê fechar uma volta inteira. Nada da §7 muda: a Errante
-  segue sendo a potência mais entranhada no mundo, só que agora se sabe por quê.
-- **[EM ABERTO] Os períodos da segunda e da terceira lua.** É o cálculo que gera as datas raras
-  (conjunções, eclipses, a noite de geração em geração). A decisão de fundo é se os períodos
-  **fecham** com a grade de 384, e a conjunção vira feriado fixo no almanaque, ou se **derrapam**
-  por cima dela, e prever a noite dupla vira ofício de astrólogo, com escolas rivais errando por
-  dias. Ver F9 no `Pendencias.md`.
+**Premissas do cálculo:** Uldun com massa e raio da Terra, estrela tipo Sol. O ano de 384 dias de 24
+horas dá 9.216 horas, então Uldun orbita a **1,034 UA**. A esfera de Hill, o quanto o planeta
+consegue segurar contra o Sol, fica em **1,55 milhão de km**.
+
+**[TRAVADO] Teologia: uma potência, três corpos.** As três luas são a **Errante** da §7, não três
+deusas. "Suas fases são suas faces" ganha a segunda leitura que o nome pedia: ela tem três corpos no
+céu, e cada um mostra uma face diferente da mesma potência. A leitura mais comum (varia por cultura)
+é a **rápida como o capricho**, a **grande como a ordem** que governa o mês, e a **lenta como o
+destino** que anda ao contrário de tudo. Nada da §7 muda: a Errante segue sendo a potência mais
+entranhada no mundo, só que agora se sabe por quê.
+
+#### O mês é a fase, não a órbita
+
+A volta de 32 dias que o calendário usa é o **ciclo de fases** (sinódico), que é o que as pessoas
+veem, e não a órbita real (sideral). Se fosse a órbita real, o ciclo de fases sairia 34,9 dias e a
+§9.1 quebrava: o dia 16 deixaria de ser cheia e o 32 deixaria de ser nova.
+
+Como `1/29,538 = 1/32 + 1/384`, a órbita real da lua do mês é de **29,538 dias**, e ela dá **13
+voltas no céu** enquanto mostra **12 luas de fase**. A volta extra é comida pela órbita do próprio
+planeta em torno do sol.
+
+**Payoff:** o sacerdote que conta fases acha 12, o astrônomo que mede contra as estrelas acha 13. As
+duas contagens estão certas, nenhuma escola convence a outra, e o calendário de 13 meses guardado na
+§9.15 é, literalmente, o calendário dos astrônomos.
+
+#### Nenhuma lua de Uldun pode ser lenta
+
+O período máximo de uma lua estável é `T = T_ano × f^1,5 / √3`, onde f é a fração da esfera de Hill
+em que ela orbita. **A massa do planeta se cancela na conta**: não adianta engordar Uldun.
+
+| Órbita | Limite prático | Período máximo |
+|---|---|---|
+| Prógrada | f ≈ 0,4 | **56 dias** |
+| Retrógrada | f ≈ 0,5 a 0,7 | 78 a 130 dias |
+
+Ou seja, as três luas vivem todas entre poucos dias e uns dois meses, e uma lua com volta de anos é
+**fisicamente impossível** aqui. Os eventos de escala geracional têm que vir da história (§9.7), não
+do céu.
+
+#### As três
+
+| | **A Pequena** | **A Grande** | **A Estrangeira** |
+|---|---|---|---|
+| Ciclo de fases | **8 dias = 1 semana** | **32 dias = 1 mês** | **48 dias = 6 semanas** |
+| Órbita real | 7,837 dias | 29,538 dias | 54,857 dias |
+| Voltas por ano | 49 | 13 | **7, ao contrário** |
+| Raio da órbita | 167.200 km | 404.900 km | 611.800 km |
+| Excentricidade | ~0,01 | ~0,03 | **0,10** |
+| Sentido | prógrada | prógrada | **retrógrada** |
+| Inclinação à eclíptica | 15° | 5° | **28°** |
+| Raio do corpo | 650 km | **1.950 km** | 550 km |
+| Tamanho no céu | 0,45° | **0,55°** | 0,09° a 0,11° |
+| Rotação | travada, 7,84 d | travada, 29,54 d | **livre, não travada** |
+| Parte da maré | 32% | **68%** | menos de 1% |
+
+O Sol aparece com **0,52°**. Então a Grande é maior que o Sol no céu e o **engole por inteiro**; a
+Pequena é menor e deixa **anel de fogo**; a Estrangeira cobre 3,7% do disco e não escurece nada.
+
+**A semana ganhou causa física.** A Pequena fecha uma fase a cada 8 dias exatos. A semana de 8 dias
+não é convenção humana: é o segundo corpo da Errante. O mês é o primeiro. Duas das três unidades do
+calendário estão penduradas no céu, e só o ano é do sol.
+
+#### Nenhuma órbita é equatorial
+
+Além de mais ou menos 62.000 km do planeta, o Sol manda mais na órbita de uma lua do que a barriga
+equatorial do próprio planeta. As três luas de Uldun estão muito além disso, então **as três orbitam
+perto do plano da eclíptica**, e não do equador. Elas nascem e se põem mais ou menos por onde o sol
+nasce e se põe, seguindo o mesmo caminho no céu.
+
+As duas naturais ficam a poucos graus da eclíptica, que é o normal para lua formada com o planeta. A
+**Estrangeira está a 28° e é excêntrica**, que é a assinatura clássica de **captura**: ela não se
+formou aqui, foi pega.
+
+#### A Estrangeira é obrigada a andar ao contrário
+
+Não é escolha de sabor. A 611.800 km ela está a **0,40 da esfera de Hill**, que é exatamente o limite
+prógrado: prógrada ali, o Sol a arranca em algumas dezenas de milhões de anos. **Retrógrada, ela
+aguenta.**
+
+E retrógrado quer dizer capturada, e capturada explica todo o resto sem inventar nada: a inclinação,
+a excentricidade e o fato de **não estar travada por maré**. As duas primeiras mostram para sempre a
+mesma cara; a Estrangeira **gira**, e ao longo dos anos mostra faces diferentes. Numa teologia de uma
+potência com três corpos, o terceiro corpo é o único que **muda de rosto**.
+
+**[TRAVADO] A captura é antiga, e a física a denuncia.** Ela foi pega antes de qualquer coisa viva,
+então para todo mundo em Uldun as três faces sempre estiveram lá. Mas ela anda ao contrário, está
+inclinada, é excêntrica, gira em vez de mostrar sempre o mesmo lado, e **cruza o sol duas vezes por
+ano** (§9.16). Qualquer astrônomo com instrumento decente consegue provar que **ela não é daqui**. É
+segredo descobrível, no espírito do "céu bom demais", e não mexe uma linha da teologia.
+
+**Honestidade de física:** uma lua capturada na borda da esfera de Hill não é permanente. Em escala
+de milhões de anos ela se perde ou cai. Ninguém em Uldun vai ver isso, mas é verdade.
 
 ### 9.4. As estações e as meias-estações [TRAVADO]
 
@@ -406,6 +487,9 @@ sabem que o número é limpo demais, e alguns já disseram em voz alta que **alg
 As ortodoxias tratam a observação como blasfêmia ou como prova da própria doutrina, conforme a
 seita. É um gancho barato e grande: a resposta pode ser a Primeira Luz, o Pacto pós-guerra, ou nada.
 
+Depois do cálculo das luas, dá para dizer **onde exatamente** a física quebra, e não é no gosto de
+quem olha: é num número medível. Ver o fim da §9.16.
+
 ### 9.7. De onde vem a força de uma data [TRAVADO]
 
 Três fontes, e elas se somam. Uma data forte costuma ter mais de uma.
@@ -465,9 +549,9 @@ O calendário mágico tem cinco escalas, e o mestre pode ignorar as de baixo sem
 | Camada | Quando | Porte |
 |---|---|---|
 | **Pulso do mês** | dia 16 (cheia) e dia 32 (nova) de cada mês | 24 noites por ano, fracas; o fundo constante |
-| **As quatro soleiras** | dias 89-96, 185-192, 281-288 e 377-384 | a última semana dos meses 3, 6, 9 e 12 |
+| **O compasso de 48 dias** | dias 48, 96, 144, 192, 240, 288, 336 e 384 | oito noites marcadas: quatro de escuro total e quatro da Grande cheia sozinha; maré máxima em todas (§9.16) |
+| **As quatro soleiras** | dias 89-96, 185-192, 281-288 e 377-384 | a última semana dos meses 3, 6, 9 e 12; eclipse ou trânsito no oitavo dia |
 | **As oito noites** | dias 377 a 384 (a meia-estação 4) | o pico do ano, e o ano acaba nelas |
-| **As conjunções** | a calcular (F9) | de raras a geracionais |
 | **As cicatrizes** | presas à história, não ao céu | estreitas e fundas; vivem de memória (§9.7) |
 
 ### 9.10. O véu que engrossa [TRAVADO]
@@ -604,6 +688,85 @@ O que ela perderia:
 - **A rima do 8 se quebra:** 8 vigílias no dia contra 7 dias na semana, e a oitava potência da §7
   fica sem dia próprio.
 - O calendário deixa de ser rígido, o que é ganho de sabor e perda de previsibilidade na mesa.
+
+### 9.16. O relógio do céu [TRAVADO]
+
+Tudo nesta seção sai da aritmética das três luas (§9.3). Nada foi desenhado para dar certo; deu.
+
+#### O compasso de 48 dias
+
+Os ciclos de fase são 8, 32 e 48 dias. O mínimo múltiplo comum é **96 dias**, que é exatamente um
+trimestre do calendário. Os múltiplos de 96 são os dias **96, 192, 288 e 384**, que são os últimos
+dias das quatro meias-estações.
+
+**As quatro soleiras do ano são as quatro noites de escuro total.** Três luas novas ao mesmo tempo,
+quatro vezes por ano, sempre fechando a semana do solstício ou do equinócio. A porta da §9.11 tem
+causa astronômica: quando a lua nova destranca, as três destrancam juntas.
+
+No meio de cada estação, nos dias **48, 144, 240 e 336**, acontece a configuração inversa: **a Grande
+cheia sozinha**, com as outras duas apagadas. Somando as duas séries, o ano tem **oito noites
+marcadas, de 48 em 48 dias, alternando escuro total e luz solitária**. O ano bate como um coração, e
+o compasso é oito, como todo o resto de Uldun.
+
+#### O céu nunca se acende por inteiro
+
+A Grande está cheia nos dias ≡ 16 (mod 32); a Estrangeira, nos dias ≡ 24 (mod 48). Os restos
+possíveis do primeiro conjunto quando divididos por 48 são só 16, 0 e 32. **Nunca 24.**
+
+Logo, as três nunca estão cheias ao mesmo tempo, em ano nenhum, nunca. O céu de Uldun **pode se
+apagar por inteiro e não pode se acender por inteiro**. Toda mitologia lunar do mundo vai ter uma
+explicação para isso, e nenhuma vai estar certa.
+
+#### Onde caem os eclipses
+
+Os nós das três órbitas (os pontos onde elas cruzam a eclíptica) são **fixos**, e estão postos assim:
+
+- **Os nós da Grande e da Pequena estão na linha dos equinócios.** Então elas só podem comer o sol
+  nos equinócios, e comem: nos dias **96 e 288**, quando as duas estão novas a 3,28° do nó. A Grande
+  faz **eclipse total** e a Pequena, **anular**. Duas vezes por ano, no último dia da meia-estação.
+- **Os nós da Estrangeira estão na linha dos solstícios.** Então ela cruza o sol nos dias **192 e
+  384**, em cheio. Mas ela cobre só 3,7% do disco: não é eclipse, é um **grão preto atravessando o
+  sol**, que ninguém vê a olho nu e que se enxerga por projeção ou vidro fumê.
+
+Disso sai uma divisão de trabalho que não foi planejada:
+
+- **Os dois equinócios são o espetáculo público.** O sol é engolido, o dia vira noite, a cidade
+  inteira vê. E são justamente as duas portas de mão única da §9.11.
+- **Os dois solstícios são o evento do erudito.** Enquanto o povo passa as oito noites com medo, na
+  torre da universidade alguém projeta o sol numa parede e vê o ponto preto passar. É **essa**
+  observação que prova que a Estrangeira é um corpo sólido em órbita torta, e é por ela que a captura
+  se denuncia (§9.3).
+
+E a semana da soleira ganhou forma dramática: o sol vira na meia-noite do 4º para o 5º dia, e no **8º
+e último dia** vêm juntos o escuro total, o evento solar e a maré máxima. **A soleira sobe até o
+último dia.**
+
+#### As marés
+
+Uldun tem maré cerca de **1,8 vez a da Terra**, com dois motores fortes batendo em compassos
+diferentes: a Grande com 68% e a Pequena com 32%. O Sol acrescenta o equivalente a mais 23%.
+
+As marés máximas caem exatamente nas mesmas oito noites de 48 em 48 dias, porque é quando os três
+corpos e o Sol ficam no mesmo eixo (novas juntas, ou a Grande cheia de um lado e as outras duas do
+outro). Entre elas, quando a Grande fica de través, a maré morre.
+
+**O compasso de 48 dias é visível no mar.** Um povo costeiro descobre o ritmo do calendário sem
+astronomia nenhuma, só olhando a água subir. The Neck, que a §6 já fez de navegadores, tem tabela de
+maré antes de ter escrita.
+
+#### A prova de que alguém engrenou aquilo
+
+A §9.6 dizia que o céu era limpo demais. Agora dá para dizer **onde exatamente** a física quebra, e é
+um lugar só, mensurável:
+
+1. **Os períodos são frações exatas do ano.** 49, 13 e 7 voltas por ano, cravadas. Isso pode passar
+   por coincidência espantosa.
+2. **Os nós não precessam.** Isso não pode. A perturbação do Sol obriga o plano de uma órbita lunar a
+   girar devagar; o da Terra fecha uma volta em 18,6 anos. Em Uldun, **nenhum dos três gira**, há
+   milênios de registro. Uma lua capturada, inclinada e excêntrica, com o nó parado, é impossível.
+
+Quem entende de órbitas e olha para o céu de Uldun por tempo suficiente não conclui que o mundo é
+bonito. Conclui que **alguém segurou aquilo no lugar**, e continua segurando.
 
 ---
 
