@@ -1,0 +1,857 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bancada das Luas · Uldun · Centelha</title>
+<style>
+:root {
+  --bg: #0b0a0d; --ceu: #06060a; --painel: #1c1712; --painel2: #241d16; --linha: #3a2f24;
+  --ink: #e8e0d0; --ink-soft: #a89880; --acento: #c9a227; --acento2: #7fb3a5;
+  --bom: #6fbf73; --ruim: #d4736a; --morno: #d9b04a;
+  --fonte: ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, "Cascadia Code", Consolas, monospace;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.55 var(--fonte); overflow: hidden; }
+
+header { padding: .7rem 1.1rem .6rem; border-bottom: 1px solid var(--linha); background: linear-gradient(180deg,#1e1811,#14100c); display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+h1 { margin: 0; font-size: 1.05rem; letter-spacing: .02em; }
+h1 small { color: var(--acento); font-weight: 400; font-size: .68em; letter-spacing: .14em; text-transform: uppercase; display: block; margin-bottom: .1rem; }
+header .sub { color: var(--ink-soft); font-size: .8rem; }
+
+main { display: grid; grid-template-columns: 1fr 336px; height: calc(100vh - 3.4rem); }
+@media (max-width: 900px) { main { grid-template-columns: 1fr; grid-template-rows: 55vh 1fr; height: auto; } body { overflow: auto; } }
+
+.palco { position: relative; background: var(--ceu); overflow: hidden; }
+#c { display: block; width: 100%; height: 100%; cursor: grab; touch-action: none; }
+#c.arrastando { cursor: grabbing; }
+
+.hud { position: absolute; left: 0; top: 0; padding: .7rem .9rem; pointer-events: none; display: flex; flex-direction: column; gap: .5rem; max-width: 340px; }
+.cartao-hud { background: rgba(20,16,12,.82); border: 1px solid var(--linha); border-radius: 7px; padding: .5rem .65rem; backdrop-filter: blur(3px); }
+.data-grande { font: 600 1.15rem/1.2 var(--mono); color: var(--acento); }
+.data-sub { font-size: .76rem; color: var(--ink-soft); margin-top: .12rem; }
+.selo { font-size: .61rem; text-transform: uppercase; letter-spacing: .1em; padding: .1rem .4rem; border-radius: 999px; border: 1px solid; display: inline-block; margin: .2rem .2rem 0 0; }
+.selo.escuro { color: var(--acento2); border-color: #2c4f49; background: #0f2320; }
+.selo.luz    { color: var(--morno); border-color: #5c4a1f; background: #241d0f; }
+.selo.ecl    { color: var(--ruim); border-color: #5c2b26; background: #240f0e; }
+.selo.tran   { color: var(--bom); border-color: #2f5c33; background: #16240f; }
+.luas-hud { display: flex; gap: .55rem; }
+.lua-hud { display: flex; flex-direction: column; align-items: center; gap: .15rem; width: 5.6rem; }
+.lua-hud canvas { width: 34px; height: 34px; border-radius: 50%; background: #000; }
+.lua-hud b { font-size: .64rem; font-weight: 600; color: var(--ink); text-align: center; line-height: 1.1; }
+.lua-hud span { font-size: .62rem; color: var(--ink-soft); font-family: var(--mono); }
+
+.dica { position: absolute; right: .8rem; bottom: .7rem; font-size: .7rem; color: #6b6154; pointer-events: none; text-align: right; }
+
+aside { background: var(--painel); border-left: 1px solid var(--linha); overflow-y: auto; padding: .8rem .85rem 3rem; }
+@media (max-width: 900px) { aside { border-left: none; border-top: 1px solid var(--linha); } }
+aside h3 { margin: 1rem 0 .45rem; font-size: .7rem; text-transform: uppercase; letter-spacing: .12em; color: var(--acento); }
+aside h3:first-child { margin-top: 0; }
+
+.botoes { display: flex; gap: .35rem; flex-wrap: wrap; margin: .35rem 0 .6rem; }
+button.acao { background: var(--acento); color: #1a1409; border: none; border-radius: 5px; padding: .34rem .7rem; font: inherit; font-size: .82rem; font-weight: 600; cursor: pointer; }
+button.acao:hover { filter: brightness(1.1); }
+button.acao.fantasma { background: transparent; border: 1px solid var(--linha); color: var(--ink); font-weight: 400; }
+button.acao.fantasma.on { border-color: var(--acento); color: var(--acento); }
+button.acao.mini { padding: .2rem .45rem; font-size: .72rem; font-weight: 400; }
+
+.ctrl { display: grid; grid-template-columns: 1fr 5.6rem; gap: .3rem .45rem; align-items: center; margin: .22rem 0; }
+.ctrl > label { font-size: .78rem; color: var(--ink-soft); grid-column: 1 / -1; display: flex; justify-content: space-between; gap: .4rem; }
+.ctrl > label em { font-style: normal; color: #6b6154; font-size: .92em; }
+.ctrl input[type=range] { width: 100%; accent-color: var(--acento); height: 1.1rem; }
+.ctrl input[type=number] { background: #100d0a; color: var(--ink); border: 1px solid var(--linha); border-radius: 4px; padding: .15rem .3rem; font: inherit; font-family: var(--mono); font-size: .76rem; width: 100%; }
+
+label.caixa { display: flex; align-items: center; gap: .4rem; font-size: .8rem; margin: .3rem 0; color: var(--ink); }
+label.caixa input { accent-color: var(--acento); width: .95rem; height: .95rem; }
+
+details { border: 1px solid var(--linha); border-radius: 7px; margin: 0 0 .5rem; background: #17120e; }
+details > summary { cursor: pointer; padding: .42rem .6rem; font-size: .84rem; font-weight: 600; list-style: none; display: flex; align-items: center; gap: .5rem; }
+details > summary::-webkit-details-marker { display: none; }
+details > summary::before { content: "▸"; color: var(--acento); font-size: .8em; transition: transform .15s; }
+details[open] > summary::before { transform: rotate(90deg); }
+details > summary .pt { width: .6rem; height: .6rem; border-radius: 50%; box-shadow: 0 0 6px currentColor; }
+details > div { padding: .15rem .6rem .6rem; border-top: 1px solid #2a231b; }
+
+.nota { color: var(--ink-soft); font-size: .74rem; margin: .45rem 0 0; }
+.linhainfo { display: flex; justify-content: space-between; font-size: .74rem; font-family: var(--mono); color: var(--ink-soft); padding: .1rem 0; border-bottom: 1px dotted #2a231b; }
+.linhainfo b { color: var(--ink); font-weight: 500; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1><small>Centelha · bancada</small>As três luas de Uldun</h1>
+  <div class="sub">Órbitas por Kepler. Fases, eclipses e marés calculados com distâncias e raios reais, mesmo com o desenho fora de escala.</div>
+</header>
+
+<main>
+  <div class="palco">
+    <canvas id="c"></canvas>
+    <div class="hud">
+      <div class="cartao-hud">
+        <div class="data-grande" id="hudData">dia 1</div>
+        <div class="data-sub" id="hudSub">mês 1, dia 1</div>
+        <div id="hudSelos"></div>
+      </div>
+      <div class="cartao-hud luas-hud" id="hudLuas"></div>
+    </div>
+    <div class="dica">arrastar gira a câmera · roda aproxima</div>
+  </div>
+
+  <aside>
+    <h3>Tempo</h3>
+    <div class="botoes">
+      <button class="acao" id="bPlay">pausar</button>
+      <button class="acao fantasma mini" data-passo="-1">−1 d</button>
+      <button class="acao fantasma mini" data-passo="1">+1 d</button>
+      <button class="acao fantasma mini" data-passo="8">+1 sem</button>
+      <button class="acao fantasma mini" data-passo="32">+1 mês</button>
+    </div>
+    <div id="ctrlTempo"></div>
+    <div class="botoes" id="atalhos"></div>
+
+    <h3>Cena</h3>
+    <div class="botoes">
+      <button class="acao fantasma mini" data-alvo="sol">câmera no Sol</button>
+      <button class="acao fantasma mini" data-alvo="uldun">câmera em Uldun</button>
+      <button class="acao fantasma mini" id="bCam">recentrar</button>
+    </div>
+    <div id="ctrlCena"></div>
+    <label class="caixa"><input type="checkbox" id="opOrbitas" checked> desenhar as órbitas</label>
+    <label class="caixa"><input type="checkbox" id="opEixos" checked> desenhar os eixos de rotação</label>
+    <label class="caixa"><input type="checkbox" id="opRastro"> rastro das luas</label>
+    <label class="caixa"><input type="checkbox" id="opPlano" checked> plano de referência</label>
+    <label class="caixa"><input type="checkbox" id="opNomes" checked> nomes</label>
+
+    <h3>Corpos</h3>
+    <div id="ctrlCorpos"></div>
+    <div class="botoes">
+      <button class="acao fantasma mini" id="bRealinhar">realinhar no dia 0</button>
+      <button class="acao fantasma mini" id="bReset">valores do cânone</button>
+    </div>
+
+    <h3>Leitura</h3>
+    <div id="painelInfo"></div>
+    <p class="nota">A maré é a soma de <span class="num">m/d³</span> de cada corpo, normalizada pela maré lunar da Terra. Elongação é o ângulo entre a lua e o Sol vistos do centro de Uldun.</p>
+  </aside>
+</main>
+
+<script>
+"use strict";
+const D2R = Math.PI/180, R2D = 180/Math.PI, TAU = Math.PI*2;
+const clamp = (v,a,b) => v<a?a:v>b?b:v;
+
+/* ---------- unidades: distâncias em Mm (1000 km), tempo em dias ---------- */
+const AU = 149597.87;            // Mm
+const M_TERRA = 5.972e24;        // kg (só para a maré relativa)
+
+/* ---------- o cânone, §9.3 do Lore_Centelha.md ---------- */
+function canone() {
+  const eqx = 86.72;   // longitude eclíptica da linha dos equinócios
+  return {
+    sol:   { nome:'Sol',    cor:'#ffcf6b', raio:696,   luz:true },
+    // e = 0: se a órbita do planeta fosse elíptica, a longitude aparente do Sol não
+    // andaria uniforme e o ciclo sinódico de 32 dias deixaria de fechar. O alinhamento
+    // dos dias 96/192/288/384 EXIGE órbita circular. Mexa no controle para ver quebrar.
+    uldun: { id:'uldun', nome:'Uldun', cor:'#6f9ad4', raio:6.371, dens:5514,
+             orb:{ a:1.034*AU, e:0, i:0, om:0, w:0, T:384, M0:0, retro:false },
+             rot:{ T:24, obl:23.4, az:eqx+90, travada:false } },
+    luas: [
+      { id:'pequena', nome:'A Pequena', curto:'Pequena', cor:'#cfc3ad', raio:0.650, dens:3000,
+        orb:{ a:167.2, e:0.01, i:15, om:eqx, w:0, T:7.837, M0:180-eqx, retro:false },
+        rot:{ T:7.837*24, obl:0, az:0, travada:true } },
+      { id:'grande', nome:'A Grande', curto:'Grande', cor:'#e6ddc9', raio:1.950, dens:3344,
+        orb:{ a:404.9, e:0.03, i:5, om:eqx, w:0, T:29.538, M0:180-eqx, retro:false },
+        rot:{ T:29.538*24, obl:0, az:0, travada:true } },
+      { id:'estrangeira', nome:'A Estrangeira', curto:'Estrangeira', cor:'#9a8fa8', raio:0.550, dens:2000,
+        orb:{ a:611.8, e:0.10, i:28, om:0, w:0, T:54.857, M0:180, retro:true },
+        rot:{ T:31, obl:62, az:200, travada:false } },
+    ]
+  };
+}
+let S = canone();
+
+/* ---------- cena ---------- */
+const cena = {
+  t: 0, tocando: true, veloc: 1.2,
+  compressao: 50, exagCorpo: 8, exagSol: 0.35,
+  orbitas:true, eixos:true, rastro:false, plano:true, nomes:true,
+};
+const cam = { alvo:'sol', az: -60, el: 26, dist: 7200, fov: 45 };
+const DIST_PADRAO = { sol: 7200, uldun: 1700 };
+
+/* ---------- Kepler ---------- */
+function posOrbita(o, t) {
+  const n = TAU/o.T * (o.retro ? -1 : 1);
+  let M = (o.M0*D2R + n*t) % TAU;
+  const e = clamp(o.e, 0, 0.95);
+  let E = M;
+  for (let k=0; k<10; k++) {
+    const d = (E - e*Math.sin(E) - M) / (1 - e*Math.cos(E));
+    E -= d;
+    if (Math.abs(d) < 1e-12) break;
+  }
+  const xo = o.a*(Math.cos(E) - e);
+  const yo = o.a*Math.sqrt(1-e*e)*Math.sin(E);
+  return orientar(o, xo, yo);
+}
+function orientar(o, xo, yo) {
+  const w=o.w*D2R, i=o.i*D2R, om=o.om*D2R;
+  const cw=Math.cos(w), sw=Math.sin(w);
+  const x1 = xo*cw - yo*sw, y1 = xo*sw + yo*cw;
+  const x2 = x1, y2 = y1*Math.cos(i), z2 = y1*Math.sin(i);
+  const co=Math.cos(om), so=Math.sin(om);
+  return [x2*co - y2*so, x2*so + y2*co, z2];
+}
+function elipsePontos(o, n, escala) {
+  const pts = [], e = clamp(o.e,0,0.95);
+  for (let k=0; k<=n; k++) {
+    const E = k/n*TAU;
+    const xo = o.a*(Math.cos(E)-e), yo = o.a*Math.sqrt(1-e*e)*Math.sin(E);
+    const p = orientar(o, xo, yo);
+    pts.push([p[0]*escala, p[1]*escala, p[2]*escala]);
+  }
+  return pts;
+}
+function eixoRot(rot) {
+  const ob = rot.obl*D2R, az = rot.az*D2R;
+  return [Math.sin(ob)*Math.cos(az), Math.sin(ob)*Math.sin(az), Math.cos(ob)];
+}
+
+/* ---------- estado do sistema num instante ---------- */
+function estado(t) {
+  const k = 1/cena.compressao;
+  const pu = posOrbita(S.uldun.orb, t);
+  const uldun = [pu[0]*k, pu[1]*k, pu[2]*k];
+  const uldunReal = pu;
+  const luas = S.luas.map(L => {
+    const p = posOrbita(L.orb, t);
+    return { L, rel:p, pos:[uldun[0]+p[0], uldun[1]+p[1], uldun[2]+p[2]] };
+  });
+  return { t, sol:[0,0,0], uldun, uldunReal, luas };
+}
+
+/* ---------- câmera e projeção ---------- */
+const cv = document.getElementById('c');
+const cx2 = cv.getContext('2d');
+let W=0, H=0, DPR=1;
+function medir() {
+  DPR = Math.min(window.devicePixelRatio||1, 2);
+  const r = cv.getBoundingClientRect();
+  W = Math.max(320, Math.round(r.width)); H = Math.max(240, Math.round(r.height));
+  cv.width = Math.round(W*DPR); cv.height = Math.round(H*DPR);
+}
+function montarCamera(est) {
+  const alvo = cam.alvo === 'uldun' ? est.uldun : [0,0,0];
+  const el = clamp(cam.el, -88, 88)*D2R, az = cam.az*D2R;
+  const dir = [Math.cos(el)*Math.cos(az), Math.cos(el)*Math.sin(az), Math.sin(el)];
+  const eye = [alvo[0]+dir[0]*cam.dist, alvo[1]+dir[1]*cam.dist, alvo[2]+dir[2]*cam.dist];
+  const f = norm([alvo[0]-eye[0], alvo[1]-eye[1], alvo[2]-eye[2]]);
+  let up = [0,0,1];
+  if (Math.abs(f[2]) > 0.999) up = [0,1,0];
+  const r = norm(cross(f, up));
+  const u = cross(r, f);
+  const focal = (H/2) / Math.tan(cam.fov*D2R/2);
+  return { eye, f, r, u, focal };
+}
+function cross(a,b){ return [a[1]*b[2]-a[2]*b[1], a[2]*b[0]-a[0]*b[2], a[0]*b[1]-a[1]*b[0]]; }
+function dot(a,b){ return a[0]*b[0]+a[1]*b[1]+a[2]*b[2]; }
+function norm(a){ const m=Math.hypot(a[0],a[1],a[2])||1; return [a[0]/m,a[1]/m,a[2]/m]; }
+function sub(a,b){ return [a[0]-b[0],a[1]-b[1],a[2]-b[2]]; }
+
+function paraCam(K, p) {
+  const d = sub(p, K.eye);
+  return [dot(d,K.r), dot(d,K.u), dot(d,K.f)];
+}
+function projetar(K, p) {
+  const c = paraCam(K, p);
+  if (c[2] <= 1e-6) return null;
+  const s = K.focal / c[2];
+  return { x: W/2 + c[0]*s, y: H/2 - c[1]*s, z: c[2], s };
+}
+
+/* ---------- estrelas ---------- */
+const estrelas = (() => {
+  let seed = 20260825;
+  const rnd = () => (seed = (seed*1664525 + 1013904223) >>> 0) / 4294967296;
+  const out = [];
+  for (let i=0; i<520; i++) {
+    const z = rnd()*2-1, th = rnd()*TAU, r = Math.sqrt(1-z*z);
+    out.push({ d:[r*Math.cos(th), r*Math.sin(th), z], b: 0.25 + rnd()*0.75 });
+  }
+  return out;
+})();
+
+/* ---------- desenho de um corpo com hemisfério iluminado ---------- */
+function desenharCorpo(ctx, K, pos, raioDes, cor, dirLuz, brilhoProprio) {
+  const pr = projetar(K, pos);
+  if (!pr) return null;
+  const R = Math.max(1.1, raioDes * pr.s);
+  if (pr.x < -R*3 || pr.x > W+R*3 || pr.y < -R*3 || pr.y > H+R*3) return { pr, R, fora:true };
+
+  if (brilhoProprio) {
+    const g = ctx.createRadialGradient(pr.x, pr.y, R*0.2, pr.x, pr.y, R*3.4);
+    g.addColorStop(0, 'rgba(255,214,130,.55)');
+    g.addColorStop(.35, 'rgba(255,180,80,.16)');
+    g.addColorStop(1, 'rgba(255,160,60,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(pr.x, pr.y, R*3.4, 0, TAU); ctx.fill();
+    const gg = ctx.createRadialGradient(pr.x-R*.25, pr.y-R*.25, R*.1, pr.x, pr.y, R);
+    gg.addColorStop(0,'#fff6d8'); gg.addColorStop(.6,cor); gg.addColorStop(1,'#e08a2a');
+    ctx.fillStyle = gg; ctx.beginPath(); ctx.arc(pr.x, pr.y, R, 0, TAU); ctx.fill();
+    return { pr, R };
+  }
+
+  // lado escuro
+  ctx.fillStyle = escurecer(cor, 0.16);
+  ctx.beginPath(); ctx.arc(pr.x, pr.y, R, 0, TAU); ctx.fill();
+
+  // direção da luz projetada na tela
+  const passo = raioDes*0.5;
+  const alvo = [pos[0]+dirLuz[0]*passo, pos[1]+dirLuz[1]*passo, pos[2]+dirLuz[2]*passo];
+  const pl = projetar(K, alvo);
+  const V = norm(sub(K.eye, pos));
+  const cosA = clamp(dot(dirLuz, V), -1, 1);
+  if (pl) {
+    const psi = Math.atan2(pl.y - pr.y, pl.x - pr.x);
+    ctx.save();
+    ctx.translate(pr.x, pr.y); ctx.rotate(psi);
+    ctx.beginPath();
+    ctx.arc(0, 0, R, -Math.PI/2, Math.PI/2, false);
+    ctx.ellipse(0, 0, Math.max(0.01, Math.abs(R*cosA)), R, 0, Math.PI/2, -Math.PI/2, cosA < 0);
+    ctx.closePath();
+    const g = ctx.createLinearGradient(-R, 0, R, 0);
+    g.addColorStop(0, escurecer(cor, .55)); g.addColorStop(1, clarear(cor, .22));
+    ctx.fillStyle = g; ctx.fill();
+    ctx.restore();
+  }
+  ctx.strokeStyle = 'rgba(0,0,0,.55)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.arc(pr.x, pr.y, R, 0, TAU); ctx.stroke();
+  return { pr, R, cosA };
+}
+function hexRGB(h) { const n = parseInt(h.slice(1),16); return [n>>16&255, n>>8&255, n&255]; }
+function escurecer(h, f) { const [r,g,b] = hexRGB(h); return `rgb(${Math.round(r*f)},${Math.round(g*f)},${Math.round(b*f)})`; }
+function clarear(h, f) { const [r,g,b] = hexRGB(h); return `rgb(${Math.round(r+(255-r)*f)},${Math.round(g+(255-g)*f)},${Math.round(b+(255-b)*f)})`; }
+
+/* ---------- rótulos: fila com desvio de colisão ---------- */
+let pendentes = [];
+function enfileirarRotulo(x, y, txt, cor, z) { pendentes.push({ x, y, txt, cor, z }); }
+function desenharRotulos(ctx) {
+  ctx.font = '11px ui-sans-serif, system-ui, sans-serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
+  pendentes.sort((a,b) => a.z - b.z);          // o mais perto tem prioridade
+  const postos = [];
+  for (const r of pendentes) {
+    const w = ctx.measureText(r.txt).width + 6;
+    let y = r.y, tentativa = 0;
+    while (tentativa < 6 && postos.some(p => Math.abs(p.x - r.x) < (p.w + w)/2 && Math.abs(p.y - y) < 15)) {
+      y -= 15; tentativa++;
+    }
+    if (tentativa >= 6) continue;              // desiste em vez de empilhar
+    postos.push({ x: r.x, y, w });
+    ctx.fillStyle = 'rgba(0,0,0,.6)';
+    ctx.fillRect(r.x - w/2, y - 12, w, 14);
+    ctx.fillStyle = r.cor; ctx.fillText(r.txt, r.x, y);
+  }
+  pendentes = [];
+}
+
+/* ---------- rastros ---------- */
+const rastros = { pequena:[], grande:[], estrangeira:[] };
+
+/* ---------- render ---------- */
+function render() {
+  const est = estado(cena.t);
+  const K = montarCamera(est);
+  const ctx = cx2;
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+  ctx.clearRect(0,0,W,H);
+  ctx.fillStyle = '#06060a'; ctx.fillRect(0,0,W,H);
+
+  // estrelas (só direção, sem paralaxe)
+  for (const s of estrelas) {
+    const c = [dot(s.d,K.r), dot(s.d,K.u), dot(s.d,K.f)];
+    if (c[2] <= 0.01) continue;
+    const sc = K.focal / c[2] * 0.0016;
+    const x = W/2 + c[0]/c[2]*K.focal, y = H/2 - c[1]/c[2]*K.focal;
+    if (x<0||x>W||y<0||y>H) continue;
+    ctx.fillStyle = `rgba(220,225,255,${s.b*0.55})`;
+    ctx.fillRect(x, y, 1.2, 1.2);
+  }
+
+  const zUldun = paraCam(K, est.uldun)[2];
+
+  // plano de referência (eclíptica)
+  if (cena.plano) {
+    const raio = S.uldun.orb.a/cena.compressao;
+    ctx.strokeStyle = 'rgba(127,179,165,.13)'; ctx.lineWidth = 1;
+    for (let anel=1; anel<=3; anel++) {
+      ctx.beginPath();
+      let inicio = true;
+      for (let k=0; k<=96; k++) {
+        const a = k/96*TAU, rr = raio*anel/3*1.25;
+        const p = projetar(K, [Math.cos(a)*rr, Math.sin(a)*rr, 0]);
+        if (!p) { inicio = true; continue; }
+        if (inicio) { ctx.moveTo(p.x,p.y); inicio=false; } else ctx.lineTo(p.x,p.y);
+      }
+      ctx.stroke();
+    }
+  }
+
+  // órbita do planeta
+  if (cena.orbitas) {
+    desenharCaminho(ctx, K, elipsePontos(S.uldun.orb, 200, 1/cena.compressao), 'rgba(111,154,212,', 0.42, null);
+  }
+
+  // sol
+  const solDes = S.sol.raio * cena.exagSol;
+  const infoSol = desenharCorpo(ctx, K, [0,0,0], solDes, S.sol.cor, [0,0,1], true);
+
+  // órbitas das luas (transladadas para o planeta)
+  if (cena.orbitas) {
+    for (const L of S.luas) {
+      const pts = elipsePontos(L.orb, 160, 1).map(p => [p[0]+est.uldun[0], p[1]+est.uldun[1], p[2]+est.uldun[2]]);
+      desenharCaminho(ctx, K, pts, corRGBA(L.cor), 0.5, zUldun);
+    }
+  }
+
+  // rastros
+  if (cena.rastro) {
+    for (const it of est.luas) {
+      const arr = rastros[it.L.id];
+      ctx.strokeStyle = corRGBA(it.L.cor)+'.5)'; ctx.lineWidth = 1.4;
+      ctx.beginPath(); let inicio = true;
+      for (const p of arr) {
+        const pr = projetar(K, p);
+        if (!pr) { inicio = true; continue; }
+        if (inicio) { ctx.moveTo(pr.x,pr.y); inicio=false; } else ctx.lineTo(pr.x,pr.y);
+      }
+      ctx.stroke();
+    }
+  }
+
+  // corpos com profundidade
+  const fila = [];
+  const dirSolUldun = norm(sub([0,0,0], est.uldun));
+  fila.push({ z: zUldun, desenhar: () => {
+    const info = desenharCorpo(ctx, K, est.uldun, S.uldun.raio*cena.exagCorpo, S.uldun.cor, dirSolUldun, false);
+    if (info && !info.fora) {
+      decorar(ctx, K, est.uldun, S.uldun.raio*cena.exagCorpo, S.uldun.rot, cena.t*24, info, S.uldun.cor, 'Uldun');
+    }
+  }});
+  for (const it of est.luas) {
+    const z = paraCam(K, it.pos)[2];
+    const dirSol = norm(sub([0,0,0], it.pos));
+    const raioDes = it.L.raio*cena.exagCorpo*1.6;
+    fila.push({ z, desenhar: () => {
+      const info = desenharCorpo(ctx, K, it.pos, raioDes, it.L.cor, dirSol, false);
+      if (info && !info.fora) {
+        const giro = it.L.rot.travada ? (cena.t/it.L.orb.T)*360*(it.L.orb.retro?-1:1) : cena.t*24/it.L.rot.T*360;
+        decorar(ctx, K, it.pos, raioDes, it.L.rot, giro, info, it.L.cor, it.L.curto);
+      }
+    }});
+  }
+  fila.sort((a,b) => b.z - a.z);
+  for (const f of fila) f.desenhar();
+
+  if (cena.nomes && infoSol && !infoSol.fora) enfileirarRotulo(infoSol.pr.x, infoSol.pr.y - infoSol.R - 8, 'Sol', '#ffcf6b', infoSol.pr.z);
+  desenharRotulos(ctx);
+
+  atualizarLeitura(est);
+}
+
+function corRGBA(hex) { const [r,g,b] = hexRGB(hex); return `rgba(${r},${g},${b},`; }
+
+function desenharCaminho(ctx, K, pts, prefixo, alfa, zRef) {
+  ctx.lineWidth = 1.15;
+  for (let k=0; k<pts.length-1; k++) {
+    const a = projetar(K, pts[k]), b = projetar(K, pts[k+1]);
+    if (!a || !b) continue;
+    const atras = zRef != null && (a.z+b.z)/2 > zRef;
+    ctx.strokeStyle = prefixo + (atras ? alfa*0.3 : alfa) + ')';
+    ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+  }
+}
+
+function decorar(ctx, K, pos, raioDes, rot, giroGraus, info, cor, nome) {
+  const eixo = eixoRot(rot);
+  if (cena.eixos) {
+    const a = projetar(K, [pos[0]-eixo[0]*raioDes*1.7, pos[1]-eixo[1]*raioDes*1.7, pos[2]-eixo[2]*raioDes*1.7]);
+    const b = projetar(K, [pos[0]+eixo[0]*raioDes*1.7, pos[1]+eixo[1]*raioDes*1.7, pos[2]+eixo[2]*raioDes*1.7]);
+    if (a && b) {
+      ctx.strokeStyle = 'rgba(201,162,39,.75)'; ctx.lineWidth = 1.1;
+      ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+      ctx.fillStyle = 'rgba(201,162,39,.95)';
+      ctx.beginPath(); ctx.arc(b.x, b.y, 2, 0, TAU); ctx.fill();
+    }
+  }
+  // marca do meridiano: mostra a rotação
+  const g = giroGraus*D2R;
+  let base = Math.abs(eixo[2]) > 0.9 ? [1,0,0] : [0,0,1];
+  const e1 = norm(cross(eixo, base)), e2 = cross(eixo, e1);
+  const m = [ (e1[0]*Math.cos(g)+e2[0]*Math.sin(g)), (e1[1]*Math.cos(g)+e2[1]*Math.sin(g)), (e1[2]*Math.cos(g)+e2[2]*Math.sin(g)) ];
+  const visivel = dot(m, norm(sub(K.eye, pos))) > 0;
+  if (visivel) {
+    const p = projetar(K, [pos[0]+m[0]*raioDes, pos[1]+m[1]*raioDes, pos[2]+m[2]*raioDes]);
+    if (p) {
+      ctx.fillStyle = '#c9a227';
+      ctx.beginPath(); ctx.arc(p.x, p.y, Math.max(1.4, info.R*0.13), 0, TAU); ctx.fill();
+    }
+  }
+  if (cena.nomes) enfileirarRotulo(info.pr.x, info.pr.y - info.R - 7, nome, cor, info.pr.z);
+}
+
+
+
+/* ---------- calendário e eventos ---------- */
+const NOMES_ESTACAO = ['inverno','primavera','verão','outono'];
+function calendario(t) {
+  const anoDia = ((t % 384) + 384) % 384;
+  // o dia N ocupa t de (N-1) a N, então o alinhamento em t=96 cai DENTRO do dia 96
+  const dia = anoDia === 0 ? (t <= 0 ? 1 : 384) : Math.ceil(anoDia);
+  const mes = Math.floor((dia-1)/32) + 1;
+  const diaMes = ((dia-1) % 32) + 1;
+  const semana = Math.floor((diaMes-1)/8) + 1;
+  const diaSem = ((diaMes-1) % 8) + 1;
+  const faixas = [
+    [1,88,'estação',0],[89,96,'meia',0],[97,184,'estação',1],[185,192,'meia',1],
+    [193,280,'estação',2],[281,288,'meia',2],[289,376,'estação',3],[377,384,'meia',3]
+  ];
+  let tipo='estação', idx=0;
+  for (const f of faixas) if (dia>=f[0] && dia<=f[1]) { tipo=f[2]; idx=f[3]; }
+  let soleira = null;
+  if (tipo === 'meia') soleira = ['equinócio da luz que cresce','solstício de verão','equinócio da luz que mingua','solstício de inverno'][idx];
+  return { anoDia, dia, mes, diaMes, semana, diaSem, tipo, estacao: NOMES_ESTACAO[idx], soleira };
+}
+
+function medirLua(est, it) {
+  const rel = it.rel;                                  // posição real relativa a Uldun (Mm)
+  const dSol = sub([0,0,0], est.uldunReal);            // Uldun → Sol, distância real
+  const dSolN = norm(dSol);
+  const relN = norm(rel);
+  const cosE = clamp(dot(relN, dSolN), -1, 1);
+  const elong = Math.acos(cosE)*R2D;                   // 0 = nova, 180 = cheia
+  const iluminada = (1 - cosE)/2;
+  const dist = Math.hypot(rel[0],rel[1],rel[2]);
+  const angLua = 2*Math.atan2(it.L.raio, dist)*R2D;
+  const distSol = Math.hypot(dSol[0],dSol[1],dSol[2]);
+  const angSol = 2*Math.atan2(S.sol.raio, distSol)*R2D;
+  const sep = elong;                                   // separação angular lua↔Sol vista de Uldun
+  // um observador na superfície está até um raio de Uldun fora do centro: isso alarga
+  // a janela de eclipse. Daí "visível de algum lugar de Uldun", não do centro.
+  const paralaxe = Math.atan2(S.uldun.raio, dist)*R2D;
+  const limite = (angLua+angSol)/2 + paralaxe;
+  const eclipse = sep < limite;
+  const massa = (4/3)*Math.PI*Math.pow(it.L.raio*1e6,3)*it.L.dens;   // kg
+  const mare = massa/Math.pow(dist*1e6,3);
+  return { elong, iluminada, dist, angLua, angSol, sep, eclipse, limite, paralaxe,
+           total: eclipse && angLua > angSol, massa, mare };
+}
+function nomeFase(lit, crescendo) {
+  if (lit < 0.08) return 'nova';
+  if (lit > 0.92) return 'cheia';
+  if (Math.abs(lit - 0.5) < 0.06) return 'quarto';
+  return crescendo ? 'crescente' : 'minguante';
+}
+
+// A maré é semidiurna: cada corpo levanta um bojo de dois lados, então a soma se faz
+// em ângulo dobrado. Assim o alinhamento entra na conta e a lua cheia soma igual à nova.
+const MARE_TERRA = 7.35e22/Math.pow(384400e3,3);
+function massaDe(c) { return (4/3)*Math.PI*Math.pow(c.raio*1e6,3)*c.dens; }
+function mareFasorial(est) {
+  const dSol = sub([0,0,0], est.uldunReal);
+  const dsMag = Math.hypot(dSol[0],dSol[1],dSol[2]);
+  const partes = [{ k: 1.989e30/Math.pow(dsMag*1e6,3), lam: Math.atan2(dSol[1], dSol[0]) }];
+  for (const it of est.luas) {
+    const r = it.rel, d = Math.hypot(r[0],r[1],r[2]);
+    partes.push({ k: massaDe(it.L)/Math.pow(d*1e6,3), lam: Math.atan2(r[1], r[0]) });
+  }
+  let re = 0, im = 0, escalar = 0;
+  for (const b of partes) { re += b.k*Math.cos(2*b.lam); im += b.k*Math.sin(2*b.lam); escalar += b.k; }
+  return { amplitude: Math.hypot(re,im)/MARE_TERRA, maximo: escalar/MARE_TERRA };
+}
+
+/* ---------- HUD e painel ---------- */
+const hudData = document.getElementById('hudData');
+const hudSub  = document.getElementById('hudSub');
+const hudSelos= document.getElementById('hudSelos');
+const hudLuas = document.getElementById('hudLuas');
+const painelInfo = document.getElementById('painelInfo');
+let hudCanvas = {};
+
+function montarHudLuas() {
+  hudLuas.innerHTML = '';
+  hudCanvas = {};
+  for (const L of S.luas) {
+    const d = document.createElement('div'); d.className = 'lua-hud';
+    const c = document.createElement('canvas'); c.width = 68; c.height = 68;
+    const b = document.createElement('b'); b.textContent = L.curto;
+    const s = document.createElement('span'); s.id = 'fase-'+L.id; s.textContent = '—';
+    d.append(c, b, s); hudLuas.appendChild(d);
+    hudCanvas[L.id] = c;
+  }
+}
+function desenharFase(c, iluminada, elong, cor) {
+  const g = c.getContext('2d'), R = 30, cxx = 34, cyy = 34;
+  g.clearRect(0,0,68,68);
+  g.fillStyle = '#141014'; g.beginPath(); g.arc(cxx,cyy,R,0,TAU); g.fill();
+  const cosA = Math.cos((180-elong)*D2R);
+  g.save(); g.translate(cxx,cyy);
+  g.beginPath();
+  g.arc(0,0,R,-Math.PI/2,Math.PI/2,false);
+  g.ellipse(0,0,Math.max(0.01,Math.abs(R*cosA)),R,0,Math.PI/2,-Math.PI/2, cosA<0);
+  g.closePath(); g.fillStyle = cor; g.fill();
+  g.restore();
+  g.strokeStyle = 'rgba(255,255,255,.16)'; g.lineWidth=1;
+  g.beginPath(); g.arc(cxx,cyy,R,0,TAU); g.stroke();
+}
+
+function atualizarLeitura(est) {
+  const cal = calendario(cena.t);
+  hudData.textContent = `dia ${cal.dia} · ${(cena.t/384).toFixed(2)} ano`;
+  hudSub.textContent = `mês ${cal.mes}, dia ${cal.diaMes} · semana ${cal.semana}, dia ${cal.diaSem} · ` +
+    (cal.tipo === 'meia' ? cal.soleira : cal.estacao);
+
+  const med = est.luas.map(it => ({ it, m: medirLua(est, it) }));
+  // crescente ou minguante: olha um pedaço de dia adiante, o que já cobre retrógrada
+  const futuro = estado(cena.t + 0.05);
+  const futLit = {};
+  futuro.luas.forEach(it => { futLit[it.L.id] = medirLua(futuro, it).iluminada; });
+  const selos = [];
+  const escura = x => x.m.iluminada < 0.08, cheia = x => x.m.iluminada > 0.92;
+  if (med.every(escura)) selos.push(['escuro','céu apagado · as três novas']);
+  const gr = med.find(x => x.it.L.id==='grande');
+  if (gr && cheia(gr) && med.filter(x=>x.it.L.id!=='grande').every(escura))
+    selos.push(['luz','a Grande cheia sozinha']);
+  for (const x of med) {
+    if (x.m.eclipse) selos.push([x.m.total ? 'ecl':'tran',
+      (x.m.total ? 'eclipse total · ' : (x.m.angLua > x.m.angSol*0.5 ? 'eclipse anular · ' : 'trânsito · ')) + x.it.L.curto]);
+  }
+  hudSelos.innerHTML = selos.map(s => `<span class="selo ${s[0]}">${s[1]}</span>`).join('');
+
+  for (const x of med) {
+    desenharFase(hudCanvas[x.it.L.id], x.m.iluminada, x.m.elong, x.it.L.cor);
+    const el = document.getElementById('fase-'+x.it.L.id);
+    if (el) el.textContent = `${nomeFase(x.m.iluminada, futLit[x.it.L.id] > x.m.iluminada)} ${Math.round(x.m.iluminada*100)}%`;
+  }
+
+  const distSol = Math.hypot(est.uldunReal[0],est.uldunReal[1],est.uldunReal[2]);
+  const mareSol = 1.989e30/Math.pow(distSol*1e6,3);
+  const mareTerra = 7.35e22/Math.pow(384400e3,3);
+  const mareLuas = med.reduce((s,x)=>s+x.m.mare,0);
+  const mr = mareFasorial(est);
+  const linhas = [
+    ['dia do ano', cal.dia + ' / 384'],
+    ['Uldun ao Sol', (distSol/AU).toFixed(4) + ' UA'],
+    ['maré agora', mr.amplitude.toFixed(2) + '× a lunar da Terra'],
+    ['maré se tudo alinhado', mr.maximo.toFixed(2) + '×'],
+    ['puxão das luas', (mareLuas/mareTerra).toFixed(2) + '× · Sol ' + (mareSol/mareTerra).toFixed(2) + '×'],
+  ];
+  for (const x of med) linhas.push([x.it.L.curto + ' · elongação', x.m.elong.toFixed(1)+'° · '+(x.m.dist).toFixed(0)+' Mm']);
+  painelInfo.innerHTML = linhas.map(l => `<div class="linhainfo"><span>${l[0]}</span><b>${l[1]}</b></div>`).join('');
+}
+
+/* ---------- controles gerados ---------- */
+function caminhoGet(obj, path) { return path.split('.').reduce((o,k)=>o[k], obj); }
+function caminhoSet(obj, path, v) {
+  const ks = path.split('.'), last = ks.pop();
+  ks.reduce((o,k)=>o[k], obj)[last] = v;
+}
+function mkCtrl(host, obj, path, rot, unidade, min, max, step, prefixo) {
+  const wrap = document.createElement('div'); wrap.className = 'ctrl';
+  const lab = document.createElement('label');
+  lab.innerHTML = `<span>${rot}</span><em>${unidade}</em>`;
+  const rng = document.createElement('input'); rng.type='range';
+  rng.min=min; rng.max=max; rng.step=step;
+  const num = document.createElement('input'); num.type='number';
+  num.min=min; num.max=max; num.step=step;
+  num.dataset.campo = (prefixo ? prefixo + ':' : '') + path;
+  const ler = () => { const v = caminhoGet(obj,path); rng.value = v; num.value = arredonda(v, step); };
+  const escrever = v => {
+    v = clamp(parseFloat(v), min, max);
+    if (!isFinite(v)) return;
+    caminhoSet(obj, path, v);
+    ler(); render();
+  };
+  rng.addEventListener('input', () => escrever(rng.value));
+  num.addEventListener('change', () => escrever(num.value));
+  ler();
+  wrap.append(lab, rng, num); host.appendChild(wrap);
+  return ler;
+}
+function arredonda(v, step) {
+  const casas = String(step).includes('.') ? String(step).split('.')[1].length : 0;
+  return Number(v).toFixed(casas);
+}
+const releitura = [];
+
+function montarControles() {
+  const ct = document.getElementById('ctrlTempo'); ct.innerHTML = '';
+  releitura.push(mkCtrl(ct, cena, 'veloc', 'velocidade', 'dias por segundo', 0.05, 20, 0.05));
+  releitura.push(mkCtrl(ct, cena, 't', 'dia', 'da simulação', -1000, 3840, 0.5));
+
+  const at = document.getElementById('atalhos'); at.innerHTML = '';
+  const marcos = [[96,'equinócio ↑'],[192,'solstício verão'],[288,'equinócio ↓'],[384,'solstício inverno'],[48,'Grande cheia']];
+  for (const [d,rot] of marcos) {
+    const b = document.createElement('button');
+    b.className='acao fantasma mini'; b.textContent = rot; b.dataset.dia = d;
+    b.addEventListener('click', () => { cena.t = d; sincronizar(); render(); });
+    at.appendChild(b);
+  }
+
+  const cc = document.getElementById('ctrlCena'); cc.innerHTML = '';
+  releitura.push(mkCtrl(cc, cena, 'compressao', 'compressão da órbita solar', '×', 1, 200, 1));
+  releitura.push(mkCtrl(cc, cena, 'exagCorpo', 'exagero dos corpos', '×', 1, 40, 0.5));
+  releitura.push(mkCtrl(cc, cena, 'exagSol', 'tamanho do Sol', '×', 0.05, 2, 0.05));
+  releitura.push(mkCtrl(cc, cam, 'dist', 'distância da câmera', 'Mm', 60, 20000, 20));
+  releitura.push(mkCtrl(cc, cam, 'fov', 'abertura', '°', 15, 90, 1));
+
+  const co = document.getElementById('ctrlCorpos'); co.innerHTML = '';
+  bloco(co, S.uldun, 'Uldun', true);
+  for (const L of S.luas) bloco(co, L, L.nome, false);
+}
+
+function bloco(host, corpo, titulo, ehPlaneta) {
+  const det = document.createElement('details');
+  if (!ehPlaneta && corpo.id === 'grande') det.open = true;
+  if (ehPlaneta) det.open = true;
+  const sum = document.createElement('summary');
+  sum.innerHTML = `<span class="pt" style="background:${corpo.cor};color:${corpo.cor}"></span>${titulo}`;
+  const d = document.createElement('div');
+  det.append(sum, d); host.appendChild(det);
+
+  const aMm = ehPlaneta ? [5000, 400000, 100] : [40, 1500, 0.5];
+  const aT  = ehPlaneta ? [30, 2000, 1] : [1, 200, 0.001];
+  releitura.push(mkCtrl(d, corpo, 'orb.a', ehPlaneta ? 'distância ao Sol' : 'distância a Uldun', 'Mm', aMm[0], aMm[1], aMm[2], corpo.id));
+  releitura.push(mkCtrl(d, corpo, 'orb.e', 'excentricidade', '0 = círculo', 0, 0.9, 0.005, corpo.id));
+  releitura.push(mkCtrl(d, corpo, 'orb.i', 'inclinação da órbita', '°', 0, 90, 0.5, corpo.id));
+  releitura.push(mkCtrl(d, corpo, 'orb.om', 'nó ascendente', '°', 0, 360, 0.5, corpo.id));
+  releitura.push(mkCtrl(d, corpo, 'orb.T', 'translação', 'dias', aT[0], aT[1], aT[2], corpo.id));
+  releitura.push(mkCtrl(d, corpo, 'raio', 'raio do corpo', 'Mm', 0.05, ehPlaneta?40:12, 0.005, corpo.id));
+
+  if (!ehPlaneta) {
+    const cr = document.createElement('label'); cr.className='caixa';
+    const ir = document.createElement('input'); ir.type='checkbox'; ir.checked = corpo.orb.retro;
+    ir.dataset.retro = corpo.id;
+    ir.addEventListener('change', () => { corpo.orb.retro = ir.checked; render(); });
+    cr.append(ir, document.createTextNode('órbita retrógrada'));
+    d.appendChild(cr);
+
+    const ct = document.createElement('label'); ct.className='caixa';
+    const it = document.createElement('input'); it.type='checkbox'; it.checked = corpo.rot.travada;
+    it.dataset.travada = corpo.id;
+    it.addEventListener('change', () => { corpo.rot.travada = it.checked; sincronizar(); render(); });
+    ct.append(it, document.createTextNode('rotação travada por maré'));
+    d.appendChild(ct);
+  }
+
+  releitura.push(mkCtrl(d, corpo, 'rot.T', 'rotação', 'horas', 0.5, 2000, 0.1, corpo.id));
+  releitura.push(mkCtrl(d, corpo, 'rot.obl', 'eixo · inclinação', '°', 0, 180, 0.5, corpo.id));
+  releitura.push(mkCtrl(d, corpo, 'rot.az', 'eixo · azimute', '°', 0, 360, 1, corpo.id));
+}
+
+function sincronizar() {
+  for (const L of S.luas) if (L.rot.travada) L.rot.T = L.orb.T*24;
+  for (const f of releitura) f();
+}
+
+/* ---------- interação ---------- */
+let arrastando = false, ux = 0, uy = 0;
+cv.addEventListener('pointerdown', e => {
+  arrastando = true; ux = e.clientX; uy = e.clientY;
+  cv.classList.add('arrastando'); cv.setPointerCapture(e.pointerId);
+});
+cv.addEventListener('pointermove', e => {
+  if (!arrastando) return;
+  cam.az -= (e.clientX - ux) * 0.35;
+  cam.el = clamp(cam.el + (e.clientY - uy) * 0.3, -88, 88);
+  ux = e.clientX; uy = e.clientY;
+  render();
+});
+const soltar = e => { arrastando = false; cv.classList.remove('arrastando'); };
+cv.addEventListener('pointerup', soltar);
+cv.addEventListener('pointercancel', soltar);
+cv.addEventListener('wheel', e => {
+  e.preventDefault();
+  cam.dist = clamp(cam.dist * Math.exp(e.deltaY * 0.0012), 60, 20000);
+  sincronizar(); render();
+}, { passive: false });
+
+document.getElementById('bPlay').addEventListener('click', e => {
+  cena.tocando = !cena.tocando;
+  e.target.textContent = cena.tocando ? 'pausar' : 'tocar';
+});
+for (const b of document.querySelectorAll('[data-passo]')) {
+  b.addEventListener('click', () => { cena.t += parseFloat(b.dataset.passo); sincronizar(); render(); });
+}
+for (const b of document.querySelectorAll('[data-alvo]')) {
+  b.addEventListener('click', () => {
+    cam.alvo = b.dataset.alvo;
+    cam.dist = DIST_PADRAO[cam.alvo];
+    marcarAlvo(); sincronizar(); render();
+  });
+}
+function marcarAlvo() {
+  for (const b of document.querySelectorAll('[data-alvo]')) b.classList.toggle('on', b.dataset.alvo === cam.alvo);
+}
+document.getElementById('bCam').addEventListener('click', () => {
+  cam.az = -60; cam.el = 26; cam.dist = DIST_PADRAO[cam.alvo]; cam.fov = 45;
+  sincronizar(); render();
+});
+for (const [id, chave] of [['opOrbitas','orbitas'],['opEixos','eixos'],['opRastro','rastro'],['opPlano','plano'],['opNomes','nomes']]) {
+  const el = document.getElementById(id);
+  el.addEventListener('change', () => { cena[chave] = el.checked; render(); });
+}
+document.getElementById('bRealinhar').addEventListener('click', () => {
+  for (const L of S.luas) L.orb.M0 = ((180 - L.orb.om - L.orb.w) % 360 + 360) % 360;
+  S.uldun.orb.M0 = 0;
+  cena.t = 0; sincronizar(); render();
+});
+document.getElementById('bReset').addEventListener('click', () => {
+  S = canone(); cena.t = 0;
+  cena.compressao = 50; cena.exagCorpo = 8; cena.exagSol = 0.35; cena.veloc = 1.2;
+  cam.az = -60; cam.el = 26; cam.alvo = 'sol'; cam.dist = DIST_PADRAO.sol; cam.fov = 45;
+  releitura.length = 0;
+  montarControles(); montarHudLuas(); marcarAlvo(); render();
+});
+
+/* ---------- laço ---------- */
+let ultimo = performance.now();
+function laco(agora) {
+  const dt = Math.min(0.1, (agora - ultimo)/1000);
+  ultimo = agora;
+  if (cena.tocando) {
+    cena.t += dt * cena.veloc;
+    if (cena.rastro) {
+      for (const it of estado(cena.t).luas) {
+        const arr = rastros[it.L.id];
+        arr.push(it.pos);
+        if (arr.length > 500) arr.shift();
+      }
+    }
+    const campo = document.querySelector('[data-campo="t"]');
+    if (campo && document.activeElement !== campo) campo.value = cena.t.toFixed(1);
+    render();
+  }
+  requestAnimationFrame(laco);
+}
+
+window.addEventListener('resize', () => { medir(); render(); });
+medir();
+montarControles();
+montarHudLuas();
+marcarAlvo();
+render();
+requestAnimationFrame(laco);
+
+/* expõe para o teste automatizado */
+window.__bancada = {
+  get S(){ return S; }, cena, cam, estado, medirLua, calendario, render, sincronizar, canone,
+  irPara(d){ cena.t = d; sincronizar(); render(); },
+  medirTudo(d){ const e = estado(d); return e.luas.map(it => ({ id: it.L.id, ...medirLua(e, it) })); },
+  mareEm(d){ return mareFasorial(estado(d)); }
+};
+</script>
+</body>
+</html>

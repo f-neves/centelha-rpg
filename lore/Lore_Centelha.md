@@ -424,12 +424,14 @@ igual todo ano. Quem sabe o mês sabe a soleira.
 | Estação 4 | 289 a 376 | meses 10 e 11, e as 3 primeiras semanas do 12 |
 | **Meia-estação 4** | 377 a 384 | **última semana do mês 12**, e o ano acaba ali |
 
-Duas coisas caem prontas dessa grade:
+Três coisas caem prontas dessa grade:
 
 1. **Toda meia-estação é a semana escura.** Como o mês é lunar e a meia-estação é sempre a quarta
    semana, ela é sempre a semana que corre **para a lua nova** e termina nela. As quatro soleiras do
    ano são, todas, semanas de céu apagado. O que a lua faz ali está na §9.11.
-2. **O ano morre no escuro.** A última semana do ano é a última semana do mês 12: uma meia-estação,
+2. **A semana tem eco no mar.** O último dia de cada semana do mês é maré morta (dias 8 e 24) ou
+   maré de sizígia (dias 16 e 32), alternando. Ver §9.16.
+3. **O ano morre no escuro.** A última semana do ano é a última semana do mês 12: uma meia-estação,
    correndo para a lua nova, sem pertencer a estação nenhuma. São **oito noites** fechando o ano, e
    depois delas o ano simplesmente acaba. Se existe uma noite em Uldun em que as coisas atravessam,
    é ali.
@@ -549,7 +551,7 @@ O calendário mágico tem cinco escalas, e o mestre pode ignorar as de baixo sem
 | Camada | Quando | Porte |
 |---|---|---|
 | **Pulso do mês** | dia 16 (cheia) e dia 32 (nova) de cada mês | 24 noites por ano, fracas; o fundo constante |
-| **O compasso de 48 dias** | dias 48, 96, 144, 192, 240, 288, 336 e 384 | oito noites marcadas: quatro de escuro total e quatro da Grande cheia sozinha; maré máxima em todas (§9.16) |
+| **O compasso de 48 dias** | dias 48, 96, 144, 192, 240, 288, 336 e 384 | oito noites marcadas: quatro de escuro total e quatro da Grande cheia sozinha (§9.16) |
 | **As quatro soleiras** | dias 89-96, 185-192, 281-288 e 377-384 | a última semana dos meses 3, 6, 9 e 12; eclipse ou trânsito no oitavo dia |
 | **As oito noites** | dias 377 a 384 (a meia-estação 4) | o pico do ano, e o ano acaba nelas |
 | **As cicatrizes** | presas à história, não ao céu | estreitas e fundas; vivem de memória (§9.7) |
@@ -738,30 +740,71 @@ Disso sai uma divisão de trabalho que não foi planejada:
   se denuncia (§9.3).
 
 E a semana da soleira ganhou forma dramática: o sol vira na meia-noite do 4º para o 5º dia, e no **8º
-e último dia** vêm juntos o escuro total, o evento solar e a maré máxima. **A soleira sobe até o
+e último dia** vêm juntos o escuro total, o evento solar e a maré de sizígia. **A soleira sobe até o
 último dia.**
 
 #### As marés
 
-Uldun tem maré cerca de **1,8 vez a da Terra**, com dois motores fortes batendo em compassos
-diferentes: a Grande com 68% e a Pequena com 32%. O Sol acrescenta o equivalente a mais 23%.
+*Corrigido em 25/08/2026 pela bancada: o texto anterior dizia que a maré seguia o compasso de 48
+dias. Não segue. Segue o mês.*
 
-As marés máximas caem exatamente nas mesmas oito noites de 48 em 48 dias, porque é quando os três
-corpos e o Sol ficam no mesmo eixo (novas juntas, ou a Grande cheia de um lado e as outras duas do
-outro). Entre elas, quando a Grande fica de través, a maré morre.
+A força de maré tem dois motores grandes, a Grande com 68% e a Pequena com 32%, mais o Sol com o
+equivalente a 23% do total lunar. Mas maré não se soma por força, e sim **por alinhamento**: o bojo
+tem dois lados, então lua cheia e lua nova puxam igual, e lua de quarto puxa contra.
 
-**O compasso de 48 dias é visível no mar.** Um povo costeiro descobre o ritmo do calendário sem
-astronomia nenhuma, só olhando a água subir. The Neck, que a §6 já fez de navegadores, tem tabela de
-maré antes de ter escrita.
+Disso sai um mar que não se parece com o nosso:
+
+| | |
+|---|---|
+| Maior maré do ano | **2,33×** a maré lunar da Terra |
+| Menor maré do ano | **0,12×** |
+| Razão entre as duas | **20 para 1** (na Terra é cerca de 2 para 1) |
+
+**O ritmo é de 16 dias, não de 48.** A sizígia cai no **dia 16 e no dia 32 de todo mês**, que é a
+Grande cheia e a Grande nova. A maré morta cai no **dia 8 e no dia 24**, quando a Grande está de
+quarto e **a Pequena puxa contra ela**: as duas quase se anulam e o mar praticamente **para**.
+
+**E isso amarra a semana ao mar.** Os dias 8, 16, 24 e 32 são os **últimos dias das quatro semanas do
+mês**. Toda semana de Uldun termina com o mar dizendo alguma coisa, e alternando:
+
+| Fim da semana | Dia do mês | O mar |
+|---|---|---|
+| Semana 1 | dia 8 | **parado** |
+| Semana 2 | dia 16 | **de sizígia**, o maior da quinzena |
+| Semana 3 | dia 24 | **parado** |
+| Semana 4 | dia 32 | **de sizígia**, e o mês vira |
+
+A semana de oito dias ganha aqui o segundo prego no céu, depois da fase da Pequena (§9.3): **quem
+mora na costa não precisa de calendário**, basta olhar a água. Um povo navegante como o de The Neck
+(§6) tem tabela de maré antes de ter escrita, e é bem capaz que as palavras dele para "fim de semana"
+e "mar parado" sejam a mesma palavra.
+
+As oito noites do compasso de 48 dias caem todas em sizígia, porque são todas dia 16 ou dia 32. Mas
+elas **não são as maiores marés do ano**: são sizígias como as outras vinte e quatro. **O compasso de
+48 dias é do céu, não do mar.**
+
+#### A bancada
+
+Tudo nesta seção é conferido por **`luas-bench.html`** na raiz do repositório: uma simulação 3D das
+órbitas, com controles para distância, excentricidade, inclinação, nó, período de translação, período
+de rotação e eixo de cada corpo. **`node scripts/test-luas.mjs`** roda o Edge por cima dela e verifica
+os números contra o que está escrito aqui. Foi a bancada que corrigiu a maré acima e que descobriu a
+exigência de órbita circular logo abaixo.
 
 #### A prova de que alguém engrenou aquilo
 
 A §9.6 dizia que o céu era limpo demais. Agora dá para dizer **onde exatamente** a física quebra, e é
 um lugar só, mensurável:
 
-1. **Os períodos são frações exatas do ano.** 49, 13 e 7 voltas por ano, cravadas. Isso pode passar
-   por coincidência espantosa.
-2. **Os nós não precessam.** Isso não pode. A perturbação do Sol obriga o plano de uma órbita lunar a
+1. **Os períodos são frações exatas do ano.** 49, 13 e 7 voltas por ano, cravadas. Isso ainda pode
+   passar por coincidência espantosa.
+2. **A órbita de Uldun em torno do Sol é um círculo perfeito.** Isso não é gosto, é **exigência**. Se
+   a órbita do planeta fosse elíptica, a longitude aparente do Sol não andaria uniforme, o ciclo de
+   fases de 32 dias deixaria de fechar e o alinhamento dos dias 96, 192, 288 e 384 escorregaria. A
+   bancada mostra o tamanho do estrago: com a excentricidade da Terra (0,017), o eclipse do dia 96
+   **não acontece**, porque a lua fica a 2,15° do Sol em vez de 0,33°. O calendário de Uldun só existe
+   porque o planeta anda em círculo, e planeta nenhum anda em círculo.
+3. **Os nós não precessam.** Isso também não pode. A perturbação do Sol obriga o plano de uma órbita lunar a
    girar devagar; o da Terra fecha uma volta em 18,6 anos. Em Uldun, **nenhum dos três gira**, há
    milênios de registro. Uma lua capturada, inclinada e excêntrica, com o nó parado, é impossível.
 
