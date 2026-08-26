@@ -775,14 +775,14 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
    trocava a lista de parâmetros, a caixa mudava de altura e pulava sob o
    cursor. Com a altura travada e a rolagem por dentro, a caixa fica parada e
    só o conteúdo se mexe. */
-/* ENCOSTADA NA DIREITA, E ISSO É PARA O TABULEIRO APARECER.
-   Desde que a caixa desenha a prévia da Arte no mapa enquanto se escolhe, ficar
-   centrada era tapar justamente o que ela manda olhar. Encostando na direita,
-   sobra a faixa esquerda do tabuleiro, que é onde a mancha cresce e encolhe a
-   cada clique. A leitura em número fica no pé da caixa, para quem não tiver
-   tela sobrando. E quem quiser outro canto ARRASTA pela cabeça. */
-.ui-dlg-conj { margin-left: auto; margin-right: max(.75rem, env(safe-area-inset-right)); }
-@media (max-width: 60rem) { .ui-dlg-conj { margin-right: auto; } }
+/* NASCE NO CENTRO, como todas as outras caixas da mesa.
+   Ela já morou encostada na direita, para sobrar a faixa esquerda do tabuleiro
+   enquanto a prévia da Arte crescia e encolhia a cada clique. O preço era ela
+   ser a única caixa do sistema que não nascia onde o olho a procura, e num
+   monitor largo isso a jogava para fora do campo de visão de quem estava
+   olhando o meio da tela. A prévia continua atendida pela cabeça, que é alça:
+   quem precisar ver o que está debaixo ARRASTA a caixa para o canto, e a
+   posição é dela até fechar. */
 /* ENXUTA. A caixa tinha 64rem × 42rem porque cada Efeito era um resumo de seis
    linhas; com o cartão reduzido a nome e nível, e o resto no balão, ela cabe em
    pouco mais de um terço disso e para de tapar o tabuleiro. */
@@ -900,8 +900,8 @@ body.arrastando { cursor: grabbing; }
      No telefone o alto da tela é longe e o pé é perto, e uma caixa de 40rem
      centrada nasce com o "Conjurar" no meio do caminho. Encostada no pé, ela
      fala a mesma língua das folhas do tabuleiro e ganha a altura que o miolo
-     pedia. O `margin-right` que a encosta na direita no notebook (para o mapa
-     aparecer ao lado) não tem o que fazer aqui: não sobra lado nenhum. */
+     pedia. O `margin: auto 0 0` desce a caixa: no notebook ela nasce no centro,
+     como as outras, e aqui o centro não é lugar de decisão. */
   .ui-dlg-conj.ui-dlg-arte { width: 100%; max-width: none; }
   .ui-dlg-conj { margin: auto 0 0; border-radius: var(--r-lg) var(--r-lg) 0 0;
     border-bottom: 0; }

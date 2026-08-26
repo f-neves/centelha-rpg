@@ -739,6 +739,58 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
       'e o X do canto sai, de qualquer um dos dois');
   }
 
+  // ------------------------------------ toda caixa nasce no centro da janela
+  //
+  // A de conjurar ja morou encostada na direita, para sobrar a faixa esquerda
+  // do tabuleiro. O preco era ela ser a UNICA caixa do sistema que nao nascia
+  // onde o olho a procura. Quem precisar do que esta debaixo arrasta pela
+  // cabeca, que e alca. A conta e do centro dela contra o centro da janela.
+  const centradas = await p.evaluate(async () => {
+    const desvio = () => {
+      const d = document.querySelector('dialog[open]');
+      if (!d) return null;
+      const r = d.getBoundingClientRect();
+      return { nome: d.className.replace('ui-dlg ', '').trim(),
+        dx: Math.round(r.left + r.width / 2 - innerWidth / 2),
+        dy: Math.round(r.top + r.height / 2 - innerHeight / 2) };
+    };
+    const espera = (ms) => new Promise((r) => setTimeout(r, ms));
+    const fecha = async () => { document.querySelector('dialog[open]')?.close(); await espera(300); };
+    const fora = [];
+    for (const btn of ['#gr-nova', '#gr-fundo-btn', '#gr-registro', '#gr-npc']) {
+      document.querySelector(btn)?.click();
+      await espera(600);
+      const d = desvio(); if (d && (Math.abs(d.dx) > 2 || Math.abs(d.dy) > 2)) fora.push(d);
+      await fecha();
+    }
+    // E a de conjurar, que e a que estava fora do centro. Ela so existe para
+    // quem manda na peca: na cadeira do jogador, um token que nao e dele nao
+    // oferece a Arte, e ai nao ha o que medir.
+    let conj = null;
+    const t = document.querySelector('#gr-tokens .gr-token');
+    const r = t.getBoundingClientRect();
+    t.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, clientX: r.left + 5, clientY: r.top + 5 }));
+    await espera(450);
+    const arte = document.querySelector('#tok-menu button[data-a="arte"]');
+    if (arte) {
+      arte.click();
+      await espera(900);
+      conj = desvio();
+      await fecha();
+    } else {
+      document.getElementById('tok-menu')?.setAttribute('hidden', '');
+    }
+    return { fora, conj };
+  });
+  if (centradas) {
+    ok(!centradas.fora.length,
+      `as caixas da arena nascem no centro da janela (${centradas.fora.length ? JSON.stringify(centradas.fora) : 'as quatro'})`);
+    if (centradas.conj && /ui-dlg-conj/.test(centradas.conj.nome)) {
+      ok(Math.abs(centradas.conj.dx) <= 2 && Math.abs(centradas.conj.dy) <= 2,
+        `e a de conjurar tambem, que era a unica encostada na direita (desvio ${centradas.conj.dx},${centradas.conj.dy})`);
+    }
+  }
+
   // --------------------------------------------------------- o modo TV
   //
   // A tela dos jogadores sem a mobilia do mestre: some a barra da mesa, a barra
