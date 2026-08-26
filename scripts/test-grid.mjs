@@ -791,6 +791,102 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
     }
   }
 
+  // -------------------------------- a caixa se estica pelo canto, como janela
+  //
+  // A cabeca diz ONDE ela fica, o canto diz DE QUE TAMANHO ela e. As duas
+  // existem pelo mesmo motivo: a caixa tapa o tabuleiro que ela manda olhar.
+  // Aqui se arrasta de verdade, com o mouse, porque o que precisa ser provado e
+  // a conta que segue o ponteiro e os limites que a seguram.
+  const canto = await (async () => {
+    const abrir = async () => {
+      await p.evaluate(() => {
+        const t = document.querySelector('#gr-tokens .gr-token');
+        const r = t.getBoundingClientRect();
+        t.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, clientX: r.left + 5, clientY: r.top + 5 }));
+      });
+      await espera(450);
+      const tem = await p.evaluate(() => !!document.querySelector('#tok-menu button[data-a="arte"]'));
+      if (!tem) { await p.evaluate(() => document.getElementById('tok-menu')?.setAttribute('hidden', '')); return false; }
+      await p.evaluate(() => document.querySelector('#tok-menu button[data-a="arte"]').click());
+      await espera(900);
+      // A peca pode ter o item e mesmo assim nao abrir a caixa (sem Centelha, o
+      // caminho e outro). Quem responde e a caixa estar la, e nao o menu.
+      return p.evaluate(() => !!document.querySelector('dialog[open].ui-dlg-conj'));
+    };
+    if (!await abrir()) {
+      await p.evaluate(() => document.querySelector('dialog[open]')?.close());
+      return null;
+    }
+    const med = () => p.evaluate(() => {
+      const d = document.querySelector('dialog[open].ui-dlg-conj');
+      if (!d) return null;
+      const r = d.getBoundingClientRect();
+      const ok = d.querySelector('#ag-ok')?.getBoundingClientRect();
+      return { l: Math.round(r.width), a: Math.round(r.height),
+        x: Math.round(r.left), y: Math.round(r.top),
+        // A decisao tem de continuar DENTRO da caixa em todo tamanho: um
+        // formulario sem como enviar e pior que um formulario apertado.
+        decisaoDentro: !!ok && ok.bottom <= r.bottom + 1 && ok.right <= r.right + 1,
+        naTela: r.right <= innerWidth + 1 && r.bottom <= innerHeight + 1 };
+    });
+    const puxar = async (sel, dx, dy) => {
+      const c = await p.evaluate((s) => {
+        const e = document.querySelector(s);
+        if (!e) return null;
+        const r = e.getBoundingClientRect();
+        return { x: s === '.ui-dlg-canto' ? r.left + r.width / 2 : r.left + 40, y: r.top + r.height / 2 };
+      }, sel);
+      if (!c) return false;
+      await p.mouse.move(c.x, c.y); await p.mouse.down();
+      for (let i = 1; i <= 8; i++) { await p.mouse.move(c.x + dx * i / 8, c.y + dy * i / 8); await espera(25); }
+      await p.mouse.up(); await espera(300);
+      return true;
+    };
+    const temAlca = await p.evaluate(() => {
+      const c = document.querySelector('dialog[open].ui-dlg-conj .ui-dlg-canto');
+      if (!c) return null;
+      const r = c.getBoundingClientRect();
+      return { l: Math.round(r.width), a: Math.round(r.height), display: getComputedStyle(c).display };
+    });
+    const antes = await med();
+    await puxar('.ui-dlg-canto', 240, 120);
+    const maior = await med();
+    await puxar('.ui-dlg-canto', -2000, -2000);
+    const chao = await med();
+    await puxar('.ui-dlg-canto', 4000, 4000);
+    const teto = await med();
+    // Mover pela cabeca e esticar pelo canto tem de conviver: depois de mover,
+    // a caixa cresce PARA ONDE a mao puxa e nao volta para o centro.
+    await puxar('.ui-dlg-pega', -260, -90);
+    const movida = await med();
+    await puxar('.ui-dlg-canto', 120, 60);
+    const depois = await med();
+    await p.evaluate(() => document.querySelector('dialog[open].ui-dlg-conj .ui-dlg-x')?.click());
+    await espera(400);
+    await abrir();
+    const nova = await med();
+    await p.evaluate(() => document.querySelector('dialog[open]')?.close());
+    await espera(300);
+    return { temAlca, antes, maior, chao, teto, movida, depois, nova };
+  })();
+  if (canto) {
+    const { temAlca, antes, maior, chao, teto, movida, depois, nova } = canto;
+    ok(temAlca && temAlca.display !== 'none' && temAlca.l >= 16 && temAlca.a >= 16,
+      `a caixa de conjurar tem alca no canto (${temAlca ? `${temAlca.l}x${temAlca.a}` : 'nenhuma'})`);
+    ok(maior.l > antes.l + 200 && maior.a > antes.a + 100,
+      `puxar o canto estica a caixa (${antes.l}x${antes.a} -> ${maior.l}x${maior.a})`);
+    ok(chao.l < maior.l && chao.a < maior.a && chao.decisaoDentro,
+      `e empurrar de volta encolhe, ate um chao que ainda cabe a decisao (${chao.l}x${chao.a})`);
+    ok(teto.naTela && teto.l > chao.l,
+      `o teto e a borda da janela, para a alca nunca sair da tela (${teto.l}x${teto.a} em ${teto.x},${teto.y})`);
+    ok(movida.x < teto.x && movida.l === teto.l,
+      `mover pela cabeca nao mexe no tamanho (${movida.x},${movida.y})`);
+    ok(depois.x === movida.x && depois.y === movida.y && depois.l > movida.l,
+      'e esticar depois de mover cresce para onde a mao puxa, sem recentrar');
+    ok(nova.l === antes.l && nova.a === antes.a,
+      `fechar e reabrir devolve o tamanho de fabrica (${nova.l}x${nova.a})`);
+  }
+
   // --------------------------------------------------------- o modo TV
   //
   // A tela dos jogadores sem a mobilia do mestre: some a barra da mesa, a barra

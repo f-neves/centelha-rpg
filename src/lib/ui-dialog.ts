@@ -338,6 +338,105 @@ function arrastarPelaCabeca(dlg: HTMLDialogElement): void {
 }
 
 /**
+ * Esticar a caixa pelo canto, como uma janela.
+ *
+ * O par da alça de cima: a cabeça diz ONDE a caixa fica, o canto diz DE QUE
+ * TAMANHO ela é. As duas existem pelo mesmo motivo, que é a caixa tapar o
+ * tabuleiro que ela manda olhar, e quem só quer ver o que está debaixo às vezes
+ * prefere encolher a encostar no canto.
+ *
+ * O tamanho sai por duas propriedades (`--dlg-w` e `--dlg-h`) e não por
+ * `style.width` direto, porque o CSS só as lê acima do corte do telefone. Lá a
+ * caixa é folha de baixo, colada no pé e do tamanho da tela, e uma largura em
+ * pixels gravada no elemento venceria a folha e a deixaria com o tamanho que
+ * alguém escolheu num monitor.
+ *
+ * A altura mora na FORMA e não no diálogo: é ela que carrega a corrente de flex
+ * (cabeça fixa, corpo que rola, pé fixo), e crescer o diálogo por fora deixaria
+ * a forma do tamanho de antes com um vão embaixo.
+ */
+function esticarPeloCanto(dlg: HTMLDialogElement): void {
+  const forma = dlg.querySelector<HTMLElement>('.ui-dlg-form');
+  if (!forma) return;
+  const canto = document.createElement('div');
+  canto.className = 'ui-dlg-canto';
+  canto.setAttribute('aria-hidden', 'true');
+  canto.title = 'Arraste para mudar o tamanho';
+  dlg.appendChild(canto);
+
+  // O PISO É DA CAIXA, e não desta função.
+  //
+  // Uma caixa que encolhe até sumir some, e a única alça de volta é o canto,
+  // que teria sumido junto. Estes dois números são o chão de todas; cada caixa
+  // sobe o dela por `min-width`/`min-height` no CSS, que é onde mora quem sabe
+  // de quanto ela precisa (a de conjurar, por exemplo, tem um pé de 105px com o
+  // "Conjurar" dentro, e abaixo de certa altura ele escapava pela borda).
+  //
+  // Ler do CSS em vez de travar aqui é o que evita o arrasto emperrado: se o
+  // `min-height` segurasse a caixa enquanto o ponteiro continuasse descendo, o
+  // caminho de volta começaria com uma faixa morta do tamanho do exagero.
+  const CHAO_L = 280, CHAO_A = 180;
+  const doCss = (el: HTMLElement, prop: 'minWidth' | 'minHeight', chao: number) => {
+    const v = parseFloat(getComputedStyle(el)[prop]);
+    return Number.isFinite(v) ? Math.max(chao, v) : chao;
+  };
+  let MIN_L = CHAO_L, MIN_A = CHAO_A;
+  let dl = 0, da = 0, esticando = false;
+
+  const mover = (ev: PointerEvent) => {
+    if (!esticando) return;
+    const r = dlg.getBoundingClientRect();
+    // Teto: a borda da janela. Passar dela levaria o canto para fora da tela,
+    // e aí não haveria por onde puxar de volta.
+    const l = Math.min(Math.max(MIN_L, ev.clientX - dl), Math.max(MIN_L, innerWidth - r.left - 4));
+    const a = Math.min(Math.max(MIN_A, ev.clientY - da), Math.max(MIN_A, innerHeight - r.top - 4));
+    dlg.style.setProperty('--dlg-w', `${Math.round(l)}px`);
+    dlg.style.setProperty('--dlg-h', `${Math.round(a)}px`);
+  };
+  const soltar = () => {
+    esticando = false;
+    document.removeEventListener('pointermove', mover);
+    document.removeEventListener('pointerup', soltar);
+    document.removeEventListener('pointercancel', soltar);
+  };
+  canto.addEventListener('pointerdown', (ev) => {
+    const r = dlg.getBoundingClientRect();
+    const ra = forma.getBoundingClientRect();
+    // Congela o tamanho de agora ANTES de assumir o controle: sem isto a caixa
+    // salta para o mínimo no primeiro pixel, porque o que o CSS pedia some de
+    // uma vez.
+    dlg.style.setProperty('--dlg-w', `${Math.round(r.width)}px`);
+    dlg.style.setProperty('--dlg-h', `${Math.round(ra.height)}px`);
+    dlg.classList.add('esticado');
+    // O piso se pergunta ao CSS DEPOIS da classe entrar: é ela que pode trazer
+    // o `min-height` da caixa esticada.
+    MIN_L = doCss(dlg, 'minWidth', CHAO_L);
+    MIN_A = doCss(forma, 'minHeight', CHAO_A);
+    // E congela também a POSIÇÃO. Um `<dialog>` modal ainda com margem
+    // automática é recentrado pelo navegador a cada mudança de tamanho: puxar o
+    // canto para a direita empurraria a caixa para a esquerda na mesma medida, e
+    // a borda fugiria do dedo com o dobro da velocidade. Ancorada, ela cresce
+    // para onde a mão está puxando. É a mesma classe do arrasto pela cabeça.
+    if (!dlg.classList.contains('arrastado')) {
+      dlg.style.left = `${r.left}px`;
+      dlg.style.top = `${r.top}px`;
+      dlg.classList.add('arrastado');
+    }
+    // A diferença entre o ponteiro e a borda, para a caixa não saltar de modo
+    // que o canto encoste no ponteiro no primeiro movimento.
+    dl = ev.clientX - r.width;
+    da = ev.clientY - ra.height;
+    esticando = true;
+    canto.setPointerCapture?.(ev.pointerId);
+    document.addEventListener('pointermove', mover);
+    document.addEventListener('pointerup', soltar);
+    document.addEventListener('pointercancel', soltar);
+    ev.preventDefault();
+    ev.stopPropagation();
+  });
+}
+
+/**
  * Painel: um modal que devolve o corpo VAZIO para quem chamou preencher.
  *
  * Os outros diálogos daqui perguntam alguma coisa e resolvem uma Promise com a
@@ -346,7 +445,13 @@ function arrastarPelaCabeca(dlg: HTMLDialogElement): void {
  * Quem chama recebe o nó do corpo e a função de fechar, e é dono dos dois.
  */
 export function uiPainel(
-  titulo: string, opts: { classe?: string; arrastavel?: boolean; semFoco?: boolean } = {},
+  titulo: string,
+  opts: {
+    classe?: string; arrastavel?: boolean; semFoco?: boolean;
+    /** Alça no canto para mudar o tamanho. Vem junto com o arrasto por padrão:
+     *  caixa que se move é caixa que se trata como janela, e janela se estica. */
+    redimensionavel?: boolean;
+  } = {},
 ): { corpo: HTMLElement; fechar: () => void } {
   const dlg = document.createElement('dialog');
   dlg.className = 'ui-dlg ui-dlg-painel' + (opts.classe ? ' ' + opts.classe : '');
@@ -362,6 +467,7 @@ export function uiPainel(
   const fechar = () => { if (dlg.open) dlg.close(); else dlg.remove(); };
   dlg.querySelector('.ui-dlg-x')!.addEventListener('click', fechar);
   if (opts.arrastavel) arrastarPelaCabeca(dlg);
+  if (opts.redimensionavel ?? opts.arrastavel) esticarPeloCanto(dlg);
   // clique no fundo fecha, clique dentro não: o alvo só é o próprio <dialog>
   // quando o ponteiro cai fora da caixa
   fecharNoFundo(dlg, fechar);

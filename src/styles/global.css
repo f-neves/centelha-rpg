@@ -788,6 +788,46 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
    pouco mais de um terço disso e para de tapar o tabuleiro. */
 .ui-dlg-conj.ui-dlg-arte { max-width: min(42rem, 96vw); width: min(42rem, 96vw); }
 .ui-dlg-conj .ui-dlg-form { height: min(40rem, 88vh); display: flex; flex-direction: column; }
+/* O CHÃO DESTA CAIXA, para o canto saber até onde encolher.
+   Medido, e não escolhido: o pé leva a conta em três blocos e os dois botões,
+   e abaixo de 32rem de largura ele quebra numa linha a mais e empurra o
+   "Conjurar" 15px para fora da borda de baixo · a caixa vira um formulário sem
+   como enviar. As 17rem de altura são o mesmo pé (105px) mais a cabeça e um
+   respiro para o miolo.
+   O `min()` é o que deixa a regra valer nas duas telas: no telefone a caixa é
+   folha de baixo com a largura do aparelho, e um piso em rem fixo a faria mais
+   larga que a tela. */
+.ui-dlg-conj { min-width: min(32rem, 96vw); }
+.ui-dlg-conj .ui-dlg-form { min-height: 17rem; }
+
+/* ---- a alça do canto: a caixa se estica como uma janela ----
+   O par da cabeça, que já é alça de mover. As duas existem pelo mesmo motivo:
+   a caixa tapa o tabuleiro que ela manda olhar, e nem sempre a saída é levá-la
+   para o canto · às vezes é deixá-la menor, ou maior, do que o desenho previa.
+   O tamanho chega por `--dlg-w` e `--dlg-h` (ver `esticarPeloCanto`, em
+   ui-dialog.ts) e só é lido ACIMA do corte do telefone: lá a caixa é folha de
+   baixo, do tamanho da tela, e uma medida em pixels escolhida num monitor não
+   tem o que fazer. Por isso as duas regras moram numa consulta de largura, e
+   não no elemento. */
+.ui-dlg-canto { position: absolute; right: 1px; bottom: 1px; width: 1.15rem; height: 1.15rem;
+  cursor: nwse-resize; touch-action: none; z-index: 3; }
+/* O traço é o canto de duas linhas que todo mundo já leu num campo de texto.
+   Apagado até o ponteiro chegar perto: ele é uma affordance, não um enfeite, e
+   aceso o tempo todo competiria com o botão de decisão que fica ao lado. */
+.ui-dlg-canto::before { content: ''; position: absolute; right: .3rem; bottom: .3rem;
+  width: .45rem; height: .45rem; opacity: .45;
+  border-right: 2px solid var(--ink-soft); border-bottom: 2px solid var(--ink-soft);
+  border-bottom-right-radius: 2px; transition: opacity .12s ease, border-color .12s ease; }
+.ui-dlg-canto:hover::before { opacity: 1; border-color: var(--accent); }
+@media (max-width: 46rem) { .ui-dlg-canto { display: none; } }
+/* `max-width: none` junto porque a caixa de conjurar traz um teto de 42rem, e
+   um teto que não cede transforma o arrasto para a direita em nada acontecendo.
+   Estas duas vêm DEPOIS daquela de propósito: têm o mesmo peso, e quem vem
+   depois vence. */
+@media (min-width: 46.01rem) {
+  .ui-dlg.esticado { width: var(--dlg-w); max-width: none; }
+  .ui-dlg.esticado .ui-dlg-form { height: var(--dlg-h); max-height: none; }
+}
 /* A caixa recebe o foco no lugar dos controles dela (ver `semFoco`, em
    ui-dialog.ts), e caixa focada não acende contorno: o anel existe para dizer
    onde o teclado está, e aqui ele não está em lugar nenhum de propósito. */
