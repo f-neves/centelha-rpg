@@ -42,6 +42,81 @@ cronômetro sincronizado, névoa por jogador e um botão de deitar a peça caíd
 
 ---
 
+## Feito em 2026-08-26 · a moldura, e não o tabuleiro
+
+Quatro consertos na **casca** do Grid: a tira, os alvos de tela cheia e as caixas de diálogo.
+Nenhum deles muda uma regra; todos mudam quanto do tabuleiro sobra para a mesa olhar. Cada número
+aqui foi medido na bancada, antes e depois.
+
+- ✅ **A tira da iniciativa deitou de verdade.** Ela saía em **duas fileiras** no notebook, com o
+      relógio em cima e a fila embaixo. A causa não era o `flex-wrap`, que existe de propósito para
+      a faixa dos golpes no ar cair numa linha só dela: era a **base** da fila. Quem decide o que
+      cabe na primeira linha é o `flex-basis` de cada item, ANTES de qualquer encolhimento, e com
+      `auto` a base da fila era a soma dos cartões (doze de 11,5rem passam de 2000px). O navegador
+      via que ela e o relógio não cabiam juntos e mandava a fila para baixo; o `min-width: 0` até
+      encolhia depois, mas já na segunda fileira. Com `flex: 1 1 0` a base é zero e ela cabe em
+      qualquer sobra. Grid a 1440px: **1176×204 → 1176×118**. No rastreador de Combate estava pior,
+      porque quebrava em toda largura: **1400×157 → 1400×92**, e **368×164 → 368×97** no telefone.
+      Mora no `MesaCab.astro`, então vale para as duas telas. `5c81368`.
+- ✅ **Um terceiro alvo de tela cheia: só o mapa.** Os dois botões que já existiam fazem coisas
+      diferentes, e vale escrever qual é qual: o **▭ (`gr-tv`)** é o modo TV, que não é tela cheia
+      nenhuma · é uma classe no corpo que esconde a barra da mesa, a da arena e a coluna lateral
+      (tabuleiro de 1176×616 para 1400×784). O **⛶ (`gr-cheia`)** é a tela cheia de verdade, a do
+      YouTube: Fullscreen API na `.gr-grade`, que leva a ordem de combate junto, e liga o modo TV
+      enquanto dura. O novo é o **▣ (`gr-cheia-mapa`)**, que projeta só o `#gr-palco`: o tabuleiro
+      fica com a altura que a tira ocupava (**880 → 1000px**). Atalho **Shift+F**, e estando num
+      deles o outro **troca de alvo** em vez de sair e entrar · o que importa porque em tela cheia a
+      barra da arena está escondida e o botão não está lá para ser clicado. O ✕ do canto sai, nunca
+      troca. Foi junto no `aa81585`, que era um commit da outra frente.
+- ✅ **Toda caixa nasce no centro da janela.** Medidas as onze caixas do Grid em 1440×900: dez
+      caíam com desvio `0,0` do centro e a de conjurar com `372,0`, encostada na direita. Aquilo era
+      de propósito (ela desenha a prévia da Arte no mapa, e centrada tapava o que manda olhar), mas
+      o preço era ela ser a única do sistema que não nascia onde o olho a procura. Agora são onze.
+      Quem precisar ver o que está debaixo arrasta pela cabeça, que sempre foi alça. `c77127a`.
+- ✅ **E a caixa se estica pelo canto, como uma janela.** O par da cabeça: uma diz ONDE ela fica, a
+      outra diz DE QUE TAMANHO ela é. Alça de 18×18 no canto de baixo à direita. Abre em 672×644,
+      vai a **1132×822** (o teto é a borda da janela, para a alça nunca sair da tela) e desce até
+      **512×276**. Fechar devolve o tamanho de fábrica. `de1ed86`.
+
+### Três decisões que o código carrega, no canto e no centro
+
+- **O tamanho vai por `--dlg-w`/`--dlg-h`**, e não por `style.width`. O CSS só lê as duas acima do
+  corte do telefone: lá a caixa é folha de baixo, do tamanho do aparelho, e uma largura em pixels
+  escolhida num monitor venceria a folha.
+- **A posição congela junto com o primeiro puxão.** Um `<dialog>` modal com margem automática é
+  recentrado pelo navegador a cada mudança de tamanho: puxar para a direita empurraria a caixa para
+  a esquerda na mesma medida, e a borda fugiria do dedo com o dobro da velocidade. É a mesma classe
+  `arrastado` do arrasto pela cabeça, então as duas alças convivem.
+- **O piso é do CSS, e não do arrasto.** `esticarPeloCanto` lê o `min-width`/`min-height` computado
+  e cada caixa declara o seu. O da caixa de conjurar é medido, não escolhido: abaixo de 32rem de
+  largura o pé quebra numa linha a mais e empurra o "Conjurar" 15px para fora da borda de baixo, e a
+  caixa vira um formulário sem como enviar. Ler do CSS em vez de travar no JS é o que evita o
+  arrasto emperrado: se o `min-height` segurasse a caixa enquanto o ponteiro continuasse descendo, o
+  caminho de volta começaria com uma faixa morta do tamanho do exagero.
+
+O esticar é **opção** (`redimensionavel`, em `ui-dialog.ts`), ligada por padrão em quem já é
+arrastável · hoje só a de conjurar. Qualquer outro `uiPainel` ganha o mesmo com uma linha no
+chamador. As caixas de confirmação ficaram de fora de propósito: esticar um "Excluir a arena?" de
+480×199 não serve para nada.
+
+Dezesseis asserções novas no `npm run smoke` cobrem os quatro, com arrasto de mouse e tela cheia
+de verdade (o headless aceita a Fullscreen API quando o clique vem do Puppeteer).
+
+### Pontas soltas destes quatro
+
+- [ ] **Em tela cheia, só o teclado troca de alvo** · **P** · a troca ⛶ ↔ ▣ funciona, mas o botão
+      do outro alvo está escondido junto com a barra da arena (o modo TV entra com a tela cheia).
+      Quem não souber do F e do Shift+F precisa sair e entrar. Um par de botões flutuantes ao lado
+      do ✕ resolveria, e é o mesmo canto onde a saída já mora.
+- [ ] **O esticar só existe na caixa de conjurar** · **P** · é uma linha por chamador
+      (`redimensionavel: true`). As que mais pedem são as que carregam lista longa: "Como o tempo
+      passa", os Efeitos elementais e o + NPC. As de confirmação não entram.
+- [ ] **O tamanho não sobrevive ao fechar** · **P** · reabrir devolve o de fábrica, que é o certo
+      para a primeira vez e chato para quem sempre estica. Guardar no aparelho (como o modo TV já
+      faz) é o mesmo gesto de sempre; falta decidir se é por caixa ou uma medida só.
+
+---
+
 ## Feito em 2026-08-12
 
 - ✅ **O jogador age sozinho.** Move a própria peça, mira o ataque, conjura e lança o dano. Proezas
@@ -199,7 +274,9 @@ Ordenado pelo que eu faria primeiro. **P** = uma tarde · **M** = médio · **G*
       cor; um daltônico vê três cinzas. Borda sólida, tracejada e pontilhada resolvem.
 - [ ] **Legenda das condições** · **P** · os ícones colados na peça não dizem o nome sem o mouse em
       cima, e no celular não há mouse.
-- [ ] **Toque e celular** · **M** · pinça para zoom, alvos maiores, coluna virando gaveta.
+- [x] **Toque e celular** · **FEITO em 2026-08-21** · pinça para zoom, alvos maiores, coluna
+      virando gaveta: os três saíram na passada do telefone, e o registro dela (com as medidas e o
+      que ficou de fora) está no `Grid_Mobile.md`.
 
 ---
 
