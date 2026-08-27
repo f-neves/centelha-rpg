@@ -59,55 +59,53 @@ Lido do exemplo (cinco jogadores, três orcs, três Ticks narrados) e organizado
 
 ---
 
+## 2.1. Quatro decisões novas (2026-08-27)
+
+1. **Posição contínua, não dois pontos.** A distância vira trajetória simulada Tick a Tick: se
+   os dois lados se aproximam, o encontro pode acontecer **antes** do Tick planejado. É o item
+   mais caro do documento (§3, pergunta 1 original), e foi confirmado assim porque é exatamente o
+   efeito que o exemplo original pedia. O Grid ainda não guarda trajetória em lugar nenhum hoje,
+   só posição atual: isto é trabalho de motor novo, não ajuste.
+2. **A pergunta é ativa a cada Tick**, para quem está livre ou em Preparo, e não um modelo de
+   "persiste até algo mudar". Mais clique por cena que o `golpeAdiado` (que só acorda quando
+   cabe), aceito conscientemente porque é o que dá a sensação de "todo mundo decidindo junto" que
+   o exemplo descreve. Consequência direta: a UI precisa deixar essa pergunta **barata** de
+   responder (um clique de "continuar" quando nada mudou), ou o custo de mesa vira proibitivo.
+3. **A IA dos monstros tem os dois modos, e o mestre escolhe por monstro (ou por cena).** Um
+   botão resolve manualmente ("eu decido"), outro liga um modo automático (heurística mínima:
+   persegue o alvo mais perto/fraco, foge abaixo de X% de Vida) que o mestre pode desligar a
+   qualquer momento para retomar o controle daquele monstro específico.
+4. **Só digital, atrás de uma chave no `/mesa`.** Segue o precedente do `golpeAdiado`: nasce
+   desligada, não tem versão de papel.
+
+---
+
 ## 3. O que ainda não foi decidido
 
-Nove perguntas, na ordem em que bloqueiam a implementação (a primeira é a que mais muda o
-motor; as últimas são ajuste de mesa).
+Cinco perguntas restantes, em ordem de quanto bloqueiam a implementação.
 
-1. **[DECIDIR] Posição contínua ou posição em dois pontos?** Hoje a distância só é conferida em
-   dois instantes: na declaração e no Tick do Golpe (`Golpe_Tardio.md` §5, decisão 6). O exemplo
-   pede uma terceira coisa: a posição **anda de verdade a cada Tick**, e o encontro pode
-   acontecer **antes** do Tick planejado se os dois lados se aproximarem. Isso é o item mais caro
-   do documento: sair de "checar duas vezes" para "simular o caminho inteiro" é o que torna este
-   modo diferente do `P/G/R` de hoje, e é o que o Grid ainda não faz em lugar nenhum (nem os
-   hexágonos guardam trajetória, só posição atual).
-2. **[DECIDIR] Quem pergunta a cada Tick, e como isso não vira trabalho de mesa insuportável.**
-   O `golpeAdiado` já dobrou o número de toques por ação (`Golpe_Tardio.md` §7) e foi aceito
-   porque só pergunta **quando cabe** (o botão só acende quando existe algo a decidir). Perguntar
-   a todo mundo a **cada** Tick é mais caro que isso. Provável saída: a ação persiste por padrão
-   ("continua fazendo o que declarou") e só pede decisão nova quando algo muda de verdade
-   (alvo saiu do alcance, alvo morreu, alguém entrou no campo de visão). Precisa de regra de
-   quando a tela pergunta e quando ela só deixa o botão de trocar aceso.
-3. **[DECIDIR] O que a IA dos monstros faz sozinha.** No exemplo, o Orc 1 e o Orc 2 avançam e o
-   Orc 3 foge: são três decisões por Tick, multiplicadas pelo número de monstros da cena. O
-   mestre decide cada uma à mão (como hoje), ou existe uma heurística mínima ("persegue o alvo
-   mais fraco", "foge se a Vida cair") que resolve o Tick sozinha e só para quando o mestre quer
-   mudar?
-4. **["Ação fora de hora" ainda faz sentido aqui?]** A dívida de Ticks (`Combate_Tempo.md` §4)
+1. **["Ação fora de hora" ainda faz sentido aqui?]** A dívida de Ticks (`Combate_Tempo.md` §4)
    existe para cobrar quem age **fora da própria vez**. Neste modo não existe mais "vez": todo
-   mundo pode decidir a cada Tick, dentro do que a fase permite. A régua de abortar no Preparo
+   mundo é perguntado a cada Tick, dentro do que a fase permite. A régua de abortar no Preparo
    substitui parte disso, mas a ação fora de hora clássica (interromper, se interpor, levantar do
    chão) foi pensada para um mundo com vez e sem vez. Precisa decidir se ela sobrevive como está,
    se vira redundante, ou se muda de forma.
-5. **[DECIDIR] Isto é um terceiro valor de `combate.sistemaPadrao`, ou um modo por cima do
-   `pgr`?** Hoje `regras.json → combate.sistemaPadrao` tem dois valores, `normal` e `pgr`
-   (`Combate_Tempo.md` §15). Este modo não faz sentido sobre o `normal` (que resolve tudo na
-   declaração, sem fase para interromper); ele só existe **em cima** do `P/G/R`. Ou seja, talvez
-   não seja um terceiro sistema de regras, e sim um terceiro **motor de relógio**
-   (`normal`/`pgr` decidem a física; "por vez" / "Tick a Tick" decidem quem pergunta quando),
-   ortogonal ao que já existe.
-6. **[DECIDIR] Onde isto mora: só a mesa digital, ou também o papel?** A carga de decisão por
-   Tick, multiplicada por combatente, parece incompatível com mesa de papel sem uma tela fazendo
-   a contagem. Provavelmente nasce como recurso do Grid (como o `golpeAdiado`), atrás de uma
-   chave que começa desligada.
-7. **[DECIDIR] O que dispara redeclaração automática.** Hoje existe o redirecionamento quando o
-   alvo cai (`Golpe_Tardio.md` §9, decisão 4). Neste modo, o alvo também pode **sair do alcance**
-   a cada Tick (não só morrer), o que multiplica os gatilhos automáticos que precisam existir.
-8. **[DECIDIR] Como a tela mostra "todo mundo decidindo ao mesmo tempo".** A fila de iniciativa
-   de hoje é uma lista ordenada (quem age agora). Este modo não tem uma pessoa "da vez": tem um
-   Tick corrente e N decisões possíveis nele. É um desenho de tela diferente do que existe, não
-   um ajuste da fila atual.
-9. **[FAZER, depois de 1 a 8 fecharem] Medir com o simulador.** `scripts/lib-tempo.mjs` resolve
+2. **Isto é um terceiro valor de `combate.sistemaPadrao`, ou um modo por cima do `pgr`?** Hoje
+   `regras.json → combate.sistemaPadrao` tem dois valores, `normal` e `pgr` (`Combate_Tempo.md`
+   §15). Este modo não faz sentido sobre o `normal` (que resolve tudo na declaração, sem fase
+   para interromper); ele só existe **em cima** do `P/G/R`. Ou seja, talvez não seja um terceiro
+   sistema de regras, e sim um terceiro **motor de relógio** (`normal`/`pgr` decidem a física;
+   "por vez" / "Tick a Tick" decidem quem pergunta quando), ortogonal ao que já existe.
+3. **O que a tela mostra automaticamente quando a resposta muda de "continuar" para "decidir".**
+   A decisão 2 da §2.1 fecha o "quando pergunta" (sempre, a cada Tick); falta fechar **o que
+   destaca** na pergunta, pra ela não virar decoração repetitiva: alvo saiu do alcance, alvo
+   morreu (redirecionamento, já decidido no `Golpe_Tardio.md` §9), alguém entrou em Preparo perto
+   de você. É a régua de "o que a tela grita" versus "o que fica mudo até alguém clicar".
+4. **Como a tela mostra "todo mundo decidindo ao mesmo tempo".** A fila de iniciativa de hoje é
+   uma lista ordenada (quem age agora). Este modo não tem uma pessoa "da vez": tem um Tick
+   corrente e N decisões possíveis nele. É um desenho de tela diferente do que existe, não um
+   ajuste da fila atual.
+5. **[FAZER, depois de 1 a 4 fecharem] Medir com o simulador.** `scripts/lib-tempo.mjs` resolve
    pulando para o próximo evento; rodar Tick a Tick pede um laço novo no motor antes de qualquer
    número sair da bancada.
 
