@@ -210,6 +210,16 @@ const SETAS = [
         </aside>
 
         <aside class="gr-lado" id="gr-lado">
+          {/* RECOLHER A COLUNA INTEIRA, para a direita.
+              As duas dobras de dentro (Em campo, Registro) trocam altura ENTRE
+              si e a coluna continua do mesmo tamanho; esta terceira devolve a
+              largura dela ao tabuleiro. Fica fora do conteúdo, e não dentro de
+              um cabeçalho, porque é o único botão que precisa continuar
+              clicável depois que todo o resto some. */}
+          <button type="button" class="btn-fant gr-recolher" id="gr-recolher"
+            aria-expanded="true" aria-controls="gr-lado"
+            title="Recolher a coluna e dar a largura ao tabuleiro">»</button>
+          <span class="gr-trilho-rot" aria-hidden="true">Em campo</span>
           <div class="gr-reg-cab">
             <button class="btn-fant gr-dobra" id="gr-dobrar" aria-expanded="true"
               aria-controls="gr-lista" title="Ocultar a lista e dar a altura ao Registro">▾</button>
@@ -956,20 +966,20 @@ const SETAS = [
      lados. De pé, à esquerda, ela cobra 5% da largura · que é sobra · e devolve
      a altura inteira ao mapa.
 
-     5vw e não uma medida em pixels de propósito: isto é o modo de PROJETAR, e a
-     tela pode ser um notebook ou uma TV de 55". Uma coluna de 96px é confortável
-     no monitor e some no telão; 5% é do mesmo tamanho aparente nos dois. Pela
+     7vw e não uma medida em pixels de propósito: isto é o modo de PROJETAR, e a
+     tela pode ser um notebook ou uma TV de 55". Uma coluna de 134px é confortável
+     no monitor e some no telão; 7% é do mesmo tamanho aparente nos dois. Pela
      mesma razão o corpo do texto e o retrato dentro dela seguem a largura da
      janela em vez de um rem fixo.
 
      À esquerda porque a fila se lê antes do mapa: é a resposta a "de quem é a
      vez", e a leitura ocidental começa por ali. */
   body.tela-cheia:not(.cheia-mapa) .gr-grade {
-    grid-template-columns: 5vw minmax(0, 1fr);
+    grid-template-columns: 7vw minmax(0, 1fr);
     grid-template-rows: minmax(0, 1fr) auto;
     grid-template-areas: "ini palco" "ini linha"; }
   body.tela-cheia:not(.cheia-mapa) .gr-grade.sem-linha {
-    grid-template-columns: 5vw minmax(0, 1fr);
+    grid-template-columns: 7vw minmax(0, 1fr);
     grid-template-rows: minmax(0, 1fr);
     grid-template-areas: "ini palco"; }
 
@@ -1532,8 +1542,42 @@ const SETAS = [
 
   /* ---- lista lateral ---- */
   .gr-lado { border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel);
-    padding: .5rem .6rem; display: flex; flex-direction: column; min-height: 0; overflow-y: auto; }
+    padding: .5rem .6rem; display: flex; flex-direction: column; min-height: 0; overflow-y: auto;
+    position: relative; }
   .gr-lado.solta { outline: 2px dashed var(--perigo); outline-offset: -4px; }
+
+  /* ---- a coluna recolhida ----
+     A terceira dobra, e a única que muda a LARGURA. As duas de dentro ("Em
+     campo" e "Registro") trocam altura entre si; esta devolve os 13,5rem
+     inteiros ao tabuleiro e deixa no lugar um trilho com o nome de pé.
+
+     Recolher não é fechar: o trilho continua sendo alvo de arrasto (soltar uma
+     peça nele tira do mapa, como sempre foi) e continua dizendo o que guarda.
+     Uma coluna que sumisse por completo não teria como voltar. */
+  .gr-recolher { position: absolute; top: .3rem; right: .35rem; z-index: 3;
+    line-height: 1; padding: .05rem .3rem; }
+  .gr-trilho-rot { display: none; }
+  @media (min-width: 1101px) {
+    /* O `:has` alcança a grade a partir do estado da filha, que é onde as
+       outras dobras já guardam o estado. `body:not(.grid-tv)` porque a TV e a
+       tela cheia redefinem esta mesma grade: sem a ressalva sobraria um trilho
+       de 1,75rem escondido, cobrando largura e não mostrando nada. */
+    body:not(.grid-tv) .gr-grade:has(> .gr-lado.recolhida) {
+      grid-template-columns: minmax(0, 1fr) 1.75rem; }
+    body:not(.grid-tv) .gr-grade { transition: grid-template-columns .2s ease; }
+    .gr-lado.recolhida { padding: .3rem 0; overflow: hidden; align-items: center; }
+    .gr-lado.recolhida > :not(.gr-recolher):not(.gr-trilho-rot) { display: none; }
+    .gr-lado.recolhida .gr-recolher { position: static; transform: rotate(180deg);
+      flex: 0 0 auto; margin-bottom: .35rem; }
+    /* O nome de pé, como o degrau do tick já faz na fila deitada. */
+    .gr-lado.recolhida .gr-trilho-rot { display: block; writing-mode: vertical-rl;
+      font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
+      letter-spacing: .12em; color: var(--ink-soft); white-space: nowrap;
+      overflow: hidden; text-overflow: ellipsis; min-height: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    body:not(.grid-tv) .gr-grade { transition: none; }
+  }
   .gr-lista { display: flex; flex-direction: column; gap: .2rem; max-height: 60vh; overflow-y: auto; }
   .gr-ficha { display: flex; align-items: center; gap: .45rem; padding: .2rem .3rem;
     border-radius: var(--r-md); cursor: grab; touch-action: none; }
@@ -7508,6 +7552,7 @@ const SETAS = [
   const DOBRA_KEY = 'centelha:grid:lista-dobrada';
   const DOBRA_LOG_KEY = 'centelha:grid:log-dobrado';
   const DOBRA_EF_KEY = 'centelha:grid:efeitos-dobrados';
+  const DOBRA_LADO_KEY = 'centelha:grid:lado-recolhido';
   /**
    * Duas dobras, uma para cada lado.
    *
@@ -7516,7 +7561,8 @@ const SETAS = [
    * dela; qual das duas merece o espaço muda com a cena, e por isso a escolha é
    * de quem está olhando e fica guardada no aparelho.
    */
-  function dobra(btnId: string, classe: string, chave: string, dicaAbre: string, dicaFecha: string) {
+  function dobra(btnId: string, classe: string, chave: string, dicaAbre: string, dicaFecha: string,
+    depois?: () => void) {
     const btn = el(btnId);
     const aplica = (dobrada: boolean) => {
       el('gr-lado').classList.toggle(classe, dobrada);
@@ -7530,6 +7576,7 @@ const SETAS = [
       dobrada = !dobrada;
       aplica(dobrada);
       try { localStorage.setItem(chave, dobrada ? '1' : '0'); } catch {}
+      depois?.();
     };
   }
   /**
@@ -7585,6 +7632,13 @@ const SETAS = [
       'Mostrar a lista de quem está em campo', 'Ocultar a lista e dar a altura ao Registro');
     dobra('gr-dobrar-log', 'log-dobrado', DOBRA_LOG_KEY,
       'Mostrar o registro', 'Recolher o registro e dar a altura a Em campo');
+    // A terceira: as duas de cima trocam ALTURA entre si dentro da coluna, esta
+    // devolve a LARGURA dela ao tabuleiro. Depois dela o tabuleiro precisa
+    // reencaixar, que é o gesto que a mão faria em seguida.
+    dobra('gr-recolher', 'recolhida', DOBRA_LADO_KEY,
+      'Abrir a coluna de Em campo e do Registro',
+      'Recolher a coluna e dar a largura ao tabuleiro',
+      () => requestAnimationFrame(() => { ajustarAltura(); if (ARENA) caber(true); }));
     dobraCaixa('ini-dobrar', 'gr-ini-col', 'fila-dobrada', DOBRA_INI_KEY,
       'Mostrar a fila de iniciativa', 'Recolher a fila e dar o espaço ao tabuleiro');
     ligarLinhaDoTempo();

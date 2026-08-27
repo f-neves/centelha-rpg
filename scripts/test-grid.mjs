@@ -2349,14 +2349,63 @@ async function cenaFusao(br, url) {
       empilhado: Math.round(nome.getBoundingClientRect().y) > Math.round(av.getBoundingClientRect().y),
       rolaDeLado: lista.scrollWidth > lista.clientWidth + 2 };
   });
-  const cinco = Math.round(c.vw * 0.05);
-  ok(Math.abs(c.ini.w - cinco) <= 2,
-    `em tela cheia a ordem de combate ocupa 5% da largura (${c.ini.w}px de ${c.vw})`);
+  const sete = Math.round(c.vw * 0.07);
+  ok(Math.abs(c.ini.w - sete) <= 2,
+    `em tela cheia a ordem de combate ocupa 7% da largura (${c.ini.w}px de ${c.vw})`);
   ok(c.ini.x < c.palco.x, 'à esquerda do tabuleiro');
   ok(c.ini.h > c.palco.h * 0.9, 'e da altura dele, e não uma faixa no topo');
   ok(c.empilhado, 'o cartão empilha retrato e nome, para caber na coluna estreita');
   ok(!c.rolaDeLado, 'e a fila rola de cima para baixo, nunca de lado');
   await p.evaluate(() => document.getElementById('gr-cheia').click());
+  await p.waitForFunction(() => !document.body.classList.contains('tela-cheia'), { timeout: 10000 });
+
+  // ------------------------------- a coluna lateral recolhe para a direita
+  //
+  // A terceira dobra do painel: as duas de dentro trocam altura entre si, esta
+  // devolve a largura da coluna ao tabuleiro. O que ela não pode fazer é sumir
+  // sem deixar por onde voltar.
+  const larguraDoPalco = () => p.evaluate(() =>
+    Math.round(document.querySelector('#gr-palco').getBoundingClientRect().width));
+  // Sair da tela cheia não é instantâneo: medir antes de a grade voltar às duas
+  // colunas normais lê a largura do layout que está saindo, e não a da linha de
+  // base. Esperar o tabuleiro voltar a ser largo é a mesma cerca de sempre.
+  await p.waitForFunction(() =>
+    document.querySelector('#gr-palco').getBoundingClientRect().width > 900, { timeout: 10000 });
+  const aberta = await larguraDoPalco();
+  await p.evaluate(() => document.getElementById('gr-recolher').click());
+  await new Promise((r) => setTimeout(r, 450));
+  const rec = await p.evaluate(() => {
+    const R = (s) => { const e = document.querySelector(s);
+      const r = e.getBoundingClientRect(); return { w: Math.round(r.width), x: Math.round(r.x) }; };
+    const btn = document.getElementById('gr-recolher');
+    const rot = document.querySelector('.gr-trilho-rot');
+    return { lado: R('#gr-lado'), palco: R('#gr-palco'),
+      classe: document.getElementById('gr-lado').classList.contains('recolhida'),
+      botaoVisivel: btn.getBoundingClientRect().width > 0,
+      expandido: btn.getAttribute('aria-expanded'),
+      rotuloVisivel: rot ? rot.getBoundingClientRect().height > 10 : false,
+      listaVisivel: document.getElementById('gr-lista').getBoundingClientRect().width > 0,
+      guardado: localStorage.getItem('centelha:grid:lado-recolhido') };
+  });
+  const recolhida = await larguraDoPalco();
+  ok(rec.classe && rec.lado.w < 40, `recolhida, a coluna vira um trilho (${rec.lado.w}px)`);
+  ok(recolhida - aberta > 150,
+    `e a largura dela vai para o tabuleiro (${aberta} → ${recolhida}px)`);
+  ok(rec.lado.x > rec.palco.x, 'o trilho fica à direita, onde a coluna estava');
+  ok(!rec.listaVisivel, 'o conteúdo some');
+  ok(rec.botaoVisivel && rec.expandido === 'false',
+    'menos o botão de voltar, que é o único que não pode sumir junto');
+  ok(rec.rotuloVisivel, 'e o trilho continua dizendo o que guarda, com o nome de pé');
+  ok(rec.guardado === '1', 'a escolha fica guardada no aparelho, como as outras dobras');
+
+  await p.evaluate(() => document.getElementById('gr-recolher').click());
+  await new Promise((r) => setTimeout(r, 450));
+  const devolta = await p.evaluate(() => ({
+    largura: Math.round(document.querySelector('#gr-palco').getBoundingClientRect().width),
+    lista: document.getElementById('gr-lista').getBoundingClientRect().width > 0,
+  }));
+  ok(devolta.largura === aberta && devolta.lista,
+    `e clicar de novo devolve a coluna inteira (${devolta.largura}px)`);
 
   // ---------------------------------------- no telefone ela volta para casa
   await p.setViewport({ width: 390, height: 844 });

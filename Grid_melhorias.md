@@ -65,12 +65,19 @@ como usar. Daí as duas mudanças abaixo, que compram altura pagando com largura
       ícone da arena está a um palmo do que ele controla. Os rótulos saem da **vista** e não da
       árvore de acessibilidade, e todo botão da arena ganhou `title`.
 - ✅ **Em tela cheia (⛶), a ordem de combate fica de pé.** Deitada no topo ela cobrava uma faixa da
-      altura; de pé, à esquerda, cobra **5vw** de uma largura que já sobrava. O tabuleiro vai de
-      1651×868 para **1803×1067**, e o mapa cresce **+22,9%**. `5vw` e não pixels de propósito: este
-      é o modo de projetar, e 5% tem o mesmo tamanho aparente no notebook e na TV de 55" · pela
+      altura; de pé, à esquerda, cobra **7vw** de uma largura que já sobrava. O tabuleiro vai de
+      1651×868 para **1803×1067**, e o mapa cresce **+22,9%**. `7vw` e não pixels de propósito: este
+      é o modo de projetar, e 7% tem o mesmo tamanho aparente no notebook e na TV de 55" · pela
       mesma razão o corpo do texto e o retrato dentro da coluna seguem a largura da janela.
+- ✅ **E a coluna lateral recolhe para a direita.** A **terceira** dobra do painel, e a única que
+      mexe na largura: as duas de dentro ("Em campo" e "Registro") trocam altura entre si e a coluna
+      continua do mesmo tamanho. Recolhida, ela vira um trilho de **28px** com o nome de pé, e o
+      tabuleiro vai de **1176 para 1364px** em 1440. Recolher não é fechar: o trilho continua sendo
+      alvo de arrasto (soltar uma peça nele tira do mapa) e continua dizendo o que guarda, e o botão
+      de voltar é o único que não some junto · uma coluna que sumisse por inteiro não teria porta de
+      volta. Fica guardado no aparelho, como as outras dobras.
 
-Dezoito asserções novas no `npm run smoke` (`cenaFusao`), com o A/B feito na própria página:
+Vinte e cinco asserções novas no `npm run smoke` (`cenaFusao`), com o A/B feito na própria página:
 desfazer a fusão em tempo de execução devolve o layout antigo inteiro, e a diferença é o teste.
 
 ### Pontas soltas destas três
@@ -78,9 +85,11 @@ desfazer a fusão em tempo de execução devolve o layout antigo inteiro, e a di
 - [ ] **A fila continua deitada fora da tela cheia** · **G** · é o ganho grande que sobrou. A mesma
       bancada mediu: com a fila em pé no dia a dia, o mapa cresce **+35% em 1440** e **+45% em 1366**,
       contra os +11,5% e +14,6% da fusão sozinha. E o desperdício de largura cai de 49% para 18%.
-- [ ] **Entregar a coluna lateral não compra mapa** · **P** · a mesma medição mostrou que, uma vez
-      livre a altura, jogar fora o "Em campo" e o Registro dá **exatamente o mesmo mapa**. Vale
-      escrever isto aqui para a ideia não voltar: a gaveta custa duas listas e não devolve nada.
+- [ ] **Recolher a coluna dá largura, e largura ainda não vira mapa** · **P** · o trilho devolve
+      188px ao tabuleiro, mas num mapa quadrado quem aperta é a altura, e o mapa não cresce um
+      pixel com isso. Ele serve para ver mais mapa de lado (cena larga, perseguição) e para tirar
+      a lista da frente. **Vira ganho de verdade no dia em que a fila ficar de pé**: aí a altura
+      deixa de ser o gargalo e cada pixel de largura passa a contar.
 - [ ] **A escada só existe na tela do Grid** · **P** · a barra da mesa é a mesma nas dez abas, mas
       só o Grid tem barra da arena para fundir. Se outra tela ganhar uma, a `.mb-baixo` já a recebe.
 
