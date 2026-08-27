@@ -108,6 +108,14 @@ const SETAS = [
       </div>
 
         <aside class="gr-ini fila-tira" id="gr-ini-col">
+          {/* RECOLHER A FILA, para a esquerda · o par do » da coluna lateral.
+              Só existe quando ela é trilho de pé: recolher uma faixa deitada
+              para 28px de largura não quer dizer nada. Fica fora do `.ini-cab`
+              porque é o único botão que precisa sobreviver ao resto sumir. */}
+          <button type="button" class="btn-fant gr-recolher ini-recolher" id="ini-recolher"
+            aria-expanded="true" aria-controls="gr-ini"
+            title="Recolher a ordem de combate e dar a largura ao tabuleiro">«</button>
+          <span class="gr-trilho-rot" aria-hidden="true">Iniciativa</span>
           {/* O CANTO DO RELÓGIO. Cabeçalho, Tick, rodada, custo e o "próximo"
               num bloco só: a tira agora é horizontal, e o que não é peça em
               fila fica ancorado à esquerda, fora da rolagem. */}
@@ -329,6 +337,23 @@ const SETAS = [
       <h3 id="dc-titulo">Declarar</h3>
       <p class="muted dlg-txt" id="dc-linha"></p>
       <p class="ruim dlg-txt" id="dc-aviso" hidden></p>
+      {/* O DESLOCAMENTO EMBUTIDO, só do sistema simultâneo: o alvo está fora do
+           alcance, então a peça anda antes (ou durante o Preparo) e golpeia
+           quando chega. O m/Tick é editável porque o bestiário ainda não guarda
+           passo (K28): quem sabe a velocidade da criatura é a mesa. */}
+      <div id="dc-mov" class="al-man" hidden>
+        <label>Deslocamento
+          <select id="dc-mov-modo"></select>
+        </label>
+        <label>m/Tick
+          <input type="number" id="dc-mov-vel" min="0.5" step="0.5" value="3"
+            title="Metros por Tick. O padrão vem da regra; a ficha da criatura manda mais." />
+        </label>
+        <label class="dc-mov-auto" title="Ligada, a peça anda sozinha a cada avanço do relógio, pelo caminho mais curto. Desligada, a intenção fica registrada e quem arrasta o caminho, Tick a Tick, é a mesa.">
+          <input type="checkbox" id="dc-mov-auto" checked /> trajetória automática
+        </label>
+        <p class="muted dlg-txt" id="dc-mov-nota"></p>
+      </div>
       <label class="al-man">Manobra
         <select id="dc-manobra">
           <option value="simples">Um golpe</option>
@@ -344,6 +369,33 @@ const SETAS = [
       <menu>
         <button type="button" class="btn" id="dc-cancelar">Cancelar</button>
         <button type="button" class="btn primary" id="dc-ok">Declarar</button>
+      </menu>
+    </form>
+  </dialog>
+
+  {/* O MOVIMENTO DECLARADO, só do sistema simultâneo. Soltar a peça num
+       hexágono vazio deixa de teleportar: pergunta-se COMO ela vai até lá
+       (andar, batalha ou corrida, com a penalidade escrita), e a peça anda de
+       verdade, um passo por Tick. O "pôr direto" continua ali porque arrumar a
+       cena é ferramenta de mestre, não ação de combate. */}
+  <dialog id="mov-dlg" class="mesa-dlg">
+    <form method="dialog">
+      <h3 id="mv-titulo">Deslocar</h3>
+      <p class="muted dlg-txt" id="mv-linha"></p>
+      <label class="al-man">Como
+        <select id="mv-modo"></select>
+      </label>
+      <label class="al-man">m/Tick
+        <input type="number" id="mv-vel" min="0.5" step="0.5" value="3" />
+      </label>
+      <label class="dc-mov-auto" title="Ligada, a peça anda sozinha a cada avanço do relógio. Desligada, a intenção fica registrada e a mesa arrasta o caminho, Tick a Tick.">
+        <input type="checkbox" id="mv-auto" checked /> trajetória automática
+      </label>
+      <p class="muted dlg-txt" id="mv-nota"></p>
+      <menu>
+        <button type="button" class="btn" id="mv-cancelar">Cancelar</button>
+        <button type="button" class="btn" id="mv-direto" title="Ferramenta de mestre: a peça pousa lá, sem gasto e sem trajeto.">Pôr direto</button>
+        <button type="button" class="btn primary" id="mv-ok">Declarar</button>
       </menu>
     </form>
   </dialog>
@@ -791,6 +843,33 @@ const SETAS = [
       grid-template-areas: "ini" "palco" "linha" "lado"; }
   }
 
+  /* ---- TRÊS COLUNAS: um trilho em cada beirada do tabuleiro ----
+     A ordem de combate deixou de ser faixa deitada no topo e virou trilho de pé
+     à esquerda. É a mesma troca que a fusão das barras fez, levada ao fim: num
+     mapa quase quadrado quem aperta é a ALTURA, e a fila deitada cobrava 118px
+     dela enquanto sobrava metade da largura do tabuleiro sem uso.
+
+     A esquerda é a cena e a direita é o aparelho, como sempre foi; agora a fila
+     mora na beirada da cena porque ela é de TODOS (é a resposta a "de quem é a
+     vez"), e a coluna do mestre continua do outro lado.
+
+     AS LARGURAS SÃO VARIÁVEIS, e não um `grid-template-columns` por
+     combinação: são duas dobras independentes, e escrevê-las como template
+     daria quatro regras que envelhecem separadas. Assim cada dobra mexe só na
+     própria medida e as duas se compõem sozinhas. */
+  @media (min-width: 1101px) {
+    body.fila-empe:not(.grid-tv) .gr-grade {
+      --w-fila: 8vw; --w-lado: 13.5rem;
+      grid-template-columns: var(--w-fila) minmax(0, 1fr) var(--w-lado);
+      grid-template-rows: minmax(0, 1fr) auto;
+      grid-template-areas: "ini palco lado" "ini linha lado"; }
+    body.fila-empe:not(.grid-tv) .gr-grade.sem-linha {
+      grid-template-rows: minmax(0, 1fr);
+      grid-template-areas: "ini palco lado"; }
+    body.fila-empe:not(.grid-tv) .gr-grade:has(> .gr-ini.recolhida) { --w-fila: 1.75rem; }
+    body.fila-empe:not(.grid-tv) .gr-grade:has(> .gr-lado.recolhida) { --w-lado: 1.75rem; }
+  }
+
   /* ---- a escada dos ícones ----
      Encolhendo a janela, a fileira perde PALAVRAS antes de perder botões: um
      comando que some é um comando que o mestre vai procurar no meio da cena.
@@ -960,70 +1039,93 @@ const SETAS = [
     position: fixed; inset: 0; z-index: 100; padding: .4rem;
     border-radius: 0; background: var(--bg); }
 
-  /* ---- em tela cheia, a ordem de combate FICA DE PÉ ----
+  /* ---- A ORDEM DE COMBATE DE PÉ ----
      Deitada no topo ela cobrava uma faixa da altura, e é a altura que decide o
      tamanho do mapa: num tabuleiro quase quadrado, largura já sobra dos dois
-     lados. De pé, à esquerda, ela cobra 5% da largura · que é sobra · e devolve
-     a altura inteira ao mapa.
+     lados. De pé, à esquerda, ela cobra uma fatia da largura · que é sobra · e
+     devolve a altura inteira ao mapa. Medido: o mapa cresce ~35% em 1440.
 
-     7vw e não uma medida em pixels de propósito: isto é o modo de PROJETAR, e a
-     tela pode ser um notebook ou uma TV de 55". Uma coluna de 134px é confortável
-     no monitor e some no telão; 7% é do mesmo tamanho aparente nos dois. Pela
-     mesma razão o corpo do texto e o retrato dentro dela seguem a largura da
-     janela em vez de um rem fixo.
+     UMA PORCENTAGEM E NÃO PIXELS, nos dois modos. A tela pode ser um notebook
+     ou uma TV de 55", e uma coluna de 134px é confortável no monitor e some no
+     telão. 8vw no dia a dia, 7vw ao projetar (lá a coluna lateral não existe e
+     sobra largura). Pela mesma razão o corpo do texto e o retrato dentro dela
+     seguem a largura da janela em vez de um rem fixo.
 
      À esquerda porque a fila se lê antes do mapa: é a resposta a "de quem é a
-     vez", e a leitura ocidental começa por ali. */
-  body.tela-cheia:not(.cheia-mapa) .gr-grade {
-    grid-template-columns: 7vw minmax(0, 1fr);
-    grid-template-rows: minmax(0, 1fr) auto;
-    grid-template-areas: "ini palco" "ini linha"; }
-  body.tela-cheia:not(.cheia-mapa) .gr-grade.sem-linha {
-    grid-template-columns: 7vw minmax(0, 1fr);
-    grid-template-rows: minmax(0, 1fr);
-    grid-template-areas: "ini palco"; }
+     vez", e a leitura ocidental começa por ali.
 
-  /* A tira vira coluna: o mesmo painel, virado de lado. */
-  body.tela-cheia:not(.cheia-mapa) .gr-ini {
-    flex-direction: column; flex-wrap: nowrap; overflow: hidden;
-    padding: .3rem .25rem;
-    /* Um só token e tudo dentro acompanha: nome, número e rótulos são todos
-       calculados a partir do `--fs-micro`. */
-    --fs-micro: clamp(.5rem, .62vw, 1rem); }
-  body.tela-cheia:not(.cheia-mapa) .ini-cab {
-    border-right: 0; border-bottom: 1px solid var(--rule);
-    padding-right: 0; padding-bottom: .3rem; margin-bottom: .3rem;
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: "rel" "cab" "prox"; justify-items: center; }
-  /* O Tick continua sendo o número grande, mas medido pela coluna: fixo em
-     1,9rem ele estouraria a largura da coluna num notebook. */
-  body.tela-cheia:not(.cheia-mapa) .ini-tk-n { font-size: clamp(1rem, 2vw, 2.6rem); }
-  body.tela-cheia:not(.cheia-mapa) .ini-relogio { justify-items: center;
-    grid-template-columns: minmax(0, 1fr); }
-  body.tela-cheia:not(.cheia-mapa) .ini-rd { grid-column: 1; }
-  /* O título e a dobra saem: numa TV eles não são comando de ninguém, e a
-     coluna é estreita demais para gastar linha com a palavra "Iniciativa". */
-  body.tela-cheia:not(.cheia-mapa) :is(.fila-h, .fila-seta, .fila-tudo) { display: none; }
+     O desenho abaixo é UM só, e vale nos três modos (normal, TV e tela cheia):
+     o que muda entre eles é a largura da coluna e quem mais está na grade. Duas
+     cópias divergiriam no primeiro conserto. */
+  @media (min-width: 1101px) {
+    /* Ao projetar são duas colunas: a coluna lateral sai pelo modo TV.
+       O `:not(.cheia-mapa)` não é simetria com a regra de cima · é conserto.
+       No ▣ quem vai para a tela é só o `#gr-palco`, e ele sai do fluxo da grade
+       para a camada de cima do navegador. Sobrando só a tira, a grade encolhe
+       para a altura dela (136px medidos), e durante a troca de alvo o palco
+       chega a ser medido dentro dessa grade baixa: ele voltava com ALTURA ZERO,
+       e o smoke pegou (`sem a tira, o tabuleiro fica com a altura dela`).
+       Mantendo a fileira `minmax(0, 1fr)` do modo TV de sempre, ele conserva a
+       altura no meio do caminho. E não se perde nada: no ▣ a grade está
+       inteiramente atrás do que o navegador projeta. */
+    body.grid-tv:not(.cheia-mapa) .gr-grade,
+    body.grid-tv:not(.cheia-mapa) .gr-grade.sem-linha {
+      grid-template-columns: 7vw minmax(0, 1fr);
+      grid-template-rows: minmax(0, 1fr) auto;
+      grid-template-areas: "ini palco" "ini linha"; }
+    body.grid-tv:not(.cheia-mapa) .gr-grade.sem-linha {
+      grid-template-rows: minmax(0, 1fr);
+      grid-template-areas: "ini palco"; }
+    /* E projetando não há o que recolher: quem quer só o mapa tem o ▣. */
+    body.grid-tv .gr-recolher { display: none; }
 
-  body.tela-cheia:not(.cheia-mapa) .fila-lista {
-    flex-direction: column; overflow-x: hidden; overflow-y: auto; gap: .25rem; }
-  /* Cada peça empilha: retrato em cima, nome embaixo, tudo centrado. Deitado, o
-     cartão era retrato-ao-lado-do-nome e pedia 11,5rem que aqui não existem. */
-  body.tela-cheia:not(.cheia-mapa) .ini-item {
-    flex: 0 0 auto; grid-template-columns: minmax(0, 1fr);
-    justify-items: center; text-align: center; gap: .1rem; padding: .25rem .1rem; }
-  body.tela-cheia:not(.cheia-mapa) .ini-av { grid-row: auto; }
-  body.tela-cheia:not(.cheia-mapa) .ini-item .av { --av-t: clamp(1.3rem, 2.6vw, 3.4rem); }
-  body.tela-cheia:not(.cheia-mapa) :is(.ini-nome, .ini-num, .ini-fita) { grid-column: 1; }
-  body.tela-cheia:not(.cheia-mapa) .ini-nome { max-width: 100%; }
-  /* A fase por extenso não cabe; a fita colorida diz o mesmo e se lê de longe. */
-  body.tela-cheia:not(.cheia-mapa) .ini-fase { display: none; }
-  /* O degrau do tick estava de pé para separar colunas; numa fila vertical ele
-     volta a ser uma linha deitada, que é onde ele separa. */
-  body.tela-cheia:not(.cheia-mapa) .ini-grupo {
-    writing-mode: horizontal-tb; border-left: 0; border-top: 1px solid var(--rule);
-    padding: .2rem 0 .1rem; width: 100%; }
-  body.tela-cheia:not(.cheia-mapa) .fila-lista > .ini-grupo:first-child { border-top: none; }
+    /* A tira vira coluna: o mesmo painel, virado de lado. */
+    :is(body.grid-tv, body.fila-empe) .gr-ini {
+      flex-direction: column; flex-wrap: nowrap; overflow: hidden;
+      padding: .3rem .25rem;
+      /* Um só token e tudo dentro acompanha: nome, número e rótulos são todos
+         calculados a partir do `--fs-micro`. */
+      --fs-micro: clamp(.5rem, .62vw, 1rem); }
+    :is(body.grid-tv, body.fila-empe) .ini-cab {
+      border-right: 0; border-bottom: 1px solid var(--rule);
+      padding-right: 0; padding-bottom: .3rem; margin-bottom: .3rem;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-areas: "rel" "cab" "prox"; justify-items: center; }
+    /* O Tick continua sendo o número grande, mas medido pela coluna: fixo em
+       1,9rem ele estouraria a largura da coluna num notebook. */
+    :is(body.grid-tv, body.fila-empe) .ini-tk-n { font-size: clamp(1rem, 2vw, 2.6rem); }
+    :is(body.grid-tv, body.fila-empe) .ini-relogio { justify-items: center;
+      grid-template-columns: minmax(0, 1fr); }
+    :is(body.grid-tv, body.fila-empe) .ini-rd { grid-column: 1; }
+    /* O título e as setas saem: as setas deslizavam a fila DEITADA, e de pé
+       quem rola é a lista. O ▾ ia junto do título · a dobra da fila agora é o
+       « do trilho, que é a mesma pergunta com uma resposta melhor. */
+    :is(body.grid-tv, body.fila-empe) :is(.fila-h, .fila-seta, .fila-tudo) { display: none; }
+
+    :is(body.grid-tv, body.fila-empe) .fila-lista {
+      flex-direction: column; overflow-x: hidden; overflow-y: auto; gap: .25rem; }
+    /* Cada peça empilha: retrato em cima, nome embaixo, tudo centrado. Deitado,
+       o cartão era retrato-ao-lado-do-nome e pedia 11,5rem que aqui não há. */
+    :is(body.grid-tv, body.fila-empe) .ini-item {
+      flex: 0 0 auto; grid-template-columns: minmax(0, 1fr);
+      justify-items: center; text-align: center; gap: .1rem; padding: .25rem .1rem; }
+    :is(body.grid-tv, body.fila-empe) .ini-av { grid-row: auto; }
+    :is(body.grid-tv, body.fila-empe) .ini-item .av { --av-t: clamp(1.3rem, 2.6vw, 3.4rem); }
+    :is(body.grid-tv, body.fila-empe) :is(.ini-nome, .ini-num, .ini-fita) { grid-column: 1; }
+    :is(body.grid-tv, body.fila-empe) .ini-nome { max-width: 100%; }
+    /* A fase por extenso não cabe; a fita colorida diz o mesmo e se lê de longe. */
+    :is(body.grid-tv, body.fila-empe) .ini-fase { display: none; }
+    /* O degrau do tick estava de pé para separar colunas; numa fila vertical ele
+       volta a ser uma linha deitada, que é onde ele separa. */
+    :is(body.grid-tv, body.fila-empe) .ini-grupo {
+      writing-mode: horizontal-tb; border-left: 0; border-top: 1px solid var(--rule);
+      padding: .2rem 0 .1rem; width: 100%; }
+    :is(body.grid-tv, body.fila-empe) .fila-lista > .ini-grupo:first-child { border-top: none; }
+    /* O « só existe quando a fila é trilho. Recolher uma faixa deitada para
+       28px de LARGURA não quer dizer nada. */
+    body.fila-empe .ini-recolher { display: block; }
+  }
+  .ini-recolher { display: none; }
 
   /* ---- e a tela cheia SÓ DO MAPA ----
      O segundo alvo. A borda e o canto arredondado somem: eles existem para
@@ -1558,22 +1660,27 @@ const SETAS = [
     line-height: 1; padding: .05rem .3rem; }
   .gr-trilho-rot { display: none; }
   @media (min-width: 1101px) {
-    /* O `:has` alcança a grade a partir do estado da filha, que é onde as
-       outras dobras já guardam o estado. `body:not(.grid-tv)` porque a TV e a
-       tela cheia redefinem esta mesma grade: sem a ressalva sobraria um trilho
-       de 1,75rem escondido, cobrando largura e não mostrando nada. */
-    body:not(.grid-tv) .gr-grade:has(> .gr-lado.recolhida) {
-      grid-template-columns: minmax(0, 1fr) 1.75rem; }
+    /* Quem escolhe a largura de cada trilho é o `--w-fila` / `--w-lado` lá
+       embaixo, na grade de três colunas: aqui fica só o que o trilho VIRA.
+       O `:has` alcança a grade a partir do estado da filha, que é onde as
+       outras dobras já guardam o seu. */
     body:not(.grid-tv) .gr-grade { transition: grid-template-columns .2s ease; }
-    .gr-lado.recolhida { padding: .3rem 0; overflow: hidden; align-items: center; }
-    .gr-lado.recolhida > :not(.gr-recolher):not(.gr-trilho-rot) { display: none; }
-    .gr-lado.recolhida .gr-recolher { position: static; transform: rotate(180deg);
+    :is(.gr-lado, .gr-ini).recolhida { padding: .3rem 0; overflow: hidden; align-items: center; }
+    :is(.gr-lado, .gr-ini).recolhida > :not(.gr-recolher):not(.gr-trilho-rot) { display: none; }
+    :is(.gr-lado, .gr-ini).recolhida .gr-recolher { position: static; transform: rotate(180deg);
       flex: 0 0 auto; margin-bottom: .35rem; }
     /* O nome de pé, como o degrau do tick já faz na fila deitada. */
-    .gr-lado.recolhida .gr-trilho-rot { display: block; writing-mode: vertical-rl;
+    :is(.gr-lado, .gr-ini).recolhida .gr-trilho-rot { display: block; writing-mode: vertical-rl;
       font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
       letter-spacing: .12em; color: var(--ink-soft); white-space: nowrap;
       overflow: hidden; text-overflow: ellipsis; min-height: 0; }
+    /* Os dois botões LADEIAM o tabuleiro: cada um na beirada do trilho que dá
+       para o mapa. A mão vai ao vinco entre o trilho e o mapa, e não à borda de
+       fora da tela · e as duas setas apontam para fora, que é para onde cada
+       trilho sai. A fila fica à esquerda do mapa, então a beirada dela é a
+       direita (o `right` de fábrica); a coluna fica à direita, e a dela é a
+       esquerda. */
+    .gr-lado .gr-recolher { right: auto; left: .35rem; }
   }
   @media (prefers-reduced-motion: reduce) {
     body:not(.grid-tv) .gr-grade { transition: none; }
@@ -2137,7 +2244,7 @@ const SETAS = [
   import {
     centroHex, verticesHex, tabuleiro, medidaTabuleiro, margemTabuleiro,
     hexEmPonto, dentro, chaveHex, distanciaHex, nomeHex, larguraHex,
-    offsetParaAxial, letraColuna,
+    offsetParaAxial, letraColuna, caminharHex,
   } from '../../lib/hex';
   import { uiConfirmar, uiErro, uiFormulario } from '../../lib/ui-dialog';
   import {
@@ -2169,7 +2276,9 @@ const SETAS = [
     rolaNoSite, ticksDeDeslocamento, armaDoCatalogo, ticksDeEntrada,
     contrapeEm, contrapeDe, contrapeAcaba, faseDeQuemVaiAgir, preparoDe, ordemDaFila,
     adiaGolpe, agendar, golpesNoAr, golpeDevido, golpeResolvido, proximoGolpe,
-    FASE_ROTULO, type CombateMesa, type Manobra, type Acao,
+    ehSimultaneo, agendaSimultanea, ticksDeViagem, decideEmValeDepois,
+    previsaoDeEncontro, decisaoAutomatica, MODOS_MOV,
+    FASE_ROTULO, type CombateMesa, type Manobra, type Acao, type Mov,
   } from '../../lib/combate-tempo';
 
   const el = (i: string) => document.getElementById(i)!;
@@ -2565,6 +2674,9 @@ const SETAS = [
     const { data: encs } = await SB.from(MESTRE ? 'encontros' : 'encontro_visao')
       .select('*').eq('mesa_id', ID).eq('ativo', true).limit(1);
     ENC = (encs || [])[0] || null;
+    // O relógio do simultâneo relê a verdade do banco a cada carga: outra tela
+    // pode ter avançado o Tick enquanto esta estava fora.
+    TICK_SIM = null;
     if (!ENC) return;
     const { data, error } = await SB.from(MESTRE ? 'combatentes' : 'combate_visao')
       .select('*').eq('encontro_id', ENC.id);
@@ -2995,7 +3107,7 @@ const SETAS = [
           points="${verticesHex(c.x + mg.x, c.y + mg.y, RAIO)}" />`;
       }).join('')
       + rotulosHTML(cols, rows, mg)
-      + '<g id="gr-alcance"></g><g id="gr-seta"></g><g id="gr-pings"></g>';
+      + '<g id="gr-alcance"></g><g id="gr-rotas"></g><g id="gr-seta"></g><g id="gr-pings"></g>';
 
     const img = el('gr-fundo') as HTMLImageElement;
     const src = ARENA.fundo_url || (ARENA.fundo_path ? IMG_FUNDO : '');
@@ -3841,8 +3953,26 @@ const SETAS = [
    */
   function tickDaVez(): number | null {
     const emPe = naFila().filter((c: any) => !noChao(c));
-    return emPe.length ? (emPe[0].tick ?? 0) : null;
+    if (!emPe.length) return null;
+    // No simultâneo o relógio é da CENA, e não derivado da fila: ele anda um
+    // Tick por clique e nunca pula. Ver `Combate_Simultaneo.md`.
+    if (SIML()) return tickSim();
+    return emPe[0].tick ?? 0;
   }
+
+  /** O sistema desta mesa é o simultâneo? */
+  const SIML = () => ehSimultaneo(TEMPO);
+
+  /**
+   * O Tick da cena no simultâneo. A verdade mora em `encontros.tick_atual`
+   * (que a aba Combate já usa), com a cópia local para o clique não esperar o
+   * banco. `null` = ainda não lido nesta carga do encontro.
+   */
+  let TICK_SIM: number | null = null;
+  const tickSim = (): number => {
+    if (TICK_SIM == null) TICK_SIM = Math.max(0, ENC?.tick_atual ?? 0);
+    return TICK_SIM;
+  };
 
   /**
    * Quem está na vez. Agora é um GRUPO, e não uma pessoa.
@@ -3866,6 +3996,10 @@ const SETAS = [
     // estava chegando.
     const g = golpeMaisCedo();
     if (g != null && g <= t) return [];
+    // No simultâneo não existe "a vez de um": decide todo mundo que está livre
+    // no Tick corrente. `<=` e não `===`, porque quem ficou livre dois Ticks
+    // atrás e ainda não declarou continua podendo.
+    if (SIML()) return naFila().filter((c: any) => !noChao(c) && (c.tick ?? 0) <= t);
     return naFila().filter((c: any) => !noChao(c) && (c.tick ?? 0) === t);
   }
 
@@ -3881,6 +4015,9 @@ const SETAS = [
    * alguém levantar.
    */
   function relogio(): number {
+    // No simultâneo o relógio é o da cena, sempre: golpe atrasado aparece
+    // marcado na faixa, e não puxa o número para trás.
+    if (SIML()) return tickSim();
     // O GOLPE NO AR SEGURA O RELÓGIO. Sem isto a cena pula por cima do Tick
     // agendado: o atacante já foi para o `livre`, e o Tick em que o braço cai
     // não é a vez de ninguém, então ninguém pararia nele. É o defeito que o
@@ -4067,6 +4204,20 @@ const SETAS = [
       prox.title = !emPe.length ? 'Ninguém de pé: a cena espera alguém levantar.'
         : golpeCaindo ? 'Há golpe caindo neste Tick: resolva na faixa dos golpes no ar.'
           : '';
+      // No simultâneo o botão anda a CENA, um Tick por vez, e o campo do custo
+      // não quer dizer nada: quem cobra o tempo é a régua da ação declarada. A
+      // dica conta quem ainda pode decidir neste Tick, sem travar o avanço: o
+      // mestre é quem sabe se a mesa terminou de falar.
+      if (SIML()) {
+        el('ini-custo-cx').hidden = true;
+        prox.textContent = '⏭ Tick +1';
+        if (!prox.disabled) {
+          const livres = grupoDaVez().length;
+          prox.title = livres
+            ? `${livres} ainda pode(m) decidir neste Tick. Avançar move as peças em trajeto e faz cair o que estiver agendado.`
+            : 'Avançar move as peças em trajeto e faz cair o que estiver agendado.';
+        }
+      } else el('ini-custo-cx').hidden = !MESTRE;
     }
     if (!emPe.length) {
       esquecerCaixa(box);
@@ -4079,6 +4230,7 @@ const SETAS = [
     const itens = itensDaFila(pecasDaFila(emPe), tick, { marcacao: TEMPO.marcacao });
     reconciliar(box, itens);
     pintarGolpesNoAr(emPe, tick);
+    pintarRotas();
     atualizarSetasDaFila();
     if ((el('ordem-dlg') as HTMLDialogElement).open) pintarOrdem();
     pintarLinhaDoTempo(tick);
@@ -4572,6 +4724,288 @@ const SETAS = [
     await verificarEfeitos(ctxArtes());
   }
 
+  // ============================================== o relógio do simultâneo
+  /** O alcance de perseguição de uma peça, em hexágonos: braço ou haste. */
+  const alcanceDaPeca = (c: any): number =>
+    classeDeTempo(RESUMO[c.id]?.arma, RESUMO[c.id]?.velocidade, RESUMO[c.id]?.classe) === 'haste'
+      ? HEX_HASTE : HEX_CORPO_A_CORPO;
+
+  /**
+   * UM TICK DO SISTEMA SIMULTÂNEO, inteiro.
+   *
+   * A ordem dentro do avanço é fixa e importa: primeiro o relógio anda (e
+   * persiste), depois TODAS as peças em trajeto dão o passo deste Tick (contra
+   * a posição ATUAL do alvo, que é o que faz dois que avançam um no outro se
+   * encontrarem antes), depois as criaturas em modo automático decidem, e só
+   * então a cena repinta. Os golpes que venceram neste Tick caem pela faixa,
+   * como no golpe adiado: o botão já chega desligado com golpe devido.
+   */
+  async function avancarTickSimultaneo() {
+    if (instanteDeGolpe()) return;
+    const T = tickSim() + 1;
+    TICK_SIM = T;
+    if (ENC?.id) {
+      // A aba Combate lê o mesmo número: as duas telas contam o mesmo relógio.
+      const { error } = await SB.from('encontros').update({ tick_atual: T }).eq('id', ENC.id);
+      if (!error) ENC.tick_atual = T;
+    }
+    const escala = Number(ARENA?.escala_m) || 1;
+    for (const c of naFila()) {
+      if (noChao(c)) continue;
+      const mov = (c.acao as any)?.mov as Mov | undefined;
+      if (!mov?.auto || !TOKENS[c.id]) continue;
+      // A decisão vale um Tick depois de declarada: o passo do Tick T só sai se
+      // a declaração é de antes dele.
+      if (((c.acao as any)?.desde ?? 0) + decideEmValeDepois() > T) continue;
+      const pos = TOKENS[c.id];
+      const alvoPos = mov.alvo ? TOKENS[mov.alvo] : mov.destino;
+      if (!alvoPos) continue;
+      const passos = Math.max(1, Math.round(mov.porTick / escala));
+      const pararA = mov.alvo ? alcanceDaPeca(c) : 0;
+      let novo = caminharHex(pos, alvoPos, passos, pararA,
+        (h) => ocupadoPor(h.q, h.r, c.id));
+      // CERCADO NÃO É PRESO. O `ocupadoPor` mede círculos em metros, e um
+      // Enorme ao lado veta os seis vizinhos de quem encosta nele (a peça pode
+      // até já ter NASCIDO dentro dessa zona). A regra de mesa é outra: ninguém
+      // pousa NA CASA de ninguém, mas passar e parar apertado pode. Travado o
+      // caminho estrito, o passo repete vetando só a casa exata das outras
+      // peças, que é o mínimo que o tabuleiro precisa garantir.
+      if (novo.q === pos.q && novo.r === pos.r) {
+        const casaExata = (h: any) => Object.entries(TOKENS).some(([cid, t]: any) =>
+          cid !== c.id && t.q === h.q && t.r === h.r);
+        novo = caminharHex(pos, alvoPos, passos, pararA, casaExata);
+      }
+      if (novo.q !== pos.q || novo.r !== pos.r) {
+        const em = new Date().toISOString();
+        const m = distanciaHex(pos, novo) * escala;
+        TOKENS[c.id] = { q: novo.q, r: novo.r, em } as any;
+        await gravarToken(c.id, novo.q, novo.r, em);
+        await logar(c, `${c.nome} avança ${fmtM(m)} (${mov.modo}) até ${nomeHex(novo.q, novo.r)}`,
+          { acao: null });
+      }
+      // Chegou: o trajeto sai da ação. No movimento puro a peça fica livre JÁ,
+      // porque a estimativa da declaração pode ter sido mais longa que o
+      // caminho real (o alvo veio ao encontro).
+      if (distanciaHex(TOKENS[c.id], alvoPos) <= pararA) {
+        const sem = { ...(c.acao || {}) } as any; delete sem.mov;
+        const puro = !mov.alvo && !(sem.golpes || []).length;
+        const patch: any = { acao: sem };
+        if (puro) patch.tick = T;
+        const { error } = await SB.from('combatentes').update(patch).eq('id', c.id);
+        if (!error) { c.acao = sem; if (puro) c.tick = T; }
+      }
+    }
+    await decidirAutomaticas(T);
+    pintarTokens(); pintarIniciativa(); pintarAlcance();
+    avisarAgora('tokens'); avisarAgora('combatentes');
+    await verificarEfeitos(ctxArtes());
+  }
+
+  /**
+   * AS CRIATURAS EM MODO AUTOMÁTICO decidem o Tick delas sozinhas.
+   *
+   * A heurística é a mínima de propósito (atacar o inimigo de pé mais próximo,
+   * fugir com a Vida baixa): ela existe para a horda andar sem dez cliques por
+   * Tick, não para jogar bem. "Inimigo" aqui é quem não é criatura, que é o
+   * recorte que a mesa usa em 9 de 10 cenas; a exceção (NPC hostil, criatura
+   * aliada) o mestre joga à mão, desligando o robô da peça.
+   */
+  async function decidirAutomaticas(T: number) {
+    if (!MESTRE) return;
+    const emPe = naFila().filter((c: any) => !noChao(c));
+    const inimigosDe = (c: any) => emPe.filter((o: any) =>
+      (o.tipo === 'criatura') !== (c.tipo === 'criatura') && TOKENS[o.id]);
+    for (const c of emPe) {
+      if (c.tipo !== 'criatura' || !c.dados?.auto || !TOKENS[c.id]) continue;
+      if ((c.tick ?? 0) > T) continue;                       // ainda comprometida
+      if (golpesNoAr(c.acao).length || (c.acao as any)?.mov) continue;
+      const d = decisaoAutomatica(
+        { id: c.id, pvPct: c.pv_max ? pctDe(c.pv_atual ?? 0, c.pv_max) : null, pos: TOKENS[c.id] },
+        inimigosDe(c).map((o: any) => ({ id: o.id, pos: TOKENS[o.id] })),
+        distanciaHex,
+      );
+      if (d.tipo === 'nada' || !d.alvo) continue;
+      const alvo = COMBS.find((z: any) => z.id === d.alvo);
+      if (!alvo) continue;
+      if (d.tipo === 'fugir') {
+        // Para longe: o dobro do vetor que separa, como destino. Corrida.
+        const eu = TOKENS[c.id], dele = TOKENS[d.alvo];
+        const destino = { q: eu.q + (eu.q - dele.q) * 4, r: eu.r + (eu.r - dele.r) * 4 };
+        const modo = MODOS_MOV.find((x) => x.id === 'corrida')!;
+        const acao: any = {
+          golpes: [], livre: T + 6, desde: T, ...contrapeDe(c.acao),
+          mov: { destino, modo: 'corrida', porTick: modo.porTick, auto: true } as Mov,
+        };
+        if (await gravarRelogio(c, T + 6, acao)) {
+          await logar(c, `🤖 ${c.nome} foge de ${alvo.nome} correndo`, { acao: null });
+        }
+        continue;
+      }
+      await declararAtaqueSimultaneo(c, alvo, { silencioso: true });
+    }
+  }
+
+  /** Liga e desliga o robô de uma criatura. Persistido em `combatentes.dados`. */
+  async function alternarAuto(cid: string) {
+    const c = COMBS.find((z: any) => z.id === cid); if (!c) return;
+    const dados = { ...(c.dados || {}), auto: !c.dados?.auto };
+    const { error } = await SB.from('combatentes').update({ dados }).eq('id', cid);
+    if (error) return uiErro('Erro: ' + error.message);
+    c.dados = dados;
+    pintarIniciativa();
+    await logar(c, `${c.nome} ${dados.auto ? 'entra em' : 'sai do'} modo automático`, { acao: null });
+  }
+
+  /**
+   * AS ROTAS DECLARADAS, desenhadas no tabuleiro: um tracejado da peça ao
+   * destino (ou ao alvo perseguido), para a mesa ver quem está indo aonde sem
+   * abrir ficha nenhuma. Só o simultâneo tem trajeto para desenhar.
+   */
+  function pintarRotas() {
+    const g = document.getElementById('gr-rotas');
+    if (!g) return;
+    if (!SIML()) { g.innerHTML = ''; return; }
+    const mg = margem();
+    const tracos: string[] = [];
+    for (const c of naFila()) {
+      if (noChao(c)) continue;
+      const mov = (c.acao as any)?.mov as Mov | undefined;
+      const pos = TOKENS[c.id];
+      if (!mov || !pos) continue;
+      const fim = mov.alvo ? TOKENS[mov.alvo] : mov.destino;
+      if (!fim) continue;
+      const a = centroHex(pos.q, pos.r, RAIO), b = centroHex(fim.q, fim.r, RAIO);
+      // A trajetória à mão sai mais apagada e pontilhada: é intenção anotada, e
+      // não passo que o motor vai dar sozinho.
+      const estilo = mov.auto
+        ? 'fill:none;stroke:#c9a227;stroke-opacity:.55;stroke-width:2;stroke-dasharray:7 5'
+        : 'fill:none;stroke:#c9a227;stroke-opacity:.3;stroke-width:2;stroke-dasharray:2 6';
+      tracos.push(`<path d="M ${(a.x + mg.x).toFixed(1)} ${(a.y + mg.y).toFixed(1)}
+        L ${(b.x + mg.x).toFixed(1)} ${(b.y + mg.y).toFixed(1)}" style="${estilo}" />`);
+    }
+    g.innerHTML = tracos.join('');
+  }
+
+  /**
+   * SOLTAR NUM HEXÁGONO VAZIO, no simultâneo: perguntar COMO, e não teleportar.
+   *
+   * A peça livre declara o deslocamento (modo, m/Tick, trajetória automática ou
+   * à mão) e anda de verdade, um passo por avanço do relógio. O "pôr direto"
+   * continua no diálogo porque arrumar a cena é ferramenta de mestre. Peça já
+   * comprometida (Preparo, Recuperação, trajeto) cai no caminho de sempre, que
+   * já cobra e já pergunta o que deve.
+   */
+  async function moverSimultaneo(c: any, destino: { q: number; r: number }): Promise<void> {
+    const T = tickSim();
+    // Peça comprometida com gesto (Preparo, Golpe, Recuperação) cai no caminho
+    // de sempre. Peça só em trajeto conta como livre e REDECLARA: arrastar de
+    // novo é mudar de ideia sobre o caminho, que é a regra deste modo.
+    if (faseEm(acaoNo(c), T) !== 'livre') {
+      return porNoMapa(c.id, destino.q, destino.r);
+    }
+    const dlg = el('mov-dlg') as HTMLDialogElement;
+    const de = TOKENS[c.id];
+    const escala = Number(ARENA?.escala_m) || 1;
+    const distM = de ? distanciaHex(de, destino) * escala : 0;
+    (el('mv-titulo') as HTMLElement).textContent = `${c.nome} se desloca`;
+    (el('mv-linha') as HTMLElement).textContent =
+      `${nomeHex(destino.q, destino.r)} · ${fmtM(distM)} daqui`;
+    const sel = el('mv-modo') as HTMLSelectElement;
+    sel.innerHTML = MODOS_MOV.map((m) =>
+      `<option value="${m.id}"${m.id === 'batalha' ? ' selected' : ''}>${m.nome} · ${m.nota}</option>`).join('');
+    const vel = el('mv-vel') as HTMLInputElement;
+    const auto = el('mv-auto') as HTMLInputElement;
+    const nota = el('mv-nota') as HTMLElement;
+    const chegadaEm = (v: number) =>
+      T + decideEmValeDepois() + Math.max(0, ticksDeViagem(distM, v) - 1);
+    const pintar = () => {
+      const m = MODOS_MOV.find((x) => x.id === sel.value) || MODOS_MOV[1];
+      if (document.activeElement !== vel) vel.value = String(m.porTick);
+      const v = Math.max(0.5, parseFloat(vel.value || '0') || m.porTick);
+      nota.textContent = `Começa no Tick ${T + decideEmValeDepois()} e chega no ${chegadaEm(v)}`
+        + ` (${ticksDeViagem(distM, v)} Tick(s) de caminho).`
+        + (sel.value === 'corrida' ? ' Correndo: Defesa −4 até se recompor.' : '');
+    };
+    sel.onchange = pintar; vel.oninput = pintar; pintar();
+
+    const escolha = await new Promise<'declara' | 'direto' | null>((resolve) => {
+      let r: 'declara' | 'direto' | null = null;
+      (el('mv-ok') as HTMLElement).onclick = () => { r = 'declara'; dlg.close(); };
+      (el('mv-direto') as HTMLElement).onclick = () => { r = 'direto'; dlg.close(); };
+      (el('mv-cancelar') as HTMLElement).onclick = () => dlg.close();
+      dlg.addEventListener('close', () => resolve(r), { once: true });
+      dlg.showModal();
+    });
+    if (!escolha) return;
+    if (escolha === 'direto') return porNoMapa(c.id, destino.q, destino.r);
+
+    const v = Math.max(0.5, parseFloat(vel.value || '3') || 3);
+    // A peça fica "presa" até a chegada projetada; se o caminho encurtar (o
+    // avanço para quando chega), o próprio avanço a liberta no Tick real.
+    const livre = chegadaEm(v);
+    const acao: any = {
+      golpes: [], livre, desde: T, ...contrapeDe(c.acao),
+      mov: { destino, modo: sel.value as any, porTick: v, auto: auto.checked } as Mov,
+    };
+    if (!await gravarRelogio(c, livre, acao)) return;
+    await logar(c, `${c.nome} declara deslocamento até ${nomeHex(destino.q, destino.r)}`
+      + ` · ${fmtM(distM)} a ${v} m/Tick (${sel.value})${auto.checked ? '' : ' · trajetória à mão'}`,
+      { acao: null });
+  }
+
+  /**
+   * DECLARAR UM ATAQUE NO SIMULTÂNEO, com ou sem caixa na frente.
+   *
+   * É o irmão de `declararNoTabuleiro` com a agenda do simultâneo: decidir no
+   * Tick T, valer de T+1, o deslocamento cabendo dentro do Preparo e só o
+   * excedente atrasando o golpe (`agendaSimultanea`). Quem chama com a caixa é
+   * `declararGolpe`; quem chama sem é o modo automático das criaturas.
+   */
+  async function declararAtaqueSimultaneo(
+    atacante: any, alvo: any,
+    opts: {
+      manobra?: Manobra; golpes?: number;
+      modoMov?: string; porTick?: number; auto?: boolean; silencioso?: boolean;
+    } = {},
+  ): Promise<boolean> {
+    const T = tickSim();
+    const ra = RESUMO[atacante.id];
+    const classe = classeDeTempo(ra?.arma, ra?.velocidade, ra?.classe);
+    const vel = ra?.velocidade ?? velocidadeDaArma(ra?.arma, 5);
+    const an = anatomia({
+      classe, velocidade: vel, sistema: TEMPO.sistema,
+      manobra: opts.manobra || 'simples', golpes: opts.golpes,
+    });
+    const de = TOKENS[atacante.id], pa = TOKENS[alvo.id];
+    const escala = Number(ARENA?.escala_m) || 1;
+    const hexes = de && pa ? distanciaHex(de, pa) : 0;
+    // Arma de distância e arremesso não perseguem: atiram de onde estão.
+    const persegue = classe !== 'distancia' && classe !== 'arremesso' && classe !== 'arte';
+    const faltamHex = persegue ? Math.max(0, hexes - alcanceDaPeca(atacante)) : 0;
+    const modo = MODOS_MOV.find((m) => m.id === (opts.modoMov || 'batalha')) || MODOS_MOV[1];
+    const porTick = Math.max(0.5, opts.porTick ?? modo.porTick);
+    const viagem = ticksDeViagem(faltamHex * escala, porTick);
+    const ag = agendaSimultanea(T, an, viagem);
+    let acao: any = declarar(T, an, {
+      tipo: (an.golpes > 1 ? (opts.manobra || 'simples') : 'simples') as Manobra,
+      arma: ra?.arma || null, alvo: alvo?.id || null,
+      ...contrapeDe(atacante.acao),
+    });
+    acao.golpes = ag.golpes; acao.livre = ag.livre;
+    if (viagem > 0) {
+      acao.mov = { alvo: alvo.id, modo: modo.id, porTick, auto: opts.auto ?? true } as Mov;
+    }
+    acao = agendar(acao, T);
+    if (!await gravarRelogio(atacante, acao.livre, acao, alvo, 0)) return false;
+    const nomeArma = armaDoCatalogo(ra?.arma)?.nome || ra?.arma || 'sem arma';
+    await logar(atacante,
+      `${opts.silencioso ? '🤖 ' : ''}${atacante.nome} declara contra ${alvo.nome}`
+      + ` · golpe no Tick ${ag.golpes.join(', ')}`
+      + (viagem > 0 ? ` · avança ${viagem} Tick(s) (${modo.id})` : '')
+      + (ra?.arma ? ` · ${nomeArma}` : ''), { acao: null });
+    return true;
+  }
+
   /**
    * Abortar o gesto de quem está em Preparo, do tabuleiro.
    *
@@ -4830,6 +5264,12 @@ const SETAS = [
       const eu = COMBS.find((c: any) => c.id === id);
       if (outro && eu && TOKENS[id]) { await resolverAtaque(eu, outro); return; }
       if (!destino) return;
+      // No simultâneo, soltar peça do mapa num hexágono vazio pergunta COMO ela
+      // vai até lá, em vez de teleportar. Peça vinda da lista (entrando em
+      // cena) e peça caída continuam pousando direto.
+      if (SIML() && deOnde === 'mapa' && eu && TOKENS[id] && !noChao(eu)) {
+        await moverSimultaneo(eu, destino); return;
+      }
       await porNoMapa(id, destino.q, destino.r);
     });
 
@@ -5379,7 +5819,11 @@ const SETAS = [
       // `combatentes` pelas funções `jogador_*` da migração 22, e não há uma
       // para isto ainda.
       MESTRE && podeAbortar(acaoNo(c), relogio()) ? item('abortar', '✋ Abortar o gesto') : '',
-      MESTRE ? item('encerrar', `⏭ ${ehAVez ? 'Agiu' : 'Adiantar o relógio dele'} (+${custoAtual()} ticks)`) : '',
+      MESTRE && !SIML() ? item('encerrar', `⏭ ${ehAVez ? 'Agiu' : 'Adiantar o relógio dele'} (+${custoAtual()} ticks)`) : '',
+      // O robô, só do simultâneo e só de criatura: o mestre liga a heurística
+      // (ataca o mais próximo, foge com Vida baixa) e retoma quando quiser.
+      MESTRE && SIML() && c.tipo === 'criatura'
+        ? item('auto', c.dados?.auto ? '🤖 Desligar o automático' : '🤖 Modo automático') : '',
       MESTRE ? item('ordem', '↕ Iniciativa e ticks') : '',
       MESTRE ? sep : '',
       MESTRE ? item('tirar', '⏏ Tirar do mapa', 'perigo') : '',
@@ -5415,6 +5859,7 @@ const SETAS = [
       else if (a === 'esperar') esperarUmTick(cid);
       else if (a === 'alcance') alternarAlcance(cid);
       else if (a === 'abortar') abortarGesto(cid);
+      else if (a === 'auto') alternarAuto(cid);
       else if (a === 'encerrar') encerrarVez(cid);
       else if (a === 'ordem') editarIniciativa(cid);
       else if (a === 'tirar') tirarDoMapa(cid);
@@ -6151,7 +6596,9 @@ const SETAS = [
     // acaba. O que resolve é `resolverGolpeNoAr`, no Tick agendado. Com o
     // Preparo em zero (arma leve, ou o sistema normal) não há o que adiar, e o
     // caminho continua sendo este de sempre.
-    if (adiaGolpe(TEMPO) && preparoDoAtaque(atacante) > 0) {
+    // No simultâneo TUDO agenda, até a arma leve: decidir é no Tick de agora e
+    // valer é no seguinte, então nem o punho resolve na declaração.
+    if (adiaGolpe(TEMPO) && (SIML() || preparoDoAtaque(atacante) > 0)) {
       return declararGolpe(atacante, alvo);
     }
     const res = await folhaDaAcao(atacante, alvo);
@@ -6219,7 +6666,7 @@ const SETAS = [
   function preparoDoAtaque(c: any): number {
     const r = RESUMO[c.id];
     return preparoDe(
-      classeDeTempo(r?.arma, r?.velocidade),
+      classeDeTempo(r?.arma, r?.velocidade, r?.classe),
       r?.velocidade ?? velocidadeDaArma(r?.arma, 5),
       TEMPO.sistema,
     );
@@ -6241,7 +6688,7 @@ const SETAS = [
   async function declararGolpe(atacante: any, alvo: any) {
     const dlg = el('decl-dlg') as HTMLDialogElement;
     const ra = RESUMO[atacante.id];
-    const classe = classeDeTempo(ra?.arma, ra?.velocidade);
+    const classe = classeDeTempo(ra?.arma, ra?.velocidade, ra?.classe);
     const vel = ra?.velocidade ?? velocidadeDaArma(ra?.arma, 5);
     const t0 = atacante.tick ?? 0;
 
@@ -6261,11 +6708,40 @@ const SETAS = [
     const cx = el('dc-aviso') as HTMLElement;
     const longe = hexes != null && classe !== 'distancia' && classe !== 'arremesso'
       && !alcancaNoCorpoACorpo(hexes, classe === 'haste');
-    cx.hidden = !longe;
-    if (longe) {
+    cx.hidden = !longe || SIML();
+    if (longe && !SIML()) {
       cx.textContent = `Fora do alcance agora, a ${fmtM(dist!)}: o golpe só cai no Tick`
         + ` ${t0 + preparoDe(classe, vel, TEMPO.sistema)}, e até lá alguém tem de fechar a distância.`;
     }
+
+    // NO SIMULTÂNEO O DESLOCAMENTO ENTRA NA PRÓPRIA DECLARAÇÃO: fora do
+    // alcance, a caixa pergunta como a peça vai até lá, e a agenda desloca o
+    // golpe pelo excedente da viagem sobre o Preparo.
+    const mvCx = el('dc-mov') as HTMLElement;
+    const mvModo = el('dc-mov-modo') as HTMLSelectElement;
+    const mvVel = el('dc-mov-vel') as HTMLInputElement;
+    const mvAuto = el('dc-mov-auto') as HTMLInputElement;
+    const precisaAndar = SIML() && longe;
+    mvCx.hidden = !precisaAndar;
+    if (precisaAndar) {
+      mvModo.innerHTML = MODOS_MOV.filter((m) => m.id !== 'andar').map((m) =>
+        `<option value="${m.id}"${m.id === 'batalha' ? ' selected' : ''}>${m.nome}</option>`).join('');
+      mvModo.onchange = () => {
+        const m = MODOS_MOV.find((x) => x.id === mvModo.value);
+        if (m) mvVel.value = String(m.porTick);
+        pintar();
+      };
+      mvVel.value = String(MODOS_MOV.find((m) => m.id === 'batalha')?.porTick ?? 3);
+      mvVel.oninput = () => pintar();
+      mvAuto.onchange = () => pintar();
+    }
+    const escalaM = Number(ARENA.escala_m) || 1;
+    const alcHex = classe === 'haste' ? HEX_HASTE : HEX_CORPO_A_CORPO;
+    const viagemAtual = () => {
+      if (!precisaAndar || hexes == null) return 0;
+      const v = Math.max(0.5, parseFloat(mvVel.value || '3') || 3);
+      return ticksDeViagem(Math.max(0, hexes - alcHex) * escalaM, v);
+    };
 
     const manSel = el('dc-manobra') as HTMLSelectElement;
     const golInp = el('dc-golpes') as HTMLInputElement;
@@ -6287,14 +6763,21 @@ const SETAS = [
     const pintar = () => {
       golInp.style.display = manSel.value === 'rajada' ? '' : 'none';
       const a = anat();
-      const quando = a.offs.map((o: number) => t0 + o);
+      // No simultâneo a agenda é outra: decidir no Tick de agora, valer no
+      // seguinte, e a viagem além do Preparo empurrando o golpe.
+      const ag = SIML() ? agendaSimultanea(tickSim(), a, viagemAtual()) : null;
+      const quando = ag ? ag.golpes : a.offs.map((o: number) => t0 + o);
+      const livre = ag ? ag.livre : t0 + a.ciclo;
       (el('dc-tempo') as HTMLElement).innerHTML =
         `<div><b>Preparo ${a.preparo}</b> · <b>Golpe ${a.golpes}</b> · <b>Recuperação ${a.recuperacao}</b>
            = <b>${a.ciclo}</b> Ticks</div>
          <div class="muted">${quando.length > 1
           ? `os golpes caem nos Ticks <b>${quando.slice(0, -1).join(', ')} e ${quando[quando.length - 1]}</b>`
-          : `o golpe cai no Tick <b>${quando[0]}</b>`} · livre no ${t0 + a.ciclo}
+          : `o golpe cai no Tick <b>${quando[0]}</b>`} · livre no ${livre}
            · a guarda de ${esc(atacante.nome)} abre em −2 já a partir de agora</div>
+         ${ag && viagemAtual() > 0
+          ? `<div class="muted">avança ${viagemAtual()} Tick(s) até o alcance; a viagem cabe no
+             Preparo e só o excedente (${ag.atraso}) atrasa o golpe</div>` : ''}
          ${a.aviso ? `<div class="ruim">${esc(a.aviso)}</div>` : ''}`;
     };
     manSel.onchange = pintar; golInp.oninput = pintar; pintar();
@@ -6312,6 +6795,16 @@ const SETAS = [
     });
     if (!escolha) return;                   // desistiu: não gastou Tick nenhum
 
+    if (SIML()) {
+      await declararAtaqueSimultaneo(atacante, alvo, {
+        manobra: (escolha.an.golpes > 1 ? manSel.value : 'simples') as Manobra,
+        golpes: Math.max(2, parseInt(golInp.value || '2', 10) || 2),
+        modoMov: precisaAndar ? mvModo.value : undefined,
+        porTick: precisaAndar ? Math.max(0.5, parseFloat(mvVel.value || '3') || 3) : undefined,
+        auto: precisaAndar ? mvAuto.checked : undefined,
+      });
+      return;
+    }
     await declararNoTabuleiro(atacante, alvo, escolha.an, escolha.manobra, { adiar: true });
     const quando = escolha.an.offs.map((o: number) => t0 + o).join(', ');
     await logar(atacante,
@@ -6344,7 +6837,7 @@ const SETAS = [
     }
     const ra = RESUMO[atacante.id];
     const an = anatomia({
-      classe: classeDeTempo(ra?.arma, ra?.velocidade),
+      classe: classeDeTempo(ra?.arma, ra?.velocidade, ra?.classe),
       velocidade: ra?.velocidade ?? velocidadeDaArma(ra?.arma, 5),
       sistema: TEMPO.sistema,
       manobra: (acao.tipo || 'simples') as Manobra,
@@ -6709,7 +7202,7 @@ const SETAS = [
     // ONDE O MEU GOLPE CAI. É contra a guarda DAQUELE instante que a jogada
     // corre, e não contra a guarda do instante em que eu declarei: no P/G/R as
     // duas coisas são Ticks diferentes.
-    const classeAtq = classeDeTempo(ra?.arma, ra?.velocidade);
+    const classeAtq = classeDeTempo(ra?.arma, ra?.velocidade, ra?.classe);
     const velAtq = ra?.velocidade ?? velocidadeDaArma(ra?.arma, 5);
     const tGolpe = opts.tickDoGolpe
       ?? ((atacante.tick ?? 0) + preparoDe(classeAtq, velAtq, TEMPO.sistema));
@@ -6720,7 +7213,7 @@ const SETAS = [
     const presumida = !temGesto(alvo.acao)
       ? faseDeQuemVaiAgir(
         alvo.tick ?? 0,
-        preparoDe(classeDeTempo(rAlvo?.arma, rAlvo?.velocidade),
+        preparoDe(classeDeTempo(rAlvo?.arma, rAlvo?.velocidade, rAlvo?.classe),
           rAlvo?.velocidade ?? velocidadeDaArma(rAlvo?.arma, 5), TEMPO.sistema),
         tGolpe,
       )
@@ -7553,6 +8046,7 @@ const SETAS = [
   const DOBRA_LOG_KEY = 'centelha:grid:log-dobrado';
   const DOBRA_EF_KEY = 'centelha:grid:efeitos-dobrados';
   const DOBRA_LADO_KEY = 'centelha:grid:lado-recolhido';
+  const DOBRA_FILA_KEY = 'centelha:grid:fila-recolhida';
   /**
    * Duas dobras, uma para cada lado.
    *
@@ -7561,11 +8055,11 @@ const SETAS = [
    * dela; qual das duas merece o espaço muda com a cena, e por isso a escolha é
    * de quem está olhando e fica guardada no aparelho.
    */
-  function dobra(btnId: string, classe: string, chave: string, dicaAbre: string, dicaFecha: string,
-    depois?: () => void) {
+  function dobra(btnId: string, alvoId: string, classe: string, chave: string,
+    dicaAbre: string, dicaFecha: string, depois?: () => void) {
     const btn = el(btnId);
     const aplica = (dobrada: boolean) => {
-      el('gr-lado').classList.toggle(classe, dobrada);
+      el(alvoId).classList.toggle(classe, dobrada);
       btn.setAttribute('aria-expanded', String(!dobrada));
       btn.title = dobrada ? dicaAbre : dicaFecha;
     };
@@ -7626,19 +8120,24 @@ const SETAS = [
   }
 
   function ligarDobra() {
-    dobra('gr-ef-dobrar', 'ef-dobrado', DOBRA_EF_KEY,
+    dobra('gr-ef-dobrar', 'gr-lado', 'ef-dobrado', DOBRA_EF_KEY,
       'Mostrar os efeitos no ar', 'Recolher os efeitos no ar');
-    dobra('gr-dobrar', 'dobrada', DOBRA_KEY,
+    dobra('gr-dobrar', 'gr-lado', 'dobrada', DOBRA_KEY,
       'Mostrar a lista de quem está em campo', 'Ocultar a lista e dar a altura ao Registro');
-    dobra('gr-dobrar-log', 'log-dobrado', DOBRA_LOG_KEY,
+    dobra('gr-dobrar-log', 'gr-lado', 'log-dobrado', DOBRA_LOG_KEY,
       'Mostrar o registro', 'Recolher o registro e dar a altura a Em campo');
-    // A terceira: as duas de cima trocam ALTURA entre si dentro da coluna, esta
-    // devolve a LARGURA dela ao tabuleiro. Depois dela o tabuleiro precisa
-    // reencaixar, que é o gesto que a mão faria em seguida.
-    dobra('gr-recolher', 'recolhida', DOBRA_LADO_KEY,
+    // As duas dobras de LARGURA, uma em cada beirada do tabuleiro. As de cima
+    // trocam altura entre si dentro da coluna; estas devolvem a largura de um
+    // trilho inteiro ao mapa, e depois delas o tabuleiro precisa reencaixar ·
+    // que é o gesto que a mão faria em seguida.
+    const reencaixar = () =>
+      requestAnimationFrame(() => { ajustarAltura(); if (ARENA) caber(true); });
+    dobra('gr-recolher', 'gr-lado', 'recolhida', DOBRA_LADO_KEY,
       'Abrir a coluna de Em campo e do Registro',
-      'Recolher a coluna e dar a largura ao tabuleiro',
-      () => requestAnimationFrame(() => { ajustarAltura(); if (ARENA) caber(true); }));
+      'Recolher a coluna e dar a largura ao tabuleiro', reencaixar);
+    dobra('ini-recolher', 'gr-ini-col', 'recolhida', DOBRA_FILA_KEY,
+      'Abrir a ordem de combate',
+      'Recolher a ordem de combate e dar a largura ao tabuleiro', reencaixar);
     dobraCaixa('ini-dobrar', 'gr-ini-col', 'fila-dobrada', DOBRA_INI_KEY,
       'Mostrar a fila de iniciativa', 'Recolher a fila e dar o espaço ao tabuleiro');
     ligarLinhaDoTempo();
@@ -7896,6 +8395,10 @@ const SETAS = [
         mudarDeCasa(el('gr-barra'), el('mb-baixo'));
       }
       document.body.classList.toggle('barra-fundida', !MOB);
+      // A fila de pé é a outra metade da mesma troca: a barra fundida devolve
+      // altura de cima, o trilho devolve a altura que a fila deitada tomava.
+      // Só no notebook · no telefone a fila é o cartão resumido da barra.
+      document.body.classList.toggle('fila-empe', !MOB);
       (el('ga-arena') as HTMLElement).hidden = !MESTRE;
       sincronizarApp();
       atualizarSetasDaFila();
@@ -7948,7 +8451,10 @@ const SETAS = [
     el('gr-npc').onclick = () => novoNPC();
     el('gr-trilha').onclick = () => abrirTrilha();
     el('ini-rolar').onclick = () => rolarIniciativas();
-    el('ini-prox').onclick = () => { const v = daVez(); if (v) encerrarVez(v.id); };
+    el('ini-prox').onclick = () => {
+      if (SIML()) { void avancarTickSimultaneo(); return; }
+      const v = daVez(); if (v) encerrarVez(v.id);
+    };
     // Espaço encerra a vez de quem está agindo: é o gesto mais repetido de uma
     // sessão inteira, e tirar a mão do teclado para caçar o menu custa caro.
     /**

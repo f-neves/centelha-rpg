@@ -77,19 +77,39 @@ como usar. Daí as duas mudanças abaixo, que compram altura pagando com largura
       de voltar é o único que não some junto · uma coluna que sumisse por inteiro não teria porta de
       volta. Fica guardado no aparelho, como as outras dobras.
 
-Vinte e cinco asserções novas no `npm run smoke` (`cenaFusao`), com o A/B feito na própria página:
-desfazer a fusão em tempo de execução devolve o layout antigo inteiro, e a diferença é o teste.
+- ✅ **E a ordem de combate ficou de pé também no dia a dia.** O ganho grande que a bancada tinha
+      previsto. Ela sai do topo do tabuleiro e vira trilho de **8vw** encostado na cena, à esquerda:
+      deitada cobrava **118px de altura** (o recurso escasso) e de pé cobra 8% de uma largura que
+      sobrava. Medido: o mapa vai de **688 para 814px em 1440** (+18,3%), de **556 para 682 em 1366**
+      (+22,7%) e de 868 para 994 em 1920 (+14,5%). **Contra o layout de antes de tudo isto, são
+      +31,9% em 1440 e +40,6% em 1366.** A fila também recolhe, para a esquerda, com o mesmo trilho
+      de 28px da coluna · e as duas dobras se compõem.
+      O desenho da fila de pé é **um só** e vale nos três modos (normal, TV e tela cheia): o que
+      muda entre eles é a largura (8vw no dia a dia, 7vw ao projetar, onde a coluna lateral não
+      existe). Duas cópias divergiriam no primeiro conserto. Por isso o modo TV (▭), que era o
+      único lugar que ainda mostrava a faixa deitada, passou a mostrar o trilho também.
 
-### Pontas soltas destas três
+**Esta mudança reverte uma decisão de 24/08**, e vale dizer por quê. A tira tinha *acabado* de
+deitar, e o argumento continua de pé: a ordem de combate é de **todos**, e numa coluna estreita à
+direita ela era um apêndice do painel do mestre. É por isso que ela não voltou para a direita ·
+ela está à **esquerda**, encostada na cena, que é para onde a mesa olha. O que mudou foi a conta:
+naquela passada ninguém tinha medido que a altura era o gargalo.
 
-- [ ] **A fila continua deitada fora da tela cheia** · **G** · é o ganho grande que sobrou. A mesma
-      bancada mediu: com a fila em pé no dia a dia, o mapa cresce **+35% em 1440** e **+45% em 1366**,
-      contra os +11,5% e +14,6% da fusão sozinha. E o desperdício de largura cai de 49% para 18%.
-- [ ] **Recolher a coluna dá largura, e largura ainda não vira mapa** · **P** · o trilho devolve
-      188px ao tabuleiro, mas num mapa quadrado quem aperta é a altura, e o mapa não cresce um
-      pixel com isso. Ele serve para ver mais mapa de lado (cena larga, perseguição) e para tirar
-      a lista da frente. **Vira ganho de verdade no dia em que a fila ficar de pé**: aí a altura
-      deixa de ser o gargalo e cada pixel de largura passa a contar.
+Trinta e duas asserções novas no `npm run smoke` (`cenaFusao` mais a cerca da cena principal, que
+**mudou de lado** de propósito), com o A/B feito na própria página: desfazer as duas mudanças em
+tempo de execução devolve o layout antigo inteiro, e a diferença é o teste.
+
+### Pontas soltas destas quatro
+
+- [ ] **As duas dobras de largura ainda não compram mapa** · **P** · medido depois da fila de pé:
+      recolher as duas leva o tabuleiro de 1053 para 1328px em 1440, e o mapa fica **exatamente do
+      mesmo tamanho** (814px). A altura continua sendo o gargalo, agora por outro motivo: a fila de
+      pé já devolveu tudo o que havia para devolver, e o teto passou a ser a janela. As dobras
+      servem para **ver mais mapa de lado** (cena larga, perseguição, mapa 16:9) e para tirar a
+      lista da frente · não para aumentar um mapa quadrado.
+- [ ] **Sobrou pouca gordura vertical** · **P** · com as barras fundidas e a fila de pé, o que ainda
+      fica entre a janela e o mapa é a barra da mesa (67px). Daqui em diante o ganho grande não está
+      mais no layout: está em `⛶` e `▭`, que já tiram tudo.
 - [ ] **A escada só existe na tela do Grid** · **P** · a barra da mesa é a mesma nas dez abas, mas
       só o Grid tem barra da arena para fundir. Se outra tela ganhar uma, a `.mb-baixo` já a recebe.
 

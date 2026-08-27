@@ -168,12 +168,26 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
     return { ini: r('.gr-ini'), palco: r('.gr-palco'), lado: r('.gr-lado'),
       linha: document.getElementById('gr-linha').hidden,
       deitada: (() => { const it = document.querySelectorAll('#gr-ini .ini-item');
-        return it.length > 1 && it[1].getBoundingClientRect().left > it[0].getBoundingClientRect().left; })() };
+        return it.length > 1 && it[1].getBoundingClientRect().left > it[0].getBoundingClientRect().left; })(),
+      // Empilhada de verdade, e não só "não deitada": duas peças no mesmo
+      // ponto passariam pelo `!deitada` sem a fila estar em pé.
+      empilhada: (() => { const it = document.querySelectorAll('#gr-ini .ini-item');
+        return it.length > 1 && it[1].getBoundingClientRect().top > it[0].getBoundingClientRect().top; })() };
   });
-  ok(lug.ini.t < lug.palco.t && Math.abs(lug.ini.l - lug.palco.l) < 2,
-    'a iniciativa fica em cima do tabuleiro, na largura dele');
-  ok(lug.ini.w > lug.lado.w * 2, `e é uma tira larga, não uma coluna (${Math.round(lug.ini.w)}px)`);
-  ok(lug.deitada, 'as peças da fila correm para o lado, e não para baixo');
+  // ESTA CERCA MUDOU DE LADO, e de propósito. Até 26/08 ela cobrava o
+  // contrário: a fila DEITADA em cima do tabuleiro, na largura dele. O
+  // argumento de então continua valendo (a ordem de combate é de todos, e não
+  // um apêndice do painel do mestre) e é por isso que ela não voltou para a
+  // coluna da direita: ela está à ESQUERDA, encostada na cena.
+  // O que mudou foi a conta. Deitada, ela cobrava 118px de ALTURA, e a altura é
+  // o que decide o tamanho do mapa num tabuleiro quase quadrado · sobrava
+  // metade da largura sem uso. De pé ela cobra 8% de uma largura que sobrava, e
+  // o mapa cresce ~35% em 1440. Ver Grid_melhorias.md, 27/08.
+  ok(lug.ini.l < lug.palco.l && Math.abs(lug.ini.t - lug.palco.t) < 2,
+    'a iniciativa fica à esquerda do tabuleiro, na altura dele');
+  ok(lug.ini.w < lug.palco.w / 3,
+    `e é um trilho estreito, não uma tira larga (${Math.round(lug.ini.w)}px)`);
+  ok(lug.empilhada && !lug.deitada, 'as peças da fila correm para baixo, e não para o lado');
   ok(lug.linha, 'a linha do tempo nasce desligada');
   const lt = await p.evaluate(async () => {
     document.getElementById('gr-linha-btn').click();
@@ -983,7 +997,12 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
     return { sis, marc, amostra, prepDepois, fechou: !document.querySelector('dialog.tempo-dlg') };
   });
   if (tempo) {
-    ok(tempo.sis.join(',') === 'normal,pgr', `o painel oferece os dois sistemas (${tempo.sis.join(', ')})`);
+    // Eram dois até 27/08, quando o Combate Simultâneo entrou como o terceiro
+    // (`a3bc286`, frente do combate). A lista fica escrita aqui inteira de
+    // propósito: é o contrato do painel, e um sistema que entra ou sai sem
+    // passar por esta linha entra sem ninguém decidir.
+    ok(tempo.sis.join(',') === 'normal,pgr,simultaneo',
+      `o painel oferece os três sistemas (${tempo.sis.join(', ')})`);
     ok(tempo.marc.join(',') === 'fita,numeros', `e as duas marcações (${tempo.marc.join(', ')})`);
     ok(tempo.amostra > 0, `a amostra desenha a régua de verdade (${tempo.amostra} células)`);
     ok(tempo.prepDepois === 0, `no sistema normal a amostra não tem Preparo (${tempo.prepDepois} células)`);
@@ -2317,21 +2336,25 @@ async function cenaFusao(br, url) {
   ok(d.abaEstaLarg > 0, `menos a aba aberta, que continua dizendo onde a gente está (${d.abaEstaLarg}px)`);
   ok(!d.abasRolando, 'e nada precisa rolar para caber');
 
-  // O A/B na mesma página: desfazer a fusão devolve o layout antigo inteiro.
+  // O A/B na mesma página: desfazer as DUAS mudanças de moldura devolve o
+  // layout de antes por inteiro (a barra volta para o topo da grade e a fila
+  // volta a deitar), e a diferença é o que elas compraram.
   const antes = await p.evaluate(() => {
     const grade = document.querySelector('.gr-grade');
     grade.insertBefore(document.querySelector('.gr-barra'), grade.firstElementChild);
-    document.body.classList.remove('barra-fundida');
+    document.body.classList.remove('barra-fundida', 'fila-empe');
     const r = document.querySelector('#gr-palco').getBoundingClientRect();
-    return { h: Math.round(r.height), topo: Math.round(r.top) };
+    return { w: Math.round(r.width), h: Math.round(r.height) };
   });
-  const ganho = d.palco.h - antes.h;
-  ok(ganho >= 40,
-    `o tabuleiro ganhou a altura da faixa que sumiu (${antes.h} → ${d.palco.h}px, +${ganho})`);
-  // e desfazer é reversível: a barra volta para a fileira sozinha ao redesenhar
+  // Num mapa quadrado quem manda é o lado mais curto: é ele que diz o ganho.
+  const mapa = (b) => Math.min(b.w, b.h);
+  const ganho = mapa(d.palco) / mapa(antes) - 1;
+  ok(ganho > 0.15,
+    `as duas juntas dão ao mapa ${(ganho * 100).toFixed(1)}% a mais ` +
+    `(${antes.w}×${antes.h} → ${d.palco.w}×${d.palco.h})`);
   await p.evaluate(() => {
     document.querySelector('.mb-baixo').appendChild(document.querySelector('.gr-barra'));
-    document.body.classList.add('barra-fundida');
+    document.body.classList.add('barra-fundida', 'fila-empe');
   });
 
   // -------------------------------------- em tela cheia, a fila fica de pé
@@ -2374,11 +2397,27 @@ async function cenaFusao(br, url) {
   const aberta = await larguraDoPalco();
   await p.evaluate(() => document.getElementById('gr-recolher').click());
   await new Promise((r) => setTimeout(r, 450));
+  // A fila também recolhe, para o outro lado, e as duas se compõem.
+  await p.evaluate(() => document.getElementById('ini-recolher').click());
+  await new Promise((r) => setTimeout(r, 450));
+  const semFila = await p.evaluate(() => ({
+    trilho: Math.round(document.querySelector('.gr-ini').getBoundingClientRect().width),
+    palco: Math.round(document.querySelector('#gr-palco').getBoundingClientRect().width),
+    guardado: localStorage.getItem('centelha:grid:fila-recolhida'),
+  }));
+  ok(semFila.trilho < 40, `a fila também recolhe, e vira trilho (${semFila.trilho}px)`);
+  ok(semFila.palco > aberta, `dando a largura dela ao tabuleiro (${aberta} → ${semFila.palco}px)`);
+  ok(semFila.guardado === '1', 'e a escolha fica guardada, como a da coluna');
+  await p.evaluate(() => document.getElementById('ini-recolher').click());
+  await new Promise((r) => setTimeout(r, 450));
+
   const rec = await p.evaluate(() => {
     const R = (s) => { const e = document.querySelector(s);
       const r = e.getBoundingClientRect(); return { w: Math.round(r.width), x: Math.round(r.x) }; };
     const btn = document.getElementById('gr-recolher');
-    const rot = document.querySelector('.gr-trilho-rot');
+    // Há DOIS rótulos de trilho agora, um por dobra: o da fila vem antes no
+    // documento, e um `querySelector` solto pegaria o dela.
+    const rot = document.querySelector('#gr-lado .gr-trilho-rot');
     return { lado: R('#gr-lado'), palco: R('#gr-palco'),
       classe: document.getElementById('gr-lado').classList.contains('recolhida'),
       botaoVisivel: btn.getBoundingClientRect().width > 0,
