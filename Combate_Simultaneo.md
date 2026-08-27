@@ -159,6 +159,24 @@ do exemplo, o encontro antecipado emergente, o contorno de bloqueio, o robô; en
 da caixa de declaração ao robô, incluindo "o relógio nunca pula" e "a peça anda, não
 teleporta"). Arquivo próprio porque o `test-grid.mjs` estava em obra na outra frente.
 
+## 3.1.1. O bestiário ganhou classe de ataque (2026-08-27, mais tarde)
+
+As 309 criaturas atacavam pelo atalho da Velocidade (5 leve · 6 média · 7+ pesada), que erra
+justamente onde importa: o arco não é "média", é tiro. O `gen-monsters.mjs` passou a estimar e
+carimbar `classe` em cada ataque, em três camadas (nome do catálogo → palavras que decidem
+sozinhas → o atalho da Velocidade), com `CLASSE_OVERRIDE` por criatura para as exceções
+futuras. Distribuição: **159 leve · 97 média · 48 pesada · 1 tiro (Arqueiro) · 1 haste
+(Camponês Assustado, forcado) · 3 arte (Cultista Sombrio, Feiticeiro Menor, Mago de Batalha,
+cujos ataques são conjuração e saem no último Tick)**. O fio: `resumoDe` carrega a classe,
+`classeDeTempo` a respeita (catálogo > estimativa > velocidade) e a régua `pgr.preparo` ganhou
+a linha `arte`. Limite conhecido: a estimativa só olha a LINHA DE ATAQUE; sopros, cuspes e
+afins que moram em `poderes` não viram ataque de tabuleiro por ora.
+
+E o relato de 27/08 ("os personagens não se movem para atacar fora do alcance") **não
+reproduziu** depois dos dois consertos do passo (o lateral e o da peça encurralada): na
+reprodução dedicada, dois PCs de punho e uma criatura de garras declararam a distância, andaram
+a cada Tick e golpearam na agenda. Se voltar a acontecer, anotar peça, arma e distância.
+
 ## 3.2. Onde o sistema ainda falha (varredura de cenários, 2026-08-27)
 
 Pensado cenário a cenário antes de fechar a fatia; o que não tem conserto nesta fatia fica
