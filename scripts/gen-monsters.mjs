@@ -49,6 +49,37 @@ const CAT_OVERRIDE = {
 try { Object.assign(CAT_OVERRIDE, read('categoria-extra.json')); } catch { /* sem extras */ }
 const catDe = (id, tipo) => CAT_OVERRIDE[id] || CAT_LABEL[tipo] || tipo || null;
 
+// ------------------------------------------------- a classe de tempo do ataque
+// A régua P/G/R (e o sistema simultâneo) precisa saber COMO a criatura ataca:
+// arma leve, média, pesada, haste, tiro, arremesso ou Arte. O bestiário nunca
+// guardou isso; a mesa caía no atalho pela Velocidade (5 leve · 6 média · 7+
+// pesada), que erra justamente onde importa: o arco não é "média", é tiro, e o
+// forcado alcança dois hexágonos. A estimativa mora AQUI, no gerador (lição do
+// B10: correção por cima de arquivo gerado morre no regen), em três camadas,
+// cada uma vencendo a de cima:
+//   1. o nome bate com uma arma do catálogo → a classe dela;
+//   2. palavras que decidem sozinhas (arco/besta/funda → tiro; dardo/azagaia/
+//      arremesso → arremesso; forcado/tridente/lança/pique → haste; um "(Arte
+//      N)" no nome → arte, porque o gesto é conjuração);
+//   3. o resto (garras, presas, pancada, pseudópode, "Arma"…) → pela
+//      Velocidade, que é o atalho de sempre, agora explícito no dado.
+const ARMAS_CAT = read('armas.json');
+const CLASSE_OVERRIDE = {
+  // exceções por criatura, quando o nome e a velocidade enganarem; vazio por ora
+};
+function classeDoAtaque(id, nome, ticks) {
+  if (CLASSE_OVERRIDE[id]) return CLASSE_OVERRIDE[id];
+  const n = String(nome || '').toLowerCase();
+  const w = ARMAS_CAT.find((x) => n.startsWith(x.nome.toLowerCase()));
+  if (w) return w.classe;
+  if (/\([a-zà-ú]+ \d\)/.test(n)) return 'arte';
+  if (/\b(arco|besta|funda)\b/.test(n)) return 'distancia';
+  if (/(dardo|azagaia|arremess|bumerangue|pilum)/.test(n)) return 'arremesso';
+  if (/(forcado|tridente|lança|pique|alabarda|chuço)/.test(n)) return 'haste';
+  const v = ticks ?? 5;
+  return v <= 5 ? 'leve' : v === 6 ? 'media' : 'pesada';
+}
+
 // Aparência (traço próprio 1–10 do sistema; para criaturas liberamos extremos <0 ou >10)
 // e Virtudes (Compaixão · Convicção · Temperança · Valor), derivadas da NATUREZA (ecologia.tipo
 // + categoria). É um ponto de partida por categoria — o Mestre afina caso a caso pela descrição.
@@ -167,7 +198,7 @@ function build(c) {
       ...(elem.fraquezas.length ? { fraquezas: elem.fraquezas } : {}),
       ...(elem.resistencias.length ? { resistencias: elem.resistencias } : {}),
       iniciativa: c.iniciativa,
-      ataques: (c.ataques || []).map((a) => ({ nome: a.nome, pool: a.pool, dano: a.dano, speed: a.ticks, ...(a.notas ? { notas: a.notas } : {}) })),
+      ataques: (c.ataques || []).map((a) => ({ nome: a.nome, pool: a.pool, dano: a.dano, speed: a.ticks, classe: classeDoAtaque(c.id, a.nome, a.ticks), ...(a.notas ? { notas: a.notas } : {}) })),
     },
     habilidades: (h.hab || []).map((x) => ({ nome: x.n, descricao: x.d })),
     poderes: (c.poderes || []).map((p) => ({ efeito: p.efeito, tipo: p.tipo, alvo: p.alvo, ...(p.caminho ? { caminho: p.caminho } : {}), ...(p.arte ? { arte: p.arte } : {}) })),

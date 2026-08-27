@@ -67,6 +67,13 @@ export interface ResumoCombate {
   defesaSocial?: number | null; defesaMental?: number | null;
   soak: { impacto: number; corte: number; perfuracao: number };
   resistPerf: number; velocidade?: number | null;
+  /**
+   * A classe de tempo do ataque (leve · media · pesada · haste · distancia ·
+   * arremesso · arte), estimada pelo `gen-monsters.mjs` para criatura. O PC não
+   * a carrega: a dele sai da arma do catálogo, pelo id. Nula, a mesa cai no
+   * atalho pela Velocidade, como sempre caiu.
+   */
+  classe?: string | null;
   qa?: QACombate;
 }
 
@@ -89,6 +96,7 @@ export function baseResumo(c: any, fichaPorId: Record<string, any> = {}): Resumo
                 : { impacto: 0, corte: 0, perfuracao: 0 },
       resistPerf: cb.resistenciaPerfuracao || 0,
       velocidade: a0?.speed ?? null,
+      classe: a0?.classe ?? null,
       // A criatura não tem armadura vestida (ver `QACombate`): só a metade da
       // arma sai preenchida. O dano médio dela vem da própria expressão de dano,
       // porque ali a expressão É a arma.
@@ -122,6 +130,7 @@ export function resumoDe(c: any, fichaPorId: Record<string, any> = {}): ResumoCo
     },
     resistPerf: ov.resistPerf ?? base?.resistPerf ?? 0,
     velocidade: ov.velocidade ?? base?.velocidade ?? null,
+    classe: ov.classe ?? base?.classe ?? null,
     // O QUASE-ACERTO SEGUE A ARMA que o ajuste escolheu. Trocar a arma do goblin
     // por um martelo e deixar o raspão da adaga seria a mesma incoerência que o
     // `ataque` e o `dano` já evitam vindo do mesmo lugar. E `dados.qa` continua

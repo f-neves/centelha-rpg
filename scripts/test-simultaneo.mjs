@@ -136,6 +136,32 @@ eq(T.previsaoDeEncontro(1, 3, 0, 1), 0, 'já no alcance: zero Ticks');
   eq(tresPassos, { q: 2, r: 0 }, 'em três passos, contorna o bloqueio e chega');
 }
 
+// ------------------------------------- 3.1. a classe de tempo do bestiário
+// O `gen-monsters.mjs` estima como cada criatura ataca (leve · media · pesada ·
+// haste · distancia · arremesso · arte) e carimba `classe` no ataque. Aqui
+// trava-se o vocabulário, os cinco casos que a estimativa CORRIGE sobre o
+// atalho antigo da Velocidade, e a precedência do `classeDeTempo`.
+{
+  const M = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/monsters.json'), 'utf8'));
+  const VOCAB = ['leve', 'media', 'pesada', 'haste', 'distancia', 'arremesso', 'arte'];
+  const fora = M.filter((c) => !VOCAB.includes(c.combate?.ataques?.[0]?.classe));
+  eq(fora.map((c) => c.id), [], 'toda criatura tem classe de ataque no vocabulário');
+  const de = (nome) => M.find((c) => c.nome === nome)?.combate.ataques[0].classe;
+  eq(de('Arqueiro'), 'distancia', 'o Arqueiro atira');
+  eq(de('Camponês Assustado'), 'haste', 'o forcado do camponês alcança dois hexágonos');
+  eq(de('Mago de Batalha'), 'arte', 'a Bola de fogo é conjuração');
+  eq(de('Feiticeiro Menor'), 'arte', 'o Dardo flamejante é conjuração');
+  eq(de('Cultista Sombrio'), 'arte', 'o Toque mórbido é conjuração');
+
+  // A precedência: catálogo > classe explícita > velocidade.
+  eq(T.classeDeTempo('espada-longa', 5, 'pesada'), 'media', 'a arma do catálogo vence a estimativa');
+  eq(T.classeDeTempo('Garras', 6, 'haste'), 'haste', 'a estimativa vence o atalho da velocidade');
+  eq(T.classeDeTempo('Garras', 6, null), 'media', 'sem estimativa, o atalho de sempre');
+  // E a régua da arte-como-ataque: sai no último Tick, como distância.
+  const aa = T.anatomia({ classe: 'arte', velocidade: 6, sistema: 'pgr' });
+  eq([aa.preparo, aa.golpes, aa.recuperacao], [5, 1, 0], 'ataque-conjuração: P=Vel−1, R=0');
+}
+
 // ------------------------------------------------- 4. o robô mínimo
 {
   const perto = { id: 'perto', pos: { q: 1, r: 0 } };

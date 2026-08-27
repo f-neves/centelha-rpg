@@ -186,8 +186,16 @@ export function classeDaArma(idOuNome?: string | null): ClasseArma {
  * quando o nome não bate com o catálogo, a classe sai da Velocidade: é a mesma
  * escada que o catálogo desenha (5 leve, 6 média, 7+ pesada).
  */
-export function classeDeTempo(arma?: string | null, velocidade?: number | null): ClasseArma {
+export function classeDeTempo(
+  arma?: string | null, velocidade?: number | null, explicita?: string | null,
+): ClasseArma {
   if (armaDoCatalogo(arma)) return classeDaArma(arma);
+  // A classe estimada pelo bestiário (`gen-monsters.mjs`), quando existe: é ela
+  // que sabe que o Arqueiro atira e o forcado alcança dois hexágonos. O
+  // catálogo vem antes porque o id de arma da FICHA é dado, não estimativa.
+  if (explicita && ['leve', 'media', 'haste', 'pesada', 'distancia', 'arremesso', 'arte'].includes(explicita)) {
+    return explicita as ClasseArma;
+  }
   const v = velocidade ?? 5;
   return v <= 5 ? 'leve' : v === 6 ? 'media' : 'pesada';
 }

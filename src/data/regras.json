@@ -2352,6 +2352,10 @@
         "arremesso": {
           "daVelocidade": -2,
           "nota": "um Tick para voltar à postura"
+        },
+        "arte": {
+          "daVelocidade": -1,
+          "nota": "o ataque de criatura que é conjuração (o bestiário estima pela cara do nome, '(Fogo 3)'): sai no último Tick, como a régua da Arte manda, com a Velocidade que o bloco já dava"
         }
       },
       "arte": {
