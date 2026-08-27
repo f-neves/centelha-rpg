@@ -42,6 +42,50 @@ cronômetro sincronizado, névoa por jogador e um botão de deitar a peça caíd
 
 ---
 
+## Feito em 2026-08-27 · as cinco faixas, e quem come a altura
+
+Uma bancada mediu as cinco faixas do Grid (barra da mesa, barra da arena, iniciativa, tabuleiro,
+coluna lateral) e achou o gargalo: **num mapa quase quadrado, quem aperta é sempre a altura**. Em
+1440×900 o tabuleiro era 1200×616, e **49% da largura dele era faixa preta** que o mapa não tinha
+como usar. Daí as duas mudanças abaixo, que compram altura pagando com largura.
+
+- ✅ **As duas barras de cima viraram uma.** No notebook a barra da arena **muda de casa** e entra
+      na barra da mesa, ao lado das abas (`mudarDeCasa`, o mesmo mecanismo que o telefone já usava).
+      Três fileiras antes do tabuleiro viram duas: o topo do palco sobe de **249px para 204** em
+      1920 e de **276 para 204** em 1440, onde a barra da arena ainda quebrava em duas linhas.
+      O mapa cresce **+5,5% em 1920, +11,5% em 1440 e +14,6% em 1366** · o ganho é maior justamente
+      na tela mais apertada. No telefone ela **volta para a grade**: lá ela é folha de baixo e a
+      barra da mesa é a folha vizinha, e fundidas uma gaveta abriria dentro da outra.
+- ✅ **E a fileira perde palavras antes de perder botões.** Medido em 1920: as dez abas pedem
+      **937px** com o nome e **467px** só com o ícone; os onze comandos da arena pedem **1399px** e
+      **939px**. Tudo por extenso precisaria de uma janela de **2376px**, que não existe · então
+      há sempre um degrau ligado. Cabe uma das duas por extenso até ~1900px, e nenhuma abaixo.
+      Quem cede primeiro é a **aba**: ela já tinha modo só-ícone no telefone, a aba aberta continua
+      escrita (nunca se perde o "onde estou"), e "❦" para Compêndio não se adivinha, enquanto o
+      ícone da arena está a um palmo do que ele controla. Os rótulos saem da **vista** e não da
+      árvore de acessibilidade, e todo botão da arena ganhou `title`.
+- ✅ **Em tela cheia (⛶), a ordem de combate fica de pé.** Deitada no topo ela cobrava uma faixa da
+      altura; de pé, à esquerda, cobra **5vw** de uma largura que já sobrava. O tabuleiro vai de
+      1651×868 para **1803×1067**, e o mapa cresce **+22,9%**. `5vw` e não pixels de propósito: este
+      é o modo de projetar, e 5% tem o mesmo tamanho aparente no notebook e na TV de 55" · pela
+      mesma razão o corpo do texto e o retrato dentro da coluna seguem a largura da janela.
+
+Dezoito asserções novas no `npm run smoke` (`cenaFusao`), com o A/B feito na própria página:
+desfazer a fusão em tempo de execução devolve o layout antigo inteiro, e a diferença é o teste.
+
+### Pontas soltas destas três
+
+- [ ] **A fila continua deitada fora da tela cheia** · **G** · é o ganho grande que sobrou. A mesma
+      bancada mediu: com a fila em pé no dia a dia, o mapa cresce **+35% em 1440** e **+45% em 1366**,
+      contra os +11,5% e +14,6% da fusão sozinha. E o desperdício de largura cai de 49% para 18%.
+- [ ] **Entregar a coluna lateral não compra mapa** · **P** · a mesma medição mostrou que, uma vez
+      livre a altura, jogar fora o "Em campo" e o Registro dá **exatamente o mesmo mapa**. Vale
+      escrever isto aqui para a ideia não voltar: a gaveta custa duas listas e não devolve nada.
+- [ ] **A escada só existe na tela do Grid** · **P** · a barra da mesa é a mesma nas dez abas, mas
+      só o Grid tem barra da arena para fundir. Se outra tela ganhar uma, a `.mb-baixo` já a recebe.
+
+---
+
 ## Feito em 2026-08-26 · a moldura, e não o tabuleiro
 
 Quatro consertos na **casca** do Grid: a tira, os alvos de tela cheia e as caixas de diálogo.

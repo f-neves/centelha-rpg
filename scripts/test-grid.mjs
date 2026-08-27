@@ -2253,6 +2253,126 @@ async function cenaQuaseAcerto(br, url) {
   await p.close();
 }
 
+/**
+ * A BARRA FUNDIDA e a ordem de combate de pé.
+ *
+ * Duas mudanças que só existem em pixels, e por isso só um navegador prova.
+ * A primeira: no notebook a barra da arena muda de casa e entra na barra da
+ * mesa, ao lado das abas · três fileiras antes do tabuleiro viram duas. O que
+ * pode quebrar sem ninguém ver é a fileira dobrar em duas linhas (aí a fusão
+ * não economizou nada) ou a barra não voltar para casa no telefone, onde ela é
+ * folha de baixo e a barra da mesa é a folha vizinha.
+ * A segunda: em tela cheia a ordem de combate deixa de ser faixa no topo e vira
+ * coluna de 5vw à esquerda, o que devolve a altura inteira ao mapa.
+ */
+async function cenaFusao(br, url) {
+  console.log('\n· a barra fundida, e a ordem de combate de pé em tela cheia');
+  const p = await br.newPage();
+  await p.setViewport({ width: 1440, height: 900 });
+  const erros = [];
+  p.on('pageerror', (e) => erros.push(e.message));
+  await p.goto(`${url}/mesa/grid?id=${MESA}&bench=12&cols=24&rows=16&nevoa=0`,
+    { waitUntil: 'networkidle0', timeout: 60000 });
+  await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
+
+  const estado = () => p.evaluate(() => {
+    const R = (s) => { const e = document.querySelector(s); if (!e) return null;
+      const r = e.getBoundingClientRect();
+      return { w: Math.round(r.width), h: Math.round(r.height), x: Math.round(r.x), y: Math.round(r.y) }; };
+    const barra = document.querySelector('.gr-barra');
+    const arena = document.querySelector('.gb-n');
+    const abaOutra = document.querySelector('.mesa-abas a:not(.atual) .ab-n');
+    const abaEsta = document.querySelector('.mesa-abas a.atual .ab-n');
+    const larg = (n) => (n ? Math.round(n.getBoundingClientRect().width) : null);
+    return {
+      fundida: document.body.classList.contains('barra-fundida'),
+      pai: barra?.parentElement?.className || null,
+      barraEscondida: !!barra?.hidden,
+      fileira: R('.mb-baixo'), palco: R('#gr-palco'), ini: R('.gr-ini'),
+      areas: getComputedStyle(document.querySelector('.gr-grade')).gridTemplateAreas,
+      arenaLarg: larg(arena), arenaTexto: arena?.textContent || '',
+      abaOutraLarg: larg(abaOutra), abaEstaLarg: larg(abaEsta),
+      abasRolando: (() => { const a = document.querySelector('.mesa-abas');
+        return a.scrollWidth > a.clientWidth + 2; })(),
+    };
+  });
+
+  const d = await estado();
+  ok(d.fundida && d.pai === 'mb-baixo',
+    `no notebook a barra da arena mora na barra da mesa (pai: ${d.pai})`);
+  ok(!d.barraEscondida, 'e está visível, com a arena aberta');
+  // Duas fileiras de comandos dariam ~64px. A fusão só vale se for UMA linha.
+  ok(d.fileira.h > 0 && d.fileira.h < 46,
+    `a fileira fundida cabe numa linha só (${d.fileira.h}px)`);
+  ok(!/barra/.test(d.areas), `e a fileira da barra saiu da grade (${d.areas})`);
+
+  // A escada dos ícones: em 1440 as duas palavras já saíram, mas a aba aberta
+  // continua escrita e o rótulo continua na árvore (só saiu da vista).
+  // 1px e não 0: o rótulo é recortado, e não removido · é essa caixa de 1px que
+  // o mantém na árvore de acessibilidade.
+  ok(d.arenaLarg <= 1, `em 1440 o comando da arena é só ícone (rótulo ${d.arenaLarg}px)`);
+  ok(d.arenaTexto.trim().length > 0,
+    `mas o nome dele continua legível para o leitor de tela ("${d.arenaTexto.trim()}")`);
+  ok(d.abaOutraLarg <= 1, `as outras abas também são só ícone (${d.abaOutraLarg}px)`);
+  ok(d.abaEstaLarg > 0, `menos a aba aberta, que continua dizendo onde a gente está (${d.abaEstaLarg}px)`);
+  ok(!d.abasRolando, 'e nada precisa rolar para caber');
+
+  // O A/B na mesma página: desfazer a fusão devolve o layout antigo inteiro.
+  const antes = await p.evaluate(() => {
+    const grade = document.querySelector('.gr-grade');
+    grade.insertBefore(document.querySelector('.gr-barra'), grade.firstElementChild);
+    document.body.classList.remove('barra-fundida');
+    const r = document.querySelector('#gr-palco').getBoundingClientRect();
+    return { h: Math.round(r.height), topo: Math.round(r.top) };
+  });
+  const ganho = d.palco.h - antes.h;
+  ok(ganho >= 40,
+    `o tabuleiro ganhou a altura da faixa que sumiu (${antes.h} → ${d.palco.h}px, +${ganho})`);
+  // e desfazer é reversível: a barra volta para a fileira sozinha ao redesenhar
+  await p.evaluate(() => {
+    document.querySelector('.mb-baixo').appendChild(document.querySelector('.gr-barra'));
+    document.body.classList.add('barra-fundida');
+  });
+
+  // -------------------------------------- em tela cheia, a fila fica de pé
+  await p.evaluate(() => document.getElementById('gr-cheia').click());
+  await p.waitForFunction(() => document.body.classList.contains('tela-cheia'), { timeout: 10000 });
+  await new Promise((r) => setTimeout(r, 400));
+  const c = await p.evaluate(() => {
+    const R = (s) => { const e = document.querySelector(s);
+      const r = e.getBoundingClientRect();
+      return { w: Math.round(r.width), h: Math.round(r.height), x: Math.round(r.x) }; };
+    const av = document.querySelector('.ini-item .ini-av');
+    const nome = document.querySelector('.ini-item .ini-nome');
+    const lista = document.querySelector('.fila-lista');
+    return { ini: R('.gr-ini'), palco: R('#gr-palco'), vw: window.innerWidth,
+      empilhado: Math.round(nome.getBoundingClientRect().y) > Math.round(av.getBoundingClientRect().y),
+      rolaDeLado: lista.scrollWidth > lista.clientWidth + 2 };
+  });
+  const cinco = Math.round(c.vw * 0.05);
+  ok(Math.abs(c.ini.w - cinco) <= 2,
+    `em tela cheia a ordem de combate ocupa 5% da largura (${c.ini.w}px de ${c.vw})`);
+  ok(c.ini.x < c.palco.x, 'à esquerda do tabuleiro');
+  ok(c.ini.h > c.palco.h * 0.9, 'e da altura dele, e não uma faixa no topo');
+  ok(c.empilhado, 'o cartão empilha retrato e nome, para caber na coluna estreita');
+  ok(!c.rolaDeLado, 'e a fila rola de cima para baixo, nunca de lado');
+  await p.evaluate(() => document.getElementById('gr-cheia').click());
+
+  // ---------------------------------------- no telefone ela volta para casa
+  await p.setViewport({ width: 390, height: 844 });
+  await p.waitForFunction(() => document.body.classList.contains('grid-mob'), { timeout: 10000 });
+  await new Promise((r) => setTimeout(r, 400));
+  const mob = await p.evaluate(() => ({
+    fundida: document.body.classList.contains('barra-fundida'),
+    pai: document.querySelector('.gr-barra')?.parentElement?.className || null,
+  }));
+  ok(!mob.fundida && /gr-grade/.test(mob.pai || ''),
+    `no telefone a barra volta para a grade, para ser folha de baixo (pai: ${mob.pai})`);
+
+  ok(erros.length === 0, `nenhum erro de página (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
+  await p.close();
+}
+
 const dev = await subirDev({ config: 'astro.bancada.mjs' });
 const br = await puppeteer.launch({ executablePath: NAV, headless: 'new', args: ['--no-sandbox'] });
 try {
@@ -2265,6 +2385,7 @@ try {
   await cenaCelular(br, dev.url, { papel: 'jogador' });
   await cenaGolpeAdiado(br, dev.url);
   await cenaQuaseAcerto(br, dev.url);
+  await cenaFusao(br, dev.url);
 } finally {
   await br.close();
   await dev.parar();
@@ -2278,4 +2399,5 @@ if (falhas.length) {
 console.log('\n✓ Grid OK · desenho, movimento, registro, névoa e card, nas duas cenas, dentro dos tetos'
   + ' de repintura, a mesma mesa vista pelo jogador, a tira da ordem no rastreador,'
   + ' a caixa de fundo girando e excluindo arte, o telefone nas duas cadeiras,'
+  + ' a barra fundida com a escada de ícones e a ordem de combate de pé em tela cheia,'
   + ' o golpe adiado da declaração à queda, e o Quase-Acerto na folha');

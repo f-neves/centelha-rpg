@@ -1536,8 +1536,15 @@ export async function encerrarEfeito(ctx: CtxGrid, ef: EfeitoAtivo, motivo: stri
  * mexida repinta na hora, senão ajustar opacidade viraria adivinhação.
  */
 export function ligarBotaoFx(ctx: () => CtxGrid, botao: HTMLElement, engrenagem: HTMLElement): void {
+  // O botão é ícone + palavra em spans separados (a barra da arena precisa poder
+  // esconder a palavra e ficar só com o ícone). Escrever o `textContent` do
+  // botão apagaria os dois; só a estrela muda de estado. O caminho de baixo é
+  // para quem ainda chamar isto com um botão de texto corrido.
   const pinta = () => {
-    botao.textContent = FX.ligado ? '✦ efeitos' : '✧ efeitos';
+    const estrela = FX.ligado ? '✦' : '✧';
+    const icone = botao.querySelector('.gb-i');
+    if (icone) icone.textContent = estrela;
+    else botao.textContent = `${estrela} efeitos`;
     botao.classList.toggle('desligado', !FX.ligado);
     botao.title = FX.ligado
       ? 'Efeitos elementais ligados · clique para desligar'

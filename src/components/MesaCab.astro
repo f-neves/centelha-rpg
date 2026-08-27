@@ -39,18 +39,24 @@ const { aba } = Astro.props;
       <button class="btn mini" id="mesa-sair" hidden>Sair</button>
     </div>
 
-    <nav class="mesa-abas" aria-label="Seções da mesa">
-      {/* A aba de mestre nasce escondida e só `abrirMesa()` a acende: entre a
-          primeira pintura e a resposta do banco ninguém sabe quem chegou, e é
-          melhor uma aba aparecer do que sumir na cara do jogador. */}
-      {ABAS.map((a) => (
-        <a data-slug={a.slug} data-mestre={a.soMestre ? '1' : undefined} hidden={a.soMestre}
-           href="#" title={a.dica} class={a.id === aba ? 'atual' : ''}
-           aria-current={a.id === aba ? 'page' : undefined}>
-          <span class="ab-i" aria-hidden="true">{a.icone}</span><span class="ab-n">{a.nome}</span>
-        </a>
-      ))}
-    </nav>
+    {/* A FILEIRA DE BAIXO, e não só as abas. Ela existe para poder receber uma
+        segunda peça ao lado da navegação: o Grid muda a barra da arena de casa
+        para cá quando há largura, e as duas faixas viram uma. Nas outras nove
+        telas ela só tem as abas dentro, e não muda nada. */}
+    <div class="mb-baixo" id="mb-baixo">
+      <nav class="mesa-abas" aria-label="Seções da mesa">
+        {/* A aba de mestre nasce escondida e só `abrirMesa()` a acende: entre a
+            primeira pintura e a resposta do banco ninguém sabe quem chegou, e é
+            melhor uma aba aparecer do que sumir na cara do jogador. */}
+        {ABAS.map((a) => (
+          <a data-slug={a.slug} data-mestre={a.soMestre ? '1' : undefined} hidden={a.soMestre}
+             href="#" title={a.dica} class={a.id === aba ? 'atual' : ''}
+             aria-current={a.id === aba ? 'page' : undefined}>
+            <span class="ab-i" aria-hidden="true">{a.icone}</span><span class="ab-n">{a.nome}</span>
+          </a>
+        ))}
+      </nav>
+    </div>
   </div>
 </div>
 
@@ -168,6 +174,21 @@ const { aba } = Astro.props;
     padding: .05rem .45rem; border-radius: 999px; font-weight: 700; flex-shrink: 0; }
   .p-mestre { background: color-mix(in srgb, var(--gold) 25%, transparent); color: var(--ink); }
   .p-jogador { background: color-mix(in srgb, var(--accent) 20%, transparent); color: var(--ink); }
+
+  /* ---- a fileira de baixo: abas, e quem mais vier ---- */
+  .mb-baixo { display: flex; align-items: center; gap: .5rem; min-width: 0; }
+  /* BASE ZERO na lista que rola. Com `auto` a base das abas é a soma delas
+     (dez de ~5rem), o navegador vê que elas e a barra da arena não cabem juntas
+     e manda uma para a segunda fileira · que é a altura que a fusão veio
+     recuperar. Com base zero elas cabem em qualquer sobra e rolam por dentro.
+     Mesma lição da tira da iniciativa. */
+  .mb-baixo > .mesa-abas { flex: 1 1 0; min-width: 0; }
+
+  /* Rótulo que sai da vista mas NÃO do leitor de tela: em modo só-ícone o nome
+     continua sendo o nome acessível do botão. `display: none` o apagaria da
+     árvore e deixaria dez botões chamados "◈", "☗", "⚔". */
+  .so-icone { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
 
   /* ---- abas ---- */
   .mesa-abas { display: flex; gap: .1rem; overflow-x: auto; overflow-y: hidden; scrollbar-width: thin; }

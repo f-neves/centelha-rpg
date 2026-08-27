@@ -23,33 +23,52 @@ const SETAS = [
       <button class="btn-fant gr-tv-sai" id="gr-tv-sai"
         title="Sair do modo TV (Esc)">▭ sair da TV</button>
       <div class="gr-grade">
-      <div class="gr-barra">
+      {/* A barra da arena nasce aqui, na grade, que é onde o telefone a quer
+          (folha de baixo). No notebook o `aplicar()` a move para dentro da barra
+          da mesa e as duas faixas viram uma. Uma marcação só, duas casas. */}
+      <div class="gr-barra" id="gr-barra" hidden>
         <span class="gr-id">
           <span class="gr-rot">Arena</span>
           <select id="gr-sel" hidden></select>
           <strong id="gr-nome" class="cinzel"></strong>
           <span class="gr-medida muted" id="gr-medida"></span>
         </span>
+        {/* CADA BOTÃO EM DUAS PEÇAS: o ícone e a palavra.
+            Fundida com a barra da mesa, esta fileira tem de caber numa linha só,
+            e a palavra é a primeira coisa que sai quando a janela encolhe (regra
+            `.so-icone`, no MesaCab). Por isso o `title` deixou de ser enfeite e
+            passou a ser obrigatório em todos: numa largura estreita ele é o
+            único jeito de descobrir o que "▣" faz. */}
         <span class="gr-btns" id="gr-btns" hidden>
           <span class="sep-v"></span>
-          <button class="btn mini" id="gr-nova">+ arena</button>
-          <button class="btn mini" id="gr-editar">✎ medidas</button>
-          <button class="btn mini" id="gr-fundo-btn">▣ fundo</button>
-          <button class="btn mini" id="gr-ajustar" hidden>⤧ arte</button>
-          <button class="btn mini" id="gr-nevoa-btn" hidden title="Névoa de guerra: cobrir o mapa e ir abrindo">☁ névoa</button>
+          <button class="btn mini" id="gr-nova" title="Criar uma arena nova"><span
+            class="gb-i" aria-hidden="true">+</span><span class="gb-n">arena</span></button>
+          <button class="btn mini" id="gr-editar" title="Medidas desta arena: hexágonos e escala"><span
+            class="gb-i" aria-hidden="true">✎</span><span class="gb-n">medidas</span></button>
+          <button class="btn mini" id="gr-fundo-btn" title="Trocar a imagem de fundo do mapa"><span
+            class="gb-i" aria-hidden="true">▣</span><span class="gb-n">fundo</span></button>
+          <button class="btn mini" id="gr-ajustar" hidden title="Encaixar a arte no tabuleiro"><span
+            class="gb-i" aria-hidden="true">⤧</span><span class="gb-n">arte</span></button>
+          <button class="btn mini" id="gr-nevoa-btn" hidden title="Névoa de guerra: cobrir o mapa e ir abrindo"><span
+            class="gb-i" aria-hidden="true">☁</span><span class="gb-n">névoa</span></button>
           <!-- Os efeitos elementais. O botão liga e desliga; o ⚙ ao lado abre os
                ajustes (opacidade, partículas, ritmo). A escolha fica no aparelho
                de quem clicou, e não na arena: é preferência de quem olha, e a
                máquina do jogador pode não ser a do mestre. -->
-          <button class="btn mini" id="gr-fx" title="Efeitos elementais">✦ efeitos</button>
+          <button class="btn mini" id="gr-fx" title="Efeitos elementais"><span
+            class="gb-i" aria-hidden="true">✦</span><span class="gb-n">efeitos</span></button>
           <button class="btn-fant" id="gr-fx-cfg" title="Ajustar os efeitos">⚙</button>
-          <button class="btn mini" id="gr-trilha" title="Trilha de fundo desta arena">♪ trilha</button>
+          <button class="btn mini" id="gr-trilha" title="Trilha de fundo desta arena"><span
+            class="gb-i" aria-hidden="true">♪</span><span class="gb-n">trilha</span></button>
           {/* O mesmo painel do rastreador de combate: a escolha é da mesa, e as
               duas telas leem do mesmo lugar. Aqui porque é no tabuleiro que o
               mestre está quando a briga começa. */}
-          <button class="btn mini" id="gr-tempo" title="Como o tempo passa nesta mesa">⏱ tempo</button>
-          <button class="btn mini" id="gr-ativar">◉ em jogo</button>
-          <button class="btn mini" id="gr-registro">☰ registro</button>
+          <button class="btn mini" id="gr-tempo" title="Como o tempo passa nesta mesa"><span
+            class="gb-i" aria-hidden="true">⏱</span><span class="gb-n">tempo</span></button>
+          <button class="btn mini" id="gr-ativar" title="Pôr esta arena em jogo para a mesa"><span
+            class="gb-i" aria-hidden="true">◉</span><span class="gb-n">em jogo</span></button>
+          <button class="btn mini" id="gr-registro" title="Registro do que aconteceu na arena"><span
+            class="gb-i" aria-hidden="true">☰</span><span class="gb-n">registro</span></button>
           <button class="btn-fant perigo" id="gr-excluir" title="Excluir esta arena">✕</button>
         </span>
         <span class="espaco"></span>
@@ -714,6 +733,94 @@ const SETAS = [
       grid-template-areas: "barra" "ini" "palco" "linha" "lado"; }
   }
 
+  /* ---- A BARRA FUNDIDA ----
+     No notebook a barra da arena MUDA DE CASA e vai para dentro da barra da
+     mesa, ao lado das abas (`aplicar()`, no ligarCelular). Eram três fileiras
+     antes do tabuleiro · identidade, abas, arena · e passam a ser duas: ~70px
+     que voltam para o mapa, num lugar onde a altura é o que falta e a largura é
+     o que sobra. No telefone ela volta para a grade, porque lá ela é folha de
+     baixo e a barra da mesa é OUTRA folha: fundir as duas grudaria uma gaveta
+     dentro da outra.
+
+     Mudar de pai não basta. Dentro da barra da mesa ela deixa de ser um painel
+     (perde borda, fundo e cantos) e vira um trecho da fileira, separado das
+     abas por um fio. */
+  body.barra-fundida .mb-baixo > .gr-barra {
+    flex: 0 0 auto; flex-wrap: nowrap; min-width: 0;
+    border: 0; border-left: 1px solid var(--rule); border-radius: 0;
+    background: none; padding: .1rem 0 .1rem .55rem; }
+  /* O empurrão que jogava o zoom para a borda direita não serve numa peça que
+     não se estica: aqui ele só abriria um buraco no meio da fileira. */
+  body.barra-fundida .mb-baixo > .gr-barra .espaco { display: none; }
+  body.barra-fundida .mb-baixo > .gr-barra .gr-id { flex-basis: auto; }
+  /* Quando aperta, quem cede é a navegação: as abas rolam por dentro (base zero
+     no .mb-baixo) e a barra da arena fica inteira, porque é ela que está em uso
+     durante a cena. A barra de rolagem some para não roubar 8px de altura da
+     fileira toda. */
+  body.barra-fundida .mesa-abas { scrollbar-width: none; }
+  body.barra-fundida .mesa-abas::-webkit-scrollbar { height: 0; }
+  /* `.gr-barra` é `display: flex`, que vence o `[hidden]` da folha do navegador.
+     Fora do `#gr-tudo`, ela precisa saber sumir sozinha. */
+  .gr-barra[hidden] { display: none; }
+
+  /* A fileira da barra sai da grade junto com a barra: deixá-la vazia manteria
+     o vão de .5rem, e o vão é parte do que a fusão veio buscar.
+     O `:not(.grid-tv)` não é zelo. O modo TV redefine esta mesma grade mais
+     acima no arquivo e com a mesma especificidade: sem a ressalva, quem vem
+     depois vence, e a TV voltaria a ter duas colunas. */
+  body.barra-fundida:not(.grid-tv) .gr-grade {
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    grid-template-areas: "ini lado" "palco lado" "linha lado"; }
+  body.barra-fundida:not(.grid-tv) .gr-grade.sem-linha {
+    grid-template-rows: auto minmax(0, 1fr);
+    grid-template-areas: "ini lado" "palco lado"; }
+  @media (max-width: 1100px) {
+    body.barra-fundida:not(.grid-tv) .gr-grade,
+    body.barra-fundida:not(.grid-tv) .gr-grade.sem-linha {
+      grid-template-columns: 1fr; grid-template-rows: auto auto auto auto;
+      grid-template-areas: "ini" "palco" "linha" "lado"; }
+  }
+
+  /* ---- a escada dos ícones ----
+     Encolhendo a janela, a fileira perde PALAVRAS antes de perder botões: um
+     comando que some é um comando que o mestre vai procurar no meio da cena.
+
+     Os degraus são medidos, e não escolhidos (bancada de 26/08, em 1920):
+     as dez abas pedem 937px com o nome e 467px só com o ícone; os onze
+     comandos da arena pedem 1399px e 939px. Com o vão, tudo por extenso
+     precisaria de uma janela de 2376px · nem um monitor de 1920 dá conta, e
+     por isso SEMPRE há um degrau ligado. Cabe uma das duas por extenso até
+     ~1900px, e nenhuma abaixo disso.
+
+     Quem cede primeiro é a ABA, por três razões: ela já tinha um modo
+     só-ícone no telefone (e a aba aberta continua escrita, então nunca se
+     perde o "onde estou"); trocar de aba é gesto de antes da cena, e caçar um
+     "▣" no meio dela é gesto de dentro; e o ícone da arena está a um palmo do
+     que ele controla, enquanto "❦" para Compêndio não se adivinha.
+
+     Os rótulos saem da VISTA e não da árvore de acessibilidade: com
+     `display: none` a barra viraria dez botões chamados "▣", "☁", "✦". */
+  @media (max-width: 2380px) {
+    body.barra-fundida .mesa-abas .ab-n { position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    /* Menos a da aba aberta: sem ela a barra deixa de dizer onde a gente está. */
+    body.barra-fundida .mesa-abas a.atual .ab-n { position: static; width: auto; height: auto;
+      margin: 0; overflow: visible; clip-path: none; }
+    /* Sem a palavra, a folga larga em volta do ícone vira desperdício · e são
+       os ~30px por aba que dão a margem para a arena caber por extenso. */
+    body.barra-fundida .mesa-abas a { padding: .3rem .4rem; }
+  }
+  @media (max-width: 1900px) {
+    body.barra-fundida .gb-n { position: absolute; width: 1px; height: 1px; padding: 0;
+      margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    body.barra-fundida .gr-barra .btn.mini { padding: .12rem .32rem; }
+  }
+  /* A medida da arena ("25 × 25 hexágonos · 1 hex = 1 m") é a última a sair, e
+     a única que sai inteira: é a única coisa na fileira que não é comando. */
+  @media (max-width: 1080px) {
+    body.barra-fundida .gr-medida { display: none; }
+  }
+
   /* ---- a linha do tempo ----
      Uma grade de verdade, e não uma fileira de caixinhas: os Ticks são colunas,
      e é o ALINHAMENTO VERTICAL que faz a leitura. Duas linhas quaisquer podem
@@ -842,6 +949,71 @@ const SETAS = [
   body.tela-cheia:not(.cheia-mapa):not(:has(.gr-grade:fullscreen)) .gr-grade {
     position: fixed; inset: 0; z-index: 100; padding: .4rem;
     border-radius: 0; background: var(--bg); }
+
+  /* ---- em tela cheia, a ordem de combate FICA DE PÉ ----
+     Deitada no topo ela cobrava uma faixa da altura, e é a altura que decide o
+     tamanho do mapa: num tabuleiro quase quadrado, largura já sobra dos dois
+     lados. De pé, à esquerda, ela cobra 5% da largura · que é sobra · e devolve
+     a altura inteira ao mapa.
+
+     5vw e não uma medida em pixels de propósito: isto é o modo de PROJETAR, e a
+     tela pode ser um notebook ou uma TV de 55". Uma coluna de 96px é confortável
+     no monitor e some no telão; 5% é do mesmo tamanho aparente nos dois. Pela
+     mesma razão o corpo do texto e o retrato dentro dela seguem a largura da
+     janela em vez de um rem fixo.
+
+     À esquerda porque a fila se lê antes do mapa: é a resposta a "de quem é a
+     vez", e a leitura ocidental começa por ali. */
+  body.tela-cheia:not(.cheia-mapa) .gr-grade {
+    grid-template-columns: 5vw minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) auto;
+    grid-template-areas: "ini palco" "ini linha"; }
+  body.tela-cheia:not(.cheia-mapa) .gr-grade.sem-linha {
+    grid-template-columns: 5vw minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+    grid-template-areas: "ini palco"; }
+
+  /* A tira vira coluna: o mesmo painel, virado de lado. */
+  body.tela-cheia:not(.cheia-mapa) .gr-ini {
+    flex-direction: column; flex-wrap: nowrap; overflow: hidden;
+    padding: .3rem .25rem;
+    /* Um só token e tudo dentro acompanha: nome, número e rótulos são todos
+       calculados a partir do `--fs-micro`. */
+    --fs-micro: clamp(.5rem, .62vw, 1rem); }
+  body.tela-cheia:not(.cheia-mapa) .ini-cab {
+    border-right: 0; border-bottom: 1px solid var(--rule);
+    padding-right: 0; padding-bottom: .3rem; margin-bottom: .3rem;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "rel" "cab" "prox"; justify-items: center; }
+  /* O Tick continua sendo o número grande, mas medido pela coluna: fixo em
+     1,9rem ele estouraria a largura da coluna num notebook. */
+  body.tela-cheia:not(.cheia-mapa) .ini-tk-n { font-size: clamp(1rem, 2vw, 2.6rem); }
+  body.tela-cheia:not(.cheia-mapa) .ini-relogio { justify-items: center;
+    grid-template-columns: minmax(0, 1fr); }
+  body.tela-cheia:not(.cheia-mapa) .ini-rd { grid-column: 1; }
+  /* O título e a dobra saem: numa TV eles não são comando de ninguém, e a
+     coluna é estreita demais para gastar linha com a palavra "Iniciativa". */
+  body.tela-cheia:not(.cheia-mapa) :is(.fila-h, .fila-seta, .fila-tudo) { display: none; }
+
+  body.tela-cheia:not(.cheia-mapa) .fila-lista {
+    flex-direction: column; overflow-x: hidden; overflow-y: auto; gap: .25rem; }
+  /* Cada peça empilha: retrato em cima, nome embaixo, tudo centrado. Deitado, o
+     cartão era retrato-ao-lado-do-nome e pedia 11,5rem que aqui não existem. */
+  body.tela-cheia:not(.cheia-mapa) .ini-item {
+    flex: 0 0 auto; grid-template-columns: minmax(0, 1fr);
+    justify-items: center; text-align: center; gap: .1rem; padding: .25rem .1rem; }
+  body.tela-cheia:not(.cheia-mapa) .ini-av { grid-row: auto; }
+  body.tela-cheia:not(.cheia-mapa) .ini-item .av { --av-t: clamp(1.3rem, 2.6vw, 3.4rem); }
+  body.tela-cheia:not(.cheia-mapa) :is(.ini-nome, .ini-num, .ini-fita) { grid-column: 1; }
+  body.tela-cheia:not(.cheia-mapa) .ini-nome { max-width: 100%; }
+  /* A fase por extenso não cabe; a fita colorida diz o mesmo e se lê de longe. */
+  body.tela-cheia:not(.cheia-mapa) .ini-fase { display: none; }
+  /* O degrau do tick estava de pé para separar colunas; numa fila vertical ele
+     volta a ser uma linha deitada, que é onde ele separa. */
+  body.tela-cheia:not(.cheia-mapa) .ini-grupo {
+    writing-mode: horizontal-tb; border-left: 0; border-top: 1px solid var(--rule);
+    padding: .2rem 0 .1rem; width: 100%; }
+  body.tela-cheia:not(.cheia-mapa) .fila-lista > .ini-grupo:first-child { border-top: none; }
 
   /* ---- e a tela cheia SÓ DO MAPA ----
      O segundo alvo. A borda e o canto arredondado somem: eles existem para
@@ -2174,6 +2346,18 @@ const SETAS = [
   // este número não muda: mudar o raio redesenharia o SVG a cada passo de zoom.
   const RAIO = 34;
 
+  /**
+   * Mostrar (ou esconder) o tabuleiro inteiro, barra da arena junto.
+   *
+   * Fundida, a barra mora na barra da MESA, e portanto fora do `#gr-tudo`:
+   * esconder o tabuleiro deixou de escondê-la, e uma mesa sem arena mostrava
+   * uma fileira de comandos que não comandavam nada.
+   */
+  function mostrarTudo(v: boolean) {
+    (el('gr-tudo') as HTMLElement).hidden = !v;
+    (el('gr-barra') as HTMLElement).hidden = !v;
+  }
+
   async function main() {
     const ctx = await abrirMesa('grid');
     if (!ctx) return;
@@ -2267,7 +2451,7 @@ const SETAS = [
       || ARENAS.find((a) => a.ativa) || ARENAS[0] || null;
 
     if (!ARENA) {
-      el('gr-tudo').hidden = true;
+      mostrarTudo(false);
       aviso.innerHTML = MESTRE
         ? `<div class="painel"><p class="vazio">Nenhuma arena ainda. Uma arena é o chão de uma cena: a ponte, a cripta, o pátio.</p>
            <div class="bloco-acoes"><button class="btn primary" id="gr-primeira">Criar a primeira arena</button></div></div>`
@@ -2275,7 +2459,7 @@ const SETAS = [
       if (MESTRE) el('gr-primeira').onclick = () => abrirArena(null);
       return;
     }
-    el('gr-tudo').hidden = false;
+    mostrarTudo(true);
     lerNevoa();
 
     await carregarCombatentes();
@@ -7647,10 +7831,17 @@ const SETAS = [
         // não uma segunda lista.
         mudarDeCasa(el('gr-ef-cab'), el('gr-ef-folha'));
         mudarDeCasa(el('gr-ef-lista'), el('gr-ef-folha'));
+        // E a barra da arena volta para a grade: no telefone ela é folha de
+        // baixo, e a barra da mesa é a folha VIZINHA. Fundidas, uma gaveta
+        // abriria dentro da outra.
+        voltarParaCasa(el('gr-barra'));
       } else {
         voltarParaCasa(custo); voltarParaCasa(rolar); voltarParaCasa(el('gr-desfazer'));
         voltarParaCasa(el('gr-ef-cab')); voltarParaCasa(el('gr-ef-lista'));
+        // A fusão: a barra da arena entra na barra da mesa, ao lado das abas.
+        mudarDeCasa(el('gr-barra'), el('mb-baixo'));
       }
+      document.body.classList.toggle('barra-fundida', !MOB);
       (el('ga-arena') as HTMLElement).hidden = !MESTRE;
       sincronizarApp();
       atualizarSetasDaFila();
