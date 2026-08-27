@@ -33,7 +33,8 @@ const NEVOA = P.get('nevoa') === '1';
 const POSTOS = parseInt(P.get('postos') || String(N_COMB), 10);
 // O sistema de tempo da mesa de bancada. `pgr` de propósito: é o caminho novo,
 // e o que o smoke precisa exercitar. `?tempo=normal` volta ao de sempre.
-const TEMPO = P.get('tempo') === 'normal' ? 'normal' : 'pgr';
+const TEMPO = P.get('tempo') === 'normal' ? 'normal'
+  : P.get('tempo') === 'simultaneo' ? 'simultaneo' : 'pgr';
 // O GOLPE ADIADO, que na mesa de verdade nasce desligado. Aqui ele é um knob:
 // `?adiado=1` liga a chave, e é assim que o smoke consegue exercitar o caminho
 // novo sem que a bancada padrão deixe de medir o caminho de sempre.

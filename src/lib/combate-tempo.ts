@@ -24,7 +24,17 @@ import { ARMA } from './equip';
 const C = (regras as any).combate;
 const R = regras as any;
 
-export type Sistema = 'normal' | 'pgr';
+export type Sistema = 'normal' | 'pgr' | 'simultaneo';
+
+/**
+ * A física de um sistema: que régua de Preparo ele usa.
+ *
+ * O simultâneo NÃO é uma terceira física. É a física do P/G/R com outro
+ * relógio (um Tick por vez, decisão a cada Tick, deslocamento no mapa), então
+ * toda conta de anatomia pergunta pela física, e só o relógio pergunta pelo
+ * sistema. Ver `Combate_Simultaneo.md`.
+ */
+export const fisicaDe = (s: Sistema): 'normal' | 'pgr' => (s === 'normal' ? 'normal' : 'pgr');
 export type Marcacao = 'fita' | 'numeros';
 export type Fase = 'livre' | 'preparo' | 'golpe' | 'recuperacao';
 export type Manobra = 'simples' | 'dupla' | 'segura' | 'rajada';
@@ -70,7 +80,9 @@ export const golpeAdiadoPadrao: boolean = !!GOLPE_ADIADO.padrao;
  * ganharia um segundo clique para confirmar o golpe que acabou de declarar.
  */
 export const adiaGolpe = (c: CombateMesa | null | undefined): boolean =>
-  !!c?.golpeAdiado && c.sistema === 'pgr';
+  // No simultâneo o golpe adiado não é opção, é o próprio modo: declarar em T e
+  // valer em T+1 só existe se declarar agendar. A chave fica ignorada lá.
+  c?.sistema === 'simultaneo' || (!!c?.golpeAdiado && c?.sistema === 'pgr');
 
 /** O que uma mesa escolheu: o sistema de tempo, o desenho dele e os dados. */
 export interface CombateMesa {
@@ -194,7 +206,7 @@ export function velocidadeDaArma(idOuNome?: string | null, padrao = 5): number {
  * arremesso derivando da própria Velocidade.
  */
 export function preparoDe(classe: ClasseArma, velocidade: number, sistema: Sistema): number {
-  if (sistema !== 'pgr') return 0;
+  if (fisicaDe(sistema) !== 'pgr') return 0;
   const r = C?.pgr?.preparo?.[classe];
   if (!r) return 0;
   const p = r.fixo != null ? r.fixo : velocidade + (r.daVelocidade || 0);
@@ -205,7 +217,7 @@ export function preparoDe(classe: ClasseArma, velocidade: number, sistema: Siste
 export function reguaDaArte(nivel: number, sistema: Sistema) {
   const a = C?.pgr?.arte || {};
   const ciclo = (a.cicloBase ?? 3) + (a.cicloPorNivel ?? 1) * nivel;
-  const preparo = sistema === 'pgr' ? (a.preparoBase ?? 2) + (a.preparoPorNivel ?? 1) * nivel : 0;
+  const preparo = fisicaDe(sistema) === 'pgr' ? (a.preparoBase ?? 2) + (a.preparoPorNivel ?? 1) * nivel : 0;
   return { preparo, ciclo, golpe: 1, recuperacao: Math.max(0, ciclo - preparo - 1) };
 }
 
@@ -216,7 +228,7 @@ export function tetoDaRajada(classe: ClasseArma): number {
 
 /** Quantos Ticks o ciclo cresce ao golpear com as duas mãos, por sistema. */
 export function cicloExtraDaDupla(classe: ClasseArma, sistema: Sistema): number {
-  if (sistema !== 'pgr') return C?.dupla?.cicloExtraNoNormal ?? 0;
+  if (fisicaDe(sistema) !== 'pgr') return C?.dupla?.cicloExtraNoNormal ?? 0;
   return C?.dupla?.cicloExtra?.[classe] ?? 0;
 }
 
@@ -458,7 +470,7 @@ export function anatomiaLivre(
   velocidade: number, quando: 'agora' | 'fim', sistema: Sistema,
 ): Anatomia {
   const vel = Math.max(1, Math.round(velocidade) || 1);
-  const preparo = sistema === 'pgr' && quando === 'fim' ? vel - 1 : 0;
+  const preparo = fisicaDe(sistema) === 'pgr' && quando === 'fim' ? vel - 1 : 0;
   return {
     preparo, golpes: 1, recuperacao: Math.max(0, vel - preparo - 1), ciclo: vel,
     offs: [preparo], penDados: [0],
@@ -653,6 +665,115 @@ export function custoDeReagir(acao: Acao | null | undefined, tick: number, veloc
 /** Ticks que custa andar N metros durante a Recuperação (o deslocamento pago). */
 export const ticksDeDeslocamento = (metros: number) =>
   Math.max(0, Math.round(metros * (C?.recuperacao?.deslocamentoTicksPorMetro ?? 2)));
+
+// ------------------------------------------------------------ o simultâneo
+/**
+ * O que só o sistema simultâneo usa. A física é a do P/G/R; o que muda é o
+ * relógio (um Tick por vez, decisão a cada Tick) e o deslocamento, que passa a
+ * acontecer no mapa, passo a passo. Ver `Combate_Simultaneo.md`.
+ */
+const SIM = C?.simultaneo || {};
+
+export const ehSimultaneo = (c: CombateMesa | null | undefined): boolean =>
+  c?.sistema === 'simultaneo';
+
+/** Os modos de andar, com o padrão de metros por Tick e a penalidade escrita. */
+export type ModoMov = 'andar' | 'batalha' | 'corrida';
+export const MODOS_MOV: { id: ModoMov; nome: string; porTick: number; nota: string }[] = [
+  { id: 'andar', nome: 'Andar', porTick: SIM?.velocidadePadrao?.andar ?? 1.5,
+    nota: 'passo de estrada, sem pressa e sem custo' },
+  { id: 'batalha', nome: 'Deslocamento de Batalha', porTick: SIM?.velocidadePadrao?.batalha ?? 3,
+    nota: 'a guarda de pé: sem penalidade nenhuma' },
+  { id: 'corrida', nome: 'Corrida', porTick: SIM?.velocidadePadrao?.corrida ?? 6,
+    nota: `Defesa ${C?.movimento?.corrida?.defesa ?? -4} enquanto corre e até se recompor` },
+];
+
+/**
+ * O deslocamento declarado, do jeito que mora dentro da `acao` (`acao.mov`).
+ *
+ * `alvo` OU `destino`: perseguir alguém é mirar a posição ATUAL dele a cada
+ * Tick (e é isso que faz dois que avançam um no outro se encontrarem antes do
+ * previsto, sem regra nenhuma escrita para isso); um ponto do chão fica parado.
+ * `auto` desligado é a trajetória à mão: a intenção fica registrada e quem
+ * anda a peça, Tick a Tick, é a mesa.
+ */
+export interface Mov {
+  alvo?: string | null;
+  destino?: { q: number; r: number } | null;
+  modo: ModoMov;
+  porTick: number;      // metros por Tick
+  auto: boolean;
+}
+
+/** Quantos Ticks a decisão leva para valer: declara em T, começa em T + este. */
+export const decideEmValeDepois = (): number => SIM?.decideEmValeDepois ?? 1;
+
+/** Ticks de viagem para cobrir `metros` andando `porTick` metros por Tick. */
+export const ticksDeViagem = (metros: number, porTick: number): number =>
+  metros <= 0 ? 0 : Math.ceil(metros / Math.max(0.1, porTick));
+
+/**
+ * A agenda do simultâneo: decidir é no Tick T, valer é de T+1 em diante, e o
+ * deslocamento cabe DENTRO do Preparo — só o excedente atrasa o golpe.
+ *
+ * Os quatro números do exemplo que abriu a revisão saem daqui:
+ *   martelo (P2) com 2 Ticks de viagem, declarado no 0 → golpe no 3;
+ *   adaga (P0) com 1 Tick de viagem → golpe no 2;
+ *   adaga já no alcance → golpe no 1 (o Tick 0 é só preparação);
+ *   arco (P5) parado → flecha no 6.
+ */
+export function agendaSimultanea(
+  tickDecl: number, a: Anatomia, ticksViagem = 0,
+): { golpes: number[]; livre: number; inicio: number; atraso: number } {
+  const inicio = tickDecl + decideEmValeDepois();
+  const atraso = Math.max(0, ticksViagem - a.preparo);
+  return {
+    golpes: a.offs.map((o) => inicio + o + atraso),
+    livre: inicio + a.ciclo + atraso,
+    inicio, atraso,
+  };
+}
+
+/**
+ * Em quantos Ticks um alcança o outro, pela projeção de agora.
+ *
+ * `velAlvo` positivo se o alvo FOGE, negativo se ele vem ao encontro (e aí a
+ * distância fecha com a soma das velocidades: é o P1 e o Orc 1 se encontrando
+ * um Tick antes do que qualquer um faria sozinho). `null` = nunca alcança com
+ * essas velocidades, que é o aviso que a tela dá antes de alguém declarar uma
+ * perseguição perdida.
+ */
+export function previsaoDeEncontro(
+  distM: number, minhaVelM: number, velAlvoM: number, alcanceM = 1,
+): number | null {
+  const falta = distM - alcanceM;
+  if (falta <= 0) return 0;
+  const fecha = minhaVelM - velAlvoM;
+  if (fecha <= 0) return null;
+  return Math.ceil(falta / fecha);
+}
+
+/**
+ * O modo automático de uma criatura: a decisão de um Tick, sem mesa.
+ *
+ * De propósito é só isto — atacar o inimigo de pé mais próximo, fugir com a
+ * Vida abaixo do limiar — porque a heurística existe para a horda andar
+ * sozinha, não para jogar bem. O mestre desliga por peça e retoma o controle;
+ * é a escolha registrada em `Combate_Simultaneo.md` §2.1.
+ */
+export function decisaoAutomatica(
+  eu: { id: string; pvPct: number | null; pos: { q: number; r: number } | null },
+  inimigos: { id: string; pos: { q: number; r: number } | null }[],
+  distancia: (a: { q: number; r: number }, b: { q: number; r: number }) => number,
+): { tipo: 'atacar' | 'fugir' | 'nada'; alvo: string | null } {
+  const deAlcance = inimigos.filter((i) => i.pos && eu.pos);
+  if (!deAlcance.length || !eu.pos) return { tipo: 'nada', alvo: null };
+  const maisPerto = deAlcance.reduce((m, i) =>
+    (distancia(eu.pos!, i.pos!) < distancia(eu.pos!, m.pos!) ? i : m));
+  const limiar = SIM?.ia?.fugirAbaixoDePct ?? 25;
+  if (eu.pvPct != null && eu.pvPct < limiar) return { tipo: 'fugir', alvo: maisPerto.id };
+  return { tipo: 'atacar', alvo: maisPerto.id };
+}
 
 // -------------------------------------------------------------- para a tela
 export const FASE_ROTULO: Record<Fase, string> = {

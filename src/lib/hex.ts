@@ -116,6 +116,43 @@ export function distanciaHex(a: Hex, b: Hex): number {
   return (Math.abs(dq) + Math.abs(dq + dr) + Math.abs(dr)) / 2;
 }
 
+/**
+ * Anda até `passos` hexágonos de `de` em direção a `para`, parando quando a
+ * distância chegar a `pararA` (o alcance de quem persegue: 1 para o braço, 2
+ * para a haste, 0 para chegar em cima).
+ *
+ * Guloso, um vizinho por vez: a cada passo escolhe o vizinho que mais aproxima.
+ * Num tabuleiro hexagonal sem obstáculo isso é o caminho mínimo, e é
+ * determinístico (empate decidido pela ordem fixa de `VIZINHOS`), que é o que
+ * um motor de combate precisa: a mesma cena avança sempre do mesmo jeito.
+ * `evita` deixa o chamador vetar casas (ocupadas): o passo que caia numa casa
+ * vetada tenta o segundo melhor vizinho, e para se todos pioram.
+ */
+export function caminharHex(
+  de: Hex, para: Hex, passos: number, pararA = 0,
+  evita?: (h: Hex) => boolean,
+): Hex {
+  let pos = { ...de };
+  // As casas já pisadas: é o que permite o passo LATERAL (mesma distância)
+  // para contornar uma peça no caminho sem entrar em vaivém. Sem ele, o único
+  // vizinho que aproxima estar ocupado deixava a peça presa atrás de qualquer
+  // aliado parado.
+  const pisadas = new Set([chaveHex(pos.q, pos.r)]);
+  for (let i = 0; i < passos; i++) {
+    const d = distanciaHex(pos, para);
+    if (d <= pararA) break;
+    const ordem = vizinhos(pos)
+      .map((v) => ({ v, d: distanciaHex(v, para) }))
+      .sort((a, b) => a.d - b.d);
+    const passo = ordem.find((o) => o.d < d && !(evita?.(o.v)))
+      || ordem.find((o) => o.d === d && !(evita?.(o.v)) && !pisadas.has(chaveHex(o.v.q, o.v.r)));
+    if (!passo) break;
+    pos = passo.v;
+    pisadas.add(chaveHex(pos.q, pos.r));
+  }
+  return pos;
+}
+
 /** Se o hexágono cabe num tabuleiro de `cols` × `rows`. */
 export function dentro(h: Hex, cols: number, rows: number): boolean {
   const { col, row } = axialParaOffset(h.q, h.r);

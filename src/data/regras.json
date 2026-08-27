@@ -2220,6 +2220,12 @@
         "nome": "Três fases (P/G/R)",
         "resumo": "A mesma Velocidade partida em Preparo, Golpe e Recuperação.",
         "detalhe": "Tudo com Preparo maior que zero telegrafa: dá para ler o gesto do martelo e interromper, não só o do feiticeiro. No Preparo ainda dá para desistir; na Recuperação já não dá, só dá para pagar."
+      },
+      {
+        "id": "simultaneo",
+        "nome": "Simultâneo (Tick a Tick)",
+        "resumo": "A física do P/G/R com o relógio andando um Tick por vez: todo mundo decide a cada Tick, e o deslocamento acontece no mapa, passo a passo.",
+        "detalhe": "O relógio não pula: cada avanço é um Tick, e nele as peças em trajeto andam, os golpes agendados caem e quem está livre escolhe o que fazer. Decidir é no Tick de agora e valer é no seguinte: a ação declarada no Tick T começa em T+1, então o Tick 0 é só preparação da cena. Quem declara ataque fora do alcance desloca primeiro (dentro do Preparo, quando cabe) e golpeia quando chega. É o modo dos jogos de combate tático, e só existe na mesa digital."
       }
     ],
     "marcacao": {
@@ -2237,6 +2243,24 @@
           "resumo": "A fila de iniciativa como sempre foi: o Tick de cada um, em ordem. Sem fita. O anel de Golpe no tabuleiro fica: no P/G/R o Tick do golpe não é o Tick da pessoa, e nenhum número da fila responde \"quem bate agora\"."
         }
       ]
+    },
+    "simultaneo": {
+      "nota": "O que só o sistema simultâneo usa. A física é a do P/G/R (preparo, escada, rajada, dupla: tudo igual); o que muda é o relógio e o deslocamento. Ver Combate_Simultaneo.md.",
+      "decideEmValeDepois": 1,
+      "decideNota": "A ação declarada no Tick T começa em T+1. É o que faz o arco de Preparo 5 soltar a flecha no Tick 6, e o Tick 0 ser só preparação: decisão no Tick, efeito no avanço.",
+      "velocidadePadrao": {
+        "andar": 1.5,
+        "batalha": 3,
+        "corrida": 6,
+        "nota": "Metros por Tick quando a ficha não diz (o bestiário ainda não guarda passo, K28). O campo é editável na declaração: quem sabe o passo da criatura é a mesa. As referências são as de Golpe_Tardio.md §14: andar 1,5 · combate 2 a 5 · corrida 5 a 12."
+      },
+      "alcanceParaGolpe": {
+        "nota": "O trajeto declarado contra um alvo para quando entra no alcance da arma: 1 hexágono no corpo a corpo, 2 na haste (combate.alcance). O golpe cai em max(Preparo, Ticks de viagem) depois do início: deslocar cabe dentro do Preparo, e só o excedente atrasa o golpe."
+      },
+      "ia": {
+        "fugirAbaixoDePct": 25,
+        "nota": "O modo automático de uma criatura: ataca o inimigo de pé mais próximo, foge quando a Vida cai do limiar. O mestre liga e desliga por peça, e retoma o controle a qualquer momento."
+      }
     },
     "golpeAdiado": {
       "nota": "O golpe sai no Tick agendado, e não na declaração. Não é regra nova: é a regra escrita do Preparo (declara-se em T e o golpe cai em T + Preparo), que o motor da mesa nunca cumpriu. Nasce DESLIGADA porque cumpri-la muda o ritmo da mesa, e isso se prova jogando.",

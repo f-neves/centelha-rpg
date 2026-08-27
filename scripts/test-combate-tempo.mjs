@@ -46,7 +46,7 @@ const eq = (a, b, m) => ok(JSON.stringify(a) === JSON.stringify(b), `${m} — es
 
 // ------------------------------------------------- 0. o bloco existe e fecha
 ok(regras.combate, 'regras.json não tem o bloco `combate`');
-eq(regras.combate.sistemas.map((s) => s.id), ['normal', 'pgr'], 'os dois sistemas');
+eq(regras.combate.sistemas.map((s) => s.id), ['normal', 'pgr', 'simultaneo'], 'os três sistemas');
 eq(regras.combate.marcacao.modos.map((m) => m.id), ['fita', 'numeros'], 'os dois modos de marcação');
 for (const c of ['leve', 'media', 'haste', 'pesada', 'distancia', 'arremesso']) {
   ok(regras.combate.pgr.preparo[c], `a régua P/G/R não cobre a classe ${c}`);

@@ -451,7 +451,9 @@ export async function abrirEscolhaDoTempo(
       ? (chave.checked
         ? 'Ligada: declarar agenda, e o golpe cai no Tick do Preparo.'
         : 'Desligada: declarar resolve na hora, como a mesa sempre fez.')
-      : 'Sem efeito no sistema normal: lá o Preparo é zero e o golpe já cai na declaração.';
+      : sis === 'simultaneo'
+        ? 'No simultâneo a chave não se aplica: declarar SEMPRE agenda, porque decidir é no Tick de agora e valer é no seguinte.'
+        : 'Sem efeito no sistema normal: lá o Preparo é zero e o golpe já cai na declaração.';
     d.classList.toggle('muted', sis !== 'pgr');
   };
   chave.addEventListener('change', pintarChave);
