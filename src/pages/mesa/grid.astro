@@ -5141,10 +5141,13 @@ const SETAS = [
     const ra = RESUMO[atacante.id];
     const classe = classeDeTempo(ra?.arma, ra?.velocidade, ra?.classe);
     const vel = ra?.velocidade ?? velocidadeDaArma(ra?.arma, 5);
-    const an = anatomia({
+    // O P/G/R fixado pelo mestre vale AQUI TAMBÉM, e não só na folha da ação:
+    // fixar um número e ver a declaração seguinte ignorá-lo seria a pior das
+    // duas verdades.
+    const an = comOverride(anatomia({
       classe, velocidade: vel, sistema: TEMPO.sistema,
       manobra: opts.manobra || 'simples', golpes: opts.golpes,
-    });
+    }), ra?.pgr);
     const de = TOKENS[atacante.id], pa = TOKENS[alvo.id];
     const escala = Number(ARENA?.escala_m) || 1;
     const hexes = de && pa ? distanciaHex(de, pa) : 0;
@@ -6834,6 +6837,10 @@ const SETAS = [
   /** O Preparo que a arma desta peça cobra, pela régua da mesa. */
   function preparoDoAtaque(c: any): number {
     const r = RESUMO[c.id];
+    // O Preparo fixado à mão manda, inclusive aqui: é este número que decide se
+    // o ataque declara ou resolve na hora, e uma arma leve com Preparo 2
+    // escrito pelo mestre tem de telegrafar como qualquer outra.
+    if (r?.pgr?.preparo != null) return Math.max(0, r.pgr.preparo);
     return preparoDe(
       classeDeTempo(r?.arma, r?.velocidade, r?.classe),
       r?.velocidade ?? velocidadeDaArma(r?.arma, 5),
@@ -6925,10 +6932,10 @@ const SETAS = [
     }
     manSel.value = 'simples'; golInp.value = '2';
     golInp.max = String(Math.max(2, tetoDaRajada(classe)));
-    const anat = () => anatomia({
+    const anat = () => comOverride(anatomia({
       classe, velocidade: vel, sistema: TEMPO.sistema, manobra: manSel.value as Manobra,
       golpes: Math.max(2, parseInt(golInp.value || '2', 10) || 2),
-    });
+    }), ra?.pgr);
     const pintar = () => {
       golInp.style.display = manSel.value === 'rajada' ? '' : 'none';
       const a = anat();
@@ -7005,13 +7012,13 @@ const SETAS = [
       return;
     }
     const ra = RESUMO[atacante.id];
-    const an = anatomia({
+    const an = comOverride(anatomia({
       classe: classeDeTempo(ra?.arma, ra?.velocidade, ra?.classe),
       velocidade: ra?.velocidade ?? velocidadeDaArma(ra?.arma, 5),
       sistema: TEMPO.sistema,
       manobra: (acao.tipo || 'simples') as Manobra,
       golpes: Math.max(2, acao.golpes.length),
-    });
+    }), ra?.pgr);
     const res = await folhaDaAcao(atacante, alvo, {
       tickDoGolpe: tick, an, manobra: acao.tipo || 'simples',
     });
@@ -7394,7 +7401,16 @@ const SETAS = [
         tGolpeDe(),
       )
       : 'livre');
-    const dvDe = () => defesaPerdida(acaoNo(alvo), tGolpeDe(), {
+    // A AÇÃO DO ALVO, em cópia: a Pressão que ele sofreu é um número guardado
+    // (e não derivado), e o mestre precisa poder corrigi-la aqui, porque é ela
+    // que abre a guarda. Mexer na cópia deixa a folha inteira responder na
+    // hora sem tocar na cena; o que é fixado vai para o banco no fechamento.
+    // Nasce como agenda vazia quando o alvo ainda não agiu, e não como nulo: a
+    // Pressão conta mesmo em quem não tem gesto no ar (é a regra mais antiga do
+    // capítulo IX, e `acaoVazia` já sabe disso), e sem o objeto não haveria
+    // onde escrever a correção.
+    const acaoAlvo = clonar(acaoNo(alvo)) || { golpes: [], livre: alvo.tick ?? 0 };
+    const dvDe = () => defesaPerdida(acaoAlvo, tGolpeDe(), {
       segura: alvo.acao?.tipo === 'segura',
       ...(presumidaDe() !== 'livre' ? { fase: presumidaDe() } : {}),
     });
@@ -7638,6 +7654,8 @@ const SETAS = [
     type CampoFicha = {
       quem: 'atacante' | 'alvo'; chave: string; rot: string;
       tipo?: 'num' | 'txt' | 'sel'; ops?: [string, string][]; passo?: number;
+      /** `dados` (o ajuste por instância) ou `acao` (o estado do ciclo). */
+      fonte?: 'dados' | 'acao';
     };
     const CLASSES_TEMPO: [string, string][] = [
       ['leve', 'leve'], ['media', 'média'], ['pesada', 'pesada'], ['haste', 'haste'],
@@ -7668,22 +7686,57 @@ const SETAS = [
       { quem: 'alvo', chave: 'passo.batalha', rot: 'Passo · batalha' },
       { quem: 'alvo', chave: 'passo.arranque', rot: 'Passo · arranque' },
       { quem: 'alvo', chave: 'passo.corrida', rot: 'Passo · corrida' },
+      // A Pressão não mora em `dados`, e sim na AÇÃO: ela conta os ataques
+      // sofridos neste ciclo e zera sozinha quando a guarda se refaz. Fixá-la
+      // grava na `acao` do alvo, que é onde ela vive.
+      { quem: 'alvo', chave: 'pressao', rot: 'Pressão sofrida', fonte: 'acao' },
     ];
     const leCaminho = (o: any, cam: string) =>
       cam.split('.').reduce((x: any, k: string) => (x == null ? x : x[k]), o);
     const escreveCaminho = (o: any, cam: string, v: any) => {
+      if (!o) return;   // sem bloco (o jogador não recebe o do inimigo): nada a escrever
       const ks = cam.split('.');
       let alvo0 = o;
       for (const k of ks.slice(0, -1)) { if (!alvo0[k] || typeof alvo0[k] !== 'object') alvo0[k] = {}; alvo0 = alvo0[k]; }
       alvo0[ks[ks.length - 1]] = v;
     };
-    const objDe = (q: string) => (q === 'alvo' ? r : ra);
+    const objDe = (q: string, fonte?: string) =>
+      (fonte === 'acao' ? acaoAlvo : q === 'alvo' ? r : ra);
     // O valor que a régua daria, para saber o que é correção e o que é o
     // número de origem: só o que DIVERGE é gravado ao fixar.
     const BASE_FICHA: Record<string, any> = {};
     // O que ficará gravado ao fechar, se a caixinha estiver marcada.
     const FIXOS = new Set<string>();
     const idDe = (c: CampoFicha) => `alf-${c.quem}-${c.chave.replace('.', '-')}`;
+
+    /**
+     * A terceira coluna: o que nasce do ENCONTRO dos dois e não pertence a
+     * nenhum. Só leitura de propósito, porque cada número aqui é a soma de
+     * campos que já estão abertos ao lado, e dois lugares para corrigir a mesma
+     * coisa é como os dois divergem.
+     *
+     * Sai por chave, e não por posição: a coluna se repinta a cada tecla
+     * digitada nos campos, e casar por índice quebra calado no dia em que uma
+     * linha entra ou sai daqui.
+     */
+    const valoresDoLance = (): [string, string, string][] => {
+      const a = anat();
+      const alc = classeAtq === 'haste' ? HEX_HASTE : HEX_CORPO_A_CORPO;
+      const pAtq = passoDaPeca(atacante), pAlv = passoDaPeca(alvo);
+      return [
+        ['dist', 'Distância', dist != null ? fmtM(dist) : '—'],
+        ['alc', 'Alcance da arma', classeAtq === 'distancia' || classeAtq === 'arremesso'
+          ? 'à distância' : `${alc} hex`],
+        ['ciclo', 'Ciclo total', `${a.ciclo} Ticks`],
+        ['tgolpe', 'Golpe no Tick', String(tGolpe)],
+        ['fase', 'Fase do alvo', `${FASE_ROTULO[dv.fase]}${dv.acao ? ` (${dv.acao})` : ''}`],
+        ['dv', 'Guarda perdida', String(dv.total || 0)],
+        ['def', 'Defesa efetiva', def == null ? '—' : String(def)],
+        ['passo', 'Quem alcança quem', pAtq.batalha === pAlv.batalha ? 'passo igual'
+          : pAtq.batalha > pAlv.batalha ? `${atacante.nome} é mais rápido`
+            : `${alvo.nome} escapa no passo`],
+      ];
+    };
 
     const montarFicha = () => {
       const anatBase = anat();
@@ -7694,13 +7747,16 @@ const SETAS = [
         'pgr.recuperacao': anatBase.recuperacao,
       };
       const linha = (c: CampoFicha) => {
-        const o = objDe(c.quem);
+        const o = objDe(c.quem, c.fonte);
         let v = leCaminho(o, c.chave);
         if (v == null && pgrDaRegua[c.chave] != null) v = pgrDaRegua[c.chave];
         if (v == null && c.chave.startsWith('passo.')) {
           v = (passoDaPeca(c.quem === 'alvo' ? alvo : atacante) as any)[c.chave.split('.')[1]];
         }
-        BASE_FICHA[`${c.quem}|${c.chave}`] = v;
+        // Sem ataque sofrido ainda, a Pressão é zero e não "vazia": o campo
+        // precisa de um número para o mestre somar ou subtrair a partir dele.
+        if (v == null && c.chave === 'pressao') v = 0;
+        BASE_FICHA[`${c.quem}|${c.fonte || "dados"}|${c.chave}`] = v;
         const id = idDe(c);
         const campo = c.tipo === 'sel'
           ? `<select id="${id}">${(c.ops || []).map(([k, t]) =>
@@ -7708,48 +7764,39 @@ const SETAS = [
           : c.tipo === 'txt'
             ? `<input type="text" id="${id}" value="${esc(String(v ?? ''))}" />`
             : `<input type="number" id="${id}" value="${v ?? ''}" step="${c.passo ?? 1}" />`;
+        // A caixinha é só do mestre: fixar escreve em `combatentes.dados`, e o
+        // jogador não tem porta para essa tabela. Do lado dele a correção vale
+        // para o lance e acaba com o modal, que é o certo.
         return `<label class="al-f" data-f="${c.quem}|${c.chave}"><span>${esc(c.rot)}</span>${campo}
-          <input type="checkbox" id="${id}-fx" title="Fixar: manter este número até o fim do combate" /></label>`;
+          ${MESTRE ? `<input type="checkbox" id="${id}-fx" title="Fixar: manter este número até o fim do combate" />` : '<span></span>'}</label>`;
       };
-      const alc = classeAtq === 'haste' ? HEX_HASTE : HEX_CORPO_A_CORPO;
-      const pAtq = passoDaPeca(atacante), pAlv = passoDaPeca(alvo);
-      // A terceira coluna é o LANCE: o que nasce do encontro dos dois e não
-      // pertence a nenhum. Só leitura de propósito: cada número aqui é a soma
-      // de campos que já estão abertos ao lado, e ter dois lugares para
-      // corrigir a mesma coisa é como as duas divergem.
-      const doLance = [
-        ['Distância', dist != null ? fmtM(dist) : '—'],
-        ['Alcance da arma', classeAtq === 'distancia' || classeAtq === 'arremesso'
-          ? 'à distância' : `${alc} hex`],
-        ['Ciclo total', `${anatBase.ciclo} Ticks`],
-        ['Golpe no Tick', String(tGolpe)],
-        ['Fase do alvo', `${FASE_ROTULO[dv.fase]}${dv.acao ? ` (${dv.acao})` : ''}`],
-        ['Pressão no alvo', dv.pressao ? String(dv.pressao) : '0'],
-        ['Defesa efetiva', def == null ? '—' : String(def)],
-        ['Quem alcança quem', pAtq.batalha === pAlv.batalha ? 'passo igual'
-          : pAtq.batalha > pAlv.batalha ? `${esc(atacante.nome)} é mais rápido`
-            : `${esc(alvo.nome)} escapa no passo`],
-      ].map(([l, v]) => `<div class="al-f lido"><span>${esc(l)}</span>
+      const doLance = valoresDoLance().map(([k, l, v]) =>
+        `<div class="al-f lido" data-l="${k}"><span>${esc(l)}</span>
         <b class="al-f-v">${esc(String(v))}</b><span></span></div>`).join('');
 
+      // A COLUNA DO ALVO É DO MESTRE. Do lado do jogador a view da migração 27
+      // não manda o bloco do inimigo (é o que impede a Absorção do ogro de
+      // viajar até o navegador do grupo), então os campos abririam vazios e
+      // sem ter onde escrever. Some inteira, em vez de ficar ali fingindo.
+      const campoAlvo = MESTRE ? CAMPOS_ALVO : [];
       el('al-ficha-c').innerHTML = `
         <div class="al-ficha-col"><div class="al-ficha-h">${esc(atacante.nome)} · ataca</div>
           ${CAMPOS_ATQ.map(linha).join('')}</div>
-        <div class="al-ficha-col"><div class="al-ficha-h">${esc(alvo.nome)} · apanha</div>
-          ${CAMPOS_ALVO.map(linha).join('')}</div>
+        ${campoAlvo.length ? `<div class="al-ficha-col"><div class="al-ficha-h">${esc(alvo.nome)} · apanha</div>
+          ${campoAlvo.map(linha).join('')}</div>` : ''}
         <div class="al-ficha-col"><div class="al-ficha-h">O lance</div>${doLance}</div>`;
 
-      for (const c of [...CAMPOS_ATQ, ...CAMPOS_ALVO]) {
+      for (const c of [...CAMPOS_ATQ, ...campoAlvo]) {
         const inp = document.getElementById(idDe(c)) as HTMLInputElement | HTMLSelectElement;
-        const fx = document.getElementById(`${idDe(c)}-fx`) as HTMLInputElement;
-        if (!inp || !fx) continue;
-        const chaveF = `${c.quem}|${c.chave}`;
-        if (FIXOS.has(chaveF)) fx.checked = true;
+        const fx = document.getElementById(`${idDe(c)}-fx`) as HTMLInputElement | null;
+        if (!inp) continue;
+        const chaveF = `${c.quem}|${c.fonte || "dados"}|${c.chave}`;
+        if (fx && FIXOS.has(chaveF)) fx.checked = true;
         const aplicar = () => {
           const bruto = (inp as HTMLInputElement).value;
           const v = c.tipo === 'num' || !c.tipo
             ? (bruto === '' ? null : Number(bruto)) : bruto;
-          escreveCaminho(objDe(c.quem), c.chave, v);
+          escreveCaminho(objDe(c.quem, c.fonte), c.chave, v);
           const mudou = String(v ?? '') !== String(BASE_FICHA[chaveF] ?? '');
           inp.closest('.al-f')?.classList.toggle('mexido', mudou);
           // Corrigir sem fixar já é a intenção mais comum ("neste lance ele
@@ -7760,6 +7807,7 @@ const SETAS = [
         };
         inp.addEventListener('input', aplicar);
         inp.addEventListener('change', aplicar);
+        if (!fx) continue;
         fx.addEventListener('change', () => {
           if (fx.checked) FIXOS.add(chaveF); else FIXOS.delete(chaveF);
           inp.closest('.al-f')?.classList.toggle('fixado', fx.checked);
@@ -7787,22 +7835,32 @@ const SETAS = [
       if (!MESTRE || !FIXOS.size) return;
       const porPeca: Record<string, any> = {};
       for (const chaveF of FIXOS) {
-        const [quem, cam] = chaveF.split('|');
-        const v = leCaminho(objDe(quem), cam);
+        const [quem, fonte, cam] = chaveF.split('|');
+        const v = leCaminho(objDe(quem, fonte), cam);
         if (String(v ?? '') === String(BASE_FICHA[chaveF] ?? '')) continue;
         const peca = quem === 'alvo' ? alvo : atacante;
-        porPeca[peca.id] = porPeca[peca.id] || { peca, dados: { ...(peca.dados || {}) } };
-        escreveCaminho(porPeca[peca.id].dados, cam, v);
+        porPeca[peca.id] = porPeca[peca.id] || {
+          peca, dados: { ...(peca.dados || {}) }, acao: null as any,
+        };
+        // A Pressão mora na AÇÃO e o resto no ajuste por instância: são duas
+        // colunas diferentes, e por isso a gravação sai em dois updates.
+        if (fonte === 'acao') {
+          porPeca[peca.id].acao = { ...(porPeca[peca.id].acao || acaoNo(peca) || { golpes: [], livre: peca.tick ?? 0 }) };
+          escreveCaminho(porPeca[peca.id].acao, cam, v);
+        } else escreveCaminho(porPeca[peca.id].dados, cam, v);
       }
-      for (const { peca, dados } of Object.values(porPeca) as any[]) {
-        const { error } = await SB.from('combatentes').update({ dados }).eq('id', peca.id);
+      for (const { peca, dados, acao } of Object.values(porPeca) as any[]) {
+        const patch: any = { dados };
+        if (acao) patch.acao = acao;
+        const { error } = await SB.from('combatentes').update(patch).eq('id', peca.id);
         if (error) { uiErro('Não deu para fixar os números: ' + error.message); continue; }
         peca.dados = dados;
+        if (acao) peca.acao = acao;
         // O RESUMO da cena é refeito na hora, senão o número fixado só
         // apareceria no próximo F5: ele é a fonte de tudo o que a mesa desenha.
         try { RESUMO[peca.id] = resumoDe(peca, FICHAS); } catch { /* segue com o antigo */ }
-        await logar(peca, `${peca.nome}: o mestre fixou ${Object.keys(dados).length} ajuste(s)`
-          + ' na ficha do lance', { acao: null });
+        await logar(peca, `${peca.nome}: o mestre fixou ${Object.keys(dados).length + (acao ? 1 : 0)}`
+          + ' ajuste(s) na ficha do lance', { acao: null });
       }
       pintarIniciativa(); pintarTokens();
       avisarAgora('combatentes');
@@ -7815,17 +7873,9 @@ const SETAS = [
       // A terceira coluna vive das outras duas, então ela se refaz sozinha; os
       // campos editáveis NÃO são remontados, senão o foco saltaria do input a
       // cada tecla digitada.
-      const alc = classeAtq === 'haste' ? HEX_HASTE : HEX_CORPO_A_CORPO;
-      const col = el('al-ficha-c').lastElementChild;
-      if (col) {
-        const vs = col.querySelectorAll('.al-f-v');
-        const a = anat();
-        const novos = [dist != null ? fmtM(dist) : '—',
-          classeAtq === 'distancia' || classeAtq === 'arremesso' ? 'à distância' : `${alc} hex`,
-          `${a.ciclo} Ticks`, String(tGolpe),
-          `${FASE_ROTULO[dv.fase]}${dv.acao ? ` (${dv.acao})` : ''}`,
-          dv.pressao ? String(dv.pressao) : '0', def == null ? '—' : String(def)];
-        vs.forEach((n0, i) => { if (novos[i] != null) n0.textContent = novos[i]; });
+      for (const [k, , v] of valoresDoLance()) {
+        const n0 = el('al-ficha-c').querySelector(`.al-f.lido[data-l="${k}"] .al-f-v`);
+        if (n0) n0.textContent = v;
       }
     };
 

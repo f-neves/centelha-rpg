@@ -385,6 +385,20 @@ async function cenaFichaDoLance(br, url) {
   ok(tempo.antes !== tempo.depois,
     `o Preparo escrito à mão refaz a linha do tempo (${(tempo.depois || '').slice(0, 60)})`);
 
+  // A PRESSÃO é editável, e ela abre a guarda: mexer nela move a Defesa
+  // efetiva na coluna do lance, que é o número contra o qual se rola.
+  const pressao = await p.evaluate(async () => {
+    const inp = document.getElementById('alf-alvo-pressao');
+    if (!inp) return null;
+    const antes = document.querySelector('#al-ficha-c .al-f.lido[data-l="def"] .al-f-v')?.textContent;
+    inp.value = String(Number(inp.value || 0) + 2);
+    inp.dispatchEvent(new Event('input', { bubbles: true }));
+    await new Promise((x) => setTimeout(x, 300));
+    return { antes, depois: document.querySelector('#al-ficha-c .al-f.lido[data-l="def"] .al-f-v')?.textContent };
+  });
+  ok(pressao && pressao.antes !== pressao.depois,
+    `a Pressão é editável e abre a guarda do alvo (Defesa ${pressao?.antes} → ${pressao?.depois})`);
+
   // A caixinha muda o resumo do cabeçalho.
   const fixa = await p.evaluate(async () => {
     const fx = document.getElementById('alf-alvo-defesa-fx');

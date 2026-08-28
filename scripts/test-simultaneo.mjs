@@ -191,6 +191,15 @@ eq(T.previsaoDeEncontro(1, 3, 0, 1), 0, 'já no alcance: zero Ticks');
   eq(T.comOverride(base, {}), base, 'override vazio também não toca');
   const dois = T.comOverride(base, { golpes: 2 });
   eq([dois.offs, dois.penDados.length], [[1, 2], 2], 'dois golpes à mão saem em Ticks seguidos');
+
+  // O OVERRIDE VALE NA AGENDA DO SIMULTÂNEO, e não só na folha: fixar um
+  // Preparo e ver a declaração seguinte ignorá-lo seria a pior das duas
+  // verdades. (A auditoria de 28/08 achou isso solto em três chamadas.)
+  const agRegua = T.agendaSimultanea(0, base, 0);
+  const agMao = T.agendaSimultanea(0, T.comOverride(base, { preparo: 4 }), 0);
+  eq(agRegua.golpes, [2], 'pela régua, a espada longa golpeia no Tick 2');
+  eq(agMao.golpes, [5], 'com Preparo 4 escrito à mão, no Tick 5');
+  ok(agMao.livre > agRegua.livre, 'e o ciclo inteiro anda junto');
 }
 
 // ------------------------------------------------- 4. o robô mínimo
