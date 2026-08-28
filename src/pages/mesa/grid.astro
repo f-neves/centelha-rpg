@@ -1082,6 +1082,12 @@ const SETAS = [
     /* A tira vira coluna: o mesmo painel, virado de lado. */
     :is(body.grid-tv, body.fila-empe) .gr-ini {
       flex-direction: column; flex-wrap: nowrap; overflow: hidden;
+      /* SEM ISTO O « SOME. Ele é `position: absolute`, e sem âncora ele se
+         prende ao primeiro ancestral posicionado · que aqui era a página. O
+         botão ia parar 1738px à direita, fora do trilho e fora da vista: a
+         medida dizia que ele existia e o print mostrava que não estava lá.
+         A coluna lateral já tinha o `relative`; a tira não. */
+      position: relative;
       padding: .3rem .25rem;
       /* Um só token e tudo dentro acompanha: nome, número e rótulos são todos
          calculados a partir do `--fs-micro`. */
@@ -1145,6 +1151,45 @@ const SETAS = [
       writing-mode: horizontal-tb; border-left: 0; border-top: 1px solid var(--rule);
       padding: .2rem 0 .1rem; width: 100%; }
     :is(body.grid-tv, body.fila-empe) .fila-lista > .ini-grupo:first-child { border-top: none; }
+
+    /* ---- as duas faixas do pé da fila ----
+       "No chão" e "golpes no ar" nasceram deitadas e quebravam de pé, por
+       motivos opostos · e nenhum dos dois aparecia numa medida de geometria,
+       porque a caixa tinha o tamanho certo e só o conteúdo dentro dela estava
+       errado.
+
+       O "no chão" tinha `max-width: 26%`: 26% de uma coluna de 115px são 30px,
+       e sobrava um risco vertical com meio retrato dentro. Some o rótulo de pé,
+       que de pé numa coluna estreita vira uma letra por linha.
+
+       A faixa dos golpes tinha `flex: 1 0 100%`. Numa FILEIRA isso quer dizer
+       "quebre a linha e ocupe-a inteira", que era o desenho. Numa COLUNA quer
+       dizer "tome a altura toda" · e era ela que engolia a fila inteira no
+       instante em que alguém entrava em rota de ataque, que é justamente
+       quando a fila mais importa. */
+    :is(body.grid-tv, body.fila-empe) .ini-chao {
+      flex: 0 0 auto; max-width: none; width: 100%; flex-direction: column;
+      border-left: 0; border-top: 1px solid var(--rule);
+      padding: .35rem 0 0; margin-top: .35rem; gap: .2rem;
+      overflow-x: hidden; overflow-y: auto; }
+    :is(body.grid-tv, body.fila-empe) .ini-chao-h {
+      writing-mode: horizontal-tb; align-self: stretch; justify-content: center;
+      text-align: center; }
+    :is(body.grid-tv, body.fila-empe) .ini-caido {
+      width: 100%; max-width: none; flex-direction: column; gap: .1rem;
+      justify-content: center; text-align: center; }
+    :is(body.grid-tv, body.fila-empe) .ini-caido .nm { max-width: 100%; }
+
+    :is(body.grid-tv, body.fila-empe) #gr-ar-cx { flex: 0 0 auto; width: 100%; }
+    :is(body.grid-tv, body.fila-empe) .fila-ar {
+      flex-direction: column; align-items: stretch; gap: .25rem;
+      padding: .3rem 0 0; margin-top: .3rem; min-height: 0; }
+    :is(body.grid-tv, body.fila-empe) .ar-h { white-space: normal; text-align: center; }
+    :is(body.grid-tv, body.fila-empe) .ar-lista {
+      flex: 0 1 auto; flex-direction: column; overflow-x: hidden; overflow-y: auto; }
+    :is(body.grid-tv, body.fila-empe) .ar-item {
+      flex-wrap: wrap; justify-content: center; row-gap: .1rem; }
+    :is(body.grid-tv, body.fila-empe) .ar-alvo { max-width: 100%; }
     /* O « só existe quando a fila é trilho. Recolher uma faixa deitada para
        28px de LARGURA não quer dizer nada. */
     body.fila-empe .ini-recolher { display: block; }

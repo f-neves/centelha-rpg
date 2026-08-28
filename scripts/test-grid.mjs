@@ -2016,6 +2016,24 @@ async function cenaGolpeAdiado(br, url) {
   ok(faixa.ticks.every((t) => t != null && t !== ''),
     `e cada cartão carrega o Tick em que ele cai (${faixa.ticks.join(', ')})`);
 
+  // O TRILHO INTEIRO, com a faixa dentro.
+  // Aqui é onde a fila de pé mais quebrou, e o defeito não aparecia em nenhuma
+  // medida de geometria: o trilho tinha o tamanho certo e o conteúdo dentro
+  // dele é que estava errado. A faixa dos golpes é `flex: 1 0 100%`, que numa
+  // fileira quer dizer "quebre a linha" e numa COLUNA quer dizer "tome a altura
+  // toda" · ela engolia a fila inteira no instante em que alguém entrava em
+  // rota de ataque. Por isso a régua vem junto de um teste que conta cartões:
+  // "nada transborda" e "a fila continua lá" são duas perguntas diferentes.
+  await vistoriarCaixa(p, '.gr-ini', 'o trilho da iniciativa com golpe no ar');
+  const filaViva = await p.evaluate(() => {
+    const l = document.querySelector('.fila-lista');
+    if (!l) return null;
+    return { h: Math.round(l.getBoundingClientRect().height),
+      itens: l.querySelectorAll('.ini-item').length };
+  });
+  ok(filaViva && filaViva.itens > 0 && filaViva.h > 120,
+    `e a fila continua de pé debaixo dela (${filaViva?.h}px, ${filaViva?.itens} cartões)`);
+
   // ---- 4 e 5: o cartão abre a folha, e resolver tira o golpe do ar ----
   const res = await p.evaluate(async () => {
     const antes = document.querySelectorAll('#gr-ar .ar-item').length;
