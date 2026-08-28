@@ -1,0 +1,2208 @@
+{
+ "mon-aasimar": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "tabela"
+ },
+ "mon-aboleth": {
+  "batalha": 6,
+  "arranque": 10,
+  "corrida": 14,
+  "ft": 60,
+  "origem": "fonte",
+  "nota": "nado 60; em terra 10, e o aboleth não sai da água"
+ },
+ "mon-aguia-gigante": {
+  "batalha": 8,
+  "arranque": 13,
+  "corrida": 18,
+  "ft": 80,
+  "origem": "fonte",
+  "nota": "voo 80; em terra a águia salta 10 ft"
+ },
+ "mon-ankheg": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-ankylosaurus": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-aranha-das-fases": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-aranha-gigante": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-archon-cao": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-lantern-archon": {
+  "batalha": 6,
+  "arranque": 10,
+  "corrida": 14,
+  "ft": 60,
+  "origem": "fonte",
+  "nota": "voo 60 (perfeito): a esfera de luz não tem passo"
+ },
+ "mon-trumpet-archon": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "arqueiro": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "tabela"
+ },
+ "assassino-das-sombras": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "tabela"
+ },
+ "mon-assombracao-wraith": {
+  "batalha": 6,
+  "arranque": 10,
+  "corrida": 14,
+  "ft": 60,
+  "origem": "fonte",
+  "nota": "voo 60: incorpórea, não pisa"
+ },
+ "mon-aurochs": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-babau": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-balor": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "bandido-de-estrada": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "tabela"
+ },
+ "mon-barghest": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-basidirond": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-basilisco": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-bebilith": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-behir": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-fire-beetle": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "tabela"
+ },
+ "mon-giant-stag-beetle": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "tabela"
+ },
+ "mon-besta-deslocadora": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-bison": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-bodak": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-boggard": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-bralani": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-brachiosaurus": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "bruto": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "tabela"
+ },
+ "mon-sea-hag": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "tabela"
+ },
+ "mon-night-hag": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-bruxa-verde-hag": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "tabela"
+ },
+ "mon-bugbear": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-bulette": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-dog": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "campeao": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "tabela"
+ },
+ "camponis-assustado": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "tabela"
+ },
+ "mon-riding-dog": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-hell-hound": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "capitao-da-guarda": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "tabela"
+ },
+ "mon-giant-crab": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-wolverine": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-dire-wolverine": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-cauchemar": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "cavaleiro-de-elite": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "tabela"
+ },
+ "mon-horse": {
+  "batalha": 5,
+  "arranque": 8,
+  "corrida": 12,
+  "ft": 50,
+  "origem": "fonte"
+ },
+ "mon-centaur": {
+  "batalha": 5,
+  "arranque": 8,
+  "corrida": 12,
+  "ft": 50,
+  "origem": "fonte"
+ },
+ "mon-giant-centipede": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-chuul": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-ciclope": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-cloaker": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte",
+  "nota": "voo 40; em terra 10, e o manto vive no ar"
+ },
+ "mon-cobra-constritora": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-iron-cobra": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-cocatriz": {
+  "batalha": 6,
+  "arranque": 10,
+  "corrida": 14,
+  "ft": 60,
+  "origem": "fonte",
+  "nota": "voo 60; em terra 20: a cocatriz é bicho de asa"
+ },
+ "comandante": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "tabela"
+ },
+ "mon-corujurso": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-raven": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte",
+  "nota": "voo 40; em terra 10"
+ },
+ "mon-couatl": {
+  "batalha": 6,
+  "arranque": 10,
+  "corrida": 14,
+  "ft": 60,
+  "origem": "fonte",
+  "nota": "voo 60; a serpente alada rasteja 20 e não é assim que ela vai"
+ },
+ "mon-crag-linnorm": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "tabela"
+ },
+ "mon-crocodilo": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-cubo-gelatinoso": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 15,
+  "origem": "fonte"
+ },
+ "cultista": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "tabela"
+ },
+ "mon-dark-creeper": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-dark-stalker": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-darkmantle": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-deinonychus": {
+  "batalha": 6,
+  "arranque": 10,
+  "corrida": 14,
+  "ft": 60,
+  "origem": "fonte"
+ },
+ "mon-derro": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-deva-astral": {
+  "batalha": 5,
+  "arranque": 8,
+  "corrida": 12,
+  "ft": 50,
+  "origem": "fonte"
+ },
+ "mon-diabo-barbado": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-horned-devil-cornugon": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-diabo-de-gelo": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-diabo-do-fosso-pit-fiend": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-barbed-devil-hamatula": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-diabo-osseo": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-diabrete-imp": {
+  "batalha": 5,
+  "arranque": 8,
+  "corrida": 12,
+  "ft": 50,
+  "origem": "fonte",
+  "nota": "voo 50 (perfeito); em terra 20"
+ },
+ "mon-djinn": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-weasel": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-doppelganger": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-dracolisk": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-dragao-azul-adulto": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-dragao-branco-jovem": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-dragao-dourado-adulto": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-dragao-verde-adulto": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-dragao-vermelho-adulto": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-dragao-vermelho-anciao": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-dragao-vermelho-jovem": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-dretch": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-driade": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-drider": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-drow": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-drow-noble": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "duelista": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "tabela"
+ },
+ "mon-duergar": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-efreeti": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-elasmosaurus": {
+  "batalha": 5,
+  "arranque": 8,
+  "corrida": 12,
+  "ft": 50,
+  "origem": "fonte",
+  "nota": "nado 50; em terra 20, e ele quase não sai da água"
+ },
+ "mon-small-water-elemental": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-elemental-da-terra-grande": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "tabela"
+ },
+ "mon-small-earth-elemental": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-small-air-elemental": {
+  "batalha": 10,
+  "arranque": 16,
+  "corrida": 23,
+  "ft": 100,
+  "origem": "fonte",
+  "nota": "voo 100 (perfeito): o ar não tem pé"
+ },
+ "mon-small-fire-elemental": {
+  "batalha": 5,
+  "arranque": 8,
+  "corrida": 12,
+  "ft": 50,
+  "origem": "fonte"
+ },
+ "mon-electric-eel": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte",
+  "nota": "nado 30; em terra a enguia se arrasta 5 ft"
+ },
+ "mon-spider-swarm": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-crab-swarm": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "tabela"
+ },
+ "mon-centipede-swarm": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "tabela"
+ },
+ "mon-army-ant-swarm": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "tabela"
+ },
+ "mon-bat-swarm": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte",
+  "nota": "voo 40: a nuvem de morcegos não pousa"
+ },
+ "mon-rat-swarm": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 15,
+  "origem": "fonte"
+ },
+ "mon-leech-swarm": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte",
+  "nota": "nado 30: o enxame de sanguessugas vive na água"
+ },
+ "mon-wasp-swarm": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte",
+  "nota": "voo 40: a nuvem de vespas não pousa"
+ },
+ "mon-erinia": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-escorpiao-gigante": {
+  "batalha": 5,
+  "arranque": 8,
+  "corrida": 12,
+  "ft": 50,
+  "origem": "fonte"
+ },
+ "mon-esfinge-ginosfinge": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-exemplo-espantalho": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "tabela"
+ },
+ "mon-espectro": {
+  "batalha": 8,
+  "arranque": 13,
+  "corrida": 18,
+  "ft": 80,
+  "origem": "fonte",
+  "nota": "voo 80 (perfeito): incorpóreo"
+ },
+ "mon-esqueleto-humano": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-stegosaurus": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-choker": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-ettercap": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-ettin": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-hawk": {
+  "batalha": 6,
+  "arranque": 10,
+  "corrida": 14,
+  "ft": 60,
+  "origem": "fonte",
+  "nota": "voo 60; em terra 10"
+ },
+ "mon-ghost": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "tabela"
+ },
+ "feiticeiro-menor": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "tabela"
+ },
+ "mon-phoenix": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-filhote-de-dragao-vermelho": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-fogo-fatuo": {
+  "batalha": 5,
+  "arranque": 8,
+  "corrida": 12,
+  "ft": 50,
+  "origem": "fonte",
+  "nota": "voo 50 (perfeito): o fogo-fátuo não tem corpo que pise"
+ },
+ "mon-giant-ant": {
+  "batalha": 5,
+  "arranque": 8,
+  "corrida": 12,
+  "ft": 50,
+  "origem": "fonte"
+ },
+ "mon-froghemoth": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-violet-fungus": {
+  "batalha": 1,
+  "arranque": 2,
+  "corrida": 2,
+  "ft": 10,
+  "origem": "fonte"
+ },
+ "mon-gargula": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-cat": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-ochre-jelly": {
+  "batalha": 1,
+  "arranque": 2,
+  "corrida": 2,
+  "ft": 10,
+  "origem": "fonte"
+ },
+ "mon-ghaele-azata": {
+  "batalha": 5,
+  "arranque": 8,
+  "corrida": 12,
+  "ft": 50,
+  "origem": "fonte"
+ },
+ "mon-ghast": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-ghoul": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-gibbering-mouther": {
+  "batalha": 1,
+  "arranque": 2,
+  "corrida": 2,
+  "ft": 10,
+  "origem": "fonte"
+ },
+ "mon-gigante-da-colina": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-gigante-da-pedra": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-gigante-da-tempestade": {
+  "batalha": 5,
+  "arranque": 8,
+  "corrida": 12,
+  "ft": 50,
+  "origem": "fonte"
+ },
+ "mon-gigante-das-nuvens": {
+  "batalha": 5,
+  "arranque": 8,
+  "corrida": 12,
+  "ft": 50,
+  "origem": "fonte"
+ },
+ "mon-gigante-do-fogo": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-gigante-do-gelo": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-girallon": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-glabrezu": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-gnoll": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-goblin": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-clay-golem": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-flesh-golem": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-iron-golem": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-ice-golem": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-stone-golem": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-dolphin": {
+  "batalha": 8,
+  "arranque": 13,
+  "corrida": 18,
+  "ft": 80,
+  "origem": "fonte",
+  "nota": "nado 80: sem velocidade em terra"
+ },
+ "mon-gorgona-touro-de-ferro": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-gorila": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-grande-wyrm-vermelho": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-greater-barghest": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-grifo": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "guarda-da-cidade": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "tabela"
+ },
+ "mon-cheetah": {
+  "batalha": 5,
+  "arranque": 8,
+  "corrida": 12,
+  "ft": 50,
+  "origem": "fonte"
+ },
+ "mon-harpia": {
+  "batalha": 8,
+  "arranque": 13,
+  "corrida": 18,
+  "ft": 80,
+  "origem": "fonte",
+  "nota": "voo 80; em terra 20, e a harpia caça no ar"
+ },
+ "mon-hezrou": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-hidra-5-cabecas": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-hyena": {
+  "batalha": 5,
+  "arranque": 8,
+  "corrida": 12,
+  "ft": 50,
+  "origem": "fonte"
+ },
+ "mon-dire-hyena-hyaenodon": {
+  "batalha": 5,
+  "arranque": 8,
+  "corrida": 12,
+  "ft": 50,
+  "origem": "fonte"
+ },
+ "mon-hipogrifo": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-hobgoblin": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-homem-lagarto": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-wererat-human-form": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "tabela"
+ },
+ "mon-homunculus": {
+  "batalha": 5,
+  "arranque": 8,
+  "corrida": 12,
+  "ft": 50,
+  "origem": "fonte",
+  "nota": "voo 50; em terra 20, e o bichinho é feito para voar"
+ },
+ "mon-ice-linnorm": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "tabela"
+ },
+ "mon-intellect-devourer": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-invisible-stalker": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-janni": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "tabela"
+ },
+ "mon-javali": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-dire-boar-daeodon": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-kobold": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-kraken": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte",
+  "nota": "nado 40: em terra o kraken se arrasta 10 ft"
+ },
+ "mon-kyton": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-giant-frilled-lizard": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "tabela"
+ },
+ "mon-monitor-lizard": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-lamia": {
+  "batalha": 6,
+  "arranque": 10,
+  "corrida": 14,
+  "ft": 60,
+  "origem": "fonte"
+ },
+ "mon-leao": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-dire-lion-spotted-lion": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-lemure": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-leopard": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-giant-slug": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-lich": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-lillend": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-gray-ooze": {
+  "batalha": 1,
+  "arranque": 2,
+  "corrida": 2,
+  "ft": 10,
+  "origem": "fonte"
+ },
+ "mon-werewolf": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "tabela"
+ },
+ "mon-lobo": {
+  "batalha": 5,
+  "arranque": 8,
+  "corrida": 12,
+  "ft": 50,
+  "origem": "fonte"
+ },
+ "mon-lobo-atroz": {
+  "batalha": 5,
+  "arranque": 8,
+  "corrida": 12,
+  "ft": 50,
+  "origem": "fonte"
+ },
+ "mon-winter-wolf": {
+  "batalha": 5,
+  "arranque": 8,
+  "corrida": 12,
+  "ft": 50,
+  "origem": "fonte"
+ },
+ "mon-giant-mantis": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-squid": {
+  "batalha": 6,
+  "arranque": 10,
+  "corrida": 14,
+  "ft": 60,
+  "origem": "fonte",
+  "nota": "nado 60 (o jato de 240 é fuga, não deslocamento)"
+ },
+ "mon-giant-squid": {
+  "batalha": 6,
+  "arranque": 10,
+  "corrida": 14,
+  "ft": 60,
+  "origem": "fonte",
+  "nota": "nado 60 (o jato de 260 é fuga)"
+ },
+ "mon-monkey": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mago-de-batalha": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "tabela"
+ },
+ "mon-elefante": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-manticora": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-marid": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-marilith": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-mastodon": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-medusa": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-mephit": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-merfolk": {
+  "batalha": 5,
+  "arranque": 8,
+  "corrida": 12,
+  "ft": 50,
+  "origem": "fonte",
+  "nota": "nado 50: em terra o povo do mar se arrasta 5 ft"
+ },
+ "mon-mimico": {
+  "batalha": 1,
+  "arranque": 2,
+  "corrida": 2,
+  "ft": 10,
+  "origem": "fonte"
+ },
+ "mon-minotauro": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-mite": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "tabela"
+ },
+ "mon-mohrg": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-monstro-da-ferrugem": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-montao-tropecante": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-bat": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte",
+  "nota": "voo 40; em terra o morcego se arrasta 5 ft"
+ },
+ "mon-dire-bat": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte",
+  "nota": "voo 40; em terra 20"
+ },
+ "mon-giant-moray-eel": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte",
+  "nota": "nado 30: sem velocidade em terra"
+ },
+ "mon-morlock": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-mumia": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-nabasu": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-naga-espirita": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-guardian-naga": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-dark-naga": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-nalfeshnee": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-neothelid": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-nessian-warhound": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-ninfa": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-animated-object": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-ogro": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-ogro-mago-oni": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "tabela"
+ },
+ "mon-orc": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-orca": {
+  "batalha": 8,
+  "arranque": 13,
+  "corrida": 18,
+  "ft": 80,
+  "origem": "fonte",
+  "nota": "nado 80: sem velocidade em terra"
+ },
+ "mon-otyugh": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-giant-flytrap": {
+  "batalha": 1,
+  "arranque": 2,
+  "corrida": 2,
+  "ft": 10,
+  "origem": "fonte"
+ },
+ "mon-pegaso": {
+  "batalha": 6,
+  "arranque": 10,
+  "corrida": 14,
+  "ft": 60,
+  "origem": "fonte"
+ },
+ "mon-nightmare": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-cave-fisher": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-pixie": {
+  "batalha": 6,
+  "arranque": 10,
+  "corrida": 14,
+  "ft": 60,
+  "origem": "fonte",
+  "nota": "voo 60; em terra 20"
+ },
+ "mon-planetar": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-octopus": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-giant-octopus": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-pony": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-pseudodragon": {
+  "batalha": 6,
+  "arranque": 10,
+  "corrida": 14,
+  "ft": 60,
+  "origem": "fonte",
+  "nota": "voo 60; em terra 15"
+ },
+ "mon-pteranodon": {
+  "batalha": 5,
+  "arranque": 8,
+  "corrida": 12,
+  "ft": 50,
+  "origem": "fonte",
+  "nota": "voo 50; em terra 10, e o pterossauro não caça a pé"
+ },
+ "mon-black-pudding": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-quasit": {
+  "batalha": 5,
+  "arranque": 8,
+  "corrida": 12,
+  "ft": 50,
+  "origem": "fonte",
+  "nota": "voo 50 (perfeito); em terra 20"
+ },
+ "mon-quimera": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-giant-frog": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-poison-frog": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "tabela"
+ },
+ "mon-rakshasa": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-dire-rat": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-rato-gigante": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-remorhaz": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-retriever": {
+  "batalha": 5,
+  "arranque": 8,
+  "corrida": 12,
+  "ft": 50,
+  "origem": "fonte"
+ },
+ "mon-rinoceronte": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-roc": {
+  "batalha": 8,
+  "arranque": 13,
+  "corrida": 18,
+  "ft": 80,
+  "origem": "fonte",
+  "nota": "voo 80; em terra 20"
+ },
+ "mon-roper": {
+  "batalha": 1,
+  "arranque": 2,
+  "corrida": 2,
+  "ft": 10,
+  "origem": "fonte"
+ },
+ "mon-sahuagin": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-salamandra": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-giant-leech": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte",
+  "nota": "nado 20; em terra a sanguessuga se arrasta 5"
+ },
+ "mon-toad": {
+  "batalha": 1,
+  "arranque": 2,
+  "corrida": 2,
+  "ft": 5,
+  "origem": "fonte"
+ },
+ "mon-satiro": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-sea-serpent": {
+  "batalha": 6,
+  "arranque": 10,
+  "corrida": 14,
+  "ft": 60,
+  "origem": "fonte",
+  "nota": "nado 60; em terra 20, e ela não sai do mar"
+ },
+ "mon-venomous-snake": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-shaitan": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-shocker-lizard": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "tabela"
+ },
+ "mon-shoggoth": {
+  "batalha": 5,
+  "arranque": 8,
+  "corrida": 12,
+  "ft": 50,
+  "origem": "fonte"
+ },
+ "mon-dire-ape-gigantopithecus": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-skeletal-champion": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "tabela"
+ },
+ "mon-skum-ulat-kini": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-solar": {
+  "batalha": 5,
+  "arranque": 8,
+  "corrida": 12,
+  "ft": 50,
+  "origem": "fonte"
+ },
+ "soldado-veterano": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "tabela"
+ },
+ "mon-sombra": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte",
+  "nota": "voo 40: incorpórea"
+ },
+ "mon-stirge": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte",
+  "nota": "voo 40; em terra 10"
+ },
+ "mon-sucubo": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-svirfneblin": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-tarn-linnorm": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "tabela"
+ },
+ "mon-tarrasque": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-dragon-turtle": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-tengu": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-tiefling": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "tabela"
+ },
+ "mon-tigre": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-tyrannosaurus": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-treant": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-yellow-musk-creeper": {
+  "batalha": 1,
+  "arranque": 2,
+  "corrida": 2,
+  "ft": 5,
+  "origem": "fonte"
+ },
+ "mon-triceratops": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-trogloditas": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-trol": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-shark": {
+  "batalha": 6,
+  "arranque": 10,
+  "corrida": 14,
+  "ft": 60,
+  "origem": "fonte",
+  "nota": "nado 60: o tubarão não tem passo em terra"
+ },
+ "mon-dire-shark-megalodon": {
+  "batalha": 6,
+  "arranque": 10,
+  "corrida": 14,
+  "ft": 60,
+  "origem": "fonte",
+  "nota": "nado 60, como o tubarão comum"
+ },
+ "mon-unicornio": {
+  "batalha": 6,
+  "arranque": 10,
+  "corrida": 14,
+  "ft": 60,
+  "origem": "fonte"
+ },
+ "mon-dire-bear-cave-bear": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-grizzly-bear": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-urso-pardo": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-vampiro": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-vargouille": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte",
+  "nota": "voo 30: a cabeça alada não tem passo"
+ },
+ "mon-vegepygmy": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-verme-purpura": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-giant-wasp": {
+  "batalha": 6,
+  "arranque": 10,
+  "corrida": 14,
+  "ft": 60,
+  "origem": "fonte",
+  "nota": "voo 60; em terra 20"
+ },
+ "mon-viper": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-assassin-vine": {
+  "batalha": 1,
+  "arranque": 2,
+  "corrida": 2,
+  "ft": 5,
+  "origem": "fonte"
+ },
+ "mon-vrock": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-wight": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
+ "mon-worg": {
+  "batalha": 5,
+  "arranque": 8,
+  "corrida": 12,
+  "ft": 50,
+  "origem": "fonte"
+ },
+ "mon-wyvern": {
+  "batalha": 6,
+  "arranque": 10,
+  "corrida": 14,
+  "ft": 60,
+  "origem": "fonte",
+  "nota": "voo 60; em terra 20"
+ },
+ "mon-xill": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-xorn": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
+  "origem": "fonte"
+ },
+ "mon-yeth-hound": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-yeti": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
+ "mon-zumbi-humano": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ }
+}

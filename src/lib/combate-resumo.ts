@@ -2,11 +2,16 @@
 // Puro e reaproteitável: extrai Ataque, Dano e Defesa física (Esquiva) usando a
 // mesma matemática de ficha-engine (renderCombate/renderDerived), sem tocar no DOM.
 // Serve ao rastreador de combate da mesa, que só tem a ficha crua do personagem.
-import { defesa, defesaMental, ataqueCentelha, empilharArmaduras, soakNatural, regras, MODO_ORDEM, MODO_SIGLA } from './calc';
+import { defesa, defesaMental, ataqueCentelha, empilharArmaduras, soakNatural, regras, MODO_ORDEM, MODO_SIGLA, deslocamento } from './calc';
 import { ARMA, ESCUDO, armaDoSlot, escudoDoSlot, armadurasDe } from './equip';
 import { qaDaPeca, type QACombate } from './quase-acerto';
+import RACA_D from '../data/racas.json';
+
+const RACA: Record<string, any> = Object.fromEntries((RACA_D as any[]).map((r) => [r.id, r]));
 
 export interface Soak { impacto: number; corte: number; perfuracao: number; }
+/** As três velocidades de uma peça, em metros por Tick. */
+export interface Passo { batalha: number; arranque: number; corrida: number; }
 export interface ResumoCombate {
   arma: string;
   ataque: string; // pool de acerto, ex.: "4d6+2 +1"
@@ -16,6 +21,16 @@ export interface ResumoCombate {
   soak: Soak;     // Absorção por tipo (abate o dano bruto sofrido)
   resistPerf: number; // Resistência a Perfuração (Nível) da armadura
   qa: QACombate;  // Quase-Acerto: o que a arma amplia e o que o couro abate
+  /**
+   * O PASSO REAL, que o tabuleiro precisa e não tinha.
+   *
+   * O Grid oferecia 3 m/Tick para todo mundo, porque o número morava só na
+   * ficha e ninguém o trazia até aqui: Kael anda 4 e o anão 2, e os dois
+   * recebiam 3. Sai da mesma `deslocamento()` que a ficha desenha, com a
+   * fração da raça (baixa estatura) e a meia penalidade da armadura já
+   * descontadas, para os dois lugares mostrarem o mesmo número.
+   */
+  passo: Passo;
 }
 
 // As peças saem de equip.ts já com os ajustes que o jogador fez na ficha
@@ -95,6 +110,18 @@ export function resumoCombatePC(S: any): ResumoCombate {
   // essa resolução na tela era o caminho para as duas divergirem.
   const qa = qaDaPeca(w.id || w.nome, dano, armadurasDe(S));
 
+  // O PASSO, pela mesma régua da ficha (ver `ficha-engine`, bloco do
+  // Deslocamento): a fração da raça entra DENTRO de `deslocamento()`, antes do
+  // arredondamento, e a armadura tira metade da penalidade em metros.
+  const fracR = RACA[S?.raca]?.deslocamentoFrac ?? 1;
+  const dz = deslocamento({
+    forca, destreza: attrs.destreza || 0,
+    atletismo: skills.atletismo || skills2.atletismo || 0, centelha: C,
+  }, fracR);
+  const penMov = Math.floor(penFisica / 2);
+  const mp = (v: number) => Math.max(0, v - penMov);
+  const passo: Passo = { batalha: mp(dz.normal), arranque: mp(dz.arranque), corrida: mp(dz.corrida) };
+
   return { arma: w.nome, ataque, dano, defesa: def, defesaMental: defMental, soak,
-    resistPerf: armSt.resistPerf || 0, qa };
+    resistPerf: armSt.resistPerf || 0, qa, passo };
 }

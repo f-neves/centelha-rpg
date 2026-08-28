@@ -43,6 +43,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -128,6 +133,11 @@
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 7",
+   "deslocamento": {
+    "batalha": 6,
+    "arranque": 10,
+    "corrida": 14
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -199,6 +209,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
+   "deslocamento": {
+    "batalha": 8,
+    "arranque": 13,
+    "corrida": 18
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -268,6 +283,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -338,6 +358,11 @@
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -412,6 +437,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -481,6 +511,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -566,6 +601,11 @@
     "profano"
    ],
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -638,6 +678,11 @@
     "profano"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 6,
+    "arranque": 10,
+    "corrida": 14
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -710,6 +755,11 @@
     "profano"
    ],
    "iniciativa": "1d6 + 8",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -779,6 +829,11 @@
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 5",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Arco",
@@ -853,6 +908,11 @@
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Adaga (Ágil)",
@@ -940,6 +1000,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 6,
+    "arranque": 10,
+    "corrida": 14
+   },
    "ataques": [
     {
      "nome": "Toque dilacerante",
@@ -1010,6 +1075,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -1082,6 +1152,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 5",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -1163,6 +1238,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 10",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -1231,6 +1311,11 @@
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Facão",
@@ -1304,6 +1389,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -1379,6 +1469,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -1453,6 +1548,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -1526,6 +1626,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -1599,6 +1704,11 @@
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -1668,6 +1778,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -1737,6 +1852,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -1812,6 +1932,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -1880,6 +2005,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -1961,6 +2091,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Golpe",
@@ -2030,6 +2165,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -2099,6 +2239,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -2168,6 +2313,11 @@
    },
    "resistenciaPerfuracao": 2,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -2237,6 +2387,11 @@
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Martelo de guerra",
@@ -2306,6 +2461,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -2379,6 +2539,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 7",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -2456,6 +2621,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -2525,6 +2695,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -2594,6 +2769,11 @@
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -2663,6 +2843,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -2735,6 +2920,11 @@
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 7",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Espada longa (golpe duplo)",
@@ -2805,6 +2995,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Forcado/Pancada",
@@ -2874,6 +3069,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -2946,6 +3146,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -3014,6 +3219,11 @@
    },
    "resistenciaPerfuracao": 3,
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Espada longa",
@@ -3082,6 +3292,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -3151,6 +3366,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -3220,6 +3440,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -3293,6 +3518,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 5",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -3365,6 +3595,11 @@
    },
    "resistenciaPerfuracao": 3,
    "iniciativa": "1d6 + 5",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Montante",
@@ -3434,6 +3669,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 5,
+    "arranque": 8,
+    "corrida": 12
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -3502,6 +3742,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
+   "deslocamento": {
+    "batalha": 5,
+    "arranque": 8,
+    "corrida": 12
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -3571,6 +3816,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -3641,6 +3891,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -3715,6 +3970,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Pancada descomunal",
@@ -3783,6 +4043,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -3851,6 +4116,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -3928,6 +4198,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -4001,6 +4276,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 6,
+    "arranque": 10,
+    "corrida": 14
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -4074,6 +4354,11 @@
    },
    "resistenciaPerfuracao": 3,
    "iniciativa": "1d6 + 5",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Espada longa",
@@ -4145,6 +4430,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -4213,6 +4503,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -4290,6 +4585,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 8",
+   "deslocamento": {
+    "batalha": 6,
+    "arranque": 10,
+    "corrida": 14
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -4359,6 +4659,11 @@
    },
    "resistenciaPerfuracao": 2,
    "iniciativa": "1d6 + 5",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e mordida",
@@ -4427,6 +4732,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -4500,6 +4810,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 0",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Pseudópode",
@@ -4573,6 +4888,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Toque mórbido (Morte 1)",
@@ -4643,6 +4963,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -4712,6 +5037,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -4781,6 +5111,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -4851,6 +5186,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 6,
+    "arranque": 10,
+    "corrida": 14
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -4919,6 +5259,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -5003,6 +5348,11 @@
     "profano"
    ],
    "iniciativa": "1d6 + 7",
+   "deslocamento": {
+    "batalha": 5,
+    "arranque": 8,
+    "corrida": 12
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -5084,6 +5434,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -5156,6 +5511,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 8",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -5237,6 +5597,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 9",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -5323,6 +5688,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 13",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -5395,6 +5765,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -5480,6 +5855,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 7",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -5565,6 +5945,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 5,
+    "arranque": 8,
+    "corrida": 12
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -5654,6 +6039,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -5723,6 +6113,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -5801,6 +6196,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -5869,6 +6269,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e mordida",
@@ -5954,6 +6359,11 @@
     "raio"
    ],
    "iniciativa": "1d6 + 7",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e mordida",
@@ -6038,6 +6448,11 @@
     "gelo"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e mordida",
@@ -6127,6 +6542,11 @@
     "fogo"
    ],
    "iniciativa": "1d6 + 10",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e mordida",
@@ -6206,6 +6626,11 @@
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 7",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e mordida",
@@ -6288,6 +6713,11 @@
     "fogo"
    ],
    "iniciativa": "1d6 + 7",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e mordida",
@@ -6373,6 +6803,11 @@
     "fogo"
    ],
    "iniciativa": "1d6 + 9",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e mordida",
@@ -6453,6 +6888,11 @@
     "fogo"
    ],
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e mordida",
@@ -6535,6 +6975,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -6616,6 +7061,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -6684,6 +7134,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -6752,6 +7207,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -6820,6 +7280,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -6893,6 +7358,11 @@
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Florete (Ágil)",
@@ -6961,6 +7431,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -7044,6 +7519,11 @@
     "fogo"
    ],
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -7112,6 +7592,11 @@
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 5,
+    "arranque": 8,
+    "corrida": 12
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -7186,6 +7671,11 @@
     "fogo"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -7267,6 +7757,11 @@
     "fogo"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -7342,6 +7837,11 @@
     "fogo"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -7415,6 +7915,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 10,
+    "arranque": 16,
+    "corrida": 23
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -7490,6 +7995,11 @@
     "fogo"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 5,
+    "arranque": 8,
+    "corrida": 12
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -7558,6 +8068,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -7626,6 +8141,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -7697,6 +8217,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -7766,6 +8291,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -7836,6 +8366,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -7904,6 +8439,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -7975,6 +8515,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -8045,6 +8590,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -8115,6 +8665,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -8196,6 +8751,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 7",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -8264,6 +8824,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 5,
+    "arranque": 8,
+    "corrida": 12
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -8341,6 +8906,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -8416,6 +8986,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 5",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Foice enferrujada",
@@ -8502,6 +9077,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 8,
+    "arranque": 13,
+    "corrida": 18
+   },
    "ataques": [
     {
      "nome": "Toque dilacerante",
@@ -8580,6 +9160,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe",
@@ -8649,6 +9234,11 @@
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -8717,6 +9307,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -8786,6 +9381,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -8854,6 +9454,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Pancada descomunal",
@@ -8923,6 +9528,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 6,
+    "arranque": 10,
+    "corrida": 14
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -8999,6 +9609,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe",
@@ -9074,6 +9689,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Dardo flamejante (Fogo 1)",
@@ -9143,6 +9763,11 @@
    },
    "resistenciaPerfuracao": 2,
    "iniciativa": "1d6 + 10",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -9224,6 +9849,11 @@
     "fogo"
    ],
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e mordida",
@@ -9306,6 +9936,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
+   "deslocamento": {
+    "batalha": 5,
+    "arranque": 8,
+    "corrida": 12
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -9374,6 +10009,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 5,
+    "arranque": 8,
+    "corrida": 12
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -9443,6 +10083,11 @@
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -9518,6 +10163,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 2
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -9591,6 +10241,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -9660,6 +10315,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -9734,6 +10394,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 0",
+   "deslocamento": {
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 2
+   },
    "ataques": [
     {
      "nome": "Pseudópode",
@@ -9815,6 +10480,11 @@
     "profano"
    ],
    "iniciativa": "1d6 + 9",
+   "deslocamento": {
+    "batalha": 5,
+    "arranque": 8,
+    "corrida": 12
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -9895,6 +10565,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe",
@@ -9978,6 +10653,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe",
@@ -10047,6 +10727,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 2
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -10115,6 +10800,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Pancada descomunal",
@@ -10184,6 +10874,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Pancada descomunal",
@@ -10266,6 +10961,11 @@
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 8",
+   "deslocamento": {
+    "batalha": 5,
+    "arranque": 8,
+    "corrida": 12
+   },
    "ataques": [
     {
      "nome": "Pancada descomunal",
@@ -10340,6 +11040,11 @@
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 5,
+    "arranque": 8,
+    "corrida": 12
+   },
    "ataques": [
     {
      "nome": "Pancada descomunal",
@@ -10409,6 +11114,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Pancada descomunal",
@@ -10478,6 +11188,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Pancada descomunal",
@@ -10547,6 +11262,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -10629,6 +11349,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 8",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -10697,6 +11422,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -10767,6 +11497,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -10841,6 +11576,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -10914,6 +11654,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -10991,6 +11736,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -11068,6 +11818,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -11142,6 +11897,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -11212,6 +11972,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 8,
+    "arranque": 13,
+    "corrida": 18
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -11286,6 +12051,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -11355,6 +12125,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -11440,6 +12215,11 @@
     "fogo"
    ],
    "iniciativa": "1d6 + 11",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e mordida",
@@ -11514,6 +12294,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 7",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -11583,6 +12368,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -11652,6 +12442,11 @@
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 5",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Espada curta",
@@ -11720,6 +12515,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 5,
+    "arranque": 8,
+    "corrida": 12
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -11793,6 +12593,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 8,
+    "arranque": 13,
+    "corrida": 18
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -11876,6 +12681,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -11944,6 +12754,11 @@
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -12013,6 +12828,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 5,
+    "arranque": 8,
+    "corrida": 12
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -12081,6 +12901,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 5,
+    "arranque": 8,
+    "corrida": 12
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -12149,6 +12974,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -12218,6 +13048,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -12287,6 +13122,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -12356,6 +13196,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -12427,6 +13272,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 5,
+    "arranque": 8,
+    "corrida": 12
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -12503,6 +13353,11 @@
     "gelo"
    ],
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e mordida",
@@ -12571,6 +13426,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -12643,6 +13503,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -12712,6 +13577,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -12781,6 +13651,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -12849,6 +13724,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -12918,6 +13798,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -12993,6 +13878,11 @@
    },
    "resistenciaPerfuracao": 3,
    "iniciativa": "1d6 + 9",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -13065,6 +13955,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -13134,6 +14029,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -13204,6 +14104,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -13282,6 +14187,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 8",
+   "deslocamento": {
+    "batalha": 6,
+    "arranque": 10,
+    "corrida": 14
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -13351,6 +14261,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -13419,6 +14334,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -13494,6 +14414,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 1",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -13562,6 +14487,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -13631,6 +14561,11 @@
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -13717,6 +14652,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 7",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe",
@@ -13789,6 +14729,11 @@
     "profano"
    ],
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -13862,6 +14807,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 0",
+   "deslocamento": {
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 2
+   },
    "ataques": [
     {
      "nome": "Pseudópode",
@@ -13935,6 +14885,11 @@
     "prata"
    ],
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -14004,6 +14959,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 5,
+    "arranque": 8,
+    "corrida": 12
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -14075,6 +15035,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 5,
+    "arranque": 8,
+    "corrida": 12
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -14146,6 +15111,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 5,
+    "arranque": 8,
+    "corrida": 12
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -14215,6 +15185,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -14283,6 +15258,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 6,
+    "arranque": 10,
+    "corrida": 14
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -14353,6 +15333,11 @@
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 6,
+    "arranque": 10,
+    "corrida": 14
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -14422,6 +15407,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -14500,6 +15490,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Bola de fogo (Fogo 3)",
@@ -14569,6 +15564,11 @@
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -14638,6 +15638,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -14713,6 +15718,11 @@
     "fogo"
    ],
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -14787,6 +15797,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 7",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -14855,6 +15870,11 @@
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -14930,6 +15950,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -15000,6 +16025,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -15068,6 +16098,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 5,
+    "arranque": 8,
+    "corrida": 12
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -15137,6 +16172,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 2
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -15208,6 +16248,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -15277,6 +16322,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -15352,6 +16402,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe",
@@ -15427,6 +16482,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -15501,6 +16561,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -15571,6 +16636,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -15641,6 +16711,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -15711,6 +16786,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -15780,6 +16860,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -15862,6 +16947,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Golpe",
@@ -15935,6 +17025,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 7",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -16008,6 +17103,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -16078,6 +17178,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -16147,6 +17252,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -16220,6 +17330,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 10",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -16288,6 +17403,11 @@
    },
    "resistenciaPerfuracao": 2,
    "iniciativa": "1d6 + 7",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -16360,6 +17480,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -16439,6 +17564,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -16511,6 +17641,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 0",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -16580,6 +17715,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Pancada descomunal",
@@ -16669,6 +17809,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -16738,6 +17883,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -16808,6 +17958,11 @@
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 8,
+    "arranque": 13,
+    "corrida": 18
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -16876,6 +18031,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -16952,6 +18112,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 2
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -17026,6 +18191,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 6,
+    "arranque": 10,
+    "corrida": 14
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -17100,6 +18270,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -17168,6 +18343,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -17241,6 +18421,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
+   "deslocamento": {
+    "batalha": 6,
+    "arranque": 10,
+    "corrida": 14
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -17323,6 +18508,11 @@
     "profano"
    ],
    "iniciativa": "1d6 + 11",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -17391,6 +18581,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -17461,6 +18656,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -17530,6 +18730,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -17598,6 +18803,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 6,
+    "arranque": 10,
+    "corrida": 14
+   },
    "ataques": [
     {
      "nome": "Garras e mordida",
@@ -17666,6 +18876,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 5,
+    "arranque": 8,
+    "corrida": 12
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -17739,6 +18954,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 0",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Pseudópode",
@@ -17824,6 +19044,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 5,
+    "arranque": 8,
+    "corrida": 12
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -17897,6 +19122,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -17965,6 +19195,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -18035,6 +19270,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -18121,6 +19361,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -18191,6 +19436,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -18260,6 +19510,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -18330,6 +19585,11 @@
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -18407,6 +19667,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 5,
+    "arranque": 8,
+    "corrida": 12
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -18476,6 +19741,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -18545,6 +19815,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 8,
+    "arranque": 13,
+    "corrida": 18
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -18614,6 +19889,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 2
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -18684,6 +19964,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -18767,6 +20052,11 @@
     "fogo"
    ],
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -18836,6 +20126,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -18906,6 +20201,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 2
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -18981,6 +20281,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -19049,6 +20354,11 @@
    },
    "resistenciaPerfuracao": 2,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 6,
+    "arranque": 10,
+    "corrida": 14
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -19118,6 +20428,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -19195,6 +20510,11 @@
     "fogo"
    ],
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -19264,6 +20584,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -19337,6 +20662,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 7",
+   "deslocamento": {
+    "batalha": 5,
+    "arranque": 8,
+    "corrida": 12
+   },
    "ataques": [
     {
      "nome": "Pseudópode",
@@ -19407,6 +20737,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -19483,6 +20818,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe",
@@ -19553,6 +20893,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -19639,6 +20984,11 @@
     "profano"
    ],
    "iniciativa": "1d6 + 12",
+   "deslocamento": {
+    "batalha": 5,
+    "arranque": 8,
+    "corrida": 12
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -19707,6 +21057,11 @@
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 5",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Espada longa",
@@ -19794,6 +21149,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Toque dilacerante",
@@ -19864,6 +21224,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -19952,6 +21317,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 7",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -20020,6 +21390,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -20088,6 +21463,11 @@
    },
    "resistenciaPerfuracao": 3,
    "iniciativa": "1d6 + 9",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e mordida",
@@ -20168,6 +21548,11 @@
    },
    "resistenciaPerfuracao": 3,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -20236,6 +21621,11 @@
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Garras e mordida",
@@ -20305,6 +21695,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -20374,6 +21769,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -20444,6 +21844,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -20513,6 +21918,11 @@
    },
    "resistenciaPerfuracao": 2,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -20595,6 +22005,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -20669,6 +22084,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 2
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -20739,6 +22159,11 @@
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -20807,6 +22232,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -20876,6 +22306,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Pancada descomunal",
@@ -20946,6 +22381,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 6,
+    "arranque": 10,
+    "corrida": 14
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -21015,6 +22455,11 @@
    },
    "resistenciaPerfuracao": 2,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 6,
+    "arranque": 10,
+    "corrida": 14
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -21095,6 +22540,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 8",
+   "deslocamento": {
+    "batalha": 6,
+    "arranque": 10,
+    "corrida": 14
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -21163,6 +22613,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -21232,6 +22687,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -21300,6 +22760,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -21399,6 +22864,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe",
@@ -21472,6 +22942,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -21547,6 +23022,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -21615,6 +23095,11 @@
    },
    "resistenciaPerfuracao": 2,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -21683,6 +23168,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 6,
+    "arranque": 10,
+    "corrida": 14
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -21751,6 +23241,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -21828,6 +23323,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 2
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -21910,6 +23410,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -21990,6 +23495,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe",
@@ -22059,6 +23569,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 5,
+    "arranque": 8,
+    "corrida": 12
+   },
    "ataques": [
     {
      "nome": "Garras e presas",
@@ -22128,6 +23643,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 6,
+    "arranque": 10,
+    "corrida": 14
+   },
    "ataques": [
     {
      "nome": "Garras e mordida",
@@ -22200,6 +23720,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 5",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -22281,6 +23806,11 @@
     "fogo"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -22354,6 +23884,11 @@
     "sagrado"
    ],
    "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Golpe planar",
@@ -22424,6 +23959,11 @@
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
    "ataques": [
     {
      "nome": "Arma",
@@ -22500,6 +24040,11 @@
     "perfuracao"
    ],
    "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
    "ataques": [
     {
      "nome": "Golpe",

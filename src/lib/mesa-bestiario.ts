@@ -74,6 +74,18 @@ export interface ResumoCombate {
    * atalho pela Velocidade, como sempre caiu.
    */
   classe?: string | null;
+  /**
+   * As três velocidades em metros por Tick. Do PC saem da ficha (mesma régua
+   * que ela desenha); da criatura, do bloco `combate.deslocamento` que o
+   * `gen-deslocamento.mjs` semeia a partir da velocidade original dela. Sem
+   * isso o Grid oferecia 3 m/Tick para todo mundo, do caramujo ao guepardo.
+   */
+  passo?: { batalha: number; arranque: number; corrida: number } | null;
+  /**
+   * O P/G/R escrito à mão pelo mestre, quando ele discorda da régua. Só existe
+   * como ajuste por instância: a régua continua sendo a do catálogo.
+   */
+  pgr?: { preparo?: number; golpes?: number; recuperacao?: number } | null;
   qa?: QACombate;
 }
 
@@ -97,6 +109,7 @@ export function baseResumo(c: any, fichaPorId: Record<string, any> = {}): Resumo
       resistPerf: cb.resistenciaPerfuracao || 0,
       velocidade: a0?.speed ?? null,
       classe: a0?.classe ?? null,
+      passo: cb.deslocamento || null,
       // A criatura não tem armadura vestida (ver `QACombate`): só a metade da
       // arma sai preenchida. O dano médio dela vem da própria expressão de dano,
       // porque ali a expressão É a arma.
@@ -131,6 +144,11 @@ export function resumoDe(c: any, fichaPorId: Record<string, any> = {}): ResumoCo
     resistPerf: ov.resistPerf ?? base?.resistPerf ?? 0,
     velocidade: ov.velocidade ?? base?.velocidade ?? null,
     classe: ov.classe ?? base?.classe ?? null,
+    // O passo se mescla CAMPO A CAMPO: o mestre pode fixar só a corrida do
+    // lobo ferido e deixar o resto na régua.
+    passo: (base?.passo || ov.passo)
+      ? { ...(base?.passo || {}), ...(ov.passo || {}) } as any : null,
+    pgr: ov.pgr ?? null,
     // O QUASE-ACERTO SEGUE A ARMA que o ajuste escolheu. Trocar a arma do goblin
     // por um martelo e deixar o raspão da adaga seria a mesma incoerência que o
     // `ataque` e o `dano` já evitam vindo do mesmo lugar. E `dados.qa` continua

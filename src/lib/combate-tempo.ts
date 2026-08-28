@@ -257,6 +257,13 @@ export interface Anatomia {
 export function anatomia(opts: {
   classe: ClasseArma; velocidade: number; sistema: Sistema;
   manobra?: Manobra; golpes?: number;
+  /**
+   * O P/G/R escrito à mão, quando o mestre discorda da régua. Aplicado DEPOIS
+   * do cálculo, e por isso ele vale para qualquer manobra: quem escreve aqui
+   * está dizendo "neste lance, esta ação demora isto", e o ciclo e a agenda se
+   * refazem em volta do que ele escreveu.
+   */
+  pgr?: { preparo?: number; golpes?: number; recuperacao?: number } | null;
 }): Anatomia {
   const { classe, sistema } = opts;
   const manobra = opts.manobra || 'simples';
@@ -296,6 +303,29 @@ export function anatomia(opts: {
   return {
     preparo, golpes: 1, recuperacao: Math.max(0, vel - preparo - 1), ciclo: vel,
     offs: [preparo], penDados: [0],
+  };
+}
+
+/**
+ * A anatomia com o P/G/R do mestre por cima, quando houver.
+ *
+ * Fica separada de `anatomia` porque o override é da MESA e não da régua: o
+ * motor da bancada e os testes continuam medindo a régua limpa, e só a tela
+ * passa por aqui. Os `offs` se refazem a partir do Preparo novo, e o ciclo é a
+ * soma das três fases, para a fita não desenhar um buraco.
+ */
+export function comOverride(
+  a: Anatomia, pgr?: { preparo?: number; golpes?: number; recuperacao?: number } | null,
+): Anatomia {
+  if (!pgr || (pgr.preparo == null && pgr.golpes == null && pgr.recuperacao == null)) return a;
+  const preparo = Math.max(0, pgr.preparo ?? a.preparo);
+  const golpes = Math.max(1, pgr.golpes ?? a.golpes);
+  const recuperacao = Math.max(0, pgr.recuperacao ?? a.recuperacao);
+  const penDados = Array.from({ length: golpes }, (_, i) => a.penDados[i] ?? a.penDados[a.penDados.length - 1] ?? 0);
+  return {
+    preparo, golpes, recuperacao, ciclo: preparo + golpes + recuperacao,
+    offs: Array.from({ length: golpes }, (_, i) => preparo + i),
+    penDados, aviso: a.aviso,
   };
 }
 

@@ -270,10 +270,141 @@ async function cena(br, url) {
   await p.close();
 }
 
+/**
+ * A FICHA DO LANCE: tudo o que decide o ataque, dos dois lados, editável.
+ *
+ * O que ela persegue:
+ *   1. a seção existe, nasce recolhida, e traz as três colunas;
+ *   2. os campos do atacante e do alvo estão lá, com o passo REAL de cada um
+ *      (e não os 3 m/Tick que a régua oferecia para todo mundo);
+ *   3. corrigir um número repinta a folha na hora (a Defesa efetiva anda junto);
+ *   4. corrigir o Preparo à mão refaz a linha do tempo;
+ *   5. a caixinha "fixa" existe em cada campo.
+ */
+async function cenaFichaDoLance(br, url) {
+  console.log('\n· a ficha do lance: todo número à mão, e a caixinha que fixa');
+  const p = await br.newPage();
+  await p.setViewport({ width: 1400, height: 950 });
+  const erros = [];
+  p.on('pageerror', (e) => erros.push(e.message));
+  // Sem o golpe adiado: aqui interessa a folha do acerto, que abre direto.
+  await p.goto(`${url}/mesa/grid?id=${MESA}&bench=12&cols=24&rows=16&nevoa=0`,
+    { waitUntil: 'networkidle0', timeout: 60000 });
+  await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
+  await espera(700);
+
+  const abriu = await p.evaluate(async () => {
+    const pal = document.getElementById('gr-palco').getBoundingClientRect();
+    const naTela = (t) => { const r = t.getBoundingClientRect();
+      return r.left > pal.left + 4 && r.top > pal.top + 4
+        && r.right < pal.right - 4 && r.bottom < pal.bottom - 4; };
+    const toks = [...document.querySelectorAll('#gr-tokens .gr-token')].filter(naTela);
+    const a = toks[0], b = toks[1];
+    if (!a || !b) return null;
+    const ra = a.getBoundingClientRect(), rb = b.getBoundingClientRect();
+    const em = (el, t, x, y) => el.dispatchEvent(new PointerEvent(t, {
+      bubbles: true, clientX: x, clientY: y, pointerId: 1 }));
+    em(a, 'pointerdown', ra.left + ra.width / 2, ra.top + ra.height / 2);
+    em(document, 'pointermove', rb.left + rb.width / 2, rb.top + rb.height / 2);
+    em(document, 'pointerup', rb.left + rb.width / 2, rb.top + rb.height / 2);
+    await new Promise((x) => setTimeout(x, 1300));
+    const dlg = document.getElementById('alvo-dlg');
+    const f = document.getElementById('al-ficha');
+    return { folha: !!dlg?.open, ficha: !!f, recolhida: f ? !f.open : null };
+  });
+  ok(abriu?.folha, 'a folha da ação abre no arrasto');
+  ok(abriu?.ficha, 'e ela traz a seção "A ficha do lance"');
+  ok(abriu?.recolhida === true, 'que nasce recolhida: numa cena comum ninguém corrige nada');
+
+  // Abre a seção e confere as três colunas e os campos dos dois lados.
+  const campos = await p.evaluate(async () => {
+    const f = document.getElementById('al-ficha');
+    f.open = true;
+    await new Promise((x) => setTimeout(x, 300));
+    const cols = [...document.querySelectorAll('#al-ficha-c .al-ficha-col')];
+    const ids = [...document.querySelectorAll('#al-ficha-c input, #al-ficha-c select')]
+      .map((i) => i.id).filter(Boolean);
+    return {
+      colunas: cols.length,
+      cabecalhos: cols.map((c) => c.querySelector('.al-ficha-h')?.textContent.trim()),
+      temArma: ids.includes('alf-atacante-arma'),
+      temClasse: ids.includes('alf-atacante-classe'),
+      temPreparo: ids.includes('alf-atacante-pgr-preparo'),
+      temPassoAtq: ids.includes('alf-atacante-passo-batalha'),
+      temDefesaAlvo: ids.includes('alf-alvo-defesa'),
+      temSoak: ids.includes('alf-alvo-soak-impacto'),
+      temPassoAlvo: ids.includes('alf-alvo-passo-batalha'),
+      // uma caixinha "fixa" por campo editável
+      fixas: [...document.querySelectorAll('#al-ficha-c input[type="checkbox"]')].length,
+      editaveis: ids.filter((i) => !i.endsWith('-fx')).length,
+      passoAtq: document.getElementById('alf-atacante-passo-batalha')?.value,
+      passoCorrida: document.getElementById('alf-atacante-passo-corrida')?.value,
+      lance: [...document.querySelectorAll('#al-ficha-c .al-f.lido')]
+        .map((n) => n.querySelector('span')?.textContent.trim()),
+    };
+  });
+  ok(campos.colunas === 3, `três colunas: atacante, alvo e o lance (${campos.colunas})`);
+  ok(campos.temArma && campos.temClasse && campos.temPreparo && campos.temPassoAtq,
+    'o atacante tem arma, classe de tempo, P/G/R e passo');
+  ok(campos.temDefesaAlvo && campos.temSoak && campos.temPassoAlvo,
+    'o alvo tem Defesa, Absorção e passo');
+  ok(campos.fixas === campos.editaveis && campos.fixas > 0,
+    `cada campo editável tem a sua caixinha "fixa" (${campos.fixas} de ${campos.editaveis})`);
+  ok((campos.lance || []).some((l) => /Alcance/.test(l || ''))
+    && (campos.lance || []).some((l) => /Defesa efetiva/.test(l || '')),
+    `a coluna do lance traz alcance e Defesa efetiva (${(campos.lance || []).join(', ')})`);
+  // O passo REAL: a bancada monta PCs sem ficha e criaturas do bestiário, então
+  // o que importa é que os três números existam e respeitem a ordem.
+  ok(Number(campos.passoCorrida) >= Number(campos.passoAtq),
+    `o passo vem em três velocidades e a corrida não é menor que a batalha (${campos.passoAtq} → ${campos.passoCorrida})`);
+
+  // Corrigir a Defesa do alvo repinta a folha na hora.
+  const vivo = await p.evaluate(async () => {
+    const antes = document.getElementById('al-defesas')?.textContent.replace(/\s+/g, ' ').trim();
+    const inp = document.getElementById('alf-alvo-defesa');
+    const base = Number(inp.value || 0);
+    inp.value = String(base + 7);
+    inp.dispatchEvent(new Event('input', { bubbles: true }));
+    await new Promise((x) => setTimeout(x, 300));
+    const depois = document.getElementById('al-defesas')?.textContent.replace(/\s+/g, ' ').trim();
+    const marcado = inp.closest('.al-f')?.classList.contains('mexido');
+    return { antes, depois, marcado, base };
+  });
+  ok(vivo.antes !== vivo.depois, 'corrigir a Defesa do alvo repinta a folha na hora');
+  ok(vivo.marcado, 'e o campo mexido fica marcado, para o mestre não perder de vista');
+
+  // Corrigir o Preparo à mão refaz a linha do tempo.
+  const tempo = await p.evaluate(async () => {
+    const antes = document.getElementById('al-tempo')?.textContent.replace(/\s+/g, ' ').trim();
+    const inp = document.getElementById('alf-atacante-pgr-preparo');
+    inp.value = String((Number(inp.value || 0)) + 3);
+    inp.dispatchEvent(new Event('input', { bubbles: true }));
+    await new Promise((x) => setTimeout(x, 300));
+    return { antes, depois: document.getElementById('al-tempo')?.textContent.replace(/\s+/g, ' ').trim() };
+  });
+  ok(tempo.antes !== tempo.depois,
+    `o Preparo escrito à mão refaz a linha do tempo (${(tempo.depois || '').slice(0, 60)})`);
+
+  // A caixinha muda o resumo do cabeçalho.
+  const fixa = await p.evaluate(async () => {
+    const fx = document.getElementById('alf-alvo-defesa-fx');
+    fx.checked = true; fx.dispatchEvent(new Event('change', { bubbles: true }));
+    await new Promise((x) => setTimeout(x, 250));
+    return document.getElementById('al-ficha-r')?.textContent.trim();
+  });
+  ok(/fixado/.test(fixa || ''), `marcar a caixinha avisa que o número vai durar ("${fixa}")`);
+
+  await p.evaluate(() => { const d = document.getElementById('alvo-dlg'); if (d?.open) d.close(); });
+  await espera(600);
+  ok(erros.length === 0, `nenhum erro de página (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
+  await p.close();
+}
+
 const dev = await subirDev({ config: 'astro.bancada.mjs' });
 const br = await puppeteer.launch({ executablePath: NAV, headless: 'new', args: ['--no-sandbox'] });
 try {
   await cena(br, dev.url);
+  await cenaFichaDoLance(br, dev.url);
 } finally {
   await br.close();
   await dev.parar();

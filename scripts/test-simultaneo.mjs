@@ -162,6 +162,37 @@ eq(T.previsaoDeEncontro(1, 3, 0, 1), 0, 'já no alcance: zero Ticks');
   eq([aa.preparo, aa.golpes, aa.recuperacao], [5, 1, 0], 'ataque-conjuração: P=Vel−1, R=0');
 }
 
+// ------------------------------- 3.2. o passo real, e o override do mestre
+{
+  // O PASSO SAI DE QUEM A PEÇA É. Antes de 28/08 o Grid oferecia 3 m/Tick para
+  // todo mundo; agora a criatura traz o número do bestiário e o PC o da ficha.
+  const M = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/monsters.json'), 'utf8'));
+  const semPasso = M.filter((c) => !c.combate?.deslocamento);
+  eq(semPasso.map((c) => c.id), [], 'toda criatura tem as três velocidades');
+  const passoDe = (nome) => M.find((c) => c.nome === nome)?.combate.deslocamento;
+  const lobo = passoDe('Lobo');
+  ok(lobo && lobo.batalha > 3, `o lobo anda mais que um humano (${lobo?.batalha} m/Tick)`);
+  // A ordem tem de valer em TODAS: a média dos três primeiros segundos nunca
+  // passa do topo sustentado (a trava da §14 do Golpe_Tardio).
+  const fora = M.filter((c) => {
+    const d = c.combate.deslocamento;
+    return !(d.batalha <= d.arranque && d.arranque <= d.corrida);
+  });
+  eq(fora.map((c) => c.id), [], 'batalha ≤ arranque ≤ corrida em todas');
+
+  // O OVERRIDE do mestre: a régua calcula, e o que ele escreve vence.
+  const base = T.anatomia({ classe: 'media', velocidade: 6, sistema: 'pgr' });
+  eq([base.preparo, base.golpes, base.recuperacao, base.ciclo], [1, 1, 4, 6], 'a régua da espada longa');
+  const mao = T.comOverride(base, { preparo: 3 });
+  eq([mao.preparo, mao.golpes, mao.recuperacao, mao.ciclo], [3, 1, 4, 8],
+    'o Preparo escrito à mão estica o ciclo');
+  eq(mao.offs, [3], 'e a agenda se refaz a partir dele');
+  eq(T.comOverride(base, null), base, 'sem override, a anatomia não é tocada');
+  eq(T.comOverride(base, {}), base, 'override vazio também não toca');
+  const dois = T.comOverride(base, { golpes: 2 });
+  eq([dois.offs, dois.penDados.length], [[1, 2], 2], 'dois golpes à mão saem em Ticks seguidos');
+}
+
 // ------------------------------------------------- 4. o robô mínimo
 {
   const perto = { id: 'perto', pos: { q: 1, r: 0 } };

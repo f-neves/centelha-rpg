@@ -406,6 +406,26 @@ const SETAS = [
       <p class="muted dlg-txt" id="al-linha"></p>
       <p class="ruim dlg-txt" id="al-aviso" hidden></p>
       <div id="al-defesas" class="al-def"></div>
+      {/* A FICHA DO LANCE: tudo o que decide este ataque, dos dois lados, e
+           tudo editável.
+
+           A caixa mostrava a Defesa e a Absorção do alvo como texto e escondia
+           o resto (o passo de cada um, o alcance, a anatomia do tempo, a
+           penalidade da fase), então o mestre que discordasse de um número
+           tinha de sair da folha, achar a aba Criaturas e voltar. Agora cada
+           número tem campo, e a caixinha ao lado decide se a correção MORRE
+           com o modal ou fica valendo até o fim do combate (gravada em
+           `combatentes.dados`, o ajuste por instância que já existia no banco e
+           que nenhuma tela escrevia).
+
+           Nasce recolhida: numa cena comum ninguém corrige nada, e trinta
+           campos abertos por ataque seriam ruído. */}
+      <details class="al-ficha" id="al-ficha">
+        <summary>A ficha do lance <span class="muted" id="al-ficha-r"></span></summary>
+        <div class="al-ficha-c" id="al-ficha-c"></div>
+        <p class="muted dlg-txt al-ficha-n">A caixinha <b>fixa</b> mantém o número até o fim do
+          combate. Sem ela, a correção vale só para este lance.</p>
+      </details>
       {/* A manobra manda no tempo: um golpe, uma arma em cada mão, ou a mesma
           arma várias vezes. A lista é filtrada pelo que a arma permite, e o que
           sair daqui vira a agenda de Ticks da peça. */}
@@ -1579,6 +1599,37 @@ const SETAS = [
   .al-def .d-v { font-size: var(--fs-h3); font-weight: 700; font-variant-numeric: tabular-nums; }
   .al-def .d-n { font-size: calc(var(--fs-micro) * .9); color: var(--ink-soft); }
   .al-conta { font-size: var(--fs-micro); color: var(--ink-soft); margin-top: .4rem; min-height: 1.2rem; }
+
+  /* ---- a ficha do lance: tudo o que decide o ataque, e tudo editável ---- */
+  .al-ficha { margin: .5rem 0; border: 1px solid var(--rule); border-radius: var(--r-md);
+    background: var(--panel-2, var(--panel)); }
+  .al-ficha > summary { cursor: pointer; padding: .35rem .6rem; font-family: 'Cinzel';
+    font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .06em;
+    color: var(--accent-strong); }
+  .al-ficha > summary::marker { color: var(--accent-strong); }
+  .al-ficha-c { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: .5rem .9rem; padding: .2rem .6rem .5rem; }
+  .al-ficha-col { display: flex; flex-direction: column; gap: .18rem; min-width: 0; }
+  .al-ficha-h { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
+    letter-spacing: .06em; color: var(--ink-soft); border-bottom: 1px solid var(--rule);
+    padding-bottom: .15rem; margin-bottom: .1rem; }
+  /* Rótulo · campo · fixa. O campo tem largura fixa para os números dos dois
+     lados alinharem numa coluna só, que é o que deixa comparar de relance. */
+  .al-f { display: grid; grid-template-columns: 1fr 4.2rem 1.1rem; align-items: center;
+    gap: .3rem; font-size: var(--fs-micro); }
+  .al-f > span { color: var(--ink-soft); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .al-f input[type="number"], .al-f input[type="text"], .al-f select {
+    width: 100%; min-width: 0; padding: .1rem .25rem; font-size: var(--fs-micro);
+    font-variant-numeric: tabular-nums; }
+  .al-f input[type="checkbox"] { justify-self: center; }
+  /* O campo tocado fica marcado, para o mestre ver o que ele mexeu sem ter de
+     lembrar: um lance com três correções é fácil de perder de vista. */
+  .al-f.mexido input:not([type="checkbox"]), .al-f.mexido select {
+    border-color: var(--accent-strong); background: color-mix(in srgb, var(--accent) 12%, transparent); }
+  .al-f.fixado > span::after { content: ' 📌'; }
+  .al-ficha-n { margin: 0 .6rem .5rem; font-size: calc(var(--fs-micro) * .95); }
+  /* Só leitura: o que a régua calcula e ninguém edita direto (o ciclo, a soma). */
+  .al-f.lido .al-f-v { font-variant-numeric: tabular-nums; color: var(--ink); }
   .gr-token .gr-tn { font-size: calc(var(--fs-micro) * .88); line-height: 1; padding: .04rem .25rem;
     border-radius: 999px; background: color-mix(in srgb, var(--bg) 78%, transparent);
     max-width: 6.5rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -2345,7 +2396,7 @@ const SETAS = [
     rolaNoSite, ticksDeDeslocamento, armaDoCatalogo, ticksDeEntrada,
     contrapeEm, contrapeDe, contrapeAcaba, faseDeQuemVaiAgir, preparoDe, ordemDaFila,
     adiaGolpe, agendar, golpesNoAr, golpeDevido, golpeResolvido, proximoGolpe,
-    ehSimultaneo, agendaSimultanea, ticksDeViagem, decideEmValeDepois,
+    ehSimultaneo, agendaSimultanea, ticksDeViagem, decideEmValeDepois, comOverride,
     previsaoDeEncontro, decisaoAutomatica, MODOS_MOV,
     FASE_ROTULO, type CombateMesa, type Manobra, type Acao, type Mov,
   } from '../../lib/combate-tempo';
@@ -4800,6 +4851,44 @@ const SETAS = [
       ? HEX_HASTE : HEX_CORPO_A_CORPO;
 
   /**
+   * O PASSO DA PEÇA, em metros por Tick, pela régua de quem ela é.
+   *
+   * Do PC sai da ficha (a mesma conta que ela desenha, com a raça e a meia
+   * penalidade da armadura); da criatura, do bloco do bestiário. O padrão do
+   * `regras.json` só entra quando nenhum dos dois responde, que hoje é o
+   * figurante de cena sem ficha e sem bloco.
+   *
+   * Até 28/08 o Grid oferecia 3 m/Tick para todo mundo: o caramujo e o
+   * guepardo fechavam a mesma distância no mesmo tempo, e a única saída era o
+   * mestre digitar o número certo a cada declaração.
+   */
+  function passoDaPeca(c: any): { batalha: number; arranque: number; corrida: number } {
+    const p = RESUMO[c?.id]?.passo;
+    const padrao = {
+      batalha: MODOS_MOV.find((m) => m.id === 'batalha')?.porTick ?? 3,
+      arranque: MODOS_MOV.find((m) => m.id === 'corrida')?.porTick ?? 6,
+      corrida: MODOS_MOV.find((m) => m.id === 'corrida')?.porTick ?? 6,
+    };
+    if (!p) return padrao;
+    return {
+      batalha: p.batalha ?? padrao.batalha,
+      arranque: p.arranque ?? padrao.arranque,
+      corrida: p.corrida ?? padrao.corrida,
+    };
+  }
+
+  /** Os metros por Tick de uma peça no modo escolhido. */
+  const passoNoModo = (c: any, modo: string): number => {
+    const p = passoDaPeca(c);
+    // Andar não é estatística de ficha: é o passo de estrada, igual para todos,
+    // e por isso continua vindo da regra.
+    if (modo === 'andar') return MODOS_MOV.find((m) => m.id === 'andar')?.porTick ?? 1.5;
+    // A Corrida usa o ARRANQUE, e não o topo: os três primeiros Ticks de uma
+    // corrida são a aceleração, e quase toda perseguição de combate cabe neles.
+    return modo === 'corrida' ? p.arranque : p.batalha;
+  };
+
+  /**
    * UM TICK DO SISTEMA SIMULTÂNEO, inteiro.
    *
    * A ordem dentro do avanço é fixa e importa: primeiro o relógio anda (e
@@ -4826,6 +4915,12 @@ const SETAS = [
       // A decisão vale um Tick depois de declarada: o passo do Tick T só sai se
       // a declaração é de antes dele.
       if (((c.acao as any)?.desde ?? 0) + decideEmValeDepois() > T) continue;
+      // NO TICK DO GOLPE O PÉ PLANTA (decidido em 28/08). É a §14.6 escrita no
+      // motor: no Golpe não se aborta, não se reage e não se anda, porque o
+      // golpe se apoia no chão. Quem quer chegar batendo compra a Investida,
+      // que paga guarda por isso. Sem esta linha a peça deslizava no instante
+      // do impacto sempre que o alvo tinha se movido durante o Preparo.
+      if (faseEm(acaoNo(c), T) === 'golpe') continue;
       const pos = TOKENS[c.id];
       const alvoPos = mov.alvo ? TOKENS[mov.alvo] : mov.destino;
       if (!alvoPos) continue;
@@ -4980,20 +5075,25 @@ const SETAS = [
     (el('mv-linha') as HTMLElement).textContent =
       `${nomeHex(destino.q, destino.r)} · ${fmtM(distM)} daqui`;
     const sel = el('mv-modo') as HTMLSelectElement;
+    const pas = passoDaPeca(c);
     sel.innerHTML = MODOS_MOV.map((m) =>
-      `<option value="${m.id}"${m.id === 'batalha' ? ' selected' : ''}>${m.nome} · ${m.nota}</option>`).join('');
+      `<option value="${m.id}"${m.id === 'batalha' ? ' selected' : ''}>${m.nome} · ${
+        passoNoModo(c, m.id)} m/Tick · ${m.nota}</option>`).join('');
     const vel = el('mv-vel') as HTMLInputElement;
     const auto = el('mv-auto') as HTMLInputElement;
     const nota = el('mv-nota') as HTMLElement;
     const chegadaEm = (v: number) =>
       T + decideEmValeDepois() + Math.max(0, ticksDeViagem(distM, v) - 1);
     const pintar = () => {
-      const m = MODOS_MOV.find((x) => x.id === sel.value) || MODOS_MOV[1];
-      if (document.activeElement !== vel) vel.value = String(m.porTick);
-      const v = Math.max(0.5, parseFloat(vel.value || '0') || m.porTick);
+      // O passo é o DESTA peça, e não a constante da regra: quem tem ficha traz
+      // o número dela, e a criatura traz o do bestiário.
+      const padrao = passoNoModo(c, sel.value);
+      if (document.activeElement !== vel) vel.value = String(padrao);
+      const v = Math.max(0.5, parseFloat(vel.value || '0') || padrao);
       nota.textContent = `Começa no Tick ${T + decideEmValeDepois()} e chega no ${chegadaEm(v)}`
         + ` (${ticksDeViagem(distM, v)} Tick(s) de caminho).`
-        + (sel.value === 'corrida' ? ' Correndo: Defesa −4 até se recompor.' : '');
+        + ` · passo de ${esc(c.nome)}: ${pas.batalha}/${pas.arranque}/${pas.corrida} m por Tick`
+        + (sel.value === 'corrida' ? ' · correndo: Defesa −4 até se recompor.' : '');
     };
     sel.onchange = pintar; vel.oninput = pintar; pintar();
 
@@ -5052,7 +5152,7 @@ const SETAS = [
     const persegue = classe !== 'distancia' && classe !== 'arremesso' && classe !== 'arte';
     const faltamHex = persegue ? Math.max(0, hexes - alcanceDaPeca(atacante)) : 0;
     const modo = MODOS_MOV.find((m) => m.id === (opts.modoMov || 'batalha')) || MODOS_MOV[1];
-    const porTick = Math.max(0.5, opts.porTick ?? modo.porTick);
+    const porTick = Math.max(0.5, opts.porTick ?? passoNoModo(atacante, modo.id));
     const viagem = ticksDeViagem(faltamHex * escala, porTick);
     const ag = agendaSimultanea(T, an, viagem);
     let acao: any = declarar(T, an, {
@@ -6794,13 +6894,13 @@ const SETAS = [
     mvCx.hidden = !precisaAndar;
     if (precisaAndar) {
       mvModo.innerHTML = MODOS_MOV.filter((m) => m.id !== 'andar').map((m) =>
-        `<option value="${m.id}"${m.id === 'batalha' ? ' selected' : ''}>${m.nome}</option>`).join('');
+        `<option value="${m.id}"${m.id === 'batalha' ? ' selected' : ''}>${m.nome} · ${
+          passoNoModo(atacante, m.id)} m/Tick</option>`).join('');
       mvModo.onchange = () => {
-        const m = MODOS_MOV.find((x) => x.id === mvModo.value);
-        if (m) mvVel.value = String(m.porTick);
+        mvVel.value = String(passoNoModo(atacante, mvModo.value));
         pintar();
       };
-      mvVel.value = String(MODOS_MOV.find((m) => m.id === 'batalha')?.porTick ?? 3);
+      mvVel.value = String(passoNoModo(atacante, 'batalha'));
       mvVel.oninput = () => pintar();
       mvAuto.onchange = () => pintar();
     }
@@ -7264,34 +7364,47 @@ const SETAS = [
   ): Promise<Folha | null> {
     const dlg = el('alvo-dlg') as HTMLDialogElement;
     const adiada = opts.tickDoGolpe != null;
-    const r = RESUMO[alvo.id];
-    const ra = RESUMO[atacante.id];
+    // CÓPIAS MUTÁVEIS, e é isso que faz a ficha do lance funcionar: o mestre
+    // corrige um número aqui dentro e a folha inteira (Defesa, veredito, dano,
+    // linha do tempo) se refaz em cima do valor corrigido, sem tocar no
+    // `RESUMO` da cena. O que sobrevive ao modal é só o que ele marcar como
+    // fixo, e aí vai para `combatentes.dados` no fechamento.
+    const clonar = (x: any) => (x ? JSON.parse(JSON.stringify(x)) : x);
+    const r = clonar(RESUMO[alvo.id]);
+    const ra = clonar(RESUMO[atacante.id]);
     const cd = somarCondicoes((alvo.condicoes || []).map((k: any) => ({ ...(COND[k.id] || {}), ...k })));
     const fer = tierDe(alvo.pv_atual, alvo.pv_max).penDefesa ?? 0;
     // ONDE O MEU GOLPE CAI. É contra a guarda DAQUELE instante que a jogada
     // corre, e não contra a guarda do instante em que eu declarei: no P/G/R as
     // duas coisas são Ticks diferentes.
-    const classeAtq = classeDeTempo(ra?.arma, ra?.velocidade, ra?.classe);
-    const velAtq = ra?.velocidade ?? velocidadeDaArma(ra?.arma, 5);
-    const tGolpe = opts.tickDoGolpe
-      ?? ((atacante.tick ?? 0) + preparoDe(classeAtq, velAtq, TEMPO.sistema));
+    const classeAtqDe = () => classeDeTempo(ra?.arma, ra?.velocidade, ra?.classe);
+    const velAtqDe = () => ra?.velocidade ?? velocidadeDaArma(ra?.arma, 5);
+    // No golpe adiado o Tick já foi agendado Ticks atrás: corrigir a régua
+    // agora não move o braço que já está caindo.
+    const tGolpeDe = () => opts.tickDoGolpe
+      ?? ((atacante.tick ?? 0) + preparoDe(classeAtqDe(), velAtqDe(), TEMPO.sistema));
     // E SE O ALVO AINDA NÃO DECLAROU, mas age neste mesmo instante, ele está
     // tão comprometido quanto eu: a escada se lê pela regra, e não pela ordem em
     // que o mestre digitou. Ver `faseDeQuemVaiAgir`.
-    const rAlvo = RESUMO[alvo.id];
-    const presumida = !temGesto(alvo.acao)
+    const presumidaDe = () => (!temGesto(alvo.acao)
       ? faseDeQuemVaiAgir(
         alvo.tick ?? 0,
-        preparoDe(classeDeTempo(rAlvo?.arma, rAlvo?.velocidade, rAlvo?.classe),
-          rAlvo?.velocidade ?? velocidadeDaArma(rAlvo?.arma, 5), TEMPO.sistema),
-        tGolpe,
+        preparoDe(classeDeTempo(r?.arma, r?.velocidade, r?.classe),
+          r?.velocidade ?? velocidadeDaArma(r?.arma, 5), TEMPO.sistema),
+        tGolpeDe(),
       )
-      : 'livre';
-    const dv = defesaPerdida(acaoNo(alvo), tGolpe, {
+      : 'livre');
+    const dvDe = () => defesaPerdida(acaoNo(alvo), tGolpeDe(), {
       segura: alvo.acao?.tipo === 'segura',
-      ...(presumida !== 'livre' ? { fase: presumida } : {}),
+      ...(presumidaDe() !== 'livre' ? { fase: presumidaDe() } : {}),
     });
-    const def = r?.defesa != null ? r.defesa + fer + (cd.defesaCaC || 0) + dv.total : null;
+    const defDe = () => (r?.defesa != null
+      ? r.defesa + fer + (cd.defesaCaC || 0) + dvDe().total : null);
+    // Os quatro que o resto do corpo ainda lê como valor. Continuam existindo
+    // para o código de baixo não mudar de forma; quem repinta chama as funções.
+    let classeAtq = classeAtqDe(), velAtq = velAtqDe(), tGolpe = tGolpeDe();
+    let dv = dvDe(), def = defDe();
+    const presumida = presumidaDe();
     const men = r?.defesaMental ?? null;
     const de = TOKENS[atacante.id], pa = TOKENS[alvo.id];
     const hexes = de && pa ? distanciaHex(de, pa) : null;
@@ -7309,19 +7422,26 @@ const SETAS = [
     // Absorção do ogro de viajar até o navegador do grupo), então a Defesa sai
     // como travessão. Os descontos continuavam escritos embaixo, e "— condições
     // −4" não é leitura de coisa nenhuma: é um desconto sem conta de onde sair.
-    el('al-defesas').innerHTML =
-      cel('Defesa', def, def == null ? 'o mestre tem o número' : [
-        fer ? `ferimento ${fer}` : '',
-        cd.defesaCaC ? `condições ${cd.defesaCaC}` : '',
-        dv.acao ? `${FASE_ROTULO[dv.fase]} ${dv.acao}${
-          presumida !== 'livre' ? ' (age neste instante)' : ''}` : '',
-        dv.pressao ? `pressão ${dv.pressao}` : '',
-      ].filter(Boolean).join(' · '))
-      + cel('Mental', men)
-      + cel('Absorção', r ? `${r.soak.impacto}/${r.soak.corte}/${r.soak.perfuracao}` : null,
-        r?.resistPerf ? `gate N${r.resistPerf}` : '');
+    const pintarDefesas = () => {
+      el('al-defesas').innerHTML =
+        cel('Defesa', def, def == null ? 'o mestre tem o número' : [
+          fer ? `ferimento ${fer}` : '',
+          cd.defesaCaC ? `condições ${cd.defesaCaC}` : '',
+          dv.acao ? `${FASE_ROTULO[dv.fase]} ${dv.acao}${
+            presumida !== 'livre' ? ' (age neste instante)' : ''}` : '',
+          dv.pressao ? `pressão ${dv.pressao}` : '',
+        ].filter(Boolean).join(' · '))
+        + cel('Mental', r?.defesaMental ?? null)
+        + cel('Absorção', r ? `${r.soak.impacto}/${r.soak.corte}/${r.soak.perfuracao}` : null,
+          r?.resistPerf ? `gate N${r.resistPerf}` : '');
+    };
+    pintarDefesas();
 
     // ---- a manobra de quem ataca, e o tempo que ela custa ----
+    // A classe e a Velocidade que a lista de manobras usa são as do instante em
+    // que a folha abriu; corrigi-las na ficha do lance refaz a ANATOMIA (por
+    // `anat`, que lê as funções), e não a lista de manobras, que é do
+    // equipamento e não do tempo.
     const classe = classeAtq, vel = velAtq;
     const manSel = el('al-manobra') as HTMLSelectElement;
     const golInp = el('al-golpes') as HTMLInputElement;
@@ -7342,10 +7462,17 @@ const SETAS = [
     } else {
       manSel.disabled = false; golInp.disabled = false;
     }
-    const anat = () => (adiada && opts.an ? opts.an : anatomia({
-      classe, velocidade: vel, sistema: TEMPO.sistema, manobra: manSel.value as Manobra,
-      golpes: Math.max(2, parseInt(golInp.value || '2', 10) || 2),
-    }));
+    // A anatomia lê a régua CORRIGIDA (a classe e a Velocidade que a ficha do
+    // lance escreveu), e por último aplica o P/G/R que o mestre tenha escrito à
+    // mão. Na folha adiada a agenda já foi gasta na declaração, e por isso ela
+    // vence: o braço que está caindo não muda de tempo agora.
+    const anat = () => (adiada && opts.an
+      ? comOverride(opts.an, ra?.pgr)
+      : comOverride(anatomia({
+        classe: classeAtqDe(), velocidade: velAtqDe(), sistema: TEMPO.sistema,
+        manobra: manSel.value as Manobra,
+        golpes: Math.max(2, parseInt(golInp.value || '2', 10) || 2),
+      }), ra?.pgr));
 
     // ---- O ALCANCE: a única coisa que só o tabuleiro sabe ----
     //
@@ -7498,6 +7625,210 @@ const SETAS = [
       cx.innerHTML = `Absorção <b>${sk}</b> · passa <b>${liq}</b>`
         + (alvo.pv_max ? ` · Vida ficaria <b>${pv}/${alvo.pv_max}</b> (${tierDe(pv, alvo.pv_max).estado})` : '');
     };
+    // ------------------------------------------------ a ficha do lance
+    /**
+     * Todo número que decide este ataque, dos dois lados, editável, com a
+     * caixinha que diz se a correção sobrevive ao modal.
+     *
+     * O caminho da chave é o mesmo de `combatentes.dados`, que `resumoDe` já
+     * mescla por cima do bloco de origem: escrever `soak.impacto` aqui é a
+     * mesma coisa que o ajuste por instância da aba Criaturas, só que na hora
+     * do golpe e sem sair da folha.
+     */
+    type CampoFicha = {
+      quem: 'atacante' | 'alvo'; chave: string; rot: string;
+      tipo?: 'num' | 'txt' | 'sel'; ops?: [string, string][]; passo?: number;
+    };
+    const CLASSES_TEMPO: [string, string][] = [
+      ['leve', 'leve'], ['media', 'média'], ['pesada', 'pesada'], ['haste', 'haste'],
+      ['distancia', 'tiro'], ['arremesso', 'arremesso'], ['arte', 'conjuração'],
+    ];
+    // O que se pode escrever, por lado. A ordem é a da leitura: o que a arma é,
+    // quanto ela custa em tempo, o que ela rola, e quanto o corpo anda.
+    const CAMPOS_ATQ: CampoFicha[] = [
+      { quem: 'atacante', chave: 'arma', rot: 'Arma', tipo: 'txt' },
+      { quem: 'atacante', chave: 'classe', rot: 'Classe de tempo', tipo: 'sel', ops: CLASSES_TEMPO },
+      { quem: 'atacante', chave: 'velocidade', rot: 'Velocidade (Ticks)' },
+      { quem: 'atacante', chave: 'pgr.preparo', rot: 'Preparo' },
+      { quem: 'atacante', chave: 'pgr.golpes', rot: 'Golpe' },
+      { quem: 'atacante', chave: 'pgr.recuperacao', rot: 'Recuperação' },
+      { quem: 'atacante', chave: 'ataque', rot: 'Bolo de acerto', tipo: 'txt' },
+      { quem: 'atacante', chave: 'dano', rot: 'Dano', tipo: 'txt' },
+      { quem: 'atacante', chave: 'passo.batalha', rot: 'Passo · batalha' },
+      { quem: 'atacante', chave: 'passo.arranque', rot: 'Passo · arranque' },
+      { quem: 'atacante', chave: 'passo.corrida', rot: 'Passo · corrida' },
+    ];
+    const CAMPOS_ALVO: CampoFicha[] = [
+      { quem: 'alvo', chave: 'defesa', rot: 'Defesa (base)' },
+      { quem: 'alvo', chave: 'defesaMental', rot: 'Defesa Mental' },
+      { quem: 'alvo', chave: 'soak.impacto', rot: 'Absorção · impacto' },
+      { quem: 'alvo', chave: 'soak.corte', rot: 'Absorção · corte' },
+      { quem: 'alvo', chave: 'soak.perfuracao', rot: 'Absorção · perfuração' },
+      { quem: 'alvo', chave: 'resistPerf', rot: 'Resist. perfuração' },
+      { quem: 'alvo', chave: 'passo.batalha', rot: 'Passo · batalha' },
+      { quem: 'alvo', chave: 'passo.arranque', rot: 'Passo · arranque' },
+      { quem: 'alvo', chave: 'passo.corrida', rot: 'Passo · corrida' },
+    ];
+    const leCaminho = (o: any, cam: string) =>
+      cam.split('.').reduce((x: any, k: string) => (x == null ? x : x[k]), o);
+    const escreveCaminho = (o: any, cam: string, v: any) => {
+      const ks = cam.split('.');
+      let alvo0 = o;
+      for (const k of ks.slice(0, -1)) { if (!alvo0[k] || typeof alvo0[k] !== 'object') alvo0[k] = {}; alvo0 = alvo0[k]; }
+      alvo0[ks[ks.length - 1]] = v;
+    };
+    const objDe = (q: string) => (q === 'alvo' ? r : ra);
+    // O valor que a régua daria, para saber o que é correção e o que é o
+    // número de origem: só o que DIVERGE é gravado ao fixar.
+    const BASE_FICHA: Record<string, any> = {};
+    // O que ficará gravado ao fechar, se a caixinha estiver marcada.
+    const FIXOS = new Set<string>();
+    const idDe = (c: CampoFicha) => `alf-${c.quem}-${c.chave.replace('.', '-')}`;
+
+    const montarFicha = () => {
+      const anatBase = anat();
+      // O P/G/R nasce mostrando o que a régua calculou, e não vazio: o mestre
+      // corrige um número que ele está vendo, e não adivinha o que substituir.
+      const pgrDaRegua: Record<string, number> = {
+        'pgr.preparo': anatBase.preparo, 'pgr.golpes': anatBase.golpes,
+        'pgr.recuperacao': anatBase.recuperacao,
+      };
+      const linha = (c: CampoFicha) => {
+        const o = objDe(c.quem);
+        let v = leCaminho(o, c.chave);
+        if (v == null && pgrDaRegua[c.chave] != null) v = pgrDaRegua[c.chave];
+        if (v == null && c.chave.startsWith('passo.')) {
+          v = (passoDaPeca(c.quem === 'alvo' ? alvo : atacante) as any)[c.chave.split('.')[1]];
+        }
+        BASE_FICHA[`${c.quem}|${c.chave}`] = v;
+        const id = idDe(c);
+        const campo = c.tipo === 'sel'
+          ? `<select id="${id}">${(c.ops || []).map(([k, t]) =>
+            `<option value="${k}"${k === v ? ' selected' : ''}>${t}</option>`).join('')}</select>`
+          : c.tipo === 'txt'
+            ? `<input type="text" id="${id}" value="${esc(String(v ?? ''))}" />`
+            : `<input type="number" id="${id}" value="${v ?? ''}" step="${c.passo ?? 1}" />`;
+        return `<label class="al-f" data-f="${c.quem}|${c.chave}"><span>${esc(c.rot)}</span>${campo}
+          <input type="checkbox" id="${id}-fx" title="Fixar: manter este número até o fim do combate" /></label>`;
+      };
+      const alc = classeAtq === 'haste' ? HEX_HASTE : HEX_CORPO_A_CORPO;
+      const pAtq = passoDaPeca(atacante), pAlv = passoDaPeca(alvo);
+      // A terceira coluna é o LANCE: o que nasce do encontro dos dois e não
+      // pertence a nenhum. Só leitura de propósito: cada número aqui é a soma
+      // de campos que já estão abertos ao lado, e ter dois lugares para
+      // corrigir a mesma coisa é como as duas divergem.
+      const doLance = [
+        ['Distância', dist != null ? fmtM(dist) : '—'],
+        ['Alcance da arma', classeAtq === 'distancia' || classeAtq === 'arremesso'
+          ? 'à distância' : `${alc} hex`],
+        ['Ciclo total', `${anatBase.ciclo} Ticks`],
+        ['Golpe no Tick', String(tGolpe)],
+        ['Fase do alvo', `${FASE_ROTULO[dv.fase]}${dv.acao ? ` (${dv.acao})` : ''}`],
+        ['Pressão no alvo', dv.pressao ? String(dv.pressao) : '0'],
+        ['Defesa efetiva', def == null ? '—' : String(def)],
+        ['Quem alcança quem', pAtq.batalha === pAlv.batalha ? 'passo igual'
+          : pAtq.batalha > pAlv.batalha ? `${esc(atacante.nome)} é mais rápido`
+            : `${esc(alvo.nome)} escapa no passo`],
+      ].map(([l, v]) => `<div class="al-f lido"><span>${esc(l)}</span>
+        <b class="al-f-v">${esc(String(v))}</b><span></span></div>`).join('');
+
+      el('al-ficha-c').innerHTML = `
+        <div class="al-ficha-col"><div class="al-ficha-h">${esc(atacante.nome)} · ataca</div>
+          ${CAMPOS_ATQ.map(linha).join('')}</div>
+        <div class="al-ficha-col"><div class="al-ficha-h">${esc(alvo.nome)} · apanha</div>
+          ${CAMPOS_ALVO.map(linha).join('')}</div>
+        <div class="al-ficha-col"><div class="al-ficha-h">O lance</div>${doLance}</div>`;
+
+      for (const c of [...CAMPOS_ATQ, ...CAMPOS_ALVO]) {
+        const inp = document.getElementById(idDe(c)) as HTMLInputElement | HTMLSelectElement;
+        const fx = document.getElementById(`${idDe(c)}-fx`) as HTMLInputElement;
+        if (!inp || !fx) continue;
+        const chaveF = `${c.quem}|${c.chave}`;
+        if (FIXOS.has(chaveF)) fx.checked = true;
+        const aplicar = () => {
+          const bruto = (inp as HTMLInputElement).value;
+          const v = c.tipo === 'num' || !c.tipo
+            ? (bruto === '' ? null : Number(bruto)) : bruto;
+          escreveCaminho(objDe(c.quem), c.chave, v);
+          const mudou = String(v ?? '') !== String(BASE_FICHA[chaveF] ?? '');
+          inp.closest('.al-f')?.classList.toggle('mexido', mudou);
+          // Corrigir sem fixar já é a intenção mais comum ("neste lance ele
+          // está no barril"), então mexer no campo MARCA a caixinha? Não: o
+          // padrão é o efêmero, que é o menos destrutivo. A caixinha é um
+          // segundo gesto, deliberado.
+          repintarLance();
+        };
+        inp.addEventListener('input', aplicar);
+        inp.addEventListener('change', aplicar);
+        fx.addEventListener('change', () => {
+          if (fx.checked) FIXOS.add(chaveF); else FIXOS.delete(chaveF);
+          inp.closest('.al-f')?.classList.toggle('fixado', fx.checked);
+          resumoFicha();
+        });
+      }
+      resumoFicha();
+    };
+    const resumoFicha = () => {
+      const n = FIXOS.size;
+      (el('al-ficha-r') as HTMLElement).textContent =
+        n ? `· ${n} número(s) fixado(s) até o fim do combate` : '· corrigir qualquer número';
+    };
+
+    /**
+     * Grava em `combatentes.dados` o que o mestre marcou como fixo.
+     *
+     * Só o que DIVERGE da base entra: marcar a caixinha de um campo intocado
+     * não deveria congelar o número da régua, senão a peça pararia de responder
+     * a mudanças legítimas (uma condição nova, uma armadura tirada). E só o
+     * mestre escreve: o jogador não tem porta para `combatentes.dados`, e a
+     * correção dele vale só para o lance, que é o certo.
+     */
+    const gravarFixos = async () => {
+      if (!MESTRE || !FIXOS.size) return;
+      const porPeca: Record<string, any> = {};
+      for (const chaveF of FIXOS) {
+        const [quem, cam] = chaveF.split('|');
+        const v = leCaminho(objDe(quem), cam);
+        if (String(v ?? '') === String(BASE_FICHA[chaveF] ?? '')) continue;
+        const peca = quem === 'alvo' ? alvo : atacante;
+        porPeca[peca.id] = porPeca[peca.id] || { peca, dados: { ...(peca.dados || {}) } };
+        escreveCaminho(porPeca[peca.id].dados, cam, v);
+      }
+      for (const { peca, dados } of Object.values(porPeca) as any[]) {
+        const { error } = await SB.from('combatentes').update({ dados }).eq('id', peca.id);
+        if (error) { uiErro('Não deu para fixar os números: ' + error.message); continue; }
+        peca.dados = dados;
+        // O RESUMO da cena é refeito na hora, senão o número fixado só
+        // apareceria no próximo F5: ele é a fonte de tudo o que a mesa desenha.
+        try { RESUMO[peca.id] = resumoDe(peca, FICHAS); } catch { /* segue com o antigo */ }
+        await logar(peca, `${peca.nome}: o mestre fixou ${Object.keys(dados).length} ajuste(s)`
+          + ' na ficha do lance', { acao: null });
+      }
+      pintarIniciativa(); pintarTokens();
+      avisarAgora('combatentes');
+    };
+    /** Um campo mudou: refaz as contas derivadas e repinta a folha inteira. */
+    const repintarLance = () => {
+      classeAtq = classeAtqDe(); velAtq = velAtqDe(); tGolpe = tGolpeDe();
+      dv = dvDe(); def = defDe();
+      pintarDefesas(); pintarTempo(); pintarVeredito(); pintarDano();
+      // A terceira coluna vive das outras duas, então ela se refaz sozinha; os
+      // campos editáveis NÃO são remontados, senão o foco saltaria do input a
+      // cada tecla digitada.
+      const alc = classeAtq === 'haste' ? HEX_HASTE : HEX_CORPO_A_CORPO;
+      const col = el('al-ficha-c').lastElementChild;
+      if (col) {
+        const vs = col.querySelectorAll('.al-f-v');
+        const a = anat();
+        const novos = [dist != null ? fmtM(dist) : '—',
+          classeAtq === 'distancia' || classeAtq === 'arremesso' ? 'à distância' : `${alc} hex`,
+          `${a.ciclo} Ticks`, String(tGolpe),
+          `${FASE_ROTULO[dv.fase]}${dv.acao ? ` (${dv.acao})` : ''}`,
+          dv.pressao ? String(dv.pressao) : '0', def == null ? '—' : String(def)];
+        vs.forEach((n0, i) => { if (novos[i] != null) n0.textContent = novos[i]; });
+      }
+    };
+
     const pintarTempo = () => {
       el('al-golpes').style.display = manSel.value === 'rajada' ? '' : 'none';
       const a = anat();
@@ -7544,6 +7875,9 @@ const SETAS = [
     (el('al-rolar') as HTMLElement).onclick = rolarAcerto;
     (el('al-dn-rolar') as HTMLElement).onclick = rolarDano;
     pintarTempo(); pintarVeredito(); pintarDano();
+    // A ficha do lance por último: ela lê a anatomia já pintada, e o resumo do
+    // cabeçalho depende dos campos existirem.
+    montarFicha();
     // O MODO DA MESA DECIDE O QUE ACONTECE SOZINHO. No `mesa` (o padrão) nada
     // rola: os campos abrem vazios e quem joga escreve o que caiu na mão.
     if (rolaNoSite(TEMPO.rolagem, atacante.tipo === 'pc')) { rolarAcerto(); rolarDano(); }
@@ -7570,7 +7904,16 @@ const SETAS = [
       (el('al-nao') as HTMLElement).onclick = () => fim(false);
       // Fechar no Escape é DESISTIR, e não "errou": desistir não gasta o Tick de
       // ninguém. Por isso o null, que quem chamou distingue do erro.
-      dlg.addEventListener('close', () => { if (!respondeu) resolve(null); }, { once: true });
+      //
+      // O QUE FOI FIXADO SOBREVIVE AO FECHAMENTO, e só ele: as correções soltas
+      // morrem aqui, que é o contrato da caixinha. Vale para os dois caminhos
+      // (resolveu ou desistiu), porque fixar um número é uma decisão sobre a
+      // CENA e não sobre este golpe: descobrir no meio do ataque que o goblin
+      // tem placa continua verdade se o ataque for cancelado.
+      dlg.addEventListener('close', () => {
+        void gravarFixos();
+        if (!respondeu) resolve(null);
+      }, { once: true });
       dlg.showModal();
     });
   }

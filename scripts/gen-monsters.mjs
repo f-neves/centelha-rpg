@@ -18,6 +18,11 @@ const LORE = read('lore-bestiario.json');
 const IMG = read('imagens-bestiario.json');
 const ECO = read('ecologia-bestiario.json'); // tipo (PF2e) + terreno + clima, por id
 const ELE = read('elementos-bestiario.json'); // fraquezas e resistencias, por id (gen-elementos.mjs)
+// As três velocidades em m/Tick, por id (gen-deslocamento.mjs). O `ft` e a
+// `origem` que moram no satélite são metadados da SEMEADURA, e ficam de fora do
+// monsters.json: a mesa quer saber quantos metros a peça anda, não de que página
+// do Bestiary o número saiu.
+const DESL = read('deslocamento-bestiario.json');
 // Criaturas suas: o arquivo é a fonte ÚNICA delas, então os satélites vêm dentro
 // do próprio objeto em vez de morarem nos seis arquivos por id.
 const CUSTOM = Object.fromEntries((() => {
@@ -198,6 +203,15 @@ function build(c) {
       ...(elem.fraquezas.length ? { fraquezas: elem.fraquezas } : {}),
       ...(elem.resistencias.length ? { resistencias: elem.resistencias } : {}),
       iniciativa: c.iniciativa,
+      // Quantos metros a criatura cobre em um Tick, nas três marchas. Vem do
+      // satélite; a criatura sua pode declarar as dela dentro do próprio objeto.
+      // Sem nenhum dos dois, cai no passo do soldado (3 · 5 · 7), porque uma
+      // peça sem deslocamento não anda no Grid, e uma criatura nova não pode
+      // travar o tabuleiro só por ainda não ter passado pela semeadura.
+      deslocamento: (() => {
+        const d = cu?.deslocamento ?? DESL[c.id] ?? { batalha: 3, arranque: 5, corrida: 7 };
+        return { batalha: d.batalha, arranque: d.arranque, corrida: d.corrida };
+      })(),
       ataques: (c.ataques || []).map((a) => ({ nome: a.nome, pool: a.pool, dano: a.dano, speed: a.ticks, classe: classeDoAtaque(c.id, a.nome, a.ticks), ...(a.notas ? { notas: a.notas } : {}) })),
     },
     habilidades: (h.hab || []).map((x) => ({ nome: x.n, descricao: x.d })),
