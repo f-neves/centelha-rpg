@@ -177,6 +177,46 @@ reproduziu** depois dos dois consertos do passo (o lateral e o da peça encurral
 reprodução dedicada, dois PCs de punho e uma criatura de garras declararam a distância, andaram
 a cada Tick e golpearam na agenda. Se voltar a acontecer, anotar peça, arma e distância.
 
+## 3.1.2. O passo real e a ficha do lance (2026-08-28)
+
+Três coisas que fechavam o buraco entre o que a régua sabe e o que a mesa via.
+
+**O bestiário ganhou deslocamento** (fecha a K28). Satélite `deslocamento-bestiario.json`,
+semeado por `gen-deslocamento.mjs` a partir da **velocidade original da criatura** no material
+de origem, como o usuário tinha travado: 270 das 309 com número colhido de fonte (Archives of
+Nethys, d20pfsrd) e 39 pela tabela por tipo e porte, com a procedência marcada verbete a
+verbete. O fator caiu limpo das raças básicas: **m/Tick = ft ÷ 10**, porque humano 30 ft dá 3
+(o passo do soldado) e baixa estatura 20 ft dá 2, que são exatamente os dois terços que
+`racas.json` já cobrava. Lobo 5/8/12, ogro 4/6/9, elemental do ar 10/16/23, caramujo 1/2/2.
+Onde o passo em terra é vestigial e o voo ou o nado é o modo real, o número da mesa é o do modo
+dominante, com o porquê no satélite.
+
+**O Grid lê o passo real.** Era 3 m/Tick para todo mundo, do caramujo ao guepardo. Agora
+`resumoCombatePC` devolve as três velocidades da ficha (com a fração da raça e a meia
+penalidade da armadura, a mesma régua que a ficha desenha) e `resumoDe` traz as da criatura;
+`passoDaPeca` no Grid resolve as duas, e as caixas de deslocar e de declarar mostram o número
+de quem está agindo. A Corrida usa o **Arranque** e não o topo, porque quase toda perseguição
+de combate cabe nos três primeiros Ticks.
+
+**A ficha do lance**, na folha da ação: três colunas, recolhida por padrão. *Atacante* traz
+arma, classe de tempo, Velocidade, Preparo/Golpe/Recuperação, bolo de acerto, dano e as três
+velocidades; *alvo* traz Defesa, Defesa Mental, as três Absorções, resistência a perfuração e o
+passo dele; *o lance* traz distância, alcance, ciclo, Tick do golpe, fase e Pressão do alvo,
+Defesa efetiva e quem alcança quem, em leitura (cada número dali é soma dos campos ao lado, e
+dois lugares para corrigir a mesma coisa é como os dois divergem). **Tudo o que é editável tem
+a caixinha "fixa"**: marcada, o número vai para `combatentes.dados` e vale até o fim do
+combate; desmarcada, morre quando o modal fecha. É o ajuste por instância que já existia no
+banco e que nenhuma tela escrevia. Corrigir repinta a folha na hora, e o P/G/R escrito à mão
+refaz a agenda inteira (`comOverride`, em `combate-tempo.ts`).
+
+**E o Tick do Golpe planta o pé** (decidido em 28/08, para rediscutir): no Golpe não se anda,
+que é a §14.6 finalmente escrita no motor. Antes a peça deslizava no instante do impacto
+sempre que o alvo tinha se movido durante o Preparo. Quem quer chegar batendo compra a
+**Investida**, que paga guarda por isso. A discussão que ficou aberta: permitir o passo no
+Golpe favoreceria a arma leve (1 Tick é 20% do ciclo dela contra 14% da pesada) e reabriria o
+bate-e-corre, já que andar na Recuperação é caro; proibir favorece a pesada de leve. Sem
+medição de bancada ainda.
+
 ## 3.2. Onde o sistema ainda falha (varredura de cenários, 2026-08-27)
 
 Pensado cenário a cenário antes de fechar a fatia; o que não tem conserto nesta fatia fica
