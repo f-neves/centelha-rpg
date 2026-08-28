@@ -2260,6 +2260,20 @@
       "ia": {
         "fugirAbaixoDePct": 25,
         "nota": "O modo automático de uma criatura: ataca o inimigo de pé mais próximo, foge quando a Vida cai do limiar. O mestre liga e desliga por peça, e retoma o controle a qualquer momento."
+      },
+      "passoNoGolpe": {
+        "nota": "No Tick do Golpe o pé não planta de todo: o corpo cobre os últimos metros. Mas só PARA FRENTE, nunca para trás. Medido em 28/08 (scripts/sim-passo-golpe.mjs): o passo livre entregava o Tick a quem foge e custava 24% dos golpes de quem precisa colar; restrito à direção do alvo ele mede idêntico ao pé plantado nas três baterias, inclusive contra o bate-e-corre. É de graça.",
+        "aproximar": true,
+        "aproximarNota": "Anda na direção do alvo e PARA no alcance da arma. Não é um passo inteiro livre: é o que falta para encostar, e por isso não vira alcance de engajamento disfarçado.",
+        "travessia": true,
+        "travessiaExigeCorrida": true,
+        "travessiaNota": "A inércia: quem chega CORRENDO não para no impacto, segue em linha reta e sai do outro lado. Só para quem declarou Corrida ou Investida, e o freio já existe e é caro (Defesa −4 correndo, −6 investindo). Sem esse portão, atravessar o inimigo vira fuga disfarçada: num corredor você sai pelo outro lado e deixa o resto do grupo dele para trás.",
+        "recuar": false,
+        "recuarNota": "Nunca. Não se inverte a inércia no instante do impacto, e é justamente o recuo que a bancada mostrou ser caro: todo o custo da versão livre vinha do bate-e-corre.",
+        "circularNaHaste": false,
+        "circularNota": "A haste giraria em volta do alvo mantendo a distância, mudando o ângulo sem fechar nem abrir. Faz sentido e tem risco baixo (não toca na economia de perseguição), mas exige andar pelo ANEL num tabuleiro de hexágonos, que é a única das variantes que precisa de geometria 2D de verdade. Fica anotada e desligada.",
+        "arqueiroAjusta": false,
+        "arqueiroNota": "Descartado por ora: o arco já tem Preparo alto e Recuperação 0, então anda de graça quase o ciclo inteiro, e o passo do Golpe seria marginal. O uso que o justificaria (desbloquear a linha de tiro) depende de linha de tiro e cobertura, que o Grid não modela."
       }
     },
     "golpeAdiado": {

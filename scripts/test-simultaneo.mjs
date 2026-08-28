@@ -202,6 +202,38 @@ eq(T.previsaoDeEncontro(1, 3, 0, 1), 0, 'já no alcance: zero Ticks');
   ok(agMao.livre > agRegua.livre, 'e o ciclo inteiro anda junto');
 }
 
+// ------------------------------- 3.3. o passo no Tick do Golpe (28/08)
+// Medido em `sim-passo-golpe.mjs`: o passo LIVRE entrega o Tick a quem foge e
+// custa 24% dos golpes de quem precisa colar; restrito à direção do alvo ele
+// mede idêntico ao pé plantado. O que a régua guarda é essa restrição.
+{
+  const png = regras.combate.simultaneo.passoNoGolpe;
+  ok(png, 'a régua do passo no Golpe existe');
+  eq(png.recuar, false, 'recuar no Tick do Golpe: nunca');
+  eq(png.travessiaExigeCorrida, true, 'atravessar exige a Corrida declarada');
+
+  // Fora do alcance: cobre os últimos metros.
+  eq(T.passoDoGolpe({ temAlvo: true, noAlcance: false, modo: 'batalha' }), 'aproximar',
+    'longe do alvo, o corpo cobre os últimos metros');
+  // No alcance, andando: para. É o pé que planta.
+  eq(T.passoDoGolpe({ temAlvo: true, noAlcance: true, modo: 'batalha' }), 'nenhum',
+    'no alcance e andando, o pé planta');
+  // No alcance, correndo: atravessa.
+  eq(T.passoDoGolpe({ temAlvo: true, noAlcance: true, modo: 'corrida' }), 'atravessar',
+    'no alcance e correndo, a inércia atravessa');
+  // Sem alvo (movimento puro) não há passo do Golpe: não há golpe.
+  eq(T.passoDoGolpe({ temAlvo: false, noAlcance: false, modo: 'corrida' }), 'nenhum',
+    'sem alvo não há passo do Golpe');
+
+  // A travessia mira o outro lado, na mesma linha.
+  const alem = H.alemDe({ q: 0, r: 0 }, { q: 3, r: 0 });
+  eq(alem, { q: 6, r: 0 }, 'o ponto da inércia fica além do alvo, na mesma reta');
+  // E caminhar até lá REALMENTE passa do alvo, contornando a casa dele.
+  const saiu = H.caminharHex({ q: 0, r: 0 }, alem, 4, 0, (h) => h.q === 3 && h.r === 0);
+  ok(H.distanciaHex(saiu, { q: 3, r: 0 }) >= 1 && saiu.q > 3,
+    `atravessar sai do OUTRO lado do alvo (${JSON.stringify(saiu)})`);
+}
+
 // ------------------------------------------------- 4. o robô mínimo
 {
   const perto = { id: 'perto', pos: { q: 1, r: 0 } };

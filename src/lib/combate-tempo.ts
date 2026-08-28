@@ -743,6 +743,37 @@ export interface Mov {
   auto: boolean;
 }
 
+/**
+ * O PASSO NO TICK DO GOLPE.
+ *
+ * A §14.6 dizia "no Golpe não se faz nada", e o motor plantava o pé ali. A mesa
+ * reabriu com uma distinção que a régua não tinha: o problema nunca foi ANDAR,
+ * foi andar PARA TRÁS. Medido em `scripts/sim-passo-golpe.mjs`, o passo livre
+ * entregava o Tick a quem foge e custava 24% dos golpes de quem precisa colar;
+ * restrito à direção do alvo ele mede idêntico ao pé plantado em todas as
+ * baterias, inclusive contra o bate-e-corre.
+ *
+ * Duas formas, e a segunda é paga:
+ *   `aproximar`  cobre os últimos metros e PARA no alcance. É o caso comum, e
+ *                existe para o gesto não ir para o lixo por faltar um metro.
+ *   `atravessar` a inércia de quem chega correndo: segue em linha reta e sai do
+ *                outro lado. Só com Corrida ou Investida declarada, porque sem
+ *                esse portão atravessar vira fuga disfarçada.
+ */
+const PNG = SIM?.passoNoGolpe || {};
+export type PassoGolpe = 'nenhum' | 'aproximar' | 'atravessar';
+export function passoDoGolpe(opts: {
+  temAlvo: boolean; noAlcance: boolean; modo?: string | null;
+}): PassoGolpe {
+  if (!opts.temAlvo) return 'nenhum';
+  if (!opts.noAlcance) return PNG.aproximar === false ? 'nenhum' : 'aproximar';
+  // Já ao alcance: o único movimento que sobra é a travessia, e ela é da
+  // Corrida. Quem chegou andando para no impacto.
+  if (!PNG.travessia) return 'nenhum';
+  if (PNG.travessiaExigeCorrida && opts.modo !== 'corrida') return 'nenhum';
+  return 'atravessar';
+}
+
 /** Quantos Ticks a decisão leva para valer: declara em T, começa em T + este. */
 export const decideEmValeDepois = (): number => SIM?.decideEmValeDepois ?? 1;
 

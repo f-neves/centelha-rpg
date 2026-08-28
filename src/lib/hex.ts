@@ -153,6 +153,16 @@ export function caminharHex(
   return pos;
 }
 
+/**
+ * O ponto do outro lado do alvo, na mesma linha: para onde a inércia leva.
+ *
+ * Dobra o vetor que vai de `de` até `alvo`, o que dá um destino além dele na
+ * direção em que o corpo já vinha. Quem caminha até esse ponto atravessa o
+ * alvo (contornando a casa dele, que continua ocupada) e sai do outro lado.
+ */
+export const alemDe = (de: Hex, alvo: Hex): Hex =>
+  ({ q: alvo.q + (alvo.q - de.q), r: alvo.r + (alvo.r - de.r) });
+
 /** Se o hexágono cabe num tabuleiro de `cols` × `rows`. */
 export function dentro(h: Hex, cols: number, rows: number): boolean {
   const { col, row } = axialParaOffset(h.q, h.r);

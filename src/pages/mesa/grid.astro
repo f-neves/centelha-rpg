@@ -2364,7 +2364,7 @@ const SETAS = [
   import {
     centroHex, verticesHex, tabuleiro, medidaTabuleiro, margemTabuleiro,
     hexEmPonto, dentro, chaveHex, distanciaHex, nomeHex, larguraHex,
-    offsetParaAxial, letraColuna, caminharHex,
+    offsetParaAxial, letraColuna, caminharHex, alemDe,
   } from '../../lib/hex';
   import { uiConfirmar, uiErro, uiFormulario } from '../../lib/ui-dialog';
   import {
@@ -2397,6 +2397,7 @@ const SETAS = [
     contrapeEm, contrapeDe, contrapeAcaba, faseDeQuemVaiAgir, preparoDe, ordemDaFila,
     adiaGolpe, agendar, golpesNoAr, golpeDevido, golpeResolvido, proximoGolpe,
     ehSimultaneo, agendaSimultanea, ticksDeViagem, decideEmValeDepois, comOverride,
+    passoDoGolpe,
     previsaoDeEncontro, decisaoAutomatica, MODOS_MOV,
     FASE_ROTULO, type CombateMesa, type Manobra, type Acao, type Mov,
   } from '../../lib/combate-tempo';
@@ -4915,18 +4916,31 @@ const SETAS = [
       // A decisão vale um Tick depois de declarada: o passo do Tick T só sai se
       // a declaração é de antes dele.
       if (((c.acao as any)?.desde ?? 0) + decideEmValeDepois() > T) continue;
-      // NO TICK DO GOLPE O PÉ PLANTA (decidido em 28/08). É a §14.6 escrita no
-      // motor: no Golpe não se aborta, não se reage e não se anda, porque o
-      // golpe se apoia no chão. Quem quer chegar batendo compra a Investida,
-      // que paga guarda por isso. Sem esta linha a peça deslizava no instante
-      // do impacto sempre que o alvo tinha se movido durante o Preparo.
-      if (faseEm(acaoNo(c), T) === 'golpe') continue;
       const pos = TOKENS[c.id];
       const alvoPos = mov.alvo ? TOKENS[mov.alvo] : mov.destino;
       if (!alvoPos) continue;
       const passos = Math.max(1, Math.round(mov.porTick / escala));
       const pararA = mov.alvo ? alcanceDaPeca(c) : 0;
-      let novo = caminharHex(pos, alvoPos, passos, pararA,
+
+      // NO TICK DO GOLPE O PASSO É RESTRITO (decidido em 28/08, medido na
+      // `sim-passo-golpe.mjs`). O problema nunca foi andar, foi andar PARA
+      // TRÁS: o passo livre entregava o Tick a quem foge. Aqui sobram duas
+      // formas, as duas para frente: cobrir os últimos metros até o alcance, e
+      // a travessia de quem chega correndo, que sai pelo outro lado.
+      let mira = alvoPos, paraEm = pararA;
+      if (faseEm(acaoNo(c), T) === 'golpe') {
+        const p = passoDoGolpe({
+          temAlvo: !!mov.alvo,
+          noAlcance: distanciaHex(pos, alvoPos) <= pararA,
+          modo: mov.modo,
+        });
+        if (p === 'nenhum') continue;
+        // Atravessar mira o ponto do outro lado do alvo, na mesma linha: é a
+        // inércia levando o corpo, e não uma escolha de direção.
+        if (p === 'atravessar') { mira = alemDe(pos, alvoPos); paraEm = 0; }
+      }
+
+      let novo = caminharHex(pos, mira, passos, paraEm,
         (h) => ocupadoPor(h.q, h.r, c.id));
       // CERCADO NÃO É PRESO. O `ocupadoPor` mede círculos em metros, e um
       // Enorme ao lado veta os seis vizinhos de quem encosta nele (a peça pode
@@ -4937,20 +4951,28 @@ const SETAS = [
       if (novo.q === pos.q && novo.r === pos.r) {
         const casaExata = (h: any) => Object.entries(TOKENS).some(([cid, t]: any) =>
           cid !== c.id && t.q === h.q && t.r === h.r);
-        novo = caminharHex(pos, alvoPos, passos, pararA, casaExata);
+        novo = caminharHex(pos, mira, passos, paraEm, casaExata);
       }
+      const atravessou = mira !== alvoPos && (novo.q !== pos.q || novo.r !== pos.r);
       if (novo.q !== pos.q || novo.r !== pos.r) {
         const em = new Date().toISOString();
         const m = distanciaHex(pos, novo) * escala;
         TOKENS[c.id] = { q: novo.q, r: novo.r, em } as any;
         await gravarToken(c.id, novo.q, novo.r, em);
-        await logar(c, `${c.nome} avança ${fmtM(m)} (${mov.modo}) até ${nomeHex(novo.q, novo.r)}`,
-          { acao: null });
+        await logar(c, atravessou
+          ? `${c.nome} atravessa ${fmtM(m)} pela inércia da corrida e sai em ${nomeHex(novo.q, novo.r)}`
+          : `${c.nome} avança ${fmtM(m)} (${mov.modo}) até ${nomeHex(novo.q, novo.r)}`,
+        { acao: null });
       }
       // Chegou: o trajeto sai da ação. No movimento puro a peça fica livre JÁ,
       // porque a estimativa da declaração pode ter sido mais longa que o
       // caminho real (o alvo veio ao encontro).
-      if (distanciaHex(TOKENS[c.id], alvoPos) <= pararA) {
+      //
+      // QUEM ATRAVESSOU TAMBÉM ENCERRA: ela sai do outro lado, portanto LONGE
+      // do alvo, e sem esta ressalva o trajeto continuaria vivo e ela daria
+      // meia-volta para perseguir de novo no Tick seguinte. A inércia gastou o
+      // gesto; o que vem depois é decisão nova.
+      if (atravessou || distanciaHex(TOKENS[c.id], alvoPos) <= pararA) {
         const sem = { ...(c.acao || {}) } as any; delete sem.mov;
         const puro = !mov.alvo && !(sem.golpes || []).length;
         const patch: any = { acao: sem };
