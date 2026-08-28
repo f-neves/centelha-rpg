@@ -51,7 +51,9 @@ const cat = {
 };
 
 /** O passo de cada classe, pela régua de `derivados.deslocamento` num lutador padrão. */
-const PASSO = 4;          // aventureiro: 2 + (Des 3 + Atl 4) ÷ 4 = 3,75 → 4 m/Tick
+// Mutável para a bateria 5, que varre o passo: o ganho do passo de aproximação
+// depende de quanto chão a peça já cobre por Tick.
+const PASSO_REF = { v: 4 };   // aventureiro: 2 + (Des 3 + Atl 4) ÷ 4 = 3,75 → 4 m/Tick
 const ALCANCE = { haste: 2 };
 const alcanceDe = (classe) => ALCANCE[classe] ?? 1;
 
@@ -64,7 +66,7 @@ function duelo(specA, specB, { andarNoGolpe, distInicial, estrategiaB }, rnd, R)
   const A = lutador({ ...specA, regras: R }, cat);
   const B = lutador({ ...specB, regras: R }, cat);
   A.nome = 'A'; B.nome = 'B';
-  for (const c of [A, B]) { c.golpesFeitos = 0; c.acertos = 0; }
+  for (const c of [A, B]) { c.golpesFeitos = 0; c.acertos = 0; c.perdidos = 0; }
   let dist = distInicial;
   let t = 0;
   const estados = { [A.nome]: null, [B.nome]: null };   // { offs, total, desde }
@@ -78,8 +80,23 @@ function duelo(specA, specB, { andarNoGolpe, distInicial, estrategiaB }, rnd, R)
     if (rel < Math.max(...e.offs)) return 'preparo';
     return 'recuperacao';
   };
-  /** O movimento é grátis nesta fase? (A Recuperação cobra 1 Tick/m: ninguém anda.) */
-  const podeAndar = (f) => f === 'livre' || f === 'preparo' || (f === 'golpe' && andarNoGolpe);
+  /**
+   * O movimento é grátis nesta fase, e em que direção?
+   *
+   * `andarNoGolpe` tem três valores, e a diferença entre os dois últimos é a
+   * decisão que a mesa está tomando:
+   *   'nao'       o pé planta (a regra de 28/08);
+   *   'livre'     anda para onde quiser, inclusive para trás (o bate-e-corre);
+   *   'aproximar' anda SÓ na direção do alvo, para cobrir os últimos metros.
+   *
+   * Devolve 'nenhum' | 'qualquer' | 'so-frente'.
+   */
+  const podeAndar = (f) => {
+    if (f === 'livre' || f === 'preparo') return 'qualquer';
+    if (f !== 'golpe') return 'nenhum';
+    return andarNoGolpe === 'livre' ? 'qualquer'
+      : andarNoGolpe === 'aproximar' ? 'so-frente' : 'nenhum';
+  };
 
   while (t < 400 && A.pv > 0 && B.pv > 0) {
     somaDist += dist; nMed++;
@@ -107,7 +124,7 @@ function duelo(specA, specB, { andarNoGolpe, distInicial, estrategiaB }, rnd, R)
         // Sem esta linha a arma leve (Preparo 0) declarava a 12 metros, ficava
         // presa em Golpe e Recuperação para sempre e NUNCA andava: o duelo
         // batia no teto de Ticks com zero golpes, medindo o robô e não a regra.
-        const alcanceUtil = alc + PASSO * (eu.prep || 0);
+        const alcanceUtil = alc + PASSO_REF.v * (eu.prep || 0);
         const querBater = kita ? dist <= alc : dist <= alcanceUtil;
         if (querBater) {
           // `offs` é a agenda relativa e `spd` é o ciclo inteiro, do jeito que
@@ -117,6 +134,10 @@ function duelo(specA, specB, { andarNoGolpe, distInicial, estrategiaB }, rnd, R)
       }
       // 2. O GOLPE CAI, se este é o Tick dele e o alvo está ao alcance.
       const eAgora = estados[eu.nome];
+      // O GOLPE QUE NÃO CAI POR FALTAR CHÃO: o gesto venceu, o alvo está a um
+      // passo do alcance, e o Tick vai para o lixo. É exatamente este caso que
+      // o passo de aproximação existe para resolver, e por isso ele é contado.
+      if (fase(eu, eAgora) === 'golpe' && dist > alc) eu.perdidos++;
       if (fase(eu, eAgora) === 'golpe' && dist <= alc) {
         eu.emAcao = true; eu.emGolpe = true; eu.pend = eAgora; eu.tickAgora = t - eAgora.desde;
         eu.porRep = 1; eu.nUltimo = 1; eu.tipo = 'simples'; eu.off = false;
@@ -124,11 +145,14 @@ function duelo(specA, specB, { andarNoGolpe, distInicial, estrategiaB }, rnd, R)
         atacar(eu, ele, R, rnd);
         if (ele.pv < antes) eu.acertos++;
       }
-      // 3. ANDAR, se a fase deixa.
-      const f2 = fase(eu, estados[eu.nome]);
-      if (podeAndar(f2)) {
-        if (kita) dist += PASSO;                                  // recua
-        else if (dist > alc) dist = Math.max(alc, dist - PASSO);  // fecha
+      // 3. ANDAR, se a fase deixa e na direção que ela permite.
+      const modo = podeAndar(fase(eu, estados[eu.nome]));
+      if (modo !== 'nenhum') {
+        // No Tick do Golpe com passo de aproximação, recuar não é opção: o
+        // kiter fica onde está, e é justamente isso que tira dele o lucro que
+        // a versão livre lhe dava.
+        if (kita) { if (modo === 'qualquer') dist += PASSO_REF.v; }
+        else if (dist > alc) dist = Math.max(alc, dist - PASSO_REF.v);
       }
     }
     dist = Math.max(0, Math.min(60, dist));
@@ -136,13 +160,13 @@ function duelo(specA, specB, { andarNoGolpe, distInicial, estrategiaB }, rnd, R)
   }
   return {
     venceuA: B.pv <= 0 && A.pv > 0, venceuB: A.pv <= 0 && B.pv > 0,
-    acertosA: A.acertos, acertosB: B.acertos, ticks: t, distMedia: somaDist / Math.max(1, nMed),
+    acertosA: A.acertos, acertosB: B.acertos, perdidosA: A.perdidos, ticks: t, distMedia: somaDist / Math.max(1, nMed),
   };
 }
 
 function bateria(armaA, armaB, opts, n = 3000) {
   const R = REGRAS_PGR;
-  let vA = 0, vB = 0, aA = 0, aB = 0, dm = 0, tt = 0;
+  let vA = 0, vB = 0, aA = 0, aB = 0, dm = 0, tt = 0, pA = 0;
   for (let i = 0; i < n; i++) {
     const rnd = criarRng(20260828 + i);
     const r = duelo(
@@ -150,11 +174,11 @@ function bateria(armaA, armaB, opts, n = 3000) {
       opts, rnd, R,
     );
     if (r.venceuA) vA++; if (r.venceuB) vB++;
-    aA += r.acertosA; aB += r.acertosB; dm += r.distMedia; tt += r.ticks;
+    aA += r.acertosA; aB += r.acertosB; dm += r.distMedia; tt += r.ticks; pA += r.perdidosA;
   }
   return {
     winA: (100 * vA / n), winB: (100 * vB / n),
-    acA: aA / n, acB: aB / n, dist: dm / n, ticks: tt / n,
+    acA: aA / n, acB: aB / n, dist: dm / n, ticks: tt / n, perd: pA / n,
   };
 }
 
@@ -165,44 +189,44 @@ const pct = (x) => `${x.toFixed(1)}%`;
 const nu = (x) => x.toFixed(2);
 
 console.log('\n=== ANDAR NO TICK DO GOLPE: o que muda ===');
-console.log('Duelo com espaço, 3000 sementes por célula. Passo 4 m/Tick, alcance 1 m (2 na haste).');
+console.log('Duelo com espaço, 3000 sementes por célula. Passo variável (4 m/Tick nas baterias 1 a 4), alcance 1 m (2 na haste).');
 console.log('O modelo é uma RETA e um duelo: sem aliados, sem terreno, sem flanqueamento.\n');
 
 // --------------------------------------------- 1. espelho, os dois agressivos
 console.log('1) ESPELHO, os dois fechando distância (começando a 12 m).');
 console.log('   Se andar no Golpe fosse neutro, nada mudaria aqui.\n');
-console.log('   classe   | golpes/duelo SEM | COM   | Δ      | duração SEM | COM');
-console.log('   ---------|------------------|-------|--------|-------------|------');
+console.log('   classe   | pé plantado | livre  | aproximar');
+console.log('   ---------|-------------|--------|----------');
 for (const [id, nome] of CLASSES) {
-  const sem = bateria(id, id, { andarNoGolpe: false, distInicial: 12, estrategiaB: 'bruto' });
-  const com = bateria(id, id, { andarNoGolpe: true, distInicial: 12, estrategiaB: 'bruto' });
-  const d = com.acA - sem.acA;
-  console.log(`   ${nome.padEnd(8)} | ${nu(sem.acA).padStart(16)} | ${nu(com.acA).padStart(5)} `
-    + `| ${(d >= 0 ? '+' : '') + nu(d).padStart(5)} | ${nu(sem.ticks).padStart(11)} | ${nu(com.ticks)}`);
+  const sem = bateria(id, id, { andarNoGolpe: 'nao', distInicial: 12, estrategiaB: 'bruto' });
+  const com = bateria(id, id, { andarNoGolpe: 'livre', distInicial: 12, estrategiaB: 'bruto' });
+  const apr = bateria(id, id, { andarNoGolpe: 'aproximar', distInicial: 12, estrategiaB: 'bruto' });
+  console.log(`   ${nome.padEnd(8)} | ${nu(sem.acA).padStart(9)} | ${nu(com.acA).padStart(6)} | ${nu(apr.acA).padStart(10)}`);
 }
 
 // ------------------------------------------------- 2. o bate-e-corre (o abuso)
 console.log('\n2) O BATE-E-CORRE: A fecha e bate, B bate e recua (o kiter).');
 console.log('   É o abuso que a regra tem de aguentar. "A alcança" = quanto A consegue bater.\n');
-console.log('   arma de A     | A alcança SEM | COM   | Δ      | dist. média SEM | COM');
-console.log('   --------------|---------------|-------|--------|-----------------|------');
+console.log('   arma de A     | golpes que A encosta       ||  distância média');
+console.log('                 | plantado | livre | aproxim. ||  plant | livre | aprox');
+console.log('   --------------|----------|-------|----------||--------|-------|------');
 for (const [id, nome] of CLASSES) {
-  const sem = bateria(id, 'adaga', { andarNoGolpe: false, distInicial: 4, estrategiaB: 'kiter' });
-  const com = bateria(id, 'adaga', { andarNoGolpe: true, distInicial: 4, estrategiaB: 'kiter' });
-  const d = com.acA - sem.acA;
-  console.log(`   ${nome.padEnd(13)} | ${nu(sem.acA).padStart(13)} | ${nu(com.acA).padStart(5)} `
-    + `| ${(d >= 0 ? '+' : '') + nu(d).padStart(5)} | ${nu(sem.dist).padStart(15)} | ${nu(com.dist)}`);
+  const sem = bateria(id, 'adaga', { andarNoGolpe: 'nao', distInicial: 4, estrategiaB: 'kiter' });
+  const com = bateria(id, 'adaga', { andarNoGolpe: 'livre', distInicial: 4, estrategiaB: 'kiter' });
+  const apr = bateria(id, 'adaga', { andarNoGolpe: 'aproximar', distInicial: 4, estrategiaB: 'kiter' });
+  console.log(`   ${nome.padEnd(13)} | ${nu(sem.acA).padStart(11)} | ${nu(com.acA).padStart(6)} | ${nu(apr.acA).padStart(10)}`
+    + `  ||  ${nu(sem.dist).padStart(5)} | ${nu(com.dist).padStart(5)} | ${nu(apr.dist).padStart(5)}`);
 }
 
 // ------------------------------------- 3. classe contra classe, o equilíbrio
 console.log('\n3) O EQUILÍBRIO ENTRE CLASSES (todos contra a espada longa, a 12 m).');
 console.log('   A pergunta: permitir o passo no Golpe favorece quem?\n');
-console.log('   classe   | win% SEM | win% COM | Δ');
+console.log('   classe   | pé plantado | aproximar | Δ');
 console.log('   ---------|----------|----------|------');
 let maxD = 0;
 for (const [id, nome] of CLASSES) {
-  const sem = bateria(id, 'espada-longa', { andarNoGolpe: false, distInicial: 12, estrategiaB: 'bruto' });
-  const com = bateria(id, 'espada-longa', { andarNoGolpe: true, distInicial: 12, estrategiaB: 'bruto' });
+  const sem = bateria(id, 'espada-longa', { andarNoGolpe: 'nao', distInicial: 12, estrategiaB: 'bruto' });
+  const com = bateria(id, 'espada-longa', { andarNoGolpe: 'aproximar', distInicial: 12, estrategiaB: 'bruto' });
   const d = com.winA - sem.winA;
   maxD = Math.max(maxD, Math.abs(d));
   console.log(`   ${nome.padEnd(8)} | ${pct(sem.winA).padStart(8)} | ${pct(com.winA).padStart(8)} `
@@ -225,6 +249,28 @@ for (const [id, nome] of CLASSES) {
     + `| +${(100 / ciclo).toFixed(0)}% do ciclo`);
 }
 console.log('\n   (a coluna do meio é o Preparo: os Ticks em que a peça JÁ anda de graça hoje)');
+
+// ------------------- 5. o que o passo de aproximação REALMENTE compra
+//
+// As baterias 1 a 3 mostram que ele não custa nada. Esta mostra o que ele
+// ganha, e é outro número: o GOLPE QUE VAI PARA O LIXO porque o gesto venceu e
+// o alvo estava a um passo do alcance. Ele cresce quanto MENOR o passo de quem
+// persegue, e é por isso que a bancada varre o passo em vez de fixá-lo: com 4
+// m/Tick quase todo mundo já chega, e o caso some.
+console.log('\n5) O GOLPE QUE VAI PARA O LIXO por faltar chão (o alvo a um passo do alcance).');
+console.log('   É este caso que o passo de aproximação resolve.\n');
+console.log('   passo | classe   | perdidos, pé plantado | com aproximação');
+console.log('   ------|----------|-----------------------|----------------');
+for (const passo of [2, 3, 4, 5]) {
+  PASSO_REF.v = passo;
+  for (const [id, nome] of [['adaga', 'leve'], ['martelo-de-guerra', 'pesada']]) {
+    const sem = bateria(id, 'adaga', { andarNoGolpe: 'nao', distInicial: 9, estrategiaB: 'kiter' });
+    const apr = bateria(id, 'adaga', { andarNoGolpe: 'aproximar', distInicial: 9, estrategiaB: 'kiter' });
+    console.log(`   ${String(passo).padStart(5)} | ${nome.padEnd(8)} | ${nu(sem.perd).padStart(21)} `
+      + `| ${nu(apr.perd).padStart(15)}`);
+  }
+}
+PASSO_REF.v = 4;
 console.log(`
 LEITURA
   · Com os dois querendo bater (baterias 1 e 3), a regra é NEUTRA: zero de desvio.
