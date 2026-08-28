@@ -1086,17 +1086,41 @@ const SETAS = [
       /* Um só token e tudo dentro acompanha: nome, número e rótulos são todos
          calculados a partir do `--fs-micro`. */
       --fs-micro: clamp(.5rem, .62vw, 1rem); }
+    /* O CANTO DO RELÓGIO VIRA PILHA, e deixa de ser grade.
+       Deitado ele é uma grade de áreas nomeadas (`rel`/`cab`/`prox`/`custo`)
+       que encaixa o Tick grande à esquerda do resto. De pé não sobra largura
+       para duas colunas, e reaproveitar a grade custou caro: as áreas viravam
+       uma lista onde faltava a do custo (que sumia para fora do fluxo) e o Tick
+       continuava esticado por duas fileiras, por cima da rodada. Uma pilha
+       simples resolve os dois, e não tem nome de área para esquecer. */
     :is(body.grid-tv, body.fila-empe) .ini-cab {
+      display: flex; flex-direction: column; align-items: center; gap: .2rem;
       border-right: 0; border-bottom: 1px solid var(--rule);
-      padding-right: 0; padding-bottom: .3rem; margin-bottom: .3rem;
-      grid-template-columns: minmax(0, 1fr);
-      grid-template-areas: "rel" "cab" "prox"; justify-items: center; }
+      /* o topo fica livre para o « não cair em cima do relógio */
+      padding: 1.4rem 0 .35rem; margin-bottom: .35rem; }
+    :is(body.grid-tv, body.fila-empe) .ini-relogio {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 0; padding: 0; min-width: 0; }
     /* O Tick continua sendo o número grande, mas medido pela coluna: fixo em
-       1,9rem ele estouraria a largura da coluna num notebook. */
-    :is(body.grid-tv, body.fila-empe) .ini-tk-n { font-size: clamp(1rem, 2vw, 2.6rem); }
-    :is(body.grid-tv, body.fila-empe) .ini-relogio { justify-items: center;
-      grid-template-columns: minmax(0, 1fr); }
-    :is(body.grid-tv, body.fila-empe) .ini-rd { grid-column: 1; }
+       1,9rem ele estouraria a largura num notebook. E sem o `span 2`, que só
+       fazia sentido com a rodada ao lado. */
+    :is(body.grid-tv, body.fila-empe) .ini-tk-n {
+      grid-row: auto; font-size: clamp(1rem, 2vw, 2.6rem); }
+    :is(body.grid-tv, body.fila-empe) .ini-rd {
+      grid-column: auto; grid-row: auto; white-space: normal; text-align: center; }
+    /* O "próximo" é a única coisa aqui que se clica no meio da cena, e o rótulo
+       dele traz o custo em Ticks. Sem `nowrap` ele quebrava LETRA A LETRA numa
+       coluna de 115px: uma torre com "P R Ó X I M O". */
+    :is(body.grid-tv, body.fila-empe) .ini-prox {
+      white-space: nowrap; width: 100%; padding: .25rem .1rem;
+      font-size: calc(var(--fs-micro) * .95); }
+    /* "a ação custa [5] t" também empilha, em vez de espremer três peças numa
+       linha que não existe. */
+    :is(body.grid-tv, body.fila-empe) .ini-rodada { width: 100%; }
+    :is(body.grid-tv, body.fila-empe) .ini-custo {
+      display: flex; flex-direction: column; align-items: center; gap: .1rem;
+      text-align: center; line-height: 1.15; }
+    :is(body.grid-tv, body.fila-empe) .ini-custo input { width: 3.2rem; text-align: center; }
     /* O título e as setas saem: as setas deslizavam a fila DEITADA, e de pé
        quem rola é a lista. O ▾ ia junto do título · a dobra da fila agora é o
        « do trilho, que é a mesma pergunta com uma resposta melhor. */
