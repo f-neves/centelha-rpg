@@ -42,6 +42,10 @@ como está, porque o que cada opção significava continua sendo a leitura das c
 | **N5** | as fases de um Tick | **declaração · início · resolução**, e a resolução na ordem inversa da declaração (§0.46) |
 | **N6** | penalidade nascida no Tick T | **só vale em T+1**: a resolução lê o retrato de quando as declarações terminaram (§0.46) |
 | **N7** | quem declara depois enxerga o que já foi declarado? | **enxerga, e é a vantagem de ter mais Raciocínio + Prontidão** (regra do Vampiro). O que ele vê já está definido na máscara da migração 27 (§0.47) |
+| **N8** | o que exatamente é visível | **quem vai fazer o quê em cada Tick**, com rastro no tabuleiro (movimento, trajetória, alvos). Exceção: arremesso, tiro e Arte não revelam o alvo até executarem (§0.48) |
+| **E2** | as quatro distâncias iniciais | **1 · 18 · 42 · 71 hexes** (encostado, ~3, ~7 e ~12 Ticks de corrida; 71 é a diagonal do mapa de 48×48) |
+| **Fila** | a ordem de declaração na tela | **ordenada sozinha pela ficha, e o mestre pode mudar à mão** (§0.49) |
+| **Ordem** | o que entra antes do harness | **tudo**: N1 a N8, o `ate` e as 9 bandeiras (§0.6) |
 
 Q13 (o repertório declarável) não foi perguntada porque D3 a responde: uma política declarada como
 dado só pode declarar o que o Grid aceita, e o Grid aceita **6 coisas** (atacar em 4 manobras, mover
@@ -554,8 +558,9 @@ Então o repertório de informação de quem declara por último é, exatamente:
 | a Pressão e a dívida acumuladas | |
 | a Vida do inimigo só no grau que a mesa revelou (migração 14) | |
 
-**N7 não precisa de sistema de visibilidade novo.** Ele herda o que existe, e o que existe foi
-desenhado para exatamente esta pergunta.
+**N7 não precisava de sistema de visibilidade novo**, e a régua herdada era esta. **N8 (§0.48) a
+substitui**: a decisão seguinte foi abrir o alvo e a arma do corpo a corpo e guardar só a pontaria. O
+que segue nesta seção descreve a máscara de hoje, que é o ponto de partida da migração 29.
 
 #### Um vazamento que o Simultâneo abriu na máscara
 
@@ -579,10 +584,10 @@ na ordem decide se ela tem o que ler. Proposta, uma linha por perfil:
 | **Guarda-costas** | se há golpe declarado caindo no Tick em que o aliado protegido está aberto, move para interpor em vez de atacar |
 | **Conjurador** | conta quantos declararam golpe para o mesmo Tick e escolhe zona se forem 2 ou mais agrupados |
 
-Note que **nenhuma dessas regras pode usar `alvo`**, porque a máscara o esconde. Elas usam só fase,
-Tick do golpe e manobra, que é o que a régua entrega. Isso é bom para o desenho: as políticas ficam
-honestas por construção, e a mesma política roda para o mestre e para o jogador sem precisar de duas
-versões.
+Com **N8** (§0.48) essas regras passam a poder usar também o **alvo do corpo a corpo** ("já tem
+alguém indo nele, escolho outro"), e continuam sem poder usar o alvo de **tiro, arremesso e Arte**,
+que fica escondido até resolver. Isso é bom para o desenho: as políticas ficam honestas por
+construção, e a mesma política roda para o mestre e para o jogador sem precisar de duas versões.
 
 **Na carga do mestre, que é a métrica.** A ordem de declaração vira uma regra que alguém tem de
 cumprir. Hoje `grupoDaVez` devolve todos os livres e o mestre escolhe por quem começar; com N4 e N7
@@ -600,12 +605,72 @@ Proposta: o eixo E6 ganha um nível a mais, **"política cega"**, idêntica à A
 declaração nenhuma, e a diferença entre ela e a Agressiva com leitura mede o preço de um ponto de
 Raciocínio + Prontidão em vitórias e em Ticks.
 
+### 0.48 N8 · O que é visível, e o rastro no tabuleiro
+
+**Decidido, e inverte a máscara de hoje:** é visível **quem vai fazer o quê em cada Tick**. O
+tabuleiro ganha um **rastro** do que foi declarado: o movimento, a trajetória, quem são os alvos. A
+exceção é a pontaria: **arremesso, tiro e Arte não revelam o alvo até serem executados**. E fica como
+melhoria futura um **teste para esconder as intenções**, que é o que devolve ao ogro a opção de
+disfarçar para onde vai o martelo.
+
+A régua é o corpo contra a mira: **o gesto corporal é público, a pontaria não é.** Erguer o martelo
+na direção de alguém, correr para cima de alguém e atravessar a linha são coisas que a mesa inteira
+vê. Para onde o arqueiro está olhando, não.
+
+#### O que muda na migração 27
+
+A máscara de hoje é `case when m1.meu or v.stats then c.acao else c.acao - 'arma' - 'alvo' end`
+(`migracao-27.sql:116-117`), e o comentário dela dizia o contrário desta decisão: "sem isso a fita
+entregaria de graça que o ogro está carregando o martelo contra o mago". N8 aceita que entregue, e
+devolve o segredo por outro caminho (o teste, no futuro), que é mais barato de entender na mesa do
+que uma coluna escondida.
+
+| Chave | Hoje | Com N8 |
+|---|---|---|
+| `arma` | escondida de quem não vê stats | **visível sempre**: dá para ver o que a pessoa está empunhando |
+| `alvo` (corpo a corpo) | escondida | **visível** |
+| `alvo` (tiro, arremesso, Arte) | escondida | **continua escondida**, até o golpe resolver |
+| `mov` e `mov.alvo` | visível por acidente (a máscara só limpa chaves de topo) | **visível de propósito**: perseguir é gesto público |
+
+O vazamento do `mov.alvo` que eu tinha achado deixa de ser vazamento e passa a ser o comportamento
+certo. O que a view precisa é do avesso: saber **quando** esconder. A view é SQL e não consulta
+`armas.json`, então a declaração passa a carregar a marca: `acao.mirado: boolean`, escrita por
+`declararGolpe` quando a perícia da arma é `atirador` ou `arremesso`, ou quando é conjuração. A
+máscara vira `case when acao->>'mirado' = 'true' then acao - 'alvo' else acao end`, e vale para todo
+mundo, inclusive para quem vê stats: a pontaria é segredo do jogo, não do papel.
+
+#### O rastro, no tabuleiro
+
+É funcionalidade nova do Grid, e é o que faz N7 valer alguma coisa na prática: sem ver, declarar por
+último não compra nada. O mínimo:
+
+- a **trajetória declarada** desenhada do token até o destino, e o destino marcado;
+- uma **seta** do atacante ao alvo, quando há alvo visível;
+- o **Tick em que o golpe cai** legível ao lado, que a fita já dá;
+- nada disso para a ação `mirado`, que mostra só que a pessoa está montando alguma coisa.
+
+Entra na mesma família do editor de cenário (`Pendencias.md` I5): o Grid deixando de ser um mapa de
+peças e passando a mostrar intenção.
+
+### 0.49 A fila de declaração na tela
+
+**Decidido:** a tela ordena sozinha, pela ficha dos participantes (a chave de N4), **e o mestre pode
+mudar a ordem à mão.** A coluna da vez mostra os livres já ordenados, com quem declara agora em
+destaque, e o mestre arrasta se a mesa decidir outra coisa.
+
+Vale registrar a consequência, porque ela é do tipo que morde depois: **mudar a ordem à mão move a
+vantagem de informação de N7 de uma pessoa para outra.** Não é um ajuste cosmético como reordenar a
+fila de iniciativa; é dar ou tirar de alguém o direito de escolher sabendo. A tela deveria dizer isso
+em uma linha quando o mestre arrasta.
+
+---
+
 ### 0.5 A grade, refeita com as respostas
 
 | Eixo | Níveis | Custa célula? |
 |---|---|---|
 | **E1 · diversidade de ciclos** | 4 (uníssono 6 · 5 e 6 · 6 e 7 · 4/5/6/7) | sim |
-| **E2 · distância inicial** | 4 (encostado · ~3 Ticks · ~10 Ticks · muito longa) | sim |
+| **E2 · distância inicial** | 4: **1 · 18 · 42 · 71 hexes** (encostado, ~3, ~7 e ~12 Ticks de corrida; 71 é a diagonal do mapa) | sim |
 | **E3 · tamanho da cena** | 3 (1v1 · 3×3 · 2×8) | sim |
 | **E4 · assimetria de passo** | 2 | sim |
 | **E5 · perfil de regras** | 2 (base · as 9 bandeiras ligadas: as 7 de D2 mais as 2 da Cura, §0.4 P1) | sim |
@@ -630,6 +695,36 @@ ler. Desenho proposto:
   muda.
 
 ---
+
+## 0.6 O que entra na mesa antes do harness
+
+**Decidido:** tudo. N1 a N8, o `ate` das condições (Q7) e as 9 bandeiras de D2 entram no Grid **antes**
+de o harness ser escrito, para que ele meça o jogo de verdade desde a primeira batalha e nenhuma
+regra viva só na cópia headless.
+
+Uma consequência a registrar, porque afina o que Q16 tinha dito. Q16 respondeu "as 7 regras entram no
+jogo, e a medição decide a ordem"; com tudo entrando antes, a medição não decide mais **a ordem de
+ligar**, e passa a decidir outra coisa: **quais valeu a pena ligar**. As bandeiras continuam
+existindo como bandeiras, com a mesa lendo o mesmo objeto de perfil, e o padrão em produção passa a
+ser **ligadas**. O eixo E5 continua medindo base contra tudo-ligado, e o "base" deixa de ser o
+presente e vira o passado: é a resposta à pergunta "o que essas nove regras compraram".
+
+| # | O que | Onde | Prova |
+|---|---|---|---|
+| 1 | **N1** · `decideEmValeDepois` 1 → 0, `agendaSimultanea` com `inicio = tickDecl` | `regras.json`, `combate-tempo.ts:794-806` | `test-simultaneo.mjs`: a espada longa declarada no Tick 1 golpeia no 2 e fica livre no 7; o período entre golpes volta a ser o ciclo |
+| 2 | **N4** · a chave e o comparador da ordem de declaração | `combate-tempo.ts` (função nova, irmã de `ordemDaFila`); a chave é `raciocinio + prontidao` na ficha e o fixo da iniciativa no bestiário | `test-simultaneo.mjs`: a cadeia dos cinco critérios, e a leitura do fixo nas 309 criaturas |
+| 3 | **N2** · `grupoDaVez` bloqueia por `acao.desde < t`; `instanteDeGolpe` continua vendo todos | `grid.astro:4107-4126`, L4174 | `test-grid-simultaneo.mjs`: duas adagas declaram as duas no mesmo Tick |
+| 4 | **N3** · `golpeMaisCedo` deixa de pular `noChao` para golpe já vencido | `grid.astro:4163-4170` | `test-grid-simultaneo.mjs`: morte mútua no mesmo Tick |
+| 5 | **N5** · as três fases, e a resolução na ordem inversa | `grid.astro`, o avanço e a coluna da vez | `test-grid-simultaneo.mjs` |
+| 6 | **N6** · o retrato, lido pela folha no lugar do estado ao vivo | `grid.astro:7435` (o ferimento) e L7200-7205 (a Pressão na declaração), mais a posição | `test-grid-simultaneo.mjs`: as duas adagas saem com −4 e nada mais |
+| 7 | **N7 e N8** · a máscara ao avesso, com `acao.mirado` | migração 29, `declararGolpe` | consulta de conferência na própria migração, como as anteriores |
+| 8 | **N8** · o rastro no tabuleiro | `grid.astro`, a pintura | `test-grid-simultaneo.mjs` |
+| 9 | **N4 na tela** · a fila de declaração ordenada, com arrasto do mestre | `grid.astro`, a coluna da vez | `test-grid-simultaneo.mjs` |
+| 10 | **Q7** · o `ate` das condições passa a ser lido e a expirar | `grid.astro` / `artes-grid-mesa.ts` | `test-artes-grid.mjs` |
+| 11 | **As 9 bandeiras** · Margem, gate, Couraça, porte, Bloqueio com escudo, modo secundário, teto ±6, `curaSemArea`, `curaDivide` | `regras.json` (o objeto de perfil), `quase-acerto.ts`, `calc.ts`, `combate-resumo.ts`, `grid.astro`, `artes-grid.ts` | `test-contrato.mjs` e `test-quase-acerto.mjs`, que hoje **congelam o estado errado** (R2 §A2: `R.defesa = 16` com o Bloqueio inútil) e precisam ser reescritos junto |
+
+Os itens 1 a 6 são o núcleo do Tick e se sustentam sozinhos. O 11 é o maior de todos e é o único que
+mexe em cinco arquivos de regra ao mesmo tempo.
 
 ## 1. O que eu preciso de você
 
