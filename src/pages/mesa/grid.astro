@@ -5085,6 +5085,7 @@ const SETAS = [
         saida: {
           defesa: conta.defesa, total: conta.total, soma: conta.soma,
           errouPor: conta.errouPor, veredito: conta.veredito,
+          danoNoCampo: conta.danoNoCampo,
           danoBruto: conta.danoBruto, tipo: conta.entrada.tipoDano,
           absorcao: conta.absorcao, danoLiquido: conta.danoLiquido,
           pvAntes: conta.pvAntes, pvDepois: conta.pvDepois,
@@ -7954,17 +7955,28 @@ const SETAS = [
         : null;
       const t = parseInt(totalInp.value || '', 10);
       const soma = Number.isFinite(t) ? t + e.modManual : null;
-      const bruto = Math.max(0, parseInt(dnInp.value || '0', 10) || 0);
-      const liq = Math.max(0, bruto - e.alvo.soak);
+      const veredito = soma != null && def2 != null ? saidaDoAtaque(soma, def2, e.margemQA) : null;
+      // O QUE ESTÁ NO CAMPO e O QUE A RÉGUA MANDA são coisas diferentes, e o
+      // registro precisa das duas. O campo do dano fica preenchido mesmo quando
+      // o golpe erra (o mestre rolou antes de saber), e no raspão o que se
+      // aplica é o dano fixo do Quase-Acerto e não o que foi rolado. Registrar
+      // só o campo faria o oráculo mentir em dois dos três vereditos.
+      const noCampo = Math.max(0, parseInt(dnInp.value || '0', 10) || 0);
+      const bruto = veredito === 'acerto' ? noCampo
+        : veredito === 'raspao' ? Math.max(0, e.danoQA) : 0;
+      // E o raspão IGNORA a Absorção (capítulo XII): ele já é o que sobrou.
+      const abs = veredito === 'acerto' ? Math.min(bruto, e.alvo.soak) : 0;
+      const liq = Math.max(0, bruto - abs);
       return {
         entrada: e,
         defesa: def2,
         total: Number.isFinite(t) ? t : null,
         soma,
         errouPor: soma != null && def2 != null ? errouPor(soma, def2) : null,
-        veredito: soma != null && def2 != null ? saidaDoAtaque(soma, def2, e.margemQA) : null,
+        veredito,
+        danoNoCampo: noCampo,
         danoBruto: bruto,
-        absorcao: bruto ? Math.min(bruto, e.alvo.soak) : 0,
+        absorcao: abs,
         danoLiquido: liq,
         pvAntes: e.alvo.pv,
         pvDepois: e.alvo.pv != null ? Math.max(0, e.alvo.pv - liq) : null,
@@ -8038,10 +8050,13 @@ const SETAS = [
         cx.innerHTML = `Vai <b>${bruto}</b> inteiro · a Absorção do alvo quem desconta é o mestre`;
         return;
       }
+      // A PRÉVIA usa o que está no campo, e não o que a régua manda: a caixa
+      // está dizendo "se você aplicar ISTO, acontece aquilo", e o mestre ainda
+      // não apertou botão nenhum. O registro é que guarda os dois.
       const L = contaDoLance();
       const sk = L.entrada.alvo.soak;
-      const liq = L.danoLiquido;
-      const pv = L.pvDepois ?? 0;
+      const liq = Math.max(0, bruto - sk);
+      const pv = Math.max(0, (L.pvAntes ?? 0) - liq);
       cx.innerHTML = `Absorção <b>${sk}</b> · passa <b>${liq}</b>`
         + (alvo.pv_max ? ` · Vida ficaria <b>${pv}/${alvo.pv_max}</b> (${tierDe(pv, alvo.pv_max).estado})` : '');
     };
