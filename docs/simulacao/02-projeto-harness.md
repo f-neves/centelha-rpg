@@ -32,15 +32,17 @@ Simultâneo do combate, e entram no Grid **antes** de o harness ser escrito.
 
 ### O que ainda NÃO está decidido, e não deve ser implementado
 
-Uma coisa só, e três perguntas de mesa que não bloqueiam código:
+**Nada bloqueia a implementação.** Sobraram três perguntas, e nenhuma delas trava código:
 
-1. **A ordem no Tick misto de N4** (§0.46): num Tick em que uma peça faz a primeira declaração e
-   outra re-declara, as duas cadeias discordam sobre como ordená-las entre si. A proposta é que o
-   grupo que está entrando declare primeiro, inteiro; **não está confirmada**. Acontece sempre que
-   alguém espera 1 Tick ou aborta nos Ticks 1 a 4.
-2. As perguntas 2, 4 e 5 da §6 da `03-respostas.md` (o perseguidor que chega e bate no mesmo Tick, a
-   ordem de N4 quando alguém entra ou sai da cena no meio, e a latência do Supabase de verdade). As
-   três são de regra ou de campo, e nenhuma trava a implementação.
+1. **O perseguidor chega e bate no mesmo Tick** (`03-respostas.md` §4.3d e §6.2). Com N1, o golpe cai
+   em `T + max(Preparo, viagem)` e o primeiro passo só sai em `T+1`, então a peça chega durante o
+   Tick em que o golpe vence. A régua antiga dava um Tick de folga entre chegar e bater. É de regra, e
+   o que estiver implementado segue a régua nova até você dizer o contrário.
+2. **A ordem de N4 quando alguém entra ou sai da cena no meio** (`03-respostas.md` §6.4): um reforço
+   que chega, uma invocação. A chave é da ficha e se recalcula sozinha; o que não tem regra escrita é
+   se quem entra no meio de um Tick cai antes ou depois de quem já declarou.
+3. **A latência do Supabase de verdade** (`03-respostas.md` §6.5): as medições da §5.2 de lá usam o
+   mock, que responde da memória. É medição de campo, não de suíte.
 
 Convenções: **⚑** marca uma invenção do harness, ou seja, uma regra de jogo que a simulação está
 criando e que precisa ser lida como escolha, não como achado. A convenção da §1 (**bloqueia o
@@ -121,7 +123,7 @@ escrito que o teste-espelho só valeria com todas as bandeiras desligadas, o que
 elas iam viver só na cópia. **Com a mesa lendo o perfil, o espelho vale sob qualquer perfil, desde
 que os dois lados leiam o mesmo**, e o `dados_hash` da bateria (§2.4) já registra qual era.
 (A lista chegou a 16 na §0.7: as 7 de D2, as 2 da Cura, as 5 do núcleo do Tick, o `porRodada`, e a de
-N5 pendente de decisão.)
+N5 cobrindo só a ordem inversa, §0.7.)
 
 **D4 traz uma regra nova, e ela é a primeira invenção deliberada da simulação.** ⚑ A desistência
 coletiva abaixo de 20% de Vida não existe no Grid nem nos capítulos. Ela conversa com o robô, que
@@ -514,9 +516,12 @@ do catálogo é 5, então uma peça que ataca só volta a declarar no Tick 6, se
 **esperar 1 Tick e abortar liberam a peça no Tick seguinte**, e aí ela re-declara no Tick 2, 3 ou 4,
 em cima das entradas. Quem espera ou aborta cedo cai no caso misto sempre.
 
-Proposta, **a confirmar**: quem ainda está entrando declara primeiro, como bloco, antes de qualquer
-peça que já esteja re-declarando, e cada grupo se ordena pela sua própria cadeia. A justificativa é a
-mesma de N7: quem já está na briga lê quem está chegando, e não o contrário.
+**Decidido em 02/09: quem ainda está entrando declara primeiro**, como bloco, antes de qualquer peça
+que já esteja re-declarando, e cada grupo se ordena pela sua própria cadeia. A justificativa é a mesma
+de N7: quem já está na briga lê quem está chegando, e não o contrário.
+
+Em uma frase, para a implementação: **ordena-se por (é a primeira declaração desta peça? sim antes de
+não), e dentro de cada grupo pela cadeia daquele grupo.**
 
 **A resolução é o exato inverso da declaração**, com duas ressalvas que vêm das respostas de 02/09:
 
@@ -914,9 +919,10 @@ golpe contra o qual ela se põe).
   ser `Math.random`; no harness precisa vir do fluxo semeado, senão a batalha 743 não replica (§2.4).
 - **A fronteira entre as duas cadeias é por peça** (§0.46): cada uma usa a cadeia de entrada na sua
   primeira declaração e a outra dali em diante. O **Tick misto** (peça entrando e peça re-declarando
-  juntas) acontece sempre que alguém espera 1 Tick ou aborta nos Ticks 1 a 4, e a regra para ordenar
-  os dois grupos entre si **ainda não está confirmada**: a proposta é que o grupo que está entrando
-  declare primeiro, inteiro, e cada grupo se ordene pela sua cadeia.
+  juntas) acontece sempre que alguém espera 1 Tick ou aborta nos Ticks 1 a 4, e a regra é: **quem
+  está na primeira declaração vai antes**, como bloco, e cada grupo se ordena pela sua cadeia. Em
+  código: ordena-se por "é a primeira declaração desta peça?" (sim antes de não) e depois pela cadeia
+  do grupo.
 - `regras.json → derivados.iniciativa.empateNoTopo` diz hoje "maior Raciocínio, e persistindo o
   empate, o dado". A direção está certa para a **resolução**; a cadeia nova é mais longa e o texto
   precisa dizer as duas fases.
