@@ -518,3 +518,126 @@ a carga é plana, cresce, ou se concentra num pedaço.
 5. **A taxonomia i / ii / iii** foi feita à mão na R2 §B sobre as 14 paradas. O log precisa emitir a
    classe sozinho, e isso quer dizer carimbar cada ponto de parada no código. Alguém confere que o
    carimbo está no lugar certo, ou a classificação vira o que eu escrevi nela?
+
+---
+
+## 8 · Três coisas que a coleta de lances mexeu no caminho curto
+
+Escrito em 02/09, depois dos passos 1 e 2 e do fechamento do oráculo.
+
+### 8.1 · O defeito nº 3 é erro de resolução em produção, e ele mora na rajada
+
+**Desde quando.** Nasceu em **23/08**, no commit `f8459e6` ("Golpe adiado: a primeira
+fatia, atrás de uma chave que nasce desligada"). Antes dele, `folhaDaAcao` era aberta **uma vez por
+ação**, e `rolarAcerto` usar `linhas[0]` era correto por construção: o comentário que está lá até
+hoje ("o campo fica com o PRIMEIRO golpe, que é o que decide se o ataque pegou; os outros aparecem
+escritos ao lado") descreve exatamente esse mundo. Quando `resolverGolpeNoAr` passou a abrir **uma
+folha por golpe**, o comentário deixou de ser verdade e ninguém moveu o índice. Dezoito commits
+passaram por `grid.astro` desde então.
+
+**E ele está no único caminho que a bateria usa.** `adiaGolpe` (`combate-tempo.ts:82-85`) devolve
+`true` sempre que o sistema é `simultaneo`: *"no simultâneo o golpe adiado não é opção, é o próprio
+modo"*. Então no Simultâneo **todo ataque** passa por `declararGolpe` → `resolverGolpeNoAr`, uma
+folha por golpe, cada uma usando `penDados[0]`.
+
+**Quantas ações da bateria passam por ele.** A conta muda conforme a manobra, e a resposta não é a
+que eu esperava ao achar o defeito na dupla:
+
+| Manobra | Passa pelo defeito? | Por quê |
+|---|---|---|
+| **simples** | **não** | um golpe, um `penDados`, índice 0 é o certo |
+| **dupla** | **não chega a acontecer** | nenhuma das cinco políticas da §0.4 P4 declara `dupla`, e nenhum arquétipo das âncoras pode: o Escudeiro tem escudo na mão inábil e o Montanteiro usa as duas mãos |
+| **rajada** | **TODAS** | e é aqui que dói |
+
+**A rajada é o caso real, e ele é pior que o da dupla.** `regras.json → combate.rajada` tem
+`penDadosAcumula: true` e `penDadosPorGolpeExtra: −1`, com teto 3 para as classes leve e média e 2
+para haste e pesada. Uma rajada de três com espada longa tem `penDados = [0, −1, −2]`. Com o defeito,
+os golpes 2 e 3 saem com **0**: **três dados a mais ao longo da ação, que a régua cobrava e ninguém
+cobrou.** A rajada, cujo preço inteiro é a penalidade acumulada de dados, está saindo **de graça**.
+
+**E as duas políticas das âncoras declaram rajada:** o Agressivo ("manobra `rajada` se a Vida do alvo
+é maior que a minha") e o Cauteloso ("se o inimigo mais próximo está em Recuperação declarada, atacar
+`rajada`").
+
+**A incidência é enviesada, e isso é o mais importante desta seção.** O gatilho do Agressivo é *"a
+Vida do alvo é maior que a minha"*, ou seja a rajada é declarada **exatamente quando quem ataca está
+perdendo**. O defeito não entra como ruído distribuído: entra concentrado no lado que está atrás, e
+dá a ele um desconto que a régua não previu.
+
+**O que muda na leitura, consertando antes ou depois.** A distinção importa por causa do D8b, e ela
+não é a que se esperaria:
+
+| | Consertado ANTES | Consertado DEPOIS |
+|---|---|---|
+| **paradas por Tick** | igual | **igual**: uma rajada de três são três golpes em três Ticks, três folhas, com ou sem a penalidade. O número de caixas não muda |
+| **gestos por golpe aplicado** | igual | **muda pouco, e para cima**: sem a penalidade há mais acerto, e acerto custa mais cliques que erro (rola dano, aplica, atualiza Vida) |
+| **duração** | a régua | **mais curta**: mais acerto, mais dano, batalha mais rápida |
+| **o que a bateria concluiria** | a rajada é uma escolha com preço | **a rajada é dominante**, e a política a escolheria mais, e o relatório atribuiria à regra um efeito que é de um bug |
+
+**Pelo critério do D8b, a métrica que reprova quase não se mexe**, porque ela conta caixas e o número
+de caixas é o mesmo. O que se estraga é a leitura de **balanço**, e o achado "a rajada é forte
+demais" sairia da bateria como se fosse sobre a regra.
+
+**Há um segundo argumento, e ele é decisivo: o espelho já está condenado a falhar.** O
+`resolverGolpe` de `lance.ts` recebe `golpeIndice` e aplica `penDados[golpeIndice]`, que é a regra.
+A mesa aplica `penDados[0]`. **A cópia já implementa o certo e a mesa o errado**, então o espelho de
+motor vai divergir na primeira rajada que passar por ele. Ou a mesa é consertada, ou a cópia é
+rebaixada para copiar o bug. Não há terceira saída, e rebaixar a cópia é escrever o defeito em dois
+lugares.
+
+**Conclusão: consertar antes**, e o conserto é passar o índice do golpe até a folha. Fica registrado
+e não feito nesta rodada, pelo mesmo critério do `resumoDe`: o conserto muda resolução em produção e
+merece a sua própria passada, com recoleta.
+
+### 8.2 · O objeto do lance é por GOLPE, e o desenho estava meio errado
+
+**Meio, e vale separar as duas metades.**
+
+**O que estava certo:** o registro já é por golpe, porque cada folha é um golpe. A correção de
+02/09 (um lance por folha, e não N lances por folha) alinhou o registro com o que a mesa faz.
+
+**O que está errado, e são duas coisas:**
+
+| O que | Como está | Como tem de ficar |
+|---|---|---|
+| **o `aid`** | nasce **na folha**, com o formato `l<atk>-<alvo>-t<tick>-<seq>`. Dois golpes da mesma ação recebem `aid` **diferentes** | o `aid` é da **AÇÃO** (é o que o D2 pede: um identificador atravessando cinco tipos de evento, sobrevivendo à re-projeção). Ele tem de nascer na **declaração** (`declararGolpe` / `declararNoTabuleiro`), viver em `acao`, e a folha tem de **ler** em vez de inventar |
+| **o índice** | `golpeIndice` grava sempre 0, que é fiel ao que a mesa **aplica** e não diz **qual golpe** é | são **dois campos**, e confundi-los foi o erro: `golpeDaAgenda` (qual golpe da ação este é, de `an.offs` contra `tickDoGolpe`) e `penDadosUsado` (qual entrada de `penDados` a mesa de fato leu) |
+
+**E a segunda mudança tem um efeito que vale por ela sozinha: com os dois campos separados, o defeito
+8.1 vira MENSURÁVEL.** `golpeDaAgenda !== penDadosUsado` é a definição exata dele, contável por
+lance, num despejo que já existe. Hoje ele é invisível no registro, porque o registro grava o número
+que a mesa usou e não o que ela deveria ter usado.
+
+**Falta também `tickDoGolpe` no registro**, que é de onde `golpeDaAgenda` se deriva e que o espelho
+vai comparar de qualquer forma.
+
+**O que isso não muda:** as entradas e saídas do contrato da P §2.1 continuam as mesmas, o
+`resolverGolpe` continua com a assinatura que tem (ele já recebe `golpeIndice` e faz a coisa certa), e
+os 1051 lances continuam válidos como oráculo de tudo o que eles cobrem. O que eles não cobrem é
+justamente o que a mesa não faz.
+
+### 8.3 · Para que serve a coleta de 1051 lances
+
+**Confirmado: ela é o oráculo da cópia da resolução, e nada além disso na conta principal.**
+
+É a resposta ao preço do **Q6** (cópia, e não extração): a cópia precisa de um lugar contra o qual
+rodar, e a lição do `lib-tempo.mjs` é que prosa não pega divergência. Os 1051 lances são o
+comportamento real da mesa, com entradas, dados e saídas nomeadas.
+
+**Ela NÃO é medição de gargalo, e é importante dizer por quê**, para ninguém a citar como se fosse:
+
+- **não tem Tick.** Nenhuma linha sabe em que instante da batalha aconteceu;
+- **não tem batalha.** As folhas foram abertas direto pelo coletor, uma por par, e **nada foi aplicado
+  na cena**: ninguém perdeu Vida, ninguém caiu, nada terminou;
+- **não tem parada, nem classe, nem gesto.** As três métricas do critério do D8b não têm de onde sair;
+- **a ordem das folhas é do coletor**, e não da fila da cena.
+
+**Duas outras coisas que ela É, e que são subproduto e não propósito:**
+
+1. **um registro de regressão da resolução da mesa num commit.** Com o carimbo (§tarefa 6), ela é a
+   única evidência do que a mesa calculava em `44578d0`. Se a mesa mudar, é contra ela que se compara
+   para saber o que mudou;
+2. **um instrumento de diagnóstico que já pagou.** Ela achou **três defeitos de mesa** que nenhum
+   teste unitário pegava: o `resumoDe` descartando a armadura da ficha, o `rolarAcerto` usando
+   `linhas[0]` em toda folha, e a própria confusão entre o que a tela mostra e o que a régua aplica
+   no dano fora do acerto.

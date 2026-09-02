@@ -1047,6 +1047,21 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   gesto nenhum. E o **`aid`** precisa nascer nos **dois** caminhos de código: os PCs passam por
   `resumoCombatePC`, as criaturas trazem o bloco pronto do `monsters-mesa.json` e não passam por
   lá. Riscos **F3** e **F2**.
+- [ ] **L11 · [FAZER, antes da primeira bateria] O golpe da rajada não paga a penalidade dele.**
+  `rolarAcerto` (`grid.astro:8379`) sempre usa `linhas[0]`, e desde `f8459e6` (23/08) a folha é
+  aberta **uma por golpe** por `resolverGolpeNoAr`. Resultado: os golpes 2 e 3 de uma rajada saem
+  com penalidade **zero** em vez de −1 e −2, e a rajada, cujo preço inteiro é essa penalidade, sai
+  de graça. Está no **único** caminho que o Simultâneo usa (`adiaGolpe` é sempre true lá), as duas
+  políticas das âncoras declaram rajada, e o gatilho do Agressivo ("a Vida do alvo é maior que a
+  minha") concentra o desconto em quem está perdendo. **E o espelho já está condenado**: o
+  `resolverGolpe` de `lance.ts` aplica `penDados[golpeIndice]`, que é a regra. Detalhe em
+  `07-caminho-curto.md` §8.1.
+- [ ] **L12 · [FAZER, junto com o L11] O `aid` é da ação, e o índice são dois campos.** Hoje o
+  `aid` nasce na folha, então dois golpes da mesma ação recebem identificadores diferentes, o que
+  quebra o contrato do D2. Ele tem de nascer na declaração e viver em `acao`. E `golpeIndice` tem
+  de virar **`golpeDaAgenda`** (qual golpe é) e **`penDadosUsado`** (qual entrada a mesa leu):
+  separados, a diferença entre os dois **mede** o L11 lance a lance. Falta também `tickDoGolpe` no
+  registro. `07-caminho-curto.md` §8.2.
 - [ ] **L8 · [FAZER] Fundir as duas especificações de política.** A `02` §0.4 P4 tinha a lista
   ordenada e a §0.47 tinha as regras de leitura, e nenhuma era completa. Fundidas em 02/09, com as
   regras de leitura marcadas ⊙ (é o que o eixo E9 desliga) e a regra de modo marcada ⊕. Enquanto
