@@ -46,14 +46,31 @@ const ADIADO = P.get('adiado') === '1';
 // Sem isto não havia como olhar a tela do jogador: a bancada sempre foi mestre,
 // e metade do desenho novo do tempo é justamente o que ele vê.
 const PAPEL = P.get('papel') === 'jogador' ? 'jogador' : 'mestre';
-// EXTRAS DA COLETA. `?extras=1` espalha a cena por casos que a bancada padrao
-// nunca produz e que a fixture do `resolverGolpe` precisa cobrir: alvo ferido
-// de verdade (a Vida da bancada nunca desce dos 55%, e a penalidade de Defesa
-// so comeca nos 50%), condicao que mexe em DADOS e nao em fixo, e armadura
-// vestida nos PCs (sem ela as duas metades do Quase-Acerto que vem do couro
-// sao zero em todo lance). Desligado por padrao: nenhuma suite existente o
-// liga, e a bancada de sempre continua a mesma.
-const EXTRAS = P.get('extras') === '1';
+// EXTRAS DA COLETA, em TRES EIXOS INDEPENDENTES.
+//
+// `?extras=vida`, `?extras=cond`, `?extras=arm`, ou os tres separados por
+// virgula. `?extras=1` continua ligando os tres, para nao quebrar quem ja o usa.
+//
+// A primeira versao era uma chave so, e isso era um defeito de metodo e nao de
+// codigo: os tres eixos variavam JUNTOS, entao nao havia um unico lance com
+// armadura e sem condicao. A `defesaEfetiva` soma quatro termos, tres deles
+// tipicamente negativos, e dois termos que sempre entram juntos escondem uma
+// troca de sinal entre eles, porque ela se cancela. Separados, cada eixo tem
+// lance sozinho e a soma pode ser conferida termo a termo.
+//
+// O que cada um liga:
+//   vida · a Vida desce ate o Critico. A bancada padrao para nos 55%, e a
+//          penalidade de DEFESA por ferimento so comeca nos 50%: sem isto o
+//          termo `ferimento` e zero em todo lance.
+//   cond · condicao que mexe em DADOS e nao em fixo (`desgaste-2` tira dois,
+//          `inspirado` da um), que e o termo `ajusteDados`.
+//   arm  · armadura por ajuste de instancia, que e o que faz as duas metades do
+//          Quase-Acerto que vem do couro deixarem de ser zero.
+const EX = (P.get('extras') || '').split(',').map((x) => x.trim()).filter(Boolean);
+const EX_TUDO = EX.includes('1') || EX.includes('tudo');
+const EX_VIDA = EX_TUDO || EX.includes('vida');
+const EX_COND = EX_TUDO || EX.includes('cond');
+const EX_ARM = EX_TUDO || EX.includes('arm');
 
 const UID = '00000000-0000-4000-8000-000000000001';
 /** Quem manda na mesa quando quem olha é jogador. */
@@ -87,7 +104,7 @@ const FICHA_PC = {
   // A ARMADURA VESTIDA so com os extras: ela e o que faz as duas metades do
   // Quase-Acerto que vem do couro (`armaduraBonus` e `armaduraReducao`)
   // deixarem de ser zero, e muda a Absorcao junto.
-  ...(P.get('extras') === '1'
+  ...((P.get('extras') || '').split(',').some((x) => ['1', 'tudo', 'arm'].includes(x.trim()))
     ? { equip: { armaduras: [{ base: 'malha', vestida: true }] } }
     : {}),
   arte: { fogo: 5, terra: 4, vento: 5, protecao: 3, cura: 2 },
@@ -124,7 +141,7 @@ for (let i = 0; i < N_COMB; i++) {
     // A escada de Vida vai ate o Critico com `?extras=1`: 40, 34, 28, 22, 16,
     // 10 e 4 sobre 40 cobrem Saudavel, Machucado, Ferido, Grave e Critico, que
     // sao as cinco faixas com penalidade diferente.
-    pv_atual: EXTRAS ? 40 - (i % 7) * 6 : 40 - (i % 7) * 3,
+    pv_atual: EX_VIDA ? 40 - (i % 7) * 6 : 40 - (i % 7) * 3,
     mana_max: ehPC ? 8 : null, mana_atual: ehPC ? 8 - (i % 3) : null,
     tick: ACAO[i].livre ?? (i % 4), iniciativa: 20 - i,
     // O tick de quem tem ação no ar É o fim do ciclo dela: é a invariante que o
@@ -152,15 +169,15 @@ for (let i = 0; i < N_COMB; i++) {
         // armadura, as duas metades do Quase-Acerto que vem do couro
         // (`armaduraBonus` e `armaduraReducao`) sao zero em todo lance da
         // fixture, e o `quaseAcertoDoEncontro` fica sem execucao.
-        : EXTRAS && i % 3 === 2
+        : EX_ARM && i % 3 === 2
           ? { armaduras: [{ classe: i % 6 === 2 ? 'media' : 'pesada' }] }
           : undefined,
     // Com os extras, uma em cada tres leva uma condicao que mexe em DADOS
     // (`desgaste-2` tira dois, `inspirado` da um), que e o termo `ajusteDados`
     // do lance e o unico que a bancada padrao deixa sempre em zero.
     condicoes: i % 3 === 0 ? [{ id: 'cego' }]
-      : EXTRAS && i % 3 === 1 ? [{ id: 'desgaste-2' }]
-        : EXTRAS ? [{ id: 'inspirado' }] : [],
+      : EX_COND && i % 3 === 1 ? [{ id: 'desgaste-2' }]
+        : EX_COND ? [{ id: 'inspirado' }] : [],
     ativo: true, oculto: false, imagem: null, retrato: null,
   });
 }

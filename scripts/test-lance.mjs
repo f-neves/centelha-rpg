@@ -24,6 +24,7 @@ import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import fs from 'node:fs';
 import os from 'node:os';
+import { execSync } from 'node:child_process';
 
 const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
 const FIXTURE = path.join(ROOT, 'scripts/fixtures/lances.jsonl');
@@ -56,6 +57,38 @@ if (!fs.existsSync(FIXTURE)) {
 }
 const lances = fs.readFileSync(FIXTURE, 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l));
 
+// ============================================================ 0 · o carimbo
+//
+// A fixture é o registro do comportamento da mesa NUM COMMIT. Se a mesa mudar,
+// ela é a única evidência do que a mesa fazia antes, e regenerar apaga essa
+// evidência.
+//
+// O aviso é AVISO, e não falha, de propósito: o objetivo é impedir que uma
+// divergência futura seja "consertada" por uma recoleta reflexa. Recoletar tem
+// de ser ato deliberado, nunca reação a teste vermelho. Falhar aqui empurraria
+// na direção contrária, porque a saída mais fácil de um teste vermelho é rodar
+// o coletor de novo.
+const META_ARQ = FIXTURE.replace(/\.jsonl$/, '.meta.json');
+if (!fs.existsSync(META_ARQ)) {
+  console.log('  ⚠ a fixture não tem carimbo (lances.meta.json): não dá para saber de que commit ela é');
+} else {
+  const M = JSON.parse(fs.readFileSync(META_ARQ, 'utf8'));
+  let head = null;
+  try { head = execSync('git rev-parse HEAD', { cwd: ROOT, encoding: 'utf8' }).trim(); } catch { /* sem git */ }
+  const curto = (h) => (h || '').slice(0, 7);
+  console.log(`  · fixture de ${curto(M.commit)}${M.sujo ? ' (árvore suja)' : ''}`
+    + ` · ${M.lances} lances · semente ${M.semente} · dados_hash ${M.dados_hash}`);
+  if (head && M.commit !== head) {
+    console.log(`  ⚠ a fixture é de ${curto(M.commit)} e o HEAD é ${curto(head)}.`);
+    console.log('    Divergência daqui em diante pode ser mudança da mesa, e não erro da cópia.');
+    console.log('    Recoletar é decisão, não conserto: veja o que mudou antes de rodar o coletor.');
+  }
+  if (M.perfil && Object.values(M.perfil).some(Boolean)) {
+    console.log('  ⚠ a fixture foi colhida com bandeira ligada, e o motor não aplica bandeira nenhuma');
+  }
+}
+
+
 // ============================================================ 1 · a fonte fixa
 //
 // Todos os campos de saída do contrato da P §2.1, mais `danoNoCampo`, mais os
@@ -85,6 +118,16 @@ for (const l of lances) {
       dif.push(`${c}: mesa ${l.saida[c]} × cópia ${s[c]}`);
       porCampo[c] = (porCampo[c] || 0) + 1;
     }
+  }
+  // A TRAVA DO `cobre`, e ela é o ponto desta parte.
+  //
+  // `golpeIndice === 0` OBRIGA `cobre === 'completo'`. Sem isso, o dia em que o
+  // coletor escrever 'acerto' numa linha que podia ser 'completo', a cobertura
+  // encolhe em silêncio e o teste continua verde: é a mesma forma da exceção
+  // que a rodada anterior tirou daqui, só que deslocada para o produtor.
+  if (l.entrada.golpeIndice === 0 && l.cobre !== 'completo') {
+    dif.push(`golpeIndice 0 com cobre '${l.cobre}': uma folha de índice 0 calcula o dano`);
+    porCampo['trava do cobre'] = (porCampo['trava do cobre'] || 0) + 1;
   }
   // E o que o registro NÃO cobre tem de estar nulo, e não zero: um número que
   // ninguém calculou é a forma mais barata de um oráculo mentir.
@@ -167,6 +210,64 @@ ok(rodados === lances.length, `todos rodaram também com a fonte REAL, semeada (
 ok(difRolada.length === 0,
   `e o que não depende do dado bate nas duas fontes (${difRolada.length} divergências)`);
 
+// ---- 5.1 · A MAIS IMPORTANTE: a passagem rolada, duas vezes, idêntica ----
+//
+// Isto não compara com a mesa: compara a cópia com ela mesma, e é a única coisa
+// que prova que semear funciona ATRAVESSANDO uma resolução de verdade. A Etapa 0
+// provou o `acaso.ts` isolado, e a R6 §3 registrou que nenhuma cena de teste
+// resolvia golpe. O teste de dados fixos não fecha essa ressalva, porque com
+// dados fixos o acaso nem é tocado. Esta passagem fecha.
+const passagem = (semente) => {
+  L.semear(L.semeadoDe(semente));
+  return lances.map((l) => L.resolverGolpe(l.entrada, L.fonteRolada));
+};
+const p1 = passagem(20260903);
+const p2 = passagem(20260903);
+const p3 = passagem(20260904);
+const iguais = (a, b) => a.length === b.length
+  && a.every((x, i) => JSON.stringify(x) === JSON.stringify(b[i]));
+ok(iguais(p1, p2),
+  `a passagem rolada inteira repete com a mesma semente (${p1.length} lances, campo a campo e dado a dado)`);
+ok(!iguais(p1, p3), 'e muda com outra semente: a passagem rola de verdade');
+// E a prova de que ela ROLOU, e não de que devolveu tudo vazio.
+ok(p1.some((x) => x.rolls.acerto.length > 0) && p1.some((x) => x.rolls.dano.length > 0),
+  `a passagem rolou dados de acerto e de dano (${p1.filter((x) => x.rolls.acerto.length).length}`
+  + ` acertos com dado, ${p1.filter((x) => x.rolls.dano.length).length} danos com dado)`);
+
+// ---- 5.2 · Limites, checáveis sem oráculo nenhum ----
+const foraDoLimite = [];
+for (const x of p1) {
+  if (x.absorcao > x.danoBruto) foraDoLimite.push(`absorcao ${x.absorcao} > danoBruto ${x.danoBruto}`);
+  if (x.veredito === 'acerto' && x.danoLiquido !== x.danoBruto - x.absorcao) {
+    foraDoLimite.push(`liquido ${x.danoLiquido} != bruto ${x.danoBruto} - absorcao ${x.absorcao}`);
+  }
+  if (x.pvAntes != null && x.pvDepois !== Math.max(0, x.pvAntes - x.danoLiquido)) {
+    foraDoLimite.push(`pvDepois ${x.pvDepois} != max(0, ${x.pvAntes} - ${x.danoLiquido})`);
+  }
+}
+ok(foraDoLimite.length === 0,
+  `os limites do dano valem em todos (${foraDoLimite.length} fora: ${foraDoLimite.slice(0, 2).join(' · ') || 'nenhum'})`);
+
+// ---- 5.3 · Os ramos por veredito, o mais especial primeiro ----
+const ramoRuim = [];
+for (let i = 0; i < p1.length; i++) {
+  const x = p1[i]; const e = lances[i].entrada;
+  if (x.veredito === 'raspao'
+    && !(x.danoBruto === Math.max(0, e.danoQA) && x.absorcao === 0 && x.rolls.dano.length === 0)) {
+    ramoRuim.push(`raspão: bruto ${x.danoBruto} (danoQA ${e.danoQA}), absorção ${x.absorcao}, dados ${x.rolls.dano.length}`);
+  }
+  if (x.veredito === 'erro' && !(x.danoBruto === 0 && x.danoLiquido === 0)) {
+    ramoRuim.push(`erro: bruto ${x.danoBruto}, líquido ${x.danoLiquido}`);
+  }
+}
+ok(ramoRuim.length === 0,
+  `o raspão é fixo e sem Absorção, e o erro não tira nada (${ramoRuim.length} fora)`);
+ok(p1.filter((x) => x.veredito === 'raspao').length > 0 && p1.filter((x) => x.veredito === 'erro').length > 0,
+  `e os dois ramos foram exercitados na passagem rolada`
+  + ` (${p1.filter((x) => x.veredito === 'raspao').length} raspões,`
+  + ` ${p1.filter((x) => x.veredito === 'erro').length} erros)`);
+L.semear(null);
+
 // A prova de que a fonte real é a que rola: com sementes diferentes, os dados
 // mudam. Sem isto, "zero divergências na rolada" poderia ser zero rolagens.
 // COM DADOS: o primeiro acerto da fixture pode ser de um bolo `0d6 +3`, e aí a
@@ -187,13 +288,22 @@ L.semear(null);
 // Uma asserção por meta, todas capazes de falhar. Zero divergências sobre
 // lances que nunca exercitam um caminho é zero evidência sobre ele.
 const conta = (f) => lances.filter(f).length;
+// Os EIXOS ISOLADOS são o que a separação do `?extras=` comprou: sem eles, três
+// dimensões variavam juntas, e a `defesaEfetiva` soma quatro termos, três deles
+// tipicamente negativos. Dois termos que sempre entram juntos escondem uma troca
+// de sinal entre eles, porque ela se cancela.
+const semCond = (l) => l.entrada.atacante.ajusteDados === 0;
+const semFer = (l) => l.entrada.alvo.ferimento === 0;
+const semArm = (l) => l.entrada.alvo.qaArmaduraBonus === 0 && l.entrada.alvo.qaArmaduraReducao === 0;
 const METAS = [
-  ['golpeIndice > 0, com penDados >= 2', (l) => l.entrada.golpeIndice > 0 && l.entrada.atacante.penDados.length >= 2, 60],
+  ['armadura SOZINHA (sem condição, sem ferimento)', (l) => !semArm(l) && semCond(l) && semFer(l), 30],
+  ['condições SOZINHAS', (l) => !semCond(l) && semFer(l) && semArm(l), 30],
+  ['ferimento SOZINHO', (l) => !semFer(l) && semCond(l) && semArm(l), 30],
+  ['os três juntos', (l) => !semFer(l) && !semCond(l) && !semArm(l), 30],
+  ['nenhum dos três (a linha de base)', (l) => semFer(l) && semCond(l) && semArm(l), 30],
   ['modManual != 0', (l) => l.entrada.modManual !== 0, 40],
-  ['ferimento do alvo != 0', (l) => l.entrada.alvo.ferimento !== 0, 60],
-  ['ajusteDados != 0', (l) => l.entrada.atacante.ajusteDados !== 0, 40],
-  ['qaArmaduraBonus != 0', (l) => l.entrada.alvo.qaArmaduraBonus !== 0, 40],
-  ['qaArmaduraReducao != 0', (l) => l.entrada.alvo.qaArmaduraReducao !== 0, 40],
+  ['penDados com dois elementos', (l) => l.entrada.atacante.penDados.length >= 2, 60],
+  ['folha do golpe ADIADO', (l) => l.adiada === true, 30],
   ['defesaBase nula (a tela do jogador)', (l) => l.entrada.alvo.defesaBase == null, 5],
   ['veredito acerto', (l) => l.saida.veredito === 'acerto', 60],
   ['veredito raspão', (l) => l.saida.veredito === 'raspao', 60],
@@ -212,9 +322,13 @@ ok(new Set(lances.map((l) => l.sorteio.acerto.length)).size >= 4,
   `bolos de tamanhos diferentes (${new Set(lances.map((l) => l.sorteio.acerto.length)).size} quantidades de dados)`);
 ok(new Set(lances.map((l) => l.entrada.tipoDano)).size >= 3,
   `os três modos de dano (${new Set(lances.map((l) => l.entrada.tipoDano)).size})`);
-ok(completos.length >= 400 && lances.length - completos.length >= 60,
-  `os dois graus de cobertura aparecem (${completos.length} completos,`
-  + ` ${lances.length - completos.length} só de acerto)`);
+ok(completos.length === lances.length,
+  `todo lance é 'completo' hoje (${completos.length} de ${lances.length}): cada folha da mesa`
+  + ' calcula acerto E dano, porque cada golpe da agenda tem a sua folha');
+// O QUE NÃO TEM COBERTURA, DITO EM ASSERÇÃO e não em comentário.
+ok(conta((l) => l.entrada.golpeIndice > 0) === 0,
+  'golpeIndice > 0 continua SEM oráculo, e não por falta de coleta: `rolarAcerto`'
+  + ' sempre usa `linhas[0]`, então nem a folha do segundo golpe aplica `penDados[1]`');
 
 // ============================================================ 4 · a unidade
 //

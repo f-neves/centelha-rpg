@@ -5072,8 +5072,8 @@ const SETAS = [
    * uma exceção aqui derrubaria a resolução de um golpe, que é a mesa parando.
    */
   function registrarLance(
-    conta: any, sorteio: { acerto: number[][]; dano: number[] }, idx: number,
-    decisao: { acertou: boolean; raspou: boolean; rolado: string },
+    conta: any, sorteio: { acerto: number[][]; dano: number[] },
+    decisao: { acertou: boolean; raspou: boolean; rolado: string; adiada: boolean },
   ) {
     if (!LANCES_LIGADO) return;
     try {
@@ -5089,14 +5089,28 @@ const SETAS = [
         // Então para eles a mesa produz veredito e não produz dano, e dizer
         // isto no registro é melhor do que atribuir a eles o número da caixa,
         // que foi o que a primeira versão fez e o teste pegou.
-        cobre: idx === 0 ? 'completo' : 'acerto',
+        // ATÉ ONDE ESTE LANCE É ORÁCULO. Hoje toda folha calcula acerto E
+        // dano, então todo lance é `completo`. O campo fica porque ele é o
+        // produtor declarando o alcance da linha, e o dia em que existir uma
+        // folha que resolva só metade, a trava do teste (índice 0 obriga
+        // `completo`) cobra a declaração em vez de deixar a cobertura encolher
+        // em silêncio.
+        cobre: 'completo',
+        // A FOLHA DO GOLPE NO AR, que é o único caminho que existe no
+        // Simultâneo: `resolverGolpeNoAr` reabre a folha no Tick do Golpe, com a
+        // anatomia já declarada e o seletor de manobra travado. É outro caminho
+        // de código e não tinha um lance sequer na fixture.
+        adiada: decisao.adiada,
         entrada: conta.entrada,
         sorteio: {
-          acerto: (sorteio.acerto[idx] || []).slice(),
-          // O dado de dano e UM por resolucao, e nao um por golpe: a tela rola o
-          // dano uma vez so. Por isso ele vai com o golpe de indice 0, e os
-          // outros vao com a lista vazia.
-          dano: idx === 0 ? sorteio.dano.slice() : [],
+          acerto: (sorteio.acerto[0] || []).slice(),
+          dano: sorteio.dano.slice(),
+          // AS LINHAS ROLADAS E NÃO USADAS. `rolarAcerto` rola uma linha por
+          // entrada de `penDados` e usa só a primeira; as outras aparecem
+          // escritas ao lado e são descartadas. Elas consumiram acaso, e o
+          // consumo de acaso é o que o par de perfis da §7.3 do plano compara.
+          // Jogá-las fora do registro tornaria esse consumo invisível.
+          descartados: sorteio.acerto.slice(1).map((x) => x.slice()),
         },
         saida: {
           defesa: conta.defesa, total: conta.total, soma: conta.soma,
@@ -5104,12 +5118,10 @@ const SETAS = [
           // Nulo, e não zero, no que a mesa não produz: zero é um número, e um
           // número que ninguém calculou é a forma mais barata de um oráculo
           // mentir.
-          danoNoCampo: idx === 0 ? conta.danoNoCampo : null,
-          danoBruto: idx === 0 ? conta.danoBruto : null, tipo: conta.entrada.tipoDano,
-          absorcao: idx === 0 ? conta.absorcao : null,
-          danoLiquido: idx === 0 ? conta.danoLiquido : null,
-          pvAntes: conta.pvAntes,
-          pvDepois: idx === 0 ? conta.pvDepois : null,
+          danoNoCampo: conta.danoNoCampo,
+          danoBruto: conta.danoBruto, tipo: conta.entrada.tipoDano,
+          absorcao: conta.absorcao, danoLiquido: conta.danoLiquido,
+          pvAntes: conta.pvAntes, pvDepois: conta.pvDepois,
         },
         // O que a MESA decidiu, que pode contrariar a régua. Fica fora de
         // `saida` de propósito: a função pura não tem como prever um botão.
@@ -8422,15 +8434,19 @@ const SETAS = [
         // o botão. Guardar os dois é o que permite medir depois quantas vezes a
         // mesa contrariou a régua, e é a única forma de o despejo ser oráculo
         // de uma função pura sem apagar a decisão humana.
-        // UM LANCE POR GOLPE DA AGENDA. Uma rajada de tres e tres golpes, cada
-        // um com a sua penalidade; registrar um so era descrever a agenda pela
-        // metade, e deixava o caminho de indice maior que zero sem evidencia
-        // nenhuma. O veredito dos golpes seguintes e o que a regua diz, e nao o
-        // que a tela mostrou: a tela decide pelo primeiro, de proposito.
-        const quantos = Math.max(1, sorteio.acerto.length || 1);
-        for (let i = 0; i < quantos; i++) {
-          registrarLance(contaDoLance(i), sorteio, i, { acertou: v, raspou, rolado });
-        }
+        // UM LANCE POR FOLHA, que é o que a mesa faz.
+        //
+        // A versão anterior emitia um lance por entrada de `penDados`, na
+        // suposição de que uma folha resolvesse a agenda inteira. Ela não
+        // resolve: cada golpe da agenda tem a SUA folha, aberta por
+        // `resolverGolpeNoAr` no Tick dele, com o seu próprio dano. Emitir N
+        // lances de uma folha inventava um veredito que a mesa nunca calculou.
+        //
+        // E o índice é sempre 0, porque `rolarAcerto` sempre usa `linhas[0]`:
+        // mesmo na folha do segundo golpe de uma dupla, a mesa aplica a
+        // penalidade do PRIMEIRO. Registrar outro índice aqui seria afirmar uma
+        // penalidade que ninguém aplicou.
+        registrarLance(contaDoLance(0), sorteio, { acertou: v, raspou, rolado, adiada });
         resolve({
           acertou: v, an: a, manobra: a.golpes > 1 ? manSel.value : 'simples',
           dano: raspou ? danoQA() : Math.max(0, parseInt(dnInp.value || '0', 10) || 0),
@@ -8465,12 +8481,31 @@ const SETAS = [
   // chama). Sem isto o coletor teria de arrastar token, e juntar algumas
   // centenas de lances levaria dez minutos de navegador para nada.
   if (LANCES_LIGADO) {
-    (window as any).__ABRIR_FOLHA = (idA: string, idB: string) => {
+    (window as any).__ABRIR_FOLHA = (idA: string, idB: string, opts?: any) => {
       const a = COMBS.find((c: any) => c.id === idA);
       const b = COMBS.find((c: any) => c.id === idB);
       if (!a || !b) return Promise.resolve(null);
+      // As opções são as que `resolverGolpeNoAr` passa quando o golpe cai:
+      // `tickDoGolpe`, a anatomia já declarada e a manobra travada. Sem elas o
+      // caminho da folha ADIADA (que é o único que existe no Simultâneo) não
+      // tinha um único lance na fixture.
+      if (opts?.adiada) {
+        const ra = (window as any).__RESUMO_DE?.(a.id);
+        const an = anatomia({
+          classe: classeDeTempo(ra?.arma, ra?.velocidade, ra?.classe),
+          velocidade: ra?.velocidade ?? velocidadeDaArma(ra?.arma, 5),
+          sistema: TEMPO.sistema,
+          manobra: (opts.manobra || 'simples') as Manobra,
+          golpes: Math.max(2, opts.golpes || 2),
+        });
+        return folhaDaAcao(a, b, {
+          tickDoGolpe: opts.tickDoGolpe ?? ((a.tick ?? 0) + an.preparo),
+          an, manobra: opts.manobra || 'simples',
+        });
+      }
       return folhaDaAcao(a, b);
     };
+    (window as any).__RESUMO_DE = (id: string) => RESUMO[id];
   }
 
   /** `+2` ou `−1`, com o menos do projeto. */

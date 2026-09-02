@@ -32,6 +32,8 @@
 import puppeteer from 'puppeteer-core';
 import fs from 'node:fs';
 import path from 'node:path';
+import crypto from 'node:crypto';
+import { execSync } from 'node:child_process';
 import { subirDev } from './dev-server.mjs';
 
 const RAIZ = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
@@ -62,13 +64,13 @@ if (!NAV) { console.log('· coletar-lances: PULADO (nenhum navegador; defina EDG
  * `defesaBase` chega **nula** e a folha percorre o caminho em que a régua não
  * tem número. Esse caminho existe no jogo e não tinha um único lance na fixture.
  */
-async function coletar(br, url, { papel, pares, veredito, modManual, manobra, botao }) {
+async function coletar(br, url, { papel, pares, veredito, modManual, manobra, botao, extras = '', adiada }) {
   const p = await br.newPage();
   await p.setViewport({ width: 1400, height: 950 });
   const erros = [];
   p.on('pageerror', (e) => erros.push(e.message));
   await p.goto(`${url}/mesa/grid?id=${MESA}&bench=12&cols=24&rows=16&nevoa=0`
-    + `&tempo=simultaneo&lances=1&extras=1&semente=${SEMENTE}&papel=${papel}`,
+    + `&tempo=simultaneo&lances=1&extras=${extras}&semente=${SEMENTE}&papel=${papel}`,
     { waitUntil: 'networkidle0', timeout: 60000 });
   await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
   await p.waitForFunction(() => typeof (window).__ABRIR_FOLHA === 'function', { timeout: 15000 });
@@ -91,7 +93,8 @@ async function coletar(br, url, { papel, pares, veredito, modManual, manobra, bo
         e.dispatchEvent(new Event('change', { bubbles: true }));
         return true;
       };
-      const pr = (window).__ABRIR_FOLHA(op.a, op.b);
+      const pr = (window).__ABRIR_FOLHA(op.a, op.b, op.adiada
+        ? { adiada: true, manobra: op.manobra || 'dupla', golpes: 2 } : null);
       await new Promise((r) => setTimeout(r, 0));
       const dlg = document.getElementById('alvo-dlg');
       if (!dlg?.open) return false;
@@ -127,7 +130,7 @@ async function coletar(br, url, { papel, pares, veredito, modManual, manobra, bo
       document.querySelector(op.botao)?.click();
       await pr;
       return true;
-    }, { a, b, veredito, modManual, manobra, botao });
+    }, { a, b, veredito, modManual, manobra, botao, adiada });
     if (ok) n++;
   }
   const lances = await p.evaluate(() => (window).__LANCES || []);
@@ -137,6 +140,7 @@ async function coletar(br, url, { papel, pares, veredito, modManual, manobra, bo
 
 const dev = await subirDev({ config: 'astro.bancada.mjs' });
 const br = await puppeteer.launch({ executablePath: NAV, headless: 'new', args: ['--no-sandbox'] });
+let PLANO = [];
 const todos = [];
 const errosTodos = [];
 try {
@@ -148,15 +152,28 @@ try {
   // O plano de passadas. Cada linha existe para cobrir uma coisa que a bancada
   // padrão não produz, e a coluna `cobre` diz qual, para ninguém apagar uma
   // passada sem saber o que perde.
-  const PLANO = [
-    { nome: 'acerto · simples', papel: 'mestre', pares: todosPares, veredito: 'acerto', botao: '#al-sim', cobre: 'acertos, ferimento, armadura, ajusteDados' },
-    { nome: 'raspão · simples', papel: 'mestre', pares: todosPares, veredito: 'raspao', botao: '#al-qa', cobre: 'raspões por construção' },
-    { nome: 'erro · simples', papel: 'mestre', pares: todosPares, veredito: 'erro', botao: '#al-nao', cobre: 'erros por construção' },
-    { nome: 'dupla · acerto', papel: 'mestre', pares: alguns(2), veredito: 'acerto', manobra: 'dupla', botao: '#al-sim', cobre: 'golpeIndice > 0' },
-    { nome: 'dupla · raspão', papel: 'mestre', pares: alguns(3), veredito: 'raspao', manobra: 'dupla', botao: '#al-qa', cobre: 'golpeIndice > 0 fora do acerto' },
-    { nome: 'mod +3', papel: 'mestre', pares: alguns(4), veredito: 'acerto', modManual: 3, botao: '#al-sim', cobre: 'modManual positivo' },
-    { nome: 'mod −4', papel: 'mestre', pares: alguns(4), veredito: 'erro', modManual: -4, botao: '#al-nao', cobre: 'modManual negativo' },
-    { nome: 'jogador', papel: 'jogador', pares: alguns(8), botao: '#al-sim', cobre: 'defesaBase nula' },
+  // O PLANO DE PASSADAS. Cada linha existe para cobrir uma coisa que a bancada
+  // padrão não produz, e a coluna `cobre` diz qual, para ninguém apagar uma
+  // passada sem saber o que perde.
+  //
+  // Os `extras` são TRÊS EIXOS INDEPENDENTES (`vida`, `cond`, `arm`), e as
+  // quatro primeiras passadas existem para que cada um tenha lance SOZINHO. Sem
+  // isso os três variam juntos, e a `defesaEfetiva` soma quatro termos, três
+  // deles tipicamente negativos: dois que sempre entram juntos escondem uma
+  // troca de sinal entre eles, porque ela se cancela.
+  PLANO = [
+    { nome: 'nu · acerto', papel: 'mestre', extras: '', pares: todosPares, veredito: 'acerto', botao: '#al-sim', cobre: 'nenhum eixo ligado: a linha de base' },
+    { nome: 'só ferimento', papel: 'mestre', extras: 'vida', pares: todosPares, veredito: 'acerto', botao: '#al-sim', cobre: 'ferimento sozinho' },
+    { nome: 'só condições', papel: 'mestre', extras: 'cond', pares: todosPares, veredito: 'acerto', botao: '#al-sim', cobre: 'ajusteDados sozinho' },
+    { nome: 'só armadura', papel: 'mestre', extras: 'arm', pares: todosPares, veredito: 'acerto', botao: '#al-sim', cobre: 'qaArmadura sozinho' },
+    { nome: 'os três', papel: 'mestre', extras: 'vida,cond,arm', pares: alguns(2), veredito: 'acerto', botao: '#al-sim', cobre: 'os três juntos' },
+    { nome: 'raspão', papel: 'mestre', extras: 'vida,cond,arm', pares: todosPares, veredito: 'raspao', botao: '#al-qa', cobre: 'raspões por construção' },
+    { nome: 'erro', papel: 'mestre', extras: 'vida,cond,arm', pares: todosPares, veredito: 'erro', botao: '#al-nao', cobre: 'erros por construção' },
+    { nome: 'dupla', papel: 'mestre', extras: 'cond', pares: alguns(2), veredito: 'acerto', manobra: 'dupla', botao: '#al-sim', cobre: 'penDados com dois elementos' },
+    { nome: 'golpe adiado', papel: 'mestre', extras: 'vida,arm', pares: alguns(3), veredito: 'acerto', manobra: 'dupla', adiada: true, botao: '#al-sim', cobre: 'a folha do golpe NO AR, que é o único caminho do Simultâneo' },
+    { nome: 'mod +3', papel: 'mestre', extras: 'vida,cond,arm', pares: alguns(4), veredito: 'acerto', modManual: 3, botao: '#al-sim', cobre: 'modManual positivo' },
+    { nome: 'mod −4', papel: 'mestre', extras: 'vida,cond,arm', pares: alguns(4), veredito: 'erro', modManual: -4, botao: '#al-nao', cobre: 'modManual negativo' },
+    { nome: 'jogador', papel: 'jogador', extras: 'vida,cond,arm', pares: alguns(8), botao: '#al-sim', cobre: 'defesaBase nula' },
   ];
 
   for (const passo of PLANO) {
@@ -175,19 +192,62 @@ if (errosTodos.length) console.log(`  ! ${errosTodos.length} erro(s) de página:
 fs.mkdirSync(path.dirname(SAIDA), { recursive: true });
 fs.writeFileSync(SAIDA, todos.map((l) => JSON.stringify(l)).join('\n') + '\n', 'utf8');
 
+// O CARIMBO, que a §2.4 do plano já exige das baterias e a fixture também
+// precisa. Ela é o registro do comportamento da mesa NUM COMMIT: se a mesa
+// mudar, ela é a única evidência do que a mesa fazia antes, e regenerar apaga
+// essa evidência. Sem o carimbo, uma divergência futura é "consertada" por uma
+// recoleta reflexa, e recoletar tem de ser ato deliberado, nunca reação a
+// teste vermelho.
+const hashDe = (dirs) => {
+  const h = crypto.createHash('sha256');
+  const andar = (d) => {
+    const itens = fs.readdirSync(d, { withFileTypes: true })
+      .sort((x, y) => x.name.localeCompare(y.name));
+    for (const e of itens) {
+      const cheio = path.join(d, e.name);
+      if (e.isDirectory()) andar(cheio);
+      else if (/\.(ts|json)$/.test(e.name)) { h.update(e.name); h.update(fs.readFileSync(cheio)); }
+    }
+  };
+  for (const d of dirs) andar(path.join(RAIZ, d));
+  return h.digest('hex').slice(0, 16);
+};
+const gitOu = (cmd, padrao) => {
+  try { return execSync(cmd, { cwd: RAIZ, encoding: 'utf8' }).trim(); } catch { return padrao; }
+};
+const META = {
+  commit: gitOu('git rev-parse HEAD', 'desconhecido'),
+  // Se a árvore estava suja na hora da coleta, o commit não descreve o que
+  // rodou. Dizer isso é mais útil do que fingir que descreve.
+  sujo: gitOu('git status --porcelain', '') !== '',
+  dados_hash: hashDe(['src/data', 'src/lib']),
+  iso: new Date().toISOString(),
+  semente: Number(SEMENTE),
+  perfil: todos[0]?.entrada?.perfil || null,
+  lances: todos.length,
+  passadas: PLANO.map((x) => ({ nome: x.nome, extras: x.extras || '', cobre: x.cobre })),
+};
+fs.writeFileSync(SAIDA.replace(/\.jsonl$/, '.meta.json'), JSON.stringify(META, null, 2) + '\n', 'utf8');
+
+
 // A COBERTURA, contada aqui e conferida de novo no teste. Contar nos dois
 // lugares é de propósito: aqui serve para o coletor falhar cedo quando uma
 // passada deixa de produzir o que ela existe para produzir.
 const conta = (f) => todos.filter(f).length;
+// OS EIXOS ISOLADOS, que é o que a separação do `extras` comprou.
+const semCond = (l) => l.entrada.atacante.ajusteDados === 0;
+const semFer = (l) => l.entrada.alvo.ferimento === 0;
+const semArm = (l) => l.entrada.alvo.qaArmaduraBonus === 0 && l.entrada.alvo.qaArmaduraReducao === 0;
 const METAS = [
-  ['golpeIndice > 0, com penDados >= 2', conta((l) => l.entrada.golpeIndice > 0 && l.entrada.atacante.penDados.length >= 2), 60],
-  ['modManual != 0', conta((l) => l.entrada.modManual !== 0), 40],
-  ['modManual positivo', conta((l) => l.entrada.modManual > 0), 1],
-  ['modManual negativo', conta((l) => l.entrada.modManual < 0), 1],
-  ['ferimento != 0', conta((l) => l.entrada.alvo.ferimento !== 0), 60],
-  ['ajusteDados != 0', conta((l) => l.entrada.atacante.ajusteDados !== 0), 40],
-  ['qaArmaduraBonus != 0', conta((l) => l.entrada.alvo.qaArmaduraBonus !== 0), 40],
-  ['qaArmaduraReducao != 0', conta((l) => l.entrada.alvo.qaArmaduraReducao !== 0), 40],
+  ['armadura SOZINHA (sem cond, sem fer)', conta((l) => !semArm(l) && semCond(l) && semFer(l)), 30],
+  ['condições SOZINHAS', conta((l) => !semCond(l) && semFer(l) && semArm(l)), 30],
+  ['ferimento SOZINHO', conta((l) => !semFer(l) && semCond(l) && semArm(l)), 30],
+  ['os três juntos', conta((l) => !semFer(l) && !semCond(l) && !semArm(l)), 30],
+  ['nenhum dos três', conta((l) => semFer(l) && semCond(l) && semArm(l)), 30],
+  ['modManual positivo', conta((l) => l.entrada.modManual > 0), 20],
+  ['modManual negativo', conta((l) => l.entrada.modManual < 0), 20],
+  ['penDados com dois elementos', conta((l) => l.entrada.atacante.penDados.length >= 2), 60],
+  ['folha do golpe adiado', conta((l) => l.adiada === true), 30],
   ['defesaBase nula', conta((l) => l.entrada.alvo.defesaBase == null), 5],
   ['veredito acerto', conta((l) => l.saida.veredito === 'acerto'), 60],
   ['veredito raspao', conta((l) => l.saida.veredito === 'raspao'), 60],

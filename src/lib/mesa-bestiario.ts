@@ -154,8 +154,33 @@ export function resumoDe(c: any, fichaPorId: Record<string, any> = {}): ResumoCo
     // `ataque` e o `dano` já evitam vindo do mesmo lugar. E `dados.qa` continua
     // podendo escrever por cima dos quatro números, um a um, que é como o
     // cavaleiro de placa construído como criatura se conserta.
-    qa: { ...qaDaPeca(ov.arma ?? base?.arma, ov.dano ?? base?.dano,
-      (ov.armaduras ?? null) as any), ...(ov.qa || {}) },
+    //
+    // A METADE DO COURO VEM DA BASE quando o ajuste não traz armadura, e essa
+    // linha é um conserto de 02/09. A versão anterior passava sempre
+    // `ov.armaduras ?? null`, o que jogava fora a armadura que o
+    // `resumoCombatePC` já tinha resolvido da ficha: um PC de malha entrava no
+    // Grid com Margem e raspão de alvo DESPROTEGIDO. O defeito não aparecia em
+    // teste porque as duas metades do Quase-Acerto nascem zero e zero é um
+    // número plausível.
+    //
+    // A ordem importa e é esta: a arma manda (segue o ajuste), a armadura da
+    // base entra só onde o ajuste calou, e o `ov.qa` escreve por cima dos dois.
+    // Assim o ajuste por instância continua funcionando POR CIMA, e não por
+    // baixo.
+    qa: (() => {
+      const daArma = qaDaPeca(ov.arma ?? base?.arma, ov.dano ?? base?.dano,
+        (ov.armaduras ?? null) as any);
+      const daBase = ov.armaduras ? null : (base?.qa || null);
+      return {
+        ...daArma,
+        ...(daBase ? {
+          armaduraBonus: daBase.armaduraBonus,
+          armaduraReducao: daBase.armaduraReducao,
+          armaduraClasses: daBase.armaduraClasses,
+        } : {}),
+        ...(ov.qa || {}),
+      };
+    })(),
   };
 }
 

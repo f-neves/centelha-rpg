@@ -1,0 +1,87 @@
+{
+  "commit": "d412c6fc6c1f6c042932b32a9473aba7186c8655",
+  "sujo": true,
+  "dados_hash": "d22c55dcf25c8990",
+  "iso": "2026-09-02T20:20:46.420Z",
+  "semente": 20260902,
+  "perfil": {
+    "margem": false,
+    "gate": false,
+    "porte": false,
+    "bloqueio": false,
+    "modo2": false,
+    "teto6": false,
+    "curaSemArea": false,
+    "curaDivide": false,
+    "porRodada": false,
+    "n1": false,
+    "n2": false,
+    "n3": false,
+    "n4": false,
+    "n5": false,
+    "n6": false
+  },
+  "lances": 1051,
+  "passadas": [
+    {
+      "nome": "nu · acerto",
+      "extras": "",
+      "cobre": "nenhum eixo ligado: a linha de base"
+    },
+    {
+      "nome": "só ferimento",
+      "extras": "vida",
+      "cobre": "ferimento sozinho"
+    },
+    {
+      "nome": "só condições",
+      "extras": "cond",
+      "cobre": "ajusteDados sozinho"
+    },
+    {
+      "nome": "só armadura",
+      "extras": "arm",
+      "cobre": "qaArmadura sozinho"
+    },
+    {
+      "nome": "os três",
+      "extras": "vida,cond,arm",
+      "cobre": "os três juntos"
+    },
+    {
+      "nome": "raspão",
+      "extras": "vida,cond,arm",
+      "cobre": "raspões por construção"
+    },
+    {
+      "nome": "erro",
+      "extras": "vida,cond,arm",
+      "cobre": "erros por construção"
+    },
+    {
+      "nome": "dupla",
+      "extras": "cond",
+      "cobre": "penDados com dois elementos"
+    },
+    {
+      "nome": "golpe adiado",
+      "extras": "vida,arm",
+      "cobre": "a folha do golpe NO AR, que é o único caminho do Simultâneo"
+    },
+    {
+      "nome": "mod +3",
+      "extras": "vida,cond,arm",
+      "cobre": "modManual positivo"
+    },
+    {
+      "nome": "mod −4",
+      "extras": "vida,cond,arm",
+      "cobre": "modManual negativo"
+    },
+    {
+      "nome": "jogador",
+      "extras": "vida,cond,arm",
+      "cobre": "defesaBase nula"
+    }
+  ]
+}
