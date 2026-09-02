@@ -9,7 +9,146 @@ de execução.
 
 ---
 
+## 0. As decisões, respondidas em 02/09
+
+As perguntas da §1 foram feitas e respondidas na mesma sessão. As respostas estão aqui; a §1 fica
+como está, porque o que cada opção significava continua sendo a leitura das consequências.
+
+| # | Pergunta | Resposta |
+|---|---|---|
+| **D1** | o Grid de hoje ou o automatizado | **os dois, mesma semente** |
+| **D2** | motor como está ou as regras que faltam | **chaveável, com a tela lendo a mesma chave** |
+| **D3** | quem decide pelos PCs | **políticas declaradas como dado** |
+| **D4** | o que é fim de batalha | **um lado sem ninguém de pé · a fuga sai do tabuleiro · a desistência de um lado (todos abaixo de 20% de Vida)**. Recusados: teto de Ticks e teto de adiamento |
+| **D5** | que cenas, e em que eixo variam | **grade fatorial sobre eixos** |
+| **Q6** | a resolução vira módulo único ou cópia | **cópia, com teste-espelho** |
+| **Q7** | as condições expiram | **expiram, e a mesa também passa a expirar** |
+| **Q8** | quantos jogadores na mesa simulada | **vira eixo do experimento** |
+| **Q9** | perfil de rolagem | **`site`: o site rola tudo** |
+| **Q10** | as Artes entram | **só as elementais, com projétil e área/volume, mais a Cura** |
+| **Q10b** | quais Efeitos | **um de cada forma do Grid** (8 formas) |
+| **Q11** | o mapa tem obstáculo | **parede vira eixo do experimento** |
+| **Q12** | mapa e distância inicial | **1 m por hex, mapa de 48×48, quatro distâncias** |
+| **Q14** | relatório para ler ou portão | **artefato completo para ler e para embasar decisões futuras** |
+| **Q15** | de onde saem os PCs | **arquétipos que eu escrevo, declarados como inventados** |
+| **Q16** | as 7 regras que faltam entram no jogo | **entram, e a medição decide a ordem** |
+
+Q13 (o repertório declarável) não foi perguntada porque D3 a responde: uma política declarada como
+dado só pode declarar o que o Grid aceita, e o Grid aceita **6 coisas** (atacar em 4 manobras, mover
+em 3 modos, conjurar, abortar, esperar 1 Tick, "outra coisa"). As 461 Técnicas ficam de fora por não
+serem declaráveis. Consequência a registrar **antes** de medir, para não ser lida depois como
+descoberta: o número de opções do jogador vai sair baixo por construção.
+
+### 0.1 O que as respostas mudam no desenho
+
+**D1 não custa uma segunda execução.** Se a política responde as paradas de classe **iii** com a
+mesma aritmética que o motor faria, as duas versões da batalha são **idênticas byte a byte**: o que
+muda é só quais eventos contam como consulta a um humano. Então não há A/B de execução, há uma
+bandeira `automatizavel` por evento de parada e duas leituras do mesmo log. O mesmo vale para **Q8**:
+mestre solo e um-jogador-por-PC não mudam nada na batalha, mudam a quem se atribui cada gesto, e
+saem os dois do mesmo arquivo. Isso derruba dois eixos que pareciam multiplicar a grade e não
+multiplicam nada.
+A ressalva: isso deixa de valer se a política responder uma parada **iii** de um jeito que o motor
+não faria (o mestre que arredonda a favor, o que fudge). Não modelamos isso, e a §4 já o coloca fora
+de escopo.
+
+**Q6 (cópia) contra D2 (a tela lendo a mesma chave): como as duas convivem.** Com cópia, as 7 regras
+vivem no harness, e a tela só ganha cada uma quando ela for ligada em produção (Q16). Logo o
+**teste-espelho só é válido com todas as bandeiras desligadas**, que é exatamente o perfil "motor
+como está". A regra de convívio: o espelho roda sempre no perfil base; cada regra que a mesa ganhar
+sai da lista de bandeiras e passa a ser comparada pelo espelho também. A janela de divergência entre
+os dois motores é o conjunto de bandeiras ligadas no harness e ausentes na tela, e esse conjunto
+**encolhe por desenho** à medida que Q16 avança, em vez de crescer como aconteceu com a
+`lib-tempo.mjs`.
+
+**D4 traz uma regra nova, e ela é a primeira invenção deliberada da simulação.** ⚑ A desistência
+coletiva abaixo de 20% de Vida não existe no Grid nem nos capítulos. Ela conversa com o robô, que
+foge individualmente abaixo de 25% (`regras.json:2268`): a peça foge primeiro, sozinha, e o lado
+desiste depois, junto. A faixa entre 25% e 20% é a janela em que há fuga sem rendição, e é ela que
+vai gerar a perseguição que interessa medir.
+
+**Sem teto de Ticks, o fim depende da fuga alcançar a borda**, e num mapa de 48×48 isso é longe de
+propósito: é a cauda que você quer ver. Mas um laço sem saída trava o processo, então fica um **teto
+de segurança de execução**, que não é regra de jogo: a batalha que passar de 2.000 Ticks é abortada e
+marcada `estourou`, entra num balde próprio e não é contada em nenhuma média. É diferente da opção
+4c que você recusou, porque 4c classificaria a batalha como "indecisa", que é um resultado de jogo;
+`estourou` é o registro de que o harness desistiu.
+
+**Q7 e Q16 viram trabalho no Grid, não só no harness.** Ler o campo `ate` e ligar as 7 regras são
+mudanças na mesa que está rodando. Elas não são pré-requisito para começar o harness, mas cada uma
+que entrar muda o que o perfil base significa, então a bateria grava o commit e o `dados_hash` (§2.4)
+para que uma medição de hoje continue comparável com uma de depois. Isso é o que a resposta de **Q14**
+pede: o artefato tem de guardar os agregados por célula junto do relatório, e não só as tabelas
+formatadas, senão a comparação futura não existe.
+
+**Q10 e Q10b fecham um recorte que é quase todo regra fechada.** As oito formas do Grid, com um
+Efeito âncora de cada, saindo dos 52 que aceitam alguma das 8 elementais ou a Cura:
+
+| Forma | Efeito âncora | Nível | Fere? |
+|---|---|---:|---|
+| alvo | `projetil-conjurado` | 1 | sim |
+| zona | `brasa-retardada` | 3 | sim |
+| cone | `lascas` | 1 | sim |
+| linha | `passo-relampago` | 4 | não |
+| muro | `muro` | 3 | sim |
+| aura | `campo-de-alivio` | 3 | cura |
+| movimento | `empurrao-elemental` | 3 | não |
+| cadeia | `corrente` | 3 | sim |
+
+Área e volume estão em terreno firme: sair da área tem regra fechada, escada de metros, duas
+Dificuldades e default declarado (R2 §E). O que o recorte não resolve está na §0.2.
+
+**Q11 (parede) e Q12 (48×48, quatro distâncias)** mudam a grade: E2 passa a ter 4 níveis, e entra um
+eixo de obstáculo. A §0.3 refaz a conta.
+
+**Q15**: os arquétipos entram pelo cano normal, `resumoCombatePC`, sem tratamento especial, e cada
+um é marcado `inventado` na procedência da §2.7.
+
+### 0.2 O que as respostas abriram, e ainda não tem resposta
+
+| # | Pendência | Precisa da sua palavra antes da primeira linha? |
+|---|---|---|
+| **P1** | **A Cura em área contradiz a regra publicada.** O capítulo diz que a Cura é **sem área e dividida entre os alvos**, e o motor não impede nem divide (R2 §E). O Efeito âncora de aura é `campo-de-alivio`, que é área. Saídas: o harness divide (e diverge do motor) · não divide (e a cura em área vira jogada dominante) · troca a âncora de aura por um Efeito que fere, e a Cura entra só por alvo único | **sim** |
+| **P2** | **Parede não existe no Grid.** O único veto de passo é casa ocupada (`ocupadoPor`); não há casa vetada fixa em `arena_tokens` nem em lugar nenhum. Um eixo de obstáculo é invenção do harness ⚑, ou uma funcionalidade nova do Grid | **sim** |
+| **P3** | **O projétil mirado precisa de uma rolagem que não existe.** A regra escrita é Percepção + Acerto Arcano, e o motor não tem rolagem de Arte nenhuma (R2 §E). Dentro do recorte escolhido, é a única invenção mecânica obrigatória ⚑ | **sim** |
+| **P4** | **Quais políticas, e a lista de regras de cada uma.** D3 pediu perfis declarados; falta dizer quais e o que cada um faz com as 6 opções declaráveis | **sim** |
+| **P5** | **Quais arquétipos de PC**, e quantos. Eu escrevo, mas a lista é escolha (espadachim de escudo, lanceiro, arqueiro, conjurador elemental, curandeiro?) | dá para eu propor |
+| **P6** | **Os níveis de E1 e E4 em armas concretas.** "Uníssono" e "coprimo" precisam virar nomes do catálogo | dá para eu propor |
+
+### 0.3 A grade, refeita com as respostas
+
+| Eixo | Níveis | Custa célula? |
+|---|---|---|
+| **E1 · diversidade de ciclos** | 4 (uníssono 6 · 5 e 6 · 6 e 7 · 4/5/6/7) | sim |
+| **E2 · distância inicial** | 4 (encostado · ~3 Ticks · ~10 Ticks · muito longa) | sim |
+| **E3 · tamanho da cena** | 3 (1v1 · 3×3 · 2×8) | sim |
+| **E4 · assimetria de passo** | 2 | sim |
+| **E5 · perfil de regras** | 2 (base · as 7 ligadas) | sim |
+| **E6 · política** | 4, pendente de P4 | sim |
+| **E7 · obstáculo** | 2 (campo aberto · parede), pendente de P2 | sim |
+| **E8 · atribuição de gesto** | 2 (mestre solo · um por PC) | **não**: é leitura do mesmo log |
+| **D1 · perfil de automação** | 2 | **não**: é leitura do mesmo log |
+
+Cruzar tudo dá **4×4×3×2×2×4×2 = 1.536 células**, e o problema não é tempo de máquina, é que
+ninguém lê 1.536 tabelas. O orçamento que aperta continua sendo o mesmo da §3: o que se consegue
+ler. Desenho proposto:
+
+- **Núcleo cruzado: E1 × E2 × E3 = 48 células.** São os três que eu espero que interajam, e a
+  previsão da §3 é sobre eles.
+- **Um fator de cada vez em volta da célula-âncora**, para E4, E5, E6 e E7: `(2−1) + (2−1) + (4−1) +
+  (2−1) = 6 células`. Mede o efeito principal de cada um sem cruzá-lo com o resto.
+- **Cruzamentos deliberados**, porque OFAT é cego a interação e há quatro que eu espero de verdade:
+  E1(uníssono) × E3(horda), E1(uníssono) × E4(assimétrico), E2(muito longa) × E4, E5 × E1(uníssono).
+  **4 células.**
+- Total: **58 células**. A 500 repetições, **29.000 batalhas**, mais o reforço de 2.000 nas células
+  de cauda (as de E4 e a de uníssono com horda). A justificativa das 500 e das 2.000 é a da §3 e não
+  muda.
+
+---
+
 ## 1. O que eu preciso de você
+
+*Todas respondidas em 02/09. As respostas estão na §0; o que segue é o que cada opção significava.*
 
 ### D1 · O harness mede o Grid de hoje ou o Grid automatizado?
 
@@ -271,20 +410,21 @@ Três diferenças merecem ser ditas com a consequência, porque mudam número e 
 | 2 | A folha da ação | **A** para o veredito e o dano (`saidaDoAtaque`, `rolarExpr`, `defesaPerdida`, `soakDe`); **F** para o ajuste avulso com motivo | é a parada que hoje trava a cena, e a que mais barato se automatiza |
 | 3 | Escolher o alvo | **P** ⚑ | hoje o robô escolhe o mais próximo; qualquer outra regra é invenção |
 | 4 | Soltar peça em casa vazia | **P** ⚑ | para onde mover quando não se está atacando. Sem D3 isto fica em branco |
-| 5 | Abortar o gesto | **em branco esperando D3** | se a política pode abortar, é **P** ⚑; se não pode, é **F**, e aí a perseguição sem teto (D4) nunca é interrompida por ninguém |
+| 5 | Abortar o gesto | **P** ⚑, pendente de P4 | com D3 respondida, cada política declara se aborta e quando. Se nenhuma abortar, a perseguição sem teto de adiamento (D4) só termina pela borda do mapa ou pela desistência a 20% |
 | 6 | "Outra coisa" | **F** | é narração livre; não tem forma de dado |
-| 7 | Efeito pegando alguém | **A** (`dentroDoEfeito`, `jaMordido`, `danoNoAlvo`), se Q10 = sim; **F** se não | a política é sempre "cobrar todos", que é o que o mestre faz quando não quer pensar |
+| 7 | Efeito pegando alguém | **A** (`dentroDoEfeito`, `jaMordido`, `danoNoAlvo`) | entra: Q10 pôs zona, aura, muro e cone no escopo. A política é sempre "cobrar todos", que é o que o mestre faz quando não quer pensar |
 | 8 | Sair da área | **P** ⚑ para a escolha (sair / ficar por coragem / comer inteiro), **A** para a conta (`desvioDaArea`, `rolarPool`) | é a única parada com default declarado hoje: comer inteiro (L1298) |
-| 9 | Conjurar | **em branco esperando Q10** | se entrar, é **P** ⚑ de cabo a rabo, e ainda precisa da resistência que não existe |
+| 9 | Conjurar | **P** ⚑ | entra, no recorte da §0.1: qual Efeito, que nível, quais parâmetros e onde soltar. O mirado ainda precisa da rolagem de acerto que não existe (P3) |
 | 10 | Rolar iniciativa | **A** (`rolarIniciativaPC`, `iniDeMonstro`, `ticksDeEntrada`) | com a fonte de acaso semeada |
 | 11 | Avançar o Tick | **A** | é o laço |
 | 12 | Cartão da faixa | **A** | a ordem é a da fila, que já é total |
 | 13 | Curar / tirar Vida / Mana / ordem | **F** | correção do mestre; não existe sem mesa |
 | 14 | Ação na aba Combate | **F** | é outro sistema de tempo |
 
-Contagem: **4 políticas certas** (#1, #3, #4, #8) e mais **2 possíveis** (#5, #9), **6 regras
-automáticas**, **4 fora de escopo**, **2 em branco** esperando D3 e Q10. Cada ⚑ é uma regra de jogo
-que o harness inventa, e toda métrica que dependa dela carrega essa invenção junto.
+Contagem, já com as respostas da §0: **6 políticas** (#1, #3, #4, #5, #8, #9), **5 regras
+automáticas** (#2, #7, #10, #11, #12), **3 fora de escopo** (#6, #13, #14) e nenhuma em branco. A #2
+e a #8 aparecem duas vezes porque se partem: a escolha é política, a conta é automática. Cada ⚑ é uma regra de jogo que o harness inventa, e toda métrica que dependa dela carrega
+essa invenção junto.
 
 ### 2.4 Determinismo
 
@@ -474,6 +614,10 @@ só de entrada inventada não é reportada como achado sobre o sistema**, é rep
 ---
 
 ## 3. Os eixos do experimento
+
+*A grade abaixo é a proposta original. As respostas da §0 a revisam: E2 ganhou um quarto nível, entrou
+um eixo de obstáculo, e dois dos eixos deixaram de custar célula. A grade valendo está na §0.3; o
+raciocínio, a previsão e a justificativa do número de repetições continuam sendo estes.*
 
 O eixo principal não é quantidade de peças, é **diversidade de ciclos**, e a razão está na forma
 fechada da R2 §H1: o golpe de uma peça cai em `T_golpe + k · ciclo`, então duas peças de mesmo ciclo
