@@ -470,8 +470,37 @@ critério principal é a **iniciativa rolada**, e não a soma de atributos. A ca
 | 4 | Destreza | crescente |
 | 5 | sorteio | |
 
-**A resolução é o exato inverso**, ou seja, iniciativa decrescente e os desempates ao contrário: age
-primeiro quem tirou mais. Ver N5.
+**A iniciativa só manda na entrada.** Passados os Ticks em que as peças entram pela escada da
+iniciativa, o dado sai da frente e a chave passa a ser a estatística: **Raciocínio + Prontidão
+crescente**, depois Raciocínio, depois Destreza, e a iniciativa rolada vira o último desempate antes
+do sorteio. As duas cadeias são a mesma coisa com a iniciativa mudando de lugar:
+
+| Fase | A cadeia de declaração, sempre crescente |
+|---|---|
+| **entrada** (os Ticks da escada de iniciativa) | iniciativa · Rac + Prontidão · Raciocínio · Destreza · sorteio |
+| **depois** | Rac + Prontidão · Raciocínio · Destreza · iniciativa · sorteio |
+
+O acaso decide quem chega primeiro na briga; a perícia decide quem lê a briga daí em diante.
+
+**Um ponto que nem o exemplo nem a pergunta cobriram, e que fica anotado como aberto:** um Tick pode
+misturar quem ainda está entrando com quem já está re-declarando, e as duas cadeias discordam sobre
+como ordená-los entre si. Com o catálogo de hoje isso é raro (a entrada cabe nos Ticks 1 a 4 e o
+ciclo mais curto é 5, então a primeira re-declaração cai no Tick 6), mas não é impossível com um
+espalhamento grande de iniciativa. Proposta, a confirmar: **a fronteira é global e não por peça**, ou
+seja, vale a cadeia de entrada até o último Tick de entrada da cena, e a outra a partir dali.
+
+**A resolução é o exato inverso da declaração**, com duas ressalvas que vêm das respostas de 02/09:
+
+- **Empate resolve junto.** Duas peças com a mesma iniciativa (ou, depois da entrada, com a mesma
+  chave) agem **no mesmo instante**: a ordem interna serve só para a declaração. Com o retrato de N6
+  isso não gera ambiguidade nenhuma, porque a ordem entre elas não muda número.
+- **A dependência entre ações vence a ordem.** Quando uma ação só faz sentido depois de outra
+  (interpor-se antes de o golpe chegar, aparar, empurrar quem ia atacar), a ordem sai da dependência
+  e não da iniciativa, e quem decide o encaixe é o mestre. No repertório declarável de hoje a única
+  ação dependente é o abortar com "interpor" (`abrirAbortar`, `mesa-tempo-ui.ts:272-334`), e a regra
+  operacional que sai daí é: **a interposição resolve antes do golpe contra o qual ela se interpõe**,
+  qualquer que seja a iniciativa de quem se interpôs. Para o harness isso é uma exceção declarada na
+  fase 3, e não uma parada de julgamento.
 
 **O que isso corrige na versão anterior desta tabela.** Ela tinha a iniciativa como quarto critério e
 em ordem decrescente, e os desempates de Raciocínio e Destreza também decrescentes. Estava errada nos
