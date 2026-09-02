@@ -458,15 +458,42 @@ Grid tem por acidente da interface".
 
 #### N4 · A ordem de declaração
 
-No Tick T, todo mundo que está livre declara. A ordem é:
+No Tick T, todo mundo que está livre declara. **Corrigido em 02/09**, com o exemplo do usuário: o
+critério principal é a **iniciativa rolada**, e não a soma de atributos. A cadeia inteira é
+"quem tem menos declara primeiro", em todos os níveis:
 
 | # | Critério | Sentido |
 |---|---|---|
-| 1 | **Raciocínio + Prontidão** | **crescente**: declara primeiro quem tem menos |
-| 2 | Raciocínio | decrescente |
-| 3 | Destreza | decrescente |
-| 4 | a iniciativa rolada | decrescente |
+| 1 | **a iniciativa rolada** | **crescente**: declara primeiro quem tirou menos |
+| 2 | Raciocínio + Prontidão | crescente |
+| 3 | Raciocínio | crescente |
+| 4 | Destreza | crescente |
 | 5 | sorteio | |
+
+**A resolução é o exato inverso**, ou seja, iniciativa decrescente e os desempates ao contrário: age
+primeiro quem tirou mais. Ver N5.
+
+**O que isso corrige na versão anterior desta tabela.** Ela tinha a iniciativa como quarto critério e
+em ordem decrescente, e os desempates de Raciocínio e Destreza também decrescentes. Estava errada nos
+dois pontos: a iniciativa é o primeiro critério, e a cadeia inteira é crescente.
+
+**Uma consequência elegante: a fila que já existe é a ordem de resolução.** `ordemDaFila`
+(`combate-tempo.ts:399-404`) ordena por Tick, depois **iniciativa decrescente**, depois Raciocínio
+decrescente. O critério principal já é o certo para a resolução; o que falta é acrescentar Prontidão
+e Destreza aos desempates, e a ordem de declaração é essa mesma invertida dentro do Tick.
+
+**Um exemplo, o do usuário, para a implementação conferir contra.** Iniciativas: P1 12, P2 11,
+P3 9, P4 5, P5 3, P6 9.
+
+| Tick | Quem age | Por quê | Declara nesta ordem | Resolve nesta ordem |
+|---:|---|---|---|---|
+| 1 | P1 | tirou a maior, entra sozinho (`tickDoPrimeiro: 1`) | P1 | P1 |
+| 2 | P2, P3, P6 | atraso ≤ 6 em relação ao primeiro (`gapPorPenalidade: 6`) | **P3 e P6** (ini 9), desempatados entre si por Raciocínio + Prontidão crescente, e depois **P2** (ini 11) | P2, depois P3 e P6 |
+| 3 | P4, P5 | atraso 7 e 9, um degrau a mais | **P5** (ini 3), depois **P4** (ini 5) | P4, depois P5 |
+
+O Tick 3 é o exemplo que mostra para que a regra serve: P5 declara que vai atacar P1, e **P4, que
+declara depois porque tirou mais iniciativa, escolhe sabendo disso** e vai proteger P1. É a vantagem
+de N7 em ato.
 
 **O número já existe nos dois lados do tabuleiro, e ninguém tinha reparado.** A iniciativa do sistema
 é `1d6 + Raciocínio + Prontidão` (`regras.json → derivados.iniciativa.soma: ["raciocinio",
@@ -501,7 +528,7 @@ O Tick deixa de ser "cada um na sua vez" e passa a ter fases explícitas:
 |---|---|
 | **1 · declaração** | todos os livres declaram, na ordem de N4. Nenhuma consequência acontece aqui |
 | **2 · início** | as ações começam. Todas juntas, depois que a última declaração entrou (é o que N1 quis dizer com "a ação começa no Tick T") |
-| **3 · resolução** | as consequências devidas neste Tick acontecem, **na ordem inversa da declaração**: resolve primeiro quem tem mais Raciocínio + Prontidão |
+| **3 · resolução** | as consequências devidas neste Tick acontecem, **na ordem inversa da declaração**: resolve primeiro quem tirou **mais iniciativa** (N4, corrigido) |
 
 Isso torna **N2 uma consequência, e não uma regra à parte**: se as declarações são uma fase inteira e
 as consequências vêm depois dela, um golpe declarado no Tick T obviamente não pode calar a declaração
@@ -1120,6 +1147,15 @@ dos oito Efeitos âncora, põe `em-chamas`.
 | do núcleo do Tick | `n1` (já é o parâmetro `decideEmValeDepois`) · `n2` · `n3` · `n4` · `n6`; **`n5` pendente** |
 | nova | `porRodada` |
 | **fora** | o Fôlego, por decisão acima |
+
+**Onde elas moram: num bloco novo do `regras.json`, e o manifesto da bateria passa a fazer hash de
+`src/data` e de `src/lib`.** As razões, com o custo de cada alternativa, estão na conversa de 02/09 e
+resumem-se a duas: `combate-tempo.ts` já importa `regras.json` e nada mais, então não entra
+dependência nova e o empacotamento headless pega de graça; e o `dados_hash` do manifesto (§2.4) já
+registra mudança em `src/data/*.json`, o que faz uma troca de bandeira ficar automaticamente anotada
+na bateria que rodou com ela. O hash passa a cobrir `src/lib` também, para que mudança de código, e
+não só de régua, fique registrada do mesmo jeito. O `src/lib/modulos.ts` continua sendo o que ele diz
+que é: só tela.
 
 São **16**, contando N5, e o desenho é o **deixe-uma-de-fora** da `03-respostas.md` §2.2:
 
