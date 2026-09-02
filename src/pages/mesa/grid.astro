@@ -5072,7 +5072,7 @@ const SETAS = [
    * uma exceção aqui derrubaria a resolução de um golpe, que é a mesa parando.
    */
   function registrarLance(
-    conta: any, sorteio: { acerto: number[]; dano: number[] },
+    conta: any, sorteio: { acerto: number[][]; dano: number[] }, idx: number,
     decisao: { acertou: boolean; raspou: boolean; rolado: string },
   ) {
     if (!LANCES_LIGADO) return;
@@ -5080,15 +5080,36 @@ const SETAS = [
       const W = window as any;
       if (!W.__LANCES) W.__LANCES = [];
       W.__LANCES.push({
+        // ATÉ ONDE ESTE LANCE É ORÁCULO.
+        //
+        // `completo` é o golpe de índice 0: a mesa calcula dele o acerto E o
+        // dano. `acerto` são os seguintes de uma rajada ou de uma empunhadura
+        // dupla: a agenda tem três golpes, cada um com a sua penalidade, mas a
+        // tela rola o dano UMA vez só e o mestre aplica um dano por resolução.
+        // Então para eles a mesa produz veredito e não produz dano, e dizer
+        // isto no registro é melhor do que atribuir a eles o número da caixa,
+        // que foi o que a primeira versão fez e o teste pegou.
+        cobre: idx === 0 ? 'completo' : 'acerto',
         entrada: conta.entrada,
-        sorteio: { acerto: sorteio.acerto.slice(), dano: sorteio.dano.slice() },
+        sorteio: {
+          acerto: (sorteio.acerto[idx] || []).slice(),
+          // O dado de dano e UM por resolucao, e nao um por golpe: a tela rola o
+          // dano uma vez so. Por isso ele vai com o golpe de indice 0, e os
+          // outros vao com a lista vazia.
+          dano: idx === 0 ? sorteio.dano.slice() : [],
+        },
         saida: {
           defesa: conta.defesa, total: conta.total, soma: conta.soma,
           errouPor: conta.errouPor, veredito: conta.veredito,
-          danoNoCampo: conta.danoNoCampo,
-          danoBruto: conta.danoBruto, tipo: conta.entrada.tipoDano,
-          absorcao: conta.absorcao, danoLiquido: conta.danoLiquido,
-          pvAntes: conta.pvAntes, pvDepois: conta.pvDepois,
+          // Nulo, e não zero, no que a mesa não produz: zero é um número, e um
+          // número que ninguém calculou é a forma mais barata de um oráculo
+          // mentir.
+          danoNoCampo: idx === 0 ? conta.danoNoCampo : null,
+          danoBruto: idx === 0 ? conta.danoBruto : null, tipo: conta.entrada.tipoDano,
+          absorcao: idx === 0 ? conta.absorcao : null,
+          danoLiquido: idx === 0 ? conta.danoLiquido : null,
+          pvAntes: conta.pvAntes,
+          pvDepois: idx === 0 ? conta.pvDepois : null,
         },
         // O que a MESA decidiu, que pode contrariar a régua. Fica fora de
         // `saida` de propósito: a função pura não tem como prever um botão.
@@ -7904,8 +7925,8 @@ const SETAS = [
      * se refaz em cima do valor corrigido. Quem lê tem de ler o corrigido, e é
      * por isso que isto é função e não constante.
      */
-    const entradaDoLance = () => ({
-      aid: AID,
+    const entradaDoLance = (idx = 0) => ({
+      aid: `${AID}#${idx}`,
       atacante: {
         id: atacante.id, nome: atacante.nome,
         ataque: ra?.ataque || '0d6', dano: ra?.dano || '0d6',
@@ -7927,7 +7948,12 @@ const SETAS = [
       // A manobra e o índice do golpe: a rajada e a empunhadura dupla têm
       // penalidade POR GOLPE, e o `penDados` acima é a lista inteira.
       manobra: (anat().golpes > 1 ? manSel.value : 'simples'),
-      golpeIndice: 0,
+      // O ÍNDICE DO GOLPE. A agenda de uma rajada ou de uma empunhadura dupla
+      // tem mais de um golpe, e cada um cobra a sua penalidade (`penDados`). A
+      // tela decide o veredito pelo PRIMEIRO, que é o que diz se o ataque
+      // pegou, e mostra os outros ao lado; o registro guarda um lance por
+      // golpe, porque o harness vai resolver os três.
+      golpeIndice: idx,
       distanciaHex: hexes,
       tipoDano: dnTipo.value,
       // O que o mestre escreveu à mão. No harness são zeros e os dois valores
@@ -7937,8 +7963,30 @@ const SETAS = [
       perfil: { ...REGRAS_CENA },
     });
 
-    /** O que os dados de fato fizeram, para a conferência poder repetir. */
-    const sorteio: { acerto: number[]; dano: number[] } = { acerto: [], dano: [] };
+    /**
+     * O total de um golpe cujo dado já caiu: os dados, mais o fixo da
+     * expressão, mais o ajuste da situação. É a mesma soma que o `rolarExpr`
+     * faz, e ela está aqui porque o campo da tela só guarda o total do PRIMEIRO
+     * golpe: os outros existem como linha rolada e não como número na caixa.
+     */
+    const somaLinha = (rolls: number[], e: any) => {
+      const limpo = String(e.atacante.ataque || '').replace(/[−–—]/g, '-').replace(/\([^)]*\)/g, ' ');
+      let flat = 0;
+      for (const m of limpo.replace(/(\d*)d6/gi, ' ').matchAll(/[+-]\s*\d+/g)) {
+        flat += parseInt(m[0].replace(/\s+/g, ''), 10);
+      }
+      return rolls.reduce((x, y) => x + y, 0) + flat + e.atacante.ajusteFlat;
+    };
+
+    /**
+     * O que os dados de fato fizeram, para a conferência poder repetir.
+     *
+     * `acerto` é uma lista POR GOLPE: `rolarAcerto` já rola uma linha para cada
+     * entrada de `penDados`, e antes só a primeira era guardada. As outras
+     * caíram de verdade, com a penalidade de verdade, e jogá-las fora era
+     * perder a única evidência que existe do caminho de índice maior que zero.
+     */
+    const sorteio: { acerto: number[][]; dano: number[] } = { acerto: [], dano: [] };
 
     /**
      * A CONTA, e só ela. As três pinturas leem daqui.
@@ -7948,12 +7996,16 @@ const SETAS = [
      * mesa decide), e é por isso que `veredito` e `acertou` são coisas
      * diferentes no registro do fim.
      */
-    const contaDoLance = () => {
-      const e = entradaDoLance();
+    const contaDoLance = (idx = 0) => {
+      const e = entradaDoLance(idx);
       const def2 = e.alvo.defesaBase != null
         ? e.alvo.defesaBase + e.alvo.ferimento + e.alvo.condicoesDefesa + e.alvo.defesaPerdida
         : null;
-      const t = parseInt(totalInp.value || '', 10);
+      // O total do PRIMEIRO golpe é o que está no campo (é o que o mestre
+      // corrige); o dos outros sai da linha que caiu, com a penalidade deles.
+      const t = idx === 0
+        ? parseInt(totalInp.value || '', 10)
+        : (sorteio.acerto[idx] ? somaLinha(sorteio.acerto[idx], e) : NaN);
       const soma = Number.isFinite(t) ? t + e.modManual : null;
       const veredito = soma != null && def2 != null ? saidaDoAtaque(soma, def2, e.margemQA) : null;
       // O QUE ESTÁ NO CAMPO e O QUE A RÉGUA MANDA são coisas diferentes, e o
@@ -8330,7 +8382,7 @@ const SETAS = [
       // de reproduzir a sequência de acaso da mesa a partir de um ponto
       // arbitrário, o que não dá. Com eles, a cópia roda com os mesmos dados e
       // a comparação passa a ser sobre a CONTA, que é onde a divergência mora.
-      sorteio.acerto = (linhas[0]?.rolls || []).slice();
+      sorteio.acerto = linhas.map((l) => (l.rolls || []).slice());
       totalInp.value = String(linhas[0].total);
       rolado = linhas.map(descreverRolada).join(' · ');
       (el('al-pool') as HTMLElement).textContent = rolado;
@@ -8370,7 +8422,15 @@ const SETAS = [
         // o botão. Guardar os dois é o que permite medir depois quantas vezes a
         // mesa contrariou a régua, e é a única forma de o despejo ser oráculo
         // de uma função pura sem apagar a decisão humana.
-        registrarLance(contaDoLance(), sorteio, { acertou: v, raspou, rolado });
+        // UM LANCE POR GOLPE DA AGENDA. Uma rajada de tres e tres golpes, cada
+        // um com a sua penalidade; registrar um so era descrever a agenda pela
+        // metade, e deixava o caminho de indice maior que zero sem evidencia
+        // nenhuma. O veredito dos golpes seguintes e o que a regua diz, e nao o
+        // que a tela mostrou: a tela decide pelo primeiro, de proposito.
+        const quantos = Math.max(1, sorteio.acerto.length || 1);
+        for (let i = 0; i < quantos; i++) {
+          registrarLance(contaDoLance(i), sorteio, i, { acertou: v, raspou, rolado });
+        }
         resolve({
           acertou: v, an: a, manobra: a.golpes > 1 ? manSel.value : 'simples',
           dano: raspou ? danoQA() : Math.max(0, parseInt(dnInp.value || '0', 10) || 0),

@@ -46,6 +46,14 @@ const ADIADO = P.get('adiado') === '1';
 // Sem isto não havia como olhar a tela do jogador: a bancada sempre foi mestre,
 // e metade do desenho novo do tempo é justamente o que ele vê.
 const PAPEL = P.get('papel') === 'jogador' ? 'jogador' : 'mestre';
+// EXTRAS DA COLETA. `?extras=1` espalha a cena por casos que a bancada padrao
+// nunca produz e que a fixture do `resolverGolpe` precisa cobrir: alvo ferido
+// de verdade (a Vida da bancada nunca desce dos 55%, e a penalidade de Defesa
+// so comeca nos 50%), condicao que mexe em DADOS e nao em fixo, e armadura
+// vestida nos PCs (sem ela as duas metades do Quase-Acerto que vem do couro
+// sao zero em todo lance). Desligado por padrao: nenhuma suite existente o
+// liga, e a bancada de sempre continua a mesma.
+const EXTRAS = P.get('extras') === '1';
 
 const UID = '00000000-0000-4000-8000-000000000001';
 /** Quem manda na mesa quando quem olha é jogador. */
@@ -76,6 +84,12 @@ const offsetParaAxial = (col, row) => ({ q: col - Math.floor(row / 2), r: row })
 // `efeitos.json` que o site lê, para a lista não envelhecer separada dele.
 const FICHA_PC = {
   centelha: 3,
+  // A ARMADURA VESTIDA so com os extras: ela e o que faz as duas metades do
+  // Quase-Acerto que vem do couro (`armaduraBonus` e `armaduraReducao`)
+  // deixarem de ser zero, e muda a Absorcao junto.
+  ...(P.get('extras') === '1'
+    ? { equip: { armaduras: [{ base: 'malha', vestida: true }] } }
+    : {}),
   arte: { fogo: 5, terra: 4, vento: 5, protecao: 3, cura: 2 },
   efeito: Object.fromEntries(EFEITOS_D.map((e) => [e.id, true])),
 };
@@ -106,7 +120,11 @@ for (let i = 0; i < N_COMB; i++) {
     grupo: ehPC ? 'aliado' : 'inimigo',
     monstro_id: ehPC ? null : MONS[i % MONS.length],
     personagem_id: ehPC ? `p${String(i).padStart(3, '0')}` : null,
-    pv_max: 40, pv_atual: 40 - (i % 7) * 3,
+    pv_max: 40,
+    // A escada de Vida vai ate o Critico com `?extras=1`: 40, 34, 28, 22, 16,
+    // 10 e 4 sobre 40 cobrem Saudavel, Machucado, Ferido, Grave e Critico, que
+    // sao as cinco faixas com penalidade diferente.
+    pv_atual: EXTRAS ? 40 - (i % 7) * 6 : 40 - (i % 7) * 3,
     mana_max: ehPC ? 8 : null, mana_atual: ehPC ? 8 - (i % 3) : null,
     tick: ACAO[i].livre ?? (i % 4), iniciativa: 20 - i,
     // O tick de quem tem ação no ar É o fim do ciclo dela: é a invariante que o
@@ -128,8 +146,21 @@ for (let i = 0; i < N_COMB; i++) {
       ? { arma: 'besta-pequena', ataque: '3d6 +2', dano: '1d6 +1 (P)' }
       : i === 2
         ? { arma: 'espada-longa', ataque: '4d6 +1', dano: '1d6 +2 (C)' }
-        : undefined,
-    condicoes: i % 3 === 0 ? [{ id: 'cego' }] : [],
+        // ARMADURA VESTIDA, pelo caminho que a mesa de verdade usa: o ajuste
+        // por instancia (`combatentes.dados.armaduras`), que e como o cavaleiro
+        // de placa construido como criatura se conserta. Sem uma peca com
+        // armadura, as duas metades do Quase-Acerto que vem do couro
+        // (`armaduraBonus` e `armaduraReducao`) sao zero em todo lance da
+        // fixture, e o `quaseAcertoDoEncontro` fica sem execucao.
+        : EXTRAS && i % 3 === 2
+          ? { armaduras: [{ classe: i % 6 === 2 ? 'media' : 'pesada' }] }
+          : undefined,
+    // Com os extras, uma em cada tres leva uma condicao que mexe em DADOS
+    // (`desgaste-2` tira dois, `inspirado` da um), que e o termo `ajusteDados`
+    // do lance e o unico que a bancada padrao deixa sempre em zero.
+    condicoes: i % 3 === 0 ? [{ id: 'cego' }]
+      : EXTRAS && i % 3 === 1 ? [{ id: 'desgaste-2' }]
+        : EXTRAS ? [{ id: 'inspirado' }] : [],
     ativo: true, oculto: false, imagem: null, retrato: null,
   });
 }

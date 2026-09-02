@@ -42,10 +42,18 @@ ok(!B.BANDEIRAS.includes('couraca'),
 // ---- 2: o estado inicial é o que a §0.7 decidiu ----
 const publicadas = ['margem', 'gate', 'porte', 'bloqueio', 'modo2', 'teto6', 'curaSemArea', 'curaDivide', 'porRodada'];
 const nucleo = ['n1', 'n2', 'n3', 'n4', 'n5', 'n6'];
-ok(publicadas.every((b) => B.PERFIL_CORRENTE[b] === true),
-  'as nove de regra publicada nascem LIGADAS, que é o padrão de produção da §0.6');
+// TODAS DESLIGADAS, e a asserção é sobre o INVARIANTE, não sobre a lista:
+// nenhuma bandeira pode estar `true` sem que o motor a aplique. Enquanto
+// nenhuma estiver ligada no motor, a lista das ligadas é vazia. Quem ligar a
+// primeira vem aqui e move o nome para `LIGADAS_NO_MOTOR`, o que obriga a
+// decisão a ser explícita em vez de silenciosa.
+const LIGADAS_NO_MOTOR = [];
+ok([...publicadas, ...nucleo].every((b) => B.PERFIL_CORRENTE[b] === LIGADAS_NO_MOTOR.includes(b)),
+  `só as bandeiras que o motor aplica estão ligadas (${LIGADAS_NO_MOTOR.length} de 15)`);
+ok(publicadas.every((b) => B.PERFIL_CORRENTE[b] === false),
+  'as nove de regra publicada nascem DESLIGADAS: nenhuma está ligada no motor ainda');
 ok(nucleo.every((b) => B.PERFIL_CORRENTE[b] === false),
-  'as seis do núcleo do Tick nascem DESLIGADAS: as regras que elas ligam ainda não existem');
+  'e as seis do núcleo também: as regras que elas ligam ainda não existem');
 ok(regras.combate?.simultaneo?.decideEmValeDepois === 1 && B.PERFIL_CORRENTE.n1 === false,
   'e o n1 concorda com o decideEmValeDepois: os dois dizem que a ação começa em T+1');
 
@@ -65,7 +73,12 @@ ok(B.perfilDoEncontro({ perfil: { margem: false } }).margem === false,
   'e encontro COM carimbo roda o carimbo, mesmo contrariando o site');
 
 // ---- 5: a diferença, que é o que a tela mostra ----
-const congelado = { perfil: { ...B.PERFIL_CORRENTE, margem: false, bloqueio: false } };
+// Um carimbo que DIFERE do site: as duas trocadas em relação ao corrente, seja
+// ele qual for. Fixar `false` aqui deixaria o teste passar por coincidência no
+// dia em que o corrente também fosse `false`, que é o dia de hoje.
+const congelado = {
+  perfil: { ...B.PERFIL_CORRENTE, margem: !B.PERFIL_CORRENTE.margem, bloqueio: !B.PERFIL_CORRENTE.bloqueio },
+};
 const e = B.estadoDoCarimbo(congelado);
 ok(e.temCarimbo && e.difere.join(',') === 'margem,bloqueio',
   `a diferença sai na ordem da lista (${e.difere.join(',')})`);
@@ -75,5 +88,5 @@ ok(B.estadoDoCarimbo({ perfil: { ...B.PERFIL_CORRENTE } }).difere.length === 0,
 ok(B.estadoDoCarimbo(null).temCarimbo === false && /sem carimbo/.test(B.estadoDoCarimbo(null).frase),
   'e sem encontro a frase diz que a cena não tem carimbo');
 
-console.log(`\n${FALHAS.length ? '✗' : '✓'} Perfil de regras OK · ${PASSOU} asserções · 15 bandeiras, 9 ligadas e 6 esperando a regra, e o carimbo protege o chão da cena`);
+console.log(`\n${FALHAS.length ? '✗' : '✓'} Perfil de regras OK · ${PASSOU} asserções · 15 bandeiras, todas esperando a regra que o motor ainda não aplica, e o carimbo protege o chão da cena`);
 if (FALHAS.length) { FALHAS.forEach((f) => console.log('  · ' + f)); process.exit(1); }
