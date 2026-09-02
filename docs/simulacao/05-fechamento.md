@@ -96,7 +96,7 @@ contra a branch da Etapa 0, e `test-contrato` / `test-quase-acerto` reescritos n
 item 1 (N1) → item 3 (N2, que só é observável com N1 ligada) → item 4 (N3) → item 2 (N4) →
 item 5 (N5, que precisa da cadeia do 2) → item 6 (N6). As seis bandeiras do núcleo entram junto.
 
-**Etapa 3 · A migração 29** (item 7) e a tela (itens 8 e 9).
+**Etapa 3 · A migração 30** (item 7) e a tela (itens 8 e 9).
 
 **Etapa 4 · O item 10** (Q7, as condições que expiram), que é isolado.
 

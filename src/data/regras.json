@@ -2458,5 +2458,26 @@
       "umaPorAcao": true,
       "espelho": true
     }
+  },
+  "bandeiras": {
+    "nota": "AS QUINZE BANDEIRAS DE REGRA. Cada uma liga ou desliga uma regra que a simulacao mede isolada (docs/simulacao/02-projeto-harness.md, secoes 0.6.1 item 11 e 0.7). O bloco e lido pela mesa E pelo harness, e mora aqui porque combate-tempo.ts ja importa este arquivo e nada mais, e porque o dados_hash do manifesto da bateria ja registra mudanca em src/data: trocar uma bandeira fica anotado na bateria que rodou com ela. NAO CONFUNDIR COM modulos.ts, que e so tela. O encontro CARIMBA este objeto ao comecar (migracao 29) e le do carimbo, para um deploy nao trocar o chao debaixo de uma cena aberta.",
+    "notaEstado": "As nove de regra publicada nascem LIGADAS, que e o padrao de producao decidido na secao 0.6: elas sao regras escritas que o motor nao aplicava, e a bandeira existe para medir o que cada uma comprou, nao para adiar. As seis do nucleo do Tick nascem DESLIGADAS porque as regras que elas ligam ainda nao existem no motor: cada uma vira true no commit que a escreve. Uma bandeira ligada cuja regra nao esta escrita nao faz nada, e uma desligada cuja regra existe e o estado de hoje.",
+    "margem": true,
+    "gate": true,
+    "porte": true,
+    "bloqueio": true,
+    "modo2": true,
+    "teto6": true,
+    "curaSemArea": true,
+    "curaDivide": true,
+    "porRodada": true,
+    "n1": false,
+    "n2": false,
+    "n3": false,
+    "n4": false,
+    "n5": false,
+    "n6": false,
+    "notaN1": "Enquanto n1 for false, quem manda e combate.simultaneo.decideEmValeDepois, que vale 1 (a acao comeca em T+1). No commit que escrever N1 os dois passam a ser a mesma coisa: decideEmValeDepois vira derivado de n1, e nao ha dois lugares dizendo a regra.",
+    "notaCouraca": "A couraca de porte NAO esta aqui, e nao por esquecimento: ela ja e aplicada em tempo de geracao (scripts/gen-bestiario.mjs, linhas 36-45 e 79-82) e ja vem somada na absorcao de cada criatura do monsters-mesa.json. Uma bandeira de tempo de execucao a somaria DUAS VEZES. O que a bateria mede no lugar dela e o eixo do elenco: criatura grande contra criatura media."
   }
 }

@@ -1014,7 +1014,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   trava `R.defesa = 16` com o Bloqueio inútil, e L149 trava `F.defBloqueio = 10`, que ninguém lê.
 - [ ] **L3 · [FAZER] O `ate` das condições passa a ser lido**, e elas expiram sozinhas. Hoje o campo
   é escrito por `porCondicao` e **não há um leitor em todo o `src/`**.
-- [ ] **L4 · [FAZER] A migração 29**: a máscara ao avesso, com `acao.mirado` marcando o que é
+- [ ] **L4 · [FAZER] A migração 30**: a máscara ao avesso, com `acao.mirado` marcando o que é
   pontaria. O `mov.alvo` deixa de vazar por acidente e passa a ser visível de propósito.
 - [x] **L5 · [FEITA em 02/09, commit `ce5486f`] A semente do `d6`, e a instrumentação em volta dela.** É a **Etapa 0** da
   ordem (`02` §0.6.1), e vem antes de tudo, inclusive das bandeiras: sem semente a prova de que uma
@@ -1027,7 +1027,11 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   §0.10.1), um piloto de 2.000 em **cada uma das duas âncoras** com a regra de decisão escrita antes
   de rodar, e 15 invariantes que abortam a batalha (`03` §3.1). O elenco tem PCs **e** criaturas do
   bestiário (D10), e cada bandeira é medida na célula em que ela morde. Só depois de L1 a L5.
-- [ ] **L9 · [PRIMEIRO, junto com a Etapa 1] O encontro carimba o perfil de bandeiras.** Uma coluna
+- [x] **L9 · [FEITO em 02/09] O encontro carimba o perfil de bandeiras.** Migração **29**
+  (`supabase/migracao-29.sql`, **falta rodar no SQL Editor**), `src/lib/bandeiras.ts` com as quinze e
+  o carimbo, e a linha na tela do Grid que só aparece quando o carimbo difere do site, clicável para
+  recarimbar. O texto original abaixo, para o registro do porquê.
+- [ ] ~~**L9 · [PRIMEIRO, junto com a Etapa 1] O encontro carimba o perfil de bandeiras.**~~ Uma coluna
   `encontros.perfil jsonb`, escrita **uma vez** na criação do encontro e lida por ele dali em
   diante. Sem ela, um deploy troca o `regras.json` debaixo de um encontro aberto e a Defesa de uma
   peça muda entre dois Ticks da mesma cena. É o quarto sinal do risco **F0** (`04-prontidao.md`), o

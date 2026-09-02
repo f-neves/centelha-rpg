@@ -145,6 +145,12 @@ const SETAS = [
             </label>
           </div>
           <button class="btn mini primary ini-prox" id="ini-prox" hidden>⏭ próximo</button>
+          {/* O CHÃO DESTA CENA. O perfil de bandeiras com que o encontro
+              começou, carimbado no banco (migração 29). Sem esta linha o
+              congelamento é invisível: alguém abre uma cena velha um dia e acha
+              que o Bloqueio quebrou. Só aparece quando há algo a dizer, ou seja
+              quando o carimbo difere do que o site traz hoje. */}
+          <button class="btn-fant gr-carimbo" id="gr-carimbo" hidden></button>
           </div>
           {/* Deslizar a tira sem depender do dedo certo no lugar certo: no
               telefone ela guarda doze cartões numa janela de cinco, e a rolagem
@@ -1119,6 +1125,16 @@ const SETAS = [
        uma lista onde faltava a do custo (que sumia para fora do fluxo) e o Tick
        continuava esticado por duas fileiras, por cima da rodada. Uma pilha
        simples resolve os dois, e não tem nome de área para esquecer. */
+    /* O CHÃO DA CENA. Discreta e não silenciosa: ela só aparece quando o
+       carimbo difere do site, e nessa hora precisa ser lida antes de alguém
+       concluir que uma regra quebrou. Cor de aviso, letra pequena, largura
+       inteira, e o cursor dizendo que dá para clicar. */
+    .gr-carimbo {
+      display: block; width: 100%; margin-top: .25rem;
+      font-size: .7rem; line-height: 1.25; text-align: center;
+      color: var(--aviso, #b5651d); cursor: pointer; }
+    .gr-carimbo:hover { text-decoration: underline; }
+
     :is(body.grid-tv, body.fila-empe) .ini-cab {
       display: flex; flex-direction: column; align-items: center; gap: .2rem;
       border-right: 0; border-bottom: 1px solid var(--rule);
@@ -2383,6 +2399,9 @@ const SETAS = [
   import { rolarExpr, descreverRolada, tipoDeDano } from '../../lib/rolagem';
   import { semear, semeadoDe, semeado } from '../../lib/acaso';
   import {
+    PERFIL_CORRENTE, perfilDoEncontro, estadoDoCarimbo, type Perfil,
+  } from '../../lib/bandeiras';
+  import {
     faixaDeDistancia, alcancaNoCorpoACorpo, HEX_CORPO_A_CORPO, HEX_HASTE,
   } from '../../lib/alcance';
   import { reconciliar, esquecerCaixa } from '../../lib/reconciliar';
@@ -2439,6 +2458,13 @@ const SETAS = [
   let ARENAS: any[] = [];
   let ARENA: any = null;
   let ENC: any = null;
+  // O CHÃO DESTA CENA: o perfil de bandeiras que este encontro roda. O nome não
+  // é `PERFIL` porque esse já existe aqui, e é outra coisa (o perfil do
+  // personagem, com a Mana dele). Sai do
+  // carimbo do encontro (migração 29) e cai para o do pacote quando não há
+  // carimbo, que é todo encontro anterior à migração. Ninguém lê bandeira do
+  // `regras.json` direto: lê daqui, senão um deploy troca a régua no meio.
+  let REGRAS_CENA: Perfil = { ...PERFIL_CORRENTE };
   let COMBS: any[] = [];
   let TOKENS: Record<string, { q: number; r: number }> = {};
   let IMGS: Record<string, string> = {};
@@ -2814,6 +2840,77 @@ const SETAS = [
     LOG = Array.isArray(ARENA?.log) ? ARENA.log : [];
   }
 
+  /**
+   * O CARIMBO DO PERFIL, item 1.0 da Etapa 1.
+   *
+   * O encontro guarda o perfil de bandeiras com que começou, e lê dele. Sem
+   * isso, um deploy troca o `regras.json` debaixo de uma cena aberta e a Defesa
+   * de uma peça muda entre dois Ticks, no meio da sessão, sem ninguém ter
+   * mexido em nada. Nenhum teste pega, porque não é erro de programação.
+   *
+   * Carimba-se **uma vez por encontro**, na primeira vez que o mestre abre o
+   * Grid nele. Não é "na criação" porque quem cria encontro é a aba Combate;
+   * na prática dá no mesmo, com a vantagem de também alcançar os encontros
+   * anteriores à migração 29, que eram os mais expostos.
+   *
+   * **Zero gravação por Tick**, que é o orçamento da §0.8: uma escrita por
+   * encontro, mais uma por recarimbagem deliberada.
+   */
+  async function carimbarSeFaltar() {
+    if (!MESTRE || !ENC?.id || ENC.perfil) return;
+    const perfil = { ...PERFIL_CORRENTE };
+    const { error } = await SB.from('encontros')
+      .update({ perfil, perfil_em: new Date().toISOString() }).eq('id', ENC.id);
+    // Sem migração 29 a coluna não existe, e a cena roda como sempre rodou: o
+    // carimbo é proteção, não requisito. Falhar aqui não pode parar o Grid.
+    if (error) return;
+    ENC.perfil = perfil; ENC.perfil_em = new Date().toISOString();
+    REGRAS_CENA = perfilDoEncontro(ENC);
+  }
+
+  /**
+   * RECARIMBAR, de propósito.
+   *
+   * É o que transforma o carimbo de armadilha em ferramenta. Sem isto, um
+   * encontro esquecido roda o perfil antigo para sempre: o problema de antes
+   * com o sinal trocado, o chão congela em vez de mudar, e ninguém vê.
+   */
+  async function recarimbar() {
+    if (!MESTRE || !ENC?.id) return;
+    const e = estadoDoCarimbo(ENC);
+    const quais = e.difere.length ? `\n\nMuda: ${e.difere.join(', ')}.` : '';
+    if (!await uiConfirmar(
+      'Trazer as regras do site para esta cena? O que já foi resolvido não muda;'
+      + ' o que vier depois passa a usar o perfil de agora.' + quais,
+      { titulo: 'Recarimbar o perfil', ok: 'Recarimbar' })) return;
+    const perfil = { ...PERFIL_CORRENTE };
+    const { error } = await SB.from('encontros')
+      .update({ perfil, perfil_em: new Date().toISOString() }).eq('id', ENC.id);
+    if (error) return uiErro('Erro: ' + error.message);
+    ENC.perfil = perfil; ENC.perfil_em = new Date().toISOString();
+    REGRAS_CENA = perfilDoEncontro(ENC);
+    pintarCarimbo();
+    await logar(null, 'Perfil de regras recarimbado com o do site'
+      + (e.difere.length ? ` · mudou: ${e.difere.join(', ')}` : ''), { acao: null });
+  }
+
+  /** A linha do chão da cena. Só aparece quando há o que dizer. */
+  function pintarCarimbo() {
+    const b = document.getElementById('gr-carimbo') as HTMLButtonElement | null;
+    if (!b) return;
+    const e = estadoDoCarimbo(ENC);
+    // Silêncio é o caso comum: carimbo igual ao site não é notícia. A linha só
+    // aparece quando a cena está com o chão DIFERENTE, que é quando uma regra
+    // parece quebrada sem estar.
+    const mostrar = !!(MESTRE && ENC && e.temCarimbo && e.difere.length);
+    b.hidden = !mostrar;
+    if (!mostrar) return;
+    b.textContent = `⚑ regras desta cena: ${e.difere.length} diferente(s) do site`;
+    b.title = `${e.frase}${e.desde ? ` · carimbado em ${new Date(e.desde).toLocaleString()}` : ''}`
+      + '\nClique para trazer as regras do site para esta cena.';
+    b.onclick = () => recarimbar();
+  }
+
   /** O encontro ativo e quem está nele. É de lá que saem os tokens. */
   async function carregarCombatentes() {
     ENC = null; COMBS = [];
@@ -2823,7 +2920,9 @@ const SETAS = [
     // O relógio do simultâneo relê a verdade do banco a cada carga: outra tela
     // pode ter avançado o Tick enquanto esta estava fora.
     TICK_SIM = null;
+    REGRAS_CENA = perfilDoEncontro(ENC);
     if (!ENC) return;
+    await carimbarSeFaltar();
     const { data, error } = await SB.from(MESTRE ? 'combatentes' : 'combate_visao')
       .select('*').eq('encontro_id', ENC.id);
     if (error && !MESTRE && semMigracao14(error)) {
@@ -4319,6 +4418,7 @@ const SETAS = [
     const box = el('gr-ini');
     // Antes de desenhar, porque é o desenho que revela quem levantou.
     conferirChao();
+    pintarCarimbo();
     const fila = naFila();
     const emPe = fila.filter((c: any) => !noChao(c));
     pintarChao(fila.filter((c: any) => noChao(c)));

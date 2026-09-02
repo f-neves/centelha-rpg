@@ -785,7 +785,7 @@ Então o repertório de informação de quem declara por último é, exatamente:
 
 **N7 não precisava de sistema de visibilidade novo**, e a régua herdada era esta. **N8 (§0.48) a
 substitui**: a decisão seguinte foi abrir o alvo e a arma do corpo a corpo e guardar só a pontaria. O
-que segue nesta seção descreve a máscara de hoje, que é o ponto de partida da migração 29.
+que segue nesta seção descreve a máscara de hoje, que é o ponto de partida da migração 30.
 
 #### Um vazamento que o Simultâneo abriu na máscara
 
@@ -964,7 +964,7 @@ presente e vira o passado: é a resposta à pergunta "o que essas nove regras co
 | 4 | **N3** · `golpeMaisCedo` deixa de pular `noChao` para golpe já vencido | `grid.astro:4163-4170` | `test-grid-simultaneo.mjs`: morte mútua no mesmo Tick |
 | 5 | **N5** · as três fases, e a resolução na ordem inversa | `grid.astro`, o avanço e a coluna da vez | `test-grid-simultaneo.mjs` |
 | 6 | **N6** · o retrato, lido pela folha no lugar do estado ao vivo | `grid.astro:7435` (o ferimento) e L7200-7205 (a Pressão na declaração), mais a posição | `test-grid-simultaneo.mjs`: as duas adagas saem com −4 e nada mais |
-| 7 | **N7 e N8** · a máscara ao avesso, com `acao.mirado` | migração 29, `declararGolpe` | consulta de conferência na própria migração, como as anteriores |
+| 7 | **N7 e N8** · a máscara ao avesso, com `acao.mirado` | migração 30, `declararGolpe` | consulta de conferência na própria migração, como as anteriores |
 | 8 | **N8** · o rastro no tabuleiro | `grid.astro`, a pintura | `test-grid-simultaneo.mjs` |
 | 9 | **N4 na tela** · a fila de declaração ordenada, com arrasto do mestre | `grid.astro`, a coluna da vez | `test-grid-simultaneo.mjs` |
 | 10 | **Q7** · o `ate` das condições passa a ser lido e a expirar | `grid.astro` / `artes-grid-mesa.ts` | `test-artes-grid.mjs` |
@@ -1160,7 +1160,7 @@ suficiente para gerar penalidade de ferimento.
 - **O retrato é memória, e não coluna** (§0.8.2). A proposta anterior era uma coluna
   `encontros.retrato jsonb` para ele sobreviver a recarregar a página, e ela foi recusada pelo
   orçamento do item F: seria uma gravação por Tick. Em troca, **a tela avisa quem tentar recarregar
-  ou sair no meio da fase de resolução**, o que estreita a janela sem custar nada. A migração 29
+  ou sair no meio da fase de resolução**, o que estreita a janela sem custar nada. A migração 30
   perde essa coluna e fica só com a máscara.
 - **N3 vira caso particular disto:** quem caiu na fase 3 estava de pé no retrato.
 
@@ -1168,7 +1168,7 @@ suficiente para gerar penalidade de ferimento.
 
 ---
 
-#### 7 · N7 e N8 · A máscara ao avesso (migração 29)
+#### 7 · N7 e N8 · A máscara ao avesso (migração 30)
 
 **Hoje.** `combate_visao` mascara a ação com
 `case when m1.meu or v.stats then c.acao else c.acao - 'arma' - 'alvo' end`
@@ -1193,10 +1193,10 @@ inclusive para quem vê stats**: a pontaria é segredo do jogo, não do papel.
 
 **Cuidados.**
 - O comentário da migração 27 (L76-88) argumenta o contrário desta decisão e precisa ser substituído,
-  não apagado: a migração 29 deve dizer o que mudou e por quê.
+  não apagado: a migração 30 deve dizer o que mudou e por quê.
 - Fica como **melhoria futura** um teste para esconder as intenções, que é o que devolve ao ogro a
   opção de disfarçar para onde vai o martelo. Anote-o junto do editor de cenário (`Pendencias.md` I5).
-- A migração 29 **não** leva mais a coluna `encontros.retrato`: o retrato ficou em memória (§0.8.2).
+- A migração 30 **não** leva mais a coluna `encontros.retrato`: o retrato ficou em memória (§0.8.2).
 
 **Prova.** Consulta de conferência dentro da própria migração, como nas anteriores. Detalhe na
 **§0.47** e na **§0.48**.
@@ -1392,7 +1392,7 @@ cadeia do 2 para ter uma "ordem inversa") → **item 6** (N6). As seis bandeiras
 junto. Os quatro pontos de código são `agendaSimultanea`, `grupoDaVez`, `golpeMaisCedo` e a leitura
 do retrato na folha.
 
-#### Etapa 3 · A migração 29 (item 7) e a tela (itens 8 e 9)
+#### Etapa 3 · A migração 30 (item 7) e a tela (itens 8 e 9)
 
 O item 6 **não** depende da migração: o retrato ficou em memória (§0.8.2), e a frase antiga ("o 6
 depende dela se o retrato for para o banco") caiu junto com a coluna.
@@ -1692,7 +1692,7 @@ coluna diz o estado de cada uma.
 | 4 | E6 tem cinco ou seis políticas? A `03` §1.3 responde "seis" e a §1.4, três parágrafos abaixo, transforma a cega em interruptor e devolve o eixo a cinco | `03` §1.3 × §1.4 | **fechada:** são **cinco**, a §1.3 foi corrigida e o 02 §0.5 já estava certo |
 | 5 | Quantas células tem a grade? A `03` §1.2 responde "60", e ela cresceu duas vezes depois disso | `03` §1.2 × `02` §0.10 | **fechada:** a grade oficial é a da **§0.10.1**, com **112 células** depois da recontagem de 02/09, e a `03` §1.2 ganhou a nota dizendo o que mudou |
 | 6 | N5 fica de fora da linha de base? A `03` §2.4 diz que sim "de qualquer jeito", e o 02 §0.7 já resolve com a bandeira cobrindo só a ordem inversa | `03` §2.4 × `02` §0.7 | **fechada:** a linha da §2.4 foi corrigida |
-| 7 | O retrato de N6 é gravado ou é memória? O item 6 da §0.6.1 propunha a coluna `encontros.retrato jsonb`, e a §0.8.1 proíbe gravação nova no avanço | `02` §0.6.1 item 6 × §0.8.1 | **fechada:** memória, e a tela avisa na saída (§0.8.2). A migração 29 perdeu a coluna |
+| 7 | O retrato de N6 é gravado ou é memória? O item 6 da §0.6.1 propunha a coluna `encontros.retrato jsonb`, e a §0.8.1 proíbe gravação nova no avanço | `02` §0.6.1 item 6 × §0.8.1 | **fechada:** memória, e a tela avisa na saída (§0.8.2). A migração 30 perdeu a coluna |
 | 8 | O cabeçalho lista como abertas as perguntas 2, 4 e 5 da `03`, mas as 1 e 3 estavam decididas no corpo da `03` e ainda abertas na §6 dela | `02` cabeçalho × `03` §6 | **fechada** pelas linhas 1 e 2 desta tabela |
 
 **As oito estão fechadas.** As duas últimas dependiam de resposta do chat, e ela veio.
