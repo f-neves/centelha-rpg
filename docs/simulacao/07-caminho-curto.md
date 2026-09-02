@@ -1,0 +1,520 @@
+# O caminho curto até milhares de batalhas completas
+
+Sobre o commit `e2764a9`. **Nada foi implementado nesta rodada.**
+
+O alvo mudou, e vale escrever qual é agora, porque ele muda o que importa: **rodar milhares de
+batalhas completas para achar onde a automação do Grid trava.** Não é comparar regras, que era o que
+a grade de 112 células existia para fazer. A grade continua existindo, para depois, e não se mistura
+com esta.
+
+Documentos: **P** = `02-projeto-harness.md`, **R2** = `01-diagnostico-carga.md`,
+**R3** = `03-respostas.md`, **R4** = `04-prontidao.md`, **R5** = `05-fechamento.md`,
+**R6** = `06-etapa-0.md`.
+
+---
+
+## 1 · O que falta, de verdade
+
+Ordenado por **quanto cada um atrasa a primeira batalha**, e não por importância.
+
+### 1.1 · O que já existe e roda hoje
+
+Isto é mais do que eu esperava ao levantar, e muda a conta da §5.
+
+| O que | Onde | Estado |
+|---|---|---|
+| **agenda, re-projeção, fases, escada de Defesa, fila** | `combate-tempo.ts` | **puro e já empacotado em Node** por `test-simultaneo.mjs` e `test-combate-tempo.mjs` |
+| **geometria** (`distanciaHex`, `caminharHex`, `alemDe`) | `hex.ts` | puro e determinístico |
+| **Quase-Acerto, Defesa, Absorção, passo, resumo de PC, catálogos, faixa de alcance** | `quase-acerto.ts`, `calc.ts`, `combate-resumo.ts`, `equip.ts`, `alcance.ts` | puros |
+| **a semente** | `acaso.ts` + os quatro caminhos | **feito na Etapa 0**, com 14 asserções |
+| **uma política pronta, pura e REAL** | `decisaoAutomatica` (`combate-tempo.ts:880-892`) | **existe**: ataca o mais próximo, foge abaixo de 25% de Vida. É a que a mesa roda de verdade no modo automático, e não uma invenção minha |
+| **um laço de batalha completo, com semente e em lote** | `scripts/lib-tempo.mjs`: `cena()` (L382), `bateria()` (L512), `criarRng()` (L50) | **roda milhares de batalhas hoje**, com contadores de declaração, aborto, golpes perdidos e ações concluídas. Ver a ressalva abaixo |
+| **o empacotamento headless** | o idioma do `esbuild` em `test-artes-grid.mjs` | resolvido, inclusive o `import.meta.env` |
+| **o perfil de bandeiras** | `bandeiras.ts` + `regras.json` | feito no item 1.0, com 17 asserções |
+
+**A ressalva do `lib-tempo.mjs`, que é grande:** ele roda o **P/G/R**, não o Simultâneo; **não tem
+mapa** (só o `cenaDistancia`, que é uma reta); não tem as classes de parada; e diverge da mesa em
+cinco pontos conhecidos (R3 §1.1). Ele não é o harness. O que ele é, e vale muito: a **prova de que a
+forma do laço funciona** e um lugar de onde copiar essa forma.
+
+### 1.2 · O que falta, na ordem em que atrasa
+
+| # | O que | Estado | Quanto atrasa, e por quê |
+|---:|---|---|---|
+| **1** | **A resolução do golpe fora do modal** (`resolverGolpe`) | **especificado, falta código.** O contrato está na P §2.1: entra resumo do atacante e do alvo, ação, manobra, índice do golpe, distância, perfil e fonte de acaso; sai total, defesa, `errouPor`, veredito, dano bruto, tipo, Absorção, líquido, `rolls` | **o maior de todos, e é o único que não tem como ser cortado.** Sem ele não há batalha: o golpe não resolve, ninguém perde Vida e nada termina. Hoje o miolo mora dentro de `folhaDaAcao` (`grid.astro:7526-8100`), misturado com `innerHTML` e com `await SB` |
+| **2** | **O laço do Tick headless** (`avancoDeTick` + `filaDaCena` + `declararAtaque`) | **especificado, falta código.** Contrato na P §2.1; a forma existe pronta no `cena()` do `lib-tempo.mjs`, e as peças puras (agenda, fases, re-projeção) já existem em `combate-tempo.ts` | **o segundo maior.** É onde entra a geometria, que é o que o `lib-tempo.mjs` não tem e é justamente onde mora metade da carga do mestre (viagem, re-projeção, Tick vazio) |
+| **3** | **O gerador de cena** (mapa, posições iniciais, quem entra no meio) | **especificado como decisão, não como formato.** A P §2.7 lista tamanho, forma e posições como **inventados**, e o eixo E2 já tem os quatro níveis em hexágonos (1 · 18 · 42 · 71) | **médio, e encurtável a quase nada:** para a bateria mínima da §4 são duas distâncias e um mapa fixo |
+| **4** | **A condição de fim** (D4) | **decidida e especificada**: um lado sem ninguém de pé · a fuga que sai do tabuleiro · a desistência de um lado (todos abaixo de 20% de Vida). Falta código | **pequeno**, e é o que separa "batalha" de "laço infinito". Sem isso não há batalha COMPLETA, que é o pedido |
+| **5** | **O log com classe de parada e motivo de fim** | **especificado**: o `cena.fim.motivo` com quatro valores e os campos do D2. Falta código, **e falta uma coisa nova**: a classificação de cada parada em **i/ii/iii**, que a R2 §B fez à mão para as 14 paradas e que o log precisa emitir sozinho | **médio, e é o item que a mudança de prioridade promoveu**: é ele que responde a pergunta nova. Não é mais acessório |
+| **6** | **O elenco** | **especificado** na P §0.4 P5 (sete arquétipos) e P6. Falta código do gerador | **pequeno se cortado a dois arquétipos**, que é o que a §4 propõe. Os sete inteiros custam a Cura, as Artes e o bestiário junto |
+| **7** | **As cinco políticas** | **especificadas** na P §0.4 P4, com as regras ⊙ e ⊕. Falta código | **zero, se a bateria mínima usar a política que já existe** (`decisaoAutomatica`). As cinco são para a grade de 112, não para a pergunta de agora |
+| **8** | **O `aid`** (identificador de ação, do D2) | **especificado**, falta código, **e depende do item 1.1 da Etapa 1** | **pequeno em si**, mas ele é o que liga `decl` a `dano` e sem ele **não há tempo morto**, que é uma das duas métricas do critério |
+| **9** | **Os invariantes** | **especificados**: quinze (V1 a V15, R3 §3.1). Falta código | **pequeno, e encurtável:** três bastam para a primeira bateria (conservação de Vida, agenda monotônica, todo `dano` com `decl` ancestral) |
+| **10** | **A persistência em memória** (o objeto que substitui o Supabase) | **nem especificado em detalhe**, e é o mais fácil de todos: um objeto e três funções | **quase zero** |
+| **11** | **O agregador** (dos `.jsonl` para as tabelas do relatório) | **nem especificado** | **quase zero para a bateria mínima**, porque são doze linhas e cinco métricas |
+| **12** | **A tabela de custo de tela** (quantos gestos custa cada parada) | **parcial**: a R2 §C3 mediu o caminho curto em 5 gestos, e a P §4 registra que o resto é leitura de código de 02/09 | **não atrasa a batalha, atrasa a LEITURA.** Sem ela o resultado sai em "paradas" e não em "cliques", e é a conversão que torna o número legível para uma pessoa |
+
+**O que a lista diz, em uma frase:** faltam **dois** itens grandes (a resolução e o laço), e todo o
+resto ou é pequeno, ou já existe, ou pode ser cortado da primeira bateria sem prejuízo para a
+pergunta.
+
+---
+
+## 2 · A ordem reaberta
+
+A P §0.6 decidiu que N1 a N8 e as quinze bandeiras entram na mesa **antes** do harness, e a razão
+escrita foi "para o harness medir o jogo de verdade desde a primeira batalha e nenhuma regra viver só
+na cópia headless". Isso põe a bateria depois das Etapas 1 a 4.
+
+### 2a · O que se perde medindo o Grid de hoje
+
+O padrão que o item 1.0 carimbou tem as seis do núcleo **desligadas**, e é o estado real do motor.
+Perde-se, e é concreto:
+
+| Regra desligada | O que ela faria com a carga | A pergunta que fica sem resposta |
+|---|---|---|
+| **N2** | **é a que mais mexe no número que você quer.** Hoje `grupoDaVez` (`grid.astro:4160`) devolve lista vazia assim que existe um golpe devido no Tick: `if (g != null && g <= t) return []`. Ou seja, **um golpe declarado cala a declaração de todo mundo naquele Tick**. Com N2, só golpes declarados **antes** do Tick calam | "quantas peças o mestre tem de consultar num mesmo Tick?" A resposta de hoje é sistematicamente **menor** que a de depois |
+| **N4** | acrescenta um passo de escrituração por Tick: **ordenar os livres por Raciocínio + Prontidão** e perguntar nessa ordem. A P §0.47 classifica isso como carga classe **iii** e diz que é "o caso mais claro de uma regra boa para o jogo que piora a mesa se a ferramenta não a absorver" | "quanto custa a ordem de declaração, e o Grid absorve isso?" Fica sem número, e era um dos motivos de a fila na tela existir |
+| **N1** | encurta o período entre golpes de `ciclo + 1` para `ciclo`, o que **adensa** os eventos: mais golpes por Tick de cena | nada some, mas todo número por Tick sai **diluído** em relação ao jogo futuro |
+| **N5** | agrupa a resolução no fim do Tick. Hoje o mestre declara e resolve intercalado, na ordem que quiser | "dez caixas seguidas cansam diferente de dez caixas espalhadas?" Isso a P §0.10.3 **já dizia que ficaria sem medida**, com ou sem esta inversão |
+| **N6** | muda **números dentro** das caixas, não o número de caixas | nada, para esta pergunta |
+| **N3** | muda quem golpeia depois de cair | nada, para esta pergunta |
+
+**E a direção do erro é sempre a mesma, o que é a coisa mais útil desta seção: as três que importam
+(N2, N4 e N1) empurram a carga para CIMA.** N2 faz mais gente declarar no mesmo Tick, N4 acrescenta
+um passo, N1 adensa. **Então medir o Grid de hoje dá um PISO**, não um número solto: se a automação
+já trava aqui, ela trava mais depois. Um piso responde a pergunta "onde trava" sem nenhuma ressalva
+sobre a direção.
+
+### 2b · O que não se perde
+
+**Quase tudo o que a sua pergunta pede**, porque a carga tem duas origens e só uma delas é regra
+nova.
+
+| O que se mede hoje, inteiro | Por que é estrutural |
+|---|---|
+| **quantas paradas, de que classe** | as 14 paradas e a taxonomia i/ii/iii são da R2 §B, feitas sobre o Grid de hoje. **As 6 de classe iii, que são as automatizáveis, existem todas hoje** e são exatamente o alvo |
+| **em que Tick, e com que pico** | o pico cresce com o número de peças, e o teto teórico (R2 §H4) é o número de peças. Isso é geometria e contagem, não regra nova |
+| **a carga da viagem**: re-projeção, adiamento, Tick vazio, tempo morto | é o eixo E2, e ele **não depende de nenhuma das seis**. É o que o `lib-tempo.mjs` nunca pôde medir por não ter mapa, e é onde eu esperaria achar o gargalo |
+| **quanto a automação compraria** | é o D1, resposta **1c**: a mesma batalha roda duas vezes com a mesma semente, uma com as 6 paradas de classe iii resolvidas pelo motor e outra não, e **a diferença é a medida**. Isso não depende de regra nenhuma |
+| **o custo em segundos por Tick** | medido: 30 a 43 ms por avanço, 2 gravações num Tick vazio, mais ~2,3 por peça em trajeto (R3 §5.2) |
+| **a carga por peça e por cena** | E3, estrutural |
+
+**A divisão, em número redondo:** das doze métricas da P §2.6, **nenhuma deixa de ser calculável**.
+O que muda é o **nível** de duas delas (paradas por Tick e pico), e muda para baixo, que é o lado
+seguro.
+
+### 2c · As duas frentes em paralelo
+
+**Funciona, com uma regra dura, e três coisas quebram sem ela.**
+
+O arranjo: a mesa segue a Etapa 1 (o carimbo, o despejo, as nove bandeiras) e o harness lê **o mesmo
+objeto de perfil** (`bandeiras.ts`, que já é o ponto único). Cada regra que entra na mesa passa a
+existir na bateria seguinte.
+
+| O que quebra | Por quê | O conserto |
+|---|---|---|
+| **a comparação entre baterias** | uma bateria rodada antes de N2 e outra depois não são comparáveis célula a célula: qualquer diferença mistura a regra com tudo o mais que entrou no meio | **a regra dura: uma bateria é um instantâneo.** Ela carrega `commit` e `dados_hash` (P §2.4), e **comparação só vale dentro de uma bateria, nunca entre duas.** Tendência ao longo de baterias não é resultado, é ilusão |
+| **o espelho de motor** | se a resolução da mesa mudar debaixo da cópia, o espelho quebra. Isso é **bom** (é o alarme funcionando), mas significa que o harness tem de ser atualizado no mesmo commit da regra | é custo por regra, e é o preço real do paralelismo. Vale escrever: **cada regra da Etapa 1 passa a ter dois lados para mexer** |
+| **as seis bandeiras do núcleo** | não podem ser ligadas pelo perfil enquanto as regras não existirem no motor. Uma bandeira `true` sem regra escrita não faz nada | o E5 do núcleo simplesmente **não roda** nas primeiras baterias, e isso não atrapalha a pergunta de agora, que não é sobre E5 |
+
+**O que NÃO quebra, e é o que torna o arranjo viável:** o perfil já é um ponto único desde o item
+1.0, o carimbo já protege a mesa de mudar debaixo de uma cena aberta, e a bateria já registra com
+que régua rodou. As três peças do paralelismo estão no lugar antes de ele começar.
+
+---
+
+## 3 · O item 1.1 é mesmo o gargalo compartilhado
+
+**Confirmado, e por uma razão mais forte do que a que eu tinha dado.** Eu tinha escrito (R6 §3.4) que
+o 1.1 "obriga o levantamento, e não o comportamento". Está certo e é pouco: o 1.1 não entrega só uma
+lista de pontos de leitura, ele entrega um **oráculo**.
+
+**O que ele é, concretamente:** para o despejo existir, os números da resolução precisam sair de
+dentro das funções de pintura de `folhaDaAcao` e virar um **objeto do lance**, com entradas e saídas
+nomeadas, montado num lugar só. Hoje eles nascem e morrem espalhados:
+
+| Número | Onde nasce | O que faz com ele |
+|---|---|---|
+| ferimento do alvo | `grid.astro:7541` | vira parcela de `def` |
+| ferimento do atacante | L7727 | vira parcela do bolo |
+| `errouPor` e veredito | L7768-7769, dentro de `pintarConta` | vira `innerHTML` |
+| Absorção e líquido | L7796-7798, dentro de `pintarDano` | vira `innerHTML` |
+| a Vida aplicada | `baixarVida`, L8151 | vira `update` |
+
+**As quatro frentes, e o que ele entrega em cada uma:**
+
+| Frente | O que o 1.1 entrega |
+|---|---|
+| **o espelho de dano** | os campos que faltavam: `def` efetiva, `errouPor`, veredito, tipo, Absorção, líquido. Com eles o espelho de inércia passa a provar que uma bandeira desligada não mexeu no **dano**, e não só na agenda. É o que destrava `margem` e `gate` na Etapa 1 |
+| **a prova da semente dentro da resolução** | a ressalva escrita na R6 §3 (nenhuma cena de teste resolve golpe) cai sozinha: com os `rolls` no despejo, duas execuções com a mesma semente comparam dado a dado dentro de uma resolução de verdade |
+| **o `aid` do D2** | o objeto do lance **é** o lugar onde um identificador de ação nasce e sobrevive. Hoje não há esse lugar: `baixarVida` é o único ponto de estrangulamento e ele já não sabe de que declaração veio |
+| **a cópia da resolução para o harness** | e aqui está o que eu tinha subestimado: o objeto do lance **é o contrato do `resolverGolpe`** da P §2.1, escrito em código em vez de em tabela. E o despejo de batalhas reais vira **fixture**: entradas e saídas verdadeiras, contra as quais a cópia é conferida antes de existir espelho nenhum |
+
+**Por que "oráculo" e não "levantamento":** a P §2.1 dá o contrato do `resolverGolpe` em prosa. Prosa
+não pega divergência, e a lição do `lib-tempo.mjs` é exatamente essa: cinco divergências, cada uma
+passando nos próprios testes, nenhuma pega por teste, todas pegas por comparação. Com o despejo, a
+primeira versão da cópia tem contra o que rodar **antes** de a mesa e o harness estarem os dois de pé.
+
+**Conclusão: sim, o 1.1 é a primeira coisa a fazer**, e ele encabeça a sequência da §5. Ele deixou de
+ser um item da Etapa 1 e virou a fundação das duas frentes.
+
+**Uma ressalva honesta, para não vender demais.** O 1.1 entrega o contrato e o oráculo; ele **não**
+entrega a cópia. Alguém ainda escreve o `resolverGolpe` do harness, e o trabalho dele é o item 1 da
+lista da §1. O 1.1 encurta esse trabalho e não o substitui.
+
+---
+
+## 4 · A primeira bateria: doze células, e não 112
+
+A grade de 112 existe para comparar regras, o que é a pergunta do D8b. **A sua pergunta agora é
+outra**, e ela é mais simples de responder: onde a automação trava. Não precisa de fatorial sobre
+regras, precisa de fatorial sobre **o que gera carga**.
+
+### 4.1 · O desenho
+
+**Três eixos, e só os três que a R2 previu que dominam a carga:**
+
+| Eixo | Níveis | Por que ele está aqui |
+|---|---:|---|
+| **Peças em cena** | 3: **1v1 · 3×3 · 2×8** | domina o **total** de paradas, quase linearmente, e domina o **pico** junto com o ciclo. É o eixo da horda |
+| **Distância inicial** | 2: **encostado (1 hex) · longa (42 hexes)** | é quem cria **viagem, re-projeção, Tick vazio e tempo morto**, que é a metade da carga que nenhuma bancada anterior pôde medir |
+| **Diversidade de ciclo** | 2: **uníssono (espada longa dos dois lados) · coprimo (espada longa × montante)** | é quem decide se os golpes **colidem** no mesmo Tick. É o eixo do pico |
+
+**`3 × 2 × 2 = 12 células.**
+
+**E um quarto eixo que não custa célula, e é o coração da pergunta:** o **perfil de automação** (D1,
+resposta **1c**). Cada batalha roda **duas vezes com a mesma semente**: uma com as seis paradas de
+classe **iii** resolvidas pelo motor, outra com elas consultando. **A diferença entre as duas é a
+medida do que a automação compraria**, e ela sai por classe de parada. Isso é um campo no registro, e
+não uma multiplicação da grade.
+
+| | |
+|---|---|
+| Células | **12** |
+| Repetições | **500** por célula |
+| Batalhas | **6.000**, e **12.000 execuções** contando os dois perfis |
+| Sementes | 6.000, cada execução do par usando a mesma |
+| Tempo de máquina | poucos minutos, pela ordem de grandeza da R3 §4.2 |
+| Leitura | **12 linhas**, uma por célula, cada uma com o par de perfis lado a lado |
+
+### 4.2 · O que fica de fora, de propósito
+
+**Uma política só, e ela não é minha:** a `decisaoAutomatica` que a mesa já roda (ataca o mais
+próximo, foge abaixo de 25%). As cinco da P §0.4 P4 ficam para a grade de 112. Ver na §6 o que isso
+custa e por que é uma escolha e não um esquecimento.
+
+**Dois arquétipos:** Escudeiro (espada longa, heater, malha) e Montanteiro (montante, placa completa).
+Cobrem ciclo 6 e 7, escudo e armadura pesada, e passo diferente. **Sem Conjurador**, o que corta as
+Artes, a Mana e a Cura do caminho crítico. **Sem criatura**, o que corta o bestiário.
+
+**Sem parede, sem bandeira ligada, sem as cinco condições de dano por rodada.** Tudo isso muda
+números dentro das caixas, e a pergunta é sobre o número de caixas.
+
+### 4.3 · As métricas, e o que cada uma já responde
+
+| Métrica | O que ela diz sobre o gargalo |
+|---|---|
+| **paradas por Tick, separadas em i / ii / iii** | **a resposta direta.** A fração de classe iii é o tamanho do que a automação pode tirar. Se ela for pequena, automatizar não resolve, e o gargalo é decisão de jogador ou julgamento de mestre |
+| **a diferença entre os dois perfis, por classe** | **quanto a automação compraria**, em paradas e em gestos. É o número que decide onde investir |
+| **pico de paradas num Tick** | onde a fila empilha, e se ela bate no teto teórico (o número de peças) |
+| **gestos por golpe aplicado** | converte parada em clique, com a tabela de custo de tela. É a unidade que uma pessoa entende |
+| **fração de Ticks vazios** | o ⏭ que não produz nada. Se for alta na distância longa, o gargalo é **viagem**, e o conserto não é automatizar caixa, é encurtar a travessia |
+| **tempo morto do jogador, em Ticks** | a outra metade do critério do D8b. Depende do `aid` |
+| **distribuição de `cena.fim.motivo`** | quantas batalhas fecham por morte, por desistência, por fuga, e quantas estouram |
+
+**O que a bateria já consegue dizer, com essas doze células:**
+
+1. **de que classe é a carga**, e portanto se automação é a resposta certa para o problema;
+2. **quanto a automação compraria**, medido e não estimado, no mesmo par de batalhas;
+3. **se o gargalo é a caixa ou a travessia**, comparando os dois níveis de distância;
+4. **se ele é o total ou o pico**, comparando os três tamanhos de cena;
+5. **se a colisão de agenda é o que faz o pico**, comparando uníssono e coprimo;
+6. **em que Tick da batalha a carga se concentra**, que é a diferença entre "cansa" e "trava".
+
+**O que ela NÃO consegue dizer, e tem de estar escrito no relatório dela:** quanto a política pesa
+(uma só), o que as regras novas mudam (nenhuma ligada), e o que cada bandeira compra (nenhuma
+ligada). Essas três são a grade de 112, e continuam sendo.
+
+---
+
+## 5 · A conta: do estado de hoje até a bateria rodando
+
+### 5.1 · A sequência
+
+| # | Passo | O que entrega | Depende de |
+|---:|---|---|---|
+| **1** | **O objeto do lance e o despejo da resolução** (item 1.1) | o contrato do `resolverGolpe` escrito em código, o oráculo de entradas e saídas reais, os campos que faltam ao espelho, e o lugar onde o `aid` nasce | nada. É a fundação |
+| **2** | **A cópia da resolução** (`resolverGolpe` puro, em `src/lib` ou no harness) | a resolução fora do modal, conferida contra o oráculo do passo 1 | 1 |
+| **3** | **O laço do Tick headless** (`filaDaCena` + `declararAtaque` + `avancoDeTick`) | a batalha andando, com mapa, agenda e re-projeção | 2, mais `combate-tempo.ts` e `hex.ts`, que já existem |
+| **4** | **O fim de batalha** (D4) e o **teto de 2.000 Ticks** | a batalha **completa**, que é a palavra do pedido | 3 |
+| **5** | **O log**, com classe de parada, `aid` e `cena.fim.motivo` | o dado bruto da pergunta | 3 e 4 |
+| **6** | **O perfil de automação** (o D1 1c: a mesma semente, duas execuções) | a medida do que a automação compraria | 5 |
+| **7** | **O gerador de cena e o elenco mínimo** (dois arquétipos, dois mapas, três tamanhos) | as doze células | 3 |
+| **8** | **Três invariantes** e o **agregador** | a batalha que se sabe válida, e as doze linhas | 5 |
+| **9** | **A bateria roda** | os números | tudo acima |
+
+### 5.2 · O mais longo, e por quê
+
+**Os passos 2 e 3, juntos, e o 2 é o pior.**
+
+O `resolverGolpe` é o único item que **não tem nada pronto**: `combate-tempo.ts` dá a agenda,
+`hex.ts` dá a geometria, `quase-acerto.ts` dá a classificação, `calc.ts` dá a Defesa e a Absorção,
+mas **a costura dos cinco** mora dentro de um modal de 600 linhas, misturada com `innerHTML` e com
+`await SB`. E é a peça em que uma divergência silenciosa custa mais caro, porque ela decide dano, que
+decide duração, que multiplica toda a carga.
+
+O passo 3 é grande mas é **montagem**: as peças existem e são puras. O risco dele é de ordem, não de
+conta.
+
+### 5.3 · Onde a sequência encurta
+
+**Já encurtei o que dava, e está na §4.** O que sobrou, em ordem de quanto economiza:
+
+| Corte | O que economiza | O que custa |
+|---|---|---|
+| **uma política, a que já existe** | as cinco políticas inteiras, mais os quatro números inventados (40%, 50%, 3 hexes, 2 deslizes), mais a marca ⚑ no relatório | a bateria não diz quanto a política pesa. **E não é só economia: é honestidade**, porque a política que roda passa a ser a do produto e não a minha |
+| **dois arquétipos, sem Conjurador e sem criatura** | as Artes, a Mana, a Cura, o bestiário e o segundo caminho de código do `aid` | a bateria não cobre Arte nem porte |
+| **três invariantes em vez de quinze** | doze | a batalha inválida passa despercebida em mais casos. Os três escolhidos (conservação de Vida, agenda monotônica, todo `dano` com `decl` ancestral) são os que pegam erro de motor, e não erro de regra |
+| **duas distâncias em vez de quatro** | metade das células | perde-se a forma da curva de viagem, e fica o extremo |
+| **a persistência é um objeto** | a camada inteira | nenhum: era isso mesmo |
+
+**E um corte que eu NÃO recomendo, e explico:** pular o passo 1 e escrever o `resolverGolpe` direto
+da leitura do código. Economiza um passo e reintroduz exatamente o risco que criou as cinco
+divergências do `lib-tempo.mjs`. O passo 1 é o que transforma "eu li e entendi" em "eu conferi contra
+o que a mesa faz".
+
+**O gargalo real da sequência não é técnico:** é que os passos 1 a 3 são **um bloco**, e não têm
+entrega parcial útil. Antes do passo 4 não existe batalha completa, e portanto não existe nada para
+olhar. É a parte da estrada em que não há acostamento.
+
+---
+
+## 6 · O que essa mudança contradiz, sem suavizar
+
+**Quatro coisas. Duas você deveria reconsiderar explicitamente, uma é só o preço, e uma é um erro
+meu, de ontem.**
+
+### 6.1 · A §0.6 · "tudo entra na mesa antes do harness" · **você já está reconsiderando**
+
+É a contradição direta, e o seu pedido a abre de propósito. O que vale dizer é **o motivo que a §0.6
+deu**, para você reconsiderar com ele na mão: *"para que o harness meça o jogo de verdade desde a
+primeira batalha e nenhuma regra viva só na cópia headless"*.
+
+Invertendo, a primeira bateria mede um jogo que vai mudar. A §2a diz o tamanho disso: as três regras
+que importam empurram a carga para cima, então o número é um **piso**. **Um piso responde a sua
+pergunta.** A §0.6 continua certa para a pergunta dela, que era comparar regras; ela está errada para
+a sua pergunta de agora, e isso é mudança de alvo, não erro de decisão.
+
+### 6.2 · O F1, e a política única · **você deveria reconsiderar explicitamente**
+
+**Isto é o mais importante desta seção.** Você decidiu, em 02/09, o que fazer **se** o sinal do F1
+acender: uma política só, e a política vira grade própria. Era um remédio, condicionado ao sinal.
+
+A bateria mínima da §4 **toma o remédio antes do sintoma**: ela roda com uma política e pronto. Não é
+contradição, é antecipação, e ela tem uma consequência que o F1 previa e que agora vira certeza em
+vez de risco: **a primeira bateria não consegue dizer nada sobre quanto a política pesa.** Se o
+gargalo que ela encontrar for, na verdade, um artefato de "atacar sempre o mais próximo", nada no
+resultado avisa.
+
+**O que atenua, e é real:** a política que roda **não é minha**, é a `decisaoAutomatica` que a mesa
+executa hoje no modo automático. Então o resultado descreve o robô que o produto tem, e não um robô
+que eu inventei para a medição. Isso é uma posição bem melhor que a do F1 original.
+
+**O que continua valendo o seu olhar:** o robô da mesa é deliberadamente burro (o comentário dele diz
+"a heurística é a mínima de propósito: ela existe para a horda andar sem dez cliques por Tick, não
+para jogar bem"). Uma carga medida sobre um robô burro pode ser **menor** que a de mesa real, porque
+ninguém recua, ninguém aborta, ninguém espera. **Isso empurra na direção contrária ao piso da §2a**,
+e é a única coisa neste documento que empurra para esse lado.
+
+### 6.3 · O Q6 e o espelho · **é preço, e não contradição**
+
+O Q6 decidiu a cópia com teste-espelho, e o espelho compara mesa contra harness. Rodando a bateria
+antes de a Etapa 1 terminar, o espelho passa a ser conferido contra uma mesa que ainda muda. Não
+quebra nada: quebra **em voz alta**, que é a função dele. O preço está escrito na §2c: cada regra da
+Etapa 1 passa a ter dois lados para mexer.
+
+### 6.4 · O perfil diz `true` para nove bandeiras que o motor não aplica · **erro meu, de ontem**
+
+No item 1.0, ontem, o bloco `bandeiras` entrou com as nove de regra publicada em **`true`**, seguindo
+a §0.6 ("o padrão em produção é ligadas"), e as seis do núcleo em `false` com a justificativa de que
+"as regras que elas ligam ainda não existem no motor".
+
+**A justificativa das seis vale igualzinho para as nove.** Nenhuma das nove está ligada no motor: a
+`margem` não entra no dano, o `gate` não é chamado, o `bloqueio` não existe. **O perfil afirma um
+jogo que a mesa não joga.** Enquanto ninguém lê o bloco, é inofensivo. A partir do momento em que o
+harness ler o mesmo objeto, que é o arranjo da §2c, ele vai aplicar a Margem que a mesa não aplica, e
+**a primeira divergência do espelho vai ser culpa do dado, não do código**.
+
+Fica pior no seu novo alvo: a bateria mínima da §4 quer medir o **Grid de hoje**, e o perfil de hoje
+diz que nove regras estão ligadas.
+
+**O conserto é uma linha e ele é seu para decidir**, porque mexe numa decisão que você tomou:
+
+- **as nove nascem `false`**, e cada uma vira `true` no commit que a liga no motor, exatamente como
+  o `n1`. O padrão de produção "ligadas" da §0.6 continua sendo o destino, e passa a ser alcançado
+  uma bandeira por vez em vez de por antecipação;
+- ou **ficam `true`** e entra uma segunda lista, `implementadas`, e todo leitor tem de cruzar as duas.
+
+Eu recomendo a primeira, e o argumento é o que eu mesmo escrevi no JSON há um dia: *"uma bandeira
+ligada cuja regra não está escrita não faz nada, e uma desligada cuja regra existe é o estado de
+hoje"*. A primeira metade dessa frase é a descrição de uma armadilha, e eu a escrevi como se fosse
+uma justificativa.
+
+---
+
+## 7 · O plano de execução, completo
+
+Como a simulação roda, de ponta a ponta. Escrito para ser atacado.
+
+### 7.1 · As peças, e onde cada uma mora
+
+```
+src/lib/                      o que a mesa e o harness compartilham, tudo puro
+  acaso.ts                    a fonte de acaso (feito)
+  bandeiras.ts                o perfil de regras (feito)
+  combate-tempo.ts            agenda, fases, re-projeção, fila, decisaoAutomatica (existe)
+  hex.ts  calc.ts  quase-acerto.ts  combate-resumo.ts  equip.ts  alcance.ts   (existem)
+  lance.ts                    NOVO · o objeto do lance e o resolverGolpe puro (passos 1 e 2)
+
+scripts/sim/                  o harness, e só ele
+  motor.mjs                   NOVO · o laço do Tick: fila, declaração, avanço, fim
+  politica.mjs                NOVO · embrulha decisaoAutomatica e marca a classe de cada parada
+  cena.mjs                    NOVO · gerador de cena e de elenco
+  log.mjs                     NOVO · o buffer em memória e a gravação por batalha
+  invariantes.mjs             NOVO · os três
+  rodar.mjs                   NOVO · o processo de uma faixa de batalhas
+  bateria.mjs                 NOVO · reparte as faixas em processos e concatena
+  agregar.mjs                 NOVO · dos .jsonl para as doze linhas
+```
+
+**Por que `lance.ts` fica em `src/lib` e o resto em `scripts/sim`:** o `resolverGolpe` é o único que
+os **dois lados** usam, e é onde a divergência custa caro. Pôr a resolução num módulo compartilhado
+não desfaz a decisão do Q6 (cópia, não extração): o que se compartilha é a **conta**, e o que se
+copia é o **laço**. A mesa continua com o modal dela, que passa a chamar a mesma função.
+
+### 7.2 · Um processo, uma faixa
+
+```
+node scripts/sim/bateria.mjs --semente 20260902 --n 500 --saida .sim/2026-09-02/
+```
+
+O `bateria.mjs` monta a lista de execuções (12 células × 500 repetições × 2 perfis = 12.000), reparte
+em faixas de índices e abre **um processo por faixa**, com `child_process.fork`.
+
+**Processos, e nunca `worker_threads` nem `Promise.all`.** Está escrito na P §0.8.7 e é restrição, não
+preferência: o `acaso.ts` guarda a fonte num `let` de módulo, e duas batalhas no mesmo processo
+dividiriam a mesma sequência **em silêncio**, sem erro e sem teste vermelho.
+
+Cada processo:
+
+1. lê os JSONs de dados **uma vez** e monta o elenco;
+2. para cada índice da faixa, calcula a própria semente e roda a batalha;
+3. acumula os eventos **em memória** durante a batalha;
+4. grava **uma vez por batalha**, anexando ao `.jsonl` da faixa;
+5. nada compartilhado, nada de trava.
+
+### 7.3 · A semente, e o par de perfis
+
+```
+semente(b) = hash32(semente_mestre, celula_id, repeticao)
+```
+
+**As duas execuções do par usam a MESMA semente**, e é isso que faz a diferença entre elas ser a
+medida da automação e não ruído: mesmos dados, mesmas posições, mesmas decisões; a única diferença é
+se as seis paradas de classe **iii** foram consultadas ou resolvidas pelo motor.
+
+**E aqui há uma coisa a conferir na leitura, que eu não sei responder antes de rodar:** resolver uma
+parada de classe iii pelo motor pode **consumir a sequência de acaso de forma diferente** de
+consultá-la (se a consulta simulada rolar algo que o motor não rola, ou o contrário). Se isso
+acontecer, as duas execuções divergem depois da primeira parada iii e o par deixa de ser um par.
+**A regra: a classe iii é aritmética, e aritmética não rola dado.** Se alguma das seis rolar, ela não
+é classe iii e a taxonomia da R2 §B está errada naquele ponto. **O invariante que pega isso:** as
+duas execuções do par têm de consumir o **mesmo número de rolagens**. Vale como quarto invariante,
+e ele nasce aqui.
+
+### 7.4 · O laço de uma batalha
+
+```
+enquanto não terminou e T <= 2000:
+  T += 1
+  fase 0   quem tem golpe devido neste Tick fica marcado o Tick inteiro
+  fase 1   declaração: todos os livres, na ordem da fila
+             cada declaração é uma PARADA, classificada i / ii / iii
+  fase 2   passos: cada peça em trajeto anda, e a agenda re-projeta se não alcançou
+  fase 3   resolução: cada golpe devido resolve por resolverGolpe
+             cada resolução é uma PARADA, classificada
+  fase 4   fim? sem-ninguem-de-pe · fuga-consumada · desistencia-20 · estourou
+  invariantes, em memória
+```
+
+**A classe de cada parada sai da tabela da R2 §B**, e é a peça nova do log: **i** decisão de jogador,
+**ii** julgamento narrativo, **iii** aritmética de escrituração. O perfil automatizado resolve as
+**iii** sem consultar; o perfil de hoje consulta as catorze.
+
+### 7.5 · O que sai gravado
+
+Dois arquivos por bateria, mais um `.jsonl` por faixa.
+
+`bateria.json`, um por execução:
+
+```
+run_id  commit  iso  semente_mestre
+perfil_bandeiras   o objeto de bandeiras.ts, como estava
+dados_hash         hash de src/data e src/lib
+celulas[]          { id, pecas, distancia, ciclos, n }
+inventado[]        o que foi escolhido por mim, com o valor e a linha do documento
+```
+
+`batalhas.jsonl`, uma linha por execução de batalha:
+
+```
+b  celula  repeticao  perfil(hoje|auto)  semente
+ticks  fim_motivo  vivos_a  vivos_b
+paradas   { i, ii, iii }        totais
+porTick[] { t, paradas, classe, pico }
+gestos    { total, porGolpe }
+vazios    fração de Ticks sem resolução
+tempoMorto[]  por aid: do decl ao dano
+rolagens  quantas vezes o acaso foi consumido
+invariantes  [] ou a lista do que violou
+```
+
+**E o log completo de eventos só para uma amostra declarada** (uma célula, 50 batalhas), porque
+12.000 batalhas com 100 a 150 eventos cada dão centenas de MB e ninguém lê.
+
+### 7.6 · A leitura, em três tabelas
+
+| Tabela | Linhas | O que ela responde |
+|---|---|---|
+| **A carga, por célula** | 12 | paradas por Tick (p50, p90, p99, máximo), pico, gestos por golpe, fração de Ticks vazios |
+| **A composição, por célula** | 12 | a fração de cada classe i / ii / iii. **É a tabela que responde a pergunta** |
+| **O que a automação compra** | 12 | a diferença entre os dois perfis, em paradas e em gestos, por classe |
+
+Mais um histograma, e ele vale por uma tabela: **paradas por Tick ao longo da batalha**, para ver se
+a carga é plana, cresce, ou se concentra num pedaço.
+
+### 7.7 · Como se sabe que o resultado vale
+
+| Confere | Como |
+|---|---|
+| a batalha é válida | os invariantes, por batalha. Batalha que viola vai para um balde próprio e **não entra em média nenhuma** |
+| o par é um par | o invariante das rolagens da §7.3: as duas execuções consomem a mesma quantidade |
+| a batalha termina | a distribuição de `fim_motivo`. Se `estourou` for grande, a leitura de tudo o que é por batalha está enviesada e o relatório diz isso na primeira linha |
+| o motor concorda com a mesa | o **espelho de motor**: uma cena fixa, a mesma semente dos dois lados, comparando os campos da R3 §1.1.1. **É o portão da bateria**, e roda antes dela |
+| o número de repetições basta | o piloto: 2.000 batalhas na célula 3×3 · longa · uníssono, medindo o CV de paradas por Tick, e a regra de decisão escrita antes de rodar |
+
+### 7.8 · O que eu gostaria que fosse atacado neste plano
+
+1. **A cópia da resolução virou compartilhamento** (`lance.ts` em `src/lib`, chamado pelos dois).
+   Isso desfaz de fato a decisão do Q6, ou é o que ela sempre quis dizer?
+2. **O par de perfis com a mesma semente** depende de a classe iii não rolar dado. Se rolar, o par
+   quebra e eu proponho um invariante para pegar. É suficiente?
+3. **Doze células e uma política** respondem "onde a automação trava", ou o resultado vai ser sobre o
+   robô da mesa e não sobre o Grid?
+4. **Medir o Grid de hoje é um piso** porque N2, N4 e N1 empurram a carga para cima. Mas a §6.2 diz
+   que o robô burro empurra para baixo. **As duas forças estão no mesmo número.** Isso invalida o
+   argumento do piso?
+5. **A taxonomia i / ii / iii** foi feita à mão na R2 §B sobre as 14 paradas. O log precisa emitir a
+   classe sozinho, e isso quer dizer carimbar cada ponto de parada no código. Alguém confere que o
+   carimbo está no lugar certo, ou a classificação vira o que eu escrevi nela?

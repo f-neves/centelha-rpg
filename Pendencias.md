@@ -985,6 +985,7 @@ cabeçalho do `02`:
 | `04-prontidao.md` | prontidão: se cada métrica tem dado, se cada eixo é separável, os riscos e o que falta decidir |
 | `05-fechamento.md` | o fechamento: a ordem corrigida (a instrumentação vem antes), as dez dependências de prova sem instrumento, e a grade recontada |
 | `06-etapa-0.md` | a instrumentação, feita: a semente, o caminho do driver, o despejo por Tick e a branch congelada. E o que o espelho de inércia já prova com ela |
+| `07-caminho-curto.md` | **a mudança de prioridade de 02/09**: o alvo passou a ser rodar milhares de batalhas completas para achar onde a automação trava. O inventário do que falta, a ordem reaberta, a primeira bateria de doze células e o plano de execução |
 
 **Duas restrições que saíram da Etapa 0 e valem para quem escrever o harness:** o paralelismo é por
 **processo** e nunca por linha de execução (a fonte de acaso é um `let` de módulo, e duas batalhas no
