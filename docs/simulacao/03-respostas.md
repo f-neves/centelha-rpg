@@ -48,12 +48,13 @@ não acrescentam caminho de código; acrescentam tempo.
 
 **O problema que ninguém tinha nomeado: a mesa não tem semente.** `rolagem.ts:11` é
 `Math.floor(Math.random() * 6)`, e com `rolagem: 'site'` (Q9) é a página que rola. Um espelho que
-compare dano compara ruído. Duas saídas, e é a **pergunta 3 da Parte 6**:
+compare dano compararia ruído.
 
-- comparar só o que é determinístico, e **injetar** o total do acerto pelo campo `al-total`, que a
-  folha já aceita digitado; ou
-- semear o `d6` da página, o que exige mexer em `rolagem.ts` (um ponto de injeção, que a §2.1 já
-  listou como necessário para o harness de qualquer jeito).
+**Decidido em 02/09: semeia o `d6` e compara tudo, inclusive as rolagens.** `rolagem.ts` ganha um
+ponto de injeção de semente, a página roda com a mesma semente do harness, e a comparação cobre as
+rolagens além dos campos determinísticos. Isso mexe num arquivo de produção, e vale porque o harness
+precisaria desse ponto de injeção de qualquer forma (a §2.1 do 02 já o listava como necessário) e
+porque a alternativa provava só que os dois lados **contam** igual, não que **rolam** igual.
 
 **Quais campos são comparados**, por Tick e por peça, na cena fixa:
 
@@ -271,7 +272,7 @@ já poderia violá-lo. Violação **aborta a batalha** e a marca; não corrige, 
 | **V2** | `0 ≤ dano líquido ≤ dano bruto`, e no raspão `líquido = danoQA` sem Absorção | dentro da resolução, antes de aplicar (passo 5) | **não.** `aplicarDano` faz `Math.max(0, bruto − s)` (L8084), e o raspão passa por `opts.raspao` que zera o `s` (L8082) |
 | **V3** | peça no chão **não declara** | passo 4, ao montar a fila de declaração | **não**, e a redação importa: `grupoDaVez` filtra `!noChao` (L4123) e `decidirAutomaticas` usa `emPe` (L5019). Note que o invariante é "não declara", e **não** "não age": N3 permite de propósito que quem caiu resolva um golpe já vencido |
 | **V4** | um golpe agendado resolve **no máximo uma vez**: o par (peça, Tick do golpe) sai de `aResolver` e não volta | passo 5, na entrada e na saída de cada resolução | **provavelmente não, e há um NÃO SEI.** `resolverGolpeNoAr` guarda com `if (!acao \|\| !golpesNoAr(acao).includes(tick)) return` (L7057-7058), e a folha é modal, o que fecha o caminho do clique duplo. **NÃO SEI** se a repintura vinda do tempo real (`mesa-tempo-real.ts`) pode reentrar enquanto o `await folhaDaAcao` está pendente; é o mesmo NÃO SEI que a R2 §B registrou no ponto 1 |
-| **V5** | um golpe resolve com `distanciaHex(atacante, alvo) ≤ alcanceDaPeca(atacante)` | passo 5, antes de comparar total e Defesa | **VIOLA, de propósito.** A folha escreve o aviso de fora de alcance e **não impede** (`grid.astro:7565-7567`; R2 §C2, linha "Alcance no corpo a corpo: sim, como aviso, não impede"). É o único da lista que o Grid quebra por decisão de desenho, e é a **pergunta 4 da Parte 6** |
+| **V5** | um golpe resolve com `distanciaHex(atacante, alvo) ≤ alcanceDaPeca(atacante)` | passo 5, antes de comparar total e Defesa | **VIOLA, de propósito.** A folha escreve o aviso de fora de alcance e **não impede** (`grid.astro:7565-7567`; R2 §C2). **Decidido em 02/09: na mesa continua sendo aviso, e no harness a batalha é abortada.** Na mesa o mestre pode saber de algo que o tabuleiro não sabe; na bateria, um golpe que acerta a dez metros é defeito do motor. É o único ponto em que o harness e a mesa discordam de regra por decisão, e por isso ele fica escrito aqui e no relatório final |
 | **V6** | duas peças nunca ocupam o mesmo `(q, r)`, salvo `podeDividir` | fim do passo 2 (movimento) e de qualquer teleporte | **pode violar.** O passo respeita o veto, mas o "pôr direto" e o arrasto que teleporta escrevem posição sem consultar `ocupadoPor`. E o veto frouxo do conserto de 02/09 (`grid.astro:4959-4967`) veta **só a casa exata** nesse caminho, que é exatamente o que este invariante afirma, então o passo está coberto e a colocação à mão não está |
 | **V7** | toda ação não vazia tem `livre > tick corrente` e `livre ≥ max(golpes)`; e nenhuma ação fica viva além do teto de segurança de 2.000 Ticks | fim de cada Tick (passo 7) | **não viola a forma**, mas **`livre` não tem teto**: `reprojetarAgenda` desliza a agenda indefinidamente enquanto a perseguição não fecha (`combate-tempo.ts:826-828`, sem teto por decisão). O invariante correto afirma a **forma**, e o deslize vira contador, não violação |
 | **V8** | toda condição tem `id` existente em `condicoes.json`, e toda condição com `porArte` aponta para um efeito vivo | fim de cada Tick (passo 8) | **pode violar.** Quem tira condição posta por Arte é só `encerrarEfeito → tirarCondicao` (`artes-grid-mesa.ts:1512-1516`); se a linha do efeito sumir por outro caminho, a condição fica órfã. E o `ate` **nunca é lido** (R2 §C4), então nada varre |

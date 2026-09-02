@@ -32,16 +32,15 @@ Simultâneo do combate, e entram no Grid **antes** de o harness ser escrito.
 
 ### O que ainda NÃO está decidido, e não deve ser implementado
 
-Três coisas, para ninguém as inventar por conta:
+Uma coisa só, e três perguntas de mesa que não bloqueiam código:
 
-1. **O tratamento de N5 na bateria.** A regra em si está decidida e entra; o que está aberto é se ela
-   ganha bandeira, e com qual estado desligado, já que ela é a única das seis que não isola
-   (`03-respostas.md` §2.1). Implemente N5 ligada e deixe o gancho da bandeira de fora até a decisão.
-2. **A fronteira entre as duas cadeias de N4** (§0.46), quando um Tick mistura quem ainda entra com
-   quem já re-declara. A proposta é que a fronteira seja global; não está confirmada.
-3. **As cinco perguntas da §6 da `03-respostas.md`**, das quais duas mexem em código: se o
-   teste-espelho compara dado rolado (o que exigiria semear `rolagem.ts`) e se o invariante de
-   alcance vira regra ou continua sendo aviso.
+1. **A ordem no Tick misto de N4** (§0.46): num Tick em que uma peça faz a primeira declaração e
+   outra re-declara, as duas cadeias discordam sobre como ordená-las entre si. A proposta é que o
+   grupo que está entrando declare primeiro, inteiro; **não está confirmada**. Acontece sempre que
+   alguém espera 1 Tick ou aborta nos Ticks 1 a 4.
+2. As perguntas 2, 4 e 5 da §6 da `03-respostas.md` (o perseguidor que chega e bate no mesmo Tick, a
+   ordem de N4 quando alguém entra ou sai da cena no meio, e a latência do Supabase de verdade). As
+   três são de regra ou de campo, e nenhuma trava a implementação.
 
 Convenções: **⚑** marca uma invenção do harness, ou seja, uma regra de jogo que a simulação está
 criando e que precisa ser lida como escolha, não como achado. A convenção da §1 (**bloqueia o
@@ -502,12 +501,22 @@ do sorteio. As duas cadeias são a mesma coisa com a iniciativa mudando de lugar
 
 O acaso decide quem chega primeiro na briga; a perícia decide quem lê a briga daí em diante.
 
-**Um ponto que nem o exemplo nem a pergunta cobriram, e que fica anotado como aberto:** um Tick pode
-misturar quem ainda está entrando com quem já está re-declarando, e as duas cadeias discordam sobre
-como ordená-los entre si. Com o catálogo de hoje isso é raro (a entrada cabe nos Ticks 1 a 4 e o
-ciclo mais curto é 5, então a primeira re-declaração cai no Tick 6), mas não é impossível com um
-espalhamento grande de iniciativa. Proposta, a confirmar: **a fronteira é global e não por peça**, ou
-seja, vale a cadeia de entrada até o último Tick de entrada da cena, e a outra a partir dali.
+**A fronteira é por peça** (decidido em 02/09): cada peça usa a cadeia de entrada na sua **primeira**
+declaração e a cadeia de depois dali em diante. É o mais fiel à ideia de que o dado decide quem chega
+primeiro na briga e a perícia decide quem a lê daí em diante.
+
+**E isso abre o caso do Tick misto, que ainda não tem regra.** Num mesmo Tick pode haver peça na
+primeira declaração e peça re-declarando, e as duas cadeias discordam sobre como ordená-las entre si.
+
+Eu tinha estimado que isso seria raro, e **estava errado**: a entrada cabe sempre nos Ticks 1 a 4
+(`ticksDeEntrada` faz `1 + ceil(atraso ÷ 6)`, e o atraso máximo possível é 16), e o ciclo mais curto
+do catálogo é 5, então uma peça que ataca só volta a declarar no Tick 6, sem sobreposição. Mas
+**esperar 1 Tick e abortar liberam a peça no Tick seguinte**, e aí ela re-declara no Tick 2, 3 ou 4,
+em cima das entradas. Quem espera ou aborta cedo cai no caso misto sempre.
+
+Proposta, **a confirmar**: quem ainda está entrando declara primeiro, como bloco, antes de qualquer
+peça que já esteja re-declarando, e cada grupo se ordena pela sua própria cadeia. A justificativa é a
+mesma de N7: quem já está na briga lê quem está chegando, e não o contrário.
 
 **A resolução é o exato inverso da declaração**, com duas ressalvas que vêm das respostas de 02/09:
 
@@ -903,9 +912,11 @@ golpe contra o qual ela se põe).
   certo, mas rola os dados à toa. Uma função pura `fixoDe(expr)` é mais limpa e é uma linha.
 - **O sorteio do último critério é a única fonte de acaso do combate fora dos dados.** Na mesa pode
   ser `Math.random`; no harness precisa vir do fluxo semeado, senão a batalha 743 não replica (§2.4).
-- **A fronteira entre as duas cadeias é global, e não por peça** (proposta, a confirmar, §0.46): vale
-  a cadeia de entrada até o último Tick de entrada da cena. Com o catálogo de hoje um Tick misto é
-  raro, porque a entrada cabe nos Ticks 1 a 4 e o ciclo mais curto é 5.
+- **A fronteira entre as duas cadeias é por peça** (§0.46): cada uma usa a cadeia de entrada na sua
+  primeira declaração e a outra dali em diante. O **Tick misto** (peça entrando e peça re-declarando
+  juntas) acontece sempre que alguém espera 1 Tick ou aborta nos Ticks 1 a 4, e a regra para ordenar
+  os dois grupos entre si **ainda não está confirmada**: a proposta é que o grupo que está entrando
+  declare primeiro, inteiro, e cada grupo se ordene pela sua cadeia.
 - `regras.json → derivados.iniciativa.empateNoTopo` diz hoje "maior Raciocínio, e persistindo o
   empate, o dado". A direção está certa para a **resolução**; a cadeia nova é mais longa e o texto
   precisa dizer as duas fases.
@@ -978,9 +989,11 @@ a resolução dos cartões acontecem entre avanços, em qualquer ordem que o mes
   se põe, qualquer que seja a iniciativa de quem se interpôs. No repertório de hoje a única ação
   dependente é o abortar com "interpor" (`abrirAbortar`, `mesa-tempo-ui.ts:272-334`), então é uma
   exceção declarada na fase 3, e não uma parada de julgamento.
-- **Esta é a única das seis que não isola atrás de bandeira**, e por quê está na
-  `03-respostas.md` §2.1: o estado desligado dela não é um comportamento, é a ausência de uma regra.
-  **O tratamento dela na bateria continua em aberto** (§0.7).
+- **A bandeira de N5 cobre só a ordem inversa** (decidido em 02/09). As três fases ficam sempre
+  ligadas, porque o estado desligado delas não é um comportamento, é a ausência de uma regra
+  (`03-respostas.md` §2.1). O que a bandeira liga e desliga é se a resolução segue a ordem inversa da
+  declaração ou a **ordem da faixa** (por Tick, `mesa-tempo-ui.ts:194`), que é a que o mestre segue
+  hoje. Isso isola de verdade, como comparador, sem inventar nenhum passado.
 
 **Prova.** `test-grid-simultaneo.mjs`. Detalhe na **§0.46**.
 
@@ -1150,11 +1163,35 @@ regressão de personagem que o `npm run validate` já roda.
 
 ---
 
+---
+
+#### 12 · A semente do `d6` (para o teste-espelho)
+
+**Hoje.** `rolagem.ts:11` é `export const d6 = () => 1 + Math.floor(Math.random() * 6)`. É a única
+fonte de acaso do combate, e não tem como ser semeada.
+
+**Passa a ser.** Um ponto de injeção: a fonte de acaso vira um parâmetro do módulo, com
+`Math.random` como padrão, e quem quiser semear troca. Nada muda para a mesa em uso normal.
+
+**Por que entra aqui e não no harness.** O teste-espelho (`03-respostas.md` §1.1.1) foi decidido em
+02/09 para **comparar as rolagens também**, e não só os números determinísticos: a página roda com a
+mesma semente do harness e o espelho confere dado a dado. Sem este ponto de injeção o espelho provaria
+só que os dois lados **contam** igual, e não que **rolam** igual. O harness precisaria dele de
+qualquer forma (§2.1).
+
+**Cuidados.** `mesa-ficha.ts:133` (`rolarIniciativaPC`) e `artes-grid.ts:1342` têm o mesmo
+`Math.random` embutido e precisam do mesmo tratamento, senão a iniciativa e o dano de Arte continuam
+fora da semente. `mesa-core.ts:28` também tem, mas é geração de id e não entra na conta.
+
+**Prova.** O próprio teste-espelho: com a mesma semente dos dois lados, as rolagens têm de bater.
+
+---
+
 **Ordem sugerida.** Os itens **1 a 6** são o núcleo do Tick, se sustentam sozinhos e cabem em quatro
 funções (`agendaSimultanea`, `grupoDaVez`, `golpeMaisCedo`, e a leitura do retrato na folha). O **7**
 é a migração, e o **6** depende dela se o retrato for para o banco. O **8** e o **9** são tela. O
-**10** é isolado. O **11** é o maior e o mais arriscado, e vale por último, quando o resto estiver
-verde.
+**10** e o **12** são isolados. O **11** é o maior e o mais arriscado, e vale por último, quando o
+resto estiver verde.
 
 
 ---
@@ -1170,11 +1207,11 @@ cada regra isolada. O que a rota custa e o que perde está na `03-respostas.md` 
 é que as regras entram agora, os furos da R2 fecham antes da primeira medição, e cada regra recebe o
 seu próprio número em vez de ser medida em bloco.
 
-**Uma coisa fica em aberto por construção: N5 não tem estado desligado observável.** A
-`03-respostas.md` §2.1 mostra por quê: hoje não existe laço a inverter, o mestre declara e resolve na
-ordem que quiser entre avanços, então "sem N5" não é um comportamento, é a ausência de uma regra.
-Ou N5 entra fixa, ou ganha uma bandeira cujo estado desligado é uma invenção minha. **Isso ainda
-precisa de decisão.**
+**N5 é a única das seis que não isola inteira, e a saída é medir só a metade que dá.** A
+`03-respostas.md` §2.1 mostra por quê: hoje não existe laço a inverter, então "sem as três fases" não
+é um comportamento, é a ausência de uma regra. **Decidido em 02/09: as três fases entram fixas, e a
+bandeira `n5` cobre só a ordem inversa**, cujo desligado é real e observável (a ordem da faixa, por
+Tick). Mede-se o que dá para medir e não se inventa passado.
 
 ### O Fôlego fica de fora
 
@@ -1224,7 +1261,7 @@ dos oito Efeitos âncora, põe `em-chamas`.
 |---|---|
 | de D2 (§0.1) | `margem` · `gate` · `couraca` · `porte` · `bloqueio` · `modo2` · `teto6` |
 | da Cura (§0.4 P1) | `curaSemArea` · `curaDivide` |
-| do núcleo do Tick | `n1` (já é o parâmetro `decideEmValeDepois`) · `n2` · `n3` · `n4` · `n6`; **`n5` pendente** |
+| do núcleo do Tick | `n1` (já é o parâmetro `decideEmValeDepois`) · `n2` · `n3` · `n4` · `n5` (só a ordem inversa) · `n6` |
 | nova | `porRodada` |
 | **fora** | o Fôlego, por decisão acima |
 
@@ -1237,7 +1274,7 @@ na bateria que rodou com ela. O hash passa a cobrir `src/lib` também, para que 
 não só de régua, fique registrada do mesmo jeito. O `src/lib/modulos.ts` continua sendo o que ele diz
 que é: só tela.
 
-São **16**, contando N5, e o desenho é o **deixe-uma-de-fora** da `03-respostas.md` §2.2:
+São **16**, e o desenho é o **deixe-uma-de-fora** da `03-respostas.md` §2.2:
 
 | Perfil | Quantos |
 |---|---:|
