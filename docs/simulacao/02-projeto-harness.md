@@ -37,7 +37,10 @@ como está, porque o que cada opção significava continua sendo a leitura das c
 | **E1(d)** | o nível dos quatro períodos carrega arremessador | **sim, os quatro, e a mistura é declarada** |
 | **D4b** | quando a fuga está consumada | **quando ninguém consegue aproximar**: 10 Ticks seguidos sem nenhum perseguidor diminuir a distância |
 | **N2** | o golpe de Preparo 0 cala a cena no Tick em que é declarado | **a guarda de declaração passa a olhar `desde`**, e não o Tick do golpe: só cala quem foi declarado antes deste Tick (§0.45) |
-| **N3** | o golpe de quem caiu no mesmo Tick ainda sai? | **sai, se já tinha vencido**; o agendado para o futuro morre com a peça (§0.45) |
+| **N3** | o golpe de quem caiu no mesmo Tick ainda sai? | **sai, se já tinha vencido**; o agendado para o futuro morre com a peça (§0.45). Vira caso particular de N6 |
+| **N4** | em que ordem se declara no Tick | **Raciocínio + Prontidão crescente**, depois Raciocínio, Destreza, iniciativa rolada, sorteio (§0.46) |
+| **N5** | as fases de um Tick | **declaração · início · resolução**, e a resolução na ordem inversa da declaração (§0.46) |
+| **N6** | penalidade nascida no Tick T | **só vale em T+1**: a resolução lê o retrato de quando as declarações terminaram (§0.46) |
 
 Q13 (o repertório declarável) não foi perguntada porque D3 a responde: uma política declarada como
 dado só pode declarar o que o Grid aceita, e o Grid aceita **6 coisas** (atacar em 4 manobras, mover
@@ -415,6 +418,107 @@ iteração, mas não podia garantir que a ordem não importasse. Agora pode.
 As três entram no mesmo balde do Q16: mudanças de regra que vão para a mesa, com a medição decidindo
 a ordem.
 
+### 0.46 A anatomia de um Tick · N4, N5 e N6 (decididas em 02/09)
+
+As três fecham o desenho do Tick e substituem a parte do laço da §2.2 que ainda era "a ordem que o
+Grid tem por acidente da interface".
+
+#### N4 · A ordem de declaração
+
+No Tick T, todo mundo que está livre declara. A ordem é:
+
+| # | Critério | Sentido |
+|---|---|---|
+| 1 | **Raciocínio + Prontidão** | **crescente**: declara primeiro quem tem menos |
+| 2 | Raciocínio | decrescente |
+| 3 | Destreza | decrescente |
+| 4 | a iniciativa rolada | decrescente |
+| 5 | sorteio | |
+
+**O número já existe nos dois lados do tabuleiro, e ninguém tinha reparado.** A iniciativa do sistema
+é `1d6 + Raciocínio + Prontidão` (`regras.json → derivados.iniciativa.soma: ["raciocinio",
+"prontidao"]`; `rolarIniciativaPC`, `mesa-ficha.ts:132-135`). Então:
+
+- **PC:** `attrs.raciocinio + skills.prontidao`, direto da ficha.
+- **Criatura:** as 309 do bestiário **não têm perícia nenhuma** (o bloco tem `atributos`, e
+  `habilidades` é prosa). Mas todas têm a expressão de iniciativa, e o **fixo dela é exatamente
+  `Raciocínio + Prontidão`**. Conferido nas 309: nenhuma dá Prontidão implícita negativa, a faixa é
+  de 0 a 5, e a distribuição é 8 com 0, 183 com 1, 85 com 2, 24 com 3, 8 com 4 e 1 com 5.
+
+Ou seja, a chave de declaração é **o fixo da iniciativa**, e ele está no dado para todo mundo. A
+ordem inteira acaba sendo "a estatística de iniciativa, e depois o dado de iniciativa", o que é
+coerente com o resto do sistema e não precisa de campo novo em lugar nenhum.
+
+Duas coisas que isso obriga:
+
+- **`ordemDaFila` ganha um irmão.** A fila de hoje ordena por Tick, iniciativa (desc), Raciocínio
+  (desc), carimbo de chegada e nome (`combate-tempo.ts:399-404`). A ordem de declaração é outra
+  coisa e vai numa função própria; a fila continua sendo a fila.
+- **`regras.json → derivados.iniciativa.empateNoTopo` fica desatualizado.** Ele diz hoje: "Quem age
+  primeiro dentro do instante é o desempate: maior Raciocínio, e persistindo o empate, o dado." A
+  cadeia nova é mais longa e o supera.
+- **O sorteio do quinto critério** é a única fonte de acaso fora dos dados no combate. No harness ele
+  sai do fluxo semeado `ordem` (§2.4), senão a batalha 743 não replica.
+
+#### N5 · As três fases de um Tick
+
+O Tick deixa de ser "cada um na sua vez" e passa a ter fases explícitas:
+
+| Fase | O que acontece |
+|---|---|
+| **1 · declaração** | todos os livres declaram, na ordem de N4. Nenhuma consequência acontece aqui |
+| **2 · início** | as ações começam. Todas juntas, depois que a última declaração entrou (é o que N1 quis dizer com "a ação começa no Tick T") |
+| **3 · resolução** | as consequências devidas neste Tick acontecem, **na ordem inversa da declaração**: resolve primeiro quem tem mais Raciocínio + Prontidão |
+
+Isso torna **N2 uma consequência, e não uma regra à parte**: se as declarações são uma fase inteira e
+as consequências vêm depois dela, um golpe declarado no Tick T obviamente não pode calar a declaração
+de ninguém no Tick T. A mudança em `grupoDaVez` (olhar `acao.desde` em vez do Tick do golpe) continua
+sendo o que implementa isso.
+
+#### N6 · O retrato: penalidade nascida no Tick T só vale em T+1
+
+Toda a fase 3 lê o tabuleiro **como ele estava quando as declarações terminaram**. Dano, condição,
+Pressão e queda que acontecem dentro do Tick T entram no estado, mas **não realimentam nenhuma
+resolução do próprio Tick T**.
+
+O exemplo que fecha a regra: dois personagens de adaga se atacam no mesmo Tick. O Golpe sai no mesmo
+Tick para os dois, e **mesmo que o primeiro cause dano suficiente para gerar penalidade de
+ferimento, essa penalidade só conta a partir do Tick seguinte**. Os dois ataques e as duas Defesas
+saem com a penalidade normal de Golpe (−4) e nada mais.
+
+A linha exata, porque ela não é "congelar tudo":
+
+| Entra na conta da fase 3 | Não entra |
+|---|---|
+| a escada da **própria ação** (Preparo −2, Golpe −4, Recuperação −2 por golpe dado), que é o que a agenda deste Tick diz | o **ferimento** causado neste Tick |
+| ferimento, condição e Pressão que já existiam **antes** do Tick T | a **condição** posta neste Tick |
+| | a **Pressão** dos ataques declarados neste Tick |
+| | a **queda** de quem foi derrubado neste Tick |
+
+**N3 vira caso particular disto.** "O golpe de quem caiu ainda sai" não precisa mais ser uma regra
+própria: quem caiu na fase 3 estava de pé no retrato, então o braço dele já estava no ar. O que a
+implementação ainda precisa é o mesmo: `golpeMaisCedo` deixar de pular `noChao` para golpes já
+vencidos.
+
+**Onde o código de hoje contraria N6**, para dimensionar:
+
+- **A Pressão é escrita na declaração, e não na resolução.** `gravarRelogio`
+  (`grid.astro:7200-7205`) soma `pressao += golpes` na ação do alvo no instante em que o atacante
+  declara. Com N4 e N5, isso acontece dentro da fase 1, e valeria já na fase 3 do mesmo Tick. Precisa
+  entrar no retrato.
+- **O ferimento é lido ao vivo.** `const fer = tierDe(alvo.pv_atual, alvo.pv_max).penDefesa`
+  (`grid.astro:7435`), com o `pv_atual` do instante em que a folha abre. Precisa ler o retrato.
+- **A escada não muda:** `defesaPerdida` lê a agenda, e a agenda deste Tick é exatamente o que deve
+  contar. Nada a fazer ali.
+
+**A extensão que eu proponho, e que não é palavra sua:** que o retrato cubra **todo** o estado lido
+na fase 3, e não só as penalidades. Ou seja, também a posição. O motivo é o `empurrao-elemental`, que
+move o alvo: se a posição mudasse no meio da fase 3, a distância que uma folha lê passaria a depender
+de qual cartão o mestre abriu primeiro, e voltaríamos a ter ordem de resolução mudando número. Com o
+retrato cobrindo a posição, **a ordem inversa de N5 é puramente narrativa: ela decide o que se conta
+primeiro, e não muda nenhum resultado.** Isso é o que faz o simultâneo ser simultâneo de verdade, e
+é também o que dá ao harness um determinismo que não depende de eu acertar a ordem de iteração.
+
 ### 0.5 A grade, refeita com as respostas
 
 | Eixo | Níveis | Custa célula? |
@@ -677,10 +781,11 @@ apontada em cada passo.
 | 1 | **T ← T + 1** | igual (L4904-4906), sem a gravação de `tick_atual` |
 | 2 | **Passo de todas as peças em trajeto**, na ordem de `filaDaCena`. Para cada uma: pula quem está no chão, pula quem não tem `mov.auto`, pula quem declarou neste mesmo Tick (`desde + 1 > T`), calcula `passos` pela escala, restringe o passo se está na fase de Golpe (`passoDoGolpe`), caminha com veto de ocupação, e repete com veto frouxo se não aproximou | **igual**, linha por linha (L4912-4966). É o passo que mais depende da extração fiel |
 | 3 | **Encerrar trajeto ou re-projetar.** Quem chegou ao alcance, ou atravessou, perde o `mov`; quem não chegou passa por `reprojetarAgenda` com a viagem que sobrou medida no passo real | **igual** (L4984-5012) |
-| 4 | **Decisão de quem está livre**: as criaturas em automático por `decisaoAutomatica`, os PCs pela política de D3 | **diferente**. Hoje só as criaturas decidem dentro do avanço (`decidirAutomaticas`, L5017); os PCs decidem quando o humano clica, em qualquer momento. Como `agendaSimultanea` faz toda decisão valer a partir de `T+1` (`combate-tempo.ts:797`), decidir aqui é equivalente a um humano declarando durante o Tick T |
-| 5 | **Vencimento e resolução dos golpes com Tick ≤ T**, em ordem de `filaDaCena`, incluindo os de quem caiu neste mesmo Tick (N3) | **diferente na forma, igual na posição**. No Grid isto não é parte do avanço: é o cartão da faixa, clicado depois. Mas o ⏭ fica desligado enquanto houver golpe devido (L4324-4326), então a sequência real é: relógio anda, peças andam, todo mundo decide, e **só então** os golpes daquele Tick são resolvidos, antes do próximo ⏭. Com **N2** essa ordem deixa de ser acidente da interface e vira regra: nenhum golpe declarado no Tick T cala a declaração de ninguém no Tick T |
+| 4 | **Fase 1, declaração**: todos os livres declaram, na ordem de **N4** (Raciocínio + Prontidão crescente). Criaturas pela `decisaoAutomatica`, PCs pela política de D3. Nenhuma consequência acontece aqui | **diferente**. Hoje só as criaturas decidem dentro do avanço (`decidirAutomaticas`, L5017) e os PCs decidem quando o humano clica, em qualquer momento e em qualquer ordem. Com N4 e N5 a ordem passa a ser regra |
+| 4b | **Fase 2, o retrato**: fecha-se a leitura do estado (Vida, condições, Pressão, posição) que a fase 3 inteira vai usar | **novo**, e é **N6**. Não existe no Grid |
+| 5 | **Fase 3, resolução**: os golpes com Tick ≤ T, **na ordem inversa da declaração** (N5), lendo o retrato (N6), incluindo os de quem caiu neste mesmo Tick (N3) | **diferente na forma, igual na posição**. No Grid isto não é parte do avanço: é o cartão da faixa, clicado depois, e o ⏭ fica desligado enquanto houver golpe devido (L4324-4326). Com **N2** essa ordem deixa de ser acidente da interface e vira regra, e com **N6** a ordem dentro da fase não muda número nenhum: ela decide só o que se conta primeiro |
 | 6 | **Efeitos de Arte** (mordidas, saídas, vencimentos), se Q10 disser que Artes entram | **igual à posição** (L5021), com a diferença de que a caixa de efeito e a de saída viram política |
-| 7 | **Chão e mortes.** Vida a zero sai da fila; quem levantou paga os 5 Ticks de `DELAY_AO_LEVANTAR`. Quem caiu no passo 5 sai **depois** de todos os golpes de T resolverem (N3) | **diferente na hora**: hoje `conferirChao` roda a cada repintura (L4207), o que é "quando a tela desenhar". No harness roda uma vez por Tick, no fim, e é isso que faz a morte mútua ser possível |
+| 7 | **Chão, mortes e o fim do retrato.** Vida a zero sai da fila; quem levantou paga os 5 Ticks de `DELAY_AO_LEVANTAR`. Aqui as penalidades nascidas em T passam a valer, para T+1 em diante | **diferente na hora**: hoje `conferirChao` roda a cada repintura (L4207), o que é "quando a tela desenhar". No harness roda uma vez por Tick, no fim, e é isso que faz a morte mútua ser possível |
 | 8 | **Expiração de condições** (o `ate`), conforme Q7 | **diferente**: no Grid isto não acontece, o campo `ate` é escrito e nunca lido |
 | 9 | **Fim de batalha** (D4) | **diferente**: no Grid não existe |
 
