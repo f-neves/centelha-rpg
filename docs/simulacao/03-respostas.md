@@ -78,9 +78,9 @@ o espelho não roda no `build` hoje e mover a suíte do navegador para dentro de
 
 ### 1.2 A grade · 60 ou 72
 
-> **Corrigido depois desta resposta:** a grade valendo passou a ter **76 células**, quando a rota das
-> bandeiras levou E5 a 18 perfis, E6 voltou a 5 e entrou o eixo E9. Vale sempre a §0.5 do 02; os
-> números abaixo são os de quando esta parte foi escrita.
+> **Corrigido depois desta resposta:** a grade valendo passou a ter **79 células**, quando a rota das
+> bandeiras levou E5 a 18 perfis, E6 voltou a 5 e entraram os eixos E9 e E10. **A grade oficial é a
+> §0.10 do 02**; os números abaixo são os de quando esta parte foi escrita.
 
 **Vale a da §0.5: 60 células.** A §3 foi escrita antes das respostas e usa `E1(4) × E2(3) × E3(3) ×
 E4(2) = 72`, com E2 em três níveis. As respostas mudaram duas coisas: E2 passou a quatro níveis
@@ -186,7 +186,8 @@ cada regra comprou" quer, e não interação, que ele não vê.
 
 **Tamanho da grade.** Hoje E5 contribui com 1 célula no arranjo de um fator de cada vez. Com 17
 níveis contribui com 16. A grade de 60 células da §0.5 vai para **75**, e com o eixo E9 da §1.4 para
-**76**. A 500 repetições, **38.000 batalhas**. Pela Parte 4.2, isso continua sendo minutos de máquina.
+**76** (e **79** depois que o eixo E10 entrou, §0.10 do 02). A 500 repetições, **39.500 batalhas**.
+Pela Parte 4.2, isso continua sendo minutos de máquina.
 
 **O que o deixe-uma-de-fora não responde:** interação entre regras. Se a Margem e o gate se
 cancelarem, ou se o Bloqueio só importar com a Couraça ligada, este desenho não vê. Ver interação
@@ -233,6 +234,10 @@ o mesmo intervalo exige centenas. **A primeira sessão é o piloto que dimension
 mesma lógica da célula piloto da Parte 4.1.
 
 ### 2.4 DECISÃO SUA · as duas rotas
+
+> **Respondida no chat: a rota é a B.** N1 a N6 entram atrás de bandeira e uma bateria só mede os dois
+> lados. A grade oficial e o piloto único estão na §0.10 do 02. O que segue são as duas rotas como
+> foram apresentadas.
 
 Não escolho, e não indico preferência. As duas, com o que cada uma custa e o que perde.
 
@@ -356,6 +361,9 @@ Três regras, e a terceira é a que importa:
 
 ### 4.1 A célula piloto que mede o CV
 
+> **Fechada na §0.10.2 do 02**, com a rota B: um piloto só, na célula-âncora, 2.000 batalhas, mais as
+> duas células extremas a 500. O que segue é o raciocínio que gerou aquela especificação.
+
 **A configuração.** A **célula-âncora**, que é a mesma de que penduram todas as comparações de
 um-fator-de-cada-vez: 3×3 peças, E1 uníssono, E2 na distância média (18 hexes), campo aberto, política
 Agressiva, perfil de bandeiras cheio. Duas razões para ser ela e não outra: é a que mais aparece na
@@ -409,7 +417,7 @@ resultado é o crescimento superlinear da tabela: **de 6 para 24 peças o custo 
 **o passo no hexágono sozinho é 4,3× o custo de tudo o que a bancada faz naquele Tick**. Supondo que
 30% dos pares peça×Tick tenham caminhada (a refrega da R2 dura 46,7 Ticks e a viagem ocupa os
 primeiros), uma refrega 3×3 passa de 93,5 µs para algo em torno de **820 µs**, ou **8,8× a bancada**.
-Para a grade de 76 células a 500 repetições (38.000 batalhas), isso é da ordem de **30 segundos** num
+Para a grade de 79 células a 500 repetições (39.500 batalhas), isso é da ordem de **30 segundos** num
 processo. **A conclusão da R2 §D2 não muda: a máquina não é a restrição.**
 
 **E um achado que cai de graça:** se a `ocupacao` reimplementada trocar o `COMBS.find` por um `Map`
@@ -550,7 +558,9 @@ dano líquido a partir dele; ou `rolagem.ts` ganha um ponto de injeção de seme
 precisar de qualquer forma. A primeira não prova que os dois lados rolam igual; a segunda mexe num
 arquivo de produção só para o teste existir.
 
-**2. Quem persegue chega e bate no mesmo Tick: é isso mesmo?** (§4.3d) Com N1, o golpe cai em
+**2. ~~Quem persegue chega e bate no mesmo Tick: é isso mesmo?~~ RESPONDIDA:** não se decide antes de
+ver número. A régua fica como está e a bateria mede, com as três saídas do log nomeadas na §0.45 do
+02. O que segue é o enunciado original. (§4.3d) Com N1, o golpe cai em
 `T + max(Preparo, viagem)` e o primeiro passo só sai em `T+1`, então a peça chega durante o Tick em
 que o golpe vence. Com a régua antiga havia um Tick de folga entre chegar e bater. Ninguém discutiu
 isso, e é diferente de tudo o mais que N1 mudou, porque não é escrituração: é a corrida terminando
@@ -563,12 +573,17 @@ o tabuleiro não sabe); numa bateria automatizada é um golpe que acerta a dez m
 saídas são bloquear no Grid, ou manter o aviso na mesa e abortar a batalha no harness, e aí o
 harness e a mesa passam a discordar num ponto de regra.
 
-**4. A ordem de declaração de N4 tem de sobreviver a alguém entrar ou sair da cena no meio?** Um
+**4. ~~A ordem de declaração de N4 tem de sobreviver a alguém entrar ou sair da cena no meio?~~
+RESPONDIDA:** virou o eixo **E10** da grade, com três níveis (declara primeiro no Tick · declara no
+seguinte · entra por último), em vez de uma regra escolhida a priori. Ver §0.46 do 02. O que segue é
+o enunciado original. Um
 reforço que chega, uma peça que cai e levanta, uma invocação. A chave de N4 (`Raciocínio + Prontidão`)
 é da ficha e não muda, então a ordem se recalcula sozinha, mas quem entra no meio de um Tick pode
 cair antes ou depois de quem já declarou. Não achei regra escrita para isso em lugar nenhum.
 
-**5. As duas contagens da §5.2 valem para o Supabase de verdade?** Elas medem o trabalho da página
+**5. ~~As duas contagens da §5.2 valem para o Supabase de verdade?~~ RESPONDIDA:** a medição de campo
+fica **para depois do harness**. Até lá as métricas de carga saem em Ticks e em gestos, e não em
+segundos. O que segue é o enunciado original. Elas medem o trabalho da página
 com um banco de mentira na memória. A latência de rede é o que o jogador sente, e é a diferença entre
 "110 ms por Tick" e alguma coisa que eu não sei estimar. Se você quiser esse número, ele precisa de
 uma mesa real com uma cena de bancada, e é medição de campo, não de suíte.

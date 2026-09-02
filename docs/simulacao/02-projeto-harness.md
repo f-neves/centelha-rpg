@@ -32,17 +32,15 @@ Simultâneo do combate, e entram no Grid **antes** de o harness ser escrito.
 
 ### O que ainda NÃO está decidido, e não deve ser implementado
 
-**Nada bloqueia a implementação.** Sobraram três perguntas, e nenhuma delas trava código:
+**Nada está em aberto.** As três perguntas que restavam foram respondidas em 02/09, e duas delas
+viraram trabalho em vez de decisão:
 
-1. **O perseguidor chega e bate no mesmo Tick** (`03-respostas.md` §4.3d e §6.2). Com N1, o golpe cai
-   em `T + max(Preparo, viagem)` e o primeiro passo só sai em `T+1`, então a peça chega durante o
-   Tick em que o golpe vence. A régua antiga dava um Tick de folga entre chegar e bater. É de regra, e
-   o que estiver implementado segue a régua nova até você dizer o contrário.
-2. **A ordem de N4 quando alguém entra ou sai da cena no meio** (`03-respostas.md` §6.4): um reforço
-   que chega, uma invocação. A chave é da ficha e se recalcula sozinha; o que não tem regra escrita é
-   se quem entra no meio de um Tick cai antes ou depois de quem já declarou.
-3. **A latência do Supabase de verdade** (`03-respostas.md` §6.5): as medições da §5.2 de lá usam o
-   mock, que responde da memória. É medição de campo, não de suíte.
+1. **A folga da perseguição** (quem persegue chega e bate no mesmo Tick): a régua fica como está e
+   **a bateria mede**, com três saídas do log nomeadas na §0.45. Não se decide antes de ver número.
+2. **A peça que entra no meio da cena**: virou o **eixo E10** da grade, com três níveis, em vez de
+   uma regra escolhida a priori (§0.46).
+3. **A latência do Supabase de verdade**: **fica para depois do harness**. Até lá as métricas de carga
+   saem em Ticks e em gestos, e não em segundos, e a §4 registra isso como a maior lacuna conhecida.
 
 ### De onde vem uma decisão
 
@@ -101,6 +99,10 @@ como está, porque o que cada opção significava continua sendo a leitura das c
 | **E2** | as quatro distâncias iniciais | **1 · 18 · 42 · 71 hexes** (encostado, ~3, ~7 e ~12 Ticks de corrida; 71 é a diagonal do mapa de 48×48) |
 | **Fila** | a ordem de declaração na tela | **ordenada sozinha pela ficha, e o mestre pode mudar à mão** (§0.49) |
 | **Ordem** | o que entra antes do harness | **tudo**: N1 a N8, o `ate` e as 16 bandeiras (§0.6 e §0.7) |
+| **Folga da perseguição** | quem persegue chega e bate no mesmo Tick | **não se decide antes de ver número**: a régua fica como está e a bateria mede (§0.45) |
+| **Peça que entra no meio** | quando ela declara pela primeira vez | **vira eixo do experimento**, com três níveis: declara primeiro no Tick · declara no Tick seguinte · entra por último (§0.46 e §0.5, eixo E10) |
+| **Medição de campo** | a latência do Supabase de verdade | **depois do harness**: as métricas saem em Ticks e em gestos, não em segundos (§4) |
+| **Retrato de N6** | memória ou coluna no banco | **memória, e a tela avisa na saída** durante a fase de resolução: zero gravação (§0.8.2) |
 | **Rota** (P §2.4) | como preservar a linha de base | **bandeiras: uma bateria mede os dois lados.** N1 a N6 entram chaveadas, somando às de D2, e o desenho deixe-uma-de-fora mede cada regra isolada (§0.7) |
 | **Fôlego** | a régua está escrita e o combate não a aplica | **fica fora, como está hoje** (`modulos.ts`, `folego: false`). A simulação mede o jogo que se joga (§0.7) |
 | **Mana** | o que o Conjurador faz quando a reserva acaba | **raciona, alternando ataque comum e Arte**; e fica registrado um teste: a reserva é pequena demais para os combates? (§0.7) |
@@ -407,6 +409,25 @@ ação começa junto. De quebra, isso deixa a frase "entra no Tick 0" da caixa d
 como ele está, e N1 a remove: os níveis de E1 voltam para os períodos 4, 5, 6 e 7 do catálogo, com
 m.m.c. 30 entre 5 e 6 e 42 entre 6 e 7 (§0.4 P6).
 
+#### A folga da perseguição: fica como está, e a bateria mede
+
+Com `inicio = T`, o golpe cai em `T + max(Preparo, viagem)` e o primeiro passo da peça só sai no
+avanço seguinte à declaração, em `T+1`. Depois de `V` passos ela chega **durante** o Tick `T+V`, que
+é exatamente o Tick em que o golpe vence: **quem persegue chega e bate no mesmo Tick**. Com a régua
+antiga (`inicio = T+1`) o golpe caía em `T+1+V`, um Tick depois da chegada.
+
+**Decidido: não se decide antes de ver número.** A régua fica como está, e a bateria mede. As saídas
+do log que respondem (§2.5 e §2.6):
+
+- a **fração dos golpes que caem no mesmo Tick da chegada**, contra os que caem já dentro do alcance;
+- o **tempo morto do jogador** (do `decl` ao `dano`) separado entre quem perseguiu e quem já estava
+  no alcance, que é onde a folga apareceria como diferença;
+- a **taxa de acerto** dos dois grupos, porque quem chega correndo chega em Corrida, e a Corrida custa
+  −4 de Defesa: se o perseguidor bate e apanha no mesmo Tick, a folga era o que o protegia.
+
+Se o número mostrar que perseguir virou dominante ou virou suicídio, a folga volta como uma exceção
+em `agendaSimultanea`; até lá, não se mexe.
+
 #### N2 e N3 · como o Preparo 0 se resolve (decididas em 02/09)
 
 **Quem tem Preparo 0** é só a classe `leve` (adaga, espada curta, desarmado). Isso parece pouco e não
@@ -531,6 +552,22 @@ de N7: quem já está na briga lê quem está chegando, e não o contrário.
 
 Em uma frase, para a implementação: **ordena-se por (é a primeira declaração desta peça? sim antes de
 não), e dentro de cada grupo pela cadeia daquele grupo.**
+
+#### A peça que entra no meio da cena vira eixo, e não regra
+
+Um reforço que chega, uma invocação, alguém que levanta do chão: quando essa peça declara pela
+primeira vez? **Decidido: não se escolhe uma das três, mede-se as três.** É o eixo **E10** da grade
+(§0.5), com os níveis:
+
+| Nível | O que faz |
+|---|---|
+| **a · declara primeiro no Tick** | quem chega entra na frente de todo mundo, e se compromete sem ver nada |
+| **b · declara no Tick seguinte** | observa o Tick corrente e só age no próximo, como quem levanta do chão já faz (`DELAY_AO_LEVANTAR`) |
+| **c · entra por último** | declara neste Tick, depois de todos, com a maior vantagem de informação da cena |
+
+As três são defensáveis e puxam para lados opostos: (a) pune quem chega, (c) premia, e (b) é a única
+que não mexe na ordem do Tick. Como o efeito é sobre a vantagem de informação de N7, que é justamente
+o que o eixo E9 mede, os dois se cruzam bem e o cruzamento está entre os deliberados da §0.5.
 
 **A resolução é o exato inverso da declaração**, com duas ressalvas que vêm das respostas de 02/09:
 
@@ -810,6 +847,7 @@ em uma linha quando o mestre arrasta.
 | **E6 · política** | 5 (agressivo · cauteloso · tocaiador · guarda-costas · conjurador). A **cega** saiu daqui e virou o eixo E9 (`03-respostas.md` §1.4) | sim |
 | **E7 · obstáculo** | 2 (campo aberto · parede), §0.4 P2, e cai fora se P2 for recusada | sim |
 | **E9 · leitura** | 2 (lê as declarações do Tick, ou não). Aplica-se a qualquer política, e é o que mede N7 | sim |
+| **E10 · quem entra no meio** | 3 (declara primeiro · declara no Tick seguinte · entra por último), §0.46 | sim |
 | **E8 · atribuição de gesto** | 2 (mestre solo · um por PC) | **não**: é leitura do mesmo log |
 | **D1 · perfil de automação** | 2 | **não**: é leitura do mesmo log |
 
@@ -819,14 +857,21 @@ combinações. O orçamento que aperta continua sendo o mesmo da §3: o que se c
 - **Núcleo cruzado: E1 × E2 × E3 = 48 células.** São os três que eu espero que interajam, e a
   previsão da §3 é sobre eles.
 - **Um fator de cada vez em volta da célula-âncora**, somando `níveis − 1` de cada eixo restante:
-  E4 (1) + E5 (17) + E6 (4) + E7 (1) + E9 (1) = **24 células**. Mede o efeito principal de cada um
-  sem cruzá-lo com o resto, e é onde moram as 16 comparações de bandeira da §0.7.
-- **Cruzamentos deliberados**, porque OFAT é cego a interação e há quatro que eu espero de verdade:
-  E1(uníssono) × E3(horda), E1(uníssono) × E4(assimétrico), E2(muito longa) × E4, E5 × E1(uníssono).
-  **4 células.**
-- Total: **76 células**. A 500 repetições, **38.000 batalhas**, mais o reforço de 2.000 nas células
+  E4 (1) + E5 (17) + E6 (4) + E7 (1) + E9 (1) + E10 (2) = **26 células**. Mede o efeito principal de
+  cada um sem cruzá-lo com o resto, e é onde moram as 16 comparações de bandeira da §0.7.
+- **Cruzamentos deliberados**, porque OFAT é cego a interação e há cinco que eu espero de verdade:
+  E1(uníssono) × E3(horda), E1(uníssono) × E4(assimétrico), E2(muito longa) × E4, E5 × E1(uníssono),
+  e **E9 × E10**, porque os dois mexem na mesma coisa (quem vê o quê antes de declarar).
+  **5 células.**
+- Total: **79 células**. A 500 repetições, **39.500 batalhas**, mais o reforço de 2.000 nas células
   de cauda (as de E4 e a de uníssono com horda). Pela medição da `03-respostas.md` §4.2, isso é da
   ordem de 30 segundos de máquina. A justificativa das 500 e das 2.000 é a da §3 e não muda.
+
+**A previsão quantitativa de E1 continua sem base até o piloto rodar.** A §3 prevê quantas colisões
+cabem "numa batalha de 37 a 47 Ticks", e esses 37 a 47 vieram da R2 §D1, que mediu a bancada no
+preset `REGRAS_PGR`, **em outro sistema de tempo e sem mapa** (`03-respostas.md` §4.3b). A previsão
+qualitativa (uníssono colide sempre, coprimo quase nunca) não depende disso; a quantitativa só terá
+número depois da célula piloto da §0.10.
 
 ---
 
@@ -1044,9 +1089,11 @@ suficiente para gerar penalidade de ferimento.
 - **A posição entra no retrato** (foi extensão minha, aceita): sem isso o `empurrao-elemental` faria
   a distância que uma folha lê depender de qual cartão o mestre abriu primeiro, e a ordem de
   resolução voltaria a mudar número.
-- **O retrato precisa sobreviver a recarregar a página.** A R2 §B mostra que fechar a caixa no meio é
-  o caso comum, e cinco paradas já deixam estado pela metade. Recomendo uma coluna
-  `encontros.retrato jsonb`, na mesma migração da máscara (item 7), em vez de memória.
+- **O retrato é memória, e não coluna** (§0.8.2). A proposta anterior era uma coluna
+  `encontros.retrato jsonb` para ele sobreviver a recarregar a página, e ela foi recusada pelo
+  orçamento do item F: seria uma gravação por Tick. Em troca, **a tela avisa quem tentar recarregar
+  ou sair no meio da fase de resolução**, o que estreita a janela sem custar nada. A migração 29
+  perde essa coluna e fica só com a máscara.
 - **N3 vira caso particular disto:** quem caiu na fase 3 estava de pé no retrato.
 
 **Prova.** `test-grid-simultaneo.mjs`: as duas adagas saem com −4 e nada mais. Detalhe na **§0.46**.
@@ -1081,7 +1128,7 @@ inclusive para quem vê stats**: a pontaria é segredo do jogo, não do papel.
   não apagado: a migração 29 deve dizer o que mudou e por quê.
 - Fica como **melhoria futura** um teste para esconder as intenções, que é o que devolve ao ogro a
   opção de disfarçar para onde vai o martelo. Anote-o junto do editor de cenário (`Pendencias.md` I5).
-- A migração 29 leva junto a coluna `encontros.retrato` do item 6.
+- A migração 29 **não** leva mais a coluna `encontros.retrato`: o retrato ficou em memória (§0.8.2).
 
 **Prova.** Consulta de conferência dentro da própria migração, como nas anteriores. Detalhe na
 **§0.47** e na **§0.48**.
@@ -1322,7 +1369,7 @@ O alvo é que nenhuma das mudanças mexa nesse número.
 | **N3** · o golpe de quem caiu | **0** | idem, `golpeMaisCedo` é leitura de memória |
 | **N4** · a ordem de declaração | **0** | é um comparador sobre a lista que já está em memória |
 | **N5** · fases e ordem inversa | **0** | reordena **quando** as coisas acontecem; não cria acontecimento novo |
-| **N6** · o retrato | **0 se em memória** · 1 se persistido | **é o único ponto de atrito, e está na pergunta 7 abaixo** |
+| **N6** · o retrato | **0** | memória, por decisão (§0.8.2). O aviso de saída também é zero: é tela |
 | **N7 e N8** · a máscara | **0** | é `case ... end` dentro da view; o custo é do Postgres na leitura que já acontece |
 | **N8** · `acao.mirado` | **0** | é um campo a mais no `jsonb` da declaração, dentro de um `update` que já existe |
 | **N8 na tela** · o rastro | **0** | pintura |
@@ -1331,8 +1378,9 @@ O alvo é que nenhuma das mudanças mexa nesse número.
 | As 9 bandeiras de regra publicada | **0** | todas mudam aritmética **dentro** da resolução, que já grava. `margem` muda o número do dano; `gate` pode zerá-lo; `bloqueio` muda a Defesa comparada. Nenhuma acrescenta uma escrita, algumas **tiram** (o gate que zera o dano dispensa o `update` de `pv_atual`) |
 | `porRodada` | **0 em 5 de cada 6 Ticks** | ver §0.8.4 |
 
-**Onze das quinze bandeiras e todas as oito regras novas acrescentam zero.** Os três pontos que não
-são zero por construção estão detalhados abaixo, e nenhum deles fica no caminho do avanço comum.
+**Todas as oito regras novas e treze das quinze bandeiras acrescentam zero.** As duas que não são
+zero por construção (a expiração de condições e o `porRodada`) estão detalhadas abaixo, e nenhuma
+delas fica no caminho do avanço comum.
 
 ### 0.8.2 O retrato de N6 é leitura em memória
 
@@ -1341,11 +1389,17 @@ declaração a partir do que **já está em `COMBS`, `TOKENS` e `RESUMO`**, e li
 Nenhuma consulta, nenhuma gravação.
 
 A especificação anterior propunha uma coluna `encontros.retrato jsonb` para o retrato sobreviver a
-recarregar a página. **Isso viola este orçamento**, porque seria uma gravação por Tick, e a §0.8.1
-diz zero. A alternativa é o retrato ser só memória e a recarga no meio da fase 3 perder o retrato,
-refazendo-o a partir do estado corrente (o que significa que as resoluções já aplicadas naquele Tick
-entram na base das que faltam, e a garantia de N6 vale só para elas). É um erro limitado e da mesma
-família dos cinco que a R2 §B já registrou, e **é decisão sua: pergunta 7 abaixo.**
+recarregar a página, e **isso violaria este orçamento**, porque seria uma gravação por Tick.
+**Decidido: memória, e a tela avisa na saída.**
+
+- O retrato vive na página. Recarregar no meio da fase de resolução o perde e o refaz a partir do
+  estado corrente, o que significa que as resoluções já aplicadas naquele Tick entram na base das que
+  faltam. É um erro limitado e da mesma família dos cinco que a R2 §B já registrou.
+- Para estreitar a janela sem custar Tick, **a tela avisa quem tentar recarregar ou sair no meio da
+  fase de resolução** que há golpes por resolver. É aviso de saída, e não gravação nem trava de
+  banco: zero idas ao banco, zero espera, e o botão ⏭ já está desligado nesse instante de qualquer
+  forma (`instanteDeGolpe`, `grid.astro:4174`), então o aviso e o botão contam a mesma coisa ao
+  mestre por dois caminhos.
 
 ### 0.8.3 O custo da expiração de condições (Q7)
 
@@ -1417,7 +1471,7 @@ comum, esta linha vira a primeira coisa a consertar depois.
 | **Paralelismo** | a semente já é `hash64(semente_mestre, cenario_id, repeticao)` (§2.4), ou seja **cada batalha é independente de todas as outras por construção**. Um processo recebe uma faixa de índices de batalha, calcula as próprias sementes e escreve o próprio arquivo `.jsonl`; nada é compartilhado e nada precisa de trava. Os arquivos são concatenados no fim, e a ordem entre eles não importa porque cada linha carrega o `b` da batalha |
 
 **Um número para dimensionar:** a §2.5 estima 100 a 150 registros por duelo, ~120 bytes cada. Uma
-batalha guarda algo entre 12 e 18 KB em memória antes de gravar, e a bateria inteira de 38.000
+batalha guarda algo entre 12 e 18 KB em memória antes de gravar, e a bateria inteira de 39.500
 batalhas gera da ordem de 500 MB de log completo. Por isso a §2.5 já previa dois níveis de saída:
 log completo para uma amostra declarada, contadores agregados para todas.
 
@@ -1456,14 +1510,14 @@ coluna diz o estado de cada uma.
 |---|---|---|---|
 | 1 | O teste-espelho compara o dado rolado? A `03` §1.1.1 registra "Decidido em 02/09: semeia o `d6`", e a §6.1 do mesmo arquivo continua fazendo a pergunta | `03` §1.1.1 × §6.1 | **fechada:** a §6.1 passou a dizer RESPONDIDA e a apontar para a §1.1.1 e para o item 12 da §0.6.1 |
 | 2 | O golpe fora de alcance (V5) vira regra? A `03` §3.1 registra a decisão na própria linha do invariante, e a §6.3 continua perguntando | `03` §3.1 × §6.3 | **fechada:** a §6.3 passou a dizer RESPONDIDA |
-| 3 | Qual é a rota da linha de base? A `02` §0.7 registra "Decidido: bandeiras, uma bateria mede os dois", e a `03` §2.4 apresenta as duas rotas como **DECISÃO SUA** e não escolhe | `02` §0.7 × `03` §2.4 | **aberta**, e é a mais consequente: ela decide a §C inteira (uma bateria ou duas, um piloto ou dois) |
+| 3 | Qual é a rota da linha de base? A `02` §0.7 registra "Decidido: bandeiras", e a `03` §2.4 apresenta as duas rotas como **DECISÃO SUA** e não escolhe | `02` §0.7 × `03` §2.4 | **fechada:** a rota é a **B**, confirmada no chat, e a grade oficial e o piloto único estão na §0.10. A `03` §2.4 ganhou a nota |
 | 4 | E6 tem cinco ou seis políticas? A `03` §1.3 responde "seis" e a §1.4, três parágrafos abaixo, transforma a cega em interruptor e devolve o eixo a cinco | `03` §1.3 × §1.4 | **fechada:** são **cinco**, a §1.3 foi corrigida e o 02 §0.5 já estava certo |
-| 5 | A grade tem 60 ou 76 células? A `03` §1.2 responde "60" e a `02` §0.5 tem 76, depois de E5 ir a 18 perfis | `03` §1.2 × `02` §0.5 | **fechada:** vale sempre a §0.5 do 02, e a §1.2 ganhou a nota dizendo o que mudou |
+| 5 | Quantas células tem a grade? A `03` §1.2 responde "60", e ela cresceu duas vezes depois disso | `03` §1.2 × `02` §0.10 | **fechada:** a grade oficial é a da **§0.10**, com 79 células, e a `03` §1.2 ganhou a nota dizendo o que mudou |
 | 6 | N5 fica de fora da linha de base? A `03` §2.4 diz que sim "de qualquer jeito", e o 02 §0.7 já resolve com a bandeira cobrindo só a ordem inversa | `03` §2.4 × `02` §0.7 | **fechada:** a linha da §2.4 foi corrigida |
-| 7 | O retrato de N6 é gravado ou é memória? O item 6 da §0.6.1 propõe a coluna `encontros.retrato jsonb`, e a §0.8.1 proíbe qualquer gravação nova no avanço | `02` §0.6.1 item 6 × §0.8.1 | **aberta**, e é consequência do orçamento de tempo. Está na pergunta 7 do chat |
+| 7 | O retrato de N6 é gravado ou é memória? O item 6 da §0.6.1 propunha a coluna `encontros.retrato jsonb`, e a §0.8.1 proíbe gravação nova no avanço | `02` §0.6.1 item 6 × §0.8.1 | **fechada:** memória, e a tela avisa na saída (§0.8.2). A migração 29 perdeu a coluna |
 | 8 | O cabeçalho lista como abertas as perguntas 2, 4 e 5 da `03`, mas as 1 e 3 estavam decididas no corpo da `03` e ainda abertas na §6 dela | `02` cabeçalho × `03` §6 | **fechada** pelas linhas 1 e 2 desta tabela |
 
-**Seis fechadas, duas abertas**, e as duas abertas dependem de resposta do chat, não de mais análise.
+**As oito estão fechadas.** As duas últimas dependiam de resposta do chat, e ela veio.
 
 Duas observações que a varredura deixou, e que valem para as próximas rodadas:
 
@@ -1473,6 +1527,73 @@ Duas observações que a varredura deixou, e que valem para as próximas rodadas
 - **A `03` é um relatório de rodada, e não um documento vivo.** Ela responde perguntas de um instante,
   e envelhece por natureza. O canônico é este arquivo; a `03` é citada e não mandada. As notas
   acrescentadas nela dizem isso em cada ponto que envelheceu.
+
+---
+
+## 0.10 A grade oficial e a célula piloto, pela rota B
+
+A rota escolhida é a **B**: N1 a N6 entram na mesa já chaveadas, somando-se às de D2, e **uma bateria
+só** mede o perfil cheio e cada regra isolada. Isso torna a grade da §0.5 a grade oficial e o piloto
+um só.
+
+### 0.10.1 A grade oficial
+
+| | |
+|---|---|
+| Núcleo cruzado | E1 (4) × E2 (4) × E3 (3) = **48 células** |
+| Um fator de cada vez, em volta da âncora | E4 (1) + E5 (17) + E6 (4) + E7 (1) + E9 (1) + E10 (2) = **26 células** |
+| Cruzamentos deliberados | 5 |
+| **Total** | **79 células** |
+| Repetições | 500 por célula, e 2.000 nas de cauda |
+| **Batalhas** | **39.500**, mais o reforço |
+| Tempo de máquina | da ordem de 30 segundos, pela §4.2 da `03-respostas.md` |
+
+**A célula-âncora**, de onde pendem as 26 comparações de um fator de cada vez: 3×3 peças, E1 uníssono,
+E2 na distância média (18 hexes), campo aberto, política Agressiva, com leitura, quem entra no meio
+declarando no Tick seguinte, e o perfil de bandeiras cheio.
+
+### 0.10.2 O piloto, um só
+
+**A configuração:** a célula-âncora, e mais as duas células extremas (uníssono com horda, e o alvo
+mais rápido) para conferir se o CV se comporta igual nelas.
+
+| | |
+|---|---|
+| Onde | célula-âncora |
+| Quantas batalhas | **2.000** (o erro da estimativa do próprio CV é da ordem de `1/√(2n)`, ou ±1,6%, e sobra amostra para uma primeira leitura do p95) |
+| O que se mede | o CV de **paradas do mestre por batalha**, que é a métrica principal, e não a duração |
+| Mais | as duas células extremas, 500 batalhas cada |
+| Quando | **depois** de N1 a N8 e das bandeiras estarem no motor: a duração muda com N1, e um CV medido antes descreve outro jogo |
+
+**A regra de decisão, escrita antes de rodar:**
+
+1. `n = teto( (1,96 × CV / 0,05)² )`, arredondado para a centena de cima;
+2. piso de 400, que é a regra do p95, mesmo que o CV medido dê menos;
+3. se o maior CV das três células exceder o da âncora em mais de 0,15, **usa-se o maior para todas**,
+   porque n desigual entre células desequilibra a comparação que é o objetivo da grade;
+4. o `n` resultante substitui as 500 em toda a grade, e as 2.000 das células de cauda são
+   recalculadas pela mesma proporção.
+
+**O piloto também é o que dá base à previsão quantitativa de E1.** Os "37 a 47 Ticks" que a §3 usa
+vieram da bancada, em outro sistema de tempo e sem mapa; o piloto é a primeira medida de duração de
+batalha **no Simultâneo com geometria**, e é dela que sai quantas colisões cabem numa batalha.
+
+### 0.10.3 O que fica sem medida por causa de N5
+
+A bandeira `n5` cobre **só a ordem inversa** da resolução, cujo desligado é real e observável (a ordem
+da faixa, por Tick). **As três fases entram fixas**, porque o estado desligado delas não é um
+comportamento, é a ausência de uma regra (`03-respostas.md` §2.1). Fica sem número, então:
+
+| O que não é medido | Por quê importa |
+|---|---|
+| **O que a fase de declaração separada comprou** | não há contra-exemplo: hoje o mestre declara e resolve intercalado, na ordem que quiser, e "intercalado" não é uma regra, é a falta de uma. Qualquer versão desligada seria invenção minha, e o número mediria a distância até ela |
+| **Quanto da carga do mestre vem de a resolução estar agrupada no fim do Tick** | é plausível que agrupar as resoluções mude a sensação de interrupção sem mudar a contagem de paradas (dez caixas seguidas contra dez caixas espalhadas). A bateria conta as paradas e o pico por Tick; o que ela **não** consegue é comparar com o espalhado |
+| **O valor de N7 contra um mundo sem fases** | E9 mede ler contra não ler, e os dois lados têm fases. Se a vantagem de informação só existe porque a declaração é uma fase, o eixo E9 mede o tamanho da vantagem e não a existência dela |
+
+**O que isso não impede:** o pico de paradas num Tick, a distribuição de N(T), a colisão de agenda e
+todas as métricas da §2.6 continuam medidas normalmente, porque nenhuma delas precisa do
+contrafactual. E as outras cinco regras do núcleo (N1, N2, N3, N4 e N6) têm cada uma o seu número
+isolado pelo deixe-uma-de-fora.
 
 ## 1. O que eu preciso de você
 
@@ -1983,7 +2104,7 @@ todos os golpes.
 
 ~~Com E1×E2×E3×E4 são **72 células**; com E5 em dois níveis, 144.~~ **Superado:** a tabela de eixos
 acima é a proposta original, e a §0.5 tem a valendo (E2 ganhou um quarto nível, entraram E7 e E9,
-E5 foi a 18 perfis e E6 ficou em 5). A grade é de **76 células**. A justificativa das repetições,
+E5 foi a 18 perfis, E6 ficou em 5 e entrou o E10). A grade é de **79 células** (§0.10). A justificativa das repetições,
 logo abaixo, não depende do número de células e continua valendo inteira.
 
 **Quantas repetições, e por quê.** O número não sai de "1000", sai de duas contas:
@@ -2000,7 +2121,7 @@ logo abaixo, não depende do número de células e continua valendo inteira.
   Ticks vazios têm **uma observação por Tick**, não por batalha: uma célula de 500 batalhas de 45
   Ticks dá 22.500 observações. Essas métricas já estão saturadas bem antes de 500.
 
-~~Total da grade base: 72 × 500 = **36.000 batalhas**~~, e pela §0.5 são **76 × 500 = 38.000**, mais o
+~~Total da grade base: 72 × 500 = **36.000 batalhas**~~, e pela §0.10 são **79 × 500 = 39.500**, mais o
 reforço da cauda. Pela R2 §D1 isso seriam
 segundos de máquina na bancada; o harness com mapa será mais caro (a R2 §D3 registra o custo de
 `caminharHex` como **NÃO MEDIDO**), e mesmo dez vezes mais caro continua sendo minutos. **O
@@ -2044,6 +2165,7 @@ Seção obrigatória, e é a que decide o quanto o resto vale.
 | **A carga do sistema P/G/R e do normal** | fora por decisão sua | a bancada já mede o P/G/R sem mapa | já existe |
 | **O valor da informação de N7 para uma pessoa** | fora | teste de mesa. O harness só consegue a diferença entre uma política que lê e a mesma cega (eixo E9), e esse número mede a qualidade das minhas cinco regras de leitura, não o valor da informação para quem joga. Um humano vê o que nenhuma regra minha codifica: que o inimigo está juntando gente num canto, que o companheiro vai morrer | muito mais barato: uma sessão observada, contando quantas vezes um declarante tardio muda de escolha depois de ver |
 | **A legibilidade do rastro de N8** | fora | nenhum instrumento de código: é desenho de tela, e o harness não tem tela | idem, a mesma sessão |
+| **A latência do Supabase de verdade** | **fora, e adiada por decisão** | uma mesa real com uma cena de bancada, cronometrando o avanço. **Decidido em 02/09: fica para depois do harness.** Até lá as métricas saem em Ticks e em gestos, e não em segundos, e esta é a maior lacuna conhecida do conjunto: sem ela, "110 ms por Tick" é o custo da página e não o que o jogador espera | mais barato que o harness, e independente dele |
 | **O tempo que a fila de declaração de N4 custa ao mestre** | fora | cronometrar a fase de declaração com a fila ordenada na tela e sem ela, e contar quantas vezes o mestre reordena à mão (§0.49) | idem, a mesma sessão |
 
 ---
