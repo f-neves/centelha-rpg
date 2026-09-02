@@ -36,6 +36,8 @@ como está, porque o que cada opção significava continua sendo a leitura das c
 | **P2** | a parede | **entra, e vira funcionalidade do Grid** |
 | **E1(d)** | o nível dos quatro períodos carrega arremessador | **sim, os quatro, e a mistura é declarada** |
 | **D4b** | quando a fuga está consumada | **quando ninguém consegue aproximar**: 10 Ticks seguidos sem nenhum perseguidor diminuir a distância |
+| **N2** | o golpe de Preparo 0 cala a cena no Tick em que é declarado | **a guarda de declaração passa a olhar `desde`**, e não o Tick do golpe: só cala quem foi declarado antes deste Tick (§0.45) |
+| **N3** | o golpe de quem caiu no mesmo Tick ainda sai? | **sai, se já tinha vencido**; o agendado para o futuro morre com a peça (§0.45) |
 
 Q13 (o repertório declarável) não foi perguntada porque D3 a responde: uma política declarada como
 dado só pode declarar o que o Grid aceita, e o Grid aceita **6 coisas** (atacar em 4 manobras, mover
@@ -339,36 +341,79 @@ ação começa junto. De quebra, isso deixa a frase "entra no Tick 0" da caixa d
 como ele está, e N1 a remove: os níveis de E1 voltam para os períodos 4, 5, 6 e 7 do catálogo, com
 m.m.c. 30 entre 5 e 6 e 42 entre 6 e 7 (§0.4 P6).
 
-#### O problema que N1 abre: o Preparo 0 golpeia no Tick em que foi declarado
+#### N2 e N3 · como o Preparo 0 se resolve (decididas em 02/09)
 
-Com `inicio = T`, uma arma leve (Preparo 0, `offs: [0]`) declarada no Tick T tem o golpe **no próprio
-Tick T**. Isso é coerente com o que Preparo 0 quer dizer, e bate de frente com duas coisas que já
-existem:
+**Quem tem Preparo 0** é só a classe `leve` (adaga, espada curta, desarmado). Isso parece pouco e não
+é: das 309 criaturas de `monsters-mesa.json`, **159 atacam com ataque de classe `leve`** (51%: 159
+leve, 97 média, 48 pesada, 3 arte, 1 haste, 1 distância), e todo mundo que briga sem arma é leve. É
+o caso mais comum da mesa.
 
-1. **`grupoDaVez` cala a cena.** Ela devolve lista vazia enquanto houver golpe devido:
-   `if (g != null && g <= t) return []` (`grid.astro:4119`). O primeiro duelista de adaga que declarar
-   no Tick T cria um golpe devido em T, e **ninguém mais consegue declarar naquele Tick**. O segundo
-   duelista perde a vez.
-2. **É o problema dos 97%, voltando pela outra porta.** `faseDeQuemVaiAgir`
-   (`combate-tempo.ts:405-425`) foi escrita exatamente para o Preparo 0: sem ela, quem o mestre
-   resolvia por último ganhava 97% dos duelos de iguais. Ela conserta a leitura da **Defesa**, e não
-   a ordem em que os golpes caem. Se o golpe de Preparo 0 resolve dentro do Tick da declaração, quem
-   declara primeiro bate primeiro, e a ordem de digitação volta a decidir o duelo.
+**O que quebrava.** Dois duelistas de adaga livres no Tick 1: `grupoDaVez()` devolve os dois, A
+declara com `golpes: [1]`, e na chamada seguinte `golpeMaisCedo()` = 1 com `tickDaVez()` = 1, então a
+guarda `if (g <= t) return []` (`grid.astro:4119`) devolve lista vazia e **B não pode declarar**. O
+mestre resolve o golpe de A primeiro, e B declara depois, sabendo se apanhou, quanto e se está de pé.
+A janela de declaração cega, que é o ponto inteiro do Simultâneo, deixa de existir. E se o golpe de A
+derruba B, B perde a ação inteira, porque `golpeMaisCedo` pula quem está no chão.
 
-Três saídas, e a escolha é de regra:
+**O que não quebrava, e eu tinha exagerado:** a Defesa. `faseDeQuemVaiAgir` está ligado na folha
+(`grid.astro:7449`, alimentando `dvDe()` em L7465): contra um alvo que ainda não declarou, a folha
+presume a fase pela regra em vez de ler a agenda vazia. O problema dos 97% continua resolvido. O que
+aquela função nunca cobriu, e diz no próprio comentário, é a **ordem de ação**.
 
-- **(a) O golpe nunca cai antes de T+1**: `golpe = max(T + 1, T + Preparo)`. A ação e a guarda
-  começam em T como você decidiu, e só o instante do impacto ganha o piso. Preparo 0 e Preparo 1
-  passam a golpear no mesmo Tick, o que apaga a diferença entre a adaga e a espada longa no primeiro
-  golpe (mas não no período, que continua 5 contra 6).
-- **(b) Preparo mínimo 1 no simultâneo**: a régua da arma leve muda de `P0/G1/R4` para `P1/G1/R4`, e
-  o ciclo cresce de 5 para 6. Mexe no catálogo, não no motor.
-- **(c) A ordem dentro do Tick muda**: todos declaram, e só depois os golpes de T resolvem.
-  `grupoDaVez` deixa de bloquear por golpe do **próprio** Tick e passa a bloquear só por golpe de Tick
-  anterior. Preserva a simultaneidade de verdade (as duas adagas se acertam no mesmo instante) e é a
-  mudança mais invasiva das três, porque o ⏭ e o cartão da faixa dependem daquela guarda.
+**Por que apareceu agora.** Com `inicio = T+1`, o golpe mais cedo possível era T+1, então nenhum
+golpe vencia dentro do Tick em que se declarava, e a guarda nunca disparava na janela de declaração.
+N1 tirou um Tick de folga, e era essa folga que mantinha a janela limpa.
 
-Fica **em aberto**, e é a única coisa que trava o passo 5 do laço da §2.2.
+---
+
+**N2 · A guarda de declaração passa a olhar `desde`, e não o Tick do golpe.**
+
+A intenção da guarda está escrita no comentário dela (`grid.astro:4110-4118`): *"o braço que foi
+declarado três Ticks atrás chega antes da próxima escolha de quem quer que seja"*. Golpe do passado
+tem precedência sobre escolha nova. O `g <= t` expressava isso corretamente enquanto a régua
+garantia que todo golpe devido em T fora declarado em T−1 ou antes; N1 quebrou a garantia, não a
+intenção. A correção é dizer a intenção direto:
+
+- **`grupoDaVez` bloqueia só por golpe de ação declarada antes deste Tick** (`acao.desde < t`). O
+  campo `desde` já existe em `Acao` e já é lido no avanço (`grid.astro:4917`).
+- **`instanteDeGolpe`, que desliga o ⏭, continua olhando todos os golpes devidos**, inclusive os
+  declarados neste mesmo Tick. O relógio não anda enquanto houver golpe por resolver, que é o
+  comportamento certo e não muda.
+
+São duas perguntas diferentes que hoje usam a mesma função: "alguém ainda pode escolher?" e "o mundo
+pode andar?". Elas passam a ter dois leitores.
+
+O que isso produz no Tick T: **todos os livres declaram às cegas, e só então todos os golpes devidos
+em T resolvem**. Não toca no catálogo, não toca na anatomia, não muda o período de arma nenhuma.
+
+**N3 · O golpe que já venceu sai mesmo se quem o deu caiu.**
+
+Se A e B se acertam no mesmo Tick e o golpe de A derruba B, o golpe de B **sai assim mesmo**: os dois
+braços já estavam no ar, e a morte mútua é possível. Hoje não é o que acontece: `golpeMaisCedo` pula
+quem está `noChao` (`grid.astro:4164`), com a razão escrita ao lado, "o gesto morre com quem o fazia,
+e deixar a agenda dele travando a cena obrigaria a mesa a resolver um golpe que nunca vai sair".
+
+Essa razão continua valendo, e a linha exata que ela desenha é:
+
+| Situação | O golpe sai? |
+|---|---|
+| a peça cai e tinha golpe **devido neste Tick** (`g ≤ T`) | **sim**: o braço já estava no ar |
+| a peça cai e tinha golpe **agendado para o futuro** (`g > T`) | **não**: morre com ela, como hoje |
+
+Ou seja, `golpeMaisCedo` deixa de pular quem caiu **apenas** para os golpes já vencidos. Nenhum golpe
+que nunca vai sair fica travando a cena, que era o medo do comentário original.
+
+**A consequência que compra o desenho inteiro:** com N2 e N3 juntos, **a ordem em que o mestre
+resolve os cartões deixa de mudar o resultado**. Ninguém declara sabendo do golpe do outro (N2) e
+ninguém deixa de golpear porque o outro resolveu primeiro (N3). Isso é o que "simultâneo" promete, e
+é também o que faz o harness ser determinístico de verdade: a §2.4 podia garantir ordem estável de
+iteração, mas não podia garantir que a ordem não importasse. Agora pode.
+
+**O que essas duas mudanças tocam**, para dimensionar: `grupoDaVez` e `golpeMaisCedo` em
+`grid.astro` (as duas dentro de vinte linhas uma da outra), mais `agendaSimultanea` e
+`decideEmValeDepois` por causa de N1. Nada em `hex.ts`, nada em `quase-acerto.ts`, nada no catálogo.
+As três entram no mesmo balde do Q16: mudanças de regra que vão para a mesa, com a medição decidindo
+a ordem.
 
 ### 0.5 A grade, refeita com as respostas
 
@@ -633,9 +678,9 @@ apontada em cada passo.
 | 2 | **Passo de todas as peças em trajeto**, na ordem de `filaDaCena`. Para cada uma: pula quem está no chão, pula quem não tem `mov.auto`, pula quem declarou neste mesmo Tick (`desde + 1 > T`), calcula `passos` pela escala, restringe o passo se está na fase de Golpe (`passoDoGolpe`), caminha com veto de ocupação, e repete com veto frouxo se não aproximou | **igual**, linha por linha (L4912-4966). É o passo que mais depende da extração fiel |
 | 3 | **Encerrar trajeto ou re-projetar.** Quem chegou ao alcance, ou atravessou, perde o `mov`; quem não chegou passa por `reprojetarAgenda` com a viagem que sobrou medida no passo real | **igual** (L4984-5012) |
 | 4 | **Decisão de quem está livre**: as criaturas em automático por `decisaoAutomatica`, os PCs pela política de D3 | **diferente**. Hoje só as criaturas decidem dentro do avanço (`decidirAutomaticas`, L5017); os PCs decidem quando o humano clica, em qualquer momento. Como `agendaSimultanea` faz toda decisão valer a partir de `T+1` (`combate-tempo.ts:797`), decidir aqui é equivalente a um humano declarando durante o Tick T |
-| 5 | **Vencimento e resolução dos golpes com Tick ≤ T**, em ordem de `filaDaCena` | **diferente na forma, igual na posição**. No Grid isto não é parte do avanço: é o cartão da faixa, clicado depois. Mas o ⏭ fica desligado enquanto houver golpe devido (L4324-4326), então a sequência real é: relógio anda, peças andam, criaturas decidem, e **só então** os golpes daquele Tick são resolvidos, antes do próximo ⏭. O harness resolve no mesmo ponto |
+| 5 | **Vencimento e resolução dos golpes com Tick ≤ T**, em ordem de `filaDaCena`, incluindo os de quem caiu neste mesmo Tick (N3) | **diferente na forma, igual na posição**. No Grid isto não é parte do avanço: é o cartão da faixa, clicado depois. Mas o ⏭ fica desligado enquanto houver golpe devido (L4324-4326), então a sequência real é: relógio anda, peças andam, todo mundo decide, e **só então** os golpes daquele Tick são resolvidos, antes do próximo ⏭. Com **N2** essa ordem deixa de ser acidente da interface e vira regra: nenhum golpe declarado no Tick T cala a declaração de ninguém no Tick T |
 | 6 | **Efeitos de Arte** (mordidas, saídas, vencimentos), se Q10 disser que Artes entram | **igual à posição** (L5021), com a diferença de que a caixa de efeito e a de saída viram política |
-| 7 | **Chão e mortes.** Vida a zero sai da fila; quem levantou paga os 5 Ticks de `DELAY_AO_LEVANTAR` | **diferente na hora**: hoje `conferirChao` roda a cada repintura (L4207), o que é "quando a tela desenhar". No harness roda uma vez por Tick, no fim |
+| 7 | **Chão e mortes.** Vida a zero sai da fila; quem levantou paga os 5 Ticks de `DELAY_AO_LEVANTAR`. Quem caiu no passo 5 sai **depois** de todos os golpes de T resolverem (N3) | **diferente na hora**: hoje `conferirChao` roda a cada repintura (L4207), o que é "quando a tela desenhar". No harness roda uma vez por Tick, no fim, e é isso que faz a morte mútua ser possível |
 | 8 | **Expiração de condições** (o `ate`), conforme Q7 | **diferente**: no Grid isto não acontece, o campo `ate` é escrito e nunca lido |
 | 9 | **Fim de batalha** (D4) | **diferente**: no Grid não existe |
 
@@ -682,6 +727,12 @@ e a #8 aparecem duas vezes porque se partem: a escolha é política, a conta é 
 essa invenção junto.
 
 ### 2.4 Determinismo
+
+**A ordem de resolução deixou de importar.** Com N2 e N3 (§0.45), ninguém declara sabendo do golpe do
+outro e ninguém deixa de golpear porque o outro foi resolvido primeiro. Isso muda a natureza do que
+esta seção precisa garantir: antes ela podia dar ordem de iteração estável, mas não podia dar que a
+ordem fosse irrelevante. Agora ela é irrelevante dentro do Tick, e a estabilidade da fila serve só
+para o log sair sempre no mesmo arranjo.
 
 **A semente.** Uma por batalha, derivada e não sorteada:
 
