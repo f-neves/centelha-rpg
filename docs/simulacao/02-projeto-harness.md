@@ -1,11 +1,36 @@
-# Projeto do harness · o desenho, e o que falta decidir
+# Projeto do harness · o desenho, as decisões e o que implementar
 
-Sobre o commit `df03b44`. Continua `00-diagnostico.md` e `01-diagnostico-carga.md`, citados aqui
-como **R1** e **R2**. Nenhuma linha deste documento foi implementada.
+Escrito em 02/09/2026, sobre o commit `df03b44`. Continua `docs/simulacao/00-diagnostico.md` e
+`docs/simulacao/01-diagnostico-carga.md`, citados aqui como **R1** e **R2**. **Nenhuma linha deste
+documento foi implementada.**
 
-Convenção da seção 1: **bloqueia o começo** = sem a resposta não dá para escrever a primeira linha
-do harness. **Só o resultado** = dá para construir tudo e a resposta entra depois, como parâmetro
-de execução.
+## Como ler isto
+
+O objetivo declarado: simular batalhas do Grid para medir **carga de trabalho e interrupção, com foco
+no mestre**, e não dano nem taxa de vitória. A meta é que o Grid pareça um videogame, com muitas
+opções para o jogador e nenhuma conta para o mestre.
+
+O documento foi escrito em três camadas, e a ordem de leitura depende do que você veio fazer:
+
+| Se você veio para | Leia |
+|---|---|
+| **implementar as mudanças de regra na mesa** | a **§0.6**, que é a especificação. Passe pela §0.45 a §0.49 quando a §0.6 mandar, para entender o porquê de cada uma |
+| entender o que foi decidido e por quê | a **§0** inteira (§0.1 a §0.6) |
+| construir o harness, depois | as **§2 a §5** |
+| saber o que foi perguntado e que alternativas existiam | a **§1**, que é histórico: todas foram respondidas |
+
+**As oito regras novas (N1 a N8) não são propostas: são decisões tomadas.** Elas mudam o sistema
+Simultâneo do combate, e entram no Grid **antes** de o harness ser escrito. O que elas tocam está
+listado item a item na §0.6, com o estado de hoje, o estado novo e a prova de cada um.
+
+Convenções: **⚑** marca uma invenção do harness, ou seja, uma regra de jogo que a simulação está
+criando e que precisa ser lida como escolha, não como achado. A convenção da §1 (**bloqueia o
+começo** contra **só o resultado**) é histórica e vale só para aquela seção.
+
+**Duas instâncias mexem neste repositório.** As mudanças da §0.6 caem em `src/pages/mesa/grid.astro`
+(frente da mesa), em `src/lib/combate-tempo.ts` e `src/data/regras.json` (compartilhados) e numa
+migração nova do Supabase. Vale a regra do `CLAUDE.md`: commitar com pathspec, `git pull --rebase`
+antes, e preferir `Edit` a `Write`.
 
 ---
 
@@ -725,6 +750,295 @@ presente e vira o passado: é a resposta à pergunta "o que essas nove regras co
 
 Os itens 1 a 6 são o núcleo do Tick e se sustentam sozinhos. O 11 é o maior de todos e é o único que
 mexe em cinco arquivos de regra ao mesmo tempo.
+
+### 0.6.1 A especificação, item a item
+
+Cada item traz **hoje**, **passa a ser**, os **cuidados** que eu encontrei olhando o código, e a
+**prova**. As linhas citadas são do commit `df03b44`.
+
+---
+
+#### 1 · N1 · A ação começa no Tick em que é declarada
+
+**Hoje.** `src/data/regras.json → combate.simultaneo.decideEmValeDepois: 1`, com a nota "A ação
+declarada no Tick T começa em T+1". `combate-tempo.ts:778`: `decideEmValeDepois()` devolve
+`SIM?.decideEmValeDepois ?? 1`. `agendaSimultanea` (L794-806): `inicio = tickDecl + decideEmValeDepois()`.
+
+**Passa a ser.** `decideEmValeDepois: 0` e `inicio = tickDecl`. A ação ocupa `T` até `T + ciclo − 1`
+e a peça fica livre em `T + ciclo`. O período entre golpes volta a ser exatamente o `ciclo`.
+
+**Cuidados.**
+- A `decideNota` do `regras.json` e o `Combate_Simultaneo.md:124-127` afirmam o contrário e precisam
+  ser reescritos. O exemplo do arco continua fechando: Preparo 5 declarando no Tick 1 solta a flecha
+  no Tick 6, porque o combate começa no Tick 1 (`derivados.iniciativa.tickDoPrimeiro: 1`).
+- **`grid.astro:4918`** filtra o passo do Tick com `((c.acao)?.desde ?? 0) + decideEmValeDepois() > T`.
+  Com 0 a condição nunca é verdadeira e a guarda vira letra morta; o efeito prático não muda, porque
+  o avanço do Tick T já rodou quando alguém declara em T. **Remova a guarda** em vez de deixá-la
+  inerte, e escreva no comentário por que ela não é mais necessária.
+- A caixa de iniciativa escreve "entra no Tick 0" (`grid.astro:4751`, no texto do `uiConfirmar`), o que já contradizia o
+  `regras.json` (R2 §F#13) e agora contradiz também a régua do Simultâneo. Corrija a frase junto.
+
+**Prova.** `scripts/test-simultaneo.mjs`: espada longa declarada no Tick 1 golpeia no 2 e fica livre
+no 7; cinco declarações encadeadas dão período 5 para leve, 6 para média/haste/distância e 7 para
+pesada. Detalhe e a tabela medida na **§0.45**.
+
+---
+
+#### 2 · N4 · A ordem de declaração
+
+**Hoje.** Só existe `ordemDaFila` (`combate-tempo.ts:399-404`): Tick, iniciativa (desc), Raciocínio
+(desc), carimbo de chegada, nome. Ela é a fila, e continua sendo.
+
+**Passa a ser.** Uma função nova e irmã, `ordemDeDeclaracao(a, b)`, com cinco critérios:
+
+1. **Raciocínio + Prontidão, crescente** (declara primeiro quem tem menos);
+2. Raciocínio, decrescente;
+3. Destreza, decrescente;
+4. a iniciativa rolada, decrescente;
+5. sorteio.
+
+**A chave do critério 1 já existe nos dois lados**, porque a iniciativa do sistema **é**
+`1d6 + Raciocínio + Prontidão` (`regras.json → derivados.iniciativa.soma`):
+
+- **PC:** `attrs.raciocinio + skills.prontidao`, direto da ficha (é o que `rolarIniciativaPC`,
+  `mesa-ficha.ts:132-135`, já soma).
+- **Criatura:** o **fixo da expressão de iniciativa** do bloco (`combate.iniciativa`, do tipo
+  `"1d6 + 6"`). Conferido nas 309: nenhuma dá Prontidão implícita negativa, faixa 0 a 5, distribuição
+  8 com 0 · 183 com 1 · 85 com 2 · 24 com 3 · 8 com 4 · 1 com 5. As 309 **não têm perícia nenhuma**
+  no bloco da mesa, então este é o único caminho.
+
+**Cuidados.**
+- Para extrair o fixo sem rolar dado, `rolarExpr(expr).flat` (`rolagem.ts:34`) já devolve o número
+  certo, mas rola os dados à toa. Uma função pura `fixoDe(expr)` é mais limpa e é uma linha.
+- **O sorteio do critério 5 é a única fonte de acaso do combate fora dos dados.** Na mesa pode ser
+  `Math.random`; no harness precisa vir do fluxo semeado, senão a batalha 743 não replica (§2.4).
+- `regras.json → derivados.iniciativa.empateNoTopo` diz hoje "maior Raciocínio, e persistindo o
+  empate, o dado". A cadeia nova o supera e o texto precisa ser reescrito.
+
+**Prova.** `test-simultaneo.mjs` para a cadeia dos cinco critérios, e uma asserção sobre as 309
+criaturas para a leitura do fixo. Detalhe na **§0.46**.
+
+---
+
+#### 3 · N2 · Golpe declarado no Tick T não cala a declaração de ninguém no Tick T
+
+**Hoje.** `grupoDaVez` (`grid.astro:4107-4126`) faz `const g = golpeMaisCedo(); if (g != null && g <= t) return [];`.
+Com N1, uma arma de Preparo 0 declarada no Tick T tem o golpe **em T**, e o primeiro que declarar
+tira a vez de todos os outros. Só a classe `leve` tem Preparo 0, e **159 das 309 criaturas atacam com
+ataque leve** (51%), mais todo mundo que briga sem arma.
+
+**Passa a ser.** A guarda de **declaração** considera só golpes de ações declaradas **antes** deste
+Tick: `acao.desde < t`. O campo `desde` já existe em `Acao` e já é lido no avanço.
+
+**Cuidados.**
+- **`instanteDeGolpe` (L4174), que desliga o ⏭, continua olhando todos os golpes devidos**, inclusive
+  os declarados neste mesmo Tick. São duas perguntas diferentes que hoje usam a mesma função:
+  "alguém ainda pode escolher?" e "o mundo pode andar?". Precisam de dois leitores.
+- O comentário de L4110-4118 explica a intenção original ("o braço declarado três Ticks atrás chega
+  antes da próxima escolha"). Ela continua valendo; o que muda é a forma de expressá-la. Reescreva o
+  comentário, não o apague.
+
+**Prova.** `scripts/test-grid-simultaneo.mjs`: dois duelistas de adaga, os dois declaram no mesmo
+Tick. Detalhe na **§0.45**.
+
+---
+
+#### 4 · N3 · O golpe que já venceu sai mesmo se quem o deu caiu
+
+**Hoje.** `golpeMaisCedo` (`grid.astro:4163-4170`) pula quem está `noChao`, com a razão escrita ao
+lado: "o gesto morre com quem o fazia, e deixar a agenda dele travando a cena obrigaria a mesa a
+resolver um golpe que nunca vai sair".
+
+**Passa a ser.** Pula `noChao` **apenas para golpes ainda no futuro**. Golpe com `tick ≤ T` sai, mesmo
+que quem o deu tenha caído neste Tick: os dois braços já estavam no ar, e a morte mútua é possível.
+
+**Cuidados.** A função ganha o Tick corrente como parâmetro. Nenhum golpe que nunca vai sair fica
+travando a cena, que era o medo do comentário original, e ele deve ser atualizado para dizer a linha
+nova.
+
+**Prova.** `test-grid-simultaneo.mjs`: morte mútua no mesmo Tick. Detalhe na **§0.45**.
+
+---
+
+#### 5 · N5 · As três fases de um Tick
+
+**Hoje.** Não há fases. O avanço faz relógio, passos e `decidirAutomaticas`; as declarações humanas e
+a resolução dos cartões acontecem entre avanços, em qualquer ordem que o mestre queira.
+
+**Passa a ser.** Todo Tick tem três fases explícitas:
+
+1. **Declaração.** Todos os livres declaram, na ordem de N4. Nenhuma consequência acontece aqui.
+2. **Início.** As ações começam, todas juntas, quando a última declaração entrou.
+3. **Resolução.** As consequências devidas neste Tick acontecem, **na ordem inversa da declaração**:
+   resolve primeiro quem tem mais Raciocínio + Prontidão.
+
+**Cuidados.** N2 é o que implementa a fase 1 no motor; sem ele a fase não fecha. Com N6, a ordem
+dentro da fase 3 **não muda número nenhum**: ela decide só o que se conta primeiro.
+
+**Prova.** `test-grid-simultaneo.mjs`. Detalhe na **§0.46**.
+
+---
+
+#### 6 · N6 · O retrato: penalidade nascida no Tick T só vale em T+1
+
+**Hoje.** A folha lê o estado ao vivo:
+- **ferimento:** `const fer = tierDe(alvo.pv_atual, alvo.pv_max).penDefesa ?? 0` (`grid.astro:7435`),
+  com o `pv_atual` do instante em que a caixa abriu;
+- **Pressão:** `gravarRelogio` (`grid.astro:7200-7205`) soma `pressao += golpes` na ação do alvo **no
+  instante da declaração**, ou seja, dentro da fase 1, valendo já na fase 3 do mesmo Tick.
+
+**Passa a ser.** A fase 3 inteira lê um **retrato** fechado ao fim da fase 1, por peça:
+
+```
+pv          int          para o tier de ferimento
+condicoes   [{id,...}]   as que já existiam antes deste Tick
+pressao     int          a acumulada antes deste Tick
+pos         {q, r}       a posição, para distância e alcance
+```
+
+O que **entra** na conta da fase 3: a escada da **própria ação** (Preparo −2, Golpe −4, Recuperação
+−2 por golpe dado), que sai da agenda deste Tick, mais tudo que já existia antes do Tick.
+O que **não entra**: ferimento, condição, Pressão e queda **nascidos neste Tick**.
+
+O exemplo que fecha a regra: dois duelistas de adaga se atacam no mesmo Tick, e os dois ataques e as
+duas Defesas saem com a penalidade normal de Golpe (−4) e nada mais, mesmo que o primeiro cause dano
+suficiente para gerar penalidade de ferimento.
+
+**Cuidados.**
+- **`defesaPerdida` não muda.** Ela lê a agenda, e a agenda deste Tick é exatamente o que deve contar.
+- **A posição entra no retrato** (foi extensão minha, aceita): sem isso o `empurrao-elemental` faria
+  a distância que uma folha lê depender de qual cartão o mestre abriu primeiro, e a ordem de
+  resolução voltaria a mudar número.
+- **O retrato precisa sobreviver a recarregar a página.** A R2 §B mostra que fechar a caixa no meio é
+  o caso comum, e cinco paradas já deixam estado pela metade. Recomendo uma coluna
+  `encontros.retrato jsonb`, na mesma migração da máscara (item 7), em vez de memória.
+- **N3 vira caso particular disto:** quem caiu na fase 3 estava de pé no retrato.
+
+**Prova.** `test-grid-simultaneo.mjs`: as duas adagas saem com −4 e nada mais. Detalhe na **§0.46**.
+
+---
+
+#### 7 · N7 e N8 · A máscara ao avesso (migração 29)
+
+**Hoje.** `combate_visao` mascara a ação com
+`case when m1.meu or v.stats then c.acao else c.acao - 'arma' - 'alvo' end`
+(`supabase/migracao-27.sql:116-117`), escondendo arma e alvo de quem não vê stats. E o `mov`, que o
+Simultâneo acrescentou depois, tem um `alvo` **dentro** dele que sobrevive à máscara, porque
+`jsonb - texto` só remove chaves de topo.
+
+**Passa a ser.** O gesto corporal é público, a pontaria não é.
+
+| Chave | Hoje | Com N8 |
+|---|---|---|
+| `arma` | escondida | **visível sempre** |
+| `alvo` do corpo a corpo | escondida | **visível** |
+| `alvo` de tiro, arremesso e Arte | escondida | **continua escondida**, até o golpe resolver |
+| `mov` e `mov.alvo` | visível por acidente | **visível de propósito**: perseguir é gesto público |
+
+A view é SQL e não consulta `armas.json`, então a **declaração passa a carregar a marca**:
+`acao.mirado: boolean`, escrita por `declararGolpe` (`grid.astro:6916`) quando a perícia da arma é
+`atirador` ou `arremesso`, e pela conjuração. A máscara vira
+`case when c.acao->>'mirado' = 'true' then c.acao - 'alvo' else c.acao end`, **para todo mundo,
+inclusive para quem vê stats**: a pontaria é segredo do jogo, não do papel.
+
+**Cuidados.**
+- O comentário da migração 27 (L76-88) argumenta o contrário desta decisão e precisa ser substituído,
+  não apagado: a migração 29 deve dizer o que mudou e por quê.
+- Fica como **melhoria futura** um teste para esconder as intenções, que é o que devolve ao ogro a
+  opção de disfarçar para onde vai o martelo. Anote-o junto do editor de cenário (`Pendencias.md` I5).
+- A migração 29 leva junto a coluna `encontros.retrato` do item 6.
+
+**Prova.** Consulta de conferência dentro da própria migração, como nas anteriores. Detalhe na
+**§0.47** e na **§0.48**.
+
+---
+
+#### 8 · N8 na tela · O rastro no tabuleiro
+
+**Hoje.** O Grid mostra peças e a fita de fase. Não mostra intenção.
+
+**Passa a ser.** O mínimo que faz N7 valer alguma coisa, porque sem ver, declarar por último não
+compra nada:
+
+- a **trajetória declarada** desenhada do token até o destino, com o destino marcado;
+- uma **seta** do atacante ao alvo, quando há alvo visível;
+- o **Tick em que o golpe cai** legível ao lado (a fita já dá o número);
+- **nada disso para a ação `mirado`**, que mostra só que a pessoa está montando alguma coisa.
+
+**Prova.** `test-grid-simultaneo.mjs`. Detalhe na **§0.48**.
+
+---
+
+#### 9 · A fila de declaração na tela
+
+**Hoje.** `grupoDaVez` devolve todos os livres e o mestre escolhe por quem começar, em qualquer ordem.
+
+**Passa a ser.** A coluna da vez mostra os livres **já ordenados** pela chave de N4, com quem declara
+agora em destaque, **e o mestre pode mudar a ordem à mão**.
+
+**Cuidados.** Mudar a ordem à mão **move a vantagem de informação de N7 de uma pessoa para outra**.
+Não é cosmético como reordenar a fila de iniciativa: é dar ou tirar de alguém o direito de escolher
+sabendo. A tela deve dizer isso em uma linha quando o mestre arrastar.
+
+**Prova.** `test-grid-simultaneo.mjs`. Detalhe na **§0.49**.
+
+---
+
+#### 10 · Q7 · As condições passam a expirar
+
+**Hoje.** `porCondicao` (`artes-grid-mesa.ts:1167-1175`) carimba `ate = tick + turnos × 6`, e **não há
+um leitor de `ate` em todo o `src/`** (R2 §C4). Nada expira sozinho: quem tira é só o fim do efeito
+que pôs, e toda condição posta à mão depende de o mestre lembrar.
+
+**Passa a ser.** No fim de cada Tick, as condições com `ate ≤ T` saem sozinhas, na mesa e no harness.
+
+**Cuidados.** As 5 condições de dano por rodada (`sangrando`, `envenenado`, `sufocando`,
+`em-chamas`, `morrendo`) têm `porRodada` e continuam **não sendo cobradas no Grid**: só
+`combate.astro:1439` as lê. Isso é outra pendência e não faz parte deste item; não a resolva de
+passagem, mas registre.
+
+**Prova.** `scripts/test-artes-grid.mjs`.
+
+---
+
+#### 11 · As 9 bandeiras de regra
+
+O maior dos onze, e o único que mexe em cinco arquivos de regra ao mesmo tempo. Um objeto de perfil
+no `regras.json`, lido pela mesa e pelo harness, com o padrão em produção **ligado**.
+
+| Bandeira | O que liga | Onde |
+|---|---|---|
+| `margem` | +1d6 de dano a cada 6 acima da Defesa | a resolução em `grid.astro` (hoje `rolarDano`, L7967, não recebe a diferença) e `danoNoAlvo` em `artes-grid.ts:1302` |
+| `gate` | abaixo do Nível de Perfuração o golpe resvala, dano 0 | `calc.ts:131-135`, que **existe e não é chamada** |
+| `couraca` | Couraça de Porte: +2 a +10 de Absorção contra corte e perfuração | não existe em lugar nenhum; `combate.md:120-136` tem a régua |
+| `porte` | ±3 de acerto por categoria de porte, teto ±12 | `regras.json → porteAcerto`, hoje lido só por `mesa/referencia.astro:38` |
+| `bloqueio` | a rota de Bloqueio, com a Defesa da arma e o `bloqCaC` do escudo | `combate-resumo.ts:53` e L86-87; hoje o escudo **só penaliza** |
+| `modo2` | o modo secundário de dano custa −2 de acerto e −1d6 | `grid.astro:7613, 7618`; hoje a troca é de graça |
+| `teto6` | teto de ±6 nos modificadores | `mesa-core.ts:164-181`, `somarCondicoes` soma sem teto |
+| `curaSemArea` | a Cura comum não tem Área | `artes-grid.ts`, a compra de parâmetros |
+| `curaDivide` | em mais de um alvo, o valor curado é dividido entre eles | idem; a régua está em `regras.json → arcano.cura.divide` |
+
+**Cuidados.**
+- **Dois testes congelam hoje o estado errado e precisam ser reescritos no mesmo commit.**
+  `test-contrato.mjs:136` trava `R.defesa = 16` (a Esquiva do Kael com bróquel, com o Bloqueio
+  inútil) e L149 trava `F.defBloqueio = 10`, que ninguém lê. Ligar `bloqueio` sem mexer neles deixa
+  a suíte verde com o número errado.
+- A régua de cada uma está na tabela de canonicidade da **R2 §F**, com o capítulo, o `regras.json` e
+  o motor lado a lado, e com o efeito de cada uma no resultado de uma batalha.
+- Estas nove não são todas do mesmo tamanho: `margem` e `bloqueio` são as duas maiores (a R2 §F#1 e
+  §F#2 medem +47% de dano e ~5 pontos de Defesa), e `teto6` só muda casos extremos.
+
+**Prova.** `test-contrato.mjs` e `test-quase-acerto.mjs`, reescritos, mais `test-kael.mjs`, que é a
+regressão de personagem que o `npm run validate` já roda.
+
+---
+
+**Ordem sugerida.** Os itens **1 a 6** são o núcleo do Tick, se sustentam sozinhos e cabem em quatro
+funções (`agendaSimultanea`, `grupoDaVez`, `golpeMaisCedo`, e a leitura do retrato na folha). O **7**
+é a migração, e o **6** depende dela se o retrato for para o banco. O **8** e o **9** são tela. O
+**10** é isolado. O **11** é o maior e o mais arriscado, e vale por último, quando o resto estiver
+verde.
+
 
 ## 1. O que eu preciso de você
 
