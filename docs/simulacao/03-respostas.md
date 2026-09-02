@@ -78,6 +78,10 @@ o espelho não roda no `build` hoje e mover a suíte do navegador para dentro de
 
 ### 1.2 A grade · 60 ou 72
 
+> **Corrigido depois desta resposta:** a grade valendo passou a ter **76 células**, quando a rota das
+> bandeiras levou E5 a 18 perfis, E6 voltou a 5 e entrou o eixo E9. Vale sempre a §0.5 do 02; os
+> números abaixo são os de quando esta parte foi escrita.
+
 **Vale a da §0.5: 60 células.** A §3 foi escrita antes das respostas e usa `E1(4) × E2(3) × E3(3) ×
 E4(2) = 72`, com E2 em três níveis. As respostas mudaram duas coisas: E2 passou a quatro níveis
 (§0.48, `1 · 18 · 42 · 71` hexes) e o desenho deixou de ser fatorial puro, virando núcleo cruzado
@@ -100,7 +104,11 @@ depois desta resposta, quando a rota das bandeiras levou E5 a 18 perfis; ver §0
 
 ### 1.3 E6 · cinco ou seis políticas
 
-**Seis**, e a §0.4 P4 é que está desatualizada. Ela lista cinco (Agressivo, Cauteloso, Tocaiador,
+**Cinco.** Esta resposta dizia "seis" e a §1.4, logo abaixo, a derruba: a política cega deixa de ser
+política e vira o interruptor E9. O 02 §0.5 já está com cinco. O que segue é o raciocínio de por que
+não eram quatro, que continua valendo.
+
+~~Seis~~, e a §0.4 P4 é que está desatualizada. Ela lista cinco (Agressivo, Cauteloso, Tocaiador,
 Guarda-costas, Conjurador) e fecha com "Isso faz E6 ter 5 níveis, e não 4"; depois a §0.47 acrescentou
 a **cega** e a §0.5 já conta seis. A frase de P4 é anterior à §0.47 e tem de ser trocada por um
 ponteiro para lá. (E a §1.4 abaixo pode mudar esse número de novo, para cinco, por outro motivo.)
@@ -252,7 +260,7 @@ desligado" é a linha de base reconstruída.
 |---|---|
 | **Custa** | 15 bandeiras vivas no código de produção, cada uma um caminho que alguém pode ler errado, e todas com de ser removidas um dia. Cinco delas (N2, N3, N4, N6 e as de D2) são baratas; a de N5 não |
 | **Custa** | 16 células a mais na grade (75 no total), o que pela Parte 4.2 é irrelevante em máquina e não é irrelevante em leitura |
-| **Perde** | **N5 não tem estado desligado observável** (2.1). O "sem N5" da bateria seria uma invenção minha, e o número dela mediria a distância até essa invenção. Se você quiser a linha de base completa por bandeira, N5 fica de fora dela de qualquer jeito |
+| **Perde** | **as três fases de N5 não têm estado desligado observável** (2.1). Resolvido depois desta resposta: a bandeira `n5` cobre **só a ordem inversa**, cujo desligado é real (a ordem da faixa, por Tick); as três fases entram fixas e ficam sem número próprio. Ver 02 §0.7 |
 | **Perde** | a linha de base deixa de ser uma medição e passa a ser uma **reconstrução**: o perfil tudo-desligado roda no motor novo com as regras novas apagadas, e não no motor antigo. Isso é diferente, e a diferença é invisível se algum efeito colateral de N1 a N6 não estiver atrás da bandeira |
 | **Ganha** | uma bateria só, e cada regra com o seu próprio número, isolado, em vez de um pacote de oito medido em bloco |
 | **Ganha** | as regras entram na mesa agora, e os furos da R2 fecham antes da primeira medição |
@@ -281,6 +289,32 @@ já poderia violá-lo. Violação **aborta a batalha** e a marca; não corrige, 
 | **V11** | o relógio anda exatamente 1 por avanço | passo 1 | **não.** `const T = tickSim() + 1` (L4904). O teste dirigido já afirma isso (`test-grid-simultaneo.mjs`, "o relógio anda um Tick por clique, nunca pula") |
 | **V12** | **(só com N6)** toda resolução de um mesmo Tick leu a mesma versão do retrato | passo 5, comparando o carimbo do retrato lido | não se aplica: o retrato não existe hoje |
 | **V13** | nenhuma peça declara duas vezes no mesmo Tick | passo 4 | **não**, por construção: quem declara recebe `tick = livre` e sai de `grupoDaVez`, que filtra `(c.tick ?? 0) <= t` |
+| **V14** | **conservação.** A soma do dano líquido aplicado num Tick tem de bater com a soma da Vida perdida naquele Tick, e a soma da cura com a Vida ganha: `Σ dano_liquido = Σ (pv_antes − pv_depois)` sobre as peças que sofreram, e o simétrico para a cura | fim do passo 7, comparando o total acumulado dos eventos `dano` do Tick com a diferença entre o retrato e o estado final | **pode violar, e é o único caminho que o V4 não vê.** Ver abaixo |
+
+**Por que o V14 existe e o que ele pega que o V4 não pega.** O V4 afirma que um golpe agendado
+resolve no máximo uma vez, e ele consegue isso olhando a agenda: o par (peça, Tick) sai de
+`aResolver` e não volta. Mas ele **não vê nada do que acontece depois do veredito**. Se
+`aplicarDano` for chamado duas vezes para o mesmo golpe por um caminho que não passa pela agenda, se
+uma peça perder Vida sem evento de dano nenhum, ou se o dano líquido calculado for 7 e o `pv_atual`
+cair 9, o V4 continua verde. O V14 fecha o outro lado: ele não pergunta quantas vezes o golpe
+resolveu, pergunta se a Vida que sumiu do tabuleiro é exatamente a que alguém tirou.
+
+É a classe de defeito mais perigosa de todas para esta bateria, porque ela **não quebra nada e não
+aparece**: uma batalha com dano duplicado simplesmente termina mais cedo, e "terminar mais cedo" é
+justamente a variável que a §2.6 mede. Um defeito assim contamina a duração, que contamina a carga,
+que é a métrica principal, e nada acusa.
+
+**Caminhos de hoje que poderiam violá-lo:**
+
+- **O caminho do jogador não desconta Absorção.** `aplicarDano` faz `const s = MESTRE && !opts.raspao ? soakDe(alvo, tipo) : 0` (`grid.astro:8082`): pelo lado do jogador o `s` é zero **de propósito**, e o registro diz que foi inteiro. Então o dano líquido que o evento registra e a Vida que some **batem entre si**, mas não batem com o que o mestre veria. O V14 tem de comparar o líquido **efetivamente aplicado**, e não o que a folha calculou, senão ele dispara em toda mesa com jogador.
+- **`jogador_dano` é uma função do banco** (`SB.rpc('jogador_dano', ...)`, L8058) e o cliente não relê o valor: ele acompanha localmente com `c.pv_atual = Math.max(0, c.pv_atual - quanto)` e só quando a Vida é conhecida. Se a função do banco aplicar coisa diferente do que o cliente supôs, os dois lados divergem em silêncio, e nada hoje confere.
+- **`tirarVida` e `curar` mexem em `pv_atual` fora do caminho do combate** (L8134, L8102). São gestos do mestre e legítimos; o V14 precisa saber distingui-los de dano de golpe, senão acusa uma violação a cada correção manual. A saída é o evento: o V14 confere `Σ eventos de dano e cura do Tick` contra `Δ Vida do Tick`, e os gestos manuais também emitem evento.
+- **O raspão ignora Absorção por regra** (`opts.raspao`), e isso é correto; o V14 confere o líquido, então não vê diferença.
+
+**No harness a violação é improvável e o invariante continua valendo a pena**, porque ele é a única
+asserção da lista que compara **duas contabilidades independentes** (o que os eventos dizem contra o
+que o estado mostra) em vez de conferir uma regra contra si mesma. É o teste que pega o erro de
+transcrição da cópia headless, que é exatamente o risco que a rota da cópia (Q6) assume.
 
 ### 3.2 O que o Grid de hoje já violaria, e como eu sei
 
@@ -297,7 +331,7 @@ Três, e as três com evidência diferente:
   todo o `src/`**, e o único removedor é o fim do efeito que pôs. Basta o efeito sair por outro
   caminho para a condição sobrar.
 
-Os outros dez eu **não** vi violados, e a diferença entre "não vi violado" e "não viola" é o motivo de
+Os outros onze eu **não** vi violados, e a diferença entre "não vi violado" e "não viola" é o motivo de
 eles existirem como asserção em vez de comentário.
 
 ### 3.3 Como um invariante violado aparece no relatório
@@ -507,7 +541,9 @@ acima extrapola linearmente a partir de dois pontos, o que é frágil na ponta d
 
 ## Parte 6 · Perguntas
 
-**1. O teste-espelho compara dado rolado, ou só o que é determinístico?** (§1.1.1) A mesa não tem
+**1. ~~O teste-espelho compara dado rolado, ou só o que é determinístico?~~ RESPONDIDA** (ver §1.1.1,
+e a decisão de 02/09 de semear o `d6` e comparar as rolagens; item 12 da especificação do 02). O que
+segue é o enunciado original. (§1.1.1) A mesa não tem
 semente: `rolagem.ts:11` é `Math.random`, e com `rolagem: 'site'` é a página que rola. Ou o espelho
 injeta o total pelo campo `al-total`, que a folha já aceita digitado, e compara veredito, Absorção e
 dano líquido a partir dele; ou `rolagem.ts` ganha um ponto de injeção de semente, que o harness vai
@@ -520,7 +556,8 @@ que o golpe vence. Com a régua antiga havia um Tick de folga entre chegar e bat
 isso, e é diferente de tudo o mais que N1 mudou, porque não é escrituração: é a corrida terminando
 em golpe sem respiro.
 
-**3. O invariante V5 vira regra, ou fica só como aviso?** (§3.1) Hoje a folha avisa que o alvo está
+**3. ~~O invariante V5 vira regra, ou fica só como aviso?~~ RESPONDIDA** (ver a linha V5 da §3.1: na
+mesa continua sendo aviso, no harness a batalha é abortada). O que segue é o enunciado original. (§3.1) Hoje a folha avisa que o alvo está
 fora do alcance e deixa resolver assim mesmo. Numa mesa isso é bom (o mestre sabe de alguma coisa que
 o tabuleiro não sabe); numa bateria automatizada é um golpe que acerta a dez metros e ninguém vê. As
 saídas são bloquear no Grid, ou manter o aviso na mesa e abortar a batalha no harness, e aí o

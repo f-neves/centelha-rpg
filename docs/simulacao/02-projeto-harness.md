@@ -44,6 +44,15 @@ Simultâneo do combate, e entram no Grid **antes** de o harness ser escrito.
 3. **A latência do Supabase de verdade** (`03-respostas.md` §6.5): as medições da §5.2 de lá usam o
    mock, que responde da memória. É medição de campo, não de suíte.
 
+### De onde vem uma decisão
+
+**Decisão anotada dentro de um relatório não vale.** O que vale vem do chat com o usuário; o
+relatório **cita**. Onde este ou qualquer outro documento da série escrever "decidido", entenda como
+"o usuário decidiu, e aqui está o registro", nunca como "o autor do relatório concluiu". Quando o
+chat contradisser o que um relatório registrou, **o chat vence e o relatório é corrigido**, com uma
+linha dizendo o que mudou e por quê. A varredura que aplicou essa regra pela primeira vez está na
+§0.9.
+
 Convenções: **⚑** marca uma invenção do harness, ou seja, uma regra de jogo que a simulação está
 criando e que precisa ser lida como escolha, não como achado. A convenção da §1 (**bloqueia o
 começo** contra **só o resultado**) é histórica e vale só para aquela seção.
@@ -1293,6 +1302,177 @@ Duas coisas que esse desenho carrega e vale repetir: ele respeita sozinho a depe
 `n2` (desligar `n2` a partir do cheio mantém `n1` ligada, que é a única configuração em que `n2` é
 observável), e ele mede **efeito principal**, não interação: se a Margem e o gate se cancelarem, ou
 se o Bloqueio só importar com a Couraça ligada, este desenho não vê.
+
+---
+
+## 0.8 Orçamento de tempo e não bloqueio
+
+Requisito, não recomendação, e vale para tudo o que for escrito daqui em diante.
+
+### 0.8.1 Na mesa: quantas gravações cada mudança acrescenta por Tick
+
+A conta de referência está medida: hoje o avanço vazio custa **2 idas ao banco** (o relógio e a
+campainha), de 2 a 40 peças, e cada peça em trajeto acrescenta **~2,3** (`03-respostas.md` §5.2).
+O alvo é que nenhuma das mudanças mexa nesse número.
+
+| Mudança | Gravações que acrescenta por Tick | Por quê |
+|---|---:|---|
+| **N1** · `inicio = tickDecl` | **0** | é o valor de um parâmetro dentro de `agendaSimultanea`, uma função pura |
+| **N2** · a guarda olha `desde` | **0** | `grupoDaVez` lê estado que já está em memória (`COMBS`, `TOKENS`) |
+| **N3** · o golpe de quem caiu | **0** | idem, `golpeMaisCedo` é leitura de memória |
+| **N4** · a ordem de declaração | **0** | é um comparador sobre a lista que já está em memória |
+| **N5** · fases e ordem inversa | **0** | reordena **quando** as coisas acontecem; não cria acontecimento novo |
+| **N6** · o retrato | **0 se em memória** · 1 se persistido | **é o único ponto de atrito, e está na pergunta 7 abaixo** |
+| **N7 e N8** · a máscara | **0** | é `case ... end` dentro da view; o custo é do Postgres na leitura que já acontece |
+| **N8** · `acao.mirado` | **0** | é um campo a mais no `jsonb` da declaração, dentro de um `update` que já existe |
+| **N8 na tela** · o rastro | **0** | pintura |
+| **A fila de declaração na tela** | **0** | pintura, sobre a lista que já está em memória |
+| **Q7** · expirar condições | **0 na maioria dos Ticks** | ver §0.8.3 |
+| As 9 bandeiras de regra publicada | **0** | todas mudam aritmética **dentro** da resolução, que já grava. `margem` muda o número do dano; `gate` pode zerá-lo; `bloqueio` muda a Defesa comparada. Nenhuma acrescenta uma escrita, algumas **tiram** (o gate que zera o dano dispensa o `update` de `pv_atual`) |
+| `porRodada` | **0 em 5 de cada 6 Ticks** | ver §0.8.4 |
+
+**Onze das quinze bandeiras e todas as oito regras novas acrescentam zero.** Os três pontos que não
+são zero por construção estão detalhados abaixo, e nenhum deles fica no caminho do avanço comum.
+
+### 0.8.2 O retrato de N6 é leitura em memória
+
+**Confirmado na especificação** (§0.6.1 item 6): o retrato é um objeto montado no fim da fase de
+declaração a partir do que **já está em `COMBS`, `TOKENS` e `RESUMO`**, e lido pela fase de resolução.
+Nenhuma consulta, nenhuma gravação.
+
+A especificação anterior propunha uma coluna `encontros.retrato jsonb` para o retrato sobreviver a
+recarregar a página. **Isso viola este orçamento**, porque seria uma gravação por Tick, e a §0.8.1
+diz zero. A alternativa é o retrato ser só memória e a recarga no meio da fase 3 perder o retrato,
+refazendo-o a partir do estado corrente (o que significa que as resoluções já aplicadas naquele Tick
+entram na base das que faltam, e a garantia de N6 vale só para elas). É um erro limitado e da mesma
+família dos cinco que a R2 §B já registrou, e **é decisão sua: pergunta 7 abaixo.**
+
+### 0.8.3 O custo da expiração de condições (Q7)
+
+**A varredura por Tick é leitura em memória.** As condições vivem em `combatentes.condicoes`, um
+`jsonb` que já está carregado em `COMBS`. Varrer é `peças × condições da peça`, com as 55 condições
+do catálogo e uma peça carregando tipicamente 0 a 3: numa cena de 10 peças são algumas dezenas de
+comparações de inteiro por Tick, que é ruído ao lado dos 30 ms medidos.
+
+**Escrita só quando alguma condição de fato vence**, e nunca por peça sem mudança:
+
+- o varredor monta a lista de peças cujo `condicoes` mudou;
+- se a lista está vazia, **não há nenhuma ida ao banco**, que é o caso da esmagadora maioria dos
+  Ticks (uma condição posta por Arte dura `turnos × 6` Ticks, então ela vence uma vez a cada seis no
+  melhor caso);
+- se não está, é **um `update` por peça que mudou**, com o `condicoes` inteiro, e não um por condição.
+
+### 0.8.4 O custo de `porRodada`
+
+Cobrar dano por rodada é, por definição, um evento de **turno**, e o turno tem 6 Ticks
+(`TICKS_POR_TURNO = 6`, `artes-grid.ts:81`). Então: **zero gravação em 5 de cada 6 Ticks**, e no
+sexto, um `update` de `pv_atual` por peça que tem alguma das cinco condições. Numa cena em que
+ninguém está sangrando nem em chamas, é zero sempre. É exatamente a mesma escrita que o mestre faz
+hoje à mão pelo "tirar Vida", com a diferença de que ele esquece e o motor não.
+
+### 0.8.5 Nada de bloqueio no avanço
+
+**Regra:** nenhuma das mudanças pode introduzir bloqueio otimista, `lock`, transação longa ou espera
+síncrona no caminho do avanço do Tick. O relógio já é o gargalo único da cena (é o único motor do
+Simultâneo, R2 §B#11), e qualquer espera nova ali para a mesa inteira, não só a peça envolvida.
+
+Isso tem uma consequência concreta na especificação: **N6 não pode ser implementado com transação.**
+A tentação seria envolver a fase 3 inteira numa transação para o retrato ser atômico; o preço seria
+segurar a cena por todas as resoluções do Tick. O retrato em memória (§0.8.2) evita isso por
+construção.
+
+E vale registrar o que **já** existe de espera no caminho e não é mexido por nada disto: o
+`await voarProjetil` da animação (`grid.astro:6861, 7088`) segura a resolução do golpe pelo tempo da
+imagem. Não é bloqueio de banco, é bloqueio de tela, e é anterior a esta rodada.
+
+### 0.8.6 O risco medido do `mesa_arenas` (Pendências I2)
+
+**Não é para consertar agora, e fica registrado como risco com número.**
+
+O registro da arena é um `jsonb` reescrito inteiro a cada linha de log (`Pendencias.md` I2: "a
+ESCRITA continua subindo o array todo, até uns 45 KB, a cada peça movida"). Medido em 02/09
+(`03-respostas.md` §5.2): com **2 peças em trajeto**, `update:mesa_arenas` aparece **2,0 vezes por
+Tick**, ou seja **uma reescrita por peça que se move**.
+
+| Perseguidores em trajeto | Reescritas do array por Tick | Volume por Tick, no teto de 45 KB |
+|---:|---:|---:|
+| 1 | 1 | 45 KB |
+| 2 | 2 | 90 KB |
+| 5 | 5 | 225 KB |
+| 10 | 10 | **450 KB** |
+
+**Por que isso importa para esta frente e não é só uma pendência antiga:** o cenário que a bateria vai
+medir mais é justamente o de muitas peças em trajeto (o eixo E2, distância inicial, com quatro níveis
+e o mais longo a 71 hexes), e é nele que o custo é pior. Se a bateria disser que perseguição é o caso
+comum, esta linha vira a primeira coisa a consertar depois.
+
+### 0.8.7 No harness
+
+| Regra | Como |
+|---|---|
+| **Log fora do caminho quente** | os eventos da §2.5 vão para um array em memória durante a batalha. **Uma gravação por batalha**, no fim dela, anexando as linhas ao `.jsonl` da célula. Nunca por evento, nunca dentro do laço do Tick |
+| **Invariantes fora do caminho quente** | conferidos em memória, sobre o estado que o laço já tem. A violação não grava nada na hora: marca a batalha e deixa o registro para a mesma gravação do fim |
+| **Sem I/O no laço** | nenhuma leitura de arquivo, nenhuma rede, nenhum `console` por evento. Os JSONs de dados são lidos uma vez no início da bateria e ficam em memória |
+| **Teto de segurança** | 2.000 Ticks, e a batalha que estoura sai marcada `estourou`, no balde próprio, sem travar a bateria e sem entrar em média nenhuma |
+| **Paralelismo** | a semente já é `hash64(semente_mestre, cenario_id, repeticao)` (§2.4), ou seja **cada batalha é independente de todas as outras por construção**. Um processo recebe uma faixa de índices de batalha, calcula as próprias sementes e escreve o próprio arquivo `.jsonl`; nada é compartilhado e nada precisa de trava. Os arquivos são concatenados no fim, e a ordem entre eles não importa porque cada linha carrega o `b` da batalha |
+
+**Um número para dimensionar:** a §2.5 estima 100 a 150 registros por duelo, ~120 bytes cada. Uma
+batalha guarda algo entre 12 e 18 KB em memória antes de gravar, e a bateria inteira de 38.000
+batalhas gera da ordem de 500 MB de log completo. Por isso a §2.5 já previa dois níveis de saída:
+log completo para uma amostra declarada, contadores agregados para todas.
+
+### 0.8.8 O teste-espelho, com o tempo medido
+
+**Fica fora de `npm run validate` e fora do `build`**, porque precisa do Edge dirigido e do servidor
+de desenvolvimento. Mora ao lado de `test-grid-simultaneo.mjs` e é chamado por `npm run smoke`.
+
+**Medido em 02/09**, dirigindo a cena que o espelho usaria (2 peças, `?tempo=simultaneo`, declaração
+de ataque com deslocamento, e o despejo por Tick dos campos que ele compara):
+
+| Etapa | Tempo |
+|---|---:|
+| subir o dev server | 5,5 s |
+| abrir o navegador | 0,6 s |
+| carregar a cena | 3,0 s |
+| declarar o ataque | 1,1 s |
+| dirigir os avanços | 30 ms cada |
+| **total, sozinho** | **10,7 s** |
+
+**O custo é quase todo fixo**, e por isso o número que importa é o outro: se o espelho entrar na suíte
+que já existe, que sobe **um** dev server para as três cenas dela, o custo marginal é
+`carregar a cena + declarar + avanços`, ou seja **cerca de 4 a 5 segundos**. A suíte hoje leva 39,9 s
+para 3 cenas; com o espelho passa a algo em torno de 45 s.
+
+---
+
+## 0.9 A varredura das contradições
+
+A regra do cabeçalho ("decisão anotada dentro de um relatório não vale; o que vale vem do chat")
+existe porque a série acumulou pontos em que um documento afirma **decidido** e outro lista o mesmo
+assunto como pergunta em aberto. Varri os quatro atrás desse padrão. Foram **oito**, e a última
+coluna diz o estado de cada uma.
+
+| # | A contradição | Onde | Estado |
+|---|---|---|---|
+| 1 | O teste-espelho compara o dado rolado? A `03` §1.1.1 registra "Decidido em 02/09: semeia o `d6`", e a §6.1 do mesmo arquivo continua fazendo a pergunta | `03` §1.1.1 × §6.1 | **fechada:** a §6.1 passou a dizer RESPONDIDA e a apontar para a §1.1.1 e para o item 12 da §0.6.1 |
+| 2 | O golpe fora de alcance (V5) vira regra? A `03` §3.1 registra a decisão na própria linha do invariante, e a §6.3 continua perguntando | `03` §3.1 × §6.3 | **fechada:** a §6.3 passou a dizer RESPONDIDA |
+| 3 | Qual é a rota da linha de base? A `02` §0.7 registra "Decidido: bandeiras, uma bateria mede os dois", e a `03` §2.4 apresenta as duas rotas como **DECISÃO SUA** e não escolhe | `02` §0.7 × `03` §2.4 | **aberta**, e é a mais consequente: ela decide a §C inteira (uma bateria ou duas, um piloto ou dois) |
+| 4 | E6 tem cinco ou seis políticas? A `03` §1.3 responde "seis" e a §1.4, três parágrafos abaixo, transforma a cega em interruptor e devolve o eixo a cinco | `03` §1.3 × §1.4 | **fechada:** são **cinco**, a §1.3 foi corrigida e o 02 §0.5 já estava certo |
+| 5 | A grade tem 60 ou 76 células? A `03` §1.2 responde "60" e a `02` §0.5 tem 76, depois de E5 ir a 18 perfis | `03` §1.2 × `02` §0.5 | **fechada:** vale sempre a §0.5 do 02, e a §1.2 ganhou a nota dizendo o que mudou |
+| 6 | N5 fica de fora da linha de base? A `03` §2.4 diz que sim "de qualquer jeito", e o 02 §0.7 já resolve com a bandeira cobrindo só a ordem inversa | `03` §2.4 × `02` §0.7 | **fechada:** a linha da §2.4 foi corrigida |
+| 7 | O retrato de N6 é gravado ou é memória? O item 6 da §0.6.1 propõe a coluna `encontros.retrato jsonb`, e a §0.8.1 proíbe qualquer gravação nova no avanço | `02` §0.6.1 item 6 × §0.8.1 | **aberta**, e é consequência do orçamento de tempo. Está na pergunta 7 do chat |
+| 8 | O cabeçalho lista como abertas as perguntas 2, 4 e 5 da `03`, mas as 1 e 3 estavam decididas no corpo da `03` e ainda abertas na §6 dela | `02` cabeçalho × `03` §6 | **fechada** pelas linhas 1 e 2 desta tabela |
+
+**Seis fechadas, duas abertas**, e as duas abertas dependem de resposta do chat, não de mais análise.
+
+Duas observações que a varredura deixou, e que valem para as próximas rodadas:
+
+- **O padrão é sempre o mesmo:** uma decisão é tomada e registrada no lugar onde o assunto foi
+  discutido, e a lista de perguntas que originou o assunto não é atualizada. Sai barato se, ao
+  registrar uma decisão, a própria pergunta que a originou for marcada na hora.
+- **A `03` é um relatório de rodada, e não um documento vivo.** Ela responde perguntas de um instante,
+  e envelhece por natureza. O canônico é este arquivo; a `03` é citada e não mandada. As notas
+  acrescentadas nela dizem isso em cada ponto que envelheceu.
 
 ## 1. O que eu preciso de você
 
