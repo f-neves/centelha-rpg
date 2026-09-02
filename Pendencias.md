@@ -1016,7 +1016,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   Tick do que a folha calculou. `rolagem.ts:11` é `Math.random` e é a única fonte de acaso
   do combate. Ganha ponto de injeção, e `mesa-ficha.ts:133` e `artes-grid.ts:1342` precisam do mesmo
   tratamento. É o que permite o teste-espelho comparar as rolagens.
-- [ ] **L6 · [DEPOIS] O harness.** Grade oficial de **109 células e 54.500 batalhas** (`02`
+- [ ] **L6 · [DEPOIS] O harness.** Grade oficial de **112 células e 56.000 batalhas** (`02`
   §0.10.1), um piloto de 2.000 em **cada uma das duas âncoras** com a regra de decisão escrita antes
   de rodar, e 15 invariantes que abortam a batalha (`03` §3.1). O elenco tem PCs **e** criaturas do
   bestiário (D10), e cada bandeira é medida na célula em que ela morde. Só depois de L1 a L5.
@@ -1024,8 +1024,11 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `encontros.perfil jsonb`, escrita **uma vez** na criação do encontro e lida por ele dali em
   diante. Sem ela, um deploy troca o `regras.json` debaixo de um encontro aberto e a Defesa de uma
   peça muda entre dois Ticks da mesma cena. É o quarto sinal do risco **F0** (`04-prontidao.md`), o
-  único que não é erro de programação, e o único que **bloqueia a Etapa 1**. Zero gravação por
-  Tick, então respeita o orçamento da `02` §0.8.
+  único que não é erro de programação, e o único que **bloqueia a Etapa 1**: é o item **1.0** da
+  ordem, antes da primeira bandeira. Três propriedades: **zero gravação por Tick** (uma escrita na
+  criação, mais uma por recarimbagem), **visível** na tela do encontro, dizendo quando difere do
+  perfil de produção, e **recarimbável** pelo mestre numa ação explícita. Sem as duas últimas o
+  problema só troca de sinal: o chão congela debaixo do encontro em vez de mudar, e ninguém vê.
 - [ ] **L10 · [ANTES DE LER O RESULTADO] Duas coisas que não bloqueiam o começo e bloqueiam a
   leitura.** A **tabela de custo de tela** não tem linha para o gesto que a regra ⊕ acrescentou
   (escolher o modo de dano é um clique), e sem ela a bandeira `modo2` sai medindo dano e não custa

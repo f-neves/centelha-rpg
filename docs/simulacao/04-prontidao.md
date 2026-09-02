@@ -218,7 +218,7 @@ Ordenado por: bloqueia o começo primeiro, depois por quanto muda o resultado.
 > Sete das dezessete comparações de bandeira não podiam morder na âncora, e medi-las nas duas gastava
 > catorze células para colher zero. Com cada bandeira medida na célula em que morde, com o eixo E11
 > (elenco de criatura, D10) e com as duas âncoras diferindo em **exatamente** um fator, a grade
-> oficial é de **109 células** e **54.500 batalhas** (`02` §0.10.1), depois da segunda leitura que o
+> oficial é de **112 células** e **56.000 batalhas** (`02` §0.10.1), depois da segunda leitura que o
 > F5 pediu.
 
 
@@ -547,10 +547,25 @@ desligada; o `npm run build` verde, que roda `validate` antes do Astro, cobre a 
 personagem; os dois testes reescritos cobrem o contrato **se** os números forem conferidos à mão.
 **Nada cobre o quarto sinal**, e ele é o único que não é erro de programação: o perfil vive no
 `regras.json`, um deploy troca o `regras.json`, e um encontro aberto no Supabase continua de onde
-parou, agora com outro chão. A mitigação é uma frase e não está feita: **o encontro deveria carimbar
-o perfil de bandeiras com que começou**, e ler dele, do mesmo jeito que a bateria carimba o
-`dados_hash` no manifesto (§2.4 do `02`). Fica registrado como pendência de mesa, não como parte
-desta rodada.
+parou, agora com outro chão.
+
+> **DECIDIDO em 02/09, e depois completado no fechamento final: o encontro carimba o perfil ao
+> começar, e o carimbo é visível e recarimbável.** Uma coluna `encontros.perfil jsonb`, escrita **uma
+> vez** na criação do encontro e lida por ele dali em diante, do mesmo jeito que a bateria carimba o
+> `dados_hash` no manifesto (§2.4 do `02`). **É o item 1.0 da ordem**, antes da primeira bandeira,
+> porque uma bandeira que suba antes dele sobe para uma mesa desprotegida.
+>
+> - **zero gravação por Tick**, confirmado: uma escrita na criação, mais uma por recarimbagem
+>   deliberada. A leitura sai da linha do encontro, que já está carregada, e a comparação com o
+>   perfil corrente é entre esse `jsonb` em memória e o `regras.json` que já vem no pacote. Nenhuma
+>   consulta nova, nem no avanço do Tick nem fora dele;
+> - **visível**: o perfil carimbado aparece na tela do encontro, e diz quando difere do de produção;
+> - **recarimbável**: o mestre recarimba de propósito, numa ação explícita.
+>
+> As duas últimas consertam o preço que a primeira versão deixou em aberto, e sem elas o problema só
+> troca de sinal: em vez de o chão mudar debaixo do encontro, ele **congela** debaixo do encontro, e
+> ninguém vê. Um encontro esquecido rodaria o perfil antigo para sempre, com o padrão de produção
+> sendo "ligadas".
 
 **Onde entra na ordem de gravidade: primeiro.** Os cinco abaixo custam batalhas e conclusões; este
 custa uma sessão de jogo. E ele é o único cujo pior caso acontece **enquanto alguém está jogando**.
@@ -564,7 +579,7 @@ regras que eu escrevi, e o relatório inteiro será sobre elas.
 **O sinal que aparece primeiro:** no piloto, comparar a variância entre políticas com a variância
 entre células do núcleo. Se a primeira dominar, é o sinal, e ele aparece **antes** da bateria.
 
-**O que se perde se ele se realizar tarde:** as 54.500 batalhas, e pior, a confiança em conclusões
+**O que se perde se ele se realizar tarde:** as 56.000 batalhas, e pior, a confiança em conclusões
 que pareciam sobre o jogo. É o risco de "roda inteira e não serve".
 
 **Uma premissa que mudou em 02/09, e para pior:** a fusão das duas especificações de política
@@ -596,7 +611,9 @@ decisões a política gera por Tick. Escolher a política é escolher o nível d
 medindo. E se a interação for real, ou seja, se uma regra só importar para quem joga cauteloso,
 fixar a política esconde exatamente o achado que a bateria existia para encontrar.
 
-> **RESPONDIDO em 02/09: uma política só, e a política vira grade própria.**
+> **RESPONDIDO em 02/09: uma política só, e a política vira grade própria.** Conferido no fechamento
+> final: a resposta veio de sessão com você, perguntada no chat com estas quatro opções, a
+> recomendada marcada e o contra-argumento acima, logo depois do bloco 5 que pediu exatamente isso.
 
 ### F2 · O `aid` entra errado e o tempo morto vira ficção plausível
 
@@ -677,7 +694,8 @@ interação não medida.
 
 > **DECIDIDO: referência única, medindo duas vezes.** As seis bandeiras que não moram na âncora
 > extrema (`gate`, `modo2`, `curaSemArea`, `curaDivide`, `porRodada`, `porte`) são medidas **também
-> lá**, e a soma volta a fazer sentido. Custa **+6 células** e leva a grade a 109.
+> lá**, e a soma volta a fazer sentido. Custa **+6 células**, e mais **+3** para a conferência
+> fechar também na âncora mediana (decidido em 02/09): a grade vai a **112**.
 
 **O alcance real da conferência, escrito para não iludir:** as seis leituras extras são **zero por
 construção**, então a aditividade é verificada de verdade sobre **nove** bandeiras (`margem`,

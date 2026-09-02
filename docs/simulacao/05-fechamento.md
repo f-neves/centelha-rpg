@@ -264,15 +264,16 @@ sendo número inventado e vai no cabeçalho do relatório, na tabela do que foi 
 | E5 · o perfil todo desligado, nas duas âncoras | **2** | 1 linha, 2 colunas |
 | E5 · as nove bandeiras não-núcleo, **na âncora extrema**, que é a referência única do F5 | **9** | 9 linhas |
 | E5 · as **seis** que não moram na âncora, medidas **também na hospedeira**, onde elas mordem | **6** | 6 linhas |
+| E5 · `margem`, `bloqueio` e `teto6` **também na mediana**, para a aditividade fechar nas duas âncoras | **3** | 3 linhas |
 | Células hospedeiras novas: a do **Conjurador de adaga** e a do **Lanceiro de lança** | **2** | |
 | Níveis de controle (D6 e D7) | **2** | 2 linhas |
 | Cruzamentos deliberados | **6** | 6 linhas |
-| **Total** | **109** | |
+| **Total** | **112** | |
 
 | | |
 |---|---|
 | Repetições | 500 por célula, e 2.000 nas de cauda |
-| **Batalhas** | **54.500**, mais o reforço |
+| **Batalhas** | **56.000**, mais o reforço |
 | Tempo de máquina | da ordem de 50 segundos, pela §4.2 da `03-respostas.md` |
 
 **Onde cada bandeira mora**, porque medir uma bandeira numa célula onde ela não morde foi o defeito
@@ -296,7 +297,7 @@ Aquele aviso contava **célula = linha**, porque a grade era fatorial. Aqui não
   segunda âncora não custa uma linha nova: custa uma coluna**, e é essa a resposta à pergunta;
 - o resto são 30 linhas em quatro tabelas curtas.
 
-Total para o leitor: **3 grades de 4×4 e cerca de 47 linhas de comparação**, contra as 31 linhas da
+Total para o leitor: **3 grades de 4×4 e cerca de 50 linhas de comparação**, contra as 31 linhas da
 versão de 79 células. **Passa.** E vale notar o que quase reprovou: não foi a segunda âncora, foi
 medir as dezesseis bandeiras **duas vezes cada** (34 linhas), catorze delas em células onde a
 bandeira não podia mexer em nada. Tirar isso pagou a segunda âncora, as criaturas, o eixo E11 e a
@@ -319,8 +320,8 @@ O que salva o número **não** é o erro: é a C2. O conserto do `gate` acrescen
 hospedeira que faltava, então uma grade com uma hospedeira só somaria 102 e a com duas soma 103. O
 103 que circulou estava certo pelo motivo errado, e nenhum dos cinco lugares tinha como saber disso.
 
-**Com a resposta do F5 (C3) a grade fecha em 109**, e desta vez a soma foi conferida bloco a bloco
-antes de circular.
+**Com a resposta do F5 (C3) e as três células da mediana (§6b) a grade fecha em 112**, e desde então
+a soma é conferida bloco a bloco antes de circular.
 
 ### C2 · O D11 tinha matado a célula que hospeda o `gate`
 
@@ -362,7 +363,7 @@ bandeiras: era uma sobre nove, com sete zeros embutidos.
 O que isso custa e o que entrega, escrito para quem for ler o relatório:
 
 - **+6 células**, não +9: `margem`, `bloqueio` e `teto6` já moram na âncora extrema e não têm segunda
-  leitura a fazer. A grade vai de 103 para **109**;
+  leitura a fazer. A grade vai de 103 para **109**, e para **112** com as três da mediana (§6b);
 - **as seis leituras extras são zero por construção**, e por isso a conferência de aditividade tem
   força sobre **nove** bandeiras (`margem`, `bloqueio`, `teto6` e as seis do núcleo do Tick) e é
   trivial sobre as outras seis;
@@ -519,9 +520,23 @@ tinha nada, e não é erro de programação: o perfil vive no `regras.json`, um 
 > então respeita o orçamento da §0.8, e é o mesmo princípio do `dados_hash` que a bateria já carimba
 > no manifesto. **Isso passa a bloquear a Etapa 1**, e é a única coisa que bloqueia.
 
-O preço, escrito para não surpreender: um encontro esquecido aberto fica rodando o perfil antigo para
-sempre, e a §0.6 tinha decidido que o padrão em produção é **ligadas**. As duas coisas convivem, mas
-alguém vai abrir uma cena velha um dia e achar que o Bloqueio quebrou.
+**O preço da primeira versão, pago no fechamento final.** Ela dizia: um encontro esquecido fica
+rodando o perfil antigo para sempre, e a §0.6 tinha decidido que o padrão em produção é **ligadas**.
+Isso é o mesmo problema com o sinal trocado, o chão **congela** em vez de mudar, e ninguém vê. Duas
+propriedades a mais consertam:
+
+- **visível:** o perfil carimbado aparece na tela do encontro, e diz quando **difere** do perfil de
+  produção. É o que tira o congelamento da invisibilidade;
+- **recarimbável:** o mestre recarimba de propósito, com o perfil corrente, numa ação explícita. É o
+  que transforma o carimbo de armadilha em ferramenta: quem quiser as regras novas numa cena velha
+  aperta o botão, e quem não quiser não é atropelado no meio de um Tick.
+
+**Onde entra e o que custa:** é o item **1.0** da ordem (`02` §0.6.1), antes da primeira bandeira,
+porque uma bandeira que suba antes dele sobe para uma mesa desprotegida. E continua custando **zero
+gravação por Tick**: uma escrita na criação do encontro, mais uma por recarimbagem deliberada; a
+leitura sai da linha do encontro, que já está carregada, e a comparação com o perfil de produção é
+entre esse `jsonb` em memória e o `regras.json` que já vem no pacote. Nenhuma consulta nova, nem no
+avanço do Tick nem fora dele.
 
 ### 4b · O F4 e o F5, atualizados
 
@@ -550,6 +565,11 @@ contra-argumento estão escritos na **R4 §F1**. Em resumo:
 > **RESPONDIDO: uma política só, e a política vira grade própria.** Toda a grade roda Agressiva, o E6
 > sai do um-fator-de-cada-vez e vira uma bateria pequena separada, que responde "quanto a política
 > pesa".
+
+**De onde veio a resposta, conferido no fechamento final:** de sessão com você, em 02/09. Ela foi
+perguntada no chat, com as quatro opções desta tabela, a recomendada marcada e o contra-argumento
+escrito, logo depois de você mandar o bloco 5 pedindo exatamente isso ("Traga no formato do D... Não
+escolha por mim"). A resposta escolhida foi a primeira. **Mantida.**
 
 **O motivo:** separa as duas perguntas em vez de contaminar as duas, não inventa eixo nenhum e a
 leitura do núcleo cruzado sobrevive inteira.
@@ -593,33 +613,82 @@ Lanceiros e não levam um arranhão. Três coisas a registrar sobre isso:
 leitura, peça entrando no Tick seguinte) e trocam **só as peças**. Sem isso os números delas sairiam
 em outra escala e não se leriam ao lado dos das âncoras.
 
-### 6b · A conferência de aditividade é de uma âncora só
+**A etiqueta da célula, e ela é obrigatória** (ponto 4 do fechamento final). Esta é a única célula da
+grade que **não termina por morte**: com o `gate` ligado o Lanceiro nunca fere, os Montanteiros ficam
+com a Vida cheia, e o que fecha a batalha é a **desistência a 20%** do lado do Lanceiro (a regra do
+D4, `02` §0.1). O delta dela é, por construção, **o máximo que a grade pode produzir**.
 
-**Ela vale dentro da âncora extrema, e só lá.** Não vale sobre o conjunto, e não vale "dentro de cada
-âncora": na mediana ela **não é computável**.
+> **A etiqueta, impressa junto do número, com a mesma disciplina do `não exercitada`:**
+> `hospedeira do gate · termina por desistência-20 · delta máximo por construção`.
+>
+> E a frase que ela obriga: esta célula responde **"o `gate` morde"**, e não **"quanto o `gate` custa
+> numa cena normal"**. Sem a etiqueta, a linha vira "o gate é a bandeira mais cara do sistema", que é
+> uma afirmação sobre a célula e não sobre o sistema.
 
-| | Âncora extrema | Âncora mediana |
+**A regra é mecânica, e não uma previsão minha.** O campo `cena.fim.motivo` (do D2) tem os quatro
+valores, e **toda célula reporta a distribuição dele**. Qualquer célula cujo motivo dominante seja
+diferente do das âncoras recebe a etiqueta automaticamente, sem ninguém precisar prever qual será.
+Eu sei desta por construção; das outras, o log é que diz.
+
+**A varredura das outras hospedeiras achou um desvio, e não é de término:** a hospedeira do
+Conjurador **não pode rodar a política Agressiva**, que é a das âncoras. Se rodasse, ninguém
+conjuraria, e as três bandeiras que ela existe para hospedar (`curaSemArea`, `curaDivide`,
+`porRodada`) voltariam a ser inertes, que é o erro que esta rodada inteira serviu para achar. Ela é a
+única célula da grade com **política mista**: Conjurador de um lado, Agressiva do outro, e o lado
+Agressivo é o que carrega a malha que faz o `gate` e a regra ⊕ acontecerem.
+
+| Hospedeira | Desvia da âncora em | Etiqueta |
 |---|---|---|
-| Deltas individuais medidos lá | **as 15**: 9 com ocasiões e 6 com zero declarado | **6**, só as do núcleo do Tick |
-| Perfil tudo-desligado | sim | sim, e ele desliga **as 15** |
-| A soma fecha? | **sim**: os 15 deltas contra `cheio − tudo desligado` | **não**: faltam os deltas de `margem`, `bloqueio` e `teto6`, que mordem lá e nunca foram medidos lá |
+| **do `gate`** (Lanceiro × Montanteiro) | o **modo de término**: desistência-20, não morte | `delta máximo por construção` |
+| **do Conjurador** (Conjurador × Escudeiro de malha) | a **política**: mista, e não Agressiva dos dois lados | `política mista · o E6 não é comparável a partir dela` |
+| as demais | nada: copiam a forma da âncora extrema e trocam só as peças | |
+
+O desvio da política tem uma consequência limitada e vale escrevê-la: uma hospedeira serve só para
+**deltas dentro dela mesma** (o perfil cheio contra o cheio-menos-uma, na mesma célula), e nunca para
+comparação entre células. Por isso a política mista não contamina nada: ela não entra em nenhuma
+comparação cruzada.
+
+
+### 6b · A conferência de aditividade, nas duas âncoras
+
+**Decidido em 02/09: as três células entram, e a grade vai a 112.** O motivo é o prazo e não o custo:
+a regra 5 abaixo diz que, se a discrepância da extrema for grande, o número único da mediana é a
+única evidência sobre interação dependente de cena, e isso só se descobre **lendo o relatório**.
+Nessa altura o commit já andou, e acrescentar as três depois é rodá-las contra outro chão. Três
+células em 109 são menos de 3%.
+
+O diagnóstico que gerou a decisão continua valendo e fica registrado, porque é ele que explica por
+que as três eram necessárias:
+
+| | Âncora extrema | Âncora mediana, **antes** | Âncora mediana, **agora** |
+|---|---|---|---|
+| Deltas individuais medidos lá | as 15 | **6**, só as do núcleo | **9**: as 6 do núcleo mais `margem`, `bloqueio` e `teto6` |
+| Perfil tudo-desligado | sim | sim, e ele desligava **as 15** | sim |
+| A soma fecha? | **sim** | **não**: faltavam três que mordem lá | **sim** |
+
+**E o que licencia a soma nas duas é o contador de ocasiões da §3d.** Nenhuma das duas âncoras mede
+individualmente as seis bandeiras que não mordem nela (`gate`, `modo2`, as duas da Cura, `porRodada`,
+`porte`), e mesmo assim o perfil tudo-desligado as desliga. A soma só é legítima se a contribuição
+delas for zero, e **isso deixa de ser suposição**: o contador roda na célula-base de cada âncora e
+diz quantas vezes a pré-condição de cada bandeira ocorreu. Zero ocasiões, contribuição zero, e o
+relatório declara isso em vez de assumir.
 
 **A regra de leitura, para o relatório:**
 
-1. a conferência de aditividade aparece **uma vez**, rotulada **"âncora extrema"**, e nunca como
-   número da bateria inteira;
-2. ela lista os 15 deltas, com os 6 marcados `não exercitada` entrando como **zero declarado**, e não
-   como zero medido. A discrepância é reportada em número absoluto **e** como fração do efeito de
-   tudo-desligado;
-3. o alcance real é dito na mesma página: a aditividade é verificada sobre **nove** bandeiras
-   (`margem`, `bloqueio`, `teto6` e as seis do núcleo) e é trivial sobre as outras seis;
-4. o **tudo-desligado da mediana** é lido como **um número só**, "o que as quinze juntas compraram na
-   cena mediana", e **nunca é decomposto**;
-5. se a discrepância da extrema for grande, o número único da mediana é a única evidência sobre se a
-   interação depende da cena, e ele é apresentado como observação, não como decomposição.
-
-**O preço de estender a conferência à mediana**, se um dia interessar: medir `margem`, `bloqueio` e
-`teto6` também lá, **+3 células**, grade a 112. Registrado e não tomado.
+1. a conferência aparece **duas vezes**, rotulada **"âncora extrema"** e **"âncora mediana"**, e
+   nunca como número único da bateria;
+2. cada uma lista os deltas que valem lá, com os não medidos entrando como **zero declarado pelo
+   contador de ocasiões**, e não como zero medido. A discrepância vai em número absoluto **e** como
+   fração do efeito de tudo-desligado;
+3. o alcance real é dito na mesma página: na extrema a aditividade é verificada sobre **nove**
+   bandeiras e é trivial sobre seis; na mediana, sobre **nove** e trivial sobre seis, e as nove não
+   são as mesmas nas duas;
+4. **a comparação entre as duas discrepâncias é a leitura que as três células compraram**: se a soma
+   fecha na mediana e não fecha na extrema, a interação existe e **depende da cena ser extrema**, que
+   é a pergunta da âncora dupla aplicada às bandeiras;
+5. se as duas discrepâncias forem grandes e parecidas, a interação é do conjunto e não da cena, e o
+   relatório diz de quanto é sem poder apontar o par culpado. Isso continua sendo limitação do
+   deixe-uma-de-fora, e não se conserta com célula.
 
 ### 6c · O que bloqueia o quê
 
@@ -628,7 +697,7 @@ em outra escala e não se leriam ao lado dos das âncoras.
 | **Bloqueia o começo da implementação** | **nada.** A Etapa 0 está inteiramente especificada: a branch congelada, a semente nos quatro pontos, o caminho do driver até ela e o despejo por Tick. Não há decisão pendente entre aqui e a primeira linha dela |
 | **Bloqueia a Etapa 1** (as nove bandeiras) | **uma coisa, e ela acabou de ser decidida:** o carimbo do perfil no encontro (§4a). Sem ele, a Etapa 1 sobe para uma mesa em que um encontro aberto pode mudar de regra no meio |
 | **Bloqueia a leitura do resultado, e não o começo** | a **linha da regra ⊕ na tabela de custo de tela** (F3), sem a qual o `modo2` sai sem custo de gesto · o **`aid` no caminho das criaturas** (F2), sem o qual metade das batalhas fica sem tempo morto · o **`n` final**, que só sai do piloto e pode encolher se o CV da métrica nova for menor (§3b) |
-| **Fechado** | os doze itens da §0.6.1 e a ordem entre eles · o critério de aceitação, com os dois espelhos separados · a grade, em 109 células conferidas bloco a bloco · as métricas, em três blocos com a régua do D8b no topo · as onze decisões D1 a D11 · os seis riscos F0 a F5, com sinal e perda escritos em cada um |
+| **Fechado** | os doze itens da §0.6.1 e a ordem entre eles · o critério de aceitação, com os dois espelhos separados · a grade, em 112 células conferidas bloco a bloco · as métricas, em três blocos com a régua do D8b no topo · as onze decisões D1 a D11 · os seis riscos F0 a F5, com sinal e perda escritos em cada um |
 
 **A resposta honesta à pergunta como você a formulou:** nada bloqueia o começo, é implementar a
 Etapa 0. E o que bloqueia a Etapa 1 é uma coluna que se escreve uma vez por encontro.
@@ -656,12 +725,12 @@ cinco inércias e as duas decisões novas (D10 e D11).
 | **§0.4 P4** | **reescrita como especificação única.** As regras de leitura da §0.47 entraram na lista ordenada, marcadas **⊙**, com a regra escrita de que o E9 desligado pula a ⊙ e cai para a seguinte. Entrou a regra de modo **⊕** (D11) nos cinco perfis. O Agressivo ganhou a regra ⊙ que estava decidida desde a `03` §1.4 e nunca aplicada |
 | **§0.4 P5** | entraram os **quatro arquétipos de criatura** (D10): esqueleto humano, aurochs, bulette e águia gigante, com porte, ciclo de ataque, passo e o que cada um exercita |
 | **§0.4 P6** | **E4 passa a ser definido por raça e armadura**, não por arquétipo, para não apagar o nível de E1 da célula. E ficou escrito quem preenche cada nível de E1, com o Duelista lutando só com a espada curta nas âncoras |
-| **§0.5** | entrou a linha do eixo **E11 · natureza do elenco**; E5 saiu do OFAT das âncoras; o total foi de 79 para **109 células** e de 39.500 para **54.500 batalhas**; entrou o sexto cruzamento (E11 × E3) |
+| **§0.5** | entrou a linha do eixo **E11 · natureza do elenco**; E5 saiu do OFAT das âncoras; o total foi de 79 para **112 células** e de 39.500 para **56.000 batalhas**; entrou o sexto cruzamento (E11 × E3) |
 | **§0.6.1, a ordem** | **reescrita.** Entrou a **Etapa 0 · Instrumentação** (branch congelada, semente, caminho do driver, despejo por Tick), as quatro etapas seguintes com as dependências explícitas, e a separação do **espelho de inércia** e do **espelho de motor** no critério de aceitação. Caíram as duas frases que contradiziam a D5 e a §0.8.2 ("o 11 vale por último" e "o 6 depende da migração") |
 | **§0.6.1 item 11 e §0.6** | 16 bandeiras viraram **15**; a linha da `couraca` saiu da tabela, com o motivo (`gen-bestiario.mjs:36-45`); o `n5` deixou de ser listado como pendente |
 | **§0.7** | título e contagem: **quinze** bandeiras, **17** perfis de E5; entrou a linha do que saiu e por quê; entrou a regra de onde cada comparação roda |
-| **§0.10.1 e §0.10.2** | **a grade oficial refeita**: 109 células, 54.500 batalhas, a tabela de como cada bloco se lê, as duas âncoras diferindo em **exatamente um** fator (as duas passam a rodar Agressiva), o nível de E10 em que elas se sentam, e a tabela de qual célula hospeda cada bandeira |
-| **§3** | os totais riscados foram atualizados para 109 células e 54.500 batalhas; a estimativa de volume de log foi de 500 MB para 600 MB |
+| **§0.10.1 e §0.10.2** | **a grade oficial refeita**: 112 células, 56.000 batalhas, a tabela de como cada bloco se lê, as duas âncoras diferindo em **exatamente um** fator (as duas passam a rodar Agressiva), o nível de E10 em que elas se sentam, e a tabela de qual célula hospeda cada bandeira |
+| **§3** | os totais riscados foram atualizados para 112 células e 56.000 batalhas; a estimativa de volume de log foi de 500 MB para 600 MB |
 | **§2.6** | **reescrita inteira** (bloco 3): a régua do D8b subiu para o topo, a tabela única virou três blocos (principais por etapa · contexto por batalha · diagnóstico do motor), as seis métricas da R4 §A.2 entraram, e entrou o **contador de ocasiões**, que impede um zero de âncora de ser lido como "a bandeira não faz nada" |
 | **§3, as previsões** | as cinco reescritas na unidade do D8b, com a versão anterior citada em cada uma. E a conta das 500 repetições, que era o pior caso da unidade errada: ela saía do CV de paradas **por batalha** e passou a sair do de paradas **por Tick**, com a consequência escrita de que o `n` da média pode encolher |
 | **§0.4 D4 e §4** | duas passagens que o D8b tornou falsas ganharam nota: a de que descartar a batalha não terminada enviesa "justamente a carga", e a de que sem morte não há nada |
@@ -690,24 +759,48 @@ tela que a regra ⊕ acrescentou e a tabela de custo não cobra).
 
 O `05-fechamento.md` entrou na tabela de documentos; **L2** foi de 16 para 15 bandeiras com o motivo
 da `couraca`; **L5** virou `[PRIMEIRO]` e passou a cobrir a instrumentação inteira, não só a semente;
-**L6** foi para 109 células, 54.500 batalhas, piloto nas duas âncoras e elenco com criaturas; e
+**L6** foi para 112 células, 56.000 batalhas, piloto nas duas âncoras e elenco com criaturas; e
 entrou o **L8**, a fusão das duas especificações de política.
+
+---
+
+### O fechamento final, em cima de tudo isso
+
+| Onde | O que mudou |
+|---|---|
+| **§B deste documento** | reescrita: duas linhas descreviam o estado de antes de a rodada terminar (o "item 3 vazio", que virou as §§3 a 6 daqui, e o `teto6` "sem saber se morde", resolvido pelo contador da §3d) |
+| **§6b, e a grade em quatro arquivos** | as três células da mediana entram por decisão sua, a grade vai a **112** e **56.000 batalhas**, e a conferência de aditividade passa a valer **nas duas âncoras**, licenciada pelo contador de ocasiões. O número foi conferido bloco a bloco e propagado para **21 lugares** em 5 arquivos |
+| **§2.6 e §0.4 P4 do `02`** | o contador de ocasiões passa a cobrir também as **regras ⊙ e ⊕ das políticas**, com a mesma tabela de leitura |
+| **§6a, e §0.10.1 do `02`** | a hospedeira do `gate` ganha etiqueta obrigatória (`termina por desistência-20 · delta máximo por construção`), a regra da etiqueta vira mecânica pelo `cena.fim.motivo`, e a varredura achou o segundo desvio: a hospedeira do Conjurador tem **política mista**, senão as três bandeiras que ela hospeda voltam a ser inertes |
+| **F0, no `04` e na ordem do `02`** | o carimbo do perfil vira o item **1.0** da Etapa 1, e ganha as duas propriedades que faltavam: **visível** e **recarimbável**. Zero gravação por Tick, confirmado |
+| **F1, no `04`** | conferida a procedência da resposta: veio de sessão, em 02/09, com as quatro opções e o contra-argumento. Mantida |
+| **`Pendencias.md`** | L6 com a grade nova, L9 com as três propriedades do carimbo |
 
 ---
 
 ## B · O que continua aberto
 
-Nada do que esta rodada tocou. O que segue aberto é o que já estava:
+*Reescrita no fechamento final: duas linhas descreviam o estado de antes de a rodada terminar.*
 
-- **o item 3 do pedido**, que chegou vazio;
-- **N7 e N8 sem verificação automatizável** (D3), que só uma sessão de mesa fecha;
-- **o `teto6` sem saber se morde**, que não é inércia estrutural e sim falta de instrumento: ele vai
-  para a âncora extrema com um contador de quantas vezes o teto de fato mordeu, e se o contador der
-  zero a comparação é declarada inconclusiva em vez de nula;
-- **nada dos riscos**: os seis estão escritos, com sinal e perda, e os cinco que mudaram nesta
-  rodada estão registrados (§2.5 C4 e §4).
+- **N7 e N8 sem verificação automatizável** (D3). Continua aberto, e só uma sessão de mesa fecha:
+  "o jogador vê a intenção do outro" e "o rastro é legível" não são asserções;
+- **o `n` final**, que só sai do piloto, e que pode encolher se o CV de paradas por Tick vier abaixo
+  de 0,5 (§3b);
+- **a linha da regra ⊕ na tabela de custo de tela** (F3) e **o `aid` no caminho das criaturas**
+  (F2). As duas bloqueiam a leitura, não o começo.
 
-E o que **não** está aberto, dito de uma vez porque foi a pergunta do bloco 6: **nada bloqueia o
-começo.** A Etapa 0 está inteiramente especificada, a Etapa 1 depende de uma coluna que se escreve
-uma vez por encontro, e as três coisas que faltam (a linha da ⊕ na tabela de custo, o `aid` no
-caminho das criaturas, e o `n` final) bloqueiam a **leitura** e não o começo.
+**Duas linhas saíram, porque tinham deixado de ser verdade dentro deste mesmo documento:**
+
+| Dizia | Por que saiu |
+|---|---|
+| "o item 3 do pedido, que chegou vazio" | os blocos 3 a 6 chegaram e são as §§3 a 6 **deste documento**. A linha descrevia o estado de três seções antes |
+| "o `teto6` sem saber se morde" | resolvido pelo **contador de ocasiões** da §3d, escrito três seções antes: zero ocasiões imprime `não exercitada`, e o contador diz quantas vezes os modificadores passaram de 6 |
+
+**E a varredura das outras linhas de status**, que era a segunda metade do pedido: a §6c foi conferida
+e continua valendo palavra por palavra (nada bloqueia o começo; a Etapa 1 depende do carimbo; três
+coisas bloqueiam a leitura). A linha "nada dos riscos" também continua valendo, agora com **seis**
+riscos escritos. O cabeçalho do documento, que dizia que o pedido chegou cortado, já tinha sido
+reescrito quando os blocos chegaram.
+
+**O que não está aberto, dito de uma vez:** nada bloqueia o começo. A Etapa 0 está inteiramente
+especificada, e é a próxima coisa a acontecer.

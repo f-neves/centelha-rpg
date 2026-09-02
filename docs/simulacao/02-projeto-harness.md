@@ -334,6 +334,10 @@ que a posição da regra de leitura na ordem importa sem dizer qual era (fusão 
 | **Guarda-costas** | 1 ⊙. se há golpe declarado caindo no Tick em que o aliado protegido está aberto: mover para interpor, em vez de atacar. 2. escolher como alvo o inimigo mais próximo do meu aliado com menos Vida. 3. se esse inimigo está no meu alcance: atacar `segura`. 4. senão: mover em `batalha` para a casa entre ele e o aliado. 5. nunca abortar. **⊕** |
 | **Conjurador** | 1. se um aliado está abaixo de 50% de Vida e no alcance: Cura. 2 ⊙. contar quantos declararam golpe para o mesmo Tick: se 2 ou mais e agrupados, zona (`corrente` ou `brasa-retardada`). 3. se há 2 ou mais inimigos a ≤ 2 hexes um do outro: `corrente` ou `brasa-retardada`. 4. se há 1 inimigo em alcance: `projetil-conjurado`. 5. se há inimigo a ≤ 2 hexes de mim: `empurrao-elemental`. 6. senão: mover em `batalha` para trás do aliado mais próximo. **⊕** |
 
+**Cada regra ⊙ e a regra ⊕ carregam um contador de ocasiões**, por célula (§2.6): quantas vezes a
+condição da regra ocorreu. Sem ele, uma política cuja regra de leitura nunca tem o que ler produz o
+mesmo zero que uma política em que a leitura não adianta nada, e o E9 sai inerte sem avisar.
+
 Com **N8** (§0.48) as regras ⊙ passam a poder usar também o **alvo do corpo a corpo** ("já tem
 alguém indo nele, escolho outro"), e continuam sem poder usar o alvo de tiro, arremesso e Arte, que
 fica escondido até resolver. As políticas ficam honestas por construção, e a mesma roda para o mestre
@@ -926,8 +930,8 @@ combinações. O orçamento que aperta continua sendo o mesmo da §3: o que se c
   **E9 × E10**, porque os dois mexem na mesma coisa (quem vê o quê antes de declarar), e
   **E11 × E3**, que é a cena que a mesa de verdade joga: uma horda de bicho contra os PCs.
   **6 células.**
-- Total: **109 células**, discriminadas na **§0.10.1**, que é a grade oficial. A 500 repetições,
-  **54.500 batalhas**, mais o reforço de 2.000 nas células de cauda (as de E4 e a de uníssono com
+- Total: **112 células**, discriminadas na **§0.10.1**, que é a grade oficial. A 500 repetições,
+  **56.000 batalhas**, mais o reforço de 2.000 nas células de cauda (as de E4 e a de uníssono com
   horda). Pela medição da `03-respostas.md` §4.2, isso é da ordem de 50 segundos de máquina. A
   justificativa das 500 e das 2.000 é a da §3 e não muda.
 
@@ -1345,10 +1349,29 @@ Nada é provável antes dela, e ela não muda comportamento nenhum.
 | **0.3** | **O caminho do driver até a semente**: a página aceita a semente por parâmetro, como já aceita `?tempo=simultaneo` | o item 12 injeta no módulo, e nada ligava o módulo ao `puppeteer` que dirige a página |
 | **0.4** | **O despejo por Tick**: os campos da `03-respostas.md` §1.1.1 mais **o que a folha calculou** (o `fer` de `grid.astro:7435`, a Pressão, a distância) | é o instrumento dos dois espelhos **e** da prova do item 6, e hoje esses números só existem dentro do modal |
 
-#### Etapa 1 · As nove bandeiras que não dependem do núcleo
+#### Etapa 1 · O carimbo do perfil, e depois as nove bandeiras que não dependem do núcleo
 
-Cada uma com o espelho de inércia contra a branch da Etapa 0, e `test-contrato.mjs` /
-`test-quase-acerto.mjs` reescritos **no mesmo commit** da bandeira que os invalida.
+**1.0 · O carimbo, antes da primeira bandeira.** Uma coluna `encontros.perfil jsonb`, escrita **uma
+vez** na criação do encontro e lida por ele dali em diante. Sem ela, um deploy troca o `regras.json`
+debaixo de um encontro aberto e a Defesa de uma peça muda entre dois Ticks da mesma cena, que é o
+quarto sinal do risco **F0** e o único que nenhum teste pega. Se a primeira bandeira subir antes do
+carimbo, ela sobe para uma mesa desprotegida, e por isso este é o item 1.0 e não o 1.10. Três
+propriedades, e a terceira foi acrescentada no fechamento final:
+
+- **zero gravação por Tick.** Uma escrita na criação do encontro, mais uma por recarimbagem
+  deliberada. A leitura sai da linha do encontro, que já está carregada, e a comparação com o perfil
+  de produção é entre esse `jsonb` em memória e o `regras.json` que já vem no pacote. Nenhuma
+  consulta nova, nem no avanço do Tick nem fora dele;
+- **visível.** O perfil carimbado aparece na tela do encontro, e diz quando ele **difere** do perfil
+  de produção. Sem isso o congelamento é invisível, e um encontro esquecido roda o perfil antigo para
+  sempre sem ninguém entender por que o Bloqueio "quebrou";
+- **recarimbável.** O mestre pode recarimbar de propósito, com o perfil corrente, numa ação
+  explícita. É o que transforma o carimbo de armadilha em ferramenta: quem quiser as regras novas
+  numa cena velha aperta o botão, e quem não quiser não é atropelado no meio de um Tick.
+
+**1.1 a 1.9 · As nove bandeiras**, cada uma com o espelho de inércia contra a branch da Etapa 0, e
+`test-contrato.mjs` / `test-quase-acerto.mjs` reescritos **no mesmo commit** da bandeira que os
+invalida.
 
 #### Etapa 2 · O núcleo do Tick
 
@@ -1614,7 +1637,7 @@ comum, esta linha vira a primeira coisa a consertar depois.
 | **Paralelismo** | a semente já é `hash64(semente_mestre, cenario_id, repeticao)` (§2.4), ou seja **cada batalha é independente de todas as outras por construção**. Um processo recebe uma faixa de índices de batalha, calcula as próprias sementes e escreve o próprio arquivo `.jsonl`; nada é compartilhado e nada precisa de trava. Os arquivos são concatenados no fim, e a ordem entre eles não importa porque cada linha carrega o `b` da batalha |
 
 **Um número para dimensionar:** a §2.5 estima 100 a 150 registros por duelo, ~120 bytes cada. Uma
-batalha guarda algo entre 12 e 18 KB em memória antes de gravar, e a bateria inteira de 54.500
+batalha guarda algo entre 12 e 18 KB em memória antes de gravar, e a bateria inteira de 56.000
 batalhas gera da ordem de 600 MB de log completo. Por isso a §2.5 já previa dois níveis de saída:
 log completo para uma amostra declarada, contadores agregados para todas.
 
@@ -1655,7 +1678,7 @@ coluna diz o estado de cada uma.
 | 2 | O golpe fora de alcance (V5) vira regra? A `03` §3.1 registra a decisão na própria linha do invariante, e a §6.3 continua perguntando | `03` §3.1 × §6.3 | **fechada:** a §6.3 passou a dizer RESPONDIDA |
 | 3 | Qual é a rota da linha de base? A `02` §0.7 registra "Decidido: bandeiras", e a `03` §2.4 apresenta as duas rotas como **DECISÃO SUA** e não escolhe | `02` §0.7 × `03` §2.4 | **fechada:** a rota é a **B**, confirmada no chat, e a grade oficial e o piloto único estão na §0.10. A `03` §2.4 ganhou a nota |
 | 4 | E6 tem cinco ou seis políticas? A `03` §1.3 responde "seis" e a §1.4, três parágrafos abaixo, transforma a cega em interruptor e devolve o eixo a cinco | `03` §1.3 × §1.4 | **fechada:** são **cinco**, a §1.3 foi corrigida e o 02 §0.5 já estava certo |
-| 5 | Quantas células tem a grade? A `03` §1.2 responde "60", e ela cresceu duas vezes depois disso | `03` §1.2 × `02` §0.10 | **fechada:** a grade oficial é a da **§0.10.1**, com **109 células** depois da recontagem de 02/09, e a `03` §1.2 ganhou a nota dizendo o que mudou |
+| 5 | Quantas células tem a grade? A `03` §1.2 responde "60", e ela cresceu duas vezes depois disso | `03` §1.2 × `02` §0.10 | **fechada:** a grade oficial é a da **§0.10.1**, com **112 células** depois da recontagem de 02/09, e a `03` §1.2 ganhou a nota dizendo o que mudou |
 | 6 | N5 fica de fora da linha de base? A `03` §2.4 diz que sim "de qualquer jeito", e o 02 §0.7 já resolve com a bandeira cobrindo só a ordem inversa | `03` §2.4 × `02` §0.7 | **fechada:** a linha da §2.4 foi corrigida |
 | 7 | O retrato de N6 é gravado ou é memória? O item 6 da §0.6.1 propunha a coluna `encontros.retrato jsonb`, e a §0.8.1 proíbe gravação nova no avanço | `02` §0.6.1 item 6 × §0.8.1 | **fechada:** memória, e a tela avisa na saída (§0.8.2). A migração 29 perdeu a coluna |
 | 8 | O cabeçalho lista como abertas as perguntas 2, 4 e 5 da `03`, mas as 1 e 3 estavam decididas no corpo da `03` e ainda abertas na §6 dela | `02` cabeçalho × `03` §6 | **fechada** pelas linhas 1 e 2 desta tabela |
@@ -1693,22 +1716,23 @@ criaturas**, D10, e **sete comparações de bandeira não podiam morder na ânco
 | E5 · o perfil todo desligado, nas duas âncoras | **2** | 1 linha, 2 colunas |
 | E5 · as nove bandeiras não-núcleo, **na âncora extrema**, que é a referência única do F5 | **9** | 9 linhas |
 | E5 · as **seis** que não moram na âncora, medidas **também na hospedeira**, onde elas mordem | **6** | 6 linhas |
+| E5 · `margem`, `bloqueio` e `teto6` **também na mediana**, para a aditividade fechar nas duas âncoras | **3** | 3 linhas |
 | Células hospedeiras novas: a do **Conjurador de adaga** e a do **Lanceiro de lança** | **2** | |
 | Níveis de controle (D6 e D7) | **2** | 2 linhas |
 | Cruzamentos deliberados | **6** | 6 linhas |
-| **Total** | **109** | |
+| **Total** | **112** | |
 
 | | |
 |---|---|
 | Repetições | 500 por célula, e 2.000 nas de cauda |
-| **Batalhas** | **54.500**, mais o reforço |
+| **Batalhas** | **56.000**, mais o reforço |
 | Tempo de máquina | da ordem de 50 segundos, pela §4.2 da `03-respostas.md` |
 
 **Por que não estourou o orçamento de leitura.** A §3 nunca limitou a grade por máquina: *"o
 orçamento não é a máquina, é o que se consegue ler"*, com o aviso de que 144 células já são mais
 tabelas do que se lê numa sentada. Aquele aviso contava célula como linha, porque a grade era
 fatorial. Aqui a segunda âncora **não custa uma linha nova, custa uma coluna**, e o núcleo cruzado se
-lê como três grades e não como 48 linhas. O leitor enfrenta 3 grades de 4×4 e cerca de 47 linhas de
+lê como três grades e não como 48 linhas. O leitor enfrenta 3 grades de 4×4 e cerca de 50 linhas de
 comparação. O que quase reprovou não foi a âncora dupla: foi medir as bandeiras duas vezes cada em
 células onde catorze das comparações davam zero por construção.
 
@@ -1754,6 +1778,21 @@ para que **todos os deltas saiam da mesma referência** e a soma deles possa ser
 perfil todo-desligado. As seis leituras extras são **zero por construção**, e é justamente por isso
 que a conferência de aditividade só tem força sobre as nove que mordem lá: `margem`, `bloqueio`,
 `teto6` e as seis do núcleo do Tick.
+
+**As hospedeiras, e onde elas desviam da âncora.** Elas copiam a forma da âncora extrema (3×3, 18
+hexes, campo aberto, com leitura, peça entrando no Tick seguinte) e trocam só as peças, para os
+números saírem na mesma escala. Duas desviam, e o desvio é declarado:
+
+| Hospedeira | Desvia em | Etiqueta obrigatória no relatório |
+|---|---|---|
+| **do `gate`** · Lanceiro de lança × Montanteiro de placa completa | o **modo de término**: com `gate` ligado o Lanceiro nunca fere, e a batalha fecha por **desistência a 20%**, não por morte | `termina por desistência-20 · delta máximo por construção`. A célula responde "o `gate` morde", não "quanto ele custa numa cena normal" |
+| **do Conjurador** · Conjurador de adaga × Escudeiro de malha | a **política**: é mista (Conjurador de um lado, Agressiva do outro). Com Agressiva dos dois lados ninguém conjuraria e as três bandeiras que ela hospeda voltariam a ser inertes | `política mista · o E6 não é comparável a partir dela` |
+
+Uma hospedeira serve só para **deltas dentro dela mesma** (o perfil cheio contra o cheio-menos-uma,
+na mesma célula) e nunca para comparação entre células, e é por isso que os dois desvios não
+contaminam nada. E a etiqueta é **mecânica**: toda célula reporta a distribuição de `cena.fim.motivo`
+(D2), e qualquer uma cujo motivo dominante seja diferente do das âncoras recebe a etiqueta, sem
+depender de alguém prever qual será.
 
 **Os seis cruzamentos deliberados:** E1(uníssono) × E3(horda) · E1(uníssono) × E4(assimétrico) ·
 E2(muito longa) × E4 · E5 × E1(uníssono) · E9 × E10 · e **E11 × E3**, a horda de bicho contra os
@@ -2339,6 +2378,18 @@ Não é o delta, é a ocasião. Sai do agregado da §2.5 e custa um inteiro por 
 | **> 0** | ≈ 0 | **`0,0 em n ocasiões`**: a regra foi acionada e não mudou o resultado. Isto sim é um achado |
 | **> 0** | ≠ 0 | o número, com o intervalo |
 
+**O contador vale igual para as regras das políticas** (decidido no fechamento final). As regras ⊙
+(leitura) e ⊕ (modo) da §0.4 P4 têm exatamente o mesmo problema das bandeiras: se a regra ⊙ do
+Agressivo tiver **zero ocasiões** numa âncora, o eixo E9 volta a ser inerte ali e o delta não avisa,
+porque um delta zero de um interruptor que nunca teve o que ligar é indistinguível de um interruptor
+que não faz diferença. Então: **um contador por regra de política, por célula**, com a mesma tabela
+de leitura acima. Zero ocasiões imprime `não exercitada`, e nunca um número.
+
+Isso fecha um buraco que esta frente já pisou duas vezes: a regra ⊙ do Agressivo esteve decidida e
+não aplicada por várias rodadas (`05-fechamento.md` §2.2), e ninguém teria percebido pelo resultado,
+porque o resultado era zero dos dois lados. Com o contador, o mesmo erro sai do relatório como
+`não exercitada` e aponta para a política, não para o eixo.
+
 Três consequências que valem a pena estar escritas:
 
 - **o `teto6` deixa de estar em "não se sabe"**: o contador diz quantas vezes os modificadores
@@ -2408,7 +2459,7 @@ todos os golpes.
 
 ~~Com E1×E2×E3×E4 são **72 células**; com E5 em dois níveis, 144.~~ **Superado:** a tabela de eixos
 acima é a proposta original, e a §0.5 tem a valendo (E2 ganhou um quarto nível, entraram E7 e E9,
-E5 foi a 17 perfis, E6 ficou em 5 e entraram o E10 e o E11). A grade é de **109 células** (§0.10.1), depois de E5 sair do OFAT das âncoras e entrarem o E11 e as células hospedeiras. A justificativa das repetições,
+E5 foi a 17 perfis, E6 ficou em 5 e entraram o E10 e o E11). A grade é de **112 células** (§0.10.1), depois de E5 sair do OFAT das âncoras e entrarem o E11 e as células hospedeiras. A justificativa das repetições,
 logo abaixo, não depende do número de células e continua valendo inteira.
 
 **Quantas repetições, e por quê.** O número não sai de "1000", sai de duas contas:
@@ -2435,7 +2486,7 @@ logo abaixo, não depende do número de células e continua valendo inteira.
   Ticks vazios têm **uma observação por Tick**, não por batalha: uma célula de 500 batalhas de 45
   Ticks dá 22.500 observações. Essas métricas já estão saturadas bem antes de 500.
 
-~~Total da grade base: 72 × 500 = **36.000 batalhas**~~, e pela §0.10.1 são **54.500**, mais o
+~~Total da grade base: 72 × 500 = **36.000 batalhas**~~, e pela §0.10.1 são **56.000**, mais o
 reforço da cauda. Pela R2 §D1 isso seriam
 segundos de máquina na bancada; o harness com mapa será mais caro (a R2 §D3 registra o custo de
 `caminharHex` como **NÃO MEDIDO**), e mesmo dez vezes mais caro continua sendo minutos. **O
