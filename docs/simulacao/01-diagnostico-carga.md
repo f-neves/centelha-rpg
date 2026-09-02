@@ -520,10 +520,15 @@ N(T) = #{ i : (T − D_i − 1 − max(P_i, V_i)) ≡ 0  (mod ciclo_i) }
 ```
 
 ou seja, é **emergente por congruência**: duas peças com o mesmo ciclo e o mesmo Tick de entrada
-colidem **sempre**, e peças de ciclos diferentes colidem no mínimo múltiplo comum. Com as
-Velocidades do catálogo (4, 5, 6, 7), o m.m.c. de 5 e 6 é 30 e o de 6 e 7 é 42: dentro de um
-combate de 37 a 47 Ticks (medido na §D1), pares de ciclos diferentes colidem uma ou duas vezes, e
-pares de ciclo igual colidem **em todos os golpes**.
+colidem **sempre**, e peças de ciclos diferentes colidem no mínimo múltiplo comum.
+
+> **Correção de 02/09** (medida ao responder a pergunta "quando a ação começa", `02-projeto-harness.md`
+> §0.45): o módulo não é `ciclo_i`, é **`ciclo_i + 1`**. Uma peça que declara de novo no Tick em que
+> fica livre paga o Tick de `decideEmValeDepois` outra vez, e ele entra no período. Os períodos reais
+> do catálogo são leve **6**, média/haste/distância **7** e pesada **8**, e não 5, 6 e 7. Com eles, o
+> único par não coprimo é (6, 8), m.m.c. **24**; adaga × espada longa passa a ser 6 e 7, m.m.c. 42, e
+> espada longa × montante 7 e 8, m.m.c. 56. A conclusão qualitativa não muda (ciclo igual colide
+> sempre, ciclo diferente colide no m.m.c.), os números mudam todos.
 
 ### H2. A re-projeção empilha ou espalha
 

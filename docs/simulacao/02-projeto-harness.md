@@ -269,6 +269,60 @@ penalidade da armadura. O par é escolhido calculando `deslocamento()` para os c
 primeiro com razão ≥ 2, e os candidatos naturais são o Montanteiro orc de placa completa (pen 3) de
 um lado e o Duelista elfo de couro (pen 1) do outro. O nível "simétrico" usa dois Escudeiros.
 
+### 0.45 Quando a ação começa, e as duas correções que a pergunta forçou
+
+**A ação declarada no Tick T começa em T+1.** Está escrito e é deliberado:
+`regras.json → combate.simultaneo.decideEmValeDepois: 1`, com a nota "a ação declarada no Tick T
+começa em T+1... decisão no Tick, efeito no avanço", e o `Combate_Simultaneo.md:124-127` repete.
+`agendaSimultanea` faz `inicio = tickDecl + 1` e todo o resto pendura nisso.
+
+Fui conferir e saíram duas coisas que ninguém tinha olhado.
+
+**Correção 1 · o período real entre golpes é `ciclo + 1`, não `ciclo`.** Uma peça que declara de novo
+no Tick em que fica livre paga o Tick de decisão outra vez, e ele entra no período. Medido
+empacotando `combate-tempo.ts` e encadeando cinco declarações:
+
+| Classe | `ciclo` (a Velocidade da arma) | Ticks entre golpes, de verdade |
+|---|---:|---:|
+| leve | 5 | **6** |
+| média | 6 | **7** |
+| haste | 6 | **7** |
+| distância | 6 | **7** |
+| pesada | 7 | **8** |
+
+Isso corrige a forma fechada da R2 §H1, cujo módulo é `ciclo_i + 1` e não `ciclo_i`, e refaz os
+níveis de E1 (§0.4 P6), porque os mínimos múltiplos comuns mudam todos. Com os períodos reais, o
+catálogo tem 5, 6, 7 e 8, e o único par **não** coprimo é (6, 8):
+
+| Nível de E1 | Armas | Períodos | m.m.c. | Colisões numa batalha de 37 a 47 Ticks |
+|---|---|---|---:|---|
+| **a · uníssono** | espada longa × espada longa | 7 e 7 | 7 | **todos** os golpes |
+| **b · colisão curta** | adaga × montante | 6 e 8 | **24** | duas |
+| **c · coprimos** | espada longa × montante | 7 e 8 | **56** | nenhuma ou uma |
+| **d · os quatro** | dardos · adaga · espada longa · montante | 5, 6, 7, 8 | 840 | esparsas, sem padrão |
+
+O nível (b) mudou de arma: com o período real, adaga e espada longa (6 e 7) são coprimos e não
+servem mais como "vizinhos". O único par do catálogo que colide com frequência sem ser uníssono é
+adaga × montante.
+
+**Correção 2 · a guarda abre um Tick antes da ação.** `faseEm` não olha o campo `desde`: ela decide
+pela agenda, e todo Tick anterior ao primeiro golpe lê `preparo` (`combate-tempo.ts:595-606`). Uma
+espada longa declarada no Tick 10 golpeia no 12 e fica livre no 17, mas a escada cobra assim:
+
+```
+Tick    9    10    11    12    13    14    15    16    17
+fase   prep  prep  prep  GOLPE  rec   rec   rec   rec  livre
+Defesa  −2    −2    −2    −4    −2    −2    −2    −2     0
+```
+
+A ação vive 7 Ticks (11 a 17) e a guarda fica aberta 8 (10 a 17). Quem declara paga **−2 no próprio
+Tick da declaração**, antes de a ação existir. Na prática isso importa em dois lugares: o golpe que
+vence no mesmo Tick T em que o alvo declarou o encontra já aberto, e como `grupoDaVez` devolve todos
+os livres de uma vez, o mestre declara a cena inteira no Tick T e a cena inteira fica a −2 nele.
+
+Não achei registro de decisão sobre isso em `Combate_Simultaneo.md` nem no `regras.json`. É uma
+pergunta de regra, e está na lista do que falta decidir.
+
 ### 0.5 A grade, refeita com as respostas
 
 | Eixo | Níveis | Custa célula? |
