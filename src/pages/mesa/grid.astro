@@ -4942,16 +4942,41 @@ const SETAS = [
    * é N4 e ainda não foi escrita; e o par (Tick antes, Tick depois) de cada
    * deslize, que sai do mesmo lugar. Cada um desses entra com o item que o cria.
    */
+  /**
+   * O teto do despejo, com descarte do começo.
+   *
+   * Uma batalha que não fecha (o eixo E4 inteiro) enche isto para sempre, e o
+   * teto de segurança da bateria é de 2.000 Ticks (§0.8.7). Guardar os últimos
+   * 2.000 mantém a memória limitada e o `descartados` diz que a leitura está
+   * truncada: quem compara espelho a partir do Tick 1 tem de conferir esse
+   * campo antes, senão compara duas caudas e acha que bateu.
+   */
+  const DESPEJO_TETO = 2000;
+
   function despejarTick(T: number) {
     if (!DESPEJO_LIGADO) return;
-    const W = window as any;
-    if (!W.__DESPEJO) {
-      W.__DESPEJO = {
-        semente: SEMENTE, semeado: semeado(),
-        arena: ARENA?.id || null, encontro: ENC?.id || null,
-        ticks: [] as any[],
-      };
+    // TRY/CATCH em volta de tudo: isto é instrumento de bancada, e uma exceção
+    // aqui derrubaria o avanço do Tick, que é o motor da cena. Um despejo que
+    // falha vira um contador; um avanço que falha vira uma mesa parada.
+    try {
+      const W = window as any;
+      if (!W.__DESPEJO) {
+        W.__DESPEJO = {
+          semente: SEMENTE, semeado: semeado(),
+          arena: ARENA?.id || null, encontro: ENC?.id || null,
+          descartados: 0, erros: 0,
+          ticks: [] as any[],
+        };
+      }
+      despejarTickInterno(T, W.__DESPEJO);
+    } catch (e) {
+      const W = window as any;
+      if (W.__DESPEJO) W.__DESPEJO.erros++;
+      console.warn('despejo do Tick falhou, e o avanço segue:', e);
     }
+  }
+
+  function despejarTickInterno(T: number, D: any) {
     const pecas = naFila().map((c: any) => {
       const a = acaoNo(c);
       const t = TOKENS[c.id];
@@ -4974,7 +4999,8 @@ const SETAS = [
           : null,
       };
     });
-    W.__DESPEJO.ticks.push({ t: T, fila: pecas.map((p: any) => p.id), pecas });
+    D.ticks.push({ t: T, fila: pecas.map((p: any) => p.id), pecas });
+    while (D.ticks.length > DESPEJO_TETO) { D.ticks.shift(); D.descartados++; }
   }
 
   async function avancarTickSimultaneo() {

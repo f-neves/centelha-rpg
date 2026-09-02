@@ -95,6 +95,8 @@ try {
   ok(t0?.pecas?.every((p) => p.id && 'fase' in p && 'defesaPerdida' in p && 'q' in p),
     'e cada peça traz id, fase, Defesa perdida e posição');
   ok(t0?.fila?.length === t0?.pecas?.length, 'a fila do Tick tem o mesmo tamanho da lista de peças');
+  ok(a.despejo?.erros === 0, `nenhum Tick falhou no despejo (${a.despejo?.erros})`);
+  ok(a.despejo?.descartados === 0, `e nada foi descartado pelo teto em 6 Ticks (${a.despejo?.descartados})`);
 
   // ---- 2: a mesma semente repete ----
   const b = await correr(br, url, 'semente=1234&despejo=1');

@@ -1372,7 +1372,15 @@ propriedades, e a terceira foi acrescentada no fechamento final:
   explícita. É o que transforma o carimbo de armadilha em ferramenta: quem quiser as regras novas
   numa cena velha aperta o botão, e quem não quiser não é atropelado no meio de um Tick.
 
-**1.1 a 1.9 · As nove bandeiras**, cada uma com o espelho de inércia contra a branch da Etapa 0, e
+**1.1 · O despejo da resolução, antes da primeira bandeira** (decidido em 02/09). O despejo da Etapa
+0 cobre agenda, tempo, geometria e rolagens, e **não cobre dano**: veredito, `errouPor`, Absorção e
+líquido só existem dentro do modal da folha. Sem ele, `margem` e `gate`, que são as duas que mais
+mexem em dano, entrariam **sem prova de inércia completa**, que é pagar o pior caso do F0 com as
+piores candidatas. Ele não é trabalho extra: já é pré-requisito do espelho de motor, do item 6 e da
+prova da semente dentro de uma resolução. O que ele antecipa do N6 é o **levantamento** dos pontos de
+leitura ao vivo, e não o retrato (`06-etapa-0.md` §3.4).
+
+**1.2 a 1.10 · As nove bandeiras**, cada uma com o espelho de inércia contra a branch da Etapa 0, e
 `test-contrato.mjs` / `test-quase-acerto.mjs` reescritos **no mesmo commit** da bandeira que os
 invalida.
 
@@ -1809,6 +1817,7 @@ PCs, que é a cena que a mesa de verdade joga.
 | Onde | **as duas âncoras** (D1), porque o CV pode não ser o mesmo na mediana e na extrema |
 | Quantas batalhas | **2.000** (o erro da estimativa do próprio CV é da ordem de `1/√(2n)`, ou ±1,6%, e sobra amostra para uma primeira leitura do p95) |
 | O que se mede | o CV de **paradas do mestre por Tick**, que virou a métrica principal com a régua da §D8b (a por batalha mistura carga com duração) |
+| E mais | **a variância do delta da bandeira `margem`**, nas duas âncoras, que é o que fixa o `n` das células de E5, separado do resto da grade (§2.4). O CV da métrica não serve para isso: quem decide a precisão de uma comparação é a variância da **diferença**, e o fluxo único a deixou maior |
 | Mais | as duas células de cauda (uníssono com horda, e o alvo mais rápido), 500 batalhas cada |
 | Quando | **depois** de N1 a N8 e das bandeiras estarem no motor: a duração muda com N1, e um CV medido antes descreve outro jogo |
 
@@ -2161,15 +2170,36 @@ argumento de que um fluxo único faz uma rolagem a mais deslocar todas as seguin
 verdadeiro e o efeito dele é **menor do que parecia**, e é isso que decidiu:
 
 - **o A/B continua sem viés.** Com um fluxo só, ligar uma bandeira que rola uma vez a mais faz as
-  duas execuções divergirem dali em diante, e elas viram **amostras independentes** da mesma
-  distribuição. Isso não desloca a média de lado nenhum: **custa precisão, não correção**;
-- **o que se perde é o pareamento**, que é uma técnica de redução de variância. Sem ele, a mesma
-  precisão pede mais batalhas. Quanto, só o piloto diz, e ele já é quem fixa o `n`;
+  duas execuções divergirem dali em diante. Isso não desloca a média de lado nenhum: **custa
+  precisão, não correção**;
+- **e elas não são independentes, são positivamente correlacionadas**, porque compartilham o
+  **prefixo** da sequência: tudo o que foi rolado antes da primeira divergência é idêntico nas duas.
+  Tratar o par como independente na hora de calcular o intervalo é **conservador**, ou seja, o
+  intervalo sai maior do que o verdadeiro e a conclusão é segura. É assim que o relatório vai
+  calcular, e é assim que ele vai dizer que calculou;
+- **o que se perde é o pareamento completo**, que é uma técnica de redução de variância. Sem ele, a
+  mesma precisão pede mais batalhas. Quanto, só o piloto diz;
 - **o espelho de inércia não precisa disso.** Ele roda com a bandeira **desligada dos dois lados**,
   então o número de rolagens é igual e os dois lados andam juntos de qualquer jeito.
 
 **A limitação fica escrita no relatório**, junto de cada comparação de bandeira: os deltas de E5 são
-**não pareados**, e o intervalo de cada um é o de duas amostras independentes, não o de um par.
+**parcialmente pareados**, e o intervalo de cada um é calculado como se fossem duas amostras
+independentes, que é a hipótese conservadora.
+
+**E daí sai uma tarefa nova para o piloto, que é o risco de verdade desta decisão.** O `n` da grade
+foi dimensionado pelo CV da **métrica** (§3), e o que decide a precisão de uma comparação de bandeira
+é a variância do **delta**, que é outra coisa. Some-se a isso a previsão da §3 de que o efeito de E5
+sobre a carga por Tick é **minúsculo**, e um delta pequeno com variância de duas amostras
+independentes pode precisar de um `n` muito maior que o das outras células. Então:
+
+> **O piloto passa a medir também a variância do delta de uma bandeira, nas duas âncoras**, e é dela
+> que sai o `n` das células de E5, separado do `n` do resto da grade. A bandeira a usar é a `margem`,
+> que é a maior das nove (R2 §F#1) e a que morde na âncora: se nem ela der delta destacável, nenhuma
+> das outras dará.
+
+**E se o `n` que sair dali for impraticável, a decisão do fluxo único volta ao chat.** Fica escrito
+para não virar um número que alguém arredonda em silêncio: o preço do fluxo único é pago em batalhas
+nas células de E5, e o piloto é quem diz quanto.
 
 **Ordem de iteração.** Com N4 e N5 (§0.46), a ordem dentro do Tick deixou de ser detalhe de
 implementação e virou regra: declara-se pela cadeia crescente e resolve-se pela inversa. O que esta

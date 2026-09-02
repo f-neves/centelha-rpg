@@ -92,12 +92,24 @@ no `acaso.ts` sem tornar impuro um arquivo que o harness vai empacotar para roda
 Tick**. É leitura pura do estado que já está em memória (`COMBS`, `TOKENS`, a agenda), então **não
 custa consulta nenhuma** e respeita o orçamento da P §0.8.
 
+**Duas proteções, acrescentadas depois da revisão:**
+
+- **`try/catch` em volta de tudo.** Isto é instrumento de bancada, e uma exceção aqui derrubaria o
+  avanço do Tick, que é o motor da cena. Um despejo que falha vira um contador (`erros`); um avanço
+  que falha vira uma mesa parada;
+- **teto de 2.000 Ticks, com descarte do começo.** É o mesmo teto de segurança da bateria (§0.8.7), e
+  existe porque uma batalha que não fecha (o eixo E4 inteiro) encheria isto para sempre. O campo
+  `descartados` diz quantos Ticks saíram pela frente: **quem compara espelho a partir do Tick 1 tem
+  de conferir esse campo antes**, senão compara duas caudas e acha que bateram.
+
 ```
-semente   int | null      a semente usada, ou null
-semeado   bool            se a fonte de acaso está trocada
-arena     id | null
-encontro  id | null
-ticks[]   { t, fila[], pecas[] }
+semente      int | null   a semente usada, ou null
+semeado      bool         se a fonte de acaso está trocada
+arena        id | null
+encontro     id | null
+descartados  int          Ticks que saíram pela frente ao bater o teto
+erros        int          Ticks em que o despejo falhou e o avanço seguiu
+ticks[]      { t, fila[], pecas[] }
 ```
 
 E por peça, em cada Tick:
@@ -148,17 +160,26 @@ parecia.
 | os **quatro caminhos** repetem sob a mesma semente | uma passada por `d6`, `rolarExpr`, `rolar` das Artes e `iniDeMonstro`, duas vezes, idêntica |
 | **cada um individualmente** passa pelo ponto de injeção | dez rolagens de cada, com duas sementes. Dez, e não uma: um dado tem seis faces, e comparar uma rolagem falharia por coincidência uma vez em seis |
 | sem semente, tudo volta a ser aleatório | `semear(null)` e duas passadas diferentes |
-| **nenhuma fonte nova entra em silêncio** | uma **varredura** de `src/lib`, com a lista explícita do que é permitido (id na ficha, id sem `crypto`, chave de presença). Quem acrescentar um `Math.random` tem de vir dizer por que não é combate |
+| **nenhuma fonte nova entra em silêncio** | uma **varredura** de `src/lib`, `src/pages` e `src/components` (98 arquivos), com a lista explícita do que é permitido. Quem acrescentar um `Math.random` tem de vir dizer por que não é combate |
 
 A varredura é a asserção que mais vale das quatro, e ela nasce de um erro real: **o `rolar` das Artes
-era uma segunda fonte de acaso com `Math.random` próprio, e ficou ali sem ninguém notar.** Um pacote
+era uma segunda fonte de acaso com `Math.random` próprio, e ficou ali sem ninguém notar.**
+
+**Ela olhava só `src/lib` e passou a olhar `src/pages` e `src/components` também**, o que era a
+correção certa pelo motivo certo: `src/lib` é a parte arrumada, e a resolução do combate mora em
+`grid.astro`, que é `src/pages`. **Estendida, ela achou um terceiro rolador de dados**:
+`src/components/RoladorDados.astro:46`, com `d6` próprio. Ele é rolador **de mão**, o que o jogador
+aperta, e está em `/rolador`, na ficha e na página `/mesa`; o Grid **não o importa**, e o harness
+nunca passa por ele. Entrou na lista de permitidos com essa justificativa escrita, que é o que faz
+dele uma decisão e não um esquecimento: se um dia ele for ligado à resolução, aquela linha é o lugar
+onde isso aparece. Um pacote
 só para os quatro módulos, e isso não é detalhe: bundles separados levariam cada um a sua cópia do
 estado do `acaso.ts`, e o teste passaria medindo módulos que não conversam.
 
 #### 3.2 · `test-etapa0.mjs`, no navegador, por `npm run etapa0`
 
 Dirige o Edge sobre a bancada (`astro.bancada.mjs`, com o mock de Supabase), rola a iniciativa e anda
-seis Ticks. **15 asserções, todas passando.** É ele que prova o que o outro não alcança: que o
+seis Ticks. **17 asserções, todas passando**, duas delas sobre o `erros` e o `descartados`. É ele que prova o que o outro não alcança: que o
 **caminho da URL** chega até o módulo, e que o **despejo** sai com a forma certa.
 
 | O que ele prova | Como |
@@ -209,6 +230,50 @@ uma rolagem a mais não deslocasse todas as seguintes num A/B. O argumento é ve
 menor do que parecia: com um fluxo só, as duas execuções viram **amostras independentes** da mesma
 distribuição, o que **custa precisão e não correção**. Fica um fluxo, e a limitação vai escrita junto
 de cada comparação de bandeira: os deltas de E5 são **não pareados**.
+
+---
+
+## 3.4 · A ordem da Etapa 1, e o que o despejo da resolução obriga
+
+**DECIDIDO em 02/09: o despejo da resolução é o item 1.1**, depois do carimbo do perfil (1.0) e antes
+da primeira bandeira. O motivo não é conforto: ele já é pré-requisito de três coisas (o espelho de
+motor, o item 6 do N6 e a prova da semente dentro de uma resolução), e **`margem` e `gate` são as
+duas bandeiras que mais mexem em dano**, ou seja entrar com ressalva seria pagar o pior caso do F0
+com as piores candidatas.
+
+**A pergunta que sobrava: antecipá-lo obriga a antecipar parte do N6?** Olhando o código, a resposta
+é **não obriga o comportamento, e obriga o levantamento**.
+
+**O que ele NÃO obriga.** O retrato do N6 é uma decisão sobre **de onde** a fase 3 lê. O despejo é
+sobre **o que ela leu**. Registrar o número que a folha usou não exige que ele venha de um retrato,
+não exige as três fases (N5), e não exige N1 a N4. O despejo grava o que existe; o N6 muda o que
+passa a existir.
+
+**O que ele obriga, e é a metade útil.** Hoje os números da resolução nascem e morrem dentro de
+`folhaDaAcao` (`grid.astro:7526`), espalhados por funções de pintura que escrevem `innerHTML` e não
+guardam nada:
+
+| Número | Onde nasce hoje |
+|---|---|
+| o ferimento do alvo (`fer`) | L7541, `tierDe(alvo.pv_atual, alvo.pv_max).penDefesa`, lido ao vivo quando a caixa abre |
+| o ferimento do atacante | L7727, o mesmo, do outro lado |
+| `errouPor` e o veredito | L7768-7769, dentro de `pintarConta`, que só pinta |
+| Absorção e dano líquido | L7796-7798, dentro de `pintarDano`, que também só pinta |
+| a Vida aplicada | `baixarVida` (L8151), que é o único ponto de estrangulamento de verdade |
+
+Para o despejo existir é preciso **um objeto do lance**, montado dentro da folha, que essas funções
+alimentem em vez de só pintar, e que seja descarregado quando o mestre aperta um dos três botões. E
+montar esse objeto exige **enumerar toda leitura de estado ao vivo que a folha faz**, que é
+exatamente o levantamento que o item 6 (N6) precisa fazer antes de trocar a fonte delas.
+
+**Então a antecipação é de esforço, não de comportamento:** o 1.1 entrega ao item 6 a lista pronta
+dos pontos de leitura (as três da especificação: ferimento, Pressão e posição, mais o ferimento do
+atacante, que a especificação não listava e o código tem). O N6 continua inteiro na Etapa 2, e fica
+mais barato.
+
+**Um efeito colateral que vale registrar:** com o objeto do lance existindo, `baixarVida` deixa de
+ser o único ponto onde a resolução é observável, e passa a haver um lugar único onde ela é
+**descrita**. Isso é o que o `aid` do D2 vai precisar quando chegar, e é onde ele nasce.
 
 ---
 

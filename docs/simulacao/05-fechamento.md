@@ -625,6 +625,12 @@ D4, `02` §0.1). O delta dela é, por construção, **o máximo que a grade pode
 > numa cena normal"**. Sem a etiqueta, a linha vira "o gate é a bandeira mais cara do sistema", que é
 > uma afirmação sobre a célula e não sobre o sistema.
 
+**A etiqueta protege a soma do F5 e não protege a tabela**, e por isso ela vem com uma regra de
+leitura (a 6 da §6b): **o relatório nunca ordena bandeiras por delta quando os deltas vêm de
+hospedeiras diferentes.** Um delta máximo por construção ao lado de um delta típico vira ranking, e
+ranking é o que o olho lê primeiro, etiqueta ou não. Ou a tabela agrupa por hospedeira, ou ordena por
+nome.
+
 **A regra é mecânica, e não uma previsão minha.** O campo `cena.fim.motivo` (do D2) tem os quatro
 valores, e **toda célula reporta a distribuição dele**. Qualquer célula cujo motivo dominante seja
 diferente do das âncoras recebe a etiqueta automaticamente, sem ninguém precisar prever qual será.
@@ -688,7 +694,9 @@ relatório declara isso em vez de assumir.
    é a pergunta da âncora dupla aplicada às bandeiras;
 5. se as duas discrepâncias forem grandes e parecidas, a interação é do conjunto e não da cena, e o
    relatório diz de quanto é sem poder apontar o par culpado. Isso continua sendo limitação do
-   deixe-uma-de-fora, e não se conserta com célula.
+   deixe-uma-de-fora, e não se conserta com célula;
+6. **o relatório nunca ordena bandeiras por delta quando os deltas vêm de hospedeiras diferentes.**
+   Ou a tabela agrupa por hospedeira, ou ordena por nome. Nunca por tamanho.
 
 ### 6c · O que bloqueia o quê
 

@@ -112,19 +112,40 @@ ok(l1 !== l2, 'e sem semente duas passadas diferem: a mesa de verdade segue alea
 // anos sem ninguém notar. Esta lista é a autorização explícita: quem acrescentar
 // um `Math.random` em `src/lib` tem de vir aqui dizer por que ele não é combate.
 const PERMITIDOS = {
-  'acaso.ts': 3,            // o próprio ponto de injeção: o padrão, a volta e a comparação
-  'ficha-engine.ts': 1,     // id de peça na ficha
-  'mesa-core.ts': 1,        // id, quando não há crypto.randomUUID
-  'mesa-tempo-real.ts': 1,  // chave de presença do canal
+  'src/lib/acaso.ts': 3,                        // o ponto de injeção: o padrão, a volta e a comparação
+  'src/lib/ficha-engine.ts': 1,                 // id de peça na ficha
+  'src/lib/mesa-core.ts': 1,                    // id, quando não há crypto.randomUUID
+  'src/lib/mesa-tempo-real.ts': 1,              // chave de presença do canal
+  // O rolador de mão, que o jogador aperta. Não é motor: o Grid não o usa
+  // (`/mesa/grid` não o importa), e o harness nunca vai passar por ele. Se um
+  // dia ele for ligado à resolução, esta linha é o lugar de descobrir.
+  'src/components/RoladorDados.astro': 1,
 };
+// A VARREDURA OLHA `src/lib`, `src/pages` E `src/components`, e não só o
+// primeiro. A segunda fonte de acaso que passou despercebida estava em
+// `src/lib`, que é a parte arrumada; a resolução do combate mora em
+// `grid.astro`, que é `src/pages`. Varrer só a parte arrumada era procurar a
+// chave debaixo do poste.
+const arquivos = [];
+for (const raiz of ['src/lib', 'src/pages', 'src/components']) {
+  const pilha = [path.join(ROOT, raiz)];
+  while (pilha.length) {
+    const dir = pilha.pop();
+    for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+      const cheio = path.join(dir, e.name);
+      if (e.isDirectory()) pilha.push(cheio);
+      else if (/\.(ts|astro)$/.test(e.name)) arquivos.push(cheio);
+    }
+  }
+}
 const intrusos = [];
-for (const f of fs.readdirSync(path.join(ROOT, 'src/lib'))) {
-  if (!f.endsWith('.ts')) continue;
+for (const cheio of arquivos) {
+  const f = path.relative(ROOT, cheio).split(path.sep).join('/');
   // Sem comentários: a palavra aparece em prosa em quase todo arquivo que fala
   // do assunto, e contar prosa faria a varredura gritar por nada. E conta a
   // MENÇÃO, não a chamada: `Math.random` passado como valor (que é como o
   // `acaso.ts` guarda o padrão) é uma fonte tanto quanto `Math.random()`.
-  const txt = fs.readFileSync(path.join(ROOT, 'src/lib', f), 'utf8')
+  const txt = fs.readFileSync(cheio, 'utf8')
     // O `\r` sai antes de tudo: o repositório é CRLF, e `.` não casa com ele,
     // então `//.*$` parava antes do fim da linha e o comentário sobrevivia.
     .replace(/\r/g, '')
@@ -133,7 +154,7 @@ for (const f of fs.readdirSync(path.join(ROOT, 'src/lib'))) {
   const n = (txt.match(/Math\.random/g) || []).length;
   if (n !== (PERMITIDOS[f] || 0)) intrusos.push(`${f}: ${n} (esperado ${PERMITIDOS[f] || 0})`);
 }
-ok(intrusos.length === 0, `nenhuma fonte de acaso nova em src/lib (${intrusos.join(' · ') || 'nenhuma'})`);
+ok(intrusos.length === 0, `nenhuma fonte de acaso nova em ${arquivos.length} arquivos de src/lib, src/pages e src/components (${intrusos.join(' · ') || 'nenhuma'})`);
 
 console.log(`\n${FALHAS.length ? '✗' : '✓'} Acaso do combate OK · ${PASSOU} asserções · o d6, o rolarExpr, o rolar das Artes e a iniciativa de criatura saem todos do mesmo ponto de injeção`);
 if (FALHAS.length) { FALHAS.forEach((f) => console.log('  · ' + f)); process.exit(1); }
