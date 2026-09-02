@@ -138,6 +138,16 @@ Agressivo, para o E9 fazer sentido nele também, ganha uma regra de leitura na �
 mais próximo já tem golpe declarado de outro aliado caindo neste Tick, escolhe o segundo mais
 próximo"*.
 
+> **Aplicado em 02/09, e por muito tempo não estava** (`05-fechamento.md` §2.2). Essa regra ficou
+> escrita aqui e na `02` §0.47, mas nunca entrou na §0.4 P4, que é a lista **executável**. Enquanto
+> não estava lá, o E9 era **inerte por construção** em qualquer célula de política Agressiva,
+> inclusive numa das duas âncoras. A §0.4 P4 foi reescrita como especificação única, fundindo a lista
+> ordenada com as regras de leitura da §0.47, que agora vêm marcadas ⊙.
+>
+> Uma correção no que esta seção afirma: "o Cauteloso, o Tocaiador e o Guarda-costas são os três
+> cujas regras de fato leem alguma coisa" era verdade sobre a §0.47 e **falsa** sobre a §0.4 P4, onde
+> só o Cauteloso lia. Com a fusão, passa a ser verdade sobre as duas.
+
 ---
 
 ## Parte 2 · O preço de preservar a linha de base

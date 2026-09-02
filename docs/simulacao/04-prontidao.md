@@ -124,6 +124,12 @@ uma estrutura fixa.
 
 ### B.3 A célula-âncora não serve como está
 
+> **Superada em 02/09.** As âncoras são duas (D1), as duas carregam peça entrando no meio e as
+> duas rodam política que lê. O que faltava e foi resolvido no `05-fechamento.md` §2.1 e §2.2: o
+> **nível** de E10 em que a âncora se senta ("declara no Tick seguinte"), a regra de leitura do
+> Agressivo, que estava decidida e não aplicada, e o E4 definido por raça e armadura em vez de por
+> arquétipo. A âncora valendo é a da `02` §0.10.1.
+
 A âncora é: 3×3, **E1 uníssono**, E2 média, campo aberto, política Agressiva, com leitura, quem entra
 no meio declarando no Tick seguinte, perfil cheio. Três problemas, e o terceiro é o pior:
 
@@ -208,6 +214,11 @@ Ordenado por: bloqueia o começo primeiro, depois por quanto muda o resultado.
 > **RESPONDIDO: duas âncoras**, uma mediana e uma extrema, com cada fator medido nas duas. É a
 > opção que resolve o contra-argumento da recomendada, ao custo de dobrar o braço de um fator de cada
 > vez. A grade recontada está na §0.10.1 do 02.
+> **Consequência recontada em 02/09** (`05-fechamento.md` §2.4): a grade não ficou em 107 células.
+> Sete das dezessete comparações de bandeira não podiam morder na âncora, e medi-las nas duas gastava
+> catorze células para colher zero. Com cada bandeira medida na célula em que morde, com o eixo E11
+> (elenco de criatura, D10) e com as duas âncoras diferindo em **exatamente** um fator, a grade
+> oficial é de **103 células** e **51.500 batalhas** (`02` §0.10.1).
 
 
 **A pergunta:** a âncora de onde pendem as 26 comparações de um fator de cada vez continua sendo
@@ -267,6 +278,10 @@ aparece como um tempo morto plausível e falso. Se ele entrar, precisa de um inv
 > **RESPONDIDO: build verde, mais o teste-espelho, mais as provas item a item.** Fica registrado o
 > que a escolha deixa de fora: **N7 e N8 não terão verificação nenhuma**, porque "o jogador vê a
 > intenção do outro" não é uma asserção automatizável.
+> **Corrigido em 02/09** (`05-fechamento.md` §1.3): "o teste-espelho" eram dois. O **espelho de
+> inércia** (mesa contra a branch congelada) é portão de cada bandeira e está disponível desde a
+> Etapa 0; o **espelho de motor** (mesa contra o harness) só existe depois do harness, e é portão da
+> **bateria**, não desta fase. O critério pedia um artefato da fase seguinte.
 
 
 **A pergunta:** o que precisa estar verde para a fase de implementação ser considerada pronta e a
@@ -295,6 +310,9 @@ ao custo de depender de uma sessão que ninguém agendou.
 > ela não for viável. Isso resolve o contra-argumento que eu tinha levantado: uma branch parada não
 > anda com a história do git, então um conserto legítimo que entre junto com uma bandeira não faz a
 > comparação falhar por motivo certo.
+> **Um prazo que ninguém tinha escrito** (`05-fechamento.md` §1.2, I2): a branch é um recurso que
+> **deixa de ser criável** no instante em que a primeira bandeira entra. Ela virou o passo 0.1 da
+> ordem, antes de tudo.
 
 
 **A pergunta:** que evidência garante que o perfil "tudo desligado" reproduz o jogo de antes, e não um
@@ -326,6 +344,10 @@ segunda opção é pior e não tem esse problema.
 > podem vir antes das regras que elas ligam, então "bandeiras primeiro" são as **dez** que não
 > dependem do núcleo (as nove de regra publicada mais o `porRodada`), e as seis do núcleo entram junto
 > com N1 a N6.
+> **Corrigido em 02/09** (`05-fechamento.md` §1): antes das bandeiras vem a **instrumentação**, que
+> não muda comportamento nenhum e sem a qual nada é provável. A prova de inércia da D4 compara dano,
+> e `rolagem.ts:11` é `Math.random`. São dez as dependências desse tipo na §0.6.1, e quatro delas
+> mudam a ordem. E as bandeiras que vêm primeiro são **nove**, não dez: a `couraca` saiu da lista.
 
 
 **A pergunta:** os doze itens entram em que ordem, dado que seis deles mexem no mesmo laço?

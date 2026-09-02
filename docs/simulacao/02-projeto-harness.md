@@ -107,7 +107,7 @@ como está, porque o que cada opção significava continua sendo a leitura das c
 | **N8** | o que exatamente é visível | **quem vai fazer o quê em cada Tick**, com rastro no tabuleiro (movimento, trajetória, alvos). Exceção: arremesso, tiro e Arte não revelam o alvo até executarem (§0.48) |
 | **E2** | as quatro distâncias iniciais | **1 · 18 · 42 · 71 hexes** (encostado, ~3, ~7 e ~12 Ticks de corrida; 71 é a diagonal do mapa de 48×48) |
 | **Fila** | a ordem de declaração na tela | **ordenada sozinha pela ficha, e o mestre pode mudar à mão** (§0.49) |
-| **Ordem** | o que entra antes do harness | **tudo**: N1 a N8, o `ate` e as 16 bandeiras (§0.6 e §0.7) |
+| **Ordem** | o que entra antes do harness | **tudo**: N1 a N8, o `ate` e as 15 bandeiras (§0.6 e §0.7) |
 | **Folga da perseguição** | quem persegue chega e bate no mesmo Tick | **não se decide antes de ver número**: a régua fica como está e a bateria mede (§0.45) |
 | **Peça que entra no meio** | quando ela declara pela primeira vez | **vira eixo do experimento**, com três níveis: declara primeiro no Tick · declara no Tick seguinte · entra por último (§0.46 e §0.5, eixo E10) |
 | **Medição de campo** | a latência do Supabase de verdade | **depois do harness**: as métricas saem em Ticks e em gestos, não em segundos (§4) |
@@ -253,6 +253,10 @@ decide a ordem de ligar. O perfil passa de 7 bandeiras para 9: `margem`, `gate`,
 `bloqueio`, `modo2`, `teto6`, `curaSemArea`, `curaDivide`. Sem `curaDivide`, curar seis aliados com
 2d6 devolve 2d6 a cada um, e a Cura vira a jogada dominante da simulação inteira.
 
+> **Corrigido em 02/09:** a `couraca` saiu dessa lista. Ela **já é aplicada**, em tempo de
+> geração (`gen-bestiario.mjs:36-45`), e não pode ser bandeira de tempo de execução sem somar duas
+> vezes. O perfil valendo é o da §0.7, com **quinze**.
+
 #### P2 · A parede
 
 O Grid não tem parede e `hex.ts` já tem onde encaixá-la: `caminharHex(de, para, passos, pararA,
@@ -308,13 +312,32 @@ Isso derruba P3 de "a única invenção mecânica obrigatória do recorte" para 
 Cinco perfis, cada um uma lista **ordenada** de regras avaliadas de cima para baixo, e todas usando
 só o que o Grid aceita declarar.
 
+**Esta é a especificação única**, e ela funde duas listas que viviam separadas: a de comportamento,
+que estava aqui, e a de leitura, que estava na §0.47. Nenhuma das duas era completa, e a §0.47 dizia
+que a posição da regra de leitura na ordem importa sem dizer qual era (fusão feita em 02/09,
+`05-fechamento.md` §2.2).
+
+- **A regra marcada ⊙ é regra de leitura**, e é exatamente o que o eixo **E9** liga e desliga.
+  **Com E9 desligado a regra ⊙ é pulada e a avaliação cai para a seguinte.** Sem isso "cego" não é um
+  estado definido, e sem a regra ⊙ no Agressivo o E9 é **inerte por construção** em toda célula que
+  rode esse perfil.
+- **A regra ⊕ é a regra de modo**, decidida em 02/09 (D11), igual nos cinco perfis e avaliada depois
+  de a manobra estar escolhida: *se o modo principal da minha arma é perfurante e a Perfuração dela
+  está abaixo da resistência de Perfuração do alvo, e a arma tem modo secundário, ataco no modo
+  secundário.* Ela não escolhe alvo nem manobra: ajusta o ataque já decidido.
+
 | Perfil | As regras, em ordem |
 |---|---|
-| **Agressivo** | 1. se há inimigo de pé no alcance e estou livre: atacar, manobra `rajada` se a Vida do alvo é maior que a minha, senão `simples`. 2. senão: mover em `corrida` até o inimigo de pé mais próximo. 3. nunca abortar |
-| **Cauteloso** | 1. se estou abaixo de 40% de Vida e há inimigo no alcance: atacar com manobra `segura`. 2. se o inimigo mais próximo está em fase de Golpe: esperar 1 Tick (deixa o golpe cair e ataca a Recuperação dele). 3. se há inimigo no alcance: atacar `simples`. 4. senão: mover em `batalha`, não em corrida, que custa −4 de Defesa. 5. abortar quando a minha agenda já deslizou 2 vezes seguidas |
-| **Tocaiador** | 1. se há inimigo a ≤ 3 hexes: mover em `corrida` para longe do mais próximo. 2. se há inimigo em alcance de tiro: atacar `simples`. 3. senão: manter posição (esperar 1 Tick) |
-| **Guarda-costas** | 1. escolher como alvo o inimigo mais próximo do meu aliado com menos Vida. 2. se esse inimigo está no meu alcance: atacar `segura`. 3. senão: mover em `batalha` para a casa entre ele e o aliado. 4. nunca abortar |
-| **Conjurador** | 1. se um aliado está abaixo de 50% de Vida e no alcance: Cura. 2. se há 2 ou mais inimigos a ≤ 2 hexes um do outro: `corrente` ou `brasa-retardada`. 3. se há 1 inimigo em alcance: `projetil-conjurado`. 4. se há inimigo a ≤ 2 hexes de mim: `empurrao-elemental`. 5. senão: mover em `batalha` para trás do aliado mais próximo |
+| **Agressivo** | 1 ⊙. se o inimigo mais próximo já tem golpe declarado de outro aliado caindo neste Tick, escolher o segundo mais próximo. 2. se há inimigo de pé no alcance e estou livre: atacar, manobra `rajada` se a Vida do alvo é maior que a minha, senão `simples`. 3. senão: mover em `corrida` até o inimigo de pé mais próximo. 4. nunca abortar. **⊕** |
+| **Cauteloso** | 1. se estou abaixo de 40% de Vida e há inimigo no alcance: atacar com manobra `segura`. 2 ⊙. se o inimigo mais próximo está em fase de Golpe: esperar 1 Tick (deixa o golpe cair e ataca a Recuperação dele). 3 ⊙. se alguém já declarou golpe para este Tick: atacar `segura`; se o inimigo mais próximo está em Recuperação declarada: atacar `rajada`. 4. se há inimigo no alcance: atacar `simples`. 5. senão: mover em `batalha`, não em corrida, que custa −4 de Defesa. 6. abortar quando a minha agenda já deslizou 2 vezes seguidas. **⊕** |
+| **Tocaiador** | 1 ⊙. se alguém declarou golpe com queda neste Tick ou no próximo: recuar antes. 2. se há inimigo a ≤ 3 hexes: mover em `corrida` para longe do mais próximo. 3. se há inimigo em alcance de tiro: atacar `simples`. 4. senão: manter posição (esperar 1 Tick). **⊕** |
+| **Guarda-costas** | 1 ⊙. se há golpe declarado caindo no Tick em que o aliado protegido está aberto: mover para interpor, em vez de atacar. 2. escolher como alvo o inimigo mais próximo do meu aliado com menos Vida. 3. se esse inimigo está no meu alcance: atacar `segura`. 4. senão: mover em `batalha` para a casa entre ele e o aliado. 5. nunca abortar. **⊕** |
+| **Conjurador** | 1. se um aliado está abaixo de 50% de Vida e no alcance: Cura. 2 ⊙. contar quantos declararam golpe para o mesmo Tick: se 2 ou mais e agrupados, zona (`corrente` ou `brasa-retardada`). 3. se há 2 ou mais inimigos a ≤ 2 hexes um do outro: `corrente` ou `brasa-retardada`. 4. se há 1 inimigo em alcance: `projetil-conjurado`. 5. se há inimigo a ≤ 2 hexes de mim: `empurrao-elemental`. 6. senão: mover em `batalha` para trás do aliado mais próximo. **⊕** |
+
+Com **N8** (§0.48) as regras ⊙ passam a poder usar também o **alvo do corpo a corpo** ("já tem
+alguém indo nele, escolho outro"), e continuam sem poder usar o alvo de tiro, arremesso e Arte, que
+fica escondido até resolver. As políticas ficam honestas por construção, e a mesma roda para o mestre
+e para o jogador sem precisar de duas versões.
 
 Cada número desses (40%, 50%, 3 hexes, 2 deslizes) é **invenção do harness** ⚑ e vai no cabeçalho do
 relatório, na tabela "o que foi inventado". E o Conjurador é o único que exercita as oito formas: sem
@@ -340,6 +363,22 @@ exercitam.
 Todos passam por `resumoCombatePC` sem tratamento especial, que é o que garante que o PC gerado e o
 PC de mesa somem os mesmos números. Todos entram no relatório marcados `inventado`.
 
+**E quatro de criatura**, decididos em 02/09 (D10, `05-fechamento.md` §2.3): PCs e criaturas do
+bestiário entram os dois na bateria. Escolhidos do `monsters-mesa.json` pelo mesmo critério dos sete
+acima, cada um exercitando o que os outros não exercitam:
+
+| Arquétipo | Porte | Ataque | Passo (bat/arr/cor) | Por que ele existe |
+|---|---|---|---|---|
+| **`mon-esqueleto-humano`** | Médio | leve (ciclo 5), impacto | 3 / 5 / 7 | a horda de E3 como a mesa a joga: oito do mesmo bicho, golpe leve, uníssono para sempre. E o impacto é o modo que **não** recebe couraça de porte, o que dá o contrafactual dentro do próprio elenco |
+| **`mon-aurochs`** | Grande | média (ciclo 6), perfurante | 4 / 6 / 9 | a primeira categoria de porte acima de Médio: **+3 / −3** no acerto (`porteAcerto`) e **+2** de couraça na Absorção contra corte e perfuração |
+| **`mon-bulette`** | Enorme | pesada (ciclo 7), perfurante | 4 / 6 / 9 | duas categorias acima: **±6** no acerto, **+4** de couraça e `resistPerf 1`, que **fecha o gate** contra adaga (pen 0) e contra qualquer arma de Perfuração 0 |
+| **`mon-aguia-gigante`** | Grande | média (ciclo 6), perfurante | **8 / 13 / 18** | o alvo que nunca é alcançado, sem depender de armadura pesada: a razão de passo contra um PC (3 / 5 / 7) passa de 2,5, e é o nível assimétrico de E4 no elenco de criatura |
+
+Duas coisas que essas quatro trazem e nenhum PC traz: **porte diferente de Médio**, que é o que faz
+`porteAcerto` e a couraça existirem, e um bloco de combate **pronto**, sem passar por
+`resumoCombatePC`. O segundo é um caminho de código a mais no harness, e o teste-espelho tem de
+cobrir os dois lados.
+
 #### P6 · Os níveis de E1 e E4 em armas do catálogo
 
 O catálogo tem 26 armas em quatro ciclos: **4** (só `dardos`), **5** (adaga, espada curta, desarmado
@@ -353,6 +392,8 @@ arcos, bestas pequena e média, funda) e **7** (montante, martelo de guerra, bes
 | **c · coprimos** | espada longa (6) × montante (7) | 42 | zero ou uma colisão |
 | **d · os quatro** | dardos (4) · adaga (5) · espada longa (6) · montante (7) | 420 | colisões esparsas e sem padrão |
 
+**Quem preenche cada nível**, para o nível não ficar definido por arma sem dono: (a) Escudeiro contra Escudeiro; (b) Duelista **só com a espada curta** contra Escudeiro; (c) Escudeiro contra Montanteiro; (d) um de cada, com o arremessador dos dardos. A empunhadura dupla do Duelista fica de fora dos níveis de E1, porque um segundo fluxo de golpes apaga o ciclo que o eixo mede.
+
 Uma ressalva que o catálogo impõe: **o ciclo 4 só existe em `dardos`, que é arremesso**. O nível (d)
 obrigatoriamente carrega um arremessador, o que mistura o eixo de ciclo com o de alcance.
 **Decidido: os quatro períodos entram, e a mistura é declarada** na leitura do resultado, ou seja,
@@ -361,10 +402,17 @@ qualquer efeito atribuído a (d) carrega junto a ressalva de que aquele nível �
 Esta tabela vale porque **N1 devolveu o período ao `ciclo`** (§0.45). Enquanto a régua era a de hoje,
 os períodos eram `ciclo + 1` e nenhum destes m.m.c. estava certo.
 
-**E4 · assimetria de passo.** O passo sai de `deslocamento()`, com a fração da raça e a meia
-penalidade da armadura. O par é escolhido calculando `deslocamento()` para os candidatos e tomando o
-primeiro com razão ≥ 2, e os candidatos naturais são o Montanteiro orc de placa completa (pen 3) de
-um lado e o Duelista elfo de couro (pen 1) do outro. O nível "simétrico" usa dois Escudeiros.
+**E4 · assimetria de passo**, corrigido em 02/09 (`05-fechamento.md` §2.2). O passo sai de
+`deslocamento()` (`calc.ts:145-151`), que recebe traços e a fração da raça, mais a meia penalidade da
+armadura. **A arma não entra nessa conta**, e é por isso que o nível assimétrico **não pode ser
+definido por arquétipo**: dizer "Montanteiro orc contra Duelista elfo" troca junto as armas (ciclo 7
+contra ciclo 5) e apaga o nível de E1 da célula, medindo passo e ciclo de uma vez só.
+
+**O nível assimétrico é definido por raça e armadura, e mantém a arma da célula**: orc de placa
+completa (pen 3) contra elfo de couro (pen 1), os dois empunhando a arma que aquela célula pede. A
+razão de passo continua ≥ 2, e o E1 sobrevive. O nível "simétrico" usa duas peças de mesma raça e
+mesma armadura. No elenco de criatura, o par assimétrico é a `mon-aguia-gigante` (8/13/18) contra
+qualquer PC (3/5/7).
 
 ### 0.45 Quando a ação começa · N1, decidida em 02/09
 
@@ -857,24 +905,31 @@ em uma linha quando o mestre arrasta.
 | **E7 · obstáculo** | 2 (campo aberto · parede), §0.4 P2, e cai fora se P2 for recusada | sim |
 | **E9 · leitura** | 2 (lê as declarações do Tick, ou não). Aplica-se a qualquer política, e é o que mede N7 | sim |
 | **E10 · quem entra no meio** | 3 (declara primeiro · declara no Tick seguinte · entra por último), §0.46 | sim |
+| **E11 · natureza do elenco** | 3 (PC × PC · PC × criatura · criatura × criatura), decidido em 02/09 (D10). É o eixo que faz `porte` e a couraça de porte existirem: elas valem 0 para Médio e menores | sim |
 | **E8 · atribuição de gesto** | 2 (mestre solo · um por PC) | **não**: é leitura do mesmo log |
 | **D1 · perfil de automação** | 2 | **não**: é leitura do mesmo log |
 
-Cruzar tudo é um enunciado, não uma grade: com E5 nos 18 perfis da §0.7 passa de cem mil
+Cruzar tudo é um enunciado, não uma grade: com E5 nos 17 perfis da §0.7 passa de cem mil
 combinações. O orçamento que aperta continua sendo o mesmo da §3: o que se consegue ler. Desenho:
 
 - **Núcleo cruzado: E1 × E2 × E3 = 48 células.** São os três que eu espero que interajam, e a
   previsão da §3 é sobre eles.
-- **Um fator de cada vez em volta da célula-âncora**, somando `níveis − 1` de cada eixo restante:
-  E4 (1) + E5 (17) + E6 (4) + E7 (1) + E9 (1) + E10 (2) = **26 células**. Mede o efeito principal de
-  cada um sem cruzá-lo com o resto, e é onde moram as 16 comparações de bandeira da §0.7.
-- **Cruzamentos deliberados**, porque OFAT é cego a interação e há cinco que eu espero de verdade:
+- **Um fator de cada vez em volta de cada âncora**, somando `níveis − 1` de cada eixo restante:
+  E4 (1) + E6 (4) + E7 (1) + E9 (1) + E10 (2) + E11 (2) = **11 células por âncora**. Mede o efeito
+  principal de cada um sem cruzá-lo com o resto.
+- **E5 não entra nessa conta**, e é a correção de 02/09 (`05-fechamento.md` §2.4): sete das dezessete
+  comparações de bandeira **não podiam morder na âncora**, e medi-las lá era gastar catorze células
+  para colher zero. Cada bandeira passa a ser medida **na célula em que ela morde**, e só as seis do
+  núcleo do Tick, que valem em qualquer cena, ficam nas duas âncoras.
+- **Cruzamentos deliberados**, porque OFAT é cego a interação e há seis que eu espero de verdade:
   E1(uníssono) × E3(horda), E1(uníssono) × E4(assimétrico), E2(muito longa) × E4, E5 × E1(uníssono),
-  e **E9 × E10**, porque os dois mexem na mesma coisa (quem vê o quê antes de declarar).
-  **5 células.**
-- Total: **79 células**. A 500 repetições, **39.500 batalhas**, mais o reforço de 2.000 nas células
-  de cauda (as de E4 e a de uníssono com horda). Pela medição da `03-respostas.md` §4.2, isso é da
-  ordem de 30 segundos de máquina. A justificativa das 500 e das 2.000 é a da §3 e não muda.
+  **E9 × E10**, porque os dois mexem na mesma coisa (quem vê o quê antes de declarar), e
+  **E11 × E3**, que é a cena que a mesa de verdade joga: uma horda de bicho contra os PCs.
+  **6 células.**
+- Total: **103 células**, discriminadas na **§0.10.1**, que é a grade oficial. A 500 repetições,
+  **51.500 batalhas**, mais o reforço de 2.000 nas células de cauda (as de E4 e a de uníssono com
+  horda). Pela medição da `03-respostas.md` §4.2, isso é da ordem de 45 segundos de máquina. A
+  justificativa das 500 e das 2.000 é a da §3 e não muda.
 
 **A previsão quantitativa de E1 continua sem base até o piloto rodar.** A §3 prevê quantas colisões
 cabem "numa batalha de 37 a 47 Ticks", e esses 37 a 47 vieram da R2 §D1, que mediu a bancada no
@@ -886,7 +941,7 @@ número depois da célula piloto da §0.10.
 
 ## 0.6 O que entra na mesa antes do harness
 
-**Decidido:** tudo. N1 a N8, o `ate` das condições (Q7) e as 16 bandeiras (§0.7) entram no Grid **antes**
+**Decidido:** tudo. N1 a N8, o `ate` das condições (Q7) e as 15 bandeiras (§0.7) entram no Grid **antes**
 de o harness ser escrito, para que ele meça o jogo de verdade desde a primeira batalha e nenhuma
 regra viva só na cópia headless.
 
@@ -909,7 +964,7 @@ presente e vira o passado: é a resposta à pergunta "o que essas nove regras co
 | 8 | **N8** · o rastro no tabuleiro | `grid.astro`, a pintura | `test-grid-simultaneo.mjs` |
 | 9 | **N4 na tela** · a fila de declaração ordenada, com arrasto do mestre | `grid.astro`, a coluna da vez | `test-grid-simultaneo.mjs` |
 | 10 | **Q7** · o `ate` das condições passa a ser lido e a expirar | `grid.astro` / `artes-grid-mesa.ts` | `test-artes-grid.mjs` |
-| 11 | **As 16 bandeiras** · as 9 de regra publicada (Margem, gate, Couraça, porte, Bloqueio com escudo, modo secundário, teto ±6, `curaSemArea`, `curaDivide`), as 6 do núcleo do Tick e o `porRodada` | `regras.json` (o objeto de perfil), `quase-acerto.ts`, `calc.ts`, `combate-resumo.ts`, `grid.astro`, `artes-grid.ts` | `test-contrato.mjs` e `test-quase-acerto.mjs`, que hoje **congelam o estado errado** (R2 §A2: `R.defesa = 16` com o Bloqueio inútil) e precisam ser reescritos junto |
+| 11 | **As 15 bandeiras** · as 8 de regra publicada (Margem, gate, porte, Bloqueio com escudo, modo secundário, teto ±6, `curaSemArea`, `curaDivide`), as 6 do núcleo do Tick e o `porRodada` | `regras.json` (o objeto de perfil), `quase-acerto.ts`, `calc.ts`, `combate-resumo.ts`, `grid.astro`, `artes-grid.ts` | `test-contrato.mjs` e `test-quase-acerto.mjs`, que hoje **congelam o estado errado** (R2 §A2: `R.defesa = 16` com o Bloqueio inútil) e precisam ser reescritos junto |
 
 Os itens 1 a 6 são o núcleo do Tick e se sustentam sozinhos. O 11 é o maior de todos e é o único que
 mexe em cinco arquivos de regra ao mesmo tempo.
@@ -1192,7 +1247,7 @@ passagem, mas registre.
 
 ---
 
-#### 11 · As 16 bandeiras de regra
+#### 11 · As 15 bandeiras de regra
 
 O maior dos onze, e o único que mexe em cinco arquivos de regra ao mesmo tempo. **Um bloco novo no
 `regras.json`**, lido pela mesa e pelo harness, com o padrão em produção **ligado**. Ficou ali por
@@ -1203,15 +1258,19 @@ automaticamente anotada na bateria que rodou com ela. **O manifesto passa a hash
 `src/lib`**, para que mudança de código, e não só de régua, fique registrada do mesmo jeito. O
 `src/lib/modulos.ts` continua sendo o que ele diz que é: só tela.
 
-As nove de regra publicada estão na tabela abaixo; as outras sete são as do núcleo do Tick (`n1`,
-que já é o parâmetro `decideEmValeDepois`, mais `n2`, `n3`, `n4`, `n6`, e `n5` com o tratamento em
-aberto) e o `porRodada`, que liga as cinco condições de dano por rodada que o Grid não cobra.
+As oito de regra publicada estão na tabela abaixo; as outras sete são as do núcleo do Tick (`n1`,
+que já é o parâmetro `decideEmValeDepois`, mais `n2`, `n3`, `n4`, `n5` e `n6`) e o `porRodada`, que
+liga as cinco condições de dano por rodada que o Grid não cobra.
+
+**A `couraca` saiu da lista em 02/09**, e não por decisão de desenho: ela **já é aplicada**, em tempo
+de geração, no `gen-bestiario.mjs:36-45` e L79-82, e já está somada na `absorcao` de cada criatura do
+`monsters-mesa.json`. Uma bandeira que a ligasse em tempo de execução somaria a couraça duas vezes.
+A régua dela passa a ser exercitada pelo eixo E11 (`05-fechamento.md` §2.2).
 
 | Bandeira | O que liga | Onde |
 |---|---|---|
 | `margem` | +1d6 de dano a cada 6 acima da Defesa | a resolução em `grid.astro` (hoje `rolarDano`, L7967, não recebe a diferença) e `danoNoAlvo` em `artes-grid.ts:1302` |
 | `gate` | abaixo do Nível de Perfuração o golpe resvala, dano 0 | `calc.ts:131-135`, que **existe e não é chamada** |
-| `couraca` | Couraça de Porte: +2 a +10 de Absorção contra corte e perfuração | não existe em lugar nenhum; `combate.md:120-136` tem a régua |
 | `porte` | ±3 de acerto por categoria de porte, teto ±12 | `regras.json → porteAcerto`, hoje lido só por `mesa/referencia.astro:38` |
 | `bloqueio` | a rota de Bloqueio, com a Defesa da arma e o `bloqCaC` do escudo | `combate-resumo.ts:53` e L86-87; hoje o escudo **só penaliza** |
 | `modo2` | o modo secundário de dano custa −2 de acerto e −1d6 | `grid.astro:7613, 7618`; hoje a troca é de graça |
@@ -1258,37 +1317,84 @@ fora da semente. `mesa-core.ts:28` também tem, mas é geração de id e não en
 
 ---
 
-### A ordem, o critério de aceitação e a prova de inércia (decididos em 02/09)
+### A ordem, o critério de aceitação e a prova de inércia (decididos em 02/09, corrigidos em 02/09)
 
 **A ordem é: bandeiras primeiro** (`04-prontidao.md` §D5). A razão é que os furos estão na mesa
 **hoje**: a Margem que não entra no dano e o escudo que só penaliza são defeitos de um jogo que está
 rodando. Uma consequência forçada pela dependência: **as seis bandeiras do núcleo (`n1` a `n6`) não
-podem vir antes das regras que elas ligam**, então "bandeiras primeiro" são as **dez** que não
-dependem do núcleo (as nove de regra publicada mais o `porRodada`), e as seis do núcleo entram junto
+podem vir antes das regras que elas ligam**, então "bandeiras primeiro" são as **nove** que não
+dependem do núcleo (as oito de regra publicada mais o `porRodada`), e as seis do núcleo entram junto
 com N1 a N6, no item seguinte.
 
-**O critério de aceitação** para a fase estar pronta e a bateria poder rodar: **`npm run build`
-verde, mais o teste-espelho sem divergir em nenhum campo, mais as provas item a item** que cada um
-dos doze já tem escritas. Fica registrado o que isso deixa de fora: **N7 e N8 não terão verificação
-nenhuma**, porque "o jogador vê a intenção do outro" e "o rastro é legível" não são asserções
-automatizáveis. Se elas forem verificadas, será por uma sessão de mesa, que não faz parte deste
-critério.
+**Mas antes das bandeiras vem a instrumentação, e isso é a correção de 02/09** (`05-fechamento.md`
+§1). A prova de inércia da D4 é uma cena-espelho, a cena-espelho compara dano, e `rolagem.ts:11` é
+`Math.random`: sem semente, a comparação não distingue "a bandeira mexeu" de "o dado caiu diferente".
+Então o **item 12 precede o item 11**, e como o 11 é o primeiro pela D5, o 12 precede a ordem
+inteira. Procurando pelo mesmo padrão nos doze itens (prova cujo instrumento não existe naquele ponto
+da ordem), saíram **dez dependências**, listadas no `05-fechamento.md` §1.2. As quatro que mudam a
+ordem estão absorvidas abaixo.
 
-**A prova de que uma bandeira desligada é inerte** é a comparação contra uma **branch congelada** no
-estado anterior à entrada dela, caindo para o espelho do commit anterior se a branch não for viável.
-A branch é melhor porque não anda com a história do git: um conserto legítimo que entre junto com uma
-bandeira não faz a comparação falhar por motivo certo.
+#### Etapa 0 · Instrumentação
 
-**Ordem detalhada.** Depois das dez bandeiras, os itens **1 a 6** são o núcleo do Tick, se sustentam sozinhos e cabem em quatro
-funções (`agendaSimultanea`, `grupoDaVez`, `golpeMaisCedo`, e a leitura do retrato na folha). O **7**
-é a migração, e o **6** depende dela se o retrato for para o banco. O **8** e o **9** são tela. O
-**10** e o **12** são isolados. O **11** é o maior e o mais arriscado, e vale por último, quando o
-resto estiver verde.
+Nada é provável antes dela, e ela não muda comportamento nenhum.
+
+| | O que | Por quê |
+|---|---|---|
+| **0.1** | **A branch congelada** (`sim/base-congelada`), cortada do commit corrente | é o **único passo com prazo**: depois de a primeira bandeira entrar, o estado de referência da D4 não existe mais em lugar nenhum, e não há de onde cortá-lo |
+| **0.2** | **Item 12 · a semente**, em `rolagem.ts:11`, `mesa-ficha.ts:133` (a iniciativa), `artes-grid.ts:1342` (o dano de Arte) e no sorteio do último critério de N4 | sem ela, os espelhos comparam ruído, e as provas dos itens 2, 4 e 6 dependem de sorte |
+| **0.3** | **O caminho do driver até a semente**: a página aceita a semente por parâmetro, como já aceita `?tempo=simultaneo` | o item 12 injeta no módulo, e nada ligava o módulo ao `puppeteer` que dirige a página |
+| **0.4** | **O despejo por Tick**: os campos da `03-respostas.md` §1.1.1 mais **o que a folha calculou** (o `fer` de `grid.astro:7435`, a Pressão, a distância) | é o instrumento dos dois espelhos **e** da prova do item 6, e hoje esses números só existem dentro do modal |
+
+#### Etapa 1 · As nove bandeiras que não dependem do núcleo
+
+Cada uma com o espelho de inércia contra a branch da Etapa 0, e `test-contrato.mjs` /
+`test-quase-acerto.mjs` reescritos **no mesmo commit** da bandeira que os invalida.
+
+#### Etapa 2 · O núcleo do Tick
+
+Nesta ordem, que é a das dependências e não a da numeração: **item 1** (N1) → **item 3** (N2, que só
+é observável com N1 ligada) → **item 4** (N3) → **item 2** (N4) → **item 5** (N5, que precisa da
+cadeia do 2 para ter uma "ordem inversa") → **item 6** (N6). As seis bandeiras do núcleo entram
+junto. Os quatro pontos de código são `agendaSimultanea`, `grupoDaVez`, `golpeMaisCedo` e a leitura
+do retrato na folha.
+
+#### Etapa 3 · A migração 29 (item 7) e a tela (itens 8 e 9)
+
+O item 6 **não** depende da migração: o retrato ficou em memória (§0.8.2), e a frase antiga ("o 6
+depende dela se o retrato for para o banco") caiu junto com a coluna.
+
+#### Etapa 4 · O item 10 (Q7, as condições que expiram), que é isolado
+
+**O critério de aceitação** para a fase estar pronta: **`npm run build` verde, mais o espelho de
+inércia em cada bandeira, mais as provas item a item** que cada um dos doze já tem escritas. Fica
+registrado o que isso deixa de fora: **N7 e N8 não terão verificação nenhuma**, porque "o jogador vê
+a intenção do outro" e "o rastro é legível" não são asserções automatizáveis. Se elas forem
+verificadas, será por uma sessão de mesa, que não faz parte deste critério.
+
+**O espelho eram dois, e essa é a segunda correção de 02/09.** O critério anterior pedia "o
+teste-espelho sem divergir em nenhum campo" para declarar a fase pronta, e o teste-espelho compara a
+mesa com **o motor do harness**, que pela §0.6 só é escrito depois. O critério exigia um artefato da
+fase seguinte. Separando:
+
+| | **Espelho de inércia** | **Espelho de motor** |
+|---|---|---|
+| Compara | a mesa contra a mesa da branch congelada | a mesa contra o motor do harness |
+| Prova | que a bandeira desligada não mexeu em nada (D4) | que a cópia não divergiu do original (Q6) |
+| Precisa de | a Etapa 0 | a Etapa 0 **mais o harness** |
+| É portão de | **cada bandeira, uma a uma** | **a bateria** |
+
+Os dois usam a mesma cena fixa, a mesma semente e o mesmo comparador de campos da
+`03-respostas.md` §1.1.1. O que muda é quem está do outro lado.
+
+**A prova de que uma bandeira desligada é inerte** é o espelho de inércia contra a **branch
+congelada**, caindo para o espelho do commit anterior se a branch não for viável. A branch é melhor
+porque não anda com a história do git: um conserto legítimo que entre junto com uma bandeira não faz
+a comparação falhar por motivo certo.
 
 
 ---
 
-## 0.7 A linha de base, o Fôlego e as dezesseis bandeiras
+## 0.7 A linha de base, o Fôlego e as quinze bandeiras
 
 Decidido em 02/09, depois do `03-respostas.md`.
 
@@ -1347,15 +1453,16 @@ resposta é sim, e é um achado sobre o sistema e não sobre o harness.
 sem**, para ver como se comportam. Ela é relevante no recorte escolhido porque `brasa-retardada`, um
 dos oito Efeitos âncora, põe `em-chamas`.
 
-### As dezesseis bandeiras, e o desenho que as mede
+### As quinze bandeiras, e o desenho que as mede
 
 | Grupo | Bandeiras |
 |---|---|
-| de D2 (§0.1) | `margem` · `gate` · `couraca` · `porte` · `bloqueio` · `modo2` · `teto6` |
+| de D2 (§0.1) | `margem` · `gate` · `porte` · `bloqueio` · `modo2` · `teto6` |
 | da Cura (§0.4 P1) | `curaSemArea` · `curaDivide` |
 | do núcleo do Tick | `n1` (já é o parâmetro `decideEmValeDepois`) · `n2` · `n3` · `n4` · `n5` (só a ordem inversa) · `n6` |
 | nova | `porRodada` |
 | **fora** | o Fôlego, por decisão acima |
+| **saiu em 02/09** | **`couraca`**, que não é bandeira de tempo de execução: ela é aplicada em **tempo de geração**, no `gen-bestiario.mjs:36-45` e L79-82, e já vem somada na `absorcao` de cada criatura do `monsters-mesa.json`. Ligá-la em tempo de execução somaria a couraça **duas vezes**, que é a armadilha de escrever por cima de arquivo gerado. Virou propriedade do elenco, medida pelo eixo E11 (`05-fechamento.md` §2.2) |
 
 **Onde elas moram: num bloco novo do `regras.json`, e o manifesto da bateria passa a fazer hash de
 `src/data` e de `src/lib`.** As razões, com o custo de cada alternativa, estão na conversa de 02/09 e
@@ -1366,14 +1473,20 @@ na bateria que rodou com ela. O hash passa a cobrir `src/lib` também, para que 
 não só de régua, fique registrada do mesmo jeito. O `src/lib/modulos.ts` continua sendo o que ele diz
 que é: só tela.
 
-São **16**, e o desenho é o **deixe-uma-de-fora** da `03-respostas.md` §2.2:
+São **15**, e o desenho é o **deixe-uma-de-fora** da `03-respostas.md` §2.2:
 
 | Perfil | Quantos |
 |---|---:|
 | cheio | 1 |
-| cheio menos uma, uma por bandeira | 16 |
+| cheio menos uma, uma por bandeira | 15 |
 | tudo desligado (a linha de base reconstruída) | 1 |
-| **total, que é o número de níveis de E5** | **18** |
+| **total, que é o número de níveis de E5** | **17** |
+
+**Onde cada comparação roda**, corrigido em 02/09 (`05-fechamento.md` §2.4). As **seis do núcleo do
+Tick** valem em qualquer cena e rodam **nas duas âncoras**; as outras **nove** rodam **cada uma na
+célula em que ela morde**, pela tabela da §0.10.1. Medir `gate` numa cena de espadas de corte, ou
+`curaDivide` numa cena sem conjurador, não produz linha de base: produz zero por construção, e gasta
+célula. Era o caso de sete das dezessete comparações, em ambas as âncoras.
 
 Duas coisas que esse desenho carrega e vale repetir: ele respeita sozinho a dependência entre `n1` e
 `n2` (desligar `n2` a partir do cheio mantém `n1` ligada, que é a única configuração em que `n2` é
@@ -1501,8 +1614,8 @@ comum, esta linha vira a primeira coisa a consertar depois.
 | **Paralelismo** | a semente já é `hash64(semente_mestre, cenario_id, repeticao)` (§2.4), ou seja **cada batalha é independente de todas as outras por construção**. Um processo recebe uma faixa de índices de batalha, calcula as próprias sementes e escreve o próprio arquivo `.jsonl`; nada é compartilhado e nada precisa de trava. Os arquivos são concatenados no fim, e a ordem entre eles não importa porque cada linha carrega o `b` da batalha |
 
 **Um número para dimensionar:** a §2.5 estima 100 a 150 registros por duelo, ~120 bytes cada. Uma
-batalha guarda algo entre 12 e 18 KB em memória antes de gravar, e a bateria inteira de 39.500
-batalhas gera da ordem de 500 MB de log completo. Por isso a §2.5 já previa dois níveis de saída:
+batalha guarda algo entre 12 e 18 KB em memória antes de gravar, e a bateria inteira de 51.500
+batalhas gera da ordem de 600 MB de log completo. Por isso a §2.5 já previa dois níveis de saída:
 log completo para uma amostra declarada, contadores agregados para todas.
 
 ### 0.8.8 O teste-espelho, com o tempo medido
@@ -1542,7 +1655,7 @@ coluna diz o estado de cada uma.
 | 2 | O golpe fora de alcance (V5) vira regra? A `03` §3.1 registra a decisão na própria linha do invariante, e a §6.3 continua perguntando | `03` §3.1 × §6.3 | **fechada:** a §6.3 passou a dizer RESPONDIDA |
 | 3 | Qual é a rota da linha de base? A `02` §0.7 registra "Decidido: bandeiras", e a `03` §2.4 apresenta as duas rotas como **DECISÃO SUA** e não escolhe | `02` §0.7 × `03` §2.4 | **fechada:** a rota é a **B**, confirmada no chat, e a grade oficial e o piloto único estão na §0.10. A `03` §2.4 ganhou a nota |
 | 4 | E6 tem cinco ou seis políticas? A `03` §1.3 responde "seis" e a §1.4, três parágrafos abaixo, transforma a cega em interruptor e devolve o eixo a cinco | `03` §1.3 × §1.4 | **fechada:** são **cinco**, a §1.3 foi corrigida e o 02 §0.5 já estava certo |
-| 5 | Quantas células tem a grade? A `03` §1.2 responde "60", e ela cresceu duas vezes depois disso | `03` §1.2 × `02` §0.10 | **fechada:** a grade oficial é a da **§0.10**, com 79 células, e a `03` §1.2 ganhou a nota dizendo o que mudou |
+| 5 | Quantas células tem a grade? A `03` §1.2 responde "60", e ela cresceu duas vezes depois disso | `03` §1.2 × `02` §0.10 | **fechada:** a grade oficial é a da **§0.10.1**, com **103 células** depois da recontagem de 02/09, e a `03` §1.2 ganhou a nota dizendo o que mudou |
 | 6 | N5 fica de fora da linha de base? A `03` §2.4 diz que sim "de qualquer jeito", e o 02 §0.7 já resolve com a bandeira cobrindo só a ordem inversa | `03` §2.4 × `02` §0.7 | **fechada:** a linha da §2.4 foi corrigida |
 | 7 | O retrato de N6 é gravado ou é memória? O item 6 da §0.6.1 propunha a coluna `encontros.retrato jsonb`, e a §0.8.1 proíbe gravação nova no avanço | `02` §0.6.1 item 6 × §0.8.1 | **fechada:** memória, e a tela avisa na saída (§0.8.2). A migração 29 perdeu a coluna |
 | 8 | O cabeçalho lista como abertas as perguntas 2, 4 e 5 da `03`, mas as 1 e 3 estavam decididas no corpo da `03` e ainda abertas na §6 dela | `02` cabeçalho × `03` §6 | **fechada** pelas linhas 1 e 2 desta tabela |
@@ -1568,39 +1681,76 @@ um só.
 
 ### 0.10.1 A grade oficial
 
-Refeita em 02/09 com as respostas da `04-prontidao.md`: **duas âncoras** (D1) e **dois níveis de
-controle** (D6 e D7).
+Refeita em 02/09 com as respostas da `04-prontidao.md` (**duas âncoras**, D1, e **dois níveis de
+controle**, D6 e D7) e recontada no mesmo dia com as do `05-fechamento.md` (**o elenco ganhou
+criaturas**, D10, e **sete comparações de bandeira não podiam morder na âncora**, §2.2).
+
+| Bloco | Células | Como se lê |
+|---|---:|---|
+| Núcleo cruzado `E1 × E2 × E3` | **48** | três grades de 4×4, uma por nível de E3 |
+| Um fator de cada vez, em volta de **cada** âncora: `E4 (1) + E6 (4) + E7 (1) + E9 (1) + E10 (2) + E11 (2) = 11` | **22** | **uma** tabela de 11 linhas e duas colunas |
+| E5 · o núcleo do Tick (`n1` a `n6`), nas duas âncoras | **12** | 6 linhas, 2 colunas |
+| E5 · o perfil todo desligado, nas duas âncoras | **2** | 1 linha, 2 colunas |
+| E5 · as nove bandeiras restantes, **cada uma na célula em que morde** | **9** | 9 linhas |
+| A célula hospedeira nova (o Conjurador de adaga contra malha), que sustenta cinco delas | **1** | |
+| Níveis de controle (D6 e D7) | **2** | 2 linhas |
+| Cruzamentos deliberados | **6** | 6 linhas |
+| **Total** | **103** | |
 
 | | |
 |---|---|
-| Núcleo cruzado | E1 (4) × E2 (4) × E3 (3) = **48 células**, e as duas âncoras são células dele |
-| Um fator de cada vez, **em volta de cada âncora** | `E4 (1) + E5 (17) + E6 (4) + E7 (1) + E9 (1) + E10 (2) = 26`, **× 2 âncoras** = **52 células** |
-| Níveis de controle | E1-controle (mesmo ciclo, danos diferentes) + E4-controle (passos diferentes, armadura igual) = **2 células** |
-| Cruzamentos deliberados | **5** (não dobram: são pares específicos, não relativos à âncora) |
-| **Total** | **107 células** |
 | Repetições | 500 por célula, e 2.000 nas de cauda |
-| **Batalhas** | **53.500**, mais o reforço |
+| **Batalhas** | **51.500**, mais o reforço |
 | Tempo de máquina | da ordem de 45 segundos, pela §4.2 da `03-respostas.md` |
 
-**As duas âncoras**, ambas 3×3, distância média (18 hexes), campo aberto e perfil de bandeiras cheio:
+**Por que não estourou o orçamento de leitura.** A §3 nunca limitou a grade por máquina: *"o
+orçamento não é a máquina, é o que se consegue ler"*, com o aviso de que 144 células já são mais
+tabelas do que se lê numa sentada. Aquele aviso contava célula como linha, porque a grade era
+fatorial. Aqui a segunda âncora **não custa uma linha nova, custa uma coluna**, e o núcleo cruzado se
+lê como três grades e não como 48 linhas. O leitor enfrenta 3 grades de 4×4 e cerca de 41 linhas de
+comparação. O que quase reprovou não foi a âncora dupla: foi medir as bandeiras duas vezes cada em
+células onde catorze das comparações davam zero por construção.
 
-| | E1 | Política | E9 | E10 |
-|---|---|---|---|---|
-| **mediana** | colisão curta (adaga × montante, m.m.c. 24) | Cautelosa, que é uma das três que leem de verdade | com leitura | **com uma peça entrando no meio da cena** |
-| **extrema** | uníssono (espada longa dos dois lados) | Agressiva | com leitura | idem |
+**As duas âncoras.** Ambas 3×3, distância média (18 hexes), campo aberto, política **Agressiva**,
+com leitura, elenco PC × PC, perfil de bandeiras cheio, e a peça que entra no meio da cena
+**declarando no Tick seguinte** (o nível do meio de E10, que é a regra corrente da §0.46).
+
+| | E1 | Arquétipos |
+|---|---|---|
+| **mediana** | nível (b), vizinhos: ciclo 5 contra ciclo 6, m.m.c. **30** | Duelista élfico de espada curta contra Escudeiro humano de espada longa |
+| **extrema** | nível (a), uníssono: ciclo 6 dos dois lados, m.m.c. **6** | Escudeiro contra Escudeiro |
+
+**As duas diferem em exatamente uma coisa, e isso é requisito, não estilo.** A pergunta que a âncora
+dupla existe para responder é *"o efeito de cada fator depende de a cena ser extrema?"*, e ela só tem
+resposta se a única diferença entre as duas for E1. A versão anterior desta tabela dava política
+Cautelosa a uma e Agressiva à outra, o que misturava as duas causas em toda comparação. A Cautelosa
+continua medida: é um dos quatro níveis de E6, em volta de cada âncora.
 
 A mediana existe para os eixos terem espaço de se mexer; a extrema, porque o uníssono é o caso mais
 comum de mesa de verdade (159 das 309 criaturas atacam com ataque leve, e uma horda do mesmo bicho
-golpeia em uníssono para sempre). **A comparação entre as duas responde o que nenhuma das duas
-sozinha responderia: o efeito de cada fator depende de a cena ser extrema?**
+golpeia em uníssono para sempre).
 
-E as duas âncoras trazem peça entrando no meio e política que lê, porque sem isso E10 e E9 seriam
-inertes nelas e duas das 26 comparações seriam idênticas à âncora (`04-prontidao.md` §B.3).
+**Duas ressalvas escritas.** No nível (b) o **Duelista luta só com a espada curta**: a empunhadura
+dupla acrescentaria um segundo fluxo de golpes e apagaria o ciclo que E1 quer medir, então ela não é
+exercitada nas âncoras. E a política Agressiva **nunca aborta**, então o caminho de abortar só é
+exercitado pelo nível Cauteloso de E6.
+
+**Onde mora cada bandeira**, porque medir uma bandeira numa célula em que ela não morde produz zero
+por construção:
+
+| Bandeira | Célula que a hospeda | Por que não pode ser a âncora |
+|---|---|---|
+| `n1` a `n6` | **as duas âncoras** | são o núcleo do Tick, e valem em qualquer cena |
+| `margem` · `bloqueio` · `teto6` | **a âncora extrema** | o Escudeiro tem heater dos dois lados, e a Margem morde em qualquer acerto acima da Defesa. O `teto6` vai junto com um contador: quantas vezes o teto de fato mordeu |
+| `gate` · `modo2` | a célula do **Conjurador de adaga** (Perfuração 0) contra o Escudeiro de **malha** (`resistPerf` 1) | `gatePerfuracaoAbre` (`calc.ts:130-135`) só avalia o modo perfurante, e as armas das âncoras atacam de corte |
+| `curaSemArea` · `curaDivide` · `porRodada` | **a mesma célula**, que é a única com quem conjure | nenhuma âncora tem conjurador, e as cinco condições de dano por rodada vêm de Arte no repertório escolhido |
+| `porte` | a célula **`E11 = PC × criatura`**, que já existe no OFAT | `porteAcerto` é diferença de porte, e num elenco de PC ela é 0 sempre |
+
+**Os seis cruzamentos deliberados:** E1(uníssono) × E3(horda) · E1(uníssono) × E4(assimétrico) ·
+E2(muito longa) × E4 · E5 × E1(uníssono) · E9 × E10 · e **E11 × E3**, a horda de bicho contra os
+PCs, que é a cena que a mesa de verdade joga.
 
 ### 0.10.2 O piloto, um só
-
-**A configuração:** a célula-âncora, e mais as duas células extremas (uníssono com horda, e o alvo
-mais rápido) para conferir se o CV se comporta igual nelas.
 
 | | |
 |---|---|
@@ -1971,7 +2121,7 @@ run_id            texto
 commit            o sha do repositório
 iso               data e hora
 semente_mestre    inteiro de 64 bits
-perfil            { d1, d2: {margem, gate, couraca, porte, bloqueio, modo2, teto6},
+perfil            { d1, d2: {margem, gate, porte, bloqueio, modo2, teto6},
                     d3: politica, d4: {tipo, teto_ticks, teto_adiamento}, q7, q9, q10 }
 grade             os eixos e os níveis (§3)
 dados_hash        sha1 do conteúdo de src/data/*.json E de src/lib/*.ts, para saber se a
@@ -2185,7 +2335,7 @@ todos os golpes.
 
 ~~Com E1×E2×E3×E4 são **72 células**; com E5 em dois níveis, 144.~~ **Superado:** a tabela de eixos
 acima é a proposta original, e a §0.5 tem a valendo (E2 ganhou um quarto nível, entraram E7 e E9,
-E5 foi a 18 perfis, E6 ficou em 5 e entrou o E10). A grade é de **79 células** (§0.10). A justificativa das repetições,
+E5 foi a 17 perfis, E6 ficou em 5 e entraram o E10 e o E11). A grade é de **103 células** (§0.10.1), depois de E5 sair do OFAT das âncoras e entrarem o E11 e as células hospedeiras. A justificativa das repetições,
 logo abaixo, não depende do número de células e continua valendo inteira.
 
 **Quantas repetições, e por quê.** O número não sai de "1000", sai de duas contas:
@@ -2202,7 +2352,7 @@ logo abaixo, não depende do número de células e continua valendo inteira.
   Ticks vazios têm **uma observação por Tick**, não por batalha: uma célula de 500 batalhas de 45
   Ticks dá 22.500 observações. Essas métricas já estão saturadas bem antes de 500.
 
-~~Total da grade base: 72 × 500 = **36.000 batalhas**~~, e pela §0.10 são **79 × 500 = 39.500**, mais o
+~~Total da grade base: 72 × 500 = **36.000 batalhas**~~, e pela §0.10.1 são **51.500**, mais o
 reforço da cauda. Pela R2 §D1 isso seriam
 segundos de máquina na bancada; o harness com mapa será mais caro (a R2 §D3 registra o custo de
 `caminharHex` como **NÃO MEDIDO**), e mesmo dez vezes mais caro continua sendo minutos. **O
