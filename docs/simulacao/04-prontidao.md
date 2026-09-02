@@ -205,6 +205,11 @@ Ordenado por: bloqueia o começo primeiro, depois por quanto muda o resultado.
 
 ### D1 · A célula-âncora, que hoje é um caso extremo · **bloqueia o começo**
 
+> **RESPONDIDO: duas âncoras**, uma mediana e uma extrema, com cada fator medido nas duas. É a
+> opção que resolve o contra-argumento da recomendada, ao custo de dobrar o braço de um fator de cada
+> vez. A grade recontada está na §0.10.1 do 02.
+
+
 **A pergunta:** a âncora de onde pendem as 26 comparações de um fator de cada vez continua sendo
 E1 uníssono, ou passa a ser um caso mediano?
 
@@ -228,6 +233,12 @@ mostrar podem sumir na cena real. A resposta honesta a isso é a terceira opçã
 ---
 
 ### D2 · Os três buracos do log · **bloqueia o começo**
+
+> **RESPONDIDO: os quatro campos, mais um invariante.** O `decl` ganha campos próprios, entra o
+> identificador de ação, o `cena.fim` ganha motivo e nasce o evento de recurso; e o identificador
+> ganha asserção própria (**V15**: todo evento de dano tem um `decl` ancestral na mesma batalha), que
+> é o que impede o modo de falha do contra-argumento.
+
 
 **A pergunta:** o log ganha os campos que faltam (o `decl` especificado, o `aid` de ação, o motivo do
 fim de batalha e o evento de recurso), ou nove métricas ficam de fora?
@@ -253,6 +264,11 @@ aparece como um tempo morto plausível e falso. Se ele entrar, precisa de um inv
 
 ### D3 · O critério de aceitação da §0.6.1 · **bloqueia o começo**
 
+> **RESPONDIDO: build verde, mais o teste-espelho, mais as provas item a item.** Fica registrado o
+> que a escolha deixa de fora: **N7 e N8 não terão verificação nenhuma**, porque "o jogador vê a
+> intenção do outro" não é uma asserção automatizável.
+
+
 **A pergunta:** o que precisa estar verde para a fase de implementação ser considerada pronta e a
 bateria poder rodar?
 
@@ -274,6 +290,12 @@ ao custo de depender de uma sessão que ninguém agendou.
 ---
 
 ### D4 · Como se prova que as dezesseis bandeiras desligadas são inertes · **bloqueia o começo**
+
+> **RESPONDIDO: uma branch congelada como referência**, caindo para o espelho do commit anterior se
+> ela não for viável. Isso resolve o contra-argumento que eu tinha levantado: uma branch parada não
+> anda com a história do git, então um conserto legítimo que entre junto com uma bandeira não faz a
+> comparação falhar por motivo certo.
+
 
 **A pergunta:** que evidência garante que o perfil "tudo desligado" reproduz o jogo de antes, e não um
 jogo novo com as regras mal apagadas?
@@ -298,6 +320,14 @@ segunda opção é pior e não tem esse problema.
 
 ### D5 · A ordem de implementação da §0.6.1 · **bloqueia o começo**
 
+> **RESPONDIDO: bandeiras primeiro**, que é a opção que eu tinha chamado de "começar pelo pior", e a
+> razão dela é boa: os furos estão na mesa **hoje** (a Margem que não entra no dano, o escudo que só
+> penaliza). Uma consequência forçada pela dependência: as seis bandeiras do núcleo (`n1` a `n6`) não
+> podem vir antes das regras que elas ligam, então "bandeiras primeiro" são as **dez** que não
+> dependem do núcleo (as nove de regra publicada mais o `porRodada`), e as seis do núcleo entram junto
+> com N1 a N6.
+
+
 **A pergunta:** os doze itens entram em que ordem, dado que seis deles mexem no mesmo laço?
 
 | Resposta | Consequência |
@@ -320,6 +350,11 @@ nada. **Este contra-argumento é forte o bastante para eu não ter certeza da re
 
 ### D6 · E1 confundido com dano e Preparo · **bloqueia só a leitura**
 
+> **RESPONDIDO: um nível de controle.** Um par com o mesmo ciclo e danos diferentes, que isola o
+> efeito do dano e permite subtraí-lo de toda leitura de E1. Custa uma célula e transforma a ressalva
+> escrita num número.
+
+
 **A pergunta:** o eixo dos ciclos, que no catálogo real vem grudado ao dano e ao Preparo, fica como
 está, ou se paga alguma coisa para separá-lo?
 
@@ -339,6 +374,11 @@ quantificar, e a previsão da §3 ("E1 domina o pico") pode estar certa pelo mot
 ---
 
 ### D7 · E4 confundido com armadura e raça · **bloqueia só a leitura**
+
+> **RESPONDIDO: um nível de controle**, como na D6. Um par com passos diferentes e armadura igual,
+> que dá o tamanho do confundimento. Cria um orc de couro correndo, que não descreve peça nenhuma do
+> jogo, e é justamente por isso que ele é controle e não nível.
+
 
 **A pergunta:** a assimetria de passo, que vem junto com 6 pontos de Absorção de diferença, fica
 assim?
@@ -361,6 +401,10 @@ reconhece isso.
 
 ### D8 · O que fazer se o A/B de N1 mostrar algo ruim · **bloqueia só a leitura**
 
+> **RESPONDIDO: antes disso, definir o que é "ruim"**, que era a pergunta escondida. O critério está
+> na §D8b, abaixo, e ele reenquadra a leitura da bateria inteira.
+
+
 **A pergunta:** N1 vai estar na mesa antes da bateria. Se a medição disser que ela piorou o jogo, o
 que acontece?
 
@@ -380,6 +424,41 @@ desenho que só se toma com o número na mão. A escolha aqui é óbvia porque a
 **O que não é óbvio, e é a pergunta de verdade escondida nesta:** qual resultado conta como "ruim"?
 Um combate 20% mais curto é bom ou é o sinal de que o Preparo 0 ficou forte demais? Isso não tem
 resposta antes do número, e por isso não vira opção aqui.
+
+---
+
+### D8b · O que conta como "a regra piorou o jogo" · **respondida, e reenquadra a bateria**
+
+**RESPONDIDO**, e a resposta é mais importante que a pergunta que a gerou. Os dois critérios
+marcados:
+
+- **a carga do mestre subiu** (paradas do mestre por batalha, ou o pico por Tick);
+- **o jogador espera mais** (o tempo morto entre declarar e ver o efeito).
+
+E a régua por trás deles, nas suas palavras: *"o que piora o jogo é ter que estender muito a
+quantidade de ajustes, decisões, cliques, correções em cada etapa. Então toda vez que aumentar muito
+a complexidade por causa desses fatores, é um ponto negativo."*
+
+**O que isso descarta, e é o mais importante:** *"o combate ficar mais longo ou curto demais não é
+automaticamente um problema que quero resolver no Grid; aí pode ser uma questão de adaptar regras. O
+que estamos querendo ver aqui é como o Grid está reagindo às regras."*
+
+Isso **reenquadra a leitura da bateria inteira**, e três consequências saem daí:
+
+1. **A duração da batalha deixa de ser critério e vira multiplicador.** Ela continua sendo medida, e
+   continua sendo o que multiplica toda a carga, mas um combate mais curto ou mais longo **não é, por
+   si, um resultado ruim**. Uma regra que dobre a duração e mantenha a carga por Tick é neutra pelo
+   critério; uma que encurte a batalha e dobre os cliques por etapa é ruim.
+2. **A métrica certa é por etapa, e não por batalha.** "Paradas por batalha" mistura duração com
+   carga; "paradas por Tick", "gestos por golpe aplicado" e "pico num Tick" isolam a carga da
+   duração. As três já existem na §2.6, e passam a ser as principais, com as por-batalha viradas
+   contexto.
+3. **Taxa de vitória e dominância saem do critério de reprovação.** Elas continuam calculáveis e
+   continuam interessantes, e param de decidir se uma regra fica ou sai: isso é balanço de regra, e
+   se resolve fora do Grid.
+
+**O limiar de cada critério só pode ser fixado depois do piloto**, que é quem dá a distribuição de
+referência. O critério está fixo agora; o número, não.
 
 ---
 

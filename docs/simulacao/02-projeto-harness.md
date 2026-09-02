@@ -19,6 +19,14 @@ O objetivo declarado: simular batalhas do Grid para medir **carga de trabalho e 
 no mestre**, e não dano nem taxa de vitória. A meta é que o Grid pareça um videogame, com muitas
 opções para o jogador e nenhuma conta para o mestre.
 
+**E o que conta como resultado ruim, fixado em 02/09** (`04-prontidao.md` §D8b): *"o que piora o jogo
+é ter que estender muito a quantidade de ajustes, decisões, cliques, correções em cada etapa"*. A
+consequência que muda a leitura de tudo: **o combate ficar mais longo ou mais curto não é, por si, um
+problema a resolver no Grid**: isso é balanço de regra e se adapta fora daqui. A duração é
+multiplicador, não critério. **O que se está medindo é como o Grid reage às regras**, e por isso as
+métricas principais são as **por etapa** (paradas por Tick, gestos por golpe aplicado, pico num
+Tick), com as por batalha viradas contexto.
+
 A ordem de leitura depende do que você veio fazer:
 
 | Se você veio para | Leia |
@@ -1250,7 +1258,28 @@ fora da semente. `mesa-core.ts:28` também tem, mas é geração de id e não en
 
 ---
 
-**Ordem sugerida.** Os itens **1 a 6** são o núcleo do Tick, se sustentam sozinhos e cabem em quatro
+### A ordem, o critério de aceitação e a prova de inércia (decididos em 02/09)
+
+**A ordem é: bandeiras primeiro** (`04-prontidao.md` §D5). A razão é que os furos estão na mesa
+**hoje**: a Margem que não entra no dano e o escudo que só penaliza são defeitos de um jogo que está
+rodando. Uma consequência forçada pela dependência: **as seis bandeiras do núcleo (`n1` a `n6`) não
+podem vir antes das regras que elas ligam**, então "bandeiras primeiro" são as **dez** que não
+dependem do núcleo (as nove de regra publicada mais o `porRodada`), e as seis do núcleo entram junto
+com N1 a N6, no item seguinte.
+
+**O critério de aceitação** para a fase estar pronta e a bateria poder rodar: **`npm run build`
+verde, mais o teste-espelho sem divergir em nenhum campo, mais as provas item a item** que cada um
+dos doze já tem escritas. Fica registrado o que isso deixa de fora: **N7 e N8 não terão verificação
+nenhuma**, porque "o jogador vê a intenção do outro" e "o rastro é legível" não são asserções
+automatizáveis. Se elas forem verificadas, será por uma sessão de mesa, que não faz parte deste
+critério.
+
+**A prova de que uma bandeira desligada é inerte** é a comparação contra uma **branch congelada** no
+estado anterior à entrada dela, caindo para o espelho do commit anterior se a branch não for viável.
+A branch é melhor porque não anda com a história do git: um conserto legítimo que entre junto com uma
+bandeira não faz a comparação falhar por motivo certo.
+
+**Ordem detalhada.** Depois das dez bandeiras, os itens **1 a 6** são o núcleo do Tick, se sustentam sozinhos e cabem em quatro
 funções (`agendaSimultanea`, `grupoDaVez`, `golpeMaisCedo`, e a leitura do retrato na folha). O **7**
 é a migração, e o **6** depende dela se o retrato for para o banco. O **8** e o **9** são tela. O
 **10** e o **12** são isolados. O **11** é o maior e o mais arriscado, e vale por último, quando o
@@ -1539,19 +1568,34 @@ um só.
 
 ### 0.10.1 A grade oficial
 
+Refeita em 02/09 com as respostas da `04-prontidao.md`: **duas âncoras** (D1) e **dois níveis de
+controle** (D6 e D7).
+
 | | |
 |---|---|
-| Núcleo cruzado | E1 (4) × E2 (4) × E3 (3) = **48 células** |
-| Um fator de cada vez, em volta da âncora | E4 (1) + E5 (17) + E6 (4) + E7 (1) + E9 (1) + E10 (2) = **26 células** |
-| Cruzamentos deliberados | 5 |
-| **Total** | **79 células** |
+| Núcleo cruzado | E1 (4) × E2 (4) × E3 (3) = **48 células**, e as duas âncoras são células dele |
+| Um fator de cada vez, **em volta de cada âncora** | `E4 (1) + E5 (17) + E6 (4) + E7 (1) + E9 (1) + E10 (2) = 26`, **× 2 âncoras** = **52 células** |
+| Níveis de controle | E1-controle (mesmo ciclo, danos diferentes) + E4-controle (passos diferentes, armadura igual) = **2 células** |
+| Cruzamentos deliberados | **5** (não dobram: são pares específicos, não relativos à âncora) |
+| **Total** | **107 células** |
 | Repetições | 500 por célula, e 2.000 nas de cauda |
-| **Batalhas** | **39.500**, mais o reforço |
-| Tempo de máquina | da ordem de 30 segundos, pela §4.2 da `03-respostas.md` |
+| **Batalhas** | **53.500**, mais o reforço |
+| Tempo de máquina | da ordem de 45 segundos, pela §4.2 da `03-respostas.md` |
 
-**A célula-âncora**, de onde pendem as 26 comparações de um fator de cada vez: 3×3 peças, E1 uníssono,
-E2 na distância média (18 hexes), campo aberto, política Agressiva, com leitura, quem entra no meio
-declarando no Tick seguinte, e o perfil de bandeiras cheio.
+**As duas âncoras**, ambas 3×3, distância média (18 hexes), campo aberto e perfil de bandeiras cheio:
+
+| | E1 | Política | E9 | E10 |
+|---|---|---|---|---|
+| **mediana** | colisão curta (adaga × montante, m.m.c. 24) | Cautelosa, que é uma das três que leem de verdade | com leitura | **com uma peça entrando no meio da cena** |
+| **extrema** | uníssono (espada longa dos dois lados) | Agressiva | com leitura | idem |
+
+A mediana existe para os eixos terem espaço de se mexer; a extrema, porque o uníssono é o caso mais
+comum de mesa de verdade (159 das 309 criaturas atacam com ataque leve, e uma horda do mesmo bicho
+golpeia em uníssono para sempre). **A comparação entre as duas responde o que nenhuma das duas
+sozinha responderia: o efeito de cada fator depende de a cena ser extrema?**
+
+E as duas âncoras trazem peça entrando no meio e política que lê, porque sem isso E10 e E9 seriam
+inertes nelas e duas das 26 comparações seriam idênticas à âncora (`04-prontidao.md` §B.3).
 
 ### 0.10.2 O piloto, um só
 
@@ -1560,18 +1604,18 @@ mais rápido) para conferir se o CV se comporta igual nelas.
 
 | | |
 |---|---|
-| Onde | célula-âncora |
+| Onde | **as duas âncoras** (D1), porque o CV pode não ser o mesmo na mediana e na extrema |
 | Quantas batalhas | **2.000** (o erro da estimativa do próprio CV é da ordem de `1/√(2n)`, ou ±1,6%, e sobra amostra para uma primeira leitura do p95) |
-| O que se mede | o CV de **paradas do mestre por batalha**, que é a métrica principal, e não a duração |
-| Mais | as duas células extremas, 500 batalhas cada |
+| O que se mede | o CV de **paradas do mestre por Tick**, que virou a métrica principal com a régua da §D8b (a por batalha mistura carga com duração) |
+| Mais | as duas células de cauda (uníssono com horda, e o alvo mais rápido), 500 batalhas cada |
 | Quando | **depois** de N1 a N8 e das bandeiras estarem no motor: a duração muda com N1, e um CV medido antes descreve outro jogo |
 
 **A regra de decisão, escrita antes de rodar:**
 
 1. `n = teto( (1,96 × CV / 0,05)² )`, arredondado para a centena de cima;
 2. piso de 400, que é a regra do p95, mesmo que o CV medido dê menos;
-3. se o maior CV das três células exceder o da âncora em mais de 0,15, **usa-se o maior para todas**,
-   porque n desigual entre células desequilibra a comparação que é o objetivo da grade;
+3. se o maior CV das quatro células piloto exceder o menor em mais de 0,15, **usa-se o maior para
+   todas**, porque n desigual entre células desequilibra a comparação que é o objetivo da grade;
 4. o `n` resultante substitui as 500 em toda a grade, e as 2.000 das células de cauda são
    recalculadas pela mesma proporção.
 
@@ -1988,8 +2032,37 @@ abertas     int      quantas outras paradas já esperavam no mesmo Tick
 
 **Campos por tipo:** `golpe.resolve` leva `total, defesa, errou_por, veredito, dano_bruto, absorcao,
 dano_liquido, tipo, manobra, indice, fase_alvo, dist_hex`; `passo` leva `de_q, de_r, para_q, para_r,
-modo, passos, atravessou`; `reproj` leva `golpe_antes, golpe_depois, atraso, falta_hex, acumulado`
-(quantas vezes aquela mesma ação já deslizou); `dano` leva `pv_antes, pv_depois, caiu`.
+modo, passos, atravessou, chegou`; `reproj` leva `golpe_antes, golpe_depois, atraso, falta_hex,
+acumulado` (quantas vezes aquela mesma ação já deslizou); `dano` leva `pv_antes, pv_depois, caiu`.
+
+**Os quatro acréscimos decididos em 02/09** (`04-prontidao.md` §A.3 e §D2), sem os quais nove
+métricas não têm dado:
+
+1. **`aid`, o identificador de ação**, nascido no `decl` e repetido em `golpe.vence`,
+   `golpe.resolve`, `reproj` e `dano`. Ligar por `(cid, ordem)` funciona com uma ação por vez e
+   **quebra em silêncio na rajada e na re-projeção**, produzindo um tempo morto menor e crível. Ele
+   ganha invariante próprio, o **V15** (`03-respostas.md` §3.1): todo `dano` tem um `decl` ancestral
+   na mesma batalha.
+2. **O evento `decl` ganha campos próprios**, que a especificação não tinha:
+   ```
+   aid       texto    o identificador desta ação
+   acao      'atacar'|'mover'|'conjurar'|'abortar'|'esperar'|'outra'
+   manobra   'simples'|'dupla'|'segura'|'rajada'   quando é ataque
+   alvo      texto?
+   viagem    int      Ticks de viagem estimados na declaração; 0 = já estava no alcance
+   modo      'andar'|'batalha'|'corrida'            quando há deslocamento
+   golpe     int?     o Tick do primeiro golpe agendado
+   primeira  bool     é a primeira declaração desta peça? (a cadeia de N4 depende disso)
+   ```
+3. **`cena.fim` ganha `motivo`**: `sem-ninguem-de-pe` · `fuga-consumada` · `desistencia-20` ·
+   `estourou`. Sem ele a "fração de batalhas que não terminam" não distingue as quatro.
+4. **Nasce o evento `recurso`**, com `{ tipo: 'mana', antes, depois, pct }`, emitido quando a Mana é
+   gasta. É o que sustenta as três métricas da §0.7 (o Tick em que o conjurador cruza os 30% e o
+   zero, e a fração das batalhas em que ele termina esvaziado). Energia e Fôlego não emitem: a
+   primeira não é gasta por nada e o segundo ficou fora (§0.7).
+
+E o `passo` ganha **`chegou`** (bool), que marca o Tick em que a peça entrou no alcance do alvo: é o
+que a métrica da folga da perseguição (§0.45) precisa e não tinha.
 
 #### Como se obtém o que a R2 §G2 disse não existir em lugar nenhum
 
@@ -2039,6 +2112,13 @@ mesmas todo dia por serem escolhidas pela semente), e **contadores agregados** p
 | **Fração de batalhas que não terminam** | idem, e depende de D4 | proporção, com intervalo binomial |
 | **Colisão de agenda: N(T)** | valida a forma fechada da R2 §H1 contra o que de fato acontece | **histograma**, comparado com o previsto |
 | **Fração dos golpes que caem em Tick múltiplo de 6** | mede a sincronia das oito fontes da R2 §H3 | proporção |
+
+**A régua de leitura, fixada em 02/09** (`04-prontidao.md` §D8b): as métricas **por etapa** são as
+principais, e as **por batalha** são contexto. Paradas do mestre por Tick, gestos por golpe aplicado
+e pico num Tick isolam a carga da duração; paradas por batalha mistura as duas. E a duração não é
+critério de reprovação: um combate mais longo ou mais curto é balanço de regra, e se resolve fora do
+Grid. **Os dois critérios de "a regra piorou o jogo" são: a carga do mestre subiu, e o jogador espera
+mais.** O limiar de cada um só se fixa depois do piloto.
 
 Onde a média cabe, cabe por um motivo só: quando é razão de dois contadores grandes acumulados
 **dentro** da mesma batalha (Ticks vazios sobre Ticks, gestos do mestre sobre gestos totais), a média
