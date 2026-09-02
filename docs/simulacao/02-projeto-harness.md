@@ -8,7 +8,8 @@ quatro, em `docs/simulacao/`:
 | `00-diagnostico.md` (**R1**) | o que existia antes de qualquer decisão: onde mora cada peça do motor, o que é puro, o que não é |
 | `01-diagnostico-carga.md` (**R2**) | as 14 paradas que pedem um humano, os conflitos entre capítulo, JSON e motor, e as medições |
 | **este** | as decisões tomadas e a especificação do que implementar |
-| `03-respostas.md` | as contradições deste documento resolvidas, os invariantes do harness, e as medições novas |
+| `03-respostas.md` | as contradições deste documento resolvidas, os 14 invariantes do harness, e as medições novas |
+| `04-prontidao.md` | a verificação de prontidão: se cada métrica tem dado, se cada eixo é separável, e o que falta decidir |
 
 **Nenhuma linha deste documento foi implementada.**
 

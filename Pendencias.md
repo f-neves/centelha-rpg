@@ -982,6 +982,7 @@ cabeçalho do `02`:
 | `01-diagnostico-carga.md` | as 14 paradas que pedem um humano, os conflitos entre capítulo, JSON e motor, e as medições |
 | `02-projeto-harness.md` | **o canônico**: as decisões e a especificação do que implementar |
 | `03-respostas.md` | as contradições do 02 resolvidas, os 14 invariantes do harness, e as medições novas |
+| `04-prontidao.md` | prontidão: se cada métrica tem dado, se cada eixo é separável, os riscos e o que falta decidir |
 
 **A regra da frente:** decisão anotada dentro de um relatório não vale; o que vale vem do chat, e o
 relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`.
