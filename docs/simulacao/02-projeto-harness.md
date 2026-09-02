@@ -41,6 +41,7 @@ como está, porque o que cada opção significava continua sendo a leitura das c
 | **N4** | em que ordem se declara no Tick | **Raciocínio + Prontidão crescente**, depois Raciocínio, Destreza, iniciativa rolada, sorteio (§0.46) |
 | **N5** | as fases de um Tick | **declaração · início · resolução**, e a resolução na ordem inversa da declaração (§0.46) |
 | **N6** | penalidade nascida no Tick T | **só vale em T+1**: a resolução lê o retrato de quando as declarações terminaram (§0.46) |
+| **N7** | quem declara depois enxerga o que já foi declarado? | **enxerga, e é a vantagem de ter mais Raciocínio + Prontidão** (regra do Vampiro). O que ele vê já está definido na máscara da migração 27 (§0.47) |
 
 Q13 (o repertório declarável) não foi perguntada porque D3 a responde: uma política declarada como
 dado só pode declarar o que o Grid aceita, e o Grid aceita **6 coisas** (atacar em 4 manobras, mover
@@ -519,6 +520,86 @@ retrato cobrindo a posição, **a ordem inversa de N5 é puramente narrativa: el
 primeiro, e não muda nenhum resultado.** Isso é o que faz o simultâneo ser simultâneo de verdade, e
 é também o que dá ao harness um determinismo que não depende de eu acertar a ordem de iteração.
 
+### 0.47 N7 · Declarar por último é vantagem, e ela já tem régua
+
+**Decidido:** a declaração é **visível**. Quem declara depois vê o que já foi declarado, e é por isso
+que a ordem de N4 é crescente em Raciocínio + Prontidão: quem tem mais declara por último e escolhe
+com mais informação. É a regra de declaração do **Vampiro: A Máscara** (declara-se na ordem inversa
+da iniciativa e resolve-se na ordem dela), e ela cai bem aqui porque a chave da ordem **é** a
+estatística de iniciativa (§0.46 N4).
+
+#### O que o declarante tardio enxerga já está definido no banco
+
+A migração 27 escreveu a assimetria, e com a mesma intenção, antes desta conversa existir
+(`supabase/migracao-27.sql:76-88`):
+
+> "O jogador vê QUE alguém está montando alguma coisa (a fita, os Ticks, a fase). O mestre vê O QUE:
+> a arma e o alvo. Sem isso a fita entregaria de graça que o ogro está carregando o martelo contra o
+> mago, que é justamente a informação que se compra prestando atenção na mesa."
+
+A linha que faz isso, em `combate_visao` (L116-117):
+
+```sql
+case when m1.meu or v.stats then c.acao
+     else c.acao - 'arma' - 'alvo' end as acao
+```
+
+Então o repertório de informação de quem declara por último é, exatamente:
+
+| Vê | Não vê |
+|---|---|
+| que a peça declarou alguma coisa, e a fase dela em cada Tick (`golpes`, `livre`) | **contra quem** (`alvo`) |
+| o **Tick em que o golpe cai** | **com o quê** (`arma`) |
+| a **manobra** (`tipo`: simples, dupla, segura, rajada) | |
+| a Pressão e a dívida acumuladas | |
+| a Vida do inimigo só no grau que a mesa revelou (migração 14) | |
+
+**N7 não precisa de sistema de visibilidade novo.** Ele herda o que existe, e o que existe foi
+desenhado para exatamente esta pergunta.
+
+#### Um vazamento que o Simultâneo abriu na máscara
+
+`c.acao - 'arma' - 'alvo'` remove as **chaves de topo**. O bloco `mov`, que o Simultâneo acrescentou
+depois, tem um `alvo` dentro dele (`Mov`, `combate-tempo.ts:738`; lido em `grid.astro:4920` como
+`mov.alvo ? TOKENS[mov.alvo] : mov.destino`), e esse `mov.alvo` **sobrevive à máscara**. O jogador
+consegue ler contra quem uma peça está andando, que é precisamente a informação que a migração 27
+foi escrita para esconder. O conserto é uma linha na view, e ele vira mais urgente com N7, porque
+agora essa informação tem valor mecânico e não só narrativo.
+
+#### O que N7 muda no resto do desenho
+
+**Nas políticas (§0.4 P4).** Cada política passa a precisar de uma regra de leitura, e a posição dela
+na ordem decide se ela tem o que ler. Proposta, uma linha por perfil:
+
+| Perfil | O que faz com o que vê |
+|---|---|
+| **Agressivo** | ignora: ataca o mais próximo de qualquer jeito |
+| **Cauteloso** | se alguém já declarou golpe para este Tick, prefere `segura`; se o inimigo mais próximo está em Recuperação declarada, ataca `rajada` |
+| **Tocaiador** | se alguém declarou golpe com queda neste Tick ou no próximo, recua antes |
+| **Guarda-costas** | se há golpe declarado caindo no Tick em que o aliado protegido está aberto, move para interpor em vez de atacar |
+| **Conjurador** | conta quantos declararam golpe para o mesmo Tick e escolhe zona se forem 2 ou mais agrupados |
+
+Note que **nenhuma dessas regras pode usar `alvo`**, porque a máscara o esconde. Elas usam só fase,
+Tick do golpe e manobra, que é o que a régua entrega. Isso é bom para o desenho: as políticas ficam
+honestas por construção, e a mesma política roda para o mestre e para o jogador sem precisar de duas
+versões.
+
+**Na carga do mestre, que é a métrica.** A ordem de declaração vira uma regra que alguém tem de
+cumprir. Hoje `grupoDaVez` devolve todos os livres e o mestre escolhe por quem começar; com N4 e N7
+ele teria de **ordenar as peças livres por Raciocínio + Prontidão a cada Tick** e perguntar nessa
+ordem. Isso é aritmética de escrituração, exatamente do tipo que a §2.3 classifica como **iii**, e
+sem o Grid apresentando a fila de declaração pronta ela vira carga nova. É o caso mais claro até
+agora de uma regra boa para o jogo que **piora** a mesa se a ferramenta não a absorver, e é
+exatamente o que o harness foi desenhado para medir.
+
+**Na balança do sistema, como hipótese a medir.** Raciocínio + Prontidão passa a comprar **três**
+coisas com o mesmo par: entrada mais cedo na briga (`ticksDeEntrada`, pelo degrau de iniciativa),
+declaração por último (N7) e resolução primeiro (N5). Não estou dizendo que é demais; estou dizendo
+que é uma concentração que ninguém decidiu de uma vez, e que a simulação consegue pôr número nela.
+Proposta: o eixo E6 ganha um nível a mais, **"política cega"**, idêntica à Agressiva mas que não lê
+declaração nenhuma, e a diferença entre ela e a Agressiva com leitura mede o preço de um ponto de
+Raciocínio + Prontidão em vitórias e em Ticks.
+
 ### 0.5 A grade, refeita com as respostas
 
 | Eixo | Níveis | Custa célula? |
@@ -528,25 +609,25 @@ primeiro, e não muda nenhum resultado.** Isso é o que faz o simultâneo ser si
 | **E3 · tamanho da cena** | 3 (1v1 · 3×3 · 2×8) | sim |
 | **E4 · assimetria de passo** | 2 | sim |
 | **E5 · perfil de regras** | 2 (base · as 9 bandeiras ligadas: as 7 de D2 mais as 2 da Cura, §0.4 P1) | sim |
-| **E6 · política** | 5 (agressivo · cauteloso · tocaiador · guarda-costas · conjurador), §0.4 P4 | sim |
+| **E6 · política** | 6 (agressivo · cauteloso · tocaiador · guarda-costas · conjurador · **cega**, §0.47) | sim |
 | **E7 · obstáculo** | 2 (campo aberto · parede), §0.4 P2, e cai fora se P2 for recusada | sim |
 | **E8 · atribuição de gesto** | 2 (mestre solo · um por PC) | **não**: é leitura do mesmo log |
 | **D1 · perfil de automação** | 2 | **não**: é leitura do mesmo log |
 
-Cruzar tudo dá **4×4×3×2×2×5×2 = 1.920 células**, e o problema não é tempo de máquina, é que
+Cruzar tudo dá **4×4×3×2×2×6×2 = 2.304 células**, e o problema não é tempo de máquina, é que
 ninguém lê 1.920 tabelas. O orçamento que aperta continua sendo o mesmo da §3: o que se consegue
 ler. Desenho proposto:
 
 - **Núcleo cruzado: E1 × E2 × E3 = 48 células.** São os três que eu espero que interajam, e a
   previsão da §3 é sobre eles.
-- **Um fator de cada vez em volta da célula-âncora**, para E4, E5, E6 e E7: `(2−1) + (2−1) + (5−1) +
-  (2−1) = 7 células`. Mede o efeito principal de cada um sem cruzá-lo com o resto.
+- **Um fator de cada vez em volta da célula-âncora**, para E4, E5, E6 e E7: `(2−1) + (2−1) + (6−1) +
+  (2−1) = 8 células`. Mede o efeito principal de cada um sem cruzá-lo com o resto.
 - **Cruzamentos deliberados**, porque OFAT é cego a interação e há quatro que eu espero de verdade:
   E1(uníssono) × E3(horda), E1(uníssono) × E4(assimétrico), E2(muito longa) × E4, E5 × E1(uníssono).
   **4 células.**
-- Total: **59 células**. A 500 repetições, **29.500 batalhas**, mais o reforço de 2.000 nas células
-  de cauda (as de E4 e a de uníssono com horda). Sem E7, se P2 for recusada, são **52 células**. A
-  justificativa das 500 e das 2.000 é a da §3 e não muda.
+- Total: **60 células**. A 500 repetições, **30.000 batalhas**, mais o reforço de 2.000 nas células
+  de cauda (as de E4 e a de uníssono com horda). A justificativa das 500 e das 2.000 é a da §3 e não
+  muda.
 
 ---
 
