@@ -234,6 +234,71 @@ eq(T.previsaoDeEncontro(1, 3, 0, 1), 0, 'já no alcance: zero Ticks');
     `atravessar sai do OUTRO lado do alvo (${JSON.stringify(saiu)})`);
 }
 
+// ------------------------------- 3.4. a agenda re-projetada (02/09)
+// O alvo que sai de baixo: a agenda nasce na declaração assumindo o alvo
+// parado, e sem re-projeção o cartão vence com o atacante ainda longe.
+// A regra travada é SÓ ATRASA: o Tick anunciado é o mais cedo que o golpe cai.
+{
+  const montar = (classe, vel, viagem, extra = {}) => {
+    const a = an(classe, vel, extra);
+    const ag = T.agendaSimultanea(0, a, viagem);
+    let acao = T.declarar(0, a, { alvo: 'x' });
+    acao.golpes = ag.golpes; acao.livre = ag.livre;
+    return T.agendar(acao, 0);
+  };
+
+  // Martelo (P2) a 2 Ticks de viagem: golpe no 3, ciclo fecha no 8.
+  const base = montar('pesada', 7, 2);
+  eq([base.golpes, base.livre, base.aResolver], [[3], 8, [3]], 'a agenda de partida é a da declaração');
+
+  // NO RUMO NADA MUDA. A cada Tick da viagem prevista, a re-projeção concorda
+  // com a declaração e não escreve nada: é o caso comum, e ele tem de ser mudo.
+  eq(T.reprojetarAgenda(base, 1, 1), null, 'com a viagem em dia, a agenda não se mexe');
+  eq(T.reprojetarAgenda(base, 2, 0), null, 'chegando no Tick previsto, idem');
+
+  // O ALVO FOGE: no Tick 1 ainda faltam 2 Ticks de viagem (era 1), e tudo anda
+  // um Tick para a frente, agenda e fim de ciclo.
+  {
+    const r = T.reprojetarAgenda(base, 1, 2);
+    eq([r.golpes, r.livre, r.aResolver], [[4], 9, [4]], 'o alvo que foge adia o golpe e o ciclo junto');
+  }
+
+  // SÓ ATRASA: chegar antes do previsto não antecipa nada.
+  eq(T.reprojetarAgenda(base, 1, 0), null, 'chegar adiantado não puxa o golpe para trás');
+
+  // O GOLPE JÁ VENCIDO e o alvo ainda longe: o cartão não fica pendurado, ele
+  // é remarcado para depois da viagem que sobrou.
+  {
+    const r = T.reprojetarAgenda(base, 3, 2);
+    eq([r.golpes, r.livre], [[6], 11], 'golpe vencido com o alvo longe é remarcado');
+  }
+
+  // A RAJADA anda inteira: os golpes são Ticks seguidos e não há pausa no meio.
+  {
+    const raj = montar('leve', 5, 2, { manobra: 'rajada', golpes: 3 });
+    eq(raj.golpes, [3, 4, 5], 'a rajada parte em Ticks seguidos');
+    const r = T.reprojetarAgenda(raj, 3, 1);
+    eq([r.golpes, r.aResolver], [[5, 6, 7], [5, 6, 7]], 'a corrente da rajada desliza inteira');
+  }
+
+  // Movimento puro (sem golpe no ar) não tem agenda para re-projetar.
+  eq(T.reprojetarAgenda({ golpes: [], livre: 6, desde: 0 }, 2, 3), null, 'sem golpe no ar, nada a re-projetar');
+  eq(T.reprojetarAgenda(null, 2, 3), null, 'ação vazia, idem');
+
+  // A PERSEGUIÇÃO PERDIDA, Tick a Tick: alvo com o mesmo passo, distância que
+  // não fecha. O golpe desliza um Tick por avanço e NUNCA vence com o alvo
+  // longe; quem desiste é a mesa, no abortar, e não o motor.
+  {
+    let acao = montar('media', 6, 2), venceuLonge = false;
+    for (let t = 1; t <= 5; t++) {
+      if (T.golpeDevido(acao, t) != null) venceuLonge = true;   // ainda a 2 Ticks
+      acao = T.reprojetarAgenda(acao, t, 2) || acao;
+    }
+    ok(!venceuLonge, 'na perseguição que não fecha, o golpe nunca vence com o alvo longe');
+    eq(T.proximoGolpe(acao), 8, 'e ele desliza um Tick por avanço (3 → 8 em cinco Ticks)');
+  }
+}
+
 // ------------------------------------------------- 4. o robô mínimo
 {
   const perto = { id: 'perto', pos: { q: 1, r: 0 } };

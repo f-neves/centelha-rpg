@@ -217,16 +217,52 @@ Golpe favoreceria a arma leve (1 Tick é 20% do ciclo dela contra 14% da pesada)
 bate-e-corre, já que andar na Recuperação é caro; proibir favorece a pesada de leve. Sem
 medição de bancada ainda.
 
+## 3.1.3. A agenda re-projetada, e o vaivém que ela destapou (2026-09-02)
+
+Fecha o item 1 da §3.2, que era o mais sério da lista.
+
+**O que mudou.** A agenda deixou de ser um número escrito na declaração. A cada avanço, quem
+ainda está a caminho tem o Tick do golpe recalculado pela distância que sobrou depois do passo
+daquele Tick (`reprojetarAgenda`, em `combate-tempo.ts`). A conta é a mesma da declaração, um
+Tick depois: faltando `v` Ticks de viagem, a peça chega no fim do Tick `T + v` e o golpe cai no
+seguinte. Os golpes ainda no ar andam todos juntos (a rajada é uma corrente de Ticks seguidos, e
+quebrá-la seria inventar uma pausa no meio dela) e o fim do ciclo anda com eles.
+
+**Só atrasa.** O golpe vai para frente e nunca para trás: o Tick anunciado no registro é o mais
+cedo que ele pode cair. Antecipar o golpe de quem chega adiantado (porque o alvo veio ao
+encontro) era defensável, e foi recusado por mudar debaixo da mesa um número que ela já leu; o
+Preparo é piso de qualquer jeito. Quem chega cedo espera, como sempre esperou.
+
+**Sem teto.** Na perseguição que não fecha, o golpe desliza um Tick por avanço, indefinidamente,
+e o registro conta cada adiamento ("ainda não alcança Fulano · golpe adiado do Tick 5 para o
+6"). Quem desiste do gesto é a mesa, no abortar, e não o motor: um teto automático decidiria
+pelo jogador na única hora em que ele ainda pode mudar de ideia. As duas escolhas estão escritas
+em `regras.json → combate.simultaneo.reprojecao`.
+
+**E o vaivém.** A re-projeção destapou um defeito antigo do passo, que só era invisível porque
+o cartão vencia na hora marcada de qualquer jeito: com o vizinho que aproxima vetado (o
+`ocupadoPor` mede círculos em metros, e uma criatura Enorme veta os seis vizinhos de quem
+encosta nela), `caminharHex` dá o passo LATERAL para contornar. A lista de casas pisadas que
+impede o vaivém vale dentro de um Tick e nasce vazia no Tick seguinte: a peça ia e voltava entre
+as duas mesmas casas para sempre. Com a agenda congelada isso passava batido; com ela viva
+virava perseguição eterna. O gatilho do passo largo (repetir vetando só a casa exata das outras
+peças) passou a ser **não ter aproximado**, e não "não ter saído do lugar".
+
+**Provas:** oito casos novos no `test-simultaneo.mjs` (o rumo em dia não escreve nada, o alvo que
+foge adia agenda e ciclo, chegar adiantado não puxa o golpe para trás, o golpe vencido com o
+alvo longe é remarcado, a rajada desliza inteira, e a perseguição que não fecha corre cinco
+Ticks sem nunca vencer longe) e a cena `cenaAlvoQueFoge` no `test-grid-simultaneo.mjs`, que arma
+o caso no tabuleiro: dois heróis em campo aberto, ataque declarado, alvo correndo a 12 m/Tick, e
+o cartão indo do Tick 2 ao 10 em três avanços sem travar o relógio.
+
 ## 3.2. Onde o sistema ainda falha (varredura de cenários, 2026-08-27)
 
 Pensado cenário a cenário antes de fechar a fatia; o que não tem conserto nesta fatia fica
 registrado aqui, por ordem de dor.
 
-1. **O alvo que sai de baixo.** A agenda é projetada NA DECLARAÇÃO assumindo o alvo parado. Se
-   ele foge, o atacante o persegue (a perseguição mira a posição atual), mas o Tick do golpe
-   NÃO é re-projetado: o cartão vence com o alvo ainda longe e fica atrasado até o mestre
-   resolver (errar, redirecionar, ou esperar chegar). A fatia 2 deveria re-projetar a agenda a
-   cada avanço enquanto houver `mov` pendente.
+1. ~~**O alvo que sai de baixo.**~~ **RESOLVIDO em 02/09**, na §3.1.3: a agenda é re-projetada a
+   cada avanço enquanto houver `mov` pendente, só para frente, sem teto de adiamento. Junto foi
+   o vaivém do passo, que a re-projeção destapou.
 2. **A perseguição perdida.** Se o alvo é mais rápido, o trajeto nunca fecha. O motor já sabe
    avisar (`previsaoDeEncontro` devolve `null`), mas a caixa de declaração ainda não usa isso
    para dizer "com esses passos, você nunca alcança". Pendente de tela, não de motor.

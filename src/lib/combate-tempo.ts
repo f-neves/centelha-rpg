@@ -804,6 +804,53 @@ export function agendaSimultanea(
 }
 
 /**
+ * A AGENDA RE-PROJETADA, no avanço, para quem ainda está a caminho.
+ *
+ * A agenda nasce na DECLARAÇÃO, e a declaração assume o alvo parado. Quando ele
+ * sai de baixo, o atacante o persegue (a perseguição mira a posição atual), mas
+ * o Tick do golpe continuava o de antes: o cartão vencia com o alvo ainda longe
+ * e ficava pendurado até o mestre decidir o que fazer com um golpe que não
+ * alcança nada. Aqui esse Tick é recalculado a cada avanço, pela distância que
+ * SOBROU depois do passo deste Tick.
+ *
+ * SÓ ATRASA (decidido em 02/09). O golpe anda para frente e nunca para trás: o
+ * Tick anunciado no log é o mais cedo que ele pode cair. Antecipar seria
+ * defensável (quem chega antes do previsto podia bater antes), e foi recusado
+ * porque mudaria debaixo da mesa um número que ela já leu; quem chega adiantado
+ * espera, como sempre esperou.
+ *
+ * A conta é a da declaração, um Tick depois: faltando `v` Ticks de viagem, a
+ * peça chega no fim do Tick `T + v` e o golpe cai no seguinte. Todos os golpes
+ * ainda no ar andam juntos, porque a rajada é uma corrente de Ticks seguidos e
+ * quebrá-la seria inventar uma pausa no meio dela; o fim do ciclo anda com eles.
+ *
+ * Sem teto de adiamento: enquanto a perseguição não fecha, o golpe desliza e o
+ * log diz que deslizou. Quem desiste é a mesa, no abortar, e não o motor.
+ *
+ * Devolve `null` quando nada muda, que é o caso comum de quem está no rumo:
+ * assim o avanço não gera escrita nenhuma no banco.
+ */
+export function reprojetarAgenda(
+  acao: Acao | null | undefined, tick: number, viagemRestante: number,
+): Acao | null {
+  if (acaoVazia(acao)) return null;
+  const a = acao as Acao;
+  // O que ainda está no ar. A lista `aResolver` é a boa; sem ela (ação antiga,
+  // ou golpe que nasceu já vencido) sobra olhar a agenda daqui para a frente.
+  const noAr = golpesNoAr(a);
+  const pendentes = noAr.length ? noAr : a.golpes.filter((g) => g >= tick);
+  if (!pendentes.length) return null;
+  const primeiro = Math.min(...pendentes);
+  const cedoQuePode = tick + Math.max(0, viagemRestante) + 1;
+  const atraso = cedoQuePode - primeiro;
+  if (atraso <= 0) return null;
+  const desloca = (g: number) => (g >= primeiro ? g + atraso : g);
+  const nova: Acao = { ...a, golpes: a.golpes.map(desloca), livre: a.livre + atraso };
+  if (noAr.length) nova.aResolver = noAr.map(desloca);
+  return nova;
+}
+
+/**
  * Em quantos Ticks um alcança o outro, pela projeção de agora.
  *
  * `velAlvo` positivo se o alvo FOGE, negativo se ele vem ao encontro (e aí a

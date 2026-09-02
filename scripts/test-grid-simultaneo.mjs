@@ -414,10 +414,169 @@ async function cenaFichaDoLance(br, url) {
   await p.close();
 }
 
+/**
+ * O ALVO QUE SAI DE BAIXO: a agenda re-projetada, no tabuleiro.
+ *
+ * A agenda nascia na DECLARAÇÃO, e a declaração assume o alvo parado. Quando
+ * ele fugia, o atacante o perseguia mas o Tick do golpe ficava onde estava: o
+ * cartão vencia com o alvo ainda longe e a cena travava no "⏭" esperando o
+ * mestre resolver um golpe que não alcançava nada.
+ *
+ * A cena arma o caso à mão, porque ele não acontece sozinho: põe um herói a uma
+ * distância curta do outro, declara o ataque, e MANDA O ALVO CORRER. Depois
+ * confere que o Tick do cartão anda para a frente, que o registro conta o
+ * adiamento, e que o relógio não trava.
+ */
+async function cenaAlvoQueFoge(br, url) {
+  console.log('\n· o alvo que sai de baixo: a agenda re-projetada no avanço');
+  const p = await br.newPage();
+  await p.setViewport({ width: 1400, height: 950 });
+  const erros = [];
+  p.on('pageerror', (e) => erros.push(e.message));
+  await p.goto(`${url}/mesa/grid?id=${MESA}&bench=12&cols=24&rows=16&nevoa=0&tempo=simultaneo`,
+    { waitUntil: 'networkidle0', timeout: 60000 });
+  await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
+  await espera(700);
+
+  /**
+   * Um HEXÁGONO LIVRE, escolhido pelos hexágonos de verdade (`.hx`).
+   *
+   * Não serve uma rede de pixels: o palco tem fundo em volta do tabuleiro, e
+   * soltar ali não é soltar em casa nenhuma (o gesto morre em silêncio). E a
+   * folga tem de ser generosa, porque o tabuleiro recusa quem pousa dentro do
+   * círculo de outra peça, e uma criatura Enorme ocupa muito mais que a casa
+   * dela.
+   */
+  const hexLivre = (ref, modo, faixa = [0, 1e9]) => p.evaluate(({ ref, modo, faixa }) => {
+    const pal = document.getElementById('gr-palco').getBoundingClientRect();
+    const vis = {
+      x0: Math.max(pal.left, 0) + 20, y0: Math.max(pal.top, 0) + 20,
+      x1: Math.min(pal.right, innerWidth) - 20, y1: Math.min(pal.bottom, innerHeight) - 20,
+    };
+    const toks = [...document.querySelectorAll('#gr-tokens .gr-token')].map((o) => {
+      const q = o.getBoundingClientRect();
+      return { x: q.left + q.width / 2, y: q.top + q.height / 2, r: Math.max(q.width, q.height) / 2 };
+    });
+    let melhor = null, nota = modo === 'longe' ? -1 : 1e9;
+    for (const hx of document.querySelectorAll('#gr-hexes .hx')) {
+      const r = hx.getBoundingClientRect();
+      const fx = r.left + r.width / 2, fy = r.top + r.height / 2;
+      if (fx < vis.x0 || fx > vis.x1 || fy < vis.y0 || fy > vis.y1) continue;
+      if (toks.some((o) => Math.hypot(fx - o.x, fy - o.y) < o.r + 45)) continue;
+      const d = Math.hypot(fx - ref.x, fy - ref.y);
+      if (d < faixa[0] || d > faixa[1]) continue;
+      if (modo === 'longe' ? d > nota : d < nota) { nota = d; melhor = { x: fx, y: fy, d }; }
+    }
+    return melhor;
+  }, { ref, modo, faixa });
+
+  /** Solta a peça no ponto: devolve qual caixa abriu. */
+  const soltarEm = (cid, ponto) => p.evaluate(async ({ cid, ponto }) => {
+    const t = document.querySelector(`.gr-token[data-c="${cid}"]`);
+    if (!t) return { caixa: null };
+    const b = t.getBoundingClientRect();
+    const em = (el, tp, x, y) => el.dispatchEvent(new PointerEvent(tp, {
+      bubbles: true, clientX: x, clientY: y, pointerId: 1 }));
+    em(t, 'pointerdown', b.left + b.width / 2, b.top + b.height / 2);
+    em(document, 'pointermove', ponto.x, ponto.y);
+    em(document, 'pointerup', ponto.x, ponto.y);
+    await new Promise((x) => setTimeout(x, 1100));
+    const aberta = [...document.querySelectorAll('dialog[open]')].pop();
+    return { caixa: aberta?.id || null };
+  }, { cid, ponto });
+
+  // ---- 1: os dois heróis, a uma distância curta e sem ninguém no meio ----
+  // Armado à mão de propósito: na bancada as peças nascem emboladas, e uma
+  // perseguição precisa de campo aberto para ser medida.
+  const posC002 = await rectDe(p, '#gr-tokens .gr-token[data-c="c002"]');
+  const perto = await hexLivre(posC002, 'perto', [130, 320]);
+  if (!perto) { ok(false, 'há hexágono livre a uma distância curta de c002'); await p.close(); return; }
+  const posto = await soltarEm('c003', perto);
+  if (posto.caixa === 'mov-dlg') {
+    // "Pôr direto" é ferramenta de mestre: arruma a cena sem gastar Tick.
+    await p.evaluate(async () => {
+      document.getElementById('mv-direto').click();
+      await new Promise((x) => setTimeout(x, 900));
+    });
+  }
+  const posC003 = await rectDe(p, '#gr-tokens .gr-token[data-c="c003"]');
+  ok(!!posC003 && Math.hypot(posC003.x - posC002.x, posC003.y - posC002.y) < 400,
+    'c003 é posto em campo aberto, ao alcance de uma corrida de c002');
+
+  // ---- 2: c002 declara contra c003 ----
+  await arrastar(p, '#gr-tokens .gr-token[data-c="c002"]', '#gr-tokens .gr-token[data-c="c003"]');
+  const decl = await p.evaluate(async () => {
+    const dlg = document.getElementById('decl-dlg');
+    if (!dlg?.open) return { abriu: false };
+    const t = (document.getElementById('dc-tempo')?.textContent || '').replace(/\s+/g, ' ');
+    const cai = t.match(/golpe cai no Tick (\d+)/) || t.match(/caem nos Ticks (\d+)/);
+    document.getElementById('dc-ok').click();
+    await new Promise((x) => setTimeout(x, 1000));
+    return { abriu: true, tick: cai ? parseInt(cai[1], 10) : null };
+  });
+  ok(decl.abriu && decl.tick != null, `c002 declara contra c003, golpe agendado no Tick ${decl.tick}`);
+  if (!decl.abriu) { await p.close(); return; }
+
+  // ---- 3: e o alvo sai correndo, para o ponto mais longe do tabuleiro ----
+  const longe = await hexLivre(posC002, 'longe');
+  const fuga = longe ? await soltarEm('c003', longe) : { caixa: null };
+  if (fuga.caixa === 'mov-dlg') {
+    await p.evaluate(async () => {
+      const sel = document.getElementById('mv-modo');
+      sel.value = 'corrida'; sel.dispatchEvent(new Event('change', { bubbles: true }));
+      await new Promise((x) => setTimeout(x, 200));
+      // Depressa o bastante para nunca ser alcançado: a perseguição que não fecha.
+      document.getElementById('mv-vel').value = '12';
+      document.getElementById('mv-ok').click();
+      await new Promise((x) => setTimeout(x, 900));
+    });
+  }
+  ok(fuga.caixa === 'mov-dlg', `o alvo declara deslocamento, correndo (caixa: ${fuga.caixa})`);
+  if (fuga.caixa !== 'mov-dlg') { await p.close(); return; }
+
+  // ---- 4: três avanços, e o cartão do golpe anda para a frente ----
+  const cartao = () => p.evaluate(() => {
+    const it = document.querySelector('#gr-ar .ar-item[data-golpe]');
+    return {
+      tick: it ? parseInt(it.dataset.t, 10) : null,
+      relogio: parseInt(document.getElementById('ini-tk')?.textContent || '0', 10),
+      travado: !!document.getElementById('ini-prox')?.disabled,
+    };
+  });
+  const antes = await cartao();
+  let travouCedo = false;
+  for (let i = 0; i < 3; i++) {
+    const st = await cartao();
+    if (st.travado) { travouCedo = true; break; }
+    await p.click('#ini-prox');
+    await espera(750);
+  }
+  const depois = await cartao();
+  ok(depois.tick != null && antes.tick != null && depois.tick > antes.tick,
+    `o Tick do golpe anda para a frente enquanto o alvo foge (${antes.tick} → ${depois.tick})`);
+  ok(depois.tick > depois.relogio,
+    `e o golpe nunca vence com o alvo longe (relógio ${depois.relogio}, golpe ${depois.tick})`);
+  ok(!travouCedo, 'o "⏭" não trava a cena num golpe que não alcança nada');
+  const registro = await p.evaluate(async () => {
+    document.getElementById('gr-registro').click();
+    await new Promise((x) => setTimeout(x, 800));
+    const d = [...document.querySelectorAll('dialog[open]')].pop();
+    const txt = (d?.textContent || '').replace(/\s+/g, ' ');
+    d?.close();
+    return txt;
+  });
+  ok(/golpe adiado do Tick \d+ para o \d+/.test(registro),
+    'o registro conta o adiamento, e diz de onde para onde');
+
+  ok(erros.length === 0, `nenhum erro de página (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
+  await p.close();
+}
+
 const dev = await subirDev({ config: 'astro.bancada.mjs' });
 const br = await puppeteer.launch({ executablePath: NAV, headless: 'new', args: ['--no-sandbox'] });
 try {
   await cena(br, dev.url);
+  await cenaAlvoQueFoge(br, dev.url);
   await cenaFichaDoLance(br, dev.url);
 } finally {
   await br.close();

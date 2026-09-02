@@ -2397,7 +2397,7 @@ const SETAS = [
     contrapeEm, contrapeDe, contrapeAcaba, faseDeQuemVaiAgir, preparoDe, ordemDaFila,
     adiaGolpe, agendar, golpesNoAr, golpeDevido, golpeResolvido, proximoGolpe,
     ehSimultaneo, agendaSimultanea, ticksDeViagem, decideEmValeDepois, comOverride,
-    passoDoGolpe,
+    passoDoGolpe, reprojetarAgenda,
     previsaoDeEncontro, decisaoAutomatica, MODOS_MOV,
     FASE_ROTULO, type CombateMesa, type Manobra, type Acao, type Mov,
   } from '../../lib/combate-tempo';
@@ -4940,6 +4940,7 @@ const SETAS = [
         if (p === 'atravessar') { mira = alemDe(pos, alvoPos); paraEm = 0; }
       }
 
+      const distAntes = distanciaHex(pos, mira);
       let novo = caminharHex(pos, mira, passos, paraEm,
         (h) => ocupadoPor(h.q, h.r, c.id));
       // CERCADO NÃO É PRESO. O `ocupadoPor` mede círculos em metros, e um
@@ -4948,7 +4949,15 @@ const SETAS = [
       // pousa NA CASA de ninguém, mas passar e parar apertado pode. Travado o
       // caminho estrito, o passo repete vetando só a casa exata das outras
       // peças, que é o mínimo que o tabuleiro precisa garantir.
-      if (novo.q === pos.q && novo.r === pos.r) {
+      //
+      // O gatilho é NÃO TER APROXIMADO, e não "não ter saído do lugar": com o
+      // vizinho que aproxima vetado, `caminharHex` dá o passo LATERAL (é como
+      // ele contorna quem está no caminho), e o lateral zera dentro de um Tick
+      // mas não entre Ticks — a cada avanço a lista de casas pisadas nasce
+      // vazia, e a peça ia e voltava entre as duas mesmas casas para sempre.
+      // Era invisível enquanto o cartão vencia na hora marcada; com a agenda
+      // re-projetada virava perseguição eterna, que foi como apareceu.
+      if (distAntes > paraEm && distanciaHex(novo, mira) >= distAntes) {
         const casaExata = (h: any) => Object.entries(TOKENS).some(([cid, t]: any) =>
           cid !== c.id && t.q === h.q && t.r === h.r);
         novo = caminharHex(pos, mira, passos, paraEm, casaExata);
@@ -4979,6 +4988,27 @@ const SETAS = [
         if (puro) patch.tick = T;
         const { error } = await SB.from('combatentes').update(patch).eq('id', c.id);
         if (!error) { c.acao = sem; if (puro) c.tick = T; }
+      } else {
+        // O ALVO QUE SAI DE BAIXO. A agenda foi projetada na declaração com o
+        // alvo parado; ele andou, e o Tick do golpe tem de andar junto, senão o
+        // cartão vence com o atacante a dez metros. A viagem que sobra é
+        // contada no PASSO REAL da peça (os `passos` hexágonos deste avanço), e
+        // não em metros pela régua da declaração: quem projeta o futuro tem de
+        // usar a mesma perna que anda.
+        const faltaHex = Math.max(0, distanciaHex(TOKENS[c.id], alvoPos) - pararA);
+        const antes = proximoGolpe(c.acao);
+        const nova = reprojetarAgenda(acaoNo(c), T, Math.ceil(faltaHex / passos));
+        if (nova) {
+          const { error } = await SB.from('combatentes')
+            .update({ tick: nova.livre, acao: nova }).eq('id', c.id);
+          if (!error) {
+            c.acao = nova; c.tick = nova.livre;
+            const depois = proximoGolpe(nova);
+            const quem = mov.alvo ? (COMBS.find((z: any) => z.id === mov.alvo)?.nome || 'o alvo') : 'o ponto';
+            await logar(c, `${c.nome} ainda não alcança ${quem}`
+              + ` · golpe adiado do Tick ${antes} para o ${depois}`, { acao: null });
+          }
+        }
       }
     }
     await decidirAutomaticas(T);

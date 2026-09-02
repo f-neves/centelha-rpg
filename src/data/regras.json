@@ -2257,6 +2257,13 @@
       "alcanceParaGolpe": {
         "nota": "O trajeto declarado contra um alvo para quando entra no alcance da arma: 1 hexágono no corpo a corpo, 2 na haste (combate.alcance). O golpe cai em max(Preparo, Ticks de viagem) depois do início: deslocar cabe dentro do Preparo, e só o excedente atrasa o golpe."
       },
+      "reprojecao": {
+        "nota": "A agenda é recalculada a CADA avanço enquanto a peça está a caminho, pela distância que sobrou depois do passo do Tick. Sem isso, o Tick do golpe ficava congelado na declaração (que assume o alvo parado) e o cartão vencia com o atacante ainda longe.",
+        "soAtrasa": true,
+        "soAtrasaNota": "O golpe anda para frente e nunca para trás: o Tick anunciado no log é o mais cedo que ele pode cair. Antecipar o golpe de quem chega adiantado (porque o alvo veio ao encontro) seria defensável e foi recusado em 02/09: mudaria debaixo da mesa um número que ela já leu, e o Preparo é piso de qualquer jeito.",
+        "tetoDeAdiamento": null,
+        "tetoNota": "Sem teto. Na perseguição que não fecha (alvo mais rápido), o golpe desliza um Tick por avanço, indefinidamente, e o log registra cada adiamento. Quem desiste do gesto é a mesa, no abortar, e não o motor: um teto automático decidiria pelo jogador na única hora em que ele ainda pode mudar de ideia."
+      },
       "ia": {
         "fugirAbaixoDePct": 25,
         "nota": "O modo automático de uma criatura: ataca o inimigo de pé mais próximo, foge quando a Vida cai do limiar. O mestre liga e desliga por peça, e retoma o controle a qualquer momento."
