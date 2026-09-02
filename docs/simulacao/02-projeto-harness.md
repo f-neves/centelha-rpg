@@ -59,7 +59,8 @@ como está". A regra de convívio: o espelho roda sempre no perfil base; cada re
 sai da lista de bandeiras e passa a ser comparada pelo espelho também. A janela de divergência entre
 os dois motores é o conjunto de bandeiras ligadas no harness e ausentes na tela, e esse conjunto
 **encolhe por desenho** à medida que Q16 avança, em vez de crescer como aconteceu com a
-`lib-tempo.mjs`.
+`lib-tempo.mjs`. (A lista de bandeiras cresceu de 7 para 9 na §0.4 P1, com `curaSemArea` e
+`curaDivide`, que são o mesmo tipo de coisa: regra escrita que o motor não aplica.)
 
 **D4 traz uma regra nova, e ela é a primeira invenção deliberada da simulação.** ⚑ A desistência
 coletiva abaixo de 20% de Vida não existe no Grid nem nos capítulos. Ela conversa com o robô, que
@@ -104,18 +105,171 @@ eixo de obstáculo. A §0.3 refaz a conta.
 **Q15**: os arquétipos entram pelo cano normal, `resumoCombatePC`, sem tratamento especial, e cada
 um é marcado `inventado` na procedência da §2.7.
 
-### 0.2 O que as respostas abriram, e ainda não tem resposta
+### 0.2 O que as respostas abriram
 
-| # | Pendência | Precisa da sua palavra antes da primeira linha? |
+| # | Pendência | Estado |
 |---|---|---|
-| **P1** | **A Cura em área contradiz a regra publicada.** O capítulo diz que a Cura é **sem área e dividida entre os alvos**, e o motor não impede nem divide (R2 §E). O Efeito âncora de aura é `campo-de-alivio`, que é área. Saídas: o harness divide (e diverge do motor) · não divide (e a cura em área vira jogada dominante) · troca a âncora de aura por um Efeito que fere, e a Cura entra só por alvo único | **sim** |
-| **P2** | **Parede não existe no Grid.** O único veto de passo é casa ocupada (`ocupadoPor`); não há casa vetada fixa em `arena_tokens` nem em lugar nenhum. Um eixo de obstáculo é invenção do harness ⚑, ou uma funcionalidade nova do Grid | **sim** |
-| **P3** | **O projétil mirado precisa de uma rolagem que não existe.** A regra escrita é Percepção + Acerto Arcano, e o motor não tem rolagem de Arte nenhuma (R2 §E). Dentro do recorte escolhido, é a única invenção mecânica obrigatória ⚑ | **sim** |
-| **P4** | **Quais políticas, e a lista de regras de cada uma.** D3 pediu perfis declarados; falta dizer quais e o que cada um faz com as 6 opções declaráveis | **sim** |
-| **P5** | **Quais arquétipos de PC**, e quantos. Eu escrevo, mas a lista é escolha (espadachim de escudo, lanceiro, arqueiro, conjurador elemental, curandeiro?) | dá para eu propor |
-| **P6** | **Os níveis de E1 e E4 em armas concretas.** "Uníssono" e "coprimo" precisam virar nomes do catálogo | dá para eu propor |
+| **P1** | A Cura em área contra a regra publicada | **era engano meu.** Resolvida na §0.4 |
+| **P2** | Parede não existe no Grid | proposta na §0.4, e a decisão é sua |
+| **P3** | O projétil mirado precisa de uma rolagem que não existe | **era engano meu**: a regra existe escrita. Resolvida na §0.4, com um resíduo pequeno |
+| **P4** | Quais políticas, e a lista de regras de cada uma | proposta na §0.4 |
+| **P5** | Quais arquétipos de PC, e quantos | proposta na §0.4 |
+| **P6** | Os níveis de E1 e E4 em armas concretas | proposta na §0.4 |
 
-### 0.3 A grade, refeita com as respostas
+### 0.3 Duas correções minhas
+
+Fui verificar as seis antes de propor, e duas delas não existiam: eu tinha lido a R2 §E como "a regra
+não está fechada", e o que ela diz é que **o motor não a aplica**. A régua está escrita no
+`regras.json`, inteira, nos dois casos.
+
+**P1 não era contradição, era leitura errada minha do Efeito.** `campo-de-alivio` **não cura**:
+`grid.fere = false`, `grid.cura = false`, e o que ele faz é suspender o quadro (sangramento para,
+veneno fica em suspenso, quem está caindo não morre), pondo a condição `protegido`. É uma aura
+legítima e não é cura em área. A régua da Cura, por sua vez, está completa em
+`regras.json → arcano.cura`: custo 2 por nível, `graus.alcance` (toque a 16 m), `graus.alvos` (1 a
+6), `graus.cura` (2 · 1d6 · 1d6+2 · 2d6 · 2d6+2 · 3d6), o `semArea` ("a cura comum não tem Área;
+curar em área existe, mas só por um Efeito Especial feito para isso") e o `divide` ("em mais de um
+alvo, o valor curado é DIVIDIDO entre eles: 2d6 em três pessoas é a rolagem inteira repartida em
+três"). Não falta regra: falta motor.
+
+**P3 não era invenção obrigatória.** `regras.json → arcano.resistencia.rolagem` diz, com todas as
+letras: "Percepção + Acerto Arcano, e só nos efeitos MIRADOS. Não há rolagem de conjuração para o
+resto: o que não é mirado se resolve pela Dificuldade fixa do Efeito, pela Defesa passiva do alvo ou
+por tabela." E `arcano.resistencia.tipos` é uma tabela de roteamento de cinco linhas, que cobre os
+oito Efeitos âncora sem sobra. `Acerto Arcano` existe como perícia secundária (`acerto-arcano`, em
+`habilidades-secundarias.json`) e Convicção existe como Virtude (`conviccao`, em `virtudes.json`). O
+que a R2 §E registrou, e continua verdade, é que o capítulo lista o assunto em revisão e que o motor
+não tem rolagem de Arte nenhuma. Isso é lacuna de implementação, não de regra.
+
+### 0.4 As seis pendências, resolvidas
+
+#### P1 · A Cura
+
+Não há nada a inventar, e a âncora de aura fica onde está. O que muda é que a **Cura entra como um
+nono item, que não é uma forma do tabuleiro**: ela é alvo escolhido, dentro do alcance, sem
+resistência (`arcano.resistencia.tipos`, linha "Em aliados, objetos ou cenário: sem resistência"), e
+com régua própria.
+
+| O que | De onde sai | Estado no motor |
+|---|---|---|
+| custo 2 por nível de parâmetro | `arcano.cura.custoPorNivel` | **já aplicado** (`artes-grid.ts:257`) |
+| quanto cura, por grau | `arcano.cura.graus.cura` | **não lido**: o valor sai de `dano_dados`, não da régua da Cura |
+| alcance por grau | `arcano.cura.graus.alcance` | mede e pergunta, não impede (R2 §E) |
+| **sem Área** | `arcano.cura.semArea` | **não aplicado**: nada impede comprar forma de área numa Arte de cura |
+| **dividida entre os alvos** | `arcano.cura.divide` | **não aplicado**: nada divide o valor |
+
+Proposta: as duas últimas viram bandeiras no **mesmo objeto de perfil das 7 regras de D2**, porque
+são o mesmo tipo de coisa (regra escrita que o motor não aplica) e porque Q16 disse que a medição
+decide a ordem de ligar. O perfil passa de 7 bandeiras para 9: `margem`, `gate`, `couraca`, `porte`,
+`bloqueio`, `modo2`, `teto6`, `curaSemArea`, `curaDivide`. Sem `curaDivide`, curar seis aliados com
+2d6 devolve 2d6 a cada um, e a Cura vira a jogada dominante da simulação inteira.
+
+#### P2 · A parede
+
+O Grid não tem parede e `hex.ts` já tem onde encaixá-la: `caminharHex(de, para, passos, pararA,
+evita)` recebe um veto arbitrário, e hoje a mesa passa só `ocupadoPor`. O harness passa
+`(h) => ocupado(h) || parede(h)`, lendo um `bloqueados: Hex[]` da cena. **Não é um segundo caminho de
+código**: é o mesmo `caminharHex`, com um argumento a mais, e uma cena sem parede se comporta
+exatamente como a mesa.
+
+Duas coisas que precisam ficar declaradas:
+
+- A parede **bloqueia passo e não bloqueia visão**. Linha de visão não existe no Grid, e `passo-relampago`
+  a exige pelo texto ("precisa de linha de visão"). Inventar visão seria um sistema inteiro; a
+  proposta é declarar a limitação e não medir nada que dependa dela.
+- O resultado do eixo E7 é **um achado sobre a regra, não sobre o produto**: ele responde "quanto
+  custaria um obstáculo", e só vira achado sobre o Grid se a parede for depois construída lá.
+
+Se você preferir, a alternativa é tirar E7 e cair para 52 células. ⚑ Marcado como invenção do
+harness enquanto o Grid não tiver parede.
+
+#### P3 · O mirado, e o resíduo que sobra
+
+Roteamento dos oito âncoras pela tabela de `arcano.resistencia.tipos`:
+
+| Âncora | Linha da tabela | Como resolve | Inventa algo? |
+|---|---|---|---|
+| `projetil-conjurado` | Dano e projéteis | Percepção + Acerto Arcano contra a Defesa (Esquiva); depois a Absorção, e como `materia: null` só a Centelha absorve | não |
+| `brasa-retardada`, `lascas`, `muro` | área | não se esquiva, se abandona: `desvioDaArea` e `oferecerSaida`, que já existem e já têm default | não |
+| `empurrao-elemental` | por tabela | os parâmetros são FAH e FAA: entra na tabela de forças, que já é a régua do arremesso | não |
+| `passo-relampago` | sem alvo | movimento do próprio conjurador | não |
+| `campo-de-alivio` | em aliados | sem resistência | não |
+| Cura por alvo | em aliados | sem resistência | não |
+| `corrente` | Dano e projéteis, com salto | mirado no primeiro alvo; **os saltos não estão escritos** | **sim** ⚑ |
+
+Sobram dois resíduos pequenos, e os dois são propostas, não fatos:
+
+1. **Os saltos da cadeia.** Proposta: mirado no primeiro alvo, automático nos saltos seguintes, que é
+   o que o texto do Efeito sugere ("o raio salta de um alvo ao seguinte, desde que estejam a poucos
+   passos"). ⚑
+2. **A composição do bolo do mirado.** A régua diz Percepção + Acerto Arcano e não diz o resto.
+   Proposta: a mesma forma de `resumoCombatePC`, `floor((Percepção + acerto-arcano) / 2)d6` com +2 se
+   ímpar, mais `ataqueCentelha(C)`, menos a penalidade da armadura. A parte discutível é a última:
+   descontar armadura de um ataque de Arte é coerente com todo o resto do sistema e não está escrito
+   em lugar nenhum. ⚑
+
+Isso derruba P3 de "a única invenção mecânica obrigatória do recorte" para duas linhas.
+
+#### P4 · As políticas
+
+Cinco perfis, cada um uma lista **ordenada** de regras avaliadas de cima para baixo, e todas usando
+só o que o Grid aceita declarar.
+
+| Perfil | As regras, em ordem |
+|---|---|
+| **Agressivo** | 1. se há inimigo de pé no alcance e estou livre: atacar, manobra `rajada` se a Vida do alvo é maior que a minha, senão `simples`. 2. senão: mover em `corrida` até o inimigo de pé mais próximo. 3. nunca abortar |
+| **Cauteloso** | 1. se estou abaixo de 40% de Vida e há inimigo no alcance: atacar com manobra `segura`. 2. se o inimigo mais próximo está em fase de Golpe: esperar 1 Tick (deixa o golpe cair e ataca a Recuperação dele). 3. se há inimigo no alcance: atacar `simples`. 4. senão: mover em `batalha`, não em corrida, que custa −4 de Defesa. 5. abortar quando a minha agenda já deslizou 2 vezes seguidas |
+| **Tocaiador** | 1. se há inimigo a ≤ 3 hexes: mover em `corrida` para longe do mais próximo. 2. se há inimigo em alcance de tiro: atacar `simples`. 3. senão: manter posição (esperar 1 Tick) |
+| **Guarda-costas** | 1. escolher como alvo o inimigo mais próximo do meu aliado com menos Vida. 2. se esse inimigo está no meu alcance: atacar `segura`. 3. senão: mover em `batalha` para a casa entre ele e o aliado. 4. nunca abortar |
+| **Conjurador** | 1. se um aliado está abaixo de 50% de Vida e no alcance: Cura. 2. se há 2 ou mais inimigos a ≤ 2 hexes um do outro: `corrente` ou `brasa-retardada`. 3. se há 1 inimigo em alcance: `projetil-conjurado`. 4. se há inimigo a ≤ 2 hexes de mim: `empurrao-elemental`. 5. senão: mover em `batalha` para trás do aliado mais próximo |
+
+Cada número desses (40%, 50%, 3 hexes, 2 deslizes) é **invenção do harness** ⚑ e vai no cabeçalho do
+relatório, na tabela "o que foi inventado". E o Conjurador é o único que exercita as oito formas: sem
+ele no elenco, o eixo das Artes não sai do papel.
+
+Isso faz E6 ter **5 níveis**, e não 4: a conta da §0.5 usa 5.
+
+#### P5 · Os arquétipos
+
+Sete, montados só do catálogo real, cada um escolhido por exercitar uma coisa que os outros não
+exercitam.
+
+| Arquétipo | Raça | Arma (ciclo) | Escudo | Armadura | Por que ele existe |
+|---|---|---|---|---|---|
+| **Escudeiro** | humano | espada-longa (6) | heater (pen 2, `bloqCaC` 3) | malha (pen 2) | é a peça que a divergência #2 da R2 §F mais castiga: hoje ela está −4 de Defesa e não recebe nada em troca. Com a bandeira `bloqueio` ligada, ganha +3 |
+| **Lanceiro** | humano | lança (haste, 6, 2 mãos) | nenhum | brigandina | única classe de tempo `haste`, e é ela que muda `alcanceDaPeca` de `HEX_CORPO_A_CORPO` para `HEX_HASTE`: perseguição fecha antes |
+| **Duelista** | elfo | espada-curta (5) + adaga na mão inábil | nenhum | couro | ciclo 5, e a única peça que exercita a empunhadura dupla (divergência #3) |
+| **Montanteiro** | orc | montante (pesada, 7, 2 mãos) | nenhum | placa completa | ciclo 7, passo baixo, e é metade do eixo E4. Também é o alvo natural do gate de Perfuração |
+| **Arqueiro** | halfling | arco longo (6) | nenhum | couro | a única peça que não precisa fechar distância, e a única que usa a faixa de distância de `alcance.ts` |
+| **Conjurador** | gnomo | adaga (5) | nenhum | nenhuma | as oito formas de P3, e o único que gasta Mana |
+| **Curandeiro** | humano | maça (6) | broquel | gambeson | a Cura de P1, com o `divide` e o `semArea` no meio |
+
+Todos passam por `resumoCombatePC` sem tratamento especial, que é o que garante que o PC gerado e o
+PC de mesa somem os mesmos números. Todos entram no relatório marcados `inventado`.
+
+#### P6 · Os níveis de E1 e E4 em armas do catálogo
+
+O catálogo tem 26 armas em quatro ciclos: **4** (só `dardos`), **5** (adaga, espada curta, desarmado
+e seis de arremesso), **6** (treze armas: espada longa, machado, maça, picareta, lança, alabarda,
+arcos, bestas pequena e média, funda) e **7** (montante, martelo de guerra, besta grande).
+
+| Nível de E1 | Armas | m.m.c. | O que se espera |
+|---|---|---:|---|
+| **a · uníssono** | espada longa dos dois lados | 6 | colisão em **todos** os golpes |
+| **b · vizinhos** | adaga (5) × espada longa (6) | 30 | uma colisão numa batalha de 37 a 47 Ticks |
+| **c · coprimos** | espada longa (6) × montante (7) | 42 | zero ou uma colisão |
+| **d · os quatro** | dardos (4) · adaga (5) · espada longa (6) · montante (7) | 420 | colisões esparsas e sem padrão |
+
+Uma ressalva que o catálogo impõe: **o ciclo 4 só existe em `dardos`, que é arremesso**. O nível (d)
+obrigatoriamente carrega um arremessador, o que mistura o eixo de ciclo com o de alcance. As saídas
+são aceitar isso e declarar, ou fazer o nível (d) com 5/6/7 só. Fica anotado como escolha sua.
+
+**E4 · assimetria de passo.** O passo sai de `deslocamento()`, com a fração da raça e a meia
+penalidade da armadura. O par é escolhido calculando `deslocamento()` para os candidatos e tomando o
+primeiro com razão ≥ 2, e os candidatos naturais são o Montanteiro orc de placa completa (pen 3) de
+um lado e o Duelista elfo de couro (pen 1) do outro. O nível "simétrico" usa dois Escudeiros.
+
+### 0.5 A grade, refeita com as respostas
 
 | Eixo | Níveis | Custa célula? |
 |---|---|---|
@@ -123,26 +277,26 @@ um é marcado `inventado` na procedência da §2.7.
 | **E2 · distância inicial** | 4 (encostado · ~3 Ticks · ~10 Ticks · muito longa) | sim |
 | **E3 · tamanho da cena** | 3 (1v1 · 3×3 · 2×8) | sim |
 | **E4 · assimetria de passo** | 2 | sim |
-| **E5 · perfil de regras** | 2 (base · as 7 ligadas) | sim |
-| **E6 · política** | 4, pendente de P4 | sim |
-| **E7 · obstáculo** | 2 (campo aberto · parede), pendente de P2 | sim |
+| **E5 · perfil de regras** | 2 (base · as 9 bandeiras ligadas: as 7 de D2 mais as 2 da Cura, §0.4 P1) | sim |
+| **E6 · política** | 5 (agressivo · cauteloso · tocaiador · guarda-costas · conjurador), §0.4 P4 | sim |
+| **E7 · obstáculo** | 2 (campo aberto · parede), §0.4 P2, e cai fora se P2 for recusada | sim |
 | **E8 · atribuição de gesto** | 2 (mestre solo · um por PC) | **não**: é leitura do mesmo log |
 | **D1 · perfil de automação** | 2 | **não**: é leitura do mesmo log |
 
-Cruzar tudo dá **4×4×3×2×2×4×2 = 1.536 células**, e o problema não é tempo de máquina, é que
-ninguém lê 1.536 tabelas. O orçamento que aperta continua sendo o mesmo da §3: o que se consegue
+Cruzar tudo dá **4×4×3×2×2×5×2 = 1.920 células**, e o problema não é tempo de máquina, é que
+ninguém lê 1.920 tabelas. O orçamento que aperta continua sendo o mesmo da §3: o que se consegue
 ler. Desenho proposto:
 
 - **Núcleo cruzado: E1 × E2 × E3 = 48 células.** São os três que eu espero que interajam, e a
   previsão da §3 é sobre eles.
-- **Um fator de cada vez em volta da célula-âncora**, para E4, E5, E6 e E7: `(2−1) + (2−1) + (4−1) +
-  (2−1) = 6 células`. Mede o efeito principal de cada um sem cruzá-lo com o resto.
+- **Um fator de cada vez em volta da célula-âncora**, para E4, E5, E6 e E7: `(2−1) + (2−1) + (5−1) +
+  (2−1) = 7 células`. Mede o efeito principal de cada um sem cruzá-lo com o resto.
 - **Cruzamentos deliberados**, porque OFAT é cego a interação e há quatro que eu espero de verdade:
   E1(uníssono) × E3(horda), E1(uníssono) × E4(assimétrico), E2(muito longa) × E4, E5 × E1(uníssono).
   **4 células.**
-- Total: **58 células**. A 500 repetições, **29.000 batalhas**, mais o reforço de 2.000 nas células
-  de cauda (as de E4 e a de uníssono com horda). A justificativa das 500 e das 2.000 é a da §3 e não
-  muda.
+- Total: **59 células**. A 500 repetições, **29.500 batalhas**, mais o reforço de 2.000 nas células
+  de cauda (as de E4 e a de uníssono com horda). Sem E7, se P2 for recusada, são **52 células**. A
+  justificativa das 500 e das 2.000 é a da §3 e não muda.
 
 ---
 
