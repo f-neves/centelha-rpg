@@ -1,8 +1,16 @@
 # Projeto do harness · o desenho, as decisões e o que implementar
 
-Escrito em 02/09/2026, sobre o commit `df03b44`. Continua `docs/simulacao/00-diagnostico.md` e
-`docs/simulacao/01-diagnostico-carga.md`, citados aqui como **R1** e **R2**. **Nenhuma linha deste
-documento foi implementada.**
+Escrito em 02/09/2026, sobre o commit `df03b44`, e revisto até `d141fa9`. Faz parte de uma série de
+quatro, em `docs/simulacao/`:
+
+| | O que é |
+|---|---|
+| `00-diagnostico.md` (**R1**) | o que existia antes de qualquer decisão: onde mora cada peça do motor, o que é puro, o que não é |
+| `01-diagnostico-carga.md` (**R2**) | as 14 paradas que pedem um humano, os conflitos entre capítulo, JSON e motor, e as medições |
+| **este** | as decisões tomadas e a especificação do que implementar |
+| `03-respostas.md` | as contradições deste documento resolvidas, os invariantes do harness, e as medições novas |
+
+**Nenhuma linha deste documento foi implementada.**
 
 ## Como ler isto
 
@@ -10,27 +18,39 @@ O objetivo declarado: simular batalhas do Grid para medir **carga de trabalho e 
 no mestre**, e não dano nem taxa de vitória. A meta é que o Grid pareça um videogame, com muitas
 opções para o jogador e nenhuma conta para o mestre.
 
-O documento foi escrito em três camadas, e a ordem de leitura depende do que você veio fazer:
+A ordem de leitura depende do que você veio fazer:
 
 | Se você veio para | Leia |
 |---|---|
-| **implementar as mudanças de regra na mesa** | a **§0.6**, que é a especificação. Passe pela §0.45 a §0.49 quando a §0.6 mandar, para entender o porquê de cada uma |
-| entender o que foi decidido e por quê | a **§0** inteira (§0.1 a §0.6) |
-| construir o harness, depois | as **§2 a §5** |
+| **implementar as mudanças de regra na mesa** | a **§0.6.1**, que é a especificação item a item. Passe pela §0.45 a §0.49 quando ela mandar, para o porquê de cada uma |
+| entender o que foi decidido e por quê | a **§0** inteira, e a tabela logo abaixo desta seção, que é o índice das decisões |
+| construir o harness, depois | as **§2 a §5**, e a `03-respostas.md`, que corrige quatro contradições delas e acrescenta os invariantes |
 | saber o que foi perguntado e que alternativas existiam | a **§1**, que é histórico: todas foram respondidas |
 
 **As oito regras novas (N1 a N8) não são propostas: são decisões tomadas.** Elas mudam o sistema
-Simultâneo do combate, e entram no Grid **antes** de o harness ser escrito. O que elas tocam está
-listado item a item na §0.6, com o estado de hoje, o estado novo e a prova de cada um.
+Simultâneo do combate, e entram no Grid **antes** de o harness ser escrito.
+
+### O que ainda NÃO está decidido, e não deve ser implementado
+
+Três coisas, para ninguém as inventar por conta:
+
+1. **O tratamento de N5 na bateria.** A regra em si está decidida e entra; o que está aberto é se ela
+   ganha bandeira, e com qual estado desligado, já que ela é a única das seis que não isola
+   (`03-respostas.md` §2.1). Implemente N5 ligada e deixe o gancho da bandeira de fora até a decisão.
+2. **A fronteira entre as duas cadeias de N4** (§0.46), quando um Tick mistura quem ainda entra com
+   quem já re-declara. A proposta é que a fronteira seja global; não está confirmada.
+3. **As cinco perguntas da §6 da `03-respostas.md`**, das quais duas mexem em código: se o
+   teste-espelho compara dado rolado (o que exigiria semear `rolagem.ts`) e se o invariante de
+   alcance vira regra ou continua sendo aviso.
 
 Convenções: **⚑** marca uma invenção do harness, ou seja, uma regra de jogo que a simulação está
 criando e que precisa ser lida como escolha, não como achado. A convenção da §1 (**bloqueia o
 começo** contra **só o resultado**) é histórica e vale só para aquela seção.
 
-**Duas instâncias mexem neste repositório.** As mudanças da §0.6 caem em `src/pages/mesa/grid.astro`
-(frente da mesa), em `src/lib/combate-tempo.ts` e `src/data/regras.json` (compartilhados) e numa
-migração nova do Supabase. Vale a regra do `CLAUDE.md`: commitar com pathspec, `git pull --rebase`
-antes, e preferir `Edit` a `Write`.
+**Duas instâncias mexem neste repositório.** As mudanças da §0.6.1 caem em
+`src/pages/mesa/grid.astro` (frente da mesa), em `src/lib/combate-tempo.ts` e `src/data/regras.json`
+(compartilhados) e numa migração nova do Supabase. Vale a regra do `CLAUDE.md`: commitar com
+pathspec, `git pull --rebase` antes, e preferir `Edit` a `Write`.
 
 ---
 
@@ -63,14 +83,14 @@ como está, porque o que cada opção significava continua sendo a leitura das c
 | **D4b** | quando a fuga está consumada | **quando ninguém consegue aproximar**: 10 Ticks seguidos sem nenhum perseguidor diminuir a distância |
 | **N2** | o golpe de Preparo 0 cala a cena no Tick em que é declarado | **a guarda de declaração passa a olhar `desde`**, e não o Tick do golpe: só cala quem foi declarado antes deste Tick (§0.45) |
 | **N3** | o golpe de quem caiu no mesmo Tick ainda sai? | **sai, se já tinha vencido**; o agendado para o futuro morre com a peça (§0.45). Vira caso particular de N6 |
-| **N4** | em que ordem se declara no Tick | **Raciocínio + Prontidão crescente**, depois Raciocínio, Destreza, iniciativa rolada, sorteio (§0.46) |
+| **N4** | em que ordem se declara no Tick | **cadeia toda crescente** (declara primeiro quem tem menos). Na entrada: iniciativa · Rac+Prontidão · Raciocínio · Destreza. Depois: Rac+Prontidão · Raciocínio · Destreza · iniciativa (§0.46) |
 | **N5** | as fases de um Tick | **declaração · início · resolução**, e a resolução na ordem inversa da declaração (§0.46) |
 | **N6** | penalidade nascida no Tick T | **só vale em T+1**: a resolução lê o retrato de quando as declarações terminaram (§0.46) |
 | **N7** | quem declara depois enxerga o que já foi declarado? | **enxerga, e é a vantagem de ter mais Raciocínio + Prontidão** (regra do Vampiro). O que ele vê já está definido na máscara da migração 27 (§0.47) |
 | **N8** | o que exatamente é visível | **quem vai fazer o quê em cada Tick**, com rastro no tabuleiro (movimento, trajetória, alvos). Exceção: arremesso, tiro e Arte não revelam o alvo até executarem (§0.48) |
 | **E2** | as quatro distâncias iniciais | **1 · 18 · 42 · 71 hexes** (encostado, ~3, ~7 e ~12 Ticks de corrida; 71 é a diagonal do mapa de 48×48) |
 | **Fila** | a ordem de declaração na tela | **ordenada sozinha pela ficha, e o mestre pode mudar à mão** (§0.49) |
-| **Ordem** | o que entra antes do harness | **tudo**: N1 a N8, o `ate` e as 9 bandeiras (§0.6) |
+| **Ordem** | o que entra antes do harness | **tudo**: N1 a N8, o `ate` e as 16 bandeiras (§0.6 e §0.7) |
 | **Rota** (P §2.4) | como preservar a linha de base | **bandeiras: uma bateria mede os dois lados.** N1 a N6 entram chaveadas, somando às de D2, e o desenho deixe-uma-de-fora mede cada regra isolada (§0.7) |
 | **Fôlego** | a régua está escrita e o combate não a aplica | **fica fora, como está hoje** (`modulos.ts`, `folego: false`). A simulação mede o jogo que se joga (§0.7) |
 | **Mana** | o que o Conjurador faz quando a reserva acaba | **raciona, alternando ataque comum e Arte**; e fica registrado um teste: a reserva é pequena demais para os combates? (§0.7) |
@@ -765,8 +785,8 @@ em uma linha quando o mestre arrasta.
 | **E4 · assimetria de passo** | 2 | sim |
 | **E5 · perfil de regras** | **18** (cheio · uma de fora por bandeira, 16 · tudo desligado), §0.7 | sim |
 | **E6 · política** | 5 (agressivo · cauteloso · tocaiador · guarda-costas · conjurador). A **cega** saiu daqui e virou o eixo E9 (`03-respostas.md` §1.4) | sim |
-| **E9 · leitura** | 2 (lê as declarações do Tick, ou não). Aplica-se a qualquer política, e é o que mede N7 | sim |
 | **E7 · obstáculo** | 2 (campo aberto · parede), §0.4 P2, e cai fora se P2 for recusada | sim |
+| **E9 · leitura** | 2 (lê as declarações do Tick, ou não). Aplica-se a qualquer política, e é o que mede N7 | sim |
 | **E8 · atribuição de gesto** | 2 (mestre solo · um por PC) | **não**: é leitura do mesmo log |
 | **D1 · perfil de automação** | 2 | **não**: é leitura do mesmo log |
 
@@ -789,7 +809,7 @@ combinações. O orçamento que aperta continua sendo o mesmo da §3: o que se c
 
 ## 0.6 O que entra na mesa antes do harness
 
-**Decidido:** tudo. N1 a N8, o `ate` das condições (Q7) e as 9 bandeiras de D2 entram no Grid **antes**
+**Decidido:** tudo. N1 a N8, o `ate` das condições (Q7) e as 16 bandeiras (§0.7) entram no Grid **antes**
 de o harness ser escrito, para que ele meça o jogo de verdade desde a primeira batalha e nenhuma
 regra viva só na cópia headless.
 
@@ -812,7 +832,7 @@ presente e vira o passado: é a resposta à pergunta "o que essas nove regras co
 | 8 | **N8** · o rastro no tabuleiro | `grid.astro`, a pintura | `test-grid-simultaneo.mjs` |
 | 9 | **N4 na tela** · a fila de declaração ordenada, com arrasto do mestre | `grid.astro`, a coluna da vez | `test-grid-simultaneo.mjs` |
 | 10 | **Q7** · o `ate` das condições passa a ser lido e a expirar | `grid.astro` / `artes-grid-mesa.ts` | `test-artes-grid.mjs` |
-| 11 | **As 9 bandeiras** · Margem, gate, Couraça, porte, Bloqueio com escudo, modo secundário, teto ±6, `curaSemArea`, `curaDivide` | `regras.json` (o objeto de perfil), `quase-acerto.ts`, `calc.ts`, `combate-resumo.ts`, `grid.astro`, `artes-grid.ts` | `test-contrato.mjs` e `test-quase-acerto.mjs`, que hoje **congelam o estado errado** (R2 §A2: `R.defesa = 16` com o Bloqueio inútil) e precisam ser reescritos junto |
+| 11 | **As 16 bandeiras** · as 9 de regra publicada (Margem, gate, Couraça, porte, Bloqueio com escudo, modo secundário, teto ±6, `curaSemArea`, `curaDivide`), as 6 do núcleo do Tick e o `porRodada` | `regras.json` (o objeto de perfil), `quase-acerto.ts`, `calc.ts`, `combate-resumo.ts`, `grid.astro`, `artes-grid.ts` | `test-contrato.mjs` e `test-quase-acerto.mjs`, que hoje **congelam o estado errado** (R2 §A2: `R.defesa = 16` com o Bloqueio inútil) e precisam ser reescritos junto |
 
 Os itens 1 a 6 são o núcleo do Tick e se sustentam sozinhos. O 11 é o maior de todos e é o único que
 mexe em cinco arquivos de regra ao mesmo tempo.
@@ -855,15 +875,20 @@ pesada. Detalhe e a tabela medida na **§0.45**.
 **Hoje.** Só existe `ordemDaFila` (`combate-tempo.ts:399-404`): Tick, iniciativa (desc), Raciocínio
 (desc), carimbo de chegada, nome. Ela é a fila, e continua sendo.
 
-**Passa a ser.** Uma função nova e irmã, `ordemDeDeclaracao(a, b)`, com cinco critérios:
+**Passa a ser.** Uma função nova e irmã, `ordemDeDeclaracao(a, b, naEntrada)`, com a cadeia **toda
+crescente** (declara primeiro quem tem menos) e a iniciativa mudando de lugar conforme a fase:
 
-1. **Raciocínio + Prontidão, crescente** (declara primeiro quem tem menos);
-2. Raciocínio, decrescente;
-3. Destreza, decrescente;
-4. a iniciativa rolada, decrescente;
-5. sorteio.
+| Fase | A cadeia |
+|---|---|
+| **entrada** (os Ticks da escada de iniciativa) | iniciativa · Rac + Prontidão · Raciocínio · Destreza · sorteio |
+| **depois da entrada** | Rac + Prontidão · Raciocínio · Destreza · iniciativa · sorteio |
 
-**A chave do critério 1 já existe nos dois lados**, porque a iniciativa do sistema **é**
+**A ordem de resolução é essa invertida** (`ordemDaFila` já tem o critério principal certo para ela:
+Tick, depois iniciativa decrescente), com duas exceções que a §0.46 detalha: **empate resolve junto,
+no mesmo instante**, e **dependência entre ações vence a ordem** (a interposição resolve antes do
+golpe contra o qual ela se põe).
+
+**A chave de Rac + Prontidão já existe nos dois lados**, porque a iniciativa do sistema **é**
 `1d6 + Raciocínio + Prontidão` (`regras.json → derivados.iniciativa.soma`):
 
 - **PC:** `attrs.raciocinio + skills.prontidao`, direto da ficha (é o que `rolarIniciativaPC`,
@@ -876,13 +901,18 @@ pesada. Detalhe e a tabela medida na **§0.45**.
 **Cuidados.**
 - Para extrair o fixo sem rolar dado, `rolarExpr(expr).flat` (`rolagem.ts:34`) já devolve o número
   certo, mas rola os dados à toa. Uma função pura `fixoDe(expr)` é mais limpa e é uma linha.
-- **O sorteio do critério 5 é a única fonte de acaso do combate fora dos dados.** Na mesa pode ser
-  `Math.random`; no harness precisa vir do fluxo semeado, senão a batalha 743 não replica (§2.4).
+- **O sorteio do último critério é a única fonte de acaso do combate fora dos dados.** Na mesa pode
+  ser `Math.random`; no harness precisa vir do fluxo semeado, senão a batalha 743 não replica (§2.4).
+- **A fronteira entre as duas cadeias é global, e não por peça** (proposta, a confirmar, §0.46): vale
+  a cadeia de entrada até o último Tick de entrada da cena. Com o catálogo de hoje um Tick misto é
+  raro, porque a entrada cabe nos Ticks 1 a 4 e o ciclo mais curto é 5.
 - `regras.json → derivados.iniciativa.empateNoTopo` diz hoje "maior Raciocínio, e persistindo o
-  empate, o dado". A cadeia nova o supera e o texto precisa ser reescrito.
+  empate, o dado". A direção está certa para a **resolução**; a cadeia nova é mais longa e o texto
+  precisa dizer as duas fases.
 
-**Prova.** `test-simultaneo.mjs` para a cadeia dos cinco critérios, e uma asserção sobre as 309
-criaturas para a leitura do fixo. Detalhe na **§0.46**.
+**Prova.** `test-simultaneo.mjs` para as duas cadeias, uma asserção sobre as 309 criaturas para a
+leitura do fixo, e **o exemplo de seis peças da §0.46 rodado inteiro**, Tick a Tick, que é o teste
+que pega a maior parte dos erros de ordem. Detalhe na **§0.46**.
 
 ---
 
@@ -936,10 +966,21 @@ a resolução dos cartões acontecem entre avanços, em qualquer ordem que o mes
 1. **Declaração.** Todos os livres declaram, na ordem de N4. Nenhuma consequência acontece aqui.
 2. **Início.** As ações começam, todas juntas, quando a última declaração entrou.
 3. **Resolução.** As consequências devidas neste Tick acontecem, **na ordem inversa da declaração**:
-   resolve primeiro quem tem mais Raciocínio + Prontidão.
+   resolve primeiro quem tirou mais iniciativa (na entrada) ou quem tem mais Raciocínio + Prontidão
+   (depois dela).
 
-**Cuidados.** N2 é o que implementa a fase 1 no motor; sem ele a fase não fecha. Com N6, a ordem
-dentro da fase 3 **não muda número nenhum**: ela decide só o que se conta primeiro.
+**Cuidados.**
+- N2 é o que implementa a fase 1 no motor; sem ele a fase não fecha.
+- Com N6, a ordem dentro da fase 3 **não muda número nenhum**: ela decide só o que se conta primeiro.
+- **Empate resolve junto**, no mesmo instante; a ordem interna entre empatados serve só para a
+  declaração.
+- **Dependência entre ações vence a ordem.** A interposição resolve antes do golpe contra o qual ela
+  se põe, qualquer que seja a iniciativa de quem se interpôs. No repertório de hoje a única ação
+  dependente é o abortar com "interpor" (`abrirAbortar`, `mesa-tempo-ui.ts:272-334`), então é uma
+  exceção declarada na fase 3, e não uma parada de julgamento.
+- **Esta é a única das seis que não isola atrás de bandeira**, e por quê está na
+  `03-respostas.md` §2.1: o estado desligado dela não é um comportamento, é a ausência de uma regra.
+  **O tratamento dela na bateria continua em aberto** (§0.7).
 
 **Prova.** `test-grid-simultaneo.mjs`. Detalhe na **§0.46**.
 
@@ -1067,10 +1108,20 @@ passagem, mas registre.
 
 ---
 
-#### 11 · As 9 bandeiras de regra
+#### 11 · As 16 bandeiras de regra
 
-O maior dos onze, e o único que mexe em cinco arquivos de regra ao mesmo tempo. Um objeto de perfil
-no `regras.json`, lido pela mesa e pelo harness, com o padrão em produção **ligado**.
+O maior dos onze, e o único que mexe em cinco arquivos de regra ao mesmo tempo. **Um bloco novo no
+`regras.json`**, lido pela mesa e pelo harness, com o padrão em produção **ligado**. Ficou ali por
+dois motivos (§0.7): `combate-tempo.ts` já importa `regras.json` e nada mais, então não entra
+dependência nova e o empacotamento headless pega de graça; e o `dados_hash` do manifesto da bateria
+(§2.4) já registra mudança em `src/data/*.json`, o que faz uma troca de bandeira ficar
+automaticamente anotada na bateria que rodou com ela. **O manifesto passa a hashear também
+`src/lib`**, para que mudança de código, e não só de régua, fique registrada do mesmo jeito. O
+`src/lib/modulos.ts` continua sendo o que ele diz que é: só tela.
+
+As nove de regra publicada estão na tabela abaixo; as outras sete são as do núcleo do Tick (`n1`,
+que já é o parâmetro `decideEmValeDepois`, mais `n2`, `n3`, `n4`, `n6`, e `n5` com o tratamento em
+aberto) e o `porRodada`, que liga as cinco condições de dano por rodada que o Grid não cobra.
 
 | Bandeira | O que liga | Onde |
 |---|---|---|
@@ -1436,7 +1487,7 @@ apontada em cada passo.
 | 1 | **T ← T + 1** | igual (L4904-4906), sem a gravação de `tick_atual` |
 | 2 | **Passo de todas as peças em trajeto**, na ordem de `filaDaCena`. Para cada uma: pula quem está no chão, pula quem não tem `mov.auto`, pula quem declarou neste mesmo Tick (`desde + 1 > T`), calcula `passos` pela escala, restringe o passo se está na fase de Golpe (`passoDoGolpe`), caminha com veto de ocupação, e repete com veto frouxo se não aproximou | **igual**, linha por linha (L4912-4966). É o passo que mais depende da extração fiel |
 | 3 | **Encerrar trajeto ou re-projetar.** Quem chegou ao alcance, ou atravessou, perde o `mov`; quem não chegou passa por `reprojetarAgenda` com a viagem que sobrou medida no passo real | **igual** (L4984-5012) |
-| 4 | **Fase 1, declaração**: todos os livres declaram, na ordem de **N4** (Raciocínio + Prontidão crescente). Criaturas pela `decisaoAutomatica`, PCs pela política de D3. Nenhuma consequência acontece aqui | **diferente**. Hoje só as criaturas decidem dentro do avanço (`decidirAutomaticas`, L5017) e os PCs decidem quando o humano clica, em qualquer momento e em qualquer ordem. Com N4 e N5 a ordem passa a ser regra |
+| 4 | **Fase 1, declaração**: todos os livres declaram, na ordem de **N4** (cadeia crescente; iniciativa na frente durante a entrada, Rac + Prontidão na frente depois). Criaturas pela `decisaoAutomatica`, PCs pela política de D3. Nenhuma consequência acontece aqui | **diferente**. Hoje só as criaturas decidem dentro do avanço (`decidirAutomaticas`, L5017) e os PCs decidem quando o humano clica, em qualquer momento e em qualquer ordem. Com N4 e N5 a ordem passa a ser regra |
 | 4b | **Fase 2, o retrato**: fecha-se a leitura do estado (Vida, condições, Pressão, posição) que a fase 3 inteira vai usar | **novo**, e é **N6**. Não existe no Grid |
 | 5 | **Fase 3, resolução**: os golpes com Tick ≤ T, **na ordem inversa da declaração** (N5), lendo o retrato (N6), incluindo os de quem caiu neste mesmo Tick (N3) | **diferente na forma, igual na posição**. No Grid isto não é parte do avanço: é o cartão da faixa, clicado depois, e o ⏭ fica desligado enquanto houver golpe devido (L4324-4326). Com **N2** essa ordem deixa de ser acidente da interface e vira regra, e com **N6** a ordem dentro da fase não muda número nenhum: ela decide só o que se conta primeiro |
 | 6 | **Efeitos de Arte** (mordidas, saídas, vencimentos), se Q10 disser que Artes entram | **igual à posição** (L5021), com a diferença de que a caixa de efeito e a de saída viram política |
@@ -1509,7 +1560,10 @@ deslocamento. Proposta: fluxos independentes, cada um semeado por `hash64(sement
 `acerto`, `dano`, `iniciativa`, `efeito`, `politica`. O gerador de números é o xorshift que a bancada
 já usa (`lib-tempo.mjs:50-61`), que é o que faz `rolagem.ts` precisar do ponto de injeção da §2.1.
 
-**Ordem de iteração.** `ordemDaFila` (`combate-tempo.ts:399-404`) desempata em cinco níveis: Tick,
+**Ordem de iteração.** Com N4 e N5 (§0.46), a ordem dentro do Tick deixou de ser detalhe de
+implementação e virou regra: declara-se pela cadeia crescente e resolve-se pela inversa. O que esta
+seção ainda precisa garantir é o **desempate final**, quando a cadeia inteira empata e a regra manda
+sortear. `ordemDaFila` (`combate-tempo.ts:399-404`) desempata em cinco níveis: Tick,
 iniciativa, Raciocínio, `chegada`, nome. Na mesa, `chegada` é `TOKENS[c.id]?.em` (`grid.astro:4064`),
 que é um `new Date().toISOString()` do instante em que a peça foi posta no mapa: é relógio de parede,
 e portanto não reproduzível. A correção não exige mexer no motor: o próprio comentário do campo diz
@@ -1531,7 +1585,10 @@ semente_mestre    inteiro de 64 bits
 perfil            { d1, d2: {margem, gate, couraca, porte, bloqueio, modo2, teto6},
                     d3: politica, d4: {tipo, teto_ticks, teto_adiamento}, q7, q9, q10 }
 grade             os eixos e os níveis (§3)
-dados_hash        sha1 do conteúdo de src/data/*.json, para saber se a régua mudou
+dados_hash        sha1 do conteúdo de src/data/*.json E de src/lib/*.ts, para saber se a
+                  régua ou o motor mudaram (decidido em 02/09, §0.7: as bandeiras moram no
+                  regras.json, e o hash cobre o código junto para nenhuma bateria rodar com
+                  uma configuração que o registro não conhece)
 ```
 
 `sementes.jsonl`, uma linha por batalha:
@@ -1762,6 +1819,9 @@ Seção obrigatória, e é a que decide o quanto o resto vale.
 | **As 461 Técnicas** | fora | não são declaráveis no Grid (R2 §I.7). Medir o repertório do jogador sem elas mede o repertório que existe, que é o de 6 opções | não se aplica |
 | **A atenção do mestre** | fora | ler o tabuleiro, lembrar de quem está com qual condição, decidir se vale interromper: nada disso é gesto, e a R2 §C4 mostra que 5 condições de dano por rodada dependem só de ele lembrar | exigiria observação de mesa |
 | **A carga do sistema P/G/R e do normal** | fora por decisão sua | a bancada já mede o P/G/R sem mapa | já existe |
+| **O valor da informação de N7 para uma pessoa** | fora | teste de mesa. O harness só consegue a diferença entre uma política que lê e a mesma cega (eixo E9), e esse número mede a qualidade das minhas cinco regras de leitura, não o valor da informação para quem joga. Um humano vê o que nenhuma regra minha codifica: que o inimigo está juntando gente num canto, que o companheiro vai morrer | muito mais barato: uma sessão observada, contando quantas vezes um declarante tardio muda de escolha depois de ver |
+| **A legibilidade do rastro de N8** | fora | nenhum instrumento de código: é desenho de tela, e o harness não tem tela | idem, a mesma sessão |
+| **O tempo que a fila de declaração de N4 custa ao mestre** | fora | cronometrar a fase de declaração com a fila ordenada na tela e sem ela, e contar quantas vezes o mestre reordena à mão (§0.49) | idem, a mesma sessão |
 
 ---
 
