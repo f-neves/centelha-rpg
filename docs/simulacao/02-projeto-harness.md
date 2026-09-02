@@ -1637,7 +1637,8 @@ comum, esta linha vira a primeira coisa a consertar depois.
 | **Invariantes fora do caminho quente** | conferidos em memória, sobre o estado que o laço já tem. A violação não grava nada na hora: marca a batalha e deixa o registro para a mesma gravação do fim |
 | **Sem I/O no laço** | nenhuma leitura de arquivo, nenhuma rede, nenhum `console` por evento. Os JSONs de dados são lidos uma vez no início da bateria e ficam em memória |
 | **Teto de segurança** | 2.000 Ticks, e a batalha que estoura sai marcada `estourou`, no balde próprio, sem travar a bateria e sem entrar em média nenhuma |
-| **Paralelismo** | a semente já é `hash64(semente_mestre, cenario_id, repeticao)` (§2.4), ou seja **cada batalha é independente de todas as outras por construção**. Um processo recebe uma faixa de índices de batalha, calcula as próprias sementes e escreve o próprio arquivo `.jsonl`; nada é compartilhado e nada precisa de trava. Os arquivos são concatenados no fim, e a ordem entre eles não importa porque cada linha carrega o `b` da batalha |
+| **Paralelismo** | a semente já é `hash32(semente_mestre, cenario_id, repeticao)` (§2.4), ou seja **cada batalha é independente de todas as outras por construção**. Um processo recebe uma faixa de índices de batalha, calcula as próprias sementes e escreve o próprio arquivo `.jsonl`; nada é compartilhado e nada precisa de trava. Os arquivos são concatenados no fim, e a ordem entre eles não importa porque cada linha carrega o `b` da batalha |
+| **Paralelismo: PROCESSOS, e nunca linhas de execução** | **é restrição, e não preferência.** O `acaso.ts` guarda a fonte num `let` de módulo, o que é o certo para a página (uma cena por aba) e é uma armadilha aqui: com `worker_threads` ou `Promise.all` **no mesmo processo**, duas batalhas dividem a mesma fonte, consomem a mesma sequência intercalada e o determinismo por batalha morre **em silêncio**, sem erro e sem teste vermelho. Um processo por faixa de índices, e pronto. **E o motor do harness não usa o global**: ele recebe a própria fonte como parâmetro, do mesmo jeito que recebe a semente, e o `semear()` do módulo fica sendo o que ele é hoje, o caminho da **página** |
 
 **Um número para dimensionar:** a §2.5 estima 100 a 150 registros por duelo, ~120 bytes cada. Uma
 batalha guarda algo entre 12 e 18 KB em memória antes de gravar, e a bateria inteira de 56.000
@@ -2143,17 +2144,32 @@ para o log sair sempre no mesmo arranjo.
 **A semente.** Uma por batalha, derivada e não sorteada:
 
 ```
-semente(b) = hash64(semente_mestre, cenario_id, repeticao)
+semente(b) = hash32(semente_mestre, cenario_id, repeticao)
 ```
 
 Assim a batalha 743 é reproduzível sem depender de nenhuma anterior, e acrescentar uma batalha no
 fim não muda nenhuma das outras.
 
-**Fluxos separados por finalidade.** Um único fluxo de acaso faz com que acrescentar uma rolagem
-desloque todas as seguintes, e aí uma execução A/B de D2 mistura o efeito da regra com o efeito do
-deslocamento. Proposta: fluxos independentes, cada um semeado por `hash64(semente(b), rotulo)`:
-`acerto`, `dano`, `iniciativa`, `efeito`, `politica`. O gerador de números é o xorshift que a bancada
-já usa (`lib-tempo.mjs:50-61`), que é o que faz `rolagem.ts` precisar do ponto de injeção da §2.1.
+**São 32 bits, e não 64.** O texto dizia `hash64` e o gerador que entrou na Etapa 0 (`acaso.ts`,
+Mulberry32) trunca a semente com `>>> 0`. Dentro de uma célula de 500 a colisão é desprezível (pelo
+aniversário, da ordem de 3 em 100.000), então não muda resultado nenhum; o que não podia ficar é os
+dois textos dizendo coisas diferentes. **Vale 32.**
+
+**Um fluxo só, e não cinco por finalidade** (decidido em 02/09, depois da Etapa 0). A proposta
+anterior era `acerto`, `dano`, `iniciativa`, `efeito` e `politica`, cada um semeado por rótulo, com o
+argumento de que um fluxo único faz uma rolagem a mais deslocar todas as seguintes. O argumento é
+verdadeiro e o efeito dele é **menor do que parecia**, e é isso que decidiu:
+
+- **o A/B continua sem viés.** Com um fluxo só, ligar uma bandeira que rola uma vez a mais faz as
+  duas execuções divergirem dali em diante, e elas viram **amostras independentes** da mesma
+  distribuição. Isso não desloca a média de lado nenhum: **custa precisão, não correção**;
+- **o que se perde é o pareamento**, que é uma técnica de redução de variância. Sem ele, a mesma
+  precisão pede mais batalhas. Quanto, só o piloto diz, e ele já é quem fixa o `n`;
+- **o espelho de inércia não precisa disso.** Ele roda com a bandeira **desligada dos dois lados**,
+  então o número de rolagens é igual e os dois lados andam juntos de qualquer jeito.
+
+**A limitação fica escrita no relatório**, junto de cada comparação de bandeira: os deltas de E5 são
+**não pareados**, e o intervalo de cada um é o de duas amostras independentes, não o de um par.
 
 **Ordem de iteração.** Com N4 e N5 (§0.46), a ordem dentro do Tick deixou de ser detalhe de
 implementação e virou regra: declara-se pela cadeia crescente e resolve-se pela inversa. O que esta

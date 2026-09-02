@@ -986,6 +986,12 @@ cabeçalho do `02`:
 | `05-fechamento.md` | o fechamento: a ordem corrigida (a instrumentação vem antes), as dez dependências de prova sem instrumento, e a grade recontada |
 | `06-etapa-0.md` | a instrumentação, feita: a semente, o caminho do driver, o despejo por Tick e a branch congelada. E o que o espelho de inércia já prova com ela |
 
+**Duas restrições que saíram da Etapa 0 e valem para quem escrever o harness:** o paralelismo é por
+**processo** e nunca por linha de execução (a fonte de acaso é um `let` de módulo, e duas batalhas no
+mesmo processo dividem a sequência **em silêncio**, sem erro e sem teste vermelho), e o motor recebe a
+própria fonte por parâmetro em vez de usar o global. E a proposta dos cinco fluxos por rótulo da `02`
+§2.4 **caiu**: fica um fluxo, e os deltas de E5 são não pareados.
+
 **A regra da frente:** decisão anotada dentro de um relatório não vale; o que vale vem do chat, e o
 relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`.
 

@@ -52,9 +52,19 @@ async function correr(br, url, query, ticks = 6) {
   await p.waitForSelector('dialog.ui-dlg[open] .ui-dlg-ok', { timeout: 15000 });
   await p.evaluate(() => document.querySelector('dialog.ui-dlg[open] .ui-dlg-ok').click());
   await espera(600);
+  // ESPERAR O RELÓGIO MUDAR, e não um número de milissegundos. A dormida fixa é
+  // o erro que a `03-respostas.md` §5.1 já tinha diagnosticado na suíte antiga
+  // (`await espera(650)`, lido depois como se fosse o custo do avanço): ela tem
+  // folga nesta máquina e não terá numa mais lenta nem numa cena maior, e o dia
+  // em que um clique cair antes de o avanço anterior terminar o teste falha
+  // parecendo não determinismo. Aí alguém culpa a semente.
   for (let i = 0; i < ticks; i++) {
+    const antes = await p.$eval('#ini-tk', (e) => e.textContent);
     await p.evaluate(() => document.getElementById('ini-prox')?.click());
-    await espera(120);
+    await p.waitForFunction(
+      (v) => document.getElementById('ini-tk')?.textContent !== v,
+      { timeout: 15000, polling: 16 }, antes,
+    );
   }
   const d = await p.evaluate(() => (window).__DESPEJO || null);
   await p.close();

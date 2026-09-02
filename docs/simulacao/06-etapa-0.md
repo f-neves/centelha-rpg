@@ -46,16 +46,26 @@ O gerador é o Mulberry32 por um motivo que vale escrever: o harness vai ter de 
 sequência em Node e no navegador**, e um gerador que cabe em cinco linhas auditáveis a olho é a única
 garantia barata de que os dois lados fazem a mesma conta.
 
-**Os três pontos de acaso do combate passaram a usá-lo:**
+**Os pontos de acaso do combate passaram a usá-lo:**
 
 | Onde | Era | Ficou |
 |---|---|---|
 | `rolagem.ts:11` · o `d6` | `Math.random()` | `acaso()` |
 | `mesa-ficha.ts:133` · `rolarIniciativaPC` | um `d6` local, com `Math.random` embutido | o `d6` do `rolagem.ts`, e por tabela o mesmo `acaso` |
 | `artes-grid.ts:1342` · `rolar`, o dano de Arte | `Math.random()` | `acaso()` |
+| `mesa-bestiario.ts:55` · `iniDeMonstro`, a iniciativa de **criatura** | **já usava o `d6` do `rolagem.ts`** (L19 importa, L63 reexporta) | veio de graça |
 
-A iniciativa de **criatura** veio de graça: `iniDeMonstro` (`mesa-bestiario.ts:55`) já usava o `d6` do
-`rolagem.ts`, que aquele arquivo reexporta.
+**A linha da criatura merece destaque, porque o D10 acabou de pôr criatura num eixo inteiro.** Se ela
+não passasse pelo mesmo `d6`, toda célula com bicho divergiria no primeiro Tick, e o eixo E11 nasceria
+sem espelho. Conferido nas duas pontas: o arquivo importa o `d6` do `rolagem.ts` e o reexporta com o
+comentário "o dado mora em `rolagem.ts` agora, com o resto do acaso do combate", e **a bancada com
+`bench=12` é 4 PCs e 8 criaturas** (`mesa-mock.mjs:100`), então o `test-etapa0.mjs` já exercitava
+esse caminho sem que o relatório dissesse.
+
+**Depois da Etapa 0 existem exatamente DUAS fontes de acaso no combate**, e não quatro: o `d6` do
+`rolagem.ts` (por onde saem `rolarExpr`, `iniDeMonstro` e `rolarIniciativaPC`) e o `rolar` do
+`artes-grid.ts`. As duas passam pelo `acaso`. O resto de `Math.random` em `src/lib` gera id ou chave
+de presença, e uma varredura no `test-acaso.mjs` falha se aparecer um terceiro.
 
 **O quarto ponto da especificação não existe ainda.** A P §0.6.1 item 2 lista o **sorteio do último
 critério de N4** como quarto lugar a semear. N4 não foi escrito (é Etapa 2), então não há sorteio a
@@ -124,9 +134,32 @@ bandeira nenhuma**.
 
 ## 3 · A prova
 
-`scripts/test-etapa0.mjs`, chamado por `npm run etapa0`. Dirige o Edge sobre a bancada
-(`astro.bancada.mjs`, com o mock de Supabase), rola a iniciativa e anda seis Ticks. **15 asserções,
-todas passando.**
+**Duas provas, e a segunda entrou depois da revisão**, porque a primeira sozinha dizia menos do que
+parecia.
+
+#### 3.1 · `test-acaso.mjs`, em Node, dentro do `npm run validate`
+
+**14 asserções, segundos, sem navegador.** Ele existe porque o teste do navegador exercita a semente
+**só pelo caminho da iniciativa**: o `rolarExpr` (por onde sai todo dano e todo bolo de ataque) e o
+`rolar` das Artes ficavam plugados por **leitura de código**, não por prova.
+
+| O que prova | Como |
+|---|---|
+| os **quatro caminhos** repetem sob a mesma semente | uma passada por `d6`, `rolarExpr`, `rolar` das Artes e `iniDeMonstro`, duas vezes, idêntica |
+| **cada um individualmente** passa pelo ponto de injeção | dez rolagens de cada, com duas sementes. Dez, e não uma: um dado tem seis faces, e comparar uma rolagem falharia por coincidência uma vez em seis |
+| sem semente, tudo volta a ser aleatório | `semear(null)` e duas passadas diferentes |
+| **nenhuma fonte nova entra em silêncio** | uma **varredura** de `src/lib`, com a lista explícita do que é permitido (id na ficha, id sem `crypto`, chave de presença). Quem acrescentar um `Math.random` tem de vir dizer por que não é combate |
+
+A varredura é a asserção que mais vale das quatro, e ela nasce de um erro real: **o `rolar` das Artes
+era uma segunda fonte de acaso com `Math.random` próprio, e ficou ali sem ninguém notar.** Um pacote
+só para os quatro módulos, e isso não é detalhe: bundles separados levariam cada um a sua cópia do
+estado do `acaso.ts`, e o teste passaria medindo módulos que não conversam.
+
+#### 3.2 · `test-etapa0.mjs`, no navegador, por `npm run etapa0`
+
+Dirige o Edge sobre a bancada (`astro.bancada.mjs`, com o mock de Supabase), rola a iniciativa e anda
+seis Ticks. **15 asserções, todas passando.** É ele que prova o que o outro não alcança: que o
+**caminho da URL** chega até o módulo, e que o **despejo** sai com a forma certa.
 
 | O que ele prova | Como |
 |---|---|
@@ -142,8 +175,40 @@ diferentes, e o teste teria passado provando nada. Rolar a iniciativa antes de a
 cena tocar no acaso. É a mesma lição do **contador de ocasiões** da P §2.6, encontrada de outro lado:
 um zero sem ocasião não é um zero.
 
-**O resto continua verde:** `npm run validate` inteiro, `npm run build`, e as **45 asserções** do
-`test-grid-simultaneo.mjs`, que é a suíte que dirige o Grid no navegador.
+**E as esperas fixas saíram do teste do navegador**, o que era o mesmo erro que a R3 §5.1 já tinha
+diagnosticado na suíte antiga (`await espera(650)`, lido depois pela R1 §9.2 como se fosse o custo do
+avanço). A primeira versão dormia 120 ms depois de cada clique: folga nesta máquina, e nenhuma numa
+mais lenta ou numa cena maior. No dia em que um clique caísse antes de o avanço anterior terminar, o
+teste falharia **parecendo não determinismo**, e alguém culparia a semente. Agora ele espera o
+`#ini-tk` mudar de valor, com sondagem de 16 ms, que é o que a R3 §5.1 especificou.
+
+**O que as duas provas juntas NÃO cobrem, e fica escrito:** nenhuma cena de teste **declara ataque,
+resolve golpe ou conjura**. O `rolarExpr` e o `rolar` das Artes são exercitados em Node, isolados, e
+não pelo caminho que a mesa percorre de verdade. Provar a semente **dentro de uma resolução** exige
+comparar dano entre duas execuções, e isso exige o despejo da resolução, que é o buraco da §2.3.
+As duas coisas se destravam juntas.
+
+**O resto continua verde:** `npm run validate` inteiro (agora com o `test-acaso.mjs` dentro),
+`npm run build`, e as **45 asserções** do `test-grid-simultaneo.mjs`, que é a suíte que dirige o Grid
+no navegador.
+
+---
+
+## 3.3 · Duas coisas que a fonte global obriga
+
+**Uma restrição de paralelismo, escrita na P §0.8.7.** O `acaso.ts` guarda a fonte num `let` de
+módulo, que é o certo para a página e é uma armadilha para o harness: com `worker_threads` ou
+`Promise.all` **no mesmo processo**, duas batalhas dividem a mesma fonte, consomem a sequência
+intercalada e o determinismo por batalha morre **em silêncio**, sem erro e sem teste vermelho. A
+decisão de paralelismo (um processo por faixa de índices) já estava certa; o que faltava era dizer
+**por que a outra forma não é uma alternativa**. E o motor do harness recebe a própria fonte como
+parâmetro, em vez de usar o global: o `semear()` do módulo é o caminho da **página**.
+
+**E a proposta dos cinco fluxos por rótulo caiu** (P §2.4, decidido em 02/09). Ela existia para que
+uma rolagem a mais não deslocasse todas as seguintes num A/B. O argumento é verdadeiro, e o efeito é
+menor do que parecia: com um fluxo só, as duas execuções viram **amostras independentes** da mesma
+distribuição, o que **custa precisão e não correção**. Fica um fluxo, e a limitação vai escrita junto
+de cada comparação de bandeira: os deltas de E5 são **não pareados**.
 
 ---
 
