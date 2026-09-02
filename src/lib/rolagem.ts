@@ -7,8 +7,15 @@
 // Este arquivo é PURO: não toca no DOM e não sabe o que é uma mesa. Quem decide
 // SE rola é a mesa (`combate.rolagem`, em `combate-tempo.ts`); aqui só se rola.
 
-/** Um dado. Existe aqui porque é a única fonte de acaso do combate. */
-export const d6 = () => 1 + Math.floor(Math.random() * 6);
+import { acaso } from './acaso';
+
+/**
+ * Um dado. Existe aqui porque é a única fonte de acaso do combate.
+ *
+ * O `acaso` é `Math.random` em uso normal; quem semeia é a página, e só quando
+ * a URL pede. Ver `acaso.ts`.
+ */
+export const d6 = () => 1 + Math.floor(acaso() * 6);
 
 export interface Rolada {
   /** Quantos dados entraram, depois dos ajustes. */

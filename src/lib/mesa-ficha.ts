@@ -11,6 +11,7 @@ import {
 import { armadurasDe } from './equip';
 import { resumoCombatePC } from './combate-resumo';
 import { qaDaPeca, type QACombate } from './quase-acerto';
+import { d6 } from './rolagem';
 
 export interface Passivo { id: string; nome: string; dados: number; bonus: number; media: number; str: string }
 
@@ -130,6 +131,8 @@ export function resumoParaBanco(R: ResumoFicha) {
 
 /** Iniciativa rolada para um PC: 1d6 por dado do pool não — aqui é a regra da mesa (d6 + Raciocínio + Prontidão). */
 export function rolarIniciativaPC(S: any) {
-  const d6 = () => 1 + Math.floor(Math.random() * 6);
+  // O `d6` daqui é o mesmo do `rolagem.ts`, e por isso o mesmo `acaso`: sem
+  // isso a iniciativa ficaria fora da semente e o espelho divergiria no
+  // primeiro Tick, antes de qualquer golpe.
   return d6() + (S?.attrs?.raciocinio || 0) + (S?.skills?.prontidao || 0);
 }

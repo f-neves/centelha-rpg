@@ -12,6 +12,7 @@ import EFEITOS_D from '../data/efeitos.json';
 import COND_D from '../data/condicoes.json';
 import { regras } from './calc';
 import { centroHex, distanciaHex, dentro, vizinhos, type Hex } from './hex';
+import { acaso } from './acaso';
 
 // ============================================================ os dados crus
 export interface Arte {
@@ -1339,7 +1340,9 @@ export function danoNoAlvo(opts: {
 /** Rola NdD e devolve os dados, para o registro mostrar a mão. */
 export function rolar(dados: number, faces = 6): { total: number; dados: number[] } {
   const out: number[] = [];
-  for (let i = 0; i < Math.max(0, dados); i++) out.push(1 + Math.floor(Math.random() * faces));
+  // O `acaso` em vez de `Math.random`: sem isso o dano de Arte fica fora da
+  // semente e o espelho diverge em qualquer cena com conjurador (ver `acaso.ts`).
+  for (let i = 0; i < Math.max(0, dados); i++) out.push(1 + Math.floor(acaso() * faces));
   return { total: out.reduce((s, x) => s + x, 0), dados: out };
 }
 
