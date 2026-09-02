@@ -95,15 +95,14 @@ A ressalva: isso deixa de valer se a política responder uma parada **iii** de u
 não faria (o mestre que arredonda a favor, o que fudge). Não modelamos isso, e a §4 já o coloca fora
 de escopo.
 
-**Q6 (cópia) contra D2 (a tela lendo a mesma chave): como as duas convivem.** Com cópia, as 7 regras
-vivem no harness, e a tela só ganha cada uma quando ela for ligada em produção (Q16). Logo o
-**teste-espelho só é válido com todas as bandeiras desligadas**, que é exatamente o perfil "motor
-como está". A regra de convívio: o espelho roda sempre no perfil base; cada regra que a mesa ganhar
-sai da lista de bandeiras e passa a ser comparada pelo espelho também. A janela de divergência entre
-os dois motores é o conjunto de bandeiras ligadas no harness e ausentes na tela, e esse conjunto
-**encolhe por desenho** à medida que Q16 avança, em vez de crescer como aconteceu com a
-`lib-tempo.mjs`. (A lista de bandeiras cresceu de 7 para 9 na §0.4 P1, com `curaSemArea` e
-`curaDivide`, que são o mesmo tipo de coisa: regra escrita que o motor não aplica.)
+**Q6 (cópia) contra D2 (a tela lendo a mesma chave): como as duas convivem.** As duas leem o **mesmo
+objeto de perfil**, porque a §0.6 decidiu que as bandeiras entram na mesa e não só no harness. Isso
+faz a convivência ser trivial e desfaz uma ressalva que este parágrafo carregava antes: eu tinha
+escrito que o teste-espelho só valeria com todas as bandeiras desligadas, o que era verdade enquanto
+elas iam viver só na cópia. **Com a mesa lendo o perfil, o espelho vale sob qualquer perfil, desde
+que os dois lados leiam o mesmo**, e o `dados_hash` da bateria (§2.4) já registra qual era.
+(A lista chegou a 16 na §0.7: as 7 de D2, as 2 da Cura, as 5 do núcleo do Tick, o `porRodada`, e a de
+N5 pendente de decisão.)
 
 **D4 traz uma regra nova, e ela é a primeira invenção deliberada da simulação.** ⚑ A desistência
 coletiva abaixo de 20% de Vida não existe no Grid nem nos capítulos. Ela conversa com o robô, que
@@ -630,9 +629,15 @@ exatamente o que o harness foi desenhado para medir.
 coisas com o mesmo par: entrada mais cedo na briga (`ticksDeEntrada`, pelo degrau de iniciativa),
 declaração por último (N7) e resolução primeiro (N5). Não estou dizendo que é demais; estou dizendo
 que é uma concentração que ninguém decidiu de uma vez, e que a simulação consegue pôr número nela.
-Proposta: o eixo E6 ganha um nível a mais, **"política cega"**, idêntica à Agressiva mas que não lê
-declaração nenhuma, e a diferença entre ela e a Agressiva com leitura mede o preço de um ponto de
-Raciocínio + Prontidão em vitórias e em Ticks.
+Proposta, corrigida na `03-respostas.md` §1.4: **"cego" não é uma política, é um interruptor**
+aplicável a qualquer uma delas, e vira o eixo **E9**. A versão anterior desta frase propunha uma
+sexta política cega e a comparava com "a Agressiva com leitura", o que não funcionava: o Agressivo é
+definido acima como quem ignora o que vê, então as duas seriam a mesma coisa. Como interruptor, a
+comparação vale para o Cauteloso, o Tocaiador e o Guarda-costas, que são os três cujas regras de fato
+leem alguma coisa, e mede o preço de um ponto de Raciocínio + Prontidão sem confundi-lo com o preço
+de ser cauteloso. E o Agressivo ganha uma regra de leitura para o E9 fazer sentido nele também: *se o
+inimigo mais próximo já tem golpe declarado de outro aliado caindo neste Tick, escolhe o segundo mais
+próximo*.
 
 ### 0.48 N8 · O que é visível, e o rastro no tabuleiro
 
@@ -1303,7 +1308,10 @@ Empacotado com `esbuild` para `.mjs` e importado em Node, que é o que
 | `src/lib/rolagem.ts` | `rolarExpr`, `descreverRolada` | **precisa de uma mudança de uma linha**: `d6` (L11) chama `Math.random` direto. Sem um ponto de injeção não há semente, e sem semente não há reexecução da batalha 743 |
 | `src/lib/mesa-ficha.ts` | leitura da ficha de PC | `rolarIniciativaPC` (L133) tem o mesmo `Math.random` |
 
-#### Extraído de `grid.astro`
+#### Reimplementado a partir de `grid.astro`, com este contrato
+
+Com a cópia (Q6), estas peças não são extraídas: são reescritas no harness a partir do contrato da
+tabela, e a cena espelho é o que impede as duas versões de andarem para lados diferentes.
 
 Cada peça abaixo hoje mora dentro do componente, misturada com desenho e com gravação. O contrato
 proposto é sempre o mesmo formato: entra estado e sai estado novo mais eventos, sem `await`, sem
@@ -1331,24 +1339,26 @@ o gerador de cena e de elenco (§2.7) · a condição de fim (D4) · o log (§2.
 
 #### Como as duas versões não divergem
 
-**Um caminho de código, não dois.** O módulo extraído é importado por `grid.astro`, que fica com
-três responsabilidades e nenhuma conta: perguntar ao humano, desenhar, gravar. Toda a aritmética que
-hoje mora entre as linhas 7432 e 7997 sai de lá.
+**A decisão foi a cópia** (Q6), e esta seção existe para dizer o que ela custa. A extração fica
+registrada como a alternativa recusada: um módulo puro único, importado por `grid.astro`, que ficaria
+com três responsabilidades e nenhuma conta (perguntar ao humano, desenhar, gravar).
 
-Isso não é opinião de estilo, é a lição do que já aconteceu. `lib-tempo.mjs` é a cópia headless que
-fizemos antes, e ela discorda da mesa em cinco pontos hoje: aplica a Margem que a mesa não aplica
-(R2 §A1), classifica o Quase-Acerto pela classe de tempo enquanto a mesa classifica pelo dano médio
-(§F#11), usa um limiar de raspão um ponto mais generoso (§F#12), embaralha a ordem de ação com
-Fisher-Yates enquanto a mesa ordena por `ordemDaFila`, e não tem mapa nenhum (§D3). Nenhuma dessas
-divergências apareceu como erro: as duas passam nos seus próprios testes. **Divergência entre dois
-caminhos não é pega por teste, é pega por comparação**, e ninguém estava comparando.
+O motivo de a extração ter sido defendida, e de a cópia precisar de defesa própria, é a lição do que
+já aconteceu. `lib-tempo.mjs` é a cópia headless que fizemos antes, e ela discorda da mesa em cinco
+pontos hoje: aplica a Margem que a mesa não aplica (R2 §A1), classifica o Quase-Acerto pela classe de
+tempo enquanto a mesa classifica pelo dano médio (§F#11), usa um limiar de raspão um ponto mais
+generoso (§F#12), embaralha a ordem de ação com Fisher-Yates enquanto a mesa ordena por `ordemDaFila`,
+e não tem mapa nenhum (§D3). Nenhuma dessas divergências apareceu como erro: **as duas passam nos seus
+próprios testes.** Divergência entre dois caminhos não é pega por teste, é pega por comparação, e
+ninguém estava comparando.
 
-Se a resposta a Q6 for "copiar", então a comparação tem de ser construída de propósito, e o
-instrumento é a **cena espelho**: uma cena pequena e fixa roda nos dois lugares, headless e no Edge
-dirigido (o `test-grid-simultaneo.mjs` já sabe dirigir a página e já dispõe do mock de Supabase), e
-os dois logs são comparados campo a campo, evento a evento. Diferença em qualquer campo é falha de
-build. Isso é caro de escrever e é o preço de ter dois caminhos; é exatamente o que não existe hoje
-entre a bancada e a mesa.
+**Com a cópia, a comparação tem de ser construída de propósito, e o instrumento é a cena espelho.**
+Ela está especificada na `03-respostas.md` §1.1.1: a cena fixa, os campos comparados por Tick e por
+peça, o perfil de bandeiras sob o qual roda, onde roda e o que falha. Um ponto de lá vale repetir
+aqui, porque corrige o que esta seção dizia antes: **o espelho vale sob qualquer perfil de bandeiras,
+desde que os dois lados leiam o mesmo.** A ressalva de que ele só valeria com todas desligadas era
+verdadeira quando as bandeiras iam viver só no harness, e deixou de ser quando a §0.6 decidiu que a
+mesa lê o mesmo perfil.
 
 ### 2.2 O laço
 
@@ -1626,7 +1636,10 @@ todos os golpes.
 | **E5 · perfil de regras** | 1 ou 2, conforme D2 | a duração é o multiplicador de toda a carga |
 | **E6 · política** | conforme D3 | sem ele, o eixo tático não existe |
 
-Com E1×E2×E3×E4 são **72 células**; com E5 em dois níveis, 144.
+~~Com E1×E2×E3×E4 são **72 células**; com E5 em dois níveis, 144.~~ **Superado:** a tabela de eixos
+acima é a proposta original, e a §0.5 tem a valendo (E2 ganhou um quarto nível, entraram E7 e E9,
+E5 foi a 18 perfis e E6 ficou em 5). A grade é de **76 células**. A justificativa das repetições,
+logo abaixo, não depende do número de células e continua valendo inteira.
 
 **Quantas repetições, e por quê.** O número não sai de "1000", sai de duas contas:
 
@@ -1642,7 +1655,8 @@ Com E1×E2×E3×E4 são **72 células**; com E5 em dois níveis, 144.
   Ticks vazios têm **uma observação por Tick**, não por batalha: uma célula de 500 batalhas de 45
   Ticks dá 22.500 observações. Essas métricas já estão saturadas bem antes de 500.
 
-Total da grade base: 72 × 500 = **36.000 batalhas**, mais o reforço da cauda. Pela R2 §D1 isso seriam
+~~Total da grade base: 72 × 500 = **36.000 batalhas**~~, e pela §0.5 são **76 × 500 = 38.000**, mais o
+reforço da cauda. Pela R2 §D1 isso seriam
 segundos de máquina na bancada; o harness com mapa será mais caro (a R2 §D3 registra o custo de
 `caminharHex` como **NÃO MEDIDO**), e mesmo dez vezes mais caro continua sendo minutos. **O
 orçamento não é a máquina, é o que se consegue ler**: 144 células já são mais tabelas do que se lê

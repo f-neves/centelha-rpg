@@ -533,9 +533,25 @@ que falta, esperando K12 e K17.
   (L550). **Medido em 02/09** (tabela e comando em `01-diagnostico-carga.md` §D1): 54,6 µs por
   duelo 1v1, 93,5 µs por refrega 3×3, 2,6 ms por refrega 50×50. Mil batalhas 3×3 custam 93,5 ms
   num processo só.
-- **Grid:** não é medível como "batalha": cada Tick é um clique do mestre, cada golpe é uma caixa,
-  e o teste usa esperas fixas de 650 a 750 ms por avanço (`test-grid-simultaneo.mjs`, laço de ⏭).
-  Na cena de 3 avanços mais declaração e fuga, a suíte inteira gasta 39,9 s para 3 cenas.
+- **Grid:** não é medível como "batalha": cada Tick é um clique do mestre e cada golpe é uma caixa.
+  O que este relatório tinha aqui era só o tempo da suíte, que usa **esperas fixas** de 650 a 750 ms
+  por avanço (`test-grid-simultaneo.mjs:169, 552`) e portanto não mede nada: na cena de 3 avanços
+  mais declaração e fuga, a suíte inteira gasta 39,9 s para 3 cenas.
+
+  **Medido de verdade em 02/09** (método e tabelas em `03-respostas.md` §5), esperando o Tick mudar
+  em vez de dormir um tanto fixo, e contando as idas ao banco pelo registro que o próprio mock
+  mantém (`mesa-mock.mjs:233`, `window.__SB.log`):
+
+  | | ms por avanço | idas ao banco por Tick |
+  |---|---:|---:|
+  | Tick vazio, de 2 a 40 peças | **30 a 43** | **2**, sempre (o relógio e a campainha) |
+  | Tick com 2 peças em trajeto | **46** | **6,7** |
+  | fórmula | `≈ 30 + 8 × movedores` | `≈ 2 + 2,3 × movedores` |
+
+  Ou seja: o avanço vazio custa cerca de **20× menos** que a espera fixa da suíte sugeria, e uma
+  batalha de 37 Ticks com dez perseguidores custa da ordem de **4 segundos** só de avanços. A escrita
+  mais cara é a reescrita do `jsonb` do registro da arena, uma por linha de log, que é a pendência
+  I2 do `Pendencias.md`.
 - **Custo de repintura por ação** (o que limita o Grid como motor): medido em
   `Auditoria_Tecnica.md` §2.2 (L204-235) e cercado por `TETOS` em `test-grid.mjs:46-60`.
 

@@ -25,7 +25,7 @@ acusado, porque **cada uma passa nos seus próprios testes**. Divergência entre
 pega por teste, é pega por comparação, e comparação não estava sendo feita.
 
 **Mas a decisão é sua e está tomada, e o documento tem de parar de discutir.** O que vale é a cópia
-com teste-espelho. O que precisa ser reescrito:
+com teste-espelho. O que precisava ser reescrito, **aplicado no 02 em 02/09**:
 
 | Onde | O que fazer |
 |---|---|
@@ -93,8 +93,9 @@ da R2 §D1, que mediu `lib-tempo.mjs` no preset `REGRAS_PGR`, **em outro sistema
 A previsão qualitativa (uníssono colide sempre, coprimo quase nunca) não depende disso; a previsão
 quantitativa depende, e não tem base medida.
 
-**O que reescrever:** a §3 ganha, no alto, a nota de que a grade valendo é a da §0.5, e a linha "72
-células / 36.000 batalhas" sai. O resto da §3 fica.
+**O que reescrever, aplicado no 02 em 02/09:** a §3 ganhou a nota de que a grade valendo é a da §0.5
+e as duas linhas de contagem foram riscadas. O resto da §3 fica. (A grade foi de 60 para **76**
+depois desta resposta, quando a rota das bandeiras levou E5 a 18 perfis; ver §0.7 do 02.)
 
 ### 1.3 E6 · cinco ou seis políticas
 
@@ -471,11 +472,15 @@ mock, Edge sem cabeça e `?tempo=simultaneo`. Máquina: a mesma das medições d
 
 **O que os números dizem.**
 
-1. **O avanço vazio custa 30 a 43 ms, e não 650 a 750.** A estimativa da R1 §9.2 ("uma batalha de 37
-   Ticks custaria por baixo ~26 s só de avanços; mil delas seriam ~7 horas; a mesma batalha é cerca de
-   330 mil vezes mais cara pelo Grid") foi construída sobre a dormida fixa da suíte. **O número certo
-   é cerca de 20× menor**: 37 Ticks vazios custam ~1,2 s, não 26 s. A conclusão qualitativa da R1
-   (o Grid é ordens de grandeza mais caro que a bancada) continua de pé; o fator não.
+1. **O avanço vazio custa 30 a 43 ms, e não 650 a 750.** Os 650 a 750 da R1 §9.2 são a **espera
+   fixa** da suíte (`test-grid-simultaneo.mjs:169, 552`), e não uma medição.
+
+   **Correção sobre o que eu mesmo disse nesta sessão:** eu afirmei que a R1 continha uma conclusão
+   construída sobre esse número ("~26 s por batalha, ~7 horas para mil, 330 mil vezes mais cara").
+   Fui conferir o arquivo para reescrevê-lo e **isso não está lá**: era um rascunho meu da §9.2 que
+   foi substituído numa rodada anterior. A R1 já chamava os 650 ms de "esperas fixas" e não derivava
+   nada deles. O que faltava era o número medido, e é isso que ela ganhou agora, como complemento e
+   não como correção.
 2. **O custo do Tick vazio não cresce com o número de peças**, de 2 a 40: são sempre **duas** idas ao
    banco, uma para o relógio (`encontros.tick_atual`) e uma campainha. É o laço `for (const c of naFila())`
    saindo por `if (!mov?.auto ...) continue` (`grid.astro:4915`) em todas as peças paradas.
