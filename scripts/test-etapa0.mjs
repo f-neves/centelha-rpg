@@ -1,4 +1,4 @@
-// test-etapa0.mjs — a instrumentação da bancada, e só ela.
+// test-etapa0.mjs · a instrumentação da bancada, e só ela.
 //
 // A Etapa 0 do harness (`docs/simulacao/06-etapa-0.md`) não muda regra nenhuma:
 // ela entrega uma cena REPETÍVEL e um DESPEJO do que o motor decidiu. Este
