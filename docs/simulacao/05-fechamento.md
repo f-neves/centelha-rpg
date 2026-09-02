@@ -258,31 +258,33 @@ sendo número inventado e vai no cabeçalho do relatório, na tabela do que foi 
 | Bloco | Células | Como se lê |
 |---|---:|---|
 | Núcleo cruzado `E1 × E2 × E3` | **48** | três grades de 4×4, uma por nível de E3 |
-| OFAT em volta de **cada** âncora: `E4(1) + E6(4) + E7(1) + E9(1) + E10(2) + E11(2) = 11` | **22** | **uma** tabela de 11 linhas e 2 colunas |
+| Um fator de cada vez, em volta de **cada** âncora: `E4 (1) + E6 (4) + E7 (1) + E9 (1) + E10 (2) + E11 (2) = 11` | **22** | **uma** tabela de 11 linhas e duas colunas |
 | E5 · o núcleo do Tick (`n1` a `n6`), nas duas âncoras | **12** | 6 linhas, 2 colunas |
 | E5 · o perfil todo desligado, nas duas âncoras | **2** | 1 linha, 2 colunas |
-| E5 · as **nove** bandeiras restantes, cada uma na célula em que morde | **9** | 9 linhas |
-| A célula hospedeira nova (Conjurador de adaga contra malha), que sustenta cinco delas | **1** | |
+| E5 · as nove bandeiras não-núcleo, **na âncora extrema**, que é a referência única do F5 | **9** | 9 linhas |
+| E5 · as **seis** que não moram na âncora, medidas **também na hospedeira**, onde elas mordem | **6** | 6 linhas |
+| Células hospedeiras novas: a do **Conjurador de adaga** e a do **Lanceiro de lança** | **2** | |
 | Níveis de controle (D6 e D7) | **2** | 2 linhas |
-| Cruzamentos deliberados (os 5 de antes, mais `E11 × E3`) | **6** | 6 linhas |
-| **Total** | **103** | |
+| Cruzamentos deliberados | **6** | 6 linhas |
+| **Total** | **109** | |
 
 | | |
 |---|---|
-| Repetições | 500 por célula, 2.000 nas de cauda |
-| **Batalhas** | **51.500**, mais o reforço |
-| Tempo de máquina | da ordem de 45 s, pela R3 §4.2 |
+| Repetições | 500 por célula, e 2.000 nas de cauda |
+| **Batalhas** | **54.500**, mais o reforço |
+| Tempo de máquina | da ordem de 50 segundos, pela §4.2 da `03-respostas.md` |
 
-**As nove bandeiras e onde cada uma mora**, porque medir uma bandeira numa célula onde ela não morde
-foi o defeito que esta recontagem conserta:
+**Onde cada bandeira mora**, porque medir uma bandeira numa célula onde ela não morde foi o defeito
+que esta recontagem conserta:
 
-| Bandeira | Célula que a hospeda |
-|---|---|
-| `margem` · `bloqueio` · `teto6` | a âncora extrema (Escudeiro dos dois lados, com escudo) |
-| `gate` · `modo2` | a célula do Conjurador de adaga (pen 0) contra malha (`resistPerf` 1) |
-| `curaSemArea` · `curaDivide` · `porRodada` | a mesma célula, que é a única com quem conjure |
-| `porte` | a célula `E11 = PC × criatura`, que já existe no OFAT |
-| `couraca` | **saiu**: virou propriedade do elenco (§2.2) |
+| Bandeira | Célula em que morde | Também na âncora? |
+|---|---|---|
+| `margem` · `bloqueio` · `teto6` | a âncora extrema | é a mesma célula |
+| `gate` | a do **Lanceiro de lança** (modo único, Perfuração 1) contra o **Montanteiro de placa completa** (`resistPerf` 3) | sim, e dá zero |
+| `modo2` | a do **Conjurador de adaga** (Perfuração 0) contra a **malha** (`resistPerf` 1), que é onde a regra ⊕ dispara | sim, e dá zero |
+| `curaSemArea` · `curaDivide` · `porRodada` | a do Conjurador, a única com quem conjure | sim, e dá zero |
+| `porte` | a célula `E11 = PC × criatura` | sim, e dá zero |
+| `couraca` | **saiu**: virou propriedade do elenco (§2.2) | |
 
 **O critério do orçamento, respondido.** A P §3 nunca limitou a grade por máquina: *"o orçamento não
 é a máquina, é o que se consegue ler: 144 células já são mais tabelas do que se lê numa sentada"*.
@@ -293,11 +295,95 @@ Aquele aviso contava **célula = linha**, porque a grade era fatorial. Aqui não
   segunda âncora não custa uma linha nova: custa uma coluna**, e é essa a resposta à pergunta;
 - o resto são 30 linhas em quatro tabelas curtas.
 
-Total para o leitor: **3 grades de 4×4 e cerca de 41 linhas de comparação**, contra as 31 linhas da
+Total para o leitor: **3 grades de 4×4 e cerca de 47 linhas de comparação**, contra as 31 linhas da
 versão de 79 células. **Passa.** E vale notar o que quase reprovou: não foi a segunda âncora, foi
 medir as dezesseis bandeiras **duas vezes cada** (34 linhas), catorze delas em células onde a
-bandeira não podia mexer em nada. Tirar isso pagou a segunda âncora, as criaturas e o eixo E11, e
-ainda devolveu quatro células.
+bandeira não podia mexer em nada. Tirar isso pagou a segunda âncora, as criaturas, o eixo E11 e a
+segunda leitura do F5, e a grade ficou 2 células acima da de 107.
+
+---
+
+## 2.5 · Quatro correções, depois da revisão
+
+Nenhuma delas muda uma decisão. Três são erros meus e a quarta é uma consequência que eu não tinha
+rastreado.
+
+### C1 · A soma da grade estava errada: era 102, e eu escrevi 103
+
+Os blocos da §2.4 somavam `48 + 22 + 12 + 2 + 9 + 1 + 2 + 6 = 102`, e o total dizia **103**. Erro de
+aritmética, não de bloco: o número saiu errado da minha conta e foi propagado assim mesmo para a
+`02` §0.5, §0.10.1 e §3 e para o **L6** do `Pendencias.md`.
+
+O que salva o número **não** é o erro: é a C2. O conserto do `gate` acrescenta exatamente a célula
+hospedeira que faltava, então uma grade com uma hospedeira só somaria 102 e a com duas soma 103. O
+103 que circulou estava certo pelo motivo errado, e nenhum dos cinco lugares tinha como saber disso.
+
+**Com a resposta do F5 (C3) a grade fecha em 109**, e desta vez a soma foi conferida bloco a bloco
+antes de circular.
+
+### C2 · O D11 tinha matado a célula que hospeda o `gate`
+
+A regra ⊕ manda trocar para o modo secundário quando a Perfuração da arma está abaixo da resistência
+do alvo. A hospedeira escolhida para o `gate` era o **Conjurador de adaga contra malha**, que é
+**exatamente a situação que a regra ⊕ manda evitar**: a adaga tem modo secundário, a política troca
+para o corte, o perfurante nunca é usado e o `gate` mede zero. Trocava-se o artefato "o robô é burro
+e o `gate` parece devastador" pelo artefato "o robô é esperto e o `gate` parece inútil".
+
+**Resolvido:** o `gate` precisa de uma peça **sem modo secundário**, para a regra ⊕ não ter para onde
+fugir. A lança tem **um modo só** (`armas.json`: `lanca`, um modo, perfurante, Perfuração 1), e a
+placa completa tem `resistPerf` **3**. Então:
+
+| | Hospedeira | Por quê |
+|---|---|---|
+| **`gate`** | **Lanceiro de lança × Montanteiro de placa completa** | `1 < 3` fecha o gate, e a regra ⊕ não dispara porque não há modo secundário. O dano é 0 e não há como evitá-lo |
+| **`modo2`** | Conjurador de adaga × Escudeiro de malha | `0 < 1` faz a regra ⊕ **disparar**: troca para o corte e paga os −2 e −1d6 |
+
+As duas usam arquétipos que já existem na §0.4 P5. E as duas juntas dizem uma coisa que nenhuma
+dizia sozinha: **a mesma regra ⊕ que torna o `modo2` mensurável numa célula é o que mata o `gate` na
+outra**, e por isso as duas bandeiras não podem morar juntas.
+
+### C3 · A conferência de aditividade do F5 tinha morrido em silêncio
+
+Ela dependia de os deltas saírem todos da mesma referência, para somarem e serem comparados com o
+perfil todo-desligado. Com cada bandeira medida na célula em que morde, `margem` sai da âncora
+extrema, `gate` da hospedeira do Lanceiro e `porte` da célula de criatura: **deltas medidos contra
+referências diferentes não somam**, e a conferência morreu sem ninguém registrar.
+
+Uma coisa a registrar junto, porque muda o tamanho da perda: **ela já estava fraca antes**, e pelo
+mesmo motivo que esta rodada achou. Sete das dezessete comparações davam delta **zero na âncora**, e
+a soma "batia" trivialmente para essas sete. O que se perdeu não era uma conferência sobre dezesseis
+bandeiras: era uma sobre nove, com sete zeros embutidos.
+
+> **DECIDIDO em 02/09: referência única, medindo duas vezes.** As seis bandeiras que não moram na
+> âncora extrema (`gate`, `modo2`, `curaSemArea`, `curaDivide`, `porRodada`, `porte`) são medidas
+> **também lá**, para todos os deltas saírem da mesma referência e a soma voltar a fazer sentido.
+
+O que isso custa e o que entrega, escrito para quem for ler o relatório:
+
+- **+6 células**, não +9: `margem`, `bloqueio` e `teto6` já moram na âncora extrema e não têm segunda
+  leitura a fazer. A grade vai de 103 para **109**;
+- **as seis leituras extras são zero por construção**, e por isso a conferência de aditividade tem
+  força sobre **nove** bandeiras (`margem`, `bloqueio`, `teto6` e as seis do núcleo do Tick) e é
+  trivial sobre as outras seis;
+- **a leitura que diz quanto cada bandeira vale continua sendo a da hospedeira.** A da âncora serve
+  só à soma. As duas vão para o relatório com o rótulo de qual é qual, senão a linha do `gate` na
+  âncora seria lida como "o gate não faz nada".
+
+### C4 · Dois riscos da prontidão mudaram, e a §B dizia que nenhum tinha sido mexido
+
+A afirmação de que os cinco riscos da `04-prontidao.md` §F não foram mexidos estava errada: dois
+foram, e os dois pela mesma rodada.
+
+| Risco | O que mudou |
+|---|---|
+| **F5** · as bandeiras não somam | é a C3 acima. O sinal dele (a diferença entre tudo-desligado e a soma dos deltas) tinha deixado de ser calculável, e voltou com a referência única, com o alcance real escrito |
+| **F4** · a âncora satura e o OFAT sai nulo | mudou de forma com as duas âncoras. O sinal antigo (o pico de paradas já estar no teto) continua valendo **para a extrema**; a mediana não é uníssona e precisa do seu próprio, que é o que separa saturação de efeito nulo de verdade |
+
+**O sinal novo da mediana**, escrito na `04-prontidao.md` §F4: se os quatro eixos (E4, E7, E9, E10)
+saírem nulos **nas duas** âncoras e o pico da mediana estiver **longe** do teto, não é saturação, são
+os eixos que não fazem nada, e o problema não é a âncora. Se saírem nulos **só na extrema**, a
+saturação está confirmada e as leituras que valem são as da mediana. Sem as duas âncoras essa
+distinção não existia, e era ela que o F4 não sabia fazer.
 
 ---
 
@@ -307,7 +393,10 @@ O bloco `=== 3 ·` do pedido chegou vazio. Nada foi assumido no lugar dele.
 
 ---
 
-## 4 · O que mudou em cada arquivo
+## A · O que mudou em cada arquivo
+
+*Esta seção e a seguinte são acréscimos meus. Os blocos **3 a 6** do pedido não chegaram, e as
+numerações deles ficam reservadas.*
 
 Cinco arquivos, um criado e quatro editados. Nenhum arquivo de `src/`, `scripts/` ou `supabase/` foi
 tocado: esta rodada não implementa.
@@ -325,12 +414,12 @@ cinco inércias e as duas decisões novas (D10 e D11).
 | **§0.4 P4** | **reescrita como especificação única.** As regras de leitura da §0.47 entraram na lista ordenada, marcadas **⊙**, com a regra escrita de que o E9 desligado pula a ⊙ e cai para a seguinte. Entrou a regra de modo **⊕** (D11) nos cinco perfis. O Agressivo ganhou a regra ⊙ que estava decidida desde a `03` §1.4 e nunca aplicada |
 | **§0.4 P5** | entraram os **quatro arquétipos de criatura** (D10): esqueleto humano, aurochs, bulette e águia gigante, com porte, ciclo de ataque, passo e o que cada um exercita |
 | **§0.4 P6** | **E4 passa a ser definido por raça e armadura**, não por arquétipo, para não apagar o nível de E1 da célula. E ficou escrito quem preenche cada nível de E1, com o Duelista lutando só com a espada curta nas âncoras |
-| **§0.5** | entrou a linha do eixo **E11 · natureza do elenco**; E5 saiu do OFAT das âncoras; o total foi de 79 para **103 células** e de 39.500 para **51.500 batalhas**; entrou o sexto cruzamento (E11 × E3) |
+| **§0.5** | entrou a linha do eixo **E11 · natureza do elenco**; E5 saiu do OFAT das âncoras; o total foi de 79 para **109 células** e de 39.500 para **54.500 batalhas**; entrou o sexto cruzamento (E11 × E3) |
 | **§0.6.1, a ordem** | **reescrita.** Entrou a **Etapa 0 · Instrumentação** (branch congelada, semente, caminho do driver, despejo por Tick), as quatro etapas seguintes com as dependências explícitas, e a separação do **espelho de inércia** e do **espelho de motor** no critério de aceitação. Caíram as duas frases que contradiziam a D5 e a §0.8.2 ("o 11 vale por último" e "o 6 depende da migração") |
 | **§0.6.1 item 11 e §0.6** | 16 bandeiras viraram **15**; a linha da `couraca` saiu da tabela, com o motivo (`gen-bestiario.mjs:36-45`); o `n5` deixou de ser listado como pendente |
 | **§0.7** | título e contagem: **quinze** bandeiras, **17** perfis de E5; entrou a linha do que saiu e por quê; entrou a regra de onde cada comparação roda |
-| **§0.10.1 e §0.10.2** | **a grade oficial refeita**: 103 células, 51.500 batalhas, a tabela de como cada bloco se lê, as duas âncoras diferindo em **exatamente um** fator (as duas passam a rodar Agressiva), o nível de E10 em que elas se sentam, e a tabela de qual célula hospeda cada bandeira |
-| **§3** | os totais riscados foram atualizados para 103 células e 51.500 batalhas; a estimativa de volume de log foi de 500 MB para 600 MB |
+| **§0.10.1 e §0.10.2** | **a grade oficial refeita**: 109 células, 54.500 batalhas, a tabela de como cada bloco se lê, as duas âncoras diferindo em **exatamente um** fator (as duas passam a rodar Agressiva), o nível de E10 em que elas se sentam, e a tabela de qual célula hospeda cada bandeira |
+| **§3** | os totais riscados foram atualizados para 109 células e 54.500 batalhas; a estimativa de volume de log foi de 500 MB para 600 MB |
 
 ### `docs/simulacao/03-respostas.md` · editado em um lugar
 
@@ -339,23 +428,24 @@ Agressivo nunca tinha entrado na lista executável, e enquanto não estava lá o
 qualquer célula de política Agressiva. Junto, a correção da frase "os três cujas regras de fato leem
 alguma coisa", que era verdadeira sobre a §0.47 e falsa sobre a §0.4 P4.
 
-### `docs/simulacao/04-prontidao.md` · editado em cinco lugares
+### `docs/simulacao/04-prontidao.md` · editado em sete lugares
 
 Blocos de consequência abaixo das respostas de **D1** (a grade não ficou em 107 células), **D3** (o
 espelho eram dois), **D4** (a branch tem prazo) e **D5** (a instrumentação vem antes, e são nove
 bandeiras e não dez), mais um aviso no topo da **§B.3** dizendo que a análise da âncora foi superada
-e onde está a âncora valendo.
+e onde está a âncora valendo. Depois da revisão, o
+**F4** e o **F5** foram reescritos (§2.5 C4 e C3), e o número da §F1 acompanhou a grade.
 
 ### `Pendencias.md` · editado em cinco lugares na seção L
 
 O `05-fechamento.md` entrou na tabela de documentos; **L2** foi de 16 para 15 bandeiras com o motivo
 da `couraca`; **L5** virou `[PRIMEIRO]` e passou a cobrir a instrumentação inteira, não só a semente;
-**L6** foi para 103 células, 51.500 batalhas, piloto nas duas âncoras e elenco com criaturas; e
+**L6** foi para 109 células, 54.500 batalhas, piloto nas duas âncoras e elenco com criaturas; e
 entrou o **L8**, a fusão das duas especificações de política.
 
 ---
 
-## 5 · O que continua aberto
+## B · O que continua aberto
 
 Nada do que esta rodada tocou. O que segue aberto é o que já estava:
 
@@ -364,4 +454,6 @@ Nada do que esta rodada tocou. O que segue aberto é o que já estava:
 - **o `teto6` sem saber se morde**, que não é inércia estrutural e sim falta de instrumento: ele vai
   para a âncora extrema com um contador de quantas vezes o teto de fato mordeu, e se o contador der
   zero a comparação é declarada inconclusiva em vez de nula;
-- **os cinco riscos da `04-prontidao.md` §F**, que esta rodada não mexeu.
+- **três dos cinco riscos da `04-prontidao.md` §F**, que esta rodada não mexeu. Os outros dois
+  mudaram e estão na §2.5 C4: o **F5** perdeu e recuperou a conferência de aditividade, e o **F4**
+  mudou de forma com as duas âncoras.

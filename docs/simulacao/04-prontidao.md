@@ -218,7 +218,8 @@ Ordenado por: bloqueia o começo primeiro, depois por quanto muda o resultado.
 > Sete das dezessete comparações de bandeira não podiam morder na âncora, e medi-las nas duas gastava
 > catorze células para colher zero. Com cada bandeira medida na célula em que morde, com o eixo E11
 > (elenco de criatura, D10) e com as duas âncoras diferindo em **exatamente** um fator, a grade
-> oficial é de **103 células** e **51.500 batalhas** (`02` §0.10.1).
+> oficial é de **109 células** e **54.500 batalhas** (`02` §0.10.1), depois da segunda leitura que o
+> F5 pediu.
 
 
 **A pergunta:** a âncora de onde pendem as 26 comparações de um fator de cada vez continua sendo
@@ -524,7 +525,7 @@ regras que eu escrevi, e o relatório inteiro será sobre elas.
 **O sinal que aparece primeiro:** no piloto, comparar a variância entre políticas com a variância
 entre células do núcleo. Se a primeira dominar, é o sinal, e ele aparece **antes** da bateria.
 
-**O que se perde se ele se realizar tarde:** as 39.500 batalhas, e pior, a confiança em conclusões
+**O que se perde se ele se realizar tarde:** as 54.500 batalhas, e pior, a confiança em conclusões
 que pareciam sobre o jogo. É o risco de "roda inteira e não serve".
 
 ### F2 · O `aid` entra errado e o tempo morto vira ficção plausível
@@ -556,22 +557,51 @@ trabalha" em unidade que uma pessoa entende.
 **O risco:** é o D1. Com âncora uníssona, os efeitos de E4, E7, E9 e E10 podem sair indistinguíveis
 de zero por efeito de teto.
 
-**O sinal:** no piloto, o pico de paradas na âncora já ser igual ao número de peças, que é o teto
-teórico da R2 §H4. Se o pico já está no teto, nada pode aumentá-lo.
+**O sinal, na âncora extrema:** no piloto, o pico de paradas já ser igual ao número de peças, que é o
+teto teórico da R2 §H4. Se o pico já está no teto, nada pode aumentá-lo.
 
-**O que se perde:** 26 células, que é um terço da grade, e a resposta de quatro eixos.
+**O sinal, na mediana, que é novo** (`05-fechamento.md` §2.5 C4). A mediana não é uníssona, e é ela
+que separa saturação de efeito nulo de verdade:
+
+| O que se vê | O que significa |
+|---|---|
+| os quatro eixos nulos **nas duas** âncoras, e o pico da mediana **longe** do teto | não é saturação: são os eixos que não fazem nada, e trocar de âncora não conserta |
+| os quatro eixos nulos **só na extrema** | saturação confirmada, e as leituras que valem são as da mediana |
+| nulos só na mediana | o efeito existe e depende de a cena ser extrema, que é a pergunta que a âncora dupla foi criada para responder |
+
+Sem as duas âncoras essa distinção não existia, e era exatamente ela que o F4 não sabia fazer.
+
+**O que se perde:** 22 células de OFAT, e a resposta de quatro eixos.
 
 ### F5 · As bandeiras não somam, e o deixe-uma-de-fora engana
 
 **O risco:** o desenho mede efeito principal e é cego a interação (já registrado na R3 §2.2). Se a
-Margem e o gate se cancelarem, ou se o Bloqueio só importar com a Couraça ligada, a soma dos dezesseis
-efeitos individuais não vai bater com o efeito de tudo-desligado, e não haverá como saber qual par é
-o culpado.
+Margem e o gate se cancelarem, ou se o Bloqueio só importar com outra ligada, a soma dos efeitos
+individuais não vai bater com o efeito de tudo-desligado, e não haverá como saber qual par é o
+culpado.
 
-**O sinal:** a diferença entre "tudo desligado" e a soma dos dezesseis deltas. É calculável no fim, de
-graça, e vale a pena estar no relatório como conferência: se a soma bate, as bandeiras são
-aproximadamente aditivas e a leitura é simples; se não bate, o relatório diz de quanto é a discrepância
-e que ela é interação não medida.
+**O sinal:** a diferença entre "tudo desligado" e a soma dos deltas. É calculável no fim, de graça, e
+vale a pena estar no relatório como conferência: se a soma bate, as bandeiras são aproximadamente
+aditivas e a leitura é simples; se não bate, o relatório diz de quanto é a discrepância e que ela é
+interação não medida.
 
-**O que se perde:** não a bateria, mas a interpretação: cada bandeira teria um número, e a soma deles
-não descreveria o conjunto.
+**Duas coisas quase mataram esse sinal, e as duas foram resolvidas em 02/09**
+(`05-fechamento.md` §2.5 C3):
+
+1. **Ele já estava fraco.** Sete das dezessete comparações davam delta **zero na âncora**, e a soma
+   "batia" trivialmente para essas sete. A conferência nunca foi sobre dezesseis bandeiras.
+2. **Ele parou de ser calculável** quando cada bandeira passou a ser medida na célula em que morde:
+   deltas contra referências diferentes não somam.
+
+> **DECIDIDO: referência única, medindo duas vezes.** As seis bandeiras que não moram na âncora
+> extrema (`gate`, `modo2`, `curaSemArea`, `curaDivide`, `porRodada`, `porte`) são medidas **também
+> lá**, e a soma volta a fazer sentido. Custa **+6 células** e leva a grade a 109.
+
+**O alcance real da conferência, escrito para não iludir:** as seis leituras extras são **zero por
+construção**, então a aditividade é verificada de verdade sobre **nove** bandeiras (`margem`,
+`bloqueio`, `teto6` e as seis do núcleo do Tick) e é trivial sobre as outras seis. Para essas seis, a
+interação continua sem verificação, e o relatório tem de dizer isso na mesma página em que mostra a
+soma.
+
+**O que se perde se ele falhar:** não a bateria, mas a interpretação: cada bandeira teria um número,
+e a soma deles não descreveria o conjunto.

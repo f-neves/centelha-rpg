@@ -926,9 +926,9 @@ combinações. O orçamento que aperta continua sendo o mesmo da §3: o que se c
   **E9 × E10**, porque os dois mexem na mesma coisa (quem vê o quê antes de declarar), e
   **E11 × E3**, que é a cena que a mesa de verdade joga: uma horda de bicho contra os PCs.
   **6 células.**
-- Total: **103 células**, discriminadas na **§0.10.1**, que é a grade oficial. A 500 repetições,
-  **51.500 batalhas**, mais o reforço de 2.000 nas células de cauda (as de E4 e a de uníssono com
-  horda). Pela medição da `03-respostas.md` §4.2, isso é da ordem de 45 segundos de máquina. A
+- Total: **109 células**, discriminadas na **§0.10.1**, que é a grade oficial. A 500 repetições,
+  **54.500 batalhas**, mais o reforço de 2.000 nas células de cauda (as de E4 e a de uníssono com
+  horda). Pela medição da `03-respostas.md` §4.2, isso é da ordem de 50 segundos de máquina. A
   justificativa das 500 e das 2.000 é a da §3 e não muda.
 
 **A previsão quantitativa de E1 continua sem base até o piloto rodar.** A §3 prevê quantas colisões
@@ -1614,7 +1614,7 @@ comum, esta linha vira a primeira coisa a consertar depois.
 | **Paralelismo** | a semente já é `hash64(semente_mestre, cenario_id, repeticao)` (§2.4), ou seja **cada batalha é independente de todas as outras por construção**. Um processo recebe uma faixa de índices de batalha, calcula as próprias sementes e escreve o próprio arquivo `.jsonl`; nada é compartilhado e nada precisa de trava. Os arquivos são concatenados no fim, e a ordem entre eles não importa porque cada linha carrega o `b` da batalha |
 
 **Um número para dimensionar:** a §2.5 estima 100 a 150 registros por duelo, ~120 bytes cada. Uma
-batalha guarda algo entre 12 e 18 KB em memória antes de gravar, e a bateria inteira de 51.500
+batalha guarda algo entre 12 e 18 KB em memória antes de gravar, e a bateria inteira de 54.500
 batalhas gera da ordem de 600 MB de log completo. Por isso a §2.5 já previa dois níveis de saída:
 log completo para uma amostra declarada, contadores agregados para todas.
 
@@ -1655,7 +1655,7 @@ coluna diz o estado de cada uma.
 | 2 | O golpe fora de alcance (V5) vira regra? A `03` §3.1 registra a decisão na própria linha do invariante, e a §6.3 continua perguntando | `03` §3.1 × §6.3 | **fechada:** a §6.3 passou a dizer RESPONDIDA |
 | 3 | Qual é a rota da linha de base? A `02` §0.7 registra "Decidido: bandeiras", e a `03` §2.4 apresenta as duas rotas como **DECISÃO SUA** e não escolhe | `02` §0.7 × `03` §2.4 | **fechada:** a rota é a **B**, confirmada no chat, e a grade oficial e o piloto único estão na §0.10. A `03` §2.4 ganhou a nota |
 | 4 | E6 tem cinco ou seis políticas? A `03` §1.3 responde "seis" e a §1.4, três parágrafos abaixo, transforma a cega em interruptor e devolve o eixo a cinco | `03` §1.3 × §1.4 | **fechada:** são **cinco**, a §1.3 foi corrigida e o 02 §0.5 já estava certo |
-| 5 | Quantas células tem a grade? A `03` §1.2 responde "60", e ela cresceu duas vezes depois disso | `03` §1.2 × `02` §0.10 | **fechada:** a grade oficial é a da **§0.10.1**, com **103 células** depois da recontagem de 02/09, e a `03` §1.2 ganhou a nota dizendo o que mudou |
+| 5 | Quantas células tem a grade? A `03` §1.2 responde "60", e ela cresceu duas vezes depois disso | `03` §1.2 × `02` §0.10 | **fechada:** a grade oficial é a da **§0.10.1**, com **109 células** depois da recontagem de 02/09, e a `03` §1.2 ganhou a nota dizendo o que mudou |
 | 6 | N5 fica de fora da linha de base? A `03` §2.4 diz que sim "de qualquer jeito", e o 02 §0.7 já resolve com a bandeira cobrindo só a ordem inversa | `03` §2.4 × `02` §0.7 | **fechada:** a linha da §2.4 foi corrigida |
 | 7 | O retrato de N6 é gravado ou é memória? O item 6 da §0.6.1 propunha a coluna `encontros.retrato jsonb`, e a §0.8.1 proíbe gravação nova no avanço | `02` §0.6.1 item 6 × §0.8.1 | **fechada:** memória, e a tela avisa na saída (§0.8.2). A migração 29 perdeu a coluna |
 | 8 | O cabeçalho lista como abertas as perguntas 2, 4 e 5 da `03`, mas as 1 e 3 estavam decididas no corpo da `03` e ainda abertas na §6 dela | `02` cabeçalho × `03` §6 | **fechada** pelas linhas 1 e 2 desta tabela |
@@ -1691,23 +1691,24 @@ criaturas**, D10, e **sete comparações de bandeira não podiam morder na ânco
 | Um fator de cada vez, em volta de **cada** âncora: `E4 (1) + E6 (4) + E7 (1) + E9 (1) + E10 (2) + E11 (2) = 11` | **22** | **uma** tabela de 11 linhas e duas colunas |
 | E5 · o núcleo do Tick (`n1` a `n6`), nas duas âncoras | **12** | 6 linhas, 2 colunas |
 | E5 · o perfil todo desligado, nas duas âncoras | **2** | 1 linha, 2 colunas |
-| E5 · as nove bandeiras restantes, **cada uma na célula em que morde** | **9** | 9 linhas |
-| A célula hospedeira nova (o Conjurador de adaga contra malha), que sustenta cinco delas | **1** | |
+| E5 · as nove bandeiras não-núcleo, **na âncora extrema**, que é a referência única do F5 | **9** | 9 linhas |
+| E5 · as **seis** que não moram na âncora, medidas **também na hospedeira**, onde elas mordem | **6** | 6 linhas |
+| Células hospedeiras novas: a do **Conjurador de adaga** e a do **Lanceiro de lança** | **2** | |
 | Níveis de controle (D6 e D7) | **2** | 2 linhas |
 | Cruzamentos deliberados | **6** | 6 linhas |
-| **Total** | **103** | |
+| **Total** | **109** | |
 
 | | |
 |---|---|
 | Repetições | 500 por célula, e 2.000 nas de cauda |
-| **Batalhas** | **51.500**, mais o reforço |
-| Tempo de máquina | da ordem de 45 segundos, pela §4.2 da `03-respostas.md` |
+| **Batalhas** | **54.500**, mais o reforço |
+| Tempo de máquina | da ordem de 50 segundos, pela §4.2 da `03-respostas.md` |
 
 **Por que não estourou o orçamento de leitura.** A §3 nunca limitou a grade por máquina: *"o
 orçamento não é a máquina, é o que se consegue ler"*, com o aviso de que 144 células já são mais
 tabelas do que se lê numa sentada. Aquele aviso contava célula como linha, porque a grade era
 fatorial. Aqui a segunda âncora **não custa uma linha nova, custa uma coluna**, e o núcleo cruzado se
-lê como três grades e não como 48 linhas. O leitor enfrenta 3 grades de 4×4 e cerca de 41 linhas de
+lê como três grades e não como 48 linhas. O leitor enfrenta 3 grades de 4×4 e cerca de 47 linhas de
 comparação. O que quase reprovou não foi a âncora dupla: foi medir as bandeiras duas vezes cada em
 células onde catorze das comparações davam zero por construção.
 
@@ -1738,13 +1739,21 @@ exercitado pelo nível Cauteloso de E6.
 **Onde mora cada bandeira**, porque medir uma bandeira numa célula em que ela não morde produz zero
 por construção:
 
-| Bandeira | Célula que a hospeda | Por que não pode ser a âncora |
+| Bandeira | Célula em que ela morde | Por que não pode ser só a âncora |
 |---|---|---|
 | `n1` a `n6` | **as duas âncoras** | são o núcleo do Tick, e valem em qualquer cena |
-| `margem` · `bloqueio` · `teto6` | **a âncora extrema** | o Escudeiro tem heater dos dois lados, e a Margem morde em qualquer acerto acima da Defesa. O `teto6` vai junto com um contador: quantas vezes o teto de fato mordeu |
-| `gate` · `modo2` | a célula do **Conjurador de adaga** (Perfuração 0) contra o Escudeiro de **malha** (`resistPerf` 1) | `gatePerfuracaoAbre` (`calc.ts:130-135`) só avalia o modo perfurante, e as armas das âncoras atacam de corte |
-| `curaSemArea` · `curaDivide` · `porRodada` | **a mesma célula**, que é a única com quem conjure | nenhuma âncora tem conjurador, e as cinco condições de dano por rodada vêm de Arte no repertório escolhido |
+| `margem` · `bloqueio` · `teto6` | **a âncora extrema**, e só ela: é onde elas mordem **e** é a referência única | o Escudeiro tem heater dos dois lados, e a Margem morde em qualquer acerto acima da Defesa. O `teto6` vai com um contador de quantas vezes o teto de fato mordeu |
+| `gate` | a hospedeira do **Lanceiro de lança** (Perfuração 1, **modo único**) contra o **Montanteiro de placa completa** (`resistPerf` 3) | `gatePerfuracaoAbre` (`calc.ts:130-135`) só avalia o perfurante, e as armas das âncoras atacam de corte. **E a hospedeira não pode ser a do Conjurador**: a regra ⊕ do D11 manda trocar de modo exatamente ali, e o gate mediria zero pelo motivo oposto. A lança não tem modo secundário, então a regra ⊕ não dispara e o gate não tem como ser evitado |
+| `modo2` | a hospedeira do **Conjurador de adaga** (Perfuração 0) contra a **malha** (`resistPerf` 1) | é a cena em que a regra ⊕ **dispara**: a adaga tem modo secundário, troca para o corte e paga os −2 e −1d6. A mesma regra que mata o gate aqui é o que torna o `modo2` mensurável |
+| `curaSemArea` · `curaDivide` · `porRodada` | a hospedeira do Conjurador | nenhuma âncora tem quem conjure, e as cinco condições de dano por rodada vêm de Arte no repertório escolhido |
 | `porte` | a célula **`E11 = PC × criatura`**, que já existe no OFAT | `porteAcerto` é diferença de porte, e num elenco de PC ela é 0 sempre |
+
+**As seis de baixo são medidas duas vezes**, na hospedeira e na âncora extrema (decidido em 02/09, F5
+do `04-prontidao.md`). A leitura da hospedeira é a que diz quanto a bandeira vale; a da âncora existe
+para que **todos os deltas saiam da mesma referência** e a soma deles possa ser comparada com o
+perfil todo-desligado. As seis leituras extras são **zero por construção**, e é justamente por isso
+que a conferência de aditividade só tem força sobre as nove que mordem lá: `margem`, `bloqueio`,
+`teto6` e as seis do núcleo do Tick.
 
 **Os seis cruzamentos deliberados:** E1(uníssono) × E3(horda) · E1(uníssono) × E4(assimétrico) ·
 E2(muito longa) × E4 · E5 × E1(uníssono) · E9 × E10 · e **E11 × E3**, a horda de bicho contra os
@@ -2335,7 +2344,7 @@ todos os golpes.
 
 ~~Com E1×E2×E3×E4 são **72 células**; com E5 em dois níveis, 144.~~ **Superado:** a tabela de eixos
 acima é a proposta original, e a §0.5 tem a valendo (E2 ganhou um quarto nível, entraram E7 e E9,
-E5 foi a 17 perfis, E6 ficou em 5 e entraram o E10 e o E11). A grade é de **103 células** (§0.10.1), depois de E5 sair do OFAT das âncoras e entrarem o E11 e as células hospedeiras. A justificativa das repetições,
+E5 foi a 17 perfis, E6 ficou em 5 e entraram o E10 e o E11). A grade é de **109 células** (§0.10.1), depois de E5 sair do OFAT das âncoras e entrarem o E11 e as células hospedeiras. A justificativa das repetições,
 logo abaixo, não depende do número de células e continua valendo inteira.
 
 **Quantas repetições, e por quê.** O número não sai de "1000", sai de duas contas:
@@ -2352,7 +2361,7 @@ logo abaixo, não depende do número de células e continua valendo inteira.
   Ticks vazios têm **uma observação por Tick**, não por batalha: uma célula de 500 batalhas de 45
   Ticks dá 22.500 observações. Essas métricas já estão saturadas bem antes de 500.
 
-~~Total da grade base: 72 × 500 = **36.000 batalhas**~~, e pela §0.10.1 são **51.500**, mais o
+~~Total da grade base: 72 × 500 = **36.000 batalhas**~~, e pela §0.10.1 são **54.500**, mais o
 reforço da cauda. Pela R2 §D1 isso seriam
 segundos de máquina na bancada; o harness com mapa será mais caro (a R2 §D3 registra o custo de
 `caminharHex` como **NÃO MEDIDO**), e mesmo dez vezes mais caro continua sendo minutos. **O

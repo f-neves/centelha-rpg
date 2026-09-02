@@ -1016,7 +1016,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   Tick do que a folha calculou. `rolagem.ts:11` é `Math.random` e é a única fonte de acaso
   do combate. Ganha ponto de injeção, e `mesa-ficha.ts:133` e `artes-grid.ts:1342` precisam do mesmo
   tratamento. É o que permite o teste-espelho comparar as rolagens.
-- [ ] **L6 · [DEPOIS] O harness.** Grade oficial de **103 células e 51.500 batalhas** (`02`
+- [ ] **L6 · [DEPOIS] O harness.** Grade oficial de **109 células e 54.500 batalhas** (`02`
   §0.10.1), um piloto de 2.000 em **cada uma das duas âncoras** com a regra de decisão escrita antes
   de rodar, e 15 invariantes que abortam a batalha (`03` §3.1). O elenco tem PCs **e** criaturas do
   bestiário (D10), e cada bandeira é medida na célula em que ela morde. Só depois de L1 a L5.
