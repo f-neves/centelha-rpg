@@ -971,6 +971,55 @@ revistos por ela.
   da barra: é leitura extra, e quem não a usa não devia pagar a altura dela. Só no Grid, por ora;
   o rastreador de combate ainda tem a coluna vertical antiga.
 
+## L. Simulação em massa e as oito regras novas do Simultâneo
+
+Frente aberta em **2026-09-02**. Quatro documentos em `docs/simulacao/`, e o índice deles está no
+cabeçalho do `02`:
+
+| | O que é |
+|---|---|
+| `00-diagnostico.md` | o motor antes de qualquer decisão: o que é puro, o que não é, onde mora cada peça |
+| `01-diagnostico-carga.md` | as 14 paradas que pedem um humano, os conflitos entre capítulo, JSON e motor, e as medições |
+| `02-projeto-harness.md` | **o canônico**: as decisões e a especificação do que implementar |
+| `03-respostas.md` | as contradições do 02 resolvidas, os 14 invariantes do harness, e as medições novas |
+
+**A regra da frente:** decisão anotada dentro de um relatório não vale; o que vale vem do chat, e o
+relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`.
+
+- [ ] **L1 · [FAZER] As oito regras novas do Simultâneo (N1 a N8), na mesa.** Especificação item a
+  item em `02` §0.6.1, com o estado de hoje (arquivo e linha), o estado novo, os cuidados e a prova
+  de cada um. **N1** muda `decideEmValeDepois` de 1 para 0 e devolve o período entre golpes ao ciclo
+  da arma; **N2** faz a guarda de declaração olhar `acao.desde` em vez do Tick do golpe; **N3** deixa
+  sair o golpe de quem caiu no mesmo Tick; **N4** dá ao Tick uma ordem de declaração (cadeia
+  crescente, iniciativa na frente durante a entrada); **N5** parte o Tick em declaração, início e
+  resolução, com a resolução na ordem inversa; **N6** congela num retrato as penalidades nascidas
+  dentro do Tick; **N7 e N8** abrem a máscara da migração 27 (o gesto corporal é público, a pontaria
+  não) e põem um rastro no tabuleiro. Os seis primeiros cabem em quatro funções.
+- [ ] **L2 · [FAZER] As 16 bandeiras de regra**, num bloco novo do `regras.json` lido pela mesa e
+  pelo harness (`02` §0.7 e §0.6.1 item 11). São as 9 de regra publicada que o motor não aplica
+  (Margem, gate de Perfuração, Couraça de Porte, porte no acerto, Bloqueio com escudo, modo
+  secundário, teto ±6, e as duas da Cura), as 6 do núcleo do Tick e o `porRodada`. **Dois testes
+  congelam hoje o estado errado** e precisam ser reescritos no mesmo commit: `test-contrato.mjs:136`
+  trava `R.defesa = 16` com o Bloqueio inútil, e L149 trava `F.defBloqueio = 10`, que ninguém lê.
+- [ ] **L3 · [FAZER] O `ate` das condições passa a ser lido**, e elas expiram sozinhas. Hoje o campo
+  é escrito por `porCondicao` e **não há um leitor em todo o `src/`**.
+- [ ] **L4 · [FAZER] A migração 29**: a máscara ao avesso, com `acao.mirado` marcando o que é
+  pontaria. O `mov.alvo` deixa de vazar por acidente e passa a ser visível de propósito.
+- [ ] **L5 · [FAZER] A semente do `d6`.** `rolagem.ts:11` é `Math.random` e é a única fonte de acaso
+  do combate. Ganha ponto de injeção, e `mesa-ficha.ts:133` e `artes-grid.ts:1342` precisam do mesmo
+  tratamento. É o que permite o teste-espelho comparar as rolagens.
+- [ ] **L6 · [DEPOIS] O harness.** Grade oficial de 79 células e 39.500 batalhas (`02` §0.10), um
+  piloto de 2.000 na célula-âncora com a regra de decisão escrita antes de rodar, e 14 invariantes
+  que abortam a batalha (`03` §3.1). Só depois de L1 a L5.
+- [ ] **L7 · [DEPOIS] A medição de campo do Supabase real**, decidida para depois do harness. Sem
+  ela, as métricas de carga saem em Ticks e em gestos e nunca em segundos, e essa é a maior lacuna
+  conhecida do conjunto.
+
+**Um risco medido, para não se perder:** o registro da arena é um `jsonb` reescrito inteiro a cada
+linha de log (é o item **I2** desta lista), e isso custa **uma reescrita de até 45 KB por peça que se
+move, por Tick**. Com dez perseguidores são 450 KB por Tick, e perseguição é justamente o cenário que
+o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
+
 ## H. Arremesso
 
 Frente aberta em **2026-08-10** e até agora sem linha neste mapa. Três documentos:

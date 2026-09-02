@@ -1865,7 +1865,7 @@ Três diferenças merecem ser ditas com a consequência, porque mudam número e 
 | 2 | A folha da ação | **A** para o veredito e o dano (`saidaDoAtaque`, `rolarExpr`, `defesaPerdida`, `soakDe`); **F** para o ajuste avulso com motivo | é a parada que hoje trava a cena, e a que mais barato se automatiza |
 | 3 | Escolher o alvo | **P** ⚑ | hoje o robô escolhe o mais próximo; qualquer outra regra é invenção |
 | 4 | Soltar peça em casa vazia | **P** ⚑ | para onde mover quando não se está atacando. Sem D3 isto fica em branco |
-| 5 | Abortar o gesto | **P** ⚑, pendente de P4 | com D3 respondida, cada política declara se aborta e quando. Se nenhuma abortar, a perseguição sem teto de adiamento (D4) só termina pela borda do mapa ou pela desistência a 20% |
+| 5 | Abortar o gesto | **P** ⚑ | cada uma das cinco políticas da §0.4 P4 declara se aborta e quando (só o Cauteloso aborta, depois de dois deslizes seguidos da agenda). Como as outras quatro não abortam, a perseguição delas só termina pela regra dos 10 Ticks sem aproximar (D4b) ou pela desistência a 20% |
 | 6 | "Outra coisa" | **F** | é narração livre; não tem forma de dado |
 | 7 | Efeito pegando alguém | **A** (`dentroDoEfeito`, `jaMordido`, `danoNoAlvo`) | entra: Q10 pôs zona, aura, muro e cone no escopo. A política é sempre "cobrar todos", que é o que o mestre faz quando não quer pensar |
 | 8 | Sair da área | **P** ⚑ para a escolha (sair / ficar por coragem / comer inteiro), **A** para a conta (`desvioDaArea`, `rolarPool`) | é a única parada com default declarado hoje: comer inteiro (L1298) |

@@ -122,9 +122,25 @@ linha de régua nova (`fisicaDe` no `combate-tempo.ts`); o que mudou é o relóg
 deslocamento.
 
 **A régua que a implementação cravou** (saída do exemplo da §2, número a número): a ação
-declarada no Tick T **começa em T+1**. É o que faz o arco de Preparo 5 soltar a flecha no Tick 6
-e o Tick 0 ser só preparação. E o golpe cai em `(T+1) + max(Preparo, Ticks de viagem)`: o
-deslocamento cabe DENTRO do Preparo, e só o excedente atrasa o golpe (`agendaSimultanea`).
+declarada no Tick T **começava em T+1**, o golpe caía em `(T+1) + max(Preparo, Ticks de viagem)`,
+e o deslocamento cabia DENTRO do Preparo, com só o excedente atrasando o golpe
+(`agendaSimultanea`).
+
+> **SUPERADO EM 02/09/2026 (N1).** A ação declarada no Tick T **começa no próprio Tick T**:
+> `decideEmValeDepois` vai de 1 para 0 e `inicio = tickDecl`. A ação passa a ocupar `T` até
+> `T + ciclo − 1`, a peça fica livre em `T + ciclo`, e **o período entre golpes volta a ser
+> exatamente o ciclo da arma**, que é o que a Velocidade sempre quis dizer (antes era `ciclo + 1`,
+> porque cada nova declaração pagava o Tick de decisão outra vez).
+>
+> O exemplo do arco continua fechando pelo outro caminho: Preparo 5 declarando no **Tick 1** solta a
+> flecha no Tick 6, porque o combate começa no Tick 1 (`derivados.iniciativa.tickDoPrimeiro`).
+>
+> Junto com N1 vieram outras sete regras (N2 a N8), que dão ao Tick três fases, uma ordem de
+> declaração e de resolução, e um retrato que congela as penalidades nascidas dentro do Tick. **A
+> régua completa e a especificação de implementação estão em
+> `docs/simulacao/02-projeto-harness.md` §0.45 a §0.49 e §0.6.1**, e o que está escrito ali vence o
+> que está escrito aqui. Este documento descreve o Simultâneo como ele foi construído em agosto; o
+> que ele é hoje está lá.
 
 O que entrou, peça a peça:
 
