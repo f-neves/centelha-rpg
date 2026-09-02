@@ -2447,6 +2447,11 @@ const SETAS = [
   })();
   if (SEMENTE != null) semear(semeadoDe(SEMENTE));
   const DESPEJO_LIGADO = PARAMS.get('despejo') === '1' || SEMENTE != null;
+  // `?lances=1` acumula em `window.__LANCES` o objeto de cada golpe resolvido,
+  // com entradas e saídas nomeadas. É o ORÁCULO do `resolverGolpe`: a cópia
+  // pura é conferida contra lances de verdade, e não contra a leitura que eu
+  // fiz do código. Desligado, nada é acumulado e o array nem existe.
+  const LANCES_LIGADO = PARAMS.get('lances') === '1';
 
   let SB: any, ID = '', MESTRE = false, EU = '';
   // O contexto da mesa, guardado porque o painel do tempo precisa dele.
@@ -5052,6 +5057,46 @@ const SETAS = [
    * campo antes, senão compara duas caudas e acha que bateu.
    */
   const DESPEJO_TETO = 2000;
+
+  /** Sequência do `aid`: um número que separa dois lances do mesmo par no mesmo Tick. */
+  let LANCE_SEQ = 0;
+
+  /**
+   * O DESPEJO DOS LANCES, atrás de `?lances=1` e desligado por padrão.
+   *
+   * Acumula em `window.__LANCES` o objeto de cada golpe resolvido. Quem grava
+   * em disco é o coletor (`scripts/coletar-lances.mjs`), porque a página não
+   * escreve arquivo; aqui só se acumula.
+   *
+   * Como o despejo do Tick: `try/catch` em volta, porque isto é instrumento e
+   * uma exceção aqui derrubaria a resolução de um golpe, que é a mesa parando.
+   */
+  function registrarLance(
+    conta: any, sorteio: { acerto: number[]; dano: number[] },
+    decisao: { acertou: boolean; raspou: boolean; rolado: string },
+  ) {
+    if (!LANCES_LIGADO) return;
+    try {
+      const W = window as any;
+      if (!W.__LANCES) W.__LANCES = [];
+      W.__LANCES.push({
+        entrada: conta.entrada,
+        sorteio: { acerto: sorteio.acerto.slice(), dano: sorteio.dano.slice() },
+        saida: {
+          defesa: conta.defesa, total: conta.total, soma: conta.soma,
+          errouPor: conta.errouPor, veredito: conta.veredito,
+          danoBruto: conta.danoBruto, tipo: conta.entrada.tipoDano,
+          absorcao: conta.absorcao, danoLiquido: conta.danoLiquido,
+          pvAntes: conta.pvAntes, pvDepois: conta.pvDepois,
+        },
+        // O que a MESA decidiu, que pode contrariar a régua. Fica fora de
+        // `saida` de propósito: a função pura não tem como prever um botão.
+        decisao: { acertou: decisao.acertou, raspou: decisao.raspou, rolado: decisao.rolado },
+      });
+    } catch (e) {
+      console.warn('registro do lance falhou, e o golpe segue:', e);
+    }
+  }
 
   function despejarTick(T: number) {
     if (!DESPEJO_LIGADO) return;
@@ -7829,6 +7874,103 @@ const SETAS = [
       return { flat: f + (c2.acao || 0) + (c2.ataque || 0), dados: c2.dados || 0 };
     })();
     let rolado = '';
+
+    // ================================================== O OBJETO DO LANCE
+    //
+    // Todo número que decide este golpe, com nome, num lugar só, montado ANTES
+    // de qualquer pintura. As funções de pintura passaram a LER daqui em vez de
+    // calcular; antes cada uma refazia a sua parte da conta dentro do próprio
+    // `innerHTML`, e o resultado da resolução não existia como objeto em lugar
+    // nenhum: nascia e morria dentro de três closures.
+    //
+    // Ele é três coisas ao mesmo tempo, e é por isso que vale a mudança:
+    //   · o CONTRATO do `resolverGolpe` puro (P §2.1), escrito em código;
+    //   · o ORÁCULO contra o qual a cópia é conferida, com entradas e saídas de
+    //     golpes de verdade, e não com a minha leitura do código;
+    //   · o lugar onde o `aid` do D2 nasce, que hoje não existe: `baixarVida` é
+    //     o único ponto de estrangulamento e já não sabe de que declaração veio.
+    //
+    // O `aid` não tem consumidor ainda. Ele é criado agora porque criar depois
+    // significa achar de novo todos os pontos por onde a resolução passa.
+    const AID = `l${(atacante.id || '').slice(0, 6)}-${(alvo.id || '').slice(0, 6)}`
+      + `-t${tGolpeDe()}-${LANCE_SEQ++}`;
+
+    /**
+     * As ENTRADAS, lidas no instante em que são pedidas.
+     *
+     * Não é um retrato tirado na abertura: a ficha do lance deixa o mestre
+     * corrigir Defesa, Absorção, Pressão e a régua do tempo, e a folha inteira
+     * se refaz em cima do valor corrigido. Quem lê tem de ler o corrigido, e é
+     * por isso que isto é função e não constante.
+     */
+    const entradaDoLance = () => ({
+      aid: AID,
+      atacante: {
+        id: atacante.id, nome: atacante.nome,
+        ataque: ra?.ataque || '0d6', dano: ra?.dano || '0d6',
+        ajusteFlat: ajAtq.flat, ajusteDados: ajAtq.dados,
+        penDados: (anat().penDados || []).slice(),
+        qaArmaBonus: ra?.qa?.armaBonus ?? 0, qaArmaDano: ra?.qa?.armaDano ?? 0,
+      },
+      alvo: {
+        id: alvo.id, nome: alvo.nome,
+        defesaBase: r?.defesa ?? null,
+        ferimento: fer,
+        condicoesDefesa: cd.defesaCaC || 0,
+        defesaPerdida: dvDe().total,
+        soak: soakDe(alvo, dnTipo.value),
+        pv: alvo.pv_atual ?? null, pvMax: alvo.pv_max ?? null,
+        qaArmaduraBonus: r?.qa?.armaduraBonus ?? 0,
+        qaArmaduraReducao: r?.qa?.armaduraReducao ?? 0,
+      },
+      // A manobra e o índice do golpe: a rajada e a empunhadura dupla têm
+      // penalidade POR GOLPE, e o `penDados` acima é a lista inteira.
+      manobra: (anat().golpes > 1 ? manSel.value : 'simples'),
+      golpeIndice: 0,
+      distanciaHex: hexes,
+      tipoDano: dnTipo.value,
+      // O que o mestre escreveu à mão. No harness são zeros e os dois valores
+      // de base do Quase-Acerto; aqui podem ter sido corrigidos na tela.
+      modManual: parseInt(modInp.value || '0', 10) || 0,
+      margemQA: margemQA(), danoQA: danoQA(),
+      perfil: { ...REGRAS_CENA },
+    });
+
+    /** O que os dados de fato fizeram, para a conferência poder repetir. */
+    const sorteio: { acerto: number[]; dano: number[] } = { acerto: [], dano: [] };
+
+    /**
+     * A CONTA, e só ela. As três pinturas leem daqui.
+     *
+     * Repare que ela não decide se acertou: ela diz o que a régua diz. Quem
+     * decide é quem aperta o botão, que é o contrato da mesa (o Grid propõe, a
+     * mesa decide), e é por isso que `veredito` e `acertou` são coisas
+     * diferentes no registro do fim.
+     */
+    const contaDoLance = () => {
+      const e = entradaDoLance();
+      const def2 = e.alvo.defesaBase != null
+        ? e.alvo.defesaBase + e.alvo.ferimento + e.alvo.condicoesDefesa + e.alvo.defesaPerdida
+        : null;
+      const t = parseInt(totalInp.value || '', 10);
+      const soma = Number.isFinite(t) ? t + e.modManual : null;
+      const bruto = Math.max(0, parseInt(dnInp.value || '0', 10) || 0);
+      const liq = Math.max(0, bruto - e.alvo.soak);
+      return {
+        entrada: e,
+        defesa: def2,
+        total: Number.isFinite(t) ? t : null,
+        soma,
+        errouPor: soma != null && def2 != null ? errouPor(soma, def2) : null,
+        veredito: soma != null && def2 != null ? saidaDoAtaque(soma, def2, e.margemQA) : null,
+        danoBruto: bruto,
+        absorcao: bruto ? Math.min(bruto, e.alvo.soak) : 0,
+        danoLiquido: liq,
+        pvAntes: e.alvo.pv,
+        pvDepois: e.alvo.pv != null ? Math.max(0, e.alvo.pv - liq) : null,
+      };
+    };
+
     // O CONTRAPÉ da iniciativa: quem entrou atrasado perde dados na PRIMEIRA
     // ação. Mostrado, e não somado, pelo mesmo motivo da distância.
     // O CONTRAPÉ É O DA DECLARAÇÃO, e não o do instante em que a folha reabre.
@@ -7849,24 +7991,27 @@ const SETAS = [
       (el('al-dn-pool') as HTMLElement).innerHTML = esc(ra?.dano || '—');
     };
     const pintarVeredito = () => {
-      const t = parseInt(totalInp.value || '', 10);
-      const m = parseInt(modInp.value || '0', 10) || 0;
+      // LÊ DA CONTA, não recalcula. Antes esta função refazia a soma, a Defesa
+      // e a classificação dentro do próprio `innerHTML`, e o resultado não
+      // existia em lugar nenhum depois que a caixa fechava.
+      const L = contaDoLance();
       const cx = el('al-vered') as HTMLElement;
       const sim = el('al-sim') as HTMLElement, nao = el('al-nao') as HTMLElement;
       const qa = el('al-qa') as HTMLElement;
-      if (!Number.isFinite(t) || def == null) {
+      if (L.soma == null || L.defesa == null) {
         cx.innerHTML = '';
         sim.classList.add('primary');
         nao.classList.remove('primary'); qa.classList.remove('primary');
         qa.hidden = margemQA() <= 0 && danoQA() <= 0;
         return;
       }
-      const soma = t + m;
+      const soma = L.soma;
       // Três saídas, e não duas: entre acertar e errar existe o RASPÃO. A régua
       // mora no `quase-acerto.ts`, e não aqui, porque o motor da mesa e a
       // bancada precisam concordar sobre ela.
-      const falta = errouPor(soma, def);
-      const qual = saidaDoAtaque(soma, def, margemQA());
+      const falta = L.errouPor!;
+      const qual = L.veredito!;
+      const def = L.defesa;
       cx.innerHTML = qual === 'acerto'
         ? `<span class="ok">acerta (${soma} &gt; ${def})</span>`
         : qual === 'raspao'
@@ -7893,9 +8038,10 @@ const SETAS = [
         cx.innerHTML = `Vai <b>${bruto}</b> inteiro · a Absorção do alvo quem desconta é o mestre`;
         return;
       }
-      const sk = soakDe(alvo, dnTipo.value);
-      const liq = Math.max(0, bruto - sk);
-      const pv = Math.max(0, (alvo.pv_atual ?? 0) - liq);
+      const L = contaDoLance();
+      const sk = L.entrada.alvo.soak;
+      const liq = L.danoLiquido;
+      const pv = L.pvDepois ?? 0;
       cx.innerHTML = `Absorção <b>${sk}</b> · passa <b>${liq}</b>`
         + (alvo.pv_max ? ` · Vida ficaria <b>${pv}/${alvo.pv_max}</b> (${tierDe(pv, alvo.pv_max).estado})` : '');
     };
@@ -8165,6 +8311,11 @@ const SETAS = [
     const rolarAcerto = () => {
       const pen = anat().penDados;
       const linhas = pen.map((pn) => rolarExpr(ra?.ataque || '0d6', ajAtq.dados + pn, ajAtq.flat));
+      // Os dados que CAÍRAM, guardados: sem eles a conferência do passo 2 teria
+      // de reproduzir a sequência de acaso da mesa a partir de um ponto
+      // arbitrário, o que não dá. Com eles, a cópia roda com os mesmos dados e
+      // a comparação passa a ser sobre a CONTA, que é onde a divergência mora.
+      sorteio.acerto = (linhas[0]?.rolls || []).slice();
       totalInp.value = String(linhas[0].total);
       rolado = linhas.map(descreverRolada).join(' · ');
       (el('al-pool') as HTMLElement).textContent = rolado;
@@ -8172,6 +8323,7 @@ const SETAS = [
     };
     const rolarDano = () => {
       const d = rolarExpr(ra?.dano || '0d6');
+      sorteio.dano = (d.rolls || []).slice();
       dnInp.value = String(d.total);
       (el('al-dn-pool') as HTMLElement).textContent = descreverRolada(d);
       pintarDano();
@@ -8198,6 +8350,12 @@ const SETAS = [
       const fim = (v: boolean, raspou = false) => {
         respondeu = true; dlg.close();
         const a = anat();
+        // O LANCE FECHA AQUI, com o que a régua disse e com o que a mesa
+        // decidiu, que são coisas diferentes: `veredito` é a conta, `acertou` é
+        // o botão. Guardar os dois é o que permite medir depois quantas vezes a
+        // mesa contrariou a régua, e é a única forma de o despejo ser oráculo
+        // de uma função pura sem apagar a decisão humana.
+        registrarLance(contaDoLance(), sorteio, { acertou: v, raspou, rolado });
         resolve({
           acertou: v, an: a, manobra: a.golpes > 1 ? manSel.value : 'simples',
           dano: raspou ? danoQA() : Math.max(0, parseInt(dnInp.value || '0', 10) || 0),
@@ -8224,6 +8382,20 @@ const SETAS = [
       }, { once: true });
       dlg.showModal();
     });
+  }
+
+  // A FOLHA, ABERTA PELO COLETOR. Só com `?lances=1`, e só para juntar o
+  // oráculo: abre a caixa de um par, deixa o coletor rolar e apertar, e não
+  // aplica nada na cena (quem aplica é quem CHAMA a folha, e aqui ninguém
+  // chama). Sem isto o coletor teria de arrastar token, e juntar algumas
+  // centenas de lances levaria dez minutos de navegador para nada.
+  if (LANCES_LIGADO) {
+    (window as any).__ABRIR_FOLHA = (idA: string, idB: string) => {
+      const a = COMBS.find((c: any) => c.id === idA);
+      const b = COMBS.find((c: any) => c.id === idB);
+      if (!a || !b) return Promise.resolve(null);
+      return folhaDaAcao(a, b);
+    };
   }
 
   /** `+2` ou `−1`, com o menos do projeto. */
