@@ -167,8 +167,9 @@ marca `emGolpe` antes de resolver (L394), para a ordem não decidir quem apanha 
 
 ## 3. Interrupções: tudo o que para e pede decisão humana
 
-Não existe ponto único de entrada. As paradas estão em quatro arquivos e passam por cinco
-mecanismos diferentes (`dialog.showModal`, `uiEscolher`, `uiConfirmar`, `uiFormulario`, clique em
+Não existe ponto único de entrada. O default de cada parada (o que acontece quando ninguém
+responde) e a classificação de cada uma está em `01-diagnostico-carga.md` §B. As paradas estão em
+quatro arquivos e passam por cinco mecanismos diferentes (`dialog.showModal`, `uiEscolher`, `uiConfirmar`, `uiFormulario`, clique em
 botão da faixa/mapa).
 
 | # | Gatilho | Quem responde | Onde | O que decide |
@@ -452,7 +453,13 @@ capítulo, ou dois lugares do código discordam entre si). "Mesa" = `grid.astro`
 | Estabilizar (L65) | **ausente** |
 | Cair a 0: incapacitado (L48, L52) | **presente** como `noChao` (`grid.astro:5822-5832`), que tira da fila |
 
-### 7.8 O que `regras.json` decide e o capítulo IX ainda não escreve
+### 7.8 As Artes (capítulos XVI e XVII)
+
+Auditadas em `01-diagnostico-carga.md` §E, com a mesma legenda: custo de Mana, esticar, duração,
+dissipação, área, fraqueza e dano por nível estão presentes; resistência, Margem, fonte do
+elemento, conjuração composta, ritual e guardar feitiço estão ausentes.
+
+### 7.9 O que `regras.json` decide e o capítulo IX ainda não escreve
 
 Não é divergência de código, é o capítulo atrasado; conta para a simulação porque "regra
 publicada" e "regra do motor" já não são a mesma coisa: P/G/R (`regras.json:2354`), escada (L2390),
@@ -523,8 +530,9 @@ que falta, esperando K12 e K17.
 ### 9.2 Quanto tempo leva uma batalha
 
 - **Bancada:** `bateria` roda 8000 duelos por chamada (`lib-tempo.mjs:512`), `refrega` 3000 de 3×3
-  (L550). Tempo por duelo não medido nesta sessão; `test-bench-tempo.mjs:63-67` imprime o tempo
-  por bateria e é o lugar de medir.
+  (L550). **Medido em 02/09** (tabela e comando em `01-diagnostico-carga.md` §D1): 54,6 µs por
+  duelo 1v1, 93,5 µs por refrega 3×3, 2,6 ms por refrega 50×50. Mil batalhas 3×3 custam 93,5 ms
+  num processo só.
 - **Grid:** não é medível como "batalha": cada Tick é um clique do mestre, cada golpe é uma caixa,
   e o teste usa esperas fixas de 650 a 750 ms por avanço (`test-grid-simultaneo.mjs`, laço de ⏭).
   Na cena de 3 avanços mais declaração e fuga, a suíte inteira gasta 39,9 s para 3 cenas.
