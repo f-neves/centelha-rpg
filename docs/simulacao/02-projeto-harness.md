@@ -32,6 +32,10 @@ como está, porque o que cada opção significava continua sendo a leitura das c
 | **Q14** | relatório para ler ou portão | **artefato completo para ler e para embasar decisões futuras** |
 | **Q15** | de onde saem os PCs | **arquétipos que eu escrevo, declarados como inventados** |
 | **Q16** | as 7 regras que faltam entram no jogo | **entram, e a medição decide a ordem** |
+| **N1** | quando a ação começa, e quando a guarda abre | **as duas no Tick T, o da declaração**; livre 1 Tick depois do fim da ação; o combate começa no Tick 1. Detalhe e consequências na §0.45 |
+| **P2** | a parede | **entra, e vira funcionalidade do Grid** |
+| **E1(d)** | o nível dos quatro períodos carrega arremessador | **sim, os quatro, e a mistura é declarada** |
+| **D4b** | quando a fuga está consumada | **quando ninguém consegue aproximar**: 10 Ticks seguidos sem nenhum perseguidor diminuir a distância |
 
 Q13 (o repertório declarável) não foi perguntada porque D3 a responde: uma política declarada como
 dado só pode declarar o que o Grid aceita, e o Grid aceita **6 coisas** (atacar em 4 manobras, mover
@@ -68,12 +72,18 @@ foge individualmente abaixo de 25% (`regras.json:2268`): a peça foge primeiro, 
 desiste depois, junto. A faixa entre 25% e 20% é a janela em que há fuga sem rendição, e é ela que
 vai gerar a perseguição que interessa medir.
 
-**Sem teto de Ticks, o fim depende da fuga alcançar a borda**, e num mapa de 48×48 isso é longe de
-propósito: é a cauda que você quer ver. Mas um laço sem saída trava o processo, então fica um **teto
-de segurança de execução**, que não é regra de jogo: a batalha que passar de 2.000 Ticks é abortada e
-marcada `estourou`, entra num balde próprio e não é contada em nenhuma média. É diferente da opção
-4c que você recusou, porque 4c classificaria a batalha como "indecisa", que é um resultado de jogo;
-`estourou` é o registro de que o harness desistiu.
+**A fuga se consuma quando ninguém consegue aproximar** (D4b): passados **10 Ticks seguidos** em que
+nenhum perseguidor diminuiu a distância até o fugitivo, a fuga conta como consumada e a peça sai da
+cena como baixa. O critério é bom porque não depende do tamanho do mapa: se dependesse da borda, o
+resultado do eixo E2 ficaria confundido com a geometria da arena, já que uma distância inicial maior
+também deixa a borda mais perto. E ele mede exatamente o caso que você quer ver, o alvo mais rápido
+que nunca é alcançado, sem precisar de teto de adiamento (que você recusou) nem de teto de Ticks.
+
+Mesmo assim, um laço sem saída trava o processo, então fica um **teto de segurança de execução**, que
+não é regra de jogo: a batalha que passar de 2.000 Ticks é abortada e marcada `estourou`, entra num
+balde próprio e não é contada em nenhuma média. É diferente da opção 4c que você recusou, porque 4c
+classificaria a batalha como "indecisa", que é um resultado de jogo; `estourou` é o registro de que o
+harness desistiu.
 
 **Q7 e Q16 viram trabalho no Grid, não só no harness.** Ler o campo `ate` e ligar as 7 regras são
 mudanças na mesa que está rodando. Elas não são pré-requisito para começar o harness, mas cada uma
@@ -110,7 +120,7 @@ um é marcado `inventado` na procedência da §2.7.
 | # | Pendência | Estado |
 |---|---|---|
 | **P1** | A Cura em área contra a regra publicada | **era engano meu.** Resolvida na §0.4 |
-| **P2** | Parede não existe no Grid | proposta na §0.4, e a decisão é sua |
+| **P2** | Parede não existe no Grid | **decidida**: entra, e vira funcionalidade do Grid (§0.4) |
 | **P3** | O projétil mirado precisa de uma rolagem que não existe | **era engano meu**: a regra existe escrita. Resolvida na §0.4, com um resíduo pequeno |
 | **P4** | Quais políticas, e a lista de regras de cada uma | proposta na §0.4 |
 | **P5** | Quais arquétipos de PC, e quantos | proposta na §0.4 |
@@ -177,11 +187,15 @@ Duas coisas que precisam ficar declaradas:
 - A parede **bloqueia passo e não bloqueia visão**. Linha de visão não existe no Grid, e `passo-relampago`
   a exige pelo texto ("precisa de linha de visão"). Inventar visão seria um sistema inteiro; a
   proposta é declarar a limitação e não medir nada que dependa dela.
-- O resultado do eixo E7 é **um achado sobre a regra, não sobre o produto**: ele responde "quanto
-  custaria um obstáculo", e só vira achado sobre o Grid se a parede for depois construída lá.
+**Decidido: a parede entra, e vira funcionalidade do Grid.** Com isso o resultado do eixo E7 é um
+achado sobre o produto, e não só sobre a regra, e a marca ⚑ de invenção cai. A casa bloqueada passa a
+existir na cena de verdade, e o `evita` de `caminharHex` a lê nos dois lugares: é o mesmo caminho de
+código, com um argumento a mais.
 
-Se você preferir, a alternativa é tirar E7 e cair para 52 células. ⚑ Marcado como invenção do
-harness enquanto o Grid não tiver parede.
+E fica anotado como melhoria futura, fora do escopo do harness: **um editor de cenário no Grid**, em
+que o mestre põe paredes, terreno difícil, itens e o que mais a cena precisar, em vez de só peças. O
+terreno difícil tem gancho pronto e não usado: a condição `terreno-dificil` existe em
+`condicoes.json` com campo de `velocidade`, e o Grid não a lê (R2 §C4).
 
 #### P3 · O mirado, e o resíduo que sobra
 
@@ -261,67 +275,100 @@ arcos, bestas pequena e média, funda) e **7** (montante, martelo de guerra, bes
 | **d · os quatro** | dardos (4) · adaga (5) · espada longa (6) · montante (7) | 420 | colisões esparsas e sem padrão |
 
 Uma ressalva que o catálogo impõe: **o ciclo 4 só existe em `dardos`, que é arremesso**. O nível (d)
-obrigatoriamente carrega um arremessador, o que mistura o eixo de ciclo com o de alcance. As saídas
-são aceitar isso e declarar, ou fazer o nível (d) com 5/6/7 só. Fica anotado como escolha sua.
+obrigatoriamente carrega um arremessador, o que mistura o eixo de ciclo com o de alcance.
+**Decidido: os quatro períodos entram, e a mistura é declarada** na leitura do resultado, ou seja,
+qualquer efeito atribuído a (d) carrega junto a ressalva de que aquele nível é o único com alcance.
+
+Esta tabela vale porque **N1 devolveu o período ao `ciclo`** (§0.45). Enquanto a régua era a de hoje,
+os períodos eram `ciclo + 1` e nenhum destes m.m.c. estava certo.
 
 **E4 · assimetria de passo.** O passo sai de `deslocamento()`, com a fração da raça e a meia
 penalidade da armadura. O par é escolhido calculando `deslocamento()` para os candidatos e tomando o
 primeiro com razão ≥ 2, e os candidatos naturais são o Montanteiro orc de placa completa (pen 3) de
 um lado e o Duelista elfo de couro (pen 1) do outro. O nível "simétrico" usa dois Escudeiros.
 
-### 0.45 Quando a ação começa, e as duas correções que a pergunta forçou
+### 0.45 Quando a ação começa · N1, decidida em 02/09
 
-**A ação declarada no Tick T começa em T+1.** Está escrito e é deliberado:
+A pergunta era: escolhida uma ação no Tick T, ela começa em T ou em outro Tick?
+
+**O que o motor faz hoje.** A ação começa em **T+1**, e é deliberado:
 `regras.json → combate.simultaneo.decideEmValeDepois: 1`, com a nota "a ação declarada no Tick T
 começa em T+1... decisão no Tick, efeito no avanço", e o `Combate_Simultaneo.md:124-127` repete.
-`agendaSimultanea` faz `inicio = tickDecl + 1` e todo o resto pendura nisso.
+`agendaSimultanea` faz `inicio = tickDecl + 1`.
 
-Fui conferir e saíram duas coisas que ninguém tinha olhado.
-
-**Correção 1 · o período real entre golpes é `ciclo + 1`, não `ciclo`.** Uma peça que declara de novo
-no Tick em que fica livre paga o Tick de decisão outra vez, e ele entra no período. Medido
-empacotando `combate-tempo.ts` e encadeando cinco declarações:
-
-| Classe | `ciclo` (a Velocidade da arma) | Ticks entre golpes, de verdade |
-|---|---:|---:|
-| leve | 5 | **6** |
-| média | 6 | **7** |
-| haste | 6 | **7** |
-| distância | 6 | **7** |
-| pesada | 7 | **8** |
-
-Isso corrige a forma fechada da R2 §H1, cujo módulo é `ciclo_i + 1` e não `ciclo_i`, e refaz os
-níveis de E1 (§0.4 P6), porque os mínimos múltiplos comuns mudam todos. Com os períodos reais, o
-catálogo tem 5, 6, 7 e 8, e o único par **não** coprimo é (6, 8):
-
-| Nível de E1 | Armas | Períodos | m.m.c. | Colisões numa batalha de 37 a 47 Ticks |
-|---|---|---|---:|---|
-| **a · uníssono** | espada longa × espada longa | 7 e 7 | 7 | **todos** os golpes |
-| **b · colisão curta** | adaga × montante | 6 e 8 | **24** | duas |
-| **c · coprimos** | espada longa × montante | 7 e 8 | **56** | nenhuma ou uma |
-| **d · os quatro** | dardos · adaga · espada longa · montante | 5, 6, 7, 8 | 840 | esparsas, sem padrão |
-
-O nível (b) mudou de arma: com o período real, adaga e espada longa (6 e 7) são coprimos e não
-servem mais como "vizinhos". O único par do catálogo que colide com frequência sem ser uníssono é
-adaga × montante.
-
-**Correção 2 · a guarda abre um Tick antes da ação.** `faseEm` não olha o campo `desde`: ela decide
-pela agenda, e todo Tick anterior ao primeiro golpe lê `preparo` (`combate-tempo.ts:595-606`). Uma
-espada longa declarada no Tick 10 golpeia no 12 e fica livre no 17, mas a escada cobra assim:
+Mas a **guarda** não segue a ação: `faseEm` não olha o campo `desde`, decide só pela agenda, e todo
+Tick anterior ao primeiro golpe lê `preparo` (`combate-tempo.ts:595-606`). Uma espada longa declarada
+no Tick 10 golpeia no 12 e fica livre no 17, e a escada cobra assim:
 
 ```
-Tick    9    10    11    12    13    14    15    16    17
+Tick    9    10    11    12     13    14    15    16    17
 fase   prep  prep  prep  GOLPE  rec   rec   rec   rec  livre
 Defesa  −2    −2    −2    −4    −2    −2    −2    −2     0
 ```
 
-A ação vive 7 Ticks (11 a 17) e a guarda fica aberta 8 (10 a 17). Quem declara paga **−2 no próprio
-Tick da declaração**, antes de a ação existir. Na prática isso importa em dois lugares: o golpe que
-vence no mesmo Tick T em que o alvo declarou o encontra já aberto, e como `grupoDaVez` devolve todos
-os livres de uma vez, o mestre declara a cena inteira no Tick T e a cena inteira fica a −2 nele.
+A ação vive 7 Ticks e a guarda fica aberta 8: quem declara paga −2 no Tick da declaração, antes de a
+ação existir. E, como consequência, o **período real entre golpes é `ciclo + 1`**, porque quem
+declara de novo no Tick em que fica livre paga o Tick de decisão outra vez. Medido encadeando cinco
+declarações: leve 6, média 7, haste 7, distância 7, pesada 8, e não 5, 6 e 7.
 
-Não achei registro de decisão sobre isso em `Combate_Simultaneo.md` nem no `regras.json`. É uma
-pergunta de regra, e está na lista do que falta decidir.
+**A decisão.** A ação e a guarda começam **no mesmo Tick T**, o da declaração. Para declarar de novo,
+a peça precisa estar livre, e livre é **1 Tick depois do fim da ação anterior**. Interromper continua
+possível pelas regras de interrupção, e quem interrompe só fica livre no Tick seguinte. O combate
+começa no Tick 1.
+
+O que isso muda, concretamente:
+
+| | Hoje | Com N1 |
+|---|---|---|
+| `decideEmValeDepois` | 1 | **0** |
+| `inicio` da agenda | `tickDecl + 1` | `tickDecl` |
+| espada longa declarada no Tick 1 | golpe no 3, livre no 8 | **golpe no 2, livre no 7** |
+| a ação ocupa | T+1 até T+ciclo | **T até T+ciclo−1** |
+| guarda aberta | T até T+ciclo (um Tick a mais que a ação) | **exatamente os Ticks da ação** |
+| período entre golpes | `ciclo + 1` | **`ciclo`**, que é o que a Velocidade da arma sempre quis dizer |
+| `faseEm` | lê `preparo` um Tick antes da ação, e estava errado | passa a estar **certo**, sem mudar uma linha |
+
+O exemplo publicado continua fechando pelo outro caminho: o arco de Preparo 5 declarando no Tick 1
+solta a flecha no Tick 6, que é o número do `Combate_Simultaneo.md`. Antes ele fechava porque a
+declaração era no Tick 0 e a ação começava no 1; agora fecha porque o combate começa no Tick 1 e a
+ação começa junto. De quebra, isso deixa a frase "entra no Tick 0" da caixa de iniciativa
+(`grid.astro:4751`) sem defesa nenhuma: ela já contradizia o `regras.json`
+(`derivados.iniciativa.tickDoPrimeiro: 1`, R2 §F#13) e agora contradiz também a régua do simultâneo.
+
+**E os períodos voltam a ser o `ciclo`.** O que eu tinha chamado de Correção 1 era verdade do código
+como ele está, e N1 a remove: os níveis de E1 voltam para os períodos 4, 5, 6 e 7 do catálogo, com
+m.m.c. 30 entre 5 e 6 e 42 entre 6 e 7 (§0.4 P6).
+
+#### O problema que N1 abre: o Preparo 0 golpeia no Tick em que foi declarado
+
+Com `inicio = T`, uma arma leve (Preparo 0, `offs: [0]`) declarada no Tick T tem o golpe **no próprio
+Tick T**. Isso é coerente com o que Preparo 0 quer dizer, e bate de frente com duas coisas que já
+existem:
+
+1. **`grupoDaVez` cala a cena.** Ela devolve lista vazia enquanto houver golpe devido:
+   `if (g != null && g <= t) return []` (`grid.astro:4119`). O primeiro duelista de adaga que declarar
+   no Tick T cria um golpe devido em T, e **ninguém mais consegue declarar naquele Tick**. O segundo
+   duelista perde a vez.
+2. **É o problema dos 97%, voltando pela outra porta.** `faseDeQuemVaiAgir`
+   (`combate-tempo.ts:405-425`) foi escrita exatamente para o Preparo 0: sem ela, quem o mestre
+   resolvia por último ganhava 97% dos duelos de iguais. Ela conserta a leitura da **Defesa**, e não
+   a ordem em que os golpes caem. Se o golpe de Preparo 0 resolve dentro do Tick da declaração, quem
+   declara primeiro bate primeiro, e a ordem de digitação volta a decidir o duelo.
+
+Três saídas, e a escolha é de regra:
+
+- **(a) O golpe nunca cai antes de T+1**: `golpe = max(T + 1, T + Preparo)`. A ação e a guarda
+  começam em T como você decidiu, e só o instante do impacto ganha o piso. Preparo 0 e Preparo 1
+  passam a golpear no mesmo Tick, o que apaga a diferença entre a adaga e a espada longa no primeiro
+  golpe (mas não no período, que continua 5 contra 6).
+- **(b) Preparo mínimo 1 no simultâneo**: a régua da arma leve muda de `P0/G1/R4` para `P1/G1/R4`, e
+  o ciclo cresce de 5 para 6. Mexe no catálogo, não no motor.
+- **(c) A ordem dentro do Tick muda**: todos declaram, e só depois os golpes de T resolvem.
+  `grupoDaVez` deixa de bloquear por golpe do **próprio** Tick e passa a bloquear só por golpe de Tick
+  anterior. Preserva a simultaneidade de verdade (as duas adagas se acertam no mesmo instante) e é a
+  mudança mais invasiva das três, porque o ⏭ e o cartão da faixa dependem daquela guarda.
+
+Fica **em aberto**, e é a única coisa que trava o passo 5 do laço da §2.2.
 
 ### 0.5 A grade, refeita com as respostas
 
@@ -594,12 +641,12 @@ apontada em cada passo.
 
 Três diferenças merecem ser ditas com a consequência, porque mudam número e não só ordem:
 
-- **O passo 4 antes do passo 5 abaixa a Defesa de quem acabou de declarar.** Uma ação declarada no
-  Tick T tem `inicio = T + 1` e todos os golpes em `T+1` ou depois; `faseEm(acao, T)` cai no ramo
-  `tick < Math.max(...golpes)` e devolve **`preparo`** (`combate-tempo.ts:595-606`), que a escada
-  cobra em −2 (`defesaPerdida`, L620). Ou seja: a criatura que decide no Tick T recebe o golpe que
-  vence no mesmo Tick T já com a guarda baixa. Isso é o comportamento do Grid hoje, não uma invenção
-  do harness, e é um dos lugares onde o harness vai medir uma consequência que a mesa nunca notou.
+- **O passo 4 antes do passo 5 abaixa a Defesa de quem acabou de declarar.** `faseEm(acao, T)` devolve
+  **`preparo`** para uma ação declarada no Tick T (`combate-tempo.ts:595-606`), e a escada cobra −2
+  (`defesaPerdida`, L620). Ou seja: quem decide no Tick T recebe o golpe que vence no mesmo Tick T já
+  com a guarda baixa. **Com N1 isso passa a estar certo** (a ação começa em T, então a guarda abrir em
+  T é o esperado); com a régua de hoje era um Tick de guarda aberta a mais do que a ação, que é o que
+  a §0.45 descreve. Nos dois casos o número é o mesmo e o harness o mede igual.
 - **O passo 2 antes do passo 5** significa que a peça dá o passo do Tick do Golpe **antes** de o
   golpe resolver, e a distância que a folha lê (L7478) é a de depois do passo. É por isso que
   `passoDoGolpe` existe. O harness mantém.
