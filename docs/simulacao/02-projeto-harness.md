@@ -71,6 +71,10 @@ como está, porque o que cada opção significava continua sendo a leitura das c
 | **E2** | as quatro distâncias iniciais | **1 · 18 · 42 · 71 hexes** (encostado, ~3, ~7 e ~12 Ticks de corrida; 71 é a diagonal do mapa de 48×48) |
 | **Fila** | a ordem de declaração na tela | **ordenada sozinha pela ficha, e o mestre pode mudar à mão** (§0.49) |
 | **Ordem** | o que entra antes do harness | **tudo**: N1 a N8, o `ate` e as 9 bandeiras (§0.6) |
+| **Rota** (P §2.4) | como preservar a linha de base | **bandeiras: uma bateria mede os dois lados.** N1 a N6 entram chaveadas, somando às de D2, e o desenho deixe-uma-de-fora mede cada regra isolada (§0.7) |
+| **Fôlego** | a régua está escrita e o combate não a aplica | **fica fora, como está hoje** (`modulos.ts`, `folego: false`). A simulação mede o jogo que se joga (§0.7) |
+| **Mana** | o que o Conjurador faz quando a reserva acaba | **raciona, alternando ataque comum e Arte**; e fica registrado um teste: a reserva é pequena demais para os combates? (§0.7) |
+| **`porRodada`** | as 5 condições de dano por rodada que o Grid não cobra | **vira bandeira**: a bateria roda com e sem, para ver como se comportam (§0.7) |
 
 Q13 (o repertório declarável) não foi perguntada porque D3 a responde: uma política declarada como
 dado só pode declarar o que o Grid aceita, e o Grid aceita **6 coisas** (atacar em 4 manobras, mover
@@ -698,26 +702,27 @@ em uma linha quando o mestre arrasta.
 | **E2 · distância inicial** | 4: **1 · 18 · 42 · 71 hexes** (encostado, ~3, ~7 e ~12 Ticks de corrida; 71 é a diagonal do mapa) | sim |
 | **E3 · tamanho da cena** | 3 (1v1 · 3×3 · 2×8) | sim |
 | **E4 · assimetria de passo** | 2 | sim |
-| **E5 · perfil de regras** | 2 (base · as 9 bandeiras ligadas: as 7 de D2 mais as 2 da Cura, §0.4 P1) | sim |
-| **E6 · política** | 6 (agressivo · cauteloso · tocaiador · guarda-costas · conjurador · **cega**, §0.47) | sim |
+| **E5 · perfil de regras** | **18** (cheio · uma de fora por bandeira, 16 · tudo desligado), §0.7 | sim |
+| **E6 · política** | 5 (agressivo · cauteloso · tocaiador · guarda-costas · conjurador). A **cega** saiu daqui e virou o eixo E9 (`03-respostas.md` §1.4) | sim |
+| **E9 · leitura** | 2 (lê as declarações do Tick, ou não). Aplica-se a qualquer política, e é o que mede N7 | sim |
 | **E7 · obstáculo** | 2 (campo aberto · parede), §0.4 P2, e cai fora se P2 for recusada | sim |
 | **E8 · atribuição de gesto** | 2 (mestre solo · um por PC) | **não**: é leitura do mesmo log |
 | **D1 · perfil de automação** | 2 | **não**: é leitura do mesmo log |
 
-Cruzar tudo dá **4×4×3×2×2×6×2 = 2.304 células**, e o problema não é tempo de máquina, é que
-ninguém lê 1.920 tabelas. O orçamento que aperta continua sendo o mesmo da §3: o que se consegue
-ler. Desenho proposto:
+Cruzar tudo é um enunciado, não uma grade: com E5 nos 18 perfis da §0.7 passa de cem mil
+combinações. O orçamento que aperta continua sendo o mesmo da §3: o que se consegue ler. Desenho:
 
 - **Núcleo cruzado: E1 × E2 × E3 = 48 células.** São os três que eu espero que interajam, e a
   previsão da §3 é sobre eles.
-- **Um fator de cada vez em volta da célula-âncora**, para E4, E5, E6 e E7: `(2−1) + (2−1) + (6−1) +
-  (2−1) = 8 células`. Mede o efeito principal de cada um sem cruzá-lo com o resto.
+- **Um fator de cada vez em volta da célula-âncora**, somando `níveis − 1` de cada eixo restante:
+  E4 (1) + E5 (17) + E6 (4) + E7 (1) + E9 (1) = **24 células**. Mede o efeito principal de cada um
+  sem cruzá-lo com o resto, e é onde moram as 16 comparações de bandeira da §0.7.
 - **Cruzamentos deliberados**, porque OFAT é cego a interação e há quatro que eu espero de verdade:
   E1(uníssono) × E3(horda), E1(uníssono) × E4(assimétrico), E2(muito longa) × E4, E5 × E1(uníssono).
   **4 células.**
-- Total: **60 células**. A 500 repetições, **30.000 batalhas**, mais o reforço de 2.000 nas células
-  de cauda (as de E4 e a de uníssono com horda). A justificativa das 500 e das 2.000 é a da §3 e não
-  muda.
+- Total: **76 células**. A 500 repetições, **38.000 batalhas**, mais o reforço de 2.000 nas células
+  de cauda (as de E4 e a de uníssono com horda). Pela medição da `03-respostas.md` §4.2, isso é da
+  ordem de 30 segundos de máquina. A justificativa das 500 e das 2.000 é a da §3 e não muda.
 
 ---
 
@@ -1039,6 +1044,91 @@ funções (`agendaSimultanea`, `grupoDaVez`, `golpeMaisCedo`, e a leitura do ret
 **10** é isolado. O **11** é o maior e o mais arriscado, e vale por último, quando o resto estiver
 verde.
 
+
+---
+
+## 0.7 A linha de base, o Fôlego e as dezesseis bandeiras
+
+Decidido em 02/09, depois do `03-respostas.md`.
+
+### A rota: bandeiras, e uma bateria mede os dois lados
+
+N1 a N6 entram na mesa **já chaveadas**, somando-se às de D2, e uma bateria só mede o perfil cheio e
+cada regra isolada. O que a rota custa e o que perde está na `03-respostas.md` §2.4; o que ela ganha
+é que as regras entram agora, os furos da R2 fecham antes da primeira medição, e cada regra recebe o
+seu próprio número em vez de ser medida em bloco.
+
+**Uma coisa fica em aberto por construção: N5 não tem estado desligado observável.** A
+`03-respostas.md` §2.1 mostra por quê: hoje não existe laço a inverter, o mestre declara e resolve na
+ordem que quiser entre avanços, então "sem N5" não é um comportamento, é a ausência de uma regra.
+Ou N5 entra fixa, ou ganha uma bandeira cujo estado desligado é uma invenção minha. **Isso ainda
+precisa de decisão.**
+
+### O Fôlego fica de fora
+
+A régua está inteira em `regras.json → derivados.folego` (atacar e correr gastam, defender e parar
+recuperam +Vigor por Tick, cada golpe custa o Fôlego cheio da arma, "Tomar Fôlego" é ação de
+Velocidade 5, abaixo de 25% do pool são −1d6 e em 0 é exaustão), as 26 armas têm o campo (leve 15,
+médio 24, pesado 38) e `calc.ts:85` calcula a reserva. **Nada no combate gasta um ponto**, e
+`src/lib/modulos.ts` já diz `folego: false`, com a justificativa escrita de que é módulo avançado.
+
+**Decidido: a simulação mede o jogo que se joga, e o Fôlego não entra.** Fica registrada a
+consequência, que não é pequena: **o Fôlego é o único freio que o sistema tem numa perseguição e numa
+sequência de golpes.** Sem ele, correr é grátis para sempre, e o eixo E4 (o alvo mais rápido que
+nunca é alcançado) mede um estado permanente em vez de uma corrida que termina por exaustão. É por
+isso que a regra dos 10 Ticks da §0.1 precisa existir: ela faz o papel que o Fôlego faria.
+
+### A Mana do Conjurador, e um teste que sai daí
+
+A reserva **não volta em cena**: `arcano.recuperacaoMana` é Centelha por hora, e o dobro em descanso.
+O Conjurador tem orçamento finito por batalha.
+
+**Decidido: ele raciona, alternando ataque comum e Arte.** A regra concreta, com os números marcados
+como invenção ⚑, entra na política da §0.4 P4:
+
+1. se um aliado está abaixo de 50% de Vida, no alcance, e há Mana: Cura;
+2. se há Mana **acima de 30% da reserva**: a regra de escolha de Efeito da §0.4 P4 (zona para dois ou
+   mais agrupados, projétil para um, empurrão para quem encostou);
+3. se há Mana **abaixo de 30%**: alterna, conjurando só a cada segunda ação e atacando com a adaga
+   nas outras;
+4. sem Mana: ataca com a adaga pelas regras do Agressivo.
+
+**E fica anotado como um teste da bateria, e não como um pressuposto: a reserva de Mana é pequena
+demais para os combates?** As saídas do log que respondem são o Tick em que cada conjurador cruza os
+30% e o zero, a fração das batalhas em que ele termina esvaziado, e quantas ações ele passa como
+lutador de adaga. Se o conjurador estiver zerado na metade das batalhas antes do meio delas, a
+resposta é sim, e é um achado sobre o sistema e não sobre o harness.
+
+### As cinco condições de dano por rodada viram bandeira
+
+`sangrando`, `envenenado`, `sufocando`, `em-chamas` e `morrendo` têm o campo `porRodada`, e no Grid
+**ninguém o lê**: só `combate.astro:1439` (R2 §C4). **Decidido: vira bandeira, e a bateria roda com e
+sem**, para ver como se comportam. Ela é relevante no recorte escolhido porque `brasa-retardada`, um
+dos oito Efeitos âncora, põe `em-chamas`.
+
+### As dezesseis bandeiras, e o desenho que as mede
+
+| Grupo | Bandeiras |
+|---|---|
+| de D2 (§0.1) | `margem` · `gate` · `couraca` · `porte` · `bloqueio` · `modo2` · `teto6` |
+| da Cura (§0.4 P1) | `curaSemArea` · `curaDivide` |
+| do núcleo do Tick | `n1` (já é o parâmetro `decideEmValeDepois`) · `n2` · `n3` · `n4` · `n6`; **`n5` pendente** |
+| nova | `porRodada` |
+| **fora** | o Fôlego, por decisão acima |
+
+São **16**, contando N5, e o desenho é o **deixe-uma-de-fora** da `03-respostas.md` §2.2:
+
+| Perfil | Quantos |
+|---|---:|
+| cheio | 1 |
+| cheio menos uma, uma por bandeira | 16 |
+| tudo desligado (a linha de base reconstruída) | 1 |
+| **total, que é o número de níveis de E5** | **18** |
+
+Duas coisas que esse desenho carrega e vale repetir: ele respeita sozinho a dependência entre `n1` e
+`n2` (desligar `n2` a partir do cheio mantém `n1` ligada, que é a única configuração em que `n2` é
+observável), e ele mede **efeito principal**, não interação: se a Margem e o gate se cancelarem, ou
+se o Bloqueio só importar com a Couraça ligada, este desenho não vê.
 
 ## 1. O que eu preciso de você
 
