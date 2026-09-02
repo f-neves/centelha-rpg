@@ -984,6 +984,7 @@ cabeçalho do `02`:
 | `03-respostas.md` | as contradições do 02 resolvidas, os 14 invariantes do harness, e as medições novas |
 | `04-prontidao.md` | prontidão: se cada métrica tem dado, se cada eixo é separável, os riscos e o que falta decidir |
 | `05-fechamento.md` | o fechamento: a ordem corrigida (a instrumentação vem antes), as dez dependências de prova sem instrumento, e a grade recontada |
+| `06-etapa-0.md` | a instrumentação, feita: a semente, o caminho do driver, o despejo por Tick e a branch congelada. E o que o espelho de inércia já prova com ela |
 
 **A regra da frente:** decisão anotada dentro de um relatório não vale; o que vale vem do chat, e o
 relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`.
@@ -1009,7 +1010,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   é escrito por `porCondicao` e **não há um leitor em todo o `src/`**.
 - [ ] **L4 · [FAZER] A migração 29**: a máscara ao avesso, com `acao.mirado` marcando o que é
   pontaria. O `mov.alvo` deixa de vazar por acidente e passa a ser visível de propósito.
-- [ ] **L5 · [PRIMEIRO] A semente do `d6`, e a instrumentação em volta dela.** É a **Etapa 0** da
+- [x] **L5 · [FEITA em 02/09, commit `ce5486f`] A semente do `d6`, e a instrumentação em volta dela.** É a **Etapa 0** da
   ordem (`02` §0.6.1), e vem antes de tudo, inclusive das bandeiras: sem semente a prova de que uma
   bandeira desligada é inerte compara ruído. Junto vêm a **branch congelada** (que deixa de ser
   criável assim que a primeira bandeira entra), o caminho do driver até a semente, e o despejo por

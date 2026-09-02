@@ -1342,12 +1342,15 @@ ordem estão absorvidas abaixo.
 
 Nada é provável antes dela, e ela não muda comportamento nenhum.
 
+**FEITA em 02/09**, no commit `ce5486f`. O relato está em `06-etapa-0.md`, e a ordem interna abaixo
+saiu corrigida de lá.
+
 | | O que | Por quê |
 |---|---|---|
-| **0.1** | **A branch congelada** (`sim/base-congelada`), cortada do commit corrente | é o **único passo com prazo**: depois de a primeira bandeira entrar, o estado de referência da D4 não existe mais em lugar nenhum, e não há de onde cortá-lo |
-| **0.2** | **Item 12 · a semente**, em `rolagem.ts:11`, `mesa-ficha.ts:133` (a iniciativa), `artes-grid.ts:1342` (o dano de Arte) e no sorteio do último critério de N4 | sem ela, os espelhos comparam ruído, e as provas dos itens 2, 4 e 6 dependem de sorte |
-| **0.3** | **O caminho do driver até a semente**: a página aceita a semente por parâmetro, como já aceita `?tempo=simultaneo` | o item 12 injeta no módulo, e nada ligava o módulo ao `puppeteer` que dirige a página |
-| **0.4** | **O despejo por Tick**: os campos da `03-respostas.md` §1.1.1 mais **o que a folha calculou** (o `fer` de `grid.astro:7435`, a Pressão, a distância) | é o instrumento dos dois espelhos **e** da prova do item 6, e hoje esses números só existem dentro do modal |
+| **0.1** | **Item 12 · a semente**, num ponto de injeção só (`acaso.ts`, puro), usado por `rolagem.ts:11`, `mesa-ficha.ts:133` (a iniciativa) e `artes-grid.ts:1342` (o dano de Arte). O quarto ponto, o sorteio do último critério de N4, **nasce já usando o `acaso`**, porque N4 é da Etapa 2 | sem ela, os espelhos comparam ruído, e as provas dos itens 2, 4 e 6 dependem de sorte |
+| **0.2** | **O caminho do driver até a semente**: a página aceita `?semente=N` e `?despejo=1`, como já aceita `?tempo=simultaneo` | o item 12 injeta no módulo, e nada ligava o módulo ao `puppeteer` que dirige a página. A leitura da URL fica na página, para o `acaso.ts` continuar puro e empacotável em Node |
+| **0.3** | **O despejo por Tick** em `window.__DESPEJO`: agenda, fase, Defesa perdida, posição, iniciativa e fila. **Falta a resolução** e o que a folha calculou, que só existem dentro do modal e entram com o item 6 | é o instrumento dos dois espelhos **e** da prova do item 6 |
+| **0.4** | **A branch congelada** (`sim/base-congelada`), cortada **por último**, do commit da Etapa 0 | ela continua com **prazo** (depois da primeira bandeira o estado de referência não existe mais), mas não pode ser a primeira: cortada antes da semente, o lado dela rolaria com `Math.random` e o espelho voltaria a comparar ruído. **Esta é a correção de 02/09** (`06-etapa-0.md` §1) |
 
 #### Etapa 1 · O carimbo do perfil, e depois as nove bandeiras que não dependem do núcleo
 
