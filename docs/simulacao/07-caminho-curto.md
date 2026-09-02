@@ -41,14 +41,14 @@ forma do laço funciona** e um lugar de onde copiar essa forma.
 
 | # | O que | Estado | Quanto atrasa, e por quê |
 |---:|---|---|---|
-| **1** | **A resolução do golpe fora do modal** (`resolverGolpe`) | **especificado, falta código.** O contrato está na P §2.1: entra resumo do atacante e do alvo, ação, manobra, índice do golpe, distância, perfil e fonte de acaso; sai total, defesa, `errouPor`, veredito, dano bruto, tipo, Absorção, líquido, `rolls` | **o maior de todos, e é o único que não tem como ser cortado.** Sem ele não há batalha: o golpe não resolve, ninguém perde Vida e nada termina. Hoje o miolo mora dentro de `folhaDaAcao` (`grid.astro:7526-8100`), misturado com `innerHTML` e com `await SB` |
-| **2** | **O laço do Tick headless** (`avancoDeTick` + `filaDaCena` + `declararAtaque`) | **especificado, falta código.** Contrato na P §2.1; a forma existe pronta no `cena()` do `lib-tempo.mjs`, e as peças puras (agenda, fases, re-projeção) já existem em `combate-tempo.ts` | **o segundo maior.** É onde entra a geometria, que é o que o `lib-tempo.mjs` não tem e é justamente onde mora metade da carga do mestre (viagem, re-projeção, Tick vazio) |
+| **1** ✅ | **A resolução do golpe fora do modal** (`resolverGolpe`) | **FEITO em 02/09** (`src/lib/lance.ts`, 1051 lances de oráculo, zero divergências). Era: **especificado, falta código.** O contrato está na P §2.1: entra resumo do atacante e do alvo, ação, manobra, índice do golpe, distância, perfil e fonte de acaso; sai total, defesa, `errouPor`, veredito, dano bruto, tipo, Absorção, líquido, `rolls` | **o maior de todos, e é o único que não tem como ser cortado.** Sem ele não há batalha: o golpe não resolve, ninguém perde Vida e nada termina. Hoje o miolo mora dentro de `folhaDaAcao` (`grid.astro:7526-8100`), misturado com `innerHTML` e com `await SB` |
+| **2** | **O laço do Tick headless** (`avancoDeTick` + `filaDaCena` + `declararAtaque`) | **especificado, falta código, e virou o maior** depois que o 1 saiu. Contrato na P §2.1; a forma existe pronta no `cena()` do `lib-tempo.mjs`, e as peças puras (agenda, fases, re-projeção) já existem em `combate-tempo.ts` | **o segundo maior.** É onde entra a geometria, que é o que o `lib-tempo.mjs` não tem e é justamente onde mora metade da carga do mestre (viagem, re-projeção, Tick vazio) |
 | **3** | **O gerador de cena** (mapa, posições iniciais, quem entra no meio) | **especificado como decisão, não como formato.** A P §2.7 lista tamanho, forma e posições como **inventados**, e o eixo E2 já tem os quatro níveis em hexágonos (1 · 18 · 42 · 71) | **médio, e encurtável a quase nada:** para a bateria mínima da §4 são duas distâncias e um mapa fixo |
 | **4** | **A condição de fim** (D4) | **decidida e especificada**: um lado sem ninguém de pé · a fuga que sai do tabuleiro · a desistência de um lado (todos abaixo de 20% de Vida). Falta código | **pequeno**, e é o que separa "batalha" de "laço infinito". Sem isso não há batalha COMPLETA, que é o pedido |
 | **5** | **O log com classe de parada e motivo de fim** | **especificado**: o `cena.fim.motivo` com quatro valores e os campos do D2. Falta código, **e falta uma coisa nova**: a classificação de cada parada em **i/ii/iii**, que a R2 §B fez à mão para as 14 paradas e que o log precisa emitir sozinho | **médio, e é o item que a mudança de prioridade promoveu**: é ele que responde a pergunta nova. Não é mais acessório |
 | **6** | **O elenco** | **especificado** na P §0.4 P5 (sete arquétipos) e P6. Falta código do gerador | **pequeno se cortado a dois arquétipos**, que é o que a §4 propõe. Os sete inteiros custam a Cura, as Artes e o bestiário junto |
 | **7** | **As cinco políticas** | **especificadas** na P §0.4 P4, com as regras ⊙ e ⊕. Falta código | **zero, se a bateria mínima usar a política que já existe** (`decisaoAutomatica`). As cinco são para a grade de 112, não para a pergunta de agora |
-| **8** | **O `aid`** (identificador de ação, do D2) | **especificado**, falta código, **e depende do item 1.1 da Etapa 1** | **pequeno em si**, mas ele é o que liga `decl` a `dano` e sem ele **não há tempo morto**, que é uma das duas métricas do critério |
+| **8** | **O `aid`** (identificador de ação, do D2) | **especificado, e com o defeito achado**: ele existe no registro mas nasce na FOLHA, então dois golpes da mesma ação recebem `aid` diferentes (§8.2). Entra junto com o L11, numa cirurgia só | **pequeno em si**, mas ele é o que liga `decl` a `dano` e sem ele **não há tempo morto**, que é uma das duas métricas do critério |
 | **9** | **Os invariantes** | **especificados**: quinze (V1 a V15, R3 §3.1). Falta código | **pequeno, e encurtável:** três bastam para a primeira bateria (conservação de Vida, agenda monotônica, todo `dano` com `decl` ancestral) |
 | **10** | **A persistência em memória** (o objeto que substitui o Supabase) | **nem especificado em detalhe**, e é o mais fácil de todos: um objeto e três funções | **quase zero** |
 | **11** | **O agregador** (dos `.jsonl` para as tabelas do relatório) | **nem especificado** | **quase zero para a bateria mínima**, porque são doze linhas e cinco métricas |
@@ -240,32 +240,50 @@ ligada). Essas três são a grade de 112, e continuam sendo.
 
 ## 5 · A conta: do estado de hoje até a bateria rodando
 
+*Atualizada em 02/09, com os passos 1 e 2 entregues e com o L11 e o L12 dentro da sequência.*
+
 ### 5.1 · A sequência
 
 | # | Passo | O que entrega | Depende de |
 |---:|---|---|---|
-| **1** | **O objeto do lance e o despejo da resolução** (item 1.1) | o contrato do `resolverGolpe` escrito em código, o oráculo de entradas e saídas reais, os campos que faltam ao espelho, e o lugar onde o `aid` nasce | nada. É a fundação |
-| **2** | **A cópia da resolução** (`resolverGolpe` puro, em `src/lib` ou no harness) | a resolução fora do modal, conferida contra o oráculo do passo 1 | 1 |
-| **3** | **O laço do Tick headless** (`filaDaCena` + `declararAtaque` + `avancoDeTick`) | a batalha andando, com mapa, agenda e re-projeção | 2, mais `combate-tempo.ts` e `hex.ts`, que já existem |
-| **4** | **O fim de batalha** (D4) e o **teto de 2.000 Ticks** | a batalha **completa**, que é a palavra do pedido | 3 |
-| **5** | **O log**, com classe de parada, `aid` e `cena.fim.motivo` | o dado bruto da pergunta | 3 e 4 |
-| **6** | **O perfil de automação** (o D1 1c: a mesma semente, duas execuções) | a medida do que a automação compraria | 5 |
-| **7** | **O gerador de cena e o elenco mínimo** (dois arquétipos, dois mapas, três tamanhos) | as doze células | 3 |
-| **8** | **Três invariantes** e o **agregador** | a batalha que se sabe válida, e as doze linhas | 5 |
-| **9** | **A bateria roda** | os números | tudo acima |
+| **1** ✅ | **O objeto do lance e o despejo da resolução** (item 1.1) | **FEITO** (`27a674e`). O contrato do `resolverGolpe` escrito em código, o oráculo de entradas e saídas reais, e os campos que faltavam ao espelho | nada. Era a fundação |
+| **2** ✅ | **A cópia da resolução** (`src/lib/lance.ts`) | **FEITO** (`a949d9a`, fechado em `d412c6f` e `44578d0`). 1051 lances, duas fontes, zero divergências | 1 |
+| **3** | **O índice do golpe e o `aid` da ação** (L11 + L12), **uma cirurgia só** | a rajada volta a pagar o que a régua cobra, o `aid` passa a ser da ação, e `golpeDaAgenda` × `penDadosUsado` vira a prova do conserto | 2. **Bloqueia o espelho de motor**, que hoje já está condenado a divergir na primeira rajada |
+| **4** | **O laço do Tick headless** (`filaDaCena` + `declararAtaque` + `avancoDeTick`) | a batalha andando, com mapa, agenda e re-projeção | 3, mais `combate-tempo.ts` e `hex.ts`, que já existem |
+| **5** | **O fim de batalha** (D4) e o **teto de 2.000 Ticks** | a batalha **completa**, que é a palavra do pedido | 4 |
+| **6** | **O log**, com classe de parada, `aid` e `cena.fim.motivo` | o dado bruto da pergunta | 4 e 5 |
+| **7** | **O perfil de automação** (o D1 1c: a mesma semente, duas execuções) | a medida do que a automação compraria | 6 |
+| **8** | **O gerador de cena e o elenco mínimo** (dois arquétipos, dois mapas, três tamanhos) | as doze células | 4 |
+| **9** | **Quatro invariantes** e o **agregador** | a batalha que se sabe válida, e as doze linhas | 6 |
+| **10** | **A bateria roda** | os números | tudo acima |
+
+**Por que o L11 e o L12 são um passo só, e não dois.** Os dois mexem no mesmo caminho, de
+`declararGolpe` até a folha: o conserto do índice precisa **passar o golpe até lá**, e o `aid`
+precisa **nascer na declaração e viver em `acao`**, que é o mesmo trecho de código. Separá-los custa
+uma terceira recoleta dos 1051 lances.
+
+E há um motivo melhor que o custo: **os dois campos novos do L12 são o instrumento que PROVA o
+conserto do L11.** Feito junto, a recoleta já sai com `golpeDaAgenda === penDadosUsado` em todo
+lance, que é a asserção do conserto. Separado, o conserto acontece e não há como mostrá-lo.
+
+**E os dois campos ficam depois do conserto**, mesmo passando a ser sempre iguais: a igualdade vira
+**invariante do harness**, ao lado dos treze da R3 §3.1, e volta a falar se alguém reintroduzir a
+divergência. Campo que não muda mais só é ruído quando ninguém o lê; com asserção em cima, ele é uma
+trava. É o mesmo raciocínio da trava do `cobre`.
 
 ### 5.2 · O mais longo, e por quê
 
-**Os passos 2 e 3, juntos, e o 2 é o pior.**
+**Era o passo 2 e agora é o 4**, porque os dois primeiros saíram.
 
-O `resolverGolpe` é o único item que **não tem nada pronto**: `combate-tempo.ts` dá a agenda,
-`hex.ts` dá a geometria, `quase-acerto.ts` dá a classificação, `calc.ts` dá a Defesa e a Absorção,
-mas **a costura dos cinco** mora dentro de um modal de 600 linhas, misturada com `innerHTML` e com
-`await SB`. E é a peça em que uma divergência silenciosa custa mais caro, porque ela decide dano, que
-decide duração, que multiplica toda a carga.
+O laço do Tick é grande, mas é **montagem**: a agenda, as fases, a re-projeção e a fila estão em
+`combate-tempo.ts` e são puras; a geometria está em `hex.ts`; a resolução está em `lance.ts`, agora
+conferida contra 1051 lances de verdade. **O risco dele é de ordem, não de conta**, e é uma diferença
+grande em relação ao que o passo 2 era: lá, uma divergência silenciosa decidia dano, que decide
+duração, que multiplica toda a carga.
 
-O passo 3 é grande mas é **montagem**: as peças existem e são puras. O risco dele é de ordem, não de
-conta.
+O passo 3 (L11 + L12) é pequeno em linhas e **bloqueante em consequência**: enquanto ele não entrar,
+o espelho de motor não pode ficar verde, porque a cópia aplica `penDados[golpeIndice]` e a mesa
+aplica `penDados[0]`.
 
 ### 5.3 · Onde a sequência encurta
 
@@ -275,18 +293,33 @@ conta.
 |---|---|---|
 | **uma política, a que já existe** | as cinco políticas inteiras, mais os quatro números inventados (40%, 50%, 3 hexes, 2 deslizes), mais a marca ⚑ no relatório | a bateria não diz quanto a política pesa. **E não é só economia: é honestidade**, porque a política que roda passa a ser a do produto e não a minha |
 | **dois arquétipos, sem Conjurador e sem criatura** | as Artes, a Mana, a Cura, o bestiário e o segundo caminho de código do `aid` | a bateria não cobre Arte nem porte |
-| **três invariantes em vez de quinze** | doze | a batalha inválida passa despercebida em mais casos. Os três escolhidos (conservação de Vida, agenda monotônica, todo `dano` com `decl` ancestral) são os que pegam erro de motor, e não erro de regra |
+| **quatro invariantes em vez de quinze** | onze | a batalha inválida passa despercebida em mais casos. Os quatro escolhidos (conservação de Vida, agenda monotônica, todo `dano` com `decl` ancestral, e `golpeDaAgenda === penDadosUsado`) são os que pegam erro de motor, e não erro de regra |
 | **duas distâncias em vez de quatro** | metade das células | perde-se a forma da curva de viagem, e fica o extremo |
 | **a persistência é um objeto** | a camada inteira | nenhum: era isso mesmo |
 
 **E um corte que eu NÃO recomendo, e explico:** pular o passo 1 e escrever o `resolverGolpe` direto
-da leitura do código. Economiza um passo e reintroduz exatamente o risco que criou as cinco
-divergências do `lib-tempo.mjs`. O passo 1 é o que transforma "eu li e entendi" em "eu conferi contra
-o que a mesa faz".
+da leitura do código. Ele economizaria um passo e reintroduziria exatamente o risco que criou as
+cinco divergências do `lib-tempo.mjs`. **Agora há prova de que não valia:** o passo 1 achou três
+defeitos de mesa que nenhum teste unitário pegava, e um deles (a rajada de graça) contamina a métrica
+principal da bateria.
 
-**O gargalo real da sequência não é técnico:** é que os passos 1 a 3 são **um bloco**, e não têm
-entrega parcial útil. Antes do passo 4 não existe batalha completa, e portanto não existe nada para
-olhar. É a parte da estrada em que não há acostamento.
+**O gargalo real da sequência não é técnico:** é que os passos 4 a 6 são **um bloco**, e não têm
+entrega parcial útil. Antes do fim de batalha não existe batalha completa, e portanto não existe nada
+para olhar. É a parte da estrada em que não há acostamento.
+
+### 5.4 · Onde o oráculo entra no caminho crítico
+
+**Ele é pré-requisito, mas não da batalha completa: é pré-requisito de CONFIAR na cópia da
+resolução**, que é o preço da decisão do Q6.
+
+Sem ele, o harness roda milhares de batalhas contra uma resolução que ninguém conferiu, e **todo
+número da bateria fica pendurado nisso**: uma divergência de dano decide duração, que multiplica
+toda a carga medida.
+
+Então ele **não é uma etapa da sequência**, é uma **validação que roda uma vez por mudança na
+resolução**, e é o que autoriza a bateria a valer alguma coisa. Concretamente: entra no `validate`
+(já está), roda a cada `npm run validate`, e a recoleta é ato deliberado, avisado pelo carimbo, nunca
+reação a teste vermelho.
 
 ---
 
@@ -569,14 +602,29 @@ não é a que se esperaria:
 
 | | Consertado ANTES | Consertado DEPOIS |
 |---|---|---|
-| **paradas por Tick** | igual | **igual**: uma rajada de três são três golpes em três Ticks, três folhas, com ou sem a penalidade. O número de caixas não muda |
-| **gestos por golpe aplicado** | igual | **muda pouco, e para cima**: sem a penalidade há mais acerto, e acerto custa mais cliques que erro (rola dano, aplica, atualiza Vida) |
+| **paradas por Tick** | a régua | **SOBE, e sobe pelo bug.** Ver abaixo: esta linha estava errada na primeira versão |
+| **gestos por golpe aplicado** | a régua | **sobe**: sem a penalidade há mais acerto, e acerto custa mais cliques que erro (rola dano, aplica, atualiza Vida) |
 | **duração** | a régua | **mais curta**: mais acerto, mais dano, batalha mais rápida |
 | **o que a bateria concluiria** | a rajada é uma escolha com preço | **a rajada é dominante**, e a política a escolheria mais, e o relatório atribuiria à regra um efeito que é de um bug |
 
-**Pelo critério do D8b, a métrica que reprova quase não se mexe**, porque ela conta caixas e o número
-de caixas é o mesmo. O que se estraga é a leitura de **balanço**, e o achado "a rajada é forte
-demais" sairia da bateria como se fosse sobre a regra.
+**A primeira versão desta seção concluía que a métrica principal quase não se mexia, e estava
+errada.** O argumento era: uma rajada de três são três golpes em três Ticks, três folhas, com ou sem
+a penalidade, logo o número de caixas é o mesmo. **Ele está preso a uma batalha de composição fixa, e
+a composição não é fixa.**
+
+A composição de manobras é **saída da política**, que reage ao estado, que depende do dano, que
+depende da penalidade que não está sendo cobrada. A minha própria frase da linha de baixo já
+continha a refutação: *"a rajada é dominante, e a política a escolheria mais"*. Se ela escolhe mais,
+a mistura de manobras muda, e é a mistura que gera as paradas.
+
+**E o efeito tem direção, o que é pior que ter tamanho.** A rajada é a **única** manobra que produz
+vários golpes por ação, portanto várias folhas. De graça, a política a escolhe mais; mais rajada é
+mais folhas por ação; **a métrica que reprova SOBE**. Somado ao viés do gatilho (o Agressivo declara
+rajada quando está perdendo), o efeito se concentra no lado que está atrás, que é o que mais luta e
+mais gera parada.
+
+**Conclusão corrigida: o defeito contamina a métrica PRINCIPAL, e não só a leitura de balanço.** Isso
+reforça, e não enfraquece, a decisão de consertar antes da primeira bateria.
 
 **Há um segundo argumento, e ele é decisivo: o espelho já está condenado a falhar.** O
 `resolverGolpe` de `lance.ts` recebe `golpeIndice` e aplica `penDados[golpeIndice]`, que é a regra.
@@ -587,7 +635,8 @@ lugares.
 
 **Conclusão: consertar antes**, e o conserto é passar o índice do golpe até a folha. Fica registrado
 e não feito nesta rodada, pelo mesmo critério do `resumoDe`: o conserto muda resolução em produção e
-merece a sua própria passada, com recoleta.
+merece a sua própria passada, com recoleta. Ele é o **passo 3** da sequência da §5.1, junto com o
+`aid`, numa cirurgia só.
 
 ### 8.2 · O objeto do lance é por GOLPE, e o desenho estava meio errado
 
@@ -616,6 +665,19 @@ vai comparar de qualquer forma.
 os 1051 lances continuam válidos como oráculo de tudo o que eles cobrem. O que eles não cobrem é
 justamente o que a mesa não faz.
 
+**DECIDIDO em 02/09: o L11 e o L12 são uma cirurgia só**, e não dois itens. Os dois mexem no mesmo
+caminho, de `declararGolpe` até a folha: o conserto do índice precisa passar o golpe até lá e o `aid`
+precisa nascer na declaração, que é o mesmo trecho. Separá-los custa uma terceira recoleta dos 1051
+lances. E o motivo melhor que o custo: **os dois campos novos são o instrumento que prova o conserto
+do 8.1.** Feito junto, a recoleta já sai com `golpeDaAgenda === penDadosUsado` em todo lance, que é a
+asserção do conserto; separado, conserta-se e não há como mostrar.
+
+**E os dois campos ficam DEPOIS do conserto**, mesmo passando a ser sempre iguais. A igualdade vira
+**invariante do harness**, ao lado dos treze da R3 §3.1, e volta a falar se alguém reintroduzir a
+divergência. Campo que não muda mais só é ruído quando ninguém o lê; com asserção em cima, ele é uma
+trava, pelo mesmo raciocínio da trava do `cobre`. **A asserção entra no mesmo commit do conserto**,
+senão o campo nasce sem quem o leia, que é a condição de virar ruído.
+
 ### 8.3 · Para que serve a coleta de 1051 lances
 
 **Confirmado: ela é o oráculo da cópia da resolução, e nada além disso na conta principal.**
@@ -641,3 +703,10 @@ comportamento real da mesa, com entradas, dados e saídas nomeadas.
    teste unitário pegava: o `resumoDe` descartando a armadura da ficha, o `rolarAcerto` usando
    `linhas[0]` em toda folha, e a própria confusão entre o que a tela mostra e o que a régua aplica
    no dano fora do acerto.
+
+**E onde ela entra no caminho crítico** (decidido em 02/09, detalhado na §5.4): ela **não é
+pré-requisito da batalha completa**, é pré-requisito de **confiar na cópia da resolução**, que é o
+preço da decisão do Q6. Sem ela, o harness roda milhares de batalhas contra uma resolução que
+ninguém conferiu, e todo número da bateria fica pendurado nisso. Não é etapa da sequência: é
+validação que roda **uma vez por mudança na resolução**, e é o que autoriza a bateria a valer alguma
+coisa.
