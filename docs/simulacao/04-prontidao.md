@@ -514,7 +514,46 @@ Engenharia. Nada aqui é regra de jogo; se algum destes virasse regra, estaria n
 
 ## F · O que pode dar errado
 
-Cinco, em ordem de gravidade.
+Seis. **Os cinco originais são todos do mesmo tipo: "a bateria roda e não serve".** O que faltava era
+o outro tipo, e ele é mais grave que todos, porque não custa o experimento, custa o jogo: entrou em
+02/09 como **F0** (`05-fechamento.md` §4). Não renumerei os outros cinco, porque os outros documentos
+já os citam por número.
+
+### F0 · A mesa quebra, e não é a bateria que se perde
+
+**O risco.** A Etapa 1 não acontece num laboratório: acontece na mesa em que se joga. Ela mexe em
+**cinco arquivos de regra** (`quase-acerto.ts`, `calc.ts`, `combate-resumo.ts`, `grid.astro`,
+`artes-grid.ts`) e obriga a **reescrever os dois testes** que hoje congelam o estado errado
+(`test-contrato.mjs:136`, que trava `R.defesa = 16` com o Bloqueio inútil, e L149, que trava
+`F.defBloqueio = 10`, que ninguém lê). E o que ela liga não é decoração: `bloqueio` muda a Defesa de
+quem tem escudo em uns 5 pontos (R2 §F#2), `margem` muda o dano de todo golpe acima da Defesa em uns
+47% (R2 §F#1), e `gate` pode zerar dano que hoje sai.
+
+**Os sinais, em ordem de quando aparecem:**
+
+| Quando | O sinal |
+|---|---|
+| o mais cedo e o mais barato | **o espelho de inércia acusar diferença numa bandeira DESLIGADA.** É o único sinal que aparece **antes** de a mudança chegar à mesa, e significa que ela vazou para o caminho comum |
+| no `npm run validate` | **`test-kael.mjs` mudar de número** sem que ninguém tenha decidido mudá-lo. É a regressão de personagem que já roda no portão rápido, e ela cobre a ficha inteira |
+| ao reescrever os dois testes | **o teste novo passar de primeira.** Reescrever um teste para o código, em vez de para o contrato, é o modo mais comum de um número errado virar linha de base. O número novo de `R.defesa` tem de ser conferido à mão, na régua da R2 §F, antes de virar asserção |
+| na mesa, e é tarde | **a Defesa de uma peça mudar entre dois Ticks de um encontro aberto**, porque o perfil de bandeiras mudou no meio |
+
+**O que se perde se ele se realizar tarde:** não a bateria, a **mesa**. Um encontro em andamento com
+números que mudaram no meio, uma ficha salva que passa a somar diferente, e a confiança de quem joga,
+que é o único recurso desta lista que não volta com um `git revert`.
+
+**O que já protege, e o buraco que sobra.** O espelho de inércia (D4) cobre o vazamento de bandeira
+desligada; o `npm run build` verde, que roda `validate` antes do Astro, cobre a regressão de
+personagem; os dois testes reescritos cobrem o contrato **se** os números forem conferidos à mão.
+**Nada cobre o quarto sinal**, e ele é o único que não é erro de programação: o perfil vive no
+`regras.json`, um deploy troca o `regras.json`, e um encontro aberto no Supabase continua de onde
+parou, agora com outro chão. A mitigação é uma frase e não está feita: **o encontro deveria carimbar
+o perfil de bandeiras com que começou**, e ler dele, do mesmo jeito que a bateria carimba o
+`dados_hash` no manifesto (§2.4 do `02`). Fica registrado como pendência de mesa, não como parte
+desta rodada.
+
+**Onde entra na ordem de gravidade: primeiro.** Os cinco abaixo custam batalhas e conclusões; este
+custa uma sessão de jogo. E ele é o único cujo pior caso acontece **enquanto alguém está jogando**.
 
 ### F1 · A bateria roda inteira e mede a minha política, não o sistema
 
@@ -528,6 +567,37 @@ entre células do núcleo. Se a primeira dominar, é o sinal, e ele aparece **an
 **O que se perde se ele se realizar tarde:** as 54.500 batalhas, e pior, a confiança em conclusões
 que pareciam sobre o jogo. É o risco de "roda inteira e não serve".
 
+**Uma premissa que mudou em 02/09, e para pior:** a fusão das duas especificações de política
+(`02` §0.4 P4) deixou as cinco listas **maiores**, com a regra de leitura ⊙ e a regra de modo ⊕ em
+cada uma. Mais regra por política é mais variância entre políticas, então o F1 ficou **mais**
+provável, não menos. E o peso delas na grade também subiu: E6 tem 4 comparações em volta de **cada**
+âncora, oito células.
+
+#### O que fazer se o sinal acender · perguntado e respondido em 02/09
+
+O F1 identificava o sinal e não dizia o que fazer com ele. O D8b fixou o critério para reprovar uma
+**regra**; isto é o critério para reprovar o **experimento**.
+
+| Resposta | O que muda |
+|---|---|
+| **Uma política só, e a política vira grade própria** ⭐ **RECOMENDADA** | toda a grade roda Agressiva, o E6 sai do um-fator-de-cada-vez e vira uma bateria pequena separada, que responde "quanto a política pesa". A principal responde sobre o sistema, sob política declarada |
+| Rodar assim mesmo, tudo condicionado à política | a grade não muda, e todo número carrega "sob a política X". O efeito da política é reportado como o maior de todos, o que é achado e não defeito |
+| Recalibrar as políticas até a variância cair | os quatro números inventados (40%, 50%, 3 hexes, 2 deslizes) são ajustados até as políticas pararem de dominar |
+| Parar até as políticas não serem invenção minha | a bateria espera decisão registrada de mesa de verdade, em vez de cinco listas que eu escrevi |
+
+**Por que a recomendada:** separa as duas perguntas em vez de contaminar as duas, não inventa eixo
+nenhum (o E6 já existe, só muda de lugar), e a leitura do núcleo cruzado sobrevive inteira.
+
+**O argumento mais forte contra ela, e ele é bom:** fixar uma política **é** uma escolha inventada,
+só que escondida. "O sistema sob a Agressiva" é uma afirmação mais estreita do que "o sistema sob
+cinco políticas, reportado condicionalmente", e a segunda pelo menos declara a dependência em vez de
+apagá-la. Pior: o critério do D8b é **carga do mestre**, e quanta carga existe depende de quantas
+decisões a política gera por Tick. Escolher a política é escolher o nível da coisa que se está
+medindo. E se a interação for real, ou seja, se uma regra só importar para quem joga cauteloso,
+fixar a política esconde exatamente o achado que a bateria existia para encontrar.
+
+> **RESPONDIDO em 02/09: uma política só, e a política vira grade própria.**
+
 ### F2 · O `aid` entra errado e o tempo morto vira ficção plausível
 
 **O risco:** o D2 pede um identificador de ação atravessando cinco tipos de evento e sobrevivendo à
@@ -540,6 +610,12 @@ aparecer na conta, o `aid` está quebrando exatamente onde a re-projeção mexe.
 **O que se perde:** uma das duas métricas centrais, e a que sustenta a decisão da folga da
 perseguição. E se ninguém notar, um número errado vira decisão de regra.
 
+**Premissa que mudou em 02/09:** com criaturas no elenco (D10), o `aid` passa a ter de nascer em
+**dois caminhos de código**, não um. Os PCs passam por `resumoCombatePC`; as criaturas trazem o bloco
+de combate pronto do `monsters-mesa.json` e não passam por lá. Um `aid` emitido só no caminho de PC
+deixa metade das batalhas sem tempo morto mensurável, e o sintoma é o mesmo do risco original: um
+número menor e perfeitamente crível.
+
 ### F3 · A tabela de custo de tela está errada e ninguém confere
 
 **O risco:** ela é leitura de código de 02/09, e a tela vai mudar (os itens 8 e 9 da §0.6.1 são o
@@ -551,6 +627,12 @@ com um teste dirigido que conte os cliques.
 
 **O que se perde:** metade das métricas (§C.2), e são justamente as que respondem "quanto o mestre
 trabalha" em unidade que uma pessoa entende.
+
+**Premissa que mudou em 02/09, e é concreta:** a regra ⊕ do D11 **acrescentou um gesto de tela** que
+a tabela de custo não tem linha para cobrar. Escolher o modo de dano é um clique, e é um clique que
+só acontece em algumas cenas. A tabela foi lida do código de 02/09, quando ninguém trocava de modo.
+Ela precisa da linha antes de a bandeira `modo2` ser lida, senão o `modo2` sai medindo dano e não
+custa gesto nenhum, que é o oposto do que ele faz.
 
 ### F4 · A âncora satura e o um-fator-de-cada-vez sai todo nulo
 

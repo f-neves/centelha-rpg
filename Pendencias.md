@@ -1020,6 +1020,18 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   §0.10.1), um piloto de 2.000 em **cada uma das duas âncoras** com a regra de decisão escrita antes
   de rodar, e 15 invariantes que abortam a batalha (`03` §3.1). O elenco tem PCs **e** criaturas do
   bestiário (D10), e cada bandeira é medida na célula em que ela morde. Só depois de L1 a L5.
+- [ ] **L9 · [PRIMEIRO, junto com a Etapa 1] O encontro carimba o perfil de bandeiras.** Uma coluna
+  `encontros.perfil jsonb`, escrita **uma vez** na criação do encontro e lida por ele dali em
+  diante. Sem ela, um deploy troca o `regras.json` debaixo de um encontro aberto e a Defesa de uma
+  peça muda entre dois Ticks da mesma cena. É o quarto sinal do risco **F0** (`04-prontidao.md`), o
+  único que não é erro de programação, e o único que **bloqueia a Etapa 1**. Zero gravação por
+  Tick, então respeita o orçamento da `02` §0.8.
+- [ ] **L10 · [ANTES DE LER O RESULTADO] Duas coisas que não bloqueiam o começo e bloqueiam a
+  leitura.** A **tabela de custo de tela** não tem linha para o gesto que a regra ⊕ acrescentou
+  (escolher o modo de dano é um clique), e sem ela a bandeira `modo2` sai medindo dano e não custa
+  gesto nenhum. E o **`aid`** precisa nascer nos **dois** caminhos de código: os PCs passam por
+  `resumoCombatePC`, as criaturas trazem o bloco pronto do `monsters-mesa.json` e não passam por
+  lá. Riscos **F3** e **F2**.
 - [ ] **L8 · [FAZER] Fundir as duas especificações de política.** A `02` §0.4 P4 tinha a lista
   ordenada e a §0.47 tinha as regras de leitura, e nenhuma era completa. Fundidas em 02/09, com as
   regras de leitura marcadas ⊙ (é o que o eixo E9 desliga) e a regra de modo marcada ⊕. Enquanto

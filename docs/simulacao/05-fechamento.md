@@ -7,8 +7,9 @@ prontidão deixou aberto, propagar o que ela reenquadrou, e registrar duas decis
 Documentos citados: **R1** = `00-diagnostico.md`, **R2** = `01-diagnostico-carga.md`,
 **P** = `02-projeto-harness.md`, **R3** = `03-respostas.md`, **R4** = `04-prontidao.md`.
 
-> **O pedido chegou cortado.** O bloco `=== 3 ·` veio sem conteúdo. Os itens 1 e 2 estão respondidos
-> inteiros e aplicados; o 3 está esperando o texto.
+> **Histórico:** o pedido chegou cortado no bloco 3 e as seções 1 e 2 foram entregues sozinhas. Os
+> blocos **3 a 6** chegaram depois, com quatro correções da revisão incorporadas (§2.5), e estão
+> respondidos abaixo. As seções **A** e **B**, no fim, são acréscimos meus daquela primeira entrega.
 
 ---
 
@@ -387,16 +388,257 @@ distinção não existia, e era ela que o F4 não sabia fazer.
 
 ---
 
-## 3 · (esperando)
+## 3 · O D8b, propagado
 
-O bloco `=== 3 ·` do pedido chegou vazio. Nada foi assumido no lugar dele.
+Ele estava registrado como decisão e não tinha chegado ao desenho. Chegou agora, e a §2.6 do `02`
+foi reescrita inteira.
+
+### 3a · A §2.6 reordenada
+
+A régua subiu para o topo da seção, porque é ela que ordena o resto, e a tabela única virou **três
+blocos**:
+
+| Bloco | O que ele decide |
+|---|---|
+| **As principais · por etapa** | são as que **reprovam** uma regra, e cada uma vem etiquetada com qual dos dois critérios do D8b ela serve: **carga do mestre** ou **espera do jogador** |
+| **O contexto · por batalha** | descrevem a cena e **não reprovam nada** |
+| **O diagnóstico do motor** | conferem o modelo (a forma fechada da R2 §H1, a sincronia da §H3) e nunca foram carga nem espera |
+
+**O que mudou de posição:**
+
+- **subiram para principal:** tempo morto, adiamentos e maior deslize, e fração de Ticks vazios. As
+  três descrevem **espera**, que é metade do critério, e estavam perdidas no meio da lista;
+- **desceram para contexto:** **paradas por batalha** e **gestos por batalha**, que eram as duas
+  primeiras da tabela antiga, mais Ticks por batalha e fração de batalhas que não terminam;
+- **viraram bloco próprio:** N(T) e a fração de golpes em Tick múltiplo de 6.
+
+**O que deixou de ser critério de reprovação:** a **duração da batalha**, em qualquer forma, e junto
+com ela **taxa de vitória e dominância**. As três continuam calculadas e param de decidir se uma
+regra fica. A gramática ficou escrita em uma frase na §2.6: *uma regra que dobre a duração e mantenha
+a carga por Tick é neutra pelo critério; uma que encurte a batalha e dobre os cliques por etapa é
+ruim.*
+
+### 3b · A §3, varrida
+
+A previsão de E5 era o caso mais claro, e não era o único. Três das cinco estavam na unidade
+descartada:
+
+| Previsão | Estava | Ficou |
+|---|---|---|
+| **E5** | "deve encurtar a batalha e por consequência **abaixar a carga total**" | as nove bandeiras não acrescentam caixa nenhuma: `margem` muda o número dentro da folha que já abriu, `bloqueio` muda a Defesa comparada, `gate` **tira** um gesto (dano zerado dispensa a escrita de `pv_atual`, §0.8.1) e `modo2` **acrescenta** um, que é a escolha do modo. Previsão falsificável: a carga por Tick com o perfil cheio fica a menos de um gesto da carga com tudo desligado, e a única que a move visivelmente é a `modo2`, para cima |
+| **E1** | "o **total** de paradas por batalha deve mudar pouco" | a **média** de paradas por Tick muda pouco; o que E1 move é a **cauda**, e a previsão é sobre o p99 e o pico |
+| **E3** | "domina o **total** de paradas" | domina a **carga por Tick**, quase linearmente no número de peças |
+| **E4** | "ou a batalha fecha, ou não fecha nunca" | continua valendo, com a etiqueta de que isso é **contexto**: em unidade de critério o que E4 mostra é o **maior deslize** e os **adiamentos por ação** |
+| **E2** | já estava certa | tempo morto e Tick vazio são as duas por etapa |
+
+**E a varredura achou uma coisa fora da §3, que era o pior caso da unidade errada: a conta das 500
+repetições.** Ela dizia *"a quantidade mais ruidosa é o número de paradas **por batalha**, que herda a
+variância da duração"*, e é dela que sai o `n` de toda a grade. Com a métrica principal em paradas
+por Tick, **o fator duração saiu do numerador e foi para o denominador**, então o CV deve ser
+**menor**, e um CV menor pede um `n` menor. As 500 continuam valendo até o piloto falar, que já está
+especificado para medir o CV da métrica nova; se ele vier em 0,3, o `n` da média cai para ~140 e
+quem passa a mandar é o piso de 400 do p95. **O número que pode encolher é o da média, nunca o da
+cauda**, e a conta da cauda não muda porque ela é sobre batalhas e não sobre a unidade da métrica.
+
+Também ganharam nota duas passagens que afirmavam coisas que o D8b tornou falsas: a de que descartar
+a batalha não terminada "enviesa para baixo tudo o que cresce com a duração, que é justamente a
+carga" (a carga que reprova não cresce mais com a duração), e a da §4 que dizia que sem morte não há
+nada (o que se perde ali é tudo métrica de contexto agora).
+
+### 3c · As seis métricas da R4 §A.2 entraram
+
+Elas nasceram na §0.45 e na §0.7 e viviam fora da lista. Depois do D2 têm campo, e agora têm lugar:
+
+| Métrica | Bloco | Distribuição ou média, e por quê |
+|---|---|---|
+| Tempo morto de **quem perseguiu** contra quem já estava no alcance | **principal**, espera | duas distribuições lado a lado: é espera, e espera vai com a cauda. Vem do `decl.viagem`. É também o sinal do risco F2 |
+| Taxa de acerto dos dois grupos | contexto | duas proporções, com intervalo binomial |
+| Tick em que o conjurador cruza **30% e zero** de Mana | contexto | distribuição, mais a fração das batalhas em que o zero **não** aconteceu, senão a distribuição mente por censura |
+| Fração das batalhas em que ele **termina esvaziado** | contexto | proporção, com intervalo binomial |
+| Quantas ações ele passa **como lutador de adaga** | contexto | **média**, e ela cabe: é razão de dois contadores dentro da mesma batalha |
+| Fração dos golpes que caem **no Tick da chegada** | diagnóstico | proporção, com intervalo binomial. Vem do `passo.chegou` |
+
+### 3d · Como o relatório impede que um zero minta
+
+Esta é a consequência direta de o E5 ter mudado de estrutura: a mesma bandeira aparece com **duas
+leituras**, a da hospedeira (que diz quanto ela vale) e a da âncora extrema (que existe só para a
+soma do F5 e é **zero por construção**). Sem instrumento, as duas se parecem.
+
+**O instrumento é um contador de ocasiões, por bandeira e por célula: quantas vezes a pré-condição da
+regra ocorreu.** Não é o delta, é a ocasião, e custa um inteiro no agregado.
+
+| Ocasiões | Delta | O relatório imprime |
+|---:|---|---|
+| **0** | qualquer | **`não exercitada`**, nunca um número |
+| **> 0** | ≈ 0 | **`0,0 em n ocasiões`**: a regra rodou e não mudou o resultado. Isto sim é achado |
+| **> 0** | ≠ 0 | o número, com o intervalo |
+
+**A unidade da comparação é a mesma das principais**: a leitura de uma bandeira é o delta de
+**paradas por Tick**, **gestos por golpe aplicado** e **tempo morto**, medido entre o perfil cheio e
+o cheio-menos-ela **na mesma célula**. Nunca em paradas por batalha, que foi o que o D8b descartou.
+
+Três coisas caem de graça daí: o `teto6` sai de "não se sabe" (o contador diz quantas vezes os
+modificadores passaram de 6); as seis leituras de âncora do F5 saem todas como `não exercitada`, que
+é a leitura honesta delas; e o contador vira **a prova de que a hospedeira foi bem escolhida**, que é
+exatamente o erro que a regra ⊕ quase produziu no `gate`.
+
+---
+
+## 4 · O risco que faltava
+
+### 4a · F0 · A mesa quebra
+
+Os cinco riscos da R4 §F são todos do mesmo tipo, "a bateria roda e não serve". Faltava o outro tipo,
+e ele é o mais grave, porque não custa o experimento: custa o jogo. Entrou na R4 como **F0**, escrito
+no formato dos outros, e os outros cinco **não foram renumerados**, porque os outros documentos já os
+citam por número.
+
+**O risco.** A Etapa 1 acontece na mesa em que se joga. Mexe em cinco arquivos de regra, obriga a
+reescrever os dois testes que hoje congelam o estado errado, e o que ela liga não é decoração:
+`bloqueio` muda a Defesa de quem tem escudo em uns 5 pontos, `margem` muda o dano de todo golpe acima
+da Defesa em uns 47%, `gate` pode zerar dano que hoje sai.
+
+**Os quatro sinais, em ordem de quando aparecem:** o espelho de inércia acusar diferença numa
+bandeira **desligada** (o mais cedo, e o único que aparece antes de a mudança chegar à mesa);
+`test-kael.mjs` mudar de número sem ninguém ter decidido; **o teste reescrito passar de primeira**
+(reescrever o teste para o código em vez de para o contrato é como um número errado vira linha de
+base); e, tarde demais, a Defesa de uma peça mudar entre dois Ticks de um encontro aberto.
+
+**O que se perde se tarde:** não a bateria, a mesa. Um encontro com números que mudaram no meio, uma
+ficha salva que passa a somar diferente, e a confiança de quem joga, que é o único recurso desta
+lista que não volta com um `git revert`.
+
+**Ordem de gravidade: primeiro.** É o único cujo pior caso acontece enquanto alguém está jogando.
+
+**O buraco, e o que se decidiu sobre ele.** Três dos quatro sinais já têm quem os pegue. O quarto não
+tinha nada, e não é erro de programação: o perfil vive no `regras.json`, um deploy troca o
+`regras.json`, e um encontro aberto continua de onde parou com outro chão.
+
+> **DECIDIDO em 02/09: o encontro carimba o perfil ao começar.** Uma coluna `encontros.perfil jsonb`,
+> escrita **uma vez** na criação do encontro e lida por ele dali em diante. Zero gravação por Tick,
+> então respeita o orçamento da §0.8, e é o mesmo princípio do `dados_hash` que a bateria já carimba
+> no manifesto. **Isso passa a bloquear a Etapa 1**, e é a única coisa que bloqueia.
+
+O preço, escrito para não surpreender: um encontro esquecido aberto fica rodando o perfil antigo para
+sempre, e a §0.6 tinha decidido que o padrão em produção é **ligadas**. As duas coisas convivem, mas
+alguém vai abrir uma cena velha um dia e achar que o Bloqueio quebrou.
+
+### 4b · O F4 e o F5, atualizados
+
+Feito na rodada anterior a esta e conferido aqui: o **F5** perdeu a conferência de aditividade como
+ela existia (deltas contra referências diferentes não somam), ganhou a forma nova com **referência
+única** e ganhou o registro de que **já estava fraca antes**, porque sete das dezessete davam delta
+zero na âncora. O **F4** ganhou o **sinal da mediana**, que é o que separa saturação de efeito nulo de
+verdade. E a §B deste documento, que afirmava que os cinco não tinham sido mexidos, foi corrigida.
+
+### 4c · Os outros três, conferidos contra a grade nova
+
+| | Mudou de premissa? |
+|---|---|
+| **F1** · a bateria mede a minha política | **sim, e para pior.** A fusão das duas especificações (§2.2) deixou as cinco listas **maiores**, com a regra ⊙ e a regra ⊕ em cada uma. Mais regra por política é mais variância entre políticas, então o F1 ficou **mais** provável. E o peso delas na grade subiu: E6 tem 4 comparações em volta de cada âncora, oito células |
+| **F2** · o `aid` entra errado | **sim.** Com criaturas no elenco, o `aid` tem de nascer em **dois caminhos de código**: os PCs passam por `resumoCombatePC`, as criaturas trazem o bloco pronto do `monsters-mesa.json` e não passam por lá. Um `aid` emitido só no caminho de PC deixa metade das batalhas sem tempo morto, com o mesmo sintoma do risco original: um número menor e crível |
+| **F3** · a tabela de custo de tela está errada | **sim, e é concreto.** A regra ⊕ do D11 **acrescentou um gesto de tela** que a tabela não tem linha para cobrar: escolher o modo de dano é um clique. A tabela foi lida do código de 02/09, quando ninguém trocava de modo. Sem a linha, o `modo2` sai medindo dano e não custa gesto nenhum, que é o oposto do que ele faz |
+
+---
+
+## 5 · A decisão do F1
+
+O F1 identificava o sinal (no piloto, a variância entre políticas contra a variância entre células do
+núcleo) e não dizia o que fazer se ele acendesse. As quatro respostas, a recomendada e o
+contra-argumento estão escritos na **R4 §F1**. Em resumo:
+
+> **RESPONDIDO: uma política só, e a política vira grade própria.** Toda a grade roda Agressiva, o E6
+> sai do um-fator-de-cada-vez e vira uma bateria pequena separada, que responde "quanto a política
+> pesa".
+
+**O motivo:** separa as duas perguntas em vez de contaminar as duas, não inventa eixo nenhum e a
+leitura do núcleo cruzado sobrevive inteira.
+
+**O argumento contra, que continua de pé e vai para o relatório:** fixar uma política **é** uma
+escolha inventada, só que escondida, e "o sistema sob a Agressiva" é afirmação mais estreita do que "o
+sistema sob cinco políticas, reportado condicionalmente". Pior: o critério do D8b é carga do mestre, e
+quanta carga existe depende de quantas decisões a política gera por Tick, então escolher a política é
+escolher o nível da coisa que se está medindo. E se a interação for real, ou seja, se uma regra só
+importar para quem joga cauteloso, fixar a política esconde exatamente o achado que a bateria existia
+para encontrar.
+
+**Isto só acende se o sinal acender.** Enquanto ele não acender, a grade continua com E6 no
+um-fator-de-cada-vez, como está na §0.10.1.
+
+---
+
+## 6 · Conferência final
+
+### 6a · A hospedeira do `gate` tem um lado que fere
+
+**Conferido, e tem.** O par é **Lanceiro de lança × Montanteiro de placa completa**:
+
+| Lado | Ataca com | O gate? | Fere? |
+|---|---|---|---|
+| **Lanceiro** | lança, modo **único**, perfurante, Perfuração **1** | `1 < 3` **fecha**, e a regra ⊕ não tem para onde fugir | **não**, nunca, enquanto `gate` estiver ligado |
+| **Montanteiro** | montante, modo principal **corte** (`armas.json`: três modos, o principal é corte) | o gate **não se aplica**: `gatePerfuracaoAbre` só avalia o perfurante | **sim**, contra a brigandina do Lanceiro |
+
+**A batalha termina**, então, e sempre do mesmo jeito com o `gate` ligado: os Montanteiros matam os
+Lanceiros e não levam um arranhão. Três coisas a registrar sobre isso:
+
+1. **A célula é deliberadamente assimétrica**, e é isso que faz dela uma boa hospedeira: o delta do
+   `gate` ali é a diferença entre "um lado não pode ferir" e "os dois lutam". É o maior delta que a
+   grade vai ver;
+2. **A regra ⊕ nunca dispara nessa célula**, nos dois lados: a lança não tem modo secundário e o modo
+   principal do montante não é perfurante. A célula mede `gate` sozinho, sem a ⊕ no meio;
+3. **os dois braços da comparação têm durações muito diferentes**, e pelo D8b isso não é problema: a
+   duração é multiplicador e não critério, e as métricas por Tick continuam comparáveis.
+
+**As hospedeiras copiam a forma da âncora extrema** (3×3, 18 hexes, campo aberto, Agressiva, com
+leitura, peça entrando no Tick seguinte) e trocam **só as peças**. Sem isso os números delas sairiam
+em outra escala e não se leriam ao lado dos das âncoras.
+
+### 6b · A conferência de aditividade é de uma âncora só
+
+**Ela vale dentro da âncora extrema, e só lá.** Não vale sobre o conjunto, e não vale "dentro de cada
+âncora": na mediana ela **não é computável**.
+
+| | Âncora extrema | Âncora mediana |
+|---|---|---|
+| Deltas individuais medidos lá | **as 15**: 9 com ocasiões e 6 com zero declarado | **6**, só as do núcleo do Tick |
+| Perfil tudo-desligado | sim | sim, e ele desliga **as 15** |
+| A soma fecha? | **sim**: os 15 deltas contra `cheio − tudo desligado` | **não**: faltam os deltas de `margem`, `bloqueio` e `teto6`, que mordem lá e nunca foram medidos lá |
+
+**A regra de leitura, para o relatório:**
+
+1. a conferência de aditividade aparece **uma vez**, rotulada **"âncora extrema"**, e nunca como
+   número da bateria inteira;
+2. ela lista os 15 deltas, com os 6 marcados `não exercitada` entrando como **zero declarado**, e não
+   como zero medido. A discrepância é reportada em número absoluto **e** como fração do efeito de
+   tudo-desligado;
+3. o alcance real é dito na mesma página: a aditividade é verificada sobre **nove** bandeiras
+   (`margem`, `bloqueio`, `teto6` e as seis do núcleo) e é trivial sobre as outras seis;
+4. o **tudo-desligado da mediana** é lido como **um número só**, "o que as quinze juntas compraram na
+   cena mediana", e **nunca é decomposto**;
+5. se a discrepância da extrema for grande, o número único da mediana é a única evidência sobre se a
+   interação depende da cena, e ele é apresentado como observação, não como decomposição.
+
+**O preço de estender a conferência à mediana**, se um dia interessar: medir `margem`, `bloqueio` e
+`teto6` também lá, **+3 células**, grade a 112. Registrado e não tomado.
+
+### 6c · O que bloqueia o quê
+
+| | O quê |
+|---|---|
+| **Bloqueia o começo da implementação** | **nada.** A Etapa 0 está inteiramente especificada: a branch congelada, a semente nos quatro pontos, o caminho do driver até ela e o despejo por Tick. Não há decisão pendente entre aqui e a primeira linha dela |
+| **Bloqueia a Etapa 1** (as nove bandeiras) | **uma coisa, e ela acabou de ser decidida:** o carimbo do perfil no encontro (§4a). Sem ele, a Etapa 1 sobe para uma mesa em que um encontro aberto pode mudar de regra no meio |
+| **Bloqueia a leitura do resultado, e não o começo** | a **linha da regra ⊕ na tabela de custo de tela** (F3), sem a qual o `modo2` sai sem custo de gesto · o **`aid` no caminho das criaturas** (F2), sem o qual metade das batalhas fica sem tempo morto · o **`n` final**, que só sai do piloto e pode encolher se o CV da métrica nova for menor (§3b) |
+| **Fechado** | os doze itens da §0.6.1 e a ordem entre eles · o critério de aceitação, com os dois espelhos separados · a grade, em 109 células conferidas bloco a bloco · as métricas, em três blocos com a régua do D8b no topo · as onze decisões D1 a D11 · os seis riscos F0 a F5, com sinal e perda escritos em cada um |
+
+**A resposta honesta à pergunta como você a formulou:** nada bloqueia o começo, é implementar a
+Etapa 0. E o que bloqueia a Etapa 1 é uma coluna que se escreve uma vez por encontro.
 
 ---
 
 ## A · O que mudou em cada arquivo
 
-*Esta seção e a seguinte são acréscimos meus. Os blocos **3 a 6** do pedido não chegaram, e as
-numerações deles ficam reservadas.*
+*Esta seção e a seguinte são acréscimos meus, da primeira entrega. Os blocos 3 a 6 do pedido estão
+nas seções 3 a 6, acima.*
 
 Cinco arquivos, um criado e quatro editados. Nenhum arquivo de `src/`, `scripts/` ou `supabase/` foi
 tocado: esta rodada não implementa.
@@ -406,7 +648,7 @@ tocado: esta rodada não implementa.
 Este. As dez dependências de prova sem instrumento, a ordem reescrita, a recontagem da grade, as
 cinco inércias e as duas decisões novas (D10 e D11).
 
-### `docs/simulacao/02-projeto-harness.md` · editado em nove lugares
+### `docs/simulacao/02-projeto-harness.md` · editado em doze lugares
 
 | Onde | O que mudou |
 |---|---|
@@ -420,6 +662,9 @@ cinco inércias e as duas decisões novas (D10 e D11).
 | **§0.7** | título e contagem: **quinze** bandeiras, **17** perfis de E5; entrou a linha do que saiu e por quê; entrou a regra de onde cada comparação roda |
 | **§0.10.1 e §0.10.2** | **a grade oficial refeita**: 109 células, 54.500 batalhas, a tabela de como cada bloco se lê, as duas âncoras diferindo em **exatamente um** fator (as duas passam a rodar Agressiva), o nível de E10 em que elas se sentam, e a tabela de qual célula hospeda cada bandeira |
 | **§3** | os totais riscados foram atualizados para 109 células e 54.500 batalhas; a estimativa de volume de log foi de 500 MB para 600 MB |
+| **§2.6** | **reescrita inteira** (bloco 3): a régua do D8b subiu para o topo, a tabela única virou três blocos (principais por etapa · contexto por batalha · diagnóstico do motor), as seis métricas da R4 §A.2 entraram, e entrou o **contador de ocasiões**, que impede um zero de âncora de ser lido como "a bandeira não faz nada" |
+| **§3, as previsões** | as cinco reescritas na unidade do D8b, com a versão anterior citada em cada uma. E a conta das 500 repetições, que era o pior caso da unidade errada: ela saía do CV de paradas **por batalha** e passou a sair do de paradas **por Tick**, com a consequência escrita de que o `n` da média pode encolher |
+| **§0.4 D4 e §4** | duas passagens que o D8b tornou falsas ganharam nota: a de que descartar a batalha não terminada enviesa "justamente a carga", e a de que sem morte não há nada |
 
 ### `docs/simulacao/03-respostas.md` · editado em um lugar
 
@@ -428,13 +673,18 @@ Agressivo nunca tinha entrado na lista executável, e enquanto não estava lá o
 qualquer célula de política Agressiva. Junto, a correção da frase "os três cujas regras de fato leem
 alguma coisa", que era verdadeira sobre a §0.47 e falsa sobre a §0.4 P4.
 
-### `docs/simulacao/04-prontidao.md` · editado em sete lugares
+### `docs/simulacao/04-prontidao.md` · editado em onze lugares
 
 Blocos de consequência abaixo das respostas de **D1** (a grade não ficou em 107 células), **D3** (o
 espelho eram dois), **D4** (a branch tem prazo) e **D5** (a instrumentação vem antes, e são nove
 bandeiras e não dez), mais um aviso no topo da **§B.3** dizendo que a análise da âncora foi superada
 e onde está a âncora valendo. Depois da revisão, o
 **F4** e o **F5** foram reescritos (§2.5 C4 e C3), e o número da §F1 acompanhou a grade.
+
+Com os blocos 3 a 6: entrou o **F0** no topo da §F, sem renumerar os outros; a **§F1** ganhou a
+decisão do bloco 5, com as quatro respostas, a recomendada e o contra-argumento; e o **F2** e o
+**F3** ganharam as premissas que a grade nova mudou (o `aid` em dois caminhos de código, e o gesto de
+tela que a regra ⊕ acrescentou e a tabela de custo não cobra).
 
 ### `Pendencias.md` · editado em cinco lugares na seção L
 
@@ -454,6 +704,10 @@ Nada do que esta rodada tocou. O que segue aberto é o que já estava:
 - **o `teto6` sem saber se morde**, que não é inércia estrutural e sim falta de instrumento: ele vai
   para a âncora extrema com um contador de quantas vezes o teto de fato mordeu, e se o contador der
   zero a comparação é declarada inconclusiva em vez de nula;
-- **três dos cinco riscos da `04-prontidao.md` §F**, que esta rodada não mexeu. Os outros dois
-  mudaram e estão na §2.5 C4: o **F5** perdeu e recuperou a conferência de aditividade, e o **F4**
-  mudou de forma com as duas âncoras.
+- **nada dos riscos**: os seis estão escritos, com sinal e perda, e os cinco que mudaram nesta
+  rodada estão registrados (§2.5 C4 e §4).
+
+E o que **não** está aberto, dito de uma vez porque foi a pergunta do bloco 6: **nada bloqueia o
+começo.** A Etapa 0 está inteiramente especificada, a Etapa 1 depende de uma coluna que se escreve
+uma vez por encontro, e as três coisas que faltam (a linha da ⊕ na tabela de custo, o `aid` no
+caminho das criaturas, e o `n` final) bloqueiam a **leitura** e não o começo.

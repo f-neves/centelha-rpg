@@ -1871,6 +1871,11 @@ Hoje **não existe fim de batalha** no Grid (R1 §8), e a bancada corta em 4000 
 E a pergunta colada nessa: **a batalha não terminada é descartada ou contada?** Descartar enviesa
 para baixo tudo o que cresce com a duração, que é justamente a carga.
 
+> **Corrigido pelo D8b em 02/09** (§2.6): a carga que reprova uma regra **não** cresce com a
+> duração, porque a métrica passou a ser por Tick. Descartar a batalha não terminada enviesa as
+> métricas de **contexto** e deixa as **principais** de pé, e o balde próprio das indecisas continua
+> sendo a resposta certa por outro motivo: elas são a leitura inteira do eixo E4.
+
 **Bloqueia o começo.** É a condição de saída do laço. Fica em branco esperando: a métrica "fração
 que não termina" da §2.6, e a leitura inteira do eixo E4 da §3.
 
@@ -2257,33 +2262,92 @@ mesmas todo dia por serem escolhidas pela semente), e **contadores agregados** p
 
 ### 2.6 As métricas
 
-| Métrica | A pergunta sua que ela responde | Distribuição ou média |
+**A régua de leitura vem primeiro, porque é ela que ordena o resto** (`04-prontidao.md` §D8b,
+propagado em 02/09). Os dois critérios de "a regra piorou o jogo" são **a carga do mestre subiu** e
+**o jogador espera mais**. A **duração não é critério, é multiplicador**: um combate mais longo ou
+mais curto é balanço de regra e se resolve fora do Grid. Por isso as métricas **por etapa** são as
+principais e as **por batalha** são contexto: paradas por batalha mistura carga com duração, paradas
+por Tick não.
+
+#### As principais · por etapa · são as que reprovam uma regra
+
+| Métrica | Critério | A pergunta que ela responde | Distribuição ou média |
+|---|---|---|---|
+| **Paradas do mestre por Tick** | carga | "com que frequência o jogo para" | **distribuição**, com p50, p90, p99 e o máximo visto |
+| **Pico de paradas num Tick** | carga | "a fila empilha?" (R2 §H4 diz que o teto teórico é o número de peças) | **histograma**. O máximo é reportado como "o pior visto em n", nunca como "o pior caso": o máximo de uma amostra cresce com n e não é estimativa de nada |
+| **Gestos do mestre por golpe aplicado** | carga | "quantos cliques custa um golpe" | **distribuição**. Carrega a etiqueta da tabela de custo de tela |
+| **Fração dos gestos que é do mestre** | carga | "o mestre está compondo o jogo dos outros?" | média, e ela cabe: é razão de dois totais grandes dentro da batalha |
+| **Tempo morto do jogador, em Ticks** | espera | "quanto tempo passa entre eu declarar e ver o efeito" | **distribuição**. Medido do `decl` de uma peça ao `dano` do primeiro golpe daquela ação |
+| **Tempo morto de quem perseguiu contra quem já estava no alcance** | espera | "a viagem é o que faz esperar?" É a métrica que sustenta a decisão da folga da perseguição (§0.45) **e** é o sinal do risco F2 | **duas distribuições lado a lado**. Vem do `decl.viagem`, do D2 |
+| **Adiamentos por ação** e **maior deslize** | espera | "o que acontece com a perseguição que não fecha" | **distribuição**, e é o caso em que só a cauda interessa |
+| **Fração de Ticks vazios** (só passo, nenhuma resolução) | espera | "o mestre clica ⏭ para nada?" | **as duas**: média dentro da batalha (é razão sobre dezenas de Ticks) e distribuição entre batalhas |
+
+#### O contexto · por batalha · descrevem, e não reprovam
+
+| Métrica | A pergunta que ela responde | Distribuição ou média |
 |---|---|---|
-| **Paradas por batalha**, total e por classe i/ii/iii | "quanta carga o mestre leva numa cena" | **distribuição**. A média esconde exatamente o que você pediu, que é a cauda |
-| **Paradas do mestre por Tick** | "com que frequência o jogo para" | **distribuição**, com p50, p90, p99 e o máximo visto |
-| **Pico de paradas num Tick** | "a fila empilha?" (R2 §H4 diz que o teto teórico é o número de peças) | **histograma**. O máximo é reportado como "o pior visto em n", nunca como "o pior caso": o máximo de uma amostra cresce com n e não é estimativa de nada |
-| **Gestos do mestre por batalha** e **por golpe aplicado** | "quantos cliques custa um golpe" | **distribuição**. Carrega a etiqueta da tabela de custo de tela |
-| **Fração dos gestos que é do mestre** | "o mestre está compondo o jogo dos outros?" | média, e ela cabe: é razão de dois totais grandes dentro da batalha |
-| **Tempo morto do jogador, em Ticks** | "quanto tempo passa entre eu declarar e ver o efeito" | **distribuição**. Medido do `decl` de uma peça ao `dano` do primeiro golpe daquela ação |
-| **Ticks por batalha** | é o multiplicador de tudo, e o que muda com D2 | **distribuição** |
-| **Fração de Ticks vazios** (só passo, nenhuma resolução) | "o mestre clica ⏭ para nada?" | **as duas**: média dentro da batalha (é razão sobre dezenas de Ticks) e distribuição entre batalhas |
-| **Adiamentos por ação** e **maior deslize** | "o que acontece com a perseguição que não fecha" | **distribuição**, e é o caso em que só a cauda interessa |
-| **Fração de batalhas que não terminam** | idem, e depende de D4 | proporção, com intervalo binomial |
-| **Colisão de agenda: N(T)** | valida a forma fechada da R2 §H1 contra o que de fato acontece | **histograma**, comparado com o previsto |
-| **Fração dos golpes que caem em Tick múltiplo de 6** | mede a sincronia das oito fontes da R2 §H3 | proporção |
+| **Paradas por batalha**, total e por classe i/ii/iii | "quanta carga o mestre leva numa cena inteira" | **distribuição**. Continua indo com a cauda, e continua sem ser critério |
+| **Gestos do mestre por batalha** | idem, em cliques | **distribuição** |
+| **Ticks por batalha** | é o multiplicador de tudo | **distribuição** |
+| **Fração de batalhas que não terminam** | a perseguição que não fecha, e depende da folga da §0.45 | proporção, com intervalo binomial |
+| **Taxa de acerto de quem perseguiu contra quem esperou** | se chegar atrasado custa acerto | duas proporções, com intervalo binomial |
+| **Tick em que o conjurador cruza 30% e zero de Mana** | "a reserva é pequena demais para os combates?" (§0.7) | **distribuição**, e o zero pode não acontecer: reportar também a fração das batalhas em que não aconteceu |
+| **Fração das batalhas em que o conjurador termina esvaziado** | idem | proporção, com intervalo binomial |
+| **Fração das ações dele que foram de adaga** | quanto tempo o conjurador passa sendo outra coisa | média, e ela cabe: é razão de dois contadores dentro da batalha |
 
-**A régua de leitura, fixada em 02/09** (`04-prontidao.md` §D8b): as métricas **por etapa** são as
-principais, e as **por batalha** são contexto. Paradas do mestre por Tick, gestos por golpe aplicado
-e pico num Tick isolam a carga da duração; paradas por batalha mistura as duas. E a duração não é
-critério de reprovação: um combate mais longo ou mais curto é balanço de regra, e se resolve fora do
-Grid. **Os dois critérios de "a regra piorou o jogo" são: a carga do mestre subiu, e o jogador espera
-mais.** O limiar de cada um só se fixa depois do piloto.
+#### O diagnóstico do motor · validam o modelo, nunca reprovam nada
 
-Onde a média cabe, cabe por um motivo só: quando é razão de dois contadores grandes acumulados
+| Métrica | O que ela confere | Distribuição ou média |
+|---|---|---|
+| **Colisão de agenda: N(T)** | a forma fechada da R2 §H1 contra o que de fato acontece | **histograma**, comparado com o previsto |
+| **Fração dos golpes que caem em Tick múltiplo de 6** | a sincronia das oito fontes da R2 §H3 | proporção |
+| **Fração dos golpes que caem no Tick da chegada** | se chegar e golpear no mesmo Tick é comum ou é curiosidade (§0.45). Vem do `passo.chegou`, do D2 | proporção, com intervalo binomial |
+
+#### O que mudou de posição, e o que deixou de ser critério
+
+| | |
+|---|---|
+| **Subiu para principal** | tempo morto, adiamentos e maior deslize, e fração de Ticks vazios: as três descrevem **espera**, que é metade do critério do D8b, e estavam misturadas no meio da lista |
+| **Desceu para contexto** | **paradas por batalha** e **gestos por batalha**, que eram as duas primeiras da tabela antiga. Elas herdam a variância da duração, e a duração deixou de ser critério |
+| **Desceu para contexto** | **Ticks por batalha** e **fração de batalhas que não terminam** |
+| **Virou bloco próprio** | N(T) e a sincronia dos múltiplos de 6, que nunca foram carga nem espera: são conferência do modelo |
+| **Entraram, e são as seis da `04-prontidao.md` §A.2** | uma subiu para principal (o tempo morto separado por viagem), quatro entraram no contexto (as três de Mana e a taxa de acerto dos dois grupos) e uma no diagnóstico (o golpe no Tick da chegada). As seis dependem dos campos do D2, e nenhuma tinha dado antes dele |
+| **Deixou de ser critério de reprovação** | **a duração da batalha**, em qualquer forma, e junto com ela **taxa de vitória e dominância**, que continuam calculáveis e param de decidir se uma regra fica |
+
+**A gramática de leitura, em uma frase:** uma regra que dobre a duração e mantenha a carga por Tick é
+neutra pelo critério; uma que encurte a batalha e dobre os cliques por etapa é ruim.
+
+**Onde a média cabe**, cabe por um motivo só: quando é razão de dois contadores grandes acumulados
 **dentro** da mesma batalha (Ticks vazios sobre Ticks, gestos do mestre sobre gestos totais), a média
 não é resumo de uma cauda, é a própria quantidade. Tudo o que descreve **uma espera** vai como
 distribuição, porque a experiência de mesa é a espera pior, não a espera média: um Tick com 10 folhas
 é lembrado, e nove Ticks com uma folha não são.
+
+#### O contador de ocasiões, que impede o zero de mentir
+
+Com cada bandeira lida na célula em que ela morde (§0.10.1), a mesma bandeira aparece no relatório
+com **duas leituras**: a da hospedeira, que diz quanto ela vale, e a da âncora extrema, que existe só
+para a soma do F5 e é **zero por construção**. Sem instrumento, as duas se parecem, e "0,0" na âncora
+seria lido como "a bandeira não faz nada".
+
+**O instrumento é um contador por bandeira e por célula: quantas vezes a pré-condição dela ocorreu.**
+Não é o delta, é a ocasião. Sai do agregado da §2.5 e custa um inteiro por bandeira por célula.
+
+| Ocasiões | Delta | Como o relatório imprime |
+|---:|---|---|
+| **0** | qualquer | **`não exercitada`**, e nunca um número. A célula não tinha como acionar a regra |
+| **> 0** | ≈ 0 | **`0,0 em n ocasiões`**: a regra foi acionada e não mudou o resultado. Isto sim é um achado |
+| **> 0** | ≠ 0 | o número, com o intervalo |
+
+Três consequências que valem a pena estar escritas:
+
+- **o `teto6` deixa de estar em "não se sabe"**: o contador diz quantas vezes os modificadores
+  passaram de 6, e se o contador der zero a comparação sai `não exercitada` em vez de nula;
+- **as seis leituras de âncora do F5 saem todas como `não exercitada`**, o que é a leitura honesta
+  delas, e a soma do F5 as trata como zero explicitamente declarado;
+- **o contador é a prova de que a hospedeira foi bem escolhida.** Se a hospedeira do `gate` der zero
+  ocasiões, a célula está errada e não a bandeira, que foi exatamente o erro que a regra ⊕ do D11
+  quase produziu (`05-fechamento.md` §2.5 C2).
 
 ### 2.7 O elenco
 
@@ -2349,12 +2413,22 @@ logo abaixo, não depende do número de células e continua valendo inteira.
 
 **Quantas repetições, e por quê.** O número não sai de "1000", sai de duas contas:
 
-- **Para as médias e o p95.** A quantidade mais ruidosa é o número de paradas por batalha, que herda
-  a variância da duração, e a duração de um combate por desgaste tem coeficiente de variação na casa
-  de 0,4 a 0,6. Para o erro relativo da média ficar em ±5% com 95% de confiança,
-  `n ≈ (1,96 · CV / 0,05)²`, que com CV 0,5 dá **~385 por célula**. Arredondando, **500**.
+- **Para as médias e o p95.** A conta é sobre a **métrica principal**, e ela mudou com o D8b: era
+  paradas **por batalha** e passou a ser paradas **por Tick** (§2.6). A unidade da amostra continua
+  sendo a batalha (o que entra na conta é o resumo por batalha da métrica), mas a quantidade deixou
+  de herdar a variância da duração, porque a duração agora está no denominador. Para o erro relativo
+  da média ficar em ±5% com 95% de confiança, `n ≈ (1,96 · CV / 0,05)²`, que com CV 0,5 dá **~385 por
+  célula**, arredondado para **500**.
+
+  **E aqui vai uma consequência do D8b que ninguém tinha rastreado: o CV de paradas por Tick deve ser
+  MENOR que o de paradas por batalha**, exatamente porque o fator duração saiu, e um CV menor pede um
+  `n` menor. O 0,5 continua sendo assumido e não medido; **quem decide é o piloto**, que já está
+  especificado para medir o CV da métrica nova (§0.10.2). Se ele vier em 0,3, o `n` cai para ~140 e o
+  piso de 400 do p95 passa a ser o que manda. **As 500 continuam valendo até o piloto falar**, e o
+  número que pode encolher é o da média, nunca o da cauda.
 - **Para a cauda.** Um quantil só é estimável com observações além dele. A regra prática de ao menos
-  20 observações acima do quantil dá **n ≥ 400 para o p95** e **n ≥ 2000 para o p99**. Então: 500 por
+  20 observações acima do quantil dá **n ≥ 400 para o p95** e **n ≥ 2000 para o p99**. Esta conta
+  **não** muda com o D8b: ela é sobre o número de batalhas, e não sobre a unidade da métrica. Então: 500 por
   célula em toda a grade, e **2000** só nas células em que a cauda **é** a pergunta, que são as de E4
   (o alvo mais rápido) e a de E1(a) com E3 na horda (o uníssono, que é onde o pico mora).
 - **O que não precisa de muitas batalhas.** A distribuição de N(T), o pico por Tick e a fração de
@@ -2368,22 +2442,42 @@ segundos de máquina na bancada; o harness com mapa será mais caro (a R2 §D3 r
 orçamento não é a máquina, é o que se consegue ler**: 144 células já são mais tabelas do que se lê
 numa sentada, e é por isso que os eixos precisam ser poucos e seus.
 
-**Qual eixo eu espero que domine**, para você conferir depois:
+**Qual eixo eu espero que domine**, para você conferir depois. **Reescritas em 02/09 na unidade do
+D8b**: toda previsão que estava em carga **total por batalha** virou carga **por Tick**, porque a
+total mistura carga com duração e a duração deixou de ser critério (§2.6).
 
-1. **E1 domina o pico** e quase não move o total. Previsão falsificável: no nível uníssono, a fração
-   de Ticks-com-golpe que têm **dois ou mais** golpes deve ficar perto de 100%; no nível coprimo,
-   perto de zero (uma ou duas colisões na batalha inteira). O total de paradas por batalha deve
-   mudar pouco entre os quatro níveis, porque o número de golpes é o mesmo, só a distribuição deles
-   muda.
+1. **E1 domina o pico e quase não move a carga por Tick.** Previsão falsificável: no nível uníssono,
+   a fração de Ticks-com-golpe que têm **dois ou mais** golpes deve ficar perto de 100%; no nível
+   coprimo, perto de zero (uma ou duas colisões na batalha inteira). A **média** de paradas por Tick
+   deve mudar pouco entre os quatro níveis, porque o número de golpes por Tick é o mesmo em média; o
+   que E1 muda é a **cauda**, e a previsão é sobre o p99 e o pico, não sobre a média.
+   *(A versão anterior dizia "o total de paradas por batalha deve mudar pouco". Era a mesma
+   previsão numa unidade que não distingue "poucas paradas" de "batalha curta".)*
 2. **E2 domina o tempo morto e o Tick vazio**, e é o eixo que mais muda a experiência do jogador,
-   não a do mestre.
-3. **E3 domina o total** de paradas, quase linearmente no número de peças, e domina o pico junto com
+   não a do mestre. Já estava na unidade certa: as duas são por etapa.
+3. **E3 domina a carga por Tick**, quase linearmente no número de peças, e domina o pico junto com
    E1: horda uníssona é o pior caso de tudo.
-4. **E4 é binário no resultado**: ou a batalha fecha, ou ela não fecha nunca. Espero pouca coisa no
-   meio, e espero que a fração que não fecha seja alta o bastante para forçar a decisão de D4.
-5. **E5**, se ligado, deve encurtar a batalha (a Margem é a maior das sete) e, por consequência,
-   **abaixar** a carga total sem mexer na carga por Tick. Se o resultado contrariar isso, o motivo
-   provável é o Bloqueio com escudo puxando na direção contrária.
+   *(Dizia "domina o total de paradas". O total cresce com as peças **e** com a duração; a previsão
+   que interessa é que a carga de cada Tick cresce, que é o que o mestre sente.)*
+4. **E4 é binário no resultado**: ou a batalha fecha, ou ela não fecha nunca. **Isso é contexto, não
+   critério**: a fração que não fecha é métrica de contexto pelo D8b, e o que E4 tem de mostrar em
+   unidade de critério é o **maior deslize** e os **adiamentos por ação**, que são espera do jogador.
+   Espero pouca coisa no meio, e espero que a fração que não fecha seja alta o bastante para forçar
+   a decisão da folga da perseguição (§0.45).
+5. **E5 quase não muda a carga por Tick, e é isso que se está prevendo.** As nove bandeiras não
+   acrescentam caixa nenhuma: `margem` muda o número dentro da folha que já abriu, `bloqueio` muda a
+   Defesa comparada, `gate` pode **tirar** um gesto (o dano zerado dispensa a escrita de `pv_atual`,
+   §0.8.1) e `modo2` **acrescenta um**, que é a escolha do modo. Previsão falsificável: a carga por
+   Tick com o perfil cheio fica a menos de um gesto de distância da carga com tudo desligado, e a
+   única bandeira que a move de forma visível é a `modo2`, para cima.
+   *(A versão anterior dizia que E5 "deve encurtar a batalha e por consequência abaixar a carga
+   total". Encurtar a batalha deixou de ser resultado bom ou ruim, e "abaixar a carga total" era a
+   duração entrando pela porta dos fundos: uma regra que encurta a batalha abaixa qualquer total,
+   sem ter tirado trabalho nenhum de Tick nenhum.)*
+
+**Uma previsão que não existia e que a §2.6 nova pede:** o `gate` deve **abaixar** os gestos por golpe
+aplicado na hospedeira dele, e é a única bandeira da qual se espera isso. Se ele subir, alguém está
+abrindo uma folha para anunciar que o dano foi zero, e aí a regra é boa e a tela é o problema.
 
 ---
 
@@ -2436,6 +2530,12 @@ O que ele responde, de verdade:
 O que ele **não** responde: qualquer coisa com "por batalha" no denominador. Sem morte não há
 duração, e sem duração não há "paradas por batalha", nem carga do mestre por cena, nem comparação
 entre perfis de regra.
+
+> **O D8b encolheu o tamanho dessa perda** (§2.6, propagado em 02/09). Tudo o que está nessa frase é
+> métrica de **contexto** agora, e nenhuma delas reprova uma regra. O que reprova é por etapa, e o
+> por etapa não precisa de morte: paradas por Tick, gestos por golpe, pico num Tick e tempo morto
+> saem de uma batalha que não termina exatamente como saem de uma que termina. A frase continua
+> verdadeira e passou a custar menos.
 
 **E a metade desagradável: para a métrica que você quer, não há nada menor.**
 
