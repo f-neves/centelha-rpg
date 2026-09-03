@@ -54,6 +54,70 @@ faz ela ver, com um checkout só, o código avisado **e** o aviso sobre ele.
 O checkout congela a visão dela naquele commit, que é o certo: **ela revisa o que
 foi avisado, e não um alvo em movimento.**
 
+## O revezamento automático · `npm run duo`
+
+O ciclo pode correr sem humano no meio: `scripts/duo.mjs` alterna chamadas
+`claude -p` nas duas pastas, uma rodada de cada vez. **O canal continua sendo
+esta pasta**: o script não passa contexto de uma para a outra, ele só chama na
+ordem certa, move o commit e conta o dinheiro.
+
+```
+npm run duo                 · o ciclo com os padrões
+npm run duo -- --rodadas 3  · teto de rodadas
+npm run duo -- --custo 12   · teto de custo, em dólares
+npm run duo -- --timeout 20 · teto por chamada, em minutos
+npm run duo -- --seco       · imprime o que faria e não chama nada
+```
+
+### Os limites, e por que estes
+
+| | valor | por quê |
+|---|---:|---|
+| rodadas | **6** | o pedido. Ao bater, para e resume: nunca "só mais uma" |
+| custo | **US$ 20** | duas chamadas por rodada, a da executora sendo a cara. Corta por volta da 4ª ou 5ª rodada num ritmo pesado e deixa as seis passarem num leve. **Errar para baixo é o lado certo**: parar cedo custa uma rodada e um `--custo` maior na próxima; parar tarde custa dinheiro que ninguém autorizou |
+| por chamada | **30 min** | a executora roda bateria (30 s) e escreve documento. Falha de chamada **encerra**, e não tenta de novo |
+| repetição | **0,6** de semelhança | heurística sobre os identificadores do item (crases, `§x.y`, `L25`). Erra para o lado de parar, que é o barato |
+
+**A unidade atômica é a RODADA, e não a chamada.** O teto de custo é conferido
+ANTES de abrir cada rodada, contra a rodada mais cara até então: parar no meio
+deixaria um aviso commitado que ninguém vai revisar, o que é pior que parar antes.
+
+### As sete paradas, e todas são de fechar
+
+teto de rodadas · teto de custo · veredito **PARA** · **SEGUE** duas vezes
+seguidas (revisão esgotada) · **ESCALA** não vazia (encerra na hora, mesmo com
+rodadas sobrando) · assunto repetido em duas respostas seguidas · árvore suja em
+qualquer ponto. Mais a chamada que falha ou estoura o tempo.
+
+**E uma oitava, que é de formato:** resposta sem as cinco seções encerra o ciclo.
+Sem isso o script falharia **aberto** justamente na trava que mais importa: uma
+`ESCALA` que não dá para ler sai igual a uma `ESCALA` vazia, e o ciclo seguiria
+por cima de uma decisão que era do humano.
+
+### Duas coisas que o script protege, e o motivo de cada uma
+
+- **antes de cada checkout ele confere que `centelha-revisora/.claude/CLAUDE.local.md`
+  existe**, e aborta se não existir. O checkout sobrescreve caminho rastreado sem
+  perguntar, e o papel da revisora já foi escrito uma vez por cima do `CLAUDE.md`
+  da raiz, que é o do projeto. Sem o papel, a revisora abre a rodada sem
+  contrato: sem as vigilâncias, sem o formato e sem a trava de regra de jogo,
+  produzindo texto plausível e inútil;
+- **ele avisa o commit que CONTÉM o aviso, e nunca o topo da branch.** O topo pode
+  ter andado, e mandar a revisora para ele por conveniência quebraria a única
+  coisa que o congelamento compra.
+
+### O que ele roda com permissão total
+
+`--permission-mode bypassPermissions`. **É a linha mais perigosa do arquivo**, e é
+obrigatória num laço sem humano: sem ela a chamada trava no primeiro `git commit`
+esperando um "sim" que ninguém vai dar, e o timeout a mata sem nada feito.
+
+### O resumo
+
+Saia como sair, sai `docs/simulacao/caixa/RESUMO-NN.md` com motivo da parada, o
+que foi resolvido, o que ficou aberto, custo total e o que precisa do humano. **É
+a única coisa que o humano precisa ler.**
+
 ## A regra do commit defasado
 
 O congelamento tem um preço, e ele cai inteiro do lado da executora. Se ela
