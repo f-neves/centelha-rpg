@@ -53,9 +53,14 @@ export const CUSTO = {
   aplicar: { mesa: 1, site: 1, nota: 'um dos três botões da folha' },
   // PARA ONDE VAI O GOLPE cujo alvo caiu. A regra manda a peça em modo
   // automático redirecionar sozinha, para o inimigo de pé mais próximo, sem
-  // abrir caixa; e a bateria roda a política automática. Numa cena com peça de
-  // jogador é uma caixa de escolha, e aí custa um gesto.
-  redirecionar: { mesa: 0, site: 0, nota: 'robô: redireciona sozinho, sem caixa' },
+  // abrir caixa; e a bateria roda a política automática.
+  //
+  // ⚑ O ZERO AQUI É O ZERO DO ROBÔ, E SÓ. Numa cena com peça de jogador isto é
+  // uma caixa de escolha (`uiEscolher`), com um gesto e uma decisão humana, e
+  // nenhuma batalha desta bateria tem peça de jogador. O número publicado
+  // portanto APAGA uma parada de classe i que a mesa de verdade tem, e o
+  // apagamento está na lista ⚑ do manifesto, não escondido neste zero.
+  redirecionar: { mesa: 0, site: 0, nota: 'robô: redireciona sozinho, sem caixa (⚑ o jogador teria caixa)' },
 };
 
 /** Os gestos de uma parada, no modo de rolagem da cena. */

@@ -106,6 +106,17 @@ const manifesto = {
     + ' em que declarar não custa clique nenhum, e esse é o número certo do que ela'
     + ' mede; o caminho manual tem variantes demais para um número só'
     + ' (ver scripts/sim/custo-tela.mjs)',
+    'o custo de tela do REDIRECIONAMENTO do golpe no caído. A regra manda a peça'
+    + ' em modo automático redirecionar sozinha, sem caixa, e a bateria roda SÓ'
+    + ' peça automática: nenhuma das batalhas tem peça de jogador. Numa mesa de'
+    + ' verdade esse redirecionamento é uma caixa de escolha, e portanto uma'
+    + ' parada de classe i com gesto. Esta bateria NÃO ENXERGA esse custo, e o'
+    + ' número publicado apaga uma parada de classe i que a mesa real tem',
+    'o critério "o inimigo de pé MAIS PRÓXIMO" para onde o golpe redirecionado'
+    + ' desce. É escolha de política escrita dentro do MOTOR (grid.astro e'
+    + ' motor.mjs), não da régua: `regras.json` diz que redireciona ao alcance da'
+    + ' arma e não diz para qual. Número pequeno, mas inventado, e no lugar exato'
+    + ' que o D13 vigia',
   ],
 };
 fs.writeFileSync(path.join(SAIDA, 'bateria.json'), JSON.stringify(manifesto, null, 2) + '\n');

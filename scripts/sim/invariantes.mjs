@@ -112,5 +112,24 @@ export function conferir(cena, log, res) {
     falhas.push(`${e.golpesAplicados} golpes e ${somaV} vereditos`);
   }
 
+  // V13 · OS GESTOS FECHAM POR CLASSE. Toda ação de entrada do mestre é ou o
+  // clique do ⏭ ou o gesto de uma parada de alguma classe: não há terceira
+  // origem. Este invariante existe porque a fração de gestos por classe é agora
+  // um número PUBLICADO, e um numerador que não pertence a nenhuma classe (ou
+  // que pertence a duas) produziria uma fração menor e perfeitamente crível.
+  const gc = e.gestosClasse;
+  const somaG = gc.i + gc.ii + gc.iii + e.gestosRelogio;
+  if (somaG !== e.gestos) {
+    falhas.push(`gestos: ${e.gestos} no total e ${somaG} por classe mais relógio`);
+  }
+
+  // V14 · E POR SUBTIPO. O mesmo triângulo do V9, na outra moeda: a tabela "de
+  // onde vêm os gestos" sai do subtipo e a fração publicada sai da classe, e as
+  // duas têm de estar contando o mesmo universo.
+  const gSub = Object.values(e.gestosSub).reduce((a, b) => a + b, 0);
+  if (gSub !== e.gestos - e.gestosRelogio) {
+    falhas.push(`gestos de parada: ${e.gestos - e.gestosRelogio} por classe e ${gSub} por subtipo`);
+  }
+
   return falhas;
 }

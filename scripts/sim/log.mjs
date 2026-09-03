@@ -32,6 +32,17 @@ const zeroFase = () => ({
   paradasSub: {},
   porTick: [],
   gestos: 0,
+  // OS MESMOS GESTOS, REPARTIDOS DE DOIS JEITOS: por classe de parada e por
+  // subtipo. Sem eles a bateria publicava UM número (a fração das PARADAS que é
+  // iii) e o leitor entendia OUTRO (a fração do TRABALHO que é iii). São
+  // diferentes porque parada e gesto não são a mesma moeda: a re-projeção é uma
+  // parada de classe iii que custa ZERO gesto, e 5.895 delas numa célula não
+  // movem a carga do mestre um clique. Ver `custo-tela.mjs`.
+  gestosClasse: { i: 0, ii: 0, iii: 0 },
+  gestosSub: {},
+  // O CLIQUE DO ⏭, que não é parada de classe nenhuma e não some com automação:
+  // fica no DENOMINADOR da fração de gestos, e fora do numerador de qualquer classe.
+  gestosRelogio: 0,
   golpesAplicados: 0,
   quadro: { nada: 0, soResolveu: 0, soParou: 0, ambos: 0 },
   ticksSemParada: 0, ticksSemResolucao: 0, ticksSemGolpe: 0,
@@ -47,8 +58,16 @@ export function novoLog({ completo = false } = {}) {
     // `reprojetar` são os pontos duvidosos da taxonomia (a mesa oferece escolha
     // nos dois), e sem contá-los à parte não há como calcular o piso da fração.
     paradasSub: {},
+    // tipo -> classe, escrito pelo motor a cada parada. O agregador lê daqui
+    // em vez de manter um segundo mapa, que foi como duas classes saíram erradas.
+    classeDoTipo: {},
     porTick: [],              // paradas em cada Tick, para o pico e a distribuição
     gestos: 0,
+    // A REPARTIÇÃO DOS GESTOS, que é o que separa "quantas vezes o mestre foi
+    // consultado" de "quanto ele trabalhou". Ver o molde da fase acima.
+    gestosClasse: { i: 0, ii: 0, iii: 0 },
+    gestosSub: {},
+    gestosRelogio: 0,
     golpesAplicados: 0,
     // DUAS COISAS DIFERENTES, e confundi-las produziu uma contradição
     // aritmética na primeira bateria: `paradas/Tick 1,14` com `86% vazios` e
@@ -123,6 +142,15 @@ export function novoLog({ completo = false } = {}) {
      */
     parada(classe, tipo, c, t, extra) {
       const F = est.fases[fase];
+      // A CLASSE DE CADA TIPO, gravada pelo próprio motor.
+      //
+      // Ela existe porque o agregador precisa dela para abrir a fração de iii
+      // por tipo, e a primeira versão dessa tabela trazia um mapa tipo→classe
+      // escrito à mão no agregador: `fugir` e `aplicar` saíram como i e iii
+      // quando o motor as registra como ii nas duas. Uma tabela publicada com
+      // classe inventada é exatamente o que o D13 vigia, e a correção é não ter
+      // a segunda cópia.
+      est.classeDoTipo[tipo] = classe;
       est.paradas[classe] += 1;
       est.paradasSub[tipo] = (est.paradasSub[tipo] || 0) + 1;
       F.paradas[classe] += 1;
@@ -136,6 +164,10 @@ export function novoLog({ completo = false } = {}) {
       const g = gestosDe(tipo, ROLAGEM_DA_BATERIA);
       est.gestos += g;
       F.gestos += g;
+      est.gestosClasse[classe] += g;
+      F.gestosClasse[classe] += g;
+      est.gestosSub[tipo] = (est.gestosSub[tipo] || 0) + g;
+      F.gestosSub[tipo] = (F.gestosSub[tipo] || 0) + g;
       ev('parada', { classe, sub: tipo, c: c?.id, t, ...extra });
     },
     decl(c, t, o) {
@@ -175,6 +207,8 @@ export function novoLog({ completo = false } = {}) {
       // frequente da mesa e ficava fora da conta.
       est.gestos += GESTO_DO_TICK;
       F.gestos += GESTO_DO_TICK;
+      est.gestosRelogio += GESTO_DO_TICK;
+      F.gestosRelogio += GESTO_DO_TICK;
       est.porTick.push(noTick);
       F.porTick.push(noTick);
       if (noTick === 0) { est.ticksSemParada += 1; F.ticksSemParada += 1; }
@@ -208,6 +242,7 @@ function principais(F) {
   const ord = [...p].sort((x, y) => x - y);
   const q = (f) => (ord.length ? ord[Math.min(ord.length - 1, Math.floor(ord.length * f))] : 0);
   const frac = (x) => (F.ticks ? x / F.ticks : 0);
+  const totParadas = F.paradas.i + F.paradas.ii + F.paradas.iii;
   return {
     ticks: F.ticks,
     paradas: F.paradas, paradasSub: F.paradasSub,
@@ -216,6 +251,20 @@ function principais(F) {
       p10: q(0.1), p50: q(0.5), p90: q(0.9), p99: q(0.99), pico: ord[ord.length - 1] || 0,
     },
     gestos: F.gestos,
+    gestosClasse: F.gestosClasse, gestosSub: F.gestosSub, gestosRelogio: F.gestosRelogio,
+    // AS DUAS FRAÇÕES, e nunca uma só.
+    //
+    //   fracaoParadasIII · de cada cem vezes que o motor precisou de um humano,
+    //     quantas eram aritmética. Diz quantas INTERRUPÇÕES a automação apaga.
+    //   fracaoGestosIII  · de cada cem ações de entrada do mestre, quantas eram
+    //     aritmética. Diz quanto TRABALHO a automação apaga, e é esta que
+    //     responde a pergunta original da R2 §B.
+    //
+    // O denominador da segunda inclui o clique do ⏭ (`gestosRelogio`), que não é
+    // parada de classe nenhuma e não sai com automação nenhuma: ele é trabalho
+    // do mestre e tirá-lo do denominador inflaria a fração de propósito.
+    fracaoParadasIII: totParadas ? F.paradas.iii / totParadas : null,
+    fracaoGestosIII: F.gestos ? F.gestosClasse.iii / F.gestos : null,
     gestosPorGolpe: F.golpesAplicados ? F.gestos / F.golpesAplicados : null,
     golpesAplicados: F.golpesAplicados,
     quadro: F.quadro,
@@ -234,7 +283,9 @@ export function resumo(log, cena, b, semente) {
   // dois jeitos, e a soma das duas fases pode ser conferida contra ele.
   const tudo = principais({
     ticks: e.ticks, paradas: e.paradas, paradasSub: e.paradasSub, porTick: e.porTick,
-    gestos: e.gestos, golpesAplicados: e.golpesAplicados, quadro: e.quadro,
+    gestos: e.gestos, gestosClasse: e.gestosClasse, gestosSub: e.gestosSub,
+    gestosRelogio: e.gestosRelogio,
+    golpesAplicados: e.golpesAplicados, quadro: e.quadro,
     ticksSemParada: e.ticksSemParada, ticksSemResolucao: e.ticksSemResolucao,
     ticksSemGolpe: e.ticksSemGolpe, ticksSoIII: e.ticksSoIII, ticksSoIIIPiso: e.ticksSoIIIPiso,
   });
@@ -242,7 +293,9 @@ export function resumo(log, cena, b, semente) {
     b, celula: cena.celula.id, semente,
     ticks: e.ticks, fim: e.fimMotivo, vivosA: e.vivosA, vivosB: e.vivosB,
     // O TOTAL, achatado no nível de cima: é o que o agregador já lia.
-    paradas: e.paradas, paradasSub: e.paradasSub,
+    paradas: e.paradas, paradasSub: e.paradasSub, classeDoTipo: e.classeDoTipo,
+    gestosClasse: e.gestosClasse, gestosSub: e.gestosSub, gestosRelogio: e.gestosRelogio,
+    fracaoParadasIII: tudo.fracaoParadasIII, fracaoGestosIII: tudo.fracaoGestosIII,
     paradasPorTick: tudo.paradasPorTick,
     gestosPorGolpe: tudo.gestosPorGolpe,
     fracaoSemParada: tudo.fracaoSemParada,

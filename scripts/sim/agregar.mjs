@@ -15,6 +15,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { RAIZ } from './lib-ponte.mjs';
+import { gestosDe, ROLAGEM_DA_BATERIA } from './custo-tela.mjs';
 
 const arg = (n, p) => { const i = process.argv.indexOf(n); return i > 0 ? process.argv[i + 1] : p; };
 const DIR = path.resolve(RAIZ, arg('--saida', '.sim/ultima'));
@@ -99,12 +100,38 @@ const medFase = (ls, fase, f) => med(ls.map((l) => f(F(l, fase))).filter((x) => 
  * responder diferente do motor", e não "rola dado".
  */
 const DUVIDOSAS = ['agenda', 'reprojetar'];
+/**
+ * E ELA DEVOLVE DUAS FRAÇÕES, nunca uma.
+ *
+ *   pct/piso   · sobre as PARADAS. De cada cem vezes que o motor precisou de um
+ *                humano, quantas eram aritmética. Mede INTERRUPÇÃO.
+ *   pctG/pisoG · sobre os GESTOS. De cada cem ações de entrada do mestre,
+ *                quantas eram aritmética. Mede TRABALHO, e é esta que responde
+ *                a pergunta da R2 §B.
+ *
+ * As duas divergem porque parada e gesto não são a mesma moeda: `reprojetar` e
+ * `agenda` são paradas que custam ZERO gesto (`custo-tela.mjs`), e uma célula
+ * com 5.895 re-projeções por batalha enche o numerador da primeira sem mover a
+ * segunda em um clique. Publicar só a primeira e falar em "trabalho" é trocar
+ * uma pela outra no meio da frase.
+ */
 const fatiaIII = (ls, fase) => {
   const sm = (f) => ls.reduce((x, l) => x + f(F(l, fase)), 0);
   const i = sm((x) => x.paradas.i), ii = sm((x) => x.paradas.ii), iii = sm((x) => x.paradas.iii);
   const dv = sm((x) => DUVIDOSAS.reduce((y, k) => y + (x.paradasSub?.[k] || 0), 0));
   const t = i + ii + iii;
-  return { n: ls.length, t, pct: t ? iii / t : null, piso: t ? (iii - dv) / t : null };
+  // O DENOMINADOR DA SEGUNDA É O GESTO TOTAL, com o clique do ⏭ dentro: ele é
+  // trabalho do mestre e não sai com automação nenhuma. Tirá-lo do denominador
+  // inflaria a fração de propósito.
+  const gT = sm((x) => x.gestos || 0);
+  const gIII = sm((x) => x.gestosClasse?.iii || 0);
+  const gDv = sm((x) => DUVIDOSAS.reduce((y, k) => y + (x.gestosSub?.[k] || 0), 0));
+  return {
+    n: ls.length, t, gT,
+    pct: t ? iii / t : null, piso: t ? (iii - dv) / t : null,
+    pctG: gT ? gIII / gT : null, pisoG: gT ? (gIII - gDv) / gT : null,
+    gDv,
+  };
 };
 
 const rotulo = (id) => id.replace(/-(apertado|aberto)-l\d+$/, '');
@@ -158,6 +185,46 @@ for (const [id, ls] of daFatia(PRINCIPAL)) {
     + num(s2('fugir'), 1).padStart(9));
 }
 
+// ------------------------- a fração de iii ABERTA POR TIPO, nas duas moedas
+//
+// A TABELA QUE IMPEDE A TROCA DE MOEDA. A composição por classe agrega demais:
+// ela junta, no mesmo balde `iii`, a re-projeção (que custa zero gesto) e a
+// folha do golpe (que custa quatro). Quem lê "20% a 55% de classe iii" entende
+// "um quinto a metade do trabalho do mestre", e não é isso que está medido.
+//
+// Cada linha aqui traz o custo de tela do tipo, quantas paradas ele produziu e
+// quantos gestos, com a fatia que ele ocupa em cada uma das duas contas.
+{
+  const ls = boas.filter((l) => infoDe(l.celula).nivelLimiar === PRINCIPAL && l.fim !== 'estourou');
+  // A CLASSE SAI DO LOG, e não de um mapa escrito aqui. A primeira versão desta
+  // tabela tinha o mapa à mão, e ele trazia `fugir` como i e `aplicar` como iii
+  // quando o motor registra ii nas duas. Uma coluna publicada com classe
+  // inventada é o caso exato do D13, e a correção é não ter a segunda cópia.
+  const CLASSE_DO_TIPO = Object.assign({}, ...ls.map((l) => l.classeDoTipo || {}));
+  const sm = (f) => ls.reduce((x, l) => x + f(l.fases.combate), 0);
+  const tipos = [...new Set(ls.flatMap((l) => Object.keys(l.fases.combate.paradasSub || {})))].sort();
+  const totP = sm((x) => x.paradas.i + x.paradas.ii + x.paradas.iii);
+  const totG = sm((x) => x.gestos || 0);
+  const relogio = sm((x) => x.gestosRelogio || 0);
+  console.log('\n── A FRAÇÃO DE iii, ABERTA POR TIPO DE PARADA · FASE DE COMBATE'
+    + ` · ${ls.length} batalhas que terminam ──`);
+  console.log('tipo'.padEnd(16) + 'classe  gesto/un   paradas   % das par.'
+    + '     gestos   % dos ges.');
+  for (const t of tipos) {
+    const p = sm((x) => x.paradasSub?.[t] || 0);
+    const g = sm((x) => x.gestosSub?.[t] || 0);
+    console.log(t.padEnd(16) + (CLASSE_DO_TIPO[t] || '?').padStart(4)
+      + String(gestosDe(t, ROLAGEM_DA_BATERIA)).padStart(9)
+      + num(p, 0).padStart(11) + pct(totP ? p / totP : 0).padStart(13)
+      + num(g, 0).padStart(11) + pct(totG ? g / totG : 0).padStart(13));
+  }
+  console.log('o ⏭ do relógio'.padEnd(16) + '   ·'.padStart(4) + '1'.padStart(9)
+    + '·'.padStart(11) + '·'.padStart(13)
+    + num(relogio, 0).padStart(11) + pct(totG ? relogio / totG : 0).padStart(13));
+  console.log('  O ⏭ não é parada de classe nenhuma e não sai com automação: ele fica no');
+  console.log('  DENOMINADOR da coluna de gestos, e fora do numerador de qualquer classe.');
+}
+
 // ------------------------------------- o que a automação esvazia, MEDIDO
 //
 // Um Tick cujas paradas são TODAS de classe iii deixa de consultar alguém
@@ -178,16 +245,18 @@ console.log('  `só iii` é o Tick em que TODA parada é aritmética: ele some i
 console.log('  O piso conta só `resolver` como aritmética forçada.');
 
 // ================================================== B · a composição, em banda
-console.log('\n── B · A COMPOSIÇÃO POR CLASSE, em banda · AS DUAS FASES, lado a lado ──');
+console.log('\n── B · A COMPOSIÇÃO POR CLASSE, em banda · NAS DUAS MOEDAS · fase de combate ──');
 console.log('  banda: teto com `agenda`+`reprojetar`+`resolver` como iii; piso só com `resolver`.');
-console.log('célula'.padEnd(26) + 'combate: piso–teto      fuga: piso–teto      Δ teto');
+console.log('  PARADAS mede interrupção; GESTOS mede trabalho. Não são a mesma coisa.');
+console.log('célula'.padEnd(26) + 'paradas iii      gestos iii     fuga (paradas)   Δ par.');
 for (const [id, ls] of daFatia(PRINCIPAL)) {
   const c = fatiaIII(ls, 'combate');
   const f = fatiaIII(ls, 'fuga');
   const d = (c.pct != null && f.pct != null) ? f.pct - c.pct : null;
   console.log(rotulo(id).padEnd(26)
-    + `${pct(c.piso)}–${pct(c.pct)}`.padEnd(24)
-    + (f.t ? `${pct(f.piso)}–${pct(f.pct)}` : '(não houve)').padEnd(21)
+    + `${pct(c.piso)}–${pct(c.pct)}`.padEnd(17)
+    + `${pct(c.pisoG)}–${pct(c.pctG)}`.padEnd(16)
+    + (f.t ? `${pct(f.piso)}–${pct(f.pct)}` : '(não houve)').padEnd(17)
     + (d == null ? '·' : (d > 0 ? '+' : '') + pct(d)));
 }
 
@@ -197,9 +266,20 @@ const impasse = boas.filter((l) => l.fim === 'estourou');
 const doPrincipal = term.filter((l) => infoDe(l.celula).nivelLimiar === PRINCIPAL);
 const doTopo = fatiaIII(doPrincipal, 'combate');
 const daFugaT = fatiaIII(doPrincipal, 'fuga');
-console.log('\n  O NÚMERO DO TOPO, e ele é o da FASE DE COMBATE das batalhas que TERMINAM:');
-console.log(`    combate (${doTopo.n} batalhas): ${pct(doTopo.piso)} a ${pct(doTopo.pct)} de classe iii   ← É ESTE`);
-console.log(`    fuga    (as mesmas):          ${pct(daFugaT.piso)} a ${pct(daFugaT.pct)}   ← leitura própria, fora da média`);
+console.log('\n  OS DOIS NÚMEROS DO TOPO, da FASE DE COMBATE das batalhas que TERMINAM:');
+console.log(`    ${doTopo.n} batalhas · ${num(doTopo.t, 0)} paradas · ${num(doTopo.gT, 0)} gestos`);
+console.log(`    fração das PARADAS que é iii: ${pct(doTopo.piso)} a ${pct(doTopo.pct)}`
+  + '   ← quantas INTERRUPÇÕES a automação apaga');
+console.log(`    fração dos GESTOS  que é iii: ${pct(doTopo.pisoG)} a ${pct(doTopo.pctG)}`
+  + '   ← quanto TRABALHO ela apaga  ← É ESTE');
+console.log('    A segunda é a que responde a pergunta da R2 §B. A primeira sozinha faz o');
+console.log('    leitor trocar "vezes que fui consultado" por "quanto eu trabalhei".');
+if (doTopo.gDv === 0) {
+  console.log('    A banda de gestos não tem largura porque `agenda` e `reprojetar` custam');
+  console.log('    ZERO gesto: a dúvida da taxonomia move a conta de paradas e não a de gestos.');
+}
+console.log(`    fuga    (as mesmas): paradas ${pct(daFugaT.piso)} a ${pct(daFugaT.pct)}`
+  + ` · gestos ${pct(daFugaT.pisoG)} a ${pct(daFugaT.pctG)}   ← leitura própria, fora da média`);
 console.log(`    impasse (${impasse.length} batalhas que estouram): fora de toda leitura`);
 
 // =================================== a sensibilidade ao limiar de fuga (§3)
@@ -207,26 +287,35 @@ if (NIVEIS.length > 1) {
   console.log('\n── A SENSIBILIDADE AO LIMIAR DE FUGA · o mesmo robô, dois valores do produto ──');
   console.log('  Não é política nova: é o `fugirAbaixoDePct` do `regras.json`, em dois níveis.');
   console.log('  (só as batalhas que TERMINAM)');
-  console.log('nível'.padEnd(12) + 'batalhas   %iii combate    %iii fuga   Tick da fuga  fuga-consumada');
+  console.log('nível'.padEnd(12) + 'batalhas  paradas iii     gestos iii   Tick da fuga  fuga-consumada');
   const leitura = {};
+  const leituraG = {};
   for (const nv of NIVEIS) {
     const ls = term.filter((l) => infoDe(l.celula).nivelLimiar === nv);
     const c = fatiaIII(ls, 'combate'), f = fatiaIII(ls, 'fuga');
     const tf = med(ls.map((l) => l.tickDaFuga).filter((x) => x != null));
     const fc = ls.filter((l) => l.fim === 'fuga-consumada').length / Math.max(1, ls.length);
     leitura[nv] = c.pct;
+    leituraG[nv] = c.pctG;
     const lim = CEL.find((x) => x.nivelLimiar === nv)?.limiar;
     console.log(`${nv} (${lim}%)`.padEnd(12) + String(ls.length).padStart(8)
       + `${pct(c.piso)}–${pct(c.pct)}`.padStart(15)
-      + (f.t ? `${pct(f.piso)}–${pct(f.pct)}` : '(não houve)').padStart(13)
+      + `${pct(c.pisoG)}–${pct(c.pctG)}`.padStart(15)
       + num(tf, 1).padStart(15) + pct(fc).padStart(16));
   }
-  const vs = Object.values(leitura).filter((x) => x != null);
-  const dif = vs.length > 1 ? Math.max(...vs) - Math.min(...vs) : 0;
-  console.log(dif > 0.05
-    ? `\n  ⚠ A LEITURA MUDA COM O LIMIAR (${(dif * 100).toFixed(0)} pontos): a conclusão da bateria`
-      + '\n    depende dele, e isso vai no topo do relatório.'
-    : `\n  ✓ A leitura NÃO muda com o limiar (${(dif * 100).toFixed(0)} pontos): a conclusão é robusta a ele.`);
+  // A CONFERÊNCIA É NAS DUAS MOEDAS, e a que decide é a dos GESTOS, porque é o
+  // número que o relatório publica no topo.
+  const espalho = (o) => {
+    const vs = Object.values(o).filter((x) => x != null);
+    return vs.length > 1 ? Math.max(...vs) - Math.min(...vs) : 0;
+  };
+  const dif = espalho(leitura);
+  const difG = espalho(leituraG);
+  console.log(`\n  paradas: ${(dif * 100).toFixed(0)} pontos · gestos: ${(difG * 100).toFixed(0)} pontos`);
+  console.log(difG > 0.05
+    ? '  ⚠ A LEITURA DE GESTOS MUDA COM O LIMIAR: a conclusão da bateria depende dele,'
+      + '\n    e isso vai no topo do relatório.'
+    : '  ✓ A leitura de gestos NÃO muda com o limiar: a conclusão é robusta a ele.');
 }
 
 // =================================== E4 · a assimetria de passo, contra a âncora
