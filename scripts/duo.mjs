@@ -113,10 +113,20 @@ function chamar(dir, quem, prompt) {
       console.log(`\n  [seco] ${quem} em ${path.basename(dir)}:\n${prompt.split('\n').map((l) => `    | ${l}`).join('\n')}`);
       return resolve({ ok: true, custo: 0, texto: '(seco)' });
     }
-    const args = ['-p', prompt, '--output-format', 'json',
-      '--permission-mode', 'bypassPermissions'];
+    // O PROMPT VAI PELO STDIN, E NUNCA COMO ARGUMENTO. A primeira execução
+    // molhada morreu na primeira chamada por isto: com `shell: true` (que o
+    // Windows exige para achar o `claude.cmd`) o argumento é concatenado sem
+    // escape, o prompt inteiro é partido nos espaços e cortado na primeira quebra
+    // de linha, e o CLI recebeu "Ao" como prompt e o resto como flags inválidas.
+    // A saída não era JSON e o ciclo parou, corretamente, sem gastar nada. O
+    // `--seco` não pegaria nunca, porque ele não chama o processo. Pelo stdin o
+    // texto chega inteiro, com crase, aspas e quebra de linha, e os argumentos
+    // ficam sendo só as flags fixas, que não têm nada para o shell mastigar.
+    const args = ['-p', '--output-format', 'json', '--permission-mode', 'bypassPermissions'];
     if (MODELO_CHAMADA) args.push('--model', MODELO_CHAMADA);
-    const p = spawn('claude', args, { cwd: dir, shell: true });
+    const p = spawn('claude', args, { cwd: dir, shell: true, stdio: ['pipe', 'pipe', 'pipe'] });
+    p.stdin.on('error', () => {});
+    p.stdin.end(prompt);
     let saida = '', erro = '';
     const relogio = setTimeout(() => {
       p.kill('SIGKILL');
@@ -145,9 +155,16 @@ function chamar(dir, quem, prompt) {
             motivo: 'a saída não traz o custo da chamada (total_cost_usd), e sem ele o'
               + ' teto de custo não tem como valer' });
         }
-        resolve({ ok: j.subtype !== 'error', custo: Number(c), texto: j.result || '' });
+        // A saída real (conferida em 04/09 com uma chamada de US$ 0,34) traz
+        // `subtype: "success"`, `is_error` e `total_cost_usd`. Os dois sinais de
+        // erro são lidos, porque ler um só é apostar em qual deles o CLI mantém.
+        resolve({ ok: j.subtype !== 'error' && !j.is_error, custo: Number(c), texto: j.result || '' });
       } catch {
-        resolve({ ok: false, custo: 0, texto: saida, motivo: 'saída não era JSON' });
+        // A SAÍDA CRUA VAI NO MOTIVO. Sem ela, "não era JSON" obriga a reproduzir
+        // a chamada para saber o que veio, e reproduzir custa uma chamada.
+        const amostra = (saida || erro || '(vazia)').replace(/\s+/g, ' ').slice(0, 400);
+        resolve({ ok: false, custo: 0, texto: saida,
+          motivo: `saída não era JSON. Os primeiros 400 caracteres: ${amostra}` });
       }
     });
   });
