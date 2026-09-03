@@ -747,12 +747,10 @@ valores diferentes.
 segue sem oráculo depois de consertado, que é a pior das situações: consertado e sem quem avise se
 voltar.
 
-| Meta nova da recoleta | Piso |
-|---|---:|
-| lances com `manobra: 'rajada'` e `penDados` de tamanho **3** | 60 |
-| lances com **`golpeDaAgenda > 0`** | 60 |
-| lances com `golpeDaAgenda === 2` (o terceiro golpe, onde a penalidade é −2) | 20 |
-| e o invariante, em todos: **`golpeDaAgenda === penDadosUsado`** | 100% |
+**A lista completa das metas está na §9.5**, que acrescentou duas que faltavam aqui: a rajada com
+arma de **teto 2** (haste ou pesada, onde `penDados` para de crescer) e o **`pvMax` com mais de um
+valor**. E a asserção pelo **valor** contra a régua está na §9.6, porque a igualdade
+`golpeDaAgenda === penDadosUsado` compara mesa com mesa e não pega a agenda errando o índice.
 
 **O que a recoleta precisa fazer de diferente**, e são duas coisas, uma por causa:
 
@@ -793,3 +791,190 @@ preço da decisão do Q6. Sem ela, o harness roda milhares de batalhas contra um
 ninguém conferiu, e todo número da bateria fica pendurado nisso. Não é etapa da sequência: é
 validação que roda **uma vez por mudança na resolução**, e é o que autoriza a bateria a valer alguma
 coisa.
+
+---
+
+## 9 · A disciplina de cobertura, e o critério de pronto de cada passo
+
+Escrito em 02/09 para parar de descobrir buraco de cobertura um por vez. As três causas da §8.3, a
+meta do teto da rajada e a asserção pelo valor são todas o mesmo erro repetido, e ele não é falta de
+atenção: é **método**. Esta seção troca o método.
+
+### 9.1 · O erro de método: as metas eram inventadas
+
+Toda meta de cobertura que existe hoje nasceu de alguém olhar a fixture e reparar numa falta. Isso
+tem duas consequências, e as duas já aconteceram:
+
+- **acha o que se procura**, e as metas antigas mediam **armadura, condição e ferimento**, que são os
+  três eixos do **dano e da Defesa**. Nenhuma media **manobra**, e nenhuma media coisa vinda da
+  **agenda**. Os dois buracos conhecidos (a rajada que nunca apareceu e o índice do golpe achatado em
+  zero) moram exatamente no eixo que ninguém estava medindo;
+- **não escala.** Cada rodada acha mais um, e a rodada seguinte acha outro.
+
+E a **causa 2** da §8.3 é de uma terceira espécie, que nenhuma meta de volume pega: ela é sobre o
+**esquema** do registro, e não sobre o tamanho da fixture. **Um oráculo que não carrega o campo onde
+o erro mora não melhora com mais lances.** Dez mil lances com `golpeIndice` achatado em zero provam
+exatamente o mesmo que mil e cinquenta e um.
+
+### 9.2 · A auditoria mecânica, e o que ela achou
+
+Rodei o inventário de todo campo folha de `entrada`, com a contagem de valores distintos nos 1051.
+É o mesmo tipo de varredura do `Math.random` do `test-acaso.mjs`, aplicado ao contrato em vez de ao
+código.
+
+**Campos com UM ÚNICO VALOR em 1051 lances:**
+
+| Campo | Valor | Diagnóstico |
+|---|---|---|
+| `entrada.golpeIndice` | `0` | **conhecido**: é a causa 2 da §8.3, e o passo 3 o conserta |
+| `entrada.alvo.pvMax` | `40` | **ACHADO NOVO, e é a mesma forma da causa 3** · ver abaixo |
+| `entrada.perfil.*` (as 15) | `false` | **legítimo e declarado**: o motor não aplica bandeira nenhuma |
+| `cobre` | `completo` | **legítimo e travado**: toda folha calcula acerto e dano, e a trava do teste cobra a declaração |
+
+**O achado novo: `pvMax` é 40 nos 1051.** Ele importa porque o ferimento não sai da Vida, sai da
+**fração**: `tierDe` calcula `pct = floor(cur / max × 100)` e procura a faixa. Com um denominador só,
+as cinco faixas foram exercitadas todas no mesmo divisor, e **a divisão e o arredondamento nunca
+foram exercitados**. Um alvo de `pvMax` 25 e outro de 80 põem a mesma Vida absoluta em faixas
+diferentes, e a borda de cada faixa (76, 51, 26, 11, 1) cai em número quebrado. **Uma classe inteira
+de caso sem um exemplar**, que é a definição da causa 3.
+
+**E dois campos com dois valores só**, que valem nota e não meta: `condicoesDefesa` é `0` ou `−4`
+(nunca positivo, e há condição que soma), e `manobra` é `simples` ou `dupla` (nunca `rajada`, que é
+o que o passo 3 conserta).
+
+### 9.3 · A regra que substitui as metas inventadas
+
+**Toda entrada do contrato tem de ter pelo menos dois valores distintos na fixture, e toda entrada
+com um valor só tem de estar numa lista de permitidos, com o motivo escrito.**
+
+É a mesma forma que já funcionou duas vezes neste projeto: a varredura de `Math.random` em
+`test-acaso.mjs` e a lista `LIGADAS_NO_MOTOR` em `test-bandeiras.mjs`. **A lista é a decisão, e a
+varredura é o que torna o esquecimento impossível.** Quem acrescentar um campo ao contrato tem duas
+saídas: dar dois valores a ele na coleta, ou vir à lista dizer por que ele é constante.
+
+Concretamente, no `test-lance.mjs`:
+
+```
+UM_VALOR_SO = {
+  'entrada.perfil.*'      · o motor não aplica bandeira nenhuma (test-bandeiras trava isso)
+  'entrada.aid'           · é identificador, e variar é o normal dele
+  'cobre'                 · toda folha calcula acerto e dano; a trava já cobra a declaração
+}
+```
+
+E a varredura **falha** para qualquer outro campo folha que apareça com um valor só. Ela substitui
+as metas por eixo: as metas continuam existindo para os casos em que **dois valores não bastam** (o
+veredito precisa dos três, os eixos isolados precisam da combinação), mas o **piso** deixa de ser
+inventado.
+
+**O que isso teria pegado, se existisse antes:** `golpeIndice` (causa 2), `pvMax` (achado hoje), e
+`manobra` teria passado com dois valores, o que mostra o limite honesto da regra: **ela pega campo
+constante, e não pega valor que falta dentro de um campo que varia.** Para esse segundo tipo existe a
+§9.4.
+
+### 9.4 · A cobertura por RAMO, gerada da régua e não da imaginação
+
+O que a varredura não pega é o ramo: `manobra` tem dois valores e mesmo assim falta a rajada; a
+rajada tem teto por classe e mesmo assim falta o teto 2. **A lista de ramos não se inventa: ela se
+lê do `regras.json`**, e é curta.
+
+| Ramo | De onde sai | Estado |
+|---|---|---|
+| **manobra** · simples, dupla, rajada | `combate.rajada`, `combate.dupla` | **falta a rajada** |
+| **teto da rajada por classe** · leve 3, média 3, haste 2, pesada 2 | `combate.rajada.teto` | **falta o teto 2**: só rajada de leve ou média nunca roda o corte do teto, que é onde `penDados` para de crescer |
+| **`penDadosAcumula`** · verdadeiro hoje | `combate.rajada` | segue o valor da régua |
+| **`penDadosAmbasAsMaos`** · verdadeiro hoje | `combate.dupla` | é o que faz `penDados` da dupla ser `(−1, −1)`, dois valores iguais, e por isso a dupla **não expõe** o defeito nem em princípio |
+| **as seis faixas de ferimento** | `ferimentos` | cinco cobertas com um denominador só; ver `pvMax` na §9.2 |
+| **as três saídas do Quase-Acerto** | `quaseAcerto` | cobertas, e por construção |
+| **as quatro classes de arma** · leve, média, haste, pesada | `armas.json` | a bancada tem leve, média e pesada. **Falta haste**, e ela é alcançável pelo ajuste de instância (`dados.classe`) |
+
+**A regra do ramo:** todo ramo que a régua escreve precisa de pelo menos um caso, e quando o ramo é
+um **limite** (o teto), ele precisa de um caso **em cima e um abaixo dele**.
+
+### 9.5 · As metas do passo 3, completas
+
+Substituem a lista da §8.3, que estava incompleta em duas.
+
+| Meta | Piso | Por que ela existe |
+|---|---:|---|
+| `manobra: 'rajada'` com `penDados` de tamanho **3** | 60 | é o único caso em que `penDados` tem valores **diferentes** entre si, e portanto o único que expõe o defeito |
+| `manobra: 'rajada'` com arma de **haste ou pesada** (teto 2) | **30** | o teto é onde `penDados` **para de crescer**, e uma rajada pedida em 3 com arma pesada volta com 2 mais um aviso. Só rajada de leve ou média nunca roda esse corte. **A bancada já tem `pesada`** (`mon-aboleth`); `haste` sai do ajuste de instância |
+| `golpeDaAgenda > 0` | 60 | o caminho que nunca rodou |
+| `golpeDaAgenda === 2` (o terceiro golpe, penalidade −2) | 20 | o valor mais extremo da escada |
+| `pvMax` com **pelo menos três valores** | 3 valores | o achado da §9.2: a faixa de ferimento é fração, e um denominador só nunca exercita a divisão |
+| **invariante** `golpeDaAgenda === penDadosUsado` | 100% | a prova do conserto |
+| **invariante pelo VALOR**, contra a régua | 100% | ver §9.6 |
+
+**As duas mudanças que a recoleta exige**, uma por causa da §8.3:
+
+1. **declarar rajada**, com `golpes: 3`, e em pelo menos uma passada com arma de teto 2, para o corte
+   acontecer;
+2. **abrir a folha em cada Tick da agenda**, percorrendo `an.offs`, e não só no primeiro, que é o que
+   `resolverGolpeNoAr` faz quando o mestre clica no segundo cartão da faixa.
+
+### 9.6 · A asserção pelo VALOR, que é diferente da asserção pela igualdade
+
+`golpeDaAgenda === penDadosUsado` compara **mesa com mesa**: ela prova que a folha aplicou o índice
+que a agenda mandou. **Ela não pega o caso em que a agenda calcula o índice errado e a folha o aplica
+fielmente**, porque aí os dois campos concordam num número errado.
+
+Então entra uma segunda, **contra a régua**, e ela é computada do `regras.json` e não do que a mesa
+devolveu:
+
+```
+penDadosEsperado(classe, manobra, n):
+  rajada · teto  = combate.rajada.teto[classe]
+           k     = min(n, teto)
+           pen   = combate.rajada.penDadosPorGolpeExtra        (−1 hoje)
+           acum  = combate.rajada.penDadosAcumula              (verdadeiro hoje)
+           → [i => acum ? pen * i : (i ? pen : 0)]              para i em 0..k−1
+  dupla  · pen   = combate.dupla.penDados                      (−1 hoje)
+           ambas = combate.dupla.penDadosAmbasAsMaos           (verdadeiro hoje)
+           → [pen, ambas ? pen : 0]
+  simples· → [0]
+
+ASSERÇÃO: penDadosUsado === penDadosEsperado(...)[golpeDaAgenda]
+```
+
+**O caso que ela pega e a outra não:** numa rajada de três com espada longa, o `penDadosUsado` do
+golpe de índice 2 tem de ser **−2**, lido da régua. Se a agenda passar a emitir `[0, −1, −1]` por um
+erro em `anatomia`, a asserção da igualdade continua verde (a folha aplicou o índice 2, e a agenda
+disse −1) e esta falha.
+
+**E ela é a forma certa de escrever qualquer conferência de regra deste projeto**, que é a
+generalização a guardar: *comparar a mesa com a mesa prova consistência; comparar a mesa com o
+`regras.json` prova correção.* As duas juntas, sempre, porque cada uma pega o que a outra não pega.
+
+### 9.7 · O critério de pronto de cada passo, escrito antes
+
+Isto existe para os passos 4 a 10 não voltarem um por vez. Cada um tem a mesma forma que o passo 2
+teve: **um oráculo, uma varredura e uma lista de permitidos.**
+
+| Passo | O oráculo (contra o que se confere) | A varredura (o que não pode faltar) | Pronto quando |
+|---|---|---|---|
+| **3** · índice, `aid` e recoleta | a fixture nova, recolhida no mesmo commit | os campos folha com um valor só, mais os ramos da §9.4 | zero divergências, as sete metas da §9.5, e as duas asserções da §9.6 |
+| **4** · o laço do Tick | **o espelho de motor**: a mesa dirigida no Edge contra a cópia, Tick a Tick, pelos campos da R3 §1.1.1 | toda **fase** do Tick (declaração, passo, resolução, fim) com pelo menos um Tick em que ela faz alguma coisa | zero divergências em N Ticks de uma cena fixa, **e não** os testes das peças passando (§5.2) |
+| **5** · fim de batalha | os quatro motivos do `cena.fim.motivo` | os quatro motivos com pelo menos uma batalha cada, e a fração de `estourou` reportada | nenhuma batalha infinita, e o motivo dominante de cada célula escrito |
+| **6** · o log | a taxonomia i/ii/iii da R2 §B, carimbada no código | as 14 paradas, cada uma com o carimbo no ponto certo, conferido à mão uma vez | toda parada emitida tem classe, e a soma das três dá o total |
+| **7** · perfil de automação | a mesma semente nos dois perfis | **o invariante do consumo de acaso**: as duas execuções consomem a mesma quantidade de rolagens (P §7.3) | o par é um par, ou a classe iii rola dado e a taxonomia está errada ali |
+| **8** · cena e elenco | os arquétipos passam por `resumoCombatePC` sem tratamento especial | cada arquétipo com o passo, o alcance e a classe conferidos contra o catálogo | os dois arquétipos e os três tamanhos montam sem número inventado além dos declarados |
+| **9** · invariantes e agregador | os quatro invariantes, em memória | batalha que viola vai para balde próprio e **não entra em média nenhuma** | a fração de batalhas inválidas é reportada na primeira linha |
+| **10** · a bateria | o piloto, com a regra de decisão escrita antes de rodar | as doze células, e o `n` que sai do piloto | os números saem com a etiqueta de procedência (`dado`, `derivado`, `inventado`) |
+
+**A regra geral, que é o que sobra se tudo isto for esquecido:** *nenhum passo está pronto porque as
+peças dele passam. Ele está pronto quando existe alguma coisa fora dele que discorda quando ele
+erra.*
+
+### 9.8 · O que continua sendo decisão sua, e não minha
+
+Para ficar claro o que este planejamento **não** decidiu:
+
+- **as cinco pendências de desenho da bateria** que o pedido do passo 1 listou e mandou não executar
+  (o par de perfis redundante, o eixo de ciclo confundido com arma, o `fim_motivo` correlacionado com
+  a distância, a fração de classe iii superestimada pela política, e as bandeiras ligadas). As cinco
+  continuam abertas, e a quinta foi resolvida em 02/09 (todas nascem desligadas);
+- **se o `haste` vale uma passada própria** ou se `pesada` basta para o teto 2. Eu diria que
+  `pesada` basta e o `haste` é barato o suficiente para entrar junto, mas o piso de 30 é sobre o
+  **teto**, e não sobre a classe;
+- **quando o espelho de motor é escrito**, que é o que separa o passo 4 de ter critério de pronto ou
+  não ter nenhum.

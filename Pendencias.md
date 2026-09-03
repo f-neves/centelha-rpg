@@ -1071,7 +1071,9 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   pode atravessar commits, porque um oráculo que mente na direção do bug é pior que nenhum. **E a
   recoleta tem de FORÇAR rajada de três**: a fixture atual não tem uma única rajada, e a dupla não
   expõe o defeito nem em princípio, porque o `penDados` dela é `(−1, −1)`, dois valores iguais.
-  `07-caminho-curto.md` §8.2, §8.3 e §5.1.
+  As metas completas e a **disciplina de cobertura** que as gera (varredura de campo constante mais
+  lista de permitidos, no lugar de meta inventada uma a uma) estão na **§9**, com o critério de
+  pronto dos passos 4 a 10 escrito antes. `07-caminho-curto.md` §8.2, §8.3, §9 e §5.1.
 - [ ] **L8 · [FAZER] Fundir as duas especificações de política.** A `02` §0.4 P4 tinha a lista
   ordenada e a §0.47 tinha as regras de leitura, e nenhuma era completa. Fundidas em 02/09, com as
   regras de leitura marcadas ⊙ (é o que o eixo E9 desliga) e a regra de modo marcada ⊕. Enquanto
