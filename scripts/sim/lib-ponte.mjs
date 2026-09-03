@@ -29,8 +29,11 @@ export async function carregarLib() {
           anatomia, declarar, agendaSimultanea, reprojetarAgenda, faseEm,
           defesaPerdida, ordemDaFila, golpesNoAr, golpeResolvido,
           decisaoAutomatica, ticksDeViagem, golpeDaAgenda, penDadosDaRegua,
+          passoDoGolpe, decideEmValeDepois, faseDeQuemVaiAgir, preparoDe,
+          agendar, contrapeDe, temGesto,
         } from './src/lib/combate-tempo';
-        export { distanciaHex, caminharHex, vizinhos } from './src/lib/hex';
+        export { distanciaHex, caminharHex, vizinhos, alemDe } from './src/lib/hex';
+        export { HEX_HASTE, HEX_CORPO_A_CORPO } from './src/lib/alcance';
         export { resolverGolpe, fonteRolada, defesaEfetiva } from './src/lib/lance';
         export { qaDaPeca, errouPor, saidaDoAtaque } from './src/lib/quase-acerto';
         export { resumoCombatePC } from './src/lib/combate-resumo';
@@ -38,6 +41,7 @@ export async function carregarLib() {
         export { tierDe, somarCondicoes } from './src/lib/mesa-core';
         export { deslocamento } from './src/lib/calc';
         export { semear, semeadoDe, semeado } from './src/lib/acaso';
+        export { rolarExpr } from './src/lib/rolagem';
         export { PERFIL_CORRENTE } from './src/lib/bandeiras';
       `,
       resolveDir: RAIZ, loader: 'ts',

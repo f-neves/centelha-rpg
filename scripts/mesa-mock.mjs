@@ -24,11 +24,38 @@
 
 // Os Efeitos do jogo, para a ficha de mentira poder comprar todos.
 import EFEITOS_D from '../src/data/efeitos.json';
+// O ELENCO DO ESPELHO DE MOTOR. As peças da cena de espelho saem da MESMA
+// linha de código que as do harness (`scripts/sim/elenco.mjs`), porque comparar
+// duas cenas montadas de dois lugares não prova nada sobre o laço: prova que eu
+// montei duas cenas diferentes. A régua entra por parâmetro, e é por isso que o
+// mesmo arquivo roda no Node e aqui.
+import { montarArquetipo } from './sim/elenco.mjs';
+import { resumoCombatePC } from '../src/lib/combate-resumo';
+import { armaDoCatalogo, classeDeTempo, velocidadeDaArma } from '../src/lib/combate-tempo';
 
 const P = new URLSearchParams(typeof location !== 'undefined' ? location.search : '');
 const N_COMB = parseInt(P.get('bench') || '12', 10);
-const COLS = parseInt(P.get('cols') || '24', 10);
-const ROWS = parseInt(P.get('rows') || '16', 10);
+
+// A CENA DO ESPELHO DE MOTOR: `?cena=espelho&arqa=&arqb=&n=&dist=`.
+//
+// A bancada padrão monta doze peças em posições fixas, e o espelho não pode
+// usá-la: ele compara o laço headless com esta página Tick a Tick, e para isso
+// os dois têm de rodar A MESMA CENA. Aqui as peças, o mapa e a distância
+// inicial vêm de uma célula da bateria, montada pelo mesmo `elenco.mjs`.
+//
+// O lado `a` entra como PC e o lado `b` como criatura porque é assim que a mesa
+// sabe quem é inimigo de quem (`inimigosDe` compara `tipo`, e não grupo). Os
+// números dos dois saem do mesmo arquétipo, então o rótulo não muda jogo nenhum.
+const ESPELHO = P.get('cena') === 'espelho'
+  ? {
+    arq: [P.get('arqa') || 'escudeiro', P.get('arqb') || 'montanteiro'],
+    n: Math.max(1, parseInt(P.get('n') || '1', 10)),
+    dist: Math.max(1, parseInt(P.get('dist') || '18', 10)),
+  }
+  : null;
+
+const COLS = ESPELHO ? ESPELHO.dist + 8 : parseInt(P.get('cols') || '24', 10);
+const ROWS = ESPELHO ? Math.max(4, ESPELHO.n + 2) : parseInt(P.get('rows') || '16', 10);
 const NEVOA = P.get('nevoa') === '1';
 const POSTOS = parseInt(P.get('postos') || String(N_COMB), 10);
 // O sistema de tempo da mesa de bancada. `pgr` de propósito: é o caminho novo,
@@ -213,6 +240,57 @@ for (let i = 0; i < Math.min(POSTOS, COMBS.length); i++) {
   });
 }
 
+/**
+ * A CENA DO ESPELHO substitui as peças e os postos da bancada.
+ *
+ * Substitui, e não convive: as doze peças da bancada padrão têm condições,
+ * armas trocadas e Vida em escada, tudo de propósito, e nada disso existe na
+ * célula da bateria. Uma cena misturada não seria nem uma nem outra.
+ *
+ * Os NÚMEROS DE COMBATE entram por `dados` (o ajuste por instância, que é o
+ * caminho que a mesa já usa para o bicho construído errado) em vez de virem de
+ * uma ficha: assim os dois lados recebem exatamente o mesmo objeto do
+ * `montarArquetipo`, sem passar por dois caminhos de resolução diferentes.
+ */
+if (ESPELHO) {
+  const REGUA = { resumoCombatePC, armaDoCatalogo, classeDeTempo, velocidadeDaArma };
+  COMBS.length = 0; TOKENS.length = 0;
+  let ordinal = 0;
+  for (const [i, lado] of ['a', 'b'].entries()) {
+    const arq = montarArquetipo(ESPELHO.arq[i], REGUA);
+    for (let k = 0; k < ESPELHO.n; k++) {
+      const id = `${lado}${k}`;
+      COMBS.push({
+        id, encontro_id: ENC, nome: `${arq.nome} ${lado}${k}`,
+        tipo: lado === 'a' ? 'pc' : 'criatura',
+        grupo: lado === 'a' ? 'aliado' : 'inimigo',
+        monstro_id: null, personagem_id: null,
+        pv_max: arq.pvMax, pv_atual: arq.pvMax,
+        mana_max: null, mana_atual: null,
+        tick: 0, iniciativa: arq.iniciativa,
+        acao: {},
+        dados: {
+          // O robô ligado: sem isto ninguém declara sozinho e o Tick não anda.
+          auto: true,
+          arma: arq.arma, ataque: arq.ataque, dano: arq.dano,
+          defesa: arq.defesa, soak: arq.soak,
+          velocidade: arq.velocidade, classe: arq.classe,
+          passo: arq.passo, qa: arq.qa,
+        },
+        condicoes: [],
+        ativo: true, oculto: false, imagem: null, retrato: null,
+      });
+      TOKENS.push({
+        arena_id: ARENA, combatente_id: id,
+        // Axial direto, e não pela conversão de offset: é assim que o harness
+        // põe as peças, e o tabuleiro guarda axial de qualquer forma.
+        q: lado === 'a' ? 1 : 1 + ESPELHO.dist, r: 1 + k,
+        movido_em: new Date(1700000000000 + (ordinal++) * 1000).toISOString(),
+      });
+    }
+  }
+}
+
 const LOG = Array.from({ length: 40 }, (_, i) => ({
   id: `l${i}`, ts: new Date(1700000000000 + i * 60000).toISOString(),
   txt: `Linha de registro ${i + 1}`, ord: i,
@@ -260,7 +338,13 @@ const TABELAS = {
   mesas: [{
     id: MESA, nome: 'Mesa de bancada', descricao: 'bancada de teste',
     mestre_id: PAPEL === 'mestre' ? UID : OUTRO_UID, codigo_convite: 'BENCH1', revelar: {},
-    combate: { sistema: TEMPO, marcacao: 'fita', golpeAdiado: ADIADO },
+    // A ROLAGEM NO SITE é o que o espelho exige: sem ela a folha abre com os
+    // campos vazios esperando o número da mão, e não há dado para comparar.
+    // `?rolagem=site` liga em qualquer cena; o padrão continua sendo a mesa.
+    combate: {
+      sistema: TEMPO, marcacao: 'fita', golpeAdiado: ADIADO,
+      ...(P.get('rolagem') || ESPELHO ? { rolagem: P.get('rolagem') || 'site' } : {}),
+    },
   }],
   mesa_arenas: ARENAS,
   arena_visao: ARENAS,

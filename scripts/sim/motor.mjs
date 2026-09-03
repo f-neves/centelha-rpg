@@ -9,15 +9,24 @@
 //
 // E é justamente por isso que este arquivo NÃO SE PROVA SOZINHO. As peças dele
 // passam nos testes delas e isso não diz nada sobre a ordem. Quem prova a ordem
-// é o espelho de motor, comparando este laço com a mesa Tick a Tick.
+// é o espelho de motor (`scripts/test-espelho.mjs`), comparando este laço com a
+// mesa Tick a Tick. A primeira versão deste arquivo passou por uma revisão
+// inteira e por uma bateria de 6.000 batalhas com divergências de ordem dentro.
 //
-// A ANATOMIA DE UM TICK, e ela é a regra N5 (`02` §0.46):
-//   fase 0 · quem tem golpe caindo neste Tick fica marcado o Tick inteiro
-//   fase 1 · DECLARAÇÃO: todos os livres declaram. Nenhuma consequência aqui
-//   fase 2 · PASSO: quem está em trajeto anda, e a agenda re-projeta se não
-//            alcançou
-//   fase 3 · RESOLUÇÃO: os golpes devidos caem
-//   fase 4 · FIM: a cena acabou?
+// A ANATOMIA DE UM TICK, e ela é a da MESA, e não a do projeto:
+//   fase 1 · PASSO: quem está em trajeto anda, e a agenda re-projeta se não
+//            alcançou (`avancarTickSimultaneo`, o laço de cima)
+//   fase 2 · DECLARAÇÃO: quem está livre declara (`decidirAutomaticas`)
+//   fase 3 · RETRATO: o despejo do Tick, que é onde o espelho compara
+//   fase 4 · RESOLUÇÃO: os golpes devidos caem. Na mesa isto acontece FORA do
+//            avanço, entre um clique e o outro, porque `instanteDeGolpe` tranca
+//            o botão enquanto houver golpe vencido
+//   fase 5 · FIM: a cena acabou? (não existe na mesa: lá quem decide é o mestre)
+//
+// O PROJETO manda declarar ANTES de andar, e marcar a fase no início do Tick
+// (N5, N6). A mesa faz o contrário e não marca nada. O harness copia o MOTOR,
+// e não o projeto: medir a carga de uma regra que ninguém implementou seria
+// medir o jogo que eu inventei.
 //
 // Cada consulta a um humano é uma PARADA, e toda parada carrega a classe da
 // R2 §B: i (decisão de jogador), ii (julgamento narrativo), iii (aritmética de
@@ -27,74 +36,120 @@ import { chaveHex } from './cena.mjs';
 /** O teto de segurança. Batalha que o estoura sai marcada e não entra em média. */
 export const TETO_TICKS = 2000;
 
+/** O passo da Corrida na TABELA de modos, que é o que a fuga da mesa usa. */
+const CORRIDA_DA_TABELA = 6;
+
+/** `temGesto` da régua, com o mesmo nome, para o laço ler igual à mesa. */
+const temGesto = (a) => !!a && Array.isArray(a.golpes) && a.golpes.length > 0;
+
 /**
  * Uma batalha completa, do Tick 1 ao fim.
  *
  * `L` é o pacote de `src/lib` já empacotado (ver `rodar.mjs`): recebê-lo por
  * parâmetro, em vez de importar aqui, é o que deixa este arquivo puro o
  * bastante para ser testado com um pacote de mentira.
+ *
+ * `opts.retrato` é o gancho do espelho: chamado no ponto exato em que a mesa
+ * chama `despejarTick`, e com nada mais. Sem ele o laço não sabe que está sendo
+ * comparado, que é como tem de ser.
  */
-export function batalha(L, cena, log) {
+export function batalha(L, cena, log, opts = {}) {
+  const TETO = opts.teto ?? TETO_TICKS;
   const pecas = cena.pecas;
   const vivo = (c) => c.pv > 0 && !c.desistiu;
-  const dePe = () => pecas.filter(vivo);
+
+  /**
+   * A FILA, e ela é a ordem em que tudo acontece: o passo, a declaração e a
+   * resolução. A mesa chama `naFila()` nos três lugares, e é por ela que a
+   * ordem de duas peças no mesmo Tick é decidida.
+   */
+  const naFila = () => pecas.slice().sort((a, b) => L.ordemDaFila(naOrdem(a), naOrdem(b)));
+  const dePe = () => naFila().filter(vivo);
   const inimigosDe = (c) => dePe().filter((o) => o.lado !== c.lado);
-  const aliadosDe = (c) => dePe().filter((o) => o.lado === c.lado && o !== c);
 
   /** A ocupação do tabuleiro, para o passo não atravessar ninguém. */
-  const ocupado = (h) => pecas.some((o) => vivo(o) && o.pos
+  const ocupado = (h, eu) => pecas.some((o) => o !== eu && vivo(o) && o.pos
     && o.pos.q === h.q && o.pos.r === h.r);
 
+  const escala = cena.escala;
+  const VALE = L.decideEmValeDepois();
+  // O CARIMBO DE QUEM ACABOU DE ANDAR.
+  //
+  // Na mesa, mover um token reescreve `movido_em` com a hora de agora, e
+  // `movido_em` é o terceiro critério de `ordemDaFila`. Consequência: quem anda
+  // vai para o fim do seu grupo de Tick, e numa perseguição a fila inteira se
+  // reordena a cada avanço. O laço não copiava isso e ordenava pela chegada
+  // original; nas cenas de perseguição as duas ordens de declaração e de
+  // resolução se separavam depois do primeiro passo.
+  //
+  // Aqui o carimbo é um contador em base futura em vez do relógio: precisa
+  // ordenar igual, não ser a mesma hora, e um `Date.now()` tornaria a batalha
+  // irreprodutível. (Que o critério de ESTABILIDADE da fila mude sozinho a cada
+  // passo é achado de produção, e está no Pendencias, não consertado aqui.)
+  let carimboSeq = 0;
+  const carimbo = () => new Date(1800000000000 + (carimboSeq++)).toISOString();
   let T = 0;
   let fim = null;
 
-  while (!fim && T < TETO_TICKS) {
+  while (!fim && T < TETO) {
     T += 1;
     log.tick(T);
 
-    // ---- fase 0 · quem está golpeando neste Tick ----
-    // Marcado ANTES de tudo, e o Tick inteiro: a ordem em que a resolução
-    // acontece não pode decidir quem apanha com a guarda dobrada (N6).
-    for (const c of pecas) c.fase = c.acao ? L.faseEm(c.acao, T) : 'livre';
-
-    // ---- fase 1 · declaração ----
-    // A ordem é a da fila (`ordemDaFila`), que é a da mesa. A ordem de N4
-    // (crescente em Raciocínio + Prontidão) é regra que ainda não existe no
-    // motor, e o harness copia o motor, não o projeto.
-    const livres = dePe()
-      .filter((c) => !c.acao || (c.acao.livre ?? 0) <= T)
-      .sort((a, b) => L.ordemDaFila(naOrdem(a, T), naOrdem(b, T)));
-    for (const c of livres) {
-      // A GUARDA DE DECLARAÇÃO, copiada de `grupoDaVez`: com um golpe já devido
-      // neste Tick, ninguém mais declara. É o estado de hoje, e é o que N2
-      // muda; a bateria mede o de hoje.
-      const maisCedo = golpeMaisCedo(pecas, T);
-      if (maisCedo != null && maisCedo <= T) break;
-      declarar(L, c, cena, log, T, inimigosDe, aliadosDe, ocupado);
-    }
-
-    // ---- fase 2 · o passo ----
+    // ---- fase 1 · o passo ----
     for (const c of dePe()) {
       const mov = c.acao?.mov;
       if (!mov) continue;
-      const alvo = pecas.find((o) => o.id === mov.alvo);
-      if (!alvo || !alvo.pos || !c.pos) continue;
-      const passos = Math.max(1, Math.round(mov.porTick / cena.escala));
-      const antes = { ...c.pos };
-      c.pos = L.caminharHex(c.pos, alvo.pos, passos, c.alcanceHex,
-        (h) => ocupado(h) && !(h.q === c.pos.q && h.r === c.pos.r));
-      const faltaHex = Math.max(0, L.distanciaHex(c.pos, alvo.pos) - c.alcanceHex);
-      if (faltaHex <= 0) {
-        delete c.acao.mov;
-        log.chegou(c, T, L.distanciaHex(antes, c.pos));
+      // A DECISÃO VALE UM TICK DEPOIS. Quem declarou no Tick T não anda no T:
+      // é a mesma linha da mesa (`desde + decideEmValeDepois() > T`), e sem ela
+      // toda perseguição do harness chegava um Tick antes da mesa.
+      if ((c.acao.desde ?? 0) + VALE > T) continue;
+      const alvo = mov.alvo ? pecas.find((o) => o.id === mov.alvo) : null;
+      const alvoPos = mov.alvo ? alvo?.pos : mov.destino;
+      if (!alvoPos || !c.pos) continue;
+      const passos = Math.max(1, Math.round(mov.porTick / escala));
+      const pararA = mov.alvo ? c.alcanceHex : 0;
+
+      // NO TICK DO GOLPE O PASSO É RESTRITO: só para frente, e a travessia é
+      // da Corrida. É `passoDoGolpe`, a mesma função que a mesa chama.
+      let mira = alvoPos, paraEm = pararA;
+      if (L.faseEm(c.acao, T) === 'golpe') {
+        const p = L.passoDoGolpe({
+          temAlvo: !!mov.alvo,
+          noAlcance: L.distanciaHex(c.pos, alvoPos) <= pararA,
+          modo: mov.modo,
+        });
+        if (p === 'nenhum') continue;
+        if (p === 'atravessar') { mira = L.alemDe(c.pos, alvoPos); paraEm = 0; }
+      }
+
+      const distAntes = L.distanciaHex(c.pos, mira);
+      const novo = L.caminharHex(c.pos, mira, passos, paraEm, (h) => ocupado(h, c));
+      // CERCADO NÃO É PRESO: na mesa, com o caminho estrito travado, o passo
+      // repete vetando só a casa exata. Aqui as duas regras JÁ coincidem (todo
+      // mundo é Médio num tabuleiro de 1 m, e `ocupadoPor` cai na casa exata),
+      // então repetir a passada não muda nada e a segunda chamada não existe.
+      // O dia em que entrar um Enorme no elenco, ela precisa voltar.
+      const atravessou = mira !== alvoPos && (novo.q !== c.pos.q || novo.r !== c.pos.r);
+      if (novo.q !== c.pos.q || novo.r !== c.pos.r) c.chegada = carimbo();
+      c.pos = novo;
+
+      if (atravessou || L.distanciaHex(c.pos, alvoPos) <= pararA) {
+        const sem = { ...c.acao }; delete sem.mov;
+        c.acao = sem;
+        // Movimento PURO (sem golpe no ar) libera o relógio já.
+        if (!mov.alvo && !(sem.golpes || []).length) c.tick = T;
+        log.chegou(c, T);
       } else {
         // A RE-PROJEÇÃO: o golpe adia porque o braço ainda não alcança. É o
         // eixo E4 inteiro, e é uma parada de classe iii (aritmética que o
         // motor faz e o mestre teria de fazer à mão).
+        const faltaHex = Math.max(0, L.distanciaHex(c.pos, alvoPos) - pararA);
+        const noAr = L.golpesNoAr(c.acao);
+        const antesG = noAr.length ? Math.min(...noAr) : null;
         const nova = L.reprojetarAgenda(c.acao, T, Math.ceil(faltaHex / passos));
         if (nova) {
-          const antesG = Math.min(...L.golpesNoAr(c.acao));
           c.acao = nova;
+          c.tick = nova.livre;
           c.deslizes = (c.deslizes || 0) + 1;
           log.parada('iii', 'reprojetar', c, T,
             { aid: c.acao.aid, de: antesG, para: Math.min(...L.golpesNoAr(nova)) });
@@ -102,39 +157,49 @@ export function batalha(L, cena, log) {
       }
     }
 
-    // ---- fase 3 · resolução ----
-    // Na ordem da fila invertida seria N5; hoje a mesa resolve na ordem da
-    // faixa, e é essa que se copia.
+    // ---- fase 2 · a declaração ----
     for (const c of dePe()) {
-      const devidos = L.golpesNoAr(c.acao).filter((g) => g <= T);
-      for (const tg of devidos) resolver(L, c, pecas, cena, log, T, tg);
+      // As três guardas da mesa, na ordem da mesa: relógio comprometido, golpe
+      // no ar, trajeto em curso.
+      if ((c.tick ?? 0) > T) continue;
+      if (L.golpesNoAr(c.acao).length || c.acao?.mov) continue;
+      declarar(L, c, cena, log, T, inimigosDe);
     }
 
-    // ---- fase 4 · o fim ----
-    fim = fimDaCena(pecas, T);
+    // ---- fase 3 · o retrato, no ponto em que a mesa despeja ----
+    if (opts.retrato) opts.retrato(T, naFila());
+
+    // ---- fase 4 · a resolução ----
+    // Na mesa isto é o mestre clicando nos cartões vencidos, e o botão do ⏭ só
+    // volta quando o último cai. A ordem é a da fila, que é a da faixa.
+    for (const c of dePe()) {
+      const devidos = L.golpesNoAr(c.acao).filter((g) => g <= T);
+      for (const tg of devidos) resolver(L, c, pecas, log, T, tg, opts);
+    }
+
+    // ---- fase 5 · o fim ----
+    // `semFim` é do espelho: a mesa não tem fim de cena, e comparar um laço que
+    // para com um que não para trunca a comparação no melhor pedaço.
+    if (!opts.semFim) fim = fimDaCena(pecas, T);
     log.fimDoTick(T, pecas);
   }
 
-  if (!fim) fim = 'estourou';
+  if (!fim) fim = T >= TETO_TICKS ? 'estourou' : 'teto-do-espelho';
   log.fim(fim, T, pecas);
   return { fim, ticks: T };
 }
 
-/** O molde que `ordemDaFila` espera. */
-const naOrdem = (c, T) => ({
-  tick: c.acao?.livre ?? T, iniciativa: c.iniciativa, raciocinio: c.raciocinio,
-  chegada: c.ordinal, nome: c.nome,
+/**
+ * O molde que `ordemDaFila` espera, e ele é o da mesa (`naOrdem`, grid.astro).
+ *
+ * `tick` é o RELÓGIO DA PEÇA (`combatentes.tick`), e não `acao.livre`: os dois
+ * coincidem com ação no ar e divergem sem ela, porque o relógio guarda o fim do
+ * último ciclo e a ação não existe mais.
+ */
+const naOrdem = (c) => ({
+  tick: c.tick ?? 0, iniciativa: c.iniciativa, raciocinio: c.raciocinio,
+  chegada: c.chegada, nome: c.nome,
 });
-
-/** O golpe mais cedo devido, entre todos. Copiado de `golpeMaisCedo`. */
-function golpeMaisCedo(pecas, T) {
-  let m = null;
-  for (const c of pecas) {
-    if (c.pv <= 0 || c.desistiu) continue;
-    for (const g of c.acao?.aResolver || []) if (m == null || g < m) m = g;
-  }
-  return m;
-}
 
 /**
  * UMA DECLARAÇÃO, com a política e as paradas que ela gera.
@@ -144,7 +209,7 @@ function golpeMaisCedo(pecas, T) {
  * em vez de uma minha é o que impede o resultado de ser sobre o robô que eu
  * inventei (risco F1).
  */
-function declarar(L, c, cena, log, T, inimigosDe, aliadosDe, ocupado) {
+function declarar(L, c, cena, log, T, inimigosDe) {
   const inimigos = inimigosDe(c);
   if (!inimigos.length) return;
 
@@ -160,63 +225,96 @@ function declarar(L, c, cena, log, T, inimigosDe, aliadosDe, ocupado) {
   if (!alvo) return;
 
   if (d.tipo === 'fugir') {
+    // A FUGA DA MESA, com os números da mesa: destino ao dobro do vetor, livre
+    // em T+6 e o passo da TABELA de modos, que não é o passo da peça. É uma
+    // incoerência da mesa (a declaração de ataque usa o passo da ficha e a
+    // fuga usa o 6 da tabela) e ela fica registrada, não corrigida aqui.
     const destino = {
       q: c.pos.q + (c.pos.q - alvo.pos.q) * 4,
       r: c.pos.r + (c.pos.r - alvo.pos.r) * 4,
     };
     c.acao = {
       golpes: [], livre: T + 6, desde: T, aid: `${c.id}-t${T}-f`,
-      mov: { alvo: null, destino, porTick: c.passo.corrida, fuga: true },
+      mov: { alvo: null, destino, modo: 'corrida', porTick: CORRIDA_DA_TABELA, auto: true },
     };
-    // Fugir move sem golpe: o `mov.alvo` nulo faz a fase 2 ignorar, e a fuga
-    // se resolve pela borda do mapa na §fimDaCena.
+    c.tick = c.acao.livre;
     c.fugindo = destino;
     log.parada('ii', 'fugir', c, T, {});
     return;
   }
 
-  // A DISTÂNCIA decide se há viagem, e a viagem entra na agenda.
+  // A DISTÂNCIA decide se há viagem, e a viagem entra na agenda. O MODO É
+  // `batalha`, que é o padrão de `declararAtaqueSimultaneo`: a mesa não corre
+  // para atacar, ela avança. O laço corria (`passo.corrida`), e com isso toda
+  // travessia do harness saía mais rápida que a da mesa.
   const hex = L.distanciaHex(c.pos, alvo.pos);
   const faltaHex = Math.max(0, hex - c.alcanceHex);
-  const porTick = faltaHex > 0 ? c.passo.corrida : c.passo.batalha;
-  const viagem = faltaHex > 0
-    ? L.ticksDeViagem(faltaHex * cena.escala, porTick) : 0;
+  const porTick = Math.max(0.5, c.passo.batalha);
+  const viagem = L.ticksDeViagem(faltaHex * cena.escala, porTick);
 
   // PARADA iii · a anatomia e a agenda são aritmética pura.
   const an = L.anatomia({
     classe: c.classe, velocidade: c.velocidade, sistema: 'simultaneo',
-    manobra: c.manobra, golpes: 3,
+    manobra: c.manobra,
   });
   const ag = L.agendaSimultanea(T, an, viagem);
   const aid = `${c.id}-t${T}-${(c.seq = (c.seq || 0) + 1)}`;
-  c.acao = {
-    golpes: ag.golpes, livre: ag.livre, desde: T, aid,
-    tipo: c.manobra, arma: c.arma, alvo: alvo.id,
-    aResolver: ag.golpes.slice(),
-    ...(viagem > 0 ? { mov: { alvo: alvo.id, porTick } } : {}),
-  };
+  let acao = L.declarar(T, an, {
+    tipo: (an.golpes > 1 ? c.manobra : 'simples'),
+    arma: c.arma, alvo: alvo.id, aid,
+  });
+  acao.golpes = ag.golpes; acao.livre = ag.livre;
+  if (viagem > 0) acao.mov = { alvo: alvo.id, modo: 'batalha', porTick, auto: true };
+  acao = L.agendar(acao, T);
+  c.acao = acao;
+  c.tick = acao.livre;
   c.an = an;
   log.parada('iii', 'agenda', c, T, { aid, golpes: ag.golpes, viagem });
   log.decl(c, T, { aid, alvo: alvo.id, manobra: c.manobra, viagem, golpes: ag.golpes });
 }
 
 /** UM GOLPE que cai, com a resolução compartilhada de `lance.ts`. */
-function resolver(L, c, pecas, cena, log, T, tg) {
+function resolver(L, c, pecas, log, T, tg, opts = {}) {
   const alvo = pecas.find((o) => o.id === c.acao.alvo);
-  c.acao = L.golpeResolvido(c.acao, tg);
-  if (!alvo || alvo.pv <= 0) return;
+  const aid = c.acao.aid;
+  const an = c.an;
+  // O ÍNDICE sai da agenda, pela mesma função da mesa.
+  const idx = L.golpeDaAgenda(c.acao, tg);
 
-  const idx = Math.max(0, (c.an?.offs || []).findIndex((o) => (c.acao.desde ?? 0) + o === tg));
-  const dv = L.defesaPerdida(alvo.acao, tg, { fase: alvo.fase !== 'livre' ? alvo.fase : undefined });
+  // "SOLTOU O GOLPE E O ALVO NÃO ESTAVA MAIS LÁ" é só o alvo que SUMIU da cena,
+  // e não o alvo que caiu: na mesa, `resolverGolpeNoAr` acha o caído em `COMBS`
+  // como qualquer outro, abre a folha, rola, aplica e cobra Pressão de um
+  // corpo no chão. O laço pulava esses golpes, e com isso a bateria não contava
+  // as paradas que eles custam ao mestre, que é justamente o que ela mede.
+  if (!alvo) {
+    c.acao = L.golpeResolvido(c.acao, tg);
+    return;
+  }
+
+  // A DEFESA DO ALVO, pelo caminho da folha: quando ele não tem gesto no ar, a
+  // mesa não o trata como livre, ela PRESUME a fase de quem age neste instante
+  // (`faseDeQuemVaiAgir`). O laço passava a fase real e dava Defesa cheia a
+  // quem estava prestes a golpear.
+  const acaoAlvo = temGesto(alvo.acao)
+    ? alvo.acao
+    : { golpes: [], livre: alvo.tick ?? 0, pressao: alvo.acao?.pressao || 0 };
+  const presumida = !temGesto(alvo.acao)
+    ? L.faseDeQuemVaiAgir(alvo.tick ?? 0,
+      L.preparoDe(alvo.classe, alvo.velocidade, 'simultaneo'), tg)
+    : 'livre';
+  const dv = L.defesaPerdida(acaoAlvo, tg, {
+    segura: alvo.acao?.tipo === 'segura',
+    ...(presumida !== 'livre' ? { fase: presumida } : {}),
+  });
   const fer = L.tierDe(alvo.pv, alvo.pvMax).penDefesa ?? 0;
   const ferA = L.tierDe(c.pv, c.pvMax).penAcao ?? 0;
 
   const entrada = {
-    aid: c.acao.aid,
+    aid,
     atacante: {
       id: c.id, nome: c.nome, ataque: c.ataque, dano: c.dano,
       ajusteFlat: ferA, ajusteDados: 0,
-      penDados: c.an?.penDados || [0],
+      penDados: an?.penDados || [0],
       qaArmaBonus: c.qa.armaBonus, qaArmaDano: c.qa.armaDano,
     },
     alvo: {
@@ -226,25 +324,71 @@ function resolver(L, c, pecas, cena, log, T, tg) {
       pv: alvo.pv, pvMax: alvo.pvMax,
       qaArmaduraBonus: alvo.qa.armaduraBonus, qaArmaduraReducao: alvo.qa.armaduraReducao,
     },
-    manobra: c.manobra, golpeIndice: idx,
+    manobra: (an?.golpes > 1 ? c.manobra : 'simples'),
+    golpeIndice: idx,
     golpeDaAgenda: idx, penDadosUsado: idx, tickDoGolpe: tg, classeArma: c.classe,
     distanciaHex: L.distanciaHex(c.pos, alvo.pos), tipoDano: c.tipoDano,
     modManual: 0,
     margemQA: c.qa.armaBonus + alvo.qa.armaduraBonus,
     danoQA: Math.max(0, c.qa.armaDano - alvo.qa.armaduraReducao),
   };
-  const s = L.resolverGolpe(entrada, L.fonteRolada);
+
+  // OS DADOS SAEM ANTES DO VEREDITO, e isso não é estilo: a mesa, com a rolagem
+  // no site, chama `rolarAcerto(); rolarDano();` na abertura da folha, ou seja
+  // consome o dano MESMO QUANDO ERRA. O `resolverGolpe` só rola o dano no
+  // acerto. Com uma fonte semeada, um erro bastava para as duas sequências de
+  // acaso se separarem e todo o resto da batalha divergir.
+  const fonte = fonteDaMesa(L, entrada);
+  const s = L.resolverGolpe(entrada, fonte);
 
   // PARADA iii · o veredito e o dano são conta. É o que a automação tiraria.
-  log.parada('iii', 'resolver', c, T, { aid: entrada.aid, veredito: s.veredito });
+  log.parada('iii', 'resolver', c, T, { aid, veredito: s.veredito });
   // PARADA ii · aplicar o resultado é a decisão da mesa (o Grid propõe).
-  log.parada('ii', 'aplicar', c, T, { aid: entrada.aid });
+  log.parada('ii', 'aplicar', c, T, { aid });
+
+  // A PRESSÃO É DA RESOLUÇÃO, e não da declaração (`tirarDaAgenda`): quem levou
+  // o ataque levou agora. E ela entra mesmo em quem não tem gesto no ar, que é
+  // por que a mesa cria a agenda vazia em vez de desistir.
+  c.acao = L.golpeResolvido(c.acao, tg);
+  const base = alvo.acao || { golpes: [], livre: alvo.tick ?? 0 };
+  alvo.acao = { ...base, pressao: (base.pressao || 0) + 1 };
+
+  // O GANCHO DO ESPELHO: o lance inteiro, entrada e saída, no ponto em que a
+  // mesa empurra o dele para `window.__LANCES`.
+  // `rolados` é o que SAIU DO SACO, e não o que a saída guardou: o
+  // `resolverGolpe` não devolve dado de dano quando o golpe erra (ele nem rola),
+  // mas a mesa rola os dois na abertura da folha e registra os dois. Sem este
+  // campo, o espelho não teria como comparar o dado do dano de um erro, que é
+  // justamente onde as duas sequências de acaso podem se separar em silêncio.
+  if (opts.lance) {
+    opts.lance({ t: T, de: c.id, para: alvo.id, entrada, saida: s, rolados: fonte.rolados });
+  }
 
   alvo.pv = Math.max(0, alvo.pv - s.danoLiquido);
-  alvo.pressao = (alvo.pressao || 0) + 1;
-  if (alvo.acao) alvo.acao = { ...alvo.acao, pressao: (alvo.acao.pressao || 0) + 1 };
-  log.dano(c, alvo, T, { aid: entrada.aid, ...s });
+  log.dano(c, alvo, T, { aid, ...s });
   if (alvo.pv <= 0) log.caiu(alvo, T);
+}
+
+/**
+ * A FONTE DE DADOS DA MESA: rola o acerto e o dano, nessa ordem, SEMPRE.
+ *
+ * Ela existe por uma razão só, e é a do espelho: a mesa rola os dois na
+ * abertura da folha, antes de saber o veredito. Quem só rola o dano no acerto
+ * consome a sequência de acaso de outro jeito, e a partir do primeiro erro os
+ * dois lados jogam dados diferentes. A conta continua sendo a do `lance.ts`;
+ * o que muda é quantos dados foram tirados do saco.
+ */
+function fonteDaMesa(L, entrada) {
+  const pen = entrada.atacante.penDados[entrada.golpeIndice] ?? 0;
+  const a = L.rolarExpr(entrada.atacante.ataque,
+    entrada.atacante.ajusteDados + pen, entrada.atacante.ajusteFlat);
+  const d = L.rolarExpr(entrada.atacante.dano);
+  const fila = [a, d];
+  let i = 0;
+  return {
+    rolar: () => fila[Math.min(i++, 1)],
+    rolados: { acerto: (a.rolls || []).slice(), dano: (d.rolls || []).slice() },
+  };
 }
 
 /**
@@ -254,6 +398,11 @@ function resolver(L, c, pecas, cena, log, T, tg) {
  *   sem-ninguem-de-pe · um lado sem ninguém vivo
  *   fuga-consumada    · quem fugiu saiu do tabuleiro
  *   desistencia-20    · um lado inteiro abaixo de 20% de Vida
+ *
+ * NADA DISSO EXISTE NA MESA: lá quem decide que a cena acabou é o mestre, e o
+ * botão do Tick continua clicável com um lado inteiro no chão. É a única fase
+ * do laço que o espelho não tem como comparar, e está na lista do que ele não
+ * prova.
  */
 function fimDaCena(pecas, T) {
   const vivos = (lado) => pecas.filter((c) => c.lado === lado && c.pv > 0 && !c.desistiu);

@@ -2453,6 +2453,11 @@ const SETAS = [
   // pura é conferida contra lances de verdade, e não contra a leitura que eu
   // fiz do código. Desligado, nada é acumulado e o array nem existe.
   const LANCES_LIGADO = PARAMS.get('lances') === '1';
+  // `?espelho=1` liga o ESPELHO DE MOTOR: o `window.__ESPELHO` que o
+  // `test-espelho.mjs` usa para dirigir a cena sem mão humana, e a única
+  // extensão de comportamento que ele exige (ver `decidirAutomaticas`).
+  // Desligado, nada disto existe e a mesa é a mesa.
+  const ESPELHO_LIGADO = PARAMS.get('espelho') === '1';
 
   let SB: any, ID = '', MESTRE = false, EU = '';
   // O contexto da mesa, guardado porque o painel do tempo precisa dele.
@@ -5177,6 +5182,11 @@ const SETAS = [
         q: t?.q ?? null, r: t?.r ?? null, chegada: t?.em ?? null,
         chao: noChao(c),
         pv: c.pv_atual ?? null,
+        // O RELÓGIO DA PEÇA (`combatentes.tick`). Ele não desenha nada e por
+        // isso não estava aqui, e é o PRIMEIRO critério da fila: sem ele, uma
+        // ordem de declaração diferente aparecia no espelho como "a fila
+        // divergiu", sem dizer por quê.
+        tick: c.tick ?? null,
         // A iniciativa é o primeiro número rolado da cena, e por isso o
         // primeiro lugar em que uma semente que não pegou aparece.
         ini: c.iniciativa ?? null,
@@ -5330,7 +5340,17 @@ const SETAS = [
     const inimigosDe = (c: any) => emPe.filter((o: any) =>
       (o.tipo === 'criatura') !== (c.tipo === 'criatura') && TOKENS[o.id]);
     for (const c of emPe) {
-      if (c.tipo !== 'criatura' || !c.dados?.auto || !TOKENS[c.id]) continue;
+      // O ROBÔ É DAS CRIATURAS, e essa é a regra de produto. Com `?espelho=1`
+      // a elegibilidade se estende a qualquer peça em modo automático, porque o
+      // espelho precisa dos DOIS lados declarando e a mesa não tem esse
+      // caminho: o lado dos personagens é declarado por gente.
+      //
+      // É elegibilidade, e não mecânica: a decisão continua saindo de
+      // `decisaoAutomatica` e a declaração de `declararAtaqueSimultaneo`, que
+      // são exatamente o que o espelho compara. O que ele NÃO prova, por causa
+      // disto, é este filtro.
+      const roboVale = ESPELHO_LIGADO ? !!c.dados?.auto : (c.tipo === 'criatura' && !!c.dados?.auto);
+      if (!roboVale || !TOKENS[c.id]) continue;
       if ((c.tick ?? 0) > T) continue;                       // ainda comprometida
       if (golpesNoAr(c.acao).length || (c.acao as any)?.mov) continue;
       const d = decisaoAutomatica(
@@ -8519,10 +8539,32 @@ const SETAS = [
       // (resolveu ou desistiu), porque fixar um número é uma decisão sobre a
       // CENA e não sobre este golpe: descobrir no meio do ataque que o goblin
       // tem placa continua verdade se o ataque for cancelado.
-      dlg.addEventListener('close', () => {
+      /**
+       * O FECHAMENTO É MEU? A pergunta não é retórica.
+       *
+       * `dlg.close()` não dispara o evento na hora: ele é enfileirado. Quando
+       * duas folhas se sucedem DENTRO DO MESMO CICLO (uma resolve, a seguinte
+       * abre antes de o evento da primeira sair), o `close` da primeira chega
+       * com a segunda já aberta e com o ouvinte dela registrado, e a segunda se
+       * resolvia como `null` sem ninguém ter fechado nada. Quem chamou lia isso
+       * como "o mestre desistiu", o golpe ficava no ar e o cartão vencido
+       * reabria no clique seguinte, com dados novos.
+       *
+       * Uma mão humana quase nunca produz essa sequência (entre fechar e abrir
+       * há um clique, e um clique é outro ciclo). O espelho de motor produz, e
+       * foi assim que apareceu: a mesma cena, com a mesma semente, resolvia o
+       * mesmo golpe até dez vezes numa volta e uma vez na seguinte.
+       *
+       * A pergunta que separa os dois casos é `dlg.open`: num fechamento de
+       * verdade a caixa está fechada; num fechamento alheio ela está aberta,
+       * porque é a MINHA. Aí o ouvinte se registra de novo e espera o dele.
+       */
+      const aoFechar = () => {
+        if (dlg.open) { dlg.addEventListener('close', aoFechar, { once: true }); return; }
         void gravarFixos();
         if (!respondeu) resolve(null);
-      }, { once: true });
+      };
+      dlg.addEventListener('close', aoFechar, { once: true });
       dlg.showModal();
     });
   }
@@ -8575,6 +8617,64 @@ const SETAS = [
       return folhaDaAcao(a, b);
     };
     (window as any).__RESUMO_DE = (id: string) => RESUMO[id];
+  }
+
+  /**
+   * O ESPELHO DE MOTOR, atrás de `?espelho=1`.
+   *
+   * O que ele expõe é o mínimo para uma batalha inteira rodar sem mão humana, e
+   * NADA além disso: o Tick da cena, qual golpe está vencido, o avanço do
+   * relógio e a abertura da folha de um golpe. Quem decide o que apertar é o
+   * driver, do lado de fora, olhando a mesma tela que o mestre olharia.
+   *
+   * Ele não reimplementa nem a política nem a ordem: chama
+   * `avancarTickSimultaneo` e `resolverGolpeNoAr`, que são o motor da mesa. Um
+   * gancho que refizesse essas duas compararia o gancho com o harness, e não a
+   * mesa com o harness, que é o erro que este teste existe para não cometer.
+   */
+  if (ESPELHO_LIGADO) {
+    const E: any = {
+      /** O Tick em que a cena está. */
+      tick: () => tickSim(),
+      /**
+       * O golpe vencido mais cedo, com o dono, na ordem da fila.
+       *
+       * É o que a faixa mostra ao mestre com o botão do ⏭ desligado, e é o que
+       * `instanteDeGolpe` usa para trancar o avanço.
+       */
+      devido: () => {
+        const T = tickSim();
+        for (const c of naFila()) {
+          if (noChao(c)) continue;
+          const g = golpesNoAr(c.acao).filter((x: number) => x <= T).sort((a, b) => a - b)[0];
+          if (g != null) return { id: c.id, tick: g };
+        }
+        return null;
+      },
+      /** Anda um Tick. Só sai quando não há golpe vencido, como o botão. */
+      avancar: async () => { await avancarTickSimultaneo(); return tickSim(); },
+      /**
+       * Abre a folha de um golpe e GUARDA a promessa. Volta na hora, sem
+       * esperar: quem aperta o botão é o driver, e ele precisa da tela aberta.
+       */
+      abrir: (id: string, t: number) => {
+        const c = COMBS.find((x: any) => x.id === id);
+        if (!c) return false;
+        E.pendente = resolverGolpeNoAr(c, t);
+        return true;
+      },
+      /** Espera a folha aberta terminar (o driver já apertou). */
+      esperar: () => E.pendente,
+      /** A ação de uma peça, crua. Diagnóstico do próprio espelho. */
+      acaoDe: (id: string) => {
+        const c = COMBS.find((x: any) => x.id === id);
+        return c ? JSON.parse(JSON.stringify({ acao: c.acao ?? null, tick: c.tick ?? null })) : null;
+      },
+      /** Quem ainda está de pé, por lado, para o driver saber que a cena acabou. */
+      dePe: () => naFila().filter((c: any) => !noChao(c)).map((c: any) => c.id),
+      pendente: null as any,
+    };
+    (window as any).__ESPELHO = E;
   }
 
   /** `+2` ou `−1`, com o menos do projeto. */

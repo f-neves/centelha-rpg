@@ -12,74 +12,25 @@
 // personagem (Destreza, Vigor, perícias), porque um gerador de personagem não
 // existe, e a ficha de referência do `test-contrato` é a base dos dois.
 //
+// O ELENCO MORA NO `elenco.mjs`, e não aqui, desde o espelho de motor: a
+// bancada do navegador monta as mesmas peças, e duas listas de arquétipos
+// seriam duas cenas diferentes com o mesmo nome.
+//
 // A primeira versão inventava esses números, e o resultado foi imediato: uma
 // batalha 1v1 levava 568 Ticks porque a Absorção inventada (7) era maior que o
 // dano médio inventado (6,5), e quase nenhum golpe passava. **Número inventado
 // não é só uma etiqueta no relatório: ele produz um jogo que não existe.**
-import fs from 'node:fs';
-import path from 'node:path';
-import { LIB, RAIZ } from './lib-ponte.mjs';
+import { LIB } from './lib-ponte.mjs';
+import { FICHAS, montarArquetipo } from './elenco.mjs';
 
 export const chaveHex = (q, r) => `${q},${r}`;
-
-/** A ficha de referência, a mesma do contrato ficha↔mesa. */
-const BASE = JSON.parse(fs.readFileSync(path.join(RAIZ, 'scripts/fixtures/kael.json'), 'utf8'));
-
-/**
- * OS DOIS ARQUÉTIPOS, como FICHAS, e não como números.
- *
- * A diferença entre eles é o que a bateria precisa: ciclo 6 contra 7, escudo
- * contra duas mãos, malha contra placa completa, e passo diferente por causa da
- * penalidade da armadura.
- */
-export const FICHAS = {
-  escudeiro: {
-    nome: 'Escudeiro',
-    ficha: {
-      ...BASE,
-      // ⚑ os traços são os da ficha de referência, com Força suficiente para a
-      // espada longa não cobrar o mínimo.
-      conjuntos: [{ ativo: true, habil: { ref: 'a:espada-longa' }, inabil: { ref: 'e:heater' } }],
-      equip: { armaduras: [{ base: 'malha', vestida: true }] },
-    },
-  },
-  montanteiro: {
-    nome: 'Montanteiro',
-    ficha: {
-      ...BASE,
-      attrs: { ...BASE.attrs, forca: 5, vigor: 5, destreza: 3 },   // ⚑ o orc
-      conjuntos: [{ ativo: true, habil: { ref: 'a:montante' }, inabil: { ref: 'nada' } }],
-      equip: { armaduras: [{ base: 'placa-completa', vestida: true }] },
-    },
-  },
-};
+export { FICHAS };
 
 /** O arquétipo resolvido pela régua. Uma vez por processo, e não por batalha. */
 const CACHE = new Map();
 export function arquetipo(id) {
-  if (CACHE.has(id)) return CACHE.get(id);
-  const { nome, ficha } = FICHAS[id];
-  const r = LIB.resumoCombatePC(ficha);
-  const arma = LIB.armaDoCatalogo(r.arma);
-  const classe = LIB.classeDeTempo(r.arma, null, null);
-  const vel = LIB.velocidadeDaArma(r.arma, 5);
-  const D = JSON.parse(fs.readFileSync(path.join(RAIZ, 'src/data/regras.json'), 'utf8'));
-  const pvMax = D.derivados.pv.base + (ficha.attrs.vigor || 0) * D.derivados.pv.vigorMult;
-  const a = {
-    id, nome, arma: r.arma, classe, velocidade: vel,
-    ataque: r.ataque, dano: r.dano,
-    tipoDano: (arma?.modos || []).find((m) => m.principal)?.tipo || 'impacto',
-    defesa: r.defesa, pvMax,
-    soak: { impacto: r.soak.impacto, corte: r.soak.corte, perfuracao: r.soak.perfuracao },
-    passo: r.passo || { batalha: 3, arranque: 5, corrida: 7 },
-    // O alcance: a haste alcança dois hexágonos, o resto alcança um.
-    alcanceHex: classe === 'haste' ? 2 : 1,
-    // ⚑ a iniciativa e o Raciocínio entram só como critério de ordem da fila.
-    iniciativa: 6 + (ficha.attrs.raciocinio || 0), raciocinio: ficha.attrs.raciocinio || 0,
-    qa: r.qa,
-  };
-  CACHE.set(id, a);
-  return a;
+  if (!CACHE.has(id)) CACHE.set(id, montarArquetipo(id, LIB));
+  return CACHE.get(id);
 }
 
 /**
@@ -134,6 +85,17 @@ export function montarCena(celula, semente) {
         mapa: { cols, rows },
         acao: null, fase: 'livre', pressao: 0, deslizes: 0,
         manobra: 'simples',                          // ⚑ a política não troca de manobra
+        // O RELÓGIO DA PEÇA, que é `combatentes.tick` na mesa: ele é o primeiro
+        // critério da fila e é atualizado junto com a ação (a mesa grava os
+        // dois no mesmo `gravarRelogio`). O laço lia `acao.livre` no lugar
+        // dele, o que dá o mesmo número com ação no ar e outro sem ela.
+        tick: 0,
+        // O CRITÉRIO DE ESTABILIDADE da fila, e ele é comparado como TEXTO
+        // (`localeCompare`, em `ordemDaFila`). Na mesa ele é `movido_em`, o
+        // carimbo do token, e por isso é uma data: o mesmo esquema aqui, com a
+        // mesma base da bancada, para as duas filas ordenarem igual. Com o
+        // ordinal cru, "10" vinha antes de "2".
+        chegada: new Date(1700000000000 + ordinal * 1000).toISOString(),
         ordinal: ordinal++,
       });
     }
