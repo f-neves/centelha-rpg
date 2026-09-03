@@ -1259,6 +1259,10 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
     abrindo em todos os padrões que o robô usaria. Com jogadores na mesa, **a economia com piso
     fica entre 6,2% e 8,1%**. Isto não era o L7 e não precisava de bateria nenhuma.
 
+    **A banda é do jogador que ACEITA O PADRÃO**, e não do jogador: quem troca a manobra, o modo
+    de deslocamento ou o alvo paga mais, e a bateria não sabe com que frequência isso acontece,
+    porque nenhuma peça dela escolhe. 2 e 4 são o piso do custo manual, não a média dele.
+
   **Não está decidido e nada foi implementado.** O que ainda falta para decidir é uma peça que se
   MOVA diferente do robô (o L20): ela muda a trajetória, e portanto a fatia de travessia que
   separa o piso do teto.

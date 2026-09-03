@@ -16,6 +16,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { RAIZ } from './lib-ponte.mjs';
 import { gestosDe, ROLAGEM_DA_BATERIA } from './custo-tela.mjs';
+import { conferirSinais } from './sinais.mjs';
 
 const arg = (n, p) => { const i = process.argv.indexOf(n); return i > 0 ? process.argv[i + 1] : p; };
 const DIR = path.resolve(RAIZ, arg('--saida', '.sim/ultima'));
@@ -514,38 +515,15 @@ for (const x of manifesto.inventado) console.log(`  ⚑ ${x}`);
 // sinal que ninguém sabe se rodou: o silêncio ficava indistinguível da
 // conferência que não aconteceu, que é o defeito exato que os alarmes existem
 // para não ter.
-const veredito = [];
-/** Confere um sinal e GUARDA o veredito, aceso ou apagado. */
-function sinal(nome, aceso, texto, nota) {
-  veredito.push({ nome, aceso, nota: aceso ? texto : nota });
-  if (aceso) alarme(texto);
-  return aceso;
-}
-
-// 2 · contador de ocasião em zero onde ele deveria morder
-const somaSub = (k, filtro = () => true) =>
-  boas.filter(filtro).reduce((x, l) => x + (l.paradasSub?.[k] || 0), 0);
-const comDistancia = (l) => (infoDe(l.celula).dist || 1) > 1;
-const nRepro = somaSub('reprojetar', comDistancia);
-sinal('ocasião · reprojetar', !nRepro,
-  '`reprojetar` em ZERO nas células com distância: o eixo E2 não está mordendo',
-  `${num(nRepro, 0)} re-projeções nas células com distância`);
-const nFuga = somaSub('fugir');
-sinal('ocasião · fugir', !nFuga,
-  '`fugir` em ZERO: o limiar nunca disparou e a fase de fuga não existe',
-  `${num(nFuga, 0)} declarações de fuga`);
-const nRedir = somaSub('redirecionar');
-sinal('ocasião · redirecionar', !nRedir,
-  '`redirecionar` em ZERO: a regra do golpe no caído nunca foi exercitada',
-  `${num(nRedir, 0)} golpes redirecionados`);
-const raspoes = boas.reduce((x, l) => x + (l.vereditos?.raspao || 0), 0);
-sinal('ocasião · raspão', !raspoes,
-  'nenhum RASPÃO em toda a bateria: o Quase-Acerto não está sendo exercitado',
-  `${num(raspoes, 0)} raspões`);
-const soRes = boas.reduce((x, l) => x + (l.quadro?.soResolveu || 0), 0);
-sinal('ocasião · quarta célula do quadro', !soRes,
-  '`só resolveu` em ZERO: a quarta célula do quadro nunca acontece',
-  `${num(soRes, 0)} Ticks em que algo caiu sem consultar ninguém`);
+// OS PREDICADOS MORAM EM `sinais.mjs` E TÊM TESTE PRÓPRIO
+// (`scripts/test-sinais.mjs`). Enquanto viviam soltos aqui, não havia como
+// acender nenhum de propósito sem falsificar uma bateria inteira, e dez dos onze
+// nunca tinham acendido em volta nenhuma: cada um deles imprimia o mesmo ✓ para
+// "não houve problema" e para "o predicado está errado". O teste já achou um
+// furo assim (o `reprojetar` acendia numa grade sem célula de distância).
+const veredito = conferirSinais({ boas, invalidas, porCelula, infoDe });
+for (const v of veredito) if (v.aceso) alarme(v.texto);
+const doSinal = (nome) => veredito.find((v) => v.nome === nome) || {};
 // E4 TEM DE MORDER MAIS QUE A ÂNCORA. O eixo existe para produzir o alvo que
 // não se alcança, e o alvo que não se alcança aparece como RE-PROJEÇÃO. Se a
 // célula de passo 2× não re-projeta mais que a âncora dela, o eixo é inerte e
@@ -562,30 +540,14 @@ for (const c of CEL.filter((x) => x.passoMult > 1)) {
   }
 }
 
-// 1 · invariante violado (a conferência mora lá em cima; aqui fica o veredito)
-sinal('invariantes', invalidas.length > 0,
-  `${invalidas.length} batalha(s) violaram invariante`,
-  `nenhuma das ${num(boas.length, 0)} batalhas violou um dos quinze invariantes`);
-
-// 3 · variância entre repetições contra variância entre células
+// A VARIÂNCIA e O TETO imprimem número além do veredito, e por isso reaparecem
+// aqui: o predicado devolve o `extra` que eles precisam.
 {
-  const metric = (l) => l.fases.combate.paradasPorTick.media;
-  const dentro = med([...porCelula.values()].map((ls) => varia(ls.map(metric))).filter((x) => x != null));
-  const entre = varia([...porCelula.values()].map((ls) => med(ls.map(metric))));
+  const { dentro, entre } = doSinal('variância').extra || {};
   console.log(`\n  variância entre repetições ${num(dentro, 4)} · entre células ${num(entre, 4)}`);
-  sinal('variância', dentro >= entre,
-    `variância DENTRO da célula (${num(dentro, 4)}) ≥ variância ENTRE células`
-      + ` (${num(entre, 4)}): os eixos não estão fazendo nada`,
-    `os eixos explicam ${num(entre / Math.max(dentro, 1e-9), 0)}× mais que o acaso`);
 }
-
-// 4 · toda célula estourando o teto
 {
-  const estouram = [...porCelula.entries()].filter(([, ls]) => ls.every((l) => l.fim === 'estourou'));
-  sinal('teto', estouram.length === porCelula.size,
-    'TODAS as células estouram o teto: nada termina',
-    `${estouram.length} de ${porCelula.size} células estouram sempre, e`
-      + ` ${porCelula.size - estouram.length} terminam`);
+  const estouram = doSinal('teto').extra?.estouram || [];
   if (estouram.length && estouram.length < porCelula.size) {
     // Sem repetir o rótulo por nível de limiar: a mesma célula aparece uma vez
     // por nível, e a lista fica ilegível dizendo tudo duas vezes.
@@ -595,41 +557,11 @@ sinal('invariantes', invalidas.length > 0,
     console.log(`  (${nomes.length} rótulos, um por nível de limiar): ${nomes.join(', ')}`);  }
 }
 
-// 5 · distribuição degenerada (p10 = p90) numa métrica principal
-{
-  const degeneradas = [];
-  for (const [id, ls] of porCelula) {
-    const p10 = med(ls.map((l) => l.fases.combate.paradasPorTick.p10));
-    const p90 = med(ls.map((l) => l.fases.combate.paradasPorTick.p90));
-    if (p10 != null && p90 != null && Math.abs(p90 - p10) < 1e-9) degeneradas.push(rotuloCheio(id));
-  }
-  sinal('distribuição', degeneradas.length > 0,
-    `p10 = p90 em paradas/Tick (combate) em ${degeneradas.length} célula(s):`
-      + ' a distribuição é degenerada e o percentil não diz nada · '
-      + degeneradas.slice(0, 6).join(', ')
-      + (degeneradas.length > 6 ? ` e mais ${degeneradas.length - 6}` : ''),
-    'nenhuma célula com p10 = p90 em paradas/Tick');
-}
-
-// 6 · fuga-consumada acima de 90% numa célula
-{
-  const engolidas = [];
-  for (const [id, ls] of porCelula) {
-    const f = ls.filter((l) => l.fim === 'fuga-consumada').length / ls.length;
-    if (f > 0.9) engolidas.push(`${rotuloCheio(id)} ${pct(f)}`);
-  }
-  sinal('fuga-consumada', engolidas.length > 0,
-    `fuga-consumada acima de 90% em ${engolidas.length} célula(s): a fase de fuga`
-      + ' engoliu a batalha · ' + engolidas.slice(0, 6).join(', ')
-      + (engolidas.length > 6 ? ` e mais ${engolidas.length - 6}` : ''),
-    'nenhuma célula com fuga-consumada acima de 90%');
-}
-
 // O PLACAR DOS SINAIS, aceso ou apagado, sempre. É a prova de que a conferência
 // rodou: sem ele, "nenhum alarme" e "o alarme não roda" imprimem a mesma coisa.
 console.log('\n── OS SINAIS DE BATERIA INEFICAZ · o veredito de cada um ──');
 for (const v of veredito) {
-  console.log(`  ${v.aceso ? '✘' : '✓'} ${v.nome.padEnd(30)} ${v.nota || ''}`);
+  console.log(`  ${v.aceso ? '✘' : '✓'} ${v.nome.padEnd(30)} ${(v.aceso ? v.texto : v.nota) || ''}`);
 }
 
 console.log('\n' + '='.repeat(74));

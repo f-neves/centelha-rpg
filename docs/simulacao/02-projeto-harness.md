@@ -22,6 +22,7 @@ misturá-las foi o que deixou passar sete rodadas o buraco da Etapa 1 (a caixa �
 | | **A bateria de CARGA** | **A bateria de COMPARAÇÃO DE REGRAS** |
 |---|---|---|
 | a pergunta | quanto o mestre trabalha, e de que tipo é esse trabalho | quanto cada regra muda a carga |
+| **o que ela RESPONDE** | **onde está o trabalho do mestre e quanto a automação compra**: em que Tick, em que gesto, de que classe, e o que sobra depois de automatizar | **quanto cada regra custa em carga**: o delta de uma bandeira ligada contra a mesma cena com ela desligada |
 | usa bandeira? | **nenhuma** | as quinze, uma a uma |
 | a grade | 96 células (`E1 × E2 × E3 × limiar × tabuleiro`) | as 112 oficiais |
 | **estado** | **VIVA.** Rodou quatro vezes em 03/09, 21.600 batalhas por volta, e produziu a conclusão dos três termos | **NÃO EXISTE**, e não pode existir hoje: nenhuma bandeira é lida pelo motor |
@@ -37,6 +38,58 @@ motor.** O **L25** (as quinze bandeiras lidas por caminho de produção, cada um
 ocasião que prova que ela morde) deixa de ser item de pendência e passa a ser **pré-requisito da
 grade de 112**. Enquanto ele não existir, ligar uma bandeira e medir produz um zero que não se
 distingue do zero legítimo.
+
+## O PRINCÍPIO DO ZERO AMBÍGUO · regra de construção
+
+**Um zero só é informação quando a ocasião de ele não ser zero foi contada.**
+
+Sempre que uma medida pode dar zero, ela dá por dois motivos: **o mecanismo rodou e não produziu
+nada** (o zero legítimo, que é resultado) ou **o mecanismo não rodou** (o zero vazio, que é
+defeito). Os dois saem com o mesmo valor, no mesmo campo, no mesmo CSV, e nenhuma leitura os
+separa depois. **O instrumento que os separa é sempre o mesmo: contar OCASIÕES, e não efeitos.**
+
+Não é lição de relatório. É regra de construção, e ela existe porque **a mesma forma de erro já
+apareceu três vezes nesta frente**, em três camadas diferentes:
+
+| # | onde | o zero legítimo | o zero vazio | como apareceu |
+|---|---|---|---|---|
+| **1** | os **seis Ticks sem rolar dado** | "estes Ticks não tiveram rolagem" | o teste passava provando nada, porque nada era rolado | achado por inspeção, depois de o teste estar verde |
+| **2** | as **sete comparações do E5** | "o eixo não mudou o resultado" | as comparações não podiam morder | achado pela bateria de sanidade, que existe para falhar |
+| **3** | as **quinze bandeiras** | "a bandeira está desligada" | nenhuma é lida pelo motor | achado em 03/09, **depois de sete rodadas de documento** |
+
+**No terceiro caso o disfarce foi perfeito**, e vale entender por quê: com o perfil todo `false`,
+"a bandeira está desligada" e "a bandeira não é lida" produzem o **mesmo comportamento, o mesmo
+número e o mesmo log**. Tudo desligado é o único estado em que a ausência do mecanismo é
+invisível, e foi o estado em que todos os relatórios rodaram. O primeiro `true` teria acusado na
+primeira batalha.
+
+### O que a regra obriga
+
+1. **Toda métrica que pode dar zero declara o contador de ocasião que a acompanha.** O contador
+   conta o EVENTO, e não o efeito: quantas vezes a regra teve chance de morder, e não quanto ela
+   mordeu. Um contador de ocasião em zero é sempre defeito, nunca resultado;
+2. **nenhuma bandeira entra na grade antes de existir caminho de produção que a chame**, provado
+   pelo contador de ocasião dela (é a §0.10.1, e o **L25**);
+3. **todo alarme acende ao menos uma vez, de propósito, num teste.** Um alarme que nunca disparou
+   é um alarme não testado, e ele imprime o mesmo ✓ para "não houve problema" e para "o predicado
+   está errado". É `scripts/test-sinais.mjs`, onze predicados e vinte e dois casos, e ele já achou
+   um furo na primeira execução: o sinal da re-projeção acendia numa grade sem nenhuma célula de
+   distância, apontando para o eixo em vez de para a grade;
+4. **o contador de ocasião entra JUNTO com a métrica que ele guarda**, e não depois. Foi assim que
+   o `ocasião · passo` nasceu, no mesmo dia que o Tick morto: sem ele, `log.andou` desconectado
+   faria o piso do avanço automático (11,4%) virar o teto (20%) sem nada acusar, dentro de um
+   número que o relatório já publica.
+
+### Onde ela já está aplicada
+
+- **os onze sinais** da bateria (`scripts/sim/sinais.mjs`), cada um com os dois casos no teste;
+- **os quinze invariantes** (`scripts/sim/invariantes.mjs`), que são a mesma ideia por batalha: o
+  V15 recusa parada sem classe em vez de carimbar `?`, porque carimbo por padrão foi o que
+  produziu um mapa tipo→classe errado;
+- **o espelho de motor**, que compara contagens antes de comparar campos: Ticks e lances diferentes
+  eram divergência silenciosa enquanto só os pares eram comparados;
+- **a lista ⚑ do manifesto**, que é o mesmo princípio para ENTRADA em vez de saída: um número
+  inventado e um número medido não podem sair com a mesma cara.
 
 ## Como ler isto
 

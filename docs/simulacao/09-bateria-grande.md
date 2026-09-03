@@ -356,6 +356,14 @@ O próprio código da mesa já trazia a conta, no comentário da solta do arrast
 10,9% e 14,1% no teto. O número absoluto de cliques poupados (218.679 no teto, 125.237 no piso)
 **não muda nada** com o valor de `G`: só o denominador cresce.
 
+> **A banda é do jogador que ACEITA O PADRÃO, e não do jogador.** O `G = 2` pressupõe que os
+> padrões do diálogo servem, e eles servem porque são exatamente o que o robô escolheria: manobra
+> `simples`, modo `batalha`, o alvo que o arrasto já apontou. **Um jogador que troca a manobra,
+> muda o modo de deslocamento, ajusta a velocidade ou volta atrás no alvo paga mais**, e **esta
+> bateria não sabe com que frequência isso acontece**: nenhuma peça dela escolhe. Medir essa
+> frequência exige mesa com gente, e não bateria; até lá, 2 e 4 são o **piso** do custo manual, e
+> não a média dele.
+
 **E nada disto é o L7.** O L7 converte gesto em segundo, e é outra medição. O que ainda falta é
 uma peça que **se mova diferente** de como o robô move (recua, reposiciona), porque essa muda a
 trajetória e portanto a fatia de travessia que separa o piso do teto. É o **L20**, e é a única
