@@ -210,10 +210,16 @@ const parar = (nn, motivo, aberto) => {
 
 /**
  * A RESPOSTA QUE O SECO USA, e ela é fixture e não revisão. Serve só para o
- * caminho das travas ser andado até o fim: tem as cinco seções, um item em
- * CORRIGE (para o parser ler item de verdade), "nada" escrito em ESCALA, e
- * veredito CORRIGE-E-SEGUE, que não acende SEGUE-duas-vezes nem PARA. O ciclo
- * seco termina, portanto, pelo teto de rodadas, e é isso que a trilha mostra.
+ * caminho das travas ser andado sem chamada nenhuma: tem as cinco seções, um
+ * item em CORRIGE (para o parser ler item de verdade), "nada" escrito em ESCALA,
+ * e veredito CORRIGE-E-SEGUE, que não acende SEGUE-duas-vezes nem PARA.
+ *
+ * O ITEM DE CORRIGE REPETE DE UMA RODADA PARA A OUTRA, DE PROPÓSITO. Com isso o
+ * seco termina na rodada 03 pela trava de ASSUNTO REPETIDO, e não pelo teto de
+ * rodadas: é a trava mais difícil de ver acender (ela é heurística), e a trilha
+ * do seco é o único lugar em que ela acende de graça. A primeira versão desta
+ * nota dizia que o seco terminava pelo teto; a trilha mostrou o contrário, e o
+ * contrário é mais útil.
  */
 const FIXTURE_SECO = (nn) => `# Rodada ${nn} · resposta da revisora (FIXTURE DO SECO)
 
@@ -223,7 +229,7 @@ nada
 
 ## CORRIGE
 
-- (fixture) item de exemplo da rodada ${nn}, para o parser ter o que ler
+- (fixture) o mesmo item em toda rodada, para a trava de repetição acender no seco
 
 ## PERGUNTA
 
