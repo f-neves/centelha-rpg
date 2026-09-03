@@ -1,10 +1,20 @@
 // test-golpe-caido.mjs · a regra do golpe no caído, pelo caminho do MESTRE.
 //
 // O QUE ELE GUARDA. A regra de 03/09 (`regras.json`,
-// `combate.simultaneo.golpeNoCaido`) diz que o golpe que cai num alvo já no chão
-// não evapora: ele procura outro corpo dentro do alcance da arma. Quem caiu num
-// Tick ANTERIOR foi visto cair, e dá para cancelar ou redirecionar; quem caiu
-// NESTE Tick não foi, porque o Tick é simultâneo, e aí só resta redirecionar.
+// `combate.simultaneo.golpeNoCaido`), cuja fonte da verdade é o RETRATO DA
+// ABERTURA do Tick: quem estava de pé quando o Tick abriu está de pé para todos
+// os golpes daquele Tick. Duas linhas, simétricas:
+//
+//   caiu num Tick ANTERIOR · o atacante viu cair, o gesto não evapora, e ele
+//     pode cancelar ou redirecionar para outro corpo ao alcance da arma;
+//   caiu NESTE Tick · ninguém sabia, e o golpe resolve como foi declarado, no
+//     corpo que estava de pé quando o gesto saiu.
+//
+// O QUE O RETRATO CONSERTA. Sem ele a regra lia a Vida do instante, e aí o
+// resultado dependia de quem a mesa resolveu primeiro dentro do Tick: de duas
+// peças que se derrubam no mesmo Tick, o atacante de quem caiu primeiro
+// redirecionava e o outro não. Ordem de laço vazando para dentro de um sistema
+// que se chama simultâneo.
 //
 // POR QUE ELE EXISTE. O lado do ROBÔ tem oráculo: o espelho de motor compara a
 // mesa com o laço headless na cena de multidão, onde a peça automática
@@ -44,8 +54,15 @@ if (!NAV) {
 const falhas = [];
 const ok = (c, m) => { console.log((c ? '  ✓ ' : '  ✘ ') + m); if (!c) falhas.push(m); };
 
-/** Abre a cena e avança UM Tick, para o caído já estar no chão na abertura. */
-async function cena(br, url, longe = false) {
+/**
+ * Abre a cena e, por padrão, avança UM Tick.
+ *
+ * O AVANÇO É O QUE CARIMBA O CAÍDO. `CAIDOS_AO_ABRIR` é preenchido na abertura
+ * do Tick, e é ele que separa "caiu antes" de "caiu agora". Com `avanca: false`
+ * o retrato fica vazio, que é exatamente o caso do corpo que cai DENTRO do Tick
+ * do golpe: ninguém o viu cair, e o golpe desce como foi declarado.
+ */
+async function cena(br, url, { longe = false, avanca = true } = {}) {
   const p = await br.newPage();
   await p.setViewport({ width: 1400, height: 950 });
   const erros = [];
@@ -53,9 +70,7 @@ async function cena(br, url, longe = false) {
   await p.goto(`${url}/mesa/grid?id=${MESA}&tempo=simultaneo&cena=caido${longe ? '&longe=1' : ''}`
     + `&semente=${SEMENTE}&espelho=1&nevoa=0`, { waitUntil: 'networkidle0', timeout: 60000 });
   await p.waitForFunction(() => window.__ESPELHO, { timeout: 20000 });
-  // O AVANÇO É O QUE CARIMBA O CAÍDO. `CAIDOS_AO_ABRIR` é preenchido na
-  // abertura do Tick, e é ele que separa "caiu antes" de "caiu agora".
-  const t = await p.evaluate(() => window.__ESPELHO.avancar());
+  const t = avanca ? await p.evaluate(() => window.__ESPELHO.avancar()) : null;
   return { p, erros, t };
 }
 
@@ -146,7 +161,7 @@ try {
   // ------------------------------------------------- 3 · sem ninguém ao alcance
   console.log('\n· o alvo caiu e não há mais ninguém ao alcance');
   {
-    const { p } = await cena(br, dev.url, true);
+    const { p } = await cena(br, dev.url, { longe: true });
     await p.evaluate(() => window.__ESPELHO.abrir('a0', 2));
     // NÃO DEVE ABRIR CAIXA: uma caixa com uma opção só é uma caixa a menos que
     // a mesa precisa, e a regra diz que aí o gesto simplesmente se perde.
@@ -160,6 +175,40 @@ try {
     const log = await p.evaluate(() =>
       [...document.querySelectorAll('#gr-log *')].map((e) => e.textContent || '').join(' | '));
     ok(/se perdeu|no ch[ãa]o/i.test(log), 'o registro diz o que aconteceu com o gesto');
+    await p.close();
+  }
+
+  // ------------------------------------------- 4 · o alvo caiu NESTE mesmo Tick
+  //
+  // A CENA É A MESMA, e a única diferença é que o Tick não abriu: sem avanço, o
+  // retrato está vazio, e b0 está no chão sem que ninguém tenha visto cair. É
+  // assim que a mesa enxerga o corpo que desaba DENTRO do Tick do golpe.
+  //
+  // Este é o caso que o conserto de 03/09 criou. Antes dele a mesa olhava a Vida
+  // do instante e abria caixa aqui também, e aí quem redirecionava e quem não
+  // dependia de qual peça o laço processou primeiro.
+  console.log('\n· o alvo caiu NESTE Tick (o retrato da abertura está vazio)');
+  {
+    const { p, erros } = await cena(br, dev.url, { avanca: false });
+    ok(!erros.length, `a mesa rodou sem erro de página${erros.length ? `: ${erros[0]}` : ''}`);
+    await p.evaluate(() => window.__ESPELHO.abrir('a0', 2));
+    const caixa = await p.waitForFunction(
+      () => [...document.querySelectorAll('dialog.ui-dlg')].some((x) => x.open), { timeout: 2500 },
+    ).then(() => true).catch(() => false);
+    ok(!caixa, 'nenhuma caixa de destino abre: ninguém sabia que ele ia cair');
+    const folha = await p.waitForFunction(
+      () => document.getElementById('alvo-dlg')?.open === true, { timeout: 5000 },
+    ).then(() => true).catch(() => false);
+    ok(folha, 'a folha do golpe abre direto, como o golpe foi declarado');
+    const tit = await p.evaluate(() => document.getElementById('al-titulo')?.textContent || '');
+    ok(/b0/.test(tit), `a folha é contra o alvo declarado, e não contra b1: "${tit}"`);
+    await p.evaluate(() => {
+      (document.querySelector('#al-sim.primary, #al-qa.primary, #al-nao.primary')
+        || document.getElementById('al-nao'))?.click();
+    });
+    await p.evaluate(() => window.__ESPELHO.esperar());
+    const depois = await p.evaluate(() => window.__ESPELHO.acaoDe('a0'));
+    ok(!(depois?.acao?.aResolver || []).length, 'o golpe saiu da agenda de a0');
     await p.close();
   }
 } finally {

@@ -2247,13 +2247,14 @@
     "simultaneo": {
       "nota": "O que só o sistema simultâneo usa. A física é a do P/G/R (preparo, escada, rajada, dupla: tudo igual); o que muda é o relógio e o deslocamento. Ver Combate_Simultaneo.md.",
       "golpeNoCaido": {
-      "nota": "O golpe que cai num alvo que ja esta no chao. Decidido em 03/09. O gesto ja estava no ar, entao ele nao evapora: ele procura outro corpo. Se o alvo caiu num Tick ANTERIOR, quem golpeia teve tempo de ver e pode cancelar ou redirecionar; se o alvo caiu NO MESMO Tick, tudo dentro do Tick e simultaneo e ninguem sabia que ele ia cair, entao so resta redirecionar, e so se a queda tiver sido resolvida antes deste golpe. Sem inimigo de pe dentro do alcance, o gesto se perde.",
-      "redireciona": true,
-      "redirecionaNoAlcanceDaArma": true,
+      "nota": "O golpe que cai num alvo que ja esta no chao. Decidido em 03/09 e CORRIGIDO no mesmo dia. O RETRATO DA ABERTURA DO TICK e a unica fonte de verdade: quem estava de pe quando o Tick abriu esta de pe para todos os golpes daquele Tick. Duas linhas, simetricas: caiu num Tick ANTERIOR, o atacante viu cair e pode cancelar ou redirecionar; caiu NESTE Tick, ninguem sabia, e o golpe resolve como foi declarado, no corpo que estava de pe quando o gesto saiu. A primeira versao mandava redirecionar tambem no mesmo Tick, e isso fazia o resultado depender de quem o motor processou primeiro: de duas pecas que se derrubam no mesmo Tick, o atacante de quem caiu primeiro redirecionava e o outro nao. A diferenca nao vinha de ficcao nenhuma, vinha da ordem do laco. Agora nao depende. O caso que sobra, o golpe caindo num corpo que acabou de cair, e a ficcao do simultaneo e nao um defeito dela.",
+      "retratoDaAbertura": true,
+      "redirecionaSeCaiuEmTickAnterior": true,
       "cancelaSeCaiuEmTickAnterior": true,
-      "cancelaSeCaiuNoMesmoTick": false,
+      "resolveComoDeclaradoSeCaiuNesteTick": true,
+      "redirecionaNoAlcanceDaArma": true,
       "roboRedirecionaSozinho": true,
-      "roboNota": "A peca em modo automatico redireciona para o inimigo de pe mais proximo dentro do alcance, sem abrir caixa. Quem nao esta no automatico, o mestre escolhe."
+      "roboNota": "A peca em modo automatico redireciona para o inimigo de pe mais proximo dentro do alcance, sem abrir caixa. Quem nao esta no automatico, o mestre escolhe. O criterio do mais proximo e escolha de politica escrita dentro do motor, e esta na lista de invencoes da bateria."
     },
     "decideEmValeDepois": 1,
       "decideNota": "A ação declarada no Tick T começa em T+1. É o que faz o arco de Preparo 5 soltar a flecha no Tick 6, e o Tick 0 ser só preparação: decisão no Tick, efeito no avanço.",

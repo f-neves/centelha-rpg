@@ -297,21 +297,26 @@ function resolver(L, c, pecas, log, T, tg, opts = {}, caidosAoAbrir = new Set())
   }
 
   // O ALVO CAIU ANTES DE O GOLPE CHEGAR NELE. Regra de 03/09
-  // (`regras.json`, `combate.simultaneo.golpeNoCaido`): o gesto já estava no ar,
-  // então não evapora, procura outro corpo dentro do alcance da arma. Quem caiu
-  // num Tick ANTERIOR foi visto cair e dá para cancelar; quem caiu NESTE Tick
-  // não, porque o Tick é simultâneo, e aí só resta redirecionar.
+  // (`regras.json`, `combate.simultaneo.golpeNoCaido`), e a fonte da verdade é o
+  // RETRATO DA ABERTURA: quem estava de pé quando o Tick abriu está de pé para
+  // todos os golpes daquele Tick.
   //
-  // Até 03/09 a mesa resolvia o golpe no corpo caído: abria folha, rolava,
-  // aplicava dano e cobrava Pressão de quem já estava no chão.
-  if (alvo.pv <= 0) {
-    const caiuAntes = caidosAoAbrir.has(alvo.id);
+  //   caiu num Tick ANTERIOR · o atacante viu cair, e o gesto não evapora:
+  //     procura outro corpo dentro do alcance da arma (ou cancela, na mesa);
+  //   caiu NESTE Tick · ninguém sabia, e o golpe resolve como foi declarado,
+  //     no corpo que estava de pé quando o gesto saiu.
+  //
+  // A versão anterior olhava a Vida do instante, e aí o resultado dependia de
+  // quem o laço processou primeiro: de duas peças que se derrubam no mesmo Tick,
+  // o atacante de quem caiu primeiro redirecionava e o outro não. A diferença
+  // não vinha de ficção nenhuma, vinha da ordem do laço, e isso é rachadura num
+  // sistema que se chama simultâneo. Com o retrato, some.
+  if (alvo.pv <= 0 && caidosAoAbrir.has(alvo.id)) {
     const candidatos = pecas.filter((o) => o !== c && o.lado !== c.lado && o.pv > 0 && o.pos
       && L.distanciaHex(c.pos, o.pos) <= c.alcanceHex);
     // PARADA i · para onde vai o gesto é decisão de quem golpeia. O robô
     // redireciona para o mais próximo sem abrir caixa, que é a regra escrita.
-    log.parada('i', 'redirecionar', c, T,
-      { aid, caiuAntes, candidatos: candidatos.length });
+    log.parada('i', 'redirecionar', c, T, { aid, candidatos: candidatos.length });
     c.acao = L.golpeResolvido(c.acao, tg);
     if (!candidatos.length) return;          // o gesto se perde
     alvo = candidatos.reduce((m, o) =>

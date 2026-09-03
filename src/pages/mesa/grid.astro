@@ -7408,14 +7408,20 @@ const SETAS = [
    * PARA ONDE VAI O GOLPE cujo alvo caiu. Regra de 03/09
    * (`regras.json`, `combate.simultaneo.golpeNoCaido`).
    *
-   * O gesto já estava no ar quando o corpo desabou, então ele não evapora: ele
-   * procura outro corpo dentro do alcance da arma. Os dois casos:
+   * A FONTE DA VERDADE é o RETRATO DA ABERTURA (`CAIDOS_AO_ABRIR`): quem estava
+   * de pé quando o Tick abriu está de pé para todos os golpes daquele Tick. A
+   * regra fica em duas linhas e simétrica:
    *
-   *   caiu num Tick ANTERIOR · quem golpeia viu cair, e pode CANCELAR ou
-   *     redirecionar;
-   *   caiu NESTE Tick · tudo dentro do Tick é simultâneo e ninguém sabia que ele
-   *     ia cair. Só resta redirecionar, e só porque a queda foi resolvida antes
-   *     deste golpe.
+   *   caiu num Tick ANTERIOR · quem golpeia viu cair, o gesto não evapora, e ele
+   *     pode CANCELAR ou redirecionar para outro corpo ao alcance da arma;
+   *   caiu NESTE Tick · ninguém sabia, e o golpe resolve como foi declarado, no
+   *     corpo que estava de pé quando o gesto saiu. Esta função nem é chamada.
+   *
+   * A versão anterior olhava a Vida do instante, e aí o resultado dependia de
+   * quem a mesa resolveu primeiro dentro do Tick. Isso é ordem de laço vazando
+   * para dentro de um sistema que se chama simultâneo. Com o retrato, some, e o
+   * caso que sobra (golpe caindo num corpo que acabou de cair) é exatamente a
+   * ficção do simultâneo, e não um defeito dela.
    *
    * Sem inimigo de pé ao alcance, o gesto se perde e ninguém é perguntado: uma
    * caixa com uma opção só é uma caixa a menos que a mesa precisa.
@@ -7434,7 +7440,8 @@ const SETAS = [
     const perto = candidatos.reduce((m: any, o: any) =>
       (distanciaHex(de, TOKENS[o.id]) < distanciaHex(de, TOKENS[m.id]) ? o : m));
     if (atacante.dados?.auto) return perto;
-    const caiuAntes = CAIDOS_AO_ABRIR.has(alvo.id);
+    // O CANCELAR É SEMPRE OFERECIDO, porque esta caixa só abre quando o corpo
+    // caiu num Tick ANTERIOR, e aí deu para ver.
     const esc = await uiEscolher(
       `${alvo.nome} caiu · para onde vai o golpe de ${atacante.nome}?`,
       [
@@ -7442,11 +7449,9 @@ const SETAS = [
           valor: o.id,
           rotulo: `${o.nome} · ${fmtM(distanciaHex(de, TOKENS[o.id]) * (Number(ARENA?.escala_m) || 1))}`,
         })),
-        ...(caiuAntes ? [{ valor: '', rotulo: 'Cancelar o golpe (deu para ver o corpo cair)' }] : []),
+        { valor: '', rotulo: 'Cancelar o golpe (deu para ver o corpo cair)' },
       ],
-      { msg: caiuAntes
-        ? 'Ele caiu num Tick anterior: dava para ver, então cancelar é uma opção.'
-        : 'Ele caiu neste mesmo Tick: ninguém sabia, e o braço já estava descendo.' },
+      { msg: 'Ele caiu num Tick anterior: dava para ver, então cancelar é uma opção.' },
     );
     return esc ? candidatos.find((o: any) => o.id === esc) || null : null;
   }
@@ -7461,8 +7466,10 @@ const SETAS = [
         `${atacante.nome} soltou o golpe do Tick ${tick} e o alvo não estava mais lá`, { acao: null });
       return;
     }
-    // O ALVO CAIU ANTES DE O GOLPE CHEGAR NELE.
-    if (noChao(alvo)) {
+    // O ALVO CAIU NUM TICK ANTERIOR, e o retrato da abertura é quem diz. Se ele
+    // caiu DENTRO deste Tick, ninguém sabia: o golpe segue reto, no corpo que
+    // estava de pé quando o gesto saiu.
+    if (noChao(alvo) && CAIDOS_AO_ABRIR.has(alvo.id)) {
       const caido = alvo;
       const novo = await destinoDoGolpe(atacante, caido, tick);
       if (!novo) {
