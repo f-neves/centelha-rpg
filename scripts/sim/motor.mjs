@@ -119,6 +119,12 @@ export function batalha(L, cena, log, opts = {}) {
       // então repetir a passada não muda nada e a segunda chamada não existe.
       // O dia em que entrar um Enorme no elenco, ela precisa voltar.
       const atravessou = mira !== alvoPos && (novo.q !== c.pos.q || novo.r !== c.pos.r);
+      // O PASSO QUE DE FATO ACONTECEU. É o que separa o Tick em que o tabuleiro
+      // MUDOU do Tick em que nada mudou, e essa diferença é o que decide se um
+      // avanço automático pula um Tick ou esconde alguma coisa do mestre
+      // (`09` §2.4). Uma peça pode passar por aqui e andar zero casas: cercada,
+      // já no alcance, ou com passo menor que um hexágono.
+      if (novo.q !== c.pos.q || novo.r !== c.pos.r) log.andou(c, T);
       c.pos = novo;
 
       if (atravessou || L.distanciaHex(c.pos, alvoPos) <= pararA) {

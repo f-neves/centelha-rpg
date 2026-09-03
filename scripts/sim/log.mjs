@@ -47,6 +47,7 @@ const zeroFase = () => ({
   quadro: { nada: 0, soResolveu: 0, soParou: 0, ambos: 0 },
   ticksSemParada: 0, ticksSemResolucao: 0, ticksSemGolpe: 0,
   ticksSoIII: 0, ticksSoIIIPiso: 0,
+  ticksMortos: 0,
 });
 
 export function novoLog({ completo = false } = {}) {
@@ -96,6 +97,16 @@ export function novoLog({ completo = false } = {}) {
     // paradas são TODAS de classe iii. Pelo teto e pelo piso da varredura.
     ticksSoIII: 0,
     ticksSoIIIPiso: 0,
+    // O TICK MORTO, que é o único seguramente pulável.
+    //
+    // `ticksSemParada` diz que ninguém foi CONSULTADO, e não que nada
+    // aconteceu: no Tick sem parada as peças continuam andando, e um avanço
+    // automático que passasse por cima dele trocaria clique por cegueira. O
+    // Tick MORTO é o subconjunto em que também não houve passo nenhum e nada
+    // caiu: o tabuleiro está idêntico no fim e no começo, e ali não há o que
+    // ver. É a economia com PISO do avanço automático; `ticksSemParada` é a
+    // com teto.
+    ticksMortos: 0,
     // O TICK SEM GOLPE, que NÃO é o Tick sem resolução: chegar ao alcance e
     // cair no chão também são resoluções, e contá-las junto fazia a conta da
     // cadência (que é sobre GOLPES) dar sobra negativa.
@@ -118,6 +129,8 @@ export function novoLog({ completo = false } = {}) {
   let classesNoTick = [];
   let subsNoTick = [];
   let golpeNoTick = false;
+  /** Alguma peça mudou de casa neste Tick. Ver `ticksMortos`. */
+  let andouNoTick = false;
   let fase = 'combate';
   let fugaPedida = false;
 
@@ -127,7 +140,7 @@ export function novoLog({ completo = false } = {}) {
     est, eventos,
     tick(t) {
       est.ticks = t;
-      noTick = 0; algoResolveu = false; golpeNoTick = false;
+      noTick = 0; algoResolveu = false; golpeNoTick = false; andouNoTick = false;
       classesNoTick = []; subsNoTick = [];
       // A FASE VIRA AQUI, no Tick seguinte ao da declaração de fuga.
       if (fugaPedida && fase === 'combate') fase = 'fuga';
@@ -199,6 +212,8 @@ export function novoLog({ completo = false } = {}) {
       }
       ev('dano', { c: c.id, alvo: alvo.id, t, aid: o.aid, veredito: o.veredito, liq: o.danoLiquido });
     },
+    /** UM PASSO que mudou a casa da peça. Não é parada: ninguém é consultado. */
+    andou(c, t) { andouNoTick = true; ev('passo', { c: c.id, t, andou: true }); },
     chegou(c, t) { algoResolveu = true; ev('passo', { c: c.id, t, chegou: true }); },
     caiu(c, t) { algoResolveu = true; ev('chao', { c: c.id, t }); },
     fimDoTick(t) {
@@ -214,6 +229,10 @@ export function novoLog({ completo = false } = {}) {
       if (noTick === 0) { est.ticksSemParada += 1; F.ticksSemParada += 1; }
       if (!algoResolveu) { est.ticksSemResolucao += 1; F.ticksSemResolucao += 1; }
       if (!golpeNoTick) { est.ticksSemGolpe += 1; F.ticksSemGolpe += 1; }
+      // O TICK MORTO: ninguém consultado, nada caiu, e ninguém saiu do lugar.
+      if (noTick === 0 && !algoResolveu && !andouNoTick) {
+        est.ticksMortos += 1; F.ticksMortos += 1;
+      }
       // A PARTIÇÃO, e ela fecha: as quatro células somam `ticks`.
       const onde = (noTick === 0 && !algoResolveu) ? 'nada'
         : noTick === 0 ? 'soResolveu'
@@ -271,6 +290,7 @@ function principais(F) {
     fracaoSemParada: frac(F.ticksSemParada),
     fracaoSemResolucao: frac(F.ticksSemResolucao),
     fracaoSemGolpe: frac(F.ticksSemGolpe),
+    ticksMortos: F.ticksMortos, fracaoMorta: frac(F.ticksMortos),
     ticksSoIII: F.ticksSoIII, ticksSoIIIPiso: F.ticksSoIIIPiso,
   };
 }
@@ -287,7 +307,8 @@ export function resumo(log, cena, b, semente) {
     gestosRelogio: e.gestosRelogio,
     golpesAplicados: e.golpesAplicados, quadro: e.quadro,
     ticksSemParada: e.ticksSemParada, ticksSemResolucao: e.ticksSemResolucao,
-    ticksSemGolpe: e.ticksSemGolpe, ticksSoIII: e.ticksSoIII, ticksSoIIIPiso: e.ticksSoIIIPiso,
+    ticksSemGolpe: e.ticksSemGolpe, ticksMortos: e.ticksMortos,
+    ticksSoIII: e.ticksSoIII, ticksSoIIIPiso: e.ticksSoIIIPiso,
   });
   return {
     b, celula: cena.celula.id, semente,
@@ -301,6 +322,7 @@ export function resumo(log, cena, b, semente) {
     fracaoSemParada: tudo.fracaoSemParada,
     fracaoSemResolucao: tudo.fracaoSemResolucao,
     fracaoSemGolpe: tudo.fracaoSemGolpe,
+    ticksMortos: e.ticksMortos, fracaoMorta: tudo.fracaoMorta,
     quadro: e.quadro,
     ticksSoIII: e.ticksSoIII, ticksSoIIIPiso: e.ticksSoIIIPiso,
     // AS DUAS FASES, e o Tick em que a fuga começou.

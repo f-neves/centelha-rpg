@@ -269,17 +269,52 @@ for (const [id, ls] of daFatia(PRINCIPAL)) {
   if (gI) linha('classe i · decisão de jogador', gI, 'não sai: é o jogador');
   console.log('  ' + 'total'.padEnd(34) + num(g, 0).padStart(9) + '   100%');
 
-  console.log('\n  O QUE UM AVANÇO AUTOMÁTICO ATÉ A PRÓXIMA PARADA POUPARIA (levantamento, não decisão):');
-  console.log(`    Ticks de combate: ${num(tk, 0)}, dos quais ${num(vazios, 0)}`
-    + ` (${pct(tk ? vazios / tk : 0)}) NÃO consultam ninguém`);
-  const novo = g - vazios;
-  console.log(`    cliques do ⏭: ${num(rel, 0)} → ${num(rel - vazios, 0)}`);
-  console.log(`    trabalho total: ${num(g, 0)} → ${num(novo, 0)} gestos`
-    + `  (${pct(g ? vazios / g : 0)} a menos, sem tocar em regra nenhuma)`);
-  console.log(`    e a composição vira: iii ${pct(novo ? gIII / novo : 0)}`
-    + ` · ⏭ ${pct(novo ? (rel - vazios) / novo : 0)} · ii ${pct(novo ? gII / novo : 0)}`);
-  console.log('  A tabela por célula está abaixo (a coluna `s/parada` da tabela A é a mesma');
-  console.log('  fração): ela varia muito, e o número agregado esconde essa variação.');
+  // O TETO E O PISO, e eles não são a mesma coisa.
+  //
+  //   TETO · Tick sem PARADA. Ninguém foi consultado, mas as peças podem ter
+  //          andado: pular esse Tick troca clique por CEGUEIRA, e o mestre
+  //          deixa de ver o tabuleiro mudar.
+  //   PISO · Tick MORTO. Ninguém consultado, nada caiu e ninguém saiu do lugar:
+  //          o tabuleiro está idêntico no fim e no começo. Ali não há o que ver,
+  //          e a economia é sem contrapartida nenhuma.
+  const mortos = sm((x) => x.ticksMortos || 0);
+  console.log('\n  O QUE UM AVANÇO AUTOMÁTICO POUPARIA (levantamento, não decisão):');
+  console.log(`    Ticks de combate: ${num(tk, 0)}`);
+  console.log(`      TETO · sem parada nenhuma:  ${num(vazios, 0)} (${pct(tk ? vazios / tk : 0)})`
+    + '  <- mas as peças ANDAM em parte deles');
+  console.log(`      PISO · e sem passo nenhum:  ${num(mortos, 0)} (${pct(tk ? mortos / tk : 0)})`
+    + '  <- o tabuleiro não mudou: não há o que ver');
+  for (const [rot, n] of [['TETO', vazios], ['PISO', mortos]]) {
+    const novo = g - n;
+    console.log(`    ${rot}: ⏭ ${num(rel, 0)} -> ${num(rel - n, 0)}`
+      + ` · trabalho ${num(g, 0)} -> ${num(novo, 0)} (${pct(g ? n / g : 0)} a menos)`
+      + ` · composição iii ${pct(novo ? gIII / novo : 0)}`
+      + ` · ⏭ ${pct(novo ? (rel - n) / novo : 0)} · ii ${pct(novo ? gII / novo : 0)}`);
+  }
+
+  // O GANHO ABSOLUTO POR CÉLULA, e não a fração.
+  //
+  // A fração engana aqui, e engana na direção que inverteria a conclusão: ela é
+  // ALTA onde a carga é baixa (o duelo a distância é quase todo Tick vazio) e
+  // baixa onde a carga é alta. Quem precisa decidir quer os CLIQUES POUPADOS,
+  // que é o que o mestre sente, e não a porcentagem deles.
+  console.log('\n  O GANHO POR CÉLULA, em cliques por batalha (e não em fração):');
+  console.log('  célula'.padEnd(28) + 'gestos hoje    teto    piso   teto%   piso%');
+  const porCel = [];
+  for (const [id, ls2] of daFatia(PRINCIPAL)) {
+    const term = ls2.filter((l) => l.fim !== 'estourou');
+    if (!term.length) continue;
+    const gc = med(term.map((l) => l.fases.combate.gestos || 0));
+    const tc = med(term.map((l) => Math.round((l.fases.combate.fracaoSemParada || 0) * l.fases.combate.ticks)));
+    const pc2 = med(term.map((l) => l.fases.combate.ticksMortos || 0));
+    porCel.push({ id, gc, tc, pc2 });
+  }
+  porCel.sort((a, b) => b.tc - a.tc);
+  for (const l of porCel) {
+    console.log('  ' + rotulo(l.id).padEnd(26) + num(l.gc, 0).padStart(9)
+      + num(l.tc, 0).padStart(8) + num(l.pc2, 0).padStart(8)
+      + pct(l.gc ? l.tc / l.gc : 0).padStart(8) + pct(l.gc ? l.pc2 / l.gc : 0).padStart(8));
+  }
 }
 
 // ------------------------------------- o que a automação esvazia, MEDIDO
