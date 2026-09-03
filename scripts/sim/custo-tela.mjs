@@ -30,7 +30,9 @@
 //
 // Isto NÃO entra no `declarar` abaixo, e a distinção importa: mudar aquele zero
 // mudaria o que a bateria mede, que é o robô. Entra como CENÁRIO no relatório
-// (`09` §2.4), que publica a economia do avanço automático para `G` de 2 a 4.
+// (`09` §2.4), que publica a economia do avanço automático para `G` de 2 a 4
+// sobre DOIS denominadores: o trabalho do mestre, que não muda com `G` porque
+// a declaração à mão é gesto do jogador, e o trabalho da mesa, que é a soma.
 
 /**
  * O CLIQUE DO RELÓGIO, um por Tick.

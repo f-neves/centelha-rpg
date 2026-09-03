@@ -15,11 +15,26 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { RAIZ } from './lib-ponte.mjs';
-import { gestosDe, ROLAGEM_DA_BATERIA } from './custo-tela.mjs';
+import { CUSTO, gestosDe, ROLAGEM_DA_BATERIA } from './custo-tela.mjs';
 import { conferirSinais } from './sinais.mjs';
 
 const arg = (n, p) => { const i = process.argv.indexOf(n); return i > 0 ? process.argv[i + 1] : p; };
 const DIR = path.resolve(RAIZ, arg('--saida', '.sim/ultima'));
+
+// --gravar <arquivo> · a MESMA saída vai também para um arquivo, para que o
+// agregado de uma bateria publicada seja versionado e o relatório aponte linha
+// nele em vez de transcrever o terminal. A rodada 01 da caixa achou um placar
+// transcrito de uma execução que já não existia em lugar nenhum.
+const GRAVAR = arg('--gravar', null);
+if (GRAVAR) {
+  const guardado = [];
+  const log0 = console.log.bind(console);
+  console.log = (...a) => { guardado.push(a.join(' ')); log0(...a); };
+  process.on('exit', () => {
+    fs.mkdirSync(path.dirname(path.resolve(RAIZ, GRAVAR)), { recursive: true });
+    fs.writeFileSync(path.resolve(RAIZ, GRAVAR), guardado.join('\n') + '\n');
+  });
+}
 
 const linhas = [];
 for (const f of fs.readdirSync(DIR)) {
@@ -315,6 +330,146 @@ for (const [id, ls] of daFatia(PRINCIPAL)) {
     console.log('  ' + rotulo(l.id).padEnd(26) + num(l.gc, 0).padStart(9)
       + num(l.tc, 0).padStart(8) + num(l.pc2, 0).padStart(8)
       + pct(l.gc ? l.tc / l.gc : 0).padStart(8) + pct(l.gc ? l.pc2 / l.gc : 0).padStart(8));
+  }
+}
+
+// ------------ AS CONTAS DA §2.4, DA §2.5 E DA §8.2, que estavam fora do script
+//
+// Até a rodada 01 da caixa estas tabelas saíam de `node -e` avulso sobre o
+// `.sim/`, e o aviso daquela rodada declarou o furo: número publicado sem
+// script que o produza é número que ninguém confere. Elas moram aqui agora, na
+// MESMA fatia dos três pedaços (limiar de produção, os dois mapas, só as
+// batalhas que terminam), e cada tabela diz de que DENOMINADOR ela é, porque a
+// rodada 01 achou uma que não dizia: a banda do `G` somava gesto de jogador ao
+// trabalho e chamava a soma de trabalho do mestre.
+{
+  const ls = boas.filter((l) => infoDe(l.celula).nivelLimiar === PRINCIPAL && l.fim !== 'estourou');
+  const sm = (f) => ls.reduce((x, l) => x + f(l.fases.combate), 0);
+  const tipos = [...new Set(ls.flatMap((l) => Object.keys(l.fases.combate.paradasSub || {})))].sort();
+  const CLASSE = Object.assign({}, ...ls.map((l) => l.classeDoTipo || {}));
+  const sub = (t) => sm((x) => x.paradasSub?.[t] || 0);
+  const tk = sm((x) => x.ticks);
+  const rel = sm((x) => x.gestosRelogio || 0);
+  const g = sm((x) => x.gestos || 0);
+  const vazios = sm((x) => Math.round((x.fracaoSemParada || 0) * x.ticks));
+  const mortos = sm((x) => x.ticksMortos || 0);
+  const golpes = sm((x) => x.golpesAplicados || 0);
+  const decl = sub('declarar');
+  const n0 = (x) => num(x, 0);
+  const p1 = (x) => `${(x * 100).toFixed(1)}%`;
+
+  // O TRABALHO EM CADA MODO DE ROLAGEM é a mesma contagem de paradas com o
+  // custo de tela daquele modo (`custo-tela.mjs`): recontagem, e não bateria
+  // nova. A do modo da bateria TEM de bater com o `gestos` que o log somou, e
+  // se não bater o script para: seria a tabela de custo e o log discordando.
+  const porClasse = (modo) => {
+    const r = { i: 0, ii: 0, iii: 0 };
+    for (const t of tipos) r[CLASSE[t]] += sub(t) * gestosDe(t, modo);
+    return r;
+  };
+  const trabalho = (modo) => { const c = porClasse(modo); return rel + c.i + c.ii + c.iii; };
+  if (trabalho(ROLAGEM_DA_BATERIA) !== g) {
+    console.log(`\n✘✘✘ a recontagem no modo ${ROLAGEM_DA_BATERIA} (${trabalho(ROLAGEM_DA_BATERIA)})`
+      + ` não bate com os gestos do log (${g}): custo-tela.mjs e log.mjs discordam`);
+    process.exit(1);
+  }
+  const MODOS = ['mesa', 'site'];
+  const T = Object.fromEntries(MODOS.map((m) => [m, trabalho(m)]));
+
+  console.log('\n── OS TRÊS PEDAÇOS NOS DOIS MODOS DE ROLAGEM · a mesma contagem, dois custos de tela'
+    + ` · ${ls.length} batalhas que terminam ──`);
+  console.log('  ' + ''.padEnd(30) + MODOS.map((m) => m.padStart(9) + ''.padStart(8)).join(''));
+  const linha = (nome, f) => console.log('  ' + nome.padEnd(30)
+    + MODOS.map((m) => n0(f(m)).padStart(9) + p1(T[m] ? f(m) / T[m] : 0).padStart(8)).join(''));
+  linha('classe iii · aritmética', (m) => porClasse(m).iii);
+  linha('o ⏭ · cadência de relógio', () => rel);
+  linha('classe ii · julgamento', (m) => porClasse(m).ii);
+  if (porClasse('mesa').i) linha('classe i · decisão de jogador', (m) => porClasse(m).i);
+  console.log('  ' + 'total'.padEnd(30)
+    + MODOS.map((m) => n0(T[m]).padStart(9) + p1(T[m] / T.mesa).padStart(8)).join(''));
+  console.log(`  a troca de modo tira ${p1(1 - T.site / T.mesa)} do trabalho do mestre, sem tocar no motor`);
+
+  // O CACHO: os golpes chegam juntos, e uma parada de avanço absorve UM cartão.
+  // O Tick com golpe sai do log por diferença: Ticks menos Ticks sem golpe.
+  const ticksComGolpe = sm((x) => x.ticks - Math.round((x.fracaoSemGolpe || 0) * x.ticks));
+  const sobram = golpes - ticksComGolpe;
+  console.log('\n── O CACHO · Ticks com golpe vencido, e o cartão que a parada do avanço absorve ──');
+  console.log(`  Ticks de combate ${n0(tk)} · com ao menos UM golpe ${n0(ticksComGolpe)}`
+    + ` (${p1(tk ? ticksComGolpe / tk : 0)})`);
+  console.log(`  golpes (cartões) ${n0(golpes)} · por Tick que tem golpe`
+    + ` ${num(ticksComGolpe ? golpes / ticksComGolpe : 0)}`);
+  console.log(`  cartões absorvidos pela parada (um por Tick que para) ${n0(ticksComGolpe)}`
+    + ` (${p1(golpes ? ticksComGolpe / golpes : 0)}) · que sobram ${n0(sobram)}`
+    + ` (${p1(golpes ? sobram / golpes : 0)})`);
+
+  console.log(`\n── AS ECONOMIAS NO MODO site · sobre o trabalho do MESTRE, ${n0(T.site)} ──`);
+  console.log('  ' + ''.padEnd(24) + 'só o avanço   só o cartão   os dois juntos');
+  for (const [rot, n] of [['com piso (Tick morto)', mortos], ['com teto (sem parada)', vazios]]) {
+    console.log('  ' + rot.padEnd(24) + p1(n / T.site).padStart(11)
+      + p1(ticksComGolpe / T.site).padStart(14) + p1((n + ticksComGolpe) / T.site).padStart(17));
+  }
+
+  // A ESCADA, degrau por degrau, e o resíduo com a composição dele.
+  const escada = [
+    ['hoje (modo mesa)', T.mesa],
+    ['+ modo site', T.site],
+    ['+ avanço unificado (piso)', T.site - mortos - ticksComGolpe],
+    ['+ a folha resolvendo sozinha', T.site - mortos - ticksComGolpe - sobram],
+  ];
+  console.log('\n── A ESCADA · o que sobra depois de cada conserto · trabalho do MESTRE ──');
+  for (const [rot, v] of escada) {
+    console.log('  ' + rot.padEnd(32) + n0(v).padStart(9) + p1(v / T.mesa).padStart(8));
+  }
+  const residuo = escada[3][1];
+  const relParam = rel - mortos;
+  const aplicar = sub('aplicar');
+  console.log(`  resíduo ${n0(residuo)} = ⏭ que param ${n0(relParam)} (${p1(relParam / residuo)})`
+    + ` + aplicar ${n0(aplicar)} (${p1(aplicar / residuo)})`
+    + (relParam + aplicar === residuo ? ' ✓ fecha' : ' ✗ NÃO FECHA'));
+  console.log(`  o teto do que o projeto tira do mestre: ${p1(1 - residuo / T.mesa)}`);
+
+  // COM JOGADOR NA MESA, e DOIS denominadores, porque são dois trabalhos.
+  //
+  // A declaração à mão custa G gestos (`CUSTO.declarar.naMao`), e ela é gesto
+  // do JOGADOR. Somá-la ao trabalho e chamar a soma de "trabalho do mestre" foi
+  // o erro que a rodada 01 apontou: a fração caía por um motivo que não era o
+  // mestre trabalhar menos. Então saem os dois: o trabalho do MESTRE, que não
+  // muda com G (o ⏭ e a folha continuam dele), e o trabalho da MESA, que é o
+  // do mestre mais o dos jogadores. Os cliques poupados são os mesmos nos dois;
+  // só a fração muda, e só na segunda.
+  const { arrasto, menu } = CUSTO.declarar.naMao;
+  const GS = [[0, 'o robô'], [arrasto, 'jogador pelo arrasto'], [menu, 'jogador pelo menu']];
+  console.log('\n── COM JOGADOR NA MESA · G gestos por declaração, e são gestos do JOGADOR ──');
+  console.log(`  declarações ${n0(decl)} · cliques poupados: piso ${n0(mortos)} · teto ${n0(vazios)},`
+    + ' os mesmos em toda linha');
+  for (const m of MODOS) {
+    console.log(`  modo ${m} · trabalho do MESTRE ${n0(T[m])} · economia dele:`
+      + ` piso ${p1(mortos / T[m])} · teto ${p1(vazios / T[m])}, com qualquer G`);
+    console.log('  ' + 'G'.padEnd(28) + 'trab. da MESA   piso (mesa)   teto (mesa)');
+    for (const [G, nome] of GS) {
+      const mesa = T[m] + G * decl;
+      console.log('  ' + `${G} · ${nome}`.padEnd(28) + n0(mesa).padStart(13)
+        + p1(mortos / mesa).padStart(14) + p1(vazios / mesa).padStart(14));
+    }
+  }
+
+  // O RESÍDUO POR TAMANHO DA CENA: mapa principal, média por batalha.
+  console.log(`\n── O RESÍDUO POR TAMANHO DA CENA · mapa ${MAPA_PRINC}, limiar de produção,`
+    + ' só as que terminam · média por batalha, fase de combate ──');
+  console.log('  cena   peças   Ticks   ⏭ que param   aplicar   resíduo');
+  for (const tam of [...new Set(CEL.map((c) => c.pecas))]) {
+    const ls2 = ls.filter((l) => {
+      const c = infoDe(l.celula);
+      return c.pecas === tam && c.nivelMapa === MAPA_PRINC;
+    });
+    if (!ls2.length) continue;
+    const m = (f) => med(ls2.map((l) => f(l.fases.combate)));
+    const t = m((x) => x.ticks);
+    const rp = m((x) => x.ticks - (x.ticksMortos || 0));
+    const ap = m((x) => x.paradasSub?.aplicar || 0);
+    const pecas = 2 * (infoDe(ls2[0].celula).n || 0);
+    console.log('  ' + tam.padEnd(7) + String(pecas).padStart(5) + n0(t).padStart(8)
+      + n0(rp).padStart(14) + n0(ap).padStart(10) + n0(rp + ap).padStart(10));
   }
 }
 

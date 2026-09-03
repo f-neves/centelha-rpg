@@ -33,9 +33,3 @@ Thumbs.db
 
 # a saida das baterias de simulacao: cada uma tem o seu manifesto e e refeita
 .sim/
-
-# O worktree da REVISORA. Ele mora FORA daqui (../centelha-revisora), e esta
-# linha existe para o caso de alguem rodar `git worktree add` da raiz por engano:
-# uma copia do repositorio dentro do repositorio suja a arvore, e arvore suja
-# trava o `npm run rodada`, que se recusa a abrir rodada sem tudo commitado.
-centelha-revisora/

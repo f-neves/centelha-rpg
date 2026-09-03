@@ -1,7 +1,10 @@
 # 09 · A bateria grande
 
 **03/09/2026.** 21.600 batalhas, 96 células, zero inválidas. Commit `0dc62a4`,
-semente mestre 20260903.
+semente mestre 20260903. **O agregado inteiro está versionado** em
+`resultados/09-bmtlw3e2r.txt`: é a saída de `agregar.mjs --gravar` sobre a bateria
+`bmtlw3e2r`, rodada no commit `80d5db7` com o mesmo `dados_hash` (`36ff54d18bb95d9a`) da de
+`0dc62a4`. Todo número deste documento tem linha nele.
 
 > **A grade rodou QUATRO vezes neste dia, e os números aqui são os da última.** A primeira
 > (`3544505`) levantou quatro perguntas de regra presas no código; a segunda (`fdc9eab`) rodou com
@@ -417,15 +420,29 @@ confirmar:
 O próprio código da mesa já trazia a conta, no comentário da solta do arrasto: *"três toques
 (botão direito, ⚔, clique) viraram um arrasto"*.
 
-| G | trabalho total | economia teto | economia piso |
-|---:|---:|---:|---:|
-| 0 · o robô, que é o que esta bateria mede | 1.095.869 | 20,0% | **11,4%** |
-| **2 · o jogador pelo arrasto** | 1.552.533 | 14,1% | **8,1%** |
-| **4 · o jogador pelo menu** | 2.009.197 | 10,9% | **6,2%** |
+**E a declaração à mão é gesto do JOGADOR, e não do mestre.** A primeira redação desta tabela
+somava os `G` gestos ao trabalho e chamava a soma de trabalho do mestre, e a fração caía por um
+motivo que não era o mestre trabalhar menos (achado da revisão, rodada 01). São dois trabalhos,
+e saem os dois (`resultados/09-bmtlw3e2r.txt`, linhas 186 a 197):
 
-**Com jogadores na mesa, a economia do avanço automático fica entre 6,2% e 8,1% no piso**, e entre
-10,9% e 14,1% no teto. O número absoluto de cliques poupados (218.679 no teto, 125.237 no piso)
-**não muda nada** com o valor de `G`: só o denominador cresce.
+- **o trabalho do MESTRE não muda com `G`**: o ⏭ e a folha continuam sendo dele, e os 228.332
+  `declarar` passam a custar gesto de outra pessoa. A economia do avanço sobre o trabalho dele é
+  **11,4% com piso e 20,0% com teto, com qualquer `G`**;
+- **o trabalho da MESA** é o do mestre mais o dos jogadores, e é sobre ele que a fração cai:
+
+| G | trabalho do mestre | trabalho da mesa | economia teto (mesa) | economia piso (mesa) |
+|---:|---:|---:|---:|---:|
+| 0 · o robô, que é o que esta bateria mede | 1.095.869 | 1.095.869 | 20,0% | **11,4%** |
+| **2 · o jogador pelo arrasto** | 1.095.869 | 1.552.533 | 14,1% | **8,1%** |
+| **4 · o jogador pelo menu** | 1.095.869 | 2.009.197 | 10,9% | **6,2%** |
+
+**Com jogadores na mesa, o avanço automático continua tirando 11,4% do trabalho do mestre; do
+trabalho da mesa inteira ele tira entre 6,2% e 8,1% no piso**, e entre 10,9% e 14,1% no teto. O
+número absoluto de cliques poupados (218.679 no teto, 125.237 no piso) **não muda nada** com o
+valor de `G`: só o denominador da mesa cresce, e cresce com gesto que nunca foi do mestre.
+
+O que esta conta **não** separa é o mestre declarando os NPCs à mão, sem o robô: aí parte dos `G`
+volta para ele, e o log não distingue declaração por lado. Fica anotado no L24.
 
 > **A banda é do jogador que ACEITA O PADRÃO, e não do jogador.** O `G = 2` pressupõe que os
 > padrões do diálogo servem, e eles servem porque são exatamente o que o robô escolheria: manobra
@@ -448,14 +465,15 @@ valer mais**, porque o que some é a digitação e não o relógio:
 
 | | modo `mesa` | modo `site` |
 |---|---:|---:|
-| trabalho total | 1.095.869 | 727.801 |
+| trabalho do mestre | 1.095.869 | 727.801 |
 | cliques poupados (piso) | 125.237 | 125.237 |
 | **economia com piso** | **11,4%** | **17,2%** |
 | economia com teto | 20,0% | 30,0% |
 
-E com jogador declarando à mão, no modo `site`:
+E com jogador declarando à mão, no modo `site`, com a mesma separação de denominadores (o
+trabalho do mestre fica em 727.801 e a economia dele em 17,2% e 30,0%, com qualquer `G`):
 
-| G | trabalho total | teto | piso |
+| G | trabalho da mesa | teto (mesa) | piso (mesa) |
 |---:|---:|---:|---:|
 | 0 · o robô | 727.801 | 30,0% | **17,2%** |
 | 2 · o jogador pelo arrasto | 1.184.465 | 18,5% | **10,6%** |
@@ -510,7 +528,7 @@ Recontando os mesmos 9.600 combates com o custo do modo `site`:
 | classe ii · julgamento | 184.034 · 16,8% | 184.034 · 25,3% |
 | **trabalho total** | **1.095.869** | **727.801** |
 
-**Trocar o modo de rolagem tira 33,6% do trabalho da mesa sem uma linha de motor.** É mais que o
+**Trocar o modo de rolagem tira 33,6% do trabalho do mestre sem uma linha de motor.** É mais que o
 avanço automático (11,4% com piso) e mais que qualquer bandeira isolada poderia comprar. E dos 50%
 de classe iii, **só um terço sobrevive**: os outros dois terços eram o dedo digitando o que o site
 já sabe calcular.
@@ -693,7 +711,8 @@ nele é uma decisão de sabor, não de carga.
 
 ## 4 · O alarme aceso, e a explicação que ele exige
 
-O agregador imprime seis sinais de bateria ineficaz. Cinco ficaram apagados. Um acendeu:
+O agregador confere onze sinais de bateria ineficaz (`sinais.mjs`, cada um com o teste que o
+acende de propósito). Dez ficaram apagados. Um acendeu:
 
 > ✘ **fuga-consumada acima de 90% em 2 células**: `coprimo-encostado-2×8` no mapa apertado
 > (98%) e no aberto (99%).
@@ -715,32 +734,46 @@ Duas consequências, e as duas vão escritas:
    dominante" da tabela C não deve ser lida como afirmação sobre o sistema de combate**, e sim
    como "a cena acabou porque o tabuleiro acabou".
 
-**E cada sinal agora imprime o veredito dele**, aceso ou apagado (D46). O placar da execução:
+**E cada sinal imprime o veredito dele**, aceso ou apagado (D46). O placar, copiado de
+`resultados/09-bmtlw3e2r.txt`, linhas 386 a 396:
 
 ```
-✓ ocasião · reprojetar             4.409.780 re-projeções nas células com distância
-✓ ocasião · fugir                  declarações de fuga acima de zero
-✓ ocasião · redirecionar           golpes redirecionados acima de zero
-✓ ocasião · raspão                 raspões acima de zero
-✓ ocasião · quarta célula do quadro Ticks em que algo caiu sem consultar ninguém
-✓ invariantes                      nenhuma batalha violou um dos quinze
-✓ variância                        os eixos explicam ~200× mais que o acaso
-✓ teto                             48 de 96 células estouram sempre, e 48 terminam
-✓ distribuição                     nenhuma célula com p10 = p90
-✘ fuga-consumada                   2 células acima de 90%
+  ✓ invariantes                    nenhuma das 21600 batalhas violou um dos quinze invariantes
+  ✓ ocasião · reprojetar           4825078 re-projeções nas células com distância
+  ✓ ocasião · fugir                26889 declarações de fuga
+  ✓ ocasião · redirecionar         15498 golpes redirecionados
+  ✓ ocasião · raspão               202230 raspões
+  ✓ ocasião · quarta célula do quadro 42278 Ticks em que algo caiu sem consultar ninguém
+  ✓ ocasião · passo                16200 de 16200 batalhas com distância têm Tick morto < Tick sem parada
+  ✓ variância                      os eixos explicam 204× mais que o acaso
+  ✓ teto                           48 de 96 células estouram sempre, e 48 terminam
+  ✓ distribuição                   nenhuma célula com p10 = p90 em paradas/Tick
+  ✘ fuga-consumada                 fuga-consumada acima de 90% em 2 célula(s): a fase de fuga engoliu a batalha · coprimo-encostado-2x8-apertado 98%, coprimo-encostado-2x8-aberto 99%
 ```
 
 Antes disto, "nenhum alarme" e "o alarme não roda" imprimiam exatamente a mesma coisa: nada.
 
+> **O placar anterior estava errado, e de um jeito que importa.** A redação que este trecho
+> substitui trazia dez linhas transcritas à mão de uma execução anterior ao commit carimbado
+> (4.409.780 re-projeções, um número que nenhuma das seis baterias guardadas em `.sim/` produz), e
+> faltava nela o `ocasião · passo`, que é o sinal que guarda o piso de 11,4% da §2.4: se
+> `log.andou` se soltar, o Tick morto vira igual ao Tick sem parada, o piso vira o teto e nada
+> acusa. Achado da revisão (rodada 01). O conserto não é a transcrição nova: é o `--gravar` do
+> agregador, que versiona a saída inteira para que o placar publicado seja um trecho de arquivo
+> com linha, e não memória de terminal.
+
 **Os que não acenderam** também são informação: nenhum invariante violado em 21.600
 batalhas (e são quinze agora: dois que fecham os gestos por classe e por subtipo, e um que recusa parada sem classe);
 nenhum contador de ocasião em zero onde deveria morder (re-projeção, fuga, raspão, o
-redirecionamento do golpe no caído e a quarta célula do quadro mordem todos); nenhuma métrica com
+redirecionamento do golpe no caído, a quarta célula do quadro e o passo mordem todos: 16.200 de
+16.200 batalhas com distância têm Tick morto menor que Tick sem parada); nenhuma métrica com
 p10 igual a p90; e nem toda célula estoura o teto (metade estoura, e são as uníssonas, pelo
 motivo de sempre).
 
-**E o sexto acendeu na bateria de SANIDADE da primeira volta e foi consertado antes da grande**,
-que é exatamente para isso que ela existe: o eixo E4 estava inerte (§5, D31).
+**E um décimo segundo, que não está entre os onze, acendeu na bateria de SANIDADE da primeira
+volta e foi consertado antes da grande**, que é exatamente para isso que ela existe: o eixo E4
+estava inerte (§5, D31). Ele mora no agregador e não em `sinais.mjs`, e por isso é o único alarme
+sem o teste que os onze têm; está anotado como pendência.
 
 ### 4.1 A variância diz que os eixos estão fazendo o trabalho
 
@@ -1168,8 +1201,9 @@ Três leituras que essa linha obriga, e nenhuma delas é confortável:
    mostrar é a régua que ninguém confere. Três defeitos desta frente viveram anos assim;
 2. **o primeiro degrau é o mais barato e não é meu para dar.** Ir de 100% para 66,4% é uma
    conversa (o **L26**), não um commit;
-3. **o piso de 38,2% é o do robô.** Com jogadores declarando à mão, `declarar` deixa de valer zero
-   e o denominador cresce: a fração some, o número absoluto de gestos do mestre não. **O que este
+3. **o piso de 38,2% é o do robô.** Com jogadores declarando à mão, `declarar` deixa de valer
+   zero, mas o gesto é do jogador: o trabalho do mestre não muda e a fração dele também não
+   (§2.4); o que cresce é o trabalho da mesa, e a fração sobre ele cai. **O que este
    projeto não consegue tirar não é 38,2% de um número fixo, é um clique por Tick que para e um
    por golpe que cai**, e esses dois não têm conserto de software porque não são conta: são a
    cadência da cena e a decisão da mesa.
@@ -1241,8 +1275,13 @@ resolver sozinha, e **é o único degrau desta fila que pode PIORAR o Grid**.
 ```
 node scripts/sim/bateria.mjs --sanidade          # a que existe para falhar
 node scripts/sim/bateria.mjs --saida .sim/<data> # a grande, 96 células
-node scripts/sim/agregar.mjs --saida .sim/<data>
+node scripts/sim/agregar.mjs --saida .sim/<data> --gravar docs/simulacao/resultados/09-<run_id>.txt
 ```
+
+O `--gravar` guarda a saída inteira do agregador, e é ela que fica versionada:
+`resultados/09-bmtlw3e2r.txt` é a da bateria deste documento. O `.sim/` não é versionado, então o
+arquivo gravado é a única procedência que sobrevive a um `git clean`, e toda linha citada neste
+documento aponta para ele.
 
 E **uma batalha sozinha**, pelo índice, sem depender de nenhuma anterior (a semente é
 `hash32(semente_mestre, célula, repetição)`, derivada e não sorteada):

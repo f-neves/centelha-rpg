@@ -1238,8 +1238,17 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   contador de ocasião, e só então medir. É o mesmo mecanismo que matou o eixo E4 (D31) antes de
   ele virar linha de relatório. Isto reparte o **L1** em quinze tarefas de motor, e **nenhuma
   medição de bandeira vale antes**.
-- [ ] **L27 · [PEQUENO, E COM HORA MARCADA] Apagar `rpg-system/centelha-revisora/`
-  e tirar a linha do `.gitignore` junto.** A pasta foi engano de caminho na montagem da frente de
+- [ ] **L27 · [METADE FEITA em 03/09, na rodada 02 da caixa] Apagar `rpg-system/centelha-revisora/`
+  e tirar a linha do `.gitignore` junto.** A linha saiu (as cinco, com o comentário), que era a
+  metade que importava: a regra permanente escondendo um caminho que não devia existir. A pasta
+  **não saiu**: na hora de apagar, ela já não tinha o `CLAUDE.md` descrito abaixo (alguém o tirou
+  antes) e estava **presa por outro processo** ("being used by another process"), provavelmente
+  um shell com o diretório de trabalho dentro dela; sobrava um `bash.exe.stackdump`, que o
+  `.gitignore` já cobre por conta própria. A árvore continua limpa sem a linha, porque a pasta
+  não tem arquivo rastreável. **O que falta:** fechar o processo que a segura e apagar a pasta
+  vazia (`rmdir centelha-revisora`). É de quem tiver o terminal aberto nela.
+
+  O texto original, para a história: a pasta foi engano de caminho na montagem da frente de
   revisão: o worktree de verdade mora fora daqui (`../centelha-revisora`), e o que ficou na raiz é
   uma cópia byte a byte do `CLAUDE.md` que já está lá.
 
@@ -1253,6 +1262,15 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **Quando:** no primeiro commit depois que a resposta da revisora chegar e for tratada. Não antes,
   e não em branch própria. Enquanto isso a linha do `.gitignore` fica, porque é ela que mantém o
   `npm run rodada` funcionando (ele recusa abrir rodada com a árvore suja).
+
+- [ ] **L28 · [PEQUENO] O alarme do E4 inerte é o único sem teste.** Os onze sinais de bateria
+  ineficaz moram em `scripts/sim/sinais.mjs` e cada um tem, em `test-sinais.mjs`, o caso que o
+  acende e o que o cala. O décimo segundo, "E4 INERTE" (a célula de passo 2× re-projeta menos que
+  a âncora dela), ficou dentro de `agregar.mjs` quando os outros saíram, e portanto é o único que
+  volta a ter o zero de duas caras: "não houve problema" e "o predicado está errado" imprimem o
+  mesmo silêncio. Ele já acendeu uma vez de verdade (a sanidade da primeira volta, D31), o que
+  prova o predicado daquela versão e não o de hoje. Mover para `sinais.mjs` com os dois casos.
+  Anotado em 03/09, na rodada 02 da caixa.
 
 - [ ] **L26 · [PRIMEIRO, E NÃO É CÓDIGO] Por que as mesas rolam o dado na mão?** Medido em 03/09
   (`09` §2.5): recontando os mesmos 9.600 combates com o custo do modo `site`, a classe iii cai de
@@ -1309,12 +1327,19 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
     vê-lo;
   - **com jogador na mesa a contagem NÃO muda, só o custo.** `declarar` já é uma parada em toda
     declaração (228.332 delas), então o Tick em que alguém declara já não é vazio hoje. Com `G`
-    gestos por declaração manual, a economia com piso vai de 11,4% (G=0) a 6,2% (G=4), e os
-    cliques poupados em números absolutos não mudam nada. **E a banda fechou em 03/09**, lendo o
-    diálogo em vez de medir gente: são **2 gestos pelo arrasto** (soltar a peça em cima do alvo,
-    mais o OK) e **4 pelo menu** (botão direito, ⚔, clique no alvo, mais o OK), com o diálogo
-    abrindo em todos os padrões que o robô usaria. Com jogadores na mesa, **a economia com piso
-    fica entre 6,2% e 8,1%**. Isto não era o L7 e não precisava de bateria nenhuma.
+    gestos por declaração manual, **o trabalho do mestre não muda** (a declaração à mão é gesto do
+    jogador; achado da revisão, rodada 01 da caixa), e a economia sobre ele continua 11,4% com
+    piso; sobre o trabalho da MESA (mestre mais jogadores) ela vai de 11,4% (G=0) a 6,2% (G=4),
+    e os cliques poupados em números absolutos não mudam nada. **E a banda fechou em 03/09**,
+    lendo o diálogo em vez de medir gente: são **2 gestos pelo arrasto** (soltar a peça em cima do
+    alvo, mais o OK) e **4 pelo menu** (botão direito, ⚔, clique no alvo, mais o OK), com o
+    diálogo abrindo em todos os padrões que o robô usaria. Com jogadores na mesa, **a economia com
+    piso sobre o trabalho da mesa fica entre 6,2% e 8,1%**, e sobre o do mestre fica em 11,4%.
+    Isto não era o L7 e não precisava de bateria nenhuma.
+
+    O que a conta não separa é o mestre declarando os NPCs à mão, sem o robô: parte dos `G`
+    volta para ele, e o log não distingue declaração por lado. Medir isso exige o `declarar`
+    contado por lado no `log.mjs`, e ainda não está.
 
     **A banda é do jogador que ACEITA O PADRÃO**, e não do jogador: quem troca a manobra, o modo
     de deslocamento ou o alvo paga mais, e a bateria não sabe com que frequência isso acontece,
