@@ -1,6 +1,6 @@
 # 09 · A bateria grande
 
-**03/09/2026.** 21.600 batalhas, 96 células, 31,8 s, zero inválidas. Commit `9580661`,
+**03/09/2026.** 21.600 batalhas, 96 células, zero inválidas. Commit `0dc62a4`,
 semente mestre 20260903.
 
 > **A bateria rodou quatro vezes neste dia**, e as três últimas com números idênticos: uma por
