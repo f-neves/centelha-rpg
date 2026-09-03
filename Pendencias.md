@@ -1245,12 +1245,34 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   calcular. É o maior número desta bateria inteira, e a chave já existe, está implementada e
   ligada (`rolaNoSite`, chamada na abertura da folha).
 
-  **E o modo `mesa` não é desleixo, é escolha**: a nota do próprio `regras.json` diz por quê ("o
-  dado na mão é metade da mesa"). Então a pergunta é para quem joga, e não para o código. O modo
-  `misto` existe justamente para o impasse (só as criaturas rolam no site, o que tira do mestre as
-  rolagens dele e deixa o dado na mão dos jogadores) e **esta bateria não consegue medi-lo**:
-  todas as peças dela são arquétipos de PC, então o `misto` sairia idêntico ao `mesa`, e não por
-  o modo não fazer nada. Zero ambíguo outra vez; medi-lo exige criatura no elenco.
+  **E o peso todo da classe iii vem de UMA parada, e não de seis** (`09` §2.5): `resolver` e
+  `aplicar` acontecem uma vez por golpe, e as outras cinco (`declarar`, `agenda`, `reprojetar`,
+  `fugir`, `redirecionar`) somam 557.629 ocorrências, 60% de todas as paradas, **e custam zero
+  gesto**. Não há seis coisas para automatizar: há a folha da resolução, e ela já tem chave.
+
+  **O modo `mesa` não é desleixo, é escolha, e a razão está escrita na régua:**
+
+  > *"Quem rola os dados. Não muda regra nenhuma: muda quem digita o resultado. O padrão é ninguém
+  > rolar no site, porque o dado na mão é metade da mesa."*
+
+  Rolar o dado é parte do que as pessoas foram fazer ali, e trocar o padrão para economizar
+  cliques do mestre pode custar exatamente a coisa pela qual a mesa existe. **Essa troca não é
+  decisão de quem escreve o motor.**
+
+  **DUAS PERGUNTAS, NA MESMA CONVERSA**, porque as duas decidem o tamanho dos dois primeiros itens
+  da fila e nenhuma delas se responde com bateria:
+
+  1. **por que a mesa rola o dado na mão?** Vale 33,6% do trabalho;
+  2. **com que frequência há efeito de chão ativo numa cena?** Vem do achado da `09` §2.4: o
+     `verificarEfeitos` morde sem parada nenhuma, e nenhuma batalha desta bateria tem Arte. Se
+     efeito de chão for raro, o piso de 11,4% do L24 vale como medido; se for comum, o avanço
+     automático para mais vezes e o piso encolhe.
+
+  O modo `misto` existe justamente para o impasse da primeira (só as criaturas rolam no site, o
+  que tira do mestre as rolagens dele e deixa o dado na mão dos jogadores) e **esta bateria não
+  consegue medi-lo**: todas as peças dela são arquétipos de PC, então o `misto` sairia idêntico ao
+  `mesa`, e não por o modo não fazer nada. Zero ambíguo outra vez; medi-lo exige criatura no
+  elenco.
 - [ ] **L24 · [DEPOIS] O ⏭ é um terço do trabalho do mestre, e nenhuma regra o toca.** Medido em
   03/09 (`09` §2.3 e §2.4): o clique de avançar o Tick são 33% dos gestos do mestre na fase de
   combate, contra 50% de classe iii e 17% de classe ii. Ele é o item mais frequente da mesa, o
@@ -1289,6 +1311,11 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   da bateria tem Arte, então esse caminho nunca rodou nela. **O avanço tem de parar quando alguém
   é consultado E quando um efeito morde**, e tem de mostrar o que passou no caminho em vez de
   pular calado. Isso é projeto, e não ressalva.
+
+  **E ele vem DEPOIS do L26, e não em paralelo:** com a troca de modo de rolagem o ⏭ passa de
+  32,8% para 49,4% do trabalho e a economia do avanço sobe de 11,4% para **17,2%** com piso. O
+  avanço não fica menos importante depois da conversa, fica mais, e medi-lo antes seria medir
+  contra um denominador que a conversa pode encolher.
 
   **Não está decidido e nada foi implementado.** O que ainda falta para decidir é uma peça que se
   MOVA diferente do robô (o L20): ela muda a trajetória, e portanto a fatia de travessia que

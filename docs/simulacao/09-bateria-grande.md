@@ -386,18 +386,66 @@ uma peça que **se mova diferente** de como o robô move (recua, reposiciona), p
 trajetória e portanto a fatia de travessia que separa o piso do teto. É o **L20**, e é a única
 coisa aqui que exige elenco novo.
 
-> **O que fica registrado:** a pergunta tem tamanho (**11,4%** com piso, 20,0% com teto), tem lugar
-> (interface, e não regra), tem contra-argumento medido (26 pontos de travessia entre piso e teto)
-> e tem o limite com jogador calculado (6% a 9%). Não tem decisão, e é o **L24**.
+#### O denominador importa, e a conversa do L26 pode mudá-lo
+
+Os 11,4% e os 20,0% são sobre o trabalho do modo `mesa`. Se a mesa trocar para o modo `site`
+(§2.5), o denominador encolhe de 1.095.869 para 727.801 e **os mesmos cliques poupados passam a
+valer mais**, porque o que some é a digitação e não o relógio:
+
+| | modo `mesa` | modo `site` |
+|---|---:|---:|
+| trabalho total | 1.095.869 | 727.801 |
+| cliques poupados (piso) | 125.237 | 125.237 |
+| **economia com piso** | **11,4%** | **17,2%** |
+| economia com teto | 20,0% | 30,0% |
+
+E com jogador declarando à mão, no modo `site`:
+
+| G | trabalho total | teto | piso |
+|---:|---:|---:|---:|
+| 0 · o robô | 727.801 | 30,0% | **17,2%** |
+| 2 · o jogador pelo arrasto | 1.184.465 | 18,5% | **10,6%** |
+| 4 · o jogador pelo menu | 1.641.129 | 13,3% | **7,6%** |
+
+**A conclusão que isso obriga: o L26 e o ⏭ não são dois itens paralelos, são uma sequência.** A
+troca de modo tira 33,6% do trabalho **e aumenta a fatia do que sobra que o avanço automático
+compra**, de 11,4% para 17,2%. Fazer o ⏭ primeiro seria medir o ganho dele contra um denominador
+que a conversa pode encolher no dia seguinte.
+
+> **O que fica registrado:** a pergunta tem tamanho (**11,4%** hoje, **17,2%** depois do L26, com
+> piso), tem lugar (interface, e não regra), tem contra-argumento medido (26 pontos de travessia
+> entre piso e teto, mais o achado da Arte acima) e tem o limite com jogador calculado. Não tem
+> decisão, e é o **L24**.
 
 ---
 
-### 2.5 Metade dos 50% não é regra, é configuração
+### 2.5 A classe iii é UMA parada, e não seis
 
-Os 50% de classe iii saem quase todos de um lugar só: a folha do golpe, que custa **3 gestos** no
-modo de rolagem `mesa`, e desses 3 **dois são números digitados**. Digitar o acerto e o dano não é
-regra, é quem rola o dado. E isso já é uma chave do produto (`regras.json`, `combate.rolagem`),
-com três modos, **implementada e ligada** (`rolaNoSite`, chamada na abertura da folha).
+A tabela da §2.2 diz uma coisa que o texto dela não dizia, e é aritmética simples:
+
+```
+  golpes aplicados         184.034
+  paradas `resolver`       184.034   ← uma por golpe, 3 gestos no modo mesa
+  paradas `aplicar`        184.034   ← uma por golpe, 1 gesto
+  classe iii, em gestos    552.102 = 3 × 184.034
+  classe ii,  em gestos    184.034 = 1 × 184.034
+```
+
+**Os três números não são independentes: são a mesma contagem de golpes, multiplicada pelo custo
+de tela de cada um.** São exatamente 4,00 gestos por golpe fora o relógio, que é o número que a
+primeira bateria já tinha publicado sem saber de onde vinha.
+
+A consequência muda o alvo do conserto. As outras cinco paradas (`declarar`, `agenda`,
+`reprojetar`, `fugir`, `redirecionar`) somam **557.629 ocorrências, 60% de todas as paradas, e
+custam ZERO gesto**: o motor as resolve dentro do avanço, sem abrir nada e sem perguntar nada.
+
+> **Não há seis paradas de classe iii para automatizar. Há uma: a folha da resolução.** "Metade do
+> trabalho é classe iii" e "metade do trabalho é digitar os dois números da folha" são a mesma
+> frase, dita de dois jeitos.
+
+E essa uma **já tem chave**. Digitar o acerto e o dano não é regra, é **quem rola o dado**, e isso
+é uma opção do produto (`regras.json`, `combate.rolagem`), com três modos, **implementada e
+ligada** (`rolaNoSite`, chamada na abertura da folha).
 
 Recontando os mesmos 9.600 combates com o custo do modo `site`:
 
@@ -413,14 +461,43 @@ avanço automático (11,4% com piso) e mais que qualquer bandeira isolada poderi
 de classe iii, **só um terço sobrevive**: os outros dois terços eram o dedo digitando o que o site
 já sabe calcular.
 
-**Isso reordena a fila do conserto.** No modo `site` o maior item do trabalho passa a ser o ⏭
-(49,4%), e o avanço automático, que valia 11,4%, passa a valer **17,2%** do total (menor) que
-sobra. Os dois consertos se somam bem: um tira a digitação, o outro tira o clique vazio.
+#### O que sobra da classe iii depois da conversa, e qual gesto é
 
-**Antes de automatizar qualquer coisa, então, a pergunta não é de código:** é por que as mesas
-usam o modo `mesa`. A `nota` do próprio `regras.json` responde e a resposta é boa (*"o dado na mão
-é metade da mesa"*), o que quer dizer que **o modo `mesa` não é desleixo, é escolha**, e o
-conserto de maior retorno pode ser conversar com quem joga em vez de escrever motor.
+No modo `site` a folha abre já rolada, e `resolver` cai de 3 gestos para **1**. Esse 1 tem nome:
+**o clique no cartão vencido da faixa dos golpes no ar**, que é o que abre a folha. São 184.034
+cliques, um por golpe, e é **todo o resto da classe iii**.
+
+É ele que o item "consertar o que sobrar" da fila teria de atacar, e ele é menor do que parece por
+um motivo de posição: **o ⏭ para exatamente no Tick em que esse cartão vence.** `instanteDeGolpe`
+tranca o avanço justamente ali. O clique do relógio e o clique do cartão são **o mesmo instante da
+mesa**, separados por um gesto, e um avanço que parasse abrindo a folha do golpe que o fez parar
+tiraria os dois de uma vez.
+
+**Isso reordena a fila do conserto.** No modo `site` o maior item do trabalho passa a ser o ⏭
+(49,4%), e o avanço automático passa a valer **17,2% com piso e 30,0% com teto** do total (menor)
+que sobra. **O avanço não fica menos importante depois da troca de modo: fica mais.**
+
+#### A pergunta que decide os dois primeiros itens da fila, e ela não é de código
+
+A `nota` do próprio `regras.json` já explica por que o padrão é rolar na mão, e vale por extenso
+porque é o argumento central e é a única parte dele que não é número:
+
+> *"Quem rola os dados. Não muda regra nenhuma: muda quem digita o resultado. **O padrão é ninguém
+> rolar no site, porque o dado na mão é metade da mesa.**"*
+
+**O modo `mesa` não é desleixo, é escolha, e a razão dela é boa.** Rolar o dado é parte do que as
+pessoas foram fazer ali. Trocar o padrão para economizar cliques do mestre pode custar exatamente
+a coisa pela qual a mesa existe, e **essa troca não é minha para fazer**: é conversa com quem
+joga, e é uma conversa curta.
+
+**E há uma segunda pergunta do mesmo tipo, que se faz às mesmas pessoas na mesma conversa:** com
+que frequência há **efeito de chão ativo** numa cena? Ela vem do achado da §2.4 (o
+`verificarEfeitos` mordendo sem parada nenhuma): nenhuma batalha desta bateria tem Arte, então o
+Tick morto medido é o da cena **sem** Arte, e ninguém sabe se essa é a cena típica. Se for rara, o
+piso de 11,4% vale como está; se for comum, o avanço para mais vezes e o piso encolhe.
+
+**As duas perguntas decidem o tamanho dos dois primeiros itens da fila**, e nenhuma das duas se
+responde com bateria. É o **L26**.
 
 **O `misto` é o modo que existe para esse impasse**, e esta bateria **não consegue medi-lo.** Nele
 só as criaturas e os NPCs rolam no site (`rolaNoSite(rolagem, ehPersonagem)`), o que tira do
@@ -988,15 +1065,23 @@ elenco). É que nenhuma delas se responde rodando de novo o que já rodou. A gra
 está medida, os eixos separam, os invariantes fecham e os alarmes acendem; o que falta agora é
 **mudar alguma coisa no Grid e medir a diferença**, e não medir de novo o Grid de hoje.
 
-**A fila do conserto, na ordem em que esta bateria a deixa:**
+**A fila do conserto, e os dois primeiros são uma SEQUÊNCIA e não dois itens paralelos:**
 
-1. **Entender por que as mesas rolam na mão** (§2.5). O modo `site` tira 33,6% do trabalho sem uma
-   linha de motor, e o modo `mesa` não é desleixo, é escolha (*"o dado na mão é metade da mesa"*).
-   **Isto é conversa com quem joga, e não código**, e é o maior número desta bateria inteira;
-2. **o ⏭ que corre até a próxima parada** (§2.4), com o desenho já corrigido pelo que a §2.4
-   descobriu: ele para quando alguém é consultado **e** quando um efeito morde, e mostra o que
-   passou no caminho em vez de pular calado;
-3. **as paradas de classe iii que sobrarem** depois do 1, que são um terço do que parecia;
+1. **A conversa com quem joga** (§2.5, o **L26**), com duas perguntas: *por que a mesa rola o dado
+   na mão* e *com que frequência há efeito de chão ativo numa cena*. A primeira vale 33,6% do
+   trabalho sem uma linha de motor; a segunda diz se o piso do avanço automático (item 2) vale
+   como medido. **Nenhuma das duas se responde com código nem com bateria**, e as duas decidem o
+   tamanho dos dois primeiros itens desta fila;
+2. **o ⏭ que corre até a próxima parada** (§2.4). Ele vem **depois** do 1 e não em paralelo: com a
+   troca de modo, o ⏭ passa de 32,8% para 49,4% do trabalho e a economia do avanço sobe de 11,4%
+   para 17,2%. **Ele não fica menos importante depois da conversa, fica mais**, e medi-lo antes
+   seria medir contra um denominador que a conversa pode encolher. O desenho já nasceu corrigido:
+   para quando alguém é consultado **e** quando um efeito morde, e mostra o que passou no caminho
+   em vez de pular calado;
+3. **o clique que abre a folha do golpe vencido** (§2.5), que é **todo** o resto da classe iii
+   depois do 1: 184.034 cliques, um por golpe. Ele é vizinho do item 2 na tela e no tempo, porque
+   o ⏭ para exatamente no Tick em que esse cartão vence: um avanço que parasse **abrindo** a folha
+   do golpe que o fez parar tiraria os dois de uma vez;
 4. **o L25**, que não alivia o mestre em nada e destrava a segunda bateria.
 
 ---
