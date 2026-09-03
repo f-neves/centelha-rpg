@@ -1,7 +1,12 @@
 # 09 · A bateria grande
 
-**03/09/2026.** 21.600 batalhas, 96 células, 32,1 s, zero inválidas. Commit `02f9a3a`,
+**03/09/2026.** 21.600 batalhas, 96 células, 30,5 s, zero inválidas. Commit `2df566f`,
 semente mestre 20260903.
+
+> **A régua mudou depois da terceira volta (a D45 pôs `fichaModo` no catálogo) e a bateria rodou
+> INTEIRA de novo, como manda a D34.** Os números saíram idênticos, e isso é previsão confirmada e
+> não coincidência: nenhum dos dois arquétipos do elenco empunha alabarda, que é a única arma que
+> a D45 toca. O que mudou foi o carimbo, e é o carimbo que autoriza a leitura.
 
 > **Esta é a TERCEIRA execução da grade.** A primeira (`3544505`) levantou quatro perguntas de
 > regra presas no código; a segunda (`fdc9eab`) rodou com as respostas. Esta terceira roda com a
