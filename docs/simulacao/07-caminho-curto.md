@@ -248,7 +248,7 @@ ligada). Essas três são a grade de 112, e continuam sendo.
 |---:|---|---|---|
 | **1** ✅ | **O objeto do lance e o despejo da resolução** (item 1.1) | **FEITO** (`27a674e`). O contrato do `resolverGolpe` escrito em código, o oráculo de entradas e saídas reais, e os campos que faltavam ao espelho | nada. Era a fundação |
 | **2** ✅ | **A cópia da resolução** (`src/lib/lance.ts`) | **FEITO** (`a949d9a`, fechado em `d412c6f` e `44578d0`). 1051 lances, duas fontes, zero divergências | 1 |
-| **3** | **O índice do golpe e o `aid` da ação** (L11 + L12), **uma cirurgia só** | a rajada volta a pagar o que a régua cobra, o `aid` passa a ser da ação, e `golpeDaAgenda` × `penDadosUsado` vira a prova do conserto | 2. **Bloqueia o espelho de motor**, que hoje já está condenado a divergir na primeira rajada |
+| **3** | **O índice do golpe, o `aid` da ação e A RECOLETA** (L11 + L12), **uma cirurgia só, um commit só** | a rajada volta a pagar o que a régua cobra, o `aid` passa a ser da ação, `golpeDaAgenda` × `penDadosUsado` vira a prova do conserto, e a fixture volta a ser oráculo do jogo que a mesa joga | 2. **Bloqueia o espelho de motor**, que hoje já está condenado a divergir na primeira rajada |
 | **4** | **O laço do Tick headless** (`filaDaCena` + `declararAtaque` + `avancoDeTick`) | a batalha andando, com mapa, agenda e re-projeção | 3, mais `combate-tempo.ts` e `hex.ts`, que já existem |
 | **5** | **O fim de batalha** (D4) e o **teto de 2.000 Ticks** | a batalha **completa**, que é a palavra do pedido | 4 |
 | **6** | **O log**, com classe de parada, `aid` e `cena.fim.motivo` | o dado bruto da pergunta | 4 e 5 |
@@ -271,6 +271,21 @@ lance, que é a asserção do conserto. Separado, o conserto acontece e não há
 divergência. Campo que não muda mais só é ruído quando ninguém o lê; com asserção em cima, ele é uma
 trava. É o mesmo raciocínio da trava do `cobre`.
 
+**A RECOLETA É PARTE DO PASSO 3, NO MESMO COMMIT.** Não é uma tarefa seguinte, e a razão é dura: o
+conserto muda o resultado de **todo lance de rajada com índice maior que zero**, então a coleta atual
+deixa de ser oráculo do depois e passa a ser **registro do antes**.
+
+Entre o conserto e a recoleta o `npm run validate` fica **vermelho**, porque o `test-lance.mjs` roda
+a cópia consertada contra uma fixture do jogo velho. **Isso é o comportamento certo**, e é o alarme
+funcionando: uma divergência ali significa exatamente o que ela deve significar, que a resolução
+mudou.
+
+**O que não pode acontecer é essa janela atravessar commits.** Um repositório em que o `validate` já
+está vermelho por um motivo conhecido é um repositório em que o próximo vermelho não é notícia. E há
+um risco pior: quem for consertar depois vai encontrar uma fixture que descreve o bug, e **um oráculo
+que mente na direção do bug é pior que nenhum oráculo**, porque ele autoriza o erro em vez de calar
+sobre ele. Conserto e recoleta entram juntos, ou não entram.
+
 ### 5.2 · O mais longo, e por quê
 
 **Era o passo 2 e agora é o 4**, porque os dois primeiros saíram.
@@ -284,6 +299,23 @@ duração, que multiplica toda a carga.
 O passo 3 (L11 + L12) é pequeno em linhas e **bloqueante em consequência**: enquanto ele não entrar,
 o espelho de motor não pode ficar verde, porque a cópia aplica `penDados[golpeIndice]` e a mesa
 aplica `penDados[0]`.
+
+**E daí sai a linha mais importante desta seção: o passo 4 NÃO TEM COMO SE PROVAR até o 3 estar
+feito.**
+
+As peças do laço são puras e conferidas, uma a uma: a agenda, as fases, a re-projeção e a fila em
+`combate-tempo.ts`; a geometria em `hex.ts`; a resolução em `lance.ts`, contra 1051 lances. **O que
+nenhuma delas contém é a ORDEM das operações dentro do Tick**, e a ordem é o que o laço é. Ela existe
+hoje num lugar só, dentro de `avancarTickSimultaneo` (`grid.astro`), misturada com repintura,
+gravação no Supabase e DOM, e não há função pura nenhuma que a descreva.
+
+**Quem prova a ordem é o espelho de motor**, comparando a mesa com a cópia Tick a Tick pelos campos
+da R3 §1.1.1, e o espelho é o que o passo 3 destrava.
+
+Sem esta linha escrita, o erro que vai acontecer é previsível: alguém monta o laço, roda os testes
+das peças, vê tudo verde e conclui que está pronto. **As peças passarem não é o laço estar certo**, e
+um laço com a ordem trocada produz batalhas plausíveis, com duração plausível e carga plausível, que
+é a forma mais cara de erro que este projeto pode ter.
 
 ### 5.3 · Onde a sequência encurta
 
@@ -678,7 +710,58 @@ divergência. Campo que não muda mais só é ruído quando ninguém o lê; com 
 trava, pelo mesmo raciocínio da trava do `cobre`. **A asserção entra no mesmo commit do conserto**,
 senão o campo nasce sem quem o leia, que é a condição de virar ruído.
 
-### 8.3 · Para que serve a coleta de 1051 lances
+
+### 8.3 · Por que os 1051 bateram, e o que a recoleta pós-conserto tem de forçar
+
+A pergunta é justa e a resposta importa: a cópia aplica `penDados[golpeIndice]` e a mesa aplica
+`penDados[0]`; se zero divergiram, ou a coleta não produziu o caso, ou produziu e a comparação não
+olhou. **É a primeira, e por duas causas independentes. E há uma terceira que agrava as duas.**
+
+**Causa 1: nenhuma folha foi aberta no Tick de um golpe que não fosse o primeiro.** O coletor abre a
+folha adiada com `tickDoGolpe: (a.tick ?? 0) + an.preparo`, que é `offs[0]`. Os 44 lances da passada
+"golpe adiado" são todos do **primeiro** golpe da agenda. O caminho da folha adiada foi coberto; o
+caminho do golpe de índice maior que zero, não.
+
+**Causa 2: o registro achata o índice.** `golpeIndice` grava sempre 0, porque é o que a mesa aplica.
+Então a cópia é alimentada com 0 e devolve 0: **mesmo que a causa 1 fosse consertada sozinha, a
+comparação continuaria batendo**, porque o registro não carrega a informação que exporia a
+diferença. É exatamente por isso que os dois campos da §8.2 são o instrumento, e não um detalhe de
+esquema.
+
+**Causa 3, que agrava: a fixture não tem uma única rajada.** Medido nos 1051:
+
+| | |
+|---|---|
+| manobras | `simples` 941 · `dupla` 110 · **`rajada` 0** |
+| tamanhos de `penDados` | 1 (941) e 2 (110). **Nunca 3** |
+| valores distintos de `penDados` | `(0)` e **`(−1, −1)`** |
+| `golpeIndice` | 0 nos 1051 |
+
+**E o `(−1, −1)` é o detalhe que fecha o argumento: a dupla não consegue expor o defeito nem em
+princípio.** Os dois elementos dela são o mesmo número (`penDadosAmbasAsMaos` é verdadeiro), então
+`penDados[0]` e `penDados[1]` dão o mesmo resultado e a divergência seria invisível mesmo com o
+índice certo. **Só a rajada expõe**, porque a penalidade dela é acumulada: `[0, −1, −2]`, três
+valores diferentes.
+
+**Então a recoleta pós-conserto tem de FORÇAR rajada de três**, e com meta própria, senão o defeito
+segue sem oráculo depois de consertado, que é a pior das situações: consertado e sem quem avise se
+voltar.
+
+| Meta nova da recoleta | Piso |
+|---|---:|
+| lances com `manobra: 'rajada'` e `penDados` de tamanho **3** | 60 |
+| lances com **`golpeDaAgenda > 0`** | 60 |
+| lances com `golpeDaAgenda === 2` (o terceiro golpe, onde a penalidade é −2) | 20 |
+| e o invariante, em todos: **`golpeDaAgenda === penDadosUsado`** | 100% |
+
+**O que a recoleta precisa fazer de diferente**, e são duas coisas, uma por causa:
+
+1. **declarar rajada** (`manobra: 'rajada'`, `golpes: 3`, com arma de classe leve ou média, que são as
+   de teto 3), em vez de `dupla`;
+2. **abrir a folha em cada Tick da agenda**, e não só no primeiro: `tickDoGolpe` percorrendo
+   `an.offs`, que é o que `resolverGolpeNoAr` faz quando o mestre clica no segundo cartão da faixa.
+
+### 8.4 · Para que serve a coleta de 1051 lances
 
 **Confirmado: ela é o oráculo da cópia da resolução, e nada além disso na conta principal.**
 

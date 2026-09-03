@@ -1066,7 +1066,12 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   registro. Os dois campos FICAM depois do conserto: a igualdade
   `golpeDaAgenda === penDadosUsado` vira invariante do harness e volta a falar se alguém
   reintroduzir a divergência, e a asserção entra no mesmo commit do conserto, senão o campo nasce sem
-  quem o leia. `07-caminho-curto.md` §8.2 e §5.1.
+  quem o leia. **A RECOLETA É PARTE DO MESMO COMMIT**: o conserto muda o resultado de todo lance de
+  rajada com índice > 0, e entre o conserto e a recoleta o `validate` fica vermelho. A janela não
+  pode atravessar commits, porque um oráculo que mente na direção do bug é pior que nenhum. **E a
+  recoleta tem de FORÇAR rajada de três**: a fixture atual não tem uma única rajada, e a dupla não
+  expõe o defeito nem em princípio, porque o `penDados` dela é `(−1, −1)`, dois valores iguais.
+  `07-caminho-curto.md` §8.2, §8.3 e §5.1.
 - [ ] **L8 · [FAZER] Fundir as duas especificações de política.** A `02` §0.4 P4 tinha a lista
   ordenada e a §0.47 tinha as regras de leitura, e nenhuma era completa. Fundidas em 02/09, com as
   regras de leitura marcadas ⊙ (é o que o eixo E9 desliga) e a regra de modo marcada ⊕. Enquanto
