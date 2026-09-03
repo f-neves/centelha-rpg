@@ -2703,7 +2703,7 @@ Levantadas pela primeira execução da grade e respondidas no chat. O texto est�
 
 | # | A decisão | O que ela custa |
 |---|---|---|
-| **D37** | o tipo de dano da ficha segue o `principal: true` do catálogo, e não o primeiro por `MODO_ORDEM`. Seis das dez armas de mais de um modo escreviam o tipo errado | o `dados_hash` mudou e a bateria inteira rodou de novo. Na mesa, a alabarda passa a valer contra a Absorção de corte, que é maior na maioria das armaduras |
+| **D37** | o tipo de dano da ficha segue o `principal: true` do catálogo, e não o primeiro por `MODO_ORDEM`. **Cinco** das dez armas de mais de um modo escreviam o tipo errado (medido em `scripts/dano-por-tipo.mjs`; a alabarda, ao contrário do que esta linha dizia antes, não mudou: ela marca os três modos como principal) | o `dados_hash` mudou e a bateria inteira rodou de novo. E é mudança de EQUILÍBRIO, não de vitrine: o Machado sobe 230% no dano líquido por golpe contra alvo sem armadura e desce 50% contra malha. O sinal depende do alvo |
 | **D38** | o golpe que cai num alvo já no chão REDIRECIONA para um inimigo ao alcance. Caiu num Tick anterior, dá para cancelar; caiu neste Tick, só redirecionar. Regra nova em `regras.json` | uma decisão de classe i onde havia uma folha inteira de iii mais uma de ii. E some a Pressão cobrada de um corpo caído |
 | **D39** | a fuga automática anda com a perna da peça (`passoNoModo`), e não com o 6 da tabela | as perseguições ficaram mais lentas, porque o arranque da maioria é menor que 6. É o preço de o caramujo fugir de caramujo |
 | **D40** | o desempate da fila é a iniciativa rolada, e o `movido_em` sai do comparador | a horda do mesmo bicho, com iniciativas iguais, passa a depender do id, que é arbitrário. É melhor que depender de quem andou por último |
@@ -2713,8 +2713,20 @@ re-projeção nas células grandes caiu quase pela metade (11.791 → 5.895 na u
 2×8). **Nenhuma conclusão mudou de sinal**, que é o resultado que se quer de um conserto: ele
 move números e não vira a leitura.
 
+## D41 a D44 · a revisão das quatro decisões (03/09)
+
+Vieram da leitura crítica das D37 a D40. Três delas consertam o instrumento e uma
+conserta a regra que a D38 tinha escrito pela metade.
+
+| # | A decisão | O que ela custa |
+|---|---|---|
+| **D41** | o RETRATO DA ABERTURA do Tick é a única fonte de verdade do golpe no caído: quem estava de pé quando o Tick abriu está de pé para todos os golpes dele. Caiu num Tick anterior, cancela ou redireciona; caiu neste Tick, o golpe resolve como declarado | a D38 dependia de qual peça o laço processou primeiro, e isso é ordem de laço vazando para dentro de um sistema simultâneo. O preço é que um golpe pode cair num corpo que acabou de cair, e isso agora é a ficção do simultâneo e não um defeito |
+| **D42** | a bateria publica DUAS frações, nunca uma: a das PARADAS que é iii e a dos GESTOS que é iii | a segunda é menor de contar e maior de explicar. Sem ela o leitor troca "quantas vezes fui consultado" por "quanto eu trabalhei", que é a pergunta original |
+| **D43** | a classe de cada tipo de parada sai do log, escrita pelo motor, e não de um mapa no agregador | uma cópia a menos. O mapa a mão já dizia `fugir` classe i e `aplicar` classe iii, quando o motor registra ii nas duas |
+| **D44** | o custo de tela do redirecionamento e o critério "o mais próximo" entram na lista ⚑ | dois furos declarados em vez de dois números invisíveis. A bateria roda só peça automática, e portanto NÃO ENXERGA a caixa que o jogador veria |
+
 ---
 
 **O que a primeira execução da grade achou e o chat resolveu:** a ficha escrevia o tipo de
-dano errado em seis das dez armas de mais de um modo. É a D37 acima; o `L19` do
+dano errado em cinco das dez armas de mais de um modo. É a D37 acima; o `L19` do
 `Pendencias.md` está fechado.

@@ -23,6 +23,15 @@
 // O botão continua variando, porque é ele que enche o campo `decisao`, que é o
 // que vai permitir medir quantas vezes a mesa contrariou a régua.
 //
+// O TIPO DE DANO DESTA FIXTURE NÃO SAI DO CATÁLOGO DE ARMAS, e vale escrever
+// porque a pergunta voltou. A cena da bancada monta combatentes sintéticos e
+// escolhe o `tipoDano` de cada lance por construção, para cobrir os três modos;
+// ela não passa por `resumoCombatePC` nem lê `armas.json`. Por isso a troca do
+// modo principal de 03/09 (o `principal` do catálogo, em `combate-resumo.ts`)
+// NÃO envelheceu estes 1.315 lances: recoletados depois do conserto, o arquivo
+// saiu byte a byte igual, e só o carimbo do commit mudou. Quem envelhece com
+// aquela troca é a EXPRESSÃO DE DANO da ficha, e essa mora em outro lugar.
+//
 // Desligado por padrão dos dois lados: a página só acumula com `?lances=1`, e
 // este script só roda quando alguém o chama. Não entra no `validate` nem no
 // `build`, porque precisa do navegador.

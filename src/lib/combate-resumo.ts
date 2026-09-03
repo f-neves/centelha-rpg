@@ -81,15 +81,24 @@ export function resumoCombatePC(S: any): ResumoCombate {
   const modos = ((w.modos ?? [{ tipo: w.tipoDano, principal: true }]) as any[]).slice()
     .sort((a, b) => ((MODO_ORDEM as any)[a.tipo] ?? 9) - ((MODO_ORDEM as any)[b.tipo] ?? 9));
   // O MODO DA FICHA É O `principal` DO CATÁLOGO, e não o primeiro da ordem de
-  // exibição. Decidido em 03/09, e o defeito que ele conserta valia para seis
-  // das dez armas de mais de um modo: o Montante, o Machado, a Alabarda e o
-  // Machado de Arremesso saíam como IMPACTO tendo corte como principal, e a
-  // Adaga e a Picareta saíam trocadas também.
+  // exibição. Decidido em 03/09. CINCO das dez armas de mais de um modo mudaram
+  // de lado (contadas por `scripts/dano-por-tipo.mjs`, e não a olho):
+  //
+  //   Machado, Montante, Machado de Arremesso · Impacto → Corte
+  //   Picareta de Guerra                      · Impacto → Perfuração
+  //   Adaga                                   · Corte   → Perfuração
+  //
+  // A Alabarda NÃO mudou, ao contrário do que a primeira versão desta nota
+  // dizia: ela marca os TRÊS modos como principal, e o primeiro da ordem de
+  // exibição já era o que o `find` devolve.
   //
   // Não era cosmético: a sigla vai para a expressão de dano, a mesa lê o tipo
   // dela (`tipoDeDano(ra.dano)`) e é ele que escolhe QUAL ABSORÇÃO o alvo
-  // aplica, além do gate de Perfuração e da resistência do bicho. Uma alabarda
-  // que bate em vez de cortar erra os três.
+  // aplica. E as três Absorções não valem a mesma coisa (só o Impacto recebe o
+  // Vigor natural), então a troca MEXE NO EQUILÍBRIO, e não na vitrine: contra
+  // alvo sem armadura o Machado sobe 230% no dano líquido por golpe, e contra
+  // malha ele DESCE 50%, porque a malha protege mais contra corte que contra
+  // impacto. O sinal depende do alvo, e as duas pontas são grandes.
   //
   // A ordem de `MODO_ORDEM` continua valendo como desempate para a arma que
   // não marca principal nenhum.
