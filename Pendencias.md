@@ -1085,23 +1085,28 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   ordenada e a §0.47 tinha as regras de leitura, e nenhuma era completa. Fundidas em 02/09, com as
   regras de leitura marcadas ⊙ (é o que o eixo E9 desliga) e a regra de modo marcada ⊕. Enquanto
   não estavam fundidas, o E9 era inerte em toda célula de política Agressiva.
-- [ ] **L13 · [FAZER] O carimbo da fila deixa de ser estável quando a peça anda.** O terceiro
+- [x] **L13 · [FEITO 03/09] O carimbo da fila deixa de ser estável quando a peça anda.** O terceiro
   critério de `ordemDaFila` é `chegada`, que na mesa é `arena_tokens.movido_em`, e mover um token
   o reescreve com a hora de agora. Numa perseguição a fila inteira se reordena a cada avanço: quem
   andou vai para o fim do seu grupo de Tick, e a ordem de declaração e de resolução muda junto. O
-  campo existe justamente para a ordem NÃO dançar (é o que o comentário dele diz), e é o que ela
-  faz. Achado pelo espelho de motor em 03/09 (`08` §1.2). **O harness copia isso de propósito**
-  (D20): consertar é decisão de produto, e a pergunta é qual carimbo usar no lugar (a entrada em
-  cena? um ordinal? o id?).
-- [ ] **L14 · [DECIDIR] A fuga automática usa uma régua e o ataque automático usa outra.** Em
+  campo existe justamente para a ordem NÃO dançar. Achado pelo espelho de motor em 03/09
+  (`08` §1.2). **RESOLVIDO em 03/09 (D40):** quem desempata é a INICIATIVA ROLADA, que a cena já
+  rola por peça (o ⚄ da barra), e o `movido_em` saiu do comparador; o id fica só como piso
+  determinístico. O harness copia o mesmo.
+- [x] **L14 · [FEITO 03/09] A fuga automática usa uma régua e o ataque automático usa outra.** Em
   `decidirAutomaticas`, a fuga anda com `MODOS_MOV.corrida.porTick` (o 6 da tabela, igual para
   todo mundo) e a declaração de ataque anda com `passoNoModo`, que sai da ficha ou do bestiário. O
   mesmo robô, no mesmo Tick, mede a perna da peça de dois jeitos. Ninguém decidiu isso; saiu de
-  dois caminhos escritos em momentos diferentes.
-- [ ] **L15 · [DECIDIR] O golpe que cai em quem já caiu abre folha, rola e cobra Pressão.**
+  dois caminhos escritos em momentos diferentes. **RESOLVIDO em 03/09 (D39):** a fuga passa a usar
+  `passoNoModo(c, 'corrida')`, a perna da peça, como a declaração de ataque já usava.
+- [x] **L15 · [FEITO 03/09] O golpe que cai em quem já caiu abre folha, rola e cobra Pressão.**
   `resolverGolpeNoAr` acha o caído em `COMBS` como qualquer outro. É defensável (o braço já estava
   no ar) e é uma parada de mestre por golpe, num momento em que a cena já acabou para aquele alvo.
-  A bateria conta essas paradas desde 03/09 (D19), e elas não são poucas nas cenas grandes.
+  **RESOLVIDO em 03/09 (D38), com regra nova em `regras.json`
+  (`combate.simultaneo.golpeNoCaido`):** o gesto não evapora, ele REDIRECIONA para um inimigo de pé
+  dentro do alcance da arma. Quem caiu num Tick anterior foi visto cair e dá para cancelar; quem
+  caiu neste Tick não, porque o Tick é simultâneo, e aí só resta redirecionar. Sem inimigo ao
+  alcance, o gesto se perde e ninguém é perguntado. A peça em modo automático redireciona sozinha.
 - [ ] **L16 · [OBSERVAÇÃO] A política automática do produto termina a cena em debandada.** Em
   cinco das seis células coprimas da bateria de 03/09, o fim dominante é `fuga-consumada`, com 71%
   a 100%. O robô foge com a Vida baixa e sai do mapa, e é assim que a maioria das batalhas acaba.
@@ -1117,7 +1122,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   identificador de declaração (D2), e por isso o caminho da criatura em modo automático não tinha
   a que ligar a re-projeção do trajeto dela.
 
-- [ ] **L19 · [DECIDIR · MUDA REGRA] A ficha escreve o tipo de dano errado em seis das dez armas
+- [x] **L19 · [FEITO 03/09] A ficha escrevia o tipo de dano errado em seis das dez armas
   de mais de um modo.** `resumoCombatePC` (`combate-resumo.ts:82`) ordena os modos por
   `MODO_ORDEM` (impacto 0, corte 1, perfurante 2) e pega o PRIMEIRO, ignorando a marca
   `principal: true` do catálogo. O tipo vai para a expressão de dano (`2d6 +10 (I)`), e a mesa o
@@ -1133,7 +1138,8 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   placa, o gate de Perfuração e a resistência do bicho. **Achado em 03/09 pela bateria grande**
   (o Montanteiro atacou de impacto as 10.800 batalhas), e NÃO consertado, porque a pergunta é de
   regra: qual das duas manda, o `principal: true` do catálogo ou a ordem de exibição do
-  `MODO_ORDEM`? Se for o `principal`, o conserto é uma linha e o `dados_hash` da bateria muda.
+  `MODO_ORDEM`? **RESOLVIDO em 03/09 (D37): manda o `principal` do catálogo.** O conserto está em
+  `combate-resumo.ts`, o `dados_hash` mudou e a bateria grande rodou de novo do zero.
 - [ ] **L20 · [DEPOIS] Uma política que recua**, que é a peça que falta para o eixo E4 existir.
   A `decisaoAutomatica` avança para o alvo e nunca se afasta dele, então a assimetria de passo é
   inerte (medido em 03/09, D31): quem anda mais depressa só chega mais cedo. Sem alguém que se

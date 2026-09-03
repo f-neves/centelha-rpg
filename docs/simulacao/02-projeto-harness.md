@@ -2696,6 +2696,25 @@ O texto inteiro está na `09-bateria-grande.md` §5. Aqui o enunciado e o preço
 | **D35** | teto de tempo por PROCESSO, além do teto de Ticks | uma faixa morta vira leitura incompleta com alarme, em vez de bateria pendurada. O teto de Ticks vive dentro do laço que trava e não pega isso |
 | **D36** | os seis sinais de bateria ineficaz são conferidos e impressos alto, fora das tabelas | um sinal aceso exige explicação escrita antes de o número sair. A alternativa é ninguém olhar, que foi o que aconteceu nas duas rodadas anteriores |
 
-**E o que a bateria achou e não consertou, porque é regra:** a ficha escreve o tipo de dano
-errado em seis das dez armas de mais de um modo (`L19` do `Pendencias.md`). O Montanteiro desta
-bateria atacou de impacto as 10.800 batalhas inteiras.
+## D37 a D40 · as quatro decisões de regra do chat (03/09)
+
+Levantadas pela primeira execução da grade e respondidas no chat. O texto está na
+`09-bateria-grande.md` §5.1, com o que cada uma moveu nos números.
+
+| # | A decisão | O que ela custa |
+|---|---|---|
+| **D37** | o tipo de dano da ficha segue o `principal: true` do catálogo, e não o primeiro por `MODO_ORDEM`. Seis das dez armas de mais de um modo escreviam o tipo errado | o `dados_hash` mudou e a bateria inteira rodou de novo. Na mesa, a alabarda passa a valer contra a Absorção de corte, que é maior na maioria das armaduras |
+| **D38** | o golpe que cai num alvo já no chão REDIRECIONA para um inimigo ao alcance. Caiu num Tick anterior, dá para cancelar; caiu neste Tick, só redirecionar. Regra nova em `regras.json` | uma decisão de classe i onde havia uma folha inteira de iii mais uma de ii. E some a Pressão cobrada de um corpo caído |
+| **D39** | a fuga automática anda com a perna da peça (`passoNoModo`), e não com o 6 da tabela | as perseguições ficaram mais lentas, porque o arranque da maioria é menor que 6. É o preço de o caramujo fugir de caramujo |
+| **D40** | o desempate da fila é a iniciativa rolada, e o `movido_em` sai do comparador | a horda do mesmo bicho, com iniciativas iguais, passa a depender do id, que é arbitrário. É melhor que depender de quem andou por último |
+
+**O que as quatro moveram juntas:** o número do topo foi de 18%–59% para **20%–55%**, e a
+re-projeção nas células grandes caiu quase pela metade (11.791 → 5.895 na uníssona extrema de
+2×8). **Nenhuma conclusão mudou de sinal**, que é o resultado que se quer de um conserto: ele
+move números e não vira a leitura.
+
+---
+
+**O que a primeira execução da grade achou e o chat resolveu:** a ficha escrevia o tipo de
+dano errado em seis das dez armas de mais de um modo. É a D37 acima; o `L19` do
+`Pendencias.md` está fechado.
