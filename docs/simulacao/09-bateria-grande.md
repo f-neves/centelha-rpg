@@ -1,12 +1,13 @@
 # 09 · A bateria grande
 
-**03/09/2026.** 21.600 batalhas, 96 células, 30,5 s, zero inválidas. Commit `2df566f`,
+**03/09/2026.** 21.600 batalhas, 96 células, 31,8 s, zero inválidas. Commit `9580661`,
 semente mestre 20260903.
 
-> **A régua mudou depois da terceira volta (a D45 pôs `fichaModo` no catálogo) e a bateria rodou
-> INTEIRA de novo, como manda a D34.** Os números saíram idênticos, e isso é previsão confirmada e
-> não coincidência: nenhum dos dois arquétipos do elenco empunha alabarda, que é a única arma que
-> a D45 toca. O que mudou foi o carimbo, e é o carimbo que autoriza a leitura.
+> **A bateria rodou quatro vezes neste dia**, e as três últimas com números idênticos: uma por
+> mudança de régua (a D45 pôs `fichaModo` no catálogo, e nenhum arquétipo do elenco empunha
+> alabarda, então nada se moveu, que era a previsão) e uma por instrumento novo (o Tick MORTO da
+> §2.4). A D34 manda rodar inteira quando qualquer um dos dois muda, e o que a volta compra é o
+> carimbo.
 
 > **Esta é a TERCEIRA execução da grade.** A primeira (`3544505`) levantou quatro perguntas de
 > regra presas no código; a segunda (`fdc9eab`) rodou com as respostas. Esta terceira roda com a
@@ -263,30 +264,98 @@ clicaria uma vez por Tick **que consulta alguém**, e o que isso pouparia já es
 | coprimo · média · 2×8 | **27%** |
 | **agregado** | **61%** |
 
-**A ideia não morre: 61% dos cliques no ⏭ não produzem nada.** Em números:
+**A ideia não morre: 61% dos cliques no ⏭ não produzem nada.** Mas "não produzir parada" e "não
+acontecer nada" são coisas diferentes, e a diferença entre as duas é o que decide a ideia.
 
-| | hoje | com avanço até a próxima parada |
-|---|---:|---:|
-| cliques no ⏭ | 359.733 | **141.054** |
-| trabalho total | 1.095.869 | **877.190** |
-| composição | iii 50% · ⏭ 33% · ii 17% | iii 63% · ⏭ 16% · ii 21% |
+#### O teto e o piso, e o piso é o número honesto
 
-**Vinte por cento do trabalho do mestre, sem tocar em regra nenhuma.** É a maior economia isolada
-que esta frente mediu, e a única que não depende de nenhuma das quinze bandeiras.
+Num Tick sem parada as peças **continuam andando**. Um avanço que passasse por cima dele não
+custaria zero: custaria o mestre deixar de ver o tabuleiro mudar. Por isso o log agora separa dois
+Ticks que estavam num só (D48):
 
-Três coisas que o número **não** diz, e que decidem se a ideia vale:
+| | o que é | Ticks de combate | do trabalho do mestre |
+|---|---|---:|---:|
+| **TETO** · Tick sem parada | ninguém foi consultado, **mas alguém pode ter andado** | 218.679 · **61%** | **20,0%** |
+| **PISO** · Tick MORTO | ninguém consultado, nada caiu, **e ninguém saiu do lugar** | 125.237 · **35%** | **11,4%** |
 
-1. **Ele é o teto, não a expectativa.** Um Tick sem parada ainda pode ter coisa que o mestre quer
-   VER (alguém chegou ao alcance, alguém caiu: é a coluna `só res.` do quadro). Correr por cima
-   disso troca cliques por cegueira, e a bateria não mede cegueira;
-2. **a variação por célula é enorme**, de 27% a 77%. Na cena em que a carga já é alta (multidão
-   perto) o avanço poupa pouco; na cena em que ela é baixa (duelo a distância) poupa muito. **O
-   ganho aparece justamente onde o problema é menor**;
-3. **isso é com o robô.** Com jogadores declarando à mão, o Tick sem parada nenhuma fica raro, e a
-   economia encolhe junto (é o **L23**).
+**O Tick morto é seguramente pulável: o tabuleiro está idêntico no fim e no começo, e não há o que
+ver.** Os 26 pontos de diferença entre teto e piso são Ticks de **travessia**, e ali pular é uma
+troca (cliques por acompanhamento do movimento), não um ganho.
 
-> **O que fica registrado:** a pergunta tem tamanho (20% do trabalho), tem lugar (interface, e não
-> regra) e tem contra-argumento medido (o que se perde de vista). Não tem decisão, e é o **L24**.
+| | hoje | avanço no PISO | avanço no TETO |
+|---|---:|---:|---:|
+| cliques no ⏭ | 359.733 | **234.496** | 141.054 |
+| trabalho total | 1.095.869 | **970.632** | 877.190 |
+| a menos | · | **11,4%** | 20,0% |
+| composição | iii 50% · ⏭ 33% · ii 17% | iii 57% · ⏭ 24% · ii 19% | iii 63% · ⏭ 16% · ii 21% |
+
+**Onze por cento do trabalho do mestre, sem tocar em regra nenhuma e sem esconder nada dele.** É
+menos do que os 20% do parágrafo anterior e continua sendo maior que qualquer coisa que a
+automação de uma bandeira isolada comprou.
+
+#### O ganho por célula, em cliques e não em fração
+
+A fração engana aqui, e engana na direção que inverteria a conclusão: ela é **alta onde a carga é
+baixa**. Quem decide quer os cliques poupados, que é o que o mestre sente. Média por batalha, fase
+de combate, limiar de produção:
+
+| célula (mapa apertado) | gestos hoje | **teto** | **piso** | teto% | piso% |
+|---|---:|---:|---:|---:|---:|
+| coprimo · extrema · 1v1 | 89 | **43** | **28** | 48% | 31% |
+| coprimo · extrema · 3×3 | 127 | 41 | 22 | 33% | 17% |
+| coprimo · longa · 1v1 | 78 | 31 | 22 | 39% | 28% |
+| coprimo · longa · 3×3 | 114 | 29 | 15 | 25% | 14% |
+| coprimo · média · 1v1 | 78 | 24 | 20 | 31% | 25% |
+| coprimo · extrema · 2×8 | 158 | 23 | **0** | 15% | 0% |
+| coprimo · média · 3×3 | 113 | 21 | 13 | 19% | 12% |
+| coprimo · longa · 2×8 | 131 | 18 | **0** | 14% | 0% |
+| coprimo · encostado · 1v1 | 75 | 18 | 18 | 24% | 24% |
+| coprimo · encostado · 3×3 | 98 | 12 | 12 | 12% | 12% |
+| coprimo · encostado · 2×8 | 158 | 8 | 8 | 5% | 5% |
+| coprimo · média · 2×8 | 153 | 7 | **0** | 5% | 0% |
+
+**A conclusão não inverte: ela afia.** O ganho absoluto anda junto com o percentual, e não contra
+ele. O duelo a distância poupa 43 cliques por batalha e a multidão a média distância poupa 7, nas
+duas moedas. **E no piso as três células de re-projeção poupam ZERO**, porque ali todo Tick vazio
+é Tick de travessia: são exatamente as células de carga alta, e são as que o avanço não ajuda.
+
+**O mecanismo é limpo**, e aparece nas linhas em que teto e piso são iguais: nas células
+**encostadas** ninguém anda (18/18, 12/12, 8/8), e todo Tick vazio é Tick morto. A distância,
+o Tick vazio é travessia. Ou seja: **o Tick vazio do combate encostado é espera de ciclo de arma,
+e o mestre nunca precisa vê-lo; o Tick vazio a distância é alguém andando, e às vezes precisa.**
+
+#### E com jogador na mesa?
+
+A terceira ressalva dizia que o Tick vazio ficaria raro com jogadores declarando à mão. **Ela
+estava errada no mecanismo**, e o número que a corrige já existia: `declarar` **já é uma parada**
+em toda declaração, automática ou não (228.332 delas). O Tick em que alguém declara já é um Tick
+não vazio hoje. **A contagem de Ticks vazios não muda com jogador; o que muda é o CUSTO de uma
+parada que já está lá.**
+
+Com `G` gestos por declaração manual (hoje ⚑ zero, porque a bateria roda o robô):
+
+| G | trabalho total | economia teto | economia piso |
+|---:|---:|---:|---:|
+| 0 (o robô) | 1.095.869 | 20,0% | **11,4%** |
+| 1 | 1.324.201 | 16,5% | 9,5% |
+| 2 | 1.552.533 | 14,1% | 8,1% |
+| 3 | 1.780.865 | 12,3% | 7,0% |
+| 4 | 2.009.197 | 10,9% | 6,2% |
+
+**Mesmo com uma declaração manual cara, a economia com piso fica em 6% a 9%.** O número absoluto
+de cliques poupados (218.679 no teto, 125.237 no piso) **não muda nada** com o valor de `G`: só o
+denominador cresce.
+
+**E isso NÃO é o L7.** O L7 converte gesto em segundo, e é outra medição. O que falta aqui são
+duas coisas diferentes: (a) o **custo de tela do caminho manual** de declaração, que é uma tabela
+a preencher lendo o diálogo de ataque, e não uma medição de humanos (é o ⚑ 5 da §6); e (b) uma
+peça que **se mova diferente** de como o robô move (recua, reposiciona), porque essa muda a
+trajetória e portanto a contagem de Ticks de travessia. A segunda é o **L20**, e é a única das
+duas que exige elenco novo.
+
+> **O que fica registrado:** a pergunta tem tamanho (**11,4%** com piso, 20,0% com teto), tem lugar
+> (interface, e não regra), tem contra-argumento medido (26 pontos de travessia entre piso e teto)
+> e tem o limite com jogador calculado (6% a 9%). Não tem decisão, e é o **L24**.
 
 ---
 
@@ -296,19 +365,28 @@ Não é política nova: é o `fugirAbaixoDePct` do `regras.json`, um valor que j
 dois níveis como eixo próprio. `decisaoAutomatica` ganhou um parâmetro opcional cujo padrão é o
 da regra, e a mesa continua chamando com três argumentos.
 
+**Qual é qual, porque a leitura inteira depende disso.** `fugirAbaixoDePct` é o piso de Vida em
+que a peça larga a briga e corre: ela foge quando a Vida cai ABAIXO dele.
+
+- **25% é o valor de PRODUÇÃO** (`regras.json`, `combate.simulacao.ia.fugirAbaixoDePct`). Limiar
+  ALTO, e a peça foge **cedo**: basta perder três quartos da Vida;
+- **10% é o EXPERIMENTAL**, e só existe nesta bateria. Limiar BAIXO, e a peça foge **tarde**:
+  aguenta até quase morrer.
+
 | nível | batalhas | paradas iii (combate) | **gestos iii** | Tick da fuga | fuga-consumada |
 |---|---:|---|---|---:|---:|
-| **25%** (produção) | 9.600 | 20%–55% | **50%** | 32,2 | **44%** |
-| **10%** | 9.600 | 20%–57% | **53%** | 35,1 | **16%** |
+| **25%** · produção · foge cedo | 9.600 | 20%–55% | **50%** | 32,2 | **44%** |
+| **10%** · experimental · foge tarde | 9.600 | 20%–57% | **53%** | 35,1 | **16%** |
 
 > **A leitura principal quase não muda com o limiar: três pontos percentuais na moeda que conta
 > (gestos), dois na de paradas.** A conclusão é robusta a ele. Mas três pontos numa fração não é
 > ruído, e a direção tem explicação mecânica.
 
-**A direção: limiar mais BAIXO (foge mais tarde) SOBE a fração de gestos que é iii**, de 50% para
-53%. E o mecanismo não é sobre fuga, é sobre **densidade**:
+**A direção: o limiar EXPERIMENTAL (10%, foge tarde) SOBE a fração de gestos que é iii**, de 50%
+para 53%. Ou, dito do lado do produto: **fugir cedo, que é o que a mesa faz hoje, ABAIXA a fração
+de aritmética.** E o mecanismo não é sobre fuga, é sobre **densidade**:
 
-| | limiar 25% | limiar 10% |
+| | 25% · produção · foge cedo | 10% · experimental · foge tarde |
 |---|---:|---:|
 | batalhas em que alguém chegou a fugir | 64% | **32%** |
 | Ticks de combate por batalha | 37,5 | 46,1 |
@@ -326,9 +404,43 @@ de `aplicar`, enquanto cada Tick é 1 gesto de relógio.** Mais golpes por Tick 
 unidade de denominador. A quarta linha da tabela é a causa e a sexta é o efeito; a quinta confirma
 pelo outro lado, com o Tick vazio ficando mais raro.
 
-**O que isso quer dizer para o desenho:** fugir cedo não deixa a mesa mais leve, deixa mais
-**diluída**. Os cliques por batalha caem pouco e a proporção de clique-sem-nada sobe. É mais uma
-razão para a §2.4 existir.
+**Isto não é uma observação sobre o instrumento, é uma conclusão sobre o DESENHO do jogo**, e é a
+primeira desta frente. Ela tem seção própria: a §3.1.
+
+### 3.1 Fugir cedo não deixa a mesa mais leve, deixa mais diluída
+
+O modelo intuitivo era que uma cena que acaba antes custa menos ao mestre. **Custa quase o mesmo,
+espalhado por mais Ticks de nada.**
+
+Com o limiar de produção o perdedor larga a briga com um quarto da Vida e sai correndo, e o que
+vem depois é travessia: Ticks em que ninguém golpeia, ninguém decide nada e o mestre clica no ⏭.
+A batalha encolhe (37,5 contra 46,1 Ticks de combate) e os golpes encolhem mais que ela (19,2
+contra 28,4), então a densidade cai: **0,512 golpe por Tick contra 0,617**. Pelo outro lado o
+mesmo fato: **o Tick vazio sobe de 54,4% para 60,8%** quando se foge cedo.
+
+**A consequência prática, e ela liga esta seção com a §2.4:** se fugir cedo enche a batalha de
+Tick vazio, então o avanço automático **compra mais na configuração de produção do que na
+experimental**. Nas duas moedas, e elas discordam, como discordaram na §2.2:
+
+| | 25% · produção | 10% · experimental |
+|---|---:|---:|
+| Tick vazio (teto) | **60,8%** | 54,4% |
+| Tick morto (piso) | **34,8%** | 32,9% |
+| economia, teto · **em fração do trabalho** | **20,0%** | 15,7% |
+| economia, piso · em fração do trabalho | **11,4%** | 9,5% |
+| economia, teto · **em cliques por batalha** | 23 | **25** |
+| economia, piso · em cliques por batalha | 13 | **15** |
+
+**Em fração do trabalho, o avanço compra mais em produção; em cliques por batalha, compra menos.**
+As duas leituras estão certas e respondem perguntas diferentes: a primeira diz que parcela do
+esforço some, a segunda diz quantos cliques o dedo economiza numa cena. A batalha de limiar baixo
+é mais longa, então tem mais cliques em números absolutos e menos desperdício em proporção.
+
+**Para o desenho do Grid isso quer dizer duas coisas.** Mexer no limiar de fuga é decisão de
+**sabor**, e não de carga (§3): ele decide como a cena termina, não quanto o mestre trabalha. E a
+travessia, que é onde o limiar de produção joga a cena, é justamente o trecho em que o mestre
+mais clica sem receber nada em troca. **O problema da fuga não é a fuga, é a caminhada depois
+dela.**
 
 E ele muda **o desfecho**, e muito: com o limiar de produção, quase metade das cenas termina com
 o perdedor saindo do mapa; com 10%, menos de uma em cinco. Ou seja: **o limiar decide como a cena
@@ -608,7 +720,39 @@ deploy. Quem lê o cache é a fatia "Status"/"Vida" que os companheiros veem. E 
 automática**: a aba Grupo recalcula e grava o que diferir a cada visita do mestre ou do dono.
 Não há migração a fazer.
 
-### 5.5 D45 a D47 · a segunda revisão
+### 5.5 A varredura das quinze bandeiras, e o que ela achou
+
+O `gate` estava numa situação específica: a regra escrita na régua, a função escrita em
+`calc.ts`, e **nenhum caminho de produção chamando a função**. A revisão pediu que isso virasse
+regra geral em vez de nota daquela célula, e que as outras catorze fossem varridas. Foram.
+
+**Todas as quinze estão na mesma situação.**
+
+O perfil é lido em exatamente um lugar do código de produção, `grid.astro:8139`, e lá ele é
+**gravado dentro da entrada do lance** (`perfil: { ...REGRAS_CENA }`), para o oráculo. O tipo
+existe em `lance.ts` (`perfil?: Record<string, boolean>`) e **`entrada.perfil` não é lido em lugar
+nenhum**: nem em `resolverGolpe`, nem em `quase-acerto.ts`, nem em `calc.ts`, nem no harness.
+Nenhuma das quinze bandeiras faz o motor tomar um caminho diferente hoje.
+
+Isso não é notícia nova para a régua: a `notaEstado` do perfil em `regras.json` já dizia que
+"nenhuma está ligada no motor (a margem não entra no dano, o gate não é chamado, o bloqueio não
+existe)". **É notícia para a GRADE**, e é a consequência que ninguém tinha escrito:
+
+> **68 das 112 células oficiais existem para medir as bandeiras, e hoje TODAS elas mediriam zero
+> por dois motivos indistinguíveis:** ou a regra não morde naquela cena (o zero legítimo, que é
+> informação), ou a regra não roda em cena nenhuma (o zero vazio, que não é). Os dois saem com o
+> mesmo valor no CSV, e nada na leitura os separa.
+
+**A ordem obrigatória, então, vale para as quinze e está escrita no `02`:** ligar a chamada no
+motor, provar que ela morde com um contador de ocasião, e só depois medir a bandeira. O contador
+de ocasião é o mesmo mecanismo dos alarmes da §5, e é o que já matou o eixo E4 (D31) antes de ele
+virar linha de relatório.
+
+**O que isso muda no plano:** o L1 (ligar as quinze) deixa de ser "uma tarefa" e passa a ser
+**quinze tarefas de motor, cada uma com um contador de ocasião próprio**, antes de qualquer
+medição. É o **L25**.
+
+### 5.6 D45 a D48 · a segunda revisão
 
 **D45 · A arma de vários modos principais declara qual vai na ficha**, num campo novo do catálogo
 (`fichaModo`). Só a Alabarda tem mais de um principal hoje, e o dado dela está **certo**: a nota
@@ -631,6 +775,15 @@ alguma coisa.
 agregador **falha** ao encontrar um tipo que ele não conhece, em vez de carimbá-lo com `?`.
 **Custo:** um tipo de parada novo no motor passa a parar o agregador até alguém decidir a classe
 dele. É o que se quer: carimbo por padrão é como uma classe errada entra sem ninguém ver.
+
+**D48 · O Tick MORTO entra como contador próprio, ao lado do Tick sem parada.** O motor sinaliza
+o passo que de fato muda a casa da peça, e o log separa "ninguém foi consultado" de "nada
+aconteceu". Sem essa separação, a economia do avanço automático saía com **teto no lugar de
+piso**: 20% em vez de 11,4%, e a diferença inteira é Tick de travessia, em que pular é troca e
+não ganho.
+**Custo:** um evento a mais no laço mais quente do harness (um `if` por peça por Tick) e dois
+campos a mais por batalha. A alternativa era publicar o número que a ressalva já dizia estar
+errado.
 
 > **Uma correção de premissa, e ela importa porque um número publicado estaria em jogo.** A
 > revisão perguntou quais frações já publicadas nasceram do mapa tipo→classe errado. **Nenhuma.**
@@ -676,8 +829,12 @@ Saiu desta lista o multiplicador de passo do E4, junto com o eixo (D31).
 2. **manobra que não seja `simples`.** Rajada e empunhadura dupla mudam `penDados`, mudam a
    agenda, mudam o número de folhas por ação. É onde o conserto do L11 vive, e nenhuma batalha
    desta bateria passa por lá;
-3. **as quinze bandeiras ligadas, uma a uma.** É a grade oficial inteira, e é o que 68 das 112
-   células existem para medir. Depende do **L1**;
+3. **as quinze bandeiras LIGADAS NO MOTOR, uma a uma, antes de qualquer medição.** A varredura da
+   §5.5 achou que **nenhuma das quinze é lida por caminho de produção nenhum**: o perfil é gravado
+   dentro da entrada do lance e nunca consultado. As 68 células que existem para medi-las dariam
+   zero pelo motivo errado, indistinguível do zero legítimo. Cada bandeira precisa da chamada no
+   motor **e** de um contador de ocasião provando que ela morde. É o **L1** virado em quinze, e é
+   o **L25**;
 4. **um mapa que não seja uma faixa de nove colunas.** Enquanto o tabuleiro couber em um Tick de
    corrida, `fuga-consumada` vai dominar por construção (§4);
 5. **uma criatura de bestiário no elenco**, para o eixo E11 e para o `porte` deixarem de ser zero
@@ -688,10 +845,14 @@ Saiu desta lista o multiplicador de passo do E4, junto com o eixo (D31).
    redireciona sozinho; a caixa de escolha do mestre existe no código, tem teste de clique
    (`npm run caido`) e **nenhuma batalha passou por ela**. É o ⚑ 6 da §6, e o único jeito de
    fechá-lo é uma peça de jogador no elenco;
-8. **a fração de gestos com jogador na mesa.** Os 50% da §2.2 são do robô. Com jogadores,
-   `declarar` sai de zero gesto e entra com um diálogo inteiro, e o denominador cresce muito mais
-   que o numerador: **a fração de iii vai CAIR**, e ninguém sabe para quanto. É a pergunta mais
-   importante que esta bateria deixa em aberto.
+8. **o custo de tela do caminho MANUAL de declaração.** Os 50% da §2.2 são do robô, em que
+   declarar não custa clique. Isto **não precisa de bateria nova**: as declarações já estão
+   contadas (228.332), e o que falta é preencher uma linha de `custo-tela.mjs` lendo o diálogo de
+   ataque. A §2.4 já publica o intervalo para `G` de 0 a 4, e a conclusão do avanço automático
+   sobrevive em todos eles;
+9. **uma peça que se MOVA diferente do robô** (recua, reposiciona). Essa sim muda a trajetória, e
+   portanto a contagem de Ticks de travessia, que é a diferença entre o teto e o piso da §2.4. É o
+   **L20**, e é a única das duas que exige elenco novo.
 
 E uma que não é de escopo e sim de método: **o elenco uníssono empata**. Metade das 96 células
 estoura o teto de 2.000 Ticks porque o Escudeiro não fura a Absorção do Escudeiro. Isso continua

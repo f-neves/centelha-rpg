@@ -1775,15 +1775,18 @@ exercitado pelo nível Cauteloso de E6.
 **Onde mora cada bandeira**, porque medir uma bandeira numa célula em que ela não morde produz zero
 por construção.
 
-> **ANTES DE QUALQUER UMA DELAS ENTRAR: a bandeira supõe um caminho, e o caminho pode não
-> existir.** O `gate` é o caso confirmado em 03/09 (o **L22** do `Pendencias.md`):
-> `gatePerfuracaoAbre` está escrita em `calc.ts` e **nenhum caminho de produção a chama**, nem
-> `resolverGolpe`, nem a folha do Grid, nem o harness. Ligar a bandeira hoje mediria **zero pelo
-> motivo errado**: não porque a regra não vale naquela cena, mas porque a regra não roda em cena
-> nenhuma, e esse zero sairia idêntico ao zero legítimo das leituras de referência. A
-> `notaEstado` do perfil em `regras.json` já diz o mesmo de três delas (`margem`, `gate`,
-> `bloqueio`); esta linha existe para que isso seja lido **na hora de montar a célula**, e não
-> depois de a leitura sair.
+> **REGRA GERAL, E NÃO NOTA DE UMA CÉLULA: nenhuma bandeira entra na grade antes de existir
+> caminho de produção que a chame.** Varrida em 03/09 (o **L25** do `Pendencias.md`), e o
+> resultado é que **as quinze estão nessa situação**, e não só o `gate`. O perfil é lido em UM
+> lugar do código (`grid.astro:8139`) e lá ele é **gravado dentro da entrada do lance**, para o
+> oráculo; o tipo existe em `lance.ts` e **`entrada.perfil` não é consultado em lugar nenhum**,
+> nem em `resolverGolpe`, nem em `quase-acerto.ts`, nem em `calc.ts`, nem no harness. A
+> `notaEstado` do perfil em `regras.json` já dizia isso de três delas.
+>
+> **Ligar qualquer uma hoje mediria zero pelo motivo errado**: não porque a regra não vale naquela
+> cena, mas porque ela não roda em cena nenhuma, e esse zero sai **idêntico** ao zero legítimo das
+> leituras de referência. São 68 das 112 células medindo zero por dois motivos que a leitura não
+> separa.
 >
 > **A ordem obrigatória, então, é: ligar a chamada no motor, provar que ela morde com um contador
 > de ocasião, e só depois medir a bandeira.** O contador de ocasião é o mesmo mecanismo dos
@@ -1794,7 +1797,7 @@ por construção.
 |---|---|---|
 | `n1` a `n6` | **as duas âncoras** | são o núcleo do Tick, e valem em qualquer cena |
 | `margem` · `bloqueio` · `teto6` | **a âncora extrema**, e só ela: é onde elas mordem **e** é a referência única | o Escudeiro tem heater dos dois lados, e a Margem morde em qualquer acerto acima da Defesa. O `teto6` vai com um contador de quantas vezes o teto de fato mordeu |
-| `gate` ⚠ **a chamada não existe** (L22) | a hospedeira do **Lanceiro de lança** (Perfuração 1, **modo único**) contra o **Montanteiro de placa completa** (`resistPerf` 3) | `gatePerfuracaoAbre` (`calc.ts:130-135`) só avalia o perfurante, e as armas das âncoras atacam de corte. **E a hospedeira não pode ser a do Conjurador**: a regra ⊕ do D11 manda trocar de modo exatamente ali, e o gate mediria zero pelo motivo oposto. A lança não tem modo secundário, então a regra ⊕ não dispara e o gate não tem como ser evitado |
+| `gate` ⚠ **a chamada não existe** (L22, e vale para as quinze: L25) | a hospedeira do **Lanceiro de lança** (Perfuração 1, **modo único**) contra o **Montanteiro de placa completa** (`resistPerf` 3) | `gatePerfuracaoAbre` (`calc.ts:130-135`) só avalia o perfurante, e as armas das âncoras atacam de corte. **E a hospedeira não pode ser a do Conjurador**: a regra ⊕ do D11 manda trocar de modo exatamente ali, e o gate mediria zero pelo motivo oposto. A lança não tem modo secundário, então a regra ⊕ não dispara e o gate não tem como ser evitado |
 | `modo2` | a hospedeira do **Conjurador de adaga** (Perfuração 0) contra a **malha** (`resistPerf` 1) | é a cena em que a regra ⊕ **dispara**: a adaga tem modo secundário, troca para o corte e paga os −2 e −1d6. A mesma regra que mata o gate aqui é o que torna o `modo2` mensurável |
 | `curaSemArea` · `curaDivide` · `porRodada` | a hospedeira do Conjurador | nenhuma âncora tem quem conjure, e as cinco condições de dano por rodada vêm de Arte no repertório escolhido |
 | `porte` | a célula **`E11 = PC × criatura`**, que já existe no OFAT | `porteAcerto` é diferença de porte, e num elenco de PC ela é 0 sempre |
@@ -2740,13 +2743,15 @@ conserta a regra que a D38 tinha escrito pela metade.
 | **D43** | a classe de cada tipo de parada sai do log, escrita pelo motor, e não de um mapa no agregador | uma cópia a menos. O mapa a mão já dizia `fugir` classe i e `aplicar` classe iii, quando o motor registra ii nas duas |
 | **D44** | o custo de tela do redirecionamento e o critério "o mais próximo" entram na lista ⚑ | dois furos declarados em vez de dois números invisíveis. A bateria roda só peça automática, e portanto NÃO ENXERGA a caixa que o jogador veria |
 
-## D45 a D47 · a segunda revisão (03/09)
+## D45 a D48 · a segunda revisão (03/09)
 
 | # | A decisão | O que ela custa |
 |---|---|---|
 | **D45** | a arma de vários modos principais declara qual vai na ficha, no campo `fichaModo` do catálogo. Só a Alabarda tem, o dado dela está certo (ela alterna sem penalidade), e o que estava errado era a ordem de exibição decidir em silêncio: saía impacto, o pior ou empatado-pior contra os três alvos de referência | um campo novo e uma conferência a mais no `validate`. E a Alabarda passa a bater de corte, que é mudança de balanço (`09` §5.4) |
 | **D46** | cada sinal de bateria ineficaz imprime o veredito dele, aceso ou apagado | dez linhas a mais na saída, sempre. É o preço de "nenhum alarme" significar alguma coisa, em vez de ser indistinguível de "o alarme não rodou" |
 | **D47** | nenhuma parada pode ter classe ausente ou fora de `{i, ii, iii}` (V15), e o agregador FALHA num tipo que ele não conhece em vez de carimbar `?` | um tipo de parada novo passa a parar o agregador até alguém decidir a classe dele. Carimbo por padrão é como uma classe errada entra sem ninguém ver |
+
+| **D48** | o Tick MORTO (ninguém consultado, nada caiu, ninguém saiu do lugar) entra como contador próprio, ao lado do Tick sem parada | um `if` por peça por Tick no laço mais quente do harness. Sem ele a economia do avanço automático saía com teto no lugar de piso, 20% em vez de 11,4%, e a diferença inteira é Tick de travessia |
 
 **E a conclusão do relatório foi reescrita em TRÊS termos, e não num** (`09` §2.3): 50% dos gestos
 do mestre são classe iii (automação de regra), **33% são o clique do ⏭** (cadência de relógio, que

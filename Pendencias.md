@@ -1195,6 +1195,22 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `resolverGolpe`, nem a folha do Grid, nem o harness. Hoje o Perfurante não resvala em ninguém.
   Ou o gate entra no `resolverGolpe` (e aí a Adaga, com Nível de Perfuração 0, passa a resvalar em
   porte Enorme para cima), ou ele sai da régua. Ficar escrito e não valer é o pior dos três.
+- [ ] **L25 · [ANTES DO L1] Nenhuma das quinze bandeiras é lida por caminho de produção nenhum.**
+  Varredura de 03/09 (`09` §5.5): o perfil é lido em UM lugar do código (`grid.astro:8139`) e lá
+  ele é **gravado dentro da entrada do lance**, para o oráculo. O tipo `perfil?: Record<string,
+  boolean>` existe em `lance.ts` e **`entrada.perfil` não é lido em lugar nenhum**: nem em
+  `resolverGolpe`, nem em `quase-acerto.ts`, nem em `calc.ts`, nem no harness. A `notaEstado` do
+  perfil em `regras.json` já dizia isso de três delas; vale para as quinze.
+
+  **A consequência é sobre a GRADE, e é séria:** 68 das 112 células oficiais existem para medir
+  bandeiras, e hoje todas dariam **zero por dois motivos indistinguíveis** · ou a regra não morde
+  naquela cena (o zero legítimo, que é informação), ou a regra não roda em cena nenhuma (o zero
+  vazio, que não é). Os dois saem iguais no CSV.
+
+  **A ordem obrigatória, para cada uma das quinze:** ligar a chamada no motor, provar que ela
+  morde com um contador de ocasião, e só então medir. É o mesmo mecanismo que matou o eixo E4
+  (D31) antes de ele virar linha de relatório. Isto reparte o **L1** em quinze tarefas de motor,
+  e nenhuma medição de bandeira vale antes.
 - [ ] **L24 · [DEPOIS] O ⏭ é um terço do trabalho do mestre, e nenhuma regra o toca.** Medido em
   03/09 (`09` §2.3 e §2.4): o clique de avançar o Tick são 33% dos gestos do mestre na fase de
   combate, contra 50% de classe iii e 17% de classe ii. Ele é o item mais frequente da mesa, o
@@ -1202,11 +1218,27 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   consulta ninguém). Um avanço que corresse sozinho até a próxima parada cortaria 20% do trabalho
   total **sem tocar em regra nenhuma**, e é a maior economia isolada que esta frente mediu.
 
-  **Não está decidido e nada foi implementado.** O que falta para decidir: (a) o Tick sem parada
-  ainda pode ter coisa que o mestre quer VER (alguém chegou, alguém caiu), e correr por cima troca
-  clique por cegueira, que a bateria não mede; (b) a economia varia de 27% a 77% por célula, e é
-  maior justamente onde a carga já é baixa; (c) o número é do robô, e com jogador declarando à mão
-  o Tick vazio fica raro (o L23).
+  **As três ressalvas viraram número em 03/09**, e o levantamento ficou mais honesto e menor:
+
+  - **o piso é 11,4%, e não 20%.** O log passou a separar o Tick sem PARADA (61%, ninguém
+    consultado, mas as peças podem estar andando) do Tick MORTO (35%, e também ninguém saiu do
+    lugar). Só o segundo é seguramente pulável; os 26 pontos de diferença são travessia, e pular
+    ali é trocar clique por não ver o tabuleiro mudar;
+  - **o ganho em CLIQUES não inverte a leitura, afia.** Por batalha: 43 no duelo a distância, 7 na
+    multidão a média distância, e **zero no piso** nas três células de re-projeção, que são
+    justamente as de carga alta. Nas células encostadas teto e piso são iguais, porque ali ninguém
+    anda: o Tick vazio do combate encostado é espera de ciclo de arma, e o mestre nunca precisa
+    vê-lo;
+  - **com jogador na mesa a contagem NÃO muda, só o custo.** `declarar` já é uma parada em toda
+    declaração (228.332 delas), então o Tick em que alguém declara já não é vazio hoje. Com `G`
+    gestos por declaração manual, a economia com piso vai de 11,4% (G=0) a 6,2% (G=4), e os
+    cliques poupados em números absolutos não mudam nada. **Isto não é o L7**: o que falta é
+    preencher o custo de tela do caminho manual (⚑ 5 da `09` §6), e não converter gesto em
+    segundo.
+
+  **Não está decidido e nada foi implementado.** O que ainda falta para decidir é uma peça que se
+  MOVA diferente do robô (o L20): ela muda a trajetória, e portanto a fatia de travessia que
+  separa o piso do teto.
 - [ ] **L23 · [DEPOIS] A fração de gestos com JOGADOR na mesa.** Os 50% da `09` §2.2 são do robô,
   em que `declarar` custa zero clique. Com jogadores, declarar vira um diálogo inteiro e o
   denominador cresce muito mais que o numerador: **a fração de classe iii vai cair**, e ninguém
