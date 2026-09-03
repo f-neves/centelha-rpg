@@ -67,7 +67,19 @@ npm run duo -- --rodadas 3  · teto de rodadas
 npm run duo -- --custo 12   · teto de custo, em dólares
 npm run duo -- --timeout 20 · teto por chamada, em minutos
 npm run duo -- --seco       · imprime o que faria e não chama nada
+npm run duo -- --fumaca     · UMA chamada real mínima em cada lado
 ```
+
+### O seco e a fumaça, e nenhum substitui o outro
+
+| | o que prova | o que NÃO vê | custa |
+|---|---|---|---:|
+| `--seco` | o caminho das **decisões**: cada trava conferida, o commit que seria avisado, onde o ciclo pararia | qualquer falha de **invocação**: ele não chama processo nenhum | zero |
+| `--fumaca` | o caminho do **processo**: o `claude` é achado, o stdin chega, a saída é JSON, o custo é lido, nos dois worktrees | qualquer falha de **decisão**: o prompt é "responda ok" | centavos |
+
+**A fumaça é o passo anterior a toda execução molhada.** A primeira molhada morreu
+na primeira chamada com o prompt partido pelo shell, minutos depois de um seco
+limpo: a classe inteira de falha de invocação era invisível para ele.
 
 ### Os limites, e por que estes
 

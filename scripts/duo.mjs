@@ -10,6 +10,7 @@
 //   npm run duo -- --custo 12        · teto de custo, em dólares
 //   npm run duo -- --timeout 20      · teto por chamada, em minutos
 //   npm run duo -- --seco            · imprime o que faria e não chama nada
+//   npm run duo -- --fumaca          · UMA chamada real mínima em cada lado
 //
 // O PONTO DESTE SCRIPT SÃO AS TRAVAS, e não a automação. Duas instâncias do
 // mesmo modelo conversando sem ninguém no meio convergem para concordar, e
@@ -55,6 +56,18 @@ const arg = (n, p) => {
   return i > 0 && process.argv[i + 1] ? process.argv[i + 1] : p;
 };
 const SECO = process.argv.includes('--seco');
+/**
+ * A FUMAÇA: uma chamada real mínima em cada lado, prompt trivial, e mais nada.
+ *
+ * O `--seco` prova o caminho das DECISÕES sem chamar processo nenhum, e por isso
+ * a classe inteira de falha de invocação é invisível para ele: a primeira
+ * execução molhada morreu na primeira chamada com o prompt partido pelo shell, e
+ * o seco tinha passado limpo minutos antes. A fumaça prova o caminho do PROCESSO
+ * (o `claude` é achado, o stdin chega, a saída é JSON, o custo é lido) nos dois
+ * worktrees, por centavos. Nenhum dos dois substitui o outro, e a fumaça é o
+ * passo anterior a toda execução molhada.
+ */
+const FUMACA = process.argv.includes('--fumaca');
 
 /** Teto de rodadas. Seis é o padrão pedido; ao bater, para e resume. */
 const TETO_RODADAS = parseInt(arg('--rodadas', '6'), 10);
@@ -267,6 +280,34 @@ console.log(`\n· duo · teto ${TETO_RODADAS} rodadas · US$ ${TETO_CUSTO.toFixe
 
 if (!fs.existsSync(REV)) parar('00', `o worktree da revisora não existe em ${REV}`);
 if (!fs.existsSync(CAIXA)) parar('00', 'não há caixa de correio');
+
+// =================================================================== a fumaça
+if (FUMACA) {
+  console.log('\n· fumaça · uma chamada real mínima em cada lado, e nada mais');
+  if (!fs.existsSync(PAPEL)) {
+    console.error(`\n✘ o papel da revisora não está em ${path.relative(REV, PAPEL)}`);
+    process.exit(1);
+  }
+  let total = 0, falhou = false;
+  for (const [dir, quem] of [[EXEC, 'executora'], [REV, 'revisora']]) {
+    const r = await chamar(dir, quem, 'Responda apenas a palavra: ok');
+    total += r.custo;
+    const disse = (r.texto || '').trim().toLowerCase();
+    if (!r.ok) {
+      falhou = true;
+      console.log(`  ✘ ${quem} · a chamada falhou: ${r.motivo || 'sem motivo'}`);
+    } else {
+      console.log(`  ✓ ${quem} · invocação ok · JSON ok · custo lido US$ ${r.custo.toFixed(2)}`
+        + ` · respondeu ${JSON.stringify(disse.slice(0, 20))}`);
+    }
+  }
+  console.log(`\n  custo da fumaça: US$ ${total.toFixed(2)}`);
+  console.log(falhou
+    ? '\n✘ a fumaça falhou: NÃO rode a molhada até isto passar'
+    : '\n✓ o caminho do processo funciona nos dois lados. O seco prova o das decisões;'
+      + '\n  nenhum dos dois substitui o outro.');
+  process.exit(falhou ? 1 : 0);
+}
 
 let seguesSeguidos = 0;
 let respostaAnterior = null;
