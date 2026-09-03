@@ -18,8 +18,8 @@ import { batalha } from './motor.mjs';
  * `arq` são os dois arquétipos, `n` as peças por lado, `dist` a distância
  * inicial em hexágonos.
  */
-export const celulaEspelho = (id, arq, n, dist) => ({
-  id, arq, n, dist, ciclo: id, distancia: `d${dist}`, pecas: `${n}v${n}`,
+export const celulaEspelho = (id, arq, n, dist, mapa = 'apertado') => ({
+  id, arq, n, dist, mapa, ciclo: id, distancia: `d${dist}`, pecas: `${n}v${n}`,
   // O LIMIAR DE FUGA do produto. O espelho compara a mesa com o laço, e a mesa
   // lê o do `regras.json`: passar outro aqui compararia dois robôs diferentes.
   limiar: undefined, passoMult: 1,

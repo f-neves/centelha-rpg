@@ -81,6 +81,41 @@ export function montarArquetipo(id, L) {
 }
 
 /**
+ * O TABULEIRO, em dois níveis, e ele é um EIXO e não uma constante.
+ *
+ * O mapa era `dist + 8` por `n + 2`, e isso é um corredor: com dezesseis peças
+ * numa faixa de dez linhas, quem persegue esbarra na aglomeração e re-projeta a
+ * agenda todo Tick, e é dali que sai o maior número da bateria. Com nove colunas
+ * de largura, quem foge sai do tabuleiro em UM Tick, e `fuga-consumada` domina
+ * por construção: foi o único alarme que a bateria de 03/09 acendeu.
+ *
+ * Trocar o mapa em silêncio esconderia as duas coisas. Ele entra como eixo, com
+ * o corredor de hoje e um campo aberto, e a bateria responde se aquele número
+ * é do Grid ou do corredor.
+ *
+ *   apertado · o de hoje: `dist + 8` por `max(4, n + 2)`
+ *   aberto   · vinte hexágonos de sobra em cada lado e o dobro de linhas
+ *
+ * ⚑ os dois são invenção. O que deixa de ser invenção é a CONCLUSÃO depender de
+ * um deles sem que ninguém saiba.
+ */
+export function tabuleiroDe(nivel, n, dist) {
+  if (nivel === 'aberto') {
+    const cols = dist + 40;
+    const rows = Math.max(12, n * 2 + 4);
+    return {
+      cols, rows,
+      // Centrado: sobra de corrida nos dois lados, e as peças não nascem na borda.
+      qa: Math.floor((cols - dist) / 2),
+      r0: Math.floor((rows - n) / 2),
+    };
+  }
+  const cols = dist + 8;
+  const rows = Math.max(4, n + 2);
+  return { cols, rows, qa: 1, r0: 1 };
+}
+
+/**
  * A INICIATIVA DE UMA PEÇA, rolada.
  *
  * A mesa rola iniciativa por peça (`d6() + bônus`, e o ⚄ da barra rerrola a

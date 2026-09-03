@@ -52,7 +52,11 @@ for (const l of boas) {
 }
 const CEL = manifesto.celulas || [];
 const infoDe = (id) => CEL.find((c) => c.id === id) || {};
-const daFatia = (nivel) => [...porCelula.entries()].filter(([id]) => infoDe(id).nivelLimiar === nivel);
+const daFatia = (nivel, mapa = MAPA_PRINC) => [...porCelula.entries()]
+  .filter(([id]) => infoDe(id).nivelLimiar === nivel
+    && (!mapa || infoDe(id).nivelMapa === mapa));
+const MAPAS = [...new Set(CEL.map((c) => c.nivelMapa))].filter(Boolean);
+const MAPA_PRINC = MAPAS.includes('apertado') ? 'apertado' : MAPAS[0];
 const NIVEIS = [...new Set(CEL.map((c) => c.nivelLimiar))].filter(Boolean);
 const PRINCIPAL = NIVEIS.includes('l25') ? 'l25' : NIVEIS[0];
 
@@ -103,7 +107,9 @@ const fatiaIII = (ls, fase) => {
   return { n: ls.length, t, pct: t ? iii / t : null, piso: t ? (iii - dv) / t : null };
 };
 
-const rotulo = (id) => id.replace(/-l\d+$/, '');
+const rotulo = (id) => id.replace(/-(apertado|aberto)-l\d+$/, '');
+/** Para os ALARMES, que precisam dizer QUAL tabuleiro: o nível de mapa fica. */
+const rotuloCheio = (id) => id.replace(/-l\d+$/, '');
 const LIMIAR_PRINC = CEL.find((c) => c.nivelLimiar === PRINCIPAL)?.limiar;
 
 // ================================================== A · a carga, por célula
@@ -247,6 +253,34 @@ if (comE4.length) {
   }
 }
 
+// ===================================== E12 · o tabuleiro, corredor contra campo
+//
+// O EIXO QUE EXISTE PARA MATAR UMA DÚVIDA SOBRE OS OUTROS. O mapa era `dist + 8`
+// por `n + 2`, e isso é um corredor: com dezesseis peças em dez linhas, quem
+// persegue esbarra na aglomeração e re-projeta todo Tick, e com nove colunas de
+// largura quem foge sai em UM Tick. Os dois números mais fortes da bateria
+// podiam ser da largura do mapa e não do Grid.
+if (MAPAS.length > 1) {
+  console.log('\n── E12 · O TABULEIRO · corredor contra campo aberto ──');
+  console.log(`  apertado: dist+8 × max(4, n+2) · aberto: dist+40 × max(12, 2n+4), peças centradas.`);
+  console.log('  (fase de combate, limiar de produção)');
+  console.log('célula'.padEnd(26) + 'par/Tick        re-projeções       %iii teto      fuga-consumada');
+  console.log(''.padEnd(26) + 'apert.  abert.   apert.   abert.   apert. abert.   apert. abert.');
+  for (const [id, ls] of daFatia(PRINCIPAL, MAPA_PRINC)) {
+    const outro = porCelula.get(id.replace('-apertado-', '-aberto-'));
+    if (!outro) continue;
+    const pt = (x) => num(medFase(x, 'combate', (y) => y.paradasPorTick.media));
+    const rp = (x) => num(medFase(x, 'combate', (y) => y.paradasSub?.reprojetar || 0), 1);
+    const p3 = (x) => pct(fatiaIII(x, 'combate').pct);
+    const fc = (x) => pct(x.filter((l) => l.fim === 'fuga-consumada').length / x.length);
+    console.log(rotulo(id).padEnd(26)
+      + pt(ls).padStart(6) + pt(outro).padStart(8)
+      + rp(ls).padStart(9) + rp(outro).padStart(9)
+      + p3(ls).padStart(9) + p3(outro).padStart(7)
+      + fc(ls).padStart(9) + fc(outro).padStart(7));
+  }
+}
+
 // ============================ a conta da cadência, antes de suspeitar do laço
 //
 // A COLUNA É O TICK SEM GOLPE, e não o sem resolução: chegar ao alcance e cair
@@ -317,7 +351,7 @@ for (const c of CEL.filter((x) => x.passoMult > 1)) {
   if (!alvo.length || !anc.length) continue;
   const rp = (ls) => med(ls.map((l) => l.paradasSub?.reprojetar || 0));
   if (rp(alvo) <= rp(anc)) {
-    alarme(`E4 INERTE em ${rotulo(c.id)}: re-projeta ${num(rp(alvo), 1)} contra`
+    alarme(`E4 INERTE em ${rotuloCheio(c.id)}: re-projeta ${num(rp(alvo), 1)} contra`
       + ` ${num(rp(anc), 1)} da âncora. O robô não corre do alvo, ele avança para ele:`
       + ' a assimetria de passo só morde na fuga, e a fuga é curta');
   }
@@ -342,7 +376,7 @@ for (const c of CEL.filter((x) => x.passoMult > 1)) {
   else if (estouram.length) {
     // Sem repetir o rótulo por nível de limiar: a mesma célula aparece uma vez
     // por nível, e a lista fica ilegível dizendo tudo duas vezes.
-    const nomes = [...new Set(estouram.map(([id]) => rotulo(id)))];
+    const nomes = [...new Set(estouram.map(([id]) => rotuloCheio(id)))];
     console.log(`
   ${estouram.length} de ${porCelula.size} células estouram o teto em 100% das voltas`);
     console.log(`  (${nomes.length} rótulos, um por nível de limiar): ${nomes.join(', ')}`);  }
@@ -354,7 +388,7 @@ for (const c of CEL.filter((x) => x.passoMult > 1)) {
   for (const [id, ls] of porCelula) {
     const p10 = med(ls.map((l) => l.fases.combate.paradasPorTick.p10));
     const p90 = med(ls.map((l) => l.fases.combate.paradasPorTick.p90));
-    if (p10 != null && p90 != null && Math.abs(p90 - p10) < 1e-9) degeneradas.push(rotulo(id));
+    if (p10 != null && p90 != null && Math.abs(p90 - p10) < 1e-9) degeneradas.push(rotuloCheio(id));
   }
   if (degeneradas.length) {
     alarme(`p10 = p90 em paradas/Tick (combate) em ${degeneradas.length} célula(s):`
@@ -369,7 +403,7 @@ for (const c of CEL.filter((x) => x.passoMult > 1)) {
   const engolidas = [];
   for (const [id, ls] of porCelula) {
     const f = ls.filter((l) => l.fim === 'fuga-consumada').length / ls.length;
-    if (f > 0.9) engolidas.push(`${rotulo(id)} ${pct(f)}`);
+    if (f > 0.9) engolidas.push(`${rotuloCheio(id)} ${pct(f)}`);
   }
   if (engolidas.length) {
     alarme(`fuga-consumada acima de 90% em ${engolidas.length} célula(s): a fase de fuga`

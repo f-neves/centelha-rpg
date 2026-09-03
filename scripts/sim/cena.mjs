@@ -21,7 +21,7 @@
 // dano médio inventado (6,5), e quase nenhum golpe passava. **Número inventado
 // não é só uma etiqueta no relatório: ele produz um jogo que não existe.**
 import { LIB } from './lib-ponte.mjs';
-import { FICHAS, montarArquetipo, iniciativaDaPeca } from './elenco.mjs';
+import { FICHAS, montarArquetipo, iniciativaDaPeca, tabuleiroDe } from './elenco.mjs';
 
 export const chaveHex = (q, r) => `${q},${r}`;
 export { FICHAS };
@@ -58,6 +58,10 @@ export const EIXOS = {
   // A SENSIBILIDADE: o limiar de fuga da `decisaoAutomatica`, em dois níveis.
   // 25 é o do `regras.json`; 10 é o mesmo robô fugindo mais tarde.
   limiar: { l25: 25, l10: 10 },
+  // E12 · O TABULEIRO. O corredor de hoje contra o campo aberto: é ele que
+  // decide se a re-projeção aos milhares é do Grid ou da largura do mapa, e se
+  // `fuga-consumada` domina porque a cena acaba ou porque o tabuleiro acaba.
+  mapa: { apertado: 'apertado', aberto: 'aberto' },
 };
 
 /**
@@ -86,18 +90,20 @@ export const PASSO_ASSIMETRICO = 2;
 export function celulas() {
   const out = [];
   for (const [nl, limiar] of Object.entries(EIXOS.limiar)) {
+   for (const [nm, mapa] of Object.entries(EIXOS.mapa)) {
     // O NÚCLEO CRUZADO: E1 × E2 × E3.
     for (const [nc, cic] of Object.entries(EIXOS.ciclo)) {
       for (const [nd, dist] of Object.entries(EIXOS.distancia)) {
         for (const [np, n] of Object.entries(EIXOS.pecas)) {
           out.push({
-            id: `${nc}-${nd}-${np}-${nl}`,
+            id: `${nc}-${nd}-${np}-${nm}-${nl}`,
             ciclo: nc, distancia: nd, pecas: np, n, dist, arq: cic,
-            limiar, nivelLimiar: nl, passoMult: 1,
+            limiar, nivelLimiar: nl, mapa, nivelMapa: nm, passoMult: 1,
           });
         }
       }
     }
+   }
     // E4 saiu daqui em 03/09: a sanidade mostrou que ele é inerte com esta
     // política (ver o comentário de `PASSO_ASSIMETRICO`). O caminho de código
     // do `passoMult` fica em `montarCena`, porque o eixo volta no dia em que
@@ -139,8 +145,8 @@ export function plano(n, nUnissono = 50) {
  */
 export function montarCena(celula, semente) {
   const escala = 1;                                  // ⚑ um metro por hexágono
-  const cols = celula.dist + 8;
-  const rows = Math.max(4, celula.n + 2);
+  const tab = tabuleiroDe(celula.mapa || 'apertado', celula.n, celula.dist);
+  const { cols, rows } = tab;
   const pecas = [];
   let ordinal = 0;
   for (const [i, lado] of ['a', 'b'].entries()) {
@@ -162,7 +168,7 @@ export function montarCena(celula, semente) {
         iniciativa: iniciativaDaPeca(arq, ordinal),
         id: `${lado}${k}`, lado, nome: `${arq.nome} ${lado}${k}`,
         pv: arq.pvMax,
-        pos: { q: lado === 'a' ? 1 : 1 + celula.dist, r: 1 + k },
+        pos: { q: lado === 'a' ? tab.qa : tab.qa + celula.dist, r: tab.r0 + k },
         mapa: { cols, rows },
         acao: null, fase: 'livre', pressao: 0, deslizes: 0,
         manobra: 'simples',                          // ⚑ a política não troca de manobra

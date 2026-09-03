@@ -93,6 +93,10 @@ const CENAS = [
   // alvo já no chão e ter de escolher outro corpo. Com 25 isso acontecia numa
   // das duas sementes, e uma regra nova coberta por sorte não está coberta.
   { ...celulaEspelho('4x4-media', ['escudeiro', 'montanteiro'], 4, 18), teto: 45 },
+  // O CAMPO ABERTO, que é o segundo nível do eixo E12. Ele muda o tabuleiro, as
+  // posições iniciais e o espaço de fuga, e nenhum desses três tinha oráculo:
+  // até aqui o espelho só rodou no corredor.
+  { ...celulaEspelho('4x4-aberto', ['escudeiro', 'montanteiro'], 4, 18, 'aberto'), teto: 45 },
 ];
 
 /**
@@ -113,6 +117,7 @@ async function daMesa(br, url, cena, semente) {
   p.on('pageerror', (e) => erros.push(e.message));
   const qs = `id=${MESA}&tempo=simultaneo&cena=espelho`
     + `&arqa=${cena.arq[0]}&arqb=${cena.arq[1]}&n=${cena.n}&dist=${cena.dist}`
+    + `&mapa=${cena.mapa}`
     + `&semente=${semente}&despejo=1&lances=1&espelho=1&nevoa=0`;
   await p.goto(`${url}/mesa/grid?${qs}`, { waitUntil: 'networkidle0', timeout: 60000 });
   await p.waitForFunction(() => typeof window.__ESPELHO === 'object' && window.__ESPELHO,

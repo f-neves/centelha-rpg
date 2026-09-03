@@ -29,7 +29,7 @@ import EFEITOS_D from '../src/data/efeitos.json';
 // duas cenas montadas de dois lugares não prova nada sobre o laço: prova que eu
 // montei duas cenas diferentes. A régua entra por parâmetro, e é por isso que o
 // mesmo arquivo roda no Node e aqui.
-import { montarArquetipo, iniciativaDaPeca } from './sim/elenco.mjs';
+import { montarArquetipo, iniciativaDaPeca, tabuleiroDe } from './sim/elenco.mjs';
 import { resumoCombatePC } from '../src/lib/combate-resumo';
 import { armaDoCatalogo, classeDeTempo, velocidadeDaArma } from '../src/lib/combate-tempo';
 
@@ -47,11 +47,14 @@ const N_COMB = parseInt(P.get('bench') || '12', 10);
 // sabe quem é inimigo de quem (`inimigosDe` compara `tipo`, e não grupo). Os
 // números dos dois saem do mesmo arquétipo, então o rótulo não muda jogo nenhum.
 const ESPELHO = P.get('cena') === 'espelho'
-  ? {
-    arq: [P.get('arqa') || 'escudeiro', P.get('arqb') || 'montanteiro'],
-    n: Math.max(1, parseInt(P.get('n') || '1', 10)),
-    dist: Math.max(1, parseInt(P.get('dist') || '18', 10)),
-  }
+  ? (() => {
+    const n = Math.max(1, parseInt(P.get('n') || '1', 10));
+    const dist = Math.max(1, parseInt(P.get('dist') || '18', 10));
+    // O TABULEIRO SAI DA MESMA FUNÇÃO do harness: o eixo E12 tem dois níveis, e
+    // uma cena de espelho montada com outro mapa compararia dois tabuleiros.
+    const tab = tabuleiroDe(P.get('mapa') || 'apertado', n, dist);
+    return { arq: [P.get('arqa') || 'escudeiro', P.get('arqb') || 'montanteiro'], n, dist, tab };
+  })()
   : null;
 
 // A CENA DO GOLPE NO CAÍDO: `?cena=caido[&longe=1]`.
@@ -68,8 +71,8 @@ const ESPELHO = P.get('cena') === 'espelho'
 const CAIDO = P.get('cena') === 'caido';
 const CAIDO_LONGE = P.get('longe') === '1';
 
-const COLS = ESPELHO ? ESPELHO.dist + 8 : CAIDO ? 14 : parseInt(P.get('cols') || '24', 10);
-const ROWS = ESPELHO ? Math.max(4, ESPELHO.n + 2) : CAIDO ? 8 : parseInt(P.get('rows') || '16', 10);
+const COLS = ESPELHO ? ESPELHO.tab.cols : CAIDO ? 14 : parseInt(P.get('cols') || '24', 10);
+const ROWS = ESPELHO ? ESPELHO.tab.rows : CAIDO ? 8 : parseInt(P.get('rows') || '16', 10);
 const NEVOA = P.get('nevoa') === '1';
 const POSTOS = parseInt(P.get('postos') || String(N_COMB), 10);
 // O sistema de tempo da mesa de bancada. `pgr` de propósito: é o caminho novo,
@@ -300,7 +303,8 @@ if (ESPELHO) {
         arena_id: ARENA, combatente_id: id,
         // Axial direto, e não pela conversão de offset: é assim que o harness
         // põe as peças, e o tabuleiro guarda axial de qualquer forma.
-        q: lado === 'a' ? 1 : 1 + ESPELHO.dist, r: 1 + k,
+        q: lado === 'a' ? ESPELHO.tab.qa : ESPELHO.tab.qa + ESPELHO.dist,
+        r: ESPELHO.tab.r0 + k,
         movido_em: new Date(1700000000000 + (ordinal++) * 1000).toISOString(),
       });
     }
