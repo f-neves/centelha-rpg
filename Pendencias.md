@@ -986,6 +986,7 @@ cabeçalho do `02`:
 | `05-fechamento.md` | o fechamento: a ordem corrigida (a instrumentação vem antes), as dez dependências de prova sem instrumento, e a grade recontada |
 | `06-etapa-0.md` | a instrumentação, feita: a semente, o caminho do driver, o despejo por Tick e a branch congelada. E o que o espelho de inércia já prova com ela |
 | `07-caminho-curto.md` | **a mudança de prioridade de 02/09**: o alvo passou a ser rodar milhares de batalhas completas para achar onde a automação trava. O inventário do que falta, a ordem reaberta, a primeira bateria de doze células e o plano de execução |
+| `08-espelho-e-bateria.md` | **o espelho de motor, feito**: as seis divergências que ele achou entre o laço e a mesa, o achado de produção que saiu de brinde, a leitura corrigida (a partição de quatro estados, o custo de tela real, a banda varrida), a bateria refeita e as decisões D16 a D28 |
 
 **Duas restrições que saíram da Etapa 0 e valem para quem escrever o harness:** o paralelismo é por
 **processo** e nunca por linha de execução (a fonte de acaso é um `let` de módulo, e duas batalhas no
@@ -1083,6 +1084,38 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   ordenada e a §0.47 tinha as regras de leitura, e nenhuma era completa. Fundidas em 02/09, com as
   regras de leitura marcadas ⊙ (é o que o eixo E9 desliga) e a regra de modo marcada ⊕. Enquanto
   não estavam fundidas, o E9 era inerte em toda célula de política Agressiva.
+- [ ] **L13 · [FAZER] O carimbo da fila deixa de ser estável quando a peça anda.** O terceiro
+  critério de `ordemDaFila` é `chegada`, que na mesa é `arena_tokens.movido_em`, e mover um token
+  o reescreve com a hora de agora. Numa perseguição a fila inteira se reordena a cada avanço: quem
+  andou vai para o fim do seu grupo de Tick, e a ordem de declaração e de resolução muda junto. O
+  campo existe justamente para a ordem NÃO dançar (é o que o comentário dele diz), e é o que ela
+  faz. Achado pelo espelho de motor em 03/09 (`08` §1.2). **O harness copia isso de propósito**
+  (D20): consertar é decisão de produto, e a pergunta é qual carimbo usar no lugar (a entrada em
+  cena? um ordinal? o id?).
+- [ ] **L14 · [DECIDIR] A fuga automática usa uma régua e o ataque automático usa outra.** Em
+  `decidirAutomaticas`, a fuga anda com `MODOS_MOV.corrida.porTick` (o 6 da tabela, igual para
+  todo mundo) e a declaração de ataque anda com `passoNoModo`, que sai da ficha ou do bestiário. O
+  mesmo robô, no mesmo Tick, mede a perna da peça de dois jeitos. Ninguém decidiu isso; saiu de
+  dois caminhos escritos em momentos diferentes.
+- [ ] **L15 · [DECIDIR] O golpe que cai em quem já caiu abre folha, rola e cobra Pressão.**
+  `resolverGolpeNoAr` acha o caído em `COMBS` como qualquer outro. É defensável (o braço já estava
+  no ar) e é uma parada de mestre por golpe, num momento em que a cena já acabou para aquele alvo.
+  A bateria conta essas paradas desde 03/09 (D19), e elas não são poucas nas cenas grandes.
+- [ ] **L16 · [OBSERVAÇÃO] A política automática do produto termina a cena em debandada.** Em
+  cinco das seis células coprimas da bateria de 03/09, o fim dominante é `fuga-consumada`, com 71%
+  a 100%. O robô foge com a Vida baixa e sai do mapa, e é assim que a maioria das batalhas acaba.
+  Não é defeito do harness: é a `decisaoAutomatica` que a mesa executa hoje. Vale como observação
+  sobre o robô, e **não** como afirmação sobre o sistema de combate.
+- [x] **L17 · [FEITO 03/09] `folhaDaAcao` resolvia `null` por um `close` alheio.** `dlg.close()`
+  enfileira o evento em vez de disparar na hora; com duas folhas em sequência dentro do mesmo
+  ciclo, o `close` da primeira chegava com a segunda já aberta e a derrubava como se o mestre
+  tivesse desistido. O golpe ficava no ar e o cartão vencido reabria com dados novos. Uma mão
+  humana quase não produz a sequência; o espelho produzia, e a mesma cena com a mesma semente
+  resolvia o mesmo golpe até dez vezes numa volta e uma na seguinte.
+- [x] **L18 · [FEITO 03/09] A fuga automática nascia sem `aid`.** Era a única ação da mesa sem
+  identificador de declaração (D2), e por isso o caminho da criatura em modo automático não tinha
+  a que ligar a re-projeção do trajeto dela.
+
 - [ ] **L7 · [DEPOIS] A medição de campo do Supabase real**, decidida para depois do harness. Sem
   ela, as métricas de carga saem em Ticks e em gestos e nunca em segundos, e essa é a maior lacuna
   conhecida do conjunto.

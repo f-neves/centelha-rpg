@@ -2649,3 +2649,32 @@ Há, porém, uma coisa **ainda menor** que qualquer das duas e que responde a um
 instrumentar a suíte que já roda no Edge para contar as gravações por Tick e cronometrar o ⏭ (§4,
 primeira linha). Isso não é harness nenhum, é instrumentação de um teste que já existe, e entrega o
 fator que converte todo Tick simulado em segundo de mesa.
+
+---
+
+## D16 a D28 · as decisões do espelho de motor (03/09)
+
+Uma linha cada, com o custo. **O texto inteiro está na `08-espelho-e-bateria.md` §4**,
+e é lá que cada uma é justificada; aqui ficam o enunciado e o preço, que é o que
+precisa estar no canônico.
+
+| # | A decisão | O que ela custa |
+|---|---|---|
+| **D16** | o espelho roda a cena que a MESA consegue rodar, e a única extensão é a elegibilidade do robô (`?espelho=1` estende de criatura para qualquer peça em `dados.auto`) | o filtro `tipo === 'criatura'` não é comparado, e numa cena real metade das declarações vem de gente |
+| **D17** | o harness copia o MOTOR e não o projeto: a ordem do Tick é passo → declaração → retrato → resolução | a bateria mede um Grid que contraria N5 e N6. Medir a regra nova exige implementá-la na mesa antes (é o L1) |
+| **D18** | a fonte de dados do harness rola acerto E dano sempre, como a folha | o harness consome mais acaso do que a régua exigiria. Sem isto, um erro separava as duas sequências semeadas |
+| **D19** | o golpe que cai em quem já caiu se resolve, com folha, dado e Pressão | mais paradas por batalha do que a bateria anterior contava. Se isso é regra desejável é outra pergunta (L15 do Pendencias) |
+| **D20** | o carimbo da fila é reescrito quando a peça anda, como na mesa | o harness copia um defeito: o critério de estabilidade da fila deixa de ser estável numa perseguição (L13) |
+| **D21** | o espelho roda em `rolagem: 'site'`; a bateria assume `rolagem: 'mesa'` | os dois instrumentos rodam em modos diferentes. Não muda o laço, muda o custo de tela: 2 gestos por folha contra 4 |
+| **D22** | o custo de tela sai do código (`scripts/sim/custo-tela.mjs`), e só a declaração na mão continua ⚑ | o número é gesto, e não segundo. O fator de conversão continua sendo o L7 |
+| **D23** | a célula uníssona roda 50 voltas, e não 500 | intervalo maior nas uníssonas. Como a resposta delas é categórica (100% estouram), não muda leitura nenhuma |
+| **D24** | as cinco políticas da §0.4 P4 NÃO entram nesta passada | não há como separar a carga da política da carga do sistema. A alternativa era pôr quatro robôs inventados no centro da medição |
+| **D25** | o elenco continua com dois arquétipos | nem Arte, nem projétil, nem criatura de bestiário estão no caminho medido |
+| **D26** | os invariantes pararam em doze, e quatro são de INSTRUMENTO (V6 a V9) | os de regra continuam faltando, e continuam desnecessários enquanto a regra vier de módulo com teste e com espelho |
+| **D27** | a partição de quatro estados do Tick substitui as duas colunas | a tabela tem quatro colunas onde tinha duas, e comparar com o relatório anterior exige a tradução (a linha e a coluna) |
+| **D28** | a banda da fração passa a ter `agenda` como duvidosa, além da re-projeção | a banda ficou larga (20% a 55%). A anterior era estreita porque duvidava de menos |
+
+**E a regra que continua valendo acima de todas:** número inventado não é só uma
+etiqueta no relatório, ele produz um jogo que não existe (D13). A lista ⚑ inteira
+está na `08` §5, e os dois itens que mais pesam são o mesmo assunto: o robô da mesa
+é simples demais para o que a bateria quer medir.

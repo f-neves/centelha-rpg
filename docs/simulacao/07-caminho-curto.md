@@ -983,6 +983,16 @@ Para ficar claro o que este planejamento **não** decidiu:
 
 ## 10 · O harness, feito, e a primeira bateria rodada
 
+> **SUPERADA EM 03/09 PELA `08-espelho-e-bateria.md`.** O espelho de motor rodou e
+> achou **seis divergências de ordem** dentro deste laço, todas presentes nas 6.000
+> batalhas relatadas abaixo. **Os números da §10.3 e da §10.4 não valem**: eles são
+> de um laço que declarava antes de andar, corria para atacar em vez de avançar,
+> dava guarda cheia a quem estava prestes a golpear e pulava o golpe que cai em quem
+> já caiu. A leitura também mudou: as duas colunas de Tick não eram uma partição.
+>
+> **O que continua valendo desta seção:** a §10.1 (a lista de arquivos, hoje maior),
+> a §10.2 (as decisões D12 a D15) e a §10.5 (o que faltava). O resto foi refeito.
+
 Feito em 02/09. Os passos 3 a 10 da sequência da §5.1 estão entregues, e a
 bateria mínima rodou: **6.000 batalhas em 53 segundos**.
 
@@ -1171,3 +1181,20 @@ clique vazio no meio.
 - **o `aid` no caminho das criaturas**, que o elenco de dois PCs não exercita;
 - **as cinco políticas**, a grade de 112, o elenco de sete e as criaturas: tudo
   isso é a bateria seguinte, e a §4 já dizia que não entrava nesta.
+
+---
+
+## 11 · O que aconteceu com esta lista, em 03/09
+
+Tudo o que a §10.5 pedia foi feito ou decidido, e está na `08-espelho-e-bateria.md`:
+
+| o que a §10.5 pedia | o que aconteceu |
+|---|---|
+| o espelho de motor | **feito.** `npm run espelho`, cinco cenas, duas sementes, zero divergências. Achou seis defeitos no laço e um na mesa (`08` §1) |
+| a tabela de custo de tela | **feita.** `scripts/sim/custo-tela.mjs`, derivada do código: a re-projeção custa zero e a folha custa quatro, e o clique do ⏭ entrou na conta (`08` §2.4) |
+| o `aid` no caminho das criaturas | **feito.** A fuga automática era a única ação da mesa que nascia sem identificador |
+| as cinco políticas | **decidido que não** (D24): a bateria roda a política do produto, e quatro robôs inventados poriam número inventado no centro da medição |
+| a grade de 112, o elenco de sete, as criaturas | **decidido que não** (D25): ficha nova é traço inventado. Continua sendo a bateria seguinte |
+
+E o bloqueio da §10.5 caiu: **a tabela pode sair do documento agora**, com os números
+da `08` §3 e não com os daqui.
