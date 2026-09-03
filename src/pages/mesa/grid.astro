@@ -5367,7 +5367,13 @@ const SETAS = [
         const destino = { q: eu.q + (eu.q - dele.q) * 4, r: eu.r + (eu.r - dele.r) * 4 };
         const modo = MODOS_MOV.find((x) => x.id === 'corrida')!;
         const acao: any = {
-          golpes: [], livre: T + 6, desde: T, ...contrapeDe(c.acao),
+          // O `aid` DA FUGA. Toda ação declarada tem identificador (D2): ele
+          // nasce na declaração e sobrevive à re-projeção, e é por ele que o
+          // tempo morto liga o golpe que caiu à declaração que o pediu. A fuga
+          // era a única ação da mesa que nascia sem um, e por isso o caminho da
+          // criatura em modo automático tinha um buraco: ela declara, ela anda,
+          // e a re-projeção do trajeto dela não tinha a que se referir.
+          golpes: [], livre: T + 6, desde: T, aid: novoAid(c, T), ...contrapeDe(c.acao),
           mov: { destino, modo: 'corrida', porTick: modo.porTick, auto: true } as Mov,
         };
         if (await gravarRelogio(c, T + 6, acao)) {

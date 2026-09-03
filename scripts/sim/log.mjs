@@ -10,6 +10,7 @@
 
 /** Classes de parada, da R2 §B. A fração de iii é a resposta da bateria. */
 export const CLASSES = ['i', 'ii', 'iii'];
+import { gestosDe, GESTO_DO_TICK, ROLAGEM_DA_BATERIA } from './custo-tela.mjs';
 
 export function novoLog({ completo = false } = {}) {
   const eventos = completo ? [] : null;
@@ -40,6 +41,35 @@ export function novoLog({ completo = false } = {}) {
     // que a automação tira.
     ticksSemParada: 0,
     ticksSemResolucao: 0,
+    // E AS DUAS NÃO SÃO UMA PARTIÇÃO, que foi o que a conferência do 2a achou.
+    // Um Tick tem dois eixos INDEPENDENTES (houve consulta? caiu alguma coisa?)
+    // e portanto quatro estados, não dois:
+    //
+    //                     | nada caiu        | caiu alguma coisa
+    //   ninguém consultado| quadro.nada      | quadro.soResolveu
+    //   alguém consultado | quadro.soParou   | quadro.ambos
+    //
+    // `ticksSemParada` é a LINHA de cima (nada + soResolveu) e
+    // `ticksSemResolucao` é a COLUNA da esquerda (nada + soParou): elas se
+    // cruzam em `nada` e nenhuma das duas cobre `ambos`. Somá-las conta o
+    // Tick vazio duas vezes e o Tick cheio nenhuma. O quadro abaixo é a
+    // partição de verdade, e as quatro células somam `ticks`.
+    quadro: { nada: 0, soResolveu: 0, soParou: 0, ambos: 0 },
+    // O TICK QUE A AUTOMAÇÃO ESVAZIA, medido em vez de inferido.
+    //
+    // Um Tick cujas paradas são TODAS de classe iii deixa de consultar alguém
+    // quando a classe iii for resolvida pelo motor. Somado a `ticksSemParada`,
+    // é o teto do que a automação compra em cliques, e é um número do log e
+    // não uma leitura da tabela.
+    ticksSoIII: 0,
+    // E o MESMO NÚMERO PELO PISO da classe iii (só `resolver` conta como
+    // aritmética forçada; ver a varredura do 2c em `agregar.mjs`).
+    ticksSoIIIPiso: 0,
+    // O TICK SEM GOLPE, que NÃO é o Tick sem resolução: chegar ao alcance e cair
+    // no chão também são resoluções, e contá-las junto fazia a conta da cadência
+    // (que é sobre GOLPES) dar sobra negativa, o que é impossível pelo
+    // raciocínio que a justifica.
+    ticksSemGolpe: 0,
     decl: new Map(),          // aid -> Tick da declaração, para o tempo morto
     tempoMorto: [],
     tempoMortoViagem: [],     // separado: quem perseguiu contra quem já alcançava
@@ -51,12 +81,16 @@ export function novoLog({ completo = false } = {}) {
   };
   let noTick = 0;
   let algoResolveu = false;
+  /** As classes das paradas DESTE Tick, para o quadro e para o `ticksSoIII`. */
+  let classesNoTick = [];
+  let subsNoTick = [];
+  let golpeNoTick = false;
 
   const ev = (tipo, o) => { if (eventos) eventos.push({ tipo, ...o }); };
 
   return {
     est, eventos,
-    tick(t) { est.ticks = t; noTick = 0; algoResolveu = false; },
+    tick(t) { est.ticks = t; noTick = 0; algoResolveu = false; classesNoTick = []; subsNoTick = []; golpeNoTick = false; },
     /**
      * UMA PARADA: o motor precisou de um humano.
      *
@@ -68,10 +102,12 @@ export function novoLog({ completo = false } = {}) {
       est.paradas[classe] += 1;
       est.paradasSub[tipo] = (est.paradasSub[tipo] || 0) + 1;
       noTick += 1;
-      // Os GESTOS saem da tabela de custo de tela: uma parada não é um clique.
-      // Enquanto a tabela não existir, cada parada vale um gesto e o relatório
-      // diz isso. É a etiqueta da P §4.
-      est.gestos += 1;
+      classesNoTick.push(classe);
+      subsNoTick.push(tipo);
+      // OS GESTOS SAEM DA TABELA DE CUSTO DE TELA, e não são um por parada:
+      // a re-projeção não abre caixa nenhuma e a folha do golpe custa quatro no
+      // modo de rolagem padrão. Ver `custo-tela.mjs`, com a derivação escrita.
+      est.gestos += gestosDe(tipo, ROLAGEM_DA_BATERIA);
       ev('parada', { classe, sub: tipo, c: c?.id, t, ...extra });
     },
     decl(c, t, o) {
@@ -80,6 +116,7 @@ export function novoLog({ completo = false } = {}) {
     },
     dano(c, alvo, t, o) {
       algoResolveu = true;
+      golpeNoTick = true;
       est.golpesAplicados += 1;
       est.vereditos[o.veredito] = (est.vereditos[o.veredito] || 0) + 1;
       est.danoTotal += o.danoLiquido || 0;
@@ -94,9 +131,23 @@ export function novoLog({ completo = false } = {}) {
     chegou(c, t) { algoResolveu = true; ev('passo', { c: c.id, t, chegou: true }); },
     caiu(c, t) { algoResolveu = true; ev('chao', { c: c.id, t }); },
     fimDoTick(t) {
+      // O CLIQUE DO ⏭, um por Tick, com parada ou sem. É o gesto mais
+      // frequente da mesa e ficava fora da conta.
+      est.gestos += GESTO_DO_TICK;
       est.porTick.push(noTick);
       if (noTick === 0) est.ticksSemParada += 1;
       if (!algoResolveu) est.ticksSemResolucao += 1;
+      if (!golpeNoTick) est.ticksSemGolpe += 1;
+      // A PARTIÇÃO, e ela fecha: as quatro células somam `ticks`.
+      const q = est.quadro;
+      if (noTick === 0 && !algoResolveu) q.nada += 1;
+      else if (noTick === 0) q.soResolveu += 1;
+      else if (!algoResolveu) q.soParou += 1;
+      else q.ambos += 1;
+      // O TICK QUE A AUTOMAÇÃO ESVAZIA: teve parada, e TODA parada dele é
+      // aritmética. Pelo teto (toda classe iii) e pelo piso (só `resolver`).
+      if (noTick > 0 && classesNoTick.every((c) => c === 'iii')) est.ticksSoIII += 1;
+      if (noTick > 0 && subsNoTick.every((t2) => t2 === 'resolver')) est.ticksSoIIIPiso += 1;
     },
     fim(motivo, t, pecas) {
       est.fimMotivo = motivo;
@@ -125,11 +176,14 @@ export function resumo(log, cena, b, semente) {
     gestosPorGolpe: e.golpesAplicados ? e.gestos / e.golpesAplicados : null,
     fracaoSemParada: e.ticks ? e.ticksSemParada / e.ticks : 0,
     fracaoSemResolucao: e.ticks ? e.ticksSemResolucao / e.ticks : 0,
+    quadro: e.quadro,
+    fracaoSemGolpe: e.ticks ? e.ticksSemGolpe / e.ticks : 0,
+    ticksSoIII: e.ticksSoIII, ticksSoIIIPiso: e.ticksSoIIIPiso,
     tempoMorto: { media: media(e.tempoMorto), n: e.tempoMorto.length },
     tempoMortoViagem: { media: media(e.tempoMortoViagem), n: e.tempoMortoViagem.length },
     maiorDeslize: Math.max(0, ...e.deslizes),
     // O CONTEXTO, por batalha
-    gestos: e.gestos, golpesAplicados: e.golpesAplicados,
+    gestos: e.gestos, gestosDoRelogio: e.ticks, golpesAplicados: e.golpesAplicados,
     vereditos: e.vereditos, danoTotal: e.danoTotal, rolagens: e.rolagens,
   };
 }

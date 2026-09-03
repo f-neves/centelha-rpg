@@ -9,7 +9,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { carregarLib, ligar, RAIZ } from './lib-ponte.mjs';
-import { celulas, montarCena, arquetipo } from './cena.mjs';
+import { plano, montarCena } from './cena.mjs';
 import { novoLog, resumo } from './log.mjs';
 import { batalha } from './motor.mjs';
 import { conferir } from './invariantes.mjs';
@@ -46,16 +46,16 @@ function hash32(...xs) {
 
 const L = await carregarLib();
 ligar(L);
-const CELULAS = celulas();
+const PLANO = plano(N, parseInt(arg('--unissono', '50'), 10));
 fs.mkdirSync(SAIDA, { recursive: true });
 const arq = path.join(SAIDA, `faixa-${FAIXA}.jsonl`);
 const linhas = [];
 const evs = [];
 
 for (let idx = DE; idx < ATE; idx++) {
-  const cel = CELULAS[Math.floor(idx / N)];
-  if (!cel) break;
-  const rep = idx % N;
+  const item = PLANO[idx];
+  if (!item) break;
+  const { cel, rep } = item;
   const semente = hash32(SEM_MESTRE, cel.id, rep);
 
   // UMA BATALHA, UM PROCESSO, UMA SEMENTE. Semear é trocar o estado de um
@@ -63,7 +63,7 @@ for (let idx = DE; idx < ATE; idx++) {
   // sequência em silêncio.
   L.semear(L.semeadoDe(semente));
   const cena = montarCena(cel, semente);
-  const completo = AMOSTRA > 0 && rep < AMOSTRA && cel.id === CELULAS[0].id;
+  const completo = AMOSTRA > 0 && rep < AMOSTRA && cel.id === PLANO[0].cel.id;
   const log = novoLog({ completo });
   const res = batalha(L, cena, log);
   const falhas = conferir(cena, log, res);

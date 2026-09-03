@@ -55,7 +55,7 @@ console.log('\n── A · A CARGA, por célula (as PRINCIPAIS, por etapa) ─�
 // que não consultou ninguém, e `s/resol` é o clique em que nada caiu mas houve
 // declaração e escrituração. Ler o segundo como se fosse o primeiro inverte a
 // conclusão sobre onde está o gargalo.
-console.log('célula'.padEnd(22) + 'par/Tick  p90  pico  gestos/golpe  s/parada  s/resol  t.morto');
+console.log('célula'.padEnd(22) + 'par/Tick    p90  pico  gestos/golpe  s/parada  s/resol  t.morto');
 for (const [id, ls] of porCelula) {
   const pt = med(ls.map((l) => l.paradasPorTick.media));
   const p90 = med(ls.map((l) => l.paradasPorTick.p90));
@@ -64,10 +64,50 @@ for (const [id, ls] of porCelula) {
   const sp = med(ls.map((l) => l.fracaoSemParada));
   const sr = med(ls.map((l) => l.fracaoSemResolucao));
   const tm = med(ls.map((l) => l.tempoMorto.media).filter((x) => x != null));
-  console.log(id.padEnd(22) + num(pt).padStart(8) + num(p90).padStart(5)
+  console.log(id.padEnd(22) + num(pt).padStart(8) + num(p90).padStart(7)
     + String(pico).padStart(6) + num(gg).padStart(14) + num(sp).padStart(10)
     + num(sr).padStart(9) + num(tm).padStart(9));
 }
+
+// -------------------------------------------------- o quadro dos quatro estados
+//
+// AS DUAS COLUNAS DE CIMA NÃO SÃO UMA PARTIÇÃO, e a conferência que mostrou
+// isso é simples: um Tick tem dois eixos independentes (o mestre foi
+// consultado? alguma coisa caiu?), portanto quatro estados. `s/parada` é uma
+// linha e `s/resol` é uma coluna: elas se cruzam no Tick totalmente vazio e
+// nenhuma das duas cobre o Tick que consulta E resolve. Somá-las conta um duas
+// vezes e o outro nenhuma.
+console.log('\n── O QUADRO DOS QUATRO ESTADOS DE UM TICK (a partição inteira) ──');
+console.log('célula'.padEnd(22) + '   nada  só res.  só parou  ambos   soma=ticks');
+for (const [id, ls] of porCelula) {
+  const q = (k) => med(ls.map((l) => (l.quadro?.[k] || 0) / Math.max(1, l.ticks)));
+  const soma = q('nada') + q('soResolveu') + q('soParou') + q('ambos');
+  console.log(id.padEnd(22) + num(q('nada')).padStart(7) + num(q('soResolveu')).padStart(9)
+    + num(q('soParou')).padStart(10) + num(q('ambos')).padStart(7)
+    + num(soma).padStart(13) + (Math.abs(soma - 1) < 0.005 ? ' ✓' : ' ✗ NÃO FECHA'));
+}
+console.log('  `só parou` é o Tick que tem declaração e escrituração e não resolve nada.');
+console.log('  É ele que separa as duas colunas da tabela A, e é sobre ele que a leitura');
+console.log('  anterior afirmava, sem medir, que a automação compra mais.');
+
+// ------------------------------------- o que a automação esvazia, MEDIDO
+//
+// A frase "a diferença entre as colunas é onde a automação compra mais" era
+// inferência. Ela vira medição assim: um Tick cujas paradas são TODAS de classe
+// iii deixa de consultar alguém quando o motor resolver a classe iii. Somado
+// aos Ticks que já não consultam ninguém, é o teto de cliques que a automação
+// tira, e sai do log, não da tabela.
+console.log('\n── O QUE A AUTOMAÇÃO ESVAZIA, medido no log ──');
+console.log('célula'.padEnd(22) + '  s/parada hoje  +só iii  = s/parada depois (piso)');
+for (const [id, ls] of porCelula) {
+  const hoje = med(ls.map((l) => l.fracaoSemParada));
+  const so = med(ls.map((l) => (l.ticksSoIII || 0) / Math.max(1, l.ticks)));
+  const soP = med(ls.map((l) => (l.ticksSoIIIPiso || 0) / Math.max(1, l.ticks)));
+  console.log(id.padEnd(22) + num(hoje).padStart(15) + num(so).padStart(9)
+    + num(hoje + so).padStart(12) + num(hoje + soP).padStart(8));
+}
+console.log('  `só iii` é o Tick em que TODA parada é aritmética: ele some inteiro.');
+console.log('  O piso conta só `resolver` como aritmética forçada (ver a varredura abaixo).');
 
 // ---------------------------------------------------------------- tabela B
 console.log('\n── B · A COMPOSIÇÃO, por classe. É A TABELA QUE RESPONDE A PERGUNTA ──');
@@ -84,20 +124,37 @@ for (const [id, ls] of porCelula) {
 // TERMINAM. A composição de paradas de um impasse de 2.000 Ticks é dominada pela
 // fase de impasse, que não é jogo: pôr as duas fatias na mesma média é deixar o
 // número do topo do relatório ser metade impasse.
+/**
+ * A VARREDURA DO CARIMBO, por subtipo, e o critério é UM: a parada é duvidosa
+ * quando um humano pode responder diferente do motor. Não é "rola dado", que
+ * era o critério antigo e estava errado (ver D12).
+ *
+ * Os três subtipos hoje carimbados iii:
+ *
+ *   `resolver`    · dada a folha, a conta é forçada: o veredito sai de
+ *                   `saidaDoAtaque` e o dano da expressão. O mestre pode
+ *                   corrigir os NÚMEROS na ficha do lance, mas corrigir é a
+ *                   outra parada (`aplicar`), e essa já é ii. FORÇADA.
+ *   `agenda`      · a mesa oferece escolha aqui: manobra, quantos golpes, modo
+ *                   de deslocamento, metros por Tick, e o P/G/R fixado à mão. O
+ *                   robô pega o padrão; um humano pega outro. DUVIDOSA.
+ *   `reprojetar`  · a R2 §B registra o mestre reordenando a fila à mão neste
+ *                   ponto, e a mesa ainda oferece abortar o gesto. DUVIDOSA.
+ *
+ * O teto conta as três como iii; o piso conta só `resolver`.
+ */
+const DUVIDOSAS = ['agenda', 'reprojetar'];
 const fatia = (ls) => {
   const i = ls.reduce((x, l) => x + l.paradas.i, 0);
   const ii = ls.reduce((x, l) => x + l.paradas.ii, 0);
   const iii = ls.reduce((x, l) => x + l.paradas.iii, 0);
-  const rp = ls.reduce((x, l) => x + (l.paradasSub?.reprojetar || 0), 0);
+  const dv = ls.reduce((x, l) =>
+    x + DUVIDOSAS.reduce((y, k) => y + (l.paradasSub?.[k] || 0), 0), 0);
   const t = i + ii + iii;
   return {
-    n: ls.length, i, ii, iii, t,
+    n: ls.length, i, ii, iii, t, dv,
     pct: t ? (iii / t) * 100 : 0,
-    // O PISO CONSERVADOR: tudo o que é duvidoso conta como ii. Duvidoso é a
-    // re-projeção, que a R2 §B registra como um ponto em que o mestre REORDENA A
-    // FILA À MÃO, e reordenar não é aritmética. Se a fração sobreviver ao piso, a
-    // conclusão vale independentemente do carimbo.
-    pctPiso: t ? ((iii - rp) / t) * 100 : 0,
+    pctPiso: t ? ((iii - dv) / t) * 100 : 0,
   };
 };
 const term = boas.filter((l) => l.fim !== 'estourou');
@@ -107,7 +164,8 @@ console.log('\n  A FRAÇÃO DE CLASSE iii, separada por término, e em BANDA:');
 console.log(`    batalhas que TERMINAM (${fT.n}): ${fT.pctPiso.toFixed(0)}% a ${fT.pct.toFixed(0)}%   ← É ESTE O NÚMERO`);
 if (fE.n) console.log(`    batalhas que ESTOURAM (${fE.n}): ${fE.pctPiso.toFixed(0)}% a ${fE.pct.toFixed(0)}%   (impasse, não é jogo)`);
 console.log(`    as duas juntas (${fTudo.n}): ${fTudo.pctPiso.toFixed(0)}% a ${fTudo.pct.toFixed(0)}%   (não usar: metade é impasse)`);
-console.log('    a banda é: piso com a re-projeção contada como ii, teto com ela como iii.');
+console.log(`    a banda é: teto com as três iii, piso só com \`resolver\` (as duvidosas são`
+  + ` ${DUVIDOSAS.join(' e ')}).`);
 if (fE.n) {
   const d = Math.abs(fT.pct - fE.pct);
   console.log(d < 5
@@ -119,14 +177,22 @@ console.log('   pelo motor, essas paradas somem e as outras duas ficam. Ver a de
 
 // -------------------------------------------------- a conta do Tick sem golpe
 //
+// A COLUNA É O TICK SEM GOLPE, e não o sem resolução: chegar ao alcance e cair
+// no chão também resolvem alguma coisa, e comparar uma coluna que os inclui com
+// uma conta que é só sobre golpes dava SOBRA NEGATIVA, que é impossível pelo
+// raciocínio que justifica a conta. Foi assim que o defeito apareceu.
+//
 // Antes de suspeitar do laço: quantos golpes por Tick as peças DEVERIAM produzir
 // em regime? Um golpe por ação, uma ação a cada `ciclo` Ticks. Com ciclo 6, duas
 // peças dão um golpe a cada três Ticks, ou seja dois terços dos Ticks sem golpe,
 // SEM DEFEITO NENHUM. O que a conta não explicar é o que sobra para investigar.
-console.log('\n── A CONTA DO TICK SEM RESOLUÇÃO, antes de suspeitar do laço ──');
-console.log('célula'.padEnd(22) + '  s/resol  cadência  sobra');
+console.log('\n── A CONTA DO TICK SEM GOLPE, antes de suspeitar do laço ──');
+console.log('célula'.padEnd(22) + '  s/golpe  cadência  sobra');
 for (const [id, ls] of porCelula) {
-  const sr = med(ls.map((l) => l.fracaoSemResolucao));
+  // O TICK SEM GOLPE, e não o sem resolução: a cadência é uma conta sobre
+  // golpes, e comparar com uma coluna que também conta chegadas e quedas dava
+  // sobra NEGATIVA, que é impossível pelo raciocínio que justifica a conta.
+  const sr = med(ls.map((l) => l.fracaoSemGolpe));
   const g = med(ls.map((l) => l.golpesAplicados));
   const t = med(ls.map((l) => l.ticks));
   // A cadência sai do MEDIDO: `1 − golpes/Tick` é o teto de Ticks sem golpe se

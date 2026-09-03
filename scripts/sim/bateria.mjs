@@ -14,7 +14,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { celulas } from './cena.mjs';
+import { celulas, plano } from './cena.mjs';
 import { RAIZ } from './lib-ponte.mjs';
 
 const arg = (n, p) => { const i = process.argv.indexOf(n); return i > 0 ? process.argv[i + 1] : p; };
@@ -24,8 +24,12 @@ const SEMENTE = parseInt(arg('--semente', '20260902'), 10);
 const AMOSTRA = parseInt(arg('--amostra', '50'), 10);
 const SAIDA = path.resolve(RAIZ, arg('--saida', `.sim/${new Date().toISOString().slice(0, 10)}`));
 
+const UNI = parseInt(arg('--unissono', '50'), 10);
 const CEL = celulas();
-const TOTAL = CEL.length * N;
+// O TOTAL SAI DO PLANO, e nao de `celulas x N`: as unissonas rodam menos
+// voltas (D14), e supor uniformidade aqui daria faixas apontando para
+// batalha nenhuma.
+const TOTAL = plano(N, UNI).length;
 fs.mkdirSync(SAIDA, { recursive: true });
 
 // O MANIFESTO, antes de rodar. Ele é o que torna a bateria reproduzível e o que
@@ -48,7 +52,7 @@ const manifesto = {
   commit: git('git rev-parse HEAD', '?'), sujo: git('git status --porcelain', '') !== '',
   iso: new Date().toISOString(), semente_mestre: SEMENTE,
   dados_hash: hashDe(['src/data', 'src/lib']),
-  celulas: CEL.map((c) => ({ id: c.id, ...c })), n: N, total: TOTAL,
+  celulas: CEL.map((c) => ({ id: c.id, ...c })), n: N, unissono: UNI, total: TOTAL,
   // O QUE FOI INVENTADO, e a regra dura da P §2.7: métrica que depende só de
   // entrada inventada não é achado sobre o sistema, é sensibilidade.
   inventado: [
@@ -57,7 +61,10 @@ const manifesto = {
     'o mapa: faixa de largura dist+8 e altura n+2, escala 1 m por hexágono',
     'a política é a `decisaoAutomatica` da mesa, e não uma das cinco da §0.4 P4.'
     + ' É invenção do PRODUTO, e não minha, que é uma posição melhor',
-    'um gesto por parada, até a tabela de custo de tela existir (P §4)',
+    'o custo de tela da DECLARAÇÃO NA MÃO. A bateria roda a política automática,'
+    + ' em que declarar não custa clique nenhum, e esse é o número certo do que ela'
+    + ' mede; o caminho manual tem variantes demais para um número só'
+    + ' (ver scripts/sim/custo-tela.mjs)',
     'a manobra é sempre `simples`: a política da mesa não escolhe manobra',
   ],
 };
@@ -65,7 +72,8 @@ fs.writeFileSync(path.join(SAIDA, 'bateria.json'), JSON.stringify(manifesto, nul
 
 const aqui = path.dirname(fileURLToPath(import.meta.url));
 const porFaixa = Math.ceil(TOTAL / PROCS);
-console.log(`· ${CEL.length} células × ${N} = ${TOTAL} batalhas, em ${PROCS} processos`);
+console.log(`· ${CEL.length} células, ${N} voltas (${UNI} nas uníssonas)`
+  + ` = ${TOTAL} batalhas, em ${PROCS} processos`);
 console.log(`  saída: ${path.relative(RAIZ, SAIDA)}`);
 
 const t0 = Date.now();
@@ -76,7 +84,7 @@ await Promise.all(Array.from({ length: PROCS }, (_, i) => new Promise((ok, erro)
   const p = fork(path.join(aqui, 'rodar.mjs'), [
     '--faixa', String(i), '--de', String(de), '--ate', String(ate),
     '--saida', SAIDA, '--semente', String(SEMENTE), '--n', String(N),
-    '--amostra', String(AMOSTRA),
+    '--amostra', String(AMOSTRA), '--unissono', String(UNI),
   ], { stdio: 'inherit' });
   p.on('exit', (c) => (c === 0 ? ok() : erro(new Error(`faixa ${i} saiu com ${c}`))));
 })));

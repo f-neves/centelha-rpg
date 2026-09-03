@@ -62,6 +62,30 @@ export function celulas() {
 }
 
 /**
+ * O PLANO DA BATERIA: a lista das batalhas, uma a uma, na ordem.
+ *
+ * Existe porque as células não têm todas o mesmo número de repetições. As
+ * uníssonas ESTOURAM O TETO em 100% das voltas (a decisão D14: Escudeiro contra
+ * Escudeiro empata com as bandeiras desligadas, e isso é o achado, não o
+ * defeito). Rodar quinhentas voltas de uma resposta que não muda é gastar o
+ * orçamento inteiro medindo o mesmo impasse; cinquenta bastam para as métricas
+ * por Tick, que são as que sobrevivem à batalha que não termina.
+ *
+ * Com o plano explícito, `rodar.mjs` não precisa mais supor que a batalha `idx`
+ * é a `idx / N`: ela é `plano[idx]`, e acrescentar ou tirar repetição de uma
+ * célula não mexe na semente de nenhuma outra (a semente é
+ * `hash32(mestre, id, rep)`, derivada e não sorteada).
+ */
+export function plano(n, nUnissono = 50) {
+  const out = [];
+  for (const cel of celulas()) {
+    const quantas = cel.ciclo === 'unissono' ? Math.min(n, nUnissono) : n;
+    for (let rep = 0; rep < quantas; rep++) out.push({ cel, rep });
+  }
+  return out;
+}
+
+/**
  * UMA CENA, montada da célula.
  *
  * O mapa é uma faixa: largura suficiente para a distância inicial mais folga, e
