@@ -54,8 +54,22 @@ const ESPELHO = P.get('cena') === 'espelho'
   }
   : null;
 
-const COLS = ESPELHO ? ESPELHO.dist + 8 : parseInt(P.get('cols') || '24', 10);
-const ROWS = ESPELHO ? Math.max(4, ESPELHO.n + 2) : parseInt(P.get('rows') || '16', 10);
+// A CENA DO GOLPE NO CAÍDO: `?cena=caido[&longe=1]`.
+//
+// Três peças e uma agenda montada à mão, para o caminho HUMANO da regra do
+// golpe no caído (`regras.json`, `combate.simultaneo.golpeNoCaido`) ter teste.
+// O robô redireciona sozinho e o espelho cobre esse lado; a caixa de escolha do
+// mestre não tinha um único clique de teste, e ela foi para produção junto com
+// a regra.
+//
+//   `a0` · quem golpeia, PC e NÃO automático (é o mestre que escolhe)
+//   `b0` · o alvo declarado, com Vida ZERO desde antes do Tick
+//   `b1` · o outro inimigo, de pé, ao alcance (ou longe, com `?longe=1`)
+const CAIDO = P.get('cena') === 'caido';
+const CAIDO_LONGE = P.get('longe') === '1';
+
+const COLS = ESPELHO ? ESPELHO.dist + 8 : CAIDO ? 14 : parseInt(P.get('cols') || '24', 10);
+const ROWS = ESPELHO ? Math.max(4, ESPELHO.n + 2) : CAIDO ? 8 : parseInt(P.get('rows') || '16', 10);
 const NEVOA = P.get('nevoa') === '1';
 const POSTOS = parseInt(P.get('postos') || String(N_COMB), 10);
 // O sistema de tempo da mesa de bancada. `pgr` de propósito: é o caminho novo,
@@ -293,6 +307,51 @@ if (ESPELHO) {
   }
 }
 
+/**
+ * A CENA DO CAÍDO, montada à mão porque o que ela precisa não é uma batalha: é
+ * um estado exato no instante em que o golpe vence.
+ *
+ * A agenda de `a0` tem o golpe no Tick 2 e o encontro está no Tick 1, então o
+ * teste avança UM Tick antes de resolver. Isso é de propósito: `CAIDOS_AO_ABRIR`
+ * é preenchido na abertura do Tick, e é ele que separa "caiu antes" (dá para
+ * cancelar) de "caiu agora" (só redirecionar).
+ */
+if (CAIDO) {
+  const REGUA = { resumoCombatePC, armaDoCatalogo, classeDeTempo, velocidadeDaArma };
+  const arq = montarArquetipo('escudeiro', REGUA);
+  const numeros = {
+    arma: arq.arma, ataque: arq.ataque, dano: arq.dano,
+    defesa: arq.defesa, soak: arq.soak,
+    velocidade: arq.velocidade, classe: arq.classe, passo: arq.passo, qa: arq.qa,
+  };
+  COMBS.length = 0; TOKENS.length = 0;
+  const por = [
+    // `auto` FALSO: é o caminho do mestre que se quer exercitar.
+    { id: 'a0', tipo: 'pc', q: 2, r: 2, pv: arq.pvMax, auto: false,
+      acao: { golpes: [2], livre: 7, desde: 0, tipo: 'simples', arma: arq.arma, alvo: 'b0', aResolver: [2] } },
+    { id: 'b0', tipo: 'criatura', q: 3, r: 2, pv: 0, auto: false, acao: {} },
+    { id: 'b1', tipo: 'criatura', q: CAIDO_LONGE ? 9 : 2, r: CAIDO_LONGE ? 6 : 3, pv: arq.pvMax, auto: false, acao: {} },
+  ];
+  let k = 0;
+  for (const p of por) {
+    COMBS.push({
+      id: p.id, encontro_id: ENC, nome: `Peça ${p.id}`,
+      tipo: p.tipo, grupo: p.tipo === 'pc' ? 'aliado' : 'inimigo',
+      monstro_id: null, personagem_id: null,
+      pv_max: arq.pvMax, pv_atual: p.pv,
+      mana_max: null, mana_atual: null,
+      tick: 0, iniciativa: 20 - k,
+      acao: p.acao,
+      dados: { ...numeros, ...(p.auto ? { auto: true } : {}) },
+      condicoes: [], ativo: true, oculto: false, imagem: null, retrato: null,
+    });
+    TOKENS.push({
+      arena_id: ARENA, combatente_id: p.id, q: p.q, r: p.r,
+      movido_em: new Date(1700000000000 + (k++) * 1000).toISOString(),
+    });
+  }
+}
+
 const LOG = Array.from({ length: 40 }, (_, i) => ({
   id: `l${i}`, ts: new Date(1700000000000 + i * 60000).toISOString(),
   txt: `Linha de registro ${i + 1}`, ord: i,
@@ -345,13 +404,14 @@ const TABELAS = {
     // `?rolagem=site` liga em qualquer cena; o padrão continua sendo a mesa.
     combate: {
       sistema: TEMPO, marcacao: 'fita', golpeAdiado: ADIADO,
-      ...(P.get('rolagem') || ESPELHO ? { rolagem: P.get('rolagem') || 'site' } : {}),
+      ...(P.get('rolagem') || ESPELHO || CAIDO ? { rolagem: P.get('rolagem') || 'site' } : {}),
     },
   }],
   mesa_arenas: ARENAS,
   arena_visao: ARENAS,
-  encontros: [{ id: ENC, mesa_id: MESA, ativo: true, tick_atual: 0, nome: 'Cena' }],
-  encontro_visao: [{ id: ENC, mesa_id: MESA, ativo: true, tick_atual: 0, nome: 'Cena' }],
+  // A CENA DO CAÍDO começa no Tick 1: o teste avança um e o golpe vence no 2.
+  encontros: [{ id: ENC, mesa_id: MESA, ativo: true, tick_atual: CAIDO ? 1 : 0, nome: 'Cena' }],
+  encontro_visao: [{ id: ENC, mesa_id: MESA, ativo: true, tick_atual: CAIDO ? 1 : 0, nome: 'Cena' }],
   combatentes: COMBS,
   combate_visao: PAPEL === 'jogador' ? COMBS.map(paraJogador) : COMBS,
   arena_tokens: TOKENS,
