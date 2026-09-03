@@ -16,10 +16,30 @@ export function novoLog({ completo = false } = {}) {
   const est = {
     ticks: 0,
     paradas: { i: 0, ii: 0, iii: 0 },
+    // POR SUBTIPO, para a banda conservadora do relatório: a re-projeção é o
+    // ponto duvidoso da taxonomia (a R2 §B registra que o mestre REORDENA A FILA
+    // À MÃO ali, e reordenar não é aritmética), e sem contá-la à parte não há
+    // como calcular o piso da fração.
+    paradasSub: {},
     porTick: [],              // paradas em cada Tick, para o pico e a distribuição
     gestos: 0,
     golpesAplicados: 0,
-    ticksVazios: 0,
+    // DUAS COISAS DIFERENTES, e confundi-las produziu uma contradição
+    // aritmética na primeira bateria: `paradas/Tick 1,14` com `86% vazios` e
+    // `pico 4` não cabem, porque 0,14 × 4 = 0,56.
+    //
+    //   ticksSemParada     · o Tick em que o mestre NÃO foi consultado. É o
+    //                        clique no ⏭ que de fato não produz nada.
+    //   ticksSemResolucao  · o Tick em que nada CAIU: ninguém golpeou, ninguém
+    //                        chegou, ninguém caiu. Ele continua tendo declaração
+    //                        e escrituração, e portanto continua tendo carga.
+    //
+    // A leitura errada era ler o segundo como se fosse o primeiro, e ela
+    // invertia a conclusão: o Tick sem resolução não é o clique que não produz
+    // nada, é o clique em que só há escrituração, que é justamente a classe
+    // que a automação tira.
+    ticksSemParada: 0,
+    ticksSemResolucao: 0,
     decl: new Map(),          // aid -> Tick da declaração, para o tempo morto
     tempoMorto: [],
     tempoMortoViagem: [],     // separado: quem perseguiu contra quem já alcançava
@@ -46,6 +66,7 @@ export function novoLog({ completo = false } = {}) {
      */
     parada(classe, tipo, c, t, extra) {
       est.paradas[classe] += 1;
+      est.paradasSub[tipo] = (est.paradasSub[tipo] || 0) + 1;
       noTick += 1;
       // Os GESTOS saem da tabela de custo de tela: uma parada não é um clique.
       // Enquanto a tabela não existir, cada parada vale um gesto e o relatório
@@ -74,7 +95,8 @@ export function novoLog({ completo = false } = {}) {
     caiu(c, t) { algoResolveu = true; ev('chao', { c: c.id, t }); },
     fimDoTick(t) {
       est.porTick.push(noTick);
-      if (!algoResolveu) est.ticksVazios += 1;
+      if (noTick === 0) est.ticksSemParada += 1;
+      if (!algoResolveu) est.ticksSemResolucao += 1;
     },
     fim(motivo, t, pecas) {
       est.fimMotivo = motivo;
@@ -97,11 +119,12 @@ export function resumo(log, cena, b, semente) {
   return {
     b, celula: cena.celula.id, semente,
     ticks: e.ticks, fim: e.fimMotivo, vivosA: e.vivosA, vivosB: e.vivosB,
-    paradas: e.paradas,
+    paradas: e.paradas, paradasSub: e.paradasSub,
     // AS PRINCIPAIS, por etapa (§2.6, régua do D8b)
     paradasPorTick: { media: p.length ? soma / p.length : 0, p50: q(0.5), p90: q(0.9), p99: q(0.99), pico: ord[ord.length - 1] || 0 },
     gestosPorGolpe: e.golpesAplicados ? e.gestos / e.golpesAplicados : null,
-    fracaoTicksVazios: e.ticks ? e.ticksVazios / e.ticks : 0,
+    fracaoSemParada: e.ticks ? e.ticksSemParada / e.ticks : 0,
+    fracaoSemResolucao: e.ticks ? e.ticksSemResolucao / e.ticks : 0,
     tempoMorto: { media: media(e.tempoMorto), n: e.tempoMorto.length },
     tempoMortoViagem: { media: media(e.tempoMortoViagem), n: e.tempoMortoViagem.length },
     maiorDeslize: Math.max(0, ...e.deslizes),

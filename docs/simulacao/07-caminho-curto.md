@@ -1051,25 +1051,40 @@ silêncio.
 
 **A carga, por célula** (as principais, por etapa):
 
-| célula | par/Tick | p90 | pico | gestos/golpe | Ticks vazios | tempo morto |
-|---|---:|---:|---:|---:|---:|---:|
-| uníssono · encostado · 1v1 | 1,14 | 4 | 4 | 4,00 | 0,86 | 2,00 |
-| uníssono · encostado · 3×3 | 3,43 | 12 | 12 | 4,00 | 0,86 | 2,00 |
-| uníssono · encostado · 2×8 | 9,15 | 32 | 32 | 4,00 | 0,86 | 2,00 |
-| uníssono · longa · 2×8 | 11,68 | 24 | 32 | 8,19 | 0,71 | 2,01 |
-| coprimo · encostado · 1v1 | 1,08 | 2 | 4 | 4,12 | 0,74 | 2,52 |
-| coprimo · encostado · 3×3 | 3,05 | 6 | 12 | 4,29 | 0,73 | 2,55 |
-| coprimo · encostado · 2×8 | 7,64 | 16 | 32 | 4,43 | 0,69 | 2,55 |
-| coprimo · longa · 2×8 | 7,80 | 15 | 32 | 7,64 | 0,47 | 4,06 |
+| célula | par/Tick | p90 | pico | gestos/golpe | s/parada | s/resolução | tempo morto |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| uníssono · encostado · 1v1 | 1,14 | 4 | 4 | 4,00 | **0,71** | 0,86 | 2,00 |
+| uníssono · encostado · 3×3 | 3,43 | 12 | 12 | 4,00 | **0,71** | 0,86 | 2,00 |
+| uníssono · encostado · 2×8 | 9,15 | 32 | 32 | 4,00 | **0,71** | 0,86 | 2,00 |
+| uníssono · longa · 2×8 | 11,68 | 24 | 32 | 8,19 | **0,00** | 0,71 | 2,01 |
+| coprimo · encostado · 1v1 | 1,08 | 2 | 4 | 4,12 | **0,49** | 0,74 | 2,52 |
+| coprimo · encostado · 3×3 | 3,05 | 6 | 12 | 4,29 | **0,46** | 0,73 | 2,55 |
+| coprimo · encostado · 2×8 | 7,64 | 16 | 32 | 4,43 | **0,43** | 0,69 | 2,55 |
+| coprimo · longa · 2×8 | 7,80 | 15 | 32 | 7,64 | **0,08** | 0,47 | 4,06 |
 
 **A composição, que é a tabela que responde a pergunta:**
 
-> **59,9% das paradas são de classe iii**, ou seja aritmética de escrituração, e
-> é esse o tamanho do que a automação pode tirar.
+> **A fração de classe iii fica entre 39% e 57%**, contada só nas batalhas que
+> **terminam**, e a banda é o piso e o teto da taxonomia: no piso a re-projeção
+> conta como **ii** (a R2 §B registra que o mestre reordena a fila à mão ali, e
+> reordenar não é aritmética); no teto ela conta como **iii**.
 
-E a fração **sobe com a distância**: nas células de 2×8 longa ela vai a 70% e
-75%, porque a re-projeção da agenda é classe iii e acontece a cada Tick de
-viagem, para cada perseguidor.
+**Duas coisas que essa forma conserta, e a primeira era um erro de leitura sério.**
+
+**O 59,9% da primeira versão estava computado sobre as 6.000 batalhas, metade das
+quais nunca termina.** A composição de paradas de um impasse de 2.000 Ticks é
+dominada pela fase de impasse, que não é jogo. Separadas, a fatia que termina dá
+39% a 57% e a que estoura dá 40% a 60%: **as duas diferem em 2,8 pontos**, e essa
+proximidade é robustez de graça, mas o número que se publica é o das que terminam.
+
+**E o número saía com quatro casas sobre um carimbo que eu mesmo chamei de o
+ponto mais frágil.** A banda é a forma honesta: se a conclusão sobrevive ao piso,
+ela vale independentemente do carimbo, e sobrevive.
+
+A fração **sobe com a distância**: nas células de 2×8 longa ela vai a 70% e 75%
+no teto, porque a re-projeção acontece a cada Tick de viagem, para cada
+perseguidor. **É justamente a parada duvidosa que sobe**, o que faz da banda o
+único jeito honesto de ler essas duas células.
 
 **Seis coisas que a bateria já respondeu:**
 
@@ -1077,9 +1092,16 @@ viagem, para cada perseguidor.
    automatizável. Automação é a resposta certa para o problema;
 2. **quanto ela compraria**: as mesmas seis em cada dez, e mais nas cenas de
    perseguição;
-3. **onde o gargalo está**: na **travessia**, e não na caixa. A fração de Ticks
-   vazios vai de 0,47 a 0,86, ou seja **entre metade e cinco sextos dos cliques
-   no ⏭ não produzem nada**;
+3. **onde o gargalo está: nos DOIS, e a primeira versão desta linha estava
+   errada.** Ela dizia "na travessia, e não na caixa", lendo os 0,47 a 0,86 como
+   cliques que não produzem nada. **Eles produzem escrituração**, que é a classe
+   que a automação tira: o `s/resolução` conta o Tick em que nada CAIU, e o Tick
+   em que ninguém foi consultado é o `s/parada`, que é outro número. Os dois nem
+   cabiam juntos, e foi assim que o erro apareceu: com 86% de Ticks sem parada e
+   pico 4, a média não passaria de 0,56, e ela é 1,14.
+   **A leitura corrigida:** entre 43% e 71% dos Ticks não consultam ninguém, e
+   entre 47% e 86% não resolvem nada. A diferença entre as duas colunas **é** o
+   Tick que só tem escrituração, e é ali que a automação compra mais;
 4. **total ou pico**: o pico bate no **teto teórico** (o número de peças × 2) em
    toda célula de 2×8. A fila empilha, e empilha até o limite;
 5. **a colisão de agenda faz o pico**: no uníssono o p90 **é** o pico (12 e 32);
@@ -1094,11 +1116,57 @@ política pesa (roda uma só), nada sobre o que as regras novas mudam (nenhuma
 ligada), e nada sobre segundos, porque um gesto por parada é a etiqueta provisória
 até a tabela de custo de tela existir.
 
-### 10.4 · O que continua faltando, e é honesto dizer
+### 10.4 · A conta do Tick sem resolução, antes de suspeitar do laço
 
-- **o espelho de motor.** O laço não foi comparado com a mesa Tick a Tick, e é
-  ele quem prova a ORDEM das operações. As peças passam e isso não é o laço estar
-  certo (§5.2). **É o próximo passo, e o mais importante de todos.**
+A pergunta era se os 0,86 de Ticks sem resolução no uníssono encostado eram o
+ciclo da arma ou defeito. **A conta decide, e ela decide diferente em cada
+tamanho de cena.**
+
+`cadência = 1 − golpes por Tick` é o teto de Ticks sem golpe se nunca caíssem
+dois no mesmo Tick. A **sobra** é o que a cadência não explica.
+
+| célula | s/resolução | cadência | sobra |
+|---|---:|---:|---:|
+| uníssono · encostado · 1v1 | 0,86 | 0,71 | **0,14** |
+| uníssono · encostado · 3×3 | 0,86 | 0,14 | **0,72** |
+| uníssono · encostado · 2×8 | 0,86 | 0,00 | **0,86** |
+| coprimo · encostado · 1v1 | 0,74 | 0,74 | **0,00** |
+| coprimo · longa · 1v1 | 0,74 | 0,76 | **−0,03** |
+| coprimo · longa · 2×8 | 0,47 | 0,00 | **0,47** |
+
+**No 1v1 a cadência explica tudo, e não sobra nada para investigar.** Duas peças
+de ciclo 6 e 7 dão um golpe a cada três Ticks, e dois terços de Ticks sem golpe
+saem daí sem defeito nenhum. A sobra é 0,00 e 0,14, que é ruído de arredondamento.
+
+**Nas cenas grandes a sobra é enorme, e ela não é defeito: é a COLISÃO.** Com
+seis ou dezesseis peças, `golpes/Tick` passa de 1 e a cadência prevê zero Ticks
+sem golpe; e ainda assim 86% dos Ticks não resolvem nada. Isso só é possível se
+os golpes se **empilham** nos mesmos Ticks, que é exatamente o que o pico bater
+no teto teórico (32 = 16 peças × 2) já dizia. **É a previsão de E1 confirmada por
+um segundo instrumento**, e por um caminho que não passa pelo pico.
+
+E ela tem consequência de mesa, que é o que a bateria existe para achar: a carga
+não chega distribuída, chega em **rajadas de caixas**, com longos trechos de
+clique vazio no meio.
+
+### 10.5 · O que continua faltando, e é honesto dizer
+
+- **o espelho de motor, e ele passou a ser um bloqueio e não uma pendência.** O
+  laço não foi comparado com a mesa Tick a Tick, e é ele quem prova a ORDEM das
+  operações. As peças passam e isso não é o laço estar certo (§5.2).
+
+  **DECIDIDO em 02/09: nada da tabela da §10.3 sai deste documento nem vira
+  decisão sobre o Grid antes de o espelho rodar.** Os números têm exatamente a
+  aparência de um laço plausível e errado, e esta rodada já mostrou duas vezes o
+  quanto essa aparência é barata: o D13 (números inventados produzindo 568 Ticks)
+  e o erro de leitura do Tick vazio, que inverteu uma conclusão inteira e passou
+  por uma revisão sem ninguém notar até a aritmética não fechar.
+
+  **O que o espelho precisa, e é o que falta construir:** a mesa tem de rodar a
+  MESMA cena que o harness, e hoje ela roda a cena do `mesa-mock`, com doze peças
+  em posições fixas. É preciso um caminho para o mock aceitar uma célula da
+  bateria (as peças, o mapa, a distância inicial), e aí a comparação é a da
+  R3 §1.1.1, Tick a Tick, com a mesma semente.
 - **a tabela de custo de tela**, que converte parada em clique;
 - **o `aid` no caminho das criaturas**, que o elenco de dois PCs não exercita;
 - **as cinco políticas**, a grade de 112, o elenco de sete e as criaturas: tudo
