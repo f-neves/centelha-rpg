@@ -1122,17 +1122,21 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   identificador de declaração (D2), e por isso o caminho da criatura em modo automático não tinha
   a que ligar a re-projeção do trajeto dela.
 
-- [x] **L19 · [FEITO 03/09] A ficha escrevia o tipo de dano errado em seis das dez armas
+- [x] **L19 · [FEITO 03/09] A ficha escrevia o tipo de dano errado em CINCO das dez armas
   de mais de um modo.** `resumoCombatePC` (`combate-resumo.ts:82`) ordena os modos por
   `MODO_ORDEM` (impacto 0, corte 1, perfurante 2) e pega o PRIMEIRO, ignorando a marca
   `principal: true` do catálogo. O tipo vai para a expressão de dano (`2d6 +10 (I)`), e a mesa o
   lê dali (`tipoDeDano(ra.dano)`) para decidir **qual Absorção o alvo aplica**.
 
-  | arma | principal no catálogo | o que a ficha escreve |
+  | arma | principal no catálogo | o que a ficha escrevia |
   |---|---|---|
-  | Montante · Machado · Alabarda · Machado de Arremesso | corte | **impacto** |
+  | Montante · Machado · Machado de Arremesso | corte | **impacto** |
   | Picareta de Guerra | perfurante | **impacto** |
   | Adaga | perfurante | **corte** |
+
+  **A Alabarda NÃO estava errada**, ao contrário do que a primeira redação desta entrada dizia:
+  ela marca os três modos como `principal`, e o primeiro da ordem de exibição já era o que o
+  `find` devolve. Cinco armas, e não seis.
 
   Isso muda o que acontece em jogo: uma alabarda que bate em vez de cortar erra a Absorção da
   placa, o gate de Perfuração e a resistência do bicho. **Achado em 03/09 pela bateria grande**
@@ -1140,6 +1144,34 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   regra: qual das duas manda, o `principal: true` do catálogo ou a ordem de exibição do
   `MODO_ORDEM`? **RESOLVIDO em 03/09 (D37): manda o `principal` do catálogo.** O conserto está em
   `combate-resumo.ts`, o `dados_hash` mudou e a bateria grande rodou de novo do zero.
+
+  **E o tamanho da mudança está medido** (`node scripts/dano-por-tipo.mjs`, e a `09` §5.4): é
+  mudança de equilíbrio e não de vitrine, porque só o Impacto recebe a Absorção natural do Vigor.
+  O sinal **depende do alvo**: o Machado sobe 230% no dano líquido por golpe contra alvo sem
+  armadura e desce 50% contra malha, que protege mais contra corte que contra impacto. Dez dos
+  quinze pares arma × alvo sobem (média +2,52 por golpe), três descem (média −0,78).
+
+  O oráculo dos lances foi recoletado e saiu **byte a byte igual** (a bancada escolhe o tipo por
+  construção, sem passar por `resumoCombatePC`), e o `personagens.resumo` do banco, que guarda a
+  expressão velha, **não afeta o combate**: `resumoDe` recalcula ao vivo para peça de PC, e a aba
+  Grupo regrava o cache sozinha a cada visita.
+- [x] **L21 · [FEITO 03/09] O golpe no caído dependia da ordem do laço.** A regra escrita em
+  03/09 (D38) mandava olhar se o alvo está no chão AGORA, e "agora" dentro de um Tick depende de
+  qual peça o motor processou primeiro: de duas peças que se derrubam no mesmo Tick, o atacante de
+  quem caiu primeiro redirecionava e o outro não. Ordem de laço vazando para dentro de um sistema
+  que se chama simultâneo. **Consertado (D41)** com o retrato da abertura do Tick como fonte
+  única: quem estava de pé quando o Tick abriu está de pé para todos os golpes dele. Conferido no
+  `npm run caido` (a quarta cena) e no `npm run espelho`.
+- [ ] **L22 · [DEPOIS] O gate de Perfuração está na régua e não está no motor.**
+  `gatePerfuracaoAbre` existe em `src/lib/calc.ts` e **nenhum caminho de produção a chama**: nem
+  `resolverGolpe`, nem a folha do Grid, nem o harness. Hoje o Perfurante não resvala em ninguém.
+  Ou o gate entra no `resolverGolpe` (e aí a Adaga, com Nível de Perfuração 0, passa a resvalar em
+  porte Enorme para cima), ou ele sai da régua. Ficar escrito e não valer é o pior dos três.
+- [ ] **L23 · [DEPOIS] A fração de gestos com JOGADOR na mesa.** Os 50% da `09` §2.2 são do robô,
+  em que `declarar` custa zero clique. Com jogadores, declarar vira um diálogo inteiro e o
+  denominador cresce muito mais que o numerador: **a fração de classe iii vai cair**, e ninguém
+  sabe para quanto. É a pergunta mais importante que a bateria de 03/09 deixou em aberto, e ela
+  precisa de uma peça de jogador no elenco.
 - [ ] **L20 · [DEPOIS] Uma política que recua**, que é a peça que falta para o eixo E4 existir.
   A `decisaoAutomatica` avança para o alvo e nunca se afasta dele, então a assimetria de passo é
   inerte (medido em 03/09, D31): quem anda mais depressa só chega mais cedo. Sem alguém que se

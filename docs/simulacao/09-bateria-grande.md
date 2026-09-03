@@ -1,13 +1,14 @@
 # 09 · A bateria grande
 
-**03/09/2026.** 10.800 batalhas, 48 células, 23,9 s, zero inválidas. Commit `fdc9eab`,
+**03/09/2026.** 21.600 batalhas, 96 células, 32,1 s, zero inválidas. Commit `02f9a3a`,
 semente mestre 20260903.
 
-> **Esta é a SEGUNDA execução da grade.** A primeira rodou no commit `3544505` e serviu para
-> levantar as quatro perguntas de regra que estavam presas no código sem ninguém ter decidido.
-> As quatro foram respondidas e implementadas (a §5.1), e a bateria rodou de novo do zero, com a
-> régua nova. **Os números aqui são os da segunda**; onde a resposta moveu alguma coisa, o
-> movimento está escrito.
+> **Esta é a TERCEIRA execução da grade.** A primeira (`3544505`) levantou quatro perguntas de
+> regra presas no código; a segunda (`fdc9eab`) rodou com as respostas. Esta terceira roda com a
+> revisão daquelas respostas: a regra do golpe no caído refeita sobre o retrato da abertura do
+> Tick (D41), o tabuleiro promovido a eixo, e o instrumento consertado num ponto que muda o
+> número publicado (D42, a §2.2). **Os números aqui são os da terceira**; onde alguma coisa se
+> moveu, o movimento está escrito.
 
 ---
 
@@ -22,9 +23,16 @@ escolhe alvo, não muda de ideia. Toda leitura desta bateria é sobre **esse rob
 minha invenção, é a do produto, o que é uma posição melhor mas não deixa de ser uma invenção.
 
 **A manobra é sempre `simples`**, porque a política não escolhe manobra. Consequência dura:
-**nenhuma das 10.800 batalhas exercita rajada ou empunhadura dupla**, e portanto o conserto do
+**nenhuma das 21.600 batalhas exercita rajada ou empunhadura dupla**, e portanto o conserto do
 L11 (a penalidade de dados por golpe, que era o defeito que abriu esta frente) **não é testado
 por esta bateria**. Ele é testado pelo `test-lance.mjs` e pelo espelho de motor; aqui, não.
+
+**E nenhuma peça é de jogador.** Toda peça desta bateria roda em modo automático, e há um lugar
+em que isso não é só "a política é o robô": o golpe cujo alvo caiu. A peça automática redireciona
+sozinha, sem caixa; a de jogador abre uma caixa de escolha, que é uma parada de classe i com
+gesto. **A bateria não enxerga esse custo**, e o número publicado apaga uma interrupção que a
+mesa de verdade tem. São 317 redirecionamentos nas 9.600 batalhas que terminam, então o buraco é
+pequeno em tamanho; ele está aqui em cima porque é um buraco de NATUREZA, e não de tamanho.
 
 O que a bateria **mede**: a carga de mestre por Tick e por golpe, a composição dela em decisão,
 julgamento e aritmética, e como as duas variam com o ciclo das armas, a distância inicial, o
@@ -49,38 +57,40 @@ dois `ticks` somem o total.
 
 ### 1.1 A fuga é curta, e não é onde a carga mora
 
-| célula (limiar 25%) | Ticks de combate | Ticks de fuga | gestos no combate | gestos na fuga |
+| célula (limiar 25%, mapa apertado) | Ticks de combate | Ticks de fuga | gestos no combate | gestos na fuga |
 |---|---:|---:|---:|---:|
-| coprimo · encostado · 2×8 | 16,3 | **1,0** | 155 | 1 |
-| coprimo · encostado · 1v1 | 34,8 | **0,3** | 73 | 0 |
-| coprimo · média · 2×8 | 27,2 | 18,4 | 152 | 111 |
-| coprimo · extrema · 2×8 | 44,7 | 26,1 | 156 | 140 |
+| coprimo · encostado · 2×8 | 16,7 | **1,1** | 158 | 2 |
+| coprimo · encostado · 1v1 | 35,6 | **0,3** | 75 | 1 |
+| coprimo · média · 2×8 | 27,2 | 19,1 | 153 | 121 |
+| coprimo · extrema · 2×8 | 44,7 | 27,1 | 158 | 150 |
 
-**A fase de fuga é de 0,3 a 26 Ticks contra 16 a 2.000 de combate**, e nas células encostadas ela
+**A fase de fuga é de 0,3 a 27 Ticks contra 17 a 2.000 de combate**, e nas células encostadas ela
 é literalmente um Tick. Ela não engole a carga. O que ela engole é o **desfecho**, e por isso a
 linha "fim dominante" da tabela C precisa ser lida com cuidado (§4).
 
 ### 1.2 A composição DIFERE entre as fases, e o número do topo é o do combate
 
-| célula (limiar 25%) | combate: piso–teto | fuga: piso–teto | Δ teto |
+| célula (limiar 25%, mapa apertado) | combate: piso–teto | fuga: piso–teto | Δ teto |
 |---|---|---|---:|
-| coprimo · encostado · 2×8 | 23%–49% | 1%–3% | **−46** |
-| coprimo · encostado · 1v1 | 24%–49% | 8%–9% | **−41** |
-| coprimo · média · 1v1 | 24%–49% | 4%–25% | −25 |
-| coprimo · longa · 3×3 | 23%–49% | 8%–37% | −12 |
-| coprimo · extrema · 3×3 | 22%–49% | 25%–47% | −1 |
-| coprimo · longa · 2×8 | 17%–59% | 15%–63% | **+4** |
+| coprimo · encostado · 2×8 | 23%–49% | 4%–8% | **−41** |
+| coprimo · encostado · 1v1 | 24%–49% | 12%–12% | **−38** |
+| coprimo · encostado · 3×3 | 23%–49% | 12%–17% | **−32** |
+| coprimo · média · 1v1 | 24%–49% | 7%–25% | −24 |
+| coprimo · longa · 3×3 | 24%–49% | 9%–37% | −13 |
+| coprimo · longa · 2×8 | 17%–59% | 15%–63% | **+5** |
 
 **Onde a fuga é curta ela é quase toda decisão e passo** (declarar a fuga, andar, e nada mais):
 até 46 pontos menos aritmética que o combate. Onde ela é longa (as células de 2×8 a distância),
 ela vira perseguição de verdade e a composição se aproxima da do combate, porque ali a
 re-projeção volta a mandar.
 
-> **O NÚMERO DO TOPO desta bateria, e ele é o da FASE DE COMBATE das 4.800 batalhas que terminam
-> no limiar de produção: entre 20% e 55% das paradas são de classe iii**, ou seja aritmética de
-> escrituração, que é o que a automação pode tirar.
+> **OS NÚMEROS DO TOPO desta bateria, e eles são os da FASE DE COMBATE das 9.600 batalhas que
+> terminam no limiar de produção: 20% a 55% das PARADAS são de classe iii, e 50% dos GESTOS.**
+> São duas moedas diferentes e as duas precisam sair juntas; a §2.2 explica por quê, e qual das
+> duas responde a pergunta original.
 >
-> A fase de fuga das mesmas batalhas dá 16% a 59%, e **isso é agregação, não igualdade**: os
+> A fase de fuga das mesmas batalhas dá 18% a 59% em paradas, e **isso é agregação, não
+> igualdade**: os
 > Ticks de fuga se concentram nas três células grandes, que são as de aritmética alta nas duas
 > fases. Célula a célula, a diferença é a da tabela acima. **A média agregada da fuga não deve
 > ser citada; a coluna Δ deve.**
@@ -107,17 +117,19 @@ por quê.
 
 É a tabela que explica todas as outras. Fase de combate, média por batalha:
 
-| célula (limiar 25%) | declarar | agenda | **reprojetar** | resolver | aplicar |
+| célula (limiar 25%, mapa apertado) | declarar | agenda | **reprojetar** | resolver | aplicar |
 |---|---:|---:|---:|---:|---:|
 | uníssono · encostado · 2×8 | 4.576 | 4.576 | **0** | 4.576 | 4.576 |
+| uníssono · média · 2×8 | 3.425 | 3.425 | **7.957** | 3.421 | 3.421 |
 | uníssono · extrema · 2×8 | 3.656 | 3.656 | **5.895** | 3.653 | 3.653 |
-| coprimo · encostado · 1v1 | 10,4 | 10,1 | **0** | 9,7 | 9,7 |
-| coprimo · encostado · 2×8 | 42,3 | 40,6 | **0** | 34,8 | 34,8 |
-| coprimo · extrema · 1v1 | 8,8 | 8,5 | **0** | 7,9 | 7,9 |
-| coprimo · média · 2×8 | 47,0 | 45,8 | **53,7** | 31,2 | 31,2 |
-| coprimo · extrema · 2×8 | 38,8 | 37,5 | **45,4** | 27,9 | 27,9 |
+| coprimo · encostado · 1v1 | 10,6 | 10,4 | **0** | 9,8 | 9,8 |
+| coprimo · encostado · 2×8 | 42,9 | 41,4 | **0,1** | 35,4 | 35,4 |
+| coprimo · extrema · 1v1 | 8,9 | 8,6 | **0** | 8,0 | 8,0 |
+| coprimo · média · 2×8 | 47,1 | 45,8 | **53,9** | 31,5 | 31,5 |
+| coprimo · extrema · 2×8 | 38,7 | 37,3 | **44,8** | 28,4 | 28,4 |
 
-**A re-projeção é zero em dezoito das vinte e quatro células, e domina as outras seis.**
+**A re-projeção é zero em dezoito das vinte e quatro células, e domina as outras seis** (as três
+uníssonas de 2×8 com distância e as três coprimas correspondentes).
 
 **O mecanismo**, e ele foi conferido no espelho: com oito peças por lado num mapa estreito, quem
 persegue **esbarra na aglomeração**. Não fecha a distância, e a agenda desliza um Tick a cada
@@ -138,19 +150,70 @@ mudar a composição dela.**
 Um Tick cujas paradas são todas de classe iii deixa de consultar alguém quando o motor resolver a
 classe iii. Fase de combate:
 
-| célula (limiar 25%) | s/parada hoje | + só iii | = depois | (piso) |
+| célula (limiar 25%, mapa apertado) | s/parada hoje | + só iii | = depois | (piso) |
 |---|---:|---:|---:|---:|
 | coprimo · encostado · 1v1 | 0,50 | 0,00 | 0,50 | 0,50 |
 | coprimo · extrema · 3×3 | 0,77 | 0,00 | 0,77 | 0,77 |
-| coprimo · média · 2×8 | 0,27 | **0,34** | 0,62 | 0,27 |
-| coprimo · longa · 2×8 | 0,60 | 0,15 | 0,75 | 0,60 |
-| uníssono · longa · 2×8 | 0,01 | **0,71** | 0,72 | 0,01 |
+| coprimo · média · 2×8 | 0,27 | **0,35** | 0,62 | 0,27 |
+| coprimo · extrema · 2×8 | 0,52 | **0,29** | 0,81 | 0,52 |
+| uníssono · média · 2×8 | 0,00 | **0,71** | 0,71 | 0,00 |
 | uníssono · extrema · 2×8 | 0,02 | **0,70** | 0,72 | 0,02 |
 
 **A automação tira PARADAS em toda célula, e tira CLIQUES em seis.** São duas economias
 diferentes: nas dezoito células sem re-projeção, quase todo Tick que consulta alguém consulta
 também por decisão ou por julgamento, e esses ficam. Nas seis com re-projeção, o Tick fica vazio
 inteiro, e ali a automação tira de 15 a 71 pontos percentuais dos cliques no ⏭.
+
+### 2.2 As DUAS frações, e por que uma só estava errada
+
+A composição por classe agregava demais. Ela junta, no mesmo balde `iii`, a re-projeção (que
+**não abre caixa nenhuma**) e a folha do golpe (que custa quatro gestos). Quem lia "20% a 55% de
+classe iii" entendia "um quinto a metade do trabalho do mestre", **e não era isso que estava
+medido**.
+
+A prova de que não era estava na própria bateria e passou despercebida: a re-projeção caiu quase
+pela metade entre a primeira e a segunda volta, e o número do topo não se mexeu. Um valor que
+cai pela metade e não move a conclusão ou não está no numerador, ou está num numerador que não
+importa. Era o primeiro caso.
+
+Agora saem **duas frações, e nunca uma só**. Fase de combate, 9.600 batalhas que terminam,
+925.697 paradas e 1.095.869 gestos:
+
+| tipo de parada | classe | gestos por unidade | paradas | % das paradas | gestos | **% dos gestos** |
+|---|:--:|--:|--:|--:|--:|--:|
+| `declarar` | i | 0 | 228.332 | 25% | 0 | 0% |
+| `agenda` | iii | 0 | 220.971 | 24% | 0 | 0% |
+| `reprojetar` | iii | 0 | 100.648 | 11% | 0 | 0% |
+| `fugir` | ii | 0 | 7.361 | 1% | 0 | 0% |
+| `redirecionar` | i | 0 ⚑ | 317 | 0% | 0 | 0% |
+| `aplicar` | ii | 1 | 184.034 | 20% | 184.034 | 17% |
+| **`resolver`** | **iii** | **3** | 184.034 | 20% | **552.102** | **50%** |
+| o ⏭ do relógio | · | 1 | · | · | 359.733 | 33% |
+
+**Os dois números do topo:**
+
+| | banda | o que ele responde |
+|---|---|---|
+| fração das **PARADAS** que é iii | **20% a 55%** | quantas **interrupções** a automação apaga |
+| fração dos **GESTOS** que é iii | **50%** | quanto **trabalho** ela apaga ← **é este** |
+
+**O 20%–55% que esta frente vinha publicando é o de PARADAS.** O de gestos é 50%, e é ele que
+responde a pergunta original da R2 §B.
+
+Três coisas que a tabela deixa ver e a fração agregada escondia:
+
+1. **A banda de gestos não tem largura.** As duas duvidosas da taxonomia (`agenda` e
+   `reprojetar`) custam **zero** gesto, então a dúvida sobre onde elas caem move a conta de
+   paradas em 35 pontos e a de gestos em **nenhum**. A taxonomia estava sendo discutida na moeda
+   em que ela não decide nada;
+2. **um terço do trabalho do mestre é o clique do ⏭**, que não é parada de classe nenhuma e não
+   sai com automação nenhuma. Ele fica no denominador de propósito: tirá-lo inflaria a fração;
+3. **`declarar` é um quarto das paradas e zero dos gestos**, porque a bateria roda o robô. Numa
+   mesa com jogadores essa linha é a mais cara da tabela, e a bateria não a mede (⚑ §6).
+
+> **O que isso muda na conclusão:** para melhor, e não para pior. A automação da classe iii
+> apaga **metade** dos gestos do mestre no combate, não um quinto. O que ela **não** apaga é o
+> outro meio: o ⏭ (33%) e o `aplicar` (17%), que é a mesa decidindo se o resultado vale.
 
 ---
 
@@ -160,13 +223,14 @@ Não é política nova: é o `fugirAbaixoDePct` do `regras.json`, um valor que j
 dois níveis como eixo próprio. `decisaoAutomatica` ganhou um parâmetro opcional cujo padrão é o
 da regra, e a mesa continua chamando com três argumentos.
 
-| nível | batalhas | %iii combate | %iii fuga | Tick da fuga | fuga-consumada |
+| nível | batalhas | paradas iii (combate) | **gestos iii** | Tick da fuga | fuga-consumada |
 |---|---:|---|---|---:|---:|
-| **25%** (produção) | 4.800 | 20%–55% | 16%–59% | 32,3 | **47%** |
-| **10%** | 4.800 | 19%–56% | 17%–60% | 35,3 | **18%** |
+| **25%** (produção) | 9.600 | 20%–55% | **50%** | 32,2 | **44%** |
+| **10%** | 9.600 | 20%–57% | **53%** | 35,1 | **16%** |
 
-> **A leitura principal NÃO muda com o limiar: dois pontos percentuais.** A conclusão da bateria é
-> robusta a ele, e isso é o resultado que se queria.
+> **A leitura principal NÃO muda com o limiar: três pontos percentuais na moeda que conta
+> (gestos), dois na de paradas.** A conclusão da bateria é robusta a ele, e isso é o resultado
+> que se queria.
 
 E ele muda **o desfecho**, e muito: com o limiar de produção, quase metade das cenas termina com
 o perdedor saindo do mapa; com 10%, menos de uma em cinco. Ou seja: **o limiar decide como a cena
@@ -179,12 +243,16 @@ nele é uma decisão de sabor, não de carga.
 
 O agregador imprime seis sinais de bateria ineficaz. Cinco ficaram apagados. Um acendeu:
 
-> ✘ **fuga-consumada acima de 90% em 1 célula**: `coprimo-encostado-2×8` (100%).
+> ✘ **fuga-consumada acima de 90% em 2 células**: `coprimo-encostado-2×8` no mapa apertado
+> (98%) e no aberto (99%).
 
 **A explicação, e sem ela o número não sai.** Nessa célula as peças começam **encostadas**, então
 todo mundo apanha desde o Tick 3; o limiar dispara para o lado perdedor inteiro quase ao mesmo
 tempo; e o mapa tem `dist + 8 = 9` colunas de largura, então quem corre sai dele em **um Tick**. A
-fase de fuga dessa célula dura **1,0 Tick**.
+fase de fuga dessa célula dura cerca de **1 Tick**. E o mapa aberto **não** conserta: com
+`dist + 40` colunas o desfecho é o mesmo 99%, porque o que decide não é o tamanho do tabuleiro e
+sim o limiar disparando para o lado perdedor inteiro ao mesmo tempo. Essa é uma das coisas que o
+eixo E12 comprou: a suspeita de artefato de mapa foi **testada** em vez de suposta.
 
 Duas consequências, e as duas vão escritas:
 
@@ -195,10 +263,12 @@ Duas consequências, e as duas vão escritas:
    dominante" da tabela C não deve ser lida como afirmação sobre o sistema de combate**, e sim
    como "a cena acabou porque o tabuleiro acabou".
 
-**Os cinco que não acenderam** também são informação: nenhum invariante violado em 10.800
-batalhas; nenhum contador de ocasião em zero onde deveria morder (re-projeção, fuga, raspão e a
-quarta célula do quadro mordem todos); nenhuma métrica com p10 igual a p90; e nem toda célula
-estoura o teto (metade estoura, e são as uníssonas, pelo motivo de sempre).
+**Os cinco que não acenderam** também são informação: nenhum invariante violado em 21.600
+batalhas (e são catorze agora, com os dois novos que fecham os gestos por classe e por subtipo);
+nenhum contador de ocasião em zero onde deveria morder (re-projeção, fuga, raspão, o
+redirecionamento do golpe no caído e a quarta célula do quadro mordem todos); nenhuma métrica com
+p10 igual a p90; e nem toda célula estoura o teto (metade estoura, e são as uníssonas, pelo
+motivo de sempre).
 
 **E o sexto acendeu na bateria de SANIDADE da primeira volta e foi consertado antes da grande**,
 que é exatamente para isso que ela existe: o eixo E4 estava inerte (§5, D31).
@@ -207,9 +277,9 @@ que é exatamente para isso que ela existe: o eixo E4 estava inerte (§5, D31).
 
 | variância entre repetições da mesma célula | variância entre células |
 |---:|---:|
-| 0,057 | **12,20** |
+| 0,059 | **12,06** |
 
-**Os eixos explicam 214 vezes mais que o acaso.** É o oposto do sinal de bateria ineficaz, e é
+**Os eixos explicam 204 vezes mais que o acaso.** É o oposto do sinal de bateria ineficaz, e é
 também a justificativa de as repetições poderem ser poucas (§5, D33).
 
 ---
@@ -223,13 +293,9 @@ sem ninguém ter decidido. As quatro foram respondidas e implementadas, e a bate
 
 **D37 · O tipo de dano da ficha segue o `principal: true` do catálogo.** `resumoCombatePC`
 ordenava os modos por `MODO_ORDEM` (impacto, corte, perfurante) e pegava o primeiro, ignorando a
-marca do catálogo. **Seis das dez armas de mais de um modo escreviam o tipo errado:** Montante,
-Machado, Alabarda e Machado de Arremesso saíam como impacto tendo corte como principal; Adaga e
-Picareta saíam trocadas também. A sigla vai para a expressão de dano, a mesa lê o tipo dela
-(`tipoDeDano`), e é ele que escolhe **qual Absorção o alvo aplica**, além do gate de Perfuração e
-da resistência do bicho.
-**Custo:** o `dados_hash` mudou e a bateria inteira rodou de novo. Na mesa, uma alabarda que
-cortava passa a valer contra a Absorção de corte, que é maior na maioria das armaduras.
+marca do catálogo. A sigla vai para a expressão de dano, a mesa lê o tipo dela (`tipoDeDano`), e é
+ele que escolhe **qual Absorção o alvo aplica**. Ver a §5.4, onde o tamanho da mudança está
+medido e não estimado.
 
 **D38 · O golpe que cai num alvo já no chão REDIRECIONA.** Regra nova, escrita em
 `regras.json` (`combate.simultaneo.golpeNoCaido`): o gesto já estava no ar, então não evapora,
@@ -296,7 +362,8 @@ encostadas (1 Tick). A coluna Δ é o que se lê, não a média agregada.
 | **não rodam** | **88** | |
 | **rodam** | **24** | o núcleo cruzado com os dois níveis de E1 que existem |
 
-**O que sobra e roda:** `E1(2) × E2(4) × E3(3)` = 24, vezes o limiar de fuga (2) = **48 células**.
+**O que sobra e roda:** `E1(2) × E2(4) × E3(3)` = 24, vezes o limiar de fuga (2) e o tabuleiro
+(2, o eixo E12) = **96 células**.
 **Custo:** esta bateria não diz nada sobre bandeiras, políticas, obstáculo, leitura, reforço nem
 criaturas. Ela é a medida do Grid de hoje, com o robô de hoje.
 
@@ -338,6 +405,92 @@ entre células; toda célula estourando; p10 = p90; e `fuga-consumada` acima de 
 **Custo:** um sinal aceso exige explicação escrita antes de o número sair, e isso é trabalho. A
 alternativa é ninguém olhar, que foi o que aconteceu nas duas rodadas anteriores.
 
+### 5.3 D41 a D44 · a revisão das quatro, e a regra que não fechava
+
+**D41 · O retrato da abertura do Tick é a única fonte de verdade do golpe no caído.** A D38, do
+jeito que ficou escrita, **não fechava**: ela mandava olhar se o alvo está no chão AGORA, e "agora"
+dentro de um Tick depende de qual peça o motor processou primeiro. De duas peças que se derrubam
+no mesmo Tick, o atacante de quem caiu primeiro redirecionava e o outro não. **A diferença não
+vinha de ficção nenhuma, vinha da ordem do laço**, num sistema que se chama simultâneo.
+
+O conserto é o retrato que já existia (`CAIDOS_AO_ABRIR`), promovido a fonte única: **quem estava
+de pé quando o Tick abriu está de pé para todos os golpes daquele Tick.** A regra fica em duas
+linhas simétricas:
+
+- caiu num Tick **anterior** · o atacante viu cair, e pode cancelar ou redirecionar;
+- caiu **neste** Tick · ninguém sabia, e o golpe resolve **como foi declarado**, no corpo que
+  estava de pé quando o gesto saiu.
+
+Some a dependência de ordem. O caso que sobra, um golpe caindo num corpo que acabou de cair, é
+exatamente a ficção do simultâneo, e não um defeito dela.
+**Custo:** um golpe a mais desce em corpo caído por batalha, e a caixa de escolha do mestre passa
+a abrir menos vezes. E o `cancelar` volta a ser incondicional, porque a caixa só abre no caso em
+que deu para ver o corpo cair.
+**Conferido:** `npm run caido` (22 asserções no caminho do mestre, com a quarta cena nova, a do
+corpo que cai dentro do Tick) e `npm run espelho` (7 cenas × 2 sementes, sem divergência).
+
+**D42 · A bateria publica DUAS frações, nunca uma.** É a §2.2 inteira.
+**Custo:** um número a mais para explicar, e a admissão de que o número publicado até aqui
+respondia outra pergunta. Em troca, a conclusão ficou **maior**: metade dos gestos, e não um
+quinto.
+
+**D43 · A classe de cada tipo de parada sai do log, escrita pelo motor.** A primeira versão da
+tabela da §2.2 trazia um mapa tipo→classe escrito no agregador, e ele dizia `fugir` classe i e
+`aplicar` classe iii quando o motor registra **ii nas duas**. Uma coluna publicada com classe
+inventada é o caso exato que o D13 vigia.
+**Custo:** um campo a mais em cada resumo de batalha. Barato, e a alternativa era manter duas
+cópias da mesma verdade, que é como as duas leituras da Defesa se separaram sem ninguém ver.
+
+**D44 · O custo do redirecionamento e o critério "o mais próximo" entram na lista ⚑.** O
+redirecionar é uma parada de classe i que custa **um gesto numa peça de jogador e zero numa
+automática**, e a bateria roda só automática. E "o inimigo de pé mais próximo" é política escrita
+dentro do motor: `regras.json` diz que redireciona ao alcance da arma e não diz para qual.
+**Custo:** dois furos declarados em vez de dois números invisíveis.
+
+### 5.4 O tamanho da D37, medido
+
+A troca do modo principal parecia conserto de vitrine e não é: a sigla escolhe a **categoria de
+Absorção**, e as três não valem a mesma coisa (só o Impacto recebe o Vigor natural do alvo).
+`scripts/dano-por-tipo.mjs` calcula o dano líquido médio por golpe que acerta, exato e não
+simulado, enumerando a distribuição de `Nd6 + fixo`.
+
+**Cinco armas mudaram de lado, e não seis.** A Alabarda **não** mudou: ela marca os três modos
+como principal, e o primeiro da ordem de exibição já era o que o `find` devolve. A nota que dizia
+seis, e nomeava a Alabarda, estava errada e foi corrigida no código.
+
+| arma | dano | mudou | contra alvo NU | contra malha | contra placa |
+|---|---|---|---:|---:|---:|
+| Machado | 1d6 +5 | Impacto → Corte | **+230%** | **−50%** | 0 |
+| Montante | 2d6 +10 | Impacto → Corte | +40% | −11% | +20% |
+| Machado de Arremesso | 1d6 +7 | Impacto → Corte | **+114%** | **−33%** | +200% |
+| Picareta de Guerra | 1d6 +5 | Impacto → Perfuração | **+230%** | **+350%** | +1,67 |
+| Adaga | 1d6 +3 | Corte → Perfuração | 0 | +2,50 | +0,50 |
+
+**O sinal depende do alvo, e as duas pontas são grandes.** Contra alvo sem armadura as três que
+foram para Corte sobem muito, porque o Impacto absorve Vigor + Centelha e o Corte só Centelha.
+**Contra malha duas delas descem**, porque a malha protege mais contra corte (9) que contra
+impacto (8). Somando os quinze pares arma × alvo: **dez sobem** (média +2,52 de dano por golpe),
+**três descem** (média −0,78) e dois não mudam.
+
+**E a Adaga não zerou, subiu.** O medo era o gate de Perfuração, e ele não morde ninguém hoje:
+`gatePerfuracaoAbre` existe em `src/lib/calc.ts` e **nenhum caminho de produção a chama**, nem
+`resolverGolpe`, nem a folha do Grid, nem o harness. O risco é real na régua e nulo no motor, e
+vira real no dia em que alguém ligar o gate: aí a Adaga (Nível de Perfuração 0) passa a resvalar
+em porte Enorme, Imenso e Colossal. **Enquanto isso, a troca a melhora contra armadura**, porque
+a Absorção de Perfuração é a mais baixa das três (4 na malha contra 9 de corte).
+
+**O oráculo dos lances foi recoletado, e saiu byte a byte igual.** A bancada do `?lances=1` monta
+combatentes sintéticos e escolhe o `tipoDano` por construção, sem passar por `resumoCombatePC`:
+os 1.315 lances **não** envelheceram com a D37, e só o carimbo do commit mudou. Anotado no
+coletor para a pergunta não voltar.
+
+**O `personagens.resumo` do banco.** Ele guarda a expressão de dano, e portanto guarda o tipo
+velho até alguém regravar. Duas coisas: **o combate não lê dele.** `resumoDe` chama
+`resumoCombatePC(ficha)` ao vivo para peça de PC, então o Grid já roda com a régua nova desde o
+deploy. Quem lê o cache é a fatia "Status"/"Vida" que os companheiros veem. E **a regravação já é
+automática**: a aba Grupo recalcula e grava o que diferir a cada visita do mestre ou do dono.
+Não há migração a fazer.
+
 ---
 
 ## 6 · A lista ⚑
@@ -351,7 +504,14 @@ O que a bateria usa e não tem na régua:
 4. **o mapa**: faixa de `dist + 8` por `n + 2`, escala 1 m por hexágono. É ele que faz
    `fuga-consumada` dominar nas células encostadas (§4);
 5. **o custo de tela da declaração NA MÃO**. A bateria roda a política automática, em que declarar
-   não custa clique nenhum, e esse é o número certo do que ela mede.
+   não custa clique nenhum, e esse é o número certo do que ela mede. É a linha mais cara da
+   tabela da §2.2 numa mesa com jogadores, e vale zero aqui;
+6. **o custo de tela do REDIRECIONAMENTO do golpe no caído** (D44). Mesma origem, consequência
+   diferente: aqui não é uma linha que a bateria zera, é uma parada de **classe i** que ela apaga
+   do numerador. Nenhuma peça desta bateria é de jogador, e é a de jogador que abre a caixa;
+7. **o critério "o inimigo de pé MAIS PRÓXIMO"** para onde o golpe redirecionado desce (D44).
+   `regras.json` diz que redireciona ao alcance da arma e não diz para qual. Número pequeno, mas
+   escrito dentro do motor, que é o lugar exato que o D13 vigia.
 
 Saiu desta lista o multiplicador de passo do E4, junto com o eixo (D31).
 
@@ -373,10 +533,16 @@ Saiu desta lista o multiplicador de passo do E4, junto com o eixo (D31).
    por construção;
 6. **o fator de conversão para segundos** (o **L7**). Toda a leitura sai em gestos e em Ticks, e um
    gesto pode levar um segundo ou trinta;
-7. **o caminho HUMANO da regra do golpe no caído** (D38). A bateria roda o robô, que redireciona
-   sozinho; a caixa de escolha do mestre existe no código e nenhuma batalha passou por ela.
+7. **o caminho HUMANO da regra do golpe no caído** (D38, D41). A bateria roda o robô, que
+   redireciona sozinho; a caixa de escolha do mestre existe no código, tem teste de clique
+   (`npm run caido`) e **nenhuma batalha passou por ela**. É o ⚑ 6 da §6, e o único jeito de
+   fechá-lo é uma peça de jogador no elenco;
+8. **a fração de gestos com jogador na mesa.** Os 50% da §2.2 são do robô. Com jogadores,
+   `declarar` sai de zero gesto e entra com um diálogo inteiro, e o denominador cresce muito mais
+   que o numerador: **a fração de iii vai CAIR**, e ninguém sabe para quanto. É a pergunta mais
+   importante que esta bateria deixa em aberto.
 
-E uma que não é de escopo e sim de método: **o elenco uníssono empata**. Metade das 48 células
+E uma que não é de escopo e sim de método: **o elenco uníssono empata**. Metade das 96 células
 estoura o teto de 2.000 Ticks porque o Escudeiro não fura a Absorção do Escudeiro. Isso continua
 sendo o achado e não o defeito (é o que `margem` e `bloqueio` existem para consertar), mas
 significa que **metade da grade mede um jogo que não anda**. Com as bandeiras ligadas, essa metade
@@ -388,7 +554,7 @@ volta a ser jogo, e aí ela precisa rodar com as 400 voltas e não com 50.
 
 ```
 node scripts/sim/bateria.mjs --sanidade          # a que existe para falhar
-node scripts/sim/bateria.mjs --saida .sim/<data> # a grande, 48 células
+node scripts/sim/bateria.mjs --saida .sim/<data> # a grande, 96 células
 node scripts/sim/agregar.mjs --saida .sim/<data>
 ```
 
