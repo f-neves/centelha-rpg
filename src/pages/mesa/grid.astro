@@ -8651,14 +8651,21 @@ const SETAS = [
        *
        * A pergunta que separa os dois casos é `dlg.open`: num fechamento de
        * verdade a caixa está fechada; num fechamento alheio ela está aberta,
-       * porque é a MINHA. Aí o ouvinte se registra de novo e espera o dele.
+       * porque é a MINHA. Aí o ouvinte não faz nada e continua esperando o dele.
+       *
+       * E ele fica registrado SEM `{ once: true }`, saindo à mão quando de fato
+       * atende. A primeira versão usava `once` e se registrava de novo dentro do
+       * próprio corpo, e isso EXPLODE: com dois ouvintes velhos pendurados, cada
+       * fechamento alheio dobra a pilha, e uma cena com vinte folhas derruba a
+       * aba por esgotar memória. Foi assim que apareceu, no smoke do tabuleiro.
        */
       const aoFechar = () => {
-        if (dlg.open) { dlg.addEventListener('close', aoFechar, { once: true }); return; }
+        if (dlg.open) return;              // fechamento alheio: eu continuo esperando
+        dlg.removeEventListener('close', aoFechar);
         void gravarFixos();
         if (!respondeu) resolve(null);
       };
-      dlg.addEventListener('close', aoFechar, { once: true });
+      dlg.addEventListener('close', aoFechar);
       dlg.showModal();
     });
   }
