@@ -1238,6 +1238,22 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   contador de ocasião, e só então medir. É o mesmo mecanismo que matou o eixo E4 (D31) antes de
   ele virar linha de relatório. Isto reparte o **L1** em quinze tarefas de motor, e **nenhuma
   medição de bandeira vale antes**.
+- [ ] **L27 · [PEQUENO, E COM HORA MARCADA] Apagar `rpg-system/centelha-revisora/`
+  e tirar a linha do `.gitignore` junto.** A pasta foi engano de caminho na montagem da frente de
+  revisão: o worktree de verdade mora fora daqui (`../centelha-revisora`), e o que ficou na raiz é
+  uma cópia byte a byte do `CLAUDE.md` que já está lá.
+
+  **A linha sai junto, e esse é o ponto do item.** O `.gitignore` é versionado, e uma regra
+  permanente escondendo um caminho que não existe é pior que a pasta: daqui a seis meses alguém a
+  encontra e não sabe o que ela protegia.
+
+  **Ordem:** apagar a pasta, tirar a linha, conferir com `git status` que a árvore continua limpa,
+  e só então commitar as duas coisas juntas.
+
+  **Quando:** no primeiro commit depois que a resposta da revisora chegar e for tratada. Não antes,
+  e não em branch própria. Enquanto isso a linha do `.gitignore` fica, porque é ela que mantém o
+  `npm run rodada` funcionando (ele recusa abrir rodada com a árvore suja).
+
 - [ ] **L26 · [PRIMEIRO, E NÃO É CÓDIGO] Por que as mesas rolam o dado na mão?** Medido em 03/09
   (`09` §2.5): recontando os mesmos 9.600 combates com o custo do modo `site`, a classe iii cai de
   50,4% para 25,3% e o **trabalho total cai 33,6%**, sem uma linha de motor. Dois terços dos 50%
