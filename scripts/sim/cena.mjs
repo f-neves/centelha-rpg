@@ -61,17 +61,24 @@ export const EIXOS = {
 };
 
 /**
- * E4 · A ASSIMETRIA DE PASSO, que não cabe no cruzamento.
+ * E4 · A ASSIMETRIA DE PASSO, CORTADA, e a bateria de sanidade é quem cortou.
  *
- * Ela é OFAT em volta de cada âncora (3×3, distância média), e não um fator do
- * núcleo, porque cruzá-la com tudo dobraria a grade para medir um eixo que só
- * tem dois níveis e um deles é o próprio núcleo.
+ * Ela entrou como OFAT em volta de cada âncora, com o lado `b` andando 2× pelo
+ * ajuste por instância do passo. A sanidade acendeu o alarme: **zero
+ * re-projeções**, contra 0,3 da âncora. O eixo é inerte, e o motivo é do robô e
+ * não do laço: a `decisaoAutomatica` **avança para o alvo**, nunca se afasta
+ * dele. Quem anda mais depressa chega mais cedo, e a assimetria só produziria o
+ * "alvo que nunca se alcança" se alguém corresse PARA LONGE. Isso só acontece
+ * na fuga, e a fuga dura de 0,3 a 22 Ticks.
  *
- * ⚑ O MULTIPLICADOR É INVENTADO, e é o único número inventado que entra pelo
- * caminho da mesa: `combatentes.dados.passo`, o ajuste por instância que o
- * mestre usa para fixar a corrida do lobo ferido. A régua não tem dois
- * arquétipos com passo 2× e mesma Defesa, e produzir a assimetria pela armadura
- * mexeria em Defesa e Absorção junto, confundindo o eixo com E5.
+ * O que o eixo ia medir está medido, e por outro caminho: a re-projeção existe
+ * aos milhares, e vem da MULTIDÃO QUE SE TRANCA (as células de 2×8 a
+ * distância, onde o perseguidor esbarra na aglomeração e re-projeta a agenda
+ * todo Tick). Manter E4 aceso seria publicar uma linha de zeros ao lado da
+ * linha que responde a pergunta.
+ *
+ * O valor fica escrito porque o alarme que o cortou continua no `agregar.mjs`:
+ * no dia em que existir uma política que recua, o eixo volta com uma linha.
  */
 export const PASSO_ASSIMETRICO = 2;
 
@@ -91,15 +98,10 @@ export function celulas() {
         }
       }
     }
-    // E4, OFAT em volta de cada âncora: 3×3, distância média, lado `b` mais
-    // rápido pelo ajuste por instância.
-    for (const [nc, cic] of Object.entries(EIXOS.ciclo)) {
-      out.push({
-        id: `${nc}-media-3x3-passo${PASSO_ASSIMETRICO}x-${nl}`,
-        ciclo: nc, distancia: 'media', pecas: '3x3', n: 3, dist: 18, arq: cic,
-        limiar, nivelLimiar: nl, passoMult: PASSO_ASSIMETRICO,
-      });
-    }
+    // E4 saiu daqui em 03/09: a sanidade mostrou que ele é inerte com esta
+    // política (ver o comentário de `PASSO_ASSIMETRICO`). O caminho de código
+    // do `passoMult` fica em `montarCena`, porque o eixo volta no dia em que
+    // existir uma política que recua.
   }
   return out;
 }
