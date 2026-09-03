@@ -1024,7 +1024,12 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   Tick do que a folha calculou. `rolagem.ts:11` é `Math.random` e é a única fonte de acaso
   do combate. Ganha ponto de injeção, e `mesa-ficha.ts:133` e `artes-grid.ts:1342` precisam do mesmo
   tratamento. É o que permite o teste-espelho comparar as rolagens.
-- [ ] **L6 · [DEPOIS] O harness.** Grade oficial de **112 células e 56.000 batalhas** (`02`
+- [x] **L6 · [O ESQUELETO FEITO em 02/09] O harness.** `scripts/sim/` com o laço do Tick, o elenco
+  tirado da régua, o log com classe de parada, quatro invariantes, a repartição em processos e o
+  agregador. A **bateria mínima** de doze células rodou: 6.000 batalhas em 53 s, e **59,9% das
+  paradas são classe iii**. Detalhe e decisões em `07-caminho-curto.md` §10. **Falta o espelho de
+  motor**, que é quem prova a ordem das operações dentro do Tick. O texto original abaixo.
+- [ ] ~~**L6 · [DEPOIS] O harness.**~~ Grade oficial de **112 células e 56.000 batalhas** (`02`
   §0.10.1), um piloto de 2.000 em **cada uma das duas âncoras** com a regra de decisão escrita antes
   de rodar, e 15 invariantes que abortam a batalha (`03` §3.1). O elenco tem PCs **e** criaturas do
   bestiário (D10), e cada bandeira é medida na célula em que ela morde. Só depois de L1 a L5.

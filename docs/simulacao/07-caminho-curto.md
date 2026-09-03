@@ -978,3 +978,128 @@ Para ficar claro o que este planejamento **não** decidiu:
   **teto**, e não sobre a classe;
 - **quando o espelho de motor é escrito**, que é o que separa o passo 4 de ter critério de pronto ou
   não ter nenhum.
+
+---
+
+## 10 · O harness, feito, e a primeira bateria rodada
+
+Feito em 02/09. Os passos 3 a 10 da sequência da §5.1 estão entregues, e a
+bateria mínima rodou: **6.000 batalhas em 53 segundos**.
+
+### 10.1 · O que existe agora
+
+```
+scripts/sim/
+  lib-ponte.mjs     empacota src/lib UMA vez por processo, com esbuild
+  cena.mjs          os dois arquétipos e as doze células
+  motor.mjs         o laço do Tick: as cinco fases, e as paradas com classe
+  log.mjs           o registro em memória, e o resumo de uma batalha
+  invariantes.mjs   os quatro que pegam erro de motor
+  rodar.mjs         um processo, uma faixa de batalhas
+  bateria.mjs       reparte em processos (fork) e escreve o manifesto
+  agregar.mjs       as três tabelas do relatório
+```
+
+`npm run bateria` roda, `npm run agregar` lê.
+
+### 10.2 · As decisões desta passada
+
+**D12 · O par de perfis do D1 é redundante, e sai.** A decisão 1c mandava rodar
+cada batalha duas vezes com a mesma semente, uma com as paradas de classe iii
+resolvidas pelo motor e outra consultando, e ler a diferença. **Se a classe iii é
+aritmética e aritmética não rola dado, as duas execuções são idênticas**: o
+motor resolve a mesma coisa, e a única diferença é se a parada é CONTADA. Então
+a diferença já está no campo `paradas {i, ii, iii}` de uma execução só, e as
+6.000 execuções extras não comprariam nada. **Fica uma execução, e a leitura do
+D1 é a fração de iii.** O invariante do consumo de acaso (P §7.3) continua
+valendo como conferência da premissa: se alguma parada de classe iii rolar dado,
+ela não é classe iii e a taxonomia está errada ali.
+
+**D13 · O elenco sai da régua, e não da minha cabeça.** A primeira versão do
+`cena.mjs` inventava os números de combate, e o resultado apareceu na primeira
+execução: uma batalha 1v1 levava 568 Ticks porque a Absorção inventada (7) era
+maior que o dano médio inventado (6,5), e quase nenhum golpe passava. Os dois
+arquétipos passaram a ser **fichas**, resolvidas por `resumoCombatePC` a partir
+da ficha de referência do contrato ficha↔mesa, com o equipamento trocado. O que
+resta ⚑ são os traços (atributos e perícias), porque um gerador de personagem
+não existe. **Número inventado não é só uma etiqueta no relatório: ele produz um
+jogo que não existe.**
+
+**D14 · A célula uníssona não resolve, e isso é o achado, não o defeito.** Com
+os números da régua, **Escudeiro contra Escudeiro empata**: bolo `3d6+2 +3` (~13)
+contra Defesa 16, e dano `1d6 +3` (~6,5) contra Absorção de corte 7. As 3.000
+batalhas uníssonas estouram o teto de 2.000 Ticks, todas. **Isso é o Grid de
+hoje, com as quinze bandeiras desligadas**, e é exatamente o que a `margem` e o
+`bloqueio` existem para consertar. Não se ajusta o elenco para a batalha
+terminar: ajustar seria escolher o elenco que produz o número desejado.
+
+E o D8b se prova aqui, de graça: **as métricas por Tick sobrevivem à batalha que
+não termina** (dois mil Ticks de carga real), e só as por batalha ficam sem
+sentido. A régua que diz "a duração é multiplicador e não critério" era a única
+que deixava esta bateria valer alguma coisa.
+
+**D15 · O tempo é derivado, e a batalha é um processo.** A semente de cada
+batalha é `hash32(semente_mestre, celula, repeticao)`, então a batalha 743 é
+reproduzível sem depender de nenhuma anterior. E a repartição é por **processo**
+(`child_process.fork`), nunca por linha de execução: o `acaso.ts` guarda a fonte
+num `let` de módulo, e duas batalhas no mesmo processo dividiriam a sequência em
+silêncio.
+
+### 10.3 · A primeira bateria, e o que ela diz
+
+`6.000 batalhas · 0 inválidas · 3.000 estouraram o teto (as uníssonas)`
+
+**A carga, por célula** (as principais, por etapa):
+
+| célula | par/Tick | p90 | pico | gestos/golpe | Ticks vazios | tempo morto |
+|---|---:|---:|---:|---:|---:|---:|
+| uníssono · encostado · 1v1 | 1,14 | 4 | 4 | 4,00 | 0,86 | 2,00 |
+| uníssono · encostado · 3×3 | 3,43 | 12 | 12 | 4,00 | 0,86 | 2,00 |
+| uníssono · encostado · 2×8 | 9,15 | 32 | 32 | 4,00 | 0,86 | 2,00 |
+| uníssono · longa · 2×8 | 11,68 | 24 | 32 | 8,19 | 0,71 | 2,01 |
+| coprimo · encostado · 1v1 | 1,08 | 2 | 4 | 4,12 | 0,74 | 2,52 |
+| coprimo · encostado · 3×3 | 3,05 | 6 | 12 | 4,29 | 0,73 | 2,55 |
+| coprimo · encostado · 2×8 | 7,64 | 16 | 32 | 4,43 | 0,69 | 2,55 |
+| coprimo · longa · 2×8 | 7,80 | 15 | 32 | 7,64 | 0,47 | 4,06 |
+
+**A composição, que é a tabela que responde a pergunta:**
+
+> **59,9% das paradas são de classe iii**, ou seja aritmética de escrituração, e
+> é esse o tamanho do que a automação pode tirar.
+
+E a fração **sobe com a distância**: nas células de 2×8 longa ela vai a 70% e
+75%, porque a re-projeção da agenda é classe iii e acontece a cada Tick de
+viagem, para cada perseguidor.
+
+**Seis coisas que a bateria já respondeu:**
+
+1. **de que classe é a carga**: seis em cada dez paradas são conta, e conta é
+   automatizável. Automação é a resposta certa para o problema;
+2. **quanto ela compraria**: as mesmas seis em cada dez, e mais nas cenas de
+   perseguição;
+3. **onde o gargalo está**: na **travessia**, e não na caixa. A fração de Ticks
+   vazios vai de 0,47 a 0,86, ou seja **entre metade e cinco sextos dos cliques
+   no ⏭ não produzem nada**;
+4. **total ou pico**: o pico bate no **teto teórico** (o número de peças × 2) em
+   toda célula de 2×8. A fila empilha, e empilha até o limite;
+5. **a colisão de agenda faz o pico**: no uníssono o p90 **é** o pico (12 e 32);
+   no coprimo o p90 fica na metade dele. É a previsão da §3, confirmada;
+6. **a duração**: as células coprimas fecham em **41 a 74 Ticks**, dentro dos 37
+   a 47 que a R2 §D1 mediu na bancada, em outro sistema e sem mapa. **A cópia
+   produz batalhas do tamanho certo**, que é a primeira evidência independente de
+   que o laço não está absurdo.
+
+**E o que ela não diz**, escrito para ninguém citar de menos: nada sobre quanto a
+política pesa (roda uma só), nada sobre o que as regras novas mudam (nenhuma
+ligada), e nada sobre segundos, porque um gesto por parada é a etiqueta provisória
+até a tabela de custo de tela existir.
+
+### 10.4 · O que continua faltando, e é honesto dizer
+
+- **o espelho de motor.** O laço não foi comparado com a mesa Tick a Tick, e é
+  ele quem prova a ORDEM das operações. As peças passam e isso não é o laço estar
+  certo (§5.2). **É o próximo passo, e o mais importante de todos.**
+- **a tabela de custo de tela**, que converte parada em clique;
+- **o `aid` no caminho das criaturas**, que o elenco de dois PCs não exercita;
+- **as cinco políticas**, a grade de 112, o elenco de sete e as criaturas: tudo
+  isso é a bateria seguinte, e a §4 já dizia que não entrava nesta.

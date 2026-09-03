@@ -30,3 +30,6 @@ bash.exe.stackdump
 Thumbs.db
 *.log
 .~lock.*#
+
+# a saida das baterias de simulacao: cada uma tem o seu manifesto e e refeita
+.sim/
