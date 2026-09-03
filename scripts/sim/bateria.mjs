@@ -89,6 +89,12 @@ const manifesto = {
     + ` --n ${N} --unissono ${UNI} --semente ${SEMENTE} --saida .sim/avulsa`,
   // O QUE FOI INVENTADO, e a regra dura da P §2.7: métrica que depende só de
   // entrada inventada não é achado sobre o sistema, é sensibilidade.
+  // AS QUINZE BANDEIRAS ESTÃO TODAS DESLIGADAS, e não é escolha desta bateria:
+  // NENHUMA delas é lida por caminho de produção nenhum (varredura de 03/09, o
+  // L25). O perfil viaja no encontro, é gravado dentro da entrada do lance e
+  // nunca consultado. Esta bateria mede a CARGA, que não depende de bandeira; a
+  // bateria de COMPARAÇÃO DE REGRAS, que dependeria, ainda não pode existir.
+  bandeirasLidasPeloMotor: false,
   inventado: [
     'a POLÍTICA é a `decisaoAutomatica` da mesa, e não uma das cinco da §0.4 P4.'
     + ' É invenção do PRODUTO e não minha, mas define o alcance de tudo:'
@@ -102,10 +108,11 @@ const manifesto = {
     `o multiplicador de passo do eixo E4 (${PASSO_ASSIMETRICO}×), posto pelo ajuste`
     + ' por instância `combatentes.dados.passo`, que é o caminho da mesa. A régua não'
     + ' tem dois arquétipos com passo dobrado e mesma Defesa',
-    'o custo de tela da DECLARAÇÃO NA MÃO. A bateria roda a política automática,'
-    + ' em que declarar não custa clique nenhum, e esse é o número certo do que ela'
-    + ' mede; o caminho manual tem variantes demais para um número só'
-    + ' (ver scripts/sim/custo-tela.mjs)',
+    'a DECLARAÇÃO É SEMPRE AUTOMÁTICA, e por isso vale zero gesto. Não é mais um'
+    + ' número inventado (o caminho manual foi contado em 03/09: 2 gestos pelo'
+    + ' arrasto, 4 pelo menu), mas continua sendo um limite do que a bateria MEDE:'
+    + ' nenhuma batalha aqui tem jogador declarando. O relatório publica o efeito'
+    + ' como cenário, em vez de escondê-lo (ver 09 §2.4 e scripts/sim/custo-tela.mjs)',
     'o custo de tela do REDIRECIONAMENTO do golpe no caído. A regra manda a peça'
     + ' em modo automático redirecionar sozinha, sem caixa, e a bateria roda SÓ'
     + ' peça automática: nenhuma das batalhas tem peça de jogador. Numa mesa de'

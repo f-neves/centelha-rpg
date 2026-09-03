@@ -1195,22 +1195,43 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `resolverGolpe`, nem a folha do Grid, nem o harness. Hoje o Perfurante não resvala em ninguém.
   Ou o gate entra no `resolverGolpe` (e aí a Adaga, com Nível de Perfuração 0, passa a resvalar em
   porte Enorme para cima), ou ele sai da régua. Ficar escrito e não valer é o pior dos três.
-- [ ] **L25 · [ANTES DO L1] Nenhuma das quinze bandeiras é lida por caminho de produção nenhum.**
-  Varredura de 03/09 (`09` §5.5): o perfil é lido em UM lugar do código (`grid.astro:8139`) e lá
-  ele é **gravado dentro da entrada do lance**, para o oráculo. O tipo `perfil?: Record<string,
-  boolean>` existe em `lance.ts` e **`entrada.perfil` não é lido em lugar nenhum**: nem em
-  `resolverGolpe`, nem em `quase-acerto.ts`, nem em `calc.ts`, nem no harness. A `notaEstado` do
-  perfil em `regras.json` já dizia isso de três delas; vale para as quinze.
+- [ ] **L25 · [PRÉ-REQUISITO DA GRADE DE 112] O item 1.0 da Etapa 1 foi dado como feito e não
+  está feito.** Ele entregou o carimbo, a migração e a tela, e **não entregou a única coisa que
+  fazia o carimbo valer: alguém que leia o perfil na hora de aplicar a regra.**
 
-  **A consequência é sobre a GRADE, e é séria:** 68 das 112 células oficiais existem para medir
-  bandeiras, e hoje todas dariam **zero por dois motivos indistinguíveis** · ou a regra não morde
-  naquela cena (o zero legítimo, que é informação), ou a regra não roda em cena nenhuma (o zero
-  vazio, que não é). Os dois saem iguais no CSV.
+  O perfil é gravado, viaja no encontro, aparece na tela, é comparável e é recarimbável. E é lido
+  em **um** lugar do código de produção, `grid.astro:8139`, onde ele é copiado para dentro da
+  entrada do lance, para o oráculo. `entrada.perfil` **não é consultado em lugar nenhum**: nem em
+  `resolverGolpe`, nem em `quase-acerto.ts`, nem em `calc.ts`, nem no harness. Nenhuma das quinze
+  bandeiras faz o motor tomar um caminho diferente.
 
-  **A ordem obrigatória, para cada uma das quinze:** ligar a chamada no motor, provar que ela
-  morde com um contador de ocasião, e só então medir. É o mesmo mecanismo que matou o eixo E4
-  (D31) antes de ele virar linha de relatório. Isto reparte o **L1** em quinze tarefas de motor,
-  e nenhuma medição de bandeira vale antes.
+  **A infraestrutura da comparação de regras existe inteira e não está conectada ao motor.**
+
+  **E o desenho de 112 células pressupunha um mecanismo que não existe.** As 68 que existem para
+  medir bandeiras dariam **zero por dois motivos indistinguíveis**: ou a regra não morde naquela
+  cena (o zero legítimo, que é informação), ou a regra não roda em cena nenhuma (o zero vazio, que
+  não é). Os dois saem iguais no CSV.
+
+  **Ninguém percebeu em sete rodadas de documento**, e o motivo é mecânico: **todos os relatórios
+  rodaram com tudo desligado, e tudo desligado é o único estado em que a ausência do mecanismo é
+  invisível.** Com o perfil todo `false`, "a bandeira está desligada" e "a bandeira não é lida"
+  dão o mesmo comportamento, o mesmo número e o mesmo log. O primeiro `true` teria acusado na
+  primeira batalha.
+
+  **O que mais foi desenhado em cima dessa premissa** (`02` §0.6.1, a tabela nova): as células
+  hospedeiras, a referência única do F5, a soma de aditividade e as três células da mediana. As
+  quatro continuam corretas como desenho e inertes como medida. **O contador de ocasiões por
+  bandeira é o único que sobrevive intacto**, e vira o instrumento que detecta o problema: ele
+  daria zero, e o zero dele é inequívoco.
+
+  **O que NÃO cai junto**, e é o que a frente produziu de sólido: as métricas de carga, a partição
+  de quatro estados do Tick e os quinze invariantes, os três termos da conclusão, os 11,4% do Tick
+  morto e o resultado do limiar de fuga. Nada disso depende de bandeira nenhuma.
+
+  **A ordem, para cada uma das quinze:** ligar a chamada no motor, provar que ela morde com um
+  contador de ocasião, e só então medir. É o mesmo mecanismo que matou o eixo E4 (D31) antes de
+  ele virar linha de relatório. Isto reparte o **L1** em quinze tarefas de motor, e **nenhuma
+  medição de bandeira vale antes**.
 - [ ] **L24 · [DEPOIS] O ⏭ é um terço do trabalho do mestre, e nenhuma regra o toca.** Medido em
   03/09 (`09` §2.3 e §2.4): o clique de avançar o Tick são 33% dos gestos do mestre na fase de
   combate, contra 50% de classe iii e 17% de classe ii. Ele é o item mais frequente da mesa, o
@@ -1232,9 +1253,11 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   - **com jogador na mesa a contagem NÃO muda, só o custo.** `declarar` já é uma parada em toda
     declaração (228.332 delas), então o Tick em que alguém declara já não é vazio hoje. Com `G`
     gestos por declaração manual, a economia com piso vai de 11,4% (G=0) a 6,2% (G=4), e os
-    cliques poupados em números absolutos não mudam nada. **Isto não é o L7**: o que falta é
-    preencher o custo de tela do caminho manual (⚑ 5 da `09` §6), e não converter gesto em
-    segundo.
+    cliques poupados em números absolutos não mudam nada. **E a banda fechou em 03/09**, lendo o
+    diálogo em vez de medir gente: são **2 gestos pelo arrasto** (soltar a peça em cima do alvo,
+    mais o OK) e **4 pelo menu** (botão direito, ⚔, clique no alvo, mais o OK), com o diálogo
+    abrindo em todos os padrões que o robô usaria. Com jogadores na mesa, **a economia com piso
+    fica entre 6,2% e 8,1%**. Isto não era o L7 e não precisava de bateria nenhuma.
 
   **Não está decidido e nada foi implementado.** O que ainda falta para decidir é uma peça que se
   MOVA diferente do robô (o L20): ela muda a trajetória, e portanto a fatia de travessia que

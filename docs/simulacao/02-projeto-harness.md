@@ -11,7 +11,32 @@ quatro, em `docs/simulacao/`:
 | `03-respostas.md` | as contradições deste documento resolvidas, os 14 invariantes do harness, e as medições novas |
 | `04-prontidao.md` | a verificação de prontidão: se cada métrica tem dado, se cada eixo é separável, e o que falta decidir |
 
-**Nenhuma linha deste documento foi implementada.**
+**Nenhuma linha deste documento foi implementada.** (Escrito em 02/09, e superado: ver a seção
+seguinte, que diz o que foi implementado e o que não foi.)
+
+## As DUAS baterias, e só uma está viva (03/09)
+
+Este documento foi escrito supondo **uma** bateria. São duas, elas medem coisas diferentes, e
+misturá-las foi o que deixou passar sete rodadas o buraco da Etapa 1 (a caixa ⚠ da §0.6.1).
+
+| | **A bateria de CARGA** | **A bateria de COMPARAÇÃO DE REGRAS** |
+|---|---|---|
+| a pergunta | quanto o mestre trabalha, e de que tipo é esse trabalho | quanto cada regra muda a carga |
+| usa bandeira? | **nenhuma** | as quinze, uma a uma |
+| a grade | 96 células (`E1 × E2 × E3 × limiar × tabuleiro`) | as 112 oficiais |
+| **estado** | **VIVA.** Rodou quatro vezes em 03/09, 21.600 batalhas por volta, e produziu a conclusão dos três termos | **NÃO EXISTE**, e não pode existir hoje: nenhuma bandeira é lida pelo motor |
+| onde ler | `09-bateria-grande.md` | esta pasta, como projeto |
+
+**A de carga não espera pela outra.** Ela é a que responde à pergunta original desta frente (a
+carga do mestre no Grid), ela já rodou, e nada nela depende de bandeira: a conclusão dos três
+termos (50% aritmética · 33% relógio · 17% julgamento), os 11,4% do Tick morto e o resultado do
+limiar de fuga são todos dela.
+
+**A de comparação de regras é a SEGUNDA bateria, e a primeira coisa dela não é rodar, é ligar o
+motor.** O **L25** (as quinze bandeiras lidas por caminho de produção, cada uma com o contador de
+ocasião que prova que ela morde) deixa de ser item de pendência e passa a ser **pré-requisito da
+grade de 112**. Enquanto ele não existir, ligar uma bandeira e medir produz um zero que não se
+distingue do zero legítimo.
 
 ## Como ler isto
 
@@ -1354,6 +1379,36 @@ saiu corrigida de lá.
 
 #### Etapa 1 · O carimbo do perfil, e depois as nove bandeiras que não dependem do núcleo
 
+> ## ⚠ O item 1.0 foi dado como FEITO e não está feito (03/09)
+>
+> **O 1.0 entregou o carimbo, a migração e a tela, e não entregou a única coisa que fazia o
+> carimbo valer: alguém que leia o perfil na hora de aplicar a regra.**
+>
+> O perfil é gravado, viaja no encontro, aparece na tela, é comparável e é recarimbável. E é lido
+> em **um** lugar do código de produção, `grid.astro:8139`, onde ele é copiado para dentro da
+> entrada do lance (`perfil: { ...REGRAS_CENA }`), para o oráculo. O tipo existe em `lance.ts`
+> (`perfil?: Record<string, boolean>`) e **`entrada.perfil` não é consultado em lugar nenhum**:
+> nem em `resolverGolpe`, nem em `quase-acerto.ts`, nem em `calc.ts`, nem no harness. **Nenhuma
+> das quinze bandeiras faz o motor tomar um caminho diferente.**
+>
+> **A infraestrutura da comparação de regras existe inteira e não está conectada ao motor.**
+>
+> **E o desenho de 112 células pressupunha um mecanismo que não existe.** Sessenta e oito delas
+> existem para medir bandeiras, e hoje todas dariam **zero por dois motivos indistinguíveis**: ou
+> a regra não morde naquela cena (o zero legítimo, que é informação), ou a regra não roda em cena
+> nenhuma (o zero vazio, que não é). Os dois saem com o mesmo valor no CSV e nada na leitura os
+> separa.
+>
+> **Ninguém percebeu em sete rodadas de documento**, e o motivo é mecânico e não de atenção:
+> **todos os relatórios rodaram com tudo desligado, e tudo desligado é o único estado em que a
+> ausência do mecanismo é invisível.** Com o perfil todo `false`, "a bandeira está desligada" e "a
+> bandeira não é lida" produzem exatamente o mesmo comportamento, o mesmo número e o mesmo log. O
+> primeiro `true` teria acusado na primeira batalha.
+>
+> A `notaEstado` do perfil em `regras.json` chegou perto disso e parou na metade: ela diz que
+> nenhuma bandeira está ligada no motor, e trata isso como estado transitório de três delas. É o
+> estado das quinze, e não é transitório, é um item de Etapa que ficou por fazer.
+
 **1.0 · O carimbo, antes da primeira bandeira.** Uma coluna `encontros.perfil jsonb`, escrita **uma
 vez** na criação do encontro e lida por ele dali em diante. Sem ela, um deploy troca o `regras.json`
 debaixo de um encontro aberto e a Defesa de uma peça muda entre dois Ticks da mesma cena, que é o
@@ -1383,6 +1438,31 @@ leitura ao vivo, e não o retrato (`06-etapa-0.md` §3.4).
 **1.2 a 1.10 · As nove bandeiras**, cada uma com o espelho de inércia contra a branch da Etapa 0, e
 `test-contrato.mjs` / `test-quase-acerto.mjs` reescritos **no mesmo commit** da bandeira que os
 invalida.
+
+##### O que mais foi desenhado em cima da premissa que não se sustenta
+
+Não é só a grade. Cinco construções desta pasta foram desenhadas para medir algo que hoje não
+roda, e todas continuam corretas **como desenho** e inertes **como medida**:
+
+| construção | onde | o que ela pressupõe |
+|---|---|---|
+| **as células hospedeiras** | §0.10.1, a tabela "onde mora cada bandeira" | que ligar a bandeira muda o resultado NAQUELA cena. Hoje não muda em cena nenhuma |
+| **a referência única do F5** | `04-prontidao.md`, e as seis medidas duas vezes | que o delta da hospedeira contra a âncora extrema mede a bandeira. Hoje os dois lados dão o mesmo número |
+| **a soma de aditividade** | a comparação da soma dos deltas com o perfil todo-ligado | que existe um perfil todo-ligado diferente do todo-desligado. Hoje eles são o mesmo jogo |
+| **o contador de ocasiões por bandeira** | a prova de que a bandeira mordeu | é o único que **sobrevive intacto**, e vira o instrumento que detecta o problema: ele daria zero, e o zero dele é inequívoco |
+| **as três células da mediana** | a fatia de leitura do OFAT | que a mediana separa perfis. Hoje não há perfis a separar |
+
+**O que NÃO cai junto**, e é o que a frente produziu de sólido, porque nada disto depende de
+bandeira nenhuma:
+
+- **as métricas de carga** por Tick, por golpe e por gesto, com a tabela de custo de tela;
+- **a partição de quatro estados do Tick** (o quadro `nada` / `só resolveu` / `só parou` / `ambos`)
+  e os quinze invariantes que a fecham;
+- **os três termos da conclusão** (`09` §2.3): 50% classe iii, 33% o ⏭, 17% classe ii;
+- **os 11,4% do Tick morto** e a banda do avanço automático (`09` §2.4);
+- **o resultado do limiar de fuga** e a conclusão de desenho que saiu dele (`09` §3.1).
+
+Isso não é consolo: é a linha que separa as duas frentes da seção seguinte.
 
 #### Etapa 2 · O núcleo do Tick
 

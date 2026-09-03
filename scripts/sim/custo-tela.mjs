@@ -11,11 +11,26 @@
 // eles NÃO são é tempo: dois cliques podem levar um segundo ou trinta, e medir
 // isso é outro instrumento. Aqui "gesto" é uma ação de entrada, e só.
 //
-// O QUE CONTINUA ⚑: o custo da declaração NA MÃO. A bateria roda a política
-// automática (`decidirAutomaticas`), em que a declaração não custa clique
-// nenhum; numa mesa de verdade o jogador declara pelo diálogo de ataque, e esse
-// caminho tem passos demais e variantes demais para um número só. Enquanto a
-// bateria medir o robô, o zero abaixo é o número certo do que ela mede.
+// O CUSTO DA DECLARAÇÃO NA MÃO, lido do diálogo em 03/09. A bateria roda a
+// política automática (`decidirAutomaticas`), em que declarar não custa clique
+// nenhum, e por isso o `declarar` abaixo vale zero: é o número certo DO QUE ELA
+// MEDE. O que estava ⚑ era o outro lado, o do jogador, e ele não precisava de
+// bateria nenhuma para ser contado, só de ler `grid.astro`:
+//
+//   pelo ARRASTO · soltar a peça em cima do alvo (1) + o OK do diálogo (1) = 2
+//   pelo MENU    · botão direito, ⚔, clique no alvo (3) + o OK (1)          = 4
+//
+// Nos dois caminhos o diálogo abre com TUDO no padrão que o robô usaria: manobra
+// `simples`, modo de deslocamento `batalha`, velocidade preenchida por
+// `passoNoModo` e trajetória automática já marcada. Mexer neles é gesto a mais,
+// e a bateria não exercita manobra que não seja `simples` de qualquer jeito.
+//
+// O próprio código da mesa já dizia o número: "três toques (botão direito, ⚔,
+// clique) viraram um arrasto" (`grid.astro`, na solta do arrasto).
+//
+// Isto NÃO entra no `declarar` abaixo, e a distinção importa: mudar aquele zero
+// mudaria o que a bateria mede, que é o robô. Entra como CENÁRIO no relatório
+// (`09` §2.4), que publica a economia do avanço automático para `G` de 2 a 4.
 
 /**
  * O CLIQUE DO RELÓGIO, um por Tick.
@@ -35,8 +50,12 @@ export const GESTO_DO_TICK = 1;
  */
 export const CUSTO = {
   // A DECISÃO. No automático o robô decide dentro do avanço: zero gestos.
-  // Na mão é o diálogo de ataque, e aí é ⚑ (ver o cabeçalho).
-  declarar: { mesa: 0, site: 0, nota: 'robô: decide dentro do avanço, sem tela' },
+  // Na mão são 2 (arrasto) ou 4 (menu), contados no cabeçalho e usados como
+  // CENÁRIO no relatório, e não aqui: este número é o do que a bateria mede.
+  declarar: {
+    mesa: 0, site: 0, nota: 'robô: decide dentro do avanço, sem tela',
+    naMao: { arrasto: 2, menu: 4 },
+  },
   // A FUGA sai pelo mesmo caminho automático.
   fugir: { mesa: 0, site: 0, nota: 'robô: mesma declaração automática' },
   // A ANATOMIA E A AGENDA saem junto com a declaração, sem tela própria.

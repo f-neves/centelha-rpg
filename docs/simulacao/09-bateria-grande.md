@@ -332,26 +332,34 @@ em toda declaração, automática ou não (228.332 delas). O Tick em que alguém
 não vazio hoje. **A contagem de Ticks vazios não muda com jogador; o que muda é o CUSTO de uma
 parada que já está lá.**
 
-Com `G` gestos por declaração manual (hoje ⚑ zero, porque a bateria roda o robô):
+**O `G` foi lido do diálogo, e a banda fechou entre 2 e 4.** Não precisava de bateria nova, só de
+contar os cliques em `grid.astro`. O diálogo de declaração (`decl-dlg`) abre com **tudo no padrão
+que o robô usaria**: manobra `simples`, modo de deslocamento `batalha`, velocidade preenchida por
+`passoNoModo`, trajetória automática já marcada. Então o caminho mínimo é chegar até ele e
+confirmar:
+
+| caminho | gestos até o diálogo | + o OK | **G** |
+|---|---:|---:|---:|
+| **arrasto** · soltar a peça em cima do alvo | 1 | 1 | **2** |
+| **menu** · botão direito, ⚔, clique no alvo | 3 | 1 | **4** |
+
+O próprio código da mesa já trazia a conta, no comentário da solta do arrasto: *"três toques
+(botão direito, ⚔, clique) viraram um arrasto"*.
 
 | G | trabalho total | economia teto | economia piso |
 |---:|---:|---:|---:|
-| 0 (o robô) | 1.095.869 | 20,0% | **11,4%** |
-| 1 | 1.324.201 | 16,5% | 9,5% |
-| 2 | 1.552.533 | 14,1% | 8,1% |
-| 3 | 1.780.865 | 12,3% | 7,0% |
-| 4 | 2.009.197 | 10,9% | 6,2% |
+| 0 · o robô, que é o que esta bateria mede | 1.095.869 | 20,0% | **11,4%** |
+| **2 · o jogador pelo arrasto** | 1.552.533 | 14,1% | **8,1%** |
+| **4 · o jogador pelo menu** | 2.009.197 | 10,9% | **6,2%** |
 
-**Mesmo com uma declaração manual cara, a economia com piso fica em 6% a 9%.** O número absoluto
-de cliques poupados (218.679 no teto, 125.237 no piso) **não muda nada** com o valor de `G`: só o
-denominador cresce.
+**Com jogadores na mesa, a economia do avanço automático fica entre 6,2% e 8,1% no piso**, e entre
+10,9% e 14,1% no teto. O número absoluto de cliques poupados (218.679 no teto, 125.237 no piso)
+**não muda nada** com o valor de `G`: só o denominador cresce.
 
-**E isso NÃO é o L7.** O L7 converte gesto em segundo, e é outra medição. O que falta aqui são
-duas coisas diferentes: (a) o **custo de tela do caminho manual** de declaração, que é uma tabela
-a preencher lendo o diálogo de ataque, e não uma medição de humanos (é o ⚑ 5 da §6); e (b) uma
-peça que **se mova diferente** de como o robô move (recua, reposiciona), porque essa muda a
-trajetória e portanto a contagem de Ticks de travessia. A segunda é o **L20**, e é a única das
-duas que exige elenco novo.
+**E nada disto é o L7.** O L7 converte gesto em segundo, e é outra medição. O que ainda falta é
+uma peça que **se mova diferente** de como o robô move (recua, reposiciona), porque essa muda a
+trajetória e portanto a fatia de travessia que separa o piso do teto. É o **L20**, e é a única
+coisa aqui que exige elenco novo.
 
 > **O que fica registrado:** a pergunta tem tamanho (**11,4%** com piso, 20,0% com teto), tem lugar
 > (interface, e não regra), tem contra-argumento medido (26 pontos de travessia entre piso e teto)
@@ -720,37 +728,61 @@ deploy. Quem lê o cache é a fatia "Status"/"Vida" que os companheiros veem. E 
 automática**: a aba Grupo recalcula e grava o que diferir a cada visita do mestre ou do dono.
 Não há migração a fazer.
 
-### 5.5 A varredura das quinze bandeiras, e o que ela achou
+### 5.5 A varredura das quinze bandeiras, e o achado da rodada
 
-O `gate` estava numa situação específica: a regra escrita na régua, a função escrita em
-`calc.ts`, e **nenhum caminho de produção chamando a função**. A revisão pediu que isso virasse
-regra geral em vez de nota daquela célula, e que as outras catorze fossem varridas. Foram.
+O `gate` estava numa situação específica: a regra escrita na régua, a função escrita em `calc.ts`,
+e **nenhum caminho de produção chamando a função**. A revisão pediu que isso virasse regra geral
+em vez de nota daquela célula, e que as outras catorze fossem varridas. Foram, e o resultado é
+maior que o item que o pediu.
 
-**Todas as quinze estão na mesma situação.**
+**Todas as quinze estão na mesma situação, e isso quer dizer uma coisa específica:**
 
-O perfil é lido em exatamente um lugar do código de produção, `grid.astro:8139`, e lá ele é
-**gravado dentro da entrada do lance** (`perfil: { ...REGRAS_CENA }`), para o oráculo. O tipo
-existe em `lance.ts` (`perfil?: Record<string, boolean>`) e **`entrada.perfil` não é lido em lugar
-nenhum**: nem em `resolverGolpe`, nem em `quase-acerto.ts`, nem em `calc.ts`, nem no harness.
-Nenhuma das quinze bandeiras faz o motor tomar um caminho diferente hoje.
+> **O item 1.0 da Etapa 1, que foi dado como feito, entregou o carimbo, a migração e a tela, e não
+> entregou a única coisa que fazia o carimbo valer: alguém que leia o perfil na hora de aplicar a
+> regra. A infraestrutura da comparação de regras existe inteira e não está conectada ao motor.**
 
-Isso não é notícia nova para a régua: a `notaEstado` do perfil em `regras.json` já dizia que
-"nenhuma está ligada no motor (a margem não entra no dano, o gate não é chamado, o bloqueio não
-existe)". **É notícia para a GRADE**, e é a consequência que ninguém tinha escrito:
+O perfil é gravado, viaja no encontro, aparece na tela, é comparável e é recarimbável. E é lido em
+**um** lugar do código de produção, `grid.astro:8139`, onde ele é copiado para dentro da entrada do
+lance, para o oráculo. `entrada.perfil` **não é consultado em lugar nenhum**: nem em
+`resolverGolpe`, nem em `quase-acerto.ts`, nem em `calc.ts`, nem no harness.
 
-> **68 das 112 células oficiais existem para medir as bandeiras, e hoje TODAS elas mediriam zero
-> por dois motivos indistinguíveis:** ou a regra não morde naquela cena (o zero legítimo, que é
-> informação), ou a regra não roda em cena nenhuma (o zero vazio, que não é). Os dois saem com o
-> mesmo valor no CSV, e nada na leitura os separa.
+**O desenho de 112 células pressupunha um mecanismo que não existe.** As 68 que existem para medir
+bandeiras dariam **zero por dois motivos indistinguíveis**: ou a regra não morde naquela cena (o
+zero legítimo, que é informação), ou a regra não roda em cena nenhuma (o zero vazio, que não é).
+Os dois saem com o mesmo valor no CSV, e nada na leitura os separa.
 
-**A ordem obrigatória, então, vale para as quinze e está escrita no `02`:** ligar a chamada no
-motor, provar que ela morde com um contador de ocasião, e só depois medir a bandeira. O contador
-de ocasião é o mesmo mecanismo dos alarmes da §5, e é o que já matou o eixo E4 (D31) antes de ele
-virar linha de relatório.
+**Ninguém percebeu em sete rodadas de documento**, e o motivo não é desatenção, é mecânico:
+**todos os relatórios rodaram com tudo desligado, e tudo desligado é o único estado em que a
+ausência do mecanismo é invisível.** Com o perfil todo `false`, "a bandeira está desligada" e "a
+bandeira não é lida" produzem exatamente o mesmo comportamento, o mesmo número e o mesmo log. O
+primeiro `true` teria acusado na primeira batalha. A `notaEstado` do perfil em `regras.json`
+chegou perto e parou na metade: ela diz que nenhuma bandeira está ligada no motor, e trata isso
+como estado transitório de três delas.
 
-**O que isso muda no plano:** o L1 (ligar as quinze) deixa de ser "uma tarefa" e passa a ser
-**quinze tarefas de motor, cada uma com um contador de ocasião próprio**, antes de qualquer
-medição. É o **L25**.
+#### O que mais foi construído em cima dessa premissa
+
+| construção | o que ela pressupõe | estado |
+|---|---|---|
+| **as células hospedeiras** (`02` §0.10.1) | que ligar a bandeira muda o resultado NAQUELA cena | inerte: hoje não muda em cena nenhuma |
+| **a referência única do F5** | que o delta da hospedeira contra a âncora extrema mede a bandeira | inerte: os dois lados dão o mesmo número |
+| **a soma de aditividade** | que existe um perfil todo-ligado diferente do todo-desligado | inerte: hoje são o mesmo jogo |
+| **as três células da mediana** | que a mediana separa perfis | inerte: não há perfis a separar |
+| **o contador de ocasiões por bandeira** | que a bandeira mordeu | **sobrevive intacto**, e vira o instrumento que detecta o problema: ele daria zero, e o zero dele é inequívoco |
+
+#### O que NÃO cai junto
+
+Nada do que segue depende de bandeira nenhuma, e é o que esta frente produziu de sólido:
+
+- **as métricas de carga** por Tick, por golpe e por gesto, com a tabela de custo de tela;
+- **a partição de quatro estados do Tick** e os quinze invariantes que a fecham;
+- **os três termos da conclusão** (§2.3): 50% classe iii, 33% o ⏭, 17% classe ii;
+- **os 11,4% do Tick morto** e a banda do avanço automático (§2.4);
+- **o resultado do limiar de fuga** e a conclusão de desenho que saiu dele (§3.1).
+
+**A consequência para a ordem** está escrita no `02`, no topo: são **duas** baterias, e não uma. A
+de **carga** é esta, ela não usa bandeira nenhuma, já rodou e responde à pergunta original. A de
+**comparação de regras** é a segunda, e a primeira coisa dela não é rodar, é ligar o motor: o
+**L25**, que deixa de ser item de pendência e passa a ser pré-requisito da grade de 112.
 
 ### 5.6 D45 a D48 · a segunda revisão
 
@@ -807,9 +839,10 @@ O que a bateria usa e não tem na régua:
    **não** são inventados: saem de `resumoCombatePC`;
 4. **o mapa**: faixa de `dist + 8` por `n + 2`, escala 1 m por hexágono. É ele que faz
    `fuga-consumada` dominar nas células encostadas (§4);
-5. **o custo de tela da declaração NA MÃO**. A bateria roda a política automática, em que declarar
-   não custa clique nenhum, e esse é o número certo do que ela mede. É a linha mais cara da
-   tabela da §2.2 numa mesa com jogadores, e vale zero aqui;
+5. **a declaração é sempre automática**, e por isso vale zero gesto. **Isto deixou de ser número
+   inventado em 03/09**: o caminho manual foi contado lendo o diálogo (2 gestos pelo arrasto, 4
+   pelo menu, §2.4). Continua sendo um limite do que a bateria **mede**, porque nenhuma batalha
+   dela tem jogador declarando, mas o efeito agora sai publicado como cenário em vez de escondido;
 6. **o custo de tela do REDIRECIONAMENTO do golpe no caído** (D44). Mesma origem, consequência
    diferente: aqui não é uma linha que a bateria zera, é uma parada de **classe i** que ela apaga
    do numerador. Nenhuma peça desta bateria é de jogador, e é a de jogador que abre a caixa;
@@ -829,12 +862,10 @@ Saiu desta lista o multiplicador de passo do E4, junto com o eixo (D31).
 2. **manobra que não seja `simples`.** Rajada e empunhadura dupla mudam `penDados`, mudam a
    agenda, mudam o número de folhas por ação. É onde o conserto do L11 vive, e nenhuma batalha
    desta bateria passa por lá;
-3. **as quinze bandeiras LIGADAS NO MOTOR, uma a uma, antes de qualquer medição.** A varredura da
-   §5.5 achou que **nenhuma das quinze é lida por caminho de produção nenhum**: o perfil é gravado
-   dentro da entrada do lance e nunca consultado. As 68 células que existem para medi-las dariam
-   zero pelo motivo errado, indistinguível do zero legítimo. Cada bandeira precisa da chamada no
-   motor **e** de um contador de ocasião provando que ela morde. É o **L1** virado em quinze, e é
-   o **L25**;
+3. **as quinze bandeiras LIGADAS NO MOTOR, uma a uma, antes de qualquer medição.** Isto não é item
+   desta lista: é **pré-requisito da SEGUNDA bateria**, a de comparação de regras, que não existe
+   e não pode existir hoje (§5.5). Nada nesta bateria de carga depende dele, e ele não atrasa
+   nada do que está publicado aqui. É o **L25**;
 4. **um mapa que não seja uma faixa de nove colunas.** Enquanto o tabuleiro couber em um Tick de
    corrida, `fuga-consumada` vai dominar por construção (§4);
 5. **uma criatura de bestiário no elenco**, para o eixo E11 e para o `porte` deixarem de ser zero
