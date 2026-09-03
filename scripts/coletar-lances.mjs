@@ -64,7 +64,9 @@ if (!NAV) { console.log('· coletar-lances: PULADO (nenhum navegador; defina EDG
  * `defesaBase` chega **nula** e a folha percorre o caminho em que a régua não
  * tem número. Esse caminho existe no jogo e não tinha um único lance na fixture.
  */
-async function coletar(br, url, { papel, pares, veredito, modManual, manobra, botao, extras = '', adiada }) {
+async function coletar(br, url, {
+  papel, pares, veredito, modManual, manobra, botao, extras = '', adiada, golpes, indice,
+}) {
   const p = await br.newPage();
   await p.setViewport({ width: 1400, height: 950 });
   const erros = [];
@@ -94,16 +96,21 @@ async function coletar(br, url, { papel, pares, veredito, modManual, manobra, bo
         return true;
       };
       const pr = (window).__ABRIR_FOLHA(op.a, op.b, op.adiada
-        ? { adiada: true, manobra: op.manobra || 'dupla', golpes: 2 } : null);
+        ? { adiada: true, manobra: op.manobra || 'dupla', golpes: op.golpes || 2, indice: op.indice || 0 }
+        : null);
       await new Promise((r) => setTimeout(r, 0));
       const dlg = document.getElementById('alvo-dlg');
       if (!dlg?.open) return false;
 
       // A manobra primeiro: ela muda `penDados`, e com ela o bolo de cada golpe.
-      if (op.manobra) {
+      if (op.manobra && !op.adiada) {
         const man = document.getElementById('al-manobra');
         const cabe = man && [...man.options].some((o) => o.value === op.manobra && !o.disabled && !o.hidden);
         if (cabe) { man.value = op.manobra; man.dispatchEvent(new Event('change', { bubbles: true })); }
+        // A RAJADA pede quantos golpes, e é esse número que decide o tamanho de
+        // `penDados`. Com arma de teto 2 (haste, pesada) a anatomia corta em 2 e
+        // avisa: é justamente esse corte que a meta do teto existe para rodar.
+        if (op.manobra === 'rajada' && op.golpes) escrever('#al-golpes', op.golpes);
       }
       document.getElementById('al-rolar')?.click();
       document.getElementById('al-dn-rolar')?.click();
@@ -130,7 +137,7 @@ async function coletar(br, url, { papel, pares, veredito, modManual, manobra, bo
       document.querySelector(op.botao)?.click();
       await pr;
       return true;
-    }, { a, b, veredito, modManual, manobra, botao, adiada });
+    }, { a, b, veredito, modManual, manobra, botao, adiada, golpes, indice });
     if (ok) n++;
   }
   const lances = await p.evaluate(() => (window).__LANCES || []);
@@ -166,11 +173,20 @@ try {
     { nome: 'só ferimento', papel: 'mestre', extras: 'vida', pares: todosPares, veredito: 'acerto', botao: '#al-sim', cobre: 'ferimento sozinho' },
     { nome: 'só condições', papel: 'mestre', extras: 'cond', pares: todosPares, veredito: 'acerto', botao: '#al-sim', cobre: 'ajusteDados sozinho' },
     { nome: 'só armadura', papel: 'mestre', extras: 'arm', pares: todosPares, veredito: 'acerto', botao: '#al-sim', cobre: 'qaArmadura sozinho' },
-    { nome: 'os três', papel: 'mestre', extras: 'vida,cond,arm', pares: alguns(2), veredito: 'acerto', botao: '#al-sim', cobre: 'os três juntos' },
+    { nome: 'só pvMax', papel: 'mestre', extras: 'pvmax', pares: alguns(2), veredito: 'acerto', botao: '#al-sim', cobre: 'a fração do ferimento com outro denominador' },
+    { nome: 'os cinco', papel: 'mestre', extras: 'vida,cond,arm,pvmax,haste', pares: alguns(2), veredito: 'acerto', botao: '#al-sim', cobre: 'tudo junto' },
     { nome: 'raspão', papel: 'mestre', extras: 'vida,cond,arm', pares: todosPares, veredito: 'raspao', botao: '#al-qa', cobre: 'raspões por construção' },
     { nome: 'erro', papel: 'mestre', extras: 'vida,cond,arm', pares: todosPares, veredito: 'erro', botao: '#al-nao', cobre: 'erros por construção' },
-    { nome: 'dupla', papel: 'mestre', extras: 'cond', pares: alguns(2), veredito: 'acerto', manobra: 'dupla', botao: '#al-sim', cobre: 'penDados com dois elementos' },
-    { nome: 'golpe adiado', papel: 'mestre', extras: 'vida,arm', pares: alguns(3), veredito: 'acerto', manobra: 'dupla', adiada: true, botao: '#al-sim', cobre: 'a folha do golpe NO AR, que é o único caminho do Simultâneo' },
+    // A RAJADA, e é o que o passo 3 existe para cobrir. Três passadas, uma por
+    // índice de golpe: é assim que `resolverGolpeNoAr` faz quando o mestre
+    // clica no primeiro, no segundo e no terceiro cartão da faixa.
+    { nome: 'rajada · golpe 1', papel: 'mestre', extras: 'cond', pares: alguns(2), veredito: 'acerto', manobra: 'rajada', golpes: 3, indice: 0, adiada: true, botao: '#al-sim', cobre: 'rajada, golpeDaAgenda 0' },
+    { nome: 'rajada · golpe 2', papel: 'mestre', extras: 'cond', pares: alguns(2), veredito: 'acerto', manobra: 'rajada', golpes: 3, indice: 1, adiada: true, botao: '#al-sim', cobre: 'golpeDaAgenda 1, penalidade −1' },
+    { nome: 'rajada · golpe 3', papel: 'mestre', extras: 'vida', pares: alguns(2), veredito: 'raspao', manobra: 'rajada', golpes: 3, indice: 2, adiada: true, botao: '#al-qa', cobre: 'golpeDaAgenda 2, penalidade −2' },
+    // O TETO. Pedir três com arma de teto 2 (haste, pesada) corta em dois, e é
+    // esse corte que nunca rodava.
+    { nome: 'rajada · teto 2', papel: 'mestre', extras: 'haste', pares: alguns(2), veredito: 'acerto', manobra: 'rajada', golpes: 3, indice: 1, adiada: true, botao: '#al-sim', cobre: 'o teto da rajada, onde penDados para de crescer' },
+    { nome: 'dupla · adiada', papel: 'mestre', extras: 'arm', pares: alguns(3), veredito: 'acerto', manobra: 'dupla', golpes: 2, indice: 1, adiada: true, botao: '#al-sim', cobre: 'a dupla no segundo golpe' },
     { nome: 'mod +3', papel: 'mestre', extras: 'vida,cond,arm', pares: alguns(4), veredito: 'acerto', modManual: 3, botao: '#al-sim', cobre: 'modManual positivo' },
     { nome: 'mod −4', papel: 'mestre', extras: 'vida,cond,arm', pares: alguns(4), veredito: 'erro', modManual: -4, botao: '#al-nao', cobre: 'modManual negativo' },
     { nome: 'jogador', papel: 'jogador', extras: 'vida,cond,arm', pares: alguns(8), botao: '#al-sim', cobre: 'defesaBase nula' },
@@ -234,25 +250,37 @@ fs.writeFileSync(SAIDA.replace(/\.jsonl$/, '.meta.json'), JSON.stringify(META, n
 // lugares é de propósito: aqui serve para o coletor falhar cedo quando uma
 // passada deixa de produzir o que ela existe para produzir.
 const conta = (f) => todos.filter(f).length;
-// OS EIXOS ISOLADOS, que é o que a separação do `extras` comprou.
+// OS EIXOS ISOLADOS e os RAMOS DA RÉGUA, pela disciplina da 07 §9.
 const semCond = (l) => l.entrada.atacante.ajusteDados === 0;
 const semFer = (l) => l.entrada.alvo.ferimento === 0;
 const semArm = (l) => l.entrada.alvo.qaArmaduraBonus === 0 && l.entrada.alvo.qaArmaduraReducao === 0;
+const raj = (l) => l.entrada.manobra === 'rajada';
 const METAS = [
   ['armadura SOZINHA (sem cond, sem fer)', conta((l) => !semArm(l) && semCond(l) && semFer(l)), 30],
   ['condições SOZINHAS', conta((l) => !semCond(l) && semFer(l) && semArm(l)), 30],
   ['ferimento SOZINHO', conta((l) => !semFer(l) && semCond(l) && semArm(l)), 30],
-  ['os três juntos', conta((l) => !semFer(l) && !semCond(l) && !semArm(l)), 30],
   ['nenhum dos três', conta((l) => semFer(l) && semCond(l) && semArm(l)), 30],
+  ['pvMax com mais de um valor', new Set(todos.map((l) => l.entrada.alvo.pvMax)).size, 3],
   ['modManual positivo', conta((l) => l.entrada.modManual > 0), 20],
   ['modManual negativo', conta((l) => l.entrada.modManual < 0), 20],
-  ['penDados com dois elementos', conta((l) => l.entrada.atacante.penDados.length >= 2), 60],
+  ['rajada com penDados de 3', conta((l) => raj(l) && l.entrada.atacante.penDados.length === 3), 60],
+  ['rajada com teto 2 (penDados de 2)', conta((l) => raj(l) && l.entrada.atacante.penDados.length === 2), 30],
+  ['golpeDaAgenda > 0', conta((l) => l.entrada.golpeDaAgenda > 0), 60],
+  ['golpeDaAgenda === 2', conta((l) => l.entrada.golpeDaAgenda === 2), 20],
   ['folha do golpe adiado', conta((l) => l.adiada === true), 30],
   ['defesaBase nula', conta((l) => l.entrada.alvo.defesaBase == null), 5],
   ['veredito acerto', conta((l) => l.saida.veredito === 'acerto'), 60],
   ['veredito raspao', conta((l) => l.saida.veredito === 'raspao'), 60],
   ['veredito erro', conta((l) => l.saida.veredito === 'erro'), 60],
 ];
+// O INVARIANTE DO CONSERTO, conferido já aqui: se ele falhar, a coleta não vale
+// e não adianta gravar.
+const desiguais = todos.filter((l) => l.entrada.golpeDaAgenda !== l.entrada.penDadosUsado);
+if (desiguais.length) {
+  console.log(`
+✗ ${desiguais.length} lances com golpeDaAgenda != penDadosUsado: o conserto não pegou`);
+  process.exit(1);
+}
 const kb = (fs.statSync(SAIDA).size / 1024).toFixed(0);
 console.log(`\n✓ ${todos.length} lances em ${path.relative(RAIZ, SAIDA)} (${kb} KB)\n`);
 let faltou = 0;

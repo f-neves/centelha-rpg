@@ -37,6 +37,8 @@ await build({
     contents: `
       export * from './src/lib/lance';
       export { semear, semeadoDe } from './src/lib/acaso';
+      export { anatomia, golpeDaAgenda, penDadosDaRegua } from './src/lib/combate-tempo';
+      export { default as REGRAS } from './src/data/regras.json';
     `,
     resolveDir: ROOT, loader: 'ts',
   },
@@ -283,6 +285,57 @@ ok(igualArr(rA.rolls.acerto, rB.rolls.acerto) && !igualArr(rA.rolls.acerto, rC.r
   `a fonte real rola de verdade e obedece a semente ([${rA.rolls.acerto}] × [${rC.rolls.acerto}])`);
 L.semear(null);
 
+// ================================ 2b · o índice do golpe, pelas DUAS asserções
+//
+// A primeira compara MESA COM MESA: prova que a folha aplicou o índice que a
+// agenda mandou. Ela não pega o caso em que a agenda calcula o índice errado e a
+// folha o aplica fielmente, porque aí os dois campos concordam num número errado.
+const desiguais = lances.filter((l) => l.entrada.golpeDaAgenda !== l.entrada.penDadosUsado);
+ok(desiguais.length === 0,
+  `golpeDaAgenda === penDadosUsado em todos (${desiguais.length} fora)`);
+
+// A segunda compara MESA COM A RÉGUA, e é ela que prova correção. O `penDados`
+// esperado é computado do `regras.json`, e não do que a mesa devolveu.
+const R = L.REGRAS.combate;
+const penDadosEsperado = (classe, manobra, n) => {
+  if (manobra === 'rajada') {
+    const teto = R.rajada.teto?.[classe] ?? 1;
+    const k = Math.max(1, Math.min(n, teto));
+    const pen = R.rajada.penDadosPorGolpeExtra ?? -1;
+    const acum = !!R.rajada.penDadosAcumula;
+    return Array.from({ length: k }, (_, i) => (acum ? pen * i : (i ? pen : 0)));
+  }
+  if (manobra === 'dupla') {
+    const pen = R.dupla.penDados ?? -1;
+    return [pen, R.dupla.penDadosAmbasAsMaos ? pen : 0];
+  }
+  return [0];
+};
+const foraDaRegua = [];
+for (const l of lances) {
+  const e = l.entrada;
+  const esperado = penDadosEsperado(e.classeArma, e.manobra, e.atacante.penDados.length);
+  if (JSON.stringify(esperado) !== JSON.stringify(e.atacante.penDados)) {
+    foraDaRegua.push(`${e.aid}: penDados ${JSON.stringify(e.atacante.penDados)}`
+      + ` × régua ${JSON.stringify(esperado)} (${e.classeArma}, ${e.manobra})`);
+  } else if ((esperado[e.golpeDaAgenda] ?? 0) !== (esperado[e.penDadosUsado] ?? 0)) {
+    foraDaRegua.push(`${e.aid}: usou a penalidade do índice ${e.penDadosUsado}`
+      + ` e o golpe é o ${e.golpeDaAgenda}`);
+  }
+}
+ok(foraDaRegua.length === 0,
+  `o penDados de cada lance bate com a régua do regras.json (${foraDaRegua.length} fora`
+  + `${foraDaRegua.length ? `: ${foraDaRegua[0]}` : ''})`);
+// E a prova de que a asserção acima tem o que conferir: sem rajada de três, ela
+// nunca vê dois valores diferentes na mesma lista.
+const raj3 = lances.filter((l) => l.entrada.manobra === 'rajada' && l.entrada.atacante.penDados.length === 3);
+ok(raj3.length > 0 && raj3.every((l) => JSON.stringify(l.entrada.atacante.penDados) === '[0,-1,-2]'),
+  `a rajada de três tem a escada [0,−1,−2] da régua (${raj3.length} lances)`);
+const tetoCortado = lances.filter((l) => l.entrada.manobra === 'rajada'
+  && l.entrada.atacante.penDados.length === 2);
+ok(tetoCortado.length > 0,
+  `e o TETO corta a rajada em dois nas armas de teto 2 (${tetoCortado.length} lances)`);
+
 // ============================================================ 3 · a cobertura
 //
 // Uma asserção por meta, todas capazes de falhar. Zero divergências sobre
@@ -325,10 +378,12 @@ ok(new Set(lances.map((l) => l.entrada.tipoDano)).size >= 3,
 ok(completos.length === lances.length,
   `todo lance é 'completo' hoje (${completos.length} de ${lances.length}): cada folha da mesa`
   + ' calcula acerto E dano, porque cada golpe da agenda tem a sua folha');
-// O QUE NÃO TEM COBERTURA, DITO EM ASSERÇÃO e não em comentário.
-ok(conta((l) => l.entrada.golpeIndice > 0) === 0,
-  'golpeIndice > 0 continua SEM oráculo, e não por falta de coleta: `rolarAcerto`'
-  + ' sempre usa `linhas[0]`, então nem a folha do segundo golpe aplica `penDados[1]`');
+// O CAMINHO QUE ERA CEGO, agora com oráculo. Esta asserção nasceu ao contrário,
+// dizendo que o caminho NÃO tinha oráculo porque `rolarAcerto` usava sempre
+// `linhas[0]`. O conserto de 02/09 passou o índice do golpe até a folha, e ela
+// virou o que uma asserção deve ser: a prova de que o caminho roda.
+ok(conta((l) => l.entrada.golpeDaAgenda > 0) >= 60,
+  `o golpe de índice maior que zero tem oráculo (${conta((l) => l.entrada.golpeDaAgenda > 0)} lances)`);
 
 // ============================================================ 4 · a unidade
 //

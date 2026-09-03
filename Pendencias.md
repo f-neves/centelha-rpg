@@ -1047,7 +1047,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   gesto nenhum. E o **`aid`** precisa nascer nos **dois** caminhos de código: os PCs passam por
   `resumoCombatePC`, as criaturas trazem o bloco pronto do `monsters-mesa.json` e não passam por
   lá. Riscos **F3** e **F2**.
-- [ ] **L11 · [FAZER, antes da primeira bateria] O golpe da rajada não paga a penalidade dele.**
+- [x] **L11 · [FEITO em 02/09] O golpe da rajada não pagava a penalidade dele.**
   `rolarAcerto` (`grid.astro:8379`) sempre usa `linhas[0]`, e desde `f8459e6` (23/08) a folha é
   aberta **uma por golpe** por `resolverGolpeNoAr`. Resultado: os golpes 2 e 3 de uma rajada saem
   com penalidade **zero** em vez de −1 e −2, e a rajada, cujo preço inteiro é essa penalidade, sai
@@ -1058,7 +1058,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `07-caminho-curto.md` §8.1. **E ele contamina a métrica PRINCIPAL, não só o balanço**: a rajada é a
   única manobra que produz várias folhas por ação, então de graça a política a escolhe mais, e as
   paradas por Tick sobem pelo bug.
-- [ ] **L12 · [FAZER, UMA CIRURGIA SÓ COM O L11] O `aid` é da ação, e o índice são dois campos.** Hoje o
+- [x] **L12 · [FEITO em 02/09, no mesmo commit do L11] O `aid` é da ação, e o índice são dois campos.** Hoje o
   `aid` nasce na folha, então dois golpes da mesma ação recebem identificadores diferentes, o que
   quebra o contrato do D2. Ele tem de nascer na declaração e viver em `acao`. E `golpeIndice` tem
   de virar **`golpeDaAgenda`** (qual golpe é) e **`penDadosUsado`** (qual entrada a mesa leu):

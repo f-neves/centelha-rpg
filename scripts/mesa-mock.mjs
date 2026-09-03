@@ -71,6 +71,15 @@ const EX_TUDO = EX.includes('1') || EX.includes('tudo');
 const EX_VIDA = EX_TUDO || EX.includes('vida');
 const EX_COND = EX_TUDO || EX.includes('cond');
 const EX_ARM = EX_TUDO || EX.includes('arm');
+// Dois eixos a mais, achados pela auditoria de cobertura da 07 §9.2:
+//   pvmax · o ferimento nao sai da Vida, sai da FRACAO (tierDe divide por pvMax).
+//           Com um denominador so, as cinco faixas rodam todas no mesmo divisor
+//           e a divisao nunca e exercitada.
+//   haste · a classe de arma que a bancada nao tem. Ela importa pelo TETO da
+//           rajada, que e 2 em haste e pesada e 3 em leve e media.
+const EX_PVMAX = EX_TUDO || EX.includes('pvmax');
+const EX_HASTE = EX_TUDO || EX.includes('haste');
+const PVMAX = [40, 25, 60, 33];
 
 const UID = '00000000-0000-4000-8000-000000000001';
 /** Quem manda na mesa quando quem olha é jogador. */
@@ -137,11 +146,17 @@ for (let i = 0; i < N_COMB; i++) {
     grupo: ehPC ? 'aliado' : 'inimigo',
     monstro_id: ehPC ? null : MONS[i % MONS.length],
     personagem_id: ehPC ? `p${String(i).padStart(3, '0')}` : null,
-    pv_max: 40,
+    pv_max: EX_PVMAX ? PVMAX[i % PVMAX.length] : 40,
     // A escada de Vida vai ate o Critico com `?extras=1`: 40, 34, 28, 22, 16,
     // 10 e 4 sobre 40 cobrem Saudavel, Machucado, Ferido, Grave e Critico, que
     // sao as cinco faixas com penalidade diferente.
-    pv_atual: EX_VIDA ? 40 - (i % 7) * 6 : 40 - (i % 7) * 3,
+    // A Vida corrente segue o maximo da peca, senao um pvMax de 25 com Vida 40
+    // daria fracao acima de 100 e a faixa sairia do fim da escada.
+    pv_atual: (() => {
+      const mx = EX_PVMAX ? PVMAX[i % PVMAX.length] : 40;
+      const frac = EX_VIDA ? 1 - (i % 7) * 0.15 : 1 - (i % 7) * 0.075;
+      return Math.max(1, Math.round(mx * frac));
+    })(),
     mana_max: ehPC ? 8 : null, mana_atual: ehPC ? 8 - (i % 3) : null,
     tick: ACAO[i].livre ?? (i % 4), iniciativa: 20 - i,
     // O tick de quem tem ação no ar É o fim do ciclo dela: é a invariante que o
@@ -171,7 +186,10 @@ for (let i = 0; i < N_COMB; i++) {
         // fixture, e o `quaseAcertoDoEncontro` fica sem execucao.
         : EX_ARM && i % 3 === 2
           ? { armaduras: [{ classe: i % 6 === 2 ? 'media' : 'pesada' }] }
-          : undefined,
+          // A classe de tempo por ajuste de instancia, que e o caminho que a
+          // mesa ja usa para consertar o bicho construido errado.
+          : EX_HASTE && i % 4 === 3 ? { classe: 'haste', velocidade: 6 }
+            : undefined,
     // Com os extras, uma em cada tres leva uma condicao que mexe em DADOS
     // (`desgaste-2` tira dois, `inspirado` da um), que e o termo `ajusteDados`
     // do lance e o unico que a bancada padrao deixa sempre em zero.

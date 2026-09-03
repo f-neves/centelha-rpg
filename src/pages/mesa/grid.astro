@@ -2412,6 +2412,7 @@ const SETAS = [
   } from '../../lib/mesa-tempo-ui';
   import {
     combateDaMesa, COMBATE_PADRAO, faseEm, acaoVazia, temGesto, resumoDaAcao,
+    golpeDaAgenda, penDadosDaRegua,
     anatomia, anatomiaLivre, declarar, defesaPerdida, classeDeTempo, velocidadeDaArma, tetoDaRajada,
     rolaNoSite, ticksDeDeslocamento, armaDoCatalogo, ticksDeEntrada,
     contrapeEm, contrapeDe, contrapeAcaba, faseDeQuemVaiAgir, preparoDe, ordemDaFila,
@@ -5058,6 +5059,18 @@ const SETAS = [
    */
   const DESPEJO_TETO = 2000;
 
+  /**
+   * O `aid` de uma AÇÃO. Nasce na declaração e vive em `acao.aid`.
+   *
+   * Não é bonito nem precisa ser: precisa ser único dentro de uma cena e
+   * sobreviver à re-projeção, que é o que a agenda faz com os Ticks e não faz
+   * com este campo. A sequência separa duas ações da mesma peça no mesmo Tick,
+   * que acontece quando alguém aborta e declara de novo.
+   */
+  let ACAO_SEQ = 0;
+  const novoAid = (c: any, t: number) =>
+    `a${String(c?.id || '').slice(0, 6)}-t${t}-${ACAO_SEQ++}`;
+
   /** Sequência do `aid`: um número que separa dois lances do mesmo par no mesmo Tick. */
   let LANCE_SEQ = 0;
 
@@ -5498,6 +5511,9 @@ const SETAS = [
     let acao: any = declarar(T, an, {
       tipo: (an.golpes > 1 ? (opts.manobra || 'simples') : 'simples') as Manobra,
       arma: ra?.arma || null, alvo: alvo?.id || null,
+      // O `aid` da ação, e é o mesmo motivo do outro caminho: uma ação, um
+      // identificador, e a re-projeção abaixo muda os Ticks sem tocar nele.
+      aid: novoAid(atacante, T),
       ...contrapeDe(atacante.acao),
     });
     acao.golpes = ag.golpes; acao.livre = ag.livre;
@@ -7452,6 +7468,12 @@ const SETAS = [
       tipo: (an.golpes > 1 ? manobra : 'simples') as Manobra,
       arma: RESUMO[atacante.id]?.arma || null,
       alvo: alvo?.id || null,
+      // O `aid` NASCE AQUI, na declaração, e não na folha. Uma ação tem um
+      // identificador; uma rajada de três golpes são três golpes da MESMA ação.
+      // Criá-lo na folha dava um `aid` diferente a cada golpe, o que quebra o
+      // contrato do D2 (ligar o `decl` ao `dano`) e torna o tempo morto do
+      // jogador incalculável.
+      aid: novoAid(atacante, t0),
       // O contrapé é do relógio, e não da ação: agir não o apaga.
       ...contrapeDe(atacante.acao),
     });
@@ -7926,8 +7948,20 @@ const SETAS = [
     //
     // O `aid` não tem consumidor ainda. Ele é criado agora porque criar depois
     // significa achar de novo todos os pontos por onde a resolução passa.
-    const AID = `l${(atacante.id || '').slice(0, 6)}-${(alvo.id || '').slice(0, 6)}`
-      + `-t${tGolpeDe()}-${LANCE_SEQ++}`;
+    // QUAL GOLPE DA AGENDA esta folha resolve, e é o conserto de 02/09.
+    //
+    // Na folha adiada, `resolverGolpeNoAr` abre UMA folha por golpe, e até aqui
+    // todas elas usavam `penDados[0]`: os golpes 2 e 3 de uma rajada saíam com
+    // penalidade zero em vez de −1 e −2, e a rajada, cujo preço inteiro é a
+    // penalidade acumulada, saía de graça. O comentário de `rolarAcerto` ("o
+    // campo fica com o primeiro golpe") descrevia o mundo anterior ao golpe
+    // adiado, quando uma folha resolvia a ação inteira.
+    //
+    // Fora da folha adiada continua sendo 0, e continua certo: lá uma folha
+    // resolve a ação toda e o campo é do primeiro golpe, por desenho.
+    const IDX = adiada ? golpeDaAgenda(atacante.acao, opts.tickDoGolpe!) : 0;
+    // O `aid` é da AÇÃO e vem dela; o sufixo separa os golpes dentro dela.
+    const AID = (atacante.acao?.aid || `l${(atacante.id || '').slice(0, 6)}-avulso-${LANCE_SEQ++}`);
 
     /**
      * As ENTRADAS, lidas no instante em que são pedidas.
@@ -7937,8 +7971,8 @@ const SETAS = [
      * se refaz em cima do valor corrigido. Quem lê tem de ler o corrigido, e é
      * por isso que isto é função e não constante.
      */
-    const entradaDoLance = (idx = 0) => ({
-      aid: `${AID}#${idx}`,
+    const entradaDoLance = (idx = IDX) => ({
+      aid: AID,
       atacante: {
         id: atacante.id, nome: atacante.nome,
         ataque: ra?.ataque || '0d6', dano: ra?.dano || '0d6',
@@ -7960,12 +7994,21 @@ const SETAS = [
       // A manobra e o índice do golpe: a rajada e a empunhadura dupla têm
       // penalidade POR GOLPE, e o `penDados` acima é a lista inteira.
       manobra: (anat().golpes > 1 ? manSel.value : 'simples'),
-      // O ÍNDICE DO GOLPE. A agenda de uma rajada ou de uma empunhadura dupla
-      // tem mais de um golpe, e cada um cobra a sua penalidade (`penDados`). A
-      // tela decide o veredito pelo PRIMEIRO, que é o que diz se o ataque
-      // pegou, e mostra os outros ao lado; o registro guarda um lance por
-      // golpe, porque o harness vai resolver os três.
+      // OS DOIS CAMPOS DO ÍNDICE, e eles são coisas diferentes.
+      //
+      //   `golpeDaAgenda` · qual golpe da ação este é, contado da agenda;
+      //   `penDadosUsado` · qual entrada de `penDados` a mesa de fato leu.
+      //
+      // Depois do conserto os dois são sempre iguais, e é por isso que valem: a
+      // igualdade vira invariante, e volta a falar se alguém reintroduzir a
+      // divergência. Enquanto eram um campo só, o defeito era invisível no
+      // registro, porque o registro gravava o número usado e não o devido.
       golpeIndice: idx,
+      golpeDaAgenda: idx,
+      penDadosUsado: idx,
+      tickDoGolpe: opts.tickDoGolpe ?? null,
+      // A classe da arma, que é o que escolhe o teto da rajada.
+      classeArma: classeAtqDe(),
       distanciaHex: hexes,
       tipoDano: dnTipo.value,
       // O que o mestre escreveu à mão. No harness são zeros e os dois valores
@@ -8008,16 +8051,17 @@ const SETAS = [
      * mesa decide), e é por isso que `veredito` e `acertou` são coisas
      * diferentes no registro do fim.
      */
-    const contaDoLance = (idx = 0) => {
+    const contaDoLance = (idx = IDX) => {
       const e = entradaDoLance(idx);
       const def2 = e.alvo.defesaBase != null
         ? e.alvo.defesaBase + e.alvo.ferimento + e.alvo.condicoesDefesa + e.alvo.defesaPerdida
         : null;
       // O total do PRIMEIRO golpe é o que está no campo (é o que o mestre
       // corrige); o dos outros sai da linha que caiu, com a penalidade deles.
-      const t = idx === 0
-        ? parseInt(totalInp.value || '', 10)
-        : (sorteio.acerto[idx] ? somaLinha(sorteio.acerto[idx], e) : NaN);
+      // O total sai sempre do campo: com a folha adiada, `rolarAcerto` rola UMA
+      // linha, a do golpe desta folha, e é ela que está no campo. A soma por
+      // fora existia para o mundo em que uma folha rolava todas as linhas.
+      const t = parseInt(totalInp.value || '', 10);
       const soma = Number.isFinite(t) ? t + e.modManual : null;
       const veredito = soma != null && def2 != null ? saidaDoAtaque(soma, def2, e.margemQA) : null;
       // O QUE ESTÁ NO CAMPO e O QUE A RÉGUA MANDA são coisas diferentes, e o
@@ -8389,7 +8433,12 @@ const SETAS = [
     // decide se o ataque pegou; os outros aparecem escritos ao lado.
     const rolarAcerto = () => {
       const pen = anat().penDados;
-      const linhas = pen.map((pn) => rolarExpr(ra?.ataque || '0d6', ajAtq.dados + pn, ajAtq.flat));
+      // NA FOLHA ADIADA, UMA LINHA SÓ: a do golpe que está caindo, com a
+      // penalidade dele. Rolar as outras e mostrá-las ao lado fazia sentido
+      // quando uma folha resolvia a ação inteira; com uma folha por golpe, elas
+      // são dados que ninguém vai usar, ao lado do número que decide.
+      const usadas = adiada ? [pen[IDX] ?? 0] : pen;
+      const linhas = usadas.map((pn) => rolarExpr(ra?.ataque || '0d6', ajAtq.dados + pn, ajAtq.flat));
       // Os dados que CAÍRAM, guardados: sem eles a conferência do passo 2 teria
       // de reproduzir a sequência de acaso da mesa a partir de um ponto
       // arbitrário, o que não dá. Com eles, a cópia roda com os mesmos dados e
@@ -8446,7 +8495,10 @@ const SETAS = [
         // mesmo na folha do segundo golpe de uma dupla, a mesa aplica a
         // penalidade do PRIMEIRO. Registrar outro índice aqui seria afirmar uma
         // penalidade que ninguém aplicou.
-        registrarLance(contaDoLance(0), sorteio, { acertou: v, raspou, rolado, adiada });
+        // SEM ARGUMENTO: o índice é o `IDX` da folha, que é o golpe da agenda
+        // que ela está resolvendo. Passar `0` aqui era o que achatava o campo e
+        // deixava o caminho do índice sem cobertura.
+        registrarLance(contaDoLance(), sorteio, { acertou: v, raspou, rolado, adiada });
         resolve({
           acertou: v, an: a, manobra: a.golpes > 1 ? manSel.value : 'simples',
           dano: raspou ? danoQA() : Math.max(0, parseInt(dnInp.value || '0', 10) || 0),
@@ -8498,10 +8550,27 @@ const SETAS = [
           manobra: (opts.manobra || 'simples') as Manobra,
           golpes: Math.max(2, opts.golpes || 2),
         });
-        return folhaDaAcao(a, b, {
-          tickDoGolpe: opts.tickDoGolpe ?? ((a.tick ?? 0) + an.preparo),
-          an, manobra: opts.manobra || 'simples',
+        // A AGENDA DE VERDADE NA PEÇA, e não só o Tick solto. É assim que
+        // `resolverGolpeNoAr` encontra a cena quando o mestre clica no segundo
+        // cartão da faixa: a ação já está lá, com os Ticks todos, e o índice do
+        // golpe sai dela. Sem instalar a agenda, `golpeDaAgenda` não teria onde
+        // procurar e devolveria zero para todo golpe, que era exatamente o
+        // buraco de cobertura.
+        const t0 = a.tick ?? 0;
+        const antes = a.acao;
+        const agenda = an.offs.map((o: number) => t0 + o);
+        const idx = Math.min(Math.max(0, opts.indice ?? 0), agenda.length - 1);
+        a.acao = {
+          golpes: agenda, livre: t0 + an.ciclo, desde: t0,
+          tipo: (opts.manobra || 'simples'), arma: ra?.arma || null, alvo: b.id,
+          aid: novoAid(a, t0), aResolver: agenda.slice(),
+        };
+        const pr = folhaDaAcao(a, b, {
+          tickDoGolpe: agenda[idx], an, manobra: opts.manobra || 'simples',
         });
+        // A cena volta ao que era: o coletor não aplica nada, e uma agenda
+        // deixada para trás mexeria na Defesa perdida da folha seguinte.
+        return pr.then((r: any) => { a.acao = antes; return r; });
       }
       return folhaDaAcao(a, b);
     };

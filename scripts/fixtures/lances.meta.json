@@ -1,8 +1,8 @@
 {
-  "commit": "d412c6fc6c1f6c042932b32a9473aba7186c8655",
+  "commit": "590f73967e7220d7221bf7b2748a18a3fd5a88b7",
   "sujo": true,
-  "dados_hash": "d22c55dcf25c8990",
-  "iso": "2026-09-02T20:20:46.420Z",
+  "dados_hash": "819341f381cec3c6",
+  "iso": "2026-09-03T01:03:40.143Z",
   "semente": 20260902,
   "perfil": {
     "margem": false,
@@ -21,7 +21,7 @@
     "n5": false,
     "n6": false
   },
-  "lances": 1051,
+  "lances": 1315,
   "passadas": [
     {
       "nome": "nu · acerto",
@@ -44,9 +44,14 @@
       "cobre": "qaArmadura sozinho"
     },
     {
-      "nome": "os três",
-      "extras": "vida,cond,arm",
-      "cobre": "os três juntos"
+      "nome": "só pvMax",
+      "extras": "pvmax",
+      "cobre": "a fração do ferimento com outro denominador"
+    },
+    {
+      "nome": "os cinco",
+      "extras": "vida,cond,arm,pvmax,haste",
+      "cobre": "tudo junto"
     },
     {
       "nome": "raspão",
@@ -59,14 +64,29 @@
       "cobre": "erros por construção"
     },
     {
-      "nome": "dupla",
+      "nome": "rajada · golpe 1",
       "extras": "cond",
-      "cobre": "penDados com dois elementos"
+      "cobre": "rajada, golpeDaAgenda 0"
     },
     {
-      "nome": "golpe adiado",
-      "extras": "vida,arm",
-      "cobre": "a folha do golpe NO AR, que é o único caminho do Simultâneo"
+      "nome": "rajada · golpe 2",
+      "extras": "cond",
+      "cobre": "golpeDaAgenda 1, penalidade −1"
+    },
+    {
+      "nome": "rajada · golpe 3",
+      "extras": "vida",
+      "cobre": "golpeDaAgenda 2, penalidade −2"
+    },
+    {
+      "nome": "rajada · teto 2",
+      "extras": "haste",
+      "cobre": "o teto da rajada, onde penDados para de crescer"
+    },
+    {
+      "nome": "dupla · adiada",
+      "extras": "arm",
+      "cobre": "a dupla no segundo golpe"
     },
     {
       "nome": "mod +3",

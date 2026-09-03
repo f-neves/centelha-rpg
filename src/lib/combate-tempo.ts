@@ -141,6 +141,19 @@ export interface Acao {
    * a chave desligada.
    */
   aResolver?: number[];
+  /**
+   * O IDENTIFICADOR DESTA AÇÃO (`aid`, do D2 da simulação).
+   *
+   * Nasce na declaração, vive aqui, e sobrevive à re-projeção: quando a agenda
+   * desliza porque o alvo ainda não foi alcançado, os Ticks mudam e o `aid`
+   * não. É o que liga o `decl` ao `dano` no log da bateria, e sem ele o tempo
+   * morto do jogador não é calculável, porque não há como saber de que
+   * declaração aquele golpe veio.
+   *
+   * Uma ação tem UM `aid`, e uma rajada de três golpes são três golpes da mesma
+   * ação: quem separa os golpes é o índice na agenda, e não o identificador.
+   */
+  aid?: string;
 }
 
 /**
@@ -524,6 +537,37 @@ export function declarar(tickAgora: number, a: Anatomia, extra: Partial<Acao> = 
     divida: 0, pressao: 0,
     ...extra,
   };
+}
+
+/**
+ * QUAL GOLPE DA AGENDA é o que cai neste Tick.
+ *
+ * Zero para o primeiro, e é o número que escolhe a penalidade em `penDados`. A
+ * conta é sobre os DESLOCAMENTOS (`offs`), e não sobre os Ticks absolutos, por
+ * causa da re-projeção: quando a agenda desliza, os Ticks todos andam juntos e
+ * a posição de cada golpe dentro da ação continua a mesma.
+ *
+ * Devolve 0 quando não dá para saber, que é o caminho da folha não adiada (uma
+ * folha para a ação inteira) e o certo para ele: lá o campo do total é do
+ * primeiro golpe, por desenho.
+ */
+export function golpeDaAgenda(acao: Acao | null | undefined, tick: number): number {
+  const g = acao?.golpes;
+  if (!g || !g.length) return 0;
+  const i = g.indexOf(tick);
+  return i >= 0 ? i : 0;
+}
+
+/**
+ * A PENALIDADE DE DADOS deste golpe, pela régua.
+ *
+ * Existe para que a conferência possa comparar o que a mesa aplicou com o que o
+ * `regras.json` manda, em vez de comparar a mesa com ela mesma: a igualdade
+ * entre "qual golpe é" e "qual penalidade foi lida" prova consistência, e só
+ * isto prova correção.
+ */
+export function penDadosDaRegua(an: Anatomia, indice: number): number {
+  return an.penDados?.[indice] ?? 0;
 }
 
 // ------------------------------------------------------ o golpe que sai depois
