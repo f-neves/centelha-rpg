@@ -137,6 +137,40 @@ for (const [id, ls] of daFatia(PRINCIPAL)) {
     + num(soma).padStart(8) + (Math.abs(soma - 1) < 0.005 ? ' ✓' : ' ✗ NÃO FECHA'));
 }
 
+// ================================ de onde vêm as paradas, e o que a automação esvazia
+//
+// A TABELA QUE EXPLICA TODAS AS OUTRAS. A composição por classe diz QUANTO é
+// aritmética; esta diz QUAL aritmética, e é onde a re-projeção aparece pelo
+// tamanho que tem.
+console.log('\n── DE ONDE VÊM AS PARADAS · FASE DE COMBATE · média por batalha ──');
+console.log('célula'.padEnd(26) + 'declarar   agenda  reprojetar  resolver  aplicar    fugir');
+for (const [id, ls] of daFatia(PRINCIPAL)) {
+  const s2 = (k) => medFase(ls, 'combate', (x) => x.paradasSub?.[k] || 0);
+  console.log(rotulo(id).padEnd(26) + num(s2('declarar'), 1).padStart(8)
+    + num(s2('agenda'), 1).padStart(9) + num(s2('reprojetar'), 1).padStart(12)
+    + num(s2('resolver'), 1).padStart(10) + num(s2('aplicar'), 1).padStart(9)
+    + num(s2('fugir'), 1).padStart(9));
+}
+
+// ------------------------------------- o que a automação esvazia, MEDIDO
+//
+// Um Tick cujas paradas são TODAS de classe iii deixa de consultar alguém
+// quando o motor resolver a classe iii. Somado aos Ticks que já não consultam
+// ninguém, é o teto de CLIQUES que a automação tira, e sai do log e não da
+// tabela. Ele é diferente do que a automação tira em PARADAS, e confundir os
+// dois foi o erro da leitura de 02/09.
+console.log('\n── O QUE A AUTOMAÇÃO ESVAZIA EM CLIQUES · FASE DE COMBATE ──');
+console.log('célula'.padEnd(26) + 's/parada hoje   +só iii   = depois   (piso)');
+for (const [id, ls] of daFatia(PRINCIPAL)) {
+  const hoje = medFase(ls, 'combate', (x) => x.fracaoSemParada);
+  const so = medFase(ls, 'combate', (x) => (x.ticksSoIII || 0) / Math.max(1, x.ticks));
+  const soP = medFase(ls, 'combate', (x) => (x.ticksSoIIIPiso || 0) / Math.max(1, x.ticks));
+  console.log(rotulo(id).padEnd(26) + num(hoje).padStart(12) + num(so).padStart(10)
+    + num(hoje + so).padStart(11) + num(hoje + soP).padStart(9));
+}
+console.log('  `só iii` é o Tick em que TODA parada é aritmética: ele some inteiro.');
+console.log('  O piso conta só `resolver` como aritmética forçada.');
+
 // ================================================== B · a composição, em banda
 console.log('\n── B · A COMPOSIÇÃO POR CLASSE, em banda · AS DUAS FASES, lado a lado ──');
 console.log('  banda: teto com `agenda`+`reprojetar`+`resolver` como iii; piso só com `resolver`.');
@@ -226,8 +260,10 @@ for (const [id, ls] of daFatia(PRINCIPAL)) {
   const g = medFase(ls, 'combate', (x) => x.golpesAplicados);
   const t = medFase(ls, 'combate', (x) => x.ticks);
   const prev = Math.max(0, 1 - (g / Math.max(1, t)));
+  // O zero negativo é ruído de arredondamento e lê-se como defeito.
+  const sobra = Math.abs(sg - prev) < 0.005 ? 0 : sg - prev;
   console.log(rotulo(id).padEnd(26) + num(sg).padStart(9) + num(prev).padStart(10)
-    + num(sg - prev).padStart(7));
+    + num(sobra).padStart(7));
 }
 console.log('  `cadência` = 1 − golpes por Tick. A SOBRA é o que a cadência não explica:');
 console.log('  positiva quer dizer Ticks sem golpe além dos que o ciclo já obriga (colisão).');
@@ -304,9 +340,12 @@ for (const c of CEL.filter((x) => x.passoMult > 1)) {
   const estouram = [...porCelula.entries()].filter(([, ls]) => ls.every((l) => l.fim === 'estourou'));
   if (estouram.length === porCelula.size) alarme('TODAS as células estouram o teto: nada termina');
   else if (estouram.length) {
-    console.log(`\n  ${estouram.length} de ${porCelula.size} células estouram o teto em 100% das voltas:`);
-    console.log(`    ${estouram.map(([id]) => rotulo(id)).join(', ')}`);
-  }
+    // Sem repetir o rótulo por nível de limiar: a mesma célula aparece uma vez
+    // por nível, e a lista fica ilegível dizendo tudo duas vezes.
+    const nomes = [...new Set(estouram.map(([id]) => rotulo(id)))];
+    console.log(`
+  ${estouram.length} de ${porCelula.size} células estouram o teto em 100% das voltas`);
+    console.log(`  (${nomes.length} rótulos, um por nível de limiar): ${nomes.join(', ')}`);  }
 }
 
 // 5 · distribuição degenerada (p10 = p90) numa métrica principal

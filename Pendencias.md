@@ -987,6 +987,7 @@ cabeçalho do `02`:
 | `06-etapa-0.md` | a instrumentação, feita: a semente, o caminho do driver, o despejo por Tick e a branch congelada. E o que o espelho de inércia já prova com ela |
 | `07-caminho-curto.md` | **a mudança de prioridade de 02/09**: o alvo passou a ser rodar milhares de batalhas completas para achar onde a automação trava. O inventário do que falta, a ordem reaberta, a primeira bateria de doze células e o plano de execução |
 | `08-espelho-e-bateria.md` | **o espelho de motor, feito**: as seis divergências que ele achou entre o laço e a mesa, o achado de produção que saiu de brinde, a leitura corrigida (a partição de quatro estados, o custo de tela real, a banda varrida), a bateria refeita e as decisões D16 a D28 |
+| `09-bateria-grande.md` | **a bateria grande, rodada**: as duas fases da batalha, a grade real (88 das 112 células oficiais não rodam sem bandeira), a sensibilidade ao limiar de fuga, os seis alarmes de bateria ineficaz e as decisões D29 a D36 |
 
 **Duas restrições que saíram da Etapa 0 e valem para quem escrever o harness:** o paralelismo é por
 **processo** e nunca por linha de execução (a fonte de acaso é um `let` de módulo, e duas batalhas no
@@ -1115,6 +1116,28 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 - [x] **L18 · [FEITO 03/09] A fuga automática nascia sem `aid`.** Era a única ação da mesa sem
   identificador de declaração (D2), e por isso o caminho da criatura em modo automático não tinha
   a que ligar a re-projeção do trajeto dela.
+
+- [ ] **L19 · [DECIDIR · MUDA REGRA] A ficha escreve o tipo de dano errado em seis das dez armas
+  de mais de um modo.** `resumoCombatePC` (`combate-resumo.ts:82`) ordena os modos por
+  `MODO_ORDEM` (impacto 0, corte 1, perfurante 2) e pega o PRIMEIRO, ignorando a marca
+  `principal: true` do catálogo. O tipo vai para a expressão de dano (`2d6 +10 (I)`), e a mesa o
+  lê dali (`tipoDeDano(ra.dano)`) para decidir **qual Absorção o alvo aplica**.
+
+  | arma | principal no catálogo | o que a ficha escreve |
+  |---|---|---|
+  | Montante · Machado · Alabarda · Machado de Arremesso | corte | **impacto** |
+  | Picareta de Guerra | perfurante | **impacto** |
+  | Adaga | perfurante | **corte** |
+
+  Isso muda o que acontece em jogo: uma alabarda que bate em vez de cortar erra a Absorção da
+  placa, o gate de Perfuração e a resistência do bicho. **Achado em 03/09 pela bateria grande**
+  (o Montanteiro atacou de impacto as 10.800 batalhas), e NÃO consertado, porque a pergunta é de
+  regra: qual das duas manda, o `principal: true` do catálogo ou a ordem de exibição do
+  `MODO_ORDEM`? Se for o `principal`, o conserto é uma linha e o `dados_hash` da bateria muda.
+- [ ] **L20 · [DEPOIS] Uma política que recua**, que é a peça que falta para o eixo E4 existir.
+  A `decisaoAutomatica` avança para o alvo e nunca se afasta dele, então a assimetria de passo é
+  inerte (medido em 03/09, D31): quem anda mais depressa só chega mais cedo. Sem alguém que se
+  afaste, metade da geometria do Grid nunca é exercitada.
 
 - [ ] **L7 · [DEPOIS] A medição de campo do Supabase real**, decidida para depois do harness. Sem
   ela, as métricas de carga saem em Ticks e em gestos e nunca em segundos, e essa é a maior lacuna

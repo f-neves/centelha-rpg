@@ -2678,3 +2678,24 @@ precisa estar no canônico.
 etiqueta no relatório, ele produz um jogo que não existe (D13). A lista ⚑ inteira
 está na `08` §5, e os dois itens que mais pesam são o mesmo assunto: o robô da mesa
 é simples demais para o que a bateria quer medir.
+
+---
+
+## D29 a D36 · as decisões da bateria grande (03/09)
+
+O texto inteiro está na `09-bateria-grande.md` §5. Aqui o enunciado e o preço.
+
+| # | A decisão | O que ela custa |
+|---|---|---|
+| **D29** | a batalha se parte em fase de COMBATE e fase de FUGA (a troca vale no Tick seguinte à primeira declaração de fuga), e o número do topo é o do combate | duas tabelas onde havia uma, e a fatia de fuga fica com amostra minúscula nas células encostadas (1 Tick). Lê-se a coluna Δ, não a média agregada da fuga |
+| **D30** | a grade real é o núcleo cruzado `E1(2) × E2(4) × E3(3)` vezes o limiar (2) = 48 células: **88 das 112 oficiais não rodam** com as bandeiras desligadas | nada sobre bandeiras, políticas, obstáculo, leitura, reforço nem criaturas. É a medida do Grid de hoje com o robô de hoje |
+| **D31** | E4 (assimetria de passo) foi CORTADO, e quem o cortou foi a bateria de sanidade: zero re-projeções contra 0,3 da âncora | a assimetria não é medida. O que ela ia medir está medido e é maior: a re-projeção vem da multidão que se tranca, e não do passo |
+| **D32** | o limiar de fuga entra como eixo, por parâmetro opcional em `decisaoAutomatica` com o padrão da regra | um parâmetro novo numa função de produção. É o preço de medir sensibilidade sem inventar política |
+| **D33** | n = 400 pelo piso do p95, e não 13 pelo CV medido (0,00 a 0,089) | trinta vezes mais batalhas do que a precisão da média exigiria. Vale porque as principais incluem p90, p99 e pico |
+| **D34** | a régua é fixa e a sanidade roda antes; nada se corrige no meio | um conserto obriga a bateria inteira a rodar de novo, e obrigou (o corte de E4). São 37 segundos aqui e não seriam numa bateria de horas |
+| **D35** | teto de tempo por PROCESSO, além do teto de Ticks | uma faixa morta vira leitura incompleta com alarme, em vez de bateria pendurada. O teto de Ticks vive dentro do laço que trava e não pega isso |
+| **D36** | os seis sinais de bateria ineficaz são conferidos e impressos alto, fora das tabelas | um sinal aceso exige explicação escrita antes de o número sair. A alternativa é ninguém olhar, que foi o que aconteceu nas duas rodadas anteriores |
+
+**E o que a bateria achou e não consertou, porque é regra:** a ficha escreve o tipo de dano
+errado em seis das dez armas de mais de um modo (`L19` do `Pendencias.md`). O Montanteiro desta
+bateria atacou de impacto as 10.800 batalhas inteiras.
