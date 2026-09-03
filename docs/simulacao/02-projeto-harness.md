@@ -49,7 +49,10 @@ defeito). Os dois saem com o mesmo valor, no mesmo campo, no mesmo CSV, e nenhum
 separa depois. **O instrumento que os separa é sempre o mesmo: contar OCASIÕES, e não efeitos.**
 
 Não é lição de relatório. É regra de construção, e ela existe porque **a mesma forma de erro já
-apareceu três vezes nesta frente**, em três camadas diferentes:
+apareceu seis vezes nesta frente**, em camadas diferentes. E a partir do quinto caso ela tem uma
+segunda face: o zero ambíguo é a AUSÊNCIA de sinal lida como sinal, e o espelho dele é a
+**PRESENÇA de texto lida como o sinal errado**. Os dois vêm de olhar à volta do sinal em vez de
+olhar onde ele mora.
 
 | # | onde | o zero legítimo | o zero vazio | como apareceu |
 |---|---|---|---|---|
@@ -57,8 +60,28 @@ apareceu três vezes nesta frente**, em três camadas diferentes:
 | **2** | as **sete comparações do E5** | "o eixo não mudou o resultado" | as comparações não podiam morder | achado pela bateria de sanidade, que existe para falhar |
 | **3** | as **quinze bandeiras** | "a bandeira está desligada" | nenhuma é lida pelo motor | achado em 03/09, **depois de sete rodadas de documento** |
 | **4** | o **parser do supervisor** (`duo-leitura.mjs`) | "a revisora não escalou nada" | a seção ESCALA saía VAZIA para todo conteúdo, porque `$` em multilinha casa no fim de cada linha | achado pelo `test-duo.mjs` na primeira execução, **antes de o ciclo rodar uma vez** |
+| **5** | o **"nada" da ESCALA** (o espelho) | "a revisora escalou uma decisão" | ela escreveu `nada.` e justificou embaixo, em prosa; a regra era "a seção inteira é a palavra nada", leu prosa, leu conteúdo, e conteúdo na ESCALA encerra o ciclo | acendeu na **rodada 02, com dinheiro gasto**: o script parou anunciando "a revisora ESCALOU" contra um texto que dizia o contrário |
+| **6** | a **digital da repetição** (o espelho) | "as duas respostas tratam do mesmo assunto" | com UM identificador em cada item, o mesmo identificador dava semelhança 1,00; dois itens diferentes sobre o mesmo objeto (`ocasião · passo` fora do placar, e `ocasião · passo` guardando o piso só por cima) eram "o mesmo assunto" | achado na mesma rodada, conferindo à mão o que a trava seguinte diria se a da ESCALA não tivesse parado antes |
 
-**O quarto caso é o mais forte dos quatro, e por um motivo que os outros três não têm: ele
+**O quinto e o sexto casos custaram dinheiro, e é a diferença deles para os quatro primeiros.**
+Os quatro foram achados por inspeção ou por teste, antes de qualquer gasto. Estes dois só
+apareceram numa execução molhada, e o motivo é a mesma cegueira que o princípio descreve: os
+casos de teste do `test-duo.mjs` foram escritos com a ideia de "vazio" que o autor tinha na
+cabeça (`nada` sozinho na seção; identificadores como assunto), e nenhum deles é o que a revisora
+de verdade escreveu. **Um teste só cobre a forma de sinal que quem o escreveu imaginou.** O
+conserto dos dois entrou com os textos REAIS das rodadas 01 e 02 como caso de teste, e não com
+variações inventadas dos antigos.
+
+E o sexto tem uma segunda lição, sobre consertar heurística: a primeira ideia foi mexer no limiar
+(0,6), e o limiar não tinha nada com isso. Com um identificador só, dois assuntos diferentes davam
+exatamente 1,00, e nenhum limiar abaixo de 1,00 separa isso. **O defeito estava na digital, e não
+na régua.** Três candidatos foram MEDIDOS contra o par real da rodada 01×02 e contra os pares do
+teste antes da escolha; dois deles matavam o falso positivo e criavam falso negativo nos pares que
+têm de acender, que é o lado caro. A regra que ficou: **um identificador em comum é necessário e
+não suficiente**; dois ou mais decidem sozinhos; com um só, as palavras têm de passar o mesmo
+limiar.
+
+**O quarto caso é o mais forte de todos, e por um motivo que os outros não têm: ele
 estava dentro da TRAVA, e não dentro do medido.** Os três primeiros eram instrumentos medindo
 errado; este era o supervisor que existe para pegar os outros três lendo "vazio" como "nada
 escalado". Se tivesse passado, o ciclo automático teria seguido por cima de decisões de regra

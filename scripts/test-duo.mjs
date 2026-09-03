@@ -6,6 +6,15 @@
 // testada num laço sem supervisão é pior que trava nenhuma: ela dá a sensação de
 // que o ciclo está protegido enquanto ele gasta rodada e dinheiro.
 //
+// O QUE ELE JÁ ACHOU DEPOIS, na rodada 02, que é a primeira vez que uma trava
+// falhou COM DINHEIRO GASTO e não num teste: a revisora escreveu `nada.` na
+// ESCALA e explicou embaixo, em prosa, por que não escalava. O parser lia "a
+// seção inteira é a palavra nada" e, vendo prosa, dizia conteúdo; conteúdo na
+// ESCALA encerra o ciclo. O script parou anunciando "a revisora ESCALOU" contra
+// um texto que dizia o contrário. Na mesma rodada, a trava de repetição daria
+// 1,00 para dois itens diferentes sobre o mesmo objeto, porque um identificador
+// igual era o bastante. Os dois são presença de sinal lida como o sinal errado.
+//
 // O QUE ELE JÁ ACHOU, na estreia, e é o quarto caso do princípio do zero
 // ambíguo (`02-projeto-harness.md`): `secao()` devolvia VAZIO para toda seção
 // com conteúdo (o `$` em multilinha casa no fim de cada linha), e vazio, para o
@@ -16,6 +25,7 @@
 //   node scripts/test-duo.mjs
 import {
   faltando, secao, vazia, itens, veredito, repetidos, estadoDaSecao, ilegivel,
+  temConteudo,
 } from './duo-leitura.mjs';
 
 const falhas = [];
@@ -68,6 +78,19 @@ console.log('\n· os TRÊS estados de uma seção, e não dois');
     'um item é o estado conteudo');
   ok(estadoDaSecao(resposta().replace(/^## ESCALA$/m, '## X'), 'ESCALA') === 'ausente',
     'sem cabeçalho é ausente');
+  // O CASO DA RODADA 02, com o texto real: "nada" e a justificativa embaixo.
+  const nadaComPorque = resposta({ escala: 'nada.\n\nO aviso marca duas coisas como'
+    + ' "precisa do humano" e eu não escalo nenhuma. Escalar por isso seria gastar a'
+    + ' parada mais cara do script numa pergunta que a medição responde.' });
+  ok(estadoDaSecao(nadaComPorque, 'ESCALA') === 'nada',
+    '"nada" com a justificativa em prosa embaixo é NADA, e não conteudo');
+  ok(!temConteudo(nadaComPorque, 'ESCALA'),
+    'e por isso ele NÃO encerra o ciclo, que foi o erro que gastou uma rodada');
+  // E a válvula: marcador embaixo do "nada" é contradição, e volta a ser conteúdo.
+  ok(estadoDaSecao(resposta({ escala: 'nada.\n\n- mas a Alabarda precisa de você' }),
+    'ESCALA') === 'conteudo',
+    'mas um item de lista embaixo do "nada" volta a ser conteudo: o lado caro é seguir');
+
   const branca = resposta({ escala: '' });
   ok(estadoDaSecao(branca, 'ESCALA') === 'branca',
     'cabeçalho com corpo em branco é BRANCA, e não nada');
@@ -137,6 +160,19 @@ console.log('\n· o assunto repetido, que encerra e escala');
 
   ok(repetidos(resposta(), resposta()).length === 0,
     'e duas respostas sem item nenhum não disparam ("nada" não é item)');
+
+  // O FALSO POSITIVO DA RODADA 02, com o texto real das duas respostas: um
+  // identificador igual, dois assuntos diferentes sobre o mesmo objeto.
+  const g1 = resposta({ bloqueia: '- **O sinal `ocasião · passo` não está no placar'
+    + ' publicado, e é ele que guarda os 11,4%.**' });
+  const g2 = resposta({ corrige: '- **O `ocasião · passo` guarda o piso só por cima.**'
+    + ' Ele acende quando' });
+  ok(repetidos(g1, g2).length === 0,
+    'UM identificador igual não basta: dois assuntos sobre o mesmo objeto NÃO disparam');
+  // E dois identificadores em comum continuam decidindo sozinhos.
+  ok(repetidos(resposta({ bloqueia: '- A §2.4 não fecha com a §2.2.' }),
+    resposta({ corrige: '- A §2.4 segue sem bater com a §2.2.' })).length > 0,
+    'e DOIS identificadores em comum continuam sendo o sinal forte');
 
   // A revisora escrevendo em PROSA, sem marcador: a trava não pode sumir.
   const p1 = resposta({ bloqueia: 'A procedência de `custo-tela.mjs` continua sem estar no aviso.' });

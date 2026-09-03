@@ -73,7 +73,37 @@ export function estadoDaSecao(txt, nome) {
   if (!temSecao(txt, nome)) return 'ausente';
   const corpo = secao(txt, nome);
   if (!corpo.trim()) return 'branca';
-  return /^[-*\s]*nada[.\s]*$/i.test(corpo) ? 'nada' : 'conteudo';
+  return corpoDizNada(corpo) ? 'nada' : 'conteudo';
+}
+
+/** Uma linha que é só a palavra "nada", com marcador, negrito ou ponto em volta. */
+const LINHA_NADA = /^[-*+\s]*\**\s*nada\s*\**[.\s]*$/i;
+
+/**
+ * O CORPO DIZ "NADA"? E dizer "nada" e depois explicar POR QUE continua sendo nada.
+ *
+ * O QUINTO CASO do princípio do zero ambíguo (`02-projeto-harness.md`), e o primeiro
+ * a acender numa execução molhada em vez de num teste: a regra anterior era "a seção
+ * INTEIRA é a palavra nada". Na rodada 02 a revisora escreveu `nada.` e, embaixo, um
+ * parágrafo dizendo por que não escalava. O parser leu prosa, prosa é conteúdo, e
+ * conteúdo na ESCALA encerra o ciclo. O ciclo parou dizendo "a revisora ESCALOU"
+ * enquanto o texto dela dizia, em letras, que não escalava.
+ *
+ * É o gêmeo dos quatro primeiros casos: lá a AUSÊNCIA de sinal virava sinal, aqui a
+ * PRESENÇA de texto vira o sinal errado. A mesma família: quem lê tem de olhar onde
+ * o sinal mora, e não à volta dele.
+ *
+ * A regra nova: **a primeira linha com texto é "nada", e não há item de lista
+ * depois dela.** A justificativa em prosa é bem-vinda; um marcador embaixo do "nada"
+ * é contradição, e contradição volta a ser conteúdo (o lado caro é seguir por cima
+ * de uma escalada, e não parar uma rodada à toa).
+ */
+export function corpoDizNada(corpo) {
+  if (!corpo || !corpo.trim()) return false;
+  const linhas = corpo.split('\n');
+  const i = linhas.findIndex((l) => l.trim());
+  if (!LINHA_NADA.test(linhas[i])) return false;
+  return itens(linhas.slice(i + 1).join('\n')).length === 0;
 }
 
 /** A seção diz "nada", com a palavra escrita? */
@@ -119,8 +149,8 @@ export function secao(txt, nome) {
   const m = re.exec(txt);
   return m ? m[1].trim() : '';
 }
-/** Uma seção "vazia" é a que só diz "nada". */
-export const vazia = (s) => !s || /^[-*\s]*nada[.\s]*$/i.test(s);
+/** Uma seção "vazia" é a que DIZ "nada", com ou sem justificativa embaixo. */
+export const vazia = (s) => !s || corpoDizNada(s);
 
 /** Os itens de uma seção: a primeira linha de cada marcador. */
 export const itens = (s) => s.split('\n')
@@ -128,21 +158,63 @@ export const itens = (s) => s.split('\n')
   .map((l) => l.replace(/^\s*(?:[-*+]|\d+\.)\s+/, '').trim())
   .filter(Boolean);
 
-/** A digital de um item: identificadores primeiro, palavras como reserva. */
-export function digital(item) {
-  const ids = [...item.matchAll(/`([^`]+)`|§\s*([\d.]+)|\b([A-Z]\d{1,2})\b/g)]
-    .map((m) => (m[1] || m[2] || m[3]).toLowerCase()).filter(Boolean);
-  if (ids.length) return new Set(ids);
-  const PARE = new Set(['o', 'a', 'os', 'as', 'de', 'do', 'da', 'em', 'no', 'na', 'que',
-    'e', 'um', 'uma', 'para', 'com', 'por', 'nao', 'se', 'ao', 'the', 'of']);
-  return new Set(item.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
-    .replace(/[^a-z0-9\s]/g, ' ').split(/\s+/).filter((w) => w.length > 3 && !PARE.has(w)));
-}
+const PARE = new Set(['o', 'a', 'os', 'as', 'de', 'do', 'da', 'em', 'no', 'na', 'que',
+  'e', 'um', 'uma', 'para', 'com', 'por', 'nao', 'se', 'ao', 'the', 'of']);
+
+/** Os identificadores de um item: crases, `§x.y` e códigos tipo `L25`. */
+export const idsDe = (item) => new Set([...item.matchAll(/`([^`]+)`|§\s*([\d.]+)|\b([A-Z]\d{1,2})\b/g)]
+  .map((m) => (m[1] || m[2] || m[3]).toLowerCase()).filter(Boolean));
+
+/** As palavras de conteúdo de um item. */
+export const palavrasDe = (item) => new Set(item.toLowerCase().normalize('NFD')
+  .replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9\s]/g, ' ').split(/\s+/)
+  .filter((w) => w.length > 3 && !PARE.has(w)));
+
+/** A digital de um item, para quem quiser olhar: identificadores e palavras. */
+export const digital = (item) => ({ ids: idsDe(item), palavras: palavrasDe(item) });
+
 const jaccard = (a, b) => {
   if (!a.size || !b.size) return 0;
   const inter = [...a].filter((x) => b.has(x)).length;
   return inter / (a.size + b.size - inter);
 };
+/** Quanto do MENOR dos dois conjuntos está no outro. */
+const cobertura = (a, b) => {
+  if (!a.size || !b.size) return 0;
+  const inter = [...a].filter((x) => b.has(x)).length;
+  return inter / Math.min(a.size, b.size);
+};
+
+/**
+ * A SEMELHANÇA entre dois itens, e o SEXTO CASO do princípio do zero ambíguo.
+ *
+ * A versão anterior era "se há identificador, compare só identificadores". Com UM
+ * identificador em cada lado e o mesmo identificador, ela dava 1,00 para qualquer
+ * par, e na rodada 02 disparou entre dois itens que falam de coisas diferentes sobre
+ * o mesmo objeto: o `ocasião · passo` estar fora do placar (rodada 01) e o
+ * `ocasião · passo` guardar o piso só por cima (rodada 02). O identificador igual
+ * virou "mesmo assunto", que é presença de sinal lida como o sinal errado, a mesma
+ * família do `nada` acima.
+ *
+ * A regra nova: **um identificador só é necessário e não suficiente.** Dois ou mais
+ * identificadores em comum continuam sendo o sinal forte e decidem sozinhos. Com um
+ * só, ele tem de bater E as palavras têm de passar o mesmo limiar, pela cobertura do
+ * item mais curto (e não pelo Jaccard, que castiga o item longo por ser longo).
+ *
+ * Medido antes de escolher, contra o par real da rodada 01×02 e contra os pares do
+ * `test-duo.mjs`. As alternativas (juntar tudo num conjunto só; pesar o identificador
+ * por três) matavam o falso positivo e criavam falso negativo nos pares que TÊM de
+ * acender, que é o lado caro: um falso positivo custa uma rodada, um falso negativo
+ * custa o ciclo girando no mesmo ponto.
+ */
+export function semelhanca(x, y) {
+  const ix = idsDe(x); const iy = idsDe(y);
+  if (!ix.size || !iy.size) return jaccard(palavrasDe(x), palavrasDe(y));
+  const ji = jaccard(ix, iy);
+  if (ix.size >= 2 && iy.size >= 2) return ji;
+  if (ji < LIMIAR_REPETICAO) return ji;
+  return Math.min(ji, cobertura(palavrasDe(x), palavrasDe(y)));
+}
 
 /**
  * Assunto repetido entre duas respostas seguidas da revisora.
@@ -165,7 +237,7 @@ export function repetidos(txtA, txtB) {
   const achados = [];
   for (const x of dos(txtA)) {
     for (const y of dos(txtB)) {
-      if (jaccard(digital(x), digital(y)) >= LIMIAR_REPETICAO) {
+      if (semelhanca(x, y) >= LIMIAR_REPETICAO) {
         achados.push(`"${x.slice(0, 70)}" ≈ "${y.slice(0, 70)}"`);
       }
     }

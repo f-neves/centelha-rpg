@@ -11,6 +11,7 @@
 //   npm run duo -- --timeout 20      · teto por chamada, em minutos
 //   npm run duo -- --seco            · imprime o que faria e não chama nada
 //   npm run duo -- --fumaca          · UMA chamada real mínima em cada lado
+//   npm run duo -- --alvo "..."      · o alvo da execução, escrito pelo humano
 //
 // O PONTO DESTE SCRIPT SÃO AS TRAVAS, e não a automação. Duas instâncias do
 // mesmo modelo conversando sem ninguém no meio convergem para concordar, e
@@ -72,18 +73,41 @@ const FUMACA = process.argv.includes('--fumaca');
 /** Teto de rodadas. Seis é o padrão pedido; ao bater, para e resume. */
 const TETO_RODADAS = parseInt(arg('--rodadas', '6'), 10);
 /**
- * TETO DE CUSTO, EM DÓLARES. Escolhido em 20.
+ * TETO DE CUSTO, EM DÓLARES. Escolhido em 25, e o número vem de medição.
  *
- * A conta: são duas chamadas por rodada, e a da executora é a cara (ela roda
- * bateria, mexe em código e escreve documento). Com seis rodadas são doze
- * chamadas. Vinte dólares corta o ciclo por volta da quarta ou quinta rodada num
- * ritmo pesado, e deixa as seis passarem num ritmo leve.
+ * A rodada 02, que tratou dois BLOQUEIA, custou US$ 12,89 (executora 9,48,
+ * revisora 3,41). Uma rodada pesada é isso; vinte e cinco compra duas.
+ *
+ * E A CONFERÊNCIA É POR CHAMADA, e não por rodada. Era por rodada, com uma
+ * previsão baseada na rodada anterior mais cara, e na PRIMEIRA rodada não há
+ * anterior: a estimativa de partida era US$ 4, a rodada custou 12,89 contra um
+ * teto de 8, e nada acendeu. Conferir só na porta da rodada seguinte é conferir
+ * depois de gastar.
+ *
+ * O que a versão por rodada protegia continua protegido, e está nas três linhas
+ * de `conferirCusto`: um aviso commitado SEMPRE tem revisão. Estourar entre a
+ * executora e a revisora paga a revisora daquela rodada, fecha o ciclo e não abre
+ * a seguinte; parar no meio deixaria um aviso na caixa que ninguém revisou, que é
+ * pior que gastar os três dólares da revisora.
  *
  * ERRAR PARA BAIXO É O LADO CERTO: parar cedo custa uma rodada e um `--custo`
  * maior na próxima execução; parar tarde custa dinheiro que ninguém autorizou. E
  * o RESUMO diz que a parada foi por custo, então a informação não se perde.
  */
-const TETO_CUSTO = parseFloat(arg('--custo', '20'));
+const TETO_CUSTO = parseFloat(arg('--custo', '25'));
+/**
+ * O ALVO DA EXECUÇÃO, escrito pelo humano, em uma frase.
+ *
+ * É o único lugar por onde a direção do humano entra no laço. A caixa é o canal
+ * entre executora e revisora; o `--alvo` é o canal entre o humano e a executora, e
+ * existe porque o pedido padrão ("faça a próxima rodada") deixa a escolha do que
+ * fazer com quem está dentro do ciclo, e foi assim que a rodada 02 saiu inteira em
+ * instrumento e nenhuma medição nova. Vai no prompt da executora, sai impresso no
+ * diário e entra no RESUMO, para que o ciclo possa ser julgado contra o que foi
+ * pedido, e não contra o que ele resolveu fazer.
+ */
+const ALVO = arg('--alvo', '');
+
 /** Teto por chamada, em minutos. A executora roda bateria (30 s) e escreve. */
 const TETO_MIN = parseInt(arg('--timeout', '30'), 10);
 /**
@@ -111,6 +135,21 @@ const avisos = () => fs.readdirSync(CAIXA)
 
 let custo = 0;
 let custoDaRodada = [];
+/** Estourou o teto no meio de uma rodada? A rodada fecha, e não abre a seguinte. */
+let estourouNoMeio = null;
+
+/**
+ * O ACUMULADO DEPOIS DE CADA CHAMADA, contra o teto, sempre impresso.
+ *
+ * Devolve `true` se o teto já foi passado. Quem chama decide o que fazer com
+ * isso, e a decisão nunca é "abandonar a rodada no meio".
+ */
+function conferirCusto(quem) {
+  const passou = custo > TETO_CUSTO;
+  anote(`  ✓ ${quem} · acumulado US$ ${custo.toFixed(2)} de US$ ${TETO_CUSTO.toFixed(2)}`
+    + `${passou ? ' ■ PASSOU DO TETO' : ''}`);
+  return passou;
+}
 
 /**
  * Uma chamada headless.
@@ -205,6 +244,9 @@ ${aberto || 'ver a última resposta da revisora na caixa, seções BLOQUEIA e PE
 Total: **US$ ${custo.toFixed(2)}** de um teto de US$ ${TETO_CUSTO.toFixed(2)}.
 Por rodada: ${custoDaRodada.map((c, i) => `${i + 1}ª US$ ${c.toFixed(2)}`).join(' · ') || '·'}
 
+## O ALVO PEDIDO, E SE ELE SAIU
+${ALVO ? `\nPedido: ${ALVO}\n\nJulgue o ciclo contra isto, e não contra o que ele fez.` : '\nNenhum alvo foi passado nesta execução (`--alvo`), então o ciclo escolheu sozinho o que fazer.'}
+
 ## O QUE PRECISA DO HUMANO
 
 ${aberto && aberto.includes('ESCALA') ? 'Ver a seção ESCALA da última resposta da revisora.'
@@ -277,6 +319,8 @@ CORRIGE-E-SEGUE
 // ===================================================================== o ciclo
 console.log(`\n· duo · teto ${TETO_RODADAS} rodadas · US$ ${TETO_CUSTO.toFixed(2)} · ${TETO_MIN} min por chamada`
   + `${SECO ? ' · SECO (não chama nada)' : ''}`);
+if (ALVO) registro.push(`\n· ALVO (do humano): ${ALVO}`);
+if (ALVO) console.log(`· alvo: ${ALVO}`);
 
 if (!fs.existsSync(REV)) parar('00', `o worktree da revisora não existe em ${REV}`);
 if (!fs.existsSync(CAIXA)) parar('00', 'não há caixa de correio');
@@ -319,9 +363,11 @@ for (let volta = 1; volta <= TETO_RODADAS; volta += 1) {
 
   // -- trava de custo, ANTES de abrir a rodada -------------------------------
   //
-  // A unidade atômica é a RODADA, e não a chamada: parar no meio deixa um aviso
-  // commitado que ninguém vai revisar, o que é pior que parar antes. A previsão
-  // é a rodada mais cara até aqui, ou uma estimativa de partida na primeira.
+  // Este é o caso LIMPO: nada foi gasto nesta rodada ainda, então parar aqui não
+  // deixa aviso sem revisão. A previsão é a rodada mais cara até aqui; na
+  // primeira não há anterior, e a estimativa de partida é chute declarado, o que
+  // é justamente por que a conferência de verdade passou a ser por chamada.
+  if (estourouNoMeio) parar(nn, estourouNoMeio);
   const previsao = custoDaRodada.length ? Math.max(...custoDaRodada) : 4;
   if (custo + previsao > TETO_CUSTO) {
     parar(nn, `teto de custo: US$ ${custo.toFixed(2)} gastos e a próxima rodada`
@@ -347,6 +393,7 @@ for (let volta = 1; volta <= TETO_RODADAS; volta += 1) {
     anote(`  → a rodada começa com a resposta ${nnAnterior}-revisora.md já na caixa`);
   }
   const pExec = `${pedido}\n\n`
+    + (ALVO ? `O ALVO DESTA EXECUÇÃO, decidido pelo humano e acima da sua ordem de trabalho:\n${ALVO}\n\n` : '')
     + 'Ao terminar: commite tudo, rode `npm run rodada` para abrir o aviso, preencha as seis'
     + ' seções do arquivo criado, e rode `npm run rodada -- --enviar`.\n\n'
     + 'Regras da caixa em docs/simulacao/caixa/README.md. Não decida regra de jogo:'
@@ -355,7 +402,17 @@ for (let volta = 1; volta <= TETO_RODADAS; volta += 1) {
   const rExec = await chamar(EXEC, 'executora', pExec);
   custo += rExec.custo;
   if (!rExec.ok) parar(nn, `a chamada da executora falhou: ${rExec.motivo || 'sem motivo'}`);
-  anote(`  ✓ executora · US$ ${rExec.custo.toFixed(2)} · acumulado US$ ${custo.toFixed(2)}`);
+  anote(`  ✓ executora · US$ ${rExec.custo.toFixed(2)}`);
+  if (conferirCusto('custo') && !estourouNoMeio) {
+    // NÃO PARA AQUI. O aviso desta rodada já foi escrito e commitado pela
+    // executora; abandoná-lo sem revisão é o único desfecho pior que gastar os
+    // dólares da revisora. A rodada fecha inteira, e a seguinte não abre.
+    estourouNoMeio = `teto de custo: US$ ${custo.toFixed(2)} passaram de`
+      + ` US$ ${TETO_CUSTO.toFixed(2)} na chamada da executora da rodada ${nn}. A rodada`
+      + ' fechou inteira (a revisora foi paga, porque aviso commitado sempre tem'
+      + ' revisão) e a seguinte não abriu';
+    anote('  → o teto estourou no meio: esta rodada fecha, a próxima não abre');
+  }
 
   // -- o aviso saiu? ---------------------------------------------------------
   //
@@ -408,8 +465,11 @@ for (let volta = 1; volta <= TETO_RODADAS; volta += 1) {
   const custoRodada = rExec.custo + rRev.custo;
   custoDaRodada.push(custoRodada);
   if (!rRev.ok) parar(nn, `a chamada da revisora falhou: ${rRev.motivo || 'sem motivo'}`);
-  anote(`  ✓ revisora · US$ ${rRev.custo.toFixed(2)} · rodada US$ ${custoRodada.toFixed(2)}`
-    + ` · acumulado US$ ${custo.toFixed(2)}`);
+  anote(`  ✓ revisora · US$ ${rRev.custo.toFixed(2)} · rodada US$ ${custoRodada.toFixed(2)}`);
+  if (conferirCusto('custo') && !estourouNoMeio) {
+    estourouNoMeio = `teto de custo: US$ ${custo.toFixed(2)} passaram de`
+      + ` US$ ${TETO_CUSTO.toFixed(2)} na rodada ${nn}, que fechou inteira. A seguinte não abriu`;
+  }
 
   // ----------------------------------------- 4 · o script commita por ela
   let resposta;
@@ -474,6 +534,8 @@ for (let volta = 1; volta <= TETO_RODADAS; volta += 1) {
 
   respostaAnterior = resposta;
 }
+
+if (estourouNoMeio) parar(String(jaFeitas + TETO_RODADAS).padStart(2, '0'), estourouNoMeio);
 
 parar(String(jaFeitas + TETO_RODADAS).padStart(2, '0'),
   `teto de ${TETO_RODADAS} rodadas alcançado. O ciclo não continua "só mais uma"`);

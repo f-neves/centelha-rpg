@@ -68,6 +68,7 @@ npm run duo -- --custo 12   · teto de custo, em dólares
 npm run duo -- --timeout 20 · teto por chamada, em minutos
 npm run duo -- --seco       · imprime o que faria e não chama nada
 npm run duo -- --fumaca     · UMA chamada real mínima em cada lado
+npm run duo -- --alvo "..." · o alvo da execução, escrito pelo humano
 ```
 
 ### O seco e a fumaça, e nenhum substitui o outro
@@ -86,13 +87,24 @@ limpo: a classe inteira de falha de invocação era invisível para ele.
 | | valor | por quê |
 |---|---:|---|
 | rodadas | **6** | o pedido. Ao bater, para e resume: nunca "só mais uma" |
-| custo | **US$ 20** | duas chamadas por rodada, a da executora sendo a cara. Corta por volta da 4ª ou 5ª rodada num ritmo pesado e deixa as seis passarem num leve. **Errar para baixo é o lado certo**: parar cedo custa uma rodada e um `--custo` maior na próxima; parar tarde custa dinheiro que ninguém autorizou |
+| custo | **US$ 25** | medido, e não estimado: a rodada 02, que tratou dois BLOQUEIA, custou US$ 12,89 (executora 9,48 · revisora 3,41). Vinte e cinco compra duas dessas. **Errar para baixo é o lado certo**: parar cedo custa uma rodada e um `--custo` maior na próxima; parar tarde custa dinheiro que ninguém autorizou |
 | por chamada | **30 min** | a executora roda bateria (30 s) e escreve documento. Falha de chamada **encerra**, e não tenta de novo |
-| repetição | **0,6** de semelhança | heurística sobre os identificadores do item (crases, `§x.y`, `L25`). Erra para o lado de parar, que é o barato |
+| repetição | **0,6** de semelhança | heurística sobre os identificadores do item (crases, `§x.y`, `L25`) e, quando há um identificador só, também sobre as palavras. Erra para o lado de parar, que é o barato |
 
-**A unidade atômica é a RODADA, e não a chamada.** O teto de custo é conferido
-ANTES de abrir cada rodada, contra a rodada mais cara até então: parar no meio
-deixaria um aviso commitado que ninguém vai revisar, o que é pior que parar antes.
+**O teto de custo é conferido DEPOIS DE CADA CHAMADA**, e o acumulado sai
+impresso contra o teto toda vez. Era por rodada, contra a rodada anterior mais
+cara, e a primeira rodada não tem anterior: a execução da rodada 02 foi aberta com
+teto de US$ 8, custou US$ 12,89, e nada acendeu. Conferir na porta da rodada
+seguinte é conferir depois de gastar.
+
+**O que a conferência por rodada protegia continua protegido:** um aviso
+commitado SEMPRE tem revisão.
+
+| onde o teto estoura | o que o script faz |
+|---|---|
+| antes de abrir uma rodada | encerra. É o caso limpo: nada foi gasto nesta rodada |
+| entre a executora e a revisora | **paga a revisora daquela rodada**, fecha o ciclo e não abre a seguinte. Abandonar aqui deixaria na caixa um aviso que ninguém revisou, que é pior que os três dólares da revisora |
+| depois da revisora | a rodada já fechou. A seguinte não abre |
 
 ### As sete paradas, e todas são de fechar
 
@@ -101,7 +113,32 @@ seguidas (revisão esgotada) · **ESCALA** não vazia (encerra na hora, mesmo co
 rodadas sobrando) · assunto repetido em duas respostas seguidas · árvore suja em
 qualquer ponto. Mais a chamada que falha ou estoura o tempo.
 
-**E uma oitava, que é de formato:** resposta sem as cinco seções encerra o ciclo.
+### Como escrever "nada" numa seção, e por que a forma importa
+
+O contrato pede a palavra `nada` quando não há o que dizer, e **corpo em branco
+não vale**: em branco não dá para separar "olhei e não há" de "a resposta saiu
+truncada". A regra que o script lê:
+
+> **a primeira linha com texto é `nada`, e não há item de lista depois dela.**
+
+A justificativa em prosa embaixo do `nada` é bem-vinda, e continua sendo `nada`:
+
+```
+## ESCALA
+
+nada.
+
+O aviso marca duas coisas como "precisa do humano" e eu não escalo nenhuma.
+A medição responde as duas, e escalar aqui gastaria a parada mais cara do
+script numa pergunta que não é de regra de jogo.
+```
+
+Um marcador de lista embaixo do `nada` é contradição, e volta a contar como
+conteúdo: seguir por cima de uma escalada é o lado caro. **Isto está escrito
+porque a rodada 02 parou por isso**, anunciando "a revisora ESCALOU" contra um
+texto que dizia, em letras, que não escalava.
+
+**E uma oitava parada, que é de formato:** resposta sem as cinco seções encerra o ciclo.
 Sem isso o script falharia **aberto** justamente na trava que mais importa: uma
 `ESCALA` que não dá para ler sai igual a uma `ESCALA` vazia, e o ciclo seguiria
 por cima de uma decisão que era do humano.
