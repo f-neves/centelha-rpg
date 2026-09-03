@@ -1317,6 +1317,17 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   avanço não fica menos importante depois da conversa, fica mais, e medi-lo antes seria medir
   contra um denominador que a conversa pode encolher.
 
+  **E ELE É UM DESENHO SÓ COM O CLIQUE DO CARTÃO**, e não dois itens: `instanteDeGolpe` tranca o
+  avanço exatamente no Tick em que o cartão do golpe vence, então o clique do relógio e o do
+  cartão são o mesmo instante da mesa separados por um gesto. O avanço para **abrindo a folha do
+  golpe que o fez parar**. Separá-los produziria duas interfaces que se atrapalham.
+
+  **Quanto isso poupa junto, e é menos que a soma:** os golpes chegam em CACHO (2,87 por Tick que
+  tem golpe), então uma parada absorve **um** cartão e os outros continuam sendo clique. São
+  64.209 cartões absorvidos de 184.034 (34,9%). No modo `site`: 17,2% do avanço mais **8,8%** dos
+  cartões = **26,0%** juntos, com piso; 38,9% com teto. A segunda metade adiciona 8,8 pontos, e
+  não 25.
+
   **Não está decidido e nada foi implementado.** O que ainda falta para decidir é uma peça que se
   MOVA diferente do robô (o L20): ela muda a trajetória, e portanto a fatia de travessia que
   separa o piso do teto.

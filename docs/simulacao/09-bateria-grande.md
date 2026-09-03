@@ -467,11 +467,43 @@ No modo `site` a folha abre já rolada, e `resolver` cai de 3 gestos para **1**.
 **o clique no cartão vencido da faixa dos golpes no ar**, que é o que abre a folha. São 184.034
 cliques, um por golpe, e é **todo o resto da classe iii**.
 
-É ele que o item "consertar o que sobrar" da fila teria de atacar, e ele é menor do que parece por
-um motivo de posição: **o ⏭ para exatamente no Tick em que esse cartão vence.** `instanteDeGolpe`
-tranca o avanço justamente ali. O clique do relógio e o clique do cartão são **o mesmo instante da
-mesa**, separados por um gesto, e um avanço que parasse abrindo a folha do golpe que o fez parar
-tiraria os dois de uma vez.
+E ele não é um item separado do ⏭: **`instanteDeGolpe` tranca o avanço exatamente no Tick em que
+esse cartão vence.** O clique do relógio e o clique do cartão são o mesmo instante da mesa,
+separados por um gesto. **São um desenho só**, e separá-los produziria duas interfaces que se
+atrapalham: um avanço que para sem abrir nada, e um cartão que espera um clique que a parada já
+tinha ganhado.
+
+##### Quanto o desenho unificado poupa, e é menos do que a soma sugere
+
+A tentação é somar: 125.237 cliques de ⏭ mais 184.034 de cartão. **A conta está errada**, e o
+motivo é do sistema Simultâneo:
+
+```
+  Ticks de combate                          359.733
+  Ticks com ao menos UM golpe vencido        64.209   ← 17,8%
+  golpes (cartões)                          184.034
+  golpes por Tick que TEM golpe                2,87
+```
+
+**Os golpes chegam em cacho.** Uma parada de avanço cobre em média **2,87 golpes**, e absorve
+**um** clique de cartão: o da folha que ela abre. Os outros continuam sendo clique.
+
+| | cartões | fatia |
+|---|---:|---:|
+| absorvidos pela parada do avanço (um por Tick que para) | **64.209** | 34,9% |
+| que sobram (o 2º, o 3º… do mesmo Tick) | **119.825** | 65,1% |
+
+**Economias, no modo `site` (total 727.801):**
+
+| | só o avanço | só o cartão | **os dois juntos** |
+|---|---:|---:|---:|
+| com **piso** (só Tick morto) | 17,2% | 8,8% | **26,0%** |
+| com **teto** (todo Tick sem parada) | 30,0% | 8,8% | **38,9%** |
+
+**A segunda metade adiciona 8,8 pontos, e não 25.** Isso não desfaz o desenho unificado, que
+continua sendo um só por construção: desfaz a expectativa de que ele resolva o problema do cartão.
+Para os 65% que sobram, a pergunta é outra (a folha resolver sozinha), e ela cai na condição da
+§2.5: **a conta que sai da mão do mestre tem de continuar visível.**
 
 **Isso reordena a fila do conserto.** No modo `site` o maior item do trabalho passa a ser o ⏭
 (49,4%), e o avanço automático passa a valer **17,2% com piso e 30,0% com teto** do total (menor)
@@ -1056,7 +1088,39 @@ Os números respondem **uma** pergunta, e ela está respondida. Cinco coisas res
 | **o oráculo de 1.315 lances** | `scripts/fixtures/lances.jsonl`, entradas, dados e saídas reais da mesa, com cobertura por construção e não por acaso | que `resolverGolpe` mude de comportamento sem ninguém ver. É a lição do `lib-tempo`: cinco divergências passaram nos testes unitários dos dois lados e nenhuma foi pega por teste |
 | **o princípio do zero ambíguo** | a regra de construção no `02`, com os três casos como evidência e cinco obrigações | que a mesma forma de erro apareça uma quarta vez. Ela apareceu três, e a terceira sobreviveu a sete rodadas de documento |
 
-### 8.2 A próxima medição
+### 8.2 A resposta final: o teto do que este projeto pode tirar do mestre
+
+A pergunta que abriu a frente era quanto da carga do mestre a automação pode tirar. Empilhando os
+consertos que esta bateria identificou, na ordem em que eles dependem uns dos outros:
+
+| | trabalho | do de hoje | o que foi tirado |
+|---|---:|---:|---|
+| **hoje** (modo `mesa`) | 1.095.869 | 100% | · |
+| **+ modo `site`** | 727.801 | 66,4% | os dois números digitados por golpe |
+| **+ avanço unificado** (piso) | 538.355 | 49,1% | o ⏭ do Tick morto, e um cartão por parada |
+| **+ a folha resolvendo sozinha** | **418.530** | **38,2%** | o resto da classe iii |
+
+> **O teto do que este projeto inteiro pode tirar do mestre é 62% do trabalho de hoje. E o que
+> sobra não tem conserto de software.**
+>
+> Os 38,2% que restam são **234.496 cliques de ⏭ que param por motivo real** e **184.034
+> `aplicar`**, que é a mesa decidindo se o resultado vale. A composição final é **56% cadência de
+> relógio e 44% julgamento, com ZERO de aritmética.**
+
+Três leituras que essa linha obriga, e nenhuma delas é confortável:
+
+1. **O último degrau é o mais caro e o menos seguro.** Ir de 49,1% para 38,2% exige a folha
+   resolver sozinha, e é exatamente onde a condição da §2.5 morde: a régua que o Grid aplica sem
+   mostrar é a régua que ninguém confere. Três defeitos desta frente viveram anos assim;
+2. **o primeiro degrau é o mais barato e não é meu para dar.** Ir de 100% para 66,4% é uma
+   conversa (o **L26**), não um commit;
+3. **o piso de 38,2% é o do robô.** Com jogadores declarando à mão, `declarar` deixa de valer zero
+   e o denominador cresce: a fração some, o número absoluto de gestos do mestre não. **O que este
+   projeto não consegue tirar não é 38,2% de um número fixo, é um clique por Tick que para e um
+   por golpe que cai**, e esses dois não têm conserto de software porque não são conta: são a
+   cadência da cena e a decisão da mesa.
+
+### 8.3 A próxima medição
 
 **A próxima medição que vale é a de uma mudança que já esteja na mesa.**
 
@@ -1065,24 +1129,26 @@ elenco). É que nenhuma delas se responde rodando de novo o que já rodou. A gra
 está medida, os eixos separam, os invariantes fecham e os alarmes acendem; o que falta agora é
 **mudar alguma coisa no Grid e medir a diferença**, e não medir de novo o Grid de hoje.
 
-**A fila do conserto, e os dois primeiros são uma SEQUÊNCIA e não dois itens paralelos:**
+**A fila do conserto, em três itens, e o segundo é UM desenho e não dois:**
 
 1. **A conversa com quem joga** (§2.5, o **L26**), com duas perguntas: *por que a mesa rola o dado
    na mão* e *com que frequência há efeito de chão ativo numa cena*. A primeira vale 33,6% do
-   trabalho sem uma linha de motor; a segunda diz se o piso do avanço automático (item 2) vale
-   como medido. **Nenhuma das duas se responde com código nem com bateria**, e as duas decidem o
-   tamanho dos dois primeiros itens desta fila;
-2. **o ⏭ que corre até a próxima parada** (§2.4). Ele vem **depois** do 1 e não em paralelo: com a
-   troca de modo, o ⏭ passa de 32,8% para 49,4% do trabalho e a economia do avanço sobe de 11,4%
-   para 17,2%. **Ele não fica menos importante depois da conversa, fica mais**, e medi-lo antes
-   seria medir contra um denominador que a conversa pode encolher. O desenho já nasceu corrigido:
-   para quando alguém é consultado **e** quando um efeito morde, e mostra o que passou no caminho
-   em vez de pular calado;
-3. **o clique que abre a folha do golpe vencido** (§2.5), que é **todo** o resto da classe iii
-   depois do 1: 184.034 cliques, um por golpe. Ele é vizinho do item 2 na tela e no tempo, porque
-   o ⏭ para exatamente no Tick em que esse cartão vence: um avanço que parasse **abrindo** a folha
-   do golpe que o fez parar tiraria os dois de uma vez;
-4. **o L25**, que não alivia o mestre em nada e destrava a segunda bateria.
+   trabalho sem uma linha de motor; a segunda diz se o piso do avanço (item 2) vale como medido.
+   **Nenhuma das duas se responde com código nem com bateria**, e as duas decidem o tamanho do
+   item seguinte;
+2. **o avanço unificado** (§2.4 e §2.5): o ⏭ corre até a parada real **e abre a folha do golpe que
+   o fez parar**. É um desenho só, porque `instanteDeGolpe` tranca o avanço exatamente no Tick em
+   que o cartão vence, e separá-lo em dois produziria duas interfaces que se atrapalham. Ele para
+   quando alguém é consultado **e** quando um efeito morde, e mostra o que passou no caminho em
+   vez de pular calado. Vale **26,0%** do trabalho no modo `site` (17,2% do avanço mais 8,8% dos
+   cartões absorvidos), e vem **depois** do item 1, porque a conversa muda o denominador contra o
+   qual ele é medido;
+3. **o L25**, que não alivia o mestre em nada e destrava a segunda bateria.
+
+**O que ficou de fora da fila, de propósito:** os 65% dos cartões que o avanço não absorve (o 2º e
+o 3º golpe do mesmo Tick, porque os golpes chegam em cacho de 2,87). Tirá-los exige a folha
+resolver sozinha, e isso esbarra na condição da §2.5. É o último degrau da §8.2, e é o único que
+troca clique por opacidade.
 
 ---
 
