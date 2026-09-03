@@ -2382,7 +2382,7 @@ const SETAS = [
     hexEmPonto, dentro, chaveHex, distanciaHex, nomeHex, larguraHex,
     offsetParaAxial, letraColuna, caminharHex, alemDe,
   } from '../../lib/hex';
-  import { uiConfirmar, uiErro, uiFormulario } from '../../lib/ui-dialog';
+  import { uiConfirmar, uiErro, uiFormulario, uiEscolher } from '../../lib/ui-dialog';
   import {
     girarMapa, excluirMapa, medidaDeMapa, giroParaCaber, enquadramentoPadrao, medirImagem,
     type Giro,
@@ -4193,9 +4193,16 @@ const SETAS = [
   /** Como a peça entra no comparador da fila (`ordemDaFila`, no motor). */
   const naOrdem = (c: any) => ({
     tick: c.tick, iniciativa: c.iniciativa, raciocinio: raciocinioDe(c),
-    // O carimbo de quando a peça foi posta no mapa é só o critério de
-    // estabilidade: sem ele, dez peças zeradas dançariam a cada repintura.
-    chegada: TOKENS[c.id]?.em, nome: c.nome,
+    // QUEM DESEMPATA É A INICIATIVA ROLADA, e o campo abaixo é só o piso
+    // determinístico. Decidido em 03/09.
+    //
+    // Aqui morava `TOKENS[c.id].em`, o carimbo do token, e ele é reescrito toda
+    // vez que a peça anda: numa perseguição a fila inteira se reordenava a cada
+    // avanço, e o campo existe justamente para a ordem NÃO dançar. Achado pelo
+    // espelho de motor. O id não é resposta de jogo, e não precisa ser: a
+    // resposta de jogo é a iniciativa, que a cena rola por peça (o ⚄ da barra),
+    // e o id só decide quando duas rolagens empatam de verdade.
+    chegada: c.id, nome: c.nome,
   });
   const naFila = () => COMBS.filter((c: any) => TOKENS[c.id]).slice()
     .sort((a: any, b: any) => ordemDaFila(naOrdem(a), naOrdem(b)));
@@ -5205,10 +5212,21 @@ const SETAS = [
     while (D.ticks.length > DESPEJO_TETO) { D.ticks.shift(); D.descartados++; }
   }
 
+  /**
+   * QUEM JÁ ESTAVA NO CHÃO quando este Tick começou.
+   *
+   * É o que separa os dois casos da regra do golpe no caído: quem caiu num Tick
+   * ANTERIOR foi visto cair, e quem cai DENTRO deste Tick não foi, porque tudo
+   * o que acontece dentro de um Tick é simultâneo. Um retrato tirado na abertura
+   * responde os dois sem guardar nada no banco.
+   */
+  let CAIDOS_AO_ABRIR = new Set<string>();
+
   async function avancarTickSimultaneo() {
     if (instanteDeGolpe()) return;
     const T = tickSim() + 1;
     TICK_SIM = T;
+    CAIDOS_AO_ABRIR = noChaoAgora();
     if (ENC?.id) {
       // A aba Combate lê o mesmo número: as duas telas contam o mesmo relógio.
       const { error } = await SB.from('encontros').update({ tick_atual: T }).eq('id', ENC.id);
@@ -5365,7 +5383,13 @@ const SETAS = [
         // Para longe: o dobro do vetor que separa, como destino. Corrida.
         const eu = TOKENS[c.id], dele = TOKENS[d.alvo];
         const destino = { q: eu.q + (eu.q - dele.q) * 4, r: eu.r + (eu.r - dele.r) * 4 };
+        // A FUGA ANDA COM A PERNA DA PEÇA, e não com o 6 da tabela. Decidido em
+        // 03/09: o mesmo robô media a perna de dois jeitos, porque a declaração
+        // de ataque já usava `passoNoModo` e a fuga tinha ficado com o número
+        // padrão. O caramujo foge de caramujo e o guepardo de guepardo, que é a
+        // mesma decisão de 28/08 que tirou os 3 m/Tick de todo mundo.
         const modo = MODOS_MOV.find((x) => x.id === 'corrida')!;
+        const porTickFuga = Math.max(0.5, passoNoModo(c, 'corrida'));
         const acao: any = {
           // O `aid` DA FUGA. Toda ação declarada tem identificador (D2): ele
           // nasce na declaração e sobrevive à re-projeção, e é por ele que o
@@ -5374,7 +5398,7 @@ const SETAS = [
           // criatura em modo automático tinha um buraco: ela declara, ela anda,
           // e a re-projeção do trajeto dela não tinha a que se referir.
           golpes: [], livre: T + 6, desde: T, aid: novoAid(c, T), ...contrapeDe(c.acao),
-          mov: { destino, modo: 'corrida', porTick: modo.porTick, auto: true } as Mov,
+          mov: { destino, modo: 'corrida', porTick: porTickFuga, auto: true } as Mov,
         };
         if (await gravarRelogio(c, T + 6, acao)) {
           await logar(c, `🤖 ${c.nome} foge de ${alvo.nome} correndo`, { acao: null });
@@ -7380,15 +7404,79 @@ const SETAS = [
    * a regra do estudo, e por ora sem a escolha de outro alvo, que é a fatia
    * seguinte.
    */
+  /**
+   * PARA ONDE VAI O GOLPE cujo alvo caiu. Regra de 03/09
+   * (`regras.json`, `combate.simultaneo.golpeNoCaido`).
+   *
+   * O gesto já estava no ar quando o corpo desabou, então ele não evapora: ele
+   * procura outro corpo dentro do alcance da arma. Os dois casos:
+   *
+   *   caiu num Tick ANTERIOR · quem golpeia viu cair, e pode CANCELAR ou
+   *     redirecionar;
+   *   caiu NESTE Tick · tudo dentro do Tick é simultâneo e ninguém sabia que ele
+   *     ia cair. Só resta redirecionar, e só porque a queda foi resolvida antes
+   *     deste golpe.
+   *
+   * Sem inimigo de pé ao alcance, o gesto se perde e ninguém é perguntado: uma
+   * caixa com uma opção só é uma caixa a menos que a mesa precisa.
+   */
+  async function destinoDoGolpe(atacante: any, alvo: any, tick: number): Promise<any | null> {
+    const de = TOKENS[atacante.id];
+    const alc = alcanceDaPeca(atacante);
+    const candidatos = naFila().filter((o: any) =>
+      o.id !== atacante.id && !noChao(o) && TOKENS[o.id] && de
+      && (o.tipo === 'criatura') !== (atacante.tipo === 'criatura')
+      && distanciaHex(de, TOKENS[o.id]) <= alc);
+    if (!candidatos.length) return null;
+    // O ROBÔ REDIRECIONA SOZINHO, para o mais próximo: quem está em modo
+    // automático já declara sem perguntar, e perguntar só o destino de um golpe
+    // órfão seria acordar o mestre pela metade da decisão.
+    const perto = candidatos.reduce((m: any, o: any) =>
+      (distanciaHex(de, TOKENS[o.id]) < distanciaHex(de, TOKENS[m.id]) ? o : m));
+    if (atacante.dados?.auto) return perto;
+    const caiuAntes = CAIDOS_AO_ABRIR.has(alvo.id);
+    const esc = await uiEscolher(
+      `${alvo.nome} caiu · para onde vai o golpe de ${atacante.nome}?`,
+      [
+        ...candidatos.map((o: any) => ({
+          valor: o.id,
+          rotulo: `${o.nome} · ${fmtM(distanciaHex(de, TOKENS[o.id]) * (Number(ARENA?.escala_m) || 1))}`,
+        })),
+        ...(caiuAntes ? [{ valor: '', rotulo: 'Cancelar o golpe (deu para ver o corpo cair)' }] : []),
+      ],
+      { msg: caiuAntes
+        ? 'Ele caiu num Tick anterior: dava para ver, então cancelar é uma opção.'
+        : 'Ele caiu neste mesmo Tick: ninguém sabia, e o braço já estava descendo.' },
+    );
+    return esc ? candidatos.find((o: any) => o.id === esc) || null : null;
+  }
+
   async function resolverGolpeNoAr(atacante: any, tick: number) {
     const acao = atacante.acao as Acao | null;
     if (!acao || !golpesNoAr(acao).includes(tick)) return;
-    const alvo = COMBS.find((c: any) => c.id === acao.alvo);
+    let alvo = COMBS.find((c: any) => c.id === acao.alvo);
     if (!alvo) {
       await tirarDaAgenda(atacante, tick);
       await logar(atacante,
         `${atacante.nome} soltou o golpe do Tick ${tick} e o alvo não estava mais lá`, { acao: null });
       return;
+    }
+    // O ALVO CAIU ANTES DE O GOLPE CHEGAR NELE.
+    if (noChao(alvo)) {
+      const caido = alvo;
+      const novo = await destinoDoGolpe(atacante, caido, tick);
+      if (!novo) {
+        // O gesto se perde: sai da agenda aqui, sem folha e sem Pressão.
+        await tirarDaAgenda(atacante, tick);
+        await logar(atacante, `${atacante.nome} soltou o golpe do Tick ${tick}`
+          + ` e ${caido.nome} já estava no chão · o gesto se perdeu`, { acao: null });
+        return;
+      }
+      // Redirecionado: o golpe segue o caminho normal, e quem tira da agenda e
+      // cobra a Pressão continua sendo a resolução lá embaixo.
+      await logar(atacante, `${atacante.nome} redireciona o golpe do Tick ${tick}`
+        + `: ${caido.nome} caiu, e ele desce em ${novo.nome}`, { acao: null });
+      alvo = novo;
     }
     const ra = RESUMO[atacante.id];
     const an = comOverride(anatomia({

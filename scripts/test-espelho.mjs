@@ -87,7 +87,12 @@ const CENAS = [
   // células de 2×8 isso chega a dez mil re-projeções por batalha, e três de
   // cada quatro paradas passam a ser essa aritmética. Sem esta cena o caminho
   // que domina a leitura não teria oráculo nenhum.
-  { ...celulaEspelho('4x4-media', ['escudeiro', 'montanteiro'], 4, 18), teto: 25 },
+  //
+  // O teto é 45 e não 25 porque é ela também que exercita a REGRA DO GOLPE NO
+  // CAÍDO (03/09): com 45 Ticks caem peças o bastante para um golpe encontrar o
+  // alvo já no chão e ter de escolher outro corpo. Com 25 isso acontecia numa
+  // das duas sementes, e uma regra nova coberta por sorte não está coberta.
+  { ...celulaEspelho('4x4-media', ['escudeiro', 'montanteiro'], 4, 18), teto: 45 },
 ];
 
 /**

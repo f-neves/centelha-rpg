@@ -80,7 +80,21 @@ export function resumoCombatePC(S: any): ResumoCombate {
   const forcaAp = (w.danoBonus || 0) + capF * mult;
   const modos = ((w.modos ?? [{ tipo: w.tipoDano, principal: true }]) as any[]).slice()
     .sort((a, b) => ((MODO_ORDEM as any)[a.tipo] ?? 9) - ((MODO_ORDEM as any)[b.tipo] ?? 9));
-  const sigla = MODO_SIGLA[(modos[0]?.tipo) as keyof typeof MODO_SIGLA] || '';
+  // O MODO DA FICHA É O `principal` DO CATÁLOGO, e não o primeiro da ordem de
+  // exibição. Decidido em 03/09, e o defeito que ele conserta valia para seis
+  // das dez armas de mais de um modo: o Montante, o Machado, a Alabarda e o
+  // Machado de Arremesso saíam como IMPACTO tendo corte como principal, e a
+  // Adaga e a Picareta saíam trocadas também.
+  //
+  // Não era cosmético: a sigla vai para a expressão de dano, a mesa lê o tipo
+  // dela (`tipoDeDano(ra.dano)`) e é ele que escolhe QUAL ABSORÇÃO o alvo
+  // aplica, além do gate de Perfuração e da resistência do bicho. Uma alabarda
+  // que bate em vez de cortar erra os três.
+  //
+  // A ordem de `MODO_ORDEM` continua valendo como desempate para a arma que
+  // não marca principal nenhum.
+  const principal = modos.find((m) => m.principal) || modos[0];
+  const sigla = MODO_SIGLA[(principal?.tipo) as keyof typeof MODO_SIGLA] || '';
   const dano = `${w.dado}d6${forcaAp ? ` ${sgn(forcaAp)}` : ''}${sigla ? ` ${sigla}` : ''}`;
 
   // Defesa física passiva = Esquiva: (Destreza + Esquiva)×2 + Centelha − penalidade física

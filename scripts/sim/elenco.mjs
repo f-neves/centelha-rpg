@@ -72,10 +72,31 @@ export function montarArquetipo(id, L) {
     passo: r.passo || { batalha: 3, arranque: 5, corrida: 7 },
     // O alcance: a haste alcança dois hexágonos, o resto alcança um.
     alcanceHex: classe === 'haste' ? 2 : 1,
-    // ⚑ a iniciativa e o Raciocínio entram só como critério de ordem da fila.
-    iniciativa: 6 + (ficha.attrs.raciocinio || 0), raciocinio: ficha.attrs.raciocinio || 0,
+    // ⚑ o bônus de iniciativa e o Raciocínio entram só como critério de ordem
+    // da fila. A iniciativa de cada PEÇA sai de `iniciativaDaPeca`, porque ela
+    // é rolada por peça e não por arquétipo.
+    iniciativaBase: 6 + (ficha.attrs.raciocinio || 0), raciocinio: ficha.attrs.raciocinio || 0,
     qa: r.qa,
   };
+}
+
+/**
+ * A INICIATIVA DE UMA PEÇA, rolada.
+ *
+ * A mesa rola iniciativa por peça (`d6() + bônus`, e o ⚄ da barra rerrola a
+ * cena inteira), e é ela que desempata a fila. Aqui a rolagem é DERIVADA do
+ * índice da peça em vez de sorteada, por um motivo só: os dois lados do espelho
+ * precisam da mesma iniciativa sem compartilhar a sequência de acaso, e o mock
+ * é dado estático enquanto o harness roda um gerador semeado.
+ *
+ * Não é regra nova: é a mesma cena chegando pronta dos dois lados, como
+ * chegaria do banco depois de o mestre ter rolado.
+ */
+export function iniciativaDaPeca(arq, ordinal) {
+  // Um `d6` determinístico: mistura o ordinal e devolve 1 a 6.
+  let h = (ordinal + 1) * 2654435761 >>> 0;
+  h ^= h >>> 15;
+  return (arq.iniciativaBase || 0) + 1 + (h % 6);
 }
 
 /**

@@ -29,7 +29,7 @@ import EFEITOS_D from '../src/data/efeitos.json';
 // duas cenas montadas de dois lugares não prova nada sobre o laço: prova que eu
 // montei duas cenas diferentes. A régua entra por parâmetro, e é por isso que o
 // mesmo arquivo roda no Node e aqui.
-import { montarArquetipo } from './sim/elenco.mjs';
+import { montarArquetipo, iniciativaDaPeca } from './sim/elenco.mjs';
 import { resumoCombatePC } from '../src/lib/combate-resumo';
 import { armaDoCatalogo, classeDeTempo, velocidadeDaArma } from '../src/lib/combate-tempo';
 
@@ -267,7 +267,9 @@ if (ESPELHO) {
         monstro_id: null, personagem_id: null,
         pv_max: arq.pvMax, pv_atual: arq.pvMax,
         mana_max: null, mana_atual: null,
-        tick: 0, iniciativa: arq.iniciativa,
+        // A INICIATIVA ROLADA, pela mesma função do harness: é ela que
+        // desempata a fila, e os dois lados do espelho precisam da mesma.
+        tick: 0, iniciativa: iniciativaDaPeca(arq, ordinal),
         acao: {},
         dados: {
           // O robô ligado: sem isto ninguém declara sozinho e o Tick não anda.

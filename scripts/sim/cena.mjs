@@ -21,7 +21,7 @@
 // dano médio inventado (6,5), e quase nenhum golpe passava. **Número inventado
 // não é só uma etiqueta no relatório: ele produz um jogo que não existe.**
 import { LIB } from './lib-ponte.mjs';
-import { FICHAS, montarArquetipo } from './elenco.mjs';
+import { FICHAS, montarArquetipo, iniciativaDaPeca } from './elenco.mjs';
 
 export const chaveHex = (q, r) => `${q},${r}`;
 export { FICHAS };
@@ -158,6 +158,8 @@ export function montarCena(celula, semente) {
       pecas.push({
         ...arq,
         passo,
+        // A INICIATIVA É DA PEÇA, e é ela que desempata a fila.
+        iniciativa: iniciativaDaPeca(arq, ordinal),
         id: `${lado}${k}`, lado, nome: `${arq.nome} ${lado}${k}`,
         pv: arq.pvMax,
         pos: { q: lado === 'a' ? 1 : 1 + celula.dist, r: 1 + k },
@@ -169,12 +171,6 @@ export function montarCena(celula, semente) {
         // dois no mesmo `gravarRelogio`). O laço lia `acao.livre` no lugar
         // dele, o que dá o mesmo número com ação no ar e outro sem ela.
         tick: 0,
-        // O CRITÉRIO DE ESTABILIDADE da fila, e ele é comparado como TEXTO
-        // (`localeCompare`, em `ordemDaFila`). Na mesa ele é `movido_em`, o
-        // carimbo do token, e por isso é uma data: o mesmo esquema aqui, com a
-        // mesma base da bancada, para as duas filas ordenarem igual. Com o
-        // ordinal cru, "10" vinha antes de "2".
-        chegada: new Date(1700000000000 + ordinal * 1000).toISOString(),
         ordinal: ordinal++,
       });
     }

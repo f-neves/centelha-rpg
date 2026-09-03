@@ -20,6 +20,9 @@ import { batalha } from './motor.mjs';
  */
 export const celulaEspelho = (id, arq, n, dist) => ({
   id, arq, n, dist, ciclo: id, distancia: `d${dist}`, pecas: `${n}v${n}`,
+  // O LIMIAR DE FUGA do produto. O espelho compara a mesa com o laço, e a mesa
+  // lê o do `regras.json`: passar outro aqui compararia dois robôs diferentes.
+  limiar: undefined, passoMult: 1,
 });
 
 /** O retrato de um Tick, no molde de `despejarTickInterno` da mesa. */

@@ -51,6 +51,11 @@ export const CUSTO = {
   resolver: { mesa: 3, site: 1, nota: 'cartão da faixa + (modo mesa) dois números' },
   // O BOTÃO: "Acertou · aplicar", "Raspou · aplicar" ou "Errou".
   aplicar: { mesa: 1, site: 1, nota: 'um dos três botões da folha' },
+  // PARA ONDE VAI O GOLPE cujo alvo caiu. A regra manda a peça em modo
+  // automático redirecionar sozinha, para o inimigo de pé mais próximo, sem
+  // abrir caixa; e a bateria roda a política automática. Numa cena com peça de
+  // jogador é uma caixa de escolha, e aí custa um gesto.
+  redirecionar: { mesa: 0, site: 0, nota: 'robô: redireciona sozinho, sem caixa' },
 };
 
 /** Os gestos de uma parada, no modo de rolagem da cena. */
