@@ -34,28 +34,71 @@ export function arquetipo(id) {
 }
 
 /**
- * OS TRÊS EIXOS DA BATERIA MÍNIMA, e só eles.
+ * OS EIXOS QUE EXISTEM SEM BANDEIRA, e só eles.
  *
- * Não é a grade de 112, que existe para comparar regras. São os três que a R2
- * previu que dominam a CARGA, que é a pergunta de agora.
+ * A grade oficial da `02` §0.10.1 tem 112 células e foi desenhada para comparar
+ * BANDEIRAS. Com as quinze desligadas, 68 daquelas células colapsam na âncora
+ * ou pedem coisa que este harness não tem (ver a `09` §2 para a lista, célula a
+ * célula). O que sobra é o núcleo cruzado, e é ele que roda aqui.
+ *
+ * E entra um eixo que não estava lá: o LIMIAR DE FUGA. Ele não é política nova
+ * (o D24 recusou inventar quatro robôs, e continua recusando): é um parâmetro
+ * do produto, escrito no `regras.json`, que decide quando a cena vira
+ * perseguição. Como a perseguição é metade do que a bateria mede, deixá-lo
+ * fixo seria publicar uma leitura que depende dele sem dizer.
  */
 export const EIXOS = {
-  // domina o total de paradas, e o pico junto com o ciclo
+  // E3 · domina o total de paradas, e o pico junto com o ciclo
   pecas: { '1v1': 1, '3x3': 3, '2x8': 8 },
-  // é quem cria viagem, re-projeção, Tick vazio e tempo morto
-  distancia: { encostado: 1, longa: 42 },
-  // é quem decide se os golpes COLIDEM no mesmo Tick
+  // E2 · as quatro distâncias da régua: encostado, ~3, ~7 e ~12 Ticks de corrida
+  distancia: { encostado: 1, media: 18, longa: 42, extrema: 71 },
+  // E1 · é quem decide se os golpes COLIDEM no mesmo Tick. Dois dos quatro
+  // níveis da régua: os outros dois pedem arquétipos que não existem (D25).
   ciclo: { unissono: ['escudeiro', 'escudeiro'], coprimo: ['escudeiro', 'montanteiro'] },
+  // A SENSIBILIDADE: o limiar de fuga da `decisaoAutomatica`, em dois níveis.
+  // 25 é o do `regras.json`; 10 é o mesmo robô fugindo mais tarde.
+  limiar: { l25: 25, l10: 10 },
 };
 
-/** As doze células, na ordem em que o relatório as lê. */
+/**
+ * E4 · A ASSIMETRIA DE PASSO, que não cabe no cruzamento.
+ *
+ * Ela é OFAT em volta de cada âncora (3×3, distância média), e não um fator do
+ * núcleo, porque cruzá-la com tudo dobraria a grade para medir um eixo que só
+ * tem dois níveis e um deles é o próprio núcleo.
+ *
+ * ⚑ O MULTIPLICADOR É INVENTADO, e é o único número inventado que entra pelo
+ * caminho da mesa: `combatentes.dados.passo`, o ajuste por instância que o
+ * mestre usa para fixar a corrida do lobo ferido. A régua não tem dois
+ * arquétipos com passo 2× e mesma Defesa, e produzir a assimetria pela armadura
+ * mexeria em Defesa e Absorção junto, confundindo o eixo com E5.
+ */
+export const PASSO_ASSIMETRICO = 2;
+
+/** As células da grade, na ordem em que o relatório as lê. */
 export function celulas() {
   const out = [];
-  for (const [nc, cic] of Object.entries(EIXOS.ciclo)) {
-    for (const [nd, dist] of Object.entries(EIXOS.distancia)) {
-      for (const [np, n] of Object.entries(EIXOS.pecas)) {
-        out.push({ id: `${nc}-${nd}-${np}`, ciclo: nc, distancia: nd, pecas: np, n, dist, arq: cic });
+  for (const [nl, limiar] of Object.entries(EIXOS.limiar)) {
+    // O NÚCLEO CRUZADO: E1 × E2 × E3.
+    for (const [nc, cic] of Object.entries(EIXOS.ciclo)) {
+      for (const [nd, dist] of Object.entries(EIXOS.distancia)) {
+        for (const [np, n] of Object.entries(EIXOS.pecas)) {
+          out.push({
+            id: `${nc}-${nd}-${np}-${nl}`,
+            ciclo: nc, distancia: nd, pecas: np, n, dist, arq: cic,
+            limiar, nivelLimiar: nl, passoMult: 1,
+          });
+        }
       }
+    }
+    // E4, OFAT em volta de cada âncora: 3×3, distância média, lado `b` mais
+    // rápido pelo ajuste por instância.
+    for (const [nc, cic] of Object.entries(EIXOS.ciclo)) {
+      out.push({
+        id: `${nc}-media-3x3-passo${PASSO_ASSIMETRICO}x-${nl}`,
+        ciclo: nc, distancia: 'media', pecas: '3x3', n: 3, dist: 18, arq: cic,
+        limiar, nivelLimiar: nl, passoMult: PASSO_ASSIMETRICO,
+      });
     }
   }
   return out;
@@ -101,8 +144,18 @@ export function montarCena(celula, semente) {
   for (const [i, lado] of ['a', 'b'].entries()) {
     const arq = arquetipo(celula.arq[i]);
     for (let k = 0; k < celula.n; k++) {
+      // E4 · O LADO `b` ANDA MAIS. É o ajuste por instância do passo
+      // (`combatentes.dados.passo`), e só ele: Defesa, Absorção e ciclo ficam
+      // como a régua os escreveu, senão o eixo mediria três coisas de uma vez.
+      const mult = (lado === 'b' && celula.passoMult > 1) ? celula.passoMult : 1;
+      const passo = mult === 1 ? arq.passo : {
+        batalha: arq.passo.batalha * mult,
+        arranque: arq.passo.arranque * mult,
+        corrida: arq.passo.corrida * mult,
+      };
       pecas.push({
         ...arq,
+        passo,
         id: `${lado}${k}`, lado, nome: `${arq.nome} ${lado}${k}`,
         pv: arq.pvMax,
         pos: { q: lado === 'a' ? 1 : 1 + celula.dist, r: 1 + k },

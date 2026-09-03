@@ -81,6 +81,13 @@ const CENAS = [
   // A PERSEGUIÇÃO LONGA com duas peças por lado: viagem, re-projeção repetida e
   // o re-carimbo da fila a cada passo, tudo ao mesmo tempo.
   { ...celulaEspelho('2x2-longa', ['escudeiro', 'montanteiro'], 2, 42), teto: 30 },
+  // A MULTIDÃO QUE SE TRANCA, e é a cena que produz o maior número da bateria:
+  // com quatro peças por lado num mapa estreito, quem persegue esbarra na
+  // aglomeração, não fecha a distância e RE-PROJETA a agenda todo Tick. Nas
+  // células de 2×8 isso chega a dez mil re-projeções por batalha, e três de
+  // cada quatro paradas passam a ser essa aritmética. Sem esta cena o caminho
+  // que domina a leitura não teria oráculo nenhum.
+  { ...celulaEspelho('4x4-media', ['escudeiro', 'montanteiro'], 4, 18), teto: 25 },
 ];
 
 /**

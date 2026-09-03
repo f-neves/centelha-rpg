@@ -22,6 +22,14 @@ const SAIDA = path.resolve(RAIZ, arg('--saida', '.sim/ultima'));
 const SEM_MESTRE = parseInt(arg('--semente', '20260902'), 10);
 const N = parseInt(arg('--n', '500'), 10);
 const AMOSTRA = parseInt(arg('--amostra', '0'), 10);
+// `--imprime` joga a linha da batalha no stdout também. É o que torna UMA
+// batalha reexecutável sozinha, pelo índice, sem depender de nenhuma anterior:
+//
+//   node scripts/sim/rodar.mjs --de 7431 --ate 7432 --imprime //     --n 400 --unissono 50 --semente <a do manifesto> --saida .sim/avulsa
+//
+// A semente é `hash32(semente_mestre, celula, repeticao)`, derivada e não
+// sorteada, então a batalha 7431 sai idêntica com ou sem as 7.430 anteriores.
+const IMPRIME = process.argv.includes('--imprime');
 
 /**
  * A SEMENTE DE UMA BATALHA, derivada e não sorteada.
@@ -69,6 +77,7 @@ for (let idx = DE; idx < ATE; idx++) {
   const falhas = conferir(cena, log, res);
   const linha = { ...resumo(log, cena, idx, semente), invariantes: falhas };
   linhas.push(JSON.stringify(linha));
+  if (IMPRIME) process.stdout.write(JSON.stringify(linha) + '\n');
   if (completo && log.eventos) evs.push(JSON.stringify({ b: idx, eventos: log.eventos }));
 }
 

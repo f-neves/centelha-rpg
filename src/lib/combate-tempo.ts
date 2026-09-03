@@ -925,12 +925,23 @@ export function decisaoAutomatica(
   eu: { id: string; pvPct: number | null; pos: { q: number; r: number } | null },
   inimigos: { id: string; pos: { q: number; r: number } | null }[],
   distancia: (a: { q: number; r: number }, b: { q: number; r: number }) => number,
+  /**
+   * O LIMIAR DE FUGA, injetável. Sem ele vale o do `regras.json`, que é o que a
+   * mesa usa e nunca passa este argumento.
+   *
+   * Ele existe para a bateria poder medir a SENSIBILIDADE da carga a um valor
+   * que já é do produto, em vez de inventar políticas novas: o limiar decide
+   * quando a cena vira perseguição, e a perseguição é metade do que a bateria
+   * mede. Um parâmetro que muda o desfecho de sete em cada dez batalhas não
+   * pode ficar fora da leitura só porque tem um padrão escrito.
+   */
+  opts: { limiarFugaPct?: number } = {},
 ): { tipo: 'atacar' | 'fugir' | 'nada'; alvo: string | null } {
   const deAlcance = inimigos.filter((i) => i.pos && eu.pos);
   if (!deAlcance.length || !eu.pos) return { tipo: 'nada', alvo: null };
   const maisPerto = deAlcance.reduce((m, i) =>
     (distancia(eu.pos!, i.pos!) < distancia(eu.pos!, m.pos!) ? i : m));
-  const limiar = SIM?.ia?.fugirAbaixoDePct ?? 25;
+  const limiar = opts.limiarFugaPct ?? SIM?.ia?.fugirAbaixoDePct ?? 25;
   if (eu.pvPct != null && eu.pvPct < limiar) return { tipo: 'fugir', alvo: maisPerto.id };
   return { tipo: 'atacar', alvo: maisPerto.id };
 }

@@ -12,15 +12,40 @@
 export const CLASSES = ['i', 'ii', 'iii'];
 import { gestosDe, GESTO_DO_TICK, ROLAGEM_DA_BATERIA } from './custo-tela.mjs';
 
+/**
+ * OS CONTADORES DE UMA FASE.
+ *
+ * A batalha se parte em duas: **antes da primeira declaração de fuga** e depois.
+ * Não é refinamento: em cinco das seis células coprimas da bateria de 03/09 o
+ * fim dominante é `fuga-consumada`, com 71% a 100%, e uma média que junta as
+ * duas fases é a média de dois jogos diferentes. É a mesma armadilha que fez os
+ * 59,9% da primeira bateria serem metade impasse.
+ *
+ * A troca de fase acontece no Tick SEGUINTE ao da primeira declaração de fuga,
+ * e não no meio dele: assim todo Tick pertence inteiro a uma fase e os dois
+ * `ticks` somam o total. A parada da própria declaração de fuga fica no
+ * combate, que é onde a decisão foi tomada.
+ */
+const zeroFase = () => ({
+  ticks: 0,
+  paradas: { i: 0, ii: 0, iii: 0 },
+  paradasSub: {},
+  porTick: [],
+  gestos: 0,
+  golpesAplicados: 0,
+  quadro: { nada: 0, soResolveu: 0, soParou: 0, ambos: 0 },
+  ticksSemParada: 0, ticksSemResolucao: 0, ticksSemGolpe: 0,
+  ticksSoIII: 0, ticksSoIIIPiso: 0,
+});
+
 export function novoLog({ completo = false } = {}) {
   const eventos = completo ? [] : null;
   const est = {
     ticks: 0,
     paradas: { i: 0, ii: 0, iii: 0 },
-    // POR SUBTIPO, para a banda conservadora do relatório: a re-projeção é o
-    // ponto duvidoso da taxonomia (a R2 §B registra que o mestre REORDENA A FILA
-    // À MÃO ali, e reordenar não é aritmética), e sem contá-la à parte não há
-    // como calcular o piso da fração.
+    // POR SUBTIPO, para a banda conservadora do relatório: `agenda` e
+    // `reprojetar` são os pontos duvidosos da taxonomia (a mesa oferece escolha
+    // nos dois), e sem contá-los à parte não há como calcular o piso da fração.
     paradasSub: {},
     porTick: [],              // paradas em cada Tick, para o pico e a distribuição
     gestos: 0,
@@ -34,11 +59,6 @@ export function novoLog({ completo = false } = {}) {
     //   ticksSemResolucao  · o Tick em que nada CAIU: ninguém golpeou, ninguém
     //                        chegou, ninguém caiu. Ele continua tendo declaração
     //                        e escrituração, e portanto continua tendo carga.
-    //
-    // A leitura errada era ler o segundo como se fosse o primeiro, e ela
-    // invertia a conclusão: o Tick sem resolução não é o clique que não produz
-    // nada, é o clique em que só há escrituração, que é justamente a classe
-    // que a automação tira.
     ticksSemParada: 0,
     ticksSemResolucao: 0,
     // E AS DUAS NÃO SÃO UMA PARTIÇÃO, que foi o que a conferência do 2a achou.
@@ -49,27 +69,21 @@ export function novoLog({ completo = false } = {}) {
     //   ninguém consultado| quadro.nada      | quadro.soResolveu
     //   alguém consultado | quadro.soParou   | quadro.ambos
     //
-    // `ticksSemParada` é a LINHA de cima (nada + soResolveu) e
-    // `ticksSemResolucao` é a COLUNA da esquerda (nada + soParou): elas se
-    // cruzam em `nada` e nenhuma das duas cobre `ambos`. Somá-las conta o
-    // Tick vazio duas vezes e o Tick cheio nenhuma. O quadro abaixo é a
-    // partição de verdade, e as quatro células somam `ticks`.
+    // `ticksSemParada` é a LINHA de cima e `ticksSemResolucao` é a COLUNA da
+    // esquerda: elas se cruzam em `nada` e nenhuma cobre `ambos`. Somá-las
+    // conta o Tick vazio duas vezes e o Tick cheio nenhuma.
     quadro: { nada: 0, soResolveu: 0, soParou: 0, ambos: 0 },
-    // O TICK QUE A AUTOMAÇÃO ESVAZIA, medido em vez de inferido.
-    //
-    // Um Tick cujas paradas são TODAS de classe iii deixa de consultar alguém
-    // quando a classe iii for resolvida pelo motor. Somado a `ticksSemParada`,
-    // é o teto do que a automação compra em cliques, e é um número do log e
-    // não uma leitura da tabela.
+    // O TICK QUE A AUTOMAÇÃO ESVAZIA, medido em vez de inferido: aquele cujas
+    // paradas são TODAS de classe iii. Pelo teto e pelo piso da varredura.
     ticksSoIII: 0,
-    // E o MESMO NÚMERO PELO PISO da classe iii (só `resolver` conta como
-    // aritmética forçada; ver a varredura do 2c em `agregar.mjs`).
     ticksSoIIIPiso: 0,
-    // O TICK SEM GOLPE, que NÃO é o Tick sem resolução: chegar ao alcance e cair
-    // no chão também são resoluções, e contá-las junto fazia a conta da cadência
-    // (que é sobre GOLPES) dar sobra negativa, o que é impossível pelo
-    // raciocínio que a justifica.
+    // O TICK SEM GOLPE, que NÃO é o Tick sem resolução: chegar ao alcance e
+    // cair no chão também são resoluções, e contá-las junto fazia a conta da
+    // cadência (que é sobre GOLPES) dar sobra negativa.
     ticksSemGolpe: 0,
+    // AS DUAS FASES, e o Tick em que a segunda começou (nulo = ninguém fugiu).
+    fases: { combate: zeroFase(), fuga: zeroFase() },
+    tickDaFuga: null,
     decl: new Map(),          // aid -> Tick da declaração, para o tempo morto
     tempoMorto: [],
     tempoMortoViagem: [],     // separado: quem perseguiu contra quem já alcançava
@@ -85,12 +99,21 @@ export function novoLog({ completo = false } = {}) {
   let classesNoTick = [];
   let subsNoTick = [];
   let golpeNoTick = false;
+  let fase = 'combate';
+  let fugaPedida = false;
 
   const ev = (tipo, o) => { if (eventos) eventos.push({ tipo, ...o }); };
 
   return {
     est, eventos,
-    tick(t) { est.ticks = t; noTick = 0; algoResolveu = false; classesNoTick = []; subsNoTick = []; golpeNoTick = false; },
+    tick(t) {
+      est.ticks = t;
+      noTick = 0; algoResolveu = false; golpeNoTick = false;
+      classesNoTick = []; subsNoTick = [];
+      // A FASE VIRA AQUI, no Tick seguinte ao da declaração de fuga.
+      if (fugaPedida && fase === 'combate') fase = 'fuga';
+      est.fases[fase].ticks += 1;
+    },
     /**
      * UMA PARADA: o motor precisou de um humano.
      *
@@ -99,25 +122,41 @@ export function novoLog({ completo = false } = {}) {
      * automatizável, e a fração dela é o tamanho do que a automação compra.
      */
     parada(classe, tipo, c, t, extra) {
+      const F = est.fases[fase];
       est.paradas[classe] += 1;
       est.paradasSub[tipo] = (est.paradasSub[tipo] || 0) + 1;
+      F.paradas[classe] += 1;
+      F.paradasSub[tipo] = (F.paradasSub[tipo] || 0) + 1;
       noTick += 1;
       classesNoTick.push(classe);
       subsNoTick.push(tipo);
       // OS GESTOS SAEM DA TABELA DE CUSTO DE TELA, e não são um por parada:
       // a re-projeção não abre caixa nenhuma e a folha do golpe custa quatro no
       // modo de rolagem padrão. Ver `custo-tela.mjs`, com a derivação escrita.
-      est.gestos += gestosDe(tipo, ROLAGEM_DA_BATERIA);
+      const g = gestosDe(tipo, ROLAGEM_DA_BATERIA);
+      est.gestos += g;
+      F.gestos += g;
       ev('parada', { classe, sub: tipo, c: c?.id, t, ...extra });
     },
     decl(c, t, o) {
       est.decl.set(o.aid, { t, viagem: o.viagem > 0 });
       ev('decl', { c: c.id, t, ...o });
     },
+    /**
+     * A PRIMEIRA DECLARAÇÃO DE FUGA da batalha, e só a primeira: a fase é da
+     * CENA e não da peça, porque o que muda de jogo é a cena virar perseguição.
+     */
+    fugiu(c, t) {
+      if (fugaPedida) return;
+      fugaPedida = true;
+      est.tickDaFuga = t;
+      ev('fuga', { c: c.id, t });
+    },
     dano(c, alvo, t, o) {
       algoResolveu = true;
       golpeNoTick = true;
       est.golpesAplicados += 1;
+      est.fases[fase].golpesAplicados += 1;
       est.vereditos[o.veredito] = (est.vereditos[o.veredito] || 0) + 1;
       est.danoTotal += o.danoLiquido || 0;
       est.rolagens += (o.rolls?.acerto?.length || 0) + (o.rolls?.dano?.length || 0);
@@ -131,23 +170,26 @@ export function novoLog({ completo = false } = {}) {
     chegou(c, t) { algoResolveu = true; ev('passo', { c: c.id, t, chegou: true }); },
     caiu(c, t) { algoResolveu = true; ev('chao', { c: c.id, t }); },
     fimDoTick(t) {
+      const F = est.fases[fase];
       // O CLIQUE DO ⏭, um por Tick, com parada ou sem. É o gesto mais
       // frequente da mesa e ficava fora da conta.
       est.gestos += GESTO_DO_TICK;
+      F.gestos += GESTO_DO_TICK;
       est.porTick.push(noTick);
-      if (noTick === 0) est.ticksSemParada += 1;
-      if (!algoResolveu) est.ticksSemResolucao += 1;
-      if (!golpeNoTick) est.ticksSemGolpe += 1;
+      F.porTick.push(noTick);
+      if (noTick === 0) { est.ticksSemParada += 1; F.ticksSemParada += 1; }
+      if (!algoResolveu) { est.ticksSemResolucao += 1; F.ticksSemResolucao += 1; }
+      if (!golpeNoTick) { est.ticksSemGolpe += 1; F.ticksSemGolpe += 1; }
       // A PARTIÇÃO, e ela fecha: as quatro células somam `ticks`.
-      const q = est.quadro;
-      if (noTick === 0 && !algoResolveu) q.nada += 1;
-      else if (noTick === 0) q.soResolveu += 1;
-      else if (!algoResolveu) q.soParou += 1;
-      else q.ambos += 1;
+      const onde = (noTick === 0 && !algoResolveu) ? 'nada'
+        : noTick === 0 ? 'soResolveu'
+          : !algoResolveu ? 'soParou' : 'ambos';
+      est.quadro[onde] += 1;
+      F.quadro[onde] += 1;
       // O TICK QUE A AUTOMAÇÃO ESVAZIA: teve parada, e TODA parada dele é
       // aritmética. Pelo teto (toda classe iii) e pelo piso (só `resolver`).
-      if (noTick > 0 && classesNoTick.every((c) => c === 'iii')) est.ticksSoIII += 1;
-      if (noTick > 0 && subsNoTick.every((t2) => t2 === 'resolver')) est.ticksSoIIIPiso += 1;
+      if (noTick > 0 && classesNoTick.every((c) => c === 'iii')) { est.ticksSoIII += 1; F.ticksSoIII += 1; }
+      if (noTick > 0 && subsNoTick.every((t2) => t2 === 'resolver')) { est.ticksSoIIIPiso += 1; F.ticksSoIIIPiso += 1; }
     },
     fim(motivo, t, pecas) {
       est.fimMotivo = motivo;
@@ -159,26 +201,58 @@ export function novoLog({ completo = false } = {}) {
   };
 }
 
-/** O resumo de uma batalha, que é o que vira uma linha do `.jsonl`. */
-export function resumo(log, cena, b, semente) {
-  const e = log.est;
-  const p = e.porTick;
+/** As métricas principais de um bloco de contadores (o total ou uma fase). */
+function principais(F) {
+  const p = F.porTick;
   const soma = p.reduce((x, y) => x + y, 0);
   const ord = [...p].sort((x, y) => x - y);
   const q = (f) => (ord.length ? ord[Math.min(ord.length - 1, Math.floor(ord.length * f))] : 0);
+  const frac = (x) => (F.ticks ? x / F.ticks : 0);
+  return {
+    ticks: F.ticks,
+    paradas: F.paradas, paradasSub: F.paradasSub,
+    paradasPorTick: {
+      media: p.length ? soma / p.length : 0,
+      p10: q(0.1), p50: q(0.5), p90: q(0.9), p99: q(0.99), pico: ord[ord.length - 1] || 0,
+    },
+    gestos: F.gestos,
+    gestosPorGolpe: F.golpesAplicados ? F.gestos / F.golpesAplicados : null,
+    golpesAplicados: F.golpesAplicados,
+    quadro: F.quadro,
+    fracaoSemParada: frac(F.ticksSemParada),
+    fracaoSemResolucao: frac(F.ticksSemResolucao),
+    fracaoSemGolpe: frac(F.ticksSemGolpe),
+    ticksSoIII: F.ticksSoIII, ticksSoIIIPiso: F.ticksSoIIIPiso,
+  };
+}
+
+/** O resumo de uma batalha, que é o que vira uma linha do `.jsonl`. */
+export function resumo(log, cena, b, semente) {
+  const e = log.est;
   const media = (a) => (a.length ? a.reduce((x, y) => x + y, 0) / a.length : null);
+  // O TOTAL sai do MESMO molde das fases: assim nenhuma métrica é calculada de
+  // dois jeitos, e a soma das duas fases pode ser conferida contra ele.
+  const tudo = principais({
+    ticks: e.ticks, paradas: e.paradas, paradasSub: e.paradasSub, porTick: e.porTick,
+    gestos: e.gestos, golpesAplicados: e.golpesAplicados, quadro: e.quadro,
+    ticksSemParada: e.ticksSemParada, ticksSemResolucao: e.ticksSemResolucao,
+    ticksSemGolpe: e.ticksSemGolpe, ticksSoIII: e.ticksSoIII, ticksSoIIIPiso: e.ticksSoIIIPiso,
+  });
   return {
     b, celula: cena.celula.id, semente,
     ticks: e.ticks, fim: e.fimMotivo, vivosA: e.vivosA, vivosB: e.vivosB,
+    // O TOTAL, achatado no nível de cima: é o que o agregador já lia.
     paradas: e.paradas, paradasSub: e.paradasSub,
-    // AS PRINCIPAIS, por etapa (§2.6, régua do D8b)
-    paradasPorTick: { media: p.length ? soma / p.length : 0, p50: q(0.5), p90: q(0.9), p99: q(0.99), pico: ord[ord.length - 1] || 0 },
-    gestosPorGolpe: e.golpesAplicados ? e.gestos / e.golpesAplicados : null,
-    fracaoSemParada: e.ticks ? e.ticksSemParada / e.ticks : 0,
-    fracaoSemResolucao: e.ticks ? e.ticksSemResolucao / e.ticks : 0,
+    paradasPorTick: tudo.paradasPorTick,
+    gestosPorGolpe: tudo.gestosPorGolpe,
+    fracaoSemParada: tudo.fracaoSemParada,
+    fracaoSemResolucao: tudo.fracaoSemResolucao,
+    fracaoSemGolpe: tudo.fracaoSemGolpe,
     quadro: e.quadro,
-    fracaoSemGolpe: e.ticks ? e.ticksSemGolpe / e.ticks : 0,
     ticksSoIII: e.ticksSoIII, ticksSoIIIPiso: e.ticksSoIIIPiso,
+    // AS DUAS FASES, e o Tick em que a fuga começou.
+    tickDaFuga: e.tickDaFuga,
+    fases: { combate: principais(e.fases.combate), fuga: principais(e.fases.fuga) },
     tempoMorto: { media: media(e.tempoMorto), n: e.tempoMorto.length },
     tempoMortoViagem: { media: media(e.tempoMortoViagem), n: e.tempoMortoViagem.length },
     maiorDeslize: Math.max(0, ...e.deslizes),

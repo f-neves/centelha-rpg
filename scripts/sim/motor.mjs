@@ -218,6 +218,10 @@ function declarar(L, c, cena, log, T, inimigosDe) {
     { id: c.id, pvPct: c.pvMax ? (c.pv / c.pvMax) * 100 : null, pos: c.pos },
     inimigos.map((o) => ({ id: o.id, pos: o.pos })),
     L.distanciaHex,
+    // O LIMIAR DE FUGA da célula. Sem ele vale o do `regras.json`, que é o que
+    // a mesa usa: o eixo existe para medir a sensibilidade da carga a um valor
+    // que já é do produto, e não para inventar política nova.
+    { limiarFugaPct: cena.celula.limiar },
   );
   log.parada('i', 'declarar', c, T, { escolha: d.tipo, alvo: d.alvo });
   if (d.tipo === 'nada' || !d.alvo) return;
@@ -239,6 +243,9 @@ function declarar(L, c, cena, log, T, inimigosDe) {
     };
     c.tick = c.acao.livre;
     c.fugindo = destino;
+    // A CENA VIRA PERSEGUIÇÃO AQUI, e a leitura se parte em duas a partir do
+    // Tick seguinte. Só a primeira fuga conta: a fase é da cena, não da peça.
+    log.fugiu(c, T);
     log.parada('ii', 'fugir', c, T, {});
     return;
   }
