@@ -66,6 +66,7 @@ const S = {
     forcaMult: z.number().optional(), forcaCap: z.number().int().optional(), forcaMin: z.number().int().optional(),
     alcance: z.enum(['curto', 'medio', 'longo']).optional(),
     tipoDano: z.enum(['corte', 'perfurante', 'impacto']), pen: z.number().int().min(0).max(5),
+    fichaModo: z.enum(['corte', 'perfurante', 'impacto']).optional(),
     modos: z.array(z.object({ tipo: z.enum(['corte', 'perfurante', 'impacto']), perf: z.number().int().min(0).max(5).optional(), principal: z.boolean() })),
     tags: z.array(z.string()), notas: z.string(),
   }),
@@ -114,6 +115,27 @@ for (const i of data.inimigos || []) {
 for (const w of data.armas || []) {
   if (!A.has(w.atrib)) fail(`arma "${w.id}": atributo inexistente "${w.atrib}"`);
   if (!H.has(w.pericia)) fail(`arma "${w.id}": perícia inexistente "${w.pericia}"`);
+  // A ARMA DE VÁRIOS PRINCIPAIS TEM DE DIZER QUAL MODO VAI NA FICHA (D45).
+  //
+  // Sem este campo quem decide é a ordem de exibição de `MODO_ORDEM`, dentro do
+  // `find` de `combate-resumo.ts`, e ela decide EM SILÊNCIO: a Alabarda saía
+  // como impacto, que é o pior ou o empatado-pior contra os três alvos de
+  // referência, sem que nada em lugar nenhum tivesse escolhido isso. Uma arma
+  // nova com dois principais reintroduziria o defeito do mesmo jeito, e é para
+  // isso que esta conferência existe.
+  const principais = (w.modos || []).filter((m) => m.principal);
+  if (principais.length > 1 && !w.fichaModo) {
+    fail(`arma "${w.id}": ${principais.length} modos principais e nenhum \`fichaModo\`.`
+      + ' Com mais de um principal, o catálogo precisa dizer qual modo vai na expressão'
+      + ' de dano da ficha, senão quem decide é a ordem de exibição, em silêncio');
+  }
+  if (w.fichaModo && !(w.modos || []).some((m) => m.tipo === w.fichaModo)) {
+    fail(`arma "${w.id}": \`fichaModo\` "${w.fichaModo}" não é um dos modos dela`);
+  }
+  if (w.fichaModo && principais.length && !principais.some((m) => m.tipo === w.fichaModo)) {
+    fail(`arma "${w.id}": \`fichaModo\` "${w.fichaModo}" é um modo SECUNDÁRIO.`
+      + ' A ficha não pode nascer no modo que paga −2 de acerto e −1d6 de dano');
+  }
 }
 
 // Fraquezas e resistências do bestiário (satélite semeado por gen-elementos.mjs).

@@ -1773,13 +1773,28 @@ exercitada nas âncoras. E a política Agressiva **nunca aborta**, então o cami
 exercitado pelo nível Cauteloso de E6.
 
 **Onde mora cada bandeira**, porque medir uma bandeira numa célula em que ela não morde produz zero
-por construção:
+por construção.
+
+> **ANTES DE QUALQUER UMA DELAS ENTRAR: a bandeira supõe um caminho, e o caminho pode não
+> existir.** O `gate` é o caso confirmado em 03/09 (o **L22** do `Pendencias.md`):
+> `gatePerfuracaoAbre` está escrita em `calc.ts` e **nenhum caminho de produção a chama**, nem
+> `resolverGolpe`, nem a folha do Grid, nem o harness. Ligar a bandeira hoje mediria **zero pelo
+> motivo errado**: não porque a regra não vale naquela cena, mas porque a regra não roda em cena
+> nenhuma, e esse zero sairia idêntico ao zero legítimo das leituras de referência. A
+> `notaEstado` do perfil em `regras.json` já diz o mesmo de três delas (`margem`, `gate`,
+> `bloqueio`); esta linha existe para que isso seja lido **na hora de montar a célula**, e não
+> depois de a leitura sair.
+>
+> **A ordem obrigatória, então, é: ligar a chamada no motor, provar que ela morde com um contador
+> de ocasião, e só depois medir a bandeira.** O contador de ocasião é o mesmo mecanismo dos
+> alarmes da bateria (§5): uma bandeira cuja ocasião nunca dispara é uma linha de relatório que
+> não diz nada, e foi assim que o eixo E4 morreu (D31).
 
 | Bandeira | Célula em que ela morde | Por que não pode ser só a âncora |
 |---|---|---|
 | `n1` a `n6` | **as duas âncoras** | são o núcleo do Tick, e valem em qualquer cena |
 | `margem` · `bloqueio` · `teto6` | **a âncora extrema**, e só ela: é onde elas mordem **e** é a referência única | o Escudeiro tem heater dos dois lados, e a Margem morde em qualquer acerto acima da Defesa. O `teto6` vai com um contador de quantas vezes o teto de fato mordeu |
-| `gate` | a hospedeira do **Lanceiro de lança** (Perfuração 1, **modo único**) contra o **Montanteiro de placa completa** (`resistPerf` 3) | `gatePerfuracaoAbre` (`calc.ts:130-135`) só avalia o perfurante, e as armas das âncoras atacam de corte. **E a hospedeira não pode ser a do Conjurador**: a regra ⊕ do D11 manda trocar de modo exatamente ali, e o gate mediria zero pelo motivo oposto. A lança não tem modo secundário, então a regra ⊕ não dispara e o gate não tem como ser evitado |
+| `gate` ⚠ **a chamada não existe** (L22) | a hospedeira do **Lanceiro de lança** (Perfuração 1, **modo único**) contra o **Montanteiro de placa completa** (`resistPerf` 3) | `gatePerfuracaoAbre` (`calc.ts:130-135`) só avalia o perfurante, e as armas das âncoras atacam de corte. **E a hospedeira não pode ser a do Conjurador**: a regra ⊕ do D11 manda trocar de modo exatamente ali, e o gate mediria zero pelo motivo oposto. A lança não tem modo secundário, então a regra ⊕ não dispara e o gate não tem como ser evitado |
 | `modo2` | a hospedeira do **Conjurador de adaga** (Perfuração 0) contra a **malha** (`resistPerf` 1) | é a cena em que a regra ⊕ **dispara**: a adaga tem modo secundário, troca para o corte e paga os −2 e −1d6. A mesma regra que mata o gate aqui é o que torna o `modo2` mensurável |
 | `curaSemArea` · `curaDivide` · `porRodada` | a hospedeira do Conjurador | nenhuma âncora tem quem conjure, e as cinco condições de dano por rodada vêm de Arte no repertório escolhido |
 | `porte` | a célula **`E11 = PC × criatura`**, que já existe no OFAT | `porteAcerto` é diferença de porte, e num elenco de PC ela é 0 sempre |
@@ -2703,7 +2718,7 @@ Levantadas pela primeira execução da grade e respondidas no chat. O texto est�
 
 | # | A decisão | O que ela custa |
 |---|---|---|
-| **D37** | o tipo de dano da ficha segue o `principal: true` do catálogo, e não o primeiro por `MODO_ORDEM`. **Cinco** das dez armas de mais de um modo escreviam o tipo errado (medido em `scripts/dano-por-tipo.mjs`; a alabarda, ao contrário do que esta linha dizia antes, não mudou: ela marca os três modos como principal) | o `dados_hash` mudou e a bateria inteira rodou de novo. E é mudança de EQUILÍBRIO, não de vitrine: o Machado sobe 230% no dano líquido por golpe contra alvo sem armadura e desce 50% contra malha. O sinal depende do alvo |
+| **D37** | o tipo de dano da ficha segue o `principal: true` do catálogo, e não o primeiro por `MODO_ORDEM`. **Seis** das dez armas de mais de um modo mudaram de categoria de Absorção, medidas em `scripts/dano-por-tipo.mjs`; a sexta é a alabarda, e ela entra pela D45 e não por esta (com três principais, quem decidia era a ordem de exibição) | o `dados_hash` mudou e a bateria inteira rodou de novo. E é mudança de EQUILÍBRIO, não de vitrine: o Machado sobe 230% no dano líquido por golpe contra alvo sem armadura e desce 50% contra malha. O sinal depende do alvo |
 | **D38** | o golpe que cai num alvo já no chão REDIRECIONA para um inimigo ao alcance. Caiu num Tick anterior, dá para cancelar; caiu neste Tick, só redirecionar. Regra nova em `regras.json` | uma decisão de classe i onde havia uma folha inteira de iii mais uma de ii. E some a Pressão cobrada de um corpo caído |
 | **D39** | a fuga automática anda com a perna da peça (`passoNoModo`), e não com o 6 da tabela | as perseguições ficaram mais lentas, porque o arranque da maioria é menor que 6. É o preço de o caramujo fugir de caramujo |
 | **D40** | o desempate da fila é a iniciativa rolada, e o `movido_em` sai do comparador | a horda do mesmo bicho, com iniciativas iguais, passa a depender do id, que é arbitrário. É melhor que depender de quem andou por último |
@@ -2724,6 +2739,20 @@ conserta a regra que a D38 tinha escrito pela metade.
 | **D42** | a bateria publica DUAS frações, nunca uma: a das PARADAS que é iii e a dos GESTOS que é iii | a segunda é menor de contar e maior de explicar. Sem ela o leitor troca "quantas vezes fui consultado" por "quanto eu trabalhei", que é a pergunta original |
 | **D43** | a classe de cada tipo de parada sai do log, escrita pelo motor, e não de um mapa no agregador | uma cópia a menos. O mapa a mão já dizia `fugir` classe i e `aplicar` classe iii, quando o motor registra ii nas duas |
 | **D44** | o custo de tela do redirecionamento e o critério "o mais próximo" entram na lista ⚑ | dois furos declarados em vez de dois números invisíveis. A bateria roda só peça automática, e portanto NÃO ENXERGA a caixa que o jogador veria |
+
+## D45 a D47 · a segunda revisão (03/09)
+
+| # | A decisão | O que ela custa |
+|---|---|---|
+| **D45** | a arma de vários modos principais declara qual vai na ficha, no campo `fichaModo` do catálogo. Só a Alabarda tem, o dado dela está certo (ela alterna sem penalidade), e o que estava errado era a ordem de exibição decidir em silêncio: saía impacto, o pior ou empatado-pior contra os três alvos de referência | um campo novo e uma conferência a mais no `validate`. E a Alabarda passa a bater de corte, que é mudança de balanço (`09` §5.4) |
+| **D46** | cada sinal de bateria ineficaz imprime o veredito dele, aceso ou apagado | dez linhas a mais na saída, sempre. É o preço de "nenhum alarme" significar alguma coisa, em vez de ser indistinguível de "o alarme não rodou" |
+| **D47** | nenhuma parada pode ter classe ausente ou fora de `{i, ii, iii}` (V15), e o agregador FALHA num tipo que ele não conhece em vez de carimbar `?` | um tipo de parada novo passa a parar o agregador até alguém decidir a classe dele. Carimbo por padrão é como uma classe errada entra sem ninguém ver |
+
+**E a conclusão do relatório foi reescrita em TRÊS termos, e não num** (`09` §2.3): 50% dos gestos
+do mestre são classe iii (automação de regra), **33% são o clique do ⏭** (cadência de relógio, que
+nenhuma bandeira e nenhuma decisão de regra toca) e 17% são classe ii (julgamento). Metade do
+trabalho está fora do alcance de tudo o que este projeto vinha propondo, e o maior item dessa
+metade não é julgamento, é apertar avançar.
 
 ---
 

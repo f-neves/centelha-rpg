@@ -198,7 +198,8 @@ Agora saem **duas frações, e nunca uma só**. Fase de combate, 9.600 batalhas 
 | fração dos **GESTOS** que é iii | **50%** | quanto **trabalho** ela apaga ← **é este** |
 
 **O 20%–55% que esta frente vinha publicando é o de PARADAS.** O de gestos é 50%, e é ele que
-responde a pergunta original da R2 §B.
+responde a pergunta original da R2 §B. E ele não fecha a conta sozinho: a §2.3 mostra que os
+outros 50% se partem em dois, e que o maior pedaço deles não é julgamento, é o relógio.
 
 Três coisas que a tabela deixa ver e a fração agregada escondia:
 
@@ -211,9 +212,76 @@ Três coisas que a tabela deixa ver e a fração agregada escondia:
 3. **`declarar` é um quarto das paradas e zero dos gestos**, porque a bateria roda o robô. Numa
    mesa com jogadores essa linha é a mais cara da tabela, e a bateria não a mede (⚑ §6).
 
-> **O que isso muda na conclusão:** para melhor, e não para pior. A automação da classe iii
-> apaga **metade** dos gestos do mestre no combate, não um quinto. O que ela **não** apaga é o
-> outro meio: o ⏭ (33%) e o `aplicar` (17%), que é a mesa decidindo se o resultado vale.
+### 2.3 A conclusão em três termos, e o ⏭ é um deles
+
+A pergunta original desta frente era "quanto da carga do mestre a automação de regra pode tirar".
+A resposta não é um número, são **três**, e o segundo é o que ninguém tinha olhado:
+
+| pedaço | gestos | fatia | quem tira |
+|---|---:|---:|---|
+| **classe iii · aritmética** | 552.102 | **50%** | automação de regra. É o que este projeto vinha propondo |
+| **o ⏭ · cadência de relógio** | 359.733 | **33%** | **ninguém.** Nenhuma das seis paradas, nenhuma das quinze bandeiras, nenhuma decisão de regra o toca |
+| **classe ii · julgamento** | 184.034 | **17%** | ninguém. É a mesa decidindo se o resultado vale |
+| total | 1.095.869 | 100% | |
+
+**Metade do trabalho do mestre está fora do alcance da automação de regras**, e o maior item
+isolado dessa metade não é julgamento nem decisão: é **apertar avançar**. Ele é o mais frequente
+da mesa (um por Tick, sempre), o mais barato individualmente (um clique) e o único **imune a tudo
+o que este projeto propôs até aqui**. Nenhuma das quatro decisões desta semana, nenhuma das
+quinze bandeiras e nenhum conserto de classe iii muda o número dele em um clique.
+
+Isso reordena a leitura das outras seções. A §2.1 mede "o que a automação esvazia em cliques" e
+mede certo, mas responde uma pergunta de **regra**; a linha do ⏭ diz que existe uma pergunta de
+**interface** do mesmo tamanho, e essa nunca foi feita.
+
+### 2.4 A pergunta que o ⏭ abre, com o número que a bateria já tem
+
+**Levantamento, e não decisão: nada foi implementado e nada está proposto.** A pergunta é se o ⏭
+precisa ser um clique por Tick. Se um avanço corresse sozinho até a próxima parada, o mestre
+clicaria uma vez por Tick **que consulta alguém**, e o que isso pouparia já está no log.
+
+**A fração de Ticks de combate que não consulta ninguém**, nas 9.600 batalhas que terminam:
+
+| célula (limiar 25%, mapa apertado) | Ticks sem NENHUMA parada |
+|---|---:|
+| coprimo · extrema · 3×3 | **77%** |
+| coprimo · extrema · 1v1 | 76% |
+| coprimo · longa · 3×3 | 71% |
+| coprimo · longa · 1v1 | 68% |
+| coprimo · média · 3×3 | 62% |
+| coprimo · média · 1v1 | 60% |
+| coprimo · longa · 2×8 | 60% |
+| coprimo · extrema · 2×8 | 52% |
+| coprimo · encostado · 1v1 | 50% |
+| coprimo · encostado · 3×3 | 48% |
+| coprimo · encostado · 2×8 | 47% |
+| coprimo · média · 2×8 | **27%** |
+| **agregado** | **61%** |
+
+**A ideia não morre: 61% dos cliques no ⏭ não produzem nada.** Em números:
+
+| | hoje | com avanço até a próxima parada |
+|---|---:|---:|
+| cliques no ⏭ | 359.733 | **141.054** |
+| trabalho total | 1.095.869 | **877.190** |
+| composição | iii 50% · ⏭ 33% · ii 17% | iii 63% · ⏭ 16% · ii 21% |
+
+**Vinte por cento do trabalho do mestre, sem tocar em regra nenhuma.** É a maior economia isolada
+que esta frente mediu, e a única que não depende de nenhuma das quinze bandeiras.
+
+Três coisas que o número **não** diz, e que decidem se a ideia vale:
+
+1. **Ele é o teto, não a expectativa.** Um Tick sem parada ainda pode ter coisa que o mestre quer
+   VER (alguém chegou ao alcance, alguém caiu: é a coluna `só res.` do quadro). Correr por cima
+   disso troca cliques por cegueira, e a bateria não mede cegueira;
+2. **a variação por célula é enorme**, de 27% a 77%. Na cena em que a carga já é alta (multidão
+   perto) o avanço poupa pouco; na cena em que ela é baixa (duelo a distância) poupa muito. **O
+   ganho aparece justamente onde o problema é menor**;
+3. **isso é com o robô.** Com jogadores declarando à mão, o Tick sem parada nenhuma fica raro, e a
+   economia encolhe junto (é o **L23**).
+
+> **O que fica registrado:** a pergunta tem tamanho (20% do trabalho), tem lugar (interface, e não
+> regra) e tem contra-argumento medido (o que se perde de vista). Não tem decisão, e é o **L24**.
 
 ---
 
@@ -228,9 +296,34 @@ da regra, e a mesa continua chamando com três argumentos.
 | **25%** (produção) | 9.600 | 20%–55% | **50%** | 32,2 | **44%** |
 | **10%** | 9.600 | 20%–57% | **53%** | 35,1 | **16%** |
 
-> **A leitura principal NÃO muda com o limiar: três pontos percentuais na moeda que conta
-> (gestos), dois na de paradas.** A conclusão da bateria é robusta a ele, e isso é o resultado
-> que se queria.
+> **A leitura principal quase não muda com o limiar: três pontos percentuais na moeda que conta
+> (gestos), dois na de paradas.** A conclusão é robusta a ele. Mas três pontos numa fração não é
+> ruído, e a direção tem explicação mecânica.
+
+**A direção: limiar mais BAIXO (foge mais tarde) SOBE a fração de gestos que é iii**, de 50% para
+53%. E o mecanismo não é sobre fuga, é sobre **densidade**:
+
+| | limiar 25% | limiar 10% |
+|---|---:|---:|
+| batalhas em que alguém chegou a fugir | 64% | **32%** |
+| Ticks de combate por batalha | 37,5 | 46,1 |
+| golpes resolvidos por batalha | 19,2 | **28,4** |
+| **golpes por Tick de combate** | 0,512 | **0,617** |
+| Ticks sem parada nenhuma | 60,8% | **54,4%** |
+| gestos: iii · ⏭ · ii | 50% · 33% · 17% | **53% · 29% · 18%** |
+
+Com o limiar baixo a peça **fica na briga em vez de correr**. A fase de combate estica (37,5 →
+46,1 Ticks), mas o número de golpes estica **mais que proporcionalmente** (19,2 → 28,4), porque os
+Ticks que ela ganha são Ticks trocando golpes, e não Ticks atravessando o mapa atrás de alguém.
+
+Daí a fração sobe, e a aritmética é direta: **cada golpe é 3 gestos de `resolver` (classe iii) e 1
+de `aplicar`, enquanto cada Tick é 1 gesto de relógio.** Mais golpes por Tick = mais numerador por
+unidade de denominador. A quarta linha da tabela é a causa e a sexta é o efeito; a quinta confirma
+pelo outro lado, com o Tick vazio ficando mais raro.
+
+**O que isso quer dizer para o desenho:** fugir cedo não deixa a mesa mais leve, deixa mais
+**diluída**. Os cliques por batalha caem pouco e a proporção de clique-sem-nada sobe. É mais uma
+razão para a §2.4 existir.
 
 E ele muda **o desfecho**, e muito: com o limiar de produção, quase metade das cenas termina com
 o perdedor saindo do mapa; com 10%, menos de uma em cinco. Ou seja: **o limiar decide como a cena
@@ -263,8 +356,25 @@ Duas consequências, e as duas vão escritas:
    dominante" da tabela C não deve ser lida como afirmação sobre o sistema de combate**, e sim
    como "a cena acabou porque o tabuleiro acabou".
 
-**Os cinco que não acenderam** também são informação: nenhum invariante violado em 21.600
-batalhas (e são catorze agora, com os dois novos que fecham os gestos por classe e por subtipo);
+**E cada sinal agora imprime o veredito dele**, aceso ou apagado (D46). O placar da execução:
+
+```
+✓ ocasião · reprojetar             4.409.780 re-projeções nas células com distância
+✓ ocasião · fugir                  declarações de fuga acima de zero
+✓ ocasião · redirecionar           golpes redirecionados acima de zero
+✓ ocasião · raspão                 raspões acima de zero
+✓ ocasião · quarta célula do quadro Ticks em que algo caiu sem consultar ninguém
+✓ invariantes                      nenhuma batalha violou um dos quinze
+✓ variância                        os eixos explicam ~200× mais que o acaso
+✓ teto                             48 de 96 células estouram sempre, e 48 terminam
+✓ distribuição                     nenhuma célula com p10 = p90
+✘ fuga-consumada                   2 células acima de 90%
+```
+
+Antes disto, "nenhum alarme" e "o alarme não roda" imprimiam exatamente a mesma coisa: nada.
+
+**Os que não acenderam** também são informação: nenhum invariante violado em 21.600
+batalhas (e são quinze agora: dois que fecham os gestos por classe e por subtipo, e um que recusa parada sem classe);
 nenhum contador de ocasião em zero onde deveria morder (re-projeção, fuga, raspão, o
 redirecionamento do golpe no caído e a quarta célula do quadro mordem todos); nenhuma métrica com
 p10 igual a p90; e nem toda célula estoura o teto (metade estoura, e são as uníssonas, pelo
@@ -454,23 +564,25 @@ Absorção**, e as três não valem a mesma coisa (só o Impacto recebe o Vigor 
 `scripts/dano-por-tipo.mjs` calcula o dano líquido médio por golpe que acerta, exato e não
 simulado, enumerando a distribuição de `Nd6 + fixo`.
 
-**Cinco armas mudaram de lado, e não seis.** A Alabarda **não** mudou: ela marca os três modos
-como principal, e o primeiro da ordem de exibição já era o que o `find` devolve. A nota que dizia
-seis, e nomeava a Alabarda, estava errada e foi corrigida no código.
+**Seis armas mudaram de lado**, e a sexta é a Alabarda, mas por outro motivo: ela marca os TRÊS
+modos como principal, e nesse caso quem decidia era a ordem de exibição, dentro do `find`. Saía
+**impacto**, que é o pior ou o empatado-pior contra os três alvos de referência: a arma que existe
+para cobrir as três frentes estava saindo pela face mais fraca, e por acidente. Ver a D45.
 
 | arma | dano | mudou | contra alvo NU | contra malha | contra placa |
 |---|---|---|---:|---:|---:|
 | Machado | 1d6 +5 | Impacto → Corte | **+230%** | **−50%** | 0 |
-| Montante | 2d6 +10 | Impacto → Corte | +40% | −11% | +20% |
-| Machado de Arremesso | 1d6 +7 | Impacto → Corte | **+114%** | **−33%** | +200% |
 | Picareta de Guerra | 1d6 +5 | Impacto → Perfuração | **+230%** | **+350%** | +1,67 |
+| Machado de Arremesso | 1d6 +7 | Impacto → Corte | **+114%** | **−33%** | +200% |
+| Alabarda (D45) | 1d6 +12 | Impacto → Corte | +47% | −13% | +29% |
+| Montante | 2d6 +10 | Impacto → Corte | +40% | −11% | +20% |
 | Adaga | 1d6 +3 | Corte → Perfuração | 0 | +2,50 | +0,50 |
 
-**O sinal depende do alvo, e as duas pontas são grandes.** Contra alvo sem armadura as três que
-foram para Corte sobem muito, porque o Impacto absorve Vigor + Centelha e o Corte só Centelha.
-**Contra malha duas delas descem**, porque a malha protege mais contra corte (9) que contra
-impacto (8). Somando os quinze pares arma × alvo: **dez sobem** (média +2,52 de dano por golpe),
-**três descem** (média −0,78) e dois não mudam.
+**O sinal depende do alvo, e as duas pontas são grandes.** Contra alvo sem armadura as que foram
+para Corte sobem muito, porque o Impacto absorve Vigor + Centelha e o Corte só Centelha. **Contra
+malha três delas descem**, porque a malha protege mais contra corte (9) que contra impacto (8).
+Somando os dezoito pares arma × alvo: **doze sobem** (média +2,51 de dano por golpe), **quatro
+descem** (média −0,83) e dois não mudam.
 
 **E a Adaga não zerou, subiu.** O medo era o gate de Perfuração, e ele não morde ninguém hoje:
 `gatePerfuracaoAbre` existe em `src/lib/calc.ts` e **nenhum caminho de produção a chama**, nem
@@ -490,6 +602,40 @@ velho até alguém regravar. Duas coisas: **o combate não lê dele.** `resumoDe
 deploy. Quem lê o cache é a fatia "Status"/"Vida" que os companheiros veem. E **a regravação já é
 automática**: a aba Grupo recalcula e grava o que diferir a cada visita do mestre ou do dono.
 Não há migração a fazer.
+
+### 5.5 D45 a D47 · a segunda revisão
+
+**D45 · A arma de vários modos principais declara qual vai na ficha**, num campo novo do catálogo
+(`fichaModo`). Só a Alabarda tem mais de um principal hoje, e o dado dela está **certo**: a nota
+do catálogo e o `modoSecundario` do `regras.json` dizem que ela alterna sem penalidade, que é o
+que a arma é. O problema era o outro lado: com três principais, quem escolhia o que ia na
+expressão de dano era a ordem de exibição, dentro do `find`, **em silêncio**. O `validate` passa a
+recusar arma com mais de um principal e sem `fichaModo`, e a recusar `fichaModo` que aponte para
+um modo secundário.
+**Custo:** um campo novo no catálogo e uma conferência a mais no portão. E a Alabarda passa a
+bater de corte, o que é mudança de balanço (a §5.4).
+
+**D46 · Cada sinal de bateria ineficaz imprime o veredito dele, aceso ou apagado.** A versão
+anterior só imprimia os que acendiam, e um sinal que não aparece quando está tudo bem é um sinal
+que ninguém sabe se rodou: **o silêncio ficava indistinguível da conferência que não aconteceu**,
+que é o defeito exato que os alarmes existem para não ter.
+**Custo:** dez linhas a mais na saída, toda vez. É o preço de o "nenhum alarme" significar
+alguma coisa.
+
+**D47 · Nenhuma parada pode ter classe ausente ou fora de `{i, ii, iii}`** (o invariante V15), e o
+agregador **falha** ao encontrar um tipo que ele não conhece, em vez de carimbá-lo com `?`.
+**Custo:** um tipo de parada novo no motor passa a parar o agregador até alguém decidir a classe
+dele. É o que se quer: carimbo por padrão é como uma classe errada entra sem ninguém ver.
+
+> **Uma correção de premissa, e ela importa porque um número publicado estaria em jogo.** A
+> revisão perguntou quais frações já publicadas nasceram do mapa tipo→classe errado. **Nenhuma.**
+> O mapa a mão viveu só dentro da tabela nova da §2.2, no dia em que ela foi escrita, e foi
+> corrigido antes de a tabela sair; `git log -S CLASSE_DO_TIPO` mostra um commit só, e nele o mapa
+> já lê do log. As frações das três baterias sempre saíram de `est.paradas[classe]`, escrito pelo
+> **motor** no ponto da chamada, e os dois pontos em questão (`log.parada('ii', 'aplicar', ...)` e
+> `log.parada('ii', 'fugir', ...)`) não mudam desde o commit da primeira bateria (`d191c2c`). O
+> `07` e o `08` não precisam de marca de superação por esta causa. O V15 entra assim mesmo: ele
+> não conserta um número publicado, ele fecha a porta pela qual esse número poderia ter saído.
 
 ---
 

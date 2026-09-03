@@ -12,6 +12,7 @@
 // NENHUMA, porque uma batalha inválida na média é pior que uma batalha a menos.
 
 import { TETO_TICKS } from './motor.mjs';
+import { CLASSES } from './log.mjs';
 
 export function conferir(cena, log, res) {
   const e = log.est;
@@ -129,6 +130,21 @@ export function conferir(cena, log, res) {
   const gSub = Object.values(e.gestosSub).reduce((a, b) => a + b, 0);
   if (gSub !== e.gestos - e.gestosRelogio) {
     falhas.push(`gestos de parada: ${e.gestos - e.gestosRelogio} por classe e ${gSub} por subtipo`);
+  }
+
+  // V15 · TODA PARADA TEM CLASSE, E ELA É UMA DAS TRÊS. O `classeDoTipo` é
+  // escrito pelo motor a cada parada e é o que o agregador publica na coluna
+  // "classe" da tabela por tipo. Um tipo sem classe, ou com classe fora do
+  // vocabulário, não pode ser carimbado por padrão: carimbo por padrão foi
+  // exatamente o que produziu o mapa a mão que dizia `fugir` classe i e
+  // `aplicar` classe iii. Aqui ele falha alto, na primeira batalha.
+  for (const [tipo, classe] of Object.entries(e.classeDoTipo || {})) {
+    if (!CLASSES.includes(classe)) {
+      falhas.push(`parada '${tipo}' com classe ${JSON.stringify(classe)}, fora de {i, ii, iii}`);
+    }
+  }
+  for (const tipo of Object.keys(e.paradasSub || {})) {
+    if (!e.classeDoTipo?.[tipo]) falhas.push(`parada '${tipo}' contada sem classe registrada`);
   }
 
   return falhas;

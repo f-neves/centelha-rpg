@@ -81,16 +81,16 @@ export function resumoCombatePC(S: any): ResumoCombate {
   const modos = ((w.modos ?? [{ tipo: w.tipoDano, principal: true }]) as any[]).slice()
     .sort((a, b) => ((MODO_ORDEM as any)[a.tipo] ?? 9) - ((MODO_ORDEM as any)[b.tipo] ?? 9));
   // O MODO DA FICHA É O `principal` DO CATÁLOGO, e não o primeiro da ordem de
-  // exibição. Decidido em 03/09. CINCO das dez armas de mais de um modo mudaram
-  // de lado (contadas por `scripts/dano-por-tipo.mjs`, e não a olho):
+  // exibição. Decidido em 03/09. SEIS das dez armas de mais de um modo mudaram
+  // de categoria de Absorção (contadas por `scripts/dano-por-tipo.mjs`, e não a
+  // olho); cinco por esta regra e a Alabarda pela do `fichaModo`, mais abaixo:
   //
   //   Machado, Montante, Machado de Arremesso · Impacto → Corte
   //   Picareta de Guerra                      · Impacto → Perfuração
   //   Adaga                                   · Corte   → Perfuração
   //
-  // A Alabarda NÃO mudou, ao contrário do que a primeira versão desta nota
-  // dizia: ela marca os TRÊS modos como principal, e o primeiro da ordem de
-  // exibição já era o que o `find` devolve.
+  // A Alabarda não está na lista porque ela marca os TRÊS modos como principal;
+  // o caso dela é o parágrafo do `fichaModo`, mais abaixo.
   //
   // Não era cosmético: a sigla vai para a expressão de dano, a mesa lê o tipo
   // dela (`tipoDeDano(ra.dano)`) e é ele que escolhe QUAL ABSORÇÃO o alvo
@@ -100,9 +100,19 @@ export function resumoCombatePC(S: any): ResumoCombate {
   // malha ele DESCE 50%, porque a malha protege mais contra corte que contra
   // impacto. O sinal depende do alvo, e as duas pontas são grandes.
   //
+  // A ARMA DE VÁRIOS PRINCIPAIS DIZ QUAL VAI NA FICHA, no campo `fichaModo`.
+  // Decidido em 03/09 (D45). Só a Alabarda tem mais de um principal hoje, e sem
+  // este campo quem decidia era o `find` sobre a lista ordenada por exibição:
+  // saía IMPACTO, que é o pior ou o empatado-pior contra os três alvos de
+  // referência (nu 7/3/3, malha 8/9/4, placa 12/11/7). A arma que existe para
+  // cobrir as três frentes estava saindo pela face mais fraca, e por acidente de
+  // ordem. O `validate` cobra o campo de toda arma com mais de um principal.
+  //
   // A ordem de `MODO_ORDEM` continua valendo como desempate para a arma que
   // não marca principal nenhum.
-  const principal = modos.find((m) => m.principal) || modos[0];
+  const escolhido = (w as any).fichaModo
+    ? modos.find((m) => m.tipo === (w as any).fichaModo) : null;
+  const principal = escolhido || modos.find((m) => m.principal) || modos[0];
   const sigla = MODO_SIGLA[(principal?.tipo) as keyof typeof MODO_SIGLA] || '';
   const dano = `${w.dado}d6${forcaAp ? ` ${sgn(forcaAp)}` : ''}${sigla ? ` ${sigla}` : ''}`;
 

@@ -255,6 +255,7 @@
     "tipoDano": "corte",
     "peso": 2.7,
     "pen": 0,
+    "fichaModo": "corte",
     "modos": [
       {
         "tipo": "corte",

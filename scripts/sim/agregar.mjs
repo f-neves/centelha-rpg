@@ -196,13 +196,25 @@ for (const [id, ls] of daFatia(PRINCIPAL)) {
 // quantos gestos, com a fatia que ele ocupa em cada uma das duas contas.
 {
   const ls = boas.filter((l) => infoDe(l.celula).nivelLimiar === PRINCIPAL && l.fim !== 'estourou');
+  const tipos = [...new Set(ls.flatMap((l) => Object.keys(l.fases.combate.paradasSub || {})))].sort();
   // A CLASSE SAI DO LOG, e não de um mapa escrito aqui. A primeira versão desta
   // tabela tinha o mapa à mão, e ele trazia `fugir` como i e `aplicar` como iii
   // quando o motor registra ii nas duas. Uma coluna publicada com classe
   // inventada é o caso exato do D13, e a correção é não ter a segunda cópia.
   const CLASSE_DO_TIPO = Object.assign({}, ...ls.map((l) => l.classeDoTipo || {}));
+  // E SE ELE NÃO SOUBER, ELE FALHA. Antes esta coluna caía num `|| '?'` e o
+  // relatório saía com um tipo de classe desconhecida carimbado de interrogação,
+  // que é a mesma família do carimbo por padrão que produziu o mapa errado. Um
+  // tipo novo no motor tem de PARAR o agregador, para que alguém decida a classe
+  // dele em vez de o relatório inventar uma.
+  const semClasse = tipos.filter((t) => !['i', 'ii', 'iii'].includes(CLASSE_DO_TIPO[t]));
+  if (semClasse.length) {
+    console.log(`\n✘✘✘ TIPO DE PARADA SEM CLASSE no log: ${semClasse.join(', ')}`);
+    console.log('    O motor registrou uma parada cuja classe o log não trouxe. Isto não pode');
+    console.log('    ser carimbado por padrão: decida a classe no `log.parada(...)` do motor.');
+    process.exit(1);
+  }
   const sm = (f) => ls.reduce((x, l) => x + f(l.fases.combate), 0);
-  const tipos = [...new Set(ls.flatMap((l) => Object.keys(l.fases.combate.paradasSub || {})))].sort();
   const totP = sm((x) => x.paradas.i + x.paradas.ii + x.paradas.iii);
   const totG = sm((x) => x.gestos || 0);
   const relogio = sm((x) => x.gestosRelogio || 0);
@@ -213,7 +225,7 @@ for (const [id, ls] of daFatia(PRINCIPAL)) {
   for (const t of tipos) {
     const p = sm((x) => x.paradasSub?.[t] || 0);
     const g = sm((x) => x.gestosSub?.[t] || 0);
-    console.log(t.padEnd(16) + (CLASSE_DO_TIPO[t] || '?').padStart(4)
+    console.log(t.padEnd(16) + CLASSE_DO_TIPO[t].padStart(4)
       + String(gestosDe(t, ROLAGEM_DA_BATERIA)).padStart(9)
       + num(p, 0).padStart(11) + pct(totP ? p / totP : 0).padStart(13)
       + num(g, 0).padStart(11) + pct(totG ? g / totG : 0).padStart(13));
@@ -223,6 +235,51 @@ for (const [id, ls] of daFatia(PRINCIPAL)) {
     + num(relogio, 0).padStart(11) + pct(totG ? relogio / totG : 0).padStart(13));
   console.log('  O ⏭ não é parada de classe nenhuma e não sai com automação: ele fica no');
   console.log('  DENOMINADOR da coluna de gestos, e fora do numerador de qualquer classe.');
+}
+
+// ------------------------------- O ⏭, QUE É O MAIOR ITEM QUE NÃO É DE REGRA
+//
+// Um terço do trabalho do mestre é o clique de avançar o Tick, e ele não sai com
+// automação de regra nenhuma: nenhuma das seis paradas, nenhuma das quinze
+// bandeiras e nenhuma decisão de regra o toca. É o maior item isolado da conta e
+// é o único imune a tudo que esta frente vinha propondo.
+//
+// A pergunta que essa constatação abre (e que esta tabela LEVANTA, sem decidir):
+// o ⏭ precisa ser um clique por Tick? Um avanço que corresse sozinho até a
+// próxima parada custaria um clique por Tick COM parada, e o que ele pouparia
+// está medido abaixo, no log que já existe. Se a fração de Ticks sem parada
+// nenhuma for alta, a ideia tem tamanho; se for baixa, ela morre com número.
+{
+  const ls = boas.filter((l) => infoDe(l.celula).nivelLimiar === PRINCIPAL && l.fim !== 'estourou');
+  const sm = (f) => ls.reduce((x, l) => x + f(l.fases.combate), 0);
+  const tk = sm((x) => x.ticks);
+  const vazios = sm((x) => Math.round((x.fracaoSemParada || 0) * x.ticks));
+  const g = sm((x) => x.gestos || 0);
+  const rel = sm((x) => x.gestosRelogio || 0);
+  const gIII = sm((x) => x.gestosClasse?.iii || 0);
+  const gII = sm((x) => x.gestosClasse?.ii || 0);
+  const gI = sm((x) => x.gestosClasse?.i || 0);
+  console.log('\n── OS TRÊS PEDAÇOS DO TRABALHO DO MESTRE · FASE DE COMBATE'
+    + ` · ${ls.length} batalhas que terminam ──`);
+  const linha = (nome, v, nota) => console.log('  ' + nome.padEnd(34)
+    + num(v, 0).padStart(9) + pct(g ? v / g : 0).padStart(7) + '   ' + nota);
+  linha('classe iii · aritmética', gIII, 'sai com automação de regra');
+  linha('o ⏭ · cadência de relógio', rel, 'NÃO sai com regra nenhuma');
+  linha('classe ii · julgamento', gII, 'não sai: é a mesa decidindo');
+  if (gI) linha('classe i · decisão de jogador', gI, 'não sai: é o jogador');
+  console.log('  ' + 'total'.padEnd(34) + num(g, 0).padStart(9) + '   100%');
+
+  console.log('\n  O QUE UM AVANÇO AUTOMÁTICO ATÉ A PRÓXIMA PARADA POUPARIA (levantamento, não decisão):');
+  console.log(`    Ticks de combate: ${num(tk, 0)}, dos quais ${num(vazios, 0)}`
+    + ` (${pct(tk ? vazios / tk : 0)}) NÃO consultam ninguém`);
+  const novo = g - vazios;
+  console.log(`    cliques do ⏭: ${num(rel, 0)} → ${num(rel - vazios, 0)}`);
+  console.log(`    trabalho total: ${num(g, 0)} → ${num(novo, 0)} gestos`
+    + `  (${pct(g ? vazios / g : 0)} a menos, sem tocar em regra nenhuma)`);
+  console.log(`    e a composição vira: iii ${pct(novo ? gIII / novo : 0)}`
+    + ` · ⏭ ${pct(novo ? (rel - vazios) / novo : 0)} · ii ${pct(novo ? gII / novo : 0)}`);
+  console.log('  A tabela por célula está abaixo (a coluna `s/parada` da tabela A é a mesma');
+  console.log('  fração): ela varia muito, e o número agregado esconde essa variação.');
 }
 
 // ------------------------------------- o que a automação esvazia, MEDIDO
@@ -415,21 +472,45 @@ for (const x of manifesto.inventado) console.log(`  ⚑ ${x}`);
 // =========================================================== OS ALARMES (§5)
 //
 // Ninguém vai olhar depois. Cada sinal de bateria ineficaz é conferido aqui e
-// impresso ALTO, fora de qualquer tabela. Silêncio aqui é a única forma de a
-// bateria valer alguma coisa.
+// impresso ALTO, fora de qualquer tabela.
+//
+// E CADA UM IMPRIME O VEREDITO DELE, aceso ou apagado. A versão anterior só
+// imprimia os que acendiam, e um sinal que não aparece quando está tudo bem é um
+// sinal que ninguém sabe se rodou: o silêncio ficava indistinguível da
+// conferência que não aconteceu, que é o defeito exato que os alarmes existem
+// para não ter.
+const veredito = [];
+/** Confere um sinal e GUARDA o veredito, aceso ou apagado. */
+function sinal(nome, aceso, texto, nota) {
+  veredito.push({ nome, aceso, nota: aceso ? texto : nota });
+  if (aceso) alarme(texto);
+  return aceso;
+}
 
 // 2 · contador de ocasião em zero onde ele deveria morder
 const somaSub = (k, filtro = () => true) =>
   boas.filter(filtro).reduce((x, l) => x + (l.paradasSub?.[k] || 0), 0);
 const comDistancia = (l) => (infoDe(l.celula).dist || 1) > 1;
-if (!somaSub('reprojetar', comDistancia)) {
-  alarme('`reprojetar` em ZERO nas células com distância: o eixo E2 não está mordendo');
-}
-if (!somaSub('fugir')) alarme('`fugir` em ZERO: o limiar nunca disparou e a fase de fuga não existe');
+const nRepro = somaSub('reprojetar', comDistancia);
+sinal('ocasião · reprojetar', !nRepro,
+  '`reprojetar` em ZERO nas células com distância: o eixo E2 não está mordendo',
+  `${num(nRepro, 0)} re-projeções nas células com distância`);
+const nFuga = somaSub('fugir');
+sinal('ocasião · fugir', !nFuga,
+  '`fugir` em ZERO: o limiar nunca disparou e a fase de fuga não existe',
+  `${num(nFuga, 0)} declarações de fuga`);
+const nRedir = somaSub('redirecionar');
+sinal('ocasião · redirecionar', !nRedir,
+  '`redirecionar` em ZERO: a regra do golpe no caído nunca foi exercitada',
+  `${num(nRedir, 0)} golpes redirecionados`);
 const raspoes = boas.reduce((x, l) => x + (l.vereditos?.raspao || 0), 0);
-if (!raspoes) alarme('nenhum RASPÃO em toda a bateria: o Quase-Acerto não está sendo exercitado');
+sinal('ocasião · raspão', !raspoes,
+  'nenhum RASPÃO em toda a bateria: o Quase-Acerto não está sendo exercitado',
+  `${num(raspoes, 0)} raspões`);
 const soRes = boas.reduce((x, l) => x + (l.quadro?.soResolveu || 0), 0);
-if (!soRes) alarme('`só resolveu` em ZERO: a quarta célula do quadro nunca acontece');
+sinal('ocasião · quarta célula do quadro', !soRes,
+  '`só resolveu` em ZERO: a quarta célula do quadro nunca acontece',
+  `${num(soRes, 0)} Ticks em que algo caiu sem consultar ninguém`);
 // E4 TEM DE MORDER MAIS QUE A ÂNCORA. O eixo existe para produzir o alvo que
 // não se alcança, e o alvo que não se alcança aparece como RE-PROJEÇÃO. Se a
 // célula de passo 2× não re-projeta mais que a âncora dela, o eixo é inerte e
@@ -446,23 +527,31 @@ for (const c of CEL.filter((x) => x.passoMult > 1)) {
   }
 }
 
+// 1 · invariante violado (a conferência mora lá em cima; aqui fica o veredito)
+sinal('invariantes', invalidas.length > 0,
+  `${invalidas.length} batalha(s) violaram invariante`,
+  `nenhuma das ${num(boas.length, 0)} batalhas violou um dos quinze invariantes`);
+
 // 3 · variância entre repetições contra variância entre células
 {
   const metric = (l) => l.fases.combate.paradasPorTick.media;
   const dentro = med([...porCelula.values()].map((ls) => varia(ls.map(metric))).filter((x) => x != null));
   const entre = varia([...porCelula.values()].map((ls) => med(ls.map(metric))));
   console.log(`\n  variância entre repetições ${num(dentro, 4)} · entre células ${num(entre, 4)}`);
-  if (dentro >= entre) {
-    alarme(`variância DENTRO da célula (${num(dentro, 4)}) ≥ variância ENTRE células`
-      + ` (${num(entre, 4)}): os eixos não estão fazendo nada`);
-  }
+  sinal('variância', dentro >= entre,
+    `variância DENTRO da célula (${num(dentro, 4)}) ≥ variância ENTRE células`
+      + ` (${num(entre, 4)}): os eixos não estão fazendo nada`,
+    `os eixos explicam ${num(entre / Math.max(dentro, 1e-9), 0)}× mais que o acaso`);
 }
 
 // 4 · toda célula estourando o teto
 {
   const estouram = [...porCelula.entries()].filter(([, ls]) => ls.every((l) => l.fim === 'estourou'));
-  if (estouram.length === porCelula.size) alarme('TODAS as células estouram o teto: nada termina');
-  else if (estouram.length) {
+  sinal('teto', estouram.length === porCelula.size,
+    'TODAS as células estouram o teto: nada termina',
+    `${estouram.length} de ${porCelula.size} células estouram sempre, e`
+      + ` ${porCelula.size - estouram.length} terminam`);
+  if (estouram.length && estouram.length < porCelula.size) {
     // Sem repetir o rótulo por nível de limiar: a mesma célula aparece uma vez
     // por nível, e a lista fica ilegível dizendo tudo duas vezes.
     const nomes = [...new Set(estouram.map(([id]) => rotuloCheio(id)))];
@@ -479,12 +568,12 @@ for (const c of CEL.filter((x) => x.passoMult > 1)) {
     const p90 = med(ls.map((l) => l.fases.combate.paradasPorTick.p90));
     if (p10 != null && p90 != null && Math.abs(p90 - p10) < 1e-9) degeneradas.push(rotuloCheio(id));
   }
-  if (degeneradas.length) {
-    alarme(`p10 = p90 em paradas/Tick (combate) em ${degeneradas.length} célula(s):`
+  sinal('distribuição', degeneradas.length > 0,
+    `p10 = p90 em paradas/Tick (combate) em ${degeneradas.length} célula(s):`
       + ' a distribuição é degenerada e o percentil não diz nada · '
       + degeneradas.slice(0, 6).join(', ')
-      + (degeneradas.length > 6 ? ` e mais ${degeneradas.length - 6}` : ''));
-  }
+      + (degeneradas.length > 6 ? ` e mais ${degeneradas.length - 6}` : ''),
+    'nenhuma célula com p10 = p90 em paradas/Tick');
 }
 
 // 6 · fuga-consumada acima de 90% numa célula
@@ -494,11 +583,18 @@ for (const c of CEL.filter((x) => x.passoMult > 1)) {
     const f = ls.filter((l) => l.fim === 'fuga-consumada').length / ls.length;
     if (f > 0.9) engolidas.push(`${rotuloCheio(id)} ${pct(f)}`);
   }
-  if (engolidas.length) {
-    alarme(`fuga-consumada acima de 90% em ${engolidas.length} célula(s): a fase de fuga`
+  sinal('fuga-consumada', engolidas.length > 0,
+    `fuga-consumada acima de 90% em ${engolidas.length} célula(s): a fase de fuga`
       + ' engoliu a batalha · ' + engolidas.slice(0, 6).join(', ')
-      + (engolidas.length > 6 ? ` e mais ${engolidas.length - 6}` : ''));
-  }
+      + (engolidas.length > 6 ? ` e mais ${engolidas.length - 6}` : ''),
+    'nenhuma célula com fuga-consumada acima de 90%');
+}
+
+// O PLACAR DOS SINAIS, aceso ou apagado, sempre. É a prova de que a conferência
+// rodou: sem ele, "nenhum alarme" e "o alarme não roda" imprimem a mesma coisa.
+console.log('\n── OS SINAIS DE BATERIA INEFICAZ · o veredito de cada um ──');
+for (const v of veredito) {
+  console.log(`  ${v.aceso ? '✘' : '✓'} ${v.nome.padEnd(30)} ${v.nota || ''}`);
 }
 
 console.log('\n' + '='.repeat(74));

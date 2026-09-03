@@ -1145,11 +1145,39 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `MODO_ORDEM`? **RESOLVIDO em 03/09 (D37): manda o `principal` do catálogo.** O conserto está em
   `combate-resumo.ts`, o `dados_hash` mudou e a bateria grande rodou de novo do zero.
 
-  **E o tamanho da mudança está medido** (`node scripts/dano-por-tipo.mjs`, e a `09` §5.4): é
-  mudança de equilíbrio e não de vitrine, porque só o Impacto recebe a Absorção natural do Vigor.
-  O sinal **depende do alvo**: o Machado sobe 230% no dano líquido por golpe contra alvo sem
-  armadura e desce 50% contra malha, que protege mais contra corte que contra impacto. Dez dos
-  quinze pares arma × alvo sobem (média +2,52 por golpe), três descem (média −0,78).
+  ### MUDANÇA DE BALANÇO · 03/09/2026 · o dano de produção mudou
+
+  **Isto não é conserto de exibição.** A sigla da expressão de dano escolhe a CATEGORIA DE
+  ABSORÇÃO do alvo, e as três não valem a mesma coisa: só o Impacto recebe a Absorção natural do
+  Vigor (`regras.json`, `dano.soakNatural`). Trocar a sigla troca contra o que a arma bate. **As
+  mesas que estão rodando vão sentir**, e esta tabela existe para que daqui a três meses ninguém
+  atribua a diferença a outra coisa.
+
+  Dano líquido MÉDIO por golpe que acerta, exato e não simulado (`node scripts/dano-por-tipo.mjs`,
+  que enumera a distribuição de `Nd6 + fixo`). Alvos: sem armadura (Absorção 7/3/3), Escudeiro de
+  malha (8/9/4) e Montanteiro de placa completa (12/11/7).
+
+  | arma | dano | de → para | nu | malha | placa |
+  |---|---|---|---:|---:|---:|
+  | Machado | 1d6 +5 | Impacto → Corte | 1,67 → **5,50** (+230%) | 1,00 → **0,50** (−50%) | 0 → 0 |
+  | Picareta de Guerra | 1d6 +5 | Impacto → Perfuração | 1,67 → **5,50** (+230%) | 1,00 → **4,50** (+350%) | 0 → 1,67 |
+  | Machado de Arremesso | 1d6 +7 | Impacto → Corte | 3,50 → **7,50** (+114%) | 2,50 → **1,67** (−33%) | 0,17 → 0,50 |
+  | Alabarda (D45) | 1d6 +12 | Impacto → Corte | 8,50 → **12,50** (+47%) | 7,50 → **6,50** (−13%) | 3,50 → 4,50 (+29%) |
+  | Montante | 2d6 +10 | Impacto → Corte | 10,00 → **14,00** (+40%) | 9,00 → **8,00** (−11%) | 5,00 → 6,00 (+20%) |
+  | Adaga | 1d6 +3 | Corte → Perfuração | 3,50 → 3,50 (0) | 0,00 → **2,50** | 0,00 → 0,50 |
+
+  **Saldo: doze dos dezoito pares arma × alvo sobem** (média +2,51 de dano por golpe), quatro
+  descem (média −0,83) e dois não mudam. **O sinal depende do alvo**: contra alvo sem armadura as
+  quatro que foram para Corte sobem muito (o Impacto absorve Vigor + Centelha, o Corte só
+  Centelha), e contra malha três delas DESCEM, porque a malha protege mais contra corte (9) que
+  contra impacto (8).
+
+  **Quem mais muda de vida:** quem empunha Picareta contra alvo de malha (o dano líquido médio
+  quadruplica) e quem empunha Adaga contra qualquer armadura (sai de zero). Quem PERDE: Machado e
+  Machado de Arremesso contra malha.
+
+  **A Adaga não zerou, subiu.** O medo era o gate de Perfuração, e ele não morde ninguém hoje: é
+  o **L22** abaixo.
 
   O oráculo dos lances foi recoletado e saiu **byte a byte igual** (a bancada escolhe o tipo por
   construção, sem passar por `resumoCombatePC`), e o `personagens.resumo` do banco, que guarda a
@@ -1167,6 +1195,18 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `resolverGolpe`, nem a folha do Grid, nem o harness. Hoje o Perfurante não resvala em ninguém.
   Ou o gate entra no `resolverGolpe` (e aí a Adaga, com Nível de Perfuração 0, passa a resvalar em
   porte Enorme para cima), ou ele sai da régua. Ficar escrito e não valer é o pior dos três.
+- [ ] **L24 · [DEPOIS] O ⏭ é um terço do trabalho do mestre, e nenhuma regra o toca.** Medido em
+  03/09 (`09` §2.3 e §2.4): o clique de avançar o Tick são 33% dos gestos do mestre na fase de
+  combate, contra 50% de classe iii e 17% de classe ii. Ele é o item mais frequente da mesa, o
+  único imune a todas as quinze bandeiras, e **61% das vezes ele não produz nada** (o Tick não
+  consulta ninguém). Um avanço que corresse sozinho até a próxima parada cortaria 20% do trabalho
+  total **sem tocar em regra nenhuma**, e é a maior economia isolada que esta frente mediu.
+
+  **Não está decidido e nada foi implementado.** O que falta para decidir: (a) o Tick sem parada
+  ainda pode ter coisa que o mestre quer VER (alguém chegou, alguém caiu), e correr por cima troca
+  clique por cegueira, que a bateria não mede; (b) a economia varia de 27% a 77% por célula, e é
+  maior justamente onde a carga já é baixa; (c) o número é do robô, e com jogador declarando à mão
+  o Tick vazio fica raro (o L23).
 - [ ] **L23 · [DEPOIS] A fração de gestos com JOGADOR na mesa.** Os 50% da `09` §2.2 são do robô,
   em que `declarar` custa zero clique. Com jogadores, declarar vira um diálogo inteiro e o
   denominador cresce muito mais que o numerador: **a fração de classe iii vai cair**, e ninguém

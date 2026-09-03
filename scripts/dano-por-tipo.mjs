@@ -92,7 +92,13 @@ for (const w of CATALOGO) {
   const modos = (w.modos || []).slice().sort((a, b) => (MODO_ORDEM[a.tipo] ?? 9) - (MODO_ORDEM[b.tipo] ?? 9));
   if (modos.length < 2) continue;
   const antes = modos[0].tipo;
-  const depois = (modos.find((m) => m.principal) || modos[0]).tipo;
+  // A REGRA DE HOJE, na ordem em que `combate-resumo.ts` a aplica: o `fichaModo`
+  // do catálogo primeiro (D45, para a arma de vários principais), o `principal`
+  // depois, e a ordem de exibição só como último recurso.
+  const depois = (
+    (w.fichaModo ? modos.find((m) => m.tipo === w.fichaModo) : null)
+    || modos.find((m) => m.principal) || modos[0]
+  ).tipo;
   if (antes === depois) continue;
   const nPrin = modos.filter((m) => m.principal).length;
   mudaram.push({ w, antes, depois, nPrin });
