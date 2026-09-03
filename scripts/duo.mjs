@@ -175,9 +175,14 @@ ${aberto && aberto.includes('ESCALA') ? 'Ver a seção ESCALA da última respost
 ${registro.join('\n')}
 \`\`\`
 `;
-  fs.writeFileSync(arq, txt);
   const rel = `docs/simulacao/caixa/RESUMO-${nn}.md`;
-  if (!SECO) {
+  // NO SECO NÃO SAI ARQUIVO NENHUM. A primeira versão escrevia sempre e só
+  // deixava de commitar, e uma prova em seco chegou a deixar um RESUMO de uma
+  // rodada que nunca aconteceu na caixa. Resumo é registro de ciclo que rodou.
+  if (SECO) { console.log(`
+  [seco] escreveria ${rel}`); return; }
+  fs.writeFileSync(arq, txt);
+  {
     try {
       git(EXEC, `add "${rel}"`);
       git(EXEC, `commit -q -m "ciclo até a rodada ${nn} · resumo" -- "${rel}"`);
