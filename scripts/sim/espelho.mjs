@@ -30,21 +30,21 @@ function retratoDe(L, T, fila) {
     // uma faria o retrato do harness trazer bloco onde a mesa traz `null`.
     const a = temAcao(c.acao) ? c.acao : null;
     return {
-    id: c.id, nome: c.nome,
-    q: c.pos?.q ?? null, r: c.pos?.r ?? null,
-    chao: c.pv <= 0,
-    pv: c.pv,
-    tick: c.tick ?? null,
-    ini: c.iniciativa ?? null,
-    fase: L.faseEm(a, T),
-    defesaPerdida: L.defesaPerdida(a, T).total,
-    acao: a
-      ? {
-        tipo: a.tipo ?? null, desde: a.desde ?? null, livre: a.livre ?? null,
-        golpes: (a.golpes || []).slice(), pressao: a.pressao ?? 0,
-        mov: a.mov ? { destino: a.mov.destino ?? null, alvo: a.mov.alvo ?? null } : null,
-      }
-      : null,
+      id: c.id, nome: c.nome,
+      q: c.pos?.q ?? null, r: c.pos?.r ?? null,
+      chao: c.pv <= 0,
+      pv: c.pv,
+      tick: c.tick ?? null,
+      ini: c.iniciativa ?? null,
+      fase: L.faseEm(a, T),
+      defesaPerdida: L.defesaPerdida(a, T).total,
+      acao: a
+        ? {
+          tipo: a.tipo ?? null, desde: a.desde ?? null, livre: a.livre ?? null,
+          golpes: (a.golpes || []).slice(), pressao: a.pressao ?? 0,
+          mov: a.mov ? { destino: a.mov.destino ?? null, alvo: a.mov.alvo ?? null } : null,
+        }
+        : null,
     };
   });
   return { t: T, fila: pecas.map((p) => p.id), pecas };
