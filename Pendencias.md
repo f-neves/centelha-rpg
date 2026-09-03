@@ -1228,10 +1228,29 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   de quatro estados do Tick e os quinze invariantes, os três termos da conclusão, os 11,4% do Tick
   morto e o resultado do limiar de fuga. Nada disso depende de bandeira nenhuma.
 
+  **E NENHUMA BANDEIRA ENTRA EM PRODUÇÃO ANTES DISTO.** Hoje elas não fazem nada, o que é
+  seguro: o jogo que a mesa joga é coerente, ainda que não seja o do documento. **Meio caminho
+  seria pior que os dois extremos**, porque uma bandeira ligada no motor sem as outras, ou ligada
+  sem contador de ocasião, produz um jogo que não é nem o de hoje nem o do projeto, e ninguém
+  sabe qual dos dois está lendo.
+
   **A ordem, para cada uma das quinze:** ligar a chamada no motor, provar que ela morde com um
   contador de ocasião, e só então medir. É o mesmo mecanismo que matou o eixo E4 (D31) antes de
   ele virar linha de relatório. Isto reparte o **L1** em quinze tarefas de motor, e **nenhuma
   medição de bandeira vale antes**.
+- [ ] **L26 · [PRIMEIRO, E NÃO É CÓDIGO] Por que as mesas rolam o dado na mão?** Medido em 03/09
+  (`09` §2.5): recontando os mesmos 9.600 combates com o custo do modo `site`, a classe iii cai de
+  50,4% para 25,3% e o **trabalho total cai 33,6%**, sem uma linha de motor. Dois terços dos 50%
+  que pareciam aritmética automatizável são o dedo digitando o acerto e o dano que o site já sabe
+  calcular. É o maior número desta bateria inteira, e a chave já existe, está implementada e
+  ligada (`rolaNoSite`, chamada na abertura da folha).
+
+  **E o modo `mesa` não é desleixo, é escolha**: a nota do próprio `regras.json` diz por quê ("o
+  dado na mão é metade da mesa"). Então a pergunta é para quem joga, e não para o código. O modo
+  `misto` existe justamente para o impasse (só as criaturas rolam no site, o que tira do mestre as
+  rolagens dele e deixa o dado na mão dos jogadores) e **esta bateria não consegue medi-lo**:
+  todas as peças dela são arquétipos de PC, então o `misto` sairia idêntico ao `mesa`, e não por
+  o modo não fazer nada. Zero ambíguo outra vez; medi-lo exige criatura no elenco.
 - [ ] **L24 · [DEPOIS] O ⏭ é um terço do trabalho do mestre, e nenhuma regra o toca.** Medido em
   03/09 (`09` §2.3 e §2.4): o clique de avançar o Tick são 33% dos gestos do mestre na fase de
   combate, contra 50% de classe iii e 17% de classe ii. Ele é o item mais frequente da mesa, o
@@ -1262,6 +1281,14 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
     **A banda é do jogador que ACEITA O PADRÃO**, e não do jogador: quem troca a manobra, o modo
     de deslocamento ou o alvo paga mais, e a bateria não sabe com que frequência isso acontece,
     porque nenhuma peça dela escolhe. 2 e 4 são o piso do custo manual, não a média dele.
+
+  **E o desenho do avanço já nasceu corrigido por uma coisa que só apareceu lendo a mesa** (`09`
+  §2.4): o Tick morto do HARNESS não é o Tick morto da MESA. `avancarTickSimultaneo` chama
+  `verificarEfeitos` a cada Tick, e ali uma Arte no chão vence prazo, morde quem está dentro,
+  aplica dano e põe condição, **sem parada nenhuma e sem ninguém sair do lugar**. Nenhuma batalha
+  da bateria tem Arte, então esse caminho nunca rodou nela. **O avanço tem de parar quando alguém
+  é consultado E quando um efeito morde**, e tem de mostrar o que passou no caminho em vez de
+  pular calado. Isso é projeto, e não ressalva.
 
   **Não está decidido e nada foi implementado.** O que ainda falta para decidir é uma peça que se
   MOVA diferente do robô (o L20): ela muda a trajetória, e portanto a fatia de travessia que

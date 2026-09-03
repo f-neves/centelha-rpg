@@ -293,6 +293,23 @@ troca (cliques por acompanhamento do movimento), não um ganho.
 menos do que os 20% do parágrafo anterior e continua sendo maior que qualquer coisa que a
 automação de uma bandeira isolada comprou.
 
+##### E o Tick morto do HARNESS não é o Tick morto da MESA
+
+O piso acima resolve a ressalva pela metade, e a metade que falta só aparece lendo o avanço da
+mesa em vez do laço. No laço headless, um Tick sem parada e sem passo é vazio **por construção**:
+não sobra nada que possa acontecer nele. Na mesa sobra, e está escrito no código:
+`avancarTickSimultaneo` chama **`verificarEfeitos` a cada Tick**, e ali uma Arte no chão vence o
+prazo, morde quem está dentro dela, aplica dano e põe condição, **sem parada nenhuma e sem
+ninguém sair do lugar**.
+
+**Nenhuma batalha desta bateria tem Arte.** Então esse caminho nunca roda aqui, e o Tick que o log
+chama de morto pode, numa cena com aura de fogo, estar queimando alguém.
+
+Isso não invalida os 11,4%: eles valem para a cena sem Arte, que é a cena que a bateria mediu.
+**O que isso obriga é o desenho do avanço**, e é melhor saber agora que depois de escrevê-lo: o
+avanço tem de parar também quando um efeito morde, e não só quando alguém é consultado. **É
+projeto, e não ressalva.**
+
 #### O ganho por célula, em cliques e não em fração
 
 A fração engana aqui, e engana na direção que inverteria a conclusão: ela é **alta onde a carga é
@@ -372,6 +389,52 @@ coisa aqui que exige elenco novo.
 > **O que fica registrado:** a pergunta tem tamanho (**11,4%** com piso, 20,0% com teto), tem lugar
 > (interface, e não regra), tem contra-argumento medido (26 pontos de travessia entre piso e teto)
 > e tem o limite com jogador calculado (6% a 9%). Não tem decisão, e é o **L24**.
+
+---
+
+### 2.5 Metade dos 50% não é regra, é configuração
+
+Os 50% de classe iii saem quase todos de um lugar só: a folha do golpe, que custa **3 gestos** no
+modo de rolagem `mesa`, e desses 3 **dois são números digitados**. Digitar o acerto e o dano não é
+regra, é quem rola o dado. E isso já é uma chave do produto (`regras.json`, `combate.rolagem`),
+com três modos, **implementada e ligada** (`rolaNoSite`, chamada na abertura da folha).
+
+Recontando os mesmos 9.600 combates com o custo do modo `site`:
+
+| | `mesa` (o padrão) | `site` |
+|---|---:|---:|
+| classe iii · aritmética | 552.102 · **50,4%** | 184.034 · **25,3%** |
+| o ⏭ · cadência de relógio | 359.733 · 32,8% | 359.733 · **49,4%** |
+| classe ii · julgamento | 184.034 · 16,8% | 184.034 · 25,3% |
+| **trabalho total** | **1.095.869** | **727.801** |
+
+**Trocar o modo de rolagem tira 33,6% do trabalho da mesa sem uma linha de motor.** É mais que o
+avanço automático (11,4% com piso) e mais que qualquer bandeira isolada poderia comprar. E dos 50%
+de classe iii, **só um terço sobrevive**: os outros dois terços eram o dedo digitando o que o site
+já sabe calcular.
+
+**Isso reordena a fila do conserto.** No modo `site` o maior item do trabalho passa a ser o ⏭
+(49,4%), e o avanço automático, que valia 11,4%, passa a valer **17,2%** do total (menor) que
+sobra. Os dois consertos se somam bem: um tira a digitação, o outro tira o clique vazio.
+
+**Antes de automatizar qualquer coisa, então, a pergunta não é de código:** é por que as mesas
+usam o modo `mesa`. A `nota` do próprio `regras.json` responde e a resposta é boa (*"o dado na mão
+é metade da mesa"*), o que quer dizer que **o modo `mesa` não é desleixo, é escolha**, e o
+conserto de maior retorno pode ser conversar com quem joga em vez de escrever motor.
+
+**O `misto` é o modo que existe para esse impasse**, e esta bateria **não consegue medi-lo.** Nele
+só as criaturas e os NPCs rolam no site (`rolaNoSite(rolagem, ehPersonagem)`), o que tira do
+mestre exatamente as rolagens dele e deixa o dado na mão dos jogadores. Mas **todas as peças desta
+bateria são arquétipos de PC**: `ehPersonagem` é verdadeiro dos dois lados, e o `misto` sairia com
+o número do `mesa`, **idêntico, e não por o modo não fazer nada.** É o zero ambíguo outra vez, e
+por isso a linha dele não está na tabela: medi-lo exige criatura no elenco (o mesmo elenco que o
+E11 pede).
+
+> **E uma condição para quando a automação vier:** cada conta que sair da mão do mestre **precisa
+> continuar visível**. A régua que o Grid aplica sem mostrar é a régua que ninguém confere, e três
+> dos defeitos desta frente viveram anos exatamente por isso: a rajada saindo de graça, o tipo de
+> dano errado em seis armas e o golpe resolvido dez vezes numa volta. Nos três a tela mostrava o
+> **resultado** e não a **conta**, e nos três quem achou foi um instrumento novo, e não um olho.
 
 ---
 
@@ -901,7 +964,44 @@ volta a ser jogo, e aí ela precisa rodar com as 400 voltas e não com 50.
 
 ---
 
-## 8 · Como reproduzir
+## 8 · O que fica, e o que vem
+
+### 8.1 O que a frente entregou de duradouro, e não são os números
+
+Os números respondem **uma** pergunta, e ela está respondida. Cinco coisas respondem as
+**próximas**, e é por elas que esta frente vale mais do que a conclusão dela:
+
+| | o que é | o que ele impede |
+|---|---|---|
+| **o espelho de motor** | `npm run espelho`: a mesa e o laço headless comparados Tick a Tick, 7 cenas × 2 sementes | que o harness meça um jogo que a mesa não joga. Ele já achou seis divergências de ordem que passaram por uma revisão inteira e por 6.000 batalhas |
+| **os quinze invariantes** | conferidos em memória, em toda batalha; a que viola vai para um balde e não entra em média nenhuma | que um número impossível saia plausível. O V6 e o V7 nasceram de uma tabela publicada em que `1,14 parada/Tick`, `86% de Ticks vazios` e `pico 4` não cabiam juntos |
+| **os onze sinais, com teste** | `sinais.mjs` + `test-sinais.mjs`: cada alarme acende de propósito uma vez, e cala quando deve | que um alarme não testado imprima o mesmo ✓ para "não houve problema" e para "o predicado está errado". Já achou um furo na primeira execução |
+| **o oráculo de 1.315 lances** | `scripts/fixtures/lances.jsonl`, entradas, dados e saídas reais da mesa, com cobertura por construção e não por acaso | que `resolverGolpe` mude de comportamento sem ninguém ver. É a lição do `lib-tempo`: cinco divergências passaram nos testes unitários dos dois lados e nenhuma foi pega por teste |
+| **o princípio do zero ambíguo** | a regra de construção no `02`, com os três casos como evidência e cinco obrigações | que a mesma forma de erro apareça uma quarta vez. Ela apareceu três, e a terceira sobreviveu a sete rodadas de documento |
+
+### 8.2 A próxima medição
+
+**A próxima medição que vale é a de uma mudança que já esteja na mesa.**
+
+Não é falta de pergunta: há oito abertas no `Pendencias` (L20, L22, L23, L24, L25 e as três de
+elenco). É que nenhuma delas se responde rodando de novo o que já rodou. A grade de 96 células
+está medida, os eixos separam, os invariantes fecham e os alarmes acendem; o que falta agora é
+**mudar alguma coisa no Grid e medir a diferença**, e não medir de novo o Grid de hoje.
+
+**A fila do conserto, na ordem em que esta bateria a deixa:**
+
+1. **Entender por que as mesas rolam na mão** (§2.5). O modo `site` tira 33,6% do trabalho sem uma
+   linha de motor, e o modo `mesa` não é desleixo, é escolha (*"o dado na mão é metade da mesa"*).
+   **Isto é conversa com quem joga, e não código**, e é o maior número desta bateria inteira;
+2. **o ⏭ que corre até a próxima parada** (§2.4), com o desenho já corrigido pelo que a §2.4
+   descobriu: ele para quando alguém é consultado **e** quando um efeito morde, e mostra o que
+   passou no caminho em vez de pular calado;
+3. **as paradas de classe iii que sobrarem** depois do 1, que são um terço do que parecia;
+4. **o L25**, que não alivia o mestre em nada e destrava a segunda bateria.
+
+---
+
+## 9 · Como reproduzir
 
 ```
 node scripts/sim/bateria.mjs --sanidade          # a que existe para falhar

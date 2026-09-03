@@ -75,10 +75,24 @@ primeira batalha.
    está errado". É `scripts/test-sinais.mjs`, onze predicados e vinte e dois casos, e ele já achou
    um furo na primeira execução: o sinal da re-projeção acendia numa grade sem nenhuma célula de
    distância, apontando para o eixo em vez de para a grade;
-4. **o contador de ocasião entra JUNTO com a métrica que ele guarda**, e não depois. Foi assim que
-   o `ocasião · passo` nasceu, no mesmo dia que o Tick morto: sem ele, `log.andou` desconectado
-   faria o piso do avanço automático (11,4%) virar o teto (20%) sem nada acusar, dentro de um
-   número que o relatório já publica.
+4. **o contador de ocasião entra JUNTO com a métrica que ele guarda**, e não depois;
+5. **todo número PUBLICADO tem um sinal que acende se a fonte dele se soltar.** Não é vigilância
+   de instrumento, é vigilância de conclusão, e é a obrigação mais cara de esquecer: o piso de
+   11,4% do avanço automático depende de uma única chamada (`log.andou`) e, se ela se soltar, o
+   piso vira o teto e sai **20% redondo e plausível**, sem nada acusar. O sinal `ocasião · passo`
+   existe por isso, e nasceu no mesmo dia que o número que ele guarda.
+
+### O gêmeo do zero ambíguo: o aceso que aponta para o lugar errado
+
+A mesma cegueira tem uma segunda cara, e ela custa a mesma coisa. **Um alarme pode acender por um
+motivo que não é o dele**, e aí ele manda o leitor consertar o eixo quando o problema é da grade.
+
+Aconteceu na primeira execução do `test-sinais.mjs`: o sinal da re-projeção acendia numa grade
+**sem nenhuma célula de distância**, onde o zero é legítimo (não há travessia para re-projetar).
+A frase que ele imprimia, "o eixo E2 não está mordendo", apontava para o eixo; o defeito, quando
+existisse, seria da grade não ter a célula. **Um aceso que não significa nada gasta a confiança do
+painel tão rápido quanto um apagado que esconde**, e nos dois casos o conserto é o mesmo: o
+predicado confere primeiro se a OCASIÃO existe, e só então se ela produziu alguma coisa.
 
 ### Onde ela já está aplicada
 
