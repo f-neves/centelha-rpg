@@ -13,6 +13,7 @@
     "caido": "node scripts/test-golpe-caido.mjs",
     "etapa0": "node scripts/test-etapa0.mjs",
     "lances": "node scripts/coletar-lances.mjs",
+    "rodada": "node scripts/rodada.mjs",
     "bateria": "node scripts/sim/bateria.mjs",
     "agregar": "node scripts/sim/agregar.mjs",
     "bancada": "astro dev --config astro.bancada.mjs --port 4399",
