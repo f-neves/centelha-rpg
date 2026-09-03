@@ -30,6 +30,18 @@ const zeroFase = () => ({
   ticks: 0,
   paradas: { i: 0, ii: 0, iii: 0 },
   paradasSub: {},
+  // AS MESMAS PARADAS, REPARTIDAS PELO LADO DA PEÇA que as causou.
+  //
+  // Existe por uma pergunta só, e ela é sobre denominador: a declaração à mão
+  // custa `G` gestos, e esse gesto é de quem declara. Numa mesa comum os
+  // jogadores declaram um lado e o robô declara o outro, então só PARTE das
+  // declarações custa `G`. Sem esta repartição a tabela do `G` só sabia somar
+  // as duas facções, e publicava o caso extremo (toda peça declarada à mão)
+  // como se fosse a mesa comum. Ver a §2.4 da `09`.
+  //
+  // Guarda todos os tipos, e não só `declarar`: é o mesmo código, e a soma dos
+  // dois lados por tipo é a trava que prova que ninguém ficou de fora.
+  paradasSubLado: { a: {}, b: {} },
   porTick: [],
   gestos: 0,
   // OS MESMOS GESTOS, REPARTIDOS DE DOIS JEITOS: por classe de parada e por
@@ -59,6 +71,9 @@ export function novoLog({ completo = false } = {}) {
     // `reprojetar` são os pontos duvidosos da taxonomia (a mesa oferece escolha
     // nos dois), e sem contá-los à parte não há como calcular o piso da fração.
     paradasSub: {},
+    // POR LADO DA PEÇA, o mesmo molde da fase acima: é o que separa a
+    // declaração que o jogador faz da que o robô faz.
+    paradasSubLado: { a: {}, b: {} },
     // tipo -> classe, escrito pelo motor a cada parada. O agregador lê daqui
     // em vez de manter um segundo mapa, que foi como duas classes saíram erradas.
     classeDoTipo: {},
@@ -168,6 +183,15 @@ export function novoLog({ completo = false } = {}) {
       est.paradasSub[tipo] = (est.paradasSub[tipo] || 0) + 1;
       F.paradas[classe] += 1;
       F.paradasSub[tipo] = (F.paradasSub[tipo] || 0) + 1;
+      // O LADO DA PEÇA que causou a parada. Todo `parada()` do motor passa uma
+      // peça, e toda peça do elenco tem lado; o `if` é para que uma chamada sem
+      // peça (que hoje não existe) não invente um lado nem quebre a soma em
+      // silêncio: ela simplesmente não entra, e a trava do agregador acusa.
+      const lado = c?.lado;
+      if (lado === 'a' || lado === 'b') {
+        est.paradasSubLado[lado][tipo] = (est.paradasSubLado[lado][tipo] || 0) + 1;
+        F.paradasSubLado[lado][tipo] = (F.paradasSubLado[lado][tipo] || 0) + 1;
+      }
       noTick += 1;
       classesNoTick.push(classe);
       subsNoTick.push(tipo);
@@ -264,7 +288,7 @@ function principais(F) {
   const totParadas = F.paradas.i + F.paradas.ii + F.paradas.iii;
   return {
     ticks: F.ticks,
-    paradas: F.paradas, paradasSub: F.paradasSub,
+    paradas: F.paradas, paradasSub: F.paradasSub, paradasSubLado: F.paradasSubLado,
     paradasPorTick: {
       media: p.length ? soma / p.length : 0,
       p10: q(0.1), p50: q(0.5), p90: q(0.9), p99: q(0.99), pico: ord[ord.length - 1] || 0,
@@ -302,7 +326,8 @@ export function resumo(log, cena, b, semente) {
   // O TOTAL sai do MESMO molde das fases: assim nenhuma métrica é calculada de
   // dois jeitos, e a soma das duas fases pode ser conferida contra ele.
   const tudo = principais({
-    ticks: e.ticks, paradas: e.paradas, paradasSub: e.paradasSub, porTick: e.porTick,
+    ticks: e.ticks, paradas: e.paradas, paradasSub: e.paradasSub,
+    paradasSubLado: e.paradasSubLado, porTick: e.porTick,
     gestos: e.gestos, gestosClasse: e.gestosClasse, gestosSub: e.gestosSub,
     gestosRelogio: e.gestosRelogio,
     golpesAplicados: e.golpesAplicados, quadro: e.quadro,
@@ -314,7 +339,8 @@ export function resumo(log, cena, b, semente) {
     b, celula: cena.celula.id, semente,
     ticks: e.ticks, fim: e.fimMotivo, vivosA: e.vivosA, vivosB: e.vivosB,
     // O TOTAL, achatado no nível de cima: é o que o agregador já lia.
-    paradas: e.paradas, paradasSub: e.paradasSub, classeDoTipo: e.classeDoTipo,
+    paradas: e.paradas, paradasSub: e.paradasSub, paradasSubLado: e.paradasSubLado,
+    classeDoTipo: e.classeDoTipo,
     gestosClasse: e.gestosClasse, gestosSub: e.gestosSub, gestosRelogio: e.gestosRelogio,
     fracaoParadasIII: tudo.fracaoParadasIII, fracaoGestosIII: tudo.fracaoGestosIII,
     paradasPorTick: tudo.paradasPorTick,

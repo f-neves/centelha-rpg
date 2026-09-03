@@ -14,6 +14,7 @@
 //   node scripts/sim/agregar.mjs --saida .sim/2026-09-03
 import fs from 'node:fs';
 import path from 'node:path';
+import { execSync } from 'node:child_process';
 import { RAIZ } from './lib-ponte.mjs';
 import { CUSTO, gestosDe, ROLAGEM_DA_BATERIA } from './custo-tela.mjs';
 import { conferirSinais } from './sinais.mjs';
@@ -80,10 +81,31 @@ const PRINCIPAL = NIVEIS.includes('l25') ? 'l25' : NIVEIS[0];
 const alarmes = [];
 const alarme = (t) => alarmes.push(t);
 
+/** O commit desta árvore e se ela está suja, no formato do manifesto da bateria. */
+function carimboDoAgregador() {
+  try {
+    const sha = execSync('git rev-parse HEAD', { cwd: RAIZ, encoding: 'utf8' }).trim().slice(0, 7);
+    const sujo = execSync('git status --porcelain', { cwd: RAIZ, encoding: 'utf8' }).trim();
+    return `${sha}${sujo ? ' ⚠ÁRVORE SUJA' : ''}`;
+  } catch {
+    // Sem git (uma cópia solta da pasta) o carimbo diz que não sabe, e não mente.
+    return 'commit desconhecido (sem git)';
+  }
+}
+
 // ==================================================================== escopo
 console.log(`\n· bateria ${manifesto.run_id} (${manifesto.tipo || 'grande'})`
   + ` · commit ${String(manifesto.commit).slice(0, 7)}${manifesto.sujo ? ' ⚠ÁRVORE SUJA' : ''}`
   + ` · dados ${manifesto.dados_hash}`);
+// E O COMMIT DO AGREGADOR, que NÃO é o da bateria.
+//
+// A linha acima carimba a árvore que RODOU as batalhas; esta carimba a árvore
+// que as leu. São diferentes sempre que o agregador ganha tabela sobre dados já
+// gravados, que é o caso comum, e a rodada 02 publicou um arquivo cuja linha 2
+// dizia `80d5db7` enquanto o bloco que o escreveu só existia depois dele. Agora
+// que o agregado versionado é a procedência dos números publicados, quem
+// escreve tem de se carimbar.
+console.log(`· agregador ${carimboDoAgregador()}`);
 console.log(`  ${linhas.length} batalhas em ${porCelula.size} células`
   + ` · ${invalidas.length} inválidas (fora de toda média)`);
 console.log('\n  O QUE ESTA BATERIA MEDE, e é o que ela NÃO mede que decide o alcance:');
@@ -355,6 +377,33 @@ for (const [id, ls] of daFatia(PRINCIPAL)) {
   const mortos = sm((x) => x.ticksMortos || 0);
   const golpes = sm((x) => x.golpesAplicados || 0);
   const decl = sub('declarar');
+  // AS PARADAS POR LADO DA PEÇA (`log.mjs`, `paradasSubLado`), que é o que
+  // permite perguntar quanto custa a mesa em que só UM lado declara à mão.
+  const subLado = (lado, t) => sm((x) => x.paradasSubLado?.[lado]?.[t] || 0);
+  const declA = subLado('a', 'declarar');
+  const declB = subLado('b', 'declarar');
+  // BATERIA ANTERIOR AO CAMPO: ela não tem a repartição, e isso não é erro.
+  //
+  // A distinção importa porque as duas situações são opostas: uma bateria velha
+  // não SABE o lado (e a tabela cai para a linha das duas facções), enquanto uma
+  // bateria nova em que a soma não fecha tem um buraco no registro. Sem separar
+  // as duas, o agregador ou recusaria toda bateria guardada ou engoliria calado
+  // uma repartição furada.
+  const temLado = ls.some((l) => l.fases.combate.paradasSubLado);
+  // A TRAVA, no molde do D08: a repartição por lado tem de somar o total em
+  // TODO tipo, e não só em `declarar`. Se uma parada vier sem peça (ou com um
+  // lado que não é `a` nem `b`), ela sumiria da repartição e a linha "um lado à
+  // mão" sairia baixa sem nada acusar.
+  if (temLado) {
+    for (const t of tipos) {
+      if (subLado('a', t) + subLado('b', t) !== sub(t)) {
+        console.log(`\n✘✘✘ a repartição por lado de \`${t}\` não soma o total`
+          + ` (a ${subLado('a', t)} + b ${subLado('b', t)} ≠ ${sub(t)}):`
+          + ' alguma parada foi registrada sem lado em log.mjs');
+        process.exit(1);
+      }
+    }
+  }
   const n0 = (x) => num(x, 0);
   const p1 = (x) => `${(x * 100).toFixed(1)}%`;
 
@@ -437,19 +486,41 @@ for (const [id, ls] of daFatia(PRINCIPAL)) {
   // muda com G (o ⏭ e a folha continuam dele), e o trabalho da MESA, que é o
   // do mestre mais o dos jogadores. Os cliques poupados são os mesmos nos dois;
   // só a fração muda, e só na segunda.
+  // E QUANTAS DAS DECLARAÇÕES SÃO DE CADA LADO, que é a terceira premissa.
+  //
+  // A rodada 01 tirou o gesto do jogador do denominador do MESTRE. A rodada 02
+  // o pôs inteiro no denominador da MESA, e com isso publicou como "com
+  // jogadores na mesa" um caso em que TODA peça das duas facções é declarada à
+  // mão. Numa mesa comum os jogadores declaram um lado e o robô declara os
+  // NPCs: só metade das declarações custa `G`, e não é metade exata, porque em
+  // metade das células o lado `b` anda com passo dobrado e declara mais vezes.
+  // Por isso a repartição é MEDIDA aqui e não dividida por dois.
   const { arrasto, menu } = CUSTO.declarar.naMao;
-  const GS = [[0, 'o robô'], [arrasto, 'jogador pelo arrasto'], [menu, 'jogador pelo menu']];
+  const QUEM = temLado ? [
+    ['as duas facções', decl],
+    ['só o lado a', declA],
+    ['só o lado b', declB],
+  ] : [['as duas facções', decl]];
   console.log('\n── COM JOGADOR NA MESA · G gestos por declaração, e são gestos do JOGADOR ──');
-  console.log(`  declarações ${n0(decl)} · cliques poupados: piso ${n0(mortos)} · teto ${n0(vazios)},`
-    + ' os mesmos em toda linha');
+  console.log(temLado
+    ? `  declarações ${n0(decl)} · lado a ${n0(declA)} (${p1(decl ? declA / decl : 0)})`
+      + ` · lado b ${n0(declB)} (${p1(decl ? declB / decl : 0)})`
+    : `  declarações ${n0(decl)} · SEM repartição por lado:`
+      + ' esta bateria é anterior ao `paradasSubLado` do log');
+  console.log(`  cliques poupados: piso ${n0(mortos)} · teto ${n0(vazios)}, os mesmos em toda linha`);
   for (const m of MODOS) {
     console.log(`  modo ${m} · trabalho do MESTRE ${n0(T[m])} · economia dele:`
       + ` piso ${p1(mortos / T[m])} · teto ${p1(vazios / T[m])}, com qualquer G`);
-    console.log('  ' + 'G'.padEnd(28) + 'trab. da MESA   piso (mesa)   teto (mesa)');
-    for (const [G, nome] of GS) {
-      const mesa = T[m] + G * decl;
-      console.log('  ' + `${G} · ${nome}`.padEnd(28) + n0(mesa).padStart(13)
-        + p1(mortos / mesa).padStart(14) + p1(vazios / mesa).padStart(14));
+    console.log('  ' + 'G'.padEnd(22) + 'quem declara à mão'.padEnd(20)
+      + 'trab. da MESA   piso (mesa)   teto (mesa)');
+    console.log('  ' + '0 · o robô'.padEnd(22) + 'ninguém'.padEnd(20) + n0(T[m]).padStart(13)
+      + p1(mortos / T[m]).padStart(14) + p1(vazios / T[m]).padStart(14));
+    for (const [G, nome] of [[arrasto, 'arrasto'], [menu, 'menu']]) {
+      for (const [quem, d] of QUEM) {
+        const mesa = T[m] + G * d;
+        console.log('  ' + `${G} · ${nome}`.padEnd(22) + quem.padEnd(20) + n0(mesa).padStart(13)
+          + p1(mortos / mesa).padStart(14) + p1(vazios / mesa).padStart(14));
+      }
     }
   }
 
