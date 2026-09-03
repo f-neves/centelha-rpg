@@ -56,6 +56,22 @@ apareceu três vezes nesta frente**, em três camadas diferentes:
 | **1** | os **seis Ticks sem rolar dado** | "estes Ticks não tiveram rolagem" | o teste passava provando nada, porque nada era rolado | achado por inspeção, depois de o teste estar verde |
 | **2** | as **sete comparações do E5** | "o eixo não mudou o resultado" | as comparações não podiam morder | achado pela bateria de sanidade, que existe para falhar |
 | **3** | as **quinze bandeiras** | "a bandeira está desligada" | nenhuma é lida pelo motor | achado em 03/09, **depois de sete rodadas de documento** |
+| **4** | o **parser do supervisor** (`duo-leitura.mjs`) | "a revisora não escalou nada" | a seção ESCALA saía VAZIA para todo conteúdo, porque `$` em multilinha casa no fim de cada linha | achado pelo `test-duo.mjs` na primeira execução, **antes de o ciclo rodar uma vez** |
+
+**O quarto caso é o mais forte dos quatro, e por um motivo que os outros três não têm: ele
+estava dentro da TRAVA, e não dentro do medido.** Os três primeiros eram instrumentos medindo
+errado; este era o supervisor que existe para pegar os outros três lendo "vazio" como "nada
+escalado". Se tivesse passado, o ciclo automático teria seguido por cima de decisões de regra
+de jogo, que são as únicas que ele existe para não tomar, e nada na saída acusaria: o veredito
+sairia SEGUE, a ESCALA sairia limpa, e o resumo diria que estava tudo bem.
+
+E ele veio em três camadas, que é a forma que o zero ambíguo assume quando ninguém o procura de
+propósito: (a) `secao()` devolvia vazio para toda seção com conteúdo; (b) o fallback do veredito
+caía para o texto inteiro quando a seção saía vazia, o que **escondia** o (a) pescando a palavra
+SEGUE de qualquer frase; e (c) tirado o fallback, apareceu que o terminador de seção lia
+`CORRIGE-E-SEGUE` como o cabeçalho CORRIGE. **Cada fail-open mascarava o seguinte.** Nenhum dos
+três teria aparecido rodando o ciclo: os três apareceram acionando cada leitura de propósito, com
+o mínimo que tem de acendê-la e o mínimo que não pode.
 
 **No terceiro caso o disfarce foi perfeito**, e vale entender por quê: com o perfil todo `false`,
 "a bandeira está desligada" e "a bandeira não é lida" produzem o **mesmo comportamento, o mesmo
@@ -74,7 +90,14 @@ primeira batalha.
    é um alarme não testado, e ele imprime o mesmo ✓ para "não houve problema" e para "o predicado
    está errado". É `scripts/test-sinais.mjs`, onze predicados e vinte e dois casos, e ele já achou
    um furo na primeira execução: o sinal da re-projeção acendia numa grade sem nenhuma célula de
-   distância, apontando para o eixo em vez de para a grade;
+   distância, apontando para o eixo em vez de para a grade. **E vale igual para o supervisor**:
+   `scripts/test-duo.mjs` achou três antes de o ciclo rodar uma vez (o caso 4 acima);
+3b. **a ausência de sinal nunca é lida como sinal.** É a forma geral dos quatro casos, e ela dá
+   uma regra de código: todo lugar em que um valor pode estar ausente distingue **ausente** de
+   **presente e vazio** de **presente com conteúdo**, e só o terceiro é dado. O `duo-leitura.mjs`
+   separa os três (`ausente` · `branca` · `nada` · `conteudo`), e "nada" só vale como vazio se a
+   revisora escrever a palavra. Um custo de chamada que não veio não é custo zero: é chamada que
+   não dá para contar, e encerra o ciclo;
 4. **o contador de ocasião entra JUNTO com a métrica que ele guarda**, e não depois;
 5. **todo número PUBLICADO tem um sinal que acende se a fonte dele se soltar.** Não é vigilância
    de instrumento, é vigilância de conclusão, e é a obrigação mais cara de esquecer: o piso de

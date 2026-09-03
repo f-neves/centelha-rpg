@@ -36,11 +36,74 @@ const SECOES = ['BLOQUEIA', 'CORRIGE', 'PERGUNTA', 'ESCALA', 'VEREDITO'];
  *
  * Com ela o script falha FECHADO: formato que não bate encerra o ciclo.
  */
-const temSecao = (txt, nome) =>
-  new RegExp(`^[#\\s*_-]*\\*{0,2}${nome}\\*{0,2}\\b`, 'm').test(txt);
+/**
+ * UM CABEÇALHO OCUPA A LINHA INTEIRA. `CABECALHO` casa `## ESCALA`, `**ESCALA**`
+ * e `ESCALA:`, e NÃO casa `CORRIGE-E-SEGUE` como se fosse o cabeçalho CORRIGE.
+ * Esse era o segundo furo: com `\\b` sozinho, a palavra do veredito começava igual
+ * ao nome de uma seção, o terminador da seção anterior parava nela, e o corpo de
+ * VEREDITO saía vazio. O fallback fail-open que caía para o texto inteiro estava
+ * escondendo exatamente isso.
+ */
+const CABECALHO = (nome) => `^[#\\s*_-]*\\*{0,2}${nome}\\*{0,2}[^\\S\\n]*:?[^\\S\\n]*$`;
+const temSecao = (txt, nome) => new RegExp(CABECALHO(nome), 'm').test(txt);
 
 /** As seções que faltam numa resposta. Vazio = o formato bate. */
 export const faltando = (txt) => SECOES.filter((n) => !temSecao(txt, n));
+
+/**
+ * O ESTADO DE UMA SEÇÃO, e são TRÊS e não dois.
+ *
+ * Tratar "não achei" e "está vazia" como a mesma coisa foi exatamente o furo que
+ * o `test-duo.mjs` pegou na estreia, e é o zero ambíguo do `02` dentro do
+ * supervisor: a ausência de sinal lida como sinal negativo.
+ *
+ *   'ausente'  · o cabeçalho não está lá. FALHA DE FORMATO, encerra o ciclo;
+ *   'branca'   · o cabeçalho está lá e o corpo não tem nada. TAMBÉM encerra: o
+ *                formato pede a palavra "nada", e um corpo em branco pode ser
+ *                tanto "não há o que escalar" quanto uma escrita interrompida no
+ *                meio. Adivinhar qual é dos dois é o erro;
+ *   'nada'     · a revisora ESCREVEU "nada". É a única forma válida de vazio;
+ *   'conteudo' · há item.
+ *
+ * A diferença entre 'branca' e 'nada' parece preciosismo e é o oposto: é a única
+ * coisa que separa "a revisora olhou e não achou o que escalar" de "a resposta
+ * saiu truncada". As duas produzem uma seção sem itens.
+ */
+export function estadoDaSecao(txt, nome) {
+  if (!temSecao(txt, nome)) return 'ausente';
+  const corpo = secao(txt, nome);
+  if (!corpo.trim()) return 'branca';
+  return /^[-*\s]*nada[.\s]*$/i.test(corpo) ? 'nada' : 'conteudo';
+}
+
+/** A seção diz "nada", com a palavra escrita? */
+export const dizNada = (txt, nome) => estadoDaSecao(txt, nome) === 'nada';
+/** A seção tem item de verdade? */
+export const temConteudo = (txt, nome) => estadoDaSecao(txt, nome) === 'conteudo';
+
+/**
+ * O que impede a resposta de ser LIDA, e não o que ela diz.
+ *
+ * Devolve a lista de problemas de formato. Lista vazia é o único caso em que o
+ * `duo` pode confiar no que leu; qualquer entrada aqui encerra o ciclo, porque
+ * ler pela metade faria o supervisor seguir por cima do que ele existe para pegar.
+ */
+export function ilegivel(txt) {
+  const problemas = [];
+  for (const n of SECOES) {
+    const e = estadoDaSecao(txt, n);
+    if (e === 'ausente') problemas.push(`a seção ${n} não está na resposta`);
+    else if (e === 'branca') {
+      problemas.push(`a seção ${n} está em branco: o formato pede a palavra "nada"`
+        + ' quando não há o que dizer, e em branco não dá para saber se é isso'
+        + ' ou se a resposta saiu truncada');
+    }
+  }
+  const v = veredito(txt);
+  if (!v) problemas.push('a seção VEREDITO não traz SEGUE, CORRIGE-E-SEGUE nem PARA');
+  else if (v === 'ambiguo') problemas.push('a seção VEREDITO traz mais de um veredito');
+  return problemas;
+}
 
 /** O corpo de uma seção do `NN-revisora.md`, pelo nome. */
 export function secao(txt, nome) {
@@ -52,7 +115,7 @@ export function secao(txt, nome) {
   // importante do ciclo falharia aberta em silêncio, e o `faltando` não pegaria,
   // porque o cabeçalho está lá. Quem pegou foi o `test-duo.mjs`, na primeira
   // execução.
-  const re = new RegExp(`^[#\\s*_-]*\\*{0,2}${nome}\\*{0,2}\\b[^\\n]*\\n([\\s\\S]*?)(?=\\n[#\\s*_-]*\\*{0,2}(?:BLOQUEIA|CORRIGE|PERGUNTA|ESCALA|VEREDITO)\\b|(?![\\s\\S]))`, 'm');
+  const re = new RegExp(`${CABECALHO(nome)}\\n([\\s\\S]*?)(?=\\n${CABECALHO('(?:BLOQUEIA|CORRIGE|PERGUNTA|ESCALA|VEREDITO)').slice(1)}|(?![\\s\\S]))`, 'm');
   const m = re.exec(txt);
   return m ? m[1].trim() : '';
 }
@@ -81,9 +144,24 @@ const jaccard = (a, b) => {
   return inter / (a.size + b.size - inter);
 };
 
-/** Assunto repetido entre duas respostas seguidas da revisora. */
+/**
+ * Assunto repetido entre duas respostas seguidas da revisora.
+ *
+ * `emItens` é a terceira correção do mesmo tipo: uma seção com CONTEÚDO mas sem
+ * marcador de lista (a revisora escrevendo em prosa) devolvia zero itens, e zero
+ * itens quer dizer "nada se repetiu". A trava sumiria em silêncio para quem
+ * escrevesse em parágrafo. Agora o corpo inteiro vira um item quando não há
+ * marcador nenhum: pior granularidade, mas a trava continua existindo.
+ */
+const emItens = (t, nome) => {
+  if (!temConteudo(t, nome)) return [];
+  const corpo = secao(t, nome);
+  const its = itens(corpo);
+  return its.length ? its : [corpo.replace(/\s+/g, ' ').trim()];
+};
+
 export function repetidos(txtA, txtB) {
-  const dos = (t) => [...itens(secao(t, 'BLOQUEIA')), ...itens(secao(t, 'CORRIGE'))];
+  const dos = (t) => [...emItens(t, 'BLOQUEIA'), ...emItens(t, 'CORRIGE')];
   const achados = [];
   for (const x of dos(txtA)) {
     for (const y of dos(txtB)) {
@@ -95,10 +173,27 @@ export function repetidos(txtA, txtB) {
   return achados;
 }
 
-/** O veredito, em uma palavra. */
+/**
+ * O veredito, em uma palavra, LIDO SÓ DA SEÇÃO DELE.
+ *
+ * A versão da estreia caía para o texto inteiro quando a seção saía vazia
+ * (`s || txt`), e isso é a ausência de sinal virando sinal outra vez: com a seção
+ * ilegível, ela pescaria a palavra "SEGUE" de qualquer frase do corpo da resposta
+ * (um "não vejo como SEGUE" dentro de CORRIGE serviria) e o ciclo continuaria
+ * achando que tinha veredito.
+ *
+ * E devolve 'ambiguo' quando acha mais de um: "não é PARA, é SEGUE" tem os dois,
+ * e a versão anterior devolvia o primeiro pela posição no texto, que é sorteio.
+ */
 export function veredito(txt) {
   const s = secao(txt, 'VEREDITO');
-  const m = /\b(CORRIGE-E-SEGUE|SEGUE|PARA)\b/.exec(s || txt);
-  return m ? m[1] : null;
+  if (!s.trim()) return null;
+  const achados = [...s.matchAll(/\b(CORRIGE-E-SEGUE|SEGUE|PARA)\b/g)]
+    .map((m) => m[1]);
+  // CORRIGE-E-SEGUE contém SEGUE: a mesma ocorrência não conta duas vezes.
+  const distintos = [...new Set(achados)]
+    .filter((v, _i, todos) => !(v === 'SEGUE' && todos.includes('CORRIGE-E-SEGUE')));
+  if (!distintos.length) return null;
+  return distintos.length > 1 ? 'ambiguo' : distintos[0];
 }
 

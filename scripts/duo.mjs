@@ -31,7 +31,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawn, execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { faltando, secao, vazia, veredito, repetidos } from './duo-leitura.mjs';
+import { ilegivel, secao, dizNada, temConteudo, veredito, repetidos } from './duo-leitura.mjs';
 
 // ============================================================ as duas pastas
 const EXEC = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -133,8 +133,19 @@ function chamar(dir, quem, prompt) {
         const j = JSON.parse(saida);
         // O nome do campo de custo já mudou de versão para versão; ler os três
         // é mais barato que descobrir isso com o teto de custo desligado.
-        const c = j.total_cost_usd ?? j.cost_usd ?? j.usage?.total_cost_usd ?? 0;
-        resolve({ ok: j.subtype !== 'error', custo: Number(c) || 0, texto: j.result || '' });
+        //
+        // E CUSTO AUSENTE NÃO É CUSTO ZERO. A versão da estreia caía em `?? 0`, e
+        // isso é a ausência de sinal lida como sinal favorável na trava que
+        // guarda o dinheiro: se o CLI mudasse o nome do campo, cada chamada
+        // entraria de graça na conta e o teto de custo nunca acenderia. Sem o
+        // campo, a chamada é tratada como falha de leitura e o ciclo encerra.
+        const c = j.total_cost_usd ?? j.cost_usd ?? j.usage?.total_cost_usd;
+        if (c == null || Number.isNaN(Number(c))) {
+          return resolve({ ok: false, custo: 0, texto: j.result || '',
+            motivo: 'a saída não traz o custo da chamada (total_cost_usd), e sem ele o'
+              + ' teto de custo não tem como valer' });
+        }
+        resolve({ ok: j.subtype !== 'error', custo: Number(c), texto: j.result || '' });
       } catch {
         resolve({ ok: false, custo: 0, texto: saida, motivo: 'saída não era JSON' });
       }
@@ -197,6 +208,36 @@ const parar = (nn, motivo, aberto) => {
   process.exit(0);
 };
 
+/**
+ * A RESPOSTA QUE O SECO USA, e ela é fixture e não revisão. Serve só para o
+ * caminho das travas ser andado até o fim: tem as cinco seções, um item em
+ * CORRIGE (para o parser ler item de verdade), "nada" escrito em ESCALA, e
+ * veredito CORRIGE-E-SEGUE, que não acende SEGUE-duas-vezes nem PARA. O ciclo
+ * seco termina, portanto, pelo teto de rodadas, e é isso que a trilha mostra.
+ */
+const FIXTURE_SECO = (nn) => `# Rodada ${nn} · resposta da revisora (FIXTURE DO SECO)
+
+## BLOQUEIA
+
+nada
+
+## CORRIGE
+
+- (fixture) item de exemplo da rodada ${nn}, para o parser ter o que ler
+
+## PERGUNTA
+
+nada
+
+## ESCALA
+
+nada
+
+## VEREDITO
+
+CORRIGE-E-SEGUE
+`;
+
 // ===================================================================== o ciclo
 console.log(`\n· duo · teto ${TETO_RODADAS} rodadas · US$ ${TETO_CUSTO.toFixed(2)} · ${TETO_MIN} min por chamada`
   + `${SECO ? ' · SECO (não chama nada)' : ''}`);
@@ -227,10 +268,20 @@ for (let volta = 1; volta <= TETO_RODADAS; volta += 1) {
   if (!SECO && !limpa(EXEC)) parar(nn, `a árvore da executora está suja:\n${git(EXEC, 'status --short')}`);
 
   // ---------------------------------------------------------- 1 · a executora
-  const pedido = respostaAnterior
-    ? `A revisora respondeu a rodada anterior em docs/simulacao/caixa/${String(jaFeitas + volta - 1).padStart(2, '0')}-revisora.md.`
+  // A RESPOSTA ANTERIOR PODE ESTAR NO DISCO E NÃO NESTA EXECUÇÃO: a primeira
+  // rodada de uma execução nova tem de começar com o que a revisora respondeu
+  // na anterior, senão o ciclo recomeça do zero e trata de novo o que já foi
+  // tratado. A caixa é o canal, e o disco é a caixa.
+  const nnAnterior = String(jaFeitas + volta - 1).padStart(2, '0');
+  const arqRespAnterior = path.join(CAIXA, `${nnAnterior}-revisora.md`);
+  const haResposta = respostaAnterior || fs.existsSync(arqRespAnterior);
+  const pedido = haResposta
+    ? `A revisora respondeu a rodada anterior em docs/simulacao/caixa/${nnAnterior}-revisora.md.`
       + ' Leia, trate BLOQUEIA e CORRIGE, responda PERGUNTA, e faça a rodada seguinte.'
     : 'Faça a próxima rodada de trabalho da frente de simulação.';
+  if (!respostaAnterior && fs.existsSync(arqRespAnterior)) {
+    anote(`  → a rodada começa com a resposta ${nnAnterior}-revisora.md já na caixa`);
+  }
   const pExec = `${pedido}\n\n`
     + 'Ao terminar: commite tudo, rode `npm run rodada` para abrir o aviso, preencha as seis'
     + ' seções do arquivo criado, e rode `npm run rodada -- --enviar`.\n\n'
@@ -242,11 +293,17 @@ for (let volta = 1; volta <= TETO_RODADAS; volta += 1) {
   if (!rExec.ok) parar(nn, `a chamada da executora falhou: ${rExec.motivo || 'sem motivo'}`);
   anote(`  ✓ executora · US$ ${rExec.custo.toFixed(2)} · acumulado US$ ${custo.toFixed(2)}`);
 
-  if (SECO) { anote('  [seco] pararia aqui, sem aviso para ler'); break; }
-
   // -- o aviso saiu? ---------------------------------------------------------
-  const arqAviso = path.join(CAIXA, `${nn}-executora.md`);
+  //
+  // NO SECO o aviso desta rodada não existe (ninguém o escreveu), então o caminho
+  // usa o ÚLTIMO aviso real da caixa, para que o commit mostrado seja um commit
+  // de verdade e não um sha inventado. Está dito na trilha.
+  const nnAviso = SECO ? (avisos().pop() || nn) : nn;
+  if (SECO && nnAviso !== nn) anote(`  [seco] a executora não escreveu o ${nn}-executora.md; usando o ${nnAviso} para mostrar o caminho`);
+  const arqAviso = path.join(CAIXA, `${nnAviso}-executora.md`);
+  anote(`  trava · o aviso existe? ${fs.existsSync(arqAviso) ? '✓' : '■'}`);
   if (!fs.existsSync(arqAviso)) parar(nn, 'a executora não escreveu o aviso da rodada');
+  anote(`  trava · árvore da executora limpa? ${limpa(EXEC) ? '✓' : '■'}`);
   if (!limpa(EXEC)) parar(nn, `a executora deixou a árvore suja:\n${git(EXEC, 'status --short')}`);
 
   // -- O COMMIT QUE CONTÉM O AVISO, e nunca o topo da branch ------------------
@@ -254,20 +311,29 @@ for (let volta = 1; volta <= TETO_RODADAS; volta += 1) {
   // O topo pode ter andado (a executora pode ter commitado depois), e mandar a
   // revisora para o topo por conveniência quebraria a única coisa que o
   // congelamento compra: ela revisa o que foi avisado.
-  const shaAviso = git(EXEC, `log -1 --format=%H -- "docs/simulacao/caixa/${nn}-executora.md"`);
+  const shaAviso = git(EXEC, `log -1 --format=%H -- "docs/simulacao/caixa/${nnAviso}-executora.md"`);
   if (!shaAviso) parar(nn, 'não achei o commit que contém o aviso');
-  anote(`  → commit do aviso: ${shaAviso.slice(0, 7)}`);
+  const topo = git(EXEC, 'rev-parse HEAD');
+  anote(`  → commit do aviso: ${shaAviso.slice(0, 7)}${shaAviso === topo ? ' (é o topo)'
+    : ` (o topo é ${topo.slice(0, 7)}, e NÃO é ele que vai)`}`);
 
   // ----------------------------------------------------------- 2 · o checkout
+  anote(`  trava · o papel da revisora existe em .claude/CLAUDE.local.md? ${fs.existsSync(PAPEL) ? '✓' : '■'}`);
   if (!fs.existsSync(PAPEL)) {
     parar(nn, `o papel da revisora sumiu de ${path.relative(REV, PAPEL)}.`
       + ' Sem ele a revisora abre a rodada sem contrato: sem as vigilâncias, sem o formato'
       + ' da resposta e sem a trava de regra de jogo, produzindo texto plausível e inútil.');
   }
+  anote(`  trava · árvore da revisora limpa? ${limpa(REV) ? '✓' : '■'}`);
   if (!limpa(REV)) parar(nn, `a árvore da revisora está suja:\n${git(REV, 'status --short')}`);
-  git(REV, 'fetch -q');
-  git(REV, `checkout -q ${shaAviso}`);
-  if (!fs.existsSync(PAPEL)) parar(nn, 'o checkout apagou o papel da revisora');
+  if (SECO) {
+    anote(`  [seco] faria: git -C ${path.basename(REV)} fetch && checkout ${shaAviso.slice(0, 7)}`);
+  } else {
+    git(REV, 'fetch -q');
+    git(REV, `checkout -q ${shaAviso}`);
+    if (!fs.existsSync(PAPEL)) parar(nn, 'o checkout apagou o papel da revisora');
+    anote(`  ✓ revisora alinhada em ${shaAviso.slice(0, 7)}, e o papel sobreviveu`);
+  }
 
   // ----------------------------------------------------------- 3 · a revisora
   const pRev = `A executora avisou a rodada ${nn}. Leia docs/simulacao/caixa/${nn}-executora.md`
@@ -282,41 +348,53 @@ for (let volta = 1; volta <= TETO_RODADAS; volta += 1) {
     + ` · acumulado US$ ${custo.toFixed(2)}`);
 
   // ----------------------------------------- 4 · o script commita por ela
-  const arqRespRev = path.join(REV, 'docs', 'simulacao', 'caixa', `${nn}-revisora.md`);
-  if (!fs.existsSync(arqRespRev)) parar(nn, 'a revisora não escreveu a resposta');
-  const resposta = fs.readFileSync(arqRespRev, 'utf8');
-  fs.writeFileSync(path.join(CAIXA, `${nn}-revisora.md`), resposta);
-  // Tirada do worktree dela: senão o próximo checkout esbarra num arquivo não
-  // rastreado no mesmo caminho e recusa andar.
-  fs.rmSync(arqRespRev, { force: true });
-  const relResp = `docs/simulacao/caixa/${nn}-revisora.md`;
-  git(EXEC, `add "${relResp}"`);
-  git(EXEC, `commit -q -m "rodada ${nn} · resposta da revisora" -- "${relResp}"`);
-  anote(`  ✓ resposta commitada · ${relResp}`);
+  let resposta;
+  if (SECO) {
+    // A RESPOSTA DO SECO É UMA FIXTURE, dita como tal na trilha. Ela existe para
+    // o caminho das travas ser andado até o fim sem chamada nenhuma; o que ela
+    // diz não é revisão de nada.
+    resposta = FIXTURE_SECO(nn);
+    anote('  [seco] a resposta da revisora é uma FIXTURE (CORRIGE-E-SEGUE, sem escalada)');
+  } else {
+    const arqRespRev = path.join(REV, 'docs', 'simulacao', 'caixa', `${nn}-revisora.md`);
+    if (!fs.existsSync(arqRespRev)) parar(nn, 'a revisora não escreveu a resposta');
+    resposta = fs.readFileSync(arqRespRev, 'utf8');
+    fs.writeFileSync(path.join(CAIXA, `${nn}-revisora.md`), resposta);
+    // Tirada do worktree dela: senão o próximo checkout esbarra num arquivo não
+    // rastreado no mesmo caminho e recusa andar.
+    fs.rmSync(arqRespRev, { force: true });
+    const relResp = `docs/simulacao/caixa/${nn}-revisora.md`;
+    git(EXEC, `add "${relResp}"`);
+    git(EXEC, `commit -q -m "rodada ${nn} · resposta da revisora" -- "${relResp}"`);
+    anote(`  ✓ resposta commitada · ${relResp}`);
+  }
 
   // ------------------------------------------------------- 5 · as travas
-  // O FORMATO PRIMEIRO, e antes de qualquer leitura: seção que falta é resposta
-  // que não dá para ler, e resposta que não dá para ler encerra o ciclo em vez
-  // de ser lida pela metade.
-  const faltam = faltando(resposta);
-  if (faltam.length) {
-    parar(nn, `a resposta da revisora não tem as seções ${faltam.join(', ')}.`
-      + ' Sem elas não dá para saber se houve escalada nem qual é o veredito, e ler'
-      + ' pela metade faria o ciclo seguir por cima do que ele existe para pegar');
+  //
+  // O FORMATO PRIMEIRO, e antes de qualquer leitura. `ilegivel` separa os três
+  // estados de uma seção (ausente, em branco, "nada" escrito): os dois primeiros
+  // encerram, porque ler pela metade faria o ciclo seguir por cima do que ele
+  // existe para pegar. Foi o furo da estreia, dentro da trava e não do medido.
+  const problemas = ilegivel(resposta);
+  anote(`  trava · a resposta é legível (cinco seções, "nada" escrito onde vazio)? ${problemas.length ? '■' : '✓'}`);
+  if (problemas.length) {
+    parar(nn, `a resposta da revisora não dá para ler:\n    ${problemas.join('\n    ')}`);
   }
   const v = veredito(resposta);
-  const esc = secao(resposta, 'ESCALA');
-  anote(`  veredito: ${v || '(não achei)'}`);
+  anote(`  veredito: ${v}`);
 
-  if (!vazia(esc)) {
+  const escalou = temConteudo(resposta, 'ESCALA');
+  anote(`  trava · ESCALA ${escalou ? 'tem item ■' : dizNada(resposta, 'ESCALA') ? 'diz "nada" ✓' : '?'}`);
+  if (escalou) {
     parar(nn, 'a revisora ESCALOU: há decisão que precisa do humano, e escalar encerra o ciclo'
-      + ' na hora, mesmo com rodadas sobrando', `### ESCALA da rodada ${nn}\n\n${esc}`);
+      + ' na hora, mesmo com rodadas sobrando', `### ESCALA da rodada ${nn}\n\n${secao(resposta, 'ESCALA')}`);
   }
+  anote(`  trava · veredito PARA? ${v === 'PARA' ? '■' : '✓ não'}`);
   if (v === 'PARA') parar(nn, 'veredito PARA', secao(resposta, 'BLOQUEIA'));
-  if (!v) parar(nn, 'a resposta da revisora não traz veredito legível');
 
   if (respostaAnterior) {
     const rep = repetidos(respostaAnterior, resposta);
+    anote(`  trava · assunto repetido com a resposta anterior? ${rep.length ? '■' : '✓ não'}`);
     if (rep.length) {
       parar(nn, `assunto repetido em duas respostas seguidas (duas voltas sem convergir não`
         + ` convergem em cinco):\n    ${rep.slice(0, 3).join('\n    ')}`,
@@ -325,6 +403,7 @@ for (let volta = 1; volta <= TETO_RODADAS; volta += 1) {
   }
 
   seguesSeguidos = v === 'SEGUE' ? seguesSeguidos + 1 : 0;
+  anote(`  trava · SEGUE seguidos: ${seguesSeguidos} de 2 ${seguesSeguidos >= 2 ? '■' : '✓'}`);
   if (seguesSeguidos >= 2) {
     parar(nn, 'SEGUE duas vezes seguidas: revisão esgotada. Continuar daqui é inventar trabalho');
   }
