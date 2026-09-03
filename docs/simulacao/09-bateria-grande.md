@@ -3,18 +3,72 @@
 **03/09/2026.** 21.600 batalhas, 96 células, zero inválidas. Commit `0dc62a4`,
 semente mestre 20260903.
 
-> **A bateria rodou quatro vezes neste dia**, e as três últimas com números idênticos: uma por
-> mudança de régua (a D45 pôs `fichaModo` no catálogo, e nenhum arquétipo do elenco empunha
-> alabarda, então nada se moveu, que era a previsão) e uma por instrumento novo (o Tick MORTO da
-> §2.4). A D34 manda rodar inteira quando qualquer um dos dois muda, e o que a volta compra é o
-> carimbo.
+> **A grade rodou QUATRO vezes neste dia, e os números aqui são os da última.** A primeira
+> (`3544505`) levantou quatro perguntas de regra presas no código; a segunda (`fdc9eab`) rodou com
+> as respostas; a terceira (`02f9a3a`) rodou com a revisão delas, que refez a regra do golpe no
+> caído sobre o retrato da abertura do Tick (D41), promoveu o tabuleiro a eixo e consertou o
+> instrumento num ponto que muda o número publicado (D42, a §2.2); e a quarta (`0dc62a4`) rodou
+> por causa do Tick MORTO (D48), que é instrumento novo.
+>
+> **As três últimas deram números idênticos**, e isso é previsão confirmada e não coincidência: a
+> D45 mexeu no catálogo numa arma que ninguém do elenco empunha, e a D48 acrescentou um contador
+> sem tocar no laço. A D34 manda rodar inteira quando a régua ou o instrumento mudam, e o que a
+> volta compra é o carimbo.
 
-> **Esta é a TERCEIRA execução da grade.** A primeira (`3544505`) levantou quatro perguntas de
-> regra presas no código; a segunda (`fdc9eab`) rodou com as respostas. Esta terceira roda com a
-> revisão daquelas respostas: a regra do golpe no caído refeita sobre o retrato da abertura do
-> Tick (D41), o tabuleiro promovido a eixo, e o instrumento consertado num ponto que muda o
-> número publicado (D42, a §2.2). **Os números aqui são os da terceira**; onde alguma coisa se
-> moveu, o movimento está escrito.
+---
+
+# Em uma página
+
+**O resto deste documento é a prova. Isto é a leitura.**
+
+### O que se perguntou
+
+Quanto do trabalho do mestre no Grid a automação pode tirar. Medido em **21.600 batalhas**, 96
+células, com o robô do produto, todas as bandeiras desligadas, zero batalhas inválidas.
+
+### A resposta, em três termos
+
+O trabalho do mestre na fase de combate **não é uma coisa, são três**, e só a primeira sai com
+automação de regra:
+
+| | gestos | fatia | quem tira |
+|---|---:|---:|---|
+| **aritmética** (classe iii) | 552.102 | **50%** | automação de regra |
+| **o ⏭**, cadência de relógio | 359.733 | **33%** | ninguém: nenhuma regra o toca |
+| **julgamento** (classe ii) | 184.034 | **17%** | ninguém: é a mesa decidindo |
+
+E a aritmética **não são seis paradas, é uma**: a folha da resolução. As outras cinco somam 60%
+das paradas e custam **zero** gesto.
+
+### A escada do que dá para tirar
+
+| | trabalho | do de hoje | o que sai |
+|---|---:|---:|---|
+| hoje (modo `mesa`) | 1.095.869 | 100% | · |
+| **+ modo `site`** | 727.801 | 66,4% | os dois números digitados por golpe |
+| **+ avanço unificado** | 538.355 | 49,1% | o ⏭ do Tick morto, e um cartão por parada |
+| **+ a folha resolvendo sozinha** | **418.530** | **38,2%** | o resto da aritmética |
+
+> **O teto do que este projeto inteiro pode tirar do mestre é 62% do trabalho de hoje, e o que
+> sobra não tem conserto de software.** Não é 38,2% de um número fixo: é **um clique por Tick que
+> para e um por golpe que cai**, que são a cadência da cena e a decisão da mesa, e não conta. E
+> ele escala com o **tamanho da cena**, não com a complexidade da regra.
+
+### A fila, em três itens
+
+1. **A conversa com quem joga** (o **L26**): *por que a mesa rola o dado na mão?* (vale 33,6% do
+   trabalho) e *com que frequência há efeito de chão ativo numa cena?* (diz se o item 2 vale como
+   medido). Nenhuma das duas se responde com código nem com bateria;
+2. **o avanço unificado**: o ⏭ corre até a parada real **e abre a folha do golpe que o fez
+   parar**. Um desenho só, 26,0% do trabalho no modo `site`, e vem **depois** do item 1;
+3. **o L25**: as quinze bandeiras lidas pelo motor. Não alivia o mestre em nada e destrava a
+   segunda bateria.
+
+### O que esta bateria NÃO diz
+
+Ela mede o robô do produto, com manobra sempre `simples`, sem peça de jogador, sem criatura, sem
+Arte no chão e com as quinze bandeiras desligadas · **porque nenhuma delas é lida pelo motor**,
+que foi o maior achado da frente e não estava previsto. A lista completa está na §6.
 
 ---
 
@@ -1080,13 +1134,13 @@ volta a ser jogo, e aí ela precisa rodar com as 400 voltas e não com 50.
 Os números respondem **uma** pergunta, e ela está respondida. Cinco coisas respondem as
 **próximas**, e é por elas que esta frente vale mais do que a conclusão dela:
 
-| | o que é | o que ele impede |
-|---|---|---|
-| **o espelho de motor** | `npm run espelho`: a mesa e o laço headless comparados Tick a Tick, 7 cenas × 2 sementes | que o harness meça um jogo que a mesa não joga. Ele já achou seis divergências de ordem que passaram por uma revisão inteira e por 6.000 batalhas |
-| **os quinze invariantes** | conferidos em memória, em toda batalha; a que viola vai para um balde e não entra em média nenhuma | que um número impossível saia plausível. O V6 e o V7 nasceram de uma tabela publicada em que `1,14 parada/Tick`, `86% de Ticks vazios` e `pico 4` não cabiam juntos |
-| **os onze sinais, com teste** | `sinais.mjs` + `test-sinais.mjs`: cada alarme acende de propósito uma vez, e cala quando deve | que um alarme não testado imprima o mesmo ✓ para "não houve problema" e para "o predicado está errado". Já achou um furo na primeira execução |
-| **o oráculo de 1.315 lances** | `scripts/fixtures/lances.jsonl`, entradas, dados e saídas reais da mesa, com cobertura por construção e não por acaso | que `resolverGolpe` mude de comportamento sem ninguém ver. É a lição do `lib-tempo`: cinco divergências passaram nos testes unitários dos dois lados e nenhuma foi pega por teste |
-| **o princípio do zero ambíguo** | a regra de construção no `02`, com os três casos como evidência e cinco obrigações | que a mesma forma de erro apareça uma quarta vez. Ela apareceu três, e a terceira sobreviveu a sete rodadas de documento |
+| | **o que ele GUARDA** | onde | o que quebra se apagar |
+|---|---|---|---|
+| **o espelho de motor** | **a ORDEM DAS OPERAÇÕES** dentro do Tick, que não existe como função pura em lugar nenhum e por isso não tem outro teste possível | `npm run espelho`, 7 cenas × 2 sementes | o harness volta a medir um jogo que a mesa não joga, e sem barulho. Ele já achou **seis** divergências de ordem que passaram por uma revisão inteira e por 6.000 batalhas |
+| **os quinze invariantes** | **a COERÊNCIA DO ESTADO** de cada batalha: que os contadores fecham entre si e que nenhum número impossível vira média | em memória, em toda batalha; quem viola vai para um balde | um número impossível volta a sair plausível. O V6 e o V7 nasceram de uma tabela publicada em que `1,14 parada/Tick`, `86% de Ticks vazios` e `pico 4` não cabiam juntos |
+| **os onze sinais, com teste** | **AS CONCLUSÕES PUBLICADAS**: cada número que saiu daqui tem um alarme que acende se a fonte dele se soltar | `sinais.mjs` + `test-sinais.mjs` | o piso de 11,4% vira 20% redondo e plausível no dia em que `log.andou` se soltar, e nada acusa. E os alarmes voltam a imprimir o mesmo ✓ para "não houve problema" e para "o predicado está errado" |
+| **o oráculo de 1.315 lances** | **A RESOLUÇÃO**: o comportamento real de `resolverGolpe`, campo a campo, com cobertura por construção e não por acaso | `scripts/fixtures/lances.jsonl` | a régua do golpe muda de comportamento sem ninguém ver. É a lição do `lib-tempo`: cinco divergências passaram nos testes unitários **dos dois lados** e nenhuma foi pega por teste |
+| **o princípio do zero ambíguo** | **CONTRA O ZERO DE DUAS CARAS**: que um mecanismo ausente volte a se disfarçar de resultado | a regra no `02`, com três casos e cinco obrigações | a mesma forma de erro aparece uma quarta vez. Ela apareceu três, e a terceira (as quinze bandeiras) sobreviveu a sete rodadas de documento |
 
 ### 8.2 A resposta final: o teto do que este projeto pode tirar do mestre
 
@@ -1120,6 +1174,26 @@ Três leituras que essa linha obriga, e nenhuma delas é confortável:
    por golpe que cai**, e esses dois não têm conserto de software porque não são conta: são a
    cadência da cena e a decisão da mesa.
 
+#### E o resíduo escala com o TAMANHO DA CENA, não com a complexidade da regra
+
+O resíduo por batalha, medido (mapa apertado, limiar de produção, só as que terminam):
+
+| cena | peças | Ticks | ⏭ que param | `aplicar` | **resíduo** |
+|---|---:|---:|---:|---:|---:|
+| 1v1 | 2 | 44 | 23 | 9 | **32** |
+| 3×3 | 6 | 39 | 23 | 19 | **42** |
+| 2×8 | 16 | 30 | 28 | 30 | **58** |
+
+**Oito vezes mais peças, 81% mais trabalho residual**, e o crescimento é **sublinear** porque a
+cena grande acaba antes (44 → 30 Ticks). Mas o que interessa é **de onde** ele vem: o ⏭ que para
+fica quase parado (23 → 28), e **todo o crescimento é `aplicar`** (9 → 30, mais de três vezes),
+que é a metade do julgamento.
+
+**Nenhuma regra aparece nessa tabela.** O eixo que move o resíduo é quantos corpos estão no mapa,
+e a consequência prática é uma só: **uma mesa de dezesseis peças continua pesada depois dos três
+consertos, e a única alavanca sobre ela é quantas peças entram em cena** · decisão de mestre, e
+não de software.
+
 ### 8.3 A próxima medição
 
 **A próxima medição que vale é a de uma mudança que já esteja na mesa.**
@@ -1147,8 +1221,18 @@ está medida, os eixos separam, os invariantes fecham e os alarmes acendem; o qu
 
 **O que ficou de fora da fila, de propósito:** os 65% dos cartões que o avanço não absorve (o 2º e
 o 3º golpe do mesmo Tick, porque os golpes chegam em cacho de 2,87). Tirá-los exige a folha
-resolver sozinha, e isso esbarra na condição da §2.5. É o último degrau da §8.2, e é o único que
-troca clique por opacidade.
+resolver sozinha, e **é o único degrau desta fila que pode PIORAR o Grid**.
+
+> **O critério, registrado agora que ninguém está com pressa de implementar:** se a folha resolver
+> sozinha, **a conta tem de continuar legível depois do fato**, e não só o resultado. Quem abrir o
+> registro daquele golpe amanhã precisa ver o bolo de dados, a Defesa comparada, a Absorção
+> aplicada e o veredito, e não só "13 de dano".
+>
+> Não é preciosismo: **os três defeitos desta frente viveram anos exatamente por isso.** A rajada
+> saindo de graça, o tipo de dano errado em seis armas e o golpe resolvido dez vezes numa volta
+> passaram despercebidos porque a tela mostrava o **resultado** e não a **conta**, e nos três quem
+> achou foi um instrumento novo, e não um olho. Automatizar a resolução sem deixar a conta legível
+> é construir a quarta ocorrência.
 
 ---
 
