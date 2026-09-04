@@ -14,6 +14,7 @@ import {
   turnosRestantes, venceu, jaMordido, rodadaDoTick, dentroDoEfeito,
   metrosParaSair, metrosParaSairDosHexes, desvioDaArea, desEsqDaDefesa,
   rotuloDuracao, TICKS_POR_TURNO, LARGURA_LINHA, montando,
+  A_SAIR, deveSair, planoDaSaida,
   type EfeitoAtivo, type Forma, type Figura, type Encaixe, type Desvio,
 } from './artes-grid';
 import { pool } from './calc';
@@ -724,6 +725,13 @@ export async function conjurar(ctx: CtxGrid, cid: string, palco: HTMLElement): P
   try {
     // O Dissipar vem antes da saída de "sem representação": ele não tem chão nem
     // corpo para escolher, mas tem o que apagar, e isso é bem do tabuleiro.
+    // AS TRÊS QUE AINDA RESOLVEM NA DECLARAÇÃO, e isto é decisão anotada e não
+    // esquecimento. `dissipar`, `invocar` e `deslocar` são 19 dos 140 Efeitos, e
+    // as três precisam de uma coisa que as outras não precisam: uma CAIXA ABERTA
+    // no instante em que a Arte sai (o que desfazer, que bloco tem o servo, para
+    // onde vai o empurrão). Adiar o efeito delas é adiar a pergunta, e pergunta
+    // adiada é a mecânica da folha do golpe adiado, que ainda não serve Arte.
+    // Enquanto isso não existir, as três saem na declaração, como sempre.
     if (g?.dissipa) return await dissipar(ctx, c, plano);
     if (forma === 'nenhuma') {
       await ctx.logar(c, `${c.nome} conjurou ${plano.resumo}`, { acao: null });
@@ -882,8 +890,13 @@ async function grudarNoAlvo(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLEleme
 
   await gravarEfeito(ctx, c, plano, { forma: 'alvo', figura: null, alvos: [alvoId], item });
 
-  // O dano imediato de quem fere na hora do golpe (Céu Aberto, Julgamento).
-  if (plano.danoDados && g?.gatilho === 'imediato') await morder(ctx, ATIVOS[ATIVOS.length - 1], alvo, 'acertou');
+  // O dano de quem fere na hora do golpe (Céu Aberto, Julgamento) sai AQUI só
+  // quando a Arte já saiu, que é o caso da ação livre. Devendo a saída, quem
+  // morde é a `saidaDaArte`, no Tick em que o gesto termina.
+  const ef = ATIVOS[ATIVOS.length - 1];
+  if (plano.danoDados && g?.gatilho === 'imediato' && !deveSair(ef)) {
+    await morder(ctx, ef, alvo, 'acertou');
+  }
 }
 
 /**
@@ -955,13 +968,18 @@ async function encadear(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLElement):
 
   await gravarEfeito(ctx, c, plano, { forma: 'cadeia', figura: null, alvos: cadeia });
   const ef = ATIVOS[ATIVOS.length - 1];
-  for (let i = 0; i < cadeia.length; i++) {
-    const alvo = combDe(ctx, cadeia[i]);
-    if (!alvo) continue;
-    // Cada salto chega mais fraco: o primeiro leva o dado cheio, e daí em diante
-    // um dado a menos por elo, com o mínimo de um.
-    const dados = Math.max(1, ef.dano_dados - i);
-    await morder(ctx, { ...ef, dano_dados: dados, mordidos: {} }, alvo, i ? `saltou em` : 'acertou');
+  // A cadeia morde AQUI só quando a Arte já saiu (ação livre). Devendo a saída,
+  // quem morde é a `saidaDaArte`, que refaz o desconto por elo a partir da ordem
+  // desta mesma lista de alvos.
+  if (!deveSair(ef)) {
+    for (let i = 0; i < cadeia.length; i++) {
+      const alvo = combDe(ctx, cadeia[i]);
+      if (!alvo) continue;
+      // Cada salto chega mais fraco: o primeiro leva o dado cheio, e daí em
+      // diante um dado a menos por elo, com o mínimo de um.
+      const dados = Math.max(1, ef.dano_dados - i);
+      await morder(ctx, { ...ef, dano_dados: dados, mordidos: {} }, alvo, i ? `saltou em` : 'acertou');
+    }
   }
   if (cadeia.length < max) {
     await ctx.logar(c, `${plano.nome} parou no ${cadeia.length}º alvo: não havia mais ninguém a ${SALTO_M} m`,
@@ -1087,6 +1105,63 @@ function afastar(de: Hex, ate: Hex, passos: number, cols: number, rows: number):
   return melhor;
 }
 
+// ============================================================== a Arte que sai
+/**
+ * O QUE ACONTECE NO INSTANTE EM QUE A ARTE DEIXA DE SER GESTO.
+ *
+ * A §5.3 do Arcano (`arcano.tempoDaArte.ultimoTick` no `regras.json`) diz que a
+ * Arte resolve no ÚLTIMO Tick da montagem, e o porquê dela não é cronometragem:
+ * é o que dá aos outros a janela para sair de perto, e o que obriga o feiticeiro
+ * a acertar onde o inimigo VAI ESTAR.
+ *
+ * O tabuleiro já cumpria isso pela metade. O `desde_tick` sempre foi gravado no
+ * último Tick, `montando()` sempre existiu, e a mancha de chão só passou a
+ * queimar quando o relógio chegou. **Mas as três resoluções que tocam um CORPO
+ * aconteciam na declaração**, ignorando o `desde_tick` que a própria função
+ * acabara de escrever duas linhas acima:
+ *
+ *   `grudarNoAlvo`  · o dano do Dardo saía na hora
+ *   `gravarEfeito`  · a condição entrava em quem foi marcado, na hora
+ *   `encadear`      · a Corrente mordia a cadeia inteira, na hora
+ *
+ * Eram 44 dos 140 Efeitos, e das duas metades da regra sobrava a que não custa
+ * nada: o alvo via o gesto se montando por cinco Ticks depois de já ter levado.
+ *
+ * Roda UMA VEZ por efeito, e quem garante isso é a marca, apagada antes desta
+ * função ser chamada: falha no meio deixa o efeito no chão sem repetir a
+ * mordida, que é o erro menos ruim dos dois.
+ *
+ * QUEM DECIDE O QUE ACONTECE É O `planoDaSaida`, no `artes-grid.ts`, e ele é
+ * puro. Aqui só se executa. A separação existe porque a §5.3 é sobre QUANDO, e
+ * provar um "quando" exige comparar a decisão com o Tick em que ela é pedida:
+ * isso cabe em teste de Node, e morder, escrever condição e gravar não cabem.
+ */
+async function saidaDaArte(ctx: CtxGrid, ef: EfeitoAtivo): Promise<void> {
+  const t = tickAtual(ctx);
+  const plano = planoDaSaida(ef);
+  if (plano.tipo === 'cadeia') {
+    for (const elo of plano.alvos) {
+      const alvo = combDe(ctx, elo.id);
+      if (!alvo) continue;
+      await morder(ctx, { ...ef, dano_dados: elo.dados, mordidos: {} }, alvo,
+        elo === plano.alvos[0] ? 'acertou' : 'saltou em');
+    }
+    return;
+  }
+  if (plano.tipo === 'dano') {
+    for (const id of plano.alvos) {
+      const alvo = combDe(ctx, id);
+      if (alvo) await morder(ctx, ef, alvo, 'acertou');
+    }
+    return;
+  }
+  if (plano.tipo === 'condicao') {
+    for (const id of plano.alvos) {
+      await porCondicao(ctx, combDe(ctx, id), plano.condicao, turnosRestantes(ef, t));
+    }
+  }
+}
+
 // ==================================================================== gravar
 async function gravarEfeito(ctx: CtxGrid, c: any, plano: Plano, extra: {
   forma: Forma; figura?: Figura | null; alvos: string[];
@@ -1136,7 +1211,9 @@ async function gravarEfeito(ctx: CtxGrid, c: any, plano: Plano, extra: {
     // Sem Duração o efeito acontece e acaba: um turno é o mínimo para ele ser
     // visto no tabuleiro antes de sumir.
     ate_tick: t + Math.max(1, turnos) * TICKS_POR_TURNO,
-    mordidos: {},
+    // A ARTE QUE AINDA VAI SAIR NASCE DEVENDO A SAÍDA. Com Velocidade 0 ou 1 o
+    // `t` é o próprio agora: ela sai neste instante, e não há o que pendurar.
+    mordidos: t > agora ? { [A_SAIR]: 1 } : {},
     oculto: !!c.oculto,
   };
   const { data, error } = await ctx.SB.from('arena_efeitos').insert(linha).select('*').limit(1);
@@ -1147,8 +1224,13 @@ async function gravarEfeito(ctx: CtxGrid, c: any, plano: Plano, extra: {
   }
   ATIVOS.push({ ...(data || [])[0], mordidos: {} } as EfeitoAtivo);
 
-  // A condição entra já em quem foi marcado de saída (melhoria e marca).
-  if (g?.condicao) for (const id of extra.alvos) await porCondicao(ctx, combDe(ctx, id), g.condicao, turnos);
+  // A condição entra em quem foi marcado (melhoria e marca) NO TICK EM QUE A
+  // ARTE SAI. Enquanto ela está sendo montada não há prisão nem escudo: o gesto
+  // está à vista e é só isso. Quem a põe depois é a `saidaDaArte`.
+  const novo = ATIVOS[ATIVOS.length - 1];
+  if (g?.condicao && !deveSair(novo)) {
+    for (const id of extra.alvos) await porCondicao(ctx, combDe(ctx, id), g.condicao, turnos);
+  }
 
   await ctx.logar(c, `${c.nome} conjurou ${plano.resumo}`
     + (fig && fig.tipo !== 'arena' ? ` a partir de ${nomeHex(fig.q, fig.r)}` : '')
@@ -1454,6 +1536,27 @@ export async function verificarEfeitos(ctx: CtxGrid, palco?: HTMLElement): Promi
   // a tela inteira.) Esta linha é a que corta pela metade o custo de mover uma
   // peça numa mesa sem Arte no chão, que é a mesa da maior parte do tempo.
   if (!ATIVOS.length) return;
+
+  // 1.5 · AS ARTES QUE ACABARAM DE SAIR. O gesto terminou, e o que era promessa
+  // vira efeito: o Dardo fere, a Corrente salta, a prisão fecha.
+  //
+  // A marca sai ANTES da resolução, e de propósito: se a rede cair no meio, o
+  // efeito fica no chão sem a mordida, e não morde duas vezes na próxima
+  // passada. Entre perder uma mordida e cobrá-la em dobro, a primeira é a que a
+  // mesa consegue consertar.
+  for (const ef of ATIVOS) {
+    if (!deveSair(ef) || montando(ef, t)) continue;
+    const resto = { ...(ef.mordidos || {}) };
+    delete resto[A_SAIR];
+    ef.mordidos = resto;
+    await ctx.SB.from('arena_efeitos').update({ mordidos: resto }).eq('id', ef.id);
+    // A linha no registro é o que faz a saída ser um acontecimento da mesa, e
+    // não uma mudança silenciosa de estado: quem estava vendo o gesto se montar
+    // precisa ler que ele terminou.
+    await ctx.logar(ef.conjurador_id ? combDe(ctx, ef.conjurador_id) : null,
+      `${ef.nome} saiu`, { acao: null });
+    await saidaDaArte(ctx, ef);
+  }
 
   // 2. quem está pego e ainda não sofreu a mordida nesta rodada
   const pendentes: { ef: EfeitoAtivo; alvo: any }[] = [];

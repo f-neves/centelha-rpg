@@ -1408,6 +1408,64 @@ export const venceu = (ef: EfeitoAtivo, tickAtual: number): boolean => tickAtual
 export const montando = (ef: EfeitoAtivo, tickAtual: number): boolean =>
   tickAtual < (ef.desde_tick ?? 0);
 
+/**
+ * A marca de que a Arte AINDA NÃO SAIU: gravada, à vista, e devendo o efeito.
+ *
+ * Mora dentro do `mordidos`, que é `jsonb` e já existe: uma coluna nova pediria
+ * migração, e este dado vive um punhado de Ticks.
+ *
+ * A MARCA É DE "DEVE", E NÃO DE "JÁ SAIU", e a diferença não é de gosto: efeito
+ * que estava no tabuleiro antes deste conserto não tem marca nenhuma, e uma
+ * marca de "já saiu" o faria sair uma segunda vez numa mesa em andamento,
+ * cobrando dano e condição em dobro. Do jeito que está, o velho fica como está.
+ */
+export const A_SAIR = '__a_sair';
+export const deveSair = (ef: Pick<EfeitoAtivo, 'mordidos'>): boolean =>
+  !!(ef.mordidos || {})[A_SAIR];
+
+/** O que a mesa deve fazer no instante em que a Arte deixa de ser gesto. */
+export type PlanoDaSaida =
+  | { tipo: 'cadeia'; alvos: { id: string; dados: number }[] }
+  | { tipo: 'dano'; alvos: string[] }
+  | { tipo: 'condicao'; alvos: string[]; condicao: string }
+  | { tipo: 'nada' };
+
+/**
+ * O QUE ACONTECE QUANDO A ARTE SAI, decidido sem tocar em nada.
+ *
+ * Separado da execução porque é a parte que se pode provar: a §5.3 do Arcano diz
+ * QUANDO a Arte resolve, e a única maneira de guardar isso é comparar o plano
+ * com o Tick em que ele é pedido. Quem executa (`saidaDaArte`, no
+ * `artes-grid-mesa`) morde, escreve condição e grava, e nada disso cabe em teste
+ * sem um banco.
+ *
+ * A ORDEM DOS RAMOS IMPORTA, e é esta:
+ *
+ *   cadeia   · cada elo chega mais fraco, e o desconto sai da POSIÇÃO na lista
+ *              de alvos, que é a ordem em que a mira montou a cadeia;
+ *   dano     · o Dardo e os que ferem na hora do golpe. A mordida já leva a
+ *              condição junto, e por isso este ramo exclui o de baixo;
+ *   condicao · a melhoria, a marca e a prisão. São 18 dos 23 Efeitos de alvo com
+ *              condição, todos de gatilho `passivo`, que a varredura de mordidas
+ *              pula de propósito: sem este ramo eles não entrariam nunca.
+ */
+export function planoDaSaida(ef: EfeitoAtivo): PlanoDaSaida {
+  const alvos = ef.alvos || [];
+  if (ef.forma === 'cadeia') {
+    return {
+      tipo: 'cadeia',
+      alvos: alvos.map((id, i) => ({ id, dados: Math.max(1, (ef.dano_dados || 0) - i) })),
+    };
+  }
+  if (ef.forma === 'alvo' && ef.dano_dados && ef.gatilho === 'imediato') {
+    return { tipo: 'dano', alvos };
+  }
+  if (ef.condicao && alvos.length) {
+    return { tipo: 'condicao', alvos, condicao: ef.condicao };
+  }
+  return { tipo: 'nada' };
+}
+
 /** Se este combatente já levou a mordida deste efeito na rodada corrente. */
 export const jaMordido = (ef: EfeitoAtivo, cid: string, tickAtual: number): boolean =>
   (ef.mordidos || {})[cid] === rodadaDoTick(tickAtual);

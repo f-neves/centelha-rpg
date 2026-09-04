@@ -870,6 +870,71 @@ eq(M.EFEITOS.filter((e) => e.acaoLivre).length, 1, 'só um Efeito é de ação l
   ok(saoNumeros(vazio), 'manifestação zerada não sai com NaN');
 }
 
+// ============================================ a Arte sai no ÚLTIMO Tick (§5.3)
+//
+// A régua (`arcano.tempoDaArte.ultimoTick` no `regras.json`, e §5.3 na página
+// `artes/regras.astro`): "A ARTE resolve no ÚLTIMO: uma conjuração de 7 Ticks
+// acontece no sétimo." O porquê dela não é cronometragem: é o que dá aos outros
+// a janela para sair de perto, e o que obriga o feiticeiro a mirar onde o
+// inimigo VAI ESTAR.
+//
+// O tabuleiro cumpria isso pela metade. O `desde_tick` sempre saiu no último
+// Tick e o chão só queimava quando o relógio chegava, MAS as três resoluções que
+// tocam um corpo (o Dardo, a condição da marca, a Corrente) aconteciam na
+// declaração, ignorando o `desde_tick` que a mesma função acabara de escrever.
+//
+// O que se guarda aqui são as duas metades da regra:
+//   1. QUANDO ela sai  · `montando`, com os números do próprio comentário do código;
+//   2. O QUE sai       · `planoDaSaida`, que é a decisão inteira, isolada e pura.
+{
+  const efeito = (over = {}) => ({
+    forma: 'alvo', dano_dados: 0, dano_bonus: 0, condicao: null, gatilho: 'imediato',
+    alvos: [], desde_tick: 0, ate_tick: 60, mordidos: {}, ...over,
+  });
+
+  // --------------------------------------------------- 1 · quando ela sai
+  // Velocidade 6 conjurada no Tick 3: o efeito nasce no 8, e são cinco Ticks de
+  // gesto à vista. É o exemplo escrito no comentário do `gravarEfeito`.
+  const emMontagem = efeito({ desde_tick: 8 });
+  ok(M.montando(emMontagem, 3), 'a Arte de Velocidade 6 conjurada no Tick 3 está sendo montada no 3');
+  ok(M.montando(emMontagem, 7), 'e ainda no 7, um Tick antes de sair');
+  ok(!M.montando(emMontagem, 8), 'e sai no 8, que é o último Tick da montagem');
+  ok(!M.montando(efeito({ desde_tick: 0 }), 0), 'a ação livre (Velocidade 0) sai no instante em que é declarada');
+
+  // A marca é de DEVE, e não de JÁ SAIU: efeito velho, sem marca nenhuma, não
+  // pode sair de novo numa mesa em andamento.
+  ok(M.deveSair(efeito({ mordidos: { [M.A_SAIR]: 1 } })), 'a Arte gravada devendo a saída carrega a marca');
+  ok(!M.deveSair(efeito({ mordidos: {} })), 'e o efeito sem marca nenhuma NÃO deve saída (é o de antes do conserto)');
+  ok(!M.deveSair(efeito({ mordidos: { 'algum-combatente': 2 } })), 'nem o que já mordeu alguém na rodada 2');
+
+  // --------------------------------------------------- 2 · o que sai
+  const dardo = M.planoDaSaida(efeito({ dano_dados: 4, alvos: ['a1'] }));
+  eq(dardo.tipo, 'dano', 'o Dardo com dano e gatilho imediato sai ferindo');
+  eq(dardo.alvos.join(','), 'a1', 'e fere quem foi mirado');
+
+  const prisao = M.planoDaSaida(efeito({ gatilho: 'passivo', condicao: 'imobilizado', alvos: ['a1'] }));
+  eq(prisao.tipo, 'condicao', 'a prisão de gatilho passivo sai pondo a condição');
+  eq(prisao.condicao, 'imobilizado', 'e a condição é a do Efeito');
+  // Esta é a asserção que impede o conserto de trocar "cedo demais" por "nunca":
+  // 18 dos 23 Efeitos de alvo com condição são `passivo`, e a varredura de
+  // mordidas do `verificarEfeitos` pula `passivo` de propósito.
+  ok(M.planoDaSaida(efeito({ gatilho: 'passivo', condicao: 'protegido', alvos: ['a1'] })).tipo === 'condicao',
+    'a melhoria passiva também, senão ela não entraria nunca');
+
+  const corrente = M.planoDaSaida(efeito({ forma: 'cadeia', dano_dados: 4, alvos: ['a1', 'a2', 'a3'] }));
+  eq(corrente.tipo, 'cadeia', 'a Corrente sai saltando');
+  eq(corrente.alvos.map((x) => x.dados).join(','), '4,3,2', 'cada elo chega mais fraco, um dado por salto');
+  const longa = M.planoDaSaida(efeito({ forma: 'cadeia', dano_dados: 2, alvos: ['a1', 'a2', 'a3', 'a4'] }));
+  eq(longa.alvos.map((x) => x.dados).join(','), '2,1,1,1', 'e o desconto para em um dado, nunca em zero');
+
+  eq(M.planoDaSaida(efeito({ forma: 'zona', dano_dados: 3 })).tipo, 'nada',
+    'a mancha de chão não sai ferindo ninguém: quem morde é a varredura, quando alguém está dentro');
+  eq(M.planoDaSaida(efeito({ dano_dados: 4, gatilho: 'armadilha', alvos: ['a1'] })).tipo, 'nada',
+    'e a armadilha não sai ferindo: ela espera ser pisada');
+  eq(M.planoDaSaida(efeito({ condicao: 'marcado', alvos: [] })).tipo, 'nada',
+    'condição sem ninguém marcado não tem em quem entrar');
+}
+
 // ---------------------------------------------------- cobertura da projeção
 eq(M.EFEITOS.filter((e) => !e.grid).length, 0, 'todo Efeito tem bloco grid');
 eq(M.ARTES.filter((a) => !a.grid).length, 0, 'toda Arte tem bloco grid');
