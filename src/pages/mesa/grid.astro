@@ -2460,6 +2460,15 @@ const SETAS = [
   const ESPELHO_LIGADO = PARAMS.get('espelho') === '1';
 
   let SB: any, ID = '', MESTRE = false, EU = '';
+  /**
+   * A MESA AUTORIZOU gravar o par (veredito da régua, botão do mestre)?
+   *
+   * Nasce `false` e é lido de `mesas.gravar_lances` (migração 30). A trava que
+   * vale é a RLS do banco; esta é só para não gastar uma ida à rede por golpe
+   * numa mesa que não autorizou. **Não existe interruptor global**, e o padrão
+   * é não gravar.
+   */
+  let MESA_GRAVA_LANCES = false;
   // O contexto da mesa, guardado porque o painel do tempo precisa dele.
   let CTX: any = null;
   // Como o tempo passa nesta mesa: o sistema (normal ou P/G/R) e a marcação.
@@ -2698,6 +2707,10 @@ const SETAS = [
     const ctx = await abrirMesa('grid');
     if (!ctx) return;
     SB = ctx.sb; ID = ctx.id; MESTRE = ctx.ehMestre; EU = ctx.user.id; CTX = ctx;
+    // SÓ O MESTRE GRAVA, e só na mesa que autorizou. A coluna pode não existir
+    // (banco anterior à migração 30), e nesse caso `?? false` mantém desligado:
+    // ausência de coluna não é autorização.
+    MESA_GRAVA_LANCES = MESTRE && (ctx.mesa?.gravar_lances ?? false) === true;
     TEMPO = combateDaMesa(ctx.mesa);
 
     document.body.classList.add('pagina-grid');
@@ -5100,6 +5113,10 @@ const SETAS = [
     conta: any, sorteio: { acerto: number[][]; dano: number[] },
     decisao: { acertou: boolean; raspou: boolean; rolado: string; adiada: boolean },
   ) {
+    // O CAMINHO DE PRODUÇÃO, e ele é outro. Vai ANTES do `return` da bancada,
+    // porque a bancada é que é a exceção: `?lances=1` serve ao `coletar-lances`
+    // e morre com a aba, e é ele que não pode ser lido como registro de mesa.
+    gravarVeredito(conta, decisao);
     if (!LANCES_LIGADO) return;
     try {
       const W = window as any;
@@ -5154,6 +5171,64 @@ const SETAS = [
       });
     } catch (e) {
       console.warn('registro do lance falhou, e o golpe segue:', e);
+    }
+  }
+
+  /**
+   * O PAR (veredito da régua, botão do mestre), gravado em mesa de verdade.
+   *
+   * POR QUE ELE EXISTE, e é a única coisa que ele mede: a folha calcula o
+   * veredito com uma função pura de três números, e o mestre aperta um dos três
+   * botões. **A fração de vezes em que os dois divergem decide se aquele botão é
+   * transcrição ou julgamento**, e com isso decide se ele sai com automação. Hoje
+   * essa fração vale entre 0 e 17% do trabalho do mestre numa batalha, e a banda
+   * é de ignorância: o número não existe em lugar nenhum.
+   *
+   * ELE NASCE DESLIGADO, e a autorização é POR MESA (`mesas.gravar_lances`,
+   * migração 30). Não há interruptor global, de propósito: gravar isto é
+   * observar uma sessão de gente jogando, e essa é decisão de quem joga.
+   *
+   * A TRAVA DE VERDADE ESTÁ NO BANCO, e não aqui. A RLS da migração 30 exige
+   * `gravar_lances = true` no `with check` do insert, então desligar no meio da
+   * sessão faz a próxima escrita ser recusada pelo banco, sem depender de a aba
+   * ter recarregado. Esta função confere o mesmo antes de gastar uma ida à rede.
+   *
+   * O QUE VAI: os três números da comparação, a margem, o par, e onde na cena.
+   * O QUE NÃO VAI: o motivo do ajuste (é texto livre escrito por gente), nome de
+   * peça ou de personagem, o dano, a Vida e o alvo. A lista é fechada, e o
+   * comentário da migração diz por que cada ausência é deliberada.
+   *
+   * E ELE NUNCA ATRAPALHA O GOLPE: falha de rede aqui é engolida com aviso no
+   * console. Um registro de medição não pode derrubar uma mesa.
+   */
+  function gravarVeredito(
+    conta: any,
+    decisao: { acertou: boolean; raspou: boolean },
+  ) {
+    if (!MESA_GRAVA_LANCES || !SB || !ID) return;
+    // Sem o veredito da régua não há par, e meia linha não mede nada: os três
+    // caminhos que devolvem `null` (alvo sem Defesa resolvida) saem daqui.
+    const daRegua = conta?.veredito;
+    if (daRegua !== 'acerto' && daRegua !== 'raspao' && daRegua !== 'erro') return;
+    const doMestre = decisao.raspou ? 'raspao' : decisao.acertou ? 'acerto' : 'erro';
+    try {
+      // Sem `await`: o golpe não espera a gravação, e o `catch` do `then` é o
+      // que impede uma promessa recusada de virar erro não tratado na página.
+      SB.from('lances_veredito').insert({
+        mesa_id: ID,
+        encontro_id: ENC?.id || null,
+        tick: conta?.entrada?.tick ?? null,
+        total: conta?.total ?? null,
+        ajuste: conta?.entrada?.modManual ?? null,
+        defesa: conta?.defesa ?? null,
+        margem_qa: conta?.entrada?.margemQA ?? null,
+        veredito_regua: daRegua,
+        botao_mestre: doMestre,
+      }).then(({ error }: any) => {
+        if (error) console.warn('gravação do veredito falhou, e o golpe segue:', error.message);
+      }, (e: any) => console.warn('gravação do veredito falhou, e o golpe segue:', e));
+    } catch (e) {
+      console.warn('gravação do veredito falhou, e o golpe segue:', e);
     }
   }
 
