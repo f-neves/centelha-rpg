@@ -85,6 +85,22 @@ const COLS = ESPELHO ? ESPELHO.tab.cols : CAIDO ? 14 : parseInt(P.get('cols') ||
 const ROWS = ESPELHO ? ESPELHO.tab.rows : CAIDO ? 8 : parseInt(P.get('rows') || '16', 10);
 const NEVOA = P.get('nevoa') === '1';
 /**
+ * `?sombra=1`: DUAS zonas que não acendem o chão, para a névoa poder escondê-las.
+ *
+ * A brasa não serve para provar o corte de CASA da migração 32: ela é de fogo, e
+ * fogo abre o escuro em volta de si pela `casa_clara`. Uma zona que se ilumina
+ * sozinha nunca está no escuro, e um teste feito com ela mediria a luz do fogo
+ * achando que mediu a parede.
+ *
+ * Então duas de `sombra`, que não acende nada:
+ *   · `ef-sombra-meia`  · um hexágono em cima do primeiro PC (claro) e outro
+ *     longe (escuro). O jogador tem de recebê-la com UM hexágono, e não dois.
+ *   · `ef-sombra-toda`  · os dois longe. Não pode chegar ao navegador dele.
+ * A segunda é a asserção negativa, e a primeira é a gêmea que a faz valer: sem
+ * ela, "não chegou nada" passaria com a cena não montada.
+ */
+const SOMBRA = P.get('sombra') === '1';
+/**
  * A BRASA DA BANCADA: um efeito de fogo numa casa escura, a N Ticks de cair.
  *
  * `?brasa=5` põe a Arte em montagem (cai daqui a cinco Ticks); `?brasa=0` põe a
@@ -422,6 +438,63 @@ const BRASA_EFEITO = {
   desde_tick: BRASA || 0, ate_tick: (BRASA || 0) + 60, mordidos: {}, oculto: false,
 };
 
+/**
+ * As duas zonas de sombra. Ver `SOMBRA` acima.
+ *
+ * O hexágono claro é o do PRIMEIRO TOKEN, que é o do primeiro combatente: ele é
+ * PC, então é olho, então a casa dele está clara por definição. Ler a posição do
+ * token em vez de escrever um par de números é o que impede a cena de mudar de
+ * significado quando o `cols`/`rows` da bancada mudar.
+ *
+ * E o CONJURADOR das duas é uma criatura no escuro (a última da lista, que o
+ * laço dos tokens não alcança): é assim que a regra "o que se esconde é quem"
+ * fica exercitável no mesmo objeto.
+ */
+const SOMBRA_CLARO = TOKENS[0] ? { q: TOKENS[0].q, r: TOKENS[0].r } : { q: 0, r: 0 };
+const SOMBRA_ESCURO = { q: BRASA_HEX.q, r: BRASA_HEX.r };
+const SOMBRA_ESCURO2 = { q: BRASA_HEX.q - 1, r: BRASA_HEX.r };
+/**
+ * O conjurador tem de estar MESMO no escuro, e "o último da lista" não garante
+ * isso: com 12 peças em 24x16, a última cai em cima da fila dos heróis e a casa
+ * dela está clara. O teste passou a acusar sozinho ("o conjurador no escuro não
+ * viaja junto (c011)"), que é a direção certa do erro.
+ *
+ * Então ele é escolhido por medida: a criatura cujo token está MAIS LONGE do
+ * olho mais próximo. Não depende do `claraNoMock` (que só existe adiante no
+ * arquivo) e não depende do alcance de visão da cena: seja qual for o raio, essa
+ * é a última a entrar na luz.
+ */
+const CONJ_ESCURO = (() => {
+  const olhos = TOKENS.filter((t) => {
+    const c = COMBS.find((z) => z.id === t.combatente_id);
+    return c && (c.tipo === 'pc' || c.grupo === 'aliado');
+  });
+  if (!olhos.length) return COMBS[COMBS.length - 1]?.id ?? null;
+  const doOlho = (t) => Math.min(...olhos.map((o) => distanciaHex(
+    { q: o.q, r: o.r }, { q: t.q, r: t.r })));
+  let alvo = null, melhor = -1;
+  for (const t of TOKENS) {
+    const c = COMBS.find((z) => z.id === t.combatente_id);
+    if (!c || c.tipo === 'pc' || c.grupo === 'aliado') continue;
+    const d = doOlho(t);
+    if (d > melhor) { melhor = d; alvo = t.combatente_id; }
+  }
+  return alvo;
+})();
+const zonaSombra = (id, hexes) => ({
+  id, arena_id: ARENA, arte_id: 'sombra', efeito_id: 'veu',
+  conjurador_id: CONJ_ESCURO, nome: 'Véu de Sombra', nivel: 2, forma: 'zona',
+  molde: 'explosao', angulo: 60, figura: null, hexes,
+  centro: hexes[0], raio_m: 1, dano_dados: 0, dano_bonus: 0, condicao: null,
+  elemento: 'sombra', materia: null, gatilho: 'imediato',
+  alvos: CONJ_ESCURO ? [CONJ_ESCURO] : [], item: null,
+  desde_tick: 0, ate_tick: 60, mordidos: {}, oculto: false,
+});
+const SOMBRAS = SOMBRA
+  ? [zonaSombra('ef-sombra-meia', [SOMBRA_CLARO, SOMBRA_ESCURO]),
+     zonaSombra('ef-sombra-toda', [SOMBRA_ESCURO, SOMBRA_ESCURO2])]
+  : [];
+
 const ARENAS = [{
   id: ARENA, mesa_id: MESA, nome: 'Bancada', cols: COLS, rows: ROWS, escala_m: 1,
   ativa: true, ordem: 0, criado_em: '2026-01-01T00:00:00Z',
@@ -484,7 +557,7 @@ const TABELAS = {
   arena_tokens: TOKENS,
   // `token_visao` é COMPUTADA, e não uma cópia. Ver `claraNoMock` abaixo.
   token_visao: TOKENS,
-  arena_efeitos: BRASA === null ? [] : [BRASA_EFEITO],
+  arena_efeitos: [...(BRASA === null ? [] : [BRASA_EFEITO]), ...SOMBRAS],
   // `efeito_visao` é COMPUTADA, e imita o corte de estado da migração 31.
   efeito_visao: [],
   arena_log_visao: LOG,
@@ -608,11 +681,50 @@ Object.defineProperty(TABELAS, 'encontro_visao', {
   get: () => TABELAS.encontros.map((e) => projetar(e, COLUNAS.encontro_visao)),
 });
 
+/**
+ * A `efeito_visao` das migrações 31 e 32, imitada.
+ *
+ * DOIS CORTES, e o segundo é de 04/09/2026. O de ESTADO (a 31) tira o que ainda
+ * não caiu e o que já venceu. O de CASA (a 32) tira o que está no escuro, e ele
+ * é DENTRO do jsonb: a mancha viaja com os hexágonos que o jogador enxerga e sem
+ * os que não, porque a regra de mesa é "ele lê a parte clara".
+ *
+ * Sem o segundo, uma Arte inteira no escuro chegava ao navegador dele com nome,
+ * hexes, condição, alvos e conjurador. Fogo e luz se entregam sozinhos (acendem
+ * o chão pela `casa_clara`); veneno, gelo e barreira não.
+ *
+ * O MESTRE continua recebendo tudo: ele lê `arena_efeitos` e precisa ver a
+ * mancha tracejada do que está sendo montado, e o escuro é dele.
+ */
 Object.defineProperty(TABELAS, 'efeito_visao', {
   enumerable: true,
   get() {
     const tick = TABELAS.encontros[0]?.tick_atual ?? 0;
-    return TABELAS.arena_efeitos.filter((e) => !montando(e, tick) && !venceu(e, tick));
+    const vivos = TABELAS.arena_efeitos.filter((e) => !montando(e, tick) && !venceu(e, tick));
+    if (PAPEL !== 'jogador' || !(ARENAS[0].nevoa || {}).ligada) return vivos;
+    const veja = (cid) => {
+      const c = TABELAS.combatentes.find((z) => z.id === cid);
+      if (!c) return false;
+      if (c.tipo === 'pc') return true;
+      const t = TABELAS.arena_tokens.find((z) => z.combatente_id === cid);
+      return !!t && claraNoMock(t.q, t.r);
+    };
+    const saida = [];
+    for (const e of vivos) {
+      const todos = e.hexes || [];
+      const claros = todos.filter((h) => claraNoMock(h.q, h.r));
+      // Efeito COM chão e sem nenhum hexágono claro não viaja. Efeito SEM chão
+      // (os que marcam só alvo) viaja sempre: não tem onde estar no escuro.
+      if (todos.length && !claros.length) continue;
+      saida.push({
+        ...e,
+        hexes: claros,
+        conjurador_id: veja(e.conjurador_id) ? e.conjurador_id : null,
+        centro: (e.centro && !claraNoMock(e.centro.q, e.centro.r)) ? null : e.centro,
+        alvos: (e.alvos || []).filter(veja),
+      });
+    }
+    return saida;
   },
 });
 

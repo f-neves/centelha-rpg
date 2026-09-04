@@ -1239,7 +1239,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   fazia o carimbo valer: alguém que leia o perfil na hora de aplicar a regra.**
 
   O perfil é gravado, viaja no encontro, aparece na tela, é comparável e é recarimbável. E é lido
-  em **um** lugar do código de produção, `grid.astro:8366` (`perfil: { ...REGRAS_CENA }`), onde ele é copiado para dentro da
+  em **um** lugar do código de produção, `grid.astro:8426` (`perfil: { ...REGRAS_CENA }`), onde ele é copiado para dentro da
   entrada do lance, para o oráculo. `entrada.perfil` **não é consultado em lugar nenhum**: nem em
   `resolverGolpe`, nem em `quase-acerto.ts`, nem em `calc.ts`, nem no harness. Nenhuma das quinze
   bandeiras faz o motor tomar um caminho diferente.
@@ -1304,7 +1304,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `regras.json:2450` lista `["mover", "desviar", "interpor"]`, a 1 Tick por metro, e o
   diálogo já pergunta qual delas, pelo `SAIDAS` (`src/lib/mesa-tempo-ui.ts:256`). Só que escolher "interpor"
   **muda o verbo da frase do log, e nada mais**: `const verbo` em `src/lib/mesa-tempo-ui.ts:325`. A saída escolhida é descartada
-  pelo Grid, que grava só `acao: limpa` (`src/pages/mesa/grid.astro:5758`).
+  pelo Grid, que grava só `acao: limpa` (`src/pages/mesa/grid.astro:5818`).
   **Não há número nenhum:** quem leva o dano, se há teste, qual o alcance, o que o escudo faz.
   A `02-projeto-harness.md:914` até fixa a ordenação ("a interposição resolve antes do golpe
   contra o qual ela se interpõe"), e isso é ordem, não mecânica. **Isto é decisão de mesa, e
@@ -1316,7 +1316,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   - o catálogo, 55 verbetes com número, em `src/data/condicoes.json`;
   - a soma: `export function somarCondicoes` (`src/lib/mesa-core.ts:164`);
-  - a leitura na folha do lance: `const cd = somarCondicoes` (`grid.astro:8089`);
+  - a leitura na folha do lance: `const cd = somarCondicoes` (`grid.astro:8149`);
   - e o desconto chegando à Defesa: `alvo.condicoesDefesa` (`src/lib/lance.ts:144`);
   - a coluna: `add column if not exists condicoes` (`supabase/migracao-11.sql:25`);
   - e o RPC do jogador aceitando a chave: `condicoes` (`supabase/migracao-22.sql:125`).
@@ -1325,7 +1325,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   (`src/lib/mesa-condicoes.ts`, `src/components/CondDlg.astro`, e o estilo no `MesaCab.astro`).
 
   - o item no menu da peça do Grid: `item('condicoes'` (`grid.astro:6610`);
-  - o selo de ícones na lista lateral, que custa zero gestos: `const selo` (`grid.astro:5790`);
+  - o selo de ícones na lista lateral, que custa zero gestos: `const selo` (`grid.astro:5850`);
   - e a aba Combate chamando o mesmo módulo: `function abrirCondicoes` (`combate.astro:1740`), então
     não há duas cópias para divergir no primeiro conserto que só uma receber.
 
@@ -1699,7 +1699,7 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   `arena_log` como tabela, uma linha por entrada, e o desfazer virando um `delete`.
 - [ ] **I5 · [FAZER] Um editor de cenário no Grid.** Hoje o mestre só põe peças: o tabuleiro não
   tem parede, terreno difícil nem item no chão, e o único veto de passo é casa ocupada
-  (`ocupadoPor`, `grid.astro:6428`). Decidido em 02/09/2026, ao desenhar o harness de simulação
+  (`ocupadoPor`, `grid.astro:6488`). Decidido em 02/09/2026, ao desenhar o harness de simulação
   (`docs/simulacao/02-projeto-harness.md` §0.4 P2): a **parede entra como funcionalidade**, e o
   encaixe já existe, porque `caminharHex` recebe um veto arbitrário (`hex.ts:131`). O terreno
   difícil tem gancho pronto e não usado: a condição `terreno-dificil` existe em `condicoes.json`

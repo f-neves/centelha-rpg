@@ -1330,6 +1330,13 @@ async function cenaJogadorNevoa(br, url) {
       // montagem é a PAREDE (a view cortou); mais que zero com ela escondida da
       // tela seria só a cortina.
       recebidos: (window.__SB?.tabelas?.efeito_visao || []).length,
+      // OS EFEITOS INTEIROS, e nao so a contagem: o corte da migracao 32 e
+      // DENTRO do jsonb (os hexagonos escuros saem da mancha), entao contar
+      // linhas nao veria a metade do conserto.
+      efeitos: (window.__SB?.tabelas?.efeito_visao || []).map((e) => ({
+        id: e.id, hexes: (e.hexes || []).length,
+        conj: e.conjurador_id, alvos: (e.alvos || []).length, centro: !!e.centro,
+      })),
       // O relógio como ESTA cadeira o recebe. `undefined` quer dizer que a
       // coluna não veio na view, que é o estado anterior à migração 31.
       relogio: (window.__SB?.tabelas?.encontro_visao || [])[0]?.tick_atual,
@@ -1353,6 +1360,45 @@ async function cenaJogadorNevoa(br, url) {
 
   // ---- O PAR QUE PROVA A REGRA. Uma asserçao sozinha passaria com a luz
   // quebrada; sao as duas juntas que dizem que o corte e pelo ESTADO.
+  // ---- O CASO E: A ARTE NO ESCURO, e o corte e DENTRO da mancha ----
+  //
+  // A migracao 31 cortou a `efeito_visao` por ESTADO e deixou de pe o que nem
+  // existia: corte de CASA nenhum. Uma Arte inteira no escuro chegava ao
+  // navegador do jogador com nome, hexes, condicao, alvos e conjurador.
+  //
+  // A BRASA NAO SERVE PARA MEDIR ISTO, e essa e a armadilha desta cena: ela e
+  // de fogo, e fogo abre o escuro em volta de si pela `casa_clara`. Uma zona
+  // que se ilumina sozinha NUNCA esta no escuro, e um teste feito com ela
+  // mediria a luz do fogo achando que mediu a parede. Por isso o `?sombra=1`,
+  // que poe duas zonas de `sombra`, que nao acendem nada.
+  //
+  // O PAR, e ele esta dentro de um objeto so:
+  //   · `ef-sombra-meia` tem DOIS hexagonos, um em cima do PC e um longe. Ela
+  //     TEM de chegar (a asserçao positiva) e chegar com UM (a negativa).
+  //   · `ef-sombra-toda` tem os dois longe, e nao pode chegar.
+  // Sem a primeira, "a escura nao chegou" passaria com a cena nao montada.
+  {
+    const mestre = await abrir(null, 'mestre', '&sombra=1');
+    const jog = await abrir(null, 'jogador', '&sombra=1');
+    const acha = (d, id) => (d.efeitos || []).find((e) => e.id === id);
+    const mMeia = acha(mestre, 'ef-sombra-meia');
+    const mToda = acha(mestre, 'ef-sombra-toda');
+    ok(!!mMeia && mMeia.hexes === 2 && !!mToda && mToda.hexes === 2,
+      `o mestre recebe as duas zonas inteiras (${mMeia?.hexes} e ${mToda?.hexes} hexagonos)`);
+    ok(!!mMeia?.conj, 'e com o conjurador, que esta no escuro dele tambem');
+
+    const jMeia = acha(jog, 'ef-sombra-meia');
+    const jToda = acha(jog, 'ef-sombra-toda');
+    ok(!!jMeia, 'A ZONA COM UM PE NA LUZ CHEGA ao jogador (a gemea que faz o par valer)');
+    ok(jMeia?.hexes === 1,
+      `e chega APARADA, so com o hexagono que ele enxerga (${mMeia?.hexes} -> ${jMeia?.hexes})`);
+    ok(!jToda, 'A ZONA INTEIRA NO ESCURO NAO CHEGA ao navegador dele');
+    ok(jMeia && jMeia.conj == null,
+      `e o conjurador no escuro nao viaja junto (${jMeia?.conj ?? 'nulo'})`);
+    ok(jMeia && jMeia.alvos === 0,
+      `nem os alvos que estao no escuro (${mMeia?.alvos} -> ${jMeia?.alvos})`);
+  }
+
   const montando = await abrir(5);
   const caiu = await abrir(0);
   ok(montando.claras === sem.claras,
