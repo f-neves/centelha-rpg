@@ -2704,6 +2704,177 @@ async function cenaFusao(br, url) {
   await p.close();
 }
 
+/**
+ * A CONDICAO POSTA A MAO, no tabuleiro (fase 2, 04/09/2026).
+ *
+ * O mecanismo existia inteiro e nao tinha tela aqui: catalogo, soma, coluna,
+ * mascara e RPC de pe desde a migracao 22, e o dialogo so na aba Combate. Esta
+ * cena e a prova de que a tela nova mexe no ESTADO, e nao so no registro.
+ *
+ * A ASSERCAO EM PAR, e ela e a razao de a cena ter quatro tempos em vez de um:
+ * "a Defesa caiu 4" nao prova nada sozinho, porque passaria com a Defesa
+ * nascendo baixa por outro motivo. O par e o antes: a MESMA folha, aberta pelo
+ * MESMO caminho, com a condicao ausente. E o fecho e a retirada, senao o teste
+ * aceitaria uma tela que aplica e nunca desaplica.
+ *
+ *   1. sem condicao   -> estado sem `correndo`,  folha com Defesa D
+ *   2. aplicando      -> estado com `correndo`,  folha com Defesa D-4
+ *   3. e a tela conta -> o selo aparece na lista lateral
+ *   4. tirando        -> estado vazio de novo,   folha com Defesa D
+ */
+async function cenaCondicaoAMao(br, url) {
+  console.log('\n· a condicao posta a mao: catalogo, estado e Defesa');
+  const p = await br.newPage();
+  await p.setViewport({ width: 1500, height: 1000 });
+  const erros = [];
+  p.on('pageerror', (e) => erros.push(e.message));
+  await p.goto(`${url}/mesa/grid?id=${MESA}&bench=12&cols=24&rows=16&nevoa=0`,
+    { waitUntil: 'networkidle0', timeout: 60000 });
+  await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
+  await espera(600);
+
+  // A folha do golpe, aberta pelo caminho da mesa (menu, mira, alvo), e a
+  // Defesa que ela mostra. E uma funcao porque ela e chamada TRES vezes: sem a
+  // condicao, com ela e depois de tirada. Abrir de jeitos diferentes seria
+  // comparar duas medidas que nao sao a mesma.
+  const defesaNaFolha = () => p.evaluate(async () => {
+    const pal = document.getElementById('gr-palco').getBoundingClientRect();
+    const naTela = (t) => { const r = t.getBoundingClientRect();
+      return r.left > pal.left + 4 && r.top > pal.top + 4
+        && r.right < pal.right - 4 && r.bottom < pal.bottom - 4; };
+    const toks = [...document.querySelectorAll('#gr-tokens .gr-token')].filter(naTela);
+    const a = toks.find((t) => t.dataset.c === 'c002');
+    const b = toks.find((t) => t !== a);
+    if (!a || !b) return { erro: 'sem par de pecas na tela' };
+    a.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, clientX: 500, clientY: 400 }));
+    await new Promise((r) => setTimeout(r, 250));
+    document.querySelector('#tok-menu button[data-a="ataque"]')?.click();
+    await new Promise((r) => setTimeout(r, 250));
+    const rb = b.getBoundingClientRect();
+    b.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true,
+      clientX: rb.left + rb.width / 2, clientY: rb.top + rb.height / 2 }));
+    await new Promise((r) => setTimeout(r, 700));
+    const dlg = document.getElementById('alvo-dlg');
+    if (!dlg?.open) return { erro: 'a folha do golpe nao abriu' };
+    const cel = document.querySelector('#al-defesas .d');
+    const valor = cel?.querySelector('.d-v')?.textContent.trim();
+    const nota = cel?.querySelector('.d-n')?.textContent.trim() || '';
+    dlg.close();
+    await new Promise((r) => setTimeout(r, 200));
+    return { alvo: b.dataset.c, defesa: Number(valor), nota };
+  });
+
+  // O dialogo, aberto pelo menu da PECA ALVO, e uma condicao do catalogo posta
+  // pelo nome desenhado (que e como a aba Combate ja a achava).
+  const aplicar = (cid, nome) => p.evaluate(async (cid, nome) => {
+    const t = [...document.querySelectorAll('#gr-tokens .gr-token')].find((x) => x.dataset.c === cid);
+    if (!t) return { erro: 'a peca alvo sumiu do mapa' };
+    t.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, clientX: 600, clientY: 400 }));
+    await new Promise((r) => setTimeout(r, 250));
+    const item = document.querySelector('#tok-menu button[data-a="condicoes"]');
+    if (!item) return { erro: 'o menu da peca nao tem "Condicoes"' };
+    item.click();
+    await new Promise((r) => setTimeout(r, 300));
+    const dlg = document.getElementById('cond-dlg');
+    if (!dlg?.open) return { erro: 'o dialogo de condicoes nao abriu' };
+    const grupos = document.querySelectorAll('#cond-catalogo .cond-grupo').length;
+    const chips = [...document.querySelectorAll('#cond-catalogo .cond')];
+    const alvo = chips.find((c) => c.querySelector('.cond-n')?.textContent.trim() === nome);
+    if (!alvo) return { erro: `o catalogo nao tem "${nome}" (${chips.length} chips)` };
+    alvo.click();
+    await new Promise((r) => setTimeout(r, 400));
+    const ativas = [...document.querySelectorAll('#cond-ativas .cond-n')].map((x) => x.textContent.trim());
+    dlg.close();
+    await new Promise((r) => setTimeout(r, 200));
+    return { grupos, chips: chips.length, ativas };
+  }, cid, nome);
+
+  const tirar = (cid) => p.evaluate(async (cid) => {
+    const t = [...document.querySelectorAll('#gr-tokens .gr-token')].find((x) => x.dataset.c === cid);
+    t.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, clientX: 600, clientY: 400 }));
+    await new Promise((r) => setTimeout(r, 250));
+    document.querySelector('#tok-menu button[data-a="condicoes"]')?.click();
+    await new Promise((r) => setTimeout(r, 300));
+    // PELO `data-cond`, e nao pelo primeiro ✕ da fila: a peca da bancada ja
+    // nasce com `cego`, e tirar a primeira tiraria a condicao errada. O teste
+    // passaria assim mesmo (o estado mudaria), provando outra coisa.
+    const x = document.querySelector('#cond-ativas .cond-x[data-cond="correndo"]');
+    if (!x) return { erro: 'a condicao aplicada nao aparece entre as ativas' };
+    x.click();
+    await new Promise((r) => setTimeout(r, 400));
+    document.getElementById('cond-dlg')?.close();
+    await new Promise((r) => setTimeout(r, 200));
+    return { ok: true };
+  }, cid);
+
+  // O ESTADO, lido da bancada e nao da tela: e a diferenca entre "o registro
+  // disse que aplicou" e "a peca esta com a condicao".
+  const estado = (cid) => p.evaluate((cid) => {
+    const c = (window.__SB?.tabelas?.combatentes || []).find((z) => z.id === cid);
+    return { ids: (c?.condicoes || []).map((k) => k.id) };
+  }, cid);
+
+  const selo = (cid) => p.evaluate((cid) => {
+    const f = document.querySelector(`.gr-ficha[data-c="${cid}"] .gr-fcond`);
+    return { tem: !!f, txt: f?.textContent.trim() || '', dica: f?.getAttribute('title') || '' };
+  }, cid);
+
+  // ---- 1: o antes, que e a metade do par ----
+  const antes = await defesaNaFolha();
+  ok(!antes.erro && Number.isFinite(antes.defesa),
+    `a folha do golpe abre e mostra a Defesa do alvo (${antes.erro || antes.defesa})`);
+  const cid = antes.alvo;
+  const e0 = await estado(cid);
+  // O PAR E RELATIVO, e nao "vazio": a peca da bancada ja nasce com `cego`, e
+  // exigir estado limpo aqui seria medir a bancada em vez de medir a tela. O
+  // que tem de ser verdade antes e so isto: `correndo` nao esta la.
+  const base = e0.ids.slice().sort().join(',');
+  ok(!e0.ids.includes('correndo'),
+    `e o alvo comeca SEM "correndo" no estado (tem: ${base || 'nada'})`);
+  const s0 = await selo(cid);
+  ok(!/Correndo/.test(s0.dica),
+    `e o selo da lista nao anuncia o que nao esta aplicado ("${s0.dica || 'sem selo'}")`);
+
+  // ---- 2: aplicar pelo tabuleiro ----
+  const ap = await aplicar(cid, 'Correndo');
+  ok(!ap.erro, `o menu da peca abre o catalogo de condicoes (${ap.erro || `${ap.chips} chips em ${ap.grupos} grupos`})`);
+  ok(!ap.erro && ap.grupos >= 5, `e o catalogo vem com os grupos todos (${ap.grupos})`);
+  ok(!ap.erro && (ap.ativas || []).includes('Correndo'),
+    `e a condicao aparece entre as ativas do dialogo (${(ap.ativas || []).join(',') || 'nenhuma'})`);
+
+  const e1 = await estado(cid);
+  ok(e1.ids.includes('correndo'),
+    `E ELA CHEGOU AO ESTADO da peca, e nao so ao registro (${e1.ids.join(',') || 'nada'})`);
+
+  // ---- 3: a tela conta, sem que ninguem abra nada ----
+  const s1 = await selo(cid);
+  ok(s1.tem && /Correndo/.test(s1.dica),
+    `e a lista lateral passa a desenhar o selo ("${s1.txt}" · "${s1.dica}")`);
+
+  // ---- 4: e o motor consumiu, que e o que a tela promete ----
+  const depois = await defesaNaFolha();
+  ok(!depois.erro && depois.defesa === antes.defesa - 4,
+    `a Defesa na folha cai os 4 de "Correndo" (${antes.defesa} -> ${depois.defesa})`);
+  ok(!depois.erro && /condi/i.test(depois.nota),
+    `e a folha escreve de onde veio o desconto ("${depois.nota}")`);
+
+  // ---- 5: tirar desfaz, senao a tela so sabe somar ----
+  const tr = await tirar(cid);
+  ok(!tr.erro, `o ✕ do dialogo tira a condicao (${tr.erro || 'ok'})`);
+  const e2 = await estado(cid);
+  ok(e2.ids.slice().sort().join(',') === base,
+    `e o estado volta EXATAMENTE ao que era, sem levar as outras junto (${
+      e2.ids.join(',') || 'vazio'} vs ${base || 'vazio'})`);
+  const s2 = await selo(cid);
+  ok(!/Correndo/.test(s2.dica), `e o selo para de anuncia-la ("${s2.dica || 'sem selo'}")`);
+  const volta = await defesaNaFolha();
+  ok(!volta.erro && volta.defesa === antes.defesa,
+    `e a Defesa volta ao que era (${antes.defesa} -> ${volta.defesa})`);
+
+  ok(erros.length === 0, `nenhum erro de pagina (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
+  await p.close();
+}
+
 const dev = await subirDev({ config: 'astro.bancada.mjs' });
 const br = await puppeteer.launch({ executablePath: NAV, headless: 'new', args: ['--no-sandbox'] });
 try {
@@ -2718,6 +2889,7 @@ await cenaRastreador(br, dev.url);
   await cenaGolpeAdiado(br, dev.url);
   await cenaQuaseAcerto(br, dev.url);
   await cenaFusao(br, dev.url);
+  await cenaCondicaoAMao(br, dev.url);
 } finally {
   await br.close();
   await dev.parar();
@@ -2732,7 +2904,8 @@ console.log('\n✓ Grid OK · desenho, movimento, registro, névoa e card, nas d
   + ' de repintura, a mesma mesa vista pelo jogador, a tira da ordem no rastreador,'
   + ' a caixa de fundo girando e excluindo arte, o telefone nas duas cadeiras,'
   + ' a barra fundida com a escada de ícones e a ordem de combate de pé em tela cheia,'
-  + ' o golpe adiado da declaração à queda, e o Quase-Acerto na folha');
+  + ' o golpe adiado da declaração à queda, o Quase-Acerto na folha,'
+  + ' e a condição posta à mão indo do menu ao estado e daí à Defesa da folha');
 // O carimbo: quando este portao passou nesta maquina. Ver `carimbo.mjs`.
 carimbar('test-grid');
 

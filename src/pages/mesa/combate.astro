@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import MesaCab from '../../components/MesaCab.astro';
+import CondDlg from '../../components/CondDlg.astro';
 ---
 <Base title="Combate" largura="full" referencias={false} telaCheia descricao="Rastreador de combate da mesa: Ticks, dano, condições.">
   <MesaCab aba="combate">
@@ -216,31 +217,7 @@ import MesaCab from '../../components/MesaCab.astro';
     </form>
   </dialog>
 
-  <dialog id="cond-dlg" class="mesa-dlg dlg-larga">
-    <form method="dialog">
-      <h3 id="cond-titulo">Condições</h3>
-      <input type="search" id="cond-busca" placeholder="Filtrar condições…" autocomplete="off" />
-      <div id="cond-ativas" class="conds cond-ativas"></div>
-      <div id="cond-catalogo" class="cond-catalogo"></div>
-      <details class="cond-custom">
-        <summary>Condição caseira</summary>
-        <div class="grade2">
-          <label>Nome <input type="text" id="cc-nome" placeholder="Perna quebrada" /></label>
-          <label>Ação (flat) <input type="number" id="cc-acao" value="0" /></label>
-        </div>
-        <div class="grade3">
-          <label>Dados (d6) <input type="number" id="cc-dados" value="0" /></label>
-          <label>Defesa <input type="number" id="cc-defesa" value="0" /></label>
-          <label>Dano/rodada <input type="number" id="cc-rodada" min="0" value="0" /></label>
-        </div>
-        <label>Nota <input type="text" id="cc-nota" /></label>
-        <button type="button" class="btn mini" id="cc-add">Aplicar condição caseira</button>
-      </details>
-      <div class="dlg-btns">
-        <button type="button" class="btn primary" id="cond-fechar">Pronto</button>
-      </div>
-    </form>
-  </dialog>
+  <CondDlg />
 
   <dialog id="add-dlg" class="mesa-dlg dlg-larga">
     <form method="dialog">
@@ -528,15 +505,8 @@ import MesaCab from '../../components/MesaCab.astro';
   .acao-res { font-size: var(--fs-micro); font-variant-numeric: tabular-nums; }
   .mesa-dlg label.chk { flex-direction: row; align-items: center; gap: .4rem; text-transform: none; }
   .dlg-txt { font-size: var(--fs-rotulo); margin: 0; }
-  .cond-catalogo { display: flex; flex-direction: column; gap: .5rem; max-height: 40vh; overflow-y: auto;
-    border: 1px solid var(--rule); border-radius: var(--r-md); padding: .5rem; }
-  .cond-grupo-t { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
-    letter-spacing: .05em; color: var(--accent-strong); margin-bottom: .2rem; }
-  .cond-grupo .conds .cond { cursor: pointer; }
-  .cond-grupo .conds .cond:hover { outline: 1px solid var(--accent); }
-  .cond-ativas { min-height: 1.6rem; padding: .35rem; border: 1px dashed var(--rule); border-radius: var(--r-md); }
-  .cond-custom summary { cursor: pointer; font-size: var(--fs-micro); color: var(--accent-texto); font-family: 'Cinzel'; }
-  .cond-custom > * + * { margin-top: .4rem; }
+  /* O estilo do diálogo de condições subiu para o `MesaCab.astro` (global)
+     quando o Grid passou a usar o mesmo `CondDlg.astro`. */
   .add-lista { display: flex; flex-direction: column; gap: .1rem; max-height: 40vh; overflow-y: auto;
     border: 1px solid var(--rule); border-radius: var(--r-md); }
   .add-item { display: flex; align-items: center; gap: .5rem; padding: .3rem .5rem; cursor: pointer; }
@@ -560,9 +530,10 @@ import MesaCab from '../../components/MesaCab.astro';
 <script>
   import {
     abrirMesa, u, esc, norm, sinal, avatarHTML, urlsImagens, hpBarHTML, estadoChipHTML, atualizarBarra,
-    tierDe, pctDe, condChipHTML, somarCondicoes, COND, COND_LISTA, COND_GRUPOS, novoId, bancoAntigo,
+    tierDe, pctDe, condChipHTML, somarCondicoes, COND, novoId, bancoAntigo,
     revelarDaMesa, REVELAR_PADRAO, semMigracao14, nomesDe,
   } from '../../lib/mesa-core';
+  import { abrirCondicoes as abrirCondDlg, condsDe } from '../../lib/mesa-condicoes';
   import { abrirCanal, nomeParaPresenca, type Canal } from '../../lib/mesa-tempo-real';
   import type { Condicao, NivelVida, Revelar } from '../../lib/mesa-core';
   import { abrirRevelacao, resumoRevelacao } from '../../lib/mesa-revelacao';
@@ -847,8 +818,8 @@ import MesaCab from '../../components/MesaCab.astro';
   /** Condições: o mestre vê sempre; o jogador vê se a mesa deixar. */
   const verCondJogador = (c: any) => c.tipo === 'pc' || REV.condInimigo;
   const verCond = (c: any) => EH_MESTRE || verCondJogador(c);
-  const condsDe = (c: any): Condicao[] =>
-    (Array.isArray(c.condicoes) ? c.condicoes : []).map((k: any) => ({ ...(COND[k.id] || {}), ...k }));
+  // `condsDe` vem de `mesa-condicoes`: resolver a condição contra o catálogo é
+  // a mesma conta nas duas telas, e o Grid precisava dela também.
 
   /** Defesa que vale AGORA: base do bloco + ferimento + condições. */
   /**
@@ -1755,62 +1726,25 @@ import MesaCab from '../../components/MesaCab.astro';
   }
 
   // ============================================================== condições
+  /**
+   * O diálogo mora em `src/lib/mesa-condicoes.ts` desde 04/09/2026, e a
+   * marcação em `CondDlg.astro`. Ele nasceu aqui e foi para lá quando o Grid
+   * passou a precisar do mesmo: era o único lugar da mesa com o catálogo na
+   * tela, e quem estava olhando o tabuleiro tinha de trocar de aba para pôr
+   * `correndo` em alguém.
+   *
+   * O que fica aqui é o que É desta aba: por onde se grava (`upComb`, que
+   * tolera banco sem a migração 11), como se registra (`logar`, com a redação
+   * do jogador decidida por `verCondJogador`) e o que repintar depois.
+   */
   function abrirCondicoes(cid: string) {
     const c = COMBS.find((x) => x.id === cid); if (!c) return;
-    const dlg = el('cond-dlg') as HTMLDialogElement;
-    (el('cond-titulo') as HTMLElement).textContent = `Condições de ${c.nome}`;
-    const busca = el('cond-busca') as HTMLInputElement; busca.value = '';
-
-    const gravar = async () => {
-      const { error } = await upComb(cid, { condicoes: c.condicoes });
-      if (error) await uiErro('A coluna "condicoes" ainda não existe. Rode supabase/migracao-11.sql.');
-      desenhar(); pintar();
-    };
-    const desenhar = () => {
-      const ativas = condsDe(c);
-      el('cond-ativas').innerHTML = ativas.length
-        ? ativas.map((x) => condChipHTML(x, true, cid)).join('')
-        : '<span class="muted" style="font-size:var(--fs-micro)">nenhuma condição</span>';
-      el('cond-ativas').querySelectorAll<HTMLElement>('.cond-x').forEach((b) => b.addEventListener('click', async () => {
-        c.condicoes = (c.condicoes || []).filter((k: any) => k.id !== b.dataset.cond);
-        await gravar();
-      }));
-      const q = norm(busca.value.trim());
-      const temIds = new Set((c.condicoes || []).map((k: any) => k.id));
-      el('cond-catalogo').innerHTML = COND_GRUPOS.map((gp) => {
-        const itens = COND_LISTA.filter((x) => x.grupo === gp.id && (!q || norm(x.nome + ' ' + (x.nota || '')).includes(q)) && !temIds.has(x.id));
-        if (!itens.length) return '';
-        return `<div class="cond-grupo"><div class="cond-grupo-t">${esc(gp.nome)}</div>
-          <div class="conds">${itens.map((x) => condChipHTML(x)).join('')}</div></div>`;
-      }).join('') || '<p class="vazio">nada encontrado</p>';
-      el('cond-catalogo').querySelectorAll<HTMLElement>('.cond').forEach((chip, i) => {
-        const nome = chip.querySelector('.cond-n')?.textContent || '';
-        chip.addEventListener('click', async () => {
-          const achou = COND_LISTA.find((x) => x.nome === nome); if (!achou) return;
-          c.condicoes = [...(c.condicoes || []), { id: achou.id }];
-          await logar(`${c.nome}: ${achou.nome}.`, 'sistema', verCondJogador(c) ? `${c.nome}: ${achou.nome}.` : null);
-          await gravar();
-        });
-      });
-    };
-    busca.oninput = desenhar; desenhar();
-
-    el('cc-add').onclick = async () => {
-      const nome = (el('cc-nome') as HTMLInputElement).value.trim();
-      if (!nome) return;
-      const n = (i: string) => parseInt((el(i) as HTMLInputElement).value, 10) || 0;
-      c.condicoes = [...(c.condicoes || []), {
-        id: 'x-' + norm(nome).replace(/\W+/g, '-'), nome, cor: 'neutro', icone: '◆',
-        acao: n('cc-acao'), dados: n('cc-dados'), defesa: n('cc-defesa'), porRodada: n('cc-rodada'),
-        nota: (el('cc-nota') as HTMLInputElement).value,
-      }];
-      (el('cc-nome') as HTMLInputElement).value = '';
-      await logar(`${c.nome}: ${nome} (condição caseira).`, 'sistema',
-        verCondJogador(c) ? `${c.nome}: ${nome}.` : null);
-      await gravar();
-    };
-    el('cond-fechar').onclick = () => dlg.close();
-    dlg.showModal();
+    abrirCondDlg({
+      gravar: (id, conds) => upComb(id, { condicoes: conds }),
+      registrar: (txt, pub) => logar(txt, 'sistema', pub),
+      repintar: pintar,
+      uiErro,
+    }, c, verCondJogador(c));
   }
 
   // ================================================================== ação

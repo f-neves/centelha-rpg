@@ -332,6 +332,20 @@ const { aba } = Astro.props;
   .cond-morte  { background: color-mix(in srgb, var(--ink) 45%, transparent); border-color: color-mix(in srgb, var(--ink) 60%, transparent); color: var(--panel); }
   .cond-neutro { border-color: var(--rule); }
 
+  /* O diálogo de condições (`CondDlg.astro`), usado pela aba Combate e pelo
+     Grid. Estava só no `combate.astro` e subiu para cá quando o Grid ganhou o
+     mesmo diálogo: estilo de componente compartilhado tem de morar onde os dois
+     enxergam, senão a segunda tela abre a caixa sem moldura. */
+  .cond-catalogo { display: flex; flex-direction: column; gap: .5rem; max-height: 40vh; overflow-y: auto;
+    border: 1px solid var(--rule); border-radius: var(--r-md); padding: .5rem; }
+  .cond-grupo-t { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
+    letter-spacing: .05em; color: var(--accent-strong); margin-bottom: .2rem; }
+  .cond-grupo .conds .cond { cursor: pointer; }
+  .cond-grupo .conds .cond:hover { outline: 1px solid var(--accent); }
+  .cond-ativas { min-height: 1.6rem; padding: .35rem; border: 1px dashed var(--rule); border-radius: var(--r-md); }
+  .cond-custom summary { cursor: pointer; font-size: var(--fs-micro); color: var(--accent-texto); font-family: 'Cinzel'; }
+  .cond-custom > * + * { margin-top: .4rem; }
+
   /* ---- selos de status de ficha ---- */
   .selo { align-self: flex-start; font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
     letter-spacing: .05em; font-weight: 700; padding: .1rem .5rem; border-radius: 999px; }

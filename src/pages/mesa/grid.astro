@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import MesaCab from '../../components/MesaCab.astro';
+import CondDlg from '../../components/CondDlg.astro';
 
 // As duas setas do tabuleiro, com os controles gerados em vez de escritos duas
 // vezes: são seis campos cada uma, e a segunda cópia à mão é a que envelhece
@@ -338,6 +339,11 @@ const SETAS = [
        guarda o golpe vai cair, nem se o alvo ainda vai estar ali. Escolhe-se o
        alvo e a manobra, e o resto é espera. Quem mostra número é a folha da
        ação, que reabre no Tick do Golpe. */}
+  {/* O catálogo de condições, o mesmo da aba Combate. Ele estava só lá, e a
+      condição `correndo` (Defesa −4) pedia trocar de aba no meio da luta para
+      ser aplicada, então ninguém a aplicava. */}
+  <CondDlg />
+
   <dialog id="decl-dlg" class="mesa-dlg">
     <form method="dialog">
       <h3 id="dc-titulo">Declarar</h3>
@@ -1832,6 +1838,11 @@ const SETAS = [
     font-variant-numeric: tabular-nums; }
   .gr-ficha .gr-mn { font-size: calc(var(--fs-micro) * .85); color: #4db3ec;
     font-variant-numeric: tabular-nums; white-space: nowrap; }
+  /* O selo das condições: ícones colados, sem caixa própria. Ele divide a
+     linha com o nome e a Mana, e uma pílula com borda aqui empurraria o nome
+     para as reticências numa cena de nomes longos. */
+  .gr-ficha .gr-fcond { font-size: calc(var(--fs-micro) * .95); white-space: nowrap;
+    letter-spacing: -.04em; cursor: help; }
   .gr-ficha.posto { opacity: .55; }
   .gr-ficha.posto:hover { opacity: 1; }
   .gr-ficha .gr-casa { font-family: 'Cinzel'; font-size: calc(var(--fs-micro) * .85);
@@ -2370,6 +2381,7 @@ const SETAS = [
   import {
     abrirMesa, u, esc, avatarHTML, urlsImagens, pctDe, novoId, debounce,
     semMigracao14, avisoMigracao, tierDe, tierCls, somarCondicoes, COND, nomesDe,
+    revelarDaMesa, REVELAR_PADRAO, type Revelar,
   } from '../../lib/mesa-core';
   import {
     abrirCanal, nomeParaPresenca, type Canal, type Assunto, type Motivo, type Ping,
@@ -2396,6 +2408,7 @@ const SETAS = [
   // precisa dos dois: fogo que ainda não saiu não ilumina, e fogo que acabou
   // também não. Ver o comentário em `casasClaras`.
   import { montando, venceu } from '../../lib/artes-grid';
+  import { abrirCondicoes as abrirCondDlg } from '../../lib/mesa-condicoes';
   import {
     camadaDeGolpes, baterNoAlvo, voarProjetil, projetilDe,
   } from '../../lib/grid-golpe-fx';
@@ -2473,6 +2486,8 @@ const SETAS = [
    * é não gravar.
    */
   let MESA_GRAVA_LANCES = false;
+  /** O que a mesa revela ao jogador. Vem de `mesas.revelar` (migração 14). */
+  let REV: Revelar = REVELAR_PADRAO;
   // O contexto da mesa, guardado porque o painel do tempo precisa dele.
   let CTX: any = null;
   // Como o tempo passa nesta mesa: o sistema (normal ou P/G/R) e a marcação.
@@ -2715,6 +2730,13 @@ const SETAS = [
     // (banco anterior à migração 30), e nesse caso `?? false` mantém desligado:
     // ausência de coluna não é autorização.
     MESA_GRAVA_LANCES = MESTRE && (ctx.mesa?.gravar_lances ?? false) === true;
+    // O QUE A MESA REVELA. O Grid não lia isto até 04/09/2026 porque não tinha
+    // nada para revelar além da peça, e a peça já é cortada pela `token_visao`.
+    // Com as condições no tabuleiro passou a ter: a linha do registro que diz
+    // "Goblin: sangrando" é a mesma pergunta que a aba Combate já respondia
+    // por `REV.condInimigo`, e duas telas com respostas diferentes para a mesma
+    // pergunta é como a mesa perde a confiança no que está escrito.
+    REV = revelarDaMesa(ctx.mesa);
     TEMPO = combateDaMesa(ctx.mesa);
 
     document.body.classList.add('pagina-grid');
@@ -5752,6 +5774,28 @@ const SETAS = [
       return;
     }
     if (!COMBS.length) { esquecerCaixa(box); box.innerHTML = '<p class="vazio">Ninguém em campo.</p>'; return; }
+    /**
+     * O SELO DAS CONDIÇÕES, e ele custa ZERO gestos: é o que faz a condição
+     * aplicada existir na tela onde a mesa está olhando.
+     *
+     * Ícones, e não nomes: a tira da lista tem uma linha por peça e o nome de
+     * uma condição já ocuparia metade dela. Três ícones e o resto em "+N",
+     * com a lista inteira no `title`. Quem quer o detalhe abre o diálogo, que
+     * é o mesmo da aba Combate.
+     *
+     * Sem isto a condição seria invisível fora da folha do golpe, e "aplicou e
+     * nada mudou na tela" é como um mecanismo que funciona vira mecanismo em
+     * que ninguém confia.
+     */
+    const selo = (c: any) => {
+      const cs = (Array.isArray(c.condicoes) ? c.condicoes : [])
+        .map((k: any) => ({ ...(COND[k.id] || {}), ...k }));
+      if (!cs.length) return '';
+      const ic = cs.slice(0, 3).map((x: any) => x.icone || '◆').join('');
+      const mais = cs.length > 3 ? `+${cs.length - 3}` : '';
+      return `<span class="gr-fcond" title="${esc(cs.map((x: any) => x.nome || x.id).join(' · '))}"
+        >${ic}${mais}</span>`;
+    };
     // Gente primeiro, bicho depois.
     //
     // A lista vinha na ordem do tick, e numa cena com doze goblins os quatro
@@ -5764,6 +5808,7 @@ const SETAS = [
       return `<div class="gr-ficha${t ? ' posto' : ''}" data-c="${c.id}" title="${esc(c.nome)}">
         ${avatarDe(c, 'av-p')}
         <span class="gr-fn">${esc(c.nome)}</span>
+        ${selo(c)}
         ${c.mana_max ? `<span class="gr-mn" title="Mana">✦ ${c.mana_atual ?? 0}/${c.mana_max}</span>` : ''}
         ${t ? `<span class="gr-fq">no mapa</span>` : ''}
       </div>`;
@@ -6542,6 +6587,27 @@ const SETAS = [
           contrapeEm(c.acao, (c.tick ?? 0) + 1)
             ? `${contrapeEm(c.acao, (c.tick ?? 0) + 1)}d6` : 'nenhum'})`) : '',
       sep,
+      // AS CONDIÇÕES, no tabuleiro pela primeira vez (04/09/2026).
+      //
+      // O catálogo, a soma, a coluna, a máscara do jogador e o RPC estavam
+      // todos de pé desde a migração 22; a tela existia só na aba Combate. A
+      // consequência estava anotada no `00-diagnostico.md`: `correndo`
+      // (Defesa −4) tem de ser posta à mão, e quem corre no Grid não pagava o
+      // preço a menos que o mestre trocasse de aba no meio da luta.
+      //
+      // O CUSTO EM GESTOS, na moeda do `custo-tela.mjs` e lido daqui:
+      //   aplicar uma condição · botão direito (1) + ◈ (1) + o chip (1)  = 3
+      //   tirar uma            · botão direito (1) + ◈ (1) + o ✕ (1)     = 3
+      //   ver quais estão de pé                                          = 0
+      // O diálogo fecha sozinho? Não: ele fica aberto para a segunda condição,
+      // e o "Pronto" é o quarto gesto só de quem aplicou uma só. O zero da
+      // última linha é o selo na lista, que desenha sem pedir nada.
+      //
+      // A fase 3 vai querer tirar estes três de volta no caso comum, que é
+      // `correndo`: quem declara Corrida já disse tudo que o motor precisa
+      // para aplicá-la sozinho. Isso é conserto de MOTOR, e não de tela, e é
+      // por isso que não está aqui.
+      (MESTRE || meu) ? item('condicoes', '◈ Condições') : '',
       item('alcance', ALCANCE?.cid === cid ? '◎ Apagar o alcance' : '◎ Mostrar alcance'),
       MESTRE ? sep : '',
       // Abortar só aparece para quem está em Preparo, e é assim que a regra se
@@ -6588,6 +6654,7 @@ const SETAS = [
       else if (a === 'arte') usarArte(cid);
       else if (a === 'outra') abrirOutra(cid);
       else if (a === 'esperar') esperarUmTick(cid);
+      else if (a === 'condicoes') abrirCondicoes(cid);
       else if (a === 'alcance') alternarAlcance(cid);
       else if (a === 'abortar') abortarGesto(cid);
       else if (a === 'auto') alternarAuto(cid);
@@ -7029,7 +7096,11 @@ const SETAS = [
   let ASSIN = { combs: '', tokens: '', efeitos: '' };
   const assinatura = () => ({
     combs: COMBS.map((c: any) =>
-      `${c.id}:${c.pv_atual}:${c.tick}:${c.iniciativa}:${(c.condicoes || []).length}`).join('|'),
+      // As condições entram por ID e não por contagem: com o selo desenhado na
+      // lista, trocar `correndo` por `caído` mantém o número em 1 e mudaria o
+      // que está na tela sem acordar ninguém.
+      `${c.id}:${c.pv_atual}:${c.tick}:${c.iniciativa}:${
+        (c.condicoes || []).map((k: any) => k.id).join(',')}`).join('|'),
     tokens: Object.keys(TOKENS).sort().map((k) => `${k}:${TOKENS[k].q},${TOKENS[k].r}`).join('|'),
     // O painel lateral é desenhado a partir dos efeitos vivos: o texto dele
     // muda exatamente quando eles mudam, e sai de graça.
@@ -9043,6 +9114,35 @@ const SETAS = [
       + (opts.raspao ? ' [Quase-Acerto: fixo, ignora Absorção]' : MESTRE ? '' : ' [sem Absorção]')
       + nota + r.estado,
       r.inverso);
+  }
+
+  /**
+   * As condições da peça, no tabuleiro.
+   *
+   * O diálogo é o mesmo da aba Combate (`src/lib/mesa-condicoes.ts`). O que é
+   * daqui são as três amarras: por onde se grava (`gravarPeca`, que desvia
+   * para `jogador_muda_peca` quando quem mexe é o jogador), como se registra
+   * (`logar`, com a redação do jogador decidida por `REV.condInimigo` e pelo
+   * `oculto` da peça) e o que repintar.
+   *
+   * QUEM PODE ABRIR: o mestre em qualquer peça, o jogador só na dele. A trava
+   * que vale é a do banco, e ela é mais frouxa que esta (`jogador_muda_peca`
+   * aceita `condicoes` de qualquer peça da mesa); aqui vale o mesmo critério
+   * do ✖ Tirar Vida, que é não deixar um jogador mexer na peça de outro sem
+   * ninguém saber. Se a decisão de lá mudar, esta muda junto.
+   */
+  function abrirCondicoes(cid: string) {
+    const c = COMBS.find((z: any) => z.id === cid); if (!c) return;
+    // A regra da aba Combate, palavra por palavra: o próprio personagem sempre,
+    // o inimigo só se a mesa deixar. A peça marcada como oculta some da linha
+    // pública de qualquer jeito, e disso quem cuida é o `logar`.
+    const publicavel = (c.tipo === 'pc' || REV.condInimigo) && !c.oculto;
+    abrirCondDlg({
+      gravar: (id, conds) => gravarPeca(id, { condicoes: conds }) as any,
+      registrar: (txt, pub) => logar(c, txt, { acao: null, pub }),
+      repintar: () => { pintarLista(); avisarAgora('combatentes'); },
+      uiErro,
+    }, c, publicavel);
   }
 
   async function curar(cid: string) {

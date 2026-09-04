@@ -1,0 +1,40 @@
+---
+/**
+ * O diálogo de condições, a marcação.
+ *
+ * Sem estilo próprio de propósito: as classes (`.cond-catalogo`, `.cond-grupo-t`,
+ * `.cond-ativas`, `.cond-custom`) moram no `<style is:global>` do `MesaCab`, que
+ * as duas páginas que usam este diálogo já incluem. O comportamento mora em
+ * `src/lib/mesa-condicoes.ts`.
+ *
+ * Ele nasceu na aba Combate e virou componente quando o Grid ganhou o mesmo
+ * diálogo: duas cópias do mesmo formulário divergem no primeiro conserto que só
+ * uma recebe.
+ */
+---
+
+<dialog id="cond-dlg" class="mesa-dlg dlg-larga">
+  <form method="dialog">
+    <h3 id="cond-titulo">Condições</h3>
+    <input type="search" id="cond-busca" placeholder="Filtrar condições…" autocomplete="off" />
+    <div id="cond-ativas" class="conds cond-ativas"></div>
+    <div id="cond-catalogo" class="cond-catalogo"></div>
+    <details class="cond-custom">
+      <summary>Condição caseira</summary>
+      <div class="grade2">
+        <label>Nome <input type="text" id="cc-nome" placeholder="Perna quebrada" /></label>
+        <label>Ação (flat) <input type="number" id="cc-acao" value="0" /></label>
+      </div>
+      <div class="grade3">
+        <label>Dados (d6) <input type="number" id="cc-dados" value="0" /></label>
+        <label>Defesa <input type="number" id="cc-defesa" value="0" /></label>
+        <label>Dano/rodada <input type="number" id="cc-rodada" min="0" value="0" /></label>
+      </div>
+      <label>Nota <input type="text" id="cc-nota" /></label>
+      <button type="button" class="btn mini" id="cc-add">Aplicar condição caseira</button>
+    </details>
+    <div class="dlg-btns">
+      <button type="button" class="btn primary" id="cond-fechar">Pronto</button>
+    </div>
+  </form>
+</dialog>
