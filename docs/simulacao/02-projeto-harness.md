@@ -49,7 +49,7 @@ defeito). Os dois saem com o mesmo valor, no mesmo campo, no mesmo CSV, e nenhum
 separa depois. **O instrumento que os separa é sempre o mesmo: contar OCASIÕES, e não efeitos.**
 
 Não é lição de relatório. É regra de construção, e ela existe porque **a mesma forma de erro já
-apareceu onze vezes nesta frente**, em camadas diferentes. E a partir do quinto caso ela tem uma
+apareceu doze vezes nesta frente**, em camadas diferentes. E a partir do quinto caso ela tem uma
 segunda face: o zero ambíguo é a AUSÊNCIA de sinal lida como sinal, e o espelho dele é a
 **PRESENÇA de texto lida como o sinal errado**. Os dois vêm de olhar à volta do sinal em vez de
 olhar onde ele mora.
@@ -67,6 +67,7 @@ olhar onde ele mora.
 | **8** | o **documento que se contradiz** | "os dois trechos podem estar certos" | a `09` D31 diz que o eixo E4 foi cortado por inerte, e a `09` §2.4 atribui um efeito ao passo dobrado desse mesmo eixo. **Nenhum instrumento compara afirmação com afirmação**, então "nada acusou contradição" saía igual a "não há contradição" | achado à mão, conferindo o aviso da rodada 03 |
 | **10** | a **asserção negativa sozinha** | "a coisa que não podia acontecer não aconteceu" | o cenário não foi montado, e nada podia acontecer de todo jeito. O teste imprime ✓ pela ausência da ausência | achado em 04/09 pela GÊMEA, e não pelo teste: a brasa da bancada nascia FORA do tabuleiro, a metade "a Arte em montagem não abre o escuro" passava feliz, e só "e a mesma Arte, caída, abre (100 -> 100)" acusou |
 | **11** | a **medida do sintoma batizada com o nome da causa** | "o runner é ~1,5× mais lento que esta máquina" | o número medido era real (20 min) e a causa atribuída a ele era falsa: não era trabalho, era o `astro dev` órfão segurando o processo depois do fim. **Medir certo e nomear errado dá um número que ninguém desconfia** | achado em 04/09 pelo conserto do `detached`: com o processo morrendo na hora, os mesmos trabalhos passaram a levar 6 min, e o fator caiu de 5 para 1,5 |
+| **12** | a **janela entre a migracao e o dado que ela le** | "o corte de existencia entrou, e o que ja foi visto continua listado" | a memoria estava VAZIA, entao nada foi visto, e o corte produziu a saida oposta a decidida. **O sistema faz o contrario do que foi decidido, e faz certo, porque o dado que o desmentiria ainda nao existe** | achado em 04/09 pelo humano, ao dizer "rodo a 32 e a 33 hoje": a 33 com `vistos` vazio entrega a opcao 2 do caso D, recusada por escrito uma hora antes |
 
 **O quinto e o sexto casos custaram dinheiro, e é a diferença deles para os quatro primeiros.**
 Os quatro foram achados por inspeção ou por teste, antes de qualquer gasto. Estes dois só
@@ -114,6 +115,34 @@ falso positivo até ninguém mais ler. **O que dá para fazer barato é o invers
 abaixo: toda decisão que CORTA alguma coisa fica numa lista só, escrita como PROIBIÇÃO
 OBSERVÁVEL, e a conferência é ler a lista contra o documento. A lista não acha contradição em
 geral; ela acha a contradição que importa, que é o texto afirmando aquilo que uma decisão tirou.
+
+**O décimo segundo não está no código nem no número: está no CALENDÁRIO entre os dois.** É o
+mais novo da família e o mais fácil de repetir, porque a coisa que falta não é uma linha, é uma
+espera.
+
+O desenho era este: o cliente do mestre passa a gravar em `mesa_arenas.nevoa.vistos` quem foi
+visto; a migração seguinte passa a ler isso para montar a lembrança do que o grupo já enxergou.
+Cada metade está certa. **Rodar as duas no mesmo dia produz um sistema que faz o oposto do que
+foi decidido**, e faz sem erro nenhum: com `vistos` vazio, "o que já foi visto fica" vira "nada
+foi visto", e nada visto vira exatamente a saída que a mesa tinha recusado por escrito.
+
+**E essa janela não aparece em teste, e o motivo é estrutural: em teste a memória nasce
+montada.** A bancada monta a cena inteira antes de abrir a tela. Ela sabe produzir "com memória"
+e sabe produzir "sem a coluna"; o que ela não sabe produzir é *acabou de migrar e ainda não
+acumulou*, porque esse estado não é um estado do sistema, é um estado do relógio. Um teste teria
+de simular o tempo entre dois deploys, e nenhum dos instrumentos desta frente mede isso.
+
+A obrigação, e ela é curta: **migração cujo comportamento correto depende de dado acumulado não
+vai junto com o código que começa a acumular.** Ou espera a acumulação, e aí o gatilho tem de ser
+uma contagem que alguém confere (`select count(*) ... where nevoa ? 'vistos'`) e nunca um prazo,
+porque prazo é chute com cara de plano; ou **a migração semeia o dado ela mesma**, do estado do
+momento em que roda, e aí não há janela para esperar. A segunda é melhor sempre que o estado
+atual for uma semente honesta, e aqui é: o que está numa casa clara agora é, por definição,
+exatamente o que o grupo está vendo.
+
+A família de perguntas que isso abre, para a próxima: *esta migração lê alguma coisa que o código
+de ontem não escrevia? Se sim, o que ela faz enquanto essa coisa está vazia, e isso é o que foi
+decidido?*
 
 **O décimo primeiro é o único da lista que não é um zero, e entra aqui porque a forma é a
 mesma pelo avesso.** Nos dez primeiros a AUSÊNCIA de sinal foi lida como sinal. Neste, a

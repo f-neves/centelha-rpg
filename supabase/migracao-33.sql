@@ -6,8 +6,19 @@
 -- concreto: a `token_visao` passa a mandar pecas com `lembranca = true`, na
 -- casa onde o jogador as viu pela ultima vez. Uma tela que nao conhece essa
 -- coluna desenha aquilo como peca de verdade, e ai a mesa entrega uma POSICAO
--- FALSA como se fosse leitura, que e pior que esconder. O aviso da tela diz
--- quando ela esta pronta.
+-- FALSA como se fosse leitura, que e pior que esconder.
+--
+-- O GATILHO E CONFERIVEL, e sao tres coisas no repositorio, nao no relogio:
+--
+--   1. a secao 0 abaixo existe (a semente). Fecha a janela em que a migracao
+--      entra com a memoria vazia e produz a amnesia que a mesa recusou;
+--   2. `token_visao` com `lembranca` desenhada na tela do jogador, e a peca
+--      lembrada visivelmente diferente da vista;
+--   3. `npm run smoke` verde com a asserçao em par da lembranca: o inimigo
+--      visto some do lugar certo E aparece apagado no lugar antigo.
+--
+-- Os tres se conferem com `git log` e `npm run smoke`. Nenhum depende de contar
+-- mesas nem de esperar dias.
 --
 -- Idempotente. Rode depois da migracao-32.sql.
 --
@@ -78,6 +89,65 @@
 -- Furtividade existem para criatura, e a comparacao nao fecha para o lado que
 -- mais importa.
 -- =====================================================================
+
+-- --------------------------------------------- 0 - a semente da memoria
+--
+-- ISTO EXISTE PARA FECHAR UMA JANELA, e a janela e a licao desta migracao.
+--
+-- A memoria (`vistos`) comeca a ser gravada pelo cliente do mestre desde o
+-- commit `dab2c48`. Se esta migracao fosse rodada com o `vistos` ainda vazio, o
+-- corte de existencia entraria SEM lembranca nenhuma, e o resultado seria
+-- exatamente a saida que a mesa RECUSOU por escrito: o inimigo ferido que recua
+-- para o escuro some da lista levando junto o registro do ferimento. A amnesia,
+-- por alguns dias, ate a memoria encher sozinha.
+--
+-- E ESSA JANELA NAO APARECE EM TESTE NENHUM, porque em teste a memoria nasce
+-- montada: a bancada monta a cena inteira antes de abrir a tela, e o estado
+-- "acabou de migrar, ainda nao acumulou" nao e um estado que ela saiba produzir.
+--
+-- **Migracao cujo comportamento correto depende de dado acumulado nao pode ir
+-- junto com o codigo que comeca a acumular** (ver o caso 12 do principio, em
+-- `docs/simulacao/02-projeto-harness.md`). Ou se espera a acumulacao, e ai o
+-- gatilho e um numero que alguem tem de conferir, ou a migracao SEMEIA, e ai
+-- nao ha janela. Este bloco e a segunda saida, e ela e melhor porque nao pede
+-- nada de ninguem.
+--
+-- A SEMENTE E O ESTADO DE AGORA: toda peca que esta numa casa clara neste
+-- instante passa a constar como vista, com a posicao e a Vida deste instante. E
+-- exatamente o que o grupo enxerga quando a migracao roda, entao o tabuleiro
+-- dele nao muda de conteudo no segundo seguinte: muda so o que acontece DAI EM
+-- DIANTE, quando as pecas entrarem no escuro.
+--
+-- SO ONDE `vistos` AINDA NAO EXISTE. Onde o cliente ja acumulou, a semente cala:
+-- a memoria de verdade e melhor que a fotografia, e sobrescrever apagaria o que
+-- o grupo viu antes de hoje. E como e por ausencia de chave e nao por conteudo,
+-- rodar duas vezes nao faz nada na segunda.
+do $$
+declare a record;
+begin
+  for a in
+    select id, nevoa from mesa_arenas
+     where ativa
+       and coalesce((nevoa->>'ligada')::boolean, false)
+       and not (coalesce(nevoa, '{}'::jsonb) ? 'vistos')
+  loop
+    update mesa_arenas
+       set nevoa = jsonb_set(coalesce(nevoa, '{}'::jsonb), '{vistos}', coalesce((
+             select jsonb_object_agg(t.combatente_id::text, jsonb_build_object(
+                      'q', t.q, 'r', t.r,
+                      'em', to_char(now() at time zone 'utc', 'YYYY-MM-DD"T"HH24:MI:SS"Z"'),
+                      'pv', c.pv_atual, 'pvmax', c.pv_max))
+               from arena_tokens t
+               join combatentes c on c.id = t.combatente_id
+              where t.arena_id = a.id
+                and c.tipo <> 'pc'
+                and c.oculto = false
+                and c.ativo is not false
+                and casa_clara(a.id, a.nevoa, t.q, t.r)
+           ), '{}'::jsonb), true)
+     where id = a.id;
+  end loop;
+end $$;
 
 -- ------------------------------------------------- 1 - a arena que decide
 -- A `combate_visao` nunca conheceu arena: ela filtra por `encontro_id`, e o

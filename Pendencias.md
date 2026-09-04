@@ -1343,6 +1343,80 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   pelo modo no motor. O Interpor por último, e ele começa com uma pergunta de mesa, não com
   código.
 
+- [ ] **L35 · [DECISÃO DE MESA] A CRIATURA NÃO TEM PERÍCIA, E A COMPARAÇÃO DO GOLPE DO ESCURO
+  FECHA PARA UM LADO SÓ** · *levantamento de 04/09/2026, contado nas 309.*
+
+  A decisão do caso B foi: existe percepção do golpe vindo do escuro, pela régua que já existe
+  (`coracao-do-sistema.md:59`, `Valor Passivo = (Atributo + Habilidade) × 2 + Especialidade +
+  Centelha`, com o exemplo do ladrão e a frase "o guarda não rola, sua vigilância é um muro").
+  A forma está certa e não precisa de mecânica nova. **O que falta é o dado.**
+
+  **1 · QUANTAS REGRAS PÕEM PERÍCIA DE UM DOS LADOS.** Varridos os 20 capítulos, 28 linhas
+  falam de oposição ou de Passiva citando perícia. Tirando as que citam perícia por outro
+  motivo (exemplos, listas, especialidades), sobram **14 regras** em que a criatura pode estar
+  de um dos lados e uma perícia é exigida dela:
+
+  | lado | regra | perícia exigida |
+  |---|---|---|
+  | passivo | Notar sem procurar (`acoes-sentidos-e-engano.md:16`) | Prontidão |
+  | passivo | Esgueirar-se, Dificuldade do vigia (`acoes-sentidos-e-engano.md:46`) | Prontidão |
+  | passivo | Roubar (`acoes-sentidos-e-engano.md:87`) | Prontidão |
+  | passivo | Trapacear no jogo (`acoes-sentidos-e-engano.md:94`) | Prontidão |
+  | passivo | Disfarçar-se, contra quem olha (`acoes-sentidos-e-engano.md:90`) | Prontidão |
+  | passivo | Interrogar (`acoes-sentidos-e-engano.md:107`) | Integridade |
+  | passivo | Combate Social (`relacoes-sociais.md:193`) | Sociabilidade (via Defesa Social) |
+  | ativo | Esgueirar-se e o golpe do escuro (`coracao-do-sistema.md:59`) | **Furtividade** |
+  | ativo | Contrabandear (`acoes-sentidos-e-engano.md:93`) | **Furtividade** |
+  | ativo | Roubar e Trapacear (`acoes-sentidos-e-engano.md:87`) | Prestidigitação |
+  | ativo | Veneno, doença e ambiente (`acoes-resistir.md:32`, `:62`, `:106`) | Resistência |
+  | ativo | Abrigo contra o ambiente (`acoes-resistir.md:133`) | Sobrevivência |
+  | ativo | Amortecer a queda e agarrar a borda (`acoes-corpo-e-movimento.md:117`) | Atletismo |
+  | ativo | Interrogar (`acoes-sentidos-e-engano.md:107`) | Manha ou Oratória |
+
+  **2 · O BESTIÁRIO NÃO TEM PERÍCIA NENHUMA, E MESMO ASSIM QUATRO DELAS SÃO RECUPERÁVEIS.**
+  Nenhuma das 309 criaturas de `src/data/inimigos.json` tem a chave `pericias`. Mas o gerador
+  (`scripts/gen-bestiario.mjs`) CONSOME perícias para produzir os derivados e depois as
+  descarta, e a conta é invertível:
+
+  | perícia | de onde volta | quantas das 309 |
+  |---|---|---|
+  | **Prontidão** | `iniciativa − raciocínio`, de `const ini = at.raciocinio` (`gen-bestiario.mjs:67`) | **309**, exata |
+  | **Esquiva** | `defesa / 2 − destreza − centelha / 2` | **301** (8 fracionárias: armadura ou especialidade no meio) |
+  | **Integridade** | `defesaMental − raciocínio − vontade − centelha` | **284** (25 sem Defesa Mental, Int 0) |
+  | **Sociabilidade** | `(defesaSocial − centelha) / 2 − compostura` | **145** (164 sem Defesa Social, Int < 2) |
+  | **Furtividade** | nada a consome | **0** |
+  | Prestidigitação, Resistência, Sobrevivência, Atletismo, Manha, Oratória | nada | **0** |
+
+  Ou seja: das 14 regras, **7 fecham por derivação** (as de Prontidão, Integridade e
+  Sociabilidade) e **7 não fecham**. E a que trava o caso B é uma só: a **Furtividade**. O lado
+  passivo (a Percepção Passiva do alvo) fecha inteiro, inclusive quando o alvo é criatura.
+
+  **3 · AS DUAS SAÍDAS, COM CUSTO.**
+
+  **Saída A · derivar as quatro, e escrever a Furtividade à mão.** O gerador já sabe fazer a
+  conta ao contrário; é uma passada de script gravando `pericias` no bloco, com as quatro
+  derivadas e um número novo por criatura para a Furtividade. **Custo: 309 decisões de regra**,
+  uma por criatura, e nenhuma é derivável de nada (um ogro e um assassino têm a mesma Destreza
+  e Furtividades opostas). É a saída que dá o número certo e a que pede o trabalho todo.
+
+  **Saída B · uma Passiva de Furtividade por porte e categoria.** Uma tabela pequena
+  (`Miúdo +2`, `Médio 0`, `Enorme −2`, com `Fera +1` e `Construto −2`, por exemplo) aplicada
+  sobre a Destreza. **Custo: uma decisão de regra e nenhum dado**, e o preço é que o assassino
+  humano e o camponês humano ficam iguais até alguém escrever a exceção. É a mesma forma que a
+  couraça por porte já usa em `COURACA` (`gen-bestiario.mjs:37`), então não é forma nova: é a
+  forma da casa.
+
+  **Não há terceira**: sem Furtividade não há comparação, e comparar contra um número fixo
+  ("criatura no escuro passa sempre" ou "nunca passa") é escrever a regra por omissão.
+
+  **4 · O `ResumoCombate` NÃO CARREGA NENHUMA DAS TRÊS.** `resumoDe` (`src/lib/mesa-bestiario.ts:165`)
+  devolve arma, ataque, dano, as três Defesas, absorção, resistência à perfuração, velocidade,
+  classe, passo, pgr e Quase-Acerto. Não há Percepção, nem Prontidão, nem Furtividade: **o
+  modelo de combate da mesa não conhece nenhuma perícia por nome**, só os derivados delas. Seja
+  qual for a saída escolhida, o `ResumoCombate` ganha um campo (a Passiva de percepção do alvo e
+  a Furtividade de quem ataca), e ele é o contrato que a ficha e o bestiário preenchem por
+  caminhos diferentes: a ficha tem as perícias, a criatura terá o derivado.
+
 - [ ] **L33 · [FASE 2.5] A VISTA DO JOGADOR COMO PRODUTO** · *decidida em 04/09/2026. Entra
   depois da fase 2 e antes do terreno. Não começar antes.*
 
