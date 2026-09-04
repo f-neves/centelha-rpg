@@ -28,7 +28,8 @@ try{
   //
   // Este teste rodou pela primeira vez fora do Windows em 04/09/2026 e estourou
   // os 30 s padrao do puppeteer. Subir o teto para 120 s nao adiantou: estourou
-  // igual, e foi isso que disse o que era. `networkidle0` espera MEIO SEGUNDO
+  // igual, e foi isso que disse o que era. (Nao era lentidao do runner: com a
+  // espera certa este teste leva 3 min la, e o mais caro da matriz leva 14.) `networkidle0` espera MEIO SEGUNDO
   // SEM NENHUMA CONEXAO ABERTA, e o /bestiario e a pagina mais pesada do site
   // (309 criaturas e o acervo de arte) servida pelo `astro dev`, que ainda
   // mantem o canal do recarregamento aberto. Esse silencio pode nunca vir, e

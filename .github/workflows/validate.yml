@@ -73,9 +73,19 @@ jobs:
     runs-on: ubuntu-latest
     # UM TETO, porque o smoke dirige um navegador e navegador trava. Sem isto um
     # passo pendurado consome o teto padrão do GitHub (seis horas) e o portão
-    # fica "in_progress" em vez de vermelho. Trinta minutos são folga larga para
-    # o mais caro da matriz: o `test-grid` sozinho leva ~20 min no runner (contra
-    # ~4 aqui), e o `test-espelho` roda batalhas inteiras num navegador.
+    # fica "in_progress" em vez de vermelho.
+    #
+    # E O RUNNER NÃO É LENTO, ao contrário do que eu escrevi aqui antes. A frase
+    # dizia "o `test-grid` leva ~20 min no runner contra ~4 aqui", e os 20
+    # minutos não eram trabalho: eram o `astro dev` órfão segurando o processo
+    # depois do fim (ver `dev-server.mjs`, `detached`). Medido em 04/09/2026,
+    # depois do conserto, os oito da matriz: grid 6 min, espelho 14, etapa0 9,
+    # simultâneo 7, bench-tempo 8, golpe-caído 4, editor 3, luas 1. O `test-grid`
+    # aqui leva ~4, então o fator é ~1,5, e não 5.
+    #
+    # Trinta minutos continuam sendo o teto certo, agora por folga e não por
+    # medo. E foi o teto que denunciou o travamento: sem ele, os três trabalhos
+    # pendurados teriam consumido seis horas cada um, em silêncio.
     timeout-minutes: 30
     strategy:
       fail-fast: false
