@@ -138,6 +138,27 @@ conteúdo: seguir por cima de uma escalada é o lado caro. **Isto está escrito
 porque a rodada 02 parou por isso**, anunciando "a revisora ESCALOU" contra um
 texto que dizia, em letras, que não escalava.
 
+### Quando a chamada morre no meio
+
+Uma chamada pode morrer por **limite de uso da conta**, e foi o que encerrou a
+rodada 03. Não é defeito do ciclo, e o script não tem como prever: o `claude -p`
+sai com 1 e escreve a razão no **stdout**, junto da resposta, e não no stderr.
+
+Duas coisas seguem disso, e as duas estão no código:
+
+- **o motivo lê os dois canos.** A rodada 03 encerrou com "saiu com 1: " e nada
+  depois dos dois-pontos, porque o motivo só citava o stderr, que estava vazio. A
+  causa só apareceu abrindo o transcrito da sessão à mão;
+- **o custo de uma chamada morta não é zero.** Ela gastou o que gastou e não disse
+  quanto. O RESUMO daquela rodada publicou US$ 0,00 depois de duas baterias e um
+  commit. Agora, havendo chamada sem leitura de custo, o total sai marcado como
+  **piso**, com quantas chamadas ficaram de fora.
+
+**E o trabalho feito NÃO se perde:** a executora commita antes de abrir o aviso,
+então o que ela terminou está na história. O que falta, quando ela morre depois de
+commitar, é o aviso: a rodada fica aberta, e fechá-la é decisão de quem lê o
+RESUMO.
+
 **E uma oitava parada, que é de formato:** resposta sem as cinco seções encerra o ciclo.
 Sem isso o script falharia **aberto** justamente na trava que mais importa: uma
 `ESCALA` que não dá para ler sai igual a uma `ESCALA` vazia, e o ciclo seguiria

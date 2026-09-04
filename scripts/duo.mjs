@@ -137,6 +137,21 @@ let custo = 0;
 let custoDaRodada = [];
 /** Estourou o teto no meio de uma rodada? A rodada fecha, e não abre a seguinte. */
 let estourouNoMeio = null;
+/**
+ * CHAMADAS CUJO CUSTO NÃO DÁ PARA LER, e que NÃO valem zero.
+ *
+ * A rodada 03 morreu por limite de uso depois de rodar duas baterias, mexer em
+ * cinco arquivos e commitar. Custo real: alto. O RESUMO publicou **US$ 0,00**,
+ * porque uma chamada que falha devolve zero e zero entra na soma como se fosse
+ * medida. É o zero ambíguo dentro do contador de dinheiro: "não gastou" e "não
+ * consegui ler quanto gastou" saíam com o mesmo número.
+ *
+ * O teto continua sendo conferido contra a soma do que deu para ler, que é o
+ * único número que existe. O que muda é que o RESUMO não afirma um total quando
+ * há chamada sem leitura: ele diz que o total é um PISO, e quantas chamadas
+ * ficaram de fora.
+ */
+let chamadasSemCusto = 0;
 
 /**
  * O ACUMULADO DEPOIS DE CADA CHAMADA, contra o teto, sempre impresso.
@@ -182,14 +197,29 @@ function chamar(dir, quem, prompt) {
     let saida = '', erro = '';
     const relogio = setTimeout(() => {
       p.kill('SIGKILL');
-      resolve({ ok: false, custo: 0, texto: '', motivo: `estourou ${TETO_MIN} min` });
+      resolve({ ok: false, custo: 0, custoIncerto: true, texto: '', motivo: `estourou ${TETO_MIN} min` });
     }, TETO_MIN * 60_000);
     p.stdout.on('data', (d) => { saida += d; });
     p.stderr.on('data', (d) => { erro += d; });
     p.on('close', (code) => {
       clearTimeout(relogio);
       if (code !== 0) {
-        return resolve({ ok: false, custo: 0, texto: saida, motivo: `saiu com ${code}: ${erro.slice(0, 300)}` });
+        // O MOTIVO LÊ OS DOIS CANOS, E O IMPORTANTE É O STDOUT.
+        //
+        // A rodada 03 morreu assim e o RESUMO saiu com "saiu com 1: " e nada
+        // depois dos dois-pontos: o motivo só citava o stderr, e o stderr estava
+        // vazio. A razão da morte ("You've hit your session limit") tinha sido
+        // escrita no STDOUT, junto com a resposta, e o script a jogou fora. Ficou
+        // um ciclo encerrado sem causa legível, com uma hora de trabalho feito e
+        // commitado na árvore, e a causa só apareceu abrindo o transcrito da
+        // sessão à mão.
+        //
+        // É a mesma família do princípio: um diagnóstico vazio não quer dizer
+        // "não havia diagnóstico", quer dizer que ninguém olhou onde ele estava.
+        const dois = [erro.trim() && `stderr: ${erro.trim().slice(0, 400)}`,
+          saida.trim() && `stdout: ${saida.trim().slice(-400)}`].filter(Boolean).join(' · ');
+        return resolve({ ok: false, custo: 0, custoIncerto: true, texto: saida,
+          motivo: `saiu com ${code}${dois ? `: ${dois}` : ', e não escreveu nada em stdout nem em stderr'}` });
       }
       try {
         const j = JSON.parse(saida);
@@ -203,7 +233,7 @@ function chamar(dir, quem, prompt) {
         // campo, a chamada é tratada como falha de leitura e o ciclo encerra.
         const c = j.total_cost_usd ?? j.cost_usd ?? j.usage?.total_cost_usd;
         if (c == null || Number.isNaN(Number(c))) {
-          return resolve({ ok: false, custo: 0, texto: j.result || '',
+          return resolve({ ok: false, custo: 0, custoIncerto: true, texto: j.result || '',
             motivo: 'a saída não traz o custo da chamada (total_cost_usd), e sem ele o'
               + ' teto de custo não tem como valer' });
         }
@@ -241,7 +271,12 @@ ${aberto || 'ver a última resposta da revisora na caixa, seções BLOQUEIA e PE
 
 ## CUSTO
 
-Total: **US$ ${custo.toFixed(2)}** de um teto de US$ ${TETO_CUSTO.toFixed(2)}.
+${chamadasSemCusto
+  ? `Total **de piso**: US$ ${custo.toFixed(2)} de um teto de US$ ${TETO_CUSTO.toFixed(2)}, e o de verdade é MAIOR.
+${chamadasSemCusto} chamada(s) morreram sem devolver o custo, e uma chamada que não devolve custo não
+custou zero: ela gastou o que gastou e não disse quanto. O que essas chamadas
+consumiram não está nesta soma.`
+  : `Total: **US$ ${custo.toFixed(2)}** de um teto de US$ ${TETO_CUSTO.toFixed(2)}.`}
 Por rodada: ${custoDaRodada.map((c, i) => `${i + 1}ª US$ ${c.toFixed(2)}`).join(' · ') || '·'}
 
 ## O ALVO PEDIDO, E SE ELE SAIU
@@ -401,6 +436,7 @@ for (let volta = 1; volta <= TETO_RODADAS; volta += 1) {
 
   const rExec = await chamar(EXEC, 'executora', pExec);
   custo += rExec.custo;
+  if (rExec.custoIncerto) chamadasSemCusto += 1;
   if (!rExec.ok) parar(nn, `a chamada da executora falhou: ${rExec.motivo || 'sem motivo'}`);
   anote(`  ✓ executora · US$ ${rExec.custo.toFixed(2)}`);
   if (conferirCusto('custo') && !estourouNoMeio) {
@@ -462,6 +498,7 @@ for (let volta = 1; volta <= TETO_RODADAS; volta += 1) {
     + ' com as cinco seções do seu contrato. Não commite: quem commita é o script.';
   const rRev = await chamar(REV, 'revisora', pRev);
   custo += rRev.custo;
+  if (rRev.custoIncerto) chamadasSemCusto += 1;
   const custoRodada = rExec.custo + rRev.custo;
   custoDaRodada.push(custoRodada);
   if (!rRev.ok) parar(nn, `a chamada da revisora falhou: ${rRev.motivo || 'sem motivo'}`);
