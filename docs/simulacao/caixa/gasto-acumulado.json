@@ -2,7 +2,14 @@
   "assunto": "a assimetria dos lados: qual das duas ela e",
   "zeradoEm": "2026-09-04T01:32:39.383Z",
   "zeradoPorque": "assunto novo, declarado pelo humano ao dar o alvo da rodada 04. O gasto anterior (rodada 02, US$ 12,89, mais a rodada 03, que morreu sem dizer o custo) era do assunto anterior, a tabela do G, e nao e carregado: um numero incompleto carregado e pior que um zero declarado na fronteira do assunto.",
-  "acumulado": 0,
+  "acumulado": 1.3177,
   "chamadasSemCusto": 0,
-  "execucoes": []
+  "execucoes": [
+    {
+      "iso": "2026-09-04T01:49:23.974Z",
+      "custo": 1.3177,
+      "semCusto": 0,
+      "parada": "a resposta da revisora não dá para ler:\n    a seção VEREDITO não traz SEGUE, CORRIGE-E-SEGUE nem PARA"
+    }
+  ]
 }
