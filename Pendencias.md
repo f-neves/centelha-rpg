@@ -1333,13 +1333,22 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
     e os cliques poupados em números absolutos não mudam nada. **E a banda fechou em 03/09**,
     lendo o diálogo em vez de medir gente: são **2 gestos pelo arrasto** (soltar a peça em cima do
     alvo, mais o OK) e **4 pelo menu** (botão direito, ⚔, clique no alvo, mais o OK), com o
-    diálogo abrindo em todos os padrões que o robô usaria. Com jogadores na mesa, **a economia com
-    piso sobre o trabalho da mesa fica entre 6,2% e 8,1%**, e sobre o do mestre fica em 11,4%.
+    diálogo abrindo em todos os padrões que o robô usaria.
     Isto não era o L7 e não precisava de bateria nenhuma.
 
-    O que a conta não separa é o mestre declarando os NPCs à mão, sem o robô: parte dos `G`
-    volta para ele, e o log não distingue declaração por lado. Medir isso exige o `declarar`
-    contado por lado no `log.mjs`, e ainda não está.
+    **E a MESA COMUM ficou medida na rodada 03 da caixa**, com o `declarar` contado por lado no
+    `log.mjs` (bateria `bmtlxp622`). As linhas de 6,2% a 8,1% eram o caso extremo, em que TODA
+    peça das duas facções é declarada à mão; numa mesa comum os jogadores declaram um lado e o
+    robô declara os NPCs do outro. Das 228.332 declarações, **102.940 são do lado `a` e 125.392 do
+    lado `b`** (45,1% contra 54,9%, e não meio a meio porque em metade das células o lado `b` anda
+    com passo dobrado e declara mais). Pagando `G` em um lado só: **9,3% a 9,6% com `G = 2`** e
+    **7,8% a 8,3% com `G = 4`**, no modo `mesa`; **12,8% a 13,4%** e **10,2% a 11,0%** no modo
+    `site`. A largura de 0,3 ponto entre os dois lados é a resposta a "qual facção é a dos
+    jogadores", e é pequena demais para mover decisão.
+
+    **O que continua fora da conta**, e é outra pergunta: o número de peças de jogador numa cena
+    de verdade não é metade dela, e o jogador que não aceita o padrão do diálogo paga mais que
+    `G`. As duas puxam para lados opostos e nenhuma está medida.
 
     **A banda é do jogador que ACEITA O PADRÃO**, e não do jogador: quem troca a manobra, o modo
     de deslocamento ou o alvo paga mais, e a bateria não sabe com que frequência isso acontece,

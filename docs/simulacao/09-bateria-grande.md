@@ -1,19 +1,28 @@
 # 09 · A bateria grande
 
-**03/09/2026.** 21.600 batalhas, 96 células, zero inválidas. Commit `0dc62a4`,
-semente mestre 20260903. **O agregado inteiro está versionado** em
-`resultados/09-bmtlw3e2r.txt`: é a saída de `agregar.mjs --gravar` sobre a bateria
-`bmtlw3e2r`, rodada no commit `80d5db7` com o mesmo `dados_hash` (`36ff54d18bb95d9a`) da de
-`0dc62a4`. Todo número deste documento tem linha nele.
+**03/09/2026.** 21.600 batalhas, 96 células, zero inválidas. Semente mestre 20260903.
+**O agregado inteiro está versionado** em `resultados/09-bmtlxp622.txt`: é a saída de
+`agregar.mjs --gravar` sobre a bateria `bmtlxp622`, rodada no commit `640f628` com árvore
+limpa e com o mesmo `dados_hash` (`36ff54d18bb95d9a`) das anteriores. Todo número deste
+documento tem linha nele.
 
-> **A grade rodou QUATRO vezes neste dia, e os números aqui são os da última.** A primeira
+> **A grade rodou SEIS vezes, e os números aqui são os da sexta.** As quatro primeiras foram
+> deste dia; a quinta (`bmtlw3e2r`, commit `80d5db7`) e a sexta (`bmtlxp622`, commit `640f628`)
+> foram as das rodadas 02 e 03 da caixa de revisão, e cada uma reproduziu a anterior. **A sexta
+> repete a quinta linha a linha, e as diferenças estão em três lugares só**: o carimbo da bateria,
+> o carimbo novo do agregador, e a tabela do `G`, que ganhou a repartição por lado. Fora disso,
+> as 417 linhas são as mesmas, e **nenhum número da quinta mudou**. O que a sexta compra é a linha
+> "um lado à mão" da §2.4, que não existia porque o log não sabia de que lado vinha a declaração.
+>
+> **A grade rodou QUATRO vezes no dia 03/09, e a quarta (`0dc62a4`) é a que as duas seguintes
+> reproduziram.** A primeira
 > (`3544505`) levantou quatro perguntas de regra presas no código; a segunda (`fdc9eab`) rodou com
 > as respostas; a terceira (`02f9a3a`) rodou com a revisão delas, que refez a regra do golpe no
 > caído sobre o retrato da abertura do Tick (D41), promoveu o tabuleiro a eixo e consertou o
 > instrumento num ponto que muda o número publicado (D42, a §2.2); e a quarta (`0dc62a4`) rodou
 > por causa do Tick MORTO (D48), que é instrumento novo.
 >
-> **As três últimas deram números idênticos**, e isso é previsão confirmada e não coincidência: a
+> **As três últimas daquele dia deram números idênticos**, e isso é previsão confirmada e não coincidência: a
 > D45 mexeu no catálogo numa arma que ninguém do elenco empunha, e a D48 acrescentou um contador
 > sem tocar no laço. A D34 manda rodar inteira quando a régua ou o instrumento mudam, e o que a
 > volta compra é o carimbo.
@@ -342,7 +351,7 @@ troca (cliques por acompanhamento do movimento), não um ganho.
 | | hoje | avanço no PISO | avanço no TETO |
 |---|---:|---:|---:|
 | cliques no ⏭ | 359.733 | **234.496** | 141.054 |
-| trabalho total | 1.095.869 | **970.632** | 877.190 |
+| trabalho do MESTRE | 1.095.869 | **970.632** | 877.190 |
 | a menos | · | **11,4%** | 20,0% |
 | composição | iii 50% · ⏭ 33% · ii 17% | iii 57% · ⏭ 24% · ii 19% | iii 63% · ⏭ 16% · ii 21% |
 
@@ -423,26 +432,53 @@ O próprio código da mesa já trazia a conta, no comentário da solta do arrast
 **E a declaração à mão é gesto do JOGADOR, e não do mestre.** A primeira redação desta tabela
 somava os `G` gestos ao trabalho e chamava a soma de trabalho do mestre, e a fração caía por um
 motivo que não era o mestre trabalhar menos (achado da revisão, rodada 01). São dois trabalhos,
-e saem os dois (`resultados/09-bmtlw3e2r.txt`, linhas 186 a 197):
+e saem os dois (`resultados/09-bmtlxp622.txt`, linhas 187 a 207):
 
 - **o trabalho do MESTRE não muda com `G`**: o ⏭ e a folha continuam sendo dele, e os 228.332
   `declarar` passam a custar gesto de outra pessoa. A economia do avanço sobre o trabalho dele é
   **11,4% com piso e 20,0% com teto, com qualquer `G`**;
-- **o trabalho da MESA** é o do mestre mais o dos jogadores, e é sobre ele que a fração cai:
+- **o trabalho da MESA** é o do mestre mais o dos jogadores, e é sobre ele que a fração cai.
 
-| G | trabalho do mestre | trabalho da mesa | economia teto (mesa) | economia piso (mesa) |
-|---:|---:|---:|---:|---:|
-| 0 · o robô, que é o que esta bateria mede | 1.095.869 | 1.095.869 | 20,0% | **11,4%** |
-| **2 · o jogador pelo arrasto** | 1.095.869 | 1.552.533 | 14,1% | **8,1%** |
-| **4 · o jogador pelo menu** | 1.095.869 | 2.009.197 | 10,9% | **6,2%** |
+**Mas QUANTAS das 228.332 declarações são à mão? Esta é a terceira premissa, e ela também estava
+escondida.** A segunda redação somava as duas facções e publicava o resultado como "com jogadores
+na mesa": era o caso extremo, em que toda peça das duas facções é de jogador (achado da revisão,
+rodada 02). Numa mesa comum os jogadores declaram **um lado** e o robô declara os NPCs do outro,
+e então só parte das declarações custa `G`. A bateria `bmtlxp622` mede a repartição
+(`resultados/09-bmtlxp622.txt`, linha 188):
 
-**Com jogadores na mesa, o avanço automático continua tirando 11,4% do trabalho do mestre; do
-trabalho da mesa inteira ele tira entre 6,2% e 8,1% no piso**, e entre 10,9% e 14,1% no teto. O
-número absoluto de cliques poupados (218.679 no teto, 125.237 no piso) **não muda nada** com o
-valor de `G`: só o denominador da mesa cresce, e cresce com gesto que nunca foi do mestre.
+```
+declarações 228.332 · lado a 102.940 (45,1%) · lado b 125.392 (54,9%)
+```
 
-O que esta conta **não** separa é o mestre declarando os NPCs à mão, sem o robô: aí parte dos `G`
-volta para ele, e o log não distingue declaração por lado. Fica anotado no L24.
+**E não é meio a meio, por uma razão do desenho da grade e não do jogo:** em metade das células o
+lado `b` anda com passo dobrado (`passoMult`, o eixo coprimo da §1), fica livre mais cedo e
+declara **22% mais vezes** que o lado `a`. Por isso a repartição é medida e não dividida por dois.
+
+| G | quem declara à mão | trabalho da mesa | economia teto (mesa) | economia piso (mesa) |
+|---:|---|---:|---:|---:|
+| 0 · o robô, que é o que esta bateria mede | ninguém | 1.095.869 | 20,0% | **11,4%** |
+| **2 · arrasto** | as duas facções | 1.552.533 | 14,1% | **8,1%** |
+| **2 · arrasto** | **só o lado `a`** | 1.301.749 | 16,8% | **9,6%** |
+| **2 · arrasto** | **só o lado `b`** | 1.346.653 | 16,2% | **9,3%** |
+| **4 · menu** | as duas facções | 2.009.197 | 10,9% | **6,2%** |
+| **4 · menu** | **só o lado `a`** | 1.507.629 | 14,5% | **8,3%** |
+| **4 · menu** | **só o lado `b`** | 1.597.437 | 13,7% | **7,8%** |
+
+**A linha da mesa comum é a do meio: 9,3% a 9,6% com `G = 2`, e 7,8% a 8,3% com `G = 4`**, contra
+os 11,4% do mestre sozinho e os 6,2% a 8,1% do caso extremo. A largura de 0,3 ponto entre `a` e
+`b` é a resposta a "qual das duas facções é a dos jogadores?", e ela é **pequena**: a pergunta
+existe, tem tamanho medido, e o tamanho não muda decisão nenhuma.
+
+O número absoluto de cliques poupados (218.679 no teto, 125.237 no piso) **não muda nada** com o
+valor de `G` nem com quem declara: só o denominador da mesa cresce, e cresce com gesto que nunca
+foi do mestre.
+
+> **O que a linha "um lado à mão" NÃO é.** Nesta bateria os dois lados são o mesmo robô: `a` e
+> `b` diferem em passo e em posição de partida, e em nada mais. A linha não mede uma mesa com
+> gente; ela mede **quanto do denominador muda quando só metade das declarações é paga em
+> cliques**. Uma mesa de verdade tem número de peças de jogador que não é metade da cena, e
+> jogador que não aceita o padrão do diálogo (o quadro do `G` mínimo, abaixo). As duas coisas
+> puxam para lados opostos, e nenhuma das duas está aqui.
 
 > **A banda é do jogador que ACEITA O PADRÃO, e não do jogador.** O `G = 2` pressupõe que os
 > padrões do diálogo servem, e eles servem porque são exatamente o que o robô escolheria: manobra
@@ -473,11 +509,15 @@ valer mais**, porque o que some é a digitação e não o relógio:
 E com jogador declarando à mão, no modo `site`, com a mesma separação de denominadores (o
 trabalho do mestre fica em 727.801 e a economia dele em 17,2% e 30,0%, com qualquer `G`):
 
-| G | trabalho da mesa | teto (mesa) | piso (mesa) |
-|---:|---:|---:|---:|
-| 0 · o robô | 727.801 | 30,0% | **17,2%** |
-| 2 · o jogador pelo arrasto | 1.184.465 | 18,5% | **10,6%** |
-| 4 · o jogador pelo menu | 1.641.129 | 13,3% | **7,6%** |
+| G | quem declara à mão | trabalho da mesa | teto (mesa) | piso (mesa) |
+|---:|---|---:|---:|---:|
+| 0 · o robô | ninguém | 727.801 | 30,0% | **17,2%** |
+| 2 · arrasto | as duas facções | 1.184.465 | 18,5% | **10,6%** |
+| 2 · arrasto | **só o lado `a`** | 933.681 | 23,4% | **13,4%** |
+| 2 · arrasto | **só o lado `b`** | 978.585 | 22,3% | **12,8%** |
+| 4 · menu | as duas facções | 1.641.129 | 13,3% | **7,6%** |
+| 4 · menu | **só o lado `a`** | 1.139.561 | 19,2% | **11,0%** |
+| 4 · menu | **só o lado `b`** | 1.229.369 | 17,8% | **10,2%** |
 
 **A conclusão que isso obriga: o L26 e o ⏭ não são dois itens paralelos, são uma sequência.** A
 troca de modo tira 33,6% do trabalho **e aumenta a fatia do que sobra que o avanço automático
@@ -486,8 +526,9 @@ que a conversa pode encolher no dia seguinte.
 
 > **O que fica registrado:** a pergunta tem tamanho (**11,4%** hoje, **17,2%** depois do L26, com
 > piso), tem lugar (interface, e não regra), tem contra-argumento medido (26 pontos de travessia
-> entre piso e teto, mais o achado da Arte acima) e tem o limite com jogador calculado. Não tem
-> decisão, e é o **L24**.
+> entre piso e teto, mais o achado da Arte acima) e tem o limite com jogador **medido**, e não
+> mais suposto: **9,3% a 9,6%** na mesa comum do modo `mesa`, **12,8% a 13,4%** na do modo `site`,
+> com `G = 2`. Não tem decisão, e é o **L24**.
 
 ---
 
@@ -526,7 +567,7 @@ Recontando os mesmos 9.600 combates com o custo do modo `site`:
 | classe iii · aritmética | 552.102 · **50,4%** | 184.034 · **25,3%** |
 | o ⏭ · cadência de relógio | 359.733 · 32,8% | 359.733 · **49,4%** |
 | classe ii · julgamento | 184.034 · 16,8% | 184.034 · 25,3% |
-| **trabalho total** | **1.095.869** | **727.801** |
+| **trabalho do MESTRE** | **1.095.869** | **727.801** |
 
 **Trocar o modo de rolagem tira 33,6% do trabalho do mestre sem uma linha de motor.** É mais que o
 avanço automático (11,4% com piso) e mais que qualquer bandeira isolada poderia comprar. E dos 50%
@@ -735,7 +776,8 @@ Duas consequências, e as duas vão escritas:
    como "a cena acabou porque o tabuleiro acabou".
 
 **E cada sinal imprime o veredito dele**, aceso ou apagado (D46). O placar, copiado de
-`resultados/09-bmtlw3e2r.txt`, linhas 386 a 396:
+`resultados/09-bmtlxp622.txt`, linhas 396 a 406 (e as onze linhas são iguais, caractere a
+caractere, às da bateria anterior, `09-bmtlw3e2r.txt` linhas 386 a 396):
 
 ```
   ✓ invariantes                    nenhuma das 21600 batalhas violou um dos quinze invariantes
@@ -761,6 +803,15 @@ Antes disto, "nenhum alarme" e "o alarme não roda" imprimiam exatamente a mesma
 > acusa. Achado da revisão (rodada 01). O conserto não é a transcrição nova: é o `--gravar` do
 > agregador, que versiona a saída inteira para que o placar publicado seja um trecho de arquivo
 > com linha, e não memória de terminal.
+>
+> **E a hipótese óbvia para o 4.409.780 foi testada, e caiu.** Ele entrou neste documento no
+> commit `2df566f`, e entre ele e a bateria publicada houve `9580661`, que mexeu em `motor.mjs` e
+> em `log.mjs`: era plausível que o número fosse o daquele motor. Rodei a grade inteira **na
+> árvore de `2df566f`** (`git worktree`, 21.600 batalhas, `dados_hash` `4dd4ab25129ddd83`, que é
+> o daquele dia e não o de hoje) e o agregador daquele commit sobre ela. Deu **4.825.078**, o
+> mesmo de hoje. O agregado está versionado em `resultados/09-2df566f-bmtlxrjpt.txt`, linha 327.
+> **O 4.409.780 continua sem origem encontrada**, agora com a hipótese principal descartada em vez
+> de por descartar. Achado da revisão (rodada 02).
 
 **Os que não acenderam** também são informação: nenhum invariante violado em 21.600
 batalhas (e são quinze agora: dois que fecham os gestos por classe e por subtipo, e um que recusa parada sem classe);
@@ -904,6 +955,8 @@ para sempre.
 **D36 · Os seis sinais de bateria ineficaz são conferidos e impressos alto, fora das tabelas.**
 Invariante violado; contador de ocasião em zero onde deveria morder; variância dentro da célula ≥
 entre células; toda célula estourando; p10 = p90; e `fuga-consumada` acima de 90%.
+**(Registro histórico: eram seis aqui. Hoje são onze, todos em `sinais.mjs` com par de casos de
+teste, e o placar da §4 é a lista de agora.)**
 **Custo:** um sinal aceso exige explicação escrita antes de o número sair, e isso é trabalho. A
 alternativa é ninguém olhar, que foi o que aconteceu nas duas rodadas anteriores.
 
@@ -1279,9 +1332,20 @@ node scripts/sim/agregar.mjs --saida .sim/<data> --gravar docs/simulacao/resulta
 ```
 
 O `--gravar` guarda a saída inteira do agregador, e é ela que fica versionada:
-`resultados/09-bmtlw3e2r.txt` é a da bateria deste documento. O `.sim/` não é versionado, então o
+`resultados/09-bmtlxp622.txt` é a da bateria deste documento. O `.sim/` não é versionado, então o
 arquivo gravado é a única procedência que sobrevive a um `git clean`, e toda linha citada neste
 documento aponta para ele.
+
+**As duas primeiras linhas do arquivo são DOIS carimbos, e não um.** A primeira é o commit da
+árvore que rodou as batalhas; a segunda é o da árvore que as leu, com o aviso de árvore suja se
+for o caso. Elas são diferentes sempre que o agregador ganha tabela sobre dados já gravados, que é
+o caso comum, e a rodada 02 publicou um arquivo cuja linha 2 dizia `80d5db7` enquanto o bloco que
+o escreveu só existia depois desse commit. Quem escreve o arquivo se carimba.
+
+Os outros agregados versionados nesta pasta não são a bateria deste documento, e servem a uma
+afirmação só: `09-bmtlw3e2r.txt` é a bateria da rodada 02, guardada para que a reprodução linha a
+linha da rodada 03 possa ser conferida; `09-2df566f-bmtlxrjpt.txt` é a grade rodada na árvore de
+`2df566f`, e existe só para descartar a hipótese do 4.409.780 (§4).
 
 E **uma batalha sozinha**, pelo índice, sem depender de nenhuma anterior (a semente é
 `hash32(semente_mestre, célula, repetição)`, derivada e não sorteada):
