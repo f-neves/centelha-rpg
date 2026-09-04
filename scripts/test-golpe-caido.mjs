@@ -35,8 +35,9 @@ import puppeteer from 'puppeteer-core';
 import fs from 'node:fs';
 import { navegadorOuSair } from './navegador.mjs';
 import { subirDev } from './dev-server.mjs';
+import { MESA_BANCADA } from './bancada.mjs';
 
-const MESA = '00000000-0000-4000-8000-0000000000aa';
+const MESA = MESA_BANCADA;
 const SEMENTE = 20260903;
 
 // A lista de caminhos e a politica de pular moram em `navegador.mjs`, uma vez

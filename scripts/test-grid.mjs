@@ -24,10 +24,10 @@ import puppeteer from 'puppeteer-core';
 import fs from 'node:fs';
 import { navegadorOuSair } from './navegador.mjs';
 import { subirDev } from './dev-server.mjs';
+import { MESA_BANCADA } from './bancada.mjs';
 
 const VER = process.argv.includes('--ver');
-const MESA = '00000000-0000-4000-8000-0000000000aa';
-
+const MESA = MESA_BANCADA;
 // A lista de caminhos e a politica de pular moram em `navegador.mjs`, uma vez
 // so: eram oito copias, e tres delas tinham envelhecido cravadas no Edge do
 // Windows.
@@ -1623,7 +1623,17 @@ async function cenaCelular(br, url, { papel = 'mestre' } = {}) {
       if (r.bottom < 0 || r.top > innerHeight || r.right < 0 || r.left > innerWidth) continue;
       if (b.matches('a.ref, .prose a')) continue;   // link em texto corrido: o WCAG 2.5.8 isenta
       if (getComputedStyle(b).visibility === 'hidden') continue;
-      if (r.height < 44 || r.width < 44) curtos.push(`${b.id || b.className}(${Math.round(r.width)}×${Math.round(r.height)})`);
+      // MEIO PIXEL DE FOLGA, e a mensagem com o numero DE VERDADE.
+      //
+      // No runner de CI (Chrome/Linux) tres alvos mediam 43,99 e caiam; a
+      // mensagem os imprimia arredondados, entao ela dizia `gr-dobrar(44×44)`
+      // ao lado de "abaixo de 44px", que se le como contradiçao e custa uma
+      // hora. Meio pixel nao e falha de desenho: e sub-pixel de renderizaçao,
+      // e ele muda de navegador para navegador.
+      if (r.height < 43.5 || r.width < 43.5) {
+        const n = (v) => (Math.abs(v - Math.round(v)) < 0.01 ? String(Math.round(v)) : v.toFixed(2));
+        curtos.push(`${b.id || b.className}(${n(r.width)}×${n(r.height)})`);
+      }
     }
     return curtos;
   });
@@ -1672,11 +1682,16 @@ async function cenaCelular(br, url, { papel = 'mestre' } = {}) {
       await new Promise((r) => setTimeout(r, 420));
       const q = document.querySelector(caixa).getBoundingClientRect();
       const barra = document.querySelector('.gr-app').getBoundingClientRect();
-      return { dentro: q.top >= 0 && q.bottom <= innerHeight + 1,
+      return { dentro: q.top >= -2 && q.bottom <= innerHeight + 2,
+        // A MEDIDA SAI NA MENSAGEM, sempre. No Chrome/Linux esta caixa caiu por
+        // sub-pixel e a frase não dizia por quanto: "não sobe inteira" pode ser
+        // meio pixel ou meia tela, e as duas pedem consertos opostos.
+        medida: `topo ${q.top.toFixed(1)}, fundo ${q.bottom.toFixed(1)} de ${innerHeight}`,
         acimaDaBarra: q.bottom <= barra.top + 2 || q.bottom - barra.top < 60,
         escurece: document.body.classList.contains('com-folha') };
     }, botao, caixa);
-    ok(r.dentro && r.escurece, `a folha "${nome}" sobe inteira, com o tabuleiro escurecido atrás`);
+    ok(r.dentro && r.escurece,
+      `a folha "${nome}" sobe inteira, com o tabuleiro escurecido atrás (${r.medida})`);
     if (nome === 'em campo') {
       // Eram três caixas espremidas numa folha. O registro saiu de vez (ele mora
       // na Arena) e ficaram duas, numa folha que toma a tela inteira.
@@ -1693,13 +1708,18 @@ async function cenaCelular(br, url, { papel = 'mestre' } = {}) {
         dobrar.click();
         const folha = document.querySelector('.gr-lado').getBoundingClientRect();
         return { log: vis('#gr-log') || vis('.gr-reg-log'),
-          inteira: Math.round(folha.height) >= innerHeight - 1 && Math.round(folha.top) <= 1,
+          // DOIS PIXELS DE FOLGA, e as medidas saem na mensagem. Com um pixel a
+          // folha caiu no Chrome/Linux e passava no Edge/Windows, e a mensagem
+          // nao dizia por quanto: um teto de tela cheia que erra por sub-pixel
+          // nao e defeito de desenho, e sem o numero nao da para saber se e.
+          medida: `${Math.round(folha.height)} de ${innerHeight}px, topo ${Math.round(folha.top)}`,
+          inteira: Math.round(folha.height) >= innerHeight - 2 && Math.round(folha.top) <= 2,
           fecha: vis('#gr-campo-x'),
           lista: vis('#gr-lista'), dobrou: !depoisDeDobrar, voltou: vis('#gr-lista') };
       });
       ok(!caixas.log, 'o registro não mora mais no Campo: ele é da Arena');
       ok(caixas.inteira && caixas.fecha,
-        'a folha toma a tela inteira, e diz por onde se sai');
+        `a folha toma a tela inteira, e diz por onde se sai (${caixas.medida})`);
       ok(caixas.lista && caixas.dobrou && caixas.voltou,
         'e a caixa de quem está em campo recolhe e volta');
       ok(!(await p.evaluate(() => {

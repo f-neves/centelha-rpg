@@ -71,6 +71,11 @@ export function resumoCombatePC(S: any): ResumoCombate {
   const sgn = (n: number) => `${n >= 0 ? '+' : '−'}${Math.abs(n)}`;
   const ataque = `${dados}d6${bonus ? '+2' : ''}${flat ? ` ${sgn(flat)}` : ''}`;
 
+  // TOLERÂNCIA · o dano à distância soma Força×1, que é o atalho e não a régua.
+  // LEVANTA QUANDO: a régua de dano à distância fechar. Ela depende do arremesso
+  // (`Arremesso_Regra.md`, seção H do `Pendencias.md`), onde a massa do braço e o
+  // arco já estão modelados, e onde a Força não entra linearmente.
+  //
   // Dano base: dado da arma + Força e a sigla do modo principal. À distância soma Força×1 (por ora).
   const dist = (w.tags || []).includes('distância');
   const fm = regras.derivados.danoForca as { umaMao: number; duasMaos: number };

@@ -90,6 +90,11 @@ const opcoesEditor = {
         {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => <option value={String(n)}>{n}</option>)}
       </select>
     </label>
+    {/* TOLERÂNCIA · dois filtros escritos e desligados por um `false` literal.
+        LEVANTA QUANDO: o bestiário tiver o campo do Caminho. Conferido em
+        04/09/2026: das 309 criaturas, 0 têm `caminho` ou `proeza` e 309 têm
+        `artes`. O filtro da Arte já tem dado atrás; o da Proeza filtraria o
+        vazio, e os dois foram escondidos juntos. */}
     {/* Proeza (Caminho) e Feitiçaria (Arte) ocultos por ora — trocar false por true reativa */}
     {false && (
       <>

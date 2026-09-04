@@ -1239,7 +1239,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   fazia o carimbo valer: alguém que leia o perfil na hora de aplicar a regra.**
 
   O perfil é gravado, viaja no encontro, aparece na tela, é comparável e é recarimbável. E é lido
-  em **um** lugar do código de produção, `grid.astro:8290` (`perfil: { ...REGRAS_CENA }`), onde ele é copiado para dentro da
+  em **um** lugar do código de produção, `grid.astro:8295` (`perfil: { ...REGRAS_CENA }`), onde ele é copiado para dentro da
   entrada do lance, para o oráculo. `entrada.perfil` **não é consultado em lugar nenhum**: nem em
   `resolverGolpe`, nem em `quase-acerto.ts`, nem em `calc.ts`, nem no harness. Nenhuma das quinze
   bandeiras faz o motor tomar um caminho diferente.
@@ -1277,6 +1277,28 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   contador de ocasião, e só então medir. É o mesmo mecanismo que matou o eixo E4 (D31) antes de
   ele virar linha de relatório. Isto reparte o **L1** em quinze tarefas de motor, e **nenhuma
   medição de bandeira vale antes**.
+- [ ] **L33 · [FASE 2.5] A VISTA DO JOGADOR COMO PRODUTO** · *decidida em 04/09/2026. Entra
+  depois da fase 2 e antes do terreno. Não começar antes.*
+
+  **De onde veio.** Três dos quatro últimos achados sérios estão do lado do jogador, e
+  nenhum era regra de jogo:
+
+  | achado | o que era |
+  |---|---|
+  | a névoa acendendo pelo fogo agendado | vazamento de informação, em produção |
+  | o mock mais generoso que o esquema | nenhuma afirmação sobre a vista dele era falsificável |
+  | a `combate_visao` sem corte de casa | nome, retrato, grupo, Tick e Vida do bicho no escuro |
+  | **o relógio dele em Tick 0 desde a migração 14** | num sistema cujo nome é tempo, um lado do produto que nunca funcionou |
+
+  O último é o que muda o plano. Não é defeito de borda: é a cadeira do jogador rodando
+  o Simultâneo com o relógio parado, desde agosto, sem ninguém ter olhado. **A cadeira
+  do mestre foi construída e medida; a do jogador foi deduzida.**
+
+  **O escopo, em quatro perguntas:** o que a tela dele desenha, o que chega ao navegador
+  dele, o que ele consegue fazer, e que horas são para ele.
+
+  Não é fase de métrica: é fase de produto, e termina com a mesa jogável dos dois lados.
+
 - [ ] **L32 · [DECISÃO DE MESA] O JOGADOR SABE QUE HÁ UM INIMIGO NO ESCURO?** · *achado na
   varredura das oito views, 04/09/2026. Não é defeito de programa: é escolha de mesa, e por
   isso está aqui em vez de num conserto.*

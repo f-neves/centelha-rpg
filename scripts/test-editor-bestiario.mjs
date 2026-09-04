@@ -22,7 +22,12 @@ try{
   const page=await browser.newPage();
   await page.setViewport({width:1400,height:1000});
   const erros=[]; page.on('pageerror',(e)=>erros.push(String(e)));
-  await page.goto(`${url}/bestiario`,{waitUntil:'networkidle0'});
+  // O TETO PADRAO DO PUPPETEER SAO 30 s, e ele estourou no runner de CI em
+  // 04/09/2026, na primeira vez que este teste rodou fora do Windows. Nao e
+  // travamento: /bestiario e a pagina mais pesada do site (309 criaturas mais o
+  // acervo de arte), e o runner e mais lento que a maquina de desenvolvimento
+  // por um fator medido de ~5 no `test-grid`.
+  await page.goto(`${url}/bestiario`,{waitUntil:'networkidle0',timeout:120000});
 
   // O PORTAO: sem administrador, os botoes nao aparecem.
   const visivelDeslogado = await page.evaluate(()=>{

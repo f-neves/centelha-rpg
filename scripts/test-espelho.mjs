@@ -45,9 +45,10 @@ import { navegadorOuSair } from './navegador.mjs';
 import { subirDev } from './dev-server.mjs';
 import { carregarLib, ligar } from './sim/lib-ponte.mjs';
 import { rodarEspelho, celulaEspelho } from './sim/espelho.mjs';
+import { MESA_BANCADA } from './bancada.mjs';
 
 const VER = process.argv.includes('--ver');
-const MESA = '00000000-0000-4000-8000-0000000000aa';
+const MESA = MESA_BANCADA;
 const SEMENTE = 20260903;
 
 // A lista de caminhos e a politica de pular moram em `navegador.mjs`, uma vez

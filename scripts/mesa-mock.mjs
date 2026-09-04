@@ -37,6 +37,7 @@ import { resumoCombatePC } from '../src/lib/combate-resumo';
 import { distanciaHex } from '../src/lib/hex';
 import { montando, venceu } from '../src/lib/artes-grid';
 import { armaDoCatalogo, classeDeTempo, velocidadeDaArma } from '../src/lib/combate-tempo';
+import { MESA_BANCADA } from './bancada.mjs';
 
 const P = new URLSearchParams(typeof location !== 'undefined' ? location.search : '');
 const N_COMB = parseInt(P.get('bench') || '12', 10);
@@ -163,7 +164,7 @@ const PVMAX = [40, 25, 60, 33];
 const UID = '00000000-0000-4000-8000-000000000001';
 /** Quem manda na mesa quando quem olha é jogador. */
 const OUTRO_UID = '00000000-0000-4000-8000-0000000000ff';
-const MESA = P.get('id') || '00000000-0000-4000-8000-0000000000aa';
+const MESA = P.get('id') || MESA_BANCADA;
 const ARENA = '00000000-0000-4000-8000-0000000000bb';
 const ENC = '00000000-0000-4000-8000-0000000000cc';
 

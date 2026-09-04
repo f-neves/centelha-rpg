@@ -24,8 +24,9 @@ import puppeteer from 'puppeteer-core';
 import fs from 'node:fs';
 import { navegadorOuSair } from './navegador.mjs';
 import { subirDev } from './dev-server.mjs';
+import { MESA_BANCADA } from './bancada.mjs';
 
-const MESA = '00000000-0000-4000-8000-0000000000aa';
+const MESA = MESA_BANCADA;
 // A lista e a politica de pular moram em `navegador.mjs`: aqui elas estavam
 // copiadas, e a copia nao honrava `SMOKE_EXIGE_NAVEGADOR`, entao este teste
 // passaria PULANDO num portao sem navegador.

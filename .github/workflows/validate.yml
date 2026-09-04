@@ -53,12 +53,20 @@ jobs:
       #
       # Este passo rodava com `continue-on-error: true`, e a razão escrita ao
       # lado era "há erros antigos fora dos módulos do tabuleiro". Não há mais:
-      # `npx tsc --noEmit` responde "No errors found" desde algum conserto que
-      # ninguém marcou. A desculpa tinha expirado e a tolerância continuava de
-      # pé, que é como um portão vira decoração: ele roda, fica verde, e ninguém
-      # olha, porque olhar nunca mudou nada.
+      # `npx tsc --noEmit` responde "No errors found". A desculpa tinha expirado
+      # e a tolerância continuava de pé, que é como um portão vira decoração:
+      # ele roda, fica verde, e ninguém olha, porque olhar nunca mudou nada.
+      #
+      # E O `astro sync` NÃO É DETALHE DE INSTALAÇÃO, é a lição do dia outra vez.
+      # Ele gera `.astro/types.d.ts`, que o `tsconfig.json` inclui e que o
+      # `.gitignore` não versiona. Na máquina de desenvolvimento ele existe
+      # porque `astro dev` já rodou ali alguma vez; num clone limpo, não. Sem ele
+      # o `tsc` acusou 11 erros no CI (`Property 'env' does not exist on type
+      # 'ImportMeta'` e implícitos em `data.ts`) na primeira vez que este passo
+      # travou de verdade. **O verde daqui era o de uma máquina, não o do
+      # repositório**, e foi assim que eu li "limpo" com confiança na véspera.
       - name: Tipos
-        run: npx tsc --noEmit
+        run: npx astro sync && npx tsc --noEmit
 
   smoke:
     name: Smoke · ${{ matrix.teste }}

@@ -44,6 +44,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { execSync } from 'node:child_process';
 import { subirDev } from './dev-server.mjs';
+import { MESA_BANCADA } from './bancada.mjs';
 
 const RAIZ = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
 const arg = (n, padrao) => {
@@ -52,8 +53,7 @@ const arg = (n, padrao) => {
 };
 const SAIDA = path.resolve(RAIZ, arg('--saida', 'scripts/fixtures/lances.jsonl'));
 const SEMENTE = arg('--semente', '20260902');
-const MESA = '00000000-0000-4000-8000-0000000000aa';
-
+const MESA = MESA_BANCADA;
 const NAVEGADORES = [
   process.env.EDGE, process.env.CHROME, process.env.PUPPETEER_EXECUTABLE_PATH,
   'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',

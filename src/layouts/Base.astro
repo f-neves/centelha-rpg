@@ -103,6 +103,12 @@ if (partes.length) crumbs.push({ label: title });
   <meta property="og:locale" content="pt_BR" />
   <meta name="twitter:card" content="summary" />
   <script is:inline>
+    // TOLERÂNCIA · o PWA está desligado, e o código dele continua no repositório.
+    // SEM CONDIÇÃO CONHECIDA · quem desligou não deixou escrita a volta. O que se
+    // sabe é que o gatilho foi service worker preso servindo HTML velho, e que
+    // isso é um problema de site em subdiretório. Reavaliar na mudança de
+    // hospedagem (seção J do `Pendencias.md`), que é quando o subdiretório some.
+    //
     // PWA desativado por ora: remove qualquer service worker antigo preso (que servia
     // JS desatualizado) e limpa os caches. Sem re-registrar (evita loop de recarga).
     //

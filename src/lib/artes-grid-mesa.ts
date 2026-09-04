@@ -844,6 +844,13 @@ async function marcarNoChao(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLEleme
   let ancora: Encaixe = encaixeNoCentro(meu, esc_);
   let dir = 0;
 
+  // TOLERÂNCIA · o código contradiz a §5.4 do Arcano, de propósito e a pedido da
+  // mesa (2026-08-19). A regra diz que a manifestação nasce no feiticeiro e nunca
+  // é colocada; aqui o improviso pode nascer em qualquer lugar.
+  // LEVANTA QUANDO: a mesa fechar se o improviso pode nascer longe do feiticeiro.
+  // Fechando que NÃO pode, some o afrouxamento; fechando que pode, some a §5.4 e
+  // esta deixa de ser tolerância para virar a regra. Pendência: seção A.
+  //
   // O IMPROVISO TAMBÉM ESCOLHE ONDE COMEÇA, por ora.
   //
   // A §5.4 diz que a manifestação nasce no feiticeiro e nunca é colocada, e o

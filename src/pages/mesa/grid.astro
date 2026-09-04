@@ -6507,6 +6507,11 @@ const SETAS = [
     const linhas = [
       meu ? item('ataque', '⚔ Ataque') : '',
       MESTRE ? item('curar', '✚ Recuperar Vida') : '',
+      // TOLERÂNCIA · o jogador perdeu o ✖ Tirar Vida em peça que não é dele.
+      // LEVANTA QUANDO: você decidir de quem é a mão que tira Vida no Simultâneo.
+      // A pergunta está escalada desde 04/09/2026 e reverter é trocar
+      // `(MESTRE || meu)` por `true`, uma linha.
+      //
       // TIRAR VIDA DE PEÇA ALHEIA SAIU DA MÃO DO JOGADOR, em 04/09/2026, e é
       // provisório: a decisão de quem pode tirar Vida de quem foi escalada e
       // ainda não voltou. Enquanto ela não volta, este é o estado menos errado

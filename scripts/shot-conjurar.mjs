@@ -6,8 +6,9 @@
 import puppeteer from 'puppeteer-core';
 import fs from 'node:fs';
 import { subirDev } from './dev-server.mjs';
+import { MESA_BANCADA } from './bancada.mjs';
 
-const MESA = '00000000-0000-4000-8000-0000000000aa';
+const MESA = MESA_BANCADA;
 const OUT = process.argv[2] || '_shots';
 const NAV = [
   process.env.EDGE, process.env.CHROME,
