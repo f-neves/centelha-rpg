@@ -1,0 +1,60 @@
+# =====================================================================
+# Fim de linha · o repositório inteiro é LF, na árvore de trabalho também.
+#
+# O DEFEITO QUE ISTO CONSERTA, e ele deixava o `validate` vermelho no commit
+# anterior a qualquer conserto:
+#
+#   `core.autocrlf` está `true` na máquina de desenvolvimento. Sem este
+#   arquivo, o checkout escreve CRLF na árvore de trabalho. Os geradores são
+#   Node e escrevem `\n`. Então, num clone novo, o arquivo gerado que está no
+#   disco (CRLF) nunca bate com o que o gerador produz (LF), e o `--check`
+#   falha por espaço em branco.
+#
+#   A assinatura é inconfundível, e foi assim que se achou:
+#
+#     ✘ inimigos.json está fora de sincronia com a fonte.
+#       0 criatura(s) divergem, 0 sumiram, 0 entraram.
+#
+#   Zero divergências e mesmo assim fora de sincronia: a diferença não estava
+#   no conteúdo, estava no fim de cada linha.
+#
+# QUEM FALHAVA, medido num clone novo antes do conserto:
+#
+#   gen-bestiario          ■ falha    compara byte a byte
+#   gen-cap-antecedentes   ■ falha    compara byte a byte
+#   gen-bench-tempo        ■ falha    compara byte a byte
+#   gen-grid-artes         ✓ passa    compara objeto já parseado
+#   gen-mermaid            ✓ passa    compara objeto já parseado
+#
+#   Os dois que passavam passavam por sorte de implementação, e não por
+#   estarem imunes: qualquer um deles que passe a comparar texto entra na
+#   mesma armadilha no dia seguinte. Por isso a regra é do repositório
+#   inteiro, e não uma lista dos três que doíam.
+#
+# POR QUE `eol=lf` E NÃO SÓ `text=auto`:
+#
+#   `text=auto` sozinho normaliza o que vai para o índice e deixa o checkout
+#   a cargo do `core.autocrlf` de cada máquina, que é justamente a variável
+#   que causou isto. `eol=lf` fixa a árvore de trabalho e faz o resultado ser
+#   o mesmo no Windows, no Linux e no runner de CI.
+#
+# CUSTO DA MUDANÇA: nenhum no índice. As 400 entradas de texto do repositório
+# já estavam gravadas em LF (`git ls-files --eol`), então isto não reescreve
+# um arquivo sequer no histórico: muda só o que o checkout põe no disco.
+#
+# NÃO HÁ ARQUIVO QUE QUEIRA CRLF nesta árvore: nenhum `.bat`, `.cmd` nem
+# `.ps1`. Se um dia houver, ele ganha a própria linha aqui embaixo.
+# =====================================================================
+
+* text=auto eol=lf
+
+# Binário é binário, e conversão nenhuma encosta nele. O `text=auto` já
+# detecta, mas detecção é heurística e a marca explícita é de graça.
+*.webp binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.ico  binary
+*.docx binary
+*.pdf  binary
+*.pyc  binary
