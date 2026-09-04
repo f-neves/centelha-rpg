@@ -89,8 +89,48 @@ export interface ResumoCombate {
   qa?: QACombate;
 }
 
+/**
+ * O bloco VAZIO, com cada campo no estado que o diz vazio.
+ *
+ * Repare no `defesa: null` ao lado do `soak: 0`: os dois são "não preenchido",
+ * mas só um deles pode ser zero de verdade. Absorção zero é um valor legítimo
+ * (o camponês de camisa), então zero ali é a resposta certa. Defesa zero não
+ * existe em ninguém que esteja de pé, então zero ali seria uma mentira que a
+ * tela somaria sem piscar. Nulo é a única coisa que a folha consegue distinguir
+ * de um número, e é o que faz o veredito sair nulo em vez de sair errado.
+ */
+const resumoVazio = (): ResumoCombate => ({
+  arma: '', ataque: '', dano: '',
+  defesa: null, defesaSocial: null, defesaMental: null,
+  soak: { impacto: 0, corte: 0, perfuracao: 0 },
+  resistPerf: 0, velocidade: null, classe: null, passo: null,
+  qa: qaDaPeca('', '', null),
+});
+
 /** Bloco de combate de origem: da ficha (PC) ou do bestiário (criatura). */
 export function baseResumo(c: any, fichaPorId: Record<string, any> = {}): ResumoCombate | null {
+  // A PEÇA DE CENA (`custom`), e ela não tem bloco de origem NENHUM: nem ficha
+  // nem verbete, porque foi digitada na mesa. Tudo o que ela sabe de si mora em
+  // `combatentes.dados`, que o `resumoDe` mescla por cima daqui.
+  //
+  // O DEFEITO QUE ISTO CONSERTA, e ele fechava a saída de emergência bem onde
+  // ela era necessária. Antes não havia este ramo: `custom` caía no `return
+  // null` do fim, e uma peça sem `dados` (o "+ NPC" preenchido só com nome e
+  // Vida, ou a linha em branco da aba Combate) ficava com `RESUMO[id] === null`.
+  // Aí, na ficha do lance, `objDe('alvo')` devolvia `null` e o
+  // `escreveCaminho` saía pela primeira linha sem escrever nada: **o mestre
+  // digitava a Defesa do sujeito no campo e o número não ia a lugar nenhum**. O
+  // campo aceitava a tecla, repintava, e a folha continuava sem Defesa.
+  //
+  // Com um bloco vazio no lugar de `null`, a peça sempre tem onde receber o que
+  // o mestre escreve, e a peça digitada na mesa passa a se conserta na mesa.
+  //
+  // O `monstro_id` de uma peça `custom` NÃO entra aqui, e é de propósito: no
+  // formulário ele é o campo **Retrato**, e serve só para dar cara ao token.
+  // Quem escolhe a arte do ogro para o capanga não está dizendo que o capanga
+  // tem a Defesa do ogro, e ler o verbete daí encheria a ficha de números que
+  // ninguém pediu.
+  if (c.tipo === 'custom') return resumoVazio();
   if (c.tipo === 'pc' && fichaPorId[c.personagem_id]) {
     try {
       const r = resumoCombatePC(fichaPorId[c.personagem_id]) as any;

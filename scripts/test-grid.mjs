@@ -238,6 +238,15 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
       totalVazio: document.getElementById('al-total')?.value === '',
       danoVazio: document.getElementById('al-dn')?.value === '',
     };
+    // A FOLHA SEM CONTA NENHUMA, e este e o instante que interessa: o total
+    // ainda nao foi digitado, entao a regua nao tem o que dizer. Antes do
+    // conserto de 04/09 a caixa esvaziava e o "Acertou" acendia como principal,
+    // ou seja, a tela recomendava acertar justamente quando nao sabia de nada.
+    folha.semConta = {
+      vered: (document.getElementById('al-vered')?.textContent || '').trim(),
+      prim: ['al-sim', 'al-qa', 'al-nao']
+        .filter((id) => document.getElementById(id)?.classList.contains('primary')),
+    };
     // O botao de rolar avulso continua ali mesmo na mesa que rola tudo na mao.
     document.getElementById('al-rolar').click();
     document.getElementById('al-dn-rolar').click();
@@ -277,6 +286,14 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
     ok(esperado ? f.dnTipo === esperado : true,
       `o modo do dano vem da arma (${f.danoDaArma} -> ${f.dnTipo})`);
     ok(f.totalVazio && f.danoVazio, 'no modo padrao (dados na mesa) nada rola sozinho');
+    // SEM CONTA, NENHUM BOTAO E O PRINCIPAL. As duas asserçoes sao uma coisa so:
+    // a ausencia de resposta precisa de cara propria, e nunca da cara de uma das
+    // tres respostas. A segunda e a que teria pego o defeito.
+    const sc = f.semConta || {};
+    ok((sc.vered || '').length > 0,
+      `sem total digitado a caixa diz o que falta ("${sc.vered}")`);
+    ok((sc.prim || []).length === 0,
+      `e nenhum dos tres botoes acende como principal (acesos: ${(sc.prim || []).join(', ') || 'nenhum'})`);
     ok(f.rolouAcerto && f.rolouDano, 'e o botao de rolar avulso rola quando alguem pede');
     ok(/acerta|erra/.test(f.vered || ''), `com o veredito escrito ao lado (${f.vered})`);
   }

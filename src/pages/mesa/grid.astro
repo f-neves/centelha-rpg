@@ -8314,9 +8314,34 @@ const SETAS = [
       const cx = el('al-vered') as HTMLElement;
       const sim = el('al-sim') as HTMLElement, nao = el('al-nao') as HTMLElement;
       const qa = el('al-qa') as HTMLElement;
+      // SEM CONTA, NENHUM BOTÃO É O PRINCIPAL, e a caixa diz o que falta.
+      //
+      // O DEFEITO QUE ISTO CONSERTA: antes, quando a régua não tinha o que
+      // dizer, a caixa esvaziava e o "Acertou · aplicar" acendia como principal.
+      // O destaque é a recomendação da tela, então **a tela recomendava acertar
+      // justamente quando não sabia de nada**, e recomendava com a mesma tinta
+      // com que recomenda um acerto calculado. As duas telas ficavam iguais:
+      // "a régua diz acerto" e "a régua não disse nada" pintavam o mesmo botão.
+      //
+      // É o princípio do zero ambíguo na tela: ausência de resposta tem de ter
+      // uma cara própria, e nunca a cara de uma das respostas. Por isso o
+      // destaque sai dos três e a caixa passa a dizer QUAL das duas metades
+      // falta, porque as duas se resolvem em lugares diferentes: o total é uma
+      // rolagem que ainda não foi digitada, e a Defesa é um número que o alvo
+      // não tem e que se escreve na ficha do lance, ali embaixo.
       if (L.soma == null || L.defesa == null) {
-        cx.innerHTML = '';
-        sim.classList.add('primary');
+        const falta = L.defesa == null && L.soma == null
+          ? 'falta o total rolado, e o alvo está sem Defesa'
+          : L.defesa == null
+            ? `<b>${esc(alvo.nome)}</b> está sem Defesa resolvida`
+            : 'falta o total rolado';
+        const onde = L.defesa == null
+          ? ' · escreva a Defesa na ficha do lance, aqui embaixo'
+          : '';
+        cx.innerHTML = `<span class="muted">a régua não tem o que dizer: ${falta}${onde}</span>`;
+        // Os três saem do destaque. O mestre continua podendo apertar qualquer
+        // um deles: quem decide é ele, e a tela só parou de fingir que sabe.
+        sim.classList.remove('primary');
         nao.classList.remove('primary'); qa.classList.remove('primary');
         qa.hidden = margemQA() <= 0 && danoQA() <= 0;
         return;
