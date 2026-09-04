@@ -1283,8 +1283,14 @@ Três leituras que essa linha obriga, e nenhuma delas é confortável:
    zero, mas o gesto é do jogador: o trabalho do mestre não muda e a fração dele também não
    (§2.4); o que cresce é o trabalho da mesa, e a fração sobre ele cai. **O que este
    projeto não consegue tirar não é 38,2% de um número fixo, é um clique por Tick que para e um
-   por golpe que cai**, e esses dois não têm conserto de software porque não são conta: são a
-   cadência da cena e a decisão da mesa.
+   por golpe que cai**, e ~~esses dois não têm conserto de software porque não são conta: são a
+   cadência da cena e a decisão da mesa~~.
+
+   > **⚠ A frase riscada é FALSA, e ficou de pé dezesseis linhas abaixo da caixa que a declara
+   > falsa** (achado C2 da revisora, rodada 05). Uma correção inserida acima não corrige o
+   > parágrafo de baixo, e foi assim que o mesmo erro sobreviveu à própria retratação. **Os dois
+   > SÃO conta:** o ⏭ que para abre uma folha que é transcrição, e o `aplicar` transcreve uma
+   > comparação que a tela já fez com uma função pura. A leitura de hoje está no `ESTADO.md`.
 
 #### E o resíduo escala com o TAMANHO DA CENA, não com a complexidade da regra
 

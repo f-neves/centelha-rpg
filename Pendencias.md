@@ -1238,6 +1238,36 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   contador de ocasião, e só então medir. É o mesmo mecanismo que matou o eixo E4 (D31) antes de
   ele virar linha de relatório. Isto reparte o **L1** em quinze tarefas de motor, e **nenhuma
   medição de bandeira vale antes**.
+- [ ] **L29 · [A FILA DO GRID, e ela substitui a leitura antiga da `09`] Sete
+  consertos, e o `ESTADO.md` é a fonte.** O `Pendencias` é o índice único do que está
+  aberto, e até 04/09 ele não conhecia esta fila: o `93,7` só existia no `ESTADO.md`
+  (achado C3 da revisora, rodada 05). A leitura completa, com procedência linha a
+  linha, está em `docs/simulacao/ESTADO.md`; aqui fica o índice.
+
+  **O que mudou a fila não foi bateria: foi a linha entre CUSTO e JOGO.** Custo é o
+  tempo entre a decisão estar tomada e o efeito aparecer na tela. Por ela, o trabalho
+  do mestre medido na bateria é **100% custo**, porque a bateria roda dois robôs e o
+  jogo mora na declaração, que ali é automática.
+
+  | # | o conserto | o que tira |
+  |---|---|---|
+  | 1 | a folha aceita o dado em vez do total, com o dado rolado na mão | 34,0% |
+  | 2 | o botão do veredito vira confirmação | **0 a 17,0%**, e a banda é ignorância |
+  | 3 | o avanço unificado, que abre a folha do golpe que o fez parar | 32,0% |
+  | 4 | a Defesa −4 da Corrida e o contrapé da iniciativa, exibidas e não aplicadas | sem número |
+  | 5 | a parada abre todos os golpes do Tick | 10,7% |
+  | 6 | o **L25**, as bandeiras lidas pelo motor | zero para o mestre |
+  | 7 | o avanço MOSTRA o percurso em vez de pedir confirmação | 6,0%, e é ESCALA |
+
+  **A ordem não é a numeração:** primeiro o 4, depois **gravar o par (veredito da
+  régua, botão do mestre) em produção**, que é o que transforma a banda do item 2 num
+  número, depois o 1 e o 3, o 5, o 2 e o 6. O item 7 é decisão de jogo.
+
+  **Nenhum teto aqui é de natureza.** Com os consertos desenhados até hoje o teto é
+  99,7%, e com o item 2 valendo zero a escada para em 76,7%. Cada teto anterior desta
+  frente (61,8% e 93,7%) foi publicado como limite natural e era o alcance dos
+  consertos daquele dia.
+
 - [ ] **L27 · [METADE FEITA em 03/09, na rodada 02 da caixa] Apagar `rpg-system/centelha-revisora/`
   e tirar a linha do `.gitignore` junto.** A linha saiu (as cinco, com o comentário), que era a
   metade que importava: a regra permanente escondendo um caminho que não devia existir. A pasta

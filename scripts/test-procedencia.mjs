@@ -146,6 +146,93 @@ for (const nome of fs.readdirSync(DOCS)) {
   }
 }
 
+// ===================================================================== A TRAVA
+// DA TABELA SEM CITAÇÃO, e ela vale SÓ para o `ESTADO.md`.
+//
+// A conferência acima pega a citação que escorregou. Ela não pega o caso que a
+// rodada 05 achou: o número publicado **sem citação nenhuma**. As três tabelas
+// que carregavam a conclusão nova do `ESTADO.md` não traziam uma `R:` sequer, e
+// nada acusou, porque o teste conferia citações e ali não havia citação para
+// conferir.
+//
+// POR QUE SÓ O `ESTADO.md`: ele PROMETE procedência, no cabeçalho, para todo
+// número da página. Os relatórios históricos não prometeram, e cobrar deles uma
+// promessa que não fizeram encheria o portão de ruído até ninguém mais ler.
+//
+// E HISTÓRICO NÃO CITADO NÃO VIRA FONTE: um número de relatório antigo que volte
+// a ser usado volta com procedência ou não volta. A isenção é sobre o passado
+// ficar como está, e não sobre ele poder ser reaproveitado sem etiqueta.
+{
+  const arq = path.join(DOCS, 'ESTADO.md');
+  const linhas = fs.readFileSync(arq, 'utf8').split(/\r?\n/);
+  // Uma linha de tabela é a que começa e termina em `|`. O número que interessa
+  // é o de quatro dígitos ou mais, com ou sem ponto de milhar: é o que sai de
+  // medição, e não o `2` de uma coluna de índice.
+  const GRANDE = /\b\d{1,3}(?:\.\d{3})+\b|\b\d{4,}\b/;
+  const TEM_FONTE = /R:\s*\d+|derivad|custo-tela|`R:|nenhuma|sem número|sem procedência|ignorância/i;
+  const semFonte = [];
+  for (let i = 0; i < linhas.length; i += 1) {
+    const l = linhas[i].trim();
+    if (!l.startsWith('|') || !l.endsWith('|')) continue;
+    if (/^\|[\s:|-]+\|$/.test(l)) continue;          // a linha de traços
+    if (!GRANDE.test(l)) continue;
+    if (TEM_FONTE.test(l)) continue;
+    // A tabela pode citar uma vez só, num parágrafo colado nela: olha três
+    // linhas para cada lado antes de acusar.
+    const volta = linhas.slice(Math.max(0, i - 3), i + 4).join(' ');
+    if (TEM_FONTE.test(volta)) continue;
+    semFonte.push(`${i + 1}: ${l.slice(0, 90)}`);
+  }
+  if (semFonte.length) {
+    console.log(`\n  ✗ ${semFonte.length} linha(s) de tabela do ESTADO.md com número de medição`
+      + ' e sem procedência (nem `R:`, nem marca de derivado):');
+    for (const x of semFonte.slice(0, 12)) console.log(`      ${x}`);
+    console.log('    O cabeçalho do ESTADO.md promete procedência para todo número da página.');
+    process.exit(1);
+  }
+  console.log('  ✓ ESTADO.md · nenhuma linha de tabela com número de medição sem procedência');
+}
+
+// ================================================ O SINAL DA PALAVRA "NATUREZA"
+//
+// A regra do teto (`02`, "O TETO É DO DESENHO, E NUNCA DA NATUREZA") pede que
+// nenhum teto se publique sem a frase "com os consertos desenhados até hoje". Um
+// sinal barato de que ela foi violada é a palavra natureza e os disfarces dela.
+//
+// Isto é um SINAL e não uma prova: ele acusa a frase, e quem escreveu diz se há
+// prova ao lado ou se há um degrau que ninguém desenhou. Por isso ele lista e
+// falha, em vez de tentar julgar o contexto.
+{
+  const DISFARCES = [
+    /não tem conserto de software/i,
+    /não têm conserto de software/i,
+    /é da cadência(?! da cena e a decisão)/i,
+    /não dá para automatizar/i,
+    /limite de natureza/i,
+  ];
+  const achados = [];
+  for (const nome of fs.readdirSync(DOCS).filter((f) => f.endsWith('.md'))) {
+    const linhas = fs.readFileSync(path.join(DOCS, nome), 'utf8').split(/\r?\n/);
+    for (let i = 0; i < linhas.length; i += 1) {
+      const l = linhas[i];
+      if (!DISFARCES.some((re) => re.test(l))) continue;
+      // A menção que ESTÁ retratando a frase não conta: ela vem riscada, dentro
+      // de uma caixa ⚠, ou com a palavra FALSA/CORRIGIDO por perto.
+      const volta = linhas.slice(Math.max(0, i - 4), i + 5).join(' ');
+      if (/~~|⚠|FALSA|FALSO|CORRIGIDO|declarada? falsa|era falsa|leitura anterior|o alcance d|disfarces|desmente|regra de constru/i.test(volta)) continue;
+      achados.push(`${nome}:${i + 1}: ${l.trim().slice(0, 90)}`);
+    }
+  }
+  if (achados.length) {
+    console.log(`\n  ✗ ${achados.length} frase(s) de LIMITE NATURAL sem retratação por perto:`);
+    for (const x of achados) console.log(`      ${x}`);
+    console.log('    Ver a regra do teto no `02`: nenhum teto sem "com os consertos'
+      + ' desenhados até hoje", e todo resíduo com a pergunta do que o tiraria.');
+    process.exit(1);
+  }
+  console.log('  ✓ nenhuma frase de limite natural sem retratação');
+}
+
 if (!citacoes) {
   console.log('  ✗ nenhuma citação de linha encontrada: o teste ficou cego');
   process.exit(1);

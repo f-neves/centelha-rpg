@@ -13,6 +13,36 @@ disso na §2.4.
 
 ---
 
+## O QUE ESTA FRENTE MEDIU, E O QUE ELA NÃO MEDIU
+
+**Ela mediu o mestre ARBITRANDO, e não o mestre JOGANDO.** É o achado que muda o
+significado de todo o resto, e ele não é ressalva de rodapé.
+
+Nas 21.600 batalhas os dois lados são robôs. Por isso **declarar custou zero
+gesto**: ninguém escolhe ação, alvo, manobra nem modo de deslocamento, porque a
+política decide sozinha dentro do avanço. Tudo o que sobrou na tela do mestre foi
+transcrição, e é por isso que a linha entre custo e jogo encontrou **100% de custo**.
+
+**Numa mesa de verdade o mestre joga os inimigos**, e as declarações de um lado
+inteiro são dele:
+
+| o mestre em cena | decisões dele por batalha | Ticks entre duas decisões |
+|---|---:|---:|
+| **só arbitra** (o que esta frente mediu) | **0,3** | **125,2** |
+| **joga um lado** (a mesa normal) | **12,8 a 14,3** | **2,7 a 3,0** |
+
+Uma batalha tem 39,1 Ticks. Três consequências, e as três são leitura e não medição:
+
+- **o trabalho medido aqui é o de arbitrar.** O de jogar não foi medido, e não é o
+  mesmo trabalho;
+- **os sete degraus tiram transcrição e não tiram decisão nenhuma.** Nenhum deles
+  toca `declarar`, `fugir` ou `redirecionar`, que são as três paradas de escolha;
+- **a preocupação de que o mestre vire espectador estava errada pelo mesmo motivo
+  que o resto desta frente esteve errado: o denominador não tinha o lado que ele
+  joga.** Ele decide a cada 2,7 Ticks, catorze vezes por batalha.
+
+---
+
 ## 1 · O QUE FOI MEDIDO
 
 A pergunta é uma só: **quanto do trabalho do mestre, numa batalha do Grid, a
@@ -94,16 +124,16 @@ que pedem uma escolha humana de verdade, que são 4% delas.
 | | trabalho | do de hoje | o que sai |
 |---|---:|---:|---|
 | hoje, modo `mesa` | 1.171.957 | 100% | · |
-| + a mesa deixa de digitar os totais | 773.481 | 66,0% | os dois números digitados por golpe (`R:181`) |
-| + avanço unificado | 573.255 | 48,9% | o ⏭ do Tick morto, e um cartão por parada (`R:182`) |
-| + a folha deixa de pedir transcrição | **448.224** | **38,2%** | o resto da aritmética (`R:183`) |
+| + a mesa deixa de digitar os totais | 773.481 | 66,0% | os dois números digitados por golpe (`R:184`) |
+| + avanço unificado | 573.255 | 48,9% | o ⏭ do Tick morto, e um cartão por parada (`R:185`) |
+| + a folha deixa de pedir transcrição | **448.224** | **38,2%** | o resto da aritmética (`R:186`) |
 
-Os 61,8% estão em `R:185`.
+Os 61,8% estão em `R:188`.
 
 > **Os 61,8% são o alcance DESTES TRÊS DEGRAUS, e não um limite de princípio.** A
 > leitura anterior dizia que o resíduo "não tem conserto de software", e a linha
 > desmente: o resíduo de 448.224 é 55% de ⏭ que param e 45% do botão do veredito
-> (`R:184`), e **os dois são custo**. O ⏭ que para abre uma folha que é transcrição;
+> (`R:187`), e **os dois são custo**. O ⏭ que para abre uma folha que é transcrição;
 > o botão transcreve uma comparação que a tela já fez. O que os mantém de fora é
 > nenhum dos três degraus tê-los atacado, e não a natureza deles.
 
@@ -114,15 +144,15 @@ uma afirmação sobre a forma do resíduo, não sobre ele ser irredutível.
 ### O avanço automático, medido sozinho
 
 Se o ⏭ pulasse os Ticks em que não há nada a fazer, ele tiraria de **10,8% a 17,9%**
-do trabalho do mestre no modo `mesa` (`R:190`), e de **16,3% a 27,2%** no modo
-`site` (`R:199`). O piso conta só os Ticks em que nada parou **e** nada andou; o
+do trabalho do mestre no modo `mesa` (`R:193`), e de **16,3% a 27,2%** no modo
+`site` (`R:202`). O piso conta só os Ticks em que nada parou **e** nada andou; o
 teto conta todo Tick sem parada, inclusive aqueles em que as peças andaram e o
 mestre talvez quisesse ver.
 
 Com jogador declarando à mão, a fração cai, mas **por crescimento do denominador e
 não por o mestre trabalhar menos**: numa mesa em que os jogadores declaram um lado e
 o robô declara o outro, fica entre 8,8% e 9,0% com dois gestos por declaração, e
-entre 7,4% e 7,7% com quatro (`R:188` a `R:198`).
+entre 7,4% e 7,7% com quatro (`R:191` a `R:201`).
 
 ### O que esta medição NÃO diz
 
@@ -148,10 +178,10 @@ digitar o acerto e digitar o dano. **Rolar não é nenhum deles.** Um punhado de
 na mesa não custa gesto de tela nenhum, e por isso não aparece nesta conta em modo
 algum.
 
-| dos 34,0% que o modo `site` valia | gestos | o que é |
-|---|---:|---|
-| rolar o dado | **0** | jogo, e nunca esteve na conta |
-| digitar os dois totais | **398.476** | custo puro |
+| dos 34,0% que o modo `site` valia | gestos | o que é | procedência |
+|---|---:|---|---|
+| rolar o dado | **0** | jogo, e nunca esteve na conta | `custo-tela.mjs`: dado na mão não é gesto de tela |
+| digitar os dois totais | **398.476** | custo puro | **derivado**: 597.714 − 199.238 (`R:166`), com a repartição dos 3 gestos de `resolver` vinda de `custo-tela.mjs` |
 
 **Os 34,0% eram transcrição, inteiros.** A decisão de manter o dado na mão do
 jogador não custa um ponto sequer: o que tem de sair é a mesa ter de somar o que
@@ -171,10 +201,53 @@ código e não de frequência:
 - para o mestre, os três números estão sempre preenchidos. **Não há lance em que o
   veredito não seja derivável.**
 
-**Então os 17% saem inteiros e o botão vira confirmação.** O julgamento não mora no
-botão: mora **acima dele**, no campo de ajuste e nos quatro campos da ficha do lance,
-que é onde o mestre escreve o que a regra não modelou. Esses ficam, e é isso que a
-folha continua pedindo.
+**Mas "sai inteiro" não se sustenta, e a revisão da rodada 05 derrubou as duas
+afirmações que o sustentavam.** As duas eram minhas e as duas estavam erradas:
+
+| o que eu escrevi | o que o código diz |
+|---|---|
+| "o Grid já guarda os dois separados, a conta da régua e o botão do mestre" | guarda **só com a bancada ligada**: `registrarLance` começa com `if (!LANCES_LIGADO) return;`, e `LANCES_LIGADO` é o parâmetro `?lances=1`, desligado por padrão. O destino é `window.__LANCES`, memória da página, e o único consumidor é `coletar-lances.mjs`. Não há coluna nem migração no Supabase. **Numa mesa de verdade os dois campos não coexistem em lugar nenhum, e a página descarta tudo ao fechar** |
+| "não há lance em que o veredito não seja derivável" | há **três caminhos que devolvem `null`**: `lance.ts:143` (`if (alvo.defesaBase == null) return null`), `grid.astro:8187` (o ternário exige `soma != null && def2 != null`) e `grid.astro:8106` (`defesaBase: r?.defesa ?? null`) |
+
+**O item passa a valer entre 0% e 17,0%**, e a banda não é de imprecisão, é de
+ignorância: o valor depende da taxa em que a mesa aperta um botão diferente do que a
+régua calculou, e **esse número não existe em lugar nenhum**. Se a mesa contrariar a
+régua com frequência, o botão é decisão e o item vale zero.
+
+**A fração que sai da banda por outro motivo, e ela não é medível aqui.** Quando
+`defesaBase` é nula, o botão automático **não tem o que confirmar**: `saidaDoAtaque`
+não é chamada, o veredito sai `null`, e aqueles lances continuam pedindo o mestre.
+Nesta bateria a fração é **zero**, porque toda peça vem de arquétipo resolvido pela
+régua e o resumo sempre traz `defesa`. **Isso não mede a mesa**: lá a Defesa falta
+quando a peça não tem ficha resolvida, e com que frequência isso acontece depende de
+como as mesas montam encontro. Não é medível com bateria.
+
+### As duas leituras do item 2, e a reconciliação
+
+**Eu respondi à objeção por outro caminho, e o caminho é bom, mas responde outra
+pergunta.** Ele está aqui inteiro, porque objeção respondida por outro caminho tem de
+mostrar os dois:
+
+- **o caminho dela:** os 17,0% valem se o botão for transcrição, e a única evidência
+  que separa transcrição de julgamento é a taxa em que a mesa contraria a régua. Essa
+  taxa não existe. Logo a conferência do item caiu;
+- **o meu:** a tela não calcula o veredito a partir dos números da régua. Ela o
+  calcula a partir do **campo de ajuste que o mestre digita** e da **Defesa que o
+  mestre corrige** (`contaDoLance`). Então o veredito de hoje já sai dos números
+  corrigidos à mão, e automatizar o botão não o torna mais errado do que é hoje;
+- **a reconciliação, e ela é a favor dela:** o meu argumento cobre as **ENTRADAS** do
+  botão, e não a **SAÍDA** dele. Ele mostra que a tela não vai confirmar uma conta
+  pior do que a que o mestre confirmaria com os mesmos campos. **Não mostra que o
+  mestre nunca aperta um botão contrário à conta**, e é exatamente isso que a taxa
+  mediria. Um mestre que decide "errou" onde a aritmética diz "acerto" está julgando,
+  e automatizar tira esse julgamento dele.
+
+**Então a objeção dela fica de pé, e a banda de 0 a 17,0% é a leitura correta.** O
+que o meu argumento derrubou foi só o bloqueio: as duas contas do item 4 não impedem
+o item 2, porque a correção delas acontece acima do botão, em campos que ficam.
+
+**O julgamento que resta mora acima do botão**, no campo de ajuste e nos quatro
+campos da ficha do lance. Esses ficam, e é isso que a folha continua pedindo.
 
 **A condição, e ela liga tudo:** o veredito só é confiável se os números de cima
 estiverem certos, e hoje eles não estão sempre, porque o Grid calcula coisas que não
@@ -313,12 +386,12 @@ O resíduo de hoje é o ⏭ que abre uma parada (164.709, 14,1%) e o cartão ven
 (199.238, 17,0%). **Nenhum dos dois é decisão.** E o avanço unificado já abre a folha
 do golpe que o fez parar: **o cartão daquele golpe some junto com o clique.**
 
-| | gestos | do de hoje |
-|---|---:|---|
-| ⏭, um por Tick com golpe | 74.207 | 6,3% |
-| cartões que sobram, porque um Tick tem 2,68 golpes e a parada absorve um | 125.031 | 10,7% |
-| **piso, com um cartão por golpe** | **199.238** | **17,0%** |
-| **piso, se a parada abrir todos os golpes do Tick** | **74.207** | **6,3%** |
+| | gestos | do de hoje | procedência |
+|---|---:|---|---|
+| ⏭, um por Tick com golpe | 74.207 | 6,3% | `R:144`, o nível SEM-GESTO |
+| cartões que sobram, porque um Tick tem 2,68 golpes e a parada absorve um | 125.031 | 10,7% | `R:175` |
+| **piso, com um cartão por golpe** | **199.238** | **17,0%** | `R:123` |
+| **piso, se a parada abrir todos os golpes do Tick** | **74.207** | **6,3%** | `R:144` |
 
 ### E os 6,3% também não são limite: VER não é CLICAR
 
@@ -333,10 +406,10 @@ redirecionamento do golpe cujo alvo já caiu, que numa mesa com peça de jogador
 caixa de escolha (está na lista ⚑ do manifesto, como custo que esta bateria não
 enxerga).
 
-| | ocasiões | dos 74.207 |
-|---|---:|---|
-| paradas que pedem escolha humana (redirecionamento) | **2.995** | **4,0%** |
-| paradas em que o mestre só precisa VER | **71.212** | **96,0%** |
+| | ocasiões | dos 74.207 | procedência |
+|---|---:|---|---|
+| paradas que pedem escolha humana (redirecionamento) | **2.995** | **4,0%** | `R:126` |
+| paradas em que o mestre só precisa VER | **71.212** | **96,0%** | **derivado**: 74.207 (`R:144`) − 2.995 (`R:126`) |
 
 **Então há um degrau 7, e ele é o maior de todos.** Se o avanço mostra o percurso em
 vez de pedir confirmação a cada parada, o trabalho cai de 74.207 para a ordem de
@@ -351,34 +424,58 @@ nada além de olhar.
 
 ### A fila
 
-| # | o conserto | o que tira | está no Grid? |
-|---|---|---:|---|
-| 1 | **a folha aceita o dado em vez do total**: a mesa rola na mão e a tela deixa de pedir a soma digitada | **34,0%** · 398.476 | **não** |
-| 2 | **o botão do veredito vira confirmação**: a tela já calcula os três resultados com uma função pura | **17,0%** · 199.238 | **não**, e depende do item 4 |
-| 3 | **o avanço unificado**: o ⏭ corre até a parada que precisa do mestre e abre a folha do golpe que o fez parar | **32,0%** · 375.005 vira 74.207, e leva junto 74.207 cartões | **não** |
-| 4 | **a Defesa −4 da Corrida e o contrapé da iniciativa**, as duas únicas contas exibidas e não aplicadas que sobraram | sem ocasião nesta bateria, e sem instrumento no log | **não** |
-| 5 | **a parada abre todos os golpes do Tick**, e não só um | **10,7%** · 125.031 | **não** |
-| 6 | **o L25**: as quinze bandeiras lidas pelo motor | **zero** para o mestre, e é o que sete dos itens da §C2 viraram | **não** |
-| 7 | **o avanço MOSTRA o percurso em vez de pedir confirmação**: ver não é clicar | **6,0%** · 71.212 dos 74.207 | **não** |
+> **Dos sete itens, UM está inteiramente medido** (o 1, 34,0%, `R:170`). O **2**
+> depende de um número que hoje não é medível fora de mesa real; o **3** tem 7,7 dos
+> seus 32,0 pontos apoiados numa definição que o agregado passou a medir só agora
+> (`R:144`); o **4** declara-se não medido; o **7** sai de uma contagem de paradas e
+> não de gestos. **Isto decide por onde começar, e não o tamanho dos itens.**
 
-**A ordem não é a numeração, e ela mudou.** O item 4 **não** bloqueia o item 2: o
-veredito já é calculado a partir dos campos que o mestre corrige, então automatizar
-o botão não confirma nada que o mestre não confirmaria. **Começa-se pelo 1 e pelo 2**,
-que são independentes entre si e somam 51,0%. O 3 é o maior sozinho e também não
-depende de ninguém. O 5 refina o 3, e o 7 refina o 5. O 4 entra quando alguém quiser
-as duas contas aplicadas, e a medição dele pede campo novo no log. O 6 não alivia o
-mestre em nada e destrava a segunda bateria.
+| # | o conserto | o que tira | procedência | está no Grid? |
+|---|---|---:|---|---|
+| 1 | **a folha aceita o dado em vez do total**: a mesa rola na mão e a tela deixa de pedir a soma digitada | **34,0%** · 398.476 | `R:170` para os 34,0%; o gesto é **derivado**: 597.714 − 199.238 (`R:166`), com a repartição dos 3 gestos de `resolver` em 1 de abrir e 2 de digitar vinda de `custo-tela.mjs` | **não** |
+| 2 | **o botão do veredito vira confirmação** | **0 a 17,0%** · até 199.238 | `R:123` para os 199.238. A banda **não tem procedência**, e é esse o ponto: ela é ignorância, não imprecisão | **não** |
+| 3 | **o avanço unificado**: o ⏭ corre até a parada que precisa do mestre e abre a folha do golpe que o fez parar | **32,0%** · 375.005 vira 74.207 | `R:129` para os 375.005 e **`R:144` para os 74.207**, que é o nível SEM-GESTO, medido no agregador desde esta rodada | **não** |
+| 4 | **a Defesa −4 da Corrida e o contrapé da iniciativa** | sem número | **nenhuma**: sem ocasião nesta bateria e sem instrumento no log | **não** |
+| 5 | **a parada abre todos os golpes do Tick**, e não só um | **10,7%** · 125.031 | `R:175` | **não** |
+| 6 | **o L25**: as quinze bandeiras lidas pelo motor | **zero** para o mestre | · | **não** |
+| 7 | **o avanço MOSTRA o percurso em vez de pedir confirmação**: ver não é clicar | **6,0%** · 71.212 dos 74.207 | `R:144` e `R:126`, e é **derivado**: 74.207 − 2.995 | **não** |
 
-| até onde se vai | trabalho do mestre | teto |
-|---|---:|---:|
-| hoje | 1.171.957 | · |
-| itens 1, 2 e 3 | 199.238 | 83,0% |
-| + item 5 | 74.207 | 93,7% |
-| + item 7 | ~2.995 | **99,7%** |
+**A ordem não é a numeração, e o primeiro da fila não é o maior.**
+
+| ordem | item | por quê aí |
+|---|---|---|
+| 1º | **4** · as duas contas exibidas e não aplicadas | é piso de tudo o que está publicado: enquanto elas existirem, o total de `R:169` assume zero correção à mão |
+| 2º | **gravar o par (veredito da régua, botão do mestre)** em caminho de produção | a coisa mais barata da fila, e a única que transforma a banda de 0 a 17,0% num número. Uma coluna e uma escrita, fora do `?lances=1` |
+| 3º | **1** (34,0%) e **3** (32,0%) | os dois maiores, os únicos com procedência de agregado, e independentes entre si |
+| 4º | **5** (10,7%) | refinamento do 3 |
+| 5º | **2** (0 a 17,0%) | só depois de o número existir. Antes disso, fazê-lo é apostar dezessete pontos numa premissa refutada |
+| 6º | **6** · o L25 | zero para o mestre, e destrava a segunda bateria |
+| · | **7** | é ESCALA: decidir se o mestre precisa confirmar cada Tick em que algo acontece é decisão de jogo |
+
+**O item 4 não bloqueia o item 2**, e o argumento está na seção do botão: a correção
+das duas contas acontece **acima** do botão, em campos que ficam. Ele vem primeiro
+por ser piso do que já está publicado, e não por bloqueio.
+
+Todas as linhas abaixo são **derivadas por subtração** do total de `R:169`, com o
+tamanho de cada item vindo da tabela da fila:
+
+| até onde se vai | trabalho do mestre | teto | a subtração |
+|---|---:|---:|---|
+| hoje | 1.171.957 | · | `R:169` |
+| itens 1 e 3 | 398.476 | 66,0% | − 398.476 − 375.005 |
+| + item 5 | 273.445 | 76,7% | − 125.031 |
+| + item 2, se a banda fechar em 17,0% | 74.207 | 93,7% | − 199.238 |
+| + item 7 | ~2.995 | **99,7%** | − 71.212 · o que sobra são os redirecionamentos, `R:126` |
+
+**Os 93,7% e os 99,7% dependem do item 2 valer 17,0%, e ele vale entre 0 e 17,0%.**
+Com o item 2 em zero, a escada para em **76,7%**. É a diferença entre um número e
+uma banda, e ela é grande.
 
 **O teto do projeto não é 61,8%.** Cada vez que alguém escreveu um teto nesta
 frente, ele era o alcance dos consertos que estavam desenhados naquele dia, e a
-frase que o acompanhava dizia "natureza". Três vezes.
+frase que o acompanhava dizia "natureza". Três vezes. **Estes também são o alcance
+dos consertos desenhados até hoje**, e a pergunta do que tiraria o resíduo está
+respondida no item 7.
 
 ### O que sobra para o mestre FAZER, e não é conclusão, é material
 
@@ -405,22 +502,25 @@ parada nenhuma: não está instrumentado e não se mede assim.
 
 **Quantas, nas 9.600 batalhas da população publicada:**
 
-| | ocasiões | por batalha |
-|---|---:|---:|
-| declarar | 247.065 | 25,7 |
-| fugir | 7.570 | 0,8 |
-| redirecionar | 2.995 | 0,3 |
+| | ocasiões | por batalha | procedência |
+|---|---:|---:|---|
+| declarar | 247.065 | 25,7 | `R:124` |
+| fugir | 7.570 | 0,8 | `R:125` |
+| redirecionar | 2.995 | 0,3 | `R:126` |
 
 **E aqui está a virada, e ela desfaz o "espectador".** Todo o cálculo desta frente
 foi feito com **dois robôs**, e por isso `declarar` custou zero gesto. Numa mesa de
 verdade o mestre **joga os inimigos**: as declarações de um lado inteiro passam a ser
 dele. A repartição está medida:
 
-| quem o mestre joga | decisões dele | por batalha |
-|---|---:|---:|
-| ninguém, só arbitra | 2.995 | 0,3 |
-| o lado `a` (116.293 declarações) | 123.073 | 12,8 |
-| **o lado `b` (130.772 declarações)** | **137.552** | **14,3** |
+Todas as linhas são **derivadas**: a repartição das declarações por lado sai de
+`R:191`, e a soma junta a metade das fugas (`R:125`) e os redirecionamentos (`R:126`).
+
+| quem o mestre joga | decisões dele | por batalha | a soma |
+|---|---:|---:|---|
+| ninguém, só arbitra | 2.995 | 0,3 | só os redirecionamentos |
+| o lado `a` (116.293 declarações) | 123.073 | 12,8 | **derivado**: 116.293 + 3.785 + 2.995 |
+| **o lado `b` (130.772 declarações)** | **137.552** | **14,3** | **derivado**: 130.772 + 3.785 + 2.995 |
 
 **A distância média entre duas decisões do mestre, depois dos sete degraus:**
 
@@ -514,7 +614,7 @@ mesmo arquétipo e por isso qualquer assimetria é defeito:
 |---|---:|---:|
 | declarações do lado `b` por declaração do lado `a`, uníssono | 1,178 | **1,031** |
 | a repartição publicada | 45,1% / 54,9% | **47,1% / 52,9%** |
-| o trabalho do mestre | 1.095.869 | 1.171.957 |
+| o trabalho do mestre | 1.095.869 | 1.171.957 | antes: `09-bmtlxp622.txt`; depois: `R:169` |
 | a economia do avanço, modo `mesa` | 11,4% a 20,0% | 10,8% a 17,9% |
 | **o fim da escada** | **38,2%** | **38,2%** |
 | **o teto dos três degraus então desenhados** | **61,8%** | **61,8%** |

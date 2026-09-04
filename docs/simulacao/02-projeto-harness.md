@@ -63,6 +63,7 @@ olhar onde ele mora.
 | **5** | o **"nada" da ESCALA** (o espelho) | "a revisora escalou uma decisão" | ela escreveu `nada.` e justificou embaixo, em prosa; a regra era "a seção inteira é a palavra nada", leu prosa, leu conteúdo, e conteúdo na ESCALA encerra o ciclo | acendeu na **rodada 02, com dinheiro gasto**: o script parou anunciando "a revisora ESCALOU" contra um texto que dizia o contrário |
 | **6** | a **digital da repetição** (o espelho) | "as duas respostas tratam do mesmo assunto" | com UM identificador em cada item, o mesmo identificador dava semelhança 1,00; dois itens diferentes sobre o mesmo objeto (`ocasião · passo` fora do placar, e `ocasião · passo` guardando o piso só por cima) eram "o mesmo assunto" | achado na mesma rodada, conferindo à mão o que a trava seguinte diria se a da ESCALA não tivesse parado antes |
 | **7** | o **contador de dinheiro** | "esta execução não gastou nada" | a chamada morreu por limite de conta depois de duas baterias, cinco arquivos e um commit; uma chamada que falha devolve custo 0, e 0 entra na soma como se fosse medido | o RESUMO da rodada 03 publicou **US$ 0,00** para a execução mais cara até então |
+| **9** | o **instrumento de bancada citado como prova sobre o produto** | "o Grid guarda os dois vereditos" | ele guarda só com `?lances=1`, que é a bancada: em mesa de verdade os dois campos não coexistem em lugar nenhum e a página descarta tudo ao fechar | achado pela revisora na rodada 05, e é a **segunda vez**: na rodada 04 o espelho comparou o harness contra um mock que chama a função do harness |
 | **8** | o **documento que se contradiz** | "os dois trechos podem estar certos" | a `09` D31 diz que o eixo E4 foi cortado por inerte, e a `09` §2.4 atribui um efeito ao passo dobrado desse mesmo eixo. **Nenhum instrumento compara afirmação com afirmação**, então "nada acusou contradição" saía igual a "não há contradição" | achado à mão, conferindo o aviso da rodada 03 |
 
 **O quinto e o sexto casos custaram dinheiro, e é a diferença deles para os quatro primeiros.**
@@ -111,6 +112,14 @@ falso positivo até ninguém mais ler. **O que dá para fazer barato é o invers
 abaixo: toda decisão que CORTA alguma coisa fica numa lista só, escrita como PROIBIÇÃO
 OBSERVÁVEL, e a conferência é ler a lista contra o documento. A lista não acha contradição em
 geral; ela acha a contradição que importa, que é o texto afirmando aquilo que uma decisão tirou.
+
+**O nono caso tem uma simetria que vale escrever: aconteceu duas vezes com os papéis
+trocados.** Na rodada 04 a executora afirmou que a mesa compartilha a montagem da
+cena, e **a revisora aceitou**; na passada do `ESTADO.md` a executora leu o
+`?lances=1` como registro de mesa, e **a revisora pegou**. Nas duas o erro é o mesmo:
+citar um instrumento sem conferir o que ele liga a quê e onde ele roda. **Bancada
+prova coisa sobre a bancada.** A obrigação que sai daí: antes de citar um instrumento
+como prova, diga em que ambiente ele roda e qual é o consumidor do que ele grava.
 
 ## O TETO É DO DESENHO, E NUNCA DA NATUREZA · regra de construção
 

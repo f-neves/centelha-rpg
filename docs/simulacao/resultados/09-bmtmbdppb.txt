@@ -1,6 +1,6 @@
 
 · bateria bmtmbdppb (grande) · commit b9fa8ac · dados 36ff54d18bb95d9a
-· agregador b9fa8ac
+· agregador 0d368b1
   21600 batalhas em 96 células · 0 inválidas (fora de toda média)
 
   O QUE ESTA BATERIA MEDE, e é o que ela NÃO mede que decide o alcance:
@@ -140,8 +140,11 @@ o ⏭ do relógio     ·        1          ·            ·     375005          
     Ticks de combate: 375005
       TETO · sem parada nenhuma:  210296 (56%)  <- mas as peças ANDAM em parte deles
       PISO · e sem passo nenhum:  126019 (34%)  <- o tabuleiro não mudou: não há o que ver
+      SEM-GESTO · o mestre nada tem a fazer: 300798 (80%)  <- nenhum golpe venceu: as outras cinco paradas custam zero gesto
+      e o complemento dele, o Tick COM gesto do mestre: 74207 (20%)  <- é o piso do ⏭ com avanço unificado
     TETO: ⏭ 375005 -> 164709 · trabalho 1171957 -> 961661 (18% a menos) · composição iii 62% · ⏭ 17% · ii 21%
     PISO: ⏭ 375005 -> 248986 · trabalho 1171957 -> 1045938 (11% a menos) · composição iii 57% · ⏭ 24% · ii 19%
+    SEM-GESTO: ⏭ 375005 -> 74207 · trabalho 1171957 -> 871159 (26% a menos) · composição iii 69% · ⏭ 9% · ii 23%
 
   O GANHO POR CÉLULA, em cliques por batalha (e não em fração):
   célula                    gestos hoje    teto    piso   teto%   piso%
