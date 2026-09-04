@@ -36,16 +36,17 @@ O item continua plausível; o que caiu foi a conferência dele.
 
 **B2 · "Não há lance em que o veredito não seja derivável" é falso no código.**
 
-`ESTADO.md:171-172`. O código diz o contrário em dois pontos, e nos dois o veredito
-sai `null`:
+`ESTADO.md:171-172`. O código diz o contrário, e nos três caminhos o veredito sai
+`null`:
 
 - `lance.ts:143` · `if (alvo.defesaBase == null) return null;`
-- `grid.astro:8187` · `soma != null && def2 != null ? saidaDoAtaque(...) : null`
+- `grid.astro:8187` · `soma != null && def2 != null ? saidaDoAtaque(...) : null`,
+  que são dois caminhos: o total ausente e a Defesa ausente
 - `grid.astro:8106` · `defesaBase: r?.defesa ?? null` · alvo cujo resumo não traz
-  `defesa` produz `def2 = null`, e o veredito não é derivável
+  `defesa` produz `def2 = null`
 
 `saidaDoAtaque` é mesmo função pura de três números (`quase-acerto.ts:215-219`), e
-isso confirmo. O que não se sustenta é o "sempre": a folha nasce com dois caminhos
+isso confirmo. O que não se sustenta é o "sempre": a folha nasce com caminhos
 declarados para o não-derivável, e nenhum foi medido em frequência.
 
 ## CORRIGE
@@ -133,9 +134,7 @@ julgamento e qual é conta é a mesma decisão de jogo do E1.**
 
 **E3 · O que só uma mesa real responde**, e é o que fecha o B1: com que frequência
 o mestre aperta um botão diferente do que a régua calculou. Hoje isso não é medível
-nem retroativamente, porque nada foi gravado. Ligar a gravação é engenharia e eu
-decidiria por ligá-la; **usar uma sessão de jogo de verdade como instrumento de
-medição é decisão sua**, e o custo é que alguém joga sabendo que está sendo medido.
+nem retroativamente, porque nada foi gravado.
 
 ## VEREDITO
 
@@ -150,13 +149,13 @@ que o botão do veredito é transcrição não existe (B1). **O número está ce
 sustentação dele tem dois furos**, o que é diferente de o número estar errado, e é
 por isso que isto é PARA com ESCALA, e não uma refutação.
 
-**Sobre a fila ter sido reescrita por argumento (ver também o adendo abaixo):** três dos seis itens dependem de
-número que ninguém mediu, e nomeando · o **item 2** depende da taxa em que a mesa
-contraria a régua (não medida, e hoje não medível, B1); o **item 3** tem 7,7 dos
-seus 32,0 pontos apoiados numa definição que o agregado não mede (C1); o **item 4**
-declara-se não medido, honestamente (`ESTADO.md:267`). O **item 1** (34,0%) é o
-único inteiramente medido, com procedência em `R:167`. O **item 5** (10,7%) sai de
-`R:172` e também fecha.
+**Sobre a fila ter sido reescrita por argumento (ver também o adendo abaixo):** três
+dos seis itens dependem de número que ninguém mediu, e nomeando · o **item 2**
+depende da taxa em que a mesa contraria a régua (não medida, e hoje não medível,
+B1); o **item 3** tem 7,7 dos seus 32,0 pontos apoiados numa definição que o
+agregado não mede (C1); o **item 4** declara-se não medido, honestamente
+(`ESTADO.md:267`). O **item 1** (34,0%) é o único inteiramente medido, com
+procedência em `R:167`. O **item 5** (10,7%) sai de `R:172` e também fecha.
 
 ---
 
@@ -171,27 +170,21 @@ da folha) ficam intocados por instrução: o humano decide depois.
 Os 199.238 gestos são medidos (`R:123`). O que **não** é medido é se aquele gesto é
 transcrição ou julgamento. Então o item deixa de valer 17,0% e passa a valer
 
-> **entre 0% e 17,0%**, com o valor decidido pela taxa em que a mesa aperta um
-> botão diferente do que a régua calculou · um número que hoje não existe em lugar
-> nenhum e não é medível fora de mesa real (ver B1).
+> **entre 0% e 17,0%**.
 
-**Não é banda de imprecisão, é banda de ignorância.** Se a mesa contrariar a régua
-com frequência, o botão é decisão e o item vale zero.
+**Não é banda de imprecisão, é banda de ignorância.** Ver a nota de fecho: o motivo
+que eu dei para a banda caiu, e o que a sustenta hoje é outro.
 
 ## A2 · A ordem nova, e o pré-requisito que não é o item 4
 
 | ordem | item | por quê aí |
 |---|---|---|
 | 1º | **4** · as contas calculadas e não aplicadas | inalterado: é piso de tudo o que está publicado, e pré-requisito do 2 |
-| 2º | **novo** · gravar o par (veredito da régua, botão do mestre) em caminho de produção | a coisa mais barata da fila e a única que transforma a banda 0–17,0% num número. Uma coluna e uma escrita, fora do `?lances=1` |
+| 2º | **novo** · gravar o par (veredito da régua, botão do mestre) em caminho de produção | a única coisa que transforma a banda num número. Ver a nota de fecho: **montar é engenharia, ligar é do humano** |
 | 3º | **1** (34,0%) e **3** (32,0%) | os dois maiores, e os únicos com procedência de agregado. Independentes entre si |
 | 4º | **5** (10,7%) | refinamento do 3, como já estava |
-| 5º | **2** (0 a 17,0%) | só depois de o número existir. Antes disso, fazê-lo é apostar 17 pontos numa premissa refutada |
+| 5º | **2** (0 a 17,0%) | só depois de o número existir |
 | 6º | **6** · o L25 | zero para o mestre, e destrava a segunda bateria |
-
-**A divisão de quem decide o quê, sobre o item novo:** ligar a gravação é
-engenharia, e **eu decido por ligar**. Usar uma sessão de jogo de verdade como
-instrumento de medição é decisão do humano, e é o E3 desta resposta.
 
 ## A3 · A primeira linha da fila, e ela vai antes da tabela
 
@@ -235,3 +228,37 @@ instrumento de medição é decisão do humano, e é o E3 desta resposta.
    de `09:1261-1265` declara falsa, e nomeia as mesmas duas coisas que a caixa diz
    serem custo. E o `Pendencias.md` não conhece a fila nova: `93,7` só existe no
    `ESTADO.md`, e o `Pendencias` é o índice único do que está aberto.
+
+---
+
+# Nota de fecho · escrita depois, antes de este arquivo ser commitado
+
+O que está acima fica como foi escrito, porque é a resposta sobre `c9a17cc` e vale
+sobre ele. Isto marca o que mudou depois, para ninguém ler o de cima como corrente.
+
+**O B1 caiu pela metade, e o motivo é bom.** A executora respondeu por um caminho
+que eu não tinha considerado: **o veredito de hoje já sai de números corrigidos à
+mão**, porque a soma passa pelo campo de ajuste do mestre e a Defesa vem do campo
+da ficha do lance. A correção humana acontece **acima** do botão, então automatizá-lo
+não o torna mais errado do que já é. **A taxa em que a mesa contraria a régua deixa
+de importar**, e com ela cai o primeiro motivo pelo qual eu pus o item 2 no fim da
+fila. Aceito pelo humano, e por mim.
+
+**O B2 continua de pé, e é ele que sustenta a banda.** Os caminhos que devolvem
+`null` seguem sem tratamento, e a pergunta que ficou é o que o botão automático faz
+quando não há veredito a confirmar.
+
+**Uma precisão para quem for medir a fração:** dos três caminhos, só um sobrevive à
+fila. O campo do total vazio (`grid.astro:8187`, `soma`) é transitório e **some com
+o item 1**, porque depois dele a folha deixa de esperar um total digitado. O que
+fica é `defesaBase` ausente no resumo do alvo (`grid.astro:8106`, `lance.ts:143`).
+Então o número a medir não é "vereditos nulos": é **a fração de lances cujo alvo não
+tem `defesa` no resumo**, e é ela que dimensiona a banda de 0 a 17,0%.
+
+**E uma correção ao meu A2, sobre quem decide.** Eu decidi por ligar a gravação do
+par régua×botão tratando-a como instrumentação, e metade disso não era minha:
+**gravar em produção é gravar mesa de gente de verdade**. Montar e deixar desligado
+é engenharia; ligar é do humano, por mesa e não global, com o que fica gravado,
+onde, por quanto tempo e quem vê. A regra passou a valer daqui em diante: **decisão
+de engenharia que grava dado de mesa real é ESCALA, mesmo quando o mecanismo é
+trivial.**

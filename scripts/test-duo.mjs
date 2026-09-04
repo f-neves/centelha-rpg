@@ -28,6 +28,7 @@ import {
   temConteudo,
 } from './duo-leitura.mjs';
 import * as GASTO from './duo-gasto.mjs';
+import { sujeira, limpaPara } from './duo-arvore.mjs';
 
 const falhas = [];
 const ok = (c, m) => { console.log((c ? '  ✓ ' : '  ✘ ') + m); if (!c) falhas.push(m); };
@@ -222,6 +223,43 @@ console.log('\n· o acumulado entre execuções, que é o teto por ASSUNTO');
   let recusouCusto = false;
   try { GASTO.somar(g2, { custo: undefined }); } catch { recusouCusto = true; }
   ok(recusouCusto, 'somar sem custo é recusado, e não tratado como zero');
+}
+
+console.log('\n· a árvore suja, e o que é o PRODUTO do ciclo');
+{
+  // O CASO QUE TERIA PEGO O DEFEITO: a revisora escreveu a resposta dela e
+  // ninguém commitou ainda, que é o estado NORMAL entre a chamada dela e o
+  // commit do script. A trava não pode acender contra isso.
+  const respostaSolta = '?? docs/simulacao/caixa/05-revisora.md';
+  ok(limpaPara(respostaSolta, { toleraCaixa: true }),
+    'a resposta da revisora escrita e não commitada NÃO é árvore suja');
+  ok(sujeira(respostaSolta, { toleraCaixa: true }).toleradas.length === 1,
+    'e ela sai listada como tolerada, para a tolerância não ser silenciosa');
+
+  // E no worktree da EXECUTORA o mesmo arquivo continua encerrando: lá um
+  // arquivo solto é trabalho por commitar, e o aviso tem de descrever um commit.
+  ok(!limpaPara(respostaSolta, { toleraCaixa: false }),
+    'o mesmo arquivo solto na árvore da EXECUTORA continua encerrando');
+
+  // Qualquer outra coisa encerra, dentro ou fora da caixa.
+  ok(!limpaPara('?? scripts/coisa.mjs', { toleraCaixa: true }),
+    'arquivo solto FORA da caixa encerra');
+  ok(!limpaPara(' M docs/simulacao/caixa/README.md', { toleraCaixa: true }),
+    'arquivo RASTREADO e modificado DENTRO da caixa encerra: é resposta já commitada sendo editada');
+  ok(!limpaPara(' M src/pages/mesa/grid.astro', { toleraCaixa: true }), 'código modificado encerra');
+
+  // A mistura: uma resposta tolerada e uma sujeira de verdade não passa.
+  const mistura = '?? docs/simulacao/caixa/06-revisora.md\n M scripts/duo.mjs';
+  const st = sujeira(mistura, { toleraCaixa: true });
+  ok(st.toleradas.length === 1 && st.sujas.length === 1,
+    'uma resposta tolerada não faz passar a sujeira que veio junto');
+  ok(!limpaPara(mistura, { toleraCaixa: true }), 'e a mistura encerra');
+
+  ok(limpaPara('', { toleraCaixa: true }) && limpaPara('', {}),
+    'árvore vazia é limpa dos dois lados');
+  // O caminho entre aspas (git faz isso com espaço ou acento) tem de ser lido.
+  ok(limpaPara('?? "docs/simulacao/caixa/06-revisora.md"', { toleraCaixa: true }),
+    'o caminho entre aspas também é lido como sendo da caixa');
 }
 
 console.log(falhas.length

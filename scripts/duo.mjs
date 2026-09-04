@@ -35,6 +35,7 @@ import path from 'node:path';
 import { spawn, execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import * as GASTO from './duo-gasto.mjs';
+import { sujeira } from './duo-arvore.mjs';
 import { ilegivel, secao, dizNada, temConteudo, veredito, repetidos } from './duo-leitura.mjs';
 
 // ============================================================ as duas pastas
@@ -139,7 +140,18 @@ const MODELO_CHAMADA = arg('--model', '');
 
 // =================================================================== o básico
 const git = (dir, c) => execSync(`git ${c}`, { cwd: dir, encoding: 'utf8' }).trim();
-const limpa = (dir) => git(dir, 'status --porcelain') === '';
+/**
+ * A ÁRVORE ESTÁ LIMPA? E a resposta é diferente nos dois worktrees.
+ *
+ * No da EXECUTORA, qualquer coisa fora do índice é trabalho por commitar, e
+ * trabalho por commitar encerra: o aviso tem de descrever um commit.
+ *
+ * No da REVISORA, um arquivo não rastreado dentro de `docs/simulacao/caixa/` é o
+ * PRODUTO DO CICLO: ela escreve a resposta e quem commita é o script, depois. A
+ * regra e o porquê estão em `duo-arvore.mjs`.
+ */
+const limpa = (dir, toleraCaixa = false) =>
+  sujeira(git(dir, 'status --porcelain'), { toleraCaixa }).sujas.length === 0;
 const registro = [];
 const anote = (t) => { registro.push(t); console.log(t); };
 
@@ -565,8 +577,20 @@ for (let volta = 1; volta <= TETO_RODADAS; volta += 1) {
       + ' Sem ele a revisora abre a rodada sem contrato: sem as vigilâncias, sem o formato'
       + ' da resposta e sem a trava de regra de jogo, produzindo texto plausível e inútil.');
   }
-  anote(`  trava · árvore da revisora limpa? ${limpa(REV) ? '✓' : '■'}`);
-  if (!limpa(REV)) parar(nn, `a árvore da revisora está suja:\n${git(REV, 'status --short')}`);
+  {
+    const st = sujeira(git(REV, 'status --porcelain'), { toleraCaixa: true });
+    // A TOLERÂNCIA SAI IMPRESSA. Uma trava que ignora em silêncio é a mesma
+    // família do zero ambíguo: "não havia nada" e "havia algo que eu resolvi
+    // não contar" sairiam iguais no diário.
+    for (const l of st.toleradas) {
+      anote(`  → na caixa da revisora, e é o produto do ciclo: ${l}`);
+    }
+    anote(`  trava · árvore da revisora limpa? ${st.sujas.length ? '■' : '✓'}`);
+    if (st.sujas.length) {
+      parar(nn, 'a árvore da revisora está suja fora da caixa:\n'
+        + st.sujas.map((x) => `    ${x}`).join('\n'));
+    }
+  }
   if (SECO) {
     anote(`  [seco] faria: git -C ${path.basename(REV)} fetch && checkout ${shaAviso.slice(0, 7)}`);
   } else {

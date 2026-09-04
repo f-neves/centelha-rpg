@@ -184,6 +184,42 @@ conteúdo: seguir por cima de uma escalada é o lado caro. **Isto está escrito
 porque a rodada 02 parou por isso**, anunciando "a revisora ESCALOU" contra um
 texto que dizia, em letras, que não escalava.
 
+### A árvore da revisora, e o que NÃO conta como suja
+
+O ciclo encerra com árvore suja em qualquer ponto, com **uma exceção, e ela é o
+caminho normal**: um arquivo **não rastreado** dentro de `docs/simulacao/caixa/`,
+no worktree da revisora, é o **produto do ciclo** e não sujeira.
+
+A revisora escreve a resposta; quem commita é o script, depois. Entre uma coisa e
+outra a árvore dela tem exatamente uma linha, `?? docs/simulacao/caixa/NN-revisora.md`.
+No caminho feliz o script copia e apaga o arquivo antes da rodada seguinte, e a
+trava não via nada. **Mas quando a chamada dela falha DEPOIS de ela escrever** (limite
+de conta, tempo estourado) o arquivo fica, e a execução seguinte encerraria na
+primeira trava, acusando a revisora de ter feito o trabalho dela.
+
+O que continua encerrando, e a lista é curta:
+
+- qualquer coisa **fora** da caixa, rastreada ou não;
+- um arquivo **rastreado e modificado** dentro da caixa, que é resposta já commitada
+  sendo editada;
+- e, no worktree da **executora**, também o arquivo solto na caixa: lá trabalho por
+  commitar encerra, porque o aviso tem de descrever um commit.
+
+**A tolerância é anunciada e não silenciosa:** o que passa sai impresso no diário. Uma
+trava que ignora em silêncio é a mesma família do zero ambíguo. A regra vive em
+`scripts/duo-arvore.mjs` e tem dez casos em `scripts/test-duo.mjs`.
+
+### Uma pegadinha do `git check-ignore`, para não custar tempo duas vezes
+
+`git check-ignore node_modules` responde **"não ignorado"** quando o diretório não
+existe. Não é furo do `.gitignore`: o padrão é `node_modules/`, com barra, e um
+padrão com barra só casa com **diretório**. Sem o diretório no disco não há
+diretório para casar.
+
+Conferido criando o diretório, testando (casa), e removendo. **A instalação de
+dependências no worktree da revisora não suja a árvore**, e quem for conferir isto de
+novo pode parar aqui.
+
 ### Quando a chamada morre no meio
 
 Uma chamada pode morrer por **limite de uso da conta**, e foi o que encerrou a
