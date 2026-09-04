@@ -76,10 +76,13 @@ alvo, alcance, manobra e modo de deslocamento acontece tudo lá.
 clique de relógio vazio e transcrição de veredito, e nenhum deles toca uma escolha.
 
 **E o teto real, depois de tirar o jogo de dentro dele, é 100%** do trabalho do
-mestre nesta configuração. Os 61,8% nunca foram um limite de princípio: eram o
-limite dos três degraus que estavam desenhados. O que sobra depois deles, o ⏭ que
-para e o botão do veredito, é custo como o resto, e a única razão de estar fora é
-que ninguém desenhou como tirá-lo.
+mestre nesta configuração, porque não há jogo nenhum dentro dele. Os 61,8% nunca
+foram um limite de princípio: eram o limite dos três degraus que estavam desenhados.
+O que sobra depois deles, o ⏭ que para e o botão do veredito, é custo como o resto.
+
+**Cem por cento é o limite de princípio; o limite do que já está desenhado é 93,7%**,
+e a seção 2 mostra a conta. O que separa os dois é um clique por Tick em que
+acontece algo que o mestre precisa ver, e tirar isso é tirar o mestre do laço.
 
 > **A ressalva, e ela é grande.** Isto vale para o mestre e para esta bateria, que
 > não tem peça de jogador. Numa mesa com gente, parte do ⏭ passa a abrir declaração,
@@ -154,74 +157,126 @@ algum.
 jogador não custa um ponto sequer: o que tem de sair é a mesa ter de somar o que
 rolou e digitar o total, com o dado continuando a ser rolado na mão.
 
+### O botão do veredito é derivável sempre, e por isso sai inteiro
+
+O botão que fecha a folha ("Acertou · aplicar", "Raspou · aplicar", "Errou") vale
+199.238 gestos, **17,0%** do trabalho do mestre. Ele é custo, e a conferência é de
+código e não de frequência:
+
+- **a tela já calcula o veredito**, com `saidaDoAtaque(total, defesa, margem)`, uma
+  **função pura de três números** que estão todos na folha (`src/lib/quase-acerto.ts`);
+- **o Grid já guarda os dois separados**, a conta da régua e o botão do mestre, e o
+  comentário do código diz por quê: "permite medir depois quantas vezes a mesa
+  contrariou a régua";
+- para o mestre, os três números estão sempre preenchidos. **Não há lance em que o
+  veredito não seja derivável.**
+
+**Então os 17% saem inteiros e o botão vira confirmação.** O julgamento não mora no
+botão: mora **acima dele**, no campo de ajuste e nos quatro campos da ficha do lance,
+que é onde o mestre escreve o que a regra não modelou. Esses ficam, e é isso que a
+folha continua pedindo.
+
+**A condição, e ela liga tudo:** o veredito só é confiável se os números de cima
+estiverem certos, e hoje eles não estão sempre, porque o Grid calcula coisas que não
+aplica. **Enquanto o conserto abaixo não for feito, o botão não pode virar
+confirmação automática**, senão a tela passa a confirmar sozinha uma conta que ela
+mesma sabe estar incompleta.
+
+### O conserto conjunto: as contas não aplicadas e os quatro campos
+
+**São o mesmo conserto, e é por isso que viram um item só.** Os quatro campos
+custosos da folha (Defesa base do alvo e as três Absorções) não têm defeito próprio:
+eles são o lugar onde o mestre digita, à mão, correções que o Grid já sabe fazer.
+Aplicar as contas esvazia os campos.
+
+**A ordem tem duas metades, e elas não valem a mesma coisa.**
+
+**Primeira metade · as seis que o Grid já exibe.** Já estão calculadas na tela; falta
+aplicá-las. Não precisam de regra nova:
+
+| a conta | onde o mestre digita hoje |
+|---|---|
+| contrapé da iniciativa | o campo de ajuste |
+| faixa de distância, no tiro e no arremesso | o campo de ajuste |
+| gate de Perfuração | o campo de dano |
+| a Defesa −4 da Corrida | **Defesa base do alvo**, ou uma condição na peça |
+| penalidade de manobra (rajada, dupla) | o campo do total, e só quando a mesa rola |
+| alcance no corpo a corpo | nada: é aviso, e não pede digitação |
+
+**Segunda metade · as nove que o Grid nem exibe.** Exigem implementar a regra antes
+de aplicá-la: margem de dano, Porte no acerto, Couraça de Porte, o teto ±6 dos
+modificadores, Investida, Bloqueio e Defesa da arma e escudo, o modo secundário de
+dano, sangramento por rodada e projétil rápido.
+
+**E aqui há uma correção à premissa de que a primeira metade liberta os quatro
+campos: ela liberta um só, e pela metade.** Das seis exibidas, **apenas a Corrida
+−4 aterrissa num dos quatro campos**; as outras cinco caem nos campos em branco
+(ajuste, dano, total). A Defesa base tem duas fontes, e a segunda (Bloqueio e Defesa
+da arma) está na metade cara. As três Absorções são libertadas só pela Couraça de
+Porte, que também está na metade cara.
+
+| metade | o que ela custa | o que ela liberta |
+|---|---|---|
+| **as seis exibidas** | nada de regra: só ligar a aplicação | os três campos em branco, na maior parte dos casos, e metade da Defesa base |
+| **as nove não exibidas** | implementar cada regra | **os quatro campos custosos**, e o resto dos campos em branco |
+
+**Quanto vale, em gestos:** cada aplicação à mão custa ao menos dois gestos, e um
+lance em que uma só correção se aplica custa **5 gestos em vez de 3**. Com que
+frequência cada uma se aplica **não está medido, e não é bateria que mede**: o robô
+da bateria nunca aplica correção situacional, então os 1.171.957 medidos assumem que
+nada disso acontece. **O número publicado é piso, e esta lista é o tamanho do que
+falta nele.**
+
+### O que sobra depois de tudo, e o teto de verdade
+
+O resíduo de hoje é o ⏭ que abre uma parada (164.709, 14,1%) e o cartão vencido
+(199.238, 17,0%). **Nenhum dos dois é decisão.** E o avanço unificado, do jeito que
+está desenhado, já abre a folha do golpe que o fez parar: **o cartão daquele golpe
+some junto com o clique.**
+
+Fazendo a conta até o fim:
+
+| | gestos | do de hoje |
+|---|---:|---|
+| ⏭, um por parada que precisa do mestre (Ticks com golpe) | 74.207 | 6,3% |
+| cartões que sobram, porque um Tick tem 2,68 golpes e a parada absorve um | 125.031 | 10,7% |
+| **piso, com um cartão por golpe** | **199.238** | **17,0%** |
+
+**O teto passa de 61,8% para 83,0%**, e o piso é exatamente **um gesto por golpe**.
+
+**E há um degrau a mais, que é desenho e não regra:** se a parada abrir de uma vez
+**todos os golpes daquele Tick**, e não só o que a fez parar, os 125.031 cartões
+somem também.
+
+| | gestos | do de hoje | teto |
+|---|---:|---|---|
+| piso, com um cartão por golpe | 199.238 | 17,0% | 83,0% |
+| **piso, se a parada abrir todos os golpes do Tick** | **74.207** | **6,3%** | **93,7%** |
+
+**O que sobra nos 6,3% é um clique por Tick em que acontece algo que o mestre precisa
+ver.** Isso não é aritmética nem transcrição: é o mestre acompanhando a cena. Tirar
+isso seria tirar o mestre do laço, que é outra decisão e não é de software.
+
 ### A fila
 
-| # | o conserto | o que tira | o que custa | está no Grid? |
-|---|---|---|---|---|
-| 1 | **a folha aceita o dado em vez do total**: a mesa rola na mão e a tela deixa de pedir a soma digitada | **34,0%** (398.476) | desenho de entrada. Não mexe em regra e não tira dado de ninguém | **não** |
-| 2 | **o avanço unificado**: o ⏭ corre até a parada real **e abre a folha do golpe que o fez parar** | 25,9% no piso e 36,8% no teto, sobre o trabalho no modo `site` (`R:176` e `R:177`) | um desenho só, e não dois. Mais a regra de opacidade: toda conta que sair da mão do mestre precisa continuar visível | **não** |
-| 3 | **a folha para de pedir transcrição e continua pedindo decisão** | **51,0%** (597.714): os dois totais mais o botão do veredito | a folha não some. Ela deixa de cobrar o que a tela já sabe, e continua abrindo quando há o que decidir | **não** |
-| 4 | **as contas que o Grid calcula, exibe e não aplica** (a lista abaixo) | não medido, e não precisa de medição | implementar a aplicação de cada uma | **não** |
-| 5 | **o L25**: as quinze bandeiras lidas pelo motor | **zero** para o mestre | é pré-requisito de qualquer bateria que compare regras, e nada mais | **não** |
+| # | o conserto | o que tira | está no Grid? |
+|---|---|---:|---|
+| 1 | **a folha aceita o dado em vez do total**: a mesa rola na mão e a tela deixa de pedir a soma digitada | **34,0%** · 398.476 | **não** |
+| 2 | **o botão do veredito vira confirmação**: a tela já calcula os três resultados com uma função pura | **17,0%** · 199.238 | **não**, e depende do item 4 |
+| 3 | **o avanço unificado**: o ⏭ corre até a parada que precisa do mestre e abre a folha do golpe que o fez parar | **32,0%** · 375.005 vira 74.207, e leva junto 74.207 cartões | **não** |
+| 4 | **as contas que o Grid calcula e não aplica**, nas duas metades, e com elas os quatro campos custosos da folha | não medido, e é **piso** do que já está publicado | **não** |
+| 5 | **a parada abre todos os golpes do Tick**, e não só um | **10,7%** · 125.031 | **não** |
+| 6 | **o L25**: as quinze bandeiras lidas pelo motor | **zero** para o mestre | **não** |
 
-**O item 3 mudou de forma, e o nome antigo atrapalhava.** Ele não era "a folha
-resolvendo sozinha", como se a caixa desaparecesse: **é a folha parando de pedir
-transcrição.** O que ela cobra hoje e não devia é o acerto digitado, o dano digitado
-e o clique num dos três botões de veredito que a própria tela já calculou e exibe.
-Isso é 597.714 gestos, **51,0% do trabalho do mestre**, e engloba o item 1: quem faz
-o 3 inteiro não precisa do 1 em separado. O que a folha continua pedindo é decisão,
-e decisão fica.
+**A ordem não é a numeração.** O item 4 vem primeiro, e não por tamanho: enquanto o
+Grid calcular e não aplicar, o item 2 não pode ser feito sem a tela passar a
+confirmar sozinha uma conta incompleta. Depois dele, o 1 e o 2 são independentes e
+somam 51,0%. O 3 é o maior sozinho e não depende de nenhum. O 5 vem depois do 3,
+porque é um refinamento dele. O 6 não alivia o mestre em nada e destrava a segunda
+bateria.
 
-### O item 4 · as contas que o Grid calcula, exibe e não aplica
-
-**São custo puro pela definição, e isto não depende de bateria nenhuma para ser
-justificado.** O argumento inteiro é: a tela computou o número, mostrou o número na
-frente do mestre, e pede que ele o digite noutro campo. O mestre não decide nada
-ali, executa aritmética que a própria tela pediu. Nenhuma medição decide se isso é
-custo; medição decidiria só **quanto** custa, que é outra pergunta. É o mesmo tipo
-de argumento que fixou o custo da declaração à mão em dois gestos pelo arrasto e
-quatro pelo menu: lido do Grid, não cronometrado.
-
-**A lista, conferida contra a `01-diagnostico-carga.md` §C2**, e o número da
-chamada não bate com o da tabela:
-
-| | linhas |
-|---|---:|
-| itens na tabela | **18** |
-| o Grid **aplica** (ferimento do atacante · ferimento do alvo · escada e Pressão) | 3 |
-| o Grid **não aplica** | **15** |
-| desses, o Grid **exibe** e não aplica | 6 |
-| desses, o Grid **nem exibe** | 9 |
-
-As dezesseis são outra coisa: são as dezesseis **bandeiras** de regra, que aparecem
-na `04-prontidao.md`. A confusão vale a nota porque as duas listas falam de coisas
-que o Grid tem e não usa.
-
-**A divisão em seis e nove muda o conserto de cada metade.** As seis que ele exibe
-já estão calculadas na tela e só precisam ser aplicadas: contrapé da iniciativa,
-faixa de distância no tiro e no arremesso, alcance no corpo a corpo (que é só aviso
-e não pede digitação), gate de Perfuração, a Defesa −4 da Corrida, e a penalidade de
-manobra, que ele já aplica quando o site rola. As nove restantes ele **nem calcula**:
-margem de dano, Porte no acerto, Couraça de Porte, o teto ±6 dos modificadores,
-Investida, Bloqueio e Defesa da arma e escudo, o modo secundário de dano,
-sangramento por rodada e projétil rápido. Essas exigem implementar a regra antes de
-aplicá-la.
-
-**O que a lista vale em gestos**, e é o que dá para afirmar sem medir frequência:
-
-- **doze das quinze aterrissam num campo** da folha. Três não pedem digitação
-  nenhuma: o alcance no corpo a corpo é aviso, o teto ±6 teria de ser conferido de
-  cabeça, e o projétil rápido não tem onde ser escrito;
-- cada aplicação à mão custa **ao menos dois gestos** (achar o campo e digitar), pelo
-  mesmo critério que contou o arrasto e o menu. Duas delas pedem dois campos
-  (Investida e o modo secundário) e uma pede uma ação à parte (sangramento);
-- **um lance em que uma só dessas correções se aplica custa 5 gestos e não 3**, o que
-  é dois terços a mais na parada mais cara da cena;
-- **e a bateria não conta nenhum deles.** Os 1.171.957 gestos medidos assumem que
-  nada disso acontece, porque o robô nunca aplica correção situacional. **O número
-  publicado é piso**, e a lista da §C2 é o tamanho do que falta nele. Quantas vezes
-  cada uma se aplica numa cena de verdade não está medido, e não é bateria que mede:
-  é mesa.
+**Os itens 1, 2, 3 e 5 juntos levam o trabalho do mestre de 1.171.957 para 74.207**,
+que é 6,3% do de hoje. **O teto do projeto é 93,7%, e não 61,8%.**
 
 ### Os 21 campos da folha, pela linha
 
@@ -297,7 +352,7 @@ mesmo arquétipo e por isso qualquer assimetria é defeito:
 | o trabalho do mestre | 1.095.869 | 1.171.957 |
 | a economia do avanço, modo `mesa` | 11,4% a 20,0% | 10,8% a 17,9% |
 | **o fim da escada** | **38,2%** | **38,2%** |
-| **o teto do que o projeto tira** | **61,8%** | **61,8%** |
+| **o teto dos três degraus então desenhados** | **61,8%** | **61,8%** |
 
 **As duas últimas linhas não se mexeram**, e é o resultado que mais importa: o
 defeito inflava e desinflava os totais, e não mudava a proporção entre os três termos

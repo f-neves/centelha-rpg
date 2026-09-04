@@ -61,10 +61,16 @@ das paradas e custam **zero** gesto.
 | **+ avanço unificado** | 538.355 | 49,1% | o ⏭ do Tick morto, e um cartão por parada |
 | **+ a folha resolvendo sozinha** | **418.530** | **38,2%** | o resto da aritmética |
 
-> **O teto do que este projeto inteiro pode tirar do mestre é 62% do trabalho de hoje, e o que
-> sobra não tem conserto de software.** Não é 38,2% de um número fixo: é **um clique por Tick que
-> para e um por golpe que cai**, que são a cadência da cena e a decisão da mesa, e não conta. E
-> ele escala com o **tamanho da cena**, não com a complexidade da regra.
+> **⚠ CORRIGIDO. Os 62% são o alcance dos TRÊS DEGRAUS abaixo, e não um limite de princípio.**
+> A redação anterior dizia que o que sobra "não tem conserto de software", e isso foi publicado
+> três vezes como se fosse natureza do resíduo. **Não é.** O resíduo é um clique por Tick que
+> para e um por golpe que cai, e **os dois são custo**: o clique abre uma folha que é
+> transcrição, e o cartão executa uma decisão tomada na declaração. Nenhum dos dois é decisão do
+> mestre. O que os mantinha de fora era nenhum dos três degraus tê-los atacado.
+>
+> **A leitura de hoje, com o novo teto, está em `docs/simulacao/ESTADO.md`.** O que continua
+> valendo desta redação é a forma: o resíduo escala com o **tamanho da cena**, não com a
+> complexidade da regra.
 
 ### A fila, em três itens
 
@@ -1252,12 +1258,14 @@ consertos que esta bateria identificou, na ordem em que eles dependem uns dos ou
 | **+ avanço unificado** (piso) | 538.355 | 49,1% | o ⏭ do Tick morto, e um cartão por parada |
 | **+ a folha resolvendo sozinha** | **418.530** | **38,2%** | o resto da classe iii |
 
-> **O teto do que este projeto inteiro pode tirar do mestre é 62% do trabalho de hoje. E o que
-> sobra não tem conserto de software.**
+> **⚠ CORRIGIDO, e o erro está no que vem depois da vírgula.** Os 62% são o alcance dos três
+> degraus desenhados. A frase "o que sobra não tem conserto de software" era falsa, e o
+> `aplicar` não é "a mesa decidindo se o resultado vale": o botão do veredito transcreve uma
+> comparação que a tela já fez, e a função que a faz (`saidaDoAtaque`) é pura, de três números
+> que estão na tela. **A composição final não é 44% de julgamento: é 100% de custo.**
 >
-> Os 38,2% que restam são **234.496 cliques de ⏭ que param por motivo real** e **184.034
-> `aplicar`**, que é a mesa decidindo se o resultado vale. A composição final é **56% cadência de
-> relógio e 44% julgamento, com ZERO de aritmética.**
+> Os 38,2% que restam continuam sendo **234.496 cliques de ⏭ que param por motivo real** e
+> **184.034 `aplicar`** (os números desta bateria; os de hoje estão no `ESTADO.md`).
 
 Três leituras que essa linha obriga, e nenhuma delas é confortável:
 
