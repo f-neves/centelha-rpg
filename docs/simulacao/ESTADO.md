@@ -80,9 +80,9 @@ mestre nesta configuração, porque não há jogo nenhum dentro dele. Os 61,8% n
 foram um limite de princípio: eram o limite dos três degraus que estavam desenhados.
 O que sobra depois deles, o ⏭ que para e o botão do veredito, é custo como o resto.
 
-**Cem por cento é o limite de princípio; o limite do que já está desenhado é 93,7%**,
-e a seção 2 mostra a conta. O que separa os dois é um clique por Tick em que
-acontece algo que o mestre precisa ver, e tirar isso é tirar o mestre do laço.
+**Cem por cento é o limite de princípio; o limite dos consertos desenhados até hoje
+é 99,7%**, e a seção 2 mostra a conta. O que separa os dois é o gesto nas paradas
+que pedem uma escolha humana de verdade, que são 4% delas.
 
 > **A ressalva, e ela é grande.** Isto vale para o mestre e para esta bateria, que
 > não tem peça de jogador. Numa mesa com gente, parte do ⏭ passa a abrir declaração,
@@ -279,10 +279,33 @@ estruturalmente zero aqui, e as outras duas não estão no log.**
 | custo real, sem ocasião nesta bateria | 5 | precisam de elenco ou política que a bateria não tem |
 | custo real, sem número no log | 2 | Corrida e contrapé, e os dois pedem campo novo |
 
-**A consequência para a fila:** o item 4 continua bloqueando o item 2, porque
-enquanto o Grid exibir e não aplicar a Corrida e o contrapé, a folha confirma
-sozinha uma conta incompleta. Mas **ele é bem menor do que parecia**, e a maior
-parte do que estava debaixo do nome é o L25 disfarçado.
+**O item 4, então, é isto e nada mais: a Defesa −4 da Corrida e o contrapé da
+iniciativa.** Duas contas que o Grid exibe, não aplica, e que nem estão
+instrumentadas no log. Todo o resto do que estava debaixo daquele nome ou é o L25
+disfarçado (sete bandeiras desligadas) ou já está aplicado noutro lugar (a Couraça
+de Porte).
+
+### E não, elas não bloqueiam o item 2
+
+**O argumento do bloqueio caiu quando fui conferi-lo no código.** Ele dizia que
+automatizar o botão do veredito faria a folha confirmar sozinha uma conta
+incompleta. Isso supõe que a tela calcula o veredito a partir dos números da régua,
+e não é o que ela faz: `contaDoLance` monta a soma com **`modManual`, que é o campo
+de ajuste que o mestre digita**, e a Defesa com **`defesaBase` lida da ficha do
+lance, que é o campo que o mestre corrige**.
+
+**Ou seja: o veredito de hoje já sai dos números corrigidos à mão.** Automatizar o
+botão não o torna mais errado, torna-o exatamente tão certo quanto é hoje, porque a
+correção acontece **acima** dele, em campos que continuam existindo. O que o botão
+faz é transcrever uma comparação, e a comparação usa o que estiver nos campos.
+
+**O bloqueio só valeria se automatizar o botão tirasse do mestre a chance de
+corrigir, e não tira.** Com duas contas em vez de quinze, e sendo as duas
+corrigíveis em campo que fica, **o item 2 pode andar antes.**
+
+**A ordem muda, e a diferença é grande:** começa-se por um conserto de 34% e outro
+de 17%, e não por dois campos que nem estão instrumentados e cuja medição pede
+campo novo no log e bateria inteira de novo.
 
 ### O que sobra depois de tudo, e o teto de verdade
 
@@ -333,16 +356,18 @@ nada além de olhar.
 | 1 | **a folha aceita o dado em vez do total**: a mesa rola na mão e a tela deixa de pedir a soma digitada | **34,0%** · 398.476 | **não** |
 | 2 | **o botão do veredito vira confirmação**: a tela já calcula os três resultados com uma função pura | **17,0%** · 199.238 | **não**, e depende do item 4 |
 | 3 | **o avanço unificado**: o ⏭ corre até a parada que precisa do mestre e abre a folha do golpe que o fez parar | **32,0%** · 375.005 vira 74.207, e leva junto 74.207 cartões | **não** |
-| 4 | **as contas que o Grid calcula e não aplica**: sobram sete, e as duas com custo real (Corrida e contrapé) não estão no log | sem ocasião nesta bateria | **não** |
+| 4 | **a Defesa −4 da Corrida e o contrapé da iniciativa**, as duas únicas contas exibidas e não aplicadas que sobraram | sem ocasião nesta bateria, e sem instrumento no log | **não** |
 | 5 | **a parada abre todos os golpes do Tick**, e não só um | **10,7%** · 125.031 | **não** |
 | 6 | **o L25**: as quinze bandeiras lidas pelo motor | **zero** para o mestre, e é o que sete dos itens da §C2 viraram | **não** |
 | 7 | **o avanço MOSTRA o percurso em vez de pedir confirmação**: ver não é clicar | **6,0%** · 71.212 dos 74.207 | **não** |
 
-**A ordem não é a numeração.** O item 4 vem primeiro, e não por tamanho: enquanto o
-Grid exibir e não aplicar a Corrida e o contrapé, o item 2 não pode ser feito sem a
-tela confirmar sozinha uma conta incompleta. Depois dele, o 1 e o 2 são
-independentes e somam 51,0%. O 3 é o maior sozinho. O 5 refina o 3, e o 7 refina o
-5. O 6 não alivia o mestre em nada e destrava a segunda bateria.
+**A ordem não é a numeração, e ela mudou.** O item 4 **não** bloqueia o item 2: o
+veredito já é calculado a partir dos campos que o mestre corrige, então automatizar
+o botão não confirma nada que o mestre não confirmaria. **Começa-se pelo 1 e pelo 2**,
+que são independentes entre si e somam 51,0%. O 3 é o maior sozinho e também não
+depende de ninguém. O 5 refina o 3, e o 7 refina o 5. O 4 entra quando alguém quiser
+as duas contas aplicadas, e a medição dele pede campo novo no log. O 6 não alivia o
+mestre em nada e destrava a segunda bateria.
 
 | até onde se vai | trabalho do mestre | teto |
 |---|---:|---:|
@@ -354,6 +379,69 @@ independentes e somam 51,0%. O 3 é o maior sozinho. O 5 refina o 3, e o 7 refin
 **O teto do projeto não é 61,8%.** Cada vez que alguém escreveu um teto nesta
 frente, ele era o alcance dos consertos que estavam desenhados naquele dia, e a
 frase que o acompanhava dizia "natureza". Três vezes.
+
+### O que sobra para o mestre FAZER, e não é conclusão, é material
+
+**Isto não decide nada.** É o levantamento para a pergunta que só o humano responde:
+depois dos sete degraus, o mestre ainda joga ou virou espectador de uma simulação?
+Tudo abaixo sai do log que já existe, sem bateria nova.
+
+**Os momentos de DECISÃO que o motor tem.** Das sete paradas que o Tick produz, três
+são escolha e quatro não são:
+
+| parada | classe | é decisão? |
+|---|---|---|
+| **declarar** | i | **sim**: a ação, o alvo, a manobra, o modo de deslocamento |
+| **fugir** | ii | **sim**: a peça decide sair da cena |
+| **redirecionar** | i | **sim**: para onde vai o golpe cujo alvo já caiu |
+| agenda | iii | não: sai calculada da declaração |
+| reprojetar | iii | não: o motor recalcula dentro do avanço |
+| resolver | iii | não: é a folha, e a folha é transcrição |
+| aplicar | ii | não: transcreve uma comparação que a tela já fez |
+
+**Não há um quarto tipo de decisão no motor.** O que existe fora dessa lista é o
+mestre querer interromper por vontade própria, para narrar ou arbitrar, e isso não é
+parada nenhuma: não está instrumentado e não se mede assim.
+
+**Quantas, nas 9.600 batalhas da população publicada:**
+
+| | ocasiões | por batalha |
+|---|---:|---:|
+| declarar | 247.065 | 25,7 |
+| fugir | 7.570 | 0,8 |
+| redirecionar | 2.995 | 0,3 |
+
+**E aqui está a virada, e ela desfaz o "espectador".** Todo o cálculo desta frente
+foi feito com **dois robôs**, e por isso `declarar` custou zero gesto. Numa mesa de
+verdade o mestre **joga os inimigos**: as declarações de um lado inteiro passam a ser
+dele. A repartição está medida:
+
+| quem o mestre joga | decisões dele | por batalha |
+|---|---:|---:|
+| ninguém, só arbitra | 2.995 | 0,3 |
+| o lado `a` (116.293 declarações) | 123.073 | 12,8 |
+| **o lado `b` (130.772 declarações)** | **137.552** | **14,3** |
+
+**A distância média entre duas decisões do mestre, depois dos sete degraus:**
+
+| | Ticks entre decisões |
+|---|---:|
+| mestre sem peça em cena | **125,2** |
+| mestre jogando um lado | **2,7 a 3,0** |
+
+Uma batalha da população tem **39,1 Ticks** em média.
+
+**A leitura, e ela é a resposta ao "vira espectador":** o mestre sem peça nenhuma em
+cena decide **uma vez a cada três batalhas inteiras**, e isso é assistir. O mestre
+que joga os inimigos, que é o caso normal, decide **a cada 2,7 Ticks**, catorze vezes
+por batalha, e isso é jogar. **Os sete degraus não tiram nada do lado que decide:**
+eles tiram a transcrição, e a transcrição estava misturada com a decisão na mesma
+tela.
+
+**O que este número NÃO diz**, e é a mesma ressalva de sempre: numa cena real o
+número de peças de cada lado não é metade da cena, e a frequência com que um mestre
+quer interromper de propósito não é parada nenhuma no motor. As duas puxam para
+lados opostos e nenhuma está medida.
 
 ### Os 21 campos da folha, pela linha
 

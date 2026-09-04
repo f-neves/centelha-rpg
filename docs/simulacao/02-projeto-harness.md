@@ -112,6 +112,49 @@ abaixo: toda decisão que CORTA alguma coisa fica numa lista só, escrita como P
 OBSERVÁVEL, e a conferência é ler a lista contra o documento. A lista não acha contradição em
 geral; ela acha a contradição que importa, que é o texto afirmando aquilo que uma decisão tirou.
 
+## O TETO É DO DESENHO, E NUNCA DA NATUREZA · regra de construção
+
+**Nenhum teto se publica sem a frase "com os consertos desenhados até hoje".**
+
+É irmã do princípio do zero ambíguo e vem do mesmo lugar: uma coisa que a medição
+não sabe, escrita como se soubesse. O zero ambíguo confunde "não houve" com "não
+mediu"; este confunde **"não desenhamos como tirar"** com **"não dá para tirar"**.
+
+**Aconteceu TRÊS VEZES nesta frente, com o mesmo número.** Os 61,8% foram publicados
+na `09` §8.2, na caixa da §2.5 e no resumo de uma página, sempre acompanhados de
+alguma redação de *"o que sobra não tem conserto de software"*. Era falso nas três.
+O resíduo era o ⏭ que abre parada e o botão do veredito, **os dois custo**, e o que
+os mantinha de fora era nenhum dos três degraus desenhados tê-los atacado.
+
+E não parou aí, que é o que torna a regra necessária em vez de recomendável:
+
+| o teto publicado | a frase que o acompanhava | o que ele era |
+|---|---|---|
+| **61,8%** | "o que sobra não tem conserto de software" | o alcance dos três degraus daquele dia |
+| **93,7%** | "tirar isso é tirar o mestre do laço" | o alcance dos cinco degraus do dia seguinte |
+| **99,7%** | (nenhuma: a regra já valia) | o alcance dos sete de hoje |
+
+**O 93,7% é o caso didático, porque quem o escreveu tinha acabado de desfazer o
+61,8%.** A frase "tirar isso é tirar o mestre do laço" supunha que ele precisa
+CLICAR para saber o que aconteceu, e ver não é clicar. Bastou perguntar quantas
+paradas exigem escolha e quantas só exigem olhar: quatro por cento e noventa e seis
+por cento. **A armadilha não é ignorância, é conforto: um teto fecha o assunto, e
+fechar o assunto é agradável.**
+
+**As duas obrigações, e as duas são de escrita:**
+
+1. **todo teto vem com a frase**, e ela nomeia o conjunto: "com os consertos
+   desenhados até hoje", com a lista deles ao lado. Um teto sem a lista é uma
+   afirmação sobre o universo, e a medição não fala sobre o universo;
+2. **todo resíduo vem com a pergunta "o que o tiraria?", respondida ou dita como não
+   respondida.** Não respondê-la é permitido; deixá-la implícita não é, porque um
+   resíduo sem a pergunta ao lado é lido como resíduo sem resposta possível.
+
+E há um sinal barato de que a regra foi violada: **procure a palavra "natureza", e
+os seus disfarces** · "não tem conserto", "é da cadência", "é a mesa decidindo", "não
+dá para automatizar". Toda vez que uma delas aparece ao lado de um número, ou há uma
+prova junto ou há um degrau que ninguém desenhou.
+
 ## O QUE FOI CORTADO · a lista que se lê contra o documento
 
 **Esta lista é o instrumento do oitavo caso, e ela se usa lendo.** A terceira coluna é o que a

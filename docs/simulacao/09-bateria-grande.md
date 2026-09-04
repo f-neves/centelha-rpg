@@ -49,6 +49,11 @@ automação de regra:
 | **o ⏭**, cadência de relógio | 359.733 | **33%** | ninguém: nenhuma regra o toca |
 | **julgamento** (classe ii) | 184.034 | **17%** | ninguém: é a mesa decidindo |
 
+> **⚠ A terceira coluna está errada nas duas últimas linhas, e a segunda também.** O ⏭ sai, e o
+> `aplicar` não é "a mesa decidindo": é o botão que transcreve uma comparação que a tela já fez.
+> Ver a linha entre custo e jogo em `docs/simulacao/ESTADO.md`, e a regra do teto no princípio
+> do `02`: **nenhum teto vale sem a frase "com os consertos desenhados até hoje"**.
+
 E a aritmética **não são seis paradas, é uma**: a folha da resolução. As outras cinco somam 60%
 das paradas e custam **zero** gesto.
 
