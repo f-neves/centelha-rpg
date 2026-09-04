@@ -914,7 +914,7 @@ revistos por ela.
 
 - [ ] **K25 · [DECIDIR] A Defesa da arma e a do escudo somam, e o escudeiro vira parede.** A
   `defesas.md` escreve "**+ defesa da arma/escudo**", no singular, mas a ficha **soma as duas**
-  (`ficha-engine.ts:1467`: "Bloqueio soma a Defesa das armas/escudos do conjunto EM USO"). Com
+  (`ficha-engine.ts:1468`, `Bloqueio soma a Defesa das armas/escudos do conjunto EM USO`). Com
   espada longa (+1) e heater (+3) dá **+4** sobre a Defesa nua 21, e o acerto contra guarda cheia
   desaba: espada longa **6%**, adaga 10%, montante **3%** (com Centelha ×1, pool 5d6). Contra
   guarda comida pela Pressão (−4) o mesmo par vai a 40%, ou seja: **o combate contra escudeiro
@@ -1049,10 +1049,11 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   pelo harness (`02` §0.7 e §0.6.1 item 11). São as 8 de regra publicada que o motor não aplica
   (Margem, gate de Perfuração, porte no acerto, Bloqueio com escudo, modo secundário, teto ±6, e as
   duas da Cura), as 6 do núcleo do Tick e o `porRodada`. **A Couraça de Porte saiu da lista**: ela já
-  é aplicada em tempo de geração (`gen-bestiario.mjs:36-45`) e já está somada na `absorcao` de cada
+  é aplicada em tempo de geração (`COURACA`, `gen-bestiario.mjs:37-45`) e já está somada na `absorcao`
   criatura, então uma bandeira de tempo de execução a somaria duas vezes. **Dois testes
-  congelam hoje o estado errado** e precisam ser reescritos no mesmo commit: `test-contrato.mjs:136`
-  trava `R.defesa = 16` com o Bloqueio inútil, e L149 trava `F.defBloqueio = 10`, que ninguém lê.
+  congelam hoje o estado errado** e precisam ser reescritos no mesmo commit:
+  `test-contrato.mjs:136` (`eq(R.defesa, 16`) trava a Defesa com o Bloqueio inútil, e L149 trava
+  `F.defBloqueio = 10`, que ninguém lê.
 - [ ] **L3 · [FAZER] O `ate` das condições passa a ser lido**, e elas expiram sozinhas. Hoje o campo
   é escrito por `porCondicao` e **não há um leitor em todo o `src/`**.
 - [ ] **L4 · [FAZER] A migração 30**: a máscara ao avesso, com `acao.mirado` marcando o que é
@@ -1238,7 +1239,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   fazia o carimbo valer: alguém que leia o perfil na hora de aplicar a regra.**
 
   O perfil é gravado, viaja no encontro, aparece na tela, é comparável e é recarimbável. E é lido
-  em **um** lugar do código de produção, `grid.astro:8139`, onde ele é copiado para dentro da
+  em **um** lugar do código de produção, `grid.astro:8214` (`perfil: { ...REGRAS_CENA }`), onde ele é copiado para dentro da
   entrada do lance, para o oráculo. `entrada.perfil` **não é consultado em lugar nenhum**: nem em
   `resolverGolpe`, nem em `quase-acerto.ts`, nem em `calc.ts`, nem no harness. Nenhuma das quinze
   bandeiras faz o motor tomar um caminho diferente.
@@ -1525,7 +1526,7 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   `arena_log` como tabela, uma linha por entrada, e o desfazer virando um `delete`.
 - [ ] **I5 · [FAZER] Um editor de cenário no Grid.** Hoje o mestre só põe peças: o tabuleiro não
   tem parede, terreno difícil nem item no chão, e o único veto de passo é casa ocupada
-  (`ocupadoPor`, `grid.astro:5880`). Decidido em 02/09/2026, ao desenhar o harness de simulação
+  (`ocupadoPor`, `grid.astro:6306`). Decidido em 02/09/2026, ao desenhar o harness de simulação
   (`docs/simulacao/02-projeto-harness.md` §0.4 P2): a **parede entra como funcionalidade**, e o
   encaixe já existe, porque `caminharHex` recebe um veto arbitrário (`hex.ts:131`). O terreno
   difícil tem gancho pronto e não usado: a condição `terreno-dificil` existe em `condicoes.json`

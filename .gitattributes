@@ -42,6 +42,12 @@
 # já estavam gravadas em LF (`git ls-files --eol`), então isto não reescreve
 # um arquivo sequer no histórico: muda só o que o checkout põe no disco.
 #
+# ELE SÓ AGE NO CHECKOUT, e essa é a pegadinha: uma árvore criada ANTES deste
+# arquivo continua com CRLF no disco, com `git status` limpo, e falhando os mesmos
+# portões. O comando de renormalização está no `CLAUDE.md`, seção "Fim de linha ·
+# o clone que já existia". Toda máquina e toda worktree anterior a 04/09/2026
+# precisa dele uma vez.
+#
 # NÃO HÁ ARQUIVO QUE QUEIRA CRLF nesta árvore: nenhum `.bat`, `.cmd` nem
 # `.ps1`. Se um dia houver, ele ganha a própria linha aqui embaixo.
 # =====================================================================

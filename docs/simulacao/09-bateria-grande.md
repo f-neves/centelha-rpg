@@ -1085,7 +1085,7 @@ maior que o item que o pediu.
 > regra. A infraestrutura da comparação de regras existe inteira e não está conectada ao motor.**
 
 O perfil é gravado, viaja no encontro, aparece na tela, é comparável e é recarimbável. E é lido em
-**um** lugar do código de produção, `grid.astro:8139`, onde ele é copiado para dentro da entrada do
+**um** lugar do código de produção, `grid.astro:8214`, onde ele é copiado para dentro da entrada do
 lance, para o oráculo. `entrada.perfil` **não é consultado em lugar nenhum**: nem em
 `resolverGolpe`, nem em `quase-acerto.ts`, nem em `calc.ts`, nem no harness.
 

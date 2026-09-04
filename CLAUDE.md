@@ -51,6 +51,29 @@ quase não se cruzam, exceto em quatro lugares:
 - `src/lib/site.ts` é só da frente das regras (não há entrada de `/mesa` nele), e
   `src/lib/mesa-*.ts` é só da frente da mesa.
 
+## Fim de linha · o clone que já existia
+
+O `.gitattributes` fixa tudo em LF, **e ele só age no checkout**. Uma árvore criada
+antes dele (a sua, uma worktree, a máquina de outra pessoa) continua com CRLF no
+disco e com `git status` **limpo**, porque o git normaliza na comparação e não acusa
+nada. O sintoma é o do defeito que ele conserta: `validate` vermelho com
+`0 criatura(s) divergem`.
+
+Renormalizar a árvore, uma vez por clone:
+
+```sh
+git status --porcelain                       # 1. tem de estar limpo, ou pare aqui
+git ls-files --eol | awk '$1 !~ /-text/ && $2 ~ /crlf/ {print $NF}' > /tmp/crlf.txt
+wc -l < /tmp/crlf.txt                        # 2. quantos arquivos vão ser reescritos
+while IFS= read -r f; do rm -f "$f"; done < /tmp/crlf.txt
+git checkout -- .                            # 3. o git reescreve, agora em LF
+git ls-files --eol | awk '$1 !~ /-text/ && $2 ~ /crlf/' | wc -l   # 4. tem de dar 0
+```
+
+Apagar antes do `checkout` é o que faz funcionar: para o git os arquivos já estão em
+dia, então ele só os reescreve se sumirem. E o passo 1 não é formalidade: o
+`checkout -- .` descarta alteração não commitada.
+
 ## Produção
 
 - **O deploy é automático**: todo push em `main` dispara `deploy.yml`, que roda

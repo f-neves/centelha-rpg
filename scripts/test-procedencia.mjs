@@ -233,6 +233,123 @@ for (const nome of fs.readdirSync(DOCS)) {
   console.log('  ✓ nenhuma frase de limite natural sem retratação');
 }
 
+// ==================================================== A CITACAO DE CODIGO QUE ENVELHECEU
+//
+// `arquivo.ts:1234` é a forma mais comum de citação destes documentos, e é a que
+// apodrece mais depressa: **mover linha é a coisa mais frequente que existe num
+// arquivo vivo**. Um commit de 75 linhas em `grid.astro` envelheceu três
+// citações publicadas de uma vez, e a conferência acima ficou verde porque ela
+// só olha para `resultados/*.txt`.
+//
+// COMO SE CONFERE SEM LER JAVASCRIPT: pela ÂNCORA. Toda citação útil destes
+// documentos vem acompanhada de um trecho entre crases, e é ele que diz o que se
+// está apontando: `soma != null && def2 != null`, `resumoCombatePC`,
+// `ocupadoPor`. A âncora é o que a citação AFIRMA; o número da linha é só o
+// endereço dela. Se a âncora está na janela da linha apontada, a citação está de
+// pé; se não está, ela envelheceu ou estava errada desde o começo.
+//
+// A JANELA É DE TRÊS LINHAS PARA CADA LADO, e não zero, de propósito: um
+// comentário acrescentado logo acima empurra a linha citada sem tornar a citação
+// falsa, e cobrar precisão de uma linha faria o portão acender por reformatação.
+//
+// O ESCOPO É O DOS DOCUMENTOS QUE FALAM DE HOJE, e a exclusão é a mesma família
+// da que já existe para as tabelas do ESTADO.md:
+//
+//   `ESTADO.md`      · o cabeçalho promete procedência para a página inteira;
+//   `Pendencias.md`  · SÓ os itens ABERTOS. Item fechado é o registro de uma
+//                      leitura de um dia, e leitura de um dia não envelhece, ela
+//                      data. Corrigir o número dentro dele transformaria um
+//                      registro datado numa afirmação sobre hoje, que é o
+//                      contrário do que ele é.
+//
+// Os diagnósticos `00` a `09` ficam de fora pelo mesmo motivo do item fechado.
+// **Mas citação histórica não vira fonte:** um número daqueles que volte a ser
+// usado volta com âncora e com a linha de hoje, ou não volta.
+{
+  const CITACAO = /`?([A-Za-z0-9_.-]+\.(?:ts|astro|mjs)):(\d+)(?:-(\d+))?`?/g;
+  const ehCitacao = (t) => /^[A-Za-z0-9_.-]+\.(?:ts|astro|mjs):\d+/.test(t.trim());
+  const JANELA = 3;
+
+  /** Onde cada arquivo citável mora, pelo nome. */
+  const porNome = {};
+  const varrer = (dir) => {
+    for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+      if (e.name === 'node_modules' || e.name.startsWith('.')) continue;
+      const p = path.join(dir, e.name);
+      if (e.isDirectory()) varrer(p);
+      else if (/\.(ts|astro|mjs)$/.test(e.name)) porNome[e.name] = p;
+    }
+  };
+  varrer(path.join(RAIZ, 'src'));
+  varrer(path.join(RAIZ, 'scripts'));
+
+  /**
+   * As linhas em que a conferência vale.
+   *
+   * No `Pendencias.md` a resposta depende do ITEM em que a linha está: aberto
+   * (`- [ ]` ou `- [~]`) conta, fechado (`- [x]`) não.
+   */
+  const valeAqui = (arq, linhas) => {
+    if (path.basename(arq) !== 'Pendencias.md') return () => true;
+    const aberto = [];
+    let atual = false;
+    for (const l of linhas) {
+      const m = /^- \[( |x|~)\] \*\*/.exec(l);
+      if (m) atual = m[1] !== 'x';
+      aberto.push(atual);
+    }
+    return (i) => aberto[i];
+  };
+
+  const ALVOS = [path.join(DOCS, 'ESTADO.md'), path.join(RAIZ, 'Pendencias.md')];
+  const velhas = [];
+  const semAncora = [];
+  let conferidas = 0;
+  for (const arq of ALVOS) {
+    const linhas = fs.readFileSync(arq, 'utf8').split(/\r?\n/);
+    const vale = valeAqui(arq, linhas);
+    for (let i = 0; i < linhas.length; i += 1) {
+      if (!vale(i)) continue;
+      const l = linhas[i];
+      const crases = [...l.matchAll(/`([^`]+)`/g)].map((m) => ({ em: m.index, txt: m[1] }));
+      for (const m of l.matchAll(CITACAO)) {
+        const [, nome, n1] = m;
+        const alvo = porNome[nome];
+        // Arquivo que não existe mais é outro assunto (o documento fala de algo
+        // que saiu), e cobrá-lo aqui misturaria duas coisas. Fica de fora.
+        if (!alvo) continue;
+        const fonte = fs.readFileSync(alvo, 'utf8').split(/\r?\n/);
+        const n = Number(n1);
+        // A âncora: o trecho entre crases MAIS PRÓXIMO que não seja outra
+        // citação nem só pontuação e número.
+        const anc = crases
+          .filter((c) => !ehCitacao(c.txt) && !/^[\d\s.,:;()-]+$/.test(c.txt))
+          .sort((a, b) => Math.abs(a.em - m.index) - Math.abs(b.em - m.index))[0];
+        const onde = `${path.basename(arq)}:${i + 1} → ${nome}:${n}`;
+        if (!anc) { semAncora.push(onde); continue; }
+        conferidas += 1;
+        const janela = fonte.slice(Math.max(0, n - 1 - JANELA), n + JANELA).join('\n');
+        // A âncora pode trazer o começo de uma chamada; compara pelo miolo.
+        const chave = anc.txt.split('(')[0].trim();
+        if (!janela.includes(chave)) velhas.push(`${onde}  âncora \`${chave}\` não está lá`);
+      }
+    }
+  }
+  if (semAncora.length) {
+    console.log(`\n  ✗ ${semAncora.length} citação(ões) de código SEM ÂNCORA, e sem âncora não dá para saber se envelheceu:`);
+    for (const x of semAncora) console.log(`      ${x}`);
+    console.log('    Ponha entre crases, na mesma linha, o trecho ou o nome que a citação aponta.');
+    process.exit(1);
+  }
+  if (velhas.length) {
+    console.log(`\n  ✗ ${velhas.length} citação(ões) de código ENVELHECERAM:`);
+    for (const x of velhas) console.log(`      ${x}`);
+    console.log('    Mover linha é a coisa mais comum que existe: reaponte, procurando a âncora no arquivo.');
+    process.exit(1);
+  }
+  console.log(`  ✓ ${conferidas} citação(ões) de código conferidas pela âncora (ESTADO.md e os itens abertos do Pendencias.md)`);
+}
+
 if (!citacoes) {
   console.log('  ✗ nenhuma citação de linha encontrada: o teste ficou cego');
   process.exit(1);

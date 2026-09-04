@@ -104,6 +104,33 @@ let ATIVOS: EfeitoAtivo[] = [];
 export const efeitosAtivos = () => ATIVOS;
 
 /**
+ * UMA LINHA DO BANCO VIRANDO EFEITO EM MEMÓRIA, num lugar só.
+ *
+ * O `mordidos` é `jsonb` e chega nulo quando ninguém foi mordido, então ele
+ * precisa de um objeto no lugar do nulo. A conversão existia em DOIS lugares e
+ * só um estava certo:
+ *
+ *   `carregarEfeitos`  `mordidos: e.mordidos || {}`   ← preserva o que veio
+ *   `gravarEfeito`     `mordidos: {}`                 ← JOGAVA FORA o que veio
+ *
+ * Enquanto o `mordidos` só guardava quem já tinha sido mordido nesta rodada, os
+ * dois davam no mesmo: efeito recém-gravado não mordeu ninguém. Quando a marca
+ * de "ainda vai sair" passou a morar ali, a segunda linha virou o defeito que
+ * desligou o conserto inteiro: **a marca ia para o banco e não ficava na
+ * memória**, então `deveSair()` era falso nos três pontos que a consultam, e
+ * cada um deles voltava a resolver na declaração.
+ *
+ * E o defeito tinha as duas caras ao mesmo tempo, que é o que o torna difícil de
+ * ver lendo: sem recarregar a página a Arte saía CEDO (a memória não sabia da
+ * marca) e, recarregando, ela saía DE NOVO (o banco sabia). Uma mordida a menos
+ * e uma a mais, dependendo de um F5.
+ *
+ * Por isso a conversão passou a ser uma função só. Duas normalizações do mesmo
+ * campo é a forma pela qual elas divergem.
+ */
+const daLinha = (e: any): EfeitoAtivo => ({ ...e, mordidos: e?.mordidos || {} });
+
+/**
  * Os ajustes dos efeitos visuais, guardados NO APARELHO.
  *
  * No aparelho e não na arena: é preferência de quem está olhando, e o mestre no
@@ -142,7 +169,7 @@ export async function carregarEfeitos(ctx: CtxGrid): Promise<void> {
   // Sem a migração 19 a aba inteira continua funcionando; só não há efeito para
   // desenhar. Avisar aqui atrapalharia quem nem usa Artes.
   if (error) return;
-  ATIVOS = (data || []).map((e: any) => ({ ...e, mordidos: e.mordidos || {} }));
+  ATIVOS = (data || []).map(daLinha);
 }
 
 // ==================================================================== desenhar
@@ -1176,7 +1203,20 @@ async function saidaDaArte(ctx: CtxGrid, ef: EfeitoAtivo): Promise<void> {
 }
 
 // ==================================================================== gravar
-async function gravarEfeito(ctx: CtxGrid, c: any, plano: Plano, extra: {
+/**
+ * EXPORTADA PARA TESTE, e a razão é a que a rodada de 04/09 provou.
+ *
+ * O conserto da §5.3 foi commitado DESLIGADO e nada acusou: o
+ * `test-artes-grid.mjs` empacota só o `artes-grid.ts`, e reverter este arquivo
+ * inteiro deixava o `validate` verde. O caminho que resolve uma Arte na mesa
+ * (gravar a linha, pendurar a saída, pagá-la no Tick certo) não tinha um único
+ * teste que falhasse se ele fosse removido.
+ *
+ * Este é o ponto de entrada mais alto que cabe em Node: o `conjurar` acima dele
+ * abre o assistente e precisa de DOM; daqui para baixo é dado e relógio. O
+ * `test-arte-na-mesa.mjs` entra por aqui.
+ */
+export async function gravarEfeito(ctx: CtxGrid, c: any, plano: Plano, extra: {
   forma: Forma; figura?: Figura | null; alvos: string[];
   item?: string | null; turnos?: number;
 }): Promise<void> {
@@ -1235,7 +1275,11 @@ async function gravarEfeito(ctx: CtxGrid, c: any, plano: Plano, extra: {
       ? 'A tabela das Artes está desatualizada. Rode supabase/migracao-19.sql no SQL Editor.'
       : 'Erro ao gravar o efeito: ' + error.message);
   }
-  ATIVOS.push({ ...(data || [])[0], mordidos: {} } as EfeitoAtivo);
+  // O `|| linha` é a rede: se o cliente não devolver a linha inserida, o efeito
+  // em memória sai do que se tentou gravar, marca inclusive, em vez de sair de
+  // `undefined`. Sem ele a falta de retorno reproduziria em silêncio o mesmo
+  // defeito que esta função acabou de consertar.
+  ATIVOS.push(daLinha((data || [])[0] || linha));
 
   // A condição entra em quem foi marcado (melhoria e marca) NO TICK EM QUE A
   // ARTE SAI. Enquanto ela está sendo montada não há prisão nem escudo: o gesto
