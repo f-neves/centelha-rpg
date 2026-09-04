@@ -30,8 +30,11 @@ jobs:
     # Sem isto, um passo pendurado consome o teto padrão do GitHub (seis horas)
     # e o portão fica "in_progress" em vez de vermelho, que é a mesma doença de
     # sempre: um estado que não é resposta parecendo resposta. Vinte minutos são
-    # umas cinco vezes o que ele leva numa máquina modesta.
-    timeout-minutes: 20
+    # o dobro do que ele leva num runner, medido: o `test-grid` sozinho passou
+    # verde em ~20 min lá (contra ~4 aqui), e o `test-espelho` roda batalhas
+    # inteiras num navegador, que é a parte cara. Vinte minutos cortavam o
+    # espelho no meio e o resultado saía "cancelled", que não é resposta.
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
