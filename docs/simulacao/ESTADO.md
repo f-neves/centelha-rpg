@@ -227,35 +227,104 @@ da bateria nunca aplica correção situacional, então os 1.171.957 medidos assu
 nada disso acontece. **O número publicado é piso, e esta lista é o tamanho do que
 falta nele.**
 
+### O piso do item 4, e por que a bateria não consegue medi-lo
+
+**Das quinze contas não aplicadas, sete não são custo hoje, e o motivo estava
+escrito no `regras.json` o tempo todo.** Elas são bandeiras de regra, e **as quinze
+nascem desligadas**. A nota do próprio arquivo diz por quê: *"nenhuma está ligada no
+motor (a margem não entra no dano, o gate não é chamado, o bloqueio não existe)"*.
+Uma regra desligada não é uma conta que o mestre aplica à mão: é uma regra que a
+mesa não joga. **O mestre não paga por ela, e ligá-la é decisão de regra, não
+conserto de custo.**
+
+São elas: margem de dano, gate de Perfuração, Porte no acerto, Bloqueio e Defesa da
+arma e escudo, modo secundário de dano, teto ±6 dos modificadores, e sangramento por
+rodada.
+
+**E uma oitava sai por outro motivo: a Couraça de Porte já é aplicada**, em tempo de
+geração do bestiário, e vem somada na Absorção de cada criatura. A linha da §C2 que
+diz que ela não é aplicada está errada, e a nota do `regras.json` explica que uma
+bandeira de tempo de execução a somaria duas vezes.
+
+**Sobram sete, e é isso que o item 4 é:** contrapé da iniciativa, faixa de distância
+no tiro e no arremesso, alcance no corpo a corpo, a Defesa −4 da Corrida, penalidade
+de manobra, Investida e projétil rápido. Duas delas não pedem digitação nenhuma (o
+alcance no corpo a corpo é aviso; o projétil rápido não tem onde ser escrito).
+
+**Quantas vezes cada uma DEVERIA ter se aplicado, nas 9.600 batalhas da população
+publicada:**
+
+| a conta | ocasiões | por quê |
+|---|---:|---|
+| faixa de distância (tiro e arremesso) | **0** | o elenco tem duas armas de corpo a corpo, e nenhuma à distância (D25) |
+| projétil rápido | **0** | mesmo motivo |
+| penalidade de manobra | **0** | a política declara sempre `simples`, nas 247.065 declarações |
+| Investida | **0** | mesmo motivo, e ela é escolha e não regra automática |
+| alcance no corpo a corpo | **0 gestos** | é aviso na tela, e não pede digitação |
+| **a Defesa −4 da Corrida** | **não derivável** | o log registra QUE a peça andou (`log.andou`), e não em que modo. Contar isto exige um campo novo no log, e portanto a bateria inteira de novo |
+| **o contrapé da iniciativa** | **não derivável** | depende de um estado da fila que o log não guarda por Tick |
+
+**O piso do item 4, medido nesta bateria, é ZERO, e isso não quer dizer que ele não
+custe.** Quer dizer que **esta bateria não consegue medi-lo**, e o motivo é a
+decisão D25 mais a política: dois arquétipos de corpo a corpo, manobra sempre
+simples, nenhuma condição, nenhuma arma à distância. **Cinco das sete ocasiões são
+estruturalmente zero aqui, e as outras duas não estão no log.**
+
+**As duas metades, então, não são "seis baratas e nove caras". São:**
+
+| | quantas | o que é |
+|---|---:|---|
+| regras desligadas | 7 | ligar cada uma é decisão de regra (o L25), e não conserto de custo |
+| já aplicada em outro lugar | 1 | a Couraça de Porte, no bestiário |
+| custo real, sem ocasião nesta bateria | 5 | precisam de elenco ou política que a bateria não tem |
+| custo real, sem número no log | 2 | Corrida e contrapé, e os dois pedem campo novo |
+
+**A consequência para a fila:** o item 4 continua bloqueando o item 2, porque
+enquanto o Grid exibir e não aplicar a Corrida e o contrapé, a folha confirma
+sozinha uma conta incompleta. Mas **ele é bem menor do que parecia**, e a maior
+parte do que estava debaixo do nome é o L25 disfarçado.
+
 ### O que sobra depois de tudo, e o teto de verdade
 
 O resíduo de hoje é o ⏭ que abre uma parada (164.709, 14,1%) e o cartão vencido
-(199.238, 17,0%). **Nenhum dos dois é decisão.** E o avanço unificado, do jeito que
-está desenhado, já abre a folha do golpe que o fez parar: **o cartão daquele golpe
-some junto com o clique.**
-
-Fazendo a conta até o fim:
+(199.238, 17,0%). **Nenhum dos dois é decisão.** E o avanço unificado já abre a folha
+do golpe que o fez parar: **o cartão daquele golpe some junto com o clique.**
 
 | | gestos | do de hoje |
 |---|---:|---|
-| ⏭, um por parada que precisa do mestre (Ticks com golpe) | 74.207 | 6,3% |
+| ⏭, um por Tick com golpe | 74.207 | 6,3% |
 | cartões que sobram, porque um Tick tem 2,68 golpes e a parada absorve um | 125.031 | 10,7% |
 | **piso, com um cartão por golpe** | **199.238** | **17,0%** |
+| **piso, se a parada abrir todos os golpes do Tick** | **74.207** | **6,3%** |
 
-**O teto passa de 61,8% para 83,0%**, e o piso é exatamente **um gesto por golpe**.
+### E os 6,3% também não são limite: VER não é CLICAR
 
-**E há um degrau a mais, que é desenho e não regra:** se a parada abrir de uma vez
-**todos os golpes daquele Tick**, e não só o que a fez parar, os 125.031 cartões
-somem também.
+**A mesma armadilha dos 61,8%, e quase caí nela.** Escrever que tirar os 74.207 é
+tirar o mestre do laço supõe que ele precisa CLICAR para saber o que aconteceu. Não
+precisa: se o avanço corre e mostra o que passou no caminho, ele vê sem clicar. **O
+clique só é necessário onde a mesa precisa que ele CONFIRME, não onde precisa que ele
+SAIBA.**
 
-| | gestos | do de hoje | teto |
-|---|---:|---|---|
-| piso, com um cartão por golpe | 199.238 | 17,0% | 83,0% |
-| **piso, se a parada abrir todos os golpes do Tick** | **74.207** | **6,3%** | **93,7%** |
+Nas 9.600 batalhas, das paradas que exigem uma escolha humana existe **uma só**: o
+redirecionamento do golpe cujo alvo já caiu, que numa mesa com peça de jogador abre
+caixa de escolha (está na lista ⚑ do manifesto, como custo que esta bateria não
+enxerga).
 
-**O que sobra nos 6,3% é um clique por Tick em que acontece algo que o mestre precisa
-ver.** Isso não é aritmética nem transcrição: é o mestre acompanhando a cena. Tirar
-isso seria tirar o mestre do laço, que é outra decisão e não é de software.
+| | ocasiões | dos 74.207 |
+|---|---:|---|
+| paradas que pedem escolha humana (redirecionamento) | **2.995** | **4,0%** |
+| paradas em que o mestre só precisa VER | **71.212** | **96,0%** |
+
+**Então há um degrau 7, e ele é o maior de todos.** Se o avanço mostra o percurso em
+vez de pedir confirmação a cada parada, o trabalho cai de 74.207 para a ordem de
+**2.995 gestos, 0,3% do de hoje**, e o teto do projeto vai a **99,7%**.
+
+**O que impede de escrever 99,7% como número final**, e é ressalva e não recuo: um
+mestre que nunca clica não é necessariamente um mestre que está vendo, e **com que
+frequência ele vai querer interromper de propósito não se mede com bateria** · é a
+mesma pergunta do L26 e é de mesa. O que está medido é o piso **mecânico**: quatro
+por cento das paradas exigem uma escolha, e noventa e seis por cento não exigem
+nada além de olhar.
 
 ### A fila
 
@@ -264,19 +333,27 @@ isso seria tirar o mestre do laço, que é outra decisão e não é de software.
 | 1 | **a folha aceita o dado em vez do total**: a mesa rola na mão e a tela deixa de pedir a soma digitada | **34,0%** · 398.476 | **não** |
 | 2 | **o botão do veredito vira confirmação**: a tela já calcula os três resultados com uma função pura | **17,0%** · 199.238 | **não**, e depende do item 4 |
 | 3 | **o avanço unificado**: o ⏭ corre até a parada que precisa do mestre e abre a folha do golpe que o fez parar | **32,0%** · 375.005 vira 74.207, e leva junto 74.207 cartões | **não** |
-| 4 | **as contas que o Grid calcula e não aplica**, nas duas metades, e com elas os quatro campos custosos da folha | não medido, e é **piso** do que já está publicado | **não** |
+| 4 | **as contas que o Grid calcula e não aplica**: sobram sete, e as duas com custo real (Corrida e contrapé) não estão no log | sem ocasião nesta bateria | **não** |
 | 5 | **a parada abre todos os golpes do Tick**, e não só um | **10,7%** · 125.031 | **não** |
-| 6 | **o L25**: as quinze bandeiras lidas pelo motor | **zero** para o mestre | **não** |
+| 6 | **o L25**: as quinze bandeiras lidas pelo motor | **zero** para o mestre, e é o que sete dos itens da §C2 viraram | **não** |
+| 7 | **o avanço MOSTRA o percurso em vez de pedir confirmação**: ver não é clicar | **6,0%** · 71.212 dos 74.207 | **não** |
 
 **A ordem não é a numeração.** O item 4 vem primeiro, e não por tamanho: enquanto o
-Grid calcular e não aplicar, o item 2 não pode ser feito sem a tela passar a
-confirmar sozinha uma conta incompleta. Depois dele, o 1 e o 2 são independentes e
-somam 51,0%. O 3 é o maior sozinho e não depende de nenhum. O 5 vem depois do 3,
-porque é um refinamento dele. O 6 não alivia o mestre em nada e destrava a segunda
-bateria.
+Grid exibir e não aplicar a Corrida e o contrapé, o item 2 não pode ser feito sem a
+tela confirmar sozinha uma conta incompleta. Depois dele, o 1 e o 2 são
+independentes e somam 51,0%. O 3 é o maior sozinho. O 5 refina o 3, e o 7 refina o
+5. O 6 não alivia o mestre em nada e destrava a segunda bateria.
 
-**Os itens 1, 2, 3 e 5 juntos levam o trabalho do mestre de 1.171.957 para 74.207**,
-que é 6,3% do de hoje. **O teto do projeto é 93,7%, e não 61,8%.**
+| até onde se vai | trabalho do mestre | teto |
+|---|---:|---:|
+| hoje | 1.171.957 | · |
+| itens 1, 2 e 3 | 199.238 | 83,0% |
+| + item 5 | 74.207 | 93,7% |
+| + item 7 | ~2.995 | **99,7%** |
+
+**O teto do projeto não é 61,8%.** Cada vez que alguém escreveu um teto nesta
+frente, ele era o alcance dos consertos que estavam desenhados naquele dia, e a
+frase que o acompanhava dizia "natureza". Três vezes.
 
 ### Os 21 campos da folha, pela linha
 
