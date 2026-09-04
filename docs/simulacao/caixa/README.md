@@ -97,6 +97,32 @@ cara, e a primeira rodada não tem anterior: a execução da rodada 02 foi abert
 teto de US$ 8, custou US$ 12,89, e nada acendeu. Conferir na porta da rodada
 seguinte é conferir depois de gastar.
 
+### O teto é por ASSUNTO, e não por execução
+
+O acumulado mora em `gasto-acumulado.json`, nesta pasta, versionado. O `duo` o lê
+ao abrir e confere o teto contra **o que o assunto já gastou mais o que esta
+execução gastar**. Sem isso o teto reinicia a cada `npm run duo`, e dez execuções
+seguidas com teto de US$ 25 são US$ 250 sem nada acender: um teto que reinicia não
+é teto, é um relatório por execução.
+
+**O registro ausente NÃO vale zero.** Sem arquivo legível o `duo` se recusa a
+abrir, e diz como inicializar. "Nunca gastei nada neste assunto" e "não achei o
+registro do que gastei" sairiam com o mesmo número, e o segundo é o que acontece
+quando alguém apaga o arquivo, troca de máquina ou erra o caminho.
+
+**O gatilho de zerar é o humano, e só ele:**
+
+```
+npm run duo -- --alvo "<o assunto novo>" --zerar "<por que está zerando>"
+```
+
+Zerar **grava, commita e sai**: não roda ciclo nenhum. Ser um comando separado é de
+propósito. Se zerar fosse efeito colateral de rodar (uma flag que reinicia quando o
+nome do assunto muda, digamos), um erro de digitação zeraria o teto sem ninguém
+notar, e o teto por assunto valeria tanto quanto o por execução que ele substituiu.
+O motivo é obrigatório e fica na história do arquivo. **O script nunca zera
+sozinho, em nenhuma circunstância.**
+
 **O que a conferência por rodada protegia continua protegido:** um aviso
 commitado SEMPRE tem revisão.
 

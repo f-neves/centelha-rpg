@@ -27,6 +27,7 @@ import {
   faltando, secao, vazia, itens, veredito, repetidos, estadoDaSecao, ilegivel,
   temConteudo,
 } from './duo-leitura.mjs';
+import * as GASTO from './duo-gasto.mjs';
 
 const falhas = [];
 const ok = (c, m) => { console.log((c ? '  ✓ ' : '  ✘ ') + m); if (!c) falhas.push(m); };
@@ -179,6 +180,48 @@ console.log('\n· o assunto repetido, que encerra e escala');
   const p2 = resposta({ bloqueia: 'Segue faltando a procedência de `custo-tela.mjs`.' });
   ok(repetidos(p1, p2).length > 0,
     'a repetição é pega mesmo quando a seção vem em prosa, sem marcador');
+}
+
+console.log('\n· o acumulado entre execuções, que é o teto por ASSUNTO');
+{
+  // O ARQUIVO AUSENTE NÃO É ZERO. É o sétimo caso do princípio, e o único em que
+  // o zero errado custa dinheiro em vez de trabalho.
+  ok(GASTO.estado(null) === 'ausente', 'registro que não existe é AUSENTE, e não zero');
+  ok(GASTO.ler(null) === null, 'e ler devolve null, e não um registro zerado');
+  ok(GASTO.estado('{ isto não é json') === 'ilegivel', 'JSON quebrado é ILEGIVEL');
+  ok(GASTO.estado('{"assunto":"x","execucoes":[]}') === 'ilegivel',
+    'registro sem o campo `acumulado` é ILEGIVEL, e não acumulado zero');
+  ok(GASTO.estado('{"acumulado":0,"execucoes":[]}') === 'ilegivel',
+    'e registro sem assunto também: um teto sem assunto não é teto por assunto');
+
+  const g0 = GASTO.zerar('a assimetria dos lados', 'assunto novo', '2026-09-03T12:00:00Z');
+  ok(GASTO.estado(GASTO.texto(g0)) === 'ok', 'o registro zerado é legível');
+  ok(g0.acumulado === 0 && g0.execucoes.length === 0, 'e começa em zero, sem execução');
+
+  // ZERAR EXIGE MOTIVO. Sem isso, zerar vira um gesto sem rastro, e o número que
+  // ele apaga é o único que existe sobre dinheiro.
+  let recusou = false;
+  try { GASTO.zerar('assunto', ''); } catch { recusou = true; }
+  ok(recusou, 'zerar SEM motivo escrito é recusado');
+  recusou = false;
+  try { GASTO.zerar('', 'motivo'); } catch { recusou = true; }
+  ok(recusou, 'e zerar sem assunto também');
+
+  const g1 = GASTO.somar(g0, { custo: 12.89, parada: 'ESCALA', iso: '2026-09-03T13:00:00Z' });
+  const g2 = GASTO.somar(g1, { custo: 6.11, parada: 'teto', iso: '2026-09-03T14:00:00Z' });
+  ok(Math.abs(g2.acumulado - 19) < 1e-9,
+    `duas execuções somam no acumulado (deu ${g2.acumulado})`);
+  ok(g2.execucoes.length === 2, 'e as duas ficam na história do arquivo');
+  ok(!/PISO/.test(GASTO.frase(g2)), 'sem chamada morta, a frase não fala em piso');
+
+  // E A CHAMADA MORTA SOMA ZERO E FICA CONTADA, para o total sair como PISO.
+  const g3 = GASTO.somar(g2, { custo: 0, semCusto: 1, parada: 'chamada falhou' });
+  ok(Math.abs(g3.acumulado - 19) < 1e-9, 'a chamada morta soma zero, que é o que dá para ler');
+  ok(g3.chamadasSemCusto === 1 && /PISO/.test(GASTO.frase(g3)),
+    'mas fica contada, e o acumulado passa a ser publicado como PISO');
+  let recusouCusto = false;
+  try { GASTO.somar(g2, { custo: undefined }); } catch { recusouCusto = true; }
+  ok(recusouCusto, 'somar sem custo é recusado, e não tratado como zero');
 }
 
 console.log(falhas.length

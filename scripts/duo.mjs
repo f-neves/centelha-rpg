@@ -12,6 +12,7 @@
 //   npm run duo -- --seco            · imprime o que faria e não chama nada
 //   npm run duo -- --fumaca          · UMA chamada real mínima em cada lado
 //   npm run duo -- --alvo "..."      · o alvo da execução, escrito pelo humano
+//   npm run duo -- --zerar "..."     · zera o acumulado do assunto, e SÓ isso
 //
 // O PONTO DESTE SCRIPT SÃO AS TRAVAS, e não a automação. Duas instâncias do
 // mesmo modelo conversando sem ninguém no meio convergem para concordar, e
@@ -33,6 +34,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawn, execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import * as GASTO from './duo-gasto.mjs';
 import { ilegivel, secao, dizNada, temConteudo, veredito, repetidos } from './duo-leitura.mjs';
 
 // ============================================================ as duas pastas
@@ -96,6 +98,19 @@ const TETO_RODADAS = parseInt(arg('--rodadas', '6'), 10);
  */
 const TETO_CUSTO = parseFloat(arg('--custo', '25'));
 /**
+ * ZERAR O ACUMULADO DO ASSUNTO. É um ato do humano, e nunca do script.
+ *
+ * `--zerar "<motivo>"` grava o registro em zero, commita, e SAI: não roda ciclo
+ * nenhum. Ser um comando separado é de propósito. Se zerar fosse efeito colateral
+ * de rodar (uma flag `--assunto` que reinicia quando o nome muda, por exemplo),
+ * um erro de digitação zeraria o teto sem ninguém notar, e o teto por assunto
+ * valeria tanto quanto o teto por execução que ele veio substituir.
+ *
+ * O nome do assunto vem do `--alvo`, que já é a frase do humano sobre o que a
+ * frente está fazendo.
+ */
+const ZERAR = arg('--zerar', '');
+/**
  * O ALVO DA EXECUÇÃO, escrito pelo humano, em uma frase.
  *
  * É o único lugar por onde a direção do humano entra no laço. A caixa é o canal
@@ -135,6 +150,15 @@ const avisos = () => fs.readdirSync(CAIXA)
 
 let custo = 0;
 let custoDaRodada = [];
+/**
+ * O QUE JÁ FOI GASTO NESTE ASSUNTO, antes desta execução.
+ *
+ * O teto é conferido contra `gastoAnterior + custo`, e não contra `custo`. Sem
+ * isso o teto reinicia a cada `npm run duo` e dez execuções seguidas passam por
+ * baixo dele sem nada acender.
+ */
+let registroGasto = null;
+let gastoAnterior = 0;
 /** Estourou o teto no meio de uma rodada? A rodada fecha, e não abre a seguinte. */
 let estourouNoMeio = null;
 /**
@@ -160,8 +184,10 @@ let chamadasSemCusto = 0;
  * isso, e a decisão nunca é "abandonar a rodada no meio".
  */
 function conferirCusto(quem) {
-  const passou = custo > TETO_CUSTO;
-  anote(`  ✓ ${quem} · acumulado US$ ${custo.toFixed(2)} de US$ ${TETO_CUSTO.toFixed(2)}`
+  const total = gastoAnterior + custo;
+  const passou = total > TETO_CUSTO;
+  anote(`  ✓ ${quem} · esta execução US$ ${custo.toFixed(2)}`
+    + ` · o assunto US$ ${total.toFixed(2)} de US$ ${TETO_CUSTO.toFixed(2)}`
     + `${passou ? ' ■ PASSOU DO TETO' : ''}`);
   return passou;
 }
@@ -271,13 +297,18 @@ ${aberto || 'ver a última resposta da revisora na caixa, seções BLOQUEIA e PE
 
 ## CUSTO
 
-${chamadasSemCusto
-  ? `Total **de piso**: US$ ${custo.toFixed(2)} de um teto de US$ ${TETO_CUSTO.toFixed(2)}, e o de verdade é MAIOR.
-${chamadasSemCusto} chamada(s) morreram sem devolver o custo, e uma chamada que não devolve custo não
-custou zero: ela gastou o que gastou e não disse quanto. O que essas chamadas
-consumiram não está nesta soma.`
-  : `Total: **US$ ${custo.toFixed(2)}** de um teto de US$ ${TETO_CUSTO.toFixed(2)}.`}
+Esta execução: **US$ ${custo.toFixed(2)}**${chamadasSemCusto ? ' (é PISO, veja abaixo)' : ''}.
 Por rodada: ${custoDaRodada.map((c, i) => `${i + 1}ª US$ ${c.toFixed(2)}`).join(' · ') || '·'}
+
+**O ASSUNTO, que é contra o que o teto vale:** US$ ${(gastoAnterior + custo).toFixed(2)} de um teto
+de US$ ${TETO_CUSTO.toFixed(2)}${gastoAnterior ? `, dos quais US$ ${gastoAnterior.toFixed(2)} vieram de execuções anteriores` : ''}.
+${registroGasto ? `Assunto: "${registroGasto.assunto}", zerado em ${String(registroGasto.zeradoEm).slice(0, 10)} porque: ${registroGasto.zeradoPorque}` : ''}
+${chamadasSemCusto
+  ? `
+**O total é um PISO, e o de verdade é MAIOR.** ${chamadasSemCusto} chamada(s) morreram sem devolver o
+custo, e uma chamada que não devolve custo não custou zero: ela gastou o que gastou
+e não disse quanto. O que essas chamadas consumiram não está nesta soma.`
+  : ''}
 
 ## O ALVO PEDIDO, E SE ELE SAIU
 ${ALVO ? `\nPedido: ${ALVO}\n\nJulgue o ciclo contra isto, e não contra o que ele fez.` : '\nNenhum alvo foi passado nesta execução (`--alvo`), então o ciclo escolheu sozinho o que fazer.'}
@@ -300,11 +331,27 @@ ${registro.join('\n')}
   if (SECO) { console.log(`
   [seco] escreveria ${rel}`); return; }
   fs.writeFileSync(arq, txt);
+  // O ACUMULADO DO ASSUNTO SOBE JUNTO COM O RESUMO, e no mesmo commit.
+  //
+  // Junto de propósito: são o mesmo fato (esta execução gastou isto), e separá-los
+  // abriria a chance de o resumo entrar e o acumulado não, que é a forma de o teto
+  // por assunto voltar a ser teto por execução sem ninguém notar.
+  const caminhos = [rel];
+  if (registroGasto) {
+    try {
+      registroGasto = GASTO.somar(registroGasto, {
+        custo, semCusto: chamadasSemCusto, parada: motivo,
+      });
+      fs.writeFileSync(path.join(EXEC, GASTO.CAMINHO), GASTO.texto(registroGasto));
+      caminhos.push(GASTO.CAMINHO);
+      console.log(`  · acumulado do assunto: ${GASTO.frase(registroGasto)}`);
+    } catch (e) { console.log(`  ✘ não deu para somar o acumulado: ${e.message}`); }
+  }
   {
     try {
-      git(EXEC, `add "${rel}"`);
-      git(EXEC, `commit -q -m "ciclo até a rodada ${nn} · resumo" -- "${rel}"`);
-    } catch { /* se não der para commitar, o arquivo fica na árvore mesmo assim */ }
+      for (const c of caminhos) git(EXEC, `add "${c}"`);
+      git(EXEC, `commit -q -m "ciclo até a rodada ${nn} · resumo" -- ${caminhos.map((c) => `"${c}"`).join(' ')}`);
+    } catch { /* se não der para commitar, os arquivos ficam na árvore mesmo assim */ }
   }
   console.log(`\n📄 ${rel}`);
 }
@@ -360,6 +407,41 @@ if (ALVO) console.log(`· alvo: ${ALVO}`);
 if (!fs.existsSync(REV)) parar('00', `o worktree da revisora não existe em ${REV}`);
 if (!fs.existsSync(CAIXA)) parar('00', 'não há caixa de correio');
 
+// ================================================== o acumulado, antes de tudo
+//
+// `--zerar` é um comando, e não uma flag de execução: ele grava, commita e SAI.
+if (ZERAR) {
+  const assunto = ALVO || ZERAR;
+  const novo = GASTO.zerar(assunto, ZERAR);
+  fs.writeFileSync(path.join(EXEC, GASTO.CAMINHO), GASTO.texto(novo));
+  try {
+    git(EXEC, `add "${GASTO.CAMINHO}"`);
+    git(EXEC, `commit -q -m "duo · zerar o acumulado: ${ZERAR.slice(0, 60)}" -- "${GASTO.CAMINHO}"`);
+  } catch { /* fica na árvore */ }
+  console.log(`\n✓ acumulado zerado · ${GASTO.frase(novo)}`);
+  console.log('  Nenhum ciclo rodou. Rode o `npm run duo` de novo, sem `--zerar`.');
+  process.exit(0);
+}
+
+// REGISTRO AUSENTE NÃO É ZERO, e é por isso que o script se recusa a abrir.
+//
+// "nunca gastei nada neste assunto" e "não achei o registro do que gastei" sairiam
+// com o mesmo número, e o segundo é o que acontece quando alguém apaga o arquivo,
+// troca de máquina ou erra o caminho. Um teto conferido contra um zero inventado
+// não é teto. Fail-closed, com a instrução junto.
+registroGasto = GASTO.lerDoDisco(EXEC);
+if (!registroGasto) {
+  console.error(`\n✘ não há acumulado legível em ${GASTO.CAMINHO}.`);
+  console.error('  Isto NÃO quer dizer que o assunto não gastou nada: quer dizer que não há');
+  console.error('  registro, e um teto conferido contra um zero inventado não é teto.');
+  console.error('\n  Para começar um assunto novo, com o acumulado em zero e o motivo escrito:');
+  console.error('    npm run duo -- --alvo "<o assunto>" --zerar "<por que está zerando>"');
+  process.exit(1);
+}
+gastoAnterior = registroGasto.acumulado;
+console.log(`· gasto do assunto até aqui: ${GASTO.frase(registroGasto)}`);
+registro.push(`\n· gasto do assunto até aqui: ${GASTO.frase(registroGasto)}`);
+
 // =================================================================== a fumaça
 if (FUMACA) {
   console.log('\n· fumaça · uma chamada real mínima em cada lado, e nada mais');
@@ -404,9 +486,11 @@ for (let volta = 1; volta <= TETO_RODADAS; volta += 1) {
   // é justamente por que a conferência de verdade passou a ser por chamada.
   if (estourouNoMeio) parar(nn, estourouNoMeio);
   const previsao = custoDaRodada.length ? Math.max(...custoDaRodada) : 4;
-  if (custo + previsao > TETO_CUSTO) {
-    parar(nn, `teto de custo: US$ ${custo.toFixed(2)} gastos e a próxima rodada`
-      + ` deve custar ~US$ ${previsao.toFixed(2)}, o que passaria de US$ ${TETO_CUSTO.toFixed(2)}`);
+  if (gastoAnterior + custo + previsao > TETO_CUSTO) {
+    parar(nn, `teto de custo do ASSUNTO: US$ ${(gastoAnterior + custo).toFixed(2)} gastos`
+      + `${gastoAnterior ? ` (US$ ${gastoAnterior.toFixed(2)} em execuções anteriores)` : ''}`
+      + ` e a próxima rodada deve custar ~US$ ${previsao.toFixed(2)},`
+      + ` o que passaria de US$ ${TETO_CUSTO.toFixed(2)}`);
   }
 
   // -- trava de árvore suja --------------------------------------------------
@@ -444,7 +528,7 @@ for (let volta = 1; volta <= TETO_RODADAS; volta += 1) {
     // executora; abandoná-lo sem revisão é o único desfecho pior que gastar os
     // dólares da revisora. A rodada fecha inteira, e a seguinte não abre.
     estourouNoMeio = `teto de custo: US$ ${custo.toFixed(2)} passaram de`
-      + ` US$ ${TETO_CUSTO.toFixed(2)} na chamada da executora da rodada ${nn}. A rodada`
+      + ` US$ ${TETO_CUSTO.toFixed(2)} (assunto) na chamada da executora da rodada ${nn}. A rodada`
       + ' fechou inteira (a revisora foi paga, porque aviso commitado sempre tem'
       + ' revisão) e a seguinte não abriu';
     anote('  → o teto estourou no meio: esta rodada fecha, a próxima não abre');
@@ -504,8 +588,8 @@ for (let volta = 1; volta <= TETO_RODADAS; volta += 1) {
   if (!rRev.ok) parar(nn, `a chamada da revisora falhou: ${rRev.motivo || 'sem motivo'}`);
   anote(`  ✓ revisora · US$ ${rRev.custo.toFixed(2)} · rodada US$ ${custoRodada.toFixed(2)}`);
   if (conferirCusto('custo') && !estourouNoMeio) {
-    estourouNoMeio = `teto de custo: US$ ${custo.toFixed(2)} passaram de`
-      + ` US$ ${TETO_CUSTO.toFixed(2)} na rodada ${nn}, que fechou inteira. A seguinte não abriu`;
+    estourouNoMeio = `teto de custo do assunto: US$ ${(gastoAnterior + custo).toFixed(2)} passaram`
+      + ` de US$ ${TETO_CUSTO.toFixed(2)} na rodada ${nn}, que fechou inteira. A seguinte não abriu`;
   }
 
   // ----------------------------------------- 4 · o script commita por ela
