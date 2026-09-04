@@ -49,7 +49,7 @@ defeito). Os dois saem com o mesmo valor, no mesmo campo, no mesmo CSV, e nenhum
 separa depois. **O instrumento que os separa é sempre o mesmo: contar OCASIÕES, e não efeitos.**
 
 Não é lição de relatório. É regra de construção, e ela existe porque **a mesma forma de erro já
-apareceu seis vezes nesta frente**, em camadas diferentes. E a partir do quinto caso ela tem uma
+apareceu sete vezes nesta frente**, em camadas diferentes. E a partir do quinto caso ela tem uma
 segunda face: o zero ambíguo é a AUSÊNCIA de sinal lida como sinal, e o espelho dele é a
 **PRESENÇA de texto lida como o sinal errado**. Os dois vêm de olhar à volta do sinal em vez de
 olhar onde ele mora.
@@ -62,6 +62,7 @@ olhar onde ele mora.
 | **4** | o **parser do supervisor** (`duo-leitura.mjs`) | "a revisora não escalou nada" | a seção ESCALA saía VAZIA para todo conteúdo, porque `$` em multilinha casa no fim de cada linha | achado pelo `test-duo.mjs` na primeira execução, **antes de o ciclo rodar uma vez** |
 | **5** | o **"nada" da ESCALA** (o espelho) | "a revisora escalou uma decisão" | ela escreveu `nada.` e justificou embaixo, em prosa; a regra era "a seção inteira é a palavra nada", leu prosa, leu conteúdo, e conteúdo na ESCALA encerra o ciclo | acendeu na **rodada 02, com dinheiro gasto**: o script parou anunciando "a revisora ESCALOU" contra um texto que dizia o contrário |
 | **6** | a **digital da repetição** (o espelho) | "as duas respostas tratam do mesmo assunto" | com UM identificador em cada item, o mesmo identificador dava semelhança 1,00; dois itens diferentes sobre o mesmo objeto (`ocasião · passo` fora do placar, e `ocasião · passo` guardando o piso só por cima) eram "o mesmo assunto" | achado na mesma rodada, conferindo à mão o que a trava seguinte diria se a da ESCALA não tivesse parado antes |
+| **7** | o **contador de dinheiro** | "esta execução não gastou nada" | a chamada morreu por limite de conta depois de duas baterias, cinco arquivos e um commit; uma chamada que falha devolve custo 0, e 0 entra na soma como se fosse medido | o RESUMO da rodada 03 publicou **US$ 0,00** para a execução mais cara até então |
 
 **O quinto e o sexto casos custaram dinheiro, e é a diferença deles para os quatro primeiros.**
 Os quatro foram achados por inspeção ou por teste, antes de qualquer gasto. Estes dois só
@@ -71,6 +72,24 @@ cabeça (`nada` sozinho na seção; identificadores como assunto), e nenhum dele
 de verdade escreveu. **Um teste só cobre a forma de sinal que quem o escreveu imaginou.** O
 conserto dos dois entrou com os textos REAIS das rodadas 01 e 02 como caso de teste, e não com
 variações inventadas dos antigos.
+
+**O sétimo é o pior lugar em que esta família apareceu, e vale dizer por quê.** Os seis primeiros
+estavam em instrumentos de medida e em travas de leitura: eles custaram TRABALHO, e o trabalho
+perdido aparece, mais cedo ou mais tarde, porque alguém relê o número e ele não fecha. O sétimo
+estava **dentro da trava que existe para proteger o orçamento**, e dinheiro gasto não deixa
+rastro no repositório. Um relatório que diz "US$ 0,00" para uma execução cara não fecha com nada,
+não contradiz nenhum outro número, e não tem quem o releia: ele é a única fonte sobre o assunto.
+**Esta poderia ter custado dinheiro sem ninguém saber quanto, e é a primeira da lista que poderia
+ter custado a mesma coisa muitas vezes seguidas.**
+
+O conserto é o de sempre: a soma passou a distinguir "não gastou" de "não consegui ler quanto
+gastou", e havendo chamada sem leitura o total sai marcado como **piso**, com quantas chamadas
+ficaram de fora. **E o conserto não é completo**, o que também vai escrito: o teto continua sendo
+conferido contra a soma do que deu para ler, porque é o único número que existe. Dentro de uma
+execução isso não abre buraco, porque a primeira chamada morta encerra o ciclo e não há segunda.
+**Entre execuções, abre:** o contador nasce em zero a cada `npm run duo`, e nada soma o que a
+execução anterior gastou. Quem fecha esse buraco é o humano lendo o RESUMO, e é por isso que o
+piso precisa estar marcado nele.
 
 E o sexto tem uma segunda lição, sobre consertar heurística: a primeira ideia foi mexer no limiar
 (0,6), e o limiar não tinha nada com isso. Com um identificador só, dois assuntos diferentes davam
