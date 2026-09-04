@@ -10,6 +10,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { navegadorOuSair } from './navegador.mjs';
+import { carimbar } from './carimbo.mjs';
 
 // O caminho vinha cravado no Edge do Windows, e o teste saia com codigo 2 em
 // qualquer outro sistema. Ver `scripts/navegador.mjs`.
@@ -544,4 +545,7 @@ async function main() {
   console.log('✓ bancada das luas: tudo passou.');
 }
 
-main().catch(e => { console.error(e); process.exit(1); });
+// O carimbo entra no `then`, e nao no fim do arquivo: aqui o teste roda dentro
+// de `main()`, entao a ultima linha do modulo executa ANTES de a bancada abrir.
+// Escrito solto, ele carimbaria a cada chamada, passando ou nao.
+main().then(() => carimbar('test-luas')).catch(e => { console.error(e); process.exit(1); });

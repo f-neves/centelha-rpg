@@ -25,6 +25,7 @@ import fs from 'node:fs';
 import { navegadorOuSair } from './navegador.mjs';
 import { subirDev } from './dev-server.mjs';
 import { MESA_BANCADA } from './bancada.mjs';
+import { carimbar } from './carimbo.mjs';
 
 const MESA = MESA_BANCADA;
 // A lista e a politica de pular moram em `navegador.mjs`: aqui elas estavam
@@ -580,3 +581,8 @@ if (FALHAS.length) {
   process.exit(1);
 }
 console.log(`\n✓ Grid simultâneo: ${PASSOU} asserções passaram`);
+
+// O carimbo: quando este portao passou nesta maquina. Ver `carimbo.mjs`.
+// Aqui embaixo porque o codigo so chega ate aqui quando nao houve falha: quem
+// falha sai por `process.exit(1)` antes.
+carimbar('test-grid-simultaneo');

@@ -33,3 +33,4 @@ Thumbs.db
 
 # a saida das baterias de simulacao: cada uma tem o seu manifesto e e refeita
 .sim/
+.portoes/

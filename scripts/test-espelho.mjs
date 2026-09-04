@@ -46,6 +46,7 @@ import { subirDev } from './dev-server.mjs';
 import { carregarLib, ligar } from './sim/lib-ponte.mjs';
 import { rodarEspelho, celulaEspelho } from './sim/espelho.mjs';
 import { MESA_BANCADA } from './bancada.mjs';
+import { carimbar } from './carimbo.mjs';
 
 const VER = process.argv.includes('--ver');
 const MESA = MESA_BANCADA;
@@ -320,4 +321,6 @@ try {
 }
 
 console.log(falhas.length ? `\n✘ espelho de motor: ${falhas.length} falha(s)` : '\n✓ espelho de motor: os dois laços concordam');
+// O carimbo: quando este portao passou nesta maquina. Ver `carimbo.mjs`.
+if (!falhas.length) carimbar('test-espelho');
 process.exit(falhas.length ? 1 : 0);

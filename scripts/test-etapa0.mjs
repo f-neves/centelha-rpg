@@ -17,6 +17,7 @@ import fs from 'node:fs';
 import { navegadorOuSair } from './navegador.mjs';
 import { subirDev } from './dev-server.mjs';
 import { MESA_BANCADA } from './bancada.mjs';
+import { carimbar } from './carimbo.mjs';
 
 const MESA = MESA_BANCADA;
 // A lista e a politica de pular moram em `navegador.mjs`: aqui elas estavam
@@ -117,3 +118,8 @@ try {
 
 console.log(`\n${FALHAS.length ? '✗' : '✓'} Etapa 0: ${PASSOU} passaram, ${FALHAS.length} falharam`);
 if (FALHAS.length) { FALHAS.forEach((f) => console.log('  · ' + f)); process.exit(1); }
+
+// O carimbo: quando este portao passou nesta maquina. Ver `carimbo.mjs`.
+// Aqui embaixo porque o codigo so chega ate aqui quando nao houve falha: quem
+// falha sai por `process.exit(1)` antes.
+carimbar('test-etapa0');

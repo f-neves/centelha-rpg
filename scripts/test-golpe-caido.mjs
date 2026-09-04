@@ -36,6 +36,7 @@ import fs from 'node:fs';
 import { navegadorOuSair } from './navegador.mjs';
 import { subirDev } from './dev-server.mjs';
 import { MESA_BANCADA } from './bancada.mjs';
+import { carimbar } from './carimbo.mjs';
 
 const MESA = MESA_BANCADA;
 const SEMENTE = 20260903;
@@ -213,4 +214,6 @@ try {
 console.log(falhas.length
   ? `\n✘ golpe no caído: ${falhas.length} falha(s)`
   : '\n✓ Golpe no caído OK · a caixa do mestre abre, redireciona, cancela, e cala quando não há destino');
+// O carimbo: quando este portao passou nesta maquina. Ver `carimbo.mjs`.
+if (!falhas.length) carimbar('test-golpe-caido');
 process.exit(falhas.length ? 1 : 0);

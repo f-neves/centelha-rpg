@@ -11,6 +11,7 @@
 import puppeteer from 'puppeteer-core';
 import { subirDev } from './dev-server.mjs';
 import { navegadorOuSair } from './navegador.mjs';
+import { carimbar } from './carimbo.mjs';
 // Cravado no Edge do Windows ate 04/09/2026: em outro sistema estourava dentro
 // do puppeteer, sem dizer o que faltava. Ver `scripts/navegador.mjs`.
 const EDGE = navegadorOuSair('editor do bestiario');
@@ -159,3 +160,8 @@ try{
 }
 console.log(falhas?`\n✘ ${falhas} falha(s)`:'\n✓ editor OK');
 process.exit(falhas?1:0);
+
+// O carimbo: quando este portao passou nesta maquina. Ver `carimbo.mjs`.
+// Aqui embaixo porque o codigo so chega ate aqui quando nao houve falha: quem
+// falha sai por `process.exit(1)` antes.
+carimbar('test-editor-bestiario');

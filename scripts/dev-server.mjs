@@ -57,6 +57,24 @@ export function subirDev({ config, porta = 0, cwd = RAIZ, base = BASE, espera = 
   return new Promise((resolve, reject) => {
     const filho = spawn(cmd, {
       shell: true, cwd, stdio: ['ignore', 'pipe', 'pipe'],
+      // `detached` NO POSIX, E ELE É O CONSERTO DE 04/09/2026.
+      //
+      // Sem ele o filho não é líder de grupo, e o `process.kill(-pid)` do
+      // `matarArvore` não tem grupo para matar: ele lança ESRCH, cai no `catch`,
+      // e o `SIGKILL` de reserva mata só o `sh` de fora. O `npm exec astro dev`
+      // e os `node`/`esbuild` dele ficam vivos, segurando os canos abertos, e o
+      // processo do TESTE nunca termina.
+      //
+      // O sintoma era de outro planeta: no CI, três dos oito trabalhos da matriz
+      // saíam como `cancelled` exatamente 30 minutos depois de começar, e o log
+      // do `test-grid` mostrava `✓ Grid OK` aos 13 min. Verde, e mesmo assim
+      // trinta minutos de runner, terminando num estado que não é resposta. Quem
+      // contou a história foi o próprio runner, na limpeza: "Terminate orphan
+      // process: (npm exec astro dev --port 0)".
+      //
+      // No Windows não muda nada: lá quem mata é o `taskkill /T`, que já anda a
+      // árvore inteira por conta própria, e por isso isto nunca doeu aqui.
+      detached: process.platform !== 'win32',
       env: { ...process.env, ASTRO_TELEMETRY_DISABLED: '1' },
     });
     let saida = '';
@@ -112,10 +130,16 @@ export function subirDev({ config, porta = 0, cwd = RAIZ, base = BASE, espera = 
 /** Mata a árvore de processos. É o caminho do Astro 5, que roda em primeiro plano. */
 function matarArvore(filho) {
   if (!filho || filho.killed || filho.exitCode !== null) return;
-  try {
-    if (process.platform === 'win32') execSync(`taskkill /pid ${filho.pid} /T /F`, { stdio: 'ignore' });
-    else process.kill(-filho.pid);
-  } catch { try { filho.kill('SIGKILL'); } catch {} }
+  if (process.platform === 'win32') {
+    try { execSync(`taskkill /pid ${filho.pid} /T /F`, { stdio: 'ignore' }); }
+    catch { try { filho.kill('SIGKILL'); } catch { /* já morreu */ } }
+    return;
+  }
+  // No POSIX, o grupo primeiro (é onde estão os netos: `sh`, `npm`, `node`,
+  // `esbuild`), e o processo depois. As duas tentativas são independentes de
+  // propósito: matar o grupo e falhar não pode impedir a segunda.
+  try { process.kill(-filho.pid, 'SIGKILL'); } catch { /* sem grupo, ou já morto */ }
+  try { filho.kill('SIGKILL'); } catch { /* já morreu */ }
 }
 
 /**

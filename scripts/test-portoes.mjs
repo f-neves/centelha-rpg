@@ -41,6 +41,7 @@
 //   node scripts/test-portoes.mjs
 import fs from 'node:fs';
 import path from 'node:path';
+import { lerCarimbos, idade } from './carimbo.mjs';
 
 const RAIZ = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
 const ler = (p) => fs.readFileSync(path.join(RAIZ, p), 'utf8');
@@ -216,6 +217,37 @@ secao('· toda tolerância tem prazo ou condição');
   ok(orfas.length === 0, orfas.length
     ? `isenção escrita para texto que não existe mais: ${orfas.map(([a, anc]) => `${a} · "${anc}"`).join(', ')}`
     : 'e nenhuma isenção apontando para texto que sumiu');
+}
+
+// ===================================================================== 4
+// HÁ QUANTO TEMPO CADA PORTÃO NÃO RODA AQUI.
+//
+// Não é asserção, é notícia, e ela sai impressa em todo `npm run validate`, que
+// é o comando que se roda o tempo todo. O `validate` é rápido e o smoke é
+// lento, então o lento vai sendo deixado para depois e nada na tela dizia que
+// estava sendo deixado. Foi assim que o smoke passou de 27/08 a 04/09 sem rodar
+// enquanto a confiança continuava vindo do portão rápido.
+//
+// NÃO FALHA: não ter rodado o smoke hoje não é defeito, é informação. E é
+// informação LOCAL: o que está verde no repositório é pergunta do CI, e a
+// resposta dela é o badge do `README.md`. As duas importam, porque o commit sai
+// desta máquina e o merge sai do CI.
+{
+  const carimbado = new Map(lerCarimbos().map((x) => [x.nome, x]));
+  const smoke = (PKG.scripts.smoke.match(/scripts\/([\w-]+)\.mjs/g) || [])
+    .map((m) => m.slice('scripts/'.length, -'.mjs'.length));
+  console.log('\n· quando cada portão de navegador passou NESTA máquina');
+  for (const nome of smoke) {
+    const x = carimbado.get(nome);
+    const velho = !x || x.dias >= 7;
+    console.log(`  ${velho ? '⚑' : '·'} ${nome.padEnd(22)} `
+      + (x ? `${idade(x.dias)} atrás${x.commit ? ` · ${x.commit}` : ''}` : 'nunca rodou aqui'));
+  }
+  const velhos = smoke.filter((n) => !carimbado.has(n) || carimbado.get(n).dias >= 7);
+  if (velhos.length) {
+    console.log(`  ⚑ ${velhos.length} de ${smoke.length} sem passar aqui há uma semana ou mais.`);
+    console.log('    `npm run smoke` roda os oito. O CI roda os mesmos em matriz a cada push.');
+  }
 }
 
 if (falhas.length) {

@@ -25,6 +25,7 @@ import fs from 'node:fs';
 import { navegadorOuSair } from './navegador.mjs';
 import { subirDev } from './dev-server.mjs';
 import { MESA_BANCADA } from './bancada.mjs';
+import { carimbar } from './carimbo.mjs';
 
 const VER = process.argv.includes('--ver');
 const MESA = MESA_BANCADA;
@@ -2732,3 +2733,6 @@ console.log('\n✓ Grid OK · desenho, movimento, registro, névoa e card, nas d
   + ' a caixa de fundo girando e excluindo arte, o telefone nas duas cadeiras,'
   + ' a barra fundida com a escada de ícones e a ordem de combate de pé em tela cheia,'
   + ' o golpe adiado da declaração à queda, e o Quase-Acerto na folha');
+// O carimbo: quando este portao passou nesta maquina. Ver `carimbo.mjs`.
+carimbar('test-grid');
+

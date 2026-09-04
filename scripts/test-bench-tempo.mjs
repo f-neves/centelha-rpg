@@ -17,6 +17,7 @@ import puppeteer from 'puppeteer-core';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { navegadorOuSair } from './navegador.mjs';
+import { carimbar } from './carimbo.mjs';
 
 // Sem lista: so o `EDGE` do ambiente, com o Windows como padrao. Ver
 // `scripts/navegador.mjs`.
@@ -83,3 +84,8 @@ for (const [id, esperado] of [['sis-hoje', false], ['sis-normal', false], ['sis-
 await browser.close();
 if (erros.length) { console.error('\n✘ ERROS:\n' + erros.join('\n')); process.exit(1); }
 console.log('\n✓ bancada sem erros de console');
+
+// O carimbo: quando este portao passou nesta maquina. Ver `carimbo.mjs`.
+// Aqui embaixo porque o codigo so chega ate aqui quando nao houve falha: quem
+// falha sai por `process.exit(1)` antes.
+carimbar('test-bench-tempo');
