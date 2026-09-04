@@ -164,3 +164,144 @@ comment on view public.efeito_visao is
 -- Com um encontro no Tick 3 e um efeito de fogo com desde_tick 8, a casa
 -- vizinha ao efeito tem de dar FALSE; avancando o encontro para o 8, TRUE.
 -- select tick_da_arena(id), casa_clara(id, nevoa, 5, 5) from mesa_arenas limit 1;
+
+-- ------------------------------- 4 - o relogio que nao chegava ao jogador
+--
+-- O SEGUNDO ACHADO, e ele nao e vazamento: e CEGUEIRA, a mesma familia pelo
+-- avesso.
+--
+-- `encontro_visao` existe desde a migracao 14 e NUNCA selecionou `tick_atual`.
+-- O mestre le a tabela `encontros` e tem o relogio; o jogador le a view e nao
+-- tem. No cliente, `tickSim()` cai em `ENC?.tick_atual ?? 0`, entao **no
+-- sistema Simultaneo o relogio do jogador e zero para sempre**.
+--
+-- Isso nao doia enquanto nada dependia do Tick do lado dele. Passou a doer com
+-- o corte de estado dos efeitos: `montando(ef, 0)` responde `true` para todo
+-- efeito com `desde_tick` no futuro, e o jogador passa a esconder tambem o
+-- fogo que JA CAIU. A cortina do cliente, sozinha, deixa o tabuleiro dele em
+-- desacordo com o do mestre a partir do Tick da queda.
+--
+-- E A PAREDE SOZINHA NAO RESOLVE: a view passa a mandar so o efeito caido, e o
+-- cliente do jogador o descarta na mesma, porque continua achando que estamos
+-- no Tick 0. As duas metades sao necessarias, e e por isso que esta secao mora
+-- nesta migracao e nao numa proxima.
+--
+-- `tick_atual` e `rodada` sao PUBLICOS pela mesma regra que a `combate_visao`
+-- ja aplica ao `tick` de cada peca: o tempo e publico, a intencao nao.
+--
+-- POR QUE UM BLOCO `do` E NAO UM `create view` DIRETO:
+--
+--   A migracao 29 tambem recria esta view, com `perfil` e `perfil_em`, e ela
+--   esta PENDENTE. Um `create view` fixo aqui teria ordem obrigatoria: rodada
+--   depois da 29, derrubaria as duas colunas dela; rodada antes, a 29 derrubaria
+--   o `tick_atual`. O bloco confere se `encontros.perfil` existe e inclui as
+--   colunas quando existem, e a 29 ganhou o `tick_atual` no mesmo movimento.
+--   Com as duas assim, **qualquer ordem converge**, e rodar de novo nao estraga.
+do $$
+declare tem_perfil boolean;
+begin
+  select exists (
+    select 1 from information_schema.columns
+     where table_schema = 'public' and table_name = 'encontros' and column_name = 'perfil'
+  ) into tem_perfil;
+
+  execute 'drop view if exists public.encontro_visao';
+  execute format($f$
+    create view public.encontro_visao
+    with (security_invoker = false) as
+    select e.id, e.mesa_id, e.nome, e.ativo, e.estado, e.ordem, e.criado_em,
+           e.tick_atual, e.rodada%s,
+      coalesce((
+        select jsonb_agg(jsonb_build_object('id', el->'id', 'ts', el->'ts',
+                                            'cl', el->'cl', 'txt', el->'pub')
+                         order by ord)
+        from jsonb_array_elements(coalesce(e.log, '[]'::jsonb)) with ordinality as t(el, ord)
+        where jsonb_typeof(el->'pub') = 'string'
+      ), '[]'::jsonb) as log
+    from public.encontros e
+    where public.eh_membro(e.mesa_id)
+  $f$, case when tem_perfil then ', e.perfil, e.perfil_em' else '' end);
+
+  execute 'grant select on public.encontro_visao to authenticated';
+end $$;
+
+comment on view public.encontro_visao is
+  'O encontro como o jogador o recebe: o log so nas linhas publicas, e o '
+  'RELOGIO (tick_atual, rodada), que a migracao 31 acrescentou. Sem ele o '
+  'Simultaneo do lado do jogador rodava em Tick 0 para sempre.';
+
+-- ===================================================================== 5
+-- A CORTINA E A PAREDE, escrita ao lado de cada view
+--
+-- Um corte de tela e uma CORTINA: o dado chegou ao navegador e a pagina apenas
+-- nao o desenhou. Quem abrir o devtools le. Um corte de view e uma PAREDE: o
+-- dado nao sai do Postgres. As duas parecem iguais jogando e nao sao, e o
+-- vazamento da migracao 31 aconteceu porque ninguem tinha escrito qual era qual.
+--
+-- Estes comentarios sao a resposta. Cada view diz o que ela e, e o que ela
+-- deliberadamente NAO guarda. Sao `comment on`, entao vivem no banco, ao lado
+-- do objeto, e nao num documento que envelhece longe dele.
+--
+-- A VARREDURA DE 04/09/2026, oito views:
+--
+--   token_visao      PAREDE   corta peca por casa clara (e o modelo)
+--   efeito_visao     PAREDE   desde a 31; era cortina
+--   encontro_visao   PAREDE   log so nas linhas publicas
+--   arena_log_visao  PAREDE   so o campo `pub`, uma linha por entrada
+--   criatura_visao   PAREDE   so as liberadas, e sem as notas do mestre
+--   mapa_visao       PAREDE   filtra os pinos invisiveis dentro do jsonb
+--   arena_visao      PAREDE   a arena e publica ao grupo; o `log` NAO sai por aqui
+--   combate_visao    MISTA    parede de COLUNA, cortina de EXISTENCIA (ver abaixo)
+
+comment on view public.token_visao is
+  'PAREDE. As pecas que o jogador recebe, cortadas por `casa_clara`: peca no '
+  'escuro nao sai do Postgres. A propria peca sempre viaja. E o modelo do '
+  'corte de estado, e foi por comparacao com ela que a `efeito_visao` apareceu '
+  'sem corte nenhum.';
+
+comment on view public.arena_log_visao is
+  'PAREDE. Uma linha por entrada do registro, e so o campo `pub`. A redacao '
+  'do mestre (`prv`) e a classe interna nao saem do Postgres.';
+
+comment on view public.criatura_visao is
+  'PAREDE. So as criaturas com `visivel_jogadores`, e sem a coluna `notas`: '
+  'o caderno do mestre descia junto e a aba o imprimia como legenda.';
+
+comment on view public.mapa_visao is
+  'PAREDE. Alem do arquivo liberado, ela filtra os PINOS invisiveis de dentro '
+  'do `meta`, que e o corte mais fino do esquema: o segredo mora dentro de um '
+  'jsonb e sai de la antes de viajar.';
+
+comment on view public.arena_visao is
+  'PAREDE por omissao. A arena (mapa, grade, escala, nevoa) e publica ao grupo, '
+  'e a nevoa TEM de vir: e com ela que a tela do jogador se pinta. O que ela '
+  'nao carrega e o `log`, que sai redigido pela `arena_log_visao`.';
+
+-- A `combate_visao` e a unica MISTA das oito, e ela merece o paragrafo inteiro.
+--
+-- Como PAREDE ela e a melhor do esquema: mascara COLUNA a coluna, e o faz
+-- dentro do Postgres. Vida exata do inimigo, dados, Energia, Mana e o `arma`/
+-- `alvo` da acao declarada nao saem daqui sem a mesa abrir a chave. Nada disso
+-- e cortina.
+--
+-- Como CORTINA ela vaza EXISTENCIA, e o `where` diz tudo: `c.oculto = false and
+-- eh_membro(...)`, sem arena e sem casa. O bicho parado no escuro chega ao
+-- navegador do jogador com nome, retrato, grupo, Tick, iniciativa e estado de
+-- Vida. Quem esconde e a TELA do Grid: `naFila()` so lista quem tem peca em
+-- `TOKENS`, e `token_visao` nao mandou a peca do que esta no escuro.
+--
+-- E A CORTINA NEM CHEGA A FECHAR, porque a mesma linha sai desenhada na aba
+-- Combate, que lista a fila inteira do encontro e nao tem nevoa nenhuma. Ou
+-- seja: hoje a nevoa esconde ONDE o bicho esta, e nao QUE ele existe.
+--
+-- ISSO NAO E CONSERTADO AQUI DE PROPOSITO. "O jogador sabe que ha um inimigo na
+-- cena antes de ve-lo?" e escolha de mesa, e nao defeito de programa: ha mesa
+-- que rola iniciativa a ceu aberto e mesa que nao. Cortar por casa aqui mudaria
+-- a aba Combate junto, que nunca teve nevoa, e mudar regra de jogo nao e
+-- decisao de quem escreve a migracao. Fica registrado como pendencia.
+comment on view public.combate_visao is
+  'MISTA. PAREDE de coluna (Vida, dados, Energia, Mana e a intencao da acao '
+  'saem mascarados do Postgres) e CORTINA de existencia: o `where` nao olha '
+  'arena nem casa, entao a peca no escuro chega ao navegador do jogador com '
+  'nome, retrato, grupo e Tick, e so a TELA do Grid a esconde (a aba Combate '
+  'a desenha). Se isso vira parede e escolha de mesa, e esta em aberto.';

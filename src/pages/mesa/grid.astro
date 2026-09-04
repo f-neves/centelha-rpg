@@ -2926,6 +2926,17 @@ const SETAS = [
   function pintarCarimbo() {
     const b = document.getElementById('gr-carimbo') as HTMLButtonElement | null;
     if (!b) return;
+    // A falta do relógio vem primeiro: ela é a única das duas que muda o que o
+    // jogador VÊ, e ele é quem está olhando esta linha.
+    if (SEM_RELOGIO) {
+      b.hidden = false;
+      b.textContent = '⚑ o relógio da cena não está chegando';
+      b.title = 'A cena roda no Tick 0 deste lado, e a névoa não abre pelo fogo agendado.'
+        + '\nFalta a migração 31: peça ao mestre para rodar supabase/migracao-31.sql'
+        + '\nno SQL Editor do Supabase.';
+      b.onclick = null;
+      return;
+    }
     const e = estadoDoCarimbo(ENC);
     // Silêncio é o caso comum: carimbo igual ao site não é notícia. A linha só
     // aparece quando a cena está com o chão DIFERENTE, que é quando uma regra
@@ -2939,12 +2950,35 @@ const SETAS = [
     b.onclick = () => recarimbar();
   }
 
+  /**
+   * O RELÓGIO NÃO CHEGOU AO JOGADOR, e é preciso saber disso.
+   *
+   * `encontro_visao` só passa a mandar `tick_atual` com a migração 31. Antes
+   * dela o jogador lê o encontro sem relógio, `tickSim()` cai no `?? 0`, e no
+   * Simultâneo a cena dele fica no Tick 0 para sempre.
+   *
+   * A DEGRADAÇÃO É PARA O LADO SEGURO, de propósito: com o relógio em zero,
+   * `montando(ef, 0)` responde `true` para todo efeito agendado, e a névoa do
+   * jogador não abre nem pela Arte em montagem (que é o vazamento) nem pela
+   * que já caiu (que é o preço). Fogo sem agenda, que é o caso comum fora de
+   * combate, continua iluminando. Esconder demais é o erro barato; mostrar o
+   * que ainda não existe é o caro.
+   *
+   * O mestre nunca cai aqui: ele lê a tabela `encontros`, que sempre teve a
+   * coluna.
+   */
+  let SEM_RELOGIO = false;
+
   /** O encontro ativo e quem está nele. É de lá que saem os tokens. */
   async function carregarCombatentes() {
     ENC = null; COMBS = [];
     const { data: encs } = await SB.from(MESTRE ? 'encontros' : 'encontro_visao')
       .select('*').eq('mesa_id', ID).eq('ativo', true).limit(1);
     ENC = (encs || [])[0] || null;
+    // `in`, e não `== null`: a diferença entre "a coluna não veio" (view velha)
+    // e "veio zero" (a cena está mesmo no Tick 0) é justamente a que não pode
+    // se perder aqui, e é a mesma forma do zero ambíguo.
+    SEM_RELOGIO = !MESTRE && !!ENC && !('tick_atual' in ENC);
     // O relógio do simultâneo relê a verdade do banco a cada carga: outra tela
     // pode ter avançado o Tick enquanto esta estava fora.
     TICK_SIM = null;

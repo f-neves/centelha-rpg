@@ -46,6 +46,14 @@ create view public.encontro_visao
 with (security_invoker = false) as
 select e.id, e.mesa_id, e.nome, e.ativo, e.estado, e.ordem, e.criado_em,
   e.perfil, e.perfil_em,
+  -- O RELOGIO, acrescentado junto com a migracao 31 e nao com esta.
+  --
+  -- Ele esta aqui para a ORDEM entre as duas nao importar: a 31 recria esta
+  -- mesma view com `tick_atual` e com `perfil` (quando a coluna ja existe), e
+  -- sem esta linha rodar a 29 DEPOIS da 31 derrubaria o relogio de novo. As
+  -- duas escrevem a mesma view, entao as duas tem de escrever a mesma lista.
+  -- O porque do relogio sair para o jogador esta na secao 4 da migracao 31.
+  e.tick_atual, e.rodada,
   coalesce((
     select jsonb_agg(jsonb_build_object('id', el->'id', 'ts', el->'ts', 'cl', el->'cl', 'txt', el->'pub')
                      order by ord)

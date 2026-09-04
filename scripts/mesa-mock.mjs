@@ -94,6 +94,21 @@ const NEVOA = P.get('nevoa') === '1';
  * fonte de verdade da bancada, e o teste só compara o que a tela desenhou.
  */
 const BRASA = P.has('brasa') ? Math.max(0, parseInt(P.get('brasa') || '0', 10) || 0) : null;
+/**
+ * O TICK EM QUE A CENA ESTÁ. Zero por padrão, que é onde ela sempre esteve.
+ *
+ * Ele existe porque a cena parada no Tick 0 não distingue duas coisas: uma Arte
+ * com `desde_tick` 0 (já caída) e um relógio que **não chegou** ao jogador.
+ * Enquanto a bancada só sabia abrir cenas no Tick 0, "o jogador vê o fogo que
+ * caiu" passava mesmo com o relógio dele quebrado, porque zero era a resposta
+ * certa por acaso.
+ *
+ * Com `?tick=5&brasa=3` a Arte caiu dois Ticks atrás e a névoa do jogador tem
+ * de estar aberta: se o relógio dele não chegar, ele lê Tick 0, acha que a Arte
+ * ainda está sendo montada e mantém o escuro. É a asserção que falsifica o
+ * conserto do `encontro_visao` na migração 31.
+ */
+const TICK_CENA = Math.max(0, parseInt(P.get('tick') || '0', 10) || 0);
 const POSTOS = parseInt(P.get('postos') || String(N_COMB), 10);
 // O sistema de tempo da mesa de bancada. `pgr` de propósito: é o caminho novo,
 // e o que o smoke precisa exercitar. `?tempo=normal` volta ao de sempre.
@@ -459,8 +474,10 @@ const TABELAS = {
   mesa_arenas: ARENAS,
   arena_visao: ARENAS,
   // A CENA DO CAÍDO começa no Tick 1: o teste avança um e o golpe vence no 2.
-  encontros: [{ id: ENC, mesa_id: MESA, ativo: true, tick_atual: CAIDO ? 1 : 0, nome: 'Cena' }],
-  encontro_visao: [{ id: ENC, mesa_id: MESA, ativo: true, tick_atual: CAIDO ? 1 : 0, nome: 'Cena' }],
+  encontros: [{ id: ENC, mesa_id: MESA, ativo: true, tick_atual: CAIDO ? 1 : TICK_CENA,
+    rodada: 1, estado: null, ordem: 0, criado_em: '2026-01-01T00:00:00Z', nome: 'Cena' }],
+  // `encontro_visao` é COMPUTADA, e por projeção de coluna. Ver `COLUNAS` abaixo.
+  encontro_visao: [],
   combatentes: COMBS,
   combate_visao: PAPEL === 'jogador' ? COMBS.map(paraJogador) : COMBS,
   arena_tokens: TOKENS,
@@ -548,6 +565,48 @@ function claraNoMock(q, r) {
  * O MESTRE continua recebendo tudo, porque ele lê `arena_efeitos` e precisa ver
  * a mancha tracejada do que está sendo montado.
  */
+/**
+ * A PROJEÇÃO DE COLUNA, e por que ela é obrigatória aqui.
+ *
+ * `encontro_visao` era um objeto escrito à mão, com `tick_atual` dentro. **A
+ * view de verdade nunca teve essa coluna**, desde a migração 14: o mestre lê a
+ * tabela e tem o relógio, o jogador lê a view e não tem. O mock era MAIS
+ * GENEROSO QUE O ESQUEMA, então a cena do jogador rodava aqui com um relógio
+ * que a mesa não lhe dá, e nenhuma asserção sobre o Tick dele valia.
+ *
+ * Cópia à mão erra assim de novo no dia seguinte. Projeção não: a lista abaixo
+ * é a lista de colunas da view, escrita ao lado da migração que a define, e
+ * qualquer coisa fora dela some da vista do jogador na bancada como some na
+ * mesa. Acrescentar coluna à view sem acrescentar aqui deixa o teste vermelho,
+ * que é a direção certa do erro.
+ */
+const COLUNAS = {
+  // migrações 14 · 29 · 31
+  encontro_visao: ['id', 'mesa_id', 'nome', 'ativo', 'estado', 'ordem', 'criado_em',
+    'tick_atual', 'rodada', 'perfil', 'perfil_em', 'log'],
+};
+/**
+ * `?semrelogio=1`: a view COMO ELA ERA, sem `tick_atual`.
+ *
+ * O banco de produção fica assim até alguém rodar a migração 31, e a página tem
+ * de degradar sem quebrar e dizer qual arquivo rodar (é a regra do `CLAUDE.md`).
+ * Sem este modo a degradação seria escrita e nunca exercitada, que é o mesmo
+ * que não existir.
+ */
+if (P.get('semrelogio') === '1') {
+  COLUNAS.encontro_visao = COLUNAS.encontro_visao.filter((c) => c !== 'tick_atual');
+}
+const projetar = (linha, cols) => {
+  const o = {};
+  for (const k of cols) if (k in linha) o[k] = linha[k];
+  return o;
+};
+
+Object.defineProperty(TABELAS, 'encontro_visao', {
+  enumerable: true,
+  get: () => TABELAS.encontros.map((e) => projetar(e, COLUNAS.encontro_visao)),
+});
+
 Object.defineProperty(TABELAS, 'efeito_visao', {
   enumerable: true,
   get() {
@@ -588,8 +647,8 @@ function guardar(tabela, linhas) {
   if (Array.isArray(TABELAS[tabela])) TABELAS[tabela].push(...novas);
   // As views são a mesma coisa lida por outro nome: quem escreve em
   // `arena_efeitos` lê de volta em `efeito_visao`, e sem isto a leitura mentiria.
-  // `token_visao` NÃO entra aqui: ela é derivada de `arena_tokens` por getter.
-  // Nem `token_visao` nem `efeito_visao` entram aqui: as duas são derivadas.
+  // `token_visao`, `efeito_visao` e `encontro_visao` NÃO entram aqui: as três
+  // são derivadas por getter, das tabelas que estas linhas acabaram de mudar.
   const vista = { combatentes: 'combate_visao' }[tabela];
   if (vista && Array.isArray(TABELAS[vista]) && TABELAS[vista] !== TABELAS[tabela]) TABELAS[vista].push(...novas);
   return novas;

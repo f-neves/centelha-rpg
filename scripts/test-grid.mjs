@@ -22,30 +22,16 @@
 // de vermelho uma máquina que só não tem Edge nem Chrome instalado.
 import puppeteer from 'puppeteer-core';
 import fs from 'node:fs';
+import { navegadorOuSair } from './navegador.mjs';
 import { subirDev } from './dev-server.mjs';
 
 const VER = process.argv.includes('--ver');
 const MESA = '00000000-0000-4000-8000-0000000000aa';
 
-const NAVEGADORES = [
-  process.env.EDGE, process.env.CHROME, process.env.PUPPETEER_EXECUTABLE_PATH,
-  'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
-  'C:/Program Files/Microsoft/Edge/Application/msedge.exe',
-  'C:/Program Files/Google/Chrome/Application/chrome.exe',
-  '/usr/bin/google-chrome', '/usr/bin/chromium', '/usr/bin/chromium-browser',
-  '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-].filter(Boolean);
-const NAV = NAVEGADORES.find((p) => { try { return fs.existsSync(p); } catch { return false; } });
-if (!NAV) {
-  // PULAR É PERMITIDO NA MÁQUINA DE ALGUÉM, E NUNCA NO PORTÃO. Sem navegador
-  // este teste não tem o que provar, e pintar de vermelho a máquina de quem só
-  // não tem Edge instalado seria ruído. Mas um portão que passa PULANDO é pior
-  // do que não ter portão: ele diz verde sem ter olhado. `SMOKE_EXIGE_NAVEGADOR`
-  // é ligado no CI, e ali a falta de navegador é falha de configuração.
-  const exige = process.env.SMOKE_EXIGE_NAVEGADOR === '1';
-  console.log(`· Grid: ${exige ? "SEM NAVEGADOR" : "PULADO"} (nenhum navegador encontrado; defina EDGE ou CHROME)`);
-  process.exit(exige ? 1 : 0);
-}
+// A lista de caminhos e a politica de pular moram em `navegador.mjs`, uma vez
+// so: eram oito copias, e tres delas tinham envelhecido cravadas no Edge do
+// Windows.
+const NAV = navegadorOuSair('Grid');
 
 /**
  * Os tetos por AÇÃO. Não são metas de desempenho: são cercas contra a repintura
@@ -1323,11 +1309,11 @@ async function cenaJogadorNevoa(br, url) {
   console.log('\n· a cadeira do jogador, com a nevoa ligada');
   const erros = [];
   /** Abre a cena do jogador com nevoa e devolve o que a tela desenhou. */
-  const abrir = async (brasa, papel = 'jogador') => {
+  const abrir = async (brasa, papel = 'jogador', extra = '') => {
     const p = await br.newPage();
     await p.setViewport({ width: 1400, height: 950 });
     p.on('pageerror', (e) => erros.push(e.message));
-    const q = brasa === null ? '' : `&brasa=${brasa}`;
+    const q = (brasa === null ? '' : `&brasa=${brasa}`) + extra;
     await p.goto(`${url}/mesa/grid?id=${MESA}&bench=12&cols=24&rows=16&nevoa=1&papel=${papel}${q}`,
       { waitUntil: 'networkidle0', timeout: 60000 });
     await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
@@ -1343,6 +1329,12 @@ async function cenaJogadorNevoa(br, url) {
       // montagem é a PAREDE (a view cortou); mais que zero com ela escondida da
       // tela seria só a cortina.
       recebidos: (window.__SB?.tabelas?.efeito_visao || []).length,
+      // O relógio como ESTA cadeira o recebe. `undefined` quer dizer que a
+      // coluna não veio na view, que é o estado anterior à migração 31.
+      relogio: (window.__SB?.tabelas?.encontro_visao || [])[0]?.tick_atual,
+      // O aviso do chão da cena, que é a degradação quando o relógio não chega.
+      aviso: (document.getElementById('gr-carimbo')?.hidden === false
+        ? document.getElementById('gr-carimbo').textContent : ''),
     }));
     await p.close();
     return d;
@@ -1380,6 +1372,42 @@ async function cenaJogadorNevoa(br, url) {
   ok(montando.recebidos === 0,
     `e a linha nem chega ao navegador dele: a view cortou (${montando.recebidos} efeitos recebidos)`);
   ok(caiu.recebidos === 1, `a que caiu chega (${caiu.recebidos})`);
+
+  // ---- O RELOGIO DO JOGADOR, e o par que o falsifica ----
+  //
+  // As quatro asserçoes acima rodam com a cena no Tick 0, e nesse ponto "a Arte
+  // caiu" e "o relogio nao chegou" dao a MESMA resposta: `desde_tick` 0 nao esta
+  // no futuro de tick nenhum. O zero era certo por acaso.
+  //
+  // Com a cena no Tick 5 os dois se separam. A Arte que caiu no 3 tem de abrir o
+  // escuro: se `encontro_visao` nao mandar `tick_atual`, o jogador le zero, acha
+  // que ela ainda esta sendo montada, e a nevoa fica fechada. Conferido tirando
+  // a coluna da projeçao do mock: esta cai, a gemea abaixo continua passando.
+  // No SIMULTANEO, e nao no P/G/R: so ali o relogio da cena e `tick_atual`. No
+  // P/G/R ele sai da fila (`tickDaVez`), que na bancada esta toda no Tick 0, e a
+  // cena responderia zero com a coluna chegando ou nao. Descoberto por esta
+  // asserçao falhando com o relogio correto na mao: a cena tem de ser a do
+  // sistema que le o relogio, ou o par nao separa nada.
+  const SIM5 = '&tick=5&tempo=simultaneo';
+  const base5 = await abrir(null, 'jogador', SIM5);
+  const tarde = await abrir(3, 'jogador', SIM5);
+  const aindaMont = await abrir(7, 'jogador', SIM5);
+  ok(tarde.relogio === 5, `o relogio da cena chega ao jogador (tick_atual = ${tarde.relogio})`);
+  ok(tarde.claras > base5.claras,
+    `a Arte caida ha dois Ticks abre o escuro dele (${base5.claras} -> ${tarde.claras})`);
+  ok(aindaMont.claras === base5.claras,
+    `e a que ainda falta cair, no mesmo Tick, nao abre (${base5.claras} -> ${aindaMont.claras})`);
+  ok(!tarde.aviso, `sem aviso de migraçao quando o relogio chega ("${tarde.aviso}")`);
+
+  // E O BANCO DE HOJE, que e o que esta no ar ate alguem rodar a 31: a view sem
+  // `tick_atual`. A pagina nao pode quebrar, tem de errar para o lado seguro (a
+  // Arte caida NAO abre, em vez de a montada abrir) e tem de dizer o que falta.
+  const velho = await abrir(3, 'jogador', SIM5 + '&semrelogio=1');
+  ok(velho.relogio === undefined, 'sem a migraçao 31 o relogio nao chega ao jogador');
+  ok(velho.tokens > 0, `e a pagina desenha assim mesmo (${velho.tokens} pecas)`);
+  ok(velho.claras === base5.claras,
+    `errando para o lado seguro: o escuro fica fechado (${base5.claras} -> ${velho.claras})`);
+  ok(/rel[oó]gio/i.test(velho.aviso), `e o chao da cena diz o que falta ("${velho.aviso}")`);
 
   // ---- O MESTRE, do outro lado da mesma regra ----
   //
