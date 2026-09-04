@@ -1343,7 +1343,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
     lado `b`**. ⚠ **Esses números caíram com o conserto da iniciativa** (a iniciativa era função
     só do ordinal, e o ordinal é dado em bloco por lado: o desempate da fila saía igual em todas as
     batalhas e sempre para o mesmo lado). A explicação publicada, de passo dobrado, era falsa: o
-    eixo do passo estava cortado desde 03/09. Refeita a bateria (`09-bmtmb6ljq.txt`), a repartição
+    eixo do passo estava cortado desde 03/09. Refeita a bateria (`09-bmtmbdppb.txt`), a repartição
     é **116.293 e 130.772**, ou 47,1% contra 52,9%, e a assimetria que sobra é dos arquétipos
     diferentes das células `coprimo`. Pagando `G` em um lado só: **8,8% a 9,0% com `G = 2`** e
     **7,4% a 7,7% com `G = 4`**, no modo `mesa`. A largura entre os dois lados continua pequena

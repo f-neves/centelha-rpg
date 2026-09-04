@@ -457,7 +457,7 @@ declarações 228.332 · lado a 102.940 (45,1%) · lado b 125.392 (54,9%)
 > do ordinal, o ordinal é dado em bloco por lado, e por isso o desempate da fila saía igual em
 > todas as 21.600 batalhas e sempre para o mesmo lado. Consertado; a repartição virou **47,1% e
 > 52,9%** e todos os números desta seção mudaram. **A leitura de hoje está em
-> `docs/simulacao/ESTADO.md`**, com o agregado `resultados/09-bmtmb6ljq.txt`.
+> `docs/simulacao/ESTADO.md`**, com o agregado `resultados/09-bmtmbdppb.txt`.
 
 **E não é meio a meio, e a razão é do desenho da grade e não do jogo:** em metade das células (as
 `coprimo`) os dois lados têm **arquétipos diferentes**, Escudeiro contra Montanteiro, com armas

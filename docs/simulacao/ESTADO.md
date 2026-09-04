@@ -3,9 +3,9 @@
 **Escrito para quem não acompanhou nenhuma rodada.** Quatro seções e nada além
 delas. Não é a história de como se chegou aqui: é onde estamos.
 
-Todo número desta página sai de `docs/simulacao/resultados/09-bmtmb6ljq.txt`, que é
-a saída inteira do agregador sobre a bateria `bmtmb6ljq` (21.600 batalhas, 96
-células, zero inválidas, commit `81a6508`, árvore limpa). `R:` é linha nele.
+Todo número desta página sai de `docs/simulacao/resultados/09-bmtmbdppb.txt`, que é
+a saída inteira do agregador sobre a bateria `bmtmbdppb` (21.600 batalhas, 96
+células, zero inválidas, commit `b9fa8ac`, árvore limpa). `R:` é linha nele.
 
 **Esta bateria é posterior ao conserto da iniciativa** (ver a seção 3). Os números
 publicados antes dele, inclusive os da `09`, mudaram todos, e a `09` traz o aviso
