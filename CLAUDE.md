@@ -51,6 +51,23 @@ quase não se cruzam, exceto em quatro lugares:
 - `src/lib/site.ts` é só da frente das regras (não há entrada de `/mesa` nele), e
   `src/lib/mesa-*.ts` é só da frente da mesa.
 
+## Produção
+
+- **O deploy é automático**: todo push em `main` dispara `deploy.yml`, que roda
+  `npm run build` e publica no GitHub Pages. Não há publicação manual, e o que
+  está no ar é sempre o último commit cujo build passou.
+- **As migrações do Supabase NÃO são automáticas.** Elas são rodadas à mão no
+  SQL Editor, uma a uma, e o repositório não sabe quais já foram. Para descobrir,
+  sonde o esquema pelo PostgREST com a chave anon: tabela ou coluna que não
+  existe devolve `42P01` / `42703` / `PGRST202`, e a que existe e está fechada
+  pela RLS devolve outra coisa. É a única leitura de produção possível daqui.
+- **Todo commit que toque `src/` traz uma linha dizendo o que muda para quem está
+  jogando hoje, e se depende de migração.** Quem lê a mensagem não é quem
+  escreveu o código: é quem vai abrir a mesa amanhã.
+- Todo caminho que dependa de migração ainda não rodada tem de degradar sem
+  quebrar, e dizer qual arquivo rodar. Ver `carimbarSeFaltar` (migração 29) e o
+  `sec-gravar` da aba Grupo (migração 30).
+
 ## O essencial do repositório
 
 - `src/data/*.json` é a fonte da verdade das regras. Os capítulos em
