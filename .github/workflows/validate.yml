@@ -25,6 +25,13 @@ permissions:
 jobs:
   validar:
     runs-on: ubuntu-latest
+    # UM TETO, porque o smoke dirige um navegador e navegador trava.
+    #
+    # Sem isto, um passo pendurado consome o teto padrão do GitHub (seis horas)
+    # e o portão fica "in_progress" em vez de vermelho, que é a mesma doença de
+    # sempre: um estado que não é resposta parecendo resposta. Vinte minutos são
+    # umas cinco vezes o que ele leva numa máquina modesta.
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

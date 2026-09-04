@@ -397,7 +397,11 @@ const BRASA_EFEITO = {
   id: 'ef-brasa', arena_id: ARENA, arte_id: 'fogo', efeito_id: 'brasa',
   conjurador_id: null, nome: 'Brasa Retardada', nivel: 2, forma: 'zona',
   molde: 'explosao', angulo: 60, figura: null, hexes: [BRASA_HEX],
-  centro: BRASA_HEX, raio_m: 1, dano_dados: 2, dano_bonus: 0, condicao: null,
+  centro: BRASA_HEX, raio_m: 1, dano_dados: 0, dano_bonus: 0, condicao: null,
+  // SEM DANO, e de proposito: a brasa existe para provar a LUZ, e uma zona que
+  // fere abriria a caixa de mordida do `verificarEfeitos` assim que caisse em
+  // cima de alguem. Essa caixa espera um clique, e teste que espera clique nao
+  // falha: ele pendura, que e o pior dos dois.
   elemento: 'fogo', materia: null, gatilho: 'imediato', alvos: [], item: null,
   desde_tick: BRASA || 0, ate_tick: (BRASA || 0) + 60, mordidos: {}, oculto: false,
 };
