@@ -19,37 +19,94 @@ A pergunta é uma só: **quanto do trabalho do mestre, numa batalha do Grid, a
 automação pode tirar.** Trabalho aqui é gesto de tela: clique, arrasto, número
 digitado.
 
+### A linha entre o que sai e o que fica
+
+**Custo é o tempo entre a DECISÃO ESTAR TOMADA e o EFEITO APARECER na tela.**
+Decidir é jogo, e pode demorar o quanto o jogador quiser. Configurar não é.
+
+| do lado do JOGO, e não sai | do lado do CUSTO, e é tudo o que se quer tirar |
+|---|---|
+| escolher a arma, o alvo, o alcance, a área da magia, a distância do projétil | somar o que foi rolado |
+| escolher a manobra, o modo de deslocamento | digitar o total no campo |
+| rolar o dado na mão | digitar o dano, e o segundo input do ataque |
+| o veredito, quando ele é julgamento e não conta | aplicar à mão qualquer modificador que a tela calculou e exibiu |
+| | abrir, procurar, corrigir e reabrir modal |
+| | todo clique de relógio que não abre decisão nenhuma |
+
+**O critério de conflito:** se o mestre está executando consequência de uma decisão
+já tomada, é custo; se está tomando a decisão, é jogo. **Na dúvida, é jogo**, porque
+tirar diversão por engano é o erro caro e deixar custo na mesa custa uma rodada.
+
+Esta linha substitui a classe iii como definição de alvo. A classe iii dizia onde a
+parada nascia; a linha diz o que dentro dela é trabalho de quem opera a tela.
+
 ### O trabalho do mestre não é uma coisa, são três
 
-| | gestos | fatia | quem consegue tirar |
+| | gestos | fatia | como se lia antes |
 |---|---:|---:|---|
-| **aritmética** | 597.714 | 51% | automação de regra |
-| **o ⏭**, cadência de relógio | 375.005 | 32% | ninguém: nenhuma regra o toca |
-| **julgamento** | 199.238 | 17% | ninguém: é a mesa decidindo |
+| **aritmética** | 597.714 | 51% | sai com automação de regra |
+| **o ⏭**, cadência de relógio | 375.005 | 32% | ninguém tira: nenhuma regra o toca |
+| **julgamento** | 199.238 | 17% | ninguém tira: é a mesa decidindo |
 | **total** | **1.171.957** | **100%** | |
 
-Procedência: `R:134` a `R:137`.
+Procedência: `R:134` a `R:137`. **E a aritmética inteira sai de UMA parada, a folha
+da resolução** (`R:128`): as outras cinco paradas do Tick somam 60% das ocasiões e
+custam zero gesto.
 
-**E a aritmética inteira sai de UMA parada, a folha da resolução** (`R:128`). As
-outras cinco paradas do Tick somam 60% das ocasiões e custam zero gesto. Isso
-importa porque decide onde vale mexer: não há seis lugares para atacar, há um.
+### Os mesmos gestos, pela linha
 
-### O teto do que este projeto pode tirar é 61,8%
+O custo de tela de cada parada está escrito em `scripts/sim/custo-tela.mjs`, com a
+derivação lida do Grid. Abrindo os três termos por gesto, em vez de por parada:
+
+| o gesto | gestos | fatia | jogo ou custo |
+|---|---:|---:|---|
+| abrir o cartão vencido na faixa | 199.238 | 17,0% | **custo**: executa uma decisão já tomada na declaração |
+| digitar o acerto e digitar o dano | 398.476 | 34,0% | **custo**, e está na lista com todas as letras |
+| o botão do veredito (acertou · raspou · errou) | 199.238 | 17,0% | **custo**: a tela já fez a comparação e a exibe; o clique transcreve |
+| ⏭ que não abre parada nenhuma | 210.296 | 17,9% | **custo**, e está na lista |
+| ⏭ que abre uma parada | 164.709 | 14,1% | **custo neste elenco**: a parada que ele abre é a folha, que é transcrição |
+| **total** | **1.171.957** | **100%** | |
+
+**Pela linha, nada do que o mestre faz nesta bateria é jogo.** E o motivo não é que
+o jogo tenha sumido: é que **o jogo mora na declaração, e a declaração é gesto do
+JOGADOR**, não do mestre. Nesta bateria ela é do robô e custa zero. Escolher arma,
+alvo, alcance, manobra e modo de deslocamento acontece tudo lá.
+
+**Quanto do que a escada tirava era jogo: nada.** Os três degraus tiram digitação,
+clique de relógio vazio e transcrição de veredito, e nenhum deles toca uma escolha.
+
+**E o teto real, depois de tirar o jogo de dentro dele, é 100%** do trabalho do
+mestre nesta configuração. Os 61,8% nunca foram um limite de princípio: eram o
+limite dos três degraus que estavam desenhados. O que sobra depois deles, o ⏭ que
+para e o botão do veredito, é custo como o resto, e a única razão de estar fora é
+que ninguém desenhou como tirá-lo.
+
+> **A ressalva, e ela é grande.** Isto vale para o mestre e para esta bateria, que
+> não tem peça de jogador. Numa mesa com gente, parte do ⏭ passa a abrir declaração,
+> que é decisão, e vira jogo. **Quanto, não está medido**, e não se mede com bateria:
+> depende de quantas peças são de jogador.
+
+### A escada dos três degraus desenhados, e os 61,8% que ela alcança
 
 | | trabalho | do de hoje | o que sai |
 |---|---:|---:|---|
 | hoje, modo `mesa` | 1.171.957 | 100% | · |
-| + modo `site` | 773.481 | 66,0% | os dois números digitados por golpe (`R:181`) |
+| + a mesa deixa de digitar os totais | 773.481 | 66,0% | os dois números digitados por golpe (`R:181`) |
 | + avanço unificado | 573.255 | 48,9% | o ⏭ do Tick morto, e um cartão por parada (`R:182`) |
-| + a folha resolvendo sozinha | **448.224** | **38,2%** | o resto da aritmética (`R:183`) |
+| + a folha deixa de pedir transcrição | **448.224** | **38,2%** | o resto da aritmética (`R:183`) |
 
-O teto está em `R:185`.
+Os 61,8% estão em `R:185`.
 
-**O que sobra não tem conserto de software.** O resíduo de 448.224 é 55% de ⏭ que
-param de verdade e 45% de aplicar o golpe (`R:184`): um clique por Tick que para e
-um por golpe que cai. É a cadência da cena e a decisão da mesa. **E ele cresce com
-o TAMANHO da cena, não com a complexidade da regra**, o que quer dizer que nenhuma
-simplificação de regra o reduz.
+> **Os 61,8% são o alcance DESTES TRÊS DEGRAUS, e não um limite de princípio.** A
+> leitura anterior dizia que o resíduo "não tem conserto de software", e a linha
+> desmente: o resíduo de 448.224 é 55% de ⏭ que param e 45% do botão do veredito
+> (`R:184`), e **os dois são custo**. O ⏭ que para abre uma folha que é transcrição;
+> o botão transcreve uma comparação que a tela já fez. O que os mantém de fora é
+> nenhum dos três degraus tê-los atacado, e não a natureza deles.
+
+**O que sobra cresce com o TAMANHO da cena, não com a complexidade da regra**, o que
+quer dizer que nenhuma simplificação de regra o reduz. Isso continua valendo, e é
+uma afirmação sobre a forma do resíduo, não sobre ele ser irredutível.
 
 ### O avanço automático, medido sozinho
 
@@ -75,24 +132,124 @@ bandeiras, políticas, obstáculo, leitura, reforço nem criaturas.
 
 ## 2 · O QUE VAI MUDAR NO GRID
 
-> **Nenhum conserto desta fila foi implementado por causa desta frente.** O item 1
-> já existia no produto antes dela. Os itens 2, 3 e 4 não têm uma linha escrita. A
-> frente mediu; ela ainda não mudou a mesa.
+> **Nenhum conserto desta fila foi implementado por causa desta frente.** A frente
+> mediu; ela ainda não mudou a mesa.
+
+### O que a linha fez com a fila
+
+**O item que era o maior morreu como estava escrito, e o número dele não morreu.**
+"O site rola os dados" valia 34,0% do trabalho do mestre, e a leitura era que ele
+trocava o prazer de rolar por menos trabalho. **A leitura estava errada, e o custo
+de tela mostra por quê:** os três gestos da folha no modo `mesa` são abrir o cartão,
+digitar o acerto e digitar o dano. **Rolar não é nenhum deles.** Um punhado de dados
+na mesa não custa gesto de tela nenhum, e por isso não aparece nesta conta em modo
+algum.
+
+| dos 34,0% que o modo `site` valia | gestos | o que é |
+|---|---:|---|
+| rolar o dado | **0** | jogo, e nunca esteve na conta |
+| digitar os dois totais | **398.476** | custo puro |
+
+**Os 34,0% eram transcrição, inteiros.** A decisão de manter o dado na mão do
+jogador não custa um ponto sequer: o que tem de sair é a mesa ter de somar o que
+rolou e digitar o total, com o dado continuando a ser rolado na mão.
+
+### A fila
 
 | # | o conserto | o que tira | o que custa | está no Grid? |
 |---|---|---|---|---|
-| 1 | **o modo `site`**: o site rola os dados em vez de a mesa rolar | **34,0%** do trabalho do mestre (`R:166`) | nada de código. O custo é de mesa: ela para de rolar dado na mão | **SIM, e já existia.** É a opção `combate.rolagem`. O que falta não é código |
+| 1 | **a folha aceita o dado em vez do total**: a mesa rola na mão e a tela deixa de pedir a soma digitada | **34,0%** (398.476) | desenho de entrada. Não mexe em regra e não tira dado de ninguém | **não** |
 | 2 | **o avanço unificado**: o ⏭ corre até a parada real **e abre a folha do golpe que o fez parar** | 25,9% no piso e 36,8% no teto, sobre o trabalho no modo `site` (`R:176` e `R:177`) | um desenho só, e não dois. Mais a regra de opacidade: toda conta que sair da mão do mestre precisa continuar visível | **não** |
-| 3 | **a folha resolvendo sozinha** | leva o trabalho a 38,2% do de hoje (`R:183`) | a mesa deixa de ver a conta do golpe. É por isso que vem depois do 2 | **não** |
-| 4 | **o L25**: as quinze bandeiras lidas pelo motor | **zero** para o mestre | é pré-requisito de qualquer bateria que compare regras, e nada mais | **não** |
+| 3 | **a folha para de pedir transcrição e continua pedindo decisão** | **51,0%** (597.714): os dois totais mais o botão do veredito | a folha não some. Ela deixa de cobrar o que a tela já sabe, e continua abrindo quando há o que decidir | **não** |
+| 4 | **as contas que o Grid calcula, exibe e não aplica** (a lista abaixo) | não medido, e não precisa de medição | implementar a aplicação de cada uma | **não** |
+| 5 | **o L25**: as quinze bandeiras lidas pelo motor | **zero** para o mestre | é pré-requisito de qualquer bateria que compare regras, e nada mais | **não** |
 
-**A ordem de execução não é a da tabela.** O item 1 está pronto e travado numa
-pergunta que não é de código: *por que a mesa rola o dado na mão?* Enquanto ela não
-for respondida, não se sabe se os 34,0% existem na prática. O item 2 vem depois
-disso, porque a resposta muda o tamanho dele. O 3 vem depois do 2. O 4 não alivia o
-mestre em nada.
+**O item 3 mudou de forma, e o nome antigo atrapalhava.** Ele não era "a folha
+resolvendo sozinha", como se a caixa desaparecesse: **é a folha parando de pedir
+transcrição.** O que ela cobra hoje e não devia é o acerto digitado, o dano digitado
+e o clique num dos três botões de veredito que a própria tela já calculou e exibe.
+Isso é 597.714 gestos, **51,0% do trabalho do mestre**, e engloba o item 1: quem faz
+o 3 inteiro não precisa do 1 em separado. O que a folha continua pedindo é decisão,
+e decisão fica.
 
----
+### O item 4 · as contas que o Grid calcula, exibe e não aplica
+
+**São custo puro pela definição, e isto não depende de bateria nenhuma para ser
+justificado.** O argumento inteiro é: a tela computou o número, mostrou o número na
+frente do mestre, e pede que ele o digite noutro campo. O mestre não decide nada
+ali, executa aritmética que a própria tela pediu. Nenhuma medição decide se isso é
+custo; medição decidiria só **quanto** custa, que é outra pergunta. É o mesmo tipo
+de argumento que fixou o custo da declaração à mão em dois gestos pelo arrasto e
+quatro pelo menu: lido do Grid, não cronometrado.
+
+**A lista, conferida contra a `01-diagnostico-carga.md` §C2**, e o número da
+chamada não bate com o da tabela:
+
+| | linhas |
+|---|---:|
+| itens na tabela | **18** |
+| o Grid **aplica** (ferimento do atacante · ferimento do alvo · escada e Pressão) | 3 |
+| o Grid **não aplica** | **15** |
+| desses, o Grid **exibe** e não aplica | 6 |
+| desses, o Grid **nem exibe** | 9 |
+
+As dezesseis são outra coisa: são as dezesseis **bandeiras** de regra, que aparecem
+na `04-prontidao.md`. A confusão vale a nota porque as duas listas falam de coisas
+que o Grid tem e não usa.
+
+**A divisão em seis e nove muda o conserto de cada metade.** As seis que ele exibe
+já estão calculadas na tela e só precisam ser aplicadas: contrapé da iniciativa,
+faixa de distância no tiro e no arremesso, alcance no corpo a corpo (que é só aviso
+e não pede digitação), gate de Perfuração, a Defesa −4 da Corrida, e a penalidade de
+manobra, que ele já aplica quando o site rola. As nove restantes ele **nem calcula**:
+margem de dano, Porte no acerto, Couraça de Porte, o teto ±6 dos modificadores,
+Investida, Bloqueio e Defesa da arma e escudo, o modo secundário de dano,
+sangramento por rodada e projétil rápido. Essas exigem implementar a regra antes de
+aplicá-la.
+
+**O que a lista vale em gestos**, e é o que dá para afirmar sem medir frequência:
+
+- **doze das quinze aterrissam num campo** da folha. Três não pedem digitação
+  nenhuma: o alcance no corpo a corpo é aviso, o teto ±6 teria de ser conferido de
+  cabeça, e o projétil rápido não tem onde ser escrito;
+- cada aplicação à mão custa **ao menos dois gestos** (achar o campo e digitar), pelo
+  mesmo critério que contou o arrasto e o menu. Duas delas pedem dois campos
+  (Investida e o modo secundário) e uma pede uma ação à parte (sangramento);
+- **um lance em que uma só dessas correções se aplica custa 5 gestos e não 3**, o que
+  é dois terços a mais na parada mais cara da cena;
+- **e a bateria não conta nenhum deles.** Os 1.171.957 gestos medidos assumem que
+  nada disso acontece, porque o robô nunca aplica correção situacional. **O número
+  publicado é piso**, e a lista da §C2 é o tamanho do que falta nele. Quantas vezes
+  cada uma se aplica numa cena de verdade não está medido, e não é bateria que mede:
+  é mesa.
+
+### Os 21 campos da folha, pela linha
+
+A folha tem 21 campos editáveis, todos nascendo **preenchidos** pelo cálculo da
+régua, e a edição é **efêmera por padrão**: fixar o valor até o fim do combate é um
+segundo gesto deliberado, uma caixinha. Editar um deles é o mestre dizendo "neste
+lance este número é outro".
+
+**Quatro são custo**, e são exatamente onde as correções da §C2 aterrissam:
+
+| # | campo | o que se aplica à mão ali |
+|---|---|---|
+| 12 | Defesa (base) do alvo | a Defesa −4 da Corrida, e o Bloqueio ou Defesa da arma e escudo |
+| 14 · 15 · 16 | Absorção · impacto, corte, perfuração | a Couraça de Porte |
+
+**Os outros dezessete não são.** O campo 1 é escolher a arma, que está do lado do
+jogo. Os campos 2 a 6 são o tempo da ação, que é a mesma família de escolher a
+manobra. Os campos 7 e 8, o bolo de acerto e o dano, parecem candidatos e não são:
+toda correção da §C2 que os afeta é digitada nos campos de ajuste e de dano, e não
+neles. O campo 21, Pressão sofrida, o Grid calcula **e aplica**. Os seis campos de
+passo, a Defesa Mental e a Resistência a perfuração não recebem correção nenhuma.
+Mexer em qualquer um dos dezessete é o mestre julgando uma situação que a regra não
+modela, e isso nenhuma automação tira, porque nenhuma automação adivinha um
+julgamento.
+
+**O alvo real da folha não é a folha inteira nem os 21**: são quatro deles, mais os
+**quatro campos que abrem em branco** e não estão entre os 21, que são a digitação de
+verdade.
 
 ## 3 · O QUE AS RODADAS 02, 03 E 04 ACRESCENTARAM A ESSA FILA
 
@@ -100,6 +257,13 @@ mestre em nada.
 
 A fila da seção 2 é hoje exatamente a que a `09` publicou antes das três rodadas.
 Nenhum item entrou, nenhum saiu, nenhum mudou de tamanho.
+
+> **A fila mudou depois, e não foi rodada que a mudou.** Foi a linha entre custo e
+> jogo, escrita pelo humano e não medida por ninguém: ela renomeou o item 1,
+> reescreveu o item 3, acrescentou o item 4 e derrubou a leitura de que os 61,8%
+> eram um limite. **Uma frase de definição mexeu na fila mais que três rodadas de
+> medição**, e isso não é acusação a elas: as rodadas mediram bem o que lhes foi
+> pedido, e o que estava errado era a pergunta.
 
 O que as três rodadas produziram foi: um número novo (a repartição das declarações
 por lado, na rodada 03), a refutação de uma explicação publicada, o diagnóstico da
@@ -199,3 +363,8 @@ e não medir de novo a que está: um Grid com o avanço unificado implementado, 
 mesa de verdade com jogadores declarando, ou as bandeiras ligadas. Enquanto a
 bateria rodar contra o produto de hoje, ela pode melhorar a precisão dos quatro
 números da fila, mas não pode acrescentar nem remover um item dela.
+
+**E uma coisa mudou a fila depois, sem rodada nenhuma:** a linha entre custo e jogo.
+Ela renomeou um item, reescreveu outro, acrescentou um terceiro e derrubou a leitura
+de que 61,8% era teto. **Definir o que se está medindo mexeu mais na fila que medir**,
+e a lição para a próxima frente é essa: a pergunta vem antes do instrumento.
