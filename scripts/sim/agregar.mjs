@@ -292,6 +292,19 @@ for (const [id, ls] of daFatia(PRINCIPAL)) {
   const sm = (f) => ls.reduce((x, l) => x + f(l.fases.combate), 0);
   const tk = sm((x) => x.ticks);
   const vazios = sm((x) => Math.round((x.fracaoSemParada || 0) * x.ticks));
+  // O TERCEIRO NÍVEL, e ele precisa de nome próprio porque um documento já o
+  // publicou sem ter linha para citar.
+  //
+  // TETO e PISO perguntam "o Tick teve parada?" e "o Tick mudou o tabuleiro?".
+  // Nenhum dos dois pergunta a coisa que o avanço unificado precisa saber: **o
+  // mestre tem algum GESTO a fazer neste Tick?** As sete paradas do Tick não
+  // custam a mesma coisa (`custo-tela.mjs`): cinco delas valem ZERO gesto com a
+  // política automática, e só `resolver` e `aplicar` cobram, as duas amarradas a
+  // um golpe vencido. Então o Tick em que o mestre tem gesto é o Tick com golpe.
+  //
+  // Publicar isto como se fosse o TETO seria trocar a definição no meio: são
+  // 90.502 gestos de diferença nesta bateria, 7,7 pontos do total.
+  const comGolpe = sm((x) => Math.round((1 - (x.fracaoSemGolpe || 0)) * x.ticks));
   const g = sm((x) => x.gestos || 0);
   const rel = sm((x) => x.gestosRelogio || 0);
   const gIII = sm((x) => x.gestosClasse?.iii || 0);
@@ -322,7 +335,12 @@ for (const [id, ls] of daFatia(PRINCIPAL)) {
     + '  <- mas as peças ANDAM em parte deles');
   console.log(`      PISO · e sem passo nenhum:  ${num(mortos, 0)} (${pct(tk ? mortos / tk : 0)})`
     + '  <- o tabuleiro não mudou: não há o que ver');
-  for (const [rot, n] of [['TETO', vazios], ['PISO', mortos]]) {
+  console.log(`      SEM-GESTO · o mestre nada tem a fazer: ${num(tk - comGolpe, 0)}`
+    + ` (${pct(tk ? (tk - comGolpe) / tk : 0)})`
+    + '  <- nenhum golpe venceu: as outras cinco paradas custam zero gesto');
+  console.log(`      e o complemento dele, o Tick COM gesto do mestre: ${num(comGolpe, 0)}`
+    + ` (${pct(tk ? comGolpe / tk : 0)})  <- é o piso do ⏭ com avanço unificado`);
+  for (const [rot, n] of [['TETO', vazios], ['PISO', mortos], ['SEM-GESTO', tk - comGolpe]]) {
     const novo = g - n;
     console.log(`    ${rot}: ⏭ ${num(rel, 0)} -> ${num(rel - n, 0)}`
       + ` · trabalho ${num(g, 0)} -> ${num(novo, 0)} (${pct(g ? n / g : 0)} a menos)`
