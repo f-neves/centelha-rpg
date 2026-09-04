@@ -9,6 +9,7 @@
 //
 // uso: node scripts/test-editor-bestiario.mjs
 import puppeteer from 'puppeteer-core';
+import fs from 'node:fs';
 import { subirDev } from './dev-server.mjs';
 import { navegadorOuSair } from './navegador.mjs';
 import { carimbar } from './carimbo.mjs';
@@ -130,6 +131,12 @@ try{
   ok(await page.$eval('.ed-el[data-el="raio"]',(e)=>e.dataset.estado)==='2','segundo clique marca resistencia');
 
   ok(await page.$eval('#infobox',(e)=>e.hidden),'o infobox de Informacoes NAO abre junto');
+  // A PASTA PRIMEIRO. `_shots/` e ignorada pelo git, entao existe nesta maquina
+  // (alguem ja rodou isto aqui) e NAO existe num clone limpo: o teste passava
+  // todas as asserçoes no CI e morria na ultima linha com ENOENT. E o terceiro
+  // "passa aqui por causa de estado da maquina" do mesmo dia, junto com o
+  // `.astro/types.d.ts` do `tsc` e o `.env` da bancada.
+  fs.mkdirSync('_shots', {recursive: true});
   await page.screenshot({path:'_shots/editor-modal.png'});
 
   // salvar e conferir que persiste
