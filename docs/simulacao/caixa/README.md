@@ -139,6 +139,26 @@ seguidas (revisão esgotada) · **ESCALA** não vazia (encerra na hora, mesmo co
 rodadas sobrando) · assunto repetido em duas respostas seguidas · árvore suja em
 qualquer ponto. Mais a chamada que falha ou estoura o tempo.
 
+### O que é ESCALA, e por que o veredito não ganha uma quarta palavra
+
+**ESCALA não é só regra de jogo: é qualquer coisa que só o humano decide, inclusive
+continuar ou não.** Escalar encerra o ciclo na hora, mesmo com rodadas sobrando.
+
+**O caso da rodada 04**, que é o motivo de isto estar escrito: a revisora terminou
+uma revisão em que nada técnico bloqueava e a rodada seguinte dependia de uma
+decisão do humano. Faltou-lhe palavra no veredito, e ela inventou uma
+(). A trava de formato encerrou o ciclo, corretamente, mas o que
+faltava não era vocabulário: era o entendimento de que aquilo **é** ESCALA. Na mesma
+resposta ela escreveu "nada" na ESCALA enquanto o aviso marcava algo como
+precisando do humano, que é a mesma tensão pelo outro lado.
+
+Então:
+
+- o veredito tem **três** palavras e não ganha uma quarta. **Quando faltar palavra,
+  é sinal de ESCALA**;
+- a seção ESCALA **nunca diz "nada"** quando o aviso marca alguma coisa como
+  precisando do humano.
+
 ### Como escrever "nada" numa seção, e por que a forma importa
 
 O contrato pede a palavra `nada` quando não há o que dizer, e **corpo em branco

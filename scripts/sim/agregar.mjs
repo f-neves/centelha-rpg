@@ -493,8 +493,15 @@ for (const [id, ls] of daFatia(PRINCIPAL)) {
   // jogadores na mesa" um caso em que TODA peça das duas facções é declarada à
   // mão. Numa mesa comum os jogadores declaram um lado e o robô declara os
   // NPCs: só metade das declarações custa `G`, e não é metade exata, porque em
-  // metade das células o lado `b` anda com passo dobrado e declara mais vezes.
-  // Por isso a repartição é MEDIDA aqui e não dividida por dois.
+  // metade das células (as `coprimo`) os dois lados têm ARQUÉTIPOS DIFERENTES,
+  // com armas diferentes e ciclos de duração diferente, e ciclo mais curto
+  // declara mais vezes. Por isso a repartição é MEDIDA aqui e não dividida por
+  // dois.
+  //
+  // (A explicação anterior falava em passo dobrado, e era falsa: o eixo do passo
+  // está cortado desde 03/09, `passoMult` vale 1 em todas as células. O que havia
+  // de verdade era um defeito, a iniciativa derivada só do ordinal, consertado em
+  // `elenco.mjs`.)
   const { arrasto, menu } = CUSTO.declarar.naMao;
   const QUEM = temLado ? [
     ['as duas facções', decl],

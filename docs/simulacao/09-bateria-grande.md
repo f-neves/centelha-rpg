@@ -450,9 +450,21 @@ e então só parte das declarações custa `G`. A bateria `bmtlxp622` mede a rep
 declarações 228.332 · lado a 102.940 (45,1%) · lado b 125.392 (54,9%)
 ```
 
-**E não é meio a meio, por uma razão do desenho da grade e não do jogo:** em metade das células o
-lado `b` anda com passo dobrado (`passoMult`, o eixo coprimo da §1), fica livre mais cedo e
-declara **22% mais vezes** que o lado `a`. Por isso a repartição é medida e não dividida por dois.
+> **⚠ ESTES NÚMEROS SÃO ANTERIORES AO CONSERTO DA INICIATIVA, e a explicação que estava aqui era
+> falsa.** O texto dizia que o lado `b` andava com **passo dobrado**, e o eixo do passo estava
+> cortado desde 03/09 (a própria D31, mais abaixo, diz isso): `passoMult` vale 1 em todas as 96
+> células. A causa verdadeira era outra e era **defeito**: a iniciativa de cada peça era função só
+> do ordinal, o ordinal é dado em bloco por lado, e por isso o desempate da fila saía igual em
+> todas as 21.600 batalhas e sempre para o mesmo lado. Consertado; a repartição virou **47,1% e
+> 52,9%** e todos os números desta seção mudaram. **A leitura de hoje está em
+> `docs/simulacao/ESTADO.md`**, com o agregado `resultados/09-bmtmb6ljq.txt`.
+
+**E não é meio a meio, e a razão é do desenho da grade e não do jogo:** em metade das células (as
+`coprimo`) os dois lados têm **arquétipos diferentes**, Escudeiro contra Montanteiro, com armas
+diferentes e portanto ciclos de duração diferente, e ciclo mais curto declara mais vezes. Ali o
+lado `b` declara 1,290 vez o que o lado `a` declara, e isso é o eixo fazendo o que foi posto para
+fazer. **Nas células `unissono`, em que os dois lados são o mesmo arquétipo, a razão sobra em
+1,031**, e esses 3% não estão explicados.
 
 | G | quem declara à mão | trabalho da mesa | economia teto (mesa) | economia piso (mesa) |
 |---:|---|---:|---:|---:|

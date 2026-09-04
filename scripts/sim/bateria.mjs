@@ -107,7 +107,11 @@ const manifesto = {
     'o mapa: faixa de largura dist+8 e altura n+2, escala 1 m por hexágono',
     `o multiplicador de passo do eixo E4 (${PASSO_ASSIMETRICO}×), posto pelo ajuste`
     + ' por instância `combatentes.dados.passo`, que é o caminho da mesa. A régua não'
-    + ' tem dois arquétipos com passo dobrado e mesma Defesa',
+    + ' tem dois arquétipos com passo dobrado e mesma Defesa.'
+    + ' ⚠ E4 SAIU DA GRADE em 03/09 por ser inerte (D31): `passoMult` vale 1 em'
+    + ' todas as 96 células, e NADA nesta bateria anda com passo dobrado. Esta'
+    + ' premissa descreve o caminho de código, que continua em `montarCena` para o'
+    + ' dia em que o eixo voltar, e não algo que esteja acontecendo',
     'a DECLARAÇÃO É SEMPRE AUTOMÁTICA, e por isso vale zero gesto. Não é mais um'
     + ' número inventado (o caminho manual foi contado em 03/09: 2 gestos pelo'
     + ' arrasto, 4 pelo menu), mas continua sendo um limite do que a bateria MEDE:'

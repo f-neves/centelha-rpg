@@ -1340,11 +1340,14 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
     `log.mjs` (bateria `bmtlxp622`). As linhas de 6,2% a 8,1% eram o caso extremo, em que TODA
     peça das duas facções é declarada à mão; numa mesa comum os jogadores declaram um lado e o
     robô declara os NPCs do outro. Das 228.332 declarações, **102.940 são do lado `a` e 125.392 do
-    lado `b`** (45,1% contra 54,9%, e não meio a meio porque em metade das células o lado `b` anda
-    com passo dobrado e declara mais). Pagando `G` em um lado só: **9,3% a 9,6% com `G = 2`** e
-    **7,8% a 8,3% com `G = 4`**, no modo `mesa`; **12,8% a 13,4%** e **10,2% a 11,0%** no modo
-    `site`. A largura de 0,3 ponto entre os dois lados é a resposta a "qual facção é a dos
-    jogadores", e é pequena demais para mover decisão.
+    lado `b`**. ⚠ **Esses números caíram com o conserto da iniciativa** (a iniciativa era função
+    só do ordinal, e o ordinal é dado em bloco por lado: o desempate da fila saía igual em todas as
+    batalhas e sempre para o mesmo lado). A explicação publicada, de passo dobrado, era falsa: o
+    eixo do passo estava cortado desde 03/09. Refeita a bateria (`09-bmtmb6ljq.txt`), a repartição
+    é **116.293 e 130.772**, ou 47,1% contra 52,9%, e a assimetria que sobra é dos arquétipos
+    diferentes das células `coprimo`. Pagando `G` em um lado só: **8,8% a 9,0% com `G = 2`** e
+    **7,4% a 7,7% com `G = 4`**, no modo `mesa`. A largura entre os dois lados continua pequena
+    demais para mover decisão. **A leitura de hoje está em `docs/simulacao/ESTADO.md`.**
 
     **O que continua fora da conta**, e é outra pergunta: o número de peças de jogador numa cena
     de verdade não é metade dela, e o jogador que não aceita o padrão do diálogo paga mais que
