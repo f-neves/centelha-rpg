@@ -47,8 +47,14 @@ const NAVEGADORES = [
 ].filter(Boolean);
 const NAV = NAVEGADORES.find((p) => { try { return fs.existsSync(p); } catch { return false; } });
 if (!NAV) {
-  console.log('· Golpe no caído: PULADO (nenhum navegador; defina EDGE ou CHROME)');
-  process.exit(0);
+  // PULAR É PERMITIDO NA MÁQUINA DE ALGUÉM, E NUNCA NO PORTÃO. Sem navegador
+  // este teste não tem o que provar, e pintar de vermelho a máquina de quem só
+  // não tem Edge instalado seria ruído. Mas um portão que passa PULANDO é pior
+  // do que não ter portão: ele diz verde sem ter olhado. `SMOKE_EXIGE_NAVEGADOR`
+  // é ligado no CI, e ali a falta de navegador é falha de configuração.
+  const exige = process.env.SMOKE_EXIGE_NAVEGADOR === '1';
+  console.log(`· Golpe no caído: ${exige ? "SEM NAVEGADOR" : "PULADO"} (nenhum navegador encontrado; defina EDGE ou CHROME)`);
+  process.exit(exige ? 1 : 0);
 }
 
 const falhas = [];

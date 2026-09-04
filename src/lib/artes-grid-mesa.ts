@@ -419,7 +419,15 @@ function marcaEncaixe(ctx: CtxGrid, e: Encaixe): string {
 export function pintarPainelEfeitos(ctx: CtxGrid, box: HTMLElement): void {
   if (!box) return;
   const t = tickAtual(ctx);
-  const vivos = ATIVOS.filter((e) => !venceu(e, t));
+  // A MESMA REGRA DO DESENHO, e ela faltava aqui. `pintarEfeitos` já escondia do
+  // jogador a mancha ainda em montagem (o mestre a vê tracejada); esta lista
+  // continuava mostrando a mesma coisa em texto, com nome, condição, alvo e
+  // "cai em N Ticks". Duas telas do mesmo dado com dois cortes diferentes é
+  // como o vazamento volta: quem conserta um não sabe do outro.
+  //
+  // O que o grupo vê é a FITA do conjurador, que diz "está montando alguma
+  // coisa". O QUÊ e ONDE se compra prestando atenção na mesa (§14.7.1).
+  const vivos = ATIVOS.filter((e) => !venceu(e, t) && (ctx.mestre || !montando(e, t)));
   if (!vivos.length) { box.innerHTML = ''; box.hidden = true; return; }
   box.hidden = false;
   box.innerHTML = vivos.map((ef) => {

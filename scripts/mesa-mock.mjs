@@ -31,6 +31,11 @@ import EFEITOS_D from '../src/data/efeitos.json';
 // mesmo arquivo roda no Node e aqui.
 import { montarArquetipo, iniciativaDaPeca, tabuleiroDe } from './sim/elenco.mjs';
 import { resumoCombatePC } from '../src/lib/combate-resumo';
+// A NÉVOA DO MOCK USA AS FUNÇÕES DE VERDADE. Reimplementá-las aqui faria a
+// bancada concordar consigo mesma, que é a falha que este arquivo existe para
+// não ter: `token_visao` era cópia da escrita e o jogador recebia tudo.
+import { distanciaHex } from '../src/lib/hex';
+import { montando, venceu } from '../src/lib/artes-grid';
 import { armaDoCatalogo, classeDeTempo, velocidadeDaArma } from '../src/lib/combate-tempo';
 
 const P = new URLSearchParams(typeof location !== 'undefined' ? location.search : '');
@@ -78,6 +83,17 @@ const CAIDO_LONGE = P.get('longe') === '1';
 const COLS = ESPELHO ? ESPELHO.tab.cols : CAIDO ? 14 : parseInt(P.get('cols') || '24', 10);
 const ROWS = ESPELHO ? ESPELHO.tab.rows : CAIDO ? 8 : parseInt(P.get('rows') || '16', 10);
 const NEVOA = P.get('nevoa') === '1';
+/**
+ * A BRASA DA BANCADA: um efeito de fogo numa casa escura, a N Ticks de cair.
+ *
+ * `?brasa=5` põe a Arte em montagem (cai daqui a cinco Ticks); `?brasa=0` põe a
+ * mesma Arte já caída. É o par que prova a regra do vazamento de 04/09: fogo
+ * agendado não abre o escuro, fogo caído abre. Sem parâmetro, não há brasa.
+ *
+ * Um parâmetro e não uma escrita pela página: assim a cena sai do MOCK, que é a
+ * fonte de verdade da bancada, e o teste só compara o que a tela desenhou.
+ */
+const BRASA = P.has('brasa') ? Math.max(0, parseInt(P.get('brasa') || '0', 10) || 0) : null;
 const POSTOS = parseInt(P.get('postos') || String(N_COMB), 10);
 // O sistema de tempo da mesa de bancada. `pgr` de propósito: é o caminho novo,
 // e o que o smoke precisa exercitar. `?tempo=normal` volta ao de sempre.
@@ -365,6 +381,27 @@ const LOG = Array.from({ length: 40 }, (_, i) => ({
   txt: `Linha de registro ${i + 1}`, ord: i,
 }));
 
+/**
+ * A casa da brasa: o canto de baixo à direita, longe de todo olho do grupo.
+ *
+ * Longe de propósito: se ela caísse dentro do alcance de visão de alguém, a casa
+ * já estaria clara e o teste não mediria a luz do fogo, mediria a do grupo.
+ */
+const BRASA_LINHA = ROWS - 2;
+// A conversão é a do `offsetParaAxial`: `q = col - floor(row / 2)`. Escrever
+// `{ q: COLS - 4, r: ROWS - 2 }` direto punha a brasa FORA do tabuleiro, e o
+// teste passou a acusar sozinho: "a mesma Arte, caída, abre (100 -> 100)". Foi o
+// par de asserções que pegou, e não uma delas: a metade "não abre" passava.
+const BRASA_HEX = { q: (COLS - 4) - Math.floor(BRASA_LINHA / 2), r: BRASA_LINHA };
+const BRASA_EFEITO = {
+  id: 'ef-brasa', arena_id: ARENA, arte_id: 'fogo', efeito_id: 'brasa',
+  conjurador_id: null, nome: 'Brasa Retardada', nivel: 2, forma: 'zona',
+  molde: 'explosao', angulo: 60, figura: null, hexes: [BRASA_HEX],
+  centro: BRASA_HEX, raio_m: 1, dano_dados: 2, dano_bonus: 0, condicao: null,
+  elemento: 'fogo', materia: null, gatilho: 'imediato', alvos: [], item: null,
+  desde_tick: BRASA || 0, ate_tick: (BRASA || 0) + 60, mordidos: {}, oculto: false,
+};
+
 const ARENAS = [{
   id: ARENA, mesa_id: MESA, nome: 'Bancada', cols: COLS, rows: ROWS, escala_m: 1,
   ativa: true, ordem: 0, criado_em: '2026-01-01T00:00:00Z',
@@ -423,8 +460,10 @@ const TABELAS = {
   combatentes: COMBS,
   combate_visao: PAPEL === 'jogador' ? COMBS.map(paraJogador) : COMBS,
   arena_tokens: TOKENS,
+  // `token_visao` é COMPUTADA, e não uma cópia. Ver `claraNoMock` abaixo.
   token_visao: TOKENS,
-  arena_efeitos: [],
+  arena_efeitos: BRASA === null ? [] : [BRASA_EFEITO],
+  // `efeito_visao` é COMPUTADA, e imita o corte de estado da migração 31.
   efeito_visao: [],
   arena_log_visao: LOG,
   personagens: COMBS.filter((c) => c.personagem_id)
@@ -450,6 +489,79 @@ const TABELAS = {
   mesa_relogios: [],
 };
 
+/**
+ * A `casa_clara` da migração 31, imitada.
+ *
+ * POR QUE ELA EXISTE AQUI: `token_visao` era `TOKENS`, a mesma lista da escrita,
+ * então **o jogador recebia as doze peças mesmo com a névoa ligada**. Nenhuma
+ * afirmação sobre o que ele vê era falsificável na bancada, e foi assim que um
+ * vazamento de informação chegou à produção sem nada acender.
+ *
+ * As três fontes de luz são as do banco, na mesma ordem: o pincel do mestre, o
+ * alcance de quem é do grupo, e o fogo ou a luz **que já caiu e ainda vale**. O
+ * estado sai de `montando`/`venceu`, importadas de `artes-grid`, e não copiadas:
+ * o mock tem de errar junto com a mesa quando a regra mudar, e não à parte.
+ *
+ * Não é o Postgres: aqui não há RLS, e "minha peça" é o `MEU_PC`.
+ */
+function claraNoMock(q, r) {
+  const nv = ARENAS[0].nevoa || {};
+  if (!nv.ligada) return true;
+  if ((nv.claros || []).includes(`${q},${r}`)) return true;
+  const visao = nv.visao ?? 6;
+  const luz = nv.luz ?? 2;
+  const doGrupo = new Set(TABELAS.combatentes
+    .filter((c) => (c.tipo === 'pc' || c.grupo === 'aliado') && c.ativo !== false)
+    .map((c) => c.id));
+  for (const t of TABELAS.arena_tokens) {
+    if (doGrupo.has(t.combatente_id) && distanciaHex({ q: t.q, r: t.r }, { q, r }) <= visao) return true;
+  }
+  const tick = TABELAS.encontros[0]?.tick_atual ?? 0;
+  for (const e of TABELAS.arena_efeitos) {
+    if (e.elemento !== 'fogo' && e.elemento !== 'luz') continue;
+    if (montando(e, tick) || venceu(e, tick)) continue;
+    for (const h of (e.hexes || [])) {
+      if (distanciaHex({ q: h.q, r: h.r }, { q, r }) <= luz) return true;
+    }
+  }
+  return false;
+}
+
+/**
+ * A vista do jogador, recalculada a cada leitura.
+ *
+ * Getter, e não array guardado: as peças andam, o relógio anda e a Arte cai, e
+ * uma lista congelada mentiria a partir do segundo Tick. O mestre recebe a
+ * lista inteira, como no banco.
+ */
+/**
+ * A `efeito_visao` da migração 31, imitada.
+ *
+ * O jogador só recebe o efeito que JÁ CAIU e ainda vale. Antes o mock mandava a
+ * lista inteira, como a view antiga fazia, e por isso a Arte em montagem chegava
+ * ao navegador dele com nome, condição e alvo, cinco Ticks antes de existir.
+ *
+ * O MESTRE continua recebendo tudo, porque ele lê `arena_efeitos` e precisa ver
+ * a mancha tracejada do que está sendo montado.
+ */
+Object.defineProperty(TABELAS, 'efeito_visao', {
+  enumerable: true,
+  get() {
+    const tick = TABELAS.encontros[0]?.tick_atual ?? 0;
+    return TABELAS.arena_efeitos.filter((e) => !montando(e, tick) && !venceu(e, tick));
+  },
+});
+
+Object.defineProperty(TABELAS, 'token_visao', {
+  enumerable: true,
+  get() {
+    if (PAPEL !== 'jogador') return TABELAS.arena_tokens;
+    const meus = new Set(TABELAS.combatentes
+      .filter((c) => c.personagem_id === MEU_PC).map((c) => c.id));
+    return TABELAS.arena_tokens.filter((t) => meus.has(t.combatente_id) || claraNoMock(t.q, t.r));
+  },
+});
+
 const REG = { log: [] };
 const anotar = (tipo, alvo) => REG.log.push({ tipo, alvo, t: Date.now() });
 
@@ -472,7 +584,9 @@ function guardar(tabela, linhas) {
   if (Array.isArray(TABELAS[tabela])) TABELAS[tabela].push(...novas);
   // As views são a mesma coisa lida por outro nome: quem escreve em
   // `arena_efeitos` lê de volta em `efeito_visao`, e sem isto a leitura mentiria.
-  const vista = { arena_efeitos: 'efeito_visao', combatentes: 'combate_visao', arena_tokens: 'token_visao' }[tabela];
+  // `token_visao` NÃO entra aqui: ela é derivada de `arena_tokens` por getter.
+  // Nem `token_visao` nem `efeito_visao` entram aqui: as duas são derivadas.
+  const vista = { combatentes: 'combate_visao' }[tabela];
   if (vista && Array.isArray(TABELAS[vista]) && TABELAS[vista] !== TABELAS[tabela]) TABELAS[vista].push(...novas);
   return novas;
 }
@@ -630,7 +744,11 @@ export function createClient() {
       }),
     },
   };
-  if (typeof window !== 'undefined') window.__SB = REG;
+  // As TABELAS viajam junto para o smoke poder conferir o que de fato chegou
+  // ao navegador, e não só o que a tela desenhou. É a diferença entre a
+  // cortina e a parede: `efeito_visao` vazia com a Arte em montagem prova
+  // que o corte foi na view, e não no CSS.
+  if (typeof window !== 'undefined') window.__SB = Object.assign(REG, { tabelas: TABELAS });
   return sb;
 }
 

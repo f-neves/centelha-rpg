@@ -2392,6 +2392,10 @@ const SETAS = [
     carregarEfeitos, efeitosAtivos, pintarEfeitos, pintarPainelEfeitos, conjurar,
     verificarEfeitos, novoNPC as novoNPCArtes, ligarBotaoFx, type CtxGrid,
   } from '../../lib/artes-grid-mesa';
+  // `montando` e `venceu` dizem se um efeito JÁ CAIU e AINDA VALE. A névoa
+  // precisa dos dois: fogo que ainda não saiu não ilumina, e fogo que acabou
+  // também não. Ver o comentário em `casasClaras`.
+  import { montando, venceu } from '../../lib/artes-grid';
   import {
     camadaDeGolpes, baterNoAlvo, voarProjetil, projetilDe,
   } from '../../lib/grid-golpe-fx';
@@ -3617,8 +3621,31 @@ const SETAS = [
     }
     // Fogo e luz: a tocha e a fogueira são a lanterna mais antiga que existe, e
     // o Arcano já marca o chão com elas.
+    //
+    // SÓ O QUE JÁ CAIU E AINDA NÃO VENCEU ACENDE, e isto é conserto de
+    // 04/09/2026: um VAZAMENTO de informação para o jogador, medido na bancada.
+    //
+    // O laço não olhava para o estado do efeito. Uma Brasa Retardada declarada
+    // com Velocidade 6 abria doze casas de escuro **no instante da declaração**,
+    // com o painel dizendo "montando, cai em 5 Ticks", e ficava assim pelos
+    // cinco Ticks do gesto. Como esta conta é a mesma que decide quais peças o
+    // jogador recebe, o gesto entregava a ele as peças que estavam no escuro
+    // cinco Ticks antes: um fogo que não existe iluminando uma emboscada.
+    //
+    // A JANELA CRESCEU COM O CONSERTO DA §5.3, e é o que faz este caso valer
+    // como regra: antes o efeito nascia com `desde_tick` = agora e a janela era
+    // de zero Tick. Ao passar a existir AGENDADO durante todo o Preparo, ele
+    // passou a existir por cinco Ticks sem ter caído. **Conserto que muda o
+    // tempo de vida de um objeto muda quem o enxerga**, e o segundo lugar não
+    // aparece no diff do primeiro.
+    //
+    // O `venceu` entra pelo mesmo motivo: a linha só some do banco quando um
+    // mestre com o Grid aberto avança o relógio, e até lá um efeito vencido
+    // continuaria acendendo o chão para quem estivesse olhando sozinho.
+    const agora = relogio();
     for (const e of efeitosAtivos() as any[]) {
       if (e.elemento !== 'fogo' && e.elemento !== 'luz') continue;
+      if (montando(e, agora) || venceu(e, agora)) continue;
       for (const h of (e.hexes || [])) perto(h.q, h.r, NEVOA.luz);
     }
     return claras;
@@ -6446,7 +6473,22 @@ const SETAS = [
     const linhas = [
       meu ? item('ataque', '⚔ Ataque') : '',
       MESTRE ? item('curar', '✚ Recuperar Vida') : '',
-      item('dano', '✖ Tirar Vida'),
+      // TIRAR VIDA DE PEÇA ALHEIA SAIU DA MÃO DO JOGADOR, em 04/09/2026, e é
+      // provisório: a decisão de quem pode tirar Vida de quem foi escalada e
+      // ainda não voltou. Enquanto ela não volta, este é o estado menos errado
+      // dos três, porque é o único que não deixa um jogador mexer na Vida da
+      // peça de outro sem ninguém saber.
+      //
+      // O comentário acima ("o jogador pode lançar dano em qualquer um, porque
+      // é ele que acabou de rolar o golpe") descrevia uma intenção legítima, e
+      // ela continua valendo para quem for decidir: no Simultâneo é o atacante
+      // que rola. O que faltava era o outro lado, e ele é do banco:
+      // `jogador_dano` só confere se quem pede é MEMBRO da mesa, o ↶ Desfazer
+      // está escondido do jogador, e `jogador_muda_peca` aceita SUBIR
+      // `pv_atual` sem que exista botão para isso.
+      //
+      // Reverter é trocar `(MESTRE || meu)` por `true`. Uma linha.
+      (MESTRE || meu) ? item('dano', '✖ Tirar Vida') : '',
       temMana(c) && meu ? item('mana', '✦ Mana') : '',
       meu ? item('arte', '✶ Arte') : '',
       // A válvula do improviso fica ao lado das ações comuns, e não escondida

@@ -1239,7 +1239,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   fazia o carimbo valer: alguém que leia o perfil na hora de aplicar a regra.**
 
   O perfil é gravado, viaja no encontro, aparece na tela, é comparável e é recarimbável. E é lido
-  em **um** lugar do código de produção, `grid.astro:8214` (`perfil: { ...REGRAS_CENA }`), onde ele é copiado para dentro da
+  em **um** lugar do código de produção, `grid.astro:8256` (`perfil: { ...REGRAS_CENA }`), onde ele é copiado para dentro da
   entrada do lance, para o oráculo. `entrada.perfil` **não é consultado em lugar nenhum**: nem em
   `resolverGolpe`, nem em `quase-acerto.ts`, nem em `calc.ts`, nem no harness. Nenhuma das quinze
   bandeiras faz o motor tomar um caminho diferente.
@@ -1277,6 +1277,41 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   contador de ocasião, e só então medir. É o mesmo mecanismo que matou o eixo E4 (D31) antes de
   ele virar linha de relatório. Isto reparte o **L1** em quinze tarefas de motor, e **nenhuma
   medição de bandeira vale antes**.
+- [ ] **L30 · [FAZER] OS DEZ MÓDULOS FORA DE TODO PACOTE DE TESTE** · *o mapa está em
+  `scripts/mapa-cobertura.mjs`, e ele se refaz sozinho: `node scripts/mapa-cobertura.mjs`.*
+
+  **De onde veio.** Em 04/09 um conserto foi commitado desligado e o `validate` ficou verde. A
+  causa não era falta de teste, era o teste empacotar o arquivo errado: `test-artes-grid.mjs`
+  empacota `artes-grid.ts` e o conserto morava em `artes-grid-mesa.ts`. A pergunta que aquilo abriu
+  é **quais outros arquivos estão na mesma situação**, e o mapa responde perguntando ao esbuild pelo
+  `metafile`, em vez de por uma lista escrita à mão que envelhece.
+
+  **O estado, em 04/09/2026**, de 43 módulos em `src/lib`:
+
+  | | quantos | quais |
+  |---|---:|---|
+  | dentro de algum pacote | **29** | e estar dentro **não** quer dizer testado: quer dizer que uma asserção PODE alcançar |
+  | só no smoke do navegador | **4** | `mesa-mapas`, `mesa-tempo-real`, `mesa-tempo-ui`, `reconciliar` |
+  | **fora de tudo**, em produção | **10** | `ficha-engine` (177 KB), `arma-svg` (31 KB), `ficha-card`, `bestia-editor`, `mesa-revelacao`, `cores-site`, `config-site`, `data`, `imagens-item`, `artes-fmt` |
+
+  **O mais arriscado dos dez é o `ficha-engine.ts`, e por um motivo específico: ele fabrica a
+  entrada de toda a cadeia que ESTÁ testada.** Ele é o maior arquivo do projeto (177 KB) e é quem
+  escreve a ficha salva; `resumoCombatePC` (testado), `equip` (testado) e o bloco de combate da
+  mesa leem essa ficha e a transformam. Um erro ali entra por baixo de um portão verde: os testes
+  continuam provando que a transformação está certa **sobre um número errado**.
+
+  E o `test-kael.mjs`, que o `CLAUDE.md` chama de regressão de personagem, **não o toca**: ele
+  reimplementa as fórmulas a partir do `regras.json` e compara os números. Isso guarda o
+  `regras.json`, e não o motor da ficha. Os 177 KB que montam toda ficha não têm um teste no
+  `validate` nem no `smoke`.
+
+  **O segundo é o `mesa-revelacao.ts`**, e ele entra por outra porta: é a tela que decide **o que os
+  jogadores veem**. Está na mesma família do vazamento da névoa (04/09), e essa família já provou
+  duas vezes que erra em silêncio, porque o defeito só aparece na cadeira de quem não deveria ver.
+
+  **Não é para consertar agora.** É para o mapa existir, rodar quando alguém quiser, e a lista não
+  crescer sem ninguém notar.
+
 - [ ] **L29 · [A FILA DO GRID, e ela substitui a leitura antiga da `09`] Sete
   consertos, e o `ESTADO.md` é a fonte.** O `Pendencias` é o índice único do que está
   aberto, e até 04/09 ele não conhecia esta fila: o `93,7` só existia no `ESTADO.md`
@@ -1526,7 +1561,7 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   `arena_log` como tabela, uma linha por entrada, e o desfazer virando um `delete`.
 - [ ] **I5 · [FAZER] Um editor de cenário no Grid.** Hoje o mestre só põe peças: o tabuleiro não
   tem parede, terreno difícil nem item no chão, e o único veto de passo é casa ocupada
-  (`ocupadoPor`, `grid.astro:6306`). Decidido em 02/09/2026, ao desenhar o harness de simulação
+  (`ocupadoPor`, `grid.astro:6333`). Decidido em 02/09/2026, ao desenhar o harness de simulação
   (`docs/simulacao/02-projeto-harness.md` §0.4 P2): a **parede entra como funcionalidade**, e o
   encaixe já existe, porque `caminharHex` recebe um veto arbitrário (`hex.ts:131`). O terreno
   difícil tem gancho pronto e não usado: a condição `terreno-dificil` existe em `condicoes.json`

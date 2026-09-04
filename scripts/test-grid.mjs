@@ -37,8 +37,14 @@ const NAVEGADORES = [
 ].filter(Boolean);
 const NAV = NAVEGADORES.find((p) => { try { return fs.existsSync(p); } catch { return false; } });
 if (!NAV) {
-  console.log('· Grid: PULADO (nenhum navegador encontrado; defina EDGE ou CHROME)');
-  process.exit(0);
+  // PULAR É PERMITIDO NA MÁQUINA DE ALGUÉM, E NUNCA NO PORTÃO. Sem navegador
+  // este teste não tem o que provar, e pintar de vermelho a máquina de quem só
+  // não tem Edge instalado seria ruído. Mas um portão que passa PULANDO é pior
+  // do que não ter portão: ele diz verde sem ter olhado. `SMOKE_EXIGE_NAVEGADOR`
+  // é ligado no CI, e ali a falta de navegador é falha de configuração.
+  const exige = process.env.SMOKE_EXIGE_NAVEGADOR === '1';
+  console.log(`· Grid: ${exige ? "SEM NAVEGADOR" : "PULADO"} (nenhum navegador encontrado; defina EDGE ou CHROME)`);
+  process.exit(exige ? 1 : 0);
 }
 
 /**
@@ -1270,6 +1276,102 @@ async function cenaJogador(br, url) {
 
   ok(erros.length === 0, `nenhum erro de página (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
   await p.close();
+}
+
+/**
+ * A VISTA DO JOGADOR COM A NEVOA LIGADA, e ela e o unico lugar onde uma
+ * afirmacao sobre o que ele ve pode ser falsificada.
+ *
+ * Ate 04/09/2026 nao dava. O `token_visao` do mock era a MESMA lista da escrita,
+ * entao o jogador recebia as doze pecas mesmo com a nevoa ligada, e a unica cena
+ * de jogador do smoke rodava com `nevoa=0`. Nenhuma frase sobre a vista dele era
+ * checavel, e foi por esse buraco que um vazamento de informacao chegou a
+ * producao: uma Arte AINDA EM MONTAGEM acendia doze casas de escuro, cinco Ticks
+ * antes de existir, e a mesma conta decide que pecas o jogador recebe.
+ *
+ * As duas asserçoes que importam sao a terceira e a quarta: o fogo agendado NAO
+ * acende, e o fogo que caiu acende. Elas sao o par, e so o par prova a regra:
+ * uma sozinha passaria com a luz quebrada.
+ */
+async function cenaJogadorNevoa(br, url) {
+  console.log('\n· a cadeira do jogador, com a nevoa ligada');
+  const erros = [];
+  /** Abre a cena do jogador com nevoa e devolve o que a tela desenhou. */
+  const abrir = async (brasa, papel = 'jogador') => {
+    const p = await br.newPage();
+    await p.setViewport({ width: 1400, height: 950 });
+    p.on('pageerror', (e) => erros.push(e.message));
+    const q = brasa === null ? '' : `&brasa=${brasa}`;
+    await p.goto(`${url}/mesa/grid?id=${MESA}&bench=12&cols=24&rows=16&nevoa=1&papel=${papel}${q}`,
+      { waitUntil: 'networkidle0', timeout: 60000 });
+    await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
+    await espera(700);
+    const d = await p.evaluate(() => ({
+      tokens: document.querySelectorAll('#gr-tokens .gr-token').length,
+      claras: document.querySelectorAll('#gr-nevoa .nv-clara').length,
+      escuras: document.querySelectorAll('#gr-nevoa .nv-pesada, #gr-nevoa .nv-leve').length,
+      jogador: document.body.classList.contains('sou-jogador'),
+      // O painel lateral dos efeitos: o texto que ele mostra a quem está olhando.
+      lista: (document.getElementById('gr-ef-lista')?.innerText || '').trim(),
+      // Quantas linhas de efeito chegaram ao navegador. Zero com a Arte em
+      // montagem é a PAREDE (a view cortou); mais que zero com ela escondida da
+      // tela seria só a cortina.
+      recebidos: (window.__SB?.tabelas?.efeito_visao || []).length,
+    }));
+    await p.close();
+    return d;
+  };
+
+  const sem = await abrir(null);
+  ok(sem.jogador, 'a pagina abre como jogador');
+  ok(sem.escuras > 0, `a nevoa cobre casas de verdade (${sem.escuras} escuras, ${sem.claras} claras)`);
+  // A PROVA DE QUE A VISTA E CORTADA. Antes de 04/09 o `token_visao` do mock era
+  // a mesma lista da escrita e o jogador recebia as doze pecas: nenhuma frase
+  // sobre o que ele ve era falsificavel, e foi por esse buraco que o vazamento
+  // chegou a producao.
+  ok(sem.tokens > 0 && sem.tokens < 12,
+    `com nevoa o jogador recebe menos pecas do que a cena tem (${sem.tokens} de 12)`);
+
+  // ---- O PAR QUE PROVA A REGRA. Uma asserçao sozinha passaria com a luz
+  // quebrada; sao as duas juntas que dizem que o corte e pelo ESTADO.
+  const montando = await abrir(5);
+  const caiu = await abrir(0);
+  ok(montando.claras === sem.claras,
+    `a Arte em montagem NAO abre o escuro (${sem.claras} -> ${montando.claras} casas claras)`);
+  ok(caiu.claras > sem.claras,
+    `e a mesma Arte, caida, abre (${sem.claras} -> ${caiu.claras})`);
+  ok(montando.tokens === sem.tokens,
+    `e nenhuma peca a mais chega ao jogador pelo gesto (${sem.tokens} -> ${montando.tokens})`);
+  // O painel lateral e a segunda tela do mesmo dado, e ela vazava em texto o que
+  // o desenho ja escondia.
+  ok(!/Brasa/.test(montando.lista),
+    `a lista de efeitos nao conta ao jogador a Arte em montagem ("${montando.lista.slice(0, 40)}")`);
+  ok(/Brasa/.test(caiu.lista), 'e conta a que ja caiu');
+  // A PAREDE, e nao a cortina. As duas asserçoes acima passam so com o guarda do
+  // CLIENTE: a tela esconde e o dado continua no navegador, onde qualquer um le.
+  // Esta olha o que de fato CHEGOU, e e a unica que cai se a `efeito_visao`
+  // parar de cortar. Conferido nos dois sentidos.
+  ok(montando.recebidos === 0,
+    `e a linha nem chega ao navegador dele: a view cortou (${montando.recebidos} efeitos recebidos)`);
+  ok(caiu.recebidos === 1, `a que caiu chega (${caiu.recebidos})`);
+
+  // ---- O MESTRE, do outro lado da mesma regra ----
+  //
+  // Ele LE `arena_efeitos` inteiro, entao a linha em montagem chega ao navegador
+  // dele de proposito: ele precisa ver a mancha tracejada. O que nao pode e a
+  // nevoa acender por ela. Esta e a prova do guarda no CLIENTE (`casasClaras`),
+  // que o caminho do jogador nao exercita porque la a view ja cortou antes.
+  const mSem = await abrir(null, 'mestre');
+  const mMont = await abrir(5, 'mestre');
+  const mCaiu = await abrir(0, 'mestre');
+  ok(mMont.claras === mSem.claras,
+    `no mestre tambem: a Arte em montagem nao abre o escuro (${mSem.claras} -> ${mMont.claras})`);
+  ok(mCaiu.claras > mSem.claras,
+    `e a caida abre (${mSem.claras} -> ${mCaiu.claras})`);
+  ok(/Brasa/.test(mMont.lista),
+    'e o mestre CONTINUA vendo a Arte em montagem na lista, que e o que ele precisa');
+
+  ok(erros.length === 0, `nenhum erro de pagina (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
 }
 
 /**
@@ -2533,7 +2635,8 @@ try {
   await cena(br, dev.url, { pecas: 12, cols: 24, rows: 16, nevoa: false });
   await cena(br, dev.url, { pecas: 30, cols: 40, rows: 30, nevoa: true });
   await cenaJogador(br, dev.url);
-  await cenaRastreador(br, dev.url);
+  await cenaJogadorNevoa(br, dev.url);
+await cenaRastreador(br, dev.url);
   await cenaMapas(br, dev.url);
   await cenaCelular(br, dev.url);
   await cenaCelular(br, dev.url, { papel: 'jogador' });

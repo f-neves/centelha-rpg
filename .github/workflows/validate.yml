@@ -5,11 +5,17 @@
 # passava sem ninguém conferir, e o erro só aparecia depois de já estar em main.
 # Aqui os mesmos verificadores rodam em qualquer ramo e em todo PR, em ~1,6 s,
 # sem build e sem publicar nada.
+#
+# E EM MAIN TAMBEM, desde 04/09/2026. Ate aqui o gatilho era `branches-ignore:
+# [main]`, e a consequencia era que **o smoke do navegador nao rodava no fluxo
+# normal do projeto**, que e push direto em main: o `deploy.yml` roda `npm run
+# build` (validadores + astro build) e nao roda `npm run smoke`. Com a maquina de
+# desenvolvimento sem conseguir buildar (ver o crash do compilador do Astro no
+# Windows), o smoke tinha parado de ser executado por qualquer um.
 name: Validar dados e regras
 
 on:
   push:
-    branches-ignore: [main]
   pull_request:
   workflow_dispatch:
 
@@ -28,12 +34,17 @@ jobs:
       - run: npm ci
       - run: npm run validate
       # O smoke do tabuleiro sobe a bancada (banco de mentira) e dirige um
-      # navegador. Ele PULA sozinho, com código zero, quando não acha nenhum:
-      # é teste de tela, e faltar navegador não é defeito do código.
+      # navegador. Na máquina de alguém ele PULA com código zero quando não acha
+      # nenhum, porque faltar Edge não é defeito do código.
+      #
+      # AQUI ELE NÃO PODE PULAR. `SMOKE_EXIGE_NAVEGADOR=1` faz a falta de
+      # navegador virar falha: um portão que passa pulando é pior do que não ter
+      # portão, porque diz verde sem ter olhado.
       - name: Smoke do Grid
         run: npm run smoke
         env:
           CHROME: /usr/bin/google-chrome
+          SMOKE_EXIGE_NAVEGADOR: '1'
       # Os tipos não travam o build hoje (há erros antigos fora dos módulos do
       # tabuleiro). Roda assim mesmo, para a lista aparecer no log e não crescer
       # em silêncio.
