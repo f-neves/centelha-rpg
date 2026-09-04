@@ -127,7 +127,10 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
   await p.setViewport({ width: 1600, height: 1000 });
   await p.evaluateOnNewDocument(SONDA);
   const erros = [];
+  const consola = [];
   p.on('pageerror', (e) => erros.push(e.message));
+  p.on('console', (m) => { if (m.type() === 'error') consola.push(m.text().slice(0, 200)); });
+  p.on('response', (r) => { if (r.status() >= 400) consola.push(`HTTP ${r.status()} ${r.url().slice(-60)}`); });
   // O GLOSSARIO NAO PODE VIR SOZINHO NUMA TELA DE INSTRUMENTO. O
   // `ref-index.json` custa 68,4 KB gzipados, e no Grid nao ha prosa para linkar.
   // Isto conta os pedidos dele, e o teste cobra dois lados: nenhum na abertura,
@@ -136,7 +139,30 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
   p.on('request', (r) => { if (r.url().includes('ref-index')) refReqs.push(r.url()); });
   await p.goto(`${url}/mesa/grid?id=${MESA}&bench=${pecas}&cols=${cols}&rows=${rows}&nevoa=${nevoa ? 1 : 0}`,
     { waitUntil: 'networkidle0', timeout: 60000 });
-  await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
+  // A ESPERA QUE CONTA O QUE VIU, e nao so que desistiu.
+  //
+  // Este `waitForSelector` estourava com um `TimeoutError` cru, e foi assim que
+  // o smoke falhou no CI de 27/08 a 04/09 sem que ninguem soubesse por que: a
+  // pilha diz que o seletor nao apareceu e nao diz o que a pagina fez. Os erros
+  // de pagina, os de console e as respostas 4xx/5xx ja estavam sendo coletados
+  // logo acima; faltava alguem imprimi-los.
+  try {
+    await p.waitForSelector('#gr-tokens .gr-token', { timeout: 45000 });
+  } catch (e) {
+    const estado = await p.evaluate(() => ({
+      titulo: document.title,
+      temPalco: !!document.getElementById('gr-palco'),
+      temCamada: !!document.getElementById('gr-tokens'),
+      corpo: (document.body?.innerText || '').replace(/\s+/g, ' ').slice(0, 300),
+    })).catch(() => ({ titulo: '(a pagina nem respondeu)' }));
+    console.log('  ✘ o tabuleiro nao desenhou peca nenhuma. O que a pagina disse:');
+    console.log(`      titulo=${estado.titulo} palco=${estado.temPalco} camada=${estado.temCamada}`);
+    console.log(`      corpo: ${estado.corpo}`);
+    for (const x of erros.slice(0, 5)) console.log(`      pageerror: ${x.slice(0, 200)}`);
+    for (const x of consola.slice(0, 8)) console.log(`      console: ${x}`);
+    if (!erros.length && !consola.length) console.log('      (nenhum erro de pagina nem de console)');
+    throw e;
+  }
 
   // ------------------------------------------- o glossario NAO veio sozinho
   {
