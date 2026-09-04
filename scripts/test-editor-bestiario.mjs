@@ -22,12 +22,45 @@ try{
   const page=await browser.newPage();
   await page.setViewport({width:1400,height:1000});
   const erros=[]; page.on('pageerror',(e)=>erros.push(String(e)));
-  // O TETO PADRAO DO PUPPETEER SAO 30 s, e ele estourou no runner de CI em
-  // 04/09/2026, na primeira vez que este teste rodou fora do Windows. Nao e
-  // travamento: /bestiario e a pagina mais pesada do site (309 criaturas mais o
-  // acervo de arte), e o runner e mais lento que a maquina de desenvolvimento
-  // por um fator medido de ~5 no `test-grid`.
-  await page.goto(`${url}/bestiario`,{waitUntil:'networkidle0',timeout:120000});
+  // NAO E `networkidle0`, E NAO E LENTIDAO.
+  //
+  // Este teste rodou pela primeira vez fora do Windows em 04/09/2026 e estourou
+  // os 30 s padrao do puppeteer. Subir o teto para 120 s nao adiantou: estourou
+  // igual, e foi isso que disse o que era. `networkidle0` espera MEIO SEGUNDO
+  // SEM NENHUMA CONEXAO ABERTA, e o /bestiario e a pagina mais pesada do site
+  // (309 criaturas e o acervo de arte) servida pelo `astro dev`, que ainda
+  // mantem o canal do recarregamento aberto. Esse silencio pode nunca vir, e
+  // quando nao vem o teste nao falha: ele PENDURA ate o teto, que e a pior das
+  // duas saidas.
+  //
+  // Esperar o que o teste PRECISA e a resposta certa, e ela e mais rapida: os
+  // cartoes das criaturas no DOM. O `domcontentloaded` deixa a arte carregar
+  // sozinha, e nenhuma asserçao daqui olha para imagem.
+  await page.goto(`${url}/bestiario`,{waitUntil:'domcontentloaded',timeout:120000});
+  //
+  // E A ESPERA E PELOS 300 CARTOES, e nao pelo primeiro. O bestiario pinta
+  // progressivamente: com `.besta` como condiçao, a pagina passava com 40 de 309
+  // e a asserçao seguinte caia dizendo "40 de 40", que se le como acerto. Era o
+  // `networkidle0` que segurava esse tempo por acidente, e trocar a espera sem
+  // trocar a condiçao teria transformado um teste pendurado num teste errado.
+  try {
+    await page.waitForFunction(() => document.querySelectorAll('.besta').length > 300,
+      {timeout: 60000, polling: 250});
+  } catch (e) {
+    // E SE NAO VIER, DIGA O QUE VEIO. Um `TimeoutError` cru custou duas
+    // execuçoes de CI aqui e quatro no `test-grid`: ele diz que a espera acabou
+    // e nao diz o que a pagina estava mostrando.
+    const d = await page.evaluate(() => ({
+      titulo: document.title,
+      cards: document.querySelectorAll('.besta').length,
+      corpo: (document.body.innerText || '').trim().slice(0, 200),
+    })).catch(() => ({titulo: '(sem pagina)', cards: 0, corpo: ''}));
+    console.error(`  ✘ o bestiario nao chegou a 300 cartoes em 60 s`);
+    console.error(`    titulo: ${d.titulo}
+    cards: ${d.cards}
+    corpo: ${d.corpo}`);
+    throw e;
+  }
 
   // O PORTAO: sem administrador, os botoes nao aparecem.
   const visivelDeslogado = await page.evaluate(()=>{
