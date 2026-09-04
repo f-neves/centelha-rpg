@@ -49,7 +49,7 @@ defeito). Os dois saem com o mesmo valor, no mesmo campo, no mesmo CSV, e nenhum
 separa depois. **O instrumento que os separa é sempre o mesmo: contar OCASIÕES, e não efeitos.**
 
 Não é lição de relatório. É regra de construção, e ela existe porque **a mesma forma de erro já
-apareceu dez vezes nesta frente**, em camadas diferentes. E a partir do quinto caso ela tem uma
+apareceu onze vezes nesta frente**, em camadas diferentes. E a partir do quinto caso ela tem uma
 segunda face: o zero ambíguo é a AUSÊNCIA de sinal lida como sinal, e o espelho dele é a
 **PRESENÇA de texto lida como o sinal errado**. Os dois vêm de olhar à volta do sinal em vez de
 olhar onde ele mora.
@@ -66,6 +66,7 @@ olhar onde ele mora.
 | **9** | o **instrumento de bancada citado como prova sobre o produto** | "o Grid guarda os dois vereditos" | ele guarda só com `?lances=1`, que é a bancada: em mesa de verdade os dois campos não coexistem em lugar nenhum e a página descarta tudo ao fechar | achado pela revisora na rodada 05, e é a **segunda vez**: na rodada 04 o espelho comparou o harness contra um mock que chama a função do harness |
 | **8** | o **documento que se contradiz** | "os dois trechos podem estar certos" | a `09` D31 diz que o eixo E4 foi cortado por inerte, e a `09` §2.4 atribui um efeito ao passo dobrado desse mesmo eixo. **Nenhum instrumento compara afirmação com afirmação**, então "nada acusou contradição" saía igual a "não há contradição" | achado à mão, conferindo o aviso da rodada 03 |
 | **10** | a **asserção negativa sozinha** | "a coisa que não podia acontecer não aconteceu" | o cenário não foi montado, e nada podia acontecer de todo jeito. O teste imprime ✓ pela ausência da ausência | achado em 04/09 pela GÊMEA, e não pelo teste: a brasa da bancada nascia FORA do tabuleiro, a metade "a Arte em montagem não abre o escuro" passava feliz, e só "e a mesma Arte, caída, abre (100 -> 100)" acusou |
+| **11** | a **medida do sintoma batizada com o nome da causa** | "o runner é ~1,5× mais lento que esta máquina" | o número medido era real (20 min) e a causa atribuída a ele era falsa: não era trabalho, era o `astro dev` órfão segurando o processo depois do fim. **Medir certo e nomear errado dá um número que ninguém desconfia** | achado em 04/09 pelo conserto do `detached`: com o processo morrendo na hora, os mesmos trabalhos passaram a levar 6 min, e o fator caiu de 5 para 1,5 |
 
 **O quinto e o sexto casos custaram dinheiro, e é a diferença deles para os quatro primeiros.**
 Os quatro foram achados por inspeção ou por teste, antes de qualquer gasto. Estes dois só
@@ -113,6 +114,25 @@ falso positivo até ninguém mais ler. **O que dá para fazer barato é o invers
 abaixo: toda decisão que CORTA alguma coisa fica numa lista só, escrita como PROIBIÇÃO
 OBSERVÁVEL, e a conferência é ler a lista contra o documento. A lista não acha contradição em
 geral; ela acha a contradição que importa, que é o texto afirmando aquilo que uma decisão tirou.
+
+**O décimo primeiro é o único da lista que não é um zero, e entra aqui porque a forma é a
+mesma pelo avesso.** Nos dez primeiros a AUSÊNCIA de sinal foi lida como sinal. Neste, a
+PRESENÇA de um sinal verdadeiro foi lida como sinal de outra coisa: os 20 minutos existiam, o
+cronômetro não mentiu, e a frase "o runner é lento" não era medida nenhuma, era a explicação
+que ocorreu a quem olhou o número. **Medir o sintoma e nomear a causa errada.**
+
+O que faz este caso perigoso não é ter durado uma semana: é para onde ele foi. O número virou
+comentário em dois arquivos (`validate.yml` e `test-editor-bestiario.mjs`), e nesses comentários
+ele estava **justificando decisões** (o teto de 30 minutos, a espera do teste do bestiário). Uma
+premissa errada dentro de uma justificativa não é mais um número errado: é um número que a
+próxima pessoa vai usar como chão, sem ter como saber que ele nunca foi medido. **É assim que um
+erro sai do lugar onde nasceu.**
+
+A obrigação que sai daí, e é irmã da do nono caso: **um número que explica uma causa diz como a
+causa foi verificada, e não só como o número foi medido.** "O `test-grid` leva 20 min lá" é
+medição. "O runner é 5× mais lento" é uma teoria sobre a medição, e teoria escrita ao lado de um
+número herda a autoridade dele sem ter passado por nada. Quando a verificação não existe, a
+frase certa é a que descreve só o que se viu: "leva 20 min lá, e não sabemos por quê".
 
 **O nono caso tem uma simetria que vale escrever: aconteceu duas vezes com os papéis
 trocados.** Na rodada 04 a executora afirmou que a mesa compartilha a montagem da
