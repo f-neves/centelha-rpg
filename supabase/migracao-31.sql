@@ -57,8 +57,24 @@ comment on function public.tick_da_arena(uuid) is
   'NULL quer dizer "sem relogio", e quem le trata todo efeito como ja caido.';
 
 -- ----------------------------------------------- 2 - a casa clara, com estado
+--
+-- O `with ... as materialized` NAO E ENFEITE, e ele conserta um defeito que a
+-- primeira versao desta migracao introduziu.
+--
+-- Escrito direto, `public.tick_da_arena(p_arena)` aparecia TRES vezes dentro do
+-- `exists` do fogo, e esse `exists` percorre o produto `arena_efeitos x hexes do
+-- efeito`. Como `tick_da_arena` e `stable` e nao `immutable`, o Postgres nao a
+-- memoiza: eram ate tres chamadas por linha efeito x hex, e cada chamada custa
+-- dois selects (`mesa_da_arena` em `mesa_arenas`, mais `encontros`). Numa cena
+-- com tres zonas de vinte hexagonos isso da 360 selects **por peca**, e
+-- `casa_clara` e chamada uma vez por peca em `token_visao`.
+--
+-- `materialized` obriga a avaliacao uma vez por chamada de `casa_clara`, e o
+-- resto do plano le a linha pronta. E a mesma economia que o `exists` ja faz:
+-- perguntar uma vez o que nao muda no meio da pergunta.
 create or replace function public.casa_clara(p_arena uuid, p_nevoa jsonb, p_q int, p_r int)
 returns boolean language sql stable security definer set search_path = public as $$
+  with rel as materialized (select public.tick_da_arena(p_arena) as t)
   select
     -- nevoa desligada: tudo claro
     coalesce((p_nevoa->>'ligada')::boolean, false) = false
@@ -81,13 +97,13 @@ returns boolean language sql stable security definer set search_path = public as
     or exists (
       select 1
         from arena_efeitos e,
-             jsonb_array_elements(coalesce(e.hexes, '[]'::jsonb)) h
+             jsonb_array_elements(coalesce(e.hexes, '[]'::jsonb)) h,
+             rel
        where e.arena_id = p_arena
          and e.elemento in ('fogo', 'luz')
          and (
-           public.tick_da_arena(p_arena) is null
-           or (coalesce(e.desde_tick, 0) <= public.tick_da_arena(p_arena)
-               and coalesce(e.ate_tick, 2147483647) > public.tick_da_arena(p_arena))
+           rel.t is null
+           or (coalesce(e.desde_tick, 0) <= rel.t and coalesce(e.ate_tick, 2147483647) > rel.t)
          )
          and hex_dist((h->>'q')::int, (h->>'r')::int, p_q, p_r)
              <= coalesce((p_nevoa->>'luz')::int, 2)
@@ -147,11 +163,13 @@ select e.id, e.arena_id, e.arte_id, e.efeito_id, e.conjurador_id, e.nome, e.nive
        e.alvos, e.item, e.desde_tick, e.ate_tick
 from public.arena_efeitos e
 join public.mesa_arenas a on a.id = e.arena_id
+cross join lateral (select public.tick_da_arena(a.id) as t) rel
 where a.ativa and not e.oculto and public.eh_membro(a.mesa_id)
+  -- Um `lateral` de uma linha, pelo mesmo motivo da `casa_clara`: escrita tres
+  -- vezes, a chamada custava tres vezes por efeito.
   and (
-    public.tick_da_arena(a.id) is null
-    or (coalesce(e.desde_tick, 0) <= public.tick_da_arena(a.id)
-        and coalesce(e.ate_tick, 2147483647) > public.tick_da_arena(a.id))
+    rel.t is null
+    or (coalesce(e.desde_tick, 0) <= rel.t and coalesce(e.ate_tick, 2147483647) > rel.t)
   );
 grant select on public.efeito_visao to authenticated;
 
