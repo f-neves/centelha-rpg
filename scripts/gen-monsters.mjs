@@ -260,14 +260,39 @@ console.log(`monsters.json: ${monsters.length} criaturas, ${(statSync(out).size 
  * de ser acrescentado AQUI, e esquecer disso aparece na hora: o valor chega
  * `undefined` na tela, e não meio certo.
  */
+/**
+ * AS TÉCNICAS DA CRIATURA, RESOLVIDAS AQUI e não no navegador.
+ *
+ * O card do bestiário mostra as Técnicas de uma criatura como links para
+ * `caminhos/<caminho>#<id>`, e para montar esse link ele precisa de duas coisas
+ * por Técnica: o nome e o Caminho. Para tê-las, o `mesa-bestiario.ts` importava
+ * o `tecnicas.json` inteiro: **179 KB de JSON, 26,3 KB gzipados**, embarcados em
+ * toda aba da mesa, o Grid inclusive.
+ *
+ * O tamanho do que se usava daquilo: **24 criaturas têm Técnica, 30 Técnicas
+ * distintas ao todo, e o par (nome, caminho) das 30 dá 630 bytes gzipados.**
+ * Vinte e seis mil bytes para responder seiscentos.
+ *
+ * Resolvendo aqui, o navegador não carrega catálogo nenhum: o par já vem dentro
+ * da criatura. A cópia não desatualiza porque este script roda no build, junto
+ * com o resto.
+ */
+const resolverTecnicas = (ids, catalogo) => (ids || []).map((t) => {
+  const id = typeof t === 'string' ? t : t?.id;
+  const tec = catalogo[id];
+  return { id, nome: tec?.nome || id, caminho: tec?.caminho || '' };
+});
+
 const CAMPOS_MESA = [
   'id', 'nome', 'nomeIngles', 'ameaca', 'centelha', 'categoria', 'porte', 'imagem',
   'semImagem', 'tipo', 'atributos', 'virtudes', 'vontade', 'aparencia',
   'artes', 'tecnicas', 'combate', 'ecologia', 'dimensoes',
 ];
+const TEC_POR_ID = Object.fromEntries(read('tecnicas.json').map((t) => [t.id, t]));
 const mesa = monsters.map((m) => {
   const o = {};
   for (const k of CAMPOS_MESA) if (m[k] !== undefined) o[k] = m[k];
+  if (o.tecnicas) o.tecnicas = resolverTecnicas(o.tecnicas, TEC_POR_ID);
   return o;
 });
 const outMesa = join(data, 'monsters-mesa.json');

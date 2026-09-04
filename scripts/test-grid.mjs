@@ -122,9 +122,40 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
   await p.evaluateOnNewDocument(SONDA);
   const erros = [];
   p.on('pageerror', (e) => erros.push(e.message));
+  // O GLOSSARIO NAO PODE VIR SOZINHO NUMA TELA DE INSTRUMENTO. O
+  // `ref-index.json` custa 68,4 KB gzipados, e no Grid nao ha prosa para linkar.
+  // Isto conta os pedidos dele, e o teste cobra dois lados: nenhum na abertura,
+  // e UM quando alguem aponta para um link, que e o caminho sob demanda.
+  const refReqs = [];
+  p.on('request', (r) => { if (r.url().includes('ref-index')) refReqs.push(r.url()); });
   await p.goto(`${url}/mesa/grid?id=${MESA}&bench=${pecas}&cols=${cols}&rows=${rows}&nevoa=${nevoa ? 1 : 0}`,
     { waitUntil: 'networkidle0', timeout: 60000 });
   await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
+
+  // ------------------------------------------- o glossario NAO veio sozinho
+  {
+    // O `requestIdleCallback` do componente roda depois do `networkidle0`, entao
+    // esperar um pouco e o que da a chance de ele errar. Sem esta espera o teste
+    // passaria mesmo com o defeito de volta.
+    await espera(700);
+    const off = await p.evaluate(() => document.body.dataset.refs === 'off');
+    ok(off, 'o Grid se declara tela de instrumento (data-refs="off")');
+    ok(refReqs.length === 0,
+      `e o ref-index.json (68,4 KB) nao e baixado na abertura (${refReqs.length} pedido(s))`);
+    // E o cartao de referencia continua existindo: apontar para um link do
+    // conteudo carrega o indice na hora. Se este lado quebrar, a economia acima
+    // virou perda de funcionalidade em silencio.
+    const temLink = await p.evaluate(() => !!document.querySelector('main a[href]'));
+    if (temLink) {
+      await p.evaluate(() => {
+        const a = document.querySelector('main a[href]');
+        a.dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
+      });
+      await espera(600);
+      ok(refReqs.length === 1,
+        `e apontar para um link carrega o indice sob demanda (${refReqs.length} pedido(s))`);
+    }
+  }
 
   // ---------------------------------------------------------- o desenho
   const d = await p.evaluate(() => ({

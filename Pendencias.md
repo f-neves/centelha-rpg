@@ -844,6 +844,44 @@ revistos por ela.
   à mão. E falta a **prova de mesa**: a chave existe justamente porque a regra só se aprova jogando,
   e se reprovar um commit apaga o caminho novo e ela junto.
 
+- [ ] **K30 · [FAZER] A CAIXA QUE ABRE NO TICK EM QUE A ARTE SAI** · *é a mesma mecânica do K27,
+  e o nome existe para ninguém resolver as duas separadas.*
+
+  **A régua está cumprida para 27 dos 140 Efeitos e não para 19.** Em 04/09 a Arte passou a resolver
+  no último Tick também quando toca um corpo (o Dardo, a marca, a Corrente). Três caminhos ficaram
+  de fora, e não por esquecimento: **`dissipar` (1 Efeito), `invocar` (6) e `deslocar` (12)**.
+
+  **O que impede.** Os 27 que foram consertados resolvem sozinhos: a varredura de efeitos chega no
+  Tick certo e aplica o que estava escrito na linha. Estes três **precisam de uma pergunta ao vivo
+  no instante em que a Arte sai**:
+
+  | Efeito | o que a caixa pergunta no Tick da saída |
+  |---|---|
+  | **dissipar** | qual magia alheia desfazer, e a lista mudou nos Ticks da montagem |
+  | **invocar** | o bloco do servo (Vida, Defesa, Absorção), que a mesa confere antes de pôr em campo |
+  | **deslocar** | para onde vai o empurrão, e de onde: o alvo pode ter andado |
+
+  Adiar o EFEITO delas é adiar a PERGUNTA, e pergunta adiada é exatamente o que a folha do golpe
+  adiado faz (`aResolver` na `acao`, a faixa dos golpes no ar, a folha que reabre no Tick do Golpe).
+  **A mecânica existe e não serve Arte:** ela é construída em cima de `acao.golpes`, de alvo único e
+  de uma folha que fala de acerto e dano. A Arte não tem golpe, pode não ter alvo, e a caixa dela é
+  outra em cada uma das três formas.
+
+  **O que isto trava, e é o motivo do nome.** Quem for fazer o K27 fatia 2 vai construir a caixa
+  reaberta. Quem for fazer isto aqui vai construir a caixa reaberta. **Se as duas forem construídas
+  separadas, a mesa fica com dois mecanismos de "pergunta agendada" que se comportam diferente no
+  mesmo Tick**, e o Simultâneo é justamente onde isso aparece: um golpe e uma Arte caindo no mesmo
+  Tick têm de perguntar na mesma ordem, uma vez cada, e a ordem tem de ser a da fila.
+
+  **O caminho, quando for a hora:** generalizar o `aResolver` de "golpes a resolver" para
+  **"decisões agendadas"**, com um tipo por decisão (golpe · dissipar · invocar · deslocar), e a
+  varredura do Tick abrindo as caixas na ordem da fila. O K27 vira o primeiro caso dela e não o
+  dono dela.
+
+  **Enquanto não for feito:** as três resolvem na declaração, como sempre resolveram, e está
+  anotado no código (`conjurar`, em `artes-grid-mesa.ts`). Não é regressão, é a metade que faltava
+  desde 21/08.
+
 - [~] **K28 · Deslocamento: sete decisões tomadas em 21/08, uma com código pendente.** A varredura
   (§11 do `Golpe_Tardio.md`) achou **seis regras de andar** espalhadas por quatro lugares, mais dois
   modificadores esquecidos (a armadura tira metade da Penalidade em metros; baixa estatura) e uma

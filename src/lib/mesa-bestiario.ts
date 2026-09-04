@@ -11,7 +11,6 @@
 // 271 KB minificados, 27 KB comprimidos, contra 171 KB comprimidos do inteiro.
 // O card completo vem por `criaturaCompleta()`, um arquivo por criatura.
 import monstersData from '../data/monsters-mesa.json';
-import tecnicasData from '../data/tecnicas.json';
 import artesData from '../data/artes.json';
 import { resumoCombatePC } from './combate-resumo';
 import { esc, u, norm, fmtDano } from './mesa-core';
@@ -21,7 +20,6 @@ import { qaDaPeca, type QACombate } from './quase-acerto';
 
 export const MONSTROS = monstersData as any[];
 export const MON: Record<string, any> = Object.fromEntries(MONSTROS.map((m) => [m.id, m]));
-export const TEC: Record<string, any> = Object.fromEntries((tecnicasData as any[]).map((t) => [t.id, t]));
 export const ARTE_NOME: Record<string, string> = Object.fromEntries((artesData as any[]).map((a) => [a.id, a.nome]));
 
 /** Índice leve para busca e listagens (sem arrastar o objeto inteiro). */
@@ -269,7 +267,22 @@ export function cardCriaturaHTML(m: any): string {
   const atk = (cb.ataques || []).length ? `<ul class="besta-atk">${cb.ataques.map((a: any) => `<li><span class="atk-nome">${esc(a.nome)}</span><span class="atk-rolls">Ataque: <b>${esc(a.pool)}</b> · Dano <b>${fmtDano(esc(a.dano))}</b> · Velocidade ${a.speed}</span>${a.notas ? `<span class="atk-nota muted">${esc(a.notas)}</span>` : ''}</li>`).join('')}</ul>` : '';
   const habs = (m.habilidades || []).length ? `<h4 class="cc-h">Habilidades</h4><ul class="ib-hab">${m.habilidades.map((h: any) => `<li><b>${esc(h.nome)}</b> ${esc(h.descricao)}</li>`).join('')}</ul>` : '';
   const pods = (m.poderes || []).length ? `<h4 class="cc-h">Poderes <span class="muted">(sistema)</span></h4><ul class="ib-pod">${m.poderes.map((p: any) => `<li><span class="pw-ef">${esc(p.efeito)}</span> → <span class="pw-alvo">${esc(p.alvo)}</span></li>`).join('')}</ul>` : '';
-  const refTec = (m.tecnicas || []).length ? `<p class="ib-ref"><b>Técnicas:</b> ${m.tecnicas.map((t: string) => `<a href="${u('caminhos/' + (TEC[t]?.caminho || ''))}#${t}">${esc(TEC[t]?.nome || t)}</a>`).join(' · ')}</p>` : '';
+  // A TÉCNICA JÁ VEM RESOLVIDA (`{ id, nome, caminho }`), do `gen-monsters.mjs`
+  // e do endpoint por criatura. Antes esta linha era o único uso do
+  // `tecnicas.json` neste módulo, e por causa dela 179 KB de catálogo (26,3 KB
+  // gzipados) viajavam para toda aba da mesa, o Grid inclusive, para responder
+  // 630 bytes de par (nome, caminho) em 24 das 309 criaturas.
+  //
+  // A forma antiga (id solto) continua aceita: um card guardado no cache do
+  // navegador antes desta mudança ainda abre, e abre com o nome cru em vez de
+  // quebrar. É a diferença entre degradar e falhar.
+  const refTec = (m.tecnicas || []).length ? `<p class="ib-ref"><b>Técnicas:</b> ${
+    m.tecnicas.map((t: any) => {
+      const id = typeof t === 'string' ? t : t?.id;
+      const nome = typeof t === 'string' ? t : (t?.nome || id);
+      const cam = typeof t === 'string' ? '' : (t?.caminho || '');
+      return `<a href="${u('caminhos/' + cam)}#${id}">${esc(nome)}</a>`;
+    }).join(' · ')}</p>` : '';
   const refArte = (m.artes || []).length ? `<p class="ib-ref"><b>Artes:</b> ${m.artes.map((a: any) => `<a href="${u('arcano')}#${a.id}">${esc(ARTE_NOME[a.id] || a.id)}</a> ${a.nivel}`).join(' · ')}</p>` : '';
   const refs = (refTec || refArte) ? `<h4 class="cc-h">Técnicas &amp; Artes</h4>${refTec}${refArte}` : '';
   const notas = m.notas ? `<h4 class="cc-h">Notas</h4><p class="ib-notas">${esc(m.notas)}</p>` : '';

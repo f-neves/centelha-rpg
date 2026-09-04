@@ -260,8 +260,35 @@
     });
   }
 
+  /**
+   * O ÍNDICE SÓ É BAIXADO ADIANTADO ONDE HÁ PROSA PARA LINKAR.
+   *
+   * O `ref-index.json` custa **68,4 KB gzipados**, e é o maior pedido de
+   * qualquer página do site: mais do que o pacote do Grid inteiro. Ele serve a
+   * duas coisas, o auto-link da prosa e o painel de consulta, e numa tela de
+   * INSTRUMENTO não há prosa nenhuma: o `main` do Grid é um tabuleiro, o da aba
+   * Combate é uma lista de fichas. Baixar o glossário inteiro para não linkar
+   * nada é o pedido mais caro da página pagando por zero.
+   *
+   * QUEM DECIDE É A PÁGINA, e não uma heurística. Tentei medir a prosa visível
+   * na hora e a medida mente nas duas pontas: no Grid ela CONTA o texto de ajuda
+   * que mora dentro de diálogo fechado, e na Ficha ela dá ZERO porque a página é
+   * montada por JavaScript depois do `load`. Uma heurística que erra nos dois
+   * sentidos desliga o auto-link em silêncio onde ele fazia falta, que é o pior
+   * dos dois defeitos. O atributo abaixo é escrito por quem sabe.
+   *
+   * E ISTO NÃO DESLIGA A FUNCIONALIDADE: o cartão continua abrindo em qualquer
+   * página, porque o `handle` carrega o índice sob demanda no primeiro apontar
+   * (`if (!INDEX) load().then(...)`). O painel de consulta também volta, se
+   * houver algo fixado. O que muda é quem paga: quem usa, e não quem abre.
+   */
+  const SEM_PROSA = document.body.dataset.refs === 'off';
+
   // init: carrega o índice no idle, faz o auto-link e restaura a consulta
-  const start = () => load().then(() => { autolink(); renderConsulta(); });
+  const start = () => {
+    if (SEM_PROSA && !pins().length) return;
+    load().then(() => { autolink(); renderConsulta(); });
+  };
   if ('requestIdleCallback' in window) (window as any).requestIdleCallback(start); else setTimeout(start, 200);
 </script>
 

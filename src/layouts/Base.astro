@@ -20,8 +20,19 @@ import Busca from '../components/Busca.astro';
  * com 17rem de menu e pular depois. A preferência global de menu do leitor não
  * é tocada: quem quiser o menu de volta usa o ☰ da própria barra da mesa.
  */
-interface Props { title: string; descricao?: string; largura?: 'prose' | 'wide' | 'full'; telaCheia?: boolean; }
-const { title, descricao = 'Centelha — sistema de RPG de mesa em d6, do mortal ao semideus.', largura = 'prose', telaCheia = false } = Astro.props;
+/**
+ * `referencias` liga o auto-link do glossário nesta página.
+ *
+ * Nasce ligado, porque a maior parte do site é texto. Desligar é para a tela de
+ * INSTRUMENTO, onde não há prosa: o Grid é um tabuleiro, a aba Combate é uma
+ * lista de fichas. Ali o `ref-index.json` (68,4 KB gzipados, o maior pedido de
+ * qualquer página) era baixado para não linkar nada.
+ *
+ * Desligado, o cartão de referência CONTINUA funcionando: o índice passa a ser
+ * carregado no primeiro apontar, e não na abertura. O que muda é quem paga.
+ */
+interface Props { title: string; descricao?: string; largura?: 'prose' | 'wide' | 'full'; telaCheia?: boolean; referencias?: boolean; }
+const { title, descricao = 'Centelha — sistema de RPG de mesa em d6, do mortal ao semideus.', largura = 'prose', telaCheia = false, referencias = true } = Astro.props;
 
 const here = Astro.url.pathname.replace(/\/+$/, '');
 const isActive = (slug: string) => here === url(slug).replace(/\/+$/, '');
@@ -156,7 +167,7 @@ if (partes.length) crumbs.push({ label: title });
     })();
   </script>
 </head>
-<body class={ehFicha ? 'page-ficha' : undefined}>
+<body class={ehFicha ? 'page-ficha' : undefined} data-refs={referencias ? undefined : 'off'}>
   {/* Fundo: camadas decorativas fixas atrás de tudo e fora do alcance do ponteiro.
       Primeiro filho do body, uma vez só, porque toda página passa por este layout.
       O componente traz o próprio liga/desliga por html[data-fundo]. */}

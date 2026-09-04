@@ -1124,8 +1124,21 @@ function afastar(de: Hex, ate: Hex, passos: number, cols: number, rows: number):
  *   `gravarEfeito`  · a condição entrava em quem foi marcado, na hora
  *   `encadear`      · a Corrente mordia a cadeia inteira, na hora
  *
- * Eram 44 dos 140 Efeitos, e das duas metades da regra sobrava a que não custa
- * nada: o alvo via o gesto se montando por cinco Ticks depois de já ter levado.
+ * SÃO 27 DOS 140 EFEITOS, e não 44. O 44 foi publicado no commit deste conserto
+ * e estava errado: ele somou os Efeitos que PODERIAM cair em cada caminho, sem
+ * aplicar a guarda que cada um tinha. As três guardas de verdade são
+ * `g?.gatilho === 'imediato'` (5 Efeitos), `g?.condicao` com alvos marcados (24)
+ * e a forma `cadeia` (1), com 3 aparecendo em dois caminhos. Doze dos 27 são de
+ * nível 1 ou 2, que é a faixa de quem tem Centelha e não gastou XP em nada.
+ *
+ * E O IMPROVISO NUNCA ESTEVE NA LISTA, que é o contrário do que o tamanho
+ * sugere. Uma conjuração sem Efeito comprado não tem bloco `grid`, então
+ * `g?.gatilho` é indefinido e a guarda do dano imediato nunca abriu: o Dardo
+ * improvisado, que é a conjuração mais comum que existe, sempre saiu no Tick
+ * certo, pela varredura.
+ *
+ * Das duas metades da regra sobrava a que não custa nada: o alvo via o gesto se
+ * montando por cinco Ticks depois de já ter levado.
  *
  * Roda UMA VEZ por efeito, e quem garante isso é a marca, apagada antes desta
  * função ser chamada: falha no meio deixa o efeito no chão sem repetir a
