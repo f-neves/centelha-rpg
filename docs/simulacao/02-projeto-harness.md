@@ -49,7 +49,7 @@ defeito). Os dois saem com o mesmo valor, no mesmo campo, no mesmo CSV, e nenhum
 separa depois. **O instrumento que os separa é sempre o mesmo: contar OCASIÕES, e não efeitos.**
 
 Não é lição de relatório. É regra de construção, e ela existe porque **a mesma forma de erro já
-apareceu sete vezes nesta frente**, em camadas diferentes. E a partir do quinto caso ela tem uma
+apareceu oito vezes nesta frente**, em camadas diferentes. E a partir do quinto caso ela tem uma
 segunda face: o zero ambíguo é a AUSÊNCIA de sinal lida como sinal, e o espelho dele é a
 **PRESENÇA de texto lida como o sinal errado**. Os dois vêm de olhar à volta do sinal em vez de
 olhar onde ele mora.
@@ -63,6 +63,7 @@ olhar onde ele mora.
 | **5** | o **"nada" da ESCALA** (o espelho) | "a revisora escalou uma decisão" | ela escreveu `nada.` e justificou embaixo, em prosa; a regra era "a seção inteira é a palavra nada", leu prosa, leu conteúdo, e conteúdo na ESCALA encerra o ciclo | acendeu na **rodada 02, com dinheiro gasto**: o script parou anunciando "a revisora ESCALOU" contra um texto que dizia o contrário |
 | **6** | a **digital da repetição** (o espelho) | "as duas respostas tratam do mesmo assunto" | com UM identificador em cada item, o mesmo identificador dava semelhança 1,00; dois itens diferentes sobre o mesmo objeto (`ocasião · passo` fora do placar, e `ocasião · passo` guardando o piso só por cima) eram "o mesmo assunto" | achado na mesma rodada, conferindo à mão o que a trava seguinte diria se a da ESCALA não tivesse parado antes |
 | **7** | o **contador de dinheiro** | "esta execução não gastou nada" | a chamada morreu por limite de conta depois de duas baterias, cinco arquivos e um commit; uma chamada que falha devolve custo 0, e 0 entra na soma como se fosse medido | o RESUMO da rodada 03 publicou **US$ 0,00** para a execução mais cara até então |
+| **8** | o **documento que se contradiz** | "os dois trechos podem estar certos" | a `09` D31 diz que o eixo E4 foi cortado por inerte, e a `09` §2.4 atribui um efeito ao passo dobrado desse mesmo eixo. **Nenhum instrumento compara afirmação com afirmação**, então "nada acusou contradição" saía igual a "não há contradição" | achado à mão, conferindo o aviso da rodada 03 |
 
 **O quinto e o sexto casos custaram dinheiro, e é a diferença deles para os quatro primeiros.**
 Os quatro foram achados por inspeção ou por teste, antes de qualquer gasto. Estes dois só
@@ -90,6 +91,48 @@ execução isso não abre buraco, porque a primeira chamada morta encerra o cicl
 **Entre execuções, abre:** o contador nasce em zero a cada `npm run duo`, e nada soma o que a
 execução anterior gastou. Quem fecha esse buraco é o humano lendo o RESUMO, e é por isso que o
 piso precisa estar marcado nele.
+
+**O oitavo é o mais difícil de ver, e é o único em que o instrumento que falta não existe em
+lugar nenhum da frente.** Os sete primeiros tinham um lugar óbvio para o conserto morar: um
+contador de ocasião, um caso de teste, um campo a mais no registro. Este não tem. Vale a pena
+dizer o que cada instrumento cobre, porque a lacuna aparece sozinha:
+
+| instrumento | o que ele liga |
+|---|---|
+| o **espelho** | execução com execução (o laço contra a mesa) |
+| os **invariantes** | estado com estado, dentro de uma batalha |
+| os **sinais** | conclusão com a ocasião que a sustenta |
+| a **procedência** (`test-procedencia.mjs`) | número publicado com a linha do agregado |
+| **nada** | **afirmação com afirmação** |
+
+E não adianta querer detector: uma varredura semântica que leia dois parágrafos e decida se eles
+se contradizem é cara e provavelmente ruim, e uma que erre para o lado de acusar enche o portão de
+falso positivo até ninguém mais ler. **O que dá para fazer barato é o inverso**, e é a seção
+abaixo: toda decisão que CORTA alguma coisa fica numa lista só, escrita como PROIBIÇÃO
+OBSERVÁVEL, e a conferência é ler a lista contra o documento. A lista não acha contradição em
+geral; ela acha a contradição que importa, que é o texto afirmando aquilo que uma decisão tirou.
+
+## O QUE FOI CORTADO · a lista que se lê contra o documento
+
+**Esta lista é o instrumento do oitavo caso, e ela se usa lendo.** A terceira coluna é o que a
+torna útil: não o histórico do corte, mas **o que não pode aparecer no texto por causa dele**. Um
+corte escrito como histórico não pega nada; escrito como proibição, pega na primeira passada.
+
+| decisão | o que ela cortou | o que NÃO pode aparecer no texto |
+|---|---|---|
+| **D12** | o par de perfis do D1, por redundância | conclusão que compare perfil de automação ligado com desligado |
+| **D21** | a bateria assume `rolagem: 'mesa'` (o espelho é que roda em `'site'`) | número de bateria atribuído ao modo `site` que não seja recontagem do mesmo log |
+| **D23** | a amostra da célula uníssona, de 500 para 50 voltas | percentil da uníssona lido com a precisão que as outras células têm |
+| **D24** | as cinco políticas da §0.4 P4 | afirmação sobre política que recua, hesita ou escolhe alvo diferente |
+| **D25** | cinco dos sete arquétipos | conclusão sobre variedade de elenco, alcance ou ciclo que o par de dois não tem |
+| **D29** | a fase de fuga, que sai do número de manchete | número de manchete que inclua a fuga sem dizer que inclui |
+| **D30** | 88 das 112 células oficiais | qualquer coisa sobre bandeira, política, obstáculo, leitura, reforço ou criatura |
+| **D31** | o eixo E4 (assimetria de passo), medido inerte | **efeito atribuído a passo dobrado, a `passoMult` ou a um lado que anda mais depressa** |
+| **L25** | nada foi cortado: as quinze bandeiras existem e nenhuma é lida pelo motor | leitura que dependa de bandeira ligada |
+
+**A linha da D31 é a que a rodada 03 violou**, e em quatro lugares de uma vez. Lida contra a `09`,
+ela pega a §2.4 antes de qualquer conferência de número, porque a frase proibida está escrita lá
+com todas as letras.
 
 E o sexto tem uma segunda lição, sobre consertar heurística: a primeira ideia foi mexer no limiar
 (0,6), e o limiar não tinha nada com isso. Com um identificador só, dois assuntos diferentes davam
