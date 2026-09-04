@@ -44,10 +44,15 @@
 -- outro mestre, nem quem tem o link. Nao ha view publica e nao ha leitura
 -- anonima.
 --
--- POR QUANTO TEMPO: 90 dias, e a limpeza e explicita. Nao existe job automatico
--- neste projeto, entao a funcao `limpar_lances_veredito()` esta aqui para ser
--- chamada a mao ou por agendamento futuro. Enquanto ninguem a chamar, NADA
--- EXPIRA SOZINHO, e isso esta dito para nao virar promessa falsa.
+-- POR QUANTO TEMPO: **ate alguem apagar**, e a resposta honesta e essa.
+--
+-- Havia aqui "90 dias". Sem agendador, noventa dias e INTENCAO e nao retencao:
+-- enquanto ninguem chamar a funcao, nada expira. O texto que o mestre le ao
+-- ligar (mesa/grupo) diz "ate alguem apagar", com a funcao de limpeza citada
+-- como algo que precisa ser chamado a mao. Quem autoriza nao le migracao, e uma
+-- promessa que so existe no comentario do SQL nao e promessa a ninguem.
+--
+-- A funcao esta aqui com 90 dias de PADRAO para quando alguem a chamar.
 -- =====================================================================
 
 -- ------------------------------------------------- 1 - a autorizacao, por mesa

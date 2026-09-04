@@ -49,6 +49,33 @@ import FichaResumo from '../../components/FichaResumo.astro';
       </div>
     </section>
 
+    <section class="bloco" id="sec-gravar" hidden>
+      <div class="bloco-cab"><h2>Gravar os vereditos desta mesa</h2></div>
+      <div class="painel">
+        <label class="linha-op">
+          <input type="checkbox" id="gravar-lances" />
+          <span>Gravar, em cada golpe, o que a régua calculou e o que eu apertei</span>
+        </label>
+        <span class="salvo" id="gravar-salvo"></span>
+        <p class="muted nota-mini"><strong>Para que serve.</strong> A folha do golpe calcula sozinha
+          se foi acerto, raspão ou erro, e você aperta um dos três botões. Saber com que frequência
+          os dois discordam é o que decide se aquele botão pode ser automático ou se ele é decisão
+          sua. Hoje esse número não existe.</p>
+        <p class="muted nota-mini"><strong>O que fica gravado:</strong> o total rolado, o ajuste, a
+          Defesa, a margem do Quase-Acerto, o veredito da régua, o botão que você apertou, o
+          encontro, o Tick e a hora. <strong>O que NÃO fica:</strong> o motivo que você escreve no
+          ajuste, nome de peça ou de personagem, o dano, a Vida, o alvo, e nada do que se fala na
+          mesa.</p>
+        <p class="muted nota-mini"><strong>Quem vê:</strong> só você. Nem os jogadores desta mesa,
+          nem outro mestre, nem quem tiver o link.</p>
+        <p class="muted nota-mini"><strong>Por quanto tempo:</strong> <strong>até alguém
+          apagar</strong>. Existe uma função de limpeza no banco, mas ela precisa ser chamada à mão
+          e nada a chama sozinha: enquanto isso não acontecer, os dados ficam. Você apaga os seus
+          quando quiser, e desligar aqui faz o banco recusar a próxima gravação na hora.</p>
+        <p class="muted nota-mini">Vale só para esta mesa. Não existe interruptor geral.</p>
+      </div>
+    </section>
+
   </MesaCab>
 
   <FichaResumo />
@@ -186,6 +213,24 @@ import FichaResumo from '../../components/FichaResumo.astro';
       el('nova-vaga').hidden = false;
       el('nova-vaga').addEventListener('click', abrirNovaVaga);
       el('sec-xp').hidden = false;
+      // A GRAVAÇÃO DOS VEREDITOS, e ela é do mestre desta mesa e de mais ninguém.
+      el('sec-gravar').hidden = false;
+      const grv = el('gravar-lances') as HTMLInputElement;
+      // Coluna ausente (banco anterior à migração 30) fica DESLIGADO: ausência
+      // de coluna não é autorização.
+      grv.checked = (ctx.mesa as any).gravar_lances === true;
+      grv.addEventListener('change', async () => {
+        const liga = grv.checked;
+        const { error } = await SB.from('mesas').update({ gravar_lances: liga }).eq('id', ID);
+        if (error) {
+          grv.checked = !liga;
+          return uiErro(/gravar_lances/i.test(error.message)
+            ? 'A coluna gravar_lances ainda não existe. Rode supabase/migracao-30.sql.'
+            : 'Erro: ' + error.message);
+        }
+        el('gravar-salvo').textContent = liga ? 'Gravando' : 'Desligado';
+        setTimeout(() => (el('gravar-salvo').textContent = ''), 1800);
+      });
       const inp = el('xp-inicial') as HTMLInputElement;
       inp.value = String(ctx.mesa.xp_inicial ?? 0);
       el('xp-salvar').addEventListener('click', async () => {
