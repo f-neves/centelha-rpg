@@ -42,5 +42,27 @@ export default defineConfig({
     resolve: {
       alias: [{ find: /^@supabase\/supabase-js$/, replacement: AQUI + 'scripts/mesa-mock.mjs' }],
     },
+    // AS CHAVES DE MENTIRA, e sem elas a bancada não abre.
+    //
+    // `supabase.ts` decide `supabaseConfigurado` pela presença das duas
+    // variáveis, e as nove abas da mesa param antes de desenhar quando ela é
+    // falsa: a tela mostra "Área de contas ainda não configurada".
+    //
+    // Trocar o cliente por um `mock` e ainda exigir chaves de verdade é uma
+    // contradição, e ela custou caro: o smoke do CI **nunca passou** (quatro
+    // execuções desde 27/08, todas falhando aqui), e ninguém viu, porque o
+    // gatilho do portão ignorava `main`. Na minha máquina passava por causa de
+    // um `.env` que só existe aqui, e a revisora precisou criar um `.env` de
+    // bancada à mão para rodar. Três ambientes, três respostas diferentes para a
+    // mesma pergunta.
+    //
+    // Definidas AQUI, a bancada passa a ser autossuficiente em qualquer máquina.
+    // Os valores são obviamente falsos de propósito: quem os vir num log tem de
+    // saber na hora que não são de ninguém. Nada os usa, porque o cliente é o
+    // mock.
+    define: {
+      'import.meta.env.PUBLIC_SUPABASE_URL': JSON.stringify('http://bancada.invalido'),
+      'import.meta.env.PUBLIC_SUPABASE_ANON_KEY': JSON.stringify('chave-de-bancada-nao-e-de-ninguem'),
+    },
   },
 });
