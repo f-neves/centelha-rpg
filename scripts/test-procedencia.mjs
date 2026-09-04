@@ -266,8 +266,15 @@ for (const nome of fs.readdirSync(DOCS)) {
 // **Mas citação histórica não vira fonte:** um número daqueles que volte a ser
 // usado volta com âncora e com a linha de hoje, ou não volta.
 {
-  const CITACAO = /`?([A-Za-z0-9_.-]+\.(?:ts|astro|mjs)):(\d+)(?:-(\d+))?`?/g;
-  const ehCitacao = (t) => /^[A-Za-z0-9_.-]+\.(?:ts|astro|mjs):\d+/.test(t.trim());
+  // O CAMINHO ANTES DO NOME É OPCIONAL, e não era: `[A-Za-z0-9_.-]+` não casa
+  // com a barra, então `src/lib/lance.ts:144` não era reconhecida como citação.
+  // A consequência era pior que não conferir: como `ehCitacao` também não a
+  // reconhecia, ela virava a ÂNCORA DE SI MESMA, e a armadilha acusava
+  // "âncora `src/lib/lance.ts:144` não está lá" para toda citação escrita com o
+  // caminho. Um alarme que acende pelo motivo errado, que é o gêmeo do zero
+  // ambíguo, e ele estava no instrumento que existe para pegar os outros.
+  const CITACAO = /`?(?:[\w.-]+\/)*([A-Za-z0-9_.-]+\.(?:ts|astro|mjs)):(\d+)(?:-(\d+))?`?/g;
+  const ehCitacao = (t) => /^(?:[\w.-]+\/)*[A-Za-z0-9_.-]+\.(?:ts|astro|mjs):\d+/.test(t.trim());
   const JANELA = 3;
 
   /** Onde cada arquivo citável mora, pelo nome. */

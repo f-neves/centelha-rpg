@@ -1277,6 +1277,60 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   contador de ocasião, e só então medir. É o mesmo mecanismo que matou o eixo E4 (D31) antes de
   ele virar linha de relatório. Isto reparte o **L1** em quinze tarefas de motor, e **nenhuma
   medição de bandeira vale antes**.
+- [ ] **L34 · [FASE 2] AS TRÊS DO L25 PURO, E ELAS NÃO SÃO O MESMO TRABALHO** · *levantamento
+  de 04/09/2026, arquivo e linha conferidos.*
+
+  A frase que as juntou foi "mecanismo existente ganhando tela pela primeira vez". Conferindo
+  uma a uma, **só uma delas é isso**. As outras duas são coisas diferentes, e tratá-las como
+  a mesma é justamente como nasce promessa sem mecanismo.
+
+  | | regra escrita | motor | tela | teste |
+  |---|---|---|---|---|
+  | **Investida** | sim, com números | **não existe** | não | não |
+  | **Interpor** | só como saída do abortar, **sem números** | rótulo, sem efeito | metade, e só do mestre | não |
+  | **Condição à mão** | catálogo de ~48, com números | **existe e é chamado** | **existe, na aba Combate; não no Grid** | só pelo caminho da Arte |
+
+  **1 · A INVESTIDA NÃO É "GANHAR TELA": É MOTOR QUE NÃO EXISTE.** A regra está fechada em
+  `src/data/regras.json:2356` (`danoDados: 1`, `defesaExtra: -2`) e no capítulo
+  (`src/content/chapters/combate.md:223`), com o exemplo do Kael: 8 m com Defesa −2 andando,
+  12 m com Defesa −4 e +1d6 investindo. O motor não a conhece: `ModoMov` é
+  `'andar' | 'batalha' | 'corrida'` em `src/lib/combate-tempo.ts:763`, sem investida, e o
+  portão da travessia exige `opts.modo !== 'corrida'` (`src/lib/combate-tempo.ts:817`), então a linha
+  "−6 investindo" do `regras.json:2287` **nunca é alcançada**. Pôr um botão antes do modo
+  existir seria a promessa sem mecanismo em pessoa. A ordem é: modo no `combate-tempo.ts`,
+  contador de ocasião, e só então tela.
+
+  **2 · O INTERPOR NÃO TEM REGRA PARA IMPLEMENTAR.** O que existe é a *saída* do abortar:
+  `regras.json:2450` lista `["mover", "desviar", "interpor"]`, a 1 Tick por metro, e o
+  diálogo já pergunta qual delas, pelo `SAIDAS` (`src/lib/mesa-tempo-ui.ts:256`). Só que escolher "interpor"
+  **muda o verbo da frase do log, e nada mais**: `const verbo` em `src/lib/mesa-tempo-ui.ts:325`. A saída escolhida é descartada
+  pelo Grid, que grava só `acao: limpa` (`src/pages/mesa/grid.astro:5733`).
+  **Não há número nenhum:** quem leva o dano, se há teste, qual o alcance, o que o escudo faz.
+  A `02-projeto-harness.md:914` até fixa a ordenação ("a interposição resolve antes do golpe
+  contra o qual ela se interpõe"), e isso é ordem, não mecânica. **Isto é decisão de mesa, e
+  não trabalho de programação.** Escrever a tela antes da regra inventaria a regra.
+
+  **3 · A CONDIÇÃO À MÃO É A ÚNICA QUE É MESMO SÓ TELA.** O catálogo existe
+  (`src/data/condicoes.json`, ~48 verbetes com número), a soma existe e é chamada
+  (`somarCondicoes`, `src/lib/mesa-core.ts:164`, lida em `grid.astro:8018`, `:8206` e
+  `:8264`, somando `alvo.condicoesDefesa` na Defesa em `src/lib/lance.ts:144`), a coluna existe
+  (`supabase/migracao-11.sql:25`), a máscara do jogador existe
+  (`migracao-27.sql:114`), e o RPC do jogador **já aceita a chave**
+  (`migracao-22.sql:125`). Há até diálogo pronto, com busca, catálogo e condição caseira,
+  **na aba Combate**, em `abrirCondicoes` (`src/pages/mesa/combate.astro:1760`).
+
+  O Grid é o único lugar sem isso: ele importa `somarCondicoes, COND` (`grid.astro:2372`) e
+  **não importa `COND_LISTA` nem `COND_GRUPOS`**, então não tem como listar o catálogo. O
+  `gravarPeca` (`grid.astro:2575`) nunca é chamado com `condicoes`. A consequência prática já
+  está anotada no `00-diagnostico.md`: a condição `correndo` (Defesa −4) **tem de ser posta à
+  mão**, e ninguém a aplica sozinho, então quem corre no tabuleiro não paga o preço a menos
+  que o mestre troque de aba.
+
+  **A ordem, e ela sai do próprio levantamento:** a condição à mão primeiro (é tela sobre
+  motor pronto, e desbloqueia a Corrida, que já é declarável). A Investida depois, começando
+  pelo modo no motor. O Interpor por último, e ele começa com uma pergunta de mesa, não com
+  código.
+
 - [ ] **L33 · [FASE 2.5] A VISTA DO JOGADOR COMO PRODUTO** · *decidida em 04/09/2026. Entra
   depois da fase 2 e antes do terreno. Não começar antes.*
 
