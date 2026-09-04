@@ -3,8 +3,8 @@
 # `deploy.yml` já roda `npm run build`, e o build começa pelos verificadores. Só
 # que ele dispara em push para main: um ramo de trabalho ou um pull request
 # passava sem ninguém conferir, e o erro só aparecia depois de já estar em main.
-# Aqui os mesmos verificadores rodam em qualquer ramo e em todo PR, em ~1,6 s,
-# sem build e sem publicar nada.
+# Aqui os mesmos verificadores rodam em qualquer ramo e em todo PR, sem build e
+# sem publicar nada.
 #
 # E EM MAIN TAMBEM, desde 04/09/2026. Ate aqui o gatilho era `branches-ignore:
 # [main]`, e a consequencia era que **o smoke do navegador nao rodava no fluxo
@@ -12,6 +12,20 @@
 # build` (validadores + astro build) e nao roda `npm run smoke`. Com a maquina de
 # desenvolvimento sem conseguir buildar (ver o crash do compilador do Astro no
 # Windows), o smoke tinha parado de ser executado por qualquer um.
+#
+# DOIS TRABALHOS, E O SMOKE EM MATRIZ, desde 04/09/2026:
+#
+#   Antes era um trabalho só, em série, e ele tinha dois defeitos. O primeiro é
+#   que um erro de vírgula num JSON esperava vinte minutos de navegador para
+#   aparecer: `validar` agora responde sozinho, em minutos. O segundo é de teto:
+#   os testes de navegador passaram de três para oito, e em série a soma bate no
+#   limite do trabalho, que é a mesma doença de sempre (um estado que não é
+#   resposta parecendo resposta). Em matriz cada teste tem o próprio runner, e o
+#   tempo de parede é o do mais longo, não a soma.
+#
+#   `fail-fast: false` de propósito: com ele ligado, o primeiro vermelho cancela
+#   os outros sete, e a resposta que sai é "um falhou e os outros não se sabe".
+#   Saber quais mais caíram é metade do diagnóstico.
 name: Validar dados e regras
 
 on:
@@ -24,17 +38,9 @@ permissions:
 
 jobs:
   validar:
+    name: Dados e regras
     runs-on: ubuntu-latest
-    # UM TETO, porque o smoke dirige um navegador e navegador trava.
-    #
-    # Sem isto, um passo pendurado consome o teto padrão do GitHub (seis horas)
-    # e o portão fica "in_progress" em vez de vermelho, que é a mesma doença de
-    # sempre: um estado que não é resposta parecendo resposta. Vinte minutos são
-    # o dobro do que ele leva num runner, medido: o `test-grid` sozinho passou
-    # verde em ~20 min lá (contra ~4 aqui), e o `test-espelho` roda batalhas
-    # inteiras num navegador, que é a parte cara. Vinte minutos cortavam o
-    # espelho no meio e o resultado saía "cancelled", que não é resposta.
-    timeout-minutes: 45
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -43,21 +49,55 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run validate
-      # O smoke do tabuleiro sobe a bancada (banco de mentira) e dirige um
-      # navegador. Na máquina de alguém ele PULA com código zero quando não acha
-      # nenhum, porque faltar Edge não é defeito do código.
+      # OS TIPOS PASSARAM A TRAVAR, em 04/09/2026.
       #
-      # AQUI ELE NÃO PODE PULAR. `SMOKE_EXIGE_NAVEGADOR=1` faz a falta de
+      # Este passo rodava com `continue-on-error: true`, e a razão escrita ao
+      # lado era "há erros antigos fora dos módulos do tabuleiro". Não há mais:
+      # `npx tsc --noEmit` responde "No errors found" desde algum conserto que
+      # ninguém marcou. A desculpa tinha expirado e a tolerância continuava de
+      # pé, que é como um portão vira decoração: ele roda, fica verde, e ninguém
+      # olha, porque olhar nunca mudou nada.
+      - name: Tipos
+        run: npx tsc --noEmit
+
+  smoke:
+    name: Smoke · ${{ matrix.teste }}
+    runs-on: ubuntu-latest
+    # UM TETO, porque o smoke dirige um navegador e navegador trava. Sem isto um
+    # passo pendurado consome o teto padrão do GitHub (seis horas) e o portão
+    # fica "in_progress" em vez de vermelho. Trinta minutos são folga larga para
+    # o mais caro da matriz: o `test-grid` sozinho leva ~20 min no runner (contra
+    # ~4 aqui), e o `test-espelho` roda batalhas inteiras num navegador.
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        teste:
+          - test-grid
+          - test-espelho
+          - test-golpe-caido
+          - test-grid-simultaneo
+          - test-etapa0
+          - test-bench-tempo
+          - test-editor-bestiario
+          - test-luas
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      # A bancada sobe um banco de mentira e dirige um navegador. Na máquina de
+      # alguém ela PULA com código zero quando não acha nenhum, porque faltar
+      # Edge não é defeito do código.
+      #
+      # AQUI ELA NÃO PODE PULAR. `SMOKE_EXIGE_NAVEGADOR=1` faz a falta de
       # navegador virar falha: um portão que passa pulando é pior do que não ter
-      # portão, porque diz verde sem ter olhado.
-      - name: Smoke do Grid
-        run: npm run smoke
+      # portão, porque diz verde sem ter olhado. A política mora em
+      # `scripts/navegador.mjs`, e `SMOKE_SEM_NAVEGADOR=1` é o que a falsifica.
+      - name: node scripts/${{ matrix.teste }}.mjs
+        run: node scripts/${{ matrix.teste }}.mjs
         env:
           CHROME: /usr/bin/google-chrome
           SMOKE_EXIGE_NAVEGADOR: '1'
-      # Os tipos não travam o build hoje (há erros antigos fora dos módulos do
-      # tabuleiro). Roda assim mesmo, para a lista aparecer no log e não crescer
-      # em silêncio.
-      - name: Tipos (informativo)
-        run: npx tsc --noEmit
-        continue-on-error: true

@@ -207,7 +207,7 @@ afirmações que o sustentavam.** As duas eram minhas e as duas estavam erradas:
 | o que eu escrevi | o que o código diz |
 |---|---|
 | "o Grid já guarda os dois separados, a conta da régua e o botão do mestre" | guarda **só com a bancada ligada**: `registrarLance` começa com `if (!LANCES_LIGADO) return;`, e `LANCES_LIGADO` é o parâmetro `?lances=1`, desligado por padrão. O destino é `window.__LANCES`, memória da página, e o único consumidor é `coletar-lances.mjs`. Não há coluna nem migração no Supabase. **Numa mesa de verdade os dois campos não coexistem em lugar nenhum, e a página descarta tudo ao fechar** |
-| "não há lance em que o veredito não seja derivável" | há **três caminhos que devolvem `null`**: `lance.ts:143` (`if (alvo.defesaBase == null) return null`), `grid.astro:8304` (o ternário exige `soma != null && def2 != null`) e `grid.astro:8223` (`defesaBase: r?.defesa ?? null`) |
+| "não há lance em que o veredito não seja derivável" | há **três caminhos que devolvem `null`**: `lance.ts:143` (`if (alvo.defesaBase == null) return null`), `grid.astro:8338` (o ternário exige `soma != null && def2 != null`) e `grid.astro:8257` (`defesaBase: r?.defesa ?? null`) |
 
 **O item passa a valer entre 0% e 17,0%**, e a banda não é de imprecisão, é de
 ignorância: o valor depende da taxa em que a mesa aperta um botão diferente do que a

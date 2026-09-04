@@ -33,29 +33,16 @@
 //   node scripts/test-golpe-caido.mjs
 import puppeteer from 'puppeteer-core';
 import fs from 'node:fs';
+import { navegadorOuSair } from './navegador.mjs';
 import { subirDev } from './dev-server.mjs';
 
 const MESA = '00000000-0000-4000-8000-0000000000aa';
 const SEMENTE = 20260903;
 
-const NAVEGADORES = [
-  process.env.EDGE, process.env.CHROME, process.env.PUPPETEER_EXECUTABLE_PATH,
-  'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
-  'C:/Program Files/Microsoft/Edge/Application/msedge.exe',
-  'C:/Program Files/Google/Chrome/Application/chrome.exe',
-  '/usr/bin/google-chrome', '/usr/bin/chromium', '/usr/bin/chromium-browser',
-].filter(Boolean);
-const NAV = NAVEGADORES.find((p) => { try { return fs.existsSync(p); } catch { return false; } });
-if (!NAV) {
-  // PULAR É PERMITIDO NA MÁQUINA DE ALGUÉM, E NUNCA NO PORTÃO. Sem navegador
-  // este teste não tem o que provar, e pintar de vermelho a máquina de quem só
-  // não tem Edge instalado seria ruído. Mas um portão que passa PULANDO é pior
-  // do que não ter portão: ele diz verde sem ter olhado. `SMOKE_EXIGE_NAVEGADOR`
-  // é ligado no CI, e ali a falta de navegador é falha de configuração.
-  const exige = process.env.SMOKE_EXIGE_NAVEGADOR === '1';
-  console.log(`· Golpe no caído: ${exige ? "SEM NAVEGADOR" : "PULADO"} (nenhum navegador encontrado; defina EDGE ou CHROME)`);
-  process.exit(exige ? 1 : 0);
-}
+// A lista de caminhos e a politica de pular moram em `navegador.mjs`, uma vez
+// so: eram oito copias, e tres delas tinham envelhecido cravadas no Edge do
+// Windows.
+const NAV = navegadorOuSair('Golpe no caído');
 
 const falhas = [];
 const ok = (c, m) => { console.log((c ? '  ✓ ' : '  ✘ ') + m); if (!c) falhas.push(m); };

@@ -49,7 +49,7 @@ defeito). Os dois saem com o mesmo valor, no mesmo campo, no mesmo CSV, e nenhum
 separa depois. **O instrumento que os separa é sempre o mesmo: contar OCASIÕES, e não efeitos.**
 
 Não é lição de relatório. É regra de construção, e ela existe porque **a mesma forma de erro já
-apareceu oito vezes nesta frente**, em camadas diferentes. E a partir do quinto caso ela tem uma
+apareceu dez vezes nesta frente**, em camadas diferentes. E a partir do quinto caso ela tem uma
 segunda face: o zero ambíguo é a AUSÊNCIA de sinal lida como sinal, e o espelho dele é a
 **PRESENÇA de texto lida como o sinal errado**. Os dois vêm de olhar à volta do sinal em vez de
 olhar onde ele mora.
@@ -65,6 +65,7 @@ olhar onde ele mora.
 | **7** | o **contador de dinheiro** | "esta execução não gastou nada" | a chamada morreu por limite de conta depois de duas baterias, cinco arquivos e um commit; uma chamada que falha devolve custo 0, e 0 entra na soma como se fosse medido | o RESUMO da rodada 03 publicou **US$ 0,00** para a execução mais cara até então |
 | **9** | o **instrumento de bancada citado como prova sobre o produto** | "o Grid guarda os dois vereditos" | ele guarda só com `?lances=1`, que é a bancada: em mesa de verdade os dois campos não coexistem em lugar nenhum e a página descarta tudo ao fechar | achado pela revisora na rodada 05, e é a **segunda vez**: na rodada 04 o espelho comparou o harness contra um mock que chama a função do harness |
 | **8** | o **documento que se contradiz** | "os dois trechos podem estar certos" | a `09` D31 diz que o eixo E4 foi cortado por inerte, e a `09` §2.4 atribui um efeito ao passo dobrado desse mesmo eixo. **Nenhum instrumento compara afirmação com afirmação**, então "nada acusou contradição" saía igual a "não há contradição" | achado à mão, conferindo o aviso da rodada 03 |
+| **10** | a **asserção negativa sozinha** | "a coisa que não podia acontecer não aconteceu" | o cenário não foi montado, e nada podia acontecer de todo jeito. O teste imprime ✓ pela ausência da ausência | achado em 04/09 pela GÊMEA, e não pelo teste: a brasa da bancada nascia FORA do tabuleiro, a metade "a Arte em montagem não abre o escuro" passava feliz, e só "e a mesma Arte, caída, abre (100 -> 100)" acusou |
 
 **O quinto e o sexto casos custaram dinheiro, e é a diferença deles para os quatro primeiros.**
 Os quatro foram achados por inspeção ou por teste, antes de qualquer gasto. Estes dois só
@@ -236,6 +237,20 @@ primeira batalha.
    revisora escrever a palavra. Um custo de chamada que não veio não é custo zero: é chamada que
    não dá para contar, e encerra o ciclo;
 4. **o contador de ocasião entra JUNTO com a métrica que ele guarda**, e não depois;
+4b. **toda asserção de "não acontece" vem com a gêmea "e acontece quando deveria".** É o caso 10, e é
+   a mesma cegueira em forma de teste: uma asserção negativa passa por dois motivos, porque o guarda
+   segurou (o que se quer provar) ou porque **o cenário não foi montado** e não havia o que segurar.
+   Os dois imprimem o mesmo ✓, e a diferença não aparece em leitura nenhuma depois. A gêmea é o
+   contador de ocasião do teste: ela prova que a cena existe e que o mecanismo tem por onde morder,
+   e sem ela a negativa não é evidência de nada.
+
+   **Aconteceu com o conserto que este princípio deveria proteger.** A cena da névoa punha uma brasa
+   num canto escuro e afirmava duas coisas: a Arte em montagem não abre o escuro, e a mesma Arte
+   caída abre. A casa da brasa estava escrita em coordenada de tela onde o tabuleiro espera
+   coordenada de eixo, então ela nascia **fora do tabuleiro** e não iluminava em estado nenhum. A
+   primeira asserção passou; foi a segunda que saiu `100 -> 100` e derrubou tudo. Escrita sozinha, a
+   primeira teria entrado no repositório como prova do conserto de um vazamento, medindo um efeito
+   que não existia no mapa;
 5. **todo número PUBLICADO tem um sinal que acende se a fonte dele se soltar.** Não é vigilância
    de instrumento, é vigilância de conclusão, e é a obrigação mais cara de esquecer: o piso de
    11,4% do avanço automático depende de uma única chamada (`log.andou`) e, se ela se soltar, o
@@ -264,6 +279,14 @@ predicado confere primeiro se a OCASIÃO existe, e só então se ela produziu al
   eram divergência silenciosa enquanto só os pares eram comparados;
 - **a lista ⚑ do manifesto**, que é o mesmo princípio para ENTRADA em vez de saída: um número
   inventado e um número medido não podem sair com a mesma cara.
+- **a cena da névoa no `test-grid.mjs`**, que é o caso 10 aplicado a si mesmo: cada afirmação sobre o
+  que o jogador vê tem a gêmea que a falsifica. A Arte em montagem não abre o escuro **e** a caída
+  abre; a linha não chega ao navegador dele **e** a que caiu chega; o relógio chega **e**, com
+  `?semrelogio=1`, não chega e a página avisa. Sem a segunda metade de cada par, um tabuleiro
+  quebrado passaria as três;
+- **a política de pular do `scripts/navegador.mjs`**, pelo mesmo motivo: ela decide se a falta de
+  navegador é PULADO ou vermelho, e numa máquina que tem navegador ela nunca age. `SMOKE_SEM_NAVEGADOR=1`
+  existe só para acendê-la de propósito, nos dois sentidos, que é a obrigação 3.
 
 ## Como ler isto
 

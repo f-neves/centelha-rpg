@@ -9,13 +9,15 @@ import puppeteer from 'puppeteer-core';
 import fs from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { navegadorOuSair } from './navegador.mjs';
 
-const EDGE = process.env.EDGE || 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
+// O caminho vinha cravado no Edge do Windows, e o teste saia com codigo 2 em
+// qualquer outro sistema. Ver `scripts/navegador.mjs`.
+const EDGE = navegadorOuSair('bancada das luas');
 const ARQ = path.resolve('luas-bench.html');
 const SHOTS = '_shots';
 const VER = process.argv.includes('--ver');
 
-if (!fs.existsSync(EDGE)) { console.error(`✘ navegador não encontrado em ${EDGE}. Defina EDGE=<caminho do msedge.exe>.`); process.exit(2); }
 if (!fs.existsSync(ARQ)) { console.error(`✘ ${ARQ} não existe.`); process.exit(2); }
 fs.mkdirSync(SHOTS, { recursive: true });
 

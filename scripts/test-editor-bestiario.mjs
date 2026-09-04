@@ -10,7 +10,10 @@
 // uso: node scripts/test-editor-bestiario.mjs
 import puppeteer from 'puppeteer-core';
 import { subirDev } from './dev-server.mjs';
-const EDGE='C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
+import { navegadorOuSair } from './navegador.mjs';
+// Cravado no Edge do Windows ate 04/09/2026: em outro sistema estourava dentro
+// do puppeteer, sem dizer o que faltava. Ver `scripts/navegador.mjs`.
+const EDGE = navegadorOuSair('editor do bestiario');
 const dev=await subirDev();
 const url=dev.url;
 const browser=await puppeteer.launch({executablePath:EDGE,headless:'new',args:['--no-sandbox']});

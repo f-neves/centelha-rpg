@@ -16,8 +16,11 @@
 import puppeteer from 'puppeteer-core';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { navegadorOuSair } from './navegador.mjs';
 
-const EDGE = process.env.EDGE || 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
+// Sem lista: so o `EDGE` do ambiente, com o Windows como padrao. Ver
+// `scripts/navegador.mjs`.
+const EDGE = navegadorOuSair('bancada do tempo');
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
 const URL = 'file:///' + join(RAIZ, 'combate-tempo-bench.html').split('\\').join('/');
 

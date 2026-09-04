@@ -1239,7 +1239,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   fazia o carimbo valer: alguém que leia o perfil na hora de aplicar a regra.**
 
   O perfil é gravado, viaja no encontro, aparece na tela, é comparável e é recarimbável. E é lido
-  em **um** lugar do código de produção, `grid.astro:8256` (`perfil: { ...REGRAS_CENA }`), onde ele é copiado para dentro da
+  em **um** lugar do código de produção, `grid.astro:8290` (`perfil: { ...REGRAS_CENA }`), onde ele é copiado para dentro da
   entrada do lance, para o oráculo. `entrada.perfil` **não é consultado em lugar nenhum**: nem em
   `resolverGolpe`, nem em `quase-acerto.ts`, nem em `calc.ts`, nem no harness. Nenhuma das quinze
   bandeiras faz o motor tomar um caminho diferente.
@@ -1277,6 +1277,56 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   contador de ocasião, e só então medir. É o mesmo mecanismo que matou o eixo E4 (D31) antes de
   ele virar linha de relatório. Isto reparte o **L1** em quinze tarefas de motor, e **nenhuma
   medição de bandeira vale antes**.
+- [ ] **L32 · [DECISÃO DE MESA] O JOGADOR SABE QUE HÁ UM INIMIGO NO ESCURO?** · *achado na
+  varredura das oito views, 04/09/2026. Não é defeito de programa: é escolha de mesa, e por
+  isso está aqui em vez de num conserto.*
+
+  A `combate_visao` é a única MISTA das oito views. Como **parede** ela é a melhor do esquema:
+  mascara coluna a coluna, dentro do Postgres, e a Vida exata do inimigo, os dados, a Energia,
+  a Mana e o `arma`/`alvo` da ação declarada não saem sem a mesa abrir a chave.
+
+  Como **cortina** ela vaza EXISTÊNCIA. O `where` é `c.oculto = false and eh_membro(...)`, sem
+  arena e sem casa: o bicho parado no escuro chega ao navegador do jogador com nome, retrato,
+  grupo, Tick, iniciativa e estado de Vida. Quem esconde é a TELA do Grid, porque `naFila()` só
+  lista quem tem peça em `TOKENS`, e a `token_visao` não mandou a peça de quem está no escuro.
+
+  **E a cortina nem chega a fechar**, que é o detalhe que decide o tamanho da questão: a mesma
+  linha sai desenhada na aba Combate, que lista a fila inteira do encontro e não tem névoa
+  nenhuma. Hoje a névoa esconde ONDE o bicho está, e não QUE ele existe.
+
+  **As saídas, e as três são defensáveis:**
+
+  1. **fica como está.** A iniciativa é pública, a névoa é do mapa, e é assim que se joga em
+     muita mesa. Custo: zero, e a linha da view passa a dizer isso de propósito;
+  2. **cortar por casa na `combate_visao` também.** Aí a névoa esconde a existência, e a aba
+     Combate passa a ter névoa junto, o que ela nunca teve. Custo: a fila do jogador muda de
+     tamanho no meio do combate, e ele descobre pelo tamanho dela que alguém apareceu;
+  3. **uma chave em `mesas.revelar`**, ao lado de `vidaInimigo` e `statsInimigo`, decidindo por
+     mesa. Custo: mais uma chave, e a migração que a lê.
+
+  A diferença entre cortina e parede de cada uma das oito está escrita **no banco**, em
+  `comment on view`, pela migração 31. Documento longe do objeto envelhece; comentário ao lado
+  dele não.
+
+- [ ] **L31 · [FAZER] OS SETE GERADORES SEM `--check`** · *achado varrendo portões, 04/09/2026,
+  pela pergunta "o que mais está configurado e não roda".*
+
+  Cinco geradores têm `--check` no `npm run build`, e é ele que impede o arquivo gerado de
+  divergir da fonte sem ninguém ver (`gen-grid-artes`, `gen-mermaid`, `gen-bestiario`,
+  `gen-cap-antecedentes`, `gen-bench-tempo`). **Sete não têm nem isso nem lugar em portão
+  nenhum:** `gen-cap-pericias`, `gen-elementos`, `gen-deslocamento`, `gen-arte-equip`,
+  `gen-lista-equip`, `gen-creditos-equip`, `gen-prompts-folhas`.
+
+  **O mais grave é o `gen-cap-pericias.mjs`**, e por dois motivos que se somam: o `CLAUDE.md`
+  manda rodá-lo à mão depois de mexer nos JSONs de habilidades ("catálogos de perícias nos
+  capítulos são gerados, não escritos à mão"), e nada confere se alguém esqueceu. O capítulo II
+  pode estar descrevendo uma perícia que o JSON não tem mais, com o build verde, que é
+  exatamente o desacordo que o `--check` do bestiário existe para pegar.
+
+  **É a mesma família do smoke que nunca passou**: instrumento que existe, não roda, e a
+  ausência dele não faz barulho. A diferença é que aqui o custo do conserto é uma linha por
+  gerador, contanto que cada um saiba comparar em vez de só escrever.
+
 - [ ] **L30 · [FAZER] OS DEZ MÓDULOS FORA DE TODO PACOTE DE TESTE** · *o mapa está em
   `scripts/mapa-cobertura.mjs`, e ele se refaz sozinho: `node scripts/mapa-cobertura.mjs`.*
 
@@ -1561,7 +1611,7 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   `arena_log` como tabela, uma linha por entrada, e o desfazer virando um `delete`.
 - [ ] **I5 · [FAZER] Um editor de cenário no Grid.** Hoje o mestre só põe peças: o tabuleiro não
   tem parede, terreno difícil nem item no chão, e o único veto de passo é casa ocupada
-  (`ocupadoPor`, `grid.astro:6333`). Decidido em 02/09/2026, ao desenhar o harness de simulação
+  (`ocupadoPor`, `grid.astro:6367`). Decidido em 02/09/2026, ao desenhar o harness de simulação
   (`docs/simulacao/02-projeto-harness.md` §0.4 P2): a **parede entra como funcionalidade**, e o
   encaixe já existe, porque `caminharHex` recebe um veto arbitrário (`hex.ts:131`). O terreno
   difícil tem gancho pronto e não usado: a condição `terreno-dificil` existe em `condicoes.json`

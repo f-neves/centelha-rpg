@@ -22,22 +22,14 @@
 //      sozinha no avanço do Tick.
 import puppeteer from 'puppeteer-core';
 import fs from 'node:fs';
+import { navegadorOuSair } from './navegador.mjs';
 import { subirDev } from './dev-server.mjs';
 
 const MESA = '00000000-0000-4000-8000-0000000000aa';
-const NAVEGADORES = [
-  process.env.EDGE, process.env.CHROME, process.env.PUPPETEER_EXECUTABLE_PATH,
-  'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
-  'C:/Program Files/Microsoft/Edge/Application/msedge.exe',
-  'C:/Program Files/Google/Chrome/Application/chrome.exe',
-  '/usr/bin/google-chrome', '/usr/bin/chromium', '/usr/bin/chromium-browser',
-  '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-].filter(Boolean);
-const NAV = NAVEGADORES.find((p) => { try { return fs.existsSync(p); } catch { return false; } });
-if (!NAV) {
-  console.log('· Grid simultâneo: PULADO (nenhum navegador encontrado; defina EDGE ou CHROME)');
-  process.exit(0);
-}
+// A lista e a politica de pular moram em `navegador.mjs`: aqui elas estavam
+// copiadas, e a copia nao honrava `SMOKE_EXIGE_NAVEGADOR`, entao este teste
+// passaria PULANDO num portao sem navegador.
+const NAV = navegadorOuSair('Grid simultâneo');
 
 let PASSOU = 0; const FALHAS = [];
 const ok = (c, m) => { if (c) { PASSOU++; console.log('  ✓ ' + m); } else { FALHAS.push(m); console.log('  ✗ ' + m); } };
