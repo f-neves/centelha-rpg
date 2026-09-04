@@ -119,18 +119,38 @@ export function tabuleiroDe(nivel, n, dist) {
  * A INICIATIVA DE UMA PEÇA, rolada.
  *
  * A mesa rola iniciativa por peça (`d6() + bônus`, e o ⚄ da barra rerrola a
- * cena inteira), e é ela que desempata a fila. Aqui a rolagem é DERIVADA do
- * índice da peça em vez de sorteada, por um motivo só: os dois lados do espelho
- * precisam da mesma iniciativa sem compartilhar a sequência de acaso, e o mock
- * é dado estático enquanto o harness roda um gerador semeado.
+ * cena inteira), e é ela que desempata a fila. Aqui a rolagem é DERIVADA em vez
+ * de sorteada, por um motivo só: os dois lados do espelho precisam da mesma
+ * iniciativa sem compartilhar a sequência de acaso, e o mock é dado estático
+ * enquanto o harness roda um gerador semeado.
  *
  * Não é regra nova: é a mesma cena chegando pronta dos dois lados, como
  * chegaria do banco depois de o mestre ter rolado.
+ *
+ * ELA DEPENDE DA SEMENTE DA BATALHA, E NÃO SÓ DO ORDINAL, e isso é conserto de
+ * um defeito medido. A primeira versão era função só do ordinal, e o ordinal é
+ * atribuído em bloco por lado na montagem da cena (`montarCena`): 0 a n−1 para o
+ * lado `a`, n a 2n−1 para o lado `b`. Com isso a iniciativa de cada lado era
+ * **a mesma em todas as batalhas da bateria**, e o desempate da fila saía
+ * decidido antes de a cena começar. Nas células de uma peça por lado, o lado `b`
+ * tirava 6 e o lado `a` tirava 0 em 100% das batalhas, sempre. O sintoma
+ * apareceu como o lado `b` declarando 1,178 vez o que o lado `a` declarava, com
+ * peças idênticas, e a explicação que circulou (passo dobrado) era falsa: o eixo
+ * do passo estava cortado desde 03/09.
+ *
+ * E O RESULTADO NÃO ERA UM d6. `h ^= h >>> 15` devolve inteiro de 32 bits COM
+ * SINAL, e `%` sobre negativo em JavaScript devolve resto negativo: a função
+ * entregava de −4 a 6, onze valores, e não de 1 a 6. Por isso todo passo agora
+ * termina em `>>> 0`.
  */
-export function iniciativaDaPeca(arq, ordinal) {
-  // Um `d6` determinístico: mistura o ordinal e devolve 1 a 6.
-  let h = (ordinal + 1) * 2654435761 >>> 0;
-  h ^= h >>> 15;
+export function iniciativaDaPeca(arq, ordinal, semente = 0) {
+  // Um `d6` determinístico da BATALHA e da peça. Tudo sem sinal, do começo ao
+  // fim, senão o resto de `% 6` sai negativo e o d6 tem onze faces.
+  let h = ((ordinal + 1) * 2654435761) >>> 0;
+  h = (h ^ (((semente >>> 0) * 2246822519) >>> 0)) >>> 0;
+  h = (h ^ (h >>> 15)) >>> 0;
+  h = (h * 2654435761) >>> 0;
+  h = (h ^ (h >>> 13)) >>> 0;
   return (arq.iniciativaBase || 0) + 1 + (h % 6);
 }
 

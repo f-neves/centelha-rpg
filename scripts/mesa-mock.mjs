@@ -53,7 +53,11 @@ const ESPELHO = P.get('cena') === 'espelho'
     // O TABULEIRO SAI DA MESMA FUNÇÃO do harness: o eixo E12 tem dois níveis, e
     // uma cena de espelho montada com outro mapa compararia dois tabuleiros.
     const tab = tabuleiroDe(P.get('mapa') || 'apertado', n, dist);
-    return { arq: [P.get('arqa') || 'escudeiro', P.get('arqb') || 'montanteiro'], n, dist, tab };
+    // A SEMENTE DA BATALHA entra na iniciativa, e o espelho já a manda na URL
+    // (`&semente=`). Sem ela os dois lados continuariam concordando, mas
+    // concordando no valor errado: o mesmo desempate em toda batalha.
+    const sem = parseInt(P.get('semente') || '0', 10) || 0;
+    return { arq: [P.get('arqa') || 'escudeiro', P.get('arqb') || 'montanteiro'], n, dist, tab, sem };
   })()
   : null;
 
@@ -286,7 +290,7 @@ if (ESPELHO) {
         mana_max: null, mana_atual: null,
         // A INICIATIVA ROLADA, pela mesma função do harness: é ela que
         // desempata a fila, e os dois lados do espelho precisam da mesma.
-        tick: 0, iniciativa: iniciativaDaPeca(arq, ordinal),
+        tick: 0, iniciativa: iniciativaDaPeca(arq, ordinal, ESPELHO.sem),
         acao: {},
         dados: {
           // O robô ligado: sem isto ninguém declara sozinho e o Tick não anda.

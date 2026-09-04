@@ -164,8 +164,11 @@ export function montarCena(celula, semente) {
       pecas.push({
         ...arq,
         passo,
-        // A INICIATIVA É DA PEÇA, e é ela que desempata a fila.
-        iniciativa: iniciativaDaPeca(arq, ordinal),
+        // A INICIATIVA É DA PEÇA, e é ela que desempata a fila. A SEMENTE VAI
+        // JUNTO: sem ela a iniciativa é função só do ordinal, e o ordinal é dado
+        // em bloco por lado logo abaixo, o que fazia o desempate sair igual em
+        // todas as batalhas e sempre para o mesmo lado.
+        iniciativa: iniciativaDaPeca(arq, ordinal, semente),
         id: `${lado}${k}`, lado, nome: `${arq.nome} ${lado}${k}`,
         pv: arq.pvMax,
         pos: { q: lado === 'a' ? tab.qa : tab.qa + celula.dist, r: tab.r0 + k },
