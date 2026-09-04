@@ -3606,9 +3606,26 @@ const SETAS = [
    * escura e o campo aberto ao meio-dia não têm o mesmo. `luz` é o halo que uma
    * Arte de fogo ou de luz acende em volta do que ela marcou no chão.
    */
+  /**
+   * `vistos` é a MEMÓRIA DAS CRIATURAS, e ela é irmã do `explorado`.
+   *
+   * A névoa do chão sempre teve dois pesos (leve = já estive lá, pesada = nunca
+   * fui) e as criaturas tinham um só: ou o jogador via, ou o bicho não existia.
+   * Com a névoa passando a esconder a EXISTÊNCIA (decisão de 04/09/2026), o
+   * inimigo ferido que recua para o escuro sumiria da lista levando junto o
+   * registro do ferimento que ele levou. **Esconder antes do primeiro contato e
+   * apagar depois de visto são coisas diferentes.**
+   *
+   * Um verbete por combatente: onde ele estava, quando, e a Vida daquela hora.
+   * É o que a `token_visao` e a `combate_visao` da migração 32 leem para montar
+   * a lembrança. O que é do INSTANTE (Tick, ação, condições) não entra, porque
+   * o jogador não está olhando.
+   */
+  type Visto = { q: number; r: number; em: string; pv: number | null; pvmax: number | null };
   let NEVOA = {
     ligada: false, visao: 6, luz: 2,
     claros: new Set<string>(), explorado: new Set<string>(),
+    vistos: {} as Record<string, Visto>,
   };
   let NEVOANDO = false;
 
@@ -3624,6 +3641,10 @@ const SETAS = [
       luz: Math.max(0, Math.min(20, Number(n.luz ?? 2))),
       claros: new Set(claros),
       explorado: new Set(Array.isArray(n.explorado) ? n.explorado : claros),
+      // Arena anterior à migração 32 não tem `vistos`, e o objeto vazio é a
+      // leitura certa: ninguém foi visto ainda, e a primeira repintura com a
+      // névoa ligada começa a preencher.
+      vistos: (n.vistos && typeof n.vistos === 'object') ? { ...n.vistos } : {},
     };
   }
 
@@ -3763,6 +3784,40 @@ const SETAS = [
       if (p.getAttribute('class') !== cls) p.setAttribute('class', cls);
     }
     lembrarExplorado(claras);
+    lembrarVistos(claras);
+  }
+
+  /**
+   * Guarda QUEM acabou de ser visto, e onde.
+   *
+   * Mesmo desenho do `lembrarExplorado`, e pelo mesmo motivo: só o mestre
+   * escreve, e a escrita entra no `salvarNevoa`, que junta as pinceladas.
+   *
+   * A ATUALIZAÇÃO É INCONDICIONAL enquanto a peça está à vista, e é isso que
+   * faz a lembrança ser do ÚLTIMO instante em que ele olhou, e não do primeiro.
+   * O goblin que apanhou na frente do grupo e recuou fica lembrado ferido; se
+   * a memória fosse só do primeiro encontro, ele ficaria lembrado inteiro, e a
+   * tela mentiria sobre uma coisa que a mesa viu acontecer.
+   *
+   * O PC não entra: ele nunca some da fila do grupo (a `combate_visao` o deixa
+   * passar sempre), então uma lembrança dele seria uma linha que ninguém lê.
+   */
+  function lembrarVistos(claras: Set<string>) {
+    if (!MESTRE || !NEVOA.ligada) return;
+    let novo = false;
+    for (const c of COMBS as any[]) {
+      if (c.tipo === 'pc' || c.ativo === false) continue;
+      const t = TOKENS[c.id];
+      if (!t || !claras.has(chaveHex(t.q, t.r))) continue;
+      const v = NEVOA.vistos[c.id];
+      const pv = c.pv_atual ?? null;
+      if (v && v.q === t.q && v.r === t.r && v.pv === pv) continue;
+      NEVOA.vistos[c.id] = {
+        q: t.q, r: t.r, em: new Date().toISOString(), pv, pvmax: c.pv_max ?? null,
+      };
+      novo = true;
+    }
+    if (novo) salvarNevoa();
   }
 
   /**
@@ -3785,6 +3840,7 @@ const SETAS = [
     const valor = {
       ligada: NEVOA.ligada, visao: NEVOA.visao, luz: NEVOA.luz,
       claros: [...NEVOA.claros], explorado: [...NEVOA.explorado],
+      vistos: NEVOA.vistos,
     };
     ARENA.nevoa = valor;
     const { error } = await SB.from('mesa_arenas').update({ nevoa: valor }).eq('id', ARENA.id);
@@ -3850,7 +3906,11 @@ const SETAS = [
     // andou. Para tirar a memória também existe o "Esquecer", que é outro gesto.
     el('nv-nada').onclick = () => { NEVOA.claros.clear(); pintarNevoa(); salvarNevoa(); };
     el('nv-esquecer').onclick = () => {
-      NEVOA.claros.clear(); NEVOA.explorado.clear(); pintarNevoa(); salvarNevoa();
+      // As criaturas esquecem JUNTO com o chão: o botão diz "volta tudo a ser
+      // desconhecido", e deixar a lembrança de pé faria o grupo continuar
+      // sabendo que há um ogro em algum lugar de um mapa que ele nunca pisou.
+      NEVOA.claros.clear(); NEVOA.explorado.clear(); NEVOA.vistos = {};
+      pintarNevoa(); salvarNevoa();
     };
     el('nv-fim').onclick = () => modoNevoa(false);
   }
