@@ -102,7 +102,9 @@ arquivo.
 - **Gate que nunca foi visto vermelho é garantia escrita, não prova.** Falsificar uma de
   cada vez, restaurando a árvore, e dizer qual não deu para falsificar.
 - **Falsificação que a máquina não roda se faz num RAMO DESCARTÁVEL**, porque o portão
-  roda em qualquer ramo: empurra, lê o vermelho, apaga o ramo.
+  roda em qualquer ramo: empurra, lê o vermelho, apaga o ramo. O ramo some, **a execução
+  vermelha fica no histórico**: a de `f4ff1ec` (ramo `falsif/l40-refazer`) é falsificação
+  e não defeito, e é a única vermelha entre verdes.
 - **Asserção de sobrevivente precisa do par**, senão passa pelo motivo errado: a coisa que
   cai E a coisa que fica.
 - **Achar linha por CHAVE e nunca por posição**, em teste e em prosa.
