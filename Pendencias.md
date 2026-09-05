@@ -2750,7 +2750,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   escrito dentro: **migração sem conferência obriga quem roda a inventar uma, e quem inventa está
   inventando sob a pressão de já ter rodado** · tende a escrever a pergunta que já sabe que passa.
 
-- [x] **L45 · [CONSERTADO, ESPERA A 36 RODAR] A fachada que preserva a forma e troca o destino** · *achado em
+- [x] **L45 · [FECHADO · a 36 rodou em 05/09/2026] A fachada que preserva a forma e troca o destino** · *achado em
   05/09/2026, e a forma é nova. O caso foi meu, e o que ele custou foi saída dupla em produção.*
 
   **O NOME É DA REVISORA, e ele é melhor que o meu** ("o objeto que se disfarça de outro"): o que
@@ -2781,7 +2781,9 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   **O CONSERTO** é a `supabase/migracao-36.sql` (o vocabulário `tirar_mordidos`), a linha do
   `marcarMordido` que só entra no ramo do jogador, o portão no `validate-data.mjs` e o par de
-  asserções no `test-arte-na-mesa.mjs`. **Falta a mesa rodar a 36.**
+  asserções no `test-arte-na-mesa.mjs`. **A 36 rodou em 05/09/2026**, e as conferencias devolveram
+  `funde = t` **e** `tira = t`, com a prova de fogo do jsonb passando: fundir e depois subtrair tira
+  só a chave pedida. A saída dupla parou.
 
 - [ ] **L36 · [QUANDO A REGRA APARECER] O `resumoParaBanco` é vitrine, e não entrada de conta.**
   Não é defeito hoje, e é para isso que está escrito: quando alguém topar com ele, que não trate

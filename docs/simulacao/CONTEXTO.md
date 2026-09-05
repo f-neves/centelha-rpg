@@ -83,12 +83,12 @@ gesto: **L40**.
 do que qualquer resumo. O levantamento das pendentes, com o que cada uma muda de formato
 para quem está com a mesa aberta, está no **L42**.
 
-**A 36 ESTÁ ESCRITA E ESPERA A MESA**, e ela é urgente: conserta saída dupla acontecendo em
-produção desde que a 35 rodou (o vocabulário `tirar_mordidos`, ver **L43** e **L45**), e cria a
-tabela `migracoes`, que é o instrumento da quarta categoria · o fato que ninguém consegue
-perguntar daqui. **Nada em produção até ela rodar.**
+**A 36 RODOU EM 05/09/2026**, e com ela a saída dupla parou. Ela trouxe duas coisas: o
+vocabulário `tirar_mordidos` (**L43**, **L45**) e a tabela `migracoes`, que é o instrumento da
+quarta categoria · o fato que ninguém consegue perguntar daqui. **A partir dela, "quais rodaram"
+tem resposta no banco**, e a sondagem por formato deixa de ser o único caminho.
 
-Estado em 05/09/2026: **1 a 32 e a 35 aplicadas** · a leva de 31, 32, 29, 30 e 35 rodou
+Estado em 05/09/2026: **1 a 32, a 35 e a 36 aplicadas** · a leva de 31, 32, 29, 30 e 35 rodou
 naquele dia, na ordem da mesa, com 31 e 32 coladas, e as cinco conferências passaram (o que
 cada uma devolveu está no **L42**). A **33 é a única não aplicada** · o que falta nela é a
 tela, não o SQL, e isso é fase 2.5. A **34 ainda não existe** como arquivo.
