@@ -234,13 +234,29 @@ RLS por cima. E a distância entre a frase e o vazamento era **uma linha de `.en
 prefixo `PUBLIC_` faz o Astro EMBUTIR o valor no pacote que vai ao navegador. Garantia de segurança
 escrita em prosa é a que mais parece verdade e a que menos alguém confere.
 
-**O QUE NÃO DÁ PARA AUTOMATIZAR, dito para ninguém tentar depois.** Não há regex que decida se uma
-frase em português é uma garantia: das 49 ocorrências, 34 não eram. Um portão que cobrasse todas
-precisaria de uma lista de 34 isenções, e lista de exceções que não encolhe junto com o problema
-vira ficção em duas semanas (é a lição que o `TESTES_FORA` já tinha dado). Então a seção 4 do
-`test-portoes.mjs` cobra só as três formas que **apontam para coisa concreta**: referência a script
-que existe, o cabeçalho em toda página de mesa, e a chave de serviço fora do pacote. O resto foi
-conferido à mão, uma vez, e está nesta tabela.
+**ATÉ ONDE O PORTÃO ALCANÇA, e por que ele para aí.** Nenhum gatilho de texto decide se uma frase em
+português é uma garantia: das 49 ocorrências, 34 não eram. Um portão que cobrasse todas precisaria
+de uma lista de 34 isenções, e lista de exceções que não encolhe junto com o problema vira ficção em
+duas semanas (é a lição que o `TESTES_FORA` já tinha dado). Então a seção 4 do `test-portoes.mjs`
+cobra só as três formas que **apontam para coisa concreta**: referência a script que existe, o
+cabeçalho em toda página de mesa, e a chave de serviço fora do pacote. O resto foi conferido à mão,
+uma vez, e está nesta tabela.
+
+**E O TETO É DO DESENHO, E NÃO DA NATUREZA**, com os consertos desenhados até hoje. O que ele
+depende é da FORMA em que a garantia está escrita, e a forma de hoje é prosa solta. **O degrau que
+o levantaria já existe neste mesmo arquivo, na seção 3:** a tolerância também era prosa solta até
+ganhar a marca `TOLERÂNCIA` mais `EXPIRA EM:` / `LEVANTA QUANDO:` ao lado, e a partir dali o portão
+passou a cobrar as seis sem julgar português nenhum. Uma marca equivalente para a garantia (a
+frase, mais o nome do que a segura) tornaria as quinze cobráveis pela mesma mecânica.
+
+**Por que não foi feito agora, e é decisão e não limite:** a marca só vale se todas as ocorrências
+existentes a tiverem, senão a ausência dela volta a não significar nada · que é o zero ambíguo
+outra vez, e no instrumento que existe para pegá-lo. São quinze frases para marcar à mão, dez delas
+por construção (que precisariam de uma marca dizendo "o mecanismo é a linha seguinte"), e a
+pergunta de quantas garantias novas por mês justificam o encanamento não tem resposta medida: esta
+foi a primeira varredura. **O que a tiraria: a segunda varredura achando garantia nova apodrecida.**
+Se em um mês houver uma, a marca paga; se não houver nenhuma, a conferência à mão de hoje era o
+tamanho certo do problema.
 
 **E o décimo segundo tem um par que dá certo, que vale escrever junto porque é a mesma família
 vista pelo lado bom: OMITIR REVELA O BURACO, ZERAR O ESCONDE.**
