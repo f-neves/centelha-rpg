@@ -223,27 +223,15 @@ export const custoEspecialidade = (nivel: number, secundaria = false) =>
  * criatura nem a ficha guardam especialidade POR PERÍCIA hoje. Quando guardarem,
  * ela soma aqui e em mais lugar nenhum.
  *
+ * O TIPO `Sentidos` QUE MOROU AQUI FOI EMBORA em 04/09/2026, junto com o bloco
+ * por assunto do `ResumoCombate`: com os nove atributos e as perícias crus no
+ * resumo, quem precisa da Passiva a calcula com esta função no ponto de uso, e
+ * um objeto guardando a conta pronta seria a terceira cópia do mesmo número.
+ *
  * Nulo em qualquer metade devolve nulo, e não zero: "não dá para saber daqui" é
  * resposta diferente de "a Passiva é zero", e quem compara tem de poder separar
  * as duas.
  */
-/**
- * O que uma peça sabe sobre perceber e sobre se esconder.
- *
- * Vive aqui, e não num dos dois `ResumoCombate`, porque os dois o preenchem: a
- * ficha tem as perícias por nome, a criatura tem o bloco `pericias` que o
- * `gen-bestiario.mjs` deriva. Dois tipos com o mesmo nome e formas diferentes
- * seria o contrato silencioso que o `equip.ts` já ensinou a evitar.
- *
- * `null` é "não dá para saber daqui", e nunca zero.
- */
-export interface Sentidos {
-  /** O muro que quem se esconde tem de superar. Ele não rola. */
-  percepcaoPassiva: number | null;
-  /** As duas metades da jogada de se esconder, sem virar pool: isso é do motor. */
-  furtividade: { atributo: number; pericia: number } | null;
-}
-
 export const valorPassivo = (
   atributo?: number | null, habilidade?: number | null, centelha = 0,
 ) => (atributo == null || habilidade == null ? null : (atributo + habilidade) * 2 + centelha);

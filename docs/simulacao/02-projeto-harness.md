@@ -49,7 +49,7 @@ defeito). Os dois saem com o mesmo valor, no mesmo campo, no mesmo CSV, e nenhum
 separa depois. **O instrumento que os separa é sempre o mesmo: contar OCASIÕES, e não efeitos.**
 
 Não é lição de relatório. É regra de construção, e ela existe porque **a mesma forma de erro já
-apareceu doze vezes nesta frente**, em camadas diferentes. E a partir do quinto caso ela tem uma
+apareceu treze vezes nesta frente**, em camadas diferentes. E a partir do quinto caso ela tem uma
 segunda face: o zero ambíguo é a AUSÊNCIA de sinal lida como sinal, e o espelho dele é a
 **PRESENÇA de texto lida como o sinal errado**. Os dois vêm de olhar à volta do sinal em vez de
 olhar onde ele mora.
@@ -68,6 +68,7 @@ olhar onde ele mora.
 | **10** | a **asserção negativa sozinha** | "a coisa que não podia acontecer não aconteceu" | o cenário não foi montado, e nada podia acontecer de todo jeito. O teste imprime ✓ pela ausência da ausência | achado em 04/09 pela GÊMEA, e não pelo teste: a brasa da bancada nascia FORA do tabuleiro, a metade "a Arte em montagem não abre o escuro" passava feliz, e só "e a mesma Arte, caída, abre (100 -> 100)" acusou |
 | **11** | a **medida do sintoma batizada com o nome da causa** | "o runner é ~1,5× mais lento que esta máquina" | o número medido era real (20 min) e a causa atribuída a ele era falsa: não era trabalho, era o `astro dev` órfão segurando o processo depois do fim. **Medir certo e nomear errado dá um número que ninguém desconfia** | achado em 04/09 pelo conserto do `detached`: com o processo morrendo na hora, os mesmos trabalhos passaram a levar 6 min, e o fator caiu de 5 para 1,5 |
 | **12** | a **janela entre a migracao e o dado que ela le** | "o corte de existencia entrou, e o que ja foi visto continua listado" | a memoria estava VAZIA, entao nada foi visto, e o corte produziu a saida oposta a decidida. **O sistema faz o contrario do que foi decidido, e faz certo, porque o dado que o desmentiria ainda nao existe** | achado em 04/09 pelo humano, ao dizer "rodo a 32 e a 33 hoje": a 33 com `vistos` vazio entrega a opcao 2 do caso D, recusada por escrito uma hora antes |
+| **13** | a **lista de campos que descarta em silêncio** | "a versão magra do bestiário leva o que a mesa precisa" | `pericias` não estava em `CAMPOS_MESA`, e a Passiva de TODAS as criaturas saía `null`. **O dado existia, o consumidor existia, e o transporte entre os dois descartava sem deixar rastro** | achado em 04/09 pela revisora, prevendo a família antes de olhar o código: "a Prontidão entrando na fórmula sem que nada leia o resultado" |
 
 **O quinto e o sexto casos custaram dinheiro, e é a diferença deles para os quatro primeiros.**
 Os quatro foram achados por inspeção ou por teste, antes de qualquer gasto. Estes dois só
@@ -115,6 +116,52 @@ falso positivo até ninguém mais ler. **O que dá para fazer barato é o invers
 abaixo: toda decisão que CORTA alguma coisa fica numa lista só, escrita como PROIBIÇÃO
 OBSERVÁVEL, e a conferência é ler a lista contra o documento. A lista não acha contradição em
 geral; ela acha a contradição que importa, que é o texto afirmando aquilo que uma decisão tirou.
+
+**O décimo terceiro não é o zero ambíguo nem o L25, e é uma forma terceira que merece nome
+próprio: o TRANSPORTE que descarta.**
+
+No zero ambíguo, a medida não distingue "não houve" de "não mediu". No L25, o mecanismo existe e
+nada o executa. Aqui, **as duas pontas estão certas e a estrada entre elas perde a carga**: o
+`gen-bestiario.mjs` calculava as perícias, o `ResumoCombate` sabia lê-las, e o
+`gen-monsters.mjs` montava a versão que vai para o navegador a partir de uma **lista de chaves**
+(`CAMPOS_MESA`) em que `pericias` não estava. Tabela escrita, fórmula escrita, bestiário cheio, e
+o recorte não levava nada.
+
+**Nada acusou, e o motivo é preciso:** uma chave que não chega não deixa rastro. O consumidor
+recebeu `undefined`, transformou em `null`, e `null` é um valor que o contrato permite. Não houve
+erro em lugar nenhum; houve silêncio, que é o que uma lista de chaves produz por construção.
+
+E o defeito é **estrutural da forma, não deste arquivo**: quem cria uma chave nova está mexendo na
+origem, e a lista mora no transporte. Ninguém atualiza uma lista que não está na sua frente.
+
+O CONSERTO É DA CLASSE E NÃO DO CASO, e é o que separa este dos doze anteriores: em vez de
+acrescentar `pericias` e seguir, o gerador passou a ter **duas listas** · o que vai para a mesa
+(`CAMPOS_MESA`) e o que fica de fora **com o motivo escrito** (`FORA_DA_MESA`). Toda chave
+produzida tem de estar numa das duas, e uma chave em nenhuma **quebra o gerador**. Esquecer passou
+a ser barulhento. Conferido tirando `pericias` de volta: o gerador para com
+`✘ chave(s) sem decisão entre o bestiário e a mesa: pericias`.
+
+**A VARREDURA QUE O CASO PEDE**, feita em 04/09/2026. Um ponto de projeção é todo lugar onde um
+objeto é reconstruído campo a campo a partir de um maior. São **dezesseis**, e oito são as views:
+
+| # | onde | de → para | forma | estado |
+|---|---|---|---|---|
+| 1 | `CAMPOS_MESA` (`gen-monsters.mjs`) | `monsters.json` → `monsters-mesa.json` | lista de chaves | **estava desatualizada** · consertada, e agora com trava |
+| 2 | o literal de `gen-monsters.mjs` | `inimigos.json` + 6 satélites → `monsters.json` | literal | em dia |
+| 3 | `resumoParaBanco` (`mesa-ficha.ts`) | `ResumoFicha` → `personagens.resumo` | literal | em dia **para o uso de hoje**: é vitrine (o que um jogador vê do outro), e não entrada de conta. Vira o próximo caso no dia em que uma regra pedir atributo de um colega |
+| 4 | `baseResumo` (`mesa-bestiario.ts`) | `MON` → `ResumoCombate` | literal | ampliado agora, na passada do L35 |
+| 5 | `resumoCombatePC` (`combate-resumo.ts`) | ficha → `ResumoCombate` | literal | idem |
+| 6 | `resumoVazio` (`mesa-bestiario.ts`) | — → `ResumoCombate` | literal | o TypeScript cobra os obrigatórios, e é o único dos dezesseis com trava de linguagem |
+| 7–14 | as oito views (`token_visao`, `combate_visao`, `efeito_visao`, `encontro_visao`, `arena_visao`, `arena_log_visao`, `criatura_visao`, `mapa_visao`) | tabela → jogador | `select` | em dia: as migrações 31, 32 e 33 as revisaram uma a uma, e cada uma tem `comment on` dizendo o que corta |
+| 15 | `COLUNAS.encontro_visao` (`mesa-mock.mjs`) | `encontros` → imitação da view | lista de chaves | em dia com a 31, e ela nasceu justamente do caso do relógio |
+| 16 | `paraJogador` (`mesa-mock.mjs`) | `combatentes` → imitação da `combate_visao` | subtrativa | **incompleta por escolha declarada**: tira `acao.arma` e `acao.alvo` e NÃO mascara Vida, `dados` nem condições, que a view mascara |
+
+**Uma estava desatualizada (a que causou o defeito) e uma está incompleta por escolha.** A
+décima sexta merece a frase que a décima quinta ensinou: a bancada é MAIS GENEROSA que o esquema,
+então o jogador de bancada sabe mais que o de verdade. Para uma asserção do tipo "ele não vê X"
+isso é seguro (falharia na bancada primeiro); para uma do tipo "ele vê X", é o caminho pelo qual
+um teste passa aqui e a mesa quebra lá. Foi exatamente assim que o relógio do Simultâneo ficou em
+zero por três semanas.
 
 **E o décimo segundo tem um par que dá certo, que vale escrever junto porque é a mesma família
 vista pelo lado bom: OMITIR REVELA O BURACO, ZERAR O ESCONDE.**

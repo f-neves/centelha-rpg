@@ -301,6 +301,31 @@ const CAMPOS_MESA = [
   'pericias',
   'artes', 'tecnicas', 'combate', 'ecologia', 'dimensoes',
 ];
+/**
+ * O QUE FICA DE FORA DA MESA, DECLARADO, e esta lista é o conserto da CLASSE e
+ * não do caso.
+ *
+ * `CAMPOS_MESA` é uma lista de chaves, e lista de chaves descarta em silêncio o
+ * que ninguém lembrou de acrescentar. Foi assim que `pericias` sumiu entre o
+ * bestiário e o navegador em 04/09/2026: a tabela estava escrita, a fórmula
+ * estava escrita, o bestiário cheio tinha o dado, e o recorte não levava.
+ * **Nada acusou, porque uma chave que não chega não deixa rastro.**
+ *
+ * Com as duas listas, toda chave nova tem de ser DECIDIDA: ou entra na mesa, ou
+ * entra aqui com o motivo. Esquecer as duas quebra o gerador em vez de sumir com
+ * o dado, que é a direção certa do erro.
+ */
+const FORA_DA_MESA = {
+  descricao: 'prosa do card, e o card vem por arquivo separado',
+  conceito: 'prosa do card',
+  habilidades: 'prosa do card, e é o maior pedaço dos 900 KB (27%)',
+  lore: 'prosa do card (24%)',
+  poderes: 'prosa do card',
+  notas: 'caderno do mestre; não desce nem para a aba, quanto mais para o pacote',
+  pendente: 'marca de trabalho do bestiário, não é dado de jogo',
+  tags: 'usadas no editor e na busca do bestiário, não no tabuleiro',
+};
+
 const TEC_POR_ID = Object.fromEntries(read('tecnicas.json').map((t) => [t.id, t]));
 const mesa = monsters.map((m) => {
   const o = {};
@@ -308,6 +333,19 @@ const mesa = monsters.map((m) => {
   if (o.tecnicas) o.tecnicas = resolverTecnicas(o.tecnicas, TEC_POR_ID);
   return o;
 });
+// A TRAVA: toda chave produzida tem de estar numa das duas listas.
+{
+  const conhecidas = new Set([...CAMPOS_MESA, ...Object.keys(FORA_DA_MESA)]);
+  const orfas = new Set();
+  for (const m of monsters) for (const k of Object.keys(m)) if (!conhecidas.has(k)) orfas.add(k);
+  if (orfas.size) {
+    console.error(`✘ chave(s) sem decisão entre o bestiário e a mesa: ${[...orfas].join(', ')}`);
+    console.error('  Toda chave nova entra em CAMPOS_MESA (vai para o navegador) ou em');
+    console.error('  FORA_DA_MESA (com o motivo escrito). Sem decidir, ela sumia calada.');
+    process.exit(1);
+  }
+}
+
 const outMesa = join(data, 'monsters-mesa.json');
 writeFileSync(outMesa, JSON.stringify(mesa, null, 1));
 const kb = (n) => (n / 1024).toFixed(0);

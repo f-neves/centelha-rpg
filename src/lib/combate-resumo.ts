@@ -2,7 +2,7 @@
 // Puro e reaproteitável: extrai Ataque, Dano e Defesa física (Esquiva) usando a
 // mesma matemática de ficha-engine (renderCombate/renderDerived), sem tocar no DOM.
 // Serve ao rastreador de combate da mesa, que só tem a ficha crua do personagem.
-import { defesa, defesaMental, ataqueCentelha, empilharArmaduras, soakNatural, regras, MODO_ORDEM, MODO_SIGLA, deslocamento, valorPassivo, type Sentidos } from './calc';
+import { defesa, defesaMental, ataqueCentelha, empilharArmaduras, soakNatural, regras, MODO_ORDEM, MODO_SIGLA, deslocamento } from './calc';
 import { ARMA, ESCUDO, armaDoSlot, escudoDoSlot, armadurasDe } from './equip';
 import { qaDaPeca, type QACombate } from './quase-acerto';
 import RACA_D from '../data/racas.json';
@@ -31,8 +31,22 @@ export interface ResumoCombate {
    * descontadas, para os dois lugares mostrarem o mesmo número.
    */
   passo: Passo;
-  /** Perceber e esconder-se. Ver `Sentidos`, em `calc.ts`. */
-  sentidos: Sentidos;
+  /**
+   * OS NOVE ATRIBUTOS CRUS E AS PERÍCIAS, e esta é a passada do L35, decidida em
+   * 04/09/2026: **o resumo da PEÇA, e não o resumo do golpe.**
+   *
+   * O modelo tinha sido montado para o golpe, então carregava só derivados de
+   * combate. Em uma semana três regras diferentes esbarraram no mesmo buraco (o
+   * bestiário sem perícia, o resumo sem os sentidos, o resumo sem atributo), e
+   * cada vez alguém parava e escalava. Carregar nove números que às vezes não
+   * são usados custa menos que parar a cada regra nova.
+   *
+   * A CONTA NÃO SE FAZ AQUI: isto é o que a peça tem, e a fórmula é do motor
+   * (`valorPassivo`). Um resumo que já trouxesse a Passiva pronta voltaria a ser
+   * um bloco por assunto, e foi disso que esta passada saiu.
+   */
+  atributos: Record<string, number>;
+  pericias: Record<string, number>;
 }
 
 // As peças saem de equip.ts já com os ajustes que o jogador fez na ficha
@@ -162,13 +176,13 @@ export function resumoCombatePC(S: any): ResumoCombate {
   const mp = (v: number) => Math.max(0, v - penMov);
   const passo: Passo = { batalha: mp(dz.normal), arranque: mp(dz.arranque), corrida: mp(dz.corrida) };
 
-  // OS SENTIDOS, para o golpe vindo do escuro. O PC e o lado facil dos dois: a
-  // ficha tem as pericias por nome, entao a Passiva e a jogada saem direto. A
-  // criatura chega ao mesmo contrato por outro caminho (ver ).
-  const sentidos = {
-    percepcaoPassiva: valorPassivo(attrs.percepcao, skills.prontidao ?? skills2.prontidao, C),
-    furtividade: { atributo: attrs.destreza || 0, pericia: skills.furtividade ?? skills2.furtividade ?? 0 },
-  };
+  // O PC E O LADO FACIL: a ficha tem tudo por nome. As duas famílias de perícia
+  // entram no MESMO mapa, com a primária vencendo em caso de colisão: quem
+  // consome pergunta "quanto ele tem de Furtividade" e não quer saber em qual das
+  // duas listas ela mora. Os espaços de id são distintos (24 primárias, 77
+  // secundárias), então a colisão é teórica; a ordem está escrita para o dia em
+  // que deixar de ser.
+  const pericias = { ...skills2, ...skills };
   return { arma: w.nome, ataque, dano, defesa: def, defesaMental: defMental, soak,
-    resistPerf: armSt.resistPerf || 0, qa, passo, sentidos };
+    resistPerf: armSt.resistPerf || 0, qa, passo, atributos: attrs, pericias };
 }

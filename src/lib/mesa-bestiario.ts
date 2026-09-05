@@ -17,7 +17,7 @@ import { esc, u, norm, fmtDano } from './mesa-core';
 import { sparkSVG } from './centelha-spark';
 import { d6 } from './rolagem';
 import { qaDaPeca, type QACombate } from './quase-acerto';
-import { valorPassivo, type Sentidos } from './calc';
+
 
 export const MONSTROS = monstersData as any[];
 export const MON: Record<string, any> = Object.fromEntries(MONSTROS.map((m) => [m.id, m]));
@@ -108,7 +108,36 @@ export interface ResumoCombate {
    * propósito: montar o pool é regra (quantos dados por ponto, o +2 do ímpar) e
    * ela mora no motor, não neste resumo. Aqui é só o que a peça tem.
    */
-  sentidos?: Sentidos | null;
+  /**
+   * OS NOVE ATRIBUTOS CRUS E AS PERÍCIAS, e esta é a passada do L35, decidida em
+   * 04/09/2026: **o resumo da PEÇA, e não o resumo do golpe.**
+   *
+   * O modelo tinha sido montado para o golpe, então carregava só derivados de
+   * combate. Em uma semana três regras diferentes esbarraram no mesmo buraco (o
+   * bestiário sem perícia, o resumo sem os sentidos, o resumo sem atributo), e
+   * cada vez alguém parava e escalava. **Carregar nove números que às vezes não
+   * são usados custa menos que parar a cada regra nova.**
+   *
+   * NÃO ENTREGA NADA NOVO AO JOGADOR, e isso foi conferido antes de escrever: o
+   * resumo não viaja, ele é MONTADO no navegador a partir de
+   * `monsters-mesa.json`, que é import estático do Grid e já carrega os nove
+   * atributos das 309 desde antes. A distinção que sustenta isso é entre
+   * ESPÉCIE e INSTÂNCIA: o bestiário é livro publicado, e o que a `combate_visao`
+   * esconde é a Vida DAQUELE ogro agora, os ajustes do mestre e a intenção da
+   * ação. Nada disso passa por aqui.
+   *
+   * NULO É "NÃO DÁ PARA SABER DAQUI", e nunca zero. A peça `custom`, digitada na
+   * mesa, não tem bloco no bestiário e a `combate_visao` não expõe coluna de
+   * atributo nenhuma: para ela os dois saem nulos, e a ausência é informação. É a
+   * mesma regra que fez 24 criaturas saírem SEM Furtividade em vez de com
+   * Furtividade errada.
+   *
+   * A CONTA NÃO SE FAZ AQUI. Isto é o que a peça tem; a fórmula é do motor
+   * (`valorPassivo`, em `calc.ts`). Um resumo que já traz a Passiva pronta volta
+   * a ser um bloco por assunto, e foi disso que esta passada saiu.
+   */
+  atributos?: Record<string, number> | null;
+  pericias?: Record<string, number> | null;
 }
 
 
@@ -128,10 +157,10 @@ const resumoVazio = (): ResumoCombate => ({
   soak: { impacto: 0, corte: 0, perfuracao: 0 },
   resistPerf: 0, velocidade: null, classe: null, passo: null,
   qa: qaDaPeca('', '', null),
-  // A peça de cena não sabe nada de si: os dois lados são NULO e não zero, pela
-  // mesma razão do `defesa: null` acima. `percepcaoPassiva: 0` diria que ela é
-  // surda, e o que se sabe dela é que ninguém preencheu.
-  sentidos: { percepcaoPassiva: null, furtividade: null },
+  // A peça de cena não sabe nada de si, e os dois são NULO e não `{}`, pela mesma
+  // razão do `defesa: null` acima: um objeto vazio se leria como "tem atributos,
+  // todos zero", e o que se sabe dela é que ninguém preencheu.
+  atributos: null, pericias: null,
 });
 
 /** Bloco de combate de origem: da ficha (PC) ou do bestiário (criatura). */
@@ -181,16 +210,11 @@ export function baseResumo(c: any, fichaPorId: Record<string, any> = {}): Resumo
       // arma sai preenchida. O dano médio dela vem da própria expressão de dano,
       // porque ali a expressão É a arma.
       qa: qaDaPeca(a0?.nome || '', a0 ? fmtDano(a0.dano) : '', null),
-      sentidos: (() => {
-        const m = MON[c.monstro_id];
-        const at = m?.atributos || {};
-        const pe = m?.pericias || {};
-        return {
-          percepcaoPassiva: valorPassivo(at.percepcao, pe.prontidao, m?.centelha || 0),
-          furtividade: (at.destreza == null || pe.furtividade == null) ? null
-            : { atributo: at.destreza, pericia: pe.furtividade },
-        };
-      })(),
+      // A ESPÉCIE inteira, como o verbete a publica. O `?? null` em vez de `|| {}`
+      // é a regra da omissão: uma criatura sem bloco devolve nulo, e não um
+      // objeto vazio que se leria como "tem atributos, todos zero".
+      atributos: MON[c.monstro_id]?.atributos ?? null,
+      pericias: MON[c.monstro_id]?.pericias ?? null,
     };
   }
   return null;

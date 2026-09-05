@@ -1431,13 +1431,24 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   não os leva. Não é falta de dado, é falta de campo, e por isso cada regra nova vai achar
   o mesmo buraco outra vez até alguém acrescentar `atributos` ao `ResumoCombate`.
 
-  A DECISÃO QUE ISSO PEDE, e ela não é minha: o `ResumoCombate` deve continuar sendo o
-  resumo **do golpe**, com um bloco por assunto novo (foi o que `sentidos` fez), ou passar
-  a ser o resumo **da peça**, carregando atributos e perícias e deixando cada regra montar
-  a sua conta? O primeiro é barato e cresce um bloco por regra; o segundo é uma passada e
-  não cresce mais. Enquanto não for decidido, cada regra nova paga o pedágio de novo.
+  **DECIDIDO em 04/09/2026: o resumo da PEÇA.** O `ResumoCombate` passou a carregar
+  `atributos` (os nove crus) e `pericias` (por nome), e o bloco `sentidos` saiu junto com o
+  tipo que o sustentava: com os dados crus no resumo, quem precisa da Passiva a calcula com
+  `valorPassivo` no ponto de uso, e um objeto guardando a conta pronta seria a terceira
+  cópia do mesmo número.
 
-  **4 · O `ResumoCombate` NÃO CARREGA NENHUMA DAS TRÊS.** `resumoDe` (`src/lib/mesa-bestiario.ts:204`)
+  O motivo da escolha, e ele é de custo e não de gosto: bloco por assunto significa que toda
+  regra nova volta a esbarrar no mesmo buraco, e isso aconteceu três vezes numa semana (o
+  bestiário sem perícia, o resumo sem os sentidos, o resumo sem atributo). **Carregar nove
+  números que às vezes não são usados custa menos que parar a cada regra.**
+
+  E não entrega nada novo ao jogador, o que foi conferido antes de escrever: o resumo não
+  viaja, é MONTADO no navegador a partir de `monsters-mesa.json`, que é import estático do
+  Grid e já carregava os nove atributos das 309. A distinção que sustenta isso é entre
+  ESPÉCIE e INSTÂNCIA: o bestiário é livro publicado, e o que a `combate_visao` esconde é a
+  Vida daquele ogro agora. A peça `custom` sai com os dois NULOS, e a ausência é informação.
+
+  **4 · O `ResumoCombate` NÃO CARREGA NENHUMA DAS TRÊS.** `resumoDe` (`src/lib/mesa-bestiario.ts:228`)
   devolve arma, ataque, dano, as três Defesas, absorção, resistência à perfuração, velocidade,
   classe, passo, pgr e Quase-Acerto. Não há Percepção, nem Prontidão, nem Furtividade: **o
   modelo de combate da mesa não conhece nenhuma perícia por nome**, só os derivados delas. Seja
