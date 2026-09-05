@@ -49,7 +49,7 @@ defeito). Os dois saem com o mesmo valor, no mesmo campo, no mesmo CSV, e nenhum
 separa depois. **O instrumento que os separa é sempre o mesmo: contar OCASIÕES, e não efeitos.**
 
 Não é lição de relatório. É regra de construção, e ela existe porque **a mesma forma de erro já
-apareceu treze vezes nesta frente**, em camadas diferentes. E a partir do quinto caso ela tem uma
+apareceu catorze vezes nesta frente**, em camadas diferentes. E a partir do quinto caso ela tem uma
 segunda face: o zero ambíguo é a AUSÊNCIA de sinal lida como sinal, e o espelho dele é a
 **PRESENÇA de texto lida como o sinal errado**. Os dois vêm de olhar à volta do sinal em vez de
 olhar onde ele mora.
@@ -69,6 +69,7 @@ olhar onde ele mora.
 | **11** | a **medida do sintoma batizada com o nome da causa** | "o runner é ~1,5× mais lento que esta máquina" | o número medido era real (20 min) e a causa atribuída a ele era falsa: não era trabalho, era o `astro dev` órfão segurando o processo depois do fim. **Medir certo e nomear errado dá um número que ninguém desconfia** | achado em 04/09 pelo conserto do `detached`: com o processo morrendo na hora, os mesmos trabalhos passaram a levar 6 min, e o fator caiu de 5 para 1,5 |
 | **12** | a **janela entre a migracao e o dado que ela le** | "o corte de existencia entrou, e o que ja foi visto continua listado" | a memoria estava VAZIA, entao nada foi visto, e o corte produziu a saida oposta a decidida. **O sistema faz o contrario do que foi decidido, e faz certo, porque o dado que o desmentiria ainda nao existe** | achado em 04/09 pelo humano, ao dizer "rodo a 32 e a 33 hoje": a 33 com `vistos` vazio entrega a opcao 2 do caso D, recusada por escrito uma hora antes |
 | **13** | a **lista de campos que descarta em silêncio** | "a versão magra do bestiário leva o que a mesa precisa" | `pericias` não estava em `CAMPOS_MESA`, e a Passiva de TODAS as criaturas saía `null`. **O dado existia, o consumidor existia, e o transporte entre os dois descartava sem deixar rastro** | achado em 04/09 pela revisora, prevendo a família antes de olhar o código: "a Prontidão entrando na fórmula sem que nada leia o resultado" |
+| **14** | o **comentário que afirma uma garantia** | "esquecer um campo aparece na hora: o valor chega `undefined` na tela" | não apareceu e não chegou `undefined`: chegou `null`, calado. **A frase tem a forma de uma asserção sem ser uma, é lida como uma, e envelhece sem nada acusar porque nada a roda** | achado em 04/09 pelo humano, cinco linhas acima do conserto do caso 13: "o comentário continua lá" |
 
 **O quinto e o sexto casos custaram dinheiro, e é a diferença deles para os quatro primeiros.**
 Os quatro foram achados por inspeção ou por teste, antes de qualquer gasto. Estes dois só
@@ -175,6 +176,71 @@ E sobrou o que não é computável, escrito nos dois arquivos em vez de descober
 `dono_do_personagem() = auth.uid()`) e **`eh_membro(e.mesa_id)`**, metade do `where`. As duas
 dependem de `auth.uid()` e de RLS, e são os dois únicos pontos em que a bancada não consegue ser o
 Postgres. A outra metade do `where`, `c.oculto = false`, é computável e passou a ser computada.
+
+**O DÉCIMO QUARTO SAIU DE DENTRO DO CONSERTO DO DÉCIMO TERCEIRO, cinco linhas acima dele.**
+
+O `gen-monsters.mjs` dizia, em prosa, que esquecer um campo na lista "aparece na hora: o valor chega
+`undefined` na tela, e não meio certo". Não apareceu, e não chegou `undefined`: chegou `null`, calado.
+A frase continuou lá enquanto o defeito que ela dizia ser impossível rodava em produção.
+
+**COMENTÁRIO QUE AFIRMA GARANTIA É CÓDIGO NÃO EXECUTADO.** Ele tem a forma de uma asserção, é lido
+como uma, e é a única coisa no repositório com forma de prova que ninguém roda. Todo o resto (teste,
+portão, tipo, gerador) falha quando fica velho. Uma frase não.
+
+E são **três numa semana**, o que faz disto família e não acidente: o do `rolarAcerto` ("o campo fica
+com o primeiro golpe"), que descrevia um mundo anterior à folha por golpe; o `continue-on-error` do
+`tsc`, com a desculpa "há erros antigos" havia muito expirada; e este.
+
+**A VARREDURA, e ela é a única do repositório em que a MEDIDA precisa ser corrigida depois de
+publicada.** A mensagem do commit `df3e782` diz "9 afirmam garantia de verdade". O número está
+errado, e para menos: são **quinze**. Ele saiu de uma classificação feita enquanto eu ainda
+consertava os casos, e não de uma contagem fechada · que é, ponto por ponto, o caso 11 desta mesma
+tabela (medir e batizar com pressa dá um número que ninguém desconfia). A conta certa, de 49
+ocorrências que casam com o gatilho:
+
+| classe | quantas | o que são |
+|---|:--:|---|
+| prosa do jogo | 5 | "quase impossível passar de dois Ticks", o Desperto esbarrando no impossível. Nada a ver com código |
+| descrição do código da linha seguinte | 9 | "garante que há usuário logado" é o que a função faz, ali, três linhas abaixo |
+| narração histórica ou raciocínio | 12 | "o improviso nunca esteve na lista", "sobra negativa é impossível pelo raciocínio que justifica a conta" |
+| **negativa honesta** | 4 | e estas são as boas: "nenhum teste pega isso" (migração 29), "o Postgres não garante a ordem". Declaram a ausência da garantia, que é o oposto do defeito |
+| falso positivo do gatilho | 4 | `lib-ponte.mjs` casando em "para o gerador" |
+| **GARANTIA DE VERDADE** | **15** | abaixo |
+
+Das quinze, **uma era falsa** (a do `gen-monsters`) e catorze valiam. E elas se partem em duas
+metades que pedem coisas opostas:
+
+**DEZ VALIAM POR CONSTRUÇÃO**, porque o mecanismo que as sustenta está na própria linha ou no
+próprio arquivo: a marca do `A_SAIR` apagada logo acima da chamada; o `viewBox` copiado em vez de
+recalculado ("copiar não tem como divergir"); o proxy do `sbDoJogador`, em que uma forma nova de
+consulta chama função inexistente e estoura; a trava das duas listas do próprio `gen-monsters`; e as
+que moram dentro do instrumento que executa (`test-kael.mjs`, `invariantes.mjs`, `test-bench-tempo`,
+o `--check` do `gen-mermaid`, o portão do `validate-data`). Estas ficam como estão: pedir asserção
+para elas seria testar que a linguagem funciona.
+
+**QUATRO APONTAVAM PARA FORA DE SI**, e são as que podem apodrecer sem nada acusar. As quatro
+viraram asserção em 04/09/2026:
+
+| onde | o que afirmava | o que passou a segurar |
+|---|---|---|
+| `lance.ts:55` | "o `total` sai diferente e o teste pega" | o teste **ganhou nome** no comentário (`test-lance.mjs`, no `validate`). Promessa sem nome ninguém confere depois |
+| `mesa-core.ts:482` | ligar o cabeçalho no `abrirMesa` "garante que ele esteja em TODAS" | `test-portoes.mjs` §4.2 · toda página de mesa tem de entrar por `abrirMesa` (10 de 10) |
+| `migracao-3.sql:4` | "a `service_role` NUNCA vai ao cliente" | `test-portoes.mjs` §4.3 · `src/` não menciona chave de serviço nem lê variável de ambiente fora das declaradas |
+| `test-acaso.mjs:120` | o rolador de mão não é motor "porque `/mesa/grid` não o importa" | o próprio arquivo confere o import, logo depois da varredura que a isenção serve |
+
+**A TERCEIRA É A QUE IMPORTA, e ela era a menos amparada de todas.** A segurança inteira do modelo
+se apoia naquela frase: as funções são `SECURITY DEFINER` porque o cliente só tem a chave anon e a
+RLS por cima. E a distância entre a frase e o vazamento era **uma linha de `.env`**, porque o
+prefixo `PUBLIC_` faz o Astro EMBUTIR o valor no pacote que vai ao navegador. Garantia de segurança
+escrita em prosa é a que mais parece verdade e a que menos alguém confere.
+
+**O QUE NÃO DÁ PARA AUTOMATIZAR, dito para ninguém tentar depois.** Não há regex que decida se uma
+frase em português é uma garantia: das 49 ocorrências, 34 não eram. Um portão que cobrasse todas
+precisaria de uma lista de 34 isenções, e lista de exceções que não encolhe junto com o problema
+vira ficção em duas semanas (é a lição que o `TESTES_FORA` já tinha dado). Então a seção 4 do
+`test-portoes.mjs` cobra só as três formas que **apontam para coisa concreta**: referência a script
+que existe, o cabeçalho em toda página de mesa, e a chave de serviço fora do pacote. O resto foi
+conferido à mão, uma vez, e está nesta tabela.
 
 **E o décimo segundo tem um par que dá certo, que vale escrever junto porque é a mesma família
 vista pelo lado bom: OMITIR REVELA O BURACO, ZERAR O ESCONDE.**

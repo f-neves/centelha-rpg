@@ -1726,8 +1726,31 @@ async function cenaCelular(br, url, { papel = 'mestre' } = {}) {
   for (const [botao, caixa, nome] of folhas) {
     const r = await p.evaluate(async (botao, caixa) => {
       document.getElementById(botao).click();
-      await new Promise((r) => setTimeout(r, 420));
-      const q = document.querySelector(caixa).getBoundingClientRect();
+      /*
+       * ESPERA A ANIMAÇÃO ACABAR, e não um relógio.
+       *
+       * Eram 420 ms cravados contra uma transição de 220 ms, e em 04/09/2026 o
+       * CI mediu a folha da arena **3,2 px abaixo** do pé da tela: topo 172,0 em
+       * vez de 168,8, a caixa inteira deslocada e a altura certa. Não é layout,
+       * é o rabo do `ease`: `translateY(101%)` de 675 px parado a 0,5% do fim,
+       * porque o runner engasgou entre o clique e o quadro seguinte.
+       *
+       * Dobrar o tempo de espera só empurra o problema, e afrouxar os 2 px de
+       * folga apagaria o defeito que esta asserção existe para pegar (uma folha
+       * que NÃO sobe erra por centenas de pixels, não por três). Então
+       * espera-se a coisa: dois quadros para a transição nascer, e o
+       * `finished` de cada animação da caixa. O teto de 2 s é rede, e não
+       * medida: se ele for atingido, a asserção mede o que houver e falha
+       * dizendo por quanto.
+       */
+      const el = document.querySelector(caixa);
+      await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+      await Promise.race([
+        Promise.all(el.getAnimations().map((a) => a.finished.catch(() => {}))),
+        new Promise((r) => setTimeout(r, 2000)),
+      ]);
+      await new Promise((r) => requestAnimationFrame(r));
+      const q = el.getBoundingClientRect();
       const barra = document.querySelector('.gr-app').getBoundingClientRect();
       return { dentro: q.top >= -2 && q.bottom <= innerHeight + 2,
         // A MEDIDA SAI NA MENSAGEM, sempre. No Chrome/Linux esta caixa caiu por
