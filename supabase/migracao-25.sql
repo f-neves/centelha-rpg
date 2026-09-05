@@ -97,5 +97,20 @@ grant execute on function public.hex_dist(int, int, int, int) to authenticated;
 grant execute on function public.casa_clara(uuid, jsonb, int, int) to authenticated;
 
 -- ----------------------------------------------------------------- conferir
+--
+-- A REGUA (05/09/2026): CONFERENCIA DE MIGRACAO NOMEIA O QUE ESTE ARQUIVO
+-- DEFINE, E NUNCA CONTA O QUE EXISTE. Contagem mede o mundo, e o arquivo so
+-- responde por si: a conferencia da 22 dizia "deve devolver 8 funcoes
+-- `jogador_*`" e hoje da 10, porque uma nasceu depois, em outro arquivo. Alem
+-- de envelhecer sozinha, contagem que falha nao diz O QUE faltou. E o que
+-- roda tem de rodar sem ler linha de mesa nenhuma.
+--
+-- A primeira e o modelo: entrada na mao, resposta ao lado. A segunda so
+-- confere que a funcao EXISTE com a assinatura certa, porque exercita-la de
+-- verdade exigiria uma arena de gente. (O `from mesa_arenas limit 1` que
+-- estava aqui lia mesa alheia para provar o que o catalogo prova.)
 -- select hex_dist(0,0,2,0);  -- 2
--- select casa_clara(id, nevoa, 1, 1) from mesa_arenas limit 1;
+-- select p.proname, pg_get_function_identity_arguments(p.oid) as args
+--   from pg_proc p join pg_namespace n on n.oid = p.pronamespace
+--  where n.nspname = 'public' and p.proname in ('hex_dist', 'casa_clara')
+--  order by p.proname;

@@ -179,9 +179,16 @@ comment on view public.efeito_visao is
   'navegador dele, com nome, condicao e alvo, cinco Ticks antes de existir.';
 
 -- ----------------------------------------------------------------- conferir
--- Com um encontro no Tick 3 e um efeito de fogo com desde_tick 8, a casa
--- vizinha ao efeito tem de dar FALSE; avancando o encontro para o 8, TRUE.
--- select tick_da_arena(id), casa_clara(id, nevoa, 5, 5) from mesa_arenas limit 1;
+-- A CONFERENCIA DESTA SECAO SO PROVA A LIGACAO, e nao o comportamento: a
+-- `casa_clara` passou a chamar a `tick_da_arena`. Deve devolver `t`.
+-- select pg_get_functiondef(p.oid) like '%tick_da_arena%' as casa_clara_usa_tick
+--   from pg_proc p join pg_namespace n on n.oid = p.pronamespace
+--  where n.nspname = 'public' and p.proname = 'casa_clara';
+--
+-- O comportamento (com um encontro no Tick 3 e um efeito de fogo com
+-- desde_tick 8, a casa vizinha da FALSE; avancando para o 8, TRUE) exige uma
+-- arena de gente, entao ele NAO e conferencia de migracao: fica para a mesa,
+-- e quem confere o esquema nao precisa de acesso a mesa de ninguem.
 
 -- ------------------------------- 4 - o relogio que nao chegava ao jogador
 --
@@ -323,3 +330,43 @@ comment on view public.combate_visao is
   'arena nem casa, entao a peca no escuro chega ao navegador do jogador com '
   'nome, retrato, grupo e Tick, e so a TELA do Grid a esconde (a aba Combate '
   'a desenha). Se isso vira parede e escolha de mesa, e esta em aberto.';
+
+-- ------------------------------------- conferir o que ESTA migracao define
+--
+-- A REGUA (05/09/2026): CONFERENCIA DE MIGRACAO NOMEIA O QUE ESTE ARQUIVO
+-- DEFINE, E NUNCA CONTA O QUE EXISTE. Contagem mede o mundo, e o arquivo so
+-- responde por si. E o que roda tem de rodar sem ler linha de mesa nenhuma:
+-- quem confere pode nao ter (e nao deveria precisar de) acesso a mesa de
+-- ninguem.
+--
+-- ESTA CONFERENCIA NASCEU DEPOIS DE A MIGRACAO RODAR (05/09/2026), e por isso
+-- ela existe: sem ela, quem rodou teve de INVENTAR uma na hora, olhando o que
+-- o arquivo define. Inventar conferencia depois de rodar e inventar sob a
+-- pressao de ja ter rodado, e quem inventa assim tende a escrever a pergunta
+-- que ja sabe que passa.
+--
+-- 1) a funcao do relogio nasceu, e a `casa_clara` passou a usa-la. Deve
+--    devolver uma linha, com `usa_tick` em `t`.
+-- select p.proname,
+--        (select pg_get_functiondef(q.oid) like '%tick_da_arena%'
+--           from pg_proc q join pg_namespace m on m.oid = q.pronamespace
+--          where m.nspname='public' and q.proname='casa_clara') as usa_tick
+--   from pg_proc p join pg_namespace n on n.oid = p.pronamespace
+--  where n.nspname='public' and p.proname='tick_da_arena';
+--
+-- 2) o relogio chega ao jogador. Deve devolver as QUATRO linhas: `tick_atual`
+--    e `rodada` sao desta migracao, e `perfil`/`perfil_em` vem junto para a
+--    ordem entre esta e a 29 nao importar (ver a secao 4).
+-- select column_name from information_schema.columns
+--  where table_schema='public' and table_name='encontro_visao'
+--    and column_name in ('tick_atual','rodada','perfil','perfil_em')
+--  order by column_name;
+--
+-- 3) as duas views de corte passaram a filtrar por casa. Deve devolver `t` nas
+--    duas, e e o CORPO que responde, nao o nome.
+-- select pg_get_viewdef('public.token_visao'::regclass) like '%casa_clara%'
+--          as token_corta,
+--        pg_get_viewdef('public.efeito_visao'::regclass) like '%tick_da_arena%'
+--          as efeito_corta;
+--
+-- Fim da migracao 31.

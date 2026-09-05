@@ -91,3 +91,39 @@ comment on view public.efeito_visao is
   'os alvos que estao no escuro (migracao 32). Efeito inteiro no escuro nao '
   'viaja; efeito sem chao (so alvo) viaja sempre.';
 
+-- ------------------------------------- conferir o que ESTA migracao define
+--
+-- A REGUA (05/09/2026): CONFERENCIA DE MIGRACAO NOMEIA O QUE ESTE ARQUIVO
+-- DEFINE, E NUNCA CONTA O QUE EXISTE. Contagem mede o mundo, e o arquivo so
+-- responde por si. E o que roda tem de rodar sem ler linha de mesa nenhuma:
+-- quem confere pode nao ter (e nao deveria precisar de) acesso a mesa de
+-- ninguem.
+--
+-- ESTA CONFERENCIA NASCEU DEPOIS DE A MIGRACAO RODAR (05/09/2026), e por isso
+-- ela existe: sem ela, quem rodou teve de INVENTAR uma na hora, olhando o que
+-- o arquivo define. Inventar conferencia depois de rodar e inventar sob a
+-- pressao de ja ter rodado, e quem inventa assim tende a escrever a pergunta
+-- que ja sabe que passa.
+--
+-- 1) a view existe e o CORPO dela tem as duas metades da 32: o filtro de
+--    hexagonos pela nevoa e o corte pelo relogio. Deve devolver `t` nas duas.
+--    E o corpo, e nao o nome: view com o nome certo e o corpo velho passaria
+--    por qualquer conferencia que so procurasse `efeito_visao`.
+-- select pg_get_viewdef('public.efeito_visao'::regclass) like '%hexes_claros%'
+--          as filtra_hexes,
+--        pg_get_viewdef('public.efeito_visao'::regclass) like '%tick_da_arena%'
+--          as usa_relogio;
+--
+-- 2) a FORMA nao mudou: a view continua com as mesmas colunas de antes, porque
+--    esta migracao muda o que atravessa e nao o formato. Deve devolver 24.
+--    (Este e o unico numero desta conferencia, e ele e o numero DESTE arquivo:
+--    a lista de colunas esta escrita acima, no proprio `create view`.)
+-- select count(*) from information_schema.columns
+--  where table_schema='public' and table_name='efeito_visao';
+--
+-- 3) e o jogador continua podendo ler. Deve devolver 1 linha.
+-- select grantee, privilege_type from information_schema.role_table_grants
+--  where table_schema='public' and table_name='efeito_visao'
+--    and grantee='authenticated' and privilege_type='SELECT';
+--
+-- Fim da migracao 32.

@@ -142,14 +142,22 @@ where c.oculto = false and eh_membro(e.mesa_id);
 grant select on public.combate_visao to authenticated;
 
 -- ----------------------------------------------------------------- conferencia
--- 1) as duas colunas novas. Deve devolver 2.
--- select count(*) from information_schema.columns
---  where (table_name = 'mesas' and column_name = 'combate')
---     or (table_name = 'combatentes' and column_name = 'acao');
 --
--- 2) a view devolve `acao`. Deve devolver 1.
--- select count(*) from information_schema.columns
---  where table_name = 'combate_visao' and column_name = 'acao';
+-- A REGUA (05/09/2026): CONFERENCIA DE MIGRACAO NOMEIA O QUE ESTE ARQUIVO
+-- DEFINE, E NUNCA CONTA O QUE EXISTE. Contagem mede o mundo, e o arquivo so
+-- responde por si: a conferencia da 22 dizia "deve devolver 8 funcoes
+-- `jogador_*`" e hoje da 10, porque uma nasceu depois, em outro arquivo. Alem
+-- de envelhecer sozinha, contagem que falha nao diz O QUE faltou. E o que
+-- roda tem de rodar sem ler linha de mesa nenhuma.
+--
+-- 1) as duas colunas novas E a da view. Deve devolver as TRES linhas, e o que
+--    faltar aparece pela ausencia, com nome. (Antes eram dois `count(*)`, que
+--    diziam "2" e "1" e nao diziam QUAL tinha faltado.)
+-- select table_name, column_name from information_schema.columns
+--  where table_schema = 'public'
+--    and (table_name, column_name) in
+--        (('mesas','combate'), ('combatentes','acao'), ('combate_visao','acao'))
+--  order by table_name;
 --
 -- 3) a mascara funciona. Com um combatente inimigo de stats fechados:
 -- select nome, acao from public.combate_visao;  -- sem as chaves arma e alvo

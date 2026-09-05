@@ -99,9 +99,22 @@ grant execute on function public.peca_e_minha(uuid) to authenticated;
 grant execute on function public.jogador_declara(uuid, int, jsonb, uuid, int) to authenticated;
 
 -- ----------------------------------------------------------------- conferir
--- 1) as duas funcoes existem. Deve devolver 2.
--- select count(*) from pg_proc
---  where proname in ('peca_e_minha', 'jogador_declara');
+--
+-- A REGUA (05/09/2026): CONFERENCIA DE MIGRACAO NOMEIA O QUE ESTE ARQUIVO
+-- DEFINE, E NUNCA CONTA O QUE EXISTE. Contagem mede o mundo, e o arquivo so
+-- responde por si: a conferencia da 22 dizia "deve devolver 8 funcoes
+-- `jogador_*`" e hoje da 10, porque uma nasceu depois, em outro arquivo. Alem
+-- de envelhecer sozinha, contagem que falha nao diz O QUE faltou. E o que
+-- roda tem de rodar sem ler linha de mesa nenhuma.
+--
+-- 1) as duas funcoes existem. Deve devolver as DUAS linhas, pelo nome. O
+--    `count(*)` que estava aqui tambem varria pg_proc SEM filtro de schema,
+--    entao uma funcao homonima em outro schema entrava na conta.
+-- select p.proname from pg_proc p
+--   join pg_namespace n on n.oid = p.pronamespace
+--  where n.nspname = 'public'
+--    and p.proname in ('peca_e_minha', 'jogador_declara')
+--  order by p.proname;
 --
 -- 2) o jogador nao empurra o relogio alheio. Logado como jogador, contra uma
 --    peca que nao e dele, deve levantar excecao:

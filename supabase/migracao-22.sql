@@ -286,5 +286,17 @@ grant execute on function public.jogador_apaga_efeito(uuid) to authenticated;
 grant execute on function public.jogador_registra(uuid, jsonb) to authenticated;
 
 -- ----------------------------------------------------------------- conferir
--- Deve devolver 8 funcoes `jogador_*`.
--- select count(*) from pg_proc where proname like 'jogador\_%';
+--
+-- A CONFERENCIA ANTIGA CONTAVA O NAMESPACE, e por isso envelheceu sozinha: ela
+-- dizia "deve devolver 8 funcoes `jogador_*`", e hoje sao 10, porque a
+-- `jogador_declara` nasceu depois e em outro arquivo. Contagem de prefixo mede
+-- o que os OUTROS fizeram; conferencia tem de medir o que ESTE arquivo define.
+-- Corrigida em 05/09/2026, com o banco na mao.
+--
+-- Deve devolver 9 linhas, uma por funcao que esta migracao cria:
+-- select p.proname from pg_proc p join pg_namespace n on n.oid = p.pronamespace
+--  where n.nspname = 'public' and p.proname in (
+--    'jogador_apaga_efeito','jogador_conjura','jogador_dano','jogador_invoca',
+--    'jogador_mover','jogador_muda_efeito','jogador_muda_peca',
+--    'jogador_registra','jogador_tira_do_mapa')
+--  order by p.proname;

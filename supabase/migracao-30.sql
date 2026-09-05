@@ -150,3 +150,46 @@ $$;
 comment on function public.limpar_lances_veredito(integer) is
   'Apaga lances com mais de N dias (90 por padrao). NAO roda sozinha: '
   'este projeto nao tem agendador. Enquanto ninguem a chamar, nada expira.';
+
+-- ------------------------------------- conferir o que ESTA migracao define
+--
+-- A REGUA (05/09/2026): CONFERENCIA DE MIGRACAO NOMEIA O QUE ESTE ARQUIVO
+-- DEFINE, E NUNCA CONTA O QUE EXISTE. Contagem mede o mundo, e o arquivo so
+-- responde por si. E o que roda tem de rodar sem ler linha de mesa nenhuma:
+-- quem confere pode nao ter (e nao deveria precisar de) acesso a mesa de
+-- ninguem.
+--
+-- ESTA CONFERENCIA NASCEU DEPOIS DE A MIGRACAO RODAR (05/09/2026), e por isso
+-- ela existe: sem ela, quem rodou teve de INVENTAR uma na hora, olhando o que
+-- o arquivo define. Inventar conferencia depois de rodar e inventar sob a
+-- pressao de ja ter rodado, e quem inventa assim tende a escrever a pergunta
+-- que ja sabe que passa.
+--
+-- 1) a coluna da mesa e a tabela. Deve devolver as DUAS linhas.
+-- select 'mesas.gravar_lances' as objeto from information_schema.columns
+--  where table_schema='public' and table_name='mesas'
+--    and column_name='gravar_lances'
+-- union all
+-- select 'tabela lances_veredito' from information_schema.tables
+--  where table_schema='public' and table_name='lances_veredito';
+--
+-- 2) a RLS ligada e as TRES politicas, pelo nome. Deve devolver 3 linhas, e a
+--    coluna `rls` tem de vir `t` nas tres.
+-- select p.policyname, c.relrowsecurity as rls
+--   from pg_policies p
+--   join pg_class c on c.oid = 'public.lances_veredito'::regclass
+--  where p.schemaname='public' and p.tablename='lances_veredito'
+--    and p.policyname in ('lances_veredito_mestre_le',
+--                         'lances_veredito_mestre_grava',
+--                         'lances_veredito_mestre_apaga')
+--  order by p.policyname;
+--
+-- 3) os dois indices e a funcao de retencao. Deve devolver as TRES linhas.
+-- select indexname as objeto from pg_indexes
+--  where schemaname='public' and tablename='lances_veredito'
+--    and indexname in ('lances_veredito_mesa_idx','lances_veredito_diverge_idx')
+-- union all
+-- select p.proname from pg_proc p join pg_namespace n on n.oid=p.pronamespace
+--  where n.nspname='public' and p.proname='limpar_lances_veredito';
+--
+-- Fim da migracao 30.

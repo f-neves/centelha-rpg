@@ -407,9 +407,22 @@ comment on view public.combate_visao is
 -- NAO HA MAIS VIEW MISTA NO ESQUEMA.
 
 -- ----------------------------------------------------------------- conferir
--- 1) Com a nevoa ligada e um inimigo em casa escura, a fila do jogador nao o
---    traz; depois de visto uma vez, traz com `lembranca = true` e sem `tick`.
--- select nome, lembranca, tick, pv_pct from combate_visao where encontro_id = '...';
 --
--- 2) A lembranca desenha na casa antiga:
--- select combatente_id, q, r, lembranca from token_visao where arena_id = '...';
+-- A REGUA (05/09/2026): CONFERENCIA DE MIGRACAO NOMEIA O QUE ESTE ARQUIVO
+-- DEFINE, E NUNCA CONTA O QUE EXISTE. Contagem mede o mundo, e o arquivo so
+-- responde por si. E o que roda tem de rodar sem ler linha de mesa nenhuma:
+-- quem confere pode nao ter (e nao deveria precisar de) acesso a mesa de
+-- ninguem.
+--
+-- 1) O QUE ESTE ARQUIVO DEFINE, e e o que da para conferir sem mesa: as duas
+--    views passam a mandar `lembranca`. Deve devolver as DUAS linhas.
+-- select table_name from information_schema.columns
+--  where table_schema='public' and column_name='lembranca'
+--    and table_name in ('combate_visao','token_visao')
+--  order by table_name;
+--
+-- 2) O COMPORTAMENTO exige uma arena de gente, entao ele nao e conferencia de
+--    migracao: e roteiro de mesa, e esta aqui como roteiro.
+--    Com a nevoa ligada e um inimigo em casa escura, a fila do jogador nao o
+--    traz; depois de visto uma vez, traz com `lembranca = true` e sem `tick`.
+--    E a lembranca desenha na casa antiga, na `token_visao`.

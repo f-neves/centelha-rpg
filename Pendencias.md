@@ -2453,9 +2453,28 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   O `encontros.log` do `combate.astro` tem a mesma forma e um escritor só: fica no fim da fila, e
   por um motivo escrito, não por esquecimento.
 
-- [ ] **L42 · [PARA RODAR DE UMA VEZ] As migrações pendentes** · *levantado em 05/09/2026, com
-  o esquema de produção sondado pela chave anon, uma por uma. **A leva da mesa é 31, 32, 29, 30 e
-  35**; a 33 NÃO entra.*
+- [ ] **L42 · [AS CINCO RODARAM · FICA A 33] As migrações pendentes** · *levantado em 05/09/2026,
+  com o esquema de produção sondado pela chave anon, uma por uma. **A leva de 31, 32, 29, 30 e 35
+  RODOU em 05/09/2026**, na ordem da mesa e com 31 e 32 coladas. A 33 não entrou.*
+
+  ### O QUE CADA UMA RESPONDEU, no dia em que rodou
+
+  | # | a conferência devolveu |
+  |---|---|
+  | **31** | `tick_da_arena` existe, e a `casa_clara` passou a chamá-la (`t`) |
+  | **32** | a `efeito_visao` tem **24 colunas**, o corpo cita `hexes_claros` (`t`) e `tick_da_arena` (`t`) |
+  | **29** | a do arquivo: `perfil` **jsonb** e `perfil_em` **timestamptz**, as duas que o comentário promete |
+  | **30** | `mesas.gravar_lances`, a tabela `lances_veredito` com **RLS ligada e 3 políticas**, e a `limpar_lances_veredito` |
+  | **35** | as duas do arquivo: `funde = t`, e a prova de fogo `soma_preserva = t` · `repetida_atualiza = t` |
+
+  **E o efeito conferido pela chave anon, pelo formato e não pelo dado**, com um controle (uma
+  coluna inventada devolve `42703`, então o `200` das outras é a coluna existindo e a RLS cortando
+  as linhas): `encontro_visao` manda `tick_atual`/`rodada`/`perfil`/`perfil_em`; `efeito_visao` e
+  `token_visao` respondem; `encontros.perfil`, `mesas.gravar_lances` e `lances_veredito` existem.
+
+  **TRÊS DAS CINCO NÃO TRAZIAM CONFERÊNCIA NENHUMA** (a 30, a 32, e a da 31 lia mesa de gente),
+  e quem rodou teve de inventar uma na hora. **Isso foi consertado depois**: as três ganharam a sua
+  dentro do arquivo, e a régua está no verbete seguinte.
 
   **COMO FOI CONFERIDO, porque isso não é lista de arquivo, é leitura de produção.** Cada uma foi
   sondada pelo objeto que ela cria: coluna que não existe devolve `42703`, tabela devolve `PGRST205`,
@@ -2557,8 +2576,8 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   antes da migração é a janela ruim. Por isso ela pode ser rodada hoje sem esperar nada. O que ela
   obriga está no L43, e está no cabeçalho da própria migração.
 
-- [ ] **L43 · [O MESTRE FEITO · O JOGADOR ESPERA A MIGRAÇÃO 35] A marca da mordida que a aba do
-  jogador apagava** · *achado em 05/09/2026, ao construir a saída da área. É a família do L41, e é o
+- [ ] **L43 · [OS DOIS LADOS FEITOS · FICA O VOCABULÁRIO DE REMOÇÃO] A marca da mordida que a aba
+  do jogador apagava** · *achado em 05/09/2026, ao construir a saída da área. É a família do L41, e é o
   pior caso dela.*
 
   **E NÃO É CORRIDA: É APAGAMENTO EM TODA GRAVAÇÃO.** Foi assim que a premissa mudou no meio do
@@ -2629,7 +2648,8 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   reler o que a view não manda. **O conserto é a `supabase/migracao-35.sql`**, escrita e esperando a
   mesa rodar: uma linha, trocando o `coalesce` por `||`, que é o mesmo operador que a
   `jogador_registra` já usava. **Fundir é estritamente menos permissivo que substituir**, então ela
-  não precisa de policy nova.
+  não precisa de policy nova. **Rodou em 05/09/2026**, e a conferência do arquivo devolveu
+  `funde = t` com a prova de fogo do jsonb passando nas duas metades.
 
   **E ELA ENTRA INERTE, E NÃO PRONTA** (decidido pela mesa em 05/09/2026, e escrito porque "rodou"
   vai parecer "resolvido"). O `||` sabe dizer PÕE e não sabe dizer TIRE: chave ausente da carga
@@ -2665,6 +2685,43 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   **O QUE A 35 NÃO CONSERTA, de propósito:** a aba do jogador continua sem enxergar `mordidos`,
   então continua oferecendo mordida que já foi cobrada. Fica registrado para não virar surpresa.
+
+- [x] **L44 · [VARRIDO] A conferência que CONTA em vez de NOMEAR** · *achado em 05/09/2026, ao
+  rodar a leva, e a revisora tinha apontado um caso. É família, e não caso.*
+
+  **A RÉGUA: conferência de migração NOMEIA o que aquele arquivo define, e nunca CONTA o que
+  existe.** Contagem mede o mundo, e o arquivo só responde por si. É a régua do *"achar por chave e
+  nunca por posição"* aplicada a SQL.
+
+  **O caso que abriu a família:** a conferência da 22 dizia *"deve devolver 8 funções `jogador_*`"*
+  e hoje devolve **10** · a `jogador_declara` nasceu depois, na 28, e entrou na conta de um arquivo
+  que não a define. E ela já nascera errada: a 22 define **nove**, não oito. Uma contagem por
+  prefixo envelhece toda vez que alguém acrescenta função **em qualquer lugar**.
+
+  **E há um segundo defeito na mesma forma, que só aparece quando falha:** contagem que dá o número
+  errado **não diz o que faltou**. `count(*) = 1` quando devia ser 2 manda quem confere abrir o
+  arquivo e comparar à mão. Listar por nome responde as duas perguntas de uma vez.
+
+  **O QUE FOI CORRIGIDO** (todas viraram listagem por nome, e o `where` ganhou `nspname='public'`
+  onde faltava · a da 28 varria `pg_proc` **sem filtro de schema**):
+
+  | # | o que estava |
+  |---|---|
+  | **21** | `count(*) ... column_name like 'mana%'` · contava PADRÃO, e qualquer coluna `mana*` futura a quebraria |
+  | **22** | `count(*) ... proname like 'jogador\_%'` · o caso que abriu a família |
+  | **27** | dois `count(*)` ("deve devolver 2" e "1") sobre colunas nomeadas |
+  | **28** | `count(*) from pg_proc` **sem schema**: função homônima em outro schema entrava na conta |
+
+  **E UM ACHADO IRMÃO, que veio da regra de acesso da mesa:** quatro conferências **liam linha de
+  mesa** para provar o que o catálogo prova (`select ... from mesa_arenas limit 1`, nas 23, 25, 31
+  e 33). Quem confere o esquema pode não ter (e não deveria precisar de) acesso à mesa de ninguém ·
+  foi exatamente a regra que a mesa impôs no dia em que essas migrações rodaram. As quatro passaram
+  a conferir pelo catálogo, e o roteiro de comportamento ficou marcado como roteiro, não como
+  conferência.
+
+  **E AS TRÊS QUE NÃO TINHAM NENHUMA** (30, 32, e a 31 na prática) ganharam a sua, com o porquê
+  escrito dentro: **migração sem conferência obriga quem roda a inventar uma, e quem inventa está
+  inventando sob a pressão de já ter rodado** · tende a escrever a pergunta que já sabe que passa.
 
 - [ ] **L36 · [QUANDO A REGRA APARECER] O `resumoParaBanco` é vitrine, e não entrada de conta.**
   Não é defeito hoje, e é para isso que está escrito: quando alguém topar com ele, que não trate

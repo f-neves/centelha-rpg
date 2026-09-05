@@ -93,6 +93,17 @@ where c.oculto = false and eh_membro(e.mesa_id);
 grant select on public.combate_visao to authenticated;
 
 -- ----------------------------------------------------------------- conferencia
--- Deve devolver 3: mana_atual, mana_max e mana_pct.
--- select count(*) from information_schema.columns
---  where table_name = 'combate_visao' and column_name like 'mana%';
+--
+-- A REGUA (05/09/2026): CONFERENCIA DE MIGRACAO NOMEIA O QUE ESTE ARQUIVO
+-- DEFINE, E NUNCA CONTA O QUE EXISTE. Contagem mede o mundo, e o arquivo so
+-- responde por si: a conferencia da 22 dizia "deve devolver 8 funcoes
+-- `jogador_*`" e hoje da 10, porque uma nasceu depois, em outro arquivo. Alem
+-- de envelhecer sozinha, contagem que falha nao diz O QUE faltou. E o que
+-- roda tem de rodar sem ler linha de mesa nenhuma.
+--
+-- Deve devolver as TRES colunas, uma linha cada. O `like 'mana%'` que estava
+-- aqui contava padrao, entao qualquer coluna `mana*` futura o quebraria.
+-- select column_name from information_schema.columns
+--  where table_schema = 'public' and table_name = 'combate_visao'
+--    and column_name in ('mana_atual', 'mana_max', 'mana_pct')
+--  order by column_name;

@@ -72,6 +72,20 @@ select id, mesa_id, nome, cols, rows, escala_m, fundo_path, fundo_url, fundo, gr
 grant select on public.arena_visao to authenticated;
 
 -- ----------------------------------------------------------------- conferir
--- select nevoa from mesa_arenas limit 1;
+--
+-- A REGUA (05/09/2026): CONFERENCIA DE MIGRACAO NOMEIA O QUE ESTE ARQUIVO
+-- DEFINE, E NUNCA CONTA O QUE EXISTE. Contagem mede o mundo, e o arquivo so
+-- responde por si: a conferencia da 22 dizia "deve devolver 8 funcoes
+-- `jogador_*`" e hoje da 10, porque uma nasceu depois, em outro arquivo. Alem
+-- de envelhecer sozinha, contagem que falha nao diz O QUE faltou. E o que
+-- roda tem de rodar sem ler linha de mesa nenhuma.
+--
+-- As duas de baixo sao o modelo: entrada escrita na mao, resposta esperada ao
+-- lado, e nenhuma linha de mesa lida. (O `select nevoa from mesa_arenas limit
+-- 1` que estava aqui lia mesa de gente, e nao provava nada: a coluna existir
+-- ja esta provada pela linha do `add column`.)
+-- select column_name from information_schema.columns
+--  where table_schema = 'public' and table_name = 'mesa_arenas'
+--    and column_name = 'nevoa';                                     -- 1 linha
 -- select casa_revelada('{"ligada":true,"revelados":["1,1"]}'::jsonb, 1, 1);  -- t
 -- select casa_revelada('{"ligada":true,"revelados":["1,1"]}'::jsonb, 2, 1);  -- f

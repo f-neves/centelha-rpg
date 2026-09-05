@@ -83,10 +83,10 @@ gesto: **L40**.
 do que qualquer resumo. O levantamento das pendentes, com o que cada uma muda de formato
 para quem está com a mesa aberta, está no **L42**.
 
-Estado em 05/09/2026: **1 a 28 aplicadas**; a mesa vai rodar **31, 32, 29, 30 e 35** numa
-sentada, com **31 e 32 coladas** (a única ordem obrigatória é 31 antes de 32). A **33 fica**
-· o que falta nela é a tela, não o SQL, e isso é fase 2.5. A **34 ainda não existe** como
-arquivo.
+Estado em 05/09/2026: **1 a 32 e a 35 aplicadas** · a leva de 31, 32, 29, 30 e 35 rodou
+naquele dia, na ordem da mesa, com 31 e 32 coladas, e as cinco conferências passaram (o que
+cada uma devolveu está no **L42**). A **33 é a única não aplicada** · o que falta nela é a
+tela, não o SQL, e isso é fase 2.5. A **34 ainda não existe** como arquivo.
 
 **A 35 ENTRA INERTE, E NÃO PRONTA.** Ela para o apagamento de hoje e não termina o campo:
 o `||` sabe dizer PÕE e não sabe dizer TIRE, e um dos quatro pontos do cliente TIRA chave
@@ -132,7 +132,11 @@ geral que isso instancia: **migração antes do cliente é segura, cliente antes
   no vermelho lê o porquê ali mesmo. Conferido em 05/09/2026 no `f4ff1ec`.
 - **Asserção de sobrevivente precisa do par**, senão passa pelo motivo errado: a coisa que
   cai E a coisa que fica.
-- **Achar linha por CHAVE e nunca por posição**, em teste e em prosa.
+- **Achar linha por CHAVE e nunca por posição**, em teste e em prosa. **Em SQL isso é:
+  conferência de migração NOMEIA o que aquele arquivo define, e nunca CONTA o que existe** ·
+  contagem mede o mundo e envelhece quando outro arquivo mexe, e quando falha não diz o que
+  faltou. E **conferência que precisa ler linha de mesa não é conferência**: quem confere o
+  esquema pode não ter acesso à mesa de ninguém. → a varredura inteira: **L44**.
 - **O compilador do Astro cai nesta máquina** (`UnknownCompilerError`,
   `WebAssembly.instantiate(): size ... > maximum function size`), e vem e vai com a memória
   livre. Matar os `node` deixados por rodadas anteriores costuma resolver; quando não
