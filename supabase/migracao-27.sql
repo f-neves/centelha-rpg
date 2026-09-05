@@ -163,3 +163,13 @@ grant select on public.combate_visao to authenticated;
 -- select nome, acao from public.combate_visao;  -- sem as chaves arma e alvo
 --
 -- Fim da migracao 27.
+
+-- >>> carimbo (gerado por scripts/gen-carimbo-migracoes.mjs · não editar à mão)
+--
+-- O `on conflict` ATUALIZA, e é de propósito: rerodar o arquivo tem de
+-- corrigir o hash e tirar o `a_mao` da carga histórica da migração 36. Quem
+-- rerodou sabe mais do que quem escreveu a carga de memória.
+insert into public.migracoes (numero, arquivo, sha256, a_mao) values
+  (27, 'migracao-27.sql', 'd9fb4d6eb4d5aa85', false)
+  on conflict (numero) do update set arquivo = excluded.arquivo,
+    sha256 = excluded.sha256, a_mao = false, aplicada_em = now();

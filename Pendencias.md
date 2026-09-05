@@ -2535,7 +2535,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **E O RISCO QUE EU FUI CONFERIR ANTES DE DIZER QUE NÃO HÁ:** a 32 faz `centro` e `conjurador_id`
   poderem vir nulos, e o cliente não foi mudado para isso. Conferido: o `centro` **não é lido em
   lugar nenhum** do cliente · a única ocorrência dele é uma escrita, em
-  `patch.centro = { q: nova.q, r: nova.r };`, `artes-grid-mesa.ts:1927`.
+  `patch.centro = { q: nova.q, r: nova.r };`, `artes-grid-mesa.ts:1943`.
   E o `conjurador_id` já era tratado como opcional em todos os pontos que o usam. **`alvos` nunca vem nulo** (a view faz `coalesce` para `[]`). O cabeçalho da 32 diz
   que ela não depende de mudança de tela, e a leitura do cliente confirma.
 
@@ -2722,6 +2722,35 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **E AS TRÊS QUE NÃO TINHAM NENHUMA** (30, 32, e a 31 na prática) ganharam a sua, com o porquê
   escrito dentro: **migração sem conferência obriga quem roda a inventar uma, e quem inventa está
   inventando sob a pressão de já ter rodado** · tende a escrever a pergunta que já sabe que passa.
+
+- [x] **L45 · [CONSERTADO, ESPERA A 36 RODAR] O objeto que se disfarça de outro** · *achado em
+  05/09/2026, e a forma é nova. O caso foi meu, e o que ele custou foi saída dupla em produção.*
+
+  **A FORMA: ler o ponto de escrita não diz por onde a escrita SAI, quando alguém trocou o cliente
+  por baixo.** É irmã do *transporte que descarta* (a estrada entre as duas pontas), com uma
+  diferença que muda o conserto: lá o transporte RECORTA a carga e dá para achar a lista de chaves;
+  aqui o transporte é **invisível**, porque imita a interface do que substituiu.
+
+  **O CASO.** Eu li o `marcarMordido`, vi `ctx.SB.from('arena_efeitos').update(...)` e escrevi que
+  ele *"grava direto na tabela e nunca chama a RPC"* · e daí concluí que a migração 35 entrava
+  **inerte**. Vale só para o mestre: o `sbDoJogador()` (`src/pages/mesa/grid.astro:2649`) devolve um
+  objeto **com a mesma cara** que troca toda escrita pelas funções do banco, e o `ctxArtes()` o
+  entrega no lugar do Supabase quando quem joga não é o mestre.
+
+  **O QUE ISSO CUSTOU:** a 35 não entrou inerte. Ela pôs **saída dupla** em produção na hora em que
+  rodou · o jogador conjura, a marca `__a_sair` não é removida pela RPC (o `||` não sabe tirar), a
+  aba do mestre lê a marca e resolve a Arte de novo: dano recobrado, condição reaplicada, segundo
+  *"saiu"* no registro. **E mudou de natureza, não só de tamanho:** antes a substituição apagava a
+  marca por acaso e a saída dupla dependia de aba com memória velha (transitória); depois da 35 a
+  marca fica gravada e a segunda resolução é certa.
+
+  **O GATILHO DE SÍMBOLO**, que é o que faz a pergunta sobreviver ao instante da escrita: `ctx.SB`,
+  `SB`, **qualquer cliente recebido por parâmetro em vez de importado**. Ao digitar, perguntar
+  **quem é este SB nesta aba**. Está no `docs/simulacao/CATALOGO.md`.
+
+  **O CONSERTO** é a `supabase/migracao-36.sql` (o vocabulário `tirar_mordidos`), a linha do
+  `marcarMordido` que só entra no ramo do jogador, o portão no `validate-data.mjs` e o par de
+  asserções no `test-arte-na-mesa.mjs`. **Falta a mesa rodar a 36.**
 
 - [ ] **L36 · [QUANDO A REGRA APARECER] O `resumoParaBanco` é vitrine, e não entrada de conta.**
   Não é defeito hoje, e é para isso que está escrito: quando alguém topar com ele, que não trate

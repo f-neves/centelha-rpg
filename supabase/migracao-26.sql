@@ -157,3 +157,13 @@ create policy arq_delete on public.arquivos for delete
 --
 -- Depois desta migracao a consulta acima nao devolve nenhuma linha.
 -- =====================================================================
+
+-- >>> carimbo (gerado por scripts/gen-carimbo-migracoes.mjs · não editar à mão)
+--
+-- O `on conflict` ATUALIZA, e é de propósito: rerodar o arquivo tem de
+-- corrigir o hash e tirar o `a_mao` da carga histórica da migração 36. Quem
+-- rerodou sabe mais do que quem escreveu a carga de memória.
+insert into public.migracoes (numero, arquivo, sha256, a_mao) values
+  (26, 'migracao-26.sql', 'ec3f51945b63eeac', false)
+  on conflict (numero) do update set arquivo = excluded.arquivo,
+    sha256 = excluded.sha256, a_mao = false, aplicada_em = now();

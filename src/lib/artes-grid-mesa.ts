@@ -1625,15 +1625,21 @@ async function aplicarDano(ctx: CtxGrid, alvo: any, bruto: number, plano: Plano,
  * banco. É por isso que `valor == null` pode ser um `delete` e pronto · e a
  * `A_SAIR` é tirada exatamente assim, uma vez por efeito que sai.
  *
- * O `||` DA MIGRAÇÃO 35 NÃO ENTENDE "TIRE": ele funde, e chave AUSENTE da carga
- * sobrevive em vez de sumir. Se algum destes quatro pontos passar um dia pela
- * `jogador_muda_efeito`, o `marcarMordido(..., null)` vira operação sem efeito,
- * a `A_SAIR` fica gravada para sempre, o `deveSair` fica verdadeiro para sempre
- * e o efeito não para de tentar sair.
+ * O `||` DA MIGRAÇÃO 35 NÃO ENTENDIA "TIRE": ele funde, e chave ausente da carga
+ * sobrevivia em vez de sumir. **E o cliente já passava por lá**, o que ninguém
+ * viu na hora: na aba do jogador o `ctx.SB` não é o Supabase, é o
+ * `sbDoJogador()`, que redireciona toda escrita para as funções do banco. O
+ * resultado foi SAÍDA DUPLA em produção · a `A_SAIR` ficava gravada, a aba do
+ * mestre lia a marca e resolvia a Arte de novo, com dano recobrado, condição
+ * reaplicada e um segundo "saiu" no registro.
  *
- * ENTÃO A DISPENSA DA LÁPIDE TEM CONDIÇÃO, e ela é esta: vale ENQUANTO O CAMINHO
- * FOR GRAVAÇÃO DIRETA NA TABELA. O vocabulário de remoção tem de existir na RPC
- * ANTES de qualquer cliente passar a usá-la para este campo, e não depois.
+ * A MIGRAÇÃO 36 DEU O VOCABULÁRIO DE REMOÇÃO (`tirar_mordidos`), e o portão que
+ * guarda isso vive no `validate-data.mjs`, perto do cliente e não do `.sql`:
+ * quem for escrever a chamada não vai abrir a migração para conferir se pode.
+ *
+ * A LIÇÃO, QUE É MAIOR QUE O CASO: ler o ponto de escrita não diz por onde a
+ * escrita SAI, quando alguém trocou o cliente por baixo. Ao ver um `SB` que
+ * chegou por parâmetro em vez de importado, a pergunta é quem ele é NESTA aba.
  *
  * O LADO DO JOGADOR NÃO TEM CONSERTO DAQUI, e a linha do `else` é o que sobra.
  * Ele carrega os efeitos da `efeito_visao`, e essa view NÃO TRAZ `mordidos`
@@ -1652,7 +1658,17 @@ async function marcarMordido(ctx: CtxGrid, ef: EfeitoAtivo, chave: string,
   if (valor == null) delete base[chave];
   else base[chave] = valor;
   ef.mordidos = base;
-  await ctx.SB.from('arena_efeitos').update({ mordidos: base }).eq('id', ef.id);
+  // O QUE VIAJA DEPENDE DE POR ONDE VIAJA, e foi ler isto errado que custou a
+  // saída dupla. Para o MESTRE esta linha é escrita direta na tabela, e o objeto
+  // inteiro é o valor da coluna: chave que sumiu do objeto some do banco. Para o
+  // JOGADOR o `ctx.SB` NÃO é o Supabase · é o `sbDoJogador()` (grid.astro), que
+  // troca este `update` por `jogador_muda_efeito`. Lá o mapa FUNDE, então tirar
+  // chave precisa ser DITO. O `tirar_mordidos` não é coluna: é palavra da RPC
+  // (migração 36), e por isso só entra no ramo do jogador · mandá-la ao mestre
+  // seria coluna inexistente e erro na hora.
+  const patch: Record<string, any> = { mordidos: base };
+  if (!ctx.mestre && valor == null) patch.tirar_mordidos = [chave];
+  await ctx.SB.from('arena_efeitos').update(patch).eq('id', ef.id);
 }
 
 // ==================================================== a condição com prazo

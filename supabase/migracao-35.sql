@@ -155,3 +155,13 @@ select p.proname,
 select coalesce('{"a":1,"__a_sair":1}'::jsonb, '{}'::jsonb) || '{"b":2}'::jsonb
          = '{"a":1,"__a_sair":1,"b":2}'::jsonb as soma_preserva,
        '{"a":1}'::jsonb || '{"a":9}'::jsonb = '{"a":9}'::jsonb as repetida_atualiza;
+
+-- >>> carimbo (gerado por scripts/gen-carimbo-migracoes.mjs · não editar à mão)
+--
+-- O `on conflict` ATUALIZA, e é de propósito: rerodar o arquivo tem de
+-- corrigir o hash e tirar o `a_mao` da carga histórica da migração 36. Quem
+-- rerodou sabe mais do que quem escreveu a carga de memória.
+insert into public.migracoes (numero, arquivo, sha256, a_mao) values
+  (35, 'migracao-35.sql', '7a5e78d0ebb7aa3f', false)
+  on conflict (numero) do update set arquivo = excluded.arquivo,
+    sha256 = excluded.sha256, a_mao = false, aplicada_em = now();

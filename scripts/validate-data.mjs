@@ -300,6 +300,100 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
   }
 }
 
+
+// ------------- o vocabulário de REMOÇÃO da `jogador_muda_efeito` (L42, L43)
+//
+// A MIGRAÇÃO 35 FEZ O `mordidos` FUNDIR EM VEZ DE SUBSTITUIR, e com isso a RPC
+// do jogador passou a saber dizer PÕE e a NÃO saber dizer TIRE: chave ausente da
+// carga sobrevive, em vez de sumir. O cliente TIRA chave · o
+// `marcarMordido(ctx, ef, A_SAIR, null)` cai num `delete`, e é assim que a marca
+// que segura a Arte em montagem é consumida quando ela sai.
+//
+// PELA RPC, ESSE `delete` É OPERAÇÃO SEM EFEITO: a marca fica gravada, e a
+// próxima aba que ler a linha do banco acha que a Arte ainda deve a saída e a
+// resolve DE NOVO. Dano recobrado, condição reaplicada, e um segundo "saiu" no
+// registro.
+//
+// ESTE PORTÃO MORA AQUI, PERTO DO CLIENTE, e não dentro do `.sql`: quem for
+// escrever a chamada não vai abrir a migração para conferir se pode.
+//
+// A EVIDÊNCIA É O TEXTO DA MIGRAÇÃO, E NÃO UM SÍMBOLO DO CLIENTE. Saber apagar
+// chave é propriedade do corpo da função: nome de função pode existir com a
+// capacidade ausente, e uma `jogador_tira_mordida` vazia passaria por qualquer
+// portão que só procurasse o nome. Então o que se lê é a expressão do
+// `mordidos = ...` na definição EFETIVA (a migração de maior número que redefine
+// a função), atrás do operador de remoção do jsonb (`-` ou `#-`).
+//
+// A APOSENTADORIA NÃO PEDE EDIÇÃO NENHUMA AQUI: a migração que trouxer a
+// remoção deixa este portão verde no mesmo diff, porque a condição é sobre o
+// texto dela e não sobre uma data nem sobre uma lista escrita à mão.
+{
+  const RAIZ = path.join(DIR, '..', '..');
+  const dirMig = path.join(RAIZ, 'supabase');
+  const semComentario = (s) => s.replace(/--[^\n]*/g, '');
+  // A DEFINIÇÃO EFETIVA é a da MAIOR migração que redefine a função: rodar as
+  // migrações em ordem faz a última vencer, então é ela que descreve o banco.
+  const defs = fs.readdirSync(dirMig)
+    .filter((f) => /^migracao-(\d+)\.sql$/.test(f))
+    .map((f) => ({ f, n: Number(f.match(/^migracao-(\d+)\.sql$/)[1]),
+                   txt: fs.readFileSync(path.join(dirMig, f), 'utf8') }))
+    .filter((m) => /function\s+public\.jogador_muda_efeito/.test(semComentario(m.txt)))
+    .sort((a, b) => a.n - b.n);
+  const efetiva = defs[defs.length - 1];
+
+  // O CLIENTE TIRA CHAVE? O `delete` no mapa é a remoção, e ele só importa se
+  // puder VIAJAR pela RPC · o atalho do jogador (`sbDoJogador`) troca todo
+  // `from('arena_efeitos').update(...)` por uma chamada da função.
+  const mod = fs.readFileSync(path.join(RAIZ, 'src/lib/artes-grid-mesa.ts'), 'utf8');
+  const grid = fs.readFileSync(path.join(RAIZ, 'src/pages/mesa/grid.astro'), 'utf8');
+  //
+  // A DETECÇÃO NÃO PODE DEPENDER DA FORMA DA CHAMADA, e isto aqui já falhou uma
+  // vez por isso: a primeira versão procurava `.update({ mordidos`, e no mesmo
+  // dia o conserto trocou aquilo por `.update(patch)`. O portão ficou VERDE por
+  // ter parado de enxergar o cliente, que é o pior modo de falhar que existe.
+  // Agora ele procura o SENTIDO: um `delete` num objeto, e esse MESMO objeto
+  // sendo atribuído a um `.mordidos`. Renomear a variável não escapa (o nome
+  // sai do próprio texto), e renomear a função também não (ela não é citada).
+  const tira = /delete\s+(\w+)\[[^\]]+\]/.exec(mod);
+  const clienteTira = !!tira
+    && new RegExp('mordidos\\s*=\\s*' + tira[1] + '\\b').test(mod);
+  const viaja = /arena_efeitos'[\s\S]{0,200}?jogador_muda_efeito/.test(grid);
+
+  if (clienteTira && viaja) {
+    let sabeTirar = false;
+    if (efetiva) {
+      const corpo = semComentario(efetiva.txt);
+      // A expressão do `mordidos = ...`, do sinal de igual até a próxima
+      // atribuição de coluna ou o `where` do update.
+      const m = /\bmordidos\s*=([\s\S]*?)(?:\n\s*\w+\s*=|\n\s*where\b)/i.exec(corpo);
+      // O OPERADOR DE REMOÇÃO É UM `-` QUE SOBRA, e a busca é por eliminação em
+      // vez de por forma: tirando os literais de texto e as setas `->`/`->>`,
+      // um traço que reste numa expressão jsonb é remoção (`a - 'k'`,
+      // `a - array`, `a #- caminho`). Tentar casar a FORMA da remoção foi a
+      // primeira versão disto, e ela reprovou o próprio ensaio de
+      // aposentadoria: `- coalesce(...)` não parecia com nenhum dos casos que
+      // eu tinha imaginado. O falso positivo que sobra é um número negativo
+      // literal, que não tem o que fazer num mapa de mordidas.
+      if (m) {
+        const limpa = m[1].replace(/'(?:''|[^'])*'/g, "''").replace(/->>?/g, '@');
+        sabeTirar = /-/.test(limpa);
+      }
+    }
+    if (!sabeTirar) {
+      fail('a `jogador_muda_efeito` NÃO sabe apagar chave do `mordidos`, e o cliente já tira uma '
+        + '(`marcarMordido(ctx, ef, A_SAIR, null)`, em artes-grid-mesa.ts). Pelo atalho do jogador '
+        + `(grid.astro, \`sbDoJogador\`) esse \`delete\` vira chamada da RPC, e a definição efetiva `
+        + `(${efetiva ? efetiva.f : 'nenhuma migração a define'}) só FUNDE: a marca fica gravada, `
+        + 'a próxima aba resolve a Arte de novo, e sai dano recobrado com um segundo "saiu" no '
+        + 'registro. CONSERTO: uma migração cujo `mordidos = ...` use o operador de remoção do '
+        + 'jsonb (`-` ou `#-`); este portão fica verde no mesmo diff, sem ninguém abrir este '
+        + 'arquivo. O QUE ELE PROVA: a metade do CLIENTE, que é ninguém chamar a RPC antes de a '
+        + 'migração com remoção existir NO REPOSITÓRIO. O QUE ELE NÃO PROVA: que o BANCO tenha o '
+        + 'vocabulário · migração roda à mão, e nada daqui alcança produção. Ver L43.');
+    }
+  }
+}
+
 if (erros.length) {
   console.error(`\n✘ Validação de dados FALHOU (${erros.length} erro(s)):`);
   for (const e of erros) console.error('  • ' + e);

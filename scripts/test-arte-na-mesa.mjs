@@ -350,6 +350,83 @@ console.log('\n· tirar a marca da saida nao apaga a mordida que outra aba gravo
   ok(m.outro === 1, 'e a mordida que a OUTRA aba gravou continua la: tirar uma chave nao apaga as outras');
 }
 
+
+// ================== N+1 · o ramo do JOGADOR sabe DIZER que a chave tem de sair
+//
+// A ASSERCAO NASCE JUNTO DO VOCABULARIO (migracao 36), e nao depois: prender
+// uma remocao que nenhum caminho executa seria prender o duble.
+//
+// O QUE ELA PRENDE: na aba do jogador o `ctx.SB` NAO e o Supabase. O
+// `sbDoJogador()` (grid.astro) devolve um objeto com a mesma cara que troca
+// todo `from('arena_efeitos').update(...)` por `jogador_muda_efeito`. La o mapa
+// FUNDE, entao chave que sumiu do objeto SOBREVIVE, e tirar precisa ser DITO.
+// Foi ler isso errado ("grava direto na tabela", que vale so para o mestre) que
+// pos saida dupla em producao: a `__a_sair` ficava gravada e a aba do mestre
+// resolvia a Arte de novo, com dano recobrado.
+//
+// O DUBLE IMITA O ATALHO, e nao o Supabase: ele delega tudo para o banco falso
+// e so ANOTA o que foi mandado para `arena_efeitos`. E o que se mede e a CARGA,
+// que e o unico lugar onde a diferenca entre os dois ramos aparece.
+console.log('\n· o jogador diz `tirar_mordidos`, e o mestre nao');
+{
+  const { ctx } = cena({ tick: 3 });
+  // O `ATIVOS` e global do modulo e o banco falso e novo a cada cena: sem esta
+  // linha, `efeitosAtivos()` ainda traz o efeito da cena anterior.
+  await M.carregarEfeitos(ctx);
+  await M.gravarEfeito(ctx, ctx.combs[0], plano(), { forma: 'alvo', figura: null, alvos: ['a1'] });
+  const vivos = M.efeitosAtivos();
+  ok(vivos.length === 1 && M.deveSair(vivos[0]), 'a Arte nasce devendo a saida (e e a unica em cena)');
+
+  // A aba vira a do JOGADOR: mesma cena, outro cliente por baixo.
+  const cargas = [];
+  const real = ctx.SB;
+  ctx.mestre = false;
+  ctx.SB = {
+    from: (tab) => {
+      const t = real.from(tab);
+      if (tab !== 'arena_efeitos') return t;
+      return Object.assign(Object.create(t), {
+        update: (campos) => { cargas.push(campos); return t.update(campos); },
+      });
+    },
+  };
+
+  ctx.tickAgora = () => 9;
+  await M.verificarEfeitos(ctx);
+
+  const saida = cargas.find((c) => c && 'tirar_mordidos' in c);
+  ok(!!saida, `a carga do jogador diz o que TIRAR (${cargas.length} escrita(s) em arena_efeitos)`);
+  ok(!!saida && Array.isArray(saida.tirar_mordidos) && saida.tirar_mordidos.includes('__a_sair'),
+    'e o que ela manda tirar e a marca da saida');
+  ok(!!saida && saida.mordidos && saida.mordidos.__a_sair == null,
+    'e o mapa que vai junto ja nao tem a marca: poe e tira nao se contradizem');
+}
+
+// E O PAR, sem o qual a assercao de cima passa pelo motivo errado: mandar a
+// palavra da RPC pelo caminho do MESTRE seria coluna inexistente, e a escrita
+// falharia na cara do mestre.
+console.log('\n· e a palavra da RPC nao vaza para a escrita direta do mestre');
+{
+  const { ctx } = cena({ tick: 3 });
+  await M.gravarEfeito(ctx, ctx.combs[0], plano(), { forma: 'alvo', figura: null, alvos: ['a1'] });
+  const cargas = [];
+  const real = ctx.SB;
+  ctx.SB = {
+    from: (tab) => {
+      const t = real.from(tab);
+      if (tab !== 'arena_efeitos') return t;
+      return Object.assign(Object.create(t), {
+        update: (campos) => { cargas.push(campos); return t.update(campos); },
+      });
+    },
+  };
+  ctx.tickAgora = () => 9;
+  await M.verificarEfeitos(ctx);
+  ok(cargas.length > 0, `o mestre tambem escreveu (${cargas.length})`);
+  ok(cargas.every((c) => !('tirar_mordidos' in c)),
+    'e NENHUMA carga dele traz `tirar_mordidos`: para o mestre isso seria coluna que nao existe');
+}
+
 console.log('');
 if (FALHAS.length) {
   console.log(`✗ Arte na mesa: ${FALHAS.length} falha(s) de ${PASSOU + FALHAS.length}`);

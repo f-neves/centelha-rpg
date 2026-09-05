@@ -89,3 +89,13 @@ grant select on public.arena_visao to authenticated;
 --    and column_name = 'nevoa';                                     -- 1 linha
 -- select casa_revelada('{"ligada":true,"revelados":["1,1"]}'::jsonb, 1, 1);  -- t
 -- select casa_revelada('{"ligada":true,"revelados":["1,1"]}'::jsonb, 2, 1);  -- f
+
+-- >>> carimbo (gerado por scripts/gen-carimbo-migracoes.mjs · não editar à mão)
+--
+-- O `on conflict` ATUALIZA, e é de propósito: rerodar o arquivo tem de
+-- corrigir o hash e tirar o `a_mao` da carga histórica da migração 36. Quem
+-- rerodou sabe mais do que quem escreveu a carga de memória.
+insert into public.migracoes (numero, arquivo, sha256, a_mao) values
+  (23, 'migracao-23.sql', 'd37762c09f90f916', false)
+  on conflict (numero) do update set arquivo = excluded.arquivo,
+    sha256 = excluded.sha256, a_mao = false, aplicada_em = now();

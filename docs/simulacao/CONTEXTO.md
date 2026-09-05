@@ -83,6 +83,11 @@ gesto: **L40**.
 do que qualquer resumo. O levantamento das pendentes, com o que cada uma muda de formato
 para quem está com a mesa aberta, está no **L42**.
 
+**A 36 ESTÁ ESCRITA E ESPERA A MESA**, e ela é urgente: conserta saída dupla acontecendo em
+produção desde que a 35 rodou (o vocabulário `tirar_mordidos`, ver **L43** e **L45**), e cria a
+tabela `migracoes`, que é o instrumento da quarta categoria · o fato que ninguém consegue
+perguntar daqui. **Nada em produção até ela rodar.**
+
 Estado em 05/09/2026: **1 a 32 e a 35 aplicadas** · a leva de 31, 32, 29, 30 e 35 rodou
 naquele dia, na ordem da mesa, com 31 e 32 coladas, e as cinco conferências passaram (o que
 cada uma devolveu está no **L42**). A **33 é a única não aplicada** · o que falta nela é a
@@ -132,6 +137,13 @@ geral que isso instancia: **migração antes do cliente é segura, cliente antes
   no vermelho lê o porquê ali mesmo. Conferido em 05/09/2026 no `f4ff1ec`.
 - **Asserção de sobrevivente precisa do par**, senão passa pelo motivo errado: a coisa que
   cai E a coisa que fica.
+- **AS FORMAS TÊM CATÁLOGO, e ele é o dono da lista de perguntas:** `docs/simulacao/CATALOGO.md`.
+  Instrumento novo passa por lá ANTES de ser construído, e o desenho diz quais formas se aplicam e
+  o que fez com cada uma. Os CASOS continuam no princípio do `02-projeto-harness.md`. **A lista
+  não é contada**: citar "as doze formas" envelhece na forma nova seguinte.
+- **O OBJETO QUE SE DISFARÇA DE OUTRO** · ler o ponto de escrita não diz por onde a escrita SAI.
+  Gatilho: `ctx.SB`, `SB`, qualquer cliente recebido por parâmetro em vez de importado · **quem é
+  este SB nesta aba?** → **L45**.
 - **Achar linha por CHAVE e nunca por posição**, em teste e em prosa. **Em SQL isso é:
   conferência de migração NOMEIA o que aquele arquivo define, e nunca CONTA o que existe** ·
   contagem mede o mundo e envelhece quando outro arquivo mexe, e quando falha não diz o que
