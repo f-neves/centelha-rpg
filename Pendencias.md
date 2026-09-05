@@ -1257,7 +1257,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   fazia o carimbo valer: alguém que leia o perfil na hora de aplicar a regra.**
 
   O perfil é gravado, viaja no encontro, aparece na tela, é comparável e é recarimbável. E é lido
-  em **um** lugar do código de produção, `grid.astro:8595` (`perfil: { ...REGRAS_CENA }`), onde ele é copiado para dentro da
+  em **um** lugar do código de produção, `grid.astro:8603` (`perfil: { ...REGRAS_CENA }`), onde ele é copiado para dentro da
   entrada do lance, para o oráculo. `entrada.perfil` **não é consultado em lugar nenhum**: nem em
   `resolverGolpe`, nem em `quase-acerto.ts`, nem em `calc.ts`, nem no harness. Nenhuma das quinze
   bandeiras faz o motor tomar um caminho diferente.
@@ -1323,7 +1323,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   - o catálogo, 55 verbetes com número, em `src/data/condicoes.json`;
   - a soma: `export function somarCondicoes` (`src/lib/mesa-core.ts:164`);
-  - a leitura na folha do lance: `const cd = somarCondicoes` (`grid.astro:8304`);
+  - a leitura na folha do lance: `const cd = somarCondicoes` (`grid.astro:8312`);
   - o desconto chegando à Defesa: `alvo.condicoesDefesa` (`src/lib/lance.ts:159`);
   - a coluna: `add column if not exists condicoes` (`supabase/migracao-11.sql:25`);
   - e o RPC do jogador aceitando a chave: `condicoes` (`supabase/migracao-22.sql:125`).
@@ -1333,8 +1333,8 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   O diálogo saiu da aba Combate e virou três peças compartilhadas (`src/lib/mesa-condicoes.ts`,
   `src/components/CondDlg.astro`, e o estilo no `MesaCab.astro`). O que entrou no tabuleiro:
 
-  - o item no menu da peça: `item('condicoes'` (`grid.astro:6811`);
-  - o selo de ícones na lista lateral, que custa zero gestos: `const selo` (`grid.astro:5991`);
+  - o item no menu da peça: `item('condicoes'` (`grid.astro:6819`);
+  - o selo de ícones na lista lateral, que custa zero gestos: `const selo` (`grid.astro:5999`);
   - e a aba Combate chamando o mesmo módulo: `function abrirCondicoes` (`combate.astro:1740`), para
     não haver duas cópias divergindo no primeiro conserto que só uma receber.
 
@@ -1534,7 +1534,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   caixa**. Escolher "interpor" hoje **muda o verbo da frase do registro e nada mais**
   (`const verbo`, `src/lib/mesa-tempo-ui.ts:338`), e a saída escolhida é descartada pelo Grid, que
   grava só
-  `acao: limpa` (`grid.astro:5889`).
+  `acao: limpa` (`grid.astro:5897`).
 
   **O CAPÍTULO NÃO TEM UMA LINHA**, e é o primeiro fato do levantamento: `interpor`, `desviar` e
   **`abortar`** não aparecem em `src/content/chapters/` nenhuma vez. O Simultâneo dessa parte vive
@@ -2007,19 +2007,34 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   ela, as métricas de carga saem em Ticks e em gestos e nunca em segundos, e essa é a maior lacuna
   conhecida do conjunto.
 
-- [x] **L37 · RESOLVIDA em 05/09/2026 · A dupla cobrança do −2 da Investida** · *a mesa escolheu a
-  terceira opção: o número mora só na condição, e o TABULEIRO passa a alimentá-la.*
+- [x] **L37 · RESOLVIDA em 05/09/2026 · A dupla cobrança do −2 da Investida** · *a mesa escolheu
+  **O GRID ALIMENTA A CONDIÇÃO**: o número mora só na condição, e o tabuleiro passa a alimentá-la.*
+
+  **AS OPÇÕES ESTÃO NOMEADAS E NÃO NUMERADAS, e isso é conserto de um defeito de registro.** Este
+  verbete dizia "a mesa escolheu a terceira", porque a lista escrita aqui embaixo tinha uma ordem, e
+  a caixa de escolha que a mesa de fato respondeu tinha outra: lá, a escolhida era a PRIMEIRA. As
+  duas listas concordavam no conteúdo e discordavam no número, então o número não identificava nada
+  · quem lesse "a terceira" daqui a três meses leria *o automático sai*, que é o oposto do que foi
+  feito. **Opção de decisão se chama pelo nome. O número depende de qual lista você está lendo.**
 
   **O que foi construído:** a escada do motor deixou de cobrar a Investida (`defesaPerdida` voltou
   a `e.preparo` puro no Preparo, com o porquê escrito no lugar). Declarar Investida no Grid passa a
   **aplicar a condição `investindo` sozinho**, marcada com `auto: true`, e a varredura do Tick a
   **tira quando o Preparo acaba** (`marcarInvestida` e `varrerInvestida`, no `grid.astro`).
 
-  **A remoção precisou ser explícita, e isso foi achado no caminho: nada neste sistema varre
-  condição vencida.** O `ate` que o `porCondicao` escreve é dado morto · `somarCondicoes`
-  (`src/lib/mesa-core.ts:164`) soma tudo sem olhar prazo, e condição só sai por mão ou por
-  `tirarCondicao`. Sem a varredura, a marca ficaria grudada para sempre, penalizando em silêncio,
-  que é pior que a dupla cobrança que ela conserta.
+  **A remoção precisou ser explícita, e isso foi achado no caminho: o `ate` de uma condição não
+  tira ninguém.** `somarCondicoes` (`src/lib/mesa-core.ts:164`) soma tudo sem olhar prazo, e nenhum
+  ponto do sistema lê a chave `ate` de uma condição. Sem a varredura do Tick, a marca ficaria
+  grudada para sempre, penalizando em silêncio, que é pior que a dupla cobrança que ela conserta.
+
+  **E AQUI ESTA ENTRADA CORRIGE A SI MESMA**, porque a primeira redação dizia "nada neste sistema
+  varre condição vencida" e generalizava demais. O certo é mais estreito e muda o tamanho do
+  problema por uma ordem de grandeza: a condição posta por Arte **é** varrida, só que **pelo relógio
+  do EFEITO e não pelo da condição**. O `verificarEfeitos` derruba todo efeito vencido a cada Tick
+  (`ATIVOS.filter((e) => venceu(e, t))`, `src/lib/artes-grid-mesa.ts:1615`) e o `encerrarEfeito`
+  **leva a condição junto** (`src/lib/artes-grid-mesa.ts:1837`). O `ate` da condição é redundante
+  com isso, não a única linha de defesa. Quem fica grudado de verdade é só quem põe condição **sem
+  deixar efeito para trás**, que é o caso da Investida e mais um · ver **L38**.
 
   **O `auto` separa as duas mãos:** só a condição que o tabuleiro pôs é tirada pelo tabuleiro; a que
   o mestre pôs à mão fica até ele tirar, que é o mesmo respeito que o `porArte` das Artes tem. E se
@@ -2056,18 +2071,18 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   **AS OPÇÕES, e a escolha muda comportamento em cada uma:**
 
-  1. **o número sai da condição** (ela vira rótulo sem número). O Grid fica certo; **a mesa que joga
-     só pela aba Combate perde a Investida**, e não ganha substituto (`correndo` daria −6);
-  2. **o automático sai** (tudo volta para a condição). A aba Combate fica como está; **o Grid volta
-     a não cobrar nada até o mestre trocar de aba**, que é exatamente o defeito nomeado no cabeçalho
-     do `src/lib/mesa-condicoes.ts` e a razão de o item 1 da fase 2 ter existido;
-  3. **o Grid aplica a condição sozinho ao declarar, e o automático sai** · o número passa a morar
-     num lugar só, os dois caminhos continuam funcionando e **ninguém perde nada**. É a mais cara: a
-     condição precisa ser TIRADA quando o Preparo acaba, e o fim do Preparo é um Tick, não um número
-     de turnos, então o `porCondicao` precisa aceitar um `ate` explícito. Em troca, é o mesmo
-     desenho que a Corrida vai pedir na fase 3, e resolve as duas de uma vez.
+  - **O NÚMERO SAI DA CONDIÇÃO** (ela vira rótulo sem número). O Grid fica certo; **a mesa que joga
+    só pela aba Combate perde a Investida**, e não ganha substituto (`correndo` daria −6);
+  - **O AUTOMÁTICO SAI** (tudo volta para a condição). A aba Combate fica como está; **o Grid volta
+    a não cobrar nada até o mestre trocar de aba**, que é exatamente o defeito nomeado no cabeçalho
+    do `src/lib/mesa-condicoes.ts` e a razão de o item 1 da fase 2 ter existido;
+  - **O GRID ALIMENTA A CONDIÇÃO** · aplicá-la sozinho ao declarar, e o automático sai. O número
+    passa a morar num lugar só, os dois caminhos continuam funcionando e **ninguém perde nada**. É a
+    mais cara: a condição precisa ser TIRADA quando o Preparo acaba, e o fim do Preparo é um Tick,
+    não um número de turnos, então ela precisa de um `ate` explícito. Em troca, é o mesmo desenho
+    que a Corrida vai pedir na fase 3, e resolve as duas de uma vez.
 
-  **A mesa escolheu a 3.** E fica registrado o que foi recusado: fazer o `defesaPerdida` olhar as
+  **A mesa escolheu O GRID ALIMENTA A CONDIÇÃO.** E fica registrado o que foi recusado: fazer o `defesaPerdida` olhar as
   condições do combatente para não dobrar. Ela recebe uma `Acao` e não um combatente, de propósito ·
   é o que a mantém pura e testável sem mesa, e é o que faz o espelho valer.
 
@@ -2076,6 +2091,77 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   nota (`nota: \`Defesa ${CORRIDA.defesa`, `src/lib/combate-tempo.ts:912`), e quem cobra é só a
   condição `correndo`, à mão. É o defeito nomeado no cabeçalho do `src/lib/mesa-condicoes.ts`, e o
   `marcarInvestida` é o molde pronto do conserto dele.
+
+- [ ] **L38 · [DECIDIDA, NÃO CONSTRUÍDA] A condição com prazo que não vence** · *a regra saiu em
+  05/09/2026, o levantamento também, e a construção espera o tamanho que ninguém sabe medir.*
+
+  **A REGRA, decidida pela mesa antes do levantamento:**
+
+  > Condição com `porArte` e `ate` **vence sozinha**: a duração é da ficção, o motor é dono dela, e
+  > ela cai quando o prazo chega. Condição posta pelo mestre à mão **NÃO vence sozinha, nunca**. Ele
+  > a pôs, ele a tira. A régua não calcula por cima dele.
+
+  É o mesmo princípio da ficha do lance e do −4 da Investida podendo ser tirado à mão. Se o mestre
+  quiser prazo numa condição posta à mão, isso é **feature e não é agora**: quando vier, ela grava
+  `ate` e passa a vencer, porque aí ele pediu.
+
+  **E A REGRA NÃO PRECISA DE DADO NOVO, que é o que a torna barata.** Os três caminhos já se
+  separam sozinhos pelo que gravam:
+
+  | quem põe | onde | o que grava | vence sozinha? |
+  |---|---|---|---|
+  | Arte | `porCondicao` | `{ id, ate, porArte: true }` | sim |
+  | tabuleiro | `marcarInvestida` | `{ id, ate, auto: true }` | sim |
+  | mestre à mão | o diálogo de condições | `{ id }`, ou o objeto caseiro | **não** |
+
+  Os três, com linha. A Arte grava em
+  `const nova = { id, ate, porArte: true };`, `artes-grid-mesa.ts:1337`. O chip do catálogo grava em
+  `c.condicoes = [...(c.condicoes || []), { id: achou.id }];`, `mesa-condicoes.ts:103`, e o
+  formulário caseiro logo abaixo, no `cc-add`.
+
+  **Nada que o mestre põe à mão tem `ate`, e nada que tem `ate` foi posto à mão.** A peneira é
+  literalmente "tem `ate`?" · é UM mecanismo e não dois, e `porArte`/`auto` viram detalhe de quem
+  pôs, não de quem tira.
+
+  **O CATÁLOGO NÃO TEM PRAZO NENHUM.** Nenhuma das 55 condições de `condicoes.json` tem campo de
+  duração · os campos são `id`, `nome`, `icone`, `grupo`, `cor`, `nota`, `fonte` e os números.
+  **Prazo nunca foi propriedade da condição, só da aplicação.** E o diálogo do mestre não tem campo
+  de duração para oferecer: o chip do catálogo grava `{ id }` e o formulário caseiro grava
+  nome/ação/dados/defesa/porRodada/nota. Ou seja, **a metade "posta pelo mestre com duração" da
+  pergunta é vazia hoje**, e é exatamente por isso que ela é feature e não conserto.
+
+  **O QUE ESTÁ MESMO GRUDADO, e é pequeno.** Só quem põe condição **sem deixar efeito para trás**,
+  porque todo o resto sai junto do efeito (ver a correção no **L37**). São dois casos:
+
+  1. **a Investida** · consertada no L37, pela `varrerInvestida`;
+  2. **o empurrão** (`if (g?.condicao) for (const a of ajustes)`, `artes-grid-mesa.ts:1134`), o
+     caminho das Artes que deslocam. Ele resolve **na
+     declaração** e sai por `return await deslocar(...)` (`:788`) **antes** do `gravarEfeito`, então
+     não existe linha em `arena_efeitos` para vencer, e o `encerrarEfeito` nunca é chamado.
+
+  São **6 dos 140 Efeitos**, e duas condições: `caido` (Empurrão, Onda, Maremoto, Onde É Embaixo,
+  Tromba) e `imobilizado` (Engolir). O que elas penalizam, para dimensionar o estrago: `caido` é
+  Defesa −2 de perto e **+2** de longe; `imobilizado` é ação −2 e Defesa −4. Ou seja **`caido`
+  grudado ajuda o alvo contra flecha**, e `imobilizado` grudado é a pior das duas de longe.
+
+  A janela é desde **11/08/2026** (`2540221`, o commit que trouxe as Artes ao tabuleiro), e só em
+  mesa que usou o Grid.
+
+  **DE QUEBRA, e não é o assunto: 9 Efeitos de `forma: "nenhuma"` declaram uma `condicao` que o Grid
+  NUNCA aplica** · esse caminho registra no log e retorna (`:783`). Condição escrita no dado e nunca
+  executada, que é o mesmo feitio do −6 do L34 §5.
+
+  **O TAMANHO: NINGUÉM SABE, e não dá para saber daqui.** A chave anon é a única leitura de produção
+  possível, e a RLS faz o que foi desenhada para fazer · `combatentes`, `combate_visao` e
+  `arena_efeitos` devolvem `Content-Range: */0` com `Prefer: count=exact`, porque o papel anônimo não
+  é membro de mesa nenhuma. **Contar exigiria a chave de serviço, e ela não está aqui.** A resposta
+  fica sendo essa, e ela também é resposta.
+
+  **A CONSEQUÊNCIA A ESCREVER JUNTO, quando a varredura entrar:** cena em andamento vai perder
+  condições que hoje estão penalizando, no primeiro carregamento, todas de uma vez. **Alguém vai ver
+  um número mudar sem ter feito nada.** É o conserto certo e ainda assim é surpresa, então a
+  varredura **diz no registro da mesa o que caiu e por quê**, uma linha por condição derrubada, e
+  não em silêncio.
 
 - [ ] **L36 · [QUANDO A REGRA APARECER] O `resumoParaBanco` é vitrine, e não entrada de conta.**
   Não é defeito hoje, e é para isso que está escrito: quando alguém topar com ele, que não trate
@@ -2159,7 +2245,7 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   `arena_log` como tabela, uma linha por entrada, e o desfazer virando um `delete`.
 - [ ] **I5 · [FAZER] Um editor de cenário no Grid.** Hoje o mestre só põe peças: o tabuleiro não
   tem parede, terreno difícil nem item no chão, e o único veto de passo é casa ocupada
-  (`ocupadoPor`, `grid.astro:6629`). Decidido em 02/09/2026, ao desenhar o harness de simulação
+  (`ocupadoPor`, `grid.astro:6621`). Decidido em 02/09/2026, ao desenhar o harness de simulação
   (`docs/simulacao/02-projeto-harness.md` §0.4 P2): a **parede entra como funcionalidade**, e o
   encaixe já existe, porque `caminharHex` recebe um veto arbitrário (`hex.ts:131`). O terreno
   difícil tem gancho pronto e não usado: a condição `terreno-dificil` existe em `condicoes.json`

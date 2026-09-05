@@ -5780,10 +5780,18 @@ const SETAS = [
    * mesmo respeito que o `porArte` das Artes tem. E se já houver uma à mão, esta
    * função não põe outra: duas somariam −4 e o defeito voltaria por dentro.
    *
-   * O `ate` vai gravado por honestidade de registro e NÃO é o que a tira: nada
-   * neste sistema varre condição vencida (`somarCondicoes` soma tudo, sem olhar
-   * prazo), e foi por isso que a remoção precisou ser explícita, na varredura do
+   * O `ate` vai gravado por honestidade de registro e NÃO é o que a tira:
+   * ninguém lê essa chave, e o `somarCondicoes` soma tudo sem olhar prazo. Foi
+   * por isso que a remoção precisou ser explícita, na varredura do
    * `avancarTickSimultaneo`.
+   *
+   * NÃO GENERALIZE ISSO PARA O RESTO DO SISTEMA, e a ressalva está aqui porque
+   * a primeira redação deste comentário generalizou: a condição posta por Arte
+   * SAI, só que pelo relógio do EFEITO e não pelo da condição · o
+   * `verificarEfeitos` derruba o efeito vencido a cada Tick e o
+   * `encerrarEfeito` leva a condição junto. Quem fica grudado é só quem põe
+   * condição sem deixar efeito para trás: esta função, e o `deslocar` das Artes
+   * de empurrão. Ver L38 no `Pendencias.md`.
    */
   async function marcarInvestida(c: any, investindo: boolean, ateTick: number | null) {
     if (!c) return;
