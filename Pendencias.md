@@ -2750,7 +2750,8 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   escrito dentro: **migração sem conferência obriga quem roda a inventar uma, e quem inventa está
   inventando sob a pressão de já ter rodado** · tende a escrever a pergunta que já sabe que passa.
 
-- [x] **L45 · [FECHADO · a 36 rodou em 05/09/2026] A fachada que preserva a forma e troca o destino** · *achado em
+- [ ] **L45 · [A 36 FECHOU O DEFEITO ORIGINAL · A 37 ESPERA A MESA] A fachada que preserva a
+  forma e troca o destino** · *achado em
   05/09/2026, e a forma é nova. O caso foi meu, e o que ele custou foi saída dupla em produção.*
 
   **O NOME É DA REVISORA, e ele é melhor que o meu** ("o objeto que se disfarça de outro"): o que
@@ -2785,11 +2786,81 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `funde = t` **e** `tira = t`, com a prova de fogo do jsonb passando: fundir e depois subtrair tira
   só a chave pedida. A saída dupla parou.
 
-  **A 37 ESTÁ ESCRITA E ESPERA A MESA**, e ela não toca em dado nenhum: só declara, no
-  `comment on column public.migracoes.sha256`, a regra de leitura que a revisora pediu · nulo
-  significa "não sabemos qual texto rodou", e nenhum consumidor futuro pode tratar nulo como
-  "confere" nem comparar dois nulos como iguais. Sem risco de formato: comentário de coluna não
-  muda o que nenhum cliente recebe.
+  **A 37 ESTÁ ESCRITA E ESPERA A MESA**, e ela não toca em dado nenhum: só comentario e uma
+  view de conferencia. Sem risco de formato para o cliente.
+
+  Ela carrega DUAS coisas. A primeira, no `comment on column public.migracoes.sha256`, e a regra
+  de leitura que a revisora pediu · nulo significa "não sabemos qual texto rodou", e nenhum
+  consumidor futuro pode tratar nulo como "confere" nem comparar dois nulos como iguais.
+
+  A segunda CORRIGE uma leitura errada que eu tinha dado por certa: **`min(numero) where not
+  a_mao` responde "qual foi a primeira linha automática", e eu tratei isso como se respondesse
+  "a partir daqui, TODAS são automáticas"**. As duas coincidem hoje porque a carga histórica é
+  um bloco só, contiguo. Descolam no primeiro caso realista: um arquivo rodado EM PEDAÇOS, com o
+  DDL entrando e o `insert` do carimbo (que fica no FIM do arquivo) não. **É o escalar por
+  conjunto, pela TERCEIRA vez no mesmo instrumento** (a própria 36 recusando "a última migração";
+  o L44; e esta). → *o escalar que descreve um conjunto*, no `docs/simulacao/CATALOGO.md`.
+
+  O conserto: a fronteira virou a view `public.migracoes_fronteira`, que devolve o número E uma
+  afirmação (`fronteira_vale`) de que nenhuma linha `a_mao = true` existe acima dele. A leitura
+  só vale enquanto essa afirmação for verdadeira.
+
+  **E A NOTA CRUZADA COM O PORTÃO DO CARIMBO**, da revisora: são o mesmo trabalho por dois lados.
+  `scripts/gen-carimbo-migracoes.mjs --check` impede a migração de ENTRAR NA ÁRVORE sem carimbo;
+  `fronteira_vale` é a rede do lado de baixo, se mesmo assim algo entrar no BANCO sem ele.
+
+- [x] **L46 · [CONSTRUÍDO E FALSIFICADO] Dois portões novos, e os dois com controle positivo
+  explícito** · *pedidos em 06/09/2026, depois de o diagnóstico do L45 ter achado o gap: o controle
+  positivo de ontem dependia de a migração 36 continuar presente e continuar sendo a de maior
+  número — funcionava, e era implícito.*
+
+  **1 · O DETECTOR DE REMOÇÃO GANHOU MÓDULO PRÓPRIO E TESTE SINTÉTICO.** A lógica que decide "este
+  SQL sabe tirar chave de um jsonb?" saiu do meio do portão (`validate-data.mjs`) para
+  `scripts/lib-deteccao-remocao-jsonb.mjs`, uma função pura. `scripts/test-remocao-jsonb.mjs` a
+  exercita contra TEXTO SINTÉTICO, sem depender de nenhuma migração real continuar no repositório:
+  positivo com `-` simples, positivo com o formato exato da migração 36 (fundir e subtrair um
+  array), positivo com `#-`, negativo com `||` (o defeito da 35), negativo com substituição pura
+  (o defeito anterior), e o caso que a PRIMEIRA versão do portão errava (remoção sem `coalesce` em
+  volta) — agora achado. 8 asserções, todas verdes.
+
+  **2 · O PORTÃO DO CARIMBO GANHOU `--dir` E BANCADA PRÓPRIA.** `gen-carimbo-migracoes.mjs` aceita
+  `--dir=<pasta>` para o controle positivo poder rodar numa pasta de scratch, sem tocar
+  `supabase/`. `scripts/test-carimbo-migracoes.mjs` prova as duas metades que a revisora pediu:
+  que o `--check` falha com um arquivo sem carimbo NENHUM (não só com hash velho, que já era
+  coberto), e que o MESMO arquivo passa a passar depois de carimbado — a prova de que a detecção
+  acha quando há o que achar, e não só que ela falha fechado quando não acha nada. 6 asserções,
+  todas verdes, e conferido que `supabase/` não foi tocado (`git status --short` limpo depois).
+
+  **3 · O PORTÃO DO `mordidos` FORA DO HELPER, por SENTIDO e não por literal** (o item que eu
+  mesma tinha deixado em aberto: *"a rota tem outra grafia"*, item 5 da lista da revisora sobre
+  como um portão fica verde sem o problema resolvido). Em vez de casar texto, ele percorre a
+  ÁRVORE SINTÁTICA de `artes-grid-mesa.ts` e do `<script>` de `grid.astro` (via o compilador
+  TypeScript, já uma dependência do projeto) atrás de toda chamada `.update`/`.upsert` sobre
+  `arena_efeitos`, e RESOLVE o valor do argumento — objeto literal direto, ou a variável que o
+  recebeu, seguindo a declaração dela e qualquer atribuição posterior no mesmo corpo de função.
+  Fora do intervalo da própria `marcarMordido` (achado pelo NOME da função, não por número de
+  linha).
+
+  **O ENSAIO DOS TRÊS SENTIDOS, rodado antes de entrar, com uma quarta variação deliberada:**
+
+  | rodada | o que foi injetado | resultado |
+  |---|---|---|
+  | 1 · vermelho hoje | `.update({ mordidos: {...} })` inline, fora do helper | ✗ achado |
+  | 2 · verde real | nenhuma injeção — o código como está | ✓ verde |
+  | 3 · vermelho de novo, disfarçado | `.upsert(cargaDoEnsaio)` com variável renomeada e a chave chegando por `cargaDoEnsaio.mordidos = ...` DEPOIS da declaração, não dentro do literal | ✗ achado |
+
+  A rodada 3 é a que prova o ponto: é exatamente o tipo de disfarce que reprovou a versão anterior
+  do portão irmão (variável renomeada, forma de chamada trocada), e este achou porque rastreia o
+  VALOR e não o texto.
+
+  **O LIMITE, DECLARADO NO PRÓPRIO VERMELHO, como o outro:** prova que nenhuma chamada
+  `.update`/`.upsert` sobre `arena_efeitos`, nos dois arquivos vasculhados, carrega `mordidos` fora
+  do helper. NÃO prova que uma escrita por uma ROTA DIFERENTE (uma RPC chamada direto por nome, um
+  terceiro arquivo que também toque `arena_efeitos`) não exista — ainda é o item 5 em aberto, só
+  que agora fechado para a forma de escrita que existe hoje.
+
+  Os três (`test-remocao-jsonb.mjs`, `test-carimbo-migracoes.mjs`, e o bloco novo em
+  `validate-data.mjs`) estão ligados ao `npm run validate`.
 
 - [ ] **L36 · [QUANDO A REGRA APARECER] O `resumoParaBanco` é vitrine, e não entrada de conta.**
   Não é defeito hoje, e é para isso que está escrito: quando alguém topar com ele, que não trate

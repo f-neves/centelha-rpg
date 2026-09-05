@@ -4,7 +4,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { z } from 'zod';
+import ts from 'typescript';
 import { POR_MATERIAL as MATERIAIS } from './lib-materiais.mjs';
+import { semComentario, sabeTirarChave } from './lib-deteccao-remocao-jsonb.mjs';
 
 const DIR = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..', 'src', 'data');
 const read = (f) => JSON.parse(fs.readFileSync(path.join(DIR, f), 'utf8'));
@@ -330,7 +332,6 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
 {
   const RAIZ = path.join(DIR, '..', '..');
   const dirMig = path.join(RAIZ, 'supabase');
-  const semComentario = (s) => s.replace(/--[^\n]*/g, '');
   // A DEFINIÇÃO EFETIVA é a da MAIOR migração que redefine a função: rodar as
   // migrações em ordem faz a última vencer, então é ela que descreve o banco.
   const defs = fs.readdirSync(dirMig)
@@ -360,25 +361,10 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
   const viaja = /arena_efeitos'[\s\S]{0,200}?jogador_muda_efeito/.test(grid);
 
   if (clienteTira && viaja) {
-    let sabeTirar = false;
-    if (efetiva) {
-      const corpo = semComentario(efetiva.txt);
-      // A expressão do `mordidos = ...`, do sinal de igual até a próxima
-      // atribuição de coluna ou o `where` do update.
-      const m = /\bmordidos\s*=([\s\S]*?)(?:\n\s*\w+\s*=|\n\s*where\b)/i.exec(corpo);
-      // O OPERADOR DE REMOÇÃO É UM `-` QUE SOBRA, e a busca é por eliminação em
-      // vez de por forma: tirando os literais de texto e as setas `->`/`->>`,
-      // um traço que reste numa expressão jsonb é remoção (`a - 'k'`,
-      // `a - array`, `a #- caminho`). Tentar casar a FORMA da remoção foi a
-      // primeira versão disto, e ela reprovou o próprio ensaio de
-      // aposentadoria: `- coalesce(...)` não parecia com nenhum dos casos que
-      // eu tinha imaginado. O falso positivo que sobra é um número negativo
-      // literal, que não tem o que fazer num mapa de mordidas.
-      if (m) {
-        const limpa = m[1].replace(/'(?:''|[^'])*'/g, "''").replace(/->>?/g, '@');
-        sabeTirar = /-/.test(limpa);
-      }
-    }
+    // A DETECÇÃO MORA EM `lib-deteccao-remocao-jsonb.mjs`, e não aqui, para
+    // poder ser testada sozinha contra texto sintético — o controle positivo
+    // que faltava. Ver `scripts/test-remocao-jsonb.mjs`.
+    const sabeTirar = efetiva ? sabeTirarChave(semComentario(efetiva.txt)) : false;
     if (!sabeTirar) {
       fail('a `jogador_muda_efeito` NÃO sabe apagar chave do `mordidos`, e o cliente já tira uma '
         + '(`marcarMordido(ctx, ef, A_SAIR, null)`, em artes-grid-mesa.ts). Pelo atalho do jogador '
@@ -391,6 +377,157 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
         + 'migração com remoção existir NO REPOSITÓRIO. O QUE ELE NÃO PROVA: que o BANCO tenha o '
         + 'vocabulário · migração roda à mão, e nada daqui alcança produção. Ver L43.');
     }
+  }
+}
+
+// ------------- toda escrita de `mordidos` em arena_efeitos passa por marcarMordido
+//
+// A FAMÍLIA (L45, "a fachada que preserva a forma e troca o destino") CUSTOU SAÍDA
+// DUPLA EM PRODUÇÃO uma vez, quando um dos quatro pontos que escreviam `mordidos`
+// escapou da leitura ("grava direto na tabela") por causa de um cliente trocado por
+// baixo. O `marcarMordido` (`artes-grid-mesa.ts`) existe para isso: relê o banco e
+// aplica UMA CHAVE, em vez de mandar o objeto inteiro montado de uma foto local. Se
+// um QUINTO ponto nascer e não passar por ele, o defeito volta calado.
+//
+// A DETECÇÃO É POR SENTIDO, E NÃO POR LITERAL, por uma lição já paga nesta mesma
+// leva: um portão irmão (o vocabulário de remoção da migração 36) teve uma versão
+// que procurava o texto `.update({ mordidos` e ficou VERDE quando o próprio
+// conserto trocou aquilo por `.update(patch)` — verde por ter parado de enxergar o
+// cliente. Aqui o "sentido" é: percorrer a ÁRVORE SINTÁTICA (não o texto) atrás de
+// toda chamada `.update(...)`/`.upsert(...)` feita sobre `.from('arena_efeitos')`,
+// e RESOLVER o valor do argumento — objeto literal direto, OU a variável que o
+// recebeu, seguindo a declaração dela e qualquer atribuição posterior a ela dentro
+// da mesma função. Renomear a variável do payload (`patch` → `dados`, `carga`,
+// o que for) não escapa, porque o rastreamento segue o VALOR, não o nome.
+//
+// O QUE ESTE PORTÃO DELIBERADAMENTE NÃO TENTA: escrita de `mordidos` na hora da
+// CRIAÇÃO da linha (o `.insert(...)` de `gravarEfeito`) não é o defeito desta
+// família — não há concorrência possível sobre uma linha que ainda não existe.
+// Por isso só `.update`/`.upsert` são vigiados, nunca `.insert`.
+//
+// O LIMITE, DECLARADO AQUI PORQUE O OUTRO PORTÃO DA FAMÍLIA JÁ ENSINOU A DECLARAR
+// NO TEXTO DO VERMELHO E NÃO SÓ NO REGISTRO: isto prova que nenhuma chamada
+// `.update`/`.upsert` sobre `arena_efeitos`, nos dois arquivos vasculhados, carrega
+// `mordidos` fora do `marcarMordido`. NÃO prova que uma escrita por uma ROTA
+// DIFERENTE de `.update`/`.upsart` (uma RPC chamada direto por nome, um terceiro
+// arquivo que também toque `arena_efeitos`) esteja coberta — é o item 5 da lista
+// de formas de um portão ficar verde sem o problema resolvido (`docs/simulacao/
+// CATALOGO.md`), e continua em aberto.
+{
+  const RAIZ = path.join(DIR, '..', '..');
+  const arqTS = path.join(RAIZ, 'src/lib/artes-grid-mesa.ts');
+  const arqAstro = path.join(RAIZ, 'src/pages/mesa/grid.astro');
+  const srcTS = fs.readFileSync(arqTS, 'utf8');
+  const srcAstroFull = fs.readFileSync(arqAstro, 'utf8');
+
+  // O `.astro` não é TypeScript puro: só o miolo do <script> é. Recorta o texto
+  // ANTES do parser, e guarda o deslocamento de linha para os erros apontarem
+  // para o arquivo de verdade.
+  const mScript = /<script[^>]*>([\s\S]*?)<\/script>/.exec(srcAstroFull);
+  const srcAstroScript = mScript ? mScript[1] : '';
+  const offsetAstro = mScript
+    ? srcAstroFull.slice(0, mScript.index + mScript[0].indexOf(mScript[1])).split('\n').length - 1
+    : 0;
+
+  const achados = [];
+
+  function acharPropriedade(obj, nome) {
+    if (!obj || !ts.isObjectLiteralExpression(obj)) return null;
+    for (const p of obj.properties) {
+      if (ts.isPropertyAssignment(p) && ts.isIdentifier(p.name) && p.name.text === nome) return p;
+      if (ts.isShorthandPropertyAssignment(p) && p.name.text === nome) return p;
+      // `{ ...outraVar }`: o valor pode ter vindo de outro objeto espalhado.
+      // Não resolve recursivamente (o alcance é uma função só), mas não finge
+      // que o espalhamento é seguro por omissão: se a variável espalhada for
+      // rastreável no mesmo corpo, ela também é uma leitura, não uma escrita
+      // de `mordidos`, e cai fora do que este portão vigia.
+    }
+    return null;
+  }
+
+  // Acha a escrita de `mordidos` por trás de UM argumento de `.update`/`.upsert`:
+  // objeto literal direto, ou a variável que o recebeu — pela declaração dela e
+  // por qualquer atribuição `alvo.mordidos = ...` no MESMO corpo de função.
+  function escritaDeMordidos(arg, corpoDaFuncao, sf) {
+    if (ts.isObjectLiteralExpression(arg)) return !!acharPropriedade(arg, 'mordidos');
+    if (!ts.isIdentifier(arg) || !corpoDaFuncao) return false;
+    const nomeVar = arg.text;
+    let achou = false;
+    const visita = (n) => {
+      if (achou) return;
+      if (ts.isVariableDeclaration(n) && ts.isIdentifier(n.name) && n.name.text === nomeVar
+          && n.initializer && acharPropriedade(n.initializer, 'mordidos')) {
+        achou = true; return;
+      }
+      if (ts.isBinaryExpression(n) && n.operatorToken.kind === ts.SyntaxKind.EqualsToken
+          && ts.isPropertyAccessExpression(n.left) && ts.isIdentifier(n.left.expression)
+          && n.left.expression.text === nomeVar && n.left.name.text === 'mordidos') {
+        achou = true; return;
+      }
+      ts.forEachChild(n, visita);
+    };
+    visita(corpoDaFuncao);
+    return achou;
+  }
+
+  function funcaoEnvolvente(node) {
+    let n = node.parent;
+    while (n) {
+      if (ts.isFunctionDeclaration(n) || ts.isFunctionExpression(n) || ts.isArrowFunction(n)
+          || ts.isMethodDeclaration(n)) return n.body || n;
+      n = n.parent;
+    }
+    return null;
+  }
+
+  function varre(nomeArquivo, codigo, offsetLinha, faixaPermitida) {
+    const sf = ts.createSourceFile(nomeArquivo, codigo, ts.ScriptTarget.Latest, true, ts.ScriptKind.TS);
+    const linhaDe = (pos) => sf.getLineAndCharacterOfPosition(pos).line + 1 + offsetLinha;
+    const dentroDoHelper = (pos) => !!faixaPermitida && pos >= faixaPermitida[0] && pos <= faixaPermitida[1];
+
+    const visita = (node) => {
+      if (ts.isCallExpression(node) && ts.isPropertyAccessExpression(node.expression)
+          && (node.expression.name.text === 'update' || node.expression.name.text === 'upsert')) {
+        const receptor = node.expression.expression;
+        // A vigia é sobre `arena_efeitos`, não sobre "qualquer .update": o texto
+        // do RECEPTOR (a cadeia até o `.from(...)`) nomeia a tabela, e nomear a
+        // tabela é semântica, não estilo de chamada.
+        if (/arena_efeitos/.test(receptor.getText(sf)) && node.arguments[0]
+            && !dentroDoHelper(node.getStart(sf))) {
+          const corpo = funcaoEnvolvente(node);
+          if (escritaDeMordidos(node.arguments[0], corpo, sf)) {
+            achados.push(`${nomeArquivo}:${linhaDe(node.getStart(sf))}`);
+          }
+        }
+      }
+      ts.forEachChild(node, visita);
+    };
+    visita(sf);
+  }
+
+  // A FAIXA PERMITIDA é o corpo da própria `marcarMordido` — achado pelo nome, e
+  // não por número de linha, porque número de linha é a mesma fragilidade que
+  // este portão existe para não ter.
+  const sfMod = ts.createSourceFile('artes-grid-mesa.ts', srcTS, ts.ScriptTarget.Latest, true, ts.ScriptKind.TS);
+  let faixaHelper = null;
+  (function acha(n) {
+    if (ts.isFunctionDeclaration(n) && n.name && n.name.text === 'marcarMordido') {
+      faixaHelper = [n.getStart(sfMod), n.getEnd()];
+    }
+    ts.forEachChild(n, acha);
+  })(sfMod);
+
+  varre('src/lib/artes-grid-mesa.ts', srcTS, 0, faixaHelper);
+  varre('src/pages/mesa/grid.astro', srcAstroScript, offsetAstro, null);
+
+  if (achados.length) {
+    fail('escrita de `mordidos` em `arena_efeitos` fora do `marcarMordido`, achada por SENTIDO '
+      + '(uma chamada `.update`/`.upsert` cujo argumento — direto ou por variável rastreada — carrega '
+      + `a chave \`mordidos\`): ${achados.join(', ')}. Renomear a variável do payload não escapa deste `
+      + 'portão. CONSERTO: roteie a escrita por `marcarMordido(ctx, ef, chave, valor)`. O QUE ELE PROVA: '
+      + 'nenhuma chamada `.update`/`.upsert` sobre `arena_efeitos`, nos dois arquivos vasculhados, carrega '
+      + '`mordidos` fora do helper. O QUE ELE NÃO PROVA: que uma escrita por uma ROTA DIFERENTE (uma RPC '
+      + 'chamada direto, um terceiro arquivo) não exista. Ver L45.');
   }
 }
 

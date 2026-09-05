@@ -22,14 +22,22 @@
 // primeira e seria lida como se respondesse a segunda.
 //
 // Uso:
-//   node scripts/gen-carimbo-migracoes.mjs           escreve os carimbos
-//   node scripts/gen-carimbo-migracoes.mjs --check   falha se algum envelheceu
+//   node scripts/gen-carimbo-migracoes.mjs                  escreve os carimbos
+//   node scripts/gen-carimbo-migracoes.mjs --check           falha se algum envelheceu
+//   node scripts/gen-carimbo-migracoes.mjs --dir=<pasta>      aponta para outra pasta
+//
+// O `--dir` NÃO é para uso normal: existe para o CONTROLE POSITIVO deste portão
+// (`scripts/test-carimbo-migracoes.mjs`), que precisa provar que a detecção acha
+// um arquivo sem carimbo de verdade, sem sujar `supabase/`. Sem essa saída, provar
+// a detecção exigiria mexer nos arquivos reais e desfazer depois — o mesmo risco
+// que os ensaios de portão desta leva sempre evitaram.
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 
 const RAIZ = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
-const DIR = path.join(RAIZ, 'supabase');
+const argDir = process.argv.find((a) => a.startsWith('--dir='));
+const DIR = argDir ? path.resolve(argDir.slice('--dir='.length)) : path.join(RAIZ, 'supabase');
 const MARCA = '-- >>> carimbo';
 
 // A PRIMEIRA MIGRAÇÃO NÃO TEM NÚMERO NO NOME: ela é `migracao.sql`, e é a 1.

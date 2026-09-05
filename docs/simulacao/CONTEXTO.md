@@ -88,8 +88,11 @@ vocabulário `tirar_mordidos` (**L43**, **L45**) e a tabela `migracoes`, que é 
 quarta categoria · o fato que ninguém consegue perguntar daqui. **A partir dela, "quais rodaram"
 tem resposta no banco**, e a sondagem por formato deixa de ser o único caminho.
 
-**A 37 ESTÁ ESCRITA E ESPERA A MESA** · só um `comment on column` (a regra de leitura do
-`sha256`), sem risco de formato.
+**A 37 ESTÁ ESCRITA E ESPERA A MESA** · sem risco de formato. Duas coisas: o `comment on column`
+da regra de leitura do `sha256`, e a correção da fronteira (`min(numero) where not a_mao` provava
+só "esta linha é automática", não "tudo acima é automático" · terceira vez que essa forma aparece
+no instrumento, ver **L45**). Vira a view `public.migracoes_fronteira`, que devolve o número e a
+afirmação `fronteira_vale`.
 
 Estado em 05/09/2026: **1 a 32, a 35 e a 36 aplicadas** · a leva de 31, 32, 29, 30 e 35 rodou
 naquele dia, na ordem da mesa, com 31 e 32 coladas, e as cinco conferências passaram (o que
@@ -151,6 +154,22 @@ geral que isso instancia: **migração antes do cliente é segura, cliente antes
 - **TODO PORTÃO NOVO PASSA PELO ENSAIO DOS TRÊS SENTIDOS**: vermelho hoje, verde com o conserto
   **sem tocar no arquivo do portão**, vermelho de novo com a regressão. Portão que casa por texto
   fixo fica verde quando o conserto renomeia o literal · aconteceu duas vezes em 05/09/2026.
+- **FALHAR FECHADO E TER CONTROLE POSITIVO SÃO DUAS PROVAS DIFERENTES.** Falhar fechado (nenhum
+  sinal achado → assume o pior) impede o falso verde; controle positivo prova que a busca ACHA
+  quando há o que achar. Os dois portões da leva de 05/09/2026 tinham só o primeiro, e o segundo
+  dependia de um artefato real (a migração 36) continuar presente — funcionava, era implícito.
+  Corrigido em 06/09/2026 com autotestes contra texto SINTÉTICO
+  (`scripts/test-remocao-jsonb.mjs`, `scripts/test-carimbo-migracoes.mjs`), que não dependem de
+  nada do repositório continuar do jeito que está hoje. → **L46**.
+- **QUANDO NÃO DER PARA ACHAR POR CALL-SHAPE, ACHE POR ÁRVORE SINTÁTICA.** O portão do `mordidos`
+  fora do helper (L46) resolve o item 5 da lista da revisora ("a rota tem outra grafia") usando o
+  compilador TypeScript para RASTREAR O VALOR do payload (declaração + atribuições no mesmo corpo
+  de função), não o texto da chamada. Renomear a variável do payload não escapa.
+- **O ESCALAR QUE DESCREVE UM CONJUNTO** é forma própria no catálogo, e apareceu TRÊS vezes no
+  mesmo instrumento (a tabela `migracoes`): a 36 recusando "a última migração"; o L44
+  (`count(*)`); e a fronteira `min(numero) where not a_mao`, que só prova "esta linha é
+  automática" e foi lida como "tudo acima é automático" (corrigido na 37, virou uma view que
+  também afirma a ausência de exceção).
 - **Achar linha por CHAVE e nunca por posição**, em teste e em prosa. **Em SQL isso é:
   conferência de migração NOMEIA o que aquele arquivo define, e nunca CONTA o que existe** ·
   contagem mede o mundo e envelhece quando outro arquivo mexe, e quando falha não diz o que

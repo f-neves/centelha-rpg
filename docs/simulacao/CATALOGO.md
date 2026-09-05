@@ -46,6 +46,7 @@ segunda tinha ficado verde por cegueira.
 | **o portão que casa por texto fixo** | `.test(`, `includes(`, `like '`, todo portão novo | o que faz este portão ficar VERDE sem o problema ter sido resolvido? |
 | **a garantia correta sobre o eixo errado** | "cobre", "uma forma nova falha alto", "isto é coberto" | verdadeira sobre QUAL dimensão, e ela é a que importa aqui? |
 | **a remoção escrita como coleção inteira** | `.filter(` seguido de `update({ campo: ... })` | se este campo passar a SOMAR no servidor, esta remoção ainda remove? |
+| **o escalar que descreve um conjunto** | `min(`, `max(`, `última`, "a partir de", "desde" | isto é o limite, ou é a prova de que o CONJUNTO inteiro acima dele cumpre a regra? |
 | **o que não sabe dizer TIRE** | `\|\|`, `coalesce`, `filter`, `{...spread}` | isto sabe dizer TIRE, e não só PÕE? |
 | **a conferência que CONTA em vez de NOMEAR** | `count(*)`, `like 'x%'`, `.length ===` | conta o mundo, ou nomeia o que este arquivo define? |
 | **achar por POSIÇÃO** | `[0]`, `.at(-1)`, `limit 1`, `arquivo:123` | e se a ordem mudar? |
@@ -64,14 +65,14 @@ segunda tinha ficado verde por cegueira.
 | **a afirmação contra afirmação** | *por gesto:* decidir cortar alguma coisa | isto virou PROIBIÇÃO OBSERVÁVEL, ou só prosa? |
 | **o fato que ninguém consegue perguntar daqui** | *por gesto:* sondar, inferir, "provavelmente rodou" | dá para trazer a resposta para DENTRO? |
 
-**São 29**, e a contagem é do dia em que o arquivo nasceu (nasceu com 25 e cresceu quatro no mesmo
-dia, o que é o argumento contra citá-la) · ela não é para ser citada em
-instrução nenhuma, pelo motivo escrito lá em cima.
+**São 30**, e a contagem é do dia em que o arquivo nasceu (nasceu com 25, fechou o primeiro dia
+com 29 e ganhou mais uma no dia seguinte, o que é o argumento contra citá-la) · ela não é para ser
+citada em instrução nenhuma, pelo motivo escrito lá em cima.
 
 **Duas se dobram conforme quem lê**, e vale dito porque explica a divergência entre contagens: a
 *asserção sem ocasião* e a *asserção negativa sozinha* são a mesma cegueira em dois gestos (uma é
 o cenário que não foi montado, a outra é a ausência da ausência); e o *zero ambíguo* e a *falha
-que devolve zero* saem do mesmo valor por caminhos diferentes. Juntando os dois pares, 27.
+que devolve zero* saem do mesmo valor por caminhos diferentes. Juntando os dois pares, 28.
 
 **AS QUATRO NOVAS DE 05/09/2026 SAÍRAM DO MESMO DIA, e três delas de dentro do conserto das
 outras**, que é o que as torna caras:
@@ -87,6 +88,14 @@ outras**, que é o que as torna caras:
   servidor. Não é meia verdade nem verdade expirada;
 - **a remoção escrita como coleção inteira** é a que está escrita ANTES de custar alguma coisa, e
   é a terceira vez que o mesmo conserto quebraria uma remoção. Ver **L38**.
+
+**E UMA QUINTA, DE UM DIA DEPOIS (06/09/2026), ACHADA NO PRÓPRIO INSTRUMENTO QUE RESOLVEU A QUARTA
+CATEGORIA:** a leitura da tabela `migracoes` usava `min(numero) where not a_mao` como se essa conta
+JÁ PROVASSE "tudo acima é automático", quando ela só prova "esta linha é automática". **É a
+terceira vez que a mesma forma aparece no mesmo instrumento**: a 36 recusando publicar "a última
+migração" (evitada por desenho), a conferencia por `count(*)` do L44 (corrigida depois de
+envelhecer), e esta (corrigida antes de custar, pela revisora). O conserto: a fronteira virou uma
+VIEW que afirma a ausência de exceção (`migracoes_fronteira`, migração 37), e não só um número.
 
 **As duas últimas da tabela não têm gatilho de símbolo**, e são as mais fracas da lista justamente por
 isso. A primeira já tem instrumento parcial (a lista de proibições observáveis); a segunda ganhou
