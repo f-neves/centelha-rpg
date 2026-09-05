@@ -1305,8 +1305,14 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | 2 | **agir fora de hora** | **FEITO** · `f699ae2` |
   | 3 | **dívida de Ticks** | **FEITO** · `f699ae2`, junto com o 2 |
   | 4 | **mudar efeito posto** | **FEITO** · e a decisão do custo está escrita na seção 4 |
-  | 5 | **Investida** | **FEITO no motor** · e não era trabalho de tela |
-  | 6 | **Interpor e desviar** | falta, e **depende de decisão de mesa** |
+  | 5 | **Investida** | **FEITO no motor** · número decidido em 05/09, e o −6 saiu |
+  | 6 | **Interpor e desviar** | **PARADO POR DECISÃO DE MESA, não por trabalho** |
+
+  **A FASE 2 ESTÁ FECHADA EM CINCO DE SEIS**, e o sexto não está esperando código: está esperando
+  regra que não existe. O levantamento mostrou que o capítulo publicado **não tem uma linha** sobre
+  interpor, desviar nem abortar, então construir o Interpor não é implementar régua existente, é
+  **escrever régua nova** · e isso é decisão de mesa. Enquanto ela não vier, o item fica aqui com o
+  motivo escrito, e nada nele é trabalho parado por falta de mão.
 
   **NENHUMA FASE TERMINA EM DOCUMENTO**, e é a regra que rege esta lista inteira: toda linha acima
   só vira FEITO com coisa funcionando na mesa e asserção que cai se ela parar de funcionar.
@@ -1363,7 +1369,20 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   Daí a linha que o mecanismo não atravessa, e ela é a regra inteira da entrega:
 
-  > **Corrigir o registro é de graça. Reconjurar custa uma conjuração. Não existe terceira coisa.**
+  > **Onde a mesa corrige o próprio registro, não cobra. Onde a mesa muda o que aconteceu na
+  > ficção, cobra.** Corrigir é de graça porque **não é ficção**: é a mesa arrumando o que ela mesma
+  > escreveu. Mudar o que a ficção fez custa reconjurar. Não existe terceira coisa.
+
+  **A frase fica escrita junto da regra de propósito** (no cabeçalho da `mudarEfeito` e como regra
+  de construção no `docs/simulacao/02-projeto-harness.md`), porque **ela é o que impede o terceiro
+  preço de virar pedido daqui a um mês**: sem ela, "a correção é de graça" fica sem chão e o
+  reapontar barato volta como facilidade de tela. Com ela, o terceiro preço tem de se justificar
+  como ficção, e aí é regra nova, com número.
+
+  **E ela é o teste do resto do Grid**, e não só deste item: a pergunta que faz a qualquer botão
+  novo é *isto arruma o que a mesa escreveu, ou muda o que o personagem fez?* Corta para os dois
+  lados · proíbe cobrar por bookkeeping e proíbe dar de graça o que a ficção fez, que é a razão de
+  esta correção não mexer em tamanho.
 
   Por isso a correção **não toca em Mana nem em Tempo**, registra "corrigiu … (sem custo)" em vez
   de "conjurou", e **não mexe em tamanho**: `recolocarFigura` (`src/lib/artes-grid.ts`) move e gira
@@ -1384,10 +1403,8 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   antes e depois. Mais o par negativo, que é o jogador sem botão nenhum, e 12 asserções de geometria
   no `test-artes-grid.mjs` sobre o que `recolocarFigura` **não** faz.
 
-  **⚠ O QUE FICOU ABERTO, e é decisão de mesa:** a régua tem dois preços para mexer numa Arte já
-  posta, o de graça (corrigir o registro) e o inteiro (reconjurar). **Ela quer um terceiro, um
-  reapontar barato no meio?** Hoje não tem, e o que foi construído não o cria. Se quiser, é regra
-  nova e precisa de número: quanto de Mana, quanto de Tempo, e se cabe no Preparo.
+  **✅ E NÃO HÁ TERCEIRO PREÇO** · decidido em 05/09/2026, com a frase acima como motivo. Dois
+  bastam, e a razão de a régua ser defensável é essa: o de graça não é ficção, o inteiro é.
 
   E o RPC do jogador continua sem caminho: `jogador_muda_efeito` (`supabase/migracao-22.sql:217`)
   aceita **duas chaves só**, `mordidos` e `ate_tick`, e por ele passa hoje apenas a marca de mordida
@@ -1427,10 +1444,41 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   deslocamento sem ataque não tem Preparo para gastar, e oferecê-la ali prometeria o +1d6 de um
   golpe que ninguém declarou.
 
-  **⚠ DUAS COISAS FICARAM ABERTAS, e as duas são decisão de mesa, não de código:**
+  **✅ O NÚMERO FOI DECIDIDO EM 05/09/2026: a Investida vale −4, e o que se decidiu foi a RAZÃO.**
+  Quem investe **gasta a guarda da Corrida**, e não a do Preparo mais um degrau · investir é uma
+  forma de aproximação, da mesma família, e quem corre para cima do outro perde guarda pelo mesmo
+  motivo. O total não mudou (os dois jeitos de contar davam −4); mudou de onde ele sai. O motor
+  passou a ler `combate.movimento.corrida.defesa` **direto** na fase de Preparo, então se a Corrida
+  um dia custar outro número a Investida acompanha sozinha, que é o que "mesma família" quer dizer.
 
-  **AS QUATRO FONTES, lado a lado** · *levantamento de 05/09/2026, pedido antes de qualquer
-  conserto. Nada foi consertado.*
+  **O −6 saiu.** A `travessiaNota` foi reescrita sem ele. O critério é o da procedência: as três
+  fontes do −4 saíram de um commit só, que é a decisão; o −6 entrou seis dias depois, sozinho, e
+  **nenhuma linha de código o lia**. Número que nunca foi executado não teve chance de estar certo
+  nem errado · é rascunho.
+
+  **E AS TRÊS SÃO TRÊS ESCRITAS INDEPENDENTES, NÃO ECOS**, que é a pergunta que a revisora fez e a
+  resposta pior das duas. Nenhum gerador liga as três: `condicoes.json` só é lido (por
+  `gen-grid-artes.mjs` e pelo `validate-data.mjs`), o `combate.md` não tem gerador nenhum, e o
+  campo `"fonte": "combate · movimento"` da condição, que sempre apontou para a régua, **nunca foi
+  lido por ninguém**. Elas concordavam porque foram digitadas na mesma sentada. Escrever a mesma
+  regra em três lugares é o próximo defeito esperando, e o que ele produziria é conhecido: mexer no
+  `defesaExtra` deixaria a tabela do capítulo e a nota da condição dizendo o número velho, **em
+  silêncio**, que é a forma exata do comentário que envelhece.
+
+  **O QUE PRENDE AS TRÊS AGORA**, porque dizer não bastava:
+
+  - no `validate-data.mjs`, um bloco que confere os três contra o `regras.json` · o número da
+    condição, os números na **nota** dela, os números na linha "Preparo investindo" da tabela do
+    capítulo, e a proibição do −6 voltar para a `travessiaNota`. Confere **presença do número**, não
+    o texto: a redação é livre, o número não é;
+  - no `test-combate-tempo.mjs`, a trava aritmética: `escada.preparo + investida.defesaExtra` tem de
+    dar `corrida.defesa`. É ela que amarra as duas maneiras de escrever o mesmo número, agora que o
+    motor lê uma e os textos escrevem a outra;
+  - **os quatro casos foram falsificados um a um**, quebrando cada arquivo e conferindo que o portão
+    cai, com a árvore restaurada no fim.
+
+  **AS QUATRO FONTES, lado a lado** · *levantamento de 05/09/2026, feito antes de qualquer
+  conserto e mantido aqui porque é o que justifica a decisão.*
 
   | | onde | o que diz | commit | quem lê |
   |---|---|---|---|---|
@@ -1441,7 +1489,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   1. **NÃO SÃO QUATRO DECISÕES: SÃO DUAS.** A, B e C saíram do MESMO commit · `0f191fe`, "Corrida
      e Investida: o que cada jeito de andar cobra", 58 inserções, três arquivos, uma sentada. É
-     **uma decisão escrita em três lugares**, uma fonte e dois ecos. A D é escrita separada, seis
+     **uma decisão escrita à mão em três lugares** (não ecos: nenhum gerador as liga). A D é escrita separada, seis
      dias depois, dentro de uma nota que existe para justificar OUTRA regra (o portão da
      travessia), com o número aparecendo como argumento e não como régua · e nenhum arquivo de
      `src/` ou `scripts/` a lê.
@@ -1450,15 +1498,10 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
      −4 da Corrida (dá −6). A pergunta que decide não é "−4 ou −6", é **investir gasta a guarda do
      Preparo ou a da Corrida?** · quem investe está correndo de fato. O motor foi construído com
      as três que concordam.
-  3. **A DUPLA FONTE DO −2 É DE OUTRO FEITIO, e é pior.** Não é texto discordando: são **dois
-     mecanismos cobrando**. O A é automático desde `80b0c26`; o C é a condição à mão. Quem declarar
-     a Investida no Grid E ligar a condição paga **−4 de extra**, e nada avisa. E a assimetria
-     fecha o quadro: a Corrida **não tem cobrança automática nenhuma** · o −4 dela em `MODOS_MOV` é
-     só o texto da nota (`src/lib/combate-tempo.ts:900`), e quem cobra é só a condição `correndo`.
-     Ou seja, o mesmo commit produziu um eco que virou EXECUTÁVEL, e é isso que dobra a soma. As
-     opções são pelo menos três: a condição sai do catálogo, ou vira só rótulo sem número, ou o
-     Grid passa a aplicá-la sozinha ao declarar (e aí o número mora só nela). É a mesma pergunta
-     que `correndo` vai fazer na fase 3.
+  3. **A DUPLA COBRANÇA DO −2 É DE OUTRO FEITIO, e é pior.** Não é texto discordando: são **dois
+     mecanismos cobrando**, e eles se somam sem se conhecer, porque a `defesaEfetiva` empilha
+     `condicoesDefesa` e `defesaPerdida` como duas parcelas independentes
+     (`return alvo.defesaBase`, `src/lib/lance.ts:159`). Segue aberta e tem seção própria: **L37**.
 
   ### 6 · Interpor e desviar · FALTA, e a régua não fecha
 
@@ -1473,6 +1516,18 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **O CAPÍTULO NÃO TEM UMA LINHA**, e é o primeiro fato do levantamento: `interpor`, `desviar` e
   **`abortar`** não aparecem em `src/content/chapters/` nenhuma vez. O Simultâneo dessa parte vive
   inteiro fora do livro publicado.
+
+  **E DE ONDE SAIU O ABORTAR, que é a pergunta que isso levanta:** de `cfb22fa`, 21/08/2026,
+  "Combate: abortar o gesto que ainda nao saiu". Onze arquivos · o `regras.json`, o motor
+  (`combate-tempo.ts`), as duas telas (`grid.astro` e `combate.astro`), a caixa
+  (`mesa-tempo-ui.ts`), o `MesaCab.astro`, o mock, dois testes e o `Combate_Tempo.md`. **E
+  `src/content/chapters/` não está na lista.** A régua tem uma decisão inteira, com número
+  (`ticksPorMetro: 1`), com três saídas nomeadas e com tela de pé, que **o livro nunca registrou**.
+
+  Isso muda a conversa do Interpor de duas maneiras. A primeira: ele não seria o primeiro · há
+  precedente de decidir no `regras.json` e publicar depois, e o Abortar está em produção assim há
+  quinze dias. A segunda, que é a que importa: **o Interpor não é implementar régua existente, é
+  escrever régua nova**, e a lista abaixo é o que falta escrever, não o que falta programar.
 
   **O QUE A RÉGUA TEM**, e é menos do que parece:
 
@@ -1928,6 +1983,46 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 - [ ] **L7 · [DEPOIS] A medição de campo do Supabase real**, decidida para depois do harness. Sem
   ela, as métricas de carga saem em Ticks e em gestos e nunca em segundos, e essa é a maior lacuna
   conhecida do conjunto.
+
+- [ ] **L37 · [DECISÃO DE MESA, e ela mudou de forma no levantamento] A dupla cobrança do −2 da
+  Investida** · *aberta em 05/09/2026, depois de o número da Investida ser decidido.*
+
+  **O defeito, em uma linha:** quem declara Investida no Grid **e** liga a condição `investindo` à
+  mão paga **−6**, e a régua diz −4. As duas cobranças se somam sem se conhecer, porque a
+  `defesaEfetiva` empilha `condicoesDefesa` e `defesaPerdida` como parcelas independentes
+  (`return alvo.defesaBase`, `src/lib/lance.ts:159`). Nenhuma das quatro fontes diz −6, e ninguém
+  decidiu esse total.
+
+  **O QUE O LEVANTAMENTO MUDOU NA PERGUNTA, e é por isso que ela voltou para a mesa em vez de virar
+  conserto:** os dois caminhos, **sozinhos**, já dão o −4 certo · e por aritméticas diferentes.
+
+  | caminho | quem o usa | a conta | total |
+  |---|---|---|---|
+  | automático (`defesaPerdida`) | quem declara Investida no Grid | **substitui** a guarda do Preparo pela da Corrida | −4 ✓ |
+  | à mão (condição `investindo`) | quem joga só pela aba Combate | **soma** −2 à guarda do Preparo | −4 ✓ |
+  | os dois juntos | quem faz as duas coisas | −4 da Corrida + −2 da condição | **−6** ✗ |
+
+  Ou seja: **não são duas cópias de um número, são duas contas diferentes que caem no mesmo total.**
+  Por isso não dá para "tirar a cópia": tirar qualquer um dos dois tira um caminho inteiro de quem
+  o usa. E a aba Combate **não tem tela de modo de deslocamento nenhuma** (`MODOS_MOV` não aparece
+  em `combate.astro`), então para ela a condição não é redundância, é o único caminho.
+
+  **AS OPÇÕES, e a escolha muda comportamento em cada uma:**
+
+  1. **o número sai da condição** (ela vira rótulo sem número). O Grid fica certo; **a mesa que joga
+     só pela aba Combate perde a Investida**, e não ganha substituto (`correndo` daria −6);
+  2. **o automático sai** (tudo volta para a condição). A aba Combate fica como está; **o Grid volta
+     a não cobrar nada até o mestre trocar de aba**, que é exatamente o defeito nomeado no cabeçalho
+     do `src/lib/mesa-condicoes.ts` e a razão de o item 1 da fase 2 ter existido;
+  3. **o Grid aplica a condição sozinho ao declarar, e o automático sai** · o número passa a morar
+     num lugar só, os dois caminhos continuam funcionando e **ninguém perde nada**. É a mais cara: a
+     condição precisa ser TIRADA quando o Preparo acaba, e o fim do Preparo é um Tick, não um número
+     de turnos, então o `porCondicao` precisa aceitar um `ate` explícito. Em troca, é o mesmo
+     desenho que a Corrida vai pedir na fase 3, e resolve as duas de uma vez.
+
+  **Recomendo a 3.** E fica registrado o que foi recusado: fazer o `defesaPerdida` olhar as
+  condições do combatente para não dobrar. Ela recebe uma `Acao` e não um combatente, de propósito ·
+  é o que a mantém pura e testável sem mesa, e é o que faz o espelho valer.
 
 - [ ] **L36 · [QUANDO A REGRA APARECER] O `resumoParaBanco` é vitrine, e não entrada de conta.**
   Não é defeito hoje, e é para isso que está escrito: quando alguém topar com ele, que não trate

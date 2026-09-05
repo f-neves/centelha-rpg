@@ -680,19 +680,25 @@ export function defesaPerdida(
   const fase = opts.fase || faseEm(acao, tick);
   const pressao = (acao?.pressao || 0) * (e.pressaoPorAtaque ?? -2);
   let acaoDV = 0;
-  // A INVESTIDA CUSTA NO PREPARO, e só nele: investir é atravessar o Preparo
-  // correndo, então o −2 dela é um termo da escada e não uma condição à parte.
-  // É o que a régua diz com estas palavras (`combate.movimento.investida`: "a
-  // Defesa cai −2 além do que o Preparo já cobra") e o que a tabela do capítulo
-  // mostra: Preparo andando, o −2 do Preparo; Preparo investindo, −2 a mais.
+  // QUEM INVESTE GASTA A GUARDA DA CORRIDA, e não a do Preparo mais um degrau.
   //
-  // E ELE SE SOMA À CONDIÇÃO `investindo` DO CATÁLOGO, que vale os mesmos −2 e
-  // continua existindo como o caminho à mão da aba Combate. Quem declarar a
-  // Investida no Grid E aplicar a condição à mão paga −4 em vez de −2. Condição
-  // é dado de regra e não se muda daqui: qual das duas fica é decisão de mesa,
-  // e está escrita na entrega de 05/09/2026.
+  // Decidido em 05/09/2026, e o que ele decide é a RAZÃO, porque o número é o
+  // mesmo pelos dois caminhos: investir é uma forma de aproximação, da mesma
+  // família da Corrida, e quem corre para cima do outro perde guarda pelo mesmo
+  // motivo. Por isso a linha abaixo lê `combate.movimento.corrida.defesa`
+  // DIRETO, em vez de somar `preparo + defesaExtra`: se a Corrida um dia custar
+  // outro número, a Investida acompanha sozinha, que é o que "mesma família"
+  // quer dizer.
+  //
+  // O `defesaExtra` do `regras.json` continua existindo porque é como o capítulo
+  // e o catálogo de condições dizem a mesma coisa ("−2 a mais que o Preparo"), e
+  // as três escritas ficam presas por uma asserção: `preparo + defesaExtra` tem
+  // de dar `corrida.defesa`. Ver `test-combate-tempo.mjs`.
+  //
+  // E SÓ NO PREPARO: no Golpe e na Recuperação a Investida não cobra nada a
+  // mais, senão viraria penalidade de ação inteira, que é outra regra.
   const investindo = fase === 'preparo' && acao?.mov?.modo === 'investida';
-  if (fase === 'preparo') acaoDV = (e.preparo ?? -2) + (investindo ? (INVESTIDA.defesaExtra ?? -2) : 0);
+  if (fase === 'preparo') acaoDV = investindo ? (CORRIDA.defesa ?? -4) : (e.preparo ?? -2);
   else if (fase === 'golpe') acaoDV = (e.golpe ?? -4) + (opts.segura ? (e.alivioSegundaMao ?? 2) : 0);
   else if (fase === 'recuperacao') acaoDV = (e.recuperacaoPorGolpe ?? -2) * golpesDados(acao, tick);
   return { fase, acao: acaoDV, pressao, total: acaoDV + pressao };
@@ -889,6 +895,23 @@ export const ehSimultaneo = (c: CombateMesa | null | undefined): boolean =>
  */
 export const INVESTIDA = C?.movimento?.investida || {};
 
+/**
+ * A ESCADA de Defesa do P/G/R, tirada do `regras.json`.
+ *
+ * Exportada porque a trava das três escritas da Investida precisa dela: a
+ * asserção que prende `defesaExtra` a `corrida.defesa` passa pelo `preparo`.
+ */
+export const ESCADA = C?.escada || {};
+
+/**
+ * A CORRIDA, e ela está aqui porque a Investida a lê.
+ *
+ * Quem investe gasta a guarda da Corrida (decisão de 05/09/2026), então o
+ * `defesaPerdida` precisa deste número e não de um degrau próprio. Ver a
+ * `defesaPerdida`.
+ */
+export const CORRIDA = C?.movimento?.corrida || {};
+
 /** Os modos de andar, com o padrão de metros por Tick e a penalidade escrita. */
 export type ModoMov = 'andar' | 'batalha' | 'corrida' | 'investida';
 export const MODOS_MOV: { id: ModoMov; nome: string; porTick: number; nota: string }[] = [
@@ -897,11 +920,11 @@ export const MODOS_MOV: { id: ModoMov; nome: string; porTick: number; nota: stri
   { id: 'batalha', nome: 'Deslocamento de Batalha', porTick: SIM?.velocidadePadrao?.batalha ?? 3,
     nota: 'a guarda de pé: sem penalidade nenhuma' },
   { id: 'corrida', nome: 'Corrida', porTick: SIM?.velocidadePadrao?.corrida ?? 6,
-    nota: `Defesa ${C?.movimento?.corrida?.defesa ?? -4} enquanto corre e até se recompor` },
+    nota: `Defesa ${CORRIDA.defesa ?? -4} enquanto corre e até se recompor` },
   // A INVESTIDA CORRE, e é por isso que o passo dela é o da Corrida: investir é
   // gastar o Preparo correndo em vez de andando, e não uma quarta velocidade.
   { id: 'investida', nome: 'Investida', porTick: SIM?.velocidadePadrao?.corrida ?? 6,
-    nota: `Defesa ${INVESTIDA.defesaExtra ?? -2} além do que o Preparo cobra, e +${
+    nota: `Defesa ${CORRIDA.defesa ?? -4} no Preparo, a mesma da Corrida, e +${
       INVESTIDA.danoDados ?? 1}d6 no golpe` },
 ];
 

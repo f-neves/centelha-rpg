@@ -201,6 +201,63 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
   }
 }
 
+// ------------------------------------- a mesma regra escrita em três arquivos
+//
+// A INVESTIDA ESTÁ ESCRITA COM NÚMERO EM TRÊS LUGARES QUE NENHUM GERADOR LIGA:
+// `combate.movimento.investida` no `regras.json`, a tabela do § Investida do
+// capítulo, e a nota da condição `investindo`. Elas concordam porque foram
+// digitadas na mesma sentada (`0f191fe`, 22/08/2026) e nada as prendia: mexer no
+// `defesaExtra` deixaria as outras duas dizendo o número velho, em silêncio, que
+// é a forma exata do defeito do comentário que envelhece.
+//
+// Levantado em 05/09/2026, quando o `travessiaNota` apareceu com um QUARTO
+// número (−6) que ninguém lia. Este bloco é o que impede o quinto.
+//
+// Ele confere PRESENÇA DO NÚMERO no texto, e não o texto inteiro: a redação é
+// livre, o número não é. E o campo `fonte` da condição, que sempre apontou para
+// `combate · movimento` e nunca foi lido por ninguém, passa a valer alguma coisa.
+{
+  const RAIZ = path.join(DIR, '..', '..');
+  const mov = (read('regras.json').combate || {}).movimento || {};
+  const inv = mov.investida || {};
+  const cond = (read('condicoes.json').lista || []).find((c) => c.id === 'investindo');
+  // Os números são escritos com o sinal de menos TIPOGRÁFICO nos textos (−, U+2212)
+  // e com o hífen no JSON. Comparar sem normalizar acusaria diferença onde não há.
+  const temNum = (txt, n) => String(txt || '').replace(/−/g, '-').includes(String(n));
+
+  if (!cond) fail('condicoes.json: a condição "investindo" sumiu, e a régua da Investida cita ela');
+  else {
+    if (cond.defesa !== inv.defesaExtra) {
+      fail(`a condição "investindo" (Defesa ${cond.defesa}) discorda de `
+        + `combate.movimento.investida.defesaExtra (${inv.defesaExtra}) no regras.json`);
+    }
+    if (!temNum(cond.nota, inv.defesaExtra) || !temNum(cond.nota, `+${inv.danoDados}d6`)) {
+      fail(`a nota da condição "investindo" não repete os números da régua `
+        + `(${inv.defesaExtra} de Defesa e +${inv.danoDados}d6): "${String(cond.nota).slice(0, 60)}…"`);
+    }
+  }
+
+  const cap = fs.readFileSync(path.join(RAIZ, 'src/content/chapters/combate.md'), 'utf8');
+  const linha = cap.split('\n').find((l) => /Preparo investindo/.test(l));
+  if (!linha) fail('o capítulo de combate perdeu a linha "Preparo investindo" da tabela da Investida');
+  else if (!temNum(linha, inv.defesaExtra) || !temNum(linha, `+${inv.danoDados}d6`)) {
+    fail(`a tabela do capítulo discorda da régua da Investida `
+      + `(esperado ${inv.defesaExtra} e +${inv.danoDados}d6): "${linha.trim()}"`);
+  }
+
+  // E O QUARTO NÚMERO NÃO VOLTA. O −6 morava na `travessiaNota` e só fechava se
+  // a Investida carregasse o −4 da Corrida MAIS o −2 dela. Decidido em
+  // 05/09/2026 que ela gasta a guarda da Corrida e nada mais: o total é o da
+  // Corrida, uma vez só. Qualquer soma dos dois de novo cai aqui.
+  const somaProibida = (mov.corrida?.defesa ?? -4) + (inv.defesaExtra ?? -2);
+  const sim = (read('regras.json').combate || {}).simultaneo || {};
+  const nota = String(sim.passoNoGolpe?.travessiaNota || '');
+  if (temNum(nota, somaProibida)) {
+    fail(`a travessiaNota traz ${somaProibida} de Defesa investindo: a Investida gasta a guarda `
+      + `da Corrida (${mov.corrida?.defesa}), e não a Corrida MAIS o degrau dela`);
+  }
+}
+
 if (erros.length) {
   console.error(`\n✘ Validação de dados FALHOU (${erros.length} erro(s)):`);
   for (const e of erros) console.error('  • ' + e);

@@ -178,12 +178,25 @@ eq(T.anatomia({ classe: 'media', velocidade: 6, sistema: 'normal', manobra: 'dup
   eq(['andar', 'batalha', 'corrida', 'investida'].map(T.modoCorre), [false, false, true, true],
     'quem corre: a Corrida e a Investida');
 
-  // A DEFESA. A regra: "-2 alem do que o Preparo ja cobra", e so no Preparo.
+  // A DEFESA. A regra, decidida em 05/09/2026: QUEM INVESTE GASTA A GUARDA DA
+  // CORRIDA, e so no Preparo. Investir e uma forma de aproximacao, da mesma
+  // familia da Corrida, e quem corre para cima do outro perde guarda pelo mesmo
+  // motivo. O numero e o mesmo que a soma antiga dava, e a razao e outra.
   const base = T.declarar(10, T.anatomia({ classe: 'media', velocidade: 6, sistema: 'pgr' }));
   const inv6 = { ...base, mov: { modo: 'investida', porTick: 6, auto: true } };
   const cor6 = { ...base, mov: { modo: 'corrida', porTick: 6, auto: true } };
   eq(T.defesaPerdida(base, 10).total, -2, 'o Preparo andando custa o -2 de sempre');
-  eq(T.defesaPerdida(inv6, 10).total, -4, 'e investindo custa -2 A MAIS, que e a tabela do capitulo');
+  eq(T.defesaPerdida(inv6, 10).total, T.CORRIDA.defesa,
+    `e investindo custa a guarda da Corrida (${T.CORRIDA.defesa})`);
+  // A TRAVA DAS TRES ESCRITAS, e ela e a razao de esta linha existir. O numero
+  // esta escrito A MAO em TRES arquivos que nenhum gerador liga: o
+  // `defesaExtra` do `regras.json`, a tabela do capitulo e a nota da condicao
+  // `investindo`. Eles concordam porque foram digitados na mesma sentada, e a
+  // conta abaixo e o que os prende: mexer na Corrida ou no Preparo sem mexer no
+  // `defesaExtra` para aqui, em vez de deixar dois textos mentindo em silencio.
+  eq((T.ESCADA.preparo ?? -2) + (T.INVESTIDA.defesaExtra ?? -2), T.CORRIDA.defesa,
+    'e as duas maneiras de escrever o mesmo numero continuam batendo '
+    + `(preparo ${T.ESCADA.preparo} + extra ${T.INVESTIDA.defesaExtra} = corrida ${T.CORRIDA.defesa})`);
   eq(T.defesaPerdida(cor6, 10).total, -2,
     'e a Corrida declarada NAO mexe na escada: o -4 dela e da condicao, e nao desta conta');
   // O PAR QUE FAZ A ASSERCAO VALER: se o -2 vazasse para as outras fases, a

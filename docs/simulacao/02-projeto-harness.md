@@ -400,6 +400,40 @@ os seus disfarces** · "não tem conserto", "é da cadência", "é a mesa decidi
 dá para automatizar". Toda vez que uma delas aparece ao lado de um número, ou há uma
 prova junto ou há um degrau que ninguém desenhou.
 
+## O REGISTRO NÃO SE COBRA, A FICÇÃO SE COBRA · regra de construção
+
+**Onde a mesa corrige o próprio registro, não cobra. Onde a mesa muda o que aconteceu
+na ficção, cobra.**
+
+Decidida em 05/09/2026, dentro do item de mudar efeito posto, e escrita aqui porque
+ela não é daquele item: é **o teste de todo controle novo do Grid**. A pergunta que
+ela faz a qualquer botão é uma só · *isto arruma o que a mesa escreveu, ou muda o que
+o personagem fez?* A primeira é de graça porque não é ficção; a segunda custa o que a
+régua já cobra pelo ato.
+
+**O caso que a produziu.** Um efeito no chão tinha um controle só, o destrutivo.
+Mudar duração, alvo ou lugar exigia apagar e conjurar de novo, e conjurar de novo
+debita Mana automaticamente. O cone que saiu 15° torto registrava DUAS conjurações
+para um personagem que conjurou UMA · e isso **não era um preço decidido, era o troco
+de não haver como corrigir**. Ninguém escolheu cobrá-lo; ele apareceu porque o único
+caminho passava por um ato que custa.
+
+**Por que ela vale mais que a decisão que resolveu.** Sem a frase, a resposta "a
+correção é de graça" fica sem chão, e daqui a um mês volta como pedido de um TERCEIRO
+preço: um reapontar barato, no meio da correção grátis e da reconjuração inteira. Com
+a frase, o terceiro preço tem de se justificar como ficção, e aí é regra nova, com
+número, e não uma facilidade de tela.
+
+**E ela corta para os dois lados**, que é o que a torna um teste e não uma desculpa:
+proíbe cobrar por bookkeeping, e proíbe dar de graça o que a ficção fez. Foi por isso
+que a correção do efeito posto **não mexe em tamanho**: mover e girar arruma o clique,
+redimensionar seria refazer, de graça, uma conjuração diferente da que foi paga.
+
+**O sinal de que ela foi violada:** um controle novo que "custa" alguma coisa sem que
+ninguém tenha decidido o preço · o custo saiu do caminho, e não da régua. Procure de
+onde o débito vem: se vem de uma função que existe para outra coisa (como o
+`gastarMana` da `conjurar`), é troco, não preço.
+
 ## O QUE FOI CORTADO · a lista que se lê contra o documento
 
 **Esta lista é o instrumento do oitavo caso, e ela se usa lendo.** A terceira coluna é o que a

@@ -1704,10 +1704,19 @@ export async function verificarEfeitos(ctx: CtxGrid, palco?: HTMLElement): Promi
  * conjuração que ele nunca fez. Isso não era preço decidido, era o troco de não
  * haver como corrigir.
  *
- * A LINHA QUE ESTA FUNÇÃO NÃO ATRAVESSA: corrigir o registro é de graça,
- * reconjurar custa uma conjuração, e não há terceira coisa. Reapontar uma Arte
- * já posta por menos do que custa conjurá-la seria regra nova, e a régua não a
- * tem. Por isso aqui NÃO se chama `gastarMana` nem `declararTempo`, e o registro
+ * A LINHA QUE ESTA FUNÇÃO NÃO ATRAVESSA, e ela é a regra e não a implementação:
+ *
+ *   ONDE A MESA CORRIGE O PRÓPRIO REGISTRO, NÃO COBRA.
+ *   ONDE A MESA MUDA O QUE ACONTECEU NA FICÇÃO, COBRA.
+ *
+ * Corrigir é de graça porque **não é ficção**: é a mesa arrumando o que ela
+ * mesma escreveu. Mudar o que a ficção fez custa reconjurar, que é o preço que
+ * a régua já tem para o ato. E não há terceira coisa · reapontar uma Arte posta
+ * por menos do que custa conjurá-la seria regra nova, com número, e a régua não
+ * a tem. A frase está escrita aqui de propósito: sem ela, "a correção é de
+ * graça" fica sem chão e o terceiro preço volta como pedido daqui a um mês.
+ *
+ * Por isso aqui NÃO se chama `gastarMana` nem `declararTempo`, e o registro
  * diz "corrigiu", nunca "conjurou": a mesa lê a diferença na linha do log.
  *
  * E POR ISSO TAMBÉM NÃO SE MEXE EM TAMANHO. `recolocarFigura` move e gira, e

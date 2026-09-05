@@ -2332,7 +2332,7 @@
         "aproximarNota": "Anda na direção do alvo e PARA no alcance da arma. Não é um passo inteiro livre: é o que falta para encostar, e por isso não vira alcance de engajamento disfarçado.",
         "travessia": true,
         "travessiaExigeCorrida": true,
-        "travessiaNota": "A inércia: quem chega CORRENDO não para no impacto, segue em linha reta e sai do outro lado. Só para quem declarou Corrida ou Investida, e o freio já existe e é caro (Defesa −4 correndo, −6 investindo). Sem esse portão, atravessar o inimigo vira fuga disfarçada: num corredor você sai pelo outro lado e deixa o resto do grupo dele para trás.",
+        "travessiaNota": "A inércia: quem chega CORRENDO não para no impacto, segue em linha reta e sai do outro lado. Só para quem declarou Corrida ou Investida, e o freio já existe e é caro: nos dois a guarda cai para a da Corrida (Defesa −4), porque investir é uma forma de aproximação e não um degrau a mais. Sem esse portão, atravessar o inimigo vira fuga disfarçada: num corredor você sai pelo outro lado e deixa o resto do grupo dele para trás.",
         "recuar": false,
         "recuarNota": "Nunca. Não se inverte a inércia no instante do impacto, e é justamente o recuo que a bancada mostrou ser caro: todo o custo da versão livre vinha do bate-e-corre.",
         "circularNaHaste": false,
