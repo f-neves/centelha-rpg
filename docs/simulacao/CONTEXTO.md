@@ -141,9 +141,13 @@ geral que isso instancia: **migração antes do cliente é segura, cliente antes
   Instrumento novo passa por lá ANTES de ser construído, e o desenho diz quais formas se aplicam e
   o que fez com cada uma. Os CASOS continuam no princípio do `02-projeto-harness.md`. **A lista
   não é contada**: citar "as doze formas" envelhece na forma nova seguinte.
-- **O OBJETO QUE SE DISFARÇA DE OUTRO** · ler o ponto de escrita não diz por onde a escrita SAI.
-  Gatilho: `ctx.SB`, `SB`, qualquer cliente recebido por parâmetro em vez de importado · **quem é
-  este SB nesta aba?** → **L45**.
+- **A FACHADA QUE PRESERVA A FORMA E TROCA O DESTINO** (o nome é da revisora) · ler o ponto de
+  escrita não diz por onde a escrita SAI. Gatilho: `ctx.SB`, `SB`, qualquer cliente recebido por
+  parâmetro em vez de importado · **quem é este SB nesta aba?** → **L45**. E a emenda vale para
+  TODOS os gatilhos de símbolo: eles pressupõem que o objeto é o que o nome diz.
+- **TODO PORTÃO NOVO PASSA PELO ENSAIO DOS TRÊS SENTIDOS**: vermelho hoje, verde com o conserto
+  **sem tocar no arquivo do portão**, vermelho de novo com a regressão. Portão que casa por texto
+  fixo fica verde quando o conserto renomeia o literal · aconteceu duas vezes em 05/09/2026.
 - **Achar linha por CHAVE e nunca por posição**, em teste e em prosa. **Em SQL isso é:
   conferência de migração NOMEIA o que aquele arquivo define, e nunca CONTA o que existe** ·
   contagem mede o mundo e envelhece quando outro arquivo mexe, e quando falha não diz o que

@@ -18,6 +18,17 @@ partes lia.
 quais formas se aplicam e o que fez com cada uma. Dizer "nenhuma se aplica" é resposta, desde que
 seja escrita.
 
+**E TODO GATILHO DE SÍMBOLO PRESSUPÕE QUE O OBJETO É O QUE O NOME DIZ.** Onde existe FACHADA (um
+objeto que preserva a forma da chamada e troca o destino dela), ler o ponto da chamada não basta:
+é preciso **resolver o que o receptor é ali**. `ctx.SB.from(...).update(...)` tem a mesma cara nas
+duas abas e vai para lugares diferentes. A emenda vale para a tabela inteira, e não para uma linha
+dela.
+
+**E TODO PORTÃO NOVO PASSA PELO ENSAIO DOS TRÊS SENTIDOS**, antes de ser publicado: **vermelho
+hoje**; **verde com o conserto, sem tocar no arquivo do portão**; **vermelho de novo com a
+regressão**. Foi ele que reprovou duas versões do portão da migração 36 em vez de publicá-las, e a
+segunda tinha ficado verde por cegueira.
+
 ---
 
 ## As formas
@@ -31,7 +42,10 @@ seja escrita.
 | **o mecanismo que nada executa** (L25) | constante exportada, bandeira, função nova | quem LÊ isto? |
 | **o transporte que descarta** | `CAMPOS_*`, `pick`, `select('a,b')`, lista de chaves | a chave nova chega na OUTRA PONTA? |
 | **a leitura-modificação-escrita de foto local** (L41) | `{...obj}`, `.filter`, `update({ campo: inteiro })` | quem MAIS escreve este campo? |
-| **o objeto que se disfarça de outro** | `ctx.SB`, `SB`, cliente que chegou por parâmetro | quem é este SB NESTA aba? |
+| **a fachada que preserva a forma e troca o destino** | `ctx.SB`, `SB`, cliente que chegou por parâmetro | quem é este SB NESTA aba, e o que a RPC faz com este campo? |
+| **o portão que casa por texto fixo** | `.test(`, `includes(`, `like '`, todo portão novo | o que faz este portão ficar VERDE sem o problema ter sido resolvido? |
+| **a garantia correta sobre o eixo errado** | "cobre", "uma forma nova falha alto", "isto é coberto" | verdadeira sobre QUAL dimensão, e ela é a que importa aqui? |
+| **a remoção escrita como coleção inteira** | `.filter(` seguido de `update({ campo: ... })` | se este campo passar a SOMAR no servidor, esta remoção ainda remove? |
 | **o que não sabe dizer TIRE** | `\|\|`, `coalesce`, `filter`, `{...spread}` | isto sabe dizer TIRE, e não só PÕE? |
 | **a conferência que CONTA em vez de NOMEAR** | `count(*)`, `like 'x%'`, `.length ===` | conta o mundo, ou nomeia o que este arquivo define? |
 | **achar por POSIÇÃO** | `[0]`, `.at(-1)`, `limit 1`, `arquivo:123` | e se a ordem mudar? |
@@ -50,14 +64,30 @@ seja escrita.
 | **a afirmação contra afirmação** | *por gesto:* decidir cortar alguma coisa | isto virou PROIBIÇÃO OBSERVÁVEL, ou só prosa? |
 | **o fato que ninguém consegue perguntar daqui** | *por gesto:* sondar, inferir, "provavelmente rodou" | dá para trazer a resposta para DENTRO? |
 
-**São 25**, e a contagem é do dia em que o arquivo nasceu · ela não é para ser citada em
+**São 29**, e a contagem é do dia em que o arquivo nasceu (nasceu com 25 e cresceu quatro no mesmo
+dia, o que é o argumento contra citá-la) · ela não é para ser citada em
 instrução nenhuma, pelo motivo escrito lá em cima.
 
 **Duas se dobram conforme quem lê**, e vale dito porque explica a divergência entre contagens: a
 *asserção sem ocasião* e a *asserção negativa sozinha* são a mesma cegueira em dois gestos (uma é
 o cenário que não foi montado, a outra é a ausência da ausência); e o *zero ambíguo* e a *falha
-que devolve zero* saem do mesmo valor por caminhos diferentes. Juntando os dois pares, 23.
+que devolve zero* saem do mesmo valor por caminhos diferentes. Juntando os dois pares, 27.
 
-**As duas últimas não têm gatilho de símbolo**, e são as mais fracas da lista justamente por
+**AS QUATRO NOVAS DE 05/09/2026 SAÍRAM DO MESMO DIA, e três delas de dentro do conserto das
+outras**, que é o que as torna caras:
+
+- **a fachada** custou saída dupla em produção (**L45**);
+- **o portão que casa por texto fixo** é o zero ambíguo em forma de portão, e apareceu **dentro do
+  instrumento feito para prevenir a família**: a segunda versão do portão da 36 procurava
+  `.update({ mordidos` e ficou verde quando o próprio conserto trocou aquilo por `.update(patch)`.
+  **Mudar o nome de uma coisa é o que um conserto faz o tempo todo**, e um portão que casa por
+  literal fica verde exatamente quando o conserto acontece;
+- **a garantia correta sobre o eixo errado** é a fachada falando de si mesma: ela promete que
+  forma NOVA falha alto, e o que quebrou foi uma das cinco formas mudando de SIGNIFICADO no
+  servidor. Não é meia verdade nem verdade expirada;
+- **a remoção escrita como coleção inteira** é a que está escrita ANTES de custar alguma coisa, e
+  é a terceira vez que o mesmo conserto quebraria uma remoção. Ver **L38**.
+
+**As duas últimas da tabela não têm gatilho de símbolo**, e são as mais fracas da lista justamente por
 isso. A primeira já tem instrumento parcial (a lista de proibições observáveis); a segunda ganhou
 o dela em 05/09/2026, com a tabela `migracoes` da migração 36.

@@ -2615,6 +2615,20 @@ const SETAS = [
    * Cobre as cinco formas que aquele arquivo usa (`select`, `insert`, `upsert`,
    * `update .eq`, `delete .eq`). Uma forma nova falha alto, com função
    * inexistente, em vez de gravar errado em silêncio.
+   *
+   * E ESSA GARANTIA É CORRETA SOBRE O EIXO ERRADO, que é pior que meia verdade:
+   * ela cobre FORMA NOVA, e o que aconteceu em 05/09/2026 foi uma das cinco
+   * formas mudar de SIGNIFICADO no servidor. A migração 35 fez o `mordidos`
+   * fundir em vez de substituir, o `update .eq` continuou existindo e
+   * respondendo sem erro, e a remoção de chave virou operação sem efeito ·
+   * saída dupla em produção. Uma frase verdadeira sobre uma dimensão é lida
+   * como verdadeira sobre a outra, e ninguém desconfia dela por estar certa.
+   *
+   * O QUE ESTA FACHADA NÃO COBRE, então, e vai escrito no lugar em que ela
+   * promete: a SEMÂNTICA do outro lado. Trocar o cliente por baixo preserva a
+   * forma da chamada e troca o destino dela, e o que o destino faz com a carga
+   * não se enxerga do ponto da escrita. Quem escreve por aqui pergunta **o que
+   * a RPC faz com este campo**, e não só se a forma existe. → L45.
    */
   function sbDoJogador(): any {
     const pedido = (executa: (st: Record<string, any>) => Promise<any>) => {
