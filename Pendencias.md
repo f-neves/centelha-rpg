@@ -1257,7 +1257,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   fazia o carimbo valer: alguém que leia o perfil na hora de aplicar a regra.**
 
   O perfil é gravado, viaja no encontro, aparece na tela, é comparável e é recarimbável. E é lido
-  em **um** lugar do código de produção, `grid.astro:8603` (`perfil: { ...REGRAS_CENA }`), onde ele é copiado para dentro da
+  em **um** lugar do código de produção, `grid.astro:8609` (`perfil: { ...REGRAS_CENA }`), onde ele é copiado para dentro da
   entrada do lance, para o oráculo. `entrada.perfil` **não é consultado em lugar nenhum**: nem em
   `resolverGolpe`, nem em `quase-acerto.ts`, nem em `calc.ts`, nem no harness. Nenhuma das quinze
   bandeiras faz o motor tomar um caminho diferente.
@@ -1323,7 +1323,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   - o catálogo, 55 verbetes com número, em `src/data/condicoes.json`;
   - a soma: `export function somarCondicoes` (`src/lib/mesa-core.ts:164`);
-  - a leitura na folha do lance: `const cd = somarCondicoes` (`grid.astro:8312`);
+  - a leitura na folha do lance: `const cd = somarCondicoes` (`grid.astro:8318`);
   - o desconto chegando à Defesa: `alvo.condicoesDefesa` (`src/lib/lance.ts:159`);
   - a coluna: `add column if not exists condicoes` (`supabase/migracao-11.sql:25`);
   - e o RPC do jogador aceitando a chave: `condicoes` (`supabase/migracao-22.sql:125`).
@@ -1333,8 +1333,8 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   O diálogo saiu da aba Combate e virou três peças compartilhadas (`src/lib/mesa-condicoes.ts`,
   `src/components/CondDlg.astro`, e o estilo no `MesaCab.astro`). O que entrou no tabuleiro:
 
-  - o item no menu da peça: `item('condicoes'` (`grid.astro:6819`);
-  - o selo de ícones na lista lateral, que custa zero gestos: `const selo` (`grid.astro:5999`);
+  - o item no menu da peça: `item('condicoes'` (`grid.astro:6825`);
+  - o selo de ícones na lista lateral, que custa zero gestos: `const selo` (`grid.astro:6005`);
   - e a aba Combate chamando o mesmo módulo: `function abrirCondicoes` (`combate.astro:1740`), para
     não haver duas cópias divergindo no primeiro conserto que só uma receber.
 
@@ -1534,7 +1534,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   caixa**. Escolher "interpor" hoje **muda o verbo da frase do registro e nada mais**
   (`const verbo`, `src/lib/mesa-tempo-ui.ts:338`), e a saída escolhida é descartada pelo Grid, que
   grava só
-  `acao: limpa` (`grid.astro:5897`).
+  `acao: limpa` (`grid.astro:5903`).
 
   **O CAPÍTULO NÃO TEM UMA LINHA**, e é o primeiro fato do levantamento: `interpor`, `desviar` e
   **`abortar`** não aparecem em `src/content/chapters/` nenhuma vez. O Simultâneo dessa parte vive
@@ -2092,8 +2092,57 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   condição `correndo`, à mão. É o defeito nomeado no cabeçalho do `src/lib/mesa-condicoes.ts`, e o
   `marcarInvestida` é o molde pronto do conserto dele.
 
-- [ ] **L38 · [DECIDIDA, NÃO CONSTRUÍDA] A condição com prazo que não vence** · *a regra saiu em
-  05/09/2026, o levantamento também, e a construção espera o tamanho que ninguém sabe medir.*
+- [x] **L38 · RESOLVIDA em 05/09/2026 · A condição com prazo que não vence** · *a regra saiu da
+  mesa, a peneira saiu do levantamento, e o par de asserções segura as duas metades.*
+
+  **O QUE FOI CONSTRUÍDO.** O `varrerCondicoesVencidas` (`src/lib/artes-grid-mesa.ts`) derruba toda
+  condição com `ate` cumprido, escreve uma linha no registro da mesa por condição derrubada, e roda
+  de dentro do `verificarEfeitos` · que é o que os DOIS sistemas de tempo já chamam quando o relógio
+  anda (`encerrarVez` no clássico, `avancarTickSimultaneo` no Simultâneo).
+
+  **ELA RODA ANTES DO CORTE DO CHÃO LIMPO**, e isso é o desenho e não descuido. O
+  `verificarEfeitos` sai cedo quando não há efeito no tabuleiro, e quem fica grudado é justamente
+  quem põe condição SEM deixar efeito para trás. Depois do corte, a varredura não rodaria em
+  nenhuma mesa sem Arte no chão, que é exatamente a mesa em que o empurrão prende a condição.
+
+  **E NÃO RODA NO CARREGAMENTO, de propósito.** A varredura é do relógio, e abrir a tela não é
+  evento de relógio · além de a tela do jogador não poder escrever em `combatentes`. As condições
+  presas de mesa antiga caem no primeiro Tick que o mestre andar, que é o primeiro momento de jogo
+  e não o primeiro momento de olhar.
+
+  **O PAR DE ASSERÇÕES** (`cenaCondicaoQueVence`, `scripts/test-grid-simultaneo.mjs`), e nenhuma
+  das metades vale sozinha: só "a condição com `ate` some" passa igual se a varredura estiver
+  derrubando TUDO, inclusive o que o mestre pôs à mão, que é o defeito que a regra existe para
+  impedir; só "a do mestre fica" passa com a varredura desligada. **Falsificadas as duas**, uma de
+  cada vez, e cada falsificação deixou a outra metade verde · que é o que prova que são duas
+  medidas e não uma escrita duas vezes.
+
+  A de vencer vem da bancada (`?extras=presa`), semeada como o `deslocar` a deixa: `ate` e
+  `porArte`, sem efeito atrás. **A de ficar vem do diálogo de verdade**, e não de semente, porque a
+  propriedade que sustenta a peneira é que o diálogo do mestre não grava `ate`, e isso só vale
+  medido na saída dele.
+
+  **AS DUAS TRAVAS DO DIA EM QUE A FEATURE CHEGAR.** A peneira é frágil de um jeito específico: no
+  dia em que o diálogo do mestre ganhar campo de duração, ele passa a gravar `ate` e a peneira muda
+  de significado sem que ninguém encoste nela.
+
+  | trava | onde | quando fala |
+  |---|---|---|
+  | a barata | `validate-data.mjs`, lendo o `mesa-condicoes.ts` | a cada commit, 7 s |
+  | a de fora | `cenaCondicaoQueVence`, varrendo todas as peças | no smoke e no CI |
+
+  A primeira lê o ARQUIVO do diálogo, porque o defeito nasce no código; a segunda varre as
+  condições de todas as peças e recusa qualquer uma com `ate` sem `porArte` e sem `auto`.
+  **Falsificadas as duas**, e pelos dois caminhos de escrita do diálogo (o chip do catálogo e o
+  formulário caseiro). A de fora pegou o que o par sozinho não pegou: com o diálogo gravando
+  `ate: 3` e o relógio ainda no Tick 1, a asserção do sobrevivente passava.
+
+  **QUANDO A FEATURE CHEGAR, o conserto não é apagar a trava**: é ensinar a varredura a separar
+  prazo PEDIDO de prazo HERDADO (por `porArte`/`auto`, que já viajam gravados), e só então soltá-la.
+
+  ---
+
+  *O levantamento que produziu a regra, guardado porque é o que a justifica:*
 
   **A REGRA, decidida pela mesa antes do levantamento:**
 
@@ -2147,9 +2196,8 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   A janela é desde **11/08/2026** (`2540221`, o commit que trouxe as Artes ao tabuleiro), e só em
   mesa que usou o Grid.
 
-  **DE QUEBRA, e não é o assunto: 9 Efeitos de `forma: "nenhuma"` declaram uma `condicao` que o Grid
-  NUNCA aplica** · esse caminho registra no log e retorna (`:783`). Condição escrita no dado e nunca
-  executada, que é o mesmo feitio do −6 do L34 §5.
+  **DE QUEBRA, e virou o L39: 9 Efeitos de `forma: "nenhuma"` declaram uma `condicao` que o Grid
+  NUNCA aplica.**
 
   **O TAMANHO: NINGUÉM SABE, e não dá para saber daqui.** A chave anon é a única leitura de produção
   possível, e a RLS faz o que foi desenhada para fazer · `combatentes`, `combate_visao` e
@@ -2157,11 +2205,46 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   é membro de mesa nenhuma. **Contar exigiria a chave de serviço, e ela não está aqui.** A resposta
   fica sendo essa, e ela também é resposta.
 
-  **A CONSEQUÊNCIA A ESCREVER JUNTO, quando a varredura entrar:** cena em andamento vai perder
-  condições que hoje estão penalizando, no primeiro carregamento, todas de uma vez. **Alguém vai ver
-  um número mudar sem ter feito nada.** É o conserto certo e ainda assim é surpresa, então a
-  varredura **diz no registro da mesa o que caiu e por quê**, uma linha por condição derrubada, e
-  não em silêncio.
+  **A CONSEQUÊNCIA ESCRITA JUNTO:** cena em andamento vai perder condições que hoje estão
+  penalizando. **Alguém vai ver um número mudar sem ter feito nada.** É o conserto certo e ainda
+  assim é surpresa, então a varredura **diz no registro da mesa o que caiu e por quê**, uma linha
+  por condição derrubada, e não em silêncio. Uma correção ao que estava escrito aqui antes de
+  construir: não é "no primeiro carregamento", é **no primeiro Tick que o mestre andar** · ver o
+  porquê lá em cima.
+
+- [ ] **L39 · [NÃO AGORA] Os 9 Efeitos que declaram uma condição e não a aplicam** · *achado em
+  05/09/2026, no levantamento da L38. Registrado com o enquadramento porque é ele que decide o
+  conserto, e o conserto não é hoje.*
+
+  Nove Efeitos têm `grid.forma: "nenhuma"` **e** `grid.condicao` preenchida. Esse caminho registra
+  no log e retorna (`if (forma === 'nenhuma')`, `src/lib/artes-grid-mesa.ts:783`), então a condição
+  declarada nunca chega a ninguém. Condição escrita no dado e nunca executada, que é o mesmo feitio
+  do −6 do **L34 §5**.
+
+  São: Sugestão Plantada e Reescrever (`dominado`), Esquecer (`confuso`), Aviso e Momento Certo
+  (`abencoado`), Instante e Lapso (`acelerado`), Rosto Esquecível (`invisivel`), Esconder a Carga
+  (`escondido`).
+
+  **DOS DOIS ENQUADRAMENTOS, É O PRIMEIRO: a condição está no dado como CLASSIFICAÇÃO, e não como
+  instrução.** Não são 9 Efeitos que deixaram de fazer o que dizem. Três coisas apontam para o
+  mesmo lado:
+
+  1. **os nove declaram `alvo: "nenhum"`**, junto de `ancora: "nenhuma"` e `persiste: false`. Não há
+     a quem aplicar: o bloco não nomeia alvo nenhum. Aplicar exigiria inventar o alvo, não destravar
+     um caminho;
+  2. **são as Artes cujo efeito é ficção e não geometria** · memória, lealdade, aviso, timing. Elas
+     não têm forma no tabuleiro porque de fato não têm forma no tabuleiro, e é isso que
+     `forma: "nenhuma"` quer dizer;
+  3. **e uma delas prova o ponto sozinha:** Rosto Esquecível declara `invisivel`, que na régua é
+     **Defesa +4**, e o próprio texto do Efeito diz *"Não esconde nada: só apaga a lembrança de ter
+     visto."* Aplicar seria o defeito, não deixar de aplicar.
+
+  **MAS NÃO É UNÂNIME, e é por isso que o conserto não é "apagar o campo nos nove".** Lapso
+  (*"a próxima ação dele sai mais cedo"*) e Instante declaram `acelerado`, que é velocidade −2, e
+  esses dois leem como se quisessem mesmo a condição. **A pergunta de verdade é o que o campo
+  significa**, e hoje ele tem dois significados: `grid.condicao` é lido como *"a condição que isto
+  aplica"* em 57 Efeitos e escrito como *"a condição com que isto se parece"* em 9. **Um campo com
+  dois sentidos é o defeito**, e o conserto começa decidindo qual dos dois ele tem.
 
 - [ ] **L36 · [QUANDO A REGRA APARECER] O `resumoParaBanco` é vitrine, e não entrada de conta.**
   Não é defeito hoje, e é para isso que está escrito: quando alguém topar com ele, que não trate
@@ -2245,7 +2328,7 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   `arena_log` como tabela, uma linha por entrada, e o desfazer virando um `delete`.
 - [ ] **I5 · [FAZER] Um editor de cenário no Grid.** Hoje o mestre só põe peças: o tabuleiro não
   tem parede, terreno difícil nem item no chão, e o único veto de passo é casa ocupada
-  (`ocupadoPor`, `grid.astro:6621`). Decidido em 02/09/2026, ao desenhar o harness de simulação
+  (`ocupadoPor`, `grid.astro:6627`). Decidido em 02/09/2026, ao desenhar o harness de simulação
   (`docs/simulacao/02-projeto-harness.md` §0.4 P2): a **parede entra como funcionalidade**, e o
   encaixe já existe, porque `caminharHex` recebe um veto arbitrário (`hex.ts:131`). O terreno
   difícil tem gancho pronto e não usado: a condição `terreno-dificil` existe em `condicoes.json`

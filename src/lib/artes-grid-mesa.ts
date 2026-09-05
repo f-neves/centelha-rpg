@@ -1595,6 +1595,64 @@ async function aplicarDano(ctx: CtxGrid, alvo: any, bruto: number, plano: Plano,
   await ctx.logar(alvo, `${alvo.nome} sofreu ${golpe.liquido} de dano por ${motivo} [${golpe.nota}]`, { acao: null });
 }
 
+// ==================================================== a condição com prazo
+/**
+ * A CONDIÇÃO COM PRAZO VENCE SOZINHA, E A POSTA À MÃO NÃO VENCE NUNCA.
+ *
+ * A regra é da mesa (05/09/2026, L38 no `Pendencias.md`), e as duas metades
+ * dizem a mesma coisa por lados opostos: a duração é da FICÇÃO, então o motor é
+ * dono dela e a derruba quando o prazo chega; a condição que o mestre pôs com a
+ * própria mão é DELE, e a régua não calcula por cima do mestre. Ele a pôs, ele
+ * a tira. É o mesmo princípio da ficha do lance e do −4 da Investida podendo
+ * ser tirado à mão.
+ *
+ * A PENEIRA É UMA PERGUNTA SÓ: TEM `ate`? Não são dois mecanismos, é um, e o
+ * que o torna um é uma propriedade do dado que já existia sem ninguém ter
+ * projetado: nada que o mestre põe à mão grava `ate` (o chip do catálogo grava
+ * `{ id }`, o formulário caseiro grava nome e números), e nada que grava `ate`
+ * foi posto à mão (`porCondicao` aqui, `marcarInvestida` no `grid.astro`). Por
+ * isso `porArte` e `auto` não entram na conta: eles dizem QUEM pôs, e quem tira
+ * só precisa saber se há prazo.
+ *
+ * ISSO É FRÁGIL DE UM JEITO ESPECÍFICO, E TEM TRAVA. No dia em que o diálogo do
+ * mestre ganhar campo de duração, ele passa a gravar `ate` e esta peneira muda
+ * de significado sem que ninguém encoste nela. Duas asserções seguram a porta,
+ * e as duas falam no dia em que a feature chegar: o `validate` recusa `ate` no
+ * `mesa-condicoes.ts`, e a bancada varre as condições de todas as peças
+ * conferindo que nenhuma sem `porArte` e sem `auto` tem `ate`.
+ *
+ * ELA RODA ANTES DO CORTE DO CHÃO LIMPO, e isso não é descuido. Quem fica
+ * grudado é justamente quem põe condição SEM DEIXAR EFEITO PARA TRÁS: o
+ * `deslocar` das Artes de empurrão resolve na declaração e sai antes do
+ * `gravarEfeito`, então não há linha em `arena_efeitos` para vencer nem
+ * `encerrarEfeito` para chamar. Se a varredura ficasse depois do corte, ela não
+ * rodaria em nenhuma mesa sem Arte no chão, que é exatamente a mesa em que o
+ * empurrão deixa a condição presa.
+ *
+ * E ELA DIZ O QUE CAIU, uma linha por condição. O conserto é certo e ainda
+ * assim é surpresa: cena em andamento vai perder condição que hoje penaliza, e
+ * alguém vai ver um número mudar sem ter feito nada. O registro é o que
+ * transforma isso em explicação em vez de fantasma.
+ */
+async function varrerCondicoesVencidas(ctx: CtxGrid, t: number): Promise<void> {
+  // Só o mestre escreve em `combatentes`; a tela do jogador leria o mesmo
+  // vencimento e apanharia da RLS.
+  if (!ctx.mestre) return;
+  for (const c of ctx.combs || []) {
+    const atuais: any[] = Array.isArray(c.condicoes) ? c.condicoes : [];
+    const venceram = atuais.filter((k: any) => k?.ate != null && Number(k.ate) <= t);
+    if (!venceram.length) continue;
+    const restam = atuais.filter((k: any) => !venceram.includes(k));
+    const { error } = await ctx.SB.from('combatentes').update({ condicoes: restam }).eq('id', c.id);
+    if (error) continue;
+    c.condicoes = restam;
+    for (const k of venceram) {
+      const nome = (COND as any)[k.id]?.nome || k.nome || k.id;
+      await ctx.logar(c, `${c.nome}: ${nome} venceu o prazo e saiu (Tick ${k.ate}).`, { acao: null });
+    }
+  }
+}
+
 // ============================================================ o relógio anda
 /**
  * Passou o tempo: cobra quem está dentro, e tira o que venceu.
@@ -1613,6 +1671,10 @@ export async function verificarEfeitos(ctx: CtxGrid, palco?: HTMLElement): Promi
 
   // 1. o que venceu sai de cena, e leva a condição junto
   for (const ef of ATIVOS.filter((e) => venceu(e, t))) await encerrarEfeito(ctx, ef, 'venceu o prazo');
+
+  // 1.2 · e a condição com prazo vence sozinha, tenha efeito atrás dela ou não.
+  // ANTES do corte do chão limpo, de propósito: ver o cabeçalho da função.
+  await varrerCondicoesVencidas(ctx, t);
 
   // Chão limpo: não há aura para reposicionar, prazo para contar nem mordida
   // para conferir, e quem chamou já pintou o que mexeu. (Se alguma coisa acabou

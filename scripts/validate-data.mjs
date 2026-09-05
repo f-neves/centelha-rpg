@@ -258,6 +258,48 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
   }
 }
 
+// ------------------------------- a peneira da L38, e o dia em que ela mudar
+//
+// A CONDIÇÃO COM PRAZO VENCE SOZINHA, E A POSTA À MÃO NÃO VENCE NUNCA. A regra
+// é da mesa (05/09/2026), e o que a torna barata é uma propriedade do dado que
+// já existia sem ninguém ter projetado: NADA QUE O MESTRE PÕE À MÃO GRAVA `ate`.
+// Por isso o `varrerCondicoesVencidas` pergunta uma coisa só, "tem `ate`?", e é
+// um mecanismo em vez de dois.
+//
+// ISSO É FRÁGIL DE UM JEITO ESPECÍFICO: no dia em que o diálogo do mestre ganhar
+// campo de duração, ele passa a gravar `ate` e a peneira muda de significado sem
+// que ninguém encoste nela. A varredura passaria a derrubar o que o mestre pôs,
+// que é exatamente o que a regra proíbe.
+//
+// Este bloco é o portão desse dia. Ele lê o ARQUIVO do diálogo, e não os dados,
+// porque o defeito nasce no código: enquanto o `mesa-condicoes.ts` não escrever
+// `ate`, a peneira vale. A bancada tem o par de fora (`cenaCondicaoQueVence`, no
+// `test-grid-simultaneo.mjs`), que mede a mesma coisa na saída do diálogo de
+// verdade; este aqui é o barato, e roda a cada commit.
+//
+// QUANDO A FEATURE CHEGAR, o conserto não é apagar este bloco: é ensinar a
+// varredura a separar prazo pedido de prazo herdado (por `porArte`/`auto`, que
+// já viajam gravados), e só então soltar a trava.
+{
+  const RAIZ = path.join(DIR, '..', '..');
+  const arq = path.join(RAIZ, 'src/lib/mesa-condicoes.ts');
+  const src = fs.readFileSync(arq, 'utf8');
+  // Só as linhas que ESCREVEM condição: o comentário pode falar de `ate` à
+  // vontade, e é bom que fale.
+  const escrevem = src.split('\n')
+    .map((l, i) => [i + 1, l])
+    .filter(([, l]) => /c\.condicoes\s*=/.test(l) || /^\s*(id|nome|cor|icone|acao|dados|defesa|porRodada|nota|ate)\s*:/.test(l))
+    .filter(([, l]) => !/^\s*(\/\/|\*)/.test(l));
+  const comAte = escrevem.filter(([, l]) => /\bate\b\s*:/.test(l));
+  if (comAte.length) {
+    fail('o diálogo de condições do mestre passou a gravar `ate` '
+      + `(${comAte.map(([n]) => `mesa-condicoes.ts:${n}`).join(', ')}). `
+      + 'A peneira do `varrerCondicoesVencidas` é "tem `ate`?", e ela só vale enquanto nada '
+      + 'posto à mão tiver prazo: do jeito que está, a varredura vai derrubar o que o mestre pôs. '
+      + 'Ver L38 no Pendencias.md.');
+  }
+}
+
 if (erros.length) {
   console.error(`\n✘ Validação de dados FALHOU (${erros.length} erro(s)):`);
   for (const e of erros) console.error('  • ' + e);

@@ -5455,9 +5455,10 @@ const SETAS = [
       const { error } = await SB.from('encontros').update({ tick_atual: T }).eq('id', ENC.id);
       if (!error) ENC.tick_atual = T;
     }
-    // A MARCA DA INVESTIDA VENCE COM O PREPARO, e quem a tira é o relógio: nada
-    // neste sistema varre condição por prazo. Antes do passo, porque a peça que
-    // atravessa o alvo neste Tick já não está mais preparando.
+    // A MARCA DA INVESTIDA VENCE COM O PREPARO, e quem a tira é o relógio.
+    // Antes do passo, porque a peça que atravessa o alvo neste Tick já não está
+    // mais preparando · o `varrerCondicoesVencidas` também a pegaria pelo `ate`,
+    // mas só no fim do Tick, e tarde demais para o passo.
     await varrerInvestida(T);
     const escala = Number(ARENA?.escala_m) || 1;
     for (const c of naFila()) {
@@ -5780,18 +5781,19 @@ const SETAS = [
    * mesmo respeito que o `porArte` das Artes tem. E se já houver uma à mão, esta
    * função não põe outra: duas somariam −4 e o defeito voltaria por dentro.
    *
-   * O `ate` vai gravado por honestidade de registro e NÃO é o que a tira:
-   * ninguém lê essa chave, e o `somarCondicoes` soma tudo sem olhar prazo. Foi
-   * por isso que a remoção precisou ser explícita, na varredura do
-   * `avancarTickSimultaneo`.
+   * O `ate` DESTA condição hoje é lido, e a história dele cabe em três linhas
+   * porque ela explica por que a varredura abaixo continua existindo. Quando
+   * esta função foi escrita nada no sistema vencia por prazo, e o `ate` ia
+   * gravado só por honestidade de registro. A L38 mudou isso: o
+   * `varrerCondicoesVencidas` (no `artes-grid-mesa.ts`) derruba toda condição
+   * com `ate` cumprido, e não pergunta quem a pôs.
    *
-   * NÃO GENERALIZE ISSO PARA O RESTO DO SISTEMA, e a ressalva está aqui porque
-   * a primeira redação deste comentário generalizou: a condição posta por Arte
-   * SAI, só que pelo relógio do EFEITO e não pelo da condição · o
-   * `verificarEfeitos` derruba o efeito vencido a cada Tick e o
-   * `encerrarEfeito` leva a condição junto. Quem fica grudado é só quem põe
-   * condição sem deixar efeito para trás: esta função, e o `deslocar` das Artes
-   * de empurrão. Ver L38 no `Pendencias.md`.
+   * A VARREDURA ABAIXO NÃO FICOU REDUNDANTE, por duas razões, e as duas são de
+   * ordem e não de número. A primeira é que `ateTick` pode vir NULO (declaração
+   * sem golpe agendado), e prazo que não existe não vence. A segunda é o
+   * MOMENTO: a marca tem de sair antes do passo do Tick, porque a peça que
+   * atravessa o alvo neste Tick já não está preparando, e o
+   * `varrerCondicoesVencidas` só roda no fim, junto dos efeitos.
    */
   async function marcarInvestida(c: any, investindo: boolean, ateTick: number | null) {
     if (!c) return;
@@ -5814,6 +5816,10 @@ const SETAS = [
    * do Preparo (no Golpe, na Recuperação, livre, ou sem gesto nenhum) a marca da
    * Investida não vale mais, e sem esta linha ela ficaria grudada para sempre ·
    * penalizando em silêncio, que é pior que a dupla cobrança que ela conserta.
+   *
+   * A REGRA DA FASE É MAIS FINA QUE O PRAZO, e é por isso que ela sobrevive à
+   * varredura geral da L38: esta olha o gesto, aquela olha o número. Quando os
+   * dois concordam, quem chegar primeiro tira, e a outra não acha nada.
    */
   async function varrerInvestida(T: number) {
     for (const c of naFila()) {

@@ -179,6 +179,14 @@ const EX_ARM = EX_TUDO || EX.includes('arm');
 //           rajada, que e 2 em haste e pesada e 3 em leve e media.
 const EX_PVMAX = EX_TUDO || EX.includes('pvmax');
 const EX_HASTE = EX_TUDO || EX.includes('haste');
+// presa · A CONDICAO COM PRAZO JA VENCIDO, do jeito que o `deslocar` das Artes
+//   de empurrao a deixa: com `ate` e `porArte`, e sem efeito nenhum atras dela
+//   para o `encerrarEfeito` levar embora. E a mesa de antes da L38, e e o unico
+//   jeito de a bancada ver a varredura TIRANDO alguma coisa.
+//   FORA do `extras=1` de proposito: `imobilizado` e Defesa -4, e ligar isso
+//   junto com os outros eixos mudaria numero de lance em cena que ja mede
+//   outra coisa.
+const EX_PRESA = EX.includes('presa');
 const PVMAX = [40, 25, 60, 33];
 
 const UID = '00000000-0000-4000-8000-000000000001';
@@ -293,9 +301,14 @@ for (let i = 0; i < N_COMB; i++) {
     // Com os extras, uma em cada tres leva uma condicao que mexe em DADOS
     // (`desgaste-2` tira dois, `inspirado` da um), que e o termo `ajusteDados`
     // do lance e o unico que a bancada padrao deixa sempre em zero.
-    condicoes: i % 3 === 0 ? [{ id: 'cego' }]
+    // O `cego` e os dois do `extras=cond` sao postos SEM `ate`, que e como o
+    // dialogo do mestre poe: eles sao os SOBREVIVENTES da varredura da L38.
+    condicoes: (i % 3 === 0 ? [{ id: 'cego' }]
       : EX_COND && i % 3 === 1 ? [{ id: 'desgaste-2' }]
-        : EX_COND ? [{ id: 'inspirado' }] : [],
+        : EX_COND ? [{ id: 'inspirado' }] : [])
+      // `imobilizado` e nao `caido`: a varredura nao olha qual e a condicao,
+      // e `caido` tiraria a peca da fila, que e outra medida.
+      .concat(EX_PRESA && i === 1 ? [{ id: 'imobilizado', ate: 1, porArte: true }] : []),
     ativo: true, oculto: false, imagem: null, retrato: null,
   });
 }

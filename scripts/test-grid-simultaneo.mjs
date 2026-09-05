@@ -684,6 +684,135 @@ async function cenaInvestidaUmaVez(br, url) {
   await p.close();
 }
 
+/**
+ * A CONDICAO COM PRAZO VENCE, E A POSTA A MAO FICA · a L38.
+ *
+ * O PAR E O TESTE, e nenhuma das duas metades vale sozinha. So a primeira
+ * (a condicao com `ate` some) passa igualzinho se a varredura estiver
+ * derrubando TUDO, inclusive o que o mestre pos com a propria mao, que e o
+ * defeito que a regra existe para impedir. So a segunda (a do mestre fica)
+ * passa com a varredura desligada. As duas juntas prendem o comportamento
+ * entre dois erros opostos.
+ *
+ * A DE VENCER VEM DA BANCADA (`?extras=presa`), semeada como o `deslocar` das
+ * Artes de empurrao a deixa: `ate` e `porArte`, sem efeito nenhum atras dela.
+ * A DE FICAR VEM DO DIALOGO DE VERDADE, e nao de uma semente: a propriedade
+ * que sustenta a peneira e que o dialogo do mestre NAO grava `ate`, e essa
+ * propriedade so vale medida na saida dele.
+ */
+async function cenaCondicaoQueVence(br, url) {
+  console.log('\n· a condicao com prazo vence sozinha, a posta a mao fica');
+  const p = await br.newPage();
+  await p.setViewport({ width: 1400, height: 950 });
+  const erros = [];
+  p.on('pageerror', (e) => erros.push(e.message));
+  await p.goto(`${url}/mesa/grid?id=${MESA}&bench=8&cols=24&rows=16&nevoa=0`
+    + '&tempo=simultaneo&extras=presa', { waitUntil: 'networkidle0', timeout: 60000 });
+  await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
+  await espera(700);
+
+  /** As condicoes de uma peca, cruas, como o banco as tem. */
+  const cru = (cid) => p.evaluate((cid) => {
+    const c = (window.__SB?.tabelas?.combatentes || []).find((x) => x.id === cid);
+    return (c?.condicoes || []).map((k) => ({ ...k }));
+  }, cid);
+  const temCond = (lista, id) => lista.some((k) => k.id === id);
+
+  // ---- 1: o retrato de antes ----
+  const presaAntes = await cru('c001');
+  ok(temCond(presaAntes, 'imobilizado'),
+    `c001 comeca com a condicao PRESA, a de antes da L38 (${
+      presaAntes.map((k) => `${k.id}${k.ate != null ? `@${k.ate}` : ''}`).join(', ') || 'nenhuma'})`);
+  const maoAntes = await cru('c000');
+  ok(temCond(maoAntes, 'cego'),
+    `c000 comeca com uma condicao SEM prazo, do feitio que o mestre poe (${
+      maoAntes.map((k) => k.id).join(', ') || 'nenhuma'})`);
+
+  // ---- 2: o mestre poe uma A MAO, pelo dialogo de verdade ----
+  const posta = await p.evaluate(async () => {
+    const tk = document.querySelector('#gr-tokens .gr-token[data-c="c002"]');
+    if (!tk) return { abriu: false };
+    tk.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, clientX: 500, clientY: 400 }));
+    await new Promise((r) => setTimeout(r, 300));
+    const b = document.querySelector('#tok-menu button[data-a="condicoes"]');
+    if (!b) return { abriu: false };
+    b.click();
+    await new Promise((r) => setTimeout(r, 400));
+    const dlg = document.getElementById('cond-dlg');
+    if (!dlg?.open) return { abriu: false };
+    // O PRIMEIRO CHIP DO CATALOGO, e nao um nome escrito aqui: nome copiado
+    // para o teste envelhece calado quando o catalogo muda.
+    const chip = document.querySelector('#cond-catalogo .cond');
+    const nome = chip?.querySelector('.cond-n')?.textContent || '';
+    chip?.click();
+    await new Promise((r) => setTimeout(r, 600));
+    document.getElementById('cond-fechar')?.click();
+    return { abriu: true, nome };
+  });
+  ok(posta.abriu, `o dialogo de condicoes do mestre abre e aceita um chip (${posta.nome || 'nao abriu'})`);
+  if (!posta.abriu) { await p.close(); return; }
+
+  const maoNova = await cru('c002');
+  ok(maoNova.length > 0, `o mestre pos uma condicao a mao em c002 (${maoNova.map((k) => k.id).join(', ')})`);
+  // A PROPRIEDADE QUE SUSTENTA A PENEIRA, medida na saida do dialogo de
+  // verdade: o mestre nao grava prazo. No dia em que este `ok` ficar vermelho,
+  // o dialogo ganhou campo de duracao e a peneira mudou de significado.
+  ok(maoNova.every((k) => k.ate == null),
+    `e SEM prazo: nada que o mestre poe a mao grava \`ate\` (${
+      maoNova.map((k) => `${k.id}${k.ate != null ? `@${k.ate}` : ''}`).join(', ')})`);
+  const idMao = maoNova[0]?.id;
+
+  // ---- 3: o relogio anda ----
+  let voltas = 0;
+  for (let i = 0; i < 6; i++) {
+    if (await p.evaluate(() => !!document.getElementById('ini-prox')?.disabled)) break;
+    await p.click('#ini-prox');
+    await espera(800);
+    voltas = i + 1;
+    if (!temCond(await cru('c001'), 'imobilizado')) break;
+  }
+
+  // ---- 4: O PAR ----
+  const presaDepois = await cru('c001');
+  ok(!temCond(presaDepois, 'imobilizado'),
+    `a condicao COM prazo caiu quando o prazo chegou (${voltas} avanco(s) · sobrou ${
+      presaDepois.map((k) => k.id).join(', ') || 'nada'})`);
+  const maoDepois = await cru('c002');
+  ok(idMao && temCond(maoDepois, idMao),
+    `e a que o MESTRE pos a mao continua la: a regua nao calcula por cima dele (${
+      maoDepois.map((k) => k.id).join(', ') || 'sumiu'})`);
+  const cegoDepois = await cru('c000');
+  ok(temCond(cegoDepois, 'cego'),
+    `a da semente, tambem sem prazo, tambem ficou (${cegoDepois.map((k) => k.id).join(', ') || 'sumiu'})`);
+
+  // ---- 5: o registro diz o que caiu, e por que ----
+  const disse = await p.evaluate(() => (window.__SB?.tabelas?.mesa_arenas?.[0]?.log || [])
+    .some((l) => /venceu o prazo e saiu/.test(l.txt || '')));
+  ok(disse, 'e o registro da mesa DIZ o que caiu e por que: numero que muda sozinho precisa de linha');
+
+  // ---- 6: A TRAVA, varrida em todas as pecas ----
+  //
+  // A peneira e "tem `ate`?", e ela so e um mecanismo enquanto NADA que o
+  // mestre poe a mao tiver `ate`. Esta assercao e a guarda dessa propriedade:
+  // no dia em que o dialogo ganhar campo de duracao, ela fica vermelha, e o
+  // dia em que a feature chega e o dia em que o portao fala.
+  const forasteiras = await p.evaluate(() => {
+    const fora = [];
+    for (const c of (window.__SB?.tabelas?.combatentes || [])) {
+      for (const k of (c.condicoes || [])) {
+        if (k.ate != null && !k.porArte && !k.auto) fora.push(`${c.id}:${k.id}@${k.ate}`);
+      }
+    }
+    return fora;
+  });
+  ok(forasteiras.length === 0,
+    `nenhuma condicao com \`ate\` sem \`porArte\` nem \`auto\`: a peneira continua sendo UMA pergunta (${
+      forasteiras.join(', ') || 'nenhuma'})`);
+
+  ok(erros.length === 0, `nenhum erro de pagina (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
+  await p.close();
+}
+
 const dev = await subirDev({ config: 'astro.bancada.mjs' });
 const br = await puppeteer.launch({ executablePath: NAV, headless: 'new', args: ['--no-sandbox'] });
 try {
@@ -691,6 +820,7 @@ try {
   await cenaAlvoQueFoge(br, dev.url);
   await cenaFichaDoLance(br, dev.url);
   await cenaInvestidaUmaVez(br, dev.url);
+  await cenaCondicaoQueVence(br, dev.url);
 } finally {
   await br.close();
   await dev.parar();
