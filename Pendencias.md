@@ -2785,6 +2785,12 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `funde = t` **e** `tira = t`, com a prova de fogo do jsonb passando: fundir e depois subtrair tira
   só a chave pedida. A saída dupla parou.
 
+  **A 37 ESTÁ ESCRITA E ESPERA A MESA**, e ela não toca em dado nenhum: só declara, no
+  `comment on column public.migracoes.sha256`, a regra de leitura que a revisora pediu · nulo
+  significa "não sabemos qual texto rodou", e nenhum consumidor futuro pode tratar nulo como
+  "confere" nem comparar dois nulos como iguais. Sem risco de formato: comentário de coluna não
+  muda o que nenhum cliente recebe.
+
 - [ ] **L36 · [QUANDO A REGRA APARECER] O `resumoParaBanco` é vitrine, e não entrada de conta.**
   Não é defeito hoje, e é para isso que está escrito: quando alguém topar com ele, que não trate
   como bug.
