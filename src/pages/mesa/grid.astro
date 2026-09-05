@@ -9608,11 +9608,49 @@ const SETAS = [
    * emboscada se anuncia por escrito, com casa e tudo.
    */
   async function logar(c: any, txt: string, extra: Record<string, any>) {
-    const linha = { id: novoId(), ts: new Date().toISOString(), txt, pub: c?.oculto ? null : txt, ...extra };
+    // `porJogador` MARCA QUEM ESCREVEU, e existe por uma decisão de mesa: o
+    // Refazer do mestre não apaga linha de jogador. Ver `refazerLogEfeitos`.
+    // A marca é positiva no jogador, e não no mestre, porque a linha sem dono é
+    // do mestre na esmagadora maioria · e porque só o jogador tem dono a
+    // proteger. Ela é da mesma família do `porArte` das condições: quem escreve
+    // carimba, quem apaga lê o carimbo.
+    const linha = { id: novoId(), ts: new Date().toISOString(), txt, pub: c?.oculto ? null : txt,
+      ...(MESTRE ? {} : { porJogador: true }), ...extra };
     LOG.push(linha);
     if (LOG.length > 300) LOG = LOG.slice(-300);
     pintarLog();
     await persistirLog(linha);
+  }
+
+  /**
+   * OS IDS QUE O MESTRE APAGOU DE PROPÓSITO, nesta sessão.
+   *
+   * Sem esta lista o `mesclarLog` ressuscitaria toda linha apagada: para ele,
+   * uma linha que está no banco e não está na memória é indistinguível de uma
+   * linha que acabou de chegar. É por isso que a mescla precisa de lápide e a
+   * migração 34 não precisa · lá quem apaga é o banco, com o id na mão.
+   *
+   * Ela vive só enquanto a aba vive, e isso basta: depois do `update` a linha
+   * não está mais no banco, e não há o que ressuscitar.
+   */
+  const LOG_APAGADAS = new Set<string>();
+
+  /**
+   * Junta o registro do banco com o da memória do mestre, POR ID.
+   *
+   * O da memória manda no CONTEÚDO (é o que faz editar funcionar) e o do banco
+   * entra com o que o mestre não tinha visto · a linha que o jogador registrou
+   * pela RPC depois da última campainha. A ordem sai do `ts`, para a linha do
+   * jogador cair onde aconteceu e não no fim.
+   */
+  function mesclarLog(doBanco: any[], meu: any[]): any[] {
+    const meus = new Set(meu.map((e: any) => e?.id));
+    const novas = doBanco.filter((e: any) => e?.id && !meus.has(e.id) && !LOG_APAGADAS.has(e.id));
+    if (!novas.length) return meu;
+    // `sort` estável: entre dois `ts` iguais, quem já estava fica antes.
+    const tudo = [...meu, ...novas].sort((a: any, b: any) =>
+      String(a?.ts || '').localeCompare(String(b?.ts || '')));
+    return tudo.length > 300 ? tudo.slice(-300) : tudo;
   }
 
   /**
@@ -9630,6 +9668,26 @@ const SETAS = [
       if (!error) RT?.avisar('registro');
       else uiErro('Erro ao registrar: ' + error.message);
       return;
+    }
+    // ISTO É MITIGAÇÃO E NÃO CONSERTO, e a distinção não é modéstia: sem esta
+    // linha, quem ler daqui a três meses vai achar que o defeito está resolvido.
+    //
+    // O CONSERTO É A MIGRAÇÃO 34, e é ela que faz o mestre parar de escrever o
+    // vetor inteiro: `mestre_registra`, `log_apaga`, `log_edita` e
+    // `log_refaz_efeitos`, todas concatenando ou filtrando DENTRO do `update`, a
+    // partir do valor que está na linha. Enquanto ela não roda, o mestre
+    // continua mandando um vetor montado aqui, e continua havendo corrida.
+    //
+    // O QUE ESTA RELEITURA COMPRA: hoje o `LOG` do mestre só é atualizado pela
+    // campainha do tempo real, que junta 120 ms no envio, 220 ms na recepção, e
+    // ADIA até 21 segundos enquanto o mestre está `ocupado` · e `ocupado` inclui
+    // `dialog[open]`, que é exatamente o estado dele no instante em que vai
+    // registrar. A janela de perda era essa. Relendo aqui, ela passa a ser o
+    // intervalo entre este `select` e o `update` logo abaixo, que é de
+    // milissegundos. A corrida não morre; encolhe umas quatro ordens de grandeza.
+    if (ARENA?.id) {
+      const { data } = await SB.from('mesa_arenas').select('log').eq('id', ARENA.id).maybeSingle();
+      if (Array.isArray(data?.log)) LOG = mesclarLog(data.log, LOG);
     }
     const { error } = await SB.from('mesa_arenas').update({ log: LOG }).eq('id', ARENA.id);
     if (!error) RT?.avisar('registro');
@@ -9697,6 +9755,7 @@ const SETAS = [
       const c = COMBS.find((x: any) => x.id === e.cid);
       if (c) await devolverVida(e.cid, Math.min(c.pv_max ?? Infinity, (c.pv_atual ?? 0) + (e.quanto || 0)));
     }
+    LOG_APAGADAS.add(e.id);
     LOG.splice(idx, 1);
     pintarLog();
     await persistirLog();
@@ -9791,6 +9850,7 @@ const SETAS = [
   async function excluirLinha(id: string) {
     const i = LOG.findIndex((x: any) => x.id === id);
     if (i < 0) return;
+    LOG_APAGADAS.add(id);
     LOG.splice(i, 1);
     pintarLog(); pintarRegistro();
     await persistirLog();
@@ -9806,6 +9866,19 @@ const SETAS = [
    *
    * O que ele NÃO alcança são as linhas de antes desta marca existir: elas não
    * têm como ser reconhecidas, e ficam para o ✕ apagar à mão.
+   *
+   * ELE NÃO APAGA LINHA DE JOGADOR, e isso é decisão de mesa (05/09/2026) e não
+   * de código. O Refazer existe para reconstruir o que o MOTOR escreveu sobre
+   * efeitos; a Arte que o jogador conjurou é ação dele, não escrituração do
+   * motor. Apagar a linha do outro para reescrever com a sua é o mestre editando
+   * o registro de alguém sem ter pedido. Quem separa as duas é o `porJogador`,
+   * carimbado no `logar` por quem escreve · e o que ele não alcança são as
+   * linhas de jogador de ANTES do carimbo, que não têm como ser reconhecidas.
+   *
+   * E ELE RELÊ O REGISTRO DEPOIS DO CLIQUE, e não antes de abrir a caixa. A
+   * confirmação é uma pausa humana de segundos, e é a pior janela da corrida
+   * descrita no `persistirLog`: uma Arte conjurada durante a caixa não estaria
+   * na foto, e o filtro passaria por cima dela.
    */
   async function refazerLogEfeitos() {
     const { data, error } = await SB.from('arena_efeitos').select('*').eq('arena_id', ARENA.id);
@@ -9813,14 +9886,23 @@ const SETAS = [
       ? 'A tabela dos efeitos ainda não existe. Rode supabase/migracao-19.sql.'
       : 'Não deu para ler os efeitos: ' + error.message);
     const vivos = data || [];
-    const marcadas = LOG.filter((e: any) => e.ef).length;
+    const minha = (e: any) => e.ef && !e.porJogador;
+    const marcadas = LOG.filter(minha).length;
     if (!marcadas && !vivos.length) return uiErro('Não há linhas de Arte nem efeitos no tabuleiro.');
     if (!await uiConfirmar(
       `Apagar ${marcadas} linha${marcadas === 1 ? '' : 's'} de Arte do registro e escrever `
-      + `${vivos.length} no lugar, uma por efeito que está no tabuleiro?`,
+      + `${vivos.length} no lugar, uma por efeito que está no tabuleiro?`
+      + '\n\nLinhas de Arte conjurada por jogador não são apagadas.',
       { titulo: 'Refazer o log dos efeitos', ok: 'Refazer', perigo: marcadas > 0 })) return;
 
-    LOG = LOG.filter((e: any) => !e.ef);
+    // A releitura DEPOIS do clique: o que chegou enquanto a caixa esteve aberta
+    // entra no `LOG` antes de o filtro rodar, em vez de ser atropelado por ele.
+    if (ARENA?.id) {
+      const { data: dl } = await SB.from('mesa_arenas').select('log').eq('id', ARENA.id).maybeSingle();
+      if (Array.isArray(dl?.log)) LOG = mesclarLog(dl.log, LOG);
+    }
+    for (const e of LOG) if (minha(e)) LOG_APAGADAS.add(e.id);
+    LOG = LOG.filter((e: any) => !minha(e));
     const agora = daVez()?.tick ?? 0;
     const nomeDe = (id: string) => COMBS.find((c: any) => c.id === id)?.nome || '';
     // Na ordem em que entraram em cena, que é a ordem em que a mesa os viu.

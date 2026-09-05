@@ -3226,6 +3226,146 @@ async function cenaCorrigirEfeito(br, url) {
   await p.close();
 }
 
+
+/**
+ * A LINHA DO JOGADOR SOBREVIVE AO QUE O MESTRE ESCREVE · o L40.
+ *
+ * O DEFEITO: os dois papeis escrevem `mesa_arenas.log` por caminhos que nao se
+ * conhecem. O jogador acrescenta pelo banco (RPC), o mestre grava o vetor
+ * inteiro da memoria dele. Linha do jogador que chegou depois da foto do mestre
+ * sumia, sem erro nenhum.
+ *
+ * A CENA SIMULA A CHEGADA DO JEITO QUE ELA ACONTECE: escrevendo direto na
+ * TABELA do banco de mentira, e NAO no `LOG` da pagina. E isso que reproduz a
+ * corrida · se o teste puser a linha na memoria do mestre, ele mede outra coisa.
+ *
+ * TRES CASOS, e o segundo e o que quase ninguem escreve, porque apagar
+ * reescrevendo o vetor inteiro tem exatamente a forma da colisao:
+ *   1. o mestre ACRESCENTA e a linha do jogador fica;
+ *   2. o mestre APAGA uma linha dele e a do jogador fica;
+ *   3. o Refazer nao apaga linha de Arte do JOGADOR (decisao de mesa, 05/09).
+ *
+ * E O PAR DA LAPIDE, sem o qual o caso 2 passa pelo motivo errado: a linha que
+ * o mestre apagou NAO PODE VOLTAR. Para a mescla, uma linha que esta no banco e
+ * nao esta na memoria e indistinguivel de uma que acabou de chegar.
+ */
+async function cenaLogDoJogador(br, url) {
+  console.log('\n· a linha do jogador sobrevive ao que o mestre escreve');
+  const p = await br.newPage();
+  await p.setViewport({ width: 1400, height: 950 });
+  const erros = [];
+  p.on('pageerror', (e) => erros.push(e.message));
+  await p.goto(`${url}/mesa/grid?id=${MESA}&bench=6&cols=20&rows=14&nevoa=0`,
+    { waitUntil: 'networkidle0', timeout: 60000 });
+  await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
+  await espera(700);
+
+  /** Poe uma linha DIRETO no banco, como a RPC do jogador faz. */
+  const chegaDoJogador = (id, txt, extra) => p.evaluate((id, txt, extra) => {
+    const a = (window.__SB?.tabelas?.mesa_arenas || [])[0];
+    if (!a) return false;
+    a.log = [...(a.log || []), {
+      id, ts: new Date().toISOString(), txt, pub: txt, porJogador: true, ...extra }];
+    return true;
+  }, id, txt, extra || {});
+
+  /** Os ids que estao no BANCO agora. */
+  const noBanco = () => p.evaluate(() =>
+    ((window.__SB?.tabelas?.mesa_arenas || [])[0]?.log || []).map((l) => l.id));
+
+  /**
+   * Faz o mestre ACRESCENTAR uma linha, pelo caminho da tela.
+   *
+   * Pelo dialogo de condicoes, e nao pelo `esperar`: o `esperar` so aparece no
+   * menu de quem esta na vez, e o teste mediria o nada nas vezes em que a peca
+   * escolhida nao for ela. Por o `cego` em alguem escreve sempre.
+   */
+  const mestreEscreve = (n) => p.evaluate(async (n) => {
+    const tk = document.querySelectorAll('#gr-tokens .gr-token')[n || 0];
+    tk?.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, clientX: 500, clientY: 400 }));
+    await new Promise((r) => setTimeout(r, 300));
+    const b = document.querySelector('#tok-menu button[data-a="condicoes"]');
+    if (!b) { document.getElementById('tok-menu').hidden = true; return false; }
+    b.click();
+    await new Promise((r) => setTimeout(r, 400));
+    const chip = document.querySelector('#cond-catalogo .cond');
+    if (!chip) { document.getElementById('cond-dlg')?.close(); return false; }
+    chip.click();
+    await new Promise((r) => setTimeout(r, 700));
+    document.getElementById('cond-fechar')?.click();
+    return true;
+  }, n);
+
+  // ---- CASO 1: o mestre ACRESCENTA ----
+  await chegaDoJogador('lin-jog-1', 'Kael empurrou a porta.');
+  const escreveu = await mestreEscreve();
+  ok(escreveu, 'o mestre consegue escrever uma linha pela tela (o menu da peca)');
+  const depois1 = await noBanco();
+  ok(depois1.includes('lin-jog-1'),
+    `1 · o mestre ACRESCENTOU e a linha do jogador FICOU (${depois1.length} linha(s) no banco)`);
+
+  // ---- CASO 2: o mestre APAGA uma linha DELE ----
+  await chegaDoJogador('lin-jog-2', 'Kael gritou pelo irmao.');
+  const apagou = await p.evaluate(async () => {
+    document.getElementById('gr-registro')?.click();
+    await new Promise((r) => setTimeout(r, 500));
+    // A linha do MESTRE, e nao a do jogador: o alvo e uma linha que ele mesmo
+    // escreveu, porque e apagar a propria que reescreve o vetor.
+    const linhas = [...document.querySelectorAll('#rg-lista .rg-l')];
+    const minha = linhas.find((l) => !/Kael/.test(l.querySelector('.rg-t')?.textContent || ''));
+    const id = minha?.dataset.id || null;
+    minha?.querySelector('button[data-a="rm"]')?.click();
+    await new Promise((r) => setTimeout(r, 800));
+    document.querySelector('#rg-dlg, dialog[open]')?.close?.();
+    return id;
+  });
+  const depois2 = await noBanco();
+  ok(!!apagou, `o mestre achou uma linha propria para apagar (${apagou || 'nenhuma'})`);
+  ok(depois2.includes('lin-jog-2'),
+    `2 · o mestre APAGOU uma linha dele e a do jogador FICOU (${depois2.length} no banco)`);
+  // O PAR DA LAPIDE. Sem ele o caso 2 passaria pelo motivo errado: uma mescla
+  // que so junta ressuscita tudo, inclusive o que acabou de ser apagado.
+  ok(!!apagou && !depois2.includes(apagou),
+    `e a linha apagada NAO VOLTOU: a mescla tem lapide (${apagou} fora do banco)`);
+  ok(depois2.includes('lin-jog-1'),
+    'e a primeira do jogador continua la, duas escritas do mestre depois');
+
+  // ---- CASO 3: o Refazer nao apaga Arte de jogador ----
+  await chegaDoJogador('lin-jog-arte', 'Kael conjurou Lanca de Luz.', { ef: true });
+  await p.evaluate(() => {
+    const a = (window.__SB?.tabelas?.mesa_arenas || [])[0];
+    // A do MESTRE: `ef` sem `porJogador`. E ela que o Refazer existe para trocar.
+    a.log = [...(a.log || []), { id: 'lin-mestre-arte', ts: new Date().toISOString(),
+      txt: 'Brasa no tabuleiro · 4 casas', pub: 'Brasa no tabuleiro · 4 casas', ef: true }];
+  });
+  // Uma escrita do mestre puxa as duas para a memoria dele pela mescla, que e a
+  // condicao para o Refazer poder filtrar as duas. Numa peca diferente, para
+  // nao esbarrar na condicao que a primeira escrita ja pos.
+  await mestreEscreve(1);
+  const refez = await p.evaluate(async () => {
+    document.getElementById('gr-registro')?.click();
+    await new Promise((r) => setTimeout(r, 400));
+    document.getElementById('rg-refazer')?.click();
+    await new Promise((r) => setTimeout(r, 500));
+    const ok2 = [...document.querySelectorAll('dialog.ui-dlg .ui-dlg-ok')].pop();
+    const msg = document.querySelector('dialog.ui-dlg .ui-dlg-msg')?.textContent || '';
+    if (!ok2) return { abriu: false, msg };
+    ok2.click();
+    await new Promise((r) => setTimeout(r, 900));
+    document.querySelector('dialog[open]')?.close?.();
+    return { abriu: true, msg };
+  });
+  ok(refez.abriu, `a caixa do Refazer abre (${refez.msg.slice(0, 60) || 'nao abriu'})`);
+  const depois3 = await noBanco();
+  ok(depois3.includes('lin-jog-arte'),
+    '3 · o Refazer NAO apagou a linha de Arte do JOGADOR: acao dele nao e escrituracao do motor');
+  ok(!depois3.includes('lin-mestre-arte'),
+    'e apagou a do motor, que e para isso que ele existe');
+
+  ok(erros.length === 0, `nenhum erro de pagina (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
+  await p.close();
+}
+
 const dev = await subirDev({ config: 'astro.bancada.mjs' });
 const br = await puppeteer.launch({ executablePath: NAV, headless: 'new', args: ['--no-sandbox'] });
 try {
@@ -3243,6 +3383,7 @@ await cenaRastreador(br, dev.url);
   await cenaCondicaoAMao(br, dev.url);
 await cenaForaDeHora(br, dev.url);
   await cenaCorrigirEfeito(br, dev.url);
+  await cenaLogDoJogador(br, dev.url);
 } finally {
   await br.close();
   await dev.parar();

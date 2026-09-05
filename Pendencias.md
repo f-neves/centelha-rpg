@@ -2252,16 +2252,55 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   dos nove escolhe o seu, e a triagem vira leitura de nove linhas em vez de uma regra que não
   existe.
 
-- [ ] **L40 · [PERDA DE DADO EM PRODUÇÃO · PROPOSTO, NÃO CONSTRUÍDO] O registro do jogador que o
-  mestre apaga sem saber** · *achado em 05/09/2026. Só o Grid. A proposta está escrita aqui e a
-  construção espera decisão, porque ela depende de migração e a mesa não está rodando migração.*
+- [ ] **L40 · [MITIGADO EM 05/09/2026 · O CONSERTO É A MIGRAÇÃO 34] O registro do jogador que o
+  mestre apaga sem saber** · *só o Grid. A metade que não depende de migração está no ar; a que
+  depende espera a 34.*
+
+  **O QUE FOI CONSTRUÍDO, e é mitigação e não conserto.** O `persistirLog` do mestre passou a
+  **reler o `log` do banco imediatamente antes de escrever e mesclar por `id`** (`mesclarLog`). A
+  janela de perda deixou de ser o atraso da campainha (até ~21 s) e passou a ser o intervalo entre
+  o `select` e o `update`, de milissegundos. **A corrida não morreu, encolheu umas quatro ordens de
+  grandeza**, e a linha que diz isso está no código, junto da 34 nomeada como o conserto.
+
+  **E A MESCLA PRECISOU DE LÁPIDE**, que é o achado da construção: para o `mesclarLog`, uma linha
+  que está no banco e não está na memória é **indistinguível** de uma que acabou de chegar. Sem o
+  `LOG_APAGADAS`, toda linha que o mestre apagou voltaria dos mortos na escrita seguinte · a mescla
+  desfaria o `desfazer`. A migração 34 não vai precisar dela, porque lá quem apaga é o banco, com o
+  id na mão.
+
+  **O REFAZER RELÊ DEPOIS DO CLIQUE**, e não antes de abrir a caixa. A confirmação é uma pausa
+  humana de segundos e era a pior janela da corrida: uma Arte conjurada durante a caixa não estaria
+  na foto, e o filtro passaria por cima dela.
+
+  **E O REFAZER NÃO APAGA MAIS LINHA DE JOGADOR** · decisão de mesa, no item 3 abaixo.
+
+  **A PROVA** (`cenaLogDoJogador`, `scripts/test-grid.mjs`), com a linha do jogador chegando **na
+  TABELA e não no `LOG` da página**, que é o que reproduz a corrida em vez de medir outra coisa:
+  os três casos, mais o par da lápide sem o qual o caso 2 passaria pelo motivo errado.
+
+  **DUAS DAS TRÊS FALSIFICAÇÕES RODARAM, e a terceira está devendo.** Tirando a releitura, os casos
+  1 e 2 ficam vermelhos (a linha do jogador some do banco) e a lápide continua verde; tirando a
+  lápide, só a asserção da lápide fica vermelha (a linha apagada volta, e o banco vai de 42 para
+  43 linhas). **A terceira, trocar o `minha` por `e.ef` para o Refazer voltar a apagar linha de
+  jogador, NÃO CONSEGUIU RODAR**: o compilador do Astro nesta máquina caiu em `UnknownCompilerError`
+  (`WebAssembly.instantiate(): size 305922048 > maximum function size`) em seis tentativas
+  seguidas, com a árvore limpa e com a árvore alterada · é o defeito de máquina já registrado, e
+  não o código.
+
+  **O que existe no lugar dela, e vale menos que um vermelho:** na rodada verde a caixa do Refazer
+  diz *"Apagar 1 linha de Arte"* com **duas** linhas `ef` no `LOG`, a do mestre e a do jogador. Com
+  `minha = e.ef` ela diria 2. É observação que discrimina, medida exatamente onde a falsificação
+  apareceria, mas **não é a falsificação**, e fica devendo.
+
+  **O QUE FALTA, e é a 34:** enquanto o mestre montar o vetor aqui em vez de o banco montá-lo lá,
+  existe corrida. As quatro funções estão propostas gesto a gesto mais abaixo.
 
   **O DEFEITO.** No Grid os dois papéis escrevem o mesmo campo por caminhos que não se conhecem.
 
   O jogador acrescenta pelo banco, e o banco lê a coluna e concatena lá dentro:
-  `SB.rpc('jogador_registra', { p_arena: ARENA.id, p_linha: linha })`, `grid.astro:9629`.
+  `SB.rpc('jogador_registra', { p_arena: ARENA.id, p_linha: linha })`, `grid.astro:9667`.
   O mestre grava o vetor inteiro da memória dele:
-  `await SB.from('mesa_arenas').update({ log: LOG }).eq('id', ARENA.id);`, `grid.astro:9634`. **A linha que o jogador acabou de
+  `await SB.from('mesa_arenas').update({ log: LOG }).eq('id', ARENA.id);`, `grid.astro:9692`. **A linha que o jogador acabou de
   registrar some se o `LOG` do mestre for anterior a ela, sem erro nenhum.** É o caminho normal dos
   dois durante uma cena.
 
@@ -2304,10 +2343,10 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | gesto | o que faz hoje |
   |---|---|
   | `logar()` | empurra uma linha e grava o vetor |
-  | `desfazer()` | tira a última linha com `acao` (`LOG.splice(idx, 1);`, `grid.astro:9700`) e grava o vetor |
+  | `desfazer()` | tira a última linha com `acao` (`LOG.splice(idx, 1);`, `grid.astro:9759`) e grava o vetor |
   | `editarLinha(id)` | muda `txt`/`pub` de uma linha, e grava o vetor |
-  | `excluirLinha(id)` | tira por id (`LOG.splice(i, 1);`, `grid.astro:9794`) e grava o vetor |
-  | `refazerLogDosEfeitos()` | `LOG = LOG.filter((e: any) => !e.ef);` (`grid.astro:9823`) e empurra N linhas novas |
+  | `excluirLinha(id)` | tira por id (`LOG.splice(i, 1);`, `grid.astro:9854`) e grava o vetor |
+  | `refazerLogDosEfeitos()` | `LOG = LOG.filter((e: any) => !minha(e));` (`grid.astro:9905`) e empurra N linhas novas |
 
   **E UMA CORREÇÃO AO ENUNCIADO: não existe zerar no Grid.** O `LOG = []` é do `combate.astro`
   (`if (zLog) { LOG = []; await persistLog(); }`, `combate.astro:2058`), na caixa de reiniciar
@@ -2339,25 +2378,35 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   do mestre está nesse `log` e sobrevive.** O que causa a perda é a FOTO LOCAL, e não a reescrita
   do vetor · e é a foto que sai.
 
-  **E UM ACHADO NO INVENTÁRIO, que é decisão de mesa e não de código:** `refazerLogDosEfeitos` apaga
-  toda linha marcada `ef`, e a marca é posta pelo `logar` que a aba entrega ao módulo das Artes
-  (`logar(c, txt, { ...extra, ef: true })`, `grid.astro:2670`) · **inclusive quando quem conjurou
-  foi o jogador**. Então refazer o log dos efeitos hoje apaga as linhas de Arte DO JOGADOR e escreve
-  as do mestre no lugar. Pode ser o certo (ele regenera a partir do que está no chão), mas nunca foi
-  decidido.
+  **E UM ACHADO NO INVENTÁRIO, que virou decisão de mesa: o Refazer NÃO apaga linha de jogador.**
+  Ele apagava toda linha marcada `ef`, e a marca é posta pelo `logar` que a aba entrega ao módulo
+  das Artes (`logar(c, txt, { ...extra, ef: true })`, `grid.astro:2670`) · **inclusive quando quem
+  conjurou foi o jogador**.
 
-  ### O que trava a construção, e é preciso dizer antes
+  **A mesa decidiu em 05/09/2026 que não apaga**, e o motivo é o que dá a regra: *o Refazer existe
+  para reconstruir o que o MOTOR escreveu sobre efeitos, e a Arte que o jogador conjurou é ação
+  dele, não escrituração do motor. Apagar linha de jogador para reescrever com a do mestre é o
+  mestre editando o registro do outro sem ter pedido.*
 
-  **Tudo isso é migração nova (34), e a mesa não está rodando migração** · a 29 e a 30 estão
-  pendentes desde 04/09 e a 33 foi recusada. Um conserto que só funciona depois de um arquivo que
-  ninguém vai rodar não conserta nada.
+  **O DADO NÃO DISTINGUIA, e o que faltava era uma marca.** A linha do registro é
+  `{ id, ts, txt, pub, ...extra }` e **não tem autor nenhum** · o `ef` diz que o módulo das Artes
+  escreveu, não quem. Então entrou o `porJogador`, carimbado no `logar` por quem escreve, que é
+  quem sabe. É da mesma família do `porArte` das condições, como a mesa previu: **quem escreve
+  carimba, quem apaga lê o carimbo.**
 
-  **Existe metade que não depende de migração**, e ela fecha a janela real sem fechar a corrida: o
-  `persistirLog` do mestre **relê o `log` do banco imediatamente antes de escrever e mescla por
-  `id`** (a ordem do banco manda, o que só existe na memória entra no fim). Isso não elimina a
-  corrida (dois `update` ainda podem se cruzar entre o `select` e o `update`), mas troca uma janela
-  de até 21 segundos por uma de milissegundos, e roda hoje, em toda mesa, sem SQL nenhum. **A
-  decisão de mesa é se vale a metade agora, ou se espera a migração.**
+  A marca é positiva no jogador e não no mestre por dois motivos: a linha sem dono é do mestre na
+  esmagadora maioria, e só o jogador tem dono a proteger. **O que ela não alcança são as linhas de
+  jogador de ANTES do carimbo**, que continuam sem como ser reconhecidas · a mesma limitação que o
+  próprio `ef` já tinha, e escrita no lugar.
+
+  ### O que travava a construção, e o que a mesa decidiu
+
+  **Tudo isso é migração nova (34), e a mesa não estava rodando migração.** Um conserto que só
+  funciona depois de um arquivo que ninguém vai rodar não conserta nada. **A mesa mandou fazer a
+  metade que não depende de migração** (05/09/2026), e ela está no ar · ver o alto do verbete.
+
+  **E o gargalo virou tarefa própria:** o levantamento das cinco migrações pendentes está no
+  **L42**, para serem rodadas de uma vez. Depois disso a 34 deixa de ser bloqueio.
 
   ### A asserção de sobrevivente, com a metade que quase ninguém escreve
 
@@ -2367,8 +2416,10 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   1. o mestre ACRESCENTA e a linha do jogador fica;
   2. **o mestre APAGA uma linha dele e a do jogador fica**;
-  3. o mestre REFAZ os efeitos · e o que acontece é o do achado acima, que precisa ser decidido
-     antes de virar asserção.
+  3. o mestre REFAZ os efeitos e a linha de Arte DO JOGADOR fica.
+
+  **E o quarto, que não estava no enunciado e é o que segura o segundo:** a linha que o mestre
+  apagou **não volta**. Sem ele, o caso 2 passa com uma mescla que só junta, e que ressuscita tudo.
 
 - [ ] **L41 · [PENDÊNCIA DA MESMA FAMÍLIA] Leitura-modificação-escrita de coleção inteira a partir
   de foto local** · *a forma, nomeada em 05/09/2026, a partir do L40.*
@@ -2398,6 +2449,49 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   O `encontros.log` do `combate.astro` tem a mesma forma e um escritor só: fica no fim da fila, e
   por um motivo escrito, não por esquecimento.
+
+- [ ] **L42 · [PARA RODAR DE UMA VEZ] As cinco migrações pendentes** · *levantado em 05/09/2026, com
+  o esquema de produção sondado pela chave anon, uma por uma. Quatro para rodar, uma para NÃO
+  rodar.*
+
+  **COMO FOI CONFERIDO, porque isso não é lista de arquivo, é leitura de produção.** Cada uma foi
+  sondada pelo objeto que ela cria: coluna que não existe devolve `42703`, tabela devolve `PGRST205`,
+  função devolve `PGRST202`. A sonda foi calibrada contra um objeto que EXISTE (`casa_clara`, da
+  migração 14, devolveu `true`), para não confundir "não existe" com "não consigo ler".
+
+  | # | o que ela faz | o que o código faz hoje, sem ela | rodar? |
+  |---|---|---|---|
+  | **29** | `encontros.perfil` e `perfil_em`: o encontro carimba com que perfil de regras começou | o `carimbarSeFaltar` falha **calado** e a cena roda com o perfil corrente do `regras.json`. Um deploy troca o chão de um encontro aberto no meio da cena | **sim** |
+  | **30** | `mesas.gravar_lances` e a tabela `lances_veredito`: grava o par (veredito da régua, botão do mestre) | a aba Grupo diz *"A coluna gravar_lances ainda não existe. Rode supabase/migracao-30.sql."* e o par não é gravado. Nada mais quebra | **sim** |
+  | **31** | `tick_da_arena`, e a `casa_clara` passa a filtrar por ESTADO | **vazamento em produção**: fogo que ainda está sendo montado (ou que já venceu) acende o chão, e como é essa função que corta a `token_visao`, entrega ao jogador as peças que estavam no escuro. Medido: 12 casas de escuro abertas por um fogo que não caiu. E o Grid do jogador mostra *"⚑ o relógio da cena não está chegando"* | **sim, primeiro** |
+  | **32** | a `efeito_visao` ganha corte por CASA | **vazamento em produção**: uma Arte inteira no escuro chega ao navegador do jogador com nome, hexes, condição, alvos e conjurador. Fogo e luz se entregam sozinhos; veneno, gelo, barreira e sombra não | **sim, depois da 31** |
+  | **33** | a névoa esconde a EXISTÊNCIA da criatura, e não só a posição | a névoa esconde só a posição, como sempre | **NÃO** |
+
+  **A ORDEM: só um par é obrigatório, e é 31 antes de 32.** A view da 32 chama
+  `cross join lateral (select public.tick_da_arena(a.id) as t) rel`, `supabase/migracao-32.sql:65`,
+  e essa função nasce na 31: rodar a 32 antes falha na criação da view. As outras não dependem umas
+  das outras · a ordem numérica basta e não custa nada.
+
+  **AS DUAS DE VAZAMENTO SÃO AS URGENTES.** A 31 e a 32 não são construção, são defeito existindo
+  agora, e nenhuma das duas depende de mudança de tela. A 29 e a 30 são proteção e conveniência.
+
+  ### A 33 NÃO ENTRA, e o motivo mudou de lugar
+
+  **A semente resolveu a janela do `vistos`, e resolveu de verdade.** É o bloco 0 da própria
+  migração: toda peça que está numa casa clara no instante em que ela roda passa a constar como
+  vista, com posição e Vida daquele instante · exatamente o que o grupo enxerga. E **só onde
+  `vistos` ainda não existe**, por ausência de chave e não por conteúdo, então rodar duas vezes não
+  faz nada na segunda, e onde o cliente já acumulou a memória de verdade não é sobrescrita.
+
+  **MAS A JANELA DO `vistos` NUNCA FOI O ÚNICO BLOQUEIO.** O outro está no cabeçalho da própria
+  migração: *"NAO RODE ESTA ANTES DA VERSAO DO SITE QUE DESENHA A LEMBRANCA"*, porque a
+  `token_visao` passa a mandar peça com `lembranca = true` na casa onde o jogador a viu por último,
+  e **uma tela que não conhece essa coluna desenha aquilo como peça de verdade** · a mesa entrega
+  uma POSIÇÃO FALSA como se fosse leitura, que é pior que esconder.
+
+  **E ESSA TELA NÃO EXISTE.** A palavra `lembranca` aparece **zero vezes** no `grid.astro`, e
+  nenhum commit jamais a introduziu. Então a 33 fica de fora da sentada, e o que falta para ela não
+  é SQL: é a tela.
 
 - [ ] **L36 · [QUANDO A REGRA APARECER] O `resumoParaBanco` é vitrine, e não entrada de conta.**
   Não é defeito hoje, e é para isso que está escrito: quando alguém topar com ele, que não trate
