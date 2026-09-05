@@ -544,8 +544,11 @@ const CUSTOM = (() => {
 const FURT = regras.furtividadeCriatura || {};
 const NORM = (t) => String(t || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 function furtividadeDe(x) {
+  // A EXCECAO e { valor, porque }, e o `porque` nao e enfeite: ver a nota do
+  // campo. O numero solto tambem e aceito, para quem escrever com pressa.
   const ex = (FURT.excecoes || {})[x.id];
   if (typeof ex === 'number') return ex;
+  if (ex && typeof ex.valor === 'number') return ex.valor;
   const porte = NORM(DIMPORTE[x.id] || 'medio');
   const base = (FURT.porte || {})[porte];
   if (typeof base !== 'number') return undefined;

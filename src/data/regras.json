@@ -486,7 +486,11 @@
       "incorpóreo": 2
     },
     "excecoes": {
-      "nota": "O CAMINHO DA EXCEÇÃO, e ele existe desde o primeiro dia de propósito: dar Furtividade própria a uma criatura é UMA LINHA aqui, com o id dela e o número, e não uma refatoração. A tabela acima é o padrão; isto é a mesa discordando dela num caso concreto. Escreva o porquê ao lado, senão daqui a seis meses o número é um palpite anônimo."
+      "nota": "O CAMINHO DA EXCECAO, e ele existe desde o primeiro dia de proposito: dar Furtividade propria a uma criatura e UMA LINHA aqui, no formato {\"valor\": n, \"porque\": \"...\"}. O porque e obrigatorio e nao e formalidade: sem ele, daqui a seis meses o numero e um palpite anonimo e ninguem sabe se pode mexer. O par valor/porque num objeto so, e nao duas chaves irmas, porque a segunda chave parecia um id de criatura e o portao a cobrou como tal (test-sentidos.mjs).",
+      "assassino-das-sombras": {
+        "valor": 6,
+        "porque": "Medio e Humanoide, entao a tabela lhe da 2, o mesmo do campones: e o caso que a propria nota da tabela usa como exemplo do que ela erra. Some por oficio, e nao por tamanho."
+      }
     }
   },
   "progressaoPorSessao": [

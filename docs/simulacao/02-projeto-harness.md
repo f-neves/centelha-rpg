@@ -116,6 +116,30 @@ abaixo: toda decisão que CORTA alguma coisa fica numa lista só, escrita como P
 OBSERVÁVEL, e a conferência é ler a lista contra o documento. A lista não acha contradição em
 geral; ela acha a contradição que importa, que é o texto afirmando aquilo que uma decisão tirou.
 
+**E o décimo segundo tem um par que dá certo, que vale escrever junto porque é a mesma família
+vista pelo lado bom: OMITIR REVELA O BURACO, ZERAR O ESCONDE.**
+
+No mesmo dia, a função que calcula a Furtividade das criaturas procurava a base numa tabela por
+porte. Eu escrevi a chave como `miudo` e a casa usa `minusculo` (é o que a `couracaPorte` já
+usava). Vinte e quatro criaturas ficaram sem base.
+
+**A função omite a chave quando não acha, em vez de devolver zero**, e por isso as vinte e quatro
+saíram *sem* Furtividade em vez de *com Furtividade errada*. Uma contagem de uma linha as
+encontrou (`285 de 309`), e o conserto levou dois minutos. Se ela tivesse zerado por padrão, as
+vinte e quatro seriam furtivas como pedra, o número seria plausível para um ogro e absurdo para
+um rato, **e ninguém teria olhado**: `0` é um valor que a régua permite.
+
+A regra que sai daí, e ela é a irmã construtiva do princípio: **onde a conta não fecha, não
+escreva um valor.** `esquiva: 0` quer dizer "não esquiva" e a ausência da chave quer dizer "não
+dá para saber daqui", e quem lê tem de poder separar as duas. Um valor-padrão silencioso é a
+fábrica de zeros ambíguos: ele transforma "não sei" em "sei que é zero" na hora de escrever, e
+depois disso nenhuma leitura desfaz.
+
+Isso vale para todo campo derivado, e é o desenho do bloco `pericias` do bestiário: das cinco
+perícias, três saem omitidas em parte das criaturas (25 sem Integridade porque não têm mente, 164
+sem Sociabilidade porque têm Inteligência abaixo de 2), e essa omissão é informação. Preenchê-las
+com zero teria dado a 164 criaturas uma Sociabilidade que a régua diz que elas não têm.
+
 **O décimo segundo não está no código nem no número: está no CALENDÁRIO entre os dois.** É o
 mais novo da família e o mais fácil de repetir, porque a coisa que falta não é uma linha, é uma
 espera.

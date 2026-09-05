@@ -293,6 +293,12 @@ const resolverTecnicas = (ids, catalogo) => (ids || []).map((t) => {
 const CAMPOS_MESA = [
   'id', 'nome', 'nomeIngles', 'ameaca', 'centelha', 'categoria', 'porte', 'imagem',
   'semImagem', 'tipo', 'atributos', 'virtudes', 'vontade', 'aparencia',
+  // `pericias` ENTROU EM 04/09/2026, e a ausencia dela aqui foi um zero ambiguo
+  // de verdade: o bloco `sentidos` do ResumoCombate le `MON[id].pericias`, `MON`
+  // vem deste arquivo magro, e a Passiva de TODA criatura da mesa saia `null`
+  // sem nada acusar, porque `null` e um valor que o contrato permite. Quem pega
+  // isso agora e o `test-sentidos.mjs`.
+  'pericias',
   'artes', 'tecnicas', 'combate', 'ecologia', 'dimensoes',
 ];
 const TEC_POR_ID = Object.fromEntries(read('tecnicas.json').map((t) => [t.id, t]));

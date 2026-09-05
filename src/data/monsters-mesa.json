@@ -29,6 +29,13 @@
   },
   "vontade": 6,
   "aparencia": 6,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 0,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -102,6 +109,13 @@
   },
   "vontade": 10,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "artes": [
    {
     "id": "materia",
@@ -193,6 +207,13 @@
   },
   "vontade": 6,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [
    {
@@ -273,6 +294,12 @@
   },
   "vontade": 7,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -348,6 +375,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -422,6 +455,12 @@
   },
   "vontade": 8,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 1
+  },
   "artes": [
    {
     "id": "espirito",
@@ -501,6 +540,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -575,6 +620,13 @@
   },
   "vontade": 9,
   "aparencia": 10,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [
    {
     "id": "fascinacao",
@@ -665,6 +717,12 @@
   },
   "vontade": 7,
   "aparencia": 10,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -742,6 +800,13 @@
   },
   "vontade": 11,
   "aparencia": 12,
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -819,6 +884,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 3,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -893,6 +964,12 @@
   },
   "vontade": 6,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 4,
+   "integridade": 4,
+   "sociabilidade": 3,
+   "furtividade": 6
+  },
   "artes": [],
   "tecnicas": [
    {
@@ -988,6 +1065,13 @@
   },
   "vontade": 8,
   "aparencia": 2,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 3
+  },
   "artes": [
    {
     "id": "morte",
@@ -1081,6 +1165,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -1154,6 +1244,13 @@
   },
   "vontade": 9,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -1231,6 +1328,13 @@
   },
   "vontade": 12,
   "aparencia": -2,
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 2,
+   "integridade": 8,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [
    {
     "id": "fogo",
@@ -1317,6 +1421,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 2,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -1391,6 +1501,13 @@
   },
   "vontade": 7,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -1469,6 +1586,11 @@
   },
   "vontade": 6,
   "aparencia": 3,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -1549,6 +1671,12 @@
   },
   "vontade": 8,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 3,
+   "furtividade": 2
+  },
   "artes": [
    {
     "id": "materia",
@@ -1628,6 +1756,13 @@
   },
   "vontade": 10,
   "aparencia": 0,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -1705,6 +1840,12 @@
   },
   "vontade": 6,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 0
+  },
   "artes": [
    {
     "id": "raio",
@@ -1784,6 +1925,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 4
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -1858,6 +2005,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -1931,6 +2084,13 @@
   },
   "vontade": 7,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [
    {
     "id": "fascinacao",
@@ -2015,6 +2175,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -2089,6 +2255,12 @@
   },
   "vontade": 9,
   "aparencia": 2,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 4,
+   "furtividade": 1
+  },
   "artes": [
    {
     "id": "morte",
@@ -2175,6 +2347,13 @@
   },
   "vontade": 7,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -2249,6 +2428,13 @@
   },
   "vontade": 9,
   "aparencia": 6,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -2323,6 +2509,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 3,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -2397,6 +2589,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 0,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -2471,6 +2669,13 @@
   },
   "vontade": 7,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -2545,6 +2750,13 @@
   },
   "vontade": 10,
   "aparencia": 0,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -2622,6 +2834,13 @@
   },
   "vontade": 9,
   "aparencia": 8,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [
    {
     "id": "morte",
@@ -2705,6 +2924,13 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -2779,6 +3005,12 @@
   },
   "vontade": 6,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -2853,6 +3085,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 4
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -2926,6 +3164,13 @@
   },
   "vontade": 8,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 5,
+   "esquiva": 3,
+   "integridade": 6,
+   "sociabilidade": 3,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [
    {
@@ -3017,6 +3262,13 @@
   },
   "vontade": 4,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -3091,6 +3343,12 @@
   },
   "vontade": 6,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -3164,6 +3422,12 @@
   },
   "vontade": 7,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -3241,6 +3505,12 @@
   },
   "vontade": 7,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 4,
+   "integridade": 6,
+   "sociabilidade": 3,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -3314,6 +3584,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -3388,6 +3664,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -3462,6 +3744,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -3536,6 +3824,13 @@
   },
   "vontade": 10,
   "aparencia": 0,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -3613,6 +3908,12 @@
   },
   "vontade": 7,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 3,
+   "integridade": 6,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [
    {
@@ -3703,6 +4004,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -3776,6 +4083,13 @@
   },
   "vontade": 7,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -3850,6 +4164,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -3925,6 +4245,13 @@
   },
   "vontade": 9,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -3999,6 +4326,13 @@
   },
   "vontade": 6,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "artes": [
    {
     "id": "fortuna",
@@ -4077,6 +4411,13 @@
   },
   "vontade": 9,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -4150,6 +4491,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -4224,6 +4571,11 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -4305,6 +4657,12 @@
   },
   "vontade": 7,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "artes": [
    {
     "id": "materia",
@@ -4384,6 +4742,12 @@
   },
   "vontade": 7,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 3,
+   "integridade": 6,
+   "sociabilidade": 4,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [
    {
@@ -4474,6 +4838,12 @@
   },
   "vontade": 6,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [
    {
@@ -4553,6 +4923,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 5
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -4626,6 +5002,13 @@
   },
   "vontade": 10,
   "aparencia": 9,
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 2,
+   "integridade": 6,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [
    {
     "id": "materia",
@@ -4709,6 +5092,12 @@
   },
   "vontade": 11,
   "aparencia": 9,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 6,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -4782,6 +5171,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -4856,6 +5251,11 @@
   },
   "vontade": 6,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 0,
+   "esquiva": 0,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -4933,6 +5333,13 @@
   },
   "vontade": 7,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 2,
+   "integridade": 3,
+   "sociabilidade": 3,
+   "furtividade": 2
+  },
   "artes": [
    {
     "id": "morte",
@@ -5013,6 +5420,13 @@
   },
   "vontade": 7,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -5087,6 +5501,13 @@
   },
   "vontade": 7,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -5161,6 +5582,12 @@
   },
   "vontade": 6,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -5236,6 +5663,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -5309,6 +5742,13 @@
   },
   "vontade": 7,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 0,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -5382,6 +5822,13 @@
   },
   "vontade": 11,
   "aparencia": 10,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 6,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [
    {
     "id": "raio",
@@ -5471,6 +5918,12 @@
   },
   "vontade": 9,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "artes": [
    {
     "id": "morte",
@@ -5557,6 +6010,13 @@
   },
   "vontade": 11,
   "aparencia": -1,
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 2,
+   "integridade": 7,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -5634,6 +6094,13 @@
   },
   "vontade": 11,
   "aparencia": 0,
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 2,
+   "integridade": 6,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [
    {
     "id": "gelo",
@@ -5721,6 +6188,13 @@
   },
   "vontade": 12,
   "aparencia": -1,
+  "pericias": {
+   "prontidao": 4,
+   "esquiva": 3,
+   "integridade": 8,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [
    {
     "id": "morte",
@@ -5811,6 +6285,13 @@
   },
   "vontade": 10,
   "aparencia": 0,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 2,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -5888,6 +6369,13 @@
   },
   "vontade": 10,
   "aparencia": 0,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [
    {
     "id": "morte",
@@ -5978,6 +6466,13 @@
   },
   "vontade": 7,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 5
+  },
   "artes": [
    {
     "id": "fascinacao",
@@ -6068,6 +6563,13 @@
   },
   "vontade": 9,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "artes": [
    {
     "id": "agua",
@@ -6163,6 +6665,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 5
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -6237,6 +6745,13 @@
   },
   "vontade": 7,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [
    {
     "id": "materia",
@@ -6319,6 +6834,12 @@
   },
   "vontade": 9,
   "aparencia": 8,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 3,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -6393,6 +6914,13 @@
   },
   "vontade": 11,
   "aparencia": 9,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 0,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "artes": [
    {
     "id": "raio",
@@ -6483,6 +7011,13 @@
   },
   "vontade": 9,
   "aparencia": 8,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [
    {
     "id": "gelo",
@@ -6572,6 +7107,13 @@
   },
   "vontade": 12,
   "aparencia": 9,
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 0,
+   "integridade": 7,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "artes": [
    {
     "id": "fogo",
@@ -6667,6 +7209,13 @@
   },
   "vontade": 11,
   "aparencia": 9,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "artes": [
    {
     "id": "agua",
@@ -6751,6 +7300,13 @@
   },
   "vontade": 11,
   "aparencia": 9,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 0,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "artes": [
    {
     "id": "fogo",
@@ -6837,6 +7393,13 @@
   },
   "vontade": 12,
   "aparencia": 9,
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 0,
+   "integridade": 6,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "artes": [
    {
     "id": "fogo",
@@ -6928,6 +7491,13 @@
   },
   "vontade": 10,
   "aparencia": 9,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [
    {
     "id": "fogo",
@@ -7016,6 +7586,12 @@
   },
   "vontade": 7,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 4
+  },
   "artes": [
    {
     "id": "vento",
@@ -7102,6 +7678,13 @@
   },
   "vontade": 9,
   "aparencia": 8,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 4
+  },
   "artes": [
    {
     "id": "fascinacao",
@@ -7188,6 +7771,13 @@
   },
   "vontade": 9,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -7261,6 +7851,13 @@
   },
   "vontade": 6,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -7334,6 +7931,13 @@
   },
   "vontade": 7,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -7407,6 +8011,12 @@
   },
   "vontade": 6,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 4,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [
    {
@@ -7501,6 +8111,13 @@
   },
   "vontade": 6,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -7574,6 +8191,13 @@
   },
   "vontade": 9,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "artes": [
    {
     "id": "fortuna",
@@ -7662,6 +8286,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -7735,6 +8365,12 @@
   },
   "vontade": 6,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -7814,6 +8450,12 @@
   },
   "vontade": 8,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 0
+  },
   "artes": [
    {
     "id": "terra",
@@ -7905,6 +8547,12 @@
   },
   "vontade": 6,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -7985,6 +8633,12 @@
   },
   "vontade": 6,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -8063,6 +8717,12 @@
   },
   "vontade": 6,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -8142,6 +8802,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 4
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -8215,6 +8881,11 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "furtividade": 5
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -8291,6 +8962,11 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "furtividade": 5
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -8365,6 +9041,11 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "furtividade": 5
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -8440,6 +9121,11 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "furtividade": 5
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -8513,6 +9199,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 5
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -8589,6 +9281,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 5
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -8664,6 +9362,11 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "furtividade": 5
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -8739,6 +9442,11 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "furtividade": 5
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -8812,6 +9520,13 @@
   },
   "vontade": 10,
   "aparencia": 0,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 2,
+   "integridade": 6,
+   "sociabilidade": 0,
+   "furtividade": 3
+  },
   "artes": [
    {
     "id": "fascinacao",
@@ -8898,6 +9613,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -8971,6 +9692,13 @@
   },
   "vontade": 10,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [
    {
     "id": "forcas",
@@ -9054,6 +9782,13 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -9133,6 +9868,13 @@
   },
   "vontade": 9,
   "aparencia": 2,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 3
+  },
   "artes": [
    {
     "id": "morte",
@@ -9226,6 +9968,11 @@
   },
   "vontade": 5,
   "aparencia": 2,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -9308,6 +10055,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -9381,6 +10134,12 @@
   },
   "vontade": 7,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -9455,6 +10214,12 @@
   },
   "vontade": 7,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -9528,6 +10293,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -9602,6 +10373,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 5
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -9676,6 +10453,13 @@
   },
   "vontade": 9,
   "aparencia": 2,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -9758,6 +10542,13 @@
   },
   "vontade": 6,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 2,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [
    {
     "id": "fogo",
@@ -9837,6 +10628,13 @@
   },
   "vontade": 11,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 2,
+   "integridade": 7,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -9911,6 +10709,13 @@
   },
   "vontade": 9,
   "aparencia": 8,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 0,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [
    {
     "id": "fogo",
@@ -9997,6 +10802,13 @@
   },
   "vontade": 9,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 3,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 4
+  },
   "artes": [
    {
     "id": "fascinacao",
@@ -10083,6 +10895,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 3,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -10157,6 +10975,12 @@
   },
   "vontade": 10,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -10231,6 +11055,11 @@
   },
   "vontade": 5,
   "aparencia": 3,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -10310,6 +11139,12 @@
   },
   "vontade": 6,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -10389,6 +11224,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 5
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -10464,6 +11305,11 @@
   },
   "vontade": 6,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 0,
+   "esquiva": 0,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -10542,6 +11388,13 @@
   },
   "vontade": 11,
   "aparencia": 12,
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 2,
+   "integridade": 7,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [
    {
     "id": "espirito",
@@ -10627,6 +11480,13 @@
   },
   "vontade": 7,
   "aparencia": 2,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [
    {
     "id": "morte",
@@ -10713,6 +11573,13 @@
   },
   "vontade": 6,
   "aparencia": 2,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [
    {
     "id": "morte",
@@ -10805,6 +11672,12 @@
   },
   "vontade": 9,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -10878,6 +11751,12 @@
   },
   "vontade": 6,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -10952,6 +11831,13 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -11026,6 +11912,13 @@
   },
   "vontade": 8,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "artes": [
    {
     "id": "vento",
@@ -11113,6 +12006,13 @@
   },
   "vontade": 6,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "artes": [
    {
     "id": "vento",
@@ -11192,6 +12092,13 @@
   },
   "vontade": 6,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 0,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -11266,6 +12173,13 @@
   },
   "vontade": 6,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -11340,6 +12254,12 @@
   },
   "vontade": 9,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -11414,6 +12334,13 @@
   },
   "vontade": 11,
   "aparencia": 0,
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 1,
+   "integridade": 6,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [
    {
     "id": "fortuna",
@@ -11500,6 +12427,13 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -11575,6 +12509,13 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -11649,6 +12590,11 @@
   },
   "vontade": 8,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -11729,6 +12675,11 @@
   },
   "vontade": 8,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -11806,6 +12757,11 @@
   },
   "vontade": 9,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -11889,6 +12845,11 @@
   },
   "vontade": 6,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -11970,6 +12931,11 @@
   },
   "vontade": 8,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -12050,6 +13016,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -12124,6 +13096,12 @@
   },
   "vontade": 8,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 0,
+   "integridade": 3,
+   "furtividade": 1
+  },
   "artes": [
    {
     "id": "materia",
@@ -12203,6 +13181,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -12277,6 +13261,13 @@
   },
   "vontade": 12,
   "aparencia": 9,
+  "pericias": {
+   "prontidao": 4,
+   "esquiva": 0,
+   "integridade": 7,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "artes": [
    {
     "id": "fogo",
@@ -12368,6 +13359,13 @@
   },
   "vontade": 9,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -12446,6 +13444,12 @@
   },
   "vontade": 6,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -12520,6 +13524,13 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -12593,6 +13604,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -12666,6 +13683,12 @@
   },
   "vontade": 7,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 4,
+   "furtividade": 2
+  },
   "artes": [
    {
     "id": "fascinacao",
@@ -12746,6 +13769,13 @@
   },
   "vontade": 10,
   "aparencia": 0,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [
    {
     "id": "vento",
@@ -12832,6 +13862,12 @@
   },
   "vontade": 6,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -12906,6 +13942,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -12979,6 +14021,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -13052,6 +14100,12 @@
   },
   "vontade": 6,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -13126,6 +14180,13 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -13200,6 +14261,13 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -13274,6 +14342,13 @@
   },
   "vontade": 7,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -13347,6 +14422,13 @@
   },
   "vontade": 6,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 4
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -13425,6 +14507,12 @@
   },
   "vontade": 11,
   "aparencia": 9,
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 2,
+   "integridade": 7,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -13504,6 +14592,13 @@
   },
   "vontade": 9,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 2,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -13577,6 +14672,13 @@
   },
   "vontade": 9,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -13655,6 +14757,13 @@
   },
   "vontade": 7,
   "aparencia": 6,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -13729,6 +14838,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -13802,6 +14917,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -13876,6 +14997,13 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -13949,6 +15077,13 @@
   },
   "vontade": 12,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 0,
+   "integridade": 6,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "artes": [
    {
     "id": "agua",
@@ -14033,6 +15168,13 @@
   },
   "vontade": 9,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -14111,6 +15253,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -14186,6 +15334,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -14260,6 +15414,13 @@
   },
   "vontade": 9,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 2,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [
    {
     "id": "morte",
@@ -14343,6 +15504,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -14416,6 +15583,12 @@
   },
   "vontade": 9,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -14490,6 +15663,11 @@
   },
   "vontade": 6,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 0,
+   "esquiva": 0,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [
    {
@@ -14573,6 +15751,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -14647,6 +15831,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -14722,6 +15912,13 @@
   },
   "vontade": 11,
   "aparencia": 2,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [
    {
     "id": "protecao",
@@ -14812,6 +16009,13 @@
   },
   "vontade": 9,
   "aparencia": 10,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -14889,6 +16093,11 @@
   },
   "vontade": 6,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 0,
+   "esquiva": 0,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -14968,6 +16177,13 @@
   },
   "vontade": 7,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -15045,6 +16261,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -15121,6 +16343,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -15197,6 +16425,13 @@
   },
   "vontade": 9,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -15271,6 +16506,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -15344,6 +16585,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -15419,6 +16666,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -15493,6 +16746,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 5
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -15567,6 +16826,13 @@
   },
   "vontade": 8,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 3,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [
    {
     "id": "fogo",
@@ -15650,6 +16916,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -15724,6 +16996,12 @@
   },
   "vontade": 6,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -15798,6 +17076,13 @@
   },
   "vontade": 10,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -15877,6 +17162,13 @@
   },
   "vontade": 12,
   "aparencia": -1,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 2,
+   "integridade": 7,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [
    {
@@ -15960,6 +17252,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -16035,6 +17333,13 @@
   },
   "vontade": 8,
   "aparencia": 7,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [
    {
     "id": "materia",
@@ -16115,6 +17420,12 @@
   },
   "vontade": 7,
   "aparencia": 6,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -16188,6 +17499,13 @@
   },
   "vontade": 6,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -16262,6 +17580,13 @@
   },
   "vontade": 6,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -16336,6 +17661,12 @@
   },
   "vontade": 6,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [
    {
@@ -16416,6 +17747,13 @@
   },
   "vontade": 6,
   "aparencia": 8,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 5
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -16489,6 +17827,13 @@
   },
   "vontade": 9,
   "aparencia": 2,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -16571,6 +17916,12 @@
   },
   "vontade": 6,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [
    {
     "id": "materia",
@@ -16649,6 +18000,12 @@
   },
   "vontade": 6,
   "aparencia": 3,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -16730,6 +18087,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 5
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -16805,6 +18168,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -16880,6 +18249,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -16954,6 +18329,12 @@
   },
   "vontade": 7,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -17028,6 +18409,12 @@
   },
   "vontade": 9,
   "aparencia": 2,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 0,
+   "integridade": 4,
+   "furtividade": 1
+  },
   "artes": [
    {
     "id": "morte",
@@ -17115,6 +18502,13 @@
   },
   "vontade": 9,
   "aparencia": 0,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -17192,6 +18586,13 @@
   },
   "vontade": 10,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [
    {
     "id": "fascinacao",
@@ -17272,6 +18673,13 @@
   },
   "vontade": 10,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 2,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -17346,6 +18754,13 @@
   },
   "vontade": 9,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 2,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -17420,6 +18835,13 @@
   },
   "vontade": 11,
   "aparencia": -1,
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 1,
+   "integridade": 6,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -17497,6 +18919,13 @@
   },
   "vontade": 11,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 0,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -17570,6 +18999,12 @@
   },
   "vontade": 10,
   "aparencia": 0,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -17647,6 +19082,13 @@
   },
   "vontade": 10,
   "aparencia": 8,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 2,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 4
+  },
   "artes": [
    {
     "id": "fascinacao",
@@ -17736,6 +19178,11 @@
   },
   "vontade": 6,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 0,
+   "esquiva": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -17813,6 +19260,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -17888,6 +19341,13 @@
   },
   "vontade": 10,
   "aparencia": 0,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [
    {
     "id": "vento",
@@ -17985,6 +19445,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -18060,6 +19526,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -18133,6 +19605,12 @@
   },
   "vontade": 7,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -18208,6 +19686,11 @@
   },
   "vontade": 5,
   "aparencia": 3,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -18288,6 +19771,13 @@
   },
   "vontade": 9,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [
    {
     "id": "adivinhacao",
@@ -18368,6 +19858,13 @@
   },
   "vontade": 9,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -18445,6 +19942,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -18518,6 +20021,13 @@
   },
   "vontade": 9,
   "aparencia": 8,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 2,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 6
+  },
   "artes": [
    {
     "id": "fascinacao",
@@ -18596,6 +20106,13 @@
   },
   "vontade": 12,
   "aparencia": 11,
+  "pericias": {
+   "prontidao": 4,
+   "esquiva": 1,
+   "integridade": 8,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [
    {
     "id": "morte",
@@ -18687,6 +20204,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 4
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -18762,6 +20285,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -18836,6 +20365,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -18909,6 +20444,13 @@
   },
   "vontade": 6,
   "aparencia": 8,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 4
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -18982,6 +20524,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -19056,6 +20604,11 @@
   },
   "vontade": 6,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 0,
+   "esquiva": 0,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -19133,6 +20686,13 @@
   },
   "vontade": 7,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 5
+  },
   "artes": [
    {
     "id": "fascinacao",
@@ -19223,6 +20783,12 @@
   },
   "vontade": 8,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 1
+  },
   "artes": [
    {
     "id": "fogo",
@@ -19301,6 +20867,12 @@
   },
   "vontade": 6,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -19376,6 +20948,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 5
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -19450,6 +21028,13 @@
   },
   "vontade": 10,
   "aparencia": 0,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [
    {
     "id": "fascinacao",
@@ -19542,6 +21127,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 4
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -19616,6 +21207,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 4
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -19691,6 +21288,12 @@
   },
   "vontade": 9,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -19765,6 +21368,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -19847,6 +21456,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -19921,6 +21536,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -19995,6 +21616,13 @@
   },
   "vontade": 10,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -20070,6 +21698,13 @@
   },
   "vontade": 7,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -20145,6 +21780,13 @@
   },
   "vontade": 8,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [
    {
     "id": "fogo",
@@ -20236,6 +21878,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -20311,6 +21959,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 5
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -20386,6 +22040,13 @@
   },
   "vontade": 7,
   "aparencia": 8,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 4
+  },
   "artes": [
    {
     "id": "fascinacao",
@@ -20464,6 +22125,12 @@
   },
   "vontade": 10,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -20538,6 +22205,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -20614,6 +22287,13 @@
   },
   "vontade": 9,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -20694,6 +22374,12 @@
   },
   "vontade": 7,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -20768,6 +22454,12 @@
   },
   "vontade": 5,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 2,
+   "integridade": 5,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -20847,6 +22539,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -20920,6 +22618,13 @@
   },
   "vontade": 7,
   "aparencia": 2,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -21003,6 +22708,13 @@
   },
   "vontade": 7,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -21078,6 +22790,13 @@
   },
   "vontade": 12,
   "aparencia": 12,
+  "pericias": {
+   "prontidao": 4,
+   "esquiva": 2,
+   "integridade": 8,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [
    {
     "id": "morte",
@@ -21167,6 +22886,13 @@
   },
   "vontade": 6,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 2,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -21241,6 +22967,12 @@
   },
   "vontade": 7,
   "aparencia": 2,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 4,
+   "furtividade": 3
+  },
   "artes": [
    {
     "id": "morte",
@@ -21334,6 +23066,12 @@
   },
   "vontade": 6,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 4
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -21408,6 +23146,13 @@
   },
   "vontade": 9,
   "aparencia": 9,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 6,
+   "sociabilidade": 0,
+   "furtividade": 3
+  },
   "artes": [
    {
     "id": "fascinacao",
@@ -21504,6 +23249,13 @@
   },
   "vontade": 6,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -21577,6 +23329,12 @@
   },
   "vontade": 11,
   "aparencia": 9,
+  "pericias": {
+   "prontidao": 4,
+   "esquiva": 2,
+   "integridade": 8,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -21651,6 +23409,12 @@
   },
   "vontade": 12,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 0,
+   "integridade": 4,
+   "furtividade": 0
+  },
   "artes": [
    {
     "id": "protecao",
@@ -21739,6 +23503,13 @@
   },
   "vontade": 10,
   "aparencia": 9,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -21813,6 +23584,13 @@
   },
   "vontade": 6,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -21887,6 +23665,13 @@
   },
   "vontade": 6,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -21962,6 +23747,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -22036,6 +23827,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -22110,6 +23907,13 @@
   },
   "vontade": 8,
   "aparencia": 3,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 0,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "artes": [
    {
     "id": "vida",
@@ -22200,6 +24004,11 @@
   },
   "vontade": 5,
   "aparencia": 3,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -22281,6 +24090,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -22354,6 +24169,13 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -22428,6 +24250,12 @@
   },
   "vontade": 6,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -22503,6 +24331,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -22577,6 +24411,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -22651,6 +24491,13 @@
   },
   "vontade": 9,
   "aparencia": 10,
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 1,
+   "integridade": 7,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [
    {
     "id": "cura",
@@ -22739,6 +24586,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -22813,6 +24666,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -22886,6 +24745,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -22961,6 +24826,13 @@
   },
   "vontade": 10,
   "aparencia": 2,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 6,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [
    {
     "id": "fascinacao",
@@ -23068,6 +24940,12 @@
   },
   "vontade": 7,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -23146,6 +25024,13 @@
   },
   "vontade": 5,
   "aparencia": 3,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -23225,6 +25110,12 @@
   },
   "vontade": 6,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -23298,6 +25189,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -23371,6 +25268,12 @@
   },
   "vontade": 5,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 5
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -23447,6 +25350,11 @@
   },
   "vontade": 6,
   "aparencia": 3,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "furtividade": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -23527,6 +25435,13 @@
   },
   "vontade": 10,
   "aparencia": 0,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [
    {
     "id": "morte",
@@ -23613,6 +25528,13 @@
   },
   "vontade": 7,
   "aparencia": 2,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [
    {
     "id": "morte",
@@ -23699,6 +25621,12 @@
   },
   "vontade": 7,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -23773,6 +25701,12 @@
   },
   "vontade": 8,
   "aparencia": 8,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -23846,6 +25780,13 @@
   },
   "vontade": 9,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -23925,6 +25866,13 @@
   },
   "vontade": 8,
   "aparencia": 5,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [
    {
     "id": "terra",
@@ -24010,6 +25958,12 @@
   },
   "vontade": 7,
   "aparencia": 1,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -24089,6 +26043,13 @@
   },
   "vontade": 7,
   "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -24163,6 +26124,11 @@
   },
   "vontade": 6,
   "aparencia": 2,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "furtividade": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
