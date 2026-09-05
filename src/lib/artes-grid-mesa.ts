@@ -1750,6 +1750,14 @@ export async function verificarEfeitos(ctx: CtxGrid, palco?: HTMLElement): Promi
   // efeito fica no chão sem a mordida, e não morde duas vezes na próxima
   // passada. Entre perder uma mordida e cobrá-la em dobro, a primeira é a que a
   // mesa consegue consertar.
+  //
+  // E ESTA ESCOLHA É O QUE O `||` DA MIGRAÇÃO 35 DISSOLVE, se algum dia este
+  // ponto passar pela `jogador_muda_efeito` antes de ela saber dizer TIRE. A
+  // metade barata do par (a mordida perdida) some, sobra só a cara (a cobrada
+  // em dobro), e PERMANENTE em vez de transitória: a marca nunca sai, então o
+  // efeito ressai a cada passada. **Não é conserto imperfeito: é inverter uma
+  // decisão de robustez sem ninguém ter decidido invertê-la.** Por isso o
+  // vocabulário de remoção vem ANTES do cliente, e não depois (L42, L43).
   for (const ef of ATIVOS) {
     if (!deveSair(ef) || montando(ef, t)) continue;
     await marcarMordido(ctx, ef, A_SAIR, null);

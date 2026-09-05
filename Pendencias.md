@@ -2516,7 +2516,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **E O RISCO QUE EU FUI CONFERIR ANTES DE DIZER QUE NÃO HÁ:** a 32 faz `centro` e `conjurador_id`
   poderem vir nulos, e o cliente não foi mudado para isso. Conferido: o `centro` **não é lido em
   lugar nenhum** do cliente · a única ocorrência dele é uma escrita, em
-  `patch.centro = { q: nova.q, r: nova.r };`, `artes-grid-mesa.ts:1919`.
+  `patch.centro = { q: nova.q, r: nova.r };`, `artes-grid-mesa.ts:1927`.
   E o `conjurador_id` já era tratado como opcional em todos os pontos que o usam. **`alvos` nunca vem nulo** (a view faz `coalesce` para `[]`). O cabeçalho da 32 diz
   que ela não depende de mudança de tela, e a leitura do cliente confirma.
 
@@ -2582,7 +2582,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **E A MARCA `__a_sair` VAI JUNTO, e a resposta à pergunta da mesa é: não, a Arte não soltava · ela
   DEIXAVA DE SOLTAR.** A marca é o que segura a Arte em montagem: com ela, `deveSair()` é verdadeiro
   e a Arte ainda deve o efeito. Apagada, o laço da saída passa direto e **a Arte nunca sai**:
-  `src/lib/artes-grid-mesa.ts:1754` é `if (!deveSair(ef) || montando(ef, t)) continue;`
+  `src/lib/artes-grid-mesa.ts:1762` é `if (!deveSair(ef) || montando(ef, t)) continue;`
 
   **O SINTOMA, e ele vai escrito com estas palavras porque é o que alguém vai relatar de uma mesa
   antiga sem saber o nome:** a Mana foi paga, a mancha fica no chão **a duração inteira sem ferir
@@ -2594,6 +2594,18 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **Se alguém contar isso de uma sessão antiga, é este defeito.** Sem o sintoma escrito, ninguém
   liga o relato à causa · a causa é uma chave sumindo de um mapa, e o relato é uma Arte que não
   aconteceu.
+
+  **E HÁ UM SEGUNDO SINTOMA, OPOSTO, NO MESMO CAMPO · e o par é teste de campo, que vale mais que
+  a causa:**
+
+  | o que se vê | qual dos dois é |
+  |---|---|
+  | mancha inerte, e **sem "saiu" no registro** | **o defeito antigo**: a marca se perdeu |
+  | **"saiu" repetido**, com dano recobrado | **a 35 chegando cedo demais**: a marca não sai mais |
+
+  **Contados de memória os dois são indistinguíveis** ("a Arte fez coisa errada"), e **o registro
+  os separa sozinho**: a linha `${ef.nome} saiu` sai uma vez por saída. Zero é o primeiro, mais de
+  uma é o segundo. Quem relata não sabe qual está vendo · por isso os dois vão lado a lado.
 
   **A JANELA DESSE CASO É ESTREITA, e é honesto dizer**: enquanto a Arte está montando ela não morde
   (o laço da mordida abre com `if (montando(ef, t)) continue;`), então a única brecha é entre o Tick
@@ -2625,6 +2637,15 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `marcarMordido(ctx, ef, A_SAIR, null)`, que cai no `delete base[chave]`. Pela RPC, tirar a
   `__a_sair` seria operação sem efeito: a marca ficaria para sempre, o `deveSair()` verdadeiro para
   sempre, e o efeito não pararia de tentar sair.
+
+  **E O QUE ESTARIA SENDO INVERTIDO TEM DONO E TEM MOTIVO ESCRITO.** A ordem no laço da saída (a
+  marca sai ANTES da resolução) foi escolhida de propósito, e o comentário diz por quê: se a rede
+  cair no meio, o efeito fica no chão sem a mordida, e não morde duas vezes na próxima passada ·
+  *"entre perder uma mordida e cobrá-la em dobro, a primeira é a que a mesa consegue consertar"*.
+  **O `||` dissolve exatamente essa escolha:** a metade barata some, sobra só a cara, e
+  **permanente em vez de transitória** (a marca nunca sai, então o efeito ressai a cada passada).
+  Então o cliente passar pela RPC antes do vocabulário de remoção **não é conserto imperfeito: é
+  inverter uma decisão de robustez sem ninguém ter decidido invertê-la.**
 
   **Hoje é inerte** porque o `marcarMordido` grava direto na tabela e nunca chama a RPC. **A
   assimetria está do lado bom: migração antes do cliente é segura, cliente antes da migração é a

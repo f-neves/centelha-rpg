@@ -87,6 +87,24 @@
 -- E A ASSERCAO QUE PROVA ISSO NASCE JUNTO DO VOCABULARIO, e nao antes: prender
 -- hoje uma remocao que nenhum caminho executa seria prender o duble. Quem
 -- escrever a remocao escreve a bancada no mesmo commit.
+--
+-- O QUE ESTARIA SENDO INVERTIDO TEM DONO E MOTIVO ESCRITO, e vale dito aqui
+-- porque quem le esta migracao daqui a um mes nao vai ler o laco da saida. A
+-- ordem la (a marca sai ANTES da resolucao) foi escolhida de proposito: se a
+-- rede cair no meio, o efeito fica no chao SEM a mordida, e nao morde duas vezes
+-- na proxima passada. "Entre perder uma mordida e cobra-la em dobro, a primeira
+-- e a que a mesa consegue consertar." O `||` dissolve essa escolha: a metade
+-- barata some, sobra so a cara, e PERMANENTE em vez de transitoria. Nao seria
+-- conserto imperfeito: seria inverter uma decisao de robustez sem ninguem ter
+-- decidido inverte-la.
+--
+-- E OS DOIS SINTOMAS SAO OPOSTOS NO MESMO CAMPO, separaveis so pelo REGISTRO:
+--
+--   mancha inerte, e SEM "saiu" no registro  ->  o defeito antigo (marca perdida)
+--   "saiu" REPETIDO, com dano recobrado      ->  a 35 chegando cedo demais
+--
+-- Contados de memoria sao indistinguiveis. A linha "<Arte> saiu" sai uma vez por
+-- saida: zero e o primeiro, mais de uma e o segundo.
 -- =====================================================================
 
 -- --------------------------------------------------------------- a funcao
