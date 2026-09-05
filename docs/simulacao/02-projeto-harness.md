@@ -154,14 +154,27 @@ objeto é reconstruído campo a campo a partir de um maior. São **dezesseis**, 
 | 6 | `resumoVazio` (`mesa-bestiario.ts`) | — → `ResumoCombate` | literal | o TypeScript cobra os obrigatórios, e é o único dos dezesseis com trava de linguagem |
 | 7–14 | as oito views (`token_visao`, `combate_visao`, `efeito_visao`, `encontro_visao`, `arena_visao`, `arena_log_visao`, `criatura_visao`, `mapa_visao`) | tabela → jogador | `select` | em dia: as migrações 31, 32 e 33 as revisaram uma a uma, e cada uma tem `comment on` dizendo o que corta |
 | 15 | `COLUNAS.encontro_visao` (`mesa-mock.mjs`) | `encontros` → imitação da view | lista de chaves | em dia com a 31, e ela nasceu justamente do caso do relógio |
-| 16 | `paraJogador` (`mesa-mock.mjs`) | `combatentes` → imitação da `combate_visao` | subtrativa | **incompleta por escolha declarada**: tira `acao.arma` e `acao.alvo` e NÃO mascara Vida, `dados` nem condições, que a view mascara |
+| 16 | `paraJogador` (`mesa-mock.mjs`) | `combatentes` → imitação da `combate_visao` | subtrativa → **projeção completa** | achada **incompleta por escolha**, e consertada no mesmo dia: virou `scripts/visao-combate.mjs`, tradução linha a linha da migração 27, com o `test-visao.mjs` cobrando a lista de colunas contra o próprio `.sql` |
 
-**Uma estava desatualizada (a que causou o defeito) e uma está incompleta por escolha.** A
-décima sexta merece a frase que a décima quinta ensinou: a bancada é MAIS GENEROSA que o esquema,
-então o jogador de bancada sabe mais que o de verdade. Para uma asserção do tipo "ele não vê X"
-isso é seguro (falharia na bancada primeiro); para uma do tipo "ele vê X", é o caminho pelo qual
-um teste passa aqui e a mesa quebra lá. Foi exatamente assim que o relógio do Simultâneo ficou em
-zero por três semanas.
+**Uma estava desatualizada (a que causou o defeito) e uma estava incompleta.** A décima sexta
+merecia a frase que a décima quinta ensinou: a bancada era MAIS GENEROSA que o esquema, então o
+jogador de bancada sabia mais que o de verdade. Para uma asserção do tipo "ele não vê X" isso é
+seguro (falharia na bancada primeiro); para uma do tipo "ele vê X", é o caminho pelo qual um teste
+passa aqui e a mesa quebra lá. Foi exatamente assim que o relógio do Simultâneo ficou em zero por
+três semanas.
+
+**O CONSERTO DA DÉCIMA SEXTA, e o que ele fecha.** Ela tirava `acao.arma` e `acao.alvo` e mais
+nada, enquanto a view mascara também Vida em número, `dados`, energia, mana, condição e o resumo
+do colega, cada um por uma chave diferente de `mesas.revelar`. Agora a máscara é **computada**,
+pelo mesmo caminho que já tinha consertado `encontro_visao` (projeção de colunas), `token_visao` e
+`efeito_visao` (getters que recalculam). A lista de colunas não é copiada à mão: o `test-visao.mjs`
+**lê a migração 27**, separa as colunas do `select` e exige que sejam as mesmas, na mesma ordem.
+
+E sobrou o que não é computável, escrito nos dois arquivos em vez de descoberto depois: **a posse**
+(`meu`, que na bancada é a convenção `personagem_id === 'p000'` e no banco é
+`dono_do_personagem() = auth.uid()`) e **`eh_membro(e.mesa_id)`**, metade do `where`. As duas
+dependem de `auth.uid()` e de RLS, e são os dois únicos pontos em que a bancada não consegue ser o
+Postgres. A outra metade do `where`, `c.oculto = false`, é computável e passou a ser computada.
 
 **E o décimo segundo tem um par que dá certo, que vale escrever junto porque é a mesma família
 vista pelo lado bom: OMITIR REVELA O BURACO, ZERAR O ESCONDE.**

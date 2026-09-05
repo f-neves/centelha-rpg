@@ -1756,6 +1756,29 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   ela, as métricas de carga saem em Ticks e em gestos e nunca em segundos, e essa é a maior lacuna
   conhecida do conjunto.
 
+- [ ] **L36 · [QUANDO A REGRA APARECER] O `resumoParaBanco` é vitrine, e não entrada de conta.**
+  Não é defeito hoje, e é para isso que está escrito: quando alguém topar com ele, que não trate
+  como bug.
+
+  `personagens.resumo` é o que um jogador vê **do colega**: Vida, Energia, Mana, Fôlego, arma,
+  ataque, dano, as três Defesas, Absorção, Resistência a Perfuração e Iniciativa. Treze números
+  prontos, e nenhum insumo. **Não leva `attrs` nem `skills`**, e é por isso que ele nasceu assim:
+  a ficha inteira do colega não é da conta de ninguém, e a régua de mesa lê o resultado.
+
+  O DIA EM QUE VIRA CASO: quando uma regra pedir **atributo ou perícia de um colega de mesa**.
+  Socorrer alguém, empurrar quem está caído, uma ação em conjunto, uma resistência dividida ·
+  qualquer coisa em que o número do outro entre na conta em vez de ser lido. Aí o buraco aparece
+  do lado ruim, porque **a RLS de `personagens` só devolve ao jogador a ficha dele**: o resumo é
+  tudo o que ele tem do colega, e o que falta não é buscável de onde ele está.
+
+  É a mesma família do caso 13 do princípio (o transporte que descarta), e a diferença é o tempo:
+  lá o consumidor já existia e a estrada perdia a carga em silêncio; aqui o consumidor ainda não
+  existe, e a estrada está declarada estreita. **Quando ele existir, a saída não é alargar o
+  resumo por reflexo:** ampliar `resumoParaBanco` publica atributo de personagem para a mesa
+  inteira, que é decisão de jogo e não de código. As opções são pelo menos três (ampliar o resumo,
+  uma função `SECURITY DEFINER` que responda a pergunta sem devolver a ficha, ou a regra pedir o
+  número a quem o tem), e escolher entre elas é conversa, não conserto.
+
 **Um risco medido, para não se perder:** o registro da arena é um `jsonb` reescrito inteiro a cada
 linha de log (é o item **I2** desta lista), e isso custa **uma reescrita de até 45 KB por peça que se
 move, por Tick**. Com dez perseguidores são 450 KB por Tick, e perseguição é justamente o cenário que

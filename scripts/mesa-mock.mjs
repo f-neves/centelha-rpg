@@ -37,6 +37,10 @@ import { resumoCombatePC } from '../src/lib/combate-resumo';
 import { distanciaHex } from '../src/lib/hex';
 import { montando, venceu } from '../src/lib/artes-grid';
 import { armaDoCatalogo, classeDeTempo, velocidadeDaArma } from '../src/lib/combate-tempo';
+import { resumoFicha, resumoParaBanco } from '../src/lib/mesa-ficha';
+// A `combate_visao` da migração 27, traduzida uma vez só e conferida contra a
+// migração pelo `test-visao.mjs`. Ver o cabeçalho daquele arquivo.
+import { combateParaJogador } from './visao-combate.mjs';
 import { MESA_BANCADA } from './bancada.mjs';
 
 const P = new URLSearchParams(typeof location !== 'undefined' ? location.search : '');
@@ -504,23 +508,37 @@ const ARENAS = [{
 }];
 
 /**
- * A cena como o JOGADOR a recebe, imitando a `combate_visao` da migração 27.
+ * A cena como o JOGADOR a recebe, pela `combate_visao` da migração 27.
  *
- * Só o pedaço que interessa aqui: a agenda do gesto (`golpes`, `livre`) é
- * pública, porque é o que se vê olhando para o sujeito; a ARMA e o ALVO só
- * chegam para quem é dono da peça. Saber que o ogro está montando um gesto é
- * leitura de mesa; saber que ele está montando contra o mago é o que se compra
- * prestando atenção.
+ * ATÉ 04/09/2026 ISTO ERAM TRÊS LINHAS que tiravam `acao.arma` e `acao.alvo` e
+ * mais nada, e a bancada ficava MAIS GENEROSA QUE O ESQUEMA: a view mascara
+ * também a Vida em número, `dados`, energia, mana, condição e o resumo do
+ * colega. Uma asserção de "ele não vê X" era segura; uma de "ele vê X" passava
+ * aqui e quebrava na mesa, que é como o relógio do Simultâneo ficou em zero por
+ * três semanas.
  *
- * Não é o Postgres: aqui "meu" é o primeiro PC, e não há RLS por trás.
+ * Agora a máscara é COMPUTADA, pela mesma tradução da migração que o
+ * `test-visao.mjs` confere: `scripts/visao-combate.mjs`.
+ *
+ * O que continua sendo generosidade declarada, e é o único ponto que resta:
+ * aqui "meu" é o primeiro PC por convenção, e no banco é `dono_do_personagem()
+ * = auth.uid()`. Não há RLS por trás, então a LINHA sempre chega; o que este
+ * arquivo imita é o corte de COLUNA.
  */
 const MEU_PC = 'p000';
-const paraJogador = (c) => {
-  const meu = c.personagem_id === MEU_PC;
-  if (meu || !c.acao) return c;
-  const { arma, alvo, ...resto } = c.acao;
-  return { ...c, acao: resto };
-};
+// O `resumo_pc` da view sai de `personagens.resumo`, que na mesa é escrito pelo
+// `resumoParaBanco`. Aqui sai do MESMO par de funções, sobre a mesma ficha: as
+// quatro peças de jogador da bancada dividem a `FICHA_PC`, então é um valor só.
+const RESUMO_DA_FICHA = resumoParaBanco(resumoFicha(FICHA_PC));
+const paraJogador = (c) => combateParaJogador(c, {
+  meu: c.personagem_id === MEU_PC,
+  revelarMesa: TABELAS.mesas[0].revelar || {},
+  resumo: c.personagem_id ? RESUMO_DA_FICHA : null,
+  // `retrato` é subselect em `personagens` na view, e aqui é a mesma busca na
+  // tabela do mock. Hoje dá `null` dos dois lados, e é justamente por isso que
+  // vale escrever: campo que empata por acaso é o que ninguém confere depois.
+  retrato: TABELAS.personagens.find((p) => p.id === c.personagem_id)?.imagem_path ?? null,
+});
 
 // O BALDE DE ARQUIVOS DA BANCADA: caminho para conteúdo, em memória.
 // Os dois PNGs abaixo têm dez por seis e seis por dez pixels. Um mapa de
@@ -553,7 +571,8 @@ const TABELAS = {
   // `encontro_visao` é COMPUTADA, e por projeção de coluna. Ver `COLUNAS` abaixo.
   encontro_visao: [],
   combatentes: COMBS,
-  combate_visao: PAPEL === 'jogador' ? COMBS.map(paraJogador) : COMBS,
+  // `combate_visao` é COMPUTADA, e por getter. Ver a propriedade lá embaixo.
+  combate_visao: [],
   arena_tokens: TOKENS,
   // `token_visao` é COMPUTADA, e não uma cópia. Ver `claraNoMock` abaixo.
   token_visao: TOKENS,
@@ -728,6 +747,30 @@ Object.defineProperty(TABELAS, 'efeito_visao', {
   },
 });
 
+/**
+ * A `combate_visao` da migração 27, imitada, e o corte inteiro dela.
+ *
+ * GETTER PELO MESMO MOTIVO DAS OUTRAS DUAS: as peças andam, apanham e declaram,
+ * e uma lista congelada mente a partir do segundo Tick. Antes disto havia um
+ * `refazerVisao()` chamado à mão dentro da `jogador_declara`, que é a forma que
+ * funciona até alguém escrever o segundo caminho de escrita e esquecer dele.
+ *
+ * O MESTRE recebe `combatentes` inteiro, como no banco: a view existe para
+ * quem não é dono, e o `where` dela ainda deixa passar a linha (o corte de
+ * EXISTÊNCIA é a migração 33, que não rodou).
+ *
+ * DO `where` DA VIEW, METADE ENTRA AQUI. `c.oculto = false` é computável e está
+ * abaixo; `eh_membro(e.mesa_id)` não é, porque depende de `auth.uid()` e de RLS.
+ * É a mesma fronteira do `meu` do `paraJogador`, e são os dois únicos pontos em
+ * que a bancada não consegue ser o Postgres.
+ */
+Object.defineProperty(TABELAS, 'combate_visao', {
+  enumerable: true,
+  get: () => (PAPEL === 'jogador'
+    ? TABELAS.combatentes.filter((c) => c.oculto === false).map(paraJogador)
+    : TABELAS.combatentes),
+});
+
 Object.defineProperty(TABELAS, 'token_visao', {
   enumerable: true,
   get() {
@@ -782,9 +825,6 @@ function guardar(tabela, linhas) {
 function rpcJogador(nome, args) {
   const a = args || {};
   const acha = (id) => TABELAS.combatentes.find((c) => c.id === id);
-  const refazerVisao = () => {
-    if (PAPEL === 'jogador') TABELAS.combate_visao = TABELAS.combatentes.map(paraJogador);
-  };
   if (nome === 'jogador_declara') {
     const c = acha(a.p_comb);
     if (!c) return { __erro: 'Esta peca nao e de uma mesa sua.' };
@@ -799,7 +839,6 @@ function rpcJogador(nome, args) {
         ? alvo.acao : { golpes: [], livre: alvo.tick ?? 0 };
       alvo.acao = { ...antes, pressao: (antes.pressao || 0) + a.p_golpes };
     }
-    refazerVisao();
     return [];
   }
   if (nome === 'jogador_muda_peca') {
@@ -810,7 +849,6 @@ function rpcJogador(nome, args) {
       for (const k of ['pv_atual', 'mana_atual', 'condicoes', 'ativo']) {
         if (a.p_dados && k in a.p_dados) c[k] = a.p_dados[k];
       }
-      refazerVisao();
     }
     return [];
   }
