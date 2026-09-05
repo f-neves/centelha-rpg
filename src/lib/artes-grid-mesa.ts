@@ -9,7 +9,8 @@ import { MON } from './mesa-bestiario';
 import { uiErro, uiConfirmar, uiEscolher, uiPainel } from './ui-dialog';
 import {
   EFEITO, ARTE, CONDICAO, rotuloDaFigura, caminhoDaFigura,
-  figuraDoEfeito, hexesDaFigura, pontoNaFigura, centroEmMetros, encaixeMaisProximo, encaixeNoCentro,
+  figuraDoEfeito, hexesDaFigura, recolocarFigura,
+  pontoNaFigura, centroEmMetros, encaixeMaisProximo, encaixeNoCentro,
   raioEmMetros, danoNoAlvo, rolar,
   turnosRestantes, venceu, jaMordido, rodadaDoTick, dentroDoEfeito,
   metrosParaSair, metrosParaSairDosHexes, desvioDaArea, desEsqDaDefesa,
@@ -19,7 +20,7 @@ import {
 } from './artes-grid';
 import { pool } from './calc';
 import {
-  abrirConjuracao, abrirNPC, abrirEmpurroes, escolherItem, itensDoAlvo,
+  abrirConjuracao, abrirNPC, abrirEmpurroes, abrirMudarEfeito, escolherItem, itensDoAlvo,
   npcVazio, type Plano, type Empurrado,
 } from './artes-grid-ui';
 import {
@@ -416,7 +417,7 @@ function marcaEncaixe(ctx: CtxGrid, e: Encaixe): string {
  * o que era. Os turnos restantes são o número que a mesa pergunta em voz alta, e
  * por isso são a única coisa em destaque.
  */
-export function pintarPainelEfeitos(ctx: CtxGrid, box: HTMLElement): void {
+export function pintarPainelEfeitos(ctx: CtxGrid, box: HTMLElement, palco?: HTMLElement | null): void {
   if (!box) return;
   const t = tickAtual(ctx);
   // A MESMA REGRA DO DESENHO, e ela faltava aqui. `pintarEfeitos` já escondia do
@@ -455,7 +456,9 @@ export function pintarPainelEfeitos(ctx: CtxGrid, box: HTMLElement): void {
       </span>
       <span class="gr-efl-t" title="${falta ? 'Ticks até a Arte cair' : 'turnos restantes'}">${
         falta ? `+${falta}` : restam > 99 ? '∞' : restam}</span>
-      ${ctx.mestre ? `<button class="btn-fant gr-efl-x" data-fim="${esc(ef.id)}"
+      ${ctx.mestre ? `<button class="btn-fant gr-efl-e" data-edt="${esc(ef.id)}"
+        title="Corrigir duração, alvo ou lugar · não custa Mana">✎</button>
+      <button class="btn-fant gr-efl-x" data-fim="${esc(ef.id)}"
         title="Desfazer este efeito agora">✕</button>` : ''}
     </div>`;
   }).join('');
@@ -465,6 +468,15 @@ export function pintarPainelEfeitos(ctx: CtxGrid, box: HTMLElement): void {
     if (!ef) return;
     if (!await uiConfirmar(`Desfazer ${ef.nome} agora?`, { titulo: 'Desfazer efeito', ok: 'Desfazer' })) return;
     await encerrarEfeito(ctx, ef, 'desfeito pelo mestre');
+  });
+  // O ✎ AO LADO DO ✕, e o par é o ponto: o destrutivo era o único controle que um
+  // efeito posto tinha, e por isso corrigir custava uma conjuração inteira. O
+  // `palco` é opcional só para não quebrar quem já chama com dois argumentos;
+  // sem ele, a correção acontece toda menos o reapontar no mapa.
+  box.querySelectorAll<HTMLElement>('[data-edt]').forEach((b) => b.onclick = async () => {
+    const ef = ATIVOS.find((e) => e.id === b.dataset.edt);
+    if (!ef) return;
+    await mudarEfeito(ctx, ef, palco || (document.getElementById('gr-palco') as HTMLElement));
   });
 }
 
@@ -1680,6 +1692,133 @@ export async function verificarEfeitos(ctx: CtxGrid, palco?: HTMLElement): Promi
     }
   }
   ctx.repintar();
+}
+
+/**
+ * CORRIGIR UM EFEITO JÁ POSTO: duração, alvos, posição, nome, nota e oculto.
+ *
+ * O SEGUNDO CONTROLE, e por que ele faltava. Até aqui um efeito no chão tinha
+ * exatamente UM, o `✕` destrutivo. Mudar qualquer coisa era apagar e conjurar de
+ * novo, e conjurar de novo debita Mana (`gastarMana`, no `finally` da
+ * `conjurar`): o cone que saiu 15° torto cobrava do personagem uma SEGUNDA
+ * conjuração que ele nunca fez. Isso não era preço decidido, era o troco de não
+ * haver como corrigir.
+ *
+ * A LINHA QUE ESTA FUNÇÃO NÃO ATRAVESSA: corrigir o registro é de graça,
+ * reconjurar custa uma conjuração, e não há terceira coisa. Reapontar uma Arte
+ * já posta por menos do que custa conjurá-la seria regra nova, e a régua não a
+ * tem. Por isso aqui NÃO se chama `gastarMana` nem `declararTempo`, e o registro
+ * diz "corrigiu", nunca "conjurou": a mesa lê a diferença na linha do log.
+ *
+ * E POR ISSO TAMBÉM NÃO SE MEXE EM TAMANHO. `recolocarFigura` move e gira, e
+ * preserva raio, comprimento, largura, abertura e curvatura, que saíram do plano
+ * comprado. O plano não sobrevive à gravação (o banco guarda a figura pronta),
+ * então redimensionar aqui seria inventar uma conjuração diferente da que foi
+ * paga.
+ *
+ * Só o mestre, como o `✕`: a RLS de `arena_efeitos` dá escrita a `eh_mestre`, e
+ * o RPC do jogador (`jogador_muda_efeito`, migração 22) aceita duas chaves só,
+ * `mordidos` e `ate_tick`.
+ */
+export async function mudarEfeito(ctx: CtxGrid, ef: EfeitoAtivo, palco: HTMLElement): Promise<void> {
+  if (!ctx.mestre) return;
+  const t = tickAtual(ctx);
+  // A ÂNCORA DA CONTAGEM é a mesma que a lista mostra: quem já caiu conta de
+  // agora, quem ainda está sendo montado conta de quando cair. Sem isso,
+  // corrigir a duração de uma Arte em montagem comeria os Ticks do gesto.
+  const base = Math.max(t, ef.desde_tick ?? 0);
+  const grudaEmPeca = ef.forma === 'alvo' || ef.forma === 'token';
+  const fig = ef.figura || null;
+  const podeRecolocar = !!fig && fig.tipo !== 'arena' && fig.tipo !== 'ponto' && ef.forma !== 'aura';
+
+  const d = await abrirMudarEfeito(`Corrigir ${ef.nome}`, {
+    nome: ef.nome,
+    turnos: Math.max(1, Math.ceil((ef.ate_tick - base) / TICKS_POR_TURNO)),
+    oculto: !!ef.oculto,
+    nota: ef.nota || '',
+    alvos: ef.alvos || [],
+    recolocar: false,
+  }, {
+    podeRecolocar,
+    // A peça invocada anda com o efeito que a trouxe: trocar o alvo de um
+    // `token` desligaria a invocação da linha que a sustenta. Só `alvo` escolhe.
+    pecas: ef.forma === 'alvo'
+      ? ctx.combs.filter((c: any) => ctx.tokens[c.id]).map((c: any) => ({ id: c.id, nome: c.nome }))
+      : undefined,
+    montando: montando(ef, t) ? (ef.desde_tick ?? 0) - t : 0,
+  });
+  if (!d) return;
+
+  const mudou: string[] = [];
+  const patch: Record<string, any> = {};
+  if (d.nome !== ef.nome) { patch.nome = d.nome; mudou.push(`nome para "${d.nome}"`); }
+  if (d.oculto !== !!ef.oculto) { patch.oculto = d.oculto; mudou.push(d.oculto ? 'escondido' : 'revelado'); }
+  if ((d.nota || '') !== (ef.nota || '')) patch.nota = d.nota || null;
+  const ateNovo = base + Math.max(1, d.turnos) * TICKS_POR_TURNO;
+  if (ateNovo !== ef.ate_tick) {
+    patch.ate_tick = ateNovo;
+    mudou.push(`duração para ${rotuloDuracao(d.turnos)}`);
+  }
+  const alvosAntes = ef.alvos || [];
+  const trocouAlvo = ef.forma === 'alvo'
+    && (d.alvos.length !== alvosAntes.length || d.alvos.some((id) => !alvosAntes.includes(id)));
+  if (trocouAlvo) {
+    patch.alvos = d.alvos;
+    mudou.push(`agora em ${d.alvos.map((id) => combDe(ctx, id)?.nome).filter(Boolean).join(', ') || 'ninguém'}`);
+  }
+
+  // A MIRA VEM DEPOIS DA CAIXA, e não dentro dela: o mapa está atrás do diálogo,
+  // e só há o que apontar com a caixa fechada. Cancelar a mira mantém o resto.
+  if (d.recolocar && fig) {
+    const temDirecao = fig.tipo !== 'circulo';
+    const onde = await escolherNoMapa(ctx, palco, (h, ev) => {
+      const e = encaixeDoPonteiro(ctx, ev, h);
+      return caminhoDaFigura(recolocarFigura(fig, e, fig.dir), quadro(ctx)) + marcaEncaixe(ctx, e);
+    }, `Onde ${d.nome} fica · centro ou vértice · Esc mantém onde está`);
+    if (onde) {
+      const anc = encaixeDoPonteiro(ctx, onde.ev, onde.hex);
+      let dir = fig.dir;
+      if (temDirecao) {
+        const girou = await escolherNoMapa(ctx, palco, (h, ev) =>
+          caminhoDaFigura(recolocarFigura(fig, anc, direcaoAoPonteiro(ctx, anc, ev)), quadro(ctx))
+          + marcaEncaixe(ctx, anc),
+          `Gire ${d.nome} e clique · Esc mantém a direção`);
+        if (girou) dir = direcaoAoPonteiro(ctx, anc, girou.ev);
+      }
+      const nova = recolocarFigura(fig, anc, dir);
+      patch.figura = nova;
+      patch.hexes = hexesDaFigura(nova, escalaM(ctx), ctx.arena.cols, ctx.arena.rows)
+        .map((h) => ({ q: h.q, r: h.r }));
+      patch.centro = { q: nova.q, r: nova.r };
+      mudou.push(`movido para ${nomeHex(nova.q, nova.r)}`);
+    }
+  }
+
+  if (!Object.keys(patch).length) return;
+  const { error } = await ctx.SB.from('arena_efeitos').update(patch).eq('id', ef.id);
+  if (error) return uiErro('Não deu para corrigir o efeito: ' + error.message);
+  Object.assign(ef, patch);
+
+  // A CONDIÇÃO SEGUE OS ALVOS. Sem isto, tirar alguém de uma Marca deixaria nele
+  // a condição que a Marca pôs, e ela só sairia quando o efeito acabasse: o
+  // mesmo buraco que a `encerrarEfeito` fecha do outro lado.
+  if (trocouAlvo && ef.condicao) {
+    for (const id of alvosAntes) {
+      if (!d.alvos.includes(id)) await tirarCondicao(ctx, combDe(ctx, id), ef.condicao);
+    }
+    if (!deveSair(ef)) {
+      for (const id of d.alvos) {
+        if (!alvosAntes.includes(id)) await porCondicao(ctx, combDe(ctx, id), ef.condicao, d.turnos);
+      }
+    }
+  }
+
+  const c = ef.conjurador_id ? combDe(ctx, ef.conjurador_id) : null;
+  // "CORRIGIU", e a palavra é a regra: quem lê o log tem de conseguir separar a
+  // correção do registro de uma conjuração nova, que é o que custa Mana.
+  await ctx.logar(c, `${ef.nome}: corrigiu ${mudou.join(' · ') || 'a ficha do efeito'} (sem custo)`,
+    { acao: null });
+  await ctx.recarregar();
 }
 
 /** Tira o efeito do tabuleiro: a linha, a condição que ele pôs e a peça invocada. */

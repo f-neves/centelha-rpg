@@ -1204,6 +1204,32 @@ export function hexNaFigura(f: Figura, h: Hex, escalaM: number): boolean {
 }
 
 /**
+ * A MESMA figura, noutro lugar e noutra direção. Nunca noutro tamanho.
+ *
+ * É o miolo da correção de um efeito já posto, e a restrição é a regra inteira:
+ * `raioM`, `comprimentoM`, `larguraM`, `aberturaGraus`, `curvaturaGraus` e
+ * `fatias` saíram do PLANO COMPRADO, e o plano não sobrevive à gravação (o
+ * banco guarda a figura pronta, não as escolhas que a montaram). Mexer no
+ * tamanho aqui seria inventar uma conjuração diferente da que foi paga; mexer
+ * no lugar é consertar o clique.
+ *
+ * Por isso ela é um espalhamento com cinco campos trocados, e não uma segunda
+ * `figuraDoEfeito`: o que ela NÃO faz é o que ela garante.
+ *
+ * `dir` ausente mantém a direção que estava · o círculo não tem para onde
+ * apontar, e pedir uma direção a ele seria um clique morto (a mesma regra do
+ * `temDirecao` da mira).
+ */
+export function recolocarFigura(f: Figura, ancora: Encaixe, dir?: number | null): Figura {
+  return {
+    ...f,
+    ax: ancora.x, ay: ancora.y,
+    q: ancora.hex.q, r: ancora.hex.r,
+    dir: dir == null ? f.dir : dir,
+  };
+}
+
+/**
  * As casas que a figura toca, para quem precisar de uma lista: o registro, e os
  * efeitos gravados antes de a figura existir.
  *
@@ -1384,6 +1410,13 @@ export interface EfeitoAtivo {
   // turno por criatura, então a chave é o combatente e o valor é a rodada.
   mordidos: Record<string, number>;
   nota: string | null;
+  /**
+   * Escondido dos jogadores. OPCIONAL porque o jogador nunca o recebe: a
+   * `efeito_visao` (migração 19) filtra por ele no `where` e não o traz na
+   * lista de colunas, junto de `mordidos` e `nota`. Quem o lê é o mestre, que
+   * consulta `arena_efeitos` inteira · e é só ele que pode mexer nele.
+   */
+  oculto?: boolean;
 }
 
 export const rodadaDoTick = (tick: number) => Math.floor(tick / TICKS_POR_TURNO) + 1;

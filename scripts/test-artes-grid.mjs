@@ -259,6 +259,42 @@ const casas = M.hexesDaFigura(
 ok(casas.some((h) => h.q === 10 && h.r === 10), 'a casa da âncora está na lista');
 ok(casas.length > 20 && casas.length < 45, `a lista tem o tamanho do círculo (${casas.length})`);
 
+// ------------------------------------------- corrigir o lugar, nunca o tamanho
+//
+// `recolocarFigura` é o miolo do ✎ dos efeitos postos, e a asserção que importa
+// é sobre o que ela NÃO faz. O tamanho de uma figura gravada saiu do plano
+// comprado e da Mana paga, e o plano não sobrevive à gravação: o banco guarda a
+// figura pronta. Se esta função deixasse mexer em raio, comprimento, largura,
+// abertura ou curvatura, o ✎ viraria uma conjuração diferente da que foi paga,
+// de graça · que é exatamente a regra que a mesa ainda não tem.
+const posta = M.figuraDaArea({
+  molde: 'leque', areaM2: 24, ancora: ANC(5, 5), aberturaGraus: 90,
+});
+const movida = M.recolocarFigura(posta, ANC(12, 9), 1.25);
+eq(movida.q, 12, 'a figura corrigida muda de casa');
+eq(movida.r, 9, 'e de linha');
+ok(movida.ax !== posta.ax || movida.ay !== posta.ay, 'e a âncora em metros anda junto');
+eq(movida.dir, 1.25, 'a direção dada é a que fica');
+for (const campo of ['raioM', 'comprimentoM', 'larguraM', 'aberturaGraus', 'curvaturaGraus', 'fatias', 'tipo']) {
+  eq(movida[campo], posta[campo], `corrigir o lugar NÃO mexe em ${campo}`);
+}
+// Direção ausente mantém a que estava: o círculo não tem para onde apontar, e
+// pedir uma direção a ele seria um clique morto (a mesma regra da mira).
+eq(M.recolocarFigura(posta, ANC(1, 1)).dir, posta.dir, 'sem direção nova, fica a que estava');
+eq(M.recolocarFigura(posta, ANC(1, 1), null).dir, posta.dir, 'e `null` também mantém');
+// A lista de casas é CONSEQUÊNCIA da figura, e por isso a correção tem de
+// recalculá-la: sem isso a mancha se desenha no lugar novo e morde no antigo.
+const casasAntes = M.hexesDaFigura(posta, 1, 40, 40);
+const casasDepois = M.hexesDaFigura(movida, 1, 40, 40);
+// Quase o mesmo número, e não o mesmo: as linhas do hexágono são desencontradas,
+// então a mesma figura pousada em duas casas diferentes pega uma casa a mais ou
+// a menos na borda. O que a asserção guarda é que o TAMANHO não mudou · a
+// diferença é de recorte, e ela cabe em uma casa.
+ok(Math.abs(casasAntes.length - casasDepois.length) <= 1,
+  `a figura movida cobre o mesmo tanto de chão (${casasAntes.length} → ${casasDepois.length})`);
+ok(!casasDepois.some((h) => casasAntes.some((a) => a.q === h.q && a.r === h.r)),
+  'e nenhuma delas é uma das antigas: a mancha andou de verdade');
+
 // O traço é UMA forma, e não uma colcha de polígonos.
 const q = { raioHexPx: 30, pxPorM: 30, margem: { x: 10, y: 10 } };
 ok(/^<circle /.test(M.caminhoDaFigura(circ, q).trim()), 'o círculo desenha um <circle>');

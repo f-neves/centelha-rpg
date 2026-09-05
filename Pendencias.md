@@ -1304,7 +1304,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | 1 | **condição no tabuleiro** | **FEITO** · `912bc68` |
   | 2 | **agir fora de hora** | **FEITO** · `f699ae2` |
   | 3 | **dívida de Ticks** | **FEITO** · `f699ae2`, junto com o 2 |
-  | 4 | **mudar efeito posto** | falta |
+  | 4 | **mudar efeito posto** | **FEITO** · e a decisão do custo está escrita na seção 4 |
   | 5 | **Investida** | **FEITO no motor** · e não era trabalho de tela |
   | 6 | **Interpor e desviar** | falta, e **depende de decisão de mesa** |
 
@@ -1345,17 +1345,54 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   imprimindo a frase do próprio motor sobre "pagar: uma ação fora de hora" · **a tela nomeava a
   ação que não tinha botão.** O detalhe está na §15.4, acima.
 
-  ### 4 · Mudar efeito posto · FALTA, e é o L25 puro que sobrou
+  ### 4 · Mudar efeito posto · FEITO em 05/09/2026, e a decisão do custo vem escrita
 
-  Um efeito no chão tem, na coluna, **exatamente um controle**: o `✕` com o título "Desfazer este
-  efeito agora", e o painel liga handler só em `[data-fim]` (`src/lib/artes-grid-mesa.ts:463`).
-  Não há como mudar duração, alvos, posição ou ângulo do que já está posto: só apagar e conjurar de
-  novo, o que **custa a Mana outra vez e escreve duas linhas no registro**.
+  **O estado em que estava:** um efeito no chão tinha, na coluna, **exatamente um controle**, e ele
+  era o destrutivo · o `✕` com o título "Desfazer este efeito agora", com o painel ligando handler
+  só em `[data-fim]` (`src/lib/artes-grid-mesa.ts:463`). Mudar duração, alvos, posição ou ângulo
+  do que já estava posto só dava apagando e conjurando de novo.
 
-  E a função existe: `jogador_muda_efeito` (`supabase/migracao-22.sql`) está escrita e concedida, e
-  o único caminho até ela hoje é o desvio de escrita do jogador
-  (`jogador_muda_efeito`, `grid.astro:2649`), por onde passa só a marca de mordida que a varredura
-  grava. **Escrita, concedida, e sem caminho de produção que MUDE um efeito.**
+  **A DECISÃO DE CUSTO, e ela era a única coisa a decidir dentro do item.** A pergunta posta foi:
+  mudar um efeito posto deve custar alguma coisa, já que hoje custa a Mana outra vez? A resposta é
+  que **a Mana nunca foi preço de mudar · ela é o troco de não haver como mudar**. A cobrança é
+  automática, sai da reserva do personagem e mora no `finally` da `conjurar`:
+  `await ctx.gastarMana` (`src/lib/artes-grid-mesa.ts:796`). Então o cone que saiu 15° torto registrava DUAS conjurações
+  para um personagem que conjurou UMA. Isso não é preço decidido: é o registro mentindo sobre a
+  ficção. E o inverso também vale · se o personagem de fato reapontou a Arte, o débito está certo,
+  porque a régua não tem "reapontar por menos que uma conjuração".
+
+  Daí a linha que o mecanismo não atravessa, e ela é a regra inteira da entrega:
+
+  > **Corrigir o registro é de graça. Reconjurar custa uma conjuração. Não existe terceira coisa.**
+
+  Por isso a correção **não toca em Mana nem em Tempo**, registra "corrigiu … (sem custo)" em vez
+  de "conjurou", e **não mexe em tamanho**: `recolocarFigura` (`src/lib/artes-grid.ts`) move e gira
+  preservando raio, comprimento, largura, abertura e curvatura, que saíram do plano comprado · e o
+  plano não sobrevive à gravação, porque o banco guarda a figura pronta e não as escolhas que a
+  montaram.
+
+  **O que entrou:** o `✎` ao lado do `✕` no painel dos efeitos vivos, só para o mestre (a RLS de
+  `arena_efeitos` dá escrita a `eh_mestre`); a caixa `abrirMudarEfeito` com nome, turnos restantes,
+  oculto, nota e os alvos; e o reapontar no mapa, que reusa a mesma mira da conjuração e recalcula
+  os `hexes` a partir da figura movida · sem isso a mancha se desenharia no lugar novo e morderia
+  no antigo. A condição que o efeito pôs segue os alvos quando eles mudam, que é o buraco que a
+  `encerrarEfeito` já fechava do outro lado.
+
+  **A asserção que vale é a da IDENTIDADE DA LINHA**, e não a do número na tela: a duração certa
+  passaria com a implementação antiga (apagar e inserir), só que com um `id` novo, uma Mana a menos
+  e duas linhas no registro. Por isso `cenaCorrigirEfeito` (`scripts/test-grid.mjs`) compara o `id`
+  antes e depois. Mais o par negativo, que é o jogador sem botão nenhum, e 12 asserções de geometria
+  no `test-artes-grid.mjs` sobre o que `recolocarFigura` **não** faz.
+
+  **⚠ O QUE FICOU ABERTO, e é decisão de mesa:** a régua tem dois preços para mexer numa Arte já
+  posta, o de graça (corrigir o registro) e o inteiro (reconjurar). **Ela quer um terceiro, um
+  reapontar barato no meio?** Hoje não tem, e o que foi construído não o cria. Se quiser, é regra
+  nova e precisa de número: quanto de Mana, quanto de Tempo, e se cabe no Preparo.
+
+  E o RPC do jogador continua sem caminho: `jogador_muda_efeito` (`supabase/migracao-22.sql:217`)
+  aceita **duas chaves só**, `mordidos` e `ate_tick`, e por ele passa hoje apenas a marca de mordida
+  que a varredura grava: `update({ mordidos` (`grid.astro:2649`).
+  Um `✎` de jogador precisaria de migração nova, e não está pedido.
 
   ### 5 · A Investida · FEITA NO MOTOR em 05/09/2026, e ela não era trabalho de tela
 
@@ -1392,20 +1429,36 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   **⚠ DUAS COISAS FICARAM ABERTAS, e as duas são decisão de mesa, não de código:**
 
-  1. **O −2 agora tem duas fontes.** Ele sai do modo declarado (a escada, automático) e continua
-     saindo da condição `investindo` do catálogo, que é o caminho à mão da aba Combate e vale os
-     mesmos −2. **Quem declarar a Investida no Grid E aplicar a condição à mão paga −4 em vez de
-     −2.** As opções são pelo menos três: a condição sai do catálogo, ou vira só rótulo sem
-     número, ou o Grid passa a aplicá-la sozinha ao declarar (e aí o número mora só nela). É a
-     mesma pergunta que `correndo` vai fazer na fase 3.
-  2. **A régua se contradiz num lugar.** Três fontes dizem que investir custa −2 **além do
-     Preparo** (total −4 durante o Preparo): o `defesaExtra`, a tabela do capítulo e a nota da
-     condição. Uma quarta diz outra coisa: a `travessiaNota` do `regras.json`
-     (`combate.simultaneo.passoNoGolpe`) escreve o freio como "**Defesa −4 correndo, −6
-     investindo**", que só fecha se a Investida carregasse o −4 da Corrida MAIS o −2 dela. **O
-     motor foi construído com as três que concordam**, e a quarta está aqui esperando decisão:
-     ou ela é prosa desatualizada e se corrige, ou o −6 é a régua e as outras três é que estão
-     erradas.
+  **AS QUATRO FONTES, lado a lado** · *levantamento de 05/09/2026, pedido antes de qualquer
+  conserto. Nada foi consertado.*
+
+  | | onde | o que diz | commit | quem lê |
+  |---|---|---|---|---|
+  | A | `regras.json:2407` · `combate.movimento.investida.defesaExtra` | `-2` | `0f191fe` · 22/08 | **o motor**, em `defesaPerdida` |
+  | B | `combate.md:231` · a tabela do capítulo | "−2 **a mais**" (o exemplo da 233 fecha em −4) | `0f191fe` · 22/08 | ninguém · é texto |
+  | C | `condicoes.json:61` · condição `investindo` | `"defesa": -2` | `0f191fe` · 22/08 | **o motor**, por `somarCondicoes`, quando o mestre a liga à mão |
+  | D | `regras.json:2335` · `travessiaNota` | "Defesa **−4 correndo, −6 investindo**" | `891ee7d` · 28/08 | **ninguém** |
+
+  1. **NÃO SÃO QUATRO DECISÕES: SÃO DUAS.** A, B e C saíram do MESMO commit · `0f191fe`, "Corrida
+     e Investida: o que cada jeito de andar cobra", 58 inserções, três arquivos, uma sentada. É
+     **uma decisão escrita em três lugares**, uma fonte e dois ecos. A D é escrita separada, seis
+     dias depois, dentro de uma nota que existe para justificar OUTRA regra (o portão da
+     travessia), com o número aparecendo como argumento e não como régua · e nenhum arquivo de
+     `src/` ou `scripts/` a lê.
+  2. **E A DIVERGÊNCIA NÃO É ONDE PARECIA.** As quatro concordam que o extra da Investida é −2.
+     Elas discordam **do que ele se soma**: A, B e C somam ao −2 do Preparo (dá −4); a D soma ao
+     −4 da Corrida (dá −6). A pergunta que decide não é "−4 ou −6", é **investir gasta a guarda do
+     Preparo ou a da Corrida?** · quem investe está correndo de fato. O motor foi construído com
+     as três que concordam.
+  3. **A DUPLA FONTE DO −2 É DE OUTRO FEITIO, e é pior.** Não é texto discordando: são **dois
+     mecanismos cobrando**. O A é automático desde `80b0c26`; o C é a condição à mão. Quem declarar
+     a Investida no Grid E ligar a condição paga **−4 de extra**, e nada avisa. E a assimetria
+     fecha o quadro: a Corrida **não tem cobrança automática nenhuma** · o −4 dela em `MODOS_MOV` é
+     só o texto da nota (`src/lib/combate-tempo.ts:900`), e quem cobra é só a condição `correndo`.
+     Ou seja, o mesmo commit produziu um eco que virou EXECUTÁVEL, e é isso que dobra a soma. As
+     opções são pelo menos três: a condição sai do catálogo, ou vira só rótulo sem número, ou o
+     Grid passa a aplicá-la sozinha ao declarar (e aí o número mora só nela). É a mesma pergunta
+     que `correndo` vai fazer na fase 3.
 
   ### 6 · Interpor e desviar · FALTA, e a régua não fecha
 
@@ -1417,10 +1470,15 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   grava só
   `acao: limpa` (`grid.astro:5828`).
 
+  **O CAPÍTULO NÃO TEM UMA LINHA**, e é o primeiro fato do levantamento: `interpor`, `desviar` e
+  **`abortar`** não aparecem em `src/content/chapters/` nenhuma vez. O Simultâneo dessa parte vive
+  inteiro fora do livro publicado.
+
   **O QUE A RÉGUA TEM**, e é menos do que parece:
 
-  - `combate.abortar.para: ["mover", "desviar", "interpor"]` no `regras.json`, com
-    `ticksPorMetro: 1` · a interposição é uma das três saídas do abortar, no Preparo;
+  - `src/data/regras.json:2499` · `combate.abortar`, com `"fase": "preparo"`, `ticksPorMetro: 1`
+    (`:2502`) e `para: ["mover", "desviar", "interpor"]` (`:2504`) · a interposição é uma das três
+    saídas do abortar, no Preparo, e o preço é o do deslocamento;
   - o **catálogo de ações fora de hora** do `Combate_Tempo.md` §4.3 (tabela na linha 294):
     "**Interpor-se entre o golpe e um aliado · a distância em metros, mínimo 2**". É o único número
     escrito para o Interpor, e é um PREÇO EM TICKS;

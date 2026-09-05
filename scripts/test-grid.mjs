@@ -3092,6 +3092,106 @@ async function cenaCondicaoAMao(br, url) {
   await p.close();
 }
 
+/**
+ * CORRIGIR UM EFEITO JA POSTO (fase 2, item 4, 05/09/2026).
+ *
+ * O item existia por uma razao so: um efeito no chao tinha UM controle, o `✕`
+ * destrutivo. Mudar duracao, alvo ou lugar custava apagar e conjurar de novo, e
+ * conjurar de novo DEBITA MANA. Quer dizer que o cone que saiu 15° torto cobrava
+ * do personagem uma segunda conjuracao que ele nunca fez.
+ *
+ * A ASSERCAO QUE VALE E A DA IDENTIDADE DA LINHA, e nao a do numero na tela. O
+ * `ate_tick` novo passaria com a implementacao antiga (apagar e inserir): o
+ * efeito ficaria com a duracao certa e com um `id` NOVO, uma Mana a menos e duas
+ * linhas no registro. E por isso que o teste compara o `id` antes e depois: e a
+ * unica frase que separa corrigir de reconjurar.
+ *
+ * E o par negativo e o jogador, que nao pode ter o botao: a RLS de
+ * `arena_efeitos` da escrita a `eh_mestre`, e o RPC dele (migracao 22) aceita
+ * duas chaves so.
+ */
+async function cenaCorrigirEfeito(br, url) {
+  console.log('\n· corrigir um efeito ja posto, sem reconjurar');
+  const erros = [];
+  const abrir = async (papel) => {
+    const p = await br.newPage();
+    await p.setViewport({ width: 1500, height: 1000 });
+    p.on('pageerror', (e) => erros.push(e.message));
+    await p.goto(`${url}/mesa/grid?id=${MESA}&bench=12&cols=24&rows=16&nevoa=0&brasa=0&papel=${papel}`,
+      { waitUntil: 'networkidle0', timeout: 60000 });
+    await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
+    await espera(700);
+    return p;
+  };
+
+  // ---- o jogador, que e o par negativo ----
+  const pj = await abrir('jogador');
+  const doJogador = await pj.evaluate(() => ({
+    linhas: document.querySelectorAll('#gr-ef-lista .gr-efl').length,
+    editar: document.querySelectorAll('#gr-ef-lista [data-edt]').length,
+    apagar: document.querySelectorAll('#gr-ef-lista [data-fim]').length,
+  }));
+  await pj.close();
+  ok(doJogador.linhas > 0, `o jogador ve o efeito no painel (${doJogador.linhas} linha)`);
+  ok(doJogador.editar === 0 && doJogador.apagar === 0,
+    `e nao tem botao nenhum nele (${doJogador.editar} ✎, ${doJogador.apagar} ✕)`);
+
+  // ---- o mestre, que corrige ----
+  const p = await abrir('mestre');
+  const antes = await p.evaluate(() => {
+    const ef = (window.__SB?.tabelas?.arena_efeitos || [])[0];
+    return {
+      editar: document.querySelectorAll('#gr-ef-lista [data-edt]').length,
+      apagar: document.querySelectorAll('#gr-ef-lista [data-fim]').length,
+      id: ef?.id, ate: ef?.ate_tick, quantos: (window.__SB?.tabelas?.arena_efeitos || []).length,
+      numero: document.querySelector('#gr-ef-lista .gr-efl-t')?.textContent.trim(),
+    };
+  });
+  ok(antes.editar === 1 && antes.apagar === 1,
+    `o mestre tem os DOIS controles no efeito, e nao so o destrutivo (${antes.editar} ✎, ${antes.apagar} ✕)`);
+
+  const feito = await p.evaluate(async () => {
+    document.querySelector('#gr-ef-lista [data-edt]')?.click();
+    await new Promise((r) => setTimeout(r, 400));
+    const dlg = document.querySelector('dialog.ui-dlg-efx');
+    if (!dlg?.open) return { erro: 'a caixa de corrigir nao abriu' };
+    const campo = dlg.querySelector('[data-k="turnos"]');
+    if (!campo) return { erro: 'a caixa nao tem o campo de turnos' };
+    const eram = Number(campo.value);
+    campo.value = String(eram + 3);
+    campo.dispatchEvent(new Event('input', { bubbles: true }));
+    dlg.querySelector('#ag-efx-ok').click();
+    await new Promise((r) => setTimeout(r, 600));
+    const linhas = window.__SB?.tabelas?.arena_efeitos || [];
+    const log = (window.__SB?.tabelas?.mesa_arenas || [])[0]?.log || [];
+    return {
+      eram,
+      quantos: linhas.length, id: linhas[0]?.id, ate: linhas[0]?.ate_tick,
+      numero: document.querySelector('#gr-ef-lista .gr-efl-t')?.textContent.trim(),
+      ultima: (log[log.length - 1]?.txt || ''),
+      aberta: !!document.querySelector('dialog.ui-dlg-efx'),
+    };
+  });
+  ok(!feito.erro, `a caixa de corrigir abre e fecha (${feito.erro || 'ok'})`);
+  if (!feito.erro) {
+    // A IDENTIDADE DA LINHA: uma linha so, e a MESMA. E a frase que separa
+    // corrigir de apagar-e-refazer, e a unica que a duracao certa nao prova.
+    ok(feito.quantos === antes.quantos && feito.id === antes.id,
+      `a linha do efeito e a MESMA depois da correcao (${antes.quantos}→${feito.quantos} linha, id ${
+        feito.id === antes.id ? 'igual' : 'TROCADO'})`);
+    ok(feito.ate === antes.ate + 3 * 6,
+      `e a duracao andou exatamente os 3 turnos pedidos (${antes.ate} → ${feito.ate})`);
+    ok(feito.numero !== antes.numero,
+      `a tela conta o numero novo (${antes.numero} → ${feito.numero})`);
+    // "CORRIGIU", e nao "conjurou": quem le o registro tem de separar a correcao
+    // de graca da conjuracao que custa Mana.
+    ok(/corrigiu/i.test(feito.ultima) && !/conjurou/i.test(feito.ultima),
+      `e o registro diz que foi correcao ("${feito.ultima.slice(0, 60)}")`);
+  }
+  ok(erros.length === 0, `nenhum erro de pagina (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
+  await p.close();
+}
+
 const dev = await subirDev({ config: 'astro.bancada.mjs' });
 const br = await puppeteer.launch({ executablePath: NAV, headless: 'new', args: ['--no-sandbox'] });
 try {
@@ -3108,6 +3208,7 @@ await cenaRastreador(br, dev.url);
   await cenaFusao(br, dev.url);
   await cenaCondicaoAMao(br, dev.url);
 await cenaForaDeHora(br, dev.url);
+  await cenaCorrigirEfeito(br, dev.url);
 } finally {
   await br.close();
   await dev.parar();

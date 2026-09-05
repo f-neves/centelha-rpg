@@ -9840,7 +9840,9 @@ const SETAS = [
    */
   function pintarColunaEfeitos() {
     const box = el('gr-ef-lista');
-    pintarPainelEfeitos(ctxArtes(), box);
+    // O `gr-palco` vai junto porque o ✎ do painel pode pedir para reapontar a
+    // mancha no mapa, e a mira precisa do palco para escutar o ponteiro.
+    pintarPainelEfeitos(ctxArtes(), box, el('gr-palco'));
     (el('gr-ef-cab') as HTMLElement).hidden = box.hidden;
     const n = box.querySelectorAll('.gr-efl').length;
     el('gr-ef-n').textContent = n ? String(n) : '';

@@ -1485,7 +1485,9 @@ body.arrastando { cursor: grabbing; }
 
 /* a lista dos efeitos vivos, na coluna lateral */
 .gr-ef-lista { display: grid; gap: .2rem; margin: .4rem 0 .2rem; }
-.gr-efl { display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: .4rem;
+/* Cinco colunas para o mestre (barra · texto · turnos · ✎ · ✕) e três para o
+   jogador, que não tem botão nenhum: as colunas `auto` que sobram somem. */
+.gr-efl { display: grid; grid-template-columns: auto 1fr auto auto auto; align-items: center; gap: .4rem;
   padding: .22rem .3rem; border: 1px solid var(--rule); border-radius: var(--r-sm, 4px); }
 .gr-efl-b { width: .5rem; height: 1.4rem; border-radius: 2px; background: var(--ef-cor); }
 .gr-efl-tx { display: grid; min-width: 0; }
@@ -1495,6 +1497,15 @@ body.arrastando { cursor: grabbing; }
 /* Os turnos restantes são o número que a mesa pergunta em voz alta. */
 .gr-efl-t { font-variant-numeric: tabular-nums; font-weight: 700; font-size: var(--fs-h3);
   line-height: 1; color: var(--ef-cor); }
+
+/* corrigir um efeito já posto. Mesma grade do NPC: nome largo, número estreito,
+   e a caixa de oculto na linha inteira, porque ela é uma frase e não um campo. */
+.ag-efx-base { display: grid; grid-template-columns: 1fr 8rem; gap: .5rem; align-items: end; }
+.ag-efx-base .ag-f-chk, .ag-efx-base .ag-f-full { grid-column: 1 / -1; }
+.ag-efx-alvos { display: grid; gap: .2rem; margin-top: .6rem; padding-top: .5rem;
+  border-top: 1px solid var(--rule); }
+.ag-efx-lbl { font-size: var(--fs-micro); color: var(--ink-soft); }
+@media (max-width: 46rem) { .ag-efx-base { grid-template-columns: minmax(0, 1fr); } }
 
 /* os deslocamentos, um por linha */
 .ag-emp { display: grid; gap: .3rem; }

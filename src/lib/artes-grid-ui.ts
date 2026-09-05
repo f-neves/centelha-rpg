@@ -1059,6 +1059,105 @@ export function abrirEmpurroes(titulo: string, lista: Empurrado[]): Promise<Empu
   });
 }
 
+// ======================================================= corrigir efeito posto
+/** O que a correção de um efeito já posto pode mudar. Tamanho não está aqui. */
+export interface MudancaEfeito {
+  nome: string;
+  /** Turnos restantes CONTADOS DE AGORA, e não a duração original. */
+  turnos: number;
+  oculto: boolean;
+  nota: string;
+  /** Só as formas que grudam em peça (`alvo`, `token`). Vazio nas outras. */
+  alvos: string[];
+  /** O mestre pediu para reapontar no mapa. Quem conduz a mira é a camada mesa. */
+  recolocar: boolean;
+}
+
+/**
+ * A CAIXA DE CORRIGIR UM EFEITO JÁ POSTO.
+ *
+ * Ela existe porque um efeito no chão tinha, até aqui, exatamente UM controle, e
+ * ele era destrutivo: o `✕`. Mudar duração, alvos ou posição custava apagar e
+ * conjurar de novo, e conjurar de novo DEBITA MANA (`gastarMana`, no `finally`
+ * da `conjurar`). Quer dizer: o cone que saiu 15° torto cobrava do personagem
+ * uma segunda conjuração que ele nunca fez.
+ *
+ * A LINHA QUE ESTA CAIXA NÃO ATRAVESSA, e é a regra inteira dela: corrigir o
+ * registro é de graça, reconjurar custa uma conjuração, e não existe terceira
+ * coisa. Reapontar uma Arte já posta por um preço menor que o de conjurá-la de
+ * novo seria REGRA NOVA, e a régua não a tem: quem quiser que o personagem
+ * realmente reaponte continua fazendo o que sempre fez (`✕` e conjurar), que
+ * cobra certo. Por isso a caixa não toca em Mana e o registro dela diz
+ * "corrigiu", nunca "conjurou".
+ *
+ * E por isso ela também não mexe em TAMANHO: raio, comprimento, largura e
+ * abertura saíram do plano comprado e da Mana paga. Mover e girar conserta o
+ * clique; redimensionar seria outra conjuração. Ver `recolocarFigura`.
+ */
+export function abrirMudarEfeito(
+  titulo: string,
+  atual: MudancaEfeito,
+  opts: {
+    /** Tem figura no chão para reapontar? Aura e arena inteira não têm. */
+    podeRecolocar?: boolean;
+    /** As peças em campo, quando o efeito gruda em peça. Ausente esconde a lista. */
+    pecas?: { id: string; nome: string }[];
+    /** Quantos Ticks faltam para a Arte CAIR. Só para avisar, não se edita. */
+    montando?: number;
+  } = {},
+): Promise<MudancaEfeito | null> {
+  const d: MudancaEfeito = { ...atual, alvos: [...(atual.alvos || [])], recolocar: false };
+  const { corpo, fechar } = uiPainel(titulo, { classe: 'ui-dlg-arte ui-dlg-efx' });
+
+  return new Promise((resolve) => {
+    let resolvido = false;
+    const sair = (v: MudancaEfeito | null) => { if (resolvido) return; resolvido = true; fechar(); resolve(v); };
+    corpo.closest('dialog')?.addEventListener('close', () => sair(null), { once: true });
+
+    const pecas = opts.pecas || [];
+    corpo.innerHTML = `
+      <p class="ag-nota">Isto <strong>corrige o registro</strong>: não custa Mana e entra no log como
+        correção. Se o personagem realmente reapontou a Arte na ficção, o caminho continua sendo
+        desfazer e conjurar de novo, que cobra a conjuração.</p>
+      ${opts.montando ? `<p class="ag-nota">A Arte ainda está sendo montada: cai em ${
+        opts.montando} Tick${opts.montando > 1 ? 's' : ''}.</p>` : ''}
+      <div class="ag-efx-base">
+        <label class="ag-f"><span>Nome</span>
+          <input type="text" data-k="nome" value="${esc(d.nome)}" /></label>
+        <label class="ag-f"><span>Turnos restantes</span>
+          <input type="number" data-k="turnos" value="${d.turnos}" min="1" step="1" /></label>
+        <label class="ag-f ag-f-chk"><input type="checkbox" data-k="oculto"${d.oculto ? ' checked' : ''} />
+          <span>Oculto dos jogadores</span></label>
+        <label class="ag-f ag-f-full"><span>Nota</span>
+          <input type="text" data-k="nota" value="${esc(d.nota)}" placeholder="o que a mesa combinou" /></label>
+      </div>
+      ${pecas.length ? `<div class="ag-efx-alvos"><span class="ag-efx-lbl">Em quem gruda</span>
+        ${pecas.map((p) => `<label class="ag-f ag-f-chk"><input type="checkbox" data-alvo="${
+          esc(p.id)}"${d.alvos.includes(p.id) ? ' checked' : ''} /><span>${esc(p.nome)}</span></label>`).join('')}
+      </div>` : ''}
+      <div class="ag-acoes">
+        ${opts.podeRecolocar ? '<button type="button" class="btn" id="ag-efx-pos">Reapontar no mapa…</button>' : ''}
+        <button type="button" class="btn" id="ag-efx-x">Cancelar</button>
+        <button type="button" class="btn primary" id="ag-efx-ok">Corrigir</button>
+      </div>`;
+
+    const campo = (k: string) => corpo.querySelector(`[data-k="${k}"]`) as HTMLInputElement;
+    const colher = () => {
+      d.nome = campo('nome').value.trim() || atual.nome;
+      d.turnos = Math.max(1, parseInt(campo('turnos').value, 10) || atual.turnos);
+      d.oculto = campo('oculto').checked;
+      d.nota = campo('nota').value;
+      d.alvos = Array.from(corpo.querySelectorAll<HTMLInputElement>('[data-alvo]'))
+        .filter((i) => i.checked).map((i) => i.dataset.alvo!);
+      return d;
+    };
+    (corpo.querySelector('#ag-efx-x') as HTMLElement).onclick = () => sair(null);
+    (corpo.querySelector('#ag-efx-ok') as HTMLElement).onclick = () => sair({ ...colher(), recolocar: false });
+    const pos = corpo.querySelector('#ag-efx-pos') as HTMLElement | null;
+    if (pos) pos.onclick = () => sair({ ...colher(), recolocar: true });
+  });
+}
+
 // ============================================================= o NPC completo
 /** Tudo o que um combatente avulso pode declarar. Espelha `combatentes` + `dados`. */
 export interface DadosNPC {
