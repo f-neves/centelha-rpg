@@ -9669,6 +9669,16 @@ const SETAS = [
       else uiErro('Erro ao registrar: ' + error.message);
       return;
     }
+    // ELA MORA DEPOIS DA BIFURCAÇÃO, E TEM DE CONTINUAR MORANDO, porque o que a
+    // protege é a POSIÇÃO e não uma condição escrita. O jogador voltou no
+    // `return` acima; se esta releitura subisse para antes dele, ou fosse parar
+    // no `carregarLog`, ela misturaria as 60 linhas PROJETADAS da
+    // `arena_log_visao` (que só trazem `id`, `ts`, `cl` e o `pub` renomeado
+    // para `txt`) com o vetor gravado, e escrever isso de volta apagaria `pub`,
+    // `ef`, `acao`, `cid` e `porJogador` de toda linha que passasse. Hoje o
+    // jogador não tem caminho de escrita no vetor; o risco seria a mitigação
+    // criar um.
+    //
     // ISTO É MITIGAÇÃO E NÃO CONSERTO, e a distinção não é modéstia: sem esta
     // linha, quem ler daqui a três meses vai achar que o defeito está resolvido.
     //

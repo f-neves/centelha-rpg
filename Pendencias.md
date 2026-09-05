@@ -2300,7 +2300,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   O jogador acrescenta pelo banco, e o banco lê a coluna e concatena lá dentro:
   `SB.rpc('jogador_registra', { p_arena: ARENA.id, p_linha: linha })`, `grid.astro:9667`.
   O mestre grava o vetor inteiro da memória dele:
-  `await SB.from('mesa_arenas').update({ log: LOG }).eq('id', ARENA.id);`, `grid.astro:9692`. **A linha que o jogador acabou de
+  `await SB.from('mesa_arenas').update({ log: LOG }).eq('id', ARENA.id);`, `grid.astro:9702`. **A linha que o jogador acabou de
   registrar some se o `LOG` do mestre for anterior a ela, sem erro nenhum.** É o caminho normal dos
   dois durante uma cena.
 
@@ -2343,10 +2343,10 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | gesto | o que faz hoje |
   |---|---|
   | `logar()` | empurra uma linha e grava o vetor |
-  | `desfazer()` | tira a última linha com `acao` (`LOG.splice(idx, 1);`, `grid.astro:9759`) e grava o vetor |
+  | `desfazer()` | tira a última linha com `acao` (`LOG.splice(idx, 1);`, `grid.astro:9769`) e grava o vetor |
   | `editarLinha(id)` | muda `txt`/`pub` de uma linha, e grava o vetor |
-  | `excluirLinha(id)` | tira por id (`LOG.splice(i, 1);`, `grid.astro:9854`) e grava o vetor |
-  | `refazerLogDosEfeitos()` | `LOG = LOG.filter((e: any) => !minha(e));` (`grid.astro:9905`) e empurra N linhas novas |
+  | `excluirLinha(id)` | tira por id (`LOG.splice(i, 1);`, `grid.astro:9864`) e grava o vetor |
+  | `refazerLogDosEfeitos()` | `LOG = LOG.filter((e: any) => !minha(e));` (`grid.astro:9915`) e empurra N linhas novas |
 
   **E UMA CORREÇÃO AO ENUNCIADO: não existe zerar no Grid.** O `LOG = []` é do `combate.astro`
   (`if (zLog) { LOG = []; await persistLog(); }`, `combate.astro:2058`), na caixa de reiniciar
@@ -2465,7 +2465,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | **30** | `mesas.gravar_lances` e a tabela `lances_veredito`: grava o par (veredito da régua, botão do mestre) | a aba Grupo diz *"A coluna gravar_lances ainda não existe. Rode supabase/migracao-30.sql."* e o par não é gravado. Nada mais quebra | **sim** |
   | **31** | `tick_da_arena`, e a `casa_clara` passa a filtrar por ESTADO | **vazamento em produção**: fogo que ainda está sendo montado (ou que já venceu) acende o chão, e como é essa função que corta a `token_visao`, entrega ao jogador as peças que estavam no escuro. Medido: 12 casas de escuro abertas por um fogo que não caiu. E o Grid do jogador mostra *"⚑ o relógio da cena não está chegando"* | **sim, primeiro** |
   | **32** | a `efeito_visao` ganha corte por CASA | **vazamento em produção**: uma Arte inteira no escuro chega ao navegador do jogador com nome, hexes, condição, alvos e conjurador. Fogo e luz se entregam sozinhos; veneno, gelo, barreira e sombra não | **sim, depois da 31** |
-  | **33** | a névoa esconde a EXISTÊNCIA da criatura, e não só a posição | a névoa esconde só a posição, como sempre | **NÃO** |
+  | **33** | a névoa esconde a EXISTÊNCIA da criatura, e não só a posição | a névoa esconde só a posição, como sempre | **NÃO · falta a TELA, não o SQL** |
 
   **A ORDEM: só um par é obrigatório, e é 31 antes de 32.** A view da 32 chama
   `cross join lateral (select public.tick_da_arena(a.id) as t) rel`, `supabase/migracao-32.sql:65`,
@@ -2475,23 +2475,71 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **AS DUAS DE VAZAMENTO SÃO AS URGENTES.** A 31 e a 32 não são construção, são defeito existindo
   agora, e nenhuma das duas depende de mudança de tela. A 29 e a 30 são proteção e conveniência.
 
-  ### A 33 NÃO ENTRA, e o motivo mudou de lugar
+  ### O QUE MUDA DE FORMATO PARA QUEM ESTÁ COM A MESA ABERTA
 
-  **A semente resolveu a janela do `vistos`, e resolveu de verdade.** É o bloco 0 da própria
-  migração: toda peça que está numa casa clara no instante em que ela roda passa a constar como
-  vista, com posição e Vida daquele instante · exatamente o que o grupo enxerga. E **só onde
-  `vistos` ainda não existe**, por ausência de chave e não por conteúdo, então rodar duas vezes não
-  faz nada na segunda, e onde o cliente já acumulou a memória de verdade não é sobrescrita.
+  A pergunta é a certa e a resposta não é "nada": **três das quatro mexem em view**, e duas mudam o
+  que chega ao navegador do jogador. Tudo abaixo foi sondado no esquema de produção, coluna a
+  coluna.
 
-  **MAS A JANELA DO `vistos` NUNCA FOI O ÚNICO BLOQUEIO.** O outro está no cabeçalho da própria
-  migração: *"NAO RODE ESTA ANTES DA VERSAO DO SITE QUE DESENHA A LEMBRANCA"*, porque a
-  `token_visao` passa a mandar peça com `lembranca = true` na casa onde o jogador a viu por último,
-  e **uma tela que não conhece essa coluna desenha aquilo como peça de verdade** · a mesa entrega
-  uma POSIÇÃO FALSA como se fosse leitura, que é pior que esconder.
+  **PRIMEIRO, O ALÍVIO: o formato do LOG não é unificado por nenhuma das quatro.** A dúvida era se
+  a mesa está no ramo das 60 linhas projetadas (`arena_log_visao`, migração 20) ou no ramo do vetor
+  inteiro (`arena_visao`, com `SEM_LOG_VISAO`). **Está no primeiro:** a `arena_log_visao` existe
+  neste banco (sondada, devolve lista em vez de `PGRST205`). Nenhuma das quatro toca nela, e o
+  formato do registro do jogador continua o que já é.
 
-  **E ESSA TELA NÃO EXISTE.** A palavra `lembranca` aparece **zero vezes** no `grid.astro`, e
-  nenhum commit jamais a introduziu. Então a 33 fica de fora da sentada, e o que falta para ela não
-  é SQL: é a tela.
+  | # | muda o QUE CHEGA ao jogador? | o quê, exatamente |
+  |---|---|---|
+  | **29** | **sim, ganha colunas** | a `encontro_visao` passa a mandar `tick_atual`, `rodada`, `perfil` e `perfil_em`. **Hoje não manda nenhuma das quatro** (sondado: `42703` nas duas primeiras) |
+  | **30** | quase nada | acrescenta `gravar_lances` ao `select('*')` de `mesas` (`mesa-core.ts:426`). Nada enumera as chaves desse objeto e nada o grava de volta inteiro · não há `from('mesas').update` no código |
+  | **31** | **sim, e some coisa** | mesma FORMA em `token_visao` e `efeito_visao`, mas menos LINHAS: peça que só chegava porque um fogo não-caído acendia o chão **para de chegar**, e efeito fora do intervalo do relógio também. E a `encontro_visao` ganha `tick_atual` e `rodada`, como na 29 |
+  | **32** | **sim, e campo que nunca era nulo passa a ser** | mesmas 24 colunas da `efeito_visao`, mas `conjurador_id` e `centro` passam a poder vir **null**, e `hexes` vem **filtrado** pelas casas claras |
+
+  **A ORDEM ENTRE 29 E 31 NÃO IMPORTA, e isso é desenho e não sorte.** As duas escrevem a
+  `encontro_visao`, e as duas escrevem a MESMA lista: a 29 já traz `tick_atual` e `rodada`, e a 31
+  inclui `perfil`/`perfil_em` por um bloco que confere se a coluna existe. Rodar em qualquer ordem
+  converge, e rodar de novo não estraga.
+
+  **O QUE O JOGADOR VAI NOTAR NA CADEIRA, e é o que responde a pergunta de verdade:**
+
+  1. **some o aviso** *"⚑ o relógio da cena não está chegando"*, e a cena dele deixa de rodar no
+     Tick 0 · assim que a primeira das duas (29 ou 31) rodar;
+  2. **peças somem do tabuleiro dele.** Não é defeito: são as que ele nunca deveria ter recebido,
+     e que chegavam porque um fogo em montagem acendia o chão. Numa cena com névoa ligada e Arte de
+     fogo no ar, isso é visível na hora;
+  3. **manchas de Arte somem ou encolhem**, pelo mesmo motivo, com a 32.
+
+  **E O RISCO QUE EU FUI CONFERIR ANTES DE DIZER QUE NÃO HÁ:** a 32 faz `centro` e `conjurador_id`
+  poderem vir nulos, e o cliente não foi mudado para isso. Conferido: o `centro` **não é lido em
+  lugar nenhum** do cliente · a única ocorrência dele é uma escrita, em
+  `patch.centro = { q: nova.q, r: nova.r };`, `artes-grid-mesa.ts:1863`.
+  E o `conjurador_id` já era tratado como opcional em todos os pontos que o usam. **`alvos` nunca vem nulo** (a view faz `coalesce` para `[]`). O cabeçalho da 32 diz
+  que ela não depende de mudança de tela, e a leitura do cliente confirma.
+
+  ### A 33 NÃO ENTRA, E O QUE FALTA NELA NÃO É SQL: É A TELA
+
+  **A metade que o jogador vê nunca foi feita**, e é só isso que a segura. O caso D foi decidido, a
+  migração foi escrita, a semente foi construída · e a tela que desenha a lembrança **nunca
+  existiu**. A palavra `lembranca` aparece **zero vezes** no `grid.astro`, e nenhum commit jamais a
+  introduziu.
+
+  Sozinha, a migração faria a `token_visao` mandar peça com `lembranca = true` na casa onde o
+  jogador a viu por último, e **uma tela que não conhece essa coluna desenha aquilo como peça de
+  verdade**: a mesa entrega uma POSIÇÃO FALSA como se fosse leitura, que é pior que esconder. É o
+  que o cabeçalho da própria migração proíbe.
+
+  **ISSO É FASE 2.5, e não sai do congelamento.**
+
+  **A semente, para o registro, resolveu o que ela existia para resolver.** É o bloco 0 da migração:
+  toda peça numa casa clara no instante em que ela roda passa a constar como vista, com posição e
+  Vida daquele instante · exatamente o que o grupo enxerga, e só onde `vistos` ainda não existe, por
+  ausência de chave e não por conteúdo. **Mas a janela do `vistos` nunca foi o único bloqueio**, e
+  tratá-la como se fosse foi o engano que este verbete corrige.
+
+  **O GATILHO DA 33 são os três itens abaixo, e o segundo é o que trava:**
+
+  1. a `token_visao` mandar `lembranca` · **feito**, é a própria migração;
+  2. **a tela desenhar a lembrança como lembrança e não como peça** · NÃO FEITO, e é o bloqueio;
+  3. a semente fechar a janela do dado acumulado · **feito**, é o bloco 0.
 
 - [ ] **L36 · [QUANDO A REGRA APARECER] O `resumoParaBanco` é vitrine, e não entrada de conta.**
   Não é defeito hoje, e é para isso que está escrito: quando alguém topar com ele, que não trate
