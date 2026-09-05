@@ -89,6 +89,19 @@ export interface EntradaLance {
     ajusteFlat: number; ajusteDados: number;
     /** A penalidade de dados por golpe, uma entrada por golpe da agenda. */
     penDados: number[];
+    /**
+     * DADOS A MAIS NO DANO, e hoje quem os põe é a Investida (+1d6).
+     *
+     * Separado do `ajusteDados`, que é do ACERTO: são duas rolagens diferentes e
+     * a régua mexe numa sem mexer na outra (a Investida cobra Defesa e paga em
+     * dano; a Corrida cobra Defesa e não paga nada). Um campo só faria o
+     * primeiro caminho que precisasse de um dos dois arrastar o outro junto.
+     *
+     * Opcional e zero por omissão, e é o que mantém os 1315 lances da fixture
+     * idênticos: nenhum deles foi declarado com Investida, porque o modo não
+     * existia quando foram colhidos.
+     */
+    danoDados?: number;
     /** As duas metades do Quase-Acerto que vêm da arma. */
     qaArmaBonus: number; qaArmaDano: number;
   };
@@ -185,7 +198,7 @@ export function resolverGolpe(entrada: EntradaLance, fonte: FonteDeDados = fonte
   let absorcao = 0;
   let liquido = 0;
   if (veredito === 'acerto') {
-    const d = fonte.rolar(entrada.atacante.dano);
+    const d = fonte.rolar(entrada.atacante.dano, entrada.atacante.danoDados || 0);
     bruto = Math.max(0, d.total);
     rollsDano = d.rolls;
     absorcao = Math.min(bruto, entrada.alvo.soak);

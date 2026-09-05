@@ -2435,7 +2435,7 @@ const SETAS = [
     rolaNoSite, ticksDeDeslocamento, armaDoCatalogo, ticksDeEntrada,
     contrapeEm, contrapeDe, contrapeAcaba, faseDeQuemVaiAgir, preparoDe, ordemDaFila,
     adiaGolpe, agendar, golpesNoAr, golpeDevido, golpeResolvido, proximoGolpe,
-    podeSerInterrompido, atrasarGesto,
+    podeSerInterrompido, atrasarGesto, modoCorre, INVESTIDA,
     ehSimultaneo, agendaSimultanea, ticksDeViagem, decideEmValeDepois, comOverride,
     passoDoGolpe, reprojetarAgenda,
     previsaoDeEncontro, decisaoAutomatica, MODOS_MOV,
@@ -5187,7 +5187,10 @@ const SETAS = [
     if (modo === 'andar') return MODOS_MOV.find((m) => m.id === 'andar')?.porTick ?? 1.5;
     // A Corrida usa o ARRANQUE, e não o topo: os três primeiros Ticks de uma
     // corrida são a aceleração, e quase toda perseguição de combate cabe neles.
-    return modo === 'corrida' ? p.arranque : p.batalha;
+    // `modoCorre` e não `=== 'corrida'`: a Investida É uma corrida, e cobre a
+    // distância da Corrida por Tick. Era o mesmo `===` literal que deixava a
+    // Investida de fora do portão da travessia.
+    return modoCorre(modo) ? p.arranque : p.batalha;
   };
 
   /**
@@ -5696,7 +5699,12 @@ const SETAS = [
       `${nomeHex(destino.q, destino.r)} · ${fmtM(distM)} daqui`;
     const sel = el('mv-modo') as HTMLSelectElement;
     const pas = passoDaPeca(c);
-    sel.innerHTML = MODOS_MOV.map((m) =>
+    // A INVESTIDA FICA DE FORA DESTA CAIXA, e é a diferença entre ela e a
+    // Corrida: investir é gastar o PREPARO correndo, então só existe dentro de
+    // uma declaração de ataque. Um deslocamento solto não tem Preparo para
+    // gastar, e oferecer a Investida aqui prometeria o +1d6 de um golpe que
+    // ninguém declarou. Ela está na caixa do ataque, que é onde cabe.
+    sel.innerHTML = MODOS_MOV.filter((m) => m.id !== 'investida').map((m) =>
       `<option value="${m.id}"${m.id === 'batalha' ? ' selected' : ''}>${m.nome} · ${
         passoNoModo(c, m.id)} m/Tick · ${m.nota}</option>`).join('');
     const vel = el('mv-vel') as HTMLInputElement;
@@ -8473,6 +8481,20 @@ const SETAS = [
         ajusteFlat: ajAtq.flat, ajusteDados: ajAtq.dados,
         penDados: (anat().penDados || []).slice(),
         qaArmaBonus: ra?.qa?.armaBonus ?? 0, qaArmaDano: ra?.qa?.armaDano ?? 0,
+        // O +1d6 DA INVESTIDA, lido do modo declarado e não somado à mão.
+        //
+        // A régua tem três metades (`combate.movimento.investida`) e a mesa
+        // cumpria uma: a marca `Investindo` do catálogo de condições dá o −2 de
+        // Defesa, e o dado e a distância da Corrida não tinham caminho nenhum.
+        // A nota da própria condição dizia "o dado o mestre soma à mão, como o
+        // resto do que é situacional", que era a descrição honesta de uma regra
+        // que o motor não sabia cumprir.
+        //
+        // Sai do `mov.modo`, que é onde a Investida foi declarada, e não de uma
+        // condição na peça: assim ele vale pelo gesto que a declarou e acaba
+        // com ele, sem lifecycle nenhum para manter.
+        danoDados: acaoNo(atacante)?.mov?.modo === 'investida'
+          ? (INVESTIDA.danoDados ?? 1) : 0,
       },
       alvo: {
         id: alvo.id, nome: alvo.nome,

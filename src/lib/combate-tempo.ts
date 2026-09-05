@@ -127,6 +127,15 @@ export interface Acao {
   arma?: string | null;   // só o mestre vê (a view mascara para o jogador)
   alvo?: string | null;   // idem
   divida?: number;        // Ticks que já foram empurrados para o futuro
+  /**
+   * O DESLOCAMENTO DECLARADO junto com o gesto (ver `Mov`, mais abaixo).
+   *
+   * Ele já andava aqui dentro desde o simultâneo (o Grid escreve `acao.mov` e o
+   * banco guarda), e não estava declarado: era campo que existe no jsonb e que
+   * o tipo não conhecia. Passou a estar quando a `defesaPerdida` precisou LER o
+   * modo, para cobrar a Investida.
+   */
+  mov?: Mov | null;
   pressao?: number;       // ataques recebidos neste ciclo (cada um −2 de Defesa)
   /**
    * Os Ticks de `golpes` cujo golpe AINDA NÃO FOI RESOLVIDO.
@@ -671,7 +680,19 @@ export function defesaPerdida(
   const fase = opts.fase || faseEm(acao, tick);
   const pressao = (acao?.pressao || 0) * (e.pressaoPorAtaque ?? -2);
   let acaoDV = 0;
-  if (fase === 'preparo') acaoDV = e.preparo ?? -2;
+  // A INVESTIDA CUSTA NO PREPARO, e só nele: investir é atravessar o Preparo
+  // correndo, então o −2 dela é um termo da escada e não uma condição à parte.
+  // É o que a régua diz com estas palavras (`combate.movimento.investida`: "a
+  // Defesa cai −2 além do que o Preparo já cobra") e o que a tabela do capítulo
+  // mostra: Preparo andando, o −2 do Preparo; Preparo investindo, −2 a mais.
+  //
+  // E ELE SE SOMA À CONDIÇÃO `investindo` DO CATÁLOGO, que vale os mesmos −2 e
+  // continua existindo como o caminho à mão da aba Combate. Quem declarar a
+  // Investida no Grid E aplicar a condição à mão paga −4 em vez de −2. Condição
+  // é dado de regra e não se muda daqui: qual das duas fica é decisão de mesa,
+  // e está escrita na entrega de 05/09/2026.
+  const investindo = fase === 'preparo' && acao?.mov?.modo === 'investida';
+  if (fase === 'preparo') acaoDV = (e.preparo ?? -2) + (investindo ? (INVESTIDA.defesaExtra ?? -2) : 0);
   else if (fase === 'golpe') acaoDV = (e.golpe ?? -4) + (opts.segura ? (e.alivioSegundaMao ?? 2) : 0);
   else if (fase === 'recuperacao') acaoDV = (e.recuperacaoPorGolpe ?? -2) * golpesDados(acao, tick);
   return { fase, acao: acaoDV, pressao, total: acaoDV + pressao };
@@ -680,14 +701,23 @@ export function defesaPerdida(
 /** Dá para interromper o gesto desta pessoa agora? Só no Preparo. */
 export const podeSerInterrompido = (acao: Acao | null | undefined, tick: number) => faseEm(acao, tick) === 'preparo';
 
-/** Ela pode agir fora da hora? Na Recuperação sim, pagando; no Preparo só para abortar. */
-export function podeAgirForaDeHora(acao: Acao | null | undefined, tick: number) {
-  const f = faseEm(acao, tick);
-  if (f === 'livre') return { pode: true, como: 'está livre' };
-  if (f === 'recuperacao') return { pode: true, como: 'pagando a Velocidade da ação em dívida' };
-  if (f === 'preparo') return { pode: true, como: 'abortando o Preparo, e só para mover, desviar ou se interpor' };
-  return { pode: false, como: 'está no Golpe: não se aborta, não se reage, não se interrompe' };
-}
+/*
+ * A `podeAgirForaDeHora` MORREU AQUI, em 05/09/2026, e vale dizer por quê.
+ *
+ * Ela respondia "cabe agir fora da hora?" com um `pode` por fase, e a
+ * `foraDeHora` abaixo passou a responder a MESMA pergunta com um `pode` que diz
+ * o contrário em duas das quatro fases (livre e Preparo). As duas respostas
+ * eram defensáveis · uma sobre a regra, outra sobre a transação · e é
+ * exatamente essa a forma do defeito do `mordidos`: duas funções respondendo a
+ * mesma pergunta, cada uma certa no seu sentido, e quem chama escolhendo sem
+ * saber que escolheu.
+ *
+ * E não havia empate a desfazer: a `pode` dela não tinha um único chamador de
+ * produção, e a frase `como` era lida por uma linha da `foraDeHora` que também
+ * nunca chegava a lugar nenhum. As duas metades estavam mortas. O que a mesa lê
+ * hoje é o `porque` da `foraDeHora`, que diz a mesma coisa no lugar em que
+ * alguém olha.
+ */
 
 // ---------------------------------------------------------------- o abortar
 /**
@@ -757,8 +787,8 @@ export function custoDeReagir(acao: Acao | null | undefined, tick: number, veloc
  * únicos chamadores eram os testes. Esta função é a transação, e é o que faltava
  * para haver o que uma tela chame.
  *
- * POR QUE ELA DIZ "NÃO" ONDE A `podeAgirForaDeHora` DIZ "SIM": aquela responde
- * "cabe agir?", e aqui a pergunta é "há transação a fazer?". Quem está **livre**
+ * POR QUE ELA DIZ "NÃO" EM TRÊS DAS QUATRO FASES: a pergunta aqui é "há
+ * transação a fazer?", e não "cabe agir?". Quem está **livre**
  * age na hora e não paga nada; quem está no **Preparo** tem o `abortar`, que é
  * outra conta e já tem botão. Sobra a **Recuperação**, que é onde a regra existe
  * de verdade: o golpe já saiu, você não pode mais desistir, só pagar.
@@ -783,12 +813,11 @@ export function foraDeHora(
 ) {
   const F = C?.foraDeHora || {};
   const fase = faseEm(acao, tick);
-  const como = podeAgirForaDeHora(acao, tick).como;
   const vel = Math.max(0, Math.round(velocidadeDaReacao) || 0);
   const { resta, total } = custoDeReagir(acao, tick, vel);
   const jaUsou = F.umaPorAcao !== false && ((acao as Acao)?.divida || 0) > 0;
   const nao = (porque: string) => ({
-    pode: false, fase, como, resta, velocidade: vel, total: 0,
+    pode: false, fase, resta, velocidade: vel, total: 0,
     novoTick: tick, divida: 0, jaUsou, atrasaOAlvo: 0, porque,
   });
   if (fase === 'livre') return nao('Está livre: age na hora, e não paga nada por isso.');
@@ -807,7 +836,7 @@ export function foraDeHora(
   const atrasaOAlvo = F.espelho !== false && opts.alvo && podeSerInterrompido(opts.alvo, tick)
     ? total : 0;
   return {
-    pode: true, fase, como, resta, velocidade: vel, total,
+    pode: true, fase, resta, velocidade: vel, total,
     novoTick: tick + total, divida: resta, jaUsou: false, atrasaOAlvo, porque: '',
   };
 }
@@ -849,8 +878,19 @@ const SIM = C?.simultaneo || {};
 export const ehSimultaneo = (c: CombateMesa | null | undefined): boolean =>
   c?.sistema === 'simultaneo';
 
+/**
+ * A INVESTIDA, tirada do `regras.json` e não escrita aqui.
+ *
+ * `combate.movimento.investida`: `danoDados: 1` e `defesaExtra: -2`. A régua
+ * estava escrita desde sempre, com número, no capítulo (§ Investida do
+ * `combate.md`) e no catálogo de condições (`investindo`, Defesa −2), e o motor
+ * não a conhecia: `ModoMov` tinha três modos e a palavra "investida" aparecia
+ * uma vez no arquivo inteiro, dentro de um comentário.
+ */
+export const INVESTIDA = C?.movimento?.investida || {};
+
 /** Os modos de andar, com o padrão de metros por Tick e a penalidade escrita. */
-export type ModoMov = 'andar' | 'batalha' | 'corrida';
+export type ModoMov = 'andar' | 'batalha' | 'corrida' | 'investida';
 export const MODOS_MOV: { id: ModoMov; nome: string; porTick: number; nota: string }[] = [
   { id: 'andar', nome: 'Andar', porTick: SIM?.velocidadePadrao?.andar ?? 1.5,
     nota: 'passo de estrada, sem pressa e sem custo' },
@@ -858,7 +898,24 @@ export const MODOS_MOV: { id: ModoMov; nome: string; porTick: number; nota: stri
     nota: 'a guarda de pé: sem penalidade nenhuma' },
   { id: 'corrida', nome: 'Corrida', porTick: SIM?.velocidadePadrao?.corrida ?? 6,
     nota: `Defesa ${C?.movimento?.corrida?.defesa ?? -4} enquanto corre e até se recompor` },
+  // A INVESTIDA CORRE, e é por isso que o passo dela é o da Corrida: investir é
+  // gastar o Preparo correndo em vez de andando, e não uma quarta velocidade.
+  { id: 'investida', nome: 'Investida', porTick: SIM?.velocidadePadrao?.corrida ?? 6,
+    nota: `Defesa ${INVESTIDA.defesaExtra ?? -2} além do que o Preparo cobra, e +${
+      INVESTIDA.danoDados ?? 1}d6 no golpe` },
 ];
+
+/**
+ * Este modo é uma corrida?
+ *
+ * A pergunta existe porque DOIS lugares precisam dela e nenhum dos dois é sobre
+ * velocidade: o portão da travessia (`travessiaExigeCorrida`, cuja nota diz
+ * "só para quem declarou Corrida ou Investida") e o passo da peça, que usa o
+ * arranque nos dois. Escrever `modo === 'corrida'` nos dois lugares foi o que
+ * deixou a Investida do lado de fora sem ninguém notar.
+ */
+export const modoCorre = (modo: ModoMov | string | null | undefined): boolean =>
+  modo === 'corrida' || modo === 'investida';
 
 /**
  * O deslocamento declarado, do jeito que mora dentro da `acao` (`acao.mov`).
@@ -904,7 +961,11 @@ export function passoDoGolpe(opts: {
   // Já ao alcance: o único movimento que sobra é a travessia, e ela é da
   // Corrida. Quem chegou andando para no impacto.
   if (!PNG.travessia) return 'nenhum';
-  if (PNG.travessiaExigeCorrida && opts.modo !== 'corrida') return 'nenhum';
+  // `modoCorre` E NÃO `=== 'corrida'`: a nota da regra diz "só para quem
+  // declarou Corrida ou Investida", e o `!==` literal deixava a Investida de
+  // fora · o que não fazia diferença enquanto o modo não existia, e passaria a
+  // fazer no dia em que passasse a existir, calado.
+  if (PNG.travessiaExigeCorrida && !modoCorre(opts.modo)) return 'nenhum';
   return 'atravessar';
 }
 

@@ -1257,7 +1257,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   fazia o carimbo valer: alguém que leia o perfil na hora de aplicar a regra.**
 
   O perfil é gravado, viaja no encontro, aparece na tela, é comparável e é recarimbável. E é lido
-  em **um** lugar do código de produção, `grid.astro:8512` (`perfil: { ...REGRAS_CENA }`), onde ele é copiado para dentro da
+  em **um** lugar do código de produção, `grid.astro:8534` (`perfil: { ...REGRAS_CENA }`), onde ele é copiado para dentro da
   entrada do lance, para o oráculo. `entrada.perfil` **não é consultado em lugar nenhum**: nem em
   `resolverGolpe`, nem em `quase-acerto.ts`, nem em `calc.ts`, nem no harness. Nenhuma das quinze
   bandeiras faz o motor tomar um caminho diferente.
@@ -1295,71 +1295,168 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   contador de ocasião, e só então medir. É o mesmo mecanismo que matou o eixo E4 (D31) antes de
   ele virar linha de relatório. Isto reparte o **L1** em quinze tarefas de motor, e **nenhuma
   medição de bandeira vale antes**.
-- [ ] **L34 · [FASE 2] AS TRÊS DO L25 PURO, E ELAS NÃO SÃO O MESMO TRABALHO** · *levantamento
-  de 04/09/2026, arquivo e linha conferidos.*
+- [ ] **L34 · A FASE 2 · O TABULEIRO COMO EXPERIÊNCIA COMPLETA DE COMBATE** · *a lista das seis,
+  escrita em 05/09/2026. Ela vinha sendo cobrada por número desde 04/09 e não estava em documento
+  nenhum: o furo era só esse, e é o que esta entrada conserta.*
 
-  A frase que as juntou foi "mecanismo existente ganhando tela pela primeira vez". Conferindo
-  uma a uma, **só uma delas é isso**. As outras duas são coisas diferentes, e tratá-las como
-  a mesma é justamente como nasce promessa sem mecanismo.
+  | | item | estado |
+  |---|---|---|
+  | 1 | **condição no tabuleiro** | **FEITO** · `912bc68` |
+  | 2 | **agir fora de hora** | **FEITO** · `f699ae2` |
+  | 3 | **dívida de Ticks** | **FEITO** · `f699ae2`, junto com o 2 |
+  | 4 | **mudar efeito posto** | falta |
+  | 5 | **Investida** | **FEITO no motor** · e não era trabalho de tela |
+  | 6 | **Interpor e desviar** | falta, e **depende de decisão de mesa** |
 
-  | | regra escrita | motor | tela | teste |
-  |---|---|---|---|---|
-  | **Investida** | sim, com números | **não existe** | não | não |
-  | **Interpor** | só como saída do abortar, **sem números** | rótulo, sem efeito | metade, e só do mestre | não |
-  | **Condição à mão** | catálogo de ~48, com números | **existe e é chamado** | **existe, na aba Combate; não no Grid** | só pelo caminho da Arte |
+  **NENHUMA FASE TERMINA EM DOCUMENTO**, e é a regra que rege esta lista inteira: toda linha acima
+  só vira FEITO com coisa funcionando na mesa e asserção que cai se ela parar de funcionar.
 
-  **1 · A INVESTIDA NÃO É "GANHAR TELA": É MOTOR QUE NÃO EXISTE.** A regra está fechada em
-  `src/data/regras.json:2356` (`danoDados: 1`, `defesaExtra: -2`) e no capítulo
-  (`src/content/chapters/combate.md:223`), com o exemplo do Kael: 8 m com Defesa −2 andando,
-  12 m com Defesa −4 e +1d6 investindo. O motor não a conhece: `ModoMov` é
-  `'andar' | 'batalha' | 'corrida'` em `src/lib/combate-tempo.ts:853`, sem investida, e o
-  portão da travessia exige `opts.modo !== 'corrida'` (`src/lib/combate-tempo.ts:907`), então a linha
-  "−6 investindo" do `regras.json:2287` **nunca é alcançada**. Pôr um botão antes do modo
-  existir seria a promessa sem mecanismo em pessoa. A ordem é: modo no `combate-tempo.ts`,
-  contador de ocasião, e só então tela.
+  ### 1 · A condição no tabuleiro · FEITA em 04/09/2026
 
-  **2 · O INTERPOR NÃO TEM REGRA PARA IMPLEMENTAR.** O que existe é a *saída* do abortar:
-  `regras.json:2450` lista `["mover", "desviar", "interpor"]`, a 1 Tick por metro, e o
-  diálogo já pergunta qual delas, pelo `SAIDAS` (`src/lib/mesa-tempo-ui.ts:269`). Só que escolher "interpor"
-  **muda o verbo da frase do log, e nada mais**: `const verbo` em `src/lib/mesa-tempo-ui.ts:338`. A saída escolhida é descartada
-  pelo Grid, que grava só `acao: limpa` (`src/pages/mesa/grid.astro:5818`).
-  **Não há número nenhum:** quem leva o dano, se há teste, qual o alcance, o que o escudo faz.
-  A `02-projeto-harness.md:914` até fixa a ordenação ("a interposição resolve antes do golpe
-  contra o qual ela se interpõe"), e isso é ordem, não mecânica. **Isto é decisão de mesa, e
-  não trabalho de programação.** Escrever a tela antes da regra inventaria a regra.
-
-  **3 · A CONDIÇÃO À MÃO ERA A ÚNICA QUE ERA MESMO SÓ TELA · FEITA em 04/09/2026.**
-
-  O que já existia, e é por isso que esta era a única das três que era mesmo só tela:
+  Era a única das seis que era mesmo **só tela**, e o mecanismo existia inteiro:
 
   - o catálogo, 55 verbetes com número, em `src/data/condicoes.json`;
   - a soma: `export function somarCondicoes` (`src/lib/mesa-core.ts:164`);
-  - a leitura na folha do lance: `const cd = somarCondicoes` (`grid.astro:8235`);
-  - e o desconto chegando à Defesa: `alvo.condicoesDefesa` (`src/lib/lance.ts:144`);
+  - a leitura na folha do lance: `const cd = somarCondicoes` (`grid.astro:8243`);
+  - o desconto chegando à Defesa: `alvo.condicoesDefesa` (`src/lib/lance.ts:159`);
   - a coluna: `add column if not exists condicoes` (`supabase/migracao-11.sql:25`);
   - e o RPC do jogador aceitando a chave: `condicoes` (`supabase/migracao-22.sql:125`).
 
-  O que foi feito: o diálogo saiu da aba Combate e virou três peças compartilhadas
-  (`src/lib/mesa-condicoes.ts`, `src/components/CondDlg.astro`, e o estilo no `MesaCab.astro`).
+  **Só a tela morava na outra aba.**
 
-  - o item no menu da peça do Grid: `item('condicoes'` (`grid.astro:6742`);
-  - o selo de ícones na lista lateral, que custa zero gestos: `const selo` (`grid.astro:5922`);
-  - e a aba Combate chamando o mesmo módulo: `function abrirCondicoes` (`combate.astro:1740`), então
-    não há duas cópias para divergir no primeiro conserto que só uma receber.
+  O diálogo saiu da aba Combate e virou três peças compartilhadas (`src/lib/mesa-condicoes.ts`,
+  `src/components/CondDlg.astro`, e o estilo no `MesaCab.astro`). O que entrou no tabuleiro:
 
-  **A ASSERÇÃO EM PAR**, em `cenaCondicaoAMao` (`scripts/test-grid.mjs`): a mesma folha do
-  golpe é aberta pelo mesmo caminho três vezes (sem a condição, com ela, e depois de tirada),
-  e o teste cobra o ESTADO da peça na bancada e não a linha do registro. A prova positiva é a
-  Defesa caindo os 4 de `Correndo` (−1 → −5) e a negativa é ela voltando ao que era.
+  - o item no menu da peça: `item('condicoes'` (`grid.astro:6750`);
+  - o selo de ícones na lista lateral, que custa zero gestos: `const selo` (`grid.astro:5930`);
+  - e a aba Combate chamando o mesmo módulo: `function abrirCondicoes` (`combate.astro:1740`), para
+    não haver duas cópias divergindo no primeiro conserto que só uma receber.
 
-  O custo em gestos, na moeda do `custo-tela.mjs`: aplicar 3, tirar 3, ver 0. A fase 3 vai
-  querer os três de volta no caso comum, e ali o conserto é de MOTOR: quem declara Corrida já
-  disse ao Grid tudo que ele precisa para aplicar `correndo` sozinho.
+  Asserção em par, em `cenaCondicaoAMao` (`scripts/test-grid.mjs`): a mesma folha do golpe aberta
+  pelo mesmo caminho três vezes (sem a condição, com ela, e depois de tirada), cobrando o ESTADO da
+  peça e não a linha do registro. Custo em gestos, no papel do mestre: aplicar 3, tirar 3, ver 0.
 
-  **A ordem, e ela sai do próprio levantamento:** a condição à mão primeiro (é tela sobre
-  motor pronto, e desbloqueia a Corrida, que já é declarável). A Investida depois, começando
-  pelo modo no motor. O Interpor por último, e ele começa com uma pergunta de mesa, não com
-  código.
+  ### 2 e 3 · Agir fora de hora e a dívida de Ticks · FEITAS em 05/09/2026
+
+  **Uma entrega só, porque eram a mesma coisa vista de dois lados**, e três mecanismos estavam
+  parados ao mesmo tempo: `custoDeReagir` escrita, exportada e testada com o teste como único
+  chamador; o campo `Acao.divida` ("Ticks que já foram empurrados para o futuro") zerado pelo
+  `declarar` e nunca escrito nem lido; e a caixa do `✋ Abortar`, aberta numa peça em Recuperação,
+  imprimindo a frase do próprio motor sobre "pagar: uma ação fora de hora" · **a tela nomeava a
+  ação que não tinha botão.** O detalhe está na §15.4, acima.
+
+  ### 4 · Mudar efeito posto · FALTA, e é o L25 puro que sobrou
+
+  Um efeito no chão tem, na coluna, **exatamente um controle**: o `✕` com o título "Desfazer este
+  efeito agora", e o painel liga handler só em `[data-fim]` (`src/lib/artes-grid-mesa.ts:463`).
+  Não há como mudar duração, alvos, posição ou ângulo do que já está posto: só apagar e conjurar de
+  novo, o que **custa a Mana outra vez e escreve duas linhas no registro**.
+
+  E a função existe: `jogador_muda_efeito` (`supabase/migracao-22.sql`) está escrita e concedida, e
+  o único caminho até ela hoje é o desvio de escrita do jogador
+  (`jogador_muda_efeito`, `grid.astro:2649`), por onde passa só a marca de mordida que a varredura
+  grava. **Escrita, concedida, e sem caminho de produção que MUDE um efeito.**
+
+  ### 5 · A Investida · FEITA NO MOTOR em 05/09/2026, e ela não era trabalho de tela
+
+  **O estado em que ela estava, e é o que o levantamento da revisora achou:** a régua estava
+  escrita com número em três lugares que concordam · `combate.movimento.investida` no
+  `regras.json` (`danoDados: 1`, `defesaExtra: -2`), a tabela do capítulo
+  (`src/content/chapters/combate.md`, § Investida: "Preparo investindo · velocidade de Corrida por
+  Tick · −2 **a mais** · **+1d6**") e o catálogo de condições (`investindo`, Defesa −2). **E o
+  motor não a conhecia:** `ModoMov` era `'andar' | 'batalha' | 'corrida'` e a palavra "investida"
+  aparecia UMA vez no arquivo inteiro, dentro de um comentário sobre travessia. Pôr um botão antes
+  do modo existir seria a promessa sem mecanismo em pessoa.
+
+  **O que foi construído**, na ordem que o próprio levantamento mandava (modo no motor, depois
+  tela):
+
+  - `ModoMov` ganhou `'investida'`, com o passo da Corrida · investir não é uma quarta velocidade,
+    é gastar o Preparo correndo;
+  - `defesaPerdida` passou a cobrar o `defesaExtra` **no Preparo e só nele**, que é o que a régua
+    diz com estas palavras ("−2 além do que o Preparo já cobra");
+  - o portão da travessia passou a perguntar `modoCorre(modo)` em vez de `modo !== 'corrida'`. A
+    nota da regra sempre disse "só para quem declarou Corrida **ou Investida**", e o `!==` literal
+    deixava a Investida de fora · o que não fazia diferença nenhuma enquanto o modo não existia, e
+    passaria a fazer, calado, no dia em que passasse a existir;
+  - o `+1d6` virou o campo `danoDados` da `EntradaLance`, lido do modo declarado. Separado do
+    `ajusteDados`, que é do ACERTO: são duas rolagens e a régua mexe numa sem mexer na outra;
+  - `Acao.mov` foi DECLARADO na interface. Ele já andava no jsonb desde o simultâneo (o Grid
+    escrevia `acao.mov` e o banco guardava) e o tipo não o conhecia.
+
+  A tela veio de graça, e é o sinal de que o levantamento estava certo sobre onde era o trabalho:
+  a caixa de declaração de ataque monta o seletor a partir de `MODOS_MOV`, então a Investida
+  apareceu lá sozinha. **A caixa de deslocamento solto filtra ela de fora**, de propósito: um
+  deslocamento sem ataque não tem Preparo para gastar, e oferecê-la ali prometeria o +1d6 de um
+  golpe que ninguém declarou.
+
+  **⚠ DUAS COISAS FICARAM ABERTAS, e as duas são decisão de mesa, não de código:**
+
+  1. **O −2 agora tem duas fontes.** Ele sai do modo declarado (a escada, automático) e continua
+     saindo da condição `investindo` do catálogo, que é o caminho à mão da aba Combate e vale os
+     mesmos −2. **Quem declarar a Investida no Grid E aplicar a condição à mão paga −4 em vez de
+     −2.** As opções são pelo menos três: a condição sai do catálogo, ou vira só rótulo sem
+     número, ou o Grid passa a aplicá-la sozinha ao declarar (e aí o número mora só nela). É a
+     mesma pergunta que `correndo` vai fazer na fase 3.
+  2. **A régua se contradiz num lugar.** Três fontes dizem que investir custa −2 **além do
+     Preparo** (total −4 durante o Preparo): o `defesaExtra`, a tabela do capítulo e a nota da
+     condição. Uma quarta diz outra coisa: a `travessiaNota` do `regras.json`
+     (`combate.simultaneo.passoNoGolpe`) escreve o freio como "**Defesa −4 correndo, −6
+     investindo**", que só fecha se a Investida carregasse o −4 da Corrida MAIS o −2 dela. **O
+     motor foi construído com as três que concordam**, e a quarta está aqui esperando decisão:
+     ou ela é prosa desatualizada e se corrige, ou o −6 é a régua e as outras três é que estão
+     erradas.
+
+  ### 6 · Interpor e desviar · FALTA, e a régua não fecha
+
+  **A alcançabilidade responde o contrário do de sempre aqui:** o caminho existe e é curto (botão
+  direito → `✋ Abortar`, 2 passos), a caixa já tem os três rádios
+  (`const SAIDAS`, `src/lib/mesa-tempo-ui.ts:269`), e o que falta é **o sistema do outro lado da
+  caixa**. Escolher "interpor" hoje **muda o verbo da frase do registro e nada mais**
+  (`const verbo`, `src/lib/mesa-tempo-ui.ts:338`), e a saída escolhida é descartada pelo Grid, que
+  grava só
+  `acao: limpa` (`grid.astro:5828`).
+
+  **O QUE A RÉGUA TEM**, e é menos do que parece:
+
+  - `combate.abortar.para: ["mover", "desviar", "interpor"]` no `regras.json`, com
+    `ticksPorMetro: 1` · a interposição é uma das três saídas do abortar, no Preparo;
+  - o **catálogo de ações fora de hora** do `Combate_Tempo.md` §4.3 (tabela na linha 294):
+    "**Interpor-se entre o golpe e um aliado · a distância em metros, mínimo 2**". É o único número
+    escrito para o Interpor, e é um PREÇO EM TICKS;
+  - `Combate_Tempo.md:814`: na Recuperação, os testes que envolvem ação (e "se interpor" está na
+    lista) são a **−1d6**;
+  - a ORDEM, em `docs/simulacao/02-projeto-harness.md:1152`: "a interposição resolve antes do golpe
+    contra o qual ela se interpõe";
+  - e a descrição da tela, que não é régua: "entra na frente de alguém e leva o golpe no lugar
+    dele".
+
+  **O QUE FALTA PARA VIRAR MECANISMO**, e a resposta curta é: a régua diz **o que acontece** e
+  **quanto custa em Ticks**, e não diz **como se resolve**. Falta:
+
+  1. **quem leva o dano, e por qual conta.** "Leva o golpe no lugar dele" é descrição de tela.
+     Não há linha dizendo se o golpe troca de alvo, se o acerto é recomparado contra a Defesa do
+     interpositor (que é outra Defesa, outra Absorção e outra armadura), ou se o dano passa
+     inteiro. As três dão jogos diferentes;
+  2. **se há teste, contra o quê, e o que acontece ao falhar.** O §4.3 dá um preço em Ticks e a
+     linha 814 dá um −1d6 para "testes que envolvem ação". As duas se tocam e não se juntam: não
+     há qual teste, nem contra que Dificuldade, nem o que sobra de quem falha (o golpe passa? ele
+     gastou os Ticks à toa? os dois levam?);
+  3. **o alcance.** "A distância em metros, mínimo 2" é o PREÇO, e não um teto. Nada diz até onde
+     dá para se interpor, nem se é preciso terminar adjacente ao aliado ou dentro da linha do
+     golpe · o Grid tem geometria para as duas coisas, e a régua não pede nenhuma;
+  4. **o que o escudo faz**, se é que faz;
+  5. **a duração.** Um golpe, todos os golpes daquele Tick, ou a agenda inteira do atacante;
+  6. **e a reconciliação dos dois preços**, que é a que ninguém tinha visto: a interposição do
+     ABORTAR (Preparo) custa 1 Tick por metro, e a do CATÁLOGO fora de hora (Recuperação) custa "a
+     distância em metros, mínimo 2". **São a mesma ação com dois preços, ou duas ações com o mesmo
+     nome?**
+
+  **E o DESVIAR está no mesmo estado, por outro motivo:** ele é uma das três saídas escritas, e na
+  mesa faz exatamente o que "mover" faz (metros × 1 Tick). A descrição diz "sai da linha do golpe e
+  recompõe a guarda", mas não há número que separe desviar de mover, nem regra que diga o que
+  "sair da linha" compra. Hoje a diferença entre os dois rádios é **só o verbo do registro**.
+
 
 - [ ] **L35 · [DECISÃO DE MESA] A CRIATURA NÃO TEM PERÍCIA, E A COMPARAÇÃO DO GOLPE DO ESCURO
   FECHA PARA UM LADO SÓ** · *levantamento de 04/09/2026, contado nas 309.*
@@ -1856,7 +1953,7 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   `arena_log` como tabela, uma linha por entrada, e o desfazer virando um `delete`.
 - [ ] **I5 · [FAZER] Um editor de cenário no Grid.** Hoje o mestre só põe peças: o tabuleiro não
   tem parede, terreno difícil nem item no chão, e o único veto de passo é casa ocupada
-  (`ocupadoPor`, `grid.astro:6560`). Decidido em 02/09/2026, ao desenhar o harness de simulação
+  (`ocupadoPor`, `grid.astro:6568`). Decidido em 02/09/2026, ao desenhar o harness de simulação
   (`docs/simulacao/02-projeto-harness.md` §0.4 P2): a **parede entra como funcionalidade**, e o
   encaixe já existe, porque `caminharHex` recebe um veto arbitrário (`hex.ts:131`). O terreno
   difícil tem gancho pronto e não usado: a condição `terreno-dificil` existe em `condicoes.json`

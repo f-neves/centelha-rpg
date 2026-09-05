@@ -126,15 +126,15 @@ eq(T.anatomia({ classe: 'media', velocidade: 6, sistema: 'normal', manobra: 'dup
   eq(T.defesaPerdida({ ...a, pressao: 3 }, 12).total, -8, 'a Pressão soma: −2 na Recuperação, −6 de três ataques');
   eq(T.podeSerInterrompido(a, 10), true, 'o Preparo é interrompível');
   eq(T.podeSerInterrompido(a, 11), false, 'o Golpe não é');
-  eq(T.podeAgirForaDeHora(a, 11).pode, false, 'no Golpe não se reage');
-  eq(T.podeAgirForaDeHora(a, 12).pode, true, 'na Recuperação se reage, pagando');
   eq(T.custoDeReagir(a, 12, 5), { resta: 4, total: 9 }, 'o custo de reagir na Recuperação');
 }
 // ---------------------------------------------------------- agir fora de hora
 //
-// A TRANSAÇÃO, e não só as duas metades dela. `podeAgirForaDeHora` e
-// `custoDeReagir` já estavam escritas, exportadas e testadas, e os únicos
-// chamadores eram estas linhas aqui: era o L25 em estado puro.
+// A TRANSAÇÃO, e não só a metade dela. `custoDeReagir` já estava escrita,
+// exportada e testada, e o único chamador era a linha acima: era o L25 em
+// estado puro. A irmã dela, `podeAgirForaDeHora`, foi embora em 05/09 · ela
+// respondia a MESMA pergunta que a `foraDeHora` com outro `pode`, e nenhuma
+// das duas metades tinha chamador de produção.
 {
   const a = T.declarar(10, T.anatomia({ classe: 'media', velocidade: 6, sistema: 'pgr' }));
   // Preparo 10, Golpe 11, Recuperação 12..15, livre em 16.
@@ -160,6 +160,46 @@ eq(T.anatomia({ classe: 'media', velocidade: 6, sistema: 'normal', manobra: 'dup
   eq(T.foraDeHora({ ...devendo, divida: 0 }, 18, 5).pode, true,
     'e sem dívida a mesma peça, na mesma fase e no mesmo Tick, pode');
 }
+// ------------------------------------------------------------------ a Investida
+//
+// A REGRA TINHA TRES METADES E O MOTOR NAO TINHA NENHUMA. Estava escrita com
+// numero em `combate.movimento.investida` (`danoDados: 1`, `defesaExtra: -2`),
+// na tabela do capitulo e no catalogo de condicoes, e o `ModoMov` do motor tinha
+// tres modos: a palavra "investida" aparecia UMA vez no arquivo inteiro, dentro
+// de um comentario sobre travessia.
+{
+  const corrida = T.MODOS_MOV.find((m) => m.id === 'corrida');
+  const inv = T.MODOS_MOV.find((m) => m.id === 'investida');
+  ok(inv, 'a Investida e um modo de deslocamento');
+  eq(inv.porTick, corrida.porTick,
+    'e corre: o passo dela e o da Corrida, porque investir e gastar o Preparo correndo');
+
+  // O PREDICADO, e ele existe porque DOIS lugares perguntavam `=== 'corrida'`.
+  eq(['andar', 'batalha', 'corrida', 'investida'].map(T.modoCorre), [false, false, true, true],
+    'quem corre: a Corrida e a Investida');
+
+  // A DEFESA. A regra: "-2 alem do que o Preparo ja cobra", e so no Preparo.
+  const base = T.declarar(10, T.anatomia({ classe: 'media', velocidade: 6, sistema: 'pgr' }));
+  const inv6 = { ...base, mov: { modo: 'investida', porTick: 6, auto: true } };
+  const cor6 = { ...base, mov: { modo: 'corrida', porTick: 6, auto: true } };
+  eq(T.defesaPerdida(base, 10).total, -2, 'o Preparo andando custa o -2 de sempre');
+  eq(T.defesaPerdida(inv6, 10).total, -4, 'e investindo custa -2 A MAIS, que e a tabela do capitulo');
+  eq(T.defesaPerdida(cor6, 10).total, -2,
+    'e a Corrida declarada NAO mexe na escada: o -4 dela e da condicao, e nao desta conta');
+  // O PAR QUE FAZ A ASSERCAO VALER: se o -2 vazasse para as outras fases, a
+  // Investida viraria uma penalidade de acao inteira, que e outra regra.
+  eq([T.defesaPerdida(inv6, 11).total, T.defesaPerdida(inv6, 12).total],
+    [T.defesaPerdida(base, 11).total, T.defesaPerdida(base, 12).total],
+    'e no Golpe e na Recuperacao a Investida nao cobra nada a mais');
+
+  // A TRAVESSIA. A nota da regra diz "so para quem declarou Corrida ou
+  // Investida", e o portao comparava com a palavra `corrida` e mais nada.
+  const passo = (modo) => T.passoDoGolpe({ temAlvo: true, noAlcance: true, modo });
+  eq(passo('corrida'), 'atravessar', 'quem chega correndo atravessa');
+  eq(passo('investida'), 'atravessar', 'e quem chega investindo tambem, que e o que a nota diz');
+  eq(passo('batalha'), 'nenhum', 'e quem chega andando para no impacto');
+}
+
 // o espelho: interromper atrasa o alvo em tantos Ticks quantos o interruptor pagou
 {
   const meu = T.declarar(10, T.anatomia({ classe: 'media', velocidade: 6, sistema: 'pgr' }));
