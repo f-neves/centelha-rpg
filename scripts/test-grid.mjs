@@ -3117,7 +3117,7 @@ async function cenaCorrigirEfeito(br, url) {
     const p = await br.newPage();
     await p.setViewport({ width: 1500, height: 1000 });
     p.on('pageerror', (e) => erros.push(e.message));
-    await p.goto(`${url}/mesa/grid?id=${MESA}&bench=12&cols=24&rows=16&nevoa=0&brasa=0&papel=${papel}`,
+    await p.goto(`${url}/mesa/grid?id=${MESA}&bench=12&cols=24&rows=16&nevoa=0&brasa=0&sombra=1&papel=${papel}`,
       { waitUntil: 'networkidle0', timeout: 60000 });
     await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
     await espera(700);
@@ -3132,26 +3132,53 @@ async function cenaCorrigirEfeito(br, url) {
     apagar: document.querySelectorAll('#gr-ef-lista [data-fim]').length,
   }));
   await pj.close();
-  ok(doJogador.linhas > 0, `o jogador ve o efeito no painel (${doJogador.linhas} linha)`);
+  ok(doJogador.linhas > 0, `o jogador ve efeito no painel (${doJogador.linhas} linha(s))`);
   ok(doJogador.editar === 0 && doJogador.apagar === 0,
     `e nao tem botao nenhum nele (${doJogador.editar} ✎, ${doJogador.apagar} ✕)`);
 
   // ---- o mestre, que corrige ----
+  //
+  // TUDO AQUI E ACHADO POR CHAVE, E NUNCA POR POSICAO, e essa e a diferenca
+  // entre a assercao valer e ela ser decorativa. A primeira versao deste bloco
+  // lia `arena_efeitos[0]` dos dois lados e clicava no primeiro `[data-edt]` do
+  // DOM · TRES ordenacoes diferentes que so coincidem porque a cena tem uma
+  // linha. Com duas, o teste compararia linhas diferentes e nao notaria nada,
+  // que e o modo previsivel de a prova de identidade sair errada (e e o mesmo
+  // defeito que o par da condicao tinha antes do `data-cond`).
+  //
+  // A chave e o `data-edt` do proprio botao, que E o id do efeito: e ele que
+  // amarra o botao clicado, a linha lida antes e a linha lida depois ao MESMO
+  // objeto. O `alvoId` sai da tela ANTES da operacao e nao e relido nunca mais.
   const p = await abrir('mestre');
   const antes = await p.evaluate(() => {
-    const ef = (window.__SB?.tabelas?.arena_efeitos || [])[0];
+    // O SEGUNDO, e nao o primeiro, de proposito: a cena tem TRES efeitos
+    // (`&sombra=1`), entao uma busca posicional por `[0]` acha outra linha e
+    // erra de verdade. Escolher qual editar e arbitrario; o que a assercao
+    // guarda e que as tres leituras seguintes falem do MESMO objeto.
+    const btn = document.querySelectorAll('#gr-ef-lista [data-edt]')[1];
+    const id = btn?.dataset.edt || null;
+    const linhas = window.__SB?.tabelas?.arena_efeitos || [];
+    const ef = linhas.find((r) => r.id === id);
+    const linha = btn?.closest('.gr-efl');
     return {
       editar: document.querySelectorAll('#gr-ef-lista [data-edt]').length,
       apagar: document.querySelectorAll('#gr-ef-lista [data-fim]').length,
-      id: ef?.id, ate: ef?.ate_tick, quantos: (window.__SB?.tabelas?.arena_efeitos || []).length,
-      numero: document.querySelector('#gr-ef-lista .gr-efl-t')?.textContent.trim(),
+      id, ate: ef?.ate_tick, quantos: linhas.length,
+      achou: !!ef, primeiro: linhas[0]?.id || null,
+      numero: linha?.querySelector('.gr-efl-t')?.textContent.trim(),
     };
   });
-  ok(antes.editar === 1 && antes.apagar === 1,
-    `o mestre tem os DOIS controles no efeito, e nao so o destrutivo (${antes.editar} ✎, ${antes.apagar} ✕)`);
+  ok(antes.editar >= 2 && antes.editar === antes.apagar,
+    `o mestre tem os DOIS controles em cada efeito, e nao so o destrutivo (${
+      antes.editar} ✎, ${antes.apagar} ✕, em ${antes.quantos} efeitos)`);
+  ok(antes.id !== (antes.primeiro || null),
+    `e o alvo do teste NAO e a primeira linha da tabela (alvo ${antes.id}, primeira ${antes.primeiro})`);
+  ok(antes.id && antes.achou,
+    `e o id do efeito e capturado ANTES da operacao, do proprio botao (${antes.id})`);
 
-  const feito = await p.evaluate(async () => {
-    document.querySelector('#gr-ef-lista [data-edt]')?.click();
+  const feito = await p.evaluate(async (alvoId) => {
+    // Pelo id, e nao pelo primeiro do DOM: e o mesmo objeto que o `antes` leu.
+    document.querySelector(`#gr-ef-lista [data-edt="${alvoId}"]`)?.click();
     await new Promise((r) => setTimeout(r, 400));
     const dlg = document.querySelector('dialog.ui-dlg-efx');
     if (!dlg?.open) return { erro: 'a caixa de corrigir nao abriu' };
@@ -3164,25 +3191,32 @@ async function cenaCorrigirEfeito(br, url) {
     await new Promise((r) => setTimeout(r, 600));
     const linhas = window.__SB?.tabelas?.arena_efeitos || [];
     const log = (window.__SB?.tabelas?.mesa_arenas || [])[0]?.log || [];
+    // A LINHA E PROCURADA PELO ID GUARDADO. Se a implementacao apagar e
+    // inserir, ela NAO ESTA AQUI, e o `find` devolve `undefined` · que e
+    // exatamente o que a assercao quer saber.
+    const ef = linhas.find((r) => r.id === alvoId);
+    const linha = document.querySelector(`#gr-ef-lista [data-edt="${alvoId}"]`)?.closest('.gr-efl');
     return {
       eram,
-      quantos: linhas.length, id: linhas[0]?.id, ate: linhas[0]?.ate_tick,
-      numero: document.querySelector('#gr-ef-lista .gr-efl-t')?.textContent.trim(),
+      quantos: linhas.length, sobreviveu: !!ef, ate: ef?.ate_tick,
+      numero: linha?.querySelector('.gr-efl-t')?.textContent.trim(),
       ultima: (log[log.length - 1]?.txt || ''),
       aberta: !!document.querySelector('dialog.ui-dlg-efx'),
     };
-  });
+  }, antes.id);
   ok(!feito.erro, `a caixa de corrigir abre e fecha (${feito.erro || 'ok'})`);
   if (!feito.erro) {
-    // A IDENTIDADE DA LINHA: uma linha so, e a MESMA. E a frase que separa
-    // corrigir de apagar-e-refazer, e a unica que a duracao certa nao prova.
-    ok(feito.quantos === antes.quantos && feito.id === antes.id,
-      `a linha do efeito e a MESMA depois da correcao (${antes.quantos}→${feito.quantos} linha, id ${
-        feito.id === antes.id ? 'igual' : 'TROCADO'})`);
+    // A IDENTIDADE DA LINHA: uma linha so, e a MESMA, procurada pelo id que foi
+    // guardado antes. E a frase que separa corrigir de apagar-e-refazer, e a
+    // unica que a duracao certa nao prova: apagar e inserir tambem deixaria a
+    // duracao certa, com um id novo e uma Mana a menos.
+    ok(feito.quantos === antes.quantos && feito.sobreviveu,
+      `a linha ${antes.id} SOBREVIVEU a correcao (${antes.quantos}→${feito.quantos} linha, id ${
+        feito.sobreviveu ? 'ainda la' : 'SUMIU: foi apagada e reinserida'})`);
     ok(feito.ate === antes.ate + 3 * 6,
       `e a duracao andou exatamente os 3 turnos pedidos (${antes.ate} → ${feito.ate})`);
-    ok(feito.numero !== antes.numero,
-      `a tela conta o numero novo (${antes.numero} → ${feito.numero})`);
+    ok(feito.numero && feito.numero !== antes.numero,
+      `a tela conta o numero novo, na linha daquele efeito (${antes.numero} → ${feito.numero})`);
     // "CORRIGIU", e nao "conjurou": quem le o registro tem de separar a correcao
     // de graca da conjuracao que custa Mana.
     ok(/corrigiu/i.test(feito.ultima) && !/conjurou/i.test(feito.ultima),

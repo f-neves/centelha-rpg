@@ -178,32 +178,38 @@ eq(T.anatomia({ classe: 'media', velocidade: 6, sistema: 'normal', manobra: 'dup
   eq(['andar', 'batalha', 'corrida', 'investida'].map(T.modoCorre), [false, false, true, true],
     'quem corre: a Corrida e a Investida');
 
-  // A DEFESA. A regra, decidida em 05/09/2026: QUEM INVESTE GASTA A GUARDA DA
-  // CORRIDA, e so no Preparo. Investir e uma forma de aproximacao, da mesma
-  // familia da Corrida, e quem corre para cima do outro perde guarda pelo mesmo
-  // motivo. O numero e o mesmo que a soma antiga dava, e a razao e outra.
+  // A DEFESA, e a assercao mudou de sinal em 05/09/2026: A ESCADA NAO COBRA A
+  // INVESTIDA. Ela cobrou por algumas horas, e o numero saia CERTO (-4); o
+  // defeito era a condicao `investindo` do catalogo cobrar os mesmos -2 pelo
+  // caminho a mao, e as duas se somarem na `defesaEfetiva`, dando -6. A mesa
+  // decidiu que o numero mora num lugar so, na CONDICAO, e que o tabuleiro
+  // passa a alimenta-la (`marcarInvestida`, no `grid.astro`).
+  //
+  // ESTA E A ASSERCAO QUE GUARDA A DECISAO: se alguem devolver a cobranca para
+  // ca sem tirar da condicao, a dupla cobranca volta em silencio, e ela cai.
   const base = T.declarar(10, T.anatomia({ classe: 'media', velocidade: 6, sistema: 'pgr' }));
   const inv6 = { ...base, mov: { modo: 'investida', porTick: 6, auto: true } };
   const cor6 = { ...base, mov: { modo: 'corrida', porTick: 6, auto: true } };
   eq(T.defesaPerdida(base, 10).total, -2, 'o Preparo andando custa o -2 de sempre');
-  eq(T.defesaPerdida(inv6, 10).total, T.CORRIDA.defesa,
-    `e investindo custa a guarda da Corrida (${T.CORRIDA.defesa})`);
-  // A TRAVA DAS TRES ESCRITAS, e ela e a razao de esta linha existir. O numero
-  // esta escrito A MAO em TRES arquivos que nenhum gerador liga: o
-  // `defesaExtra` do `regras.json`, a tabela do capitulo e a nota da condicao
-  // `investindo`. Eles concordam porque foram digitados na mesma sentada, e a
-  // conta abaixo e o que os prende: mexer na Corrida ou no Preparo sem mexer no
-  // `defesaExtra` para aqui, em vez de deixar dois textos mentindo em silencio.
+  eq(T.defesaPerdida(inv6, 10).total, T.defesaPerdida(base, 10).total,
+    'e a Investida declarada NAO mexe na escada: o -2 dela e da condicao, uma vez so');
+  eq(T.defesaPerdida(cor6, 10).total, -2,
+    'a Corrida declarada tambem nao, e pelo mesmo motivo: o -4 dela e da condicao `correndo`');
+  // O PAR QUE FAZ A ASSERCAO VALER, e sem ele a de cima passaria com o motor
+  // ignorando `mov` inteiro: o modo CONTINUA sendo lido, e continua mudando o
+  // passo e a travessia. O que ele nao mexe e na Defesa.
+  eq(T.MODOS_MOV.find((m) => m.id === 'investida').porTick, corrida.porTick,
+    'e o modo continua vivo no motor: o passo dela e o da Corrida');
+
+  // A TRAVA DAS TRES ESCRITAS, e ela ficou MAIS necessaria depois da decisao: a
+  // condicao carrega uma das duas maneiras de escrever o numero (-2 somados ao
+  // Preparo) e a regua guarda a outra (a guarda da Corrida, que e a RAZAO
+  // decidida). Nenhum gerador liga os tres arquivos, entao e esta conta que os
+  // prende: mexer na Corrida ou no Preparo sem mexer no `defesaExtra` para aqui,
+  // em vez de deixar dois textos mentindo em silencio.
   eq((T.ESCADA.preparo ?? -2) + (T.INVESTIDA.defesaExtra ?? -2), T.CORRIDA.defesa,
     'e as duas maneiras de escrever o mesmo numero continuam batendo '
     + `(preparo ${T.ESCADA.preparo} + extra ${T.INVESTIDA.defesaExtra} = corrida ${T.CORRIDA.defesa})`);
-  eq(T.defesaPerdida(cor6, 10).total, -2,
-    'e a Corrida declarada NAO mexe na escada: o -4 dela e da condicao, e nao desta conta');
-  // O PAR QUE FAZ A ASSERCAO VALER: se o -2 vazasse para as outras fases, a
-  // Investida viraria uma penalidade de acao inteira, que e outra regra.
-  eq([T.defesaPerdida(inv6, 11).total, T.defesaPerdida(inv6, 12).total],
-    [T.defesaPerdida(base, 11).total, T.defesaPerdida(base, 12).total],
-    'e no Golpe e na Recuperacao a Investida nao cobra nada a mais');
 
   // A TRAVESSIA. A nota da regra diz "so para quem declarou Corrida ou
   // Investida", e o portao comparava com a palavra `corrida` e mais nada.

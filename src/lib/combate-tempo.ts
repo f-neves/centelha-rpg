@@ -680,25 +680,37 @@ export function defesaPerdida(
   const fase = opts.fase || faseEm(acao, tick);
   const pressao = (acao?.pressao || 0) * (e.pressaoPorAtaque ?? -2);
   let acaoDV = 0;
-  // QUEM INVESTE GASTA A GUARDA DA CORRIDA, e não a do Preparo mais um degrau.
+  // A INVESTIDA NÃO COBRA AQUI, e isso é decisão e não esquecimento.
   //
-  // Decidido em 05/09/2026, e o que ele decide é a RAZÃO, porque o número é o
-  // mesmo pelos dois caminhos: investir é uma forma de aproximação, da mesma
-  // família da Corrida, e quem corre para cima do outro perde guarda pelo mesmo
-  // motivo. Por isso a linha abaixo lê `combate.movimento.corrida.defesa`
-  // DIRETO, em vez de somar `preparo + defesaExtra`: se a Corrida um dia custar
-  // outro número, a Investida acompanha sozinha, que é o que "mesma família"
-  // quer dizer.
+  // Ela cobrou, entre 05/09/2026 e o mesmo dia. A escada lia `acao.mov.modo` e
+  // trocava a guarda do Preparo pela da Corrida, e o número saía CERTO · −4, que
+  // é o que a régua diz. O defeito era outro: a condição `investindo` do
+  // catálogo cobra os mesmos −2 pelo caminho à mão, e as duas se somam sem se
+  // conhecer, porque a `defesaEfetiva` empilha `condicoesDefesa` e
+  // `defesaPerdida` como parcelas independentes. Quem declarava no Grid E ligava
+  // a condição pagava −6, que nenhuma das quatro fontes da régua diz.
   //
-  // O `defesaExtra` do `regras.json` continua existindo porque é como o capítulo
-  // e o catálogo de condições dizem a mesma coisa ("−2 a mais que o Preparo"), e
-  // as três escritas ficam presas por uma asserção: `preparo + defesaExtra` tem
-  // de dar `corrida.defesa`. Ver `test-combate-tempo.mjs`.
+  // E OS DOIS CAMINHOS, SOZINHOS, JÁ DAVAM O −4 CERTO, por aritméticas
+  // diferentes: aqui a guarda da Corrida SUBSTITUÍA a do Preparo; na condição os
+  // −2 dela SOMAM aos −2 do Preparo. Não eram duas cópias de um número, eram
+  // duas contas caindo no mesmo total · e por isso não dava para "tirar a
+  // cópia": tirar qualquer uma tirava um caminho inteiro de quem a usa. A aba
+  // Combate não tem tela de modo de deslocamento nenhuma, então para ela a
+  // condição não é redundância, é o único caminho.
   //
-  // E SÓ NO PREPARO: no Golpe e na Recuperação a Investida não cobra nada a
-  // mais, senão viraria penalidade de ação inteira, que é outra regra.
-  const investindo = fase === 'preparo' && acao?.mov?.modo === 'investida';
-  if (fase === 'preparo') acaoDV = investindo ? (CORRIDA.defesa ?? -4) : (e.preparo ?? -2);
+  // A MESA DECIDIU (05/09/2026) que o número mora num lugar só, na CONDIÇÃO, e
+  // que quem passa a alimentá-la é o tabuleiro: declarar Investida no Grid
+  // aplica `investindo` sozinho, e a varredura do Tick a tira quando o Preparo
+  // acaba. Ver `marcarInvestida` no `grid.astro`. Assim a aba Combate continua
+  // funcionando como sempre, o Grid não pede gesto nenhum, e a soma acontece uma
+  // vez só.
+  //
+  // A RAZÃO DO NÚMERO continua sendo a guarda da Corrida (a Investida é uma
+  // forma de aproximação, da mesma família), e o que a mantém escrita é a
+  // asserção do `test-combate-tempo.mjs`: `escada.preparo + investida.defesaExtra`
+  // tem de dar `corrida.defesa`. É ela que prende as duas maneiras de escrever o
+  // mesmo número, agora que a condição carrega uma e a régua guarda a outra.
+  if (fase === 'preparo') acaoDV = e.preparo ?? -2;
   else if (fase === 'golpe') acaoDV = (e.golpe ?? -4) + (opts.segura ? (e.alivioSegundaMao ?? 2) : 0);
   else if (fase === 'recuperacao') acaoDV = (e.recuperacaoPorGolpe ?? -2) * golpesDados(acao, tick);
   return { fase, acao: acaoDV, pressao, total: acaoDV + pressao };
@@ -924,8 +936,8 @@ export const MODOS_MOV: { id: ModoMov; nome: string; porTick: number; nota: stri
   // A INVESTIDA CORRE, e é por isso que o passo dela é o da Corrida: investir é
   // gastar o Preparo correndo em vez de andando, e não uma quarta velocidade.
   { id: 'investida', nome: 'Investida', porTick: SIM?.velocidadePadrao?.corrida ?? 6,
-    nota: `Defesa ${CORRIDA.defesa ?? -4} no Preparo, a mesma da Corrida, e +${
-      INVESTIDA.danoDados ?? 1}d6 no golpe` },
+    nota: `Defesa ${CORRIDA.defesa ?? -4} no Preparo (a mesma da Corrida, e o tabuleiro `
+      + `põe a condição sozinho), e +${INVESTIDA.danoDados ?? 1}d6 no golpe` },
 ];
 
 /**

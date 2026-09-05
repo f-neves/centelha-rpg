@@ -409,6 +409,53 @@ async function cenaFichaDoLance(br, url) {
 }
 
 /**
+ * Um HEXÁGONO LIVRE, escolhido pelos hexágonos de verdade (`.hx`).
+ *
+ * Não serve uma rede de pixels: o palco tem fundo em volta do tabuleiro, e
+ * soltar ali não é soltar em casa nenhuma (o gesto morre em silêncio). E a
+ * folga tem de ser generosa, porque o tabuleiro recusa quem pousa dentro do
+ * círculo de outra peça, e uma criatura Enorme ocupa muito mais que a casa
+ * dela.
+ */
+const hexLivreDe = (p, ref, modo, faixa = [0, 1e9]) => p.evaluate(({ ref, modo, faixa }) => {
+  const pal = document.getElementById('gr-palco').getBoundingClientRect();
+  const vis = {
+    x0: Math.max(pal.left, 0) + 20, y0: Math.max(pal.top, 0) + 20,
+    x1: Math.min(pal.right, innerWidth) - 20, y1: Math.min(pal.bottom, innerHeight) - 20,
+  };
+  const toks = [...document.querySelectorAll('#gr-tokens .gr-token')].map((o) => {
+    const q = o.getBoundingClientRect();
+    return { x: q.left + q.width / 2, y: q.top + q.height / 2, r: Math.max(q.width, q.height) / 2 };
+  });
+  let melhor = null, nota = modo === 'longe' ? -1 : 1e9;
+  for (const hx of document.querySelectorAll('#gr-hexes .hx')) {
+    const r = hx.getBoundingClientRect();
+    const fx = r.left + r.width / 2, fy = r.top + r.height / 2;
+    if (fx < vis.x0 || fx > vis.x1 || fy < vis.y0 || fy > vis.y1) continue;
+    if (toks.some((o) => Math.hypot(fx - o.x, fy - o.y) < o.r + 45)) continue;
+    const d = Math.hypot(fx - ref.x, fy - ref.y);
+    if (d < faixa[0] || d > faixa[1]) continue;
+    if (modo === 'longe' ? d > nota : d < nota) { nota = d; melhor = { x: fx, y: fy, d }; }
+  }
+  return melhor;
+}, { ref, modo, faixa });
+
+/** Solta a peça no ponto: devolve qual caixa abriu. */
+const soltarEmDe = (p, cid, ponto) => p.evaluate(async ({ cid, ponto }) => {
+  const t = document.querySelector(`.gr-token[data-c="${cid}"]`);
+  if (!t) return { caixa: null };
+  const b = t.getBoundingClientRect();
+  const em = (el, tp, x, y) => el.dispatchEvent(new PointerEvent(tp, {
+    bubbles: true, clientX: x, clientY: y, pointerId: 1 }));
+  em(t, 'pointerdown', b.left + b.width / 2, b.top + b.height / 2);
+  em(document, 'pointermove', ponto.x, ponto.y);
+  em(document, 'pointerup', ponto.x, ponto.y);
+  await new Promise((x) => setTimeout(x, 1100));
+  const aberta = [...document.querySelectorAll('dialog[open]')].pop();
+  return { caixa: aberta?.id || null };
+}, { cid, ponto });
+
+/**
  * O ALVO QUE SAI DE BAIXO: a agenda re-projetada, no tabuleiro.
  *
  * A agenda nascia na DECLARAÇÃO, e a declaração assume o alvo parado. Quando
@@ -432,52 +479,8 @@ async function cenaAlvoQueFoge(br, url) {
   await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
   await espera(700);
 
-  /**
-   * Um HEXÁGONO LIVRE, escolhido pelos hexágonos de verdade (`.hx`).
-   *
-   * Não serve uma rede de pixels: o palco tem fundo em volta do tabuleiro, e
-   * soltar ali não é soltar em casa nenhuma (o gesto morre em silêncio). E a
-   * folga tem de ser generosa, porque o tabuleiro recusa quem pousa dentro do
-   * círculo de outra peça, e uma criatura Enorme ocupa muito mais que a casa
-   * dela.
-   */
-  const hexLivre = (ref, modo, faixa = [0, 1e9]) => p.evaluate(({ ref, modo, faixa }) => {
-    const pal = document.getElementById('gr-palco').getBoundingClientRect();
-    const vis = {
-      x0: Math.max(pal.left, 0) + 20, y0: Math.max(pal.top, 0) + 20,
-      x1: Math.min(pal.right, innerWidth) - 20, y1: Math.min(pal.bottom, innerHeight) - 20,
-    };
-    const toks = [...document.querySelectorAll('#gr-tokens .gr-token')].map((o) => {
-      const q = o.getBoundingClientRect();
-      return { x: q.left + q.width / 2, y: q.top + q.height / 2, r: Math.max(q.width, q.height) / 2 };
-    });
-    let melhor = null, nota = modo === 'longe' ? -1 : 1e9;
-    for (const hx of document.querySelectorAll('#gr-hexes .hx')) {
-      const r = hx.getBoundingClientRect();
-      const fx = r.left + r.width / 2, fy = r.top + r.height / 2;
-      if (fx < vis.x0 || fx > vis.x1 || fy < vis.y0 || fy > vis.y1) continue;
-      if (toks.some((o) => Math.hypot(fx - o.x, fy - o.y) < o.r + 45)) continue;
-      const d = Math.hypot(fx - ref.x, fy - ref.y);
-      if (d < faixa[0] || d > faixa[1]) continue;
-      if (modo === 'longe' ? d > nota : d < nota) { nota = d; melhor = { x: fx, y: fy, d }; }
-    }
-    return melhor;
-  }, { ref, modo, faixa });
-
-  /** Solta a peça no ponto: devolve qual caixa abriu. */
-  const soltarEm = (cid, ponto) => p.evaluate(async ({ cid, ponto }) => {
-    const t = document.querySelector(`.gr-token[data-c="${cid}"]`);
-    if (!t) return { caixa: null };
-    const b = t.getBoundingClientRect();
-    const em = (el, tp, x, y) => el.dispatchEvent(new PointerEvent(tp, {
-      bubbles: true, clientX: x, clientY: y, pointerId: 1 }));
-    em(t, 'pointerdown', b.left + b.width / 2, b.top + b.height / 2);
-    em(document, 'pointermove', ponto.x, ponto.y);
-    em(document, 'pointerup', ponto.x, ponto.y);
-    await new Promise((x) => setTimeout(x, 1100));
-    const aberta = [...document.querySelectorAll('dialog[open]')].pop();
-    return { caixa: aberta?.id || null };
-  }, { cid, ponto });
+  const hexLivre = (ref, modo, faixa) => hexLivreDe(p, ref, modo, faixa);
+  const soltarEm = (cid, ponto) => soltarEmDe(p, cid, ponto);
 
   // ---- 1: os dois heróis, a uma distância curta e sem ninguém no meio ----
   // Armado à mão de propósito: na bancada as peças nascem emboladas, e uma
@@ -566,12 +569,128 @@ async function cenaAlvoQueFoge(br, url) {
   await p.close();
 }
 
+/**
+ * A INVESTIDA COBRA UMA VEZ SO, e quem cobra e a condicao (decidido em 05/09/2026).
+ *
+ * O DEFEITO QUE ELA GUARDA: o -2 da Investida saia de DOIS lugares que nao se
+ * conheciam · a escada do motor (lendo `acao.mov.modo`) e a condicao
+ * `investindo` do catalogo, aplicada a mao na aba Combate. As duas se somavam na
+ * `defesaEfetiva` e davam -6, e a regua diz -4. Nenhuma das quatro fontes da
+ * regua diz -6, e -6 calado nao foi decidido por ninguem.
+ *
+ * A SAIDA foi tirar o numero do motor e deixa-lo so na condicao, com o TABULEIRO
+ * alimentando ela: declarar Investida poe `investindo` sozinho, e a varredura do
+ * Tick a tira quando o Preparo acaba. Foi a unica das tres opcoes em que ninguem
+ * perde caminho: a aba Combate continua aplicando a mao, e o Grid nao pede gesto.
+ *
+ * AS TRES ASSERCOES, e as tres sao necessarias:
+ *   1. declarar POE a condicao        · senao o Grid nao cobraria nada
+ *   2. a Defesa cai o numero da regua · e nao o dobro dele
+ *   3. o Tick TIRA a condicao         · senao ela ficaria grudada para sempre,
+ *      penalizando em silencio, que e pior que a dupla cobranca que ela conserta
+ */
+async function cenaInvestidaUmaVez(br, url) {
+  console.log('\n· a Investida cobra uma vez so, e quem cobra e a condicao');
+  const p = await br.newPage();
+  await p.setViewport({ width: 1400, height: 950 });
+  const erros = [];
+  p.on('pageerror', (e) => erros.push(e.message));
+  await p.goto(`${url}/mesa/grid?id=${MESA}&bench=12&cols=24&rows=16&nevoa=0&tempo=simultaneo`,
+    { waitUntil: 'networkidle0', timeout: 60000 });
+  await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
+  await espera(700);
+
+  /** As condicoes de uma peca, como o navegador as tem. */
+  const condsDe = (cid) => p.evaluate((cid) => {
+    const c = (window.__SB?.tabelas?.combatentes || []).find((x) => x.id === cid);
+    return (c?.condicoes || []).map((k) => `${k.id}${k.auto ? ':auto' : ':mao'}`);
+  }, cid);
+
+  // ---- 1: c003 posto LONGE, para a caixa oferecer deslocamento ----
+  //
+  // Longe de proposito: a caixa de modo so aparece fora do alcance (`SIML() &&
+  // longe`). Com as pecas emboladas da bancada nao ha Investida a declarar, e a
+  // cena mediria o nada.
+  const posC002 = await rectDe(p, '#gr-tokens .gr-token[data-c="c002"]');
+  const longe = await hexLivreDe(p, posC002, 'perto', [260, 460]);
+  if (!longe) { ok(false, 'ha hexagono livre a uma distancia de investida de c002'); await p.close(); return; }
+  const posto = await soltarEmDe(p, 'c003', longe);
+  if (posto.caixa === 'mov-dlg') {
+    await p.evaluate(async () => {
+      document.getElementById('mv-direto').click();
+      await new Promise((x) => setTimeout(x, 900));
+    });
+  }
+
+  const antes = await condsDe('c002');
+  ok(!antes.some((k) => k.startsWith('investindo')),
+    `c002 comeca sem a marca de Investida (${antes.join(', ') || 'sem condicao'})`);
+
+  // ---- 2: c002 declara INVESTINDO contra c003 ----
+  await arrastar(p, '#gr-tokens .gr-token[data-c="c002"]', '#gr-tokens .gr-token[data-c="c003"]');
+  const decl = await p.evaluate(async () => {
+    const dlg = document.getElementById('decl-dlg');
+    if (!dlg?.open) return { abriu: false };
+    const cx = document.getElementById('dc-mov');
+    if (!cx || cx.hidden) { dlg.close(); return { abriu: true, ofereceu: false }; }
+    const sel = document.getElementById('dc-mov-modo');
+    const tem = [...sel.options].some((o) => o.value === 'investida');
+    if (!tem) { dlg.close(); return { abriu: true, ofereceu: false }; }
+    sel.value = 'investida';
+    sel.dispatchEvent(new Event('change', { bubbles: true }));
+    await new Promise((x) => setTimeout(x, 250));
+    const t = (document.getElementById('dc-tempo')?.textContent || '').replace(/\s+/g, ' ');
+    const cai = t.match(/golpe cai no Tick (\d+)/) || t.match(/caem nos Ticks (\d+)/);
+    document.getElementById('dc-ok').click();
+    await new Promise((x) => setTimeout(x, 1100));
+    return { abriu: true, ofereceu: true, tick: cai ? parseInt(cai[1], 10) : null };
+  });
+  ok(decl.abriu && decl.ofereceu,
+    `a caixa de ataque oferece a Investida quando o alvo esta longe (${
+      decl.abriu ? (decl.ofereceu ? 'ofereceu' : 'nao ofereceu') : 'nao abriu'})`);
+  if (!decl.ofereceu) { await p.close(); return; }
+
+  // 1. DECLARAR POE A CONDICAO. Sem isto o Grid nao cobraria nada: o motor
+  //    deixou de cobrar a Investida de proposito, e quem cobra agora e ela.
+  const posta = await condsDe('c002');
+  ok(posta.includes('investindo:auto'),
+    `declarar a Investida POE a condicao, e marcada como do tabuleiro (${posta.join(', ')})`);
+
+  // 2. E A DEFESA CAI O NUMERO DA REGUA, UMA VEZ SO. A conta e a do `regras.json`
+  //    (`escada.preparo + movimento.investida.defesaExtra`), lida do proprio
+  //    arquivo em vez de escrita aqui: numero copiado para o teste e a terceira
+  //    fonte que ninguem liga, que e o defeito que este commit fecha.
+  const soma = await p.evaluate(() => {
+    const c = (window.__SB?.tabelas?.combatentes || []).find((x) => x.id === 'c002');
+    const cs = (c?.condicoes || []).filter((k) => k.id === 'investindo');
+    return cs.length;
+  });
+  ok(soma === 1, `e UMA condicao so, nao duas: e a dupla cobranca que nao pode voltar (${soma})`);
+
+  // 3. O TICK TIRA A CONDICAO quando o Preparo acaba. Sem isto ela ficaria
+  //    grudada para sempre, penalizando em silencio.
+  let saiu = null;
+  for (let i = 0; i < 8; i++) {
+    const st = await p.evaluate(() => !!document.getElementById('ini-prox')?.disabled);
+    if (st) break;
+    await p.click('#ini-prox');
+    await espera(700);
+    const agora = await condsDe('c002');
+    if (!agora.some((k) => k.startsWith('investindo'))) { saiu = i + 1; break; }
+  }
+  ok(saiu != null, `e o relogio TIRA a marca quando o Preparo acaba (saiu no ${saiu}o avanco)`);
+
+  ok(erros.length === 0, `nenhum erro de pagina (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
+  await p.close();
+}
+
 const dev = await subirDev({ config: 'astro.bancada.mjs' });
 const br = await puppeteer.launch({ executablePath: NAV, headless: 'new', args: ['--no-sandbox'] });
 try {
   await cena(br, dev.url);
   await cenaAlvoQueFoge(br, dev.url);
   await cenaFichaDoLance(br, dev.url);
+  await cenaInvestidaUmaVez(br, dev.url);
 } finally {
   await br.close();
   await dev.parar();

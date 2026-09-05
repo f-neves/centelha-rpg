@@ -5455,6 +5455,10 @@ const SETAS = [
       const { error } = await SB.from('encontros').update({ tick_atual: T }).eq('id', ENC.id);
       if (!error) ENC.tick_atual = T;
     }
+    // A MARCA DA INVESTIDA VENCE COM O PREPARO, e quem a tira é o relógio: nada
+    // neste sistema varre condição por prazo. Antes do passo, porque a peça que
+    // atravessa o alvo neste Tick já não está mais preparando.
+    await varrerInvestida(T);
     const escala = Number(ARENA?.escala_m) || 1;
     for (const c of naFila()) {
       if (noChao(c)) continue;
@@ -5758,6 +5762,58 @@ const SETAS = [
    * excedente atrasando o golpe (`agendaSimultanea`). Quem chama com a caixa é
    * `declararGolpe`; quem chama sem é o modo automático das criaturas.
    */
+  /**
+   * A CONDIÇÃO `investindo`, POSTA E TIRADA PELO TABULEIRO.
+   *
+   * Decidido em 05/09/2026, e o que ela conserta é uma dupla cobrança: o −2 da
+   * Investida saía de DOIS lugares que não se conheciam · a escada do motor (ao
+   * ler `acao.mov.modo`) e esta condição do catálogo, aplicada à mão na aba
+   * Combate. As duas se somavam na `defesaEfetiva` e davam −6, e a régua diz −4.
+   *
+   * A saída foi tirar o número do motor e deixá-lo só aqui, com o TABULEIRO
+   * ALIMENTANDO A CONDIÇÃO. É a única das três opções em que ninguém perde
+   * caminho: quem joga só pela aba Combate continua aplicando à mão como sempre,
+   * e quem declara no Grid não precisa de gesto nenhum.
+   *
+   * O `auto` é o que separa as duas mãos. Só a condição que o tabuleiro pôs é
+   * tirada pelo tabuleiro; a que o mestre pôs à mão fica até ele tirar, que é o
+   * mesmo respeito que o `porArte` das Artes tem. E se já houver uma à mão, esta
+   * função não põe outra: duas somariam −4 e o defeito voltaria por dentro.
+   *
+   * O `ate` vai gravado por honestidade de registro e NÃO é o que a tira: nada
+   * neste sistema varre condição vencida (`somarCondicoes` soma tudo, sem olhar
+   * prazo), e foi por isso que a remoção precisou ser explícita, na varredura do
+   * `avancarTickSimultaneo`.
+   */
+  async function marcarInvestida(c: any, investindo: boolean, ateTick: number | null) {
+    if (!c) return;
+    const atuais: any[] = Array.isArray(c.condicoes) ? c.condicoes : [];
+    const aMao = atuais.some((k: any) => k.id === 'investindo' && !k.auto);
+    const semAuto = atuais.filter((k: any) => !(k.id === 'investindo' && k.auto));
+    const novas = investindo && !aMao
+      ? [...semAuto, { id: 'investindo', ate: ateTick, auto: true }]
+      : semAuto;
+    if (novas.length === atuais.length
+      && novas.every((k, i) => k === atuais[i])) return;   // nada mudou: não escreve
+    c.condicoes = novas;
+    await gravarPeca(c.id, { condicoes: novas });
+  }
+
+  /**
+   * A CONDIÇÃO SAI QUANDO O PREPARO ACABA, e quem a tira é o relógio.
+   *
+   * Chamada de dentro do `avancarTickSimultaneo`, para toda peça da fila: fora
+   * do Preparo (no Golpe, na Recuperação, livre, ou sem gesto nenhum) a marca da
+   * Investida não vale mais, e sem esta linha ela ficaria grudada para sempre ·
+   * penalizando em silêncio, que é pior que a dupla cobrança que ela conserta.
+   */
+  async function varrerInvestida(T: number) {
+    for (const c of naFila()) {
+      const tem = (c.condicoes || []).some((k: any) => k.id === 'investindo' && k.auto);
+      if (tem && faseEm(acaoNo(c), T) !== 'preparo') await marcarInvestida(c, false, null);
+    }
+  }
+
   async function declararAtaqueSimultaneo(
     atacante: any, alvo: any,
     opts: {
@@ -5800,6 +5856,11 @@ const SETAS = [
     }
     acao = agendar(acao, T);
     if (!await gravarRelogio(atacante, acao.livre, acao, alvo, 0)) return false;
+    // A MARCA DA INVESTIDA SAI DA DECLARAÇÃO, e é o que faz o número ser cobrado
+    // uma vez só. O teste é o mesmo do `acao.mov` acima (`viagem > 0`): sem
+    // viagem não há Preparo atravessado correndo, e não há o que marcar. Ela
+    // vale até o primeiro golpe, que é onde o Preparo acaba.
+    await marcarInvestida(atacante, viagem > 0 && modo.id === 'investida', ag.golpes[0] ?? null);
     const nomeArma = armaDoCatalogo(ra?.arma)?.nome || ra?.arma || 'sem arma';
     await logar(atacante,
       `${opts.silencioso ? '🤖 ' : ''}${atacante.nome} declara contra ${alvo.nome}`
