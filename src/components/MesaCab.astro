@@ -696,6 +696,10 @@ const { aba } = Astro.props;
   .ini-fase.f-prep b  { color: color-mix(in srgb, var(--gold) 80%, var(--ink)); }
   .ini-fase.f-golpe b { color: var(--gold); }
   .ini-fase.f-rec b   { color: var(--ink-soft); }
+  /* A DÍVIDA: Ticks empurrados para o futuro por ter agido fora da vez. Sai na
+     cor de coisa ruim, e não na de fase, porque não é uma fase: é um preço que
+     esta pessoa ainda está pagando dentro da fase em que está. */
+  .ini-divida { color: var(--perigo); font-weight: 600; }
 
   /* Cada linha é uma peça na fila: retrato, nome e os dois números que decidem
      a ordem. Compacta de propósito, porque a coluna toda precisa caber sem

@@ -2425,6 +2425,7 @@ const SETAS = [
   import { errouPor, saidaDoAtaque } from '../../lib/quase-acerto';
   import {
     abrirEscolhaDoTempo, resumoDoTempo, fitaHTML, seloFaseHTML, abrirAbortar, podeAbortar,
+    abrirForaDeHora, podeForaDeHora,
     itensDaFila, faixaDeGolpesHTML, golpesEmCena,
   } from '../../lib/mesa-tempo-ui';
   import {
@@ -2434,6 +2435,7 @@ const SETAS = [
     rolaNoSite, ticksDeDeslocamento, armaDoCatalogo, ticksDeEntrada,
     contrapeEm, contrapeDe, contrapeAcaba, faseDeQuemVaiAgir, preparoDe, ordemDaFila,
     adiaGolpe, agendar, golpesNoAr, golpeDevido, golpeResolvido, proximoGolpe,
+    podeSerInterrompido, atrasarGesto,
     ehSimultaneo, agendaSimultanea, ticksDeViagem, decideEmValeDepois, comOverride,
     passoDoGolpe, reprojetarAgenda,
     previsaoDeEncontro, decisaoAutomatica, MODOS_MOV,
@@ -5824,6 +5826,76 @@ const SETAS = [
     });
   }
 
+  /** A Velocidade da ação desta peça: a da arma dela, ou o padrão de 5. */
+  const velDaPeca = (c: any) => {
+    const ra = RESUMO[c.id];
+    return ra?.velocidade ?? velocidadeDaArma(ra?.arma, 5);
+  };
+
+  /**
+   * AGIR FORA DA SUA VEZ, do tabuleiro · e a dívida de Ticks aparecendo.
+   *
+   * O QUE ISTO FECHA. `podeAgirForaDeHora` e `custoDeReagir` estavam escritas,
+   * exportadas e testadas em `combate-tempo.ts` desde que o P/G/R nasceu, **e os
+   * únicos chamadores eram os testes**. Pior: a caixa do `✋ Abortar`, aberta numa
+   * peça em Recuperação, imprimia a frase do motor dizendo que "o que cabe aqui é
+   * pagar: uma ação fora de hora" · a tela nomeava a ação que ela não tinha botão
+   * para fazer. E o campo `Acao.divida`, com o comentário "Ticks que já foram
+   * empurrados para o futuro", era zerado pelo `declarar` e nunca escrito com
+   * valor nenhum nem lido em lugar nenhum.
+   *
+   * A AÇÃO QUE NASCE DAQUI resolve AGORA (`anatomiaLivre(vel, 'agora')`) e tem o
+   * ciclo esticado pela dívida: ele fica na Recuperação até o `novoTick`, que é o
+   * que "a guarda não se refaz" quer dizer em número. Fosse uma ação normal, ele
+   * ficaria livre em `T + vel`; a diferença é exatamente o que ele deixou de
+   * cumprir do ciclo velho.
+   *
+   * O ESPELHO É A SEGUNDA ESCRITA, e por isso vem depois e sozinha: se ela
+   * falhar, quem agiu já pagou (que é o lado seguro de errar) em vez de o alvo
+   * ser atrasado por uma ação que não aconteceu.
+   *
+   * MESTRE SÓ, pelo mesmo motivo do abortar: o jogador escreve em `combatentes`
+   * pelas funções `jogador_*` da migração 22, e não há uma para isto.
+   */
+  async function agirForaDeHora(cid: string) {
+    const c = COMBS.find((x: any) => x.id === cid); if (!c) return;
+    const a = acaoNo(c); if (!a) return;
+    const T = relogio();
+    // Só quem está em Preparo entra na lista: é a única fase interrompível, e
+    // uma lista vazia é a regra se ensinando pela falta.
+    const interrompiveis = (COMBS as any[])
+      .filter((x) => x.id !== cid && x.ativo !== false && podeSerInterrompido(acaoNo(x), T))
+      .map((x) => ({ id: x.id, nome: x.nome, acao: acaoNo(x)! }));
+    abrirForaDeHora({ nome: c.nome, acao: a, tick: T, velocidade: velDaPeca(c) },
+      interrompiveis, async (r) => {
+        const an = anatomiaLivre(r.velocidade, 'agora', TEMPO.sistema);
+        const nova: any = {
+          ...declarar(T, an, { divida: r.divida, ...contrapeDe(c.acao) }),
+          livre: r.novoTick,
+        };
+        const { error } = await SB.from('combatentes')
+          .update({ tick: r.novoTick, acao: nova }).eq('id', cid);
+        if (error) return uiErro('Erro: ' + error.message);
+        c.tick = r.novoTick; c.acao = nova;
+
+        if (r.alvo && r.atrasaOAlvo) {
+          const alvo = COMBS.find((x: any) => x.id === r.alvo);
+          const aa = alvo ? acaoNo(alvo) : null;
+          if (alvo && aa) {
+            const atrasada = atrasarGesto(aa, r.atrasaOAlvo);
+            const e2 = await SB.from('combatentes')
+              .update({ tick: atrasada.livre, acao: atrasada }).eq('id', alvo.id);
+            if (e2.error) uiErro('A ação saiu, mas o alvo não atrasou: ' + e2.error.message);
+            else { alvo.tick = atrasada.livre; alvo.acao = atrasada; }
+          }
+        }
+
+        pintarIniciativa(); pintarTokens(); pintarLista();
+        avisarAgora('combatentes');
+        await logar(c, `${r.frase} · livre no tick ${r.novoTick} (sairia no ${a.livre})`, { acao: null });
+      });
+  }
+
   function pintarLista() {
     const box = el('gr-lista');
     if (!ENC) {
@@ -6676,6 +6748,19 @@ const SETAS = [
       // `combatentes` pelas funções `jogador_*` da migração 22, e não há uma
       // para isto ainda.
       MESTRE && podeAbortar(acaoNo(c), relogio()) ? item('abortar', '✋ Abortar o gesto') : '',
+      // AGIR FORA DA VEZ, e ele é o par do abortar: um por fase, e nunca os dois
+      // juntos. No Preparo cabe desistir (✋), na Recuperação só cabe pagar (⏱),
+      // e no Golpe não cabe nada · o menu ensina isso pelo item que está lá.
+      //
+      // O CUSTO EM GESTOS, na moeda do `custo-tela.mjs`, contado NO PAPEL DO
+      // MESTRE (que é de quem é a mão: o jogador não tem função `jogador_*`
+      // para isto, como no abortar):
+      //   agir fora de hora · botão direito (1) + ⏱ (1) + confirmar (1)   = 3
+      //   e interrompendo alguém · mais o rádio do alvo                   = 4
+      //   ver a dívida de quem já pagou                                    = 0
+      // O último é o selo da lista, que desenha sem pedir nada.
+      MESTRE && podeForaDeHora(acaoNo(c), relogio(), velDaPeca(c))
+        ? item('forahora', '⏱ Agir fora da vez') : '',
       MESTRE && !SIML() ? item('encerrar', `⏭ ${ehAVez ? 'Agiu' : 'Adiantar o relógio dele'} (+${custoAtual()} ticks)`) : '',
       // O robô, só do simultâneo e só de criatura: o mestre liga a heurística
       // (ataca o mais próximo, foge com Vida baixa) e retoma quando quiser.
@@ -6717,6 +6802,7 @@ const SETAS = [
       else if (a === 'condicoes') abrirCondicoes(cid);
       else if (a === 'alcance') alternarAlcance(cid);
       else if (a === 'abortar') abortarGesto(cid);
+      else if (a === 'forahora') agirForaDeHora(cid);
       else if (a === 'auto') alternarAuto(cid);
       else if (a === 'encerrar') encerrarVez(cid);
       else if (a === 'ordem') editarIniciativa(cid);

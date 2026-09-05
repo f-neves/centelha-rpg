@@ -988,9 +988,27 @@ revistos por ela.
   e a linha entra no registro. Não cobra de quem está livre, porque a regra não decidiu esse caso, e
   não cobra no Preparo, que tem o abortar. Vale para o jogador também, pela `jogador_declara`.
 
-  **O que a mesa ainda não faz** está na §15.4: a **ação fora de hora**, com dívida e espelho. A
-  conta já está pronta em `combate-tempo.ts`; falta o gesto na tela, e o mestre resolve na mão
-  empurrando o Tick. Ela, mais o abortar do lado do jogador, pedem outra função `jogador_*`.
+  **A ação fora de hora entrou em 05/09** (§15.4, fase 2), com a dívida e o espelho. Item `⏱ Agir
+  fora da vez` no menu da peça, só na **Recuperação**: no Preparo o que cabe é o ✋ e no Golpe não
+  cabe nada, e o menu ensina isso pelo item que está lá. A caixa parte a conta em duas · o que
+  sobrava do ciclo (que vira **dívida**) e a Velocidade da ação nova (que é o preço de sempre dela)
+  · e traz quem está montando o gesto, para o **espelho**: interromper atrasa o gesto do alvo em
+  tantos Ticks quantos o interruptor pagou. A dívida passa a aparecer na linha da fila, em toda
+  fase, sem pedir gesto nenhum.
+
+  **O que isso fechou eram três coisas paradas ao mesmo tempo:** `podeAgirForaDeHora` e
+  `custoDeReagir` estavam escritas, exportadas e testadas, e os únicos chamadores eram os testes;
+  o campo `Acao.divida` ("Ticks que já foram empurrados para o futuro") era zerado pelo `declarar`
+  e nunca escrito nem lido; e a caixa do ✋, aberta numa peça em Recuperação, imprimia a frase do
+  motor dizendo que "o que cabe aqui é pagar: uma ação fora de hora" · **a tela nomeava a ação que
+  ela não tinha botão para fazer.**
+
+  Custo em gestos, na moeda do `custo-tela.mjs` e **no papel do mestre**: agir fora de hora 3,
+  interrompendo alguém 4, ver a dívida 0. **Mestre só**, pelo mesmo motivo do abortar: o jogador
+  escreve em `combatentes` pelas funções `jogador_*` da migração 22, e não há uma para isto.
+
+  **O que a mesa ainda não faz**, da mesma §15.4: o abortar e o fora de hora **do lado do
+  jogador**, que pedem outra função `jogador_*`.
 
   **A Arte entrou em 21/08** (§15.6). Conjurar declara a ação com a anatomia própria da Arte
   (Preparo = ciclo − 1, Golpe no ÚLTIMO Tick, Recuperação 0), empurra o relógio pela Velocidade
@@ -1239,7 +1257,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   fazia o carimbo valer: alguém que leia o perfil na hora de aplicar a regra.**
 
   O perfil é gravado, viaja no encontro, aparece na tela, é comparável e é recarimbável. E é lido
-  em **um** lugar do código de produção, `grid.astro:8426` (`perfil: { ...REGRAS_CENA }`), onde ele é copiado para dentro da
+  em **um** lugar do código de produção, `grid.astro:8512` (`perfil: { ...REGRAS_CENA }`), onde ele é copiado para dentro da
   entrada do lance, para o oráculo. `entrada.perfil` **não é consultado em lugar nenhum**: nem em
   `resolverGolpe`, nem em `quase-acerto.ts`, nem em `calc.ts`, nem no harness. Nenhuma das quinze
   bandeiras faz o motor tomar um caminho diferente.
@@ -1294,16 +1312,16 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `src/data/regras.json:2356` (`danoDados: 1`, `defesaExtra: -2`) e no capítulo
   (`src/content/chapters/combate.md:223`), com o exemplo do Kael: 8 m com Defesa −2 andando,
   12 m com Defesa −4 e +1d6 investindo. O motor não a conhece: `ModoMov` é
-  `'andar' | 'batalha' | 'corrida'` em `src/lib/combate-tempo.ts:763`, sem investida, e o
-  portão da travessia exige `opts.modo !== 'corrida'` (`src/lib/combate-tempo.ts:817`), então a linha
+  `'andar' | 'batalha' | 'corrida'` em `src/lib/combate-tempo.ts:853`, sem investida, e o
+  portão da travessia exige `opts.modo !== 'corrida'` (`src/lib/combate-tempo.ts:907`), então a linha
   "−6 investindo" do `regras.json:2287` **nunca é alcançada**. Pôr um botão antes do modo
   existir seria a promessa sem mecanismo em pessoa. A ordem é: modo no `combate-tempo.ts`,
   contador de ocasião, e só então tela.
 
   **2 · O INTERPOR NÃO TEM REGRA PARA IMPLEMENTAR.** O que existe é a *saída* do abortar:
   `regras.json:2450` lista `["mover", "desviar", "interpor"]`, a 1 Tick por metro, e o
-  diálogo já pergunta qual delas, pelo `SAIDAS` (`src/lib/mesa-tempo-ui.ts:256`). Só que escolher "interpor"
-  **muda o verbo da frase do log, e nada mais**: `const verbo` em `src/lib/mesa-tempo-ui.ts:325`. A saída escolhida é descartada
+  diálogo já pergunta qual delas, pelo `SAIDAS` (`src/lib/mesa-tempo-ui.ts:269`). Só que escolher "interpor"
+  **muda o verbo da frase do log, e nada mais**: `const verbo` em `src/lib/mesa-tempo-ui.ts:338`. A saída escolhida é descartada
   pelo Grid, que grava só `acao: limpa` (`src/pages/mesa/grid.astro:5818`).
   **Não há número nenhum:** quem leva o dano, se há teste, qual o alcance, o que o escudo faz.
   A `02-projeto-harness.md:914` até fixa a ordenação ("a interposição resolve antes do golpe
@@ -1316,7 +1334,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   - o catálogo, 55 verbetes com número, em `src/data/condicoes.json`;
   - a soma: `export function somarCondicoes` (`src/lib/mesa-core.ts:164`);
-  - a leitura na folha do lance: `const cd = somarCondicoes` (`grid.astro:8149`);
+  - a leitura na folha do lance: `const cd = somarCondicoes` (`grid.astro:8235`);
   - e o desconto chegando à Defesa: `alvo.condicoesDefesa` (`src/lib/lance.ts:144`);
   - a coluna: `add column if not exists condicoes` (`supabase/migracao-11.sql:25`);
   - e o RPC do jogador aceitando a chave: `condicoes` (`supabase/migracao-22.sql:125`).
@@ -1324,8 +1342,8 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   O que foi feito: o diálogo saiu da aba Combate e virou três peças compartilhadas
   (`src/lib/mesa-condicoes.ts`, `src/components/CondDlg.astro`, e o estilo no `MesaCab.astro`).
 
-  - o item no menu da peça do Grid: `item('condicoes'` (`grid.astro:6610`);
-  - o selo de ícones na lista lateral, que custa zero gestos: `const selo` (`grid.astro:5850`);
+  - o item no menu da peça do Grid: `item('condicoes'` (`grid.astro:6742`);
+  - o selo de ícones na lista lateral, que custa zero gestos: `const selo` (`grid.astro:5922`);
   - e a aba Combate chamando o mesmo módulo: `function abrirCondicoes` (`combate.astro:1740`), então
     não há duas cópias para divergir no primeiro conserto que só uma receber.
 
@@ -1838,7 +1856,7 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   `arena_log` como tabela, uma linha por entrada, e o desfazer virando um `delete`.
 - [ ] **I5 · [FAZER] Um editor de cenário no Grid.** Hoje o mestre só põe peças: o tabuleiro não
   tem parede, terreno difícil nem item no chão, e o único veto de passo é casa ocupada
-  (`ocupadoPor`, `grid.astro:6488`). Decidido em 02/09/2026, ao desenhar o harness de simulação
+  (`ocupadoPor`, `grid.astro:6560`). Decidido em 02/09/2026, ao desenhar o harness de simulação
   (`docs/simulacao/02-projeto-harness.md` §0.4 P2): a **parede entra como funcionalidade**, e o
   encaixe já existe, porque `caminharHex` recebe um veto arbitrário (`hex.ts:131`). O terreno
   difícil tem gancho pronto e não usado: a condição `terreno-dificil` existe em `condicoes.json`

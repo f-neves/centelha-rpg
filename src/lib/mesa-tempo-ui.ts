@@ -16,7 +16,7 @@ import { esc } from './mesa-core';
 import type { CtxMesa } from './mesa-core';
 import { uiPainel, uiErro } from './ui-dialog';
 import {
-  faseEm, fita, defesaPerdida, resumoDaAcao, acaoVazia, anatomia, declarar, abortar,
+  faseEm, fita, defesaPerdida, resumoDaAcao, acaoVazia, anatomia, declarar, abortar, foraDeHora,
   combateDaMesa, COMBATE_PADRAO, SISTEMAS, MARCACOES, ROLAGENS, FASE_ROTULO,
   GOLPE_ADIADO, agendar, golpesNoAr, proximoGolpe,
   type Acao, type Fase, type CombateMesa, type Sistema, type Marcacao, type Rolagem,
@@ -57,7 +57,9 @@ export function seloFaseHTML(acao: Acao | null | undefined, tick: number) {
   if (f === 'livre') return '';
   const dv = defesaPerdida(acao, tick);
   const falta = Math.max(0, (acao as Acao).livre - tick);
-  return `<span class="fase-selo ${CLS[f]}" title="${esc(`${FASE_ROTULO[f]} · Defesa ${dv.total} · livre em ${falta} Tick(s)`)}">
+  const dv2 = (acao as Acao).divida || 0;
+  return `<span class="fase-selo ${CLS[f]}" title="${esc(`${FASE_ROTULO[f]} · Defesa ${dv.total} · livre em ${falta} Tick(s)`
+    + (dv2 ? ` · deve ${dv2} Tick(s) por ter agido fora da vez` : ''))}">
     ${FASE_ROTULO[f]}${dv.total ? ` <b>${dv.total}</b>` : ''}</span>`;
 }
 
@@ -126,10 +128,21 @@ export function itensDaFila(
     const futuros = a ? a.golpes.filter((g) => g >= tick) : [];
     const prox = futuros.length ? Math.min(...futuros) : (a ? a.livre : 0);
     const qual = a && a.golpes.length > 1 ? ` ${a.golpes.indexOf(tick) + 1}/${a.golpes.length}` : '';
-    const fraseFase = !a ? '<b>livre</b>'
+    // A DÍVIDA ESCRITA, e ela custa zero gestos: são os Ticks que esta pessoa
+    // empurrou para o próprio futuro ao agir fora da vez. O campo `divida`
+    // existia desde o P/G/R (declarado, zerado pelo `declarar`, documentado na
+    // migração 27) e não era escrito nem lido em lugar nenhum; sem esta linha,
+    // pagar uma reação seria um número que some no banco e a mesa veria só um
+    // ciclo estranhamente longo, sem saber por quê.
+    const devendo = a && (a.divida || 0) > 0 ? ` · <span class="ini-divida">deve ${a.divida}</span>` : '';
+    const fraseFase = (!a ? '<b>livre</b>'
       : fase === 'preparo' ? `<b>Preparo</b> · golpe no ${prox}`
       : fase === 'golpe' ? `<b>Golpe${qual}</b> · Defesa ${dv.total}`
-      : `<b>Recuperação</b> · livre no ${a.livre}`;
+      : `<b>Recuperação</b> · livre no ${a.livre}`)
+      // EM TODA FASE, e não só na Recuperação: a ação que nasce de uma reação
+      // resolve AGORA, então quem acabou de pagar está em Golpe no mesmo Tick, e
+      // a dívida sumiria da tela no instante exato em que foi contraída.
+      + devendo;
     // O selo escrito e a fita dizem a mesma coisa em línguas diferentes: quem
     // pediu números em vez de fita continua tendo a palavra.
     const f = a
@@ -329,6 +342,114 @@ export function abrirAbortar(
       novoTick: r.novoTick, perdidos: r.perdidos, custo: r.custo, metros: m, saida,
       frase: `${nome} abortou o gesto ${verbo}${m ? ` ${m} m` : ' sem sair do lugar'}`
         + `${r.perdidos ? ` · perdeu ${r.perdidos} Tick(s) de Preparo` : ''}`,
+    });
+  };
+}
+
+// -------------------------------------------------------- o fora de hora
+/** Dá para mostrar o botão de agir fora de hora para esta pessoa agora? */
+export const podeForaDeHora = (acao: Acao | null | undefined, tick: number, velocidade: number) =>
+  foraDeHora(acao, tick, velocidade).pode;
+
+/**
+ * O diálogo de agir fora da sua vez.
+ *
+ * ELE EXISTE PORQUE A TELA JÁ DIZIA O NOME DELE SEM TER O BOTÃO: abrir o
+ * `✋ Abortar` numa peça em Recuperação imprimia, palavra por palavra, "o que
+ * cabe aqui é pagar: uma ação fora de hora, ou 1 Tick(s) por metro para se
+ * deslocar", e nenhuma das duas saídas tinha caminho. A frase vinha do motor
+ * (`combate-tempo.ts`), que sabia a conta e não tinha quem a chamasse.
+ *
+ * A CAIXA MOSTRA A DÍVIDA PARTIDA EM DUAS, e isso não é enfeite: o que sobrava
+ * do ciclo é o que ele passa a DEVER, e a Velocidade da reação é o preço normal
+ * da ação nova, que ele pagaria de todo jeito. Somar os dois num número só faria
+ * a reação parecer o dobro do que custa, e é a diferença entre "vale a pena" e
+ * "nunca vale".
+ *
+ * O ESPELHO ENTRA COMO ESCOLHA e não como automático: interromper alguém é uma
+ * intenção, e o motor não tem como adivinhar contra quem o gesto vai. A lista
+ * só traz quem está em Preparo, porque é a única fase interrompível, e a
+ * ausência dela quando ninguém está montando é a regra se ensinando pela falta.
+ */
+export function abrirForaDeHora(
+  quem: { nome: string; acao: Acao; tick: number; velocidade: number },
+  interrompiveis: { id: string; nome: string; acao: Acao }[],
+  aoConfirmar: (r: {
+    novoTick: number; divida: number; resta: number; velocidade: number; total: number;
+    alvo: string | null; atrasaOAlvo: number; frase: string;
+  }) => void | Promise<void>,
+) {
+  const { nome, acao, tick } = quem;
+  const base = foraDeHora(acao, tick, quem.velocidade);
+  const { corpo, fechar } = uiPainel(`${nome} age fora da sua vez`, { classe: 'mesa-dlg tempo-dlg' });
+
+  if (!base.pode) {
+    corpo.innerHTML = `<p class="tempo-intro">${esc(base.porque)}</p>
+      <div class="ui-dlg-btns"><button type="button" class="btn" id="fh-fechar">Fechar</button></div>`;
+    (corpo.querySelector('#fh-fechar') as HTMLElement).onclick = () => fechar();
+    return;
+  }
+
+  corpo.innerHTML = `
+    <p class="tempo-intro">${esc(nome)} está na <b>Recuperação</b>: o golpe já saiu, e não há mais
+      o que abortar. O que cabe aqui é <b>pagar</b> · a Velocidade da ação vai empurrada para o
+      próprio futuro, <b>a guarda não se refaz</b>, e é <b>uma por ação</b>.</p>
+    <label class="ab-m">Velocidade da reação
+      <input type="number" id="fh-vel" min="0" step="1" value="${base.velocidade}" />
+      <small>O que a ação nova custa. Vem da arma dele; mude se a reação for outra coisa.</small>
+    </label>
+    ${interrompiveis.length ? `<div class="rev-h">Interromper alguém?</div>
+      <div class="rev-ops">
+        <label class="rev-op"><input type="radio" name="fh-alvo" value="" checked />
+          <span class="rev-op-corpo"><span class="rev-op-t">Ninguém</span>
+          <span class="rev-op-d">Só age: paga a dívida e mais nada acontece do outro lado.</span></span></label>
+        ${interrompiveis.map((o) => `<label class="rev-op">
+          <input type="radio" name="fh-alvo" value="${esc(o.id)}" />
+          <span class="rev-op-corpo"><span class="rev-op-t">${esc(o.nome)}</span>
+          <span class="rev-op-d">Está montando o gesto. Interromper atrasa o gesto dele em tantos
+            Ticks quantos ${esc(nome)} pagar.</span></span></label>`).join('')}
+      </div>` : `<p class="muted">Ninguém está em Preparo agora, então não há quem interromper:
+        só quem está montando o gesto pode ser interrompido.</p>`}
+    <div class="acao-conta" id="fh-res"></div>
+    <div class="ui-dlg-btns">
+      <button type="button" class="btn" id="fh-cancelar">Cancelar</button>
+      <button type="button" class="btn primary" id="fh-ok">Agir fora de hora</button>
+    </div>`;
+
+  const inp = corpo.querySelector('#fh-vel') as HTMLInputElement;
+  const vel = () => Math.max(0, parseInt(inp.value || '0', 10) || 0);
+  const alvoId = () => (corpo.querySelector('input[name="fh-alvo"]:checked') as HTMLInputElement)?.value || '';
+  const alvoDe = (id: string) => interrompiveis.find((x) => x.id === id) || null;
+  const conta = () => foraDeHora(acao, tick, vel(), { alvo: alvoDe(alvoId())?.acao ?? null });
+  const pintar = () => {
+    const r = conta();
+    const alvo = alvoDe(alvoId());
+    (corpo.querySelector('#fh-res') as HTMLElement).innerHTML =
+      `<div><b>${r.resta}</b> Tick(s) do ciclo que ele deixa de cumprir · viram <b>dívida</b></div>`
+      + `<div><b>${r.velocidade}</b> Tick(s) da ação nova · o preço de sempre dela</div>`
+      + `<div>Fica livre no <b>Tick ${r.novoTick}</b> <span class="muted">(${tick} + ${r.total})</span>`
+      + `, contra o Tick ${acao.livre} se esperasse.</div>`
+      + (r.atrasaOAlvo && alvo
+        ? `<div>E o gesto de <b>${esc(alvo.nome)}</b> anda <b>${r.atrasaOAlvo}</b> Tick(s) para a frente`
+          + ` <span class="muted">(golpe no ${alvo.acao.golpes[0] ?? '—'} → ${
+            alvo.acao.golpes.length ? alvo.acao.golpes[0] + r.atrasaOAlvo : '—'})</span>.</div>`
+        : '');
+  };
+  inp.oninput = pintar;
+  corpo.querySelectorAll('input[name="fh-alvo"]').forEach((r) => ((r as HTMLElement).onclick = pintar));
+  pintar();
+
+  (corpo.querySelector('#fh-cancelar') as HTMLElement).onclick = () => fechar();
+  (corpo.querySelector('#fh-ok') as HTMLElement).onclick = async () => {
+    const r = conta();
+    const alvo = alvoDe(alvoId());
+    fechar();
+    await aoConfirmar({
+      novoTick: r.novoTick, divida: r.divida, resta: r.resta, velocidade: r.velocidade,
+      total: r.total, alvo: alvo?.id ?? null, atrasaOAlvo: r.atrasaOAlvo,
+      frase: `${nome} agiu fora da vez${alvo && r.atrasaOAlvo ? `, interrompendo ${alvo.nome}` : ''}`
+        + ` · pagou ${r.total} Tick(s)${r.divida ? ` (${r.divida} de dívida)` : ''}`
+        + `${alvo && r.atrasaOAlvo ? ` · o gesto de ${alvo.nome} atrasou ${r.atrasaOAlvo} Tick(s)` : ''}`,
     });
   };
 }

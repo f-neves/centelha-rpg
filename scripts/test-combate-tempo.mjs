@@ -130,6 +130,55 @@ eq(T.anatomia({ classe: 'media', velocidade: 6, sistema: 'normal', manobra: 'dup
   eq(T.podeAgirForaDeHora(a, 12).pode, true, 'na Recuperação se reage, pagando');
   eq(T.custoDeReagir(a, 12, 5), { resta: 4, total: 9 }, 'o custo de reagir na Recuperação');
 }
+// ---------------------------------------------------------- agir fora de hora
+//
+// A TRANSAÇÃO, e não só as duas metades dela. `podeAgirForaDeHora` e
+// `custoDeReagir` já estavam escritas, exportadas e testadas, e os únicos
+// chamadores eram estas linhas aqui: era o L25 em estado puro.
+{
+  const a = T.declarar(10, T.anatomia({ classe: 'media', velocidade: 6, sistema: 'pgr' }));
+  // Preparo 10, Golpe 11, Recuperação 12..15, livre em 16.
+  eq(T.foraDeHora(a, 16, 5).pode, false, 'livre não é fora de hora: age na hora e não paga');
+  eq(T.foraDeHora(a, 11, 5).pode, false, 'no Golpe não se reage');
+  eq(T.foraDeHora(a, 10, 5).pode, false, 'no Preparo o que cabe é abortar, e ele tem botão próprio');
+  ok(/abortar/.test(T.foraDeHora(a, 10, 5).porque), 'e a recusa do Preparo manda para o abortar');
+
+  const r = T.foraDeHora(a, 12, 5);
+  eq(r.pode, true, 'na Recuperação se reage, pagando');
+  eq({ resta: r.resta, velocidade: r.velocidade, total: r.total },
+    { resta: 4, velocidade: 5, total: 9 }, 'a conta: 4 do ciclo que sobrava mais 5 da reação');
+  eq(r.novoTick, 21, 'e ele fica livre no Tick 12 + 9');
+  // A DÍVIDA É O `resta`: os Ticks empurrados para o futuro são os do ciclo
+  // velho que não foram cumpridos. A Velocidade da reação não é dívida, é o
+  // preço normal da ação nova.
+  eq(r.divida, 4, 'a dívida é o que sobrava do ciclo, e não o total');
+
+  // UMA POR AÇÃO, e quem conta é a própria dívida.
+  const devendo = { ...a, divida: 4, livre: 21, golpes: [17] };
+  eq(T.foraDeHora(devendo, 18, 5).pode, false, 'ação que já nasceu devendo não paga outra');
+  eq(T.foraDeHora(devendo, 18, 5).jaUsou, true, 'e o motivo é a dívida, não a fase');
+  eq(T.foraDeHora({ ...devendo, divida: 0 }, 18, 5).pode, true,
+    'e sem dívida a mesma peça, na mesma fase e no mesmo Tick, pode');
+}
+// o espelho: interromper atrasa o alvo em tantos Ticks quantos o interruptor pagou
+{
+  const meu = T.declarar(10, T.anatomia({ classe: 'media', velocidade: 6, sistema: 'pgr' }));
+  const alvo = T.declarar(12, T.anatomia({ classe: 'pesada', velocidade: 7, sistema: 'pgr' }));
+  // O alvo declarou no 12: Preparo até o 14, Golpe no 15.
+  eq(T.faseEm(alvo, 13), 'preparo', 'o alvo está montando o gesto');
+  eq(T.foraDeHora(meu, 13, 5, { alvo }).atrasaOAlvo, 8,
+    'interromper quem está em Preparo atrasa o alvo pelo que o interruptor pagou (3 + 5)');
+  eq(T.foraDeHora(meu, 13, 5, { alvo: null }).atrasaOAlvo, 0, 'sem alvo, não há espelho');
+  eq(T.foraDeHora(meu, 13, 5, { alvo: { ...alvo, golpes: [13], livre: 19 } }).atrasaOAlvo, 0,
+    'e quem está no Golpe não é interrompível: o espelho não morde');
+
+  // O OUTRO LADO: o gesto atrasado anda INTEIRO, e o `desde` fica.
+  const atrasado = T.atrasarGesto(alvo, 8);
+  eq(atrasado.golpes, alvo.golpes.map((g) => g + 8), 'os golpes agendados andam junto');
+  eq(atrasado.livre, alvo.livre + 8, 'e o fim do ciclo também');
+  eq(atrasado.desde, alvo.desde, 'e o `desde` NÃO anda: é quando ele declarou, e continua sendo');
+  eq(T.atrasarGesto(alvo, 0), alvo, 'atrasar zero devolve a mesma ação');
+}
 // a Recuperação da dupla conta os DOIS golpes
 {
   const a = T.declarar(0, T.anatomia({ classe: 'leve', velocidade: 5, sistema: 'pgr', manobra: 'dupla' }));

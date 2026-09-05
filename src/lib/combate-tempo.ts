@@ -744,6 +744,96 @@ export function custoDeReagir(acao: Acao | null | undefined, tick: number, veloc
   return { resta, total: resta + Math.max(0, velocidadeDaReacao) };
 }
 
+/**
+ * AGIR FORA DA SUA VEZ · a conta fechada, do jeito que o `abortar` a devolve.
+ *
+ * A REGRA, escrita em `regras.json` (`combate.foraDeHora`): paga-se a Velocidade
+ * da ação **empurrada para o próprio futuro**, a guarda não se refaz, e é uma
+ * por ação. Quem interrompe alguém atrasa o alvo em tantos Ticks quantos pagou,
+ * que é o espelho.
+ *
+ * AS DUAS METADES JÁ EXISTIAM E NÃO SE FALAVAM: `podeAgirForaDeHora` dizia se
+ * cabe, `custoDeReagir` dizia quanto custa, as duas exportadas e testadas, e os
+ * únicos chamadores eram os testes. Esta função é a transação, e é o que faltava
+ * para haver o que uma tela chame.
+ *
+ * POR QUE ELA DIZ "NÃO" ONDE A `podeAgirForaDeHora` DIZ "SIM": aquela responde
+ * "cabe agir?", e aqui a pergunta é "há transação a fazer?". Quem está **livre**
+ * age na hora e não paga nada; quem está no **Preparo** tem o `abortar`, que é
+ * outra conta e já tem botão. Sobra a **Recuperação**, que é onde a regra existe
+ * de verdade: o golpe já saiu, você não pode mais desistir, só pagar.
+ *
+ * A DÍVIDA É O `resta`, E NÃO O `total`. `Acao.divida` diz, com estas palavras,
+ * "Ticks que já foram empurrados para o futuro": são os que sobravam do ciclo
+ * velho e não foram cumpridos. A Velocidade da reação não é dívida, é o preço
+ * normal da ação nova · ela sairia igual se ele tivesse esperado.
+ *
+ * E É A DÍVIDA QUE CONTA O "UMA POR AÇÃO": ação que já nasceu devendo não paga
+ * outra, e é isso que impede encadear reações. O campo já existia (declarado na
+ * interface, zerado pelo `declarar`, documentado na migração 27) e **nunca foi
+ * escrito com valor nenhum nem lido em lugar nenhum**: é o L25 em campo de dado.
+ *
+ * A leitura alternativa de "uma por ação" seria contar por ciclo em vez de por
+ * ação encadeada, e as duas proíbem a mesma coisa na mesa (reagir duas vezes
+ * seguidas). Trocar de leitura é mudar `jaUsou`, uma linha.
+ */
+export function foraDeHora(
+  acao: Acao | null | undefined, tick: number, velocidadeDaReacao: number,
+  opts: { alvo?: Acao | null } = {},
+) {
+  const F = C?.foraDeHora || {};
+  const fase = faseEm(acao, tick);
+  const como = podeAgirForaDeHora(acao, tick).como;
+  const vel = Math.max(0, Math.round(velocidadeDaReacao) || 0);
+  const { resta, total } = custoDeReagir(acao, tick, vel);
+  const jaUsou = F.umaPorAcao !== false && ((acao as Acao)?.divida || 0) > 0;
+  const nao = (porque: string) => ({
+    pode: false, fase, como, resta, velocidade: vel, total: 0,
+    novoTick: tick, divida: 0, jaUsou, atrasaOAlvo: 0, porque,
+  });
+  if (fase === 'livre') return nao('Está livre: age na hora, e não paga nada por isso.');
+  if (fase === 'golpe') return nao('Está no Golpe: não se aborta, não se reage, não se interrompe.');
+  if (fase === 'preparo') {
+    return nao('No Preparo o gesto ainda não saiu, e o que cabe é abortar: fica livre agora,'
+      + ' perdendo os Ticks investidos, e só para mover, desviar ou se interpor.');
+  }
+  if (jaUsou) {
+    return nao(`Esta ação já nasceu devendo ${(acao as Acao).divida} Tick(s), e é uma por ação:`
+      + ' reagir de novo seria encadear reações sem nunca pagar nenhuma.');
+  }
+  // O ESPELHO: quem interrompe atrasa o alvo em tantos Ticks quantos pagou. Só
+  // vale contra quem está em Preparo, que é a única fase interrompível, e é a
+  // mesma frase que a aba Combate já mostrava sem ter como cumprir.
+  const atrasaOAlvo = F.espelho !== false && opts.alvo && podeSerInterrompido(opts.alvo, tick)
+    ? total : 0;
+  return {
+    pode: true, fase, como, resta, velocidade: vel, total,
+    novoTick: tick + total, divida: resta, jaUsou: false, atrasaOAlvo, porque: '',
+  };
+}
+
+/**
+ * Empurrar um gesto inteiro N Ticks para a frente · o outro lado do espelho.
+ *
+ * O gesto ANDA JUNTO: os golpes agendados, o fim do ciclo e o que falta
+ * resolver. Atrasar só o `livre` deixaria o golpe caindo na hora marcada com a
+ * recuperação esticada, que é o contrário do que interromper quer dizer.
+ *
+ * `desde` NÃO anda: é o Tick em que a ação foi declarada, e continua sendo. É
+ * ele que o `abortar` usa para contar o que se perde, e mexer nele faria o
+ * interrompido "perder" Ticks que ele de fato investiu.
+ */
+export function atrasarGesto(acao: Acao, ticks: number): Acao {
+  const n = Math.max(0, Math.round(ticks) || 0);
+  if (!n) return acao;
+  return {
+    ...acao,
+    golpes: (acao.golpes || []).map((g) => g + n),
+    livre: acao.livre + n,
+    ...(acao.aResolver ? { aResolver: acao.aResolver.map((g) => g + n) } : {}),
+  };
+}
+
 /** Ticks que custa andar N metros durante a Recuperação (o deslocamento pago). */
 export const ticksDeDeslocamento = (metros: number) =>
   Math.max(0, Math.round(metros * (C?.recuperacao?.deslocamentoTicksPorMetro ?? 2)));

@@ -2774,6 +2774,154 @@ async function cenaFusao(br, url) {
 }
 
 /**
+ * AGIR FORA DA VEZ E A DIVIDA DE TICKS, no tabuleiro (fase 2, 05/09/2026).
+ *
+ * O L25 EM ESTADO PURO, e por dois lados de uma vez. `podeAgirForaDeHora` e
+ * `custoDeReagir` estavam escritas, exportadas e testadas em `combate-tempo.ts`
+ * desde que o P/G/R nasceu, e os UNICOS chamadores eram os testes. E o campo
+ * `Acao.divida`, com o comentario "Ticks que ja foram empurrados para o futuro",
+ * era zerado pelo `declarar` e nunca escrito com valor nenhum.
+ *
+ * A CENA COMECA NO TICK 3, e nao no zero, porque no zero NAO HA PECA EM
+ * RECUPERACAO na bancada: com o relogio parado a regra nao teria onde acontecer,
+ * e um teste montado assim mediria a ausencia da cena e chamaria de ausencia do
+ * defeito. No 3, a `c002` esta se recompondo (golpe no 2, livre no 6) e a `c007`
+ * esta montando o gesto (golpe no 5), que sao os dois lados que a regra precisa.
+ *
+ * AS ASSERCOES EM PAR, e sao tres pares:
+ *
+ *   1. o item ⏱ ESTA no menu de quem se recompoe e NAO ESTA no de quem esta
+ *      livre nem no de quem monta o gesto (esse tem o ✋). Sozinha, "o item
+ *      aparece" passaria com um menu que mostra tudo para todo mundo;
+ *   2. a DIVIDA nao existe na tela antes e existe depois, na linha daquela peca.
+ *      Sozinha, "tem `.ini-divida`" passaria com a bancada nascendo devendo;
+ *   3. o ESPELHO: o gesto do alvo esta num Tick antes e noutro depois, e o
+ *      deslocamento e exatamente o que o interruptor pagou.
+ *
+ * E o que se le e o ESTADO da peca na bancada, e nao a linha do registro: e a
+ * diferenca entre "o log disse que pagou" e "a peca esta devendo".
+ */
+async function cenaForaDeHora(br, url) {
+  console.log('\n· agir fora da vez: o menu, a conta, a divida e o espelho');
+  const p = await br.newPage();
+  await p.setViewport({ width: 1500, height: 1000 });
+  const erros = [];
+  p.on('pageerror', (e) => erros.push(e.message));
+  await p.goto(`${url}/mesa/grid?id=${MESA}&bench=12&cols=24&rows=16&nevoa=0&tempo=simultaneo&tick=3`,
+    { waitUntil: 'networkidle0', timeout: 60000 });
+  await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
+  await espera(700);
+
+  // O ESTADO, lido da bancada. `divida` sai junto de proposito: e o campo que
+  // esta cena existe para ver deixar de ser zero.
+  const estado = (cid) => p.evaluate((cid) => {
+    const c = (window.__SB?.tabelas?.combatentes || []).find((z) => z.id === cid);
+    return { tick: c?.tick ?? null, livre: c?.acao?.livre ?? null,
+      golpes: (c?.acao?.golpes || []).slice(), divida: c?.acao?.divida ?? null };
+  }, cid);
+
+  // Os itens do menu daquela peca, pelo `data-a`: e a lista do que a tela
+  // oferece, que e o que "a regra se ensina pelo menu" quer dizer.
+  const itens = (cid) => p.evaluate(async (cid) => {
+    const t = [...document.querySelectorAll('#gr-tokens .gr-token')].find((x) => x.dataset.c === cid);
+    if (!t) return { erro: `a peca ${cid} nao esta no mapa` };
+    t.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, clientX: 600, clientY: 400 }));
+    await new Promise((r) => setTimeout(r, 300));
+    const as = [...document.querySelectorAll('#tok-menu button')].map((b) => b.dataset.a);
+    document.getElementById('tok-menu').hidden = true;
+    return { as };
+  }, cid);
+
+  const divididas = () => p.evaluate(() =>
+    [...document.querySelectorAll('.ini-divida')].map((x) => x.textContent.trim()));
+
+  const cRec = 'c002';   // se recompondo no Tick 3: golpe no 2, livre no 6
+  const cPrep = 'c007';  // montando o gesto: golpe no 5, livre no 9
+  const cLivre = 'c000'; // sem acao nenhuma
+
+  // ---- 1: o par do menu ----
+  const e0 = await estado(cRec);
+  const p0 = await estado(cPrep);
+  ok(e0.livre === 6 && e0.golpes.join() === '2',
+    `a cena comeca com a peca em Recuperacao (golpe no ${e0.golpes.join()}, livre no ${e0.livre})`);
+  ok(p0.golpes.join() === '5', `e com outra montando o gesto (golpe no ${p0.golpes.join()})`);
+
+  const mRec = await itens(cRec);
+  const mPrep = await itens(cPrep);
+  const mLivre = await itens(cLivre);
+  ok(!mRec.erro && mRec.as.includes('forahora'),
+    `quem se recompoe TEM o item de agir fora da vez (${mRec.erro || mRec.as.join(',')})`);
+  ok(!mPrep.erro && !mPrep.as.includes('forahora') && mPrep.as.includes('abortar'),
+    'quem monta o gesto NAO tem: no Preparo o que cabe e desistir, e o ✋ esta la');
+  ok(!mLivre.erro && !mLivre.as.includes('forahora'),
+    'e quem esta livre NAO tem: age na hora, e nao paga nada por isso');
+
+  // ---- 2: a divida nao existe antes ----
+  const antes = await divididas();
+  ok(antes.length === 0, `nenhuma peca deve Ticks antes (${antes.length})`);
+
+  // ---- a caixa, a conta e o espelho ----
+  const caixa = await p.evaluate(async (cid, alvoId) => {
+    const t = [...document.querySelectorAll('#gr-tokens .gr-token')].find((x) => x.dataset.c === cid);
+    t.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, clientX: 600, clientY: 400 }));
+    await new Promise((r) => setTimeout(r, 300));
+    const item = document.querySelector('#tok-menu button[data-a="forahora"]');
+    if (!item) return { erro: 'o menu nao tem o item' };
+    item.click();
+    await new Promise((r) => setTimeout(r, 350));
+    const vel = document.getElementById('fh-vel');
+    if (!vel) return { erro: 'a caixa de agir fora da vez nao abriu' };
+    // A VELOCIDADE ENTRA A MAO, e nao pelo padrao: o padrao vem do resumo da
+    // peca e mudaria com o catalogo de armas. O que se prova aqui e a CONTA,
+    // e ela precisa de um numero que o teste conheca.
+    vel.value = '5';
+    vel.dispatchEvent(new Event('input', { bubbles: true }));
+    await new Promise((r) => setTimeout(r, 150));
+    const semAlvo = document.getElementById('fh-res').textContent.replace(/\s+/g, ' ').trim();
+    const radio = document.querySelector(`input[name="fh-alvo"][value="${alvoId}"]`);
+    const tinha = !!radio;
+    if (radio) { radio.checked = true; radio.click(); }
+    await new Promise((r) => setTimeout(r, 150));
+    const comAlvo = document.getElementById('fh-res').textContent.replace(/\s+/g, ' ').trim();
+    document.getElementById('fh-ok').click();
+    await new Promise((r) => setTimeout(r, 700));
+    return { semAlvo, comAlvo, tinha };
+  }, cRec, cPrep);
+
+  ok(!caixa.erro, `a caixa abre pelo menu da peca (${caixa.erro || 'abriu'})`);
+  if (!caixa.erro) {
+    // 3 do ciclo que sobrava (livre 6 menos Tick 3) e 5 da acao nova.
+    ok(/3 Tick\(s\) do ciclo/.test(caixa.semAlvo) && /5 Tick\(s\) da acao nova/.test(
+      caixa.semAlvo.normalize('NFD').replace(/[\u0300-\u036f]/g, '')),
+    `a caixa parte a conta em duas: o que vira divida e o preco da acao nova (${caixa.semAlvo.slice(0, 70)})`);
+    ok(/Tick 11/.test(caixa.semAlvo), 'e diz o Tick em que ele fica livre (3 + 8)');
+    ok(caixa.tinha, 'quem esta montando o gesto aparece como interrompivel');
+    ok(/8 Tick\(s\) para a frente/.test(caixa.comAlvo),
+      `e escolher o alvo mostra o espelho antes de confirmar (${caixa.comAlvo.slice(-80)})`);
+  }
+
+  // ---- o estado, que e o que importa ----
+  const e1 = await estado(cRec);
+  ok(e1.divida === 3, `A DIVIDA CHEGOU AO ESTADO da peca: ${e1.divida} Tick(s) empurrados para o futuro`);
+  ok(e1.livre === 11 && e1.tick === 11, `e o ciclo dela vai ate o Tick ${e1.livre}, esticado pela divida`);
+  ok(e1.golpes.join() === '3', `e a acao nova resolve AGORA, no Tick ${e1.golpes.join()}`);
+
+  // ---- 2 (a outra metade): a divida existe depois, e na linha certa ----
+  const depois = await divididas();
+  ok(depois.length === 1 && /deve 3/.test(depois[0]),
+    `e a tela passa a dizer isso, sem pedir gesto nenhum ("${depois.join('", "')}")`);
+
+  // ---- 3: o espelho ----
+  const p1 = await estado(cPrep);
+  ok(p1.golpes.join() === '13' && p1.livre === 17,
+    `o gesto do interrompido andou os 8 Ticks pagos (golpe ${p0.golpes.join()} -> ${p1.golpes.join()},`
+    + ` livre ${p0.livre} -> ${p1.livre})`);
+
+  ok(erros.length === 0, `nenhum erro de pagina (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
+  await p.close();
+}
+
+/**
  * A CONDICAO POSTA A MAO, no tabuleiro (fase 2, 04/09/2026).
  *
  * O mecanismo existia inteiro e nao tinha tela aqui: catalogo, soma, coluna,
@@ -2959,6 +3107,7 @@ await cenaRastreador(br, dev.url);
   await cenaQuaseAcerto(br, dev.url);
   await cenaFusao(br, dev.url);
   await cenaCondicaoAMao(br, dev.url);
+await cenaForaDeHora(br, dev.url);
 } finally {
   await br.close();
   await dev.parar();
