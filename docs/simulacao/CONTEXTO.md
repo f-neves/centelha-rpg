@@ -88,6 +88,15 @@ sentada, com **31 e 32 coladas** (a única ordem obrigatória é 31 antes de 32)
 · o que falta nela é a tela, não o SQL, e isso é fase 2.5. A **34 ainda não existe** como
 arquivo.
 
+**A 35 ENTRA INERTE, E NÃO PRONTA.** Ela para o apagamento de hoje e não termina o campo:
+o `||` sabe dizer PÕE e não sabe dizer TIRE, e um dos quatro pontos do cliente TIRA chave
+(`marcarMordido(..., null)`). Hoje é inerte porque esse ponto grava direto na tabela e
+nunca chama a RPC. **O vocabulário de remoção tem de existir na RPC ANTES de qualquer
+cliente passar a usar a `jogador_muda_efeito` para este campo**, e a asserção que prova
+isso nasce junto do vocabulário, não antes. → o levantamento: **L42** e **L43**; a regra
+geral que isso instancia: **migração antes do cliente é segura, cliente antes da migração
+é a janela ruim**.
+
 ## Apontamentos permanentes, que vieram do chat e não do repositório
 
 - **Toda resposta começa com `Executora:`.**
@@ -99,12 +108,28 @@ arquivo.
 - **Quando a mesa levanta um defeito, a resposta não é o conserto: é o TAMANHO primeiro.**
   Quantas mesas, desde quando, e é certeza ou corrida. E a diferença entre as duas muda o
   conserto · no `mordidos` ela mudou tudo.
+- **ANCORE A PERGUNTA NO SÍMBOLO, NÃO NO DEFEITO** (a régua da revisora, 05/09/2026, e a
+  resposta para *por que catalogar uma forma não impede repeti-la*). Só sobrevive ao
+  instante da escrita a pergunta cujo gatilho é um SÍMBOLO que se está digitando, e não
+  um conceito de que seria preciso lembrar. As três:
+
+  | ao digitar | perguntar |
+  |---|---|
+  | `\|\|`, `coalesce`, `filter`, `{...spread}` | **isto sabe dizer TIRE?** |
+  | "não é preciso", "não há como", "nunca" | **e a outra direção?** |
+  | "por enquanto", "provisório", "até que" | **quem decide que acabou, e o programa sabe responder?** |
+
+  A primeira teria pego o `mordidos` na hora, e a segunda pegou o comentário que dizia
+  *"não é preciso lápide"* meia hora depois de escrito, na mesma frente que já tinha
+  catalogado a forma três vezes.
 - **Gate que nunca foi visto vermelho é garantia escrita, não prova.** Falsificar uma de
   cada vez, restaurando a árvore, e dizer qual não deu para falsificar.
 - **Falsificação que a máquina não roda se faz num RAMO DESCARTÁVEL**, porque o portão
-  roda em qualquer ramo: empurra, lê o vermelho, apaga o ramo. O ramo some, **a execução
-  vermelha fica no histórico**: a de `f4ff1ec` (ramo `falsif/l40-refazer`) é falsificação
-  e não defeito, e é a única vermelha entre verdes.
+  roda em qualquer ramo: empurra, lê o vermelho, apaga o ramo. **O ramo some e a execução
+  vermelha fica no histórico para sempre**, então ela tem de se explicar sozinha, sem
+  depender deste arquivo: **o ramo começa em `falsif/` e o assunto do commit começa com
+  `FALSIFICACAO`**. A lista do CI mostra ramo e assunto em toda linha, então quem tropeça
+  no vermelho lê o porquê ali mesmo. Conferido em 05/09/2026 no `f4ff1ec`.
 - **Asserção de sobrevivente precisa do par**, senão passa pelo motivo errado: a coisa que
   cai E a coisa que fica.
 - **Achar linha por CHAVE e nunca por posição**, em teste e em prosa.

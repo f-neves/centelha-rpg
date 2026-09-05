@@ -6,6 +6,9 @@
 -- construcao. Nao depende de nenhuma mudanca de tela, e nao muda nada do que o
 -- jogador VE.
 --
+-- E ELA ENTRA INERTE, E NAO PRONTA: para o apagamento de hoje e NAO termina o
+-- campo. O porque esta no fim deste cabecalho, e e a parte que "rodou" nao diz.
+--
 -- O DEFEITO, E ELE NAO E CORRIDA: E APAGAMENTO EM TODA GRAVACAO.
 --
 -- `arena_efeitos.mordidos` e um mapa `{ combatente_id: rodada }`, mais a marca
@@ -58,6 +61,32 @@
 -- O JOGADOR NAO GANHA PODER NENHUM COM ISTO. Antes ele podia zerar o mapa;
 -- agora so pode acrescentar chave. **Fundir e estritamente menos permissivo que
 -- substituir**, e e por isso que esta migracao nao precisa de policy nova.
+--
+-- ELA ENTRA INERTE, E NAO PRONTA. Rodar esta migracao para o apagamento de hoje
+-- e NAO deixa o campo terminado, e a diferenca entre as duas coisas e o que esta
+-- escrito aqui para quem ler daqui a um mes e achar que "rodou" quer dizer
+-- "resolvido".
+--
+-- O QUE FALTA E O VOCABULARIO DE REMOCAO. O `||` sabe dizer POE e nao sabe dizer
+-- TIRE: chave ausente da carga SOBREVIVE, em vez de sumir. E um dos quatro
+-- pontos do cliente TIRA chave -- o `marcarMordido(ctx, ef, A_SAIR, null)`, que
+-- cai no `delete base[chave]`. Pela RPC como ela fica agora, tirar a `__a_sair`
+-- seria operacao sem efeito nenhum: a marca ficaria gravada para sempre, o
+-- `deveSair()` verdadeiro para sempre, e o efeito nao pararia de tentar sair.
+--
+-- HOJE ISSO E INERTE porque o `marcarMordido` grava DIRETO NA TABELA e nunca
+-- chama esta funcao. A assimetria esta do lado bom, e vale dita: **migracao
+-- antes do cliente e segura; cliente antes da migracao e a janela ruim.** Por
+-- isso esta pode ser rodada hoje sem esperar nada.
+--
+-- O QUE ISSO OBRIGA: o vocabulario de remocao (uma chave `remover` na carga, uma
+-- funcao `jogador_tira_mordida`, ou o `-` do jsonb -- a forma se decide quando
+-- houver quem use) tem de existir AQUI, na RPC, **ANTES** de qualquer cliente
+-- passar a usar a `jogador_muda_efeito` para este campo. Nao depois.
+--
+-- E A ASSERCAO QUE PROVA ISSO NASCE JUNTO DO VOCABULARIO, e nao antes: prender
+-- hoje uma remocao que nenhum caminho executa seria prender o duble. Quem
+-- escrever a remocao escreve a bancada no mesmo commit.
 -- =====================================================================
 
 -- --------------------------------------------------------------- a funcao

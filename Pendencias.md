@@ -2453,9 +2453,9 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   O `encontros.log` do `combate.astro` tem a mesma forma e um escritor só: fica no fim da fila, e
   por um motivo escrito, não por esquecimento.
 
-- [ ] **L42 · [PARA RODAR DE UMA VEZ] As cinco migrações pendentes** · *levantado em 05/09/2026, com
-  o esquema de produção sondado pela chave anon, uma por uma. Quatro para rodar, uma para NÃO
-  rodar.*
+- [ ] **L42 · [PARA RODAR DE UMA VEZ] As migrações pendentes** · *levantado em 05/09/2026, com
+  o esquema de produção sondado pela chave anon, uma por uma. **A leva da mesa é 31, 32, 29, 30 e
+  35**; a 33 NÃO entra.*
 
   **COMO FOI CONFERIDO, porque isso não é lista de arquivo, é leitura de produção.** Cada uma foi
   sondada pelo objeto que ela cria: coluna que não existe devolve `42703`, tabela devolve `PGRST205`,
@@ -2469,6 +2469,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | **31** | `tick_da_arena`, e a `casa_clara` passa a filtrar por ESTADO | **vazamento em produção**: fogo que ainda está sendo montado (ou que já venceu) acende o chão, e como é essa função que corta a `token_visao`, entrega ao jogador as peças que estavam no escuro. Medido: 12 casas de escuro abertas por um fogo que não caiu. E o Grid do jogador mostra *"⚑ o relógio da cena não está chegando"* | **sim, primeiro** |
   | **32** | a `efeito_visao` ganha corte por CASA | **vazamento em produção**: uma Arte inteira no escuro chega ao navegador do jogador com nome, hexes, condição, alvos e conjurador. Fogo e luz se entregam sozinhos; veneno, gelo, barreira e sombra não | **sim, depois da 31** |
   | **33** | a névoa esconde a EXISTÊNCIA da criatura, e não só a posição | a névoa esconde só a posição, como sempre | **NÃO · falta a TELA, não o SQL** |
+  | **35** | a `jogador_muda_efeito` FUNDE o `mordidos` em vez de substituir | **apagamento em toda gravação**: cada mordida que um jogador marca apaga as marcas de todos os outros daquele efeito, e a `__a_sair` junto. Ver L43 | **sim · e ela entra INERTE** |
 
   **A ORDEM: só um par é obrigatório, e é 31 antes de 32.** A view da 32 chama
   `cross join lateral (select public.tick_da_arena(a.id) as t) rel`, `supabase/migracao-32.sql:65`,
@@ -2496,6 +2497,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | **30** | quase nada | acrescenta `gravar_lances` ao `select('*')` de `mesas` (`mesa-core.ts:426`). Nada enumera as chaves desse objeto e nada o grava de volta inteiro · não há `from('mesas').update` no código |
   | **31** | **sim, e some coisa** | mesma FORMA em `token_visao` e `efeito_visao`, mas menos LINHAS: peça que só chegava porque um fogo não-caído acendia o chão **para de chegar**, e efeito fora do intervalo do relógio também. E a `encontro_visao` ganha `tick_atual` e `rodada`, como na 29 |
   | **32** | **sim, e campo que nunca era nulo passa a ser** | mesmas 24 colunas da `efeito_visao`, mas `conjurador_id` e `centro` passam a poder vir **null**, e `hexes` vem **filtrado** pelas casas claras |
+  | **35** | **nada** | ela troca o corpo de uma função, e nenhuma view. O `mordidos` **não chega ao jogador nem antes nem depois** (a `efeito_visao` o corta de propósito), então a tela dele não sente. E o poder dele **diminui**: antes podia zerar o mapa, agora só acrescenta chave |
 
   **A ORDEM ENTRE 29 E 31 NÃO IMPORTA, e isso é desenho e não sorte.** As duas escrevem a
   `encontro_visao`, e as duas escrevem a MESMA lista: a 29 já traz `tick_atual` e `rodada`, e a 31
@@ -2514,7 +2516,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **E O RISCO QUE EU FUI CONFERIR ANTES DE DIZER QUE NÃO HÁ:** a 32 faz `centro` e `conjurador_id`
   poderem vir nulos, e o cliente não foi mudado para isso. Conferido: o `centro` **não é lido em
   lugar nenhum** do cliente · a única ocorrência dele é uma escrita, em
-  `patch.centro = { q: nova.q, r: nova.r };`, `artes-grid-mesa.ts:1903`.
+  `patch.centro = { q: nova.q, r: nova.r };`, `artes-grid-mesa.ts:1919`.
   E o `conjurador_id` já era tratado como opcional em todos os pontos que o usam. **`alvos` nunca vem nulo** (a view faz `coalesce` para `[]`). O cabeçalho da 32 diz
   que ela não depende de mudança de tela, e a leitura do cliente confirma.
 
@@ -2544,6 +2546,17 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   2. **a tela desenhar a lembrança como lembrança e não como peça** · NÃO FEITO, e é o bloqueio;
   3. a semente fechar a janela do dado acumulado · **feito**, é o bloco 0.
 
+  ### A 35 ENTRA INERTE, E NÃO PRONTA
+
+  **Ela para o apagamento de hoje e NÃO termina o campo**, e a distinção está escrita porque
+  *"rodou"* vai parecer *"resolvido"* para quem ler daqui a um mês. O `||` sabe dizer PÕE e não sabe
+  dizer TIRE, e **um dos quatro pontos do cliente TIRA chave**. Hoje isso é inerte porque esse ponto
+  grava direto na tabela e nunca chama a RPC.
+
+  **A assimetria está do lado bom, e é a regra geral:** migração antes do cliente é segura, cliente
+  antes da migração é a janela ruim. Por isso ela pode ser rodada hoje sem esperar nada. O que ela
+  obriga está no L43, e está no cabeçalho da própria migração.
+
 - [ ] **L43 · [O MESTRE FEITO · O JOGADOR ESPERA A MIGRAÇÃO 35] A marca da mordida que a aba do
   jogador apagava** · *achado em 05/09/2026, ao construir a saída da área. É a família do L41, e é o
   pior caso dela.*
@@ -2568,14 +2581,19 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   **E A MARCA `__a_sair` VAI JUNTO, e a resposta à pergunta da mesa é: não, a Arte não soltava · ela
   DEIXAVA DE SOLTAR.** A marca é o que segura a Arte em montagem: com ela, `deveSair()` é verdadeiro
-  e a Arte ainda deve o efeito. Apagada, o laço da saída passa direto
-  (`if (!deveSair(ef) || montando(ef, t)) continue;`, `src/lib/artes-grid-mesa.ts:1738`) e **a Arte
-  nunca sai**.
+  e a Arte ainda deve o efeito. Apagada, o laço da saída passa direto e **a Arte nunca sai**:
+  `src/lib/artes-grid-mesa.ts:1754` é `if (!deveSair(ef) || montando(ef, t)) continue;`
 
-  **O sintoma que alguém viu e não soube nomear:** a mancha fica no chão a duração inteira **sem
-  ferir ninguém, sem aplicar condição e sem saltar**, e some no fim como se tivesse vencido o prazo.
-  A Mana foi paga. Não aparece erro nenhum. Do lado de quem conjurou é *"eu conjurei e não aconteceu
-  nada"*.
+  **O SINTOMA, e ele vai escrito com estas palavras porque é o que alguém vai relatar de uma mesa
+  antiga sem saber o nome:** a Mana foi paga, a mancha fica no chão **a duração inteira sem ferir
+  ninguém, sem aplicar condição e sem saltar**, e some no fim **como se tivesse vencido o prazo**.
+  Não aparece erro nenhum. Do lado de quem conjurou é *"eu conjurei e não aconteceu nada"* · e do
+  lado do mestre é **uma mancha que ele vê expirar sozinha e supõe que já tinha resolvido**, que é
+  o que fecha o círculo: os dois lados encontram uma explicação inocente e ninguém abre chamado.
+
+  **Se alguém contar isso de uma sessão antiga, é este defeito.** Sem o sintoma escrito, ninguém
+  liga o relato à causa · a causa é uma chave sumindo de um mapa, e o relato é uma Arte que não
+  aconteceu.
 
   **A JANELA DESSE CASO É ESTREITA, e é honesto dizer**: enquanto a Arte está montando ela não morde
   (o laço da mordida abre com `if (montando(ef, t)) continue;`), então a única brecha é entre o Tick
@@ -2590,11 +2608,30 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   esta chave" ou "tira esta chave", nunca "o mapa passa a ser este". **Por isso ele não precisa de
   lápide**, como o registro precisou · a operação já vem expressa como delta.
 
+  **MAS A DISPENSA DA LÁPIDE TEM CONDIÇÃO, e ela é: enquanto o caminho for gravação direta na
+  tabela.** O delta tem duas direções, e só sobrevive ao canal que entende as duas. A tabela entende
+  (chave que sumiu do objeto some do banco, e é assim que a `A_SAIR` é tirada); **o `||` da 35 não
+  entende "TIRE"**. Está escrito no comentário do `marcarMordido`, e é o que faz a 35 entrar inerte.
+
   **O lado do JOGADOR não tem conserto do cliente**, e a linha do `else` é o que sobra: ele não pode
   reler o que a view não manda. **O conserto é a `supabase/migracao-35.sql`**, escrita e esperando a
   mesa rodar: uma linha, trocando o `coalesce` por `||`, que é o mesmo operador que a
   `jogador_registra` já usava. **Fundir é estritamente menos permissivo que substituir**, então ela
   não precisa de policy nova.
+
+  **E ELA ENTRA INERTE, E NÃO PRONTA** (decidido pela mesa em 05/09/2026, e escrito porque "rodou"
+  vai parecer "resolvido"). O `||` sabe dizer PÕE e não sabe dizer TIRE: chave ausente da carga
+  **sobrevive** em vez de sumir. E um dos quatro pontos do cliente TIRA chave · o
+  `marcarMordido(ctx, ef, A_SAIR, null)`, que cai no `delete base[chave]`. Pela RPC, tirar a
+  `__a_sair` seria operação sem efeito: a marca ficaria para sempre, o `deveSair()` verdadeiro para
+  sempre, e o efeito não pararia de tentar sair.
+
+  **Hoje é inerte** porque o `marcarMordido` grava direto na tabela e nunca chama a RPC. **A
+  assimetria está do lado bom: migração antes do cliente é segura, cliente antes da migração é a
+  janela ruim.** O que isso obriga: **o vocabulário de remoção tem de existir na RPC ANTES de
+  qualquer cliente passar a usar a `jogador_muda_efeito` para este campo**, não depois. E **a
+  asserção que prova isso nasce junto do vocabulário**, não agora: prender hoje uma remoção que
+  nenhum caminho executa seria prender o dublê.
 
   **AS OPÇÕES, e a mesa escolheu FUNDIR NA RPC:**
 

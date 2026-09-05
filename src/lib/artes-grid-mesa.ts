@@ -1619,6 +1619,22 @@ async function aplicarDano(ctx: CtxGrid, alvo: any, bruto: number, plano: Plano,
  * apagarem · e não é preciso lápide nenhuma, como foi preciso no registro,
  * porque a operação já vem expressa como delta.
  *
+ * MAS O DELTA TEM DUAS DIREÇÕES, E SÓ SOBREVIVE AO CANAL QUE ENTENDE AS DUAS.
+ * Isto aqui grava DIRETO NA TABELA, e a tabela entende as duas: o cliente monta
+ * o objeto e o PostgREST o substitui, então chave que sumiu do objeto sumiu do
+ * banco. É por isso que `valor == null` pode ser um `delete` e pronto · e a
+ * `A_SAIR` é tirada exatamente assim, uma vez por efeito que sai.
+ *
+ * O `||` DA MIGRAÇÃO 35 NÃO ENTENDE "TIRE": ele funde, e chave AUSENTE da carga
+ * sobrevive em vez de sumir. Se algum destes quatro pontos passar um dia pela
+ * `jogador_muda_efeito`, o `marcarMordido(..., null)` vira operação sem efeito,
+ * a `A_SAIR` fica gravada para sempre, o `deveSair` fica verdadeiro para sempre
+ * e o efeito não para de tentar sair.
+ *
+ * ENTÃO A DISPENSA DA LÁPIDE TEM CONDIÇÃO, e ela é esta: vale ENQUANTO O CAMINHO
+ * FOR GRAVAÇÃO DIRETA NA TABELA. O vocabulário de remoção tem de existir na RPC
+ * ANTES de qualquer cliente passar a usá-la para este campo, e não depois.
+ *
  * O LADO DO JOGADOR NÃO TEM CONSERTO DAQUI, e a linha do `else` é o que sobra.
  * Ele carrega os efeitos da `efeito_visao`, e essa view NÃO TRAZ `mordidos`
  * (conferido no esquema de produção: `42703`). Então `ef.mordidos` é `{}` na aba
