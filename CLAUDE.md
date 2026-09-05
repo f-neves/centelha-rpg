@@ -70,11 +70,16 @@ cd ../centelha-artes
 npm install                 # 3. node_modules é por árvore, e não é compartilhado
 cp ../rpg-system/.env .     # 4. a chave anon; o .env é ignorado e não vem no checkout
 git ls-files --eol | awk '$1 !~ /-text/ && $2 ~ /crlf/' | wc -l   # 5. tem de dar 0
+node scripts/test-portoes.mjs                                     # 6. tem de ficar verde
 ```
 
 O passo 5 é a conferência do fim de linha descrita mais abaixo: uma árvore nova nasce
 em LF pelo `.gitattributes`, e se der diferente de zero é sinal de que algo está
 errado antes de qualquer trabalho.
+
+O passo 6 confere o gancho de `pre-commit`: a worktree HERDA a `core.hooksPath` do
+diretório comum, então ela já deve nascer com ele ligado. Se o portão reclamar, o
+comando de conserto vem na mensagem.
 
 **O que muda no dia a dia:** as duas passam a precisar de `git pull --rebase` de
 verdade uma pela outra, em vez de compartilharem `HEAD` de graça. Em troca, `git
@@ -148,6 +153,20 @@ dia, então ele só os reescreve se sumirem. E o passo 1 não é formalidade: o
 - `npm run validate` é o portão rápido: integridade referencial dos dados mais a
   regressão de personagem (`test-kael.mjs`). `npm run build` roda os dois antes do
   Astro, então build verde é garantia real, não formalidade.
+- **O `validate` roda sozinho a cada commit, e não por lembrança.** O gancho está
+  versionado em `scripts/hooks/pre-commit` e custa 7 segundos. Ligar, **uma vez por
+  clone** (as worktrees herdam, porque a configuração mora no diretório comum):
+
+  ```sh
+  git config core.hooksPath scripts/hooks
+  ```
+
+  Quem confere que isso foi feito é o próprio `test-portoes.mjs`, que fica vermelho
+  neste clone enquanto o gancho não estiver ligado. **Ele guarda o texto também**:
+  o `test-procedencia.mjs` cobra a procedência dos números e a regra do teto nos
+  documentos, então commit de `.md` passa pelo mesmo portão que commit de código.
+  Foi pulando isso que um commit de documento derrubou o CI **e o deploy** em
+  04/09/2026. Nada de `--no-verify`.
 - Catálogos de perícias nos capítulos são **gerados**, não escritos à mão:
   `node scripts/gen-cap-pericias.mjs` depois de mexer nos JSONs de habilidades.
 - A ficha (`/ficha`) é montada por JS no cliente, em `src/lib/ficha-engine.ts`.

@@ -20,7 +20,7 @@
 // **omissões**, e omissão não faz barulho: cada arquivo continua coerente
 // consigo mesmo, e o verde continua verde.
 //
-// O QUE ELE CONFERE, e as quatro respondem à mesma pergunta por ângulos
+// O QUE ELE CONFERE, e as cinco respondem à mesma pergunta por ângulos
 // diferentes:
 //
 //   1. TODO TESTE ESTÁ EM ALGUM PORTÃO. Um `scripts/test-*.mjs` que não aparece
@@ -36,9 +36,13 @@
 //   4. TODA GARANTIA ESCRITA APONTA PARA CÓDIGO QUE RODA. Um comentário que
 //      afirma "isso é conferido lá", "isso nunca chega ao cliente" ou "isso
 //      aparece na hora" tem a forma de uma asserção sem ser uma: envelhece sem
-//      nada acusar. Cobram-se as três formas que apontam para coisa concreta.
+//      nada acusar. Cobram-se as três formas que apontam para coisa concreta;
+//   5. O PORTÃO RODA SOZINHO NESTE CLONE. As quatro acima só valem se alguém as
+//      executar, e em 04/09 um commit de documento subiu sem `validate` e
+//      derrubou o CI e o deploy. O `pre-commit` versionado tira isso da
+//      lembrança, e esta seção confere que ele está ligado.
 //
-// A FORMA DAS QUATRO É A MESMA, e é a do princípio do zero ambíguo: a ausência
+// A FORMA DAS CINCO É A MESMA, e é a do princípio do zero ambíguo: a ausência
 // nunca vale por si. Ou o instrumento está no portão, ou a ausência dele está
 // escrita aqui com o motivo. O que não pode é ninguém saber em qual dos dois
 // casos se está.
@@ -46,6 +50,7 @@
 //   node scripts/test-portoes.mjs
 import fs from 'node:fs';
 import path from 'node:path';
+import { execSync } from 'node:child_process';
 import { lerCarimbos, idade } from './carimbo.mjs';
 
 const RAIZ = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
@@ -342,6 +347,36 @@ secao('· toda tolerância tem prazo ou condição');
 }
 
 // ===================================================================== 5
+// O PORTÃO RODA SOZINHO NESTE CLONE.
+//
+// Em 04/09/2026 um commit de documento subiu sem `npm run validate`, e o
+// `test-procedencia.mjs` derrubou o CI e o deploy junto. O portão existia, era o
+// certo, e estava no `validate`: o que faltava era ele não depender de lembrança.
+//
+// O `pre-commit` versionado (`scripts/hooks/pre-commit`) roda o `validate`
+// inteiro em 7 segundos. Mas a `core.hooksPath` é configuração LOCAL, então um
+// clone novo nasce sem ela, e um gancho que ninguém ligou é exatamente o L25.
+// Esta seção é o que fecha o círculo: quem não instalou vê vermelho na primeira
+// vez que rodar o portão à mão, com o comando na tela.
+//
+// NÃO RODA NO CI, e não é tolerância: lá não há commit, não há gancho, e cobrar
+// configuração de gancho num runner seria cobrar uma coisa que não existe.
+if (!process.env.CI) {
+  secao('· o portão roda sozinho neste clone');
+  const gancho = 'scripts/hooks';
+  let caminho = '';
+  try {
+    caminho = execSync('git config core.hooksPath', { cwd: RAIZ, encoding: 'utf8' }).trim();
+  } catch { caminho = ''; }
+  const instalado = caminho.replace(/\\/g, '/') === gancho;
+  ok(instalado, instalado
+    ? `\`core.hooksPath\` aponta para \`${gancho}\`, então todo commit passa pelo \`validate\``
+    : `\`core.hooksPath\` ${caminho ? `aponta para \`${caminho}\`` : 'não está configurada'}: rode \`git config core.hooksPath ${gancho}\``);
+  ok(fs.existsSync(path.join(RAIZ, gancho, 'pre-commit')),
+    'e o `pre-commit` versionado está no lugar');
+}
+
+// ===================================================================== 6
 // HÁ QUANTO TEMPO CADA PORTÃO NÃO RODA AQUI.
 //
 // Não é asserção, é notícia, e ela sai impressa em todo `npm run validate`, que

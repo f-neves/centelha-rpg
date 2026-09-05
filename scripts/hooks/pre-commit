@@ -1,0 +1,41 @@
+#!/bin/sh
+#
+# O portão, rodando sem depender de lembrança.
+#
+# POR QUE ELE EXISTE, com o caso: em 04/09/2026 um commit de DOCUMENTO subiu sem
+# `npm run validate`, e o `test-procedencia.mjs` (que existe justamente para o
+# texto) derrubou o CI. E não parou aí: o `build` roda o `validate` antes do
+# Astro, então o deploy caiu junto e o site ficou um commit atrás.
+#
+# O portão já estava no `validate` e o `validate` já era o certo a rodar. O que
+# faltava era ele NÃO DEPENDER DE ALGUÉM LEMBRAR, e é a mesma forma do L25: o
+# mecanismo existia e nada o executava.
+#
+# CUSTA 7 SEGUNDOS, medido nesta máquina, e é por isso que roda inteiro em vez
+# de escolher gates pelo que mudou: escolher exigiria um mapa de arquivo para
+# portão, e esse mapa seria mais uma lista para ficar velha (é o caso 13).
+#
+# NÃO USE `--no-verify`. Se o portão está vermelho, o commit está errado ou o
+# portão está errado, e as duas coisas se resolvem olhando, não pulando.
+#
+# Instalação, uma vez por clone (a `core.hooksPath` é local e as worktrees a
+# herdam, porque moram no mesmo diretório comum):
+#
+#   git config core.hooksPath scripts/hooks
+#
+# Quem confere que isso foi feito é o próprio `test-portoes.mjs`.
+
+if ! command -v npm >/dev/null 2>&1; then
+  echo "✘ pre-commit: npm não está no PATH, e sem ele o portão não roda."
+  echo "  Rode \`npm run validate\` à mão antes de commitar, ou conserte o PATH."
+  exit 1
+fi
+
+echo "· pre-commit: npm run validate"
+if ! npm run --silent validate; then
+  echo ""
+  echo "✘ O portão falhou, e o commit não foi feito."
+  echo "  Conserte o que ele apontou e commite de novo."
+  exit 1
+fi
+exit 0

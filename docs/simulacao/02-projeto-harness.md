@@ -242,6 +242,26 @@ cobra só as três formas que **apontam para coisa concreta**: referência a scr
 cabeçalho em toda página de mesa, e a chave de serviço fora do pacote. O resto foi conferido à mão,
 uma vez, e está nesta tabela.
 
+**E A VARREDURA PEGOU UM DOS TRÊS TIPOS, o que quer dizer que 49 ocorrências varridas NÃO
+significam assunto fechado.** Foi a revisora quem separou, e a forma comum aos três não é a palavra:
+é o **presente do indicativo sobre o comportamento do código**. Uma frase que diz o que o programa
+faz, escrita quando era verdade, e não revisada quando deixou de ser.
+
+| tipo | exemplo desta semana | como se acha |
+|---|---|---|
+| **afirma garantia em letras** | `gen-monsters.mjs`: "esquecer aparece na hora" | gatilho de texto · é o único que a varredura pega |
+| **declara tolerância com fato expirado** | `validate.yml`: `continue-on-error` com "há erros antigos" | gatilho de texto, **e só porque a marca `TOLERÂNCIA` já existia** |
+| **só descreve comportamento** | `grid.astro:8364`: "o campo fica com o primeiro golpe" | **não tem gatilho.** Nenhuma palavra de garantia, nenhuma de tolerância. Descreve um mundo anterior à folha por golpe |
+
+O terceiro é o mais comum dos três e o único sem sinal nenhum, porque **descrever é o trabalho
+normal de um comentário**: não há palavra que o separe de um comentário correto. O que o separa é o
+tempo, e tempo não casa com regex.
+
+Ele sai lendo o DIFF: quando o comportamento muda, os comentários em volta descrevem o
+comportamento velho, e é ali (na revisão da mudança, não numa varredura do repositório) que a
+distância aparece. Por isso o item mora no roteiro de revisão e **não vira portão**: um portão
+precisa de um sinal, e este não tem.
+
 **E O TETO É DO DESENHO, E NÃO DA NATUREZA**, com os consertos desenhados até hoje. O que ele
 depende é da FORMA em que a garantia está escrita, e a forma de hoje é prosa solta. **O degrau que
 o levantaria já existe neste mesmo arquivo, na seção 3:** a tolerância também era prosa solta até
