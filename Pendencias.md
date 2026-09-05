@@ -2239,12 +2239,165 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
      **Defesa +4**, e o próprio texto do Efeito diz *"Não esconde nada: só apaga a lembrança de ter
      visto."* Aplicar seria o defeito, não deixar de aplicar.
 
-  **MAS NÃO É UNÂNIME, e é por isso que o conserto não é "apagar o campo nos nove".** Lapso
-  (*"a próxima ação dele sai mais cedo"*) e Instante declaram `acelerado`, que é velocidade −2, e
-  esses dois leem como se quisessem mesmo a condição. **A pergunta de verdade é o que o campo
-  significa**, e hoje ele tem dois significados: `grid.condicao` é lido como *"a condição que isto
-  aplica"* em 57 Efeitos e escrito como *"a condição com que isto se parece"* em 9. **Um campo com
-  dois sentidos é o defeito**, e o conserto começa decidindo qual dos dois ele tem.
+  **NENHUM CONSERTO UNIFORME SERVE, e é isso que fecha o enquadramento.** Os nove não querem a
+  mesma coisa: Lapso (*"a próxima ação dele sai mais cedo"*) e Instante declaram `acelerado`, que é
+  velocidade −2, e esses dois leem como se quisessem mesmo a condição · enquanto Rosto Esquecível
+  prova que aplicar seria o defeito. **Apagar o campo nos nove quebra dois; ligar a aplicação nos
+  nove quebra os outros sete.** Qualquer regra que trate os nove igual erra em pelo menos dois.
+
+  **A PERGUNTA DE VERDADE É O QUE O CAMPO SIGNIFICA**, e hoje ele tem dois significados:
+  `grid.condicao` é lido como *"a condição que isto aplica"* em 57 Efeitos e escrito como *"a
+  condição com que isto se parece"* em 9. **Um campo com dois sentidos é o defeito**, e a saída
+  provavelmente é **separá-lo em dois**: um que o motor executa e um que só classifica. Aí cada um
+  dos nove escolhe o seu, e a triagem vira leitura de nove linhas em vez de uma regra que não
+  existe.
+
+- [ ] **L40 · [PERDA DE DADO EM PRODUÇÃO · PROPOSTO, NÃO CONSTRUÍDO] O registro do jogador que o
+  mestre apaga sem saber** · *achado em 05/09/2026. Só o Grid. A proposta está escrita aqui e a
+  construção espera decisão, porque ela depende de migração e a mesa não está rodando migração.*
+
+  **O DEFEITO.** No Grid os dois papéis escrevem o mesmo campo por caminhos que não se conhecem.
+
+  O jogador acrescenta pelo banco, e o banco lê a coluna e concatena lá dentro:
+  `SB.rpc('jogador_registra', { p_arena: ARENA.id, p_linha: linha })`, `grid.astro:9629`.
+  O mestre grava o vetor inteiro da memória dele:
+  `await SB.from('mesa_arenas').update({ log: LOG }).eq('id', ARENA.id);`, `grid.astro:9634`. **A linha que o jogador acabou de
+  registrar some se o `LOG` do mestre for anterior a ela, sem erro nenhum.** É o caminho normal dos
+  dois durante uma cena.
+
+  Só o Grid: o `combate.astro` grava `encontros` e não tem RPC de jogador nenhuma.
+
+  ### O tamanho, e ele é uma corrida e não uma certeza
+
+  **O `LOG` do mestre NUNCA é relido antes de uma escrita.** O `persistirLog` escreve a cópia em
+  memória, sem `select`. Ele é atualizado só pela campainha do tempo real:
+  `if (assuntos.has('registro')) { await carregarLog(true); pintarLog(); }`, `grid.astro:7390`, e é
+  o `doBanco` que vai ao banco.
+
+  **Então a janela é o atraso da campainha, e ela tem números.** Todos em
+  `src/lib/mesa-tempo-real.ts`:
+
+  | etapa | constante | ms |
+  |---|---|---|
+  | o aviso do jogador junta antes de sair | `JUNTAR_ENVIO` | 120 |
+  | as campainhas juntam antes de virar releitura | `JUNTAR_RECEBIDO` | 220 |
+  | e enquanto o mestre está OCUPADO, a releitura é adiada | `RETENTAR_OCUPADO` × `MAX_ADIAMENTOS` | 700 × 30 = **~21 s** |
+
+  **O piso é ~340 ms e o teto é ~21 segundos**, e o teto não é raro: `ocupado` inclui
+  `|| !el('tok-menu').hidden || !!document.querySelector('dialog[open]')`, `grid.astro:7305`, e
+  diálogo aberto é exatamente o estado do mestre no instante em que ele vai registrar (confirmar
+  dano, confirmar acerto, pôr condição). **A janela larga acontece justamente quando ele está
+  prestes a escrever.**
+
+  Fora disso, perda total em dois casos: canal de tempo real que não subiu, e aba que ficou fora
+  além do `AUSENCIA_LONGA` sem ressincronizar.
+
+  **DESDE QUANDO: 12/08/2026** (`2d9e47d`, a migração 22, "o jogador age no tabuleiro"). E a
+  campainha veio ANTES, em 11/08 (`55110b8`): **nunca houve período em que a perda fosse certa.**
+  Sempre foi corrida, e o tempo real sempre foi a mitigação que quase sempre ganha.
+
+  ### O conserto NÃO é trocar pelo RPC, e o inventário mostra por quê
+
+  O mestre não só acrescenta. No Grid, cinco gestos chamam o `persistirLog`, e quatro deles não são
+  acréscimo:
+
+  | gesto | o que faz hoje |
+  |---|---|
+  | `logar()` | empurra uma linha e grava o vetor |
+  | `desfazer()` | tira a última linha com `acao` (`LOG.splice(idx, 1);`, `grid.astro:9700`) e grava o vetor |
+  | `editarLinha(id)` | muda `txt`/`pub` de uma linha, e grava o vetor |
+  | `excluirLinha(id)` | tira por id (`LOG.splice(i, 1);`, `grid.astro:9794`) e grava o vetor |
+  | `refazerLogDosEfeitos()` | `LOG = LOG.filter((e: any) => !e.ef);` (`grid.astro:9823`) e empurra N linhas novas |
+
+  **E UMA CORREÇÃO AO ENUNCIADO: não existe zerar no Grid.** O `LOG = []` é do `combate.astro`
+  (`if (zLog) { LOG = []; await persistLog(); }`, `combate.astro:2058`), na caixa de reiniciar
+  combate, e lá não há escritor concorrente. **Zerar não precisa de caminho novo:** precisa ficar
+  onde está.
+
+  ### A proposta, gesto a gesto
+
+  | gesto | vira |
+  |---|---|
+  | acrescentar | `mestre_registra(arena, linha)` · concatena no banco, igual à do jogador |
+  | apagar por id | `log_apaga(arena, id)` · o banco filtra o `jsonb` por `id` |
+  | desfazer | a mesma `log_apaga`, com o id da linha desfeita |
+  | editar | `log_edita(arena, id, txt, pub)` · o banco troca só aquele elemento |
+  | refazer os efeitos | `log_refaz_efeitos(arena, linhas)` · apaga onde `ef` e concatena as novas, numa transação |
+
+  **A PERGUNTA QUE MUDARIA A NATUREZA DO CONSERTO, respondida: não muda.** O `jsonb` do Postgres não
+  remove elemento por predicado sem reconstruir o array, então sim, o vetor inteiro é reescrito.
+  **Mas reescrito a partir do valor que está NA LINHA, dentro do próprio `update`:**
+
+  ```sql
+  update mesa_arenas
+     set log = coalesce((select jsonb_agg(x) from jsonb_array_elements(log) t(x)
+                          where x->>'id' <> p_id), '[]'::jsonb)
+   where id = p_arena;
+  ```
+
+  O `log` do lado direito é o do banco no instante da escrita. **A linha que chegou depois da foto
+  do mestre está nesse `log` e sobrevive.** O que causa a perda é a FOTO LOCAL, e não a reescrita
+  do vetor · e é a foto que sai.
+
+  **E UM ACHADO NO INVENTÁRIO, que é decisão de mesa e não de código:** `refazerLogDosEfeitos` apaga
+  toda linha marcada `ef`, e a marca é posta pelo `logar` que a aba entrega ao módulo das Artes
+  (`logar(c, txt, { ...extra, ef: true })`, `grid.astro:2670`) · **inclusive quando quem conjurou
+  foi o jogador**. Então refazer o log dos efeitos hoje apaga as linhas de Arte DO JOGADOR e escreve
+  as do mestre no lugar. Pode ser o certo (ele regenera a partir do que está no chão), mas nunca foi
+  decidido.
+
+  ### O que trava a construção, e é preciso dizer antes
+
+  **Tudo isso é migração nova (34), e a mesa não está rodando migração** · a 29 e a 30 estão
+  pendentes desde 04/09 e a 33 foi recusada. Um conserto que só funciona depois de um arquivo que
+  ninguém vai rodar não conserta nada.
+
+  **Existe metade que não depende de migração**, e ela fecha a janela real sem fechar a corrida: o
+  `persistirLog` do mestre **relê o `log` do banco imediatamente antes de escrever e mescla por
+  `id`** (a ordem do banco manda, o que só existe na memória entra no fim). Isso não elimina a
+  corrida (dois `update` ainda podem se cruzar entre o `select` e o `update`), mas troca uma janela
+  de até 21 segundos por uma de milissegundos, e roda hoje, em toda mesa, sem SQL nenhum. **A
+  decisão de mesa é se vale a metade agora, ou se espera a migração.**
+
+  ### A asserção de sobrevivente, com a metade que quase ninguém escreve
+
+  Três casos, e o segundo é o que separa isto de garantia escrita, porque **apagar reescrevendo o
+  vetor inteiro tem exatamente a forma da colisão, e o alvo perdido é a linha do jogador que não
+  estava na foto**:
+
+  1. o mestre ACRESCENTA e a linha do jogador fica;
+  2. **o mestre APAGA uma linha dele e a do jogador fica**;
+  3. o mestre REFAZ os efeitos · e o que acontece é o do achado acima, que precisa ser decidido
+     antes de virar asserção.
+
+- [ ] **L41 · [PENDÊNCIA DA MESMA FAMÍLIA] Leitura-modificação-escrita de coleção inteira a partir
+  de foto local** · *a forma, nomeada em 05/09/2026, a partir do L40.*
+
+  **A FORMA:** o cliente lê uma coleção, muda um elemento e grava a coleção inteira de volta. **O
+  perdedor não perde a própria escrita, perde a de uma TERCEIRA coisa que não estava na foto dele.**
+  É por isso que ela não aparece em teste: quem escreveu vê o que escreveu.
+
+  **A RÉGUA PARA PRIORIZAR, e ela reordena a lista:** contar por forma de escrita acha a família,
+  mas **o risco sai de quantos caminhos escrevem o mesmo campo**. Onde só o mestre escreve, a forma
+  é a mesma e o risco é outro · é dívida de desenho, não perda de dado.
+
+  | campo | mestre | jogador | risco |
+  |---|---|---|---|
+  | `combatentes.condicoes` | vetor inteiro, de foto | `jogador_muda_peca` · também vetor inteiro, de foto | **o pior dos três** |
+  | `arena_efeitos.mordidos` | vetor inteiro, de foto | `jogador_muda_efeito` · também vetor inteiro, de foto | igual ao de cima |
+  | `mesa_arenas.log` (Grid) | vetor inteiro, de foto | `jogador_registra` · concatena no banco | o L40 |
+  | `encontros.log` (`combate.astro`) | vetor inteiro, de foto | ninguém | um caminho só |
+
+  **E ISSO INVERTE A ORDEM ESPERADA.** O defeito do L40, que foi o achado, é **o menos grave dos
+  três concorrentes**, porque nele um dos lados (o do jogador) já é atômico do lado do servidor: só
+  o mestre pode apagar o do outro. Em `condicoes` e em `mordidos` **os dois lados gravam vetor
+  inteiro a partir de foto**, então **qualquer um dos dois apaga a escrita do outro**. O caminho do
+  jogador recebe o array pronto e não tem opinião sobre ele
+  (`condicoes  = coalesce(p_dados->'condicoes', condicoes),`, `supabase/migracao-22.sql:126`), e o
+  do mestre entrega o array da memória pelo mesmo `gravarPeca`.
+
+  O `encontros.log` do `combate.astro` tem a mesma forma e um escritor só: fica no fim da fila, e
+  por um motivo escrito, não por esquecimento.
 
 - [ ] **L36 · [QUANDO A REGRA APARECER] O `resumoParaBanco` é vitrine, e não entrada de conta.**
   Não é defeito hoje, e é para isso que está escrito: quando alguém topar com ele, que não trate
