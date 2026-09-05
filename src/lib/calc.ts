@@ -206,3 +206,44 @@ export const custoEfeito = (nivel: number) => custoPontos('efeito', undefined, n
 /** Especialidade nomeada: acumulativo, uma trilha por escopo. */
 export const custoEspecialidade = (nivel: number, secundaria = false) =>
   custoPontos(secundaria ? 'especialidadeSecundaria' : 'especialidadePrimaria', undefined, nivel);
+
+/**
+ * O VALOR PASSIVO, pela fórmula do `coracao-do-sistema.md:59`:
+ * `(Atributo + Habilidade) × 2 + Especialidade + Centelha`.
+ *
+ * Ele é a Dificuldade de quem se opõe sem rolar. O caso que o trouxe para cá é a
+ * Percepção Passiva do alvo contra a Furtividade de quem ataca do escuro, mas a
+ * fórmula é a geral, e por isso os parâmetros têm nome de papel e não de perícia.
+ *
+ * MORA NO `calc.ts` porque é o único módulo que os dois lados importam: a ficha
+ * (`combate-resumo`) e o bestiário (`mesa-bestiario`). Pô-la num dos dois faria
+ * o outro importar dele, e o bestiário já importa a ficha: seria ciclo.
+ *
+ * A ESPECIALIDADE NÃO ENTRA, e a ausência é declarada em vez de esquecida: nem a
+ * criatura nem a ficha guardam especialidade POR PERÍCIA hoje. Quando guardarem,
+ * ela soma aqui e em mais lugar nenhum.
+ *
+ * Nulo em qualquer metade devolve nulo, e não zero: "não dá para saber daqui" é
+ * resposta diferente de "a Passiva é zero", e quem compara tem de poder separar
+ * as duas.
+ */
+/**
+ * O que uma peça sabe sobre perceber e sobre se esconder.
+ *
+ * Vive aqui, e não num dos dois `ResumoCombate`, porque os dois o preenchem: a
+ * ficha tem as perícias por nome, a criatura tem o bloco `pericias` que o
+ * `gen-bestiario.mjs` deriva. Dois tipos com o mesmo nome e formas diferentes
+ * seria o contrato silencioso que o `equip.ts` já ensinou a evitar.
+ *
+ * `null` é "não dá para saber daqui", e nunca zero.
+ */
+export interface Sentidos {
+  /** O muro que quem se esconde tem de superar. Ele não rola. */
+  percepcaoPassiva: number | null;
+  /** As duas metades da jogada de se esconder, sem virar pool: isso é do motor. */
+  furtividade: { atributo: number; pericia: number } | null;
+}
+
+export const valorPassivo = (
+  atributo?: number | null, habilidade?: number | null, centelha = 0,
+) => (atributo == null || habilidade == null ? null : (atributo + habilidade) * 2 + centelha);

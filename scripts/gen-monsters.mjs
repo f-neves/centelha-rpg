@@ -188,6 +188,13 @@ function build(c) {
     imagem: IMG[c.id] || null,
     semImagem: !IMG[c.id],
     atributos: c.atributos,
+    // AS PERICIAS, desde 04/09/2026. Quatro vem da conta invertida dos derivados
+    // (o gerador do bestiario as consumia e descartava) e a Furtividade vem da
+    // tabela por porte e categoria. Elas nao entram em conta nenhuma daqui: o
+    // motor continua lendo ,  e . Existem para
+    // as catorze regras de oposicao que pedem a PERICIA pelo nome, e sao
+    // OMITIDAS quando a conta nao fecha, em vez de zeradas.
+    ...(c.pericias && Object.keys(c.pericias).length ? { pericias: c.pericias } : {}),
     vontade: c.vontade ?? 5,
     aparencia: aparenciaDe(c.id, e.tipo, c.ameaca),
     virtudes: virtudesDe(e.tipo, categoria, c.ameaca, h.en),

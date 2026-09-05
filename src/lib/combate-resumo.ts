@@ -2,7 +2,7 @@
 // Puro e reaproteitável: extrai Ataque, Dano e Defesa física (Esquiva) usando a
 // mesma matemática de ficha-engine (renderCombate/renderDerived), sem tocar no DOM.
 // Serve ao rastreador de combate da mesa, que só tem a ficha crua do personagem.
-import { defesa, defesaMental, ataqueCentelha, empilharArmaduras, soakNatural, regras, MODO_ORDEM, MODO_SIGLA, deslocamento } from './calc';
+import { defesa, defesaMental, ataqueCentelha, empilharArmaduras, soakNatural, regras, MODO_ORDEM, MODO_SIGLA, deslocamento, valorPassivo, type Sentidos } from './calc';
 import { ARMA, ESCUDO, armaDoSlot, escudoDoSlot, armadurasDe } from './equip';
 import { qaDaPeca, type QACombate } from './quase-acerto';
 import RACA_D from '../data/racas.json';
@@ -31,6 +31,8 @@ export interface ResumoCombate {
    * descontadas, para os dois lugares mostrarem o mesmo número.
    */
   passo: Passo;
+  /** Perceber e esconder-se. Ver `Sentidos`, em `calc.ts`. */
+  sentidos: Sentidos;
 }
 
 // As peças saem de equip.ts já com os ajustes que o jogador fez na ficha
@@ -160,6 +162,13 @@ export function resumoCombatePC(S: any): ResumoCombate {
   const mp = (v: number) => Math.max(0, v - penMov);
   const passo: Passo = { batalha: mp(dz.normal), arranque: mp(dz.arranque), corrida: mp(dz.corrida) };
 
+  // OS SENTIDOS, para o golpe vindo do escuro. O PC e o lado facil dos dois: a
+  // ficha tem as pericias por nome, entao a Passiva e a jogada saem direto. A
+  // criatura chega ao mesmo contrato por outro caminho (ver ).
+  const sentidos = {
+    percepcaoPassiva: valorPassivo(attrs.percepcao, skills.prontidao ?? skills2.prontidao, C),
+    furtividade: { atributo: attrs.destreza || 0, pericia: skills.furtividade ?? skills2.furtividade ?? 0 },
+  };
   return { arma: w.nome, ataque, dano, defesa: def, defesaMental: defMental, soak,
-    resistPerf: armSt.resistPerf || 0, qa, passo };
+    resistPerf: armSt.resistPerf || 0, qa, passo, sentidos };
 }

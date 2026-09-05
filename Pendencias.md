@@ -1409,13 +1409,44 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **Não há terceira**: sem Furtividade não há comparação, e comparar contra um número fixo
   ("criatura no escuro passa sempre" ou "nunca passa") é escrever a regra por omissão.
 
-  **4 · O `ResumoCombate` NÃO CARREGA NENHUMA DAS TRÊS.** `resumoDe` (`src/lib/mesa-bestiario.ts:165`)
+  **5 · O QUE MAIS FALTA PELO MESMO MOTIVO, e a resposta é maior que dois campos.**
+
+  O `ResumoCombate` foi montado para O GOLPE, e é isso que ele carrega: arma, ataque,
+  dano, as três Defesas, Absorção, resistência à perfuração, velocidade, classe, passo,
+  P/G/R e Quase-Acerto. **Tudo derivado, e nenhum atributo cru.** A primeira regra que
+  pediu outra coisa achou dois buracos porque precisava de um atributo e de uma perícia;
+  as outras treze pedem mais cinco atributos e mais seis perícias.
+
+  | a regra pede | atributo | perícia | o resumo tem? |
+  |---|---|---|---|
+  | veneno, doença, ambiente (`acoes-resistir.md:32`) | Vigor | Resistência | **nenhum dos dois** |
+  | abrigo (`acoes-resistir.md:133`) | Percepção ou Inteligência | Sobrevivência | **nenhum dos dois** |
+  | amortecer a queda (`acoes-corpo-e-movimento.md:117`) | Destreza | Atletismo | **nenhum dos dois** |
+  | roubar, trapacear (`acoes-sentidos-e-engano.md:87`) | Destreza | Prestidigitação | **nenhum dos dois** |
+  | interrogar (`acoes-sentidos-e-engano.md:107`) | Influência | Manha ou Oratória | **nenhum dos dois** |
+  | esconder-se e o golpe do escuro (`coracao-do-sistema.md:59`) | Destreza e Percepção | Furtividade e Prontidão | **entrou agora** |
+
+  **O buraco de baixo é o mesmo em todas: o resumo não tem os nove atributos.** A criatura
+  os tem (`monsters.json`, chave `atributos`), a ficha os tem, e o contrato entre os dois
+  não os leva. Não é falta de dado, é falta de campo, e por isso cada regra nova vai achar
+  o mesmo buraco outra vez até alguém acrescentar `atributos` ao `ResumoCombate`.
+
+  A DECISÃO QUE ISSO PEDE, e ela não é minha: o `ResumoCombate` deve continuar sendo o
+  resumo **do golpe**, com um bloco por assunto novo (foi o que `sentidos` fez), ou passar
+  a ser o resumo **da peça**, carregando atributos e perícias e deixando cada regra montar
+  a sua conta? O primeiro é barato e cresce um bloco por regra; o segundo é uma passada e
+  não cresce mais. Enquanto não for decidido, cada regra nova paga o pedágio de novo.
+
+  **4 · O `ResumoCombate` NÃO CARREGA NENHUMA DAS TRÊS.** `resumoDe` (`src/lib/mesa-bestiario.ts:204`)
   devolve arma, ataque, dano, as três Defesas, absorção, resistência à perfuração, velocidade,
   classe, passo, pgr e Quase-Acerto. Não há Percepção, nem Prontidão, nem Furtividade: **o
   modelo de combate da mesa não conhece nenhuma perícia por nome**, só os derivados delas. Seja
-  qual for a saída escolhida, o `ResumoCombate` ganha um campo (a Passiva de percepção do alvo e
-  a Furtividade de quem ataca), e ele é o contrato que a ficha e o bestiário preenchem por
-  caminhos diferentes: a ficha tem as perícias, a criatura terá o derivado.
+  qual for a saída escolhida, o `ResumoCombate` ganha um campo. **FEITO em 04/09/2026**: o
+  bloco `sentidos` (`export interface Sentidos`, `src/lib/calc.ts`) com a `percepcaoPassiva`
+  e a `furtividade` partida em atributo e perícia, preenchido pelos dois lados por caminhos
+  diferentes (a ficha tem as perícias; a criatura tem o bloco `pericias` derivado). A
+  fórmula é `valorPassivo`, no mesmo arquivo, e ela mora lá porque é o único módulo que os
+  dois importam: pô-la num dos dois faria ciclo.
 
 - [ ] **L33 · [FASE 2.5] A VISTA DO JOGADOR COMO PRODUTO** · *decidida em 04/09/2026. Entra
   depois da fase 2 e antes do terreno. Não começar antes.*

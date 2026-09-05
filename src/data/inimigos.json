@@ -45,7 +45,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Testa de ferro frágil. Em grupo, use a regra de Horda.",
-    "pendente": false
+    "pendente": false,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 4,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "bandido-de-estrada",
@@ -93,7 +100,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Couro leve (Soak +2). Tenta emboscar.",
-    "pendente": false
+    "pendente": false,
+    "pericias": {
+      "prontidao": 2,
+      "integridade": 4,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "guarda-da-cidade",
@@ -141,7 +154,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Malha (Soak +4, Esquiva −1) + escudo (+2 ao Bloqueio). Chama reforço.",
-    "pendente": false
+    "pendente": false,
+    "pericias": {
+      "prontidao": 3,
+      "esquiva": 1,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "soldado-veterano",
@@ -189,7 +209,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Aproveita Quase Acerto e foca alvos isolados.",
-    "pendente": false
+    "pendente": false,
+    "pericias": {
+      "prontidao": 3,
+      "esquiva": 2,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "arqueiro",
@@ -237,7 +264,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Perfurante perf. 1: fura couro e malha, mas resvala na placa (Resist. 2). Mira (+2) quando pode.",
-    "pendente": false
+    "pendente": false,
+    "pericias": {
+      "prontidao": 3,
+      "integridade": 4,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "bruto",
@@ -286,7 +319,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Velocidade 7 (age pouco). Cerque-o e explore a lentidão.",
-    "pendente": false
+    "pendente": false,
+    "pericias": {
+      "prontidao": 0,
+      "integridade": 4,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "capitao-da-guarda",
@@ -334,7 +373,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Placa (Soak +6, Esquiva −2, lento) + escudo. Pico do que um mortal alcança.",
-    "pendente": false
+    "pendente": false,
+    "pericias": {
+      "prontidao": 4,
+      "integridade": 6,
+      "sociabilidade": 3,
+      "furtividade": 2
+    }
   },
   {
     "id": "assassino-das-sombras",
@@ -389,7 +434,13 @@
     ],
     "artes": [],
     "notas": "Bote Silencioso: +2d6 de dano contra alvo desavisado (que já sofre a penalidade de Defesa por surpresa).",
-    "pendente": false
+    "pendente": false,
+    "pericias": {
+      "prontidao": 4,
+      "integridade": 4,
+      "sociabilidade": 3,
+      "furtividade": 2
+    }
   },
   {
     "id": "duelista",
@@ -443,7 +494,13 @@
     ],
     "artes": [],
     "notas": "Aparar: +3 na Defesa; Riposte contra-ataca ao aparar.",
-    "pendente": false
+    "pendente": false,
+    "pericias": {
+      "prontidao": 4,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "feiticeiro-menor",
@@ -499,7 +556,14 @@
       }
     ],
     "notas": "Mana = Centelha×2 + Vontade = 8. Nível 2 (Labareda, 2d6) custa 2 Mana.",
-    "pendente": false
+    "pendente": false,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 2,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "cavaleiro-de-elite",
@@ -552,7 +616,13 @@
     ],
     "artes": [],
     "notas": "Placa + Pele de Pedra: Soak altíssimo contra corte. Vença-o com Impacto (a placa quase não absorve), perfuração nível 2+ ou Proeza.",
-    "pendente": false
+    "pendente": false,
+    "pericias": {
+      "prontidao": 3,
+      "integridade": 6,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "campeao",
@@ -606,7 +676,14 @@
     ],
     "artes": [],
     "notas": "Energia ≈ Centelha×3 + Virtudes + Vontade. Reservar para Técnicas de nível 1 a 3.",
-    "pendente": false
+    "pendente": false,
+    "pericias": {
+      "prontidao": 5,
+      "esquiva": 3,
+      "integridade": 6,
+      "sociabilidade": 3,
+      "furtividade": 2
+    }
   },
   {
     "id": "comandante",
@@ -659,7 +736,13 @@
     ],
     "artes": [],
     "notas": "Concede ações e bônus aos aliados (Estandarte/Comando). Some Influência quando inspira. Mate-o e a tropa vacila.",
-    "pendente": false
+    "pendente": false,
+    "pericias": {
+      "prontidao": 3,
+      "integridade": 6,
+      "sociabilidade": 4,
+      "furtividade": 2
+    }
   },
   {
     "id": "cultista",
@@ -715,7 +798,14 @@
       }
     ],
     "notas": "Mana 9. Em ritual, ergue um morto-vivo (Morte nível 3). Frágil no corpo a corpo.",
-    "pendente": false
+    "pendente": false,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 2,
+      "integridade": 3,
+      "sociabilidade": 3,
+      "furtividade": 2
+    }
   },
   {
     "id": "mago-de-batalha",
@@ -775,7 +865,14 @@
       }
     ],
     "notas": "Mana 12. Escudo de Força (Forças) o protege; Bola de Fogo atinge grupos. Feche a distância e quebre a concentração.",
-    "pendente": false
+    "pendente": false,
+    "pericias": {
+      "prontidao": 3,
+      "esquiva": 3,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-exemplo-espantalho",
@@ -824,7 +921,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Feito de madeira e palha: fogo o resolve depressa, e a foice do camponês quase não o machuca.",
-    "pendente": false
+    "pendente": false,
+    "pericias": {
+      "prontidao": 3,
+      "esquiva": 1,
+      "integridade": 3,
+      "sociabilidade": 0,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-goblin",
@@ -872,7 +976,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Perícias notáveis: Furtividade 2, Sobrevivência 1.",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "sociabilidade": 0,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-kobold",
@@ -920,7 +1031,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Perícias notáveis: Ofícios 1, Furtividade 1, Prontidão 1.",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "sociabilidade": 0,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-orc",
@@ -968,7 +1086,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Perícias notáveis: Prontidão 1.",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-hobgoblin",
@@ -1016,7 +1140,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Perícias notáveis: Furtividade 2, Prontidão 1.",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-gnoll",
@@ -1064,7 +1195,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Perícias notáveis: Prontidão 1.",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-bugbear",
@@ -1112,7 +1250,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Perícias notáveis: Furtividade 3, Prontidão 2.",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-homem-lagarto",
@@ -1160,7 +1305,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Perícias notáveis: Atletismo 1, Sobrevivência 1.",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-trogloditas",
@@ -1208,7 +1360,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Perícias notáveis: Furtividade 1.",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-ogro",
@@ -1256,7 +1415,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Perícias notáveis: Atletismo 1.",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-ettin",
@@ -1304,7 +1469,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Perícias notáveis: Prontidão 3, Sobrevivência 2.",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-trol",
@@ -1361,7 +1532,13 @@
         "alvo": "Cerne Vital · Regeneração (b9)",
         "caminho": "cerne-vital"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-gigante-da-colina",
@@ -1410,7 +1587,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Perícias notáveis: Atletismo 2, Prontidão 1.",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-gigante-da-pedra",
@@ -1458,7 +1641,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Perícias notáveis: Furtividade 3, Atletismo 2.",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 3,
+      "sociabilidade": 0,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-gigante-do-fogo",
@@ -1521,7 +1711,14 @@
         "alvo": "Atlas / Quebra-Muralhas",
         "caminho": "quebra-muralhas"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 0,
+      "integridade": 3,
+      "sociabilidade": 0,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-gigante-do-gelo",
@@ -1570,7 +1767,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Perícias notáveis: Atletismo 2, Prontidão 1.",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 3,
+      "sociabilidade": 0,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-gigante-das-nuvens",
@@ -1639,7 +1843,14 @@
         "alvo": "Atlas",
         "caminho": "atlas"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-gigante-da-tempestade",
@@ -1716,7 +1927,14 @@
         "alvo": "Adivinhação · N2",
         "arte": "adivinhacao"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 3,
+      "esquiva": 1,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-ciclope",
@@ -1779,7 +1997,14 @@
         "alvo": "Fortuna · N1 / Adivinhação",
         "arte": "fortuna"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "sociabilidade": 0,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-lobo",
@@ -1835,7 +2060,13 @@
         "alvo": "Caçador · Faro (b2)",
         "caminho": "cacador"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-lobo-atroz",
@@ -1883,7 +2114,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Perícias notáveis: Prontidão 2, Furtividade 2.",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-urso-pardo",
@@ -1931,7 +2168,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Perícias notáveis: Atletismo 3, Prontidão 1.",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-leao",
@@ -1993,7 +2236,13 @@
         "alvo": "Sombra · Esgueirar (b3)",
         "caminho": "sombra"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 3,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-tigre",
@@ -2041,7 +2290,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Perícias notáveis: Furtividade 3, Atletismo 2.",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 3,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-javali",
@@ -2089,7 +2344,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Perícias notáveis: Prontidão 1.",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-rinoceronte",
@@ -2137,7 +2398,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Perícias notáveis: Prontidão 1.",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-elefante",
@@ -2199,7 +2466,13 @@
         "alvo": "Agarrão do Urso · Imobilizar (b2)",
         "caminho": "agarrao-do-urso"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-gorila",
@@ -2247,7 +2520,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Perícias notáveis: Atletismo 3.",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-crocodilo",
@@ -2295,7 +2574,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Perícias notáveis: Furtividade 2, Atletismo 2.",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-cobra-constritora",
@@ -2351,7 +2636,13 @@
         "alvo": "Agarrão do Urso · Aperto Esmagador (b10)",
         "caminho": "agarrao-do-urso"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-aranha-gigante",
@@ -2411,7 +2702,13 @@
         "tipo": "natural",
         "alvo": "veneno natural"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-escorpiao-gigante",
@@ -2466,7 +2763,13 @@
         "tipo": "natural",
         "alvo": "veneno natural (tag da arma)"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-aguia-gigante",
@@ -2530,7 +2833,14 @@
         "tipo": "natural",
         "alvo": "asas (natural)"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 4,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-roc",
@@ -2578,7 +2888,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Perícias notáveis: Prontidão 3.",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 3,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-rato-gigante",
@@ -2626,7 +2942,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Perícias notáveis: Furtividade 2, Atletismo 2.",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 4
+    }
   },
   {
     "id": "mon-corujurso",
@@ -2685,7 +3007,13 @@
         "alvo": "Agarrão do Urso · Imobilizar (b2)",
         "caminho": "agarrao-do-urso"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-minotauro",
@@ -2750,7 +3078,13 @@
         "alvo": "Sangue Fervente · Investida Furiosa (b5)",
         "caminho": "sangue-fervente"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-harpia",
@@ -2819,7 +3153,13 @@
         "alvo": "Fascinação · N2",
         "arte": "fascinacao"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 4,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-gargula",
@@ -2882,7 +3222,13 @@
         "alvo": "Máscara / Sombra",
         "caminho": "mascara"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-grifo",
@@ -2931,7 +3277,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Perícias notáveis: Prontidão 2, Atletismo 2.",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-hipogrifo",
@@ -2980,7 +3332,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Perícias notáveis: Prontidão 2.",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-manticora",
@@ -3041,7 +3399,13 @@
         "tipo": "natural",
         "alvo": "asas (natural)"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-quimera",
@@ -3109,7 +3473,13 @@
         "tipo": "natural",
         "alvo": "asas (natural)"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 3,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-wyvern",
@@ -3170,7 +3540,13 @@
         "tipo": "natural",
         "alvo": "asas (natural)"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 3,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-hidra-5-cabecas",
@@ -3227,7 +3603,13 @@
         "alvo": "Cerne Vital · Regeneração (b9)",
         "caminho": "cerne-vital"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-basilisco",
@@ -3290,7 +3672,13 @@
         "alvo": "Matéria · N3 (carne → pedra)",
         "arte": "materia"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 3,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-cocatriz",
@@ -3353,7 +3741,13 @@
         "alvo": "Matéria · N3",
         "arte": "materia"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-gorgona-touro-de-ferro",
@@ -3416,7 +3810,13 @@
         "alvo": "Matéria · N4",
         "arte": "materia"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 0,
+      "integridade": 3,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-besta-deslocadora",
@@ -3487,7 +3887,14 @@
         "alvo": "Agarrão do Urso · Imobilizar (b2)",
         "caminho": "agarrao-do-urso"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-aranha-das-fases",
@@ -3550,7 +3957,13 @@
         "alvo": "Espírito · N2 / Conjuração",
         "arte": "espirito"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 3,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-monstro-da-ferrugem",
@@ -3613,7 +4026,13 @@
         "alvo": "Matéria · N2",
         "arte": "materia"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-cubo-gelatinoso",
@@ -3662,7 +4081,12 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 0,
+      "esquiva": 0,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-mimico",
@@ -3724,7 +4148,14 @@
         "tipo": "natural",
         "alvo": "natural (Ex)"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 3,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-montao-tropecante",
@@ -3787,7 +4218,13 @@
         "alvo": "Agarrão do Urso",
         "caminho": "agarrao-do-urso"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-treant",
@@ -3858,7 +4295,14 @@
         "alvo": "Pele de Pedra · Pele de Pedra (b4)",
         "caminho": "pele-de-pedra"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 0,
+      "integridade": 4,
+      "sociabilidade": 0,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-verme-purpura",
@@ -3907,7 +4351,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Perícias notáveis: Prontidão 1.",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-bulette",
@@ -3956,7 +4406,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Perícias notáveis: Atletismo 3, Prontidão 2.",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-aboleth",
@@ -4043,7 +4499,14 @@
         "alvo": "Adivinhação · N2",
         "arte": "adivinhacao"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-esqueleto-humano",
@@ -4091,7 +4554,12 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-zumbi-humano",
@@ -4140,7 +4608,12 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-ghoul",
@@ -4211,7 +4684,14 @@
         "alvo": "Caçador · Faro (b2)",
         "caminho": "cacador"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 4,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-ghast",
@@ -4274,7 +4754,14 @@
         "alvo": "Morte · N2 + Vento (fedor)",
         "arte": "morte"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 4,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-sombra",
@@ -4349,7 +4836,13 @@
         "alvo": "Espírito · N2 / Sombra · Manto de Sombras (b5)",
         "arte": "espirito"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 4,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-wight",
@@ -4412,7 +4905,14 @@
         "alvo": "Morte · N2",
         "arte": "morte"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 4,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-assombracao-wraith",
@@ -4487,7 +4987,14 @@
         "alvo": "Espírito · N3",
         "arte": "espirito"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-espectro",
@@ -4562,7 +5069,14 @@
         "alvo": "Espírito · N3",
         "arte": "espirito"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-mumia",
@@ -4631,7 +5145,13 @@
         "alvo": "Morte · N3 (medo) / Lenda Viva · Temor Reverente (b5)",
         "arte": "morte"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 0,
+      "integridade": 4,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-bodak",
@@ -4694,7 +5214,13 @@
         "alvo": "Morte · N5",
         "arte": "morte"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 4,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-vampiro",
@@ -4795,7 +5321,14 @@
         "alvo": "Morte · N1",
         "arte": "morte"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 6,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-lich",
@@ -4874,7 +5407,14 @@
         "alvo": "Morte · N3",
         "arte": "morte"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 4,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-dretch",
@@ -4941,7 +5481,13 @@
         "alvo": "Vento · N2 (fedor) + Fascinação · N1",
         "arte": "vento"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "furtividade": 4
+    }
   },
   {
     "id": "mon-quasit",
@@ -5024,7 +5570,14 @@
         "alvo": "Matéria · N2",
         "arte": "materia"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 3,
+      "sociabilidade": 0,
+      "furtividade": 5
+    }
   },
   {
     "id": "mon-sucubo",
@@ -5115,7 +5668,14 @@
         "alvo": "Conjuração · N4",
         "arte": "conjuracao"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 6,
+      "sociabilidade": 0,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-vrock",
@@ -5188,7 +5748,14 @@
         "alvo": "Espírito · N4",
         "arte": "espirito"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-hezrou",
@@ -5261,7 +5828,14 @@
         "alvo": "Espírito · N4",
         "arte": "espirito"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-glabrezu",
@@ -5339,7 +5913,14 @@
         "alvo": "Conjuração · N4",
         "arte": "conjuracao"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 3,
+      "esquiva": 1,
+      "integridade": 6,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-marilith",
@@ -5409,7 +5990,14 @@
         "tipo": "feiticaria",
         "alvo": "várias · N3"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 2,
+      "integridade": 7,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-balor",
@@ -5500,7 +6088,14 @@
         "alvo": "Conjuração · N4",
         "arte": "conjuracao"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 3,
+      "esquiva": 2,
+      "integridade": 8,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-lemure",
@@ -5559,7 +6154,12 @@
         "alvo": "Cerne Vital · Recuperação Acelerada (b1)",
         "caminho": "cerne-vital"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 0,
+      "esquiva": 0,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-diabrete-imp",
@@ -5647,7 +6247,14 @@
         "tipo": "natural",
         "alvo": "natural"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 3,
+      "sociabilidade": 0,
+      "furtividade": 5
+    }
   },
   {
     "id": "mon-diabo-barbado",
@@ -5725,7 +6332,13 @@
         "tipo": "natural",
         "alvo": "natural"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-erinia",
@@ -5809,7 +6422,14 @@
         "tipo": "natural",
         "alvo": "asas"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 2,
+      "integridade": 6,
+      "sociabilidade": 0,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-diabo-osseo",
@@ -5892,7 +6512,14 @@
         "alvo": "Fascinação · N1",
         "arte": "fascinacao"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-diabo-de-gelo",
@@ -5971,7 +6598,14 @@
         "alvo": "Gelo / Proteção · N3–N4",
         "arte": "protecao"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 3,
+      "esquiva": 2,
+      "integridade": 6,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-rakshasa",
@@ -6058,7 +6692,14 @@
         "alvo": "Proteção · N4",
         "arte": "protecao"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 4,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-diabo-do-fosso-pit-fiend",
@@ -6152,7 +6793,14 @@
         "alvo": "Morte · N3",
         "arte": "morte"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 4,
+      "esquiva": 3,
+      "integridade": 8,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-archon-cao",
@@ -6235,7 +6883,14 @@
         "alvo": "Adivinhação · N1",
         "arte": "adivinhacao"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 3,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-deva-astral",
@@ -6318,7 +6973,14 @@
         "alvo": "Matéria · N2",
         "arte": "materia"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 6,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-planetar",
@@ -6399,7 +7061,14 @@
         "alvo": "Cerne Vital · Regeneração (b9)",
         "caminho": "cerne-vital"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 4,
+      "esquiva": 1,
+      "integridade": 8,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-solar",
@@ -6487,7 +7156,14 @@
         "alvo": "Cura · N5",
         "arte": "cura"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 4,
+      "esquiva": 2,
+      "integridade": 8,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-couatl",
@@ -6571,7 +7247,14 @@
         "alvo": "Adivinhação · N2",
         "arte": "adivinhacao"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 3,
+      "esquiva": 2,
+      "integridade": 6,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-ghaele-azata",
@@ -6649,7 +7332,14 @@
         "tipo": "feiticaria",
         "alvo": "várias · N3–N4"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 3,
+      "esquiva": 2,
+      "integridade": 7,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-djinn",
@@ -6736,7 +7426,14 @@
         "alvo": "Vento · N5",
         "arte": "vento"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 4,
+      "sociabilidade": 0,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-efreeti",
@@ -6815,7 +7512,14 @@
         "alvo": "Fogo · N4",
         "arte": "fogo"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 4,
+      "sociabilidade": 0,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-salamandra",
@@ -6886,7 +7590,14 @@
         "alvo": "Agarrão do Urso · Imobilizar (b2)",
         "caminho": "agarrao-do-urso"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 4,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-elemental-da-terra-grande",
@@ -6957,7 +7668,13 @@
         "alvo": "Pele de Pedra · Carne de Granito (b7)",
         "caminho": "pele-de-pedra"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-xorn",
@@ -7025,7 +7742,14 @@
         "tipo": "natural",
         "alvo": "natural (Ex)"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-driade",
@@ -7102,7 +7826,14 @@
         "alvo": "Matéria · N2 / Espírito",
         "arte": "materia"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 4
+    }
   },
   {
     "id": "mon-ninfa",
@@ -7183,7 +7914,14 @@
         "alvo": "Vida / Água · N3",
         "arte": "agua"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 2,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 4
+    }
   },
   {
     "id": "mon-satiro",
@@ -7252,7 +7990,14 @@
         "alvo": "Fascinação · N2",
         "arte": "fascinacao"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 4
+    }
   },
   {
     "id": "mon-pixie",
@@ -7326,7 +8071,14 @@
         "tipo": "natural",
         "alvo": "asas"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 2,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 6
+    }
   },
   {
     "id": "mon-fogo-fatuo",
@@ -7409,7 +8161,14 @@
         "alvo": "Vento · N3",
         "arte": "vento"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 3,
+      "integridade": 4,
+      "sociabilidade": 0,
+      "furtividade": 4
+    }
   },
   {
     "id": "mon-medusa",
@@ -7477,7 +8236,14 @@
         "tipo": "natural",
         "alvo": "veneno natural"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 4,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-doppelganger",
@@ -7556,7 +8322,14 @@
         "alvo": "Adivinhação · N1 / Empatia",
         "arte": "adivinhacao"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 4,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-pegaso",
@@ -7624,7 +8397,14 @@
         "tipo": "natural",
         "alvo": "asas"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 3,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-unicornio",
@@ -7705,7 +8485,14 @@
         "alvo": "Sangue Imune · Imunidade (b7)",
         "caminho": "sangue-imune"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 3,
+      "esquiva": 1,
+      "integridade": 7,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-ogro-mago-oni",
@@ -7794,7 +8581,14 @@
         "alvo": "Gelo · N2",
         "arte": "gelo"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-esfinge-ginosfinge",
@@ -7872,7 +8666,14 @@
         "alvo": "Adivinhação · N2",
         "arte": "adivinhacao"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-naga-espirita",
@@ -7945,7 +8746,14 @@
         "tipo": "feiticaria",
         "alvo": "várias · N3"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-behir",
@@ -8014,7 +8822,13 @@
         "alvo": "Agarrão do Urso · Aperto Esmagador (b10)",
         "caminho": "agarrao-do-urso"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 3,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-lamia",
@@ -8087,7 +8901,14 @@
         "alvo": "Fascinação · N3",
         "arte": "fascinacao"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 3,
+      "esquiva": 2,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-bruxa-verde-hag",
@@ -8165,7 +8986,14 @@
         "tipo": "feiticaria",
         "alvo": "várias · N3"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 4,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-kraken",
@@ -8241,7 +9069,14 @@
         "tipo": "feiticaria",
         "alvo": "várias · N4"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 3,
+      "esquiva": 0,
+      "integridade": 6,
+      "sociabilidade": 0,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-tarrasque",
@@ -8322,7 +9157,13 @@
         "alvo": "Morte · N3 / Lenda Viva · Ícone (b15)",
         "arte": "morte"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 0,
+      "integridade": 4,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-filhote-de-dragao-vermelho",
@@ -8395,7 +9236,14 @@
         "alvo": "Morte · N3",
         "arte": "morte"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 0,
+      "integridade": 4,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-dragao-vermelho-jovem",
@@ -8472,7 +9320,14 @@
         "alvo": "Fogo · N2",
         "arte": "fogo"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 3,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-dragao-vermelho-adulto",
@@ -8556,7 +9411,14 @@
         "tipo": "feiticaria",
         "alvo": "várias · N3"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 0,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-dragao-vermelho-anciao",
@@ -8643,7 +9505,14 @@
         "tipo": "natural",
         "alvo": "asas"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 3,
+      "esquiva": 0,
+      "integridade": 6,
+      "sociabilidade": 0,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-grande-wyrm-vermelho",
@@ -8731,7 +9600,14 @@
         "alvo": "Morte · N5 + Lenda Viva · Ícone (b15)",
         "arte": "morte"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 4,
+      "esquiva": 0,
+      "integridade": 7,
+      "sociabilidade": 0,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-dragao-branco-jovem",
@@ -8810,7 +9686,14 @@
         "alvo": "Morte · N3",
         "arte": "morte"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-dragao-azul-adulto",
@@ -8893,7 +9776,14 @@
         "alvo": "Morte · N3",
         "arte": "morte"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 0,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-dragao-verde-adulto",
@@ -8972,7 +9862,14 @@
         "alvo": "Serpente das Palavras",
         "caminho": "serpente-das-palavras"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-dragao-dourado-adulto",
@@ -9065,7 +9962,14 @@
         "alvo": "Matéria · N3",
         "arte": "materia"
       }
-    ]
+    ],
+    "pericias": {
+      "prontidao": 3,
+      "esquiva": 0,
+      "integridade": 7,
+      "sociabilidade": 0,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-aasimar",
@@ -9114,7 +10018,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 0,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-animated-object",
@@ -9163,7 +10074,12 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 0,
+      "esquiva": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-ankheg",
@@ -9212,7 +10128,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-army-ant-swarm",
@@ -9260,7 +10182,12 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "furtividade": 5
+    }
   },
   {
     "id": "mon-giant-ant",
@@ -9308,7 +10235,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 3,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-dire-ape-gigantopithecus",
@@ -9356,7 +10289,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-lantern-archon",
@@ -9405,7 +10344,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-trumpet-archon",
@@ -9454,7 +10399,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 3,
+      "esquiva": 1,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-assassin-vine",
@@ -9503,7 +10455,12 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-bralani",
@@ -9552,7 +10509,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 4,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-lillend",
@@ -9601,7 +10565,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-barghest",
@@ -9650,7 +10621,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 4,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-greater-barghest",
@@ -9699,7 +10677,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-basidirond",
@@ -9748,7 +10733,12 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-dire-bat",
@@ -9796,7 +10786,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-bat-swarm",
@@ -9844,7 +10840,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 5
+    }
   },
   {
     "id": "mon-grizzly-bear",
@@ -9892,7 +10894,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-dire-bear-cave-bear",
@@ -9940,7 +10948,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-bebilith",
@@ -9989,7 +11003,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 3,
+      "sociabilidade": 0,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-fire-beetle",
@@ -10037,7 +11058,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "furtividade": 4
+    }
   },
   {
     "id": "mon-giant-stag-beetle",
@@ -10085,7 +11112,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-black-pudding",
@@ -10134,7 +11167,12 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 0,
+      "esquiva": 0,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-dire-boar-daeodon",
@@ -10182,7 +11220,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-boggard",
@@ -10231,7 +11275,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-cheetah",
@@ -10279,7 +11330,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-leopard",
@@ -10327,7 +11384,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-cave-fisher",
@@ -10375,7 +11438,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-centaur",
@@ -10424,7 +11493,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 3,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-giant-centipede",
@@ -10472,7 +11548,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-centipede-swarm",
@@ -10520,7 +11602,12 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "furtividade": 5
+    }
   },
   {
     "id": "mon-choker",
@@ -10569,7 +11656,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-chuul",
@@ -10618,7 +11711,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 2,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-cloaker",
@@ -10667,7 +11767,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 4,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-giant-crab",
@@ -10715,7 +11822,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-crab-swarm",
@@ -10763,7 +11876,12 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "furtividade": 5
+    }
   },
   {
     "id": "mon-dark-creeper",
@@ -10812,7 +11930,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "sociabilidade": 0,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-dark-stalker",
@@ -10861,7 +11986,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 3,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-darkmantle",
@@ -10910,7 +12042,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-babau",
@@ -10959,7 +12097,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 4,
+      "sociabilidade": 0,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-nabasu",
@@ -11008,7 +12153,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-nalfeshnee",
@@ -11057,7 +12209,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 3,
+      "esquiva": 1,
+      "integridade": 6,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-derro",
@@ -11106,7 +12265,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 0,
+      "esquiva": 1,
+      "integridade": 2,
+      "sociabilidade": 0,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-barbed-devil-hamatula",
@@ -11155,7 +12321,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 2,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-horned-devil-cornugon",
@@ -11204,7 +12377,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 3,
+      "esquiva": 2,
+      "integridade": 7,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-ankylosaurus",
@@ -11252,7 +12432,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-brachiosaurus",
@@ -11300,7 +12486,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 3,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-deinonychus",
@@ -11348,7 +12540,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 3,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-elasmosaurus",
@@ -11396,7 +12594,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-pteranodon",
@@ -11444,7 +12648,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 4,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-stegosaurus",
@@ -11492,7 +12702,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 3,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-tyrannosaurus",
@@ -11540,7 +12756,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 3,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-triceratops",
@@ -11588,7 +12810,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-dog",
@@ -11636,7 +12864,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 4
+    }
   },
   {
     "id": "mon-riding-dog",
@@ -11685,7 +12919,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-orca",
@@ -11733,7 +12973,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-dolphin",
@@ -11781,7 +13027,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-dragon-turtle",
@@ -11830,7 +13082,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 3,
+      "sociabilidade": 0,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-drider",
@@ -11879,7 +13138,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-drow",
@@ -11928,7 +13194,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-drow-noble",
@@ -11977,7 +13250,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 4,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-duergar",
@@ -12026,7 +13306,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-electric-eel",
@@ -12074,7 +13361,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 4
+    }
   },
   {
     "id": "mon-giant-moray-eel",
@@ -12122,7 +13415,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-small-air-elemental",
@@ -12171,7 +13470,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-small-earth-elemental",
@@ -12220,7 +13525,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-small-fire-elemental",
@@ -12269,7 +13580,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-small-water-elemental",
@@ -12318,7 +13635,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-mastodon",
@@ -12366,7 +13689,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-ettercap",
@@ -12415,7 +13744,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 3,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-bat",
@@ -12463,7 +13798,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 5
+    }
   },
   {
     "id": "mon-cat",
@@ -12511,7 +13852,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 5
+    }
   },
   {
     "id": "mon-hawk",
@@ -12559,7 +13906,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 5
+    }
   },
   {
     "id": "mon-monkey",
@@ -12607,7 +13960,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 5
+    }
   },
   {
     "id": "mon-raven",
@@ -12655,7 +14014,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 5
+    }
   },
   {
     "id": "mon-toad",
@@ -12703,7 +14068,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 5
+    }
   },
   {
     "id": "mon-viper",
@@ -12751,7 +14122,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 5
+    }
   },
   {
     "id": "mon-weasel",
@@ -12799,7 +14176,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 5
+    }
   },
   {
     "id": "mon-giant-flytrap",
@@ -12847,7 +14230,12 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-giant-frog",
@@ -12896,7 +14284,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-poison-frog",
@@ -12944,7 +14338,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 5
+    }
   },
   {
     "id": "mon-froghemoth",
@@ -12993,7 +14393,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 3,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-janni",
@@ -13042,7 +14448,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 4,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-marid",
@@ -13091,7 +14504,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-shaitan",
@@ -13140,7 +14560,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 4,
+      "sociabilidade": 0,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-ghost",
@@ -13189,7 +14616,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-gibbering-mouther",
@@ -13238,7 +14672,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 3,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-girallon",
@@ -13287,7 +14727,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-clay-golem",
@@ -13336,7 +14782,12 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-flesh-golem",
@@ -13385,7 +14836,12 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-ice-golem",
@@ -13434,7 +14890,12 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-iron-golem",
@@ -13483,7 +14944,12 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-stone-golem",
@@ -13532,7 +14998,12 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-gray-ooze",
@@ -13581,7 +15052,12 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 0,
+      "esquiva": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-dracolisk",
@@ -13630,7 +15106,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 3,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-hell-hound",
@@ -13679,7 +15161,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-nessian-warhound",
@@ -13728,7 +15216,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-aurochs",
@@ -13776,7 +15270,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-bison",
@@ -13824,7 +15324,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-homunculus",
@@ -13873,7 +15379,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "sociabilidade": 0,
+      "furtividade": 4
+    }
   },
   {
     "id": "mon-horse",
@@ -13921,7 +15434,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-pony",
@@ -13969,7 +15488,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-hyena",
@@ -14017,7 +15542,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-dire-hyena-hyaenodon",
@@ -14065,7 +15596,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-intellect-devourer",
@@ -14114,7 +15651,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 2,
+      "integridade": 4,
+      "sociabilidade": 0,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-invisible-stalker",
@@ -14163,7 +15707,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 3,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-iron-cobra",
@@ -14211,7 +15762,12 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-kyton",
@@ -14260,7 +15816,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 3,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-giant-leech",
@@ -14308,7 +15871,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-leech-swarm",
@@ -14356,7 +15925,12 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "furtividade": 5
+    }
   },
   {
     "id": "mon-crag-linnorm",
@@ -14405,7 +15979,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 6,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-ice-linnorm",
@@ -14454,7 +16034,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 3,
+      "esquiva": 2,
+      "integridade": 7,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-tarn-linnorm",
@@ -14503,7 +16089,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 4,
+      "esquiva": 2,
+      "integridade": 8,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-dire-lion-spotted-lion",
@@ -14552,7 +16144,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-monitor-lizard",
@@ -14600,7 +16198,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-giant-frilled-lizard",
@@ -14648,7 +16252,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 3,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-wererat-human-form",
@@ -14697,7 +16307,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 2,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-werewolf",
@@ -14746,7 +16363,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 2,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-giant-mantis",
@@ -14794,7 +16418,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 3,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-mephit",
@@ -14843,7 +16473,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 3,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-merfolk",
@@ -14892,7 +16528,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-mite",
@@ -14941,7 +16584,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "sociabilidade": 0,
+      "furtividade": 5
+    }
   },
   {
     "id": "mon-mohrg",
@@ -14990,7 +16640,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 3,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-morlock",
@@ -15039,7 +16696,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-dark-naga",
@@ -15088,7 +16751,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 2,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-guardian-naga",
@@ -15137,7 +16807,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 2,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-neothelid",
@@ -15186,7 +16863,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 0,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-night-hag",
@@ -15235,7 +16919,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 5,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-nightmare",
@@ -15284,7 +16975,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 3,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-cauchemar",
@@ -15333,7 +17031,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 3,
+      "sociabilidade": 0,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-ochre-jelly",
@@ -15382,7 +17087,12 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 0,
+      "esquiva": 0,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-octopus",
@@ -15430,7 +17140,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 4
+    }
   },
   {
     "id": "mon-giant-octopus",
@@ -15478,7 +17194,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-otyugh",
@@ -15527,7 +17249,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-phoenix",
@@ -15576,7 +17304,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 3,
+      "esquiva": 2,
+      "integridade": 7,
+      "sociabilidade": 0,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-pseudodragon",
@@ -15625,7 +17360,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "sociabilidade": 0,
+      "furtividade": 4
+    }
   },
   {
     "id": "mon-dire-rat",
@@ -15673,7 +17415,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 4
+    }
   },
   {
     "id": "mon-rat-swarm",
@@ -15721,7 +17469,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 5
+    }
   },
   {
     "id": "mon-remorhaz",
@@ -15770,7 +17524,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-retriever",
@@ -15818,7 +17578,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-roper",
@@ -15867,7 +17633,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 4,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-sahuagin",
@@ -15916,7 +17689,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-sea-hag",
@@ -15965,7 +17745,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 4,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-sea-serpent",
@@ -16014,7 +17801,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-shark",
@@ -16062,7 +17855,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-dire-shark-megalodon",
@@ -16110,7 +17909,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-shocker-lizard",
@@ -16159,7 +17964,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-shoggoth",
@@ -16207,7 +18018,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 3,
+      "esquiva": 2,
+      "integridade": 5,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-skeletal-champion",
@@ -16256,7 +18073,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-skum-ulat-kini",
@@ -16305,7 +18129,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-giant-slug",
@@ -16353,7 +18184,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "integridade": 2,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-venomous-snake",
@@ -16401,7 +18238,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-spider-swarm",
@@ -16449,7 +18292,12 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "furtividade": 5
+    }
   },
   {
     "id": "mon-squid",
@@ -16497,7 +18345,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-giant-squid",
@@ -16545,7 +18399,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-stirge",
@@ -16594,7 +18454,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 4
+    }
   },
   {
     "id": "mon-svirfneblin",
@@ -16643,7 +18509,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "sociabilidade": 0,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-tengu",
@@ -16692,7 +18565,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 3,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-tiefling",
@@ -16741,7 +18621,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-vargouille",
@@ -16790,7 +18677,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-vegepygmy",
@@ -16838,7 +18731,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-violet-fungus",
@@ -16886,7 +18786,12 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 0,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-giant-wasp",
@@ -16934,7 +18839,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 3,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-wasp-swarm",
@@ -16982,7 +18893,12 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "furtividade": 5
+    }
   },
   {
     "id": "mon-wolverine",
@@ -17030,7 +18946,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 3
+    }
   },
   {
     "id": "mon-dire-wolverine",
@@ -17078,7 +19000,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-worg",
@@ -17127,7 +19055,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 3,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-winter-wolf",
@@ -17176,7 +19110,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 3,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   },
   {
     "id": "mon-xill",
@@ -17225,7 +19166,14 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 3,
+      "sociabilidade": 0,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-yellow-musk-creeper",
@@ -17273,7 +19221,12 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "furtividade": 0
+    }
   },
   {
     "id": "mon-yeth-hound",
@@ -17322,7 +19275,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 3,
+      "furtividade": 2
+    }
   },
   {
     "id": "mon-yeti",
@@ -17371,6 +19330,13 @@
     "tecnicas": [],
     "artes": [],
     "notas": "",
-    "pendente": true
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "sociabilidade": 0,
+      "furtividade": 1
+    }
   }
 ]

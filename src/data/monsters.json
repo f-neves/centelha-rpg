@@ -41,6 +41,13 @@
    "inteligencia": 3,
    "raciocinio": 4
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 0,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "vontade": 6,
   "aparencia": 6,
   "virtudes": {
@@ -160,6 +167,13 @@
    "percepcao": 5,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 0
   },
   "vontade": 10,
   "aparencia": 1,
@@ -336,6 +350,13 @@
    "inteligencia": 2,
    "raciocinio": 3
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "vontade": 6,
   "aparencia": 5,
   "virtudes": {
@@ -474,6 +495,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 1
+  },
   "vontade": 7,
   "aparencia": 5,
   "virtudes": {
@@ -583,6 +610,12 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 1
   },
   "vontade": 5,
   "aparencia": 4,
@@ -695,6 +728,12 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 1
   },
   "vontade": 8,
   "aparencia": 5,
@@ -826,6 +865,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -956,6 +1001,13 @@
    "percepcao": 4,
    "inteligencia": 3,
    "raciocinio": 4
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 2
   },
   "vontade": 9,
   "aparencia": 10,
@@ -1115,6 +1167,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "vontade": 7,
   "aparencia": 10,
   "virtudes": {
@@ -1232,6 +1290,13 @@
    "percepcao": 6,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 2
   },
   "vontade": 11,
   "aparencia": 12,
@@ -1358,6 +1423,12 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 3,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -1471,6 +1542,12 @@
    "percepcao": 4,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 4,
+   "integridade": 4,
+   "sociabilidade": 3,
+   "furtividade": 2
   },
   "vontade": 6,
   "aparencia": 4,
@@ -1594,6 +1671,13 @@
    "percepcao": 4,
    "inteligencia": 4,
    "raciocinio": 4
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 3
   },
   "vontade": 8,
   "aparencia": 2,
@@ -1752,6 +1836,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -1861,6 +1951,13 @@
    "percepcao": 3,
    "inteligencia": 4,
    "raciocinio": 4
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 3
   },
   "vontade": 9,
   "aparencia": 1,
@@ -1980,6 +2077,13 @@
    "percepcao": 7,
    "inteligencia": 7,
    "raciocinio": 7
+  },
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 2,
+   "integridade": 8,
+   "sociabilidade": 0,
+   "furtividade": 2
   },
   "vontade": 12,
   "aparencia": -2,
@@ -2167,6 +2271,12 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 2,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -2282,6 +2392,13 @@
    "inteligencia": 4,
    "raciocinio": 4
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "vontade": 7,
   "aparencia": 1,
   "virtudes": {
@@ -2396,6 +2513,11 @@
    "percepcao": 2,
    "inteligencia": 0,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "furtividade": 0
   },
   "vontade": 6,
   "aparencia": 3,
@@ -2514,6 +2636,12 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 3,
+   "furtividade": 2
   },
   "vontade": 8,
   "aparencia": 5,
@@ -2644,6 +2772,13 @@
    "percepcao": 3,
    "inteligencia": 2,
    "raciocinio": 3
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 0
   },
   "vontade": 10,
   "aparencia": 0,
@@ -2776,6 +2911,12 @@
    "percepcao": 4,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 0
   },
   "vontade": 6,
   "aparencia": 5,
@@ -2917,6 +3058,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 4
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -3025,6 +3172,12 @@
    "percepcao": 2,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 2
   },
   "vontade": 5,
   "aparencia": 4,
@@ -3140,6 +3293,13 @@
    "percepcao": 3,
    "inteligencia": 3,
    "raciocinio": 3
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 1
   },
   "vontade": 7,
   "aparencia": 5,
@@ -3283,6 +3443,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -3394,6 +3560,12 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 4,
+   "furtividade": 1
   },
   "vontade": 9,
   "aparencia": 2,
@@ -3545,6 +3717,13 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "vontade": 7,
   "aparencia": 4,
   "virtudes": {
@@ -3664,6 +3843,13 @@
    "inteligencia": 3,
    "raciocinio": 4
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "vontade": 9,
   "aparencia": 6,
   "virtudes": {
@@ -3782,6 +3968,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 3,
+   "furtividade": 1
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -3890,6 +4082,12 @@
    "percepcao": 2,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 0,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 2
   },
   "vontade": 5,
   "aparencia": 4,
@@ -4006,6 +4204,13 @@
    "percepcao": 3,
    "inteligencia": 3,
    "raciocinio": 3
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 2
   },
   "vontade": 7,
   "aparencia": 4,
@@ -4124,6 +4329,13 @@
    "percepcao": 5,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 2
   },
   "vontade": 10,
   "aparencia": 0,
@@ -4248,6 +4460,13 @@
    "percepcao": 3,
    "inteligencia": 3,
    "raciocinio": 3
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 2
   },
   "vontade": 9,
   "aparencia": 8,
@@ -4410,6 +4629,13 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -4528,6 +4754,12 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 0
   },
   "vontade": 6,
   "aparencia": 5,
@@ -4654,6 +4886,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 4
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -4764,6 +5002,13 @@
    "percepcao": 2,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 5,
+   "esquiva": 3,
+   "integridade": 6,
+   "sociabilidade": 3,
+   "furtividade": 2
   },
   "vontade": 8,
   "aparencia": 4,
@@ -4892,6 +5137,13 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "vontade": 4,
   "aparencia": 4,
   "virtudes": {
@@ -5006,6 +5258,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "vontade": 6,
   "aparencia": 4,
   "virtudes": {
@@ -5115,6 +5373,12 @@
    "percepcao": 2,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 1
   },
   "vontade": 7,
   "aparencia": 1,
@@ -5228,6 +5492,12 @@
    "percepcao": 2,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 4,
+   "integridade": 6,
+   "sociabilidade": 3,
+   "furtividade": 2
   },
   "vontade": 7,
   "aparencia": 4,
@@ -5343,6 +5613,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -5452,6 +5728,12 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 1
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
   },
   "vontade": 5,
   "aparencia": 4,
@@ -5563,6 +5845,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -5672,6 +5960,13 @@
    "percepcao": 3,
    "inteligencia": 5,
    "raciocinio": 4
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 0
   },
   "vontade": 10,
   "aparencia": 0,
@@ -5787,6 +6082,12 @@
    "percepcao": 2,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 3,
+   "integridade": 6,
+   "sociabilidade": 0,
+   "furtividade": 2
   },
   "vontade": 7,
   "aparencia": 4,
@@ -5909,6 +6210,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -6019,6 +6326,13 @@
    "percepcao": 4,
    "inteligencia": 2,
    "raciocinio": 3
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 1
   },
   "vontade": 7,
   "aparencia": 4,
@@ -6139,6 +6453,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -6254,6 +6574,13 @@
    "inteligencia": 2,
    "raciocinio": 3
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "vontade": 9,
   "aparencia": 1,
   "virtudes": {
@@ -6364,6 +6691,13 @@
    "percepcao": 3,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 0
   },
   "vontade": 6,
   "aparencia": 4,
@@ -6495,6 +6829,13 @@
    "inteligencia": 4,
    "raciocinio": 4
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "vontade": 9,
   "aparencia": 1,
   "virtudes": {
@@ -6608,6 +6949,12 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 1
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
   },
   "vontade": 5,
   "aparencia": 4,
@@ -6728,6 +7075,11 @@
    "percepcao": 2,
    "inteligencia": 0,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "furtividade": 3
   },
   "vontade": 5,
   "aparencia": 4,
@@ -6861,6 +7213,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "vontade": 7,
   "aparencia": 5,
   "virtudes": {
@@ -6988,6 +7346,12 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 3,
+   "integridade": 6,
+   "sociabilidade": 4,
+   "furtividade": 2
+  },
   "vontade": 7,
   "aparencia": 4,
   "virtudes": {
@@ -7109,6 +7473,12 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 1
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 1
   },
   "vontade": 6,
   "aparencia": 5,
@@ -7240,6 +7610,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 5
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -7343,6 +7719,13 @@
    "percepcao": 6,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 2,
+   "integridade": 6,
+   "sociabilidade": 0,
+   "furtividade": 2
   },
   "vontade": 10,
   "aparencia": 9,
@@ -7507,6 +7890,12 @@
    "inteligencia": 1,
    "raciocinio": 3
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 6,
+   "furtividade": 0
+  },
   "vontade": 11,
   "aparencia": 9,
   "virtudes": {
@@ -7633,6 +8022,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -7746,6 +8141,11 @@
    "percepcao": 0,
    "inteligencia": 0,
    "raciocinio": 0
+  },
+  "pericias": {
+   "prontidao": 0,
+   "esquiva": 0,
+   "furtividade": 0
   },
   "vontade": 6,
   "aparencia": 1,
@@ -7871,6 +8271,13 @@
    "inteligencia": 3,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 2,
+   "integridade": 3,
+   "sociabilidade": 3,
+   "furtividade": 2
+  },
   "vontade": 7,
   "aparencia": 4,
   "virtudes": {
@@ -7992,6 +8399,13 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 3
+  },
   "vontade": 7,
   "aparencia": 4,
   "virtudes": {
@@ -8106,6 +8520,13 @@
    "percepcao": 2,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 2
   },
   "vontade": 7,
   "aparencia": 4,
@@ -8227,6 +8648,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "vontade": 6,
   "aparencia": 5,
   "virtudes": {
@@ -8335,6 +8762,12 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 1
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 3
   },
   "vontade": 5,
   "aparencia": 4,
@@ -8445,6 +8878,13 @@
    "percepcao": 1,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 0,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 3
   },
   "vontade": 7,
   "aparencia": 4,
@@ -8564,6 +9004,13 @@
    "percepcao": 5,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 6,
+   "sociabilidade": 0,
+   "furtividade": 2
   },
   "vontade": 11,
   "aparencia": 10,
@@ -8731,6 +9178,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "vontade": 9,
   "aparencia": 1,
   "virtudes": {
@@ -8888,6 +9341,13 @@
    "inteligencia": 4,
    "raciocinio": 5
   },
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 2,
+   "integridade": 7,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "vontade": 11,
   "aparencia": -1,
   "virtudes": {
@@ -9011,6 +9471,13 @@
    "percepcao": 6,
    "inteligencia": 7,
    "raciocinio": 6
+  },
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 2,
+   "integridade": 6,
+   "sociabilidade": 0,
+   "furtividade": 2
   },
   "vontade": 11,
   "aparencia": 0,
@@ -9174,6 +9641,13 @@
    "percepcao": 9,
    "inteligencia": 8,
    "raciocinio": 9
+  },
+  "pericias": {
+   "prontidao": 4,
+   "esquiva": 3,
+   "integridade": 8,
+   "sociabilidade": 0,
+   "furtividade": 2
   },
   "vontade": 12,
   "aparencia": -1,
@@ -9364,6 +9838,13 @@
    "inteligencia": 3,
    "raciocinio": 4
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 2,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 3
+  },
   "vontade": 10,
   "aparencia": 0,
   "virtudes": {
@@ -9486,6 +9967,13 @@
    "percepcao": 5,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 2
   },
   "vontade": 10,
   "aparencia": 0,
@@ -9649,6 +10137,13 @@
    "percepcao": 3,
    "inteligencia": 3,
    "raciocinio": 3
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 5
   },
   "vontade": 7,
   "aparencia": 1,
@@ -9819,6 +10314,13 @@
    "inteligencia": 4,
    "raciocinio": 4
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "vontade": 9,
   "aparencia": 5,
   "virtudes": {
@@ -9985,6 +10487,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 5
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -10091,6 +10599,13 @@
    "percepcao": 4,
    "inteligencia": 3,
    "raciocinio": 4
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 2
   },
   "vontade": 7,
   "aparencia": 4,
@@ -10247,6 +10762,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 3,
+   "furtividade": 2
+  },
   "vontade": 9,
   "aparencia": 8,
   "virtudes": {
@@ -10362,6 +10883,13 @@
    "percepcao": 5,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 0,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 0
   },
   "vontade": 11,
   "aparencia": 9,
@@ -10538,6 +11066,13 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "vontade": 9,
   "aparencia": 8,
   "virtudes": {
@@ -10708,6 +11243,13 @@
    "percepcao": 6,
    "inteligencia": 7,
    "raciocinio": 7
+  },
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 0,
+   "integridade": 7,
+   "sociabilidade": 0,
+   "furtividade": 0
   },
   "vontade": 12,
   "aparencia": 9,
@@ -10899,6 +11441,13 @@
    "inteligencia": 5,
    "raciocinio": 5
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "vontade": 11,
   "aparencia": 9,
   "virtudes": {
@@ -11066,6 +11615,13 @@
    "percepcao": 5,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 0,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 0
   },
   "vontade": 11,
   "aparencia": 9,
@@ -11243,6 +11799,13 @@
    "percepcao": 6,
    "inteligencia": 6,
    "raciocinio": 6
+  },
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 0,
+   "integridade": 6,
+   "sociabilidade": 0,
+   "furtividade": 0
   },
   "vontade": 12,
   "aparencia": 9,
@@ -11423,6 +11986,13 @@
    "inteligencia": 3,
    "raciocinio": 3
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "vontade": 10,
   "aparencia": 9,
   "virtudes": {
@@ -11587,6 +12157,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 4
+  },
   "vontade": 7,
   "aparencia": 1,
   "virtudes": {
@@ -11729,6 +12305,13 @@
    "percepcao": 4,
    "inteligencia": 4,
    "raciocinio": 4
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 4
   },
   "vontade": 9,
   "aparencia": 8,
@@ -11886,6 +12469,13 @@
    "inteligencia": 4,
    "raciocinio": 5
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "vontade": 9,
   "aparencia": 1,
   "virtudes": {
@@ -12004,6 +12594,13 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "vontade": 6,
   "aparencia": 4,
   "virtudes": {
@@ -12117,6 +12714,13 @@
    "percepcao": 5,
    "inteligencia": 2,
    "raciocinio": 4
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 2
   },
   "vontade": 7,
   "aparencia": 4,
@@ -12235,6 +12839,12 @@
    "percepcao": 2,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 4,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 2
   },
   "vontade": 6,
   "aparencia": 4,
@@ -12355,6 +12965,13 @@
    "inteligencia": 2,
    "raciocinio": 3
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "vontade": 6,
   "aparencia": 4,
   "virtudes": {
@@ -12469,6 +13086,13 @@
    "percepcao": 4,
    "inteligencia": 4,
    "raciocinio": 4
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 0
   },
   "vontade": 9,
   "aparencia": 5,
@@ -12633,6 +13257,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 1
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -12742,6 +13372,12 @@
    "percepcao": 2,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 2
   },
   "vontade": 6,
   "aparencia": 5,
@@ -12860,6 +13496,12 @@
    "percepcao": 2,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 0
   },
   "vontade": 8,
   "aparencia": 5,
@@ -13010,6 +13652,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "vontade": 6,
   "aparencia": 5,
   "virtudes": {
@@ -13127,6 +13775,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "vontade": 6,
   "aparencia": 5,
   "virtudes": {
@@ -13240,6 +13894,12 @@
    "percepcao": 2,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
   },
   "vontade": 6,
   "aparencia": 5,
@@ -13356,6 +14016,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 4
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -13467,6 +14133,11 @@
    "percepcao": 2,
    "inteligencia": 0,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "furtividade": 5
   },
   "vontade": 5,
   "aparencia": 4,
@@ -13582,6 +14253,11 @@
    "inteligencia": 0,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "furtividade": 5
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -13693,6 +14369,11 @@
    "inteligencia": 0,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "furtividade": 5
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -13801,6 +14482,11 @@
    "percepcao": 2,
    "inteligencia": 0,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "furtividade": 5
   },
   "vontade": 5,
   "aparencia": 4,
@@ -13913,6 +14599,12 @@
    "percepcao": 4,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 5
   },
   "vontade": 5,
   "aparencia": 4,
@@ -14028,6 +14720,12 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 5
   },
   "vontade": 5,
   "aparencia": 4,
@@ -14148,6 +14846,11 @@
    "inteligencia": 0,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "furtividade": 5
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -14265,6 +14968,11 @@
    "inteligencia": 0,
    "raciocinio": 3
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "furtividade": 5
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -14375,6 +15083,13 @@
    "percepcao": 5,
    "inteligencia": 4,
    "raciocinio": 5
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 2,
+   "integridade": 6,
+   "sociabilidade": 0,
+   "furtividade": 3
   },
   "vontade": 10,
   "aparencia": 0,
@@ -14538,6 +15253,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -14663,6 +15384,13 @@
    "percepcao": 5,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 1
   },
   "vontade": 10,
   "aparencia": 5,
@@ -14821,6 +15549,13 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -14923,6 +15658,13 @@
    "percepcao": 4,
    "inteligencia": 4,
    "raciocinio": 4
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 3
   },
   "vontade": 9,
   "aparencia": 2,
@@ -15086,6 +15828,11 @@
    "inteligencia": 0,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "furtividade": 1
+  },
   "vontade": 5,
   "aparencia": 2,
   "virtudes": {
@@ -15207,6 +15954,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 1
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -15313,6 +16066,12 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
   },
   "vontade": 7,
   "aparencia": 1,
@@ -15423,6 +16182,12 @@
    "percepcao": 4,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 2
   },
   "vontade": 7,
   "aparencia": 1,
@@ -15537,6 +16302,12 @@
    "percepcao": 2,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 0
   },
   "vontade": 5,
   "aparencia": 4,
@@ -15660,6 +16431,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 5
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -15767,6 +16544,13 @@
    "percepcao": 2,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 1
   },
   "vontade": 9,
   "aparencia": 2,
@@ -15894,6 +16678,13 @@
    "inteligencia": 4,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 2,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "vontade": 6,
   "aparencia": 4,
   "virtudes": {
@@ -16015,6 +16806,13 @@
    "inteligencia": 7,
    "raciocinio": 7
   },
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 2,
+   "integridade": 7,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "vontade": 11,
   "aparencia": 5,
   "virtudes": {
@@ -16134,6 +16932,13 @@
    "percepcao": 4,
    "inteligencia": 3,
    "raciocinio": 4
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 0,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 2
   },
   "vontade": 9,
   "aparencia": 8,
@@ -16290,6 +17095,13 @@
    "percepcao": 5,
    "inteligencia": 4,
    "raciocinio": 5
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 3,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 4
   },
   "vontade": 9,
   "aparencia": 1,
@@ -16453,6 +17265,12 @@
    "inteligencia": 1,
    "raciocinio": 3
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 3,
+   "furtividade": 3
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -16564,6 +17382,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 0
+  },
   "vontade": 10,
   "aparencia": 1,
   "virtudes": {
@@ -16672,6 +17496,11 @@
    "percepcao": 2,
    "inteligencia": 0,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "furtividade": 0
   },
   "vontade": 5,
   "aparencia": 3,
@@ -16789,6 +17618,12 @@
    "percepcao": 2,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
   },
   "vontade": 6,
   "aparencia": 4,
@@ -16931,6 +17766,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 5
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -17037,6 +17878,11 @@
    "percepcao": 0,
    "inteligencia": 0,
    "raciocinio": 0
+  },
+  "pericias": {
+   "prontidao": 0,
+   "esquiva": 0,
+   "furtividade": 0
   },
   "vontade": 6,
   "aparencia": 1,
@@ -17156,6 +18002,13 @@
    "percepcao": 6,
    "inteligencia": 6,
    "raciocinio": 6
+  },
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 2,
+   "integridade": 7,
+   "sociabilidade": 0,
+   "furtividade": 2
   },
   "vontade": 11,
   "aparencia": 12,
@@ -17319,6 +18172,13 @@
    "inteligencia": 3,
    "raciocinio": 4
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "vontade": 7,
   "aparencia": 2,
   "virtudes": {
@@ -17461,6 +18321,13 @@
    "percepcao": 4,
    "inteligencia": 3,
    "raciocinio": 4
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 1
   },
   "vontade": 6,
   "aparencia": 2,
@@ -17607,6 +18474,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 2
+  },
   "vontade": 9,
   "aparencia": 1,
   "virtudes": {
@@ -17725,6 +18598,12 @@
    "percepcao": 2,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 0
   },
   "vontade": 6,
   "aparencia": 4,
@@ -17847,6 +18726,13 @@
    "percepcao": 3,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 0
   },
   "vontade": 5,
   "aparencia": 4,
@@ -17975,6 +18861,13 @@
    "percepcao": 6,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 0
   },
   "vontade": 8,
   "aparencia": 4,
@@ -18130,6 +19023,13 @@
    "inteligencia": 3,
    "raciocinio": 4
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "vontade": 6,
   "aparencia": 4,
   "virtudes": {
@@ -18275,6 +19175,13 @@
    "inteligencia": 2,
    "raciocinio": 3
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 0,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "vontade": 6,
   "aparencia": 4,
   "virtudes": {
@@ -18415,6 +19322,13 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "vontade": 6,
   "aparencia": 4,
   "virtudes": {
@@ -18538,6 +19452,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 1
+  },
   "vontade": 9,
   "aparencia": 5,
   "virtudes": {
@@ -18652,6 +19572,13 @@
    "percepcao": 6,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 1,
+   "integridade": 6,
+   "sociabilidade": 0,
+   "furtividade": 1
   },
   "vontade": 11,
   "aparencia": 0,
@@ -18815,6 +19742,13 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -18932,6 +19866,13 @@
    "percepcao": 2,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 3
   },
   "vontade": 5,
   "aparencia": 4,
@@ -19053,6 +19994,11 @@
    "inteligencia": 0,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "furtividade": 1
+  },
   "vontade": 8,
   "aparencia": 4,
   "virtudes": {
@@ -19168,6 +20114,11 @@
    "percepcao": 2,
    "inteligencia": 0,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "furtividade": 1
   },
   "vontade": 8,
   "aparencia": 4,
@@ -19287,6 +20238,11 @@
    "percepcao": 2,
    "inteligencia": 0,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "furtividade": 1
   },
   "vontade": 9,
   "aparencia": 4,
@@ -19411,6 +20367,11 @@
    "inteligencia": 0,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "furtividade": 2
+  },
   "vontade": 6,
   "aparencia": 4,
   "virtudes": {
@@ -19530,6 +20491,11 @@
    "inteligencia": 0,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "furtividade": 1
+  },
   "vontade": 8,
   "aparencia": 4,
   "virtudes": {
@@ -19645,6 +20611,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -19756,6 +20728,12 @@
    "percepcao": 5,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 0,
+   "integridade": 3,
+   "furtividade": 1
   },
   "vontade": 8,
   "aparencia": 5,
@@ -19891,6 +20869,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -20007,6 +20991,13 @@
    "percepcao": 8,
    "inteligencia": 7,
    "raciocinio": 7
+  },
+  "pericias": {
+   "prontidao": 4,
+   "esquiva": 0,
+   "integridade": 7,
+   "sociabilidade": 0,
+   "furtividade": 0
   },
   "vontade": 12,
   "aparencia": 9,
@@ -20191,6 +21182,13 @@
    "inteligencia": 5,
    "raciocinio": 5
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "vontade": 9,
   "aparencia": 1,
   "virtudes": {
@@ -20305,6 +21303,12 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 1
   },
   "vontade": 6,
   "aparencia": 5,
@@ -20423,6 +21427,13 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -20536,6 +21547,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -20648,6 +21665,12 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 4,
+   "furtividade": 2
   },
   "vontade": 7,
   "aparencia": 4,
@@ -20789,6 +21812,13 @@
    "percepcao": 5,
    "inteligencia": 4,
    "raciocinio": 4
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 2
   },
   "vontade": 10,
   "aparencia": 0,
@@ -20943,6 +21973,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 0
+  },
   "vontade": 6,
   "aparencia": 5,
   "virtudes": {
@@ -21063,6 +22099,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -21171,6 +22213,12 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
   },
   "vontade": 5,
   "aparencia": 4,
@@ -21282,6 +22330,12 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 1
   },
   "vontade": 6,
   "aparencia": 5,
@@ -21401,6 +22455,13 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -21519,6 +22580,13 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -21636,6 +22704,13 @@
    "percepcao": 5,
    "inteligencia": 2,
    "raciocinio": 3
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 2
   },
   "vontade": 7,
   "aparencia": 4,
@@ -21761,6 +22836,13 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 4
+  },
   "vontade": 6,
   "aparencia": 4,
   "virtudes": {
@@ -21877,6 +22959,12 @@
    "percepcao": 6,
    "inteligencia": 1,
    "raciocinio": 3
+  },
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 2,
+   "integridade": 7,
+   "furtividade": 0
   },
   "vontade": 11,
   "aparencia": 9,
@@ -22010,6 +23098,13 @@
    "inteligencia": 5,
    "raciocinio": 3
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 2,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 3
+  },
   "vontade": 9,
   "aparencia": 1,
   "virtudes": {
@@ -22128,6 +23223,13 @@
    "percepcao": 4,
    "inteligencia": 4,
    "raciocinio": 4
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 1
   },
   "vontade": 9,
   "aparencia": 5,
@@ -22248,6 +23350,13 @@
    "inteligencia": 4,
    "raciocinio": 4
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "vontade": 7,
   "aparencia": 6,
   "virtudes": {
@@ -22360,6 +23469,12 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 3
   },
   "vontade": 5,
   "aparencia": 4,
@@ -22475,6 +23590,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -22587,6 +23708,13 @@
    "percepcao": 2,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 3
   },
   "vontade": 5,
   "aparencia": 4,
@@ -22710,6 +23838,13 @@
    "percepcao": 6,
    "inteligencia": 6,
    "raciocinio": 6
+  },
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 0,
+   "integridade": 6,
+   "sociabilidade": 0,
+   "furtividade": 0
   },
   "vontade": 12,
   "aparencia": 5,
@@ -22871,6 +24006,13 @@
    "inteligencia": 2,
    "raciocinio": 3
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "vontade": 9,
   "aparencia": 1,
   "virtudes": {
@@ -22998,6 +24140,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 2
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -23111,6 +24259,12 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 1
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
   },
   "vontade": 5,
   "aparencia": 4,
@@ -23227,6 +24381,13 @@
    "percepcao": 6,
    "inteligencia": 3,
    "raciocinio": 5
+  },
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 2,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 1
   },
   "vontade": 9,
   "aparencia": 4,
@@ -23379,6 +24540,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 2
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -23511,6 +24678,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "vontade": 9,
   "aparencia": 4,
   "virtudes": {
@@ -23624,6 +24797,11 @@
    "percepcao": 1,
    "inteligencia": 0,
    "raciocinio": 1
+  },
+  "pericias": {
+   "prontidao": 0,
+   "esquiva": 0,
+   "furtividade": 3
   },
   "vontade": 6,
   "aparencia": 1,
@@ -23752,6 +24930,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -23870,6 +25054,12 @@
    "percepcao": 2,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 1
   },
   "vontade": 5,
   "aparencia": 4,
@@ -23994,6 +25184,13 @@
    "percepcao": 4,
    "inteligencia": 7,
    "raciocinio": 5
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 1
   },
   "vontade": 11,
   "aparencia": 2,
@@ -24173,6 +25370,13 @@
    "inteligencia": 4,
    "raciocinio": 4
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "vontade": 9,
   "aparencia": 10,
   "virtudes": {
@@ -24296,6 +25500,11 @@
    "inteligencia": 0,
    "raciocinio": 0
   },
+  "pericias": {
+   "prontidao": 0,
+   "esquiva": 0,
+   "furtividade": 1
+  },
   "vontade": 6,
   "aparencia": 1,
   "virtudes": {
@@ -24410,6 +25619,13 @@
    "percepcao": 4,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 2
   },
   "vontade": 7,
   "aparencia": 4,
@@ -24534,6 +25750,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -24657,6 +25879,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -24776,6 +26004,13 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "vontade": 9,
   "aparencia": 5,
   "virtudes": {
@@ -24892,6 +26127,12 @@
    "percepcao": 4,
    "inteligencia": 1,
    "raciocinio": 4
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 2
   },
   "vontade": 5,
   "aparencia": 4,
@@ -25016,6 +26257,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -25125,6 +26372,12 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 1
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 1
   },
   "vontade": 5,
   "aparencia": 4,
@@ -25240,6 +26493,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 5
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -25342,6 +26601,13 @@
    "percepcao": 5,
    "inteligencia": 5,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 3,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 2
   },
   "vontade": 8,
   "aparencia": 4,
@@ -25479,6 +26745,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 1
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -25611,6 +26883,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 1
+  },
   "vontade": 6,
   "aparencia": 5,
   "virtudes": {
@@ -25740,6 +27018,13 @@
    "inteligencia": 4,
    "raciocinio": 4
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "vontade": 10,
   "aparencia": 5,
   "virtudes": {
@@ -25859,6 +27144,13 @@
    "percepcao": 5,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 2,
+   "integridade": 7,
+   "sociabilidade": 0,
+   "furtividade": 2
   },
   "vontade": 12,
   "aparencia": -1,
@@ -26019,6 +27311,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 1
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -26131,6 +27429,13 @@
    "percepcao": 3,
    "inteligencia": 3,
    "raciocinio": 3
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 2
   },
   "vontade": 8,
   "aparencia": 7,
@@ -26275,6 +27580,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 3
+  },
   "vontade": 7,
   "aparencia": 6,
   "virtudes": {
@@ -26394,6 +27705,13 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "vontade": 6,
   "aparencia": 4,
   "virtudes": {
@@ -26508,6 +27826,13 @@
    "percepcao": 3,
    "inteligencia": 2,
    "raciocinio": 3
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 2
   },
   "vontade": 6,
   "aparencia": 1,
@@ -26639,6 +27964,12 @@
    "percepcao": 2,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 1
   },
   "vontade": 6,
   "aparencia": 4,
@@ -26777,6 +28108,13 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 5
+  },
   "vontade": 6,
   "aparencia": 8,
   "virtudes": {
@@ -26896,6 +28234,13 @@
    "percepcao": 2,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 1
   },
   "vontade": 9,
   "aparencia": 2,
@@ -27018,6 +28363,12 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
   },
   "vontade": 6,
   "aparencia": 1,
@@ -27146,6 +28497,12 @@
    "percepcao": 2,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 0
   },
   "vontade": 6,
   "aparencia": 3,
@@ -27285,6 +28642,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 5
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -27391,6 +28754,12 @@
    "percepcao": 4,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
   },
   "vontade": 5,
   "aparencia": 4,
@@ -27502,6 +28871,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -27612,6 +28987,12 @@
    "percepcao": 4,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
   },
   "vontade": 7,
   "aparencia": 4,
@@ -27736,6 +29117,12 @@
    "percepcao": 4,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 0,
+   "integridade": 4,
+   "furtividade": 1
   },
   "vontade": 9,
   "aparencia": 2,
@@ -27893,6 +29280,13 @@
    "inteligencia": 4,
    "raciocinio": 5
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 3
+  },
   "vontade": 9,
   "aparencia": 0,
   "virtudes": {
@@ -28013,6 +29407,13 @@
    "percepcao": 5,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 1
   },
   "vontade": 10,
   "aparencia": 1,
@@ -28171,6 +29572,13 @@
    "inteligencia": 5,
    "raciocinio": 5
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 2,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "vontade": 10,
   "aparencia": 1,
   "virtudes": {
@@ -28277,6 +29685,13 @@
    "percepcao": 4,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 2,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 1
   },
   "vontade": 9,
   "aparencia": 1,
@@ -28391,6 +29806,13 @@
    "percepcao": 7,
    "inteligencia": 7,
    "raciocinio": 7
+  },
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 1,
+   "integridade": 6,
+   "sociabilidade": 0,
+   "furtividade": 1
   },
   "vontade": 11,
   "aparencia": -1,
@@ -28509,6 +29931,13 @@
    "percepcao": 4,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 0,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 0
   },
   "vontade": 11,
   "aparencia": 1,
@@ -28632,6 +30061,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 0
+  },
   "vontade": 10,
   "aparencia": 0,
   "virtudes": {
@@ -28747,6 +30182,13 @@
    "percepcao": 5,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 2,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 4
   },
   "vontade": 10,
   "aparencia": 8,
@@ -28909,6 +30351,11 @@
    "inteligencia": 0,
    "raciocinio": 0
   },
+  "pericias": {
+   "prontidao": 0,
+   "esquiva": 0,
+   "furtividade": 2
+  },
   "vontade": 6,
   "aparencia": 4,
   "virtudes": {
@@ -29026,6 +30473,12 @@
    "percepcao": 2,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 0
   },
   "vontade": 5,
   "aparencia": 4,
@@ -29146,6 +30599,13 @@
    "percepcao": 4,
    "inteligencia": 4,
    "raciocinio": 4
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 1
   },
   "vontade": 10,
   "aparencia": 0,
@@ -29324,6 +30784,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -29441,6 +30907,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 1
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -29552,6 +31024,12 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 1
   },
   "vontade": 7,
   "aparencia": 1,
@@ -29666,6 +31144,11 @@
    "percepcao": 3,
    "inteligencia": 0,
    "raciocinio": 1
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "furtividade": 0
   },
   "vontade": 5,
   "aparencia": 3,
@@ -29785,6 +31268,13 @@
    "percepcao": 3,
    "inteligencia": 2,
    "raciocinio": 3
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 1
   },
   "vontade": 9,
   "aparencia": 5,
@@ -29933,6 +31423,13 @@
    "inteligencia": 3,
    "raciocinio": 3
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "vontade": 9,
   "aparencia": 1,
   "virtudes": {
@@ -30045,6 +31542,12 @@
    "percepcao": 2,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
   },
   "vontade": 5,
   "aparencia": 4,
@@ -30164,6 +31667,13 @@
    "percepcao": 4,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 2,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 6
   },
   "vontade": 9,
   "aparencia": 8,
@@ -30322,6 +31832,13 @@
    "percepcao": 8,
    "inteligencia": 7,
    "raciocinio": 7
+  },
+  "pericias": {
+   "prontidao": 4,
+   "esquiva": 1,
+   "integridade": 8,
+   "sociabilidade": 0,
+   "furtividade": 1
   },
   "vontade": 12,
   "aparencia": 11,
@@ -30487,6 +32004,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 4
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -30592,6 +32115,12 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 1
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
   },
   "vontade": 5,
   "aparencia": 4,
@@ -30702,6 +32231,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -30811,6 +32346,13 @@
    "percepcao": 3,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 4
   },
   "vontade": 6,
   "aparencia": 8,
@@ -30926,6 +32468,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "furtividade": 2
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -31031,6 +32579,11 @@
    "percepcao": 0,
    "inteligencia": 0,
    "raciocinio": 0
+  },
+  "pericias": {
+   "prontidao": 0,
+   "esquiva": 0,
+   "furtividade": 0
   },
   "vontade": 6,
   "aparencia": 1,
@@ -31150,6 +32703,13 @@
    "percepcao": 3,
    "inteligencia": 2,
    "raciocinio": 3
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 5
   },
   "vontade": 7,
   "aparencia": 1,
@@ -31314,6 +32874,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 1
+  },
   "vontade": 8,
   "aparencia": 5,
   "virtudes": {
@@ -31459,6 +33025,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "vontade": 6,
   "aparencia": 4,
   "virtudes": {
@@ -31569,6 +33141,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 5
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -31677,6 +33255,13 @@
    "percepcao": 3,
    "inteligencia": 3,
    "raciocinio": 3
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 2
   },
   "vontade": 10,
   "aparencia": 0,
@@ -31844,6 +33429,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 4
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -31959,6 +33550,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 4
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -32069,6 +33666,12 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 0
   },
   "vontade": 9,
   "aparencia": 5,
@@ -32187,6 +33790,12 @@
    "percepcao": 2,
    "inteligencia": 1,
    "raciocinio": 1
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 0
   },
   "vontade": 5,
   "aparencia": 4,
@@ -32314,6 +33923,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -32427,6 +34042,12 @@
    "percepcao": 4,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 1
   },
   "vontade": 5,
   "aparencia": 4,
@@ -32560,6 +34181,13 @@
    "inteligencia": 3,
    "raciocinio": 4
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "vontade": 10,
   "aparencia": 1,
   "virtudes": {
@@ -32680,6 +34308,13 @@
    "inteligencia": 4,
    "raciocinio": 4
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "vontade": 7,
   "aparencia": 4,
   "virtudes": {
@@ -32799,6 +34434,13 @@
    "percepcao": 4,
    "inteligencia": 4,
    "raciocinio": 4
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 1
   },
   "vontade": 8,
   "aparencia": 5,
@@ -32949,6 +34591,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -33068,6 +34716,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 5
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -33170,6 +34824,13 @@
    "percepcao": 4,
    "inteligencia": 3,
    "raciocinio": 3
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 4
   },
   "vontade": 7,
   "aparencia": 8,
@@ -33316,6 +34977,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 0
+  },
   "vontade": 10,
   "aparencia": 5,
   "virtudes": {
@@ -33436,6 +35103,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -33546,6 +35219,13 @@
    "percepcao": 4,
    "inteligencia": 4,
    "raciocinio": 4
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 0
   },
   "vontade": 9,
   "aparencia": 5,
@@ -33668,6 +35348,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "vontade": 7,
   "aparencia": 5,
   "virtudes": {
@@ -33786,6 +35472,12 @@
    "percepcao": 7,
    "inteligencia": 1,
    "raciocinio": 4
+  },
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 2,
+   "integridade": 5,
+   "furtividade": 0
   },
   "vontade": 5,
   "aparencia": 1,
@@ -33912,6 +35604,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -34027,6 +35725,13 @@
    "percepcao": 2,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 1
   },
   "vontade": 7,
   "aparencia": 2,
@@ -34156,6 +35861,13 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "vontade": 7,
   "aparencia": 4,
   "virtudes": {
@@ -34274,6 +35986,13 @@
    "percepcao": 8,
    "inteligencia": 7,
    "raciocinio": 8
+  },
+  "pericias": {
+   "prontidao": 4,
+   "esquiva": 2,
+   "integridade": 8,
+   "sociabilidade": 0,
+   "furtividade": 1
   },
   "vontade": 12,
   "aparencia": 12,
@@ -34457,6 +36176,13 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 2,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "vontade": 6,
   "aparencia": 4,
   "virtudes": {
@@ -34573,6 +36299,12 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 4,
+   "furtividade": 3
   },
   "vontade": 7,
   "aparencia": 2,
@@ -34729,6 +36461,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 4
+  },
   "vontade": 6,
   "aparencia": 5,
   "virtudes": {
@@ -34839,6 +36577,13 @@
    "percepcao": 4,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 6,
+   "sociabilidade": 0,
+   "furtividade": 3
   },
   "vontade": 9,
   "aparencia": 9,
@@ -35014,6 +36759,13 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 3
+  },
   "vontade": 6,
   "aparencia": 4,
   "virtudes": {
@@ -35128,6 +36880,12 @@
    "percepcao": 8,
    "inteligencia": 1,
    "raciocinio": 5
+  },
+  "pericias": {
+   "prontidao": 4,
+   "esquiva": 2,
+   "integridade": 8,
+   "furtividade": 0
   },
   "vontade": 11,
   "aparencia": 9,
@@ -35255,6 +37013,12 @@
    "percepcao": 4,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 0,
+   "integridade": 4,
+   "furtividade": 0
   },
   "vontade": 12,
   "aparencia": 5,
@@ -35421,6 +37185,13 @@
    "inteligencia": 3,
    "raciocinio": 3
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
   "vontade": 10,
   "aparencia": 9,
   "virtudes": {
@@ -35540,6 +37311,13 @@
    "inteligencia": 2,
    "raciocinio": 3
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "vontade": 6,
   "aparencia": 4,
   "virtudes": {
@@ -35656,6 +37434,13 @@
    "inteligencia": 3,
    "raciocinio": 3
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "vontade": 6,
   "aparencia": 4,
   "virtudes": {
@@ -35765,6 +37550,12 @@
    "percepcao": 4,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 2
   },
   "vontade": 5,
   "aparencia": 4,
@@ -35880,6 +37671,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 1
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -35990,6 +37787,13 @@
    "percepcao": 5,
    "inteligencia": 3,
    "raciocinio": 4
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 0,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 0
   },
   "vontade": 8,
   "aparencia": 3,
@@ -36144,6 +37948,11 @@
    "inteligencia": 0,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "furtividade": 0
+  },
   "vontade": 5,
   "aparencia": 3,
   "virtudes": {
@@ -36267,6 +38076,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 1
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -36376,6 +38191,13 @@
    "percepcao": 2,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 2
   },
   "vontade": 5,
   "aparencia": 4,
@@ -36496,6 +38318,12 @@
    "percepcao": 2,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 0
   },
   "vontade": 6,
   "aparencia": 4,
@@ -36626,6 +38454,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -36735,6 +38569,12 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 1
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 1
   },
   "vontade": 5,
   "aparencia": 4,
@@ -36850,6 +38690,13 @@
    "percepcao": 6,
    "inteligencia": 2,
    "raciocinio": 5
+  },
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 1,
+   "integridade": 7,
+   "sociabilidade": 0,
+   "furtividade": 1
   },
   "vontade": 9,
   "aparencia": 10,
@@ -37007,6 +38854,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -37124,6 +38977,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -37234,6 +39093,12 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 1
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 2
   },
   "vontade": 5,
   "aparencia": 4,
@@ -37350,6 +39215,13 @@
    "percepcao": 5,
    "inteligencia": 4,
    "raciocinio": 4
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 6,
+   "sociabilidade": 0,
+   "furtividade": 1
   },
   "vontade": 10,
   "aparencia": 2,
@@ -37550,6 +39422,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 3
+  },
   "vontade": 7,
   "aparencia": 1,
   "virtudes": {
@@ -37667,6 +39545,13 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "vontade": 5,
   "aparencia": 3,
   "virtudes": {
@@ -37782,6 +39667,12 @@
    "percepcao": 2,
    "inteligencia": 1,
    "raciocinio": 1
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "furtividade": 0
   },
   "vontade": 6,
   "aparencia": 5,
@@ -37908,6 +39799,12 @@
    "inteligencia": 1,
    "raciocinio": 3
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 2
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -38020,6 +39917,12 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "furtividade": 5
+  },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -38130,6 +40033,11 @@
    "percepcao": 3,
    "inteligencia": 0,
    "raciocinio": 3
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "furtividade": 0
   },
   "vontade": 6,
   "aparencia": 3,
@@ -38255,6 +40163,13 @@
    "percepcao": 5,
    "inteligencia": 4,
    "raciocinio": 4
+  },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 2
   },
   "vontade": 10,
   "aparencia": 0,
@@ -38414,6 +40329,13 @@
    "inteligencia": 2,
    "raciocinio": 3
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "vontade": 7,
   "aparencia": 2,
   "virtudes": {
@@ -38556,6 +40478,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 2
+  },
   "vontade": 7,
   "aparencia": 5,
   "virtudes": {
@@ -38673,6 +40601,12 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 1
   },
   "vontade": 8,
   "aparencia": 8,
@@ -38809,6 +40743,13 @@
    "inteligencia": 4,
    "raciocinio": 4
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
   "vontade": 9,
   "aparencia": 1,
   "virtudes": {
@@ -38932,6 +40873,13 @@
    "percepcao": 2,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 1
   },
   "vontade": 8,
   "aparencia": 5,
@@ -39080,6 +41028,12 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 3,
+   "furtividade": 2
+  },
   "vontade": 7,
   "aparencia": 1,
   "virtudes": {
@@ -39203,6 +41157,13 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
   "vontade": 7,
   "aparencia": 4,
   "virtudes": {
@@ -39321,6 +41282,11 @@
    "percepcao": 2,
    "inteligencia": 0,
    "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "furtividade": 1
   },
   "vontade": 6,
   "aparencia": 2,

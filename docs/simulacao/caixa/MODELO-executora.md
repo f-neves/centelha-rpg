@@ -2,11 +2,24 @@
 
 ## COMMIT
 
-O código a revisar:
+O código a revisar, e os TRÊS campos são obrigatórios desde 04/09/2026:
 
 ```
-<SHA>
+BASE  <sha do último commit que a revisora já viu>
+SHA   <sha do fim deste trecho>
+TOPO  <sha do topo do main quando este aviso foi escrito>
 ```
+
+**O TOPO existe porque este repositório tem mais de uma frente empurrando para o
+`main`.** O `duo.mjs` já congela a revisão no commit deste aviso, então ela nunca
+revisa o topo; o que ele não impede é um commit de OUTRA frente cair entre a `BASE`
+e o `SHA`. Esse commit fica **na árvore que a revisora lê** e **fora do intervalo
+que o aviso declarou**: é o recorte pelo avesso, e sem o campo ela não tem como
+saber que ele existe.
+
+Com `TOPO` diferente de `SHA`, a leitura é: *entrou coisa que não é minha, e
+`git log SHA..TOPO` diz o quê e de quem.* Com `TOPO` igual a `SHA`, o trecho é o
+main inteiro desde a `BASE`.
 
 **Mas o checkout é no commit DESTE aviso**, que é uma linha acima na história e
 tem a **mesma árvore de código**: ele só acrescenta este arquivo. `npm run rodada

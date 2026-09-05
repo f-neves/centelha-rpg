@@ -17,6 +17,7 @@ import { esc, u, norm, fmtDano } from './mesa-core';
 import { sparkSVG } from './centelha-spark';
 import { d6 } from './rolagem';
 import { qaDaPeca, type QACombate } from './quase-acerto';
+import { valorPassivo, type Sentidos } from './calc';
 
 export const MONSTROS = monstersData as any[];
 export const MON: Record<string, any> = Object.fromEntries(MONSTROS.map((m) => [m.id, m]));
@@ -85,7 +86,31 @@ export interface ResumoCombate {
    */
   pgr?: { preparo?: number; golpes?: number; recuperacao?: number } | null;
   qa?: QACombate;
+  /**
+   * OS SENTIDOS, e este bloco é de 04/09/2026, para o golpe vindo do escuro.
+   *
+   * A régua compara a Furtividade de quem ataca com a Percepção Passiva do
+   * alvo (`coracao-do-sistema.md:59`), e o `ResumoCombate` não tinha nenhuma
+   * das duas: **ele foi montado para o golpe**, então carrega os derivados de
+   * combate e nenhuma perícia por nome.
+   *
+   * OS DOIS LADOS VÊM DE LUGARES DIFERENTES e chegam aqui iguais, que é o que
+   * este contrato existe para fazer: do PC saem da ficha, que tem as perícias;
+   * da criatura saem do bloco `pericias` que o `gen-bestiario.mjs` passou a
+   * emitir (quatro pela conta invertida dos derivados e a Furtividade pela
+   * tabela `regras.furtividadeCriatura`).
+   *
+   * `null` em qualquer um dos dois quer dizer "não dá para saber daqui", e não
+   * "zero". Quem compara tem de tratar o nulo como recusa a responder, senão
+   * uma peça sem dado vira uma peça surda.
+   *
+   * A FURTIVIDADE VEM PARTIDA em atributo e perícia, e não como pool pronto, de
+   * propósito: montar o pool é regra (quantos dados por ponto, o +2 do ímpar) e
+   * ela mora no motor, não neste resumo. Aqui é só o que a peça tem.
+   */
+  sentidos?: Sentidos | null;
 }
+
 
 /**
  * O bloco VAZIO, com cada campo no estado que o diz vazio.
@@ -103,6 +128,10 @@ const resumoVazio = (): ResumoCombate => ({
   soak: { impacto: 0, corte: 0, perfuracao: 0 },
   resistPerf: 0, velocidade: null, classe: null, passo: null,
   qa: qaDaPeca('', '', null),
+  // A peça de cena não sabe nada de si: os dois lados são NULO e não zero, pela
+  // mesma razão do `defesa: null` acima. `percepcaoPassiva: 0` diria que ela é
+  // surda, e o que se sabe dela é que ninguém preencheu.
+  sentidos: { percepcaoPassiva: null, furtividade: null },
 });
 
 /** Bloco de combate de origem: da ficha (PC) ou do bestiário (criatura). */
@@ -152,6 +181,16 @@ export function baseResumo(c: any, fichaPorId: Record<string, any> = {}): Resumo
       // arma sai preenchida. O dano médio dela vem da própria expressão de dano,
       // porque ali a expressão É a arma.
       qa: qaDaPeca(a0?.nome || '', a0 ? fmtDano(a0.dano) : '', null),
+      sentidos: (() => {
+        const m = MON[c.monstro_id];
+        const at = m?.atributos || {};
+        const pe = m?.pericias || {};
+        return {
+          percepcaoPassiva: valorPassivo(at.percepcao, pe.prontidao, m?.centelha || 0),
+          furtividade: (at.destreza == null || pe.furtividade == null) ? null
+            : { atributo: at.destreza, pericia: pe.furtividade },
+        };
+      })(),
     };
   }
   return null;

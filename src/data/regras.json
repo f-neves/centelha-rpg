@@ -445,6 +445,50 @@
     "levantamentoAcimaCabeca": 0.5,
     "cargaCorte": 0.75
   },
+  "furtividadeCriatura": {
+    "nota": "A Furtividade de uma criatura, por PORTE e CATEGORIA, sobre a Destreza. Existe porque o bestiário não guarda perícia nenhuma: das cinco que as regras de oposição pedem, quatro voltam invertendo a conta dos derivados (Prontidão de iniciativa - raciocínio, Esquiva da Defesa, Integridade da Defesa Mental, Sociabilidade da Defesa Social) e a Furtividade não volta de lugar nenhum: nada a consome. Sem ela não há comparação para o golpe vindo do escuro, e comparar contra um número fixo seria escrever a regra por omissão.",
+    "porQueTabelaEnaoUmNumeroPorCriatura": "A alternativa era escrever 309 Furtividades à mão. Trezentas e nove decisões de regra que ninguém toma com cuidado produzem números que PARECEM dado e não são, que é a forma de erro mais cara deste projeto. A tabela erra de um jeito que se vê (o assassino humano fica igual ao camponês humano) e a exceção escrita conserta esse caso quando ele aparecer na mesa, uma linha por vez. Mesma forma da couraça por porte (dano.couracaPorte), que é a forma da casa.",
+    "formula": "Furtividade = base do porte + ajuste da categoria + ajuste de tag, limitado a 0..6",
+    "porte": {
+      "nota": "Volume é o que denuncia: o que cabe atrás de um barril se esconde, e o que derruba o barril não. A base cai um degrau por passo de porte até o piso. As chaves sao as mesmas de dano.couracaPorte (minusculo..colossal), e nao os rotulos do bestiario: escrevi \"miudo\" na primeira versao e 24 criaturas sairam SEM furtividade em vez de com a errada, porque a funcao omite quando nao acha em vez de zerar. O zero ambiguo do lado certo.",
+      "minusculo": 4,
+      "pequeno": 3,
+      "medio": 2,
+      "grande": 1,
+      "enorme": 0,
+      "imenso": 0,
+      "colossal": 0
+    },
+    "categoria": {
+      "nota": "O ajuste do CORPO e do jeito de andar, e não da inteligência: a raposa se move calada por instinto, a armadura animada não tem como. Categoria não listada vale 0.",
+      "Fera": 1,
+      "Fada": 2,
+      "Aberração": 0,
+      "Besta mágica": 0,
+      "Celestial": 0,
+      "Conjurador": 0,
+      "Construto": -2,
+      "Demônio": 1,
+      "Diabo": 1,
+      "Dragão": 0,
+      "Elemental": -1,
+      "Exterior": 0,
+      "Gigante": -1,
+      "Humano": 0,
+      "Humanoide": 0,
+      "Limo": -1,
+      "Monstro": 0,
+      "Morto-vivo": -1,
+      "Planta": -2
+    },
+    "tags": {
+      "nota": "Somam sobre o resto. `incorpóreo` é o único que vira o jogo: quem atravessa a parede não tem passo para ouvir.",
+      "incorpóreo": 2
+    },
+    "excecoes": {
+      "nota": "O CAMINHO DA EXCEÇÃO, e ele existe desde o primeiro dia de propósito: dar Furtividade própria a uma criatura é UMA LINHA aqui, com o id dela e o número, e não uma refatoração. A tabela acima é o padrão; isto é a mesa discordando dela num caso concreto. Escreva o porquê ao lado, senão daqui a seis meses o número é um palpite anônimo."
+    }
+  },
   "progressaoPorSessao": [
     10,
     20
@@ -1866,7 +1910,7 @@
           },
           "condicoes": [
             "A JOGADA É A MESMA na vez e fora dela: a área pegou os dois, e os dois rolam Destreza + Esquiva contra os mesmos dois patamares. Estar livre não dispensa a rolagem. O que ela dispensa é o preço de um Tick por metro e a escada em cima dos dados.",
-          "Para rolar é preciso TENTAR SAIR DE VERDADE. Quem fica no lugar não testa e come inteiro. Não existe \"me encolho e rolo os dados\".",
+            "Para rolar é preciso TENTAR SAIR DE VERDADE. Quem fica no lugar não testa e come inteiro. Não existe \"me encolho e rolo os dados\".",
             "Os Ticks são gastos de qualquer maneira, passando ou falhando. É o que torna a decisão uma decisão, e não um bônus grátis.",
             "Ter identificado o efeito rende bônus na jogada: +2 no total, ou +4 se a identificação passou com Margem. Lê-se cedo para escapar melhor, e é o prêmio do teste de Ocultismo."
           ],
@@ -2247,16 +2291,16 @@
     "simultaneo": {
       "nota": "O que só o sistema simultâneo usa. A física é a do P/G/R (preparo, escada, rajada, dupla: tudo igual); o que muda é o relógio e o deslocamento. Ver Combate_Simultaneo.md.",
       "golpeNoCaido": {
-      "nota": "O golpe que cai num alvo que ja esta no chao. Decidido em 03/09 e CORRIGIDO no mesmo dia. O RETRATO DA ABERTURA DO TICK e a unica fonte de verdade: quem estava de pe quando o Tick abriu esta de pe para todos os golpes daquele Tick. Duas linhas, simetricas: caiu num Tick ANTERIOR, o atacante viu cair e pode cancelar ou redirecionar; caiu NESTE Tick, ninguem sabia, e o golpe resolve como foi declarado, no corpo que estava de pe quando o gesto saiu. A primeira versao mandava redirecionar tambem no mesmo Tick, e isso fazia o resultado depender de quem o motor processou primeiro: de duas pecas que se derrubam no mesmo Tick, o atacante de quem caiu primeiro redirecionava e o outro nao. A diferenca nao vinha de ficcao nenhuma, vinha da ordem do laco. Agora nao depende. O caso que sobra, o golpe caindo num corpo que acabou de cair, e a ficcao do simultaneo e nao um defeito dela.",
-      "retratoDaAbertura": true,
-      "redirecionaSeCaiuEmTickAnterior": true,
-      "cancelaSeCaiuEmTickAnterior": true,
-      "resolveComoDeclaradoSeCaiuNesteTick": true,
-      "redirecionaNoAlcanceDaArma": true,
-      "roboRedirecionaSozinho": true,
-      "roboNota": "A peca em modo automatico redireciona para o inimigo de pe mais proximo dentro do alcance, sem abrir caixa. Quem nao esta no automatico, o mestre escolhe. O criterio do mais proximo e escolha de politica escrita dentro do motor, e esta na lista de invencoes da bateria."
-    },
-    "decideEmValeDepois": 1,
+        "nota": "O golpe que cai num alvo que ja esta no chao. Decidido em 03/09 e CORRIGIDO no mesmo dia. O RETRATO DA ABERTURA DO TICK e a unica fonte de verdade: quem estava de pe quando o Tick abriu esta de pe para todos os golpes daquele Tick. Duas linhas, simetricas: caiu num Tick ANTERIOR, o atacante viu cair e pode cancelar ou redirecionar; caiu NESTE Tick, ninguem sabia, e o golpe resolve como foi declarado, no corpo que estava de pe quando o gesto saiu. A primeira versao mandava redirecionar tambem no mesmo Tick, e isso fazia o resultado depender de quem o motor processou primeiro: de duas pecas que se derrubam no mesmo Tick, o atacante de quem caiu primeiro redirecionava e o outro nao. A diferenca nao vinha de ficcao nenhuma, vinha da ordem do laco. Agora nao depende. O caso que sobra, o golpe caindo num corpo que acabou de cair, e a ficcao do simultaneo e nao um defeito dela.",
+        "retratoDaAbertura": true,
+        "redirecionaSeCaiuEmTickAnterior": true,
+        "cancelaSeCaiuEmTickAnterior": true,
+        "resolveComoDeclaradoSeCaiuNesteTick": true,
+        "redirecionaNoAlcanceDaArma": true,
+        "roboRedirecionaSozinho": true,
+        "roboNota": "A peca em modo automatico redireciona para o inimigo de pe mais proximo dentro do alcance, sem abrir caixa. Quem nao esta no automatico, o mestre escolhe. O criterio do mais proximo e escolha de politica escrita dentro do motor, e esta na lista de invencoes da bateria."
+      },
+      "decideEmValeDepois": 1,
       "decideNota": "A ação declarada no Tick T começa em T+1. É o que faz o arco de Preparo 5 soltar a flecha no Tick 6, e o Tick 0 ser só preparação: decisão no Tick, efeito no avanço.",
       "velocidadePadrao": {
         "andar": 1.5,

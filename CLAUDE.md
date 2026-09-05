@@ -35,6 +35,55 @@ Regras de convívio:
 - Ao terminar, **diga em uma linha quais arquivos você tocou**, para a outra frente
   saber o que mudou debaixo dela.
 
+### A saída dessas regras: uma worktree por frente
+
+**Decidido em 04/09/2026, e o que ele conserta são os defeitos listados acima**, não
+uma preferência de arranjo. Todos os três vêm da mesma causa, e a causa é uma só: as
+duas frentes dividem o mesmo diretório, o mesmo índice e o mesmo `dist/`.
+
+- o índice compartilhado levando arquivo alheio no commit, **três vezes** (a última
+  foi `114e31c`);
+- `dist/` e `.astro/` corrompendo em build simultâneo;
+- o `Write` apagando em silêncio o que a outra acabou de escrever.
+
+**WORKTREE, E NÃO BRANCH.** Uma branch por frente não separa nada, porque o `checkout`
+reescreveria os arquivos debaixo da outra instância no meio de uma edição, que é pior
+que tudo que existe hoje. A worktree dá diretório, índice, `dist/` e `.astro/`
+próprios, e continua sendo o mesmo repositório e o mesmo `main`.
+
+**A migração, para a frente que vai sair daqui** (rode no diretório antigo):
+
+```sh
+git status --short          # 1. tem de estar limpo. Se não estiver, commite antes.
+git pull --rebase
+git worktree add ../centelha-artes main   # 2. a árvore nova, já em main
+```
+
+O passo 2 recusa se `main` já estiver em uso por outra worktree. Nesse caso a frente
+que sai cria a sua a partir do commit atual e faz `checkout main` lá dentro:
+`git worktree add --detach ../centelha-artes && git -C ../centelha-artes checkout main`.
+
+Daí em diante, no diretório novo:
+
+```sh
+cd ../centelha-artes
+npm install                 # 3. node_modules é por árvore, e não é compartilhado
+cp ../rpg-system/.env .     # 4. a chave anon; o .env é ignorado e não vem no checkout
+git ls-files --eol | awk '$1 !~ /-text/ && $2 ~ /crlf/' | wc -l   # 5. tem de dar 0
+```
+
+O passo 5 é a conferência do fim de linha descrita mais abaixo: uma árvore nova nasce
+em LF pelo `.gitattributes`, e se der diferente de zero é sinal de que algo está
+errado antes de qualquer trabalho.
+
+**O que muda no dia a dia:** as duas passam a precisar de `git pull --rebase` de
+verdade uma pela outra, em vez de compartilharem `HEAD` de graça. Em troca, `git
+add`/`git commit` voltam a ser seguros e `npm run build` para de disputar `dist/`.
+
+**O que NÃO muda:** o `duo.mjs` não sente nada (ele acha o commit do aviso por sha, e
+sha é sha), o deploy não sente, e a worktree da revisora continua onde está.
+
+
 ### Onde as frentes se encostam
 
 A divisão costuma ser: uma frente cuida de `/mesa` (o painel do mestre, o Grid de

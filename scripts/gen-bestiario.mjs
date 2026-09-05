@@ -509,7 +509,76 @@ const CUSTOM = (() => {
   return lista;
 })();
 
-const inimigos = [...NPCS.map(stat), ...CUSTOM.map(stat), ...CONV];
+/**
+ * AS PERÍCIAS DA CRIATURA, e este bloco existe por um achado de 04/09/2026.
+ *
+ * O bestiário nunca teve a chave `pericias`: nenhuma das 309. E isso travava
+ * TODA regra de oposição em que a criatura está de um dos lados, que são
+ * catorze (ver o L35 no `Pendencias.md`), a começar pela que o combate acabou
+ * de pedir: a Percepção Passiva do alvo contra a Furtividade de quem ataca do
+ * escuro (`coracao-do-sistema.md:59`).
+ *
+ * **DADO QUE EXISTE IMPLÍCITO NUM DERIVADO É DADO QUE EXISTE**, e era o caso de
+ * quatro das cinco. Este script CONSOME perícia para calcular os derivados e
+ * depois a descarta, e a conta é invertível o tempo todo:
+ *
+ *   Prontidão     = iniciativa − raciocínio          → volta EXATA nas 309
+ *   Esquiva       = defesa/2 − destreza − centelha/2  → 301 (8 com armadura no meio)
+ *   Integridade   = defesaMental − raciocínio − vontade − centelha → 284 (25 sem mente)
+ *   Sociabilidade = (defesaSocial − centelha)/2 − compostura → 145 (164 com Int < 2)
+ *
+ * A quinta, a Furtividade, não volta de lugar nenhum porque nada a consome, e
+ * por isso ela vem da tabela por porte e categoria (`regras.furtividadeCriatura`),
+ * com exceção por id no próprio JSON.
+ *
+ * ONDE A CONTA NÃO FECHA, a perícia sai OMITIDA e não zerada, e a distinção é o
+ * princípio do zero ambíguo em pessoa: `esquiva: 0` quer dizer "não esquiva", e
+ * a ausência da chave quer dizer "não dá para saber daqui". Quem lê tem de poder
+ * separar as duas.
+ *
+ * E ELAS SÃO REDUNDANTES DE PROPÓSITO. O motor continua lendo `defesa`,
+ * `defesaMental` e `iniciativa`; ninguém recalcula derivado a partir daqui. Estas
+ * chaves existem para as regras que pedem a PERÍCIA pelo nome, e a redundância é
+ * o preço de não refazer o bestiário inteiro.
+ */
+const FURT = regras.furtividadeCriatura || {};
+const NORM = (t) => String(t || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+function furtividadeDe(x) {
+  const ex = (FURT.excecoes || {})[x.id];
+  if (typeof ex === 'number') return ex;
+  const porte = NORM(DIMPORTE[x.id] || 'medio');
+  const base = (FURT.porte || {})[porte];
+  if (typeof base !== 'number') return undefined;
+  let v = base + ((FURT.categoria || {})[x.categoria] || 0);
+  for (const t of (x.tags || [])) v += (FURT.tags || {})[t] || 0;
+  return Math.max(0, Math.min(6, v));
+}
+function periciasDe(x) {
+  const at = x.atributos || {};
+  const C = x.centelha || 0;
+  const V = x.vontade || 0;
+  const inteiro = (n) => (Number.isFinite(n) && Number.isInteger(n) && n >= 0 ? n : undefined);
+  const bonusIni = (() => {
+    const m = /\+\s*(-?\d+)/.exec(String(x.iniciativa || ''));
+    return m ? parseInt(m[1], 10) : null;
+  })();
+  const p = {
+    prontidao: bonusIni == null ? undefined : inteiro(bonusIni - (at.raciocinio || 0)),
+    esquiva: typeof x.defesa === 'number'
+      ? inteiro(x.defesa / 2 - (at.destreza || 0) - C / 2) : undefined,
+    integridade: typeof x.defesaMental === 'number'
+      ? inteiro(x.defesaMental - (at.raciocinio || 0) - V - C) : undefined,
+    sociabilidade: typeof x.defesaSocial === 'number'
+      ? inteiro((x.defesaSocial - C) / 2 - (at.compostura || 0)) : undefined,
+    furtividade: furtividadeDe(x),
+  };
+  const saida = {};
+  for (const k of Object.keys(p)) if (p[k] !== undefined) saida[k] = p[k];
+  return saida;
+}
+
+const inimigos = [...NPCS.map(stat), ...CUSTOM.map(stat), ...CONV]
+  .map((x) => ({ ...x, pericias: periciasDe(x) }));
 const ALVO = path.join(ROOT, 'src/data/inimigos.json');
 const SAIDA = JSON.stringify(inimigos, null, 2) + '\n';
 
