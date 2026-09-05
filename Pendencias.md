@@ -1257,7 +1257,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   fazia o carimbo valer: alguém que leia o perfil na hora de aplicar a regra.**
 
   O perfil é gravado, viaja no encontro, aparece na tela, é comparável e é recarimbável. E é lido
-  em **um** lugar do código de produção, `grid.astro:8609` (`perfil: { ...REGRAS_CENA }`), onde ele é copiado para dentro da
+  em **um** lugar do código de produção, `grid.astro:8648` (`perfil: { ...REGRAS_CENA }`), onde ele é copiado para dentro da
   entrada do lance, para o oráculo. `entrada.perfil` **não é consultado em lugar nenhum**: nem em
   `resolverGolpe`, nem em `quase-acerto.ts`, nem em `calc.ts`, nem no harness. Nenhuma das quinze
   bandeiras faz o motor tomar um caminho diferente.
@@ -1323,7 +1323,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   - o catálogo, 55 verbetes com número, em `src/data/condicoes.json`;
   - a soma: `export function somarCondicoes` (`src/lib/mesa-core.ts:164`);
-  - a leitura na folha do lance: `const cd = somarCondicoes` (`grid.astro:8318`);
+  - a leitura na folha do lance: `const cd = somarCondicoes` (`grid.astro:8357`);
   - o desconto chegando à Defesa: `alvo.condicoesDefesa` (`src/lib/lance.ts:159`);
   - a coluna: `add column if not exists condicoes` (`supabase/migracao-11.sql:25`);
   - e o RPC do jogador aceitando a chave: `condicoes` (`supabase/migracao-22.sql:125`).
@@ -1333,8 +1333,8 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   O diálogo saiu da aba Combate e virou três peças compartilhadas (`src/lib/mesa-condicoes.ts`,
   `src/components/CondDlg.astro`, e o estilo no `MesaCab.astro`). O que entrou no tabuleiro:
 
-  - o item no menu da peça: `item('condicoes'` (`grid.astro:6825`);
-  - o selo de ícones na lista lateral, que custa zero gestos: `const selo` (`grid.astro:6005`);
+  - o item no menu da peça: `item('condicoes'` (`grid.astro:6829`);
+  - o selo de ícones na lista lateral, que custa zero gestos: `const selo` (`grid.astro:6044`);
   - e a aba Combate chamando o mesmo módulo: `function abrirCondicoes` (`combate.astro:1740`), para
     não haver duas cópias divergindo no primeiro conserto que só uma receber.
 
@@ -1534,7 +1534,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   caixa**. Escolher "interpor" hoje **muda o verbo da frase do registro e nada mais**
   (`const verbo`, `src/lib/mesa-tempo-ui.ts:338`), e a saída escolhida é descartada pelo Grid, que
   grava só
-  `acao: limpa` (`grid.astro:5903`).
+  `acao: limpa` (`grid.astro:5942`).
 
   **O CAPÍTULO NÃO TEM UMA LINHA**, e é o primeiro fato do levantamento: `interpor`, `desviar` e
   **`abortar`** não aparecem em `src/content/chapters/` nenhuma vez. O Simultâneo dessa parte vive
@@ -2281,16 +2281,19 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **DUAS DAS TRÊS FALSIFICAÇÕES RODARAM, e a terceira está devendo.** Tirando a releitura, os casos
   1 e 2 ficam vermelhos (a linha do jogador some do banco) e a lápide continua verde; tirando a
   lápide, só a asserção da lápide fica vermelha (a linha apagada volta, e o banco vai de 42 para
-  43 linhas). **A terceira, trocar o `minha` por `e.ef` para o Refazer voltar a apagar linha de
-  jogador, NÃO CONSEGUIU RODAR**: o compilador do Astro nesta máquina caiu em `UnknownCompilerError`
-  (`WebAssembly.instantiate(): size 305922048 > maximum function size`) em seis tentativas
-  seguidas, com a árvore limpa e com a árvore alterada · é o defeito de máquina já registrado, e
-  não o código.
+  43 linhas). **A terceira rodou no CI, num ramo descartável**, porque o compilador do Astro nesta
+  máquina caiu em `UnknownCompilerError` seis vezes seguidas, com a árvore limpa e com a alterada.
+  O portão roda em qualquer ramo: empurrei `falsif/l40-refazer` com o `minha` trocado por `e.ef`, li
+  o resultado e apaguei o ramo. **Uma asserção vermelha, e a certa:**
 
-  **O que existe no lugar dela, e vale menos que um vermelho:** na rodada verde a caixa do Refazer
-  diz *"Apagar 1 linha de Arte"* com **duas** linhas `ef` no `LOG`, a do mestre e a do jogador. Com
-  `minha = e.ef` ela diria 2. É observação que discrimina, medida exatamente onde a falsificação
-  apareceria, mas **não é a falsificação**, e fica devendo.
+  ```
+  ✘ 3 · o Refazer NAO apagou a linha de Arte do JOGADOR: acao dele nao e escrituracao do motor
+  ✘ Grid FALHOU (1):
+  ```
+
+  **Uma só**, e é isso que fecha a prova: o resto da cena continuou verde, então a asserção mede o
+  `porJogador` e não um efeito colateral. **E a técnica fica registrada**: falsificação que a máquina
+  não roda se faz num ramo descartável.
 
   **O QUE FALTA, e é a 34:** enquanto o mestre montar o vetor aqui em vez de o banco montá-lo lá,
   existe corrida. As quatro funções estão propostas gesto a gesto mais abaixo.
@@ -2298,9 +2301,9 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **O DEFEITO.** No Grid os dois papéis escrevem o mesmo campo por caminhos que não se conhecem.
 
   O jogador acrescenta pelo banco, e o banco lê a coluna e concatena lá dentro:
-  `SB.rpc('jogador_registra', { p_arena: ARENA.id, p_linha: linha })`, `grid.astro:9667`.
+  `SB.rpc('jogador_registra', { p_arena: ARENA.id, p_linha: linha })`, `grid.astro:9706`.
   O mestre grava o vetor inteiro da memória dele:
-  `await SB.from('mesa_arenas').update({ log: LOG }).eq('id', ARENA.id);`, `grid.astro:9702`. **A linha que o jogador acabou de
+  `await SB.from('mesa_arenas').update({ log: LOG }).eq('id', ARENA.id);`, `grid.astro:9741`. **A linha que o jogador acabou de
   registrar some se o `LOG` do mestre for anterior a ela, sem erro nenhum.** É o caminho normal dos
   dois durante uma cena.
 
@@ -2323,7 +2326,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | e enquanto o mestre está OCUPADO, a releitura é adiada | `RETENTAR_OCUPADO` × `MAX_ADIAMENTOS` | 700 × 30 = **~21 s** |
 
   **O piso é ~340 ms e o teto é ~21 segundos**, e o teto não é raro: `ocupado` inclui
-  `|| !el('tok-menu').hidden || !!document.querySelector('dialog[open]')`, `grid.astro:7305`, e
+  `|| !el('tok-menu').hidden || !!document.querySelector('dialog[open]')`, `grid.astro:7344`, e
   diálogo aberto é exatamente o estado do mestre no instante em que ele vai registrar (confirmar
   dano, confirmar acerto, pôr condição). **A janela larga acontece justamente quando ele está
   prestes a escrever.**
@@ -2343,10 +2346,10 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | gesto | o que faz hoje |
   |---|---|
   | `logar()` | empurra uma linha e grava o vetor |
-  | `desfazer()` | tira a última linha com `acao` (`LOG.splice(idx, 1);`, `grid.astro:9769`) e grava o vetor |
+  | `desfazer()` | tira a última linha com `acao` (`LOG.splice(idx, 1);`, `grid.astro:9808`) e grava o vetor |
   | `editarLinha(id)` | muda `txt`/`pub` de uma linha, e grava o vetor |
-  | `excluirLinha(id)` | tira por id (`LOG.splice(i, 1);`, `grid.astro:9864`) e grava o vetor |
-  | `refazerLogDosEfeitos()` | `LOG = LOG.filter((e: any) => !minha(e));` (`grid.astro:9915`) e empurra N linhas novas |
+  | `excluirLinha(id)` | tira por id (`LOG.splice(i, 1);`, `grid.astro:9903`) e grava o vetor |
+  | `refazerLogDosEfeitos()` | `LOG = LOG.filter((e: any) => !minha(e));` (`grid.astro:9954`) e empurra N linhas novas |
 
   **E UMA CORREÇÃO AO ENUNCIADO: não existe zerar no Grid.** O `LOG = []` é do `combate.astro`
   (`if (zLog) { LOG = []; await persistLog(); }`, `combate.astro:2058`), na caixa de reiniciar
@@ -2511,7 +2514,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **E O RISCO QUE EU FUI CONFERIR ANTES DE DIZER QUE NÃO HÁ:** a 32 faz `centro` e `conjurador_id`
   poderem vir nulos, e o cliente não foi mudado para isso. Conferido: o `centro` **não é lido em
   lugar nenhum** do cliente · a única ocorrência dele é uma escrita, em
-  `patch.centro = { q: nova.q, r: nova.r };`, `artes-grid-mesa.ts:1863`.
+  `patch.centro = { q: nova.q, r: nova.r };`, `artes-grid-mesa.ts:1903`.
   E o `conjurador_id` já era tratado como opcional em todos os pontos que o usam. **`alvos` nunca vem nulo** (a view faz `coalesce` para `[]`). O cabeçalho da 32 diz
   que ela não depende de mudança de tela, e a leitura do cliente confirma.
 
@@ -2540,6 +2543,70 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   1. a `token_visao` mandar `lembranca` · **feito**, é a própria migração;
   2. **a tela desenhar a lembrança como lembrança e não como peça** · NÃO FEITO, e é o bloqueio;
   3. a semente fechar a janela do dado acumulado · **feito**, é o bloco 0.
+
+- [ ] **L43 · [O MESTRE FEITO · O JOGADOR ESPERA A MIGRAÇÃO 35] A marca da mordida que a aba do
+  jogador apagava** · *achado em 05/09/2026, ao construir a saída da área. É a família do L41, e é o
+  pior caso dela.*
+
+  **E NÃO É CORRIDA: É APAGAMENTO EM TODA GRAVAÇÃO.** Foi assim que a premissa mudou no meio do
+  trabalho, e vale escrito porque é o que fez o defeito passar despercebido. A `jogador_registra` do
+  log **acrescenta** (`v_log := v_log || jsonb_build_array(p_linha)`), e por isso lá o defeito é uma
+  corrida de milissegundos. A `jogador_muda_efeito` **substitui**
+  (`mordidos = coalesce(p_dados->'mordidos', mordidos),`, `supabase/migracao-22.sql:226`), e por
+  isso aqui não há corrida nenhuma: há apagamento. **Duas funções do mesmo arquivo, duas semânticas,
+  e só uma delas era a certa.**
+
+  **A CAUSA É UM CORTE DE INFORMAÇÃO, e ele é deliberado.** A aba do jogador carrega os efeitos da
+  `efeito_visao`, e essa view **não traz `mordidos`** (sondado no esquema de produção: `42703`).
+  Então `ef.mordidos` é `{}` na tela dele **sempre**. Quando ele marca a mordida dele, o cliente
+  monta um objeto de UMA CHAVE e manda · e a RPC troca o mapa inteiro por ele.
+
+  **O QUE A MESA SENTE:** o efeito volta a poder pegar todo mundo que já tinha pegado naquela
+  rodada. **A saída da área vira um teste que se repete até passar, e quem tenta escapar rola a fuga
+  duas vezes sem entender por quê** · que é literalmente a consequência que o comentário do
+  `sairDaArea` já previa.
+
+  **E A MARCA `__a_sair` VAI JUNTO, e a resposta à pergunta da mesa é: não, a Arte não soltava · ela
+  DEIXAVA DE SOLTAR.** A marca é o que segura a Arte em montagem: com ela, `deveSair()` é verdadeiro
+  e a Arte ainda deve o efeito. Apagada, o laço da saída passa direto
+  (`if (!deveSair(ef) || montando(ef, t)) continue;`, `src/lib/artes-grid-mesa.ts:1738`) e **a Arte
+  nunca sai**.
+
+  **O sintoma que alguém viu e não soube nomear:** a mancha fica no chão a duração inteira **sem
+  ferir ninguém, sem aplicar condição e sem saltar**, e some no fim como se tivesse vencido o prazo.
+  A Mana foi paga. Não aparece erro nenhum. Do lado de quem conjurou é *"eu conjurei e não aconteceu
+  nada"*.
+
+  **A JANELA DESSE CASO É ESTREITA, e é honesto dizer**: enquanto a Arte está montando ela não morde
+  (o laço da mordida abre com `if (montando(ef, t)) continue;`), então a única brecha é entre o Tick
+  em que ela deveria sair e o instante em que a aba do mestre processa isso. O apagamento das
+  mordidas dos OUTROS, esse é o de todo dia.
+
+  ### O que foi construído, e o que espera
+
+  **O lado do MESTRE está feito.** Os quatro pontos que escreviam `mordidos` passaram por um helper
+  só, o `marcarMordido`, que **relê o valor do banco e aplica a CHAVE sobre ele**. E o conserto é
+  por chave e não por objeto, que é o que o torna simples: a intenção de cada ponto é sempre "põe
+  esta chave" ou "tira esta chave", nunca "o mapa passa a ser este". **Por isso ele não precisa de
+  lápide**, como o registro precisou · a operação já vem expressa como delta.
+
+  **O lado do JOGADOR não tem conserto do cliente**, e a linha do `else` é o que sobra: ele não pode
+  reler o que a view não manda. **O conserto é a `supabase/migracao-35.sql`**, escrita e esperando a
+  mesa rodar: uma linha, trocando o `coalesce` por `||`, que é o mesmo operador que a
+  `jogador_registra` já usava. **Fundir é estritamente menos permissivo que substituir**, então ela
+  não precisa de policy nova.
+
+  **AS OPÇÕES, e a mesa escolheu FUNDIR NA RPC:**
+
+  - **fundir na RPC** (a 35) · uma linha, e não muda nada do que o jogador vê;
+  - **a view mandar `mordidos`** · consertaria um defeito a mais (hoje a aba dele acha que ninguém
+    foi mordido e re-oferece mordida já cobrada), mas paga com **revelar quem já foi pego**, que é
+    decisão de jogo que ninguém pediu;
+  - **a aba do jogador parar de marcar** · troca um defeito por outro, e o pior é que passaria a ser
+    por desenho.
+
+  **O QUE A 35 NÃO CONSERTA, de propósito:** a aba do jogador continua sem enxergar `mordidos`,
+  então continua oferecendo mordida que já foi cobrada. Fica registrado para não virar surpresa.
 
 - [ ] **L36 · [QUANDO A REGRA APARECER] O `resumoParaBanco` é vitrine, e não entrada de conta.**
   Não é defeito hoje, e é para isso que está escrito: quando alguém topar com ele, que não trate
@@ -2623,7 +2690,7 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   `arena_log` como tabela, uma linha por entrada, e o desfazer virando um `delete`.
 - [ ] **I5 · [FAZER] Um editor de cenário no Grid.** Hoje o mestre só põe peças: o tabuleiro não
   tem parede, terreno difícil nem item no chão, e o único veto de passo é casa ocupada
-  (`ocupadoPor`, `grid.astro:6627`). Decidido em 02/09/2026, ao desenhar o harness de simulação
+  (`ocupadoPor`, `grid.astro:6666`). Decidido em 02/09/2026, ao desenhar o harness de simulação
   (`docs/simulacao/02-projeto-harness.md` §0.4 P2): a **parede entra como funcionalidade**, e o
   encaixe já existe, porque `caminharHex` recebe um veto arbitrário (`hex.ts:131`). O terreno
   difícil tem gancho pronto e não usado: a condição `terreno-dificil` existe em `condicoes.json`

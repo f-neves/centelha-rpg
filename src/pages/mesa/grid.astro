@@ -2929,6 +2929,18 @@ const SETAS = [
    */
   async function recarimbar() {
     if (!MESTRE || !ENC?.id) return;
+    // A régua acabou de mudar: some antes do carimbo, porque é a única das duas
+    // que explica uma peça que sumiu, e é ela que a pessoa está olhando.
+    if (REGUA_MUDOU) {
+      b.hidden = false;
+      b.textContent = '⚑ a névoa foi corrigida · peças podem ter sumido do mapa';
+      b.title = 'A régua da névoa mudou agora: uma Arte de fogo que ainda não caiu deixou'
+        + '\nde abrir o escuro, e peças que você via por causa disso saem do mapa.'
+        + '\nNão é defeito, e nada foi perdido: elas nunca deveriam estar à vista.'
+        + '\nClique para dispensar este aviso.';
+      b.onclick = () => { REGUA_MUDOU = false; pintarCarimbo(); };
+      return;
+    }
     const e = estadoDoCarimbo(ENC);
     const quais = e.difere.length ? `\n\nMuda: ${e.difere.join(', ')}.` : '';
     if (!await uiConfirmar(
@@ -2993,6 +3005,30 @@ const SETAS = [
    */
   let SEM_RELOGIO = false;
 
+  /**
+   * A RÉGUA DA NÉVOA MUDOU DEBAIXO DE QUEM ESTÁ JOGANDO, e ele precisa ler isso.
+   *
+   * As migrações 31 e 32 não tiram nem renomeiam coluna nenhuma: elas mudam o
+   * DOMÍNIO dos valores e as LINHAS que a view devolve. Peça que só chegava
+   * porque um fogo ainda não caído acendia o chão para de chegar; mancha de Arte
+   * no escuro para de viajar; `hexes` vira subconjunto. **O sintoma na tela é
+   * peça e mancha sumindo no meio do turno, sem erro nenhum**, no próximo aviso
+   * de tempo real, e isso é indistinguível de defeito para quem está olhando.
+   *
+   * O SINAL JÁ EXISTIA E NÃO TINHA SIDO USADO: a mesma migração 31 faz a
+   * `encontro_visao` passar a mandar `tick_atual`, que é o `SEM_RELOGIO`. Quando
+   * ele vira de `true` para `false` DENTRO da sessão, o jogador acabou de ser
+   * migrado por baixo, e é o único momento em que dá para avisar sem pedir nada
+   * ao banco. Quem abrir a aba depois não vê a linha, e está certo: para ele não
+   * mudou nada.
+   *
+   * NÃO DÁ PARA COBRIR A 32 SOZINHA, e é honesto dizer: ela não acrescenta
+   * coluna, então não há como o cliente notar que ela rodou. O aviso cobre as
+   * duas porque as duas são rodadas coladas, e a frase fala da névoa e não do
+   * relógio.
+   */
+  let REGUA_MUDOU = false;
+
   /** O encontro ativo e quem está nele. É de lá que saem os tokens. */
   async function carregarCombatentes() {
     ENC = null; COMBS = [];
@@ -3002,7 +3038,10 @@ const SETAS = [
     // `in`, e não `== null`: a diferença entre "a coluna não veio" (view velha)
     // e "veio zero" (a cena está mesmo no Tick 0) é justamente a que não pode
     // se perder aqui, e é a mesma forma do zero ambíguo.
+    const semRelogioAntes = SEM_RELOGIO;
     SEM_RELOGIO = !MESTRE && !!ENC && !('tick_atual' in ENC);
+    // De `true` para `false` no meio da sessão: a migração acabou de rodar.
+    if (semRelogioAntes && !SEM_RELOGIO) REGUA_MUDOU = true;
     // O relógio do simultâneo relê a verdade do banco a cada carga: outra tela
     // pode ter avançado o Tick enquanto esta estava fora.
     TICK_SIM = null;

@@ -122,7 +122,19 @@ function bancoFalso() {
   let seq = 0;
   const from = (tabela) => ({
     select: () => ({
-      eq: async () => ({ data: tabelas[tabela].slice(), error: null }),
+      // A `eq` do cliente de verdade e AGUARDAVEL e ENCADEAVEL ao mesmo tempo:
+      // `await ...eq(...)` devolve as linhas, e `...eq(...).maybeSingle()` devolve
+      // uma. O duble so tinha a primeira metade, e a segunda faltando fez o
+      // `marcarMordido` explodir aqui sem ter defeito nenhum. Duble que nao imita
+      // a forma da interface mede a forma do duble.
+      eq: (_col, val) => {
+        const linhas = tabelas[tabela].slice();
+        const p = Promise.resolve({ data: linhas, error: null });
+        const uma = linhas.find((r) => r.id === val) || null;
+        p.maybeSingle = async () => ({ data: uma, error: null });
+        p.single = p.maybeSingle;
+        return p;
+      },
       limit: async () => ({ data: tabelas[tabela].slice(-1), error: null }),
     }),
     insert(linha) {
@@ -292,6 +304,50 @@ console.log('· efeito no chão de antes do conserto · não sai de novo');
   await M.verificarEfeitos(ctx);
   ok(!temCondicao(alvo, 'imobilizado'),
     'a marca é de DEVE e não de JÁ SAIU: o que é velho fica como está, sem sair uma segunda vez');
+}
+
+
+
+// ============================ N · a marca da mordida nao atropela a dos outros
+//
+// O DEFEITO QUE ESTA CENA PRENDE (L43): os quatro pontos que escrevem `mordidos`
+// montavam o mapa a partir da COPIA EM MEMORIA e mandavam o objeto INTEIRO. Com
+// duas abas escrevendo o mesmo campo, e um dialogo humano no meio, quem grava
+// por ultimo apaga a marca de quem gravou antes. A consequencia esta escrita no
+// `sairDaArea`: o efeito volta a poder pegar quem ja pegou, e quem tenta escapar
+// rola a fuga duas vezes sem entender por que.
+//
+// O PONTO ESCOLHIDO E A SAIDA DA ARTE, e nao a mordida, por um motivo de
+// bancada: a mordida passa por uma caixa de dialogo, e esta bancada nao tem
+// tela. A saida roda sozinha e usa o MESMO helper, tirando chave em vez de por.
+// Se a fusao estiver certa aqui, esta certa nos quatro.
+//
+// A DIVERGENCIA E MONTADA DO JEITO QUE ELA ACONTECE: a marca da outra aba entra
+// SO NA LINHA DO BANCO, com objeto novo, e a memoria desta aba continua sem
+// saber dela. Mutar o objeto que ja esta la nao serviria · o `daLinha` guarda a
+// MESMA referencia, entao a memoria enxergaria a mudanca e a cena mediria nada.
+console.log('\n· tirar a marca da saida nao apaga a mordida que outra aba gravou');
+{
+  const { ctx, banco, relogio } = cena({ tick: 3 });
+  // O `ATIVOS` e global do modulo e as cenas anteriores deixaram efeito nele:
+  // sem esta linha o `[0]` seria de outra cena, contra um banco novo e vazio.
+  await M.carregarEfeitos(ctx);
+  await M.gravarEfeito(ctx, ctx.combs[0], plano(), { forma: 'alvo', figura: null, alvos: ['a1'] });
+  const ef = M.efeitosAtivos()[0];
+  ok(!!ef && M.deveSair(ef), 'a Arte nasce devendo a saida (`__a_sair` na memoria e no banco)');
+
+  const linha = banco.tabelas.arena_efeitos[0];
+  // OUTRA ABA MORDEU ALGUEM. Objeto NOVO, so no banco.
+  linha.mordidos = { ...(linha.mordidos || {}), outro: 1 };
+  ok(ef.mordidos.outro == null, 'e esta aba NAO sabe da mordida da outra: e essa a foto velha');
+
+  relogio.t = 9;
+  await M.verificarEfeitos(ctx);
+
+  const m = banco.tabelas.arena_efeitos[0].mordidos || {};
+  ok(m.__a_sair == null, `a Arte saiu: a marca da saida foi tirada (${Object.keys(m).join(', ') || 'mapa vazio'})`);
+  // O PAR, e sem ele a primeira passa com o mapa inteiro trocado.
+  ok(m.outro === 1, 'e a mordida que a OUTRA aba gravou continua la: tirar uma chave nao apaga as outras');
 }
 
 console.log('');

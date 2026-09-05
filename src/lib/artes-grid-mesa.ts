@@ -1490,9 +1490,7 @@ async function oferecerSaida(ctx: CtxGrid, ef: EfeitoAtivo, alvo: any): Promise<
     // Ninguém sofreu, mas a mordida ACONTECEU: sem a marca, o mesmo efeito
     // tentaria pegar o alvo de novo na mesma rodada, e a saída viraria um teste
     // que se repete até passar.
-    const t = tickAtual(ctx);
-    ef.mordidos = { ...(ef.mordidos || {}), [alvo.id]: rodadaDoTick(t) };
-    await ctx.SB.from('arena_efeitos').update({ mordidos: ef.mordidos }).eq('id', ef.id);
+    await marcarMordido(ctx, ef, alvo.id, rodadaDoTick(tickAtual(ctx)));
   }
   return fator;
 }
@@ -1559,9 +1557,7 @@ async function morder(ctx: CtxGrid, ef: EfeitoAtivo, alvo: any, verbo: string, f
   if (error) return uiErro('Erro ao aplicar o dano: ' + error.message);
   alvo.pv_atual = pv;
 
-  const marcaTurno = { ...(ef.mordidos || {}), [alvo.id]: rodadaDoTick(tickAtual(ctx)) };
-  ef.mordidos = marcaTurno;
-  await ctx.SB.from('arena_efeitos').update({ mordidos: marcaTurno }).eq('id', ef.id);
+  await marcarMordido(ctx, ef, alvo.id, rodadaDoTick(tickAtual(ctx)));
 
   // O estouro na cor do elemento, no corpo de quem levou.
   //
@@ -1593,6 +1589,54 @@ async function aplicarDano(ctx: CtxGrid, alvo: any, bruto: number, plano: Plano,
   await ctx.SB.from('combatentes').update({ pv_atual: pv }).eq('id', alvo.id);
   alvo.pv_atual = pv;
   await ctx.logar(alvo, `${alvo.nome} sofreu ${golpe.liquido} de dano por ${motivo} [${golpe.nota}]`, { acao: null });
+}
+
+// ======================================================= a marca da mordida
+/**
+ * PÕE (ou TIRA) UMA CHAVE DO `mordidos` SEM ATROPELAR AS OUTRAS.
+ *
+ * O `mordidos` é um mapa `{ combatente: rodada }` mais a marca `__a_sair`, e
+ * quatro pontos o escrevem. Todos faziam a mesma coisa: `{ ...ef.mordidos,
+ * [alvo]: rodada }` a partir da cópia em memória, e mandavam o objeto INTEIRO.
+ * É a forma nomeada no L41 · leitura-modificação-escrita de coleção inteira a
+ * partir de foto local, em que quem perde não perde a própria escrita, perde a
+ * de uma terceira coisa que não estava na foto.
+ *
+ * E DUAS ABAS ESCREVEM ESTE CAMPO, com um DIÁLOGO HUMANO no meio: a caixa
+ * "Efeitos pegando alguém" e a de "Sair da área" esperam a escolha de uma
+ * pessoa entre a leitura e a escrita, e a `jogador_muda_efeito` existe desde a
+ * migração 22 exatamente para o jogador resolver na aba dele.
+ *
+ * A CONSEQUÊNCIA, quando a marca se perde, está escrita no `sairDaArea`: o
+ * mesmo efeito tenta pegar o alvo de novo na mesma rodada, e a saída vira um
+ * teste que se repete até passar. O jogador rola a fuga duas vezes sem entender
+ * por quê.
+ *
+ * O CONSERTO É POR CHAVE E NÃO POR OBJETO, e é o que o torna simples: a
+ * intenção de cada um dos quatro pontos é sempre "põe esta chave" ou "tira esta
+ * chave", nunca "o mapa passa a ser este". Relendo o valor do banco e aplicando
+ * a chave sobre ELE, duas abas que mordem gente diferente se somam em vez de se
+ * apagarem · e não é preciso lápide nenhuma, como foi preciso no registro,
+ * porque a operação já vem expressa como delta.
+ *
+ * O LADO DO JOGADOR NÃO TEM CONSERTO DAQUI, e a linha do `else` é o que sobra.
+ * Ele carrega os efeitos da `efeito_visao`, e essa view NÃO TRAZ `mordidos`
+ * (conferido no esquema de produção: `42703`). Então `ef.mordidos` é `{}` na aba
+ * dele SEMPRE, e não há o que reler. O conserto do lado dele é do banco, e está
+ * proposto no L43.
+ */
+async function marcarMordido(ctx: CtxGrid, ef: EfeitoAtivo, chave: string,
+                             valor: number | null): Promise<void> {
+  let base: Record<string, any> = { ...(ef.mordidos || {}) };
+  if (ctx.mestre) {
+    const { data } = await ctx.SB.from('arena_efeitos')
+      .select('mordidos').eq('id', ef.id).maybeSingle();
+    if (data && data.mordidos && typeof data.mordidos === 'object') base = { ...data.mordidos };
+  }
+  if (valor == null) delete base[chave];
+  else base[chave] = valor;
+  ef.mordidos = base;
+  await ctx.SB.from('arena_efeitos').update({ mordidos: base }).eq('id', ef.id);
 }
 
 // ==================================================== a condição com prazo
@@ -1692,10 +1736,7 @@ export async function verificarEfeitos(ctx: CtxGrid, palco?: HTMLElement): Promi
   // mesa consegue consertar.
   for (const ef of ATIVOS) {
     if (!deveSair(ef) || montando(ef, t)) continue;
-    const resto = { ...(ef.mordidos || {}) };
-    delete resto[A_SAIR];
-    ef.mordidos = resto;
-    await ctx.SB.from('arena_efeitos').update({ mordidos: resto }).eq('id', ef.id);
+    await marcarMordido(ctx, ef, A_SAIR, null);
     // A linha no registro é o que faz a saída ser um acontecimento da mesa, e
     // não uma mudança silenciosa de estado: quem estava vendo o gesto se montar
     // precisa ler que ele terminou.
@@ -1747,8 +1788,7 @@ export async function verificarEfeitos(ctx: CtxGrid, palco?: HTMLElement): Promi
     if (p.ef.dano_dados) await morderComSaida(ctx, p.ef, p.alvo, 'pegou');
     else if (p.ef.condicao) {
       await porCondicao(ctx, p.alvo, p.ef.condicao, turnosRestantes(p.ef, t));
-      p.ef.mordidos = { ...(p.ef.mordidos || {}), [p.alvo.id]: rodadaDoTick(t) };
-      await ctx.SB.from('arena_efeitos').update({ mordidos: p.ef.mordidos }).eq('id', p.ef.id);
+      await marcarMordido(ctx, p.ef, p.alvo.id, rodadaDoTick(t));
       await ctx.logar(p.alvo, `${p.ef.nome} pegou ${p.alvo.nome}: ${CONDICAO[p.ef.condicao]?.nome || p.ef.condicao}`,
         { acao: null });
     }
