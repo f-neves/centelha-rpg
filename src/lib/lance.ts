@@ -52,7 +52,9 @@ export const fonteRolada: FonteDeDados = {
  * arbitrário da sequência de acaso, e não há como reproduzi-lo; com os dados
  * dados, a comparação passa a ser sobre a **conta**, que é o que se quer
  * conferir. Se a cópia rolar uma quantidade diferente de dados, ou somar o
- * ajuste no lugar errado, o `total` sai diferente e o teste pega.
+ * ajuste no lugar errado, o `total` sai diferente e **o `test-lance.mjs` para**,
+ * que está no `validate`. O nome fica escrito de propósito: "o teste pega" sem
+ * dizer qual teste é uma promessa que ninguém consegue conferir depois.
  */
 export function fonteFixa(dados: { acerto: number[]; dano: number[] }): FonteDeDados {
   const fila = [dados.acerto, dados.dano];

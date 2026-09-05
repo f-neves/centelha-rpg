@@ -20,7 +20,8 @@
 // **omissões**, e omissão não faz barulho: cada arquivo continua coerente
 // consigo mesmo, e o verde continua verde.
 //
-// O QUE ELE CONFERE, e as três respondem à mesma pergunta por ângulos diferentes:
+// O QUE ELE CONFERE, e as quatro respondem à mesma pergunta por ângulos
+// diferentes:
 //
 //   1. TODO TESTE ESTÁ EM ALGUM PORTÃO. Um `scripts/test-*.mjs` que não aparece
 //      em `validate` nem em `smoke` é um teste que ninguém roda. Ficar de fora é
@@ -31,9 +32,13 @@
 //   3. TODA TOLERÂNCIA TEM PRAZO OU CONDIÇÃO. Uma frase como "por ora", "por
 //      enquanto" ou "provisório" marca um lugar em que o código faz menos do que
 //      a regra manda. Sem uma condição escrita ao lado, ela vira permanente por
-//      esquecimento, que foi exatamente o caso do `continue-on-error`.
+//      esquecimento, que foi exatamente o caso do `continue-on-error`;
+//   4. TODA GARANTIA ESCRITA APONTA PARA CÓDIGO QUE RODA. Um comentário que
+//      afirma "isso é conferido lá", "isso nunca chega ao cliente" ou "isso
+//      aparece na hora" tem a forma de uma asserção sem ser uma: envelhece sem
+//      nada acusar. Cobram-se as três formas que apontam para coisa concreta.
 //
-// A FORMA DAS TRÊS É A MESMA, e é a do princípio do zero ambíguo: a ausência
+// A FORMA DAS QUATRO É A MESMA, e é a do princípio do zero ambíguo: a ausência
 // nunca vale por si. Ou o instrumento está no portão, ou a ausência dele está
 // escrita aqui com o motivo. O que não pode é ninguém saber em qual dos dois
 // casos se está.
@@ -220,6 +225,123 @@ secao('· toda tolerância tem prazo ou condição');
 }
 
 // ===================================================================== 4
+// AS GARANTIAS ESCRITAS, e por que elas são a terceira face do mesmo defeito.
+//
+// Em uma semana, três comentários afirmaram uma garantia que não existia mais:
+//
+//   · `rolarAcerto` dizia "o campo fica com o primeiro golpe", descrevendo um
+//     mundo anterior à folha por golpe;
+//   · o `continue-on-error` do `tsc` trazia a desculpa "há erros antigos", havia
+//     muito expirada;
+//   · `gen-monsters.mjs` dizia que esquecer um campo "aparece na hora: o valor
+//     chega `undefined` na tela". Não apareceu, e não chegou `undefined`: chegou
+//     `null`, calado, e a Passiva de 309 criaturas saiu vazia.
+//
+// COMENTÁRIO QUE AFIRMA GARANTIA É CÓDIGO NÃO EXECUTADO. Ele tem a forma de uma
+// asserção, é lido como uma, e envelhece sem nada acusar, porque nada o roda.
+// É a mesma família das outras três seções: instrumento que existe e ninguém
+// executa (seção 1), gerador que não se confere (seção 2), tolerância sem prazo
+// (seção 3). Aqui é a PROMESSA sem prova.
+//
+// O QUE DÁ PARA COBRAR POR MÁQUINA, e é menos do que a varredura acha: não há
+// regex que decida se uma frase em português é uma garantia. O que dá é cobrar
+// as garantias que APONTAM PARA COISA CONCRETA, e são estas três formas. As
+// outras foram conferidas à mão em 04/09/2026 e a conta está no commit; as que
+// não valiam saíram.
+{
+  secao('· toda garantia escrita aponta para código que roda');
+
+  // ------------------------------------------------------------------ 4.1
+  // NENHUMA REFERÊNCIA MORTA A SCRIPT. Um comentário que cita `test-tal.mjs`
+  // está dizendo "isto é conferido lá". Se o arquivo sumiu ou foi renomeado, a
+  // frase continua lá afirmando uma conferência que não acontece mais, e essa é
+  // a forma mais comum de a garantia apodrecer.
+  {
+    const arquivos = [];
+    const anda = (d) => {
+      for (const e of fs.readdirSync(path.join(RAIZ, d), { withFileTypes: true })) {
+        const p = `${d}/${e.name}`;
+        if (e.isDirectory()) { anda(p); continue; }
+        if (/\.(mjs|ts|astro|sql|yml|js|md|json)$/.test(e.name)) arquivos.push(p);
+      }
+    };
+    for (const d of ['src', 'scripts', 'supabase', '.github', 'docs']) anda(d);
+    const reais = new Set(fs.readdirSync(path.join(RAIZ, 'scripts'))
+      .filter((f) => /^(test|gen)-.*\.mjs$/.test(f)));
+    const citados = new Map();
+    for (const arq of arquivos) {
+      // ESTE ARQUIVO FICA DE FORA, e pelo mesmo motivo da última linha de
+      // `NAO_E_TOLERANCIA`: os nomes citados aqui são a DEFINIÇÃO da conferência
+      // (o exemplo, e o caso da borda), e não usos dela. Foi o próprio portão
+      // que cobrou isso na primeira execução, o que é o comportamento certo.
+      if (arq === 'scripts/test-portoes.mjs') continue;
+      // A borda `(?<![\w-])` importa: sem ela, `playtest-horda.mjs` casa como
+      // `test-horda.mjs` e o portão inventa uma referência morta que não existe.
+      for (const m of ler(arq).matchAll(/(?<![\w-])((?:test|gen)-[a-z0-9-]+\.mjs)/g)) {
+        if (!citados.has(m[1])) citados.set(m[1], new Set());
+        citados.get(m[1]).add(arq);
+      }
+    }
+    const mortas = [...citados.entries()].filter(([n]) => !reais.has(n));
+    ok(mortas.length === 0, mortas.length
+      ? `referência(s) a script que não existe: ${mortas.map(([n, o]) => `${n} (em ${[...o].join(', ')})`).join('; ')}`
+      : `os ${citados.size} scripts citados em comentário existem`);
+  }
+
+  // ------------------------------------------------------------------ 4.2
+  // O CABEÇALHO EM TODAS AS ABAS. `mesa-core.ts` afirma que ligar o cabeçalho
+  // dentro do `abrirMesa` "garante que ele esteja em TODAS, e não só na que
+  // lembrou de chamar a função". É verdade hoje, e o que a torna verdade é toda
+  // página de mesa passar por ali. Uma aba nova que monte a página por conta
+  // nasce sem código de convite e sem migalha, e nada diria.
+  {
+    const paginas = ['src/pages/mesa.astro',
+      ...fs.readdirSync(path.join(RAIZ, 'src/pages/mesa'))
+        .filter((f) => f.endsWith('.astro')).map((f) => `src/pages/mesa/${f}`)];
+    const sem = paginas.filter((p) => !/abrirMesa\s*\(/.test(ler(p)));
+    ok(sem.length === 0, sem.length
+      ? `página(s) de mesa que não passam pelo \`abrirMesa\`, e portanto sem cabeçalho: ${sem.join(', ')}`
+      : `as ${paginas.length} páginas de mesa abrem por \`abrirMesa\``);
+  }
+
+  // ------------------------------------------------------------------ 4.3
+  // A CHAVE DE SERVIÇO NUNCA VAI AO CLIENTE. A `migracao-3.sql` abre dizendo
+  // isso, e a segurança inteira do modelo se apoia nessa frase: as funções são
+  // `SECURITY DEFINER` porque o cliente só tem a chave anon e a RLS por cima.
+  //
+  // É a garantia mais cara de todas as varridas e era a menos amparada: nada
+  // impedia alguém de pôr `PUBLIC_SUPABASE_SERVICE_KEY` no `.env`, e o prefixo
+  // `PUBLIC_` faz o Astro EMBUTIR o valor no pacote que vai ao navegador. Aqui
+  // se cobra o que o `src/` tem direito de ler.
+  const ENV_PERMITIDAS = ['PUBLIC_SUPABASE_URL', 'PUBLIC_SUPABASE_ANON_KEY', 'BASE_URL', 'DEV', 'PROD', 'SSR', 'MODE'];
+  {
+    const src = [];
+    const anda = (d) => {
+      for (const e of fs.readdirSync(path.join(RAIZ, d), { withFileTypes: true })) {
+        const p = `${d}/${e.name}`;
+        if (e.isDirectory()) { anda(p); continue; }
+        if (/\.(ts|astro|js|mjs)$/.test(e.name)) src.push(p);
+      }
+    };
+    anda('src');
+    const usadas = new Set();
+    const comServico = [];
+    for (const arq of src) {
+      const txt = ler(arq);
+      for (const m of txt.matchAll(/import\.meta\.env\.([A-Z_][A-Z0-9_]*)/g)) usadas.add(m[1]);
+      if (/service_role|SERVICE_KEY|SERVICE_ROLE/.test(txt)) comServico.push(arq);
+    }
+    ok(comServico.length === 0, comServico.length
+      ? `chave de serviço citada em \`src/\`, que é o que vai ao navegador: ${comServico.join(', ')}`
+      : 'nenhuma menção a chave de serviço no que vai ao navegador');
+    const estranhas = [...usadas].filter((v) => !ENV_PERMITIDAS.includes(v));
+    ok(estranhas.length === 0, estranhas.length
+      ? `variável(is) de ambiente novas lidas em \`src/\`, e \`PUBLIC_\` é EMBUTIDA no pacote: ${estranhas.join(', ')}`
+      : `as ${usadas.size} variáveis lidas em \`src/\` são as declaradas`);
+  }
+}
+
+// ===================================================================== 5
 // HÁ QUANTO TEMPO CADA PORTÃO NÃO RODA AQUI.
 //
 // Não é asserção, é notícia, e ela sai impressa em todo `npm run validate`, que

@@ -1,7 +1,12 @@
 -- =====================================================================
 -- Centelha - Migracao 3: conta (trocar senha/excluir) + administrador.
 -- Idempotente. Rode no SQL Editor depois da migracao-2.sql.
--- Seguranca: o site e estatico, entao a service_role NUNCA vai ao cliente.
+-- Seguranca: o site e estatico, entao a service_role NUNCA vai ao cliente, e
+-- desde 04/09/2026 isso e COBRADO e nao afirmado: o `test-portoes.mjs`, secao
+-- 4.3, falha se `src/` mencionar chave de servico ou ler variavel de ambiente
+-- fora das declaradas. O prefixo `PUBLIC_` faz o Astro embutir o valor no
+-- pacote do navegador, entao a distancia entre a frase e o vazamento era uma
+-- linha de `.env`.
 -- O admin e uma conta listada em public.admins; as acoes rodam por funcoes
 -- SECURITY DEFINER que checam eh_admin(). Ninguem escreve em admins pelo client.
 -- =====================================================================

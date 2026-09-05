@@ -264,8 +264,15 @@ console.log(`monsters.json: ${monsters.length} criaturas, ${(statSync(out).size 
  * por criatura em /dados/criatura/<id>.json quando alguém o abre.
  *
  * A lista de campos é curta de propósito. Um campo novo que a mesa precise tem
- * de ser acrescentado AQUI, e esquecer disso aparece na hora: o valor chega
- * `undefined` na tela, e não meio certo.
+ * de ser acrescentado AQUI, e o que garante que ninguém esqueça é a TRAVA DAS
+ * DUAS LISTAS, logo abaixo: uma chave que não esteja em `CAMPOS_MESA` nem em
+ * `FORA_DA_MESA` para o gerador.
+ *
+ * Onde ficava escrito que esquecer "aparece na hora, o valor chega `undefined`
+ * na tela": era falso, e falhou em 04/09/2026 com `pericias`. Nada chega
+ * `undefined` na tela porque o caminho o converte antes (`?? null`, `|| 0`,
+ * `?.`), e `null` é um valor que o contrato permite. A garantia agora é a trava,
+ * e ela é código que roda.
  */
 /**
  * AS TÉCNICAS DA CRIATURA, RESOLVIDAS AQUI e não no navegador.

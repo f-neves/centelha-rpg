@@ -117,8 +117,9 @@ const PERMITIDOS = {
   'src/lib/mesa-core.ts': 1,                    // id, quando não há crypto.randomUUID
   'src/lib/mesa-tempo-real.ts': 1,              // chave de presença do canal
   // O rolador de mão, que o jogador aperta. Não é motor: o Grid não o usa
-  // (`/mesa/grid` não o importa), e o harness nunca vai passar por ele. Se um
-  // dia ele for ligado à resolução, esta linha é o lugar de descobrir.
+  // (`/mesa/grid` não o importa), e o harness não passa por ele. A segunda
+  // metade dessa frase é uma GARANTIA, e por isso ela virou asserção logo
+  // depois da varredura: se o rolador entrar no Grid, este arquivo para.
   'src/components/RoladorDados.astro': 1,
 };
 // A VARREDURA OLHA `src/lib`, `src/pages` E `src/components`, e não só o
@@ -155,6 +156,17 @@ for (const cheio of arquivos) {
   if (n !== (PERMITIDOS[f] || 0)) intrusos.push(`${f}: ${n} (esperado ${PERMITIDOS[f] || 0})`);
 }
 ok(intrusos.length === 0, `nenhuma fonte de acaso nova em ${arquivos.length} arquivos de src/lib, src/pages e src/components (${intrusos.join(' · ') || 'nenhuma'})`);
+
+// A ISENÇÃO DO ROLADOR, COBRADA. A linha do `PERMITIDOS` diz que o rolador de
+// mão não é motor "porque `/mesa/grid` não o importa", e essa frase era uma
+// garantia escrita: verdadeira no dia, e sem nada que a segurasse. Bastava
+// alguém pôr o rolador na aba do Grid para o combate passar a ter uma segunda
+// fonte de acaso, com a autorização já escrita e o motivo dela vencido.
+{
+  const grid = fs.readFileSync(path.join(ROOT, 'src/pages/mesa/grid.astro'), 'utf8');
+  ok(!/RoladorDados/.test(grid),
+    'o rolador de mão continua fora do Grid, que é o que sustenta a isenção dele no `PERMITIDOS`');
+}
 
 console.log(`\n${FALHAS.length ? '✗' : '✓'} Acaso do combate OK · ${PASSOU} asserções · o d6, o rolarExpr, o rolar das Artes e a iniciativa de criatura saem todos do mesmo ponto de injeção`);
 if (FALHAS.length) { FALHAS.forEach((f) => console.log('  · ' + f)); process.exit(1); }

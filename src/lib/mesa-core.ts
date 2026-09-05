@@ -479,8 +479,11 @@ export async function abrirMesa(aba: string): Promise<CtxMesa | null> {
   };
   const ctx: CtxMesa = { sb, user, mesa, ehMestre, id, renomear };
   // O cabeçalho é o mesmo nas nove abas, e o código de convite é a coisa que o
-  // mestre mais procura: ligar aqui garante que ele esteja em TODAS, e não só
-  // na que lembrou de chamar a função.
+  // mestre mais procura: ligar aqui o põe em TODAS, e não só na que lembrou de
+  // chamar a função. O que sustenta isso não é esta linha, e sim toda página de
+  // mesa entrar por `abrirMesa`; quem cobra é o `test-portoes.mjs`, seção 4.2,
+  // porque uma aba nova que monte a página por conta nasceria sem cabeçalho e
+  // nada diria.
   await ligarCabecalho(ctx);
   return ctx;
 }
