@@ -28,6 +28,22 @@ export interface Rolada {
 }
 
 /**
+ * O fixo de uma expressão de dados, sem os `NdN`.
+ *
+ * Separado de `rolarExpr` porque a rolagem MANUAL (`roladaManual`, abaixo)
+ * precisa do mesmo fixo sem rolar dado nenhum: quem já rolou na mão só tem as
+ * faces para somar, e refazer esta conta duas vezes (aqui e ali) é o convite
+ * pronto para as duas um dia divergirem.
+ */
+function flatDeExpr(expr: string): number {
+  const limpo = String(expr || '').replace(/[−–—]/g, '-').replace(/\([^)]*\)/g, ' ');
+  const semDados = limpo.replace(/(\d*)d6/gi, ' ');
+  let flat = 0;
+  for (const m of semDados.matchAll(/[+-]\s*\d+/g)) flat += parseInt(m[0].replace(/\s+/g, ''), 10);
+  return flat;
+}
+
+/**
  * Rola uma expressão do tipo `4d6+2`, `3d6 +5 (C)` ou `1d6 −2`.
  *
  * Aceita o que o bestiário e a ficha escrevem, incluindo o menos tipográfico
@@ -41,12 +57,39 @@ export interface Rolada {
 export function rolarExpr(expr: string, extraDados = 0, extraFlat = 0): Rolada {
   const limpo = String(expr || '').replace(/[−–—]/g, '-').replace(/\([^)]*\)/g, ' ');
   let dados = 0;
-  const semDados = limpo.replace(/(\d*)d6/gi, (_m, n) => { dados += n === '' ? 1 : parseInt(n, 10); return ' '; });
-  let flat = 0;
-  for (const m of semDados.matchAll(/[+-]\s*\d+/g)) flat += parseInt(m[0].replace(/\s+/g, ''), 10);
-  dados = Math.max(0, dados + extraDados); flat += extraFlat;
+  limpo.replace(/(\d*)d6/gi, (_m, n) => { dados += n === '' ? 1 : parseInt(n, 10); return ' '; });
+  dados = Math.max(0, dados + extraDados);
+  const flat = flatDeExpr(expr) + extraFlat;
   const rolls = Array.from({ length: dados }, d6);
   return { dados, flat, rolls, total: rolls.reduce((a, b) => a + b, 0) + flat };
+}
+
+/**
+ * O DADO JÁ ROLADO NA MÃO, e não pelo código: a mesa digita as faces que
+ * caíram, separadas por vírgula ou espaço, e esta função soma com o fixo da
+ * expressão, sem rolar nada. Existe para a folha do lance aceitar o dado em
+ * vez do total já somado (decidido em 06/09/2026): a mesa que fazia a conta de
+ * cabeça e digitava só o resultado passa a digitar o que os olhos viram, e a
+ * soma sai daqui, visível, e não da cabeça de quem jogou.
+ *
+ * `null` quando o texto não tem nenhum número: é o estado "ninguém digitou
+ * nada ainda", e ele tem de ser distinto de "digitou zero", que é uma face
+ * impossível num d6 mas um total válido (um erro que não machucou nada).
+ *
+ * UM NÚMERO SÓ, E A EXPRESSÃO NÃO TEM `d6` NENHUM: só pode ser o TOTAL de uma
+ * arma sem dado (dano fixo), e não a face de um dado que a arma não rola.
+ * Tratar como face somaria o fixo em cima de um número que já É o total,
+ * dobrando a conta. É o único caso em que esta função aceita um total pronto,
+ * e só porque não há dado nenhum para digitar em seu lugar.
+ */
+export function roladaManual(texto: string, expr: string, extraFlat = 0): Rolada | null {
+  const rolls = (String(texto || '').match(/-?\d+/g) || []).map(Number);
+  if (!rolls.length) return null;
+  if (rolls.length === 1 && !/\d*d6/i.test(String(expr || ''))) {
+    return { dados: 0, flat: 0, rolls: [], total: rolls[0] };
+  }
+  const flat = flatDeExpr(expr) + extraFlat;
+  return { dados: rolls.length, flat, rolls, total: rolls.reduce((a, b) => a + b, 0) + flat };
 }
 
 /**

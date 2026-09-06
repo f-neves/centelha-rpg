@@ -358,6 +358,18 @@ async function cenaFichaDoLance(br, url) {
   ok(Number(campos.passoCorrida) >= Number(campos.passoAtq),
     `o passo vem em três velocidades e a corrida não é menor que a batalha (${campos.passoAtq} → ${campos.passoCorrida})`);
 
+  // A CLASSE E A VELOCIDADE PARAM DE ABRIR EM BRANCO (06/09/2026): são campos
+  // de OVERRIDE que o PC nunca carrega, e a régua já sabia o valor duas linhas
+  // acima (`anat()`). Um PC de verdade prova o caso: sem isto os dois
+  // abririam vazios sempre, para toda peça `pc` da mesa.
+  const derivados = await p.evaluate(() => ({
+    classe: document.getElementById('alf-atacante-classe')?.value,
+    velocidade: document.getElementById('alf-atacante-velocidade')?.value,
+  }));
+  ok(!!derivados.classe, `a Classe de tempo do atacante não abre em branco (${derivados.classe})`);
+  ok(!!derivados.velocidade && derivados.velocidade !== '',
+    `nem a Velocidade (${derivados.velocidade})`);
+
   // Corrigir a Defesa do alvo repinta a folha na hora.
   const vivo = await p.evaluate(async () => {
     const antes = document.getElementById('al-defesas')?.textContent.replace(/\s+/g, ' ').trim();
@@ -407,6 +419,46 @@ async function cenaFichaDoLance(br, url) {
     return document.getElementById('al-ficha-r')?.textContent.trim();
   });
   ok(/fixado/.test(fixa || ''), `marcar a caixinha avisa que o número vai durar ("${fixa}")`);
+
+  // A FOLHA ACEITA O DADO EM VEZ DO TOTAL (06/09/2026): a mesa digita as faces
+  // que caíram, separadas por vírgula, e a folha soma sozinha. Digitar dados
+  // conhecidos (e não o total pronto) é o que prova que a soma sai da conta, e
+  // não de um número que o teste já sabia de antemão.
+  const digitado = await p.evaluate(async () => {
+    const totalInp = document.getElementById('al-total');
+    const dnInp = document.getElementById('al-dn');
+    totalInp.value = '4,2,6'; totalInp.dispatchEvent(new Event('input', { bubbles: true }));
+    await new Promise((x) => setTimeout(x, 200));
+    const poolAcerto = document.getElementById('al-pool')?.textContent || '';
+    const veredito = document.getElementById('al-vered')?.textContent || '';
+    dnInp.value = '3,5'; dnInp.dispatchEvent(new Event('input', { bubbles: true }));
+    await new Promise((x) => setTimeout(x, 200));
+    const poolDano = document.getElementById('al-dn-pool')?.textContent || '';
+    const conta = document.getElementById('al-dn-conta')?.textContent || '';
+    return { poolAcerto, veredito, poolDano, conta };
+  });
+  ok(/4,\s*2,\s*6/.test(digitado.poolAcerto),
+    `os dados digitados no acerto aparecem descritos, e não só o total (${digitado.poolAcerto})`);
+  ok(digitado.veredito.trim().length > 0 && !/não tem o que dizer/.test(digitado.veredito),
+    `e a régua deriva o veredito a partir do que foi digitado ("${digitado.veredito.replace(/\s+/g, ' ').trim()}")`);
+  ok(/3,\s*5/.test(digitado.poolDano),
+    `os dados digitados no dano também aparecem descritos (${digitado.poolDano})`);
+  ok(/Absorção/.test(digitado.conta),
+    `e a prévia do dano usa a soma digitada, não um total à parte ("${digitado.conta.replace(/\s+/g, ' ').trim()}")`);
+
+  // O CLIQUE APLICA, E O REGISTRO GUARDA A CONTA DO DANO — antes só o líquido
+  // final ficava na mesa; as faces que produziram o bruto morriam com a folha.
+  const antesLog = await p.evaluate(() =>
+    (window.__SB?.tabelas?.mesa_arenas?.[0]?.log || []).length);
+  await p.evaluate(async () => {
+    document.getElementById('al-sim').click();
+    await new Promise((x) => setTimeout(x, 500));
+  });
+  const registro = await p.evaluate(() =>
+    (window.__SB?.tabelas?.mesa_arenas?.[0]?.log || []).map((l) => l.txt || ''));
+  const novas = registro.slice(antesLog);
+  ok(novas.some((t) => /dano \(\[?3,\s*5/.test(t)),
+    `o registro mostra as faces do dano, e não só o número final aplicado (${novas.join(' | ')})`);
 
   await p.evaluate(() => { const d = document.getElementById('alvo-dlg'); if (d?.open) d.close(); });
   await espera(600);

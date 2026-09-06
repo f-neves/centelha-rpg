@@ -456,7 +456,8 @@ const SETAS = [
         <span class="al-sec-h">O acerto</span>
         <span class="al-pool" id="al-pool"></span>
         <button type="button" class="btn mini al-rola" id="al-rolar" title="Rolar aqui, só desta vez">rolar</button>
-        <input type="number" id="al-total" placeholder="total" title="O que saiu nos dados" />
+        <input type="text" inputmode="numeric" id="al-total" placeholder="dados: 4,2,6"
+          title="As faces que caíram, separadas por vírgula ou espaço. A folha soma." />
         <span class="al-vered" id="al-vered"></span>
       </div>
       {/* O QUASE-ACERTO (capítulo XII): errar por pouco ainda raspa. A regra
@@ -488,7 +489,8 @@ const SETAS = [
         <span class="al-sec-h">O dano</span>
         <span class="al-pool" id="al-dn-pool"></span>
         <button type="button" class="btn mini al-rola" id="al-dn-rolar" title="Rolar o dano aqui">rolar</button>
-        <input type="number" id="al-dn" min="0" placeholder="bruto" />
+        <input type="text" inputmode="numeric" id="al-dn" placeholder="dados: 4,2"
+          title="As faces que caíram, separadas por vírgula ou espaço. A folha soma." />
         <select id="al-dn-tipo">
           <option value="impacto">Impacto</option>
           <option value="corte">Cortante</option>
@@ -2414,7 +2416,7 @@ const SETAS = [
     camadaDeGolpes, baterNoAlvo, voarProjetil, projetilDe,
   } from '../../lib/grid-golpe-fx';
   import { armaDoSlot } from '../../lib/equip';
-  import { rolarExpr, descreverRolada, tipoDeDano } from '../../lib/rolagem';
+  import { rolarExpr, roladaManual, descreverRolada, tipoDeDano } from '../../lib/rolagem';
   import { semear, semeadoDe, semeado } from '../../lib/acaso';
   import {
     PERFIL_CORRENTE, perfilDoEncontro, estadoDoCarimbo, type Perfil,
@@ -7810,6 +7812,9 @@ const SETAS = [
     const porque = res.ajuste && res.motivo ? ` [${sinalTxt(res.ajuste)}: ${res.motivo}]`
       : res.ajuste ? ` [${sinalTxt(res.ajuste)}]` : '';
     const dados = res.rolado ? ` (${res.rolado})` : '';
+    // O DANO TAMBÉM FICA NO REGISTRO, e não só o acerto: antes só o líquido
+    // final aparecia, e as faces que o produziram morriam junto com a folha.
+    const dadosDano = res.roladoDano ? ` · dano (${res.roladoDano})` : '';
 
     // O TIRO SAI QUANDO A MESA JÁ DECIDIU, E NUNCA ANTES.
     //
@@ -7859,7 +7864,7 @@ const SETAS = [
     // está livre para ser olhado, e o número no anel do alvo cai no instante em
     // que a ponta encosta, e não meio segundo antes dela sair.
     const voou = await atirar();
-    await aplicarDano(atacante, alvo, res.dano, res.tipo, voou ? 0 : undefined, dados + porque,
+    await aplicarDano(atacante, alvo, res.dano, res.tipo, voou ? 0 : undefined, dados + dadosDano + porque,
       { raspao: !!res.raspou });
   }
 
@@ -8127,6 +8132,7 @@ const SETAS = [
     const porque = res.ajuste && res.motivo ? ` [${sinalTxt(res.ajuste)}: ${res.motivo}]`
       : res.ajuste ? ` [${sinalTxt(res.ajuste)}]` : '';
     const dados = res.rolado ? ` (${res.rolado})` : '';
+    const dadosDano = res.roladoDano ? ` · dano (${res.roladoDano})` : '';
     const proj = projetilDe(
       atacante, FICHAS[atacante.personagem_id], MON[atacante.monstro_id], armaDoSlot,
     );
@@ -8153,7 +8159,7 @@ const SETAS = [
       return;
     }
     const voou = await atirar();
-    await aplicarDano(atacante, alvo, res.dano, res.tipo, voou ? 0 : undefined, dados + porque,
+    await aplicarDano(atacante, alvo, res.dano, res.tipo, voou ? 0 : undefined, dados + dadosDano + porque,
       { raspao: !!res.raspou });
   }
 
@@ -8677,6 +8683,11 @@ const SETAS = [
       return { flat: f + (c2.acao || 0) + (c2.ataque || 0), dados: c2.dados || 0 };
     })();
     let rolado = '';
+// O DANO TAMBÉM PRECISA DA PRÓPRIA DESCRIÇÃO, e antes não tinha: `rolado`
+// existia só para o acerto, e o registro do dano nunca mostrava as faces que
+// caíram nele, só o líquido final. Ver `aplicarDano` mais abaixo, nos dois
+// pontos que chamam esta folha.
+let roladoDano = '';
 
     // ================================================== O OBJETO DO LANCE
     //
@@ -8822,15 +8833,24 @@ const SETAS = [
       // O total sai sempre do campo: com a folha adiada, `rolarAcerto` rola UMA
       // linha, a do golpe desta folha, e é ela que está no campo. A soma por
       // fora existia para o mundo em que uma folha rolava todas as linhas.
-      const t = parseInt(totalInp.value || '', 10);
-      const soma = Number.isFinite(t) ? t + e.modManual : null;
+      //
+      // O CAMPO GUARDA AS FACES, E NÃO O TOTAL (decidido em 06/09/2026): quem
+      // rolou na mesa digita o que os dados mostraram, e `roladaManual` soma
+      // com o fixo da expressão. É a MESMA função que lê tanto a digitação à
+      // mão quanto o que `rolarAcerto`/`rolarDano` escrevem no campo depois de
+      // rolar sozinhos: as duas origens caem na mesma conta, e a folha não
+      // precisa saber de onde a face veio.
+      const rd = roladaManual(totalInp.value, e.atacante.ataque, e.atacante.ajusteFlat);
+      const t = rd ? rd.total : null;
+      const soma = t != null ? t + e.modManual : null;
       const veredito = soma != null && def2 != null ? saidaDoAtaque(soma, def2, e.margemQA) : null;
       // O QUE ESTÁ NO CAMPO e O QUE A RÉGUA MANDA são coisas diferentes, e o
       // registro precisa das duas. O campo do dano fica preenchido mesmo quando
       // o golpe erra (o mestre rolou antes de saber), e no raspão o que se
       // aplica é o dano fixo do Quase-Acerto e não o que foi rolado. Registrar
       // só o campo faria o oráculo mentir em dois dos três vereditos.
-      const noCampo = Math.max(0, parseInt(dnInp.value || '0', 10) || 0);
+      const rdDano = roladaManual(dnInp.value, e.atacante.dano, 0);
+      const noCampo = Math.max(0, rdDano ? rdDano.total : 0);
       const bruto = veredito === 'acerto' ? noCampo
         : veredito === 'raspao' ? Math.max(0, e.danoQA) : 0;
       // E o raspão IGNORA a Absorção (capítulo XII): ele já é o que sobrou.
@@ -8839,7 +8859,7 @@ const SETAS = [
       return {
         entrada: e,
         defesa: def2,
-        total: Number.isFinite(t) ? t : null,
+        total: t,
         soma,
         errouPor: soma != null && def2 != null ? errouPor(soma, def2) : null,
         veredito,
@@ -8862,15 +8882,24 @@ const SETAS = [
       atacante.acao,
       adiada ? (atacante.acao?.desde ?? tGolpe) : (atacante.tick ?? relogio()),
     );
-    const pintarPool = () => {
+    // SEPARADO EM DOIS, e não um `pintarPool` só: o acerto e o dano têm cada um
+    // o seu campo de dado agora, e digitar num não pode apagar o que o outro já
+    // mostra. Antes os dois pintavam juntos porque nenhum tinha estado próprio
+    // para preservar; agora o `al-pool` vira a descrição da rolagem assim que
+    // ela existe (digitada ou automática), e só volta a ser a fórmula quando o
+    // campo esvazia.
+    const pintarPoolAcerto = () => {
       const pen = anat().penDados[0] || 0;
       const partes = [esc(ra?.ataque || '—')];
       if (ajAtq.flat) partes.push(sinalTxt(ajAtq.flat));
       if (ajAtq.dados + pen) partes.push(`${sinalTxt(ajAtq.dados + pen)}d6`);
       if (contrape) partes.push(`<i class="al-nota">· contrapé ${contrape}d6 na 1ª ação, para somar à mão</i>`);
       (el('al-pool') as HTMLElement).innerHTML = partes.join(' ');
+    };
+    const pintarPoolDano = () => {
       (el('al-dn-pool') as HTMLElement).innerHTML = esc(ra?.dano || '—');
     };
+    const pintarPool = () => { pintarPoolAcerto(); pintarPoolDano(); };
     const pintarVeredito = () => {
       // LÊ DA CONTA, não recalcula. Antes esta função refazia a soma, a Defesa
       // e a classificação dentro do próprio `innerHTML`, e o resultado não
@@ -9066,6 +9095,16 @@ const SETAS = [
         if (v == null && c.chave.startsWith('passo.')) {
           v = (passoDaPeca(c.quem === 'alvo' ? alvo : atacante) as any)[c.chave.split('.')[1]];
         }
+        // A CLASSE E A VELOCIDADE ABRIAM EM BRANCO SEMPRE QUE NINGUÉM AS TINHA
+        // CORRIGIDO ANTES, e não por falta de dado: são campos de OVERRIDE
+        // (`ResumoCombate.classe`/`.velocidade`, em mesa-bestiario.ts), e o PC
+        // nunca as carrega (`baseResumo` zera `velocidade` de propósito, e
+        // `classe` nem existe no ramo dele). A régua já sabe as duas — é a
+        // mesma que `anat()` usa duas linhas acima, em `classeAtqDe()`/
+        // `velAtqDe()` — e o campo em branco escondia um número que a folha já
+        // tinha, fazendo o mestre adivinhar ou transcrever da arma.
+        if (v == null && c.quem === 'atacante' && c.chave === 'classe') v = classeAtqDe();
+        if (v == null && c.quem === 'atacante' && c.chave === 'velocidade') v = velAtqDe();
         // Sem ataque sofrido ainda, a Pressão é zero e não "vazia": o campo
         // precisa de um número para o mestre somar ou subtrair a partir dele.
         if (v == null && c.chave === 'pressao') v = 0;
@@ -9230,7 +9269,12 @@ const SETAS = [
       // arbitrário, o que não dá. Com eles, a cópia roda com os mesmos dados e
       // a comparação passa a ser sobre a CONTA, que é onde a divergência mora.
       sorteio.acerto = linhas.map((l) => (l.rolls || []).slice());
-      totalInp.value = String(linhas[0].total);
+      // O CAMPO GUARDA AS FACES, não o total: é a mesma leitura de quem
+      // digitou na mão (`roladaManual`), então rolar sozinho e digitar à mão
+      // caem na mesma conta e no mesmo campo. Uma linha SEM dado nenhum (arma
+      // de dano fixo) escreve o total pronto, porque não há face para mostrar
+      // e é o único caso em que `roladaManual` aceita um total como está.
+      totalInp.value = linhas[0].rolls.length ? linhas[0].rolls.join(',') : String(linhas[0].total);
       rolado = linhas.map(descreverRolada).join(' · ');
       (el('al-pool') as HTMLElement).textContent = rolado;
       pintarVeredito();
@@ -9238,14 +9282,31 @@ const SETAS = [
     const rolarDano = () => {
       const d = rolarExpr(ra?.dano || '0d6');
       sorteio.dano = (d.rolls || []).slice();
-      dnInp.value = String(d.total);
-      (el('al-dn-pool') as HTMLElement).textContent = descreverRolada(d);
+      dnInp.value = d.rolls.length ? d.rolls.join(',') : String(d.total);
+      roladoDano = descreverRolada(d);
+      (el('al-dn-pool') as HTMLElement).textContent = roladoDano;
       pintarDano();
     };
     manSel.onchange = pintarTempo; golInp.oninput = pintarTempo;
-    totalInp.oninput = pintarVeredito; modInp.oninput = pintarVeredito;
+    // A CADA TECLA, A DESCRIÇÃO DO QUE FOI DIGITADO SUBSTITUI A FÓRMULA: é o
+    // mesmo texto que `rolarAcerto` mostraria se tivesse rolado sozinho, só
+    // que vindo dos dedos da mesa. Campo vazio volta a mostrar a fórmula (o
+    // que rolar), porque aí não há dado nenhum para descrever ainda.
+    totalInp.oninput = () => {
+      const rd = roladaManual(totalInp.value, ra?.ataque || '0d6', ajAtq.flat);
+      if (rd) { rolado = descreverRolada(rd); (el('al-pool') as HTMLElement).textContent = rolado; }
+      else { rolado = ''; pintarPoolAcerto(); }
+      pintarVeredito();
+    };
+    modInp.oninput = pintarVeredito;
     qaMargemInp.oninput = pintarVeredito; qaDanoInp.oninput = pintarVeredito;
-    dnInp.oninput = pintarDano; dnTipo.onchange = pintarDano;
+    dnInp.oninput = () => {
+      const rd = roladaManual(dnInp.value, ra?.dano || '0d6', 0);
+      if (rd) { roladoDano = descreverRolada(rd); (el('al-dn-pool') as HTMLElement).textContent = roladoDano; }
+      else { roladoDano = ''; pintarPoolDano(); }
+      pintarDano();
+    };
+    dnTipo.onchange = pintarDano;
     (el('al-rolar') as HTMLElement).onclick = rolarAcerto;
     (el('al-dn-rolar') as HTMLElement).onclick = rolarDano;
     pintarTempo(); pintarVeredito(); pintarDano();
@@ -9285,13 +9346,14 @@ const SETAS = [
         // que ela está resolvendo. Passar `0` aqui era o que achatava o campo e
         // deixava o caminho do índice sem cobertura.
         registrarLance(contaDoLance(), sorteio, { acertou: v, raspou, rolado, adiada });
+        const rdDanoFim = roladaManual(dnInp.value, ra?.dano || '0d6', 0);
         resolve({
           acertou: v, an: a, manobra: a.golpes > 1 ? manSel.value : 'simples',
-          dano: raspou ? danoQA() : Math.max(0, parseInt(dnInp.value || '0', 10) || 0),
+          dano: raspou ? danoQA() : Math.max(0, rdDanoFim ? rdDanoFim.total : 0),
           tipo: dnTipo.value,
           ajuste: parseInt(modInp.value || '0', 10) || 0,
           motivo: motivoInp.value.trim(),
-          rolado, raspou,
+          rolado, roladoDano, raspou,
         });
       };
       (el('al-sim') as HTMLElement).onclick = () => fim(true);
