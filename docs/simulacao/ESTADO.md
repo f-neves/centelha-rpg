@@ -262,6 +262,17 @@ custosos da folha (Defesa base do alvo e as três Absorções) não têm defeito
 eles são o lugar onde o mestre digita, à mão, correções que o Grid já sabe fazer.
 Aplicar as contas esvazia os campos.
 
+**E HÁ UM CASO EM QUE ISSO NÃO É PENDÊNCIA, É LIMITE, e a diferença importa porque a
+segunda não se conserta escrevendo mais código.** Numa peça `custom` (a peça digitada
+na mesa, sem ficha nem entrada no bestiário), `RESUMO[alvo.id]` não existe: não há
+`defesaBase` nem `soak` para nenhuma das seis contas de cima corrigir, porque não há
+número base nenhum ali para corrigir. **Numa peça sem ficha completa, o número só
+existe na cabeça do mestre** — ele inventou aquele monstro na hora, e o Grid nunca
+soube o número dele. Aplicar as seis (ou as quinze) contas não esvazia estes quatro
+campos nesse caso, porque não há o que a conta leia. **Isto fica registrado como
+limite do sistema, não como item da fila**: nenhuma versão futura da folha faz esse
+número aparecer sozinho, e não é por o conserto estar incompleto.
+
 **A ordem tem duas metades, e elas não valem a mesma coisa.**
 
 **Primeira metade · as seis que o Grid já exibe.** Já estão calculadas na tela; falta
@@ -379,6 +390,33 @@ corrigíveis em campo que fica, **o item 2 pode andar antes.**
 **A ordem muda, e a diferença é grande:** começa-se por um conserto de 34% e outro
 de 17%, e não por dois campos que nem estão instrumentados e cuja medição pede
 campo novo no log e bateria inteira de novo.
+
+### O mecanismo do item 2 já existe em código, e isso não estava escrito aqui
+
+**"O item 2 pode andar antes" não significava "falta escrever o item 2".** O
+mecanismo — calcular e destacar, e não mostrar três botões iguais para o mestre
+escolher do zero — já existe, e existia antes desta seção ser escrita.
+`pintarVeredito` lê `contaDoLance()` e, com os três números presentes, escreve a
+conta por extenso ("acerta (15 > 13)", "erra por 4: raspa (margem 2)") e destaca UM
+dos três botões (`sim.classList.toggle('primary', ...)`, `grid.astro:8957-8959`).
+Sem soma ou sem Defesa, nenhum é destacado e a caixa diz o que falta
+(`if (L.soma == null || L.defesa == null)`, `grid.astro:8926`).
+
+**Nasceu em `67fbb29`** (21/08/2026, "a folha da ação, e quem rola os dados vira
+escolha da mesa"); **o guarda de nulo veio em `579581b`** (04/09/2026, "a tela
+parou de recomendar 'Acertou' quando a régua não tem o que dizer").
+
+**O QUE MUDA PARA O MESTRE:** antes do destaque, comparar os três números de
+cabeça e achar o botão certo entre três iguais. Com o destaque, a conta já está
+escrita ao lado dos botões e o botão certo já vem realçado — o clique dele é achar
+o realce e confirmar, ou discordar e clicar outro.
+
+**ISSO NÃO MUDA A BANDA DE 0 A 17,0%, algumas seções acima.** O mecanismo existir
+não resolve a ignorância que sustenta a banda: ela depende da taxa em que a mesa
+aperta um botão diferente do destacado, e essa taxa continua sem medição — nenhuma
+bateria mede o mestre discordando da régua, porque as 21.600 batalhas não têm
+mestre nenhum jogando. O que muda é que não falta código para o item 2 andar: falta
+só medir essa taxa, numa mesa de verdade, e ninguém mediu ainda.
 
 ### O que sobra depois de tudo, e o teto de verdade
 
