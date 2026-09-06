@@ -115,11 +115,19 @@ VIEW que afirma a ausência de exceção (`migracoes_fronteira`, migração 37),
 isso. A primeira já tem instrumento parcial (a lista de proibições observáveis); a segunda ganhou
 o dela em 05/09/2026, com a tabela `migracoes` da migração 36.
 
-**UM CASO DORMENTE DO ZERO AMBÍGUO, achado em 06/09/2026 conferindo a escada do ESTADO.md, e
-registrado sem conserto porque não dispara hoje:** `scripts/sim/agregar.mjs:307` lê
-`x.fracaoSemGolpe || 0`. Se o campo um dia vier ausente (um formato de log mais antigo, um
-harness que ainda não o preenche), o `|| 0` o lê como **"0% dos Ticks sem golpe"** — o pior
-sentido possível de errar aqui, porque infla `comGolpe` (o Tick COM gesto) em vez de reduzi-lo,
-inflando o trabalho publicado do mestre para cima. Não dispara porque `scripts/sim/log.mjs`
-sempre preenche o campo hoje; fica registrado pela FORMA, não pela ocorrência, porque é
-exatamente o gatilho que a tabela já lista (`?? 0`, `\|\| 0`, todo 0 publicado).
+**UM CASO QUE FOI CHAMADO DE DORMENTE E NÃO ERA, corrigido em 06/09/2026 (mesmo dia do achado
+inicial):** a entrada anterior desta lista registrava `scripts/sim/agregar.mjs:307` lendo
+`x.fracaoSemGolpe || 0` como um risco "que não dispara hoje". Uma segunda conferência mediu o
+corpus em disco (19 diretórios, 288.900 batalhas) em vez de confiar na leitura do código, e achou
+que DISPARAVA, todo dia, em 57,1% das batalhas: a fase de fuga tem `ticks = 0` sempre que ninguém
+foge, e `frac` (a origem, `log.mjs:291`) devolvia **zero**, não ausência, para "não há amostra" —
+"0% dos Ticks ficaram sem golpe" quando não houve Tick nenhum. O efeito era mensurável: na bateria
+publicada, a coluna "s/golpe" da fase de fuga saía a 0,18 na célula `coprimo-encostado-1v1`
+contando o zero falso, e a 0,71 sem ele. **A lição, sobre a lição:** "não dispara hoje" era uma
+leitura de código sem medir o corpus que o código lê, e por isso era exatamente o tipo de garantia
+que esta mesma tabela desconfia (ver a seção acima). O conserto não foi nos leitores: foi na
+origem (`frac` devolve `null` com `ticks` zerado) mais uma porta em `agregar.mjs` que valida a
+forma de cada registro ao ler e recusa qualquer campo ausente que não seja o único legado
+conhecido (`paradasSubLado`). Isso tira todo `x.campo || 0` de campo-que-pode-faltar do arquivo por
+construção (são pelo menos dez, sobre cinco campos com leitura múltipla, num total de quarenta
+`\|\| 0` no arquivo) sem precisar tocar em cada um.

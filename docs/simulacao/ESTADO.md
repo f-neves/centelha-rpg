@@ -147,17 +147,36 @@ número.** Uma leitura anterior chamava de "reconciliado" o fato de a subtraçã
 ingênua da tabela e o cenário SEM-GESTO do agregador baterem exato — como se
 fossem duas testemunhas independentes. **Não são: é o mesmo contador**
 (`golpeNoTick`, `scripts/sim/log.mjs:224-226`) **lido por duas exibições
-algebricamente equivalentes** (`ticksComGolpe`, `scripts/sim/agregar.mjs:461`, e
-`comGolpe`, `agregar.mjs:307`, são `t − round(f·t)` e `round((1−f)·t)` sobre os
+algebricamente equivalentes** (`ticksComGolpe`, `scripts/sim/agregar.mjs:530`, e
+`comGolpe`, `agregar.mjs:376`, são `t − round(f·t)` e `round((1−f)·t)` sobre os
 mesmos `x.ticks`/`x.fracaoSemGolpe`). Perturbado à mão um golpe numa bateria real
 (1.920 batalhas), os dois se moveram pelo mesmo número, porque é o mesmo evento —
 não é coincidência, é identidade. **A robustez de verdade vem de outro lugar**: o
 degrau final não se mexeu nada com a perturbação, porque `ticksComGolpe + sobram
 = golpes` é invariante a como os golpes se distribuem entre Ticks, e só depende
 do TOTAL de golpes. **O número resiste; a justificativa anterior estava errada.**
-Achado dormente no caminho, registrado no `CATALOGO.md` e não consertado (não
-dispara hoje): `agregar.mjs:307` trata `x.fracaoSemGolpe` ausente como "0% sem
-golpe" via `|| 0`, o pior sentido possível de errar se um dia um sinal faltar.
+
+**E o achado que a frase anterior chamava de "dormente" não era dormente nem
+local.** Uma segunda conferência (06/09/2026) contou: doze dos vinte campos do
+agregador têm mais de um leitor, e `x.campo || 0` aparece pelo menos QUARENTA
+vezes no arquivo, sobre cinco campos com leitura múltipla — inclusive duplicado
+sobre as duas exibições acima (`comGolpe` e `ticksComGolpe`), que por isso NUNCA
+poderiam achar um campo sumido só de baterem entre si. Medido no corpus em disco
+(19 diretórios, 288.900 batalhas): a fase de fuga tem `ticks = 0` em 57,1% das
+batalhas (ela não aconteceu), e o `frac` de origem (`log.mjs:291`) devolvia ZERO
+nesse caso, não ausência — "0% dos Ticks ficaram sem golpe" quando na verdade não
+houve Tick nenhum. Isso puxava a coluna "s/golpe" da fase de fuga na tabela A na
+direção de "sempre teve golpe": na bateria publicada (`bmtmbdppb`), a célula
+`coprimo-encostado-1v1` sai a 0,18 com o zero falso e a 0,71 sem ele, contando só
+as batalhas que de fato fugiram. **O conserto foi na fonte, não em cada leitor**:
+`frac` agora devolve `null` com `ticks` zerado (`log.mjs:291`), e uma porta em
+`agregar.mjs` valida a forma de cada registro ao ler, recusando qualquer campo
+ausente que não seja o único legado conhecido (`paradasSubLado`, de bateria
+anterior ao campo). Isso não reprocessa retroativamente o `.jsonl` já gravado de
+`bmtmbdppb`: o número do degrau final acima (confirmado por reagregação, saída
+idêntica byte a byte) não muda, porque ele só soma a fase de combate, que nunca
+tem zero Ticks; a coluna "s/golpe" da fase de fuga na tabela A, essa sim, continua
+publicando o viés até a bateria ser regravada com o `log.mjs` corrigido.
 
 **O que falta para os 99,7% que a seção 2 projeta não é código faltando nestes
 dois degraus: são o item 2 e o item 7, e nenhum dos dois tem número real ainda.**

@@ -37,11 +37,80 @@ if (GRAVAR) {
   });
 }
 
+// ==================================================================== a porta
+//
+// Achado da revisão de 06/09/2026: o `x.campo || 0` de "campo ausente vira
+// zero" não estava em dois lugares, e sim em pelo menos dez, sobre cinco
+// campos, num arquivo com quarenta ocorrências no total (`|| 0` sozinho já
+// soma quarenta). E um deles (`comGolpe`, hoje nesta função) já está
+// duplicado sobre as DUAS leituras que a reconciliação da escada comparou
+// (`ticksComGolpe`/`comGolpe`, ambas em `x.fracaoSemGolpe`): se o campo
+// sumisse, as duas leriam zero, se deslocariam igual, e a concordância entre
+// elas NUNCA acusaria o furo. O conserto é aqui, na ENTRADA, e não em cada
+// leitor: valida a forma do registro uma vez, ao ler, e todo `|| 0` de
+// campo-que-pode-não-existir vira código morto por construção.
+//
+// O ÚNICO CAMPO LEGITIMAMENTE OPCIONAL, medido no corpus em disco em
+// 06/09/2026 (19 diretórios, 288.900 batalhas): `paradasSubLado`, ausente em
+// bateria anterior ao campo (`conferencia`, `sanidade`, e a série
+// `2026-09-03d/e/f`). O motor já sabe disso (`temLado`, mais abaixo) e a
+// tabela do `G` já degrada sem quebrar. TODO OUTRO campo ausente pertence a
+// um esquema mais velho ainda (a série `2026-09-03`/`-grande`/`-v2`/`-b`/`-c`,
+// sem `fases`, `gestosClasse`, `ticksMortos` e outros campos centrais): hoje
+// essa série já não é lida direito por este script, e a porta troca a falha
+// silenciosa dela (um `TypeError` solto ou um `|| 0` inventando zero em campo
+// nunca medido) por UMA recusa alta e nomeada.
+const CAMPOS_TOPO = [
+  'b', 'celula', 'semente', 'ticks', 'fim', 'vivosA', 'vivosB', 'invariantes',
+  'paradas', 'paradasSub', 'classeDoTipo', 'gestosClasse', 'gestosSub',
+  'gestosRelogio', 'fracaoParadasIII', 'fracaoGestosIII', 'paradasPorTick',
+  'gestosPorGolpe', 'fracaoSemParada', 'fracaoSemResolucao', 'fracaoSemGolpe',
+  'ticksMortos', 'fracaoMorta', 'quadro', 'ticksSoIII', 'ticksSoIIIPiso',
+  'tickDaFuga', 'fases', 'tempoMorto', 'tempoMortoViagem', 'maiorDeslize',
+  'gestos', 'gestosDoRelogio', 'golpesAplicados', 'vereditos', 'danoTotal',
+  'rolagens',
+];
+const CAMPOS_FASE = [
+  'ticks', 'paradas', 'paradasSub', 'paradasPorTick', 'gestos', 'gestosClasse',
+  'gestosSub', 'gestosRelogio', 'fracaoParadasIII', 'fracaoGestosIII',
+  'gestosPorGolpe', 'golpesAplicados', 'quadro', 'fracaoSemParada',
+  'fracaoSemResolucao', 'fracaoSemGolpe', 'ticksMortos', 'fracaoMorta',
+  'ticksSoIII', 'ticksSoIIIPiso',
+];
+function validarForma(l, arquivo, indice) {
+  for (const k of CAMPOS_TOPO) {
+    if (!(k in l)) {
+      console.log(`\n✘✘✘ CAMPO AUSENTE em ${arquivo}:${indice}: \`${k}\` não existe neste registro.`);
+      console.log('    Esquema mais velho do que este agregador lê (ver a nota da PORTA, no topo');
+      console.log('    do arquivo). Se for bateria legítima de antes deste campo existir, carimbe-a');
+      console.log('    como legado explícito em vez de afrouxar esta lista.');
+      process.exit(1);
+    }
+  }
+  for (const fase of ['combate', 'fuga']) {
+    const F = l.fases?.[fase];
+    if (!F) {
+      console.log(`\n✘✘✘ FASE AUSENTE em ${arquivo}:${indice}: \`fases.${fase}\` não existe neste registro.`);
+      process.exit(1);
+    }
+    for (const k of CAMPOS_FASE) {
+      if (!(k in F)) {
+        console.log(`\n✘✘✘ CAMPO DE FASE AUSENTE em ${arquivo}:${indice}: \`fases.${fase}.${k}\`.`);
+        process.exit(1);
+      }
+    }
+  }
+}
+
 const linhas = [];
 for (const f of fs.readdirSync(DIR)) {
   if (!/^faixa-\d+\.jsonl$/.test(f)) continue;
-  for (const l of fs.readFileSync(path.join(DIR, f), 'utf8').split('\n')) {
-    if (l.trim()) linhas.push(JSON.parse(l));
+  const bruto = fs.readFileSync(path.join(DIR, f), 'utf8').split('\n');
+  for (let i = 0; i < bruto.length; i += 1) {
+    if (!bruto[i].trim()) continue;
+    const l = JSON.parse(bruto[i]);
+    validarForma(l, f, i + 1);
+    linhas.push(l);
   }
 }
 const manifesto = JSON.parse(fs.readFileSync(path.join(DIR, 'bateria.json'), 'utf8'));

@@ -284,7 +284,11 @@ function principais(F) {
   const soma = p.reduce((x, y) => x + y, 0);
   const ord = [...p].sort((x, y) => x - y);
   const q = (f) => (ord.length ? ord[Math.min(ord.length - 1, Math.floor(ord.length * f))] : 0);
-  const frac = (x) => (F.ticks ? x / F.ticks : 0);
+  // NULL COM ZERO TICKS, e não zero. Uma fase que não aconteceu (a fuga em 57%
+  // das batalhas do corpus de 06/09/2026) não é "0% dos Ticks ficou sem golpe":
+  // é NENHUMA amostra. Devolver 0 aqui fingia "sempre teve golpe" e puxava a
+  // média de quem lê por `medFase` (que já filtra `!= null`) na direção errada.
+  const frac = (x) => (F.ticks ? x / F.ticks : null);
   const totParadas = F.paradas.i + F.paradas.ii + F.paradas.iii;
   return {
     ticks: F.ticks,
