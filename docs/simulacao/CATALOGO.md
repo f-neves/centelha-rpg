@@ -114,3 +114,12 @@ VIEW que afirma a ausência de exceção (`migracoes_fronteira`, migração 37),
 **As duas últimas da tabela não têm gatilho de símbolo**, e são as mais fracas da lista justamente por
 isso. A primeira já tem instrumento parcial (a lista de proibições observáveis); a segunda ganhou
 o dela em 05/09/2026, com a tabela `migracoes` da migração 36.
+
+**UM CASO DORMENTE DO ZERO AMBÍGUO, achado em 06/09/2026 conferindo a escada do ESTADO.md, e
+registrado sem conserto porque não dispara hoje:** `scripts/sim/agregar.mjs:307` lê
+`x.fracaoSemGolpe || 0`. Se o campo um dia vier ausente (um formato de log mais antigo, um
+harness que ainda não o preenche), o `|| 0` o lê como **"0% dos Ticks sem golpe"** — o pior
+sentido possível de errar aqui, porque infla `comGolpe` (o Tick COM gesto) em vez de reduzi-lo,
+inflando o trabalho publicado do mestre para cima. Não dispara porque `scripts/sim/log.mjs`
+sempre preenche o campo hoje; fica registrado pela FORMA, não pela ocorrência, porque é
+exatamente o gatilho que a tabela já lista (`?? 0`, `\|\| 0`, todo 0 publicado).

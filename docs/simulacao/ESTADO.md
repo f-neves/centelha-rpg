@@ -125,7 +125,7 @@ que pedem uma escolha humana de verdade, que são 4% delas.
 próprio agregador calcula a partir do cenário PISO do avanço unificado (a versão
 pessimista, um cartão absorvido por parada e o resto sobrando), de um dia em que
 nenhum dos degraus existia em código. O código real que está no Grid hoje
-(`avancarAteParar`, `grid.astro:5722-5736`) entrega mais do que o PISO assumia:
+(`avancarAteParar`, `grid.astro:5730-5744`) entrega mais do que o PISO assumia:
 ele não absorve só o Tick morto, resolve TODO golpe vencido do Tick em que para
 (a medição de 06/09/2026, acima). Isso bate com o cenário SEM-GESTO do mesmo
 agregado, não o PISO, e é por isso que a tabela de PISO (que chegava a 573.255,
@@ -141,6 +141,23 @@ A tabela abaixo troca a estimativa de projeto pelo que está de fato entregue:
 **O teto, com os consertos desenhados até hoje: 76,7%.** É o número que está DE
 FATO no Grid, e não uma projeção: são os itens 1, 3 e 5 da fila (seção 2, abaixo),
 entregues nestes shas, e o total de 1.171.957 vem de `R:169`.
+
+**Uma conferência de 06/09/2026 corrigiu a razão por trás deste número, e não o
+número.** Uma leitura anterior chamava de "reconciliado" o fato de a subtração
+ingênua da tabela e o cenário SEM-GESTO do agregador baterem exato — como se
+fossem duas testemunhas independentes. **Não são: é o mesmo contador**
+(`golpeNoTick`, `scripts/sim/log.mjs:224-226`) **lido por duas exibições
+algebricamente equivalentes** (`ticksComGolpe`, `scripts/sim/agregar.mjs:461`, e
+`comGolpe`, `agregar.mjs:307`, são `t − round(f·t)` e `round((1−f)·t)` sobre os
+mesmos `x.ticks`/`x.fracaoSemGolpe`). Perturbado à mão um golpe numa bateria real
+(1.920 batalhas), os dois se moveram pelo mesmo número, porque é o mesmo evento —
+não é coincidência, é identidade. **A robustez de verdade vem de outro lugar**: o
+degrau final não se mexeu nada com a perturbação, porque `ticksComGolpe + sobram
+= golpes` é invariante a como os golpes se distribuem entre Ticks, e só depende
+do TOTAL de golpes. **O número resiste; a justificativa anterior estava errada.**
+Achado dormente no caminho, registrado no `CATALOGO.md` e não consertado (não
+dispara hoje): `agregar.mjs:307` trata `x.fracaoSemGolpe` ausente como "0% sem
+golpe" via `|| 0`, o pior sentido possível de errar se um dia um sinal faltar.
 
 **O que falta para os 99,7% que a seção 2 projeta não é código faltando nestes
 dois degraus: são o item 2 e o item 7, e nenhum dos dois tem número real ainda.**
@@ -227,7 +244,7 @@ afirmações que o sustentavam.** As duas eram minhas e as duas estavam erradas:
 | o que eu escrevi | o que o código diz |
 |---|---|
 | "o Grid já guarda os dois separados, a conta da régua e o botão do mestre" | guarda **só com a bancada ligada**: `registrarLance` começa com `if (!LANCES_LIGADO) return;`, e `LANCES_LIGADO` é o parâmetro `?lances=1`, desligado por padrão. O destino é `window.__LANCES`, memória da página, e o único consumidor é `coletar-lances.mjs`. Não há coluna nem migração no Supabase. **Numa mesa de verdade os dois campos não coexistem em lugar nenhum, e a página descarta tudo ao fechar** |
-| "não há lance em que o veredito não seja derivável" | há **três caminhos que devolvem `null`**: `lance.ts:144` (`if (alvo.defesaBase == null) return null`), `grid.astro:8858` (o ternário exige `soma != null && def2 != null`) e `grid.astro:8769` (`defesaBase: r?.defesa ?? null`) |
+| "não há lance em que o veredito não seja derivável" | há **três caminhos que devolvem `null`**: `lance.ts:144` (`if (alvo.defesaBase == null) return null`), `grid.astro:8866` (o ternário exige `soma != null && def2 != null`) e `grid.astro:8777` (`defesaBase: r?.defesa ?? null`) |
 
 **O item passa a valer entre 0% e 17,0%**, e a banda não é de imprecisão, é de
 ignorância: o valor depende da taxa em que a mesa aperta um botão diferente do que a
@@ -418,9 +435,9 @@ mecanismo — calcular e destacar, e não mostrar três botões iguais para o me
 escolher do zero — já existe, e existia antes desta seção ser escrita.
 `pintarVeredito` lê `contaDoLance()` e, com os três números presentes, escreve a
 conta por extenso ("acerta (15 > 13)", "erra por 4: raspa (margem 2)") e destaca UM
-dos três botões (`sim.classList.toggle('primary', ...)`, `grid.astro:8969-8971`).
+dos três botões (`sim.classList.toggle('primary', ...)`, `grid.astro:8977-8979`).
 Sem soma ou sem Defesa, nenhum é destacado e a caixa diz o que falta
-(`if (L.soma == null || L.defesa == null)`, `grid.astro:8938`).
+(`if (L.soma == null || L.defesa == null)`, `grid.astro:8946`).
 
 **Nasceu em `67fbb29`** (21/08/2026, "a folha da ação, e quem rola os dados vira
 escolha da mesa"); **o guarda de nulo veio em `579581b`** (04/09/2026, "a tela
@@ -455,10 +472,10 @@ do golpe que o fez parar: **o cartão daquele golpe some junto com o clique.**
 
 **A pergunta era "quanto do item 5 o item 3 já absorve", e a resposta é: os dois
 já estão no mesmo commit, e não faltava construir nada entre eles.**
-`avancarAteParar` (`grid.astro:5722`), ao achar `instanteDeGolpe()`, não abre só
+`avancarAteParar` (`grid.astro:5730`), ao achar `instanteDeGolpe()`, não abre só
 a folha do golpe que fez o laço parar — ela itera **todas** as peças de pé e
 resolve **todos** os golpes de cada uma com Tick já vencido, um após o outro,
-antes de parar: `for (const c of emPe) {`, `grid.astro:5732`. O item 5 ("a
+antes de parar: `for (const c of emPe) {`, `grid.astro:5740`. O item 5 ("a
 parada abre todos os golpes do Tick, e não só um") descrevia exatamente este
 comportamento como refinamento SEPARADO do item 3; o código que foi escrito já
 nasceu com os dois juntos.
@@ -473,7 +490,7 @@ leva até o Tick (já contado à parte, na linha "o ⏭ que abre uma parada").
 **Uma lacuna real, pequena e que se autocorrige:** se uma mordida sem diálogo ou
 uma consulta acontecem no MESMO Tick em que um golpe também vence, o laço já
 retornou por essa razão antes de o `for` de cima rodar de novo para aquele Tick:
-`if (contadorDeMordidas() > mordidasAntes) return;`, `grid.astro:5744` — o cartão
+`if (contadorDeMordidas() > mordidasAntes) return;`, `grid.astro:5752` — o cartão
 fica vencido na tela por um instante, e não soma-se um clique extra: o próximo ⏭
 (que o mestre já ia dar para continuar) o resolve na hora. Não é gesto a mais, é
 ordem de exibição.

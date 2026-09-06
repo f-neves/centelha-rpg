@@ -89,18 +89,26 @@ export function rolarExpr(expr: string, extraDados = 0, extraFlat = 0): Rolada {
  * dobrando a conta. É o único caso em que esta função aceita um total pronto,
  * e só porque não há dado nenhum para digitar em seu lugar.
  */
-export function roladaManual(texto: string, expr: string, extraFlat = 0): Rolada | null {
+export function roladaManual(texto: string, expr: string, extraFlat = 0, extraDados = 0): Rolada | null {
   const rolls = (String(texto || '').match(/-?\d+/g) || []).map(Number);
   if (!rolls.length) return null;
   if (rolls.length === 1 && !/\d*d6/i.test(String(expr || ''))) {
     return { dados: 0, flat: 0, rolls: [], total: rolls[0], bateContagem: true };
   }
   const flat = flatDeExpr(expr) + extraFlat;
-  // QUANTOS DADOS A EXPRESSÃO PEDE, para marcar o campo quando o número de
+  // QUANTOS DADOS O POOL PEDE, para marcar o campo quando o número de
   // faces digitadas não bate: é o sinal do hábito antigo (digitar o TOTAL já
   // somado) voltando, e ele soma como se fosse UMA face sem avisar ninguém.
-  const dadosExpr = (String(expr || '').match(/(\d*)d6/gi) || [])
-    .reduce((a, m) => a + (parseInt(m, 10) || 1), 0);
+  //
+  // `extraDados` ENTRA NA CONTA (achado da revisão de 06/09/2026): a mesa
+  // digita as faces do POOL AJUSTADO (ferimento, condição, a escada do
+  // P/G/R, o segundo golpe de uma rajada), e não da expressão crua da arma.
+  // Sem somar `extraDados` aqui, qualquer ajuste de dados marcava vermelho
+  // uma digitação certa — o mesmo risco que a rede do avanço existe para
+  // não correr: um sinal que acende no caso errado apaga o sinal, em vez de
+  // mostrá-lo.
+  const dadosExpr = Math.max(0, (String(expr || '').match(/(\d*)d6/gi) || [])
+    .reduce((a, m) => a + (parseInt(m, 10) || 1), 0) + extraDados);
   return {
     dados: rolls.length, flat, rolls, total: rolls.reduce((a, b) => a + b, 0) + flat,
     bateContagem: rolls.length === dadosExpr,

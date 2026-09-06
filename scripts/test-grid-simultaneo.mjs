@@ -184,10 +184,17 @@ async function cena(br, url) {
   // (`window.__SB...log`, o mesmo canal que outras cenas deste arquivo usam):
   // cada passo real grava a própria linha ("… avança Xm …"), e o número de
   // linhas prova que houve mais de um passo, não um pulo só.
+  // ANCORADO NO NOME DE QUEM ANDOU (achado da revisão de 06/09/2026): sem
+  // isto, o regex casa a linha de QUALQUER peça que se mova nos mesmos
+  // Ticks, e outra peça andando por perto estoura o limite ou completa por
+  // fora um passo que c002 não deu.
+  const nomeAtacante = await p.evaluate(() =>
+    (window.__SB?.tabelas?.combatentes || []).find((c) => c.id === 'c002')?.nome || '');
   const registroMov = await p.evaluate((desde) => (window.__SB?.tabelas?.mesa_arenas?.[0]?.log || [])
     .slice(desde).map((l) => l.txt || ''), antesLog);
+  const reMov = new RegExp(`^${nomeAtacante.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')} (?:avança|atravessa)[^\\d]*([\\d.]+)\\s*m`);
   const passos = registroMov
-    .map((t) => (t.match(/(?:avança|atravessa)[^\d]*([\d.]+)\s*m/) || [])[1])
+    .map((t) => (t.match(reMov) || [])[1])
     .filter(Boolean).map(Number);
   const distAndada = passos.reduce((a, b) => a + b, 0);
   const nTicks = decl.tickDoGolpe;
@@ -201,6 +208,13 @@ async function cena(br, url) {
   ok(distAndada > 0 && distAndada <= esperado + 0.05 && distAndada >= esperado - decl.porTick - 0.05,
     `a distância andada bate com passo × Ticks avançados (${distAndada.toFixed(1)}m de até `
     + `${decl.porTick}×${nTicks} = ${esperado.toFixed(1)}m)`);
+  // O RÓTULO É RELACIONAL, E É ISSO QUE ESTA ASSERÇÃO MEDE (conferido na
+  // revisão de 06/09/2026): que a distância até o alvo DIMINUIU, não que a
+  // peça andou na velocidade certa. Isso já está preso pela asserção de cima
+  // (passo × Ticks avançados). SE ALGUÉM REESCREVER O RÓTULO como "a peça
+  // anda na velocidade certa", ele passa a afirmar que `passoNoModo` está
+  // correto — e isso não está medido aqui, nem em nenhum outro lugar desta
+  // cena.
   const depois = await rectDe(p, '#gr-tokens .gr-token[data-c="c002"]');
   const distDepois = Math.hypot(depois.x - alvoPos.x, depois.y - alvoPos.y);
   ok(distDepois < distAntes, `e anda NA DIREÇÃO do alvo (${Math.round(distAntes)}px → ${Math.round(distDepois)}px)`);
@@ -1014,7 +1028,7 @@ async function cenaTetoForcado(br, url) {
   // em andamento (achado ao depurar esta cena) — só as peças com a condição
   // `cego` (c000, c003, c006, c009) nascem LIVRES, e só uma peça livre abre a
   // caixa de deslocamento solto (`moverSimultaneo`, `grid.astro:5878`); as
-  // outras caem direto em `porNoMapa`, sem diálogo nenhum (`grid.astro:5879`,
+  // outras caem direto em `porNoMapa`, sem diálogo nenhum (`grid.astro:5887`,
   // dentro de `moverSimultaneo`).
   //
   // O CANTO LIVRE MAIS LONGE do palco (a mesma técnica da cena 1, item 5): no

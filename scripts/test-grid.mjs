@@ -2543,7 +2543,14 @@ async function cenaQuaseAcerto(br, url) {
     // ("4d6 +2"), sem passar pela régua do veredito. É o mesmo fixo que
     // `flatDeExpr` (`rolagem.ts`) lê da expressão, e o formato do fixo é o que
     // `test-rolada-manual.mjs:7` trava (o `+2` da arma, por extenso).
-    const poolTxt = (document.getElementById('al-pool')?.textContent || '').replace(/\s+/g, ' ');
+    // O MENOS NÃO É SÓ ASCII (achado da revisão de 06/09/2026): `sinalTxt`
+    // (`grid.astro`) e `descreverRolada` (`rolagem.ts`) escrevem negativo com
+    // o menos tipográfico (−, U+2212), e `[+-]` não o casa — um fixo
+    // situacional negativo desaparecia da conta sem aviso, e F=0 voltava a
+    // deixar as três asserções de fronteira passarem por sorte. Normaliza
+    // antes de casar, do mesmo jeito que `flatDeExpr` já faz.
+    const poolTxt = (document.getElementById('al-pool')?.textContent || '')
+      .replace(/[−–—]/g, '-').replace(/\s+/g, ' ');
     const semDados = poolTxt.replace(/\([^)]*\)/g, ' ').replace(/(\d*)d6/gi, ' ');
     let F = 0;
     for (const mch of semDados.matchAll(/[+-]\s*\d+/g)) F += parseInt(mch[0].replace(/\s+/g, ''), 10);

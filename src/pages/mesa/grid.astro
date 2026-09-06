@@ -5640,10 +5640,18 @@ const SETAS = [
    * `?tetoAvanco=N` BAIXA O TETO PARA TESTE (achado da revisão de 06/09/2026):
    * sem um jeito de FORÇAR a rede a acender, a única asserção que a bancada
    * tinha era `tetoAceso === 0`, e uma rede que nunca dispara passa nela para
-   * sempre por não existir, não por estar correta. Em uso normal o parâmetro
-   * não vem na URL e o teto continua 50.
+   * sempre por não existir, não por estar correta.
+   *
+   * SÓ VALE COM `?bench=` NA MESMA URL (achado da revisão de 06/09/2026): sem
+   * essa guarda, `?tetoAvanco=1` numa mesa de VERDADE faria a rede acender a
+   * cada clique e GRAVAR "isto não deveria acontecer" no registro
+   * COMPARTILHADO da mesa — escrita em estado de todo mundo controlada por
+   * query string, e o efeito de treinar a mesa a ignorar o alarme verdadeiro
+   * é pior que o defeito que a rede existe para avisar. `?bench=` só existe
+   * na bancada (`mesa-mock.mjs`); numa mesa real ele nunca vem na URL.
    */
   const TETO_AVANCO_SEM_PARADA = (() => {
+    if (PARAMS.get('bench') == null) return 50;
     const n = Number(PARAMS.get('tetoAvanco'));
     return Number.isFinite(n) && n > 0 ? Math.floor(n) : 50;
   })();
@@ -9305,7 +9313,14 @@ let roladoDano = '';
     // que vindo dos dedos da mesa. Campo vazio volta a mostrar a fórmula (o
     // que rolar), porque aí não há dado nenhum para descrever ainda.
     totalInp.oninput = () => {
-      const rd = roladaManual(totalInp.value, ra?.ataque || '0d6', ajAtq.flat);
+      // O EXTRA DE DADOS TEM DE ENTRAR AQUI (achado da revisão de 06/09/2026),
+      // o mesmo `ajAtq.dados + pen` que `pintarPoolAcerto` já soma para MOSTRAR
+      // o pool ajustado (`al-pool`, algumas linhas acima): sem ele, a guarda
+      // comparava a digitação contra a expressão CRUA da arma, e qualquer
+      // ajuste de dados (ferimento, condição, a escada do P/G/R, o segundo
+      // golpe da rajada) marcava vermelho uma digitação certa.
+      const pen = anat().penDados[0] || 0;
+      const rd = roladaManual(totalInp.value, ra?.ataque || '0d6', ajAtq.flat, ajAtq.dados + pen);
       if (rd) { rolado = descreverRolada(rd); (el('al-pool') as HTMLElement).textContent = rolado; }
       else { rolado = ''; pintarPoolAcerto(); }
       // MARCA O CAMPO quando o número de faces digitadas não bate com o que a

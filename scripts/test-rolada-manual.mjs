@@ -57,6 +57,16 @@ ok(!!r && r.bateContagem === false,
 r = M.roladaManual('3,5', '2d6+1', 2);
 ok(!!r && r.total === 3 + 5 + 1 + 2, `o extraFlat da situação soma junto ao fixo da arma (${r?.total})`);
 
+// ---- 2b: O `extraDados` TAMBÉM MUDA A CONTAGEM ESPERADA (achado da revisão
+// de 06/09/2026) — sem isto, a guarda marcava vermelho toda digitação de um
+// pool ajustado por ferimento, condição, a escada do P/G/R ou a rajada.
+r = M.roladaManual('3,5,1', '2d6+1', 0, 1);
+ok(!!r && r.bateContagem === true,
+  `3 faces para um pool de 2d6 + 1 dado extra bate (esperado true, achou ${r?.bateContagem})`);
+r = M.roladaManual('3,5', '2d6+1', 0, 1);
+ok(!!r && r.bateContagem === false,
+  `e 2 faces para o mesmo pool (esqueceu o dado extra) acende a marca (esperado false, achou ${r?.bateContagem})`);
+
 // ---- 3: a mesa digita como digita, com espaço ou vírgula ----
 r = M.roladaManual(' 4 , 2  6', '3d6', 0);
 ok(!!r && r.rolls.length === 3 && r.total === 12,

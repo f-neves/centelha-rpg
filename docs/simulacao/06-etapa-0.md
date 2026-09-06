@@ -62,6 +62,12 @@ comentário "o dado mora em `rolagem.ts` agora, com o resto do acaso do combate"
 `bench=12` é 4 PCs e 8 criaturas** (`mesa-mock.mjs:100`), então o `test-etapa0.mjs` já exercitava
 esse caminho sem que o relatório dissesse.
 
+**Propriedade da bancada que qualquer cena nova tropeça, achada em 06/09/2026:** só `i % 3 === 0`
+nasce LIVRE (`acao: {}`); as outras duas em cada três já têm golpe em andamento no Tick 0
+(`mesa-mock.mjs`, o array `ACAO`). Uma cena que precisa de uma peça livre para declarar
+deslocamento solto tem de escolher `c000`, `c003`, `c006` ou `c009` — as demais caem direto em
+`porNoMapa` (`grid.astro:5887`), sem diálogo nenhum.
+
 **Depois da Etapa 0 existem exatamente DUAS fontes de acaso no combate**, e não quatro: o `d6` do
 `rolagem.ts` (por onde saem `rolarExpr`, `iniDeMonstro` e `rolarIniciativaPC`) e o `rolar` do
 `artes-grid.ts`. As duas passam pelo `acaso`. O resto de `Math.random` em `src/lib` gera id ou chave
