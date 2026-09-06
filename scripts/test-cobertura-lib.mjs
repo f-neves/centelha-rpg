@@ -8,12 +8,16 @@
 // aparece em divergência nenhuma, porque não há o que divergir. A ausência é
 // muda por construção, e este arquivo é o único lugar em que ela fala.
 //
-// O ACHADO QUE O TROUXE (06/09/2026): 63 exportadas, 20 chamadas pelos dois,
-// ZERO chamadas só pelo harness, 21 FUNÇÕES chamadas pela mesa e ausentes do
-// harness. Dez delas foram lidas uma a uma e nove ALONGAM a batalha (a entrada
-// escalonada, o contrapé, o abortar, o gesto adiado, o passo pago na
-// Recuperação), uma encurta, e as duas formas dão o mesmo resultado: a batalha
-// do harness acaba antes da batalha da mesa.
+// O ACHADO QUE O TROUXE (06/09/2026, DE ORIGEM): 63 exportadas, 20 chamadas
+// pelos dois, ZERO chamadas só pelo harness, 21 FUNÇÕES chamadas pela mesa e
+// ausentes do harness. O balde B (`temGesto`, `proximoGolpe` — duas
+// implementações da mesma pergunta) fechou no mesmo dia: são 22 nos dois e 19
+// só na mesa agora. Do que sobra, oito têm ocasião real nesta bateria e cinco
+// delas ALONGARIAM a batalha se o harness tivesse a política que as aciona
+// (abortar, interromper, andar na Recuperação); duas não mudam duração
+// nenhuma (o par do contrapé); uma já foi medida (`ticksDeEntrada`). Duas
+// saíram da lista de origem por terem ocasião ZERO nesta bateria (`modoCorre`,
+// `adiaGolpe`): o detalhe inteiro está no `Pendencias.md` L48.
 //
 //   node scripts/test-cobertura-lib.mjs           · o portão
 //   node scripts/test-cobertura-lib.mjs --lista   · só os nomes, sem veredito
@@ -140,8 +144,8 @@ const importesMortos = (bruto, nomes) => {
 const SO_DA_MESA = [
   'abortar', 'acaoVazia', 'adiaGolpe', 'anatomiaLivre', 'atrasarGesto',
   'comOverride', 'combateDaMesa', 'contrapeDe', 'contrapeEm', 'ehSimultaneo',
-  'fita', 'foraDeHora', 'modoCorre', 'podeSerInterrompido', 'proximoGolpe',
-  'resumoDaAcao', 'rolaNoSite', 'temGesto', 'tetoDaRajada',
+  'fita', 'foraDeHora', 'modoCorre', 'podeSerInterrompido',
+  'resumoDaAcao', 'rolaNoSite', 'tetoDaRajada',
   'ticksDeDeslocamento', 'ticksDeEntrada',
 ];
 
@@ -157,8 +161,8 @@ const NOS_DOIS = [
   'agendaSimultanea', 'agendar', 'anatomia', 'armaDoCatalogo', 'classeDeTempo',
   'decideEmValeDepois', 'decisaoAutomatica', 'declarar', 'defesaPerdida',
   'faseDeQuemVaiAgir', 'faseEm', 'golpeDaAgenda', 'golpeResolvido', 'golpesNoAr',
-  'ordemDaFila', 'passoDoGolpe', 'preparoDe', 'reprojetarAgenda',
-  'ticksDeViagem', 'velocidadeDaArma',
+  'ordemDaFila', 'passoDoGolpe', 'preparoDe', 'proximoGolpe', 'reprojetarAgenda',
+  'temGesto', 'ticksDeViagem', 'velocidadeDaArma',
 ];
 
 // ============================================================== a execução

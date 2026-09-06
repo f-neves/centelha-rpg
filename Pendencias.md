@@ -2929,14 +2929,16 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   quando alguém mexer na frase do título do "⏭" ou fizer uma varredura geral desta família de
   defeito, e não como exceção documentada.
 
-- [ ] **L48 · [ABERTO · A RESPOSTA É SEDIMENTAÇÃO] O harness chama 20 funções da lib, e a mesa
-  chama 41.** *Medido pela revisora em 06/09/2026 e reproduzido pelo portão no mesmo dia.*
+- [ ] **L48 · [ABERTO · A RESPOSTA É SEDIMENTAÇÃO · BALDE B FECHADO EM 06/09/2026] O harness
+  chamava 20 funções da lib, e a mesa 41.** *Medido pela revisora em 06/09/2026 e reproduzido
+  pelo portão no mesmo dia.*
 
-  **Os números, e quem os guarda é o `scripts/test-cobertura-lib.mjs`:**
-  `src/lib/combate-tempo.ts` exporta **63** (51 funções, 12 constantes); **20** são chamadas
-  pelos dois; **zero** são chamadas só pelo harness; **21 funções** são chamadas pela mesa
+  **Os números de origem, e quem os guarda é o `scripts/test-cobertura-lib.mjs`:**
+  `src/lib/combate-tempo.ts` exporta **63** (51 funções, 12 constantes); **20** eram chamadas
+  pelos dois; **zero** eram chamadas só pelo harness; **21 funções** eram chamadas pela mesa
   (as duas abas mais o `mesa-tempo-ui.ts`) e ausentes do harness. A relação é de subconjunto
-  ESTRITO, e é o zero que a torna estrita.
+  ESTRITO, e é o zero que a torna estrita. **Depois do balde B, são 22 nos dois e 19 só na
+  mesa** · o portão guarda o número corrente, este parágrafo guarda o de origem.
 
   **POR QUE NENHUM OUTRO INSTRUMENTO ACHA ISTO.** O espelho de motor compara o harness com a
   mesa Tick a Tick, e o que ele compara é o que os DOIS executam: função que só um lado chama
@@ -2945,31 +2947,79 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   de CONJUNTOS fora dele.
 
   **POR DECISÃO OU POR SEDIMENTAÇÃO?** Por **sedimentação**, e a prova não é de leitura, é de
-  medida: a própria ponte (`scripts/sim/lib-ponte.mjs`) exporta **15 nomes que o harness nunca
-  chama** · `penDadosDaRegua`, `contrapeDe`, `temGesto`, `vizinhos`, `HEX_HASTE`,
+  medida: a própria ponte (`scripts/sim/lib-ponte.mjs`) exportava **15 nomes que o harness nunca
+  chamava** · `penDadosDaRegua`, `contrapeDe`, `temGesto`, `vizinhos`, `HEX_HASTE`,
   `HEX_CORPO_A_CORPO`, `fonteRolada`, `defesaEfetiva`, `qaDaPeca`, `errouPor`, `saidaDoAtaque`,
   `somarCondicoes`, `deslocamento`, `semeado`, `PERFIL_CORRENTE`. Uma lista de escopo decidido
   não carrega quinze nomes que ninguém pediu; uma lista que cresceu por necessidade e nunca foi
-  podada carrega. E o caso que fecha o argumento: a ponte exporta `temGesto` **e o harness
-  define uma cópia local, com o mesmo nome e o mesmo corpo** (`motor.mjs:40`, `const temGesto`),
-  com o comentário dizendo que é "para o laço ler igual à mesa". Ninguém decide isso; isso
+  podada carrega. E o caso que fechava o argumento, hoje consertado: a ponte exportava
+  `temGesto` **e o harness definia uma cópia local, com o mesmo nome e o mesmo corpo** (era o
+  `const temGesto` do `motor.mjs`, removido no balde B abaixo). Ninguém decide isso; isso
   acontece.
 
-  **A CONSEQUÊNCIA, e ela é a razão de o item existir:** das 21, dez foram lidas uma a uma e
-  **nove ALONGAM** a batalha da mesa (entrada escalonada, contrapé, abortar, gesto adiado,
-  passo pago na Recuperação, interrupção) e **uma encurta** (`modoCorre`, que abre a travessia
-  onde a mesa não deixa). As duas direções dão o mesmo resultado: **a batalha do harness acaba
-  antes da batalha da mesa**, e a duração é o multiplicador de tudo que a bateria publica.
+  **A CONSEQUÊNCIA, e ela é a razão de o item existir, CORRIGIDA em 06/09/2026 ao medir o
+  tamanho do balde C:** a leitura de origem dizia dez com ocasião, nove alongando e uma
+  encurtando (`modoCorre`). Reexaminado, são **oito** com ocasião real, e nenhuma encurta: cinco
+  (`ticksDeDeslocamento`, `abortar`, `foraDeHora`, `atrasarGesto`, `podeSerInterrompido`)
+  ALONGARIAM a batalha da mesa **se o harness tivesse a política que as aciona**, e é a política
+  que falta, não a chamada; duas (`contrapeEm`, `contrapeDe`) não mudam duração nenhuma, e uma
+  (`ticksDeEntrada`) já foi medida (§ abaixo). `modoCorre` e `adiaGolpe` saíram do balde C para o
+  D: os dois têm ocasião zero nesta bateria, cada um por um motivo diferente (ver o balde D). **O
+  sentido geral se mantém**: nada no achado encurta a batalha do harness; o que muda é que a
+  maior parte do alongamento é POTENCIAL (falta política), não já disponível para ligar.
 
-  **AS 21, EM QUATRO BALDES.** Cada linha é um item; fechar um é fazer o harness chamar a
-  função, ou escrever por que ele nunca vai chamar.
+  **OS QUATRO BALDES.** Cada linha é um item; fechar um é fazer o harness chamar a função, ou
+  escrever por que ele nunca vai chamar.
 
   | balde | as funções | o que fazer |
   |---|---|---|
   | **A · sem ocasião num laço headless** (8) | `fita`, `resumoDaAcao`, `combateDaMesa`, `ehSimultaneo`, `rolaNoSite`, `comOverride`, `anatomiaLivre`, `acaoVazia` | são tela ou configuração: as duas primeiras desenham, as três seguintes leem uma configuração que a bateria fixa, `comOverride` e `anatomiaLivre` são caminhos de diálogo, e `acaoVazia` responde uma pergunta mais larga (inclui Pressão) que a política automática nunca produz. **Escrever isto uma vez ao lado dos números e fechar.** É a única parte da lista que é escopo de verdade |
-  | **B · duas implementações da mesma pergunta** (2) | `temGesto`, `proximoGolpe` | `temGesto` é cópia de mesmo nome em `motor.mjs:40`, e a ponte JÁ exporta o original: o conserto é trocar a cópia pela chamada, e não muda número nenhum, porque os corpos são idênticos. `proximoGolpe` está reimplementado em linha (`Math.min(...L.golpesNoAr(...))`, `motor.mjs:149`). **Os dois mais baratos da lista** |
-  | **C · divergência de fidelidade REAL, com ocasião nesta bateria** (10) | `ticksDeEntrada`, `contrapeEm`, `contrapeDe`, `ticksDeDeslocamento`, `modoCorre`, `abortar`, `foraDeHora`, `atrasarGesto`, `adiaGolpe`, `podeSerInterrompido` | é aqui que mora o encurtamento. Cada uma é um experimento próprio, e o primeiro é o `ticksDeEntrada` |
-  | **D · divergência REAL, SEM ocasião nesta bateria** (1) | `tetoDaRajada` | a cena fixa `manobra: 'simples'` (`cena.mjs:177`) e o motor só usa a manobra quando `an.golpes > 1` (`motor.mjs:281`): a rajada não acontece. É item da bateria de COMPARAÇÃO DE REGRAS, que ainda não pode existir (as bandeiras do L25) |
+  | **B · [FECHADO em 06/09/2026] duas implementações da mesma pergunta** (2) | `temGesto`, `proximoGolpe` | `temGesto` era cópia de mesmo nome no `motor.mjs`, com o mesmo corpo, e a ponte já exportava o original: a cópia saiu, `resolverContra` chama `L.temGesto` (`motor.mjs:350`), e a saída da batalha de controle (300 batalhas, semente `20260903`) saiu byte a byte idêntica. `proximoGolpe` estava reimplementado em linha, em dois pontos de `avancarTickSimultaneo`; os dois viraram `L.proximoGolpe(...)` (`motor.mjs:138`, `motor.mjs:145`), mesma conferência. `proximoGolpe` entrou na ponte (só faltava lá). Conferido: `custo-tela.mjs` NÃO responde a mesma pergunta que `temGesto` — a tabela `CUSTO` mapeia TIPO DE PARADA → cliques, e `temGesto` pergunta se UMA `Acao` tem golpe agendado; nenhuma linha do arquivo testa `.golpes.length`. Não há o que tirar nem migrar lá |
+  | **C · divergência de fidelidade REAL, com ocasião nesta bateria** (8) | `ticksDeEntrada`, `contrapeEm`, `contrapeDe`, `ticksDeDeslocamento`, `abortar`, `foraDeHora`, `atrasarGesto`, `podeSerInterrompido` | é aqui que mora o encurtamento. Tamanho medido em 06/09/2026: ver o parágrafo abaixo |
+  | **D · divergência REAL, SEM ocasião nesta bateria** (3) | `tetoDaRajada`, `modoCorre`, `adiaGolpe` | as duas últimas ENTRARAM neste balde em 06/09/2026, corrigindo a lista de origem: ver o parágrafo abaixo |
+
+  **CORREÇÃO AO PRÓPRIO RELATO ANTERIOR, achada ao medir o tamanho do balde C em 06/09/2026:
+  eram dez com ocasião, e duas não têm.** `modoCorre` só se distingue de `=== 'corrida'` quando
+  `opts.modo === 'investida'`, e o harness **nunca** produz esse valor — `motor.mjs` só escreve
+  `modo: 'corrida'` (fuga, L249) ou `modo: 'batalha'` (aproximação, L281); `grep` por
+  `investida` no arquivo inteiro não acha nada. E o harness já chama `L.passoDoGolpe` (`motor.mjs:105`), que usa
+  `modoCorre` por dentro (`combate-tempo.ts:1003`): a função É exercitada, só não por nome. `adiaGolpe(c)` pergunta se o sistema da MESA adia o golpe
+  (`c.sistema === 'simultaneo' || ...`), e o harness não tem esse objeto de configuração porque
+  ele SEMPRE roda simultâneo, com o adiamento já embutido em `decideEmValeDepois()`
+  (`combate-tempo.ts:1008`, `decideEmValeDepois`), que está na lista dos 20 chamados pelos dois. As duas perguntas já
+  estão respondidas do jeito que `adiaGolpe` responderia; wire-las não muda um Tick.
+
+  **O TAMANHO DO BALDE C, medido em 06/09/2026 antes de construir nada** (a régua do L30: o
+  tamanho vem antes do conserto). Das oito, **três são baratas de ligar**, e só **uma** delas
+  MEXE no comprimento da batalha: `ticksDeEntrada` (a guarda do motor já existe, ver mais abaixo,
+  e É o que atrasa a entrada — a medição do turno anterior). `contrapeEm` e
+  `contrapeDe` são igualmente baratas de ligar (o par que lê e carrega o contrapé que
+  `ticksDeEntrada` gravaria), **mas não mudam duração nenhuma**: a régua da mesa manda o
+  contrapé ficar **mostrado e não descontado** (`grid.astro:5135`, `GUARDADO na ação e MOSTRADO`, "o valor final da jogada é do
+  mestre"), então ele nunca entra numa rolagem que o harness resolve sozinho. Ligá-las é
+  completar o mecanismo do `ticksDeEntrada` (senão o contrapé fica escrito e nunca decai), não
+  medir mais nada.
+
+  **Cinco exigem trabalho de motor**, e a razão é a mesma nas cinco: dependem de uma DECISÃO que
+  `decisaoAutomatica` não tem (ela só devolve `atacar`/`fugir`/`nada`) ou de um MECANISMO que o
+  laço não tem (interromper o turno de outra peça). `ticksDeDeslocamento` cobraria Ticks de
+  quem anda durante a Recuperação, e nenhuma peça desta política anda nesse instante: o passo
+  só existe enquanto há `acao.mov`, e o `mov` só nasce na declaração (indo atacar ou fugindo),
+  nunca no meio da Recuperação. `abortar` cancela um Preparo em andamento, e uma peça com golpe
+  agendado nunca volta a passar por `declarar()` até o golpe cair (`motor.mjs`: a fase 2 pula
+  quem tem `golpesNoAr(c.acao).length`), então não há PONTO no laço em que abortar seria
+  perguntado. `foraDeHora`/`atrasarGesto`/`podeSerInterrompido` são a mesma família, a
+  interrupção: nenhuma peça desta política reage ao turno de outra, e o harness não tem
+  conceito de "agir na vez de outro" em lugar nenhum do laço. As três nascem com o mesmo commit,
+  porque `foraDeHora` chama `podeSerInterrompido` internamente e `atrasarGesto` é a única forma
+  de aplicar o que `foraDeHora` decide.
+
+  **NÃO É MAIORIA BARATA: é 3 de 8, e só 1 delas move o número que a bateria mede.** O lote
+  barato (`ticksDeEntrada` + o par do contrapé) cabe num experimento só, porque as três só tocam
+  o INÍCIO do ciclo de uma peça. As cinco caras não cabem no mesmo lote: cada uma exige decidir
+  QUANDO o robô aborta, interrompe ou anda durante a Recuperação, e essa decisão de política é
+  trabalho de design antes de ser trabalho de motor — não dá para "ligar" o que ainda não foi
+  desenhado.
 
   **O `ticksDeEntrada` É O PRIMEIRO, E CABE ANTES DO ELENCO NOVO.** Custo: uma linha em
   `cena.mjs` (o `tick: 0` de toda peça vira o Tick da entrada), porque a guarda do motor já

@@ -36,9 +36,6 @@ import { chaveHex } from './cena.mjs';
 /** O teto de segurança. Batalha que o estoura sai marcada e não entra em média. */
 export const TETO_TICKS = 2000;
 
-/** `temGesto` da régua, com o mesmo nome, para o laço ler igual à mesa. */
-const temGesto = (a) => !!a && Array.isArray(a.golpes) && a.golpes.length > 0;
-
 /**
  * Uma batalha completa, do Tick 1 ao fim.
  *
@@ -138,15 +135,14 @@ export function batalha(L, cena, log, opts = {}) {
         // eixo E4 inteiro, e é uma parada de classe iii (aritmética que o
         // motor faz e o mestre teria de fazer à mão).
         const faltaHex = Math.max(0, L.distanciaHex(c.pos, alvoPos) - pararA);
-        const noAr = L.golpesNoAr(c.acao);
-        const antesG = noAr.length ? Math.min(...noAr) : null;
+        const antesG = L.proximoGolpe(c.acao);
         const nova = L.reprojetarAgenda(c.acao, T, Math.ceil(faltaHex / passos));
         if (nova) {
           c.acao = nova;
           c.tick = nova.livre;
           c.deslizes = (c.deslizes || 0) + 1;
           log.parada('iii', 'reprojetar', c, T,
-            { aid: c.acao.aid, de: antesG, para: Math.min(...L.golpesNoAr(nova)) });
+            { aid: c.acao.aid, de: antesG, para: L.proximoGolpe(nova) });
         }
       }
     }
@@ -351,10 +347,10 @@ function resolverContra(L, c, alvo, log, T, tg, opts, aid, tiraDaAgenda) {
   // mesa não o trata como livre, ela PRESUME a fase de quem age neste instante
   // (`faseDeQuemVaiAgir`). O laço passava a fase real e dava Defesa cheia a
   // quem estava prestes a golpear.
-  const acaoAlvo = temGesto(alvo.acao)
+  const acaoAlvo = L.temGesto(alvo.acao)
     ? alvo.acao
     : { golpes: [], livre: alvo.tick ?? 0, pressao: alvo.acao?.pressao || 0 };
-  const presumida = !temGesto(alvo.acao)
+  const presumida = !L.temGesto(alvo.acao)
     ? L.faseDeQuemVaiAgir(alvo.tick ?? 0,
       L.preparoDe(alvo.classe, alvo.velocidade, 'simultaneo'), tg)
     : 'livre';
