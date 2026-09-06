@@ -207,20 +207,81 @@ literal da previsão), `n` fica na casa das dezenas/centenas** (tabela de cima);
 o número comparável ao resto deste documento, que sempre falou em gestos por
 batalha), `n` fica na casa dos milhares** (tabela de baixo).
 
-**O que isto significa, sem decidir nada:** as duas medições de ruído (circularidade
-e unidade) seguem de pé, e a mais importante não mudou — o `56,58`/`0,3553` não
-estavam inflados pelo efeito que tentavam medir, o isolamento provou o contrário. O
-que mudou é a conclusão sobre viabilidade: ela **não é mais "os `n` já bastam"**,
-porque isso dependia de tomar Δ = 1 gesto/Tick como o efeito a caçar sem checar se
-esse Δ correspondia a um efeito plausível em escala de batalha. Convertido
-corretamente, o `n` para um efeito do tamanho de "um gesto por batalha" está na
-casa dos milhares (2.527), não das dezenas — acima dos ~500 por célula que a grade
-já planeja, ainda que bem abaixo dos 25.100 da métrica total. **O que fica sem
-medir continua sendo a bandeira `margem` em si** (os números acima vêm de
-`ticksDeEntrada`) **e agora também o próprio Δ-alvo do E5**, que nenhum documento
-fixa. O piloto continua sendo quem decide o `n` de produção, e deixou de ser
-confirmação de uma conta já boa: voltou a ser pré-requisito, porque o efeito que
-ele mediria não está definido em tamanho nem em unidade.
+**DECIDIDO (06/09/2026): o Δ-alvo do E5 é UM GESTO POR BATALHA, `n ≈ 2.527` por
+célula.** A pergunta original desta frente inteira é sobre o trabalho do mestre
+numa sessão, e o mestre sente **batalha**, não Tick: uma bandeira que muda meio
+gesto por batalha não é diferença que alguém perceba jogando, e medir abaixo disso
+é gastar bateria atrás de um efeito que ninguém sentiria. **O teto do
+`05-fechamento.md:429` continua respeitado**, e os dois não se contradizem: um
+gesto por batalha equivale a `0,0198` gesto/Tick, bem abaixo de "menos de um gesto
+por Tick" — a previsão fixava um limite superior, o Δ-alvo fixa onde dentro dele a
+régua olha. Existem agora os dois: o teto (previsão) e o alvo (decisão).
+
+**O QUE ISSO FAZ COM A GRADE, em batalhas e em tempo de máquina.** A grade cheia do
+projeto tem **112 células, `n = 500`** cada, **56.000 batalhas**
+(`02-projeto-harness.md` §0.5/§3); **32 delas são de E5** (`09-bateria-grande.md:932`,
+núcleo do Tick 12 + perfil desligado 2 + não-núcleo na âncora 9 + na hospedeira 6 +
+na mediana 3). Com `n = 2.527` só nessas 32 (as outras 80 continuam em 500, sizing
+que não depende de detectar delta nenhum):
+
+| | células | `n`/célula | batalhas | tempo (a 600/s) | procedência |
+|---|---:|---:|---:|---:|---|
+| hoje | 112 | 500 | 56.000 | 93,3 s (1,56 min) | derivado: 112×500, `02-projeto-harness.md` §0.5/§3 |
+| **80 fora de E5** | 80 | 500 | 40.000 | 66,7 s | derivado: (112−32)×500 |
+| **32 de E5, com `n` novo** | 32 | 2.527 | 80.864 | 134,8 s | derivado: 32×2.527, `n` da tabela acima |
+| **grade nova, total** | 112 | · | **120.864** | **201,4 s (3,36 min)** | derivado: soma das duas linhas de cima |
+
+**A taxa (600 batalhas/s) é medida agora mesmo**, na bateria de isolamento desta
+rodada (`bmtqb2vxm`: 21.600 batalhas em 36,0 s, 4 processos, este harness) — **não
+é o número da grade real**: a grade do projeto tem os quinze `regras.json` ligados
+(L25) e mais eixos por batalha (E1-E11) que este harness, hoje, não roda (as
+bandeiras nascem desligadas). É a única taxa que existe medida, e serve de piso —
+o custo real por batalha da grade cheia tende a ser igual ou maior, nunca menor,
+porque bandeira ligada é código a mais rodando por Tick.
+
+**Crescimento: 2,16× no total da grade (56.000→120.864), 5,05× só na fatia de E5**
+(16.000→80.864). Em tempo, **+108 s (+1,8 min)** com os mesmos 4 processos —
+**a grade cheia continua praticável em tempo de máquina**, mesmo no `n` novo.
+
+**Se o corte for por tempo (não é o caso aqui, mas a segunda conta pedida):**
+quantas células cabem no orçamento de tempo de HOJE (56.000 batalhas, 93,3 s)?
+
+| se o corte for | células de E5 no `n` novo que cabem | de quantas | procedência |
+|---|---:|---|---|
+| gastar o orçamento de hoje SÓ em células de E5 | **22** | 32 | derivado: 56.000/2.527 |
+| manter as 80 fora de E5 intactas, e usar a sobra | **6** | 32 | derivado: (56.000−40.000)/2.527 |
+
+**Nenhuma das duas se aplica**: a grade nova cabe inteira em 201,4 s, bem dentro do
+que qualquer rodada de bateria já levou nesta frente. A tabela fica registrada para
+o dia em que outro Δ-alvo, ou outro eixo, tornar o corte necessário de verdade.
+
+**A RECONCILIAÇÃO DE `56,58` COM `17,94`, questionada pela revisora — ela supõe
+duração igual em cada par? Não, e a resposta agora é exata, não aproximada.** A
+pergunta: `r08`/`r09` já mediram 11,35 Ticks de desvio de duração PAREADA (a seção
+"O QUE A ENTRADA ESCALONADA MUDOU", acima) — a mesma bateria, o mesmo par. Uma
+identidade exata separa o delta total em dois termos, sem supor duração
+constante: com `m` = ticks médios do par e `r` = taxa média do par,
+`Δ(gestos) = m·Δ(taxa) + r·Δ(ticks)` (conferida par a par nos 19.200, diferença
+máxima `0,000000`). O **termo da taxa** (`m·Δtaxa`) tem desvio **18,64** — muito
+perto do `17,94` da reconversão aproximada (que usava a média da população no
+lugar de `m` por par, e por isso é só uma aproximação, não uma suposição de
+duração igual). O **termo da duração** (`r·Δticks`) tem desvio **56,22** — quase
+todo o `56,58` sozinho. Decompondo a variância: **98,7% vem do termo de duração,
+10,9% do termo de taxa, e −9,6% de covariância entre os dois** (soma 100%,
+conferida: `18,64² + 56,22² + 2·cov = 3.200,7 = 56,575²`, exato). **A reconciliação
+não só se sustenta como fica mais forte**: a métrica por Tick não está reduzindo o
+ruído por um fator qualquer — está isolando um termo que carrega só ~11% da
+variância total, quase sem a duração dentro. `r08` e `r09` são as MESMAS baterias
+da medição de 11,35 Ticks em toda esta seção — não há duas baterias diferentes
+sendo comparadas por engano.
+
+**A SUA CORREÇÃO DE UNIDADE, e por que ela vale como caso.** Duas constantes
+plausíveis convertiam a mesma unidade (gesto/Tick → gesto/batalha): a média da
+TAXA (`3,72`) e a duração MÉDIA (`50,495`), e a errada (a taxa) dá um resultado
+**~13,6× menor** que a certa (`50,495/3,72 ≈ 13,57`) — e como `n` escala com o
+QUADRADO da constante de conversão, usar a errada faz o `n` parecer **~184×**
+menor do que é (a diferença real entre `n=1` e `n=2.527` observada na rodada
+anterior). Registrado no `CATALOGO.md` como caso novo.
 
 **Esta bateria é posterior ao conserto da iniciativa** (ver a seção 3). Os números
 publicados antes dele, inclusive os da `09`, mudaram todos, e a `09` traz o aviso

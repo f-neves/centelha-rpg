@@ -66,6 +66,7 @@ segunda tinha ficado verde por cegueira.
 | **o fato que ninguém consegue perguntar daqui** | *por gesto:* sondar, inferir, "provavelmente rodou" | dá para trazer a resposta para DENTRO? |
 | **a asserção esvaziada por mudança de contrato** | laço com teto cujo número de iterações muda | esta asserção ainda mede o que o rótulo diz, ou ficou verde por o laço nunca mais bater no caso raro? |
 | **a asserção que imprime ORDINAL ou CONTAGEM cujo denominador é contrato** | ordinal de laço, `i + 1`, `.length` de um array que cresce com a implementação | se um clique passar a valer dez, este número ainda mede alguma coisa? |
+| **a constante de conversão com duas candidatas plausíveis** | converter uma TAXA (por Tick, por segundo, por linha) numa unidade TOTAL, ou vice-versa | esta constante é a MÉDIA da grandeza que multiplica (duração, tamanho), ou é outra estatística da mesma tabela que também "parece" servir? |
 
 **DUAS NOVAS, DE 06/09/2026, ACHADAS NA REVISÃO DO AVANÇO UNIFICADO:** a primeira é o gatilho —
 fica verde, o rótulo continua descrevendo o que deveria medir, e nada acusa a mudança por baixo. A
@@ -145,3 +146,21 @@ lê o harness) — o portão feito para achar a divergência entre os dois lados
 dois lados assimétricos na mesma classe de erro. Corrigido com a mesma alternativa (`\.\.\.`) nos
 dois detectores, e com autoteste que planta um `...L.nome(...)` sintético para os dois lados não
 regredirem em silêncio.
+
+**UM CASO NOVO, DE 06/09/2026, ACHADO PEDINDO A CONVERSÃO INVERSA DE UM `n` DE
+PODER ESTATÍSTICO:** duas constantes convertiam a mesma unidade (gesto por Tick →
+gesto por batalha), e as duas pareciam plausíveis de cabeça: a TAXA média
+(gestos/Tick, `3,72`) e a DURAÇÃO média (Ticks/batalha, `50,495`). Só a segunda
+fecha dimensionalmente (`gesto/Tick × Tick/batalha = gesto/batalha`); a primeira
+não fecha (`gesto/Tick × gesto/Tick` não é `gesto/batalha`), mas o número que ela
+produz (`Δ_total/taxa`) tem a aparência certa — sai um número da ordem certa de
+grandeza, só que errado. **O que torna este caso caro, e não só uma conta errada:**
+o `n` de um teste de poder escala com o QUADRADO da constante de conversão, então
+um erro de `13,6×` na constante virou um erro de `184×` no `n` resultante — a
+diferença entre "a grade já basta" (`n=1`) e "a grade não basta" (`n=2.527`) foi,
+em boa parte, essa escolha de constante, não uma propriedade real do desenho.
+**A pergunta que teria pego isto ANTES de publicar:** a unidade fecha, membro a
+membro, sem cancelar nada por acidente? `gesto/Tick` dividido por `gesto/Tick`
+devolve um número puro, não um `Tick`; a conta só fazia sentido porque os dois
+lados eram gestos, e o "gesto" cancelava escondendo que sobrava `1/Tick` em vez de
+`Tick`.
