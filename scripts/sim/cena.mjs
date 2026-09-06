@@ -179,10 +179,36 @@ export function montarCena(celula, semente) {
         // critério da fila e é atualizado junto com a ação (a mesa grava os
         // dois no mesmo `gravarRelogio`). O laço lia `acao.livre` no lugar
         // dele, o que dá o mesmo número com ação no ar e outro sem ela.
+        //
+        // SOBRESCRITO ABAIXO por `ticksDeEntrada`: fica `0` aqui só como valor
+        // de trabalho enquanto o laço de cima ainda não sabe a iniciativa de
+        // TODAS as peças (`ticksDeEntrada` precisa da lista inteira de uma vez,
+        // e não dá pra chamar peça a peça).
         tick: 0,
         ordinal: ordinal++,
       });
     }
   }
+
+  // A ENTRADA ESCALONADA (balde C do L48, o primeiro item, medido antes de
+  // ligar: 06/09/2026). A régua não é um Tick por peça — é `ticksDeEntrada`,
+  // que olha a iniciativa de TODAS de uma vez e devolve o Tick e o contrapé de
+  // cada uma. Por isso ela roda AQUI, depois do laço que atribui `iniciativa`,
+  // e não dentro dele.
+  //
+  // O ACAO-PLACEHOLDER copia o formato exato da mesa (`grid.astro:5145`):
+  // `{}` para quem entra sem contrapé (a maior iniciativa, e só ela), e
+  // `{ golpes: [], livre: e.tick, contrape: e.penDados, contrapeDesde: e.tick }`
+  // para quem entra atrás. Não é um objeto qualquer: é o que `contrapeDe`
+  // (no `motor.mjs`) vai ler e carregar para a primeira declaração de verdade.
+  const entradas = LIB.ticksDeEntrada(pecas.map((p) => p.iniciativa));
+  for (let i = 0; i < pecas.length; i++) {
+    const e = entradas[i];
+    pecas[i].tick = e.tick;
+    pecas[i].acao = e.penDados
+      ? { golpes: [], livre: e.tick, contrape: e.penDados, contrapeDesde: e.tick }
+      : {};
+  }
+
   return { pecas, escala, mapa: { cols, rows }, celula, semente };
 }

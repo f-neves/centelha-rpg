@@ -244,8 +244,14 @@ function declarar(L, c, cena, log, T, inimigosDe) {
       q: c.pos.q + (c.pos.q - alvo.pos.q) * 4,
       r: c.pos.r + (c.pos.r - alvo.pos.r) * 4,
     };
+    // `contrapeDe` CARREGA O PLACEHOLDER DA ENTRADA (`cena.mjs`, `ticksDeEntrada`)
+    // para a primeira declaração de verdade, do mesmo jeito que a mesa faz em
+    // toda declaração (`grid.astro:6057`, `:8251`, `:8443`). Sem isto, o
+    // contrapé de quem entrou atrasado sumia no instante em que a peça
+    // declarava pela primeira vez.
     c.acao = {
       golpes: [], livre: T + 6, desde: T, aid: `${c.id}-t${T}-f`,
+      ...L.contrapeDe(c.acao),
       mov: { alvo: null, destino, modo: 'corrida', porTick: Math.max(0.5, c.passo.arranque), auto: true },
     };
     c.tick = c.acao.livre;
@@ -253,7 +259,7 @@ function declarar(L, c, cena, log, T, inimigosDe) {
     // A CENA VIRA PERSEGUIÇÃO AQUI, e a leitura se parte em duas a partir do
     // Tick seguinte. Só a primeira fuga conta: a fase é da cena, não da peça.
     log.fugiu(c, T);
-    log.parada('ii', 'fugir', c, T, {});
+    log.parada('ii', 'fugir', c, T, { contrape: L.contrapeEm(c.acao, T) });
     return;
   }
 
@@ -276,6 +282,9 @@ function declarar(L, c, cena, log, T, inimigosDe) {
   let acao = L.declarar(T, an, {
     tipo: (an.golpes > 1 ? c.manobra : 'simples'),
     arma: c.arma, alvo: alvo.id, aid,
+    // `contrapeDe`, mesmo motivo do caminho da fuga logo acima: sem isto o
+    // contrapé de entrada nunca sobrevive à primeira declaração de ataque.
+    ...L.contrapeDe(c.acao),
   });
   acao.golpes = ag.golpes; acao.livre = ag.livre;
   if (viagem > 0) acao.mov = { alvo: alvo.id, modo: 'batalha', porTick, auto: true };
@@ -284,7 +293,10 @@ function declarar(L, c, cena, log, T, inimigosDe) {
   c.tick = acao.livre;
   c.an = an;
   log.parada('iii', 'agenda', c, T, { aid, golpes: ag.golpes, viagem });
-  log.decl(c, T, { aid, alvo: alvo.id, manobra: c.manobra, viagem, golpes: ag.golpes });
+  log.decl(c, T, {
+    aid, alvo: alvo.id, manobra: c.manobra, viagem, golpes: ag.golpes,
+    contrape: L.contrapeEm(acao, T),
+  });
 }
 
 /** UM GOLPE que cai, com a resolução compartilhada de `lance.ts`. */

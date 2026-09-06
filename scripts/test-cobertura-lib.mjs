@@ -108,11 +108,17 @@ const chamadasNaMesa = (nomes, textos) => new Set(
  * O harness recebe o pacote da lib por parâmetro (`L`, `LIB`, `M`) e chama por
  * membro, então aqui a busca é a INVERSA da da mesa: casa `L.nome` e confere
  * contra a lista de exportadas. É a mesma pergunta pelo outro lado do ponto.
+ *
+ * A ALTERNATIVA `\.\.\.` É A MESMA EMENDA de `usa()`, do lado de cá: o
+ * espalhamento `...L.contrapeDe(c.acao)` tem um PONTO na frente de `L`, e o
+ * `[^\w$.]` original excluía ponto — achado ao ligar `contrapeDe` no
+ * `motor.mjs` (06/09/2026): a chamada existia, rodava, e o portão a via como
+ * "não chamada" pela mesma cegueira que já tinha mordido o lado da mesa.
  */
 const chamadasNoHarness = (nomes, textos) => {
   const s = new Set();
   for (const t of textos) {
-    for (const m of t.matchAll(/(?:^|[^\w$.])(?:L|LIB|M)\.([A-Za-z_$][\w$]*)/g)) if (nomes.has(m[1])) s.add(m[1]);
+    for (const m of t.matchAll(/(?:^|[^\w$.]|\.\.\.)(?:L|LIB|M)\.([A-Za-z_$][\w$]*)/g)) if (nomes.has(m[1])) s.add(m[1]);
   }
   return s;
 };
@@ -143,10 +149,10 @@ const importesMortos = (bruto, nomes) => {
  */
 const SO_DA_MESA = [
   'abortar', 'acaoVazia', 'adiaGolpe', 'anatomiaLivre', 'atrasarGesto',
-  'comOverride', 'combateDaMesa', 'contrapeDe', 'contrapeEm', 'ehSimultaneo',
+  'comOverride', 'combateDaMesa', 'ehSimultaneo',
   'fita', 'foraDeHora', 'modoCorre', 'podeSerInterrompido',
   'resumoDaAcao', 'rolaNoSite', 'tetoDaRajada',
-  'ticksDeDeslocamento', 'ticksDeEntrada',
+  'ticksDeDeslocamento',
 ];
 
 /**
@@ -159,10 +165,11 @@ const SO_DA_MESA = [
  */
 const NOS_DOIS = [
   'agendaSimultanea', 'agendar', 'anatomia', 'armaDoCatalogo', 'classeDeTempo',
-  'decideEmValeDepois', 'decisaoAutomatica', 'declarar', 'defesaPerdida',
-  'faseDeQuemVaiAgir', 'faseEm', 'golpeDaAgenda', 'golpeResolvido', 'golpesNoAr',
-  'ordemDaFila', 'passoDoGolpe', 'preparoDe', 'proximoGolpe', 'reprojetarAgenda',
-  'temGesto', 'ticksDeViagem', 'velocidadeDaArma',
+  'contrapeDe', 'contrapeEm', 'decideEmValeDepois', 'decisaoAutomatica',
+  'declarar', 'defesaPerdida', 'faseDeQuemVaiAgir', 'faseEm', 'golpeDaAgenda',
+  'golpeResolvido', 'golpesNoAr', 'ordemDaFila', 'passoDoGolpe', 'preparoDe',
+  'proximoGolpe', 'reprojetarAgenda', 'temGesto', 'ticksDeEntrada',
+  'ticksDeViagem', 'velocidadeDaArma',
 ];
 
 // ============================================================== a execução
@@ -223,9 +230,16 @@ const HARNESS_FALSO = 'const y = L.nosDois(2);';
   const so2 = [...chamadasNaMesa(e.todas, ['const x = nosDois(2);'])]
     .filter((n) => !h.has(n) && e.funcoes.has(n));
   if (so2.length) falhas.push(`autoteste: acusou [${so2}] num corpus sem divergência nenhuma`);
-  // E o espalhamento: `...nome` é uso, e foi o falso positivo do desenho.
+  // E o espalhamento: `...nome` é uso, e foi o falso positivo do desenho,
+  // achado duas vezes (a mesa em 06/09/2026, o harness no mesmo dia ao ligar
+  // `contrapeDe` de verdade: `...L.contrapeDe(c.acao)` tem um ponto antes do
+  // `L`, e o `[^\w$.]` original excluía ponto).
   if (importesMortos("import { nosDois } from '../../lib/combate-tempo';\nconst z = { ...nosDois };", e.todas).length) {
-    falhas.push('autoteste: `...nome` voltou a contar como importe morto');
+    falhas.push('autoteste: `...nome` voltou a contar como importe morto (mesa)');
+  }
+  const hEspalhado = chamadasNoHarness(e.todas, ['const z = { ...L.nosDois(c.acao) };']);
+  if (!hEspalhado.has('nosDois')) {
+    falhas.push('autoteste: `...L.nome` voltou a não contar como chamada do harness');
   }
 }
 

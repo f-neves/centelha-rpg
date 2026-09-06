@@ -30,7 +30,7 @@ export async function carregarLib() {
           defesaPerdida, ordemDaFila, golpesNoAr, golpeResolvido,
           decisaoAutomatica, ticksDeViagem, golpeDaAgenda, penDadosDaRegua,
           passoDoGolpe, decideEmValeDepois, faseDeQuemVaiAgir, preparoDe,
-          agendar, contrapeDe, temGesto, proximoGolpe,
+          agendar, contrapeDe, temGesto, proximoGolpe, ticksDeEntrada, contrapeEm,
         } from './src/lib/combate-tempo';
         export { distanciaHex, caminharHex, vizinhos, alemDe } from './src/lib/hex';
         export { HEX_HASTE, HEX_CORPO_A_CORPO } from './src/lib/alcance';

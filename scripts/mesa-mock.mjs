@@ -36,7 +36,7 @@ import { resumoCombatePC } from '../src/lib/combate-resumo';
 // não ter: `token_visao` era cópia da escrita e o jogador recebia tudo.
 import { distanciaHex } from '../src/lib/hex';
 import { montando, venceu } from '../src/lib/artes-grid';
-import { armaDoCatalogo, classeDeTempo, velocidadeDaArma } from '../src/lib/combate-tempo';
+import { armaDoCatalogo, classeDeTempo, velocidadeDaArma, ticksDeEntrada } from '../src/lib/combate-tempo';
 import { resumoFicha, resumoParaBanco } from '../src/lib/mesa-ficha';
 // A `combate_visao` da migração 27, traduzida uma vez só e conferida contra a
 // migração pelo `test-visao.mjs`. Ver o cabeçalho daquele arquivo.
@@ -364,6 +364,8 @@ if (ESPELHO) {
         mana_max: null, mana_atual: null,
         // A INICIATIVA ROLADA, pela mesma função do harness: é ela que
         // desempata a fila, e os dois lados do espelho precisam da mesma.
+        // `tick` e `acao` ficam de trabalho aqui: `ticksDeEntrada`, logo
+        // abaixo do laço, sobrescreve os dois com a entrada escalonada.
         tick: 0, iniciativa: iniciativaDaPeca(arq, ordinal, ESPELHO.sem),
         acao: {},
         dados: {
@@ -386,6 +388,20 @@ if (ESPELHO) {
         movido_em: new Date(1700000000000 + (ordinal++) * 1000).toISOString(),
       });
     }
+  }
+  // A ENTRADA ESCALONADA, do mesmo jeito que `cena.mjs` (o harness) monta a
+  // dela: `ticksDeEntrada` sobre a MESMA lista de iniciativas, na MESMA ordem.
+  // Sem isto o mock começava toda peça já pronta no Tick 0 — simplificação que
+  // só era inofensiva enquanto NENHUM dos dois lados escalonava a entrada. Ligar
+  // no harness (06/09/2026, o balde C do L48) e não aqui teria feito o espelho
+  // comparar um laço que rola iniciativa com um que não rola.
+  const entradas = ticksDeEntrada(COMBS.map((c) => c.iniciativa));
+  for (let i = 0; i < COMBS.length; i++) {
+    const e = entradas[i];
+    COMBS[i].tick = e.tick;
+    COMBS[i].acao = e.penDados
+      ? { golpes: [], livre: e.tick, contrape: e.penDados, contrapeDesde: e.tick }
+      : {};
   }
 }
 
