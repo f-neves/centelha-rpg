@@ -431,6 +431,48 @@ do golpe que o fez parar: **o cartão daquele golpe some junto com o clique.**
 | **piso, com um cartão por golpe** | **199.238** | **17,0%** | `R:123` |
 | **piso, se a parada abrir todos os golpes do Tick** | **74.207** | **6,3%** | `R:144` |
 
+### Medido em 06/09/2026: o item 3 já ENTREGA o item 5, no mesmo código
+
+**A pergunta era "quanto do item 5 o item 3 já absorve", e a resposta é: os dois
+já estão no mesmo commit, e não faltava construir nada entre eles.**
+`avancarAteParar` (`grid.astro:5710`), ao achar `instanteDeGolpe()`, não abre só
+a folha do golpe que fez o laço parar — ela itera **todas** as peças de pé e
+resolve **todos** os golpes de cada uma com Tick já vencido, um após o outro,
+antes de parar: `for (const c of emPe) {`, `grid.astro:5720`. O item 5 ("a
+parada abre todos os golpes do Tick, e não só um") descrevia exatamente este
+comportamento como refinamento SEPARADO do item 3; o código que foi escrito já
+nasceu com os dois juntos.
+
+**O que isso vale, na tabela de cima:** a linha "cartões que sobram" (125.031,
+10,7%, `R:175`) deixa de ser resíduo. Ela era o preço de abrir só UM golpe por
+parada; com todos abertos, ela some junto com os 74.207 da linha de baixo. **O
+piso de hoje para a classe "aplicar" inteira é zero em produção**, não 74.207:
+o que resta como gesto do mestre não é mais o cartão, é só o clique de ⏭ que
+leva até o Tick (já contado à parte, na linha "o ⏭ que abre uma parada").
+
+**Uma lacuna real, pequena e que se autocorrige:** se uma mordida sem diálogo ou
+uma consulta acontecem no MESMO Tick em que um golpe também vence, o laço já
+retornou por essa razão antes de o `for` de cima rodar de novo para aquele Tick:
+`if (contadorDeMordidas() > mordidasAntes) return;`, `grid.astro:5730` — o cartão
+fica vencido na tela por um instante, e não soma-se um clique extra: o próximo ⏭
+(que o mestre já ia dar para continuar) o resolve na hora. Não é gesto a mais, é
+ordem de exibição.
+
+**"184.034" e "2,87" não são desta bateria.** Eles são de `docs/simulacao/
+resultados/09-bmtlxp622.txt` e `09-bmtlw3e2r.txt` (a mesma leitura, duas cópias),
+de ANTES do conserto da iniciativa que este documento avisa logo na abertura.
+A bateria corrente (`bmtmbdppb`) mede **199.238 golpes, 2,68 por Tick que tem
+golpe** (`R:123`, "O CACHO" do agregado) — mais golpes e uma média um pouco
+menor, o que é coerente com o conserto ter mudado quantos golpes caem no mesmo
+Tick. A conclusão não muda com qual das duas se use: em ambas, a maioria dos
+cartões não seria absorvida por uma parada que abre só um, e em ambas o código
+que existe hoje já abre todos.
+
+**Está no Grid: sim**, desde `55674f1`/`5bd7e8c` (06/09/2026). A linha "está no
+Grid?" dos itens 3 e 5, na tabela da fila abaixo, está desatualizada por isso —
+os dois entraram juntos, no mesmo lote, e não em dois passos como a fila
+planejou.
+
 ### E os 6,3% também não são limite: VER não é CLICAR
 
 **A mesma armadilha dos 61,8%, e quase caí nela.** Escrever que tirar os 74.207 é
@@ -470,11 +512,11 @@ nada além de olhar.
 
 | # | o conserto | o que tira | procedência | está no Grid? |
 |---|---|---:|---|---|
-| 1 | **a folha aceita o dado em vez do total**: a mesa rola na mão e a tela deixa de pedir a soma digitada | **34,0%** · 398.476 | `R:170` para os 34,0%; o gesto é **derivado**: 597.714 − 199.238 (`R:166`), com a repartição dos 3 gestos de `resolver` em 1 de abrir e 2 de digitar vinda de `custo-tela.mjs` | **não** |
-| 2 | **o botão do veredito vira confirmação** | **0 a 17,0%** · até 199.238 | `R:123` para os 199.238. A banda **não tem procedência**, e é esse o ponto: ela é ignorância, não imprecisão | **não** |
-| 3 | **o avanço unificado**: o ⏭ corre até a parada que precisa do mestre e abre a folha do golpe que o fez parar | **32,0%** · 375.005 vira 74.207 | `R:129` para os 375.005 e **`R:144` para os 74.207**, que é o nível SEM-GESTO, medido no agregador desde esta rodada | **não** |
+| 1 | **a folha aceita o dado em vez do total**: a mesa rola na mão e a tela deixa de pedir a soma digitada | **34,0%** · 398.476 | `R:170` para os 34,0%; o gesto é **derivado**: 597.714 − 199.238 (`R:166`), com a repartição dos 3 gestos de `resolver` em 1 de abrir e 2 de digitar vinda de `custo-tela.mjs` | **sim** · `045f491`/`b9d0b01` |
+| 2 | **o botão do veredito vira confirmação** | **0 a 17,0%** · até 199.238 | `R:123` para os 199.238. A banda **não tem procedência**, e é esse o ponto: ela é ignorância, não imprecisão | **o mecanismo sim** (`67fbb29`/`579581b`), **a banda segue sem medir** |
+| 3 | **o avanço unificado**: o ⏭ corre até a parada que precisa do mestre e abre a folha do golpe que o fez parar | **32,0%** · 375.005 vira 74.207 | `R:129` para os 375.005 e **`R:144` para os 74.207**, que é o nível SEM-GESTO, medido no agregador desde esta rodada | **sim** · `55674f1`/`5bd7e8c` |
 | 4 | **a Defesa −4 da Corrida e o contrapé da iniciativa** | sem número | **nenhuma**: sem ocasião nesta bateria e sem instrumento no log | **não** |
-| 5 | **a parada abre todos os golpes do Tick**, e não só um | **10,7%** · 125.031 | `R:175` | **não** |
+| 5 | **a parada abre todos os golpes do Tick**, e não só um | **10,7%** · 125.031 | `R:175` | **sim, no mesmo commit do item 3** (ver "o item 3 já ENTREGA o item 5", acima) |
 | 6 | **o L25**: as quinze bandeiras lidas pelo motor | **zero** para o mestre | · | **não** |
 | 7 | **o avanço MOSTRA o percurso em vez de pedir confirmação**: ver não é clicar | **6,0%** · 71.212 dos 74.207 | `R:144` e `R:126`, e é **derivado**: 74.207 − 2.995 | **não** |
 
