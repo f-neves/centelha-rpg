@@ -139,12 +139,32 @@ if (topo !== sha) {
   console.log(`   git log ${sha.slice(0, 7)}..${origemMain.slice(0, 7)}   diz o quê e de quem.`);
 }
 
+// O QUE MUDOU: a LISTA DE ARQUIVOS sai do diff, e não da memória de quem
+// escreve. A rodada 10 tinha 12 arquivos tocados entre BASE e SHA e a tabela
+// escrita à mão listava 3: a revisora conferiu os outros 9 à mão porque a
+// tabela mentia por omissão, não por erro. O diff não esquece; quem escreve à
+// mão, esquece. A FRASE de cada linha continua manual (o diff não sabe dizer
+// POR QUE um arquivo mudou), só a lista de QUAIS mudaram deixa de ser.
+const arquivosTocados = base
+  ? tenta(() => git(`git diff --name-only ${base}..${sha} -- . ":!docs/simulacao/caixa"`))
+  : null;
+const tabelaOQueMudou = arquivosTocados
+  ? (arquivosTocados.split('\n').filter(Boolean).map((f) => `| \`${f}\` |  |`).join('\n')
+     || '| *(nenhum arquivo fora de `docs/simulacao/caixa/` entre BASE e SHA)* | |')
+  : '| `caminho/do/arquivo` | uma frase |';
+
 const txt = fs.readFileSync(MODELO, 'utf8')
   .replace(/^# Rodada NN · aviso à revisora$/m, `# Rodada ${nn} · aviso à revisora`)
   .replace('BASE  <sha do último commit que a revisora já viu>', `BASE  ${base || '<sha do último commit que a revisora já viu>'}`)
   .replace('SHA   <sha do fim deste trecho>', `SHA   ${sha}`)
-  .replace('TOPO  <sha do topo do main quando este aviso foi escrito>', `TOPO  ${topo}`);
+  .replace('TOPO  <sha do topo do main quando este aviso foi escrito>', `TOPO  ${topo}`)
+  .replace('| `caminho/do/arquivo` | uma frase |', tabelaOQueMudou);
 fs.writeFileSync(arq, txt);
+if (!arquivosTocados) {
+  console.log('\n⚑ sem BASE (worktree da revisora ausente): a tabela "O QUE MUDOU" nasceu'
+    + '\n  com o placeholder do modelo. Preencha a lista de arquivos à mão, com cuidado:'
+    + `\n  é exatamente essa lista que a rodada 10 errou.\n  (dá para conferir com: git diff --name-only <BASE>..${sha})`);
+}
 
 console.log(`\n✓ rodada ${nn} aberta · docs/simulacao/caixa/${nn}-executora.md`);
 console.log(`  BASE ${base || '(preencher à mão)'} · SHA ${sha} · TOPO ${topo}`);
