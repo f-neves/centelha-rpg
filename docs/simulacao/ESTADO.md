@@ -53,6 +53,48 @@ Tick 1, e é isso que a coluna `pico` de paradas/Tick também mostra caindo nas
 células mais cheias (2×8). O agregado inteiro está em
 `docs/simulacao/resultados/09-bmtq8zam1.txt`.
 
+**O resultado é um negativo bem medido, e vale registrar assim: ligar três das oito
+divergências de fidelidade do L48 não moveu a duração média (50,499 → 50,492) nem o
+trabalho do mestre além de 0,5%. A lista das 21 não estava escondendo distorção no
+número que a fila usa.**
+
+**O QUE A DISTRIBUIÇÃO DIZ, e é maior que a média.** 33,9% das batalhas ficam
+idênticas, 12,5% mudam por exatamente 1 Tick, e o resto se espalha de −65 a +65
+Ticks (desvio padrão do delta pareado, `bmtq638zo` contra `bmtq8zam1`, batalha a
+batalha nas 19.200 que terminam nas duas: **11,35 Ticks**, sobre uma duração média
+de ~50 Ticks). Isso não é ruído nem estabilidade: é **média estável sobre variância
+grande**, com um Tick de entrada mudando quem alcança quem primeiro numa perseguição
+e essa mudança amplificando pelo resto da batalha.
+
+Duas consequências, e a segunda muda como se lê tudo o que veio antes:
+
+1. **o número da fila é robusto à fidelidade, e a CÉLULA não é.** As duas células
+   citadas acima se moveram para lados opostos (17,2→19,1 e 30,4→28,1), e qualquer
+   leitura por célula herda essa sensibilidade;
+2. **e isso vale para toda comparação A/B da grade já feita ou por fazer.** Se um
+   Tick de condição inicial produz espalhamento de −65 a +65, o delta de uma
+   bandeira medido numa célula pode ser menor que a sensibilidade da própria célula
+   à condição inicial.
+
+**O tamanho disso, contra o que a grade de comparação de regras (E5) esperava medir:**
+o lado que dá para medir hoje é o desvio do delta entre duas execuções que diferem
+só na condição inicial, **11,35 Ticks por batalha** (calculado acima, com o script
+que soma `.sim/r08` e `.sim/r09` por `(célula, semente)`). **O outro lado da conta
+não existe.** `02-projeto-harness.md` (§ perto de "Um fluxo só, e não cinco por
+finalidade") previa que o piloto mediria também a variância do delta da bandeira
+`margem` nas duas âncoras, para dimensionar o `n` das células de E5 separado do
+resto da grade — e esse piloto **nunca rodou**: não há ocorrência de "variância do
+delta" nem de "margem" em `09-bateria-grande.md`. A única previsão escrita é
+qualitativa (`05-fechamento.md`, "a carga por Tick com o perfil cheio fica a menos
+de um gesto da carga com tudo desligado"), não um número em Ticks por batalha
+comparável ao 11,35 acima. **O que este achado prova, então, não é que o `n` do
+piloto está errado**, é que a fonte de ruído que o piloto vai encontrar é real e
+grande (a mesma dinâmica caótica que move batalhas por dezenas de Ticks com uma
+única mudança de condição inicial), e que medir a variância do delta de `margem`
+antes de rodar a grade inteira de E5 continua sendo tarefa aberta, e não
+formalidade — se o piloto achar um desvio da mesma ordem de grandeza do 11,35 aqui,
+o `n` das células de E5 precisa ser maior do que o resto da grade previu.
+
 **Esta bateria é posterior ao conserto da iniciativa** (ver a seção 3). Os números
 publicados antes dele, inclusive os da `09`, mudaram todos, e a `09` traz o aviso
 disso na §2.4.

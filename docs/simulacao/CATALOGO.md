@@ -131,3 +131,17 @@ forma de cada registro ao ler e recusa qualquer campo ausente que não seja o ú
 conhecido (`paradasSubLado`). Isso tira todo `x.campo || 0` de campo-que-pode-faltar do arquivo por
 construção (são pelo menos dez, sobre cinco campos com leitura múltipla, num total de quarenta
 `\|\| 0` no arquivo) sem precisar tocar em cada um.
+
+**UM SEGUNDO CASO DO PORTÃO QUE CASA POR LITERAL, DE 06/09/2026, E É O MAIS FINO DA FAMÍLIA:**
+o detector de "chamado pelo harness" (`scripts/test-cobertura-lib.mjs`, o próprio instrumento do
+**L48**) usava uma classe de caracteres que excluía um ponto antes de `L`/`LIB`/`M`, e por isso não
+via `...L.contrapeDe(c.acao)` como chamada: o ponto do espalhamento `...` fica exatamente onde a
+classe recusava. **É o MESMO furo, letra por letra**, que já tinha mordido o detector do lado da
+mesa (`usa()`, no mesmo arquivo) numa rodada anterior, e a correção de lá não foi copiada para cá.
+**O que torna este caso diferente dos outros da lista:** nos outros, o portão nasceu depois do
+defeito, para vigiá-lo, e o furo apareceu DENTRO do portão novo. Aqui o furo apareceu duas vezes
+**dentro do MESMO instrumento**, uma vez em cada metade dele (a metade que lê a mesa, a metade que
+lê o harness) — o portão feito para achar a divergência entre os dois lados tinha, ele mesmo, os
+dois lados assimétricos na mesma classe de erro. Corrigido com a mesma alternativa (`\.\.\.`) nos
+dois detectores, e com autoteste que planta um `...L.nome(...)` sintético para os dois lados não
+regredirem em silêncio.

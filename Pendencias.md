@@ -3068,6 +3068,20 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   declarações do Tick 1 nas células mais cheias. Detalhe completo, com a régua da comparação:
   `docs/simulacao/ESTADO.md`, o parágrafo "O QUE A ENTRADA ESCALONADA MUDOU".
 
+  **O espelho quebrou ao ligar isto, e o conserto foi pela raiz, não por contorno.**
+  `scripts/mesa-mock.mjs` já calculava a mesma iniciativa por peça que `cena.mjs` (as duas chamam
+  `iniciativaDaPeca` com a mesma semente), mas nunca escalonava a entrada: o mock ficou **mais
+  generoso que a mesa outra vez**, agora numa regra que ninguém tinha olhado, com `tick: 0`
+  fixo enquanto o harness já entrava em Ticks 1 e 2. Consertado fazendo o mock também chamar
+  `ticksDeEntrada` sobre a mesma lista de iniciativas, e não desligando o escalonamento em
+  `cena.mjs` para os dois voltarem a bater — é a única saída que não cria uma divergência nova.
+  E o mesmo achado abriu um segundo, mais fino: o próprio detector "chamado pelo harness" do
+  L48 (`scripts/test-cobertura-lib.mjs`) tinha o furo de espalhamento que já tinha mordido o
+  detector do lado da mesa numa rodada anterior (`...L.contrapeDe(...)` tem um ponto antes do
+  `L`, e a classe de caracteres excluía ponto) — o instrumento feito para achar a divergência
+  tinha a mesma divergência dentro de si, nos dois lados que ele compara. Registrado no
+  CATALOGO como segundo caso do "portão que casa por literal".
+
   **O que fica aberto:** o elenco de dois arquétipos continua sem vão de iniciativa para o Tick 3
   ou 4 da régua — a FAIXA completa da régua ainda espera o elenco novo, como já estava escrito.
 
