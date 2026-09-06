@@ -4,7 +4,7 @@
 // este script existe para que o aviso não dependa de eu lembrar do formato nem
 // do número da vez. Ver o README de lá.
 //
-//   npm run rodada             · cria o NN-executora.md, com o sha do HEAD dentro
+//   npm run rodada             · cria o NN-executora.md, com BASE/SHA/TOPO preenchidos
 //   npm run rodada -- --enviar · commita o aviso preenchido e diz o sha final
 //
 // A ÁRVORE TEM DE ESTAR LIMPA quando a rodada abre, e o motivo é o mesmo do
@@ -18,6 +18,18 @@
 // mandando ela para o commit DO AVISO, que é o código mais um arquivo de texto:
 // a árvore de código nos dois é byte a byte igual, e ela vê as duas coisas com
 // um checkout só.
+//
+// QUATRO CAMPOS, E NÃO TRÊS, DESDE 06/09/2026. O modelo já pedia BASE/SHA/TOPO
+// desde 04/09, e este script nunca foi atualizado para preenchê-los: ele só
+// sabia substituir um `<SHA>` que o modelo novo nem tem mais, então toda rodada
+// desde então nascia com as TRÊS linhas em prosa ("<sha do último commit que a
+// revisora já viu>" etc.), esperando alguém preencher à mão. Ninguém preencheu,
+// e os avisos pararam de ser escritos: não sumiram, não ficaram por commitar,
+// simplesmente deixaram de nascer, porque a ferramenta que os gera estava
+// desalinhada com o próprio formato que ela mesma escreve. O quarto campo, o
+// SHA DO AVISO, não entra no arquivo (um commit não contém o próprio sha, é
+// por isso que são dois desde sempre): ele só existe depois do `--enviar`, e
+// o `--enviar` já o imprimia; a mudança aqui é chamá-lo pelo nome certo.
 import fs from 'node:fs';
 import path from 'node:path';
 import { execSync } from 'node:child_process';
@@ -27,14 +39,33 @@ const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const CAIXA = path.join(RAIZ, 'docs', 'simulacao', 'caixa');
 const MODELO = path.join(CAIXA, 'MODELO-executora.md');
 const ENVIAR = process.argv.includes('--enviar');
+/** O worktree da revisora, no mesmo layout que `duo.mjs` usa. */
+const REV = path.resolve(RAIZ, '..', 'centelha-revisora');
 
-const git = (c) => execSync(c, { cwd: RAIZ, encoding: 'utf8' }).trim();
+const git = (c, cwd = RAIZ) => execSync(c, { cwd, encoding: 'utf8' }).trim();
+const tenta = (f, p = null) => { try { return f(); } catch { return p; } };
 const morrer = (m) => { console.error(`\n✘ ${m}\n`); process.exit(1); };
 
-/** Os NN dos avisos que já existem, em ordem. */
-const avisos = () => fs.readdirSync(CAIXA)
-  .map((f) => /^(\d{2})-executora\.md$/.exec(f))
+/** Os NN de um papel que já existem na caixa. */
+const nnsDe = (papel) => fs.readdirSync(CAIXA)
+  .map((f) => new RegExp(`^(\\d{2})-${papel}\\.md$`).exec(f))
   .filter(Boolean).map((m) => m[1]).sort();
+/** Só os avisos da executora, para o `--enviar` achar o mais recente. */
+const avisos = () => nnsDe('executora');
+/**
+ * O PRÓXIMO NÚMERO, contando os dois papéis juntos.
+ *
+ * O README manda `NN de 01 em diante, sempre em par: um aviso, uma resposta`.
+ * Contar só `-executora.md` quebrou isso na prática: quando a revisora
+ * respondeu direto (rodadas 05 a 08, sem aviso, ver o cabeçalho delas), o
+ * PRÓXIMO `npm run rodada` teria proposto `05-executora.md` de novo, ao lado
+ * de um `05-revisora.md` de dois dias antes, e os dois pareceriam a mesma
+ * rodada sem nunca terem sido.
+ */
+const proximoNumero = () => {
+  const todos = [...nnsDe('executora'), ...nnsDe('revisora')].map((n) => parseInt(n, 10));
+  return String((todos.length ? Math.max(...todos) : 0) + 1).padStart(2, '0');
+};
 
 if (!fs.existsSync(MODELO)) morrer(`sem modelo em ${path.relative(RAIZ, MODELO)}`);
 
@@ -47,7 +78,11 @@ if (ENVIAR) {
   // O AVISO NÃO PODE SAIR COM O MODELO DENTRO. Um aviso por preencher é pior que
   // aviso nenhum: a revisora dá checkout, lê a tabela de exemplo e revisa um
   // commit sem saber o que ele afirma.
-  const restos = ['| `valor` | o que ele mede |', '| `caminho/do/arquivo` |', '| Dnn | | |'];
+  const restos = [
+    '| `valor` | o que ele mede |', '| `caminho/do/arquivo` |', '| Dnn | | |',
+    '<sha do último commit que a revisora já viu>',
+    '<sha do fim deste trecho>', '<sha do topo do main quando este aviso foi escrito>',
+  ];
   const achado = restos.find((r) => txt.includes(r));
   if (achado) morrer(`o ${nn}-executora.md ainda tem linha do modelo:\n    ${achado}\n  Preencha antes de enviar.`);
 
@@ -61,13 +96,13 @@ if (ENVIAR) {
   }
   git(`git add "${rel}"`);
   git(`git commit -q -m "rodada ${nn} · aviso à revisora" -- "${rel}"`);
-  const sha = git('git rev-parse HEAD');
-  console.log(`\n✓ rodada ${nn} enviada`);
-  console.log(`\n  código revisado: ${git('git rev-parse HEAD~1')}`);
-  console.log(`  commit do aviso: ${sha}   ← é ESTE que a revisora checa out`);
+  const shaDoAviso = git('git rev-parse HEAD');
+  console.log(`\n✓ rodada ${nn} enviada · os quatro campos:`);
+  console.log(`\n  sha de trabalho (SHA): ${git('git rev-parse HEAD~1')}`);
+  console.log(`  sha do aviso:          ${shaDoAviso}   ← é ESTE que a revisora checa out`);
   console.log('\n  (os dois têm a MESMA árvore de código: o commit do aviso só');
   console.log(`   acrescenta ${rel})`);
-  console.log(`\n  passe para a revisora:\n\n    git -C <worktree> fetch && git -C <worktree> checkout ${sha}\n`);
+  console.log(`\n  passe para a revisora:\n\n    git -C <worktree> fetch && git -C <worktree> checkout ${shaDoAviso}\n`);
   process.exit(0);
 }
 
@@ -80,18 +115,38 @@ if (sujo) {
     + '\n  dá checkout NELE: o que não estiver commitado não existe para ela.');
 }
 
-const anteriores = avisos();
-const nn = String((anteriores.length ? parseInt(anteriores[anteriores.length - 1], 10) : 0) + 1)
-  .padStart(2, '0');
+const nn = proximoNumero();
 const arq = path.join(CAIXA, `${nn}-executora.md`);
 if (fs.existsSync(arq)) morrer(`${nn}-executora.md já existe`);
 
 const sha = git('git rev-parse HEAD');
+
+// BASE: o HEAD do worktree da revisora É o último commit que ela já viu, POR
+// CONSTRUÇÃO — é o commit em que o `checkout` do aviso anterior a deixou, e
+// ela só lê o que está congelado ali. Se o worktree não existe (clone sem a
+// frente de revisão do lado), a linha fica em prosa para alguém preencher.
+const base = tenta(() => git('git rev-parse HEAD', REV));
+if (!base) console.log(`\n⚑ sem worktree da revisora em ${path.relative(RAIZ, REV)}: preencha BASE à mão.`);
+
+// TOPO: compara o HEAD local com `origin/main`, depois de buscar. Iguais, o
+// TOPO é o próprio SHA (o trecho é o main inteiro desde a BASE); diferentes,
+// alguém empurrou depois deste commit, e o TOPO aponta pra lá.
+tenta(() => git('git fetch --quiet'));
+const origemMain = tenta(() => git('git rev-parse origin/main'));
+const topo = !origemMain || origemMain === sha ? sha : origemMain;
+if (topo !== sha) {
+  console.log(`\n⚑ origin/main (${origemMain.slice(0, 7)}) está à frente deste commit (${sha.slice(0, 7)}):`);
+  console.log(`   git log ${sha.slice(0, 7)}..${origemMain.slice(0, 7)}   diz o quê e de quem.`);
+}
+
 const txt = fs.readFileSync(MODELO, 'utf8')
   .replace(/^# Rodada NN · aviso à revisora$/m, `# Rodada ${nn} · aviso à revisora`)
-  .replace(/<SHA>/g, sha);
+  .replace('BASE  <sha do último commit que a revisora já viu>', `BASE  ${base || '<sha do último commit que a revisora já viu>'}`)
+  .replace('SHA   <sha do fim deste trecho>', `SHA   ${sha}`)
+  .replace('TOPO  <sha do topo do main quando este aviso foi escrito>', `TOPO  ${topo}`);
 fs.writeFileSync(arq, txt);
 
 console.log(`\n✓ rodada ${nn} aberta · docs/simulacao/caixa/${nn}-executora.md`);
-console.log(`  código a revisar: ${sha}`);
-console.log('\n  Preencha as seis seções e depois:  npm run rodada -- --enviar');
+console.log(`  BASE ${base || '(preencher à mão)'} · SHA ${sha} · TOPO ${topo}`);
+console.log('\n  Preencha as seis seções (BASE/SHA/TOPO já vieram prontos) e depois:');
+console.log('  npm run rodada -- --enviar');
