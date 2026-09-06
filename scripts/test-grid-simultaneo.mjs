@@ -116,6 +116,11 @@ async function cena(br, url) {
       modo: (document.getElementById('dc-mov-modo') || {}).value || '',
       auto: !!(document.getElementById('dc-mov-auto') || {}).checked,
       tickDoGolpe: cai ? parseInt(cai[1], 10) : null,
+      // O PASSO DESTA PEÇA, em m/Tick: sai do próprio `dc-mov-vel`, que a
+      // caixa já preenche com `passoNoModo(atacante, 'batalha')`. É o número
+      // que a cena precisa para provar que a distância andada é ISTO vezes os
+      // Ticks avançados, e não um chute.
+      porTick: parseFloat(document.getElementById('dc-mov-vel')?.value || '0') || 0,
       tempo,
     };
   });
@@ -151,7 +156,7 @@ async function cena(br, url) {
   }
   const distAntes = Math.hypot(antes.x - alvoPos.x, antes.y - alvoPos.y);
   const ticks = [];
-  let posMudou = false;
+  const antesLog = await p.evaluate(() => (window.__SB?.tabelas?.mesa_arenas?.[0]?.log || []).length);
   for (let i = 0; i < 30; i++) {
     const st = await p.evaluate(() => ({
       tick: parseInt(document.getElementById('ini-tk')?.textContent || '0', 10),
@@ -162,8 +167,6 @@ async function cena(br, url) {
     if (st.vencido || !st.ligado) break;
     await p.click('#ini-prox');
     await espera(650);
-    const agora = await rectDe(p, '#gr-tokens .gr-token[data-c="c002"]');
-    if (agora && (Math.abs(agora.x - antes.x) > 2 || Math.abs(agora.y - antes.y) > 2)) posMudou = true;
   }
   // O CONTRATO MUDOU EM 06/09/2026: o ⏭ deixou de andar um Tick por clique e
   // passou a correr até a PARADA REAL (avanço unificado). O par que substitui
@@ -173,7 +176,31 @@ async function cena(br, url) {
   ok(ticks.length === 2 && ticks[0] === 0 && ticks[1] === decl.tickDoGolpe,
     `o relógio anda até a parada real e para NELA, sem correr por cima (${ticks.join(' → ')}`
     + `, golpe agendado no ${decl.tickDoGolpe})`);
-  ok(posMudou, 'a peça declarada ANDA pelo mapa a cada avanço: movimento gradual, não teleporte');
+  // "posMudou" COMPARAVA SEMPRE CONTRA O MESMO "antes" (achado da revisão de
+  // 06/09/2026): com o clique único do avanço unificado, isso deixou de medir
+  // "anda gradualmente" e passou a medir a MESMA coisa que a asserção seguinte
+  // ("anda na direção do alvo") mede: um teleporte direto até a posição de N
+  // Ticks passa nas duas igual. A distinção volta lendo o REGISTRO da mesa
+  // (`window.__SB...log`, o mesmo canal que outras cenas deste arquivo usam):
+  // cada passo real grava a própria linha ("… avança Xm …"), e o número de
+  // linhas prova que houve mais de um passo, não um pulo só.
+  const registroMov = await p.evaluate((desde) => (window.__SB?.tabelas?.mesa_arenas?.[0]?.log || [])
+    .slice(desde).map((l) => l.txt || ''), antesLog);
+  const passos = registroMov
+    .map((t) => (t.match(/(?:avança|atravessa)[^\d]*([\d.]+)\s*m/) || [])[1])
+    .filter(Boolean).map(Number);
+  const distAndada = passos.reduce((a, b) => a + b, 0);
+  const nTicks = decl.tickDoGolpe;
+  const esperado = decl.porTick * nTicks;
+  ok(passos.length >= 2,
+    `o registro guarda um passo por Tick, não um pulo só (${passos.length} passo(s): ${passos.join(', ')}m)`);
+  // A ÚLTIMA PASSADA PODE SER MAIS CURTA: `caminharHex` para no alcance, e a
+  // agenda não promete que o Tick do golpe caia exatamente no fim de um passo
+  // inteiro. O que não pode acontecer é passar de `passo × Ticks avançados`,
+  // nem ficar mais de um passo inteiro abaixo dele.
+  ok(distAndada > 0 && distAndada <= esperado + 0.05 && distAndada >= esperado - decl.porTick - 0.05,
+    `a distância andada bate com passo × Ticks avançados (${distAndada.toFixed(1)}m de até `
+    + `${decl.porTick}×${nTicks} = ${esperado.toFixed(1)}m)`);
   const depois = await rectDe(p, '#gr-tokens .gr-token[data-c="c002"]');
   const distDepois = Math.hypot(depois.x - alvoPos.x, depois.y - alvoPos.y);
   ok(distDepois < distAntes, `e anda NA DIREÇÃO do alvo (${Math.round(distAntes)}px → ${Math.round(distDepois)}px)`);
@@ -736,16 +763,29 @@ async function cenaInvestidaUmaVez(br, url) {
 
   // 3. O TICK TIRA A CONDICAO quando o Preparo acaba. Sem isto ela ficaria
   //    grudada para sempre, penalizando em silencio.
-  let saiu = null;
+  //
+  // "saiu" ERA O ORDINAL DO CLIQUE, E NÃO O TICK (achado da revisão de
+  // 06/09/2026): com o avanço unificado, UM clique já corre até a parada real,
+  // então `saiu` dava sempre 1, em toda execução — o "quando" saiu da
+  // medição, e um teste que passasse a condição sobrevivendo três Ticks a mais
+  // passaria igual, porque nada media o NÚMERO do Tick. O conserto compara o
+  // Tick em que a marca sumiu com o Tick de fim do Preparo que a própria cena
+  // declarou (`decl.tick`, "golpe cai no Tick N"), e não com a posição no
+  // laço.
+  let tickSaida = null;
   for (let i = 0; i < 8; i++) {
     const st = await p.evaluate(() => !!document.getElementById('ini-prox')?.disabled);
     if (st) break;
     await p.click('#ini-prox');
     await espera(700);
     const agora = await condsDe('c002');
-    if (!agora.some((k) => k.startsWith('investindo'))) { saiu = i + 1; break; }
+    if (!agora.some((k) => k.startsWith('investindo'))) {
+      tickSaida = await p.evaluate(() => parseInt(document.getElementById('ini-tk')?.textContent || '0', 10));
+      break;
+    }
   }
-  ok(saiu != null, `e o relogio TIRA a marca quando o Preparo acaba (saiu no ${saiu}o avanco)`);
+  ok(tickSaida != null && tickSaida === decl.tick,
+    `e o relogio TIRA a marca exatamente quando o Preparo acaba (saiu no Tick ${tickSaida}, fim do Preparo no ${decl.tick})`);
 
   ok(erros.length === 0, `nenhum erro de pagina (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
   await p.close();
@@ -830,19 +870,29 @@ async function cenaCondicaoQueVence(br, url) {
   const idMao = maoNova[0]?.id;
 
   // ---- 3: o relogio anda ----
-  let voltas = 0;
+  //
+  // "voltas" ERA O ORDINAL DO CLIQUE, MESMA FORMA DA INVESTIDA (achado da
+  // revisão de 06/09/2026): com o avanço unificado um clique já corre até a
+  // parada real, então `voltas` dava 1 sempre que o prazo vencesse dentro do
+  // primeiro avanço, e o "quando" saiu da medição outra vez. O conserto e
+  // igual: compara o Tick da queda com o `ate` que a condicao ja trazia
+  // (`presaAntes`), e nao com a posicao no laco.
+  const ateAlvo = presaAntes.find((k) => k.id === 'imobilizado')?.ate ?? null;
+  let tickQueda = null;
   for (let i = 0; i < 6; i++) {
     if (await p.evaluate(() => !!document.getElementById('ini-prox')?.disabled)) break;
     await p.click('#ini-prox');
     await espera(800);
-    voltas = i + 1;
-    if (!temCond(await cru('c001'), 'imobilizado')) break;
+    if (!temCond(await cru('c001'), 'imobilizado')) {
+      tickQueda = await p.evaluate(() => parseInt(document.getElementById('ini-tk')?.textContent || '0', 10));
+      break;
+    }
   }
 
   // ---- 4: O PAR ----
   const presaDepois = await cru('c001');
-  ok(!temCond(presaDepois, 'imobilizado'),
-    `a condicao COM prazo caiu quando o prazo chegou (${voltas} avanco(s) · sobrou ${
+  ok(!temCond(presaDepois, 'imobilizado') && tickQueda != null && tickQueda === ateAlvo,
+    `a condicao COM prazo caiu exatamente no Tick do \`ate\` (caiu no ${tickQueda}, ate era ${ateAlvo} · sobrou ${
       presaDepois.map((k) => k.id).join(', ') || 'nada'})`);
   const maoDepois = await cru('c002');
   ok(idMao && temCond(maoDepois, idMao),
@@ -933,6 +983,84 @@ async function cenaAvancoParaSozinho(br, url) {
   await p.close();
 }
 
+/**
+ * A REDE (item (a) do avanço unificado) É OBSERVÁVEL, MAS NUNCA FOI OBSERVADA
+ * ACESA (achado da revisão de 06/09/2026): a única asserção que a toca, em
+ * `cenaAvancoParaSozinho`, é `tetoAceso === 0`. Uma rede que nunca dispara
+ * passa nessa conta para sempre, por não existir, não por estar correta — e
+ * ninguém tinha como saber se `window.__AVANCO_TETO_ACESO` de fato incrementa
+ * quando deveria.
+ *
+ * O CONSERTO É BARATO: `TETO_AVANCO_SEM_PARADA` lê `?tetoAvanco=N` da URL
+ * (`grid.astro`), então esta cena baixa o teto para 2 e declara um
+ * deslocamento puro (sem golpe) longo o bastante para levar bem mais que 2
+ * Ticks — a peça segue com `.mov` em curso, `cenaAssentada()` continua falsa
+ * a cada Tick, e o laço só para pelo teto. Prova as DUAS metades da rede: o
+ * contador sobe (ela realmente acende quando deveria) e o laço realmente para
+ * (o relógio não passa de `tetoAvanco` Ticks, e o clique não trava a aba).
+ */
+async function cenaTetoForcado(br, url) {
+  console.log('\n· a rede do avanço (item a): forçada a acender, e provada acesa');
+  const p = await br.newPage();
+  await p.setViewport({ width: 1400, height: 950 });
+  const erros = [];
+  p.on('pageerror', (e) => erros.push(e.message));
+  await p.goto(`${url}/mesa/grid?id=${MESA}&bench=12&cols=24&rows=16&nevoa=0&tempo=simultaneo&tetoAvanco=2`,
+    { waitUntil: 'networkidle0', timeout: 60000 });
+  await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
+  await espera(700);
+
+  // C003, E NÃO C002: o `bench=12` semeia a maioria das peças já com um golpe
+  // em andamento (achado ao depurar esta cena) — só as peças com a condição
+  // `cego` (c000, c003, c006, c009) nascem LIVRES, e só uma peça livre abre a
+  // caixa de deslocamento solto (`moverSimultaneo`, `grid.astro:5878`); as
+  // outras caem direto em `porNoMapa`, sem diálogo nenhum (`grid.astro:5879`,
+  // dentro de `moverSimultaneo`).
+  //
+  // O CANTO LIVRE MAIS LONGE do palco (a mesma técnica da cena 1, item 5): no
+  // passo padrão (modo `batalha`), chegar lá exige muito mais que 2 Ticks,
+  // então a cena nunca assenta antes do teto.
+  const solta = await p.evaluate(async () => {
+    const t = document.querySelector('#gr-tokens .gr-token[data-c="c003"]');
+    if (!t) return { caixa: null };
+    const pal = document.getElementById('gr-palco').getBoundingClientRect();
+    const r = t.getBoundingClientRect();
+    const em = (el, tp, x, y) => el.dispatchEvent(new PointerEvent(tp, {
+      bubbles: true, clientX: x, clientY: y, pointerId: 1 }));
+    const fx = r.left < pal.left + pal.width / 2 ? pal.right - 90 : pal.left + 90;
+    const fy = r.top < pal.top + pal.height / 2 ? pal.bottom - 90 : pal.top + 90;
+    em(t, 'pointerdown', r.left + r.width / 2, r.top + r.height / 2);
+    em(document, 'pointermove', fx, fy);
+    em(document, 'pointerup', fx, fy);
+    await new Promise((x) => setTimeout(x, 1100));
+    const dlg = document.getElementById('mov-dlg');
+    const caixa = dlg?.open ? 'mov-dlg' : null;
+    if (caixa) { document.getElementById('mv-ok').click(); await new Promise((x) => setTimeout(x, 900)); }
+    return { caixa };
+  });
+  ok(solta.caixa === 'mov-dlg', `soltar num canto livre e longe abre a caixa de deslocamento (caixa: ${solta.caixa})`);
+  if (solta.caixa !== 'mov-dlg') { await p.close(); return; }
+
+  const antes = await p.evaluate(() =>
+    parseInt(document.getElementById('ini-tk')?.textContent || '0', 10));
+  const t0 = Date.now();
+  await p.click('#ini-prox');
+  await espera(1200);
+  const dt = Date.now() - t0;
+  const depois = await p.evaluate(() =>
+    parseInt(document.getElementById('ini-tk')?.textContent || '0', 10));
+  const tetoAceso = await p.evaluate(() => window.__AVANCO_TETO_ACESO?.() ?? null);
+
+  ok(dt < 5000, `o clique NÃO trava com o teto baixado: voltou em ${dt} ms`);
+  ok(depois === antes + 2,
+    `e o laço realmente PARA no teto (2), sem correr mais Ticks (${antes} → ${depois})`);
+  ok(tetoAceso === 1,
+    `a REDE (a) acende quando deveria: o contador sobe de 0 para 1 (leu ${tetoAceso})`);
+
+  ok(erros.length === 0, `nenhum erro de pagina (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
+  await p.close();
+}
+
 const dev = await subirDev({ config: 'astro.bancada.mjs' });
 const br = await puppeteer.launch({ executablePath: NAV, headless: 'new', args: ['--no-sandbox'] });
 try {
@@ -942,6 +1070,7 @@ try {
   await cenaInvestidaUmaVez(br, dev.url);
   await cenaCondicaoQueVence(br, dev.url);
   await cenaAvancoParaSozinho(br, dev.url);
+  await cenaTetoForcado(br, dev.url);
 } finally {
   await br.close();
   await dev.parar();

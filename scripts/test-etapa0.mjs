@@ -29,8 +29,17 @@ let PASSOU = 0; const FALHAS = [];
 const ok = (c, m) => { if (c) { PASSOU++; console.log('  ✓ ' + m); } else { FALHAS.push(m); console.log('  ✗ ' + m); } };
 const espera = (ms) => new Promise((r) => setTimeout(r, ms));
 
-/** Abre a cena, anda N Ticks e devolve o despejo. */
-async function correr(br, url, query, ticks = 6) {
+/**
+ * Abre a cena, clica "⏭" `cliques` vezes e devolve o despejo.
+ *
+ * O PARÂMETRO SE CHAMAVA `ticks` E CONTAVA CLIQUES (achado da revisão de
+ * 06/09/2026): "um clique, um Tick" era verdade antes do avanço unificado.
+ * Hoje, em `?tempo=simultaneo`, cada clique de "⏭" pode rodar VÁRIOS Ticks
+ * internamente até achar uma parada real — então `cliques` continua sendo o
+ * número de vezes que se aperta o botão, mas não é mais o número de Ticks que
+ * a cena percorre, e o nome antigo mentia isso.
+ */
+async function correr(br, url, query, cliques = 6) {
   const p = await br.newPage();
   await p.setViewport({ width: 1400, height: 950 });
   const erros = [];
@@ -41,7 +50,7 @@ async function correr(br, url, query, ticks = 6) {
   await espera(700);
   // ROLAR A INICIATIVA é o que faz a cena tocar em dado. Sem isto o avanço de
   // Tick é pura aritmética de agenda, e uma semente que não pegasse passaria
-  // despercebida: os seis Ticks sairiam idênticos de qualquer jeito.
+  // despercebida: os Ticks sairiam idênticos de qualquer jeito.
   await p.evaluate(() => document.getElementById('ini-rolar')?.click());
   await p.waitForSelector('dialog.ui-dlg[open] .ui-dlg-ok', { timeout: 15000 });
   await p.evaluate(() => document.querySelector('dialog.ui-dlg[open] .ui-dlg-ok').click());
@@ -52,7 +61,8 @@ async function correr(br, url, query, ticks = 6) {
   // folga nesta máquina e não terá numa mais lenta nem numa cena maior, e o dia
   // em que um clique cair antes de o avanço anterior terminar o teste falha
   // parecendo não determinismo. Aí alguém culpa a semente.
-  for (let i = 0; i < ticks; i++) {
+  const tickInicial = parseInt((await p.$eval('#ini-tk', (e) => e.textContent)) || '0', 10);
+  for (let i = 0; i < cliques; i++) {
     const antes = await p.$eval('#ini-tk', (e) => e.textContent);
     await p.evaluate(() => document.getElementById('ini-prox')?.click());
     await p.waitForFunction(
@@ -60,9 +70,10 @@ async function correr(br, url, query, ticks = 6) {
       { timeout: 15000, polling: 16 }, antes,
     );
   }
+  const tickFinal = parseInt((await p.$eval('#ini-tk', (e) => e.textContent)) || '0', 10);
   const d = await p.evaluate(() => (window).__DESPEJO || null);
   await p.close();
-  return { despejo: d, erros };
+  return { despejo: d, erros, deltaTicks: tickFinal - tickInicial };
 }
 
 /** A assinatura de acaso de uma corrida: as iniciativas, que são os primeiros dados da cena. */
@@ -83,14 +94,23 @@ try {
   ok(!!a.despejo, 'window.__DESPEJO existe quando a URL pede');
   ok(a.despejo?.semente === 1234, `o despejo registra a semente usada (${a.despejo?.semente})`);
   ok(a.despejo?.semeado === true, 'e registra que a fonte de acaso está semeada');
-  ok((a.despejo?.ticks || []).length >= 5, `um registro por Tick (${a.despejo?.ticks?.length} em 6 cliques)`);
+  // CONTAGEM DE TICKS, E NÃO DE CLIQUES (achado da revisão de 06/09/2026):
+  // `>= 5` sobre `ticks.length` só media "pelo menos alguns" quando um clique
+  // valia um Tick. Hoje um clique pode valer muitos, e `ticks.length` cresce
+  // sozinho por isso: o `>= 5` passava mesmo que metade dos Ticks reais não
+  // tivesse virado registro, porque os Ticks extras enchiam a conta por cima
+  // do buraco. A igualdade com `deltaTicks` (o relógio antes e depois, lido de
+  // `#ini-tk`) fecha o buraco: exige um registro por Tick de verdade, nem mais
+  // nem menos.
+  ok((a.despejo?.ticks || []).length === a.deltaTicks,
+    `um registro por Tick, nem mais nem menos (${a.despejo?.ticks?.length} para ${a.deltaTicks} Tick(s) em 6 cliques)`);
   const t0 = a.despejo?.ticks?.[0];
   ok((t0?.pecas || []).length > 1, `o Tick traz as peças da cena (${t0?.pecas?.length})`);
   ok(t0?.pecas?.every((p) => p.id && 'fase' in p && 'defesaPerdida' in p && 'q' in p),
     'e cada peça traz id, fase, Defesa perdida e posição');
   ok(t0?.fila?.length === t0?.pecas?.length, 'a fila do Tick tem o mesmo tamanho da lista de peças');
   ok(a.despejo?.erros === 0, `nenhum Tick falhou no despejo (${a.despejo?.erros})`);
-  ok(a.despejo?.descartados === 0, `e nada foi descartado pelo teto em 6 Ticks (${a.despejo?.descartados})`);
+  ok(a.despejo?.descartados === 0, `e nada foi descartado pelo teto em ${a.deltaTicks} Tick(s) (${a.despejo?.descartados})`);
 
   // ---- 2: a mesma semente repete ----
   const b = await correr(br, url, 'semente=1234&despejo=1');
@@ -98,7 +118,7 @@ try {
   ok(!!sa, `a assinatura de acaso sai da cena (${(sa || '').slice(0, 46)}…)`);
   ok(sa === sb, 'a MESMA semente dá a mesma sequência de dados em duas cargas');
   ok(JSON.stringify(a.despejo?.ticks) === JSON.stringify(b.despejo?.ticks),
-    'e o despejo inteiro dos 6 Ticks é idêntico, campo por campo');
+    `e o despejo inteiro dos ${a.deltaTicks} Tick(s) é idêntico, campo por campo`);
 
   // ---- 3: semente diferente, cena diferente ----
   const c = await correr(br, url, 'semente=99&despejo=1');

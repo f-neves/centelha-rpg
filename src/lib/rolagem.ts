@@ -25,6 +25,13 @@ export interface Rolada {
   /** Cada dado, na ordem em que caiu. A mesa quer ver, e não só o total. */
   rolls: number[];
   total: number;
+  /**
+   * `rolls.length` bate com o número de dados que a EXPRESSÃO pede. Só
+   * `roladaManual` checa isto (quem chama `rolarExpr` sempre rola o número
+   * certo); existe para marcar o campo quando o hábito antigo de digitar o
+   * TOTAL pronto (e não as faces) volta sem avisar ninguém.
+   */
+  bateContagem?: boolean;
 }
 
 /**
@@ -86,10 +93,18 @@ export function roladaManual(texto: string, expr: string, extraFlat = 0): Rolada
   const rolls = (String(texto || '').match(/-?\d+/g) || []).map(Number);
   if (!rolls.length) return null;
   if (rolls.length === 1 && !/\d*d6/i.test(String(expr || ''))) {
-    return { dados: 0, flat: 0, rolls: [], total: rolls[0] };
+    return { dados: 0, flat: 0, rolls: [], total: rolls[0], bateContagem: true };
   }
   const flat = flatDeExpr(expr) + extraFlat;
-  return { dados: rolls.length, flat, rolls, total: rolls.reduce((a, b) => a + b, 0) + flat };
+  // QUANTOS DADOS A EXPRESSÃO PEDE, para marcar o campo quando o número de
+  // faces digitadas não bate: é o sinal do hábito antigo (digitar o TOTAL já
+  // somado) voltando, e ele soma como se fosse UMA face sem avisar ninguém.
+  const dadosExpr = (String(expr || '').match(/(\d*)d6/gi) || [])
+    .reduce((a, m) => a + (parseInt(m, 10) || 1), 0);
+  return {
+    dados: rolls.length, flat, rolls, total: rolls.reduce((a, b) => a + b, 0) + flat,
+    bateContagem: rolls.length === dadosExpr,
+  };
 }
 
 /**

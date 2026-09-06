@@ -1735,6 +1735,9 @@ const SETAS = [
   .al-vered { flex: 1 1 100%; font-size: var(--fs-micro); }
   .al-vered .ok { color: var(--accent-texto); font-weight: 700; }
   .al-vered .ruim { color: #cf3327; }
+  /* O CAMPO DE DADO, quando o número de faces digitadas não bate com o que a
+     arma pede: o sinal do hábito antigo (digitar o total pronto) voltando. */
+  .aviso-contagem { outline: 2px solid #cf3327; }
   /* O RASPÃO é a terceira cor, e ela é o meio-termo de propósito: dourado, nem
      o verde do acerto nem o vermelho do erro. Errar por pouco não é errar de
      tudo, e a linha tem de dizer isso sem que a mesa leia a frase. */
@@ -5633,8 +5636,17 @@ const SETAS = [
    * 50 é generoso para qualquer trajeto ou espera de mesa de verdade, e curto
    * o bastante para nunca travar a aba enquanto se descobre por que a parada
    * por cena assentada (item (b)) não pegou aquele caso.
+   *
+   * `?tetoAvanco=N` BAIXA O TETO PARA TESTE (achado da revisão de 06/09/2026):
+   * sem um jeito de FORÇAR a rede a acender, a única asserção que a bancada
+   * tinha era `tetoAceso === 0`, e uma rede que nunca dispara passa nela para
+   * sempre por não existir, não por estar correta. Em uso normal o parâmetro
+   * não vem na URL e o teto continua 50.
    */
-  const TETO_AVANCO_SEM_PARADA = 50;
+  const TETO_AVANCO_SEM_PARADA = (() => {
+    const n = Number(PARAMS.get('tetoAvanco'));
+    return Number.isFinite(n) && n > 0 ? Math.floor(n) : 50;
+  })();
 
   /**
    * QUANTAS VEZES A REDE ACENDEU NESTA ABA, exposto em `window` de propósito.
@@ -9296,6 +9308,10 @@ let roladoDano = '';
       const rd = roladaManual(totalInp.value, ra?.ataque || '0d6', ajAtq.flat);
       if (rd) { rolado = descreverRolada(rd); (el('al-pool') as HTMLElement).textContent = rolado; }
       else { rolado = ''; pintarPoolAcerto(); }
+      // MARCA O CAMPO quando o número de faces digitadas não bate com o que a
+      // arma pede: é o hábito antigo (digitar o TOTAL pronto) voltando, e sem
+      // isto ele soma como se o total fosse UMA face, calado.
+      totalInp.classList.toggle('aviso-contagem', !!rd && rd.bateContagem === false);
       pintarVeredito();
     };
     modInp.oninput = pintarVeredito;
@@ -9304,6 +9320,7 @@ let roladoDano = '';
       const rd = roladaManual(dnInp.value, ra?.dano || '0d6', 0);
       if (rd) { roladoDano = descreverRolada(rd); (el('al-dn-pool') as HTMLElement).textContent = roladoDano; }
       else { roladoDano = ''; pintarPoolDano(); }
+      dnInp.classList.toggle('aviso-contagem', !!rd && rd.bateContagem === false);
       pintarDano();
     };
     dnTipo.onchange = pintarDano;

@@ -64,8 +64,22 @@ segunda tinha ficado verde por cegueira.
 | **o portão nunca visto vermelho** | portão novo, gate, `--check` | eu já VI este vermelho? |
 | **a afirmação contra afirmação** | *por gesto:* decidir cortar alguma coisa | isto virou PROIBIÇÃO OBSERVÁVEL, ou só prosa? |
 | **o fato que ninguém consegue perguntar daqui** | *por gesto:* sondar, inferir, "provavelmente rodou" | dá para trazer a resposta para DENTRO? |
+| **a asserção esvaziada por mudança de contrato** | laço com teto cujo número de iterações muda | esta asserção ainda mede o que o rótulo diz, ou ficou verde por o laço nunca mais bater no caso raro? |
+| **a asserção que imprime ORDINAL ou CONTAGEM cujo denominador é contrato** | ordinal de laço, `i + 1`, `.length` de um array que cresce com a implementação | se um clique passar a valer dez, este número ainda mede alguma coisa? |
 
-**São 30**, e a contagem é do dia em que o arquivo nasceu (nasceu com 25, fechou o primeiro dia
+**DUAS NOVAS, DE 06/09/2026, ACHADAS NA REVISÃO DO AVANÇO UNIFICADO:** a primeira é o gatilho —
+fica verde, o rótulo continua descrevendo o que deveria medir, e nada acusa a mudança por baixo. A
+segunda é a régua para não recair nela: quando a contagem É a medição, afirme a contagem; quando
+não é, o laço é espera, e espera não reporta ordinal como se fosse achado.
+
+**E O RECORTE DE UMA VARREDURA PARA ESTA FAMÍLIA, porque é o que a torna repetível:** o raio do
+avanço unificado não é o ARQUIVO nem a FORMA do código, é a QUERY da cena. Uma cena cujo `goto()`
+não pede `tempo=simultaneo` cai no `else` de `SIML()` (o modo antigo) e não sentiu a mudança de
+contrato nenhuma, mesmo tendo a MESMA forma de laço e o mesmo `dica`/`.title` que as cenas
+afetadas. `test-grid.mjs:2407` é a forma exata, e é falso positivo por isso: quem varrer de novo
+por esta família olha o `goto` da cena antes do laço, não o laço sozinho.
+
+**São 32**, e a contagem é do dia em que o arquivo nasceu (nasceu com 25, fechou o primeiro dia
 com 29 e ganhou mais uma no dia seguinte, o que é o argumento contra citá-la) · ela não é para ser
 citada em instrução nenhuma, pelo motivo escrito lá em cima.
 

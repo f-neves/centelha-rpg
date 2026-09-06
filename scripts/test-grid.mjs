@@ -2532,16 +2532,22 @@ async function cenaQuaseAcerto(br, url) {
     // o total pronto, guarda a FACE que a mesa digitou, e a folha soma com o
     // bônus fixo da arma por cima (`roladaManual`). Escrever `v` direto não
     // produz mais o total `v` — produz `v + F`, com `F` o bônus fixo da arma
-    // que este `input` não conhecia antes. CALIBRA-SE UMA VEZ, digitando uma
-    // face conhecida (0) e lendo o "erra por" que ela produziu: dele sai `F`,
-    // e todo `digitarTotal` seguinte escreve `alvo − F` para acertar o total
-    // exato que o teste quer, do mesmo jeito que sempre quis.
-    const erraPorDe = (txt) => parseInt((txt.match(/erra por (\d+)/) || [])[1] || '', 10);
+    // que este `input` não conhecia antes.
+    //
+    // A CALIBRAÇÃO NÃO PODE LER "erra por" (achado da revisão de 06/09/2026):
+    // `erraPor` é `def − soma + 1`, a MESMA conta que as asserções logo abaixo
+    // julgam. Derivar `F` dali fecha um círculo: um erro afim em `errouPor`
+    // (`quase-acerto.ts`) entraria na calibração e sairia dela cancelado, e as
+    // três asserções de fronteira passariam por sorte, testando nada. `F` sai
+    // de uma fonte INDEPENDENTE: o `#al-pool` imprime a expressão crua da arma
+    // ("4d6 +2"), sem passar pela régua do veredito. É o mesmo fixo que
+    // `flatDeExpr` (`rolagem.ts`) lê da expressão, e o formato do fixo é o que
+    // `test-rolada-manual.mjs:7` trava (o `+2` da arma, por extenso).
+    const poolTxt = (document.getElementById('al-pool')?.textContent || '').replace(/\s+/g, ' ');
+    const semDados = poolTxt.replace(/\([^)]*\)/g, ' ').replace(/(\d*)d6/gi, ' ');
+    let F = 0;
+    for (const mch of semDados.matchAll(/[+-]\s*\d+/g)) F += parseInt(mch[0].replace(/\s+/g, ''), 10);
     const digitarFace = (v) => { total.value = String(v); total.dispatchEvent(new Event('input', { bubbles: true })); };
-    digitarFace(0);
-    const erra0 = erraPorDe(vered.textContent);
-    // erraPor = def − soma + 1, e soma = 0 + F ⇒ F = def + 1 − erraPor(0).
-    const F = Number.isFinite(erra0) ? def + 1 - erra0 : 0;
     const digitar = (v) => digitarFace(v - F);
     const m = parseInt(margem.value, 10);
     // Acerto: passar da Defesa.
@@ -2557,7 +2563,7 @@ async function cenaQuaseAcerto(br, url) {
     // E o mestre mandando: alargar a Margem à mão volta o mesmo total a raspar.
     margem.value = String(m + 1); margem.dispatchEvent(new Event('input', { bubbles: true }));
     r.depoisDaMao = vered.textContent.trim();
-    r.calibrouFace = Number.isFinite(erra0);
+    r.poolTxt = poolTxt;
     r.F = F;
     return r;
   });
@@ -2567,7 +2573,7 @@ async function cenaQuaseAcerto(br, url) {
     // miram um total errado e as próximas três asserções passam ou falham por
     // sorte, e não pela conta. Falhar aqui é melhor que uma "raspa" que devia
     // ser um "erro seco" só porque o bônus fixo da arma entrou sem ser contado.
-    ok(v.calibrouFace, `a calibração da face achou o bônus fixo da arma (F=${v.F})`);
+    ok(v.poolTxt.length > 0, `o "al-pool" imprimiu a expressão da arma, e o fixo saiu dela (F=${v.F}, "${v.poolTxt}")`);
     ok(/^\d+$/.test(v.margem || '') && Number(v.margem) > 0,
       `a Margem chega pronta na folha (${v.margem})`);
     ok(/^\d+$/.test(v.dano || ''), `e o dano do raspão também (${v.dano})`);
