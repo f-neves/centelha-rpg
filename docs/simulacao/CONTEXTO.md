@@ -122,14 +122,9 @@ que o motor executa e um que só classifica?* → o enquadramento inteiro: **L39
 **3 · A migração 34** (as quatro funções do log). *Escrevo o arquivo?* → a proposta gesto a
 gesto: **L40**.
 
-**4 · L32, "os cinco casos" — PERDIDO NA COMPACTAÇÃO, e é para a EXECUTORA perguntar de volta,
-não para a mesa decidir de novo.** O `Pendencias.md` L32 hoje só tem UM cenário (o inimigo no
-escuro vazando existência pela `combate_visao`) com três saídas, todas em aberto. Mas a mesa
-citou "L32 inteiro, os cinco casos" como decisão já tomada em chat. Os dois não batem: ou o
-número mudou, ou os cinco casos e as decisões sobre eles existiram numa parte desta conversa que
-a compactação já apagou, e não sobreviveram em arquivo nenhum. **Na próxima sessão, antes de
-qualquer lote, peça à mesa para reafirmar os cinco casos e o que foi decidido em cada um** — não
-adivinhe a partir do L32 que está no arquivo hoje, porque ele não os contém.
+**O L32 "cinco casos" que tinha sumido na compactação foi reconstruído com a mesa em
+06/09/2026** e já está no `Pendencias.md` (a decisão e os cinco casos A a E, com o que está
+feito, recusado e pendente). Nada mais a perguntar de volta aqui.
 
 ## O que está começado e não terminado
 

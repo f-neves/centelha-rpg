@@ -1733,34 +1733,61 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   Não é fase de métrica: é fase de produto, e termina com a mesa jogável dos dois lados.
 
-- [ ] **L32 · [DECISÃO DE MESA] O JOGADOR SABE QUE HÁ UM INIMIGO NO ESCURO?** · *achado na
-  varredura das oito views, 04/09/2026. Não é defeito de programa: é escolha de mesa, e por
-  isso está aqui em vez de num conserto.*
+- [x] **L32 · DECIDIDO em 06/09/2026 · A névoa esconde a EXISTÊNCIA do inimigo, não só a
+  posição · falta a tela da lembrança, e é ela que trava a migração 33** · *achado na
+  varredura das oito views, 04/09/2026 (a decisão em si), fechado com a mesa e os cinco casos
+  em 06/09/2026 (o alcance dela). Registro reconstruído em 06/09/2026: as decisões foram
+  tomadas com a mesa e o registro ficou incompleto na hora.*
 
   A `combate_visao` é a única MISTA das oito views. Como **parede** ela é a melhor do esquema:
   mascara coluna a coluna, dentro do Postgres, e a Vida exata do inimigo, os dados, a Energia,
   a Mana e o `arma`/`alvo` da ação declarada não saem sem a mesa abrir a chave.
 
-  Como **cortina** ela vaza EXISTÊNCIA. O `where` é `c.oculto = false and eh_membro(...)`, sem
-  arena e sem casa: o bicho parado no escuro chega ao navegador do jogador com nome, retrato,
-  grupo, Tick, iniciativa e estado de Vida. Quem esconde é a TELA do Grid, porque `naFila()` só
-  lista quem tem peça em `TOKENS`, e a `token_visao` não mandou a peça de quem está no escuro.
+  Como **cortina** ela vazava EXISTÊNCIA. O `where` era `c.oculto = false and eh_membro(...)`,
+  sem arena e sem casa: o bicho parado no escuro chegava ao navegador do jogador com nome,
+  retrato, grupo, Tick, iniciativa e estado de Vida. Quem escondia era a TELA do Grid, porque
+  `naFila()` só lista quem tem peça em `TOKENS`, e a `token_visao` não mandava a peça de quem
+  estava no escuro. **E a cortina nem chegava a fechar**: a mesma linha saía desenhada na aba
+  Combate, que lista a fila inteira do encontro e não tinha névoa nenhuma.
 
-  **E a cortina nem chega a fechar**, que é o detalhe que decide o tamanho da questão: a mesma
-  linha sai desenhada na aba Combate, que lista a fila inteira do encontro e não tem névoa
-  nenhuma. Hoje a névoa esconde ONDE o bicho está, e não QUE ele existe.
+  **A DECISÃO, das três saídas possíveis (ficar como está · cortar por casa também na
+  `combate_visao` · uma chave em `mesas.revelar` por mesa): a segunda.** A névoa passa a
+  esconder a existência, e a aba Combate passa a ter névoa junto, o que ela nunca teve. Custo
+  aceito: a fila do jogador muda de tamanho no meio do combate, e ele descobre pelo tamanho
+  dela que alguém apareceu.
 
-  **As saídas, e as três são defensáveis:**
+  **OS CINCO CASOS QUE A DECISÃO ABRE, e o que ficou decidido em cada um:**
 
-  1. **fica como está.** A iniciativa é pública, a névoa é do mapa, e é assim que se joga em
-     muita mesa. Custo: zero, e a linha da view passa a dizer isso de propósito;
-  2. **cortar por casa na `combate_visao` também.** Aí a névoa esconde a existência, e a aba
-     Combate passa a ter névoa junto, o que ela nunca teve. Custo: a fila do jogador muda de
-     tamanho no meio do combate, e ele descobre pelo tamanho dela que alguém apareceu;
-  3. **uma chave em `mesas.revelar`**, ao lado de `vidaInimigo` e `statsInimigo`, decidindo por
-     mesa. Custo: mais uma chave, e a migração que a lê.
+  - **A · O hexágono some junto com o nome.** Casa que o jogador não enxerga é omitida da
+    frase do registro: ele lê "chegou em H7" e "saiu de H7", nunca o outro lado. Esconder QUEM
+    e mostrar ONDE derrota o propósito por outra porta.
+  - **B · Golpe vindo do escuro dá comparação de Furtividade contra a Percepção Passiva do
+    alvo**, pela fórmula que a régua já tem (`(Percepção + Prontidão) × 2`, com o guarda não
+    rolando). Quem percebe lê "um golpe vem contra você", sem quem e sem de onde, e ganha a
+    janela de reação; quem não percebe não lê nada e o golpe cai sem aviso. **Recusado:**
+    tornar o ataque do escuro indefensável — seria regra de jogo forte nascendo de escolha de
+    tela.
+  - **C · O corte só morde com arena ativa e névoa ligada.** Sem arena ou com névoa desligada,
+    tudo passa como hoje, e a mesa que joga só pela aba Combate não muda. Com névoa ligada,
+    peça sem token conta como escuro: criatura criada e não posta no mapa é a emboscada sendo
+    preparada, e o mestre que a cria acabou de escondê-la.
+  - **D · O inimigo já visto que recua fica listado, apagado**, com a Vida e a casa da última
+    vez que foi visto — criatura passa a ter os dois pesos que o chão já tem. O estado
+    envelhece (curado no escuro continua lembrado ferido), e morto no escuro fica listado como
+    qualquer outro. **Recusado:** "some junto com o registro do ferimento" — apagar o
+    resultado da ação do jogador não é névoa, é amnésia.
+  - **E · A `efeito_visao` corta por casa.** Era vazamento vivo. **FEITO, migração 32.**
 
-  A diferença entre cortina e parede de cada uma das oito está escrita **no banco**, em
+  **E o que o jogador lê quando algo acontece no escuro: nada, nem anônimo.** Se o ALVO está
+  claro, ele vê o que acontece com o alvo, sem o autor ("Kael foi atingido", não "o goblin
+  atacou Kael"). Efeito de área que pega casa escura e casa clara: ele lê a parte clara.
+
+  **O que está feito:** o caso E, na migração 32. Os casos A e C, parcialmente, pela migração
+  33 · **que NÃO RODOU.** **O que falta, e é o que trava a 33:** a tela que desenha a
+  lembrança (o caso D). Ela nunca existiu — zero ocorrências de "lembranca" em `src/` — e sem
+  ela os casos A, C e D não têm onde aterrissar. → a fase que abriga essa tela: **L33**.
+
+  A diferença entre cortina e parede de cada uma das oito views está escrita **no banco**, em
   `comment on view`, pela migração 31. Documento longe do objeto envelhece; comentário ao lado
   dele não.
 
