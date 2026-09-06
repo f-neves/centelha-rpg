@@ -119,23 +119,39 @@ que pedem uma escolha humana de verdade, que são 4% delas.
 > que é decisão, e vira jogo. **Quanto, não está medido**, e não se mede com bateria:
 > depende de quantas peças são de jogador.
 
-### A escada dos três degraus desenhados, e os 61,8% que ela alcança
+### A escada, com o que já está entregue
 
-| | trabalho | do de hoje | o que sai |
-|---|---:|---:|---|
-| hoje, modo `mesa` | 1.171.957 | 100% | · |
-| + a mesa deixa de digitar os totais | 773.481 | 66,0% | os dois números digitados por golpe (`R:184`) |
-| + avanço unificado | 573.255 | 48,9% | o ⏭ do Tick morto, e um cartão por parada (`R:185`) |
-| + a folha deixa de pedir transcrição | **448.224** | **38,2%** | o resto da aritmética (`R:186`) |
+**Até 06/09/2026 esta seção mostrava uma escada de projeto**: números que o
+próprio agregador calcula a partir do cenário PISO do avanço unificado (a versão
+pessimista, um cartão absorvido por parada e o resto sobrando), de um dia em que
+nenhum dos degraus existia em código. O código real que está no Grid hoje
+(`avancarAteParar`, `grid.astro:5709-5732`) entrega mais do que o PISO assumia:
+ele não absorve só o Tick morto, resolve TODO golpe vencido do Tick em que para
+(a medição de 06/09/2026, acima). Isso bate com o cenário SEM-GESTO do mesmo
+agregado, não o PISO, e é por isso que a tabela de PISO (que chegava a 573.255,
+48,9%, e depois a 448.224, 38,2%) ficava aquém do que a mesa recebeu de verdade.
+A tabela abaixo troca a estimativa de projeto pelo que está de fato entregue:
 
-Os 61,8% estão em `R:188`.
+| | trabalho | do de hoje | o que sai | está no Grid? |
+|---|---:|---:|---|---|
+| hoje, modo `mesa` | 1.171.957 | 100% | · | · |
+| + a folha aceita o dado em vez do total | 773.481 | 66,0% | os dois números digitados por golpe, derivado de 597.714 − 199.238 (`R:166`); `R:170` para os 34,0% | sim · `045f491`/`b9d0b01` |
+| + o avanço unificado resolve todos os golpes do Tick em que para | **273.445** | **76,7%** | o ⏭ cai ao piso SEM-GESTO, 375.005 → 74.207 (`R:129` para os 375.005, `R:144` para os 74.207); e o cartão de cada golpe deixa de custar clique, os 125.031 que sobravam somem (`R:175`) | sim · `55674f1`/`5bd7e8c` |
 
-> **Os 61,8% são o alcance DESTES TRÊS DEGRAUS, e não um limite de princípio.** A
-> leitura anterior dizia que o resíduo "não tem conserto de software", e a linha
-> desmente: o resíduo de 448.224 é 55% de ⏭ que param e 45% do botão do veredito
-> (`R:187`), e **os dois são custo**. O ⏭ que para abre uma folha que é transcrição;
-> o botão transcreve uma comparação que a tela já fez. O que os mantém de fora é
-> nenhum dos três degraus tê-los atacado, e não a natureza deles.
+**O teto, com os consertos desenhados até hoje: 76,7%.** É o número que está DE
+FATO no Grid, e não uma projeção: são os itens 1, 3 e 5 da fila (seção 2, abaixo),
+entregues nestes shas, e o total de 1.171.957 vem de `R:169`.
+
+**O que falta para os 99,7% que a seção 2 projeta não é código faltando nestes
+dois degraus: são o item 2 e o item 7, e nenhum dos dois tem número real ainda.**
+O mecanismo do item 2 (o botão do veredito já calcula e destaca um dos três) é
+anterior a esta frente inteira (`67fbb29`, 21/08/2026), mas ele não reduz um
+número medido: a banda continua entre 0 e 17,0% (`R:123`), porque a taxa em que a
+mesa discorda do destaque não é medível por bateria. O item 7 (o avanço MOSTRA o
+percurso em vez de pedir confirmação) não foi construído. **Os 61,8% que esta
+seção citava antes eram o teto de uma estimativa já superada**: o Grid de hoje
+entrega mais do que aquela tabela previa, porque o código real bate no SEM-GESTO
+e não no PISO.
 
 **O que sobra cresce com o TAMANHO da cena, não com a complexidade da regra**, o que
 quer dizer que nenhuma simplificação de regra o reduz. Isso continua valendo, e é
@@ -165,8 +181,12 @@ bandeiras, políticas, obstáculo, leitura, reforço nem criaturas.
 
 ## 2 · O QUE VAI MUDAR NO GRID
 
-> **Nenhum conserto desta fila foi implementado por causa desta frente.** A frente
-> mediu; ela ainda não mudou a mesa.
+> **Esta frente, a de medir, não implementou nada: seu papel é medir, e não
+> mudou a mesa por si só.** Mas a mesa mudou, por lotes de construção separados, e
+> hoje isso já não é ressalva de "nada mudou": os itens 1 e 3 (`045f491`/`b9d0b01`
+> e `55674f1`/`5bd7e8c`, 06/09/2026) estão entregues, o item 5 saiu junto com o 3
+> no mesmo código, e o mecanismo do item 2 é anterior a esta frente inteira
+> (`67fbb29`, 21/08/2026). A escada, abaixo, mostra o que isso vale.
 
 ### O que a linha fez com a fila
 
