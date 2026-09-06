@@ -2528,7 +2528,21 @@ async function cenaQuaseAcerto(br, url) {
       conta: (document.getElementById('al-qa-conta')?.textContent || '').replace(/\s+/g, ' ').trim(),
       temBotao: !!botao && !botao.hidden,
     };
-    const digitar = (v) => { total.value = String(v); total.dispatchEvent(new Event('input', { bubbles: true })); };
+    // O CAMPO PASSOU A SOMAR SOZINHO (06/09/2026): `#al-total` não guarda mais
+    // o total pronto, guarda a FACE que a mesa digitou, e a folha soma com o
+    // bônus fixo da arma por cima (`roladaManual`). Escrever `v` direto não
+    // produz mais o total `v` — produz `v + F`, com `F` o bônus fixo da arma
+    // que este `input` não conhecia antes. CALIBRA-SE UMA VEZ, digitando uma
+    // face conhecida (0) e lendo o "erra por" que ela produziu: dele sai `F`,
+    // e todo `digitarTotal` seguinte escreve `alvo − F` para acertar o total
+    // exato que o teste quer, do mesmo jeito que sempre quis.
+    const erraPorDe = (txt) => parseInt((txt.match(/erra por (\d+)/) || [])[1] || '', 10);
+    const digitarFace = (v) => { total.value = String(v); total.dispatchEvent(new Event('input', { bubbles: true })); };
+    digitarFace(0);
+    const erra0 = erraPorDe(vered.textContent);
+    // erraPor = def − soma + 1, e soma = 0 + F ⇒ F = def + 1 − erraPor(0).
+    const F = Number.isFinite(erra0) ? def + 1 - erra0 : 0;
+    const digitar = (v) => digitarFace(v - F);
     const m = parseInt(margem.value, 10);
     // Acerto: passar da Defesa.
     digitar(def + 1); r.acerto = vered.textContent.trim();
@@ -2543,10 +2557,17 @@ async function cenaQuaseAcerto(br, url) {
     // E o mestre mandando: alargar a Margem à mão volta o mesmo total a raspar.
     margem.value = String(m + 1); margem.dispatchEvent(new Event('input', { bubbles: true }));
     r.depoisDaMao = vered.textContent.trim();
+    r.calibrouFace = Number.isFinite(erra0);
+    r.F = F;
     return r;
   });
 
   if (v && v.abriu) {
+    // A CALIBRAÇÃO TEM DE TER FUNCIONADO, senão os três `digitar` de baixo
+    // miram um total errado e as próximas três asserções passam ou falham por
+    // sorte, e não pela conta. Falhar aqui é melhor que uma "raspa" que devia
+    // ser um "erro seco" só porque o bônus fixo da arma entrou sem ser contado.
+    ok(v.calibrouFace, `a calibração da face achou o bônus fixo da arma (F=${v.F})`);
     ok(/^\d+$/.test(v.margem || '') && Number(v.margem) > 0,
       `a Margem chega pronta na folha (${v.margem})`);
     ok(/^\d+$/.test(v.dano || ''), `e o dano do raspão também (${v.dano})`);
