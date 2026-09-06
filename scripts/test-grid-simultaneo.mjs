@@ -12,8 +12,9 @@
 //   2. atacar alguém FORA do alcance abre a declaração com o deslocamento
 //      embutido (modo, m/Tick, trajetória automática), e a agenda diz em que
 //      Tick o golpe cai;
-//   3. o relógio anda UM Tick por clique, nunca pula, e a peça declarada ANDA
-//      pelo mapa a cada avanço (movimento gradual, não teleporte);
+//   3. o relógio corre até a PARADA REAL (o avanço unificado, 06/09/2026), e
+//      para em toda parada real sem correr por cima dela; a peça declarada
+//      ANDA pelo mapa a cada avanço (movimento gradual, não teleporte);
 //   4. o golpe cai no Tick agendado (cartão vencido, ⏭ desligado) e resolve
 //      pela faixa, como o golpe adiado já fazia;
 //   5. soltar uma peça num hexágono vazio pergunta COMO (mov-dlg) em vez de
@@ -536,7 +537,19 @@ async function cenaAlvoQueFoge(br, url) {
   ok(fuga.caixa === 'mov-dlg', `o alvo declara deslocamento, correndo (caixa: ${fuga.caixa})`);
   if (fuga.caixa !== 'mov-dlg') { await p.close(); return; }
 
-  // ---- 4: três avanços, e o cartão do golpe anda para a frente ----
+  // ---- 4: UM clique leva a perseguição até a parada real ----
+  //
+  // O CONTRATO MUDOU EM 06/09/2026, e é o mesmo do item 3 da cena principal:
+  // esta cena media "3 cliques, e o golpe ainda não venceu" porque o alvo
+  // corria "rápido o bastante para nunca ser alcançado" DENTRO DE 3 TICKS —
+  // a fuga é para um hexágono FINITO do tabuleiro (`soltarEm(..., 'longe')`),
+  // e não uma fuga perpétua. Um único clique do avanço unificado não para em
+  // 3 Ticks: ele corre Tick a Tick reprojetando a agenda a cada passada
+  // (como o `for` antigo fazia, um clique de cada vez) até a PARADA REAL —
+  // aqui, o alvo chega ao destino, para de fugir, e o golpe finalmente
+  // alcança. "Nunca vence" nunca foi verdade além da janela de 3 cliques; o
+  // que a cena prova agora é que o avanço aguenta perseguir sem prender a aba,
+  // e entrega a perseguição resolvida.
   const cartao = () => p.evaluate(() => {
     const it = document.querySelector('#gr-ar .ar-item[data-golpe]');
     return {
@@ -546,19 +559,16 @@ async function cenaAlvoQueFoge(br, url) {
     };
   });
   const antes = await cartao();
-  let travouCedo = false;
-  for (let i = 0; i < 3; i++) {
-    const st = await cartao();
-    if (st.travado) { travouCedo = true; break; }
-    await p.click('#ini-prox');
-    await espera(750);
-  }
+  const t0 = Date.now();
+  await p.click('#ini-prox');
+  await espera(1500);
+  const dt = Date.now() - t0;
   const depois = await cartao();
-  ok(depois.tick != null && antes.tick != null && depois.tick > antes.tick,
-    `o Tick do golpe anda para a frente enquanto o alvo foge (${antes.tick} → ${depois.tick})`);
-  ok(depois.tick > depois.relogio,
-    `e o golpe nunca vence com o alvo longe (relógio ${depois.relogio}, golpe ${depois.tick})`);
-  ok(!travouCedo, 'o "⏭" não trava a cena num golpe que não alcança nada');
+  ok(dt < 8000, `o "⏭" não trava perseguindo um alvo que foge (voltou em ${dt} ms)`);
+  ok(depois.tick != null && antes.tick != null && depois.tick >= antes.tick,
+    `o Tick do golpe só anda para a frente ao reprojetar, nunca para trás (${antes.tick} → ${depois.tick})`);
+  ok(depois.travado,
+    `e o avanço leva a perseguição até a parada real: o golpe alcança e o "⏭" desliga (relógio ${depois.relogio}, golpe ${depois.tick})`);
   const registro = await p.evaluate(async () => {
     document.getElementById('gr-registro').click();
     await new Promise((x) => setTimeout(x, 800));
