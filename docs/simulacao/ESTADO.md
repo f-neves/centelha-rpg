@@ -76,24 +76,48 @@ Duas consequências, e a segunda muda como se lê tudo o que veio antes:
    bandeira medido numa célula pode ser menor que a sensibilidade da própria célula
    à condição inicial.
 
-**O tamanho disso, contra o que a grade de comparação de regras (E5) esperava medir:**
-o lado que dá para medir hoje é o desvio do delta entre duas execuções que diferem
-só na condição inicial, **11,35 Ticks por batalha** (calculado acima, com o script
-que soma `.sim/r08` e `.sim/r09` por `(célula, semente)`). **O outro lado da conta
-não existe.** `02-projeto-harness.md` (§ perto de "Um fluxo só, e não cinco por
-finalidade") previa que o piloto mediria também a variância do delta da bandeira
-`margem` nas duas âncoras, para dimensionar o `n` das células de E5 separado do
-resto da grade — e esse piloto **nunca rodou**: não há ocorrência de "variância do
-delta" nem de "margem" em `09-bateria-grande.md`. A única previsão escrita é
-qualitativa (`05-fechamento.md`, "a carga por Tick com o perfil cheio fica a menos
-de um gesto da carga com tudo desligado"), não um número em Ticks por batalha
-comparável ao 11,35 acima. **O que este achado prova, então, não é que o `n` do
-piloto está errado**, é que a fonte de ruído que o piloto vai encontrar é real e
-grande (a mesma dinâmica caótica que move batalhas por dezenas de Ticks com uma
-única mudança de condição inicial), e que medir a variância do delta de `margem`
-antes de rodar a grade inteira de E5 continua sendo tarefa aberta, e não
-formalidade — se o piloto achar um desvio da mesma ordem de grandeza do 11,35 aqui,
-o `n` das células de E5 precisa ser maior do que o resto da grade previu.
+**O `n` QUE O E5 PRECISARIA, com o desvio que agora existe.** A pergunta invertida:
+com este desvio, quantas repetições pareadas detectam um delta de um gesto, de meio
+gesto, e de um décimo (95% de confiança, 80% de poder, `n = (1,96+0,84)² · σ² / Δ²`)?
+
+O `11,35` acima é desvio de **duração** (Ticks), e o E5 mede **gesto**: os dois não
+convertem um no outro por regra de três, e por isso o par `r08`/`r09` foi medido de
+novo, desta vez sobre o campo `gestos` de cada batalha (o total por batalha, não a
+taxa por Tick). O desvio real do delta pareado em gestos é **56,58** (média −2,1,
+sobre uma média de ~183 gestos por batalha). É este o número que entra na conta:
+
+| detectar um delta de | `n` de batalhas pareadas | procedência |
+|---|---:|---|
+| 1 gesto | **≈ 25.100** | derivado: fórmula acima com σ = 56,58 |
+| 0,5 gesto | **≈ 100.500** | derivado: mesma fórmula, Δ = 0,5 |
+| 0,1 gesto | **≈ 2.512.000** | derivado: mesma fórmula, Δ = 0,1 |
+
+**Duas ressalvas, e as duas moram no próprio número:**
+
+- **este `56,58` é gesto TOTAL por batalha, não gesto POR TICK.** A métrica principal
+  da grade (§3 de `02-projeto-harness.md`) é por Tick justamente para tirar a
+  variância da duração do denominador — "a quantidade deixou de herdar a variância
+  da duração, porque a duração agora está no denominador". O `56,58` **não** tirou
+  essa variância: ele mistura o efeito real de uma mudança de regra com o mesmo
+  espalhamento caótico de duração medido acima. Se a métrica de E5 for mesmo a taxa
+  por Tick, o desvio relevante é outro (provavelmente menor), e não foi medido;
+- **o pareamento por semente já está contado, e ajuda muito.** A correlação entre o
+  gesto de uma batalha antes e depois é **0,875**; a variância do delta pareado
+  (3.201) é **12,6% da soma das duas variâncias independentes** (25.422). Pareando,
+  o `n` cai para cerca de um oitavo do que precisaria sem parear (para delta de 1
+  gesto, seria da ordem de 199.500 sem parear contra 25.100 pareado). **O fluxo
+  único, que custava precisão e não correção, está sendo parcialmente ressarcido
+  pelo próprio pareamento por semente que ele preserva.**
+
+**O que isto significa, sem decidir nada:** o `n` para um delta de 1 gesto (≈25.100)
+já é maior que os ~500 por célula que a grade usa hoje; para 0,1 gesto (≈2,5
+milhões) é impraticável em qualquer desenho. Se a sensibilidade à condição inicial
+for de fato maior que o efeito que a grade de E5 quer medir, a saída não é "rodar
+mais repetições": é que a comparação de regras pede um desenho que cancele mais
+ruído do que o pareamento por semente já cancela — e essa é a decisão que encosta no
+fluxo único, e que fica com quem decide, não com quem mede. Falta ainda o `56,58`
+virar o número certo (por Tick, e sobre a bandeira `margem`, não sobre
+`ticksDeEntrada`) antes de qualquer `n` daqui virar `n` de produção.
 
 **Esta bateria é posterior ao conserto da iniciativa** (ver a seção 3). Os números
 publicados antes dele, inclusive os da `09`, mudaram todos, e a `09` traz o aviso
