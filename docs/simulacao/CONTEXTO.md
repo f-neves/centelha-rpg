@@ -10,9 +10,55 @@ Três regras que o mantêm útil:
   33 passou a dizer menos do que o cabeçalho dela já dizia. **O que este documento carrega
   de próprio é o que veio do chat e não mora em arquivo nenhum.**
 
-Última reescrita: **05/09/2026**.
+Última reescrita: **06/09/2026**.
 
 ---
+
+## A frente de simulação (Grid) · a escada do L29
+
+**Chamada de "fase 3" na revisão de 06/09/2026, e não tem nada a ver com a Fase 2/3 da seção
+abaixo (essa é de OUTRA frente, o tabuleiro como experiência de combate).** Dona dos números:
+`docs/simulacao/ESTADO.md`. Dona do índice dos sete itens: `Pendencias.md` L29. Aqui só o que
+mudou de estado e ainda não está espelhado nos dois.
+
+**O que entrou, com sha:** item 1 (a folha aceita as faces do dado digitadas, em vez do total ·
+`045f491`/`b9d0b01`, guarda contra ajuste de pool corrigida em `00f3966`) e item 3 (o avanço
+unificado resolve todos os golpes do Tick em que para · `55674f1`/`5bd7e8c`). Os dois já estão
+"sim" no Grid, não são mais projeto.
+
+**O que se dissolveu na medição:** o item 5 ("a parada abre todos os golpes do Tick") não é
+degrau separado do 3 — é o MESMO código, medido depois de entregue. A escada de sete itens do
+L29 tem seis itens reais a partir de agora, não sete.
+
+**O que sobra, e por que cada um:** item 2 (o botão do veredito vira confirmação automática ·
+banda 0% a 17,0%, e a banda é ignorância, não imprecisão — só vira número com a mesa decidindo
+a taxa em que discorda do destaque); item 4 (as 15 contas não aplicadas da folha, 7 delas
+bandeiras de regra desligadas em `regras.json` · ligar é decisão de regra, não conserto de
+custo); item 6 / **L25** (as bandeiras lidas pelo motor); item 7 (o avanço MOSTRA o percurso em
+vez de pedir confirmação · decisão de jogo, não construído).
+
+**O teto de hoje é 76,7%/273.445, com a frase corrigida em 06/09/2026**: não são duas
+testemunhas independentes batendo (subtração da tabela × cenário SEM-GESTO do agregador) — é o
+MESMO contador (`golpeNoTick`, `log.mjs:224-226`) lido por duas exibições algebricamente
+equivalentes, que por isso nunca poderiam se discordar. A robustez de verdade vem de
+`ticksComGolpe + sobram = golpes` ser invariante a como os golpes se distribuem entre Ticks.
+Perturbado à mão numa bateria real, o número não se moveu por essa razão, não pela concordância
+das duas leituras. → o parágrafo inteiro: `ESTADO.md`, seção "O teto, com os consertos...".
+
+**DECISÃO DA MESA, 06/09/2026: a `bmtmbdppb` precisa ser regravada.** O conserto do `frac`
+(`log.mjs`, devolve `null` com Ticks zerados em vez de 0) é da FONTE, e não é retroativo ao
+`.jsonl` já gravado: a bateria publicada segue com o viés na coluna "s/golpe" da fase de fuga da
+tabela A (medido: 0,18 → 0,71 em `coprimo-encostado-1v1`, sem o zero falso) até alguém rodar a
+bateria de novo. Não muda o número da escada (verificado por reagregação, saída idêntica),
+muda só essa coluna. **Ainda sem entrada própria no `Pendencias.md`** — criar uma (ou anexar ao
+L29) é o primeiro passo de quem pegar isto a seguir.
+
+**O achado das 21 funções que a mesa chama e o harness de simulação não exercita nenhuma delas,
+06/09/2026, sem dono em arquivo nenhum.** A pergunta em aberto, e ela decide se é achado ou
+ruído: esse subconjunto existe **por decisão** (funções que dependem de jogador humano, de
+bandeira desligada, de UI que a bateria não tem como acionar) ou **por sedimentação** (ninguém
+olhou, e a lista só cresce)? Sem essa resposta não dá para saber se é um buraco de cobertura
+(família do **L30**) ou o esperado.
 
 ## A fase corrente
 
@@ -57,6 +103,11 @@ Pelo NOME, porque número de opção depende de qual lista se está lendo.
   referência por posição a uma lista que existe em dois lugares vai divergir.
 - **DECISÃO DA MESA VEM EM MÚLTIPLA ESCOLHA, três opções ou mais**, feita na hora em que a
   decisão aparece e sem pedir licença.
+- **A FURTIVIDADE DAS CRIATURAS É POR PORTE E CATEGORIA (Saída B), não por criatura (Saída A).**
+  Uma tabela pequena sobre a Destreza, forma da casa (é a mesma do `COURACA` por porte). O preço
+  assumido: assassino e camponês da mesma espécie ficam iguais até virar exceção escrita. →
+  o dilema inteiro, com a Saída A ao lado: `Pendencias.md` **L35**, que ainda mostra as duas em
+  aberto e precisa ser marcado com esta decisão.
 
 ## O que espera resposta da mesa
 
@@ -70,6 +121,15 @@ que o motor executa e um que só classifica?* → o enquadramento inteiro: **L39
 
 **3 · A migração 34** (as quatro funções do log). *Escrevo o arquivo?* → a proposta gesto a
 gesto: **L40**.
+
+**4 · L32, "os cinco casos" — PERDIDO NA COMPACTAÇÃO, e é para a EXECUTORA perguntar de volta,
+não para a mesa decidir de novo.** O `Pendencias.md` L32 hoje só tem UM cenário (o inimigo no
+escuro vazando existência pela `combate_visao`) com três saídas, todas em aberto. Mas a mesa
+citou "L32 inteiro, os cinco casos" como decisão já tomada em chat. Os dois não batem: ou o
+número mudou, ou os cinco casos e as decisões sobre eles existiram numa parte desta conversa que
+a compactação já apagou, e não sobreviveram em arquivo nenhum. **Na próxima sessão, antes de
+qualquer lote, peça à mesa para reafirmar os cinco casos e o que foi decidido em cada um** — não
+adivinhe a partir do L32 que está no arquivo hoje, porque ele não os contém.
 
 ## O que está começado e não terminado
 
