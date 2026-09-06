@@ -2809,10 +2809,14 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `scripts/gen-carimbo-migracoes.mjs --check` impede a migração de ENTRAR NA ÁRVORE sem carimbo;
   `fronteira_vale` é a rede do lado de baixo, se mesmo assim algo entrar no BANCO sem ele.
 
-- [x] **L46 · [CONSTRUÍDO E FALSIFICADO] Dois portões novos, e os dois com controle positivo
-  explícito** · *pedidos em 06/09/2026, depois de o diagnóstico do L45 ter achado o gap: o controle
-  positivo de ontem dependia de a migração 36 continuar presente e continuar sendo a de maior
-  número — funcionava, e era implícito.*
+- [x] **L46 · [FECHADO, com o achado de 06/09/2026 corrigido] Dois portões novos, controle
+  positivo explícito, e mais três correções da mesma leva** · *cada um com controle contra arquivo
+  REAL de `supabase/`, não só fixture: `test-remocao-jsonb.mjs` lê `migracao-36.sql`/`migracao-22.sql`
+  de verdade (10 asserções); `test-carimbo-migracoes.mjs` copia os 36 `.sql` reais para uma pasta
+  de scratch e confere que passam (8 asserções). E o resolvedor de variável do gate `mordidos` fora
+  do helper devolve TRÊS estados (achou / confirmou ausência / não resolvi), e "não resolvi" conta
+  como suspeito — nunca como "não há cliente tirando chave". Falsificado: variável vinda de
+  parâmetro externo acende o portão, rotulada "NÃO RESOLVI".*
 
   **1 · O DETECTOR DE REMOÇÃO GANHOU MÓDULO PRÓPRIO E TESTE SINTÉTICO.** A lógica que decide "este
   SQL sabe tirar chave de um jsonb?" saiu do meio do portão (`validate-data.mjs`) para

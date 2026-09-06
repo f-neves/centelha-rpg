@@ -56,25 +56,43 @@ comment on column public.migracoes.sha256 is
 -- verdadeira -- e por isso ela vira uma VIEW, e nao só mais uma frase em
 -- prosa: um numero sem a afirmacao ao lado e exatamente o escalar que este
 -- comentario acabou de nomear como o problema.
+-- O NUMERO SOME QUANDO A INVARIANTE QUEBRA, e nao fica ao lado de um aviso que
+-- um consumidor pode ignorar. O teste que decide isto nao e o que a view
+-- devolve no caso BOM (ali um numero ao lado de `fronteira_vale = true` seria
+-- igual de qualquer jeito): e o que um consumidor QUE IGNORA A BANDEIRA recebe
+-- no caso RUIM. Um numero real, so com aviso do lado, sobrevive ao
+-- `select fronteira from ...` que ninguem escreveu pensando em conferir a
+-- segunda coluna. NULO nao sobrevive: quebra a comparacao, quebra o `>`, e
+-- obriga a decisao a aparecer.
 create or replace view public.migracoes_fronteira
 with (security_invoker = true) as
+with base as (
+  select min(numero) as candidato from public.migracoes where not a_mao
+)
 select
-  (select min(numero) from public.migracoes where not a_mao) as fronteira,
+  case when not exists (
+         select 1 from public.migracoes m, base
+         where m.a_mao and m.numero > base.candidato
+       )
+       then base.candidato
+       else null
+  end as fronteira,
   not exists (
-    select 1 from public.migracoes m
-    where m.a_mao
-      and m.numero > (select min(numero) from public.migracoes where not a_mao)
-  ) as fronteira_vale;
+    select 1 from public.migracoes m, base
+    where m.a_mao and m.numero > base.candidato
+  ) as fronteira_vale
+  from base;
 
 comment on view public.migracoes_fronteira is
   'A LEITURA CORRETA DA AUSENCIA NA TABELA `migracoes`, e nao so o numero: '
   '`fronteira` e o menor numero automatico (carimbado pelo proprio arquivo, '
   '`a_mao = false`); abaixo dela, ausencia e SILENCIO da carga historica (nao '
   'prova que nao rodou). ACIMA dela, ausencia so pode ser lida como "nao '
-  'rodou" enquanto `fronteira_vale` for verdadeiro. Se vier falso, alguma '
-  'linha `a_mao = true` esta acima do que deveria ser a zona automatica -- a '
-  'leitura por numero sozinho quebrou, e a resposta correta e parar de ler a '
-  'ausencia ate investigar, nao seguir usando o numero antigo.';
+  'rodou" enquanto `fronteira_vale` for verdadeiro. SE A INVARIANTE QUEBRAR '
+  '(alguma linha `a_mao = true` acima do candidato a fronteira), `fronteira` '
+  'VEM NULO -- de proposito, e nao um numero com aviso do lado: um consumidor '
+  'que le so essa coluna e ignora `fronteira_vale` nao pode receber um numero '
+  'que parece valido e nao e.';
 
 -- E A NOTA CRUZADA COM O PORTAO DO CARIMBO (`scripts/gen-carimbo-migracoes.mjs
 -- --check`, no repositorio): sao o MESMO TRABALHO visto de dois lados. O
@@ -109,6 +127,6 @@ comment on view public.migracoes_fronteira is
 -- corrigir o hash e tirar o `a_mao` da carga histórica da migração 36. Quem
 -- rerodou sabe mais do que quem escreveu a carga de memória.
 insert into public.migracoes (numero, arquivo, sha256, a_mao) values
-  (37, 'migracao-37.sql', '547c005ae17b9367', false)
+  (37, 'migracao-37.sql', 'cc4e5844839e2f13', false)
   on conflict (numero) do update set arquivo = excluded.arquivo,
     sha256 = excluded.sha256, a_mao = false, aplicada_em = now();

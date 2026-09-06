@@ -448,26 +448,50 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
   // Acha a escrita de `mordidos` por trás de UM argumento de `.update`/`.upsert`:
   // objeto literal direto, ou a variável que o recebeu — pela declaração dela e
   // por qualquer atribuição `alvo.mordidos = ...` no MESMO corpo de função.
+  //
+  // DEVOLVE TRÊS ESTADOS, E NÃO DOIS: `true` (confirmado — a chave está lá),
+  // `false` (confirmado AUSENTE — a variável foi declarada NESTE corpo com um
+  // objeto literal por inicializador, e nenhuma atribuição posterior a tocou),
+  // ou `null` ("NÃO RESOLVI" — o argumento não é nem literal nem identificador
+  // rastreável até uma declaração local, ou a declaração achada não é um
+  // literal inspecionável). O CHAMADOR TRATA `null` COMO SUSPEITO, NUNCA COMO
+  // SEGURO: "não resolvi" não é o mesmo fato que "não achei remoção", e
+  // confundir os dois faria este portão dizer "não há cliente tirando chave"
+  // quando a resposta certa era "não sei".
   function escritaDeMordidos(arg, corpoDaFuncao, sf) {
     if (ts.isObjectLiteralExpression(arg)) return !!acharPropriedade(arg, 'mordidos');
-    if (!ts.isIdentifier(arg) || !corpoDaFuncao) return false;
+    if (!ts.isIdentifier(arg) || !corpoDaFuncao) return null;
     const nomeVar = arg.text;
-    let achou = false;
+    let achouChave = false;
+    let declaradaLocalmente = false;
+    let inicializadorIlegivel = false;
     const visita = (n) => {
-      if (achou) return;
-      if (ts.isVariableDeclaration(n) && ts.isIdentifier(n.name) && n.name.text === nomeVar
-          && n.initializer && acharPropriedade(n.initializer, 'mordidos')) {
-        achou = true; return;
+      if (achouChave) return;
+      if (ts.isVariableDeclaration(n) && ts.isIdentifier(n.name) && n.name.text === nomeVar) {
+        declaradaLocalmente = true;
+        if (n.initializer) {
+          if (ts.isObjectLiteralExpression(n.initializer)) {
+            if (acharPropriedade(n.initializer, 'mordidos')) achouChave = true;
+          } else {
+            // Inicializada por chamada, spread de outra variável, ou qualquer
+            // coisa que não seja um objeto literal direto: não dá para
+            // confirmar NEM negar por aqui.
+            inicializadorIlegivel = true;
+          }
+        }
       }
-      if (ts.isBinaryExpression(n) && n.operatorToken.kind === ts.SyntaxKind.EqualsToken
+      if (!achouChave && ts.isBinaryExpression(n) && n.operatorToken.kind === ts.SyntaxKind.EqualsToken
           && ts.isPropertyAccessExpression(n.left) && ts.isIdentifier(n.left.expression)
           && n.left.expression.text === nomeVar && n.left.name.text === 'mordidos') {
-        achou = true; return;
+        achouChave = true;
       }
-      ts.forEachChild(n, visita);
+      if (!achouChave) ts.forEachChild(n, visita);
     };
     visita(corpoDaFuncao);
-    return achou;
+    if (achouChave) return true;
+    if (!declaradaLocalmente) return null; // veio de fora do corpo (parâmetro, closure): não sei
+    if (inicializadorIlegivel) return null; // declarada, mas o valor inicial não é inspecionável
+    return false; // declarada aqui, objeto literal sem `mordidos`, sem reatribuição
   }
 
   function funcaoEnvolvente(node) {
@@ -495,8 +519,14 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
         if (/arena_efeitos/.test(receptor.getText(sf)) && node.arguments[0]
             && !dentroDoHelper(node.getStart(sf))) {
           const corpo = funcaoEnvolvente(node);
-          if (escritaDeMordidos(node.arguments[0], corpo, sf)) {
-            achados.push(`${nomeArquivo}:${linhaDe(node.getStart(sf))}`);
+          // `false` É O ÚNICO VALOR QUE LIBERA A CHAMADA. `null` (não resolvi)
+          // é tratado IGUAL a `true` (achei): ambos entram na lista, e a
+          // mensagem diz qual dos dois é, porque "não sei" pede investigação
+          // e "achei" pede o mesmo conserto de sempre.
+          const r = escritaDeMordidos(node.arguments[0], corpo, sf);
+          if (r !== false) {
+            const local = `${nomeArquivo}:${linhaDe(node.getStart(sf))}`;
+            achados.push(r === null ? `${local} (NÃO RESOLVI o payload — trato como suspeito)` : local);
           }
         }
       }

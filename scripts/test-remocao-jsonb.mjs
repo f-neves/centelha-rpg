@@ -7,8 +7,11 @@
 // ACHA a remoção quando ela existe de verdade, contra texto SINTÉTICO — sem
 // depender de a migração 36 continuar presente e continuar sendo a de maior
 // número, que era a dependência implícita que este autoteste substitui.
+import fs from 'node:fs';
+import path from 'node:path';
 import { semComentario, sabeTirarChave } from './lib-deteccao-remocao-jsonb.mjs';
 
+const DIR_SUPABASE = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..', 'supabase');
 const FALHAS = [];
 const ok = (cond, msg) => { console.log(`  ${cond ? '✓' : '✗'} ${msg}`); if (!cond) FALHAS.push(msg); };
 const sabe = (sql) => sabeTirarChave(semComentario(sql));
@@ -67,10 +70,25 @@ ok(!sabe('update t set outro_campo = 1 where id = p_id;'),
   'texto sem `mordidos = ...` nenhum não é lido como remoção');
 ok(!sabe(''), 'texto vazio idem');
 
+// O TEXTO SINTÉTICO ACIMA PROVA QUE O DETECTOR REPROVA O QUE DEVE REPROVAR.
+// Não prova que ele MIRA CERTO no arquivo de verdade — a fixture é escrita por
+// quem escreveu o detector, e os dois podem compartilhar o mesmo engano. Isto
+// aqui lê os `.sql` reais de `supabase/` e confere contra o que se sabe deles
+// por fora (o texto da própria migração, lido à mão).
+console.log('\n· contra o arquivo REAL, não a fixture');
+{
+  const m36 = fs.readFileSync(path.join(DIR_SUPABASE, 'migracao-36.sql'), 'utf8');
+  ok(sabe(m36), 'migracao-36.sql (o vocabulário de remoção) é lido como "sabe tirar", no arquivo de verdade');
+}
+{
+  const m22 = fs.readFileSync(path.join(DIR_SUPABASE, 'migracao-22.sql'), 'utf8');
+  ok(!sabe(m22), 'migracao-22.sql (a versão anterior, só substituição) é lida como "não sabe tirar", no arquivo de verdade');
+}
+
 console.log('');
 if (FALHAS.length) {
-  console.error(`✗ Detecção de remoção jsonb (controle positivo): ${FALHAS.length} falha(s) de 8`);
+  console.error(`✗ Detecção de remoção jsonb (controle positivo): ${FALHAS.length} falha(s) de 10`);
   for (const f of FALHAS) console.error('   · ' + f);
   process.exit(1);
 }
-console.log('✓ Detecção de remoção jsonb (controle positivo) OK · 8 asserções · a busca acha remoção real, em duas formas, e não confunde `||` nem substituição pura com ela');
+console.log('✓ Detecção de remoção jsonb (controle positivo) OK · 10 asserções · acha remoção sintética E real, e não confunde `||` nem substituição pura com ela');

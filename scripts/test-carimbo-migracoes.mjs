@@ -75,10 +75,28 @@ try {
   fs.rmSync(tmp, { recursive: true, force: true });
 }
 
+// O ENSAIO ACIMA USA CONTEÚDO FABRICADO ("create table x..."), escrito por
+// quem escreveu o detector — prova que ele reprova o que deve reprovar, não
+// que ele MIRA CERTO nos arquivos de verdade. Este segundo ensaio copia os
+// `.sql` REAIS de `supabase/` (já carimbados) para uma pasta nova e confere
+// que o `--check` os aceita tal como estão hoje, sem tocar o original.
+const RAIZ_REAL = path.join(RAIZ, 'supabase');
+const tmp2 = fs.mkdtempSync(path.join(os.tmpdir(), 'carimbo-real-'));
+try {
+  console.log('\n· contra os arquivos REAIS de supabase/, não fabricados');
+  const arqs = fs.readdirSync(RAIZ_REAL).filter((f) => /^migracao(-\d+)?\.sql$/.test(f));
+  ok(arqs.length > 30, `achou migrações reais para copiar (${arqs.length})`);
+  for (const f of arqs) fs.copyFileSync(path.join(RAIZ_REAL, f), path.join(tmp2, f));
+  const r = roda(['--check', `--dir=${tmp2}`]);
+  ok(r.codigo === 0, `o --check aceita os ${arqs.length} arquivos reais, copiados tal como estão (código ${r.codigo})`);
+} finally {
+  fs.rmSync(tmp2, { recursive: true, force: true });
+}
+
 console.log('');
 if (FALHAS.length) {
-  console.error(`✗ Carimbo das migrações (controle positivo): ${FALHAS.length} falha(s) de 6`);
+  console.error(`✗ Carimbo das migrações (controle positivo): ${FALHAS.length} falha(s) de 8`);
   for (const f of FALHAS) console.error('   · ' + f);
   process.exit(1);
 }
-console.log('✓ Carimbo das migrações (controle positivo) OK · 6 asserções · o --check falha fechado e sabe achar quando há o que achar');
+console.log('✓ Carimbo das migrações (controle positivo) OK · 8 asserções · falha fechado, acha real quando há o que achar, e aceita os arquivos reais de supabase/');
