@@ -2335,9 +2335,9 @@ criaturas**, D10, e **sete comparações de bandeira não podiam morder na ânco
 
 | | |
 |---|---|
-| Repetições | 500 por célula, e 2.000 nas de cauda |
-| **Batalhas** | **56.000**, mais o reforço |
-| Tempo de máquina | da ordem de 50 segundos, pela §4.2 da `03-respostas.md` |
+| Repetições | 500 por célula, e 2.000 nas de cauda, **exceto as 32 de E5** (linhas de cima): `n = 2.527`, aplicado em 06/09/2026 sem esperar o piloto (§0.10.2) |
+| **Batalhas** | **120.864**: 40.000 fora de E5 a 500 (simplificação que não distingue as de cauda, igual à tabela de origem) mais 80.864 nas 32 de E5 a 2.527, pela conta de `docs/simulacao/ESTADO.md`, "O QUE ISSO FAZ COM A GRADE" |
+| Tempo de máquina | da ordem de 200 segundos, a 600 batalhas/s medidas neste harness (piso, não o número da grade real com as bandeiras ligadas) — ver a mesma seção do `ESTADO.md` |
 
 **Por que não estourou o orçamento de leitura.** A §3 nunca limitou a grade por máquina: *"o
 orçamento não é a máquina, é o que se consegue ler"*, com o aviso de que 144 células já são mais
@@ -2437,6 +2437,18 @@ PCs, que é a cena que a mesa de verdade joga.
 | E mais | **a variância do delta da bandeira `margem`**, nas duas âncoras, que é o que fixa o `n` das células de E5, separado do resto da grade (§2.4). O CV da métrica não serve para isso: quem decide a precisão de uma comparação é a variância da **diferença**, e o fluxo único a deixou maior |
 | Mais | as duas células de cauda (uníssono com horda, e o alvo mais rápido), 500 batalhas cada |
 | Quando | **depois** de N1 a N8 e das bandeiras estarem no motor: a duração muda com N1, e um CV medido antes descreve outro jogo |
+
+**DECISÃO DE 06/09/2026: o piloto deixou de ser pré-requisito e virou confirmação.** O Δ-alvo
+de E5 foi decidido (1 gesto por batalha, `docs/simulacao/ESTADO.md` § "DECIDIDO"), e com ele o
+`n = 2.527` já foi aplicado às 32 células de E5 (tabela de §0.10.1), sem esperar este piloto. O
+`σ` usado para chegar em `2.527` não é o da bandeira `margem`: é o de `ticksDeEntrada`, uma
+bandeira substituta medida por já estar ligada no motor (a `margem` continua no L25, sem
+caminho de produção que a chame). Isso significa que **o `n=2.527` pode estar errado para
+baixo ou para cima** se o `σ` real de `margem` divergir do de `ticksDeEntrada` — o piloto, no
+dia em que rodar, deixa de decidir SE a grade de E5 é viável (já se sabe que é, e cabe inteira
+em tempo de máquina, mesma seção) e passa a decidir SE o `n` já aplicado precisa de ajuste. A
+regra de decisão abaixo (1 a 4) continua valendo para esse ajuste, e o piso de 400 do p95
+citado nela é o mesmo que já entra na tabela de §0.10.1 para as células fora de E5.
 
 **A regra de decisão, escrita antes de rodar:**
 
@@ -2817,6 +2829,18 @@ independentes pode precisar de um `n` muito maior que o das outras células. Ent
 **E se o `n` que sair dali for impraticável, a decisão do fluxo único volta ao chat.** Fica escrito
 para não virar um número que alguém arredonda em silêncio: o preço do fluxo único é pago em batalhas
 nas células de E5, e o piloto é quem diz quanto.
+
+**Isto não aconteceu, e é por isso que o piloto deixou de bloquear (06/09/2026).** Antes do
+piloto da `margem` rodar, a `ticksDeEntrada` (uma bandeira já ligada no motor, substituta da
+`margem`, que continua sem caminho de produção) deu `n = 2.527` para o Δ-alvo decidido, e a
+grade inteira com esse `n` nas 32 células de E5 CABE em tempo de máquina (120.864 batalhas,
+~200 s neste harness — `docs/simulacao/ESTADO.md`, "O QUE ISSO FAZ COM A GRADE"). Como a
+pergunta desta subseção ("o `n` fica impraticável?") já tem resposta negativa com um substituto
+plausível, o `n=2.527` foi aplicado à tabela de §0.10.1 sem esperar a `margem` de verdade. O
+piloto continua valendo, mas como CONFIRMAÇÃO: se o `σ` da `margem` real vier muito diferente
+do de `ticksDeEntrada`, o `n` se ajusta pela mesma regra de decisão (1 a 4, acima); a decisão do
+fluxo único só volta ao chat se esse ajuste tornar a grade impraticável, e não há hoje um teto de
+tempo escrito contra o qual medir isso.
 
 **Ordem de iteração.** Com N4 e N5 (§0.46), a ordem dentro do Tick deixou de ser detalhe de
 implementação e virou regra: declara-se pela cadeia crescente e resolve-se pela inversa. O que esta

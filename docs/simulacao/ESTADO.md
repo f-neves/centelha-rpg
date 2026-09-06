@@ -275,13 +275,27 @@ variância total, quase sem a duração dentro. `r08` e `r09` são as MESMAS bat
 da medição de 11,35 Ticks em toda esta seção — não há duas baterias diferentes
 sendo comparadas por engano.
 
-**A SUA CORREÇÃO DE UNIDADE, e por que ela vale como caso.** Duas constantes
-plausíveis convertiam a mesma unidade (gesto/Tick → gesto/batalha): a média da
-TAXA (`3,72`) e a duração MÉDIA (`50,495`), e a errada (a taxa) dá um resultado
-**~13,6× menor** que a certa (`50,495/3,72 ≈ 13,57`) — e como `n` escala com o
-QUADRADO da constante de conversão, usar a errada faz o `n` parecer **~184×**
-menor do que é (a diferença real entre `n=1` e `n=2.527` observada na rodada
-anterior). Registrado no `CATALOGO.md` como caso novo.
+**A SUA CORREÇÃO DE UNIDADE, e por que ela vale como caso — e por que são DOIS
+números, e não um (CORRIGE 1 da revisora, rodada 13): `184×` e a razão `n=1→
+n=2.527` pareciam a mesma conta, e não são.**
+
+- **`184×` é o erro de CONSTANTE.** Duas constantes plausíveis convertiam a
+  mesma unidade (gesto/Tick → gesto/batalha): a média da TAXA (`3,72`) e a
+  duração MÉDIA (`50,495`); só a segunda fecha dimensionalmente. Convertendo o
+  mesmo Δ (1 gesto/batalha) com a certa, `Δ ≈ 0,0198` gesto/Tick e `n ≈ 2.527`;
+  com a errada, `Δ ≈ 0,269` e `n ≈ 14`. Como `n` escala com o QUADRADO da
+  constante, a razão das duas é `(50,495/3,72)² ≈ 184×`. **Nenhum `n≈14` foi
+  publicado nesta frente**: é uma comparação hipotética entre as duas formas de
+  converter, feita só para medir o custo de errar a constante.
+- **`≈2.550×` é o efeito de NÃO CONVERTER.** O número de fato publicado antes
+  desta correção não vinha de uma constante errada, vinha de tomar Δ = 1
+  gesto/Tick LITERALMENTE, como se essa unidade já fosse o alvo (`n ≈ 1`),
+  contra o mesmo `n ≈ 2.527` da conversão certa. É esta razão, e não `184×`,
+  que separa o `n=1` das tabelas de cima do `n=2.527` decidido nesta seção.
+
+Os dois são reais e os dois valem o registro, mas medem coisas diferentes: um é
+o custo de escolher a constante errada; o outro é o custo de não converter
+nenhuma vez. Registrado assim no `CATALOGO.md`.
 
 **Esta bateria é posterior ao conserto da iniciativa** (ver a seção 3). Os números
 publicados antes dele, inclusive os da `09`, mudaram todos, e a `09` traz o aviso

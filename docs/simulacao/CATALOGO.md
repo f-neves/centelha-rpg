@@ -154,11 +154,23 @@ gesto por batalha), e as duas pareciam plausíveis de cabeça: a TAXA média
 fecha dimensionalmente (`gesto/Tick × Tick/batalha = gesto/batalha`); a primeira
 não fecha (`gesto/Tick × gesto/Tick` não é `gesto/batalha`), mas o número que ela
 produz (`Δ_total/taxa`) tem a aparência certa — sai um número da ordem certa de
-grandeza, só que errado. **O que torna este caso caro, e não só uma conta errada:**
-o `n` de um teste de poder escala com o QUADRADO da constante de conversão, então
-um erro de `13,6×` na constante virou um erro de `184×` no `n` resultante — a
-diferença entre "a grade já basta" (`n=1`) e "a grade não basta" (`n=2.527`) foi,
-em boa parte, essa escolha de constante, não uma propriedade real do desenho.
+grandeza, só que errado. **O que torna este caso caro são DOIS números, e não um
+só** (a revisora pegou os dois sendo tratados como o mesmo, CORRIGE 1 da rodada 13):
+
+- **o erro de CONSTANTE, `184×`:** o `n` de um teste de poder escala com o
+  QUADRADO da constante de conversão. Convertendo o mesmo Δ (1 gesto por
+  batalha) com a constante certa (duração, `50,495`), `n≈2.527`; com a errada
+  (taxa, `3,72`), `n≈14`. A razão das duas é `13,57²≈184×`. É uma comparação
+  entre DUAS FORMAS de converter a mesma coisa; nenhum `n≈14` chegou a ser
+  publicado nesta frente.
+- **o efeito de NÃO CONVERTER, `≈2.550×`:** o número de fato publicado antes da
+  correção não vinha de uma constante errada, vinha de tomar Δ = 1 gesto/Tick
+  LITERALMENTE, como se essa unidade já fosse o alvo (`n≈1`), contra o mesmo
+  `n≈2.527` da conversão certa. É esta razão, e não `184×`, que separa "a grade
+  já basta" (`n=1`) de "a grade não basta" (`n=2.527`).
+
+Os dois são reais e os dois valem o registro, mas medem coisas diferentes: um é
+o custo de escolher a constante errada, o outro é o custo de não converter.
 **A pergunta que teria pego isto ANTES de publicar:** a unidade fecha, membro a
 membro, sem cancelar nada por acidente? `gesto/Tick` dividido por `gesto/Tick`
 devolve um número puro, não um `Tick`; a conta só fazia sentido porque os dois
