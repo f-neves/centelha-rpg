@@ -2118,7 +2118,28 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   condição `correndo`, à mão. É o defeito nomeado no cabeçalho do `src/lib/mesa-condicoes.ts`, e o
   `marcarInvestida` é o molde pronto do conserto dele.
 
-- [x] **L38 · RESOLVIDA em 05/09/2026 · A condição com prazo que não vence** · *a regra saiu da
+  **ACHADO EM 06/09/2026, RESPONDENDO SE ISTO JÁ ESTÁ NA FILA: estava só como nota, e virou item
+  com custo.** A pergunta era só "o Grid aplica ou o mestre digita" — a resposta é **o mestre
+  digita**, hoje, e o custo disso nunca tinha sido contado.
+
+  **O CUSTO, pelo mesmo molde do `custo-tela.mjs`.** Aplicar `correndo` à mão é o caminho do
+  MENU, e não existe caminho mais curto porque `abrirCondicoes` só é chamada de um lugar
+  (`grid.astro:7077`, dentro do `switch` do menu de contexto): botão direito na peça (1) + ◈
+  Condições (1) + clicar o chip "Correndo" no catálogo (1, `mesa-condicoes.ts:100-106`) + fechar
+  o diálogo (1, `mesa-condicoes.ts:126`) = **4 gestos para aplicar**. Tirar quando a Corrida
+  acaba é o MESMO caminho, trocando o chip do catálogo pelo **✕** do chip ativo
+  (`mesa-condicoes.ts:80-85`): mais **4 gestos**. Uma Corrida completa (começa e termina) custa
+  **8 gestos**, contra **0** da Investida, que o tabuleiro aplica e tira sozinho desde a decisão
+  de 05/09 (`marcarInvestida`, `grid.astro:5990`).
+
+  **NÃO ENTRA NA ESCADA DESTA BATERIA, e a razão é a mesma do `modoCorre`/`adiaGolpe` do L48:
+  ocasião zero.** A `decisaoAutomatica` foge com `mov.modo: 'corrida'` direto no objeto da ação
+  (`motor.mjs:249`), sem abrir diálogo nenhum: é o robô fugindo, headless, e ninguém aplica
+  condição em ninguém. O custo dos 8 gestos só existe numa mesa com **Corrida declarada por
+  gente** (perseguir, reposicionar), que esta bateria não tem (`bateria.mjs`, a lista de
+  invenções: nenhuma peça de jogador). **Fica registrado aqui, e não na escada**, para não
+  inventar uma medição sobre cenário que a bateria não roda — a mesma régua que já se aplicou ao
+  redirecionamento do golpe no caído (⚑ do manifesto).
   mesa, a peneira saiu do levantamento, e o par de asserções segura as duas metades.*
 
   **O QUE FOI CONSTRUÍDO.** O `varrerCondicoesVencidas` (`src/lib/artes-grid-mesa.ts`) derruba toda
