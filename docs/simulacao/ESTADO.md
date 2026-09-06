@@ -155,7 +155,7 @@ número.** Uma leitura anterior chamava de "reconciliado" o fato de a subtraçã
 ingênua da tabela e o cenário SEM-GESTO do agregador baterem exato — como se
 fossem duas testemunhas independentes. **Não são: é o mesmo contador**
 (`golpeNoTick`, `scripts/sim/log.mjs:224-226`) **lido por duas exibições
-algebricamente equivalentes** (`ticksComGolpe`, `scripts/sim/agregar.mjs:593`, e
+algebricamente equivalentes** (`ticksComGolpe`, `scripts/sim/agregar.mjs:599`, e
 `comGolpe`, `agregar.mjs:439`, são `t − round(f·t)` e `round((1−f)·t)` sobre os
 mesmos `x.ticks`/`x.fracaoSemGolpe`). Perturbado à mão um golpe numa bateria real
 (1.920 batalhas), os dois se moveram pelo mesmo número, porque é o mesmo evento —

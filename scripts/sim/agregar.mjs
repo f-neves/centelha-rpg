@@ -539,6 +539,12 @@ for (const [id, ls] of daFatia(PRINCIPAL)) {
   // bateria nova em que a soma não fecha tem um buraco no registro. Sem separar
   // as duas, o agregador ou recusaria toda bateria guardada ou engoliria calado
   // uma repartição furada.
+  // A BANDEIRA CONTINUA SIGNIFICANDO ALGO depois da PORTA (validarForma, acima):
+  // `paradasSubLado` é o ÚNICO campo fora de `CAMPOS_TOPO`/`CAMPOS_FASE`, de
+  // propósito (é o legítimo opcional da nota da porta), então a porta não o
+  // exige e não faz esta leitura virar sempre-verdadeira. Conferido no disco em
+  // 06/09/2026: `sanidade` e `conferencia` PASSAM pela porta (não são legado
+  // carimbado) e mesmo assim não têm o campo — `temLado` sai `false` nas duas.
   const temLado = ls.some((l) => l.fases.combate.paradasSubLado);
   // A TRAVA, no molde do D08: a repartição por lado tem de somar o total em
   // TODO tipo, e não só em `declarar`. Se uma parada vier sem peça (ou com um
