@@ -235,6 +235,15 @@ const FICHA_PC = {
  *
  * `desde` é o Tick da declaração, e o abortar precisa dele para dizer quantos
  * Ticks foram para o lixo.
+ *
+ * PROPRIEDADE DA BANCADA, E NÃO DA CENA: só `i % 3 === 0` nasce LIVRE
+ * (`acao: {}`), duas em cada três já têm golpe em andamento no Tick 0. Uma
+ * cena que precisa de uma peça livre para declarar deslocamento SOLTO (arrastar
+ * para um hexágono vazio abre `mov-dlg` só quando `faseEm(acaoNo(c), T) ===
+ * 'livre'`, `grid.astro:5879`) tem de escolher `c000`, `c003`, `c006` ou `c009`
+ * — as demais caem direto em `porNoMapa`, sem diálogo nenhum, e o teste que
+ * espera `mov-dlg` falha com "caixa: null" sem dizer por quê. Achado ao
+ * depurar `cenaTetoForcado` em `test-grid-simultaneo.mjs` (06/09/2026).
  */
 const ACAO = Array.from({ length: N_COMB }, (_, i) => (
   i % 3 === 0 ? {}

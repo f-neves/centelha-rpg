@@ -183,3 +183,8 @@ geral que isso instancia: **migração antes do cliente é segura, cliente antes
   `Write`; busca vai pela ferramenta `Grep` ou por `awk`.
 - **O portão de procedência exige âncora e citação NA MESMA LINHA**, e pareia a citação com
   o ÚLTIMO trecho entre crases da linha.
+- **QUANDO DELEGAR A UM SUBAGENTE, E QUANDO NÃO** (06/09/2026, confirmado pela revisora). Delega
+  quando é **medição pura**, a pergunta é **autocontida** (cabe inteira num prompt, sem ir e
+  voltar) e dá para **conferir o diff antes de aceitar** o resultado. Não delega quando o
+  trabalho é **ler código de produção passo a passo** para achar a causa de algo: aí delegar só
+  troca o tempo de LER pelo de CONFERIR o que o subagente leu, e não economiza nada.
