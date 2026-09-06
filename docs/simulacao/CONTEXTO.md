@@ -45,13 +45,14 @@ equivalentes, que por isso nunca poderiam se discordar. A robustez de verdade ve
 Perturbado à mão numa bateria real, o número não se moveu por essa razão, não pela concordância
 das duas leituras. → o parágrafo inteiro: `ESTADO.md`, seção "O teto, com os consertos...".
 
-**DECISÃO DA MESA, 06/09/2026: a `bmtmbdppb` precisa ser regravada.** O conserto do `frac`
-(`log.mjs`, devolve `null` com Ticks zerados em vez de 0) é da FONTE, e não é retroativo ao
-`.jsonl` já gravado: a bateria publicada segue com o viés na coluna "s/golpe" da fase de fuga da
-tabela A (medido: 0,18 → 0,71 em `coprimo-encostado-1v1`, sem o zero falso) até alguém rodar a
-bateria de novo. Não muda o número da escada (verificado por reagregação, saída idêntica),
-muda só essa coluna. **Ainda sem entrada própria no `Pendencias.md`** — criar uma (ou anexar ao
-L29) é o primeiro passo de quem pegar isto a seguir.
+**A BATERIA PUBLICADA É A `bmtq638zo`**, gravada em 06/09/2026 no commit `40ee8dd`, e ela é a
+regravação da `bmtmbdppb` com o `frac` corrigido (`log.mjs`, devolve `null` com Ticks zerados em
+vez de 0). O agregado é `docs/simulacao/resultados/09-bmtq638zo.txt`. **O que a troca mexeu, e
+foi medido batalha a batalha antes de a tabela ser lida:** das 21.600, **9.830 saem idênticas
+byte a byte** e as outras 11.770 diferem só nos quatro `fracao*` da fase de fuga, que eram `0` e
+viraram `null`. No agregado isso chega em **duas colunas da tabela da fuga** (`s/parada` e
+`s/golpe`), e em mais nada · nenhuma outra célula, contador, tabela ou alarme se moveu, e os dois
+carimbos do cabeçalho (bateria e agregador) são a única outra diferença no arquivo inteiro.
 
 **As 21 funções que a mesa chama e o harness não exercita: RESPONDIDO em 06/09/2026, e agora
 tem dono.** É **sedimentação**, não decisão, e a prova é de medida e não de leitura: a ponte do

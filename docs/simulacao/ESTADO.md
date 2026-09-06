@@ -3,9 +3,17 @@
 **Escrito para quem não acompanhou nenhuma rodada.** Quatro seções e nada além
 delas. Não é a história de como se chegou aqui: é onde estamos.
 
-Todo número desta página sai de `docs/simulacao/resultados/09-bmtmbdppb.txt`, que é
-a saída inteira do agregador sobre a bateria `bmtmbdppb` (21.600 batalhas, 96
-células, zero inválidas, commit `b9fa8ac`, árvore limpa). `R:` é linha nele.
+Todo número desta página sai de `docs/simulacao/resultados/09-bmtq638zo.txt`, que é
+a saída inteira do agregador sobre a bateria `bmtq638zo` (21.600 batalhas, 96
+células, zero inválidas, commit `40ee8dd`, árvore limpa). `R:` é linha nele.
+
+**Ela é a REGRAVAÇÃO da `bmtmbdppb`, feita em 06/09/2026 com o `frac` corrigido**, e
+a única coisa que a troca mexe são **duas colunas da tabela da fase de FUGA**
+(`s/parada` e `s/golpe`), que antes contavam um zero falso onde a fase não
+aconteceu. Medido batalha a batalha: das 21.600, **9.830 saem idênticas byte a
+byte** e as outras 11.770 diferem **só** nos quatro `fracao*` da fuga, que eram
+`0` e viraram `null`. Nenhuma outra célula, contador ou tabela do agregado se
+moveu. A `09-bmtmbdppb.txt` fica no disco como a leitura daquele dia.
 
 **Esta bateria é posterior ao conserto da iniciativa** (ver a seção 3). Os números
 publicados antes dele, inclusive os da `09`, mudaram todos, e a `09` traz o aviso
@@ -166,17 +174,20 @@ poderiam achar um campo sumido só de baterem entre si. Medido no corpus em disc
 batalhas (ela não aconteceu), e o `frac` de origem (`log.mjs:291`) devolvia ZERO
 nesse caso, não ausência — "0% dos Ticks ficaram sem golpe" quando na verdade não
 houve Tick nenhum. Isso puxava a coluna "s/golpe" da fase de fuga na tabela A na
-direção de "sempre teve golpe": na bateria publicada (`bmtmbdppb`), a célula
-`coprimo-encostado-1v1` sai a 0,18 com o zero falso e a 0,71 sem ele, contando só
+direção de "sempre teve golpe": na bateria de então (`bmtmbdppb`), a célula
+`coprimo-encostado-1v1` saía a 0,18 com o zero falso e a 0,71 sem ele, contando só
 as batalhas que de fato fugiram. **O conserto foi na fonte, não em cada leitor**:
 `frac` agora devolve `null` com `ticks` zerado (`log.mjs:291`), e uma porta em
 `agregar.mjs` valida a forma de cada registro ao ler, recusando qualquer campo
 ausente que não seja o único legado conhecido (`paradasSubLado`, de bateria
-anterior ao campo). Isso não reprocessa retroativamente o `.jsonl` já gravado de
-`bmtmbdppb`: o número do degrau final acima (confirmado por reagregação, saída
-idêntica byte a byte) não muda, porque ele só soma a fase de combate, que nunca
-tem zero Ticks; a coluna "s/golpe" da fase de fuga na tabela A, essa sim, continua
-publicando o viés até a bateria ser regravada com o `log.mjs` corrigido.
+anterior ao campo). **O conserto é da FONTE e não é retroativo ao `.jsonl` já
+gravado**, então a bateria foi REGRAVADA em 06/09/2026 (`bmtq638zo`), e é ela que
+esta página publica. O degrau final não mudou, porque ele só soma a fase de
+combate, que nunca tem zero Ticks. Na fuga a correção aparece, e em duas colunas:
+`coprimo-encostado-1v1` vai de 0,18 a **0,71** em `s/golpe`, e `coprimo-media-1v1`
+de 0,06 a **0,21** em `s/parada`. Nesta bateria a fase de fuga tem `ticks = 0` em
+**54,5%** das batalhas (11.770 de 21.600); os 57,1% acima são do corpus inteiro
+dos 19 diretórios, e não desta.
 
 **O que falta para os 99,7% que a seção 2 projeta não é código faltando nestes
 dois degraus: são o item 2 e o item 7, e nenhum dos dois tem número real ainda.**
@@ -517,7 +528,7 @@ ordem de exibição.
 **"184.034" e "2,87" não são desta bateria.** Eles são de `docs/simulacao/
 resultados/09-bmtlxp622.txt` e `09-bmtlw3e2r.txt` (a mesma leitura, duas cópias),
 de ANTES do conserto da iniciativa que este documento avisa logo na abertura.
-A bateria corrente (`bmtmbdppb`) mede **199.238 golpes, 2,68 por Tick que tem
+A bateria corrente (`bmtq638zo`) mede **199.238 golpes, 2,68 por Tick que tem
 golpe** (`R:123`, "O CACHO" do agregado) — mais golpes e uma média um pouco
 menor, o que é coerente com o conserto ter mudado quantos golpes caem no mesmo
 Tick. A conclusão não muda com qual das duas se use: em ambas, a maioria dos
