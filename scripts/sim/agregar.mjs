@@ -118,6 +118,30 @@ function validarForma(l, arquivo, indice) {
       if (!(k in F)) recusar(`CAMPO DE FASE AUSENTE em ${arquivo}:${indice}`, `\`fases.${fase}.${k}\`.`);
     }
   }
+  rastroLado(l, arquivo, indice);
+}
+
+/**
+ * O RASTRO DO ÚNICO CAMPO LEGITIMAMENTE OPCIONAL, achado na rodada 09 (a
+ * revisora, 06/09/2026).
+ *
+ * `paradasSubLado` é opcional POR BATERIA (uma bateria inteira nasce antes ou
+ * depois do campo), e não POR REGISTRO: dentro de uma bateria só, TODO
+ * registro que passa pela porta veio do MESMO `log.mjs`, que sempre grava o
+ * campo desde que ele existe. Um diretório com ALGUNS registros com o campo e
+ * OUTROS sem só acontece juntando arquivos de duas baterias diferentes na
+ * mesma pasta (`faixa-N.jsonl` de uma rodada velha ao lado de uma nova) — e
+ * é exatamente o caso que a trava do `temLado`, mais abaixo, NÃO sabia
+ * diagnosticar: ela vê a soma por lado não fechar e acusa "log.mjs registrou
+ * parada sem lado", que é a causa ERRADA. Esta função pega o caso ANTES,
+ * pela raiz, e nomeia a causa certa.
+ */
+let comLado = 0;
+let semLado = 0;
+let exemploSemLado = null;
+function rastroLado(l, arquivo, indice) {
+  if (l.fases?.combate?.paradasSubLado) comLado += 1;
+  else { semLado += 1; exemploSemLado ??= `${arquivo}:${indice}`; }
 }
 
 // O MANIFESTO ANTES DAS LINHAS, e a ordem é o que permite a recusa NOMEADA
@@ -176,6 +200,24 @@ for (const f of fs.readdirSync(DIR)) {
     validarForma(l, f, i + 1);
     linhas.push(l);
   }
+}
+// O CORPUS MISTO: nem todo-com-lado, nem todo-sem-lado. Recusa aqui, pela
+// causa certa, ANTES da trava de soma (mais abaixo) acusar log.mjs por engano.
+// A REDAÇÃO É PRÓPRIA, e não a do `recusar()` genérico: aquela distingue
+// "legado carimbado" de "esquema desconhecido", e nenhuma das duas é a causa
+// aqui. A causa é hígida: dois `faixa-*.jsonl` de baterias diferentes na
+// MESMA pasta, o que `bateria.mjs` nunca produz sozinho — só acontece por
+// mão humana copiando arquivo de um diretório para outro.
+if (comLado > 0 && semLado > 0) {
+  console.log(`\n✘✘✘ CORPUS MISTO em ${path.relative(RAIZ, DIR)}`);
+  console.log(`    ${comLado} registro(s) têm \`paradasSubLado\` e ${semLado} não`
+    + ` (o primeiro sem, \`${exemploSemLado}\`).`);
+  console.log('    Isto NÃO é log.mjs registrando parada sem lado: dentro de UMA bateria só,');
+  console.log('    todo registro sai do mesmo `log.mjs`, que grava o campo sempre ou nunca.');
+  console.log('    Um diretório com os dois é dois `faixa-*.jsonl` de BATERIAS DIFERENTES');
+  console.log('    juntos na mesma pasta. Separe-os (cada bateria na sua pasta, com o próprio');
+  console.log('    `bateria.json`) e agregue cada uma por si.');
+  process.exit(1);
 }
 const perdidas = fs.existsSync(path.join(DIR, 'perdidas.json'))
   ? JSON.parse(fs.readFileSync(path.join(DIR, 'perdidas.json'), 'utf8')) : [];
@@ -550,12 +592,19 @@ for (const [id, ls] of daFatia(PRINCIPAL)) {
   // TODO tipo, e não só em `declarar`. Se uma parada vier sem peça (ou com um
   // lado que não é `a` nem `b`), ela sumiria da repartição e a linha "um lado à
   // mão" sairia baixa sem nada acusar.
+  //
+  // O CORPUS MISTO JÁ SAIU DAQUI: a checagem de `comLado`/`semLado`, na porta,
+  // recusa ANTES de chegar até aqui um diretório com bateria velha e nova
+  // juntas. Chegando neste `if`, todo registro de `ls` tem o campo (por isso
+  // `temLado` é `true` E não existe `semLado` sobrando) — a única causa que
+  // resta é mesmo `log.mjs` registrando uma parada sem gravar o lado dela.
   if (temLado) {
     for (const t of tipos) {
       if (subLado('a', t) + subLado('b', t) !== sub(t)) {
         console.log(`\n✘✘✘ a repartição por lado de \`${t}\` não soma o total`
           + ` (a ${subLado('a', t)} + b ${subLado('b', t)} ≠ ${sub(t)}):`
-          + ' alguma parada foi registrada sem lado em log.mjs');
+          + ' alguma parada foi registrada sem lado em log.mjs'
+          + ' (não é corpus misto: a porta já teria recusado isso antes).');
         process.exit(1);
       }
     }

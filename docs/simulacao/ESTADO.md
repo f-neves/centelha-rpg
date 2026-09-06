@@ -15,6 +15,17 @@ byte** e as outras 11.770 diferem **só** nos quatro `fracao*` da fuga, que eram
 `0` e viraram `null`. Nenhuma outra célula, contador ou tabela do agregado se
 moveu. A `09-bmtmbdppb.txt` fica no disco como a leitura daquele dia.
 
+**O 9.830 tem uma segunda fonte, achada pela revisora na rodada 09, e as duas não se conheciam
+quando cada uma foi medida.** A comparação byte a byte (rodando o código de antes e o de depois
+lado a lado) e a contagem de `fases.fuga.ticks === 0` na própria `bmtq638zo` (medida numa
+passada anterior, para escrever o parágrafo do CONTEXTO, sem olhar a comparação) chegam ao MESMO
+número por caminhos que não se citam. **Isto não é a `ticksComGolpe`/`comGolpe` de novo**: ali
+era o mesmo contador lido por duas fórmulas algébricas do MESMO arquivo; aqui uma é um diff entre
+DOIS COMMITS diferentes (que teria acusado qualquer corrupção em QUALQUER campo, não só nos
+quatro da fuga) e a outra é uma contagem sobre um campo só, feita antes e sem saber da primeira.
+Reproduz-se sem o código antigo: `fases.fuga.ticks === 0` conta **11.770** de 21.600 na
+`bmtq638zo`, e `21.600 − 11.770 = 9.830` é o mesmo número.
+
 **Esta bateria é posterior ao conserto da iniciativa** (ver a seção 3). Os números
 publicados antes dele, inclusive os da `09`, mudaram todos, e a `09` traz o aviso
 disso na §2.4.
@@ -155,8 +166,8 @@ número.** Uma leitura anterior chamava de "reconciliado" o fato de a subtraçã
 ingênua da tabela e o cenário SEM-GESTO do agregador baterem exato — como se
 fossem duas testemunhas independentes. **Não são: é o mesmo contador**
 (`golpeNoTick`, `scripts/sim/log.mjs:224-226`) **lido por duas exibições
-algebricamente equivalentes** (`ticksComGolpe`, `scripts/sim/agregar.mjs:599`, e
-`comGolpe`, `agregar.mjs:439`, são `t − round(f·t)` e `round((1−f)·t)` sobre os
+algebricamente equivalentes** (`ticksComGolpe`, `scripts/sim/agregar.mjs:648`, e
+`comGolpe`, `agregar.mjs:481`, são `t − round(f·t)` e `round((1−f)·t)` sobre os
 mesmos `x.ticks`/`x.fracaoSemGolpe`). Perturbado à mão um golpe numa bateria real
 (1.920 batalhas), os dois se moveram pelo mesmo número, porque é o mesmo evento —
 não é coincidência, é identidade. **A robustez de verdade vem de outro lugar**: o
