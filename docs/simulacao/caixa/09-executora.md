@@ -46,7 +46,7 @@ não passou pela caixa desde então, e não só o trabalho de hoje.
 | arquivo | o que mudou nele |
 |---|---|
 | `Pendencias.md` | L44 varrida; L45/L46/L47 abertos e fechados; L48 aberto (harness x mesa) e revisado duas vezes no mesmo dia; L27 fechado; item novo na Corrida (8 gestos por ocasião) |
-| `docs/simulacao/CATALOGO.md` | duas formas novas (o portão que casa por texto fixo pegou a si mesmo; o escalar que descreve um conjunto), achadas nos portões da migração 36 |
+| `docs/simulacao/CATALOGO.md` | duas formas novas achadas na revisão do avanço unificado (a asserção esvaziada por mudança de contrato; a que imprime ordinal/contagem cujo denominador é contrato), mais uma quinta acrescentada à família do escalar-que-descreve-um-conjunto |
 | `docs/simulacao/CONTEXTO.md` | reescrito para 06/09/2026: entrada/avanço unificado como "sim", a bateria regravada, o achado das 21 funções com resposta |
 | `docs/simulacao/ESTADO.md` | a citação de `bmtmbdppb` trocada por `bmtq638zo` (a regravação) em toda a página; a nota do teor da correção expandida |
 | `docs/simulacao/06-etapa-0.md` | achado sobre `mesa-mock.mjs`: só 1 em cada 3 peças da bancada nasce LIVRE no Tick 0, as outras já têm golpe em andamento |
