@@ -123,23 +123,36 @@ O isolamento: uma bateria nova, **`bmtqb2vxm`** (mesma regra de hoje, `semente_m
 com `bmtq8zam1` **por `b`** (o índice global da batalha, e não por semente — a
 semente de cada batalha é `hash32(semente_mestre, célula, repetição)`, `bateria.mjs`,
 e por isso muda com o `semente_mestre` mesmo mantendo a mesma célula e a mesma
-repetição; conferido que as 21.600 células batem par a par). O desvio do delta de
-gestos entre estas duas, **sem mudança de regra nenhuma no meio**, é **65,74** (média
-0,12, essencialmente zero, como deveria ser). **65,74 é MAIOR que os 56,58 de
-`r08`×`r09`, não menor.** O ruído domina, e a mudança de regra não deixou marca
-detectável neste desenho: comparar duas sementes diferentes da mesma regra já produz
-mais dispersão do que comparar a mesma semente com a regra mudando. Se houvesse sinal
-contaminando o `56,58`, ele sairia maior que o puro ruído, e saiu menor. **O `56,58`
-não estava inflado pelo próprio efeito que tentava medir** — ao contrário, o
-pareamento por semente idêntica (que preserva o início da trajetória até a primeira
-divergência) cancela mais ruído do que a ausência de mudança de regra por si só.
+repetição; conferido que as 21.600 células batem par a par). **Pareamento por
+ÍNDICE não é o mesmo objeto que pareamento por SEMENTE, e os dois números abaixo
+não são comparáveis por acaso**: `r08`×`r09` compartilham a mesma semente (a mesma
+sequência de rolagens até o instante em que a regra muda a trajetória), e por isso
+herdam o início do caminho aleatório em comum; `bmtqb2vxm`×`bmtq8zam1` compartilham
+só a célula e a repetição, com sequências de rolagem totalmente diferentes desde o
+Tick 1. Postos lado a lado:
+
+| par | o que muda entre os dois lados | desvio do delta de gestos |
+|---|---|---:|
+| `r08` × `r09` | a regra (`ticksDeEntrada`/`contrapé`), semente idêntica | **56,58** |
+| `bmtqb2vxm` × `bmtq8zam1` | só a semente (`semente_mestre`), regra idêntica | **65,74** |
+
+**65,74 é MAIOR que os 56,58, não menor.** O ruído domina, e a mudança de regra não
+deixou marca detectável neste desenho: comparar duas sementes diferentes da mesma
+regra já produz mais dispersão do que comparar a mesma semente com a regra mudando.
+Se houvesse sinal contaminando o `56,58`, ele sairia maior que o puro ruído, e saiu
+menor. **O `56,58` não estava inflado pelo próprio efeito que tentava medir** — ao
+contrário, o pareamento por semente idêntica (que preserva o início da trajetória
+até a primeira divergência) cancela mais ruído do que a ausência de mudança de
+regra por si só. Isto é resultado, não detalhe de método: a comparação que a
+revisora temia inflada é, das duas, a de MENOR desvio.
 
 **O NÚMERO POR TICK, medido dos mesmos dados em disco, sem bateria nova.** A métrica
 principal da grade é gestos **por Tick**, não gestos totais, e por isso o desvio
 certo é outro: sobre os mesmos 19.200 pares de `r08`/`r09`, o delta de `gestos/ticks`
 por batalha tem desvio **0,3553**, sobre uma taxa média de **3,72** gestos por Tick.
 É uma fração pequena da taxa (9,5%), bem menor que os 31% que `56,58/183` dava para o
-total. Com este desvio, os três `n`:
+total. Com este desvio, tomando Δ diretamente na unidade da métrica (gesto por
+Tick):
 
 | detectar um delta de | `n` de batalhas pareadas | procedência |
 |---|---:|---|
@@ -147,21 +160,67 @@ total. Com este desvio, os três `n`:
 | 0,5 gesto/Tick | **≈ 4** | derivado: mesma fórmula, Δ = 0,5 |
 | 0,1 gesto/Tick | **≈ 100** | derivado: mesma fórmula, Δ = 0,1 |
 
-**Os três `n` caem de 25.100/100.500/2.512.000 para 1/4/100.** Medido na métrica que
-a grade de fato usa, os ~500 por célula que ela já planeja sobram, mesmo para um
-delta de um décimo de gesto por Tick — a ordem de grandeza que a previsão
-qualitativa do E5 ("menos de um gesto") sempre presumiu como o efeito a caçar.
+**Uma conferência a mais, pedida antes de aceitar isto: Δ = 1 na métrica por Tick
+não é Δ = 1 por batalha, e a tabela acima só é decisiva se comparar como igual o
+que É igual.** A conversão certa usa a duração MÉDIA das batalhas, **50,495 Ticks**
+(a mesma dos 19.200 pares, seção acima), e não a taxa: 1 gesto por batalha equivale
+a `1/50,495 ≈ 0,0198` gesto por Tick, e 1 gesto por Tick equivale a `≈ 50,5` gestos
+por batalha — não aos 3,72/0,27 de uma conversão pela taxa, que mistura duas
+unidades diferentes (gesto/Tick dividido por gesto/Tick não devolve Tick). Refeita a
+tabela com o Δ **equivalente a um efeito por batalha**, convertido para a métrica
+por Tick:
 
-**O que isto significa, sem decidir nada:** as duas medições apontam na mesma
-direção, e não são a mesma conta pintada duas vezes — uma isola a mudança de regra
-do ruído de semente (a circularidade), a outra isola a métrica certa da variância de
-duração (a unidade). Juntas, elas desfazem a preocupação de que a grade de E5 não
-seria viável como está desenhada: na métrica que ela usa, com o desvio que os dados
-já mostram, os `n` que ela já planeja bastam. **O que fica sem medir é a bandeira
-`margem` em si** — os dois números acima vêm de `ticksDeEntrada`, não dela — e por
-isso o piloto continua sendo o que decide o número de produção, agora como
-confirmação de uma conta que já parece boa, e não como pré-requisito de uma que
-parecia inviável.
+| efeito do tamanho de | Δ em gesto/Tick | `n` de batalhas pareadas | procedência |
+|---|---:|---:|---|
+| 1 gesto/batalha | 0,0198 | **≈ 2.527** | derivado: Δ = 1/50,495, σ = 0,3553 |
+| 0,5 gesto/batalha | 0,0099 | **≈ 10.105** | derivado: Δ = 0,5/50,495 |
+| 0,1 gesto/batalha | 0,00198 | **≈ 252.618** | derivado: Δ = 0,1/50,495 |
+
+**O `n` não fica na casa das dezenas: fica na casa dos milhares, e cresce para
+centenas de milhares no décimo de gesto.** Pelo próprio critério proposto para esta
+conferência, isso quer dizer que **parte do ganho de 25.100→1 era de unidade, e não
+de desenho**: escolher Δ = 1 gesto/Tick sem convertê-lo é escolher um efeito **~50
+vezes maior**, em termos de batalha, do que "1 gesto por batalha" — daí ser trivial
+de detectar. Dito isso, **o ganho não é só de unidade**: `1/50,495 = 0,0198` gesto
+por Tick não converte de volta para `56,58` gestos por batalha ao multiplicar pela
+duração média; o desvio real por Tick, reconvertido (`0,3553 × 50,495 ≈ 17,94`), é
+**um terço do `56,58` medido direto** — a métrica por Tick tira parte real da
+variância de duração, só que menos do que a comparação ingênua (`1` contra
+`25.100`) parecia mostrar. Os `n` corretos, para efeitos do tamanho de 1/0,5/0,1
+gesto por batalha, medidos e convertidos coerentemente, são **≈2.527 / 10.105 /
+252.618** — cerca de **dez vezes menores** que os da métrica total (25.100/100.500/
+2.512.000), não vinte e cinco mil vezes.
+
+**O QUE A PREVISÃO ESCRITA DO E5 REALMENTE DIZ, e em qual unidade.** A única
+previsão está em `05-fechamento.md:429`: *"a carga por Tick com o perfil cheio fica
+a menos de um gesto da carga com tudo desligado"* — **é por Tick**, escrito assim,
+não por batalha. Isso alinha a unidade da tabela de cima (gesto/Tick) com a da
+previsão, sem conversão nenhuma: testar Δ = 1 gesto/Tick é testar exatamente o
+limite que a previsão nomeia. **Mas a previsão só fixa um TETO ("menos de um"), não
+um valor** — não diz se o efeito verdadeiro é 0,9 ou 0,0001 gesto/Tick, e por isso
+nenhuma das duas tabelas acima tem um Δ único e correto: ⚑ **o Δ que importa para o
+E5 não está escrito em lugar nenhum**, e a conta de poder continua rodando sobre um
+alvo que ninguém fixou. Ambas as leituras ficam registradas porque nenhuma decide
+sozinha: **se o efeito relevante for próximo de "menos de um gesto/Tick" (a leitura
+literal da previsão), `n` fica na casa das dezenas/centenas** (tabela de cima);
+**se o efeito relevante for próximo de "um gesto por batalha" (a leitura que torna
+o número comparável ao resto deste documento, que sempre falou em gestos por
+batalha), `n` fica na casa dos milhares** (tabela de baixo).
+
+**O que isto significa, sem decidir nada:** as duas medições de ruído (circularidade
+e unidade) seguem de pé, e a mais importante não mudou — o `56,58`/`0,3553` não
+estavam inflados pelo efeito que tentavam medir, o isolamento provou o contrário. O
+que mudou é a conclusão sobre viabilidade: ela **não é mais "os `n` já bastam"**,
+porque isso dependia de tomar Δ = 1 gesto/Tick como o efeito a caçar sem checar se
+esse Δ correspondia a um efeito plausível em escala de batalha. Convertido
+corretamente, o `n` para um efeito do tamanho de "um gesto por batalha" está na
+casa dos milhares (2.527), não das dezenas — acima dos ~500 por célula que a grade
+já planeja, ainda que bem abaixo dos 25.100 da métrica total. **O que fica sem
+medir continua sendo a bandeira `margem` em si** (os números acima vêm de
+`ticksDeEntrada`) **e agora também o próprio Δ-alvo do E5**, que nenhum documento
+fixa. O piloto continua sendo quem decide o `n` de produção, e deixou de ser
+confirmação de uma conta já boa: voltou a ser pré-requisito, porque o efeito que
+ele mediria não está definido em tamanho nem em unidade.
 
 **Esta bateria é posterior ao conserto da iniciativa** (ver a seção 3). Os números
 publicados antes dele, inclusive os da `09`, mudaram todos, e a `09` traz o aviso
