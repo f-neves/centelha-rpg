@@ -26,6 +26,33 @@ quatro da fuga) e a outra é uma contagem sobre um campo só, feita antes e sem 
 Reproduz-se sem o código antigo: `fases.fuga.ticks === 0` conta **11.770** de 21.600 na
 `bmtq638zo`, e `21.600 − 11.770 = 9.830` é o mesmo número.
 
+**A `bmtq638zo` é POSTERIOR à REGRAVAÇÃO da fuga e ANTERIOR à ENTRADA ESCALONADA**,
+ligada em 06/09/2026 (`ticksDeEntrada`, `Pendencias.md` L48): quem rodar o código de
+hoje não reproduz mais este arquivo, reproduz o próximo (`bmtq8zam1`). A escada e o
+custo de tela abaixo, que são o que este documento mede, continuam vindo daqui,
+porque a entrada escalonada não muda nenhum deles de forma que valha regravar a
+página inteira — ver o parágrafo a seguir com a medição própria, feita na bateria
+nova, sobre o que ela de fato muda.
+
+**O QUE A ENTRADA ESCALONADA MUDOU, medido comparando `bmtq638zo` (sem ela) com
+`bmtq8zam1` (com ela), batalha a batalha na mesma semente.** A duração MÉDIA não
+se move: 50,499 → 50,492 Ticks nas 19.200 batalhas que terminam nas duas (uma
+diferença de −0,007, ruído). **Célula a célula ela se move, e para os dois
+lados**: `coprimo-encostado-2x8` vai de 17,2 para 19,1 Ticks; `coprimo-media-2x8`
+de 30,4 para 28,1; `coprimo-extrema-3x3` de 52,3 para 53,5. A distribuição das
+diferenças POR BATALHA (não por célula) mostra a mesma coisa numa escala maior:
+33,9% ficam idênticas, 12,5% mudam por exatamente 1 Tick, e o resto se espalha
+de −65 a +65 Ticks, com nós em ±8 e ±16. **Não é ruído aleatório, é sensibilidade
+a condição inicial**: atrasar a entrada de uma peça em 1 Tick muda QUEM alcança
+QUEM primeiro numa perseguição, e essa mudança se propaga e amplifica pelo resto
+da batalha — a mesma dinâmica caótica que já explica por que os eixos "explicam
+58× mais que o acaso" e não 100%. O trabalho total do mestre (gestos, fase de
+combate) cai de 1.171.957 para 1.166.168 (−0,5%), pequeno mas real, coerente com
+a redistribução: entrar em Ticks diferentes espalha o pico de declarações do
+Tick 1, e é isso que a coluna `pico` de paradas/Tick também mostra caindo nas
+células mais cheias (2×8). O agregado inteiro está em
+`docs/simulacao/resultados/09-bmtq8zam1.txt`.
+
 **Esta bateria é posterior ao conserto da iniciativa** (ver a seção 3). Os números
 publicados antes dele, inclusive os da `09`, mudaram todos, e a `09` traz o aviso
 disso na §2.4.

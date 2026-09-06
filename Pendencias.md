@@ -2959,6 +2959,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   pelos dois; **zero** eram chamadas só pelo harness; **21 funções** eram chamadas pela mesa
   (as duas abas mais o `mesa-tempo-ui.ts`) e ausentes do harness. A relação é de subconjunto
   ESTRITO, e é o zero que a torna estrita. **Depois do balde B, são 22 nos dois e 19 só na
+  mesa; depois de ligar `ticksDeEntrada`/`contrapeEm`/`contrapeDe`, são 25 nos dois e 16 só na
   mesa** · o portão guarda o número corrente, este parágrafo guarda o de origem.
 
   **POR QUE NENHUM OUTRO INSTRUMENTO ACHA ISTO.** O espelho de motor compara o harness com a
@@ -2996,7 +2997,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   |---|---|---|
   | **A · sem ocasião num laço headless** (8) | `fita`, `resumoDaAcao`, `combateDaMesa`, `ehSimultaneo`, `rolaNoSite`, `comOverride`, `anatomiaLivre`, `acaoVazia` | são tela ou configuração: as duas primeiras desenham, as três seguintes leem uma configuração que a bateria fixa, `comOverride` e `anatomiaLivre` são caminhos de diálogo, e `acaoVazia` responde uma pergunta mais larga (inclui Pressão) que a política automática nunca produz. **Escrever isto uma vez ao lado dos números e fechar.** É a única parte da lista que é escopo de verdade |
   | **B · [FECHADO em 06/09/2026] duas implementações da mesma pergunta** (2) | `temGesto`, `proximoGolpe` | `temGesto` era cópia de mesmo nome no `motor.mjs`, com o mesmo corpo, e a ponte já exportava o original: a cópia saiu, `resolverContra` chama `L.temGesto` (`motor.mjs:362`), e a saída da batalha de controle (300 batalhas, semente `20260903`) saiu byte a byte idêntica. `proximoGolpe` estava reimplementado em linha, em dois pontos de `avancarTickSimultaneo`; os dois viraram `L.proximoGolpe(...)` (`motor.mjs:138`, `motor.mjs:145`), mesma conferência. `proximoGolpe` entrou na ponte (só faltava lá). Conferido: `custo-tela.mjs` NÃO responde a mesma pergunta que `temGesto` — a tabela `CUSTO` mapeia TIPO DE PARADA → cliques, e `temGesto` pergunta se UMA `Acao` tem golpe agendado; nenhuma linha do arquivo testa `.golpes.length`. Não há o que tirar nem migrar lá |
-  | **C · divergência de fidelidade REAL, com ocasião nesta bateria** (8) | `ticksDeEntrada`, `contrapeEm`, `contrapeDe`, `ticksDeDeslocamento`, `abortar`, `foraDeHora`, `atrasarGesto`, `podeSerInterrompido` | é aqui que mora o encurtamento. Tamanho medido em 06/09/2026: ver o parágrafo abaixo |
+  | **C · [3 DE 8 FECHADOS em 06/09/2026] divergência de fidelidade REAL, com ocasião nesta bateria** (8) | `ticksDeEntrada`, `contrapeEm`, `contrapeDe` ligados e medidos; `ticksDeDeslocamento`, `abortar`, `foraDeHora`, `atrasarGesto`, `podeSerInterrompido` seguem abertos | os três ligados: efeito líquido zero na duração média, redistribuição real célula a célula (sensibilidade a condição inicial), −0,5% no trabalho total do mestre. Os cinco que sobram exigem decisão de política antes de motor: ver o parágrafo abaixo |
   | **D · divergência REAL, SEM ocasião nesta bateria** (3) | `tetoDaRajada`, `modoCorre`, `adiaGolpe` | as duas últimas ENTRARAM neste balde em 06/09/2026, corrigindo a lista de origem: ver o parágrafo abaixo |
 
   **CORREÇÃO AO PRÓPRIO RELATO ANTERIOR, achada ao medir o tamanho do balde C em 06/09/2026:
@@ -3042,16 +3043,33 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   trabalho de design antes de ser trabalho de motor — não dá para "ligar" o que ainda não foi
   desenhado.
 
-  **O `ticksDeEntrada` É O PRIMEIRO, E CABE ANTES DO ELENCO NOVO.** Custo: uma linha em
-  `cena.mjs` (o `tick: 0` de toda peça vira o Tick da entrada), porque a guarda do motor já
-  existe (`if ((c.tick ?? 0) > T) continue`, `motor.mjs:166`), e o contrapé, na mesa, é
-  **mostrado e não descontado**, então não aplicá-lo é o comportamento fiel e não um atalho.
-  **MAS O QUE ELE MEDE COM O ELENCO DE HOJE É MENOS DO QUE PARECE**, e isso decide a ordem:
-  medido sobre as 21.600 cenas do plano, a entrada escalonada põe **23,4% das peças no Tick 1 e
-  76,6% no Tick 2, e nenhuma peça no Tick 3 ou no 4** · a régua vai até o Tick 4, e o elenco de
-  dois arquétipos não tem vão de iniciativa para chegar lá (`iniciativaDaPeca` soma 1 a 6 sobre
-  uma base quase igual nos dois). Ligar agora prova o mecanismo e mede um degrau; a FAIXA da
-  régua só aparece com o elenco novo. As duas coisas se somam, e a ordem barata é esta.
+  **O `ticksDeEntrada` [LIGADO E MEDIDO em 06/09/2026] ERA O PRIMEIRO, E CABIA ANTES DO ELENCO
+  NOVO.** Custo: uma linha em `cena.mjs` (o `tick: 0` de toda peça vira o Tick da entrada), porque
+  a guarda do motor já existia (`if ((c.tick ?? 0) > T) continue`, `motor.mjs:166`), e o contrapé,
+  na mesa, é **mostrado e não descontado**, então não aplicá-lo era o comportamento fiel e não um
+  atalho. **O QUE ELE MEDIA COM O ELENCO DE HOJE ERA MENOS DO QUE PARECIA**, e isso decidiu a
+  ordem: medido sobre as 21.600 cenas do plano, a entrada escalonada põe **23,4% das peças no
+  Tick 1 e 76,6% no Tick 2, e nenhuma peça no Tick 3 ou no 4** · a régua vai até o Tick 4, e o
+  elenco de dois arquétipos não tem vão de iniciativa para chegar lá (`iniciativaDaPeca` soma 1 a
+  6 sobre uma base quase igual nos dois). Ligado junto com `contrapeEm`/`contrapeDe` (o par que
+  carrega o placeholder da entrada para a primeira declaração de verdade, sem o qual o contrapé
+  sumia no instante em que a peça agia pela primeira vez) e medido numa bateria nova
+  (`bmtq8zam1`, commit `f1e0b79`, comparada com `bmtq638zo` batalha a batalha).
+
+  **O RESULTADO, e ele é mais interessante do que "mudou X Ticks": a duração MÉDIA não se move**
+  (50,499 → 50,492 Ticks nas 19.200 batalhas que terminam nas duas, diferença de ruído), **mas
+  célula a célula ela se move para os dois lados** (`coprimo-encostado-2x8`: 17,2 → 19,1;
+  `coprimo-media-2x8`: 30,4 → 28,1), e a distribuição POR BATALHA mostra sensibilidade à condição
+  inicial e não ruído: 33,9% ficam idênticas, 12,5% mudam por exatamente 1 Tick, e o resto se
+  espalha de −65 a +65 Ticks. Atrasar a entrada de uma peça por 1 Tick muda quem alcança quem
+  primeiro numa perseguição, e isso se propaga e amplifica — a mesma dinâmica que já faz os eixos
+  "explicarem 58× mais que o acaso" e não 100%. O trabalho total do mestre cai 0,5%
+  (1.171.957 → 1.166.168 gestos), pequeno mas real: entrar em Ticks diferentes espalha o pico de
+  declarações do Tick 1 nas células mais cheias. Detalhe completo, com a régua da comparação:
+  `docs/simulacao/ESTADO.md`, o parágrafo "O QUE A ENTRADA ESCALONADA MUDOU".
+
+  **O que fica aberto:** o elenco de dois arquétipos continua sem vão de iniciativa para o Tick 3
+  ou 4 da régua — a FAIXA completa da régua ainda espera o elenco novo, como já estava escrito.
 
 ## H. Arremesso
 
