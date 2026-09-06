@@ -77,30 +77,94 @@ const CAMPOS_FASE = [
   'fracaoSemResolucao', 'fracaoSemGolpe', 'ticksMortos', 'fracaoMorta',
   'ticksSoIII', 'ticksSoIIIPiso',
 ];
+/**
+ * A RECUSA, e ela tem duas redações.
+ *
+ * Bateria CARIMBADA como legado (a tabela `LEGADO`, mais abaixo) recusa dizendo
+ * a data, o tamanho e o que faltava naquele dia. Bateria desconhecida recusa
+ * dizendo o que fazer. A diferença não é cosmética: a primeira frase impede a
+ * leitura errada de que o agregador quebrou, que é o que uma pasta de 03/09
+ * produz hoje se alguém a citar.
+ */
+function recusar(cabecalho, detalhe) {
+  const L = LEGADO[manifesto.run_id];
+  console.log(`\n✘✘✘ ${cabecalho}`);
+  console.log(`    ${detalhe}`);
+  if (L) {
+    console.log(`\n    ESTA BATERIA É LEGADO, e o script NÃO está quebrado.`);
+    console.log(`    \`${manifesto.run_id}\` · ${L.pasta} · ${L.batalhas.toLocaleString('pt-BR')} batalhas`
+      + ` · ${manifesto.iso?.slice(0, 10) || '?'} · commit ${L.commit}`);
+    console.log(`    Falta nela: ${L.falta}.`);
+    console.log('    Os campos NASCERAM DEPOIS dela, então eles nunca foram medidos naquelas');
+    console.log('    batalhas, e agregá-las seria inventar zero em coisa que ninguém contou.');
+    console.log('    Ela fica no disco como história; número publicado não sai daqui.');
+  } else {
+    console.log('\n    Esquema mais velho do que este agregador lê (ver a nota da PORTA, no topo');
+    console.log('    do arquivo). Se for bateria legítima de antes deste campo existir, carimbe-a');
+    console.log(`    na tabela \`LEGADO\` (a chave é o \`run_id\`, aqui \`${manifesto.run_id}\`)`);
+    console.log('    em vez de afrouxar a lista de campos.');
+  }
+  process.exit(1);
+}
+
 function validarForma(l, arquivo, indice) {
   for (const k of CAMPOS_TOPO) {
-    if (!(k in l)) {
-      console.log(`\n✘✘✘ CAMPO AUSENTE em ${arquivo}:${indice}: \`${k}\` não existe neste registro.`);
-      console.log('    Esquema mais velho do que este agregador lê (ver a nota da PORTA, no topo');
-      console.log('    do arquivo). Se for bateria legítima de antes deste campo existir, carimbe-a');
-      console.log('    como legado explícito em vez de afrouxar esta lista.');
-      process.exit(1);
-    }
+    if (!(k in l)) recusar(`CAMPO AUSENTE em ${arquivo}:${indice}`, `\`${k}\` não existe neste registro.`);
   }
   for (const fase of ['combate', 'fuga']) {
     const F = l.fases?.[fase];
-    if (!F) {
-      console.log(`\n✘✘✘ FASE AUSENTE em ${arquivo}:${indice}: \`fases.${fase}\` não existe neste registro.`);
-      process.exit(1);
-    }
+    if (!F) recusar(`FASE AUSENTE em ${arquivo}:${indice}`, `\`fases.${fase}\` não existe neste registro.`);
     for (const k of CAMPOS_FASE) {
-      if (!(k in F)) {
-        console.log(`\n✘✘✘ CAMPO DE FASE AUSENTE em ${arquivo}:${indice}: \`fases.${fase}.${k}\`.`);
-        process.exit(1);
-      }
+      if (!(k in F)) recusar(`CAMPO DE FASE AUSENTE em ${arquivo}:${indice}`, `\`fases.${fase}.${k}\`.`);
     }
   }
 }
+
+// O MANIFESTO ANTES DAS LINHAS, e a ordem é o que permite a recusa NOMEADA
+// abaixo: sem ele a porta só sabe dizer "falta um campo", e quem citar uma
+// bateria velha lê isso como script quebrado.
+const manifesto = JSON.parse(fs.readFileSync(path.join(DIR, 'bateria.json'), 'utf8'));
+
+// ================================================================= o legado
+//
+// AS CINCO BATERIAS QUE A PORTA RECUSA, carimbadas em 06/09/2026 com a data e o
+// motivo. Elas não estão quebradas e o script não está quebrado: elas são
+// ANTERIORES aos campos que este agregador lê, e a lista existe para que citar
+// uma delas devolva a frase certa em vez de um "campo ausente" que parece
+// defeito. Medidas no corpus em disco no mesmo dia (19 diretórios, 288.900
+// batalhas): 68.100 batalhas em cinco pastas, todas de 03/09/2026.
+//
+// A CHAVE É O `run_id`, e não o nome da pasta. A pasta é datável e por isso o
+// carimbo é conferível de fora (`.sim/2026-09-03*`), mas nome de pasta se
+// renomeia e `run_id` não: ele é sorteado uma vez, no manifesto, e viaja com os
+// dados. É a mesma régua do "achar por CHAVE e nunca por posição".
+//
+// E ELAS CONTINUAM RECUSADAS, e o carimbo não é uma exceção que as deixa entrar:
+// os campos que faltam nunca foram MEDIDOS naquelas batalhas, e agregá-las seria
+// inventar zero em coisa que ninguém contou. O carimbo muda a mensagem, não o
+// veredito.
+const LEGADO = {
+  bmtkzaulr: {
+    pasta: '.sim/2026-09-03', batalhas: 3300, commit: '8cd8f28',
+    falta: 'as duas FASES (combate e fuga) e os oito contadores por classe de parada',
+  },
+  bmtl0nvv1: {
+    pasta: '.sim/2026-09-03-grande', batalhas: 10800, commit: '3544505',
+    falta: '`classeDoTipo`, os quatro `gestos*` por classe, as duas frações de iii e os dois `*Mortos`',
+  },
+  bmtl2cezq: {
+    pasta: '.sim/2026-09-03-v2', batalhas: 10800, commit: 'fdc9eab',
+    falta: 'os mesmos da `bmtl0nvv1`: é a rerrodada dela com o mapa aberto',
+  },
+  bmtlojkjx: {
+    pasta: '.sim/2026-09-03b', batalhas: 21600, commit: '02f9a3a',
+    falta: '`ticksMortos` e `fracaoMorta`, que nasceram com o PISO do avanço automático',
+  },
+  bmtlpjjpk: {
+    pasta: '.sim/2026-09-03c', batalhas: 21600, commit: '2df566f',
+    falta: 'os mesmos da `bmtlojkjx`',
+  },
+};
 
 const linhas = [];
 for (const f of fs.readdirSync(DIR)) {
@@ -113,7 +177,6 @@ for (const f of fs.readdirSync(DIR)) {
     linhas.push(l);
   }
 }
-const manifesto = JSON.parse(fs.readFileSync(path.join(DIR, 'bateria.json'), 'utf8'));
 const perdidas = fs.existsSync(path.join(DIR, 'perdidas.json'))
   ? JSON.parse(fs.readFileSync(path.join(DIR, 'perdidas.json'), 'utf8')) : [];
 

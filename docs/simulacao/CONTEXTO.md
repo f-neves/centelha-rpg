@@ -53,12 +53,12 @@ bateria de novo. Não muda o número da escada (verificado por reagregação, sa
 muda só essa coluna. **Ainda sem entrada própria no `Pendencias.md`** — criar uma (ou anexar ao
 L29) é o primeiro passo de quem pegar isto a seguir.
 
-**O achado das 21 funções que a mesa chama e o harness de simulação não exercita nenhuma delas,
-06/09/2026, sem dono em arquivo nenhum.** A pergunta em aberto, e ela decide se é achado ou
-ruído: esse subconjunto existe **por decisão** (funções que dependem de jogador humano, de
-bandeira desligada, de UI que a bateria não tem como acionar) ou **por sedimentação** (ninguém
-olhou, e a lista só cresce)? Sem essa resposta não dá para saber se é um buraco de cobertura
-(família do **L30**) ou o esperado.
+**As 21 funções que a mesa chama e o harness não exercita: RESPONDIDO em 06/09/2026, e agora
+tem dono.** É **sedimentação**, não decisão, e a prova é de medida e não de leitura: a ponte do
+harness exporta 15 nomes que ele nunca chama, e um deles (`temGesto`) está reimplementado em
+cópia local no `motor.mjs`. Lista de escopo decidido não carrega quinze nomes que ninguém pediu.
+→ o levantamento, os quatro baldes e o custo de cada um: `Pendencias.md` **L48**. Quem guarda o
+número daqui em diante é o `scripts/test-cobertura-lib.mjs`, no `validate`.
 
 ## A fase corrente
 

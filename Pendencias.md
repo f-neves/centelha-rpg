@@ -1875,15 +1875,13 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   frente (61,8% e 93,7%) foi publicado como limite natural e era o alcance dos
   consertos daquele dia.
 
-- [ ] **L27 · [METADE FEITA em 03/09, na rodada 02 da caixa] Apagar `rpg-system/centelha-revisora/`
-  e tirar a linha do `.gitignore` junto.** A linha saiu (as cinco, com o comentário), que era a
-  metade que importava: a regra permanente escondendo um caminho que não devia existir. A pasta
-  **não saiu**: na hora de apagar, ela já não tinha o `CLAUDE.md` descrito abaixo (alguém o tirou
-  antes) e estava **presa por outro processo** ("being used by another process"), provavelmente
-  um shell com o diretório de trabalho dentro dela; sobrava um `bash.exe.stackdump`, que o
-  `.gitignore` já cobre por conta própria. A árvore continua limpa sem a linha, porque a pasta
-  não tem arquivo rastreável. **O que falta:** fechar o processo que a segura e apagar a pasta
-  vazia (`rmdir centelha-revisora`). É de quem tiver o terminal aberto nela.
+- [x] **L27 · [FECHADO em 06/09/2026] Apagar `rpg-system/centelha-revisora/`
+  e tirar a linha do `.gitignore` junto.** A linha saiu em 03/09 (as cinco, com o comentário),
+  que era a metade que importava: a regra permanente escondendo um caminho que não devia existir.
+  A pasta saiu em 06/09, depois de a máquina reiniciar: o que a segurava era um processo, e não
+  um arquivo, então a espera era pelo reinício e não por trabalho. Dentro dela sobrava só um
+  `bash.exe.stackdump`, que o `.gitignore` já cobre por conta própria; foi o que fez o `rmdir`
+  reclamar de "directory not empty" e o `rm -rf` resolver. A árvore continua limpa.
 
   O texto original, para a história: a pasta foi engano de caminho na montagem da frente de
   revisão: o worktree de verdade mora fora daqui (`../centelha-revisora`), e o que ficou na raiz é
@@ -2930,6 +2928,59 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   texto fixo já custou caro nesta mesa. Não é urgente e não trava nada hoje; entra na fila para
   quando alguém mexer na frase do título do "⏭" ou fizer uma varredura geral desta família de
   defeito, e não como exceção documentada.
+
+- [ ] **L48 · [ABERTO · A RESPOSTA É SEDIMENTAÇÃO] O harness chama 20 funções da lib, e a mesa
+  chama 41.** *Medido pela revisora em 06/09/2026 e reproduzido pelo portão no mesmo dia.*
+
+  **Os números, e quem os guarda é o `scripts/test-cobertura-lib.mjs`:**
+  `src/lib/combate-tempo.ts` exporta **63** (51 funções, 12 constantes); **20** são chamadas
+  pelos dois; **zero** são chamadas só pelo harness; **21 funções** são chamadas pela mesa
+  (as duas abas mais o `mesa-tempo-ui.ts`) e ausentes do harness. A relação é de subconjunto
+  ESTRITO, e é o zero que a torna estrita.
+
+  **POR QUE NENHUM OUTRO INSTRUMENTO ACHA ISTO.** O espelho de motor compara o harness com a
+  mesa Tick a Tick, e o que ele compara é o que os DOIS executam: função que só um lado chama
+  não produz divergência nenhuma, porque não há o que divergir. A ausência é muda por
+  construção. Por isso o instrumento não é asserção nova dentro do espelho: é uma comparação
+  de CONJUNTOS fora dele.
+
+  **POR DECISÃO OU POR SEDIMENTAÇÃO?** Por **sedimentação**, e a prova não é de leitura, é de
+  medida: a própria ponte (`scripts/sim/lib-ponte.mjs`) exporta **15 nomes que o harness nunca
+  chama** · `penDadosDaRegua`, `contrapeDe`, `temGesto`, `vizinhos`, `HEX_HASTE`,
+  `HEX_CORPO_A_CORPO`, `fonteRolada`, `defesaEfetiva`, `qaDaPeca`, `errouPor`, `saidaDoAtaque`,
+  `somarCondicoes`, `deslocamento`, `semeado`, `PERFIL_CORRENTE`. Uma lista de escopo decidido
+  não carrega quinze nomes que ninguém pediu; uma lista que cresceu por necessidade e nunca foi
+  podada carrega. E o caso que fecha o argumento: a ponte exporta `temGesto` **e o harness
+  define uma cópia local, com o mesmo nome e o mesmo corpo** (`motor.mjs:40`, `const temGesto`),
+  com o comentário dizendo que é "para o laço ler igual à mesa". Ninguém decide isso; isso
+  acontece.
+
+  **A CONSEQUÊNCIA, e ela é a razão de o item existir:** das 21, dez foram lidas uma a uma e
+  **nove ALONGAM** a batalha da mesa (entrada escalonada, contrapé, abortar, gesto adiado,
+  passo pago na Recuperação, interrupção) e **uma encurta** (`modoCorre`, que abre a travessia
+  onde a mesa não deixa). As duas direções dão o mesmo resultado: **a batalha do harness acaba
+  antes da batalha da mesa**, e a duração é o multiplicador de tudo que a bateria publica.
+
+  **AS 21, EM QUATRO BALDES.** Cada linha é um item; fechar um é fazer o harness chamar a
+  função, ou escrever por que ele nunca vai chamar.
+
+  | balde | as funções | o que fazer |
+  |---|---|---|
+  | **A · sem ocasião num laço headless** (8) | `fita`, `resumoDaAcao`, `combateDaMesa`, `ehSimultaneo`, `rolaNoSite`, `comOverride`, `anatomiaLivre`, `acaoVazia` | são tela ou configuração: as duas primeiras desenham, as três seguintes leem uma configuração que a bateria fixa, `comOverride` e `anatomiaLivre` são caminhos de diálogo, e `acaoVazia` responde uma pergunta mais larga (inclui Pressão) que a política automática nunca produz. **Escrever isto uma vez ao lado dos números e fechar.** É a única parte da lista que é escopo de verdade |
+  | **B · duas implementações da mesma pergunta** (2) | `temGesto`, `proximoGolpe` | `temGesto` é cópia de mesmo nome em `motor.mjs:40`, e a ponte JÁ exporta o original: o conserto é trocar a cópia pela chamada, e não muda número nenhum, porque os corpos são idênticos. `proximoGolpe` está reimplementado em linha (`Math.min(...L.golpesNoAr(...))`, `motor.mjs:149`). **Os dois mais baratos da lista** |
+  | **C · divergência de fidelidade REAL, com ocasião nesta bateria** (10) | `ticksDeEntrada`, `contrapeEm`, `contrapeDe`, `ticksDeDeslocamento`, `modoCorre`, `abortar`, `foraDeHora`, `atrasarGesto`, `adiaGolpe`, `podeSerInterrompido` | é aqui que mora o encurtamento. Cada uma é um experimento próprio, e o primeiro é o `ticksDeEntrada` |
+  | **D · divergência REAL, SEM ocasião nesta bateria** (1) | `tetoDaRajada` | a cena fixa `manobra: 'simples'` (`cena.mjs:177`) e o motor só usa a manobra quando `an.golpes > 1` (`motor.mjs:281`): a rajada não acontece. É item da bateria de COMPARAÇÃO DE REGRAS, que ainda não pode existir (as bandeiras do L25) |
+
+  **O `ticksDeEntrada` É O PRIMEIRO, E CABE ANTES DO ELENCO NOVO.** Custo: uma linha em
+  `cena.mjs` (o `tick: 0` de toda peça vira o Tick da entrada), porque a guarda do motor já
+  existe (`if ((c.tick ?? 0) > T) continue`, `motor.mjs:166`), e o contrapé, na mesa, é
+  **mostrado e não descontado**, então não aplicá-lo é o comportamento fiel e não um atalho.
+  **MAS O QUE ELE MEDE COM O ELENCO DE HOJE É MENOS DO QUE PARECE**, e isso decide a ordem:
+  medido sobre as 21.600 cenas do plano, a entrada escalonada põe **23,4% das peças no Tick 1 e
+  76,6% no Tick 2, e nenhuma peça no Tick 3 ou no 4** · a régua vai até o Tick 4, e o elenco de
+  dois arquétipos não tem vão de iniciativa para chegar lá (`iniciativaDaPeca` soma 1 a 6 sobre
+  uma base quase igual nos dois). Ligar agora prova o mecanismo e mede um degrau; a FAIXA da
+  régua só aparece com o elenco novo. As duas coisas se somam, e a ordem barata é esta.
 
 ## H. Arremesso
 
