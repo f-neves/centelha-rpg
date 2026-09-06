@@ -142,7 +142,27 @@ function opcoesHTML(opcoes: Opcao[]): string {
   return saida.join('');
 }
 
+// QUANTAS VEZES UM HUMANO FOI CONSULTADO NESTA ABA, desde que a página abriu.
+//
+// Existe para quem precisa saber "alguém foi parado para decidir algo?" sem
+// enumerar os pontos de chamada — enumerar é frágil (é a mesma forma do
+// "conserto por rota" que já custou caro nesta mesa: um caminho novo de
+// consulta nasce em outro arquivo e o contador nem sabe que devia contá-lo).
+// `montar` é o ÚNICO lugar por onde `uiConfirmar`, `uiPerguntar`,
+// `uiFormulario` e `uiEscolher` abrem diálogo — um ponto, e não quatro.
+//
+// `uiPainel` NÃO passa por aqui de propósito: ele não pergunta nada, devolve
+// um corpo vazio para quem chamou desenhar o que quiser (é o caso da folha do
+// golpe, que usa um `<dialog>` próprio). Contar os dois juntos misturaria
+// "alguém foi consultado" com "uma tela apareceu", que são coisas diferentes.
+let CONSULTAS = 0;
+/** Ver o comentário de `CONSULTAS`, acima. */
+export function contadorDeConsultas(): number {
+  return CONSULTAS;
+}
+
 function montar(cfg: Cfg): Promise<Resultado> {
+  CONSULTAS += 1;
   return new Promise((resolve) => {
     const campos = cfg.campos || [];
     const opcoes = cfg.opcoes || [];

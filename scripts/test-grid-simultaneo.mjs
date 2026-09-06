@@ -164,9 +164,14 @@ async function cena(br, url) {
     const agora = await rectDe(p, '#gr-tokens .gr-token[data-c="c002"]');
     if (agora && (Math.abs(agora.x - antes.x) > 2 || Math.abs(agora.y - antes.y) > 2)) posMudou = true;
   }
-  const saltos = ticks.slice(1).map((t, i) => t - ticks[i]);
-  ok(saltos.every((s) => s === 1),
-    `o relógio anda um Tick por clique, nunca pula (${ticks.join(' → ')})`);
+  // O CONTRATO MUDOU EM 06/09/2026: o ⏭ deixou de andar um Tick por clique e
+  // passou a correr até a PARADA REAL (avanço unificado). O par que substitui
+  // "nunca pula" é este: o relógio PODE pular, mas para em TODA parada real —
+  // aqui só há uma (o golpe agendado), então um clique só deve bastar, direto
+  // do Tick 0 ao Tick do golpe, sem passar batido por cima dele.
+  ok(ticks.length === 2 && ticks[0] === 0 && ticks[1] === decl.tickDoGolpe,
+    `o relógio anda até a parada real e para NELA, sem correr por cima (${ticks.join(' → ')}`
+    + `, golpe agendado no ${decl.tickDoGolpe})`);
   ok(posMudou, 'a peça declarada ANDA pelo mapa a cada avanço: movimento gradual, não teleporte');
   const depois = await rectDe(p, '#gr-tokens .gr-token[data-c="c002"]');
   const distDepois = Math.hypot(depois.x - alvoPos.x, depois.y - alvoPos.y);
@@ -813,6 +818,59 @@ async function cenaCondicaoQueVence(br, url) {
   await p.close();
 }
 
+/**
+ * O CASO QUE TRAVAVA A ABA, achado em 06/09/2026 rodando esta mesma bancada:
+ * cena sem golpe agendado, sem mordida e sem diálogo pendente — o intervalo
+ * comum entre alguém resolver o golpe e o próximo jogador declarar a ação
+ * seguinte. Sem a parada por CENA ASSENTADA (item (b) do avanço unificado),
+ * o laço do ⏭ rodava até o timeout do protocolo do navegador; a mesa de
+ * verdade travaria até um recarregamento de página.
+ *
+ * A REDE (item (a), o teto de Ticks) existe para o dia em que (b) estiver
+ * errada de novo: esta cena confere que ela NÃO acende aqui, porque quem devia
+ * parar o laço é (b), e a rede acendendo por cima seria o mesmo sinal de
+ * "a condição não cobre este caso" que ela existe para dar — só que no caso
+ * ERRADO, o que apagaria o sinal em vez de mostrá-lo.
+ */
+async function cenaAvancoParaSozinho(br, url) {
+  console.log('\n· o avanço para sozinho quando a cena assenta, sem travar e sem acender a rede');
+  const p = await br.newPage();
+  await p.setViewport({ width: 1400, height: 950 });
+  const erros = [];
+  p.on('pageerror', (e) => erros.push(e.message));
+  await p.goto(`${url}/mesa/grid?id=${MESA}&bench=12&cols=24&rows=16&nevoa=0&tempo=simultaneo`,
+    { waitUntil: 'networkidle0', timeout: 60000 });
+  await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
+  await espera(700);
+
+  // NINGUÉM DECLAROU NADA AINDA: é o estado mais assentado que existe, e o
+  // primeiro clique da mesa acontece exatamente aqui.
+  const antes = await p.evaluate(() =>
+    parseInt(document.getElementById('ini-tk')?.textContent || '0', 10));
+  const t0 = Date.now();
+  await p.click('#ini-prox');
+  await espera(900);
+  const dt = Date.now() - t0;
+  const depois = await p.evaluate(() =>
+    parseInt(document.getElementById('ini-tk')?.textContent || '0', 10));
+
+  ok(dt < 5000, `o clique NÃO trava com a cena assentada: voltou em ${dt} ms`);
+  ok(depois === antes + 1,
+    `e o relógio andou EXATAMENTE um Tick, parado por (b) na primeira ocasião (${antes} → ${depois})`);
+
+  // O CONTADOR, E NÃO O TEXTO DO LOG: a linha "⚑ ⏭ parou..." é prosa para o
+  // mestre, e prosa é o portão por literal outra vez se uma bancada casar
+  // nela — reescrever a frase apagaria esta asserção calado. `window.
+  // __AVANCO_TETO_ACESO()` é o sinal de verdade (ver o comentário de
+  // `TETO_AVANCO_ACESO`, em grid.astro).
+  const tetoAceso = await p.evaluate(() => window.__AVANCO_TETO_ACESO?.() ?? null);
+  ok(tetoAceso === 0,
+    `e a REDE (a) não acende: quem parou o laço foi a parada por cena assentada (b), não o teto (contador ${tetoAceso})`);
+
+  ok(erros.length === 0, `nenhum erro de pagina (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
+  await p.close();
+}
+
 const dev = await subirDev({ config: 'astro.bancada.mjs' });
 const br = await puppeteer.launch({ executablePath: NAV, headless: 'new', args: ['--no-sandbox'] });
 try {
@@ -821,6 +879,7 @@ try {
   await cenaFichaDoLance(br, dev.url);
   await cenaInvestidaUmaVez(br, dev.url);
   await cenaCondicaoQueVence(br, dev.url);
+  await cenaAvancoParaSozinho(br, dev.url);
 } finally {
   await br.close();
   await dev.parar();

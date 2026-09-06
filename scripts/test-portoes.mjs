@@ -172,6 +172,7 @@ const NAO_E_TOLERANCIA = [
   ['scripts/test-arte-na-mesa.mjs', 'arquivo temporário', 'idem.'],
   ['scripts/test-grid-simultaneo.mjs', 'o relógio não trava', 'é a asserção do teste, dizendo o que ele prova.'],
   ['scripts/test-grid-simultaneo.mjs', 'não trava a cena num golpe', 'idem.'],
+  ['scripts/test-grid-simultaneo.mjs', 'o clique NÃO trava', 'idem: a asserção da cena assentada, dizendo o que ela prova.'],
   ['.github/workflows/validate.yml', 'rodava com `continue-on-error: true`',
     'é o comentário que conta a tolerância REMOVIDA, em 04/09/2026. Apagar a história para o portão calar seria trocar uma dívida por uma amnésia.'],
   ['scripts/test-portoes.mjs', '', 'este arquivo: as frases aqui são a definição do gatilho, e não usos dele.'],

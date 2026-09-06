@@ -32,6 +32,21 @@ import {
 } from './artes-grid-fx';
 import { camadaDeGolpes, baterNoAlvo } from './grid-golpe-fx';
 
+// QUANTAS VEZES UM EFEITO MORDEU (dano ou condição aplicados), desde que a
+// página abriu. Existe para quem precisa saber "algo aconteceu sem ninguém
+// confirmar nada" — o caso da §5.3, em que a Arte sai e `saidaDaArte` chama
+// `morder`/`porCondicao` DIRETO, sem diálogo nenhum (o `verificarEfeitos` da
+// ÁREA continuada é diferente: ali `uiEscolher` já pausa, e essa pausa conta
+// pelo `contadorDeConsultas` de `ui-dialog.ts`, um contador irmão e
+// deliberadamente separado). `morder` e `porCondicao` são os DOIS pontos por
+// onde toda aplicação de dano/condição de Efeito passa nesta mesa, contados ou
+// não por diálogo — por isso o contador mora aqui, e não em cada chamador.
+let MORDIDAS = 0;
+/** Ver o comentário de `MORDIDAS`, acima. */
+export function contadorDeMordidas(): number {
+  return MORDIDAS;
+}
+
 /** O que a aba Grid empresta. Tudo o que este módulo não tem como saber sozinho. */
 export interface CtxGrid {
   SB: any;
@@ -1338,6 +1353,7 @@ async function porCondicao(ctx: CtxGrid, c: any, id: string, turnos: number): Pr
   const { error } = await ctx.SB.from('combatentes').update({ condicoes: [...atuais, nova] }).eq('id', c.id);
   if (error) return;
   c.condicoes = [...atuais, nova];
+  MORDIDAS += 1;
 }
 
 async function tirarCondicao(ctx: CtxGrid, c: any, id: string): Promise<void> {
@@ -1556,6 +1572,7 @@ async function morder(ctx: CtxGrid, ef: EfeitoAtivo, alvo: any, verbo: string, f
   const { error } = await ctx.SB.from('combatentes').update({ pv_atual: pv }).eq('id', alvo.id);
   if (error) return uiErro('Erro ao aplicar o dano: ' + error.message);
   alvo.pv_atual = pv;
+  MORDIDAS += 1;
 
   await marcarMordido(ctx, ef, alvo.id, rodadaDoTick(tickAtual(ctx)));
 

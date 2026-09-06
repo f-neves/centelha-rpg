@@ -2394,7 +2394,7 @@ const SETAS = [
     hexEmPonto, dentro, chaveHex, distanciaHex, nomeHex, larguraHex,
     offsetParaAxial, letraColuna, caminharHex, alemDe,
   } from '../../lib/hex';
-  import { uiConfirmar, uiErro, uiFormulario, uiEscolher } from '../../lib/ui-dialog';
+  import { uiConfirmar, uiErro, uiFormulario, uiEscolher, contadorDeConsultas } from '../../lib/ui-dialog';
   import {
     girarMapa, excluirMapa, medidaDeMapa, giroParaCaber, enquadramentoPadrao, medirImagem,
     type Giro,
@@ -2403,6 +2403,7 @@ const SETAS = [
   import {
     carregarEfeitos, efeitosAtivos, pintarEfeitos, pintarPainelEfeitos, conjurar,
     verificarEfeitos, novoNPC as novoNPCArtes, ligarBotaoFx, type CtxGrid,
+    contadorDeMordidas,
   } from '../../lib/artes-grid-mesa';
   // `montando` e `venceu` dizem se um efeito JÁ CAIU e AINDA VALE. A névoa
   // precisa dos dois: fogo que ainda não saiu não ilumina, e fogo que acabou
@@ -5622,6 +5623,122 @@ const SETAS = [
     await verificarEfeitos(ctxArtes());
     // Depois de tudo: o retrato do Tick como ele ficou. Não custa consulta.
     despejarTick(T);
+  }
+
+  /**
+   * QUANTOS TICKS O LAÇO ADIANTA SEM ACHAR UMA PARADA REAL, antes de a REDE
+   * (item (a), abaixo) acender. Número que pode mudar, e não constante mágica:
+   * 50 é generoso para qualquer trajeto ou espera de mesa de verdade, e curto
+   * o bastante para nunca travar a aba enquanto se descobre por que a parada
+   * por cena assentada (item (b)) não pegou aquele caso.
+   */
+  const TETO_AVANCO_SEM_PARADA = 50;
+
+  /**
+   * QUANTAS VEZES A REDE ACENDEU NESTA ABA, exposto em `window` de propósito.
+   *
+   * O AVISO PARA O MESTRE É PROSA (a linha "⚑ ⏭ parou..." no registro), e
+   * prosa é o lugar ERRADO para uma bancada casar: reescrever a frase depois
+   * (o que ela vai sofrer, cedo ou tarde) apagaria a asserção calado, do
+   * jeito que o portão por texto fixo já custou caro nesta mesa duas vezes
+   * (ver `docs/simulacao/CATALOGO.md`). Este contador é o sinal de verdade;
+   * a linha do registro é só a tradução dele para quem está jogando.
+   */
+  let TETO_AVANCO_ACESO = 0;
+  (window as any).__AVANCO_TETO_ACESO = () => TETO_AVANCO_ACESO;
+
+  /**
+   * A CENA ESTÁ ASSENTADA: ninguém de pé tem golpe agendado nem trajeto em
+   * curso. É a parada (b), decidida em 06/09/2026 depois de o smoke achar que
+   * o laço TRAVAVA sem ela — numa mesa real isso é o intervalo comum entre
+   * alguém resolver o golpe e o próximo jogador declarar a ação seguinte, não
+   * um caso raro de teste.
+   */
+  function cenaAssentada(): boolean {
+    return !naFila().some((c: any) => !noChao(c)
+      && (golpesNoAr(c.acao).length > 0 || !!(c.acao as any)?.mov));
+  }
+
+  /**
+   * O ⏭ CORRE ATÉ A PARADA REAL, em vez de um Tick por clique.
+   *
+   * QUATRO PARADAS: três REAIS e uma REDE. Alguém foi consultado (qualquer
+   * diálogo humano — `contadorDeConsultas`, em `ui-dialog.ts`); um golpe
+   * venceu (a folha abre sozinha, pelo mesmo `resolverGolpeNoAr` que o clique
+   * manual na faixa dos golpes no ar já chamava); um efeito mordeu; e a CENA
+   * ASSENTOU (`cenaAssentada`, acima) — as três primeiras decididas em
+   * 06/09/2026, a quarta no dia seguinte, depois de o smoke achar que faltava.
+   *
+   * A TERCEIRA NÃO É A PRIMEIRA DISFARÇADA, e a diferença é exatamente o que
+   * ela existe para cobrir: a mordida da ÁREA CONTINUADA (`verificarEfeitos`,
+   * seção 2) pede confirmação por `uiEscolher` — essa já para pela primeira
+   * checagem. A mordida da ARTE QUE SAI (`saidaDaArte`, §5.3) chama
+   * `morder`/`porCondicao` DIRETO, sem diálogo nenhum: dano rolado, condição
+   * aplicada, e nada pede confirmação. `contadorDeMordidas`
+   * (`artes-grid-mesa.ts`) é o ponto único por onde as duas formas passam,
+   * contadas ou não por diálogo.
+   *
+   * A REDE (item (a)) NÃO É UMA QUINTA PARADA REAL, e por isso conta os Ticks
+   * à parte e avisa quando acende: se `cenaAssentada` estivesse certa sempre,
+   * ela nunca dispararia. Se ela DISPARAR, isso é sinal de que a condição de
+   * (b) não cobre algum caso — e o aviso escrito no registro é o que faz essa
+   * lacuna aparecer como BARULHO (uma linha estranha no log) em vez de BUG
+   * (a aba travada, sem dizer por quê). Ver `docs/simulacao/CATALOGO.md`.
+   *
+   * O QUE O MESTRE VÊ QUANDO A REDE ACENDE: uma linha no registro da cena,
+   * com "⚑", o número de Ticks avançados e quantas peças seguem de pé — a
+   * mesma linha que qualquer outro evento do Tick, sem diálogo bloqueando
+   * nem popup. O ⏭ já voltou a responder normalmente no clique seguinte.
+   *
+   * ESSA LINHA É PROSA, E PROSA NÃO É O QUE UMA BANCADA DEVE CASAR: quem
+   * precisar PROVAR que a rede acendeu (ou que não acendeu) lê
+   * `window.__AVANCO_TETO_ACESO()` (`TETO_AVANCO_ACESO`, acima), não o texto
+   * do log. A linha pode ser reescrita à vontade sem quebrar teste nenhum.
+   *
+   * NADA É RESUMIDO NEM ADIADO: o laço chama `avancarTickSimultaneo()` Tick a
+   * Tick, sequencialmente, e cada Tick já pinta e grava no registro por conta
+   * própria (é a MESMA função que um clique manual chamaria). O que aparece na
+   * tela ao fim do laço é idêntico ao que apareceria se o mestre tivesse
+   * clicado ⏭ esse número de vezes, na mesma ordem — só que sem o clique.
+   *
+   * ONDE ISTO NÃO MEXE, de propósito: o sistema de tempo do modo antigo
+   * (`combate-tempo.ts`, o `else` de `SIML()` no clique do `ini-prox`) e o
+   * modo de rolagem ("site"/"mesa"/"misto") continuam exatamente como estão.
+   */
+  async function avancarAteParar() {
+    let avancos = 0;
+    for (;;) {
+      if (instanteDeGolpe()) {
+        const t = tickDaVez();
+        const emPe = naFila().filter((c: any) => !noChao(c));
+        // OS GOLPES DEVIDOS AGORA, pela mesma régua do `instanteDeGolpe`: todo
+        // golpe de qualquer peça de pé com Tick <= o Tick da vez. Pode ser
+        // mais de um (é "simultâneo"): resolve todos, na ordem em que
+        // `naFila()` já lista as peças, antes de parar o laço.
+        for (const c of emPe) {
+          for (const g of golpesNoAr(c.acao).filter((x: number) => t == null || x <= t)) {
+            await resolverGolpeNoAr(c, g);
+          }
+        }
+        return;
+      }
+      const consultasAntes = contadorDeConsultas();
+      const mordidasAntes = contadorDeMordidas();
+      await avancarTickSimultaneo();
+      avancos += 1;
+      if (contadorDeConsultas() > consultasAntes) return;   // alguém foi consultado
+      if (contadorDeMordidas() > mordidasAntes) return;     // um efeito mordeu, sem diálogo
+      if (!naFila().some((c: any) => !noChao(c))) return;   // ninguém de pé: nada mais a avançar
+      if (cenaAssentada()) return;                          // (b) nada agendado nem em trânsito
+      if (avancos >= TETO_AVANCO_SEM_PARADA) {
+        TETO_AVANCO_ACESO += 1;
+        const dePe = naFila().filter((c: any) => !noChao(c)).length;
+        await logar(null, `⚑ ⏭ parou depois de ${avancos} Ticks sem achar uma parada real `
+          + `(Tick ${tickSim()}, ${dePe} de pé) · isto não deveria acontecer: avise quem mantém `
+          + 'o código, porque a condição de "cena assentada" não cobriu este caso.', { acao: null });
+        return;
+      }
+    }
   }
 
   /**
@@ -10402,7 +10519,9 @@ const SETAS = [
     el('gr-trilha').onclick = () => abrirTrilha();
     el('ini-rolar').onclick = () => rolarIniciativas();
     el('ini-prox').onclick = () => {
-      if (SIML()) { void avancarTickSimultaneo(); return; }
+      // NO SIMULTÂNEO O ⏭ CORRE ATÉ A PARADA REAL (06/09/2026); o modo antigo
+      // (`else`, abaixo) não muda: continua um clique, uma vez encerrada.
+      if (SIML()) { void avancarAteParar(); return; }
       const v = daVez(); if (v) encerrarVez(v.id);
     };
     // Espaço encerra a vez de quem está agindo: é o gesto mais repetido de uma
