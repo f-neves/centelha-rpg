@@ -1,0 +1,420 @@
+
+· bateria bmtqb2vxm (grande) · commit 4b3b9e7 · dados 5bb8abf0fb29f1e0
+· agregador 4b3b9e7 ⚠ÁRVORE SUJA
+  21600 batalhas em 96 células · 0 inválidas (fora de toda média)
+
+  O QUE ESTA BATERIA MEDE, e é o que ela NÃO mede que decide o alcance:
+  · a política é a `decisaoAutomatica` do produto. Ela ataca o mais perto e foge
+    com a Vida baixa, e não faz mais nada. Toda leitura é sobre ESSE robô;
+  · a manobra é sempre `simples`. NENHUMA batalha exercita rajada nem empunhadura
+    dupla, então o conserto do L11 (a penalidade por golpe) não é testado aqui.
+
+── A · A CARGA por célula · FASE DE COMBATE · limiar 25% · todas as batalhas ──
+célula                    Ticks  par/Tick    p90  pico  gestos  s/parada  s/golpe
+unissono-encostado-1v1    2000.0     1.14   2.12     4    4288      0.45     0.72
+unissono-encostado-3x3    2000.0     3.43   9.08    10    8864      0.43     0.71
+unissono-encostado-2x8    2000.0     9.15  26.44    30   20304      0.43     0.71
+unissono-media-1v1        2000.0     1.14   4.00     4    4280      0.71     0.86
+unissono-media-3x3        2000.0     3.56   8.72    12    8475      0.32     0.75
+unissono-media-2x8        2000.0    11.14  20.88    30   14810      0.00     0.61
+unissono-longa-1v1        2000.0     1.13   4.00     4    4264      0.72     0.86
+unissono-longa-3x3        2000.0     3.48   8.72    12    8565      0.36     0.73
+unissono-longa-2x8        2000.0    11.10  21.26    30   14656      0.02     0.69
+unissono-extrema-1v1      2000.0     1.12   4.00     4    4248      0.72     0.86
+unissono-extrema-3x3      2000.0     3.56   8.76    12    8249      0.26     0.75
+unissono-extrema-2x8      2000.0    11.01  20.88    30   14589      0.03     0.69
+coprimo-encostado-1v1       35.3     1.14   2.37     4      74      0.51     0.74
+coprimo-encostado-3x3       26.8     3.30   7.50    12     109      0.28     0.60
+coprimo-encostado-2x8       19.4     8.93  18.59    30     179      0.24     0.58
+coprimo-media-1v1           38.6     0.99   2.13     4      76      0.57     0.78
+coprimo-media-3x3           33.8     2.68   6.61    12     111      0.35     0.70
+coprimo-media-2x8           27.8     8.35  16.33    30     149      0.18     0.59
+coprimo-longa-1v1           46.9     0.75   2.00     4      81      0.66     0.82
+coprimo-longa-3x3           40.1     1.88   5.45    11     108      0.54     0.77
+coprimo-longa-2x8           39.9     5.85  14.53    30     175      0.36     0.70
+coprimo-extrema-1v1         56.3     0.58   2.00     4      88      0.74     0.87
+coprimo-extrema-3x3         53.8     1.47   5.03    12     123      0.65     0.84
+coprimo-extrema-2x8         52.5     4.49  12.93    30     186      0.45     0.81
+
+── A · A CARGA por célula · FASE DE FUGA · limiar 25% · todas as batalhas ──
+célula                    Ticks  par/Tick    p90  pico  gestos  s/parada  s/golpe
+unissono-encostado-1v1         ·   (a fase não aconteceu nesta célula)
+unissono-encostado-3x3         ·   (a fase não aconteceu nesta célula)
+unissono-encostado-2x8         ·   (a fase não aconteceu nesta célula)
+unissono-media-1v1             ·   (a fase não aconteceu nesta célula)
+unissono-media-3x3             ·   (a fase não aconteceu nesta célula)
+unissono-media-2x8             ·   (a fase não aconteceu nesta célula)
+unissono-longa-1v1             ·   (a fase não aconteceu nesta célula)
+unissono-longa-3x3             ·   (a fase não aconteceu nesta célula)
+unissono-longa-2x8             ·   (a fase não aconteceu nesta célula)
+unissono-extrema-1v1           ·   (a fase não aconteceu nesta célula)
+unissono-extrema-3x3           ·   (a fase não aconteceu nesta célula)
+unissono-extrema-2x8           ·   (a fase não aconteceu nesta célula)
+coprimo-encostado-1v1        0.3     0.64   0.64     4       0      0.00     0.77
+coprimo-encostado-3x3        1.6     3.60   3.94    12       5      0.03     0.66
+coprimo-encostado-2x8        1.2     7.89   8.66    19       5      0.00     0.42
+coprimo-media-1v1            0.7     0.52   0.78     4       1      0.16     0.89
+coprimo-media-3x3            7.4     3.01   4.92    12      27      0.19     0.69
+coprimo-media-2x8           22.8     8.50  14.30    25     143      0.01     0.41
+coprimo-longa-1v1            1.0     0.48   0.66     4       1      0.22     0.75
+coprimo-longa-3x3            2.8     3.64   5.00    12      10      0.09     0.58
+coprimo-longa-2x8           17.1     8.13  13.62    25     100      0.01     0.42
+coprimo-extrema-1v1          0.8     0.63   0.76     4       2      0.12     0.49
+coprimo-extrema-3x3         10.9     2.35   4.43    12      37      0.25     0.68
+coprimo-extrema-2x8         22.5     7.46  13.54    28     133      0.02     0.53
+
+── O QUADRO DOS QUATRO ESTADOS DE UM TICK · FASE DE COMBATE · todas as batalhas ──
+célula                       nada  só res.  só parou  ambos    soma
+unissono-encostado-1v1       0.45     0.00      0.28   0.28    1.00 ✓
+unissono-encostado-3x3       0.43     0.00      0.29   0.29    1.00 ✓
+unissono-encostado-2x8       0.43     0.00      0.29   0.29    1.00 ✓
+unissono-media-1v1           0.71     0.00      0.14   0.14    1.00 ✓
+unissono-media-3x3           0.32     0.00      0.43   0.25    1.00 ✓
+unissono-media-2x8           0.00     0.00      0.61   0.39    1.00 ✓
+unissono-longa-1v1           0.72     0.00      0.14   0.14    1.00 ✓
+unissono-longa-3x3           0.36     0.00      0.37   0.27    1.00 ✓
+unissono-longa-2x8           0.02     0.00      0.67   0.31    1.00 ✓
+unissono-extrema-1v1         0.72     0.00      0.14   0.14    1.00 ✓
+unissono-extrema-3x3         0.26     0.00      0.49   0.25    1.00 ✓
+unissono-extrema-2x8         0.02     0.00      0.66   0.31    1.00 ✓
+coprimo-encostado-1v1        0.51     0.00      0.23   0.26    1.00 ✓
+coprimo-encostado-3x3        0.28     0.00      0.32   0.40    1.00 ✓
+coprimo-encostado-2x8        0.24     0.00      0.34   0.42    1.00 ✓
+coprimo-media-1v1            0.53     0.05      0.21   0.22    1.00 ✓
+coprimo-media-3x3            0.27     0.09      0.34   0.31    1.00 ✓
+coprimo-media-2x8            0.09     0.09      0.35   0.47    1.00 ✓
+coprimo-longa-1v1            0.63     0.03      0.16   0.18    1.00 ✓
+coprimo-longa-3x3            0.46     0.08      0.23   0.23    1.00 ✓
+coprimo-longa-2x8            0.25     0.10      0.31   0.34    1.00 ✓
+coprimo-extrema-1v1          0.72     0.02      0.13   0.13    1.00 ✓
+coprimo-extrema-3x3          0.59     0.06      0.19   0.16    1.00 ✓
+coprimo-extrema-2x8          0.36     0.09      0.31   0.23    1.00 ✓
+
+── DE ONDE VÊM AS PARADAS · FASE DE COMBATE · média por batalha ──
+célula                    declarar   agenda  reprojetar  resolver  aplicar    fugir
+unissono-encostado-1v1       572.0    572.0         0.0     572.0    572.0      0.0
+unissono-encostado-3x3      1716.0   1716.0         0.0    1716.0   1716.0      0.0
+unissono-encostado-2x8      4576.0   4576.0         0.0    4576.0   4576.0      0.0
+unissono-media-1v1           570.0    570.0         0.0     570.0    570.0      0.0
+unissono-media-3x3          1619.1   1619.1       637.0    1618.8   1618.8      0.0
+unissono-media-2x8          3207.8   3207.8      9458.5    3202.4   3202.4      0.0
+unissono-longa-1v1           566.0    566.0         0.0     566.0    566.0      0.0
+unissono-longa-3x3          1641.5   1641.5       396.4    1641.3   1641.3      0.0
+unissono-longa-2x8          3169.0   3169.0      9536.6    3164.0   3164.0      0.0
+unissono-extrema-1v1         562.0    562.0         0.0     562.0    562.0      0.0
+unissono-extrema-3x3        1562.8   1562.8       864.3    1562.4   1562.4      0.0
+unissono-extrema-2x8        3152.1   3152.1      9430.2    3147.2   3147.2      0.0
+coprimo-encostado-1v1         10.4     10.1         0.0       9.7      9.7      0.3
+coprimo-encostado-3x3         23.2     22.2         0.0      20.6     20.6      1.0
+coprimo-encostado-2x8         46.2     44.9         0.0      40.0     40.0      1.3
+coprimo-media-1v1              9.7      9.5         0.0       9.3      9.3      0.3
+coprimo-media-3x3             23.0     22.1         6.4      19.4     19.4      0.8
+coprimo-media-2x8             41.8     40.8        89.7      30.4     30.4      1.1
+coprimo-longa-1v1              9.2      9.0         0.0       8.6      8.6      0.3
+coprimo-longa-3x3             19.3     18.5         5.5      17.0     17.0      0.8
+coprimo-longa-2x8             42.8     41.8        87.7      33.8     33.8      1.0
+coprimo-extrema-1v1            8.7      8.4         0.0       7.8      7.8      0.3
+coprimo-extrema-3x3           21.3     20.5         3.8      17.2     17.2      0.8
+coprimo-extrema-2x8           45.8     44.7        83.7      33.5     33.5      1.1
+
+── A FRAÇÃO DE iii, ABERTA POR TIPO DE PARADA · FASE DE COMBATE · 9600 batalhas que terminam ──
+tipo            classe  gesto/un   paradas   % das par.     gestos   % dos ges.
+agenda           iii        0     233980          21%          0           0%
+aplicar           ii        1     198036          18%     198036          17%
+declarar           i        0     241212          22%          0           0%
+fugir             ii        0       7232           1%          0           0%
+redirecionar       i        0       3040           0%          0           0%
+reprojetar       iii        0     220235          20%          0           0%
+resolver         iii        3     198036          18%     594108          51%
+o ⏭ do relógio     ·        1          ·            ·     376212          32%
+  O ⏭ não é parada de classe nenhuma e não sai com automação: ele fica no
+  DENOMINADOR da coluna de gestos, e fora do numerador de qualquer classe.
+
+── OS TRÊS PEDAÇOS DO TRABALHO DO MESTRE · FASE DE COMBATE · 9600 batalhas que terminam ──
+  classe iii · aritmética              594108    51%   sai com automação de regra
+  o ⏭ · cadência de relógio            376212    32%   NÃO sai com regra nenhuma
+  classe ii · julgamento               198036    17%   não sai: é a mesa decidindo
+  total                               1168356   100%
+
+  O QUE UM AVANÇO AUTOMÁTICO POUPARIA (levantamento, não decisão):
+    Ticks de combate: 376212
+      TETO · sem parada nenhuma:  185183 (49%)  <- mas as peças ANDAM em parte deles
+      PISO · e sem passo nenhum:  103835 (28%)  <- o tabuleiro não mudou: não há o que ver
+      SEM-GESTO · o mestre nada tem a fazer: 283251 (75%)  <- nenhum golpe venceu: as outras cinco paradas custam zero gesto
+      e o complemento dele, o Tick COM gesto do mestre: 92961 (25%)  <- é o piso do ⏭ com avanço unificado
+    TETO: ⏭ 376212 -> 191029 · trabalho 1168356 -> 983173 (16% a menos) · composição iii 60% · ⏭ 19% · ii 20%
+    PISO: ⏭ 376212 -> 272377 · trabalho 1168356 -> 1064521 (9% a menos) · composição iii 56% · ⏭ 26% · ii 19%
+    SEM-GESTO: ⏭ 376212 -> 92961 · trabalho 1168356 -> 885105 (24% a menos) · composição iii 67% · ⏭ 11% · ii 22%
+
+  O GANHO POR CÉLULA, em cliques por batalha (e não em fração):
+  célula                    gestos hoje    teto    piso   teto%   piso%
+  coprimo-extrema-1v1              88      42      27     48%     31%
+  coprimo-extrema-3x3             123      34      16     28%     13%
+  coprimo-longa-1v1                81      31      22     38%     27%
+  coprimo-extrema-2x8             186      23       0     12%      0%
+  coprimo-media-1v1                76      22      18     29%     24%
+  coprimo-longa-3x3               108      21       9     19%      9%
+  coprimo-encostado-1v1            74      18      18     24%     24%
+  coprimo-longa-2x8               175      13       0      7%      0%
+  coprimo-media-3x3               111      12       7     11%      6%
+  coprimo-encostado-3x3           109       8       7      7%      7%
+  coprimo-encostado-2x8           179       5       5      3%      3%
+  coprimo-media-2x8               149       4       0      3%      0%
+
+── OS TRÊS PEDAÇOS NOS DOIS MODOS DE ROLAGEM · a mesma contagem, dois custos de tela · 9600 batalhas que terminam ──
+                                     mesa             site        
+  classe iii · aritmética          594108   50.8%   198036   25.6%
+  o ⏭ · cadência de relógio        376212   32.2%   376212   48.7%
+  classe ii · julgamento           198036   16.9%   198036   25.6%
+  total                           1168356  100.0%   772284   66.1%
+  a troca de modo tira 33.9% do trabalho do mestre, sem tocar no motor
+
+── O CACHO · Ticks com golpe vencido, e o cartão que a parada do avanço absorve ──
+  Ticks de combate 376212 · com ao menos UM golpe 92961 (24.7%)
+  golpes (cartões) 198036 · por Tick que tem golpe 2.13
+  cartões absorvidos pela parada (um por Tick que para) 92961 (46.9%) · que sobram 105075 (53.1%)
+
+── AS ECONOMIAS NO MODO site · sobre o trabalho do MESTRE, 772284 ──
+                          só o avanço   só o cartão   os dois juntos
+  com piso (Tick morto)         13.4%         12.0%            25.5%
+  com teto (sem parada)         24.0%         12.0%            36.0%
+
+── A ESCADA · o que sobra depois de cada conserto · trabalho do MESTRE ──
+  hoje (modo mesa)                  1168356  100.0%
+  + modo site                        772284   66.1%
+  + avanço unificado (piso)          575488   49.3%
+  + a folha resolvendo sozinha       470413   40.3%
+  resíduo 470413 = ⏭ que param 272377 (57.9%) + aplicar 198036 (42.1%) ✓ fecha
+  o teto do que o projeto tira do mestre: 59.7%
+
+── COM JOGADOR NA MESA · G gestos por declaração, e são gestos do JOGADOR ──
+  declarações 241212 · lado a 111100 (46.1%) · lado b 130112 (53.9%)
+  cliques poupados: piso 103835 · teto 185183, os mesmos em toda linha
+  modo mesa · trabalho do MESTRE 1168356 · economia dele: piso 8.9% · teto 15.8%, com qualquer G
+  G                     quem declara à mão  trab. da MESA   piso (mesa)   teto (mesa)
+  0 · o robô            ninguém                   1168356          8.9%         15.8%
+  2 · arrasto           as duas facções           1650780          6.3%         11.2%
+  2 · arrasto           só o lado a               1390556          7.5%         13.3%
+  2 · arrasto           só o lado b               1428580          7.3%         13.0%
+  4 · menu              as duas facções           2133204          4.9%          8.7%
+  4 · menu              só o lado a               1612756          6.4%         11.5%
+  4 · menu              só o lado b               1688804          6.1%         11.0%
+  modo site · trabalho do MESTRE 772284 · economia dele: piso 13.4% · teto 24.0%, com qualquer G
+  G                     quem declara à mão  trab. da MESA   piso (mesa)   teto (mesa)
+  0 · o robô            ninguém                    772284         13.4%         24.0%
+  2 · arrasto           as duas facções           1254708          8.3%         14.8%
+  2 · arrasto           só o lado a                994484         10.4%         18.6%
+  2 · arrasto           só o lado b               1032508         10.1%         17.9%
+  4 · menu              as duas facções           1737132          6.0%         10.7%
+  4 · menu              só o lado a               1216684          8.5%         15.2%
+  4 · menu              só o lado b               1292732          8.0%         14.3%
+
+── O RESÍDUO POR TAMANHO DA CENA · mapa apertado, limiar de produção, só as que terminam · média por batalha, fase de combate ──
+  cena   peças   Ticks   ⏭ que param   aplicar   resíduo
+  1v1        2      44            23         9        32
+  3x3        6      39            29        19        47
+  2x8       16      35            34        34        68
+
+── O QUE A AUTOMAÇÃO ESVAZIA EM CLIQUES · FASE DE COMBATE ──
+célula                    s/parada hoje   +só iii   = depois   (piso)
+unissono-encostado-1v1            0.45      0.00       0.45     0.45
+unissono-encostado-3x3            0.43      0.00       0.43     0.43
+unissono-encostado-2x8            0.43      0.00       0.43     0.43
+unissono-media-1v1                0.71      0.00       0.71     0.71
+unissono-media-3x3                0.32      0.18       0.50     0.32
+unissono-media-2x8                0.00      0.32       0.33     0.00
+unissono-longa-1v1                0.72      0.00       0.72     0.72
+unissono-longa-3x3                0.36      0.12       0.48     0.36
+unissono-longa-2x8                0.02      0.39       0.41     0.02
+unissono-extrema-1v1              0.72      0.00       0.72     0.72
+unissono-extrema-3x3              0.26      0.24       0.50     0.26
+unissono-extrema-2x8              0.03      0.39       0.41     0.03
+coprimo-encostado-1v1             0.51      0.00       0.51     0.51
+coprimo-encostado-3x3             0.28      0.00       0.28     0.28
+coprimo-encostado-2x8             0.24      0.00       0.24     0.24
+coprimo-media-1v1                 0.57      0.00       0.57     0.57
+coprimo-media-3x3                 0.35      0.07       0.42     0.35
+coprimo-media-2x8                 0.18      0.13       0.31     0.18
+coprimo-longa-1v1                 0.66      0.00       0.66     0.66
+coprimo-longa-3x3                 0.54      0.05       0.58     0.54
+coprimo-longa-2x8                 0.36      0.16       0.51     0.36
+coprimo-extrema-1v1               0.74      0.00       0.74     0.74
+coprimo-extrema-3x3               0.65      0.04       0.68     0.65
+coprimo-extrema-2x8               0.45      0.19       0.65     0.45
+  `só iii` é o Tick em que TODA parada é aritmética: ele some inteiro.
+  O piso conta só `resolver` como aritmética forçada.
+
+── B · A COMPOSIÇÃO POR CLASSE, em banda · NAS DUAS MOEDAS · fase de combate ──
+  banda: teto com `agenda`+`reprojetar`+`resolver` como iii; piso só com `resolver`.
+  PARADAS mede interrupção; GESTOS mede trabalho. Não são a mesma coisa.
+célula                    paradas iii      gestos iii     fuga (paradas)   Δ par.
+unissono-encostado-1v1    25%–50%          40%–40%         (não houve)      ·
+unissono-encostado-3x3    25%–50%          58%–58%         (não houve)      ·
+unissono-encostado-2x8    25%–50%          68%–68%         (não houve)      ·
+unissono-media-1v1        25%–50%          40%–40%         (não houve)      ·
+unissono-media-3x3        23%–54%          57%–57%         (não houve)      ·
+unissono-media-2x8        14%–71%          65%–65%         (não houve)      ·
+unissono-longa-1v1        25%–50%          40%–40%         (não houve)      ·
+unissono-longa-3x3        24%–53%          57%–57%         (não houve)      ·
+unissono-longa-2x8        14%–71%          65%–65%         (não houve)      ·
+unissono-extrema-1v1      25%–50%          40%–40%         (não houve)      ·
+unissono-extrema-3x3      22%–56%          57%–57%         (não houve)      ·
+unissono-extrema-2x8      14%–71%          65%–65%         (não houve)      ·
+coprimo-encostado-1v1     24%–49%          39%–39%         9%–11%           -39%
+coprimo-encostado-3x3     24%–49%          57%–57%         15%–30%          -19%
+coprimo-encostado-2x8     23%–49%          67%–67%         11%–32%          -17%
+coprimo-media-1v1         24%–49%          37%–37%         7%–32%           -17%
+coprimo-media-3x3         21%–53%          52%–52%         23%–45%          -8%
+coprimo-media-2x8         13%–68%          61%–61%         16%–63%          -5%
+coprimo-longa-1v1         24%–49%          32%–32%         6%–39%           -10%
+coprimo-longa-3x3         22%–52%          47%–47%         17%–41%          -11%
+coprimo-longa-2x8         14%–67%          58%–58%         15%–64%          -3%
+coprimo-extrema-1v1       24%–49%          27%–27%         19%–32%          -17%
+coprimo-extrema-3x3       21%–51%          42%–42%         22%–49%          -3%
+coprimo-extrema-2x8       14%–66%          54%–54%         17%–63%          -4%
+
+  OS DOIS NÚMEROS DO TOPO, da FASE DE COMBATE das batalhas que TERMINAM:
+    9600 batalhas · 1101771 paradas · 1168356 gestos
+    fração das PARADAS que é iii: 18% a 59%   ← quantas INTERRUPÇÕES a automação apaga
+    fração dos GESTOS  que é iii: 51% a 51%   ← quanto TRABALHO ela apaga  ← É ESTE
+    A segunda é a que responde a pergunta da R2 §B. A primeira sozinha faz o
+    leitor trocar "vezes que fui consultado" por "quanto eu trabalhei".
+    A banda de gestos não tem largura porque `agenda` e `reprojetar` custam
+    ZERO gesto: a dúvida da taxonomia move a conta de paradas e não a de gestos.
+    fuga    (as mesmas): paradas 17% a 59% · gestos 61% a 61%   ← leitura própria, fora da média
+    impasse (2400 batalhas que estouram): fora de toda leitura
+
+── A SENSIBILIDADE AO LIMIAR DE FUGA · o mesmo robô, dois valores do produto ──
+  Não é política nova: é o `fugirAbaixoDePct` do `regras.json`, em dois níveis.
+  (só as batalhas que TERMINAM)
+nível       batalhas  paradas iii     gestos iii   Tick da fuga  fuga-consumada
+l25 (25%)       9600        18%–59%        51%–51%           36.0             47%
+l10 (10%)       9600        18%–60%        54%–54%           40.6             18%
+
+  paradas: 1 pontos · gestos: 3 pontos
+  ✓ A leitura de gestos NÃO muda com o limiar: a conclusão é robusta a ele.
+
+── E12 · O TABULEIRO · corredor contra campo aberto ──
+  apertado: dist+8 × max(4, n+2) · aberto: dist+40 × max(12, 2n+4), peças centradas.
+  (fase de combate, limiar de produção)
+célula                    par/Tick        re-projeções       %iii teto      fuga-consumada
+                          apert.  abert.   apert.   abert.   apert. abert.   apert. abert.
+unissono-encostado-1v1      1.14    1.14      0.0      0.0      50%    50%       0%     0%
+unissono-encostado-3x3      3.43    3.43      0.0      0.0      50%    50%       0%     0%
+unissono-encostado-2x8      9.15    9.15      0.0      0.0      50%    50%       0%     0%
+unissono-media-1v1          1.14    1.14      0.0      0.0      50%    50%       0%     0%
+unissono-media-3x3          3.56    3.54    637.0    557.4      54%    54%       0%     0%
+unissono-media-2x8         11.14   11.16   9458.5   9519.9      71%    71%       0%     0%
+unissono-longa-1v1          1.13    1.13      0.0      0.0      50%    50%       0%     0%
+unissono-longa-3x3          3.48    3.57    396.4    791.4      53%    56%       0%     0%
+unissono-longa-2x8         11.10   11.12   9536.6   9617.8      71%    72%       0%     0%
+unissono-extrema-1v1        1.12    1.12      0.0      0.0      50%    50%       0%     0%
+unissono-extrema-3x3        3.56    3.55    864.3    824.9      56%    56%       0%     0%
+unissono-extrema-2x8       11.01   10.93   9430.2   9038.0      71%    71%       0%     0%
+coprimo-encostado-1v1       1.14    1.14      0.0      0.0      49%    49%      20%    16%
+coprimo-encostado-3x3       3.30    3.30      0.0      0.0      49%    49%      83%    78%
+coprimo-encostado-2x8       8.93    8.91      0.0      0.0      49%    49%     100%    99%
+coprimo-media-1v1           0.99    0.99      0.0      0.0      49%    49%      21%    15%
+coprimo-media-3x3           2.68    2.69      6.4      5.8      53%    52%      61%    45%
+coprimo-media-2x8           8.35    8.28     89.7     87.4      68%    68%      69%    59%
+coprimo-longa-1v1           0.75    0.75      0.0      0.0      49%    49%      19%    19%
+coprimo-longa-3x3           1.88    1.92      5.5      5.6      52%    52%      74%    67%
+coprimo-longa-2x8           5.85    5.88     87.7     89.3      67%    67%      66%    63%
+coprimo-extrema-1v1         0.58    0.58      0.0      0.0      49%    49%       4%     3%
+coprimo-extrema-3x3         1.47    1.47      3.8      3.3      51%    51%      43%    20%
+coprimo-extrema-2x8         4.49    4.48     83.7     82.3      66%    66%      58%    39%
+
+── A CONTA DO TICK SEM GOLPE · FASE DE COMBATE · todas as batalhas ──
+célula                      s/golpe  cadência  sobra
+unissono-encostado-1v1         0.72      0.71   0.01
+unissono-encostado-3x3         0.71      0.14   0.57
+unissono-encostado-2x8         0.71      0.00   0.71
+unissono-media-1v1             0.86      0.72   0.14
+unissono-media-3x3             0.75      0.19   0.56
+unissono-media-2x8             0.61      0.00   0.61
+unissono-longa-1v1             0.86      0.72   0.14
+unissono-longa-3x3             0.73      0.18   0.55
+unissono-longa-2x8             0.69      0.00   0.69
+unissono-extrema-1v1           0.86      0.72   0.14
+unissono-extrema-3x3           0.75      0.22   0.53
+unissono-extrema-2x8           0.69      0.00   0.69
+coprimo-encostado-1v1          0.74      0.73   0.01
+coprimo-encostado-3x3          0.60      0.23   0.37
+coprimo-encostado-2x8          0.58      0.00   0.58
+coprimo-media-1v1              0.78      0.76   0.03
+coprimo-media-3x3              0.70      0.43   0.27
+coprimo-media-2x8              0.59      0.00   0.59
+coprimo-longa-1v1              0.82      0.82   0.00
+coprimo-longa-3x3              0.77      0.57   0.19
+coprimo-longa-2x8              0.70      0.15   0.55
+coprimo-extrema-1v1            0.87      0.86   0.01
+coprimo-extrema-3x3            0.84      0.68   0.16
+coprimo-extrema-2x8            0.81      0.36   0.45
+  `cadência` = 1 − golpes por Tick. A SOBRA é o que a cadência não explica:
+  positiva quer dizer Ticks sem golpe além dos que o ciclo já obriga (colisão).
+
+── C · O CONTEXTO, por batalha · TOTAL das duas fases · todas as batalhas ──
+célula                      Ticks  t.fuga  paradas  golpes  gestos   fim dominante
+unissono-encostado-1v1     2000.0       ·   2288.0   572.0    4288   estourou (100%)
+unissono-encostado-3x3     2000.0       ·   6864.0  1716.0    8864   estourou (100%)
+unissono-encostado-2x8     2000.0       ·  18304.0  4576.0   20304   estourou (100%)
+unissono-media-1v1         2000.0       ·   2280.0   570.0    4280   estourou (100%)
+unissono-media-3x3         2000.0       ·   7112.8  1618.8    8475   estourou (100%)
+unissono-media-2x8         2000.0       ·  22278.9  3202.4   14810   estourou (100%)
+unissono-longa-1v1         2000.0       ·   2264.0   566.0    4264   estourou (100%)
+unissono-longa-3x3         2000.0       ·   6962.1  1641.3    8565   estourou (100%)
+unissono-longa-2x8         2000.0       ·  22202.6  3164.0   14656   estourou (100%)
+unissono-extrema-1v1       2000.0       ·   2248.0   562.0    4248   estourou (100%)
+unissono-extrema-3x3       2000.0       ·   7114.6  1562.4    8249   estourou (100%)
+unissono-extrema-2x8       2000.0       ·  22028.8  3147.2   14589   estourou (100%)
+coprimo-encostado-1v1        35.5    35.6     40.7     9.7      74   desistencia-20 (73%)
+coprimo-encostado-3x3        28.3    25.2     93.0    21.4     114   fuga-consumada (83%)
+coprimo-encostado-2x8        20.6    19.4    182.1    41.0     185   fuga-consumada (100%)
+coprimo-media-1v1            39.2    39.7     39.3     9.4      77   desistencia-20 (70%)
+coprimo-media-3x3            41.2    30.7    112.2    24.2     138   fuga-consumada (61%)
+coprimo-media-2x8            50.6    27.6    416.4    60.3     292   fuga-consumada (69%)
+coprimo-longa-1v1            47.9    46.8     37.0     8.7      83   desistencia-20 (72%)
+coprimo-longa-3x3            42.8    36.9     88.1    18.7     118   fuga-consumada (74%)
+coprimo-longa-2x8            56.9    38.9    377.3    54.4     275   fuga-consumada (66%)
+coprimo-extrema-1v1          57.1    57.5     34.5     8.1      89   desistencia-20 (80%)
+coprimo-extrema-3x3          64.7    50.3    110.1    23.8     160   fuga-consumada (43%)
+coprimo-extrema-2x8          74.9    51.6    411.0    61.1     320   fuga-consumada (58%)
+
+── O QUE FOI INVENTADO ──
+  ⚑ a POLÍTICA é a `decisaoAutomatica` da mesa, e não uma das cinco da §0.4 P4. É invenção do PRODUTO e não minha, mas define o alcance de tudo: ela ataca o mais perto e foge com a Vida baixa, e não faz mais nada
+  ⚑ a MANOBRA é sempre `simples`, porque a política não escolhe manobra. NENHUMA batalha desta bateria exercita rajada nem empunhadura dupla, e portanto o conserto do L11 (a penalidade por golpe) não é testado aqui
+  ⚑ os TRAÇOS dos dois arquétipos (atributos e perícias), da ficha de referência do contrato. Os números de combate NÃO são inventados: saem de resumoCombatePC
+  ⚑ o mapa: faixa de largura dist+8 e altura n+2, escala 1 m por hexágono
+  ⚑ o multiplicador de passo do eixo E4 (2×), posto pelo ajuste por instância `combatentes.dados.passo`, que é o caminho da mesa. A régua não tem dois arquétipos com passo dobrado e mesma Defesa. ⚠ E4 SAIU DA GRADE em 03/09 por ser inerte (D31): `passoMult` vale 1 em todas as 96 células, e NADA nesta bateria anda com passo dobrado. Esta premissa descreve o caminho de código, que continua em `montarCena` para o dia em que o eixo voltar, e não algo que esteja acontecendo
+  ⚑ a DECLARAÇÃO É SEMPRE AUTOMÁTICA, e por isso vale zero gesto. Não é mais um número inventado (o caminho manual foi contado em 03/09: 2 gestos pelo arrasto, 4 pelo menu), mas continua sendo um limite do que a bateria MEDE: nenhuma batalha aqui tem jogador declarando. O relatório publica o efeito como cenário, em vez de escondê-lo (ver 09 §2.4 e scripts/sim/custo-tela.mjs)
+  ⚑ o custo de tela do REDIRECIONAMENTO do golpe no caído. A regra manda a peça em modo automático redirecionar sozinha, sem caixa, e a bateria roda SÓ peça automática: nenhuma das batalhas tem peça de jogador. Numa mesa de verdade esse redirecionamento é uma caixa de escolha, e portanto uma parada de classe i com gesto. Esta bateria NÃO ENXERGA esse custo, e o número publicado apaga uma parada de classe i que a mesa real tem
+  ⚑ o critério "o inimigo de pé MAIS PRÓXIMO" para onde o golpe redirecionado desce. É escolha de política escrita dentro do MOTOR (grid.astro e motor.mjs), não da régua: `regras.json` diz que redireciona ao alcance da arma e não diz para qual. Número pequeno, mas inventado, e no lugar exato que o D13 vigia
+
+  variância entre repetições 0.2258 · entre células 12.8874
+
+  48 de 96 células estouram o teto em 100% das voltas
+  (24 rótulos, um por nível de limiar): unissono-encostado-1v1-apertado, unissono-encostado-3x3-apertado, unissono-encostado-2x8-apertado, unissono-media-1v1-apertado, unissono-media-3x3-apertado, unissono-media-2x8-apertado, unissono-longa-1v1-apertado, unissono-longa-3x3-apertado, unissono-longa-2x8-apertado, unissono-extrema-1v1-apertado, unissono-extrema-3x3-apertado, unissono-extrema-2x8-apertado, unissono-encostado-1v1-aberto, unissono-encostado-3x3-aberto, unissono-encostado-2x8-aberto, unissono-media-1v1-aberto, unissono-media-3x3-aberto, unissono-media-2x8-aberto, unissono-longa-1v1-aberto, unissono-longa-3x3-aberto, unissono-longa-2x8-aberto, unissono-extrema-1v1-aberto, unissono-extrema-3x3-aberto, unissono-extrema-2x8-aberto
+
+── OS SINAIS DE BATERIA INEFICAZ · o veredito de cada um ──
+  ✓ invariantes                    nenhuma das 21600 batalhas violou um dos quinze invariantes
+  ✓ ocasião · reprojetar           6781637 re-projeções nas células com distância
+  ✓ ocasião · fugir                29092 declarações de fuga
+  ✓ ocasião · redirecionar         26650 golpes redirecionados
+  ✓ ocasião · raspão               266617 raspões
+  ✓ ocasião · quarta célula do quadro 47543 Ticks em que algo caiu sem consultar ninguém
+  ✓ ocasião · passo                16200 de 16200 batalhas com distância têm Tick morto < Tick sem parada
+  ✓ variância                      os eixos explicam 57× mais que o acaso
+  ✓ teto                           48 de 96 células estouram sempre, e 48 terminam
+  ✓ distribuição                   nenhuma célula com p10 = p90 em paradas/Tick
+  ✘ fuga-consumada                 fuga-consumada acima de 90% em 2 célula(s): a fase de fuga engoliu a batalha · coprimo-encostado-2x8-apertado 100%, coprimo-encostado-2x8-aberto 99%
+
+==========================================================================
+✘✘✘  1 SINAL(IS) DE BATERIA INEFICAZ  ✘✘✘
+  ✘ fuga-consumada acima de 90% em 2 célula(s): a fase de fuga engoliu a batalha · coprimo-encostado-2x8-apertado 100%, coprimo-encostado-2x8-aberto 99%
+
+  Um sinal aceso NÃO invalida a bateria sozinho: ele diz que aquela leitura
+  precisa de explicação escrita antes de virar número. Sem explicação, não sai.
+==========================================================================
+
+  reexecutar uma batalha sozinha:
+    node scripts/sim/rodar.mjs --de <idx> --ate <idx+1> --imprime --n 400 --unissono 50 --semente 20260906 --saida .sim/avulsa

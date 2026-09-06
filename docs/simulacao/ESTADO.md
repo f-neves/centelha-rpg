@@ -109,15 +109,59 @@ sobre uma média de ~183 gestos por batalha). É este o número que entra na con
   único, que custava precisão e não correção, está sendo parcialmente ressarcido
   pelo próprio pareamento por semente que ele preserva.**
 
-**O que isto significa, sem decidir nada:** o `n` para um delta de 1 gesto (≈25.100)
-já é maior que os ~500 por célula que a grade usa hoje; para 0,1 gesto (≈2,5
-milhões) é impraticável em qualquer desenho. Se a sensibilidade à condição inicial
-for de fato maior que o efeito que a grade de E5 quer medir, a saída não é "rodar
-mais repetições": é que a comparação de regras pede um desenho que cancele mais
-ruído do que o pareamento por semente já cancela — e essa é a decisão que encosta no
-fluxo único, e que fica com quem decide, não com quem mede. Falta ainda o `56,58`
-virar o número certo (por Tick, e sobre a bandeira `margem`, não sobre
-`ticksDeEntrada`) antes de qualquer `n` daqui virar `n` de produção.
+**A CIRCULARIDADE, TESTADA.** A revisora achou o problema antes de este parágrafo
+existir: `r08` contra `r09` é o par "mesma semente, regra mudou no meio", então o
+`56,58` não é ruído puro — é ruído mais o efeito da própria mudança misturados na
+mesma diferença pareada. Usar isso como desvio de fundo para dimensionar a detecção
+de um efeito do mesmo tipo é circular: o denominador da conta de poder conteria uma
+amostra do numerador. **A objeção de unidade dela cai**, e fica registrado com as
+palavras certas: o `56,58` foi medido direto do campo `gestos` de cada batalha em
+`r08`/`r09`, e não convertido do `11,35` (Ticks) por regra de três.
+
+O isolamento: uma bateria nova, **`bmtqb2vxm`** (mesma regra de hoje, `semente_mestre`
+`20260906` em vez de `20260903`, commit `4b3b9e7`, o mesmo de `bmtq8zam1`), pareada
+com `bmtq8zam1` **por `b`** (o índice global da batalha, e não por semente — a
+semente de cada batalha é `hash32(semente_mestre, célula, repetição)`, `bateria.mjs`,
+e por isso muda com o `semente_mestre` mesmo mantendo a mesma célula e a mesma
+repetição; conferido que as 21.600 células batem par a par). O desvio do delta de
+gestos entre estas duas, **sem mudança de regra nenhuma no meio**, é **65,74** (média
+0,12, essencialmente zero, como deveria ser). **65,74 é MAIOR que os 56,58 de
+`r08`×`r09`, não menor.** O ruído domina, e a mudança de regra não deixou marca
+detectável neste desenho: comparar duas sementes diferentes da mesma regra já produz
+mais dispersão do que comparar a mesma semente com a regra mudando. Se houvesse sinal
+contaminando o `56,58`, ele sairia maior que o puro ruído, e saiu menor. **O `56,58`
+não estava inflado pelo próprio efeito que tentava medir** — ao contrário, o
+pareamento por semente idêntica (que preserva o início da trajetória até a primeira
+divergência) cancela mais ruído do que a ausência de mudança de regra por si só.
+
+**O NÚMERO POR TICK, medido dos mesmos dados em disco, sem bateria nova.** A métrica
+principal da grade é gestos **por Tick**, não gestos totais, e por isso o desvio
+certo é outro: sobre os mesmos 19.200 pares de `r08`/`r09`, o delta de `gestos/ticks`
+por batalha tem desvio **0,3553**, sobre uma taxa média de **3,72** gestos por Tick.
+É uma fração pequena da taxa (9,5%), bem menor que os 31% que `56,58/183` dava para o
+total. Com este desvio, os três `n`:
+
+| detectar um delta de | `n` de batalhas pareadas | procedência |
+|---|---:|---|
+| 1 gesto/Tick | **≈ 1** | derivado: fórmula acima, σ = 0,3553, Δ = 1 |
+| 0,5 gesto/Tick | **≈ 4** | derivado: mesma fórmula, Δ = 0,5 |
+| 0,1 gesto/Tick | **≈ 100** | derivado: mesma fórmula, Δ = 0,1 |
+
+**Os três `n` caem de 25.100/100.500/2.512.000 para 1/4/100.** Medido na métrica que
+a grade de fato usa, os ~500 por célula que ela já planeja sobram, mesmo para um
+delta de um décimo de gesto por Tick — a ordem de grandeza que a previsão
+qualitativa do E5 ("menos de um gesto") sempre presumiu como o efeito a caçar.
+
+**O que isto significa, sem decidir nada:** as duas medições apontam na mesma
+direção, e não são a mesma conta pintada duas vezes — uma isola a mudança de regra
+do ruído de semente (a circularidade), a outra isola a métrica certa da variância de
+duração (a unidade). Juntas, elas desfazem a preocupação de que a grade de E5 não
+seria viável como está desenhada: na métrica que ela usa, com o desvio que os dados
+já mostram, os `n` que ela já planeja bastam. **O que fica sem medir é a bandeira
+`margem` em si** — os dois números acima vêm de `ticksDeEntrada`, não dela — e por
+isso o piloto continua sendo o que decide o número de produção, agora como
+confirmação de uma conta que já parece boa, e não como pré-requisito de uma que
+parecia inviável.
 
 **Esta bateria é posterior ao conserto da iniciativa** (ver a seção 3). Os números
 publicados antes dele, inclusive os da `09`, mudaram todos, e a `09` traz o aviso
