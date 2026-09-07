@@ -1952,6 +1952,17 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
     envelhece (curado no escuro continua lembrado ferido), e morto no escuro fica listado como
     qualquer outro. **Recusado:** "some junto com o registro do ferimento" — apagar o
     resultado da ação do jogador não é névoa, é amnésia.
+
+    **O VISUAL, decidido pelo humano em 07/09/2026 (o dado já estava especificado na migração
+    33; faltava só isto):** três regras, e se aparecer um quarto caso de visual que elas não
+    cobrem, parar e perguntar antes de inventar.
+    1. **Apagado é visivelmente distinto de peça vista agora**, não opacidade menor por acaso —
+       quem olha o tabuleiro sabe, sem passar o mouse, que aquilo é lembrança e não leitura.
+    2. **A Vida mostrada é a da última vez**, e a tela diz isso. Curado no escuro continua
+       aparecendo ferido, de propósito — o que não pode é o jogador achar que está vendo o
+       agora.
+    3. **A lembrança não é alvo.** Não declara golpe, não move até ela, não mira nela. Se a
+       interface deixar clicar, promete uma ação que o motor não faz.
   - **E · A `efeito_visao` corta por casa.** Era vazamento vivo. **FEITO, migração 32.**
 
   **E o que o jogador lê quando algo acontece no escuro: nada, nem anônimo.** Se o ALVO está
