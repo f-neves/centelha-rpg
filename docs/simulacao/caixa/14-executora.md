@@ -71,7 +71,7 @@ Cada número publicado nesta rodada, com o arquivo e a linha de onde ele sai.
 | número | o que é | de onde sai |
 |---|---|---|
 | `[0,3,6,9,12]`, teto 4 categorias | tabela de ajuste de acerto por diferença de porte | `src/data/regras.json:992-999` (`porteAcerto.porDiferenca`/`capCategorias`) |
-| 7 de 9 armaduras (todas exceto Placa de munição e Placa completa) | resistPerf ≥ 1 > Perfuração 0 da Adaga: quantas resvalam com o gate ligado | `src/data/armaduras.json:2-10` (`resistPerf`) contra `armas.json` (Adaga, Perfuração 0) |
+| 7 de 9 armaduras (todas exceto Nenhuma e Gambeson) | resistPerf ≥ 1 > Perfuração 0 da Adaga: quantas resvalam com o gate ligado | `src/data/armaduras.json:2-10` (`resistPerf`) contra `armas.json` (Adaga, Perfuração 0) |
 | resistPerf das 9 armaduras bate número a número com `armas-e-armaduras.md:109-119` | confirma que o catálogo não está inflado; a Adaga resvalar é a régua | `src/data/armaduras.json:2-10` vs `src/content/chapters/armas-e-armaduras.md:109-119` (conferido manualmente, sem script) |
 | 1315/1315 | fração das lances do fixture de regressão que carregam `entrada.perfil` completo | `scripts/fixtures/lances.jsonl`, contado com `node -e` no commit avisado |
 | 0/1315 | fração das mesmas 1315 lances com QUALQUER bandeira `true` no perfil | mesmo comando, mesmo arquivo |

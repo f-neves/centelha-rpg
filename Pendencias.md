@@ -2972,7 +2972,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   quando alguém mexer na frase do título do "⏭" ou fizer uma varredura geral desta família de
   defeito, e não como exceção documentada.
 
-- [ ] **L48 · [ABERTO · A RESPOSTA É SEDIMENTAÇÃO · BALDE B FECHADO EM 06/09/2026] O harness
+- [ ] **L48 · [ABERTO · A RESPOSTA É SEDIMENTAÇÃO · BALDES A e B FECHADOS (07/09/2026 e 06/09/2026)] O harness
   chamava 20 funções da lib, e a mesa 41.** *Medido pela revisora em 06/09/2026 e reproduzido
   pelo portão no mesmo dia.*
 
@@ -3017,7 +3017,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
 
   | balde | as funções | o que fazer |
   |---|---|---|
-  | **A · sem ocasião num laço headless** (8) | `fita`, `resumoDaAcao`, `combateDaMesa`, `ehSimultaneo`, `rolaNoSite`, `comOverride`, `anatomiaLivre`, `acaoVazia` | são tela ou configuração: as duas primeiras desenham, as três seguintes leem uma configuração que a bateria fixa, `comOverride` e `anatomiaLivre` são caminhos de diálogo, e `acaoVazia` responde uma pergunta mais larga (inclui Pressão) que a política automática nunca produz. **Escrever isto uma vez ao lado dos números e fechar.** É a única parte da lista que é escopo de verdade |
+  | **A · [FECHADO em 07/09/2026] sem ocasião num laço headless** (8) | `fita`, `resumoDaAcao`, `combateDaMesa`, `ehSimultaneo`, `rolaNoSite`, `comOverride`, `anatomiaLivre`, `acaoVazia` | são tela ou configuração: as duas primeiras desenham, as três seguintes leem uma configuração que a bateria fixa, `comOverride` e `anatomiaLivre` são caminhos de diálogo, e `acaoVazia` responde uma pergunta mais larga (inclui Pressão) que a política automática nunca produz. **Escrever isto uma vez ao lado dos números e fechar.** É a única parte da lista que é escopo de verdade. Conferido em `src/lib/combate-tempo.ts` que as oito existem e batem com a descrição (as três de configuração leem `CombateMesa`/flags, as duas de diálogo tomam `Anatomia`/override como parâmetro, as duas de tela devolvem string); nenhuma abre caminho novo. Fecha por escrita, não por código novo |
   | **B · [FECHADO em 06/09/2026] duas implementações da mesma pergunta** (2) | `temGesto`, `proximoGolpe` | `temGesto` era cópia de mesmo nome no `motor.mjs`, com o mesmo corpo, e a ponte já exportava o original: a cópia saiu, `resolverContra` chama `L.temGesto` (`motor.mjs:362`), e a saída da batalha de controle (300 batalhas, semente `20260903`) saiu byte a byte idêntica. `proximoGolpe` estava reimplementado em linha, em dois pontos de `avancarTickSimultaneo`; os dois viraram `L.proximoGolpe(...)` (`motor.mjs:138`, `motor.mjs:145`), mesma conferência. `proximoGolpe` entrou na ponte (só faltava lá). Conferido: `custo-tela.mjs` NÃO responde a mesma pergunta que `temGesto` — a tabela `CUSTO` mapeia TIPO DE PARADA → cliques, e `temGesto` pergunta se UMA `Acao` tem golpe agendado; nenhuma linha do arquivo testa `.golpes.length`. Não há o que tirar nem migrar lá |
   | **C · [3 DE 8 FECHADOS em 06/09/2026] divergência de fidelidade REAL, com ocasião nesta bateria** (8) | `ticksDeEntrada`, `contrapeEm`, `contrapeDe` ligados e medidos; `ticksDeDeslocamento`, `abortar`, `foraDeHora`, `atrasarGesto`, `podeSerInterrompido` seguem abertos | os três ligados: efeito líquido zero na duração média, redistribuição real célula a célula (sensibilidade a condição inicial), −0,5% no trabalho total do mestre. Os cinco que sobram exigem decisão de política antes de motor: ver o parágrafo abaixo |
   | **D · divergência REAL, SEM ocasião nesta bateria** (3) | `tetoDaRajada`, `modoCorre`, `adiaGolpe` | as duas últimas ENTRARAM neste balde em 06/09/2026, corrigindo a lista de origem: ver o parágrafo abaixo |
@@ -3106,6 +3106,26 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
 
   **O que fica aberto:** o elenco de dois arquétipos continua sem vão de iniciativa para o Tick 3
   ou 4 da régua — a FAIXA completa da régua ainda espera o elenco novo, como já estava escrito.
+
+- [x] **L49 · [FECHADO em 07/09/2026, commit `2fe37cd`] `test-bandeiras-mesa.mjs` entrou no
+  `smoke` do `package.json` (9 scripts) e não entrou na matriz do `.github/workflows/validate.yml`
+  (8 nomes fixos): a prova inteira de porte/gate na Vida nunca rodava no CI, só na máquina de
+  quem lembrasse de rodar `npm run smoke` antes de empurrar. E `test-portoes.mjs:408` afirmava
+  "o CI roda os mesmos em matriz a cada push" sem nada no repositório conferir isso — o próprio
+  caso que o arquivo existe para pegar.
+
+  **O conserto, em três partes:** `test-bandeiras-mesa` entrou na matriz; `test-portoes.mjs`
+  ganhou o item 6 ("o smoke do package.json e a matriz do CI concordam"), que extrai as duas
+  listas por regex, confere as duas direções (fora da matriz, fora do smoke) com controle
+  positivo (`test-luas` tem de aparecer nos dois lados) e foi ensaiado nos três sentidos
+  (vermelho sem o item na matriz, verde com ele, vermelho de novo removendo); a frase de `:408`
+  (agora perto de `:453`) deixou de ser afirmação solta e passou a apontar para o item 6.
+
+  **Achado registrando índice, não código:** o `Pendencias.md` não tinha entrada nenhuma para
+  este CORRIGE apesar de ele já estar fechado em `main` — a mesma classe do item que o próprio
+  `CONTEXTO.md` descreve (decisão/trabalho fechado que não está no índice único). Confirmado
+  rodando `node scripts/test-portoes.mjs` em 07/09/2026: item 6 verde, matriz e smoke com 9
+  nomes cada, concordando nas duas direções.
 
 ## H. Arremesso
 

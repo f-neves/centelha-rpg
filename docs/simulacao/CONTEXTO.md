@@ -200,6 +200,12 @@ de formato. → detalhe de cada uma: `Pendencias.md` **L42**, **L45**.
 - **AS FORMAS TÊM CATÁLOGO, e ele é o dono da lista de perguntas:** `docs/simulacao/
   CATALOGO.md`. Instrumento novo passa por lá ANTES de ser construído. **A lista não é
   contada**: citar "as N formas" envelhece na forma nova seguinte.
+- **O CONTRATO DA REVISORA ANTIGA ESTÁ VERSIONADO:** `docs/simulacao/REVISORA.md`,
+  copiado em 07/09/2026 de `.claude/CLAUDE.local.md` do worktree `centelha-revisora`
+  (excluído pelo `.git/info/exclude`, existia só naquele disco). Carrega o papel, o
+  roteiro, o critério de aceitação, as réguas de gatilho e decisões do humano que não
+  estavam em nenhum documento versionado. Mesma classe de defeito do CORRIGE que não
+  estava no `Pendencias`: decisão importante morando fora do repositório.
 - **DUAS LISTAS QUE PRECISAM CONCORDAR, sustentadas só por disciplina, divergem.** A régua:
   fonte única (uma gera a outra), ou cópia com detector (asserção que compara as duas nas
   duas direções, com controle positivo). Achado três vezes nesta frente (a mais recente:
