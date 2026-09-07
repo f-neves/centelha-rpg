@@ -70,6 +70,7 @@ segunda tinha ficado verde por cegueira.
 | **a cópia segurada por um detector, e não por disciplina** | duas implementações da mesma conta (não o mesmo corpo — a mesma MATEMÁTICA, escrita duas vezes), com uma fixture de regressão no meio | o detector cobre TODOS os ramos que mudaram, ou só o estado em que a fixture foi gravada? |
 | **o segundo ponto de decisão, dentro da MESMA função** | consertar uma conta e não perguntar onde MAIS ela se decide | o que a função que APLICA o efeito (`aplicarDano`, `baixarVida`, o `update` de verdade) lê — é o valor que acabei de consertar, ou outro calculado em paralelo? |
 | **as duas metades de um par movendo-se juntas** | um teste com um caso "liga" e um caso "desliga" que passam OU falham juntos | os dois medem o mecanismo, ou os dois dependem do mesmo insumo, e um insumo quebrado move os dois na mesma direção? |
+| **o teste novo que nasce já fora do portão** | um `.mjs` novo em `scripts/`, entrada nova em `scripts.smoke` | ele entrou em TODA lista que precisa dele, ou só na primeira em que alguém lembrou? |
 
 **DUAS NOVAS, DE 06/09/2026, ACHADAS NA REVISÃO DO AVANÇO UNIFICADO:** a primeira é o gatilho —
 fica verde, o rótulo continua descrevendo o que deveria medir, e nada acusa a mudança por baixo. A
@@ -326,3 +327,20 @@ fecha:** um par bem desenhado prova que duas coisas diferentes CONTINUAM
 diferentes; não prova, sozinho, que a diferença vem do canal certo — para
 isso, o par precisa ser desafiado quebrando o insumo comum de propósito, e
 não só lido depois de passar.
+
+**UM TERCEIRO CASO, DE 07/09/2026, E É VARIANTE DO "TRANSPORTE QUE DESCARTA",
+NÃO REPETIÇÃO DELE:** `test-bandeiras-mesa.mjs` nasceu, entrou em
+`package.json` (`scripts.smoke`), e nunca entrou na matriz do CI
+(`.github/workflows/validate.yml`, `strategy.matrix.teste`) porque a matriz é
+uma lista escrita à mão, num arquivo diferente, e ninguém tem o hábito de
+abrir os dois toda vez que um teste nasce. O teste rodava localmente,
+`npm run smoke` passava, e o portão do CI nunca o viu: não é o portão inteiro
+faltando (`test-portoes.mjs` já checava que todo teste está em ALGUM
+portão), é um teste NOVO nascendo já fora de UM dos dois. **O gatilho é o
+mesmo do "transporte que descarta": duas listas que precisam concordar
+(`scripts.smoke` e a matriz do YAML), sustentadas só por disciplina.** A
+régua que já existe para esse gatilho serve de novo aqui: fonte única (uma
+lista gera a outra), ou cópia com detector (uma asserção que compara as duas
+listas nas duas direções, com controle positivo para provar que a extração
+achou algo de verdade). Escolhido o detector: `test-portoes.mjs` ganhou o
+item 6, que faz exatamente essa comparação.
