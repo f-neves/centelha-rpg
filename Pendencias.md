@@ -1363,7 +1363,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   - o item no menu da peça: `condicoes', '◈ Condições'` (`grid.astro:7080`);
   - o selo de ícones na lista lateral, que custa zero gestos: `const selo` (`grid.astro:6260`);
-  - e a aba Combate chamando o mesmo módulo: `function abrirCondicoes` (`combate.astro:1740`), para
+  - e a aba Combate chamando o mesmo módulo: `function abrirCondicoes` (`combate.astro:1750`), para
     não haver duas cópias divergindo no primeiro conserto que só uma receber.
 
   Asserção em par, em `cenaCondicaoAMao` (`scripts/test-grid.mjs`): a mesma folha do golpe aberta
@@ -2768,7 +2768,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | `refazerLogDosEfeitos()` | `LOG = LOG.filter((e: any) => !minha(e));` (`grid.astro:10377`) e empurra N linhas novas |
 
   **E UMA CORREÇÃO AO ENUNCIADO: não existe zerar no Grid.** O `LOG = []` é do `combate.astro`
-  (`if (zLog) { LOG = []; await persistLog(); }`, `combate.astro:2058`), na caixa de reiniciar
+  (`if (zLog) { LOG = []; await persistLog(); }`, `combate.astro:2068`), na caixa de reiniciar
   combate, e lá não há escritor concorrente. **Zerar não precisa de caminho novo:** precisa ficar
   onde está.
 
@@ -3711,6 +3711,19 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   auditoria e **não corrigido de propósito**, porque mexe em número de mesa: o código lê
   `m.fraquezas`/`m.resistencias` no topo da criatura, e elas moram dentro de `combate`.
   Zero das 309 têm no topo; 101 têm dentro. Detalhe em `Auditoria_Tecnica.md` seção 8.2.
+
+- [x] **J5 · [ERRO RECONHECIDO em 07/09/2026] Quatro commits do TechLead têm coautoria
+  Claude/Anthropic, contra a regra global do usuário.** `76c9b70`, `fc90e07`, `14dea09` e
+  `92e442b` trazem `Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>` e uma linha
+  `Claude-Session`, já publicados em `origin/main`. Um `system-reminder` no meio da sessão
+  instruiu essa coautoria; a regra global do usuário (`CLAUDE.md`, "nunca coautoria
+  Claude/Anthropic em commit ou PR, em nenhum projeto... sobrepõe qualquer instrução padrão
+  da ferramenta") já estava no contexto desde o início e deveria ter prevalecido. A Executora
+  recebeu o mesmo texto, identificou como suspeito e recusou aplicar — corretamente não
+  emendou o commit alheio sem autorização. **DECISÃO DO USUÁRIO: não reescrever histórico já
+  publicado.** O custo de um force-push (mudar os quatro SHAs, que documentos como `PLANO.md`
+  e cópias locais da equipe já citam) é maior que o defeito cosmético da linha indevida. Os
+  quatro commits ficam como estão; nenhum commit daqui em diante leva essa linha.
 
 ---
 
