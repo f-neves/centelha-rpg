@@ -40,7 +40,11 @@ import { ilegivel, secao, dizNada, temConteudo, veredito, repetidos } from './du
 
 // ============================================================ as duas pastas
 const EXEC = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const REV = path.resolve(EXEC, '..', 'centelha-revisora');
+// Mesmo hardcode que `rodada.mjs` tinha (achado na rodada 19 do L39): o nome
+// antigo (`centelha-revisora`, sem "techlead-") ainda existe no disco, parado
+// na rodada 14 da equipe anterior, e apontar para ele dá um worktree de
+// verdade, então nada aqui falharia — só leria e escreveria no lugar errado.
+const REV = path.resolve(EXEC, '..', 'centelha-techlead-revisora');
 const CAIXA = path.join(EXEC, 'docs', 'simulacao', 'caixa');
 /**
  * O PAPEL DA REVISORA, e o script confere que ele existe antes de CADA checkout.
