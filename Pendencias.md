@@ -1628,6 +1628,28 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   ter sido alcançado pelo golpe original, por alcance ou geometria), parar e escalar antes de
   seguir — não é para resolver sozinho na implementação.
 
+  **ITEM 4 (o que o escudo faz) NÃO É DECISÃO DE MESA, É BANDEIRA DESLIGADA — conferido em
+  07/09/2026.** `bloqueio` é uma das 15 bandeiras (`src/data/regras.json:2526`,
+  `"bloqueio": false`), e enquanto ela estiver assim a rota de Bloqueio não existe em lugar
+  nenhum do motor: a resolução usa só a Esquiva, e o escudo `só penaliza` (`docs/simulacao/02-projeto-harness.md:1823`). O Interpor não precisa inventar nada para o escudo: ele herda
+  o mesmo estado que vale em qualquer outro golpe hoje — o escudo do interpositor pesa na
+  Penalidade de armadura e não some, mas não soma Defesa nenhuma até `bloqueio` ligar. Quando a
+  bandeira ligar, o Interpor ganha o bônus de Bloqueio pela mesma conta que todo o resto do
+  combate, sem precisar de uma regra própria. **Reclassificado de "escalar" para "bloqueado por
+  bandeira"**, mesma família de porte/gate (L48).
+
+  **ITEM 6 (reconciliar os dois preços) NÃO É ESCOLHA ENTRE PREÇOS: SÃO DOIS GESTOS, POR FASE —
+  E ISSO JÁ ESTAVA DECIDIDO EM 20-21/08/2026, só não tinha sido lido junto.**
+  `Combate_Tempo.md:800`-`815` (§14.6) descreve as duas entradas do Interpor como fases
+  diferentes, cada uma com preço e regime já fechados: no **Preparo**, interpor é destino do
+  abortar (`regras.json:2504`, `para: ["mover","desviar","interpor"]`) — você desiste do próprio
+  gesto ainda não resolvido, sem teste, perde o que já investiu e paga o deslocamento a 1
+  Tick/metro, "o mesmo preço do desvio de emergência da §5.5"; na **Recuperação**, interpor é uma
+  das ações fora de hora do catálogo §4.3 — você não estava agindo, paga a distância em metros
+  (mínimo 2) em dívida, e o teste que fizer para chegar lá sai a −1d6 pela regra geral de
+  Recuperação (`:812`). Não há dois preços concorrentes para a mesma coisa: há duas portas de
+  entrada com preços já escritos para o que cada uma é. **Nenhuma decisão nova precisa ser
+  tomada aqui** — o trabalho é implementar as duas portas, não escolher uma.
 
 - [ ] **L35 · [DECISÃO DE MESA] A CRIATURA NÃO TEM PERÍCIA, E A COMPARAÇÃO DO GOLPE DO ESCURO
   FECHA PARA UM LADO SÓ** · *levantamento de 04/09/2026, contado nas 309.*
