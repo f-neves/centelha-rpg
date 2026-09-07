@@ -1328,13 +1328,13 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | 3 | **dívida de Ticks** | **FEITO** · `f699ae2`, junto com o 2 |
   | 4 | **mudar efeito posto** | **FEITO** · e a decisão do custo está escrita na seção 4 |
   | 5 | **Investida** | **FEITO no motor** · número decidido em 05/09, e o −6 saiu |
-  | 6 | **Interpor e desviar** | **PARADO POR DECISÃO DE MESA, não por trabalho** |
+  | 6 | **Interpor e desviar** | **RÉGUA FECHADA em 07/09/2026** · as seis perguntas de mesa da seção 6 (quem leva o dano, teste, alcance, escudo, duração, os dois preços) estão decididas, pronto para a Executora |
 
-  **A FASE 2 ESTÁ FECHADA EM CINCO DE SEIS**, e o sexto não está esperando código: está esperando
-  regra que não existe. O levantamento mostrou que o capítulo publicado **não tem uma linha** sobre
-  interpor, desviar nem abortar, então construir o Interpor não é implementar régua existente, é
-  **escrever régua nova** · e isso é decisão de mesa. Enquanto ela não vier, o item fica aqui com o
-  motivo escrito, e nada nele é trabalho parado por falta de mão.
+  **A FASE 2 FICOU FECHADA EM CINCO DE SEIS POR SEMANAS**, e o sexto não esperava código: esperava
+  regra que não existia. O levantamento mostrou que o capítulo publicado **não tem uma linha** sobre
+  interpor, desviar nem abortar, então construir o Interpor não era implementar régua existente,
+  era **escrever régua nova** · decisão de mesa, tomada em 07/09/2026 (seção 6, abaixo). O sexto
+  item deixa de ser exceção.
 
   **NENHUMA FASE TERMINA EM DOCUMENTO**, e é a regra que rege esta lista inteira: toda linha acima
   só vira FEITO com coisa funcionando na mesa e asserção que cai se ela parar de funcionar.
@@ -1549,7 +1549,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
      (`return alvo.defesaBase`, `src/lib/lance.ts:159`). **RESOLVIDA no mesmo dia**, e a seção
      própria conta como: **L37**. O número passou a morar só na condição, e o tabuleiro a alimenta.
 
-  ### 6 · Interpor e desviar · FALTA, e a régua não fecha
+  ### 6 · Interpor e desviar · RÉGUA FECHADA em 07/09/2026, pronta para a Executora
 
   **A alcançabilidade responde o contrário do de sempre aqui:** o caminho existe e é curto (botão
   direito → `✋ Abortar`, 2 passos), a caixa já tem os três rádios
@@ -1662,6 +1662,38 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   mesa:** ou o Interpor à distância aceita "dentro do alcance" mesmo sabendo do caso estranho
   (nenhuma trava nova, o Alerta do item 1 cobre o resto), ou pede geometria de reta que hoje só
   existe para Artes e precisaria de uma versão para ataque mundano.
+
+  **DECIDIDO em 07/09/2026: OPÇÃO 2, GEOMETRIA DE RETA NOVA.** A interposição é gesto
+  DECLARADO pelo jogador, sabendo o que vale — não é um absurdo que aparece por acidente (o
+  Alerta do item 1 não cobre isto), é a regra sendo jogada como está escrita, e a mesa que
+  descobrir "qualquer ponto do raio serve" vai jogar assim sempre. **Com duas conferências
+  feitas antes de escrever código, como pedido:**
+
+  **3a · o `linha` das Artes mede outra coisa, e reusá-lo seria a fachada.** A função
+  `pontoNaFigura` testa `f.tipo === 'linha'` girando o ponto para o referencial da faixa (`src/lib/artes-grid.ts:1189`-`1196`): a origem é a posição de quem conjura, o comprimento e a
+  direção são escolha de quem lança a Arte, e a largura (`larguraM`, padrão `LARGURA_LINHA`) é um
+  número decidido para dimensionar Efeito, não para decidir quem bloqueia uma flecha. É a mesma
+  matemática (retângulo girado) para uma pergunta diferente (área de efeito de quem conjura,
+  contra segmento entre agressor e alvo original). Reusar herdaria um número sem a decisão por
+  trás dele para este uso novo — não reusar.
+
+  **3b · a geometria de hexágono resolve sem número novo, mas com FUNÇÃO nova, não com a que
+  existe.** Um traçado de reta em coordenadas cúbicas (interpolar entre os dois centros e
+  arredondar CADA PASSO em cubo, não eixo a eixo) devolve a sequência exata de casas que o
+  segmento cruza, sem largura nem tolerância — é geometria resolvida, não decisão. A função mais
+  próxima que já existe, `afastar` (`src/lib/artes-grid-mesa.ts:1163`), arredonda `q` e `r` **por
+  eixo** (`Math.round` em cada um separado), o que não garante hexágonos vizinhos passo a passo e
+  não serve para "quais casas a reta cruza" sem risco de pular uma. **Não é reuso, é função nova
+  e pequena, e não carrega número novo para decidir.**
+
+  **A regra final:** o interpositor precisa terminar dentro do alcance da arma original (já
+  decidido) **e** numa das casas que o traçado reto do agressor até a posição original do aliado
+  cruza. **Só vale para ataque à distância** — no corpo a corpo o alcance curto já colapsa em
+  adjacência a ambos, a reta é redundante ali, e isto fica escrito para ninguém medir reta num
+  golpe de espada achando que está errado.
+
+  **AS SEIS PERGUNTAS DO INTERPOR ESTÃO FECHADAS. Nenhuma pergunta nova apareceu ao escrever
+  esta seção.** Pronto para a Executora.
 
   **ITEM 4 (o que o escudo faz) NÃO É DECISÃO DE MESA, É BANDEIRA DESLIGADA — conferido em
   07/09/2026.** `bloqueio` é uma das 15 bandeiras (`src/data/regras.json:2526`,
