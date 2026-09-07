@@ -2577,6 +2577,22 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   exemplo) afirmando que a condição É aplicada. Um teste sem o outro prova metade: falhar quando
   um dos 57 pára de entrar é tão grave quanto falhar quando um dos 9 volta a entrar.
 
+  **CORREÇÃO ao item (b), achada pela Executora em 07/09/2026 ao tentar escrever exatamente esse
+  teste: "chama o despacho (ou `gravarEfeito` diretamente)" trata as duas formas como
+  equivalentes, e não são.** `gravarEfeito` (`:1324`, `ATIVOS.push`) não tem gate nenhum por
+  `forma` — empurra sempre, incondicional, é a própria seção que já dizia isso no item 3 acima.
+  Quem gate é só o despacho da conjuração (`:798`), e ele é DOM-only (`conjurar` exige `palco:
+  HTMLElement`, inalcançável no harness Node do `test-arte-na-mesa.mjs`). Ou seja: não existe hoje
+  — nem antes deste split, nem depois — uma prova em Node de que os 9 não entram em `ATIVOS`; essa
+  proteção é estrutural (itens 2 e 3 acima), verificada por leitura, não por teste que rode. O que
+  É testável em Node, e o que a Executora escreveu em `test-arte-na-mesa.mjs`, é mais estreito e
+  ainda assim o que importa PARA O SPLIT: que `porCondicao` é decidido pela presença de
+  `grid.condicao`, nunca de `grid.condicaoAparente` sozinho — a rede que pega uma fusão ingênua
+  (`g?.condicao || g?.condicaoAparente`) se alguém escrever uma no futuro. Isto é proteção
+  SECUNDÁRIA (o campo certo), não a proteção PRINCIPAL (o despacho nunca deixar os 9 chegarem
+  lá) — a principal continua sem teste, e adicionar um exigiria harness de navegador para
+  `conjurar`, fora do escopo desta frente.
+
   **CLASSIFICA/EXIBE, quatro blocos, sem chamar `porCondicao` nem `tirarCondicao`:**
   `src/lib/artes-grid-mesa.ts:458` (`const cond = ef.condicao && CONDICAO[ef.condicao] ? CONDICAO[ef.condicao] : null;`);
   `:1834` (`p.ef.condicao && CONDICAO[p.ef.condicao] ? CONDICAO[p.ef.condicao].nome : ''`, texto de log);
