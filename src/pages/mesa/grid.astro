@@ -2393,7 +2393,7 @@ const SETAS = [
   } from '../../lib/mesa-tempo-real';
   import { MON, resumoDe, iniDeMonstro, d6, cardCriaturaHTML, criaturaCompleta } from '../../lib/mesa-bestiario';
   import { rolarIniciativaPC, resumoFicha } from '../../lib/mesa-ficha';
-  import { mana as manaDaFicha } from '../../lib/calc';
+  import { mana as manaDaFicha, modificadorPorte, porteDeRotulo } from '../../lib/calc';
   import {
     centroHex, verticesHex, tabuleiro, medidaTabuleiro, margemTabuleiro,
     hexEmPonto, dentro, chaveHex, distanciaHex, nomeHex, larguraHex,
@@ -8697,10 +8697,20 @@ const SETAS = [
     // caixa abria em Impacto e o mestre aplicava couro contra espada.
     dnTipo.value = tipoDeDano(ra?.dano || '') || 'impacto';
     // O bolo de quem ataca, já com o que a situação cobra DELE.
+    //
+    // A DIFERENÇA DE PORTE, quando a bandeira está ligada (06/09/2026): o
+    // mesmo `c.tipo === 'criatura' ? MON[c.monstro_id]?.porte : null` que
+    // `diametroM` já usa para o desenho do token, aqui para o acerto. PC sem
+    // `porte` (`null`) normaliza para `medio`, que é a metade implícita do par
+    // atacante/alvo em toda mesa de PCs.
+    const porteRotuloDe = (c: any) => (c?.tipo === 'criatura' ? MON[c.monstro_id]?.porte : null);
     const ajAtq = (() => {
       const f = tierDe(atacante.pv_atual, atacante.pv_max).penAcao ?? 0;
       const c2 = somarCondicoes((atacante.condicoes || []).map((k: any) => ({ ...(COND[k.id] || {}), ...k })));
-      return { flat: f + (c2.acao || 0) + (c2.ataque || 0), dados: c2.dados || 0 };
+      const porte = REGRAS_CENA.porte
+        ? modificadorPorte(porteDeRotulo(porteRotuloDe(atacante)), porteDeRotulo(porteRotuloDe(alvo)))
+        : 0;
+      return { flat: f + (c2.acao || 0) + (c2.ataque || 0) + porte, dados: c2.dados || 0 };
     })();
     let rolado = '';
 // O DANO TAMBÉM PRECISA DA PRÓPRIA DESCRIÇÃO, e antes não tinha: `rolado`

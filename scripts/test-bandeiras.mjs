@@ -17,8 +17,18 @@ import os from 'node:os';
 
 const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
 const saida = path.join(os.tmpdir(), `bandeiras-${process.pid}.mjs`);
+// `modificadorPorte`/`porteDeRotulo` moram em `calc.ts`, não em `bandeiras.ts`:
+// o perfil (o carimbo) e a régua de porte são módulos diferentes, e este
+// arquivo confere os dois juntos porque a régua é a metade nova da mesma
+// bandeira que o carimbo protege.
 await build({
-  entryPoints: [path.join(ROOT, 'src/lib/bandeiras.ts')],
+  stdin: {
+    contents: `
+      export * from './src/lib/bandeiras';
+      export { modificadorPorte, porteDeRotulo } from './src/lib/calc';
+    `,
+    resolveDir: ROOT, loader: 'ts',
+  },
   outfile: saida, bundle: true, format: 'esm', platform: 'node',
   loader: { '.json': 'json' }, logLevel: 'error',
 });
@@ -42,18 +52,37 @@ ok(!B.BANDEIRAS.includes('couraca'),
 // ---- 2: o estado inicial é o que a §0.7 decidiu ----
 const publicadas = ['margem', 'gate', 'porte', 'bloqueio', 'modo2', 'teto6', 'curaSemArea', 'curaDivide', 'porRodada'];
 const nucleo = ['n1', 'n2', 'n3', 'n4', 'n5', 'n6'];
-// TODAS DESLIGADAS, e a asserção é sobre o INVARIANTE, não sobre a lista:
-// nenhuma bandeira pode estar `true` sem que o motor a aplique. Enquanto
-// nenhuma estiver ligada no motor, a lista das ligadas é vazia. Quem ligar a
-// primeira vem aqui e move o nome para `LIGADAS_NO_MOTOR`, o que obriga a
-// decisão a ser explícita em vez de silenciosa.
-const LIGADAS_NO_MOTOR = [];
+// A ASSERÇÃO É SOBRE O INVARIANTE, não sobre a lista: nenhuma bandeira pode
+// estar `true` sem que o motor a aplique. Quem ligar uma vem aqui e move o
+// nome para `LIGADAS_NO_MOTOR`, o que obriga a decisão a ser explícita em vez
+// de silenciosa. `porte` é a primeira (06/09/2026): `modificadorPorte` em
+// `calc.ts`, aplicado em `ajAtq.flat` de `folhaDaAcao` (`grid.astro`). Só na
+// MESA — o harness (`scripts/sim/motor.mjs`) continua sem lê-la, porque a
+// segunda bateria não acontece (`Pendencias.md` L25).
+const LIGADAS_NO_MOTOR = ['porte'];
 ok([...publicadas, ...nucleo].every((b) => B.PERFIL_CORRENTE[b] === LIGADAS_NO_MOTOR.includes(b)),
   `só as bandeiras que o motor aplica estão ligadas (${LIGADAS_NO_MOTOR.length} de 15)`);
-ok(publicadas.every((b) => B.PERFIL_CORRENTE[b] === false),
-  'as nove de regra publicada nascem DESLIGADAS: nenhuma está ligada no motor ainda');
+ok(publicadas.filter((b) => !LIGADAS_NO_MOTOR.includes(b)).every((b) => B.PERFIL_CORRENTE[b] === false),
+  'as oito de regra publicada que restam nascem DESLIGADAS: nenhuma está ligada no motor ainda');
 ok(nucleo.every((b) => B.PERFIL_CORRENTE[b] === false),
   'e as seis do núcleo também: as regras que elas ligam ainda não existem');
+
+// ---- 2b: o modificador de porte, com sinal e teto conferidos ----
+//
+// O sinal é o que um teste unitário comum não pega: o número sai plausível
+// nos dois sentidos, e só a direção errada. Médio atacando Colossal tem de
+// somar (o alvo é maior); Colossal atacando Médio tem de subtrair o MESMO
+// valor (é o mesmo par, invertido).
+ok(B.modificadorPorte('medio', 'colossal') === 12,
+  `médio ataca colossal: +12 (${B.modificadorPorte('medio', 'colossal')})`);
+ok(B.modificadorPorte('colossal', 'medio') === -12,
+  `colossal ataca médio: −12, não +12 (${B.modificadorPorte('colossal', 'medio')})`);
+ok(B.modificadorPorte('medio', 'medio') === 0, 'mesmo porte: zero');
+ok(B.modificadorPorte('minusculo', 'colossal') === 12,
+  'a diferença tem teto de capCategorias (4): minúsculo × colossal (6 categorias de distância) satura em +12, não em +18');
+ok(B.porteDeRotulo('Miúdo') === 'minusculo' && B.porteDeRotulo('Médio') === 'medio'
+  && B.porteDeRotulo(null) === 'medio' && B.porteDeRotulo('lixo') === 'medio',
+  'o rótulo do bestiário normaliza certo, e o que não bate cai em medio, não quebra');
 ok(regras.combate?.simultaneo?.decideEmValeDepois === 1 && B.PERFIL_CORRENTE.n1 === false,
   'e o n1 concorda com o decideEmValeDepois: os dois dizem que a ação começa em T+1');
 
@@ -88,5 +117,6 @@ ok(B.estadoDoCarimbo({ perfil: { ...B.PERFIL_CORRENTE } }).difere.length === 0,
 ok(B.estadoDoCarimbo(null).temCarimbo === false && /sem carimbo/.test(B.estadoDoCarimbo(null).frase),
   'e sem encontro a frase diz que a cena não tem carimbo');
 
-console.log(`\n${FALHAS.length ? '✗' : '✓'} Perfil de regras OK · ${PASSOU} asserções · 15 bandeiras, todas esperando a regra que o motor ainda não aplica, e o carimbo protege o chão da cena`);
+console.log(`\n${FALHAS.length ? '✗' : '✓'} Perfil de regras OK · ${PASSOU} asserções · 15 bandeiras`
+  + ` (${LIGADAS_NO_MOTOR.length} ligada na mesa: ${LIGADAS_NO_MOTOR.join(', ')}), e o carimbo protege o chão da cena`);
 if (FALHAS.length) { FALHAS.forEach((f) => console.log('  · ' + f)); process.exit(1); }
