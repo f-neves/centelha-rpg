@@ -94,6 +94,7 @@ jobs:
           - test-grid
           - test-espelho
           - test-golpe-caido
+          - test-bandeiras-mesa
           - test-grid-simultaneo
           - test-etapa0
           - test-bench-tempo

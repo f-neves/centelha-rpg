@@ -41,6 +41,14 @@
 //      executar, e em 04/09 um commit de documento subiu sem `validate` e
 //      derrubou o CI e o deploy. O `pre-commit` versionado tira isso da
 //      lembrança, e esta seção confere que ele está ligado.
+//   6. O SMOKE DO `package.json` E A MATRIZ DO CI CONCORDAM. Achado em
+//      07/09/2026: `test-bandeiras-mesa.mjs` entrou no `smoke` do
+//      `package.json` e não entrou na matriz do `.github/workflows/validate.yml`
+//      — duas listas que precisam dizer a mesma coisa, sustentadas só por quem
+//      lembrar de editar as duas. A prova inteira do teste rodava na máquina de
+//      quem lembrasse de rodar `npm run smoke`, e nunca no CI. É a MESMA forma
+//      do item 1 (teste fora de todo portão), um nível abaixo: aqui o teste
+//      está num portão, e o portão é que está incompleto.
 //
 // A FORMA DAS CINCO É A MESMA, e é a do princípio do zero ambíguo: a ausência
 // nunca vale por si. Ou o instrumento está no portão, ou a ausência dele está
@@ -112,6 +120,39 @@ secao('· todo teste está em algum portão');
 
   const semRazao = Object.entries(TESTES_FORA).filter(([, r]) => !r || r.length < 20).map(([t]) => t);
   ok(semRazao.length === 0, semRazao.length ? `sem razão de verdade: ${semRazao.join(', ')}` : 'e todo motivo tem uma razão escrita');
+}
+
+secao('· o smoke do package.json e a matriz do CI concordam');
+{
+  // A EXTRAÇÃO DO YAML É POR REGEX, e não por parser: este repositório não tem
+  // dependência de YAML, e um workflow com uma matriz só não pede uma. O
+  // recorte fica preso ENTRE `teste:` e `steps:`, para não casar nenhuma outra
+  // lista `- algo` que o arquivo venha a ganhar fora da matriz do smoke.
+  const yaml = ler('.github/workflows/validate.yml');
+  const bloco = /teste:\s*\n([\s\S]*?)\n\s*steps:/.exec(yaml)?.[1] || '';
+  const matriz = [...bloco.matchAll(/^\s*-\s*(test-[\w-]+)\s*$/gm)].map((m) => m[1]).sort();
+  const smoke = (PKG.scripts.smoke.match(/scripts\/([\w-]+)\.mjs/g) || [])
+    .map((m) => m.slice('scripts/'.length, -'.mjs'.length)).sort();
+
+  // O CONTROLE POSITIVO, antes de qualquer comparação: se a extração de
+  // qualquer um dos dois lados quebrar (o YAML mudar de forma, o `smoke` do
+  // `package.json` ficar vazio), as duas listas virariam `[]` e a comparação
+  // de subconjunto passaria por não ter o que reprovar — o mesmo defeito que
+  // fez `mon-aboleth` parecer prova de gate. `test-luas` é o mais antigo dos
+  // dois lados e serve de sentinela.
+  ok(smoke.includes('test-luas') && smoke.length >= 5,
+    `a extração do \`smoke\` do package.json achou algo de verdade (${smoke.length}: ${smoke.join(', ')})`);
+  ok(matriz.includes('test-luas') && matriz.length >= 5,
+    `a extração da matriz do YAML achou algo de verdade (${matriz.length}: ${matriz.join(', ')})`);
+
+  const foraDaMatriz = smoke.filter((n) => !matriz.includes(n));
+  const foraDoSmoke = matriz.filter((n) => !smoke.includes(n));
+  ok(foraDaMatriz.length === 0, foraDaMatriz.length
+    ? `no \`smoke\` e fora da matriz do CI: ${foraDaMatriz.join(', ')} — roda na máquina de quem lembrar, nunca no CI`
+    : `os ${smoke.length} do \`smoke\` estão todos na matriz do CI`);
+  ok(foraDoSmoke.length === 0, foraDoSmoke.length
+    ? `na matriz do CI e fora do \`smoke\`: ${foraDoSmoke.join(', ')} — job rodando um teste que o package.json não lista mais`
+    : 'e nada na matriz sobra do lado do CI');
 }
 
 secao('· todo gerador se confere');
@@ -405,7 +446,12 @@ if (!process.env.CI) {
   const velhos = smoke.filter((n) => !carimbado.has(n) || carimbado.get(n).dias >= 7);
   if (velhos.length) {
     console.log(`  ⚑ ${velhos.length} de ${smoke.length} sem passar aqui há uma semana ou mais.`);
-    console.log(`    \`npm run smoke\` roda os ${smoke.length}. O CI roda os mesmos em matriz a cada push.`);
+    // NÃO É MAIS SÓ AFIRMAÇÃO: "· o smoke do package.json e a matriz do CI
+    // concordam", acima, é o que torna esta frase verdade e não prosa — achado
+    // em 07/09/2026, quando `test-bandeiras-mesa.mjs` entrou no `smoke` e
+    // ficou fora da matriz sem nada aqui acusar.
+    console.log(`    \`npm run smoke\` roda os ${smoke.length}. O CI roda os mesmos em matriz a cada push`
+      + ' (conferido acima, item 6).');
   }
 }
 

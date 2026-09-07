@@ -312,3 +312,17 @@ mudou), desconfie de insumo comum antes de comemorar a consistência — a
 pergunta não é "elas concordam?", é "elas concordam **pelo mecanismo que eu
 quero medir**, ou por um dado que as duas leem igual e que pode estar
 errado?".
+
+**A FORMA OPERACIONAL DA PERGUNTA, da revisora (07/09/2026), que é o que
+torna o gatilho de cima uma coisa que se FAZ, e não só uma coisa que se
+desconfia:** *se eu quebrar de propósito o dado que deveria separar os dois
+casos, os dois ainda dão resultados diferentes, ou colapsam para o mesmo?*
+No caso do gate: zerar `perfArma` do atacante à mão (o mesmo insumo que
+faltou) e rodar o par de novo — se `b0` continuasse abrindo e `b2`
+continuasse resvalando, o par seria robusto ao insumo comum; como os dois
+colapsaram para "sempre abre", o par não estava vivo pelo mecanismo, estava
+vivo pelo acidente de o insumo estar certo NAQUELE dia. **A distinção que
+fecha:** um par bem desenhado prova que duas coisas diferentes CONTINUAM
+diferentes; não prova, sozinho, que a diferença vem do canal certo — para
+isso, o par precisa ser desafiado quebrando o insumo comum de propósito, e
+não só lido depois de passar.
