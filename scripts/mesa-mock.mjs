@@ -95,10 +95,18 @@ const CAIDO_LONGE = P.get('longe') === '1';
 // Ver o bloco `if (BANDEIRAS)` mais abaixo para o porquê de cada peça.
 const BANDEIRAS = P.get('cena') === 'bandeiras';
 
-// A CENA DO INTERPOR: `?cena=interpor` (L34 §6, rodada 15/16).
+// A CENA DO INTERPOR: `?cena=interpor[&fase=preparo|recuperacao]` (L34 §6,
+// rodada 15/16/17).
 //
 // Ver o bloco `if (INTERPOR)` mais abaixo para o porquê de cada peça.
 const INTERPOR = P.get('cena') === 'interpor';
+/**
+ * QUAL PORTA o interpositor testa: `preparo` (padrão, `✋ Abortar`) ou
+ * `recuperacao` (`⏱ Agir fora da vez`). Muda só o `interp`: `atk` e `alvo`
+ * são os mesmos nos dois casos, porque o que muda entre as portas é QUEM
+ * declara e QUANDO, não o golpe que cai nem quem ele mira.
+ */
+const INTERPOR_FASE = P.get('fase') === 'recuperacao' ? 'recuperacao' : 'preparo';
 
 const COLS = ESPELHO ? ESPELHO.tab.cols : CAIDO ? 14 : BANDEIRAS ? 10 : INTERPOR ? 10 : parseInt(P.get('cols') || '24', 10);
 const ROWS = ESPELHO ? ESPELHO.tab.rows : CAIDO ? 8 : BANDEIRAS ? 8 : INTERPOR ? 8 : parseInt(P.get('rows') || '16', 10);
@@ -556,9 +564,11 @@ if (BANDEIRAS) {
 }
 
 /**
- * A CENA DO INTERPOR `?cena=interpor`: o golpe adiado que fica no ar, e um
- * terceiro token pronto para cobri-lo (L34 §6, decidido em 07/09/2026,
- * implementado na rodada 15, prova pedida pela Revisora na rodada 16).
+ * A CENA DO INTERPOR `?cena=interpor[&fase=preparo|recuperacao]`: o golpe
+ * adiado que fica no ar, e um terceiro token pronto para cobri-lo (L34 §6,
+ * decidido em 07/09/2026, implementado nas rodadas 15/16/17: a régua, a
+ * porta do Preparo, a prova e2e da porta do Preparo e por fim a prova e2e da
+ * porta da Recuperação).
  *
  * TRÊS PEÇAS, TRÊS PAPÉIS, e nenhuma decoração:
  *
@@ -569,14 +579,19 @@ if (BANDEIRAS) {
  *     razoável errar por acaso: o que este teste mede é o REDIRECIONAMENTO
  *     do dano, não a sorte do dado de acerto) e `dano: '3d6+21'` (com dado de
  *     verdade, porque o teste lê o total rolado no próprio texto da rolagem).
+ *     É O MESMO NOS DOIS `?fase=`: a porta que muda é a de `interp`, não a
+ *     do golpe que cai.
  *   `alvo` · o alvo ORIGINAL do golpe. Defesa 12 (a que o acerto tem de
  *     vencer, decisão do item 1: nenhum novo teste de acerto) e Absorção 3,
  *     DIFERENTE da do interpositor, de propósito: se o teste confundisse as
  *     duas Absorções, o dano líquido bateria com as duas contas por acidente.
  *   `interp` · quem vai se interpor. Adjacente a `atk` (alcance corpo a
- *     corpo), Absorção 9 (a outra metade do par acima), e já em PREPARO de
- *     um gesto qualquer (`golpes: [20]`): é essa fase que abre o `✋
- *     Abortar` no menu dele, a porta que a régua fechou para a interposição.
+ *     corpo), Absorção 9 (a outra metade do par acima). Com `?fase=preparo`
+ *     (o padrão), nasce montando um gesto qualquer (`golpes: [20]`), a fase
+ *     que abre o `✋ Abortar` no menu dele. Com `?fase=recuperacao`, nasce
+ *     já tendo golpeado (`golpes: [2]`) e ainda se recompondo (`livre: 8`),
+ *     a janela em que abre o `⏱ Agir fora da vez` no lugar do `✋ Abortar`
+ *     (o Tick da cena precisa cair em `[2, 8)`; ver `tickDaPeca` mais abaixo).
  *
  * PV 999 nos dois que podem levar o golpe: descontar 9 ou 3 de um dano de
  * ~30 nunca chega a zero, e a asserção fica livre de se preocupar com Vida
@@ -626,19 +641,34 @@ if (INTERPOR) {
   for (const p of por) {
     const acaoAtk = p.id === 'atk'
       ? { golpes: [3], livre: 8, desde: 0, tipo: 'simples', arma: p.dados.arma, alvo: p.alvo, aid: 'gtesteinterpor', aResolver: [3] }
-      // `interp` NASCE EM PREPARO (golpe daqui a 20 Ticks): é o que faz
-      // `podeAbortar` ligar o item "✋ Abortar" no menu dele, a porta de
-      // entrada da interposição que este cenário testa.
+      // `interp` NASCE NA FASE QUE `?fase=` PEDIU: em Preparo (golpe daqui a
+      // 20 Ticks) é o que faz `podeAbortar` ligar o "✋ Abortar" no menu dele;
+      // em Recuperação (golpe no Tick 2, livre só no 8) é o que faz
+      // `podeForaDeHora` ligar o "⏱ Agir fora da vez", as duas portas que a
+      // régua fechou para a interposição (L34 §6).
       : p.id === 'interp'
-        ? { golpes: [20], livre: 25, desde: 0, tipo: 'simples', arma: p.dados.arma }
+        ? (INTERPOR_FASE === 'recuperacao'
+          ? { golpes: [2], livre: 8, desde: 0, tipo: 'simples', arma: p.dados.arma }
+          : { golpes: [20], livre: 25, desde: 0, tipo: 'simples', arma: p.dados.arma })
         : {};
+    // `relogio()` (`grid.astro`) NÃO LÊ `encontros.tick_atual` fora do caso
+    // em que a fila está vazia: ele deriva o Tick da cena de `c.tick` de cada
+    // peça (`tickDaVez`) e do golpe mais cedo no ar (`golpeMaisCedo`). Como
+    // `atk` tem um golpe agendado no Tick 3 (`aResolver`), o relógio nunca
+    // passa de 3 — por isso `alvo.tick` (a peça "livre" mais antiga da fila)
+    // precisa começar em pelo menos 2, senão a cena inteira lê Tick 0 e
+    // `interp` nunca sai da janela de Preparo dela mesma. `atk`/`interp`
+    // ficam no fim do próprio ciclo (`livre`), a mesma convenção da bancada
+    // padrão ("o Tick de quem tem ação no ar é o fim do ciclo dela").
+    const tickDaPeca = p.id === 'atk' ? 8 : p.id === 'alvo' ? 5
+      : (INTERPOR_FASE === 'recuperacao' ? 8 : 25);
     COMBS.push({
       id: p.id, encontro_id: ENC, nome: p.id === 'atk' ? 'Agressor' : p.id === 'alvo' ? 'Alvo original' : 'Interpositor',
       tipo: 'pc', grupo: p.id === 'atk' ? 'inimigo' : 'aliado',
       monstro_id: null, personagem_id: null,
       pv_max: 999, pv_atual: 999,
       mana_max: null, mana_atual: null,
-      tick: 0, iniciativa: 20 - k,
+      tick: tickDaPeca, iniciativa: 20 - k,
       acao: acaoAtk,
       dados: p.dados,
       condicoes: [], ativo: true, oculto: false, imagem: null, retrato: null,
