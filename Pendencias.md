@@ -1328,7 +1328,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | 3 | **dívida de Ticks** | **FEITO** · `f699ae2`, junto com o 2 |
   | 4 | **mudar efeito posto** | **FEITO** · e a decisão do custo está escrita na seção 4 |
   | 5 | **Investida** | **FEITO no motor** · número decidido em 05/09, e o −6 saiu |
-  | 6 | **Interpor e desviar** | **RÉGUA FECHADA em 07/09/2026** · as seis perguntas de mesa da seção 6 (quem leva o dano, teste, alcance, escudo, duração, os dois preços) estão decididas, pronto para a Executora |
+  | 6 | **Interpor e desviar** | **IMPLEMENTADO E APROVADO em 07/09/2026** (rodada 15) · pendência aberta: falta cenário e2e de golpe adiado + interposição em `test-grid.mjs`, ver seção 6 |
 
   **A FASE 2 FICOU FECHADA EM CINCO DE SEIS POR SEMANAS**, e o sexto não esperava código: esperava
   regra que não existia. O levantamento mostrou que o capítulo publicado **não tem uma linha** sobre
@@ -1699,6 +1699,22 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   **AS SEIS PERGUNTAS DO INTERPOR ESTÃO FECHADAS. Nenhuma pergunta nova apareceu ao escrever
   esta seção.** Pronto para a Executora.
+
+  **IMPLEMENTADO E APROVADO em 07/09/2026 (rodada 15, commits `8e88004`/`b5ad27b`, revisão em
+  `docs/simulacao/caixa/15-executora.md`).** As duas portas (Preparo e Recuperação), o
+  redirecionamento de dano e a geometria de reta em hexágono batem com as seis decisões abaixo,
+  conferidos linha a linha pela Revisora contra o código, não só contra o relato.
+
+  **PENDÊNCIA ABERTA, NOMEADA PELA REVISORA: falta cenário e2e de golpe adiado + interposição em
+  `scripts/test-grid.mjs`.** O redirecionamento de dano para o interpositor (item 1) é a única
+  parte do mecanismo que mexe em Vida de uma peça terceira e não tem prova automatizada nenhuma
+  além das funções puras — o smoke não cobre, porque nenhum dos 9 portões monta um golpe adiado.
+  A infraestrutura de clicar-selecionar-confirmar já existe para as duas caixas envolvidas.
+  Em `test-grid.mjs:1023`, o clique que abre a caixa de abortar: `data-a="abortar"`.
+  Em `test-grid.mjs:2902`, a caixa equivalente de fora-de-hora: `data-a="forahora"`.
+  O que falta é a fixture de golpe adiado em si, que não existe em nenhum teste hoje. Não
+  bloqueia a rodada 15, mas bloqueia considerar o item 6 pronto para mesa real enquanto não
+  existir.
 
   **ITEM 4 (o que o escudo faz) NÃO É DECISÃO DE MESA, É BANDEIRA DESLIGADA — conferido em
   07/09/2026.** `bloqueio` é uma das 15 bandeiras (`src/data/regras.json:2535`,
