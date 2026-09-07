@@ -43,7 +43,10 @@ const marcasDe = (e: Efeito | null) => {
     g.fere ? 'fere' : '',
     // Vale a tarja porque muda o turno inteiro: este não gasta a vez.
     e?.acaoLivre ? 'ação livre' : '',
-    g.condicao && CONDICAO[g.condicao] ? CONDICAO[g.condicao].nome.toLowerCase() : '',
+    (() => {
+      const condId = g.condicao || g.condicaoAparente;
+      return condId && CONDICAO[condId] ? CONDICAO[condId].nome.toLowerCase() : '';
+    })(),
   ].filter(Boolean).join(' · ');
 };
 

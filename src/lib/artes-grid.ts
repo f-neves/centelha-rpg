@@ -49,6 +49,8 @@ export interface Parametro {
 export interface GridEfeito {
   forma: Forma; ancora: Ancora; gatilho: Gatilho; alvo: string;
   persiste: boolean; materia: string | null; condicao: string | null;
+  /** Só rótulo: nomeia a condição que o texto do Efeito evoca, sem o motor aplicar nada (L39). */
+  condicaoAparente?: string | null;
   /** Marca uma peça do equipamento do alvo, e não o corpo dele. */
   pegaItem: boolean;
   /** Cobre a arena inteira: escala de região, e não área medida. */
@@ -1397,6 +1399,8 @@ export interface EfeitoAtivo {
   dano_dados: number;
   dano_bonus: number;
   condicao: string | null;
+  /** Nunca gravado pelo motor (sem coluna no banco): só existe se o chamador passar. */
+  condicaoAparente?: string | null;
   /** O elemento da Arte que conjurou: é ele que casa com fraqueza e resistência. */
   elemento: string | null;
   /** Tipo físico quando o efeito deixou matéria no mundo; null = fenômeno puro. */
@@ -1670,7 +1674,8 @@ export function rotuloDoEfeito(ef: EfeitoAtivo, tickAtual: number): string {
   if (ef.dano_dados) partes.push(`${ef.dano_dados}d6`);
   else if (ef.dano_bonus) partes.push(`+${ef.dano_bonus}`);
   if (ef.raio_m) partes.push(`${ef.raio_m} m`);
-  if (ef.condicao && CONDICAO[ef.condicao]) partes.push(CONDICAO[ef.condicao].nome);
+  const condId = ef.condicao || ef.condicaoAparente;
+  if (condId && CONDICAO[condId]) partes.push(CONDICAO[condId].nome);
   partes.push(rotuloDuracao(turnosRestantes(ef, tickAtual)));
   return partes.join(' · ');
 }

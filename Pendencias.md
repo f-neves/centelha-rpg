@@ -2593,19 +2593,23 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   lá) — a principal continua sem teste, e adicionar um exigiria harness de navegador para
   `conjurar`, fora do escopo desta frente.
 
-  **CLASSIFICA/EXIBE, quatro blocos, sem chamar `porCondicao` nem `tirarCondicao`:**
-  `src/lib/artes-grid-mesa.ts:458` (`const cond = ef.condicao && CONDICAO[ef.condicao] ? CONDICAO[ef.condicao] : null;`);
-  `:1834` (`p.ef.condicao && CONDICAO[p.ef.condicao] ? CONDICAO[p.ef.condicao].nome : ''`, texto de log);
+  **CLASSIFICA/EXIBE, quatro blocos, atualizados para ler `ef.condicao || ef.condicaoAparente`
+  (fechado, ver `docs/simulacao/caixa/18-executora.md`):**
+  `src/lib/artes-grid-mesa.ts:458` (`const condId = ef.condicao || ef.condicaoAparente;`);
+  `:1836` (`const condId = p.ef.condicao || p.ef.condicaoAparente;`, texto de log);
   `src/lib/artes-grid.ts:1496`-`1497` (`if (ef.condicao && alvos.length) {`) — a prévia só entra se
-  `alvos.length`, e os 9 problemáticos têm `alvo: "nenhum"`: **já seguro por construção**;
-  `src/lib/artes-grid.ts:1673` (`if (ef.condicao && CONDICAO[ef.condicao]) partes.push(CONDICAO[ef.condicao].nome);`);
-  `src/lib/artes-grid-ui.ts:46` (`g.condicao && CONDICAO[g.condicao] ? CONDICAO[g.condicao].nome.toLowerCase() : ''`).
+  `alvos.length`, e os 9 problemáticos têm `alvo: "nenhum"`: **já seguro por construção, não tocado**;
+  `src/lib/artes-grid.ts:1677` (`const condId = ef.condicao || ef.condicaoAparente;`);
+  `src/lib/artes-grid-ui.ts:47` (`const condId = g.condicao || g.condicaoAparente;`).
 
-  **RELATÓRIO, sem risco de capítulo:** `scripts/gen-grid-artes.mjs:395` (`efeitosNovos.filter((e) => e.grid.condicao).length`, dentro de um `console.log`) e `:405`
-  (`${(e.grid.materia || '').padEnd(11)}${e.grid.condicao || ''}`, atrás de `--lista`); o arquivo
-  escreve `artes.json`/`efeitos.json`, não capítulo.
+  **RELATÓRIO, sem risco de capítulo, atualizado (fechado):** `scripts/gen-grid-artes.mjs:410` (`efeitosNovos.filter((e) => e.grid.condicao).length`, dentro de um `console.log`, com uma segunda
+  contagem nova para `condicaoAparente` logo abaixo) e `:423` (`${e.grid.condicao || (e.grid.condicaoAparente ? \`(${e.grid.condicaoAparente})\` : '')}`,
+  atrás de `--lista`, o `condicaoAparente` entre parênteses); o arquivo escreve `artes.json`/`efeitos.json`, não
+  capítulo. O gerador (`CONDICAO_APARENTE`, mesmo arquivo, perto de `CONDICAO`) também foi atualizado: era
+  quem regenerava `grid.condicao` para os 9 e travava o `--check` do `npm run validate` até fazer isso.
 
-  **VALIDADOR, precisa saber conferir os DOIS campos depois do split:** `scripts/validate-data.mjs:170` (`if (g.condicao && !COND_IDS.has(g.condicao))`).
+  **VALIDADOR, confere os DOIS campos depois do split (fechado):** `scripts/validate-data.mjs:170` (`if (g.condicao && !COND_IDS.has(g.condicao))`), mais o invariante
+  `(g.forma === 'nenhuma') === (g.alvo === 'nenhum')` logo abaixo, na mesma função.
 
   **O que isto muda no split decidido acima:** os sete blocos de MOTOR não precisam de auditoria
   individual, um a um — a conferência acima já é a prova, e ela é sobre o despacho da conjuração
@@ -2910,7 +2914,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **E O RISCO QUE EU FUI CONFERIR ANTES DE DIZER QUE NÃO HÁ:** a 32 faz `centro` e `conjurador_id`
   poderem vir nulos, e o cliente não foi mudado para isso. Conferido: o `centro` **não é lido em
   lugar nenhum** do cliente · a única ocorrência dele é uma escrita, em
-  `patch.centro = { q: nova.q, r: nova.r };`, `artes-grid-mesa.ts:1960`.
+  `patch.centro = { q: nova.q, r: nova.r };`, `artes-grid-mesa.ts:1964`.
   E o `conjurador_id` já era tratado como opcional em todos os pontos que o usam. **`alvos` nunca vem nulo** (a view faz `coalesce` para `[]`). O cabeçalho da 32 diz
   que ela não depende de mudança de tela, e a leitura do cliente confirma.
 

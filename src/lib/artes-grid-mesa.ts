@@ -455,7 +455,8 @@ export function pintarPainelEfeitos(ctx: CtxGrid, box: HTMLElement, palco?: HTML
     const dentro = ef.forma === 'alvo' || ef.forma === 'token'
       ? (ef.alvos || []) : dentroDoEfeito(vigente(ctx, ef), ctx.tokens, escalaM(ctx));
     const quem = dentro.map((id) => combDe(ctx, id)?.nome).filter(Boolean);
-    const cond = ef.condicao && CONDICAO[ef.condicao] ? CONDICAO[ef.condicao] : null;
+    const condId = ef.condicao || ef.condicaoAparente;
+    const cond = condId && CONDICAO[condId] ? CONDICAO[condId] : null;
     return `<div class="gr-efl" data-ef="${esc(ef.id)}" style="--ef-cor:${corDe(ef)}">
       <span class="gr-efl-b"></span>
       <span class="gr-efl-tx">
@@ -1831,7 +1832,10 @@ export async function verificarEfeitos(ctx: CtxGrid, palco?: HTMLElement): Promi
       valor: String(i),
       rotulo: `${p.alvo.nome} · ${p.ef.nome}`,
       nota: [p.ef.dano_dados ? `${p.ef.dano_dados}d6` : '',
-        p.ef.condicao && CONDICAO[p.ef.condicao] ? CONDICAO[p.ef.condicao].nome : '',
+        (() => {
+          const condId = p.ef.condicao || p.ef.condicaoAparente;
+          return condId && CONDICAO[condId] ? CONDICAO[condId].nome : '';
+        })(),
         `${turnosRestantes(p.ef, t)} turnos`].filter(Boolean).join(' · '),
       grupo: 'Confirmar a mordida',
     })),

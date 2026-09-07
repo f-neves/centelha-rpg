@@ -169,6 +169,12 @@ for (const e of data.efeitos || []) {
   if (g.materia && !G_MATERIAS.has(g.materia)) fail(`efeito "${e.id}": grid.materia inválida "${g.materia}"`);
   if (g.condicao && !COND_IDS.has(g.condicao))
     fail(`efeito "${e.id}": grid.condicao "${g.condicao}" não existe em condicoes.json`);
+  if (g.condicaoAparente && !COND_IDS.has(g.condicaoAparente))
+    fail(`efeito "${e.id}": grid.condicaoAparente "${g.condicaoAparente}" não existe em condicoes.json`);
+  if (g.condicao && g.condicaoAparente)
+    fail(`efeito "${e.id}": grid.condicao e grid.condicaoAparente não podem coexistir (um é aplicado pelo motor, o outro é só rótulo)`);
+  if ((g.forma === 'nenhuma') !== (g.alvo === 'nenhum'))
+    fail(`efeito "${e.id}": grid.forma "${g.forma}" e grid.alvo "${g.alvo}" divergem (um dos dois é "nenhuma/nenhum" e o outro não)`);
 }
 
 if (fs.existsSync(path.join(DIR, 'elementos-bestiario.json'))) {

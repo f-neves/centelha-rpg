@@ -427,6 +427,43 @@ console.log('\n· e a palavra da RPC nao vaza para a escrita direta do mestre');
     'e NENHUMA carga dele traz `tirar_mordidos`: para o mestre isso seria coluna que nao existe');
 }
 
+// ================== N+2 · a rede de campo: `condicaoAparente` nao aciona nada
+//
+// O QUE ESTA CENA PROVA, e o que ela NAO prova (L39, Pendencias.md). Esta
+// funcao (`gravarEfeito`) nao tem guarda nenhuma por `forma`: quem barra os 9
+// Efeitos "nenhuma/nenhum" de virar condicao de verdade e o despacho de
+// `conjurar` (DOM, fora do alcance deste arquivo, ver comentario no topo). O
+// que esta cena mede e a SEGUNDA rede, a de campo: mesmo chamando
+// `gravarEfeito` direto, sem passar pelo despacho, so `grid.condicao` aciona
+// `porCondicao` — `grid.condicaoAparente` sozinho nunca aciona nada, porque a
+// leitura de campo e so de `g?.condicao`. `ATIVOS` cresce nos dois casos (essa
+// funcao sempre grava a linha), entao a asserção certa aqui e a CONDICAO, nao
+// o tamanho de `ATIVOS`.
+console.log('\n· grid.condicaoAparente nao aciona porCondicao (so grid.condicao aciona)');
+{
+  const { ctx, alvo } = cena({ tick: 3 });
+  await M.gravarEfeito(ctx, ctx.combs[0], plano({
+    efeito: { id: 'aviso', nome: 'Aviso', nivel: 2, grid: { forma: 'nenhuma', gatilho: 'passivo', condicaoAparente: 'abencoado' } },
+    velocidadeTicks: 0,
+  }), { forma: 'nenhuma', figura: null, alvos: ['a1'] });
+  ok(!temCondicao(alvo, 'abencoado'),
+    'so com condicaoAparente (sem condicao), o alvo NAO ganha a condicao');
+}
+
+// E O PAR: o MESMO efeito, so trocando o nome do campo, aciona normalmente.
+// Sem isto a asserção de cima passaria por um motivo errado (por exemplo, se
+// `porCondicao` estivesse quebrado para qualquer chamada).
+console.log('· o par: o mesmo efeito com grid.condicao aciona porCondicao normalmente');
+{
+  const { ctx, alvo } = cena({ tick: 3 });
+  await M.gravarEfeito(ctx, ctx.combs[0], plano({
+    efeito: { id: 'aviso', nome: 'Aviso', nivel: 2, grid: { forma: 'nenhuma', gatilho: 'passivo', condicao: 'abencoado' } },
+    velocidadeTicks: 0,
+  }), { forma: 'nenhuma', figura: null, alvos: ['a1'] });
+  ok(temCondicao(alvo, 'abencoado'),
+    'com condicao (o mesmo efeito, so trocando o campo), o alvo GANHA a condicao');
+}
+
 console.log('');
 if (FALHAS.length) {
   console.log(`✗ Arte na mesa: ${FALHAS.length} falha(s) de ${PASSOU + FALHAS.length}`);

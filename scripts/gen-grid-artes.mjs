@@ -257,6 +257,16 @@ const CONDICAO = {
   'fora-do-tempo': ['parar'],
 };
 
+// L39 (Pendencias.md): estes 9 Efeitos aparecem no `CONDICAO` acima porque o
+// TEXTO evoca a condição, mas nenhum deles tem `forma` ou `alvo` (são
+// "nenhuma"/"nenhum": nunca chegam a `ATIVOS`, nunca acionam `porCondicao`).
+// O vocabulário deles vai para `grid.condicaoAparente`, não para
+// `grid.condicao`: o motor só lê `condicao` como instrução de aplicar.
+const CONDICAO_APARENTE = new Set([
+  'sugestao-plantada', 'esquecer', 'aviso', 'momento-certo', 'instante',
+  'rosto-esquecivel', 'esconder-a-carga', 'reescrever', 'lapso',
+]);
+
 // ------------------------------------------------------------- as derivações
 const parDe = (e, nome) => (e.parametros || []).find((x) => x.nome === nome);
 const temPar = (e, nome) => !!parDe(e, nome);
@@ -308,6 +318,10 @@ function gridDoEfeito(e) {
   if (IGNORA_ARMADURA.includes(e.id)) materia = null;
   let condicao = null;
   for (const [c, ids] of Object.entries(CONDICAO)) if (ids.includes(e.id)) condicao = c;
+  // Rótulo, não instrução (L39): move para `condicaoAparente` sem tocar em
+  // qual condição é — só quem a lê muda de "o motor aplica" para "o texto evoca".
+  let condicaoAparente = null;
+  if (condicao && CONDICAO_APARENTE.has(e.id)) { condicaoAparente = condicao; condicao = null; }
   return {
     forma,
     ancora,
@@ -319,6 +333,7 @@ function gridDoEfeito(e) {
     // null = fenômeno puro, absorvido só pela Centelha.
     materia,
     condicao,
+    condicaoAparente,
     // Marca uma peça do equipamento, e não o corpo.
     pegaItem: PEGA_ITEM.includes(e.id),
     // Cobre a arena inteira: escala de região, não área medida.
@@ -393,6 +408,7 @@ console.log('  ferem: ' + efeitosNovos.filter((e) => e.grid.fere).length
   + ' · persistem: ' + efeitosNovos.filter((e) => e.grid.persiste).length
   + ' · viram matéria: ' + efeitosNovos.filter((e) => e.grid.materia).length
   + ' · deixam condição: ' + efeitosNovos.filter((e) => e.grid.condicao).length
+  + ' · evocam condição sem aplicar: ' + efeitosNovos.filter((e) => e.grid.condicaoAparente).length
   + ' · pedem teste: ' + efeitosNovos.filter((e) => e.grid.teste).length);
 if (process.argv.includes('--lista')) {
   for (const f of FORMAS) {
@@ -400,9 +416,12 @@ if (process.argv.includes('--lista')) {
     if (!g.length) continue;
     console.log(`\n── ${f} (${g.length})`);
     for (const e of g) {
+      // `condicaoAparente` vem entre parênteses: é o texto evocando a condição,
+      // não o motor aplicando (L39) — a marca evita confundir os dois na leitura.
       console.log(`   ${e.id.padEnd(26)} ${e.grid.ancora.padEnd(11)} ${e.grid.gatilho.padEnd(10)}`
         + `${e.grid.persiste ? 'dura ' : '     '}${e.grid.fere ? 'fere ' : '     '}`
-        + `${(e.grid.materia || '').padEnd(11)}${e.grid.condicao || ''}`);
+        + `${(e.grid.materia || '').padEnd(11)}`
+        + `${e.grid.condicao || (e.grid.condicaoAparente ? `(${e.grid.condicaoAparente})` : '')}`);
     }
   }
 }
