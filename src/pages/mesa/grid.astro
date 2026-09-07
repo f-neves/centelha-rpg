@@ -2397,7 +2397,7 @@ const SETAS = [
   import {
     centroHex, verticesHex, tabuleiro, medidaTabuleiro, margemTabuleiro,
     hexEmPonto, dentro, chaveHex, distanciaHex, nomeHex, larguraHex,
-    offsetParaAxial, letraColuna, caminharHex, alemDe,
+    offsetParaAxial, letraColuna, caminharHex, alemDe, naLinhaHex,
   } from '../../lib/hex';
   import { uiConfirmar, uiErro, uiFormulario, uiEscolher, contadorDeConsultas } from '../../lib/ui-dialog';
   import {
@@ -2425,14 +2425,14 @@ const SETAS = [
     PERFIL_CORRENTE, perfilDoEncontro, estadoDoCarimbo, type Perfil,
   } from '../../lib/bandeiras';
   import {
-    faixaDeDistancia, alcancaNoCorpoACorpo, HEX_CORPO_A_CORPO, HEX_HASTE,
+    faixaDeDistancia, alcancaNoCorpoACorpo, HEX_CORPO_A_CORPO, HEX_HASTE, alcanceInterpor,
   } from '../../lib/alcance';
   import { reconciliar, esquecerCaixa } from '../../lib/reconciliar';
   import { errouPor, saidaDoAtaque } from '../../lib/quase-acerto';
   import {
     abrirEscolhaDoTempo, resumoDoTempo, fitaHTML, seloFaseHTML, abrirAbortar, podeAbortar,
     abrirForaDeHora, podeForaDeHora,
-    itensDaFila, faixaDeGolpesHTML, golpesEmCena,
+    itensDaFila, faixaDeGolpesHTML, golpesEmCena, type CandidatoInterpor,
   } from '../../lib/mesa-tempo-ui';
   import {
     combateDaMesa, COMBATE_PADRAO, faseEm, acaoVazia, temGesto, resumoDaAcao,
@@ -2445,6 +2445,7 @@ const SETAS = [
     ehSimultaneo, agendaSimultanea, ticksDeViagem, decideEmValeDepois, comOverride,
     passoDoGolpe, reprojetarAgenda,
     decisaoAutomatica, MODOS_MOV,
+    cobreGolpe, interposicaoConsumida,
     FASE_ROTULO, type CombateMesa, type Manobra, type Acao, type Mov,
   } from '../../lib/combate-tempo';
 
@@ -6077,6 +6078,60 @@ const SETAS = [
   }
 
   /**
+   * OS GOLPES QUE ESTE INTERPOSITOR PODE COBRIR agora (porta do Preparo, L34
+   * §6). A régua de alcance (`alcanceInterpor`, item 3) já decide `pode` e
+   * `porque`; esta função só junta os dados do tabuleiro que ela pede.
+   *
+   * SÓ HÁ CANDIDATO COM O GOLPE ADIADO LIGADO: sem ele `golpesNoAr` está
+   * sempre vazio (nada fica agendado esperando resolução), e a lista sai vazia
+   * — não por falha de busca, é o modelo de tempo que não abre essa janela.
+   *
+   * A GEOMETRIA USA A POSIÇÃO ATUAL do interpositor no tabuleiro: este diálogo
+   * não move a peça (só cobra Ticks e narra, como o abortar sempre fez), então
+   * "onde ele termina" é onde ele já está agora. Isto é uma aproximação
+   * deliberada e não a régua pedindo menos — mover a peça ao abortar é
+   * mecanismo novo, fora das seis perguntas fechadas nesta rodada.
+   */
+  function candidatosParaInterpor(interpositor: any): CandidatoInterpor[] {
+    const pos = TOKENS[interpositor.id];
+    const out: CandidatoInterpor[] = [];
+    for (const agressor of COMBS as any[]) {
+      if (agressor.id === interpositor.id) continue;
+      const acaoAg = acaoNo(agressor);
+      const aid = acaoAg?.aid;
+      const alvoOriginalId = acaoAg?.alvo;
+      if (!aid || !alvoOriginalId || alvoOriginalId === interpositor.id) continue;
+      for (const golpe of golpesNoAr(acaoAg)) {
+        const alvoOriginal = COMBS.find((x: any) => x.id === alvoOriginalId);
+        const ra = RESUMO[agressor.id];
+        const classe = classeDeTempo(ra?.arma, ra?.velocidade, ra?.classe);
+        const corpoACorpo = classe !== 'distancia' && classe !== 'arremesso';
+        const posAg = TOKENS[agressor.id];
+        const posAlvo = alvoOriginal ? TOKENS[alvoOriginalId] : null;
+        let pode = true, porque = '';
+        if (pos && posAg) {
+          const hexs = distanciaHex(posAg, pos);
+          const metros = hexs * (Number(ARENA?.escala_m) || 1);
+          const naLinha = !posAlvo ? true : naLinhaHex(posAg, posAlvo, pos);
+          const r = alcanceInterpor({
+            corpoACorpo, haste: classe === 'haste', hexagonosDoAgressor: hexs,
+            idOuNomeArma: ra?.arma, metrosDoAgressor: metros, naLinha,
+          });
+          pode = r.pode; porque = r.porque;
+        } else {
+          porque = 'Sem as duas peças no tabuleiro para medir alcance: a mesa decide.';
+        }
+        out.push({
+          aid, golpe, alvoOriginal: alvoOriginalId,
+          nomeAgressor: agressor.nome, nomeAlvo: alvoOriginal?.nome || '?',
+          pode, porque,
+        });
+      }
+    }
+    return out;
+  }
+
+  /**
    * Abortar o gesto de quem está em Preparo, do tabuleiro.
    *
    * Ao contrário de `encerrarVez`, o Tick aqui é ABSOLUTO: quem desiste fica
@@ -6089,16 +6144,19 @@ const SETAS = [
     const a = acaoNo(c); if (!a) return;
     abrirAbortar({ nome: c.nome, acao: a, tick: relogio() }, async (r) => {
       // O contrapé sobrevive ao abortar: ele é do relógio, e desistir do gesto
-      // não devolve o equilíbrio que a entrada atrasada tirou.
-      const limpa = contrapeDe(c.acao);
+      // não devolve o equilíbrio que a entrada atrasada tirou. A COBERTURA
+      // (`interpoe`), quando há uma escolhida, é o que fazia falta: antes a
+      // saída "Se interpor" só trocava o verbo da frase e se perdia aqui — a
+      // mesa perguntava e o Grid não guardava a resposta.
+      const nova: Acao = { ...(contrapeDe(c.acao) as Acao), ...(r.interpoe ? { interpoe: r.interpoe } : {}) };
       const { error } = await SB.from('combatentes')
-        .update({ tick: r.novoTick, acao: limpa }).eq('id', cid);
+        .update({ tick: r.novoTick, acao: nova }).eq('id', cid);
       if (error) return uiErro('Erro: ' + error.message);
-      c.tick = r.novoTick; c.acao = limpa;
+      c.tick = r.novoTick; c.acao = nova;
       pintarIniciativa(); pintarTokens();
       avisarAgora('combatentes');
       await logar(c, `${r.frase} · próxima ação no tick ${r.novoTick} (sairia no ${a.livre})`, { acao: null });
-    });
+    }, candidatosParaInterpor(c));
   }
 
   /** A Velocidade da ação desta peça: a da arma dela, ou o padrão de 5. */
@@ -8107,6 +8165,27 @@ const SETAS = [
     return esc ? candidatos.find((o: any) => o.id === esc) || null : null;
   }
 
+  /**
+   * QUEM SE INTERPÔS para este golpe, se houver (L34 §6, 07/09/2026).
+   *
+   * A busca é por `aid` + Tick ABSOLUTO, nunca por alvo: é o que faz o item 5
+   * ("um golpe só, o que a disparou") valer mesmo quando o agressor declarou
+   * dupla ou rajada — o segundo golpe do mesmo Tick de outra ação, ou o golpe
+   * seguinte da MESMA ação, não bate na chave e não sai coberto.
+   *
+   * SÓ EXISTE CAMINHO ATÉ AQUI COM O GOLPE ADIADO LIGADO: é `resolverGolpeNoAr`
+   * quem resolve depois de um intervalo, e é esse intervalo que dá a quem se
+   * interpõe uma janela para declarar antes do golpe cair. Sem ele
+   * (`resolverAtaque` sem `adiaGolpe`), a folha abre e fecha na própria
+   * declaração, sem intervalo nenhum para ninguém reagir — não é bug desta
+   * mudança, é o modelo de tempo que já existia.
+   */
+  function interpositorDoGolpe(atacante: any, tick: number): any | null {
+    const aid = (atacante.acao as Acao | null)?.aid;
+    if (!aid) return null;
+    return COMBS.find((c: any) => c.id !== atacante.id && cobreGolpe(acaoNo(c), aid, tick)) || null;
+  }
+
   async function resolverGolpeNoAr(atacante: any, tick: number) {
     const acao = atacante.acao as Acao | null;
     if (!acao || !golpesNoAr(acao).includes(tick)) return;
@@ -8144,8 +8223,12 @@ const SETAS = [
       manobra: (acao.tipo || 'simples') as Manobra,
       golpes: Math.max(2, acao.golpes.length),
     }), ra?.pgr);
+    // QUEM SE INTERPÔS, buscado ANTES da folha abrir: `alvoDano` é o que faz a
+    // Absorção da ficha (e a prévia de Vida) já nascerem certas, em vez de a
+    // folha calcular contra o alvo original e alguém corrigir por cima.
+    const interpositor = interpositorDoGolpe(atacante, tick);
     const res = await folhaDaAcao(atacante, alvo, {
-      tickDoGolpe: tick, an, manobra: acao.tipo || 'simples',
+      tickDoGolpe: tick, an, manobra: acao.tipo || 'simples', alvoDano: interpositor,
     });
     if (!res) return;                       // fechou a caixa: o golpe continua no ar
 
@@ -8156,7 +8239,11 @@ const SETAS = [
     const proj = projetilDe(
       atacante, FICHAS[atacante.personagem_id], MON[atacante.monstro_id], armaDoSlot,
     );
-    const de = pontoDaPeca(atacante.id), pa = pontoDaPeca(alvo.id);
+    // O PROJÉTIL VOA ATÉ QUEM LEVA O GOLPE DE VERDADE: com interposição, é o
+    // interpositor que está no caminho, não o alvo original — a flecha não
+    // atravessa quem entrou na frente dela para acertar quem estava atrás.
+    const alvoDoImpacto = interpositor || alvo;
+    const de = pontoDaPeca(atacante.id), pa = pontoDaPeca(alvoDoImpacto.id);
     const atirar = async (): Promise<boolean> => {
       if (!(proj && de && pa)) return false;
       await voarProjetil(camadaDeGolpes(), de, pa, {
@@ -8168,19 +8255,49 @@ const SETAS = [
 
     // A PRESSÃO É DAQUI, e não da declaração: quem levou o ataque levou agora.
     // Adiantá-la abriria a Defesa do alvo Ticks antes de o braço sair, e foi por
-    // isso que a declaração passou sem cobrá-la.
+    // isso que a declaração passou sem cobrá-la. A Pressão continua sendo do
+    // ALVO ORIGINAL: é a guarda dele que a régua está descrevendo, e não a de
+    // quem se interpôs — a interposição troca o corpo que sangra, não quem
+    // estava sob o golpe.
     await tirarDaAgenda(atacante, tick, alvo, 1);
+
+    // UM GOLPE SÓ (item 5): a cobertura não sobrevive a este golpe, acertando
+    // ou errando — é a declaração que gastou o gesto, não o resultado dele.
+    //
+    // MESTRE SÓ, aqui: é uma escrita numa peça TERCEIRA (nem quem ataca, nem
+    // quem apanha), e não há RPC de jogador para isso — `jogador_declara` só
+    // sabe escrever a própria ação e somar Pressão no alvo (`p_alvo`,
+    // `p_golpes`), não limpar `interpoe` de uma terceira peça. Um jogador
+    // resolvendo o PRÓPRIO golpe adiado contra um interpositor deixa a flag
+    // presa até o mestre agir; é inofensivo (a chave é `aid`+Tick exatos, que
+    // não se repetem), só fica pendente de um RPC novo se isto incomodar na
+    // mesa de verdade.
+    if (interpositor && MESTRE) {
+      const semCobertura = interposicaoConsumida(acaoNo(interpositor) as Acao);
+      await SB.from('combatentes').update({ acao: semCobertura }).eq('id', interpositor.id);
+      interpositor.acao = semCobertura;
+    }
 
     if (!res.acertou) {
       await atirar();
       await logar(atacante,
-        `${atacante.nome} soltou o golpe do Tick ${tick} em ${alvo.nome} e errou${dados}${porque}`,
+        `${atacante.nome} soltou o golpe do Tick ${tick} em ${alvo.nome}`
+        + `${interpositor ? ` (${interpositor.nome} se interpôs)` : ''} e errou${dados}${porque}`,
         { acao: null });
       return;
     }
     const voou = await atirar();
-    await aplicarDano(atacante, alvo, res.dano, res.tipo, voou ? 0 : undefined, dados + dadosDano + porque,
+    // QUEM LEVA O DANO (item 1): o interpositor, com a Absorção DELE, quando
+    // há um; nunca o alvo original nesse caso. `aplicarDano` já lê a Absorção
+    // de quem recebe (`soakDe`, dentro dele), então passar o interpositor
+    // como alvo é o bastante — não há conta a refazer aqui.
+    await aplicarDano(atacante, alvoDoImpacto, res.dano, res.tipo, voou ? 0 : undefined,
+      dados + dadosDano + porque,
       { raspao: !!res.raspou });
+    if (interpositor) {
+      await logar(atacante, `${interpositor.nome} se interpôs entre o golpe de ${atacante.nome}`
+        + ` e ${alvo.nome}, e levou no lugar dele${dados}${porque}`, { acao: null });
+    }
   }
 
   /**
@@ -8499,7 +8616,19 @@ const SETAS = [
    */
   function folhaDaAcao(
     atacante: any, alvo: any,
-    opts: { tickDoGolpe?: number; an?: any; manobra?: string } = {},
+    /**
+     * `alvoDano`, o INTERPOSITOR (L34 §6, 07/09/2026), quando houver.
+     *
+     * O acerto e o dano se resolvem contra `alvo` EXATAMENTE como sem
+     * interposição nenhuma — Defesa, veredito, tudo o que já estava aqui — porque
+     * a decisão do item 1 rejeitou explicitamente recomparar o acerto contra
+     * quem se interpôs. O que muda é só a Absorção (`soakDe`, abaixo): ela lê
+     * `alvoDano` quando ele existe, e é essa troca que faz "o dano já rolado
+     * passa inteiro, e a Absorção é de quem se interpôs" virar código em vez de
+     * frase. Quem chama decide `alvoDano` fora daqui (`resolverGolpeNoAr`, o
+     * único lugar com o intervalo de tempo para alguém se interpor).
+     */
+    opts: { tickDoGolpe?: number; an?: any; manobra?: string; alvoDano?: any } = {},
   ): Promise<Folha | null> {
     const dlg = el('alvo-dlg') as HTMLDialogElement;
     const adiada = opts.tickDoGolpe != null;
@@ -8557,9 +8686,13 @@ const SETAS = [
     const de = TOKENS[atacante.id], pa = TOKENS[alvo.id];
     const hexes = de && pa ? distanciaHex(de, pa) : null;
     const dist = hexes != null ? hexes * (Number(ARENA.escala_m) || 1) : null;
-    (el('al-titulo') as HTMLElement).textContent = adiada
-      ? `O golpe de ${atacante.nome} cai em ${alvo.nome}`
-      : `${atacante.nome} ataca ${alvo.nome}`;
+    (el('al-titulo') as HTMLElement).textContent = opts.alvoDano
+      // NUNCA EM SILÊNCIO (item 5): o título já avisa que este golpe, e só ele,
+      // tem um interpositor — antes de qualquer número aparecer na caixa.
+      ? `O golpe de ${atacante.nome} era para ${alvo.nome}, e ${opts.alvoDano.nome} se interpôs`
+      : adiada
+        ? `O golpe de ${atacante.nome} cai em ${alvo.nome}`
+        : `${atacante.nome} ataca ${alvo.nome}`;
     (el('al-linha') as HTMLElement).textContent = dist != null
       ? `Distância: ${fmtM(dist)}${pa ? ` · alvo em ${nomeHex(pa.q, pa.r)}` : ''}` : '';
     const cel = (l: string, v: any, n = '') => `<div class="d"><span class="d-l">${l}</span>
@@ -8800,8 +8933,13 @@ let roladoDano = '';
         ferimento: fer,
         condicoesDefesa: cd.defesaCaC || 0,
         defesaPerdida: dvDe().total,
-        soak: soakDe(alvo, dnTipo.value),
-        pv: alvo.pv_atual ?? null, pvMax: alvo.pv_max ?? null,
+        // A ABSORÇÃO E A VIDA SÃO DE QUEM SE INTERPÔS, NUNCA DO ALVO ORIGINAL
+        // (item 1): são as ÚNICAS linhas em que `alvoDano` troca de lugar com
+        // `alvo` nesta ficha. `defesaBase`/`ferimento`/`condicoesDefesa`/
+        // `defesaPerdida` acima continuam todos do alvo original, de propósito
+        // — é contra a guarda DELE que o golpe se resolveu.
+        soak: soakDe(opts.alvoDano || alvo, dnTipo.value),
+        pv: (opts.alvoDano || alvo).pv_atual ?? null, pvMax: (opts.alvoDano || alvo).pv_max ?? null,
         qaArmaduraBonus: r?.qa?.armaduraBonus ?? 0,
         qaArmaduraReducao: r?.qa?.armaduraReducao ?? 0,
       },
@@ -9031,8 +9169,12 @@ let roladoDano = '';
       const sk = L.entrada.alvo.soak;
       const liq = Math.max(0, bruto - sk);
       const pv = Math.max(0, (L.pvAntes ?? 0) - liq);
+      // A VIDA QUE MEXE É A DE QUEM VAI LEVAR O GOLPE (`alvoDano` quando há
+      // interposição, o `alvo` de sempre quando não há) — a prévia mentiria
+      // por omissão se mostrasse a barra de quem não vai sangrar.
+      const quemSangra = opts.alvoDano || alvo;
       cx.innerHTML = `Absorção <b>${sk}</b> · passa <b>${liq}</b>`
-        + (alvo.pv_max ? ` · Vida ficaria <b>${pv}/${alvo.pv_max}</b> (${tierDe(pv, alvo.pv_max).estado})` : '');
+        + (quemSangra.pv_max ? ` · Vida ficaria <b>${pv}/${quemSangra.pv_max}</b> (${tierDe(pv, quemSangra.pv_max).estado})` : '');
     };
     // ------------------------------------------------ a ficha do lance
     /**

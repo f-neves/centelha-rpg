@@ -18,7 +18,7 @@ import { uiPainel, uiErro } from './ui-dialog';
 import {
   faseEm, fita, defesaPerdida, resumoDaAcao, acaoVazia, anatomia, declarar, abortar, foraDeHora,
   combateDaMesa, COMBATE_PADRAO, SISTEMAS, MARCACOES, ROLAGENS, FASE_ROTULO,
-  GOLPE_ADIADO, agendar, golpesNoAr, proximoGolpe,
+  GOLPE_ADIADO, agendar, golpesNoAr, proximoGolpe, cobreGolpe,
   type Acao, type Fase, type CombateMesa, type Sistema, type Marcacao, type Rolagem,
   type ClasseArma,
 } from './combate-tempo';
@@ -185,6 +185,16 @@ export interface GolpeNoAr {
   /** Nome do alvo, ou nada quando a ação não mirou ninguém. */
   alvo?: string | null;
   arma?: string | null;
+  /**
+   * QUEM ESTÁ COBRINDO ESTE GOLPE, se houver (L34 §6, item 5).
+   *
+   * `null`/ausente é o estado comum: a maioria dos golpes não tem
+   * interposição nenhuma. O requisito de tela ("nunca em silêncio") não é
+   * escrever "não coberto" em todo cartão — é este campo existir, para que o
+   * cartão que TEM cobertura se distinga do que não tem, inclusive quando os
+   * dois caem no mesmo Tick.
+   */
+  coberto?: { nome: string } | null;
 }
 
 /**
@@ -213,11 +223,12 @@ export function faixaDeGolpesHTML(golpes: GolpeNoAr[], tick: number): string {
       falta <= 0 ? ' vencido' : ''}${atrasado ? ' atrasado' : ''}"
       data-golpe="${esc(g.id)}" data-t="${g.tick}"
       title="${esc(g.nome)}${g.arma ? ` · ${esc(g.arma)}` : ''} → ${esc(g.alvo || 'sem alvo')} · Tick ${g.tick}${
-        atrasado ? ' (atrasado)' : ''}">
+        atrasado ? ' (atrasado)' : ''}${g.coberto ? ` · ${esc(g.coberto.nome)} se interpôs` : ''}">
       ${g.avatar || ''}
       <span class="ar-quem">${esc(g.nome)}</span>
       <span class="ar-seta">→</span>
       <span class="ar-alvo">${esc(g.alvo || '—')}</span>
+      ${g.coberto ? `<span class="ar-cobertura" title="${esc(g.coberto.nome)} se interpôs: é ele quem leva">🛡 ${esc(g.coberto.nome)}</span>` : ''}
       <span class="ar-t">${atrasado ? '⚠ ' : ''}${quando}</span>
     </button>`;
   };
@@ -242,10 +253,17 @@ export function golpesEmCena(
 ): GolpeNoAr[] {
   const fora: GolpeNoAr[] = [];
   for (const c of pecas) {
+    const aid = c.acao?.aid;
     for (const t of golpesNoAr(c.acao)) {
+      // A COBERTURA, procurada entre as MESMAS peças da cena: `cobreGolpe`
+      // compara por `aid` + Tick absoluto, então um segundo golpe do mesmo
+      // Tick (dupla, rajada) ou de outra ação não bate na chave — item 5, "um
+      // golpe só", em vez de tela em vez de frase.
+      const cobre = aid ? pecas.find((x) => cobreGolpe(x.acao, aid, t)) : undefined;
       fora.push({
         id: c.id, nome: c.nome, grupo: c.grupo, avatar: c.avatar, tick: t,
         alvo: nomeDoAlvo(c.acao?.alvo), arma: c.acao?.arma || null,
+        coberto: cobre ? { nome: cobre.nome } : null,
       });
     }
   }
@@ -273,6 +291,21 @@ const SAIDAS: { v: string; t: string; d: string }[] = [
 ];
 
 /**
+ * UM GOLPE NO AR que este interpositor PODE cobrir, com a régua já aplicada.
+ *
+ * `pode`/`porque` vêm de `alcanceInterpor` (`alcance.ts`): o teto é o alcance
+ * da arma original medido do agressor, e à distância exige também estar na
+ * reta agressor→posição original do aliado. Quem monta esta lista (o Grid, que
+ * é dono do tabuleiro) já filtrou por `aid` alheio e por alvo diferente do
+ * próprio interpositor; aqui só se decide o que a tela mostra.
+ */
+export interface CandidatoInterpor {
+  aid: string; golpe: number; alvoOriginal: string;
+  nomeAgressor: string; nomeAlvo: string;
+  pode: boolean; porque: string;
+}
+
+/**
  * O diálogo de abortar.
  *
  * Ele existe porque a conta é chata e a decisão é rápida: no meio da luta o
@@ -284,7 +317,18 @@ const SAIDAS: { v: string; t: string; d: string }[] = [
  */
 export function abrirAbortar(
   quem: { nome: string; acao: Acao; tick: number },
-  aoConfirmar: (r: { novoTick: number; perdidos: number; custo: number; metros: number; saida: string; frase: string }) => void | Promise<void>,
+  aoConfirmar: (r: {
+    novoTick: number; perdidos: number; custo: number; metros: number; saida: string; frase: string;
+    /** Só quando `saida === 'interpor'` e um candidato válido foi escolhido. */
+    interpoe?: { aid: string; golpe: number; alvoOriginal: string } | null;
+  }) => void | Promise<void>,
+  /**
+   * Os golpes no ar que este interpositor pode cobrir, quando a saída for
+   * "Se interpor" (item 5: a tela tem de dizer contra qual golpe ela vale,
+   * antes da confirmação, e não depois). Lista vazia é um estado normal — a
+   * mesa pode não ter ninguém sob um golpe agendado agora — e não um erro.
+   */
+  interporCandidatos: CandidatoInterpor[] = [],
 ) {
   const { nome, acao, tick } = quem;
   const base = abortar(acao, tick, 0);
@@ -314,6 +358,21 @@ export function abrirAbortar(
       <input type="number" id="ab-metros" min="0" step="1" value="0" />
       <small>1 Tick por metro, o preço do desvio de emergência. Zero: fica onde está e recompõe a guarda.</small>
     </label>
+    <div id="ab-interpor-cx" hidden>
+      <div class="rev-h">Contra qual golpe</div>
+      ${interporCandidatos.length ? `<p class="tempo-nota">A interposição vale para ESTE golpe, e só
+          ele: se houver um segundo no mesmo Tick, ele cai sem cobertura.</p>
+        <div class="rev-ops">${interporCandidatos.map((c, i) => `<label class="rev-op"${
+          c.pode ? '' : ' aria-disabled="true"'} title="${esc(c.porque || '')}">
+          <input type="radio" name="ab-interpor" value="${i}"${c.pode ? '' : ' disabled'}${
+            c.pode && !interporCandidatos.slice(0, i).some((x) => x.pode) ? ' checked' : ''} />
+          <span class="rev-op-corpo">
+            <span class="rev-op-t">${esc(c.nomeAgressor)} → ${esc(c.nomeAlvo)}</span>
+            <span class="rev-op-d">${c.pode ? `Tick ${c.golpe}` : esc(c.porque)}</span>
+          </span>
+        </label>`).join('')}</div>`
+        : '<p class="muted">Ninguém está sob um golpe agendado ao seu alcance agora: não há o que cobrir.</p>'}
+    </div>
     <div class="acao-conta" id="ab-res"></div>
     <div class="ui-dlg-btns">
       <button type="button" class="btn" id="ab-cancelar">Cancelar</button>
@@ -323,25 +382,48 @@ export function abrirAbortar(
   const inp = corpo.querySelector('#ab-metros') as HTMLInputElement;
   const metros = () => Math.max(0, parseInt(inp.value || '0', 10) || 0);
   const conta = () => abortar(acao, tick, metros());
+  const cxInterpor = corpo.querySelector('#ab-interpor-cx') as HTMLElement;
+  const btnOk = corpo.querySelector('#ab-ok') as HTMLButtonElement;
+  const saidaAtual = () => (corpo.querySelector('input[name="ab-saida"]:checked') as HTMLInputElement)?.value || 'desviar';
+  const candidatoEscolhido = () => {
+    const v = (corpo.querySelector('input[name="ab-interpor"]:checked') as HTMLInputElement)?.value;
+    return v != null ? interporCandidatos[parseInt(v, 10)] : null;
+  };
+  // SEM CANDIDATO VÁLIDO, NÃO HÁ CONFIRMAR: escolher "Se interpor" e não ter
+  // contra o que é o mesmo "não sei" que o resto da mesa já sabe dizer — o
+  // botão apaga em vez de deixar confirmar uma interposição sem golpe nenhum.
+  const pintarInterpor = () => {
+    const ehInterpor = saidaAtual() === 'interpor';
+    cxInterpor.hidden = !ehInterpor;
+    const escolhido = candidatoEscolhido();
+    btnOk.disabled = ehInterpor && (!interporCandidatos.some((c) => c.pode) || !escolhido?.pode);
+  };
   const pintar = () => {
     const r = conta();
     (corpo.querySelector('#ab-res') as HTMLElement).innerHTML =
       `<div>Fica livre no <b>Tick ${r.novoTick}</b>${r.custo ? ` <span class="muted">(${tick} + ${r.custo} do deslocamento)</span>` : ' <span class="muted">(agora mesmo)</span>'}</div>`
       + `<div class="muted">Sem abortar, a próxima ação dele sairia no Tick ${acao.livre}.</div>`;
+    pintarInterpor();
   };
-  inp.oninput = pintar; pintar();
+  inp.oninput = pintar;
+  corpo.querySelectorAll('input[name="ab-saida"]').forEach((r) => ((r as HTMLElement).onclick = pintar));
+  corpo.querySelectorAll('input[name="ab-interpor"]').forEach((r) => ((r as HTMLElement).onclick = pintarInterpor));
+  pintar();
 
   (corpo.querySelector('#ab-cancelar') as HTMLElement).onclick = () => fechar();
-  (corpo.querySelector('#ab-ok') as HTMLElement).onclick = async () => {
+  btnOk.onclick = async () => {
     const r = conta();
-    const saida = (corpo.querySelector('input[name="ab-saida"]:checked') as HTMLInputElement)?.value || 'desviar';
+    const saida = saidaAtual();
+    const escolhido = saida === 'interpor' ? candidatoEscolhido() : null;
     const verbo = saida === 'mover' ? 'e se moveu' : saida === 'interpor' ? 'e se interpôs' : 'e desviou';
     const m = metros();
     fechar();
     await aoConfirmar({
       novoTick: r.novoTick, perdidos: r.perdidos, custo: r.custo, metros: m, saida,
+      interpoe: escolhido ? { aid: escolhido.aid, golpe: escolhido.golpe, alvoOriginal: escolhido.alvoOriginal } : null,
       frase: `${nome} abortou o gesto ${verbo}${m ? ` ${m} m` : ' sem sair do lugar'}`
-        + `${r.perdidos ? ` · perdeu ${r.perdidos} Tick(s) de Preparo` : ''}`,
+        + `${r.perdidos ? ` · perdeu ${r.perdidos} Tick(s) de Preparo` : ''}`
+        + (escolhido ? ` · cobre o golpe de ${escolhido.nomeAgressor} contra ${escolhido.nomeAlvo}` : ''),
     });
   };
 }

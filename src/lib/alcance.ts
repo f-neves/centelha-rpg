@@ -82,3 +82,58 @@ export function faixaDeDistancia(idOuNome: string | null | undefined, metros: nu
 export function alcancaNoCorpoACorpo(hexagonos: number, haste: boolean): boolean {
   return hexagonos <= (haste ? HEX_HASTE : HEX_CORPO_A_CORPO);
 }
+
+/**
+ * O TETO DE ALCANCE PARA SE INTERPOR entre um golpe e um aliado.
+ *
+ * Decidido em 07/09/2026 (Pendencias.md, L34 §6): não inventa número novo, reusa
+ * a régua de alcance que já existe, medida do AGRESSOR (e não do aliado
+ * original). No corpo a corpo isso é só "já estar adjacente a ele" — a régua
+ * dizendo a verdade sobre o que interpor contra uma espada exige, e a reta é
+ * redundante ali (o alcance curto já colapsa em adjacência). À distância, além
+ * de caber no alcance da arma ORIGINAL, o interpositor precisa terminar numa
+ * casa que a reta entre o agressor e a posição original do aliado cruza —
+ * `naLinha` já vem calculado por quem chama (o traçado é geometria de
+ * hexágono, `linhaHex`/`naLinhaHex` em `./hex`, este módulo não sabe de tabuleiro).
+ *
+ * Sem arma no catálogo (`fx` nulo), não há como afirmar um teto: segue a mesma
+ * regra do resto deste arquivo, "avisa e não impede".
+ */
+export function alcanceInterpor(opts: {
+  corpoACorpo: boolean;
+  haste?: boolean;
+  /** Distância do AGRESSOR até a casa em que o interpositor terminaria, em hexágonos. */
+  hexagonosDoAgressor: number;
+  /** A arma ORIGINAL (do agressor), para o teto à distância. */
+  idOuNomeArma?: string | null;
+  /** A mesma distância, em metros. */
+  metrosDoAgressor: number;
+  /** Já calculado no tabuleiro: a casa cruza a reta agressor→posição original do aliado? */
+  naLinha: boolean;
+}): { pode: boolean; porque: string } {
+  if (opts.corpoACorpo) {
+    return alcancaNoCorpoACorpo(opts.hexagonosDoAgressor, !!opts.haste)
+      ? { pode: true, porque: '' }
+      : {
+        pode: false,
+        porque: 'Fora do alcance do agressor: no corpo a corpo, só quem já está'
+          + ' adjacente a ele pode se interpor.',
+      };
+  }
+  const fx = faixaDeDistancia(opts.idOuNomeArma, opts.metrosDoAgressor);
+  if (!fx) return { pode: true, porque: '' };
+  if (fx.alem) {
+    return {
+      pode: false,
+      porque: `Além do alcance da arma original (${fx.max} m, medido do agressor): não dá para se interpor daqui.`,
+    };
+  }
+  if (!opts.naLinha) {
+    return {
+      pode: false,
+      porque: 'Fora da linha reta entre o agressor e a posição do aliado: à distância,'
+        + ' o interpositor precisa terminar numa casa que essa reta cruza.',
+    };
+  }
+  return { pode: true, porque: '' };
+}

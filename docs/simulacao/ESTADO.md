@@ -556,7 +556,7 @@ afirmações que o sustentavam.** As duas eram minhas e as duas estavam erradas:
 | o que eu escrevi | o que o código diz |
 |---|---|
 | "o Grid já guarda os dois separados, a conta da régua e o botão do mestre" | guarda **só com a bancada ligada**: `registrarLance` começa com `if (!LANCES_LIGADO) return;`, e `LANCES_LIGADO` é o parâmetro `?lances=1`, desligado por padrão. O destino é `window.__LANCES`, memória da página, e o único consumidor é `coletar-lances.mjs`. Não há coluna nem migração no Supabase. **Numa mesa de verdade os dois campos não coexistem em lugar nenhum, e a página descarta tudo ao fechar** |
-| "não há lance em que o veredito não seja derivável" | há **três caminhos que devolvem `null`**: `lance.ts:144` (`if (alvo.defesaBase == null) return null`), `grid.astro:8888` (o ternário exige `soma != null && def2 != null`) e `grid.astro:8799` (`defesaBase: r?.defesa ?? null`) |
+| "não há lance em que o veredito não seja derivável" | há **três caminhos que devolvem `null`**: `lance.ts:144` (`if (alvo.defesaBase == null) return null`), `grid.astro:9026` (o ternário exige `soma != null && def2 != null`) e `grid.astro:8932` (`defesaBase: r?.defesa ?? null`) |
 
 **O item passa a valer entre 0% e 17,0%**, e a banda não é de imprecisão, é de
 ignorância: o valor depende da taxa em que a mesa aperta um botão diferente do que a
@@ -747,9 +747,9 @@ mecanismo — calcular e destacar, e não mostrar três botões iguais para o me
 escolher do zero — já existe, e existia antes desta seção ser escrita.
 `pintarVeredito` lê `contaDoLance()` e, com os três números presentes, escreve a
 conta por extenso ("acerta (15 > 13)", "erra por 4: raspa (margem 2)") e destaca UM
-dos três botões (`sim.classList.toggle('primary', ...)`, `grid.astro:9000-9002`).
+dos três botões (`sim.classList.toggle('primary', ...)`, `grid.astro:9138-9140`).
 Sem soma ou sem Defesa, nenhum é destacado e a caixa diz o que falta
-(`if (L.soma == null || L.defesa == null)`, `grid.astro:8969`).
+(`if (L.soma == null || L.defesa == null)`, `grid.astro:9107`).
 
 **Nasceu em `67fbb29`** (21/08/2026, "a folha da ação, e quem rola os dados vira
 escolha da mesa"); **o guarda de nulo veio em `579581b`** (04/09/2026, "a tela

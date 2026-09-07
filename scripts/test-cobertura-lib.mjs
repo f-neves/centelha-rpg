@@ -150,7 +150,7 @@ const importesMortos = (bruto, nomes) => {
 const SO_DA_MESA = [
   'abortar', 'acaoVazia', 'adiaGolpe', 'anatomiaLivre', 'atrasarGesto',
   'comOverride', 'combateDaMesa', 'ehSimultaneo',
-  'fita', 'foraDeHora', 'modoCorre', 'podeSerInterrompido',
+  'fita', 'foraDeHora', 'interposicaoConsumida', 'modoCorre', 'podeSerInterrompido',
   'resumoDaAcao', 'rolaNoSite', 'tetoDaRajada',
   'ticksDeDeslocamento',
 ];

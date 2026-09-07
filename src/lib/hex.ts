@@ -163,6 +163,35 @@ export function caminharHex(
 export const alemDe = (de: Hex, alvo: Hex): Hex =>
   ({ q: alvo.q + (alvo.q - de.q), r: alvo.r + (alvo.r - de.r) });
 
+/**
+ * A RETA entre dois hexágonos: a sequência exata de casas que o segmento cruza.
+ *
+ * Existe para o Interpor à distância (Pendencias.md, L34 §6, decidido em
+ * 07/09/2026): "dentro do alcance" e "na linha do golpe" são perguntas
+ * diferentes, e só esta responde a segunda. `afastar` (`artes-grid-mesa.ts:1163`)
+ * arredonda `q` e `r` por eixo, separadamente, o que não garante hexágonos
+ * vizinhos passo a passo; aqui cada ponto da interpolação passa por
+ * `arredondarHex`, que já resolve o empate pelo cubo (a soma `q+r+s = 0`), e é
+ * esse arredondamento correto que faz a diferença.
+ *
+ * Sem largura nem tolerância: é a reta, não uma área. `n = distanciaHex(a, b)`
+ * passos bastam porque dois hexágonos vizinhos nunca pulam uma casa entre si.
+ */
+export function linhaHex(a: Hex, b: Hex): Hex[] {
+  const n = distanciaHex(a, b);
+  if (n === 0) return [{ q: a.q, r: a.r }];
+  const out: Hex[] = [];
+  for (let i = 0; i <= n; i += 1) {
+    const t = i / n;
+    out.push(arredondarHex(a.q + (b.q - a.q) * t, a.r + (b.r - a.r) * t));
+  }
+  return out;
+}
+
+/** `c` está em cima da reta de `a` até `b`? */
+export const naLinhaHex = (a: Hex, b: Hex, c: Hex): boolean =>
+  linhaHex(a, b).some((h) => h.q === c.q && h.r === c.r);
+
 /** Se o hexágono cabe num tabuleiro de `cols` × `rows`. */
 export function dentro(h: Hex, cols: number, rows: number): boolean {
   const { col, row } = axialParaOffset(h.q, h.r);

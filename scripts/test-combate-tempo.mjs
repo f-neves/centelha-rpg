@@ -552,10 +552,89 @@ const AL = await carregar('src/lib/alcance.ts');
     'arma sem alcance no catálogo não inventa faixa (o arremesso depende de quem joga)');
 }
 
+// ----------------------------------------------------- 7. o Interpor (L34 §6)
+// As seis perguntas fechadas em 07/09/2026. O que se confere aqui é a régua
+// PURA: cobertura de golpe, o preço da porta da Recuperação, e o alcance —
+// corpo a corpo (redundante, só reach) e à distância (reach + linha).
+{
+  // 7a. acaoVazia NÃO apaga a cobertura — achado ao integrar com `acaoNo` da
+  // mesa (`grid.astro`): ele só devolve a ação quando ela não é "vazia", e uma
+  // ação que só tem `interpoe` (sem golpes, sem Pressão) parecia vazia antes
+  // deste ajuste — o que apagava o próprio dado que o Interpor existe para
+  // guardar, silenciosamente, em todo lugar que lê por `acaoNo`.
+  eq(T.acaoVazia({ interpoe: { aid: 'a1', golpe: 10, alvoOriginal: 'x' } }), false,
+    'uma ação só com `interpoe` não é vazia — é a cobertura que ela guarda');
+  eq(T.acaoVazia({}), true, 'e sem golpes, sem Pressão e sem `interpoe`, continua vazia');
+  eq(T.acaoVazia({ pressao: 2 }), false, 'a Pressão sozinha já não era vazia, e continua não sendo');
+
+  // 7a. cobreGolpe / interposicaoConsumida — o requisito de "um golpe só".
+  const semNada = { golpes: [10], livre: 15 };
+  eq(T.cobreGolpe(semNada, 'a1', 10), false, 'sem `interpoe`, nenhum golpe está coberto');
+  const coberta = { golpes: [3], livre: 8, interpoe: { aid: 'a1', golpe: 10, alvoOriginal: 'x' } };
+  eq(T.cobreGolpe(coberta, 'a1', 10), true, 'cobre exatamente o golpe declarado');
+  eq(T.cobreGolpe(coberta, 'a1', 11), false, 'e não o Tick seguinte da MESMA ação (dupla/rajada) — não declarado, não coberto');
+  eq(T.cobreGolpe(coberta, 'a2', 10), false, 'nem o mesmo Tick de outra ação');
+  const consumida = T.interposicaoConsumida(coberta);
+  eq(consumida.interpoe, undefined, 'depois de cair, a cobertura não sobrevive');
+  eq(T.interposicaoConsumida(semNada), semNada, 'sem cobertura, nada muda');
+
+  // 7b. o preço da porta da Recuperação: a distância, com PISO de 2 (não 1 Tick/metro).
+  eq(T.custoInterporRecuperacao(0), 2, 'a 0 metro ainda paga o piso de 2');
+  eq(T.custoInterporRecuperacao(1), 2, 'a 1 metro, o piso ainda manda');
+  eq(T.custoInterporRecuperacao(2), 2, 'a 2 metros, piso e distância empatam');
+  eq(T.custoInterporRecuperacao(5), 5, 'acima do piso, é a distância inteira');
+  // E É OUTRO PREÇO que o da porta do Preparo (abortar): 1 Tick/metro, sem piso.
+  eq(T.abortar({ golpes: [7], livre: 12, desde: 5 }, 5, 1).custo, 1,
+    'a porta do Preparo cobra 1 Tick por metro, sem piso — são dois preços, não um');
+}
+
+const AL2 = AL; // mesmo módulo já carregado na seção 6, o Interpor usa a mesma régua de alcance.
+{
+  // 7c. alcance do Interpor — corpo a corpo: só reach, a reta é redundante.
+  const cac = (hex, haste = false) => AL2.alcanceInterpor({
+    corpoACorpo: true, haste, hexagonosDoAgressor: hex, metrosDoAgressor: hex, naLinha: false,
+  });
+  eq(cac(1).pode, true, 'adjacente ao agressor: pode, mesmo sem checar reta nenhuma');
+  eq(cac(2).pode, false, 'a dois hexágonos do agressor, a espada não alcança para ninguém se interpor');
+  ok(/alcance do agressor/.test(cac(2).porque), 'e o motivo é dito');
+  eq(cac(2, true).pode, true, 'com haste, dois hexágonos ainda alcançam');
+
+  // 7d. à distância: dentro do alcance da arma ORIGINAL, medido do agressor, e na linha.
+  const dist = (m, naLinha) => AL2.alcanceInterpor({
+    corpoACorpo: false, hexagonosDoAgressor: m, idOuNomeArma: 'arco-curto', metrosDoAgressor: m, naLinha,
+  });
+  eq(dist(30, true).pode, true, 'dentro do alcance e na linha: pode');
+  eq(dist(30, false).pode, false, 'dentro do alcance mas FORA da linha: não pode — são perguntas diferentes');
+  ok(/linha/.test(dist(30, false).porque), 'e o motivo fala da linha, não do alcance');
+  eq(dist(200, true).pode, false, 'além do alcance máximo da arma original: não pode, mesmo na linha');
+  ok(/[Aa]lém do alcance/.test(dist(200, true).porque), 'e o motivo fala do alcance, não da linha');
+  eq(AL2.alcanceInterpor({
+    corpoACorpo: false, hexagonosDoAgressor: 999, idOuNomeArma: 'arma-que-nao-existe',
+    metrosDoAgressor: 999, naLinha: false,
+  }).pode, true, 'arma fora do catálogo: sem teto para afirmar, não impede (a régua de sempre deste arquivo)');
+}
+
+// 7e. a reta em coordenadas cúbicas (hex.ts) — a geometria que a decisão 3b pediu.
+const HX = await carregar('src/lib/hex.ts');
+{
+  const a = { q: 0, r: 0 };
+  eq(HX.linhaHex(a, a), [a], 'a reta de um hexágono para ele mesmo é só ele');
+  const b = { q: 4, r: -2 };
+  const reta = HX.linhaHex(a, b);
+  eq(reta.length, HX.distanciaHex(a, b) + 1, 'a reta tem exatamente distância+1 casas, sem pular nenhuma');
+  eq(reta[0], a, 'começa no agressor');
+  eq(reta[reta.length - 1], b, 'termina na posição original do aliado');
+  ok(reta.every((h, i) => i === 0 || HX.distanciaHex(reta[i - 1], h) === 1),
+    'cada casa é vizinha da anterior — o arredondamento em cubo não pula hexágono');
+  eq(HX.naLinhaHex(a, b, a), true, 'a origem está na própria reta');
+  eq(HX.naLinhaHex(a, b, { q: 4, r: 4 }), false, 'uma casa fora do segmento não está na reta');
+}
+
 for (const f of tmp) { try { fs.unlinkSync(f); } catch {} }
 if (falhas.length) {
   console.error(`\n✘ combate-tempo: ${falhas.length} falha(s)\n` + falhas.map((f) => '  · ' + f).join('\n'));
   process.exit(1);
 }
 console.log('✓ combate-tempo: a régua dos dois sistemas bate com o catálogo e com a §14.11,'
-  + ' a iniciativa distribui os Ticks de entrada e a distância cai nas quatro faixas');
+  + ' a iniciativa distribui os Ticks de entrada, a distância cai nas quatro faixas'
+  + ' e o Interpor (L34 §6) cobre o golpe certo, cobra o preço certo em cada porta e mede a reta em cubo');

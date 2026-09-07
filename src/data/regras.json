@@ -2515,6 +2515,15 @@
       "nota": "Agir fora da sua vez: paga a Velocidade da ação empurrada para o seu próprio futuro, a guarda não se refaz, uma por ação. Interromper atrasa o alvo em tantos Ticks quantos o interruptor pagou (o espelho).",
       "umaPorAcao": true,
       "espelho": true
+    },
+    "interpor": {
+      "nota": "As seis perguntas do Interpor, fechadas em 07/09/2026 (Pendencias.md, L34 §6). Quem leva o dano: o acerto e o dano já resolvidos contra o alvo original passam inteiros para o interpositor (nenhum novo teste de acerto); a Absorção que se aplica é a do interpositor, nunca a do alvo original. Teste: nenhum dedicado — pagando os Ticks e estando dentro do alcance, a interposição acontece, determinística (mesmo regime de 'Avançar para fechar distância' no catálogo). Alcance: teto = alcance da arma original medido do agressor; só à distância, o interpositor também precisa terminar numa casa que a reta (coordenadas cúbicas) do agressor até a posição original do aliado cruza — no corpo a corpo isso é redundante. Escudo: nada de novo, a bandeira `bloqueio` decide como em qualquer golpe. Duração: um golpe só, o que disparou a interposição; a tela tem de dizer contra qual golpe ela vale.",
+      "duasPortas": "NÃO SÃO PREÇOS CONCORRENTES, são duas portas já precificadas desde 20-21/08/2026 (Combate_Tempo.md §14.6): no Preparo, interpor é um dos destinos do abortar (`combate.abortar.para`), a `combate.abortar.ticksPorMetro` — você desiste do próprio gesto, sem teste, perde o investido; na Recuperação, interpor é a ação fora de hora do catálogo (§4.3), pelos dois campos abaixo, com o teste que a mesa fizer ali a `combate.recuperacao.penDadosAcaoNaFase`.",
+      "recuperacao": {
+        "ticksPorMetro": 1,
+        "minimoTicks": 2,
+        "nota": "O catálogo (§4.3): 'a distância em metros, mínimo 2'. O custo em Ticks é a distância percorrida, com piso de 2 — quem já está a 1 metro ou menos ainda paga 2. Some ao `foraDeHora` como a Velocidade da reação: é a mesma transação, com outro número de entrada."
+      }
     }
   },
   "bandeiras": {

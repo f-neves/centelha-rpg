@@ -163,6 +163,22 @@ export interface Acao {
    * ação: quem separa os golpes é o índice na agenda, e não o identificador.
    */
   aid?: string;
+  /**
+   * A INTERPOSIÇÃO QUE ESTA AÇÃO SUSTENTA, se houver (L34 §6, 07/09/2026).
+   *
+   * Mora na ação de QUEM SE INTERPÔS, e não na do agressor: é o interpositor
+   * quem paga Ticks e quem vai levar o dano, então é a peça dele que precisa
+   * saber "estou coberto isto". `aid` + `golpe` (o Tick ABSOLUTO do golpe,
+   * comparável a `Acao.golpes`) identificam exatamente o golpe declarado que
+   * a interposição vale — nunca a agenda inteira do agressor, que é a decisão
+   * do item 5 (um golpe só, o que disparou o gesto). `alvoOriginal` é só para
+   * a tela narrar "em vez de", e não entra em conta nenhuma.
+   *
+   * Sem migração: `acao` já é jsonb (migração 27), e este campo nasce ausente
+   * em toda ação que nunca declarou interposição — o estado antigo continua
+   * sendo exatamente o antigo.
+   */
+  interpoe?: { aid: string; golpe: number; alvoOriginal: string } | null;
 }
 
 /**
@@ -171,11 +187,18 @@ export interface Acao {
  * A PRESSÃO CONTA. Quem levou três ataques e ainda não agiu não tem agenda de
  * golpe nenhuma, mas tem a guarda aberta em −6, e é justamente essa a regra
  * mais antiga do capítulo IX. Tratar `{pressao: 3}` como vazio fazia a Pressão
+ *
+ * E A COBERTURA DE INTERPOSIÇÃO TAMBÉM CONTA (L34 §6, 07/09/2026), pelo mesmo
+ * motivo: `{interpoe: {...}}` sem golpe nenhum ainda é "livre" para fase e
+ * Defesa (`faseEm`/`temGesto` continuam checando `golpes` à parte), mas não é
+ * NADA para quem procura por cobertura — `acaoNo` (na mesa) usa esta função
+ * para decidir se devolve a ação ou `null`, e nulá-la aqui apagaria o próprio
+ * dado que o Interpor existe para guardar.
  * ser gravada no banco e nunca mais lida: acumulava em silêncio e não descontava
  * Defesa de ninguém.
  */
 export const acaoVazia = (a: any): boolean =>
-  !a || ((!Array.isArray(a.golpes) || !a.golpes.length) && !(a.pressao > 0));
+  !a || ((!Array.isArray(a.golpes) || !a.golpes.length) && !(a.pressao > 0) && !a.interpoe);
 
 /** Tem gesto no ar? (Agenda de golpes, e não só Pressão acumulada.) */
 export const temGesto = (a: any): boolean => !!a && Array.isArray(a.golpes) && a.golpes.length > 0;
@@ -784,6 +807,53 @@ export function abortar(acao: Acao | null | undefined, tick: number, metros = 0)
     devolvidos: Math.max(0, a.livre - tick),   // o resto do ciclo, que volta
     porque: '',
   };
+}
+
+/**
+ * ESTA AÇÃO (de um possível interpositor) COBRE o golpe `golpe` de `aid`?
+ *
+ * A comparação é por `aid` + Tick ABSOLUTO do golpe, e não por alvo: é o que
+ * torna o requisito de tela do item 5 ("contra qual golpe ela vale") uma
+ * pergunta que dá para responder olhando só a ação, sem reconstruir a cena.
+ */
+export const cobreGolpe = (
+  acao: Acao | null | undefined, aid: string | null | undefined, golpe: number,
+): boolean => !!acao?.interpoe && !!aid && acao.interpoe.aid === aid && acao.interpoe.golpe === golpe;
+
+/**
+ * A ação depois de o golpe coberto cair (ou passar): a cobertura não sobrevive.
+ *
+ * UM GOLPE SÓ, O QUE A DISPAROU (item 5) — por isso isto não é condicional a
+ * "acertou" ou "errou": interpuseram-se para ESTE golpe, e o próximo golpe do
+ * mesmo Tick (dupla, rajada) já não está coberto, precisa de nova declaração.
+ * "Nunca em silêncio" quer dizer que a tela avisa ANTES (`faixaDeGolpesHTML`),
+ * não que a cobertura se estica para cobrir o que ninguém declarou.
+ */
+export function interposicaoConsumida(acao: Acao): Acao {
+  if (!acao.interpoe) return acao;
+  const nova: Acao = { ...acao };
+  delete nova.interpoe;
+  return nova;
+}
+
+/**
+ * O CUSTO EM TICKS de se interpor pela porta da RECUPERAÇÃO (catálogo §4.3).
+ *
+ * "A distância em metros, mínimo 2": não é 1 Tick por metro com piso — é a
+ * distância inteira, com piso de 2 Ticks para quem já está a 1 metro ou menos.
+ * Distinto do preço da porta do PREPARO (`abortar`, 1 Tick/metro, sem piso):
+ * são duas portas com dois preços já fechados desde 20-21/08/2026
+ * (`Combate_Tempo.md` §14.6), e não uma escolha entre eles.
+ *
+ * Devolve o número pronto para `foraDeHora(acao, tick, custoInterporRecuperacao(m))`:
+ * a transação (dívida, "uma por ação", o espelho) é a mesma de qualquer ação
+ * fora de hora, e por isso não se escreve de novo aqui.
+ */
+export function custoInterporRecuperacao(metros: number): number {
+  const I = C?.interpor?.recuperacao || {};
+  const piso = Math.max(0, Math.round(I.minimoTicks ?? 2));
+  const custo = Math.round(Math.max(0, metros) * (I.ticksPorMetro ?? 1));
+  return Math.max(piso, custo);
 }
 
 /** Quanto custa reagir agora: o que falta do ciclo mais a Velocidade da reação. */
