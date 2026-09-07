@@ -69,6 +69,7 @@ segunda tinha ficado verde por cegueira.
 | **a constante de conversão com duas candidatas plausíveis** | converter uma TAXA (por Tick, por segundo, por linha) numa unidade TOTAL, ou vice-versa | esta constante é a MÉDIA da grandeza que multiplica (duração, tamanho), ou é outra estatística da mesma tabela que também "parece" servir? |
 | **a cópia segurada por um detector, e não por disciplina** | duas implementações da mesma conta (não o mesmo corpo — a mesma MATEMÁTICA, escrita duas vezes), com uma fixture de regressão no meio | o detector cobre TODOS os ramos que mudaram, ou só o estado em que a fixture foi gravada? |
 | **o segundo ponto de decisão, dentro da MESMA função** | consertar uma conta e não perguntar onde MAIS ela se decide | o que a função que APLICA o efeito (`aplicarDano`, `baixarVida`, o `update` de verdade) lê — é o valor que acabei de consertar, ou outro calculado em paralelo? |
+| **as duas metades de um par movendo-se juntas** | um teste com um caso "liga" e um caso "desliga" que passam OU falham juntos | os dois medem o mecanismo, ou os dois dependem do mesmo insumo, e um insumo quebrado move os dois na mesma direção? |
 
 **DUAS NOVAS, DE 06/09/2026, ACHADAS NA REVISÃO DO AVANÇO UNIFICADO:** a primeira é o gatilho —
 fica verde, o rótulo continua descrevendo o que deveria medir, e nada acusa a mudança por baixo. A
@@ -263,3 +264,51 @@ DIFERENTE, sem trava nenhuma sobre ele. A pergunta da linha da tabela ("a
 chave nova chega na OUTRA PONTA?") continua certa; o que faltou foi perguntá-la
 de novo em CADA `.map()` que reconstrói um objeto campo a campo, e não só na
 fronteira de mais alto nível que tem um nome e uma trava.
+
+**NÃO É UM SÓ, E ISSO MUDA A RESPOSTA (contado em 07/09/2026, dentro da
+mesma função que construiu `ataques[]`):** `gen-monsters.mjs` tem **sete**
+`.map()` de campo a campo na mesma peça de código, todos do mesmo risco —
+`habilidades` e `lore` aparecem **duas vezes cada**, uma convertendo PARA o
+satélite (`x.nome → n`) e outra convertendo DE VOLTA (`x.n → nome`), dois
+saltos e dois jeitos de perder um campo — mais `poderes` e `artes`. Fora
+desta função, `gen-bestiario.mjs` tem mais três, de risco menor (catálogos
+de referência — `{id, nome}` — e não dado de combate por criatura).
+
+**Com sete no mesmo lugar, a trava genérica vale mais que sete travas
+escritas à mão.** `CAMPOS_MESA`/`FORA_DA_MESA` já resolveu isto uma vez para
+as chaves de TOPO (`Object.keys(m)` contra as duas listas); a mesma forma —
+um par de listas e uma asserção que soma as duas contra `Object.keys` do
+que existe — serve para qualquer `.map()` de campo a campo, aplicada no
+ponto onde ele roda, com a lista de campos que ELE conhece (não a de topo).
+Não construído nesta rodada: é registro de tamanho, para quem decidir se
+vale a pena escrever a versão genérica ou consertar os sete à mão.
+
+**UM CASO NOVO, DE 07/09/2026, E É O MELHOR EXEMPLO QUE ESTA FRENTE JÁ
+PRODUZIU DE "a asserção sem ocasião":** a primeira versão de
+`test-bandeiras-mesa.mjs` usava `mon-aboleth` (Absorção de Perfuração 13)
+para provar que o gate resvala. A Adaga (`1d6+1`) nunca fura 13 sozinha —
+**com o gate LIGADO ou DESLIGADO, o resultado era o mesmo: a Vida não
+descia.** A asserção "a Vida não desceu" ficava verde nos dois estados, e só
+o ensaio dos três sentidos (rodar com a bandeira desligada e checar que o
+teste vira vermelho) expôs que ela não tinha ocasião nenhuma: a cena nunca
+dava ao gate a chance de fazer diferença, porque a Absorção sozinha já
+zerava o dano antes de qualquer resvalar. Trocado por `guarda-da-cidade`
+(Absorção de Perfuração 2), onde o gate LIGADO e DESLIGADO dão respostas
+DIFERENTES — só aí a asserção mede o gate, e não a Absorção do alvo.
+
+**E O SEGUNDO, QUE É FORMA NOVA E NÃO REPETIÇÃO DO PRIMEIRO:** a mesma cena,
+já com o alvo certo, ainda passava com o gate quebrado, porque a ficha do
+atacante (o `numeros` de `mesa-mock.mjs`) esquecia `perfArma`/`resistPerf`
+no override — sem eles, `ra.perfArma` caía em `null` e o gate nunca
+disparava, então o par "b0 abre" e "b2 resvala" **passavam ou falhavam
+juntos**, sempre pelo mesmo motivo errado (o insumo comum quebrado), nunca
+porque o mecanismo funcionasse. **O par existe para proteger contra as DUAS
+METADES medirem a mesma coisa por acidente** (o controle negativo da
+"asserção sem ocasião"); ele não protege contra as duas dependerem do MESMO
+insumo quebrado, porque aí a correlação entre elas continua perfeita — só
+que pela razão errada. **O gatilho:** quando as duas metades de um par se
+movem JUNTAS (as duas passam, ou as duas falham, na mesma rodada em que algo
+mudou), desconfie de insumo comum antes de comemorar a consistência — a
+pergunta não é "elas concordam?", é "elas concordam **pelo mecanismo que eu
+quero medir**, ou por um dado que as duas leem igual e que pode estar
+errado?".

@@ -176,6 +176,19 @@ dia, então ele só os reescreve se sumirem. E o passo 1 não é formalidade: o
   Toda renomeação precisa de entrada em `RENOMES`, em `ficha-engine.ts`.
 - Para ver o site de verdade: `node .claude/skills/run-centelha-rpg/driver.mjs`
   (sobe o dev server, dirige o Edge headless, roda o smoke da ficha).
+- **Ações recebem objeto, não leem o DOM.** Toda ação NOVA do Grid (um verbo novo, uma
+  capacidade nova) separa duas coisas: a função que DECIDE o efeito, que recebe um objeto
+  com o que precisa e não toca em `el(...)`/`.value` nenhum, e a caixa de diálogo que
+  COLETA esse objeto de um clique. `declararNoTabuleiro` e `resolverGolpe`
+  (`src/lib/lance.ts`) já são assim; `folhaDaAcao` e `declararGolpe`
+  (`src/pages/mesa/grid.astro`) não são, e não é para reescrevê-los por causa desta regra —
+  isto é disciplina para o que se escreve DAQUI PRA FRENTE, não mandado de retrofit no que
+  já existe. Vale para AÇÃO nova (um verbo que a mesa ainda não tinha); uma bandeira que
+  estende uma ação existente (como `porte`/`gate` entraram em `ajAtq`/`contaDoLance`) é
+  outra coisa, e mexe direto na função que já existe. Registrado em 07/09/2026 porque uma
+  frente futura (comandos por voz, `Grid_melhorias.md`) precisa poder chamar "o que decide o
+  efeito" sem depender de um clique — e sem a separação, ela nasceria pedindo reescrita de
+  toda ação que quisesse cobrir.
 
 ## Escrita
 

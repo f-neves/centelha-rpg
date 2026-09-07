@@ -274,6 +274,58 @@ Ordenado pelo que eu faria primeiro. **P** = uma tarde · **M** = médio · **G*
 > vários itens daqui: a prévia do golpe, o alcance da arma equipada, o rolador no tabuleiro e os
 > atalhos de teclado deixam de ser conforto e viram peças da mesma emenda.
 
+### Comandos por voz · frente registrada em 07/09/2026, **G**, não começada
+
+**A mesma direção do `Grid_Automacao.md`** (encolher o tempo entre a decisão estar tomada e o
+efeito aparecer), levada ao limite: o mestre fala o que quer que aconteça — quem faz o quê,
+quanto de dano, quem se move para onde — e o Grid entende e executa. Nada disto está construído;
+é registro de decisões já fechadas, para quando a frente abrir.
+
+**O que já está decidido, e não se reabre sem decisão nova:**
+
+- **Começa por texto.** Uma linha de comando escrita resolve os dois problemas difíceis (a lista
+  de verbos e a resolução de nome) sem microfone e sem rede, e é testável por asserção. Voz vira
+  só mais uma entrada dela — o reconhecimento de fala aponta para a MESMA gramática de texto, não
+  para um caminho próprio.
+- **Mestre e jogadores podem mandar comando**, com a ressalva do ponto sobre execução/confirmação,
+  abaixo.
+- **Segurar para falar**, quando houver voz. Nunca escuta contínua nem palavra de ativação: a mesa
+  fala em personagem o tempo todo, e "o goblin ataca o Kael" é narração e comando ao mesmo tempo —
+  sem um botão físico segurado, não há como distinguir os dois.
+- **Reconhecimento nativo do navegador** na primeira versão (Chrome, Edge, Safari; **Firefox fica
+  de fora**). Isto significa que **o áudio da mesa vai para um serviço na web, e a função não
+  funciona offline** — registrado explicitamente, para não virar surpresa depois.
+- **Gramática fixa, não modelo.** Conjunto fechado de formas; o que não casar é RECUSADO dizendo o
+  que se esperava. Determinístico, testável por asserção, sem custo por uso (nada de chamada a um
+  modelo de linguagem para interpretar comando).
+- **O que executa e o que confirma:**
+  - inofensivo (mover, selecionar, mostrar alcance) executa direto;
+  - o que muda estado (dano, condição, Vida, morte) propõe e alguém confirma;
+  - para JOGADOR, nada executa direto até existir medição de QUANTO a gramática erra;
+  - **quem pode mandar o quê é decidido no BANCO, na RPC, e não no cliente.** Cortina não serve
+    aqui: comando é escrita, e a camada de permissão é onde a frente do jogador (L33, `Fase 2.5`,
+    `Pendencias.md`) achou quatro vazamentos e o "tirar Vida de peça alheia" — a mesma lição vale
+    aqui, e mais, porque comando de voz é escrita nova.
+- **Nome vira peça** por nome próprio e ordinal explícito, com RECUSA quando ambíguo. "Kael" e
+  "goblin 3" funcionam; "o goblin" com oito em cena é recusado, com a lista de quem poderia ser.
+  Nada de resolver pelo contexto (alvo selecionado, último citado): isso erra em silêncio, e um
+  comando que erra em silêncio é pior que um comando que não existe.
+
+**A nota de procedência, para não subestimar o tamanho:** nada disto existe pronto para
+aproveitar. Os módulos de VTT com "voz" no nome, levantados nesta rodada, são todos
+text-to-speech (a mesa FALANDO, não OUVINDO); o único achado que fazia o caminho contrário
+(comando por voz) está abandonado há mais de três anos. **O reconhecimento de fala em si está
+resolvido** (é a API nativa do navegador) — **o difícil é a lista de verbos e a resolução de
+nome**, e é exatamente por isso que a régua acima começa pelo texto: as duas partes difíceis se
+resolvem e se testam sem precisar de áudio nenhum.
+
+**A única coisa a fazer agora, e ela não é desta frente:** toda ação nova, a partir de
+06-07/09/2026, nasce recebendo um objeto com o que precisa, em vez de sair de um clique lendo o
+DOM (ver a regra em `CLAUDE.md`, "Ações recebem objeto, não leem o DOM"). Não é trabalho
+antecipado para os comandos por voz — é a forma que já vale por si, e que faz o inventário de
+verbos desta frente se montar sozinho ao longo da Fase 2.5 e da Fase 4, em vez de exigir um
+levantamento retroativo no dia em que a frente abrir.
+
 ### O relógio de Ticks (é o que temos de mais nosso)
 
 - [x] **Linha do tempo de Ticks** · FEITA em 2026-08-21, e **desligada por padrão**. A régua está
