@@ -1892,6 +1892,23 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   Não é fase de métrica: é fase de produto, e termina com a mesa jogável dos dois lados.
 
+  **LEVANTAMENTO em 07/09/2026 (rodada 24, `docs/simulacao/caixa/24-executora.md`): o achado
+  "relógio em Tick 0" está DEFASADO.** A migração 31 rodou em produção em 05/09/2026 (`L42`), e
+  o cliente já tinha a degradação `SEM_RELOGIO` pronta antes disso (`grid.astro:3027`,
+  `test-grid.mjs:1438-1457`, cenário `SIM5`). O que sobrou, real: o próprio teste confessa
+  (`test-grid.mjs:1433-1437`, o comentário que cita `tickDaVez`) que só prova o relógio no
+  sistema Simultâneo — no P/G/R o relógio sai de `tickDaVez()`/`golpeMaisCedo()`, não de
+  `tick_atual`, e ninguém montou uma cena com Tick
+  divergente por combatente nesse sistema para comparar o que o jogador calcula contra o que o
+  mestre calcula. É lacuna de PROVA, não de esquema nem de código faltando.
+
+  **Achado colateral, não fechado, verificar com cena real:** `combate.astro` nunca lê
+  `tick_atual` (zero ocorrências); o relógio que ela desenha é `AGORA = emCampo[0]?.tick ?? 0`
+  (`:893-894`), o Tick do primeiro da fila ordenada — mecanicamente diferente do `tick_atual` da
+  arena que o Grid usa. Se o Tick de quem está livre puder ficar atrás do `tick_atual`, a aba
+  Combate mostra o relógio errado para os DOIS lados da mesa, não só para o jogador. Não
+  verificado ainda: depende de montar uma cena e ver se diverge na prática.
+
 - [x] **L32 · DECIDIDO em 06/09/2026 · A névoa esconde a EXISTÊNCIA do inimigo, não só a
   posição · falta a tela da lembrança, e é ela que trava a migração 33** · *achado na
   varredura das oito views, 04/09/2026 (a decisão em si), fechado com a mesa e os cinco casos
@@ -3458,6 +3475,26 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   padrão do B12 (silêncio onde devia haver erro alto). Não corrigido ainda: o conserto é trocar o
   aviso por um `throw` quando `faltando.length === plano.folhas.length` (ou quando `porClasse`
   sai vazio), e não é desta rodada.
+
+- [ ] **L51 · [FAZER] Só 1 das 4 views do lado do jogador tem prova automática contra o SQL
+  real.** Achado no levantamento da Fase 2.5 (rodada 24, `docs/simulacao/caixa/24-executora.md`,
+  Frente 3, a auditoria das três medições).
+
+  `combate_visao` tem `test-visao.mjs:49`, que lê `migracao-27.sql` de verdade
+  (`fs.readFileSync`) e compara as colunas com a lista à mão em `scripts/visao-combate.mjs` —
+  esse par roda em `npm run validate` e trava sozinho se divergir. `encontro_visao`,
+  `token_visao` e `efeito_visao` não têm isso: são listas escritas à mão em `mesa-mock.mjs`
+  (`:946-947` para `encontro_visao`, comentário citando "migrações 14 · 29 · 31") sem comparação
+  nenhuma contra o `.sql`. Conferido à mão nesta rodada que batem hoje, mas nada trava se alguém
+  mudar a view e esquecer a lista — não é o achado antigo "mock mais generoso que o esquema"
+  (`:1882`, já resolvido para estas duas), é cobertura de 1 em 4. O modelo a replicar é o próprio
+  `test-visao.mjs`. Não corrigido ainda.
+
+  **Tolerância com prazo, à parte, sobre a proteção que já existe:** `test-visao.mjs` está pinado
+  em `migracao-27.sql` por ser a versão de `combate_visao` em produção hoje. **Expira no dia em
+  que a migração 33 rodar**: ela muda a forma inteira da view (ganha `lembranca`/`visto_em`,
+  esconde `tick`/`iniciativa`/`acao` na lembrança), e a referência do teste fica errada em
+  silêncio até alguém trocar para `migracao-33.sql`. Ver L33.
 
 ## H. Arremesso
 
