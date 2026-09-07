@@ -1616,6 +1616,18 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   recompõe a guarda", mas não há número que separe desviar de mover, nem regra que diga o que
   "sair da linha" compra. Hoje a diferença entre os dois rádios é **só o verbo do registro**.
 
+  **DECIDIDO em 07/09/2026, item 1 (quem leva o dano): O DANO JÁ ROLADO PASSA INTEIRO, E A
+  ABSORÇÃO É DA QUEM SE INTERPÔS.** O acerto e o dano já resolvidos contra o alvo original se
+  mantêm (nenhum novo teste de acerto), só o alvo físico do golpe muda para o interpositor; o
+  que se aplica sobre esse dano é a Absorção de QUEM INTERPÔS, e não a do alvo original — se a
+  Absorção também fosse a do alvo original, seria dano transferido e não interposição, e não é
+  isso. Rejeitada a opção de recomparar o acerto contra a Defesa do interpositor: reusar o código
+  de resolução não é reusar a regra, e um teste novo que hoje não existe faria o interpositor ter
+  direito a uma chance de o golpe simplesmente não valer, o que ninguém escreveu. **Alerta para
+  quem construir:** se aparecer um caso em que isto produz absurdo (interpositor que não poderia
+  ter sido alcançado pelo golpe original, por alcance ou geometria), parar e escalar antes de
+  seguir — não é para resolver sozinho na implementação.
+
 
 - [ ] **L35 · [DECISÃO DE MESA] A CRIATURA NÃO TEM PERÍCIA, E A COMPARAÇÃO DO GOLPE DO ESCURO
   FECHA PARA UM LADO SÓ** · *levantamento de 04/09/2026, contado nas 309.*
@@ -1964,6 +1976,28 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   consegue medi-lo**: todas as peças dela são arquétipos de PC, então o `misto` sairia idêntico ao
   `mesa`, e não por o modo não fazer nada. Zero ambíguo outra vez; medi-lo exige criatura no
   elenco.
+
+  **TENTATIVA DE SEPARAR OS 34% POR "QUEM DIGITA", em 07/09/2026, e a resposta é NÃO, com o dado
+  que existe.** A pergunta era: dá para separar quanto da digitação de `resolver` vem de golpe de
+  criatura (lado do mestre) e quanto de golpe de PC, usando o `lado` que o log já carrega? O
+  `lado` existe de fato (`log.mjs:190`, `paradasSubLado`, atribuído ao ATACANTE — confirmado em
+  `log.parada` chamado com o atacante `c`, `motor.mjs:409`), e é tecnicamente medível: numa
+  bateria ad hoc (semente `20260903`,
+  commit `4be58a6`, 7.200 batalhas, apagada depois de medir), o `resolver` sai **49,0% no lado
+  `a` e 51,0% no lado `b`**. **Mas isso não responde à pergunta feita, por duas razões:**
+
+  1. **não existe criatura nenhuma no elenco desta frente** (decisão D25): os dois lados são
+     sempre arquétipos de PC, então "lado" aqui não é "criatura contra PC", é "PC contra PC", e
+     o resultado quase-metade-a-metade é só o reflexo de os dois lados serem simétricos — não
+     ensina nada sobre quanto custaria numa mesa com monstro;
+  2. **e mais fundo: a divisão por `lado` responde "quem atacou", não "quem está sentado
+     operando a tela".** Na simulação o mestre é quem resolve `resolver` nos dois lados sempre;
+     o que muda numa mesa real é se o JOGADOR também mexe na tela quando o golpe é dele, e isso é
+     exatamente o modo `misto` de novo — não dá para chegar lá contando lado de quem golpeia.
+
+  **Conclusão: a pergunta continua sem número, e não por falta de tentar.** Medir isso de verdade
+  exigiria um elenco com criatura, que esta frente decidiu não construir (frente encerrada,
+  `ESTADO.md`). A conversa com a mesa segue sem número, como estava.
 - [ ] **L24 · [DEPOIS] O ⏭ é um terço do trabalho do mestre, e nenhuma regra o toca.** Medido em
   03/09 (`09` §2.3 e §2.4): o clique de avançar o Tick são 33% dos gestos do mestre na fase de
   combate, contra 50% de classe iii e 17% de classe ii. Ele é o item mais frequente da mesa, o
@@ -2348,6 +2382,15 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   dos nove escolhe o seu, e a triagem vira leitura de nove linhas em vez de uma regra que não
   existe.
 
+  **DECIDIDO em 07/09/2026: separar em dois campos** (um executado pelo motor, para os 57; um só
+  de classificação, para os 9). **COM PRÉ-REQUISITO, e não como ressalva:** antes de qualquer
+  código, levantar TODO consumidor de `grid.condicao` no repositório, um a um, e dizer quantos são
+  — não só os que aplicam a condição, também os que só leem para exibir ou gerar conteúdo. **Se
+  algum consumidor for gerador de capítulo** (`gen-cap-*`, ou qualquer coisa que produza texto
+  publicado a partir do dado), o risco não é a tela parar de mostrar algo: é o **capítulo publicado
+  mudar sem ninguém ter pedido**, que é regra saindo de refatoração. Achando um caso desses, parar
+  e escalar antes de fazer o split.
+
 - [ ] **L40 · [MITIGADO EM 05/09/2026 · O CONSERTO É A MIGRAÇÃO 34] O registro do jogador que o
   mestre apaga sem saber** · *só o Grid. A metade que não depende de migração está no ar; a que
   depende espera a 34.*
@@ -2519,6 +2562,20 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   **E o quarto, que não estava no enunciado e é o que segura o segundo:** a linha que o mestre
   apagou **não volta**. Sem ele, o caso 2 passa com uma mescla que só junta, e que ressuscita tudo.
+
+  **DECIDIDO em 07/09/2026: ADIAR.** O gargalo de migrações pendentes que travava a 34 já foi
+  resolvido (31/32/29/30/35 aplicadas, **L42**), então a 34 não está mais bloqueada por isso — mas
+  escrever e rodar uma migração nova agora é antecipar trabalho durante o congelamento da fase 3
+  (reservado para a mesa reavaliar o plano), por um risco que a mitigação já encolheu em ~4 ordens
+  de grandeza (de até ~21 s para milissegundos, ver acima). **Fica na fila, com o gatilho escrito
+  para não virar tolerância sem dono:** escreve-se a 34 no dia em que aparecer sinal real de perda
+  de linha em mesa, ou no dia em que o mestre precisar de um gesto sobre o log que a mitigação de
+  hoje não cobre. **O que a mitigação NÃO resolve, para o gatilho ter conteúdo quando alguém for
+  reler isto:** ela encurta a janela de corrida, não a fecha (o `select`+`update` do `mesclarLog`
+  ainda não é atômico); e o `LOG_APAGADAS` é uma lápide que existe só porque, sem migração, a
+  ausência local de uma linha tem duas causas indistinguíveis — "nunca chegou" e "eu apaguei" — e
+  o dia em que uma terceira causa aparecer (por exemplo, duas abas de mestre) a lápide sozinha
+  pode não bastar.
 
 - [ ] **L41 · [PENDÊNCIA DA MESMA FAMÍLIA] Leitura-modificação-escrita de coleção inteira a partir
   de foto local** · *a forma, nomeada em 05/09/2026, a partir do L40.*
