@@ -1720,6 +1720,9 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   pela Absorção DELE, não a do alvo. **D16a, divergência registrada pela Executora na rodada 16:**
   o pedido original da Revisora era "pelo menos um caminho de CADA porta"; o TechLead simplificou
   para "uma, à escolha" ao repassar a tarefa — fechado na rodada 17, cobrindo a segunda porta.
+  **Veredito SEGUE em 07/09/2026 (rodada 18, `docs/simulacao/caixa/18-revisora.md`, commit
+  `619c317`):** a Revisora rodou os dois cenários ao vivo (34 asserções, não só leu o código) e
+  confirma que a conferência em par é a MESMA função nas duas portas, não duplicada por nome.
   Em `test-grid.mjs:1023`, o clique que abre a caixa de abortar: `data-a="abortar"`.
   Em `test-grid.mjs:2902`, a caixa equivalente de fora-de-hora: `data-a="forahora"`.
 
