@@ -24,14 +24,14 @@ revisando duas árvores achando que é uma, sem saber qual pedaço do veredito
 vale para qual commit.
 
 **Onde está agora:** `C:/Users/Neves/ClaudeCode/centelha-techlead-revisora`,
-detached, pinado em `44d5601` desde 07/09/2026 (SHA do aviso da rodada 22,
-`docs/simulacao/caixa/22-executora.md`, L31: geradores sem `--check`, cobrindo
-também a rodada 21 já commitada). Antes disso ficou pinado em `bdc9680`
-(aviso da rodada 19, L39: split de `grid.condicao`), em `8dd27d4` (aviso da
-rodada 17, fecho dos Lotes 2 e 3 do Interpor), em `54d337c` (aviso da rodada
-15) e, antes dessa, em `46656ba` desde a criação do worktree (antes do
-primeiro diff de verdade, por decisão explícita do humano — não esperar o
-diff para montar o isolamento). Confirmado limpo e no commit certo nesta data.
+detached, pinado em `99123cd` desde 07/09/2026 (SHA do aviso da rodada 25,
+`docs/simulacao/caixa/25-executora.md`, Fase 2.5 lote 2: fecha o resíduo do
+relógio). Antes disso ficou pinado em `44d5601` (aviso da rodada 22, L31),
+em `bdc9680` (aviso da rodada 19, L39), em `8dd27d4` (aviso da rodada 17,
+fecho dos Lotes 2 e 3 do Interpor), em `54d337c` (aviso da rodada 15) e,
+antes dessa, em `46656ba` desde a criação do worktree (antes do primeiro
+diff de verdade, por decisão explícita do humano — não esperar o diff para
+montar o isolamento). Confirmado limpo e no commit certo nesta data.
 
 **Passo 0, antes de qualquer outra coisa, em toda revisão:**
 
