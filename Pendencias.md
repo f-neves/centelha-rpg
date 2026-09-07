@@ -1983,8 +1983,13 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `lado` existe de fato (`log.mjs:190`, `paradasSubLado`, atribuído ao ATACANTE — confirmado em
   `log.parada` chamado com o atacante `c`, `motor.mjs:409`), e é tecnicamente medível: numa
   bateria ad hoc (semente `20260903`,
-  commit `4be58a6`, 7.200 batalhas, apagada depois de medir), o `resolver` sai **49,0% no lado
-  `a` e 51,0% no lado `b`**. **Mas isso não responde à pergunta feita, por duas razões:**
+  commit `4be58a6`, 7.200 batalhas), o `resolver` sai **49,0% no lado `a` e 51,0% no lado `b`**.
+  **E O DADO QUE PRODUZIU ISTO NÃO EXISTE MAIS**: a saída ficava em `.sim/techlead-modosite`
+  (gitignorado) e foi apagada depois de medir, porque não é resultado publicado desta frente,
+  é só o registro de uma tentativa. **O 49,0/51,0 não é reproduzível a partir deste
+  repositório hoje** — quem quiser conferir tem de rodar de novo (`node scripts/sim/bateria.mjs
+  --n 100 --semente 20260903` no commit `4be58a6`), não citar o número como se o corpus
+  existisse. **Mas isso não responde à pergunta feita, por duas razões:**
 
   1. **não existe criatura nenhuma no elenco desta frente** (decisão D25): os dois lados são
      sempre arquétipos de PC, então "lado" aqui não é "criatura contra PC", é "PC contra PC", e

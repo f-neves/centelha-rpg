@@ -71,6 +71,7 @@ segunda tinha ficado verde por cegueira.
 | **o segundo ponto de decisão, dentro da MESMA função** | consertar uma conta e não perguntar onde MAIS ela se decide | o que a função que APLICA o efeito (`aplicarDano`, `baixarVida`, o `update` de verdade) lê — é o valor que acabei de consertar, ou outro calculado em paralelo? |
 | **as duas metades de um par movendo-se juntas** | um teste com um caso "liga" e um caso "desliga" que passam OU falham juntos | os dois medem o mecanismo, ou os dois dependem do mesmo insumo, e um insumo quebrado move os dois na mesma direção? |
 | **o teste novo que nasce já fora do portão** | um `.mjs` novo em `scripts/`, entrada nova em `scripts.smoke` | ele entrou em TODA lista que precisa dele, ou só na primeira em que alguém lembrou? |
+| **o número que sobrevive ao dado que o produziu** | uma bateria/corpus ad hoc, apagado ou gitignorado, citado num documento depois de rodar | quem ler isto amanhã consegue reproduzir o dado, ou só herda o número? |
 
 **DUAS NOVAS, DE 06/09/2026, ACHADAS NA REVISÃO DO AVANÇO UNIFICADO:** a primeira é o gatilho —
 fica verde, o rótulo continua descrevendo o que deveria medir, e nada acusa a mudança por baixo. A
@@ -344,3 +345,24 @@ lista gera a outra), ou cópia com detector (uma asserção que compara as duas
 listas nas duas direções, com controle positivo para provar que a extração
 achou algo de verdade). Escolhido o detector: `test-portoes.mjs` ganhou o
 item 6, que faz exatamente essa comparação.
+
+**UM QUARTO CASO, DE 07/09/2026, NOMEADO PELO HUMANO NA HORA (o nome é dele):
+O NÚMERO QUE SOBREVIVE AO DADO QUE O PRODUZIU.** Tentando separar os 34,0%
+do `L26` por lado do atacante, rodei uma bateria ad hoc (`.sim/
+techlead-modosite`, gitignorada, 7.200 batalhas) e cheguei a 49,0%/51,0%. O
+número respondia a outra pergunta e não a que fora feita (ver `Pendencias.md`
+`L26`), então apaguei a pasta depois de ler o resultado, do jeito que a
+convenção do `.sim/` já prevê ("cada uma tem o seu manifesto e é refeita").
+**O que quase aconteceu: o número ficou na prosa, o dado que o produziu não.**
+Sem a ressalva escrita, daqui a um mês alguém leria "49,0%/51,0%, medido" e
+citaria como se o corpus existisse, quando na verdade só é reproduzível
+rodando de novo (semente e commit anotados). **A diferença para o
+"instrumento de bancada citado como prova" (tabela acima):** ali o defeito é
+citar um ambiente de teste como se fosse produção; aqui o dado é real e a
+medição é correta, só que **efêmera por escolha de quem mediu**, e a prosa
+não herda essa marca de validade sozinha — precisa dizer, na mesma frase, que
+o dado se foi. **O gatilho:** todo número medido numa bateria/corpus que não
+é o publicado desta frente (não tem `--gravar`, não vira `docs/simulacao/
+resultados/*.txt`) carrega a pergunta ANTES de ser escrito num documento:
+quem ler isto depois de eu apagar a pasta consegue reproduzir, ou só herda o
+número?
