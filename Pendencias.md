@@ -1964,20 +1964,22 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   - `gen-arte-equip.mjs`, `gen-lista-equip.mjs`, `gen-creditos-equip.mjs`,
     `gen-prompts-folhas.mjs`: **não cabem em `--check`**, por um motivo estrutural que a
     pendência original não previa. `gen-arte-equip` lê de `D&D/armas&armaduras/folhas`, e os
-    outros três ESCREVEM dentro de `D&D/armas&armaduras/` — a pasta inteira está fora do git
+    outros três ESCREVEM dentro de `D&D/armas&armaduras/`: a pasta inteira está fora do git
     (`.gitignore:25`). Sem entrada ou sem saída versionada, não há o que um `--check` compare
     contra o commitado: ele passaria na máquina de quem tem a pasta local e falharia sempre no
     CI (ou não mediria nada). Mesma família do `gen-monsters.mjs`, que já tinha essa exceção.
     Ficam declarados em `GERADORES_FORA` (`scripts/test-portoes.mjs`), com o motivo real.
   - `gen-cap-pericias.mjs`: achada uma divergência real entre `habilidades.json:809` ("manobra")
     e o capítulo publicado (`habilidades.md`, "firula"), rastreada aos commits `3a7c7e9` e
-    `ac71ade` (renomeação do termo de jogo Manobra→Firula, 17-18/08/2026). Se é a fonte que
-    ficou para trás ou o capítulo que herdou uma troca ampla demais é escolha de palavra em
-    prosa publicada, não decisão de engenharia: **virou item [DECIDIR] à parte**, levado ao
-    usuário pelo TechLead. Nenhum dos dois lados (JSON ou capítulo) foi tocado até a decisão.
+    `ac71ade` (renomeação do termo de jogo Manobra→Firula, 17-18/08/2026). Levado ao usuário
+    pelo TechLead: confirmado que `ac71ade` varreu essa ocorrência por engano (o "manobra" da
+    Política é português comum, não o termo de jogo Firula) e que o CAPÍTULO é quem estava
+    errado. `habilidades.json:809` não foi tocado; o gerador rodou de verdade e restaurou
+    "manobra" na frase, desfazendo o excesso da varredura (diff conferido: só essa palavra
+    mudou). Ganhou `--check` no mesmo padrão dos outros e entrou no `npm run validate`.
   - O achado colateral do `gen-arte-equip.mjs` (degrada em silêncio quando a pasta de origem
     falta, e pode sobrescrever o CSS commitado com saída quase vazia) virou **L50**, registrado
-    à parte por não ser desta pendência.
+    à parte por não ser desta pendência e por instrução explícita de não consertar agora.
 
 - [ ] **L30 · [FAZER] OS DEZ MÓDULOS FORA DE TODO PACOTE DE TESTE** · *o mapa está em
   `scripts/mapa-cobertura.mjs`, e ele se refaz sozinho: `node scripts/mapa-cobertura.mjs`.*

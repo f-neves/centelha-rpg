@@ -58,13 +58,41 @@ const blocoSec = GRUPOS_SEC.map(([g, titulo, chapeu]) => {
   return `#### ${titulo}\n\n${chapeu}\n\n${itens}`;
 }).join('\n\n');
 
-const trocar = (arquivo, marca, corpo) => {
+/** Monta o texto NOVO do arquivo (miolo do marcador trocado), sem escrever nada. */
+const montar = (arquivo, marca, corpo) => {
   const md = fs.readFileSync(arquivo, 'utf8');
   const re = new RegExp(`(<!-- gen:${marca} -->)[\\s\\S]*?(<!-- /gen:${marca} -->)`);
   if (!re.test(md)) throw new Error(`marcador gen:${marca} não encontrado em ${arquivo}`);
-  fs.writeFileSync(arquivo, md.replace(re, `$1\n\n${corpo}\n\n$2`));
+  return md.replace(re, `$1\n\n${corpo}\n\n$2`);
 };
-trocar(CAP_PRIM, 'primarias', blocoPrim);
-trocar(CAP_SEC, 'secundarias', blocoSec);
+
+const ALVOS = [
+  { arquivo: CAP_PRIM, marca: 'primarias', corpo: blocoPrim },
+  { arquivo: CAP_SEC, marca: 'secundarias', corpo: blocoSec },
+];
+
+// --check: o portão do L31. Os dois capítulos são gerados e ficam commitados;
+// sem isto, mexer em habilidades.json/habilidades-secundarias.json sem rodar
+// o gerador de novo diverge em silêncio de um capítulo publicado. Mesmo
+// padrão de gen-bestiario.mjs, um arquivo texto de cada vez em vez de um
+// JSON só, porque são dois alvos com marcador próprio cada.
+if (process.argv.includes('--check')) {
+  let falhou = false;
+  for (const { arquivo, marca, corpo } of ALVOS) {
+    const atual = fs.readFileSync(arquivo, 'utf8');
+    const esperado = montar(arquivo, marca, corpo);
+    if (atual !== esperado) {
+      falhou = true;
+      console.error(`✘ ${path.relative(raiz, arquivo)} está fora de sincronia com a fonte `
+        + `(marcador gen:${marca}).\n`
+        + '  Rode: node scripts/gen-cap-pericias.mjs');
+    }
+  }
+  if (falhou) process.exit(1);
+  console.log(`✓ capítulo II em dia com a fonte (${HAB.length} primárias, ${SEC.length} secundárias)`);
+  process.exit(0);
+}
+
+for (const { arquivo, marca, corpo } of ALVOS) fs.writeFileSync(arquivo, montar(arquivo, marca, corpo));
 
 console.log(`capítulo II regerado: ${HAB.length} primárias, ${SEC.length} secundárias`);
