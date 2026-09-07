@@ -1956,7 +1956,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   Cinco geradores tinham `--check` no `npm run build` (`gen-grid-artes`, `gen-mermaid`,
   `gen-bestiario`, `gen-cap-antecedentes`, `gen-bench-tempo`); sete não tinham nem isso nem
   lugar em portão nenhum. Fechado assim, gerador por gerador, pela Executora
-  (`docs/simulacao/caixa/20-executora.md`):
+  (`docs/simulacao/caixa/21-executora.md`):
 
   - `gen-elementos.mjs` e `gen-deslocamento.mjs`: bateram limpo contra o commitado
     (regeneração idempotente). Ganharam `--check` no padrão do `gen-bestiario.mjs` e entraram
@@ -3436,7 +3436,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   nomes cada, concordando nas duas direções.
 
 - [ ] **L50 · [FAZER] `gen-arte-equip.mjs` degrada em silêncio e pode apagar o CSS commitado.**
-  Achado colateral do L31 (rodada 20, `docs/simulacao/caixa/20-executora.md`), fora daquela
+  Achado colateral do L31 (rodada 21, `docs/simulacao/caixa/21-executora.md`), fora daquela
   frente porque não é sobre `--check`, é sobre o que o gerador faz quando a fonte falta.
 
   `gen-arte-equip.mjs` lê os atlas de `D&D/armas&armaduras/folhas`, pasta inteira fora do git
