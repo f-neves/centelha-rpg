@@ -86,13 +86,30 @@ const semRuido = (t) => t
  */
 const usa = (txt, n) => new RegExp(`(?:^|[^\\w$.'"]|\\.\\.\\.)${n}(?![\\w$])`).test(txt);
 
-/** As exportadas de um módulo, separando FUNÇÃO de constante. */
+/**
+ * As exportadas de um módulo, separando FUNÇÃO de constante.
+ *
+ * D15g (L34 §6, rodada 15): `export const cobreGolpe = (\n  acao...` tem os
+ * PARÊNTESES DOS ARGUMENTOS NA LINHA SEGUINTE, e a primeira versão só olhava
+ * `[^\n]*` (a MESMA linha do `export`) atrás de `=>`/`function`. `cobreGolpe`
+ * contava como exportada e não como função, e por isso nunca entrava em
+ * `SO_DA_MESA` nem em `NOS_DOIS`: ficava invisível para o portão inteiro,
+ * mesmo sendo chamada de verdade pela mesa. A emenda troca a janela: em vez
+ * da mesma linha, olha até o PRÓXIMO `export` de topo (ou o fim do arquivo),
+ * que é onde a declaração desta constante necessariamente acaba.
+ */
 function exportadasDe(fonte) {
   const todas = new Set();
   const funcoes = new Set();
-  for (const m of fonte.matchAll(/^export\s+(?:async\s+)?(function|const|let|class)\s+([A-Za-z_$][\w$]*)([^\n=]*=?[^\n]*)/gm)) {
+  const re = /^export\s+(?:async\s+)?(function|const|let|class)\s+([A-Za-z_$][\w$]*)/gm;
+  let m;
+  while ((m = re.exec(fonte))) {
     todas.add(m[2]);
-    if (m[1] === 'function' || /=>|\bfunction\b/.test(m[3] || '')) funcoes.add(m[2]);
+    if (m[1] === 'function') { funcoes.add(m[2]); continue; }
+    const restante = fonte.slice(re.lastIndex);
+    const proximoExport = restante.search(/^export\s/m);
+    const corpo = proximoExport >= 0 ? restante.slice(0, proximoExport) : restante;
+    if (/=>|\bfunction\b/.test(corpo)) funcoes.add(m[2]);
   }
   return { todas, funcoes };
 }
@@ -149,7 +166,7 @@ const importesMortos = (bruto, nomes) => {
  */
 const SO_DA_MESA = [
   'abortar', 'acaoVazia', 'adiaGolpe', 'anatomiaLivre', 'atrasarGesto',
-  'comOverride', 'combateDaMesa', 'ehSimultaneo',
+  'cobreGolpe', 'comOverride', 'combateDaMesa', 'custoInterporRecuperacao', 'ehSimultaneo',
   'fita', 'foraDeHora', 'interposicaoConsumida', 'modoCorre', 'podeSerInterrompido',
   'resumoDaAcao', 'rolaNoSite', 'tetoDaRajada',
   'ticksDeDeslocamento',
@@ -240,6 +257,19 @@ const HARNESS_FALSO = 'const y = L.nosDois(2);';
   const hEspalhado = chamadasNoHarness(e.todas, ['const z = { ...L.nosDois(c.acao) };']);
   if (!hEspalhado.has('nosDois')) {
     falhas.push('autoteste: `...L.nome` voltou a não contar como chamada do harness');
+  }
+  // D15g: `export const f = (\n  a,\n): T => ...`, os parênteses dos
+  // argumentos numa linha DEPOIS da que declara o nome (o formato real de
+  // `cobreGolpe`, achado na rodada do Interpor). A primeira versão do
+  // classificador só olhava a mesma linha do `export` e via isso como
+  // constante, não função.
+  const LIB_MULTILINHA = "export const setaMultilinha = (\n  a: number,\n  b: number,\n): boolean => a > b;\nexport const outraDepois = 1;";
+  const eMulti = exportadasDe(LIB_MULTILINHA);
+  if (!eMulti.funcoes.has('setaMultilinha')) {
+    falhas.push('autoteste: seta com parênteses na linha seguinte voltou a não contar como função (D15g)');
+  }
+  if (eMulti.funcoes.has('outraDepois')) {
+    falhas.push('autoteste: a janela do D15g vazou para a PRÓXIMA constante (outraDepois virou função por engano)');
   }
 }
 

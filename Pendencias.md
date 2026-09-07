@@ -1258,7 +1258,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   que fazia o carimbo valer: alguém que leia o perfil na hora de aplicar a regra.**
 
   O perfil é gravado, viaja no encontro, aparece na tela, é comparável e é recarimbável. E é lido
-  em **um** lugar do código de produção, `grid.astro:8970` (`perfil: { ...REGRAS_CENA }`), onde ele é copiado para dentro da
+  em **um** lugar do código de produção, `grid.astro:8975` (`perfil: { ...REGRAS_CENA }`), onde ele é copiado para dentro da
   entrada do lance, para o oráculo. `entrada.perfil` **não é consultado em lugar nenhum**: nem em
   `resolverGolpe`, nem em `quase-acerto.ts`, nem em `calc.ts`, nem no harness. Nenhuma das quinze
   bandeiras faz o motor tomar um caminho diferente.
@@ -1345,7 +1345,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   - o catálogo, 55 verbetes com número, em `src/data/condicoes.json`;
   - a soma: `export function somarCondicoes` (`src/lib/mesa-core.ts:164`);
-  - a leitura na folha do lance: `const cd = somarCondicoes` (`grid.astro:8643`);
+  - a leitura na folha do lance: `const cd = somarCondicoes` (`grid.astro:8648`);
   - o desconto chegando à Defesa: `alvo.condicoesDefesa` (`src/lib/lance.ts:159`);
   - a coluna: `add column if not exists condicoes` (`supabase/migracao-11.sql:25`);
   - e o RPC do jogador aceitando a chave: `condicoes` (`supabase/migracao-22.sql:125`).
@@ -1355,8 +1355,8 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   O diálogo saiu da aba Combate e virou três peças compartilhadas (`src/lib/mesa-condicoes.ts`,
   `src/components/CondDlg.astro`, e o estilo no `MesaCab.astro`). O que entrou no tabuleiro:
 
-  - o item no menu da peça: `item('condicoes'` (`grid.astro:7017`);
-  - o selo de ícones na lista lateral, que custa zero gestos: `const selo` (`grid.astro:6255`);
+  - o item no menu da peça: `condicoes', '◈ Condições'` (`grid.astro:7080`);
+  - o selo de ícones na lista lateral, que custa zero gestos: `const selo` (`grid.astro:6260`);
   - e a aba Combate chamando o mesmo módulo: `function abrirCondicoes` (`combate.astro:1740`), para
     não haver duas cópias divergindo no primeiro conserto que só uma receber.
 
@@ -1557,10 +1557,12 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   caixa**. Escolher "interpor" mudava só o verbo da frase do registro
   (`const verbo`, `src/lib/mesa-tempo-ui.ts:418`), e a saída escolhida era descartada pelo Grid, que
   gravava só a ação limpa, sem guardar qual golpe ela cobria (o estado ANTES da rodada que fechou
-  esta seção, mantido aqui porque é ele que explica a decisão). **IMPLEMENTADO nessa mesma rodada:**
-  a porta do Preparo agora exige escolher qual golpe no ar a interposição cobre
-  (`abortarGesto`, `grid.astro:6142`), e grava isso em `acao: nova` (`grid.astro:6153`), que carrega
-  `interpoe` quando há um golpe escolhido.
+  esta seção, mantido aqui porque é ele que explica a decisão). **IMPLEMENTADO nessa mesma rodada,
+  as duas portas:** a do Preparo exige escolher qual golpe no ar a interposição cobre, em
+  `abortarGesto` (`grid.astro:6142`), e grava isso em `acao: nova` (`grid.astro:6153`); a da
+  Recuperação reusa o mesmo candidato, em `candidatosParaInterpor` (`grid.astro:6234`), e o preço
+  sai de `custoInterporRecuperacao` (`src/lib/mesa-tempo-ui.ts:556`), travado no campo de
+  Velocidade em vez de digitado. As duas portas gravam a cobertura quando há um golpe escolhido.
 
   **O CAPÍTULO NÃO TEM UMA LINHA**, e é o primeiro fato do levantamento: `interpor`, `desviar` e
   **`abortar`** não aparecem em `src/content/chapters/` nenhuma vez. O Simultâneo dessa parte vive
@@ -1653,7 +1655,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **MAS ISTO NÃO FECHA O CASO À DISTÂNCIA, e a conferência pedida confirma a suspeita: não existe
   "linha do golpe" em lugar nenhum do combate mundano.** A das Artes usa `Math.hypot` entre dois pontos (`src/lib/artes-grid-mesa.ts:829`).
   A do ataque comum recebe a distância já pronta, num parâmetro chamado `metros` (`src/lib/alcance.ts:61`).
-  Quem a chama já calculou essa distância antes, com a variável `dist` (`src/pages/mesa/grid.astro:8763`).
+  Quem a chama já calculou essa distância antes, com a variável `dist` (`src/pages/mesa/grid.astro:8768`).
   As duas medem a mesma coisa: a distância entre um ponto e outro, nunca se um terceiro ponto está
   NA RETA entre os dois. Um arco de Alcance 30 m mediria "dentro do alcance" para qualquer peça a
   até 30 m do
@@ -1720,6 +1722,11 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   Recuperação (`:812`). Não há dois preços concorrentes para a mesma coisa: há duas portas de
   entrada com preços já escritos para o que cada uma é. **Nenhuma decisão nova precisa ser
   tomada aqui** — o trabalho é implementar as duas portas, não escolher uma.
+
+  **AS DUAS PORTAS ESTÃO IMPLEMENTADAS, na mesma rodada que fechou esta seção:** o preço do
+  Preparo (`combate.abortar.ticksPorMetro`) e o da Recuperação (`combate.interpor.recuperacao`,
+  lido por `custoInterporRecuperacao` em `src/lib/combate-tempo.ts`) chegam ao tabuleiro pelos
+  dois diálogos citados acima nesta seção.
 
 - [ ] **L35 · [DECISÃO DE MESA] A CRIATURA NÃO TEM PERÍCIA, E A COMPARAÇÃO DO GOLPE DO ESCURO
   FECHA PARA UM LADO SÓ** · *levantamento de 04/09/2026, contado nas 309.*
@@ -2613,7 +2620,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **O DEFEITO.** No Grid os dois papéis escrevem o mesmo campo por caminhos que não se conhecem.
 
   O jogador acrescenta pelo banco, e o banco lê a coluna e concatena lá dentro:
-  `SB.rpc('jogador_registra', { p_arena: ARENA.id, p_linha: linha })`, `grid.astro:10124`.
+  `SB.rpc('jogador_registra', { p_arena: ARENA.id, p_linha: linha })`, `grid.astro:10129`.
   O mestre grava o vetor inteiro da memória dele:
   `await SB.from('mesa_arenas').update({ log: LOG }).eq('id', ARENA.id);`, `grid.astro:10159`. **A linha que o jogador acabou de
   registrar some se o `LOG` do mestre for anterior a ela, sem erro nenhum.** É o caminho normal dos
@@ -2638,7 +2645,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | e enquanto o mestre está OCUPADO, a releitura é adiada | `RETENTAR_OCUPADO` × `MAX_ADIAMENTOS` | 700 × 30 = **~21 s** |
 
   **O piso é ~340 ms e o teto é ~21 segundos**, e o teto não é raro: `ocupado` inclui
-  `|| !el('tok-menu').hidden || !!document.querySelector('dialog[open]')`, `grid.astro:7555`, e
+  `|| !el('tok-menu').hidden || !!document.querySelector('dialog[open]')`, `grid.astro:7560`, e
   diálogo aberto é exatamente o estado do mestre no instante em que ele vai registrar (confirmar
   dano, confirmar acerto, pôr condição). **A janela larga acontece justamente quando ele está
   prestes a escrever.**
@@ -2658,10 +2665,10 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | gesto | o que faz hoje |
   |---|---|
   | `logar()` | empurra uma linha e grava o vetor |
-  | `desfazer()` | tira a última linha com `acao` (`LOG.splice(idx, 1);`, `grid.astro:10226`) e grava o vetor |
+  | `desfazer()` | tira a última linha com `acao` (`LOG.splice(idx, 1);`, `grid.astro:10231`) e grava o vetor |
   | `editarLinha(id)` | muda `txt`/`pub` de uma linha, e grava o vetor |
-  | `excluirLinha(id)` | tira por id (`LOG.splice(i, 1);`, `grid.astro:10321`) e grava o vetor |
-  | `refazerLogDosEfeitos()` | `LOG = LOG.filter((e: any) => !minha(e));` (`grid.astro:10372`) e empurra N linhas novas |
+  | `excluirLinha(id)` | tira por id (`LOG.splice(i, 1);`, `grid.astro:10326`) e grava o vetor |
+  | `refazerLogDosEfeitos()` | `LOG = LOG.filter((e: any) => !minha(e));` (`grid.astro:10377`) e empurra N linhas novas |
 
   **E UMA CORREÇÃO AO ENUNCIADO: não existe zerar no Grid.** O `LOG = []` é do `combate.astro`
   (`if (zLog) { LOG = []; await persistLog(); }`, `combate.astro:2058`), na caixa de reiniciar
@@ -3411,7 +3418,7 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   `arena_log` como tabela, uma linha por entrada, e o desfazer virando um `delete`.
 - [ ] **I5 · [FAZER] Um editor de cenário no Grid.** Hoje o mestre só põe peças: o tabuleiro não
   tem parede, terreno difícil nem item no chão, e o único veto de passo é casa ocupada
-  (`ocupadoPor`, `grid.astro:6877`). Decidido em 02/09/2026, ao desenhar o harness de simulação
+  (`ocupadoPor`, `grid.astro:6882`). Decidido em 02/09/2026, ao desenhar o harness de simulação
   (`docs/simulacao/02-projeto-harness.md` §0.4 P2): a **parede entra como funcionalidade**, e o
   encaixe já existe, porque `caminharHex` recebe um veto arbitrário (`hex.ts:131`). O terreno
   difícil tem gancho pronto e não usado: a condição `terreno-dificil` existe em `condicoes.json`

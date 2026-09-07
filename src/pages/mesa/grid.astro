@@ -6205,6 +6205,11 @@ const SETAS = [
         const nova: any = {
           ...declarar(T, an, { divida: r.divida, ...contrapeDe(c.acao) }),
           livre: r.novoTick,
+          // A COBERTURA (porta da Recuperação, item 6): mesmo campo que a
+          // porta do Preparo grava, só que aqui a ação nasce de novo (a
+          // Recuperação não guarda a agenda velha) e `interpoe` entra junto,
+          // em vez de sobrar de fora como sobrava antes de existir caminho.
+          ...(r.interpoe ? { interpoe: r.interpoe } : {}),
         };
         const { error } = await SB.from('combatentes')
           .update({ tick: r.novoTick, acao: nova }).eq('id', cid);
@@ -6226,7 +6231,7 @@ const SETAS = [
         pintarIniciativa(); pintarTokens(); pintarLista();
         avisarAgora('combatentes');
         await logar(c, `${r.frase} · livre no tick ${r.novoTick} (sairia no ${a.livre})`, { acao: null });
-      });
+      }, candidatosParaInterpor(c));
   }
 
   function pintarLista() {

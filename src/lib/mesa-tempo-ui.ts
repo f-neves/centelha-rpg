@@ -18,7 +18,7 @@ import { uiPainel, uiErro } from './ui-dialog';
 import {
   faseEm, fita, defesaPerdida, resumoDaAcao, acaoVazia, anatomia, declarar, abortar, foraDeHora,
   combateDaMesa, COMBATE_PADRAO, SISTEMAS, MARCACOES, ROLAGENS, FASE_ROTULO,
-  GOLPE_ADIADO, agendar, golpesNoAr, proximoGolpe, cobreGolpe,
+  GOLPE_ADIADO, agendar, golpesNoAr, proximoGolpe, cobreGolpe, custoInterporRecuperacao,
   type Acao, type Fase, type CombateMesa, type Sistema, type Marcacao, type Rolagem,
   type ClasseArma,
 } from './combate-tempo';
@@ -459,7 +459,19 @@ export function abrirForaDeHora(
   aoConfirmar: (r: {
     novoTick: number; divida: number; resta: number; velocidade: number; total: number;
     alvo: string | null; atrasaOAlvo: number; frase: string;
+    /** Só quando a interposição (porta da Recuperação) foi a escolha, e não a genérica. */
+    interpoe?: { aid: string; golpe: number; alvoOriginal: string } | null;
   }) => void | Promise<void>,
+  /**
+   * OS GOLPES QUE ESTE INTERPOSITOR PODE COBRIR na Recuperação (L34 §6, item
+   * 6, porta 2 de 2). Mesmo tipo e mesma proveniência que a lista da porta do
+   * Preparo (`abrirAbortar`): quem monta é o Grid, que é dono do tabuleiro.
+   *
+   * "Se interpor" aqui é UMA das ações fora de hora do catálogo (§4.3), não
+   * uma terceira coisa: continua sendo "uma por ação", e por isso ocupa o
+   * mesmo slot que a reação genérica, nunca os dois juntos.
+   */
+  interporCandidatos: CandidatoInterpor[] = [],
 ) {
   const { nome, acao, tick } = quem;
   const base = foraDeHora(acao, tick, quem.velocidade);
@@ -476,11 +488,39 @@ export function abrirForaDeHora(
     <p class="tempo-intro">${esc(nome)} está na <b>Recuperação</b>: o golpe já saiu, e não há mais
       o que abortar. O que cabe aqui é <b>pagar</b> · a Velocidade da ação vai empurrada para o
       próprio futuro, <b>a guarda não se refaz</b>, e é <b>uma por ação</b>.</p>
-    <label class="ab-m">Velocidade da reação
+    <label class="ab-m" id="fh-vel-lbl">Velocidade da reação
       <input type="number" id="fh-vel" min="0" step="1" value="${base.velocidade}" />
       <small>O que a ação nova custa. Vem da arma dele; mude se a reação for outra coisa.</small>
     </label>
-    ${interrompiveis.length ? `<div class="rev-h">Interromper alguém?</div>
+    <label class="rev-op tempo-chave" title="Interpor-se entre o golpe e um aliado (§4.3): a distância em metros, com piso de 2 Ticks.">
+      <input type="checkbox" id="fh-interpor-chk" />
+      <span class="rev-op-corpo">
+        <span class="rev-op-t">Se interpor</span>
+        <span class="rev-op-d">Em vez de reagir, entra na frente de um golpe agendado contra um
+          aliado. É a MESMA ação fora de hora (uma por ação), só com outro preço: a distância em
+          metros, com piso de 2 Ticks.</span>
+      </span>
+    </label>
+    <div id="fh-interpor-cx" hidden>
+      <label class="ab-m">Metros percorridos
+        <input type="number" id="fh-interpor-m" min="0" step="1" value="0" />
+        <small>1 Tick por metro, com piso de 2 — quem já está perto ainda paga 2.</small>
+      </label>
+      <div class="rev-h">Contra qual golpe</div>
+      ${interporCandidatos.length ? `<p class="tempo-nota">Vale para ESTE golpe, e só ele: um
+          segundo no mesmo Tick cai sem cobertura.</p>
+        <div class="rev-ops">${interporCandidatos.map((c, i) => `<label class="rev-op"${
+          c.pode ? '' : ' aria-disabled="true"'} title="${esc(c.porque || '')}">
+          <input type="radio" name="fh-interpor-golpe" value="${i}"${c.pode ? '' : ' disabled'}${
+            c.pode && !interporCandidatos.slice(0, i).some((x) => x.pode) ? ' checked' : ''} />
+          <span class="rev-op-corpo">
+            <span class="rev-op-t">${esc(c.nomeAgressor)} → ${esc(c.nomeAlvo)}</span>
+            <span class="rev-op-d">${c.pode ? `Tick ${c.golpe}` : esc(c.porque)}</span>
+          </span>
+        </label>`).join('')}</div>`
+        : '<p class="muted">Ninguém está sob um golpe agendado ao seu alcance agora: não há o que cobrir.</p>'}
+    </div>
+    <div id="fh-interromper-cx">${interrompiveis.length ? `<div class="rev-h">Interromper alguém?</div>
       <div class="rev-ops">
         <label class="rev-op"><input type="radio" name="fh-alvo" value="" checked />
           <span class="rev-op-corpo"><span class="rev-op-t">Ninguém</span>
@@ -491,7 +531,7 @@ export function abrirForaDeHora(
           <span class="rev-op-d">Está montando o gesto. Interromper atrasa o gesto dele em tantos
             Ticks quantos ${esc(nome)} pagar.</span></span></label>`).join('')}
       </div>` : `<p class="muted">Ninguém está em Preparo agora, então não há quem interromper:
-        só quem está montando o gesto pode ser interrompido.</p>`}
+        só quem está montando o gesto pode ser interrompido.</p>`}</div>
     <div class="acao-conta" id="fh-res"></div>
     <div class="ui-dlg-btns">
       <button type="button" class="btn" id="fh-cancelar">Cancelar</button>
@@ -499,16 +539,37 @@ export function abrirForaDeHora(
     </div>`;
 
   const inp = corpo.querySelector('#fh-vel') as HTMLInputElement;
-  const vel = () => Math.max(0, parseInt(inp.value || '0', 10) || 0);
+  const velLbl = corpo.querySelector('#fh-vel-lbl') as HTMLElement;
+  const cxInterpor = corpo.querySelector('#fh-interpor-cx') as HTMLElement;
+  const cxInterromper = corpo.querySelector('#fh-interromper-cx') as HTMLElement;
+  const chkInterpor = corpo.querySelector('#fh-interpor-chk') as HTMLInputElement;
+  const inpMetros = corpo.querySelector('#fh-interpor-m') as HTMLInputElement;
+  const metros = () => Math.max(0, parseInt(inpMetros.value || '0', 10) || 0);
+  const golpeEscolhido = () => {
+    const v = (corpo.querySelector('input[name="fh-interpor-golpe"]:checked') as HTMLInputElement)?.value;
+    return v != null ? interporCandidatos[parseInt(v, 10)] : null;
+  };
+  // A VELOCIDADE, NO MODO INTERPOR, NÃO SE DIGITA: sai da régua
+  // (`custoInterporRecuperacao`), do mesmo jeito que o resto da mesa nunca
+  // calcula o próprio preço. O campo continua existindo (é ele que
+  // `foraDeHora` lê), só que travado.
+  const vel = () => (chkInterpor.checked ? custoInterporRecuperacao(metros()) : Math.max(0, parseInt(inp.value || '0', 10) || 0));
   const alvoId = () => (corpo.querySelector('input[name="fh-alvo"]:checked') as HTMLInputElement)?.value || '';
   const alvoDe = (id: string) => interrompiveis.find((x) => x.id === id) || null;
-  const conta = () => foraDeHora(acao, tick, vel(), { alvo: alvoDe(alvoId())?.acao ?? null });
+  const conta = () => foraDeHora(acao, tick, vel(), { alvo: chkInterpor.checked ? null : (alvoDe(alvoId())?.acao ?? null) });
+  const btnOk = corpo.querySelector('#fh-ok') as HTMLButtonElement;
   const pintar = () => {
+    const ehInterpor = chkInterpor.checked;
+    cxInterpor.hidden = !ehInterpor;
+    cxInterromper.hidden = ehInterpor;
+    velLbl.hidden = ehInterpor;
+    inp.value = ehInterpor ? String(vel()) : inp.value;
     const r = conta();
-    const alvo = alvoDe(alvoId());
+    const alvo = ehInterpor ? null : alvoDe(alvoId());
+    const golpe = ehInterpor ? golpeEscolhido() : null;
     (corpo.querySelector('#fh-res') as HTMLElement).innerHTML =
       `<div><b>${r.resta}</b> Tick(s) do ciclo que ele deixa de cumprir · viram <b>dívida</b></div>`
-      + `<div><b>${r.velocidade}</b> Tick(s) da ação nova · o preço de sempre dela</div>`
+      + `<div><b>${r.velocidade}</b> Tick(s) ${ehInterpor ? 'para se interpor' : 'da ação nova'} · o preço de sempre dela</div>`
       + `<div>Fica livre no <b>Tick ${r.novoTick}</b> <span class="muted">(${tick} + ${r.total})</span>`
       + `, contra o Tick ${acao.livre} se esperasse.</div>`
       + (r.atrasaOAlvo && alvo
@@ -516,20 +577,31 @@ export function abrirForaDeHora(
           + ` <span class="muted">(golpe no ${alvo.acao.golpes[0] ?? '—'} → ${
             alvo.acao.golpes.length ? alvo.acao.golpes[0] + r.atrasaOAlvo : '—'})</span>.</div>`
         : '');
+    // SEM GOLPE VÁLIDO ESCOLHIDO, NÃO HÁ CONFIRMAR (o mesmo "não sei" da
+    // porta do Preparo): interpor sem dizer contra o quê não é interpor.
+    btnOk.disabled = ehInterpor && (!interporCandidatos.some((c) => c.pode) || !golpe?.pode);
   };
   inp.oninput = pintar;
+  inpMetros.oninput = pintar;
+  chkInterpor.onchange = pintar;
   corpo.querySelectorAll('input[name="fh-alvo"]').forEach((r) => ((r as HTMLElement).onclick = pintar));
+  corpo.querySelectorAll('input[name="fh-interpor-golpe"]').forEach((r) => ((r as HTMLElement).onclick = pintar));
   pintar();
 
   (corpo.querySelector('#fh-cancelar') as HTMLElement).onclick = () => fechar();
-  (corpo.querySelector('#fh-ok') as HTMLElement).onclick = async () => {
+  btnOk.onclick = async () => {
     const r = conta();
-    const alvo = alvoDe(alvoId());
+    const alvo = chkInterpor.checked ? null : alvoDe(alvoId());
+    const golpe = chkInterpor.checked ? golpeEscolhido() : null;
     fechar();
     await aoConfirmar({
       novoTick: r.novoTick, divida: r.divida, resta: r.resta, velocidade: r.velocidade,
       total: r.total, alvo: alvo?.id ?? null, atrasaOAlvo: r.atrasaOAlvo,
-      frase: `${nome} agiu fora da vez${alvo && r.atrasaOAlvo ? `, interrompendo ${alvo.nome}` : ''}`
+      interpoe: golpe ? { aid: golpe.aid, golpe: golpe.golpe, alvoOriginal: golpe.alvoOriginal } : null,
+      frase: golpe
+        ? `${nome} se interpôs entre o golpe de ${golpe.nomeAgressor} e ${golpe.nomeAlvo}`
+          + ` · pagou ${r.total} Tick(s)${r.divida ? ` (${r.divida} de dívida)` : ''}`
+        : `${nome} agiu fora da vez${alvo && r.atrasaOAlvo ? `, interrompendo ${alvo.nome}` : ''}`
         + ` · pagou ${r.total} Tick(s)${r.divida ? ` (${r.divida} de dívida)` : ''}`
         + `${alvo && r.atrasaOAlvo ? ` · o gesto de ${alvo.nome} atrasou ${r.atrasaOAlvo} Tick(s)` : ''}`,
     });
