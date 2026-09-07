@@ -1950,24 +1950,34 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `comment on view`, pela migração 31. Documento longe do objeto envelhece; comentário ao lado
   dele não.
 
-- [ ] **L31 · [FAZER] OS SETE GERADORES SEM `--check`** · *achado varrendo portões, 04/09/2026,
-  pela pergunta "o que mais está configurado e não roda".*
+- [x] **L31 · [FECHADO em 07/09/2026] OS SETE GERADORES SEM `--check`** · *achado varrendo
+  portões, 04/09/2026, pela pergunta "o que mais está configurado e não roda".*
 
-  Cinco geradores têm `--check` no `npm run build`, e é ele que impede o arquivo gerado de
-  divergir da fonte sem ninguém ver (`gen-grid-artes`, `gen-mermaid`, `gen-bestiario`,
-  `gen-cap-antecedentes`, `gen-bench-tempo`). **Sete não têm nem isso nem lugar em portão
-  nenhum:** `gen-cap-pericias`, `gen-elementos`, `gen-deslocamento`, `gen-arte-equip`,
-  `gen-lista-equip`, `gen-creditos-equip`, `gen-prompts-folhas`.
+  Cinco geradores tinham `--check` no `npm run build` (`gen-grid-artes`, `gen-mermaid`,
+  `gen-bestiario`, `gen-cap-antecedentes`, `gen-bench-tempo`); sete não tinham nem isso nem
+  lugar em portão nenhum. Fechado assim, gerador por gerador, pela Executora
+  (`docs/simulacao/caixa/20-executora.md`):
 
-  **O mais grave é o `gen-cap-pericias.mjs`**, e por dois motivos que se somam: o `CLAUDE.md`
-  manda rodá-lo à mão depois de mexer nos JSONs de habilidades ("catálogos de perícias nos
-  capítulos são gerados, não escritos à mão"), e nada confere se alguém esqueceu. O capítulo II
-  pode estar descrevendo uma perícia que o JSON não tem mais, com o build verde, que é
-  exatamente o desacordo que o `--check` do bestiário existe para pegar.
-
-  **É a mesma família do smoke que nunca passou**: instrumento que existe, não roda, e a
-  ausência dele não faz barulho. A diferença é que aqui o custo do conserto é uma linha por
-  gerador, contanto que cada um saiba comparar em vez de só escrever.
+  - `gen-elementos.mjs` e `gen-deslocamento.mjs`: bateram limpo contra o commitado
+    (regeneração idempotente). Ganharam `--check` no padrão do `gen-bestiario.mjs` e entraram
+    no `npm run validate`.
+  - `gen-arte-equip.mjs`, `gen-lista-equip.mjs`, `gen-creditos-equip.mjs`,
+    `gen-prompts-folhas.mjs`: **não cabem em `--check`**, por um motivo estrutural que a
+    pendência original não previa. `gen-arte-equip` lê de `D&D/armas&armaduras/folhas`, e os
+    outros três ESCREVEM dentro de `D&D/armas&armaduras/` — a pasta inteira está fora do git
+    (`.gitignore:25`). Sem entrada ou sem saída versionada, não há o que um `--check` compare
+    contra o commitado: ele passaria na máquina de quem tem a pasta local e falharia sempre no
+    CI (ou não mediria nada). Mesma família do `gen-monsters.mjs`, que já tinha essa exceção.
+    Ficam declarados em `GERADORES_FORA` (`scripts/test-portoes.mjs`), com o motivo real.
+  - `gen-cap-pericias.mjs`: achada uma divergência real entre `habilidades.json:809` ("manobra")
+    e o capítulo publicado (`habilidades.md`, "firula"), rastreada aos commits `3a7c7e9` e
+    `ac71ade` (renomeação do termo de jogo Manobra→Firula, 17-18/08/2026). Se é a fonte que
+    ficou para trás ou o capítulo que herdou uma troca ampla demais é escolha de palavra em
+    prosa publicada, não decisão de engenharia: **virou item [DECIDIR] à parte**, levado ao
+    usuário pelo TechLead. Nenhum dos dois lados (JSON ou capítulo) foi tocado até a decisão.
+  - O achado colateral do `gen-arte-equip.mjs` (degrada em silêncio quando a pasta de origem
+    falta, e pode sobrescrever o CSS commitado com saída quase vazia) virou **L50**, registrado
+    à parte por não ser desta pendência.
 
 - [ ] **L30 · [FAZER] OS DEZ MÓDULOS FORA DE TODO PACOTE DE TESTE** · *o mapa está em
   `scripts/mapa-cobertura.mjs`, e ele se refaz sozinho: `node scripts/mapa-cobertura.mjs`.*
@@ -3424,6 +3434,21 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   `CONTEXTO.md` descreve (decisão/trabalho fechado que não está no índice único). Confirmado
   rodando `node scripts/test-portoes.mjs` em 07/09/2026: item 6 verde, matriz e smoke com 9
   nomes cada, concordando nas duas direções.
+
+- [ ] **L50 · [FAZER] `gen-arte-equip.mjs` degrada em silêncio e pode apagar o CSS commitado.**
+  Achado colateral do L31 (rodada 20, `docs/simulacao/caixa/20-executora.md`), fora daquela
+  frente porque não é sobre `--check`, é sobre o que o gerador faz quando a fonte falta.
+
+  `gen-arte-equip.mjs` lê os atlas de `D&D/armas&armaduras/folhas`, pasta inteira fora do git
+  (`.gitignore:25`), e escreve `src/styles/arte-equip.css`, que É rastreado. Quando uma folha não
+  é encontrada (`:60`-`63`), o script só empilha o id em `faltando` e segue (`continue`); no fim,
+  avisa no `console.log` (`:114`-`116`) mas termina com `exit 0` de qualquer jeito. Num clone
+  limpo, sem a pasta `D&D/`, TODAS as folhas caem em `faltando`: o script roda sem erro, escreve
+  um `arte-equip.css` só com o cabeçalho (nenhuma peça, nenhuma classe `.arte-*`), e `npm run
+  build` grava esse arquivo quase vazio por cima do CSS de verdade, sem nada denunciar — mesmo
+  padrão do B12 (silêncio onde devia haver erro alto). Não corrigido ainda: o conserto é trocar o
+  aviso por um `throw` quando `faltando.length === plano.folhas.length` (ou quando `porClasse`
+  sai vazio), e não é desta rodada.
 
 ## H. Arremesso
 
