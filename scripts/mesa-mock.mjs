@@ -95,8 +95,13 @@ const CAIDO_LONGE = P.get('longe') === '1';
 // Ver o bloco `if (BANDEIRAS)` mais abaixo para o porquê de cada peça.
 const BANDEIRAS = P.get('cena') === 'bandeiras';
 
-const COLS = ESPELHO ? ESPELHO.tab.cols : CAIDO ? 14 : BANDEIRAS ? 10 : parseInt(P.get('cols') || '24', 10);
-const ROWS = ESPELHO ? ESPELHO.tab.rows : CAIDO ? 8 : BANDEIRAS ? 8 : parseInt(P.get('rows') || '16', 10);
+// A CENA DO INTERPOR: `?cena=interpor` (L34 §6, rodada 15/16).
+//
+// Ver o bloco `if (INTERPOR)` mais abaixo para o porquê de cada peça.
+const INTERPOR = P.get('cena') === 'interpor';
+
+const COLS = ESPELHO ? ESPELHO.tab.cols : CAIDO ? 14 : BANDEIRAS ? 10 : INTERPOR ? 10 : parseInt(P.get('cols') || '24', 10);
+const ROWS = ESPELHO ? ESPELHO.tab.rows : CAIDO ? 8 : BANDEIRAS ? 8 : INTERPOR ? 8 : parseInt(P.get('rows') || '16', 10);
 const NEVOA = P.get('nevoa') === '1';
 /**
  * `?sombra=1`: DUAS zonas que não acendem o chão, para a névoa poder escondê-las.
@@ -541,6 +546,101 @@ if (BANDEIRAS) {
       // `caido` faz; as criaturas ficam livres, porque só levam o golpe.
       acao: p.alvo ? golpe(p.alvo) : {},
       dados: p.tipo === 'pc' ? { ...numeros } : {},
+      condicoes: [], ativo: true, oculto: false, imagem: null, retrato: null,
+    });
+    TOKENS.push({
+      arena_id: ARENA, combatente_id: p.id, q: p.q, r: p.r,
+      movido_em: new Date(1700000000000 + (k++) * 1000).toISOString(),
+    });
+  }
+}
+
+/**
+ * A CENA DO INTERPOR `?cena=interpor`: o golpe adiado que fica no ar, e um
+ * terceiro token pronto para cobri-lo (L34 §6, decidido em 07/09/2026,
+ * implementado na rodada 15, prova pedida pela Revisora na rodada 16).
+ *
+ * TRÊS PEÇAS, TRÊS PAPÉIS, e nenhuma decoração:
+ *
+ *   `atk` · o agressor. Espada Longa (corpo a corpo), com o golpe JÁ
+ *     AGENDADO contra `alvo` (`aResolver: [3]`, como a cena `bandeiras` já
+ *     faz para não depender de o teste declarar ao vivo pela tela), com
+ *     `ataque: '0d6+50'` (sem dado, bônus grande demais para qualquer Defesa
+ *     razoável errar por acaso: o que este teste mede é o REDIRECIONAMENTO
+ *     do dano, não a sorte do dado de acerto) e `dano: '3d6+21'` (com dado de
+ *     verdade, porque o teste lê o total rolado no próprio texto da rolagem).
+ *   `alvo` · o alvo ORIGINAL do golpe. Defesa 12 (a que o acerto tem de
+ *     vencer, decisão do item 1: nenhum novo teste de acerto) e Absorção 3,
+ *     DIFERENTE da do interpositor, de propósito: se o teste confundisse as
+ *     duas Absorções, o dano líquido bateria com as duas contas por acidente.
+ *   `interp` · quem vai se interpor. Adjacente a `atk` (alcance corpo a
+ *     corpo), Absorção 9 (a outra metade do par acima), e já em PREPARO de
+ *     um gesto qualquer (`golpes: [20]`): é essa fase que abre o `✋
+ *     Abortar` no menu dele, a porta que a régua fechou para a interposição.
+ *
+ * PV 999 nos dois que podem levar o golpe: descontar 9 ou 3 de um dano de
+ * ~30 nunca chega a zero, e a asserção fica livre de se preocupar com Vida
+ * negativa.
+ *
+ * NENHUM DOS TRÊS TEM `personagem_id`: são PCs "figurantes", com `dados`
+ * escrito à mão (o mesmo caminho que `resumoDe`/`baseResumo` já usa para uma
+ * peça sem ficha de verdade: `base` sai nulo e `ov` vence sozinho). Não
+ * reusa `resumoCombatePC`/KAEL como a cena `bandeiras`: aqui os TRÊS números
+ * que decidem a asserção (ataque, as duas Absorções) precisam ser exatos e
+ * visíveis nesta lista, não derivados de uma ficha que o teste teria de abrir
+ * para conferir.
+ */
+if (INTERPOR) {
+  const qaNeutro = { armaBonus: 0, armaDano: 0, armaduraBonus: 0, armaduraReducao: 0, armaduraClasses: [] };
+  COMBS.length = 0; TOKENS.length = 0;
+  const por = [
+    {
+      id: 'atk', q: 5, r: 5, alvo: 'alvo',
+      dados: {
+        // O ACERTO É SEM DADO (`0d6+50`): o que este cenário mede é o
+        // REDIRECIONAMENTO do dano, não a sorte do dado, e um bônus fixo
+        // grande demais para qualquer Defesa razoável garante o acerto sem
+        // depender de semente. O DANO TEM DADO DE VERDADE (`3d6+21`), de
+        // propósito: o teste lê o total rolado no próprio texto da rolagem
+        // (`al-dn-pool`), então a semente não precisa ser adivinhada.
+        arma: 'espada-longa', ataque: '0d6+50', dano: '3d6+21', defesa: 10,
+        soak: { impacto: 0, corte: 0, perfuracao: 0 }, velocidade: 6, classe: 'media', qa: qaNeutro,
+      },
+    },
+    {
+      id: 'alvo', q: 5, r: 7, alvo: null,
+      dados: {
+        arma: 'espada-curta', ataque: '1d6+2', dano: '1d6+1', defesa: 12,
+        soak: { impacto: 3, corte: 3, perfuracao: 3 }, velocidade: 5, classe: 'leve', qa: qaNeutro,
+      },
+    },
+    {
+      id: 'interp', q: 6, r: 5, alvo: null,
+      dados: {
+        arma: 'adaga', ataque: '1d6+2', dano: '1d6+1', defesa: 12,
+        soak: { impacto: 9, corte: 9, perfuracao: 9 }, velocidade: 5, classe: 'leve', qa: qaNeutro,
+      },
+    },
+  ];
+  let k = 0;
+  for (const p of por) {
+    const acaoAtk = p.id === 'atk'
+      ? { golpes: [3], livre: 8, desde: 0, tipo: 'simples', arma: p.dados.arma, alvo: p.alvo, aid: 'gtesteinterpor', aResolver: [3] }
+      // `interp` NASCE EM PREPARO (golpe daqui a 20 Ticks): é o que faz
+      // `podeAbortar` ligar o item "✋ Abortar" no menu dele, a porta de
+      // entrada da interposição que este cenário testa.
+      : p.id === 'interp'
+        ? { golpes: [20], livre: 25, desde: 0, tipo: 'simples', arma: p.dados.arma }
+        : {};
+    COMBS.push({
+      id: p.id, encontro_id: ENC, nome: p.id === 'atk' ? 'Agressor' : p.id === 'alvo' ? 'Alvo original' : 'Interpositor',
+      tipo: 'pc', grupo: p.id === 'atk' ? 'inimigo' : 'aliado',
+      monstro_id: null, personagem_id: null,
+      pv_max: 999, pv_atual: 999,
+      mana_max: null, mana_atual: null,
+      tick: 0, iniciativa: 20 - k,
+      acao: acaoAtk,
+      dados: p.dados,
       condicoes: [], ativo: true, oculto: false, imagem: null, retrato: null,
     });
     TOKENS.push({
