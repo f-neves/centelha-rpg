@@ -2472,9 +2472,10 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   construir: não é "no primeiro carregamento", é **no primeiro Tick que o mestre andar** · ver o
   porquê lá em cima.
 
-- [ ] **L39 · [NÃO AGORA] Os 9 Efeitos que declaram uma condição e não a aplicam** · *achado em
-  05/09/2026, no levantamento da L38. Registrado com o enquadramento porque é ele que decide o
-  conserto, e o conserto não é hoje.*
+- [x] **L39 · [FEITO em 07/09/2026, rodada 19] Os 9 Efeitos que declaram uma condição e não a
+  aplicam** · *achado em 05/09/2026, no levantamento da L38. Registrado com o enquadramento
+  porque foi ele que decidiu o conserto: separar `grid.condicao` (motor, 57 Efeitos) de
+  `grid.condicaoAparente` (só classificação, os 9).*
 
   Nove Efeitos têm `grid.forma: "nenhuma"` **e** `grid.condicao` preenchida. Esse caminho registra
   no log e retorna (`if (forma === 'nenhuma')`, `src/lib/artes-grid-mesa.ts:779`), então a condição
@@ -2594,7 +2595,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `conjurar`, fora do escopo desta frente.
 
   **CLASSIFICA/EXIBE, quatro blocos, atualizados para ler `ef.condicao || ef.condicaoAparente`
-  (fechado, ver `docs/simulacao/caixa/18-executora.md`):**
+  (fechado, ver `docs/simulacao/caixa/19-executora.md`):**
   `src/lib/artes-grid-mesa.ts:458` (`const condId = ef.condicao || ef.condicaoAparente;`);
   `:1836` (`const condId = p.ef.condicao || p.ef.condicaoAparente;`, texto de log);
   `src/lib/artes-grid.ts:1496`-`1497` (`if (ef.condicao && alvos.length) {`) — a prévia só entra se
@@ -2611,11 +2612,20 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **VALIDADOR, confere os DOIS campos depois do split (fechado):** `scripts/validate-data.mjs:170` (`if (g.condicao && !COND_IDS.has(g.condicao))`), mais o invariante
   `(g.forma === 'nenhuma') === (g.alvo === 'nenhum')` logo abaixo, na mesma função.
 
-  **O que isto muda no split decidido acima:** os sete blocos de MOTOR não precisam de auditoria
-  individual, um a um — a conferência acima já é a prova, e ela é sobre o despacho da conjuração
-  (`:798`) e `gravarEfeito` (`:1324`), não sobre o `:1808`. O trabalho real que falta é escrever os
-  dois testes descritos acima (invariante de dado + par de asserções comportamentais) e atualizar
-  `validate-data.mjs` para o campo novo.
+  **O que isto mudou no split:** os sete blocos de MOTOR não precisaram de auditoria individual,
+  um a um — a conferência acima já era a prova, e ela é sobre o despacho da conjuração (`:798`) e
+  `gravarEfeito` (`:1324`), não sobre o `:1808`.
+
+  **IMPLEMENTADO em 07/09/2026 (rodada 19, commits `0762926`/`4058b4c`/`bdc9680` + `7e56946`,
+  aviso em `docs/simulacao/caixa/19-executora.md`).** Os dois testes, o split em `efeitos.json`,
+  o validador e os quatro blocos de exibição, todos fechados (ver acima). D19c/D19 achou de
+  quebra um bug real e sem relação com o L39: `scripts/rodada.mjs` apontava para um worktree de
+  revisora antigo (`centelha-revisora`, sem `techlead-`, parado na rodada 14 de uma equipe
+  anterior) e calculava um `BASE` errado, silencioso, sem falhar. Corrigido em `rodada.mjs`
+  (`4058b4c`) e no mesmo hardcode de `scripts/duo.mjs` (`7e56946`, decisão do TechLead, mesmo
+  conserto). **Ainda sem teste, antes e depois desta rodada:** a proteção PRINCIPAL dos 9 Efeitos
+  (o despacho de `conjurar` nunca deixar `forma === 'nenhuma'` chegar em `gravarEfeito`) — provar
+  exigiria harness de navegador para `conjurar`, outra frente.
 
 - [ ] **L40 · [MITIGADO EM 05/09/2026 · O CONSERTO É A MIGRAÇÃO 34] O registro do jogador que o
   mestre apaga sem saber** · *só o Grid. A metade que não depende de migração está no ar; a que
