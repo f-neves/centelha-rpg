@@ -1343,6 +1343,9 @@ async function cenaJogadorNevoa(br, url) {
       // O aviso do chão da cena, que é a degradação quando o relógio não chega.
       aviso: (document.getElementById('gr-carimbo')?.hidden === false
         ? document.getElementById('gr-carimbo').textContent : ''),
+      // O relógio da FILA (P/G/R e normal): `tickDaVez()`/`golpeMaisCedo()`,
+      // escritos no mesmo lugar que a rodada lê (`pintarIniciativa`).
+      ini_tk: document.getElementById('ini-tk')?.textContent,
     }));
     await p.close();
     return d;
@@ -1456,6 +1459,35 @@ async function cenaJogadorNevoa(br, url) {
     `errando para o lado seguro: o escuro fica fechado (${base5.claras} -> ${velho.claras})`);
   ok(/rel[oó]gio/i.test(velho.aviso), `e o chao da cena diz o que falta ("${velho.aviso}")`);
 
+  // ---- O RELOGIO DA FILA (P/G/R), o mesmo par de asserção, sem Simultâneo ----
+  //
+  // No Simultâneo o relógio é o `tick_atual`, provado acima. No P/G/R (e no
+  // normal) ele é `tickDaVez()`/`golpeMaisCedo()`, derivados do `tick` e do
+  // `acao.golpes` de CADA peça, e a bancada padrão nasce com os dois em
+  // zero: `tickDaVez() === 0` e `golpeMaisCedo() === 0` na mesma cena, e
+  // zero é de novo o número que uma máscara quebrada devolveria por engano
+  // (`c.tick ?? 0`). Sem separar isso de zero, "o jogador calcula o mesmo
+  // relógio que o mestre" nunca foi provado no P/G/R, só nunca foi
+  // falsificado por acaso: é a lacuna que o levantamento da Fase 2.5 achou
+  // (`docs/simulacao/caixa/24-executora.md`, citando o próprio comentário
+  // de `SIM5` acima).
+  //
+  // `?deslocafila=N` (scripts/mesa-mock.mjs) anda o `tick`/`acao.golpes` de
+  // TODA peça em N, separado de propósito de `?tick=` (que só anda a arena,
+  // e só importa no Simultâneo, testado acima). O PAR: dois deslocamentos
+  // diferentes, e o número do jogador tem de mudar JUNTO com o do mestre
+  // nos dois: se ficasse parado, ou sempre igual ao do mestre por
+  // coincidência de um só valor, a prova não separaria nada.
+  const pgrM10 = await abrir(null, 'mestre', '&deslocafila=10');
+  const pgrJ10 = await abrir(null, 'jogador', '&deslocafila=10');
+  const pgrM17 = await abrir(null, 'mestre', '&deslocafila=17');
+  const pgrJ17 = await abrir(null, 'jogador', '&deslocafila=17');
+  ok(pgrM10.ini_tk === '10', `o mestre sai do Tick 0 com o deslocamento, no P/G/R (${pgrM10.ini_tk})`);
+  ok(pgrJ10.ini_tk === pgrM10.ini_tk,
+    `e o jogador calcula o MESMO relógio que o mestre (${pgrM10.ini_tk} -> ${pgrJ10.ini_tk})`);
+  ok(pgrM17.ini_tk === '17' && pgrJ17.ini_tk === '17' && pgrJ17.ini_tk !== pgrJ10.ini_tk,
+    `e muda junto com um segundo deslocamento, não é um número parado (${pgrJ10.ini_tk} -> ${pgrJ17.ini_tk})`);
+
   // ---- O MESTRE, do outro lado da mesma regra ----
   //
   // Ele LE `arena_efeitos` inteiro, entao a linha em montagem chega ao navegador
@@ -1519,6 +1551,41 @@ async function cenaRastreador(br, url) {
   ok(clique === 1, `clicar num cartão acende o card cheio dele (${clique})`);
   ok(erros.length === 0, `nenhum erro de página (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
   await p.close();
+
+  // ---- O RELOGIO DESTA ABA, no Simultaneo: e o da ARENA, nao o da FILA ----
+  //
+  // Ate a rodada 25 `AGORA` aqui saia sempre de `emCampo[0].tick` (o tick de
+  // quem esta na FRENTE da fila), em todo sistema, sem excecao. No P/G/R e
+  // no normal isso e a definicao certa (quem tem o tick menor age primeiro).
+  // No Simultaneo NAO E: uma peca LIVRE fica parada nesse campo enquanto
+  // `tick_atual` anda (so quem tem golpe/movimento em curso tem o `tick`
+  // regravado, em `avancarTickSimultaneo`, grid.astro), entao a fila para e
+  // a arena nao. Achado no levantamento da Fase 2.5 (rodada 24,
+  // `docs/simulacao/caixa/24-executora.md`): com a bancada padrao
+  // (`?tick=5&tempo=simultaneo`) esta aba mostrava Tick 0 contra
+  // `tick_atual` 5 no Grid, para os DOIS lados da mesa (mestre e jogador).
+  const abrirCombateSim = async (papel) => {
+    const q = await br.newPage();
+    const erros2 = [];
+    q.on('pageerror', (e) => erros2.push(e.message));
+    await q.goto(`${url}/mesa/combate?id=${MESA}&bench=12&papel=${papel}&tick=5&tempo=simultaneo`,
+      { waitUntil: 'networkidle0', timeout: 60000 });
+    await q.waitForSelector('#enc-tick', { timeout: 30000 });
+    const dd = await q.evaluate(() => ({
+      tick: document.getElementById('enc-tick')?.textContent,
+      tick_atual: (window.__SB?.tabelas?.encontro_visao
+        || window.__SB?.tabelas?.encontros || [])[0]?.tick_atual,
+    }));
+    await q.close();
+    return { ...dd, erros: erros2 };
+  };
+  const simMestre = await abrirCombateSim('mestre');
+  const simJogador = await abrirCombateSim('jogador');
+  ok(simMestre.tick_atual === 5, `a arena real esta no Tick 5 (${simMestre.tick_atual})`);
+  ok(simMestre.tick === '5',
+    `e o mestre le o relogio da ARENA no Simultaneo, nao o da fila (${simMestre.tick})`);
+  ok(simJogador.tick === '5', `e o jogador tambem (${simJogador.tick})`);
+  ok(simMestre.erros.length === 0 && simJogador.erros.length === 0, 'nenhum erro de pagina no par do Simultaneo');
 }
 
 /**

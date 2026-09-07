@@ -1724,7 +1724,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `619c317`):** a Revisora rodou os dois cenários ao vivo (34 asserções, não só leu o código) e
   confirma que a conferência em par é a MESMA função nas duas portas, não duplicada por nome.
   Em `test-grid.mjs:1023`, o clique que abre a caixa de abortar: `data-a="abortar"`.
-  Em `test-grid.mjs:2902`, a caixa equivalente de fora-de-hora: `data-a="forahora"`.
+  Em `test-grid.mjs:2969`, a caixa equivalente de fora-de-hora: `data-a="forahora"`.
 
   **ITEM 4 (o que o escudo faz) NÃO É DECISÃO DE MESA, É BANDEIRA DESLIGADA — conferido em
   07/09/2026.** `bloqueio` é uma das 15 bandeiras (`src/data/regras.json:2535`,
@@ -1895,8 +1895,8 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **LEVANTAMENTO em 07/09/2026 (rodada 24, `docs/simulacao/caixa/24-executora.md`): o achado
   "relógio em Tick 0" está DEFASADO.** A migração 31 rodou em produção em 05/09/2026 (`L42`), e
   o cliente já tinha a degradação `SEM_RELOGIO` pronta antes disso (`grid.astro:3027`,
-  `test-grid.mjs:1438-1457`, cenário `SIM5`). O que sobrou, real: o próprio teste confessa
-  (`test-grid.mjs:1433-1437`, o comentário que cita `tickDaVez`) que só prova o relógio no
+  `test-grid.mjs:1441-1460`, cenário `SIM5`). O que sobrou, real: o próprio teste confessa
+  (`test-grid.mjs:1436-1440`, o comentário que cita `tickDaVez`) que só prova o relógio no
   sistema Simultâneo — no P/G/R o relógio sai de `tickDaVez()`/`golpeMaisCedo()`, não de
   `tick_atual`, e ninguém montou uma cena com Tick
   divergente por combatente nesse sistema para comparar o que o jogador calcula contra o que o

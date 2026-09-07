@@ -162,6 +162,21 @@ const TEMPO = P.get('tempo') === 'normal' ? 'normal'
 // `?adiado=1` liga a chave, e é assim que o smoke consegue exercitar o caminho
 // novo sem que a bancada padrão deixe de medir o caminho de sempre.
 const ADIADO = P.get('adiado') === '1';
+/**
+ * O QUANTO A FILA DO NORMAL/P-G-R JÁ ANDOU, em Ticks.
+ *
+ * Por padrão a bancada nasce com o relógio da fila em zero (`tickDaVez`,
+ * `golpeMaisCedo`), e zero é o mesmo número que um relógio quebrado
+ * devolveria por engano (`c.tick ?? 0`, `?? 0` de novo em `golpeMaisCedo`):
+ * uma cena presa no Tick 0 não separa "chegou certo" de "não chegou". No
+ * Simultâneo já existe `?tick=`, que anda a ARENA (`encontros.tick_atual`);
+ * este é o irmão para os outros dois sistemas, e anda a FILA (o `tick` e os
+ * `golpes`/`livre` de cada peça), deliberadamente por um parâmetro
+ * separado: os dois relógios não são o mesmo número em sistema nenhum, e
+ * misturá-los quebraria a prova do Simultâneo (`combate.astro`) que já usa
+ * `?tick=` sozinho com a fila parada de propósito.
+ */
+const DESLOCA_FILA = Math.max(0, parseInt(P.get('deslocafila') || '0', 10) || 0);
 // DE QUE CADEIRA SE OLHA. `?papel=jogador` tira o mestre do lugar e devolve a
 // mesa como ela chega para quem só tem um personagem: sem os botões do relógio,
 // sem o menu que mexe na cena, e com a `acao` alheia MASCARADA como a
@@ -271,8 +286,8 @@ const FICHA_PC = {
 const ACAO = Array.from({ length: N_COMB }, (_, i) => (
   i % 3 === 0 ? {}
     : i % 3 === 1
-      ? { golpes: [(i % 4) + 2], livre: (i % 4) + 6, desde: 0, tipo: 'simples', arma: 'Espada Longa', pressao: i % 2 }
-      : { golpes: [i % 4], livre: (i % 4) + 4, desde: 0, tipo: 'dupla', arma: 'Adaga', pressao: 0 }
+      ? { golpes: [(i % 4) + 2 + DESLOCA_FILA], livre: (i % 4) + 6 + DESLOCA_FILA, desde: 0, tipo: 'simples', arma: 'Espada Longa', pressao: i % 2 }
+      : { golpes: [(i % 4) + DESLOCA_FILA], livre: (i % 4) + 4 + DESLOCA_FILA, desde: 0, tipo: 'dupla', arma: 'Adaga', pressao: 0 }
 ));
 
 const COMBS = [];
@@ -298,7 +313,7 @@ for (let i = 0; i < N_COMB; i++) {
       return Math.max(1, Math.round(mx * frac));
     })(),
     mana_max: ehPC ? 8 : null, mana_atual: ehPC ? 8 - (i % 3) : null,
-    tick: ACAO[i].livre ?? (i % 4), iniciativa: 20 - i,
+    tick: ACAO[i].livre ?? (i % 4 + DESLOCA_FILA), iniciativa: 20 - i,
     // O tick de quem tem ação no ar É o fim do ciclo dela: é a invariante que o
     // rastreador mantém (`avancarTick` grava os dois juntos), e a bancada tem de
     // respeitá-la, senão abortar não muda número nenhum e o teste mente.

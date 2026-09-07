@@ -543,7 +543,7 @@ import CondDlg from '../../components/CondDlg.astro';
   } from '../../lib/mesa-tempo-ui';
   import {
     combateDaMesa, COMBATE_PADRAO, anatomia, declarar, faseEm, defesaPerdida, acaoVazia, ticksDeEntrada,
-    contrapeEm, contrapeDe, faseDeQuemVaiAgir, preparoDe, ordemDaFila,
+    contrapeEm, contrapeDe, faseDeQuemVaiAgir, preparoDe, ordemDaFila, ehSimultaneo,
     classeDeTempo, velocidadeDaArma, tetoDaRajada, temGesto, FASE_ROTULO,
     type CombateMesa, type Manobra,
   } from '../../lib/combate-tempo';
@@ -566,8 +566,9 @@ import CondDlg from '../../components/CondDlg.astro';
   // (fita ou só os números). Mora em `mesas.combate` (migração 27); sem ela, o
   // padrão do sistema, que é o combate de sempre.
   let TEMPO: CombateMesa = { ...COMBATE_PADRAO };
-  // O relógio do encontro: o Tick de quem está na vez, que é o menor da fila.
-  // É contra ele que toda fase se lê.
+  // O relógio do encontro. No normal e no P/G/R é o Tick de quem está na vez
+  // (o menor da fila); no Simultâneo é o `tick_atual` da arena, não o da
+  // fila (ver o comentário em `pintar()`). É contra ele que toda fase se lê.
   let AGORA = 0;
   // O jogador lê pela view `combate_visao`, que já desce mascarada. Quando o
   // banco ainda não tem a migração 14 isto cai para false e a máscara passa a
@@ -890,7 +891,16 @@ import CondDlg from '../../components/CondDlg.astro';
     const atual = emCampo[0] || null;
 
     el('enc-nome').textContent = ENC.nome;
-    const tick = atual?.tick ?? 0;
+    // NO SIMULTANEO O RELOGIO E O DA ARENA, NAO O DA FILA. `atual?.tick` e o
+    // tick de quem esta na FRENTE da fila, e uma peca LIVRE fica parada nesse
+    // campo enquanto `tick_atual` avanca (so quem tem golpe/movimento em
+    // andamento tem o `tick` gravado de novo, em `avancarTickSimultaneo`,
+    // grid.astro). Com a fila parada e a arena andando, `atual.tick` fica
+    // para tras e o relogio mostrado aqui diverge do `tick_atual` que o Grid
+    // le. Achado e corrigido no levantamento da Fase 2.5, rodada 24/25:
+    // sonda empirica com a bancada (?tick=5&tempo=simultaneo) mostrava Tick 0
+    // aqui contra tick_atual=5 no Grid.
+    const tick = ehSimultaneo(TEMPO) ? (ENC?.tick_atual ?? 0) : (atual?.tick ?? 0);
     AGORA = tick;
     el('enc-rodada').textContent = `Rodada ${Math.floor(tick / 6) + 1}`;
     // Só o número: a palavra "Tick" é estática, ao lado dele, na tira.
