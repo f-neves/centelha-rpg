@@ -219,7 +219,7 @@ function build(c) {
         const d = cu?.deslocamento ?? DESL[c.id] ?? { batalha: 3, arranque: 5, corrida: 7 };
         return { batalha: d.batalha, arranque: d.arranque, corrida: d.corrida };
       })(),
-      ataques: (c.ataques || []).map((a) => ({ nome: a.nome, pool: a.pool, dano: a.dano, speed: a.ticks, classe: classeDoAtaque(c.id, a.nome, a.ticks), ...(a.notas ? { notas: a.notas } : {}) })),
+      ataques: (c.ataques || []).map((a) => ({ nome: a.nome, pool: a.pool, dano: a.dano, perfArma: a.perfArma ?? null, speed: a.ticks, classe: classeDoAtaque(c.id, a.nome, a.ticks), ...(a.notas ? { notas: a.notas } : {}) })),
     },
     habilidades: (h.hab || []).map((x) => ({ nome: x.n, descricao: x.d })),
     poderes: (c.poderes || []).map((p) => ({ efeito: p.efeito, tipo: p.tipo, alvo: p.alvo, ...(p.caminho ? { caminho: p.caminho } : {}), ...(p.arte ? { arte: p.arte } : {}) })),

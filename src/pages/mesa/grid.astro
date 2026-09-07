@@ -2393,7 +2393,7 @@ const SETAS = [
   } from '../../lib/mesa-tempo-real';
   import { MON, resumoDe, iniDeMonstro, d6, cardCriaturaHTML, criaturaCompleta } from '../../lib/mesa-bestiario';
   import { rolarIniciativaPC, resumoFicha } from '../../lib/mesa-ficha';
-  import { mana as manaDaFicha, modificadorPorte, porteDeRotulo } from '../../lib/calc';
+  import { mana as manaDaFicha, modificadorPorte, porteDeRotulo, gatePerfuracaoAbre } from '../../lib/calc';
   import {
     centroHex, verticesHex, tabuleiro, medidaTabuleiro, margemTabuleiro,
     hexEmPonto, dentro, chaveHex, distanciaHex, nomeHex, larguraHex,
@@ -8712,6 +8712,18 @@ const SETAS = [
         : 0;
       return { flat: f + (c2.acao || 0) + (c2.ataque || 0) + porte, dados: c2.dados || 0 };
     })();
+    // O GATE DE PERFURAÇÃO (06/09/2026, régua em `armas-e-armaduras.md:105,
+    // 150`): abaixo do Nível de Perfuração do alvo, o golpe Perfurante
+    // resvala — dano ZERO, e o raspão também não sai (o raspão já pressupõe
+    // que a ponta encostou o bastante para arranhar). Calculado UMA VEZ aqui
+    // e não dentro de `contaDoLance`/`fim`: são DOIS lugares que decidem dano
+    // nesta função (o oráculo/tela em `contaDoLance`, e o que de fato desce a
+    // Vida do alvo em `fim`, via `aplicarDano`), e computá-lo duas vezes já
+    // foi exatamente o defeito que este achado documenta (`CATALOGO.md`, "a
+    // cópia segurada por um detector, e não por disciplina"). `ra.perfArma`
+    // só existe quando o modo em uso é Perfurante.
+    const resvalaGate = REGRAS_CENA.gate && ra?.perfArma != null
+      && !gatePerfuracaoAbre('perfurante', ra.perfArma, r?.resistPerf ?? 0);
     let rolado = '';
 // O DANO TAMBÉM PRECISA DA PRÓPRIA DESCRIÇÃO, e antes não tinha: `rolado`
 // existia só para o acerto, e o registro do dano nunca mostrava as faces que
@@ -8881,8 +8893,9 @@ let roladoDano = '';
       // só o campo faria o oráculo mentir em dois dos três vereditos.
       const rdDano = roladaManual(dnInp.value, e.atacante.dano, 0);
       const noCampo = Math.max(0, rdDano ? rdDano.total : 0);
-      const bruto = veredito === 'acerto' ? noCampo
+      let bruto = veredito === 'acerto' ? noCampo
         : veredito === 'raspao' ? Math.max(0, e.danoQA) : 0;
+      if (resvalaGate) bruto = 0;
       // E o raspão IGNORA a Absorção (capítulo XII): ele já é o que sobrou.
       const abs = veredito === 'acerto' ? Math.min(bruto, e.alvo.soak) : 0;
       const liq = Math.max(0, bruto - abs);
@@ -9389,9 +9402,14 @@ let roladoDano = '';
         // deixava o caminho do índice sem cobertura.
         registrarLance(contaDoLance(), sorteio, { acertou: v, raspou, rolado, adiada });
         const rdDanoFim = roladaManual(dnInp.value, ra?.dano || '0d6', 0);
+        // O GATE ZERA AQUI TAMBÉM, e não só em `contaDoLance`: é ESTE `dano`
+        // que `resolverGolpeNoAr` passa para `aplicarDano`, e é `aplicarDano`
+        // quem de fato desce a Vida do alvo. `contaDoLance` alimenta o oráculo
+        // e a tela; sem repetir o gate aqui, ele resvalaria só no registro e
+        // nunca na mesa de verdade.
         resolve({
           acertou: v, an: a, manobra: a.golpes > 1 ? manSel.value : 'simples',
-          dano: raspou ? danoQA() : Math.max(0, rdDanoFim ? rdDanoFim.total : 0),
+          dano: resvalaGate ? 0 : raspou ? danoQA() : Math.max(0, rdDanoFim ? rdDanoFim.total : 0),
           tipo: dnTipo.value,
           ajuste: parseInt(modInp.value || '0', 10) || 0,
           motivo: motivoInp.value.trim(),

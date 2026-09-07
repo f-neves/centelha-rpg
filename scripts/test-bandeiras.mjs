@@ -25,7 +25,7 @@ await build({
   stdin: {
     contents: `
       export * from './src/lib/bandeiras';
-      export { modificadorPorte, porteDeRotulo } from './src/lib/calc';
+      export { modificadorPorte, porteDeRotulo, gatePerfuracaoAbre } from './src/lib/calc';
     `,
     resolveDir: ROOT, loader: 'ts',
   },
@@ -55,17 +55,37 @@ const nucleo = ['n1', 'n2', 'n3', 'n4', 'n5', 'n6'];
 // A ASSERÇÃO É SOBRE O INVARIANTE, não sobre a lista: nenhuma bandeira pode
 // estar `true` sem que o motor a aplique. Quem ligar uma vem aqui e move o
 // nome para `LIGADAS_NO_MOTOR`, o que obriga a decisão a ser explícita em vez
-// de silenciosa. `porte` é a primeira (06/09/2026): `modificadorPorte` em
-// `calc.ts`, aplicado em `ajAtq.flat` de `folhaDaAcao` (`grid.astro`). Só na
-// MESA — o harness (`scripts/sim/motor.mjs`) continua sem lê-la, porque a
-// segunda bateria não acontece (`Pendencias.md` L25).
-const LIGADAS_NO_MOTOR = ['porte'];
+// de silenciosa. `porte` e `gate` são as duas primeiras (06/09/2026):
+// `modificadorPorte`/`gatePerfuracaoAbre` em `calc.ts`, aplicados em
+// `folhaDaAcao` (`grid.astro`) — porte em `ajAtq.flat`, gate em `resvalaGate`,
+// nos dois lugares que decidem dano ali (`contaDoLance` e `fim`). Só na MESA
+// — o harness (`scripts/sim/motor.mjs`) continua sem lê-las, porque a segunda
+// bateria não acontece (`Pendencias.md` L25).
+const LIGADAS_NO_MOTOR = ['porte', 'gate'];
 ok([...publicadas, ...nucleo].every((b) => B.PERFIL_CORRENTE[b] === LIGADAS_NO_MOTOR.includes(b)),
   `só as bandeiras que o motor aplica estão ligadas (${LIGADAS_NO_MOTOR.length} de 15)`);
 ok(publicadas.filter((b) => !LIGADAS_NO_MOTOR.includes(b)).every((b) => B.PERFIL_CORRENTE[b] === false),
-  'as oito de regra publicada que restam nascem DESLIGADAS: nenhuma está ligada no motor ainda');
+  'as sete de regra publicada que restam nascem DESLIGADAS: nenhuma está ligada no motor ainda');
 ok(nucleo.every((b) => B.PERFIL_CORRENTE[b] === false),
   'e as seis do núcleo também: as regras que elas ligam ainda não existem');
+
+// ---- 2c: o gate de Perfuração, conferido contra a régua publicada ----
+//
+// As nove armaduras batem, número a número, com `armas-e-armaduras.md:109-119`
+// (conferido à mão nesta rodada); esta asserção trava que ninguém troque um
+// `resistPerf` de `armaduras.json` sem que o capítulo publicado mude junto.
+const RESIST_POR_ARMADURA = {
+  nenhuma: 0, gambeson: 0, 'couro-endurecido': 1, 'cota-de-malha': 1,
+  brigandina: 1, lamelar: 1, 'placa-de-transicao': 2, 'placa-de-municao': 2,
+  'placa-completa': 3,
+};
+ok(B.gatePerfuracaoAbre('perfurante', 0, 0) === true, 'Perf. 0 abre contra Nível 0 (Nenhuma/Gambeson)');
+ok(B.gatePerfuracaoAbre('perfurante', 0, 1) === false, 'Perf. 0 RESVALA contra Nível 1 (Couro endurecido pra cima) — a Adaga');
+ok(B.gatePerfuracaoAbre('perfurante', 2, 2) === true, 'Perf. 2 abre contra Nível 2 (Placa de transição/munição)');
+ok(B.gatePerfuracaoAbre('perfurante', 2, 3) === false, 'Perf. 2 RESVALA contra Nível 3 (Placa completa)');
+ok(B.gatePerfuracaoAbre('corte', 0, 3) === true, 'modo Cortante nunca passa pelo gate, nível nenhum resvala');
+ok(Object.values(RESIST_POR_ARMADURA).every((n) => typeof n === 'number'),
+  `as 9 armaduras da régua publicada, para referência de quem ler este teste: ${Object.keys(RESIST_POR_ARMADURA).join(', ')}`);
 
 // ---- 2b: o modificador de porte, com sinal e teto conferidos ----
 //
@@ -118,5 +138,5 @@ ok(B.estadoDoCarimbo(null).temCarimbo === false && /sem carimbo/.test(B.estadoDo
   'e sem encontro a frase diz que a cena não tem carimbo');
 
 console.log(`\n${FALHAS.length ? '✗' : '✓'} Perfil de regras OK · ${PASSOU} asserções · 15 bandeiras`
-  + ` (${LIGADAS_NO_MOTOR.length} ligada na mesa: ${LIGADAS_NO_MOTOR.join(', ')}), e o carimbo protege o chão da cena`);
+  + ` (${LIGADAS_NO_MOTOR.length} ligadas na mesa: ${LIGADAS_NO_MOTOR.join(', ')}), e o carimbo protege o chão da cena`);
 if (FALHAS.length) { FALHAS.forEach((f) => console.log('  · ' + f)); process.exit(1); }

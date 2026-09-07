@@ -65,7 +65,7 @@ export interface ResumoCombate {
   arma: string; ataque: string; dano: string; defesa: number | null;
   defesaSocial?: number | null; defesaMental?: number | null;
   soak: { impacto: number; corte: number; perfuracao: number };
-  resistPerf: number; velocidade?: number | null;
+  resistPerf: number; perfArma?: number | null; velocidade?: number | null;
   /**
    * A classe de tempo do ataque (leve · media · pesada · haste · distancia ·
    * arremesso · arte), estimada pelo `gen-monsters.mjs` para criatura. O PC não
@@ -203,6 +203,7 @@ export function baseResumo(c: any, fichaPorId: Record<string, any> = {}): Resumo
       soak: ab ? { impacto: ab.impacto || 0, corte: ab.corte || 0, perfuracao: ab.perfuracao || 0 }
                 : { impacto: 0, corte: 0, perfuracao: 0 },
       resistPerf: cb.resistenciaPerfuracao || 0,
+      perfArma: a0?.perfArma ?? null,
       velocidade: a0?.speed ?? null,
       classe: a0?.classe ?? null,
       passo: cb.deslocamento || null,
@@ -243,6 +244,7 @@ export function resumoDe(c: any, fichaPorId: Record<string, any> = {}): ResumoCo
       perfuracao: os.perfuracao ?? bs.perfuracao ?? 0,
     },
     resistPerf: ov.resistPerf ?? base?.resistPerf ?? 0,
+    perfArma: ov.perfArma ?? base?.perfArma ?? null,
     velocidade: ov.velocidade ?? base?.velocidade ?? null,
     classe: ov.classe ?? base?.classe ?? null,
     // O passo se mescla CAMPO A CAMPO: o mestre pode fixar só a corrida do

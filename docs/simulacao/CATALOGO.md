@@ -67,6 +67,7 @@ segunda tinha ficado verde por cegueira.
 | **a asserção esvaziada por mudança de contrato** | laço com teto cujo número de iterações muda | esta asserção ainda mede o que o rótulo diz, ou ficou verde por o laço nunca mais bater no caso raro? |
 | **a asserção que imprime ORDINAL ou CONTAGEM cujo denominador é contrato** | ordinal de laço, `i + 1`, `.length` de um array que cresce com a implementação | se um clique passar a valer dez, este número ainda mede alguma coisa? |
 | **a constante de conversão com duas candidatas plausíveis** | converter uma TAXA (por Tick, por segundo, por linha) numa unidade TOTAL, ou vice-versa | esta constante é a MÉDIA da grandeza que multiplica (duração, tamanho), ou é outra estatística da mesma tabela que também "parece" servir? |
+| **a cópia segurada por um detector, e não por disciplina** | duas implementações da mesma conta (não o mesmo corpo — a mesma MATEMÁTICA, escrita duas vezes), com uma fixture de regressão no meio | o detector cobre TODOS os ramos que mudaram, ou só o estado em que a fixture foi gravada? |
 
 **DUAS NOVAS, DE 06/09/2026, ACHADAS NA REVISÃO DO AVANÇO UNIFICADO:** a primeira é o gatilho —
 fica verde, o rótulo continua descrevendo o que deveria medir, e nada acusa a mudança por baixo. A
@@ -176,3 +177,37 @@ membro, sem cancelar nada por acidente? `gesto/Tick` dividido por `gesto/Tick`
 devolve um número puro, não um `Tick`; a conta só fazia sentido porque os dois
 lados eram gestos, e o "gesto" cancelava escondendo que sobrava `1/Tick` em vez de
 `Tick`.
+
+**UM CASO NOVO, DE 06/09/2026, ACHADO LIGANDO A BANDEIRA `porte`:** `grid.astro`
+não importa `src/lib/lance.ts`. A mesa tem uma cópia INLINE do mesmo algoritmo
+(`contaDoLance`, dentro de `folhaDaAcao`) e a sincronia com o `resolverGolpe`
+puro do harness existe só porque `scripts/test-lance.mjs` compara os dois contra
+1.315 lances gravados (`scripts/fixtures/lances.jsonl`). **Não são o mesmo corpo
+citado duas vezes** (a forma da linha da tabela, "o portão que casa por literal"):
+são **duas implementações independentes da mesma conta**, e o que as segura não é
+disciplina, é um detector. É a mesma classe de risco do `lib-tempo.mjs` (cinco
+divergências, cada lado verde sozinho nos próprios testes) e é pior numa coisa: lá
+a divergência aparecia em Tick e duração; aqui ela aparece no **dano aplicado**,
+na mesa em que se joga.
+
+**O tamanho, medido e não estimado:** dos 1.315 lances gravados, **1.315 têm
+`entrada.perfil` gravado** (as quinze chaves, todas `false` — a fixture é de
+antes de qualquer bandeira existir), e **zero têm alguma bandeira `true`**. O
+detector cobre 100% do estado "todas desligadas" e 0% de qualquer outro. Pior:
+**nenhum teste automatizado deste repositório, fixture ou navegador, cria um
+combatente `tipo: 'criatura'`** (conferido: zero ocorrências de `monstro_id` em
+`scripts/test-*.mjs`) — as cenas do `test-espelho` e do `test-grid` são só PC ×
+PC, sempre porte Médio dos dois lados. Isso significa que a bandeira `porte`
+inteira (a normalização do rótulo, o sinal, a busca em `MON[...]`) rodou **sem
+nenhum teste automatizado a exercitar com um delta diferente de zero** — só a
+função pura `modificadorPorte` foi conferida isolada (`test-bandeiras.mjs`), e o
+`npm run smoke` ficou verde por não tocar no caminho que mudou. **Cada bandeira
+nova que entrar do mesmo jeito (a próxima é `gate`) soma à mesma superfície
+descoberta**, e ela não encolhe sozinha: só encolhe no dia em que alguém gravar
+lances novos com bandeira ligada, ou escrever um teste com uma criatura de
+porte diferente do Médio.
+
+**A pergunta que teria pego isto antes de publicar:** o detector que prova que
+as duas cópias concordam foi gravado DEPOIS ou ANTES da mudança que estou
+prestes a fazer? Se foi antes, ele prova que elas concordavam num mundo que já
+não existe, e não diz nada sobre o mundo novo.

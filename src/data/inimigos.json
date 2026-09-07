@@ -39,6 +39,7 @@
         "nome": "Forcado/Pancada",
         "pool": "1d6+2",
         "dano": "1d6 +4 impacto",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -94,6 +95,7 @@
         "nome": "Facão",
         "pool": "2d6+2 +2",
         "dano": "1d6 +3 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -148,6 +150,7 @@
         "nome": "Espada curta",
         "pool": "3d6 +2",
         "dano": "1d6 +3 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -203,6 +206,7 @@
         "nome": "Espada longa",
         "pool": "4d6 +1",
         "dano": "2d6 +3 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -258,6 +262,7 @@
         "nome": "Arco",
         "pool": "4d6 +1",
         "dano": "2d6 perfurante · perf. 1",
+        "perfArma": 1,
         "ticks": 6
       }
     ],
@@ -312,6 +317,7 @@
         "nome": "Martelo de guerra",
         "pool": "4d6",
         "dano": "3d6 +10 impacto",
+        "perfArma": null,
         "ticks": 7,
         "notas": "Impacto: a armadura quase não absorve (anti-placa)"
       }
@@ -367,6 +373,7 @@
         "nome": "Espada longa",
         "pool": "4d6 +2",
         "dano": "2d6 +3 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -422,6 +429,7 @@
         "nome": "Adaga (Ágil)",
         "pool": "4d6+2 +5",
         "dano": "1d6 +3 perfurante · perf. 0",
+        "perfArma": 0,
         "ticks": 5,
         "notas": "Ágil: usa Destreza no dano. Perf. 0: contra armadura, mira na fresta ou no alvo desprevenido"
       }
@@ -483,6 +491,7 @@
         "nome": "Florete (Ágil)",
         "pool": "5d6 +5",
         "dano": "1d6 +3 perfurante · perf. 1",
+        "perfArma": 1,
         "ticks": 5
       }
     ],
@@ -544,6 +553,7 @@
         "nome": "Dardo flamejante (Fogo 1)",
         "pool": "3d6+2 +1",
         "dano": "1d6 fogo",
+        "perfArma": null,
         "ticks": 6,
         "notas": "Custa 1 Mana; resistido por Soak/Esquiva"
       }
@@ -606,6 +616,7 @@
         "nome": "Montante",
         "pool": "4d6 +1",
         "dano": "3d6 +8 corte",
+        "perfArma": null,
         "ticks": 7
       }
     ],
@@ -665,6 +676,7 @@
         "nome": "Espada longa (golpe duplo)",
         "pool": "5d6 +4",
         "dano": "2d6 +4 corte",
+        "perfArma": null,
         "ticks": 6,
         "notas": "Pode dividir em 2 ataques (−1d6/−2d6)"
       }
@@ -726,6 +738,7 @@
         "nome": "Espada longa",
         "pool": "4d6 +2",
         "dano": "2d6 +3 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -786,6 +799,7 @@
         "nome": "Toque mórbido (Morte 1)",
         "pool": "3d6+2 +1",
         "dano": "1d6 necrótico",
+        "perfArma": null,
         "ticks": 6,
         "notas": "Dreno: cura o cultista"
       }
@@ -849,6 +863,7 @@
         "nome": "Bola de fogo (Fogo 3)",
         "pool": "5d6 +3",
         "dano": "3d6 fogo (área)",
+        "perfArma": null,
         "ticks": 6,
         "notas": "3 Mana; explosão em área. O pool vale enquanto a pendência 25 do Arcano não fechar: área talvez não tenha pontaria"
       }
@@ -915,6 +930,7 @@
         "nome": "Foice enferrujada",
         "pool": "1d6+2 +1",
         "dano": "2d6 +3 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -970,6 +986,7 @@
         "nome": "Arma",
         "pool": "1d6+2",
         "dano": "1d6 +2 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -1025,6 +1042,7 @@
         "nome": "Arma",
         "pool": "1d6+2",
         "dano": "1d6 +2 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -1080,6 +1098,7 @@
         "nome": "Arma",
         "pool": "3d6",
         "dano": "1d6 +5 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -1134,6 +1153,7 @@
         "nome": "Arma",
         "pool": "2d6+2",
         "dano": "1d6 +4 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -1189,6 +1209,7 @@
         "nome": "Arma",
         "pool": "3d6",
         "dano": "1d6 +4 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -1244,6 +1265,7 @@
         "nome": "Arma",
         "pool": "3d6+2",
         "dano": "1d6 +5 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -1299,6 +1321,7 @@
         "nome": "Arma",
         "pool": "2d6+2",
         "dano": "1d6 +3 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -1354,6 +1377,7 @@
         "nome": "Arma",
         "pool": "2d6+2",
         "dano": "1d6 +3 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -1409,6 +1433,7 @@
         "nome": "Pancada descomunal",
         "pool": "5d6",
         "dano": "2d6 +7 impacto",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -1463,6 +1488,7 @@
         "nome": "Pancada descomunal",
         "pool": "6d6",
         "dano": "2d6 +8 impacto",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -1518,6 +1544,7 @@
         "nome": "Pancada descomunal",
         "pool": "6d6 +1",
         "dano": "2d6 +7 impacto",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -1581,6 +1608,7 @@
         "nome": "Pancada descomunal",
         "pool": "7d6 +1",
         "dano": "2d6 +9 impacto",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -1635,6 +1663,7 @@
         "nome": "Pancada descomunal",
         "pool": "7d6",
         "dano": "2d6 +9 impacto",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -1691,6 +1720,7 @@
         "nome": "Pancada descomunal",
         "pool": "7d6+2 +1",
         "dano": "2d6 +10 impacto",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -1761,6 +1791,7 @@
         "nome": "Pancada descomunal",
         "pool": "7d6+2 +1",
         "dano": "2d6 +10 impacto",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -1818,6 +1849,7 @@
         "nome": "Pancada descomunal",
         "pool": "8d6+2 +1",
         "dano": "3d6 +12 impacto",
+        "perfArma": null,
         "ticks": 7
       }
     ],
@@ -1894,6 +1926,7 @@
         "nome": "Pancada descomunal",
         "pool": "9d6 +3",
         "dano": "3d6 +13 impacto",
+        "perfArma": null,
         "ticks": 7
       }
     ],
@@ -1978,6 +2011,7 @@
         "nome": "Pancada descomunal",
         "pool": "7d6 +1",
         "dano": "2d6 +9 impacto",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -2046,6 +2080,7 @@
         "nome": "Garras e presas",
         "pool": "2d6+2",
         "dano": "1d6 +3 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -2108,6 +2143,7 @@
         "nome": "Garras e presas",
         "pool": "6d6",
         "dano": "2d6 +9 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -2162,6 +2198,7 @@
         "nome": "Garras e presas",
         "pool": "6d6",
         "dano": "2d6 +9 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -2216,6 +2253,7 @@
         "nome": "Garras e presas",
         "pool": "5d6",
         "dano": "2d6 +7 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -2284,6 +2322,7 @@
         "nome": "Garras e presas",
         "pool": "5d6+2",
         "dano": "2d6 +8 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -2338,6 +2377,7 @@
         "nome": "Garras e presas",
         "pool": "3d6",
         "dano": "1d6 +4 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -2392,6 +2432,7 @@
         "nome": "Garras e presas",
         "pool": "5d6+2",
         "dano": "2d6 +8 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -2446,6 +2487,7 @@
         "nome": "Garras e presas",
         "pool": "7d6+2",
         "dano": "3d6 +11 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -2514,6 +2556,7 @@
         "nome": "Garras e presas",
         "pool": "4d6",
         "dano": "2d6 +6 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -2568,6 +2611,7 @@
         "nome": "Garras e presas",
         "pool": "4d6",
         "dano": "2d6 +6 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -2622,6 +2666,7 @@
         "nome": "Garras e presas",
         "pool": "3d6+2",
         "dano": "1d6 +5 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -2684,6 +2729,7 @@
         "nome": "Garras e presas",
         "pool": "2d6",
         "dano": "1d6 +2 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -2750,6 +2796,7 @@
         "nome": "Garras e presas",
         "pool": "4d6+2",
         "dano": "2d6 +6 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -2812,6 +2859,7 @@
         "nome": "Garras e presas",
         "pool": "5d6 +1",
         "dano": "2d6 +6 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -2882,6 +2930,7 @@
         "nome": "Garras e presas",
         "pool": "9d6",
         "dano": "3d6 +13 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -2936,6 +2985,7 @@
         "nome": "Garras e presas",
         "pool": "1d6",
         "dano": "1d6 +1 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -2991,6 +3041,7 @@
         "nome": "Garras e presas",
         "pool": "5d6+2 +1",
         "dano": "2d6 +7 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -3056,6 +3107,7 @@
         "nome": "Arma",
         "pool": "5d6 +1",
         "dano": "2d6 +6 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -3128,6 +3180,7 @@
         "nome": "Arma",
         "pool": "3d6+2 +2",
         "dano": "1d6 +3 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -3202,6 +3255,7 @@
         "nome": "Arma",
         "pool": "4d6 +1",
         "dano": "1d6 +4 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -3271,6 +3325,7 @@
         "nome": "Garras e presas",
         "pool": "5d6 +1",
         "dano": "2d6 +6 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -3326,6 +3381,7 @@
         "nome": "Garras e presas",
         "pool": "4d6+2 +1",
         "dano": "2d6 +6 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -3381,6 +3437,7 @@
         "nome": "Garras e presas",
         "pool": "6d6 +1",
         "dano": "2d6 +7 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -3449,6 +3506,7 @@
         "nome": "Garras e presas",
         "pool": "5d6+2 +3",
         "dano": "2d6 +6 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -3522,6 +3580,7 @@
         "nome": "Garras e mordida",
         "pool": "5d6+2 +3",
         "dano": "2d6 +6 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -3589,6 +3648,7 @@
         "nome": "Garras e presas",
         "pool": "6d6 +1",
         "dano": "3d6 +8 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -3653,6 +3713,7 @@
         "nome": "Garras e presas",
         "pool": "5d6 +3",
         "dano": "1d6 +5 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -3722,6 +3783,7 @@
         "nome": "Garras e presas",
         "pool": "2d6+2 +2",
         "dano": "1d6 +1 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -3791,6 +3853,7 @@
         "nome": "Garras e presas",
         "pool": "6d6+2 +3",
         "dano": "2d6 +8 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -3860,6 +3923,7 @@
         "nome": "Garras e presas",
         "pool": "5d6 +2",
         "dano": "2d6 +6 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -3938,6 +4002,7 @@
         "nome": "Garras e presas",
         "pool": "5d6+2 +3",
         "dano": "2d6 +6 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -4007,6 +4072,7 @@
         "nome": "Garras e presas",
         "pool": "3d6 +1",
         "dano": "1d6 +2 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -4075,6 +4141,7 @@
         "nome": "Pseudópode",
         "pool": "3d6+2 +1",
         "dano": "2d6 +3 impacto",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -4129,6 +4196,7 @@
         "nome": "Garras e presas",
         "pool": "4d6+2 +1",
         "dano": "1d6 +5 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -4198,6 +4266,7 @@
         "nome": "Garras e presas",
         "pool": "6d6 +1",
         "dano": "2d6 +7 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -4268,6 +4337,7 @@
         "nome": "Garras e presas",
         "pool": "8d6 +3",
         "dano": "3d6 +11 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -4345,6 +4415,7 @@
         "nome": "Garras e presas",
         "pool": "9d6 +1",
         "dano": "3d6 +13 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -4400,6 +4471,7 @@
         "nome": "Garras e presas",
         "pool": "7d6+2 +1",
         "dano": "3d6 +10 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -4456,6 +4528,7 @@
         "nome": "Garras e presas",
         "pool": "7d6+2 +5",
         "dano": "3d6 +10 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -4548,6 +4621,7 @@
         "nome": "Golpe",
         "pool": "2d6+2",
         "dano": "1d6 +4 impacto",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -4602,6 +4676,7 @@
         "nome": "Golpe",
         "pool": "3d6+2 +1",
         "dano": "1d6 +5 impacto",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -4657,6 +4732,7 @@
         "nome": "Golpe",
         "pool": "3d6 +1",
         "dano": "1d6 +3 impacto",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -4735,6 +4811,7 @@
         "nome": "Golpe",
         "pool": "4d6 +2",
         "dano": "1d6 +5 impacto",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -4806,6 +4883,7 @@
         "nome": "Toque dilacerante",
         "pool": "4d6 +2",
         "dano": "2d6 necrótico (vs Def. Mental)",
+        "perfArma": null,
         "ticks": 5,
         "notas": "atravessa matéria; só Arcano, Proteção ou arma encantada o ferem"
       }
@@ -4886,6 +4964,7 @@
         "nome": "Golpe",
         "pool": "3d6+2 +2",
         "dano": "1d6 +3 impacto",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -4957,6 +5036,7 @@
         "nome": "Toque dilacerante",
         "pool": "5d6+2 +3",
         "dano": "2d6 necrótico (vs Def. Mental)",
+        "perfArma": null,
         "ticks": 5,
         "notas": "atravessa matéria; só Arcano, Proteção ou arma encantada o ferem"
       }
@@ -5039,6 +5119,7 @@
         "nome": "Toque dilacerante",
         "pool": "5d6 +4",
         "dano": "2d6 necrótico (vs Def. Mental)",
+        "perfArma": null,
         "ticks": 5,
         "notas": "atravessa matéria; só Arcano, Proteção ou arma encantada o ferem"
       }
@@ -5120,6 +5201,7 @@
         "nome": "Golpe",
         "pool": "6d6 +4",
         "dano": "1d6 +7 impacto",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -5195,6 +5277,7 @@
         "nome": "Golpe",
         "pool": "4d6+2 +4",
         "dano": "1d6 +4 impacto",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -5264,6 +5347,7 @@
         "nome": "Golpe",
         "pool": "5d6 +5",
         "dano": "1d6 +5 impacto",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -5372,6 +5456,7 @@
         "nome": "Golpe",
         "pool": "3d6+2 +6",
         "dano": "1d6 +2 impacto",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -5458,6 +5543,7 @@
         "nome": "Golpe planar",
         "pool": "3d6 +2",
         "dano": "1d6 +3 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -5531,6 +5617,7 @@
         "nome": "Golpe planar",
         "pool": "2d6+2 +2",
         "dano": "1d6 +2 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -5621,6 +5708,7 @@
         "nome": "Golpe planar",
         "pool": "4d6 +4",
         "dano": "1d6 +3 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -5719,6 +5807,7 @@
         "nome": "Golpe planar",
         "pool": "6d6 +5",
         "dano": "2d6 +7 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -5799,6 +5888,7 @@
         "nome": "Golpe planar",
         "pool": "7d6 +5",
         "dano": "2d6 +9 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -5879,6 +5969,7 @@
         "nome": "Golpe planar",
         "pool": "8d6+2 +6",
         "dano": "3d6 +12 corte",
+        "perfArma": null,
         "ticks": 7
       }
     ],
@@ -5963,6 +6054,7 @@
         "nome": "Golpe planar",
         "pool": "7d6+2 +7",
         "dano": "2d6 +10 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -6041,6 +6133,7 @@
         "nome": "Golpe planar",
         "pool": "8d6 +9",
         "dano": "2d6 +11 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -6138,6 +6231,7 @@
         "nome": "Golpe planar",
         "pool": "3d6 +1",
         "dano": "1d6 +3 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -6203,6 +6297,7 @@
         "nome": "Golpe planar",
         "pool": "2d6+2 +2",
         "dano": "1d6 +2 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -6298,6 +6393,7 @@
         "nome": "Golpe planar",
         "pool": "4d6+2 +4",
         "dano": "1d6 +4 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -6382,6 +6478,7 @@
         "nome": "Golpe planar",
         "pool": "5d6+2 +5",
         "dano": "1d6 +6 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -6473,6 +6570,7 @@
         "nome": "Golpe planar",
         "pool": "6d6+2 +5",
         "dano": "2d6 +8 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -6563,6 +6661,7 @@
         "nome": "Golpe planar",
         "pool": "7d6 +6",
         "dano": "2d6 +9 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -6649,6 +6748,7 @@
         "nome": "Golpe planar",
         "pool": "4d6+2 +5",
         "dano": "1d6 +4 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -6743,6 +6843,7 @@
         "nome": "Golpe planar",
         "pool": "8d6+2 +9",
         "dano": "2d6 +12 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -6844,6 +6945,7 @@
         "nome": "Golpe planar",
         "pool": "4d6+2 +4",
         "dano": "1d6 +5 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -6934,6 +7036,7 @@
         "nome": "Golpe planar",
         "pool": "6d6+2 +6",
         "dano": "1d6 +8 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -7024,6 +7127,7 @@
         "nome": "Golpe planar",
         "pool": "7d6 +7",
         "dano": "2d6 +9 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -7112,6 +7216,7 @@
         "nome": "Golpe planar",
         "pool": "7d6+2 +9",
         "dano": "2d6 +10 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -7207,6 +7312,7 @@
         "nome": "Golpe planar",
         "pool": "4d6+2 +5",
         "dano": "1d6 +4 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -7298,6 +7404,7 @@
         "nome": "Golpe planar",
         "pool": "5d6+2 +6",
         "dano": "1d6 +6 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -7383,6 +7490,7 @@
         "nome": "Golpe planar",
         "pool": "5d6+2 +4",
         "dano": "2d6 +6 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -7477,6 +7585,7 @@
         "nome": "Golpe planar",
         "pool": "6d6+2 +4",
         "dano": "2d6 +8 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -7563,6 +7672,7 @@
         "nome": "Golpe planar",
         "pool": "5d6 +3",
         "dano": "1d6 +5 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -7641,6 +7751,7 @@
         "nome": "Golpe planar",
         "pool": "7d6 +3",
         "dano": "2d6 +9 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -7718,6 +7829,7 @@
         "nome": "Golpe planar",
         "pool": "5d6+2 +3",
         "dano": "1d6 +6 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -7793,6 +7905,7 @@
         "nome": "Garras e presas",
         "pool": "3d6 +4",
         "dano": "1d6 +2 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -7877,6 +7990,7 @@
         "nome": "Garras e presas",
         "pool": "3d6+2 +5",
         "dano": "1d6 +2 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -7965,6 +8079,7 @@
         "nome": "Garras e presas",
         "pool": "4d6 +2",
         "dano": "1d6 +4 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -8041,6 +8156,7 @@
         "nome": "Garras e presas",
         "pool": "2d6+2 +4",
         "dano": "1d6 +1 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -8122,6 +8238,7 @@
         "nome": "Garras e presas",
         "pool": "2d6+2 +4",
         "dano": "1d6 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -8212,6 +8329,7 @@
         "nome": "Arma",
         "pool": "3d6+2 +3",
         "dano": "1d6 +2 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -8287,6 +8405,7 @@
         "nome": "Arma",
         "pool": "3d6+2 +2",
         "dano": "1d6 +3 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -8373,6 +8492,7 @@
         "nome": "Garras e presas",
         "pool": "5d6 +4",
         "dano": "2d6 +6 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -8448,6 +8568,7 @@
         "nome": "Garras e presas",
         "pool": "5d6 +4",
         "dano": "2d6 +6 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -8536,6 +8657,7 @@
         "nome": "Golpe planar",
         "pool": "6d6 +5",
         "dano": "2d6 +7 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -8632,6 +8754,7 @@
         "nome": "Garras e presas",
         "pool": "6d6 +5",
         "dano": "2d6 +7 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -8717,6 +8840,7 @@
         "nome": "Garras e presas",
         "pool": "5d6+2 +5",
         "dano": "2d6 +6 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -8797,6 +8921,7 @@
         "nome": "Garras e presas",
         "pool": "7d6+2 +1",
         "dano": "3d6 +10 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -8872,6 +8997,7 @@
         "nome": "Arma",
         "pool": "5d6+2 +4",
         "dano": "2d6 +6 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -8952,6 +9078,7 @@
         "nome": "Arma",
         "pool": "5d6+2 +4",
         "dano": "1d6 +6 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -9037,6 +9164,7 @@
         "nome": "Garras e presas",
         "pool": "9d6+2 +7",
         "dano": "4d6 +14 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -9120,6 +9248,7 @@
         "nome": "Garras e presas",
         "pool": "10d6+2 +10",
         "dano": "4d6 +16 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -9207,6 +9336,7 @@
         "nome": "Garras e mordida",
         "pool": "5d6+2 +4",
         "dano": "1d6 +6 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -9287,6 +9417,7 @@
         "nome": "Garras e mordida",
         "pool": "7d6 +5",
         "dano": "2d6 +9 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -9371,6 +9502,7 @@
         "nome": "Garras e mordida",
         "pool": "8d6 +6",
         "dano": "3d6 +11 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -9462,6 +9594,7 @@
         "nome": "Garras e mordida",
         "pool": "9d6+2 +7",
         "dano": "3d6 +14 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -9556,6 +9689,7 @@
         "nome": "Garras e mordida",
         "pool": "10d6+2 +9",
         "dano": "4d6 +16 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -9651,6 +9785,7 @@
         "nome": "Garras e mordida",
         "pool": "6d6 +4",
         "dano": "2d6 +7 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -9737,6 +9872,7 @@
         "nome": "Garras e mordida",
         "pool": "8d6 +6",
         "dano": "3d6 +11 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -9827,6 +9963,7 @@
         "nome": "Garras e mordida",
         "pool": "7d6+2 +6",
         "dano": "3d6 +10 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -9913,6 +10050,7 @@
         "nome": "Garras e mordida",
         "pool": "8d6+2 +7",
         "dano": "3d6 +12 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -10012,6 +10150,7 @@
         "nome": "Golpe planar",
         "pool": "2d6 +1",
         "dano": "1d6 +2 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -10068,6 +10207,7 @@
         "nome": "Arma",
         "pool": "4d6 +1",
         "dano": "1d6 +4 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -10122,6 +10262,7 @@
         "nome": "Garras e presas",
         "pool": "5d6 +2",
         "dano": "2d6 +6 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -10176,6 +10317,7 @@
         "nome": "Garras e presas",
         "pool": "2d6",
         "dano": "1d6 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -10229,6 +10371,7 @@
         "nome": "Garras e presas",
         "pool": "3d6",
         "dano": "1d6 +4 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -10283,6 +10426,7 @@
         "nome": "Garras e presas",
         "pool": "4d6+2",
         "dano": "2d6 +6 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -10338,6 +10482,7 @@
         "nome": "Golpe planar",
         "pool": "1d6+2 +2",
         "dano": "1d6 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -10393,6 +10538,7 @@
         "nome": "Golpe planar",
         "pool": "5d6+2 +6",
         "dano": "1d6 +6 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -10449,6 +10595,7 @@
         "nome": "Garras e presas",
         "pool": "5d6+2 +1",
         "dano": "2d6 +7 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -10503,6 +10650,7 @@
         "nome": "Golpe planar",
         "pool": "5d6+2 +4",
         "dano": "1d6 +6 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -10559,6 +10707,7 @@
         "nome": "Golpe planar",
         "pool": "6d6 +4",
         "dano": "2d6 +7 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -10615,6 +10764,7 @@
         "nome": "Golpe planar",
         "pool": "4d6+2 +2",
         "dano": "1d6 +5 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -10671,6 +10821,7 @@
         "nome": "Golpe planar",
         "pool": "6d6+2 +4",
         "dano": "2d6 +8 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -10727,6 +10878,7 @@
         "nome": "Garras e presas",
         "pool": "5d6+2 +1",
         "dano": "1d6 +6 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -10780,6 +10932,7 @@
         "nome": "Garras e presas",
         "pool": "4d6",
         "dano": "2d6 +6 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -10834,6 +10987,7 @@
         "nome": "Garras e presas",
         "pool": "1d6+2",
         "dano": "1d6 +1 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -10888,6 +11042,7 @@
         "nome": "Garras e presas",
         "pool": "5d6",
         "dano": "2d6 +7 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -10942,6 +11097,7 @@
         "nome": "Garras e presas",
         "pool": "6d6+2",
         "dano": "2d6 +9 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -10997,6 +11153,7 @@
         "nome": "Golpe planar",
         "pool": "8d6 +5",
         "dano": "3d6 +11 corte",
+        "perfArma": null,
         "ticks": 7
       }
     ],
@@ -11052,6 +11209,7 @@
         "nome": "Garras e presas",
         "pool": "1d6+2",
         "dano": "1d6 +2 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -11106,6 +11264,7 @@
         "nome": "Garras e presas",
         "pool": "4d6+2",
         "dano": "2d6 +6 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -11161,6 +11320,7 @@
         "nome": "Pseudópode",
         "pool": "6d6 +1",
         "dano": "3d6 +7 impacto",
+        "perfArma": null,
         "ticks": 7
       }
     ],
@@ -11214,6 +11374,7 @@
         "nome": "Garras e presas",
         "pool": "5d6+2",
         "dano": "2d6 +8 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -11269,6 +11430,7 @@
         "nome": "Arma",
         "pool": "3d6+2 +2",
         "dano": "1d6 +4 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -11324,6 +11486,7 @@
         "nome": "Garras e presas",
         "pool": "3d6+2",
         "dano": "1d6 +5 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -11378,6 +11541,7 @@
         "nome": "Garras e presas",
         "pool": "3d6+2",
         "dano": "1d6 +5 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -11432,6 +11596,7 @@
         "nome": "Garras e presas",
         "pool": "3d6+2",
         "dano": "1d6 +5 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -11487,6 +11652,7 @@
         "nome": "Arma",
         "pool": "4d6+2 +2",
         "dano": "2d6 +5 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -11542,6 +11708,7 @@
         "nome": "Garras e presas",
         "pool": "1d6+2",
         "dano": "1d6 +2 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -11596,6 +11763,7 @@
         "nome": "Garras e presas",
         "pool": "1d6+2",
         "dano": "1d6 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -11650,6 +11818,7 @@
         "nome": "Garras e presas",
         "pool": "4d6 +2",
         "dano": "1d6 +5 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -11705,6 +11874,7 @@
         "nome": "Garras e presas",
         "pool": "7d6 +4",
         "dano": "2d6 +9 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -11761,6 +11931,7 @@
         "nome": "Garras e presas",
         "pool": "6d6 +4",
         "dano": "2d6 +7 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -11816,6 +11987,7 @@
         "nome": "Garras e presas",
         "pool": "3d6",
         "dano": "1d6 +4 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -11870,6 +12042,7 @@
         "nome": "Garras e presas",
         "pool": "1d6+2",
         "dano": "1d6 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -11924,6 +12097,7 @@
         "nome": "Arma",
         "pool": "2d6+2 +2",
         "dano": "1d6 +2 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -11980,6 +12154,7 @@
         "nome": "Arma",
         "pool": "4d6 +2",
         "dano": "1d6 +4 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -12036,6 +12211,7 @@
         "nome": "Garras e presas",
         "pool": "2d6+2 +1",
         "dano": "1d6 +2 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -12091,6 +12267,7 @@
         "nome": "Golpe planar",
         "pool": "5d6+2 +4",
         "dano": "1d6 +6 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -12147,6 +12324,7 @@
         "nome": "Golpe planar",
         "pool": "6d6 +4",
         "dano": "1d6 +7 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -12203,6 +12381,7 @@
         "nome": "Golpe planar",
         "pool": "8d6+2 +6",
         "dano": "3d6 +12 corte",
+        "perfArma": null,
         "ticks": 7
       }
     ],
@@ -12259,6 +12438,7 @@
         "nome": "Arma",
         "pool": "3d6 +2",
         "dano": "1d6 +2 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -12315,6 +12495,7 @@
         "nome": "Golpe planar",
         "pool": "6d6 +5",
         "dano": "1d6 +7 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -12371,6 +12552,7 @@
         "nome": "Golpe planar",
         "pool": "7d6+2 +6",
         "dano": "2d6 +10 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -12426,6 +12608,7 @@
         "nome": "Garras e presas",
         "pool": "7d6",
         "dano": "3d6 +10 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -12480,6 +12663,7 @@
         "nome": "Garras e presas",
         "pool": "9d6+2",
         "dano": "3d6 +14 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -12534,6 +12718,7 @@
         "nome": "Garras e presas",
         "pool": "3d6+2",
         "dano": "1d6 +4 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -12588,6 +12773,7 @@
         "nome": "Garras e presas",
         "pool": "7d6",
         "dano": "3d6 +10 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -12642,6 +12828,7 @@
         "nome": "Garras e presas",
         "pool": "4d6+2",
         "dano": "2d6 +6 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -12696,6 +12883,7 @@
         "nome": "Garras e presas",
         "pool": "7d6",
         "dano": "3d6 +10 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -12750,6 +12938,7 @@
         "nome": "Garras e presas",
         "pool": "9d6",
         "dano": "3d6 +13 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -12804,6 +12993,7 @@
         "nome": "Garras e presas",
         "pool": "7d6+2",
         "dano": "3d6 +10 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -12858,6 +13048,7 @@
         "nome": "Garras e presas",
         "pool": "2d6",
         "dano": "1d6 +3 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -12913,6 +13104,7 @@
         "nome": "Arma",
         "pool": "3d6 +1",
         "dano": "1d6 +4 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -12967,6 +13159,7 @@
         "nome": "Garras e presas",
         "pool": "7d6",
         "dano": "3d6 +10 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -13021,6 +13214,7 @@
         "nome": "Garras e presas",
         "pool": "2d6",
         "dano": "1d6 +3 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -13076,6 +13270,7 @@
         "nome": "Garras e mordida",
         "pool": "7d6+2 +5",
         "dano": "3d6 +10 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -13132,6 +13327,7 @@
         "nome": "Garras e presas",
         "pool": "5d6 +4",
         "dano": "2d6 +5 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -13188,6 +13384,7 @@
         "nome": "Arma",
         "pool": "2d6 +1",
         "dano": "1d6 +2 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -13244,6 +13441,7 @@
         "nome": "Arma",
         "pool": "3d6+2 +2",
         "dano": "1d6 +3 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -13300,6 +13498,7 @@
         "nome": "Arma",
         "pool": "2d6+2 +1",
         "dano": "1d6 +3 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -13355,6 +13554,7 @@
         "nome": "Garras e presas",
         "pool": "2d6+2",
         "dano": "1d6 +3 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -13409,6 +13609,7 @@
         "nome": "Garras e presas",
         "pool": "6d6",
         "dano": "2d6 +8 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -13464,6 +13665,7 @@
         "nome": "Golpe planar",
         "pool": "3d6 +1",
         "dano": "1d6 +3 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -13519,6 +13721,7 @@
         "nome": "Golpe planar",
         "pool": "4d6 +1",
         "dano": "1d6 +5 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -13574,6 +13777,7 @@
         "nome": "Golpe planar",
         "pool": "2d6+2 +1",
         "dano": "1d6 +2 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -13629,6 +13833,7 @@
         "nome": "Golpe planar",
         "pool": "3d6+2 +1",
         "dano": "1d6 +4 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -13683,6 +13888,7 @@
         "nome": "Garras e presas",
         "pool": "8d6+2",
         "dano": "3d6 +12 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -13738,6 +13944,7 @@
         "nome": "Garras e presas",
         "pool": "4d6 +2",
         "dano": "1d6 +4 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -13792,6 +13999,7 @@
         "nome": "Garras e presas",
         "pool": "0d6+2",
         "dano": "1d6 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -13846,6 +14054,7 @@
         "nome": "Garras e presas",
         "pool": "1d6",
         "dano": "1d6 +1 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -13900,6 +14109,7 @@
         "nome": "Garras e presas",
         "pool": "1d6",
         "dano": "1d6 +1 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -13954,6 +14164,7 @@
         "nome": "Garras e presas",
         "pool": "1d6",
         "dano": "1d6 +1 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -14008,6 +14219,7 @@
         "nome": "Garras e presas",
         "pool": "1d6",
         "dano": "1d6 +1 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -14062,6 +14274,7 @@
         "nome": "Garras e presas",
         "pool": "0d6+2",
         "dano": "1d6 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -14116,6 +14329,7 @@
         "nome": "Garras e presas",
         "pool": "1d6",
         "dano": "1d6 +1 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -14170,6 +14384,7 @@
         "nome": "Garras e presas",
         "pool": "1d6",
         "dano": "1d6 +1 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -14224,6 +14439,7 @@
         "nome": "Garras e presas",
         "pool": "7d6+2",
         "dano": "3d6 +10 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -14278,6 +14494,7 @@
         "nome": "Arma",
         "pool": "3d6+2 +1",
         "dano": "1d6 +4 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -14332,6 +14549,7 @@
         "nome": "Garras e presas",
         "pool": "1d6",
         "dano": "1d6 +1 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -14387,6 +14605,7 @@
         "nome": "Garras e presas",
         "pool": "8d6 +5",
         "dano": "3d6 +11 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -14442,6 +14661,7 @@
         "nome": "Golpe planar",
         "pool": "4d6+2 +2",
         "dano": "1d6 +5 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -14498,6 +14718,7 @@
         "nome": "Golpe planar",
         "pool": "6d6+2 +5",
         "dano": "2d6 +8 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -14554,6 +14775,7 @@
         "nome": "Golpe planar",
         "pool": "6d6 +4",
         "dano": "2d6 +7 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -14610,6 +14832,7 @@
         "nome": "Golpe",
         "pool": "2d6+2 +4",
         "dano": "1d6 impacto",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -14666,6 +14889,7 @@
         "nome": "Garras e presas",
         "pool": "3d6+2 +4",
         "dano": "1d6 +2 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -14721,6 +14945,7 @@
         "nome": "Garras e presas",
         "pool": "5d6+2 +4",
         "dano": "2d6 +6 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -14776,6 +15001,7 @@
         "nome": "Arma",
         "pool": "6d6+2 +3",
         "dano": "2d6 +8 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -14830,6 +15056,7 @@
         "nome": "Arma",
         "pool": "6d6 +3",
         "dano": "2d6 +7 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -14884,6 +15111,7 @@
         "nome": "Arma",
         "pool": "5d6 +1",
         "dano": "1d6 +5 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -14938,6 +15166,7 @@
         "nome": "Arma",
         "pool": "8d6 +4",
         "dano": "2d6 +11 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -14992,6 +15221,7 @@
         "nome": "Arma",
         "pool": "7d6+2 +3",
         "dano": "2d6 +10 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -15046,6 +15276,7 @@
         "nome": "Pseudópode",
         "pool": "4d6+2 +1",
         "dano": "1d6 +5 impacto",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -15100,6 +15331,7 @@
         "nome": "Garras e mordida",
         "pool": "6d6 +4",
         "dano": "1d6 +7 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -15155,6 +15387,7 @@
         "nome": "Golpe planar",
         "pool": "3d6+2 +2",
         "dano": "1d6 +3 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -15210,6 +15443,7 @@
         "nome": "Golpe planar",
         "pool": "7d6 +5",
         "dano": "2d6 +9 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -15264,6 +15498,7 @@
         "nome": "Garras e presas",
         "pool": "5d6",
         "dano": "2d6 +8 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -15318,6 +15553,7 @@
         "nome": "Garras e presas",
         "pool": "6d6",
         "dano": "2d6 +9 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -15373,6 +15609,7 @@
         "nome": "Arma",
         "pool": "2d6+2 +1",
         "dano": "1d6 +2 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -15428,6 +15665,7 @@
         "nome": "Garras e presas",
         "pool": "4d6",
         "dano": "2d6 +6 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -15482,6 +15720,7 @@
         "nome": "Garras e presas",
         "pool": "2d6",
         "dano": "1d6 +3 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -15536,6 +15775,7 @@
         "nome": "Garras e presas",
         "pool": "3d6",
         "dano": "1d6 +4 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -15590,6 +15830,7 @@
         "nome": "Garras e presas",
         "pool": "4d6+2",
         "dano": "2d6 +6 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -15645,6 +15886,7 @@
         "nome": "Garras e presas",
         "pool": "4d6 +4",
         "dano": "1d6 +3 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -15701,6 +15943,7 @@
         "nome": "Golpe planar",
         "pool": "5d6 +4",
         "dano": "1d6 +5 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -15756,6 +15999,7 @@
         "nome": "Arma",
         "pool": "2d6+2",
         "dano": "1d6 +3 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -15810,6 +16054,7 @@
         "nome": "Golpe planar",
         "pool": "4d6+2 +4",
         "dano": "1d6 +4 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -15865,6 +16110,7 @@
         "nome": "Garras e presas",
         "pool": "2d6",
         "dano": "1d6 +2 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -15919,6 +16165,7 @@
         "nome": "Garras e presas",
         "pool": "1d6+2",
         "dano": "1d6 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -15973,6 +16220,7 @@
         "nome": "Garras e mordida",
         "pool": "9d6 +6",
         "dano": "3d6 +13 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -16028,6 +16276,7 @@
         "nome": "Garras e mordida",
         "pool": "10d6 +6",
         "dano": "4d6 +15 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -16083,6 +16332,7 @@
         "nome": "Garras e mordida",
         "pool": "10d6+2 +6",
         "dano": "4d6 +16 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -16138,6 +16388,7 @@
         "nome": "Arma",
         "pool": "6d6+2 +4",
         "dano": "1d6 +8 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -16192,6 +16443,7 @@
         "nome": "Garras e presas",
         "pool": "3d6+2",
         "dano": "1d6 +5 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -16246,6 +16498,7 @@
         "nome": "Garras e presas",
         "pool": "5d6+2",
         "dano": "2d6 +7 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -16301,6 +16554,7 @@
         "nome": "Arma",
         "pool": "3d6 +2",
         "dano": "1d6 +3 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -16357,6 +16611,7 @@
         "nome": "Arma",
         "pool": "4d6 +2",
         "dano": "1d6 +5 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -16412,6 +16667,7 @@
         "nome": "Garras e presas",
         "pool": "4d6+2",
         "dano": "2d6 +6 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -16467,6 +16723,7 @@
         "nome": "Golpe planar",
         "pool": "3d6+2 +2",
         "dano": "1d6 +3 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -16522,6 +16779,7 @@
         "nome": "Arma",
         "pool": "2d6+2 +1",
         "dano": "1d6 +3 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -16578,6 +16836,7 @@
         "nome": "Garras e presas",
         "pool": "2d6 +1",
         "dano": "1d6 +2 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -16634,6 +16893,7 @@
         "nome": "Golpe",
         "pool": "5d6+2 +4",
         "dano": "1d6 +6 impacto",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -16690,6 +16950,7 @@
         "nome": "Arma",
         "pool": "3d6+2 +2",
         "dano": "1d6 +4 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -16745,6 +17006,7 @@
         "nome": "Garras e presas",
         "pool": "5d6 +4",
         "dano": "2d6 +5 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -16801,6 +17063,7 @@
         "nome": "Garras e presas",
         "pool": "6d6 +5",
         "dano": "2d6 +7 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -16857,6 +17120,7 @@
         "nome": "Garras e presas",
         "pool": "8d6+2 +6",
         "dano": "3d6 +12 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -16913,6 +17177,7 @@
         "nome": "Golpe planar",
         "pool": "5d6+2 +5",
         "dano": "1d6 +6 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -16969,6 +17234,7 @@
         "nome": "Golpe planar",
         "pool": "5d6+2 +4",
         "dano": "2d6 +6 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -17025,6 +17291,7 @@
         "nome": "Golpe planar",
         "pool": "8d6 +5",
         "dano": "3d6 +11 corte",
+        "perfArma": null,
         "ticks": 7
       }
     ],
@@ -17081,6 +17348,7 @@
         "nome": "Pseudópode",
         "pool": "5d6 +1",
         "dano": "2d6 +5 impacto",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -17134,6 +17402,7 @@
         "nome": "Garras e presas",
         "pool": "2d6+2",
         "dano": "1d6 +3 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -17188,6 +17457,7 @@
         "nome": "Garras e presas",
         "pool": "6d6",
         "dano": "2d6 +7 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -17243,6 +17513,7 @@
         "nome": "Garras e presas",
         "pool": "5d6 +2",
         "dano": "2d6 +6 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -17298,6 +17569,7 @@
         "nome": "Garras e presas",
         "pool": "8d6 +6",
         "dano": "3d6 +11 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -17354,6 +17626,7 @@
         "nome": "Garras e mordida",
         "pool": "2d6 +1",
         "dano": "1d6 +1 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -17409,6 +17682,7 @@
         "nome": "Garras e presas",
         "pool": "1d6+2",
         "dano": "1d6 +2 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -17463,6 +17737,7 @@
         "nome": "Garras e presas",
         "pool": "1d6+2",
         "dano": "1d6 +1 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -17518,6 +17793,7 @@
         "nome": "Garras e presas",
         "pool": "7d6 +4",
         "dano": "3d6 +9 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -17572,6 +17848,7 @@
         "nome": "Arma",
         "pool": "7d6",
         "dano": "3d6 +9 corte",
+        "perfArma": null,
         "ticks": 7
       }
     ],
@@ -17627,6 +17904,7 @@
         "nome": "Garras e presas",
         "pool": "8d6 +5",
         "dano": "2d6 +11 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -17683,6 +17961,7 @@
         "nome": "Arma",
         "pool": "3d6+2 +2",
         "dano": "1d6 +4 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -17739,6 +18018,7 @@
         "nome": "Arma",
         "pool": "4d6+2 +2",
         "dano": "1d6 +5 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -17795,6 +18075,7 @@
         "nome": "Garras e presas",
         "pool": "9d6 +5",
         "dano": "3d6 +13 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -17849,6 +18130,7 @@
         "nome": "Garras e presas",
         "pool": "4d6",
         "dano": "2d6 +6 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -17903,6 +18185,7 @@
         "nome": "Garras e presas",
         "pool": "8d6+2",
         "dano": "3d6 +12 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -17958,6 +18241,7 @@
         "nome": "Garras e presas",
         "pool": "2d6+2 +2",
         "dano": "1d6 +2 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -18012,6 +18296,7 @@
         "nome": "Pseudópode",
         "pool": "9d6",
         "dano": "3d6 +13 impacto",
+        "perfArma": null,
         "ticks": 7
       }
     ],
@@ -18067,6 +18352,7 @@
         "nome": "Golpe",
         "pool": "4d6 +2",
         "dano": "1d6 +5 impacto",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -18123,6 +18409,7 @@
         "nome": "Arma",
         "pool": "3d6+2 +2",
         "dano": "1d6 +4 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -18178,6 +18465,7 @@
         "nome": "Garras e presas",
         "pool": "7d6+2",
         "dano": "3d6 +10 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -18232,6 +18520,7 @@
         "nome": "Garras e presas",
         "pool": "2d6",
         "dano": "1d6 +2 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -18286,6 +18575,7 @@
         "nome": "Garras e presas",
         "pool": "1d6",
         "dano": "1d6 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -18339,6 +18629,7 @@
         "nome": "Garras e presas",
         "pool": "3d6",
         "dano": "1d6 +4 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -18393,6 +18684,7 @@
         "nome": "Garras e presas",
         "pool": "7d6+2",
         "dano": "3d6 +10 perfurante",
+        "perfArma": 0,
         "ticks": 7
       }
     ],
@@ -18448,6 +18740,7 @@
         "nome": "Garras e presas",
         "pool": "1d6+2 +1",
         "dano": "1d6 +1 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -18503,6 +18796,7 @@
         "nome": "Arma",
         "pool": "3d6 +1",
         "dano": "1d6 +3 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -18559,6 +18853,7 @@
         "nome": "Arma",
         "pool": "2d6+2 +1",
         "dano": "1d6 +3 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -18615,6 +18910,7 @@
         "nome": "Golpe planar",
         "pool": "2d6+2 +1",
         "dano": "1d6 +3 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -18671,6 +18967,7 @@
         "nome": "Golpe planar",
         "pool": "2d6+2 +2",
         "dano": "1d6 +2 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -18725,6 +19022,7 @@
         "nome": "Garras e presas",
         "pool": "1d6+2",
         "dano": "1d6 +2 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -18780,6 +19078,7 @@
         "nome": "Garras e presas",
         "pool": "3d6",
         "dano": "1d6 +3 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -18833,6 +19132,7 @@
         "nome": "Garras e presas",
         "pool": "4d6+2",
         "dano": "2d6 +6 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -18887,6 +19187,7 @@
         "nome": "Garras e presas",
         "pool": "1d6+2",
         "dano": "1d6 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -18940,6 +19241,7 @@
         "nome": "Garras e presas",
         "pool": "3d6",
         "dano": "1d6 +4 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -18994,6 +19296,7 @@
         "nome": "Garras e presas",
         "pool": "4d6+2",
         "dano": "2d6 +6 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -19049,6 +19352,7 @@
         "nome": "Garras e presas",
         "pool": "4d6 +2",
         "dano": "1d6 +5 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -19104,6 +19408,7 @@
         "nome": "Garras e presas",
         "pool": "6d6 +4",
         "dano": "2d6 +7 perfurante",
+        "perfArma": 0,
         "ticks": 6
       }
     ],
@@ -19160,6 +19465,7 @@
         "nome": "Golpe planar",
         "pool": "5d6 +4",
         "dano": "1d6 +5 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -19215,6 +19521,7 @@
         "nome": "Garras e presas",
         "pool": "3d6+2",
         "dano": "1d6 +5 perfurante",
+        "perfArma": 0,
         "ticks": 5
       }
     ],
@@ -19269,6 +19576,7 @@
         "nome": "Golpe planar",
         "pool": "4d6+2 +2",
         "dano": "1d6 +5 corte",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -19324,6 +19632,7 @@
         "nome": "Arma",
         "pool": "5d6 +2",
         "dano": "2d6 +6 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],

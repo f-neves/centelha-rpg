@@ -78,6 +78,7 @@
      "nome": "Golpe planar",
      "pool": "2d6 +1",
      "dano": "1d6 +2 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -205,6 +206,7 @@
      "nome": "Garras e presas",
      "pool": "7d6+2 +5",
      "dano": "3d6 +10 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -387,6 +389,7 @@
      "nome": "Garras e presas",
      "pool": "5d6 +1",
      "dano": "2d6 +6 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -531,6 +534,7 @@
      "nome": "Garras e presas",
      "pool": "5d6 +2",
      "dano": "2d6 +6 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -647,6 +651,7 @@
      "nome": "Garras e presas",
      "pool": "7d6",
      "dano": "3d6 +10 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -765,6 +770,7 @@
      "nome": "Garras e presas",
      "pool": "5d6+2 +3",
      "dano": "2d6 +6 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -901,6 +907,7 @@
      "nome": "Garras e presas",
      "pool": "2d6",
      "dano": "1d6 +2 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -1042,6 +1049,7 @@
      "nome": "Golpe planar",
      "pool": "4d6+2 +4",
      "dano": "1d6 +5 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -1206,6 +1214,7 @@
      "nome": "Golpe planar",
      "pool": "1d6+2 +2",
      "dano": "1d6 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -1331,6 +1340,7 @@
      "nome": "Golpe planar",
      "pool": "5d6+2 +6",
      "dano": "1d6 +6 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -1459,6 +1469,7 @@
      "nome": "Arco",
      "pool": "4d6 +1",
      "dano": "2d6 perfurante · perf. 1",
+     "perfArma": 1,
      "speed": 6,
      "classe": "distancia"
     }
@@ -1579,6 +1590,7 @@
      "nome": "Adaga (Ágil)",
      "pool": "4d6+2 +5",
      "dano": "1d6 +3 perfurante · perf. 0",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve",
      "notas": "Ágil: usa Destreza no dano. Perf. 0: contra armadura, mira na fresta ou no alvo desprevenido"
@@ -1718,6 +1730,7 @@
      "nome": "Toque dilacerante",
      "pool": "5d6+2 +3",
      "dano": "2d6 necrótico (vs Def. Mental)",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve",
      "notas": "atravessa matéria; só Arcano, Proteção ou arma encantada o ferem"
@@ -1872,6 +1885,7 @@
      "nome": "Garras e presas",
      "pool": "5d6",
      "dano": "2d6 +8 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -1993,6 +2007,7 @@
      "nome": "Golpe planar",
      "pool": "5d6+2 +4",
      "dano": "1d6 +6 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -2119,6 +2134,7 @@
      "nome": "Golpe planar",
      "pool": "8d6 +9",
      "dano": "2d6 +11 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -2307,6 +2323,7 @@
      "nome": "Facão",
      "pool": "2d6+2 +2",
      "dano": "1d6 +3 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -2433,6 +2450,7 @@
      "nome": "Golpe planar",
      "pool": "4d6+2 +2",
      "dano": "1d6 +5 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -2555,6 +2573,7 @@
      "nome": "Garras e presas",
      "pool": "5d6+2 +1",
      "dano": "1d6 +6 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -2673,6 +2692,7 @@
      "nome": "Garras e presas",
      "pool": "5d6 +3",
      "dano": "1d6 +5 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -2814,6 +2834,7 @@
      "nome": "Golpe planar",
      "pool": "8d6 +5",
      "dano": "3d6 +11 corte",
+     "perfArma": null,
      "speed": 7,
      "classe": "pesada"
     }
@@ -2948,6 +2969,7 @@
      "nome": "Garras e presas",
      "pool": "7d6+2 +1",
      "dano": "3d6 +10 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -3094,6 +3116,7 @@
      "nome": "Garras e presas",
      "pool": "1d6+2",
      "dano": "1d6 +2 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -3209,6 +3232,7 @@
      "nome": "Garras e presas",
      "pool": "4d6+2",
      "dano": "2d6 +6 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -3331,6 +3355,7 @@
      "nome": "Garras e presas",
      "pool": "5d6 +2",
      "dano": "2d6 +6 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -3479,6 +3504,7 @@
      "nome": "Garras e presas",
      "pool": "6d6",
      "dano": "2d6 +9 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -3604,6 +3630,7 @@
      "nome": "Golpe",
      "pool": "4d6+2 +4",
      "dano": "1d6 +4 impacto",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -3754,6 +3781,7 @@
      "nome": "Arma",
      "pool": "3d6+2 +2",
      "dano": "1d6 +4 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -3880,6 +3908,7 @@
      "nome": "Golpe planar",
      "pool": "5d6+2 +4",
      "dano": "1d6 +6 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -4004,6 +4033,7 @@
      "nome": "Garras e presas",
      "pool": "9d6+2",
      "dano": "3d6 +14 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -4119,6 +4149,7 @@
      "nome": "Martelo de guerra",
      "pool": "4d6",
      "dano": "3d6 +10 impacto",
+     "perfArma": null,
      "speed": 7,
      "classe": "pesada",
      "notas": "Impacto: a armadura quase não absorve (anti-placa)"
@@ -4242,6 +4273,7 @@
      "nome": "Arma",
      "pool": "4d6+2 +2",
      "dano": "1d6 +5 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -4371,6 +4403,7 @@
      "nome": "Golpe planar",
      "pool": "5d6+2 +5",
      "dano": "1d6 +6 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -4498,6 +4531,7 @@
      "nome": "Arma",
      "pool": "5d6+2 +4",
      "dano": "1d6 +6 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -4666,6 +4700,7 @@
      "nome": "Arma",
      "pool": "3d6+2",
      "dano": "1d6 +5 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -4791,6 +4826,7 @@
      "nome": "Garras e presas",
      "pool": "7d6+2 +1",
      "dano": "3d6 +10 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -4922,6 +4958,7 @@
      "nome": "Garras e presas",
      "pool": "2d6",
      "dano": "1d6 +3 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -5040,6 +5077,7 @@
      "nome": "Espada longa (golpe duplo)",
      "pool": "5d6 +4",
      "dano": "2d6 +4 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media",
      "notas": "Pode dividir em 2 ataques (−1d6/−2d6)"
@@ -5174,6 +5212,7 @@
      "nome": "Forcado/Pancada",
      "pool": "1d6+2",
      "dano": "1d6 +4 impacto",
+     "perfArma": null,
      "speed": 5,
      "classe": "haste"
     }
@@ -5294,6 +5333,7 @@
      "nome": "Arma",
      "pool": "3d6 +1",
      "dano": "1d6 +4 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -5414,6 +5454,7 @@
      "nome": "Golpe planar",
      "pool": "3d6+2 +2",
      "dano": "1d6 +3 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -5529,6 +5570,7 @@
      "nome": "Espada longa",
      "pool": "4d6 +2",
      "dano": "2d6 +3 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -5649,6 +5691,7 @@
      "nome": "Garras e presas",
      "pool": "3d6",
      "dano": "1d6 +4 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -5765,6 +5808,7 @@
      "nome": "Garras e presas",
      "pool": "3d6",
      "dano": "1d6 +4 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -5881,6 +5925,7 @@
      "nome": "Garras e presas",
      "pool": "4d6+2",
      "dano": "2d6 +6 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -6002,6 +6047,7 @@
      "nome": "Golpe planar",
      "pool": "8d6 +5",
      "dano": "3d6 +11 corte",
+     "perfArma": null,
      "speed": 7,
      "classe": "pesada"
     }
@@ -6119,6 +6165,7 @@
      "nome": "Montante",
      "pool": "4d6 +1",
      "dano": "3d6 +8 corte",
+     "perfArma": null,
      "speed": 7,
      "classe": "pesada"
     }
@@ -6246,6 +6293,7 @@
      "nome": "Garras e presas",
      "pool": "4d6",
      "dano": "2d6 +6 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -6364,6 +6412,7 @@
      "nome": "Arma",
      "pool": "4d6+2 +2",
      "dano": "2d6 +5 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -6489,6 +6538,7 @@
      "nome": "Garras e presas",
      "pool": "1d6+2",
      "dano": "1d6 +2 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -6611,6 +6661,7 @@
      "nome": "Garras e presas",
      "pool": "7d6 +4",
      "dano": "2d6 +9 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -6729,6 +6780,7 @@
      "nome": "Pancada descomunal",
      "pool": "7d6 +1",
      "dano": "2d6 +9 impacto",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -6866,6 +6918,7 @@
      "nome": "Garras e presas",
      "pool": "6d6 +4",
      "dano": "2d6 +7 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -6986,6 +7039,7 @@
      "nome": "Garras e presas",
      "pool": "3d6+2",
      "dano": "1d6 +5 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -7119,6 +7173,7 @@
      "nome": "Arma",
      "pool": "2d6+2",
      "dano": "1d6 +3 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -7249,6 +7304,7 @@
      "nome": "Garras e presas",
      "pool": "2d6+2 +2",
      "dano": "1d6 +1 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -7382,6 +7438,7 @@
      "nome": "Espada longa",
      "pool": "4d6 +2",
      "dano": "2d6 +3 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -7510,6 +7567,7 @@
      "nome": "Garras e presas",
      "pool": "5d6+2 +1",
      "dano": "2d6 +7 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -7646,6 +7704,7 @@
      "nome": "Garras e presas",
      "pool": "1d6",
      "dano": "1d6 +1 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -7757,6 +7816,7 @@
      "nome": "Golpe planar",
      "pool": "4d6+2 +5",
      "dano": "1d6 +4 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -7926,6 +7986,7 @@
      "nome": "Garras e mordida",
      "pool": "9d6 +6",
      "dano": "3d6 +13 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -8058,6 +8119,7 @@
      "nome": "Garras e presas",
      "pool": "4d6",
      "dano": "2d6 +6 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -8181,6 +8243,7 @@
      "nome": "Pseudópode",
      "pool": "3d6+2 +1",
      "dano": "2d6 +3 impacto",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -8308,6 +8371,7 @@
      "nome": "Toque mórbido (Morte 1)",
      "pool": "3d6+2 +1",
      "dano": "1d6 necrótico",
+     "perfArma": null,
      "speed": 6,
      "classe": "arte",
      "notas": "Dreno: cura o cultista"
@@ -8436,6 +8500,7 @@
      "nome": "Arma",
      "pool": "2d6+2 +2",
      "dano": "1d6 +2 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -8558,6 +8623,7 @@
      "nome": "Arma",
      "pool": "4d6 +2",
      "dano": "1d6 +4 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -8684,6 +8750,7 @@
      "nome": "Garras e presas",
      "pool": "2d6+2 +1",
      "dano": "1d6 +2 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -8799,6 +8866,7 @@
      "nome": "Garras e presas",
      "pool": "3d6+2",
      "dano": "1d6 +4 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -8916,6 +8984,7 @@
      "nome": "Arma",
      "pool": "3d6 +2",
      "dano": "1d6 +2 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -9045,6 +9114,7 @@
      "nome": "Golpe planar",
      "pool": "6d6+2 +6",
      "dano": "1d6 +8 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -9218,6 +9288,7 @@
      "nome": "Golpe planar",
      "pool": "4d6+2 +4",
      "dano": "1d6 +4 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -9382,6 +9453,7 @@
      "nome": "Golpe planar",
      "pool": "7d6+2 +6",
      "dano": "2d6 +10 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -9513,6 +9585,7 @@
      "nome": "Golpe planar",
      "pool": "7d6 +6",
      "dano": "2d6 +9 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -9683,6 +9756,7 @@
      "nome": "Golpe planar",
      "pool": "8d6+2 +9",
      "dano": "2d6 +12 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -9879,6 +9953,7 @@
      "nome": "Golpe planar",
      "pool": "6d6 +5",
      "dano": "1d6 +7 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -10009,6 +10084,7 @@
      "nome": "Golpe planar",
      "pool": "6d6+2 +5",
      "dano": "2d6 +8 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -10179,6 +10255,7 @@
      "nome": "Golpe planar",
      "pool": "2d6+2 +2",
      "dano": "1d6 +2 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -10355,6 +10432,7 @@
      "nome": "Golpe planar",
      "pool": "5d6+2 +4",
      "dano": "2d6 +6 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -10523,6 +10601,7 @@
      "nome": "Garras e presas",
      "pool": "1d6",
      "dano": "1d6 +1 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -10637,6 +10716,7 @@
      "nome": "Arma",
      "pool": "3d6+2 +2",
      "dano": "1d6 +3 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -10798,6 +10878,7 @@
      "nome": "Garras e mordida",
      "pool": "6d6 +4",
      "dano": "1d6 +7 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -10924,6 +11005,7 @@
      "nome": "Garras e mordida",
      "pool": "8d6 +6",
      "dano": "3d6 +11 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -11109,6 +11191,7 @@
      "nome": "Garras e mordida",
      "pool": "6d6 +4",
      "dano": "2d6 +7 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -11284,6 +11367,7 @@
      "nome": "Garras e mordida",
      "pool": "8d6+2 +7",
      "dano": "3d6 +12 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -11478,6 +11562,7 @@
      "nome": "Garras e mordida",
      "pool": "7d6+2 +6",
      "dano": "3d6 +10 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -11656,6 +11741,7 @@
      "nome": "Garras e mordida",
      "pool": "8d6 +6",
      "dano": "3d6 +11 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -11840,6 +11926,7 @@
      "nome": "Garras e mordida",
      "pool": "9d6+2 +7",
      "dano": "3d6 +14 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -12026,6 +12113,7 @@
      "nome": "Garras e mordida",
      "pool": "7d6 +5",
      "dano": "2d6 +9 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -12197,6 +12285,7 @@
      "nome": "Golpe planar",
      "pool": "3d6 +2",
      "dano": "1d6 +3 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -12343,6 +12432,7 @@
      "nome": "Garras e presas",
      "pool": "3d6 +4",
      "dano": "1d6 +2 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -12506,6 +12596,7 @@
      "nome": "Garras e presas",
      "pool": "5d6 +4",
      "dano": "2d6 +5 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -12631,6 +12722,7 @@
      "nome": "Arma",
      "pool": "2d6 +1",
      "dano": "1d6 +2 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -12752,6 +12844,7 @@
      "nome": "Arma",
      "pool": "3d6+2 +2",
      "dano": "1d6 +3 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -12876,6 +12969,7 @@
      "nome": "Florete (Ágil)",
      "pool": "5d6 +5",
      "dano": "1d6 +3 perfurante · perf. 1",
+     "perfArma": 1,
      "speed": 5,
      "classe": "leve"
     }
@@ -13002,6 +13096,7 @@
      "nome": "Arma",
      "pool": "2d6+2 +1",
      "dano": "1d6 +3 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -13130,6 +13225,7 @@
      "nome": "Golpe planar",
      "pool": "6d6+2 +4",
      "dano": "2d6 +8 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -13293,6 +13389,7 @@
      "nome": "Garras e presas",
      "pool": "7d6",
      "dano": "3d6 +10 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -13415,6 +13512,7 @@
      "nome": "Golpe planar",
      "pool": "3d6+2 +1",
      "dano": "1d6 +4 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -13539,6 +13637,7 @@
      "nome": "Golpe planar",
      "pool": "7d6 +3",
      "dano": "2d6 +9 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -13694,6 +13793,7 @@
      "nome": "Golpe planar",
      "pool": "4d6 +1",
      "dano": "1d6 +5 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -13815,6 +13915,7 @@
      "nome": "Golpe planar",
      "pool": "3d6 +1",
      "dano": "1d6 +3 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -13937,6 +14038,7 @@
      "nome": "Golpe planar",
      "pool": "2d6+2 +1",
      "dano": "1d6 +2 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -14052,6 +14154,7 @@
      "nome": "Garras e presas",
      "pool": "2d6+2",
      "dano": "1d6 +3 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -14169,6 +14272,7 @@
      "nome": "Garras e presas",
      "pool": "1d6",
      "dano": "1d6 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -14288,6 +14392,7 @@
      "nome": "Garras e presas",
      "pool": "1d6+2",
      "dano": "1d6 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -14404,6 +14509,7 @@
      "nome": "Garras e presas",
      "pool": "1d6+2",
      "dano": "1d6 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -14518,6 +14624,7 @@
      "nome": "Garras e presas",
      "pool": "2d6",
      "dano": "1d6 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -14636,6 +14743,7 @@
      "nome": "Garras e presas",
      "pool": "1d6+2",
      "dano": "1d6 +1 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -14757,6 +14865,7 @@
      "nome": "Garras e presas",
      "pool": "1d6+2",
      "dano": "1d6 +1 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -14881,6 +14990,7 @@
      "nome": "Garras e presas",
      "pool": "1d6+2",
      "dano": "1d6 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -15003,6 +15113,7 @@
      "nome": "Garras e presas",
      "pool": "1d6+2",
      "dano": "1d6 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -15125,6 +15236,7 @@
      "nome": "Golpe planar",
      "pool": "5d6+2 +5",
      "dano": "1d6 +6 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -15289,6 +15401,7 @@
      "nome": "Garras e presas",
      "pool": "4d6+2",
      "dano": "2d6 +6 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -15422,6 +15535,7 @@
      "nome": "Garras e presas",
      "pool": "6d6 +5",
      "dano": "2d6 +7 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -15592,6 +15706,7 @@
      "nome": "Foice enferrujada",
      "pool": "1d6+2 +1",
      "dano": "2d6 +3 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -15705,6 +15820,7 @@
      "nome": "Toque dilacerante",
      "pool": "5d6 +4",
      "dano": "2d6 necrótico (vs Def. Mental)",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve",
      "notas": "atravessa matéria; só Arcano, Proteção ou arma encantada o ferem"
@@ -15871,6 +15987,7 @@
      "nome": "Golpe",
      "pool": "2d6+2",
      "dano": "1d6 +4 impacto",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -15990,6 +16107,7 @@
      "nome": "Garras e presas",
      "pool": "7d6",
      "dano": "3d6 +10 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -16103,6 +16221,7 @@
      "nome": "Garras e presas",
      "pool": "4d6 +2",
      "dano": "1d6 +5 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -16219,6 +16338,7 @@
      "nome": "Garras e presas",
      "pool": "4d6 +2",
      "dano": "1d6 +4 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -16339,6 +16459,7 @@
      "nome": "Pancada descomunal",
      "pool": "6d6",
      "dano": "2d6 +8 impacto",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -16467,6 +16588,7 @@
      "nome": "Garras e presas",
      "pool": "1d6",
      "dano": "1d6 +1 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -16589,6 +16711,7 @@
      "nome": "Golpe",
      "pool": "2d6+2 +4",
      "dano": "1d6 impacto",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -16715,6 +16838,7 @@
      "nome": "Dardo flamejante (Fogo 1)",
      "pool": "3d6+2 +1",
      "dano": "1d6 fogo",
+     "perfArma": null,
      "speed": 6,
      "classe": "arte",
      "notas": "Custa 1 Mana; resistido por Soak/Esquiva"
@@ -16843,6 +16967,7 @@
      "nome": "Garras e presas",
      "pool": "8d6 +6",
      "dano": "3d6 +11 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -16973,6 +17098,7 @@
      "nome": "Garras e mordida",
      "pool": "5d6+2 +4",
      "dano": "1d6 +6 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -17133,6 +17259,7 @@
      "nome": "Garras e presas",
      "pool": "2d6+2 +4",
      "dano": "1d6 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -17301,6 +17428,7 @@
      "nome": "Garras e presas",
      "pool": "3d6",
      "dano": "1d6 +4 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -17418,6 +17546,7 @@
      "nome": "Garras e presas",
      "pool": "8d6 +5",
      "dano": "3d6 +11 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -17538,6 +17667,7 @@
      "nome": "Garras e presas",
      "pool": "3d6",
      "dano": "1d6 +3 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -17660,6 +17790,7 @@
      "nome": "Arma",
      "pool": "4d6 +1",
      "dano": "1d6 +4 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -17802,6 +17933,7 @@
      "nome": "Garras e presas",
      "pool": "1d6",
      "dano": "1d6 +1 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -17918,6 +18050,7 @@
      "nome": "Pseudópode",
      "pool": "5d6 +1",
      "dano": "2d6 +5 impacto",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -18043,6 +18176,7 @@
      "nome": "Golpe planar",
      "pool": "5d6+2 +6",
      "dano": "1d6 +6 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -18216,6 +18350,7 @@
      "nome": "Golpe",
      "pool": "4d6 +2",
      "dano": "1d6 +5 impacto",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -18366,6 +18501,7 @@
      "nome": "Golpe",
      "pool": "3d6 +1",
      "dano": "1d6 +3 impacto",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -18510,6 +18646,7 @@
      "nome": "Garras e presas",
      "pool": "3d6+2 +4",
      "dano": "1d6 +2 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -18635,6 +18772,7 @@
      "nome": "Pancada descomunal",
      "pool": "7d6 +1",
      "dano": "2d6 +9 impacto",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -18764,6 +18902,7 @@
      "nome": "Pancada descomunal",
      "pool": "7d6",
      "dano": "2d6 +9 impacto",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -18899,6 +19038,7 @@
      "nome": "Pancada descomunal",
      "pool": "9d6 +3",
      "dano": "3d6 +13 impacto",
+     "perfArma": null,
      "speed": 7,
      "classe": "pesada"
     }
@@ -19060,6 +19200,7 @@
      "nome": "Pancada descomunal",
      "pool": "8d6+2 +1",
      "dano": "3d6 +12 impacto",
+     "perfArma": null,
      "speed": 7,
      "classe": "pesada"
     }
@@ -19212,6 +19353,7 @@
      "nome": "Pancada descomunal",
      "pool": "7d6+2 +1",
      "dano": "2d6 +10 impacto",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -19359,6 +19501,7 @@
      "nome": "Pancada descomunal",
      "pool": "7d6+2 +1",
      "dano": "2d6 +10 impacto",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -19488,6 +19631,7 @@
      "nome": "Garras e presas",
      "pool": "5d6+2 +4",
      "dano": "2d6 +6 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -19614,6 +19758,7 @@
      "nome": "Golpe planar",
      "pool": "8d6+2 +6",
      "dano": "3d6 +12 corte",
+     "perfArma": null,
      "speed": 7,
      "classe": "pesada"
     }
@@ -19779,6 +19924,7 @@
      "nome": "Arma",
      "pool": "3d6",
      "dano": "1d6 +4 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -19904,6 +20050,7 @@
      "nome": "Arma",
      "pool": "1d6+2",
      "dano": "1d6 +2 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -20034,6 +20181,7 @@
      "nome": "Arma",
      "pool": "6d6+2 +3",
      "dano": "2d6 +8 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -20153,6 +20301,7 @@
      "nome": "Arma",
      "pool": "6d6 +3",
      "dano": "2d6 +7 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -20282,6 +20431,7 @@
      "nome": "Arma",
      "pool": "8d6 +4",
      "dano": "2d6 +11 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -20409,6 +20559,7 @@
      "nome": "Arma",
      "pool": "5d6 +1",
      "dano": "1d6 +5 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -20531,6 +20682,7 @@
      "nome": "Arma",
      "pool": "7d6+2 +3",
      "dano": "2d6 +10 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -20647,6 +20799,7 @@
      "nome": "Garras e presas",
      "pool": "2d6",
      "dano": "1d6 +3 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -20765,6 +20918,7 @@
      "nome": "Garras e presas",
      "pool": "6d6+2 +3",
      "dano": "2d6 +8 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -20905,6 +21059,7 @@
      "nome": "Garras e presas",
      "pool": "4d6",
      "dano": "2d6 +6 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -21032,6 +21187,7 @@
      "nome": "Garras e mordida",
      "pool": "10d6+2 +9",
      "dano": "4d6 +16 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -21223,6 +21379,7 @@
      "nome": "Golpe planar",
      "pool": "6d6+2 +4",
      "dano": "2d6 +8 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -21340,6 +21497,7 @@
      "nome": "Garras e presas",
      "pool": "5d6 +1",
      "dano": "2d6 +6 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -21464,6 +21622,7 @@
      "nome": "Espada curta",
      "pool": "3d6 +2",
      "dano": "1d6 +3 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -21583,6 +21742,7 @@
      "nome": "Garras e presas",
      "pool": "3d6+2",
      "dano": "1d6 +5 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -21702,6 +21862,7 @@
      "nome": "Arma",
      "pool": "3d6+2 +2",
      "dano": "1d6 +3 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -21854,6 +22015,7 @@
      "nome": "Golpe planar",
      "pool": "7d6 +5",
      "dano": "2d6 +9 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -22009,6 +22171,7 @@
      "nome": "Garras e presas",
      "pool": "6d6 +1",
      "dano": "3d6 +8 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -22135,6 +22298,7 @@
      "nome": "Garras e presas",
      "pool": "3d6",
      "dano": "1d6 +4 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -22250,6 +22414,7 @@
      "nome": "Garras e presas",
      "pool": "4d6+2",
      "dano": "2d6 +6 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -22367,6 +22532,7 @@
      "nome": "Garras e presas",
      "pool": "4d6+2 +1",
      "dano": "2d6 +6 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -22492,6 +22658,7 @@
      "nome": "Arma",
      "pool": "2d6+2",
      "dano": "1d6 +4 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -22617,6 +22784,7 @@
      "nome": "Arma",
      "pool": "2d6+2",
      "dano": "1d6 +3 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -22742,6 +22910,7 @@
      "nome": "Arma",
      "pool": "3d6 +2",
      "dano": "1d6 +3 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -22876,6 +23045,7 @@
      "nome": "Arma",
      "pool": "2d6+2 +1",
      "dano": "1d6 +2 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -23002,6 +23172,7 @@
      "nome": "Garras e mordida",
      "pool": "10d6 +6",
      "dano": "4d6 +15 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -23135,6 +23306,7 @@
      "nome": "Garras e presas",
      "pool": "4d6 +4",
      "dano": "1d6 +3 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -23265,6 +23437,7 @@
      "nome": "Golpe planar",
      "pool": "5d6 +4",
      "dano": "1d6 +5 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -23387,6 +23560,7 @@
      "nome": "Golpe planar",
      "pool": "4d6+2 +2",
      "dano": "1d6 +5 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -23506,6 +23680,7 @@
      "nome": "Garras e presas",
      "pool": "3d6",
      "dano": "1d6 +4 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -23626,6 +23801,7 @@
      "nome": "Garras e presas",
      "pool": "5d6+2",
      "dano": "2d6 +8 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -23746,6 +23922,7 @@
      "nome": "Arma",
      "pool": "1d6+2",
      "dano": "1d6 +2 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -23876,6 +24053,7 @@
      "nome": "Garras e presas",
      "pool": "9d6+2 +7",
      "dano": "4d6 +14 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -24047,6 +24225,7 @@
      "nome": "Golpe planar",
      "pool": "4d6+2 +4",
      "dano": "1d6 +4 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -24176,6 +24355,7 @@
      "nome": "Garras e presas",
      "pool": "5d6+2",
      "dano": "2d6 +7 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -24296,6 +24476,7 @@
      "nome": "Garras e presas",
      "pool": "3d6+2",
      "dano": "1d6 +5 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -24419,6 +24600,7 @@
      "nome": "Arma",
      "pool": "5d6+2 +4",
      "dano": "2d6 +6 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -24576,6 +24758,7 @@
      "nome": "Garras e presas",
      "pool": "5d6",
      "dano": "2d6 +7 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -24714,6 +24897,7 @@
      "nome": "Arma",
      "pool": "6d6+2 +4",
      "dano": "1d6 +8 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -24837,6 +25021,7 @@
      "nome": "Golpe planar",
      "pool": "3d6 +1",
      "dano": "1d6 +3 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -24966,6 +25151,7 @@
      "nome": "Garras e presas",
      "pool": "3d6+2",
      "dano": "1d6 +5 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -25091,6 +25277,7 @@
      "nome": "Garras e presas",
      "pool": "7d6+2",
      "dano": "3d6 +10 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -25229,6 +25416,7 @@
      "nome": "Golpe",
      "pool": "3d6+2 +6",
      "dano": "1d6 +2 impacto",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -25410,6 +25598,7 @@
      "nome": "Golpe planar",
      "pool": "6d6 +4",
      "dano": "2d6 +7 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -25539,6 +25728,7 @@
      "nome": "Pseudópode",
      "pool": "4d6+2 +1",
      "dano": "1d6 +5 impacto",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -25660,6 +25850,7 @@
      "nome": "Arma",
      "pool": "4d6 +2",
      "dano": "1d6 +5 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -25786,6 +25977,7 @@
      "nome": "Garras e presas",
      "pool": "2d6+2",
      "dano": "1d6 +3 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -25915,6 +26107,7 @@
      "nome": "Garras e presas",
      "pool": "6d6",
      "dano": "2d6 +9 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -26041,6 +26234,7 @@
      "nome": "Garras e presas",
      "pool": "6d6 +4",
      "dano": "2d6 +7 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -26164,6 +26358,7 @@
      "nome": "Garras e presas",
      "pool": "4d6+2",
      "dano": "2d6 +6 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -26293,6 +26488,7 @@
      "nome": "Garras e presas",
      "pool": "3d6",
      "dano": "1d6 +4 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -26409,6 +26605,7 @@
      "nome": "Garras e presas",
      "pool": "7d6+2",
      "dano": "3d6 +10 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -26529,6 +26726,7 @@
      "nome": "Garras e presas",
      "pool": "1d6",
      "dano": "1d6 +1 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -26639,6 +26837,7 @@
      "nome": "Bola de fogo (Fogo 3)",
      "pool": "5d6 +3",
      "dano": "3d6 fogo (área)",
+     "perfArma": null,
      "speed": 6,
      "classe": "arte",
      "notas": "3 Mana; explosão em área. O pool vale enquanto a pendência 25 do Arcano não fechar: área talvez não tenha pontaria"
@@ -26781,6 +26980,7 @@
      "nome": "Garras e presas",
      "pool": "7d6+2",
      "dano": "3d6 +11 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -26919,6 +27119,7 @@
      "nome": "Garras e presas",
      "pool": "6d6 +1",
      "dano": "2d6 +7 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -27061,6 +27262,7 @@
      "nome": "Golpe planar",
      "pool": "6d6+2 +5",
      "dano": "2d6 +8 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -27186,6 +27388,7 @@
      "nome": "Golpe planar",
      "pool": "7d6+2 +7",
      "dano": "2d6 +10 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -27347,6 +27550,7 @@
      "nome": "Garras e presas",
      "pool": "8d6+2",
      "dano": "3d6 +12 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -27467,6 +27671,7 @@
      "nome": "Arma",
      "pool": "3d6+2 +3",
      "dano": "1d6 +2 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -27616,6 +27821,7 @@
      "nome": "Golpe planar",
      "pool": "3d6+2 +2",
      "dano": "1d6 +3 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -27742,6 +27948,7 @@
      "nome": "Arma",
      "pool": "2d6+2 +1",
      "dano": "1d6 +3 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -27864,6 +28071,7 @@
      "nome": "Garras e presas",
      "pool": "4d6+2 +1",
      "dano": "1d6 +5 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -28001,6 +28209,7 @@
      "nome": "Arma",
      "pool": "5d6 +1",
      "dano": "2d6 +6 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -28145,6 +28354,7 @@
      "nome": "Garras e presas",
      "pool": "2d6 +1",
      "dano": "1d6 +2 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -28279,6 +28489,7 @@
      "nome": "Golpe",
      "pool": "5d6+2 +4",
      "dano": "1d6 +6 impacto",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -28400,6 +28611,7 @@
      "nome": "Garras e presas",
      "pool": "3d6 +1",
      "dano": "1d6 +2 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -28540,6 +28752,7 @@
      "nome": "Garras e presas",
      "pool": "6d6 +1",
      "dano": "2d6 +7 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -28678,6 +28891,7 @@
      "nome": "Garras e presas",
      "pool": "0d6+2",
      "dano": "1d6 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -28791,6 +29005,7 @@
      "nome": "Garras e presas",
      "pool": "4d6",
      "dano": "2d6 +6 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -28907,6 +29122,7 @@
      "nome": "Garras e presas",
      "pool": "6d6",
      "dano": "2d6 +8 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -29024,6 +29240,7 @@
      "nome": "Arma",
      "pool": "3d6+2 +2",
      "dano": "1d6 +4 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -29162,6 +29379,7 @@
      "nome": "Golpe",
      "pool": "6d6 +4",
      "dano": "1d6 +7 impacto",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -29321,6 +29539,7 @@
      "nome": "Golpe planar",
      "pool": "6d6 +4",
      "dano": "1d6 +7 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -29445,6 +29664,7 @@
      "nome": "Garras e presas",
      "pool": "5d6+2 +5",
      "dano": "2d6 +6 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -29609,6 +29829,7 @@
      "nome": "Garras e presas",
      "pool": "6d6 +5",
      "dano": "2d6 +7 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -29723,6 +29944,7 @@
      "nome": "Garras e presas",
      "pool": "5d6 +4",
      "dano": "2d6 +5 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -29848,6 +30070,7 @@
      "nome": "Golpe planar",
      "pool": "8d6+2 +6",
      "dano": "3d6 +12 corte",
+     "perfArma": null,
      "speed": 7,
      "classe": "pesada"
     }
@@ -29969,6 +30192,7 @@
      "nome": "Garras e presas",
      "pool": "8d6+2 +6",
      "dano": "3d6 +12 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -30101,6 +30325,7 @@
      "nome": "Golpe planar",
      "pool": "7d6 +5",
      "dano": "2d6 +9 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -30220,6 +30445,7 @@
      "nome": "Garras e presas",
      "pool": "3d6+2 +5",
      "dano": "1d6 +2 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -30389,6 +30615,7 @@
      "nome": "Arma",
      "pool": "4d6 +1",
      "dano": "1d6 +4 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -30510,6 +30737,7 @@
      "nome": "Pancada descomunal",
      "pool": "5d6",
      "dano": "2d6 +7 impacto",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -30637,6 +30865,7 @@
      "nome": "Golpe planar",
      "pool": "6d6 +5",
      "dano": "2d6 +7 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -30820,6 +31049,7 @@
      "nome": "Arma",
      "pool": "3d6",
      "dano": "1d6 +5 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -30943,6 +31173,7 @@
      "nome": "Garras e presas",
      "pool": "7d6",
      "dano": "3d6 +10 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -31061,6 +31292,7 @@
      "nome": "Garras e presas",
      "pool": "5d6 +2",
      "dano": "2d6 +6 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -31186,6 +31418,7 @@
      "nome": "Garras e presas",
      "pool": "7d6+2",
      "dano": "3d6 +10 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -31306,6 +31539,7 @@
      "nome": "Garras e presas",
      "pool": "5d6 +4",
      "dano": "2d6 +6 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -31464,6 +31698,7 @@
      "nome": "Golpe planar",
      "pool": "5d6+2 +4",
      "dano": "2d6 +6 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -31579,6 +31814,7 @@
      "nome": "Garras e presas",
      "pool": "3d6+2",
      "dano": "1d6 +5 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -31705,6 +31941,7 @@
      "nome": "Garras e presas",
      "pool": "2d6+2 +4",
      "dano": "1d6 +1 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -31873,6 +32110,7 @@
      "nome": "Golpe planar",
      "pool": "7d6 +7",
      "dano": "2d6 +9 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -32040,6 +32278,7 @@
      "nome": "Garras e presas",
      "pool": "2d6+2",
      "dano": "1d6 +3 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -32152,6 +32391,7 @@
      "nome": "Garras e presas",
      "pool": "6d6",
      "dano": "2d6 +7 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -32267,6 +32507,7 @@
      "nome": "Garras e presas",
      "pool": "2d6",
      "dano": "1d6 +3 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -32384,6 +32625,7 @@
      "nome": "Garras e mordida",
      "pool": "2d6 +1",
      "dano": "1d6 +1 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -32504,6 +32746,7 @@
      "nome": "Garras e presas",
      "pool": "4d6+2",
      "dano": "2d6 +6 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -32619,6 +32862,7 @@
      "nome": "Pseudópode",
      "pool": "6d6 +1",
      "dano": "3d6 +7 impacto",
+     "perfArma": null,
      "speed": 7,
      "classe": "pesada"
     }
@@ -32745,6 +32989,7 @@
      "nome": "Golpe planar",
      "pool": "2d6+2 +2",
      "dano": "1d6 +2 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -32910,6 +33155,7 @@
      "nome": "Garras e presas",
      "pool": "5d6+2 +3",
      "dano": "2d6 +6 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -33061,6 +33307,7 @@
      "nome": "Arma",
      "pool": "3d6+2 +1",
      "dano": "1d6 +4 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -33177,6 +33424,7 @@
      "nome": "Garras e presas",
      "pool": "1d6",
      "dano": "1d6 +1 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -33293,6 +33541,7 @@
      "nome": "Golpe planar",
      "pool": "4d6+2 +5",
      "dano": "1d6 +4 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -33465,6 +33714,7 @@
      "nome": "Garras e presas",
      "pool": "1d6+2",
      "dano": "1d6 +2 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -33586,6 +33836,7 @@
      "nome": "Garras e presas",
      "pool": "1d6",
      "dano": "1d6 +1 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -33703,6 +33954,7 @@
      "nome": "Garras e presas",
      "pool": "7d6 +4",
      "dano": "3d6 +9 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -33835,6 +34087,7 @@
      "nome": "Arma",
      "pool": "7d6",
      "dano": "3d6 +9 corte",
+     "perfArma": null,
      "speed": 7,
      "classe": "pesada"
     }
@@ -33959,6 +34212,7 @@
      "nome": "Garras e presas",
      "pool": "5d6+2",
      "dano": "2d6 +8 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -34079,6 +34333,7 @@
      "nome": "Garras e presas",
      "pool": "9d6",
      "dano": "3d6 +13 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -34218,6 +34473,7 @@
      "nome": "Garras e presas",
      "pool": "8d6 +5",
      "dano": "2d6 +11 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -34345,6 +34601,7 @@
      "nome": "Arma",
      "pool": "3d6+2 +2",
      "dano": "1d6 +4 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -34478,6 +34735,7 @@
      "nome": "Golpe planar",
      "pool": "5d6 +3",
      "dano": "1d6 +5 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -34627,6 +34885,7 @@
      "nome": "Garras e presas",
      "pool": "2d6",
      "dano": "1d6 +2 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -34752,6 +35011,7 @@
      "nome": "Garras e presas",
      "pool": "0d6+2",
      "dano": "1d6 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -34862,6 +35122,7 @@
      "nome": "Garras e presas",
      "pool": "4d6 +2",
      "dano": "1d6 +4 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -35013,6 +35274,7 @@
      "nome": "Garras e presas",
      "pool": "9d6 +5",
      "dano": "3d6 +13 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -35139,6 +35401,7 @@
      "nome": "Garras e presas",
      "pool": "2d6",
      "dano": "1d6 +2 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -35263,6 +35526,7 @@
      "nome": "Golpe planar",
      "pool": "6d6 +4",
      "dano": "2d6 +7 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -35384,6 +35648,7 @@
      "nome": "Garras e presas",
      "pool": "2d6+2 +2",
      "dano": "1d6 +2 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -35513,6 +35778,7 @@
      "nome": "Pseudópode",
      "pool": "9d6",
      "dano": "3d6 +13 impacto",
+     "perfArma": null,
      "speed": 7,
      "classe": "pesada"
     }
@@ -35640,6 +35906,7 @@
      "nome": "Garras e presas",
      "pool": "4d6+2",
      "dano": "2d6 +6 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -35771,6 +36038,7 @@
      "nome": "Golpe",
      "pool": "4d6 +2",
      "dano": "1d6 +5 impacto",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -35898,6 +36166,7 @@
      "nome": "Arma",
      "pool": "3d6+2 +2",
      "dano": "1d6 +4 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -36027,6 +36296,7 @@
      "nome": "Golpe planar",
      "pool": "7d6+2 +9",
      "dano": "2d6 +10 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -36213,6 +36483,7 @@
      "nome": "Espada longa",
      "pool": "4d6 +1",
      "dano": "2d6 +3 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -36345,6 +36616,7 @@
      "nome": "Toque dilacerante",
      "pool": "4d6 +2",
      "dano": "2d6 necrótico (vs Def. Mental)",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve",
      "notas": "atravessa matéria; só Arcano, Proteção ou arma encantada o ferem"
@@ -36497,6 +36769,7 @@
      "nome": "Garras e presas",
      "pool": "1d6+2 +1",
      "dano": "1d6 +1 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -36619,6 +36892,7 @@
      "nome": "Golpe planar",
      "pool": "4d6 +4",
      "dano": "1d6 +3 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -36796,6 +37070,7 @@
      "nome": "Arma",
      "pool": "3d6 +1",
      "dano": "1d6 +3 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -36917,6 +37192,7 @@
      "nome": "Garras e mordida",
      "pool": "10d6+2 +6",
      "dano": "4d6 +16 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -37050,6 +37326,7 @@
      "nome": "Garras e presas",
      "pool": "10d6+2 +10",
      "dano": "4d6 +16 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -37222,6 +37499,7 @@
      "nome": "Garras e mordida",
      "pool": "7d6+2 +5",
      "dano": "3d6 +10 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -37348,6 +37626,7 @@
      "nome": "Arma",
      "pool": "2d6+2 +1",
      "dano": "1d6 +3 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -37471,6 +37750,7 @@
      "nome": "Golpe planar",
      "pool": "2d6+2 +1",
      "dano": "1d6 +3 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -37587,6 +37867,7 @@
      "nome": "Garras e presas",
      "pool": "5d6+2",
      "dano": "2d6 +8 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -37707,6 +37988,7 @@
      "nome": "Garras e presas",
      "pool": "9d6",
      "dano": "3d6 +13 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -37831,6 +38113,7 @@
      "nome": "Garras e presas",
      "pool": "8d6 +3",
      "dano": "3d6 +11 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -37989,6 +38272,7 @@
      "nome": "Garras e presas",
      "pool": "3d6+2",
      "dano": "1d6 +5 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -38112,6 +38396,7 @@
      "nome": "Garras e presas",
      "pool": "7d6+2",
      "dano": "3d6 +10 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -38229,6 +38514,7 @@
      "nome": "Arma",
      "pool": "2d6+2",
      "dano": "1d6 +3 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -38355,6 +38641,7 @@
      "nome": "Pancada descomunal",
      "pool": "6d6 +1",
      "dano": "2d6 +7 impacto",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -38490,6 +38777,7 @@
      "nome": "Garras e presas",
      "pool": "4d6",
      "dano": "2d6 +6 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -38606,6 +38894,7 @@
      "nome": "Garras e presas",
      "pool": "8d6+2",
      "dano": "3d6 +12 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -38728,6 +39017,7 @@
      "nome": "Garras e presas",
      "pool": "5d6 +4",
      "dano": "2d6 +6 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -38890,6 +39180,7 @@
      "nome": "Garras e presas",
      "pool": "6d6+2",
      "dano": "2d6 +9 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -39013,6 +39304,7 @@
      "nome": "Garras e presas",
      "pool": "5d6",
      "dano": "2d6 +7 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -39130,6 +39422,7 @@
      "nome": "Garras e presas",
      "pool": "6d6",
      "dano": "2d6 +9 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -39263,6 +39556,7 @@
      "nome": "Golpe",
      "pool": "5d6 +5",
      "dano": "1d6 +5 impacto",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -39462,6 +39756,7 @@
      "nome": "Golpe planar",
      "pool": "2d6+2 +2",
      "dano": "1d6 +2 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -39588,6 +39883,7 @@
      "nome": "Garras e presas",
      "pool": "1d6+2",
      "dano": "1d6 +2 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -39704,6 +40000,7 @@
      "nome": "Garras e presas",
      "pool": "9d6 +1",
      "dano": "3d6 +13 perfurante",
+     "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
     }
@@ -39835,6 +40132,7 @@
      "nome": "Garras e presas",
      "pool": "4d6+2",
      "dano": "2d6 +6 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -39953,6 +40251,7 @@
      "nome": "Garras e presas",
      "pool": "1d6",
      "dano": "1d6 +1 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -40075,6 +40374,7 @@
      "nome": "Garras e presas",
      "pool": "5d6+2 +1",
      "dano": "2d6 +7 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -40205,6 +40505,7 @@
      "nome": "Golpe planar",
      "pool": "6d6 +5",
      "dano": "2d6 +7 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -40373,6 +40674,7 @@
      "nome": "Golpe",
      "pool": "3d6+2 +2",
      "dano": "1d6 +3 impacto",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -40514,6 +40816,7 @@
      "nome": "Garras e presas",
      "pool": "4d6 +2",
      "dano": "1d6 +5 perfurante",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -40638,6 +40941,7 @@
      "nome": "Garras e mordida",
      "pool": "5d6+2 +3",
      "dano": "2d6 +6 perfurante",
+     "perfArma": 0,
      "speed": 6,
      "classe": "media"
     }
@@ -40784,6 +41088,7 @@
      "nome": "Golpe planar",
      "pool": "5d6 +4",
      "dano": "1d6 +5 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -40917,6 +41222,7 @@
      "nome": "Golpe planar",
      "pool": "5d6+2 +3",
      "dano": "1d6 +6 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -41068,6 +41374,7 @@
      "nome": "Golpe planar",
      "pool": "4d6+2 +2",
      "dano": "1d6 +5 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -41194,6 +41501,7 @@
      "nome": "Arma",
      "pool": "5d6 +2",
      "dano": "2d6 +6 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -41325,6 +41633,7 @@
      "nome": "Golpe",
      "pool": "3d6+2 +1",
      "dano": "1d6 +5 impacto",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }

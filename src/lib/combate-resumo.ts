@@ -20,6 +20,7 @@ export interface ResumoCombate {
   defesaMental: number; // Defesa Mental (o bloco da criatura já trazia a dela)
   soak: Soak;     // Absorção por tipo (abate o dano bruto sofrido)
   resistPerf: number; // Resistência a Perfuração (Nível) da armadura
+  perfArma: number | null; // Nível de Perfuração do modo PRINCIPAL desta arma (null: modo não é Perfurante)
   qa: QACombate;  // Quase-Acerto: o que a arma amplia e o que o couro abate
   /**
    * O PASSO REAL, que o tabuleiro precisa e não tinha.
@@ -136,6 +137,10 @@ export function resumoCombatePC(S: any): ResumoCombate {
   const principal = escolhido || modos.find((m) => m.principal) || modos[0];
   const sigla = MODO_SIGLA[(principal?.tipo) as keyof typeof MODO_SIGLA] || '';
   const dano = `${w.dado}d6${forcaAp ? ` ${sgn(forcaAp)}` : ''}${sigla ? ` ${sigla}` : ''}`;
+  // O NÍVEL DE PERFURAÇÃO do modo em uso, para o gate (`gatePerfuracaoAbre`).
+  // `null` quando o modo não é Perfurante: a função lê isso como "não se
+  // aplica", e não como "Nível zero" (que resvalaria em qualquer armadura).
+  const perfArma = principal?.tipo === 'perfurante' ? (principal.perf ?? 0) : null;
 
   // Defesa física passiva = Esquiva: (Destreza + Esquiva)×2 + Centelha − penalidade física
   const def = defesa({ destreza: attrs.destreza || 0, habilidade: skills.esquiva || 0, centelha: C }) - penFisica;
@@ -184,5 +189,5 @@ export function resumoCombatePC(S: any): ResumoCombate {
   // que deixar de ser.
   const pericias = { ...skills2, ...skills };
   return { arma: w.nome, ataque, dano, defesa: def, defesaMental: defMental, soak,
-    resistPerf: armSt.resistPerf || 0, qa, passo, atributos: attrs, pericias };
+    resistPerf: armSt.resistPerf || 0, perfArma, qa, passo, atributos: attrs, pericias };
 }

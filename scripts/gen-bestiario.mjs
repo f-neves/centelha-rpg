@@ -74,7 +74,12 @@ function stat(b) {
     const fa = a.distancia ? 0 : forcaAp;
     const perf = a.perf ?? a.pen;
     const dano = `${a.dado}d6${fa ? ` +${fa}` : ''} ${a.tipo}${perf != null ? ` · perf. ${perf}` : ''}`;
-    return { nome: a.nome, pool, dano, ticks: a.ticks, ...(a.notas ? { notas: a.notas } : {}) };
+    // O NÍVEL DE PERFURAÇÃO como campo numérico, e não só dentro da string do
+    // `dano`: é dele que o gate (`gatePerfuracaoAbre`) lê, do mesmo jeito que lê
+    // `perfArma` do lado do PC (`combate-resumo.ts`). `null` quando o ataque não
+    // é Perfurante, e não Nível 0 (que resvalaria em qualquer armadura).
+    const perfArma = a.tipo === 'perfurante' ? (perf ?? 0) : null;
+    return { nome: a.nome, pool, dano, perfArma, ticks: a.ticks, ...(a.notas ? { notas: a.notas } : {}) };
   });
   const cv = couracaDe(b.id);
   const soak = Object.fromEntries(SOAKCATS.map((m) => {

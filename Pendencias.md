@@ -1257,17 +1257,20 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   que fazia o carimbo valer: alguém que leia o perfil na hora de aplicar a regra.**
 
   O perfil é gravado, viaja no encontro, aparece na tela, é comparável e é recarimbável. E é lido
-  em **um** lugar do código de produção, `grid.astro:8820` (`perfil: { ...REGRAS_CENA }`), onde ele é copiado para dentro da
+  em **um** lugar do código de produção, `grid.astro:8832` (`perfil: { ...REGRAS_CENA }`), onde ele é copiado para dentro da
   entrada do lance, para o oráculo. `entrada.perfil` **não é consultado em lugar nenhum**: nem em
   `resolverGolpe`, nem em `quase-acerto.ts`, nem em `calc.ts`, nem no harness. Nenhuma das quinze
   bandeiras faz o motor tomar um caminho diferente.
 
-  **Situação em 06/09/2026: `porte` deixou de ser uma delas, a primeira das quinze.**
-  `REGRAS_CENA.porte` passou a ser lido diretamente em `folhaDaAcao` (não via `entrada.perfil`
-  do lance, que continua sem leitor), somando `modificadorPorte` (`calc.ts`) em `ajAtq.flat`.
-  É só na mesa: o harness continua sem ler nenhuma das quinze, porque a segunda bateria não
-  acontece (o motivo, acima). As outras quatorze continuam exatamente como este parágrafo
-  descreve.
+  **Situação em 06/09/2026: `porte` e `gate` deixaram de ser duas delas, as duas primeiras
+  das quinze.** `REGRAS_CENA.porte`/`REGRAS_CENA.gate` passaram a ser lidos diretamente em
+  `folhaDaAcao` (não via `entrada.perfil` do lance, que continua sem leitor), somando
+  `modificadorPorte` em `ajAtq.flat` e aplicando `gatePerfuracaoAbre` (as duas em `calc.ts`)
+  em `resvalaGate`, calculado uma vez e usado nos dois lugares de `folhaDaAcao` que decidem
+  dano (`contaDoLance`, o oráculo/tela, e `fim`, que é o que `aplicarDano` de fato aplica —
+  achado nesta mesma rodada, ver o caso novo do `CATALOGO.md`). É só na mesa: o harness
+  continua sem ler nenhuma das quinze, porque a segunda bateria não acontece (o motivo,
+  acima). As outras treze continuam exatamente como este parágrafo descreve.
 
   **A infraestrutura da comparação de regras existe inteira e não está conectada ao motor.**
 
@@ -2393,9 +2396,9 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **O DEFEITO.** No Grid os dois papéis escrevem o mesmo campo por caminhos que não se conhecem.
 
   O jogador acrescenta pelo banco, e o banco lê a coluna e concatena lá dentro:
-  `SB.rpc('jogador_registra', { p_arena: ARENA.id, p_linha: linha })`, `grid.astro:9941`.
+  `SB.rpc('jogador_registra', { p_arena: ARENA.id, p_linha: linha })`, `grid.astro:9959`.
   O mestre grava o vetor inteiro da memória dele:
-  `await SB.from('mesa_arenas').update({ log: LOG }).eq('id', ARENA.id);`, `grid.astro:9976`. **A linha que o jogador acabou de
+  `await SB.from('mesa_arenas').update({ log: LOG }).eq('id', ARENA.id);`, `grid.astro:9994`. **A linha que o jogador acabou de
   registrar some se o `LOG` do mestre for anterior a ela, sem erro nenhum.** É o caminho normal dos
   dois durante uma cena.
 
@@ -2438,10 +2441,10 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | gesto | o que faz hoje |
   |---|---|
   | `logar()` | empurra uma linha e grava o vetor |
-  | `desfazer()` | tira a última linha com `acao` (`LOG.splice(idx, 1);`, `grid.astro:10043`) e grava o vetor |
+  | `desfazer()` | tira a última linha com `acao` (`LOG.splice(idx, 1);`, `grid.astro:10061`) e grava o vetor |
   | `editarLinha(id)` | muda `txt`/`pub` de uma linha, e grava o vetor |
-  | `excluirLinha(id)` | tira por id (`LOG.splice(i, 1);`, `grid.astro:10138`) e grava o vetor |
-  | `refazerLogDosEfeitos()` | `LOG = LOG.filter((e: any) => !minha(e));` (`grid.astro:10189`) e empurra N linhas novas |
+  | `excluirLinha(id)` | tira por id (`LOG.splice(i, 1);`, `grid.astro:10156`) e grava o vetor |
+  | `refazerLogDosEfeitos()` | `LOG = LOG.filter((e: any) => !minha(e));` (`grid.astro:10207`) e empurra N linhas novas |
 
   **E UMA CORREÇÃO AO ENUNCIADO: não existe zerar no Grid.** O `LOG = []` é do `combate.astro`
   (`if (zLog) { LOG = []; await persistLog(); }`, `combate.astro:2058`), na caixa de reiniciar
