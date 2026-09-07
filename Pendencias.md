@@ -1617,7 +1617,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   "sair da linha" compra. Hoje a diferença entre os dois rádios é **só o verbo do registro**.
 
   **DECIDIDO em 07/09/2026, item 1 (quem leva o dano): O DANO JÁ ROLADO PASSA INTEIRO, E A
-  ABSORÇÃO É DA QUEM SE INTERPÔS.** O acerto e o dano já resolvidos contra o alvo original se
+  ABSORÇÃO É DE QUEM SE INTERPÔS.** O acerto e o dano já resolvidos contra o alvo original se
   mantêm (nenhum novo teste de acerto), só o alvo físico do golpe muda para o interpositor; o
   que se aplica sobre esse dano é a Absorção de QUEM INTERPÔS, e não a do alvo original — se a
   Absorção também fosse a do alvo original, seria dano transferido e não interposição, e não é
@@ -2395,6 +2395,46 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   publicado a partir do dado), o risco não é a tela parar de mostrar algo: é o **capítulo publicado
   mudar sem ninguém ter pedido**, que é regra saindo de refatoração. Achando um caso desses, parar
   e escalar antes de fazer o split.
+
+  **A CONTAGEM, feita em 07/09/2026, antes de qualquer código.** Nenhum consumidor é gerador de
+  capítulo — a trava não dispara — mas são **mais sítios do que a seção original nomeava** (ela só
+  citava o `if (forma === 'nenhuma')` de `:779`). Dezesseis pontos de leitura em cinco arquivos:
+
+  **MOTOR, sete blocos — chamam `porCondicao`/`tirarCondicao`, aplicam ou retiram de verdade:**
+  `src/lib/artes-grid-mesa.ts:1149` (`await porCondicao(ctx, combDe(ctx, a.cid), g.condicao, plano.turnos);`);
+  `:1242` (`await porCondicao(ctx, combDe(ctx, id), plano.condicao, turnosRestantes(ef, t));`);
+  `:1299`, onde `plano.condicao` da linha de cima nasce (`condicao: g?.condicao || null,`);
+  `:1330` (`if (g?.condicao && !deveSair(novo)) {`);
+  `:1587` (`if (ef.condicao) await porCondicao(ctx, alvo, ef.condicao, turnosRestantes(ef, tickAtual(ctx)));`);
+  `:1846` (`await porCondicao(ctx, p.alvo, p.ef.condicao, turnosRestantes(p.ef, t));`);
+  `:1973`-`1979` (`if (trocouAlvo && ef.condicao) {` até `await porCondicao(ctx, combDe(ctx, id), ef.condicao, d.turnos);`, a condição segue o alvo quando ele muda);
+  `:1994`-`1997` (`if (ef.condicao) {` até `await tirarCondicao(ctx, combDe(ctx, cid), ef.condicao);`, dentro de `encerrarEfeito`).
+
+  **PORTÃO, um bloco, e é o ponto de atenção real:** `src/lib/artes-grid-mesa.ts:1808` (`if (!ef.dano_dados && !ef.condicao) continue;`) decide se o Efeito entra no laço de
+  processamento. Se os 9 perderem `ef.condicao` para um campo novo de classificação, este `if`
+  passa a valer `true` para eles (supondo que também não têm `dano_dados`) e eles são pulados do
+  laço inteiro. **Conferir, um a um dos 9, se pular o laço aqui é o comportamento certo** (parece
+  ser, já que "aplicar" é justamente o que não deveriam fazer) **ou se há outro efeito colateral
+  dentro do laço** (fere/cura/persiste) que algum dos 9 ainda precisa.
+
+  **CLASSIFICA/EXIBE, quatro blocos, sem chamar `porCondicao` nem `tirarCondicao`:**
+  `src/lib/artes-grid-mesa.ts:458` (`const cond = ef.condicao && CONDICAO[ef.condicao] ? CONDICAO[ef.condicao] : null;`);
+  `:1834` (`p.ef.condicao && CONDICAO[p.ef.condicao] ? CONDICAO[p.ef.condicao].nome : ''`, texto de log);
+  `src/lib/artes-grid.ts:1496`-`1497` (`if (ef.condicao && alvos.length) {`) — a prévia só entra se
+  `alvos.length`, e os 9 problemáticos têm `alvo: "nenhum"`: **já seguro por construção**;
+  `src/lib/artes-grid.ts:1673` (`if (ef.condicao && CONDICAO[ef.condicao]) partes.push(CONDICAO[ef.condicao].nome);`);
+  `src/lib/artes-grid-ui.ts:46` (`g.condicao && CONDICAO[g.condicao] ? CONDICAO[g.condicao].nome.toLowerCase() : ''`).
+
+  **RELATÓRIO, sem risco de capítulo:** `scripts/gen-grid-artes.mjs:395` (`efeitosNovos.filter((e) => e.grid.condicao).length`, dentro de um `console.log`) e `:405`
+  (`${(e.grid.materia || '').padEnd(11)}${e.grid.condicao || ''}`, atrás de `--lista`); o arquivo
+  escreve `artes.json`/`efeitos.json`, não capítulo.
+
+  **VALIDADOR, precisa saber conferir os DOIS campos depois do split:** `scripts/validate-data.mjs:170` (`if (g.condicao && !COND_IDS.has(g.condicao))`).
+
+  **O que isto muda no split decidido acima:** os sete blocos de MOTOR não precisam de auditoria
+  individual, porque o filtro de `:1808` já os protege a montante — se um Efeito não entra no
+  laço, nenhum dos sete roda para ele. O trabalho real de conferência é um só: os 9 casos contra
+  o `:1808`, mais atualizar `validate-data.mjs` para o campo novo.
 
 - [ ] **L40 · [MITIGADO EM 05/09/2026 · O CONSERTO É A MIGRAÇÃO 34] O registro do jogador que o
   mestre apaga sem saber** · *só o Grid. A metade que não depende de migração está no ar; a que
