@@ -1981,6 +1981,13 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
     falta, e pode sobrescrever o CSS commitado com saída quase vazia) virou **L50**, registrado
     à parte por não ser desta pendência e por instrução explícita de não consertar agora.
 
+  **Veredito SEGUE em 07/09/2026 (rodada 23, `docs/simulacao/caixa/23-revisora.md`, commit
+  `fc90e07`):** a Revisora conferiu os dois diffs (`ac71ade` e `cd59792`) direto no código, não
+  só leu o aviso, e confirma a leitura sobre manobra/firula: das cinco linhas que `ac71ade`
+  mudou, quatro nomeiam a mecânica de jogo e a quinta (a frase da Política) é sentido comum
+  varrido por engano. Rodou ela mesma os três `--check` novos e `npm run validate` (exit 0), e
+  conferiu as quatro exclusões estruturais linha a linha em cada gerador-fonte.
+
 - [ ] **L30 · [FAZER] OS DEZ MÓDULOS FORA DE TODO PACOTE DE TESTE** · *o mapa está em
   `scripts/mapa-cobertura.mjs`, e ele se refaz sozinho: `node scripts/mapa-cobertura.mjs`.*
 
