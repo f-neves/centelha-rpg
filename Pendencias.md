@@ -1628,6 +1628,41 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   ter sido alcançado pelo golpe original, por alcance ou geometria), parar e escalar antes de
   seguir — não é para resolver sozinho na implementação.
 
+  **DECIDIDO em 07/09/2026, item 2 (teste): NENHUM TESTE DEDICADO.** Pagando os Ticks e estando
+  dentro do alcance (item 3, abaixo), a interposição acontece — determinística, mesmo regime de
+  "Avançar para fechar distância" e "Levantar-se do chão" no mesmo catálogo (`Combate_Tempo.md`
+  §4.3), nenhuma das duas tem teste. O −1d6 da Recuperação (`:812`) continua valendo como
+  penalidade geral sobre testes feitos ali, não como gate de sucesso da interposição em si.
+
+  **DECIDIDO em 07/09/2026, item 5 (duração): UM GOLPE SÓ, O QUE A DISPAROU.** Consistente com
+  toda defesa física do sistema resolvendo por golpe individual (`defesas.md:67`) e com a ordem
+  já escrita, "a interposição resolve antes do golpe" no singular
+  (`docs/simulacao/02-projeto-harness.md:1152`). **Com requisito de tela, parte da decisão e não
+  sugestão:** ao declarar a interposição, a tela tem de dizer contra qual golpe ela vale; se
+  houver segundo golpe no mesmo Tick não coberto, ele aparece como não coberto — nunca em
+  silêncio. "Me interpus" sem essa linha lê como proteção da cena inteira, e não é.
+
+  **ITEM 3 (alcance), PARCIALMENTE DECIDIDO em 07/09/2026 — TETO = ALCANCE DA ARMA ORIGINAL,
+  MEDIDO DO AGRESSOR, PARA CORPO A CORPO.** Não inventa número novo (reusa a régua de Alcance que
+  já existe) e, para corpo a corpo, "só quem já está adjacente ao agressor" é a régua dizendo a
+  verdade sobre o que interpor contra uma espada exige.
+
+  **MAS ISTO NÃO FECHA O CASO À DISTÂNCIA, e a conferência pedida confirma a suspeita: não existe
+  "linha do golpe" em lugar nenhum do combate mundano.** A das Artes usa `Math.hypot` entre dois pontos (`src/lib/artes-grid-mesa.ts:829`).
+  A do ataque comum recebe a distância já pronta, num parâmetro chamado `metros` (`src/lib/alcance.ts:61`).
+  Quem a chama já calculou essa distância antes, com a variável `dist` (`src/pages/mesa/grid.astro:8630`).
+  As duas medem a mesma coisa: a distância entre um ponto e outro, nunca se um terceiro ponto está
+  NA RETA entre os dois. Um arco de Alcance 30 m mediria "dentro do alcance" para qualquer peça a
+  até 30 m do
+  atacante — inclusive atrás dele, ou a 20 m do aliado que a flecha mirava. **Só existe geometria
+  de reta no jogo dentro das Artes com `forma: "linha"` (`hexesDaFigura`), um subsistema
+  separado do ataque mundano.** Para corpo a corpo isso não importa (o alcance curto já colapsa
+  em adjacência a ambos); para ataque à distância, "dentro do alcance" e "na linha" são coisas
+  diferentes e produzem respostas diferentes. **Esta metade fica em aberto, é regra e é da
+  mesa:** ou o Interpor à distância aceita "dentro do alcance" mesmo sabendo do caso estranho
+  (nenhuma trava nova, o Alerta do item 1 cobre o resto), ou pede geometria de reta que hoje só
+  existe para Artes e precisaria de uma versão para ataque mundano.
+
   **ITEM 4 (o que o escudo faz) NÃO É DECISÃO DE MESA, É BANDEIRA DESLIGADA — conferido em
   07/09/2026.** `bloqueio` é uma das 15 bandeiras (`src/data/regras.json:2526`,
   `"bloqueio": false`), e enquanto ela estiver assim a rota de Bloqueio não existe em lugar
