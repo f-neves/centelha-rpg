@@ -39,8 +39,16 @@ const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const CAIXA = path.join(RAIZ, 'docs', 'simulacao', 'caixa');
 const MODELO = path.join(CAIXA, 'MODELO-executora.md');
 const ENVIAR = process.argv.includes('--enviar');
-/** O worktree da revisora, no mesmo layout que `duo.mjs` usa. */
-const REV = path.resolve(RAIZ, '..', 'centelha-revisora');
+// O worktree da revisora DESTA equipe (Agent Team, 07/09/2026): `centelha-techlead-revisora`,
+// não `centelha-revisora`. O nome antigo continua existindo no disco (era o da
+// equipe anterior, parada na rodada 14) e o `tenta()` abaixo não falha ao
+// achar um worktree de verdade lá dentro: ele só devolve um BASE errado, e
+// silencioso, sem avisar que é o worktree errado. Achado ao abrir a rodada 19,
+// que computou BASE = 53c18c0 (rodada 14) em vez de 8dd27d4 (o pin real,
+// conferido em `CONTRATO-REVISORA.md`). `duo.mjs` tem o mesmo nome antigo,
+// hardcoded, e não foi tocado aqui: fora do escopo desta frente, registrado
+// para o TechLead decidir.
+const REV = path.resolve(RAIZ, '..', 'centelha-techlead-revisora');
 
 const git = (c, cwd = RAIZ) => execSync(c, { cwd, encoding: 'utf8' }).trim();
 const tenta = (f, p = null) => { try { return f(); } catch { return p; } };
