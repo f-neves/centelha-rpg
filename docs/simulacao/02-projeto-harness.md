@@ -2313,6 +2313,16 @@ A rota escolhida é a **B**: N1 a N6 entram na mesa já chaveadas, somando-se à
 só** mede o perfil cheio e cada regra isolada. Isso torna a grade da §0.5 a grade oficial e o piloto
 um só.
 
+**DECIDIDO EM 06/09/2026: esta grade não é executada.** Fica registrada como
+desenhada e não executada, com o motivo em `docs/simulacao/ESTADO.md`
+("A FRENTE DE SIMULAÇÃO ESTÁ ENCERRADA") e em `Pendencias.md` (`L25`, agora
+**dívida de produto**, não pré-requisito de bateria): nove das quinze
+bandeiras que esta seção pressupõe ligadas são regra a escrever, seis delas
+(`n1` a `n6`) o núcleo do Tick inteiro, e nenhuma roda isolada. O que segue
+abaixo (a grade, o piloto, o `n = 2.527` aplicado em §0.10.1) continua sendo o
+desenho válido para o dia em que as quinze existirem no motor; até lá, é
+arquitetura sem execução, não um passo pendente da fila de hoje.
+
 ### 0.10.1 A grade oficial
 
 Refeita em 02/09 com as respostas da `04-prontidao.md` (**duas âncoras**, D1, e **dois níveis de

@@ -1117,3 +1117,52 @@ números da fila, mas não pode acrescentar nem remover um item dela.
 Ela renomeou um item, reescreveu outro, acrescentou um terceiro e derrubou a leitura
 de que 61,8% era teto. **Definir o que se está medindo mexeu mais na fila que medir**,
 e a lição para a próxima frente é essa: a pergunta vem antes do instrumento.
+
+---
+
+## A FRENTE DE SIMULAÇÃO ESTÁ ENCERRADA (06/09/2026)
+
+**Decidido: a segunda bateria não acontece.** A grade de 112 células fica
+registrada como desenhada e não executada, com o motivo escrito, e não como
+trabalho parado por falta de mão.
+
+**O motivo.** Nove das quinze bandeiras de regra (`L25`, `Pendencias.md`) são
+regra a escrever, e seis delas (`n1` a `n6`) são o núcleo do Tick inteiro, que
+nenhuma roda isolada: N2 só é observável com N1 ligada, N5 precisa da cadeia
+de N4, nenhuma das seis tem como estar pronta com as outras faltando. Comparar
+regras nesse estado custaria mais do que esta frente inteira produziu, e
+responderia uma pergunta que ninguém fez (quanto cada regra custa em carga)
+enquanto a pergunta que foi feita (quanto custa arbitrar o Grid de hoje) já
+está respondida.
+
+**O `L25` deixa de ser pré-requisito de bateria e passa a ser o que sempre foi
+por baixo: quinze regras publicadas que a mesa não joga.** Isso é dívida de
+produto, não de instrumento, e a fila delas (qual liga primeiro, em que ordem)
+é decisão de jogo, e não de medição. Fica registrado em `Pendencias.md` com
+esse rótulo.
+
+**O que esta frente entregou:**
+
+- **a resposta.** O trabalho do mestre nesta configuração não é uma coisa, são
+  três: **51% aritmética** (597.714 gestos), **32% o ⏭**, a cadência do
+  relógio (375.005), **17% julgamento** (199.238) — a metade, o terço e o
+  sexto, na linguagem de quem lê rápido (seção 1, `R:134` a `R:137`). E **o
+  teto do que os consertos DESENHADOS até hoje tiram é 76,7%** (273.445 de
+  1.171.957 gestos), não os 61,8% que a leitura antiga achava ser limite de
+  princípio (seção 2, acima);
+- **os consertos que entraram na mesa**, que são o que o mestre sente hoje: a
+  folha aceita o dado em vez do total digitado (`045f491`/`b9d0b01`), e o
+  avanço unificado resolve todo golpe vencido do Tick em que para
+  (`55674f1`/`5bd7e8c`);
+- **os instrumentos, que sobrevivem à frente** e continuam valendo para
+  qualquer trabalho futuro no Grid: o espelho de motor e o espelho de
+  inércia, os invariantes, os sinais/alarmes (o `ocasião · passo` que guarda o
+  piso de 11,4%), o oráculo de lances (`npm run lances`, `07-caminho-curto.md`),
+  este `CATALOGO.md`, a tabela de carimbo das migrações, e os portões
+  (`npm run validate`, o `pre-commit`).
+
+**O que ela não vai entregar, e por quê:** a comparação entre as quinze
+regras, porque as regras não existem no motor. Não é número que faltou medir;
+é código que falta escrever, e escrevê-lo é decisão de jogo (o **§0.10.2** e a
+seção "A GRADE OFICIAL" de `02-projeto-harness.md` continuam registrando o
+desenho, para o dia em que alguém decidir ligar uma bandeira de verdade).

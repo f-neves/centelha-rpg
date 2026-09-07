@@ -1252,9 +1252,9 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `resolverGolpe`, nem a folha do Grid, nem o harness. Hoje o Perfurante não resvala em ninguém.
   Ou o gate entra no `resolverGolpe` (e aí a Adaga, com Nível de Perfuração 0, passa a resvalar em
   porte Enorme para cima), ou ele sai da régua. Ficar escrito e não valer é o pior dos três.
-- [ ] **L25 · [PRÉ-REQUISITO DA GRADE DE 112] O item 1.0 da Etapa 1 foi dado como feito e não
-  está feito.** Ele entregou o carimbo, a migração e a tela, e **não entregou a única coisa que
-  fazia o carimbo valer: alguém que leia o perfil na hora de aplicar a regra.**
+- [ ] **L25 · [DÍVIDA DE PRODUTO, NÃO DE INSTRUMENTO] O item 1.0 da Etapa 1 foi dado como feito
+  e não está feito.** Ele entregou o carimbo, a migração e a tela, e **não entregou a única coisa
+  que fazia o carimbo valer: alguém que leia o perfil na hora de aplicar a regra.**
 
   O perfil é gravado, viaja no encontro, aparece na tela, é comparável e é recarimbável. E é lido
   em **um** lugar do código de produção, `grid.astro:8810` (`perfil: { ...REGRAS_CENA }`), onde ele é copiado para dentro da
@@ -1295,6 +1295,17 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   contador de ocasião, e só então medir. É o mesmo mecanismo que matou o eixo E4 (D31) antes de
   ele virar linha de relatório. Isto reparte o **L1** em quinze tarefas de motor, e **nenhuma
   medição de bandeira vale antes**.
+
+  **DECIDIDO EM 06/09/2026: a segunda bateria (a grade de 112 células) não acontece, e o `L25`
+  deixa de ser pré-requisito de bateria.** O levantamento das quinze (`docs/simulacao/ESTADO.md`,
+  seção "A FRENTE DE SIMULAÇÃO ESTÁ ENCERRADA") achou nove de regra a escrever e não seis de
+  ligação como a tabela do `02` §0.6.1 item 11 registrava — três delas (`modo2`, `curaSemArea`,
+  `curaDivide`) não têm mecanismo nenhum por trás para ligar, ao contrário do que aquela tabela
+  descrevia — e das nove, seis (`n1` a `n6`) são o núcleo do Tick inteiro, sem nenhuma rodando
+  isolada. Comparar regras nesse estado custaria mais do que a frente de medição inteira produziu,
+  respondendo uma pergunta que ninguém fez. **O `L25` passa a ser o que sempre foi por baixo:
+  quinze regras publicadas que a mesa não joga**, dívida de produto e não de instrumento, e a
+  fila de qual liga primeiro é decisão de jogo, não de medição.
 - [ ] **L34 · A FASE 2 · O TABULEIRO COMO EXPERIÊNCIA COMPLETA DE COMBATE** · *a lista das seis,
   escrita em 05/09/2026. Ela vinha sendo cobrada por número desde 04/09 e não estava em documento
   nenhum: o furo era só esse, e é o que esta entrada conserta.*
