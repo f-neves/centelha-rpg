@@ -71,6 +71,9 @@ Decisões de engenharia tomadas sem perguntar, com o custo de cada uma.
 | D15b | a limpeza de `acao.interpoe` depois do golpe cair (`interposicaoConsumida`) só escreve quando quem resolve é o MESTRE | não há RPC de jogador para escrever numa peça terceira (nem quem ataca, nem quem apanha); um jogador resolvendo o próprio golpe adiado contra um interpositor deixa a flag presa até o mestre agir. Inofensivo: a chave é `aid`+Tick exatos, que não se repetem, então a flag presa nunca cobre um golpe futuro por engano |
 | D15c | a porta da Recuperação (item 6) ficou só com o preço pronto (`custoInterporRecuperacao`, testado), sem gatilho na tela | ver "O QUE FICOU EM ABERTO", com o custo estimado de terminar |
 | D15d | `acaoVazia` (`combate-tempo.ts`) passou a tratar `{interpoe: {...}}` como não-vazia | sem isso, `acaoNo` (a mesa) apagava a própria cobertura em todo lugar que lê por ele, achado só ao integrar, e não fazia parte do plano. Auditado contra os outros 20 chamadores de `acaoVazia`/`acaoNo` no `grid.astro`: nenhum dependia do valor antigo (a maioria já refaz a mesma pergunta por `temGesto`, que não mudou) |
+| D15e (TechLead) | reconciliar `origin/main` com rebase (não merge) e empurrar, sem perguntar | `53c18c0` só adicionava `docs/simulacao/caixa/14-revisora.md`, zero sobreposição com os dez commits locais, conferido antes de agir; `npm run validate` rodado de novo pós-rebase, mesmo resultado. Mecânica de git sem conteúdo de regra, dentro do que o TechLead decide sozinho (`TECHLEAD.md` §1). Hashes desta rodada mudaram por causa do rebase; corrigidos no topo deste arquivo |
+| D15f (TechLead) | porta da Recuperação (item 6, metade 2) termina AGORA, antes de mandar para a Revisora, em vez de virar rodada própria | evita gastar um lote inteiro do teto de quatro revisando uma metade do Interpor separada da outra; a Executora já estimou reuso alto (candidatos, geometria, cobertura e redirect de dano já prontos). Decisão de sequência, não de regra: a régua da porta já estava fechada desde a L34 §6 |
+| D15g (TechLead) | conserto do regex de `test-cobertura-lib.mjs` (que não classifica `export const f = (...) =>` com parênteses na linha seguinte como função) entra nesta mesma rodada | forma de instrumento é decisão do TechLead (`TECHLEAD.md` §1); custo de tarde, e deixar o ponto cego registrado sem corrigir teria o mesmo risco de mascarar um teste futuro que a Executora já apontou |
 
 ## O QUE FICOU EM ABERTO
 
@@ -100,7 +103,7 @@ Decisões de engenharia tomadas sem perguntar, com o custo de cada uma.
   antes de agir. Rebase local sobre `origin/main`, `npm run validate` rodado
   de novo (mesmo resultado), e o resultado empurrado. Os hashes citados em
   BASE/SHA/TOPO no topo deste arquivo já são os pós-rebase; ver a nota do
-  TechLead ali. Registrado como D15e em `docs/simulacao/CONTEXTO.md`.
+  TechLead ali e o item D15e na tabela "O QUE EU DECIDI" abaixo.
 - **A régua "Desviar" não foi tocada.** A seção 6 do Pendencias.md fecha as
   seis perguntas do Interpor; sobre Desviar ela mesma diz que "não há número
   que separe desviar de mover, nem regra que diga o que 'sair da linha'
