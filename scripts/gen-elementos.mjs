@@ -156,7 +156,33 @@ for (const [rotulo, tabela] of [['exceção', EXCECOES], ['material', MATERIAL_D
 }
 
 const out = p('elementos-bestiario.json');
-fs.writeFileSync(out, JSON.stringify(saida, null, 1) + '\n');
+const SAIDA_TXT = JSON.stringify(saida, null, 1) + '\n';
+
+// --check: o portão do L31. `elementos-bestiario.json` é gerado e fica
+// commitado; sem isto, mexer no bestiário ou nas tabelas deste script sem
+// rodar de novo diverge em silêncio. Mesmo padrão de gen-bestiario.mjs.
+if (process.argv.includes('--check')) {
+  const atual = fs.existsSync(out) ? fs.readFileSync(out, 'utf8') : '';
+  if (atual !== SAIDA_TXT) {
+    let detalhe = '';
+    try {
+      const A = JSON.parse(atual);
+      const ids = new Set([...Object.keys(A), ...Object.keys(saida)]);
+      const dif = [...ids].filter((id) => JSON.stringify(A[id]) !== JSON.stringify(saida[id]));
+      detalhe = `  ${dif.length} id(s) divergem.\n`
+        + dif.slice(0, 5).map((id) => `    · ${id}`).join('\n')
+        + (dif.length > 5 ? `\n    · … e mais ${dif.length - 5}` : '');
+    } catch { detalhe = '  (o elementos-bestiario.json commitado não é JSON válido)'; }
+    console.error('✘ elementos-bestiario.json está fora de sincronia com a fonte.\n'
+      + detalhe + '\n'
+      + '  Rode: node scripts/gen-elementos.mjs');
+    process.exit(1);
+  }
+  console.log(`✓ elementos-bestiario.json em dia com a fonte (${Object.keys(saida).length} criaturas)`);
+  process.exit(0);
+}
+
+fs.writeFileSync(out, SAIDA_TXT);
 const n = Object.keys(saida).length;
 console.log(`elementos-bestiario.json: ${n} de ${M.length} criaturas com fraqueza ou resistência (${(100 * n / M.length).toFixed(0)}%).`);
 console.log(`  ${porRegra} por categoria ou tag · ${porMaterial} pelo material · ${porExcecao} por exceção à mão.`);

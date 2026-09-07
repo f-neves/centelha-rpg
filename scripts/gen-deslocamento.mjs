@@ -470,7 +470,33 @@ const orfaos = Object.keys(FONTE).filter((id) => !idsBons.has(id));
 if (orfaos.length) throw new Error(`fonte para id inexistente: ${orfaos.join(', ')}`);
 
 const out = p('deslocamento-bestiario.json');
-fs.writeFileSync(out, JSON.stringify(saida, null, 1) + '\n');
+const SAIDA_TXT = JSON.stringify(saida, null, 1) + '\n';
+
+// --check: o portão do L31. `deslocamento-bestiario.json` é gerado e fica
+// commitado; sem isto, mexer no bestiário ou na tabela FONTE/POR_TIPO sem
+// rodar de novo diverge em silêncio. Mesmo padrão de gen-bestiario.mjs.
+if (process.argv.includes('--check')) {
+  const atual = fs.existsSync(out) ? fs.readFileSync(out, 'utf8') : '';
+  if (atual !== SAIDA_TXT) {
+    let detalhe = '';
+    try {
+      const A = JSON.parse(atual);
+      const ids = new Set([...Object.keys(A), ...Object.keys(saida)]);
+      const dif = [...ids].filter((id) => JSON.stringify(A[id]) !== JSON.stringify(saida[id]));
+      detalhe = `  ${dif.length} id(s) divergem.\n`
+        + dif.slice(0, 5).map((id) => `    · ${id}`).join('\n')
+        + (dif.length > 5 ? `\n    · … e mais ${dif.length - 5}` : '');
+    } catch { detalhe = '  (o deslocamento-bestiario.json commitado não é JSON válido)'; }
+    console.error('✘ deslocamento-bestiario.json está fora de sincronia com a fonte.\n'
+      + detalhe + '\n'
+      + '  Rode: node scripts/gen-deslocamento.mjs');
+    process.exit(1);
+  }
+  console.log(`✓ deslocamento-bestiario.json em dia com a fonte (${TODAS.length} criaturas)`);
+  process.exit(0);
+}
+
+fs.writeFileSync(out, SAIDA_TXT);
 const ord = Object.entries(saida).sort((a, b) => b[1].batalha - a[1].batalha);
 const nome = (id) => TODAS.find((m) => m.id === id).nome;
 console.log(`deslocamento-bestiario.json: ${TODAS.length} criaturas · ${nFonte} da fonte · ${nTabela} da tabela.`);

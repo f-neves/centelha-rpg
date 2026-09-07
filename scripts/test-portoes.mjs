@@ -88,18 +88,20 @@ const TESTES_FORA = {};
 
 // OS GERADORES SEM `--check` NO BUILD, e o motivo.
 //
-// Cinco têm `--check` e é ele que impede o arquivo gerado de divergir da fonte
-// em silêncio. Os sete abaixo não têm, e a lista é a pendência L31 escrita em
-// código: cada linha daqui que sumir é um gerador que passou a se conferir.
+// Sete têm `--check` e é ele que impede o arquivo gerado de divergir da fonte
+// em silêncio (os cinco de sempre mais `gen-elementos`/`gen-deslocamento`,
+// rodada 19-executora). Os seis abaixo não têm: a lista era a pendência L31
+// escrita em código (sete linhas); três saíram porque não há o que checar
+// (saída fora do git), duas ficaram escaladas ao TechLead com achado
+// concreto, uma é o `gen-monsters` de sempre. Cada linha que sumir daqui
+// (por virar `--check` de verdade) é um gerador que passou a se conferir.
 const GERADORES_FORA = {
   'gen-monsters.mjs': 'roda no `build` SEM `--check`: ele produz `public/dados/`, que não é versionado, então não há o que divergir.',
-  'gen-cap-pericias.mjs': 'L31 · o `CLAUDE.md` manda rodá-lo à mão depois de mexer nos JSONs de habilidades, e nada confere se alguém esqueceu. É o pior dos sete.',
-  'gen-elementos.mjs': 'L31 · escreve `elementos-bestiario.json`, e o JSON é editado pelo script, nunca à mão.',
-  'gen-deslocamento.mjs': 'L31 · uma passada só, já aplicada ao bestiário em 28/08/2026.',
-  'gen-arte-equip.mjs': 'L31 · gera CSS de arte de equipamento; a saída é versionada e ninguém a confere.',
-  'gen-lista-equip.mjs': 'L31 · gera lista para leitura humana, fora do site.',
-  'gen-creditos-equip.mjs': 'L31 · gera a página de créditos das artes.',
-  'gen-prompts-folhas.mjs': 'L31 · gera texto para pedir arte, e não entra no site.',
+  'gen-cap-pericias.mjs': 'L31 · o `CLAUDE.md` manda rodá-lo à mão depois de mexer nos JSONs de habilidades, e nada confere se alguém esqueceu. É o pior dos sete: achada uma divergência real (habilidades.json:809 ainda diz "manobra", o capítulo já diz "firula", a palavra foi trocada em 63 lugares no dia seguinte e esta ficou para trás), escalado ao TechLead antes de rodar o gerador por cima. Ver 20-executora.md.',
+  'gen-arte-equip.mjs': 'L31 · a saída (CSS) é versionada e bate limpo, mas a ENTRADA (`D&D/armas&armaduras/folhas`) está inteira fora do git (`.gitignore:25`): um `--check` aqui passaria na máquina de quem tem a pasta local e falharia sempre no CI, que nunca a tem. Escalado ao TechLead. Ver 20-executora.md.',
+  'gen-lista-equip.mjs': 'L31 · escreve em `D&D/armas&armaduras/`, inteira fora do git (`.gitignore:25`): não há arquivo commitado para divergir. Mesma família do `gen-monsters.mjs` acima, achado nesta rodada, escalado ao TechLead (a pendência original listava sete supondo `--check` cabível nos sete). Ver 20-executora.md.',
+  'gen-creditos-equip.mjs': 'L31 · mesmo motivo do `gen-lista-equip.mjs`: escreve em `D&D/armas&armaduras/`, fora do git. Ver 20-executora.md.',
+  'gen-prompts-folhas.mjs': 'L31 · mesmo motivo do `gen-lista-equip.mjs`: escreve em `D&D/armas&armaduras/`, fora do git. Ver 20-executora.md.',
 };
 
 secao('· todo teste está em algum portão');
