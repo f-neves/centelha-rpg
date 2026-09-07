@@ -1895,19 +1895,18 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **LEVANTAMENTO em 07/09/2026 (rodada 24, `docs/simulacao/caixa/24-executora.md`): o achado
   "relógio em Tick 0" está DEFASADO.** A migração 31 rodou em produção em 05/09/2026 (`L42`), e
   o cliente já tinha a degradação `SEM_RELOGIO` pronta antes disso (`grid.astro:3027`,
-  `test-grid.mjs:1441-1460`, cenário `SIM5`). O que sobrou, real: o próprio teste confessa
-  (`test-grid.mjs:1436-1440`, o comentário que cita `tickDaVez`) que só prova o relógio no
-  sistema Simultâneo — no P/G/R o relógio sai de `tickDaVez()`/`golpeMaisCedo()`, não de
-  `tick_atual`, e ninguém montou uma cena com Tick
-  divergente por combatente nesse sistema para comparar o que o jogador calcula contra o que o
-  mestre calcula. É lacuna de PROVA, não de esquema nem de código faltando.
+  `test-grid.mjs:1441-1460`, cenário `SIM5`).
 
-  **Achado colateral, não fechado, verificar com cena real:** `combate.astro` nunca lê
-  `tick_atual` (zero ocorrências); o relógio que ela desenha é `AGORA = emCampo[0]?.tick ?? 0`
-  (`:893-894`), o Tick do primeiro da fila ordenada — mecanicamente diferente do `tick_atual` da
-  arena que o Grid usa. Se o Tick de quem está livre puder ficar atrás do `tick_atual`, a aba
-  Combate mostra o relógio errado para os DOIS lados da mesa, não só para o jogador. Não
-  verificado ainda: depende de montar uma cena e ver se diverge na prática.
+  **FECHADO em 07/09/2026 (rodada 25, commit `cffcec9`, `docs/simulacao/caixa/25-executora.md`):
+  as duas lacunas que sobraram do levantamento.** A pergunta do `combate.astro` era divergência
+  real, não só teórica: sonda com a bancada (`?tick=5&tempo=simultaneo`) mostrou `#enc-tick` em
+  0 com a arena em 5, para mestre E jogador — `AGORA = emCampo[0]?.tick ?? 0` lia o Tick
+  individual de uma peça `livre`, que fica parado enquanto `tick_atual` anda. Corrigido: no
+  Simultâneo o relógio agora lê `ENC?.tick_atual` (`combate.astro:903`), igual ao Grid; normal
+  e P/G/R não mudaram. E a lacuna de prova no P/G/R fechou com um par de asserção novo
+  (`test-grid.mjs:1475`, knob `?deslocafila=N` em `mesa-mock.mjs`): o jogador calcula o
+  mesmo relógio que o mestre, e o número muda junto com o deslocamento, em vez de ficar parado
+  em Tick 0 (que era indistinguível de máscara quebrada antes deste teste existir).
 
 - [x] **L32 · DECIDIDO em 06/09/2026 · A névoa esconde a EXISTÊNCIA do inimigo, não só a
   posição · falta a tela da lembrança, e é ela que trava a migração 33** · *achado na
