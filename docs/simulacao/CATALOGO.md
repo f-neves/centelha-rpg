@@ -68,6 +68,7 @@ segunda tinha ficado verde por cegueira.
 | **a asserção que imprime ORDINAL ou CONTAGEM cujo denominador é contrato** | ordinal de laço, `i + 1`, `.length` de um array que cresce com a implementação | se um clique passar a valer dez, este número ainda mede alguma coisa? |
 | **a constante de conversão com duas candidatas plausíveis** | converter uma TAXA (por Tick, por segundo, por linha) numa unidade TOTAL, ou vice-versa | esta constante é a MÉDIA da grandeza que multiplica (duração, tamanho), ou é outra estatística da mesma tabela que também "parece" servir? |
 | **a cópia segurada por um detector, e não por disciplina** | duas implementações da mesma conta (não o mesmo corpo — a mesma MATEMÁTICA, escrita duas vezes), com uma fixture de regressão no meio | o detector cobre TODOS os ramos que mudaram, ou só o estado em que a fixture foi gravada? |
+| **o segundo ponto de decisão, dentro da MESMA função** | consertar uma conta e não perguntar onde MAIS ela se decide | o que a função que APLICA o efeito (`aplicarDano`, `baixarVida`, o `update` de verdade) lê — é o valor que acabei de consertar, ou outro calculado em paralelo? |
 
 **DUAS NOVAS, DE 06/09/2026, ACHADAS NA REVISÃO DO AVANÇO UNIFICADO:** a primeira é o gatilho —
 fica verde, o rótulo continua descrevendo o que deveria medir, e nada acusa a mudança por baixo. A
@@ -211,3 +212,54 @@ porte diferente do Médio.
 as duas cópias concordam foi gravado DEPOIS ou ANTES da mudança que estou
 prestes a fazer? Se foi antes, ele prova que elas concordavam num mundo que já
 não existe, e não diz nada sobre o mundo novo.
+
+**UM CASO NOVO, DE 06/09/2026, E É DIFERENTE DO DE CIMA: o gatilho não é
+arquivo diferente, é FUNÇÃO IGUAL.** Ligar o gate exigia zerar o dano quando o
+golpe resvala, e o conserto entrou em `contaDoLance` (a função de dentro de
+`folhaDaAcao` que alimenta o oráculo e a tela) e parou aí. `contaDoLance` não é
+o que desce a Vida: quem chama `aplicarDano` — a função que de fato subtrai da
+Vida do alvo — é `fim()`, um closure DIFERENTE, na MESMA `folhaDaAcao`, que
+recalcula o dano do zero a partir do campo digitado (`rdDanoFim`), sem passar
+pela conta que acabara de ser consertada. Sem o segundo conserto, o gate teria
+zerado o REGISTRO e deixado a Vida cair inteira — exatamente o inverso do que
+"ligar o gate" deveria fazer, e do jeito mais perigoso de errar: o log diria
+uma coisa, a mesa jogaria outra.
+
+**A diferença para "a cópia segurada por um detector" (acima):** lá são dois
+ARQUIVOS (a mesa e o harness), duas implementações completas, e o que os
+prende é uma fixture externa. Aqui é uma função só, dois PONTOS internos que
+decidem a mesma coisa por caminhos de código diferentes — não há duplicação de
+arquivo para grep, e `contaDoLance` PARECE o lugar certo, porque é ele que a
+tela e o oráculo leem. O gatilho que teria achado sozinho: depois de consertar
+uma conta, perguntar "o que a função que APLICA o efeito de verdade
+(`aplicarDano`, `baixarVida`, o `update` que grava no banco) lê?" — e não "onde
+está a conta que acabei de mexer?". As duas perguntas têm respostas diferentes
+sempre que a leitura e a aplicação vivem em lugares distintos do mesmo fluxo.
+
+**Havia um TERCEIRO ponto, achado procurando os outros dois: `pintarDano`,**
+a prévia que mostra ao mestre "se você aplicar isto, acontece aquilo" antes de
+qualquer clique. Ela lê `contaDoLance()` para a Absorção, mas computava o
+"passa N" sozinha a partir do campo digitado, sem checar o gate — com ele
+ligado, a prévia diria "passa 5" e o resultado de verdade, depois do clique,
+sairia zero. Não afeta a Vida (é só texto), mas é o mesmo defeito de espécie:
+uma terceira leitura que não sabia da regra nova. Consertado junto.
+
+**A busca não achou um quarto.** `soakDe(` (a função que resolve Absorção por
+modo) tem exatamente dois chamadores em `grid.astro` — os dois já corrigidos —
+e nenhum outro trecho recomputa `bruto`/`liquido`/veredito de golpe fora de
+`folhaDaAcao`. Registrado aqui para o dia em que uma bandeira nova (`margem`,
+`bloqueio`, `teto6`) entrar: os MESMOS três pontos (`contaDoLance`, `fim`,
+`pintarDano`) são onde ela vai precisar aparecer, e não só um deles.
+
+**E O CASO IRMÃO, achado respondendo por que a trava de duas listas
+(`CAMPOS_MESA`/`FORA_DA_MESA`, `gen-monsters.mjs`) não pegou o mesmo
+`perfArma` sumindo uma segunda vez:** a trava audita só as chaves de TOPO do
+registro da criatura (`Object.keys(m)`), e `combate` é uma chave de topo só —
+ela passa inteira, sem re-auditar o que tem dentro. O transporte que descartou
+`perfArma` mora um nível mais fundo, num `.map()` manual que monta
+`combate.ataques[]` linha a linha (a mesma forma da linha "o transporte que
+descarta" desta tabela, `CAMPOS_*`/`pick`/`select`), e é um transporte
+DIFERENTE, sem trava nenhuma sobre ele. A pergunta da linha da tabela ("a
+chave nova chega na OUTRA PONTA?") continua certa; o que faltou foi perguntá-la
+de novo em CADA `.map()` que reconstrói um objeto campo a campo, e não só na
+fronteira de mais alto nível que tem um nome e uma trava.

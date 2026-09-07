@@ -42,6 +42,11 @@ import { resumoFicha, resumoParaBanco } from '../src/lib/mesa-ficha';
 // migração pelo `test-visao.mjs`. Ver o cabeçalho daquele arquivo.
 import { combateParaJogador } from './visao-combate.mjs';
 import { MESA_BANCADA } from './bancada.mjs';
+// A FICHA DE FIXAÇÃO, para a cena de bandeiras montar um PC com Adaga: é a
+// mesma base do `dano-por-tipo.mjs`, e não uma ficha nova — duas fichas de PC
+// de mentira, cada uma com seus próprios números, é a mesma forma do defeito
+// que a régua duplicada em `folhaDaAcao` documenta (`CATALOGO.md`).
+import KAEL from './fixtures/kael.json';
 
 const P = new URLSearchParams(typeof location !== 'undefined' ? location.search : '');
 const N_COMB = parseInt(P.get('bench') || '12', 10);
@@ -85,8 +90,13 @@ const ESPELHO = P.get('cena') === 'espelho'
 const CAIDO = P.get('cena') === 'caido';
 const CAIDO_LONGE = P.get('longe') === '1';
 
-const COLS = ESPELHO ? ESPELHO.tab.cols : CAIDO ? 14 : parseInt(P.get('cols') || '24', 10);
-const ROWS = ESPELHO ? ESPELHO.tab.rows : CAIDO ? 8 : parseInt(P.get('rows') || '16', 10);
+// A CENA DAS BANDEIRAS: `?cena=bandeiras`.
+//
+// Ver o bloco `if (BANDEIRAS)` mais abaixo para o porquê de cada peça.
+const BANDEIRAS = P.get('cena') === 'bandeiras';
+
+const COLS = ESPELHO ? ESPELHO.tab.cols : CAIDO ? 14 : BANDEIRAS ? 10 : parseInt(P.get('cols') || '24', 10);
+const ROWS = ESPELHO ? ESPELHO.tab.rows : CAIDO ? 8 : BANDEIRAS ? 8 : parseInt(P.get('rows') || '16', 10);
 const NEVOA = P.get('nevoa') === '1';
 /**
  * `?sombra=1`: DUAS zonas que não acendem o chão, para a névoa poder escondê-las.
@@ -441,6 +451,96 @@ if (CAIDO) {
       tick: 0, iniciativa: 20 - k,
       acao: p.acao,
       dados: { ...numeros, ...(p.auto ? { auto: true } : {}) },
+      condicoes: [], ativo: true, oculto: false, imagem: null, retrato: null,
+    });
+    TOKENS.push({
+      arena_id: ARENA, combatente_id: p.id, q: p.q, r: p.r,
+      movido_em: new Date(1700000000000 + (k++) * 1000).toISOString(),
+    });
+  }
+}
+
+/**
+ * A CENA DAS BANDEIRAS `porte` e `gate`: `?cena=bandeiras`.
+ *
+ * A pergunta que faltava responder depois de ligar as duas (06/09/2026): elas
+ * mexem em `folhaDaAcao`, mas nenhum teste automatizado deste repositório
+ * criava um combatente `tipo: 'criatura'` para exercitá-las de ponta a ponta —
+ * só a matemática pura (`modificadorPorte`/`gatePerfuracaoAbre`, em
+ * `test-bandeiras.mjs`) tinha prova. Este é o teste que mede na Vida, e não só
+ * no log.
+ *
+ * `a0` empunha a ADAGA (Perfuração 0, o modo principal dela desde a correção
+ * do tipo de dano), contra três criaturas REAIS do bestiário — o porte tem de
+ * vir de `MON[monstro_id].porte`, que uma ficha de mentira sem `monstro_id`
+ * não tem como fornecer (`porteRotuloDe`, `grid.astro`):
+ *
+ *   `b0` · `mon-aguia-gigante`, porte GRANDE, resistPerf 0 · porte BÔNUS
+ *          (alvo maior) e gate ABRE (Perf. 0 ≥ resistPerf 0): a dupla que
+ *          prova que ligar as bandeiras não impede o caminho comum.
+ *   `b1` · `mon-dog`, porte PEQUENO, resistPerf 0 · porte PENALIDADE (alvo
+ *          menor), o sinal invertido do par com `b0`.
+ *   `b2` · `guarda-da-cidade`, porte Médio, resistPerf 1, Absorção de
+ *          Perfuração só 2 · gate RESVALA (Perf. 0 < resistPerf 1): a Vida
+ *          NÃO pode descer, e não basta o registro dizer que resvalou. NÃO
+ *          é `mon-aboleth` (Absorção de Perfuração 13): contra ele a Vida
+ *          também não desceria com o gate DESLIGADO, porque a Adaga (1d6+1)
+ *          nunca fura 13 de Absorção sozinha — o teste provaria a Absorção,
+ *          não o gate. Achado no ensaio dos três sentidos desta rodada.
+ *
+ * `a0` não é automático (o mestre decide), porque só assim a folha abre para
+ * o teste ler o total do acerto ANTES do veredito.
+ */
+if (BANDEIRAS) {
+  const fichaAdaga = {
+    ...KAEL,
+    conjuntos: [{ ativo: true, habil: { ref: 'a:adaga' }, inabil: { ref: 'nada' } }],
+    equip: { armaduras: [] },
+  };
+  const r = resumoCombatePC(fichaAdaga);
+  // `perfArma` E `resistPerf` TÊM DE VIR JUNTO: sem eles a peça de PC (sem
+  // ficha de verdade, `personagem_id: null`) cai no `base?.perfArma ?? null`
+  // do merge de `resumoDe`, e o gate nunca acha o Nível de Perfuração do
+  // atacante — resvala vira sempre falso, e as duas metades do teste (b0
+  // abre, b2 resvala) passam ou falham juntas por acidente, e não porque o
+  // gate rodou. Achado rodando este próprio teste antes de publicá-lo.
+  const numeros = {
+    arma: r.arma, ataque: r.ataque, dano: r.dano,
+    defesa: r.defesa, soak: r.soak, resistPerf: r.resistPerf, perfArma: r.perfArma,
+    velocidade: 5, classe: 'leve', passo: r.passo, qa: r.qa,
+  };
+  COMBS.length = 0; TOKENS.length = 0;
+  // TRÊS ATACANTES, e não um só reaproveitado três vezes: cada `acao` só tem
+  // UM `alvo`, e pré-semear o golpe agendado (como a cena `caido` já faz) é
+  // bem mais simples do que fazer o teste declarar ao vivo pela tela. Os três
+  // têm os MESMOS números (a mesma Adaga), só o alvo muda.
+  const golpe = (alvo) => ({
+    golpes: [2], livre: 7, desde: 0, tipo: 'simples', arma: numeros.arma, alvo, aResolver: [2],
+  });
+  const por = [
+    { id: 'a0', tipo: 'pc', monstro_id: null, q: 2, r: 4, alvo: 'b0' },
+    { id: 'a1', tipo: 'pc', monstro_id: null, q: 3, r: 5, alvo: 'b1' },
+    { id: 'a2', tipo: 'pc', monstro_id: null, q: 3, r: 6, alvo: 'b2' },
+    { id: 'b0', tipo: 'criatura', monstro_id: 'mon-aguia-gigante', q: 4, r: 4 },
+    { id: 'b1', tipo: 'criatura', monstro_id: 'mon-dog', q: 5, r: 5 },
+    { id: 'b2', tipo: 'criatura', monstro_id: 'guarda-da-cidade', q: 5, r: 6 },
+  ];
+  let k = 0;
+  for (const p of por) {
+    COMBS.push({
+      id: p.id, encontro_id: ENC, nome: `Peça ${p.id}`,
+      tipo: p.tipo, grupo: p.tipo === 'pc' ? 'aliado' : 'inimigo',
+      monstro_id: p.monstro_id, personagem_id: null,
+      // O PV É 999: a Absorção/o gate zeram o BRUTO antes da Vida descontar,
+      // e um PV alto sobra folga para o teste distinguir "desceu N" de
+      // "desceu zero" sem se preocupar com Vida negativa.
+      pv_max: 999, pv_atual: 999,
+      mana_max: null, mana_atual: null,
+      tick: 0, iniciativa: 20 - k,
+      // Os atacantes já entram com o golpe agendado pro Tick 2, como a cena
+      // `caido` faz; as criaturas ficam livres, porque só levam o golpe.
+      acao: p.alvo ? golpe(p.alvo) : {},
+      dados: p.tipo === 'pc' ? { ...numeros } : {},
       condicoes: [], ativo: true, oculto: false, imagem: null, retrato: null,
     });
     TOKENS.push({

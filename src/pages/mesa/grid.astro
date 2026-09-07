@@ -9005,8 +9005,16 @@ let roladoDano = '';
       qa.hidden = margemQA() <= 0 && danoQA() <= 0;
     };
     const pintarDano = () => {
-      const bruto = Math.max(0, parseInt(dnInp.value || '0', 10) || 0);
       const cx = el('al-dn-conta') as HTMLElement;
+      // O GATE TAMBÉM AQUI, e é o TERCEIRO lugar (achado nesta rodada, junto
+      // com `contaDoLance` e `fim`): sem ele a prévia diria "passa N" com o
+      // gate ligado, e o resultado de verdade sairia zero — a caixa mentiria
+      // por omissão, mesmo não sendo ela quem decide a Vida.
+      if (resvalaGate) {
+        cx.innerHTML = 'O golpe RESVALA: a Perfuração da arma não vence a Resistência do alvo (gate ligado)';
+        return;
+      }
+      const bruto = Math.max(0, parseInt(dnInp.value || '0', 10) || 0);
       if (!bruto) { cx.innerHTML = ''; return; }
       // A Absorção do alvo é informação do mestre: ela sai do bloco do bestiário
       // ou da ficha, e o jogador não lê nem um nem outro. Então na tela dele o
@@ -9565,6 +9573,21 @@ let roladoDano = '';
         const c = COMBS.find((x: any) => x.id === id);
         return c ? JSON.parse(JSON.stringify({ acao: c.acao ?? null, tick: c.tick ?? null })) : null;
       },
+      /**
+       * A Vida crua de uma peça. Para o teste que precisa saber se um golpe
+       * DESCEU a Vida de verdade, e não só se o registro disse que desceu — é
+       * a metade que `contaDoLance` sozinho não prova (`CATALOGO.md`, "a cópia
+       * segurada por um detector").
+       */
+      pvDe: (id: string) => COMBS.find((x: any) => x.id === id)?.pv_atual ?? null,
+      /**
+       * O `ResumoCombate` de uma peça, cru. Achou o bug real do
+       * `test-bandeiras-mesa.mjs` (o `numeros` da cena `bandeiras`, em
+       * `mesa-mock.mjs`, esquecia `perfArma`/`resistPerf`): sem ele o teste
+       * tinha o sintoma certo (o gate não resvalava) e nenhum jeito de ver
+       * ONDE, porque `pvDe` só diz o efeito, não a causa.
+       */
+      resumoDe: (id: string) => JSON.parse(JSON.stringify(RESUMO[id] ?? null)),
       /** Quem ainda está de pé, por lado, para o driver saber que a cena acabou. */
       dePe: () => naFila().filter((c: any) => !noChao(c)).map((c: any) => c.id),
       pendente: null as any,

@@ -405,7 +405,7 @@ if (!process.env.CI) {
   const velhos = smoke.filter((n) => !carimbado.has(n) || carimbado.get(n).dias >= 7);
   if (velhos.length) {
     console.log(`  ⚑ ${velhos.length} de ${smoke.length} sem passar aqui há uma semana ou mais.`);
-    console.log('    `npm run smoke` roda os oito. O CI roda os mesmos em matriz a cada push.');
+    console.log(`    \`npm run smoke\` roda os ${smoke.length}. O CI roda os mesmos em matriz a cada push.`);
   }
 }
 
