@@ -206,6 +206,12 @@ de formato. → detalhe de cada uma: `Pendencias.md` **L42**, **L45**.
   roteiro, o critério de aceitação, as réguas de gatilho e decisões do humano que não
   estavam em nenhum documento versionado. Mesma classe de defeito do CORRIGE que não
   estava no `Pendencias`: decisão importante morando fora do repositório.
+- **A REVISORA NOVA (equipe TechLead) TEM CONTRATO PRÓPRIO, ATIVO E DIFERENTE DO
+  ACIMA:** `docs/simulacao/CONTRATO-REVISORA.md`, começado em 07/09/2026 com a regra do
+  worktree congelado (nunca reancorar no meio de uma revisão) e o passo 0 (confirmar
+  `git rev-parse --show-toplevel`/`HEAD` antes de qualquer outra coisa). O `REVISORA.md`
+  é histórico da instância antiga; este é o que rege a instância que está rodando agora,
+  e cresce por decisão do TechLead, um achado de cada vez.
 - **DUAS LISTAS QUE PRECISAM CONCORDAR, sustentadas só por disciplina, divergem.** A régua:
   fonte única (uma gera a outra), ou cópia com detector (asserção que compara as duas nas
   duas direções, com controle positivo). Achado três vezes nesta frente (a mais recente:

@@ -2410,12 +2410,47 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `:1973`-`1979` (`if (trocouAlvo && ef.condicao) {` até `await porCondicao(ctx, combDe(ctx, id), ef.condicao, d.turnos);`, a condição segue o alvo quando ele muda);
   `:1994`-`1997` (`if (ef.condicao) {` até `await tirarCondicao(ctx, combDe(ctx, cid), ef.condicao);`, dentro de `encerrarEfeito`).
 
-  **PORTÃO, um bloco, e é o ponto de atenção real:** `src/lib/artes-grid-mesa.ts:1808` (`if (!ef.dano_dados && !ef.condicao) continue;`) decide se o Efeito entra no laço de
-  processamento. Se os 9 perderem `ef.condicao` para um campo novo de classificação, este `if`
-  passa a valer `true` para eles (supondo que também não têm `dano_dados`) e eles são pulados do
-  laço inteiro. **Conferir, um a um dos 9, se pular o laço aqui é o comportamento certo** (parece
-  ser, já que "aplicar" é justamente o que não deveriam fazer) **ou se há outro efeito colateral
-  dentro do laço** (fere/cura/persiste) que algum dos 9 ainda precisa.
+  **PORTÃO, um bloco:** `src/lib/artes-grid-mesa.ts:1808` (`if (!ef.dano_dados && !ef.condicao) continue;`) decide se o Efeito entra no laço da mordida por área
+  (2ª metade de `verificarEfeitos`). **Não é o ponto de atenção real** — ver a conferência abaixo.
+
+  **A CONFERÊNCIA QUE FALTAVA, feita em 07/09/2026: os 9 nunca chegam a existir como `ATIVOS`,
+  então nenhum dos sete blocos de MOTOR roda para eles — nem o `:1808`, nem os outros seis.**
+  A pergunta certa não era "podem pular o laço", era "o que mais o laço faz com eles hoje além de
+  aplicar a condição", e a resposta é: nada, porque eles nunca entram no laço, por um motivo
+  anterior e mais forte do que qualquer filtro dentro dele.
+
+  1. **Os 9 têm `grid.forma: "nenhuma"`, sem exceção, e a recíproca também vale**: nas 140
+     entradas de `src/data/efeitos.json`, `forma === "nenhuma"` e `alvo === "nenhum"` são o
+     mesmo conjunto de 37 Efeitos (conferido por varredura total, não amostra), e são os únicos
+     nove desse conjunto que também carregam `condicao`.
+  2. **O despacho da conjuração é um `if`/`else` excludente sobre essa mesma `forma`**, e o
+     primeiro ramo é o dos 9, retornando antes de qualquer outro: `forma === 'nenhuma'` (`src/lib/artes-grid-mesa.ts:798`).
+     Os ramos seguintes do mesmo `if`/`else` (que levam a `invocar`/`deslocar`/`encadear`/`grudarNoAlvo`, entre as linhas 802 e 806 do mesmo arquivo) ficam, por construção,
+     inalcançáveis para quem já tomou o primeiro ramo. Não é falta de sorte, é estrutura de
+     `if`/`else` sobre a mesma variável.
+  3. **E todo caminho que leva a `ATIVOS.push` passa por `gravarEfeito`.** O comentário do arquivo
+     já nomeia `morder` e `porCondicao` como os `DOIS pontos` por onde toda aplicação de dano ou condição passa nesta mesa (`src/lib/artes-grid-mesa.ts:41`).
+     E dentro de `gravarEfeito`, `ATIVOS.push` (`src/lib/artes-grid-mesa.ts:1324`) só roda depois da linha que grava no banco, e é a única ocorrência no arquivo inteiro.
+
+  **Os quatro blocos de MOTOR que não são o laço da mordida** (`:1149`, `:1242`, `:1299`→`:1330`)
+  também dependem de `gravarEfeito` já ter rodado — `:1149` é dentro de `deslocar` (o ramo
+  `movimento`, inacessível aos 9 pela mesma exclusão do item 2), `:1330` é dentro da própria
+  `gravarEfeito`, e `:1242` roda em `saidaDaArte`, chamada só para quem já está em `ATIVOS`
+  (`:1794`-`1803`). **Isto corrige a conclusão anterior desta seção**, que dizia que o `:1808`
+  "protege a montante" os outros seis: `:1149`/`:1242`/`:1299`/`:1330` nem passam pelo `:1808` —
+  o que os protege é o mesmo motivo que protege o `:1808`, o despacho de `:798`, não uma relação
+  de precedência entre os blocos de MOTOR.
+
+  **A ASSERÇÃO QUE ISTO PEDE, e que não existe hoje:** a segurança dos 9 depende de um invariante
+  de dado (item 1, hoje verdadeiro por acaso de não ter exceção, não por trava) mais um invariante
+  de código (itens 2 e 3). Antes do split, escrever DOIS testes, não um: (a) em `validate-data.mjs`
+  ou teste próprio, assert que todo Efeito com `forma: "nenhuma"` tem `alvo: "nenhum"` e
+  vice-versa, para os 140 — se algum Efeito novo quebrar essa correspondência, o split some por
+  baixo dele sem aviso; (b) um teste de Node que chama o despacho (ou `gravarEfeito` diretamente)
+  com um Efeito `forma: "nenhuma"` carregando o campo novo de classificação e afirma que `ATIVOS`
+  não cresce e `porCondicao` não é chamado — E o par, com um Efeito real (`ao-entrar`, por
+  exemplo) afirmando que a condição É aplicada. Um teste sem o outro prova metade: falhar quando
+  um dos 57 pára de entrar é tão grave quanto falhar quando um dos 9 volta a entrar.
 
   **CLASSIFICA/EXIBE, quatro blocos, sem chamar `porCondicao` nem `tirarCondicao`:**
   `src/lib/artes-grid-mesa.ts:458` (`const cond = ef.condicao && CONDICAO[ef.condicao] ? CONDICAO[ef.condicao] : null;`);
@@ -2432,9 +2467,10 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **VALIDADOR, precisa saber conferir os DOIS campos depois do split:** `scripts/validate-data.mjs:170` (`if (g.condicao && !COND_IDS.has(g.condicao))`).
 
   **O que isto muda no split decidido acima:** os sete blocos de MOTOR não precisam de auditoria
-  individual, porque o filtro de `:1808` já os protege a montante — se um Efeito não entra no
-  laço, nenhum dos sete roda para ele. O trabalho real de conferência é um só: os 9 casos contra
-  o `:1808`, mais atualizar `validate-data.mjs` para o campo novo.
+  individual, um a um — a conferência acima já é a prova, e ela é sobre o despacho da conjuração
+  (`:798`) e `gravarEfeito` (`:1324`), não sobre o `:1808`. O trabalho real que falta é escrever os
+  dois testes descritos acima (invariante de dado + par de asserções comportamentais) e atualizar
+  `validate-data.mjs` para o campo novo.
 
 - [ ] **L40 · [MITIGADO EM 05/09/2026 · O CONSERTO É A MIGRAÇÃO 34] O registro do jogador que o
   mestre apaga sem saber** · *só o Grid. A metade que não depende de migração está no ar; a que
