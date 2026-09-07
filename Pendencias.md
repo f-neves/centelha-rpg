@@ -2627,6 +2627,11 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   (o despacho de `conjurar` nunca deixar `forma === 'nenhuma'` chegar em `gravarEfeito`) — provar
   exigiria harness de navegador para `conjurar`, outra frente.
 
+  **Veredito SEGUE em 07/09/2026 (rodada 20, `docs/simulacao/caixa/20-revisora.md`, commit
+  `e5bfbf9`):** a Revisora leu `gravarEfeito` e `conjurar` de forma independente (não aceitou a
+  leitura do aviso de graça) e recalculou os números direto em `efeitos.json` — confirma que a
+  proteção principal é mesmo só o despacho DOM-only, sem caminho Node-testável hoje.
+
 - [ ] **L40 · [MITIGADO EM 05/09/2026 · O CONSERTO É A MIGRAÇÃO 34] O registro do jogador que o
   mestre apaga sem saber** · *só o Grid. A metade que não depende de migração está no ar; a que
   depende espera a 34.*
