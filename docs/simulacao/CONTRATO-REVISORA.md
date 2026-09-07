@@ -24,9 +24,11 @@ revisando duas árvores achando que é uma, sem saber qual pedaço do veredito
 vale para qual commit.
 
 **Onde está agora:** `C:/Users/Neves/ClaudeCode/centelha-techlead-revisora`,
-detached, pinado em `46656ba` desde 07/09/2026 (criado antes do primeiro diff
-de verdade, por decisão explícita do humano — não esperar o diff para montar o
-isolamento). Confirmado limpo e no commit certo nesta data.
+detached, pinado em `54d337c` desde 07/09/2026 (SHA do aviso da rodada 15,
+`docs/simulacao/caixa/15-executora.md`). Antes disso ficou pinado em `46656ba`
+desde a criação do worktree (antes do primeiro diff de verdade, por decisão
+explícita do humano — não esperar o diff para montar o isolamento). Confirmado
+limpo e no commit certo nesta data.
 
 **Passo 0, antes de qualquer outra coisa, em toda revisão:**
 
