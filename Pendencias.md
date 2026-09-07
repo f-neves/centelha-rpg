@@ -1334,7 +1334,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | 3 | **dívida de Ticks** | **FEITO** · `f699ae2`, junto com o 2 |
   | 4 | **mudar efeito posto** | **FEITO** · e a decisão do custo está escrita na seção 4 |
   | 5 | **Investida** | **FEITO no motor** · número decidido em 05/09, e o −6 saiu |
-  | 6 | **Interpor e desviar** | **IMPLEMENTADO E APROVADO em 07/09/2026** (rodada 15) · e2e da porta do Preparo feito na rodada 16 (`fbe69ce`) · pendência aberta: porta da Recuperação sem e2e, ver seção 6 |
+  | 6 | **Interpor e desviar** | **IMPLEMENTADO E APROVADO em 07/09/2026** (rodada 15) · e2e das duas portas feito nas rodadas 16 e 17 (`fbe69ce`, `d3b2840`) · pendência da Revisora fechada, ver seção 6 |
 
   **A FASE 2 FICOU FECHADA EM CINCO DE SEIS POR SEMANAS**, e o sexto não esperava código: esperava
   regra que não existia. O levantamento mostrou que o capítulo publicado **não tem uma linha** sobre
@@ -1711,15 +1711,15 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   redirecionamento de dano e a geometria de reta em hexágono batem com as seis decisões abaixo,
   conferidos linha a linha pela Revisora contra o código, não só contra o relato.
 
-  **PENDÊNCIA DA REVISORA, PARCIALMENTE FECHADA em 07/09/2026 (rodada 16, commit `fbe69ce`,
-  aviso em `docs/simulacao/caixa/16-executora.md`).** A porta do Preparo tem agora prova e2e
-  ponta a ponta em `scripts/test-interpor-mesa.mjs` (cena `?cena=interpor` em `mesa-mock.mjs`):
-  dirige a caixa de Abortar → "Se interpor" ao vivo pela tela, resolve o golpe adiado, e confere
-  em par que a Vida do alvo original não muda e a de quem se interpôs desce pela Absorção DELE,
-  não a do alvo. **D16a, divergência registrada pela Executora:** o pedido original da Revisora
-  era "pelo menos um caminho de CADA porta"; o TechLead simplificou para "uma, à escolha" ao
-  repassar a tarefa. **A porta da Recuperação continua sem e2e** — mesma cena, reuso alto por
-  estimativa da própria Executora — candidata a Lote 3 desta frente.
+  **PENDÊNCIA DA REVISORA, TOTALMENTE FECHADA em 07/09/2026 (rodadas 16 e 17, commits `fbe69ce`
+  e `d3b2840`, avisos em `docs/simulacao/caixa/16-executora.md` e `17-executora.md`).** As duas
+  portas do Interpor (Preparo e Recuperação) têm agora prova e2e ponta a ponta em
+  `scripts/test-interpor-mesa.mjs` (cena `?cena=interpor` em `mesa-mock.mjs`, com `&fase=`
+  escolhendo a porta): dirige a caixa certa ao vivo pela tela, resolve o golpe adiado, e confere
+  em par, nas duas portas, que a Vida do alvo original não muda e a de quem se interpôs desce
+  pela Absorção DELE, não a do alvo. **D16a, divergência registrada pela Executora na rodada 16:**
+  o pedido original da Revisora era "pelo menos um caminho de CADA porta"; o TechLead simplificou
+  para "uma, à escolha" ao repassar a tarefa — fechado na rodada 17, cobrindo a segunda porta.
   Em `test-grid.mjs:1023`, o clique que abre a caixa de abortar: `data-a="abortar"`.
   Em `test-grid.mjs:2902`, a caixa equivalente de fora-de-hora: `data-a="forahora"`.
 
