@@ -44,6 +44,24 @@ vez que estava no worktree errado, com todos os resultados batendo mesmo assim
 estruturalmente antes de começar. Resultado certo por acaso não é resultado
 confiável; o passo 0 existe para não depender do acaso.
 
+## 1 · Mensagem não é entrega
+
+**A regra:** o veredito de uma rodada só conta quando existe em
+`docs/simulacao/caixa/NN-revisora.md`, commitado. Uma mensagem ao TechLead
+pode chegar primeiro, mas não substitui o arquivo — só o anuncia.
+
+**Por quê:** as catorze rodadas anteriores (`01-revisora.md` a
+`14-revisora.md`) têm arquivo, sem exceção. Na rodada 15 a Revisora respondeu
+só por mensagem, o TechLead tratou a mensagem como veredito e já abriu o
+próximo lote em cima dela, e não sobrou registro nenhum contra o qual o
+próximo a revisar (humano ou instância) possa conferir o que foi afirmado.
+Mensagem se perde na rolagem; arquivo commitado fica.
+
+**Como aplicar:** ao terminar uma revisão, o primeiro passo é escrever o
+arquivo da rodada no mesmo formato das catorze anteriores. A mensagem ao
+TechLead, se houver, é só o aviso de que o arquivo está pronto — não o
+conteúdo do veredito.
+
 ## Como isto cresce
 
 Cada rodada de revisão pode render um item novo aqui, do mesmo jeito que
