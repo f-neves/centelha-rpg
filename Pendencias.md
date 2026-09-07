@@ -1247,11 +1247,12 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   que se chama simultâneo. **Consertado (D41)** com o retrato da abertura do Tick como fonte
   única: quem estava de pé quando o Tick abriu está de pé para todos os golpes dele. Conferido no
   `npm run caido` (a quarta cena) e no `npm run espelho`.
-- [ ] **L22 · [DEPOIS] O gate de Perfuração está na régua e não está no motor.**
-  `gatePerfuracaoAbre` existe em `src/lib/calc.ts` e **nenhum caminho de produção a chama**: nem
-  `resolverGolpe`, nem a folha do Grid, nem o harness. Hoje o Perfurante não resvala em ninguém.
-  Ou o gate entra no `resolverGolpe` (e aí a Adaga, com Nível de Perfuração 0, passa a resvalar em
-  porte Enorme para cima), ou ele sai da régua. Ficar escrito e não valer é o pior dos três.
+- [x] **L22 · [FEITO em 06/09/2026] O gate de Perfuração estava na régua e não estava no motor.**
+  `gatePerfuracaoAbre` (`src/lib/calc.ts`) passou a ser chamada em `folhaDaAcao`
+  (`src/pages/mesa/grid.astro`), em `resvalaGate`, calculado uma vez e aplicado nos três pontos
+  que decidem dano. As 9 armaduras conferidas contra `armas-e-armaduras.md:109-119` batem número
+  a número com `armaduras.json`: a Adaga (Perfuração 0) resvalando contra 7 das 9 é a régua, não
+  inflação de catálogo. Só na mesa, não no harness (ver **L25**). Detalhe: `docs/simulacao/CATALOGO.md`.
 - [ ] **L25 · [DÍVIDA DE PRODUTO, NÃO DE INSTRUMENTO] O item 1.0 da Etapa 1 foi dado como feito
   e não está feito.** Ele entregou o carimbo, a migração e a tela, e **não entregou a única coisa
   que fazia o carimbo valer: alguém que leia o perfil na hora de aplicar a regra.**
