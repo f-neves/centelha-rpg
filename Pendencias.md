@@ -3487,9 +3487,10 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   rodando `node scripts/test-portoes.mjs` em 07/09/2026: item 6 verde, matriz e smoke com 9
   nomes cada, concordando nas duas direções.
 
-- [ ] **L50 · [FAZER] `gen-arte-equip.mjs` degrada em silêncio e pode apagar o CSS commitado.**
-  Achado colateral do L31 (rodada 21, `docs/simulacao/caixa/21-executora.md`), fora daquela
-  frente porque não é sobre `--check`, é sobre o que o gerador faz quando a fonte falta.
+- [ ] **L50 · [FAZER, SOBE NA FILA em 08/09/2026] `gen-arte-equip.mjs` degrada em silêncio e
+  pode apagar o CSS commitado.** Achado colateral do L31 (rodada 21,
+  `docs/simulacao/caixa/21-executora.md`), fora daquela frente porque não é sobre `--check`, é
+  sobre o que o gerador faz quando a fonte falta.
 
   `gen-arte-equip.mjs` lê os atlas de `D&D/armas&armaduras/folhas`, pasta inteira fora do git
   (`.gitignore:25`), e escreve `src/styles/arte-equip.css`, que É rastreado. Quando uma folha não
@@ -3498,9 +3499,20 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   limpo, sem a pasta `D&D/`, TODAS as folhas caem em `faltando`: o script roda sem erro, escreve
   um `arte-equip.css` só com o cabeçalho (nenhuma peça, nenhuma classe `.arte-*`), e `npm run
   build` grava esse arquivo quase vazio por cima do CSS de verdade, sem nada denunciar — mesmo
-  padrão do B12 (silêncio onde devia haver erro alto). Não corrigido ainda: o conserto é trocar o
-  aviso por um `throw` quando `faltando.length === plano.folhas.length` (ou quando `porClasse`
-  sai vazio), e não é desta rodada.
+  padrão do B12 (silêncio onde devia haver erro alto).
+
+  **Conferido em 08/09/2026, e o arquivo de hoje está limpo:** `src/styles/arte-equip.css` tem
+  hoje 65 linhas, 6762 bytes, 40 classes `.arte-*` — não é o quase-vazio. `git log --stat -- src/
+  styles/arte-equip.css` mostra só dois commits na vida inteira do arquivo: `19b233a` (criação,
+  +65 linhas) e `7d1908b` (ajuste de 1 linha, `+1 −1`). Nunca houve queda brusca de tamanho: o
+  defeito nunca disparou em produção até hoje, é risco, não incidente.
+
+  **O conserto, com o escopo corrigido em 08/09/2026 (não é só "todas faltando"):** falhar alto
+  como o irmão `gen-creditos-equip.mjs` (`process.exit(1)` com mensagem), e não escrever nada
+  quando a entrada não existe — nem quando falta só UMA folha esperada em `plano.folhas`, não só
+  quando faltam todas. Escrever um CSS com menos classes do que o script leu no plano é pior do
+  que não escrever nada: a queda parcial passa despercebida do mesmo jeito que a queda total, só
+  que sem nem o consolo de o build falhar visivelmente feio. Não corrigido ainda.
 
 - [ ] **L51 · [FAZER] Só 1 das 4 views do lado do jogador tem prova automática contra o SQL
   real.** Achado no levantamento da Fase 2.5 (rodada 24, `docs/simulacao/caixa/24-executora.md`,
@@ -3561,6 +3573,45 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   a tabela categoria por categoria, e falha ou avisa quando encontra um arquivo/pasta na raiz
   que não está em nenhuma linha conhecida (a mesma forma de proteção que `test-portoes.mjs`
   já usa para script novo fora do CI). Não escrito ainda; registrado para não ser esquecido.
+
+- [ ] **L55 · [DECIDIR, ESCALADO em 08/09/2026] A taxa de acerto publicada pode estar
+  descalibrada em relação ao jogo real — é regra de jogo, não engenharia.** Conferido contra
+  `Relatorio.md` §4.2 (datado de 20/07/2026, primeiro commit `efa274f`) e contra a régua de
+  hoje. Três números que não batem entre si:
+  - **Relatorio.md, 20/07/2026:** "a documentação" dizia ~40 a 45% de acerto entre iguais; a
+    fórmula de Defesa sozinha (sem arma) dava ~44%; com o bônus de acerto de uma arma típica
+    (a maioria soma +1 a +3), o combate real ficava em **50% a 76%**, não nos 42% citados.
+    (A "documentação" da época era provavelmente `legacy/New_RPG_System_D6_Consolidado.md:202`,
+    "~38–46% de acerto entre iguais", hoje arquivada como histórica.)
+  - **A régua de hoje (`src/data/regras.json:910`)** ainda publica um baseline sem arma —
+    "Cada ±1 ≈ ∓6% de chance perto do baseline (~42%)" — na mesma forma que o Relatorio
+    criticou: um número de referência para modificadores situacionais, sem menção ao bônus de
+    arma, no lugar onde alguém balanceando um encontro iria procurar.
+  - **`Reescala.md`** (posterior, mesma reescala D6 que renumerou os níveis) recalculou a
+    fórmula de Defesa ATUAL do `calc.ts` e achou **~37% em soma 6, ~28% em soma 12** — mais
+    baixo ainda que os 42% que a própria régua publica, e mais baixo que os ~44% que o
+    Relatorio mediu em julho. A reescala pode ter puxado o defensor pra mais fundo do buraco
+    que o Relatorio já apontava.
+  Não decidi: é regra de jogo (o que a documentação deveria dizer, e se o defensor deveria
+  estar tão atrás) e o custo de errar é assimétrico (número errado engana quem balanceia
+  inimigo). Precisa dos dois lados: se o baseline sem arma é intencional como referência
+  técnica (não como afirmação de "isto é o jogo real"), a documentação só precisa de uma
+  ressalva; se a intenção era comunicar a taxa real de combate, o número publicado está
+  desatualizado desde a reescala e piorou, não só permaneceu.
+- [ ] **L56 · [ANOTADO, sem análise] Payoff da arma leve.** `Relatorio.md` §4.3: a arma leve é
+  a pior em dano em toda situação medida, e o que deveria compensar (agir mais vezes) só vira
+  vantagem real com Proezas — no tier mortal puro ela é só fraca. Recomendação lá: dar um
+  payoff mortal-tier concreto (ação utilitária no mesmo Tick, ou bônus defensivo real).
+- [ ] **L57 · [ANOTADO, sem análise] Bookkeeping do Quase-Acerto.** `Relatorio.md` §4.4: quatro
+  números por confronto para ~18% de dano extra é contabilidade pesada pra mesa lembrar a cada
+  golpe. Recomendação lá: esconder os números na ficha/bestiário, ou simplificar a regra.
+- [ ] **L58 · [ANOTADO, sem análise] Trilha de aprendizado para quem chega agora.** `Relatorio.md`
+  §11: hoje o livro apresenta tudo de uma vez; falta uma ordem explícita (dado e dificuldade →
+  atributos/perícias → só Defesa Física → Virtudes/Vontade → Centelha e uma Proeza → social pela
+  Régua → só depois os subsistemas avançados) e um "você já sabe o suficiente para jogar".
+- [ ] **L59 · [ANOTADO, sem análise] As quatro reservas (Energia/Mana/Fôlego/Vontade) podem ser
+  carga cognitiva demais.** `Relatorio.md` §11: quatro medidores em paralelo é muito; Fôlego é
+  o candidato a simplificar/dobrar dentro de outra coisa, se a mesa reclamar de contabilidade.
 
 ## H. Arremesso
 

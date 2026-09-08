@@ -21,6 +21,12 @@ o teto do que os consertos desenhados tiram é 76,7%. Nenhuma medição nova mov
 
 O progresso agora se mede em consertos na mesa, não em rodadas de análise.
 
+**A série do `L52` (abertos/fechados/parciais do `Pendencias.md`) se remede no reset da semana
+(quinta, 18h) e no fechamento de cada fase.** Primeira medida: 08/09/2026, 120 abertos · 63
+fechados · 4 parciais · 187 no total (`Pendencias.md` `L52`). Série sem data marcada morre na
+primeira medida, e é a única coisa que diz se o congelamento de descobrimento (`ARQUITETO.md`
+§3.2) está funcionando ou se a fila só parou de ser contada.
+
 ---
 
 ## 2 · As fases
