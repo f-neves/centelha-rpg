@@ -65,6 +65,33 @@ arquivo da rodada no mesmo formato das catorze anteriores. A mensagem ao
 TechLead, se houver, é só o aviso de que o arquivo está pronto — não o
 conteúdo do veredito.
 
+## 2 · Falsificação se desfaz antes de reportar, não depois
+
+**A regra:** quando a prova de regressão exige reverter um conserto de
+propósito (para confirmar que o teste falha sem ele), a reversão é
+transitória e quem a fez é dono de desfazê-la antes de qualquer outra coisa
+— antes de escrever o arquivo da rodada, antes de avisar o TechLead, antes
+de qualquer pausa. Se a sessão morrer ou parar no meio com o worktree sujo
+por causa disso, o próximo a abrir aquele worktree (TechLead ou outra
+instância) desfaz a reversão e registra que foi ele quem desfez, antes de
+formar qualquer opinião sobre o que está ali.
+
+**Por quê:** `git status` sujo é o estado normal de quem está no meio de uma
+falsificação deliberada (a técnica é boa: reverter, observar a falha, restaurar
+é como se prova uma regressão de verdade). Mas nada distingue estruturalmente
+"estou no meio da prova" de "esqueci de desfazer" — os dois têm exatamente a
+mesma marca no disco. Se a reversão vira estado permanente por descuido, a
+próxima revisão roda sobre uma árvore com um conserto desligado à mão e
+ninguém percebe, porque o sujo já era esperado. A falsificação deliberada só
+compra confiança se for reversível por construção e reversível de fato, no
+mesmo fôlego em que foi feita.
+
+**Onde aconteceu:** rodada 25 (verificação do `combate.astro`, 07/09/2026) —
+a Revisora reverteu a linha do conserto, confirmou a falha esperada, e o
+TechLead checou o worktree antes do veredito chegar por precaução. Desta vez
+ela já tinha desfeito por conta própria antes da checagem confirmar; a regra
+existe para as vezes em que isso não acontecer.
+
 ## Como isto cresce
 
 Cada rodada de revisão pode render um item novo aqui, do mesmo jeito que
