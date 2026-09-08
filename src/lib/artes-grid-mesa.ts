@@ -4,7 +4,7 @@
 // (`artes-grid-ui.ts`, que só pergunta) e a aba Grid, que é dona do Supabase e
 // dos hexágonos. A aba entrega um contexto e chama quatro funções; tudo o mais
 // mora aqui, e é por isso que `grid.astro` quase não muda para ganhar isso.
-import { esc, novoId, somarCondicoes, COND, tierDe } from './mesa-core';
+import { esc, novoId, somarCondicoes, COND, tierDe, elementosCombate } from './mesa-core';
 import { MON } from './mesa-bestiario';
 import { uiErro, uiConfirmar, uiEscolher, uiPainel } from './ui-dialog';
 import {
@@ -1567,7 +1567,7 @@ async function morder(ctx: CtxGrid, ef: EfeitoAtivo, alvo: any, verbo: string, f
   const golpe = danoNoAlvo({
     bruto, elemento: ef.elemento, materia: ef.materia,
     soakArmadura: s.armadura, soakNatural: s.natural,
-    fraquezas: m.fraquezas || [], resistencias: m.resistencias || [],
+    ...elementosCombate(m),
   });
   const pv = Math.max(0, (alvo.pv_atual ?? 0) - golpe.liquido);
   const { error } = await ctx.SB.from('combatentes').update({ pv_atual: pv }).eq('id', alvo.id);
@@ -1601,7 +1601,7 @@ async function aplicarDano(ctx: CtxGrid, alvo: any, bruto: number, plano: Plano,
   const golpe = danoNoAlvo({
     bruto, elemento: plano.arte.grid.elemento, materia: g?.materia || 'impacto',
     soakArmadura: s.armadura, soakNatural: s.natural,
-    fraquezas: m.fraquezas || [], resistencias: m.resistencias || [],
+    ...elementosCombate(m),
   });
   const pv = Math.max(0, (alvo.pv_atual ?? 0) - golpe.liquido);
   await ctx.SB.from('combatentes').update({ pv_atual: pv }).eq('id', alvo.id);

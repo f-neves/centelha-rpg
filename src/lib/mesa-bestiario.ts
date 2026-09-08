@@ -13,7 +13,7 @@
 import monstersData from '../data/monsters-mesa.json';
 import artesData from '../data/artes.json';
 import { resumoCombatePC } from './combate-resumo';
-import { esc, u, norm, fmtDano } from './mesa-core';
+import { esc, u, norm, fmtDano, elementosCombate } from './mesa-core';
 import { sparkSVG } from './centelha-spark';
 import { d6 } from './rolagem';
 import { qaDaPeca, type QACombate } from './quase-acerto';
@@ -327,8 +327,9 @@ export function cardCriaturaHTML(m: any): string {
   const stats = `<dl class="besta-stats">${stat('PV', cb.pv)}${stat('Defesa', cb.defesa)}${stat('Def. Social', cb.defesaSocial)}${stat('Def. Mental', cb.defesaMental)}${stat('Absorção', abs)}${stat('Iniciativa', esc(cb.iniciativa || '-'))}</dl>`;
   const atrib = m.atributos ? `<div class="besta-atrib"><span class="atr-lbl">Atributos</span><div class="atr-grid">${ATR.map(([k, full]) => `<span class="atr"><span class="atr-nm">${full}</span><span class="atr-v">${m.atributos[k] ?? 0}</span></span>`).join('')}</div></div>` : '';
   const tracos = m.virtudes ? `<div class="besta-tracos"><div class="tr-linha"><span class="tr"><span class="tr-nm">Vontade</span><span class="tr-v">${m.vontade ?? '-'}</span></span><span class="tr"><span class="tr-nm">Aparência</span><span class="tr-v">${m.aparencia ?? '-'} <small class="tr-mod">(${apMod(m.aparencia) >= 0 ? '+' : ''}${apMod(m.aparencia)})</small></span></span></div><div class="tr-virt"><span class="tr-nm">Virtudes</span><span class="tr-vv">Comp ${m.virtudes.compaixao} · Conv ${m.virtudes.conviccao} · Temp ${m.virtudes.temperanca} · Val ${m.virtudes.valor}</span></div></div>` : '';
-  const elem = (m.fraquezas?.length || m.resistencias?.length)
-    ? `<div class="besta-elem">${(m.fraquezas || []).map((f: string) => `<span class="el el-fraco" title="Fraqueza">▼ ${esc(f)}</span>`).join('')}${(m.resistencias || []).map((r: string) => `<span class="el el-forte" title="Resistência">▲ ${esc(r)}</span>`).join('')}</div>` : '';
+  const { fraquezas: elFraq, resistencias: elRes } = elementosCombate(m);
+  const elem = (elFraq.length || elRes.length)
+    ? `<div class="besta-elem">${elFraq.map((f: string) => `<span class="el el-fraco" title="Fraqueza">▼ ${esc(f)}</span>`).join('')}${elRes.map((r: string) => `<span class="el el-forte" title="Resistência">▲ ${esc(r)}</span>`).join('')}</div>` : '';
   const atk = (cb.ataques || []).length ? `<ul class="besta-atk">${cb.ataques.map((a: any) => `<li><span class="atk-nome">${esc(a.nome)}</span><span class="atk-rolls">Ataque: <b>${esc(a.pool)}</b> · Dano <b>${fmtDano(esc(a.dano))}</b> · Velocidade ${a.speed}</span>${a.notas ? `<span class="atk-nota muted">${esc(a.notas)}</span>` : ''}</li>`).join('')}</ul>` : '';
   const habs = (m.habilidades || []).length ? `<h4 class="cc-h">Habilidades</h4><ul class="ib-hab">${m.habilidades.map((h: any) => `<li><b>${esc(h.nome)}</b> ${esc(h.descricao)}</li>`).join('')}</ul>` : '';
   const pods = (m.poderes || []).length ? `<h4 class="cc-h">Poderes <span class="muted">(sistema)</span></h4><ul class="ib-pod">${m.poderes.map((p: any) => `<li><span class="pw-ef">${esc(p.efeito)}</span> → <span class="pw-alvo">${esc(p.alvo)}</span></li>`).join('')}</ul>` : '';

@@ -124,7 +124,7 @@ import MesaCab from '../../components/MesaCab.astro';
 </style>
 
 <script>
-  import { abrirMesa, u, esc, norm, avatarHTML, debounce, bancoAntigo, semMigracao14 } from '../../lib/mesa-core';
+  import { abrirMesa, u, esc, norm, avatarHTML, debounce, bancoAntigo, semMigracao14, elementosCombate } from '../../lib/mesa-core';
   import { MON, MON_LIST, cardCriaturaHTML, criaturaCompleta, estrelas, resumoDe, iniDeMonstro } from '../../lib/mesa-bestiario';
   import { uiConfirmar, uiErro, uiAviso } from '../../lib/ui-dialog';
 
@@ -276,8 +276,9 @@ import MesaCab from '../../components/MesaCab.astro';
              ${variante ? '<span class="cri-var">variante</span>' : ''}</figure>`
         : `<figure class="cri-arte" data-mon="${m.id}"><span class="cap">${esc((m.nome || '?').trim()[0])}</span>
              <span class="cri-am">${estrelas(m.ameaca)}</span></figure>`;
-      const el2 = [...(m.fraquezas || []).map((f: string) => `<span class="el el-fraco" title="Fraqueza">▼ ${esc(f)}</span>`),
-                   ...(m.resistencias || []).map((x: string) => `<span class="el el-forte" title="Resistência">▲ ${esc(x)}</span>`)].join('');
+      const { fraquezas: crFraq, resistencias: crRes } = elementosCombate(m);
+      const el2 = [...crFraq.map((f: string) => `<span class="el el-fraco" title="Fraqueza">▼ ${esc(f)}</span>`),
+                   ...crRes.map((x: string) => `<span class="el el-forte" title="Resistência">▲ ${esc(x)}</span>`)].join('');
       return `${cabecalho}<article class="cri-card${(MESTRE && !c.visivel_jogadores) ? ' privada' : ''}" data-cr="${c.id}">
         ${arte}
         <div class="cri-corpo">
