@@ -3522,14 +3522,45 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   esconde `tick`/`iniciativa`/`acao` na lembrança), e a referência do teste fica errada em
   silêncio até alguém trocar para `migracao-33.sql`. Ver L33.
 
-- [ ] **L52 · [MEDIR, registrado em 08/09/2026, não feito por orçamento de sessão]
-  Duas contagens que nunca existiram.** (1) Quantos itens abertos existem neste
-  `Pendencias.md` hoje — é a única série que diria se o congelamento de descobrimento
-  (`TECHLEAD.md §3.2`/`[[feedback_scope_discipline_side_findings]]`) está funcionando ou
-  se a fila só parou de ser contada. (2) O custo acumulado do arranjo (TechLead + Executora
-  + Revisora + Auditora) desde o início — números soltos por rodada existem, um total nunca
-  foi somado. Pedido pelo humano ao fechar a sessão de 08/09/2026; nenhum dos dois exige
-  código, só leitura e soma.
+- [ ] **L52 · [PARCIAL, item 1 medido em 08/09/2026 · item 2 ainda por fazer]
+  Duas contagens que nunca existiram.** (1) **MEDIDO:** `grep '^- \[ \]'` (aberto), `'^- \[x\]'`
+  (fechado) e `'^- \[~\]'` (parcial) contra este arquivo, em 08/09/2026 às ~19h55 (commit
+  `05c4a92`): **120 abertos, 63 fechados, 4 parciais** (`A11`, `K28`, `I11`, `I12`), **187
+  itens catalogados no total**. Esta é a primeira medida da série — não há histórico anterior
+  para comparar, então ainda não diz se o congelamento de descobrimento
+  (`ARQUITETO.md §3.2`/`[[feedback_scope_discipline_side_findings]]`) está funcionando; diz
+  só o ponto de partida. A próxima medida é que vira sinal. (2) **NÃO FEITO:** o custo
+  acumulado do arranjo (Arquiteto + Executora + Revisora + Auditora) desde o início — números
+  soltos por rodada existem, um total nunca foi somado, e `docs/simulacao/caixa/
+  gasto-acumulado.json` sozinho não serve: cobre só o período em que o script `npm run duo`
+  rodava (um assunto, uma execução, US$ 1,32), não as rodadas via Agent Team que vieram
+  depois. Pedido pelo humano ao fechar a sessão de 08/09/2026.
+
+- [x] **L53 · [FEITO, levantamento de 08/09/2026] O mapa da raiz (`docs/MAPA.md`) e o que ele
+  moveu.** Levantado por citação (`grep` do nome de cada arquivo/pasta contra o repositório
+  inteiro) porque a raiz tinha quase oitenta entradas soltas sem nada que distinguisse régua
+  viva de rascunho. **Arquivados para `legacy/raiz/`** (zero citação em qualquer lugar,
+  propósito cumprido): `Combate_Prolongado.md`, `Defesas.md`, `Miniaturas_3D.md`,
+  `Paleta_Centelha.html`, `armaduras_escudos_centelha.txt`. **Apagado** (nunca versionado,
+  lixo de crash): `bash.exe.stackdump`. **Conferidos por inteiro e mantidos** (conteúdo não
+  totalmente absorvido em outro lugar, apesar de citação fraca ou nula):
+  `Relatorio.md` (metade das 14 recomendações segue sem eco: taxa de acerto documentada,
+  payoff da arma leve, bookkeeping do Quase-Acerto, trilha de aprendizado, as quatro
+  reservas) e `Proezas_revisao.md` (é a referência viva de `D1`/`D3`, acima; só `D2` fechou).
+  **Ficam como candidatos fracos, não conferidos linha a linha, para não serem redescobertos
+  do zero:** `Defesas_revisao.md`, `XP_revisao.md`, `ficha-xp.html`, `ficha-xp-2.html`,
+  `simulador-batalha.html` — cada um com um único citador, e nenhum é código nem documento
+  vivo. `_shots/` foi esvaziada (449 arquivos) e ganhou `_shots/README.md` dizendo como
+  regenerar. `D&D/` (gitignorada, consumida por dois dos quatro geradores de equipamento) já
+  tinha o risco sério registrado como `L50`, acima — não duplicado aqui. → detalhe arquivo por
+  arquivo: `docs/MAPA.md`, que é retrato por citação daquele dia, não autoridade permanente.
+- [ ] **L54 · [FAZER] `scripts/mapa.mjs`, a forma final do `docs/MAPA.md`.** O mapa de hoje é
+  prosa escrita à mão a partir de um `grep` de uma tarde (`L53`), e por isso envelhece: um
+  arquivo pode ganhar ou perder citação a qualquer commit sem que a tabela saiba. A forma que
+  não envelhece é script — roda o mesmo `grep` por nome contra o repositório inteiro, imprime
+  a tabela categoria por categoria, e falha ou avisa quando encontra um arquivo/pasta na raiz
+  que não está em nenhuma linha conhecida (a mesma forma de proteção que `test-portoes.mjs`
+  já usa para script novo fora do CI). Não escrito ainda; registrado para não ser esquecido.
 
 ## H. Arremesso
 
