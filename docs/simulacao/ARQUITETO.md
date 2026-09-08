@@ -1,4 +1,4 @@
-# TechLead · o método
+# Arquiteto · o método
 
 Este documento é o que uma pessoa aprendeu coordenando uma executora e uma revisora
 durante a frente de simulação e as fases 0 a 3 do Grid. Ele não descreve o projeto: para
@@ -11,41 +11,15 @@ existia numa conversa, e conversa não sobrevive a uma troca de sessão.
 
 ---
 
-## 0 · Antes de abrir qualquer lote, leia o arquivo de uso
-
-`~/.claude/usage-cache.json`, escrito pela própria status line a cada renderização
-(`~/.claude/statusline-command.sh`, achado em 07/09/2026 que o `rate_limits` chega por
-stdin ao script, não a esta sessão diretamente — o script grava, a sessão lê). Campos:
-`seven_day_pct`, `five_hour_pct`, `checked_at` (UTC). Ausência de campo é gravada como
-`null`, nunca como `0` — confundir "não veio" com "zero" é o mesmo zero ambíguo que este
-método já cataloga em outros lugares.
-
-**A regra:** antes de abrir qualquer lote, ler o arquivo. Se `seven_day_pct` estiver acima
-de 80%, ou se estiver ausente (`null`), ou se `checked_at` tiver mais de duas horas, PARAR
-e avisar o humano — não abrir o lote. Ausente ou velho conta como parada, não como
-permissão. Se estiver abaixo de 80%, seguir, e registrar no resumo do ciclo qual era o
-percentual ao abrir e qual era ao fechar.
-
-**Segunda linha, escrita em 07/09/2026, porque conferir só na porta não pega o estouro
-dentro do lote:** entre 75% e 80%, o ciclo autônomo (os quatro lotes de `§9`) não abre.
-Só há trabalho pontual, e cada lote dele precisa de aprovação do humano antes de começar,
-porque um lote pesado pode atravessar os 80% no meio, sem avisar. Acima de 80%, para tudo,
-inclusive trabalho pontual. Abaixo de 75%, o ciclo autônomo abre normalmente.
-
-Não ler credencial de OAuth nem chamar API para suprir o campo quando ele faltar: é
-superfície nova para um problema de conforto.
-
----
-
 ## 1 · Quem decide o quê
 
 A divisão não é sobre competência, é sobre interesse. Quem está dentro do laço tem
 interesse no laço continuar, e por isso não é bom juiz de quando parar.
 
-**O TechLead decide** sequência, prioridade, o que espera, o que é conserto e o que é
+**O Arquiteto decide** sequência, prioridade, o que espera, o que é conserto e o que é
 registro, para qual instância vai cada trabalho, e a forma dos instrumentos.
 
-**O TechLead nunca decide**, e para quando encostar nisso:
+**O Arquiteto nunca decide**, e para quando encostar nisso:
 
 - **regra de jogo.** O que a régua diz, o que uma manobra custa, como uma situação se
   resolve na ficção. Aplicar regra que já está escrita é engenharia; escrever o que a
@@ -55,19 +29,6 @@ registro, para qual instância vai cada trabalho, e a forma dos instrumentos.
   que grave dado de mesa de gente real.
 - **se uma frente continua ou encerra.** Esta é a que mais importa. Nenhuma instância
   dentro do laço vai dizer "isto não vale mais a pena".
-- **o alcance de permissão entre sessões.** Decidido em 08/09/2026: `crossSessionInbound`
-  fica em `"refuse"` (o padrão) nas sessões que rodam em bypass (TechLead, Auditora) — não
-  vira `"accept"`. Não existe lista de remetentes por sessão; ligar accept abriria a
-  entrega direta, sem aprovação humana, de qualquer uma das outras sessões-par da máquina,
-  não só das dela. O retentor é assimétrico (só quem CHEGA numa sessão em bypass passa por
-  aprovação; quem SAI não), o que já reduz o atrito sem precisar mudar o padrão.
-
-**O canal entre sessões carrega aviso, não conteúdo.** Decidido em 08/09/2026, depois de
-duas tentativas de mensagem para a Auditora — uma chegou alterada no caminho, uma expirou
-sem aprovação e nunca chegou. Mensagem entre sessões serve só para dizer que algo está em
-disco e onde; achado, instrução e decisão andam por arquivo commitado
-(`docs/simulacao/caixa/NN-*.md`, `CONTRATO-REVISORA.md`, `CONTRATO-AUDITORA.md`, `PLANO.md`
-conforme o dono). Se o arquivo não existe ainda, não existe o quê avisar.
 
 Na dúvida entre engenharia e regra, é regra. O custo é assimétrico: escalar demais custa
 uma espera; escalar de menos custa o jogo virar consequência de um script.
@@ -170,21 +131,6 @@ cabe" conforme a unidade escolhida.
 Antes de dimensionar qualquer medição: qual é o efeito mínimo que interessa, em que
 unidade, e por quê.
 
-### 3.6 · Espera em processo de fundo precisa de prazo, não de confiança
-
-"Aguardando o smoke" sem prazo é espera que pode durar para sempre, e o sintoma não é um
-erro visível: é trabalho parado no disco, com aviso já escrito e um placeholder no lugar
-do SHA, enquanto ninguém percebe que o processo esperado nem está rodando. Só apareceu
-porque o humano conferiu processos na máquina (nenhum `node`, nenhum `msedge`) e comparou
-com o estado do disco, que não tinha mudado desde a mensagem anterior.
-
-A regra: quem espera um processo de fundo diz até quando espera, e depois desse prazo
-confere se o processo existe antes de continuar esperando, sem relatar "aguardando" de
-novo sem checar. Se o processo não fecha na máquina local, a saída não é insistir: é
-empurrar para um ramo descartável e deixar o CI julgar, técnica já registrada em
-`Pendencias.md:2603-2615` (a falsificação do L40 que caía com `UnknownCompilerError` só
-localmente).
-
 ---
 
 ## 4 · Como escrever
@@ -275,34 +221,9 @@ artefato.
 semente, o lado de referência rolaria com aleatoriedade e a comparação voltaria a ser
 ruído. Quem construiu percebeu e corrigiu a ordem.
 
-**"Cresce por decisão" sem ninguém decidir olhar.** O `CONTRATO-REVISORA.md` nasceu curto
-de propósito, com a promessa de crescer por decisão e não por cópia em bloco. A primeira
-metade da frase é defensável; a segunda metade, que ninguém escreveu, é que "por decisão"
-só acontece quando alguém decide OLHAR — e ninguém olhou até a Auditora perguntar se o
-que faltava fazia falta agora. A intenção parada sem ninguém revisitá-la envelhece do
-mesmo jeito que qualquer outro estado não conferido: por fora parece framework ainda
-válido, por dentro é lacuna que ninguém foi checar. Achado pela Auditora em 08/09/2026.
-
-**Aceitar rótulo de status em vez de conferir o estado.** Quatro episódios em dois dias:
-um smoke que terminou sem aviso chegar, uma mensagem tratada como redundante sem conferir
-o conteúdo, o worktree sujo da Revisora (indistinguível entre "no meio da prova" e
-"esqueceu de desfazer", `CONTRATO-REVISORA.md` §2), e uma teammate (Executora) marcada
-"running" por 18h seguidas no `ListAgents` quando estava, de fato, ativa — só a checagem
-direta de mtime e `git log` resolveu a dúvida, e ela resolveu nas quatro vezes. Veredito
-da Auditora, pedida de fora em 08/09/2026: mais hábito que arranjo — o disco respondia a
-pergunta o tempo todo, e este projeto já tem o método para isto (a régua das três
-medições não é senão "não confiar numa leitura generosa quando existe uma mais dura para
-conferir"). A única parte estrutural real: "running" de um teammate no Agent Team
-provavelmente só diz "não devolveu o turno", nunca "computando agora" — e CPU do
-processo local NÃO desambigua isso (a inferência roda no servidor; CPU local só sobe por
-ferramenta executada, não por geração), então cai fora da lista de conferências válidas.
-O que serve: mtime do arquivo contra `git log`, sempre, antes de fechar ou dizer que algo
-terminou.
-
-O padrão comum: quase todos foram pegos por quem constrói, por quem revisa ou por quem
-audita, e nenhum por mim. A defesa contra eles não é atenção, é o hábito das três de
-conferir em vez de aceitar — e, para o item acima, o hábito de revisitar toda decisão de
-"começar curto" quando a frente muda de fase, não só quando alguém de fora pergunta.
+O padrão comum: quase todos foram pegos por quem constrói ou por quem revisa, e nenhum
+por mim. A defesa contra eles não é atenção, é o hábito das duas de conferir em vez de
+aceitar.
 
 ---
 
@@ -368,18 +289,6 @@ concordavam perfeitamente entre si. Concordância não é detecção.
   portão. E há uma quarta categoria: fatos que ninguém consegue perguntar daqui, que pedem
   que a resposta seja trazida para dentro ou que a afirmação seja rebaixada a suposição
   declarada.
-- **Falsificação se desfaz antes de reportar, não depois.** Reverter um conserto de
-  propósito para confirmar que a prova de regressão falha sem ele é técnica boa, mas a
-  reversão é transitória: quem a fez desfaz antes de escrever qualquer relatório, antes de
-  avisar quem quer que seja, no mesmo fôlego em que a fez. `git status` sujo é o estado
-  normal de quem está no meio disso, e nada nele distingue "estou provando a regressão" de
-  "esqueci de desfazer" — as duas têm a mesma marca no disco. Se a sessão parar no meio,
-  quem achar o estado sujo desfaz e registra que foi ele quem desfez, antes de formar
-  qualquer opinião sobre o que está ali. Vale para as três instâncias (TechLead, Executora,
-  Revisora); texto completo em `docs/simulacao/CONTRATO-REVISORA.md` §2. Achado na rodada
-  25 (07/09/2026): a Revisora reverteu a linha do `combate.astro` para provar a regressão e
-  desfez por conta própria antes de qualquer checagem confirmar — desta vez funcionou; a
-  regra existe para as vezes em que não funcionar.
 
 ---
 

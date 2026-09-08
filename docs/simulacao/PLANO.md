@@ -1,11 +1,11 @@
 # PLANO · o projeto inteiro e a autoridade para conduzi-lo
 
-Este documento existe para o TechLead não parar a cada passo. Ele contém as fases, o que
+Este documento existe para o Arquiteto não parar a cada passo. Ele contém as fases, o que
 já foi feito, o que falta, quem decide o quê, e as decisões já tomadas que devem ser
 aplicadas sem perguntar de novo.
 
 O método (como decidir, como planejar, os erros catalogados, as perguntas que rendem) está
-no `TECHLEAD.md`. O estado corrente está no `CONTEXTO.md`, os números no `ESTADO.md`, as
+no `ARQUITETO.md`. O estado corrente está no `CONTEXTO.md`, os números no `ESTADO.md`, as
 formas de defeito no `CATALOGO.md`, e os itens abertos no `Pendencias.md`. Este documento
 aponta para eles e não os repete.
 
@@ -50,7 +50,7 @@ faltar como mecanismo sem tela (o motor sabe, ninguém alcança), como meia tela
 metade que não muda nada), ou como tela no lugar errado (existe, noutra aba, exigindo
 troca de contexto no meio do Tick).
 
-### FASE 2 · A liberdade · FEITA · ~20%
+### FASE 2 · A liberdade · CINCO DE SEIS · ~20%
 
 Dar ao mestre as ações que o sistema tem e a tela não oferecia.
 
@@ -59,27 +59,13 @@ Dar ao mestre as ações que o sistema tem e a tela não oferecia.
 3. dívida de Ticks · FEITO
 4. mudar efeito posto · FEITO
 5. Investida · FEITO (era motor ausente, não tela)
-6. Interpor e desviar · FEITO (veredito SEGUE, rodada 18, `619c317`)
+6. Interpor e desviar · EM CONSTRUÇÃO
 
 O Interpor era o único que exigia regra nova, porque o capítulo publicado não tem uma linha
 sobre interpor, desviar nem abortar. As seis respostas estão decididas e registradas no
-`L34 §6`, e as duas portas (Preparo e Recuperação) têm prova e2e ponta a ponta, revisadas ao
-vivo pela Revisora. Fase fechada em 07/09/2026.
+`L34 §6`. Quando ele entrar, a fase 2 fecha.
 
-### FASE 2.5 · A vista do jogador · DECIDIDA, LOTE 2 ITENS 1 E 2 FECHADOS · ~5%
-
-**Peso corrigido em 07/09/2026 (era ~15%, estimado supondo três frentes de tamanho parecido).**
-O levantamento (rodada 24) derrubou uma das três e mostrou que as outras duas sempre foram a
-mesma: o que restava era o resíduo do lote 2 mais a tela da lembrança (uma feature limitada:
-UI + migração 33 + prova). **O resíduo fechou em 07/09/2026** (rodada 25, veredito SEGUE,
-`docs/simulacao/caixa/25-revisora.md`, commit `936b59a`): o relógio do `combate.astro` no
-Simultâneo e a lacuna de prova no P/G/R, ambos citados no `Pendencias.md L33`. **A tela da
-lembrança fechou em 08/09/2026** (rodada 26, `5af06f8`/`62b4dcc`), com a medição contra o
-esquema real declaradamente incompleta até a migração 33 rodar (`§8` item 3 abaixo cobre o
-que falta). Por proporção ao que a fase 2 cobrou por item
-(seis itens por ~20%, o Interpor sendo o mais pesado deles), ~5% é a estimativa: ~1% para o
-resíduo, ~4% para a tela. Os ~10% recuperados não foram realocados para nenhuma outra fase —
-não há base ainda para decidir para onde vão.
+### FASE 2.5 · A vista do jogador · NÃO COMEÇADA · ~15%
 
 Tudo o que foi medido até aqui é sobre o mestre. Esta fase é sobre o jogador, e ela existe
 porque três dos quatro achados sérios de uma semana estavam do lado dele:
@@ -94,35 +80,6 @@ O instrumento principal desta fase são três medições, e não duas: o que a t
 que chega ao navegador, e o payload conferido contra o esquema real e não contra o mock. A
 divergência entre bancada e produção sempre pendeu para o mesmo lado, o do jogador ganhando
 o que o esquema não dá.
-
-**DECIDIDA sobre a fase 4, em 07/09/2026 (decisão do humano).** A 2.5 é correção e a 4 é
-construção: a névoa vazou em quatro lugares e a tela da lembrança nunca existiu — isso está
-quebrado agora, em produção, num lado do produto que ninguém tinha olhado. O terreno da fase 4
-não existe e ninguém sente falta dele. E a 2.5 desbloqueia a migração 33, que está parada
-esperando exatamente a tela da lembrança.
-
-**CORRIGIDO pelo levantamento em 07/09/2026 (rodada 24, o próprio lote 1 desta fase):** "o
-relógio do jogador parado" não é mais verdade, a migração 31 já rodou (05/09/2026) e o cliente
-já degrada direito. O que sobrou dali é uma lacuna de prova (P/G/R sem teste do relógio) e uma
-pergunta não fechada (o relógio de `combate.astro` pode divergir do da arena) — ver `Pendencias
-L33`. Registro para quem ler isto depois sem ver o levantamento: o motivo da fase continua de
-pé pelos outros dois achados (névoa, lembrança), só a urgência do relógio caiu.
-
-**A ordem dentro dela, corrigida pelo levantamento:**
-1. ~~fechar o resíduo do relógio~~ FEITO, veredito SEGUE rodada 25, `936b59a`.
-2. ~~a tela da lembrança, que destrava a migração 33~~ FEITO, rodada 26, `5af06f8`/`62b4dcc`
-   (a medição contra o esquema real fica completa só quando a migração 33 rodar).
-3. estender a `test-visao.mjs` às outras três views (`L51`), o que a régua das três
-   medições (o INSTRUMENTO da fase, não um item dela) encontrou de fato. Único item aberto
-   da Fase 2.5 hoje.
-
-**Como a fase 1, começa pelo levantamento, não pela construção**: o que o jogador vê hoje, o
-que ele consegue fazer, e onde as três medições discordam, antes de qualquer código — esta é
-a primeira fase em que o tamanho ainda não é conhecido. O primeiro lote é levantamento.
-
-O botão do veredito (o que sobra da fase 3) entra quando couber, sem bloquear esta ordem: é
-medição da taxa em que a mesa contraria a régua, e essa taxa só existe com a gravação ligada,
-decisão do humano ainda não tomada.
 
 ### FASE 3 · Tirar trabalho do mestre · QUASE INTEIRA · ~25%
 
@@ -180,7 +137,7 @@ precisa, em vez de sair de um clique lendo a tela.
 
 ## 4 · A autoridade
 
-### 4.1 · O TechLead decide, sem perguntar
+### 4.1 · O Arquiteto decide, sem perguntar
 
 - sequência, prioridade, e o que espera;
 - o que é conserto e o que é registro;
@@ -189,7 +146,7 @@ precisa, em vez de sair de um clique lendo a tela.
 - ordem de execução dentro de um item já aprovado;
 - e o que fazer com cada achado da revisora, inclusive recusar, desde que escreva o motivo.
 
-### 4.2 · O TechLead para e escala
+### 4.2 · O Arquiteto para e escala
 
 Quatro coisas, e só quatro:
 
@@ -245,12 +202,6 @@ onde. O corte só morde com arena ativa e névoa ligada, e peça sem token conta
 Inimigo já visto que recua fica listado, apagado, com a Vida e a casa da última vez, porque
 apagar o registro do ferimento tira do jogador o resultado da própria ação, e isso não é
 névoa, é amnésia.
-
-**O visual do caso D** (decidido em 07/09/2026, o dado já vinha especificado na migração 33):
-apagado é visivelmente distinto de peça vista agora, sem depender de passar o mouse; a Vida
-mostrada é a da última vez e a tela diz isso (curado no escuro continua ferido na tela, de
-propósito); e a lembrança não é alvo — não declara golpe, não move até ela, não mira nela.
-Quarto caso de visual que essas três não cobrem: parar e perguntar.
 
 **Bandeiras avaliadas:** `porte` liga (completa a compensação que a Couraça já fazia pela
 metade). `gate` liga (a régua cita a adaga pelo nome). `teto6` não liga: dois valores já
@@ -360,43 +311,16 @@ As decisões tomadas dentro do ciclo vão para o `CONTEXTO` como `D`, com motivo
 
 ## 8 · A ordem da fila
 
-1. ~~**Interpor** · fechar a fase 2.~~ FEITO, veredito SEGUE rodada 18, `619c317`.
-2. ~~**grid.condicao** · a conferência do `:1808` ANTES do split.~~ FEITO, veredito SEGUE
-   rodada 20, `e5bfbf9`.
-3. **Fase 2.5** · decidida sobre a fase 4 em 07/09/2026 (ver `§2`, motivo e ordem lá
-   descritos). Lote 1, levantamento, FEITO (rodada 24, `docs/simulacao/caixa/24-executora.md`) —
-   corrigiu a ordem interna, ver `§2`. Lote 2 item 1 (o resíduo do relógio) FEITO, veredito
-   SEGUE rodada 25, `936b59a`. **Item 2 (a tela da lembrança) FEITO em 08/09/2026** (rodada
-   26, código `5af06f8`, aviso `62b4dcc`) — testado nos dois papéis, prova de regressão ao
-   vivo, mas com a medição 3 (payload contra o esquema real) declaradamente incompleta
-   porque a migração 33 não rodou e não pode rodar antes desta tela existir; quando ela
-   rodar, falta escrever para `combate_visao`/`token_visao` o mesmo par que `test-visao.mjs`
-   já faz para a migração 27 (isto é o item 3 abaixo). Sobra só o item 3.
-   **Nota contra leitura errada já registrada uma vez:** a régua das três medições (`§2`
-   acima, `CONTRATO-REVISORA.md §3`) é o INSTRUMENTO desta fase inteira — aplicado a cada
-   item que ela produz — e não um item da lista em si.
-4. **Fase 2.5, item 3** · estender `test-visao.mjs` às outras três views (`Pendencias.md
-   L51`), o que a régua das três medições encontrou de fato (cobertura 1 em 4 hoje).
-5. **Jogar uma mesa de verdade** · CORRIGIDO NA FILA em 08/09/2026 (decisão do humano): não
-   depende da tela da lembrança (item 2 acima) — essa só importa com névoa ligada e inimigo
-   já visto que recuou, o que é uma situação específica dentro de uma partida, não uma
-   condição para a partida existir. Sai da lista do que "está com o humano" (`§9`) e vira
-   PRÉ-REQUISITO da Fase 4 e da Fase 5: são as duas fases que faltam mais sensíveis ao que
-   uma mesa de verdade revela (custo de travessia reprojetando a agenda do Simultâneo, e a
-   experiência do jogador propriamente dita), e as duas estariam sendo construídas sem
-   nenhuma mesa real ter revelado nada — exatamente o padrão que `§9` já nomeia como a
-   lacuna que mais doeu até aqui (névoa vazando, relógio parado, Arte no instante errado:
-   os três teriam aparecido em vinte minutos de jogo). Dá para sentar e jogar hoje.
+1. **Interpor** · fechar a fase 2. Decidido, em construção.
+2. **grid.condicao** · a conferência do `:1808` ANTES do split, porque com o split os 9
+   Efeitos passam a cair no portão de entrada e pular o laço inteiro, e isso é mudança de
+   comportamento escondida numa refatoração de campo.
+3. **O que sobra da fase 3** · o botão do veredito, cujo item é medição e não código.
+4. **Fase 2.5 ou fase 4** · decisão do humano, e ela não se toma sem os dois primeiros
+   fechados.
 
-   **Definição de fechamento, 08/09/2026:** um combate inteiro, do primeiro Tick até a
-   decisão da cena (não uma amostra, não interrompido no meio); névoa desligada se for
-   preciso para caber na mesa disponível, ligada se não for; todo defeito notado DURANTE
-   o jogo (não depois, de memória) vira item numerado, na hora, mesmo que pequeno — é o
-   próprio material que abre a fila seguinte, por `§9`.
-6. **O que sobra da fase 3** · o botão do veredito. Entra quando couber, sem bloquear a
-   ordem acima; depende de decisão do humano ainda não tomada (gravação ligada).
-
-Enquanto isso, e sem entrar em lote: a conversa do modo site é do humano.
+Enquanto isso, e sem entrar em lote: a conversa do modo site é do humano, e a fase 2.5 e a 4
+não começam sem ele dizer.
 
 ---
 
@@ -407,6 +331,4 @@ peças, o relógio do jogador parado, a Arte resolvendo no instante errado) teri
 vinte minutos de jogo, e nenhum apareceu porque ninguém jogou.
 
 Quando houver uma sessão real, a lista do que incomodou vale mais que a próxima rodada de
-qualquer instância, e ela vira a fila seguinte. **Formalizado em `§8` item 5, 08/09/2026:**
-não é mais um "quando houver" solto aqui — é pré-requisito explícito da Fase 4 e da Fase 5
-na ordem da fila, porque as duas são as mais sensíveis ao que uma mesa revela.
+qualquer instância, e ela vira a fila seguinte.

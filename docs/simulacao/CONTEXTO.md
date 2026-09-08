@@ -118,7 +118,7 @@ com material pronto: a Corrida pelo desenho da Investida.
 veredito SEGUE nos dois. Em andamento: lote 2 item 2, a tela da lembrança (`Pendencias.md`
 **L32**/**L33**) — o visual já está decidido, dividido em duas metades pelo orçamento de
 uso da semana; a migração 33 não roda até a tela existir, e quem roda é o humano, avisado
-pelo TechLead quando estiver pronta.
+pelo Arquiteto quando estiver pronta.
 
 ## O que espera decisão minha (da mesa), sem dono de código ainda
 
@@ -210,12 +210,12 @@ de formato. → detalhe de cada uma: `Pendencias.md` **L42**, **L45**.
   roteiro, o critério de aceitação, as réguas de gatilho e decisões do humano que não
   estavam em nenhum documento versionado. Mesma classe de defeito do CORRIGE que não
   estava no `Pendencias`: decisão importante morando fora do repositório.
-- **A REVISORA NOVA (equipe TechLead) TEM CONTRATO PRÓPRIO, ATIVO E DIFERENTE DO
+- **A REVISORA NOVA (equipe Arquiteto) TEM CONTRATO PRÓPRIO, ATIVO E DIFERENTE DO
   ACIMA:** `docs/simulacao/CONTRATO-REVISORA.md`, começado em 07/09/2026 com a regra do
   worktree congelado (nunca reancorar no meio de uma revisão) e o passo 0 (confirmar
   `git rev-parse --show-toplevel`/`HEAD` antes de qualquer outra coisa). O `REVISORA.md`
   é histórico da instância antiga; este é o que rege a instância que está rodando agora,
-  e cresce por decisão do TechLead, um achado de cada vez.
+  e cresce por decisão do Arquiteto, um achado de cada vez.
 - **DUAS LISTAS QUE PRECISAM CONCORDAR, sustentadas só por disciplina, divergem.** A régua:
   fonte única (uma gera a outra), ou cópia com detector (asserção que compara as duas nas
   duas direções, com controle positivo). Achado três vezes nesta frente (a mais recente:
