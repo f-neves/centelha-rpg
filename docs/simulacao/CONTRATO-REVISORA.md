@@ -155,6 +155,41 @@ o que estas seis já dizem. Trazido por decisão do TechLead em 07/09/2026, junt
 régua das três medições acima — as duas faltavam neste contrato, e boa parte do que a
 revisora antiga achou nesta frente saiu exatamente delas.
 
+## 5 · Zero ambíguo (trazido do contrato antigo)
+
+**A regra:** um zero legítimo e um zero por ausência de mecanismo são indistinguíveis. Toda
+vez que um relatório publicar um zero, uma fração baixa ou um "não mudou nada", perguntar se
+existe contador de ocasião provando que a situação ocorreu.
+
+**O par disto, e é a versão boa:** entre uma função que OMITE quando não acha e uma que
+ZERA por padrão, a que omite é melhor — omitir revela o buraco (conta quantas faltam), zerar
+esconde (um valor plausível no lugar de um buraco é indistinguível de um valor medido, o
+zero ambíguo com o sinal trocado). Na revisão de tabela derivada: onde ela OMITE, conferir;
+onde ela tem PADRÃO, desconfiar.
+
+**Por quê, e por que agora:** achado pela Auditora em 08/09/2026 — a técnica já estava em
+uso ATIVO nesta frente sem estar escrita em nenhum lugar que a Revisora leia. O aviso da
+rodada 26 (`docs/simulacao/caixa/26-executora.md`) cita "o mesmo zero ambíguo de outros
+achados desta fase" ao justificar por que a lembrança sai de `naFila()` (`c.tick ?? 0`
+mascararia null como zero) — nomeando a técnica pelo nome sem que sua definição existisse
+fora do `REVISORA.md` histórico. Trazido agora porque o uso concreto já apareceu, não como
+cópia em bloco do roteiro antigo.
+
+**Resposta à pergunta da Auditora (`docs/simulacao/caixa/26-auditora.md`):** nem decisão
+consciente de excluir, nem simples esquecimento — as duas coisas eram parcialmente
+verdadeiras. O `§0` e o `§4` deste contrato já cobrem o essencial do antigo "roteiro de
+itens" (passo 0 do worktree, e as seis perguntas do critério de aceitação); o resto do
+roteiro antigo (aritmética, procedência, conclusão-vs-medição, status velho, procedência de
+decisão, escopo) fica de fora de propósito, um item por vez, só quando um caso concreto
+pedir — como aconteceu agora com o zero ambíguo. Já as "Decisões do humano que já valem"
+(L32, L35 e as demais, `REVISORA.md` desde a linha 38) não são cópia em falta: elas moram no
+`Pendencias.md` deste mesmo repositório (que a Revisora lê, ao contrário do `PLANO.md`, que
+fica fora do repositório e ela não alcança), marcadas `[x]` quando fechadas — apontar, não
+repetir, é o mesmo princípio do `PLANO.md:9`. O que ficou genuinamente sem dono até a
+Auditora perguntar foi só a disciplina de checar se algo do roteiro antigo já tinha virado
+necessário e ninguém tinha olhado — que é o próprio achado dela, catalogado em
+`TECHLEAD.md §6`.
+
 ## Como isto cresce
 
 Cada rodada de revisão pode render um item novo aqui, do mesmo jeito que
