@@ -92,6 +92,66 @@ TechLead checou o worktree antes do veredito chegar por precaução. Desta vez
 ela já tinha desfeito por conta própria antes da checagem confirmar; a regra
 existe para as vezes em que isso não acontecer.
 
+## 3 · A régua das três medições (o instrumento da fase 2.5)
+
+**A regra:** toda afirmação sobre o que o JOGADOR vê se confere de três lados, não de
+dois: **o que a tela desenha, o que chega ao navegador dele** (o payload, não só o
+DOM renderizado), **e esse payload conferido contra o esquema REAL** (a view/migração
+em produção), **não contra o mock da bancada**. As três, sempre — nunca duas por
+conveniência.
+
+**Por quê:** o mock generoso é a direção de sempre — ele mostra mais do que produção
+mostraria, nunca menos. Uma verificação que só olha tela e bancada mede o mock, não o
+jogador, e é assim que uma vista vaza informação em produção sem nenhum teste acusar
+(foi exatamente a forma da névoa vazando, `L32`/`L33`: a bancada generosa deixava
+passar o que o esquema real já tinha cortado, ou o contrário). Na fase 2.5 isto deixa
+de ser uma verificação entre outras e vira o instrumento PRINCIPAL, porque é a fase
+inteira sobre o lado do jogador.
+
+**Como aplicar:** ao revisar qualquer peça da fase 2.5 (a tela da lembrança incluída),
+antes de aceitar um "o jogador vê X": confirmar que existe verificação das três coisas
+— o desenho, o payload, e o payload contra o esquema real (não o `mesa-mock.mjs`
+sozinho) — e não só duas. Se faltar uma das três, é `CORRIGE`, não observação.
+
+**Origem:** trazido do contrato da revisora antiga (`docs/simulacao/REVISORA.md`,
+§ perto de "As três medições, então"), por decisão do TechLead em 07/09/2026, porque a
+fase 2.5 que começa agora depende dele e ele não estava em nenhum lugar que esta
+Revisora leia.
+
+## 4 · O critério de aceitação de um conserto (trazido do contrato antigo)
+
+**A regra**, quando o commit é conserto e não relatório — nesta ordem, antes de
+qualquer outra coisa:
+
+1. **Faz o que a nota diz?**
+2. **É alcançado por caminho de produção?** (função escrita que ninguém chama, ou
+   teste que exercita a função direto em vez do caminho real, são a mesma forma de
+   zero por ausência de mecanismo.)
+3. **Tem algo que falha se for removido?** (sem isso, o conserto não tem prova de que
+   roda — é o ensaio dos três sentidos do `TECHLEAD.md §8`.)
+4. **Que número publicado ele acabou de invalidar, e onde esse número ainda está
+   escrito?**
+
+**Uma quinta, quando o commit traz TELA NOVA** (a tela da lembrança é tela nova):
+custo em gestos ou afirmação sobre o que aparece, declarado sem dizer em qual PAPEL
+(mestre ou jogador) foi contado ou observado, é meia medição — o Grid decide o que
+existe por papel, e "aparece assim" sem dizer para quem é a mesma lacuna de
+alcançabilidade da pergunta 2, na tela em vez do código.
+
+**Uma sexta, para todo diff:** todo comentário que afirma garantia (`"nunca chega
+undefined aqui"`, `"isso sempre roda antes"`) é uma asserção que deveria existir. Se
+não existir, o comentário é a asserção que ninguém escreveu — pior que o silêncio,
+porque o próximo a ler confia nele em vez de conferir. Garantia verdadeira vira
+teste; garantia falsa sai. Reescrever como "espera-se que" não resolve — é a mesma
+frase com hedge, ocupando o lugar do teste.
+
+**Por quê, e por que só isto migrou agora:** o texto completo do contrato antigo tem
+seis perguntas e três casos reais por trás delas (`docs/simulacao/REVISORA.md:1163`
+em diante); só o essencial de cada uma está aqui, porque o resto é exemplo que ilustra
+o que estas seis já dizem. Trazido por decisão do TechLead em 07/09/2026, junto com a
+régua das três medições acima — as duas faltavam neste contrato, e boa parte do que a
+revisora antiga achou nesta frente saiu exatamente delas.
+
 ## Como isto cresce
 
 Cada rodada de revisão pode render um item novo aqui, do mesmo jeito que
