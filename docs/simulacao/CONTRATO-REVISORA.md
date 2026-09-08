@@ -24,9 +24,11 @@ revisando duas árvores achando que é uma, sem saber qual pedaço do veredito
 vale para qual commit.
 
 **Onde está agora:** `C:/Users/Neves/ClaudeCode/centelha-techlead-revisora`,
-detached, pinado em `99123cd` desde 07/09/2026 (SHA do aviso da rodada 25,
-`docs/simulacao/caixa/25-executora.md`, Fase 2.5 lote 2: fecha o resíduo do
-relógio). Antes disso ficou pinado em `44d5601` (aviso da rodada 22, L31),
+detached, pinado em `77c3dc3` desde 08/09/2026 — não é aviso de rodada, é a atualização
+do próprio contrato (§3/§4, a régua das três medições e o critério de aceitação), pinado
+cedo de propósito para a Revisora ter as duas réguas ANTES do primeiro diff da tela da
+lembrança chegar. Antes disso ficou pinado em `99123cd` (aviso da rodada 25, fecho do
+resíduo do relógio). Antes disso, em `44d5601` (aviso da rodada 22, L31),
 em `bdc9680` (aviso da rodada 19, L39), em `8dd27d4` (aviso da rodada 17,
 fecho dos Lotes 2 e 3 do Interpor), em `54d337c` (aviso da rodada 15) e,
 antes dessa, em `46656ba` desde a criação do worktree (antes do primeiro
