@@ -111,8 +111,14 @@ coisa funcionando na mesa.*
 ## O congelamento
 
 **A fase 3 não começou e não começa** até a mesa reavaliar o plano. Fica congelado mesmo
-com material pronto: a Corrida pelo desenho da Investida, e a **fase 2.5** (a tela da
-lembrança da névoa). → `Pendencias.md` **L33**.
+com material pronto: a Corrida pelo desenho da Investida.
+
+**A fase 2.5 SAIU do congelamento em 07/09/2026** (decidida sobre a fase 4, `PLANO.md`
+§2/§8). Lote 1 (levantamento) e lote 2 item 1 (o resíduo do relógio) estão fechados,
+veredito SEGUE nos dois. Em andamento: lote 2 item 2, a tela da lembrança (`Pendencias.md`
+**L32**/**L33**) — o visual já está decidido, dividido em duas metades pelo orçamento de
+uso da semana; a migração 33 não roda até a tela existir, e quem roda é o humano, avisado
+pelo TechLead quando estiver pronta.
 
 ## O que espera decisão minha (da mesa), sem dono de código ainda
 
@@ -122,8 +128,6 @@ lembrança da névoa). → `Pendencias.md` **L33**.
   gesto de rolar) · os números do que ela economizaria estão medidos, a decisão de
   construir não. → `docs/simulacao/09-bateria-grande.md`, seção "modo `site`";
   `docs/simulacao/ESTADO.md` linha "os 34,0% que o modo `site` valia".
-- **A fase 2.5 inteira** (a vista do jogador como produto) · congelada, ver acima.
-  → `Pendencias.md` **L33**.
 
 ## As decisões da mesa que não moram em arquivo nenhum
 
