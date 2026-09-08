@@ -24,16 +24,17 @@ revisando duas árvores achando que é uma, sem saber qual pedaço do veredito
 vale para qual commit.
 
 **Onde está agora:** `C:/Users/Neves/ClaudeCode/centelha-techlead-revisora`,
-detached, pinado em `77c3dc3` desde 08/09/2026 — não é aviso de rodada, é a atualização
-do próprio contrato (§3/§4, a régua das três medições e o critério de aceitação), pinado
-cedo de propósito para a Revisora ter as duas réguas ANTES do primeiro diff da tela da
-lembrança chegar. Antes disso ficou pinado em `99123cd` (aviso da rodada 25, fecho do
-resíduo do relógio). Antes disso, em `44d5601` (aviso da rodada 22, L31),
-em `bdc9680` (aviso da rodada 19, L39), em `8dd27d4` (aviso da rodada 17,
-fecho dos Lotes 2 e 3 do Interpor), em `54d337c` (aviso da rodada 15) e,
-antes dessa, em `46656ba` desde a criação do worktree (antes do primeiro
-diff de verdade, por decisão explícita do humano — não esperar o diff para
-montar o isolamento). Confirmado limpo e no commit certo nesta data.
+detached, pinado em `ae007b6` desde 08/09/2026, conferido por `git rev-parse HEAD` nesta
+data — um commit à frente de `77c3dc3` (a atualização de §3/§4) de propósito: `ae007b6` é
+o commit que registra ESTE MESMO parágrafo apontando para `77c3dc3`, e avançar o worktree
+até ele evita que a Revisora leia um contrato que já se descreve como desatualizado no
+instante em que abre o arquivo. As duas réguas (§3/§4) continuam presentes desde
+`77c3dc3`, antes do primeiro diff da tela da lembrança — isso não muda. Antes disso ficou
+pinado em `99123cd` (aviso da rodada 25, fecho do resíduo do relógio). Antes disso, em
+`44d5601` (aviso da rodada 22, L31), em `bdc9680` (aviso da rodada 19, L39), em `8dd27d4`
+(aviso da rodada 17, fecho dos Lotes 2 e 3 do Interpor), em `54d337c` (aviso da rodada 15)
+e, antes dessa, em `46656ba` desde a criação do worktree (antes do primeiro diff de
+verdade, por decisão explícita do humano — não esperar o diff para montar o isolamento).
 
 **Passo 0, antes de qualquer outra coisa, em toda revisão:**
 

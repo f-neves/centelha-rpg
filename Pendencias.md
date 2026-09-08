@@ -3513,6 +3513,15 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   esconde `tick`/`iniciativa`/`acao` na lembrança), e a referência do teste fica errada em
   silêncio até alguém trocar para `migracao-33.sql`. Ver L33.
 
+- [ ] **L52 · [MEDIR, registrado em 08/09/2026, não feito por orçamento de sessão]
+  Duas contagens que nunca existiram.** (1) Quantos itens abertos existem neste
+  `Pendencias.md` hoje — é a única série que diria se o congelamento de descobrimento
+  (`TECHLEAD.md §3.2`/`[[feedback_scope_discipline_side_findings]]`) está funcionando ou
+  se a fila só parou de ser contada. (2) O custo acumulado do arranjo (TechLead + Executora
+  + Revisora + Auditora) desde o início — números soltos por rodada existem, um total nunca
+  foi somado. Pedido pelo humano ao fechar a sessão de 08/09/2026; nenhum dos dois exige
+  código, só leitura e soma.
+
 ## H. Arremesso
 
 Frente aberta em **2026-08-10** e até agora sem linha neste mapa. Três documentos:
