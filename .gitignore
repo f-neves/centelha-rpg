@@ -10,8 +10,9 @@ dist/
 .env.local
 .env.*.local
 
-# temporários de inspeção
-_shots/
+# temporários de inspeção (README.md documentado e versionado, o resto não)
+_shots/*
+!_shots/README.md
 _pages/
 
 # legado (saídas grandes — mantidas localmente, fora do repo do site)
