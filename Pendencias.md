@@ -1908,6 +1908,13 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   mesmo relógio que o mestre, e o número muda junto com o deslocamento, em vez de ficar parado
   em Tick 0 (que era indistinguível de máscara quebrada antes deste teste existir).
 
+  **Veredito SEGUE em 07/09/2026 (rodada 25, `docs/simulacao/caixa/25-revisora.md`).** A
+  revisora refez a prova de regressão por conta própria (reverteu `combate.astro:903` (`ENC?.tick_atual`),
+  viu as duas asserções falharem em `(0)`, restaurou) e rodou o par do P/G/R e a suíte
+  completa sem reversão, tudo verde; confirmou que `?tick=` e `?deslocafila=` não se
+  pisam, linha a linha em `mesa-mock.mjs`. Nada a corrigir. Item 1 do lote 2 fechado; item
+  2 (a tela da lembrança) é construção nova e espera a semana nova.
+
 - [x] **L32 · DECIDIDO em 06/09/2026 · A névoa esconde a EXISTÊNCIA do inimigo, não só a
   posição · falta a tela da lembrança, e é ela que trava a migração 33** · *achado na
   varredura das oito views, 04/09/2026 (a decisão em si), fechado com a mesa e os cinco casos
