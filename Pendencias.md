@@ -244,6 +244,13 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
 
 ## B. Bestiário
 
+- [ ] **B12 · [CONSERTAR] O Grid da mesa não aplica fraqueza/resistência de criatura nenhuma.**
+  Achado em `Auditoria_Tecnica.md` §8.2 (13/08) e confirmado ainda presente em 08/09:
+  `src/lib/artes-grid-mesa.ts` (linhas 1570 e 1606) lê `m.fraquezas`/`m.resistencias` no **topo** do
+  objeto, mas os dados de B1 moram dentro de `m.combate` (`m.combate.fraquezas`). Zero das 309
+  criaturas têm o campo no topo, então nenhum dano de Arte é agravado por fraqueza no Grid, e nenhuma
+  resistência corta nada ali (o card do bestiário lê o caminho certo e funciona). Conserto de uma
+  palavra em cada lugar; ficou de fora deste mapa até agora porque só estava anotado na auditoria.
 - [x] ~~**B1 · Preencher `fraquezas` e `resistencias` nas 308 criaturas.**~~ **FEITO em
   2026-08-10.** Os campos não cabiam no `inimigos.json`, que é gerado, então viraram o **sétimo
   satélite** do bestiário: `src/data/elementos-bestiario.json`, semeado por
@@ -351,9 +358,8 @@ Detalhe em `Proezas_revisao.md`.
 - [ ] **D1 · [FAZER] Fase 3 da migração.** Matar a **banda** de vez (Velocidade independente por nível,
   apagar o campo `banda` e tirar do schema) e **surfar o modificador da trilha na UI**, mostrando o
   valor ao lado da Técnica.
-- [ ] **D2 · [DECIDIR] Números por Técnica contra a régua.** O texto de cada Técnica ainda traz o
-  número antigo ("+2 em Furtividade") enquanto a régua diz nível×3. Reconciliar o texto, ou surfar a
-  trilha e deixar o texto como sabor.
+- [x] **D2 · [FEITO, achado na auditoria de memória de 08/09] Reconciliado.** O texto já bate com a
+  régua (`tecnicas.json` traz "+3 em Furtividade", nível×3), não "+2" como este item ainda dizia.
 - [ ] **D3 · [DECIDIR] Densidade dos funis.** Caminhos reaproveitados têm ~3 Técnicas no nível 1
   (funil 3·2·1·1·1), mais enxuto que o padrão de Força. Alargar ou aceitar.
 - [x] **D4 · [SEM CAUSA 2026-08-17] O retag já estava feito; o item nasceu de uma leitura errada.**
@@ -888,10 +894,12 @@ revistos por ela.
   anotado no código (`conjurar`, em `artes-grid-mesa.ts`). Não é regressão, é a metade que faltava
   desde 21/08.
 
-- [~] **K28 · Deslocamento: sete decisões tomadas em 21/08, uma com código pendente.** A varredura
-  (§11 do `Golpe_Tardio.md`) achou **seis regras de andar** espalhadas por quatro lugares, mais dois
-  modificadores esquecidos (a armadura tira metade da Penalidade em metros; baixa estatura) e uma
-  ausência: **não há zona de controle nem ataque de oportunidade**.
+- [~] **K28 · Deslocamento: sete decisões tomadas em 21/08, a oitava (código) já saiu; falta só a
+  ausência.** A varredura (§11 do `Golpe_Tardio.md`) achou **seis regras de andar** espalhadas por
+  quatro lugares, mais dois modificadores esquecidos (a armadura tira metade da Penalidade em
+  metros; baixa estatura) e uma ausência que segue **sem decisão registrada em lugar nenhum**:
+  **não há zona de controle nem ataque de oportunidade**. Continua `[~]` por causa só dela; não é
+  claro se a ausência é escolha de design ou lacuna.
 
   **Decidido:** o Grid **não cobra** o passo grátis, só **mostra ao arrastar**; o passo é gasto **no
   instante em que se age** (não é esquiva guardada); ele **tira do alcance** de quem já declarou, e
@@ -903,20 +911,11 @@ revistos por ela.
   custar metade sem tocar em código), o texto das três raças, e as menções ao 2 nos documentos e no
   motor.
 
-  **Falta:** a decisão 6, que é a única com código. E ela tem um problema aberto: o passo grátis sai
-  de **Destreza + Atletismo**, e o bestiário guarda Atributos mas **não guarda perícias**. Para o PC
-  o número está na ficha; para a criatura não existe. Ou o bloco do bestiário ganha um campo de
-  deslocamento, ou a seta escreve o passo só para quem tem ficha.
-
-  **O caminho já está escolhido, e é trabalho de busca (anotado em 23/08).** As 309 criaturas do
-  bestiário vão ganhar deslocamento próprio, e a fonte é o **deslocamento da criatura original** no
-  material de onde ela veio (D&D 3.5 / Pathfinder, onde vem em pés por round). Não se inventa número
-  por atributo: colhe-se o número da fonte e converte-se. A régua da conversão sai do que já
-  calculamos para as **raças básicas**, que é onde os dois sistemas se tocam: o humano de referência
-  anda 30 ft/round na fonte e 2 + (Des + Atl) ÷ 4 m por Tick aqui, e anão/gnomo/halfling andam 20
-  ft/round na fonte e dois terços aqui. Esses pares dão o fator, e o fator aplica-se ao resto do
-  bestiário. Fica para quando a frente do bestiário abrir: é varredura de 309 verbetes, não é uma
-  decisão de design.
+  **[x] FEITO em 2026-08-28** (achado na auditoria de memória de 08/09, ver `[[deslocamento-bestiario]]`):
+  a decisão 6 saiu. As 309 criaturas ganharam as três velocidades em
+  `src/data/deslocamento-bestiario.json` (satélite gerado, mesmo padrão do B1), fator ft ÷ 10
+  calibrado nas raças básicas; 270 vieram da fonte (D&D 3.5/Pathfinder) e 39 por tabela. K28 fecha
+  inteiro.
 
 - [ ] **K25 · [DECIDIR] A Defesa da arma e a do escudo somam, e o escudeiro vira parede.** A
   `defesas.md` escreve "**+ defesa da arma/escudo**", no singular, mas a ficha **soma as duas**
@@ -3529,19 +3528,16 @@ Frente aberta em **2026-08-10** e até agora sem linha neste mapa. Três documen
 está no ar, e `Arremesso_Regra.md` é a **proposta nova**, em três regimes. A bancada
 `arremesso-bench.html` compara as duas com gráfico.
 
-- [ ] **H1 · [DECIDIR] Adotar a regra nova ou ficar com a que está no ar.** O que muda: o **ápice
-  sai de 1 kg e vai para 0,1 kg**, a parede sai de P e vai para **P ÷ 4**, e a curva do meio, que
-  hoje é `massaBraço ÷ (peso + massaBraço)`, vira uma **raiz quadrada** (`Alcance = 2 × FAA ÷
-  √massa`). O que fica igual: as duas reservas, as quatro faixas de carga, os quatro fatores de
-  forma, o alcance livre como fração e as quatro bandas de −3. O argumento é medida, não gosto: a
-  massa efetiva do braço não é constante, é ~1,7 × a massa do objeto em quatro séries que cobrem
-  500× de faixa, e com isso a álgebra colapsa numa raiz (ajuste `45,9 × massa^−0,488`, R² 0,971).
-  Erro médio de 15% contra doze marcas reais, pior caso 34%. Na mesa cabe numa frase: **o dobro da
-  Força de Arremesso, dividido pela raiz do peso**.
-- [ ] **H2 · [FAZER] Se adotar, portar.** Hoje o `regras.json` ainda tem a régua antiga inteira
-  (`arremessoMassaBraco: 1`, `arremessoParedeExp`, `arremessoR0` e a `notaArremesso`, que é o texto
-  que a ficha exibe). Mexem junto: a ficha, o painel de Força & Arremesso, os ganhos de corrida e
-  giro e a bancada, que passa a comparar com a antiga como histórico.
+- [x] **H1 · [FEITO, achado na auditoria de memória de 08/09] A regra nova foi adotada.**
+  `src/data/regras.json` hoje tem `arremessoApice: 0.1` e `arremessoTeto: 0.25` (P ÷ 4), batendo com
+  o que este item propunha. A curva do meio ficou como `Alcance = 7 × FAA^0,7 ÷ peso^0,4`
+  (`arremessoConst`, `arremessoExpFaa`, `arremessoExpMassa`), uma calibração de dois expoentes em
+  vez da raiz quadrada de expoente único escrita aqui (`2 × FAA ÷ √massa`); parece um refino
+  posterior da mesma família de ajuste (`45,9 × massa^−0,488`), não uma regra diferente, mas ninguém
+  atualizou este texto quando calibrou. **Conferir com o humano se o expoente 0,7/0,4 foi decisão
+  consciente**, e então apagar a nota de "proposta" e deixar só o valor final.
+- [x] **H2 · [FEITO] Portado.** Os campos antigos (`arremessoMassaBraco`, `arremessoParedeExp`,
+  `arremessoR0`) não existem mais em `regras.json` (conferido em 08/09): só sobrou a régua nova.
 - [ ] **H3 · [DECIDIR] Os quatro assuntos que a proposta levanta e não fecha** (§7). **Funda e
   ferramentas que estendem o braço**: medido +30% a +70% na funda, +58% na correia grega, +81% no
   cabo do martelo, e a funda existe como arma do jogo sem número próprio (proposta: ×1,5, ao lado
