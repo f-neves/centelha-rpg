@@ -3,18 +3,12 @@
 Este documento existe para uma conversa nova retomar de onde esta parou. Ele não descreve o
 projeto nem o método: isso está no repositório, e este texto aponta.
 
-Leia primeiro, no repositório `rpg-system`:
+A lista de leitura por papel (o que o Arquiteto lê ao abrir sessão, o que a Auditora lê) está
+em §9, nos prompts de abertura, e é repetida em `docs/simulacao/README.md` só como ponteiro —
+fonte única aqui, para as duas não divergirem (já divergiam: esta introdução listava
+`ESTADO.md`, que o prompt de abertura do Arquiteto em §9 nunca pediu).
 
-- `docs/simulacao/PLANO.md` · as fases, o estado de cada uma, a autoridade de decisão, as
-  decisões já tomadas e como responder quando as instâncias perguntam
-- `docs/simulacao/ARQUITETO.md` · o método: como decidir, como planejar, os erros
-  catalogados, as perguntas que rendem
-- `docs/simulacao/CONTEXTO.md` · o estado corrente
-- `docs/simulacao/ESTADO.md` · os números medidos
-- `docs/simulacao/CATALOGO.md` · as formas de defeito
-- `Pendencias.md` · os itens abertos, numerados por `L`
-
-O que segue é só o que não está lá.
+O que segue é só o que não está nesses documentos.
 
 ---
 

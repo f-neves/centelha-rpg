@@ -11,6 +11,23 @@ trabalhar. Se está em "registro histórico", não leia de ponta a ponta — abr
 precisar conferir de onde um número ou uma frase saiu, geralmente porque `CATALOGO.md`,
 `CONTEXTO.md` ou `Pendencias.md` cita o arquivo e a linha.
 
+## Lista de leitura, por papel
+
+Nem toda instrução ativa é para todo mundo. A tabela abaixo é o inventário inteiro; a lista de
+leitura é o recorte por quem vai ler, e o critério é **instrução ativa para o papel**, não
+"tudo que está em uso hoje" — a Auditora não precisa da régua de arremesso, e o Arquiteto não
+precisa de `Grid_Mobile.md` para abrir a semana. **Fonte única: `PASSAGEM.md` §9**, os prompts
+de abertura; a lista abaixo aponta para lá em vez de copiar, para as duas não divergirem.
+
+- **Arquiteto**, ao abrir uma sessão nova: `PASSAGEM.md` → `PLANO.md` → `ARQUITETO.md` →
+  `CONTEXTO.md` → `CATALOGO.md` → `Pendencias.md` (seis arquivos, nesta ordem). Não os
+  relatórios `00` a `09` nem `CONTRATO-REVISORA-ORIGINAL.md` — abre só para procedência.
+- **Auditora**, ao abrir: `CONTRATO-AUDITORA.md` → `PASSAGEM.md` (dois arquivos). O resto ela
+  lê sob demanda, quando o Arquiteto perguntar algo específico.
+- **Executora** e **Revisora** não têm lista própria aqui: nascem de um prompt do Arquiteto
+  dentro da sessão dele (`PASSAGEM.md` §1), e o contrato da Revisora
+  (`CONTRATO-REVISORA.md`) é o que rege o que ela lê.
+
 ## Instrução ativa
 
 | arquivo | o que é |
