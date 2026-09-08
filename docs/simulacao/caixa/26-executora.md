@@ -28,7 +28,7 @@ VERSAO DO SITE"), não um corte por tempo.
 (`src/pages/mesa/grid.astro:3878-3894`, linha atual, conferida): ainda
 exatamente `{q, r, em, pv, pvmax}` por combatente, escrito quando a peça sai
 de vista, e vencido pela última observação (não a primeira). `salvarNevoa()`
-(`grid.astro:3900-3916`) persiste em `mesa_arenas.nevoa` (jsonb), via
+(`grid.astro:3911-3927`) persiste em `mesa_arenas.nevoa` (jsonb), via
 `SB.from('mesa_arenas').update({ nevoa })`. **Achado que o pedido não
 antecipava:** essa coluna já viaja INTEIRA para o jogador hoje, antes da
 migração 33: `arena_visao` (a versão corrente é a da migração 24, `supabase/
