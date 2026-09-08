@@ -3467,6 +3467,96 @@ async function cenaLogDoJogador(br, url) {
   await p.close();
 }
 
+/**
+ * A TELA DA LEMBRANÇA (Fase 2.5, lote 2, item 2; migração 33, NÃO RODADA).
+ *
+ * `?lembranca=1` (`scripts/mesa-mock.mjs`) simula, só na bancada, a forma
+ * que `token_visao`/`combate_visao` terão quando a migração rodar: uma
+ * criatura (`c-lembr`) sem token agora mas com uma entrada em `nevoa.vistos`
+ * congelada em Vida 15/20, enquanto a Vida AO VIVO dela já é outra (3/20).
+ * As três regras de visual são do humano (Pendencias.md L32): apagada de
+ * jeito visível sem precisar do mouse, Vida da última vez (não a de agora),
+ * e não é alvo.
+ */
+async function cenaLembranca(br, url) {
+  console.log('\n· a tela da lembrança (migração 33, simulada por ?lembranca=1)');
+  const abrir = async (papel) => {
+    const p = await br.newPage();
+    const erros = [];
+    p.on('pageerror', (e) => erros.push(e.message));
+    await p.goto(`${url}/mesa/grid?id=${MESA}&bench=12&cols=24&rows=16&nevoa=1&lembranca=1&papel=${papel}`,
+      { waitUntil: 'networkidle0', timeout: 60000 });
+    await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
+    await espera(500);
+    const d = await p.evaluate(() => {
+      const el = document.querySelector('.gr-token.lembranca');
+      return {
+        temNoDom: !!el,
+        classes: el?.className || '',
+        title: el?.title || '',
+        cv: (window.__SB?.tabelas?.combate_visao || []).find((c) => c.id === 'c-lembr') || null,
+        tv: (window.__SB?.tabelas?.token_visao || []).find((t) => t.combatente_id === 'c-lembr') || null,
+      };
+    });
+    return { p, d, erros };
+  };
+
+  const jog = await abrir('jogador');
+  const mestre = await abrir('mestre');
+
+  // ---- O QUE A TELA DESENHA (medição 1 da régua das três) ----
+  ok(jog.d.temNoDom, 'a peça lembrada chega a ter um `.gr-token` desenhado, do lado do jogador');
+  ok(/lembranca/.test(jog.d.classes) && !/\bvez\b/.test(jog.d.classes),
+    `a classe marca a lembrança, e ela nunca está "na vez" (${jog.d.classes})`);
+  ok(/lembrança/i.test(jog.d.title) && /não é alvo/i.test(jog.d.title),
+    `o título diz que é lembrança e que não é alvo, sem precisar do mouse (achado no ato de ler) ("${jog.d.title}")`);
+  ok(!mestre.d.temNoDom, 'o mestre NUNCA vê essa classe: ele lê a linha crua, não a lembrança');
+
+  // ---- O QUE CHEGA AO NAVEGADOR (medição 2): o payload real, não só o desenho ----
+  ok(jog.d.cv?.lembranca === true && jog.d.cv?.visto_em === '2026-09-04T12:00:00Z',
+    `\`combate_visao\` manda \`lembranca\` e \`visto_em\` (${jog.d.cv?.lembranca}, ${jog.d.cv?.visto_em})`);
+  ok(jog.d.cv?.pv_atual === 15 && jog.d.cv?.pv_max === 20 && jog.d.cv?.pv_pct === 75,
+    `a Vida que chega é a DA FOTOGRAFIA (15/20), não a ao vivo (3/20) (${jog.d.cv?.pv_atual}/${jog.d.cv?.pv_max})`);
+  ok(jog.d.cv?.tick === null && jog.d.cv?.iniciativa === null,
+    `o AGORA cala na lembrança: tick e iniciativa nulos (${jog.d.cv?.tick}, ${jog.d.cv?.iniciativa})`);
+  ok(JSON.stringify(jog.d.cv?.acao) === '{}' && JSON.stringify(jog.d.cv?.condicoes) === '[]',
+    'e a ação e as condições também, pela mesma regra (é leitura do instante)');
+  ok(jog.d.tv?.lembranca === true && jog.d.tv?.q === 3 && jog.d.tv?.r === 1,
+    `\`token_visao\` desenha na ÚLTIMA CASA VISTA (3,1), não onde ela está agora (${jog.d.tv?.q},${jog.d.tv?.r})`);
+
+  // ---- CONTRA O ESQUEMA REAL (medição 3): a forma é a que migracao-33.sql define ----
+  // Não lido aqui por `fs.readFileSync` (isso é papel de um `test-visao.mjs` para
+  // quando a 33 rodar de verdade); a garantia desta rodada é mais estreita e
+  // está escrita à mão acima, coluna a coluna, contra o texto da migração.
+
+  // ---- NÃO É ALVO: mirar nela tem de recusar, com aviso, não silenciar ----
+  const alvoRecusado = await jog.p.evaluate(async () => {
+    const meu = document.querySelector('.gr-token[data-c="c000"]');
+    meu.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, clientX: 50, clientY: 50 }));
+    await new Promise((r) => setTimeout(r, 200));
+    document.querySelector('#tok-menu button[data-a="ataque"]')?.click();
+    return true;
+  });
+  ok(alvoRecusado, 'a mira abre para a própria peça (pré-condição do teste seguinte)');
+  const alvoRect = await jog.p.evaluate(() => {
+    const r = document.querySelector('.gr-token.lembranca').getBoundingClientRect();
+    return { x: r.x + r.width / 2, y: r.y + r.height / 2 };
+  });
+  await jog.p.mouse.move(alvoRect.x, alvoRect.y);
+  await jog.p.mouse.down();
+  await jog.p.mouse.up();
+  await espera(400);
+  const rejeicao = await jog.p.evaluate(() => ({
+    msg: document.querySelector('dialog.ui-dlg .ui-dlg-msg')?.textContent || '',
+  }));
+  ok(/lembrança/i.test(rejeicao.msg) && /não/i.test(rejeicao.msg),
+    `clicar na lembrança durante a mira recusa com aviso, não silêncio ("${rejeicao.msg}")`);
+  await jog.p.evaluate(() => document.querySelector('dialog.ui-dlg .ui-dlg-x')?.click());
+
+  ok(jog.erros.length === 0 && mestre.erros.length === 0, 'nenhum erro de página, nos dois lados');
+  await jog.p.close(); await mestre.p.close();
+}
+
 const dev = await subirDev({ config: 'astro.bancada.mjs' });
 const br = await puppeteer.launch({ executablePath: NAV, headless: 'new', args: ['--no-sandbox'] });
 try {
@@ -3485,6 +3575,7 @@ await cenaRastreador(br, dev.url);
 await cenaForaDeHora(br, dev.url);
   await cenaCorrigirEfeito(br, dev.url);
   await cenaLogDoJogador(br, dev.url);
+  await cenaLembranca(br, dev.url);
 } finally {
   await br.close();
   await dev.parar();

@@ -1663,6 +1663,17 @@ const SETAS = [
   .gr-token.g-neutro  .av { outline: 2px solid var(--gold); }
   .gr-token.oculto { opacity: .6; }
   .gr-token.oculto .av { outline-style: dashed; }
+  /* A LEMBRANÇA (migração 33, ainda não rodada): visível sem passar o mouse,
+     por isso não é só opacidade. Cinza (não é o agora), traço pontilhado
+     largo (não é o corte contínuo do `.oculto`, que o jogador nunca vê) e um
+     selo no canto: as três juntas dizem "isto é memória" de longe. */
+  .gr-token.lembranca .av img { filter: grayscale(1) brightness(.8); }
+  .gr-token.lembranca .av { opacity: .7; outline: 2px dotted color-mix(in srgb, var(--ink) 70%, transparent); outline-offset: 2px; }
+  .gr-token.lembranca .gr-tn { font-style: italic; opacity: .8; }
+  .gr-token.lembranca::after {
+    content: '◌'; position: absolute; top: -.3em; right: -.3em; font-size: .9em;
+    color: var(--ink); background: var(--bg); border-radius: 999px; line-height: 1; padding: 1px;
+  }
   /* O brilho de quem está na vez. `drop-shadow` e não `box-shadow`: a peça é
      recortada em hexágono, e o box-shadow desenharia o halo do RETÂNGULO, não
      do hexágono. Duas camadas, uma curta e uma larga, dão o miolo aceso e o
@@ -4367,11 +4378,18 @@ const SETAS = [
       // Ver `combate-tempo.ts` e Combate_Tempo.md §14.7.1.
       const fase = faseEm(gestoNo(c), agoraTick);
       const clsFase = fase === 'golpe' ? ' golpe' : fase === 'preparo' ? ' montando' : '';
+      // A LEMBRANÇA (migração 33): a peça que o jogador já viu, agora no
+      // escuro, desenhada na última casa conhecida. `combate_visao` já manda
+      // `lembranca`/`visto_em`; o mestre nunca tem esse campo (lê a tabela
+      // crua), então `c.lembranca` é sempre falso do lado dele.
+      const lembranca = !!c.lembranca;
+      const vistoHora = lembranca && c.visto_em
+        ? new Date(c.visto_em).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) : null;
       // Abaixo de uns 34px o nome fica mais largo que a peça e vira sujeira em
       // cima do vizinho; nesse tamanho o título do mouse dá conta.
-      return { chave: c.id, html: `<div class="gr-token g-${esc(c.grupo || 'inimigo')} ${tierCls(faixa.estado)}${c.oculto ? ' oculto' : ''}${px < 34 ? ' mini' : ''}${caido ? ' caido' : ''}${naVez.has(c.id) ? ' vez' : ''}${clsFase}"
+      return { chave: c.id, html: `<div class="gr-token g-${esc(c.grupo || 'inimigo')} ${tierCls(faixa.estado)}${c.oculto ? ' oculto' : ''}${px < 34 ? ' mini' : ''}${caido ? ' caido' : ''}${naVez.has(c.id) ? ' vez' : ''}${lembranca ? ' lembranca' : ''}${clsFase}"
         data-c="${c.id}" style="left:${p.x + mg.x}px; top:${p.y + mg.y}px; --tok:${px.toFixed(1)}px"
-        title="${esc(c.nome)} · ${diametroM(c)} m${pct != null ? ` · ${faixa.estado}` : ''}${
+        title="${esc(c.nome)}${lembranca ? ` · lembrança${vistoHora ? `, vista ${vistoHora}` : ''}: Vida da última vez, não é alvo` : ''} · ${diametroM(c)} m${pct != null ? ` · ${faixa.estado}` : ''}${
           mn != null ? ` · Mana ${c.mana_max != null && c.mana_atual != null
             ? `${c.mana_atual}/${c.mana_max}` : `${Math.round(mn)}%`}` : ''}${
           clsFase ? ` · ${esc(resumoDaAcao(gestoNo(c), agoraTick))}` : ''}">
@@ -4422,7 +4440,11 @@ const SETAS = [
     // e o id só decide quando duas rolagens empatam de verdade.
     chegada: c.id, nome: c.nome,
   });
-  const naFila = () => COMBS.filter((c: any) => TOKENS[c.id]).slice()
+  // A LEMBRANÇA NÃO ESTÁ NA FILA: ela não age, não tem Tick de verdade
+  // (`combate_visao` manda `tick: null` quando `lembranca`), e contá-la
+  // travaria o relógio do jogador em 0 pelo mesmo `?? 0` que a mascara em
+  // todo outro lugar. Peça de memória não tem vez.
+  const naFila = () => COMBS.filter((c: any) => TOKENS[c.id] && !c.lembranca).slice()
     .sort((a: any, b: any) => ordemDaFila(naOrdem(a), naOrdem(b)));
 
   /**
@@ -7878,6 +7900,11 @@ const SETAS = [
    * única coisa que se faz com quem está no caminho.
    */
   async function resolverAtaque(atacante: any, alvo: any) {
+    // A LEMBRANÇA NÃO É ALVO. Ela está desenhada na última casa vista, não
+    // onde a criatura de fato está agora: mirar nela prometeria um ataque
+    // que o motor não faz (o alvo real pode nem estar mais lá). Os dois
+    // caminhos até aqui (mira e arrasto) passam por este ponto único.
+    if (alvo?.lembranca) { uiErro('Isso é uma lembrança de onde a criatura estava. Não dá para atacar o que já não se vê.'); return; }
     // O GOLPE ADIADO CORTA AQUI, e só aqui: com a chave ligada, atacar declara e
     // acaba. O que resolve é `resolverGolpeNoAr`, no Tick agendado. Com o
     // Preparo em zero (arma leve, ou o sistema normal) não há o que adiar, e o

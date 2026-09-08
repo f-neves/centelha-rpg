@@ -177,6 +177,20 @@ const ADIADO = P.get('adiado') === '1';
  * `?tick=` sozinho com a fila parada de propósito.
  */
 const DESLOCA_FILA = Math.max(0, parseInt(P.get('deslocafila') || '0', 10) || 0);
+/**
+ * `?lembranca=1` SIMULA a migração 33, que NÃO RODOU em produção: liga uma
+ * criatura extra (`c-lembr`), sem token corrente (já não está visível), com
+ * uma entrada em `nevoa.vistos` presa no instante em que foi vista pela
+ * última vez (Vida 15/20 congelada) enquanto a Vida ATUAL dela já é outra
+ * (3/20), para a tela ter o que separar: o que ela desenha (a lembrança) do
+ * que é agora (a linha crua, que só o mestre vê).
+ *
+ * DESLIGADO POR PADRÃO, DE PROPÓSITO: sem o knob, `ARENAS[0].nevoa` continua
+ * sem a chave `vistos`, e `token_visao`/`combate_visao` continuam byte a
+ * byte como antes desta rodada: é o que mantém `test-visao.mjs` (pinado na
+ * migração 27, a que está em produção) verde sem mudar nada nele.
+ */
+const LEMBRANCA = P.get('lembranca') === '1';
 // DE QUE CADEIRA SE OLHA. `?papel=jogador` tira o mestre do lugar e devolve a
 // mesa como ela chega para quem só tem um personagem: sem os botões do relógio,
 // sem o menu que mexe na cena, e com a `acao` alheia MASCARADA como a
@@ -357,6 +371,19 @@ for (let i = 0; i < N_COMB; i++) {
       // e `caido` tiraria a peca da fila, que e outra medida.
       .concat(EX_PRESA && i === 1 ? [{ id: 'imobilizado', ate: 1, porArte: true }] : []),
     ativo: true, oculto: false, imagem: null, retrato: null,
+  });
+}
+
+// A CRIATURA LEMBRADA (`?lembranca=1`): clonada de uma criatura de verdade
+// para não faltar campo nenhum que o resto do código espera, sem token
+// nenhum (ela já não está visível: é isso que a torna elegível à
+// lembrança), e com a Vida ATUAL diferente da que `vistos` vai congelar,
+// abaixo.
+if (LEMBRANCA) {
+  const base = COMBS.find((c) => c.tipo !== 'pc') || COMBS[COMBS.length - 1];
+  COMBS.push({
+    ...base, id: 'c-lembr', nome: 'Sombra Lembrada', personagem_id: null,
+    pv_max: 20, pv_atual: 3, acao: {}, condicoes: [], dados: {},
   });
 }
 
@@ -786,7 +813,14 @@ const ARENAS = [{
   id: ARENA, mesa_id: MESA, nome: 'Bancada', cols: COLS, rows: ROWS, escala_m: 1,
   ativa: true, ordem: 0, criado_em: '2026-01-01T00:00:00Z',
   fundo: {}, fundo_path: null, fundo_url: null, grade: {},
-  nevoa: NEVOA ? { ligada: true, visao: 6, luz: 2, claros: [], explorado: [] } : {},
+  nevoa: (NEVOA || LEMBRANCA) ? {
+    ligada: true, visao: 6, luz: 2, claros: [], explorado: [],
+    // A `vistos` só nasce com o knob ligado (ver o comentário de `LEMBRANCA`
+    // acima): sem ela, o comportamento de hoje (sem migração 33) não muda.
+    ...(LEMBRANCA ? {
+      vistos: { 'c-lembr': { q: 3, r: 1, em: '2026-09-04T12:00:00Z', pv: 15, pvmax: 20 } },
+    } : {}),
+  } : {},
   trilha: {}, log: LOG,
 }];
 
@@ -1047,11 +1081,53 @@ Object.defineProperty(TABELAS, 'efeito_visao', {
  * É a mesma fronteira do `meu` do `paraJogador`, e são os dois únicos pontos em
  * que a bancada não consegue ser o Postgres.
  */
+/** Tem um token AGORA, em qualquer casa (clara ou não)? Simplificado para o
+ * que o cenário `?lembranca=1` precisa: a criatura da lembrança nunca tem
+ * token nenhum, então não precisa da régua completa de `meu`/`casa_clara`
+ * que a view real usa para decidir "presente". */
+const temTokenAgora = (id) => TABELAS.arena_tokens.some((t) => t.combatente_id === id);
+
 Object.defineProperty(TABELAS, 'combate_visao', {
   enumerable: true,
-  get: () => (PAPEL === 'jogador'
-    ? TABELAS.combatentes.filter((c) => c.oculto === false).map(paraJogador)
-    : TABELAS.combatentes),
+  get: () => {
+    if (PAPEL !== 'jogador') return TABELAS.combatentes;
+    // SEM `?lembranca=1` ISTO É O DE SEMPRE, LINHA A LINHA: `vistos` não
+    // existe (a arena nasce sem essa chave), o filtro/`map` abaixo não muda
+    // nada, e `test-visao.mjs` (pinado na migração 27, a que está em
+    // produção) continua conferindo exatamente isto.
+    const nevoa = ARENAS[0].nevoa || {};
+    const vistos = (nevoa.ligada && nevoa.vistos) ? nevoa.vistos : {};
+    if (!Object.keys(vistos).length) {
+      return TABELAS.combatentes.filter((c) => c.oculto === false).map(paraJogador);
+    }
+    // A SIMULAÇÃO DA MIGRAÇÃO 33 (NÃO RODADA): quem tem `vistos` e não tem
+    // token agora sai da leitura normal (senão o bicho apareceria com a
+    // Vida AO VIVO, que é exatamente o vazamento de existência que a 33
+    // fecha) e entra pela forma mascarada abaixo, com o AGORA nulo e a Vida
+    // da fotografia: a mesma tradução que `case when f.lembrado` faz na
+    // view real (`supabase/migracao-33.sql`).
+    const normais = TABELAS.combatentes
+      .filter((c) => c.oculto === false && !(vistos[c.id] && !temTokenAgora(c.id)))
+      .map(paraJogador);
+    const lembradas = Object.entries(vistos)
+      .filter(([id]) => !temTokenAgora(id))
+      .map(([id, v]) => {
+        const cru = TABELAS.combatentes.find((c) => c.id === id);
+        if (!cru || cru.oculto !== false || cru.ativo === false || cru.tipo === 'pc') return null;
+        const pct = v.pvmax > 0 ? Math.round((v.pv / v.pvmax) * 20) * 5 : null;
+        return {
+          id: cru.id, encontro_id: cru.encontro_id, tipo: cru.tipo, personagem_id: cru.personagem_id,
+          monstro_id: cru.monstro_id, codex_id: cru.codex_id ?? null, nome: cru.nome, grupo: cru.grupo,
+          ativo: cru.ativo, imagem: cru.imagem ?? null, criado_em: cru.criado_em ?? null,
+          tick: null, iniciativa: null, lembranca: true, visto_em: v.em,
+          ver_vida: 'numero', ver_stats: false, retrato: cru.retrato ?? null, resumo_pc: null,
+          pv_atual: v.pv, pv_max: v.pvmax, energia_atual: null, energia_max: null,
+          mana_atual: null, mana_max: null, pv_pct: pct, mana_pct: null,
+          dados: {}, condicoes: [], acao: {},
+        };
+      }).filter(Boolean);
+    return [...normais, ...lembradas];
+  },
 });
 
 Object.defineProperty(TABELAS, 'token_visao', {
@@ -1060,7 +1136,18 @@ Object.defineProperty(TABELAS, 'token_visao', {
     if (PAPEL !== 'jogador') return TABELAS.arena_tokens;
     const meus = new Set(TABELAS.combatentes
       .filter((c) => c.personagem_id === MEU_PC).map((c) => c.id));
-    return TABELAS.arena_tokens.filter((t) => meus.has(t.combatente_id) || claraNoMock(t.q, t.r));
+    const agora = TABELAS.arena_tokens.filter((t) => meus.has(t.combatente_id) || claraNoMock(t.q, t.r));
+    const nevoa = ARENAS[0].nevoa || {};
+    const vistos = (nevoa.ligada && nevoa.vistos) ? nevoa.vistos : {};
+    if (!Object.keys(vistos).length) return agora;
+    // A METADE NOVA (migração 33, simulada): quem tem `vistos` e não tem
+    // token agora desenha na última casa vista, marcado com `lembranca`.
+    const lembradas = Object.entries(vistos)
+      .filter(([id]) => !temTokenAgora(id))
+      .filter(([id]) => TABELAS.combatentes
+        .some((c) => c.id === id && c.oculto === false && c.ativo !== false && c.tipo !== 'pc'))
+      .map(([id, v]) => ({ arena_id: ARENA, combatente_id: id, q: v.q, r: v.r, lembranca: true, visto_em: v.em }));
+    return [...agora.map((t) => ({ ...t, lembranca: false, visto_em: null })), ...lembradas];
   },
 });
 
