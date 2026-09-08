@@ -63,12 +63,17 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   como uma criatura carrega Efeitos no stat block.
 - [ ] **A10 · [FAZER] Abertura do capítulo para iniciante.** As seções 2 a 4 do `Arcano_revisao.md`
   (o que a feitiçaria é) ainda não viraram prosa no site.
-- [ ] **A11 · [FAZER] Revisar as seções 3 e 4 do `Arcano_revisao.md`** quando a rolagem por Tradição
-  fechar (C1). **Em 2026-08-17 o "Ocultismo + Atributo" saiu de todos os textos e do
-  `regras.json`**, porque nunca foi regra viva: a única jogada de magia é **Percepção + Acerto
-  Arcano**, nos efeitos mirados, e o resto sai de Dificuldade fixa do Efeito ((nível da Arte) × 4 ou
-  × 5), da Defesa passiva do alvo ou de tabela. O que sobra aqui é reler as duas seções quando a
-  Tradição decidir se muda o par de dados.
+- [~] **A11 · Duas partes, dois estados** (achado na auditoria de memória de 08/09: fechar isto
+  como um item só escondia uma condição futura dentro do "fechado", a forma que o `CATALOGO.md` da
+  simulação agora cataloga). **[FECHADO em 2026-08-17, escopo elemental improvisado:]** o "Ocultismo
+  + Atributo" saiu de todos os textos e do `regras.json`, porque nunca foi regra viva: a única
+  jogada de magia hoje, para o improviso elemental sem Tradição, é **Percepção + Acerto Arcano** nos
+  efeitos mirados, e o resto sai de Dificuldade fixa do Efeito ((nível da Arte) × 4 ou × 5), da
+  Defesa passiva do alvo ou de tabela. Isso não muda mais sozinho. **[ABERTO, camada de Tradição:]**
+  revisar as seções 3 e 4 do `Arcano_revisao.md` continua esperando **C1/C2** fecharem: só quando a
+  Tradição decidir se um efeito **Moldado** rola por perícia própria (a proposta de
+  `trilhas-feiticaria.md`, 28/07, nunca batida) é que o par de dados acima pode mudar para esse caso.
+  "Quando a Tradição decidir" não é ressalva de rodapé: é a condição que mantém esta metade aberta.
 - [x] **A12 · [RESOLVIDO 2026-08-15] Metal não vira Arte.** Passa a ser um **bloco de Efeitos de
   Terra** aberto por **Trilha**: os verbos dele são coisas que se fazem com equipamento (e coisa
   que se faz é Efeito), não tem dano nem parâmetro próprio, e a tabela de estado já o põe junto da
@@ -341,11 +346,16 @@ limitações conhecidas, que são as três de baixo.
 
 Detalhe em `Trilhas_Feiticaria.md` §6. As seis Tradições já estão descritas no site.
 
-- [ ] **C1 · [DECIDIR] Jogadas das Artes, casos de fronteira.** O esquema **Mirado** (Acerto Arcano
-  + Percepção ou Destreza) contra **Moldado** (perícia da Tradição) está proposto e não batido.
-  Falta o martelo nos híbridos (recomendo uma rolagem só). **Trava A11.**
-- [ ] **C2 · [DECIDIR] A perícia de conjuração de cada Tradição.** A tabela está proposta e precisa
-  de aval. A **Iniciação** provavelmente pede um traço de **Fé/Devoção** que não existe: criar?
+- [ ] **C1 · [DECIDIR, BLOQUEADO pela camada de Tradição] Jogadas das Artes, casos de fronteira.**
+  Não é pendência esquecida, é bloqueada: parada porque depende de a Tradição (`trilhas-feiticaria.md`,
+  proposta de 28/07, nunca fechada) existir primeiro. O esquema **Mirado** (Acerto Arcano + Percepção
+  ou Destreza, esse já em vigor desde 17/08) contra **Moldado** (perícia da Tradição, essa ainda só
+  proposta) está proposto e não batido. Falta o martelo nos híbridos (recomendo uma rolagem só).
+  **Trava a metade Tradição do A11.**
+- [ ] **C2 · [DECIDIR, BLOQUEADO pela camada de Tradição] A perícia de conjuração de cada Tradição.**
+  Mesmo bloqueio do C1: sem a Tradição fechada, não há tabela para avaliar de verdade. A tabela está
+  proposta e precisa de aval. A **Iniciação** provavelmente pede um traço de **Fé/Devoção** que não
+  existe: criar?
 - [ ] **C3 · [FAZER] O mapa Arte × Trilha.** Só existe um exemplo (Terra). O catálogo das 24 Artes
   é frente própria, do tamanho do bestiário, com os números de treino junto.
 - [ ] **C4 · [FAZER] Portar `trilhas.json`** quando a mecânica fechar, e revisar o mortal-tocado
@@ -1349,7 +1359,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   Era a única das seis que era mesmo **só tela**, e o mecanismo existia inteiro:
 
   - o catálogo, 55 verbetes com número, em `src/data/condicoes.json`;
-  - a soma: `export function somarCondicoes` (`src/lib/mesa-core.ts:164`);
+  - a soma: `export function somarCondicoes` (`src/lib/mesa-core.ts:178`);
   - a leitura na folha do lance: `const cd = somarCondicoes` (`grid.astro:8675`);
   - o desconto chegando à Defesa: `alvo.condicoesDefesa` (`src/lib/lance.ts:159`);
   - a coluna: `add column if not exists condicoes` (`supabase/migracao-11.sql:25`);
@@ -2959,7 +2969,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | # | muda o QUE CHEGA ao jogador? | o quê, exatamente |
   |---|---|---|
   | **29** | **sim, ganha colunas** | a `encontro_visao` passa a mandar `tick_atual`, `rodada`, `perfil` e `perfil_em`. **Hoje não manda nenhuma das quatro** (sondado: `42703` nas duas primeiras) |
-  | **30** | quase nada | acrescenta `gravar_lances` ao `select('*')` de `mesas` (`mesa-core.ts:426`). Nada enumera as chaves desse objeto e nada o grava de volta inteiro · não há `from('mesas').update` no código |
+  | **30** | quase nada | acrescenta `gravar_lances` ao `select('*')` de `mesas` (`mesa-core.ts:440`). Nada enumera as chaves desse objeto e nada o grava de volta inteiro · não há `from('mesas').update` no código |
   | **31** | **sim, e some coisa** | mesma FORMA em `token_visao` e `efeito_visao`, mas menos LINHAS: peça que só chegava porque um fogo não-caído acendia o chão **para de chegar**, e efeito fora do intervalo do relógio também. E a `encontro_visao` ganha `tick_atual` e `rodada`, como na 29 |
   | **32** | **sim, e campo que nunca era nulo passa a ser** | mesmas 24 colunas da `efeito_visao`, mas `conjurador_id` e `centro` passam a poder vir **null**, e `hexes` vem **filtrado** pelas casas claras |
   | **35** | **nada** | ela troca o corpo de uma função, e nenhuma view. O `mordidos` **não chega ao jogador nem antes nem depois** (a `efeito_visao` o corta de propósito), então a tela dele não sente. E o poder dele **diminui**: antes podia zerar o mapa, agora só acrescenta chave |

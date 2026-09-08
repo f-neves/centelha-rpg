@@ -72,6 +72,7 @@ segunda tinha ficado verde por cegueira.
 | **as duas metades de um par movendo-se juntas** | um teste com um caso "liga" e um caso "desliga" que passam OU falham juntos | os dois medem o mecanismo, ou os dois dependem do mesmo insumo, e um insumo quebrado move os dois na mesma direção? |
 | **o teste novo que nasce já fora do portão** | um `.mjs` novo em `scripts/`, entrada nova em `scripts.smoke` | ele entrou em TODA lista que precisa dele, ou só na primeira em que alguém lembrou? |
 | **o número que sobrevive ao dado que o produziu** | uma bateria/corpus ad hoc, apagado ou gitignorado, citado num documento depois de rodar | quem ler isto amanhã consegue reproduzir o dado, ou só herda o número? |
+| **fechado com condição pendente dentro** (A11) | `[FEITO]`/`[DECIDIDO]`/`[FECHADO]` na mesma frase que "quando", "assim que" ou "depois que" nomeia um evento que ainda não aconteceu | o evento que o próprio texto nomeia já aconteceu, ou o item só parece fechado enquanto ele não vem? |
 
 **DUAS NOVAS, DE 06/09/2026, ACHADAS NA REVISÃO DO AVANÇO UNIFICADO:** a primeira é o gatilho —
 fica verde, o rótulo continua descrevendo o que deveria medir, e nada acusa a mudança por baixo. A
@@ -85,9 +86,9 @@ contrato nenhuma, mesmo tendo a MESMA forma de laço e o mesmo `dica`/`.title` q
 afetadas. `test-grid.mjs:2407` é a forma exata, e é falso positivo por isso: quem varrer de novo
 por esta família olha o `goto` da cena antes do laço, não o laço sozinho.
 
-**São 32**, e a contagem é do dia em que o arquivo nasceu (nasceu com 25, fechou o primeiro dia
-com 29 e ganhou mais uma no dia seguinte, o que é o argumento contra citá-la) · ela não é para ser
-citada em instrução nenhuma, pelo motivo escrito lá em cima.
+**São 33**, e a contagem é do dia em que o arquivo nasceu (nasceu com 25, fechou o primeiro dia
+com 29, ganhou mais uma no dia seguinte e mais uma em 08/09) · ela não é para ser citada em
+instrução nenhuma, pelo motivo escrito lá em cima.
 
 **Duas se dobram conforme quem lê**, e vale dito porque explica a divergência entre contagens: a
 *asserção sem ocasião* e a *asserção negativa sozinha* são a mesma cegueira em dois gestos (uma é
