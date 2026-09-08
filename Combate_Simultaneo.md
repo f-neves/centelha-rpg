@@ -1,5 +1,10 @@
 # O terceiro sistema: combate simultâneo, Tick a Tick
 
+> **SUPERADO onde discordar de `docs/simulacao/02-projeto-harness.md`.** Registrado em
+> `Pendencias.md` (08/09/2026): quando este documento e aquele relatório da frente de simulação
+> discordarem, vale o `02`. Isto não estava escrito aqui, e quem abre o arquivo sozinho não teria
+> como saber.
+
 > **Estado.** Primeira fatia **IMPLEMENTADA em 2026-08-27** (§3.1), no `main`: terceira opção
 > no painel do tempo, relógio Tick a Tick, deslocamento gradual no mapa, robô das criaturas.
 > Aberto no mesmo dia, a partir de uma conversa que descreveu o mecanismo por exemplo (cinco
