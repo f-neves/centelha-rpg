@@ -73,6 +73,8 @@ segunda tinha ficado verde por cegueira.
 | **o teste novo que nasce já fora do portão** | um `.mjs` novo em `scripts/`, entrada nova em `scripts.smoke` | ele entrou em TODA lista que precisa dele, ou só na primeira em que alguém lembrou? |
 | **o número que sobrevive ao dado que o produziu** | uma bateria/corpus ad hoc, apagado ou gitignorado, citado num documento depois de rodar | quem ler isto amanhã consegue reproduzir o dado, ou só herda o número? |
 | **fechado com condição pendente dentro** (A11) | `[FEITO]`/`[DECIDIDO]`/`[FECHADO]` na mesma frase que "quando", "assim que" ou "depois que" nomeia um evento que ainda não aconteceu | o evento que o próprio texto nomeia já aconteceu, ou o item só parece fechado enquanto ele não vem? |
+| **o acesso tolerante que nunca lança** (B12) | `campo \|\| []`, `campo?.x`, todo acesso que devolve valor válido em vez de lançar | isto é o caminho certo, ou é um caminho errado que nunca vai denunciar a si mesmo? |
+| **fechar a frente sem fechar o documento** (H1/H2/K28/D2) | trabalho implementado e commitado, item do mapa ainda `[ ]` | o mapa sabe que isto já aconteceu, ou só o código sabe? |
 
 **DUAS NOVAS, DE 06/09/2026, ACHADAS NA REVISÃO DO AVANÇO UNIFICADO:** a primeira é o gatilho —
 fica verde, o rótulo continua descrevendo o que deveria medir, e nada acusa a mudança por baixo. A

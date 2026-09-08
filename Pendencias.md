@@ -249,13 +249,20 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
 
 ## B. Bestiário
 
-- [ ] **B12 · [CONSERTAR] O Grid da mesa não aplica fraqueza/resistência de criatura nenhuma.**
-  Achado em `Auditoria_Tecnica.md` §8.2 (13/08) e confirmado ainda presente em 08/09:
-  `src/lib/artes-grid-mesa.ts` (linhas 1570 e 1606) lê `m.fraquezas`/`m.resistencias` no **topo** do
-  objeto, mas os dados de B1 moram dentro de `m.combate` (`m.combate.fraquezas`). Zero das 309
-  criaturas têm o campo no topo, então nenhum dano de Arte é agravado por fraqueza no Grid, e nenhuma
-  resistência corta nada ali (o card do bestiário lê o caminho certo e funciona). Conserto de uma
-  palavra em cada lugar; ficou de fora deste mapa até agora porque só estava anotado na auditoria.
+- [x] ~~**B12 · O Grid da mesa não aplica fraqueza/resistência de criatura nenhuma.**~~
+  **FECHADO em 08/09/2026, sha `20daeea`.** `elementosCombate()` (`src/lib/mesa-core.ts`) passa a
+  centralizar a leitura de `combate.fraquezas`/`combate.resistencias`, usada pelos quatro pontos
+  (`artes-grid-mesa.ts` ×2, `mesa-bestiario.ts`, `criaturas.astro`). `scripts/test-elementos-combate.mjs`
+  trava a regressão, ligado ao `npm run validate` (confirmado no `package.json`, linha do script
+  `validate`). **Conferido em 08/09/2026, contra uma afirmação de fora do arranjo, que o
+  achado da frente L não fica inválido:** o caminho de dano da bateria (`scripts/sim/bateria.mjs`
+  → `scripts/sim/lib-ponte.mjs`) importa `resolverGolpe`/`fonteRolada`/`defesaEfetiva` de
+  `src/lib/lance.ts` (zero menção a fraqueza/resistência nesse arquivo) e `tierDe`/`somarCondicoes`
+  de `mesa-core.ts`, **não `elementosCombate`**. Os três call-sites reais de `elementosCombate`
+  (`artes-grid-mesa.ts`, `mesa-bestiario.ts`, `criaturas.astro`) não são alcançáveis pela ponte da
+  simulação. O B12 nunca afetou nenhum número da bateria, inclusive o teto de 76,7% do item de
+  carga do mestre: ele só mudava o dano de Arte e a exibição no Grid ao vivo, nunca a bateria
+  standalone. Não havia pré-requisito real, então nada a tirar de porta nenhuma.
 - [x] ~~**B1 · Preencher `fraquezas` e `resistencias` nas 308 criaturas.**~~ **FEITO em
   2026-08-10.** Os campos não cabiam no `inimigos.json`, que é gerado, então viraram o **sétimo
   satélite** do bestiário: `src/data/elementos-bestiario.json`, semeado por
@@ -335,7 +342,11 @@ limitações conhecidas, que são as três de baixo.
   editor) e o **validador falha o build** em qualquer palavra fora dele. O modal aceita palavra
   avulsa e a guarda no `localStorage`, o que serve para rascunhar mas não atravessa: quem quiser
   oficializar tem de editar o JSON à mão. Falta o passo que promove a palavra rascunhada.
-- [ ] **B12 · [FAZER] `roladaManual` dobra o bônus fixo em pool "0d6" literal.** Achado colateral
+- [ ] **B13 (renumerado de B12 em 08/09/2026) · [FAZER] `roladaManual` dobra o bônus fixo em pool
+  "0d6" literal.** Colidia de código com o B12 da fraqueza/resistência: as rodadas 17-18 já o
+  citavam como "D16c/B12" (`docs/simulacao/caixa/17-executora.md:53`, `18-revisora.md:99`) antes de
+  este item entrar no mapa, e quando entrou o código já estava em uso por outro achado. Renumerado
+  para não haver dois itens com o mesmo código; o conteúdo não mudou. Achado colateral
   da rodada 16 do Interpor (`docs/simulacao/caixa/16-executora.md`), fora de escopo daquela
   frente. `roladaManual` (`src/lib/rolagem.ts:95`) trata qualquer expressão sem `d6` como "total já
   pronto" quando só um número é digitado — certo para dano fixo de verdade, mas quando a expressão
@@ -3541,7 +3552,14 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   itens catalogados no total**. Esta é a primeira medida da série — não há histórico anterior
   para comparar, então ainda não diz se o congelamento de descobrimento
   (`ARQUITETO.md §3.2`/`[[feedback_scope_discipline_side_findings]]`) está funcionando; diz
-  só o ponto de partida. A próxima medida é que vira sinal. (2) **NÃO FEITO:** o custo
+  só o ponto de partida. **E a primeira medida nasce inflada, registrado em 08/09/2026:** os
+  120 abertos de hoje incluem item já implementado e não riscado antes de esta contagem
+  existir (`H1`, `H2`, `K28`, `D2` fecharam em `b694eb6`, no mesmo dia, e o `B12` da
+  fraqueza/resistência fechou horas depois em `20daeea`, todos ANTES desta medida rodar às
+  ~19h55). Sem esta nota, a segunda medida da série vai parecer progresso quando for, em
+  parte, só alguém riscando o que já estava pronto e não tinha sido marcado — o mesmo padrão
+  que o `CATALOGO.md` já registra como "fechar a frente sem fechar o documento". A próxima
+  medida é que vira sinal. (2) **NÃO FEITO:** o custo
   acumulado do arranjo (Arquiteto + Executora + Revisora + Auditora) desde o início — números
   soltos por rodada existem, um total nunca foi somado, e `docs/simulacao/caixa/
   gasto-acumulado.json` sozinho não serve: cobre só o período em que o script `npm run duo`
@@ -3612,6 +3630,14 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
 - [ ] **L59 · [ANOTADO, sem análise] As quatro reservas (Energia/Mana/Fôlego/Vontade) podem ser
   carga cognitiva demais.** `Relatorio.md` §11: quatro medidores em paralelo é muito; Fôlego é
   o candidato a simplificar/dobrar dentro de outra coisa, se a mesa reclamar de contabilidade.
+- [ ] **L60 · [ANOTADO, sem análise] Quatro recomendações de `Auditoria_Memoria/RELATORIO.md` §5,
+  de uma sessão fora do arranjo.** (1) marcar `[x]` no mesmo commit que fecha o trabalho, não
+  depois (a causa direta de H1/H2/K28/D2); (2) reler os `[x]` mais antigos deste arquivo com o
+  filtro "quando"/"assim que"/"depois que" na frase de fechamento (a forma "fechado com condição
+  pendente dentro", `CATALOGO.md`), varredura completa não feita ainda; (3) uma variante do
+  `test-procedencia.mjs` que cheque **estado** do que é citado, não só a citação de linha; (4)
+  conferir se todo achado de `Auditoria_Tecnica.md` §8.2 em diante tem linha correspondente aqui
+  (só o das fraquezas foi conferido, achado como B12). Registrado sem julgar mérito nem prioridade.
 
 ## H. Arremesso
 

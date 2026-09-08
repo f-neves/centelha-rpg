@@ -157,8 +157,16 @@ Pelo NOME, porque número de opção depende de qual lista se está lendo.
 ## O que está começado e não terminado
 
 - **A saída da área** · o lado do MESTRE está feito (o `marcarMordido` relê e funde por
-  chave); o lado do JOGADOR depende da **migração 35**, escrita e ainda não rodada. → o
-  defeito, o levantamento e o que falta: **L43**, e a família em **L41**.
+  chave). **Conferido em 08/09/2026 direto no banco (`public.migracoes`, chave anon):** a
+  **migração 35 está aplicada** desde 2026-09-05T22:24:24Z, junto das 1-32 e da 36 (a 33
+  segue sem rodar, como o resto deste arquivo já diz). Este parágrafo dizia "escrita e
+  ainda não rodada" e estava desatualizado. **O lado do JOGADOR continua incompleto mesmo
+  assim**, e não por falta da migração: o cabeçalho da própria `migracao-35.sql` (linhas
+  54-59) diz que ela entra **inerte de propósito** · conserta o `jogador_muda_efeito` para
+  FUNDIR em vez de substituir, mas a `efeito_visao` que a aba do jogador lê continua sem
+  mandar `mordidos` nenhum, corte deliberado ("revelar quem já foi mordido é decisão de
+  jogo, e a mesa preferiu não tomar de passagem"). → o defeito, o levantamento e o que
+  falta: **L43**, e a família em **L41**.
 
 ## As migrações
 

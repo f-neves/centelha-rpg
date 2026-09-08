@@ -34,6 +34,13 @@ Regras de convívio:
   e erros fantasma de "Duplicate id". Se aparecerem, apague `.astro/` e refaça.
 - Ao terminar, **diga em uma linha quais arquivos você tocou**, para a outra frente
   saber o que mudou debaixo dela.
+- **Instância aberta fora do arranjo Arquiteto/Executora/Revisora/Auditora
+  (`docs/simulacao/PASSAGEM.md`) não commita no `main`.** Escreve o achado em
+  `docs/simulacao/caixa/`, e o Arquiteto absorve na próxima sessão dele. Registrado em
+  08/09/2026 depois de uma sessão avulsa (`Auditoria_Memoria/`) ter commitado direto no
+  `main` sem passar pela Revisora; o trabalho era bom, mas movimentação de arquivo e
+  achado de código são exatamente onde citação quebra calada, e é o que a Revisora existe
+  para pegar.
 
 ### A saída dessas regras: uma worktree por frente
 
