@@ -910,6 +910,10 @@ bloqueio de terceiro que não depende de nós. Quando `@vite-pwa/astro` declarar
 Astro 7, a receita é: instalar `@astrojs/markdown-remark`, reescrever os quatro
 scripts que dirigem o `astro dev`, e rodar `npm run validate && npm run smoke`.
 
+**Atualização (14/08/2026, commit `f995d95`, "o PWA aposentado"): o item 2 caiu
+sozinho.** O PWA foi tirado do projeto por outro motivo, e o `package.json` de
+hoje não tem `@vite-pwa/astro` nenhum. Restam só os itens 1 e 3 desta lista.
+
 ### 8.2 Dois defeitos achados no caminho, e não consertados
 
 Os dois estão em código de regra, não de desempenho, e mudar qualquer um deles
