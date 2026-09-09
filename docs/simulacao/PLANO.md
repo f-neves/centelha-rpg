@@ -56,7 +56,7 @@ faltar como mecanismo sem tela (o motor sabe, ninguém alcança), como meia tela
 metade que não muda nada), ou como tela no lugar errado (existe, noutra aba, exigindo
 troca de contexto no meio do Tick).
 
-### FASE 2 · A liberdade · CINCO DE SEIS · ~20%
+### FASE 2 · A liberdade · FEITA, 6/6 · ~20%
 
 Dar ao mestre as ações que o sistema tem e a tela não oferecia.
 
@@ -65,11 +65,13 @@ Dar ao mestre as ações que o sistema tem e a tela não oferecia.
 3. dívida de Ticks · FEITO
 4. mudar efeito posto · FEITO
 5. Investida · FEITO (era motor ausente, não tela)
-6. Interpor e desviar · EM CONSTRUÇÃO
+6. Interpor e desviar · FEITO em 07/09/2026, veredito SEGUE na rodada 18 (`619c317`)
 
 O Interpor era o único que exigia regra nova, porque o capítulo publicado não tem uma linha
 sobre interpor, desviar nem abortar. As seis respostas estão decididas e registradas no
-`L34 §6`. Quando ele entrar, a fase 2 fecha.
+`L34 §6`. **Corrigido em 09/09/2026:** este documento dizia "em construção" seis dias depois
+de o item ter fechado — o checkbox do `L34` também estava errado. Os dois foram atualizados
+juntos.
 
 ### FASE 2.5 · A vista do jogador · NÃO COMEÇADA · ~15%
 
@@ -317,13 +319,21 @@ As decisões tomadas dentro do ciclo vão para o `CONTEXTO` como `D`, com motivo
 
 ## 8 · A ordem da fila
 
-1. **Interpor** · fechar a fase 2. Decidido, em construção.
-2. **grid.condicao** · a conferência do `:1808` ANTES do split, porque com o split os 9
-   Efeitos passam a cair no portão de entrada e pular o laço inteiro, e isso é mudança de
-   comportamento escondida numa refatoração de campo.
-3. **O que sobra da fase 3** · o botão do veredito, cujo item é medição e não código.
-4. **Fase 2.5 ou fase 4** · decisão do humano, e ela não se toma sem os dois primeiros
-   fechados.
+**Corrigido em 09/09/2026:** os itens 1 e 2 abaixo (Interpor, grid.condicao) já estavam
+fechados desde 07/09/2026 (`L34`, `L39`) quando esta seção ainda os listava como trabalho. Fila
+renumerada; o texto de cada item fica como registro de por que ele existiu.
+
+1. ~~Interpor~~ · **FECHADO em 07/09/2026** (`L34 §6`, veredito SEGUE rodada 18, `619c317`).
+2. ~~grid.condicao~~ · **FECHADO em 07/09/2026** (`L39`, rodada 19) · era a conferência do
+   `:1808` antes do split, porque com o split os 9 Efeitos passariam a cair no portão de
+   entrada e pular o laço inteiro, mudança de comportamento escondida numa refatoração de
+   campo. A conferência achou que os 9 nunca chegam a entrar no laço, por motivo anterior e
+   mais forte que o `:1808`; split fechado com os dois testes e o validador atualizado.
+3. **O que sobra da fase 3** · o botão do veredito, cujo item é medição e não código: exige
+   gravar o par régua-contra-botão numa mesa de verdade, decisão que continua sem ser tomada
+   pelo humano. Não desbloqueável por Executora/Revisora.
+4. **Fase 2.5 ou fase 4** · decisão do humano. Os dois primeiros pré-requisitos (itens 1 e 2
+   originais) JÁ estão fechados — a decisão está desbloqueada agora, e ainda não foi tomada.
 
 Enquanto isso, e sem entrar em lote: a conversa do modo site é do humano, e a fase 2.5 e a 4
 não começam sem ele dizer.

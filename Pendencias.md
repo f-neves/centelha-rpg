@@ -1343,9 +1343,11 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   respondendo uma pergunta que ninguém fez. **O `L25` passa a ser o que sempre foi por baixo:
   quinze regras publicadas que a mesa não joga**, dívida de produto e não de instrumento, e a
   fila de qual liga primeiro é decisão de jogo, não de medição.
-- [ ] **L34 · A FASE 2 · O TABULEIRO COMO EXPERIÊNCIA COMPLETA DE COMBATE** · *a lista das seis,
-  escrita em 05/09/2026. Ela vinha sendo cobrada por número desde 04/09 e não estava em documento
-  nenhum: o furo era só esse, e é o que esta entrada conserta.*
+- [x] **L34 · [FECHADA, 6/6, em 07/09/2026] A FASE 2 · O TABULEIRO COMO EXPERIÊNCIA COMPLETA DE
+  COMBATE** · *a lista das seis, escrita em 05/09/2026. Ela vinha sendo cobrada por número desde
+  04/09 e não estava em documento nenhum: o furo era só esse, e é o que esta entrada conserta.
+  O item 6 (Interpor) fechou na mesma data, com veredito SEGUE na rodada 18 (ver seção 6,
+  abaixo); o checkbox só foi atualizado em 09/09/2026, ao reabrir a sessão como Arquiteto.*
 
   | | item | estado |
   |---|---|---|
@@ -3565,6 +3567,14 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   gasto-acumulado.json` sozinho não serve: cobre só o período em que o script `npm run duo`
   rodava (um assunto, uma execução, US$ 1,32), não as rodadas via Agent Team que vieram
   depois. Pedido pelo humano ao fechar a sessão de 08/09/2026.
+
+  **NOTA DE 09/09/2026, mesmo padrão do parágrafo acima, achado ao reabrir a sessão como
+  Arquiteto:** `L34` (Interpor, item 6 da fase 2) e `L39` (o split de `grid.condicao`, item 2
+  da fila do `PLANO.md §8`) já estavam fechados desde 07/09/2026 (rodadas 15-19, veredito
+  SEGUE), mas `PLANO.md` e `CONTEXTO.md` continuavam descrevendo os dois como pendentes até
+  esta data — o `L34` também com o checkbox errado. **Corrigido aqui e nos dois documentos.**
+  A próxima medida do `L52` não deve ler este ajuste como itens novos fechados nesta sessão:
+  os dois já estavam prontos, só não estavam marcados.
 
 - [x] **L53 · [FEITO, levantamento de 08/09/2026] O mapa da raiz (`docs/MAPA.md`) e o que ele
   moveu.** Levantado por citação (`grep` do nome de cada arquivo/pasta contra o repositório

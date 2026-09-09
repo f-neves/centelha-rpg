@@ -100,10 +100,12 @@ ficam como estão. → `CLAUDE.md`, "O essencial do repositório".
 
 ## A fase corrente do Grid (fora da simulação)
 
-**Fase 2 · o tabuleiro como experiência completa de combate. Fechada em cinco de seis.**
-Falta o **item 6, Interpor e desviar**, parado por decisão de mesa e não por trabalho: o
-capítulo publicado não tem regra de interpor, desviar nem abortar, então construir é
-escrever régua nova. → `Pendencias.md` **L34** §6.
+**Fase 2 · o tabuleiro como experiência completa de combate. FECHADA, 6/6, desde 07/09/2026**
+(corrigido em 09/09/2026: o checkbox do `L34` e este parágrafo estavam atrasados seis dias em
+relação ao código). O item 6, Interpor e desviar, era regra nova e não implementação de régua
+existente; as seis perguntas fecharam em 07/09, as duas portas (Preparo e Recuperação) têm
+e2e (`scripts/test-interpor-mesa.mjs`, nas rodadas 16-17) e veredito SEGUE na rodada 18
+(`619c317`). → `Pendencias.md` **L34** §6.
 
 **Regra permanente da fase:** *nenhuma fase termina em documento, toda fase termina com
 coisa funcionando na mesa.*
