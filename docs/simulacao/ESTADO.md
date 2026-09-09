@@ -1166,3 +1166,23 @@ regras, porque as regras não existem no motor. Não é número que faltou medir
 é código que falta escrever, e escrevê-lo é decisão de jogo (o **§0.10.2** e a
 seção "A GRADE OFICIAL" de `02-projeto-harness.md` continuam registrando o
 desenho, para o dia em que alguém decidir ligar uma bandeira de verdade).
+
+**A validade destes números contra o B12 (fraqueza/resistência lida do lugar errado no
+Grid) foi conferida em duas camadas, em 08-09/09/2026, sha `20daeea` (o conserto) e
+`5b17e2a` (o registro):**
+
+1. **Superficial:** a ponte da simulação (`scripts/sim/lib-ponte.mjs`) importa
+   `resolverGolpe`/`fonteRolada`/`defesaEfetiva` de `src/lib/lance.ts`, e nenhum dos três
+   nomes de fraqueza/resistência aparece nesse arquivo.
+2. **Da cadeia inteira:** `resolverGolpe` chama só `rolagem.ts` (`rolarExpr`), `acaso.ts`
+   e `quase-acerto.ts` (`errouPor`/`saidaDoAtaque`) — os três conferidos sem menção a
+   fraqueza/resistência/`combate`. A própria interface `EntradaLance` (o contrato inteiro
+   do que a função lê) não tem campo nenhum para isso: `alvo` carrega `defesaBase`,
+   `ferimento`, `condicoesDefesa`, `defesaPerdida`, `soak`, `pv`/`pvMax` e os dois campos
+   de Quase-Acerto de armadura, nada mais. Não é que a fraqueza não é lida hoje: é que a
+   função não tem por onde recebê-la. Varredura de `scripts/sim/` inteiro (`grep -rn
+   "fraqueza\|resistenc\|elementosCombate"`) devolve zero. Os três call-sites reais de
+   `elementosCombate()` (`artes-grid-mesa.ts`, `mesa-bestiario.ts`, `criaturas.astro`) são
+   todos fora do caminho que a bateria importa.
+
+Nenhum número desta frente, inclusive o teto de 76,7% acima, fica inválido pelo B12.

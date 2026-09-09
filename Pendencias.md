@@ -3592,30 +3592,45 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   que não está em nenhuma linha conhecida (a mesma forma de proteção que `test-portoes.mjs`
   já usa para script novo fora do CI). Não escrito ainda; registrado para não ser esquecido.
 
-- [ ] **L55 · [DECIDIR, ESCALADO em 08/09/2026] A taxa de acerto publicada pode estar
-  descalibrada em relação ao jogo real — é regra de jogo, não engenharia.** Conferido contra
-  `Relatorio.md` §4.2 (datado de 20/07/2026, primeiro commit `efa274f`) e contra a régua de
-  hoje. Três números que não batem entre si:
-  - **Relatorio.md, 20/07/2026:** "a documentação" dizia ~40 a 45% de acerto entre iguais; a
-    fórmula de Defesa sozinha (sem arma) dava ~44%; com o bônus de acerto de uma arma típica
-    (a maioria soma +1 a +3), o combate real ficava em **50% a 76%**, não nos 42% citados.
-    (A "documentação" da época era provavelmente `legacy/New_RPG_System_D6_Consolidado.md:202`,
-    "~38–46% de acerto entre iguais", hoje arquivada como histórica.)
-  - **A régua de hoje (`src/data/regras.json:910`)** ainda publica um baseline sem arma —
-    "Cada ±1 ≈ ∓6% de chance perto do baseline (~42%)" — na mesma forma que o Relatorio
-    criticou: um número de referência para modificadores situacionais, sem menção ao bônus de
-    arma, no lugar onde alguém balanceando um encontro iria procurar.
-  - **`Reescala.md`** (posterior, mesma reescala D6 que renumerou os níveis) recalculou a
-    fórmula de Defesa ATUAL do `calc.ts` e achou **~37% em soma 6, ~28% em soma 12** — mais
-    baixo ainda que os 42% que a própria régua publica, e mais baixo que os ~44% que o
-    Relatorio mediu em julho. A reescala pode ter puxado o defensor pra mais fundo do buraco
-    que o Relatorio já apontava.
-  Não decidi: é regra de jogo (o que a documentação deveria dizer, e se o defensor deveria
-  estar tão atrás) e o custo de errar é assimétrico (número errado engana quem balanceia
-  inimigo). Precisa dos dois lados: se o baseline sem arma é intencional como referência
-  técnica (não como afirmação de "isto é o jogo real"), a documentação só precisa de uma
-  ressalva; se a intenção era comunicar a taxa real de combate, o número publicado está
-  desatualizado desde a reescala e piorou, não só permaneceu.
+- [ ] **L55 · [BLOQUEADO pela medição, não decisão do Arquiteto pendente] O `~42%` de
+  `regras.json:910` está errado; o número certo para o lugar dele ainda não existe.**
+  Separado em 09/09/2026 em duas partes que não têm o mesmo dono.
+
+  **A parte já decidida (minha, do Arquiteto):** `regras.json:910` publica "~42%" descrevendo
+  uma fórmula de Defesa que não existe desde 19/07/2026. Procedência: a nota nasceu no commit
+  `441e1c3` (2026-06-05), no MESMO DIA em que `f21bf9c` fixou a Defesa como
+  `(Des+Hab+Especialidade+Centelha) × 2` (Centelha DENTRO do ×2) — e nunca foi tocada de novo
+  (`git log -L910,910:src/data/regras.json` mostra um commit só). A fórmula mudou duas vezes
+  depois: `b5e2b0a` (11/06, Centelha ×2 simétrico) e `6be7581` (19/07, Centelha ×1, PARA FORA
+  do ×2 — a forma de hoje). O número é de uma régua que não existe mais há 62 dias. **Não
+  conserto agora**: não há número certo para pôr no lugar até a parte de baixo fechar.
+
+  **A parte ainda não decidida (bloqueada pela medição, não é escala de regra pendente comigo):**
+  `Reescala.md` e `Relatorio.md` medem a fórmula ATUAL (a mesma desde 19/07) e discordam entre
+  si. Leitura, sem recálculo:
+
+  - **`Relatorio.md` §4.2, linhas 128-140 (commit `efa274f`, 20/07/2026, um dia depois da
+    fórmula atual entrar):** mede **COM e SEM arma**, no mesmo quadro. Sem arma (bônus de
+    acerto da arma = +0): **44,4%**. Com arma, por bônus: +1 → 55,6%, +2 → 66,4%, +3 → 76,1%.
+    Todos contra combatentes iguais em **soma 8**. A tabela não nomeia a fórmula de Defesa
+    usada, mas a data (um dia após `6be7581`) e o valor sem-arma (44,4%, perto do ~42%
+    histórico) indicam a fórmula atual.
+  - **`Reescala.md`, linhas 95-97 (última edição 18/08/2026):** nomeia a fórmula explicitamente
+    — "a fórmula de Defesa atual do `calc.ts` é `(Des+per)×2 + Centelha`" — e mede **~37% em
+    soma 6, ~28% em soma 12**. O texto não menciona bônus de arma nenhum nessa passagem; não
+    dá para afirmar se é "sem arma" por omissão ou se o bônus está embutido em outro lugar da
+    conta sem ser nomeado.
+
+  **O que separa os dois não é fórmula (as duas usam a de hoje) nem, aparentemente, arma
+  (Relatório isola os dois casos; Reescala não nomeia nenhum): é a SOMA.** Relatório mede em
+  soma 8; Reescala em soma 6 e soma 12, e não mede soma 8 nenhuma vez. Sem recalcular nada, os
+  dois números de Reescala (37% em 6, 28% em 12) já formam uma curva caindo com a soma — o
+  valor de Relatório em soma 8 (44,4% sem arma) precisaria cair NESSA curva para as duas
+  fontes baterem, e à vista dos dois extremos (37/28) um meio-termo em soma 8 pareceria mais
+  baixo que 44,4%, não igual. Isto é leitura da forma da discordância, não recálculo: só quem
+  rodar a mesma conta nos mesmos três pontos (soma 6, 8, 12, com e sem arma, mesma fórmula)
+  fecha se é denominador ou se sobra alguma coisa depois de igualar a soma. Enquanto isso não
+  rodar, `L55` fica bloqueado nessa medição, não em decisão do Arquiteto.
 - [ ] **L56 · [ANOTADO, sem análise] Payoff da arma leve.** `Relatorio.md` §4.3: a arma leve é
   a pior em dano em toda situação medida, e o que deveria compensar (agir mais vezes) só vira
   vantagem real com Proezas — no tier mortal puro ela é só fraca. Recomendação lá: dar um
