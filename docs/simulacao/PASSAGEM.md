@@ -119,13 +119,19 @@ o comportamento certo e vale reforçar quando aparecer.
 ## 5 · O orçamento
 
 O uso semanal é lido pela linha de status (`rate_limits.seven_day.used_percentage`), e o
-script grava num arquivo que o Arquiteto lê antes de abrir lote.
+script grava num arquivo que o Arquiteto lê no início de toda sessão, antes de qualquer
+trabalho.
 
-A regra: acima de 80% o ciclo autônomo não abre. Entre 75% e 80%, só trabalho pontual com
-aprovação. Ausente ou com mais de duas horas conta como parada, não como permissão.
+**Regra apagada em 09/09/2026, não deixada como superada** (duas regras de orçamento no
+mesmo documento é a forma que já custou caro): não existe mais teto de percentual fixo.
+Quem decide o limite é o humano, e o Arquiteto pergunta no início de toda sessão, com o
+número (uso semanal, hora da leitura, quanto falta para o reset) — a regra inteira está em
+`ARQUITETO.md §0`, e não repetida aqui para as duas cópias não divergirem. Enquanto o
+humano não responder, nenhum lote abre.
 
-O ciclo autônomo é de quatro lotes e cinco dólares, com quatro paradas: teto de lotes, teto
-de custo, escopo (três lotes sem item de fase entrando na mesa) e desacordo.
+O ciclo autônomo (quando o humano autorizar sem limite, ou com um limite alto) continua
+sendo de quatro lotes e cinco dólares, com quatro paradas: teto de lotes, teto de custo,
+escopo (três lotes sem item de fase entrando na mesa) e desacordo.
 
 A semana reseta quinta às 18h.
 
@@ -222,8 +228,9 @@ A Revisora trabalha no worktree C:/Users/Neves/ClaudeCode/centelha-techlead-revi
 contrato em docs/simulacao/CONTRATO-REVISORA.md. Reancore o worktree no sha do aviso, nunca no
 topo, e nunca no meio de uma revisão.
 
-Antes de abrir qualquer lote, leia o arquivo de uso semanal e aplique a regra do §0 do
-ARQUITETO.md: acima de 80% o ciclo não abre; entre 75% e 80%, só trabalho pontual com aprovação.
+No início da sessão, antes de qualquer trabalho, leia o arquivo de uso semanal e pergunte ao
+humano se há limite de sessão ou de semana, do jeito que o §0 do ARQUITETO.md descreve. Sem
+resposta, nenhum lote abre.
 
 Duas coisas na primeira passada, e nenhuma delas é lote:
 

@@ -11,6 +11,43 @@ existia numa conversa, e conversa não sobrevive a uma troca de sessão.
 
 ---
 
+## 0 · O orçamento, perguntado no início de toda sessão
+
+**Substitui a regra de percentual fixo, apagada em 09/09/2026** (não deixada como
+superada: duas regras de orçamento no mesmo documento é a forma que já custou caro a este
+projeto). Não existe mais teto que trave nada por conta própria. Quem decide o limite é o
+humano, e o Arquiteto pergunta.
+
+**No início de toda sessão**, depois de ler os documentos de abertura e antes de qualquer
+trabalho, a pergunta é **"Vamos trabalhar com algum limite de sessão ou de semana, ou
+não?"**, e ela vai sempre junto com o número: o uso semanal agora, a hora da leitura, e
+quanto falta para o reset (quinta, 18h). Sem o número a pergunta não serve para decidir.
+
+A resposta é uma de três, e o Arquiteto segue o que ela disser:
+
+- **um limite**, e o Arquiteto para ao chegar nele e avisa;
+- **sem limite**, e o Arquiteto segue até o humano mandar parar ou até precisar dele para
+  decidir alguma coisa;
+- **uma condição qualquer**, aplicada como escrita.
+
+**Enquanto o humano não responder, nenhum lote abre.** A resposta vale só para a sessão em
+que foi dada, a próxima sessão pergunta de novo.
+
+**A segunda metade, sem a qual a primeira não funciona:** "sem limite" é limite do humano,
+não da plataforma. O teto do plano continua existindo e não consulta ninguém, e se ele
+chegar no meio de um lote, o trabalho para pela metade, sem aviso. Então, mesmo com "sem
+limite":
+
+- avisar quando o uso passar de 90%, e de novo ao passar de 95%. Não é pedido de permissão
+  nem motivo para parar, é informação para o humano decidir, numa linha, sem interromper o
+  que está sendo feito;
+- a partir de 95%, trabalhar em pedaços que fecham sozinhos: commit antes de começar o
+  próximo, nunca ficar com diff pendente esperando revisão que talvez não caiba;
+- ao parar por qualquer motivo, deixar em disco o suficiente para outra sessão retomar:
+  onde parou, o que ficou pela metade, e o próximo passo. Em arquivo, não em mensagem.
+
+---
+
 ## 1 · Quem decide o quê
 
 A divisão não é sobre competência, é sobre interesse. Quem está dentro do laço tem
