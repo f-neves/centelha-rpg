@@ -1,0 +1,835 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bancada de voz (Vosk) · Centelha</title>
+<style>
+  @font-face { font-family:'Cinzel'; font-style:normal; font-weight:700;
+    src:url('node_modules/@fontsource/cinzel/files/cinzel-latin-700-normal.woff2') format('woff2'); font-display:swap }
+  @font-face { font-family:'EB Garamond'; font-style:normal; font-weight:400;
+    src:url('node_modules/@fontsource/eb-garamond/files/eb-garamond-latin-400-normal.woff2') format('woff2'); font-display:swap }
+  @font-face { font-family:'EB Garamond'; font-style:normal; font-weight:600;
+    src:url('node_modules/@fontsource/eb-garamond/files/eb-garamond-latin-600-normal.woff2') format('woff2'); font-display:swap }
+
+  :root{
+    color-scheme: light;
+    --plane:#f3e9d2; --surface:#fbf6e7; --sunk:#f4ebd0; --paper:#fbf6e7;
+    --ink:#2a2720; --ink-soft:#574f3d; --muted:#8a8069;
+    --accent:#00BAB4; --accent-strong:#0B3B47; --on-accent-strong:#f6efda;
+    --rule:#cdbd92; --ring:#d8c79c;
+    --ok:#1baf7a; --ruim:#c94a3a; --aviso:#c98a1a;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      color-scheme: dark;
+      --plane:#15171c; --surface:#1e222a; --sunk:#232732; --paper:#1e222a;
+      --ink:#e9e5d7; --ink-soft:#afa994; --muted:#8b8878;
+      --accent:#3fc9c2; --accent-strong:#8fe3dd; --on-accent-strong:#11151f;
+      --rule:#39414f; --ring:#333a47;
+      --ok:#3fb98a; --ruim:#e0685a; --aviso:#d9a53d;
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme: dark;
+    --plane:#15171c; --surface:#1e222a; --sunk:#232732; --paper:#1e222a;
+    --ink:#e9e5d7; --ink-soft:#afa994; --muted:#8b8878;
+    --accent:#3fc9c2; --accent-strong:#8fe3dd; --on-accent-strong:#11151f;
+    --rule:#39414f; --ring:#333a47;
+    --ok:#3fb98a; --ruim:#e0685a; --aviso:#d9a53d;
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--plane);color:var(--ink);
+       font-family:'EB Garamond',Georgia,serif;font-size:15px;padding:18px 16px 60px}
+  .max{max-width:1100px;margin:0 auto}
+  h1{font-family:'Cinzel',Georgia,serif;font-size:1.25rem;margin:0 0 .3rem;font-weight:700}
+  h2{font-family:'Cinzel',Georgia,serif;font-size:.95rem;margin:0 0 .5rem;font-weight:700}
+  .sub{color:var(--ink-soft);font-size:.86rem;line-height:1.55;max-width:80ch}
+  .card{background:var(--surface);border:1px solid var(--ring);border-radius:10px;
+        padding:14px 16px;margin:14px 0}
+  .linha{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:6px 0}
+  label{font-size:.82rem;color:var(--ink-soft)}
+  input[type=text],input[type=number],select{
+    padding:5px 8px;border:1px solid var(--ring);border-radius:6px;
+    background:var(--sunk);color:var(--ink);font:inherit;font-size:.86rem}
+  input[type=text]{min-width:260px}
+  button{padding:6px 12px;border:1px solid var(--ring);border-radius:6px;
+    background:var(--sunk);color:var(--ink);font:inherit;font-size:.86rem;cursor:pointer}
+  button:hover{background:color-mix(in srgb, var(--accent) 14%, var(--sunk))}
+  button:disabled{opacity:.5;cursor:default}
+  button.principal{background:var(--accent);color:var(--on-accent-strong);
+    border-color:var(--accent-strong);font-weight:600}
+  button.perigo{border-color:var(--ruim);color:var(--ruim)}
+  button.grande{font-size:1.05rem;padding:14px 26px;font-weight:600}
+  .selo{display:inline-block;padding:2px 8px;border-radius:99px;font-size:.72rem;
+    font-weight:700;letter-spacing:.02em;text-transform:uppercase}
+  .selo.valida{background:color-mix(in srgb, var(--ok) 22%, transparent);color:var(--ok)}
+  .selo.invalida{background:color-mix(in srgb, var(--muted) 22%, transparent);color:var(--muted)}
+  .selo.metade{background:color-mix(in srgb, var(--aviso) 22%, transparent);color:var(--aviso)}
+  .selo.parecida{background:color-mix(in srgb, var(--ruim) 22%, transparent);color:var(--ruim)}
+  .mono{font-family:ui-monospace,Consolas,monospace;font-size:.82rem;white-space:pre-wrap;
+    word-break:break-word;background:var(--sunk);border:1px solid var(--rule);border-radius:6px;
+    padding:8px 10px;max-height:260px;overflow:auto}
+  table{width:100%;border-collapse:collapse;font-size:.84rem}
+  th,td{border-bottom:1px solid var(--rule);padding:4px 6px;text-align:left}
+  th{color:var(--muted);font-weight:700;font-size:.74rem;text-transform:uppercase;letter-spacing:.03em}
+  .muted{color:var(--muted);font-size:.8rem}
+  .ok{color:var(--ok)} .ruim{color:var(--ruim)} .aviso{color:var(--aviso)}
+  .barra{height:8px;border-radius:99px;background:var(--sunk);border:1px solid var(--rule);overflow:hidden}
+  .barra > i{display:block;height:100%;background:var(--accent)}
+  .grade{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media (max-width:760px){ .grade{grid-template-columns:1fr} }
+  details > summary{cursor:pointer;font-weight:600;color:var(--ink-soft)}
+  .frase-atual{font-size:1.3rem;text-align:center;padding:20px 10px;font-family:'Cinzel',Georgia,serif}
+  .central{text-align:center}
+  textarea.vocab{width:100%;min-height:120px;font-family:ui-monospace,Consolas,monospace;
+    font-size:.78rem;background:var(--sunk);color:var(--ink);border:1px solid var(--ring);border-radius:6px;padding:8px}
+</style>
+</head>
+<body>
+<div class="max">
+
+<header>
+  <h1>Bancada de voz · medição do Vosk</h1>
+  <p class="sub">
+    Instrumento de MEDIÇÃO, não de construção do comando por voz (ver <code>VOZ.md</code>).
+    Não escreve no Grid, não conecta com o Supabase, não decide regra nenhuma. A única pergunta
+    que importa: com gramática restrita e <code>[unk]</code>, o modelo distingue fala válida de
+    fala inválida sem transformar uma errada em comando válido? O critério de desistência (VOZ.md
+    §6): <b>falso positivo acima de 1 em 20</b> encerra a frente. O protocolo abaixo é o que
+    calcula esse número — se só der tempo para uma coisa, é para ela funcionar, não para o
+    reconhecedor ficar bonito.
+  </p>
+</header>
+
+<!-- ================================================================ 1. MODELO -->
+<section class="card">
+  <h2>1 · Carregar o modelo</h2>
+  <p class="sub">Nada carrega sozinho: o modelo (31 MB) só desce no clique, nunca na abertura da
+    página. Caminhos abaixo são todos editáveis porque o domínio próprio da mesa vai mudar a
+    origem — nada fica escrito fixo no código.</p>
+  <div class="linha">
+    <label>modelo (tar.gz)</label>
+    <input type="text" id="cfg-modelo" value="voz-bench-modelo/model.tar.gz">
+  </div>
+  <div class="linha">
+    <label>biblioteca (ESM)</label>
+    <input type="text" id="cfg-lib" value="voz-bench-lib/vosk.wasm.js">
+  </div>
+  <div class="linha">
+    <label>worker (opcional)</label>
+    <input type="text" id="cfg-worker" value="voz-bench-lib/vosk.worker.js">
+  </div>
+  <div class="linha">
+    <label>wasm (opcional)</label>
+    <input type="text" id="cfg-wasm" value="voz-bench-lib/vosk.wasm">
+  </div>
+  <p class="muted" style="margin:2px 0 0">
+    Vendorizados em <code>voz-bench-lib/</code> (não é <code>npm install</code>: são três
+    arquivos copiados à mão, versionados, fora do grafo de dependência do <code>npm run
+    build</code>). Motivo medido, não teórico: o navegador recusa <code>new Worker(url)</code>
+    com origem cruzada por regra de segurança, CORS ou não — só a CDN para o <code>&lt;script
+    type="module"&gt;</code> não bastava. Troque os três campos de volta para a CDN se quiser
+    medir a diferença; o campo do modelo continua sempre local, porque o modelo nunca vai para
+    a CDN.
+  </p>
+  <div class="linha">
+    <button class="principal" id="btn-carregar">Carregar modelo</button>
+    <span id="carregar-estado" class="muted"></span>
+  </div>
+  <div class="barra" id="barra-carga" hidden><i style="width:0%"></i></div>
+  <div id="carga-numeros" class="mono" style="display:none;margin-top:8px"></div>
+</section>
+
+<!-- ================================================================ 2. DOIS RECONHECEDORES -->
+<section class="card">
+  <h2>2 · Dois reconhecedores sobre o MESMO modelo</h2>
+  <p class="sub">Um sem gramática (o modelo decide livre), um com a gramática restrita +
+    <code>[unk]</code>. O botão troca qual está ativo — o que se mede é quanto custa CRIAR o
+    segundo, porque disso depende se trocar de gramática em cena recarrega os 31 MB ou não.</p>
+  <div class="linha">
+    <label>gramática por</label>
+    <select id="cfg-forma">
+      <option value="palavra">palavra solta</option>
+      <option value="frase">frase inteira</option>
+    </select>
+    <span class="muted">decisão registrada em §9 do README: a API aceita as duas (um array de
+      strings — cada string pode ser uma palavra ou uma frase fixa), então o toggle mede a
+      diferença em vez de escolher por mim.</span>
+  </div>
+  <div class="linha">
+    <button id="btn-sem-gram" disabled>Ativar SEM gramática</button>
+    <button id="btn-com-gram" disabled>Ativar COM gramática</button>
+    <span id="reco-ativo" class="selo invalida">nenhum</span>
+  </div>
+  <table id="tab-criacao">
+    <thead><tr><th>reconhecedor</th><th>criado em</th><th>tempo de criação</th></tr></thead>
+    <tbody></tbody>
+  </table>
+  <details style="margin-top:8px">
+    <summary>gramática ativa (JSON enviado ao construtor)</summary>
+    <div class="mono" id="gramatica-atual"></div>
+  </details>
+</section>
+
+<!-- ================================================================ 3. FALAR -->
+<section class="card">
+  <h2>3 · Segurar para falar</h2>
+  <p class="sub">Nunca escuta contínua — é o botão (ou a tecla <b>Espaço</b>, quando o foco não
+    está num campo de texto) que abre e fecha o microfone.</p>
+  <div class="central">
+    <button class="grande" id="btn-falar" disabled>🎤 Segure para falar</button>
+  </div>
+  <div class="grade" style="margin-top:10px">
+    <div>
+      <div class="muted">parcial (ao vivo)</div>
+      <div class="mono" id="out-parcial">—</div>
+    </div>
+    <div>
+      <div class="muted">final</div>
+      <div class="mono" id="out-final">—</div>
+    </div>
+  </div>
+  <div class="linha" style="margin-top:8px">
+    <span class="muted">tempo entre SOLTAR o botão e o resultado final:</span>
+    <b id="out-ms">—</b>
+  </div>
+  <table id="tab-confianca">
+    <thead><tr><th>palavra</th><th>confiança</th><th>início (s)</th><th>fim (s)</th></tr></thead>
+    <tbody></tbody>
+  </table>
+  <details style="margin-top:8px">
+    <summary>JSON cru do último resultado</summary>
+    <div class="mono" id="out-json">—</div>
+    <button id="btn-copiar-json" style="margin-top:6px">Copiar JSON</button>
+  </details>
+</section>
+
+<!-- ================================================================ 4. PROTOCOLO -->
+<section class="card">
+  <h2>4 · Protocolo das quatro condições</h2>
+  <p class="sub">O CRITÉRIO DE ACEITAÇÃO É ESTA SEÇÃO, não o reconhecedor. Uma frase por vez; fale
+    (usando a seção 3 acima) e marque o que aconteceu de verdade, não o que você esperava.</p>
+  <div class="linha">
+    <span class="muted">progresso:</span> <b id="proto-progresso">0 / 0</b>
+    <button id="btn-proto-iniciar">Iniciar / reiniciar protocolo</button>
+    <button id="btn-proto-embaralhar">Embaralhar ordem</button>
+  </div>
+  <div id="proto-caixa" hidden>
+    <div class="linha"><span id="proto-selo" class="selo valida">condição</span></div>
+    <div class="frase-atual" id="proto-frase">—</div>
+    <p class="muted central" id="proto-dica"></p>
+    <div class="central linha" style="justify-content:center">
+      <button class="principal" id="proto-acertou">✔ Acertou</button>
+      <button id="proto-recusou">— Recusou (silêncio ou pediu confirmação)</button>
+      <button class="perigo" id="proto-errou">✘ Errou feio (virou OUTRO comando válido)</button>
+    </div>
+    <p class="muted central">o que o reconhecedor devolveu desta vez fica em "3 · Segurar para
+      falar" acima; marque aqui só o veredito.</p>
+  </div>
+  <div id="proto-resultado" style="margin-top:10px"></div>
+  <div class="linha">
+    <button id="btn-proto-csv">Exportar CSV</button>
+    <button id="btn-proto-json">Exportar JSON</button>
+  </div>
+</section>
+
+<!-- ================================================================ 5. NÚMEROS -->
+<section class="card">
+  <h2>5 · Números</h2>
+  <p class="sub">Zero a vinte, um a um: registre se o motor devolveu por extenso ("sete") ou em
+    dígito ("7"). Depois, sequências de três dígitos com e sem pausa entre eles: registre se
+    voltou separado, colado ("426") ou por extenso ("quatrocentos e vinte e seis").</p>
+  <div class="linha">
+    <button id="btn-num-iniciar">Iniciar seção números</button>
+    <span id="num-progresso" class="muted"></span>
+  </div>
+  <div id="num-caixa" hidden>
+    <div class="frase-atual" id="num-alvo">—</div>
+    <div class="central linha" style="justify-content:center">
+      <button id="num-extenso">voltou por extenso</button>
+      <button id="num-digito">voltou em dígito</button>
+      <button id="num-outro">voltou outra coisa (ver JSON acima)</button>
+    </div>
+  </div>
+  <table id="tab-num"><thead><tr><th>alvo</th><th>forma</th></tr></thead><tbody></tbody></table>
+  <button id="btn-num-csv" style="margin-top:6px">Exportar CSV dos números</button>
+</section>
+
+<!-- ================================================================ 6. FORA DO LÉXICO -->
+<section class="card">
+  <h2>6 · Fora do léxico (nomes próprios)</h2>
+  <p class="sub">Um TERCEIRO reconhecedor, com gramática igual à ativa mais "kael" e "nyla" — os
+    dois nomes que a voz nunca vai ouvir de verdade (seleção é por toque, §4 do VOZ.md), usados
+    aqui só para medir o que acontece quando uma palavra fora do português entra na gramática.</p>
+  <div class="linha">
+    <button id="btn-lexico-criar" disabled>Criar reconhecedor com "kael"/"nyla"</button>
+    <span id="lexico-estado" class="muted"></span>
+  </div>
+  <div id="lexico-resultado" class="mono" style="display:none;margin-top:8px"></div>
+</section>
+
+<!-- ================================================================ 7. INSTRUMENTAÇÃO -->
+<section class="card">
+  <h2>7 · Instrumentação</h2>
+  <table>
+    <tr><td>tempo de carregamento do modelo</td><td id="instr-carga">—</td></tr>
+    <tr><td>memória antes de carregar</td><td id="instr-mem-antes">—</td></tr>
+    <tr><td>memória depois de carregar</td><td id="instr-mem-depois">—</td></tr>
+    <tr><td>diferença</td><td id="instr-mem-dif">—</td></tr>
+  </table>
+  <p class="muted">
+    <code>performance.memory</code> só existe no Chrome/Edge desktop com heap de JS exposto — no
+    Android e no Firefox estes três campos ficam em "indisponível neste navegador", que é a
+    resposta, não um erro.
+  </p>
+</section>
+
+<!-- ================================================================ 8. VOCABULÁRIO -->
+<section class="card">
+  <h2>8 · O vocabulário, num lugar só</h2>
+  <p class="sub">Isto é <b>invenção, não levantamento</b> (VOZ.md §2/§6): ninguém observou o
+    mestre falando ainda. Fica aqui, num objeto só (<code>VOCAB</code>, topo do
+    <code>&lt;script&gt;</code> deste arquivo) para trocar fácil depois que alguém jogar uma
+    batalha de verdade e anotar o que disse.</p>
+  <textarea class="vocab" id="vocab-mostra" readonly></textarea>
+  <p class="sub aviso" style="margin-top:8px">
+    <b>Achado, não corrigido por mim:</b> o VOZ.md §2 lista os verbos no INFINITIVO ("atacar,
+    usar, mover, avançar, recuar, tirar, dar..."), mas as próprias frases típicas do mesmo
+    parágrafo usam a forma conjugada ("<i>ataca</i> com o machado", "<i>usa</i> a magia de
+    fogo", "<i>tira</i> sete de vida", "<i>avança</i> o relógio", "<i>recua</i> dois"). Um
+    reconhecedor de gramática restrita casa STRINGS, não morfologia: em "palavra solta" a
+    gramática desta bancada usa o infinitivo (o que o §2 lista), e nenhuma das frases típicas
+    do próprio documento bate palavra por palavra com ela. As frases VÁLIDAS do protocolo
+    (seção 4) estão na forma conjugada — a que um mestre falaria de verdade — e por isso só
+    testam de verdade contra a gramática "frase inteira"; contra "palavra solta" elas vão
+    RECUSAR ou dar [unk], e isso não é bug desta página, é a divergência do VOZ.md chegando ao
+    teste. Registrado, não decidido: não é meu lugar escolher se o vocabulário final usa
+    infinitivo ou imperativo.
+  </p>
+</section>
+
+<!-- ================================================================ 9. DECISÕES -->
+<section class="card">
+  <h2>9 · Decisões registradas nesta bancada</h2>
+  <ul class="sub">
+    <li><b>Fork escolhido: <code>@lichess-org/vosk-browser@0.0.3</code>.</b> Motivo, numa linha:
+      é o único dos três com módulo ESM pronto (<code>dist/vosk.wasm.js</code>, sem bundler) e
+      com <code>modelUrl</code>/<code>workerUrl</code>/<code>wasmUrl</code> configuráveis na
+      própria API (<code>InitVoskOptions</code>) — o `ccoreilly/vosk-browser` original (0.0.8) é
+      UMD de arquivo único e caminho fixo, e o `jonbgamble/vosk-browser` não foi aberto porque o
+      primeiro já resolveu tudo que o VOZ.md pedia. O construtor
+      <code>client.KaldiRecognizer</code> aceita <code>(sampleRate, grammar?: string)</code>: a
+      gramática é parâmetro de CRIAR um reconhecedor, não do modelo — troca de gramática não
+      deveria recarregar os 31 MB, e é exatamente isso que a seção 2 mede, não afirma.
+      <b>Achado ao testar, não previsto na pesquisa</b>: os três arquivos da biblioteca
+      (<code>vosk.wasm.js</code>, <code>vosk.worker.js</code>, <code>vosk.wasm</code>) tiveram
+      de ser vendorizados em <code>voz-bench-lib/</code> — o navegador recusa <code>new
+      Worker()</code> com script de outra origem, CDN com CORS aberto ou não, e é uma regra de
+      segurança do navegador, não algo que <code>workerUrl</code> resolva sozinho de longe. Não
+      é <code>npm install</code>: três arquivos copiados à mão, versionados.</li>
+    <li><b>Gramática por palavra solta OU por frase inteira: as duas, com toggle (seção 2).</b> A
+      API do lichess aceita um array de strings onde cada string pode ser uma palavra ou uma
+      frase fixa — não escolhi uma forma e descartei a outra porque a pergunta "qual restringe
+      melhor sem crescer demais" é exatamente o tipo de número que só esta bancada produz.</li>
+    <li><b>Android, contexto seguro do microfone — a menos trabalhosa primeiro:</b>
+      <code>chrome://flags/#unsafely-treat-insecure-origin-as-secure</code> no Chrome do
+      Android, colando a origem do servidor local (ex.: <code>http://192.168.0.X:PORTA</code>) e
+      reiniciando o navegador. Alternativa, mais trabalho mas sem tocar em flags: <code>adb
+      reverse tcp:PORTA tcp:PORTA</code> com o telefone em modo desenvolvedor e cabo USB, que
+      faz o Android enxergar o servidor do notebook como <code>localhost</code> (sempre contexto
+      seguro, sem exceção nenhuma). As duas estão no README; nenhuma monta TLS.</li>
+  </ul>
+</section>
+
+<script type="module">
+/* ================================================================
+   1 · O VOCABULÁRIO — num lugar só, fácil de trocar (VOZ.md §2/§6)
+   ================================================================ */
+const VOCAB = {
+  verbos: ['atacar','usar','mover','avançar','recuar','tirar','dar','curar','esperar',
+           'interpor','levantar','largar','trocar','desfazer','cancelar'],
+  armas: ['machado','espada','arco','lança','adaga','escudo','punho'],
+  parametros: ['volume','alcance','área','distância','dano','vida','mana','tick','relógio','magia'],
+  numeros: ['zero','um','dois','três','quatro','cinco','seis','sete','oito','nove','dez',
+            'onze','doze','treze','catorze','quinze','dezesseis','dezessete','dezoito',
+            'dezenove','vinte'],
+  ordinais: ['primeiro','segundo','terceiro','quarto','quinto'],
+  elementos: ['fogo','gelo','luz','sombra','terra','vento'],
+  unk: '[unk]',
+};
+
+/** As frases típicas do VOZ.md §2, para a gramática "frase inteira". */
+const FRASES_TIPICAS = [
+  'ataca com o machado', 'ataca com a espada', 'ataca com o arco', 'ataca com a lança',
+  'ataca com a adaga', 'usa a magia de fogo volume três alcance dois',
+  'usa a magia de gelo', 'usa a magia de sombra', 'tira sete de vida', 'tira cinco de vida',
+  'dá quatro de mana', 'dá dez de vida', 'avança o relógio', 'avança um', 'recua dois',
+  'recua um', 'quatro dois seis', 'desfaz', 'cancela', 'espera', 'interpor', 'levanta',
+  'larga', 'troca',
+];
+
+const todasAsPalavras = () => [
+  ...VOCAB.verbos, ...VOCAB.armas, ...VOCAB.parametros, ...VOCAB.numeros,
+  ...VOCAB.ordinais, ...VOCAB.elementos,
+];
+
+function montarGramatica(forma) {
+  const itens = forma === 'frase' ? FRASES_TIPICAS.slice() : todasAsPalavras();
+  itens.push(VOCAB.unk);
+  return JSON.stringify(itens);
+}
+
+/* ================================================================
+   2 · O PROTOCOLO — quatro condições, cinco frases cada no mínimo
+   ================================================================ */
+const PROTOCOLO = [
+  // VÁLIDA — sai da gramática de verdade
+  { condicao: 'valida', frase: 'ataca com o machado', dica: 'fala da gramática' },
+  { condicao: 'valida', frase: 'usa a magia de fogo', dica: 'fala da gramática' },
+  { condicao: 'valida', frase: 'tira sete de vida', dica: 'fala da gramática' },
+  { condicao: 'valida', frase: 'dá quatro de mana', dica: 'fala da gramática' },
+  { condicao: 'valida', frase: 'avança o relógio', dica: 'fala da gramática' },
+  { condicao: 'valida', frase: 'recua dois', dica: 'fala da gramática' },
+  // INVÁLIDA — conversa aleatória, nada a ver com o vocabulário
+  { condicao: 'invalida', frase: 'que horas são agora', dica: 'conversa qualquer' },
+  { condicao: 'invalida', frase: 'alguém quer água', dica: 'conversa qualquer' },
+  { condicao: 'invalida', frase: 'deixa eu pensar um instante', dica: 'conversa qualquer' },
+  { condicao: 'invalida', frase: 'o pedido de pizza já chegou', dica: 'conversa qualquer' },
+  { condicao: 'invalida', frase: 'não sei se vou naquela reunião', dica: 'conversa qualquer' },
+  // PELA METADE — frase válida cortada no meio
+  { condicao: 'metade', frase: 'ataca com o...', dica: 'corte a frase de propósito, sem terminar' },
+  { condicao: 'metade', frase: 'usa a magia de...', dica: 'corte a frase de propósito, sem terminar' },
+  { condicao: 'metade', frase: 'tira sete de...', dica: 'corte a frase de propósito, sem terminar' },
+  { condicao: 'metade', frase: 'dá quatro de...', dica: 'corte a frase de propósito, sem terminar' },
+  { condicao: 'metade', frase: 'avança o...', dica: 'corte a frase de propósito, sem terminar' },
+  // PARECIDA — foneticamente próxima, fora da gramática
+  // "espada" (o par sugerido para "espera") foi trocado por "esperta": "espada"
+  // já é palavra da gramática (arma), então dizê-la seria acerto de verdade,
+  // não falso positivo, e o par não testaria o que a condição PARECIDA precisa
+  // testar. "Esperta" mantém o parentesco fonético sem estar na gramática.
+  { condicao: 'parecida', frase: 'esperta', dica: 'parece com "espera" (verbo), nao "espada" que ja e palavra da gramatica' },
+  { condicao: 'parecida', frase: 'fósforo', dica: 'parece com "fogo" (elemento)' },
+  { condicao: 'parecida', frase: 'recruta', dica: 'parece com "recua" (verbo)' },
+  { condicao: 'parecida', frase: 'avante', dica: 'parece com "avança" (verbo)' },
+  { condicao: 'parecida', frase: 'machucado', dica: 'parece com "machado" (arma)' },
+  { condicao: 'parecida', frase: 'estudo', dica: 'parece com "escudo" (arma)' },
+  { condicao: 'parecida', frase: 'lancha', dica: 'parece com "lança" (arma)' },
+  { condicao: 'parecida', frase: 'torcer', dica: 'parece com "trocar" (verbo)' },
+];
+
+const SELO = { valida: 'Válida', invalida: 'Inválida', metade: 'Pela metade', parecida: 'Parecida' };
+
+/* ================================================================
+   3 · ESTADO
+   ================================================================ */
+let cliente = null;
+let recSemGram = null, recComGram = null, recAtivo = null, recAtivoRotulo = '';
+let tSolturaBotao = 0;
+let audioCtx = null, mediaStream = null, scriptNode = null, sourceNode = null;
+let protoOrdem = [], protoIdx = -1, protoResultados = [];
+let numOrdem = [], numIdx = -1, numResultados = [];
+
+const $ = (id) => document.getElementById(id);
+const agora = () => performance.now();
+
+/* ================================================================
+   4 · CARREGAR O MODELO (seção 1)
+   ================================================================ */
+$('vocab-mostra').value = JSON.stringify(VOCAB, null, 2);
+
+async function memoriaAgora() {
+  if (performance.memory) {
+    return (performance.memory.usedJSHeapSize / (1024 * 1024)).toFixed(1) + ' MB';
+  }
+  return null;
+}
+
+$('btn-carregar').addEventListener('click', async () => {
+  const btn = $('btn-carregar');
+  btn.disabled = true;
+  $('carregar-estado').textContent = 'importando a biblioteca…';
+  const memAntes = await memoriaAgora();
+  $('instr-mem-antes').textContent = memAntes ?? 'indisponível neste navegador';
+  const t0 = agora();
+  try {
+    // ABSOLUTA SEMPRE, e é achado de bancada, não estilo: um caminho relativo
+    // aqui é ambíguo (relativo à página? ao módulo importado? ao worker, que
+    // roda em outra base?), e cada peça da biblioteca resolveu essa ambiguidade
+    // de um jeito — `voz-bench-lib/vosk.wasm` virou
+    // `voz-bench-lib/voz-bench-lib/vosk.wasm` de dentro do worker antes desta
+    // linha existir.
+    const absoluta = (v) => new URL(v.trim(), location.href).toString();
+    let libUrl = absoluta($('cfg-lib').value);
+    const mod = await import(/* @vite-ignore */ libUrl);
+    $('carregar-estado').textContent = 'carregando o modelo (31 MB)…';
+    $('barra-carga').hidden = false;
+
+    const opts = { modelUrl: absoluta($('cfg-modelo').value), logLevel: 0 };
+    const workerUrl = $('cfg-worker').value.trim();
+    const wasmUrl = $('cfg-wasm').value.trim();
+    if (workerUrl) opts.workerUrl = absoluta(workerUrl);
+    if (wasmUrl) opts.wasmUrl = absoluta(wasmUrl);
+
+    cliente = await mod.createVoskClient(opts);
+    const t1 = agora();
+    const memDepois = await memoriaAgora();
+    $('barra-carga').querySelector('i').style.width = '100%';
+    $('carregar-estado').textContent = 'modelo carregado.';
+    const ms = (t1 - t0).toFixed(0);
+    $('instr-carga').textContent = ms + ' ms';
+    $('instr-mem-depois').textContent = memDepois ?? 'indisponível neste navegador';
+    $('instr-mem-dif').textContent = (memAntes && memDepois)
+      ? (parseFloat(memDepois) - parseFloat(memAntes)).toFixed(1) + ' MB' : 'indisponível neste navegador';
+    $('carga-numeros').style.display = 'block';
+    $('carga-numeros').textContent = `carregado em ${ms} ms · biblioteca: ${libUrl}`;
+
+    $('btn-sem-gram').disabled = false;
+    $('btn-com-gram').disabled = false;
+    $('btn-lexico-criar').disabled = false;
+  } catch (err) {
+    $('carregar-estado').textContent = 'ERRO: ' + (err?.message || err);
+    console.error(err);
+    btn.disabled = false;
+  }
+});
+
+/* ================================================================
+   5 · OS DOIS RECONHECEDORES (seção 2)
+   ================================================================ */
+function linhaCriacao(nome, ms) {
+  const tr = document.createElement('tr');
+  tr.innerHTML = `<td>${nome}</td><td>${new Date().toLocaleTimeString('pt-BR')}</td><td>${ms.toFixed(1)} ms</td>`;
+  $('tab-criacao').querySelector('tbody').prepend(tr);
+}
+
+/** Captura por 500 ms os avisos "missing in vocabulary" que o motor nativo
+ * imprime direto no console (não tem evento de API para isto). */
+function comAvisosDeVocabulario(fn) {
+  const avisos = [];
+  const logOrig = console.log.bind(console), errOrig = console.error.bind(console);
+  const grudar = (...a) => { const s = a.join(' '); if (/missing in vocabulary/i.test(s)) avisos.push(s); };
+  console.log = (...a) => { grudar(...a); logOrig(...a); };
+  console.error = (...a) => { grudar(...a); errOrig(...a); };
+  const r = fn();
+  setTimeout(() => { console.log = logOrig; console.error = errOrig; if (avisos.length) r.aoTerminar?.(avisos); }, 400);
+  return r;
+}
+
+function criarRecognizer(comGramatica) {
+  const t0 = agora();
+  const forma = $('cfg-forma').value;
+  const grammar = comGramatica ? montarGramatica(forma) : undefined;
+  let rec;
+  comAvisosDeVocabulario(() => {
+    rec = new cliente.KaldiRecognizer(16000, grammar);
+    return { aoTerminar: (avisos) => {
+      $('gramatica-atual').textContent += `\n\nAVISO DO MOTOR (palavra fora do dicionário de `
+        + `pronúncia, apagada da gramática em silêncio):\n${avisos.join('\n')}`;
+    } };
+  });
+  rec.setWords(true);
+  const t1 = agora();
+  linhaCriacao(comGramatica ? `com gramática (${forma})` : 'sem gramática', t1 - t0);
+  if (comGramatica) $('gramatica-atual').textContent = grammar; else $('gramatica-atual').textContent = '(nenhuma)';
+  ligarEventosRecognizer(rec);
+  return rec;
+}
+
+function ativar(rec, rotulo) {
+  if (recAtivo) recAtivo.remove();
+  recAtivo = rec;
+  recAtivoRotulo = rotulo;
+  $('reco-ativo').textContent = rotulo;
+  $('reco-ativo').className = 'selo ' + (rotulo.startsWith('com') ? 'valida' : 'invalida');
+  $('btn-falar').disabled = false;
+}
+
+$('btn-sem-gram').addEventListener('click', () => {
+  recSemGram = criarRecognizer(false);
+  ativar(recSemGram, 'sem gramática');
+});
+$('btn-com-gram').addEventListener('click', () => {
+  recComGram = criarRecognizer(true);
+  ativar(recComGram, 'com gramática (' + $('cfg-forma').value + ')');
+});
+
+/* ================================================================
+   6 · SEGURAR PARA FALAR (seção 3)
+   ================================================================ */
+function ligarEventosRecognizer(rec) {
+  rec.on('partialresult', (msg) => {
+    if (rec !== recAtivo) return;
+    $('out-parcial').textContent = msg.result.partial || '(silêncio)';
+  });
+  rec.on('result', (msg) => {
+    if (rec !== recAtivo) return;
+    const ms = tSolturaBotao ? (agora() - tSolturaBotao).toFixed(0) : '—';
+    $('out-ms').textContent = ms === '—' ? '—' : ms + ' ms';
+    $('out-final').textContent = msg.result.text || '(vazio)';
+    $('out-json').textContent = JSON.stringify(msg.result, null, 2);
+    const corpo = $('tab-confianca').querySelector('tbody');
+    corpo.innerHTML = '';
+    for (const p of (msg.result.result || [])) {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${p.word}</td><td>${(p.conf ?? 0).toFixed(2)}</td>`
+        + `<td>${(p.start ?? 0).toFixed(2)}</td><td>${(p.end ?? 0).toFixed(2)}</td>`;
+      corpo.appendChild(tr);
+    }
+  });
+}
+
+async function iniciarMicrofone() {
+  if (!mediaStream) {
+    mediaStream = await navigator.mediaDevices.getUserMedia({
+      video: false,
+      audio: { echoCancellation: true, noiseSuppression: true, channelCount: 1, sampleRate: 16000 },
+    });
+  }
+  if (!audioCtx) audioCtx = new AudioContext();
+  sourceNode = audioCtx.createMediaStreamSource(mediaStream);
+  // ScriptProcessorNode está obsoleto, mas é o que o próprio README da lib usa como
+  // exemplo, e trocar por AudioWorklet exige um módulo extra só para esta bancada de
+  // medição — decisão de tamanho, não de engenharia definitiva.
+  scriptNode = audioCtx.createScriptProcessor(4096, 1, 1);
+  scriptNode.onaudioprocess = (ev) => {
+    if (!recAtivo) return;
+    try { recAtivo.acceptWaveform(ev.inputBuffer); } catch (e) { console.error('acceptWaveform', e); }
+  };
+  sourceNode.connect(scriptNode);
+  scriptNode.connect(audioCtx.destination);
+}
+
+function pararMicrofone() {
+  if (scriptNode) { scriptNode.disconnect(); scriptNode = null; }
+  if (sourceNode) { sourceNode.disconnect(); sourceNode = null; }
+}
+
+function comecarAFalar() {
+  if (!recAtivo) return;
+  $('out-parcial').textContent = '(ouvindo…)';
+  iniciarMicrofone().catch((e) => { $('out-parcial').textContent = 'ERRO no microfone: ' + e.message; });
+  $('btn-falar').textContent = '🎙️ Falando… (solte para terminar)';
+}
+function pararDeFalar() {
+  pararMicrofone();
+  tSolturaBotao = agora();
+  if (recAtivo) recAtivo.retrieveFinalResult();
+  $('btn-falar').textContent = '🎤 Segure para falar';
+}
+
+$('btn-falar').addEventListener('mousedown', comecarAFalar);
+$('btn-falar').addEventListener('mouseup', pararDeFalar);
+$('btn-falar').addEventListener('mouseleave', () => { if (mediaStream) pararDeFalar(); });
+$('btn-falar').addEventListener('touchstart', (e) => { e.preventDefault(); comecarAFalar(); });
+$('btn-falar').addEventListener('touchend', (e) => { e.preventDefault(); pararDeFalar(); });
+document.addEventListener('keydown', (e) => {
+  if (e.code === 'Space' && !e.repeat && document.activeElement.tagName !== 'INPUT'
+      && document.activeElement.tagName !== 'TEXTAREA' && !mediaStream) {
+    e.preventDefault(); comecarAFalar();
+  }
+});
+document.addEventListener('keyup', (e) => {
+  if (e.code === 'Space' && mediaStream) { e.preventDefault(); pararDeFalar(); }
+});
+
+$('btn-copiar-json').addEventListener('click', async () => {
+  try { await navigator.clipboard.writeText($('out-json').textContent); }
+  catch { /* clipboard indisponível (http sem contexto seguro): sem efeito, sem travar a página */ }
+});
+
+/* ================================================================
+   7 · O PROTOCOLO (seção 4) — o critério de aceitação de verdade
+   ================================================================ */
+function embaralhar(lista) {
+  const a = lista.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function protoMostrarAtual() {
+  const item = protoOrdem[protoIdx];
+  $('proto-progresso').textContent = `${protoIdx + 1} / ${protoOrdem.length}`;
+  $('proto-caixa').hidden = false;
+  $('proto-selo').textContent = SELO[item.condicao];
+  $('proto-selo').className = 'selo ' + item.condicao;
+  $('proto-frase').textContent = item.frase;
+  $('proto-dica').textContent = item.dica;
+}
+
+$('btn-proto-iniciar').addEventListener('click', () => {
+  protoOrdem = PROTOCOLO.slice();
+  protoResultados = [];
+  protoIdx = 0;
+  protoMostrarAtual();
+  $('proto-resultado').innerHTML = '';
+});
+$('btn-proto-embaralhar').addEventListener('click', () => { protoOrdem = embaralhar(protoOrdem); });
+
+function protoMarcar(veredito) {
+  if (protoIdx < 0 || protoIdx >= protoOrdem.length) return;
+  const item = protoOrdem[protoIdx];
+  protoResultados.push({
+    condicao: item.condicao, frase: item.frase, veredito,
+    reconhecedor: recAtivoRotulo, textoFinal: $('out-final').textContent,
+    ms: $('out-ms').textContent, ts: new Date().toISOString(),
+  });
+  protoIdx++;
+  if (protoIdx < protoOrdem.length) { protoMostrarAtual(); return; }
+  $('proto-caixa').hidden = true;
+  protoRelatorio();
+}
+$('proto-acertou').addEventListener('click', () => protoMarcar('acertou'));
+$('proto-recusou').addEventListener('click', () => protoMarcar('recusou'));
+$('proto-errou').addEventListener('click', () => protoMarcar('errou_feio'));
+
+function protoRelatorio() {
+  const porCondicao = {};
+  for (const r of protoResultados) {
+    (porCondicao[r.condicao] ??= []).push(r);
+  }
+  const linhas = [];
+  for (const cond of ['valida', 'invalida', 'metade', 'parecida']) {
+    const lst = porCondicao[cond] || [];
+    const n = lst.length || 1;
+    const acertou = lst.filter((r) => r.veredito === 'acertou').length;
+    const recusou = lst.filter((r) => r.veredito === 'recusou').length;
+    const errou = lst.filter((r) => r.veredito === 'errou_feio').length;
+    linhas.push({ cond, total: lst.length, acertou, recusou, errou,
+      pAcerto: (100 * acertou / n).toFixed(0), pRecusa: (100 * recusou / n).toFixed(0),
+      pFalsoPos: (100 * errou / n).toFixed(0) });
+  }
+  // O GATE DE VERDADE (VOZ.md §6): "ERROU FEIO" pesado sobre INVÁLIDA + PELA METADE +
+  // PARECIDA, agrupadas — VÁLIDA fora da conta, porque um "errou feio" nela é confusão
+  // entre dois comandos válidos, não fala inválida virando comando (outro defeito).
+  const pool = protoResultados.filter((r) => r.condicao !== 'valida');
+  const poolTotal = pool.length || 1;
+  const poolErrou = pool.filter((r) => r.veredito === 'errou_feio').length;
+  const taxaGate = poolErrou / poolTotal;
+  const passaGate = taxaGate <= (1 / 20);
+
+  let html = '<table><thead><tr><th>condição</th><th>total</th><th>acerto</th>'
+    + '<th>recusa</th><th>falso positivo</th></tr></thead><tbody>';
+  for (const l of linhas) {
+    html += `<tr><td>${SELO[l.cond]}</td><td>${l.total}</td><td>${l.pAcerto}%</td>`
+      + `<td>${l.pRecusa}%</td><td class="${l.errou ? 'ruim' : ''}">${l.pFalsoPos}%</td></tr>`;
+  }
+  html += '</tbody></table>';
+  html += `<p style="margin-top:8px"><b>TAXA DE FALSO POSITIVO agrupada (inválida+metade+parecida), o número do gate VOZ.md §6:</b> `
+    + `<span class="${passaGate ? 'ok' : 'ruim'}">${poolErrou} em ${poolTotal} = ${(taxaGate * 100).toFixed(1)}%`
+    + ` (${passaGate ? 'dentro' : 'ACIMA'} de 1 em 20)</span></p>`;
+  $('proto-resultado').innerHTML = html;
+}
+
+function protoParaCSV() {
+  const cab = 'condicao,frase,veredito,reconhecedor,texto_final,ms,timestamp\n';
+  const corpo = protoResultados.map((r) =>
+    [r.condicao, r.frase, r.veredito, r.reconhecedor, r.textoFinal, r.ms, r.ts]
+      .map((v) => '"' + String(v).replaceAll('"', '""') + '"').join(',')).join('\n');
+  return cab + corpo;
+}
+function baixar(nome, conteudo, tipo) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([conteudo], { type: tipo }));
+  a.download = nome;
+  document.body.appendChild(a); a.click(); a.remove();
+}
+$('btn-proto-csv').addEventListener('click', () => baixar('voz-protocolo.csv', protoParaCSV(), 'text/csv'));
+$('btn-proto-json').addEventListener('click', () => baixar('voz-protocolo.json',
+  JSON.stringify(protoResultados, null, 2), 'application/json'));
+
+/* ================================================================
+   8 · SEÇÃO NÚMEROS (seção 5)
+   ================================================================ */
+function montarAlvosNumeros() {
+  const um = VOCAB.numeros.map((n, i) => ({ tipo: 'um', alvo: n, digito: i }));
+  const seqSemPausa = { tipo: 'seq-sem-pausa', alvo: 'quatro dois seis (sem pausa)', digito: '426' };
+  const seqComPausa = { tipo: 'seq-com-pausa', alvo: 'quatro... dois... seis (com pausa)', digito: '426' };
+  return [...um, seqSemPausa, seqComPausa];
+}
+function numMostrarAtual() {
+  const item = numOrdem[numIdx];
+  $('num-progresso').textContent = `${numIdx + 1} / ${numOrdem.length}`;
+  $('num-caixa').hidden = false;
+  $('num-alvo').textContent = item.alvo;
+}
+$('btn-num-iniciar').addEventListener('click', () => {
+  numOrdem = montarAlvosNumeros();
+  numResultados = [];
+  numIdx = 0;
+  numMostrarAtual();
+});
+function numMarcar(forma) {
+  if (numIdx < 0 || numIdx >= numOrdem.length) return;
+  const item = numOrdem[numIdx];
+  numResultados.push({ alvo: item.alvo, forma, textoFinal: $('out-final').textContent });
+  const tr = document.createElement('tr');
+  tr.innerHTML = `<td>${item.alvo}</td><td>${forma}</td>`;
+  $('tab-num').querySelector('tbody').appendChild(tr);
+  numIdx++;
+  if (numIdx < numOrdem.length) numMostrarAtual(); else $('num-caixa').hidden = true;
+}
+$('num-extenso').addEventListener('click', () => numMarcar('extenso'));
+$('num-digito').addEventListener('click', () => numMarcar('digito'));
+$('num-outro').addEventListener('click', () => numMarcar('outro'));
+$('btn-num-csv').addEventListener('click', () => {
+  const cab = 'alvo,forma,texto_final\n';
+  const corpo = numResultados.map((r) => [r.alvo, r.forma, r.textoFinal]
+    .map((v) => '"' + String(v).replaceAll('"', '""') + '"').join(',')).join('\n');
+  baixar('voz-numeros.csv', cab + corpo, 'text/csv');
+});
+
+/* ================================================================
+   9 · FORA DO LÉXICO (seção 6)
+   ================================================================ */
+$('btn-lexico-criar').addEventListener('click', () => {
+  const t0 = agora();
+  // O AVISO "Ignoring word missing in vocabulary" É DO MOTOR NATIVO (Kaldi/C++), e
+  // sai por `console.log`/`console.error` de dentro do worker, não por evento
+  // documentado da API JS — é a ÚNICA janela para pegá-lo, então intercepta os
+  // dois por 500 ms em volta da criação e devolve o texto para a tela, em vez de
+  // deixar a resposta morrer no devtools.
+  const avisos = [];
+  const logOrig = console.log.bind(console), errOrig = console.error.bind(console);
+  const grudar = (...a) => { const s = a.join(' '); if (/missing in vocabulary/i.test(s)) avisos.push(s); };
+  console.log = (...a) => { grudar(...a); logOrig(...a); };
+  console.error = (...a) => { grudar(...a); errOrig(...a); };
+  try {
+    const forma = $('cfg-forma').value;
+    const base = forma === 'frase' ? FRASES_TIPICAS.slice() : todasAsPalavras();
+    const itens = [...base, 'kael', 'nyla', VOCAB.unk];
+    const rec = new cliente.KaldiRecognizer(16000, JSON.stringify(itens));
+    rec.setWords(true);
+    const t1 = agora();
+    setTimeout(() => {
+      console.log = logOrig; console.error = errOrig;
+      $('lexico-estado').textContent = `criado em ${(t1 - t0).toFixed(1)} ms, sem lançar erro.`;
+      $('lexico-resultado').style.display = 'block';
+      $('lexico-resultado').textContent = (avisos.length
+        ? `O MOTOR JÁ AVISOU, antes de ouvir qualquer coisa:\n${avisos.join('\n')}\n\n`
+          + `Isto quer dizer que a palavra listada não existe no dicionário de pronúncia do `
+          + `modelo português e foi APAGADA da gramática em silêncio (a criação não falhou, `
+          + `e não há evento de erro para isto na API) — falar essa palavra nunca vai casar `
+          + `com ela, só com [unk] ou com outra palavra parecida da lista.`
+        : 'Nenhum aviso de "palavra fora do vocabulário" na criação. ')
+        + '\n\nFale "Kael" e "Nyla" pela seção 3 (ative este reconhecedor primeiro, no lugar '
+        + 'dos outros dois) e confira o JSON cru: o que volta no lugar do nome é a resposta '
+        + 'de verdade, não esta mensagem de criação.';
+      ligarEventosRecognizer(rec);
+      ativar(rec, 'fora do léxico (kael/nyla)');
+    }, 400);
+  } catch (err) {
+    console.log = logOrig; console.error = errOrig;
+    $('lexico-estado').textContent = 'A CRIAÇÃO FALHOU: ' + (err?.message || err);
+    $('lexico-resultado').style.display = 'block';
+    $('lexico-resultado').textContent = String(err?.stack || err);
+  }
+});
+</script>
+</div>
+</body>
+</html>
