@@ -28,3 +28,5 @@ Arquivo de sinal de vida (ARQUITETO.md §1.2). Uma linha por passo, com horário
   `npm run validate` e depois `npm run rodada`.
 - 13:50 — `npm run validate` verde (exit 0). Commitando com pathspec (só meus 5 arquivos) e
   abrindo a rodada.
+- 13:56 — rodada 30 enviada. sha de trabalho 6368fee, sha do aviso fabba12. Terminado por
+  agora; aguardando a Revisora.
