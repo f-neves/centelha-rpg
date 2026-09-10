@@ -3721,6 +3721,26 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
      qualquer emenda de histórico no meio do intervalo do aviso. Sugestão da Revisora, registrada
      para quando este item abrir como trabalho: `rodada.mjs` devia ler SHA/TOPO no momento do
      `--enviar`, não antes.
+
+     **Consertado em 10/09/2026 (rodada 29), veredito SEGUE (`29-revisora.md`, sha `d5ab81b`,
+     verificado ancestral do `main` antes de registrar):** `calcularTopo` passou a usar `git
+     merge-base --is-ancestor` em vez de só comparar diferença (três casos: SHA ancestral de
+     origem → origem empurrou depois; origem ancestral de SHA → o bug original, TOPO fica em SHA;
+     nenhum ancestral do outro → histórico reescrito, TOPO cai em SHA com aviso alto, não silêncio).
+     Campos SHA/TOPO passaram a ser relidos no `--enviar`, não congelados na abertura. A Revisora
+     refez a prova por conta própria (achou a primeira versão fraca, só mostrava o código novo
+     rodando, sem contraste): par vermelho/verde de verdade para o bug 1 (as duas versões da
+     função, lado a lado, contra o HEAD real deste worktree), e cenário isolado fora da árvore
+     principal para o bug 2 (registrado como prova mais fraca que a do bug 1, por não rodar a
+     ferramenta real).
+
+     **Estrutural, ainda aberto, não é este item:** a Revisora levantou (rodada 28 e de novo na
+     29) que o commit do veredito dela pode nascer órfão do `main` mesmo quando o conteúdo está
+     certo — aconteceu de verdade na rodada 28 (`efd8238`, recuperado por cherry-pick, ver
+     `PASSAGEM.md`) e a regra nova ali (conferir `git merge-base --is-ancestor` antes de fechar
+     qualquer item a partir de veredito) é remendo do lado do Arquiteto, não conserto da causa. Se
+     isso for abrir como item de trabalho, é separado deste: aqui só o cabeçalho nascia errado; lá
+     é o commit inteiro não chegando ao histórico principal.
   3. Inventário "O QUE MUDOU" do aviso ficou dois arquivos curto do diff real (faltavam os dois
      arquivos da caixa da própria rodada 26). Menor, não corrigido.
   4. A asserção `(3,1)` do mock (`scripts/mesa-mock.mjs:156`/`391`) é mais fraca do que o texto
