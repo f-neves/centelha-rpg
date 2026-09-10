@@ -202,6 +202,13 @@ worktree congelada da Revisora. São worktrees do mesmo repositório e não cóp
 histórico e objetos, e o que muda é qual commit cada uma tem em disco. A `centelha-revisora`
 antiga foi removida e a `centelha-techlead` sumiu com a sessão que a criou.
 
+**Nota de 10/09/2026:** o veredito da rodada 27 (`168df15`, commitado pela Revisora na worktree
+dela) foi ao `main` por `cherry-pick` em vez de `push` direto, porque o `main` já tinha avançado
+além da `BASE` daquele commit quando o Arquiteto foi empurrar. O conteúdo é o mesmo, mas o sha no
+`main` é outro (`78c4850`). Isso é esperado aparecer como divergência quando a Revisora reancorar
+no próximo aviso (`git fetch` vai mostrar os dois shas); o sha certo para reancorar é sempre o do
+próximo aviso novo, nunca `168df15` nem `78c4850` por conta própria.
+
 ### O prompt de abertura do Arquiteto
 
 ```

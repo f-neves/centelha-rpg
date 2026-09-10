@@ -26,6 +26,26 @@ existentes dividem o trabalho do mestre em aritmética, clique do relógio e jul
 delas é navegação. Então **esta frente abre como aposta declarada e não como conserto medido**, e
 isso está escrito de propósito para ninguém dizer depois que foi medida.
 
+### O que o levantamento de código corrigiu, em 10/09/2026
+
+O levantamento pedido no §3 (respondido pela Executora) trouxe três correções ao que este
+documento supunha, e uma notícia boa:
+
+- **Desfazer não é a rede que este documento supunha.** Cobre posição e Vida
+  (`desfazer()`, `grid.astro:10240-10261`), não cobre Mana, a declaração do golpe, o Tick nem a
+  agenda. A decisão de dispensar confirmação a cada comando (§4) dependia de desfazer barato, e
+  ele não existe para metade do que a voz executaria;
+- **Escolher arma não existe.** A arma vem fixa da ficha do personagem; "ataca com o machado" não
+  tem o que executar hoje. Os nomes de arma seguem no vocabulário de teste, porque medir palavra
+  comum vale igual, mas não são parâmetro de comando (ver §2);
+- **Mana não distingue dar de tirar.** É uma função só (`ajustarMana`, `grid.astro:9944`), então
+  o sinal vem da fala: "dá quatro de mana" e "tira quatro de mana" chamam a mesma função com
+  valores opostos.
+
+A notícia boa: 144 nomes de nível de Arte, em 24 trilhas, e uma única exceção mitológica (Fúria
+de Zeus, trilha Raio, nível 6). Todo o resto é palavra comum do português. O problema do léxico
+levantado no §6 não volta pelo catálogo de Artes.
+
 ---
 
 ## 2 · O desenho
@@ -64,9 +84,12 @@ mais        [unk]
 
 **Esta lista é invenção, não levantamento.** Ninguém observou o mestre falando. Ver §6.
 
-Frases típicas: `ataca com o machado`, `usa a magia de fogo, volume três, alcance dois`,
-`tira sete de vida`, `dá quatro de mana`, `avança o relógio`, `recua dois`, `quatro, dois, seis`
-(ditando as faces de dados rolados na mão), `desfaz`.
+Frases típicas: `ataca` (o nome da arma dito depois disso, se algum dia entrar, testa
+reconhecimento de palavra comum; não é parâmetro executável hoje, ver a correção de 10/09/2026
+acima), `usa a magia de fogo, volume três, alcance dois`, `tira sete de vida`, `dá quatro de
+mana` (dar e tirar mana são a mesma função hoje, o verbo falado é o único sinal, ver §4),
+`avança o relógio`, `recua dois`, `quatro, dois, seis` (ditando as faces de dados rolados na
+mão), `desfaz`.
 
 ---
 
@@ -115,6 +138,11 @@ Gramática restrita é um menu com trinta opções e "outro". Whisper é uma lin
 - **Confirmação escrita a cada comando não é padrão.** Ela põe uma leitura na janela do custo, toda
   vez, inclusive nas dezenove em que estava certo. A rede é desfazer barato, não confirmar sempre.
   Confirmação vale como **modo de calibração temporário**, com critério de saída escrito.
+- **Verbo com desfazer executa direto; verbo sem desfazer confirma, até ganhar desfazer.**
+  Fechado em 10/09/2026, veio do levantamento de código e substitui a lista verbo a verbo que
+  seria escrita à mão: o critério se aplica sozinho e encolhe conforme o desfazer crescer.
+  Consequência hoje: mover e mexer em Vida executam direto (têm desfazer); Mana, declarar golpe,
+  condições e avançar o relógio confirmam (não têm desfazer ainda, ver §1).
 - **Tabela de correção, não treinamento.** Nenhum motor aprende com correção do usuário. O que
   aprende é uma lista de substituição (ouvido X, era Y), que roda em milissegundos, é auditável, e
   funciona igual com qualquer motor. O Lichess tem precedente disso.
@@ -179,14 +207,15 @@ quatro condições de fala (válida, inválida, pela metade, foneticamente parec
 
 Também aberto:
 
-- **se os nomes das Artes são palavra comum ou nome inventado.** Se forem inventados, o problema do
-  léxico volta numa versão pequena, com catálogo fechado, possivelmente resolvível como passo de
-  build. Adicionar palavra nova exige preparar léxico e recompilar grafo, e o custo real disso não
-  foi medido;
-- **qual dos três forks usar**;
-- **a lista de qual verbo executa direto e qual confirma**;
-- **e o desfazer**, que precisa existir antes de qualquer execução direta. Comando sem desfazer cai
-  na família catalogada do conserto que não sabe exprimir remoção.
+- ~~se os nomes das Artes são palavra comum ou nome inventado~~ · respondido em 10/09/2026:
+  palavra comum, com uma única exceção mitológica (Fúria de Zeus). Ver §1;
+- **qual dos três forks usar** · a bancada de medição usa `@lichess-org/vosk-browser`,
+  vendorizado, mas isso não fecha a escolha para a construção final;
+- ~~a lista de qual verbo executa direto e qual confirma~~ · substituída em 10/09/2026 pela regra
+  fechada no §4 (verbo com desfazer executa direto, verbo sem desfazer confirma);
+- **e o desfazer**, que precisa crescer antes de qualquer execução direta nova. Comando sem
+  desfazer cai na família catalogada do conserto que não sabe exprimir remoção. Hoje cobre só
+  posição e Vida (ver §1).
 
 ### Os dois bloqueios que não são técnicos
 
