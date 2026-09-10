@@ -32,6 +32,11 @@ Thumbs.db
 *.log
 .~lock.*#
 
+# arquivo compactado para conferir uma pasta por fora do repositorio. Duas vezes um .7z
+# solto travou o `npm run rodada` (que exige arvore limpa) e virou decisao sobre arquivo de
+# outra pessoa. Ignorado em 10/09/2026 para o arquivo poder ficar onde quem o criou deixou.
+*.7z
+
 # a saida das baterias de simulacao: cada uma tem o seu manifesto e e refeita
 .sim/
 .portoes/
