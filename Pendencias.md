@@ -3864,6 +3864,96 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   todo commit que mexa em `grid.astro`. Nenhuma é decisão de engenharia isolada: (a) e (b)
   mudam o que o portão prova.
 
+- [ ] **L67 · [LEVANTADO em 10/09/2026 numa batalha de mesa, tamanho medido, PARADO esperando o
+  humano · o conserto não abriu] O corpo a corpo termina DENTRO do inimigo que ocupa mais de um
+  hexágono, e o estado que sobra é proibido pela própria regra de ocupação da mesa.**
+
+  **O defeito visto na mesa:** o atacante que persegue um inimigo grande não para na borda dele,
+  entra no corpo dele. **O achado é maior que o defeito:** ele TERMINA lá, e a mesa grava.
+
+  **A cadeia, e são dois mecanismos onde o segundo dispara por causa do primeiro:**
+
+  - o alcance de perseguição é medido de CENTRO A CENTRO e nunca soma o raio do alvo ·
+    `src/pages/mesa/grid.astro:5558` · `const pararA = mov.alvo ? alcanceDaPeca(c) : 0;`. A régua
+    que ele usa compara distância crua contra 1 ou 2 hexágonos, e o porte do alvo não entra na
+    conta em lugar nenhum · `src/lib/alcance.ts:83` · `return hexagonos <=`. Para um Enorme, que
+    mede 4 m em `src/pages/mesa/grid.astro:3290` · `'Enorme': 4, 'Imenso': 8, 'Colossal': 16,`,
+    numa arena de 1 m por hexágono, "distância 1 do centro" É dentro do corpo. **O destino que a
+    perseguição mira já nasce errado**, antes de qualquer passo;
+  - a primeira caminhada veta certo (ela evita as casas ocupadas pelo círculo do inimigo), então
+    ela NÃO CONSEGUE chegar nesse destino. Não ter aproximado é justamente o gatilho da repetição
+    que afrouxa o veto para a casa exata do outro token ·
+    `src/pages/mesa/grid.astro:5598` · `novo = caminharHex`
+    . A casa exata de uma criatura grande é só o centro dela, e o resto do
+    corpo fica livre. **A peça entra.**
+
+  **O estado proibido, e é isto que faz o achado ser maior:** a gravação não passa pela porta que
+  confere ocupação · `src/pages/mesa/grid.astro:5605` · `await gravarToken`. Depois dela, a
+  função que a mesa usa para decidir se um ponto está bloqueado responde SIM para a casa onde o
+  atacante acabou de parar · `src/pages/mesa/grid.astro:6905` · `function ocupadoPor`. **O motor
+  chegou num estado que a própria regra de ocupação dele proíbe.** Esse estado é inalcançável
+  pelo arrasto e inalcançável pela barra de comando; só a perseguição automática o produz.
+
+  **Por que a barra da rodada 31 não contradiz isto:** o ataque não passa pela mesma checagem.
+  A barra e o arrasto chamam a porta que confere; a perseguição grava direto. A checagem, essa,
+  ENXERGA ocupação de peça multi-hex (ela mede círculos em metros, não casas), então o problema
+  não é a checagem ser cega · é ela não ser chamada, e ser deliberadamente afrouxada um passo
+  antes.
+
+  **O tamanho:** "alcance é do centro" está em sete lugares, e é esse número que decide se o
+  conserto é pequeno ou não. Enquanto a régua de alcance não souber o raio do alvo, parar na
+  borda seria parar longe demais para acertar.
+
+  **A ressalva honesta sobre a repetição que afrouxa o veto:** o comentário dela diz "ninguém
+  pousa NA CASA de ninguém, mas passar e parar apertado pode", e foi escrita para outro caso ·
+  um Enorme AO LADO vetando os seis vizinhos de quem encosta nele, prendendo quem não devia estar
+  preso. O mesmo código hoje governa duas situações, e só uma foi pensada.
+
+  **Fica com o humano:** parar na borda muda alcance, área, linha de visão e a checagem de
+  ocupação de uma vez só, e a decisão de como consertar é dele. → `L66` (a mesma família de
+  silêncio), → `L69` (quem não segue caminho de borda).
+
+- [ ] **L68 · [LEVANTADO em 10/09/2026 numa batalha de mesa, PARADO esperando o humano · criar a
+  distinção é decisão dele] Arrastar uma peça fora do turno dela passa em silêncio, e a distinção
+  que resolveria isso já existe no motor, em outro eixo.**
+
+  **O que se quer, e não é proibir:** julgamento do mestre é jogo. O que falta é a mesa deixar de
+  ser muda, sem cobrar um modal a cada arrumação de tabuleiro.
+
+  **O motor DISTINGUE as duas coisas, em dois lugares, e nenhum deles está no arrasto:**
+
+  - a régua das Artes, escrita como regra e não como implementação ·
+    `src/lib/artes-grid-mesa.ts:1872` · `ONDE A MESA CORRIGE O PRÓPRIO REGISTRO, NÃO COBRA.` Ela é
+    cumprida por omissão (a correção não debita Mana e não declara tempo) e o registro escreve
+    "corrigiu", nunca "conjurou", para a mesa ler a diferença na linha do log;
+  - agir fora da vez, que tem custo real e campo próprio ·
+    `src/lib/combate-tempo.ts:129` · `divida?: number;`
+    , oferecido no menu da peça em `src/pages/mesa/grid.astro:7124` · `'forahora'`.
+
+  **O que existe no arrasto, e está no eixo errado:** a caixa do deslocamento no simultâneo já tem
+  DOIS botões, e o segundo é `src/pages/mesa/grid.astro:409` · `mv-direto`, uma ferramenta de
+  mestre que põe a peça sem gasto e sem trajeto. Mas o eixo dela é teleportar contra andar, e não
+  corrigir contra ficção. **A pergunta que ela faz não é a pergunta que se quer.**
+
+  **E ela quase nunca abre no caso relatado**, por duas razões somadas: só existe no sistema
+  simultâneo, para peça vinda do mapa e de pé, e mesmo aí só quando a peça está livre de gesto ·
+  a condição é a fase da ação, e não a vez. A verificação de vez existe e é usada em outro lugar ·
+  `src/pages/mesa/grid.astro:7033` · `const ehAVez = grupoDaVez`. Nunca foi ligada ao arrasto.
+
+  **O registro também não guarda a diferença depois do fato:** a gravação do movimento anota a
+  ação como mover, com origem e destino, e nenhuma marca de turno. Quem ler o log amanhã não tem
+  como separar uma correção de uma ação fora de hora.
+
+  **Fica com o humano:** a separação pedida (CORRIGIR POSIÇÃO, que não consome e não vira evento ·
+  AGIR FORA DO TURNO, que vira evento com marca) é regra nova, e a régua das Artes é o precedente
+  a copiar, não a estender por analogia sem ele dizer.
+
+- [ ] **L69 · [ANOTADO em 10/09/2026, observação para o futuro, sem análise e sem abrir] Nem toda
+  criatura chega pelo caminho de borda.** Existem criaturas que se teleportam e criaturas que se
+  deslocam por baixo da terra. Quando o movimento animado e as regras de caminho entrarem, essas
+  não seguem o mesmo trajeto nem param na mesma borda que o resto. Registrado agora, ao lado do
+  item que vai definir a borda, para quem mexer num achar o outro. → `L67`.
+
 - [ ] **L66 · [ANOTADO em 10/09/2026, recomendação da Revisora no veredito da rodada 31, não
   corrigido] `porNoMapa` recusa em silêncio, e quem a chama tem de trazer o próprio sinal.**
 

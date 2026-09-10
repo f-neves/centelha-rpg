@@ -211,6 +211,38 @@ chegado — só adivinhar, e o Arquiteto quase afirmou "esperando o veredito" se
 revisão. O lugar de escrita é decidido pelo Arquiteto no aviso de cada rodada, junto com o sha
 para reancorar.
 
+## 7 · O veredito só está fechado depois do push
+
+**A regra, e são duas metades:**
+
+1. **Depois de commitar o `NN-revisora.md`, empurre**, com `git push origin HEAD:main`, ANTES de
+   avisar que terminou. O commit é o trabalho; o push é o que faz o trabalho existir para os
+   outros. Avisar que terminou antes de empurrar é anunciar um estado que não é verdade.
+2. **Se o push não for fast-forward, avise em vez de forçar.** Não é fast-forward quando alguém
+   empurrou entre a reancoragem e o commit, e forçar ali apaga o commit dessa pessoa. Quem avisa
+   perde alguns minutos; quem força apaga trabalho de outra frente sem ninguém ver.
+
+**Por quê, e o número importa:** a Revisora trabalha num worktree em **detached HEAD**, apontado
+para o commit do aviso. Commitar em detached HEAD grava o commit e não move ramo nenhum: ele fica
+no repositório, alcançável por sha, e invisível para quem lê `main`. **Aconteceu nas rodadas 27,
+28, 29, 30 e 31, cinco seguidas.** Nenhuma foi acidente; é o que o arranjo faz por padrão.
+
+**O custo real, e não é hipotético:** o Arquiteto recolheu os cinco à mão. Dois saíram por
+`cherry-pick`, e cherry-pick copia o commit em vez de movê-lo, então **dois vereditos passaram a
+existir sob dois shas** · o original órfão e a cópia no `main`. Qualquer coisa que cite "o sha do
+veredito da rodada 27" agora tem de dizer qual dos dois. Os outros três saíram de graça, por
+fast-forward, e a diferença entre os dois casos foi sorte de topologia, não cuidado de ninguém.
+
+**A parte que fazia o esquema parecer são:** ele funcionava porque alguém conferia. A regra que
+manda conferir é o `ARQUITETO.md §1.1`, e ela é exatamente a regra que existe porque conferir
+falha quando é lembrança de uma pessoa em vez de passo de um procedimento. Um veredito que some é
+pior do que um que não existe: o registro diz que houve revisão, e não há.
+
+**Escrito aqui em 10/09/2026, e não deixado no combinado:** a Revisora concordou com isto numa
+conversa, e conversa não sobrevive à próxima sessão, porque a instância nasce deste arquivo. É o
+mesmo defeito que este projeto já catalogou · item que vive em mensagem é item meio aberto em
+lugar nenhum.
+
 ## Como isto cresce
 
 Cada rodada de revisão pode render um item novo aqui, do mesmo jeito que
