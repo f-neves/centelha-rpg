@@ -5221,6 +5221,31 @@ const SETAS = [
     pintarIniciativa(); pintarTokens();
     avisarAgora('combatentes');
     const prox = daVez();
+    // `{ acao: null }` DE PROPÓSITO, e é decisão registrada (VOZ.md §8 item
+    // 2), não esquecimento: este verbo CONFIRMA PARA SEMPRE na barra de
+    // comando, ao contrário de `alternarAuto`/`esperarUmTick`, que ganharam
+    // desfazer no mesmo lote.
+    //
+    // NÃO É REVERSÍVEL POR NATUREZA, no caso geral, e o motivo é mecânico, não
+    // falta de código: no sistema Normal/PGR (não no Simultâneo — ver
+    // `relogio()`, que no Simultâneo lê `tickSim()`, da cena, e não muda com o
+    // tick de uma peça só) mudar o tick da peça da vez PODE mover `relogio()`,
+    // e a chamada a `verificarEfeitos` duas linhas abaixo então expira
+    // condições e Artes, e aplica o dano de Artes que terminaram de montar.
+    // Cada um desses efeitos colaterais já escreve o PRÓPRIO log
+    // (`{ acao: null }` também, em `artes-grid-mesa.ts`), sem vínculo nenhum
+    // com o `encerrarVez` que os disparou. Devolver só o `tick` não desfaz
+    // nada disso: deixaria o tabuleiro pior que sem desfazer nenhum — uma
+    // peça que o relógio diz não ter agido, com efeitos já resolvidos por
+    // cima.
+    //
+    // O QUE TERIA DE EXISTIR PARA MUDAR ESTA RESPOSTA: cada efeito colateral
+    // de `verificarEfeitos` (uma condição vencendo, uma Arte encerrando, uma
+    // Arte mordendo) viraria sua própria entrada desfazível, e as entradas do
+    // MESMO gesto se agrupariam para o `desfazer()` reverter juntas, em
+    // ordem. Isso não é extensão do padrão `de`/`para` de hoje (um campo
+    // escalar ou objeto simples): é um mecanismo de grupo, novo. Meça antes
+    // de tentar.
     await logar(c, `${c.nome} agiu · +${gasto} tick${gasto > 1 ? 's' : ''} (volta no ${tick})`
       + (prox && prox.id !== cid ? ` · agora é ${prox.nome}` : ''),
       { acao: null });
@@ -5856,12 +5881,18 @@ const SETAS = [
   /** Liga e desliga o robô de uma criatura. Persistido em `combatentes.dados`. */
   async function alternarAuto(cid: string) {
     const c = COMBS.find((z: any) => z.id === cid); if (!c) return;
-    const dados = { ...(c.dados || {}), auto: !c.dados?.auto };
+    const antes = !!c.dados?.auto;
+    const dados = { ...(c.dados || {}), auto: !antes };
     const { error } = await SB.from('combatentes').update({ dados }).eq('id', cid);
     if (error) return uiErro('Erro: ' + error.message);
     c.dados = dados;
     pintarIniciativa();
-    await logar(c, `${c.nome} ${dados.auto ? 'entra em' : 'sai do'} modo automático`, { acao: null });
+    // VOZ.md §8 item 2: `acao`/`de`/`para` são o que `desfazer()` lê para
+    // reverter. `de`/`para` guardam o booleano, não um sinal de "alternar de
+    // novo" — se algo mais tocar o campo entre o gesto e o desfazer, alternar
+    // de novo devolveria o valor errado (mesmo cuidado do caso `'vida'`).
+    await logar(c, `${c.nome} ${dados.auto ? 'entra em' : 'sai do'} modo automático`,
+      { acao: 'auto', cid, de: antes, para: dados.auto });
   }
 
   /**
@@ -8474,13 +8505,20 @@ const SETAS = [
   async function esperarUmTick(cid: string) {
     const c = COMBS.find((x: any) => x.id === cid); if (!c) return;
     const antes = contrapeEm(c.acao, c.tick ?? 0);
-    const novoTick = (c.tick ?? 0) + 1;
+    // VOZ.md §8 item 2: o `de` do desfazer precisa dos DOIS campos que
+    // `gravarRelogio` muda (tick E acao inteiro, não só um escalar) — cópia
+    // funda, porque `c.acao` vai ser sobrescrito pela mesma referência que
+    // `gravarRelogio` grava em `c` logo abaixo.
+    const tickAntes = c.tick ?? 0;
+    const acaoAntes = c.acao ? JSON.parse(JSON.stringify(c.acao)) : c.acao;
+    const novoTick = tickAntes + 1;
     const nova = { ...contrapeDe(c.acao), golpes: [], livre: novoTick };
     if (!await gravarRelogio(c, novoTick, nova)) return;
     const agora = contrapeEm(nova, novoTick);
     flutuar(c.id, '+1 ⏱', 'tempo');
     await logar(c, `${c.nome} esperou um Tick para recompor a guarda: contrapé ${antes}d6 → ${
-      agora ? `${agora}d6` : 'nenhum'} (age no tick ${novoTick})`, { acao: null });
+      agora ? `${agora}d6` : 'nenhum'} (age no tick ${novoTick})`,
+      { acao: 'esperar', cid, de: { tick: tickAntes, acao: acaoAntes }, para: { tick: novoTick, acao: nova } });
   }
 
   // ========================================================= barra de comando
@@ -10323,6 +10361,17 @@ let roladoDano = '';
     avisarAgora('combatentes');
   }
 
+  /** Põe o "auto" de volta ao valor de antes. Usado só pelo desfazer. */
+  async function devolverAuto(cid: string, valor: boolean) {
+    const c = COMBS.find((x: any) => x.id === cid);
+    if (!c) return;
+    const dados = { ...(c.dados || {}), auto: valor };
+    const { error } = await SB.from('combatentes').update({ dados }).eq('id', cid);
+    if (error) return uiErro('Erro: ' + error.message);
+    c.dados = dados;
+    pintarIniciativa();
+  }
+
   async function desfazer() {
     const i = [...LOG].reverse().findIndex((e: any) => e.acao);
     if (i < 0) return;
@@ -10339,6 +10388,17 @@ let roladoDano = '';
     else if (e.acao === 'vida-menos') {
       const c = COMBS.find((x: any) => x.id === e.cid);
       if (c) await devolverVida(e.cid, Math.min(c.pv_max ?? Infinity, (c.pv_atual ?? 0) + (e.quanto || 0)));
+    }
+    // VOZ.md §8 item 2: os dois primeiros verbos que a barra de comando já
+    // chamava direto e ainda confirmavam. `de`/`para` guardam o valor exato
+    // (não "faz o oposto"), pelo mesmo motivo do `'vida'` acima.
+    else if (e.acao === 'auto') await devolverAuto(e.cid, e.de);
+    // `esperar` muda DOIS campos (tick e acao inteiro, não um escalar) —
+    // `gravarRelogio` é a própria função que `esperarUmTick` usa para
+    // escrever, e serve igual para escrever de volta.
+    else if (e.acao === 'esperar') {
+      const c = COMBS.find((x: any) => x.id === e.cid);
+      if (c) await gravarRelogio(c, e.de.tick, e.de.acao);
     }
     LOG_APAGADAS.add(e.id);
     LOG.splice(idx, 1);

@@ -30,7 +30,7 @@
       "palavras": ["auto", "automatico", "robo"],
       "chama": "alternarAuto",
       "parametro": null,
-      "desfaz": false,
+      "desfaz": true,
       "exemplo": "auto"
     },
     {
@@ -38,7 +38,7 @@
       "palavras": ["esperar", "espera"],
       "chama": "esperarUmTick",
       "parametro": null,
-      "desfaz": false,
+      "desfaz": true,
       "exemplo": "esperar"
     }
   ]
