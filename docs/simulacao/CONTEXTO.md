@@ -61,7 +61,8 @@ flag existe desligada (`src/data/regras.json:2537`) e não é lida em lugar nenh
 os dois pontos que somam Defesa sem teto hoje são `somarCondicoes` (`src/lib/mesa-core.ts:178`)
 e `defesaPerdida` (`src/lib/combate-tempo.ts:696`, com comentário próprio dizendo que acumula
 sem teto). **Aplicar o teto seria pequeno; achar o que a frase quer dizer é o que bloqueia**,
-e isso é pergunta para o humano, não investigação de código.
+e isso é pergunta para o humano, não investigação de código. → **L64**, com o levantamento
+inteiro e as três respostas possíveis.
 
 ## Comando por voz · a frente, e ela já tem código
 

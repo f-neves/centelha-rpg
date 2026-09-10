@@ -1284,7 +1284,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   que fazia o carimbo valer: alguém que leia o perfil na hora de aplicar a regra.**
 
   O perfil é gravado, viaja no encontro, aparece na tela, é comparável e é recarimbável. E é lido
-  em **um** lugar do código de produção, `grid.astro:9071` (`perfil: { ...REGRAS_CENA }`), onde ele é copiado para dentro da
+  em **um** lugar do código de produção, `grid.astro:9088` (`perfil: { ...REGRAS_CENA }`), onde ele é copiado para dentro da
   entrada do lance, para o oráculo. `entrada.perfil` **não é consultado em lugar nenhum**: nem em
   `resolverGolpe`, nem em `quase-acerto.ts`, nem em `calc.ts`, nem no harness. Nenhuma das quinze
   bandeiras faz o motor tomar um caminho diferente.
@@ -2769,9 +2769,9 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **O DEFEITO.** No Grid os dois papéis escrevem o mesmo campo por caminhos que não se conhecem.
 
   O jogador acrescenta pelo banco, e o banco lê a coluna e concatena lá dentro:
-  `SB.rpc('jogador_registra', { p_arena: ARENA.id, p_linha: linha })`, `grid.astro:10225`.
+  `SB.rpc('jogador_registra', { p_arena: ARENA.id, p_linha: linha })`, `grid.astro:10242`.
   O mestre grava o vetor inteiro da memória dele:
-  `await SB.from('mesa_arenas').update({ log: LOG }).eq('id', ARENA.id);`, `grid.astro:10260`. **A linha que o jogador acabou de
+  `await SB.from('mesa_arenas').update({ log: LOG }).eq('id', ARENA.id);`, `grid.astro:10277`. **A linha que o jogador acabou de
   registrar some se o `LOG` do mestre for anterior a ela, sem erro nenhum.** É o caminho normal dos
   dois durante uma cena.
 
@@ -2814,10 +2814,10 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | gesto | o que faz hoje |
   |---|---|
   | `logar()` | empurra uma linha e grava o vetor |
-  | `desfazer()` | tira a última linha com `acao` (`LOG.splice(idx, 1);`, `grid.astro:10327`) e grava o vetor |
+  | `desfazer()` | tira a última linha com `acao` (`LOG.splice(idx, 1);`, `grid.astro:10344`) e grava o vetor |
   | `editarLinha(id)` | muda `txt`/`pub` de uma linha, e grava o vetor |
-  | `excluirLinha(id)` | tira por id (`LOG.splice(i, 1);`, `grid.astro:10422`) e grava o vetor |
-  | `refazerLogDosEfeitos()` | `LOG = LOG.filter((e: any) => !minha(e));` (`grid.astro:10473`) e empurra N linhas novas |
+  | `excluirLinha(id)` | tira por id (`LOG.splice(i, 1);`, `grid.astro:10439`) e grava o vetor |
+  | `refazerLogDosEfeitos()` | `LOG = LOG.filter((e: any) => !minha(e));` (`grid.astro:10490`) e empurra N linhas novas |
 
   **E UMA CORREÇÃO AO ENUNCIADO: não existe zerar no Grid.** O `LOG = []` é do `combate.astro`
   (`if (zLog) { LOG = []; await persistLog(); }`, `combate.astro:2068`), na caixa de reiniciar
@@ -3785,6 +3785,73 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   histórico e citado por arquivo e linha em vários lugares, então a correção não é editá-lo por
   fora: é decidir se a linha dele ganha a nota de que o número preciso mora no `ESTADO.md`.
   Achado conferindo outra coisa, registrado e parado aqui.
+
+- [ ] **L64 · [LEVANTADO em 10/09/2026, tamanho medido, PARADO esperando o humano · não é
+  trabalho de engenharia] A separação de sentinela e magnitude que precede o `teto6`.**
+
+  Aberta como item de trabalho, investigada sem escrever código, e **parada porque o que
+  bloqueia não é o conserto, é a definição**. Registrada aqui, e não só no chat e no
+  `CONTEXTO.md`, porque item que vive em mensagem é item meio aberto em lugar nenhum.
+
+  **O que a investigação achou:**
+
+  - **a frase não está presa a arquivo e linha em documento nenhum.** "Sentinela e magnitude
+    dividem o mesmo campo" aparece no `PLANO.md`, no `CONTEXTO.md` e nas caixas da rodada 14,
+    sempre como afirmação solta. É **a única das nove bandeiras da tabela de
+    `docs/simulacao/02-projeto-harness.md:1818-1827` sem citação de código junto** (`margem`,
+    `gate`, `porte`, `bloqueio`, `modo2` têm todas arquivo:linha);
+  - **onde o `teto6` vive hoje:** a bandeira nasce desligada no perfil e é declarada em
+    `src/lib/bandeiras.ts:13` · `'margem', 'gate', 'porte', 'bloqueio', 'modo2', 'teto6',`.
+    **Não é lida em lugar nenhum do motor** · só a normalização do perfil a toca. A regra que
+    ela ligaria está em texto no capítulo publicado (`src/content/chapters/combate.md:270` e
+    `:354`, o empilhamento numa mesma Defesa limitado a ±6);
+  - **os dois pontos que somam Defesa sem teto hoje** são os candidatos a receber o corte, e
+    são estes dois:
+    - `src/lib/mesa-core.ts:178` · `export function somarCondicoes(`
+    - `src/lib/combate-tempo.ts:696` · `export function defesaPerdida(`, esta com comentário
+      próprio na linha de cima dizendo que acumula sem teto e só zera quando o ciclo fecha.
+
+    Os dois se juntam em `src/lib/lance.ts:157` · `export function defesaEfetiva(`;
+  - **o que NÃO foi achado:** um campo que hoje carregue OU sentinela OU magnitude conforme o
+    caso, que é o que a frase descreve. Os dois candidatos mais próximos não batem limpo. O
+    primeiro é o campo declarado em `src/lib/mesa-core.ts:168` · `defesa?: number;`, lido com
+    um "ou zero" que faz ausência e zero explícito colapsarem no mesmo valor · mas isso é o
+    zero ambíguo comum, e não uma sentinela. O segundo é a pressão, que é sempre uma contagem
+    de atacantes e nunca alterna de significado.
+
+  **O tamanho, nas duas metades:** a parte mecânica (aplicar o teto nos dois pontos, mais os
+  testes que `02-projeto-harness.md:1830-1833` já lista como devidos) é **pequena, do tamanho
+  de `porte`/`gate`, uma sessão**. A parte que bloqueia é **arqueologia de uma frase**, e tem
+  três respostas possíveis, nenhuma decidível daqui: (a) a frase descreve algo que existia só
+  na conversa de quem a escreveu, (b) existe um campo que a busca não achou por não saber o
+  nome certo, ou (c) é descrição imprecisa de um problema real mas diferente (o `|| 0` acima).
+
+  **Fica com o humano:** o que ele quis dizer, e de onde a frase veio. Enquanto isso não for
+  respondido, `teto6` não liga · não por decisão de prioridade, mas porque ligar antes somaria
+  no mesmo teto duas grandezas que ninguém confirmou serem duas. → `L25` (as quinze bandeiras).
+
+- [ ] **L65 · [ANOTADO em 10/09/2026, achado de passagem, não corrigido] Dez citações de linha
+  em `grid.astro` foram reapontadas TRÊS vezes num só dia, e vão envelhecer de novo no próximo
+  commit que tocar o arquivo.**
+
+  São as mesmas dez, sempre (quatro no `ESTADO.md`, seis aqui). O portão de procedência as pega
+  corretamente · o problema não é o portão, é que **elas endereçam por número de linha um
+  arquivo de mais de onze mil linhas que é o mais mexido do projeto**, e qualquer inserção
+  acima delas desloca todas de uma vez (nas três vezes de hoje o deslocamento foi uniforme:
+  +17 na última).
+
+  **O custo real não é o reaponte, é o bloqueio cruzado:** o portão roda contra a árvore
+  inteira, então a edição não commitada de uma instância trava o commit da outra, e as duas
+  precisam de um arquivo que a outra está segurando. Aconteceu duas vezes hoje (Arquiteto e
+  Executora), e a segunda virou impasse circular que só saiu com uma das duas parando de
+  editar por acordo explícito.
+
+  **Não corrigido, e as saídas conhecidas ficam registradas sem escolha feita:** (a) trocar
+  âncora-mais-linha por âncora só, deixando o portão procurar o trecho no arquivo inteiro (mais
+  frouxo, perde a prova de que a citação sabe ONDE está); (b) apontar para símbolo estável
+  (nome de função) em vez de linha; (c) deixar como está e aceitar o reaponte como pedágio de
+  todo commit que mexa em `grid.astro`. Nenhuma é decisão de engenharia isolada: (a) e (b)
+  mudam o que o portão prova.
 
 ## H. Arremesso
 

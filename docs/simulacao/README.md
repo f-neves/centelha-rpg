@@ -19,9 +19,10 @@ leitura é o recorte por quem vai ler, e o critério é **instrução ativa para
 precisa de `Grid_Mobile.md` para abrir a semana. **Fonte única: `PASSAGEM.md` §9**, os prompts
 de abertura; a lista abaixo aponta para lá em vez de copiar, para as duas não divergirem.
 
-- **Arquiteto**, ao abrir uma sessão nova: `PASSAGEM.md` → `PLANO.md` → `ARQUITETO.md` →
-  `CONTEXTO.md` → `CATALOGO.md` → `Pendencias.md` (seis arquivos, nesta ordem). Não os
-  relatórios `00` a `09` nem `REVISORA.md` — abre só para procedência.
+- **Arquiteto**, ao abrir uma sessão nova: a lista e a ordem estão no prompt de abertura, em
+  `PASSAGEM.md §9`, e **não são repetidas aqui de propósito** · esta cópia existiu, divergiu no
+  dia em que a lista mudou, e foi tirada em 10/09/2026 (`ARQUITETO.md §5.5`). Fora da lista:
+  os relatórios `00` a `09`, o `REVISORA.md` e o `docs/MAPA.md`, que se abrem sob demanda.
 - **Auditora**, ao abrir: `CONTRATO-AUDITORA.md` → `PASSAGEM.md` (dois arquivos). O resto ela
   lê sob demanda, quando o Arquiteto perguntar algo específico.
 - **Executora** e **Revisora** não têm lista própria aqui: nascem de um prompt do Arquiteto

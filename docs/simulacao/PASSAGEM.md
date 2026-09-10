@@ -139,19 +139,30 @@ A semana reseta quinta às 18h.
 
 ## 6 · Onde o projeto está
 
-Fase 2 fechada, fase 3 quase inteira, fase 2.5 com um item pela frente: a tela que desenha o
-inimigo já visto, que destrava a migração 33. O resíduo da 2.5 (o relógio no P/G/R e o
-`combate.astro`) fechou em `936b59a`.
+**Atualizado em 10/09/2026.** Fase 2 fechada (6/6). **Fase 2.5 FECHADA**, engenharia completa:
+o resíduo do relógio saiu em `936b59a` e a tela da lembrança fechou na rodada 30, veredito
+SEGUE · o que resta dela não é código, é rodar a migração 33, que é do humano (§7). Fase 3 não
+começou e não começa até a mesa reavaliar o plano.
+
+**Fora da numeração de fases, e já com código na mesa: o comando por voz**
+(`docs/simulacao/VOZ.md`). A barra de comando de TEXTO está pronta no Grid (tecla **C**), a
+bancada de medição do Vosk existe para o humano rodar, e a frente está parada de propósito
+esperando ele usar a barra numa batalha · o vocabulário real que sair dali corrige a gramática
+antes de qualquer construção em cima dela.
 
 A "auditoria das três medições" é o INSTRUMENTO da fase e não um item dela. Isso já foi lido
 errado uma vez.
 
 Depois vêm a fase 4 (terreno, obstáculos, rotas) e a 5 (a experiência do jogador), e as duas
-juntas são maiores que tudo o que foi feito.
+juntas são maiores que tudo o que foi feito. **A 4 está bloqueada por pré-requisito que não é de
+engenharia** (§7).
 
 Não há percentual de progresso publicado. Os números que circularam eram estimativa de esforço,
-sem denominador definido. A partir de agora a medida é fechados sobre abertos no `Pendencias`, e
-ela começa quando a contagem do `L52` existir.
+sem denominador definido. A medida é fechados sobre abertos no `Pendencias`, e **a primeira
+medida existe desde 08/09/2026: 120 abertos, 63 fechados, 4 parciais, 187 catalogados no
+total** · ela nasce inflada (inclui item já pronto e não riscado antes de a contagem existir), e
+isso está registrado junto dela. **A segunda medida é que vira sinal**, porque é a primeira que
+tem com o que comparar. → `Pendencias.md` **L52**.
 
 ---
 
@@ -159,11 +170,20 @@ ela começa quando a contagem do `L52` existir.
 
 - **a conversa do modo site**: vale 34% do trabalho do mestre, o mecanismo já existe no Grid,
   e o que trava é a pergunta de por que a mesa rola o dado na mão. Ninguém perguntou ainda;
-- **rodar a migração 33**, quando a tela existir;
+- **rodar a migração 33** · **pronta desde 10/09/2026**, esperando só ele. Os três itens do
+  gatilho do cabeçalho dela estão satisfeitos (semente da seção 0, o cliente desenhando
+  `lembranca` distinto, `npm run smoke` verde com a asserção pareada), conferidos com o ensaio
+  dos três sentidos. Nenhuma instância roda migração em produção;
+- **testar a barra de comando de texto na mesa** · pronta desde 10/09/2026 (tecla **C** com quem
+  está agindo). Ela é o instrumento que substitui duas medições que estavam paradas esperando o
+  humano: o vocabulário real (que palavras ele de fato digita) e a comparação de caminhos (se o
+  comando escrito encolhe gesto). O que sair da batalha decide se o comando por voz continua ou
+  encerra;
 - **jogar uma batalha de verdade**, e ela NÃO é item paralelo: é pré-requisito da fase 4. Não
   depende da tela da lembrança, que só importa com névoa ligada e inimigo já visto que recuou.
   Dá para sentar e jogar hoje. As duas fases que faltam são as mais sensíveis ao que uma mesa
-  revela, e estariam sendo construídas sem nenhuma mesa ter revelado nada.
+  revela, e estariam sendo construídas sem nenhuma mesa ter revelado nada. **As duas últimas se
+  fazem na mesma sessão**: jogar a batalha com a barra aberta responde as duas de uma vez.
 
 ---
 
@@ -233,11 +253,17 @@ Você é o ARQUITETO deste projeto. Antes de qualquer coisa, leia, nesta ordem:
   docs/simulacao/ARQUITETO.md     · o método e o catálogo de erros do coordenador
   docs/simulacao/CONTEXTO.md      · o estado corrente
   docs/simulacao/CATALOGO.md      · as formas de defeito
+  docs/simulacao/VOZ.md           · a frente do comando por voz: o que está autorizado
+                                    construir, em que ordem, e o que continua proibido
   Pendencias.md                   · os itens abertos
 
 NÃO leia os relatórios 00 a 09 nem o REVISORA.md. São registro histórico da
 frente de simulação, que está encerrada, e existem porque outros documentos os citam por arquivo
 e linha. Abra só quando precisar conferir a procedência de um número.
+
+O docs/MAPA.md também fica sob demanda: ele diz o que é régua, trabalho e resto na RAIZ do
+repositório, e é retrato por citação de um dia (08/09/2026), não autoridade. Abra quando
+precisar decidir se um arquivo solto da raiz está vivo, não na abertura da sessão.
 
 Depois crie uma Agent Team com exatamente dois teammates:
 
@@ -253,16 +279,13 @@ No início da sessão, antes de qualquer trabalho, leia o arquivo de uso semanal
 humano se há limite de sessão ou de semana, do jeito que o §0 do ARQUITETO.md descreve. Sem
 resposta, nenhum lote abre.
 
-Duas coisas na primeira passada, e nenhuma delas é lote:
-
-1. escreva docs/simulacao/README.md dizendo, em uma linha por arquivo, o que é INSTRUÇÃO ATIVA e
-   o que é REGISTRO HISTÓRICO. Quem abrir a pasta hoje não distingue, e isso já fez alguém tratar
-   documento histórico como instrução;
-2. e commite o PASSAGEM.md, que chega com esta sessão e nunca existiu em disco.
-
-(A renomeação de TechLead para Arquiteto nos documentos onde o papel era nomeado, ARQUITETO.md
-· PLANO · CONTEXTO · os dois contratos, já aconteceu, em 08/09/2026. Fica só o registro, para
-quem reabrir este arquivo não ler uma instrução para um trabalho que já foi feito.)
+(Três trabalhos que este prompt já mandou fazer e que JÁ FORAM FEITOS, deixados aqui só como
+registro para quem reabrir não ler instrução para trabalho concluído: a renomeação de TechLead
+para Arquiteto nos documentos onde o papel era nomeado, em 08/09/2026; escrever o
+docs/simulacao/README.md separando instrução ativa de registro histórico, que existe desde
+08/09/2026; e commitar o PASSAGEM.md, que estava só nesta sessão e entrou no repositório no
+mesmo dia. As duas últimas saíram da lista de tarefas em 10/09/2026, pelo motivo que o próprio
+parêntese anterior já avisava.)
 
 Depois disso, não me pergunte qual o próximo passo: ele está no PLANO §8. Me diga o que você
 entendeu do estado, qual é o próximo item pela fila, e o que precisa de mim antes de começar.

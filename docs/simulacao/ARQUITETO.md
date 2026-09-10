@@ -282,9 +282,10 @@ dois parágrafos e omitia nove dos doze arquivos tocados, três deles no motor.
 ### 5.5 · Documento aponta para outro, não descreve o conteúdo dele
 
 **Escrito em 10/09/2026**, depois de três achados da mesma passada serem a mesma coisa: o
-`README.md` da pasta descrevendo o `CONTRATO-REVISORA-ORIGINAL.md` ("mais completa que
-`REVISORA.md`"), o próprio `ORIGINAL` descrevendo o `REVISORA.md` ("não é o mesmo texto", e
-era), e o `README.md` descrevendo o `gasto-acumulado.json` ("é a fonte do custo acumulado", e
+`README.md` da pasta descrevendo o `CONTRATO-REVISORA-ORIGINAL.md` (**apagado em 10/09/2026**,
+e a citação fica aqui porque é o caso que gerou esta regra) como "mais completa que
+`REVISORA.md`"; o próprio `ORIGINAL` descrevendo o `REVISORA.md` ("não é o mesmo texto", e
+era); e o `README.md` descrevendo o `gasto-acumulado.json` ("é a fonte do custo acumulado", e
 não é). Nos três, a descrição envelheceu ou já nasceu falsa, e ninguém reconfere afirmação
 sobre conteúdo alheio.
 
