@@ -3753,6 +3753,23 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   reportar mais um `✘` e seguir. Não invalida a prova (as três asserções relevantes já tinham
   falhado pelo motivo certo antes do crash).
 
+- [ ] **L62 · [FAZER, dois achados da revisão do aviso 30 (barra de comando, `VOZ.md` §8 item 1),
+  nenhum bloqueando o veredito (SEGUE)]**
+
+  1. **Sem teste automatizado commitado para a barra de comando.** O `smoke-comando.mjs` que a
+     Executora rodou (roteiro puppeteer, 7 casos, `docs/simulacao/caixa/progresso-barra-comando.md`)
+     não entrou no repositório — a prova existiu, rodou, e não ficou. A Revisora escreveu um script
+     próprio fora da árvore para testar ao vivo os 6 casos do aviso contra a bancada real (todos
+     passaram, incluindo a recusa de "automatica" com as mesmas 5 sugestões genéricas de texto
+     aleatório) e apagou depois de usar. Sugestão dela, registrada para quando isto abrir como
+     trabalho: levar os casos para dentro de `test-grid.mjs`, não deixar como bancada avulsa.
+  2. **`mover` contra casa ocupada falha em silêncio total pela barra**, sem erro, sem registro, sem
+     movimento, sem nenhum sinal de que o comando rodou. Comportamento herdado de `porNoMapa` (já
+     existia pelo arrasto, onde ao menos a peça visivelmente não solta) — não é regressão desta
+     rodada, mas a interface nova de texto não tem nenhum feedback ambiente para esse caso. Achado
+     pela Revisora investigando um percalço do próprio teste dela (escolheu uma casa que por acaso já
+     estava ocupada), registrado como não bloqueante.
+
 ## H. Arremesso
 
 Frente aberta em **2026-08-10** e até agora sem linha neste mapa. Três documentos:
