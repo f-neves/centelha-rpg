@@ -28,6 +28,16 @@ de abertura; a lista abaixo aponta para lá em vez de copiar, para as duas não 
   dentro da sessão dele (`PASSAGEM.md` §1), e o contrato da Revisora
   (`CONTRATO-REVISORA.md`) é o que rege o que ela lê.
 
+**`PORQUE.md` não existe, registrado em 10/09/2026 depois de ser citado por engano.** Uma sessão
+anterior escreveu texto pensado para virar esse arquivo (por que o projeto existe, os motivos das
+decisões, os erros catalogados de quem coordenou), e ele nunca foi commitado — não está nesta
+pasta, não está na raiz, não está em lugar nenhum do repositório. `VOZ.md §1` chegou a citá-lo
+como fonte de um critério real (navegação é custo, escolha não), e a citação foi corrigida para
+não apontar para um arquivo que não existe. Quem tiver esse texto (ou lembrar dele) e quiser
+recuperá-lo: hoje o mais próximo que existe, comitado, é o catálogo de erros do coordenador em
+`ARQUITETO.md §7` (a metade "erros catalogados de quem coordenou") — o resto ("por que o projeto
+existe", "os motivos das decisões") não tem endereço nenhum.
+
 ## Instrução ativa
 
 | arquivo | o que é |

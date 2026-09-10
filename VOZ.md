@@ -15,8 +15,10 @@ Nada aqui autoriza lote. Ver §7, que diz o que não fazer.
 ## 1 · Por que a frente existe, e o que ela não tem
 
 O mestre é o motor de resolução, e nove das catorze paradas do sistema são dele. O critério que
-separa o que se conserta do que não se toca está no `PORQUE.md`: escolher é jogo e pode demorar; o
-tempo entre a decisão estar tomada e o efeito aparecer na tela é custo e deve encolher.
+separa o que se conserta do que não se toca (**corrigido em 10/09/2026: não está em `PORQUE.md`,
+que nunca foi commitado, ver `docs/simulacao/README.md`**) veio direto da conversa com o humano
+que abriu esta frente, e só está escrito aqui: escolher é jogo e pode demorar; o tempo entre a
+decisão estar tomada e o efeito aparecer na tela é custo e deve encolher.
 
 A voz ataca **navegação**, que é o mestre procurando onde clicar. Não ataca **escolha**, que é o
 mestre decidindo, e que por decisão escrita não se encolhe.
