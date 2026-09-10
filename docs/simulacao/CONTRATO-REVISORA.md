@@ -190,6 +190,27 @@ Auditora perguntar foi só a disciplina de checar se algo do roteiro antigo já 
 necessário e ninguém tinha olhado — que é o próprio achado dela, catalogado em
 `ARQUITETO.md §7`.
 
+## 6 · Sinal de vida em disco, a cada etapa
+
+**A regra:** toda revisão escreve progresso num arquivo achável (a caixa da rodada, mesmo antes
+do `NN-revisora.md` final existir) enquanto trabalha, não só no fim. Uma linha ao reancorar (com
+o sha em que reancorou), uma a cada etapa que fecha (leu o diff, rodou a falsificação, formou
+veredito), uma ao terminar ou travar.
+
+**Por quê, e por que só agora:** achado em 10/09/2026 — a instrução de progresso em disco
+(`ARQUITETO.md §1.2`) nasceu no meio de uma tarefa da Executora e nunca chegou à Revisora, que
+existe desde antes da regra. Resultado: entre o Arquiteto mandar o aviso da rodada 30 e o
+veredito sair, não havia nenhum jeito de saber se a Revisora estava trabalhando, travada na
+reancoragem (o ponto mais provável de travar em silêncio: ela está num commit antigo, precisa ir
+para o sha do aviso, e se isso falhar não há sinal nenhum de que falhou), ou se o aviso nem tinha
+chegado — só adivinhar, e o Arquiteto quase afirmou "esperando o veredito" sem conferir nada
+(`ARQUITETO.md §1.1`).
+
+**Como aplicar:** a primeira linha do progresso é sempre o sha em que a reancoragem terminou
+(prova de que o passo 0 do `§0` deste contrato funcionou); as seguintes marcam cada etapa da
+revisão. O lugar de escrita é decidido pelo Arquiteto no aviso de cada rodada, junto com o sha
+para reancorar.
+
 ## Como isto cresce
 
 Cada rodada de revisão pode render um item novo aqui, do mesmo jeito que

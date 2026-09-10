@@ -67,6 +67,12 @@ responder, não depois.
 Vale mesmo quando o humano não perguntou: contar o que está acontecendo é afirmar estado, e
 afirmar sem conferir é o defeito, não só responder sem conferir.
 
+**Vale para QUALQUER instância, sem exceção para a que costuma se comportar bem.** Achado em
+10/09/2026, no mesmo dia em que esta regra foi escrita: "esperando o veredito da Revisora" foi
+dito sem mtime, sem `git log`, sem nada — a regra tinha acabado de ser aplicada à Executora, que
+estava dando problema, e não à Revisora, que não estava. A regra é sobre afirmar estado de
+qualquer instância, não sobre a instância que chamou atenção primeiro.
+
 ### 1.2 · Sinal de vida nasce com a tarefa, em disco
 
 Toda tarefa mandada para a Executora ou a Revisora inclui, no próprio pedido, a instrução de
