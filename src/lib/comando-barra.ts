@@ -41,6 +41,14 @@ export interface ComandoFalha {
   motivo: string;
   /** As frases válidas mais próximas, para escolher com um toque. */
   sugestoes: string[];
+  /**
+   * Só quando um verbo FOI reconhecido mas falta o parâmetro dele (hoje só
+   * "mover" sem casa — VOZ.md §8 item 3). Quem chama pode tratar isto como
+   * "metade do comando chegou, falta a outra" em vez de "não entendi nada" —
+   * é o que distingue a voz dizendo "mover" (válido, à espera do clique) de
+   * a voz dizendo qualquer outra coisa (inválido de verdade).
+   */
+  verboParcial?: Verbo;
 }
 
 /** Minúsculo e sem acento, para "Mover" e "móve" caírem na mesma palavra. */
@@ -67,9 +75,34 @@ export function interpretarComando(texto: string): ComandoOk | ComandoFalha {
     const candidato = tokens.find((t) => REGEX_HEX.test(t));
     const hex = candidato ? hexDoNome(candidato) : null;
     if (!hex) {
-      return { ok: false, ouvido: texto, motivo: `"${verbo.id}" precisa de uma casa (ex.: "${verbo.exemplo}")`, sugestoes };
+      return {
+        ok: false, ouvido: texto, sugestoes, verboParcial: verbo,
+        motivo: `"${verbo.id}" precisa de uma casa (ex.: "${verbo.exemplo}")`,
+      };
     }
     return { ok: true, verbo, hex: { ...hex, nome: candidato!.toUpperCase() } };
   }
   return { ok: true, verbo };
+}
+
+/**
+ * A GRAMÁTICA DE VOZ DO GRID, NUM LUGAR SÓ (VOZ.md §8 item 3).
+ *
+ * Não é a mesma lista da bancada (`voz-bench.html`): a bancada mede o modelo
+ * em geral, com o vocabulário maior e ainda invenção do VOZ.md §2; esta é só
+ * o que o Grid de fato executa hoje, e sai dos MESMOS `VERBOS` que
+ * `interpretarComando` já lê — uma fonte, dois consumidores (o parser de
+ * texto e o reconhecedor de voz), nunca duas listas.
+ *
+ * SEM CASA NENHUMA, DE PROPÓSITO (VOZ.md §2, "o clique resolve... posição,
+ * que é onde o toque é preciso e a fala é ambígua"): a gramática falada só
+ * tem palavra e verbo, nunca "H7" nem letra soletrada. Quem fala "mover"
+ * preenche o campo simbólico; o hexágono chega por clique, sempre — nunca
+ * pela voz. A barra DIGITADA continua aceitando "mover H7" como texto
+ * completo; isso não muda, porque digitar posição é preciso e a regra do §2
+ * é só sobre a fala.
+ */
+export function gramaticaDeVoz(): string {
+  const palavras = VERBOS.flatMap((v) => v.palavras);
+  return JSON.stringify([...palavras, '[unk]']);
 }

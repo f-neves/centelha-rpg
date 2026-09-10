@@ -104,6 +104,12 @@ const SETAS = [
             intenção com um alcance a menos. */}
         <button class="btn-fant" id="gr-cheia-mapa"
           title="Tela cheia só do mapa, sem a ordem de combate (Shift+F)">▣</button>
+        {/* VOZ.md §8 item 3: segurar para falar, ao lado da barra de comando
+            (tecla C). Sempre visível — a barra não é só do mestre (mover e
+            esperar são de quem manda na peça), então o microfone também não
+            é. Fica desabilitado até o modelo carregar, e mesmo desabilitado
+            o título já diz o que apertar para carregar. */}
+        <button class="btn-fant" id="gr-voz" title="Segurar para falar um comando (carrega o modelo no primeiro toque)">🎤</button>
         <span class="gr-vivo" id="gr-vivo" hidden><span class="pt"></span><span id="gr-vivo-n"></span></span>
         <button class="btn mini" id="gr-recarregar" title="Buscar as posições mais recentes">↻</button>
       </div>
@@ -2411,7 +2417,9 @@ const SETAS = [
     offsetParaAxial, letraColuna, caminharHex, alemDe, naLinhaHex,
   } from '../../lib/hex';
   import { uiConfirmar, uiErro, uiFormulario, uiEscolher, contadorDeConsultas } from '../../lib/ui-dialog';
-  import { interpretarComando } from '../../lib/comando-barra';
+  import { interpretarComando, gramaticaDeVoz } from '../../lib/comando-barra';
+  import { caminhosPadrao, carregarVoz, prepararReconhecedor, comecarAFalar as comecarAFalarVoz,
+    pararDeFalar as pararDeFalarVoz, vozCarregada } from '../../lib/comando-voz';
   import {
     girarMapa, excluirMapa, medidaDeMapa, giroParaCaber, enquadramentoPadrao, medirImagem,
     type Giro,
@@ -2784,6 +2792,8 @@ const SETAS = [
     ligarArrasto();
     ligarMenuToken();
     ligarMira();
+    ligarCliqueDeVoz();
+    ligarBotaoDeVoz();
     ligarNevoa();
     ligarSom();
     ligarReguaENavegacao();
@@ -7044,8 +7054,13 @@ const SETAS = [
       // fechar o menu da peça e sair do modo no mesmo toque seria duas coisas
       // num gesto, e a segunda delas surpresa.
       const menuAberto = !(el('tok-menu') as HTMLElement).hidden;
-      if (TV && !MIRA && !AJUSTANDO && !menuAberto && !document.querySelector('dialog[open]')) modoTV(false);
+      if (TV && !MIRA && !AJUSTANDO && !menuAberto && !COMANDO_ARMADO && !document.querySelector('dialog[open]')) modoTV(false);
       fecharMenu(); cancelarMira();
+      // VOZ.md §8 item 3: Esc cancela um "mover" armado esperando o clique
+      // (a voz ouviu o verbo, o tabuleiro ainda não recebeu o clique) — sem
+      // isto um clique qualquer, dias depois de o mestre desistir, dispararia
+      // o comando por engano.
+      if (COMANDO_ARMADO) { COMANDO_ARMADO = null; vozStatus('Segurar para falar um comando (carrega o modelo no primeiro toque)'); }
       // O Esc do ajuste passa por AQUI antes de chegar ao diálogo, e fechar na
       // mão dispara `close` sem disparar `cancel`. Sem desfazer explicitamente,
       // o Esc viraria um "concluir" silencioso, que é o contrário do que ele
@@ -8557,25 +8572,22 @@ const SETAS = [
   }
 
   /**
-   * Interpreta e executa. NUNCA aproxima (VOZ.md §4): texto que não casa vira
-   * a pergunta "não entendi, foi um destes?", nunca um palpite silencioso.
+   * O MEIO DO CAMINHO, comum ao texto e à voz (VOZ.md §8 item 3: "o mesmo
+   * parser, a mesma execução, o mesmo desfazer" — só muda como o `cmd` chega
+   * até aqui). Recebe um comando JÁ INTERPRETADO como válido e faz o resto:
+   * as travas de "mover" (mesmas de antes, sem tocar em `porNoMapa`), a
+   * permissão, a regra confirma/executa do VOZ.md §4, e o despacho.
    */
-  async function executarComando(cid: string, texto: string) {
+  async function prosseguirComComando(cid: string, cmd: { verbo: any; hex?: { q: number; r: number; nome: string } }) {
     const c = COMBS.find((x: any) => x.id === cid); if (!c) return;
-    let cmd = interpretarComando(texto);
-    while (!cmd.ok) {
-      const escolha = await uiEscolher(`Não entendi "${cmd.ouvido}"`,
-        cmd.sugestoes.map((s) => ({ valor: s, rotulo: s })), { msg: cmd.motivo });
-      if (!escolha) return;
-      cmd = interpretarComando(escolha);
-    }
     const permissao = permissaoComando(cmd.verbo.id, c);
     if (permissao !== true) return uiErro('Não deu: ' + permissao);
     // "MOVER" TEM TRÊS JEITOS DE NÃO DAR, e `porNoMapa` cala mudo nos dois
     // primeiros (`grid.astro`, os dois `return` sem `uiErro` logo no início da
     // função) porque quem a chama pelo arrasto já tem o sinal visual (a peça
-    // não solta). A barra não tem esse sinal, então checa ANTES de chamar, em
-    // vez de mexer em `porNoMapa` (que o arrasto também usa, fora de escopo).
+    // não solta). Nem a barra nem a voz têm esse sinal, então checa ANTES de
+    // chamar, em vez de mexer em `porNoMapa` (que o arrasto também usa, fora
+    // de escopo).
     if (cmd.hex) {
       if (!dentro(cmd.hex, ARENA.cols, ARENA.rows)) {
         return uiErro(`Não deu: "${cmd.hex.nome}" está fora do tabuleiro (${ARENA.cols}×${ARENA.rows}).`);
@@ -8596,6 +8608,22 @@ const SETAS = [
     await despacharComando(cid, cmd);
   }
 
+  /**
+   * Interpreta TEXTO e executa. NUNCA aproxima (VOZ.md §4): texto que não
+   * casa vira a pergunta "não entendi, foi um destes?", nunca um palpite
+   * silencioso.
+   */
+  async function executarComando(cid: string, texto: string) {
+    let cmd = interpretarComando(texto);
+    while (!cmd.ok) {
+      const escolha = await uiEscolher(`Não entendi "${cmd.ouvido}"`,
+        cmd.sugestoes.map((s) => ({ valor: s, rotulo: s })), { msg: cmd.motivo });
+      if (!escolha) return;
+      cmd = interpretarComando(escolha);
+    }
+    await prosseguirComComando(cid, cmd);
+  }
+
   async function abrirComando() {
     const v = daVez();
     if (!v) return;
@@ -8604,6 +8632,127 @@ const SETAS = [
     ], { ok: 'Executar', msg: 'mover H7 · tirar · encerrar · auto · esperar' });
     if (!r || !r.texto?.trim()) return;
     await executarComando(v.id, r.texto);
+  }
+
+  // ============================================= segurar para falar (voz)
+  /**
+   * VOZ.md §8 item 3: NÃO É CAMINHO NOVO. É outra forma de encher o mesmo
+   * campo que a barra digitada enche — o mesmo `interpretarComando`, o
+   * mesmo `prosseguirComComando`, o mesmo desfazer. Este bloco só resolve
+   * "como o texto chega", com uma diferença que a barra não tem: a
+   * gramática falada NUNCA inclui casa (VOZ.md §2 — "o clique resolve...
+   * posição, que é onde o toque é preciso e a fala é ambígua"), então
+   * "mover" falado chega sem hexágono, e o hexágono chega por clique no
+   * tabuleiro — em qualquer ordem.
+   *
+   * `COMANDO_ARMADO` é a janela dessa espera, e só ela: começa quando o
+   * mestre aperta o microfone (antes mesmo de ouvir qualquer coisa, para o
+   * clique poder vir ANTES da palavra) e termina quando o comando completa
+   * ou quando a voz não reconhece nada. Fora dessa janela, um clique no
+   * tabuleiro não faz nada por causa disto — o listener abaixo devolve na
+   * hora se `COMANDO_ARMADO` for nulo.
+   */
+  let COMANDO_ARMADO: { cid: string; verbo?: any; hex?: { q: number; r: number; nome: string } } | null = null;
+
+  function vozStatus(texto: string) {
+    const el2 = document.getElementById('gr-voz');
+    if (el2) el2.title = texto;
+  }
+
+  /** Clique no tabuleiro enquanto uma fala está armada completa "mover". */
+  function ligarCliqueDeVoz() {
+    el('gr-palco').addEventListener('pointerdown', (ev) => {
+      if (!COMANDO_ARMADO) return;
+      ev.preventDefault(); ev.stopPropagation();
+      const h = hexNaTela(ev.clientX, ev.clientY);
+      if (!h) { uiErro('Essa casa não existe no tabuleiro.'); return; }
+      const armado = COMANDO_ARMADO;
+      const hex = { ...h, nome: nomeHex(h.q, h.r) };
+      if (!armado.verbo) { COMANDO_ARMADO = { ...armado, hex }; vozStatus(`casa ${hex.nome} marcada — fale o comando`); return; }
+      COMANDO_ARMADO = null;
+      vozStatus('Segurar para falar um comando (carrega o modelo no primeiro toque)');
+      void prosseguirComComando(armado.cid, { verbo: armado.verbo, hex });
+    }, true);
+  }
+
+  /** Processa o texto que a voz reconheceu — mesmo parser da barra digitada. */
+  async function receberFalaComando(cid: string, texto: string) {
+    const cmd = interpretarComando(texto);
+    if (cmd.ok) {
+      // Um verbo sem casa nunca vem `ok:true` da voz (a gramática falada não
+      // tem hexágono nenhum, VOZ.md §2) — quando chega aqui já é um dos
+      // quatro verbos sem parâmetro, prontos para despachar direto.
+      COMANDO_ARMADO = null;
+      vozStatus('Segurar para falar um comando (carrega o modelo no primeiro toque)');
+      await prosseguirComComando(cid, cmd);
+      return;
+    }
+    if (cmd.verboParcial) {
+      // "mover" ouvido sem casa: se o clique já tinha marcado uma (ordem
+      // clique-depois-fala), completa agora; senão fica armado esperando.
+      const hexJaMarcado = COMANDO_ARMADO?.hex;
+      if (hexJaMarcado) {
+        COMANDO_ARMADO = null;
+        vozStatus('Segurar para falar um comando (carrega o modelo no primeiro toque)');
+        await prosseguirComComando(cid, { verbo: cmd.verboParcial, hex: hexJaMarcado });
+      } else {
+        COMANDO_ARMADO = { cid, verbo: cmd.verboParcial };
+        vozStatus(`"${cmd.verboParcial.id}" ouvido — clique a casa no tabuleiro`);
+      }
+      return;
+    }
+    COMANDO_ARMADO = null;
+    vozStatus('Segurar para falar um comando (carrega o modelo no primeiro toque)');
+    const escolha = await uiEscolher(`Não entendi "${cmd.ouvido}" (por voz)`,
+      cmd.sugestoes.map((s) => ({ valor: s, rotulo: s })), { msg: cmd.motivo });
+    if (!escolha) return;
+    // a sugestão já vem com a casa quando o verbo precisa ("mover H7"), então
+    // o caminho de TEXTO cuida dela sozinho — não é a voz de novo.
+    await executarComando(cid, escolha);
+  }
+
+  let VOZ_GRAVANDO = false;
+  async function segurarVoz() {
+    const v = daVez();
+    if (!v || VOZ_GRAVANDO) return;
+    if (!vozCarregada()) {
+      vozStatus('carregando o modelo de voz (31 MB)…');
+      const r = await carregarVoz(caminhosPadrao(import.meta.env.BASE_URL));
+      if (!r.ok) { vozStatus('Segurar para falar um comando (carrega o modelo no primeiro toque)'); uiErro(r.erro); return; }
+      prepararReconhecedor(gramaticaDeVoz(), (parcial) => { if (parcial) vozStatus('ouvindo: ' + parcial); },
+        (resultado) => {
+          // O `cid` é o da peça QUANDO O MICROFONE FOI APERTADO
+          // (`COMANDO_ARMADO.cid`, gravado em `segurarVoz`), não `daVez()` de
+          // novo aqui: entre apertar e o resultado chegar a vez pode ter
+          // mudado, e quem falou mandou na peça que estava na vez quando
+          // começou a falar.
+          const cid = COMANDO_ARMADO?.cid;
+          if (cid && resultado.texto) void receberFalaComando(cid, resultado.texto);
+          else if (cid) vozStatus('não ouvi nada — segure e fale de novo');
+        });
+      vozStatus('modelo carregado — segure e fale');
+      return; // o toque que carregou não grava: solta a mão, segura de novo
+    }
+    COMANDO_ARMADO = COMANDO_ARMADO ?? { cid: v.id };
+    VOZ_GRAVANDO = true;
+    vozStatus('ouvindo…');
+    try { await comecarAFalarVoz(); }
+    catch (e: any) { VOZ_GRAVANDO = false; vozStatus('Segurar para falar um comando'); uiErro('Erro no microfone: ' + (e?.message || e)); }
+  }
+  function soltarVoz() {
+    if (!VOZ_GRAVANDO) return;
+    VOZ_GRAVANDO = false;
+    pararDeFalarVoz();
+    vozStatus('reconhecendo…');
+  }
+
+  function ligarBotaoDeVoz() {
+    const btn = el('gr-voz');
+    btn.addEventListener('mousedown', segurarVoz);
+    btn.addEventListener('mouseup', soltarVoz);
+    btn.addEventListener('mouseleave', () => { if (VOZ_GRAVANDO) soltarVoz(); });
+    btn.addEventListener('touchstart', (e) => { e.preventDefault(); segurarVoz(); });
+    btn.addEventListener('touchend', (e) => { e.preventDefault(); soltarVoz(); });
   }
 
   /**

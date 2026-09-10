@@ -43,3 +43,7 @@ Thumbs.db
 
 # o modelo do Vosk (voz-bench.html): 31 MB, nao versionado, cada maquina baixa o seu
 voz-bench-modelo/
+
+# o modelo do Vosk para o Grid (VOZ.md §8 item 3): mesmo motivo, caminho padrao
+# diferente porque o Astro so serve o que esta em public/
+public/voz-modelo/
