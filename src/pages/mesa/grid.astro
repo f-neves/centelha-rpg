@@ -8533,6 +8533,23 @@ const SETAS = [
     }
     const permissao = permissaoComando(cmd.verbo.id, c);
     if (permissao !== true) return uiErro('Não deu: ' + permissao);
+    // "MOVER" TEM TRÊS JEITOS DE NÃO DAR, e `porNoMapa` cala mudo nos dois
+    // primeiros (`grid.astro`, os dois `return` sem `uiErro` logo no início da
+    // função) porque quem a chama pelo arrasto já tem o sinal visual (a peça
+    // não solta). A barra não tem esse sinal, então checa ANTES de chamar, em
+    // vez de mexer em `porNoMapa` (que o arrasto também usa, fora de escopo).
+    if (cmd.hex) {
+      if (!dentro(cmd.hex, ARENA.cols, ARENA.rows)) {
+        return uiErro(`Não deu: "${cmd.hex.nome}" está fora do tabuleiro (${ARENA.cols}×${ARENA.rows}).`);
+      }
+      const de = TOKENS[cid];
+      if (de && de.q === cmd.hex.q && de.r === cmd.hex.r) {
+        return uiErro(`Não deu: ${c.nome} já está em ${cmd.hex.nome}.`);
+      }
+      if (ocupadoPor(cmd.hex.q, cmd.hex.r, cid)) {
+        return uiErro(`Não deu: ${cmd.hex.nome} já está ocupada.`);
+      }
+    }
     // A REGRA DO VOZ.md §4: verbo com desfazer executa direto; sem, confirma.
     if (!cmd.verbo.desfaz) {
       const ok = await uiConfirmar(`${cmd.verbo.exemplo} · ${c.nome}`, { ok: 'Confirmar' });
