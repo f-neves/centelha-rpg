@@ -233,38 +233,66 @@ As duas se resolvem com o humano usando o Grid e anotando, e nenhuma se resolve 
 
 ---
 
-## 7 · O que o Arquiteto NÃO faz nesta frente
+## 7 · O que está autorizado agora, e o que ainda não
 
-**A frente abriu em 10/09/2026.** A proibição de construir foi suspensa por mensagem do humano,
-só para dois itens nomeados: o levantamento do §3 (leitura de código, com relato e parada) e a
-página de medição do Vosk do §4 (bancada estática, fora do site). Nada além desses dois está
-autorizado. Enquanto este documento estiver assim:
+**Reescrito em 10/09/2026, a versão anterior apagada, não deixada como superada.** O levantamento
+do §3 respondeu à pergunta que travava a construção: cinco das treze funções já são chamáveis
+direto, sem diálogo, sem DOM. O barramento de execução não é pré-requisito, e a construção real
+começa, na ordem do §8.
 
-- ~~não construir página de teste, não instalar `vosk-browser`, não baixar modelo~~ · suspenso
-  em 10/09/2026, só para a bancada de medição, não para nada além dela;
-- não enfileirar item de voz além dos dois autorizados, não abrir lote de interpretação/execução,
-  não propor o próximo passo desta frente além do que o humano já ordenou;
-- **não construir barramento de execução, não escrever parser de comando, não tocar no Grid** ·
-  isto continua de pé mesmo com a suspensão acima, e é o item mais caro da frente;
-- não reabrir escolha de motor nem as decisões do §4 (que aqui é a seção de decisões fechadas,
-  não o §4 do pedido de 10/09 sobre a bancada);
-- não tratar isto como fase 2.5, não entrar na numeração de fases.
+Autorizado agora, um item de cada vez, a Revisora fechando cada um antes do próximo:
 
-Resultado de teste chega pelo humano. Enquanto a comparação de caminhos e o vocabulário real não
-existirem, qualquer desenho de erro, recuperação ou confirmação é desenho sobre número que não
-existe.
+- **item 1, a barra de comando**: campo de texto no Grid, sem microfone, chamando as cinco funções
+  já diretas, gramática fixa num arquivo de dados;
+- **item 2, o crescimento do desfazer**, só depois do item 1 utilizável e usado pelo humano numa
+  batalha de verdade;
+- **item 3, a captura de áudio sobre a barra**, só depois dos dois anteriores fechados.
+
+O que continua de pé:
+
+- **não tocar nem refatorar as oito funções que não são chamáveis direto** (`curar`, `tirarVida`,
+  `ajustarMana`, `editarIniciativa`, `alternarAlcance`, `abrirCondicoes`, `abortarGesto`,
+  `agirForaDeHora`) — fora deste pacote, espera autorização própria;
+- **não pular a ordem**: o item 2 espera o humano ter usado a barra na batalha, o item 3 espera os
+  dois primeiros fechados;
+- **a captura de áudio (item 3) não depende do resultado da bancada do §4** — se a taxa de falso
+  positivo for ruim, só ela cai, a barra/parser/desfazer continuam de pé;
+- não reabrir escolha de motor nem as decisões fechadas do §4 (a seção de decisões, não o item 3
+  daqui);
+- não tratar isto como fase 2.5, não entrar na numeração de fases;
+- dúvida de regra de jogo (qual verbo faz o quê, qual confirma por natureza) escala ao humano numa
+  lista só, não decidida item a item.
 
 ---
 
-## 8 · A ordem, quando destravar
+## 8 · A ordem, corrigida em 10/09/2026, a versão anterior apagada
 
-1. as duas medições do humano: vocabulário real e comparação de caminhos;
-2. o teste do Vosk, com a gramática já corrigida pelo vocabulário real;
-3. o desenho de erro, recuperação e desfazer, sobre os números;
-4. e por último a construção, que é a parte menor: três das cinco camadas do sistema (interpretação,
-   execução e desfazer) não são sobre voz, são úteis com teclado e botão, e devem nascer assim.
+A ordem antiga esperava duas medições do humano e um teste do Vosk antes de qualquer construção, e
+deixava a construção por último. As duas coisas caíram: o levantamento do §3 já respondeu o que a
+medição de caminhos ia responder (cinco das treze funções são chamáveis direto hoje), e a barra do
+item 1 é ela mesma o instrumento que substitui a medição de vocabulário e de caminhos, não uma
+etapa que espera por elas.
 
-A camada de execução merece atenção própria: hoje cada ação tem caminho próprio dentro de um
-diálogo. Se não existir ponto único por onde toda ação passa antes de acontecer, criá-lo é o item
-mais caro do plano, e ele é devido de qualquer jeito pela auditoria de cobertura e pelo portão que
-compara harness e mesa.
+1. **A barra de comando** (item 1 do pedido de 10/09): campo de texto simples no Grid, aberto por
+   atalho de teclado com a peça selecionada, lido no envio (não controlado, para não brigar com
+   ditado do sistema nem correção automática). Interpreta contra gramática fixa num arquivo de
+   dados só, determinística, sem modelo de linguagem. Executa chamando `porNoMapa`, `tirarDoMapa`,
+   `encerrarVez`, `alternarAuto`, `esperarUmTick` — as cinco já chamáveis direto. Recusa o que não
+   casa, mostra o ouvido mais as frases válidas próximas para escolher com um toque, nunca aproxima
+   em silêncio. Aplica a regra do §4: verbo com desfazer executa direto (`porNoMapa`,
+   `tirarDoMapa`), verbo sem desfazer confirma (`encerrarVez`, `alternarAuto`, `esperarUmTick`). É
+   a régua contra a qual a voz se mede depois: se o comando escrito não encolher gesto, o falado
+   também não vai. O humano usa na batalha antes do item 2 começar, e o vocabulário real que sair
+   disso corrige a gramática antes de qualquer construção em cima dela.
+2. **O desfazer cresce** (item 2), começando pelos três verbos que a barra já usa e hoje confirmam:
+   `encerrarVez`, `alternarAuto`, `esperarUmTick`. Revisado antes de seguir. O que não for
+   reversível por natureza fica confirmando para sempre — não inventar reversão que o motor não faz.
+3. **A captura de áudio sobre a barra** (item 3), só depois dos dois anteriores fechados: botão de
+   segurar para falar, preenchendo o mesmo campo, com o mesmo parser e a mesma execução — não é
+   caminho novo, é outra forma de encher o mesmo campo. Motor Vosk,
+   `vosk-model-small-pt-0.3`, carregamento sob demanda no primeiro toque do microfone, caminho de
+   modelo/worker/WASM configurável. Não depende do resultado da bancada do §4: se a taxa de falso
+   positivo for ruim, cai só a captura, e a barra/parser/desfazer continuam de pé.
+
+As oito funções que ainda leem DOM ou dependem de diálogo com callback ficam de fora dos três
+itens acima, e não são refatoradas por causa deste pacote.
