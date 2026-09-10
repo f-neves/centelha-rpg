@@ -53,6 +53,35 @@ const REV = path.resolve(RAIZ, '..', 'centelha-techlead-revisora');
 const git = (c, cwd = RAIZ) => execSync(c, { cwd, encoding: 'utf8' }).trim();
 const tenta = (f, p = null) => { try { return f(); } catch { return p; } };
 const morrer = (m) => { console.error(`\n✘ ${m}\n`); process.exit(1); };
+const ehAncestral = (a, b) => tenta(() => { git(`git merge-base --is-ancestor ${a} ${b}`); return true; }, false);
+
+/**
+ * O TOPO, por ANCESTRALIDADE, e não por diferença.
+ *
+ * O defeito original (`origemMain === sha ? sha : origemMain`) tratava toda
+ * diferença como "origin foi na frente" — e quando `origin/main` está PARADO
+ * (ninguém empurrou, só se acumulou commit local), `origemMain` é um
+ * ANCESTRAL do HEAD real, não um topo mais novo: o aviso herdava um TOPO
+ * velho, e `git log SHA..TOPO` saía vazio prometendo "nada de fora entrou"
+ * quando o oposto podia ser verdade. Achado na revisão da rodada 27
+ * (`Pendencias.md` L61, item 2).
+ *
+ * As quatro leituras possíveis de `origemMain` contra `sha`:
+ *   sem origin, ou iguais         → TOPO = SHA (nada para comparar)
+ *   sha É ANCESTRAL de origemMain → origin empurrou depois: TOPO = origemMain
+ *   origemMain É ANCESTRAL de sha → origin ficou para trás: TOPO = SHA (o caso do bug)
+ *   nenhum é ancestral do outro   → histórico foi reescrito nalgum lado; TOPO cai
+ *                                    em SHA por segurança, com aviso alto — não dá
+ *                                    para saber "o que é de fora" sem olhar à mão
+ */
+function calcularTopo(sha) {
+  tenta(() => git('git fetch --quiet'));
+  const origemMain = tenta(() => git('git rev-parse origin/main'));
+  if (!origemMain || origemMain === sha) return { topo: sha, origemMain, divergiu: false };
+  if (ehAncestral(sha, origemMain)) return { topo: origemMain, origemMain, divergiu: false };
+  if (ehAncestral(origemMain, sha)) return { topo: sha, origemMain, divergiu: false };
+  return { topo: sha, origemMain, divergiu: true };
+}
 
 /** Os NN de um papel que já existem na caixa. */
 const nnsDe = (papel) => fs.readdirSync(CAIXA)
@@ -82,7 +111,7 @@ if (ENVIAR) {
   const nn = avisos().pop();
   if (!nn) morrer('não há aviso nenhum na caixa. Rode `npm run rodada` primeiro.');
   const arq = path.join(CAIXA, `${nn}-executora.md`);
-  const txt = fs.readFileSync(arq, 'utf8');
+  let txt = fs.readFileSync(arq, 'utf8');
   // O AVISO NÃO PODE SAIR COM O MODELO DENTRO. Um aviso por preencher é pior que
   // aviso nenhum: a revisora dá checkout, lê a tabela de exemplo e revisa um
   // commit sem saber o que ele afirma.
@@ -102,11 +131,37 @@ if (ENVIAR) {
     console.error(fora.join('\n'));
     morrer('commite o resto primeiro. O aviso é o ÚLTIMO commit da rodada.');
   }
+
+  // SHA E TOPO RELIDOS AGORA, NÃO OS QUE O `abrir` ESCREVEU. Entre abrir e
+  // enviar a árvore pode andar — a rodada 28 emendou o commit de trabalho no
+  // meio do caminho (`Pendencias.md` L61, item 2 · sugestão da Revisora) — e um
+  // SHA congelado cedo demais aponta para um commit que já não existe mais,
+  // mesmo com a árvore idêntica. `HEAD` aqui É o sha de trabalho: o aviso ainda
+  // não foi commitado, então o topo do branch é exatamente o commit que se está
+  // avisando.
+  const shaFresco = git('git rev-parse HEAD');
+  const { topo: topoFresco, origemMain, divergiu } = calcularTopo(shaFresco);
+  if (divergiu) {
+    console.log(`\n⚑ origin/main (${(origemMain || '').slice(0, 7)}) e este commit (${shaFresco.slice(0, 7)})`
+      + ' DIVERGIRAM — nem um é ancestral do outro. TOPO ficou em SHA por segurança;'
+      + ' confira à mão antes de mandar a Revisora.');
+  } else if (topoFresco !== shaFresco) {
+    console.log(`\n⚑ origin/main (${origemMain.slice(0, 7)}) está à frente deste commit `
+      + `(${shaFresco.slice(0, 7)}): git log ${shaFresco.slice(0, 7)}..${origemMain.slice(0, 7)} diz o quê e de quem.`);
+  }
+  const txtAntes = txt;
+  txt = txt.replace(/^SHA {3}.+$/m, `SHA   ${shaFresco}`).replace(/^TOPO {2}.+$/m, `TOPO  ${topoFresco}`);
+  if (txt !== txtAntes) {
+    fs.writeFileSync(arq, txt, 'utf8');
+    console.log(`\n⚑ SHA/TOPO reescritos na hora de enviar (eram de quando a rodada abriu, `
+      + 'podem ter ficado velhos entretanto).');
+  }
+
   git(`git add "${rel}"`);
   git(`git commit -q -m "rodada ${nn} · aviso à revisora" -- "${rel}"`);
   const shaDoAviso = git('git rev-parse HEAD');
   console.log(`\n✓ rodada ${nn} enviada · os quatro campos:`);
-  console.log(`\n  sha de trabalho (SHA): ${git('git rev-parse HEAD~1')}`);
+  console.log(`\n  sha de trabalho (SHA): ${shaFresco}`);
   console.log(`  sha do aviso:          ${shaDoAviso}   ← é ESTE que a revisora checa out`);
   console.log('\n  (os dois têm a MESMA árvore de código: o commit do aviso só');
   console.log(`   acrescenta ${rel})`);
@@ -136,13 +191,15 @@ const sha = git('git rev-parse HEAD');
 const base = tenta(() => git('git rev-parse HEAD', REV));
 if (!base) console.log(`\n⚑ sem worktree da revisora em ${path.relative(RAIZ, REV)}: preencha BASE à mão.`);
 
-// TOPO: compara o HEAD local com `origin/main`, depois de buscar. Iguais, o
-// TOPO é o próprio SHA (o trecho é o main inteiro desde a BASE); diferentes,
-// alguém empurrou depois deste commit, e o TOPO aponta pra lá.
-tenta(() => git('git fetch --quiet'));
-const origemMain = tenta(() => git('git rev-parse origin/main'));
-const topo = !origemMain || origemMain === sha ? sha : origemMain;
-if (topo !== sha) {
+// TOPO: por ancestralidade (`calcularTopo`, acima). Só informativo aqui — o
+// valor que vale de verdade é o que o `--enviar` relê na hora de commitar,
+// porque a árvore pode andar entre abrir e enviar.
+const { topo, origemMain, divergiu } = calcularTopo(sha);
+if (divergiu) {
+  console.log(`\n⚑ origin/main (${(origemMain || '').slice(0, 7)}) e este commit (${sha.slice(0, 7)})`
+    + ' DIVERGIRAM — nem um é ancestral do outro, histórico foi reescrito nalgum lado.'
+    + ' TOPO ficou em SHA por segurança; confira à mão antes de avisar a Revisora.');
+} else if (topo !== sha) {
   console.log(`\n⚑ origin/main (${origemMain.slice(0, 7)}) está à frente deste commit (${sha.slice(0, 7)}):`);
   console.log(`   git log ${sha.slice(0, 7)}..${origemMain.slice(0, 7)}   diz o quê e de quem.`);
 }
