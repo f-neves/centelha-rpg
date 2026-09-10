@@ -4049,6 +4049,39 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   → `L70` (a invariante que mora no chamador), → `L66` (a mesma família de silêncio), → `L69` (quem
   não segue caminho de borda).
 
+- [ ] **L71 · [ESCALADO pela Revisora na rodada 33, em 10/09/2026, com prova ao vivo · não
+  corrigido] O carregamento do modelo de voz não tem prazo, e um modelo PRESENTE mas corrompido
+  trava para sempre, sem mensagem nenhuma.**
+
+  **O que foi consertado na rodada 33 e continua certo:** o Worker vendorizado do Vosk **nunca
+  rejeita** quando o `fetch` do modelo dá 404 · ele fica lendo um stream indefinido e solta
+  `pageerror` de dentro de si mesmo, onde nenhum `try/catch` do chamador alcança. A Executora
+  achou isso testando a degradação, e consertou com um `HEAD` no modelo antes de entregar ao
+  Worker. Para o caso que visou, funciona: a mensagem aparece em 504 ms, sem `pageerror`.
+
+  **O buraco, e a Revisora o achou testando em vez de ler.** Ela montou um `model.tar.gz`
+  **presente e corrompido** (2 KB de lixo, e não um 404), de modo que o `HEAD` responde `200 OK` e
+  deixa passar. Segurando o microfone: **trava em "carregando o modelo de voz (31 MB)…" por 20
+  segundos, sem `pageerror` e sem mensagem nenhuma.** É o defeito original inteiro, escondido atrás
+  de um conserto que só cobre a fatia "modelo ausente".
+
+  **Por que isto é ESCALA e não CORRIGE:** o conserto entregue faz o que se propôs, e o caso novo é
+  outro. Mas o requisito que ele existia para cumprir era **degradar sem quebrar**, e por esse
+  requisito o trabalho não está feito · a rede caindo no meio dos 31 MB tem a mesma forma e
+  provavelmente o mesmo desfecho, ainda não medido.
+
+  **A forma, e ela já está no `CATALOGO`:** o `HEAD` é uma checagem que responde sobre a
+  EXISTÊNCIA e é lida como se respondesse sobre a UTILIDADE. Parente de "a garantia correta sobre o
+  eixo errado" · verdadeira sobre a dimensão que mede, e a dimensão não é a que importa.
+
+  **As duas saídas, sem escolha feita:** (a) um prazo no carregamento, que devolve a mão ao usuário
+  com mensagem e é o conserto mínimo, e não distingue "corrompido" de "rede lenta"; (b) trocar o
+  Worker por um que rejeite de verdade, que resolve a classe inteira e é trabalho de outra ordem,
+  porque o Worker é vendorizado de terceiro. **A (a) não impede a (b)** e é pequena.
+
+  **Travar para sempre é a pior degradação que existe**, porque não diz nada e não se recupera · o
+  mestre no meio de uma mesa não tem como saber se espera ou desiste. → `VOZ.md` §8 item 3.
+
 - [ ] **L70 · [REGISTRADO em 10/09/2026, ligado ao `L67`, NÃO ABERTO] A gravação de posição não
   passa pela checagem de ocupação, e a invariante mora nos chamadores em vez de morar na escrita.**
 

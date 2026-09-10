@@ -339,5 +339,33 @@ etapa que espera por elas.
    modelo/worker/WASM configurável. Não depende do resultado da bancada do §4: se a taxa de falso
    positivo for ruim, cai só a captura, e a barra/parser/desfazer continuam de pé.
 
+   **FECHADO em 10/09/2026, rodada 33, veredito SEGUE** (`caixa/33-revisora.md`, sha `87c4f19`,
+   conferido ancestral de `origin/main` antes de registrar). Trabalho em `9c47268`.
+
+   **A restrição de projeto foi conferida e cumprida:** a fala entra pelo mesmo `interpretarComando`
+   e pela mesma execução. Não nasceu caminho paralelo.
+
+   **A gramática saiu de um lugar só**, com **19 palavras**, sem hexágono, sem letra, sem número, e
+   sem derivar do tamanho do tabuleiro · conferido por leitura completa. É a decisão do §2 aplicada:
+   o toque diz quem e ONDE, a voz diz o quê. As duas saídas que a Executora tinha levantado (gerar
+   as casas do tabuleiro como frases, ou soletrar letra e dígitos) foram recusadas por contradizerem
+   essa decisão, e não por serem difíceis.
+
+   **Um defeito consertado que não estava no pedido** (`D33a`): o Worker vendorizado **nunca rejeita**
+   quando o `fetch` do modelo dá 404 · fica lendo um stream indefinido e solta `pageerror` de dentro
+   de si, onde nenhum `try/catch` do chamador alcança. O botão travava para sempre em vez de mostrar
+   erro. Conserto: um `HEAD` no modelo antes de entregar ao Worker.
+
+   **E a moldura desse conserto tem buraco, achado pela Revisora e ESCALADO, não corrigido.** →
+   `Pendencias.md` `L71`.
+
+   **O que NÃO foi provado ao vivo, e fica escrito porque leitura não é execução:** os dois fluxos de
+   ordem do `mover` falado (falar e clicar, clicar e falar) e o cancelamento por `Esc` de um comando
+   armado. O motivo é estrutural e não falta de tentativa · o estado do comando armado só é escrito
+   com o modelo carregado ou pelo retorno real do reconhecedor, e não há gancho de teste exposto nem
+   dublê na bancada. O que existe no lugar é leitura completa dos dois ramos, que se espelham por
+   construção · **confiança de leitura, não prova de execução**, e a diferença fica registrada aqui
+   em vez de sumir.
+
 As oito funções que ainda leem DOM ou dependem de diálogo com callback ficam de fora dos três
 itens acima, e não são refatoradas por causa deste pacote.
