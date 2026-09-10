@@ -209,6 +209,20 @@ além da `BASE` daquele commit quando o Arquiteto foi empurrar. O conteúdo é o
 no próximo aviso (`git fetch` vai mostrar os dois shas); o sha certo para reancorar é sempre o do
 próximo aviso novo, nunca `168df15` nem `78c4850` por conta própria.
 
+**Segunda nota, mais grave, também 10/09/2026:** o veredito da rodada 28 (`efd8238`, commitado
+pela Revisora) NÃO recebeu o mesmo tratamento. O Arquiteto registrou o fechamento de L50 em
+Pendencias.md a partir da MENSAGEM DE CHAT da Revisora, sem verificar que o commit dela tinha
+entrado no `main` — e não tinha: `efd8238` ficou órfão, irmão de `2ae91da`, os dois nascendo de
+`80fde44` sem um passar pelo outro. Achada pela própria Revisora ao notar que `28-revisora.md`
+sumiu do disco depois do checkout da rodada 29. Recuperado por `cherry-pick` (`8f03ba5`), a tempo
+de um `git gc` não limpar o objeto órfão.
+
+**Regra daqui pra frente:** depois de qualquer veredito da Revisora, antes de registrar
+fechamento em Pendencias.md, conferir com `git merge-base --is-ancestor <sha-do-veredito> HEAD`
+(ou `git log --oneline --graph` em volta do commit) que o commit dela está de fato na história do
+`main`, e não só relatado por mensagem. Prosa no chat não é prova de que o arquivo chegou ao
+repositório; só o `git` é.
+
 ### O prompt de abertura do Arquiteto
 
 ```
