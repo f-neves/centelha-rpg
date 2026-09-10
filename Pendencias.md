@@ -3686,6 +3686,34 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   conferir se todo achado de `Auditoria_Tecnica.md` §8.2 em diante tem linha correspondente aqui
   (só o das fraquezas foi conferido, achado como B12). Registrado sem julgar mérito nem prioridade.
 
+- [x] **L61 · [FECHADO em 10/09/2026, achados da revisão do aviso 27] Quatro achados menores da
+  Revisora sobre `docs/simulacao/caixa/27-executora.md`, nenhum bloqueando o veredito (SEGUE).**
+
+  1. **Citação de linha errada, não corrigida no arquivo original (histórico congelado):** o aviso
+     cita `scripts/test-grid.mjs:533-545`/`:542` para a cena `cenaLembranca`; a função real está em
+     `:3481-3545`, a asserção `(3,1)` em `:3524`. A afirmação em si é verdadeira (a Revisora rodou e
+     confirmou); só a procedência escrita erra. Correção mora no veredito (`27-revisora.md`), não em
+     reescrever `27-executora.md`.
+  2. **Bug real em `scripts/rodada.mjs:144`, classe nova, não a mesma do `4058b4c` (rodada 19):**
+     o campo TOPO compara `origin/main` contra o SHA local e, se diferentes, assume que alguém
+     empurrou DEPOIS (`topo = origemMain`). A conta não cobre o caso desta sessão: `origin/main`
+     ficou parado em `f8f72d0` enquanto sete commits só locais se acumulavam, então `origemMain` é
+     um ANCESTRAL do HEAD real, não um topo mais novo. O aviso 27 herdou `f8f72d0` como TOPO, e quem
+     confiasse só nesse campo (`git log SHA..TOPO`) veria vazio e concluiria "nada de outra frente
+     entrou" — o oposto do que os 28 commits de backlog (registrados na entrada anterior deste
+     arquivo, ver a nota do `L52` de 10/09) diziam. Não corrigido nesta entrada: registro de tamanho.
+  3. Inventário "O QUE MUDOU" do aviso ficou dois arquivos curto do diff real (faltavam os dois
+     arquivos da caixa da própria rodada 26). Menor, não corrigido.
+  4. A asserção `(3,1)` do mock (`scripts/mesa-mock.mjs:156`/`391`) é mais fraca do que o texto
+     sugere pelo lado do movimento — confirmado pela Revisora, não reforçado porque a migração 33
+     não rodou (feature inerte em produção) e reforçar exigiria escopo de mock novo. Registro para
+     quando a 33 rodar, não antes.
+
+  Observação de robustez do harness, fora de escopo: ao falsificar a marcação `lembranca`, o script
+  crashou com excepção não tratada (`test-grid.mjs:3541`, `null.getBoundingClientRect`) em vez de só
+  reportar mais um `✘` e seguir. Não invalida a prova (as três asserções relevantes já tinham
+  falhado pelo motivo certo antes do crash).
+
 ## H. Arremesso
 
 Frente aberta em **2026-08-10** e até agora sem linha neste mapa. Três documentos:
