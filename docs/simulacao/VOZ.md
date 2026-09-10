@@ -247,8 +247,9 @@ Autorizado agora, um item de cada vez, a Revisora fechando cada um antes do pró
 - **item 1, a barra de comando**: campo de texto no Grid, sem microfone, chamando as cinco funções
   já diretas, gramática fixa num arquivo de dados;
 - **item 2, o crescimento do desfazer**, só depois do item 1 utilizável e usado pelo humano numa
-  batalha de verdade;
-- **item 3, a captura de áudio sobre a barra**, só depois dos dois anteriores fechados.
+  batalha de verdade · **FECHADO em 10/09/2026, rodada 32, veredito SEGUE**, detalhe no §8;
+- **item 3, a captura de áudio sobre a barra**, só depois dos dois anteriores fechados ·
+  **AUTORIZADO em 10/09/2026, e é a frente agora**, com os dois anteriores fechados por veredito.
 
 O que continua de pé:
 
@@ -295,6 +296,42 @@ etapa que espera por elas.
 2. **O desfazer cresce** (item 2), começando pelos três verbos que a barra já usa e hoje confirmam:
    `encerrarVez`, `alternarAuto`, `esperarUmTick`. Revisado antes de seguir. O que não for
    reversível por natureza fica confirmando para sempre — não inventar reversão que o motor não faz.
+
+   **FECHADO em 10/09/2026, rodada 32, veredito SEGUE** (`caixa/32-revisora.md`, sha `6616f7c`,
+   conferido ancestral de `origin/main` antes de registrar). Trabalho em `8f3ea63`.
+
+   **Dois dos três ganharam desfazer, e o terceiro ganhou o porquê de não ganhar.**
+
+   - **`alternarAuto` e `esperarUmTick` executam direto**, e as duas metades do trabalho foram
+     feitas: o ramo novo no `desfazer()` **e** o `desfaz: true` no `comando-barra.json`, que é o
+     que faz a barra parar de confirmar. Fazer só a primeira seria construir o desfazer e não
+     colher o resultado dele;
+   - **`esperarUmTick` guarda o `acao` anterior INTEIRO mais o tick**, e não um escalar, porque a
+     gravação do relógio sobrescreve o objeto todo. Guardar só um dos dois devolveria a ação e
+     deixaria o relógio adiantado;
+   - **`encerrarVez` confirma para sempre, por decisão registrada** (`D32a`), com o porquê no
+     comentário da própria função e não só no aviso da rodada. O argumento: reverter o tick não
+     desfaz a condição que expirou nem a Arte que mordeu; cada uma escreveu o próprio log sem
+     vínculo com o gesto que a disparou; e desfazer só o tick deixaria uma peça que o relógio diz
+     não ter agido, com os efeitos já resolvidos. **Pior do que não ter desfazer.**
+
+   **A Revisora julgou o argumento e não só o resultado**, que era o pedido: leu o relógio e a
+   verificação de efeitos por conta própria, e considerou e **rejeitou** uma alternativa que a
+   Executora não tinha levantado · oferecer desfazer condicionalmente, só quando não houvesse
+   efeito ativo. Rejeitou porque contradiz o desenho do §4 · **desfazer é propriedade do VERBO, e
+   não da ocasião.** Um verbo que às vezes desfaz e às vezes não seria pior de aprender do que um
+   que nunca desfaz.
+
+   **A lacuna confessada foi fechada dentro da própria rodada.** A Executora não conseguiu, em seis
+   tentativas, fazer a vez cair numa criatura, e testou `auto` pelo menu em vez de pela barra ·
+   registrou como `D32b`, com o custo. A Revisora montou a cena que faltava: o segredo não é
+   avançar o Tick, é **declarar uma ação de verdade para quem está na vez**, e na volta seguinte a
+   vez cai na criatura. Testou `auto` **pela barra**, sem confirmação, com o desfazer tirando a
+   linha. Não sobrou escolha entre duas respostas defensáveis.
+
+   **O que continua aberto e é de propósito:** o teste ficou em bancada avulsa e não entrou no
+   `test-grid.mjs` (`D32c`). É o `Pendencias.md` `L62` item 1, que o humano deixou fora de escopo
+   quando a barra abriu.
 3. **A captura de áudio sobre a barra** (item 3), só depois dos dois anteriores fechados: botão de
    segurar para falar, preenchendo o mesmo campo, com o mesmo parser e a mesma execução — não é
    caminho novo, é outra forma de encher o mesmo campo. Motor Vosk,
