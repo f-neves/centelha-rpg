@@ -1089,6 +1089,33 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   resolução, com a resolução na ordem inversa; **N6** congela num retrato as penalidades nascidas
   dentro do Tick; **N7 e N8** abrem a máscara da migração 27 (o gesto corporal é público, a pontaria
   não) e põem um rastro no tabuleiro. Os seis primeiros cabem em quatro funções.
+
+  **10/09/2026 · O HUMANO PEDIU ISTO DE VOLTA COMO REGRA DE MESA, sem saber que já estava
+  decidido aqui.** Ele descreveu, depois de uma batalha, uma lista de resolução dentro do Tick, na
+  ordem sugerida pela régua da declaração e com a resolução invertida, com o mestre podendo sair
+  da ordem. Isso é **N4 mais N5**, decididos em 02/09/2026 e especificados em
+  `docs/simulacao/02-projeto-harness.md` §0.46. Nada disso foi implementado: hoje não existe fase
+  de resolução nenhuma, e a única ordem que o Grid tem é a da fila (Tick, iniciativa decrescente,
+  Raciocínio decrescente), com o mestre escolhendo por quem começar.
+
+  **E o pedido dele DISCORDA da régua decidida num ponto, que precisa ser resolvido antes de
+  qualquer implementação:** ele disse que a chave é a velocidade, "quem é mais devagar declara
+  primeiro". A régua decidida diz que a chave é **a iniciativa rolada, crescente**, e só na
+  entrada; passados os Ticks de entrada a chave vira **Raciocínio + Prontidão crescente**, com a
+  iniciativa caindo para último desempate. São coisas diferentes, e a decisão de 02/09 traz o
+  porquê (o acaso decide quem chega primeiro na briga, a perícia decide quem a lê daí em diante) e
+  um exemplo numerado para a implementação conferir contra.
+
+  **A segunda discordância é maior e é sobre o tamanho:** o humano disse que isto "muda todo
+  combate simultâneo que já foi jogado". A análise de 02/09 conclui o contrário · com o retrato de
+  N6 cobrindo também a posição, **a ordem inversa de N5 é puramente narrativa: ela decide o que se
+  conta primeiro e não muda nenhum resultado**. Se isso estiver certo, o que muda o combate é N6, e
+  N5 é a ordem em que a mesa NARRA. As duas leituras não podem estar certas ao mesmo tempo, e qual
+  delas vale decide se este item é grande ou médio.
+
+  **A parte do pedido que NÃO está na régua decidida** e é acréscimo dele: tudo que acontece no
+  Tick do GOLPE acontece junto e não pode mais ser interrompido. Isso é a fronteira do item da
+  conjuração com preparação, e é onde os dois se encostam.
 - [ ] **L2 · [FAZER] As 15 bandeiras de regra**, num bloco novo do `regras.json` lido pela mesa e
   pelo harness (`02` §0.7 e §0.6.1 item 11). São as 8 de regra publicada que o motor não aplica
   (Margem, gate de Perfuração, porte no acerto, Bloqueio com escudo, modo secundário, teto ±6, e as
@@ -3841,6 +3868,58 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   respondido, `teto6` não liga · não por decisão de prioridade, mas porque ligar antes somaria
   no mesmo teto duas grandezas que ninguém confirmou serem duas. → `L25` (as quinze bandeiras).
 
+  ---
+
+  **RESPONDIDO EM 10/09/2026 PELO HUMANO: é a resposta (b), e o referente existe.** O campo é
+  `Condicao.velocidade`, e a sentinela é o `-99` da condição `fora-do-tempo`, que quer dizer **não
+  age**, e não "age muito devagar". A investigação não achou porque procurou um campo com o nome
+  do conceito, e o referente é **um campo comum carregando duas grandezas**. As outras três
+  condições que usam o mesmo campo carregam magnitude de verdade: `acelerado` −2, `retardado` +2,
+  `terreno-dificil` +1. Quatro condições de 55 usam o campo; três são grandeza, uma é sentinela, e
+  nada no formato as distingue.
+
+  **Por que um teto ingênuo era exatamente o defeito de que a frase avisava:** as quatro entram
+  pela mesma soma, em `src/lib/mesa-core.ts:184` · `t.velocidade += c.velocidade`. Um teto de ±6
+  aplicado ali transforma −99 em −6, ou seja, transforma **"não age"** em **"age seis Ticks mais
+  rápido"**. Não é um número errado, é uma grandeza virando outra, e sai sem exceção e sem teste
+  vermelho.
+
+  **O tamanho, medido em 10/09/2026:**
+
+  - **o ponto de soma é um só**, o citado acima;
+  - **o consumidor real também é um só**, e é em
+    `src/pages/mesa/combate.astro:1404` · `const novo = Math.max`
+    . A sentinela
+    funciona hoje **por saturação**: −99 afunda a soma e o `Math.max(0, ...)` a corta em zero. Não
+    há nenhum ramo que teste "isto é sentinela"; o efeito nasce da aritmética;
+  - **o Grid não lê este campo em lugar nenhum.** Nenhuma das somas de condição do
+    `src/pages/mesa/grid.astro` toca `velocidade`. Ou seja, no sistema SIMULTÂNEO, que é o que a
+    mesa joga, a condição "Fora do tempo" **não faz nada com o relógio hoje**. Isso é achado
+    separado e não estava no levantamento anterior;
+  - **um teste congela a ambiguidade em vez de a denunciar**, e ele afirma a sentinela pelo valor:
+    `scripts/test-artes-grid.mjs:366` · `foraDoTempo.velocidade <= -50`
+    . Ele prova a sentinela **pela magnitude dela**, que é
+    precisamente a confusão que o item descreve, escrita como asserção verde.
+
+  **O tamanho é pequeno e o risco não está no código:** separar é acrescentar uma marca própria
+  para "não age" e deixar `velocidade` só com grandeza · um campo novo na condição, o ponto de
+  soma devolvendo as duas coisas separadas, o consumidor lendo a marca antes da conta, e o teste
+  reescrito para afirmar a marca em vez do valor. O que precisa de decisão é o Grid: hoje ele
+  ignora o campo, então "separar" e "passar a aplicar" viram a mesma tarefa se ninguém disser que
+  são duas.
+
+  **`teto6` continua sem ligar**, e agora por um motivo confirmado em vez de suposto: primeiro a
+  separação, com o tamanho acima; o teto depois.
+
+  **O SEGUNDO PREJUÍZO DO MESMO ARQUIVO PERDIDO.** O referente estava escrito no texto que a
+  sessão antiga produziu para virar o `PORQUE.md`, e que **nunca foi commitado**. O primeiro
+  prejuízo foi a citação a um arquivo que nunca existiu, circulando como procedência (registrado
+  no `README.md` da pasta e no `ARQUITETO.md §5.5`). Este é o segundo: um dia inteiro de
+  arqueologia numa frase cujo referente já estava escrito e se perdeu com o arquivo. **Os dois
+  prejuízos vêm do mesmo gesto**, que é produzir texto de decisão e não commitar; e o segundo é
+  pior que o primeiro, porque o primeiro só gastou uma correção e este gastou uma investigação
+  inteira que chegou à conclusão errada.
+
 - [ ] **L65 · [ANOTADO em 10/09/2026, achado de passagem, não corrigido] Dez citações de linha
   em `grid.astro` foram reapontadas TRÊS vezes num só dia, e vão envelhecer de novo no próximo
   commit que tocar o arquivo.**
@@ -3907,11 +3986,25 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **A ressalva honesta sobre a repetição que afrouxa o veto:** o comentário dela diz "ninguém
   pousa NA CASA de ninguém, mas passar e parar apertado pode", e foi escrita para outro caso ·
   um Enorme AO LADO vetando os seis vizinhos de quem encosta nele, prendendo quem não devia estar
-  preso. O mesmo código hoje governa duas situações, e só uma foi pensada.
+  preso. O mesmo código hoje governa duas situações, e só uma foi pensada. **Quem consertar não
+  pode reabrir o caso do Enorme prendendo os vizinhos**, e é por isso que esta ressalva está
+  escrita aqui e não só no comentário do código: ela é a restrição do conserto, não uma
+  observação sobre ele.
+
+  **A DIREÇÃO, escrita em 10/09/2026 pelo humano, e o conserto continua fechado:** o achado maior
+  é a gravação que não passa pela checagem, e **isso é o `L66` em outro lugar · a invariante mora
+  nos chamadores em vez de morar na escrita**. Os dois itens são o mesmo defeito estrutural visto
+  de dois ângulos: em `L66` a função recusa em silêncio e cada chamador inventa o próprio sinal;
+  aqui a função de escrita nem pergunta, e cada chamador é que decidiu se ia perguntar. Quem
+  abrir um dos dois lê o outro antes de escolher onde a regra vai morar.
+
+  A forma foi catalogada em `docs/simulacao/CATALOGO.md`, "o caminho alternativo que trata a
+  recusa certa como falha": não ter conseguido chegar era a regra funcionando, e foi lido como
+  erro a contornar.
 
   **Fica com o humano:** parar na borda muda alcance, área, linha de visão e a checagem de
   ocupação de uma vez só, e a decisão de como consertar é dele. → `L66` (a mesma família de
-  silêncio), → `L69` (quem não segue caminho de borda).
+  silêncio, e agora também a mesma família estrutural), → `L69` (quem não segue caminho de borda).
 
 - [ ] **L68 · [LEVANTADO em 10/09/2026 numa batalha de mesa, PARADO esperando o humano · criar a
   distinção é decisão dele] Arrastar uma peça fora do turno dela passa em silêncio, e a distinção
@@ -3947,6 +4040,14 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **Fica com o humano:** a separação pedida (CORRIGIR POSIÇÃO, que não consome e não vira evento ·
   AGIR FORA DO TURNO, que vira evento com marca) é regra nova, e a régua das Artes é o precedente
   a copiar, não a estender por analogia sem ele dizer.
+
+  **A DIREÇÃO, escrita em 10/09/2026 pelo humano, para quando isto abrir:** o modal do arrasto
+  **não inventa mecanismo nenhum**. AGIR FORA DO TURNO já existe, com custo real e campo próprio,
+  e o que o modal faz é ROTEAR para o que existe · a escolha do mestre vira a chamada que o menu
+  da peça já oferece hoje. CORRIGIR POSIÇÃO é o outro braço, e o precedente dele é a régua das
+  Artes: não cobra, não declara tempo, e o registro diz "corrigiu". **Nenhum dos dois braços é
+  mecanismo novo**, e é isso que faz o item ser pequeno depois de decidido. O que é novo é só a
+  pergunta, e quem responde é o mestre.
 
 - [ ] **L69 · [ANOTADO em 10/09/2026, observação para o futuro, sem análise e sem abrir] Nem toda
   criatura chega pelo caminho de borda.** Existem criaturas que se teleportam e criaturas que se

@@ -77,6 +77,7 @@ segunda tinha ficado verde por cegueira.
 | **fechar a frente sem fechar o documento** (H1/H2/K28/D2) | trabalho implementado e commitado, item do mapa ainda `[ ]` | o mapa sabe que isto já aconteceu, ou só o código sabe? |
 | **o resultado que chegou e ninguém leu** | processo em background, arquivo de saída, exit code | isto terminou, e a saída já foi lida? |
 | **o documento que se justifica por um fato falso sobre si** | cabeçalho novo que diz "não é o mesmo que", "é mais completo que", "é cópia parcial de" | o `diff` concorda com a frase que faz este arquivo existir? |
+| **o caminho alternativo que trata a recusa certa como falha** (L67) | uma segunda passada, um `retry`, um "se não conseguiu, tente de novo com menos restrição" | não ter conseguido é o sintoma de um destino errado, ou é a regra funcionando? |
 
 **DUAS NOVAS, DE 06/09/2026, ACHADAS NA REVISÃO DO AVANÇO UNIFICADO:** a primeira é o gatilho —
 fica verde, o rótulo continua descrevendo o que deveria medir, e nada acusa a mudança por baixo. A
@@ -406,3 +407,28 @@ tem motivo para rodar (`diff`), porque o texto que a contém soa como procedênc
 procedência é justamente o que se lê para não precisar conferir. **A régua que sai disto
 está no `ARQUITETO.md §5.5`:** documento aponta para outro (nome, caminho, para que serve),
 não descreve o conteúdo dele.
+
+**UMA FORMA NOVA, DE 10/09/2026, ACHADA NUMA BATALHA DE MESA (`Pendencias.md` L67):** a
+perseguição no corpo a corpo mira um destino calculado do CENTRO do alvo, sem somar o raio dele.
+Contra uma criatura que ocupa vários hexágonos, esse destino cai DENTRO do corpo dela. A primeira
+caminhada veta as casas ocupadas e por isso **não consegue chegar lá** · que é a regra de ocupação
+funcionando exatamente como deve. Só que "não aproximou" é o gatilho de uma segunda passada que
+afrouxa o veto para a casa exata do outro token, e a peça entra no corpo do inimigo.
+
+**O que torna esta forma sua:** a segunda passada não é um erro de lógica, é um conserto legítimo
+de OUTRO caso · um Enorme parado ao lado veta os seis vizinhos de quem encosta nele e prendia quem
+não devia estar preso, e o comentário no código explica isso com todas as letras. O defeito é que a
+condição escolhida para disparar o afrouxamento ("não aproximou") **é ambígua entre duas causas
+opostas**: o caminho está bloqueado por gente demais, ou o destino é impossível por construção. No
+primeiro caso afrouxar é certo; no segundo, afrouxar é passar por cima da resposta correta.
+
+**A pergunta que a acha:** quando este caminho alternativo dispara, a primeira tentativa falhou
+porque o mundo estava apertado, ou porque **o que eu pedi não existe**? Se as duas causas entram
+pela mesma porta, a segunda vai ser tratada como a primeira, e o resultado é um estado que a
+própria regra do sistema declara impossível · aqui, uma peça parada numa casa que a função de
+ocupação responde estar ocupada.
+
+**Parente de duas formas que já estão nesta lista.** Do "acesso tolerante que nunca lança" (B12),
+porque o afrouxamento é uma tolerância que não denuncia a si mesma; e da forma do `L66`, porque a
+invariante mora nos CHAMADORES em vez de morar na escrita · aqui a gravação final não passa pela
+checagem de ocupação, então nada entre a decisão errada e o banco tem chance de recusar.
