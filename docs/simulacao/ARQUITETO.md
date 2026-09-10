@@ -87,6 +87,32 @@ verdade. Relato da própria instância não fecha tarefa; o disco fecha.
 Isto não vira laço agendado — já foi ligado e desligado duas vezes, e o problema nunca foi
 frequência de checagem, foi checar antes de afirmar em vez de depois.
 
+### 1.4 · Quem dispara lê o código de saída antes de falar
+
+**Achado em 10/09/2026, variante nova da forma "espera sem checagem" que `CATALOGO.md` já
+cataloga.** As três regras acima são sobre relatar o estado de OUTRA instância; esta é sobre
+relatar o resultado do PRÓPRIO comando que acabou de ser disparado. Um teste tinha TERMINADO com
+`exit 1`, a saída já estava em disco, e ninguém tinha lido — "testando ao vivo" continuou sendo
+dito 42 minutos depois de deixar de ser verdade.
+
+Regra: quem dispara um comando (o Arquiteto disparando ferramenta, a Executora disparando teste)
+lê o código de saída e a saída antes de dizer qualquer coisa sobre ele. "Rodando" só vale com
+processo conferido (`Get-Process`, ou equivalente); depois de disparar e antes de conferir, a
+frase é "não sei ainda" — nunca "rodando" por presunção do que não foi checado.
+
+### 1.5 · Trabalho alheio na árvore não se põe de lado para o próprio commit passar
+
+**Achado em 10/09/2026.** Um commit do Arquiteto travou no portão de procedência porque edições
+não commitadas da Executora (mesma árvore, mesmo índice) deslocaram linha citada em `ESTADO.md`/
+`Pendencias.md`. O conserto usado foi `git stash` escopado nos arquivos dela, commit, `git stash
+pop` — funcionou desta vez, mas é a operação mais arriscada do arranjo: se ela escrever no
+arquivo entre o `stash` e o `pop`, o `pop` conflita, e o conflito cai em cima do trabalho de quem
+não está nem olhando.
+
+Regra: não usar `stash` no trabalho de outra instância para o próprio commit passar. Quando um
+commit travar por causa de arquivo que a Executora está editando, esperar ela commitar, ou pedir
+a ela que commite — não empurrar o trabalho dela para o bolso por conta própria.
+
 ---
 
 ## 2 · Quem decide o quê
