@@ -1,0 +1,241 @@
+# VOZ · comando por voz no Grid
+
+Esta frente foi desenhada fora do repositório, numa conversa com o humano, e nada dela foi
+construído. Este documento existe para que ninguém reabra decisão fechada nem construa antes da
+hora.
+
+Ela **não é a fase 2.5**. A 2.5 continua sendo a tela da lembrança, que destrava a migração 33. A
+voz nunca entrou em fase nenhuma: ela mora no `Grid_melhorias.md`, com sete decisões de arquitetura
+antigas, das quais duas caíram e estão marcadas abaixo.
+
+Nada aqui autoriza lote. Ver §7, que diz o que não fazer.
+
+---
+
+## 1 · Por que a frente existe, e o que ela não tem
+
+O mestre é o motor de resolução, e nove das catorze paradas do sistema são dele. O critério que
+separa o que se conserta do que não se toca está no `PORQUE.md`: escolher é jogo e pode demorar; o
+tempo entre a decisão estar tomada e o efeito aparecer na tela é custo e deve encolher.
+
+A voz ataca **navegação**, que é o mestre procurando onde clicar. Não ataca **escolha**, que é o
+mestre decidindo, e que por decisão escrita não se encolhe.
+
+O que ela não tem: número. Navegação não aparece em nenhuma medição do projeto. As medições
+existentes dividem o trabalho do mestre em aritmética, clique do relógio e julgamento, e nenhuma
+delas é navegação. Então **esta frente abre como aposta declarada e não como conserto medido**, e
+isso está escrito de propósito para ninguém dizer depois que foi medida.
+
+---
+
+## 2 · O desenho
+
+**O toque diz quem, a voz diz o quê e quanto.**
+
+O mestre clica na peça e fala a ação. Nenhum nome de personagem ou criatura entra no vocabulário. O
+clique resolve identidade e posição, que é onde o toque é preciso e a fala é ambígua. A fala resolve
+verbo, arma e parâmetro, que é onde hoje se abre menu e se procura.
+
+É preenchimento por partes: a fala preenche os campos simbólicos, o clique preenche os campos
+visuais, e a ação dispara quando o último campo entra, seja ele qual for. Falar antes e clicar
+depois vale tanto quanto clicar antes e falar depois, e as duas ordens devem funcionar.
+
+Consequências desse desenho, e são o motivo dele:
+
+- a ambiguidade entre `goblin 1` e `goblin 3` desaparece, porque quem desambigua é o clique;
+- nome inventado transcrito como palavra comum deixa de ser problema;
+- e a necessidade de adicionar palavras ao léxico do modelo some, que era o item mais caro do plano.
+
+### O vocabulário
+
+Cerca de trinta itens, quase todos palavra comum do português do Brasil, mais o token de
+desconhecido:
+
+```
+verbos      atacar, usar, mover, avançar, recuar, tirar, dar, curar, esperar, interpor,
+            levantar, largar, trocar, desfazer, cancelar
+armas       machado, espada, arco, lança, adaga, escudo, punho
+parâmetros  volume, alcance, área, distância, dano, vida, mana, tick, relógio, magia
+números     zero a vinte
+ordinais    primeiro, segundo, terceiro, quarto, quinto
+elementos   fogo, gelo, luz, sombra, terra, vento
+mais        [unk]
+```
+
+**Esta lista é invenção, não levantamento.** Ninguém observou o mestre falando. Ver §6.
+
+Frases típicas: `ataca com o machado`, `usa a magia de fogo, volume três, alcance dois`,
+`tira sete de vida`, `dá quatro de mana`, `avança o relógio`, `recua dois`, `quatro, dois, seis`
+(ditando as faces de dados rolados na mão), `desfaz`.
+
+---
+
+## 3 · A base técnica
+
+**Vosk no navegador**, via `vosk-browser`, WebAssembly em worker separado, motor em Apache 2.0.
+
+**Modelo `vosk-model-small-pt-0.3`**, 31 MB, Apache 2.0. É a única opção em português dentro do
+limite de tamanho.
+
+**O modelo aceita gramática dinâmica.** Conferido pela estrutura do pacote: tem `HCLr.fst` e
+`Gr.fst`, e não tem `HCLG.fst`, que é a forma exigida pela configuração rápida de gramática. Isso
+prova **formato**, não comportamento. Ver §6.
+
+**Carregamento sob demanda**, no primeiro toque do microfone, nunca na abertura da página. E caminho
+de modelo, worker e WASM **configurável, nunca escrito fixo**, porque o domínio próprio vai mudar a
+origem e a base do site.
+
+Três candidatos de fork, ainda não escolhido: `ccoreilly/vosk-browser` (original, 0.0.8, parado há
+uns três anos), `@lichess-org/vosk-browser` (usado em produção pelo Lichess para jogar xadrez por
+voz, e o mais interessante por isso) e `jonbgamble/vosk-browser`.
+
+### Por que Vosk e não Whisper, em uma frase cada
+
+Vosk vem da linhagem Kaldi e busca dentro de um grafo: restringir o grafo torna impossível produzir
+o que está fora dele, então **ele consegue recusar**. Whisper gera o texto mais provável e não tem
+onde encaixar restrição, então **sempre produz alguma coisa**, inclusive em silêncio e ruído, onde
+alucina frase inteira que ninguém falou.
+
+Gramática restrita é um menu com trinta opções e "outro". Whisper é uma linha em branco.
+
+---
+
+## 4 · Decisões fechadas, não reabrir
+
+- **Nomes próprios fora da voz.** Seleção é por toque.
+- **Vocabulário fechado**, com `[unk]` incluído.
+- **O sistema recusa em vez de aproximar.** Se o texto não casa com a gramática, não executa. A
+  recuperação é mostrar o que foi ouvido mais as frases válidas mais próximas, para escolher com um
+  toque. Determinístico, sem inventar nada.
+- **Nada de modelo de linguagem no caminho quente.** Latência dentro da janela que o projeto definiu
+  como custo, resposta não determinística num sistema cujo método é conferir, e chave secreta sem
+  onde morar num site estático. Uso legítimo de modelo de linguagem existe fora do caminho quente:
+  gerar variações de frase para testar cobertura, e propor leitura quando a gramática recusa, sempre
+  propondo e nunca executando.
+- **Confirmação escrita a cada comando não é padrão.** Ela põe uma leitura na janela do custo, toda
+  vez, inclusive nas dezenove em que estava certo. A rede é desfazer barato, não confirmar sempre.
+  Confirmação vale como **modo de calibração temporário**, com critério de saída escrito.
+- **Tabela de correção, não treinamento.** Nenhum motor aprende com correção do usuário. O que
+  aprende é uma lista de substituição (ouvido X, era Y), que roda em milissegundos, é auditável, e
+  funciona igual com qualquer motor. O Lichess tem precedente disso.
+- **Servidor não entra no caminho quente.** Partida fria de tier gratuito, recuperação por
+  ociosidade num uso de poucas horas por semana, autenticação do endereço e viagem de rede, tudo
+  contra um ganho que o navegador já entrega.
+
+### Avaliados e descartados, com o motivo
+
+| Opção | Por que não |
+|---|---|
+| Web Speech API nativa | O conceito de gramática foi removido da especificação; as partes relacionadas não têm mais efeito. Sobrou enviesamento por lista de frases com peso. Sem Firefox, e o modo local é recente |
+| Picovoice Rhino | Exige chave de fornecedor validada em tempo de execução, e os nomes entrariam como valores de contexto a regerar |
+| Whisper no caminho quente | Não aceita restrição de vocabulário, que é o requisito principal, e alucina em silêncio e ruído |
+| Modelo FalaBrasil | 1,6 GB, fora do limite, e GPLv3, que é decisão de licenciamento sobre o projeto inteiro |
+| Ditado do teclado do sistema | Funciona de graça em campo de texto e perde por não permitir restringir vocabulário, não devolver confiança, e não permitir botão de falar controlado pela página |
+
+### Duas das sete decisões antigas caíram
+
+- **"gramática fixa e não modelo"**: continua valendo como intenção, e não se implementa pela API do
+  navegador, que perdeu o conceito de gramática. A gramática agora é do motor embarcado;
+- **"reconhecimento nativo do navegador"**: cai junto, pelo mesmo motivo.
+
+As outras cinco seguem de pé, incluindo segurar para falar, mestre e jogadores, o inofensivo executa
+e o que muda estado confirma, e toda ação nova nascendo recebendo objeto em vez de ler o DOM.
+
+---
+
+## 5 · As quatro possibilidades levantadas pelo humano
+
+- **comandos simples**, e **comandos simples com ações pré-determinadas**: são a mesma superfície. A
+  diferença é ter lista fechada contra a qual recusar. Vale a segunda, e a primeira não existe como
+  opção separada;
+- **tentar entender ação complexa**: recusada. Só se implementa chutando ou com modelo de linguagem,
+  e as duas produzem ação plausível e errada no meio do Tick;
+- **frase completa com nomes e várias ações** (`Nyla pula o muro e corre para longe do Goblin 2`):
+  bloqueada por algo que não é voz. Muro é terreno, que é fase 4 e não existe; são duas ações numa
+  frase e o motor resolve uma por vez; e `para longe de` é predicado espacial que ninguém escreveu.
+  Mesmo com transcrição perfeita, não há o que executar.
+
+---
+
+## 6 · O que está aberto, e nada se constrói antes
+
+**A pergunta que decide a frente**, e é medida e não pesquisada:
+
+> Com gramática restrita e `[unk]`, o modelo distingue fala válida de fala inválida sem transformar
+> uma fala errada em um comando válido?
+
+O `[unk]` é capacidade documentada num sistema acústico probabilístico. Não há promessa de que toda
+fala fora da gramática seja recusada.
+
+**Critério de desistência, escrito antes do instrumento existir**: falso positivo acima de **1 em
+20** e a frente não abre. Falso positivo é fala inválida virando comando válido. Recusar fala boa é
+chato e se repete; executar coisa errada é o defeito que a mesa não perdoa.
+
+Um teste está sendo construído fora deste repositório, por outra ferramenta, e o humano roda. Ele
+responde: se a gramática restrita funciona neste modelo, o que acontece com palavra fora do léxico,
+como voltam os números (`sete` contra `7`, e `quatro, dois, seis` contra `426`), se dá para trocar de
+gramática sem recarregar os 31 MB, latência e memória no Android, e a taxa de falso positivo em
+quatro condições de fala (válida, inválida, pela metade, foneticamente parecida).
+
+Também aberto:
+
+- **se os nomes das Artes são palavra comum ou nome inventado.** Se forem inventados, o problema do
+  léxico volta numa versão pequena, com catálogo fechado, possivelmente resolvível como passo de
+  build. Adicionar palavra nova exige preparar léxico e recompilar grafo, e o custo real disso não
+  foi medido;
+- **qual dos três forks usar**;
+- **a lista de qual verbo executa direto e qual confirma**;
+- **e o desfazer**, que precisa existir antes de qualquer execução direta. Comando sem desfazer cai
+  na família catalogada do conserto que não sabe exprimir remoção.
+
+### Os dois bloqueios que não são técnicos
+
+**A comparação de caminhos nunca foi feita.** Para as ações mais frequentes do mestre, comparar em
+gestos e trocas de tela: como é hoje, com a tela no lugar certo (conserto que a fase 1 já sabe
+fazer), com atalho de teclado sobre a peça selecionada, e por comando falado. **Isso pode encerrar a
+frente**, e ficou mais decisivo depois que os nomes saíram, porque a versão viável da voz é a que
+mais se parece com atalho de teclado.
+
+**O vocabulário é invenção.** As trinta palavras não saíram de observação. Se a gramática cobrir o
+jeito errado de falar, o teste mede uma taxa correta sobre um vocabulário errado, e o resultado não
+significa nada.
+
+As duas se resolvem com o humano usando o Grid e anotando, e nenhuma se resolve lendo código.
+
+---
+
+## 7 · O que o Arquiteto NÃO faz nesta frente
+
+**A frente abriu em 10/09/2026.** A proibição de construir foi suspensa por mensagem do humano,
+só para dois itens nomeados: o levantamento do §3 (leitura de código, com relato e parada) e a
+página de medição do Vosk do §4 (bancada estática, fora do site). Nada além desses dois está
+autorizado. Enquanto este documento estiver assim:
+
+- ~~não construir página de teste, não instalar `vosk-browser`, não baixar modelo~~ · suspenso
+  em 10/09/2026, só para a bancada de medição, não para nada além dela;
+- não enfileirar item de voz além dos dois autorizados, não abrir lote de interpretação/execução,
+  não propor o próximo passo desta frente além do que o humano já ordenou;
+- **não construir barramento de execução, não escrever parser de comando, não tocar no Grid** ·
+  isto continua de pé mesmo com a suspensão acima, e é o item mais caro da frente;
+- não reabrir escolha de motor nem as decisões do §4 (que aqui é a seção de decisões fechadas,
+  não o §4 do pedido de 10/09 sobre a bancada);
+- não tratar isto como fase 2.5, não entrar na numeração de fases.
+
+Resultado de teste chega pelo humano. Enquanto a comparação de caminhos e o vocabulário real não
+existirem, qualquer desenho de erro, recuperação ou confirmação é desenho sobre número que não
+existe.
+
+---
+
+## 8 · A ordem, quando destravar
+
+1. as duas medições do humano: vocabulário real e comparação de caminhos;
+2. o teste do Vosk, com a gramática já corrigida pelo vocabulário real;
+3. o desenho de erro, recuperação e desfazer, sobre os números;
+4. e por último a construção, que é a parte menor: três das cinco camadas do sistema (interpretação,
+   execução e desfazer) não são sobre voz, são úteis com teclado e botão, e devem nascer assim.
+
+A camada de execução merece atenção própria: hoje cada ação tem caminho próprio dentro de um
+diálogo. Se não existir ponto único por onde toda ação passa antes de acontecer, criá-lo é o item
+mais caro do plano, e ele é devido de qualquer jeito pela auditoria de cobertura e pelo portão que
+compara harness e mesa.
