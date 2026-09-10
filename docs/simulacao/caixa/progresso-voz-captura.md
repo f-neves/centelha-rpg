@@ -21,3 +21,8 @@ da máquina (`date +%H:%M`).
   `pageerror`. `gramaticaDeVoz`/`interpretarComando`/botão/clique-sem-comando-armado/Esc-sem-nada
   também confirmados. Faltam os dois fluxos de ordem de "mover" com voz de verdade (sem
   microfone/modelo neste ambiente, não é possível testar fim-a-fim). Rodando `npm run validate`.
+- 19:45 — commitado (0b5dd6e) só o meu, por pathspec, depois de o Arquiteto reapontar as 39
+  citações envelhecidas (ESTADO.md/Pendencias.md, ficaram de fora deste commit). Esperando a
+  vez dele nos dois documentos antes de abrir a rodada.
+- 19:46 — Arquiteto commitou e empurrou (ad6152a), portão verde. Commitando esta última linha
+  e abrindo a rodada agora.
