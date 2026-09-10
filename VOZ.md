@@ -275,7 +275,13 @@ medição de caminhos ia responder (cinco das treze funções são chamáveis di
 item 1 é ela mesma o instrumento que substitui a medição de vocabulário e de caminhos, não uma
 etapa que espera por elas.
 
-1. **A barra de comando** (item 1 do pedido de 10/09): campo de texto simples no Grid, aberto por
+1. **A barra de comando** (item 1 do pedido de 10/09) · **FECHADA em 10/09/2026, rodada 30,
+   veredito SEGUE (`30-revisora.md`, sha `f1f713d`, verificado ancestral do `main` antes de
+   registrar).** Achados não bloqueantes da revisão, registrados em `Pendencias.md L62`: sem
+   teste automatizado commitado (só o roteiro puppeteer avulso), e `mover` contra casa ocupada
+   falha em silêncio total (comportamento herdado de `porNoMapa`, não regressão desta rodada).
+   **Parado aqui por decisão do humano: ele usa a barra numa batalha antes do item 2 abrir.**
+   Campo de texto simples no Grid, aberto por
    atalho de teclado com a peça selecionada, lido no envio (não controlado, para não brigar com
    ditado do sistema nem correção automática). Interpreta contra gramática fixa num arquivo de
    dados só, determinística, sem modelo de linguagem. Executa chamando `porNoMapa`, `tirarDoMapa`,
