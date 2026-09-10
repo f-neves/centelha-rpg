@@ -201,11 +201,18 @@ atingido.
 **A dificuldade escalar com o dano: NÃO ESTÁ DECIDIDO.** O próprio dado já marca isto como
 aberto: `concentracao.aRevisar`: "a dificuldade do teste (fixa ou crescendo com o tamanho do
 golpe), e a perícia definitiva quando a conjuração por Tradição fechar." Não existe resposta
-para "por ataque ou por Tick" nem aqui nem em nenhum outro lugar que eu tenha achado —
-**não achei**, e não afirmo "não existe" com a mesma firmeza do ponto 4, porque não teria
-como esgotar toda árvore de aplicação de dano do motor no tempo deste levantamento; é
-possível que exista um teste equivalente para golpe físico interrompido que eu não tenha
-achado pelo nome certo.
+para "por ataque ou por Tick" nem aqui nem em nenhum outro lugar que eu tenha achado.
+
+**Resposta mais firme, depois de segunda passada:** procurei "sustentar"/"Sustentar" em todo
+o `src/` e o teste de concentração NÃO tem implementação em nenhum arquivo de
+`src/lib/`/`src/pages/mesa/` — só existe como regra publicada (`regras.json`,
+`regras.astro`), a mesma situação do `reguaDaArte` do ponto 3. E `abortarGesto` (o único
+código que encerra um gesto em Preparo) só é chamado por clique explícito em três lugares
+(`grid.astro:7165`, `combate.astro:1203`/`1510`) — nunca a partir da resolução de um golpe
+ou da aplicação de dano. **Então a resposta correta é "não existe" para o teste GENÉRICO de
+Preparo (não achei, e não é surpresa: nada dispara `abortarGesto` sozinho), e "existe só
+como regra publicada, não implementada" para o de sustentar Duração** — nenhum dos dois
+está rodando no motor hoje.
 
 ## 9 · Condições que impedem continuar
 
@@ -226,8 +233,15 @@ declara o campo oficialmente.
 condição dessas aterrissa.** O que achei foi o uso de `noChao`/`foraDeCombate` para tirar a
 peça da ocupação e da leitura de "quem está de pé" — não uma rotina que, ao aplicar
 `inconsciente` a alguém no meio de um Preparo, zere `c.acao` ou aborte o gesto por conta
-própria. **Não achei**, não "não existe": não seguido cada caminho de aplicação de condição
-(são muitos, `verificarEfeitos`, o menu de condições, o corpo a corpo) até o fim.
+própria. Segunda passada, na mesma direção do ponto 8: `marcarInvestida`
+(`grid.astro:6014-6026`, a condição `investindo` que a Investida põe e o relógio tira) é o
+único lugar que escrevo/apaga condição olhando também para a fase do gesto, e ela cuida só
+de si mesma, não de derrubar OUTRAS ações por causa de uma condição nova. Continuo sem achar
+o outro lado (condição chegando de um efeito/ataque e cruzando com `c.acao` de quem a
+recebeu) — **é "não achei", não "não existe"**: não segui cada caminho de aplicação de
+condição (são muitos, `verificarEfeitos`, o menu de condições, o corpo a corpo) até o fim, e
+a ausência de uma marca clara (um "isto derruba gesto" ao lado de `foraDeCombate`) é o
+próprio motivo de eu não conseguir fechar isto com a firmeza do ponto 4.
 
 ## 10 · Modais e a configuração de mesa
 
@@ -266,3 +280,8 @@ lugar.
    usar MÁXIMO (para o quanto demora).** Duas réguas, dois nomes de "nível" que não são o
    mesmo número — risco real de a régua nova confundir as duas se não nomear com cuidado
    qual "nível" está usando onde.
+5. **O padrão se repete uma terceira vez**: `reguaDaArte` (ponto 3) e o teste de
+   concentração ao sofrer dano (ponto 8) são os dois regra-publicada-sem-chamador que achei
+   procurando coisa diferente cada vez. Vale a suspeita de que há mais — quem escrever a
+   régua nova devia perguntar, de cada peça que for citar como "já existe", se ela está só
+   nos dados/na página ou se algum arquivo de `src/lib`/`src/pages/mesa` de fato a invoca.
