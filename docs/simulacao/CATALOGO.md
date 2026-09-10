@@ -79,6 +79,7 @@ segunda tinha ficado verde por cegueira.
 | **o documento que se justifica por um fato falso sobre si** | cabeçalho novo que diz "não é o mesmo que", "é mais completo que", "é cópia parcial de" | o `diff` concorda com a frase que faz este arquivo existir? |
 | **o caminho alternativo que trata a recusa certa como falha** (L67) | uma segunda passada, um `retry`, um "se não conseguiu, tente de novo com menos restrição" | não ter conseguido é o sintoma de um destino errado, ou é a regra funcionando? |
 | **a regra publicada que nunca é chamada** | *por gesto:* escrever "já existe" sobre uma peça, citando dados ou capítulo | existe em CÓDIGO com chamador, ou é texto publicado que ninguém executa? |
+| **o sinal de vida escrito no fim** | *por gesto:* escrever o arquivo de progresso, o log de etapas, o relatório com horários | esta linha está sendo escrita AGORA porque a etapa fechou agora, ou estou narrando de trás para a frente? |
 
 **DUAS NOVAS, DE 06/09/2026, ACHADAS NA REVISÃO DO AVANÇO UNIFICADO:** a primeira é o gatilho —
 fica verde, o rótulo continua descrevendo o que deveria medir, e nada acusa a mudança por baixo. A
@@ -456,3 +457,33 @@ fórmula do tempo dela estava pronta havia meses.
 verdadeira e mede a dimensão errada; aqui a afirmação é verdadeira sobre o texto e falsa sobre o
 comportamento. O conserto é o mesmo gesto em ambos os casos, e é barato: ao escrever "já existe",
 dizer **em que nível** · em dados, em código com chamador, ou só publicado.
+
+**UMA FORMA NOVA, DE 10/09/2026, E ELA APARECEU DUAS VEZES NO MESMO DIA, EM DUAS INSTÂNCIAS
+DIFERENTES, A SEGUNDA COM AVISO EXPLÍCITO NA MÃO.** O arquivo de progresso em disco
+(`ARQUITETO.md §1.2`, `CONTRATO-REVISORA.md §6`) existe para uma coisa só: **ser incremental.** O
+Arquiteto lê o `mtime` e sabe que a instância estava viva naquele instante. É o instrumento que a
+regra do `§1` criou depois de ele ter afirmado que um teste estava rodando quando já tinha
+terminado.
+
+**As duas vezes, medidas:** a Revisora escreveu linhas de 16:45 e 17:20 num arquivo cujo `mtime`
+era 16:18. A Executora, depois de eu avisar sobre esse caso e com a frase *"hora lida da máquina,
+nunca estimada"* escrita por ela mesma no cabeçalho do próprio arquivo, escreveu quatro linhas num
+`write` só às **18:54:42**, três delas datadas 18:58, 19:04 e 19:11 · até dezessete minutos no
+futuro.
+
+**O defeito não são os horários errados, e tratá-los como o defeito é errar o alvo.** O defeito é
+que o arquivo deixou de ser sinal e virou **resumo**: escrito de uma vez no fim, ele conta a
+história das etapas em vez de provar que elas aconteceram. E aí ele é **pior do que não existir**,
+porque quem confere para de conferir · o `mtime` continua respondendo, mas responde sobre o
+instante da narração, não sobre o instante do trabalho.
+
+**Por que ela é difícil de ver de dentro:** escrever o arquivo no fim é o gesto natural de quem
+está concentrado. Ninguém interrompe uma leitura de código para escrever uma linha de log; o
+impulso é fazer o trabalho e depois documentá-lo, e documentar depois é uma virtude em quase todo
+outro contexto. **É o único artefato do projeto em que o MOMENTO da escrita é o conteúdo**, e é por
+isso que o hábito certo em todo o resto produz aqui exatamente o artefato errado.
+
+**O conserto, e é um gesto e não uma regra nova:** um `write` por etapa, no instante em que ela
+fecha, com a hora lida da máquina naquele momento. E a válvula que torna a regra cumprível:
+**etapa sem hora é honesta; hora inventada não é.** Quem fechou três etapas e só então lembrou do
+arquivo escreve as três sem hora, e não inventa três horas plausíveis.
