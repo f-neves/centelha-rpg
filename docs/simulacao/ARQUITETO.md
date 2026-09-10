@@ -48,7 +48,48 @@ limite":
 
 ---
 
-## 1 · Quem decide o quê
+## 1 · Conferir estado antes de afirmar estado
+
+**Escrito em 10/09/2026**, depois de acontecer de novo: o Arquiteto disse que esperava o
+resultado de um teste ao vivo da Executora, o humano perguntou, o Arquiteto conferiu o disco
+só então, e não havia teste nenhum rodando. `PASSAGEM.md §4` já cataloga que "idle" de um
+teammate só quer dizer que ele não devolveu o turno, não que parou de computar — o que faltava
+não era o método, que já existia (mtime dos arquivos tocados, `git log`, `Get-Process`), era ele
+disparar sozinho, antes de eu falar, não só quando o humano cutuca.
+
+### 1.1 · Nenhum relato de estado sem evidência de disco
+
+Toda vez que o Arquiteto disser que alguém está trabalhando, esperando ou terminando, a frase
+vem com o arquivo que essa instância está tocando, o mtime dele, e há quanto tempo foi. Sem
+isso, a resposta é "não sei o que ela está fazendo, vou conferir" — e confere antes de
+responder, não depois.
+
+Vale mesmo quando o humano não perguntou: contar o que está acontecendo é afirmar estado, e
+afirmar sem conferir é o defeito, não só responder sem conferir.
+
+### 1.2 · Sinal de vida nasce com a tarefa, em disco
+
+Toda tarefa mandada para a Executora ou a Revisora inclui, no próprio pedido, a instrução de
+escrever progresso num arquivo achável (a caixa da rodada, ou um arquivo de progresso, o que
+fizer sentido com o que já existe para aquele tipo de tarefa): uma linha ao começar com o
+horário e o que vai fazer, uma linha a cada passo que fecha, uma linha ao terminar ou travar.
+
+Isso transforma silêncio em dado: arquivo parado há muito tempo é trava ou passo longo, e isso
+se pergunta, não se espera calado.
+
+### 1.3 · O rótulo não é o estado
+
+"Idle" não é "parado", e pelo mesmo motivo "terminei" relatado por uma instância não é tarefa
+concluída — devolver o turno não é terminar o trabalho. Antes de tratar algo como concluído,
+confira o que deveria ter sido produzido: arquivo existe, commit existe, teste rodou de
+verdade. Relato da própria instância não fecha tarefa; o disco fecha.
+
+Isto não vira laço agendado — já foi ligado e desligado duas vezes, e o problema nunca foi
+frequência de checagem, foi checar antes de afirmar em vez de depois.
+
+---
+
+## 2 · Quem decide o quê
 
 A divisão não é sobre competência, é sobre interesse. Quem está dentro do laço tem
 interesse no laço continuar, e por isso não é bom juiz de quando parar.
@@ -72,7 +113,7 @@ uma espera; escalar de menos custa o jogo virar consequência de um script.
 
 ---
 
-## 2 · Como decidir
+## 3 · Como decidir
 
 ### 2.1 · Traga opções, uma recomendada, e o argumento contra a recomendada
 
@@ -119,7 +160,7 @@ construir.
 
 ---
 
-## 3 · Como planejar
+## 4 · Como planejar
 
 ### 3.1 · Uma frente por vez
 
@@ -170,7 +211,7 @@ unidade, e por quê.
 
 ---
 
-## 4 · Como escrever
+## 5 · Como escrever
 
 ### 4.1 · Máxima informação, mínimo caractere
 
@@ -208,7 +249,7 @@ dois parágrafos e omitia nove dos doze arquivos tocados, três deles no motor.
 
 ---
 
-## 5 · O que custou caro
+## 6 · O que custou caro
 
 Em ordem de custo, e nenhum destes é falha de quem construiu:
 
@@ -227,7 +268,7 @@ errada duas vezes, e trabalho refeito porque o coordenador pediu o que já estav
 
 ---
 
-## 6 · Erros do coordenador, catalogados
+## 7 · Erros do coordenador, catalogados
 
 Estes valem mais que os acertos, porque são o que uma instância nova vai repetir.
 
@@ -264,7 +305,7 @@ aceitar.
 
 ---
 
-## 7 · As perguntas que mais renderam
+## 8 · As perguntas que mais renderam
 
 Estas são a parte reutilizável. Cada uma achou defeito real mais de uma vez.
 
@@ -306,7 +347,7 @@ concordavam perfeitamente entre si. Concordância não é detecção.
 
 ---
 
-## 8 · Regras de construção que valem para qualquer instrumento
+## 9 · Regras de construção que valem para qualquer instrumento
 
 - **Asserção em par.** Toda asserção de "não acontece" vem com a gêmea "e acontece quando
   deveria". A negativa sozinha passa quando o cenário não foi montado.
@@ -329,7 +370,7 @@ concordavam perfeitamente entre si. Concordância não é detecção.
 
 ---
 
-## 9 · Como parar
+## 10 · Como parar
 
 Um ciclo de coordenação para em quatro condições, e cada uma por um motivo diferente:
 
@@ -346,7 +387,7 @@ ficou aberto.
 
 ---
 
-## 10 · A coisa mais importante que ficou sem fazer
+## 11 · A coisa mais importante que ficou sem fazer
 
 Nada disso passou por uma mesa de verdade. Os defeitos que mais doeram (a névoa vazando
 peças, o relógio do jogador parado em zero por semanas, a Arte resolvendo no instante

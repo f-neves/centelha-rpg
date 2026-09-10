@@ -1,7 +1,7 @@
 # Contrato da Auditora (equipe Arquiteto)
 
 Escrito em 08/09/2026 a partir do que ela já operava, sem contrato escrito até aqui — o
-mesmo defeito que o `ARQUITETO.md §6` cataloga ("cresce por decisão sem ninguém decidir
+mesmo defeito que o `ARQUITETO.md §7` cataloga ("cresce por decisão sem ninguém decidir
 olhar"), agora corrigido antes de acumular.
 
 ## O que ela faz

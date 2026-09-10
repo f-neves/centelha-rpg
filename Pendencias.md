@@ -3574,7 +3574,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   `05c4a92`): **120 abertos, 63 fechados, 4 parciais** (`A11`, `K28`, `I11`, `I12`), **187
   itens catalogados no total**. Esta é a primeira medida da série — não há histórico anterior
   para comparar, então ainda não diz se o congelamento de descobrimento
-  (`ARQUITETO.md §3.2`/`[[feedback_scope_discipline_side_findings]]`) está funcionando; diz
+  (`ARQUITETO.md §4.2`/`[[feedback_scope_discipline_side_findings]]`) está funcionando; diz
   só o ponto de partida. **E a primeira medida nasce inflada, registrado em 08/09/2026:** os
   120 abertos de hoje incluem item já implementado e não riscado antes de esta contagem
   existir (`H1`, `H2`, `K28`, `D2` fecharam em `b694eb6`, no mesmo dia, e o `B12` da

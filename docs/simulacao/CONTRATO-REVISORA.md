@@ -131,7 +131,7 @@ qualquer outra coisa:
    teste que exercita a função direto em vez do caminho real, são a mesma forma de
    zero por ausência de mecanismo.)
 3. **Tem algo que falha se for removido?** (sem isso, o conserto não tem prova de que
-   roda — é o ensaio dos três sentidos do `ARQUITETO.md §8`.)
+   roda — é o ensaio dos três sentidos do `ARQUITETO.md §9`.)
 4. **Que número publicado ele acabou de invalidar, e onde esse número ainda está
    escrito?**
 
@@ -188,7 +188,7 @@ fica fora do repositório e ela não alcança), marcadas `[x]` quando fechadas �
 repetir, é o mesmo princípio do `PLANO.md:9`. O que ficou genuinamente sem dono até a
 Auditora perguntar foi só a disciplina de checar se algo do roteiro antigo já tinha virado
 necessário e ninguém tinha olhado — que é o próprio achado dela, catalogado em
-`ARQUITETO.md §6`.
+`ARQUITETO.md §7`.
 
 ## Como isto cresce
 
