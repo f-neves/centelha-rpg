@@ -3513,7 +3513,8 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   rodando `node scripts/test-portoes.mjs` em 07/09/2026: item 6 verde, matriz e smoke com 9
   nomes cada, concordando nas duas direções.
 
-- [ ] **L50 · [FAZER, SOBE NA FILA em 08/09/2026] `gen-arte-equip.mjs` degrada em silêncio e
+- [x] **L50 · [FECHADO em 10/09/2026, rodada 28, veredito SEGUE em `28-revisora.md`, sha `28b9c4c`]
+  `gen-arte-equip.mjs` degrada em silêncio e
   pode apagar o CSS commitado.** Achado colateral do L31 (rodada 21,
   `docs/simulacao/caixa/21-executora.md`), fora daquela frente porque não é sobre `--check`, é
   sobre o que o gerador faz quando a fonte falta.
@@ -3538,7 +3539,14 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   quando a entrada não existe — nem quando falta só UMA folha esperada em `plano.folhas`, não só
   quando faltam todas. Escrever um CSS com menos classes do que o script leu no plano é pior do
   que não escrever nada: a queda parcial passa despercebida do mesmo jeito que a queda total, só
-  que sem nem o consolo de o build falhar visivelmente feio. Não corrigido ainda.
+  que sem nem o consolo de o build falhar visivelmente feio.
+
+  **Feito em 10/09/2026 (rodada 28):** conferência própria antes de escrever/copiar, cobrindo
+  pasta inteira ausente e uma folha só faltando. A Revisora reproduziu o primeiro caso por
+  execução real (a pasta `D&D/` genuinamente não existe na máquina dela: `exit 1`, CSS intocado,
+  sha256 igual ao commitado); o segundo caso ela confirmou só por leitura de código, não por
+  execução (não dá para faltar uma folha de uma pasta que não existe), registrado como prova mais
+  fraca que a primeira. `npm run validate` verde. Não muda nada para quem joga hoje.
 
 - [ ] **L51 · [FAZER] Só 1 das 4 views do lado do jogador tem prova automática contra o SQL
   real.** Achado no levantamento da Fase 2.5 (rodada 24, `docs/simulacao/caixa/24-executora.md`,
@@ -3702,6 +3710,17 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
      confiasse só nesse campo (`git log SHA..TOPO`) veria vazio e concluiria "nada de outra frente
      entrou" — o oposto do que os 28 commits de backlog (registrados na entrada anterior deste
      arquivo, ver a nota do `L52` de 10/09) diziam. Não corrigido nesta entrada: registro de tamanho.
+
+     **Segunda ocorrência, rodada 28, mesmo dia:** o aviso `28-executora.md` nasceu citando o SHA
+     de trabalho `4b666ef`, que deixou de existir porque o Arquiteto emendou o commit anterior
+     (`579dc41`→`6df68c8`, tirando uma coautoria injetada por reminder) entre a Executora commitar
+     e enviar a rodada — o L50 foi reconstruído por cima da linha corrigida (`28b9c4c`), mas o
+     campo SHA do aviso já tinha sido preenchido com o valor órfão. A Revisora rastreou e não
+     tratou como bloqueio (conteúdo idêntico, veredito SEGUE), mas é a mesma família de defeito do
+     item acima por um caminho diferente: os campos SHA/TOPO são preenchidos cedo demais, antes de
+     qualquer emenda de histórico no meio do intervalo do aviso. Sugestão da Revisora, registrada
+     para quando este item abrir como trabalho: `rodada.mjs` devia ler SHA/TOPO no momento do
+     `--enviar`, não antes.
   3. Inventário "O QUE MUDOU" do aviso ficou dois arquivos curto do diff real (faltavam os dois
      arquivos da caixa da própria rodada 26). Menor, não corrigido.
   4. A asserção `(3,1)` do mock (`scripts/mesa-mock.mjs:156`/`391`) é mais fraca do que o texto
