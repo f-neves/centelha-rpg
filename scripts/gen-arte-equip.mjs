@@ -29,6 +29,33 @@ const FOLHAS = resolve(raiz, 'D&D/armas&armaduras/folhas');
 const DESTINO_IMG = resolve(raiz, 'src/assets/equipamento');
 const DESTINO_CSS = resolve(raiz, 'src/styles/arte-equip.css');
 
+// FALHA ALTA, como o irmão `gen-creditos-equip.mjs`: sem a pasta fonte (fora do
+// git, `.gitignore:25`) não há o que gerar, e um clone limpo não pode escrever
+// por cima do CSS commitado com um arquivo quase vazio. L50.
+if (!existsSync(FOLHAS)) {
+  console.error(`Sem D&D/armas&armaduras/folhas/. Rode antes: node scripts/retificar_folha.py`
+    + ` (ou baixe/gere as folhas retificadas).`);
+  process.exit(1);
+}
+
+// A MESMA FALHA ALTA VALE PARA UMA FOLHA SÓ FALTANDO, não só para todas: um
+// arte-equip.css com menos classes do que o plano descreve é pior do que não
+// escrever nada, porque a queda parcial passa despercebida do mesmo jeito que a
+// queda total, sem nem o consolo de o build quebrar visível. Por isso a
+// conferência é um passo À PARTE, ANTES de copiar ou escrever qualquer coisa.
+const faltandoAntes = [];
+for (const folha of plano.folhas) {
+  const mapaArq = resolve(FOLHAS, folha.id, `${folha.id}.json`);
+  const webp = resolve(FOLHAS, folha.id, `${folha.id}.webp`);
+  if (!existsSync(mapaArq) || !existsSync(webp)) faltandoAntes.push(folha.id);
+}
+if (faltandoAntes.length) {
+  console.error(`Sem folha retificada (rode retificar_folha.py): ${faltandoAntes.join(', ')}`);
+  console.error(`${faltandoAntes.length} de ${plano.folhas.length} folhas do plano faltando — `
+    + 'nada foi escrito nem copiado.');
+  process.exit(1);
+}
+
 // altura, em px, do quadro da arte em cada lugar da ficha. Vem do FichaSkeleton:
 // .eq-img.arma/.escudo/.armadura = 20rem (um quadro só para todas as peças), e o
 // espelho pequeno do conjunto de mãos (.conj-peca .eq-img) = 5.5rem.
@@ -51,16 +78,15 @@ css.push('  aspect-ratio: var(--arte-ar); background-repeat: no-repeat; }');
 css.push('');
 
 const porClasse = new Map();
-const faltando = [];
 let nPecas = 0;
 
+// A conferência já rodou (acima, antes de qualquer escrita): chegar aqui
+// significa que toda folha do plano tem mapa e atlas. Nenhum `if` de
+// "faltando" sobra neste laço de propósito — é o mesmo laço de antes, sem o
+// desvio que permitia a queda silenciosa.
 for (const folha of plano.folhas) {
   const mapaArq = resolve(FOLHAS, folha.id, `${folha.id}.json`);
   const webp = resolve(FOLHAS, folha.id, `${folha.id}.webp`);
-  if (!existsSync(mapaArq) || !existsSync(webp)) {
-    faltando.push(folha.id);
-    continue;
-  }
   copyFileSync(webp, resolve(DESTINO_IMG, `${folha.id}.webp`));
   const mapa = JSON.parse(readFileSync(mapaArq, 'utf8'));
   const [cw, ch] = mapa.celula;
@@ -109,8 +135,4 @@ css.splice(8, 0, ...reguas);
 writeFileSync(DESTINO_CSS, css.join('\n'), 'utf8');
 
 console.log(`arte-equip.css: ${nPecas} peças de ${porClasse.size} classes.`);
-console.log(`atlas copiados para src/assets/equipamento/: `
-  + `${plano.folhas.length - faltando.length} de ${plano.folhas.length}.`);
-if (faltando.length) {
-  console.log(`Sem folha retificada (rode retificar_folha.py): ${faltando.join(', ')}`);
-}
+console.log(`atlas copiados para src/assets/equipamento/: ${plano.folhas.length} de ${plano.folhas.length}.`);
