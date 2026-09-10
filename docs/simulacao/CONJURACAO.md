@@ -96,6 +96,17 @@ no Golpe, estar acima do nível efetivo declarado, e qualquer distribuição aba
 indistinguíveis na declaração, e quem olha o tabuleiro não sabe o que vem. É o preço de deixar a
 distribuição aberta, que foi o que o humano pediu.
 
+**E O D-C1 NÃO TEM BURACO, corrigido em 10/09/2026 pelo humano, porque quem ler o §1 vai fazer
+esta pergunta.** Declarar nível efetivo 3 **não** libera distribuir 3 em todos os Parâmetros de
+graça. **Cada grau de cada Parâmetro é pago**, e a conta já existe (`custoDe`,
+`src/lib/artes-grid.ts:250-268`): o custo é a SOMA dos graus, com dois descontos · um pela
+**Centelha**, que abate do total, e outro pelo **material consumido**. Passar do nível de maestria
+num Parâmetro ainda multiplica o custo dele.
+
+**A Mana é o freio, e não há segundo teto.** O nível efetivo declarado limita a ALTURA de cada
+Parâmetro; a Mana limita quantos deles você pode subir. Não é preciso inventar uma trava de
+"quantos Parâmetros no teto", e inventá-la seria número novo sem régua.
+
 **O teto por autodeclaração não existe no motor hoje, em lugar nenhum**, e a Revisora conferiu
 isso com firmeza, não como "não achei". O que existe é outro conceito, o teto por **maestria**
 (`regras.json:arcano.improviso.tetoPorParametro`): nenhum Parâmetro passa do nível que o
@@ -195,7 +206,11 @@ escritas com ela igual dos dois lados.
 ### 3.1 O modal, e quem decide
 
 **Qualquer ação que afete o conjurador durante a Preparação abre um modal avisando que ela está em
-risco.** Golpe, empurrão, efeito em área, chão que se abre, alguém que se joga contra ele.
+risco.** Golpe, empurrão, efeito em área, alguém que se joga contra ele, chão que se abre.
+
+**Destes, só o chão que se abre espera a fase 4.** Todo o resto é golpe, empurrão e efeito em área,
+que o motor já resolve hoje · esta seção inteira é implementável sem esperar frente nenhuma, e a
+única exceção é o terreno (ver §5).
 
 **Quem decide se interrompe é o MESTRE, não o motor.** O modal oferece opções para ele escolher, e
 algumas com campo livre para descrever, e o que ele escrever entra no registro.
@@ -235,7 +250,9 @@ falhando, cai. Está publicado em `src/pages/artes/regras.astro:151`.
    uma decisão.
 
 **A curva exata da dificuldade contra o dano NÃO está decidida**, e não a invento aqui. É número, e
-número desta régua sai da mesa ou de medição, não da minha cabeça. **Fica com o humano.**
+número desta régua sai da mesa ou de medição, não da minha cabeça. **Fica com o humano, e ele
+confirmou em 10/09/2026 que continua com ele e que não decide agora. É o único número que falta
+para este §3.2 fechar** · todo o resto dele está decidido.
 
 **Golpe absorvido, dano zero: não pede teste, mas o modal abre mesmo assim**, porque a decisão é do
 mestre e ele pode querer interromper por ficção mesmo sem dano.
@@ -262,7 +279,8 @@ pergunta.** "Está fora da luta" e "não consegue continuar ESTA montagem" são 
 alguém agarrado continua fora de combate falso e pode muito bem não conseguir conjurar. **Precisa
 de uma marca própria na condição**, respondendo ao critério, e as 55 condições precisam ser
 triadas por ela. **O custo:** é uma passada por 55 entradas com julgamento em cada uma, e não uma
-linha de código. **Fica com o humano** dizer se a triagem é dele, minha ou da Revisora.
+linha de código. **Respondido em 10/09/2026: a triagem é do humano**, e a Executora só extrai a
+tabela com a coluna vazia · ver §4.2, incluindo a proibição de pré-preencher com `foraDeCombate`.
 
 **E não achamos hoje código que cancele um gesto em andamento quando a condição chega.** A Revisora
 registrou isso como "não achei" e não como "não existe", porque não esgotou todos os caminhos de
@@ -272,23 +290,85 @@ aplicação de condição. Quem implementar confere antes de escrever.
 
 ## 4 · O que esta régua NÃO decide
 
-Nesta lista está o que precisa do humano, e nada aqui é bloqueio de engenharia.
+**Respondido pelo humano em 10/09/2026.** Dois fecharam, dois seguem abertos, e nenhum deles abre
+implementação · a régua continua parada até ele mandar.
 
-1. **A curva da dificuldade do teste contra o dano sofrido.** É número de mesa.
-2. **A triagem das 55 condições** pela marca nova de "impede continuar a montagem", e de quem é
-   essa passada.
-3. **Se `D-C2` fica de pé:** a Preparação de Arte tem regra de movimento própria (caminhada de
-   graça), ou cai no desvio de emergência como todo gesto comprometido? Uma regra a menos é mais
-   simples e contraria a descrição da mesa.
-4. **Se abaixar o nível efetivo no Golpe deve comprar alguma coisa.** Como a régua está escrita,
-   não compra nada, e é possível que a intenção fosse outra.
+### 4.1 · A curva da dificuldade contra o dano · ABERTA, e é dele
+
+Continua com o humano, que confirmou não decidir agora. **É o único número que falta para o §3.2
+fechar.** Todo o resto daquela seção está decidido: o teste é por Tick e não por ataque, é um só
+quando várias coisas atingem no mesmo Tick, reusa Vontade + Acerto Arcano, e cresce com o dano. Só
+a curva falta.
+
+### 4.2 · A triagem das 55 condições · FECHADA no método, e a decisão é dele
+
+**A decisão é do humano; o trabalho braçal não.** A Executora extrai as 55 numa tabela com três
+colunas: **nome da condição, o texto dela, e uma coluna em branco.** O humano preenche a terceira.
+
+**Duas restrições explícitas, e a segunda é a que importa:** não se pede julgamento à Executora, e
+**`foraDeCombate` não entra como palpite inicial.** A coluna nasce vazia. O motivo, nas palavras
+dele: com um palpite na coluna, ele lê o palpite em vez de decidir. É a mesma razão pela qual
+`foraDeCombate` não serve como resposta (o `D-C3` acima) · ela responde outra pergunta, e sugeri-la
+contamina a triagem inteira.
+
+### 4.3 · O `D-C2` FICA DE PÉ · fechada
+
+**A Preparação de Arte tem movimento próprio: caminhada, pelo preço normal, sem sair da
+Preparação.** Não cai no desvio de emergência.
+
+**O motivo, e ele é de jogo:** a 1 Tick por metro o conjurador não se mexe. A Preparação viraria
+ficar parado esperando, que é o oposto do que dá jogo à espera. Uma espera em que se pode andar é
+uma decisão; uma espera em que não se pode é uma contagem.
+
+**O custo fica registrado, e é o que eu mesmo escrevi ao propor:** quem implementar tem de
+distinguir **gesto físico** de **Preparação de Arte** em todo lugar que hoje pergunta só se a fase
+é livre (`faseEm(acaoNo(c), T) !== 'livre'`). São duas regras de movimento durante gesto onde hoje
+há uma, e o ponto onde isso é decidido não é único.
+
+### 4.4 · Abaixar o nível efetivo · FECHADA, e a pergunta era outra
+
+**Abaixar o nível efetivo não compra nada, e está certo assim.** O que se comprou foi tempo, e o
+tempo já passou. Quem economiza Mana é quem baixa GRAU, porque a Mana é a soma. Baixar o nível
+efetivo é situacional: significa que o plano mudou, e o custo em Ticks já foi pago.
+
+**A pergunta que eu tinha escrito aqui estava mal formulada**, e o humano a reescreveu como a que
+importa: **se o gating não punir Nível alto, baixar o nível efetivo no Golpe é gesto sem função, e
+a interface estaria oferecendo uma escolha vazia.**
+
+**O que o gating faz hoje com o nível efetivo, levantado em 10/09/2026:**
+
+- **o `nivel` gravado na linha do efeito É LIDO, e num lugar só:** `dissipar`
+  (`src/lib/artes-grid-mesa.ts:989`) · `const alcanca = (e.nivel || 1) <= meu;`. Um efeito de
+  nível N só pode ser dissipado por quem investiu pelo menos N pontos na Dissipar. Quem não
+  alcança recebe recusa com o motivo escrito no registro;
+- **portanto o gesto NÃO é vazio.** Baixar o nível efetivo no Golpe **torna o próprio efeito mais
+  fácil de dissipar**. É uma consequência real, e negativa para quem conjura · o que faz dela um
+  motivo para NÃO baixar, e não um prêmio por baixar;
+- **e o resto do gating não olha para ele.** O que filtra quais Efeitos o personagem pode escolher
+  é o `nivelArte`, a maestria da ficha (`efeitosDisponiveis`, `artes-grid.ts:326`), e o que
+  encarece Parâmetro acima da maestria também é o `nivelArte` (`custoDe`, `artes-grid.ts:261`).
+  Nenhum dos dois enxerga o nível efetivo da conjuração.
+
+**Uma coisa achada de passagem que quem implementar precisa saber:** o `dissipar` compara
+`e.nivel` (que é o MÁXIMO) contra `plano.custo.total` (que é a SOMA). **É a armadilha do §1 viva em
+código de produção**, comparando os dois números que não são o mesmo. Não é escopo desta régua
+consertar, mas quem tocar o nível efetivo passa por ali.
+
+**Fica com o humano:** com o gating fazendo só isso, a escolha de baixar o nível efetivo é
+oferecida na interface ou é só consequência automática de baixar graus? Ele decide.
 
 ---
 
 ## 5 · O que fica pendente e depende de outra frente
 
-- **Interrupção causada por TERRENO** (chão que se abre, ponte que desmorona) depende da **fase
-  4**, que não começou. Registrado nos dois lugares, aqui e no `Pendencias.md`.
+- **Só a interrupção por TERRENO depende da fase 4** (chão que se abre, ponte que desmorona), que
+  não começou. Registrado nos dois lugares, aqui e no `Pendencias.md`.
+
+  **Corrigido em 10/09/2026, e a correção é do humano:** a versão anterior desta linha dizia que a
+  interrupção por ação externa dependia da fase 4, e isso fazia a régua nascer bloqueada numa parte
+  que é implementável hoje. **"Alguém que se joga contra ele" e "explosão perto" não dependem de
+  nada** · são golpe, empurrão e efeito em área, que o motor já tem. Eles estão na mesma frase do
+  §3.1 e seguem por ele, sem esperar fase nenhuma. O que espera é o terreno, e só ele.
 - **Criaturas que se teleportam ou se deslocam por baixo da terra** não seguem o caminho normal, e
   isso toca esta régua **e** o item do corpo a corpo. → `Pendencias.md` `L69`, e por ele `L67`.
 - **A ordem de resolução dentro do Tick** (`Pendencias.md` `L1`, N4 e N5) é a outra metade da

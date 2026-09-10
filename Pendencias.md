@@ -3824,8 +3824,9 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   fora: é decidir se a linha dele ganha a nota de que o número preciso mora no `ESTADO.md`.
   Achado conferindo outra coisa, registrado e parado aqui.
 
-- [ ] **L64 · [LEVANTADO em 10/09/2026, tamanho medido, PARADO esperando o humano · não é
-  trabalho de engenharia] A separação de sentinela e magnitude que precede o `teto6`.**
+- [ ] **L64 · [RESPONDIDO pelo humano em 10/09/2026 · a resposta é (b), o referente existe, e o
+  tamanho está medido. FAZER: a separação primeiro; o `teto6` NÃO se constrói ainda] A separação
+  de sentinela e magnitude que precede o `teto6`.**
 
   Aberta como item de trabalho, investigada sem escrever código, e **parada porque o que
   bloqueia não é o conserto, é a definição**. Registrada aqui, e não só no chat e no
@@ -3872,8 +3873,14 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
 
   **RESPONDIDO EM 10/09/2026 PELO HUMANO: é a resposta (b), e o referente existe.** O campo é
   `Condicao.velocidade`, e a sentinela é o `-99` da condição `fora-do-tempo`, que quer dizer **não
-  age**, e não "age muito devagar". A investigação não achou porque procurou um campo com o nome
-  do conceito, e o referente é **um campo comum carregando duas grandezas**. As outras três
+  age**, e não "age muito devagar".
+
+  **POR QUE A BUSCA NÃO ACHOU, e isto é a lição do item:** ela procurou **um campo com o nome do
+  conceito** · algo chamado sentinela, marca, flag, estado. O referente é **um campo comum
+  carregando duas grandezas**, e um campo assim não tem nome que o denuncie · ele se chama
+  `velocidade` e parece velocidade. A busca certa não era por nome, era por **valor fora de
+  escala**: um número que não pertence à faixa dos seus vizinhos é sentinela mesmo quando o campo
+  não diz que é. As outras três
   condições que usam o mesmo campo carregam magnitude de verdade: `acelerado` −2, `retardado` +2,
   `terreno-dificil` +1. Quatro condições de 55 usam o campo; três são grandeza, uma é sentinela, e
   nada no formato as distingue.
@@ -3908,8 +3915,9 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   ignora o campo, então "separar" e "passar a aplicar" viram a mesma tarefa se ninguém disser que
   são duas.
 
-  **`teto6` continua sem ligar**, e agora por um motivo confirmado em vez de suposto: primeiro a
-  separação, com o tamanho acima; o teto depois.
+  **`teto6` NÃO SE CONSTRÓI**, instrução explícita do humano em 10/09/2026, e agora por um motivo
+  confirmado em vez de suposto: **primeiro a separação de sentinela e valor no campo `velocidade`,
+  com o tamanho acima; o teto depois.** O tamanho ele já tem; o que falta é a vez.
 
   **O SEGUNDO PREJUÍZO DO MESMO ARQUIVO PERDIDO.** O referente estava escrito no texto que a
   sessão antiga produziu para virar o `PORQUE.md`, e que **nunca foi commitado**. O primeiro
@@ -3943,9 +3951,28 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   todo commit que mexa em `grid.astro`. Nenhuma é decisão de engenharia isolada: (a) e (b)
   mudam o que o portão prova.
 
-- [ ] **L67 · [LEVANTADO em 10/09/2026 numa batalha de mesa, tamanho medido, PARADO esperando o
-  humano · o conserto não abriu] O corpo a corpo termina DENTRO do inimigo que ocupa mais de um
-  hexágono, e o estado que sobra é proibido pela própria regra de ocupação da mesa.**
+- [ ] **L67 · [REGRA DECIDIDA pelo humano em 10/09/2026, tamanho medido, NÃO ABERTO · a frente da
+  voz vem antes] O corpo a corpo termina DENTRO do inimigo que ocupa mais de um hexágono, e o
+  estado que sobra é proibido pela própria regra de ocupação da mesa.**
+
+  **A REGRA, decidida em 10/09/2026:** o **alcance corpo a corpo se mede de BORDA A BORDA**, e não
+  de centro a centro. O alvo grande ocupa área, e adjacência a ele é adjacência ao **corpo** dele,
+  não ao ponto médio.
+
+  **Isso resolve a cadeia na origem, e é por isso que é a regra certa e não um remendo:** com o
+  raio do alvo somado, o destino da perseguição **já nasce na borda**; a primeira caminhada
+  consegue chegar lá; e o gatilho que afrouxa o veto **não dispara**, porque ele dispara justamente
+  quando não se aproximou. Nenhum dos três mecanismos precisa ser alterado · o primeiro deles passa
+  a estar certo, e os outros dois deixam de ser exercitados por este caso.
+
+  **O CRITÉRIO DE ACEITAÇÃO, e ele é uma proibição:** **não remova a segunda passada que afrouxa o
+  veto.** Ela existe para outro caso, o Enorme parado ao lado prendendo os seis vizinhos de quem
+  encosta nele, e esse caso continua precisando dela. **Consertar uma situação sem reabrir a outra
+  é o critério**, e quem implementar prova as duas, não uma.
+
+  **O tamanho:** sete lugares medem alcance do centro, e é esse número que dimensiona o trabalho
+  (ver a lista abaixo). A régua de alcance precisa passar a conhecer o raio do alvo, o que ela hoje
+  não conhece em ponto nenhum.
 
   **O defeito visto na mesa:** o atacante que persegue um inimigo grande não para na borda dele,
   entra no corpo dele. **O achado é maior que o defeito:** ele TERMINA lá, e a mesa grava.
@@ -3991,20 +4018,36 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   escrita aqui e não só no comentário do código: ela é a restrição do conserto, não uma
   observação sobre ele.
 
-  **A DIREÇÃO, escrita em 10/09/2026 pelo humano, e o conserto continua fechado:** o achado maior
-  é a gravação que não passa pela checagem, e **isso é o `L66` em outro lugar · a invariante mora
-  nos chamadores em vez de morar na escrita**. Os dois itens são o mesmo defeito estrutural visto
-  de dois ângulos: em `L66` a função recusa em silêncio e cada chamador inventa o próprio sinal;
-  aqui a função de escrita nem pergunta, e cada chamador é que decidiu se ia perguntar. Quem
-  abrir um dos dois lê o outro antes de escolher onde a regra vai morar.
+  **O ACHADO MAIOR SAIU DAQUI E VIROU ITEM PRÓPRIO**, por decisão do humano em 10/09/2026: a
+  gravação que não passa pela checagem é defeito estrutural e não detalhe deste conserto. → `L70`.
 
   A forma foi catalogada em `docs/simulacao/CATALOGO.md`, "o caminho alternativo que trata a
   recusa certa como falha": não ter conseguido chegar era a regra funcionando, e foi lido como
   erro a contornar.
 
-  **Fica com o humano:** parar na borda muda alcance, área, linha de visão e a checagem de
-  ocupação de uma vez só, e a decisão de como consertar é dele. → `L66` (a mesma família de
-  silêncio, e agora também a mesma família estrutural), → `L69` (quem não segue caminho de borda).
+  **A ordem:** a frente da voz vem antes, e nada disto entra na Executora enquanto ela não fechar.
+  → `L70` (a invariante que mora no chamador), → `L66` (a mesma família de silêncio), → `L69` (quem
+  não segue caminho de borda).
+
+- [ ] **L70 · [REGISTRADO em 10/09/2026, ligado ao `L67`, NÃO ABERTO] A gravação de posição não
+  passa pela checagem de ocupação, e a invariante mora nos chamadores em vez de morar na escrita.**
+
+  Saiu do `L67` porque não é detalhe daquele conserto: é o defeito estrutural que aquele conserto
+  revelou. A perseguição escreve o token e grava direto, sem passar pela porta que confere se a
+  casa está livre. Depois disso, a função que responde "este ponto está bloqueado?" responde **sim**
+  para a casa onde a peça acabou de parar · o motor num estado que a própria regra dele proíbe.
+
+  **É o `L66` em outro lugar, e os dois são o mesmo defeito visto de dois ângulos:** em `L66` a
+  função de escrita recusa em silêncio, e cada chamador inventa o próprio sinal para o usuário; aqui
+  a função de escrita nem pergunta, e cada chamador é que decidiu se ia perguntar. Nos dois casos a
+  regra está espalhada por quem chama, em vez de morar onde o dado entra.
+
+  **A consequência que os dois compartilham:** um chamador novo não herda nem a pergunta nem o
+  sinal. Foi assim que o `L62` nasceu (a barra de comando chamou e não trouxe sinal), e foi assim
+  que o `L67` nasceu (a perseguição gravou e não perguntou). O terceiro chamador vai repetir.
+
+  **Não consertar agora**, instrução do humano. Os dois ficam ligados para quem abrir um achar o
+  outro e decidir de uma vez só onde a regra vai morar. → `L66`, → `L67`, → `L62`.
 
 - [ ] **L68 · [LEVANTADO em 10/09/2026 numa batalha de mesa, PARADO esperando o humano · criar a
   distinção é decisão dele] Arrastar uma peça fora do turno dela passa em silêncio, e a distinção
@@ -4041,13 +4084,27 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   AGIR FORA DO TURNO, que vira evento com marca) é regra nova, e a régua das Artes é o precedente
   a copiar, não a estender por analogia sem ele dizer.
 
-  **A DIREÇÃO, escrita em 10/09/2026 pelo humano, para quando isto abrir:** o modal do arrasto
-  **não inventa mecanismo nenhum**. AGIR FORA DO TURNO já existe, com custo real e campo próprio,
-  e o que o modal faz é ROTEAR para o que existe · a escolha do mestre vira a chamada que o menu
-  da peça já oferece hoje. CORRIGIR POSIÇÃO é o outro braço, e o precedente dele é a régua das
-  Artes: não cobra, não declara tempo, e o registro diz "corrigiu". **Nenhum dos dois braços é
-  mecanismo novo**, e é isso que faz o item ser pequeno depois de decidido. O que é novo é só a
-  pergunta, e quem responde é o mestre.
+  **DECIDIDO em 10/09/2026: CONSTRÓI. Mas DEPOIS da voz, e não agora.**
+
+  **O diálogo não pergunta "tem certeza". Pergunta qual das duas é:**
+
+  - **CORRIGIR POSIÇÃO** · a mesa arrumando o que ela mesma escreveu. Não consome nada, não vira
+    evento;
+  - **AGIR FORA DO TURNO** · a ficção aconteceu. Roteia para o mecanismo que já existe, com marca
+    no registro.
+
+  **O modal NÃO inventa mecanismo nenhum, e é isso que faz o item ser pequeno.** Agir fora da vez
+  já existe, com custo real e campo próprio, e o que o modal faz é ROTEAR para ele · a escolha do
+  mestre vira a chamada que o menu da peça já oferece hoje. Corrigir posição é o outro braço, e o
+  precedente é a régua das Artes: não cobra, não declara tempo, e o registro diz "corrigiu". O que
+  é novo é só a pergunta, e quem responde é o mestre.
+
+  **E o registro passa a guardar a diferença, que hoje não guarda.** A gravação anota todo
+  movimento como `mover`, com origem e destino e nenhuma marca de turno. Quem ler o registro amanhã
+  não separa uma correção de uma ação fora de hora, e essa metade do item é tão necessária quanto o
+  diálogo · sem ela, a distinção existe no instante do clique e some do histórico.
+
+  **A ordem:** entra depois da frente da voz. Registrado agora com a direção escrita, não aberto.
 
 - [ ] **L69 · [ANOTADO em 10/09/2026, observação para o futuro, sem análise e sem abrir] Nem toda
   criatura chega pelo caminho de borda.** Existem criaturas que se teleportam e criaturas que se
