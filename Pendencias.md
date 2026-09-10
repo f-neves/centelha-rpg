@@ -1934,8 +1934,13 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   revisora refez a prova de regressão por conta própria (reverteu `combate.astro:903` (`ENC?.tick_atual`),
   viu as duas asserções falharem em `(0)`, restaurou) e rodou o par do P/G/R e a suíte
   completa sem reversão, tudo verde; confirmou que `?tick=` e `?deslocafila=` não se
-  pisam, linha a linha em `mesa-mock.mjs`. Nada a corrigir. Item 1 do lote 2 fechado; item
-  2 (a tela da lembrança) é construção nova e espera a semana nova.
+  pisam, linha a linha em `mesa-mock.mjs`. Nada a corrigir. Item 1 do lote 2 fechado.
+
+  **ITEM 2 FECHADO em 10/09/2026** (construído pelo humano em 07/09/2026, `5af06f8`,
+  reverificado pela Executora com o ensaio dos três sentidos): detalhe em `L32`, acima. **Os
+  dois itens do lote 2 estão fechados, e nenhum outro item de `L33`/fase 2.5 está registrado
+  neste arquivo** (única entrada com a tag `[FASE 2.5]`, conferida em 10/09/2026). O que
+  resta não é engenharia: rodar a migração 33 em produção, decisão do humano.
 
 - [x] **L32 · DECIDIDO em 06/09/2026 · A névoa esconde a EXISTÊNCIA do inimigo, não só a
   posição · falta a tela da lembrança, e é ela que trava a migração 33** · *achado na
@@ -1997,10 +2002,18 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   claro, ele vê o que acontece com o alvo, sem o autor ("Kael foi atingido", não "o goblin
   atacou Kael"). Efeito de área que pega casa escura e casa clara: ele lê a parte clara.
 
-  **O que está feito:** o caso E, na migração 32. Os casos A e C, parcialmente, pela migração
-  33 · **que NÃO RODOU.** **O que falta, e é o que trava a 33:** a tela que desenha a
-  lembrança (o caso D). Ela nunca existiu — zero ocorrências de "lembranca" em `src/` — e sem
-  ela os casos A, C e D não têm onde aterrissar. → a fase que abriga essa tela: **L33**.
+  **O que está feito:** o caso E, na migração 32. **CORRIGIDO em 10/09/2026: a tela que
+  desenha a lembrança (o caso D) NÃO está mais faltando.** Este parágrafo dizia "nunca
+  existiu, zero ocorrências de lembranca em src/" — desatualizado desde 07/09/2026, mesma
+  classe de defeito do `L34`/`L39` (`d1d70e4`). A tela foi construída pelo humano no commit
+  `5af06f8` (07/09/2026): CSS distinto, `pintarTokens` estendido, `resolverAtaque` recusando
+  a lembrança como alvo, `naFila` excluindo peça lembrada, knob `?lembranca=1` no mock, cena
+  `cenaLembranca` em `test-grid.mjs`. **Reverificada em 10/09/2026 pela Executora, ensaio dos
+  três sentidos completo:** verde (main como está, 2×, incluindo `npm run smoke` inteiro,
+  exit 0) · vermelho (marcação `lembranca` removida à mão, as três asserções que dependem
+  dela caem) · verde de novo (revertido). **Os três itens do gatilho da migração 33 (cabeçalho
+  do arquivo, linhas 11-21) estão satisfeitos** · falta só a decisão do humano de rodar a
+  migração em produção, que não é decisão de código. → a fase que abriga essa tela: **L33**.
 
   A diferença entre cortina e parede de cada uma das oito views está escrita **no banco**, em
   `comment on view`, pela migração 31. Documento longe do objeto envelhece; comentário ao lado
@@ -3575,6 +3588,15 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   esta data — o `L34` também com o checkbox errado. **Corrigido aqui e nos dois documentos.**
   A próxima medida do `L52` não deve ler este ajuste como itens novos fechados nesta sessão:
   os dois já estavam prontos, só não estavam marcados.
+
+  **NOTA DE 10/09/2026, terceira ocorrência do mesmo padrão em dois dias:** a tela da
+  lembrança (`L32`/`L33`, item 2 do lote 2 da fase 2.5) estava construída desde 07/09/2026
+  (`5af06f8`, pelo humano), mas `Pendencias.md` e `CONTEXTO.md` diziam "nunca existiu"/"em
+  andamento" até esta data. Corrigido, reverificado pela Executora com o ensaio dos três
+  sentidos antes de fechar. **Este padrão já apareceu três vezes em três dias** (`L34`/`L39`
+  em 09/09, este em 10/09) — vale registro à parte se aparecer uma quarta vez: o problema
+  pode ser o hábito de não atualizar `PLANO.md`/`CONTEXTO.md` no mesmo commit que fecha o
+  item, não três incidentes soltos.
 
 - [x] **L53 · [FEITO, levantamento de 08/09/2026] O mapa da raiz (`docs/MAPA.md`) e o que ele
   moveu.** Levantado por citação (`grep` do nome de cada arquivo/pasta contra o repositório
