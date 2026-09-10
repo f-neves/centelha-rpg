@@ -23,3 +23,10 @@
 - 14:33 — o Arquiteto já tinha reapontado as duas citações (`Pendencias.md:2819/2820`) antes de
   eu chegar lá para conferir. `npm run validate` verde agora (exit 0, reconferido). Commitando
   e abrindo a rodada.
+- 14:36 — commit `9fb409f` feito (só meus 2 arquivos, `git status` confere). `npm run rodada`
+  recusa abrir: árvore suja com os documentos do Arquiteto (Pendencias.md, ARQUITETO.md,
+  CONTEXTO.md, ESTADO.md, PASSAGEM.md, README.md) ainda não commitados, mais o `.7z` de antes
+  que voltou. Não é meu, não vou tocar — avisando e esperando.
+- 14:42 — meu commit (`9fb409f`) já tinha entrado antes das duas últimas mensagens do Arquiteto
+  chegarem. Não toco em `grid.astro` de novo, como pedido. Comitando só este arquivo de
+  progresso e seguindo para `npm run rodada`.
