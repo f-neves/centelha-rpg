@@ -3760,8 +3760,9 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   reportar mais um `✘` e seguir. Não invalida a prova (as três asserções relevantes já tinham
   falhado pelo motivo certo antes do crash).
 
-- [ ] **L62 · [FAZER, dois achados da revisão do aviso 30 (barra de comando, `VOZ.md` §8 item 1),
-  nenhum bloqueando o veredito (SEGUE)]**
+- [ ] **L62 · [dois achados da revisão do aviso 30 (barra de comando, `VOZ.md` §8 item 1), nenhum
+  bloqueando o veredito (SEGUE). O segundo FECHOU em 10/09/2026; o primeiro continua aberto por
+  decisão do humano]**
 
   1. **Sem teste automatizado commitado para a barra de comando.** O `smoke-comando.mjs` que a
      Executora rodou (roteiro puppeteer, 7 casos, `docs/simulacao/caixa/progresso-barra-comando.md`)
@@ -3776,6 +3777,16 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
      rodada, mas a interface nova de texto não tem nenhum feedback ambiente para esse caso. Achado
      pela Revisora investigando um percalço do próprio teste dela (escolheu uma casa que por acaso já
      estava ocupada), registrado como não bloqueante.
+
+     **FECHADO em 10/09/2026, rodada 31, veredito SEGUE** (`docs/simulacao/caixa/31-revisora.md`,
+     sha `7e29f36`, conferido ancestral de `origin/main` antes de escrever esta linha). O conserto
+     é `9fb409f`: três checagens em `executarComando`, ANTES da chamada, cada uma recusando com
+     mensagem própria · fora do tabuleiro, mesma casa, casa ocupada. As três foram rodadas ao vivo
+     pela Executora e refeitas do zero pela Revisora contra a bancada 24×16, com as mensagens
+     batendo exatamente. Ela foi além do texto e conferiu o TÍTULO do diálogo ("Erro", não "Não
+     entendi"), que prova que a recusa passa pela checagem nova e não por outro caminho de rejeição
+     da gramática. O tamanho do tabuleiro na mensagem sai do perfil da arena, não é texto fixo.
+     `npm run validate` verde nas duas pontas. → o silêncio que sobra virou `L66`.
 
 - [ ] **L63 · [ANOTADO, achado de passagem em 10/09/2026, não corrigido] Os três termos do
   trabalho do mestre aparecem com dois arredondamentos diferentes.** `CONTEXTO.md:32` e
@@ -3852,6 +3863,25 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   (nome de função) em vez de linha; (c) deixar como está e aceitar o reaponte como pedágio de
   todo commit que mexa em `grid.astro`. Nenhuma é decisão de engenharia isolada: (a) e (b)
   mudam o que o portão prova.
+
+- [ ] **L66 · [ANOTADO em 10/09/2026, recomendação da Revisora no veredito da rodada 31, não
+  corrigido] `porNoMapa` recusa em silêncio, e quem a chama tem de trazer o próprio sinal.**
+
+  Hoje a invariante existe só como comentário no código, e é isto: a função sai muda quando a
+  casa está ocupada ou quando a peça já está onde foi mandada. Os dois chamadores de hoje
+  compensam **por fora**, e cada um de um jeito diferente · o arrasto tem sinal visual (a peça
+  não solta da mão), e a barra de comando ganhou na rodada 31 três checagens em `executarComando`
+  que recusam antes de chamar. **Um terceiro chamador futuro não herda nenhum dos dois**, herda o
+  silêncio.
+
+  Registrado aqui, e não deixado no comentário, porque foi exatamente assim que o achado do `L62`
+  nasceu: o silêncio já existia pelo arrasto havia meses e só apareceu quando uma interface nova
+  o chamou sem trazer sinal próprio. O mesmo vale para a próxima.
+
+  **Não é conserto pendente, é rastro.** A decisão de não mexer na função foi consciente (`D31a`
+  no aviso da rodada 31, com o custo escrito), e a instrução do humano para aquela rodada era o
+  menos invasivo. Quem for abrir isto decide entre fazer a função devolver o motivo da recusa e
+  deixar como está, e a escolha muda os dois chamadores de hoje.
 
 ## H. Arremesso
 
