@@ -1,0 +1,45 @@
+{
+  "nota": "VOZ.md §8 item 1: a gramatica da barra de comando de texto do Grid. So os cinco verbos hoje chamaveis direto (porNoMapa, tirarDoMapa, encerrarVez, alternarAuto, esperarUmTick) tem entrada aqui - as outras oito funcoes do menu (curar, tirarVida, ajustarMana, editarIniciativa, alternarAlcance, abrirCondicoes, abortarGesto, agirForaDeHora) ficam de fora de proposito, ver VOZ.md secao 7. Palavras sao invencao, nao levantamento (mesmo aviso do VOZ.md §2): trocar aqui depois que o humano usar a barra numa batalha de verdade.",
+  "verbos": [
+    {
+      "id": "mover",
+      "palavras": ["mover", "move", "vai", "anda"],
+      "chama": "porNoMapa",
+      "parametro": "hex",
+      "desfaz": true,
+      "exemplo": "mover H7"
+    },
+    {
+      "id": "tirar",
+      "palavras": ["tirar", "tira", "remove", "remover"],
+      "chama": "tirarDoMapa",
+      "parametro": null,
+      "desfaz": true,
+      "exemplo": "tirar"
+    },
+    {
+      "id": "encerrar",
+      "palavras": ["encerrar", "encerra", "passar", "passa", "agiu"],
+      "chama": "encerrarVez",
+      "parametro": null,
+      "desfaz": false,
+      "exemplo": "encerrar"
+    },
+    {
+      "id": "auto",
+      "palavras": ["auto", "automatico", "robo"],
+      "chama": "alternarAuto",
+      "parametro": null,
+      "desfaz": false,
+      "exemplo": "auto"
+    },
+    {
+      "id": "esperar",
+      "palavras": ["esperar", "espera"],
+      "chama": "esperarUmTick",
+      "parametro": null,
+      "desfaz": false,
+      "exemplo": "esperar"
+    }
+  ]
+}

@@ -2411,6 +2411,7 @@ const SETAS = [
     offsetParaAxial, letraColuna, caminharHex, alemDe, naLinhaHex,
   } from '../../lib/hex';
   import { uiConfirmar, uiErro, uiFormulario, uiEscolher, contadorDeConsultas } from '../../lib/ui-dialog';
+  import { interpretarComando } from '../../lib/comando-barra';
   import {
     girarMapa, excluirMapa, medidaDeMapa, giroParaCaber, enquadramentoPadrao, medirImagem,
     type Giro,
@@ -8482,6 +8483,74 @@ const SETAS = [
       agora ? `${agora}d6` : 'nenhum'} (age no tick ${novoTick})`, { acao: null });
   }
 
+  // ========================================================= barra de comando
+  /**
+   * VOZ.md §8 item 1: campo de texto, sem microfone, sem Vosk. A régua contra a
+   * qual a voz vai se medir depois — se o comando ESCRITO não encolher gesto, o
+   * FALADO também não vai.
+   *
+   * A "PEÇA SELECIONADA" É `daVez()`, decisão registrada aqui e não no
+   * documento: o VOZ.md fala em "a peça selecionada no tabuleiro", e o Grid não
+   * tem hoje um estado de seleção por clique separado do arrasto e do menu —
+   * inventar um pediria mexer em `ligarArrasto`, que é refatorar código fora do
+   * escopo deste item. `daVez()` já é a peça que a tela destaca com a classe
+   * `vez`, e já é o que as teclas A (atacar) e Espaço (encerrar) usam como "a
+   * peça da mão" hoje. Custo: a barra só comanda quem está na vez; não dá para
+   * mandar uma peça fora da vez sem passar pelo menu dela.
+   */
+  const permissaoComando = (verboId: string, c: any): true | string => {
+    if (verboId === 'mover' || verboId === 'esperar') {
+      return mandoNela(c) || 'só quem manda nesta peça pode';
+    }
+    // tirar, encerrar, auto: as mesmas travas do menu (`abrirMenu`, acima).
+    if (!MESTRE) return 'só o mestre';
+    if (verboId === 'encerrar' && SIML()) return 'o relógio do simultâneo não usa "encerrar"';
+    if (verboId === 'auto' && (!SIML() || c.tipo !== 'criatura')) return '"auto" só existe no simultâneo, para criatura';
+    return true;
+  };
+
+  /** Despacha para uma das cinco funções já chamáveis direto — nenhuma outra. */
+  async function despacharComando(cid: string, cmd: { verbo: { id: string; chama: string }; hex?: { q: number; r: number } }) {
+    if (cmd.verbo.chama === 'porNoMapa' && cmd.hex) await porNoMapa(cid, cmd.hex.q, cmd.hex.r);
+    else if (cmd.verbo.chama === 'tirarDoMapa') await tirarDoMapa(cid);
+    else if (cmd.verbo.chama === 'encerrarVez') await encerrarVez(cid);
+    else if (cmd.verbo.chama === 'alternarAuto') await alternarAuto(cid);
+    else if (cmd.verbo.chama === 'esperarUmTick') await esperarUmTick(cid);
+  }
+
+  /**
+   * Interpreta e executa. NUNCA aproxima (VOZ.md §4): texto que não casa vira
+   * a pergunta "não entendi, foi um destes?", nunca um palpite silencioso.
+   */
+  async function executarComando(cid: string, texto: string) {
+    const c = COMBS.find((x: any) => x.id === cid); if (!c) return;
+    let cmd = interpretarComando(texto);
+    while (!cmd.ok) {
+      const escolha = await uiEscolher(`Não entendi "${cmd.ouvido}"`,
+        cmd.sugestoes.map((s) => ({ valor: s, rotulo: s })), { msg: cmd.motivo });
+      if (!escolha) return;
+      cmd = interpretarComando(escolha);
+    }
+    const permissao = permissaoComando(cmd.verbo.id, c);
+    if (permissao !== true) return uiErro('Não deu: ' + permissao);
+    // A REGRA DO VOZ.md §4: verbo com desfazer executa direto; sem, confirma.
+    if (!cmd.verbo.desfaz) {
+      const ok = await uiConfirmar(`${cmd.verbo.exemplo} · ${c.nome}`, { ok: 'Confirmar' });
+      if (!ok) return;
+    }
+    await despacharComando(cid, cmd);
+  }
+
+  async function abrirComando() {
+    const v = daVez();
+    if (!v) return;
+    const r = await uiFormulario(`Comando · ${v.nome}`, [
+      { nome: 'texto', rotulo: 'Comando', tipo: 'texto', valor: '' },
+    ], { ok: 'Executar', msg: 'mover H7 · tirar · encerrar · auto · esperar' });
+    if (!r || !r.texto?.trim()) return;
+    await executarComando(v.id, r.texto);
+  }
+
   /**
    * A AÇÃO "OUTRA COISA": a válvula do improviso.
    *
@@ -10861,6 +10930,7 @@ let roladoDano = '';
      *   1..9    abre o menu da enésima peça da fila
      *   Z       desfaz a última coisa
      *   F       tela cheia · Esc cancela o que estiver no ar
+     *   C       barra de comando de texto, com quem está agindo (VOZ.md §8)
      */
     document.addEventListener('keydown', (ev) => {
       const a = document.activeElement as HTMLElement | null;
@@ -10898,6 +10968,11 @@ let roladoDano = '';
         const v = daVez();
         if (!v || !mandoNela(v)) return;
         ev.preventDefault(); abrirOutra(v.id);
+        return;
+      }
+      if (ev.key === 'c' || ev.key === 'C') {
+        if (MIRA) return;
+        ev.preventDefault(); abrirComando();
         return;
       }
       if (/^[1-9]$/.test(ev.key)) {

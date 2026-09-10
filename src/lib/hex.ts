@@ -222,3 +222,25 @@ export function nomeHex(q: number, r: number): string {
   const { col, row } = axialParaOffset(q, r);
   return `${letraColuna(col)}${row + 1}`;
 }
+
+/** O inverso de `letraColuna`: "A" → 0, "Z" → 25, "AA" → 26. */
+export function colunaDaLetra(letras: string): number {
+  let val = 0;
+  for (const c of letras.toUpperCase()) val = val * 26 + (c.charCodeAt(0) - 64);
+  return val - 1;
+}
+
+/**
+ * O inverso de `nomeHex`: "H7" vira o hexágono, `null` se o texto não tiver
+ * essa forma. Existe para a barra de comando (VOZ.md §8 item 1): o mestre
+ * digita a casa pelo nome que já vê na tela e no registro, em vez de um q,r
+ * que ninguém escreve de cabeça.
+ */
+export function hexDoNome(nome: string): Hex | null {
+  const m = /^([A-Za-z]+)(\d+)$/.exec(nome.trim());
+  if (!m) return null;
+  const col = colunaDaLetra(m[1]);
+  const row = parseInt(m[2], 10) - 1;
+  if (col < 0 || row < 0) return null;
+  return offsetParaAxial(col, row);
+}
