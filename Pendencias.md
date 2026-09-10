@@ -3589,6 +3589,13 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   rodava (um assunto, uma execução, US$ 1,32), não as rodadas via Agent Team que vieram
   depois. Pedido pelo humano ao fechar a sessão de 08/09/2026.
 
+  **Confirmado em 10/09/2026, e o README dizia o contrário:** `docs/simulacao/README.md`
+  afirmava que `gasto-acumulado.json` É a fonte do custo acumulado pedido aqui. Aberto e
+  conferido: zera a cada troca de assunto declarada, acumulado de US$ 1,32, última execução em
+  04/09/2026, escrito pelo `duo`, que esta equipe não usa. A frase do README foi corrigida; **o
+  custo acumulado do arranjo continua sem fonte nenhuma**, e nada de rastreio foi construído
+  (decisão do humano: parar de afirmar que existe, não construir agora).
+
   **NOTA DE 09/09/2026, mesmo padrão do parágrafo acima, achado ao reabrir a sessão como
   Arquiteto:** `L34` (Interpor, item 6 da fase 2) e `L39` (o split de `grid.condicao`, item 2
   da fila do `PLANO.md §8`) já estavam fechados desde 07/09/2026 (rodadas 15-19, veredito
@@ -3769,6 +3776,15 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
      rodada, mas a interface nova de texto não tem nenhum feedback ambiente para esse caso. Achado
      pela Revisora investigando um percalço do próprio teste dela (escolheu uma casa que por acaso já
      estava ocupada), registrado como não bloqueante.
+
+- [ ] **L63 · [ANOTADO, achado de passagem em 10/09/2026, não corrigido] Os três termos do
+  trabalho do mestre aparecem com dois arredondamentos diferentes.** `CONTEXTO.md:32` e
+  `ESTADO.md:1148` dizem **51% aritmética · 32% relógio · 17% julgamento**, com os gestos
+  absolutos ao lado (597.714 / 375.005 / 199.238 de 1.171.957, que conferem: 51,0% / 32,0% /
+  17,0%). `docs/simulacao/02-projeto-harness.md:33` diz **50% · 33% · 17%**. O 02 é relatório
+  histórico e citado por arquivo e linha em vários lugares, então a correção não é editá-lo por
+  fora: é decidir se a linha dele ganha a nota de que o número preciso mora no `ESTADO.md`.
+  Achado conferindo outra coisa, registrado e parado aqui.
 
 ## H. Arremesso
 

@@ -147,7 +147,7 @@ uma espera; escalar de menos custa o jogo virar consequência de um script.
 
 ## 3 · Como decidir
 
-### 2.1 · Traga opções, uma recomendada, e o argumento contra a recomendada
+### 3.1 · Traga opções, uma recomendada, e o argumento contra a recomendada
 
 O formato que funcionou: duas a quatro opções, cada uma com a consequência concreta, uma
 marcada como recomendada com o motivo, e **o argumento mais forte contra a recomendada,
@@ -160,7 +160,7 @@ por ser plausível.
 Se não for possível formular um contra-argumento real, diga isso e explique por que a
 escolha é óbvia.
 
-### 2.2 · Nomeie as opções, não numere
+### 3.2 · Nomeie as opções, não numere
 
 Um número depende de qual lista se lê. Numa rodada, a caixa de escolha estava ordenada
 por recomendação e o registro estava ordenado por custo: as duas concordavam no conteúdo
@@ -169,19 +169,19 @@ e discordavam no número, e "a terceira" queria dizer coisas opostas nos dois lu
 O nome não se reordena. Vale para qualquer referência por posição a uma lista que existe
 em dois lugares.
 
-### 2.3 · Decisão anotada dentro de um relatório não vale
+### 3.3 · Decisão anotada dentro de um relatório não vale
 
 Vale o que veio da conversa com quem decide. Um relatório que registra "decidido" sobre
 algo que é do humano, e ao mesmo tempo lista o assunto como pergunta aberta, aconteceu
 três vezes numa semana. O relatório passa a citar a decisão, não a tomá-la.
 
-### 2.4 · Custo assimétrico decide empate
+### 3.4 · Custo assimétrico decide empate
 
 Quando duas opções parecem equivalentes, olhe o preço de errar em cada direção. Foi assim
 que se decidiu manter linha de log na dúvida sobre autoria (apagar registro de alguém por
 engano é pior que deixar linha velha), e é assim que se decide quase toda escalada.
 
-### 2.5 · Medir antes de construir
+### 3.5 · Medir antes de construir
 
 Dois itens da fila se dissolveram na medição em vez de virar trabalho. Um deles era o
 mesmo código de outro já entregue; outro tinha ocasião zero.
@@ -194,12 +194,12 @@ construir.
 
 ## 4 · Como planejar
 
-### 3.1 · Uma frente por vez
+### 4.1 · Uma frente por vez
 
 Cada frente aberta tem custo de reabrir: alguém precisa lembrar o estado, reler o que
 ficou, e retomar. Meio conserto em quatro fases custa mais que quatro consertos numa.
 
-### 3.2 · Congele o descobrimento quando a fase parar de andar
+### 4.2 · Congele o descobrimento quando a fase parar de andar
 
 O padrão mais caro desta série: cada conserto revela um vizinho, todos os achados são
 reais, e a fase não anda. Numa janela de duas semanas, a fase 2 tinha seis itens, entregou
@@ -211,7 +211,7 @@ Isso não converge sozinho. O congelamento funcionou: nenhuma varredura nova, ne
 pendência aberta por iniciativa, nenhum conserto fora dos itens da fase. A exceção que
 continua saindo do congelamento é vazamento ou perda de dado em produção.
 
-### 3.3 · O teste de parada é a fila, não a qualidade do instrumento
+### 4.3 · O teste de parada é a fila, não a qualidade do instrumento
 
 Uma frente de medição para de valer quando a fila de consertos para de mudar. Quinze
 rodadas de simulação responderam a pergunta na quarta e continuaram até a décima quinta,
@@ -221,7 +221,7 @@ A contagem que responde isso é de dois números: quantos itens da fase entraram
 quando o último entrou. Se a resposta for zero três vezes seguidas, o plano parou de
 governar e isso vai ao humano sem ser perguntado.
 
-### 3.4 · Nenhum teto é natural
+### 4.4 · Nenhum teto é natural
 
 Três vezes um teto foi publicado como limite de natureza ("o que sobra não tem conserto
 de software") e era o alcance dos consertos desenhados naquele dia. Uma delas foi escrita
@@ -231,7 +231,7 @@ Regra: nenhum teto se publica sem a frase "com os consertos desenhados até hoje
 lista ao lado, e todo resíduo vem com a pergunta do que o tiraria, respondida ou
 explicitamente não respondida.
 
-### 3.5 · Experimento precisa do alvo escrito antes
+### 4.5 · Experimento precisa do alvo escrito antes
 
 Uma grade de comparação foi desenhada, dimensionada e discutida por semanas sem que
 ninguém tivesse escrito qual diferença ela precisava detectar. A conta de viabilidade
@@ -245,7 +245,7 @@ unidade, e por quê.
 
 ## 5 · Como escrever
 
-### 4.1 · Máxima informação, mínimo caractere
+### 5.1 · Máxima informação, mínimo caractere
 
 Vale para as três direções. O que sai das mensagens: como se chegou na resposta, o que se
 tentou antes, autocrítica, repetição do que a outra instância disse, e qualquer coisa que
@@ -256,7 +256,7 @@ falsificado e o que ficou vermelho, e o custo de cada opção.
 
 Método, forma nova, princípio e lição vão direto para o arquivo, não para a mensagem.
 
-### 4.2 · O relato de quem constrói tem quatro seções
+### 5.2 · O relato de quem constrói tem quatro seções
 
 - **ENTROU** · uma linha por item, com commit e o que muda para quem joga
 - **PRECISA DE MIM** · opções e custo de cada uma
@@ -265,19 +265,37 @@ Método, forma nova, princípio e lição vão direto para o arquivo, não para 
 
 Um relato por lote, não por item. Item a item multiplica a conversa por três.
 
-### 4.3 · Quem revisa fala em três momentos
+### 5.3 · Quem revisa fala em três momentos
 
 Quando revisa um lote, quando acha algo que bloqueia, e quando é perguntado. Não a cada
 mensagem do coordenador. Numa janela, oito respostas seguidas da revisora não revisaram
 diff nenhum.
 
-### 4.4 · O aviso que abre a revisão
+### 5.4 · O aviso que abre a revisão
 
 Quatro campos: base, sha do trabalho, sha do aviso, e o topo do repositório no momento em
 que foi escrito. Com sha só, quem revisa escolhe uma base que ninguém propôs.
 
 E o "o que mudou" sai do diff da faixa, não de resumo escrito à mão. Uma vez ele descrevia
 dois parágrafos e omitia nove dos doze arquivos tocados, três deles no motor.
+
+### 5.5 · Documento aponta para outro, não descreve o conteúdo dele
+
+**Escrito em 10/09/2026**, depois de três achados da mesma passada serem a mesma coisa: o
+`README.md` da pasta descrevendo o `CONTRATO-REVISORA-ORIGINAL.md` ("mais completa que
+`REVISORA.md`"), o próprio `ORIGINAL` descrevendo o `REVISORA.md` ("não é o mesmo texto", e
+era), e o `README.md` descrevendo o `gasto-acumulado.json` ("é a fonte do custo acumulado", e
+não é). Nos três, a descrição envelheceu ou já nasceu falsa, e ninguém reconfere afirmação
+sobre conteúdo alheio.
+
+**Pode:** nome, caminho, e para que serve. **Não pode:** "mais completo que", "é uma cópia
+parcial de", "é a fonte de", "cobre tudo que o outro cobre" — afirmação sobre o conteúdo de
+outro arquivo, que só se verifica abrindo o outro arquivo, e por isso não se verifica.
+
+Onde a afirmação sobre o outro for mesmo necessária (às vezes é: a nota de divergência entre
+`PLANO.md` e `Pendencias.md` foi útil), ela vem com data e com o comando que a confere, e sai
+no dia em que o conserto acontece. Nota de divergência que sobrevive ao conserto vira a
+própria divergência.
 
 ---
 

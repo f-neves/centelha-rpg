@@ -21,7 +21,7 @@ de abertura; a lista abaixo aponta para lá em vez de copiar, para as duas não 
 
 - **Arquiteto**, ao abrir uma sessão nova: `PASSAGEM.md` → `PLANO.md` → `ARQUITETO.md` →
   `CONTEXTO.md` → `CATALOGO.md` → `Pendencias.md` (seis arquivos, nesta ordem). Não os
-  relatórios `00` a `09` nem `CONTRATO-REVISORA-ORIGINAL.md` — abre só para procedência.
+  relatórios `00` a `09` nem `REVISORA.md` — abre só para procedência.
 - **Auditora**, ao abrir: `CONTRATO-AUDITORA.md` → `PASSAGEM.md` (dois arquivos). O resto ela
   lê sob demanda, quando o Arquiteto perguntar algo específico.
 - **Executora** e **Revisora** não têm lista própria aqui: nascem de um prompt do Arquiteto
@@ -49,17 +49,13 @@ existe", "os motivos das decisões") não tem endereço nenhum.
 | `CATALOGO.md` | a lista de formas de defeito e a pergunta que cada uma faz, ancorada no símbolo que se está digitando. Todo instrumento novo passa por aqui antes de ser construído. Cresce por achado, não se conta ("as N formas" envelhece na forma seguinte). |
 | `CONTRATO-REVISORA.md` | o contrato ATIVO da Revisora desta equipe (Executora + Revisora, via Agent Team, desde 07/09/2026). Começou curto de propósito e cresce por decisão do Arquiteto, um item de cada vez. |
 | `CONTRATO-AUDITORA.md` | o papel da Auditora: confere afirmação contra o disco, não conserta, não commita, não decide, não abre trabalho por iniciativa. |
+| `VOZ.md` (movido para cá em 10/09/2026, estava na raiz) | a frente do comando por voz no Grid: as decisões fechadas, o que está autorizado construir agora e em que ordem (§7/§8). Não é fase e não entra na numeração de fases. O código e a bancada citam este arquivo pelo nome curto (`VOZ.md §8`), sem caminho. |
 | `Pendencias.md` (na raiz do repo, não nesta pasta) | os itens abertos do projeto inteiro, numerados por `L`. É a fonte de status mais corrente que existe: quando ela e `PLANO.md`/`CONTEXTO.md` divergem sobre se um item fechou, ela vence (ver nota abaixo). |
 
-**Nota de divergência encontrada em 08/09/2026:** `PLANO.md` §2 e §8 e `CONTEXTO.md` ainda
-descrevem a Fase 2 como "cinco de seis" e o item 2 da fila (`grid.condicao`) como pendente.
-`Pendencias.md` `L34` §6 mostra o item 6 (Interpor) IMPLEMENTADO E APROVADO desde 07/09
-(rodada 15, e2e nas rodadas 16-17), e `L39` mostra `grid.condicao` FEITO desde 07/09 (rodada
-19). Os dois primeiros itens da fila do `PLANO.md` §8 já estavam prontos quando este README
-foi escrito, e os dois documentos de "estado corrente" não foram reescritos para refletir
-isso. Fica registrado aqui em vez de corrigido nesta passada, porque corrigir o texto das
-fases é edição de conteúdo do plano, e a primeira passada é só housekeeping de nome e de
-mapa.
+**A nota de divergência que estava aqui saiu em 10/09/2026, resolvida:** ela apontava que
+`PLANO.md` §2/§8 e `CONTEXTO.md` ainda descreviam a Fase 2 como "cinco de seis". O `PLANO.md`
+§8 foi corrigido em 09/09/2026 e o `CONTEXTO.md` foi reescrito em 10/09/2026. Nota de
+divergência que sobrevive ao conserto vira a própria divergência.
 
 ## Registro histórico
 
@@ -67,8 +63,7 @@ mapa.
 |---|---|
 | `00-diagnostico.md` a `09-bateria-grande.md` | a série de relatórios da frente de simulação (medição de carga do mestre no Grid), na ordem em que foram escritos. `02-projeto-harness.md` (253,9K, o maior) é o arquivo-fonte dos casos que viraram perguntas em `CATALOGO.md`; `09-bateria-grande.md` é o relatório da bateria de 21.600 batalhas que `ESTADO.md` resume. A frente está ENCERRADA (`CONTEXTO.md`): a segunda bateria (grade de 112 células, as quinze bandeiras) não vai acontecer. Não lidos linha a linha nesta passada — cada um se abre só para checar a procedência de um número citado em outro lugar. |
 | `ESTADO.md` | os números medidos pela frente de simulação, hoje. **Não é histórico no sentido de superado**: é a fonte corrente de todo `R:NNN` citado no resto do projeto, lida de `resultados/09-bmtq638zo.txt`. É histórico no sentido de que a frente que o produziu está fechada e ele não vai ganhar uma medição nova — mas enquanto alguém citar um `R:`, este arquivo está em uso. |
-| `REVISORA.md` | o contrato da Revisora da frente de simulação (a equipe antiga, encerrada), copiado byte a byte de `centelha-revisora/.claude/CLAUDE.local.md` quando aquela instância fechou. Onde fala "você", fala da revisora antiga. O que dele vale para a Revisora de hoje migra para `CONTRATO-REVISORA.md`, um item por vez, por decisão do Arquiteto — não por herança automática. |
-| `CONTRATO-REVISORA-ORIGINAL.md` | cópia integral (2064 linhas) do mesmo `CLAUDE.local.md`, feita em 08/09/2026 antes de remover a worktree `centelha-revisora` com `git worktree remove` (aquele arquivo nunca foi versionado, existia só naquele disco). Mais completa que `REVISORA.md`, que já era cópia parcial. **Ainda tem duas seções sem destino decidido**: o "roteiro de itens" e "Decisões do humano que já valem" — a Auditora achou isso na rodada 26 (`caixa/26-auditora.md`) e `CONTRATO-REVISORA.md` ainda não decidiu, item por item, o que delas vale para a equipe nova. Não é esquecimento resolvido; é pendência registrada. |
+| `REVISORA.md` | o contrato da Revisora da frente de simulação (a equipe antiga, encerrada), copiado byte a byte de `centelha-revisora/.claude/CLAUDE.local.md` quando aquela instância fechou. Onde fala "você", fala da revisora antiga. O que dele vale para a Revisora de hoje migra para `CONTRATO-REVISORA.md`, um item por vez, por decisão do Arquiteto — não por herança automática. **Duas seções dele ainda estão sem destino decidido**: o "roteiro de itens" e "Decisões do humano que já valem" (achado da Auditora na rodada 26, `caixa/26-auditora.md`); `CONTRATO-REVISORA.md §5` responde parte, o resto segue pendência registrada. |
 
 ## `caixa/` · o canal entre Executora e Revisora
 
@@ -77,9 +72,12 @@ depois o que cada instância afirmou em cada rodada. `caixa/README.md` documenta
 inteiro (o par `NN-executora.md`/`NN-revisora.md`, o script `npm run duo`, os tetos, as sete
 paradas); o que segue aqui é só o que esse arquivo não cobre.
 
-`gasto-acumulado.json` vive aqui: é o registro do custo por assunto, lido e atualizado pelo
-`duo` a cada chamada, e é a fonte do "custo acumulado do arranjo" pedido em `Pendencias.md`
-`L52`.
+`gasto-acumulado.json` vive aqui, e **não responde pelo arranjo de hoje** (corrigido em
+10/09/2026, a frase anterior o chamava de fonte do custo acumulado pedido no `L52`): ele é
+escrito pelo script `duo`, que esta equipe não usa; zera a cada troca de assunto declarada; e a
+última execução registrada nele é de 04/09/2026, com US$ 1,32 acumulados. O custo acumulado do
+arranjo Arquiteto/Executora/Revisora continua **sem fonte** — registrado no `L52`, não
+construído.
 
 `DIARIO.md` é da frente de simulação (a numeração de rodada dele é da revisora antiga, não
 desta caixa) — registro histórico do que o par acertou e deixou passar naquela frente.

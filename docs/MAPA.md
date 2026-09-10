@@ -129,9 +129,11 @@ dezenas de projetos sem nenhuma ligação com o Centelha, fora do escopo deste m
   `TECHLEAD.md`) já foi movido para `docs/simulacao/` no commit `c0e46dc`, exatamente porque essa
   pasta não tinha git e não tinha histórico.
 - **`centelha-revisora`** (a antiga) · não existe mais. Foi removida com `git worktree remove`
-  em 08/09/2026, depois de copiar o `CLAUDE.local.md` dela para
-  `docs/simulacao/CONTRATO-REVISORA-ORIGINAL.md`. Citada aqui só para quem procurar não achar e
-  se perguntar se sumiu por engano: não sumiu, o conteúdo tem endereço novo.
+  em 08/09/2026, depois de copiar o `CLAUDE.local.md` dela para `docs/simulacao/REVISORA.md`.
+  Citada aqui só para quem procurar não achar e se perguntar se sumiu por engano: não sumiu, o
+  conteúdo tem endereço novo. (A cópia foi feita duas vezes, e a segunda,
+  `CONTRATO-REVISORA-ORIGINAL.md`, foi apagada em 10/09/2026: era o mesmo texto, e o cabeçalho
+  dela afirmava o contrário. Ver `CATALOGO.md`.)
 
 **Atualização de 08/09/2026, segunda passada:** os cinco candidatos com zero citação (`Combate_
 Prolongado.md`, `Defesas.md`, `Miniaturas_3D.md`, `Paleta_Centelha.html`,

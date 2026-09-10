@@ -26,7 +26,7 @@ lore/mapas/Mapa Teste1.jpg
 D&D/
 
 # SO / editor
-bash.exe.stackdump
+*.stackdump
 .DS_Store
 Thumbs.db
 *.log

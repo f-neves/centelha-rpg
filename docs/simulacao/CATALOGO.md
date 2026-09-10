@@ -76,6 +76,7 @@ segunda tinha ficado verde por cegueira.
 | **o acesso tolerante que nunca lança** (B12) | `campo \|\| []`, `campo?.x`, todo acesso que devolve valor válido em vez de lançar | isto é o caminho certo, ou é um caminho errado que nunca vai denunciar a si mesmo? |
 | **fechar a frente sem fechar o documento** (H1/H2/K28/D2) | trabalho implementado e commitado, item do mapa ainda `[ ]` | o mapa sabe que isto já aconteceu, ou só o código sabe? |
 | **o resultado que chegou e ninguém leu** | processo em background, arquivo de saída, exit code | isto terminou, e a saída já foi lida? |
+| **o documento que se justifica por um fato falso sobre si** | cabeçalho novo que diz "não é o mesmo que", "é mais completo que", "é cópia parcial de" | o `diff` concorda com a frase que faz este arquivo existir? |
 
 **DUAS NOVAS, DE 06/09/2026, ACHADAS NA REVISÃO DO AVANÇO UNIFICADO:** a primeira é o gatilho —
 fica verde, o rótulo continua descrevendo o que deveria medir, e nada acusa a mudança por baixo. A
@@ -89,8 +90,8 @@ contrato nenhuma, mesmo tendo a MESMA forma de laço e o mesmo `dica`/`.title` q
 afetadas. `test-grid.mjs:2407` é a forma exata, e é falso positivo por isso: quem varrer de novo
 por esta família olha o `goto` da cena antes do laço, não o laço sozinho.
 
-**São 34**, e a contagem é do dia em que o arquivo nasceu (nasceu com 25, fechou o primeiro dia
-com 29, ganhou mais uma no dia seguinte, mais uma em 08/09 e mais uma em 10/09) · ela não é para
+**São 35**, e a contagem é do dia em que o arquivo nasceu (nasceu com 25, fechou o primeiro dia
+com 29, ganhou mais uma no dia seguinte, mais uma em 08/09 e duas em 10/09) · ela não é para
 ser citada em instrução nenhuma, pelo motivo escrito lá em cima.
 
 **Duas se dobram conforme quem lê**, e vale dito porque explica a divergência entre contagens: a
@@ -387,3 +388,21 @@ trabalho de outra instância.
 §1.4`):** quem dispara um comando lê o código de saída e a saída dele antes de dizer qualquer
 coisa sobre o comando. "Rodando" só é frase válida com processo conferido; depois de disparar e
 antes de conferir, a frase certa é "não sei ainda", nunca "rodando" por presunção.
+
+**UM CASO NOVO, DE 10/09/2026, E ELE APAGOU 2.078 LINHAS:** `CONTRATO-REVISORA-ORIGINAL.md`
+nasceu em 08/09/2026 com um cabeçalho afirmando que **não era o mesmo texto** de
+`REVISORA.md`, "que já era uma cópia parcial". `diff` dos dois: o corpo é idêntico, e a única
+diferença são as linhas de cabeçalho de cada um. **A frase falsa era a justificativa inteira
+para o arquivo existir**, e ela se reproduziu: o `README.md` da pasta repetiu ("mais completa
+que `REVISORA.md`, que já era cópia parcial") sem que ninguém rodasse o `diff`. Achado pelo
+humano numa conferência da pasta, três dias depois; o arquivo foi apagado e as três citações
+vivas (README, `PASSAGEM.md §9`, `MAPA.md`) reapontadas para `REVISORA.md`.
+
+**O que torna esta forma diferente da "garantia correta sobre o eixo errado":** lá a
+afirmação é sobre o comportamento do código e envelhece quando o código muda. Aqui a
+afirmação é sobre **outro arquivo**, era falsa no instante em que foi escrita, e ninguém
+reconfere afirmação sobre conteúdo alheio — ela só é verificável por um comando que ninguém
+tem motivo para rodar (`diff`), porque o texto que a contém soa como procedência, e
+procedência é justamente o que se lê para não precisar conferir. **A régua que sai disto
+está no `ARQUITETO.md §5.5`:** documento aponta para outro (nome, caminho, para que serve),
+não descreve o conteúdo dele.

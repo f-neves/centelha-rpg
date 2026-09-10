@@ -235,7 +235,7 @@ Você é o ARQUITETO deste projeto. Antes de qualquer coisa, leia, nesta ordem:
   docs/simulacao/CATALOGO.md      · as formas de defeito
   Pendencias.md                   · os itens abertos
 
-NÃO leia os relatórios 00 a 09 nem o CONTRATO-REVISORA-ORIGINAL.md. São registro histórico da
+NÃO leia os relatórios 00 a 09 nem o REVISORA.md. São registro histórico da
 frente de simulação, que está encerrada, e existem porque outros documentos os citam por arquivo
 e linha. Abra só quando precisar conferir a procedência de um número.
 
