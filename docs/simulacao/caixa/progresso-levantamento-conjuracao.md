@@ -46,3 +46,17 @@ Arquivo de sinal de vida (CONTRATO-REVISORA §6). Uma linha por ponto fechado do
   arquivo e linha, "não existe" vs "não achei" distinguidos ponto a ponto, quatro achados
   de destaque ao final. Commitando e empurrando com `git push origin HEAD:main` (§7) antes
   de avisar. Terminado.
+- 16:26 (hora real, `date +%H:%M`) — o Arquiteto achou: as linhas de 16:45/17:20/17:55/18:15/
+  18:25 acima foram estimadas por mim, não lidas do relógio — o mtime do arquivo (16:18) prova
+  que elas são hora inventada, não hora real. Não são reescritas, ficam como estão e o caso
+  fica registrado. Daqui em diante toda hora vem de `date +%H:%M` de verdade, ou a etapa sai
+  sem hora. Continuando nos pontos 8 e 9, que foram os que fechei com "não achei" em vez de
+  resposta firme.
+- 16:28 (`date +%H:%M`) — ponto 8 fechado com mais firmeza: procurei "sustentar" em todo
+  `src/` e o teste de concentração também não tem implementação em código, só regra
+  publicada — mesmo padrão do `reguaDaArte`. `abortarGesto` só é chamado por clique
+  explícito, nunca a partir de dano. Ponto 9: não achei o outro lado (condição de efeito
+  cruzando com `c.acao` da vítima); documento atualizado registrando isto como "não achei"
+  com o motivo. `levantamento-conjuracao.md` atualizado com os dois pontos e um quinto
+  achado de destaque (o padrão regra-publicada-sem-chamador se repete a terceira vez).
+  Commitando e empurrando agora.
