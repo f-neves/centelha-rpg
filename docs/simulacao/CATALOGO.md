@@ -78,6 +78,7 @@ segunda tinha ficado verde por cegueira.
 | **o resultado que chegou e ninguém leu** | processo em background, arquivo de saída, exit code | isto terminou, e a saída já foi lida? |
 | **o documento que se justifica por um fato falso sobre si** | cabeçalho novo que diz "não é o mesmo que", "é mais completo que", "é cópia parcial de" | o `diff` concorda com a frase que faz este arquivo existir? |
 | **o caminho alternativo que trata a recusa certa como falha** (L67) | uma segunda passada, um `retry`, um "se não conseguiu, tente de novo com menos restrição" | não ter conseguido é o sintoma de um destino errado, ou é a regra funcionando? |
+| **a regra publicada que nunca é chamada** | *por gesto:* escrever "já existe" sobre uma peça, citando dados ou capítulo | existe em CÓDIGO com chamador, ou é texto publicado que ninguém executa? |
 
 **DUAS NOVAS, DE 06/09/2026, ACHADAS NA REVISÃO DO AVANÇO UNIFICADO:** a primeira é o gatilho —
 fica verde, o rótulo continua descrevendo o que deveria medir, e nada acusa a mudança por baixo. A
@@ -432,3 +433,26 @@ ocupação responde estar ocupada.
 porque o afrouxamento é uma tolerância que não denuncia a si mesma; e da forma do `L66`, porque a
 invariante mora nos CHAMADORES em vez de morar na escrita · aqui a gravação final não passa pela
 checagem de ocupação, então nada entre a decisão errada e o banco tem chance de recusar.
+
+**UMA FORMA NOVA, DE 10/09/2026, ACHADA NUM LEVANTAMENTO E NÃO NUMA REVISÃO** (a Revisora, ao
+levantar o que existia antes de a régua da Conjuração ser escrita): **"já existe" tem dois sentidos
+que ninguém separa ao dizer a frase.** Uma peça pode existir em código, com chamador, girando; ou
+existir como regra publicada em `regras.json` e no capítulo, sem nada que a execute.
+
+**Apareceu três vezes no mesmo levantamento**, em pontos independentes: `reguaDaArte` (a fórmula
+`Preparo = 2 + nível` está em dados **e** em código, e `grep` não acha um único chamador fora da
+própria definição); o teste de concentração ao sofrer dano (regra publicada, sem implementação); e
+`arcano.composta` (texto publicado, e no código só um comentário que o cita). Três vezes não é
+coincidência, é um padrão do repositório · a régua entra primeiro e a chamada às vezes não vem.
+
+**O que a torna perigosa é o lugar onde ela é lida.** Ninguém a encontra escrevendo código: ela é
+encontrada por quem está **planejando**, e o efeito é dimensionar errado. "A fórmula já existe,
+é só usar" e "a fórmula está escrita e o motor nunca a executou" levam a estimativas diferentes, e
+a segunda costuma esconder o fato de que ligar a peça exige abrir um estado que não há. Foi
+exatamente esse o caso aqui: a Preparação de vários Ticks para Arte de jogador não existe, e a
+fórmula do tempo dela estava pronta havia meses.
+
+**Parente da "garantia correta sobre o eixo errado", e a diferença importa:** lá a afirmação é
+verdadeira e mede a dimensão errada; aqui a afirmação é verdadeira sobre o texto e falsa sobre o
+comportamento. O conserto é o mesmo gesto em ambos os casos, e é barato: ao escrever "já existe",
+dizer **em que nível** · em dados, em código com chamador, ou só publicado.
