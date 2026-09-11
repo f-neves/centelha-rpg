@@ -82,6 +82,7 @@ segunda tinha ficado verde por cegueira.
 | **o caminho alternativo que trata a recusa certa como falha** (L67) | uma segunda passada, um `retry`, um "se não conseguiu, tente de novo com menos restrição" | não ter conseguido é o sintoma de um destino errado, ou é a regra funcionando? |
 | **a regra publicada que nunca é chamada** | *por gesto:* escrever "já existe" sobre uma peça, citando dados ou capítulo | existe em CÓDIGO com chamador, ou é texto publicado que ninguém executa? |
 | **o sinal de vida escrito no fim** | *por gesto:* escrever o arquivo de progresso, o log de etapas, o relatório com horários | esta linha está sendo escrita AGORA porque a etapa fechou agora, ou estou narrando de trás para a frente? |
+| **o rótulo de escopo do `git diff`** | `@@ -A,B +C,D @@ <texto>` | este texto depois do `@@` diz ONDE a edição está, ou é só a linha que PARECE cabeçalho de função mais próxima acima do hunk? |
 
 **DUAS NOVAS, DE 06/09/2026, ACHADAS NA REVISÃO DO AVANÇO UNIFICADO:** a primeira é o gatilho —
 fica verde, o rótulo continua descrevendo o que deveria medir, e nada acusa a mudança por baixo. A
