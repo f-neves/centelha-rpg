@@ -3997,6 +3997,24 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   virar as N origens do diff, mas ampliar não dispensa a conferência · ampliar move o limite,
   não o elimina.
 
+  **A SEQUÊNCIA DOS DOIS COMMITS, achada pela Revisora na rodada 39 e já errada duas vezes pelo
+  Arquiteto:** o commit dos DOCUMENTOS reapontados tem de vir **DEPOIS** do commit do CÓDIGO que
+  ele descreve. Invertido, o commit dos documentos guarda números de linha de um `grid.astro` que
+  ainda não existe no repositório, e quem fizer checkout só dele lê citação falsa. Aconteceu em
+  `cd31b74` antes de `f4df8f7` (rodada 38) e em `0d1c300` antes de `5b18466` (rodada 39, 35
+  segundos de intervalo). O erro de posição é do tamanho do diff do código: 37 e 50 linhas nos dois
+  casos medidos.
+
+  **E o que faz disto uma armadilha e não um descuido é a trava falhar junto.** O portão do
+  `pre-commit` confere a ÁRVORE DE TRABALHO, e a árvore já tem o código não commitado da Executora,
+  então ele fica **verde sobre um pareamento que o commit não contém**. A conferência em que a
+  equipe mais confia é cega exatamente para este caso, e por isso a ordem precisa estar escrita
+  aqui em vez de depender de alguém reparar.
+
+  **Não se conserta um commit já feito reapontando de novo** · é o deslocamento em dobro descrito
+  acima. O commit antigo fica como está (as citações voltam a estar certas assim que o código
+  entra), e o que muda é a ordem das próximas.
+
 - [ ] **L67 · [REGRA DECIDIDA pelo humano em 10/09/2026, tamanho medido, NÃO ABERTO · a frente da
   voz vem antes] O corpo a corpo termina DENTRO do inimigo que ocupa mais de um hexágono, e o
   estado que sobra é proibido pela própria regra de ocupação da mesa.**
@@ -4305,6 +4323,32 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
 
   **Travar para sempre é a pior degradação que existe**, porque não diz nada e não se recupera · o
   mestre no meio de uma mesa não tem como saber se espera ou desiste. → `VOZ.md` §8 item 3.
+
+- [ ] **L76 · [ESCALADO pela Revisora na rodada 39, em 11/09/2026, e o Arquiteto RECUSOU consertar
+  de passagem] A interposição continua medindo de centro a centro depois do `L67`, e a régua nova
+  não chegou nela.**
+
+  **O caso:** `src/lib/alcance.ts:113` · `alcanceInterpor` chama, no ramo do corpo a corpo
+  (`src/lib/alcance.ts:126` · `return alcancaNoCorpoACorpo`), com dois argumentos, e não passa o
+  terceiro, o raio do alvo que o `L67` acrescentou. A pergunta que essa
+  função responde é se o AGRESSOR alcança a casa em que o interpositor terminaria (*"no corpo a
+  corpo, só quem já está adjacente a ele pode se interpor"*), então o corpo que deveria contar é o
+  do interpositor. Pela régua decidida em 10/09, adjacência a um corpo é adjacência ao CORPO e não
+  ao ponto médio, e essa régua vale aqui igual.
+
+  **POR QUE NÃO ENTROU NA RODADA 39, e a decisão é do Arquiteto:** consertar mudaria o
+  comportamento da INTERPOSIÇÃO, que é mecânica de mesa com regra própria e teste próprio
+  (`scripts/test-interpor-mesa.mjs`), e o item do `L67` nunca a analisou · ele mediu oito lugares de alcance de
+  ataque e perseguição, não a interposição. Mudar de passagem uma mecânica que ninguém examinou é
+  exatamente o que se evitou ao tirar o `L70` de dentro do `L67`, e o precedente vale nos dois
+  casos.
+
+  **O que decidir antes de mexer:** se o interpositor GRANDE pode se interpor de mais longe (o que
+  a régua do `L67` implica) é regra de mesa, não detalhe de implementação. Um Enorme que se
+  atravessa na frente de um golpe a dois hexágonos de distância é uma cena diferente de um humano
+  fazendo o mesmo, e quem decide se essa cena vale é o humano.
+
+  → `L67` (a régua que originou), → `L70` (o outro que saiu pelo mesmo critério).
 
 - [ ] **L70 · [REGISTRADO em 10/09/2026, ligado ao `L67`, NÃO ABERTO] A gravação de posição não
   passa pela checagem de ocupação, e a invariante mora nos chamadores em vez de morar na escrita.**

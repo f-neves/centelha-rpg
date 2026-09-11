@@ -2,24 +2,24 @@
 
 Arquivo de sinal de vida (CONTRATO-REVISORA §6). Uma linha por etapa fechada, no instante em que fecha, hora lida de `date +%H:%M`. A linha final entra no mesmo commit do veredito.
 
-- 05:35 — reancorada em `e0326a9537e34c516347437479e73aeda5dd88ce` (passo 0 do §0 confirmado, worktree ressincronizada antes sem nada pendente). Lendo o aviso agora.
-- 05:35 — `cenaVozPrazo` lida por completo (`test-grid.mjs:3032-3106`). Toda asserção lê o DOM de
-  verdade (título/corpo do diálogo de erro, `title` do botão) — nenhuma lê variável interna. O
+- 05:35 · reancorada em `e0326a9537e34c516347437479e73aeda5dd88ce` (passo 0 do §0 confirmado, worktree ressincronizada antes sem nada pendente). Lendo o aviso agora.
+- 05:35 · `cenaVozPrazo` lida por completo (`test-grid.mjs:3032-3106`). Toda asserção lê o DOM de
+  verdade (título/corpo do diálogo de erro, `title` do botão) · nenhuma lê variável interna. O
   ceticismo do L74 confere: observa a tela, não recalcula. Vou falsificar o achado do IndexedDB
   por origem eu mesma: reverter `br.createBrowserContext()` para `br.newPage()` comum e rodar o
   smoke inteiro, para ver se o falso-verde volta (a prova de que a causa é essa, não outra).
-- 05:37 — achado próprio, procurando o "nono lugar" que o Arquiteto sugeriu que podia existir:
+- 05:37 · achado próprio, procurando o "nono lugar" que o Arquiteto sugeriu que podia existir:
   `grid.astro:10072`, dentro de `valoresDoLance()` (a terceira coluna da ficha do lance,
-  "Alcance da arma"), usa `HEX_HASTE`/`HEX_CORPO_A_CORPO` cru, SEM somar `raioExtraHex` — o
+  "Alcance da arma"), usa `HEX_HASTE`/`HEX_CORPO_A_CORPO` cru, SEM somar `raioExtraHex` · o
   mesmo padrão de cópia manual do oitavo lugar, não achado por busca de nome. A diferença: este
   é um valor de EXIBIÇÃO ("só leitura de propósito", comentário do próprio código), ao lado de
-  "Distância" na mesma tabela — se o mestre ler os dois e concluir à mão se alcança, o número
+  "Distância" na mesma tabela · se o mestre ler os dois e concluir à mão se alcança, o número
   mostrado aqui diverge do que o motor decide de verdade nos outros oito lugares. Registrando
   para o veredito, não corrigindo. Rodei `test-l67-corpoacorpo-mesa.mjs` eu mesma: exit 0, as
   duas metades do critério confirmadas ao vivo. Verifiquei a geometria do `Math.ceil` (Enorme =
-  4m no `PORTE_M`, `(4-1)/2=1,5`, `Math.ceil=2`) contra a conta do comentário — bate. Aguardando
+  4m no `PORTE_M`, `(4-1)/2=1,5`, `Math.ceil=2`) contra a conta do comentário · bate. Aguardando
   a falsificação do IndexedDB terminar em segundo plano.
-- 05:42 — a falsificação terminou: `EXIT=1`, `TimeoutError` esperando
+- 05:42 · a falsificação terminou: `EXIT=1`, `TimeoutError` esperando
   `dialog.ui-dlg.perigo[open]` em `cenaVozPrazo` (`test-grid.mjs:3076`), logo
   depois das cenas de voz anteriores rodarem na MESMA página. É exatamente a
   forma prevista: com `br.newPage()` comum (armazenamento compartilhado) o
@@ -32,7 +32,7 @@ Arquivo de sinal de vida (CONTRATO-REVISORA §6). Uma linha por etapa fechada, n
   status --short` só mostra este arquivo de progresso, não rastreado) antes de
   qualquer outra coisa, conforme CONTRATO §2. Indo agora para a conferência
   independente do L75 (0d1c300) pela API do GitHub.
-- 05:47 — L75 (0d1c300) CONFIRMADO pela API real do GitHub, não pela conta do
+- 05:47 · L75 (0d1c300) CONFIRMADO pela API real do GitHub, não pela conta do
   Arquiteto: puxei os jobs "Smoke · test-grid" de 28 runs (17 antes de
   `4ab1a58`, 11 a partir dele) pela API (`gh api .../actions/runs/<id>/jobs`),
   medi `completed_at - started_at` eu mesma. Descartando os 2 runs mais antigos
@@ -42,7 +42,7 @@ Arquivo de sinal de vida (CONTRATO-REVISORA §6). Uma linha por etapa fechada, n
   mínimo 564s, máximo 845s (10 runs). L75 fecha limpo, terceira conta e agora
   sim certa.
   ACHADO PRÓPRIO, não pedido no aviso: o workflow run do PRÓPRIO `0d1c300`
-  (id 34579254256) terminou com `conclusion: failure` — o job "Smoke ·
+  (id 34579254256) terminou com `conclusion: failure` · o job "Smoke ·
   test-grid" passou, mas "Dados e regras" (o portão rápido, `test-procedencia.
   mjs`) quebrou, acusando 28 citações de código ENVELHECIDAS, não as "5... do
   L72, item fechado" que a mensagem do commit `0d1c300` declara. Conferi duas
@@ -56,24 +56,24 @@ Arquivo de sinal de vida (CONTRATO-REVISORA §6). Uma linha por etapa fechada, n
   rodada) está verde porque o commit seguinte (`5b18466`) mexeu em
   `grid.astro`/`alcance.ts` (72+15 linhas) por outro motivo (L67/L71) e por
   coincidência aproximou `avancarAteParar` de volta para perto de 5856 (ficou
-  em 5857, dentro da tolerância do checador) — sorte, não conserto. O script
+  em 5857, dentro da tolerância do checador) · sorte, não conserto. O script
   do reaponte tem um defeito real que vai aparecer de novo. Vai para o
   veredito como CORRIGE (o script, não o estado atual, que está verde por
   acidente).
-- 05:50 — travessão: não confiei na varredura do Arquiteto (aviso explícito
+- 05:50 · travessão: não confiei na varredura do Arquiteto (aviso explícito
   nesta rodada de que `git diff` cego a arquivo não rastreado já falhou uma
   vez). Rodei a minha própria, sobre o diff INTEIRO da rodada (`93b6be7..
   e0326a9`, os quatro commits, todo arquivo, não só o de remoção de
   travessão): nenhuma linha adicionada em nenhum arquivo do intervalo carrega
-  `—`. Limpo, e desta vez conferido por mim, não herdado. Indo para `npm run
+  `·`. Limpo, e desta vez conferido por mim, não herdado. Indo para `npm run
   validate`.
-- 05:53 — `npm run validate`: `EXIT=0`, limpo. `node scripts/test-grid.mjs` (bateria inteira,
+- 05:53 · `npm run validate`: `EXIT=0`, limpo. `node scripts/test-grid.mjs` (bateria inteira,
   sem modificação nenhuma) rodando em segundo plano para confirmar o estado real da rodada;
   não vou aceitar "verde" sem ver o log com meus olhos. Escrevi o rascunho de
   `39-revisora.md` enquanto esperava, com os dois achados próprios (o nono lugar em
   `valoresDoLance` e o reaponte errado de `0d1c300`) e a conferência do L75. Falta só colar
   o resultado real do `test-grid.mjs` e commitar os dois arquivos juntos.
-- 06:16 — `test-grid.mjs` terminou: `EXIT=0`, todas as cenas verdes, checkout limpo (sem a
+- 06:16 · `test-grid.mjs` terminou: `EXIT=0`, todas as cenas verdes, checkout limpo (sem a
   falsificação). O Arquiteto respondeu com correção a dois dos meus três achados sobre o
   `0d1c300`, ANTES de eu commitar (o `39-revisora.md` ainda era rascunho): o nono lugar em
   `valoresDoLance` procede como escrito. O achado do reaponte de `0d1c300` tinha DOIS erros
