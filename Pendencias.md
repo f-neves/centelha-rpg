@@ -4140,6 +4140,34 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   fixa, `rodada NN · aviso à revisora`), dizendo que o aviso daquela rodada já foi enviado e qual é
   o sha. Não decidido, e não abre agora.
 
+- [ ] **L74 · [achado na rodada 35 e FALSIFICADO ao vivo pela Revisora na 36, em 11/09/2026] O
+  teste do status da voz fica verde com o defeito de volta: a costura RECALCULA o texto em vez de
+  OBSERVAR o que a tela escreveu.**
+
+  **O caso concreto:** o status que diz qual modo está ouvindo é escrito em
+  `src/pages/mesa/grid.astro:8979` · `vozStatus(textoOuvindo(ditado))`, e essa linha só é alcançada
+  depois de o modelo de 31 MB estar carregado, o que um teste headless não faz. Então a costura
+  exposta para o teste (`src/pages/mesa/grid.astro:10259` · `__TEXTO_OUVINDO`) chama a mesma função
+  por fora e devolve o texto **recomputado**, em vez de ler o que a tela de fato exibiu.
+
+  **A prova não é raciocínio, é experimento.** A Revisora reverteu a linha real para o
+  `'ouvindo…'` fixo (o defeito original inteiro) e rodou a suíte: **as duas asserções continuaram
+  verdes e a suíte inteira reportou OK.** Um teste que passa com o defeito de volta não cobre o
+  defeito.
+
+  **A saída barata foi procurada e não existe**, e isto está registrado para ninguém procurar de
+  novo: extrair a chamada para uma função compartilhada só evita duplicar o texto, não prova a
+  ligação · se alguém parar de chamar a função dentro de `segurarVoz`, a costura continua verde
+  igual. O bloqueio é estrutural: provar a ligação exige modelo real carregado, ou um dublê do
+  cliente Vosk, e as duas coisas são de outra ordem de tamanho que o defeito.
+
+  **Por que fica aberto em vez de fechado como "aceito":** o custo de deixar assim é um defeito
+  específico que pode voltar sem acender nada. Quando a bancada do humano exigir um dublê do
+  cliente Vosk por outro motivo (e a medição de reconhecimento pode exigir), este item fecha de
+  graça junto.
+
+  **A forma, já no `CATALOGO`:** *a costura de teste que recalcula em vez de observar*.
+
   **Travar para sempre é a pior degradação que existe**, porque não diz nada e não se recupera · o
   mestre no meio de uma mesa não tem como saber se espera ou desiste. → `VOZ.md` §8 item 3.
 
