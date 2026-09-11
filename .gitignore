@@ -44,6 +44,14 @@ Thumbs.db
 # o modelo do Vosk (voz-bench.html): 31 MB, nao versionado, cada maquina baixa o seu
 voz-bench-modelo/
 
-# o modelo do Vosk para o Grid (VOZ.md §8 item 3): mesmo motivo, caminho padrao
-# diferente porque o Astro so serve o que esta em public/
-public/voz-modelo/
+# o modelo do Vosk para o GRID: VERSIONADO desde 11/09/2026 (VOZ.md 10.2, decisao 14).
+# Nao esta mais ignorado, e e de proposito: o deploy monta o dist/ do que esta no
+# repositorio, entao modelo nao versionado nunca chega ao site publicado, e a voz
+# ficaria sendo um recurso de localhost. Quem paga os 31 MB e o historico, uma vez.
+#
+# A REGRA QUE VEM JUNTO, e ela e escrita e nao tecnica: UM MODELO VERSIONADO POR VEZ.
+# Historico de git nao esquece, entao trocar de modelo SOMA outros 31 MB em vez de
+# substituir. Trocar significa substituir o arquivo e aceitar o peso morto do anterior,
+# nunca acumular uma pasta de versoes.
+#
+# O download do celular nao e automatico: o primeiro toque PERGUNTA (decisao 15).

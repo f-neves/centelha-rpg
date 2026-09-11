@@ -569,8 +569,9 @@ antes de medir aqui é apostar na forma da fala.
 - **se a voz vale a pena com o `Espaço` já existindo.** A tabela do §9.3 diz que a voz ganha em
   51% e perde em 32%; se o mestre já tem as duas mãos no teclado, o ganho real é menor do que a
   fatia sugere, e **quem responde isso é a mesa, e não o documento**;
-- **o peso em produção.** A biblioteca são 3,1 MB versionados e o modelo 31 MB não versionados, e a
-  decisão de como o modelo chega à mesa publicada é do humano (`caixa/33-executora.md`, `D33b`).
+- ~~**o peso em produção.**~~ **RESPONDIDO em 11/09/2026, ver as decisões 14 e 15 do §10.2.** O
+  humano escolheu VERSIONAR o modelo, e a porta do consentimento entrou junto para que o celular
+  não pague os 31 MB sem querer.
 
 ---
 
@@ -700,6 +701,38 @@ manda o bloco do inimigo para o navegador dele. Então **a camada contextual da 
 dois lados**, e a régua diz qual: a gramática de uma caixa é montada da lista de campos que aquela
 tela DE FATO desenhou, e nunca de uma lista fixa escrita à mão. Escrito agora para não virar
 reescrita quando o jogador entrar.
+
+**14 · O MODELO DE 31 MB É VERSIONADO** (decidido em 11/09/2026, fecha o `D33b`, que estava aberto
+desde a rodada 33). Sem isso a voz só existe em `localhost`, porque o deploy monta o `dist/` do que
+está no repositório · o modelo não versionado simplesmente não chega ao ar.
+
+**As quatro saídas foram pesadas e três recusadas:** *baixar no deploy* põe dependência de terceiro
+dentro do caminho de publicação do site inteiro, e a falha pode ser silenciosa (deploy passa sem o
+modelo, o mestre descobre na mesa); *servir de fora* exige CORS não verificado e cria uma segunda
+origem para manter viva, e este projeto já apanhou de origem cruzada · foi o motivo de vendorizar a
+biblioteca; *aceitar que é local* não destrava nada, porque testar em `localhost` já era possível.
+
+**O contra que a escolha aceita, e ele não é o disco.** O `.git` vai de 107 para ~138 MB, e 31 MB
+é barato. O caro é o **precedente**: histórico de git não esquece, então a próxima versão do
+modelo **soma** outros 31 MB em vez de substituir. A mitigação é escrita e não técnica · **um
+modelo versionado por vez, e trocar significa substituir e aceitar o peso morto do anterior.** Se
+um dia essa regra não for lembrada, o conserto seria reescrever o histórico, que é a operação que
+este projeto recusou no mesmo dia, no caso da coautoria, e pelo mesmo motivo.
+
+**15 · O PRIMEIRO TOQUE PERGUNTA ANTES DE BAIXAR** (decidido em 11/09/2026, junto com a 14, e é a
+condição dela). O carregamento sob demanda já era decisão fechada (§8 item 3); o que muda é que ele
+deixa de começar sozinho. A caixa diz três coisas e nada além: **31 MB**, **uma vez neste
+aparelho**, e **no celular isso gasta dados**.
+
+**A resposta é lembrada nos dois sentidos**, e o "não" não prende ninguém: o status passa a dizer
+que a voz está desligada naquele aparelho, e tocar pergunta de novo. **A ordem importa e foi
+respeitada na construção:** a porta entrou ANTES de o modelo ser versionado, senão o site publicado
+passaria a baixar 31 MB no primeiro toque de qualquer aparelho · exatamente o que a decisão existe
+para impedir.
+
+**O que ela aceita:** a lembrança vive por navegador E por origem, então some na mudança de domínio
+(para `centelha.rec.br`), em janela anônima e se a pessoa limpar dados. Quando sumir, o aparelho
+pergunta de novo como se fosse a primeira vez. É recuperável, e o humano sabe.
 
 ### 10.3 · As três telas, e o que cada uma fica devendo
 

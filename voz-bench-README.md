@@ -5,6 +5,11 @@ o que ela não decide. O humano roda; a Executora não.
 
 ## 1 · O que baixar
 
+**Desde 11/09/2026, para o GRID você não precisa baixar nada:** o modelo passou a ser versionado em
+`public/voz-modelo/model.tar.gz` (`VOZ.md` §10.2, decisão 14), então um clone novo já vem com ele.
+Esta seção vale só para a BANCADA (`voz-bench.html`), que continua com a cópia própria em
+`voz-bench-modelo/` e essa continua fora do versionamento.
+
 O modelo (31 MB) não vem versionado no repositório (`.gitignore`). Baixar uma vez, por máquina:
 
 ```
