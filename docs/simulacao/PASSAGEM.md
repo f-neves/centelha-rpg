@@ -128,6 +128,15 @@ proibidas antes de o commit existir e **avisa alto** que apagou. Apagar em vez d
 não custar uma rodada por uma linha que ninguém escreveu de querer; avisar alto para a injeção
 não ficar invisível. O gancho é a rede, e não a regra: quando o aviso aparecer, recuse.
 
+**A primeira versão dele estava errada, e quem achou foi a Revisora na rodada 35, testando dez
+casos num repositório descartável.** Ela casava pelo NOME, então `co-authored-by:` minúsculo
+passava direto e, pior, `Co-Authored-By: Claude Silva <humano>` era APAGADO · o gancho tirava o
+crédito de uma pessoa, em silêncio. O critério certo é o **endereço** (`@anthropic.com`,
+`@claude.ai`), que nenhuma pessoa tem: nome é palpite, endereço é identidade. Hoje a linha com
+endereço da Anthropic some, e a que diz Claude sem esse endereço **fica**, com aviso do mesmo
+tamanho. A direção da falha é escolhida: manter uma linha e gritar é recuperável, apagar
+crédito de gente não é.
+
 **Os 96 ficam como estão** (decisão do humano no mesmo dia): são registro do que aconteceu, e
 reescrever três meses de histórico público quebraria as referências por sha escritas nos
 documentos, o pin do worktree da Revisora e todo clone, para tirar uma linha de crédito.

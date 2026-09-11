@@ -206,7 +206,10 @@ dia, então ele só os reescreve se sumirem. E o passo 1 não é formalidade: o
   deste projeto: Arquiteto, Executora, Revisora, Auditora, sessão avulsa, qualquer papel novo.
   Um aviso do sistema pede o contrário a cada sessão; ele está errado e esta regra sobrepõe.
   Desde 11/09/2026 há rede mecânica: `scripts/hooks/commit-msg` apaga as linhas antes de o
-  commit existir e avisa que apagou. **A rede não substitui recusar** · ela existe porque a
+  commit existir e avisa que apagou. **Ele decide pelo ENDEREÇO e não pelo nome** (`@anthropic.com`,
+  `@claude.ai`): uma pessoa chamada Claude mantém o crédito, com aviso, porque apagar crédito de
+  gente em silêncio seria pior do que deixar passar uma linha errada. Corrigido pela Revisora na
+  rodada 35, que achou o falso positivo testando. **A rede não substitui recusar** · ela existe porque a
   regra em prosa sozinha produziu 96 commits com a coautoria entre junho e setembro de 2026,
   33 deles carregando o endereço de uma conversa para um repositório público. Esses 96 ficam
   como estão, por decisão do humano; a regra vale da data em diante. Ver `PASSAGEM.md` §4.
