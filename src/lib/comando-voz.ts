@@ -153,11 +153,18 @@ export function carregarVoz(cfg: ConfigVoz): Promise<{ ok: true } | { ok: false;
  * sessão de voz — trocar de gramática não recarrega o modelo (medido na
  * bancada, `voz-bench.html` seção 2), só cria um objeto novo e pequeno.
  */
-export function prepararReconhecedor(grammar: string, aoParcial: (texto: string) => void,
+/**
+ * `grammar` OMITIDO (ou `undefined`) é o DITADO LIVRE (VOZ.md §10 decisão
+ * 7): sem gramática nenhuma, `KaldiRecognizer` reconhece o que vier, taxa de
+ * erro pior e tudo — só nos três campos de texto solto (`ou-oque`,
+ * `al-motivo`, `ag-busca`). `client.KaldiRecognizer` já aceita
+ * `(sampleRate, grammar?: string)` (mesma API da bancada, `voz-bench.html`).
+ */
+export function prepararReconhecedor(grammar: string | undefined, aoParcial: (texto: string) => void,
   aoFinal: (r: ResultadoFala) => void) {
   if (!cliente) throw new Error('carregarVoz() precisa terminar antes de prepararReconhecedor()');
   if (reconhecedor) reconhecedor.remove();
-  reconhecedor = new cliente.KaldiRecognizer(16000, grammar);
+  reconhecedor = grammar != null ? new cliente.KaldiRecognizer(16000, grammar) : new cliente.KaldiRecognizer(16000);
   reconhecedor.setWords(true);
   reconhecedor.on('partialresult', (msg: any) => aoParcial(msg.result?.partial || ''));
   reconhecedor.on('result', (msg: any) => aoFinal({ texto: msg.result?.text || '', bruto: msg.result }));

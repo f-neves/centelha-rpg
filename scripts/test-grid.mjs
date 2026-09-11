@@ -2666,6 +2666,119 @@ async function cenaVozQuente(br, url) {
 }
 
 /**
+ * O DITADO LIVRE E "OUTRA COISA" (VOZ.md §10, rodada 35).
+ *
+ * NÃO TESTA microfone nem reconhecimento de verdade (bancada do humano,
+ * §10.4) — usa os mesmos hooks de teste da rodada 34, atrás de
+ * `?vozteste=1`: `window.__MODO_DITADO()` (a decisão "o modo segue o
+ * foco", sem tocar em áudio), `window.__RECEBER_DITADO(id, texto)` (escreve
+ * no campo de ditado livre) e `window.__RECEBER_FALA(texto)` (o roteador de
+ * campo numérico/verbo, agora cobrindo também "outra coisa").
+ *
+ * O que prova: (1) fora de qualquer campo de ditado, o modo é o da
+ * gramática; (2) focado em `ou-oque`, o modo é o ditado, e escrever nele
+ * dispara `input` de verdade; (3) a fala abre "outra coisa" pela peça da
+ * vez SEM clique (decisão 4, o par da decisão 12 da rodada 34); (4) o
+ * campo `escolha` (`ou-quando`, um `<select>`) responde a `change`, não a
+ * `input` — a diferença que o Arquiteto pediu registrada; (5) preencher
+ * ticks/total/dificuldade refaz o mesmo cálculo que digitar refaria.
+ */
+async function cenaVozDitadoEOutra(br, url) {
+  console.log('\n· o ditado livre segue o foco, e "outra coisa" abre por voz (VOZ.md §10, rodada 35)');
+  const p = await br.newPage();
+  await p.setViewport({ width: 1400, height: 950 });
+  const erros = [];
+  p.on('pageerror', (e) => erros.push(e.message));
+  await p.goto(`${url}/mesa/grid?id=${MESA}&bench=12&cols=24&rows=16&nevoa=0&vozteste=1`,
+    { waitUntil: 'networkidle0', timeout: 60000 });
+  await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
+  await espera(600);
+
+  // ---- 1: sem foco em campo de ditado, o modo é o da gramática (null) ----
+  const semFoco = await p.evaluate(() => {
+    (document.activeElement)?.blur?.();
+    return window.__MODO_DITADO();
+  });
+  ok(semFoco === null, `sem foco em campo de ditado, o modo escolhido é o da gramática (${semFoco})`);
+
+  // ---- 2: a tecla O abre "outra coisa" pela peça da vez, e o foco
+  // já nasce em `ou-oque` (código de hoje, `oque.focus()` em `abrirOutra`) ----
+  await p.evaluate(() => document.dispatchEvent(new KeyboardEvent('keydown', { key: 'o', bubbles: true })));
+  await espera(300);
+  const aberta = await p.evaluate(() => ({
+    open: !!document.getElementById('outra-dlg')?.open,
+    foco: document.activeElement?.id,
+    modo: window.__MODO_DITADO(),
+  }));
+  ok(aberta.open, 'a tecla O abre "outra coisa" (pré-condição do resto do cenário)');
+  ok(aberta.foco === 'ou-oque', `o foco nasce no campo de ditado livre ("${aberta.foco}")`);
+  ok(aberta.modo === 'ou-oque', `e o MODO segue o foco: "ou-oque" é ditado livre (${aberta.modo})`);
+
+  // ---- 3: escrever no campo de ditado livre dispara o `input` de verdade ----
+  await p.evaluate(async () => { window.__RECEBER_DITADO('ou-oque', 'o goblin chutou o barril de pólvora'); });
+  const oque = await p.evaluate(() => document.getElementById('ou-oque')?.value || '');
+  ok(oque === 'o goblin chutou o barril de pólvora', `o texto ditado (sem gramática) chega inteiro ao campo ("${oque}")`);
+
+  // ---- 4: focar fora dos três campos de ditado volta o modo para a gramática ----
+  const foraDoDitado = await p.evaluate(() => {
+    document.getElementById('ou-ticks')?.focus();
+    return window.__MODO_DITADO();
+  });
+  ok(foraDoDitado === null, `focado em "ou-ticks" (não é ditado), o modo volta a ser o da gramática (${foraDoDitado})`);
+
+  // ---- 5: com "outra coisa" já aberta, a fala enche ticks/total/dificuldade
+  // e refaz o mesmo cálculo que digitar refaria ----
+  const antesTempo = await p.evaluate(() => document.getElementById('ou-tempo')?.textContent || '');
+  await p.evaluate(async () => { await window.__RECEBER_FALA('ticks oito total dezoito dificuldade doze'); });
+  await espera(300);
+  const outra1 = await p.evaluate(() => ({
+    ticks: document.getElementById('ou-ticks')?.value,
+    total: document.getElementById('ou-total')?.value,
+    dif: document.getElementById('ou-dif')?.value,
+    tempo: document.getElementById('ou-tempo')?.textContent || '',
+    vered: document.getElementById('ou-vered')?.textContent || '',
+  }));
+  ok(outra1.ticks === '8', `"ticks oito" enche o campo (${outra1.ticks})`);
+  ok(outra1.total === '18' && outra1.dif === '12',
+    `"total dezoito dificuldade doze" enche os dois na mesma fala (${outra1.total}/${outra1.dif})`);
+  ok(outra1.tempo !== antesTempo && outra1.tempo.trim() !== '',
+    `preencher "ticks" pelo campo refaz o tempo, como digitar refaria ("${antesTempo}" → "${outra1.tempo}")`);
+  ok(outra1.vered.trim() !== '', 'e "total"+"dificuldade" pelo campo já calculam o veredito');
+
+  // ---- 6: o campo `escolha` (`ou-quando`, um <select>) responde à fala,
+  // via `change` e não `input` — a diferença registrada no código ----
+  const antesQuando = await p.evaluate(() => document.getElementById('ou-quando')?.value || '');
+  await p.evaluate(async () => { await window.__RECEBER_FALA('quando fim'); });
+  await espera(200);
+  const quando = await p.evaluate(() => document.getElementById('ou-quando')?.value || '');
+  ok(antesQuando === 'agora' && quando === 'fim',
+    `"quando fim" troca o <select> de "agora" para "fim" (${antesQuando} → ${quando})`);
+
+  // fecha "outra coisa" sem aplicar nada na cena
+  await p.evaluate(async () => {
+    const dlg = document.getElementById('outra-dlg');
+    if (dlg?.open) { document.getElementById('ou-cancelar')?.click(); await new Promise((x) => setTimeout(x, 400)); }
+  });
+
+  // ---- 7: a fala abre "outra coisa" SEM clique nenhum (decisão 4, o par
+  // da decisão 12 do cartão vencido) ----
+  const fechadaAntes = await p.evaluate(() => !!document.getElementById('outra-dlg')?.open);
+  ok(!fechadaAntes, '"outra coisa" está fechada agora (pré-condição deste passo)');
+  const semClique = await p.evaluate(async () => {
+    await window.__RECEBER_FALA('ticks cinco');
+    return {
+      abriu: !!document.getElementById('outra-dlg')?.open,
+      ticks: document.getElementById('ou-ticks')?.value,
+    };
+  });
+  ok(semClique.abriu, 'a fala abriu "outra coisa" pela peça da vez, sem clique nem tecla O');
+  ok(semClique.ticks === '5', `e já preencheu "ticks" no mesmo gesto ("${semClique.ticks}")`);
+
+  ok(erros.length === 0, `nenhum erro de página (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
+  await p.close();
+}
+
+/**
  * O QUASE-ACERTO NA FOLHA DA AÇÃO.
  *
  * O capítulo XII existe desde sempre e o Grid nunca o calculou: a mesa fazia a
@@ -3697,6 +3810,7 @@ await cenaRastreador(br, dev.url);
   await cenaCelular(br, dev.url, { papel: 'jogador' });
   await cenaGolpeAdiado(br, dev.url);
   await cenaVozQuente(br, dev.url);
+  await cenaVozDitadoEOutra(br, dev.url);
   await cenaQuaseAcerto(br, dev.url);
   await cenaFusao(br, dev.url);
   await cenaCondicaoAMao(br, dev.url);
@@ -3720,7 +3834,8 @@ console.log('\n✓ Grid OK · desenho, movimento, registro, névoa e card, nas d
   + ' a barra fundida com a escada de ícones e a ordem de combate de pé em tela cheia,'
   + ' o golpe adiado da declaração à queda, o Quase-Acerto na folha,'
   + ' e a condição posta à mão indo do menu ao estado e daí à Defesa da folha,'
-  + ' o caminho quente da voz abrindo o cartão vencido sem clique e refazendo o veredito');
+  + ' o caminho quente da voz abrindo o cartão vencido sem clique e refazendo o veredito,'
+  + ' o ditado livre seguindo o foco e "outra coisa" abrindo por voz');
 // O carimbo: quando este portao passou nesta maquina. Ver `carimbo.mjs`.
 carimbar('test-grid');
 

@@ -1,5 +1,6 @@
-// test-comando-voz.mjs · o parser de números do caminho quente, provado sem
-// navegador e sem microfone (VOZ.md §10, rodada 34).
+// test-comando-voz.mjs · o parser de números do caminho quente e de "outra
+// coisa", provado sem navegador e sem microfone (VOZ.md §10, rodadas 34 e
+// 35).
 //
 // O QUE ESTA BANCADA PRENDE, e cada caso é um jeito de a fala virar campo
 // errado ou palpite:
@@ -9,7 +10,9 @@
 //   · uma fala enchendo DOIS campos, cortando na palavra de cada um;
 //   · número solto (antes de qualquer campo, ou depois do que um campo
 //     `inteiro` já consumiu) é RECUSA, nunca palpite;
-//   · toda recusa devolve a frase ouvida, para a mesa digitar por cima.
+//   · toda recusa devolve a frase ouvida, para a mesa digitar por cima;
+//   · um campo `escolha` (rodada 35, `ou-quando`) casa só contra as
+//     palavras de `opcoes`, nunca número, e recusa fora delas.
 //
 // NÃO TESTA voz de verdade: `interpretarNumeros` é puro, recebe texto já
 // reconhecido. Taxa de reconhecimento é bancada do humano (VOZ.md §10.4).
@@ -42,6 +45,17 @@ const margem = CAMPOS.find((c) => c.id === 'margem');
 const raspao = CAMPOS.find((c) => c.id === 'raspao');
 ok(!!acerto && !!dano && !!ajuste && !!margem && !!raspao,
   'os cinco campos do caminho quente estão no catálogo (acerto/dano/ajuste/margem/raspao)');
+
+const ticks = CAMPOS.find((c) => c.id === 'ticks');
+const quando = CAMPOS.find((c) => c.id === 'quando');
+const total = CAMPOS.find((c) => c.id === 'total');
+const dificuldade = CAMPOS.find((c) => c.id === 'dificuldade');
+ok(!!ticks && !!quando && !!total && !!dificuldade,
+  'os quatro campos de "outra coisa" estão no catálogo (ticks/quando/total/dificuldade)');
+ok(ticks.tela === 'outra' && acerto.tela === 'ataque',
+  `cada campo carrega de qual tela é (ticks: "${ticks.tela}", acerto: "${acerto.tela}")`);
+ok(quando.tipo === 'escolha' && Array.isArray(quando.opcoes) && quando.opcoes.length === 2,
+  `"quando" é do tipo escolha, com duas opções (${quando.opcoes?.map((o) => o.valor).join('/')})`);
 
 console.log('\n· interpretarNumeros: uma fala vira preenchimento, ou recusa com a frase ouvida');
 
@@ -98,6 +112,33 @@ ok(r.ok === false, `"acerto" sem nenhuma face antes do próximo campo recusa (${
 r = M.interpretarNumeros('acerto banana', CAMPOS);
 ok(r.ok === false && r.ouvido === 'acerto banana', `palavra que não é número nem campo: recusa (${r.ok ? '' : r.motivo})`);
 
+console.log('\n· "outra coisa" (rodada 35): número, e um campo `escolha` fechado');
+
+// ---- 9: uma fala enchendo os quatro campos de "outra coisa" ----
+r = M.interpretarNumeros('ticks cinco quando fim total dezoito dificuldade doze', CAMPOS);
+ok(r.ok === true, `os quatro campos numa fala só: reconhece (motivo: ${r.ok ? '' : r.motivo})`);
+ok(r.ok && r.preenchimentos.length === 4, `e enche os quatro (${r.ok ? r.preenchimentos.length : '?'})`);
+ok(r.ok && r.preenchimentos[0].valor === 5 && r.preenchimentos[1].valor === 'fim'
+  && r.preenchimentos[2].valor === 18 && r.preenchimentos[3].valor === 12,
+  `nos valores certos (${r.ok ? JSON.stringify(r.preenchimentos.map((p) => p.valor)) : '?'})`);
+
+// ---- 10: campo `escolha` casa a palavra, nunca número ----
+r = M.interpretarNumeros('quando agora', CAMPOS);
+ok(r.ok === true && r.preenchimentos[0].valor === 'agora',
+  `"quando agora" preenche com o valor "agora" (${r.ok ? r.preenchimentos[0].valor : r.motivo})`);
+
+r = M.interpretarNumeros('quando cinco', CAMPOS);
+ok(r.ok === false, `"quando cinco" recusa: cinco não é opção de "quando" (${r.ok})`);
+
+r = M.interpretarNumeros('quando depois', CAMPOS);
+ok(r.ok === false, `"depois" não é "agora" nem "fim": recusa, nunca palpite (${r.ok})`);
+
+// ---- 11: só o catálogo da tela certa entra quando filtrado (a mesma
+// filtragem que `camposAtivos()` faz em grid.astro, por `tela`) ----
+const soAtaque = CAMPOS.filter((c) => c.tela === 'ataque');
+r = M.interpretarNumeros('ticks cinco', soAtaque);
+ok(r.ok === false, '"ticks" fora do catálogo filtrado (só ataque) recusa, como se a palavra não existisse');
+
 console.log('\n· comecaComPalavraDeCampo: decide o roteamento sem duplicar a gramática');
 ok(M.comecaComPalavraDeCampo('acerto quatro', CAMPOS) === true, '"acerto..." começa no domínio dos campos');
 ok(M.comecaComPalavraDeCampo('mover h7', CAMPOS) === false, '"mover..." não começa no domínio dos campos (cai para o verbo)');
@@ -112,6 +153,8 @@ ok(!nucleo.includes('acerto') && !nucleo.includes('raspao'),
 const comCaixa = JSON.parse(M.gramaticaDeVoz(CAMPOS));
 ok(comCaixa.includes('acerto') && comCaixa.includes('raspao'),
   'com a caixa aberta publicada, as palavras de campo entram na gramática');
+ok(comCaixa.includes('quando') && comCaixa.includes('agora') && comCaixa.includes('fim'),
+  'e as palavras de OPÇÃO de um campo `escolha` também entram, não só a palavra do campo');
 
 console.log('');
 if (FALHAS.length) {

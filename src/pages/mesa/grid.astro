@@ -2507,11 +2507,11 @@ const SETAS = [
   // extensão de comportamento que ele exige (ver `decidirAutomaticas`).
   // Desligado, nada disto existe e a mesa é a mesa.
   const ESPELHO_LIGADO = PARAMS.get('espelho') === '1';
-  // `?vozteste=1` expõe `window.__RECEBER_FALA`, o mesmo roteador que o
-  // microfone chama quando o Vosk devolve um texto reconhecido (VOZ.md §10,
-  // rodada 34) — para o smoke testar o caminho inteiro (campo, o `input`
-  // disparado, o veredito refeito) sem áudio nem modelo baixado. Desligado,
-  // nada disto existe; a fala de verdade continua sendo bancada do humano.
+  // `?vozteste=1` expõe `window.__RECEBER_FALA` (o roteador que o microfone
+  // chama quando o Vosk devolve um texto reconhecido, VOZ.md §10 rodada 34)
+  // e `window.__MODO_DITADO` (a decisão "o modo segue o foco", rodada 35) —
+  // para o smoke testar o caminho inteiro sem áudio nem modelo baixado.
+  // Desligado, nada disto existe; a fala de verdade é bancada do humano.
   const VOZ_TESTE_LIGADO = PARAMS.get('vozteste') === '1';
 
   let SB: any, ID = '', MESTRE = false, EU = '';
@@ -8743,27 +8743,53 @@ const SETAS = [
     await executarComando(cid, escolha);
   }
 
-  // ==================================== o caminho quente (VOZ.md §10, rodada 34)
+  // ==================================== o caminho quente (VOZ.md §10, rodada 34 e 35)
+  /** A peça que "outra coisa" abriria por voz agora — a vez, e não a peça
+   * clicada: o Grid não tem hoje um estado de seleção por clique separado
+   * do arrasto e do menu (mesmo achado e mesma decisão da barra de texto,
+   * `permissaoComando` acima, "a peça selecionada É `daVez()`"). Custo:
+   * como lá, não dá para abrir "outra coisa" por voz numa peça fora da vez
+   * sem passar pelo menu dela primeiro. */
+  function podeAbrirOutra(): any | null {
+    const v = daVez();
+    return v && mandoNela(v) ? v : null;
+  }
+
+  /** Um campo `escolha`/`inteiro`/`faces` só entra na gramática se o
+   * elemento dele estiver de fato visível — `ou-quando` some do DOM fora do
+   * P/G/R (`grid.astro`, `abrirOutra`), e sem esta checagem a voz aceitaria
+   * "quando fim" numa mesa que nem mostra o campo. */
+  const campoVisivel = (c: CampoNumero) => {
+    const e = document.getElementById(c.destino) as HTMLElement | null;
+    return !!e && e.style.display !== 'none';
+  };
+
   /**
    * Os campos que estão de fato abertos AGORA (decisão 13: nunca uma lista
-   * fixa escrita à mão). Duas situações valem, e só elas:
+   * fixa escrita à mão), de UMA tela por vez — nunca mistura a folha do
+   * golpe com "outra coisa". Quatro situações valem, e só elas:
    *
-   * - a folha do golpe está aberta (`#alvo-dlg[open]`): os campos são os que
-   *   ELA de fato desenhou — confere no DOM em vez de assumir os cinco;
-   * - nenhuma folha aberta, mas há um golpe vencendo na faixa (decisão 12):
-   *   ainda não há tela para conferir, então usa o catálogo inteiro — nesta
-   *   rodada só existe UM tipo de caixa numérica (a folha do golpe), então a
-   *   aproximação não escolhe entre teias diferentes.
+   * - a folha do golpe está aberta (`#alvo-dlg[open]`): os campos `ataque`
+   *   que ELA de fato desenhou;
+   * - "outra coisa" está aberta (`#outra-dlg[open]`): os campos `outra`
+   *   visíveis nela (rodada 35);
+   * - nenhuma das duas, mas há um golpe vencendo na faixa (decisão 12): os
+   *   campos `ataque` inteiros — ainda não há tela para conferir;
+   * - nenhuma das duas, mas há peça para abrir "outra coisa" (decisão 4,
+   *   rodada 35): os campos `outra` inteiros, pelo mesmo motivo.
    *
-   * Vazio nos dois sentidos: sem folha e sem cartão vencido, um número dito
-   * não tem onde cair, e a gramática nem inclui as palavras de campo — é o
-   * que faz "sem cartão vencido esperando, o número recusa" (decisão 12)
-   * acontecer sem código extra, só por o parser nunca ver a palavra.
+   * Vazio quando nada disso vale: um número dito não tem onde cair, e a
+   * gramática nem inclui a palavra de campo — é o que faz "sem cartão
+   * vencido nem peça esperando, o número recusa" acontecer sem código
+   * extra, só por o parser nunca ver a palavra.
    */
   function camposAtivos(): CampoNumero[] {
-    const dlg = document.getElementById('alvo-dlg') as HTMLDialogElement | null;
-    if (dlg?.open) return CAMPOS.filter((c) => document.getElementById(c.destino));
-    if (golpeVencidoNaFaixa()) return CAMPOS;
+    const dlgAtaque = document.getElementById('alvo-dlg') as HTMLDialogElement | null;
+    if (dlgAtaque?.open) return CAMPOS.filter((c) => c.tela === 'ataque' && campoVisivel(c));
+    const dlgOutra = document.getElementById('outra-dlg') as HTMLDialogElement | null;
+    if (dlgOutra?.open) return CAMPOS.filter((c) => c.tela === 'outra' && campoVisivel(c));
+    if (golpeVencidoNaFaixa()) return CAMPOS.filter((c) => c.tela === 'ataque');
+    if (podeAbrirOutra()) return CAMPOS.filter((c) => c.tela === 'outra');
     return [];
   }
 
@@ -8789,24 +8815,41 @@ const SETAS = [
    */
   function aplicarPreenchimentos(preenchimentos: Preenchimento[]) {
     for (const p of preenchimentos) {
-      const campo = document.getElementById(p.destino) as HTMLInputElement | null;
+      const campo = document.getElementById(p.destino) as HTMLInputElement | HTMLSelectElement | null;
       if (!campo) continue;
       campo.value = String(p.valor);
-      campo.dispatchEvent(new Event('input', { bubbles: true }));
+      // UM `<select>` (`ou-quando`) OUVE `change`, NÃO `input` — o navegador
+      // nunca dispara `input` numa troca de valor feita à mão num `<select>`,
+      // e copiar o `input` da folha do golpe aqui falharia calado (achado ao
+      // estender este mecanismo para "outra coisa", rodada 35).
+      const evento = campo.tagName === 'SELECT' ? 'change' : 'input';
+      campo.dispatchEvent(new Event(evento, { bubbles: true }));
     }
   }
 
-  /** Abre o cartão vencido se preciso (decisão 12) e então preenche. */
-  async function aplicarNumeros(preenchimentos: Preenchimento[]) {
-    const dlg = document.getElementById('alvo-dlg') as HTMLDialogElement | null;
+  /** Abre a caixa certa se preciso (decisão 12 do golpe vencido, decisão 4 de
+   * "outra coisa") e então preenche. `campos` diz de qual TELA os
+   * preenchimentos são — nunca misto, `camposAtivos()` já garante isso. */
+  async function aplicarNumeros(campos: CampoNumero[], preenchimentos: Preenchimento[]) {
+    const tela = campos[0]?.tela;
+    const dlgId = tela === 'outra' ? 'outra-dlg' : 'alvo-dlg';
+    const dlg = document.getElementById(dlgId) as HTMLDialogElement | null;
     if (!dlg?.open) {
-      const g = golpeVencidoNaFaixa();
-      if (!g) { uiErro('Não há cartão vencido esperando para receber este número.'); return; }
-      // NÃO espera a folha fechar (ela só resolve quando o mestre decide o
-      // veredito) — só que ela ABRA, para escrever nos campos dela.
-      void resolverGolpeNoAr(g.atacante, g.tick);
-      const abriu = await aguardarDialogAberto('alvo-dlg');
-      if (!abriu) { uiErro('Não consegui abrir o cartão vencido a tempo.'); return; }
+      if (tela === 'outra') {
+        const v = podeAbrirOutra();
+        if (!v) { uiErro('Não há peça para abrir "outra coisa" agora.'); return; }
+        // `abrirOutra` não é async e chama `showModal()` antes de devolver —
+        // ao contrário de `resolverGolpeNoAr`, não precisa de `void`.
+        abrirOutra(v.id);
+      } else {
+        const g = golpeVencidoNaFaixa();
+        if (!g) { uiErro('Não há cartão vencido esperando para receber este número.'); return; }
+        // NÃO espera a folha fechar (ela só resolve quando o mestre decide o
+        // veredito) — só que ela ABRA, para escrever nos campos dela.
+        void resolverGolpeNoAr(g.atacante, g.tick);
+      }
+      const abriu = await aguardarDialogAberto(dlgId);
+      if (!abriu) { uiErro('Não consegui abrir a caixa a tempo.'); return; }
     }
     aplicarPreenchimentos(preenchimentos);
   }
@@ -8820,12 +8863,13 @@ const SETAS = [
    * ambiguidade — uma vez decidido, uma falha é recusa de verdade, e não
    * "tenta o outro parser por baixo".
    *
-   * A checagem usa `CAMPOS` (o CATÁLOGO inteiro), e não `camposAtivos()`: se
-   * caísse para o verbo por falta de contexto, "acerto quatro dois seis" sem
-   * cartão vencido abriria o escolhedor de VERBO (sugerindo "mover H7",
-   * "tirar"...), que não tem nada a ver com o que foi dito. Decisão 12: sem
-   * cartão vencido esperando, a resposta certa é a RECUSA do domínio dos
-   * campos, nunca um palpite de verbo (achado ao testar este item).
+   * A checagem usa `CAMPOS` (o CATÁLOGO inteiro, das duas telas), e não
+   * `camposAtivos()`: se caísse para o verbo por falta de contexto, "acerto
+   * quatro dois seis" sem cartão vencido (ou "ticks dez" sem peça para abrir
+   * "outra coisa") abriria o escolhedor de VERBO (sugerindo "mover H7",
+   * "tirar"...), que não tem nada a ver com o que foi dito. Decisões 12 e 4:
+   * sem onde cair, a resposta certa é a RECUSA do domínio dos campos, nunca
+   * um palpite de verbo (achado ao testar este item, na rodada 34).
    *
    * ISTO NÃO CONTRARIA A DECISÃO 2 (duas camadas): `CAMPOS` aqui só decide
    * o ROTEAMENTO de um texto que JÁ FOI reconhecido — a GRAMÁTICA que o
@@ -8842,11 +8886,11 @@ const SETAS = [
       vozStatus(STATUS_PADRAO_VOZ);
       const campos = camposAtivos();
       if (campos.length === 0) {
-        uiErro(`Não há cartão vencido esperando para receber "${texto}" (por voz).`);
+        uiErro(`Não há caixa nem peça esperando para receber "${texto}" (por voz).`);
         return;
       }
       const num = interpretarNumeros(texto, campos);
-      if (num.ok) { await aplicarNumeros(num.preenchimentos); return; }
+      if (num.ok) { await aplicarNumeros(campos, num.preenchimentos); return; }
       uiErro(`Não entendi "${num.ouvido}" (por voz): ${num.motivo}`);
       return;
     }
@@ -8859,14 +8903,51 @@ const SETAS = [
     await receberFalaComando(cid, texto);
   }
 
+  /**
+   * OS TRÊS CAMPOS DE DITADO LIVRE (VOZ.md §10 decisão 7) — e SÓ ELES: fora
+   * deles a fala sempre casa contra gramática (verbo ou campo numérico).
+   * `ou-oque` (o "o quê" da ação), `al-motivo` (o motivo do ajuste avulso) e
+   * `ag-busca` (o filtro de efeitos da magia). O erro deste modo cai em
+   * campo que ninguém calcula — estraga o REGISTRO, não a conta — e é
+   * exatamente essa diferença de risco que justifica aceitar aqui uma taxa
+   * de erro pior do que em qualquer outro lugar desta frente.
+   */
+  const CAMPOS_DITADO_LIVRE = ['ou-oque', 'al-motivo', 'ag-busca'];
+
+  /**
+   * O MODO SEGUE O FOCO, e é a regra toda (decisão do Arquiteto, rodada 35):
+   * nenhuma palavra nova, nenhum gesto novo, o mestre nunca precisa saber
+   * que existem dois reconhecedores. Se o elemento focado NO INSTANTE EM
+   * QUE A TECLA É APERTADA é um dos três campos de ditado livre, segurar V
+   * usa o reconhecedor SEM gramática (`prepararReconhecedor(undefined,...)`);
+   * em qualquer outro foco (ou nenhum), usa o da gramática de sempre.
+   */
+  function elementoDeDitadoLivre(): HTMLInputElement | null {
+    const a = document.activeElement as HTMLElement | null;
+    return a && CAMPOS_DITADO_LIVRE.includes(a.id) ? (a as HTMLInputElement) : null;
+  }
+
+  /** Escreve o texto reconhecido DIRETO no campo de ditado livre — sem
+   * parser nenhum, porque não há gramática para casar contra. */
+  function receberDitado(elemento: HTMLInputElement, texto: string) {
+    elemento.value = texto;
+    elemento.dispatchEvent(new Event('input', { bubbles: true }));
+    vozStatus(STATUS_PADRAO_VOZ);
+  }
+
   let VOZ_GRAVANDO = false;
   async function segurarVoz() {
     if (VOZ_GRAVANDO) return;
     const v = daVez();
     const campos = camposAtivos();
-    // Nada para fazer: nem verbo (sem ninguém na vez) nem número (sem folha
-    // aberta e sem cartão vencendo). Segurar o botão não abre a boca à toa.
-    if (!v && campos.length === 0) return;
+    // O ditado captura o elemento AGORA, no aperto — não no resultado, que
+    // chega depois: o mesmo raciocínio do `cid` abaixo ("a peça QUANDO O
+    // MICROFONE FOI APERTADO"), só que para onde escrever, não para quem.
+    const ditado = elementoDeDitadoLivre();
+    // Nada para fazer: nem verbo (sem ninguém na vez), nem número (sem
+    // caixa nem peça esperando), nem ditado (foco em outro lugar). Segurar
+    // o botão não abre a boca à toa.
+    if (!v && campos.length === 0 && !ditado) return;
     if (!vozCarregada()) {
       vozStatus('carregando o modelo de voz (31 MB)…');
       const r = await carregarVoz(caminhosPadrao(import.meta.env.BASE_URL));
@@ -8874,13 +8955,16 @@ const SETAS = [
       vozStatus('modelo carregado — segure e fale');
       return; // o toque que carregou não grava: solta a mão, segura de novo
     }
-    // A gramática é preparada A CADA TOQUE, e não só na primeira vez
-    // (diferente da rodada 33): os campos abertos mudam de um toque para o
-    // outro (folha abrindo e fechando), e `prepararReconhecedor` é barato —
-    // troca de gramática não recarrega o modelo (medido na bancada).
-    prepararReconhecedor(gramaticaDeVoz(campos), (parcial) => { if (parcial) vozStatus('ouvindo: ' + parcial); },
+    // A gramática (ou a ausência dela, no ditado) é preparada A CADA TOQUE,
+    // e não só na primeira vez (diferente da rodada 33): o contexto muda de
+    // um toque para o outro (folha abrindo e fechando, foco mudando de
+    // campo), e `prepararReconhecedor` é barato — trocar não recarrega o
+    // modelo (medido na bancada).
+    prepararReconhecedor(ditado ? undefined : gramaticaDeVoz(campos),
+      (parcial) => { if (parcial) vozStatus('ouvindo: ' + parcial); },
       (resultado) => {
         if (!resultado.texto) { vozStatus('não ouvi nada — segure e fale de novo'); return; }
+        if (ditado) { receberDitado(ditado, resultado.texto); return; }
         void receberFala(resultado.texto);
       });
     if (v) COMANDO_ARMADO = COMANDO_ARMADO ?? { cid: v.id };
@@ -10147,7 +10231,20 @@ let roladoDano = '';
     (window as any).__RESUMO_DE = (id: string) => RESUMO[id];
   }
 
-  if (VOZ_TESTE_LIGADO) (window as any).__RECEBER_FALA = receberFala;
+  if (VOZ_TESTE_LIGADO) {
+    (window as any).__RECEBER_FALA = receberFala;
+    // Devolve o id do campo de ditado livre focado, ou `null` — a MESMA
+    // função que `segurarVoz` chama para escolher o reconhecedor, exposta
+    // direto (sem passar por áudio) para provar "o modo segue o foco" com
+    // um `document.getElementById(id).focus()` e nada mais.
+    (window as any).__MODO_DITADO = () => elementoDeDitadoLivre()?.id ?? null;
+    // A metade que falta: escrever o texto reconhecido no campo de ditado
+    // livre, sem precisar segurar tecla nem carregar modelo nenhum.
+    (window as any).__RECEBER_DITADO = (id: string, texto: string) => {
+      const e = document.getElementById(id) as HTMLInputElement | null;
+      if (e) receberDitado(e, texto);
+    };
+  }
 
   /**
    * O ESPELHO DE MOTOR, atrás de `?espelho=1`.

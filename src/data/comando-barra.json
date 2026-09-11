@@ -54,12 +54,20 @@
     "juncao": "e",
     "negativo": "menos"
   },
-  "notaCampos": "VOZ.md §10 decisao 13: este catalogo tem TODOS os campos conhecidos, mas a gramatica de uma caixa aberta usa so os que aquela tela de fato desenhou (grid.astro confere no DOM e publica a lista - nenhuma lista fixa fica escrita a mao fora daqui). Rodada 34 so cobre o caminho quente (a folha do golpe); acao e magia ficam para depois.",
+  "notaCampos": "VOZ.md §10 decisao 13: este catalogo tem TODOS os campos conhecidos, mas a gramatica de uma caixa aberta usa so os que aquela tela de fato desenhou (grid.astro confere no DOM e publica a lista - nenhuma lista fixa fica escrita a mao fora daqui). 'tela' marca de qual caixa cada campo e (ataque = a folha do golpe, rodada 34; outra = a tela 'outra coisa', rodada 35); magia fica para depois. Um campo 'escolha' e fechado (um valor de uma lista curta, por exemplo agora/fim), diferente de 'faces'/'inteiro' que sao numero.",
   "campos": [
-    { "id": "acerto", "palavras": ["acerto"], "destino": "al-total", "tipo": "faces" },
-    { "id": "dano", "palavras": ["dano"], "destino": "al-dn", "tipo": "faces" },
-    { "id": "ajuste", "palavras": ["ajuste"], "destino": "al-mod", "tipo": "inteiro" },
-    { "id": "margem", "palavras": ["margem"], "destino": "al-qa-margem", "tipo": "inteiro", "min": 0 },
-    { "id": "raspao", "palavras": ["raspao"], "destino": "al-qa-dano", "tipo": "inteiro", "min": 0 }
+    { "id": "acerto", "palavras": ["acerto"], "destino": "al-total", "tipo": "faces", "tela": "ataque" },
+    { "id": "dano", "palavras": ["dano"], "destino": "al-dn", "tipo": "faces", "tela": "ataque" },
+    { "id": "ajuste", "palavras": ["ajuste"], "destino": "al-mod", "tipo": "inteiro", "tela": "ataque" },
+    { "id": "margem", "palavras": ["margem"], "destino": "al-qa-margem", "tipo": "inteiro", "min": 0, "tela": "ataque" },
+    { "id": "raspao", "palavras": ["raspao"], "destino": "al-qa-dano", "tipo": "inteiro", "min": 0, "tela": "ataque" },
+    { "id": "ticks", "palavras": ["ticks", "custo"], "destino": "ou-ticks", "tipo": "inteiro", "min": 0, "tela": "outra" },
+    { "id": "quando", "palavras": ["quando"], "destino": "ou-quando", "tipo": "escolha", "tela": "outra",
+      "opcoes": [
+        { "valor": "agora", "palavras": ["agora"] },
+        { "valor": "fim", "palavras": ["fim"] }
+      ] },
+    { "id": "total", "palavras": ["total"], "destino": "ou-total", "tipo": "inteiro", "min": 0, "tela": "outra" },
+    { "id": "dificuldade", "palavras": ["dificuldade", "dif"], "destino": "ou-dif", "tipo": "inteiro", "min": 0, "tela": "outra" }
   ]
 }

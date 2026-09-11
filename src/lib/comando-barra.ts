@@ -28,20 +28,36 @@ export interface Verbo {
 
 const VERBOS: Verbo[] = (dados as { verbos: Verbo[] }).verbos;
 
-/** VOZ.md §10 decisão 13: o catálogo INTEIRO de campos conhecidos. A tela
- * decide, olhando o próprio DOM, quais destes estão de fato abertos agora —
- * esta lista nunca é usada inteira de uma vez, só filtrada. */
+/** Uma opção fechada de um campo `tipo: 'escolha'` (ex.: `ou-quando`, só
+ * "agora" ou "fim") — nunca número, nunca texto livre. */
+export interface OpcaoEscolha {
+  valor: string;
+  palavras: string[];
+}
+
+/** VOZ.md §10 decisão 13: o catálogo INTEIRO de campos conhecidos, de TODAS
+ * as telas. A tela decide, olhando o próprio DOM, quais destes estão de fato
+ * abertos agora — esta lista nunca é usada inteira de uma vez, só filtrada
+ * (por `tela` primeiro, depois por visibilidade real no DOM). */
 export interface CampoNumero {
   id: string;
   palavras: string[];
-  /** O id do `<input>` que recebe o valor. */
+  /** O id do elemento que recebe o valor (`<input>` ou `<select>`). */
   destino: string;
   /** Da TELA, não do parser (VOZ.md §10 decisão 6): `faces` compõe uma
    * sequência de dados de d6 (1 a 6, sem "e"); `inteiro` compõe UM número
-   * (0 a 60, com "menos" e "e" de dezena+unidade). */
-  tipo: 'faces' | 'inteiro';
+   * (0 a 60, com "menos" e "e" de dezena+unidade); `escolha` casa uma
+   * palavra contra `opcoes` (fechado, nunca número). */
+  tipo: 'faces' | 'inteiro' | 'escolha';
   min?: number;
   max?: number;
+  /** Só quando `tipo === 'escolha'`. */
+  opcoes?: OpcaoEscolha[];
+  /** De qual caixa este campo é (`ataque` = a folha do golpe, rodada 34;
+   * `outra` = a tela "outra coisa", rodada 35). Nunca lido pelo parser —
+   * só quem monta a lista de campos ATIVOS (`grid.astro`) usa isto, para
+   * nunca misturar campo de uma caixa na gramática de outra. */
+  tela: string;
 }
 
 export const CAMPOS: CampoNumero[] = (dados as { campos: CampoNumero[] }).campos;
@@ -202,6 +218,18 @@ export function interpretarNumeros(texto: string, campos: CampoNumero[]): Numero
         return { ok: false, ouvido: texto, motivo: `"${campo.id}" precisa de ao menos uma face` };
       }
       preenchimentos.push({ campoId: campo.id, destino: campo.destino, valor: faces.join(',') });
+    } else if (campo.tipo === 'escolha') {
+      // Fechado: uma palavra de `opcoes`, nunca número (ex.: `ou-quando`,
+      // "agora" ou "fim"). Recusa igual ao resto — palavra fora da lista
+      // não vira palpite.
+      const token = tokens[i];
+      const opcao = token != null ? campo.opcoes?.find((o) => o.palavras.includes(token)) : undefined;
+      if (!opcao) {
+        return { ok: false, ouvido: texto, motivo: `"${campo.id}" precisa de uma opção (${
+          campo.opcoes?.map((o) => o.valor).join(' ou ') || '?'})` };
+      }
+      i++;
+      preenchimentos.push({ campoId: campo.id, destino: campo.destino, valor: opcao.valor });
     } else {
       const r = lerInteiro(tokens, i);
       if (!r) return { ok: false, ouvido: texto, motivo: `"${campo.id}" precisa de um número` };
@@ -265,6 +293,12 @@ export function comecaComPalavraDeCampo(texto: string, campos: CampoNumero[]): b
 export function gramaticaDeVoz(campos: CampoNumero[] = []): string {
   const numeros = [...Object.keys(NUMEROS.unidades), ...Object.keys(NUMEROS.dezenas),
     NUMEROS.juncao, NUMEROS.negativo];
-  const palavras = [...VERBOS.flatMap((v) => v.palavras), ...numeros, ...campos.flatMap((c) => c.palavras)];
+  // As palavras de OPÇÃO (`escolha`, ex.: "agora"/"fim" de `ou-quando`) são
+  // igualmente parte da camada da caixa aberta — sem isto, a gramática teria
+  // a palavra do campo mas não o valor que ele aceita, e "quando fim" nunca
+  // seria reconhecido de verdade.
+  const opcoes = campos.flatMap((c) => c.opcoes?.flatMap((o) => o.palavras) ?? []);
+  const palavras = [...VERBOS.flatMap((v) => v.palavras), ...numeros,
+    ...campos.flatMap((c) => c.palavras), ...opcoes];
   return JSON.stringify([...palavras, '[unk]']);
 }
