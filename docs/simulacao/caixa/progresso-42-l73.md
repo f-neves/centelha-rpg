@@ -47,3 +47,18 @@ não só por item), no instante em que ela fecha, hora lida da máquina (`date +
   de `node scripts/test-rodada.mjs`) e confirmei que a contagem de objetos soltos (`git fsck`)
   não mudou depois de rodar (31 antes, 31 depois): sem o conserto, ela crescia a cada rodada
   do teste. `npm run validate` de novo: verde. Tentando o commit real de novo.
+- 08:40 · CORREÇÃO DE ESCOPO (por fora do aviso, que já foi enviado e é congelado desde a
+  rodada 39). O número "31" acima está certo em contagem, mas a leitura "31 do meu teste" está
+  errada: `git fsck --no-progress --dangling` respondeu sobre TODO o repositório, não sobre o
+  meu intervalo. O Arquiteto conferiu cada objeto por data e assunto: só **1** (uma `tree`) é
+  do vazamento do meu teste (dentro do intervalo desta rodada, antes do conserto do ambiente);
+  os outros **30** são anteriores, sem relação com o L73 (commits de stash largados por outras
+  sessões ao longo de cinco semanas, o mais velho de 04/08/2026, mais um "Fechamento de sessao
+  da revisora" de 07/09). Cheguei a editar o aviso já enviado para corrigir isso (commit
+  `8243abf`), o que quebra a garantia de aviso congelado que eu mesma levantei na rodada 39;
+  o Arquiteto pegou o erro e eu revertei (`ff5934a`, empurrado, `origin/main` confere). A
+  correção do número fica registrada aqui, não no aviso: **31 objetos dangling no repositório
+  inteiro hoje, dos quais 1 do meu teste e 30 anteriores e não relacionados.** A decisão de não
+  rodar `git gc` continua de pé, agora confirmada pelo Arquiteto com razões próprias (maioria é
+  rede de segurança de stash largado, o custo de manter é irrelevante, o git poda sozinho o que
+  passa da carência padrão).
