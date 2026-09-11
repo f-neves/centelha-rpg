@@ -609,3 +609,27 @@ mão, rodar o verificador de novo antes de seguir para a próxima, em vez de con
 ao escrever a âncora, colocá-la na MESMA linha da citação e o mais perto possível dela, sem outro
 trecho em crases entre as duas · não porque o script exija exatamente isso, mas porque é o único
 jeito de a distância em bytes bater com a distância que o olho vê.
+
+**O AMBIENTE HERDADO VENCE O CAMINHO EXPLICITO.** Achado pela Executora na rodada 42, em
+11/09/2026, escrevendo o teste do `--enviar`.
+
+O teste precisava rodar `git commit` de verdade, entao montou um repositorio de mentira e chamou
+o `git` com o `cwd` apontado para la. **O commit foi parar no repositorio REAL.** A causa: o teste
+roda de dentro do gancho de `pre-commit`, e um `git commit` em andamento exporta `GIT_DIR`,
+`GIT_WORK_TREE` e `GIT_INDEX_FILE`. **Essas variaveis vencem o `cwd`**, entao o processo filho
+obedece ao ambiente e ignora o diretorio em que foi posto.
+
+**Por que o `cwd` parece suficiente e nao e:** trocar de diretorio e o gesto universal para dizer
+"opere aqui", e funciona para quase toda ferramenta. Para as que leem o proprio ambiente (o `git`
+e so a mais comum), o `cwd` e a fonte de MENOR precedencia, e nada no codigo do teste mostra isso ·
+a variavel nao aparece em lugar nenhum do arquivo, porque quem a exportou foi o processo pai.
+
+**O gesto que fica:** teste que invoca ferramenta sensivel a ambiente limpa o ambiente
+explicitamente em TODA chamada, e nao so aponta o caminho. Vale para qualquer ferramenta com
+configuracao por variavel, nao so para o `git`.
+
+**E a segunda metade do caso vale sozinha:** ao relatar o estrago, o `git fsck` respondeu "31
+objetos soltos", e o numero foi lido como "o que o meu teste deixou". Eram **um** do teste e trinta
+de `stash` largado por varias sessoes desde 04/08. A ferramenta respondeu sobre o repositorio
+inteiro; a pergunta era sobre um intervalo de dez minutos. **E a forma de 11/09 de novo**, e o
+gesto que a evita e o mesmo: dizer o escopo junto do numero.
