@@ -54,7 +54,7 @@ Cada número publicado nesta rodada, com o arquivo e a linha de onde ele sai.
 | número | o que é | de onde sai |
 |---|---|---|
 | 12 | asserções do `test-rodada.mjs` novo, todas passando | saída viva de `node scripts/test-rodada.mjs` |
-| 31 | objetos "dangling" (soltos, inalcançáveis por ref) no `.git` real, criados pelo teste ANTES do conserto do ambiente, e que a contagem NÃO cresceu depois do conserto (simulando o ambiente do gancho à mão) | `docs/simulacao/caixa/progresso-42-l73.md:48` |
+| 31 | objetos "dangling" (soltos, inalcançáveis por ref) no `.git` real HOJE, no repositório inteiro; NÃO são todos do meu teste. Dos 31: **1** (uma `tree`) é do vazamento do meu teste, do intervalo antes do conserto do ambiente; os outros **30** são anteriores e não têm relação com esta rodada (stashes largados por sessões ao longo de cinco semanas, o mais velho de 04/08/2026) | `git fsck --no-progress --dangling`, conferido pelo Arquiteto por data e assunto de cada objeto |
 | 2 | commits no total da árvore de mentira depois das duas chamadas de `--enviar` (um de trabalho, um de aviso só) | `scripts/test-rodada.mjs:150` |
 
 Se um número foi calculado e não está num arquivo, o comando que o produz entra na
@@ -68,7 +68,7 @@ Decisão sem custo escrito é decisão pela metade.
 | # | a decisão | o que ela custa |
 |---|---|---|
 | D42a | Detectar "HEAD já é um aviso" pela MENSAGEM fixa do commit (`rodada \d+ · aviso à revisora`), não por outro sinal (comparar com o sha impresso na última chamada, por exemplo) | um commit de trabalho que por acidente tivesse essa mensagem exata seria recusado como se fosse um aviso; achei o risco baixo (a mensagem é escrita só por esta linha do próprio `rodada.mjs`, ninguém digita à mão) e o ganho grande (não precisa guardar estado entre chamadas em arquivo nenhum) |
-| D42b | Não rodar `git gc` para apagar os 31 objetos soltos que o teste criou nas tentativas antes do conserto | fico sem o repositório "limpo" nesta rodada; o custo de decidir errado (apagar objeto que não era meu para apagar) é maior que o de deixar 31 blobs inertes por mais uma rodada, e a instrução do time é clara sobre operação que descarta de vez |
+| D42b | Não rodar `git gc` para apagar o objeto solto que o meu teste deixou (uma `tree`, do vazamento antes do conserto do ambiente) | fico sem o `.git` "limpo" nesta rodada; o custo de decidir errado (apagar objeto que não era meu para apagar, e que no repositório inteiro é maioria de stash de outras sessões, não lixo meu) é maior que o de deixar um objeto inerte por mais uma rodada. **Decisão confirmada pelo Arquiteto** (git gc não deve rodar: poda automática já cuida disso, o custo de manter é irrelevante, e objeto solto é a última rede de quem largou stash) |
 | D42c | Testar o L73 numa árvore de mentira ISOLADA (com git e node de verdade) em vez de extrair a lógica do guarda para uma função pura e testar só ela | uma árvore de mentira custa mais (processo `git`/`node` de verdade, ache o achado do `GIT_DIR` que quase corrompeu o repositório real) do que uma função pura testada em memória; escolhi porque o defeito original só existe na INTERAÇÃO entre `--abrir`, o commit do aviso e o `HEAD` relido, e uma função pura testaria a regra sem provar que ela está ligada ao lugar certo |
 
 ## O QUE FICOU EM ABERTO
@@ -76,14 +76,11 @@ Decisão sem custo escrito é decisão pela metade.
 O que não foi resolvido, e por quê. Marcar explicitamente **o que precisa do
 humano** e não da revisora.
 
-- **PRECISA DO ARQUITETO, NÃO DA REVISORA:** 31 objetos soltos ("dangling", sem
-  ref alguma apontando para eles, portanto inertes) ficaram no `.git` real,
-  criados por tentativas do `test-rodada.mjs` antes de eu achar e consertar o
-  vazamento de ambiente descrito em D42c. Não são meus para apagar sozinha
-  (`git gc --prune=now` descarta objeto de vez, e a instrução do time é clara
-  contra operação destrutiva sem autorização). A contagem está confirmada como
-  estável (não cresce mais depois do conserto); falta só a decisão de rodar
-  `git gc` ou deixar como está.
+- Nada em aberto para o L73. O objeto solto que sobrou do vazamento (D42b) já
+  tem decisão do Arquiteto: não rodar `git gc`. Registro aqui só para a
+  revisora não medir de novo esperando achar algo pendente: ela pode conferir
+  com `git fsck --no-progress --dangling` e vai ver 1 `tree` do meu intervalo
+  e 30 objetos anteriores, sem relação com esta rodada.
 
 ## ONDE LER
 
