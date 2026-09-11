@@ -4906,6 +4906,24 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   exatamente o gêmeo órfão, e é o que aconteceu três vezes. Isto vale a partir de agora e não
   espera o portão da 44.
 
+  **E O GESTO FOI EXERCITADO NO MESMO DIA, na primeira ocasião que apareceu.** O push do veredito
+  da rodada 43 foi recusado (a ponta tinha andado cinco commits, os cinco meus, depois do aviso
+  enviado), e desta vez ela resolveu no próprio worktree em vez de pedir replantio. O resultado,
+  conferido do lado de fora e não aceito de palavra:
+
+  · o commit rebaseado `92066a0` tem pai `f4d5118`, a ponta certa;
+  · o **diff autorado é byte a byte idêntico** ao de antes do rebase (`18cfa65^..18cfa65` contra
+    `92066a0^..92066a0`), e toca os mesmos dois arquivos dela;
+  · o `HEAD` da worktree dela **acompanhou o sha novo**, que é a metade exata que faltou nas três
+    vezes anteriores;
+  · e `git log --all --grep='Rodada 43: veredito'` devolve **UM** commit. Nas rodadas 39, 41 e 42
+    a mesma busca devolve dois, o órfão e o gêmeo.
+
+  **A conferência que fecha é `merge-base --is-ancestor HEAD origin/main` depois do push**, e ela é
+  a parte que nunca tinha sido feita: as três órfãs não nasceram de ninguém errar o rebase, e sim
+  de ninguém olhar depois. O portão da 44 pega o sintoma na abertura da rodada seguinte; esta linha
+  pega a causa no instante em que ela acontece, e por isso vale mais.
+
   **A OUTRA PONTA DO INTERVALO TAMBÉM APODRECE, e nenhum portão de envio pode pegar isso.** O
   campo `TOPO` diz, pelo texto do próprio aviso, "com `TOPO` igual a `SHA`, o trecho é o main
   inteiro desde a `BASE`" · ou seja, "não entrou commit de outra frente". Isso é verdade no
