@@ -369,3 +369,172 @@ etapa que espera por elas.
 
 As oito funções que ainda leem DOM ou dependem de diálogo com callback ficam de fora dos três
 itens acima, e não são refatoradas por causa deste pacote.
+
+---
+
+## 9 · O desenho completo, medido contra o trabalho real do mestre
+
+**Escrito em 10/09/2026, depois de os três itens do §8 fecharem por veredito, a pedido do humano:
+desenhar a implementação completa e dizer onde ela de fato economiza tempo.**
+
+**Este capítulo não propõe construção.** Ele mede, compara caminhos e diz o que a voz deve e o que
+ela não deve tomar para si. A ordem de construir é do humano.
+
+### 9.1 · A medição já existe, e ninguém tinha cruzado com esta frente
+
+O trabalho do mestre foi medido em gestos de tela, com a derivação lida do Grid, e está em
+`docs/simulacao/ESTADO.md`, na seção "Os mesmos gestos, pela linha" (instrumento:
+`scripts/sim/custo-tela.mjs`). **Gesto ali é ação de entrada, e não tempo** · dois cliques podem
+levar um segundo ou trinta, e medir isso seria outro instrumento.
+
+| o gesto do mestre | gestos | fatia |
+|---|---:|---:|
+| digitar o acerto e digitar o dano | 398.476 | **34,0%** |
+| ⏭ que não abre parada nenhuma | 210.296 | 17,9% |
+| abrir o cartão vencido na faixa | 199.238 | 17,0% |
+| o botão do veredito (acertou · raspou · errou) | 199.238 | 17,0% |
+| ⏭ que abre uma parada | 164.709 | 14,1% |
+| **total** | **1.171.957** | **100%** |
+
+**Uma ressalva que a própria medição carrega, e que muda como se lê a tabela:** esta bateria roda
+com declaração automática, e **a declaração é gesto do JOGADOR**. Escolher arma, alvo, alcance,
+manobra e deslocamento acontece lá, e custa zero aqui. Por isso o `ESTADO.md` conclui que, nesta
+configuração, **nada do que o mestre faz é jogo** · é abrir, transcrever e adiantar o relógio. Numa
+mesa com jogadores de verdade o mestre ganha de volta algumas paradas (o redirecionamento vira
+caixa), mas a ordem de grandeza dos cinco gestos acima não muda.
+
+### 9.2 · O que a frente construiu, e o desencontro que precisa ser dito
+
+Os cinco verbos que a barra executa hoje são `mover`, `tirar`, `encerrar`, `auto` e `esperar`.
+
+**Nenhum deles aparece na tabela acima.** São arrumação de tabuleiro e cadência, não o trabalho
+que a medição mediu. **A frente da voz, como está construída, alcança perto de 0% do custo
+medido.**
+
+Isso não é acusação à construção, e a construção não foi desperdício: os três itens do §8 fizeram o
+que precisava existir antes de qualquer coisa · o campo, o parser que recusa, o desfazer que
+autoriza execução direta, e a captura que enche o campo por outro meio. **Era infraestrutura, e ela
+está de pé e revisada.** O que faltava era apontá-la para onde o custo está, e é isto aqui.
+
+### 9.3 · A comparação de caminhos, que o §6 registrava como nunca feita
+
+O §6 diz, sobre os dois bloqueios não técnicos: *"Para as ações mais frequentes do mestre, comparar
+em gestos e trocas de tela: como é hoje, com a tela no lugar certo, com atalho de teclado sobre a
+peça selecionada, e por comando falado. **Isso pode encerrar a frente.**"*
+
+**Aqui está ela, para os cinco gestos medidos.** E o achado é que **o atalho de teclado já existe**
+para a maior parte do que se discutia: `Espaço` encerra a vez, `A` abre a mira, `O` abre a válvula
+do improviso, `1` a `9` abrem o menu da enésima peça, `Z` desfaz, `C` abre a barra.
+
+| gesto | fatia | hoje | atalho de teclado | por voz |
+|---|---:|---|---|---|
+| digitar acerto e dano | 34,0% | abrir + 2 campos | **não existe, e é de propósito** | **1 fala** · é o alvo |
+| abrir o cartão vencido | 17,0% | 1 clique | não existe | **cabe na mesma fala** |
+| ⏭ sem parada | 17,9% | 1 clique | **`Espaço`, já existe** | **perde** |
+| ⏭ com parada | 14,1% | 1 clique | **`Espaço`, já existe** | **perde** |
+| botão do veredito | 17,0% | 1 clique | **deliberadamente não** | **não deve** |
+
+**A voz perde o ⏭, e é melhor dizer isso do que desenhar em volta.** Um clique bem posto, ou uma
+tecla que a mão já está segurando, ganha de segurar-falar-soltar em qualquer contagem honesta. O
+comentário dos atalhos no Grid já tinha a razão escrita: *"é o gesto mais repetido de uma sessão
+inteira, e tirar a mão do teclado para caçar o menu custa caro"* · o mesmo argumento vale contra
+tirar a mão do teclado para caçar o microfone. **Os 32% do relógio já estão resolvidos**, e não por
+esta frente.
+
+**Isto descarrega metade do bloqueio do §6.** A comparação de caminhos está feita para os gestos
+medidos, e ela **não encerra a frente**: reduz o alvo dela de "tudo" para um alvo só, e esse alvo é
+grande. A outra metade do bloqueio continua de pé e é do humano · as frases reais que ele quis
+dizer numa mesa de verdade.
+
+### 9.4 · O alvo real: a folha do golpe, e uma frase que vale 51%
+
+**Uma fala só cobre os dois primeiros gestos da tabela**, porque eles são consecutivos e o segundo
+já é a consequência do primeiro:
+
+> **"acerto dezoito, dano sete"**
+
+Com um cartão vencido esperando na faixa, essa frase **abre o cartão** (17,0%) **e preenche os dois
+campos** (34,0%). **São 51% do trabalho medido do mestre numa frase.** O botão do veredito continua
+sendo clique, e é o certo por ora (ver §9.6).
+
+**Por que isto cabe no desenho sem decisão nova de princípio:** o §2 desta frente diz, como decisão
+fechada, **"o toque diz quem, a voz diz o quê e quanto"**. Número é *quanto*. Não é posição, não é
+identidade, e não pede nome de personagem nenhum no léxico · é exatamente a metade que o §2
+reservou para a fala.
+
+**E por que ela é segura como comando falado**, ao contrário de quase tudo o mais: **não decide
+nada**. Transcreve um número que já existe, rolado num punhado de dados na mão, que é o gesto que a
+medição conta como **zero** e que ninguém quer tirar da mesa. Se a transcrição sair errada, o
+mestre vê o número na tela antes de apertar o veredito, e corrigir é digitar por cima.
+
+**A ordem das duas metades é livre**, pelo mesmo princípio do `mover`: falar com o cartão já aberto
+vale tanto quanto falar e a fala abrir o cartão.
+
+### 9.5 · O vocabulário que falta, e é o único acréscimo real
+
+A gramática de hoje tem **19 palavras** e nenhum número. O alvo do §9.4 exige números, e isso é o
+primeiro acréscimo de vocabulário desde que a frente começou.
+
+**O que entra:** os números, mais as duas palavras que dizem qual campo é qual (`acerto`, `dano`).
+Não entram letras, não entram casas, não entram nomes.
+
+**O risco, e ele é real e mensurável:** números falados em português têm famílias confundíveis
+(`três` e `seis`, `dois` e `doze`, `treze` e `três`, a família toda terminada em `-ze`). **Esse
+risco é exatamente o que a bancada existe para medir**, e é o único ponto desta frente em que o
+resultado da bancada decide o desenho, e não só a confiança nele.
+
+**A saída se a taxa for ruim, e ela não precisa ser decidida agora:** dígito a dígito
+(`"acerto um oito"`) em vez de por extenso, o que troca uma lista longa de palavras confundíveis
+por uma de dez, ao custo de a fala ficar menos natural. A bancada mede as duas.
+
+**Um cuidado de desenho que a régua dos verbos já resolve:** o parser recusa em vez de aproximar.
+Número que o reconhecedor não entendeu com confiança **não vira número no campo** · vira recusa com
+a frase ouvida à mostra, para o mestre digitar. Preencher um campo de dano com um palpite é a única
+falha desta frente que pode corromper a ficção sem ninguém ver.
+
+### 9.6 · O que a voz NÃO deve tomar, e por quê
+
+**O botão do veredito (17,0%) não é problema de voz, é problema de automação.** O `ESTADO.md`
+registra que a tela **já calcula** o veredito e só o exibe · o clique transcreve uma comparação já
+feita. Dar voz a ele seria falar para a máquina o que ela já sabe. **Está na lista do humano de não
+abrir**, e aqui fica como diagnóstico e não como proposta.
+
+**As oito funções que não são chamáveis direto continuam fora** (`curar`, `tirarVida`,
+`ajustarMana`, `editarIniciativa`, `alternarAlcance`, `abrirCondicoes`, `abortarGesto`,
+`agirForaDeHora`). Nenhuma delas aparece na medição, e refatorá-las para caber na voz seria pagar
+caro por fatia pequena.
+
+**E há uma classe que a voz não deve tocar por princípio, e não por custo: o julgamento.** A
+medição separa o trabalho do mestre em aritmética, relógio e julgamento, e o julgamento é o único
+dos três que ninguém quer tirar. Todo desenho desta frente que economize gesto de julgamento está
+economizando a coisa errada.
+
+### 9.7 · A implementação, em ordem, e o que cada parte custa
+
+**Nada aqui está autorizado.** É o desenho, com o tamanho de cada parte.
+
+| # | o que é | tamanho | o que destrava |
+|---|---|---|---|
+| 0 | **fechar o `L71`** · o modelo corrompido que trava sem mensagem | pequeno (um prazo) | a voz ser usável numa mesa de verdade, e não só quando tudo dá certo |
+| 1 | **medir os números na bancada**, por extenso e dígito a dígito | é rodar, não construir | decide a forma da fala do §9.5 |
+| 2 | **`acerto` e `dano` na gramática**, no mesmo arquivo de dados | pequeno | 34,0% |
+| 3 | **a fala abrir o cartão vencido** quando há um esperando | médio | mais 17,0%, e é o que faz a frase valer 51% |
+| 4 | **recusa explícita de número duvidoso**, com a frase ouvida à mostra | pequeno | que a frente não corrompa ficção em silêncio |
+| 5 | **as frases reais do humano** entrando na gramática | depende do que ele trouxer | a frente parar de adivinhar vocabulário |
+
+**O item 0 vem antes de tudo** e não é capricho: enquanto segurar o microfone puder travar vinte
+segundos sem mensagem, nenhuma economia de gesto compensa, porque o mestre não sabe se espera ou
+desiste.
+
+**O item 1 vem antes do 2** porque é o único ponto em que a bancada decide desenho, e construir
+antes de medir aqui é apostar na forma da fala.
+
+### 9.8 · O que este desenho NÃO responde
+
+- **as frases que o humano de fato quis dizer na mesa.** Continua sendo a metade do bloqueio do §6
+  que não se resolve lendo código, e nenhuma medição substitui;
+- **se a voz vale a pena com o `Espaço` já existindo.** A tabela do §9.3 diz que a voz ganha em
+  51% e perde em 32%; se o mestre já tem as duas mãos no teclado, o ganho real é menor do que a
+  fatia sugere, e **quem responde isso é a mesa, e não o documento**;
+- **o peso em produção.** A biblioteca são 3,1 MB versionados e o modelo 31 MB não versionados, e a
+  decisão de como o modelo chega à mesa publicada é do humano (`caixa/33-executora.md`, `D33b`).
