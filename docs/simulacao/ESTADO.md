@@ -31,7 +31,7 @@ ligada em 06/09/2026 (`ticksDeEntrada`, `Pendencias.md` L48): quem rodar o códi
 hoje não reproduz mais este arquivo, reproduz o próximo (`bmtq8zam1`). A escada e o
 custo de tela abaixo, que são o que este documento mede, continuam vindo daqui,
 porque a entrada escalonada não muda nenhum deles de forma que valha regravar a
-página inteira — ver o parágrafo a seguir com a medição própria, feita na bateria
+página inteira, ver o parágrafo a seguir com a medição própria, feita na bateria
 nova, sobre o que ela de fato muda.
 
 **O QUE A ENTRADA ESCALONADA MUDOU, medido comparando `bmtq638zo` (sem ela) com
@@ -45,7 +45,7 @@ diferenças POR BATALHA (não por célula) mostra a mesma coisa numa escala maio
 de −65 a +65 Ticks, com nós em ±8 e ±16. **Não é ruído aleatório, é sensibilidade
 a condição inicial**: atrasar a entrada de uma peça em 1 Tick muda QUEM alcança
 QUEM primeiro numa perseguição, e essa mudança se propaga e amplifica pelo resto
-da batalha — a mesma dinâmica caótica que já explica por que os eixos "explicam
+da batalha, a mesma dinâmica caótica que já explica por que os eixos "explicam
 58× mais que o acaso" e não 100%. O trabalho total do mestre (gestos, fase de
 combate) cai de 1.171.957 para 1.166.168 (−0,5%), pequeno mas real, coerente com
 a redistribução: entrar em Ticks diferentes espalha o pico de declarações do
@@ -96,7 +96,7 @@ sobre uma média de ~183 gestos por batalha). É este o número que entra na con
 
 - **este `56,58` é gesto TOTAL por batalha, não gesto POR TICK.** A métrica principal
   da grade (§3 de `02-projeto-harness.md`) é por Tick justamente para tirar a
-  variância da duração do denominador — "a quantidade deixou de herdar a variância
+  variância da duração do denominador: "a quantidade deixou de herdar a variância
   da duração, porque a duração agora está no denominador". O `56,58` **não** tirou
   essa variância: ele mistura o efeito real de uma mudança de regra com o mesmo
   espalhamento caótico de duração medido acima. Se a métrica de E5 for mesmo a taxa
@@ -111,7 +111,7 @@ sobre uma média de ~183 gestos por batalha). É este o número que entra na con
 
 **A CIRCULARIDADE, TESTADA.** A revisora achou o problema antes de este parágrafo
 existir: `r08` contra `r09` é o par "mesma semente, regra mudou no meio", então o
-`56,58` não é ruído puro — é ruído mais o efeito da própria mudança misturados na
+`56,58` não é ruído puro: é ruído mais o efeito da própria mudança misturados na
 mesma diferença pareada. Usar isso como desvio de fundo para dimensionar a detecção
 de um efeito do mesmo tipo é circular: o denominador da conta de poder conteria uma
 amostra do numerador. **A objeção de unidade dela cai**, e fica registrado com as
@@ -120,7 +120,7 @@ palavras certas: o `56,58` foi medido direto do campo `gestos` de cada batalha e
 
 O isolamento: uma bateria nova, **`bmtqb2vxm`** (mesma regra de hoje, `semente_mestre`
 `20260906` em vez de `20260903`, commit `4b3b9e7`, o mesmo de `bmtq8zam1`), pareada
-com `bmtq8zam1` **por `b`** (o índice global da batalha, e não por semente — a
+com `bmtq8zam1` **por `b`** (o índice global da batalha, e não por semente · a
 semente de cada batalha é `hash32(semente_mestre, célula, repetição)`, `bateria.mjs`,
 e por isso muda com o `semente_mestre` mesmo mantendo a mesma célula e a mesma
 repetição; conferido que as 21.600 células batem par a par). **Pareamento por
@@ -140,7 +140,7 @@ Tick 1. Postos lado a lado:
 deixou marca detectável neste desenho: comparar duas sementes diferentes da mesma
 regra já produz mais dispersão do que comparar a mesma semente com a regra mudando.
 Se houvesse sinal contaminando o `56,58`, ele sairia maior que o puro ruído, e saiu
-menor. **O `56,58` não estava inflado pelo próprio efeito que tentava medir** — ao
+menor. **O `56,58` não estava inflado pelo próprio efeito que tentava medir**: ao
 contrário, o pareamento por semente idêntica (que preserva o início da trajetória
 até a primeira divergência) cancela mais ruído do que a ausência de mudança de
 regra por si só. Isto é resultado, não detalhe de método: a comparação que a
@@ -165,7 +165,7 @@ não é Δ = 1 por batalha, e a tabela acima só é decisiva se comparar como ig
 que É igual.** A conversão certa usa a duração MÉDIA das batalhas, **50,495 Ticks**
 (a mesma dos 19.200 pares, seção acima), e não a taxa: 1 gesto por batalha equivale
 a `1/50,495 ≈ 0,0198` gesto por Tick, e 1 gesto por Tick equivale a `≈ 50,5` gestos
-por batalha — não aos 3,72/0,27 de uma conversão pela taxa, que mistura duas
+por batalha, não aos 3,72/0,27 de uma conversão pela taxa, que mistura duas
 unidades diferentes (gesto/Tick dividido por gesto/Tick não devolve Tick). Refeita a
 tabela com o Δ **equivalente a um efeito por batalha**, convertido para a métrica
 por Tick:
@@ -180,24 +180,24 @@ por Tick:
 centenas de milhares no décimo de gesto.** Pelo próprio critério proposto para esta
 conferência, isso quer dizer que **parte do ganho de 25.100→1 era de unidade, e não
 de desenho**: escolher Δ = 1 gesto/Tick sem convertê-lo é escolher um efeito **~50
-vezes maior**, em termos de batalha, do que "1 gesto por batalha" — daí ser trivial
+vezes maior**, em termos de batalha, do que "1 gesto por batalha", daí ser trivial
 de detectar. Dito isso, **o ganho não é só de unidade**: `1/50,495 = 0,0198` gesto
 por Tick não converte de volta para `56,58` gestos por batalha ao multiplicar pela
 duração média; o desvio real por Tick, reconvertido (`0,3553 × 50,495 ≈ 17,94`), é
-**um terço do `56,58` medido direto** — a métrica por Tick tira parte real da
+**um terço do `56,58` medido direto**: a métrica por Tick tira parte real da
 variância de duração, só que menos do que a comparação ingênua (`1` contra
 `25.100`) parecia mostrar. Os `n` corretos, para efeitos do tamanho de 1/0,5/0,1
 gesto por batalha, medidos e convertidos coerentemente, são **≈2.527 / 10.105 /
-252.618** — cerca de **dez vezes menores** que os da métrica total (25.100/100.500/
+252.618**, cerca de **dez vezes menores** que os da métrica total (25.100/100.500/
 2.512.000), não vinte e cinco mil vezes.
 
 **O QUE A PREVISÃO ESCRITA DO E5 REALMENTE DIZ, e em qual unidade.** A única
 previsão está em `05-fechamento.md:429`: *"a carga por Tick com o perfil cheio fica
-a menos de um gesto da carga com tudo desligado"* — **é por Tick**, escrito assim,
+a menos de um gesto da carga com tudo desligado"*: **é por Tick**, escrito assim,
 não por batalha. Isso alinha a unidade da tabela de cima (gesto/Tick) com a da
 previsão, sem conversão nenhuma: testar Δ = 1 gesto/Tick é testar exatamente o
 limite que a previsão nomeia. **Mas a previsão só fixa um TETO ("menos de um"), não
-um valor** — não diz se o efeito verdadeiro é 0,9 ou 0,0001 gesto/Tick, e por isso
+um valor**: não diz se o efeito verdadeiro é 0,9 ou 0,0001 gesto/Tick, e por isso
 nenhuma das duas tabelas acima tem um Δ único e correto: ⚑ **o Δ que importa para o
 E5 não está escrito em lugar nenhum**, e a conta de poder continua rodando sobre um
 alvo que ninguém fixou. Ambas as leituras ficam registradas porque nenhuma decide
@@ -214,7 +214,7 @@ gesto por batalha não é diferença que alguém perceba jogando, e medir abaixo
 é gastar bateria atrás de um efeito que ninguém sentiria. **O teto do
 `05-fechamento.md:429` continua respeitado**, e os dois não se contradizem: um
 gesto por batalha equivale a `0,0198` gesto/Tick, bem abaixo de "menos de um gesto
-por Tick" — a previsão fixava um limite superior, o Δ-alvo fixa onde dentro dele a
+por Tick": a previsão fixava um limite superior, o Δ-alvo fixa onde dentro dele a
 régua olha. Existem agora os dois: o teto (previsão) e o alvo (decisão).
 
 **O QUE ISSO FAZ COM A GRADE, em batalhas e em tempo de máquina.** A grade cheia do
@@ -232,15 +232,15 @@ que não depende de detectar delta nenhum):
 | **grade nova, total** | 112 | · | **120.864** | **201,4 s (3,36 min)** | derivado: soma das duas linhas de cima |
 
 **A taxa (600 batalhas/s) é medida agora mesmo**, na bateria de isolamento desta
-rodada (`bmtqb2vxm`: 21.600 batalhas em 36,0 s, 4 processos, este harness) — **não
+rodada (`bmtqb2vxm`: 21.600 batalhas em 36,0 s, 4 processos, este harness): **não
 é o número da grade real**: a grade do projeto tem os quinze `regras.json` ligados
 (L25) e mais eixos por batalha (E1-E11) que este harness, hoje, não roda (as
-bandeiras nascem desligadas). É a única taxa que existe medida, e serve de piso —
+bandeiras nascem desligadas). É a única taxa que existe medida, e serve de piso:
 o custo real por batalha da grade cheia tende a ser igual ou maior, nunca menor,
 porque bandeira ligada é código a mais rodando por Tick.
 
 **Crescimento: 2,16× no total da grade (56.000→120.864), 5,05× só na fatia de E5**
-(16.000→80.864). Em tempo, **+108 s (+1,8 min)** com os mesmos 4 processos —
+(16.000→80.864). Em tempo, **+108 s (+1,8 min)** com os mesmos 4 processos:
 **a grade cheia continua praticável em tempo de máquina**, mesmo no `n` novo.
 
 **Se o corte for por tempo (não é o caso aqui, mas a segunda conta pedida):**
@@ -255,27 +255,27 @@ quantas células cabem no orçamento de tempo de HOJE (56.000 batalhas, 93,3 s)?
 que qualquer rodada de bateria já levou nesta frente. A tabela fica registrada para
 o dia em que outro Δ-alvo, ou outro eixo, tornar o corte necessário de verdade.
 
-**A RECONCILIAÇÃO DE `56,58` COM `17,94`, questionada pela revisora — ela supõe
+**A RECONCILIAÇÃO DE `56,58` COM `17,94`, questionada pela revisora · ela supõe
 duração igual em cada par? Não, e a resposta agora é exata, não aproximada.** A
 pergunta: `r08`/`r09` já mediram 11,35 Ticks de desvio de duração PAREADA (a seção
-"O QUE A ENTRADA ESCALONADA MUDOU", acima) — a mesma bateria, o mesmo par. Uma
+"O QUE A ENTRADA ESCALONADA MUDOU", acima): a mesma bateria, o mesmo par. Uma
 identidade exata separa o delta total em dois termos, sem supor duração
 constante: com `m` = ticks médios do par e `r` = taxa média do par,
 `Δ(gestos) = m·Δ(taxa) + r·Δ(ticks)` (conferida par a par nos 19.200, diferença
-máxima `0,000000`). O **termo da taxa** (`m·Δtaxa`) tem desvio **18,64** — muito
+máxima `0,000000`). O **termo da taxa** (`m·Δtaxa`) tem desvio **18,64**, muito
 perto do `17,94` da reconversão aproximada (que usava a média da população no
 lugar de `m` por par, e por isso é só uma aproximação, não uma suposição de
-duração igual). O **termo da duração** (`r·Δticks`) tem desvio **56,22** — quase
+duração igual). O **termo da duração** (`r·Δticks`) tem desvio **56,22**, quase
 todo o `56,58` sozinho. Decompondo a variância: **98,7% vem do termo de duração,
 10,9% do termo de taxa, e −9,6% de covariância entre os dois** (soma 100%,
 conferida: `18,64² + 56,22² + 2·cov = 3.200,7 = 56,575²`, exato). **A reconciliação
 não só se sustenta como fica mais forte**: a métrica por Tick não está reduzindo o
-ruído por um fator qualquer — está isolando um termo que carrega só ~11% da
+ruído por um fator qualquer: está isolando um termo que carrega só ~11% da
 variância total, quase sem a duração dentro. `r08` e `r09` são as MESMAS baterias
-da medição de 11,35 Ticks em toda esta seção — não há duas baterias diferentes
+da medição de 11,35 Ticks em toda esta seção · não há duas baterias diferentes
 sendo comparadas por engano.
 
-**A SUA CORREÇÃO DE UNIDADE, e por que ela vale como caso — e por que são DOIS
+**A SUA CORREÇÃO DE UNIDADE, e por que ela vale como caso, e por que são DOIS
 números, e não um (CORRIGE 1 da revisora, rodada 13): `184×` e a razão `n=1→
 n=2.527` pareciam a mesma conta, e não são.**
 
@@ -434,13 +434,13 @@ entregues nestes shas, e o total de 1.171.957 vem de `R:169`.
 
 **Uma conferência de 06/09/2026 corrigiu a razão por trás deste número, e não o
 número.** Uma leitura anterior chamava de "reconciliado" o fato de a subtração
-ingênua da tabela e o cenário SEM-GESTO do agregador baterem exato — como se
+ingênua da tabela e o cenário SEM-GESTO do agregador baterem exato, como se
 fossem duas testemunhas independentes. **Não são: é o mesmo contador**
 (`golpeNoTick`, `scripts/sim/log.mjs:224-226`) **lido por duas exibições
 algebricamente equivalentes** (`ticksComGolpe`, `scripts/sim/agregar.mjs:648`, e
 `comGolpe`, `agregar.mjs:481`, são `t − round(f·t)` e `round((1−f)·t)` sobre os
 mesmos `x.ticks`/`x.fracaoSemGolpe`). Perturbado à mão um golpe numa bateria real
-(1.920 batalhas), os dois se moveram pelo mesmo número, porque é o mesmo evento —
+(1.920 batalhas), os dois se moveram pelo mesmo número, porque é o mesmo evento:
 não é coincidência, é identidade. **A robustez de verdade vem de outro lugar**: o
 degrau final não se mexeu nada com a perturbação, porque `ticksComGolpe + sobram
 = golpes` é invariante a como os golpes se distribuem entre Ticks, e só depende
@@ -449,12 +449,12 @@ do TOTAL de golpes. **O número resiste; a justificativa anterior estava errada.
 **E o achado que a frase anterior chamava de "dormente" não era dormente nem
 local.** Uma segunda conferência (06/09/2026) contou: doze dos vinte campos do
 agregador têm mais de um leitor, e `x.campo || 0` aparece pelo menos QUARENTA
-vezes no arquivo, sobre cinco campos com leitura múltipla — inclusive duplicado
+vezes no arquivo, sobre cinco campos com leitura múltipla, inclusive duplicado
 sobre as duas exibições acima (`comGolpe` e `ticksComGolpe`), que por isso NUNCA
 poderiam achar um campo sumido só de baterem entre si. Medido no corpus em disco
 (19 diretórios, 288.900 batalhas): a fase de fuga tem `ticks = 0` em 57,1% das
 batalhas (ela não aconteceu), e o `frac` de origem (`log.mjs:291`) devolvia ZERO
-nesse caso, não ausência — "0% dos Ticks ficaram sem golpe" quando na verdade não
+nesse caso, não ausência: "0% dos Ticks ficaram sem golpe" quando na verdade não
 houve Tick nenhum. Isso puxava a coluna "s/golpe" da fase de fuga na tabela A na
 direção de "sempre teve golpe": na bateria de então (`bmtmbdppb`), a célula
 `coprimo-encostado-1v1` saía a 0,18 com o zero falso e a 0,71 sem ele, contando só
@@ -616,7 +616,7 @@ segunda não se conserta escrevendo mais código.** Numa peça `custom` (a peça
 na mesa, sem ficha nem entrada no bestiário), `RESUMO[alvo.id]` não existe: não há
 `defesaBase` nem `soak` para nenhuma das seis contas de cima corrigir, porque não há
 número base nenhum ali para corrigir. **Numa peça sem ficha completa, o número só
-existe na cabeça do mestre** — ele inventou aquele monstro na hora, e o Grid nunca
+existe na cabeça do mestre**: ele inventou aquele monstro na hora, e o Grid nunca
 soube o número dele. Aplicar as seis (ou as quinze) contas não esvazia estes quatro
 campos nesse caso, porque não há o que a conta leia. **Isto fica registrado como
 limite do sistema, não como item da fila**: nenhuma versão futura da folha faz esse
@@ -743,8 +743,8 @@ campo novo no log e bateria inteira de novo.
 ### O mecanismo do item 2 já existe em código, e isso não estava escrito aqui
 
 **"O item 2 pode andar antes" não significava "falta escrever o item 2".** O
-mecanismo — calcular e destacar, e não mostrar três botões iguais para o mestre
-escolher do zero — já existe, e existia antes desta seção ser escrita.
+mecanismo (calcular e destacar, e não mostrar três botões iguais para o mestre
+escolher do zero) já existe, e existia antes desta seção ser escrita.
 `pintarVeredito` lê `contaDoLance()` e, com os três números presentes, escreve a
 conta por extenso ("acerta (15 > 13)", "erra por 4: raspa (margem 2)") e destaca UM
 dos três botões (`sim.classList.toggle('primary', ...)`, `grid.astro:10126-10128`).
@@ -757,12 +757,12 @@ parou de recomendar 'Acertou' quando a régua não tem o que dizer").
 
 **O QUE MUDA PARA O MESTRE:** antes do destaque, comparar os três números de
 cabeça e achar o botão certo entre três iguais. Com o destaque, a conta já está
-escrita ao lado dos botões e o botão certo já vem realçado — o clique dele é achar
+escrita ao lado dos botões e o botão certo já vem realçado: o clique dele é achar
 o realce e confirmar, ou discordar e clicar outro.
 
 **ISSO NÃO MUDA A BANDA DE 0 A 17,0%, algumas seções acima.** O mecanismo existir
 não resolve a ignorância que sustenta a banda: ela depende da taxa em que a mesa
-aperta um botão diferente do destacado, e essa taxa continua sem medição — nenhuma
+aperta um botão diferente do destacado, e essa taxa continua sem medição · nenhuma
 bateria mede o mestre discordando da régua, porque as 21.600 batalhas não têm
 mestre nenhum jogando. O que muda é que não falta código para o item 2 andar: falta
 só medir essa taxa, numa mesa de verdade, e ninguém mediu ainda.
@@ -785,7 +785,7 @@ do golpe que o fez parar: **o cartão daquele golpe some junto com o clique.**
 **A pergunta era "quanto do item 5 o item 3 já absorve", e a resposta é: os dois
 já estão no mesmo commit, e não faltava construir nada entre eles.**
 `avancarAteParar` (`grid.astro:5923`), ao achar `instanteDeGolpe()`, não abre só
-a folha do golpe que fez o laço parar — ela itera **todas** as peças de pé e
+a folha do golpe que fez o laço parar: ela itera **todas** as peças de pé e
 resolve **todos** os golpes de cada uma com Tick já vencido, um após o outro,
 antes de parar: `for (const c of emPe) {`, `grid.astro:5933`. O item 5 ("a
 parada abre todos os golpes do Tick, e não só um") descrevia exatamente este
@@ -811,14 +811,14 @@ ordem de exibição.
 resultados/09-bmtlxp622.txt` e `09-bmtlw3e2r.txt` (a mesma leitura, duas cópias),
 de ANTES do conserto da iniciativa que este documento avisa logo na abertura.
 A bateria corrente (`bmtq638zo`) mede **199.238 golpes, 2,68 por Tick que tem
-golpe** (`R:123`, "O CACHO" do agregado) — mais golpes e uma média um pouco
+golpe** (`R:123`, "O CACHO" do agregado): mais golpes e uma média um pouco
 menor, o que é coerente com o conserto ter mudado quantos golpes caem no mesmo
 Tick. A conclusão não muda com qual das duas se use: em ambas, a maioria dos
 cartões não seria absorvida por uma parada que abre só um, e em ambas o código
 que existe hoje já abre todos.
 
 **Está no Grid: sim**, desde `55674f1`/`5bd7e8c` (06/09/2026). A linha "está no
-Grid?" dos itens 3 e 5, na tabela da fila abaixo, está desatualizada por isso —
+Grid?" dos itens 3 e 5, na tabela da fila abaixo, está desatualizada por isso:
 os dois entraram juntos, no mesmo lote, e não em dois passos como a fila
 planejou.
 
@@ -1145,7 +1145,7 @@ esse rótulo.
 
 - **a resposta.** O trabalho do mestre nesta configuração não é uma coisa, são
   três: **51% aritmética** (597.714 gestos), **32% o ⏭**, a cadência do
-  relógio (375.005), **17% julgamento** (199.238) — a metade, o terço e o
+  relógio (375.005), **17% julgamento** (199.238): a metade, o terço e o
   sexto, na linguagem de quem lê rápido (seção 1, `R:134` a `R:137`). E **o
   teto do que os consertos DESENHADOS até hoje tiram é 76,7%** (273.445 de
   1.171.957 gestos), não os 61,8% que a leitura antiga achava ser limite de
@@ -1175,7 +1175,7 @@ Grid) foi conferida em duas camadas, em 08-09/09/2026, sha `20daeea` (o conserto
    `resolverGolpe`/`fonteRolada`/`defesaEfetiva` de `src/lib/lance.ts`, e nenhum dos três
    nomes de fraqueza/resistência aparece nesse arquivo.
 2. **Da cadeia inteira:** `resolverGolpe` chama só `rolagem.ts` (`rolarExpr`), `acaso.ts`
-   e `quase-acerto.ts` (`errouPor`/`saidaDoAtaque`) — os três conferidos sem menção a
+   e `quase-acerto.ts` (`errouPor`/`saidaDoAtaque`), os três conferidos sem menção a
    fraqueza/resistência/`combate`. A própria interface `EntradaLance` (o contrato inteiro
    do que a função lê) não tem campo nenhum para isso: `alvo` carrega `defesaBase`,
    `ferimento`, `condicoesDefesa`, `defesaPerdida`, `soak`, `pv`/`pvMax` e os dois campos

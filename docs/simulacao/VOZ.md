@@ -255,10 +255,10 @@ O que continua de pé:
 
 - **não tocar nem refatorar as oito funções que não são chamáveis direto** (`curar`, `tirarVida`,
   `ajustarMana`, `editarIniciativa`, `alternarAlcance`, `abrirCondicoes`, `abortarGesto`,
-  `agirForaDeHora`) — fora deste pacote, espera autorização própria;
+  `agirForaDeHora`) · fora deste pacote, espera autorização própria;
 - **não pular a ordem**: o item 2 espera o humano ter usado a barra na batalha, o item 3 espera os
   dois primeiros fechados;
-- **a captura de áudio (item 3) não depende do resultado da bancada do §4** — se a taxa de falso
+- **a captura de áudio (item 3) não depende do resultado da bancada do §4**: se a taxa de falso
   positivo for ruim, só ela cai, a barra/parser/desfazer continuam de pé;
 - não reabrir escolha de motor nem as decisões fechadas do §4 (a seção de decisões, não o item 3
   daqui);
@@ -286,7 +286,7 @@ etapa que espera por elas.
    atalho de teclado com a peça selecionada, lido no envio (não controlado, para não brigar com
    ditado do sistema nem correção automática). Interpreta contra gramática fixa num arquivo de
    dados só, determinística, sem modelo de linguagem. Executa chamando `porNoMapa`, `tirarDoMapa`,
-   `encerrarVez`, `alternarAuto`, `esperarUmTick` — as cinco já chamáveis direto. Recusa o que não
+   `encerrarVez`, `alternarAuto`, `esperarUmTick`, as cinco já chamáveis direto. Recusa o que não
    casa, mostra o ouvido mais as frases válidas próximas para escolher com um toque, nunca aproxima
    em silêncio. Aplica a regra do §4: verbo com desfazer executa direto (`porNoMapa`,
    `tirarDoMapa`), verbo sem desfazer confirma (`encerrarVez`, `alternarAuto`, `esperarUmTick`). É
@@ -295,7 +295,7 @@ etapa que espera por elas.
    disso corrige a gramática antes de qualquer construção em cima dela.
 2. **O desfazer cresce** (item 2), começando pelos três verbos que a barra já usa e hoje confirmam:
    `encerrarVez`, `alternarAuto`, `esperarUmTick`. Revisado antes de seguir. O que não for
-   reversível por natureza fica confirmando para sempre — não inventar reversão que o motor não faz.
+   reversível por natureza fica confirmando para sempre · não inventar reversão que o motor não faz.
 
    **FECHADO em 10/09/2026, rodada 32, veredito SEGUE** (`caixa/32-revisora.md`, sha `6616f7c`,
    conferido ancestral de `origin/main` antes de registrar). Trabalho em `8f3ea63`.
@@ -333,7 +333,7 @@ etapa que espera por elas.
    `test-grid.mjs` (`D32c`). É o `Pendencias.md` `L62` item 1, que o humano deixou fora de escopo
    quando a barra abriu.
 3. **A captura de áudio sobre a barra** (item 3), só depois dos dois anteriores fechados: botão de
-   segurar para falar, preenchendo o mesmo campo, com o mesmo parser e a mesma execução — não é
+   segurar para falar, preenchendo o mesmo campo, com o mesmo parser e a mesma execução · não é
    caminho novo, é outra forma de encher o mesmo campo. Motor Vosk,
    `vosk-model-small-pt-0.3`, carregamento sob demanda no primeiro toque do microfone, caminho de
    modelo/worker/WASM configurável. Não depende do resultado da bancada do §4: se a taxa de falso

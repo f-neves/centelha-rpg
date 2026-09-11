@@ -349,7 +349,7 @@ limitações conhecidas, que são as três de baixo.
   para não haver dois itens com o mesmo código; o conteúdo não mudou. Achado colateral
   da rodada 16 do Interpor (`docs/simulacao/caixa/16-executora.md`), fora de escopo daquela
   frente. `roladaManual` (`src/lib/rolagem.ts:95`) trata qualquer expressão sem `d6` como "total já
-  pronto" quando só um número é digitado — certo para dano fixo de verdade, mas quando a expressão
+  pronto" quando só um número é digitado, certo para dano fixo de verdade, mas quando a expressão
   é um pool escrito como `"0d6+2"` (caso real de `mon-bat`/`mon-toad`) e a rolagem sai por
   `rolagem=site` e é relida como digitação manual, o `+2` fixo entra duas vezes: uma dentro do
   total rolado, outra somada de novo por `flatDeExpr`. Não corrigido ainda; a Executora contornou
@@ -821,7 +821,7 @@ revistos por ela.
   a iniciativa vai de 2 a 18.
 
   **O contrapé decai.** A medição achou um buraco: num pool de PC (3d6 +5) contra Defesa 12, −1d6
-  leva a chance de acertar de 84% para 42%, e **−2d6 a leva a zero**, porque 1d6+5 não supera 12 —
+  leva a chance de acertar de 84% para 42%, e **−2d6 a leva a zero**, porque 1d6+5 não supera 12:
   erro matemático, não dificuldade. A saída é o tempo: **o contrapé cai 1d6 por Tick que passa**.
   Quem entrou no Tick 3 com −2d6 bate no 3 por −2d6, no 4 por −1d6 ou no 5 inteiro.
 
@@ -835,7 +835,7 @@ revistos por ela.
 - [ ] **K27 · [DECIDIR] O Golpe sai depois, e a mesa ainda resolve na declaração.** Estudo completo
   em **`Golpe_Tardio.md`** (21/08), sem nenhuma mudança feita. O buraco: a régua diz que o golpe cai
   em `T + Preparo`, a tela desenha isso (fita, anel de Golpe, linha do tempo), e o motor resolve
-  tudo no Tick da declaração — rolagem, dano e morte. O Preparo cobra Defesa e não adia nada.
+  tudo no Tick da declaração: rolagem, dano e morte. O Preparo cobra Defesa e não adia nada.
 
   **Medido** com o motor que calibrou a régua (`lib-tempo.mjs`, que resolve no Tick do Golpe): num
   duelo a diferença é ~1%, mas numa refrega 3×3 com arma de Preparo **um em cada treze golpes
@@ -983,17 +983,17 @@ revistos por ela.
   (mesma Velocidade no normal, ciclo +1 no P/G/R). O plano em seis fases está na **§15 do
   `Combate_Tempo.md`**, e cinco delas fecharam em 20/08:
 
-  - **1 motor · 2 relatório · 3 bancada** — feitas. O motor tem os quatro presets e a bancada
+  - **1 motor · 2 relatório · 3 bancada**: feitas. O motor tem os quatro presets e a bancada
     ganhou o seletor de sistema, cinco cartões e duas baterias.
-  - **5 `regras.json`** — feita. O bloco `combate` tem os dois sistemas, os dois modos de
+  - **5 `regras.json`**: feita. O bloco `combate` tem os dois sistemas, os dois modos de
     marcação, a régua P/G/R por classe, a da Arte, a escada, a rajada com os tetos, a dupla e o
     deslocamento pago.
-  - **6 ficha e mesa** — feita. `src/lib/combate-tempo.ts` (o motor da tela, travado por
+  - **6 ficha e mesa**: feita. `src/lib/combate-tempo.ts` (o motor da tela, travado por
     `scripts/test-combate-tempo.mjs`), a **migração 27** (`mesas.combate` e `combatentes.acao`,
     com a view escondendo arma e alvo do jogador), o painel **⏱** do mestre nas duas telas, o selo
     de fase e a fita no rastreador, a manobra no diálogo de ação, e o anel de Golpe mais a fita
     miúda no Grid. Na ficha, a linha "No tempo" mostra o P/G/R da arma.
-  - **4 capítulo IX** — a única que falta, e espera **K12** (teste de Virtude) e **K17**
+  - **4 capítulo IX**: a única que falta, e espera **K12** (teste de Virtude) e **K17**
     (arqueiro).
 
   **O abortar entrou em 21/08.** Botão **✋** que só acende para quem está em Preparo (no card, no
@@ -1322,7 +1322,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `folhaDaAcao` (não via `entrada.perfil` do lance, que continua sem leitor), somando
   `modificadorPorte` em `ajAtq.flat` e aplicando `gatePerfuracaoAbre` (as duas em `calc.ts`)
   em `resvalaGate`, calculado uma vez e usado nos dois lugares de `folhaDaAcao` que decidem
-  dano (`contaDoLance`, o oráculo/tela, e `fim`, que é o que `aplicarDano` de fato aplica —
+  dano (`contaDoLance`, o oráculo/tela, e `fim`, que é o que `aplicarDano` de fato aplica:
   achado nesta mesma rodada, ver o caso novo do `CATALOGO.md`). É só na mesa: o harness
   continua sem ler nenhuma das quinze, porque a segunda bateria não acontece (o motivo,
   acima). As outras treze continuam exatamente como este parágrafo descreve.
@@ -1364,9 +1364,9 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **DECIDIDO EM 06/09/2026: a segunda bateria (a grade de 112 células) não acontece, e o `L25`
   deixa de ser pré-requisito de bateria.** O levantamento das quinze (`docs/simulacao/ESTADO.md`,
   seção "A FRENTE DE SIMULAÇÃO ESTÁ ENCERRADA") achou nove de regra a escrever e não seis de
-  ligação como a tabela do `02` §0.6.1 item 11 registrava — três delas (`modo2`, `curaSemArea`,
+  ligação como a tabela do `02` §0.6.1 item 11 registrava, três delas (`modo2`, `curaSemArea`,
   `curaDivide`) não têm mecanismo nenhum por trás para ligar, ao contrário do que aquela tabela
-  descrevia — e das nove, seis (`n1` a `n6`) são o núcleo do Tick inteiro, sem nenhuma rodando
+  descrevia, e das nove, seis (`n1` a `n6`) são o núcleo do Tick inteiro, sem nenhuma rodando
   isolada. Comparar regras nesse estado custaria mais do que a frente de medição inteira produziu,
   respondendo uma pergunta que ninguém fez. **O `L25` passa a ser o que sempre foi por baixo:
   quinze regras publicadas que a mesa não joga**, dívida de produto e não de instrumento, e a
@@ -1680,17 +1680,17 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **DECIDIDO em 07/09/2026, item 1 (quem leva o dano): O DANO JÁ ROLADO PASSA INTEIRO, E A
   ABSORÇÃO É DE QUEM SE INTERPÔS.** O acerto e o dano já resolvidos contra o alvo original se
   mantêm (nenhum novo teste de acerto), só o alvo físico do golpe muda para o interpositor; o
-  que se aplica sobre esse dano é a Absorção de QUEM INTERPÔS, e não a do alvo original — se a
+  que se aplica sobre esse dano é a Absorção de QUEM INTERPÔS, e não a do alvo original: se a
   Absorção também fosse a do alvo original, seria dano transferido e não interposição, e não é
   isso. Rejeitada a opção de recomparar o acerto contra a Defesa do interpositor: reusar o código
   de resolução não é reusar a regra, e um teste novo que hoje não existe faria o interpositor ter
   direito a uma chance de o golpe simplesmente não valer, o que ninguém escreveu. **Alerta para
   quem construir:** se aparecer um caso em que isto produz absurdo (interpositor que não poderia
   ter sido alcançado pelo golpe original, por alcance ou geometria), parar e escalar antes de
-  seguir — não é para resolver sozinho na implementação.
+  seguir · não é para resolver sozinho na implementação.
 
   **DECIDIDO em 07/09/2026, item 2 (teste): NENHUM TESTE DEDICADO.** Pagando os Ticks e estando
-  dentro do alcance (item 3, abaixo), a interposição acontece — determinística, mesmo regime de
+  dentro do alcance (item 3, abaixo), a interposição acontece, determinística, mesmo regime de
   "Avançar para fechar distância" e "Levantar-se do chão" no mesmo catálogo (`Combate_Tempo.md`
   §4.3), nenhuma das duas tem teste. O −1d6 da Recuperação (`:812`) continua valendo como
   penalidade geral sobre testes feitos ali, não como gate de sucesso da interposição em si.
@@ -1700,10 +1700,10 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   já escrita, "a interposição resolve antes do golpe" no singular
   (`docs/simulacao/02-projeto-harness.md:1152`). **Com requisito de tela, parte da decisão e não
   sugestão:** ao declarar a interposição, a tela tem de dizer contra qual golpe ela vale; se
-  houver segundo golpe no mesmo Tick não coberto, ele aparece como não coberto — nunca em
+  houver segundo golpe no mesmo Tick não coberto, ele aparece como não coberto, nunca em
   silêncio. "Me interpus" sem essa linha lê como proteção da cena inteira, e não é.
 
-  **ITEM 3 (alcance), PARCIALMENTE DECIDIDO em 07/09/2026 — TETO = ALCANCE DA ARMA ORIGINAL,
+  **ITEM 3 (alcance), PARCIALMENTE DECIDIDO em 07/09/2026: TETO = ALCANCE DA ARMA ORIGINAL,
   MEDIDO DO AGRESSOR, PARA CORPO A CORPO.** Não inventa número novo (reusa a régua de Alcance que
   já existe) e, para corpo a corpo, "só quem já está adjacente ao agressor" é a régua dizendo a
   verdade sobre o que interpor contra uma espada exige.
@@ -1715,7 +1715,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   As duas medem a mesma coisa: a distância entre um ponto e outro, nunca se um terceiro ponto está
   NA RETA entre os dois. Um arco de Alcance 30 m mediria "dentro do alcance" para qualquer peça a
   até 30 m do
-  atacante — inclusive atrás dele, ou a 20 m do aliado que a flecha mirava. **Só existe geometria
+  atacante, inclusive atrás dele, ou a 20 m do aliado que a flecha mirava. **Só existe geometria
   de reta no jogo dentro das Artes com `forma: "linha"` (`hexesDaFigura`), um subsistema
   separado do ataque mundano.** Para corpo a corpo isso não importa (o alcance curto já colapsa
   em adjacência a ambos); para ataque à distância, "dentro do alcance" e "na linha" são coisas
@@ -1725,7 +1725,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   existe para Artes e precisaria de uma versão para ataque mundano.
 
   **DECIDIDO em 07/09/2026: OPÇÃO 2, GEOMETRIA DE RETA NOVA.** A interposição é gesto
-  DECLARADO pelo jogador, sabendo o que vale — não é um absurdo que aparece por acidente (o
+  DECLARADO pelo jogador, sabendo o que vale · não é um absurdo que aparece por acidente (o
   Alerta do item 1 não cobre isto), é a regra sendo jogada como está escrita, e a mesa que
   descobrir "qualquer ponto do raio serve" vai jogar assim sempre. **Com duas conferências
   feitas antes de escrever código, como pedido:**
@@ -1736,12 +1736,12 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   número decidido para dimensionar Efeito, não para decidir quem bloqueia uma flecha. É a mesma
   matemática (retângulo girado) para uma pergunta diferente (área de efeito de quem conjura,
   contra segmento entre agressor e alvo original). Reusar herdaria um número sem a decisão por
-  trás dele para este uso novo — não reusar.
+  trás dele para este uso novo · não reusar.
 
   **3b · a geometria de hexágono resolve sem número novo, mas com FUNÇÃO nova, não com a que
   existe.** Um traçado de reta em coordenadas cúbicas (interpolar entre os dois centros e
   arredondar CADA PASSO em cubo, não eixo a eixo) devolve a sequência exata de casas que o
-  segmento cruza, sem largura nem tolerância — é geometria resolvida, não decisão. A função mais
+  segmento cruza, sem largura nem tolerância: é geometria resolvida, não decisão. A função mais
   próxima que já existe, `afastar` (`src/lib/artes-grid-mesa.ts:1163`), arredonda `q` e `r` **por
   eixo** (`Math.round` em cada um separado), o que não garante hexágonos vizinhos passo a passo e
   não serve para "quais casas a reta cruza" sem risco de pular uma. **Não é reuso, é função nova
@@ -1749,7 +1749,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   **A regra final:** o interpositor precisa terminar dentro do alcance da arma original (já
   decidido) **e** numa das casas que o traçado reto do agressor até a posição original do aliado
-  cruza. **Só vale para ataque à distância** — no corpo a corpo o alcance curto já colapsa em
+  cruza. **Só vale para ataque à distância**: no corpo a corpo o alcance curto já colapsa em
   adjacência a ambos, a reta é redundante ali, e isto fica escrito para ninguém medir reta num
   golpe de espada achando que está errado.
 
@@ -1769,35 +1769,35 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   em par, nas duas portas, que a Vida do alvo original não muda e a de quem se interpôs desce
   pela Absorção DELE, não a do alvo. **D16a, divergência registrada pela Executora na rodada 16:**
   o pedido original da Revisora era "pelo menos um caminho de CADA porta"; o TechLead simplificou
-  para "uma, à escolha" ao repassar a tarefa — fechado na rodada 17, cobrindo a segunda porta.
+  para "uma, à escolha" ao repassar a tarefa, fechado na rodada 17, cobrindo a segunda porta.
   **Veredito SEGUE em 07/09/2026 (rodada 18, `docs/simulacao/caixa/18-revisora.md`, commit
   `619c317`):** a Revisora rodou os dois cenários ao vivo (34 asserções, não só leu o código) e
   confirma que a conferência em par é a MESMA função nas duas portas, não duplicada por nome.
   Em `test-grid.mjs:1023`, o clique que abre a caixa de abortar: `data-a="abortar"`.
   Em `test-grid.mjs:3536`, a caixa equivalente de fora-de-hora: `data-a="forahora"`.
 
-  **ITEM 4 (o que o escudo faz) NÃO É DECISÃO DE MESA, É BANDEIRA DESLIGADA — conferido em
+  **ITEM 4 (o que o escudo faz) NÃO É DECISÃO DE MESA, É BANDEIRA DESLIGADA, conferido em
   07/09/2026.** `bloqueio` é uma das 15 bandeiras (`src/data/regras.json:2535`,
   `"bloqueio": false`), e enquanto ela estiver assim a rota de Bloqueio não existe em lugar
   nenhum do motor: a resolução usa só a Esquiva, e o escudo `só penaliza` (`docs/simulacao/02-projeto-harness.md:1823`). O Interpor não precisa inventar nada para o escudo: ele herda
-  o mesmo estado que vale em qualquer outro golpe hoje — o escudo do interpositor pesa na
+  o mesmo estado que vale em qualquer outro golpe hoje: o escudo do interpositor pesa na
   Penalidade de armadura e não some, mas não soma Defesa nenhuma até `bloqueio` ligar. Quando a
   bandeira ligar, o Interpor ganha o bônus de Bloqueio pela mesma conta que todo o resto do
   combate, sem precisar de uma regra própria. **Reclassificado de "escalar" para "bloqueado por
   bandeira"**, mesma família de porte/gate (L48).
 
-  **ITEM 6 (reconciliar os dois preços) NÃO É ESCOLHA ENTRE PREÇOS: SÃO DOIS GESTOS, POR FASE —
+  **ITEM 6 (reconciliar os dois preços) NÃO É ESCOLHA ENTRE PREÇOS: SÃO DOIS GESTOS, POR FASE:
   E ISSO JÁ ESTAVA DECIDIDO EM 20-21/08/2026, só não tinha sido lido junto.**
   `Combate_Tempo.md:800`-`815` (§14.6) descreve as duas entradas do Interpor como fases
   diferentes, cada uma com preço e regime já fechados: no **Preparo**, interpor é destino do
-  abortar (`regras.json:2504`, `para: ["mover","desviar","interpor"]`) — você desiste do próprio
+  abortar (`regras.json:2504`, `para: ["mover","desviar","interpor"]`): você desiste do próprio
   gesto ainda não resolvido, sem teste, perde o que já investiu e paga o deslocamento a 1
   Tick/metro, "o mesmo preço do desvio de emergência da §5.5"; na **Recuperação**, interpor é uma
-  das ações fora de hora do catálogo §4.3 — você não estava agindo, paga a distância em metros
+  das ações fora de hora do catálogo §4.3: você não estava agindo, paga a distância em metros
   (mínimo 2) em dívida, e o teste que fizer para chegar lá sai a −1d6 pela regra geral de
   Recuperação (`:812`). Não há dois preços concorrentes para a mesma coisa: há duas portas de
   entrada com preços já escritos para o que cada uma é. **Nenhuma decisão nova precisa ser
-  tomada aqui** — o trabalho é implementar as duas portas, não escolher uma.
+  tomada aqui**: o trabalho é implementar as duas portas, não escolher uma.
 
   **AS DUAS PORTAS ESTÃO IMPLEMENTADAS, na mesma rodada que fechou esta seção:** o preço do
   Preparo (`combate.abortar.ticksPorMetro`) e o da Recuperação (`combate.interpor.recuperacao`,
@@ -1950,7 +1950,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **FECHADO em 07/09/2026 (rodada 25, commit `cffcec9`, `docs/simulacao/caixa/25-executora.md`):
   as duas lacunas que sobraram do levantamento.** A pergunta do `combate.astro` era divergência
   real, não só teórica: sonda com a bancada (`?tick=5&tempo=simultaneo`) mostrou `#enc-tick` em
-  0 com a arena em 5, para mestre E jogador — `AGORA = emCampo[0]?.tick ?? 0` lia o Tick
+  0 com a arena em 5, para mestre E jogador · `AGORA = emCampo[0]?.tick ?? 0` lia o Tick
   individual de uma peça `livre`, que fica parado enquanto `tick_atual` anda. Corrigido: no
   Simultâneo o relógio agora lê `ENC?.tick_atual` (`combate.astro:903`), igual ao Grid; normal
   e P/G/R não mudaram. E a lacuna de prova no P/G/R fechou com um par de asserção novo
@@ -2002,25 +2002,25 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
     alvo**, pela fórmula que a régua já tem (`(Percepção + Prontidão) × 2`, com o guarda não
     rolando). Quem percebe lê "um golpe vem contra você", sem quem e sem de onde, e ganha a
     janela de reação; quem não percebe não lê nada e o golpe cai sem aviso. **Recusado:**
-    tornar o ataque do escuro indefensável — seria regra de jogo forte nascendo de escolha de
+    tornar o ataque do escuro indefensável: seria regra de jogo forte nascendo de escolha de
     tela.
   - **C · O corte só morde com arena ativa e névoa ligada.** Sem arena ou com névoa desligada,
     tudo passa como hoje, e a mesa que joga só pela aba Combate não muda. Com névoa ligada,
     peça sem token conta como escuro: criatura criada e não posta no mapa é a emboscada sendo
     preparada, e o mestre que a cria acabou de escondê-la.
   - **D · O inimigo já visto que recua fica listado, apagado**, com a Vida e a casa da última
-    vez que foi visto — criatura passa a ter os dois pesos que o chão já tem. O estado
+    vez que foi visto, criatura passa a ter os dois pesos que o chão já tem. O estado
     envelhece (curado no escuro continua lembrado ferido), e morto no escuro fica listado como
-    qualquer outro. **Recusado:** "some junto com o registro do ferimento" — apagar o
+    qualquer outro. **Recusado:** "some junto com o registro do ferimento": apagar o
     resultado da ação do jogador não é névoa, é amnésia.
 
     **O VISUAL, decidido pelo humano em 07/09/2026 (o dado já estava especificado na migração
     33; faltava só isto):** três regras, e se aparecer um quarto caso de visual que elas não
     cobrem, parar e perguntar antes de inventar.
-    1. **Apagado é visivelmente distinto de peça vista agora**, não opacidade menor por acaso —
+    1. **Apagado é visivelmente distinto de peça vista agora**, não opacidade menor por acaso:
        quem olha o tabuleiro sabe, sem passar o mouse, que aquilo é lembrança e não leitura.
     2. **A Vida mostrada é a da última vez**, e a tela diz isso. Curado no escuro continua
-       aparecendo ferido, de propósito — o que não pode é o jogador achar que está vendo o
+       aparecendo ferido, de propósito · o que não pode é o jogador achar que está vendo o
        agora.
     3. **A lembrança não é alvo.** Não declara golpe, não move até ela, não mira nela. Se a
        interface deixar clicar, promete uma ação que o motor não faz.
@@ -2032,7 +2032,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   **O que está feito:** o caso E, na migração 32. **CORRIGIDO em 10/09/2026: a tela que
   desenha a lembrança (o caso D) NÃO está mais faltando.** Este parágrafo dizia "nunca
-  existiu, zero ocorrências de lembranca em src/" — desatualizado desde 07/09/2026, mesma
+  existiu, zero ocorrências de lembranca em src/", desatualizado desde 07/09/2026, mesma
   classe de defeito do `L34`/`L39` (`d1d70e4`). A tela foi construída pelo humano no commit
   `5af06f8` (07/09/2026): CSS distinto, `pintarTokens` estendido, `resolverAtaque` recusando
   a lembrança como alvo, `naFila` excluindo peça lembrada, knob `?lembranca=1` no mock, cena
@@ -2221,25 +2221,25 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **TENTATIVA DE SEPARAR OS 34% POR "QUEM DIGITA", em 07/09/2026, e a resposta é NÃO, com o dado
   que existe.** A pergunta era: dá para separar quanto da digitação de `resolver` vem de golpe de
   criatura (lado do mestre) e quanto de golpe de PC, usando o `lado` que o log já carrega? O
-  `lado` existe de fato (`log.mjs:190`, `paradasSubLado`, atribuído ao ATACANTE — confirmado em
+  `lado` existe de fato (`log.mjs:190`, `paradasSubLado`, atribuído ao ATACANTE, confirmado em
   `log.parada` chamado com o atacante `c`, `motor.mjs:409`), e é tecnicamente medível: numa
   bateria ad hoc (semente `20260903`,
   commit `4be58a6`, 7.200 batalhas), o `resolver` sai **49,0% no lado `a` e 51,0% no lado `b`**.
   **E O DADO QUE PRODUZIU ISTO NÃO EXISTE MAIS**: a saída ficava em `.sim/techlead-modosite`
   (gitignorado) e foi apagada depois de medir, porque não é resultado publicado desta frente,
   é só o registro de uma tentativa. **O 49,0/51,0 não é reproduzível a partir deste
-  repositório hoje** — quem quiser conferir tem de rodar de novo (`node scripts/sim/bateria.mjs
+  repositório hoje**: quem quiser conferir tem de rodar de novo (`node scripts/sim/bateria.mjs
   --n 100 --semente 20260903` no commit `4be58a6`), não citar o número como se o corpus
   existisse. **Mas isso não responde à pergunta feita, por duas razões:**
 
   1. **não existe criatura nenhuma no elenco desta frente** (decisão D25): os dois lados são
      sempre arquétipos de PC, então "lado" aqui não é "criatura contra PC", é "PC contra PC", e
-     o resultado quase-metade-a-metade é só o reflexo de os dois lados serem simétricos — não
+     o resultado quase-metade-a-metade é só o reflexo de os dois lados serem simétricos · não
      ensina nada sobre quanto custaria numa mesa com monstro;
   2. **e mais fundo: a divisão por `lado` responde "quem atacou", não "quem está sentado
      operando a tela".** Na simulação o mestre é quem resolve `resolver` nos dois lados sempre;
      o que muda numa mesa real é se o JOGADOR também mexe na tela quando o golpe é dele, e isso é
-     exatamente o modo `misto` de novo — não dá para chegar lá contando lado de quem golpeia.
+     exatamente o modo `misto` de novo · não dá para chegar lá contando lado de quem golpeia.
 
   **Conclusão: a pergunta continua sem número, e não por falta de tentar.** Medir isso de verdade
   exigiria um elenco com criatura, que esta frente decidiu não construir (frente encerrada,
@@ -2421,7 +2421,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `marcarInvestida` é o molde pronto do conserto dele.
 
   **ACHADO EM 06/09/2026, RESPONDENDO SE ISTO JÁ ESTÁ NA FILA: estava só como nota, e virou item
-  com custo.** A pergunta era só "o Grid aplica ou o mestre digita" — a resposta é **o mestre
+  com custo.** A pergunta era só "o Grid aplica ou o mestre digita": a resposta é **o mestre
   digita**, hoje, e o custo disso nunca tinha sido contado.
 
   **O CUSTO, pelo mesmo molde do `custo-tela.mjs`.** Aplicar `correndo` à mão é o caminho do
@@ -2440,7 +2440,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   condição em ninguém. O custo dos 8 gestos só existe numa mesa com **Corrida declarada por
   gente** (perseguir, reposicionar), que esta bateria não tem (`bateria.mjs`, a lista de
   invenções: nenhuma peça de jogador). **Fica registrado aqui, e não na escada**, para não
-  inventar uma medição sobre cenário que a bateria não roda — a mesma régua que já se aplicou ao
+  inventar uma medição sobre cenário que a bateria não roda, a mesma régua que já se aplicou ao
   redirecionamento do golpe no caído (⚑ do manifesto).
   mesa, a peneira saiu do levantamento, e o par de asserções segura as duas metades.*
 
@@ -2632,17 +2632,17 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **DECIDIDO em 07/09/2026: separar em dois campos** (um executado pelo motor, para os 57; um só
   de classificação, para os 9). **COM PRÉ-REQUISITO, e não como ressalva:** antes de qualquer
   código, levantar TODO consumidor de `grid.condicao` no repositório, um a um, e dizer quantos são
-  — não só os que aplicam a condição, também os que só leem para exibir ou gerar conteúdo. **Se
+  · não só os que aplicam a condição, também os que só leem para exibir ou gerar conteúdo. **Se
   algum consumidor for gerador de capítulo** (`gen-cap-*`, ou qualquer coisa que produza texto
   publicado a partir do dado), o risco não é a tela parar de mostrar algo: é o **capítulo publicado
   mudar sem ninguém ter pedido**, que é regra saindo de refatoração. Achando um caso desses, parar
   e escalar antes de fazer o split.
 
   **A CONTAGEM, feita em 07/09/2026, antes de qualquer código.** Nenhum consumidor é gerador de
-  capítulo — a trava não dispara — mas são **mais sítios do que a seção original nomeava** (ela só
+  capítulo (a trava não dispara), mas são **mais sítios do que a seção original nomeava** (ela só
   citava o `if (forma === 'nenhuma')` de `:779`). Dezesseis pontos de leitura em cinco arquivos:
 
-  **MOTOR, sete blocos — chamam `porCondicao`/`tirarCondicao`, aplicam ou retiram de verdade:**
+  **MOTOR, sete blocos, chamam `porCondicao`/`tirarCondicao`, aplicam ou retiram de verdade:**
   `src/lib/artes-grid-mesa.ts:1149` (`await porCondicao(ctx, combDe(ctx, a.cid), g.condicao, plano.turnos);`);
   `:1242` (`await porCondicao(ctx, combDe(ctx, id), plano.condicao, turnosRestantes(ef, t));`);
   `:1299`, onde `plano.condicao` da linha de cima nasce (`condicao: g?.condicao || null,`);
@@ -2653,10 +2653,10 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `:1994`-`1997` (`if (ef.condicao) {` até `await tirarCondicao(ctx, combDe(ctx, cid), ef.condicao);`, dentro de `encerrarEfeito`).
 
   **PORTÃO, um bloco:** `src/lib/artes-grid-mesa.ts:1808` (`if (!ef.dano_dados && !ef.condicao) continue;`) decide se o Efeito entra no laço da mordida por área
-  (2ª metade de `verificarEfeitos`). **Não é o ponto de atenção real** — ver a conferência abaixo.
+  (2ª metade de `verificarEfeitos`). **Não é o ponto de atenção real**: ver a conferência abaixo.
 
   **A CONFERÊNCIA QUE FALTAVA, feita em 07/09/2026: os 9 nunca chegam a existir como `ATIVOS`,
-  então nenhum dos sete blocos de MOTOR roda para eles — nem o `:1808`, nem os outros seis.**
+  então nenhum dos sete blocos de MOTOR roda para eles, nem o `:1808`, nem os outros seis.**
   A pergunta certa não era "podem pular o laço", era "o que mais o laço faz com eles hoje além de
   aplicar a condição", e a resposta é: nada, porque eles nunca entram no laço, por um motivo
   anterior e mais forte do que qualquer filtro dentro dele.
@@ -2675,11 +2675,11 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
      E dentro de `gravarEfeito`, `ATIVOS.push` (`src/lib/artes-grid-mesa.ts:1324`) só roda depois da linha que grava no banco, e é a única ocorrência no arquivo inteiro.
 
   **Os quatro blocos de MOTOR que não são o laço da mordida** (`:1149`, `:1242`, `:1299`→`:1330`)
-  também dependem de `gravarEfeito` já ter rodado — `:1149` é dentro de `deslocar` (o ramo
+  também dependem de `gravarEfeito` já ter rodado: `:1149` é dentro de `deslocar` (o ramo
   `movimento`, inacessível aos 9 pela mesma exclusão do item 2), `:1330` é dentro da própria
   `gravarEfeito`, e `:1242` roda em `saidaDaArte`, chamada só para quem já está em `ATIVOS`
   (`:1794`-`1803`). **Isto corrige a conclusão anterior desta seção**, que dizia que o `:1808`
-  "protege a montante" os outros seis: `:1149`/`:1242`/`:1299`/`:1330` nem passam pelo `:1808` —
+  "protege a montante" os outros seis: `:1149`/`:1242`/`:1299`/`:1330` nem passam pelo `:1808`:
   o que os protege é o mesmo motivo que protege o `:1808`, o despacho de `:798`, não uma relação
   de precedência entre os blocos de MOTOR.
 
@@ -2687,34 +2687,34 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   de dado (item 1, hoje verdadeiro por acaso de não ter exceção, não por trava) mais um invariante
   de código (itens 2 e 3). Antes do split, escrever DOIS testes, não um: (a) em `validate-data.mjs`
   ou teste próprio, assert que todo Efeito com `forma: "nenhuma"` tem `alvo: "nenhum"` e
-  vice-versa, para os 140 — se algum Efeito novo quebrar essa correspondência, o split some por
+  vice-versa, para os 140: se algum Efeito novo quebrar essa correspondência, o split some por
   baixo dele sem aviso; (b) um teste de Node que chama o despacho (ou `gravarEfeito` diretamente)
   com um Efeito `forma: "nenhuma"` carregando o campo novo de classificação e afirma que `ATIVOS`
-  não cresce e `porCondicao` não é chamado — E o par, com um Efeito real (`ao-entrar`, por
+  não cresce e `porCondicao` não é chamado, E o par, com um Efeito real (`ao-entrar`, por
   exemplo) afirmando que a condição É aplicada. Um teste sem o outro prova metade: falhar quando
   um dos 57 pára de entrar é tão grave quanto falhar quando um dos 9 volta a entrar.
 
   **CORREÇÃO ao item (b), achada pela Executora em 07/09/2026 ao tentar escrever exatamente esse
   teste: "chama o despacho (ou `gravarEfeito` diretamente)" trata as duas formas como
   equivalentes, e não são.** `gravarEfeito` (`:1324`, `ATIVOS.push`) não tem gate nenhum por
-  `forma` — empurra sempre, incondicional, é a própria seção que já dizia isso no item 3 acima.
+  `forma`: empurra sempre, incondicional, é a própria seção que já dizia isso no item 3 acima.
   Quem gate é só o despacho da conjuração (`:798`), e ele é DOM-only (`conjurar` exige `palco:
   HTMLElement`, inalcançável no harness Node do `test-arte-na-mesa.mjs`). Ou seja: não existe hoje
-  — nem antes deste split, nem depois — uma prova em Node de que os 9 não entram em `ATIVOS`; essa
+  (nem antes deste split, nem depois) uma prova em Node de que os 9 não entram em `ATIVOS`; essa
   proteção é estrutural (itens 2 e 3 acima), verificada por leitura, não por teste que rode. O que
   É testável em Node, e o que a Executora escreveu em `test-arte-na-mesa.mjs`, é mais estreito e
   ainda assim o que importa PARA O SPLIT: que `porCondicao` é decidido pela presença de
-  `grid.condicao`, nunca de `grid.condicaoAparente` sozinho — a rede que pega uma fusão ingênua
+  `grid.condicao`, nunca de `grid.condicaoAparente` sozinho: a rede que pega uma fusão ingênua
   (`g?.condicao || g?.condicaoAparente`) se alguém escrever uma no futuro. Isto é proteção
   SECUNDÁRIA (o campo certo), não a proteção PRINCIPAL (o despacho nunca deixar os 9 chegarem
-  lá) — a principal continua sem teste, e adicionar um exigiria harness de navegador para
+  lá): a principal continua sem teste, e adicionar um exigiria harness de navegador para
   `conjurar`, fora do escopo desta frente.
 
   **CLASSIFICA/EXIBE, quatro blocos, atualizados para ler `ef.condicao || ef.condicaoAparente`
   (fechado, ver `docs/simulacao/caixa/19-executora.md`):**
   `src/lib/artes-grid-mesa.ts:458` (`const condId = ef.condicao || ef.condicaoAparente;`);
   `:1836` (`const condId = p.ef.condicao || p.ef.condicaoAparente;`, texto de log);
-  `src/lib/artes-grid.ts:1496`-`1497` (`if (ef.condicao && alvos.length) {`) — a prévia só entra se
+  `src/lib/artes-grid.ts:1496`-`1497` (`if (ef.condicao && alvos.length) {`): a prévia só entra se
   `alvos.length`, e os 9 problemáticos têm `alvo: "nenhum"`: **já seguro por construção, não tocado**;
   `src/lib/artes-grid.ts:1677` (`const condId = ef.condicao || ef.condicaoAparente;`);
   `src/lib/artes-grid-ui.ts:47` (`const condId = g.condicao || g.condicaoAparente;`).
@@ -2729,7 +2729,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `(g.forma === 'nenhuma') === (g.alvo === 'nenhum')` logo abaixo, na mesma função.
 
   **O que isto mudou no split:** os sete blocos de MOTOR não precisaram de auditoria individual,
-  um a um — a conferência acima já era a prova, e ela é sobre o despacho da conjuração (`:798`) e
+  um a um: a conferência acima já era a prova, e ela é sobre o despacho da conjuração (`:798`) e
   `gravarEfeito` (`:1324`), não sobre o `:1808`.
 
   **IMPLEMENTADO em 07/09/2026 (rodada 19, commits `0762926`/`4058b4c`/`bdc9680` + `7e56946`,
@@ -2740,12 +2740,12 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   anterior) e calculava um `BASE` errado, silencioso, sem falhar. Corrigido em `rodada.mjs`
   (`4058b4c`) e no mesmo hardcode de `scripts/duo.mjs` (`7e56946`, decisão do TechLead, mesmo
   conserto). **Ainda sem teste, antes e depois desta rodada:** a proteção PRINCIPAL dos 9 Efeitos
-  (o despacho de `conjurar` nunca deixar `forma === 'nenhuma'` chegar em `gravarEfeito`) — provar
+  (o despacho de `conjurar` nunca deixar `forma === 'nenhuma'` chegar em `gravarEfeito`): provar
   exigiria harness de navegador para `conjurar`, outra frente.
 
   **Veredito SEGUE em 07/09/2026 (rodada 20, `docs/simulacao/caixa/20-revisora.md`, commit
   `e5bfbf9`):** a Revisora leu `gravarEfeito` e `conjurar` de forma independente (não aceitou a
-  leitura do aviso de graça) e recalculou os números direto em `efeitos.json` — confirma que a
+  leitura do aviso de graça) e recalculou os números direto em `efeitos.json`, confirma que a
   proteção principal é mesmo só o despacho DOM-only, sem caminho Node-testável hoje.
 
 - [ ] **L40 · [MITIGADO EM 05/09/2026 · O CONSERTO É A MIGRAÇÃO 34] O registro do jogador que o
@@ -2921,7 +2921,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   apagou **não volta**. Sem ele, o caso 2 passa com uma mescla que só junta, e que ressuscita tudo.
 
   **DECIDIDO em 07/09/2026: ADIAR.** O gargalo de migrações pendentes que travava a 34 já foi
-  resolvido (31/32/29/30/35 aplicadas, **L42**), então a 34 não está mais bloqueada por isso — mas
+  resolvido (31/32/29/30/35 aplicadas, **L42**), então a 34 não está mais bloqueada por isso, mas
   escrever e rodar uma migração nova agora é antecipar trabalho durante o congelamento da fase 3
   (reservado para a mesa reavaliar o plano), por um risco que a mitigação já encolheu em ~4 ordens
   de grandeza (de até ~21 s para milissegundos, ver acima). **Fica na fila, com o gatilho escrito
@@ -2930,7 +2930,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   hoje não cobre. **O que a mitigação NÃO resolve, para o gatilho ter conteúdo quando alguém for
   reler isto:** ela encurta a janela de corrida, não a fecha (o `select`+`update` do `mesclarLog`
   ainda não é atômico); e o `LOG_APAGADAS` é uma lápide que existe só porque, sem migração, a
-  ausência local de uma linha tem duas causas indistinguíveis — "nunca chegou" e "eu apaguei" — e
+  ausência local de uma linha tem duas causas indistinguíveis ("nunca chegou" e "eu apaguei") e
   o dia em que uma terceira causa aparecer (por exemplo, duas abas de mestre) a lápide sozinha
   pode não bastar.
 
@@ -3298,7 +3298,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   de verdade (10 asserções); `test-carimbo-migracoes.mjs` copia os 36 `.sql` reais para uma pasta
   de scratch e confere que passam (8 asserções). E o resolvedor de variável do gate `mordidos` fora
   do helper devolve TRÊS estados (achou / confirmou ausência / não resolvi), e "não resolvi" conta
-  como suspeito — nunca como "não há cliente tirando chave". Falsificado: variável vinda de
+  como suspeito, nunca como "não há cliente tirando chave". Falsificado: variável vinda de
   parâmetro externo acende o portão, rotulada "NÃO RESOLVI".*
 
   **1 · O DETECTOR DE REMOÇÃO GANHOU MÓDULO PRÓPRIO E TESTE SINTÉTICO.** A lógica que decide "este
@@ -3308,13 +3308,13 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   positivo com `-` simples, positivo com o formato exato da migração 36 (fundir e subtrair um
   array), positivo com `#-`, negativo com `||` (o defeito da 35), negativo com substituição pura
   (o defeito anterior), e o caso que a PRIMEIRA versão do portão errava (remoção sem `coalesce` em
-  volta) — agora achado. 8 asserções, todas verdes.
+  volta): agora achado. 8 asserções, todas verdes.
 
   **2 · O PORTÃO DO CARIMBO GANHOU `--dir` E BANCADA PRÓPRIA.** `gen-carimbo-migracoes.mjs` aceita
   `--dir=<pasta>` para o controle positivo poder rodar numa pasta de scratch, sem tocar
   `supabase/`. `scripts/test-carimbo-migracoes.mjs` prova as duas metades que a revisora pediu:
   que o `--check` falha com um arquivo sem carimbo NENHUM (não só com hash velho, que já era
-  coberto), e que o MESMO arquivo passa a passar depois de carimbado — a prova de que a detecção
+  coberto), e que o MESMO arquivo passa a passar depois de carimbado: a prova de que a detecção
   acha quando há o que achar, e não só que ela falha fechado quando não acha nada. 6 asserções,
   todas verdes, e conferido que `supabase/` não foi tocado (`git status --short` limpo depois).
 
@@ -3323,7 +3323,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   como um portão fica verde sem o problema resolvido). Em vez de casar texto, ele percorre a
   ÁRVORE SINTÁTICA de `artes-grid-mesa.ts` e do `<script>` de `grid.astro` (via o compilador
   TypeScript, já uma dependência do projeto) atrás de toda chamada `.update`/`.upsert` sobre
-  `arena_efeitos`, e RESOLVE o valor do argumento — objeto literal direto, ou a variável que o
+  `arena_efeitos`, e RESOLVE o valor do argumento: objeto literal direto, ou a variável que o
   recebeu, seguindo a declaração dela e qualquer atribuição posterior no mesmo corpo de função.
   Fora do intervalo da própria `marcarMordido` (achado pelo NOME da função, não por número de
   linha).
@@ -3333,7 +3333,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | rodada | o que foi injetado | resultado |
   |---|---|---|
   | 1 · vermelho hoje | `.update({ mordidos: {...} })` inline, fora do helper | ✗ achado |
-  | 2 · verde real | nenhuma injeção — o código como está | ✓ verde |
+  | 2 · verde real | nenhuma injeção, o código como está | ✓ verde |
   | 3 · vermelho de novo, disfarçado | `.upsert(cargaDoEnsaio)` com variável renomeada e a chave chegando por `cargaDoEnsaio.mordidos = ...` DEPOIS da declaração, não dentro do literal | ✗ achado |
 
   A rodada 3 é a que prova o ponto: é exatamente o tipo de disfarce que reprovou a versão anterior
@@ -3343,7 +3343,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **O LIMITE, DECLARADO NO PRÓPRIO VERMELHO, como o outro:** prova que nenhuma chamada
   `.update`/`.upsert` sobre `arena_efeitos`, nos dois arquivos vasculhados, carrega `mordidos` fora
   do helper. NÃO prova que uma escrita por uma ROTA DIFERENTE (uma RPC chamada direto por nome, um
-  terceiro arquivo que também toque `arena_efeitos`) não exista — ainda é o item 5 em aberto, só
+  terceiro arquivo que também toque `arena_efeitos`) não exista, ainda é o item 5 em aberto, só
   que agora fechado para a forma de escrita que existe hoje.
 
   Os três (`test-remocao-jsonb.mjs`, `test-carimbo-migracoes.mjs`, e o bloco novo em
@@ -3432,13 +3432,13 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   | balde | as funções | o que fazer |
   |---|---|---|
   | **A · [FECHADO em 07/09/2026] sem ocasião num laço headless** (8) | `fita`, `resumoDaAcao`, `combateDaMesa`, `ehSimultaneo`, `rolaNoSite`, `comOverride`, `anatomiaLivre`, `acaoVazia` | são tela ou configuração: as duas primeiras desenham, as três seguintes leem uma configuração que a bateria fixa, `comOverride` e `anatomiaLivre` são caminhos de diálogo, e `acaoVazia` responde uma pergunta mais larga (inclui Pressão) que a política automática nunca produz. **Escrever isto uma vez ao lado dos números e fechar.** É a única parte da lista que é escopo de verdade. Conferido em `src/lib/combate-tempo.ts` que as oito existem e batem com a descrição (as três de configuração leem `CombateMesa`/flags, as duas de diálogo tomam `Anatomia`/override como parâmetro, as duas de tela devolvem string); nenhuma abre caminho novo. Fecha por escrita, não por código novo |
-  | **B · [FECHADO em 06/09/2026] duas implementações da mesma pergunta** (2) | `temGesto`, `proximoGolpe` | `temGesto` era cópia de mesmo nome no `motor.mjs`, com o mesmo corpo, e a ponte já exportava o original: a cópia saiu, `resolverContra` chama `L.temGesto` (`motor.mjs:362`), e a saída da batalha de controle (300 batalhas, semente `20260903`) saiu byte a byte idêntica. `proximoGolpe` estava reimplementado em linha, em dois pontos de `avancarTickSimultaneo`; os dois viraram `L.proximoGolpe(...)` (`motor.mjs:138`, `motor.mjs:145`), mesma conferência. `proximoGolpe` entrou na ponte (só faltava lá). Conferido: `custo-tela.mjs` NÃO responde a mesma pergunta que `temGesto` — a tabela `CUSTO` mapeia TIPO DE PARADA → cliques, e `temGesto` pergunta se UMA `Acao` tem golpe agendado; nenhuma linha do arquivo testa `.golpes.length`. Não há o que tirar nem migrar lá |
+  | **B · [FECHADO em 06/09/2026] duas implementações da mesma pergunta** (2) | `temGesto`, `proximoGolpe` | `temGesto` era cópia de mesmo nome no `motor.mjs`, com o mesmo corpo, e a ponte já exportava o original: a cópia saiu, `resolverContra` chama `L.temGesto` (`motor.mjs:362`), e a saída da batalha de controle (300 batalhas, semente `20260903`) saiu byte a byte idêntica. `proximoGolpe` estava reimplementado em linha, em dois pontos de `avancarTickSimultaneo`; os dois viraram `L.proximoGolpe(...)` (`motor.mjs:138`, `motor.mjs:145`), mesma conferência. `proximoGolpe` entrou na ponte (só faltava lá). Conferido: `custo-tela.mjs` NÃO responde a mesma pergunta que `temGesto`: a tabela `CUSTO` mapeia TIPO DE PARADA → cliques, e `temGesto` pergunta se UMA `Acao` tem golpe agendado; nenhuma linha do arquivo testa `.golpes.length`. Não há o que tirar nem migrar lá |
   | **C · [3 DE 8 FECHADOS em 06/09/2026] divergência de fidelidade REAL, com ocasião nesta bateria** (8) | `ticksDeEntrada`, `contrapeEm`, `contrapeDe` ligados e medidos; `ticksDeDeslocamento`, `abortar`, `foraDeHora`, `atrasarGesto`, `podeSerInterrompido` seguem abertos | os três ligados: efeito líquido zero na duração média, redistribuição real célula a célula (sensibilidade a condição inicial), −0,5% no trabalho total do mestre. Os cinco que sobram exigem decisão de política antes de motor: ver o parágrafo abaixo |
   | **D · divergência REAL, SEM ocasião nesta bateria** (3) | `tetoDaRajada`, `modoCorre`, `adiaGolpe` | as duas últimas ENTRARAM neste balde em 06/09/2026, corrigindo a lista de origem: ver o parágrafo abaixo |
 
   **CORREÇÃO AO PRÓPRIO RELATO ANTERIOR, achada ao medir o tamanho do balde C em 06/09/2026:
   eram dez com ocasião, e duas não têm.** `modoCorre` só se distingue de `=== 'corrida'` quando
-  `opts.modo === 'investida'`, e o harness **nunca** produz esse valor — `motor.mjs` só escreve
+  `opts.modo === 'investida'`, e o harness **nunca** produz esse valor: `motor.mjs` só escreve
   `modo: 'corrida'` (fuga, L249) ou `modo: 'batalha'` (aproximação, L281); `grep` por
   `investida` no arquivo inteiro não acha nada. E o harness já chama `L.passoDoGolpe` (`motor.mjs:105`), que usa
   `modoCorre` por dentro (`combate-tempo.ts:1022`): a função É exercitada, só não por nome. `adiaGolpe(c)` pergunta se o sistema da MESA adia o golpe
@@ -3450,7 +3450,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **O TAMANHO DO BALDE C, medido em 06/09/2026 antes de construir nada** (a régua do L30: o
   tamanho vem antes do conserto). Das oito, **três são baratas de ligar**, e só **uma** delas
   MEXE no comprimento da batalha: `ticksDeEntrada` (a guarda do motor já existe, ver mais abaixo,
-  e É o que atrasa a entrada — a medição do turno anterior). `contrapeEm` e
+  e É o que atrasa a entrada, a medição do turno anterior). `contrapeEm` e
   `contrapeDe` são igualmente baratas de ligar (o par que lê e carrega o contrapé que
   `ticksDeEntrada` gravaria), **mas não mudam duração nenhuma**: a régua da mesa manda o
   contrapé ficar **mostrado e não descontado** (`grid.astro:5296`, `GUARDADO na ação e MOSTRADO`, "o valor final da jogada é do
@@ -3476,7 +3476,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   barato (`ticksDeEntrada` + o par do contrapé) cabe num experimento só, porque as três só tocam
   o INÍCIO do ciclo de uma peça. As cinco caras não cabem no mesmo lote: cada uma exige decidir
   QUANDO o robô aborta, interrompe ou anda durante a Recuperação, e essa decisão de política é
-  trabalho de design antes de ser trabalho de motor — não dá para "ligar" o que ainda não foi
+  trabalho de design antes de ser trabalho de motor · não dá para "ligar" o que ainda não foi
   desenhado.
 
   **O `ticksDeEntrada` [LIGADO E MEDIDO em 06/09/2026] ERA O PRIMEIRO, E CABIA ANTES DO ELENCO
@@ -3498,7 +3498,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   `coprimo-media-2x8`: 30,4 → 28,1), e a distribuição POR BATALHA mostra sensibilidade à condição
   inicial e não ruído: 33,9% ficam idênticas, 12,5% mudam por exatamente 1 Tick, e o resto se
   espalha de −65 a +65 Ticks. Atrasar a entrada de uma peça por 1 Tick muda quem alcança quem
-  primeiro numa perseguição, e isso se propaga e amplifica — a mesma dinâmica que já faz os eixos
+  primeiro numa perseguição, e isso se propaga e amplifica, a mesma dinâmica que já faz os eixos
   "explicarem 58× mais que o acaso" e não 100%. O trabalho total do mestre cai 0,5%
   (1.171.957 → 1.166.168 gestos), pequeno mas real: entrar em Ticks diferentes espalha o pico de
   declarações do Tick 1 nas células mais cheias. Detalhe completo, com a régua da comparação:
@@ -3510,23 +3510,23 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   generoso que a mesa outra vez**, agora numa regra que ninguém tinha olhado, com `tick: 0`
   fixo enquanto o harness já entrava em Ticks 1 e 2. Consertado fazendo o mock também chamar
   `ticksDeEntrada` sobre a mesma lista de iniciativas, e não desligando o escalonamento em
-  `cena.mjs` para os dois voltarem a bater — é a única saída que não cria uma divergência nova.
+  `cena.mjs` para os dois voltarem a bater: é a única saída que não cria uma divergência nova.
   E o mesmo achado abriu um segundo, mais fino: o próprio detector "chamado pelo harness" do
   L48 (`scripts/test-cobertura-lib.mjs`) tinha o furo de espalhamento que já tinha mordido o
   detector do lado da mesa numa rodada anterior (`...L.contrapeDe(...)` tem um ponto antes do
-  `L`, e a classe de caracteres excluía ponto) — o instrumento feito para achar a divergência
+  `L`, e a classe de caracteres excluía ponto): o instrumento feito para achar a divergência
   tinha a mesma divergência dentro de si, nos dois lados que ele compara. Registrado no
   CATALOGO como segundo caso do "portão que casa por literal".
 
   **O que fica aberto:** o elenco de dois arquétipos continua sem vão de iniciativa para o Tick 3
-  ou 4 da régua — a FAIXA completa da régua ainda espera o elenco novo, como já estava escrito.
+  ou 4 da régua: a FAIXA completa da régua ainda espera o elenco novo, como já estava escrito.
 
 - [x] **L49 · [FECHADO em 07/09/2026, commit `2fe37cd`] `test-bandeiras-mesa.mjs` entrou no
   `smoke` do `package.json` (9 scripts) e não entrou na matriz do `.github/workflows/validate.yml`
   (8 nomes fixos): a prova inteira de porte/gate na Vida nunca rodava no CI, só na máquina de
   quem lembrasse de rodar `npm run smoke` antes de empurrar. E `test-portoes.mjs:454`
   · `roda os mesmos em matriz a cada push` afirmava
-  "o CI roda os mesmos em matriz a cada push" sem nada no repositório conferir isso — o próprio
+  "o CI roda os mesmos em matriz a cada push" sem nada no repositório conferir isso · o próprio
   caso que o arquivo existe para pegar.
 
   **O conserto, em três partes:** `test-bandeiras-mesa` entrou na matriz; `test-portoes.mjs`
@@ -3537,7 +3537,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   (agora perto de `:453`) deixou de ser afirmação solta e passou a apontar para o item 6.
 
   **Achado registrando índice, não código:** o `Pendencias.md` não tinha entrada nenhuma para
-  este CORRIGE apesar de ele já estar fechado em `main` — a mesma classe do item que o próprio
+  este CORRIGE apesar de ele já estar fechado em `main`, a mesma classe do item que o próprio
   `CONTEXTO.md` descreve (decisão/trabalho fechado que não está no índice único). Confirmado
   rodando `node scripts/test-portoes.mjs` em 07/09/2026: item 6 verde, matriz e smoke com 9
   nomes cada, concordando nas duas direções.
@@ -3554,18 +3554,18 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   avisa no `console.log` (`:114`-`116`) mas termina com `exit 0` de qualquer jeito. Num clone
   limpo, sem a pasta `D&D/`, TODAS as folhas caem em `faltando`: o script roda sem erro, escreve
   um `arte-equip.css` só com o cabeçalho (nenhuma peça, nenhuma classe `.arte-*`), e `npm run
-  build` grava esse arquivo quase vazio por cima do CSS de verdade, sem nada denunciar — mesmo
+  build` grava esse arquivo quase vazio por cima do CSS de verdade, sem nada denunciar, mesmo
   padrão do B12 (silêncio onde devia haver erro alto).
 
   **Conferido em 08/09/2026, e o arquivo de hoje está limpo:** `src/styles/arte-equip.css` tem
-  hoje 65 linhas, 6762 bytes, 40 classes `.arte-*` — não é o quase-vazio. `git log --stat -- src/
+  hoje 65 linhas, 6762 bytes, 40 classes `.arte-*`, não é o quase-vazio. `git log --stat -- src/
   styles/arte-equip.css` mostra só dois commits na vida inteira do arquivo: `19b233a` (criação,
   +65 linhas) e `7d1908b` (ajuste de 1 linha, `+1 −1`). Nunca houve queda brusca de tamanho: o
   defeito nunca disparou em produção até hoje, é risco, não incidente.
 
   **O conserto, com o escopo corrigido em 08/09/2026 (não é só "todas faltando"):** falhar alto
   como o irmão `gen-creditos-equip.mjs` (`process.exit(1)` com mensagem), e não escrever nada
-  quando a entrada não existe — nem quando falta só UMA folha esperada em `plano.folhas`, não só
+  quando a entrada não existe, nem quando falta só UMA folha esperada em `plano.folhas`, não só
   quando faltam todas. Escrever um CSS com menos classes do que o script leu no plano é pior do
   que não escrever nada: a queda parcial passa despercebida do mesmo jeito que a queda total, só
   que sem nem o consolo de o build falhar visivelmente feio.
@@ -3582,12 +3582,12 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   Frente 3, a auditoria das três medições).
 
   `combate_visao` tem `test-visao.mjs:49`, que lê `migracao-27.sql` de verdade
-  (`fs.readFileSync`) e compara as colunas com a lista à mão em `scripts/visao-combate.mjs` —
+  (`fs.readFileSync`) e compara as colunas com a lista à mão em `scripts/visao-combate.mjs`:
   esse par roda em `npm run validate` e trava sozinho se divergir. `encontro_visao`,
   `token_visao` e `efeito_visao` não têm isso: são listas escritas à mão em `mesa-mock.mjs`
   (`:946-947` para `encontro_visao`, comentário citando "migrações 14 · 29 · 31") sem comparação
   nenhuma contra o `.sql`. Conferido à mão nesta rodada que batem hoje, mas nada trava se alguém
-  mudar a view e esquecer a lista — não é o achado antigo "mock mais generoso que o esquema"
+  mudar a view e esquecer a lista · não é o achado antigo "mock mais generoso que o esquema"
   (`:1882`, já resolvido para estas duas), é cobertura de 1 em 4. O modelo a replicar é o próprio
   `test-visao.mjs`. Não corrigido ainda.
 
@@ -3601,7 +3601,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   Duas contagens que nunca existiram.** (1) **MEDIDO:** `grep '^- \[ \]'` (aberto), `'^- \[x\]'`
   (fechado) e `'^- \[~\]'` (parcial) contra este arquivo, em 08/09/2026 às ~19h55 (commit
   `05c4a92`): **120 abertos, 63 fechados, 4 parciais** (`A11`, `K28`, `I11`, `I12`), **187
-  itens catalogados no total**. Esta é a primeira medida da série — não há histórico anterior
+  itens catalogados no total**. Esta é a primeira medida da série: não há histórico anterior
   para comparar, então ainda não diz se o congelamento de descobrimento
   (`ARQUITETO.md §4.2`/`[[feedback_scope_discipline_side_findings]]`) está funcionando; diz
   só o ponto de partida. **E a primeira medida nasce inflada, registrado em 08/09/2026:** os
@@ -3609,10 +3609,10 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   existir (`H1`, `H2`, `K28`, `D2` fecharam em `b694eb6`, no mesmo dia, e o `B12` da
   fraqueza/resistência fechou horas depois em `20daeea`, todos ANTES desta medida rodar às
   ~19h55). Sem esta nota, a segunda medida da série vai parecer progresso quando for, em
-  parte, só alguém riscando o que já estava pronto e não tinha sido marcado — o mesmo padrão
+  parte, só alguém riscando o que já estava pronto e não tinha sido marcado, o mesmo padrão
   que o `CATALOGO.md` já registra como "fechar a frente sem fechar o documento". A próxima
   medida é que vira sinal. (2) **NÃO FEITO:** o custo
-  acumulado do arranjo (Arquiteto + Executora + Revisora + Auditora) desde o início — números
+  acumulado do arranjo (Arquiteto + Executora + Revisora + Auditora) desde o início, números
   soltos por rodada existem, um total nunca foi somado, e `docs/simulacao/caixa/
   gasto-acumulado.json` sozinho não serve: cobre só o período em que o script `npm run duo`
   rodava (um assunto, uma execução, US$ 1,32), não as rodadas via Agent Team que vieram
@@ -3629,7 +3629,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   Arquiteto:** `L34` (Interpor, item 6 da fase 2) e `L39` (o split de `grid.condicao`, item 2
   da fila do `PLANO.md §8`) já estavam fechados desde 07/09/2026 (rodadas 15-19, veredito
   SEGUE), mas `PLANO.md` e `CONTEXTO.md` continuavam descrevendo os dois como pendentes até
-  esta data — o `L34` também com o checkbox errado. **Corrigido aqui e nos dois documentos.**
+  esta data · o `L34` também com o checkbox errado. **Corrigido aqui e nos dois documentos.**
   A próxima medida do `L52` não deve ler este ajuste como itens novos fechados nesta sessão:
   os dois já estavam prontos, só não estavam marcados.
 
@@ -3638,7 +3638,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   (`5af06f8`, pelo humano), mas `Pendencias.md` e `CONTEXTO.md` diziam "nunca existiu"/"em
   andamento" até esta data. Corrigido, reverificado pela Executora com o ensaio dos três
   sentidos antes de fechar. **Este padrão já apareceu três vezes em três dias** (`L34`/`L39`
-  em 09/09, este em 10/09) — vale registro à parte se aparecer uma quarta vez: o problema
+  em 09/09, este em 10/09): vale registro à parte se aparecer uma quarta vez: o problema
   pode ser o hábito de não atualizar `PLANO.md`/`CONTEXTO.md` no mesmo commit que fecha o
   item, não três incidentes soltos.
 
@@ -3655,15 +3655,15 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   reservas) e `Proezas_revisao.md` (é a referência viva de `D1`/`D3`, acima; só `D2` fechou).
   **Ficam como candidatos fracos, não conferidos linha a linha, para não serem redescobertos
   do zero:** `Defesas_revisao.md`, `XP_revisao.md`, `ficha-xp.html`, `ficha-xp-2.html`,
-  `simulador-batalha.html` — cada um com um único citador, e nenhum é código nem documento
+  `simulador-batalha.html`, cada um com um único citador, e nenhum é código nem documento
   vivo. `_shots/` foi esvaziada (449 arquivos) e ganhou `_shots/README.md` dizendo como
   regenerar. `D&D/` (gitignorada, consumida por dois dos quatro geradores de equipamento) já
-  tinha o risco sério registrado como `L50`, acima — não duplicado aqui. → detalhe arquivo por
+  tinha o risco sério registrado como `L50`, acima, não duplicado aqui. → detalhe arquivo por
   arquivo: `docs/MAPA.md`, que é retrato por citação daquele dia, não autoridade permanente.
 - [ ] **L54 · [FAZER] `scripts/mapa.mjs`, a forma final do `docs/MAPA.md`.** O mapa de hoje é
   prosa escrita à mão a partir de um `grep` de uma tarde (`L53`), e por isso envelhece: um
   arquivo pode ganhar ou perder citação a qualquer commit sem que a tabela saiba. A forma que
-  não envelhece é script — roda o mesmo `grep` por nome contra o repositório inteiro, imprime
+  não envelhece é script: roda o mesmo `grep` por nome contra o repositório inteiro, imprime
   a tabela categoria por categoria, e falha ou avisa quando encontra um arquivo/pasta na raiz
   que não está em nenhuma linha conhecida (a mesma forma de proteção que `test-portoes.mjs`
   já usa para script novo fora do CI). Não escrito ainda; registrado para não ser esquecido.
@@ -3675,10 +3675,10 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **A parte já decidida (minha, do Arquiteto):** `regras.json:910` publica "~42%" descrevendo
   uma fórmula de Defesa que não existe desde 19/07/2026. Procedência: a nota nasceu no commit
   `441e1c3` (2026-06-05), no MESMO DIA em que `f21bf9c` fixou a Defesa como
-  `(Des+Hab+Especialidade+Centelha) × 2` (Centelha DENTRO do ×2) — e nunca foi tocada de novo
+  `(Des+Hab+Especialidade+Centelha) × 2` (Centelha DENTRO do ×2), e nunca foi tocada de novo
   (`git log -L910,910:src/data/regras.json` mostra um commit só). A fórmula mudou duas vezes
   depois: `b5e2b0a` (11/06, Centelha ×2 simétrico) e `6be7581` (19/07, Centelha ×1, PARA FORA
-  do ×2 — a forma de hoje). O número é de uma régua que não existe mais há 62 dias. **Não
+  do ×2, a forma de hoje). O número é de uma régua que não existe mais há 62 dias. **Não
   conserto agora**: não há número certo para pôr no lugar até a parte de baixo fechar.
 
   **A parte ainda não decidida (bloqueada pela medição, não é escala de regra pendente comigo):**
@@ -3692,7 +3692,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
     usada, mas a data (um dia após `6be7581`) e o valor sem-arma (44,4%, perto do ~42%
     histórico) indicam a fórmula atual.
   - **`Reescala.md`, linhas 95-97 (última edição 18/08/2026):** nomeia a fórmula explicitamente
-    — "a fórmula de Defesa atual do `calc.ts` é `(Des+per)×2 + Centelha`" — e mede **~37% em
+    · "a fórmula de Defesa atual do `calc.ts` é `(Des+per)×2 + Centelha`", e mede **~37% em
     soma 6, ~28% em soma 12**. O texto não menciona bônus de arma nenhum nessa passagem; não
     dá para afirmar se é "sem arma" por omissão ou se o bônus está embutido em outro lugar da
     conta sem ser nomeado.
@@ -3700,7 +3700,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **O que separa os dois não é fórmula (as duas usam a de hoje) nem, aparentemente, arma
   (Relatório isola os dois casos; Reescala não nomeia nenhum): é a SOMA.** Relatório mede em
   soma 8; Reescala em soma 6 e soma 12, e não mede soma 8 nenhuma vez. Sem recalcular nada, os
-  dois números de Reescala (37% em 6, 28% em 12) já formam uma curva caindo com a soma — o
+  dois números de Reescala (37% em 6, 28% em 12) já formam uma curva caindo com a soma · o
   valor de Relatório em soma 8 (44,4% sem arma) precisaria cair NESSA curva para as duas
   fontes baterem, e à vista dos dois extremos (37/28) um meio-termo em soma 8 pareceria mais
   baixo que 44,4%, não igual. Isto é leitura da forma da discordância, não recálculo: só quem
@@ -3709,7 +3709,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   rodar, `L55` fica bloqueado nessa medição, não em decisão do Arquiteto.
 - [ ] **L56 · [ANOTADO, sem análise] Payoff da arma leve.** `Relatorio.md` §4.3: a arma leve é
   a pior em dano em toda situação medida, e o que deveria compensar (agir mais vezes) só vira
-  vantagem real com Proezas — no tier mortal puro ela é só fraca. Recomendação lá: dar um
+  vantagem real com Proezas: no tier mortal puro ela é só fraca. Recomendação lá: dar um
   payoff mortal-tier concreto (ação utilitária no mesmo Tick, ou bônus defensivo real).
 - [ ] **L57 · [ANOTADO, sem análise] Bookkeeping do Quase-Acerto.** `Relatorio.md` §4.4: quatro
   números por confronto para ~18% de dano extra é contabilidade pesada pra mesa lembrar a cada
@@ -3739,19 +3739,19 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
      esse erro que esta entrada guarda, não o número certo do dia. Correção mora no veredito
      (`27-revisora.md`), não em reescrever `27-executora.md`. **A função de verdade, hoje** (11/09/2026,
      depois de rodadas que cresceram o arquivo): `cenaLembranca` (`scripts/test-grid.mjs:4048`).
-  2. **Bug real em `scripts/rodada.mjs:77` · `function calcularTopo`, classe nova, não a mesma do `4058b4c` (rodada 19):**
+  2. **Bug real em `scripts/rodada.mjs:102` · `function calcularTopo`, classe nova, não a mesma do `4058b4c` (rodada 19):**
      o campo TOPO compara `origin/main` contra o SHA local e, se diferentes, assume que alguém
      empurrou DEPOIS (`topo = origemMain`). A conta não cobre o caso desta sessão: `origin/main`
      ficou parado em `f8f72d0` enquanto sete commits só locais se acumulavam, então `origemMain` é
      um ANCESTRAL do HEAD real, não um topo mais novo. O aviso 27 herdou `f8f72d0` como TOPO, e quem
      confiasse só nesse campo (`git log SHA..TOPO`) veria vazio e concluiria "nada de outra frente
-     entrou" — o oposto do que os 28 commits de backlog (registrados na entrada anterior deste
+     entrou", o oposto do que os 28 commits de backlog (registrados na entrada anterior deste
      arquivo, ver a nota do `L52` de 10/09) diziam. Não corrigido nesta entrada: registro de tamanho.
 
      **Segunda ocorrência, rodada 28, mesmo dia:** o aviso `28-executora.md` nasceu citando o SHA
      de trabalho `4b666ef`, que deixou de existir porque o Arquiteto emendou o commit anterior
      (`579dc41`→`6df68c8`, tirando uma coautoria injetada por reminder) entre a Executora commitar
-     e enviar a rodada — o L50 foi reconstruído por cima da linha corrigida (`28b9c4c`), mas o
+     e enviar a rodada: o L50 foi reconstruído por cima da linha corrigida (`28b9c4c`), mas o
      campo SHA do aviso já tinha sido preenchido com o valor órfão. A Revisora rastreou e não
      tratou como bloqueio (conteúdo idêntico, veredito SEGUE), mas é a mesma família de defeito do
      item acima por um caminho diferente: os campos SHA/TOPO são preenchidos cedo demais, antes de
@@ -3773,7 +3773,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
 
      **Estrutural, ainda aberto, não é este item:** a Revisora levantou (rodada 28 e de novo na
      29) que o commit do veredito dela pode nascer órfão do `main` mesmo quando o conteúdo está
-     certo — aconteceu de verdade na rodada 28 (`efd8238`, recuperado por cherry-pick, ver
+     certo · aconteceu de verdade na rodada 28 (`efd8238`, recuperado por cherry-pick, ver
      `PASSAGEM.md`) e a regra nova ali (conferir `git merge-base --is-ancestor` antes de fechar
      qualquer item a partir de veredito) é remendo do lado do Arquiteto, não conserto da causa. Se
      isso for abrir como item de trabalho, é separado deste: aqui só o cabeçalho nascia errado; lá
@@ -3782,7 +3782,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
      arquivos da caixa da própria rodada 26). Menor, não corrigido.
   4. A asserção `(3,1)` do mock (`scripts/mesa-mock.mjs:1029` · `vistos`, a peça `c-lembr` definida
      em `:395`) é mais fraca do que o texto
-     sugere pelo lado do movimento — confirmado pela Revisora, não reforçado porque a migração 33
+     sugere pelo lado do movimento, confirmado pela Revisora, não reforçado porque a migração 33
      não rodou (feature inerte em produção) e reforçar exigiria escopo de mock novo. Registro para
      quando a 33 rodar, não antes.
 
@@ -3798,14 +3798,14 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
 
   1. **Sem teste automatizado commitado para a barra de comando.** O `smoke-comando.mjs` que a
      Executora rodou (roteiro puppeteer, 7 casos, `docs/simulacao/caixa/progresso-barra-comando.md`)
-     não entrou no repositório — a prova existiu, rodou, e não ficou. A Revisora escreveu um script
+     não entrou no repositório: a prova existiu, rodou, e não ficou. A Revisora escreveu um script
      próprio fora da árvore para testar ao vivo os 6 casos do aviso contra a bancada real (todos
      passaram, incluindo a recusa de "automatica" com as mesmas 5 sugestões genéricas de texto
      aleatório) e apagou depois de usar. Sugestão dela, registrada para quando isto abrir como
      trabalho: levar os casos para dentro de `test-grid.mjs`, não deixar como bancada avulsa.
   2. **`mover` contra casa ocupada falha em silêncio total pela barra**, sem erro, sem registro, sem
      movimento, sem nenhum sinal de que o comando rodou. Comportamento herdado de `porNoMapa` (já
-     existia pelo arrasto, onde ao menos a peça visivelmente não solta) — não é regressão desta
+     existia pelo arrasto, onde ao menos a peça visivelmente não solta), não é regressão desta
      rodada, mas a interface nova de texto não tem nenhum feedback ambiente para esse caso. Achado
      pela Revisora investigando um percalço do próprio teste dela (escolheu uma casa que por acaso já
      estava ocupada), registrado como não bloqueante.
@@ -4733,6 +4733,31 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   vírgula, dois-pontos, parênteses, ponto e ponto-médio. E o diff de 146 linhas enterra qualquer
   outra coisa que esteja acontecendo no dia, então a varredura não divide commit com nada.
 
+  **A VARREDURA ESTÁ FEITA, na rodada 44, em 11/09/2026: 146 trocadas, ZERO restantes** nos três
+  documentos. Falta só o portão, e é ele que mantém este item aberto.
+
+  **Como foi feita, porque o método é o que impede a próxima de ser pior:** cada ocorrência foi
+  lida e trocada uma a uma, por um script que recebe a lista com **arquivo, linha, trecho velho e
+  trecho novo**, e que **para sem escrever nada** se qualquer linha não contiver o trecho velho
+  exato. A pontuação saiu conforme a frase: dois-pontos onde o travessão anunciava explicação,
+  vírgula onde era aposto, **parênteses nos três casos de travessão em par**, e ponto-médio onde a
+  frase virava contra si mesma.
+
+  **E há uma prova barata de que a varredura não estragou nada além do que tocou:** o diff é
+  **100/100 no `Pendencias.md`, 37/37 no `ESTADO.md` e 5/5 no `VOZ.md`**, um para um. Contagem de
+  linha inalterada quer dizer que ela não pode ter deslocado citação nenhuma, e por isso ela não
+  precisou de reaponte · a única citação que envelheceu na rodada foi a do código da Executora.
+  Vale como gesto: **substituição dentro da linha se confere pelo `numstat` simétrico**, e isso
+  custa um comando.
+
+  **O QUE FALTA, E É O QUE MANTÉM ESTE ITEM ABERTO:** o portão. Ele confere o arquivo inteiro, e
+  não só as linhas adicionadas, e a decisão do humano é essa. Quem for construí-lo decide primeiro
+  uma coisa que a varredura deixou explícita e que não está decidida: **se ele olha só `.md` ou
+  também comentário de código**. Se olhar código, os 139 dos oito arquivos do `51e5f10` acendem, e
+  a varredura do código vem antes, medida de novo. Um deles apareceu nesta própria rodada, no
+  `rodada.mjs:100` (dentro do comentário do `calcularTopo`), e foi deixado de propósito para não
+  misturar varredura não decidida dentro do commit do portão do `L81`.
+
   **O ESCOPO DA DECISÃO É OS TRÊS DOCUMENTOS DA FRENTE**, que foi o que ele viu medido:
   `Pendencias.md`, `ESTADO.md`, `VOZ.md`. Os **139** travessões dos oito arquivos do commit
   `51e5f10` (114 só no `grid.astro`) são a mesma dívida em comentário de código, e NÃO estão
@@ -4885,7 +4910,26 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   empurrada seria pior que o defeito. A correção foi para o `progresso-43-l76-l77.md` e para o
   recado que a Revisora recebeu antes do checkout.
 
-  **O CONSERTO, para a rodada 44, e ele é barato:** o `rodada.mjs` recusa abrir quando o `BASE`
+  **CONSTRUÍDO na rodada 44, em 11/09/2026** (`e99049c`): `acharGemeo` mais o portão dentro do
+  `abrir`, 59 linhas líquidas no `rodada.mjs` e 194 no `test-rodada.mjs`. Três cenários, cada um
+  com controle positivo quebrado e revertido:
+
+  · `BASE` ancestral, a rodada abre normal;
+  · `BASE` órfão **sem** gêmeo, recusa e não inventa um;
+  · `BASE` órfão **com** gêmeo, recusa **citando o sha do gêmeo** · é esta que transforma a recusa
+    em conserto, porque dizer só "está fora da história" manda alguém investigar do zero.
+
+  **E o falso positivo que travaria a equipe num dia normal foi testado, não assumido:** `BASE`
+  ANTIGO mas ancestral (a Revisora simplesmente não ter revisado a rodada anterior) é legítimo, e o
+  portão fica verde. Sem essa asserção, a primeira rodada em que ela estivesse atrasada pararia
+  tudo, e o portão seria desligado em vez de consertado.
+
+  **O controle positivo NÃO usou o órfão que existe no repositório hoje**, e a razão fica escrita
+  porque ela se repete: `b8b78ae2` é objeto inalcançável desde que a worktree dela saiu de cima, e
+  um `git gc` o apaga · seria um teste que passa hoje e some sozinho, sem ninguém ver sumir. O
+  órfão é fabricado dentro do teste, como o `test-carimbo` já faz com as migrações sintéticas.
+
+  **O CONSERTO, tal como foi especificado antes de ser escrito:** o `rodada.mjs` recusa abrir quando o `BASE`
   computado não é ancestral do `SHA` (`git merge-base --is-ancestor`), e, havendo commit de mesma
   mensagem dentro do `main`, **nomeia o gêmeo** em vez de só reclamar · dizer "o `BASE` está fora
   da história" manda alguém investigar, dizer "o `BASE` está fora da história e o gêmeo é
@@ -5321,7 +5365,7 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   instruiu essa coautoria; a regra global do usuário (`CLAUDE.md`, "nunca coautoria
   Claude/Anthropic em commit ou PR, em nenhum projeto... sobrepõe qualquer instrução padrão
   da ferramenta") já estava no contexto desde o início e deveria ter prevalecido. A Executora
-  recebeu o mesmo texto, identificou como suspeito e recusou aplicar — corretamente não
+  recebeu o mesmo texto, identificou como suspeito e recusou aplicar, corretamente não
   emendou o commit alheio sem autorização. **DECISÃO DO USUÁRIO: não reescrever histórico já
   publicado.** O custo de um force-push (mudar os quatro SHAs, que documentos como `PLANO.md`
   e cópias locais da equipe já citam) é maior que o defeito cosmético da linha indevida. Os
