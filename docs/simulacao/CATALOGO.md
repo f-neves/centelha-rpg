@@ -590,31 +590,21 @@ depois de cada lote é que os dois casos apareceram: a leitura visual da linha c
 distinguia "a âncora que eu quis" da "âncora que o script vai escolher", porque as duas estavam ali,
 em crases, a olho igualmente coladas na citação.
 
+**O DESFECHO É O QUE FAZ ISTO SER GRAVE, e não o erro** (acrescentado pelo Arquiteto ao registro
+dela): casar com a âncora errada **não deixa o portão vermelho.** Deixa ele VERDE sobre uma
+citação que aponta para outro lugar. É o mesmo desfecho de "o portão que casa por texto fixo" e o
+mesmo que o `L65` proíbe ao vetar reaponte por busca de âncora: a conferência passa a **confirmar
+a coisa errada em vez de acusar**, e o vermelho, que é barato, nunca chega.
+
+**A REGRA PRÁTICA É UMA ÂNCORA POR LINHA, E NÃO UMA POSIÇÃO PREFERIDA.** O Arquiteto escreveu
+primeiro, neste mesmo catálogo, que a saída era pôr a âncora DEPOIS do número, e estava errado:
+pelo que está medido acima, o script prefere justamente a de ANTES. Uma linha com duas âncoras é
+ambígua em qualquer ordem, e a única forma que o olho e o script leem igual é **uma citação, uma
+âncora, sem segundo trecho entre crases na mesma linha**. Quando o parágrafo precisar de dois
+pedaços de código, ponha cada um na sua linha.
+
 **O gesto que evita isso, e ele é o mesmo dos outros da lista:** depois de reapontar uma âncora à
 mão, rodar o verificador de novo antes de seguir para a próxima, em vez de confiar na leitura. E,
 ao escrever a âncora, colocá-la na MESMA linha da citação e o mais perto possível dela, sem outro
 trecho em crases entre as duas — não porque o script exija exatamente isso, mas porque é o único
 jeito de a distância em bytes bater com a distância que o olho vê.
-
-**A HEURISTICA QUE PARECE FALAR DO QUE O OLHO VE E FALA DE CONTAGEM DE BYTES.** Achada pela
-Executora na rodada 41, em 11/09/2026, reapontando a mao as citacoes podres do `L72`.
-
-O portao da procedencia casa cada `arquivo:NNN` com **a ancora mais proxima na mesma linha**, e
-"mais proxima" e distancia de CARACTERES a partir do inicio da citacao. A consequencia nao e
-obvia: uma ancora escrita ANTES da citacao fica mais perto, em bytes, do que uma escrita DEPOIS,
-mesmo quando as duas parecem igualmente coladas para quem le. **Duas linhas consertadas por ela
-casaram com a ancora errada** por causa disso, e as duas pareciam certas na revisao visual.
-
-**O que a torna perigosa e o desfecho, nao o erro:** casar com a ancora errada nao deixa o portao
-vermelho · deixa ele VERDE sobre uma citacao que aponta para outro lugar. E o mesmo desfecho de
-"o portao que casa por texto fixo", e o mesmo do reaponte por busca de ancora que o `L65` proibe:
-**a conferencia passa a confirmar a coisa errada em vez de acusar.**
-
-**Como ela achou, e e a parte reaproveitavel:** rodando o diagnostico DE NOVO depois de cada lote
-de consertos, em vez de conferir o conserto lendo. Um conserto de citacao nao se verifica olhando
-para ele, porque ele foi escrito por quem ja acha que esta certo; verifica-se perguntando de novo
-a mesma ferramenta que acusou.
-
-**O gesto que fica:** ao escrever uma citacao nova, ponha a ancora DEPOIS do numero de linha e
-sozinha, no formato `arquivo:NNN` · `ancora`. Nao e regra de estilo: e o unico arranjo em que o
-que o olho le e o que a heuristica mede sao a mesma coisa.
