@@ -51,6 +51,11 @@ export interface CampoNumero {
   tipo: 'faces' | 'inteiro' | 'escolha';
   min?: number;
   max?: number;
+  /** Só para `tipo === 'inteiro'`: um conjunto FECHADO de valores válidos
+   * (ex.: `ABERTURAS`/`CURVATURAS` do arcano, rodada 38) — diferente de
+   * `min`/`max`, que são uma FAIXA contínua. Fora da lista é recusa, como
+   * qualquer outro caso deste parser. */
+  permitido?: number[];
   /** Só quando `tipo === 'escolha'`. */
   opcoes?: OpcaoEscolha[];
   /** De qual caixa este campo é (`ataque` = a folha do golpe, rodada 34;
@@ -65,6 +70,9 @@ export const CAMPOS: CampoNumero[] = (dados as { campos: CampoNumero[] }).campos
 interface TabelaNumeros {
   unidades: Record<string, number>;
   dezenas: Record<string, number>;
+  /** Cresce só até onde o dado real exige (rodada 38: `cento` entrou porque
+   * `ABERTURAS`/`CURVATURAS` chegam a 120/180) — nunca palavra solta. */
+  centenas?: Record<string, number>;
   juncao: string;
   negativo: string;
 }
@@ -93,8 +101,10 @@ export interface ComandoFalha {
   verboParcial?: Verbo;
 }
 
-/** Minúsculo e sem acento, para "Mover" e "móve" caírem na mesma palavra. */
-const normaliza = (s: string) => s.toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu, '').trim();
+/** Minúsculo e sem acento, para "Mover" e "móve" caírem na mesma palavra.
+ * Exportada (rodada 38): `grid.astro` usa a MESMA normalização para casar
+ * nome de Arte/Efeito contra o que a peça tem, sem duplicar a regra. */
+export const normaliza = (s: string) => s.toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu, '').trim();
 
 const REGEX_HEX = /^[a-z]{1,2}\d{1,3}$/;
 
@@ -147,16 +157,41 @@ export interface NumerosFalha {
 }
 
 const ehPalavraDeNumero = (t: string) =>
-  t in NUMEROS.unidades || t in NUMEROS.dezenas || t === NUMEROS.negativo;
+  t in NUMEROS.unidades || t in NUMEROS.dezenas || t in (NUMEROS.centenas || {}) || t === NUMEROS.negativo;
 
 /** Um número, a partir de `tokens[i]` (VOZ.md §10 decisão 6: `menos` opcional,
- * dezena com "e"+unidade opcional, ou só uma unidade). `null` se não há
- * número nenhum ali. */
+ * centena+"e"+dezena+"e"+unidade, dezena+"e"+unidade, ou só uma unidade —
+ * cada camada opcional, na maior que existir). `null` se não há número ali.
+ * A centena entrou na rodada 38, só até onde `ABERTURAS`/`CURVATURAS`
+ * (o arcano) exigem — "cento e oitenta" precisa das duas pontas mesmo
+ * "oitenta" sozinho não sendo grau válido de nada. */
 function lerInteiro(tokens: string[], i: number): { valor: number; proximo: number } | null {
   let j = i;
   let negativo = false;
   if (tokens[j] === NUMEROS.negativo) { negativo = true; j++; }
   if (j >= tokens.length) return null;
+
+  const centena = NUMEROS.centenas?.[tokens[j]];
+  if (centena != null) {
+    j++;
+    let total = centena;
+    if (tokens[j] === NUMEROS.juncao) {
+      const dezena = NUMEROS.dezenas[tokens[j + 1]];
+      if (dezena != null) {
+        total += dezena;
+        j += 2;
+        const unidade = tokens[j + 1] != null ? NUMEROS.unidades[tokens[j + 1]] : undefined;
+        if (tokens[j] === NUMEROS.juncao && unidade != null && unidade >= 1 && unidade <= 9) {
+          total += unidade;
+          j += 2;
+        }
+      } else {
+        const unidade = tokens[j + 1] != null ? NUMEROS.unidades[tokens[j + 1]] : undefined;
+        if (unidade != null && unidade >= 1 && unidade <= 9) { total += unidade; j += 2; }
+      }
+    }
+    return { valor: negativo ? -total : total, proximo: j };
+  }
 
   const dezena = NUMEROS.dezenas[tokens[j]];
   if (dezena != null) {
@@ -219,20 +254,42 @@ export function interpretarNumeros(texto: string, campos: CampoNumero[]): Numero
       }
       preenchimentos.push({ campoId: campo.id, destino: campo.destino, valor: faces.join(',') });
     } else if (campo.tipo === 'escolha') {
-      // Fechado: uma palavra de `opcoes`, nunca número (ex.: `ou-quando`,
-      // "agora" ou "fim"). Recusa igual ao resto — palavra fora da lista
-      // não vira palpite.
-      const token = tokens[i];
-      const opcao = token != null ? campo.opcoes?.find((o) => o.palavras.includes(token)) : undefined;
-      if (!opcao) {
-        return { ok: false, ouvido: texto, motivo: `"${campo.id}" precisa de uma opção (${
-          campo.opcoes?.map((o) => o.valor).join(' ou ') || '?'})` };
+      // Fechado: uma FRASE de `opcoes`, nunca número (ex.: `ou-quando`,
+      // "agora" ou "fim"; ou o nome de uma Arte, "arma elemental" — rodada
+      // 38, VOZ.md §10 decisão 11). Uma opção pode ter mais de uma palavra;
+      // quando duas opções competem (uma é prefixo da outra), CASA A MAIS
+      // LONGA, e se restar ambiguidade de verdade (duas opções diferentes
+      // do mesmo tamanho), RECUSA em vez de escolher (VOZ.md §4).
+      const opcoes = campo.opcoes || [];
+      const candidatas: { opcao: OpcaoEscolha; tokens: number }[] = [];
+      for (const o of opcoes) {
+        for (const frase of o.palavras) {
+          const partes = normaliza(frase).split(/\s+/).filter(Boolean);
+          if (partes.length && partes.every((parte, k) => tokens[i + k] === parte)) {
+            candidatas.push({ opcao: o, tokens: partes.length });
+          }
+        }
       }
-      i++;
-      preenchimentos.push({ campoId: campo.id, destino: campo.destino, valor: opcao.valor });
+      if (candidatas.length === 0) {
+        return { ok: false, ouvido: texto, motivo: `"${campo.id}" precisa de uma opção (${
+          opcoes.map((o) => o.valor).join(' ou ') || '?'})` };
+      }
+      const maxTokens = Math.max(...candidatas.map((c) => c.tokens));
+      const maisLongas = candidatas.filter((c) => c.tokens === maxTokens);
+      const valores = new Set(maisLongas.map((c) => c.opcao.valor));
+      if (valores.size > 1) {
+        return { ok: false, ouvido: texto, motivo: `"${campo.id}" ficou ambíguo entre ${
+          [...valores].join(' e ')}` };
+      }
+      i += maxTokens;
+      preenchimentos.push({ campoId: campo.id, destino: campo.destino, valor: maisLongas[0].opcao.valor });
     } else {
       const r = lerInteiro(tokens, i);
       if (!r) return { ok: false, ouvido: texto, motivo: `"${campo.id}" precisa de um número` };
+      if (campo.permitido && !campo.permitido.includes(r.valor)) {
+        return { ok: false, ouvido: texto, motivo: `"${r.valor}" não é um valor válido para "${
+          campo.id}" (${campo.permitido.join('/')})` };
+      }
       if (campo.min != null && r.valor < campo.min) {
         return { ok: false, ouvido: texto, motivo: `"${r.valor}" é menor que o mínimo de "${campo.id}"` };
       }
@@ -292,11 +349,13 @@ export function comecaComPalavraDeCampo(texto: string, campos: CampoNumero[]): b
  */
 export function gramaticaDeVoz(campos: CampoNumero[] = []): string {
   const numeros = [...Object.keys(NUMEROS.unidades), ...Object.keys(NUMEROS.dezenas),
-    NUMEROS.juncao, NUMEROS.negativo];
-  // As palavras de OPÇÃO (`escolha`, ex.: "agora"/"fim" de `ou-quando`) são
-  // igualmente parte da camada da caixa aberta — sem isto, a gramática teria
-  // a palavra do campo mas não o valor que ele aceita, e "quando fim" nunca
-  // seria reconhecido de verdade.
+    ...Object.keys(NUMEROS.centenas || {}), NUMEROS.juncao, NUMEROS.negativo];
+  // As palavras de OPÇÃO (`escolha`, ex.: "agora"/"fim" de `ou-quando`, ou o
+  // nome de uma Arte) são igualmente parte da camada da caixa aberta — sem
+  // isto, a gramática teria a palavra do campo mas não o valor que ele
+  // aceita, e "quando fim" (ou o nome da Arte) nunca seria reconhecido de
+  // verdade. Uma opção multi-palavra ("arma elemental") entra como UM item
+  // da gramática — o Vosk aceita frase como unidade, não só palavra solta.
   const opcoes = campos.flatMap((c) => c.opcoes?.flatMap((o) => o.palavras) ?? []);
   const palavras = [...VERBOS.flatMap((v) => v.palavras), ...numeros,
     ...campos.flatMap((c) => c.palavras), ...opcoes];

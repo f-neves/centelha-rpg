@@ -2418,7 +2418,7 @@ const SETAS = [
   } from '../../lib/hex';
   import { uiConfirmar, uiErro, uiFormulario, uiEscolher, contadorDeConsultas } from '../../lib/ui-dialog';
   import {
-    interpretarComando, gramaticaDeVoz, interpretarNumeros, comecaComPalavraDeCampo, CAMPOS,
+    interpretarComando, gramaticaDeVoz, interpretarNumeros, comecaComPalavraDeCampo, CAMPOS, normaliza,
   } from '../../lib/comando-barra';
   import type { CampoNumero, Preenchimento } from '../../lib/comando-barra';
   import { caminhosPadrao, carregarVoz, prepararReconhecedor, comecarAFalar as comecarAFalarVoz,
@@ -8765,17 +8765,141 @@ const SETAS = [
   };
 
   /**
+   * OS CAMPOS DA MAGIA, MONTADOS EM TEMPO REAL (VOZ.md §10 decisões 9/10/11,
+   * rodada 38) — a versão "dinâmica" da decisão 13. Arte, Efeito, molde e
+   * sólido mudam com o conjurador e com a escolha atual, então não há JSON
+   * fixo que os descreva: cada um sai do próprio diálogo, por
+   * `dlg.__vozConjurar` (montado em `artes-grid-ui.ts`, `abrirConjuracao`) e
+   * pela presença real de cada grupo de botão no DOM (`[data-molde]` só
+   * existe quando `podeModar` é verdade, e por aí vai — a MESMA pergunta que
+   * decide o clique decide a voz, sem duplicar a conta aqui).
+   *
+   * `destino` usa um prefixo `magia:` (nunca um id de elemento de verdade,
+   * exceto `ag-vel`, que É um `<input>` normal) — `aplicarNaMagia`, abaixo,
+   * lê esse prefixo para saber qual setter de `__vozConjurar` chamar.
+   */
+  function camposDaMagia(dlg: HTMLDialogElement): CampoNumero[] {
+    const api = (dlg as any).__vozConjurar;
+    if (!api) return [];
+    const campos: CampoNumero[] = [];
+    campos.push({
+      id: 'arte', tela: 'magia', tipo: 'escolha', palavras: ['arte'], destino: 'magia:arte',
+      opcoes: api.artes().map((a: any) => ({ valor: a.id, palavras: [normaliza(a.nome)] })),
+    });
+    campos.push({
+      id: 'efeito', tela: 'magia', tipo: 'escolha', palavras: ['efeito'], destino: 'magia:efeito',
+      opcoes: [
+        { valor: '', palavras: ['improviso'] },
+        ...api.efeitos().map((e: any) => ({ valor: e.id, palavras: [normaliza(e.nome)] })),
+      ],
+    });
+    // Os parâmetros (Alcance/Dano/Duração/Área ou Volume/Alvos/Comprimento):
+    // a palavra falada É o nome do parâmetro, normalizado — "dano" aqui e
+    // "dano" na folha do golpe não colidem, porque as duas telas nunca
+    // ficam ativas ao mesmo tempo (`camposAtivos()` devolve uma só).
+    for (const nome of api.pars() as string[]) {
+      campos.push({
+        id: 'par:' + nome, tela: 'magia', tipo: 'inteiro', min: 0,
+        palavras: [normaliza(nome)], destino: 'magia:par:' + nome,
+      });
+    }
+    if (dlg.querySelector('[data-molde]')) {
+      campos.push({
+        id: 'molde', tela: 'magia', tipo: 'escolha', palavras: ['molde'], destino: 'magia:molde',
+        opcoes: api.moldes().map((m: any) => ({ valor: m.id, palavras: [normaliza(m.nome)] })),
+      });
+    }
+    if (dlg.querySelector('[data-solido]')) {
+      campos.push({
+        id: 'solido', tela: 'magia', tipo: 'escolha', palavras: ['solido'], destino: 'magia:solido',
+        opcoes: api.solidos().map((s: any) => ({ valor: s.id, palavras: [normaliza(s.nome)] })),
+      });
+    }
+    if (dlg.querySelector('[data-abrir]')) {
+      campos.push({
+        id: 'abrir', tela: 'magia', tipo: 'escolha', palavras: ['abrir'], destino: 'magia:abrir',
+        opcoes: api.abrirCobra().map((o: any) => ({ valor: o.id, palavras: [normaliza(o.nome)] })),
+      });
+    }
+    // Abertura (o ÂNGULO do leque/manifestação) e curvatura são as duas que
+    // precisaram da centena nova em `comando-barra.json` (90/120/180).
+    if (dlg.querySelector('[data-ang]')) {
+      campos.push({
+        id: 'abertura', tela: 'magia', tipo: 'inteiro', palavras: ['abertura'], destino: 'magia:angulo',
+        permitido: api.aberturas(),
+      });
+    }
+    if (dlg.querySelector('[data-curva]')) {
+      campos.push({
+        id: 'curvatura', tela: 'magia', tipo: 'inteiro', palavras: ['curvatura'], destino: 'magia:curvatura',
+        permitido: api.curvaturas(),
+      });
+    }
+    if (dlg.querySelector('[data-fatias]')) {
+      // O teto de fatias É o que a tela desenhou agora (decisão 13 ao pé da
+      // letra): lido dos próprios botões, não de uma conta refeita aqui.
+      const permitido = [...dlg.querySelectorAll<HTMLElement>('[data-fatias]')]
+        .map((b) => Number(b.dataset.fatias)).filter((n) => Number.isFinite(n));
+      campos.push({
+        id: 'fatias', tela: 'magia', tipo: 'inteiro', palavras: ['fatias'], destino: 'magia:fatias', permitido,
+      });
+    }
+    // A Velocidade já é um `<input id="ag-vel">` de verdade (como qualquer
+    // campo das rodadas 34/35) — `destino` aponta pro elemento real, sem
+    // passar por `__vozConjurar` nem pelo prefixo `magia:`.
+    if (dlg.querySelector('#ag-vel')) {
+      campos.push({
+        id: 'velocidade', tela: 'magia', tipo: 'inteiro', min: 0, max: 60,
+        palavras: ['velocidade'], destino: 'ag-vel',
+      });
+    }
+    return campos;
+  }
+
+  /** Aplica os preenchimentos da magia, um a um — `ag-vel` pelo caminho
+   * normal (é um `<input>` de verdade); o resto chamando o setter certo de
+   * `dlg.__vozConjurar`, escolhido pelo prefixo do `destino`
+   * (`magia:arte`, `magia:par:Alcance`...). Devolve uma frase de erro, ou
+   * `null` quando tudo aplicou. */
+  function aplicarNaMagia(dlg: HTMLDialogElement, preenchimentos: Preenchimento[]): string | null {
+    const api = (dlg as any).__vozConjurar;
+    if (!api) return 'A caixa de conjurar não está mais pronta para a voz.';
+    for (const p of preenchimentos) {
+      if (!p.destino.startsWith('magia:')) { aplicarPreenchimentos([p]); continue; }
+      const partes = p.destino.split(':');
+      const alvo = partes[1];
+      let ok = true;
+      if (alvo === 'arte') ok = api.trocarArte(p.valor);
+      else if (alvo === 'efeito') ok = api.trocarEfeito(p.valor || null);
+      else if (alvo === 'molde') ok = api.setMolde(p.valor);
+      else if (alvo === 'solido') ok = api.setSolido(p.valor);
+      else if (alvo === 'abrir') ok = api.setAbrir(p.valor);
+      else if (alvo === 'angulo') ok = api.setAngulo(Number(p.valor));
+      else if (alvo === 'curvatura') ok = api.setCurvatura(Number(p.valor));
+      else if (alvo === 'fatias') ok = api.setFatias(Number(p.valor));
+      else if (alvo === 'par') ok = api.setPar(partes.slice(2).join(':'), Number(p.valor));
+      if (!ok) return `Não consegui aplicar "${p.campoId}" agora.`;
+    }
+    return null;
+  }
+
+  /**
    * Os campos que estão de fato abertos AGORA (decisão 13: nunca uma lista
    * fixa escrita à mão), de UMA tela por vez — nunca mistura a folha do
-   * golpe com "outra coisa". Quatro situações valem, e só elas:
+   * golpe com "outra coisa" nem com a magia. Cinco situações valem, e só
+   * elas:
    *
    * - a folha do golpe está aberta (`#alvo-dlg[open]`): os campos `ataque`
    *   que ELA de fato desenhou;
    * - "outra coisa" está aberta (`#outra-dlg[open]`): os campos `outra`
    *   visíveis nela (rodada 35);
-   * - nenhuma das duas, mas há um golpe vencendo na faixa (decisão 12): os
+   * - a caixa de conjurar está aberta (`dialog.ui-dlg-conj[open]`): os
+   *   campos da magia, montados em tempo real (rodada 38) — ela NUNCA abre
+   *   sozinha por voz (decisão 9, "o dedo aperta Conjurar"), então não há
+   *   equivalente ao golpe vencido/peça-da-vez aqui;
+   * - nenhuma das três, mas há um golpe vencendo na faixa (decisão 12): os
    *   campos `ataque` inteiros — ainda não há tela para conferir;
-   * - nenhuma das duas, mas há peça para abrir "outra coisa" (decisão 4,
+   * - nenhuma das três, mas há peça para abrir "outra coisa" (decisão 4,
    *   rodada 35): os campos `outra` inteiros, pelo mesmo motivo.
    *
    * Vazio quando nada disso vale: um número dito não tem onde cair, e a
@@ -8788,6 +8912,8 @@ const SETAS = [
     if (dlgAtaque?.open) return CAMPOS.filter((c) => c.tela === 'ataque' && campoVisivel(c));
     const dlgOutra = document.getElementById('outra-dlg') as HTMLDialogElement | null;
     if (dlgOutra?.open) return CAMPOS.filter((c) => c.tela === 'outra' && campoVisivel(c));
+    const dlgMagia = document.querySelector('dialog.ui-dlg-conj[open]') as HTMLDialogElement | null;
+    if (dlgMagia) return camposDaMagia(dlgMagia);
     if (golpeVencidoNaFaixa()) return CAMPOS.filter((c) => c.tela === 'ataque');
     if (podeAbrirOutra()) return CAMPOS.filter((c) => c.tela === 'outra');
     return [];
@@ -8832,6 +8958,16 @@ const SETAS = [
    * preenchimentos são — nunca misto, `camposAtivos()` já garante isso. */
   async function aplicarNumeros(campos: CampoNumero[], preenchimentos: Preenchimento[]) {
     const tela = campos[0]?.tela;
+    if (tela === 'magia') {
+      // A caixa de conjurar NUNCA abre sozinha por voz (decisão 9, "o dedo
+      // aperta Conjurar"): se `campos` veio da magia, é porque ela já
+      // estava aberta quando `camposAtivos()` rodou — só falta escrever.
+      const dlg = document.querySelector('dialog.ui-dlg-conj[open]') as HTMLDialogElement | null;
+      if (!dlg) { uiErro('A caixa de conjurar não está aberta.'); return; }
+      const erro = aplicarNaMagia(dlg, preenchimentos);
+      if (erro) uiErro(erro);
+      return;
+    }
     const dlgId = tela === 'outra' ? 'outra-dlg' : 'alvo-dlg';
     const dlg = document.getElementById(dlgId) as HTMLDialogElement | null;
     if (!dlg?.open) {
@@ -8880,11 +9016,19 @@ const SETAS = [
    * tinha contexto quando foi ouvida (e o contexto fechou antes do
    * resultado chegar) ou por injeção de teste (`__RECEBER_FALA`). As duas
    * camadas continuam do tamanho que a decisão 2 pede.
+   *
+   * OS CAMPOS DA MAGIA ENTRAM NA CHECAGEM TAMBÉM (rodada 38), e não só
+   * `CAMPOS`: como eles são montados em tempo real (nunca estão no JSON
+   * estático), "molde" ou o nome de uma Arte só seriam reconhecidos como
+   * domínio de campo quando a caixa de conjurar já estivesse aberta — sem
+   * isto, cairiam no parser de verbo pelo mesmo motivo do achado da
+   * rodada 34 (D34b).
    */
   async function receberFala(texto: string) {
-    if (comecaComPalavraDeCampo(texto, CAMPOS)) {
+    const campos = camposAtivos();
+    const paraRotear = campos.some((c) => c.tela === 'magia') ? [...CAMPOS, ...campos] : CAMPOS;
+    if (comecaComPalavraDeCampo(texto, paraRotear)) {
       vozStatus(STATUS_PADRAO_VOZ);
-      const campos = camposAtivos();
       if (campos.length === 0) {
         uiErro(`Não há caixa nem peça esperando para receber "${texto}" (por voz).`);
         return;
@@ -10300,6 +10444,10 @@ let roladoDano = '';
       const e = document.getElementById(id) as HTMLInputElement | null;
       if (e) receberDitado(e, texto);
     };
+    // Abre a caixa de conjurar pelo mesmo caminho do menu (`usarArte`), sem
+    // precisar simular o menu de contexto (posição, hover, "arte" traduzido
+    // em coordenada de clique) só para chegar num `<dialog>` aberto.
+    (window as any).__ABRIR_CONJURAR = (cid: string) => { void usarArte(cid); };
     // O texto que o status mostraria SE a tecla fosse segurada agora — a
     // MESMA `textoOuvindo` que `segurarVoz` chama, sem precisar de modelo
     // carregado nem microfone de verdade (achado da revisão desta rodada:

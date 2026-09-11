@@ -387,6 +387,120 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
     }
     semear();
 
+    // ============================================ os setters (VOZ.md §10, rodada 38)
+    //
+    // Decisão 10: "abra um caminho que ESCREVA o valor no plano e repinte, em
+    // vez de simular N cliques". Estas funções são exatamente isso — a mesma
+    // lógica que já vivia solta dentro de cada `onclick` (mais abaixo, em
+    // `pintar()`), só que agora nomeada e no escopo de fora, para dois lados
+    // poderem chamá-la: o clique de sempre, e a voz (via
+    // `dlg.__vozConjurar`, montado logo depois de `uiPainel` abrir).
+    //
+    // Nenhum setter pré-valida contra "isto é visível agora?" — quem decide
+    // isso é o MESMO código que já decidia para o clique (`podeFatiar`,
+    // `podeCurvar`... dentro de `pintar()`), e o corretor que já existia
+    // (`if (fatias > maxFatias) { fatias = maxFatias; return pintar(); }`)
+    // continua sendo a última palavra. Um setter chamado fora de hora ajusta
+    // sozinho no próximo `pintar()`, do jeito que já ajustava para o clique.
+    function trocarArte(id: string): boolean {
+      const d = disponiveis.find((x) => x.arte.id === id);
+      if (!d) return false;
+      arteSel = d.arte; nivelArte = d.nivel;
+      fatias = Math.max(1, Math.min(fatias, Math.max(1, nivelArte)));
+      if (efeitoSel && !efeitosDisponiveis(arteSel.id, nivelArte, ctx.comprados).some((e) => e.id === efeitoSel!.id)) {
+        efeitoSel = null;
+      }
+      filtro = '';
+      semear(); pintar();
+      return true;
+    }
+    function trocarEfeito(id: string | null): boolean {
+      if (id) {
+        const lista = efeitosDisponiveis(arteSel.id, nivelArte, ctx.comprados);
+        if (!lista.some((e) => e.id === id)) return false;
+      }
+      efeitoSel = id ? EFEITO[id] : null;
+      semear(); pintar();
+      return true;
+    }
+    function ajustarPar(nome: string, delta: number) {
+      const pars = efeitoSel ? parametrosAjustaveis(efeitoSel) : parametrosDoImproviso();
+      const p = pars.find((x) => x.nome === nome);
+      const e2 = p ? escalaDe(p) : null;
+      const max = e2 ? e2.length : 6;
+      escolhas[nome] = Math.max(0, Math.min(max, (escolhas[nome] ?? 0) + delta));
+      pintar();
+    }
+    function setPar(nome: string, valor: number): boolean {
+      const pars = efeitoSel ? parametrosAjustaveis(efeitoSel) : parametrosDoImproviso();
+      const p = pars.find((x) => x.nome === nome);
+      if (!p) return false; // este parâmetro não existe no Efeito/Arte de agora
+      const e2 = escalaDe(p);
+      const max = e2 ? e2.length : 6;
+      escolhas[nome] = Math.max(0, Math.min(max, valor));
+      pintar();
+      return true;
+    }
+    function setMolde(id: string): boolean {
+      if (!MOLDE[id]) return false;
+      molde = id; pintar();
+      return true;
+    }
+    function setSolido(id: string): boolean {
+      if (!SOLIDO[id]) return false;
+      solido = id; pintar();
+      return true;
+    }
+    function setFatias(n: number): boolean {
+      if (!Number.isFinite(n) || n < 1) return false;
+      fatias = n; pintar();
+      return true;
+    }
+    function setAbrir(id: ModoAbrir): boolean {
+      if (!ABRIR_COBRA.some((o) => o.id === id)) return false;
+      abrirCobra = id; pintar();
+      return true;
+    }
+    function setAngulo(graus: number): boolean {
+      if (!ABERTURAS.includes(graus)) return false;
+      angulo = graus; pintar();
+      return true;
+    }
+    function setCurvatura(graus: number): boolean {
+      if (!CURVATURAS.includes(graus)) return false;
+      curvatura = graus; pintar();
+      return true;
+    }
+
+    /**
+     * A API que a voz usa (`grid.astro`), pendurada no PRÓPRIO `<dialog>` —
+     * não em `window`, para nunca vazar entre duas caixas de conjurar abertas
+     * em sequência, e para sumir sozinha quando o diálogo fecha (o elemento
+     * morre, ninguém precisa limpar nada à mão).
+     *
+     * Só setters e catálogos ESTÁTICOS aqui (Arte/Efeito daquele conjurador,
+     * e os moldes/sólidos/aberturas/curvaturas/formas-de-abrir, que não mudam
+     * com a escolha). QUEM ESTÁ VISÍVEL AGORA é responsabilidade de quem
+     * chama: `pintar()` só desenha o botão `[data-molde]`/`[data-curva]`/etc.
+     * quando aquele controle faz sentido na combinação atual (`podeModar`,
+     * `podeCurvar`...), então a MESMA pergunta que decide o clique decide a
+     * voz — checar se o botão existe no DOM agora, e não duplicar a conta.
+     */
+    (corpo.closest('dialog') as any).__vozConjurar = {
+      artes: () => disponiveis.map(({ arte }) => ({ id: arte.id, nome: arte.nome })),
+      efeitos: () => efeitosDisponiveis(arteSel.id, nivelArte, ctx.comprados).map((e) => ({ id: e.id, nome: e.nome })),
+      // Os parâmetros AJUSTÁVEIS do Efeito/improviso de agora (Alcance,
+      // Dano, Duração...) — os `fixo` (ex.: o Alcance de "Arma Elemental")
+      // não entram, porque não há botão nem valor para a voz mudar.
+      pars: () => (efeitoSel ? parametrosAjustaveis(efeitoSel) : parametrosDoImproviso()).map((p) => p.nome),
+      moldes: () => MOLDES_DE_CHAO.map((m) => ({ id: m.id, nome: m.nome })),
+      solidos: () => SOLIDOS.map((s) => ({ id: s.id, nome: s.nome })),
+      abrirCobra: () => ABRIR_COBRA.map((o) => ({ id: o.id, nome: o.nome })),
+      aberturas: () => ABERTURAS.slice(),
+      curvaturas: () => CURVATURAS.slice(),
+      trocarArte, trocarEfeito, ajustarPar, setPar, setMolde, setSolido, setFatias, setAbrir, setAngulo, setCurvatura,
+    };
+
     function planoAtual(): Plano {
       const pars = efeitoSel ? parametrosAjustaveis(efeitoSel) : parametrosDoImproviso();
       const acha = (n: string) => pars.find((p) => p.nome === n);
@@ -810,22 +924,6 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
         (corpo.closest('dialog') as HTMLElement | null)?.focus({ preventScroll: true });
       }
 
-      const trocarArte = (id: string) => {
-        const d = disponiveis.find((x) => x.arte.id === id);
-        if (!d) return;
-        arteSel = d.arte; nivelArte = d.nivel;
-        // As fatias nunca passam do nível da Arte: descer de Arte tem de encolher
-        // o leque junto, senão um improviso de grau 2 sairia aberto em seis.
-        fatias = Math.max(1, Math.min(fatias, Math.max(1, nivelArte)));
-        // O Efeito escolhido pode não caber na Arte nova: some em vez de mentir.
-        if (efeitoSel && !efeitosDisponiveis(arteSel.id, nivelArte, ctx.comprados).some((e) => e.id === efeitoSel!.id)) {
-          efeitoSel = null;
-        }
-        // Trocar de Arte troca a lista inteira: um filtro escrito para a lista
-        // velha esconderia a nova sem dizer por quê.
-        filtro = '';
-        semear(); pintar();
-      };
       corpo.querySelectorAll<HTMLElement>('[data-arte]').forEach(
         (b) => b.onclick = () => trocarArte(b.dataset.arte!));
       // O FILTRO NÃO REPINTA A CAIXA: esconde os cartões que sobraram de fora.
@@ -842,10 +940,7 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       aplicarFiltro();
 
       corpo.querySelectorAll<HTMLElement>('[data-ef]').forEach((b) => {
-        b.onclick = () => {
-          efeitoSel = b.dataset.ef ? EFEITO[b.dataset.ef] : null;
-          semear(); pintar();
-        };
+        b.onclick = () => trocarEfeito(b.dataset.ef || null);
         // O balão abre no ponteiro e também no teclado: quem navega por Tab
         // precisa da mesma informação que quem passa o mouse. No clique não,
         // porque aí ele ficaria aberto por cima do tabuleiro depois da escolha,
@@ -855,20 +950,10 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
         b.onpointerleave = fecharBalao;
         b.onblur = fecharBalao;
       });
-      corpo.querySelectorAll<HTMLElement>('[data-par]').forEach((b) => b.onclick = () => {
-        const nome = b.dataset.par!;
-        const p = pars.find((x) => x.nome === nome)!;
-        const e2 = escalaDe(p);
-        const max = e2 ? e2.length : 6;
-        escolhas[nome] = Math.max(0, Math.min(max, (escolhas[nome] ?? 0) + Number(b.dataset.d)));
-        pintar();
-      });
-      corpo.querySelectorAll<HTMLElement>('[data-molde]').forEach((b) => b.onclick = () => {
-        molde = b.dataset.molde!; pintar();
-      });
-      corpo.querySelectorAll<HTMLElement>('[data-solido]').forEach((b) => b.onclick = () => {
-        solido = b.dataset.solido!; pintar();
-      });
+      corpo.querySelectorAll<HTMLElement>('[data-par]').forEach((b) => b.onclick = () =>
+        ajustarPar(b.dataset.par!, Number(b.dataset.d)));
+      corpo.querySelectorAll<HTMLElement>('[data-molde]').forEach((b) => b.onclick = () => setMolde(b.dataset.molde!));
+      corpo.querySelectorAll<HTMLElement>('[data-solido]').forEach((b) => b.onclick = () => setSolido(b.dataset.solido!));
       corpo.querySelectorAll<HTMLElement>('[data-saida]').forEach((b) => b.onclick = () => {
         saida = Number(b.dataset.saida); pintar();
       });
@@ -904,18 +989,10 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
         // e achar de novo o três-quartos na mão é chato.
         vista.ondblclick = () => { cam = { ...CAMERA_ISO }; repintar(); };
       }
-      corpo.querySelectorAll<HTMLElement>('[data-fatias]').forEach((b) => b.onclick = () => {
-        fatias = Number(b.dataset.fatias); pintar();
-      });
-      corpo.querySelectorAll<HTMLElement>('[data-abrir]').forEach((b) => b.onclick = () => {
-        abrirCobra = b.dataset.abrir as ModoAbrir; pintar();
-      });
-      corpo.querySelectorAll<HTMLElement>('[data-ang]').forEach((b) => b.onclick = () => {
-        angulo = Number(b.dataset.ang); pintar();
-      });
-      corpo.querySelectorAll<HTMLElement>('[data-curva]').forEach((b) => b.onclick = () => {
-        curvatura = Number(b.dataset.curva); pintar();
-      });
+      corpo.querySelectorAll<HTMLElement>('[data-fatias]').forEach((b) => b.onclick = () => setFatias(Number(b.dataset.fatias)));
+      corpo.querySelectorAll<HTMLElement>('[data-abrir]').forEach((b) => b.onclick = () => setAbrir(b.dataset.abrir as ModoAbrir));
+      corpo.querySelectorAll<HTMLElement>('[data-ang]').forEach((b) => b.onclick = () => setAngulo(Number(b.dataset.ang)));
+      corpo.querySelectorAll<HTMLElement>('[data-curva]').forEach((b) => b.onclick = () => setCurvatura(Number(b.dataset.curva)));
       const inpVel = corpo.querySelector('#ag-vel') as HTMLInputElement | null;
       if (inpVel) {
         // Sem repintar: o número já está na tela, e refazer o corpo no meio da

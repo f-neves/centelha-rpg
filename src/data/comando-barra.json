@@ -42,7 +42,7 @@
       "exemplo": "esperar"
     }
   ],
-  "notaNumeros": "VOZ.md §10 decisao 6 e §9.5: DUAS listas, nao uma. As faces de d6 (campos tipo 'faces') usam so um..seis, cada palavra desta MESMA tabela validada contra o intervalo 1-6 - nao existe tabela separada. Os campos tipo 'inteiro' usam a faixa inteira (0 a 60, com 'menos' para negativo e 'e' para compor dezena+unidade, ex. 'vinte e tres').",
+  "notaNumeros": "VOZ.md §10 decisao 6 e §9.5: DUAS listas, nao uma. As faces de d6 (campos tipo 'faces') usam so um..seis, cada palavra desta MESMA tabela validada contra o intervalo 1-6 - nao existe tabela separada. Os campos tipo 'inteiro' usam a faixa inteira (com 'menos' para negativo e 'e' para compor dezena+unidade ou centena+dezena+unidade). O teto cresce so ate onde o dado exige (decisao do Arquiteto, rodada 38): oitenta/noventa/cento entraram porque ABERTURAS/CURVATURAS (artes-grid.ts) tem 90/120/180, e 'cento e oitenta'=180 precisa das duas pontas. Nao adicionar dezena/centena nenhuma que nenhum dado real peça.",
   "numeros": {
     "unidades": {
       "zero": 0, "um": 1, "dois": 2, "tres": 3, "quatro": 4, "cinco": 5, "seis": 6,
@@ -50,11 +50,15 @@
       "catorze": 14, "quatorze": 14, "quinze": 15, "dezesseis": 16, "dezessete": 17,
       "dezoito": 18, "dezenove": 19
     },
-    "dezenas": { "vinte": 20, "trinta": 30, "quarenta": 40, "cinquenta": 50, "sessenta": 60 },
+    "dezenas": {
+      "vinte": 20, "trinta": 30, "quarenta": 40, "cinquenta": 50, "sessenta": 60,
+      "oitenta": 80, "noventa": 90
+    },
+    "centenas": { "cento": 100 },
     "juncao": "e",
     "negativo": "menos"
   },
-  "notaCampos": "VOZ.md §10 decisao 13: este catalogo tem TODOS os campos conhecidos, mas a gramatica de uma caixa aberta usa so os que aquela tela de fato desenhou (grid.astro confere no DOM e publica a lista - nenhuma lista fixa fica escrita a mao fora daqui). 'tela' marca de qual caixa cada campo e (ataque = a folha do golpe, rodada 34; outra = a tela 'outra coisa', rodada 35); magia fica para depois. Um campo 'escolha' e fechado (um valor de uma lista curta, por exemplo agora/fim), diferente de 'faces'/'inteiro' que sao numero.",
+  "notaCampos": "VOZ.md §10 decisao 13: este catalogo tem TODOS os campos ESTATICOS conhecidos, mas a gramatica de uma caixa aberta usa so os que aquela tela de fato desenhou (grid.astro confere no DOM e publica a lista - nenhuma lista fixa fica escrita a mao fora daqui). 'tela' marca de qual caixa cada campo e (ataque = a folha do golpe, rodada 34; outra = a tela 'outra coisa', rodada 35). A tela de magia (rodada 38) NAO tem entrada aqui: Arte/Efeito/molde/solido/parametros mudam com o conjurador e com a Arte escolhida, entao sao montados em tempo real por grid.astro (camposDaMagia), lendo o catalogo do proprio dialogo (window.__vozConjurar) - o MESMO principio da decisao 13, so que a fonte e o dialogo em vez do JSON. Um campo 'escolha' e fechado (um valor de uma lista curta, por exemplo agora/fim ou o nome de uma Arte), e pode casar MAIS DE UM TOKEN (ex. 'arma elemental') - sempre a opcao MAIS LONGA que bater, recusa se ficar ambiguo (VOZ.md §4).",
   "campos": [
     { "id": "acerto", "palavras": ["acerto"], "destino": "al-total", "tipo": "faces", "tela": "ataque" },
     { "id": "dano", "palavras": ["dano"], "destino": "al-dn", "tipo": "faces", "tela": "ataque" },

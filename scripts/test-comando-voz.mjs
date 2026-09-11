@@ -1,6 +1,6 @@
-// test-comando-voz.mjs · o parser de números do caminho quente e de "outra
-// coisa", provado sem navegador e sem microfone (VOZ.md §10, rodadas 34 e
-// 35).
+// test-comando-voz.mjs · o parser de números do caminho quente, de "outra
+// coisa" e da magia, provado sem navegador e sem microfone (VOZ.md §10,
+// rodadas 34, 35 e 38).
 //
 // O QUE ESTA BANCADA PRENDE, e cada caso é um jeito de a fala virar campo
 // errado ou palpite:
@@ -12,7 +12,13 @@
 //     `inteiro` já consumiu) é RECUSA, nunca palpite;
 //   · toda recusa devolve a frase ouvida, para a mesa digitar por cima;
 //   · um campo `escolha` (rodada 35, `ou-quando`) casa só contra as
-//     palavras de `opcoes`, nunca número, e recusa fora delas.
+//     palavras de `opcoes`, nunca número, e recusa fora delas;
+//   · uma opção `escolha` de MAIS DE UMA PALAVRA (rodada 38, nome de Arte
+//     ou Efeito) casa a frase inteira, sempre a MAIS LONGA quando duas
+//     competem, e RECUSA em vez de escolher se ficar ambíguo de verdade;
+//   · a centena nova (`cento`) compõe com dezena e unidade, só até onde o
+//     arcano exige (ABERTURAS/CURVATURAS), e um campo `inteiro` com
+//     `permitido` recusa qualquer valor fora da lista fechada.
 //
 // NÃO TESTA voz de verdade: `interpretarNumeros` é puro, recebe texto já
 // reconhecido. Taxa de reconhecimento é bancada do humano (VOZ.md §10.4).
@@ -138,6 +144,69 @@ ok(r.ok === false, `"depois" não é "agora" nem "fim": recusa, nunca palpite ($
 const soAtaque = CAMPOS.filter((c) => c.tela === 'ataque');
 r = M.interpretarNumeros('ticks cinco', soAtaque);
 ok(r.ok === false, '"ticks" fora do catálogo filtrado (só ataque) recusa, como se a palavra não existisse');
+
+console.log('\n· a magia (rodada 38): centena composta, `permitido` fechado, e escolha de mais de uma palavra');
+
+// ---- 12: a centena nova compõe com dezena e unidade ----
+const curvatura = {
+  id: 'curvatura', palavras: ['curvatura'], destino: 'magia:curvatura', tipo: 'inteiro',
+  permitido: [0, 30, 45, 60, 90, 120, 180], tela: 'magia',
+};
+r = M.interpretarNumeros('curvatura cento e oitenta', [curvatura]);
+ok(r.ok === true && r.preenchimentos[0].valor === 180,
+  `"cento e oitenta" compõe 180 (${r.ok ? r.preenchimentos[0].valor : r.motivo})`);
+
+r = M.interpretarNumeros('curvatura noventa', [curvatura]);
+ok(r.ok === true && r.preenchimentos[0].valor === 90,
+  `"noventa" (dezena nova) compõe 90 (${r.ok ? r.preenchimentos[0].valor : r.motivo})`);
+
+// ---- 13: `permitido` recusa fora da lista fechada, mesmo um número válido
+// em qualquer outro campo ----
+r = M.interpretarNumeros('curvatura cinquenta', [curvatura]);
+ok(r.ok === false, '"cinquenta" não está em `permitido`: recusa, mesmo sendo um número válido em geral');
+
+r = M.interpretarNumeros('curvatura cem', [curvatura]);
+ok(r.ok === false, '"cem" sozinho não compõe (só "cento" entrou, cresceu até onde o dado exige): recusa');
+
+// ---- 14: escolha de MAIS DE UMA PALAVRA, casando o catálogo de verdade ----
+const efeito = {
+  id: 'efeito', palavras: ['efeito'], destino: 'magia:efeito', tipo: 'escolha', tela: 'magia',
+  opcoes: [
+    { valor: 'arma-elemental', palavras: ['Arma Elemental'] },
+    { valor: 'arma-flamejante', palavras: ['Arma Flamejante'] },
+  ],
+};
+r = M.interpretarNumeros('efeito arma elemental', [efeito]);
+ok(r.ok === true && r.preenchimentos[0].valor === 'arma-elemental',
+  `"arma elemental" casa a opção de duas palavras (${r.ok ? r.preenchimentos[0].valor : r.motivo})`);
+
+// ---- 15: entre duas opções em que uma começa como a outra, casa A MAIS
+// LONGA — nunca a mais curta por vir primeiro na lista ----
+const arte = {
+  id: 'arte', palavras: ['arte'], destino: 'magia:arte', tipo: 'escolha', tela: 'magia',
+  opcoes: [
+    { valor: 'arma', palavras: ['arma'] },
+    { valor: 'arma-elemental', palavras: ['arma elemental'] },
+  ],
+};
+r = M.interpretarNumeros('arte arma elemental', [arte]);
+ok(r.ok === true && r.preenchimentos[0].valor === 'arma-elemental',
+  `"arma elemental" casa a opção LONGA, não "arma" sozinha por vir primeiro (${r.ok ? r.preenchimentos[0].valor : r.motivo})`);
+r = M.interpretarNumeros('arte arma', [arte]);
+ok(r.ok === true && r.preenchimentos[0].valor === 'arma',
+  `mas "arte arma" sozinho (sem "elemental" depois) casa a opção curta (${r.ok ? r.preenchimentos[0].valor : r.motivo})`);
+
+// ---- 16: ambiguidade DE VERDADE (duas opções, mesma frase, valores
+// diferentes) é RECUSA, nunca escolha por ordem ou por acaso ----
+const ambiguo = {
+  id: 'y', palavras: ['y'], destino: 'magia:y', tipo: 'escolha', tela: 'magia',
+  opcoes: [
+    { valor: 'a', palavras: ['flecha rara'] },
+    { valor: 'b', palavras: ['flecha rara'] }, // mesma frase, valor DIFERENTE — ambiguidade de propósito
+  ],
+};
+r = M.interpretarNumeros('y flecha rara', [ambiguo]);
+ok(r.ok === false, 'duas opções com a MESMA frase e valores diferentes: ambíguo de verdade, recusa (não escolhe a primeira)');
 
 console.log('\n· comecaComPalavraDeCampo: decide o roteamento sem duplicar a gramática');
 ok(M.comecaComPalavraDeCampo('acerto quatro', CAMPOS) === true, '"acerto..." começa no domínio dos campos');

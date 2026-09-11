@@ -2937,6 +2937,79 @@ async function cenaVozConsentimento(br, url) {
 }
 
 /**
+ * A VOZ NA CAIXA DE CONJURAR (VOZ.md §10 decisões 9/10/11, rodada 38).
+ *
+ * NÃO TESTA microfone nem reconhecimento — como sempre nesta frente; injeta
+ * texto já reconhecido em `window.__RECEBER_FALA`. NÃO abre a caixa por
+ * voz (decisão 9: "o dedo aperta Conjurar"): usa `window.__ABRIR_CONJURAR`,
+ * o mesmo caminho do menu (`usarArte`), só sem precisar simular a posição
+ * e o clique do menu de contexto.
+ *
+ * O que prova: a Arte troca por fala (uma palavra); o Efeito troca por fala
+ * com NOME COMPOSTO ("arma elemental", duas palavras — a extensão da
+ * decisão do Arquiteto para "casar mais de uma palavra"); um parâmetro
+ * numérico (Dano) escreve o grau certo, pela mesma fala; e "efeito
+ * improviso" volta para o improviso (Efeito nulo).
+ */
+async function cenaVozMagia(br, url) {
+  console.log('\n· a voz na caixa de conjurar: Arte, Efeito composto e um parâmetro (VOZ.md §10, rodada 38)');
+  const p = await br.newPage();
+  await p.setViewport({ width: 1400, height: 950 });
+  const erros = [];
+  p.on('pageerror', (e) => erros.push(e.message));
+  await p.goto(`${url}/mesa/grid?id=${MESA}&bench=12&cols=24&rows=16&nevoa=0&vozteste=1`,
+    { waitUntil: 'networkidle0', timeout: 60000 });
+  await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
+  await espera(600);
+
+  // c000 ("Herói 1") é PC e divide a FICHA_PC da bancada: Centelha 3, Artes
+  // fogo/terra/vento/proteção/cura, e TODOS os 139 Efeitos comprados
+  // (`scripts/mesa-mock.mjs`) — o único jeito de exercitar o painel inteiro
+  // sem uma ficha de verdade por trás.
+  await p.evaluate(() => (window).__ABRIR_CONJURAR('c000'));
+  await p.waitForSelector('dialog.ui-dlg-conj[open]', { timeout: 10000 });
+
+  const arteAtiva = () => document.querySelector('.ag-chip.on .ag-chip-nm')?.textContent || '';
+  const efeitoAtivo = () => document.querySelector('.ag-ef.on .ag-ef-nm')?.textContent || '';
+
+  // ---- 1: a Arte troca por fala, uma palavra ----
+  const antesArte = await p.evaluate(arteAtiva);
+  await p.evaluate(async () => { await window.__RECEBER_FALA('arte fogo'); });
+  await espera(300);
+  const depoisArte = await p.evaluate(arteAtiva);
+  ok(depoisArte === 'Fogo', `"arte fogo" troca a Arte ativa ("${antesArte}" → "${depoisArte}")`);
+
+  // ---- 2: o Efeito troca por fala com NOME COMPOSTO — a extensão do
+  // casamento de mais de uma palavra, no catálogo de verdade ----
+  await p.evaluate(async () => { await window.__RECEBER_FALA('efeito arma elemental'); });
+  await espera(300);
+  const efeito1 = await p.evaluate(efeitoAtivo);
+  ok(efeito1 === 'Arma Elemental', `"efeito arma elemental" (duas palavras) casa o Efeito composto ("${efeito1}")`);
+
+  // ---- 3: um parâmetro numérico (Dano) escreve o grau certo ----
+  const lerParametro = (nome) => {
+    const linhas = [...document.querySelectorAll('.ag-p')];
+    const linha = linhas.find((l) => l.querySelector('.ag-p-nm')?.textContent === nome);
+    return linha?.querySelector('.ag-p-n')?.textContent || '';
+  };
+  const antesDano = await p.evaluate(lerParametro, 'Dano');
+  await p.evaluate(async () => { await window.__RECEBER_FALA('dano tres'); });
+  await espera(300);
+  const depoisDano = await p.evaluate(lerParametro, 'Dano');
+  ok(depoisDano === '3' && depoisDano !== antesDano,
+    `"dano tres" escreve o grau do parâmetro Dano ("${antesDano}" → "${depoisDano}")`);
+
+  // ---- 4: "efeito improviso" volta para o Efeito nulo (o cartão "Improviso") ----
+  await p.evaluate(async () => { await window.__RECEBER_FALA('efeito improviso'); });
+  await espera(300);
+  const efeito2 = await p.evaluate(() => document.querySelector('.ag-ef.on .ag-ef-nm')?.textContent || '');
+  ok(efeito2 === 'Improviso', `"efeito improviso" desmarca o Efeito comprado, volta ao improviso ("${efeito2}")`);
+
+  ok(erros.length === 0, `nenhum erro de página (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
+  await p.close();
+}
+
+/**
  * O QUASE-ACERTO NA FOLHA DA AÇÃO.
  *
  * O capítulo XII existe desde sempre e o Grid nunca o calculou: a mesa fazia a
@@ -3970,6 +4043,7 @@ await cenaRastreador(br, dev.url);
   await cenaVozQuente(br, dev.url);
   await cenaVozDitadoEOutra(br, dev.url);
   await cenaVozConsentimento(br, dev.url);
+  await cenaVozMagia(br, dev.url);
   await cenaQuaseAcerto(br, dev.url);
   await cenaFusao(br, dev.url);
   await cenaCondicaoAMao(br, dev.url);
@@ -3995,7 +4069,8 @@ console.log('\n✓ Grid OK · desenho, movimento, registro, névoa e card, nas d
   + ' e a condição posta à mão indo do menu ao estado e daí à Defesa da folha,'
   + ' o caminho quente da voz abrindo o cartão vencido sem clique e refazendo o veredito,'
   + ' o ditado livre seguindo o foco e "outra coisa" abrindo por voz,'
-  + ' e a pergunta antes de baixar o modelo de voz');
+  + ' e a pergunta antes de baixar o modelo de voz,'
+  + ' e a voz na caixa de conjurar trocando Arte, Efeito composto e um parâmetro');
 // O carimbo: quando este portao passou nesta maquina. Ver `carimbo.mjs`.
 carimbar('test-grid');
 
