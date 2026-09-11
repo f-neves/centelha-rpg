@@ -577,7 +577,7 @@ antes de medir aqui é apostar na forma da fala.
 ## 10 · A régua: a voz como alternativa ao clique e ao número, dentro do Grid
 
 **Escrita em 10/09/2026.** O humano pediu que a voz fosse alternativa a **quase toda tela do Grid em
-que alguém clica ou digita número**, e fechou doze decisões em três rodadas de pergunta. Este
+que alguém clica ou digita número**, e fechou treze decisões em três rodadas de pergunta. Este
 capítulo é a régua que faltava. **Continua não sendo autorização de construir**: é o que a
 construção terá de obedecer quando ele mandar.
 
@@ -599,7 +599,7 @@ Isto vem antes das decisões porque foi o que as moldou.
 acrescentada piora o acerto de todas as outras**. "Quase toda a tela" só existe com gramática
 contextual. É disso que sai a decisão 2.
 
-### 10.2 · As doze decisões
+### 10.2 · As treze decisões
 
 **1 · O acionamento é TECLA FÍSICA SEGURADA**, e não mais o botão na tela. A mão já está no
 teclado; caçar o microfone custa o mesmo que caçar o menu, que é o argumento já escrito no bloco de
@@ -662,10 +662,30 @@ relativa.
 carregada é a daquele conjurador, que costuma ser um punhado. É o ganho concreto das duas camadas, e
 a gramática troca quando a peça troca.
 
-**12 · Fala com a tela fechada ABRE A FOLHA e preenche.** "acerto quatro dois seis" sem folha aberta
-abre a da peça da vez (ou da clicada) e escreve. É o que faz a fala valer os 51%, porque abrir o
-cartão é 17% sozinho. **O preço aceito:** frase solta na mesa pode abrir tela que ninguém pediu, e o
-remédio é a tecla segurada da decisão 1 · nada é ouvido fora do aperto.
+**12 · Fala com a tela fechada ABRE O CARTÃO VENCIDO DA FAIXA, e preenche.** "acerto quatro dois
+seis" sem folha aberta abre **o golpe que está vencendo**, e não uma folha qualquer. É o que faz a
+fala valer os 51%, porque abrir o cartão é 17% sozinho.
+
+**E a diferença entre as duas leituras não é de redação, é de possível e impossível.** A folha do
+golpe exige ATACANTE E ALVO (`src/pages/mesa/grid.astro:8922` · `function folhaDaAcao`). A decisão 4
+dá o atacante e recusa nome próprio, então **não há de onde tirar o alvo**: "abrir a folha da peça
+da vez" não tem como ser construído sem reabrir a escolha de alvo por voz, que esta mesma régua
+fechou. O cartão vencido não tem esse problema **porque os dois lados já estão amarrados**: o golpe
+foi declarado Ticks atrás e está caindo agora. A voz não escolhe ninguém, ela só chega na hora.
+
+**Sem cartão vencido esperando, o número RECUSA** e mostra a frase ouvida, porque não há campo para
+onde ele ir. **O risco que sobra**, e é o único, não é frase solta da mesa (com a tecla segurada
+nada é ouvido fora do aperto): é o mestre segurar a tecla e dizer um número pensando em outra coisa,
+com um cartão vencido na faixa. Aí o número entra no cartão errado, e o remédio é ele ver o valor na
+tela antes de apertar o veredito.
+
+**13 · A bancada é do MESTRE agora, e o desenho já prevê a tela do JOGADOR.** Não é só ordem de
+fila, é obrigação de desenho: a folha do jogador **não tem a coluna do alvo**
+(`src/pages/mesa/grid.astro:9631` · `const campoAlvo = MESTRE`), porque a view da migração 27 não
+manda o bloco do inimigo para o navegador dele. Então **a camada contextual da folha é diferente nos
+dois lados**, e a régua diz qual: a gramática de uma caixa é montada da lista de campos que aquela
+tela DE FATO desenhou, e nunca de uma lista fixa escrita à mão. Escrito agora para não virar
+reescrita quando o jogador entrar.
 
 ### 10.3 · As três telas, e o que cada uma fica devendo
 
