@@ -3010,6 +3010,102 @@ async function cenaVozMagia(br, url) {
 }
 
 /**
+ * O PRAZO DO CARREGAMENTO, PROVADO AO VIVO (L71, rodada 39).
+ *
+ * O achado da rodada 33 foi "o modelo AUSENTE trava o Worker sem mensagem".
+ * O L71 é a metade que faltava: um `model.tar.gz` PRESENTE (o `HEAD` dá 200,
+ * passa pela checagem da rodada 33) mas CORROMPIDO por dentro trava do
+ * MESMO jeito, e só um prazo (`comando-voz.ts`, `Promise.race`) tira a mesa
+ * dessa trava. O código existe desde a rodada 34; nenhum teste o exercitava.
+ *
+ * `page.setRequestInterception` serve um `.tar.gz` de mentira (bytes que
+ * parecem gzip mas não são um arquivo de verdade) SEM tocar no modelo real
+ * de 31 MB versionado em disco · o arquivo do repositório nunca é lido nem
+ * escrito por este teste. `?vozprazo=<ms>` encurta os 20s padrão para o
+ * teste custar segundos, não minutos.
+ *
+ * OBSERVA A TELA, não recalcula a condição por dentro (a mesma lição do
+ * `L74`): a asserção lê o TEXTO da mensagem de erro que o mestre veria, e
+ * confere que o microfone volta a responder depois · nunca lê uma variável
+ * interna dizendo "o prazo venceu".
+ */
+async function cenaVozPrazo(br, url) {
+  console.log('\n· o prazo do carregamento, provado ao vivo com um modelo presente e corrompido (L71, rodada 39)');
+  // CONTEXTO DE NAVEGADOR ISOLADO, e não só uma página nova · achado rodando
+  // a bateria inteira (funcionava isolado, falhava junto com as outras
+  // cenas de voz): o `vosk-browser` extrai o modelo para um sistema de
+  // arquivos que persiste em IndexedDB POR ORIGEM, e não por página. Outras
+  // cenas desta bateria (`cenaVozConsentimento`/`cenaVozMagia`) já carregam
+  // o modelo de VERDADE; numa página nova comum, o Vosk acha o modelo já
+  // extraído no IndexedDB da mesma origem e nunca volta a pedir o
+  // `.tar.gz` · o teste passaria com o modelo BOM, sem provar nada sobre o
+  // prazo. Nem `setCacheEnabled(false)` nem `Network.clearBrowserCache`
+  // tocam nisso, porque não é cache HTTP. Um contexto isolado nasce com
+  // armazenamento próprio, sem essa herança.
+  const ctx = await br.createBrowserContext();
+  const p = await ctx.newPage();
+  await p.setViewport({ width: 1400, height: 950 });
+  const erros = [];
+  p.on('pageerror', (e) => erros.push(e.message));
+
+  // O consentimento já guardado, para o teste ir direto ao carregamento ·
+  // a pergunta em si já está provada em `cenaVozConsentimento`.
+  await p.evaluateOnNewDocument(() => {
+    try { localStorage.setItem('centelha:grid:voz-consentimento', '1'); } catch {}
+  });
+
+  await p.setRequestInterception(true);
+  p.on('request', (req) => {
+    if (req.url().includes('voz-modelo/model.tar.gz')) {
+      // Bytes que ABREM como gzip (o magic number 1f 8b) mas não são um
+      // arquivo de verdade por dentro · presente, não 404, corrompido.
+      const lixo = Buffer.concat([Buffer.from([0x1f, 0x8b, 0x08, 0x00]), Buffer.alloc(4096, 0x2a)]);
+      req.respond({ status: 200, contentType: 'application/gzip', body: lixo });
+    } else {
+      req.continue();
+    }
+  });
+
+  await p.goto(`${url}/mesa/grid?id=${MESA}&bench=12&cols=24&rows=16&nevoa=0&vozprazo=1500`,
+    { waitUntil: 'networkidle0', timeout: 60000 });
+  await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
+  await espera(600);
+
+  const t0 = Date.now();
+  await p.evaluate(() => document.getElementById('gr-voz').dispatchEvent(new MouseEvent('mousedown', { bubbles: true })));
+  await p.waitForSelector('dialog.ui-dlg.perigo[open]', { timeout: 15000 });
+  const t1 = Date.now();
+  const erro = await p.evaluate(() => ({
+    titulo: document.querySelector('dialog.ui-dlg.perigo[open] .ui-dlg-tit')?.textContent || '',
+    corpo: document.querySelector('dialog.ui-dlg.perigo[open] .ui-dlg-msg')?.textContent || '',
+  }));
+  ok(/carregamento da voz passou de/i.test(erro.corpo),
+    `a MENSAGEM de prazo vencido aparece na tela ("${erro.corpo.slice(0, 90)}")`);
+  ok(/corrompido/i.test(erro.corpo) || /devagar/i.test(erro.corpo),
+    'e ela diz o que pode ter acontecido (modelo corrompido, ou baixando devagar)');
+  ok(t1 - t0 < 10000, `o prazo de 1,5s venceu em tempo curto de verdade (${t1 - t0}ms), não os 20s padrão`);
+
+  // Fecha o erro e confere que o MICROFONE VOLTA PARA A MÃO: o status volta
+  // ao padrão, e um segundo toque tenta carregar de novo (não fica preso).
+  await p.evaluate(() => document.querySelector('dialog.ui-dlg.perigo[open] .ui-dlg-ok').click());
+  await espera(200);
+  const statusDepois = await p.evaluate(() => document.getElementById('gr-voz')?.title || '');
+  ok(/segurar/i.test(statusDepois), `o status volta ao padrão, pronto para tentar de novo ("${statusDepois}")`);
+
+  await p.evaluate(() => document.getElementById('gr-voz').dispatchEvent(new MouseEvent('mousedown', { bubbles: true })));
+  await espera(300);
+  const statusSegundoToque = await p.evaluate(() => document.getElementById('gr-voz')?.title || '');
+  ok(/carregando/i.test(statusSegundoToque),
+    `um segundo toque tenta carregar de novo, não fica travado no erro anterior ("${statusSegundoToque}")`);
+  await p.waitForSelector('dialog.ui-dlg.perigo[open]', { timeout: 15000 });
+  await p.evaluate(() => document.querySelector('dialog.ui-dlg.perigo[open] .ui-dlg-ok')?.click());
+  await p.evaluate(() => document.getElementById('gr-voz').dispatchEvent(new MouseEvent('mouseup', { bubbles: true })));
+
+  ok(erros.length === 0, `nenhum erro de página (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
+  await ctx.close();
+}
+
+/**
  * O QUASE-ACERTO NA FOLHA DA AÇÃO.
  *
  * O capítulo XII existe desde sempre e o Grid nunca o calculou: a mesa fazia a
@@ -4044,6 +4140,7 @@ await cenaRastreador(br, dev.url);
   await cenaVozDitadoEOutra(br, dev.url);
   await cenaVozConsentimento(br, dev.url);
   await cenaVozMagia(br, dev.url);
+  await cenaVozPrazo(br, dev.url);
   await cenaQuaseAcerto(br, dev.url);
   await cenaFusao(br, dev.url);
   await cenaCondicaoAMao(br, dev.url);
@@ -4070,7 +4167,8 @@ console.log('\n✓ Grid OK · desenho, movimento, registro, névoa e card, nas d
   + ' o caminho quente da voz abrindo o cartão vencido sem clique e refazendo o veredito,'
   + ' o ditado livre seguindo o foco e "outra coisa" abrindo por voz,'
   + ' e a pergunta antes de baixar o modelo de voz,'
-  + ' e a voz na caixa de conjurar trocando Arte, Efeito composto e um parâmetro');
+  + ' e a voz na caixa de conjurar trocando Arte, Efeito composto e um parâmetro,'
+  + ' e o prazo do carregamento vencendo de verdade com um modelo presente e corrompido');
 // O carimbo: quando este portao passou nesta maquina. Ver `carimbo.mjs`.
 carimbar('test-grid');
 

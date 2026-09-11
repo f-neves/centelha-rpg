@@ -96,6 +96,7 @@ jobs:
           - test-golpe-caido
           - test-bandeiras-mesa
           - test-interpor-mesa
+          - test-l67-corpoacorpo-mesa
           - test-grid-simultaneo
           - test-etapa0
           - test-bench-tempo

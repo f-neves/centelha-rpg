@@ -2513,6 +2513,14 @@ const SETAS = [
   // para o smoke testar o caminho inteiro sem áudio nem modelo baixado.
   // Desligado, nada disto existe; a fala de verdade é bancada do humano.
   const VOZ_TESTE_LIGADO = PARAMS.get('vozteste') === '1';
+  // `?vozprazo=<ms>` encurta o prazo do carregamento do modelo (L71,
+  // `comando-voz.ts`, padrão 20s) · só existe para o smoke provar o prazo
+  // vencendo sem esperar 20 segundos de verdade. Sem o parâmetro, o padrão
+  // de sempre vale; a mesa de produção nunca passa este parâmetro.
+  const VOZ_PRAZO_MS = (() => {
+    const n = Number(PARAMS.get('vozprazo'));
+    return Number.isFinite(n) && n > 0 ? n : undefined;
+  })();
 
   let SB: any, ID = '', MESTRE = false, EU = '';
   /**
@@ -3312,6 +3320,31 @@ const SETAS = [
   /** Diâmetro do combatente em metros. PC e NPC de cena são médios. */
   const diametroM = (c: any): number =>
     (c.tipo === 'criatura' ? PORTE_M[MON[c.monstro_id]?.porte] : null) ?? 1;
+
+  /**
+   * Quanto o PORTE de um alvo ESTENDE o alcance corpo a corpo, em hexágonos
+   * (Pendencias.md L67, decidido em 10/09/2026: o alcance se mede de BORDA A
+   * BORDA, não de centro a centro).
+   *
+   * O raio de um Médio (0,5 m) já está embutido no "1 hexágono alcança" de
+   * sempre, então só o que passa disso soma. Um alvo pequeno nunca ENCURTA o
+   * alcance: `alcancaNoCorpoACorpo` já documenta que perto demais não é
+   * penalidade nesta regra, e este helper preserva isso com `Math.max(0, …)`.
+   *
+   * ARREDONDA PARA CIMA, e o porquê é geometria, não gosto: um Enorme (4 m)
+   * soma 1,5 hexágono em teoria, mas parar em `1 + 1 = 2` (o chão) ainda
+   * SOBREPÕE os dois círculos (2 m de centro a centro contra 2,5 m de raios
+   * somados: 2 < 2,5, os corpos se cruzam). Só em `1 + 2 = 3` os círculos
+   * deixam de se tocar. Achado testando ao vivo (rodada 39): a agenda
+   * (`declararAtaqueSimultaneo`) reserva Ticks de viagem em METROS a partir
+   * deste número, e com o chão ela reservava Ticks de menos, entregando um
+   * golpe que a caminhada de verdade só cumpria um Tick depois · a promessa e
+   * o motor discordavam. Arredondar para cima fecha as duas pontas de uma vez.
+   */
+  const raioExtraHex = (c: any): number => {
+    const escala = Number(ARENA?.escala_m) || 1;
+    return Math.ceil(Math.max(0, (diametroM(c) - 1) / 2) / escala);
+  };
 
   /**
    * Quantos pixels do mundo vale um metro.
@@ -5295,10 +5328,14 @@ const SETAS = [
   }
 
   // ============================================== o relógio do simultâneo
-  /** O alcance de perseguição de uma peça, em hexágonos: braço ou haste. */
-  const alcanceDaPeca = (c: any): number =>
-    classeDeTempo(RESUMO[c.id]?.arma, RESUMO[c.id]?.velocidade, RESUMO[c.id]?.classe) === 'haste'
-      ? HEX_HASTE : HEX_CORPO_A_CORPO;
+  /**
+   * O alcance de perseguição de uma peça, em hexágonos: braço ou haste, mais o
+   * raio do alvo quando ele é dado (L67, borda a borda). Sem `alvo`, é só o
+   * braço, para quem chama sem ter ainda um alvo concreto.
+   */
+  const alcanceDaPeca = (c: any, alvo?: any): number =>
+    (classeDeTempo(RESUMO[c.id]?.arma, RESUMO[c.id]?.velocidade, RESUMO[c.id]?.classe) === 'haste'
+      ? HEX_HASTE : HEX_CORPO_A_CORPO) + (alvo ? raioExtraHex(alvo) : 0);
 
   /**
    * O PASSO DA PEÇA, em metros por Tick, pela régua de quem ela é.
@@ -5619,8 +5656,9 @@ const SETAS = [
       const pos = TOKENS[c.id];
       const alvoPos = mov.alvo ? TOKENS[mov.alvo] : mov.destino;
       if (!alvoPos) continue;
+      const alvoC = mov.alvo ? COMBS.find((x: any) => x.id === mov.alvo) : null;
       const passos = Math.max(1, Math.round(mov.porTick / escala));
-      const pararA = mov.alvo ? alcanceDaPeca(c) : 0;
+      const pararA = mov.alvo ? alcanceDaPeca(c, alvoC) : 0;
 
       // NO TICK DO GOLPE O PASSO É RESTRITO (decidido em 28/08, medido na
       // `sim-passo-golpe.mjs`). O problema nunca foi andar, foi andar PARA
@@ -6138,7 +6176,7 @@ const SETAS = [
     const hexes = de && pa ? distanciaHex(de, pa) : 0;
     // Arma de distância e arremesso não perseguem: atiram de onde estão.
     const persegue = classe !== 'distancia' && classe !== 'arremesso' && classe !== 'arte';
-    const faltamHex = persegue ? Math.max(0, hexes - alcanceDaPeca(atacante)) : 0;
+    const faltamHex = persegue ? Math.max(0, hexes - alcanceDaPeca(atacante, alvo)) : 0;
     const modo = MODOS_MOV.find((m) => m.id === (opts.modoMov || 'batalha')) || MODOS_MOV[1];
     const porTick = Math.max(0.5, opts.porTick ?? passoNoModo(atacante, modo.id));
     const viagem = ticksDeViagem(faltamHex * escala, porTick);
@@ -8104,7 +8142,7 @@ const SETAS = [
     // diz é onde ele está AGORA, e não onde vai estar.
     const cx = el('dc-aviso') as HTMLElement;
     const longe = hexes != null && classe !== 'distancia' && classe !== 'arremesso'
-      && !alcancaNoCorpoACorpo(hexes, classe === 'haste');
+      && !alcancaNoCorpoACorpo(hexes, classe === 'haste', raioExtraHex(alvo));
     cx.hidden = !longe || SIML();
     if (longe && !SIML()) {
       cx.textContent = `Fora do alcance agora, a ${fmtM(dist!)}: o golpe só cai no Tick`
@@ -8133,7 +8171,12 @@ const SETAS = [
       mvAuto.onchange = () => pintar();
     }
     const escalaM = Number(ARENA.escala_m) || 1;
-    const alcHex = classe === 'haste' ? HEX_HASTE : HEX_CORPO_A_CORPO;
+    // Achado testando ao vivo (rodada 39): esta conta duplicava a mesma régua
+    // de `alcancaNoCorpoACorpo` (linha `longe`, acima) sem o raio do alvo · a
+    // prévia de Ticks de viagem dizia um número, e `declararAtaqueSimultaneo`
+    // (que já soma o raio) gravava outro. Sem o raio aqui, a viagem some cedo
+    // demais e a prévia mostra um Tick que a agenda de verdade não cumpre.
+    const alcHex = (classe === 'haste' ? HEX_HASTE : HEX_CORPO_A_CORPO) + raioExtraHex(alvo);
     const viagemAtual = () => {
       if (!precisaAndar || hexes == null) return 0;
       const v = Math.max(0.5, parseFloat(mvVel.value || '3') || 3);
@@ -8250,7 +8293,7 @@ const SETAS = [
     const candidatos = naFila().filter((o: any) =>
       o.id !== atacante.id && !noChao(o) && TOKENS[o.id] && de
       && (o.tipo === 'criatura') !== (atacante.tipo === 'criatura')
-      && distanciaHex(de, TOKENS[o.id]) <= alc);
+      && distanciaHex(de, TOKENS[o.id]) <= alc + raioExtraHex(o));
     if (!candidatos.length) return null;
     // O ROBÔ REDIRECIONA SOZINHO, para o mais próximo: quem está em modo
     // automático já declara sem perguntar, e perguntar só o destino de um golpe
@@ -9150,7 +9193,10 @@ const SETAS = [
         if (!consentiu) { vozStatus(STATUS_DESLIGADA_VOZ); return; }
       }
       vozStatus('carregando o modelo de voz (31 MB)…');
-      const r = await carregarVoz(caminhosPadrao(import.meta.env.BASE_URL));
+      const r = await carregarVoz({
+        ...caminhosPadrao(import.meta.env.BASE_URL),
+        ...(VOZ_PRAZO_MS != null ? { prazoMs: VOZ_PRAZO_MS } : {}),
+      });
       if (!r.ok) { vozStatus(STATUS_PADRAO_VOZ); uiErro(r.erro); return; }
       vozStatus('modelo carregado — segure e fale');
       return; // o toque que carregou não grava: solta a mão, segura de novo
@@ -9542,7 +9588,7 @@ const SETAS = [
             + ` ${fx.pen} no acerto, para somar à mão.`
           : '';
       }
-      return alcancaNoCorpoACorpo(hexes, classe === 'haste') ? ''
+      return alcancaNoCorpoACorpo(hexes, classe === 'haste', raioExtraHex(alvo)) ? ''
         : `Corpo a corpo a ${fmtM(dist!)}: ${classe === 'haste'
           ? `a haste alcança ${HEX_HASTE}` : `a arma alcança ${HEX_CORPO_A_CORPO}`} hexágono(s).`;
     })();
@@ -10514,6 +10560,10 @@ let roladoDano = '';
        * segurada por um detector").
        */
       pvDe: (id: string) => COMBS.find((x: any) => x.id === id)?.pv_atual ?? null,
+      /** A casa (q, r) crua de uma peça no tabuleiro. Leitura pura de `TOKENS`. */
+      posDe: (id: string) => (TOKENS[id] ? { q: TOKENS[id].q, r: TOKENS[id].r } : null),
+      /** `distanciaHex` de verdade (`src/lib/hex.ts`), para quem só tem o driver Node. */
+      distHex: (a: { q: number; r: number }, b: { q: number; r: number }) => distanciaHex(a, b),
       /**
        * O `ResumoCombate` de uma peça, cru. Achou o bug real do
        * `test-bandeiras-mesa.mjs` (o `numeros` da cena `bandeiras`, em

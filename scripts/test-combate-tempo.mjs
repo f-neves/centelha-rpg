@@ -537,6 +537,20 @@ const AL = await carregar('src/lib/alcance.ts');
   eq([AL.alcancaNoCorpoACorpo(2, true), AL.alcancaNoCorpoACorpo(3, true)], [true, false],
     'e a haste chega a dois, e não a três');
 
+  // L67 (Pendencias.md, decidido em 10/09/2026): o alcance corpo a corpo passa
+  // a somar o raio do alvo, medido de BORDA A BORDA. Um Enorme (4 m de
+  // diâmetro) soma 1,5 hexágono ao braço (1) e à haste (2); um alvo pequeno ou
+  // médio nunca ENCURTA o alcance, porque "perto demais" não é penalidade
+  // nesta regra (o `Math.max(0, …)` do terceiro parâmetro).
+  eq([AL.alcancaNoCorpoACorpo(2, false, 1.5), AL.alcancaNoCorpoACorpo(3, false, 1.5)], [true, false],
+    'contra um alvo Enorme, o braço chega à borda (distância 2) e não além (3)');
+  eq([AL.alcancaNoCorpoACorpo(3, true, 1.5), AL.alcancaNoCorpoACorpo(4, true, 1.5)], [true, false],
+    'e a haste, à mesma borda somada, chega a três e não a quatro');
+  eq(AL.alcancaNoCorpoACorpo(1, false, -0.25), true,
+    'um alvo Pequeno (raio NEGATIVO na conta) não encurta o alcance de sempre: 1 continua alcançando');
+  eq(AL.alcancaNoCorpoACorpo(1, false), true,
+    'sem o terceiro parâmetro, o alcance é o de sempre (centro a centro)');
+
   // Arco curto: máximo 120, livre 1/3 = 40. Sobram 80, em quatro de 20.
   const a = AL.alcanceDaArma('arco-curto');
   eq([a.livre, a.max], [40, 120], 'o alcance livre é a fração que a arma declara');

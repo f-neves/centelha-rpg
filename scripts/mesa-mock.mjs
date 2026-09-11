@@ -95,6 +95,10 @@ const CAIDO_LONGE = P.get('longe') === '1';
 // Ver o bloco `if (BANDEIRAS)` mais abaixo para o porquê de cada peça.
 const BANDEIRAS = P.get('cena') === 'bandeiras';
 
+// A CENA DO CORPO A CORPO DE BORDA: `?cena=corpoacorpo` (Pendencias.md L67,
+// decidido em 10/09/2026). Ver o bloco `if (CORPOACORPO)` mais abaixo.
+const CORPOACORPO = P.get('cena') === 'corpoacorpo';
+
 // A CENA DO INTERPOR: `?cena=interpor[&fase=preparo|recuperacao]` (L34 §6,
 // rodada 15/16/17).
 //
@@ -108,8 +112,10 @@ const INTERPOR = P.get('cena') === 'interpor';
  */
 const INTERPOR_FASE = P.get('fase') === 'recuperacao' ? 'recuperacao' : 'preparo';
 
-const COLS = ESPELHO ? ESPELHO.tab.cols : CAIDO ? 14 : BANDEIRAS ? 10 : INTERPOR ? 10 : parseInt(P.get('cols') || '24', 10);
-const ROWS = ESPELHO ? ESPELHO.tab.rows : CAIDO ? 8 : BANDEIRAS ? 8 : INTERPOR ? 8 : parseInt(P.get('rows') || '16', 10);
+const COLS = ESPELHO ? ESPELHO.tab.cols : CAIDO ? 14 : BANDEIRAS ? 10 : CORPOACORPO ? 20
+  : INTERPOR ? 10 : parseInt(P.get('cols') || '24', 10);
+const ROWS = ESPELHO ? ESPELHO.tab.rows : CAIDO ? 8 : BANDEIRAS ? 8 : CORPOACORPO ? 18
+  : INTERPOR ? 8 : parseInt(P.get('rows') || '16', 10);
 const NEVOA = P.get('nevoa') === '1';
 /**
  * `?sombra=1`: DUAS zonas que não acendem o chão, para a névoa poder escondê-las.
@@ -595,6 +601,87 @@ if (BANDEIRAS) {
       // Os atacantes já entram com o golpe agendado pro Tick 2, como a cena
       // `caido` faz; as criaturas ficam livres, porque só levam o golpe.
       acao: p.alvo ? golpe(p.alvo) : {},
+      dados: p.tipo === 'pc' ? { ...numeros } : {},
+      condicoes: [], ativo: true, oculto: false, imagem: null, retrato: null,
+    });
+    TOKENS.push({
+      arena_id: ARENA, combatente_id: p.id, q: p.q, r: p.r,
+      movido_em: new Date(1700000000000 + (k++) * 1000).toISOString(),
+    });
+  }
+}
+
+/**
+ * A CENA DO CORPO A CORPO DE BORDA `?cena=corpoacorpo` (Pendencias.md L67,
+ * decidido em 10/09/2026): o alcance corpo a corpo passou a medir de BORDA A
+ * BORDA, somando o raio do alvo, e o critério de aceitação é uma PROIBIÇÃO
+ * (não remover a segunda passada de `caminharHex` que afrouxa o veto, porque
+ * ela serve outro caso). Esta cena prova as duas coisas com a mesma peça
+ * parada: um Aboleth (Enorme, `mon-aboleth`, diâmetro 4 m) em `q:4,r:4`,
+ * numa arena de `escala_m: 1` (a folga até o canto é só para o zigue-zague
+ * lateral das duas passadas não cruzar q ou r negativo).
+ *
+ *   `at` · em `q:4,r:10` (6 hexágonos em linha reta do Aboleth), perseguição
+ *     automática (`mov.alvo`) contra ele. Antes do L67 a perseguição parava a
+ *     distância 1 (dentro do corpo do Aboleth). O raio somado é
+ *     `HEX_CORPO_A_CORPO(1) + raioExtraHex(2)` = 3, e não 1 + 1,5: em 2 os
+ *     dois círculos ainda se cruzam (2 m de centro a centro contra 2,5 m de
+ *     raios somados), achado testando ao vivo nesta própria rodada, então
+ *     `raioExtraHex` ARREDONDA PARA CIMA. Com o 3 a primeira caminhada
+ *     estrita já chega direto à borda, sem precisar da segunda passada — o
+ *     que bate com a previsão do Arquiteto no L67 ("a primeira caminhada
+ *     consegue chegar lá").
+ *
+ *   `vz` · NASCE em `q:5,r:4`, um vizinho do Aboleth, já dentro do círculo
+ *     bloqueado dele (o comentário do código admite isso: "a peça pode até já
+ *     ter nascido dentro dessa zona"). Um deslocamento PURO (`mov.destino`,
+ *     sem `mov.alvo`: `paraEm` fica 0, o L67 não entra aqui) para `q:9,r:4`
+ *     não tem passo nenhum livre no primeiro pente (todo vizinho mais perto
+ *     do destino também está dentro do círculo do Aboleth) — sem a segunda
+ *     passada, `vz` fica PRESO em `q:5,r:4` para sempre. É o caso do "Enorme
+ *     parado ao lado prendendo os seis vizinhos de quem encosta nele" que a
+ *     proibição do L67 protege, e não depende do raio do alvo em ponto
+ *     nenhum: prova que consertar `at` não reabriu o defeito de `vz`.
+ */
+if (CORPOACORPO) {
+  const r = resumoCombatePC(KAEL);
+  const numeros = {
+    arma: r.arma, ataque: r.ataque, dano: r.dano,
+    defesa: r.defesa, soak: r.soak, resistPerf: r.resistPerf, perfArma: r.perfArma,
+    velocidade: 5, classe: 'leve', passo: r.passo, qa: r.qa,
+  };
+  COMBS.length = 0; TOKENS.length = 0;
+  // As coordenadas nascem com folga de `q:4,r:4` do canto: as duas passadas de
+  // `caminharHex` andam de lado ao redor do Aboleth (o "passo lateral" do
+  // comentário do código), e sem a folga esse zigue-zague cruzaria q ou r
+  // negativo, fora do tabuleiro.
+  const por = [
+    { id: 'en', tipo: 'criatura', monstro_id: 'mon-aboleth', q: 4, r: 4, acao: {} },
+    {
+      id: 'at', tipo: 'pc', monstro_id: null, q: 4, r: 10,
+      acao: {
+        golpes: [], livre: 0, desde: 0,
+        mov: { alvo: 'en', destino: null, modo: 'batalha', porTick: 12, auto: true },
+      },
+    },
+    {
+      id: 'vz', tipo: 'pc', monstro_id: null, q: 5, r: 4,
+      acao: {
+        golpes: [], livre: 0, desde: 0,
+        mov: { alvo: null, destino: { q: 9, r: 4 }, modo: 'batalha', porTick: 12, auto: true },
+      },
+    },
+  ];
+  let k = 0;
+  for (const p of por) {
+    COMBS.push({
+      id: p.id, encontro_id: ENC, nome: `Peça ${p.id}`,
+      tipo: p.tipo, grupo: p.tipo === 'pc' ? 'aliado' : 'inimigo',
+      monstro_id: p.monstro_id, personagem_id: null,
+      pv_max: 999, pv_atual: 999,
+      mana_max: null, mana_atual: null,
+      tick: 0, iniciativa: 20 - k,
+      acao: p.acao,
       dados: p.tipo === 'pc' ? { ...numeros } : {},
       condicoes: [], ativo: true, oculto: false, imagem: null, retrato: null,
     });

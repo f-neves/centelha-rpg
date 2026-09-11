@@ -78,9 +78,20 @@ export function faixaDeDistancia(idOuNome: string | null | undefined, metros: nu
  * Só responde "não" quando é longe demais. Perto demais não existe nesta regra:
  * não há penalidade por estar colado, e inventar uma aqui seria escrever regra
  * na tela.
+ *
+ * `raioAlvoHex` é o raio do alvo, em hexágonos, medido de borda a borda
+ * (Pendencias.md L67, 10/09/2026) · quem chama já converteu porte e escala da
+ * arena, porque este módulo é puro e não sabe o que é uma mesa. Sem o
+ * parâmetro, o alcance é o de sempre (centro a centro), para quem chama sem
+ * saber o porte do alvo. Um alvo pequeno (raio negativo) nunca ENCURTA o
+ * alcance: é a mesma regra do parágrafo acima, "perto demais não existe",
+ * então o `Math.max(0, …)` mora aqui, na função que decide, e não em cada
+ * chamador.
  */
-export function alcancaNoCorpoACorpo(hexagonos: number, haste: boolean): boolean {
-  return hexagonos <= (haste ? HEX_HASTE : HEX_CORPO_A_CORPO);
+export function alcancaNoCorpoACorpo(
+  hexagonos: number, haste: boolean, raioAlvoHex = 0,
+): boolean {
+  return hexagonos <= (haste ? HEX_HASTE : HEX_CORPO_A_CORPO) + Math.max(0, raioAlvoHex);
 }
 
 /**
