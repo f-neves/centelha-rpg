@@ -4199,6 +4199,20 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
     ser servido pelo site publicado em 11/09 e a primeira pessoa a atravessar esse caminho numa
     rede ruim vai ser o humano, na bancada dele.
 
+  **DECIDIDO PELO HUMANO EM 11/09/2026: fica a (a), o prazo, e a (b) NÃO se faz.** O prazo já está
+  construído, provado ao vivo contra um `model.tar.gz` presente e corrompido (rodada 39) e no ar.
+  Trocar o Worker vendorizado é trabalho de outra ordem, sem garantia de que a alternativa rejeite
+  direito, e o prazo não impede a troca se algum dia ela fizer falta.
+
+  **O contra que ele aceitou junto, e é o que pode morder na bancada dele:** o prazo **não
+  distingue "modelo corrompido" de "rede lenta"**. Numa rede ruim de verdade a voz vai dizer que
+  falhou quando estava só demorando, e quem está segurando o microfone não tem como saber a
+  diferença · vai tentar de novo e falhar de novo. **Se isso acontecer na bancada, é achado e não
+  imprevisto:** está escrito aqui antes de acontecer, e o caminho de conserto é a (b).
+
+  **O item fica FECHADO quanto à decisão**, e o teste do prazo (a outra metade que faltava) já
+  existe desde a rodada 39.
+
 - [x] **L72 · [achado pelo Arquiteto em 10/09/2026 ao reapontar a rodada 34, CONSTRUÍDO na rodada
   41 em 11/09/2026] O portão da procedência só conferia os itens ABERTOS deste arquivo, e as
   citações dos itens FECHADOS apodreciam sem ninguém ver.**
@@ -4466,10 +4480,55 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   Furtividade, a Defesa por porte), e pode ser que o alcance tenha sido deixado de fora de
   propósito, mesmo que ninguém tenha escrito isso.
 
-  **O que decidir, em uma frase:** o alcance corpo a corpo soma o raio dos dois corpos, ou só o do
-  alvo?
+  **DECIDIDO PELO HUMANO EM 11/09/2026, e a resposta não era nenhuma das duas que o Arquiteto
+  ofereceu.** "Somar os dois raios" produz alcance **simétrico**, e não é o que a mesa quer: uma
+  criatura grande tem de alcançar ANTES de ser alcançada, porque o corpo dela é maior **e** o braço
+  dela é maior. A pergunta estava mal posta.
 
-  → `L67` (a metade construída), → `L76` (a mesma régua faltando na interposição).
+  **A REGRA, e ela reproduz exatamente os dois números que o humano escreveu:**
+
+  ```
+  distância entre centros ≤ alcanceDoCentro(atacante) + raio(alvo)
+  alcanceDoCentro = raio + braço        braço = max(0, raio − 0,5)
+  ```
+
+  **O braço de um MÉDIO é ZERO**, e é isso que faz a conta fechar: um humano desarmado ou com arma
+  curta não alcança além do próprio corpo, precisa encostar. Braço só existe acima do Médio, e
+  cresce com o tamanho.
+
+  | porte | diâmetro | raio | braço | alcance do centro |
+  |---|---:|---:|---:|---:|
+  | Miúdo | 0,25 m | 0,125 | 0 | 0,125 m |
+  | Pequeno | 0,5 m | 0,25 | 0 | 0,25 m |
+  | **Médio** | 1 m | 0,5 | **0** | **0,5 m** |
+  | Grande | 2 m | 1 | 0,5 | 1,5 m |
+  | **Enorme** | 4 m | 2 | **1,5** | **3,5 m** |
+  | Imenso | 8 m | 4 | 3,5 | 7,5 m |
+  | Colossal | 16 m | 8 | 7,5 | 15,5 m |
+
+  **A conferência contra o que o humano escreveu**, que é a procedência desta tabela:
+
+  | quem ataca | conta | dá | ele disse |
+  |---|---|---:|---:|
+  | humano → Aboleth (Enorme) | 0,5 + 2 | 2,5 m | 2,5 m |
+  | Aboleth → humano | 3,5 + 0,5 | 4 m | 4 m |
+
+  **O CRITÉRIO DE ACEITAÇÃO, e ele é uma invariante:** entre dois **Médios** nada pode mudar ·
+  0,5 + 0,5 = 1 m, que é exatamente o "1 hexágono alcança" de hoje. Se um teste de Médio contra
+  Médio mudar de resultado, a implementação está errada, não a regra.
+
+  **O que a implementação tem de resolver e a regra não diz:** como a ARMA compõe com o braço do
+  corpo. Hoje há duas constantes (corpo a corpo e haste) que valem para Médio contra Médio. Pela
+  tabela, `haste` de um Médio tem de continuar dando 2 m no total, o que só fecha se a arma somar
+  1 m ao alcance do centro (0,5 + 0 + 1, mais o raio 0,5 do alvo). **Confira isso contra as
+  constantes reais antes de escrever, e se não fechar, pare e traga.**
+
+  **O TAMANHO CONTINUA VINDO DO PORTE**, por decisão do humano na mesma conversa, com a ressalva
+  dele: o porte é grosso (o Aboleth é descrito com 6,5 m e Enorme vale 4 m para todos), e isso
+  fica sabido em vez de consertado agora.
+
+  → `L67` (a metade construída), → `L76` (a mesma régua na interposição, que esta fórmula resolve),
+  → `L78` (o campo de Alcance por criatura, que o humano pediu junto).
 
 - [ ] **L76 · [ESCALADO pela Revisora na rodada 39, em 11/09/2026, e o Arquiteto RECUSOU consertar
   de passagem · a Executora chegou nela sozinha na rodada 40, por outro caminho] A interposição
@@ -4505,11 +4564,58 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   `src/pages/mesa/grid.astro:6327` · `function candidatosParaInterpor`, monta a pergunta
   (`src/pages/mesa/grid.astro:6348` · `const r = alcanceInterpor`) sem raio nenhum dos dois lados.
 
+  **RESOLVIDO PELA FÓRMULA DO `L77` em 11/09/2026, e as duas leituras deixam de competir.** A
+  pergunta que `alcanceInterpor` faz é se o AGRESSOR alcança a casa onde o interpositor terminaria,
+  e a fórmula responde sem ambiguidade: `alcanceDoCentro(agressor) + raio(interpositor)`. A leitura
+  da Revisora (falta o lado do interpositor) e a da Executora (falta o lado do agressor) estavam as
+  duas certas, cada uma sobre um termo · a fórmula tem os dois, e nenhuma das duas precisava vencer.
+
+  **Isto deixou de ser decisão de regra e virou consequência**, então não volta ao humano. O que
+  continua valendo é a cautela que tirou este item da rodada 39: a interposição tem teste próprio,
+  e mudar quem consegue se interpor muda a mesa. Quem implementar prova a mudança **e** prova que
+  o caso antigo não mudou · Médio se interpondo contra Médio continua em `0,5 + 0,5 = 1 m`.
+
   → `L67` (a régua que originou), → `L70` (o outro que saiu pelo mesmo critério), → `L77` (a
   metade do atacante, que é a mesma pergunta de fundo).
 
-- [ ] **L70 · [REGISTRADO em 10/09/2026, ligado ao `L67`, NÃO ABERTO] A gravação de posição não
-  passa pela checagem de ocupação, e a invariante mora nos chamadores em vez de morar na escrita.**
+- [ ] **L78 · [PEDIDO pelo humano em 11/09/2026, junto da decisão do `L77`] Falta um campo de
+  ALCANCE por criatura: o braço derivado do porte trata corpos diferentes como iguais.**
+
+  **O que ele pediu, com o exemplo dele:** o braço derivado do tamanho (`L77`) dá o mesmo alcance a
+  toda criatura do mesmo porte, e isso é falso na ficção. Um **Aboleth** tem tentáculos e deve
+  alcançar mais do que um **Bulette**, que tem pernas curtas, mesmo os dois sendo Enormes. O campo
+  é para a criatura declarar o próprio alcance, e o derivado do porte vira o padrão de quem não
+  declarar.
+
+  **Não é o que trava o `L77`:** a regra entra com o derivado, e este item é a revisão depois. Foi
+  decisão dele nessa ordem, e a razão é boa · esperar 309 criaturas ganharem alcance próprio
+  deixaria a régua meia (o pequeno alcançando o grande sem revide) por tempo indeterminado.
+
+  **O risco que fica escrito, para quem construir:** campo opcional preenchido em poucas criaturas
+  produz uma mesa onde o alcance é imprevisível, porque o mestre não sabe de cabeça qual bicho tem
+  exceção. Se isso for construído, a ficha da criatura tem de MOSTRAR o alcance dela, derivado ou
+  próprio, e não deixar o número só no motor.
+
+  **E a revisão que ele anunciou vem junto:** "depois podemos revisar todos os alcances". Isto é
+  frente de dados, não de código, e o levantamento é por tipo de corpo (tentáculo, perna curta,
+  pescoço longo), que é o mesmo eixo do formato alongado que o `L77` deixou de fora.
+
+  → `L77` (a régua que o derivado sustenta), → `L67`.
+
+- [ ] **L70 · [REGISTRADO em 10/09/2026, ligado ao `L67`, ABERTO por decisão do humano em
+  11/09/2026] A gravação de posição não passa pela checagem de ocupação, e a invariante mora nos
+  chamadores em vez de morar na escrita.**
+
+  **DECIDIDO EM 11/09/2026: a conferência passa a morar na GRAVAÇÃO.** Caminho novo herda a
+  pergunta de graça, em vez de cada um decidir se pergunta. É a resposta aos três itens de uma vez
+  (`L70`, `L66`, `L62`), que era o que ele tinha pedido: decidir onde a regra mora, e não tapar um
+  buraco por vez.
+
+  **O contra que ele aceitou junto, e ele é o maior de tudo que está aberto:** é refatoração no
+  coração da mesa, em todo caminho que grava posição, num código que ele usa para jogar. Provar
+  direito exige exercitar **cada** caminho existente, e a rodada 40 mostrou que busca por nome não
+  acha todos · dois lugares escaparam por terem a conta copiada à mão em vez de chamarem a função.
+  São duas ou três rodadas, não uma, e quem implementar que traga o tamanho antes de escrever.
 
   Saiu do `L67` porque não é detalhe daquele conserto: é o defeito estrutural que aquele conserto
   revelou. A perseguição escreve o token e grava direto, sem passar pela porta que confere se a
