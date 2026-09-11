@@ -595,3 +595,26 @@ mão, rodar o verificador de novo antes de seguir para a próxima, em vez de con
 ao escrever a âncora, colocá-la na MESMA linha da citação e o mais perto possível dela, sem outro
 trecho em crases entre as duas — não porque o script exija exatamente isso, mas porque é o único
 jeito de a distância em bytes bater com a distância que o olho vê.
+
+**A HEURISTICA QUE PARECE FALAR DO QUE O OLHO VE E FALA DE CONTAGEM DE BYTES.** Achada pela
+Executora na rodada 41, em 11/09/2026, reapontando a mao as citacoes podres do `L72`.
+
+O portao da procedencia casa cada `arquivo:NNN` com **a ancora mais proxima na mesma linha**, e
+"mais proxima" e distancia de CARACTERES a partir do inicio da citacao. A consequencia nao e
+obvia: uma ancora escrita ANTES da citacao fica mais perto, em bytes, do que uma escrita DEPOIS,
+mesmo quando as duas parecem igualmente coladas para quem le. **Duas linhas consertadas por ela
+casaram com a ancora errada** por causa disso, e as duas pareciam certas na revisao visual.
+
+**O que a torna perigosa e o desfecho, nao o erro:** casar com a ancora errada nao deixa o portao
+vermelho · deixa ele VERDE sobre uma citacao que aponta para outro lugar. E o mesmo desfecho de
+"o portao que casa por texto fixo", e o mesmo do reaponte por busca de ancora que o `L65` proibe:
+**a conferencia passa a confirmar a coisa errada em vez de acusar.**
+
+**Como ela achou, e e a parte reaproveitavel:** rodando o diagnostico DE NOVO depois de cada lote
+de consertos, em vez de conferir o conserto lendo. Um conserto de citacao nao se verifica olhando
+para ele, porque ele foi escrito por quem ja acha que esta certo; verifica-se perguntando de novo
+a mesma ferramenta que acusou.
+
+**O gesto que fica:** ao escrever uma citacao nova, ponha a ancora DEPOIS do numero de linha e
+sozinha, no formato `arquivo:NNN` · `ancora`. Nao e regra de estilo: e o unico arranjo em que o
+que o olho le e o que a heuristica mede sao a mesma coisa.
