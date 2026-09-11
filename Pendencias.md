@@ -4940,7 +4940,44 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   miolo, `anc.txt.split('(')[0]`. Uma âncora específica como `update({ condicoes: [...] })` é
   conferida como `update`, que aparece dez vezes naquele arquivo. **Parêntese na âncora encurta a
   âncora na hora da conferência**, e verde fica mais barato do que parece. Quem escrever âncora põe
-  o que é específico ANTES do primeiro parêntese.
+  o que é específico ANTES do primeiro parêntese. **Medido pela Revisora na rodada 45: das 57
+  âncoras novas, só DUAS são encurtadas por esse corte** (`atob(m[1])` e o `update` acima), e
+  nenhuma das duas produz falso verde. O risco é real e a exposição, nesta rodada, é pequena.
+
+  **REVISADO na rodada 45 (`2080bf9`): SEGUE, sem CORRIGE, e ela achou o que eu não achei.**
+  Conferiu o `REVISORA.md` intacto por conta própria em vez de herdar a minha conferência, e foi
+  ler as 14 âncoras `BASE_URL` do `Migracao_Dominio.md` uma a uma contra a janela real de cada
+  arquivo. **Três estão com o número errado**, e eu confirmei as três do lado de fora, cada arquivo
+  com um único uso, então não há ambiguidade nenhuma sobre onde ele está:
+
+  · o documento aponta a linha 352, e o uso mora em `Base.astro:369` (`import.meta.env.BASE_URL`);
+  · aponta a 666, e o uso mora em `bestiario.astro:671` (`const base = import.meta.env`);
+  · aponta a 55, e o uso mora em `mesas.astro:78` (`const base = import.meta.env`).
+
+  **Nenhuma das três é falso verde** · as três caem como envelhecidas, que é o portão funcionando.
+  São citações que já estavam erradas antes do `L80` e que as âncoras destaparam.
+
+  **E A MINHA SUSPEITA SOBRE AS `BASE_URL` ESTAVA ERRADA, por um motivo que vale mais que o
+  achado.** Eu marquei as 14 como "conveniente demais" porque a MESMA âncora se repetia catorze
+  vezes no documento. Medi depois: **cada um dos 16 arquivos citados usa `BASE_URL` exatamente uma
+  vez**. A âncora é perfeitamente específica. **Especificidade de âncora se mede no ARQUIVO ALVO,
+  não no documento que cita** · uma âncora que se repete em cinquenta linhas do documento e aparece
+  uma vez só em cada arquivo apontado é forte, e uma âncora única no documento que casa em dez
+  lugares do arquivo alvo é fraca. Eu olhei para o lado errado da citação.
+
+  **A UNIDADE QUE FICOU SEM EXPLICAÇÃO, e a explicação oferecida não se sustentava.** O script
+  próprio dela contou **70** envelhecidas contra as **71** do aviso, e ela atribuiu a diferença a o
+  script dela não tratar a marca `(citação histórica)`, dizendo na mesma frase que a marca **não
+  existe em nenhum dos dez documentos**. As duas afirmações não cabem juntas: o que não existe não
+  pode explicar diferença. Medido: as 71 se distribuem por **dez** arquivos, e o décimo é o
+  `Dominio.md`, **o único dos doze que a rodada 45 não tocou** (ele já tinha as duas âncoras que
+  precisava), contribuindo com exatamente **1**. Uma lista montada a partir dos arquivos TOCADOS na
+  rodada dá 70.
+
+  **O que fica disso, e não é sobre esta unidade:** hipótese oferecida para explicar discrepância
+  tem de ser TESTADA, porque explicação errada fecha a pergunta pior do que explicação nenhuma.
+  Ela disse honestamente que não perseguiu, o que é melhor do que fingir; mas a hipótese entrou no
+  relatório do lado do número, e quem ler depois vai levar a hipótese junto.
 
   **A MEDIDA FOI REFEITA COM O PRÓPRIO PORTÃO, e bateu.** A tabela acima saiu de uma cópia minha da
   heurística dele, e a ordem inteira do trabalho depende do número 57, então tomar a cópia pela
