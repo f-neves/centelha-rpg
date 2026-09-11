@@ -4922,6 +4922,21 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   campo. Quem construir o portão precisa saber disso, ou vai entregá-lo achando que cobriu os dois
   campos quando cobriu um.
 
+  **E A METADE DO ENVIO JÁ ESTÁ CONSTRUÍDA, o que quase virou trabalho repetido no mesmo dia.** A
+  Executora relatou que o `TOPO` do aviso 43 tinha "nascido velho" em `5c99550`, e propôs, como
+  conserto possível, reler o `HEAD` uma última vez antes do `--enviar`. **Essa releitura existe
+  desde a rodada 34** (o conserto do `L73`, linhas 160 a 183 do `rodada.mjs`), e ela FUNCIONOU:
+  conferido o objeto commitado, `git show 3920074:docs/simulacao/caixa/43-executora.md` traz
+  `SHA` e `TOPO` iguais a `b8ab3ea`, que é exatamente o pai do commit do aviso. O `5c99550` era o
+  valor do RASCUNHO em disco, antes de o `--enviar` reescrever os dois campos.
+
+  **A forma é a mesma do dia, vista do outro lado:** ela leu o arquivo como o tinha deixado (um
+  recorte mais estreito) e relatou sobre o aviso enviado (a pergunta). É prima de "o commit que
+  parece publicado": o que está no disco e o que está no objeto commitado são duas coisas, e só uma
+  delas é o que a Revisora vai ler. **O gesto que resolve é `git show <sha>:<caminho>`**, e não
+  abrir o arquivo. Se a conferência tivesse parado no rascunho, o portão da 44 teria ganhado uma
+  trava para um defeito que o `L73` já tinha fechado.
+
   → `L65` (a sequência dos commits da rodada), → `L73` (o outro defeito do `rodada.mjs`).
 
 - [ ] **L70 · [REGISTRADO em 10/09/2026, ligado ao `L67`, ABERTO por decisão do humano em
