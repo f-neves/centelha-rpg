@@ -4715,9 +4715,30 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   trocar tudo por `·` em bloco produziria 146 frases piores. Trocar leitura ruim por pontuação
   uniforme não é o que a regra quer.
 
-  **A ordem que isto sugere, e ela é do humano decidir:** varrer os três documentos como commit
-  próprio (fora de rodada, para o diff não se misturar com reaponte), e só depois ligar o portão.
-  Enquanto o portão não existir, quem escreve continua sendo a única rede.
+  **DECIDIDO PELO HUMANO em 11/09/2026: varrer as 146 primeiro, e só então ligar o portão.**
+  A varredura é commit próprio, fora de rodada, para o diff não se misturar com reaponte nenhum.
+  O portão que vem depois confere o ARQUIVO INTEIRO, e não só as linhas adicionadas.
+
+  **Ele recusou a opção barata, e recusou sabendo qual era o contra dela**, que eu tinha escrito
+  do lado: um portão só sobre as linhas adicionadas ligaria hoje, sem varredura nenhuma, e ataca
+  exatamente o que cresce. O problema dele é o falso positivo que **esta rodada produziu**: linha
+  que só teve o número de citação reapontado conta como adicionada, e acende por um travessão que
+  já estava lá desde antes e não é de quem commitou. Aconteceu comigo no `ESTADO.md` hoje. Portão
+  que cobra dívida alheia de quem passou perto é portão que alguém desliga.
+
+  **O contra do caminho escolhido, escrito para quem for executar e não como ressalva:** são 146
+  frases, cada uma pedindo pontuação diferente. **Trocar tudo por ponto-médio em bloco produziria
+  146 frases piores**, que é o oposto do que a regra quer · a regra existe porque o travessão é
+  maneirismo, não porque o ponto-médio seja bonito. Quem varrer lê cada frase e escolhe entre
+  vírgula, dois-pontos, parênteses, ponto e ponto-médio. E o diff de 146 linhas enterra qualquer
+  outra coisa que esteja acontecendo no dia, então a varredura não divide commit com nada.
+
+  **O ESCOPO DA DECISÃO É OS TRÊS DOCUMENTOS DA FRENTE**, que foi o que ele viu medido:
+  `Pendencias.md`, `ESTADO.md`, `VOZ.md`. Os **139** travessões dos oito arquivos do commit
+  `51e5f10` (114 só no `grid.astro`) são a mesma dívida em comentário de código, e NÃO estão
+  cobertos por esta decisão · quem ligar o portão decide se ele olha `.md` só, ou `.md` mais
+  comentário, e no segundo caso a varredura do código vem antes, medida de novo. Dizer isto aqui é
+  a diferença entre um número e um número com o escopo do lado.
 
 - [ ] **L80 · [MEDIDO pelo Arquiteto em 11/09/2026, na rodada 43, depois de o reapontador
   reescrever citações num documento que portão nenhum lê] O portão da procedência confere DOIS
@@ -4765,14 +4786,42 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   heurística do portão) e em mais nada fora dos dois documentos do portão. As 43 continuam onde
   estavam.
 
-  **A escolha que sobra para o humano, e ela tem três formas:** (a) ampliar `ALVOS` para os
-  documentos VIVOS e pagar a limpeza antes, com o `REVISORA.md` de fora por escrito, o que fecha o
-  buraco mas custa a varredura de 21 ponteiros mais 39 âncoras; (b) marcar os documentos parados
-  como históricos no cabeçalho, como o `REVISORA.md` já está, e ampliar só sobre os vivos, mais
-  barato e deixa `CONJURACAO.md`/`CONTEXTO.md`/`VOZ.md` cobertos; (c) deixar como está e aceitar
-  que citação fora dos dois documentos é palavra de quem escreveu. O contra de (c) é o que esta
-  rodada mostrou: um script escrito para ajudar reescreveu onze citações num documento que
-  conferência nenhuma olhava, e quem percebeu foi uma leitura de fora, não o instrumento.
+  **DECIDIDO PELO HUMANO em 11/09/2026: ampliar `ALVOS` para OS DEZ, e pagar a limpeza inteira.**
+  Uma regra só, sem lista de exceção para manter e sem ninguém julgando qual documento está vivo.
+
+  **Ele recusou a opção do meio, que era a que eu recomendava, e o motivo que eu tinha escrito
+  contra ela é o que decidiu:** marcar `REVISORA.md`, `Grid_Mobile.md`, `Auditoria_Tecnica.md` e
+  `Migracao_Dominio.md` como parados no cabeçalho seria julgamento meu sobre documento dos outros,
+  e eu erro para o lado de declarar parado o que está só quieto. O `Grid_Mobile.md` descreve o
+  telefone de hoje · se ele virasse histórico e alguém mexesse no Grid mobile amanhã, o portão
+  estaria cego exatamente onde deveria olhar. Marca de cabeçalho é barata de escrever e cara de
+  desfazer, porque ninguém relê nota de procedência depois.
+
+  **O que a decisão CUSTA, e o número não é o mesmo dos dois lados:**
+
+  · **as 22 do `REVISORA.md` viram marca `(citação histórica)`, uma a uma, e NÃO são reapontadas.**
+    Reapontá-las falsificaria o que a revisora antiga escreveu, e é a mesma razão da regra 6 da
+    caixa: atribuição. O arquivo diz de si mesmo que é registro histórico; a marca só põe isso numa
+    forma que o portão entende. É o maior pedaço do trabalho e o que menos parece trabalho.
+  · **21 ponteiros vivos são reapontados À MÃO**, pelo método do `L72` e não pelo do `L65`: o mapa
+    de hunks do reapontador só funciona sobre mudança não commitada, e estas envelheceram ao longo
+    de meses. Cada âncora é PROCURADA no arquivo de hoje, e nunca escolhida pela proximidade quando
+    ela repete · foi assim que as 23 do `L72` foram feitas.
+  · **57 citações ganham âncora**, e esta é a parte que ninguém estima direito. Não é reapontar: é
+    abrir o arquivo na linha citada, entender o que a citação está AFIRMANDO, e escrever isso entre
+    crases. Uma citação sem âncora não é endereço velho, é afirmação sem conteúdo. O portão recusa
+    o commit na primeira que encontra, antes mesmo de olhar as envelhecidas, então enquanto as 57
+    não estiverem escritas o portão ampliado não pode ser ligado.
+
+  **A ordem obrigatória, que sai do parágrafo acima:** as 57 âncoras, depois os 21 ponteiros,
+  depois as 22 marcas, e o `ALVOS` ampliado por último, com o portão vermelho antes e verde depois
+  · ligar primeiro trava a equipe inteira. **E a medida das 43/57 tem de ser refeita por quem
+  executar**, porque ela saiu da minha cópia da heurística do portão, não do portão: a diferença
+  entre as duas, se houver, é exatamente o tipo de coisa que este item existe para não deixar
+  passar.
+
+  **E o motivo de tudo isto vale repetir:** um script meu reescreveu onze citações num documento
+  que conferência nenhuma olhava, e quem percebeu foi uma leitura de fora, não o instrumento.
 
   → `L65` (o reapontador e a sua conferência), → `L72` (o portão passou a ver item fechado),
   → `L79` (a outra regra sem portão).
