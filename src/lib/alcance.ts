@@ -79,19 +79,24 @@ export function faixaDeDistancia(idOuNome: string | null | undefined, metros: nu
  * não há penalidade por estar colado, e inventar uma aqui seria escrever regra
  * na tela.
  *
- * `raioAlvoHex` é o raio do alvo, em hexágonos, medido de borda a borda
- * (Pendencias.md L67, 10/09/2026) · quem chama já converteu porte e escala da
- * arena, porque este módulo é puro e não sabe o que é uma mesa. Sem o
- * parâmetro, o alcance é o de sempre (centro a centro), para quem chama sem
- * saber o porte do alvo. Um alvo pequeno (raio negativo) nunca ENCURTA o
- * alcance: é a mesma regra do parágrafo acima, "perto demais não existe",
- * então o `Math.max(0, …)` mora aqui, na função que decide, e não em cada
- * chamador.
+ * `raioAlvoHex` é o raio do ALVO, em hexágonos, medido de borda a borda
+ * (Pendencias.md L67, 10/09/2026); `raioAtacanteHex` é o quanto o porte do
+ * próprio ATACANTE estende o alcance do centro dele (Pendencias.md L77,
+ * decidido em 11/09/2026 · `alcanceDoCentro = raio + braço`, e os `HEX_*` de
+ * hoje já embutem os 0,5 m de um atacante Médio, então este parâmetro é só o
+ * que PASSA disso). Quem chama já converteu porte e escala da arena para os
+ * dois, porque este módulo é puro e não sabe o que é uma mesa. Sem os dois
+ * parâmetros, o alcance é o de sempre (centro a centro, atacante Médio), para
+ * quem chama sem saber o porte de nenhum dos dois lados. Nenhum dos dois
+ * ENCURTA o alcance (um alvo ou atacante menor que Médio dá raio negativo):
+ * "perto demais" não existe nesta regra, então o `Math.max(0, …)` mora aqui,
+ * na função que decide, e não em cada chamador.
  */
 export function alcancaNoCorpoACorpo(
-  hexagonos: number, haste: boolean, raioAlvoHex = 0,
+  hexagonos: number, haste: boolean, raioAlvoHex = 0, raioAtacanteHex = 0,
 ): boolean {
-  return hexagonos <= (haste ? HEX_HASTE : HEX_CORPO_A_CORPO) + Math.max(0, raioAlvoHex);
+  return hexagonos <= (haste ? HEX_HASTE : HEX_CORPO_A_CORPO)
+    + Math.max(0, raioAlvoHex) + Math.max(0, raioAtacanteHex);
 }
 
 /**
@@ -109,6 +114,15 @@ export function alcancaNoCorpoACorpo(
  *
  * Sem arma no catálogo (`fx` nulo), não há como afirmar um teto: segue a mesma
  * regra do resto deste arquivo, "avisa e não impede".
+ *
+ * **A pergunta, no corpo a corpo, é se o AGRESSOR alcança a casa onde o
+ * interpositor terminaria** (Pendencias.md L76, resolvido pela fórmula do L77
+ * em 11/09/2026): `alcanceDoCentro(agressor) + raio(interpositor)`, os dois
+ * termos de `alcancaNoCorpoACorpo`. `raioInterpositorHex` é o raio do
+ * INTERPOSITOR (o lado "alvo" desta conta, borda a borda, L67);
+ * `raioAgressorHex` é o quanto o próprio porte do AGRESSOR estende o alcance
+ * dele (o lado "atacante", L77). O caso Médio contra Médio não muda: os dois
+ * ficam de fora e a régua cai no que já era (adjacência).
  */
 export function alcanceInterpor(opts: {
   corpoACorpo: boolean;
@@ -121,9 +135,15 @@ export function alcanceInterpor(opts: {
   metrosDoAgressor: number;
   /** Já calculado no tabuleiro: a casa cruza a reta agressor→posição original do aliado? */
   naLinha: boolean;
+  /** O raio do INTERPOSITOR, em hexágonos, borda a borda (L67). */
+  raioInterpositorHex?: number;
+  /** O quanto o porte do AGRESSOR estende o alcance do centro dele (L77). */
+  raioAgressorHex?: number;
 }): { pode: boolean; porque: string } {
   if (opts.corpoACorpo) {
-    return alcancaNoCorpoACorpo(opts.hexagonosDoAgressor, !!opts.haste)
+    return alcancaNoCorpoACorpo(
+      opts.hexagonosDoAgressor, !!opts.haste, opts.raioInterpositorHex ?? 0, opts.raioAgressorHex ?? 0,
+    )
       ? { pode: true, porque: '' }
       : {
         pode: false,

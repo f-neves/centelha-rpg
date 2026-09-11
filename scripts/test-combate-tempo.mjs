@@ -551,6 +551,33 @@ const AL = await carregar('src/lib/alcance.ts');
   eq(AL.alcancaNoCorpoACorpo(1, false), true,
     'sem o terceiro parâmetro, o alcance é o de sempre (centro a centro)');
 
+  // L77 (Pendencias.md, decidido em 11/09/2026): o L67 só somava o raio do
+  // ALVO; faltava o quanto o porte do próprio ATACANTE estende o alcance do
+  // CENTRO dele (`alcanceDoCentro = raio + braço`, `braço = max(0, raio −
+  // 0,5)`). O 4º parâmetro é essa metade.
+  //
+  // A INVARIANTE, provada EXPLICITAMENTE (não por ausência): Médio contra
+  // Médio é raio 0 dos dois lados, e o resultado tem de ser IDÊNTICO ao de
+  // antes do L77: mesmos números, mesmas duas linhas de cima, com o 4º
+  // parâmetro escrito por extenso (0), não omitido.
+  eq([AL.alcancaNoCorpoACorpo(1, false, 0, 0), AL.alcancaNoCorpoACorpo(2, false, 0, 0)], [true, false],
+    'a invariante do L77: Médio (raio 0) contra Médio (raio 0) não muda, ainda 1 alcança, 2 não');
+  eq([AL.alcancaNoCorpoACorpo(2, true, 0, 0), AL.alcancaNoCorpoACorpo(3, true, 0, 0)], [true, false],
+    'e a haste Médio contra Médio também não muda, ainda 2 alcança, 3 não');
+
+  // A conferência contra a tabela do humano (Pendencias.md L77): um Enorme
+  // (diâmetro 4 m) tem `alcanceDoCentro = 2 + 1,5 = 3,5 m`, que em hexágonos
+  // (escala 1 m) soma 3 ao alcance do CENTRO, o 3,5 m menos os 0,5 m de um
+  // atacante Médio que os `HEX_*` já embutem.
+  eq([AL.alcancaNoCorpoACorpo(4, false, 0, 3), AL.alcancaNoCorpoACorpo(5, false, 0, 3)], [true, false],
+    'um atacante Enorme (raioAtacanteHex 3) alcança até 4 hexágonos, não 5, Aboleth → humano, 4 m no total');
+  // E os dois lados somam juntos, não um vencendo o outro: Enorme atacando
+  // Enorme (o próprio raio E o do alvo, ao mesmo tempo) soma os dois termos.
+  eq([AL.alcancaNoCorpoACorpo(7, false, 3, 3), AL.alcancaNoCorpoACorpo(8, false, 3, 3)], [true, false],
+    'Enorme contra Enorme soma os dois lados: 1 + 3 + 3 = 7, não 4');
+  eq(AL.alcancaNoCorpoACorpo(1, false, 0, -0.25), true,
+    'um atacante Pequeno (raio NEGATIVO na conta) também não encurta: 1 continua alcançando');
+
   // Arco curto: máximo 120, livre 1/3 = 40. Sobram 80, em quatro de 20.
   const a = AL.alcanceDaArma('arco-curto');
   eq([a.livre, a.max], [40, 120], 'o alcance livre é a fração que a arma declara');
@@ -612,6 +639,41 @@ const AL2 = AL; // mesmo módulo já carregado na seção 6, o Interpor usa a me
   eq(cac(2).pode, false, 'a dois hexágonos do agressor, a espada não alcança para ninguém se interpor');
   ok(/alcance do agressor/.test(cac(2).porque), 'e o motivo é dito');
   eq(cac(2, true).pode, true, 'com haste, dois hexágonos ainda alcançam');
+
+  // L76 (Pendencias.md, RESOLVIDO pela fórmula do L77 em 11/09/2026): a
+  // pergunta corpo a corpo é se o AGRESSOR alcança a casa onde o
+  // INTERPOSITOR terminaria: `alcanceDoCentro(agressor) + raio(interpositor)`,
+  // os mesmos dois parâmetros novos de `alcancaNoCorpoACorpo`.
+  //
+  // A INVARIANTE, explícita: Médio contra Médio (os dois raios em 0) é
+  // exatamente o caso de cima (`cac`), a régua antiga do L34 §6 não muda.
+  eq(AL2.alcanceInterpor({
+    corpoACorpo: true, hexagonosDoAgressor: 1, metrosDoAgressor: 1, naLinha: false,
+    raioInterpositorHex: 0, raioAgressorHex: 0,
+  }).pode, true, 'a invariante do L76: interpositor Médio, agressor Médio, adjacente, ainda pode');
+  eq(AL2.alcanceInterpor({
+    corpoACorpo: true, hexagonosDoAgressor: 2, metrosDoAgressor: 2, naLinha: false,
+    raioInterpositorHex: 0, raioAgressorHex: 0,
+  }).pode, false, 'e ainda não alcança a dois hexágonos, os dois raios em 0');
+
+  // Um AGRESSOR Enorme (raioAgressorHex 3, a mesma conta do L77) alcança a
+  // casa do interpositor de mais longe: até 4 hexágonos, não 5.
+  const cacAg = (hex) => AL2.alcanceInterpor({
+    corpoACorpo: true, hexagonosDoAgressor: hex, metrosDoAgressor: hex, naLinha: false,
+    raioAgressorHex: 3,
+  });
+  eq([cacAg(4).pode, cacAg(5).pode], [true, false],
+    'agressor Enorme: alcança a casa do interpositor Médio a 4 hexágonos, não a 5');
+
+  // Um INTERPOSITOR Enorme (raioInterpositorHex, o lado do L67/"alvo" desta
+  // conta) é mais fácil de alcançar, pelo mesmo motivo que um alvo Enorme
+  // sempre foi: o corpo dele já cobre parte da distância.
+  const cacInt = (hex) => AL2.alcanceInterpor({
+    corpoACorpo: true, hexagonosDoAgressor: hex, metrosDoAgressor: hex, naLinha: false,
+    raioInterpositorHex: 1.5,
+  });
+  eq([cacInt(2).pode, cacInt(3).pode], [true, false],
+    'interpositor Enorme: o agressor Médio alcança a casa dele a 2 hexágonos, não a 3');
 
   // 7d. à distância: dentro do alcance da arma ORIGINAL, medido do agressor, e na linha.
   const dist = (m, naLinha) => AL2.alcanceInterpor({

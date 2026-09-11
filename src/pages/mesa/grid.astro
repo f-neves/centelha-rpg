@@ -3367,6 +3367,27 @@ const SETAS = [
   };
 
   /**
+   * Quanto o PORTE do próprio ATACANTE estende o alcance do CENTRO dele, em
+   * hexágonos (Pendencias.md L77, decidido em 11/09/2026).
+   *
+   * A regra: `alcanceDoCentro = raio + braço`, `braço = max(0, raio − 0,5)`.
+   * Os `HEX_CORPO_A_CORPO`/`HEX_HASTE` de hoje já embutem os 0,5 m de um
+   * atacante Médio (a metade que faltava, `raioExtraHex`, é o lado do alvo);
+   * este helper devolve só o que PASSA disso: `alcanceDoCentro(atacante) −
+   * 0,5 m`, que em metros é `diâmetro − 1` (a álgebra: para porte ≥ Médio,
+   * raio + (raio − 0,5) − 0,5 = 2·raio − 1 = diâmetro − 1). Um Médio dá zero,
+   * e é isso que faz a invariante fechar: entre dois Médios nada muda.
+   *
+   * Mesmas duas regras de `raioExtraHex`: nunca ENCURTA (`Math.max(0, …)`,
+   * um atacante menor que Médio não perde alcance) e ARREDONDA PARA CIMA
+   * (mesma geometria: parar no chão ainda deixaria os corpos se cruzando).
+   */
+  const alcanceCentroExtraHex = (c: any): number => {
+    const escala = Number(ARENA?.escala_m) || 1;
+    return Math.ceil(Math.max(0, diametroM(c) - 1) / escala);
+  };
+
+  /**
    * Quantos pixels do mundo vale um metro.
    *
    * Um passo de hexágono vale `escala_m` metros e mede `larguraHex(RAIO)` px
@@ -5374,12 +5395,14 @@ const SETAS = [
   // ============================================== o relógio do simultâneo
   /**
    * O alcance de perseguição de uma peça, em hexágonos: braço ou haste, mais o
-   * raio do alvo quando ele é dado (L67, borda a borda). Sem `alvo`, é só o
-   * braço, para quem chama sem ter ainda um alvo concreto.
+   * quanto o PRÓPRIO porte de `c` estende o alcance do centro dele (L77), mais
+   * o raio do alvo quando ele é dado (L67, borda a borda). Sem `alvo`, fica só
+   * a parte que não depende de quem se persegue, para quem chama sem ter
+   * ainda um alvo concreto.
    */
   const alcanceDaPeca = (c: any, alvo?: any): number =>
     (classeDeTempo(RESUMO[c.id]?.arma, RESUMO[c.id]?.velocidade, RESUMO[c.id]?.classe) === 'haste'
-      ? HEX_HASTE : HEX_CORPO_A_CORPO) + (alvo ? raioExtraHex(alvo) : 0);
+      ? HEX_HASTE : HEX_CORPO_A_CORPO) + alcanceCentroExtraHex(c) + (alvo ? raioExtraHex(alvo) : 0);
 
   /**
    * O PASSO DA PEÇA, em metros por Tick, pela régua de quem ela é.
@@ -6348,6 +6371,8 @@ const SETAS = [
           const r = alcanceInterpor({
             corpoACorpo, haste: classe === 'haste', hexagonosDoAgressor: hexs,
             idOuNomeArma: ra?.arma, metrosDoAgressor: metros, naLinha,
+            raioInterpositorHex: raioExtraHex(interpositor),
+            raioAgressorHex: alcanceCentroExtraHex(agressor),
           });
           pode = r.pode; porque = r.porque;
         } else {
@@ -8286,7 +8311,7 @@ const SETAS = [
     // diz é onde ele está AGORA, e não onde vai estar.
     const cx = el('dc-aviso') as HTMLElement;
     const longe = hexes != null && classe !== 'distancia' && classe !== 'arremesso'
-      && !alcancaNoCorpoACorpo(hexes, classe === 'haste', raioExtraHex(alvo));
+      && !alcancaNoCorpoACorpo(hexes, classe === 'haste', raioExtraHex(alvo), alcanceCentroExtraHex(atacante));
     cx.hidden = !longe || SIML();
     if (longe && !SIML()) {
       cx.textContent = `Fora do alcance agora, a ${fmtM(dist!)}: o golpe só cai no Tick`
@@ -8320,7 +8345,10 @@ const SETAS = [
     // prévia de Ticks de viagem dizia um número, e `declararAtaqueSimultaneo`
     // (que já soma o raio) gravava outro. Sem o raio aqui, a viagem some cedo
     // demais e a prévia mostra um Tick que a agenda de verdade não cumpre.
-    const alcHex = (classe === 'haste' ? HEX_HASTE : HEX_CORPO_A_CORPO) + raioExtraHex(alvo);
+    // Mesmo defeito, achado de novo na rodada 43 (L77): faltava o alcance do
+    // CENTRO do próprio atacante, além do raio do alvo.
+    const alcHex = (classe === 'haste' ? HEX_HASTE : HEX_CORPO_A_CORPO)
+      + alcanceCentroExtraHex(atacante) + raioExtraHex(alvo);
     const viagemAtual = () => {
       if (!precisaAndar || hexes == null) return 0;
       const v = Math.max(0.5, parseFloat(mvVel.value || '3') || 3);
@@ -9732,9 +9760,12 @@ const SETAS = [
             + ` ${fx.pen} no acerto, para somar à mão.`
           : '';
       }
-      return alcancaNoCorpoACorpo(hexes, classe === 'haste', raioExtraHex(alvo)) ? ''
+      return alcancaNoCorpoACorpo(
+        hexes, classe === 'haste', raioExtraHex(alvo), alcanceCentroExtraHex(atacante),
+      ) ? ''
         : `Corpo a corpo a ${fmtM(dist!)}: a ${classe === 'haste' ? 'haste' : 'arma'} alcança`
-          + ` ${(classe === 'haste' ? HEX_HASTE : HEX_CORPO_A_CORPO) + raioExtraHex(alvo)} hexágono(s).`;
+          + ` ${(classe === 'haste' ? HEX_HASTE : HEX_CORPO_A_CORPO)
+            + alcanceCentroExtraHex(atacante) + raioExtraHex(alvo)} hexágono(s).`;
     })();
     const cxAviso = el('al-aviso') as HTMLElement;
     cxAviso.hidden = !avisoAlcance;
@@ -10213,7 +10244,8 @@ let roladoDano = '';
      */
     const valoresDoLance = (): [string, string, string][] => {
       const a = anat();
-      const alc = (classeAtq === 'haste' ? HEX_HASTE : HEX_CORPO_A_CORPO) + raioExtraHex(alvo);
+      const alc = (classeAtq === 'haste' ? HEX_HASTE : HEX_CORPO_A_CORPO)
+        + alcanceCentroExtraHex(atacante) + raioExtraHex(alvo);
       const pAtq = passoDaPeca(atacante), pAlv = passoDaPeca(alvo);
       return [
         ['dist', 'Distância', dist != null ? fmtM(dist) : '—'],

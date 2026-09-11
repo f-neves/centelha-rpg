@@ -646,6 +646,14 @@ if (BANDEIRAS) {
  *     parado ao lado prendendo os seis vizinhos de quem encosta nele" que a
  *     proibição do L67 protege, e não depende do raio do alvo em ponto
  *     nenhum: prova que consertar `at` não reabriu o defeito de `vz`.
+ *
+ *   `en` ataca `md` (Pendencias.md L77, decidido em 11/09/2026): a metade que
+ *     faltava no L67, o raio do PRÓPRIO ATACANTE. `md` é Médio, em `q:4,r:9`,
+ *     5 hexágonos de `en`. O alcance NOVO do Aboleth atacando é 4
+ *     (`HEX_CORPO_A_CORPO(1) + alcanceCentroExtraHex(en)(3) +
+ *     raioExtraHex(md)(0)`); o de sempre, sem o L77, seria 1. A 5 hexágonos
+ *     ele continua FORA: a borda prova que o termo novo soma e tem teto, não
+ *     que passou a alcançar qualquer distância.
  */
 if (CORPOACORPO) {
   const r = resumoCombatePC(KAEL);
@@ -660,7 +668,25 @@ if (CORPOACORPO) {
   // comentário do código), e sem a folga esse zigue-zague cruzaria q ou r
   // negativo, fora do tabuleiro.
   const por = [
-    { id: 'en', tipo: 'criatura', monstro_id: 'mon-aboleth', q: 4, r: 4, acao: {} },
+    // `en` ganha um golpe JÁ AGENDADO contra `md` (Pendencias.md L77, decidido
+    // em 11/09/2026): o raio do PRÓPRIO ATACANTE, que faltava. `dados` escrito
+    // à mão (`classe: 'leve'`) é o mesmo caminho que `resumoDe` usa para uma
+    // peça sem ficha (o ajuste por instância vence a base do bestiário), só
+    // para não depender do ataque natural real do Aboleth ter Velocidade 5.
+    {
+      id: 'en', tipo: 'criatura', monstro_id: 'mon-aboleth', q: 4, r: 4,
+      acao: {
+        golpes: [2], livre: 7, desde: 0, tipo: 'simples', arma: null,
+        alvo: 'md', aResolver: [2],
+      },
+      dados: { arma: null, velocidade: 5, classe: 'leve' },
+    },
+    // `md`: o alvo Médio do golpe de `en`, a distância 5 (o alcance NOVO do
+    // Aboleth é 4: `HEX_CORPO_A_CORPO(1) + alcanceCentroExtraHex(en)(3) +
+    // raioExtraHex(md)(0)`; o de sempre, sem o L77, seria 1). A 5 ele continua
+    // fora, e é essa borda que prova que o termo novo soma e tem teto, não
+    // "sempre alcança agora".
+    { id: 'md', tipo: 'pc', monstro_id: null, q: 4, r: 9, acao: { golpes: [], livre: 0, desde: 0 } },
     {
       id: 'at', tipo: 'pc', monstro_id: null, q: 4, r: 10,
       acao: {
@@ -700,7 +726,7 @@ if (CORPOACORPO) {
       mana_max: null, mana_atual: null,
       tick: 0, iniciativa: 20 - k,
       acao: p.acao,
-      dados: p.tipo === 'pc' ? { ...numeros } : {},
+      dados: p.dados ?? (p.tipo === 'pc' ? { ...numeros } : {}),
       condicoes: [], ativo: true, oculto: false, imagem: null, retrato: null,
     });
     TOKENS.push({
