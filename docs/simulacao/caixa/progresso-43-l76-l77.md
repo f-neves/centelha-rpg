@@ -84,3 +84,28 @@ não só por item), no instante em que ela fecha, hora lida da máquina (`date +
   estaria misturando duas autorias. Escalando ao Arquiteto e PARANDO de trabalhar no
   código até a resposta: `npm run validate` continua vermelho por causa disto, então não
   há commit possível ainda (o gancho de `pre-commit` recusaria).
+- 13:32 · REAPONTE DO ARQUITETO CHEGOU, E A CORREÇÃO SOBRE MIM: os três hunks de
+  `mesa-mock.mjs` são meus, todos; o rótulo `if (BANDEIRAS) {` no cabeçalho `@@` do
+  `git diff` é só a última linha que a heurística de contexto do git achou acima do
+  hunk, não o lugar de onde ele saiu. Consertei os dez travessões que entraram nesta
+  rodada (achados pelo Arquiteto no diff, mais três que ele não viu porque
+  `test-l77-alcancecentro-mesa.mjs` é arquivo novo e `git diff` não varre não
+  rastreado, o mesmo buraco da rodada 41): todos por troca de caractere na mesma
+  linha, sem quebrar linha nenhuma, para não mexer no deslocamento que ele já
+  reapontou. `npm run validate` inteiro: verde, 148 citações conferidas, 1 histórica.
+- 13:35 · CÓDIGO COMMITADO (`51e5f10`), com pathspec, deixando `Pendencias.md`,
+  `ESTADO.md` e `VOZ.md` de fora (são do Arquiteto, passo 3 do L65). Push limpo,
+  `origin/main` confere em 0.
+- 13:38 · UMA LINHA NOVA NO CATALOGO.md (autorizada pelo próprio Arquiteto, ao pedir
+  "uma linha... quando você for escrever o fechamento"): nova linha na tabela "As
+  formas", "o rótulo de escopo do `git diff`", registrando o achado do item 1 acima.
+  Conferido antes de escrever: nada cita `CATALOGO.md` por número de linha em
+  `Pendencias.md`/`ESTADO.md`/`VOZ.md`, e `test-procedencia.mjs` não varre
+  `CATALOGO.md`, então a linha nova não quebra citação nenhuma.
+- 13:39 · Rodando `npm run validate` mais uma vez pego um falso alarme (1 citação
+  "envelhecida" em `Pendencias.md:3737`, sobre `cenaLembranca`); rodei
+  `test-procedencia.mjs` sozinho de novo na hora seguinte e voltou verde. Não é meu:
+  não toquei em `Pendencias.md` desde o commit, e o arquivo é compartilhado com o
+  Arquiteto trabalhando nele agora. Leitura: peguei o arquivo no meio de uma escrita
+  dele. Registrando para não alarmar por um sintoma que já sumiu. Rodada pronta:
+  código dentro, empurrado, aviso a escrever.
