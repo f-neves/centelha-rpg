@@ -46,3 +46,9 @@ da máquina (`date +%H:%M`).
   o `p.close()` órfão e os testes rodando contra página fechada, e consertei antes de seguir;
   registrado porque é exatamente o tipo de erro silencioso que "reler antes de confiar" existe
   para pegar. `npm run validate`: só procedência vermelha (10 citações, deslocamento de sempre).
+- 03:44 — reaponte do Arquiteto (cd31b74), rodada enviada em um único `--enviar` (sha do aviso
+  bc7a64f, sha de trabalho f4df8f7). No aviso: os nove setters como extração sem mudança de
+  comportamento (D38b, com a prova), o achado D38c com a mesma clareza do L74, e a lacuna
+  registrada de cobertura (só Arte/Efeito/um parâmetro testados ao vivo; molde/sólido/etc. só
+  pelo parser puro). Registrando o vão sem linha (02:53 a 03:39) como lição: a próxima etapa
+  intermediária ganha uma linha própria, mesmo curta, em vez de esperar o fim do bloco.
