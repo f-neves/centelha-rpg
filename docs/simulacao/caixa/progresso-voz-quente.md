@@ -44,3 +44,7 @@ da máquina (`date +%H:%M`).
 - 23:16 — Arquiteto refez o reaponte de uma vez só (contra `HEAD`, os 18 hunks completos, minhas 10
   linhas absorvidas por um hunk já existente): 45 citações conferidas, 0 quebradas. `test-procedencia.mjs`
   verde. Commitando o meu trabalho por pathspec e abrindo a rodada 34.
+- 23:21 — rodada enviada (o aviso completo, `npm run validate` verde no pre-commit). Rodei
+  `-- --enviar` duas vezes por engano no mesmo minuto; a segunda vez só reescreveu SHA/TOPO do
+  próprio aviso (o script detectou e corrigiu, 2 linhas), sem duplicar conteúdo nem quebrar nada —
+  registrado para o Arquiteto, sha final abaixo. Árvore limpa.
