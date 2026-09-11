@@ -4973,10 +4973,31 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   conserta. **O portão acusa as duas do mesmo jeito**, com a mesma frase, o que faz a segunda
   parecer a primeira e convida quem estiver com pressa a mexer no número em vez de ler o código.
 
-  **Uma unidade continua sem reconciliar** entre a contagem dela (33 ponteiros) e a minha (32
-  renumeradas), possivelmente na classificação de um conserto de âncora. **Registrada como "1 de
-  diferença, causa não investigada"**, que é a formulação certa quando não se testou, e não uma
-  hipótese com cara de medida.
+  **A UNIDADE RECONCILIOU, e a resposta estava a um comando de distância o tempo todo.** O 33 dela
+  e o 32 meu contavam universos diferentes: as **3 citações `BASE_URL`** foram consertadas num
+  passo separado, na abertura da rodada, ANTES de ela medir os 33. Então 3 + 33 = 36 ponteiros
+  vivos, e dentro dos 33 há 4 consertos de âncora e 29 renumerações, de modo que 29 + 3 = **32
+  renumeradas**, exatamente o meu número. Conferido por mim contra o diff do `Migracao_Dominio.md`,
+  que tem quatro renumerações: as três `BASE_URL` mais a citação ao `Base.astro` que saiu da linha
+  33 para a 44. **Nenhum dos dois números estava errado.**
+
+  **E ESTA FOI A TERCEIRA VEZ NO MESMO DIA que escrever sobre um conserto de citação reintroduziu o
+  defeito.** Duas vezes por citar a âncora antiga entre crases, uma por citar o endereço antigo na
+  forma `arquivo:NNN`. O padrão é um só: **contar uma correção exige nomear o estado errado, e
+  nomear o estado errado na notação que o portão entende faz dele uma afirmação de hoje.** A regra
+  que fecha os três casos: **ao narrar um conserto, o estado ANTIGO vai em prosa** (a linha 33, a
+  âncora que apontava para o arquivo de dados), **e só o estado de HOJE usa crase e a notação
+  `arquivo:NNN`.**
+
+  **E eu registrei "causa não investigada" sem ter feito a investigação mais barata que existia:**
+  a mensagem do commit `3c5201d` já dizia, por extenso e antes de eu perguntar, *"os 33 ponteiros
+  vivos restantes (36 menos as 3 `BASE_URL` já consertadas)"*. Um `git log -1` no commit que eu
+  estava contando respondia tudo.
+
+  **A formulação "causa não investigada" é honesta e continua certa, mas ela não é licença para
+  pular uma checagem de um comando.** Ela existe para o caso em que investigar custa caro ou não
+  cabe na rodada. Usá-la antes de olhar a mensagem do commit que produziu o número é a mesma
+  preguiça da hipótese não testada, com roupa de rigor.
 
   **A CONFERÊNCIA QUE EU USEI PARA LIBERAR O COMMIT, melhor que a que tinha sido oferecida:** a
   Executora ofereceu o `numstat` simétrico, que prova que nenhuma linha nasceu ou morreu. Comparei o
