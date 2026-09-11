@@ -4118,6 +4118,28 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **O tamanho:** cinco citações, e o trabalho é de leitura e não de script. Não entra na rodada 34
   (uma frente por vez) e não bloqueia nada: item fechado não orienta construção.
 
+- [ ] **L73 · [achado na rodada 34, em 10/09/2026] `npm run rodada -- --enviar` rodado duas vezes
+  grava no aviso um `SHA` que aponta para o próprio commit do aviso, e não avisa.**
+
+  **O mecanismo, e ele vem de uma proteção certa:** o `--enviar` relê `HEAD` na hora de commitar,
+  de propósito, porque entre abrir e enviar a árvore pode andar · está escrito no cabeçalho do
+  `scripts/rodada.mjs` e resolveu um defeito real da rodada 28. Mas na SEGUNDA chamada seguida o
+  `HEAD` já é o commit do primeiro aviso, então `SHA` e `TOPO` passam a nomear o aviso em vez do
+  trabalho. O script tem guarda para "aviso com o modelo dentro" e para "árvore suja fora do
+  aviso"; não tem nenhuma para "enviar um aviso que já foi enviado".
+
+  **O que NÃO quebra, e é importante não exagerar o defeito:** a cobertura da revisão continua
+  inteira, porque o commit do aviso descende do trabalho e `git log BASE..SHA` traz tudo. O que
+  quebra é o campo: ele deixa de nomear o que promete, e é um campo em que a Revisora confia sem
+  conferir, que é a razão de ele existir.
+
+  **A forma, e já está no `CATALOGO`:** *a medida batizada com o nome da causa* · o campo se chama
+  "sha do fim deste trecho" e passou a conter o sha do aviso sobre o trecho.
+
+  **A saída provável, pequena:** recusar quando `HEAD` já for um commit de aviso (a mensagem dele é
+  fixa, `rodada NN · aviso à revisora`), dizendo que o aviso daquela rodada já foi enviado e qual é
+  o sha. Não decidido, e não abre agora.
+
   **Travar para sempre é a pior degradação que existe**, porque não diz nada e não se recupera · o
   mestre no meio de uma mesa não tem como saber se espera ou desiste. → `VOZ.md` §8 item 3.
 
