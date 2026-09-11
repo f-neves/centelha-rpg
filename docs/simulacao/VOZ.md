@@ -34,13 +34,13 @@ O levantamento pedido no §3 (respondido pela Executora) trouxe três correçõe
 documento supunha, e uma notícia boa:
 
 - **Desfazer não é a rede que este documento supunha.** Cobre posição e Vida
-  (`desfazer()`, `grid.astro:10240-10261`), não cobre Mana, a declaração do golpe, o Tick nem a
+  (`src/pages/mesa/grid.astro:10524` · `async function desfazer`), não cobre Mana, a declaração do golpe, o Tick nem a
   agenda. A decisão de dispensar confirmação a cada comando (§4) dependia de desfazer barato, e
   ele não existe para metade do que a voz executaria;
 - **Escolher arma não existe.** A arma vem fixa da ficha do personagem; "ataca com o machado" não
   tem o que executar hoje. Os nomes de arma seguem no vocabulário de teste, porque medir palavra
   comum vale igual, mas não são parâmetro de comando (ver §2);
-- **Mana não distingue dar de tirar.** É uma função só (`ajustarMana`, `grid.astro:9944`), então
+- **Mana não distingue dar de tirar.** É uma função só (`src/pages/mesa/grid.astro:10217` · `async function ajustarMana`), então
   o sinal vem da fala: "dá quatro de mana" e "tira quatro de mana" chamam a mesma função com
   valores opostos.
 
@@ -505,9 +505,10 @@ Não entram letras, não entram casas, não entram nomes.
 | **faces de d6** | `al-total` e `al-dn`, os dois campos do caminho quente | **6 palavras**, `um` a `seis` | comprimento da sequência, não confusão de palavra |
 | **números livres** | o ajuste avulso, os dois do raspão, o custo em Ticks, os três da válvula do improviso, e os campos da ficha do lance | aberta | a família do `-ze` inteira |
 
-Os campos da ficha do lance são 21, declarados em tabela com rótulo em
-`src/pages/mesa/grid.astro:9506` · `const CAMPOS_ATQ` e `src/pages/mesa/grid.astro:9519` ·
-`const CAMPOS_ALVO`, e 17 deles são numéricos. Eles são **correção**, e não o gesto de toda rodada.
+Os campos da ficha do lance são 21, declarados em duas tabelas com rótulo:
+`src/pages/mesa/grid.astro:9506` · `const CAMPOS_ATQ`, e
+`src/pages/mesa/grid.astro:9519` · `const CAMPOS_ALVO`.
+Dezessete deles são numéricos. Eles são **correção**, e não o gesto de toda rodada.
 
 **O risco da segunda lista é real e mensurável:** números falados em português têm famílias
 confundíveis (`três` e `seis`, `dois` e `doze`, `treze` e `três`, a família toda terminada em
@@ -570,3 +571,131 @@ antes de medir aqui é apostar na forma da fala.
   fatia sugere, e **quem responde isso é a mesa, e não o documento**;
 - **o peso em produção.** A biblioteca são 3,1 MB versionados e o modelo 31 MB não versionados, e a
   decisão de como o modelo chega à mesa publicada é do humano (`caixa/33-executora.md`, `D33b`).
+
+---
+
+## 10 · A régua: a voz como alternativa ao clique e ao número, dentro do Grid
+
+**Escrita em 10/09/2026.** O humano pediu que a voz fosse alternativa a **quase toda tela do Grid em
+que alguém clica ou digita número**, e fechou doze decisões em três rodadas de pergunta. Este
+capítulo é a régua que faltava. **Continua não sendo autorização de construir**: é o que a
+construção terá de obedecer quando ele mandar.
+
+**O pedido, na frase dele:** *"no Grid quero pelo menos que cada tela de ação, ataque e magia possa
+ser aberta e resolvida com o comando por voz"*, começando pequeno e crescendo depois, e por ora só
+no Grid, com o resto do site mais tarde.
+
+### 10.1 · O que é possível, em três classes
+
+Isto vem antes das decisões porque foi o que as moldou.
+
+| classe | dá para voz? | por quê |
+|---|---|---|
+| **campo de número dentro de caixa aberta** | **sim, e escala de graça** | os campos nascem de tabela com rótulo (`src/pages/mesa/grid.astro:9506` · `const CAMPOS_ATQ`). Um mecanismo só, "rótulo mais número", cobre todos |
+| **gesto espacial** (arrastar, mirar, alvo, enquadrar, névoa) | **não, e por decisão** | o §2 fechou "o toque diz quem". Dizer posição por fala é mais lento que apontar, sempre |
+| **tela de preparo** (arena, aparência, setas, trilha) | tecnicamente trivial | **vale zero**: não aparece em gesto nenhum da medição do §9.1 |
+
+**E o teto que manda em tudo:** o reconhecedor recusa o que está fora da gramática, e **cada palavra
+acrescentada piora o acerto de todas as outras**. "Quase toda a tela" só existe com gramática
+contextual. É disso que sai a decisão 2.
+
+### 10.2 · As doze decisões
+
+**1 · O acionamento é TECLA FÍSICA SEGURADA**, e não mais o botão na tela. A mão já está no
+teclado; caçar o microfone custa o mesmo que caçar o menu, que é o argumento já escrito no bloco de
+atalhos do Grid. O botão `#gr-voz` da rodada 33 continua existindo para o telefone e para quem não
+tem teclado.
+
+**O que isso obriga, e é achado desta régua:** a tecla da voz **precisa de escuta própria**. O bloco
+de atalhos de hoje desiste dentro de diálogo
+(`src/pages/mesa/grid.astro:11164` · `document.querySelector('dialog[open]')`)
+e desiste com o foco num campo
+(`src/pages/mesa/grid.astro:11163` · `a.tagName === 'INPUT'`) · que é **exatamente** onde a voz
+precisa funcionar, porque é dentro da folha e com o cursor num campo que o mestre fala. A escuta
+nova também tem de barrar a letra de entrar no campo enquanto a tecla estiver segurada, e ignorar a
+repetição automática do teclado.
+
+**2 · A gramática é de DUAS CAMADAS, e começa pequena.** Um núcleo sempre ativo (os números, os
+verbos que a barra já tem, cancelar) mais a camada da caixa que está aberta no momento. Só o Grid
+nesta frente; outras partes do site depois, se der certo.
+
+**3 · A voz PREENCHE CAMPO e não aperta botão que aplica.** Nesta rodada. O plano declarado do
+humano é, mais adiante, "entender e aplicar automaticamente", e a régua registra isso como direção
+e não como permissão: cada botão que aplica entra por decisão dele, um a um.
+
+**4 · Quem a tela é: a PEÇA DA VEZ pela ordem da iniciativa, ou a PEÇA CLICADA.** Nome próprio
+**não entra** no léxico. O §2 fica intacto: quem é continua sendo dito pelo toque ou pelo relógio,
+e a voz nunca escolhe pessoa. É também a opção que não faz a gramática mudar a cada encontro.
+
+**5 · Os dados são da MESA.** A voz nunca manda rolar, mesmo com o botão "rolar" existindo em cada
+tela: quem rola é o mestre ou o jogador, e a tela só recebe o valor. **Isso mantém o risco de
+transcrição de número inteiro**, e é escolha de jogo e não de interface, então fica.
+
+**6 · Número é DUAS listas, e não uma** (a tabela do §9.5): as faces de d6, seis palavras, nos dois
+campos do caminho quente; e os números livres em todo o resto. O campo guarda as faces
+(`src/pages/mesa/grid.astro:465` · `id="al-total"`), e quem soma é a folha
+(`src/lib/rolagem.ts:93` · `const rolls`).
+
+**7 · O texto livre ganha DITADO SEM GRAMÁTICA, e só nele.** São três campos: o "o quê" da ação
+(`src/pages/mesa/grid.astro:526` · `id="ou-oque"`), o motivo do ajuste avulso, e o filtro de efeitos
+da magia (`src/lib/artes-grid-ui.ts:678` · `id="ag-busca"`). Nesses, o reconhecedor roda solto e
+transcreve o que vier. **A taxa de erro é bem pior, e o erro cai onde ninguém calcula**: estraga o
+registro, não a conta. Fora desses três campos, ditado livre não existe.
+
+**8 · O escopo desta rodada é o CAMINHO QUENTE MAIS AS TRÊS TELAS.** Acerto, dano, ajuste avulso e
+os dois do raspão, mais o que as telas de ação e magia pedem, mais as listas curtas de escolha. Os
+17 campos de correção da ficha do lance ficam para depois: são correção, e não gesto de toda rodada.
+
+**9 · Na magia, a voz ENCHE A CAIXA E PARA.** Arte, Efeito, parâmetros, molde, fatias, abertura,
+curvatura, Velocidade. O dedo aperta Conjurar e marca no chão. **Direção declarada para depois, se
+tudo der certo: escolher o alvo e conjurar por voz também** · e aí será preciso mexer nas quatro
+funções do tabuleiro, que hoje disparam a promessa de clique incondicionalmente e não aceitam alvo
+por parâmetro (`src/lib/artes-grid-mesa.ts:702` · `escolherAlvoNoMapa`).
+
+**10 · Parâmetro de magia entra por VALOR DIRETO NO PLANO.** Hoje Alcance, Dano, Duração, Área e
+Alvos só existem como botão mais e menos (`src/lib/artes-grid-ui.ts:577` · `data-par`), então não há
+onde "dano cinco" cair. **Esta é a única mudança estrutural que a régua exige**: abrir na caixa de
+conjurar um caminho que escreva o valor e repinte, em vez de simular cliques. Fala absoluta, e não
+relativa.
+
+**11 · O léxico da magia é SÓ O QUE A PEÇA TEM.** Das 24 Artes e 140 Efeitos do catálogo, a camada
+carregada é a daquele conjurador, que costuma ser um punhado. É o ganho concreto das duas camadas, e
+a gramática troca quando a peça troca.
+
+**12 · Fala com a tela fechada ABRE A FOLHA e preenche.** "acerto quatro dois seis" sem folha aberta
+abre a da peça da vez (ou da clicada) e escreve. É o que faz a fala valer os 51%, porque abrir o
+cartão é 17% sozinho. **O preço aceito:** frase solta na mesa pode abrir tela que ninguém pediu, e o
+remédio é a tecla segurada da decisão 1 · nada é ouvido fora do aperto.
+
+### 10.3 · As três telas, e o que cada uma fica devendo
+
+| tela | o que a voz resolve | o que continua no dedo |
+|---|---|---|
+| **ataque** (a folha do golpe) | as faces do acerto e do dano, o ajuste, os dois do raspão, tipo de dano, empunhadura, número de golpes | o alvo (mira no mapa), o botão do veredito, o motivo do ajuste (ditado livre) |
+| **ação** (a outra coisa) | custo em Ticks, agora ou no fim, total, dificuldade | o "o quê" (ditado livre), o botão que fecha |
+| **magia** | Arte, Efeito, parâmetros, molde, sólido, fatias, abertura, curvatura, Velocidade | Conjurar, a marcação no chão, o alvo, o filtro (ditado livre) |
+
+**Nenhuma das três fica resolvida só com a voz, e é de propósito.** O que sobra no dedo em cada
+linha é gesto espacial ou botão que aplica, que são as duas classes que a régua tira da voz.
+
+### 10.4 · O que a bancada tem de medir antes de a construção crescer
+
+O §9.7 mandava medir os números; com a régua fechada, a lista fica:
+
+1. **as faces, em sequência**, e o acerto **em função do comprimento** · um bolo de dez dados são dez
+   faces ditas, e é o risco principal do caminho quente;
+2. **os números livres**, por extenso e dígito a dígito, onde a família do `-ze` mora;
+3. **o ditado sem gramática** nos três campos de texto, só para saber o quanto ele erra;
+4. **a tecla segurada dentro de diálogo e com o foco num campo**, que é a situação da decisão 1 e
+   não existe em nenhum teste de hoje;
+5. **o nome de Arte e de Efeito** da camada contextual, com a peça que o humano de fato usar.
+
+### 10.5 · O que continua fora, depois desta régua
+
+- **o botão do veredito** · automação, e não voz (§9.6), e na lista do humano de não abrir;
+- **o ⏭** · a tecla `Espaço` já ganha da voz (§9.3), e são 32% que esta frente não precisa disputar;
+- **as 55 condições** · lista grande, e ela depende da coluna de triagem que o humano ainda vai
+  preencher (`CONJURACAO.md` §4.2);
+- **as oito funções não chamáveis direto** (§9.6), e todo gesto espacial;
+- **o `L71`** · o modelo corrompido que trava sem mensagem continua sendo o item 0 do §9.7, e
+  nenhuma economia de gesto compensa uma mesa travada sem aviso.
