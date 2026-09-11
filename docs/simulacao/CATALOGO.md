@@ -489,3 +489,26 @@ isso que o hábito certo em todo o resto produz aqui exatamente o artefato errad
 fecha, com a hora lida da máquina naquele momento. E a válvula que torna a regra cumprível:
 **etapa sem hora é honesta; hora inventada não é.** Quem fechou três etapas e só então lembrou do
 arquivo escreve as três sem hora, e não inventa três horas plausíveis.
+
+**UMA FORMA NOVA, DE 11/09/2026: O COMMIT QUE PARECE PUBLICADO.** No fim da rodada 38, quatro
+commits (um meu, tres dela) estavam so na maquina. `git log -1` mostrava o commit certo no topo,
+`git status --short` vinha limpo, o `npm run validate` do `pre-commit` tinha passado, o aviso a
+Revisora estava escrito com os tres shas corretos e a Executora se declarou ociosa esperando o
+veredito. Nada disso e falso, e nada disso e publicacao.
+
+**O defeito e de instrumento, nao de disciplina.** Os dois comandos que a equipe usa para provar
+estado no disco (`ARQUITETO.md` §1) sao exatamente os dois que nao distinguem o caso: o commit
+publicado e o commit que ficou na maquina tem o mesmo `git log -1` e o mesmo `git status`. Quem
+confere ve verde e conclui verde. **O comando que separa os dois e
+`git rev-list --count origin/main..HEAD`**, e ele custa nada.
+
+**O que corria calado enquanto isso, e e por aqui que a forma morde:** o deploy e por push
+(`CLAUDE.md`, Producao), entao o codigo da rodada existia so localmente e o site publicado seguia
+sem ele; e o CI nao tinha execucao nova, enquanto eu contava execucoes do `Smoke · test-grid` para
+responder ao humano sobre o L75. Eu estaria esperando um numero que nao ia chegar por decisao
+nenhuma, so por falta de um push. **Toda espera desta semana teve a mesma anatomia:** um lado
+achando que o outro ja tinha o que precisava, e a conferencia disponivel medindo a coisa vizinha.
+
+**Parente da "garantia correta sobre o eixo errado", e aqui a parentela e literal:** a afirmacao
+"commitado e limpo" e verdadeira, e a pergunta era outra. O conserto e um gesto no fecho de rodada,
+depois do `--enviar`: contar o que falta subir, e subir.
