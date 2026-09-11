@@ -8942,6 +8942,51 @@ const SETAS = [
    * recusa) sem explicação nenhuma na tela. */
   const textoOuvindo = (ditado: HTMLInputElement | null) => ditado ? 'ouvindo (ditado livre)…' : 'ouvindo…';
 
+  // ============================== a pergunta antes de baixar (rodada 37)
+  const VOZ_CONSENTE_KEY = 'centelha:grid:voz-consentimento';
+  const STATUS_DESLIGADA_VOZ = 'Voz desligada neste aparelho — toque para perguntar de novo';
+
+  /**
+   * `true`/`false`/`null` (nunca respondeu). Por APARELHO E POR ORIGEM
+   * (`localStorage`, decisão do humano): some em janela anônima, na
+   * mudança de domínio, ou se a pessoa limpar dados — e aí volta a
+   * perguntar como se fosse a primeira vez, aceito de propósito.
+   *
+   * TODA leitura em `try`/`catch`: em janela anônima com dados bloqueados o
+   * próprio ACESSO a `localStorage` lança, não só a chamada — sem a
+   * proteção, a tela quebraria antes mesmo de perguntar. Sem valor
+   * guardado (por bloqueio ou por nunca ter respondido), o comportamento é
+   * o mesmo: `null`, "nunca respondeu".
+   */
+  function lerConsentimentoVoz(): boolean | null {
+    try {
+      const v = localStorage.getItem(VOZ_CONSENTE_KEY);
+      return v === '1' ? true : v === '0' ? false : null;
+    } catch { return null; }
+  }
+  function gravarConsentimentoVoz(sim: boolean) {
+    try { localStorage.setItem(VOZ_CONSENTE_KEY, sim ? '1' : '0'); } catch { /* fica sem guardar */ }
+  }
+
+  /**
+   * Pergunta antes de baixar os 31 MB do modelo (decisão do humano, rodada
+   * 37) — só quando `lerConsentimentoVoz()` não é `true`, então vale para
+   * as DUAS respostas: "sim" grava e não pergunta de novo nesta sessão nem
+   * nas seguintes; "não" grava e AINDA ASSIM pergunta de novo no próximo
+   * toque (ninguém fica preso na própria resposta). O carregamento sob
+   * demanda de sempre não muda: isto só decide SE `carregarVoz` roda, não
+   * quando.
+   */
+  async function perguntarConsentimentoVoz(): Promise<boolean> {
+    const sim = await uiConfirmar(
+      'A voz baixa um modelo de reconhecimento de 31 MB. Isso acontece uma vez neste aparelho. '
+      + 'No celular, isso gasta dados do plano.',
+      { titulo: 'Ativar comando por voz', ok: 'Baixar', cancelar: 'Agora não' },
+    );
+    gravarConsentimentoVoz(sim);
+    return sim;
+  }
+
   let VOZ_GRAVANDO = false;
   async function segurarVoz() {
     if (VOZ_GRAVANDO) return;
@@ -8956,6 +9001,10 @@ const SETAS = [
     // o botão não abre a boca à toa.
     if (!v && campos.length === 0 && !ditado) return;
     if (!vozCarregada()) {
+      if (lerConsentimentoVoz() !== true) {
+        const consentiu = await perguntarConsentimentoVoz();
+        if (!consentiu) { vozStatus(STATUS_DESLIGADA_VOZ); return; }
+      }
       vozStatus('carregando o modelo de voz (31 MB)…');
       const r = await carregarVoz(caminhosPadrao(import.meta.env.BASE_URL));
       if (!r.ok) { vozStatus(STATUS_PADRAO_VOZ); uiErro(r.erro); return; }

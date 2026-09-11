@@ -2786,6 +2786,157 @@ async function cenaVozDitadoEOutra(br, url) {
 }
 
 /**
+ * A PERGUNTA ANTES DE BAIXAR A VOZ (rodada 37).
+ *
+ * NÃO TESTA microfone nem reconhecimento — como sempre nesta frente. O que
+ * prova: a pergunta aparece ANTES de qualquer tentativa de baixar o modelo
+ * (nunca guardado); "não" guarda e o status muda, mas o PRÓXIMO toque
+ * pergunta de novo; "sim" guarda e o toque seguinte NÃO pergunta, vai
+ * direto para o carregamento (que falha por falta de modelo nesta
+ * bancada, e isso é o esperado — o que importa é que a pergunta não
+ * apareceu de novo); e com `localStorage` lançando exceção (simulado), a
+ * tela não quebra e o comportamento é o de quem nunca respondeu.
+ */
+async function cenaVozConsentimento(br, url) {
+  console.log('\n· a pergunta antes de baixar a voz (rodada 37)');
+  const p = await br.newPage();
+  await p.setViewport({ width: 1400, height: 950 });
+  const erros = [];
+  p.on('pageerror', (e) => erros.push(e.message));
+  await p.goto(`${url}/mesa/grid?id=${MESA}&bench=12&cols=24&rows=16&nevoa=0`,
+    { waitUntil: 'networkidle0', timeout: 60000 });
+  await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
+  await espera(600);
+
+  const segurar = () => document.getElementById('gr-voz')
+    .dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
+  const soltar = () => document.getElementById('gr-voz')
+    .dispatchEvent(new MouseEvent('mouseup', { bubbles: true }));
+
+  // ---- 1: nada guardado, o primeiro toque PERGUNTA, e não começa a baixar ----
+  await p.evaluate(() => { try { localStorage.removeItem('centelha:grid:voz-consentimento'); } catch {} });
+  await p.evaluate(segurar);
+  await p.waitForSelector('dialog.ui-dlg[open] .ui-dlg-ok', { timeout: 10000 });
+  const pergunta1 = await p.evaluate(() => ({
+    titulo: document.querySelector('dialog.ui-dlg[open] .ui-dlg-tit')?.textContent || '',
+    corpo: document.querySelector('dialog.ui-dlg[open] .ui-dlg-msg')?.textContent || '',
+    statusAntes: document.getElementById('gr-voz')?.title || '',
+  }));
+  ok(/ativar comando por voz/i.test(pergunta1.titulo), `a pergunta abre com o título certo ("${pergunta1.titulo}")`);
+  ok(/31\s*MB/.test(pergunta1.corpo), `e diz o tamanho, 31 MB ("${pergunta1.corpo.slice(0, 90)}")`);
+  ok(/celular/i.test(pergunta1.corpo) && /dados/i.test(pergunta1.corpo),
+    'e avisa que no celular isso gasta dados');
+  ok(!/carregando/i.test(pergunta1.statusAntes),
+    `e o status NÃO diz "carregando": nada começou a baixar antes de responder ("${pergunta1.statusAntes}")`);
+
+  // ---- 2: responde "não" — guarda, o status muda, e soltar o botão depois é inofensivo ----
+  await p.evaluate(() => document.querySelector('dialog.ui-dlg[open] .ui-dlg-cancelar').click());
+  await p.evaluate(soltar);
+  await espera(200);
+  const depoisDoNao = await p.evaluate(() => ({
+    guardado: (() => { try { return localStorage.getItem('centelha:grid:voz-consentimento'); } catch { return null; } })(),
+    status: document.getElementById('gr-voz')?.title || '',
+  }));
+  ok(depoisDoNao.guardado === '0', `"não" grava (valor guardado: "${depoisDoNao.guardado}")`);
+  ok(/desligada/i.test(depoisDoNao.status), `e o status diz que a voz está desligada ("${depoisDoNao.status}")`);
+
+  // ---- 3: mesmo com "não" guardado, o PRÓXIMO toque pergunta de novo
+  // (ninguém fica preso na própria resposta) ----
+  await p.evaluate(segurar);
+  await p.waitForSelector('dialog.ui-dlg[open] .ui-dlg-ok', { timeout: 10000 });
+  const pergunta2 = await p.evaluate(() =>
+    document.querySelector('dialog.ui-dlg[open] .ui-dlg-tit')?.textContent || '');
+  ok(/ativar comando por voz/i.test(pergunta2), `com "não" guardado, o toque seguinte pergunta de novo ("${pergunta2}")`);
+  // Fecha esta pergunta antes do próximo passo — senão ela fica aberta e
+  // empilha com a próxima (achado ao testar este item).
+  await p.evaluate(() => document.querySelector('dialog.ui-dlg[open] .ui-dlg-cancelar').click());
+  await p.evaluate(soltar);
+  await espera(200);
+
+  // ---- 4: com o armazenamento lançando exceção, a tela não quebra e o
+  // comportamento é o de quem nunca respondeu (pergunta de novo). Roda
+  // AQUI, antes do "sim" de verdade (passo 5): o "sim" pode carregar o
+  // modelo por completo se ele já estiver baixado nesta máquina, e depois
+  // disso `vozCarregada()` fica permanentemente verdadeira NESTA página —
+  // o que puxaria o tapete deste passo, que precisa do modelo AINDA não
+  // carregado para testar a pergunta de verdade. Responde "não" aqui de
+  // propósito, para não competir com o passo 5 por causa da ordem. ----
+  await p.evaluate(() => {
+    // Monkeypatch no PROTÓTIPO, não na propriedade `localStorage` em si (que
+    // costuma ser um acessor não redefinível): simula o mesmo efeito de uma
+    // janela anônima com dados bloqueados — o ACESSO lança, não só a leitura.
+    const proto = Object.getPrototypeOf(localStorage);
+    (window).__orig_getItem = proto.getItem;
+    (window).__orig_setItem = proto.setItem;
+    proto.getItem = () => { throw new Error('bloqueado (simulado)'); };
+    proto.setItem = () => { throw new Error('bloqueado (simulado)'); };
+  });
+  await p.evaluate(segurar);
+  await p.waitForSelector('dialog.ui-dlg[open] .ui-dlg-ok', { timeout: 10000 });
+  const comBloqueio = await p.evaluate(() =>
+    document.querySelector('dialog.ui-dlg[open] .ui-dlg-tit')?.textContent || '');
+  ok(/ativar comando por voz/i.test(comBloqueio),
+    `com o armazenamento bloqueado, a leitura falha em silêncio e a tela se comporta como quem nunca respondeu ("${comBloqueio}")`);
+  await p.evaluate(() => document.querySelector('dialog.ui-dlg[open] .ui-dlg-cancelar').click());
+  await espera(300); // a escrita também lança aqui, e não pode quebrar a página
+  await p.evaluate(soltar);
+  ok(erros.length === 0, `nenhum erro de página, com o armazenamento bloqueado (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
+
+  // Devolve o `localStorage` de verdade antes do passo seguinte — reatribui
+  // os métodos originais capturados acima, não `delete` (que apagaria o
+  // método de vez, em vez de restaurar o nativo).
+  await p.evaluate(() => {
+    const proto = Object.getPrototypeOf(localStorage);
+    proto.getItem = (window).__orig_getItem;
+    proto.setItem = (window).__orig_setItem;
+  });
+
+  // ---- 5: responde "sim" — guarda, a pergunta fecha, e o toque seguinte
+  // NÃO pergunta de novo — vale para as DUAS respostas, não só para "não".
+  // NÃO PREVÊ se o carregamento em si acaba dando certo ou errado (esta
+  // bancada às vezes TEM o modelo baixado localmente, às vezes não — isso
+  // não é o que este passo prova). ----
+  await p.evaluate(() => { try { localStorage.removeItem('centelha:grid:voz-consentimento'); } catch {} });
+  await p.evaluate(segurar);
+  await p.waitForSelector('dialog.ui-dlg[open] .ui-dlg-ok', { timeout: 10000 });
+  await p.evaluate(() => document.querySelector('dialog.ui-dlg[open] .ui-dlg-ok').click());
+  await espera(400);
+  const depoisDoSim = await p.evaluate(() => (() => {
+    try { return localStorage.getItem('centelha:grid:voz-consentimento'); } catch { return null; }
+  })());
+  ok(depoisDoSim === '1', `"sim" grava (valor guardado: "${depoisDoSim}")`);
+  const fechouAPergunta = await p.evaluate(() =>
+    ![...document.querySelectorAll('dialog.ui-dlg[open] .ui-dlg-tit')]
+      .some((h) => /ativar comando por voz/i.test(h.textContent || '')));
+  ok(fechouAPergunta, 'e a pergunta fecha — o "sim" não fica esperando outra resposta');
+  // Espera o carregamento (dar certo ou errado) terminar antes do próximo
+  // passo, para não competir com ele: ou aparece um erro (sem modelo
+  // baixado aqui) ou o status muda para "carregado".
+  for (let i = 0; i < 20; i++) {
+    const s = await p.evaluate(() => document.getElementById('gr-voz')?.title || '');
+    const temErro = await p.evaluate(() => !!document.querySelector('dialog.ui-dlg.perigo[open]'));
+    if (temErro || !/carregando/i.test(s)) break;
+    await espera(300);
+  }
+  await p.evaluate(() => document.querySelector('dialog.ui-dlg.perigo[open] .ui-dlg-ok')?.click());
+  await p.evaluate(soltar);
+  await espera(200);
+
+  await p.evaluate(segurar);
+  await espera(800);
+  const semPerguntaDeNovo = await p.evaluate(() =>
+    ![...document.querySelectorAll('dialog.ui-dlg[open] .ui-dlg-tit')]
+      .some((h) => /ativar comando por voz/i.test(h.textContent || '')));
+  ok(semPerguntaDeNovo, 'com "sim" guardado, o toque seguinte NÃO pergunta de novo');
+  await p.evaluate(() => document.querySelector('dialog.ui-dlg.perigo[open] .ui-dlg-ok')?.click());
+  await p.evaluate(soltar);
+  await espera(200);
+
+  ok(erros.length === 0, `nenhum erro de página (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
+  await p.close();
+}
+
+/**
  * O QUASE-ACERTO NA FOLHA DA AÇÃO.
  *
  * O capítulo XII existe desde sempre e o Grid nunca o calculou: a mesa fazia a
@@ -3818,6 +3969,7 @@ await cenaRastreador(br, dev.url);
   await cenaGolpeAdiado(br, dev.url);
   await cenaVozQuente(br, dev.url);
   await cenaVozDitadoEOutra(br, dev.url);
+  await cenaVozConsentimento(br, dev.url);
   await cenaQuaseAcerto(br, dev.url);
   await cenaFusao(br, dev.url);
   await cenaCondicaoAMao(br, dev.url);
@@ -3842,7 +3994,8 @@ console.log('\n✓ Grid OK · desenho, movimento, registro, névoa e card, nas d
   + ' o golpe adiado da declaração à queda, o Quase-Acerto na folha,'
   + ' e a condição posta à mão indo do menu ao estado e daí à Defesa da folha,'
   + ' o caminho quente da voz abrindo o cartão vencido sem clique e refazendo o veredito,'
-  + ' o ditado livre seguindo o foco e "outra coisa" abrindo por voz');
+  + ' o ditado livre seguindo o foco e "outra coisa" abrindo por voz,'
+  + ' e a pergunta antes de baixar o modelo de voz');
 // O carimbo: quando este portao passou nesta maquina. Ver `carimbo.mjs`.
 carimbar('test-grid');
 
