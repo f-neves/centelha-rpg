@@ -4798,9 +4798,41 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **O QUE FALTA, E É O QUE MANTÉM ESTE ITEM ABERTO:** o portão. Ele confere o arquivo inteiro, e
   não só as linhas adicionadas, e a decisão do humano é essa.
 
-  **ESCOPO DECIDIDO PELO HUMANO em 11/09/2026, depois da medida do código: o portão olha SÓ `.md`.**
-  Liga agora e custa zero, porque a dívida dos documentos está zerada. O código sai deste item e
-  vira o `L82`, com a medida real do lado, para ser decidido sabendo o tamanho.
+  **ESCOPO DECIDIDO PELO HUMANO em 11/09/2026, depois da medida do código: o portão olha `.md` e
+  não código.** O código sai deste item e vira o `L82`, com a medida real do lado.
+
+  **E O "`.md`" PRECISOU DE UMA SEGUNDA DECISÃO, porque a primeira foi tomada sobre número meu que
+  estava errado por escopo.** Eu disse "146" e deixei entender que era a dívida dos documentos. **146
+  é a dívida dos TRÊS documentos que a equipe escreve todo dia.** Medido em `.md` no repositório
+  inteiro, no mesmo dia: **1749 ocorrências em 116 arquivos**. A repartição é o que decide:
+
+  | onde | quantas | arquivos | pode varrer? |
+  |---|---:|---:|---|
+  | `docs/simulacao/caixa/` | 656 | 62 | **não** · aviso e progresso CONGELADOS (regra 6 da caixa) |
+  | `legacy/` | 544 | 5 | arquivo morto |
+  | `src/content/chapters/` | 253 | 13 | **sim**, e é a prosa que o jogador lê |
+  | documentos de trabalho vivos (raiz e `docs/simulacao`) | 248 | 30 | sim |
+  | resto (`D&D/`, `lore/`, `docs/`, avulsos) | 48 | 6 | sim |
+
+  **Os 656 da caixa são o nó:** um portão sobre todo `.md` exigiria editar aviso enviado, que a
+  regra 6 proíbe, **pela razão de atribuição** e não por conveniência. Portão que obriga a violar
+  outra regra do mesmo repositório não é rede, é armadilha.
+
+  **A exceção de ficção foi conferida e não se aplica:** zero linhas de fala de personagem nos
+  capítulos (nenhuma linha começa com travessão, que é a marca da fala em português). Os 253 são
+  todos pontuação.
+
+  **DECIDIDO: o portão vale SÓ sobre `src/content/**`, e a varredura é dos 253.** O escopo é um
+  DIRETÓRIO e não uma lista, então capítulo novo nasce coberto, e não há uma linha de exceção
+  para envelhecer · foi o que derrubou as outras duas opções, porque lista envelhece no primeiro
+  commit (é o mesmo defeito que o `L82` registra e que o `L80` passou três rodadas consertando
+  numa versão maior).
+
+  **O CONTRA, aceito de olhos abertos e escrito antes de acontecer:** isto deixa de fora
+  exatamente onde a dívida CRESCE. Só esta sessão acrescentou dezenas de travessões a documento de
+  trabalho, e **a varredura dos 146 que acabou de ser feita começa a apodrecer no dia seguinte**,
+  sem portão nenhum olhando. O que o portão protege é o texto que sai do repositório e chega no
+  jogador; o resto continua sendo disciplina de quem escreve.
 
   **O CONTRA, e ele é o argumento mais forte contra a própria decisão, escrito porque foi aceito de
   olhos abertos:** o que CRESCE é o código. Os dez travessões da rodada 43 nasceram em comentário e
@@ -4972,6 +5004,22 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   cadastro. Reapontar não conserta, porque não há nada de errado com o endereço; só ler o alvo
   conserta. **O portão acusa as duas do mesmo jeito**, com a mesma frase, o que faz a segunda
   parecer a primeira e convida quem estiver com pressa a mexer no número em vez de ler o código.
+
+  **REVISADO na rodada 46 (`d6a6e19`): SEGUE, sem BLOQUEIA e sem CORRIGE.** A Revisora conferiu o
+  que eu tinha marcado como o risco desta rodada, que era diferente dos anteriores: **a marca
+  `(citação histórica)` faz o portão PULAR a citação inteira**, antes da âncora, então 35 marcas de
+  uma vez são 35 silenciamentos permanentes, escritos numa rodada cuja pressão era ficar verde.
+  Ela verificou o escopo por território em todas e **nenhuma citação viva foi silenciada por
+  engano**. Conferiu também que os 4 consertos de âncora **sustentam de verdade a afirmação do
+  documento**, e não só aparecem na janela · que é a pergunta que portão nenhum faz. E reproduziu o
+  controle vermelho-antes/verde-depois **com mecanismo próprio**, em vez de aceitar o `stash` da
+  Executora.
+
+  **A ESCALA dela é a minha própria dúvida, confirmada:** o `reapontar.mjs --check` **raspa texto**
+  do `ALVOS` em vez de ler o valor real. Funciona hoje e passou os três controles, mas a mesma
+  família de risco volta se a declaração mudar de forma (spread, importação, lista montada em
+  outro lugar). Fica como sugestão de endurecimento, não como falha · e fica escrito que o conserto
+  de hoje resolve **a forma exata** do defeito que apareceu, que é diferente de resolver a classe.
 
   **A UNIDADE RECONCILIOU, e a resposta estava a um comando de distância o tempo todo.** O 33 dela
   e o 32 meu contavam universos diferentes: as **3 citações `BASE_URL`** foram consertadas num
