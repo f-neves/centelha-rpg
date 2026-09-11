@@ -530,3 +530,34 @@ respondesse "o que eu fiz ja existe fora desta maquina?". Ela mediu o certo (o p
 respondi com um gesto que pressupunha o contrario. **A pergunta que faltava, de novo, e
 `git rev-list --count origin/main..HEAD`**, e desta vez ela precisava ser feita por QUEM MANDA o
 gesto, nao so por quem o executa.
+
+**A FORMA DE 11/09/2026, E O QUE A TORNA DIGNA DE ENTRADA PROPRIA E A CONTAGEM: CINCO VEZES NUM
+DIA, EM TRES PESSOAS DIFERENTES.** *A ferramenta responde com precisao sobre um recorte mais
+estreito do que a pergunta, e a resposta e lida como se fosse sobre a pergunta.*
+
+Todas as cinco, no mesmo dia, todas descobertas por outra pessoa e nao por quem as cometeu:
+
+| o que foi perguntado | o que a ferramenta mediu | o erro que saiu |
+|---|---|---|
+| quanto demora o job `Smoke · test-grid` | a duracao dos jobs que CASAM com `test-grid` | um salto de CI que nunca existiu |
+| qual era o pico do job antes do modelo | as cinco execucoes mais RECENTES antes do modelo | pico de 790 s, quando o real era 832 s |
+| tem travessao no codigo novo da rodada | `git diff`, que nao enxerga arquivo NAO RASTREADO | "corrigi os dez, nao falta nada", faltavam nove |
+| onde esta a chamada `SB.rpc(...)` citada | o prefixo `SB.rpc`, que aparece em sete lugares | erro relatado de 8000 linhas, o real era 50 |
+| tem travessao no texto desta rodada | o diff do CODIGO da rodada, nao a prosa propria | um veredito com 37 travessoes dizendo que varreu |
+
+**O que as cinco tem em comum, e nao e desatencao:** em todas, o comando estava certo e a saida era
+verdadeira. O recorte foi escolhido por ser o que a ferramenta oferece de graca (o que casa por
+substring, o mais recente, o rastreado, o prefixo, o diff) e nao por ser o que a pergunta pedia. **O
+recorte respondeu no lugar de quem perguntou**, e como a resposta veio verdadeira, nada acendeu.
+
+**Por que e dificil de ver de dentro:** uma saida FALSA e facil de pegar, porque bate de frente com
+alguma outra coisa que se sabe. Uma saida verdadeira sobre o recorte errado nao bate com nada ·
+ela e consistente consigo mesma, e so quem refizer a pergunta com outro recorte descobre. Por isso
+as cinco foram achadas por OUTRA pessoa: nenhuma delas exigia mais cuidado, todas exigiam outro
+ponto de vista.
+
+**O gesto que as cinco teriam evitado, e ele e barato:** ao relatar, dizer o ESCOPO junto do
+numero. Nao "rodei a varredura", e sim "rodei a varredura no diff do codigo". Nao "o pico era
+790 s", e sim "o pico das cinco ultimas antes do modelo era 790 s". O escopo dito em voz alta e
+onde o erro aparece, porque quem le percebe na hora que o escopo nao e a pergunta · e, com
+frequencia, quem ESCREVE percebe antes de terminar a frase.
