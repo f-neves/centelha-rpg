@@ -4260,8 +4260,38 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **O tamanho:** cinco citações, e o trabalho é de leitura e não de script. Não entra na rodada 34
   (uma frente por vez) e não bloqueia nada: item fechado não orienta construção.
 
-- [ ] **L73 · [achado na rodada 34, em 10/09/2026] `npm run rodada -- --enviar` rodado duas vezes
-  grava no aviso um `SHA` que aponta para o próprio commit do aviso, e não avisa.**
+- [x] **L73 · [achado na rodada 34 em 10/09/2026, CONSTRUÍDO na rodada 42 em 11/09/2026]
+  `npm run rodada -- --enviar` rodado duas vezes gravava no aviso um `SHA` que apontava para o
+  próprio commit do aviso, e não avisava.**
+
+  **FECHADO EM 11/09/2026.** O `scripts/rodada.mjs` recusa a segunda chamada seguida, reconhecendo
+  pela mensagem fixa do commit no `HEAD`, e a recusa **diz qual é o sha certo** em vez de só negar
+  (é o `L66` deste projeto: função que recusa sem dizer o que fazer empurra o problema para quem
+  chamou). `scripts/test-rodada.mjs` novo, 12 asserções, dentro do `validate`, com as duas metades
+  provadas: a segunda chamada recusada **e** a primeira continuando a funcionar.
+
+  **A trava do conserto era não desligar uma proteção certa:** o `--enviar` relê o `HEAD` de
+  propósito, porque entre abrir e enviar a árvore pode andar, e isso resolveu um defeito real da
+  rodada 28. A Revisora conferiu no código que a recusa nova acontece **antes** dessa releitura, e
+  não no lugar dela.
+
+  **O ACHADO DO CAMINHO VALE MAIS QUE O ITEM, e está no `CATALOGO` como forma própria:** o teste
+  precisava rodar `git commit` de verdade, montou um repositório de mentira e apontou o `cwd` para
+  lá, **e o commit foi parar no repositório REAL.** O teste roda de dentro do gancho de
+  `pre-commit`, e um `git commit` em andamento exporta `GIT_DIR`/`GIT_WORK_TREE`/`GIT_INDEX_FILE`,
+  que **vencem o `cwd`**. Nada no arquivo do teste mostra isso, porque quem exportou foi o processo
+  pai. Consertado com ambiente limpo em toda chamada, e a Revisora conferiu que a limpeza cobre as
+  funções auxiliares também, não só as chamadas que pareciam arriscadas.
+
+  **O estrago residual foi medido três vezes, por três pessoas, e as duas primeiras contas estavam
+  erradas:** a Executora relatou "31 objetos soltos deixados pelo teste"; o Arquiteto listou os 31
+  e mostrou que **um** era do intervalo do teste (uma `tree`, 08:22) e o resto era `stash` largado
+  por várias sessões desde 04/08; a Revisora remediu do zero, tirando a data de cada objeto do
+  disco, confirmou o **1**, e ainda pegou um erro de aritmética na conta verbal do Arquiteto
+  ("dezoito stashes mais um fechamento de sessão" soma dezenove, e o total de commits soltos é
+  dezoito). **Decisão: não rodar `git gc`** · o que ele descartaria em maioria é stash de outras
+  sessões, e objeto inalcançável é a última rede de quem largou stash e vai procurar depois. No
+  mesmo dia, um commit órfão da Revisora foi resgatado pelo reflog.
 
   **O mecanismo, e ele vem de uma proteção certa:** o `--enviar` relê `HEAD` na hora de commitar,
   de propósito, porque entre abrir e enviar a árvore pode andar · está escrito no cabeçalho do
