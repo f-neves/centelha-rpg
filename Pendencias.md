@@ -4772,9 +4772,18 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   a leitura ser trivial, e quem pagou o preço foi quem veio conferir.
 
   **O QUE FALTA, E É O QUE MANTÉM ESTE ITEM ABERTO:** o portão. Ele confere o arquivo inteiro, e
-  não só as linhas adicionadas, e a decisão do humano é essa. Quem for construí-lo decide primeiro
-  uma coisa que a varredura deixou explícita e que não está decidida: **se ele olha só `.md` ou
-  também código**.
+  não só as linhas adicionadas, e a decisão do humano é essa.
+
+  **ESCOPO DECIDIDO PELO HUMANO em 11/09/2026, depois da medida do código: o portão olha SÓ `.md`.**
+  Liga agora e custa zero, porque a dívida dos documentos está zerada. O código sai deste item e
+  vira o `L82`, com a medida real do lado, para ser decidido sabendo o tamanho.
+
+  **O CONTRA, e ele é o argumento mais forte contra a própria decisão, escrito porque foi aceito de
+  olhos abertos:** o que CRESCE é o código. Os dez travessões da rodada 43 nasceram em comentário e
+  em texto de asserção de teste, **nenhum em `.md`**. Um portão que cobre só os documentos cobre a
+  metade que já está limpa e deixa aberta a metade que está produzindo dívida nova · ele para de
+  piorar o que não estava piorando. Se daqui a um mês a contagem do código tiver subido, não é
+  surpresa, é este parágrafo.
 
   **E A MEDIDA DO LADO DO CÓDIGO ESTAVA ERRADA NESTE ITEM, por escopo, escrita por mim.** Eu
   registrei "os 139 dos oito arquivos do `51e5f10`" como se fosse a dívida do código. **Os 139 são
@@ -5077,6 +5086,43 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   trava para um defeito que o `L73` já tinha fechado.
 
   → `L65` (a sequência dos commits da rodada), → `L73` (o outro defeito do `rodada.mjs`).
+
+- [ ] **L82 · [SEPARADO do `L79` em 11/09/2026, por decisão do humano, depois de a medida do
+  código sair cinco vezes maior do que o `L79` anunciava] A dívida de travessão no CÓDIGO: 702
+  ocorrências em 116 arquivos, e 55 delas não são pontuação.**
+
+  **A medida, no repositório inteiro** (`src/` e `scripts/`, `.ts`/`.astro`/`.mjs`/`.js`/`.css`),
+  feita em 11/09/2026:
+
+  | o que é | quantas | é prosa? |
+  |---|---:|---|
+  | comentário | 478 | sim |
+  | texto entre aspas | 150 | parte sim (frase que o mestre lê na tela), parte não |
+  | o travessão como glifo de vazio | 50 | **não** |
+  | classe de caractere de regex | 5 | **não** |
+  | outro | 19 | ler caso a caso |
+
+  **As 55 que não são pontuação são o motivo de este item existir separado.** O glifo de vazio é o
+  travessão tipográfico usado como "sem valor" numa célula da mesa (`ra?.ataque || '—'`,
+  `dist != null ? fmtM(dist) : '—'`): trocar mudaria o que a mesa MOSTRA, e ponto-médio não quer
+  dizer vazio para ninguém. A classe de regex (`.replace(/[−–—]/g, '-')`, em `src/lib/lance.ts` e
+  `src/lib/rolagem.ts`) existe **precisamente para normalizar travessão** nas cadeias de ataque do
+  bestiário: tirá-lo de lá quebraria a leitura dos monstros.
+
+  **O que isso obriga em qualquer portão que venha a cobrir código:** ele tem de distinguir o
+  travessão-pontuação do travessão-símbolo, ou vai exigir 55 edições erradas no primeiro dia e ser
+  desligado no segundo. E a exclusão não pode ser por lista de linhas, que envelhece no primeiro
+  commit · tem de ser por PADRÃO (travessão sozinho entre aspas, travessão dentro de classe de
+  regex), com controle positivo e negativo próprios. Sem isso o portão vira a forma que ele existe
+  para pegar.
+
+  **O que este item NÃO é:** não é a decisão de varrer. O humano decidiu, no `L79`, que o portão
+  olha só `.md` por enquanto, sabendo que é no código que a dívida cresce (os dez da rodada 43
+  nasceram em comentário e em asserção de teste, nenhum em `.md`). Este item guarda a medida para
+  quando essa decisão for revista, e guarda sobretudo a distinção das 55, que é o que se perderia
+  se alguém abrisse o assunto de novo daqui a um mês olhando só a contagem.
+
+  → `L79` (a varredura dos documentos, feita), → `L80` (a outra dívida sem portão).
 
 - [ ] **L70 · [REGISTRADO em 10/09/2026, ligado ao `L67`, ABERTO por decisão do humano em
   11/09/2026] A gravação de posição não passa pela checagem de ocupação, e a invariante mora nos
