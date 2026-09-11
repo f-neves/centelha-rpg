@@ -32,3 +32,15 @@ da máquina (`date +%H:%M`).
   desta rodada). Rodada 35 enviada em um único `--enviar` (sha do aviso 082e189, sha de trabalho
   bf66f24). `test-procedencia.mjs` conferido por mim antes de publicar o número no aviso: 73
   citações, 0 quebradas.
+- 00:58 — CORRIGE da Revisora: `vozStatus('ouvindo…')` era igual nos dois modos, sem dizer qual
+  reconhecedor estava ativo. Conserto mínimo: `textoOuvindo(ditado)` (uma função pequena, mesma
+  string nos dois lugares que precisam dela — `segurarVoz` e o hook de teste `__TEXTO_OUVINDO`).
+  Duas asserções novas em `cenaVozDitadoEOutra` (18 no total) provando que o texto muda junto com
+  o modo. `npm run validate`: só procedência vermelha de novo (10 citações, o deslocamento de
+  sempre) — flagueando ao Arquiteto antes de commitar.
+- 00:59 — reaponte feita, portão verde. Achado do Arquiteto antes de aceitar, registrado e NÃO
+  consertado (é maior que este CORRIGE): as duas asserções novas provam que `textoOuvindo` devolve
+  o texto certo para cada foco, mas não provam que `segurarVoz` (grid.astro, a chamada
+  `vozStatus(textoOuvindo(ditado))`) de fato a chama — isso só aconteceria com modelo carregado ou
+  uma costura de teste nova, as duas fora do tamanho deste conserto. CONFIANÇA DE LEITURA, NÃO
+  PROVA DE EXECUÇÃO (mesma frase da rodada 33, para a mesma classe de lacuna). Commitando.

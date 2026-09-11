@@ -8935,6 +8935,13 @@ const SETAS = [
     vozStatus(STATUS_PADRAO_VOZ);
   }
 
+  /** O texto de "segurando e ouvindo" MUDA com o modo (achado da revisão da
+   * rodada 35): "o modo segue o foco" só é conveniência se o mestre souber
+   * qual modo está ativo enquanto fala — sem isto, um foco parado por
+   * engano num dos três campos de ditado faz a fala virar texto solto (ou
+   * recusa) sem explicação nenhuma na tela. */
+  const textoOuvindo = (ditado: HTMLInputElement | null) => ditado ? 'ouvindo (ditado livre)…' : 'ouvindo…';
+
   let VOZ_GRAVANDO = false;
   async function segurarVoz() {
     if (VOZ_GRAVANDO) return;
@@ -8969,7 +8976,7 @@ const SETAS = [
       });
     if (v) COMANDO_ARMADO = COMANDO_ARMADO ?? { cid: v.id };
     VOZ_GRAVANDO = true;
-    vozStatus('ouvindo…');
+    vozStatus(textoOuvindo(ditado));
     try { await comecarAFalarVoz(); }
     catch (e: any) { VOZ_GRAVANDO = false; vozStatus(STATUS_PADRAO_VOZ); uiErro('Erro no microfone: ' + (e?.message || e)); }
   }
@@ -10244,6 +10251,12 @@ let roladoDano = '';
       const e = document.getElementById(id) as HTMLInputElement | null;
       if (e) receberDitado(e, texto);
     };
+    // O texto que o status mostraria SE a tecla fosse segurada agora — a
+    // MESMA `textoOuvindo` que `segurarVoz` chama, sem precisar de modelo
+    // carregado nem microfone de verdade (achado da revisão desta rodada:
+    // o texto era igual nos dois modos, e o mestre não tinha como saber
+    // qual reconhecedor estava ativo).
+    (window as any).__TEXTO_OUVINDO = () => textoOuvindo(elementoDeDitadoLivre());
   }
 
   /**

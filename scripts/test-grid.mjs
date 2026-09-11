@@ -2709,22 +2709,29 @@ async function cenaVozDitadoEOutra(br, url) {
     open: !!document.getElementById('outra-dlg')?.open,
     foco: document.activeElement?.id,
     modo: window.__MODO_DITADO(),
+    texto: window.__TEXTO_OUVINDO(),
   }));
   ok(aberta.open, 'a tecla O abre "outra coisa" (pré-condição do resto do cenário)');
   ok(aberta.foco === 'ou-oque', `o foco nasce no campo de ditado livre ("${aberta.foco}")`);
   ok(aberta.modo === 'ou-oque', `e o MODO segue o foco: "ou-oque" é ditado livre (${aberta.modo})`);
+  ok(aberta.texto === 'ouvindo (ditado livre)…',
+    `e o TEXTO do status muda junto, para o mestre saber qual reconhecedor está ativo ("${aberta.texto}")`);
 
   // ---- 3: escrever no campo de ditado livre dispara o `input` de verdade ----
   await p.evaluate(async () => { window.__RECEBER_DITADO('ou-oque', 'o goblin chutou o barril de pólvora'); });
   const oque = await p.evaluate(() => document.getElementById('ou-oque')?.value || '');
   ok(oque === 'o goblin chutou o barril de pólvora', `o texto ditado (sem gramática) chega inteiro ao campo ("${oque}")`);
 
-  // ---- 4: focar fora dos três campos de ditado volta o modo para a gramática ----
+  // ---- 4: focar fora dos três campos de ditado volta o modo para a gramática,
+  // e o texto do status volta junto ----
   const foraDoDitado = await p.evaluate(() => {
     document.getElementById('ou-ticks')?.focus();
-    return window.__MODO_DITADO();
+    return { modo: window.__MODO_DITADO(), texto: window.__TEXTO_OUVINDO() };
   });
-  ok(foraDoDitado === null, `focado em "ou-ticks" (não é ditado), o modo volta a ser o da gramática (${foraDoDitado})`);
+  ok(foraDoDitado.modo === null,
+    `focado em "ou-ticks" (não é ditado), o modo volta a ser o da gramática (${foraDoDitado.modo})`);
+  ok(foraDoDitado.texto === 'ouvindo…',
+    `e o texto do status volta a ser o de sempre, sem "ditado livre" ("${foraDoDitado.texto}")`);
 
   // ---- 5: com "outra coisa" já aberta, a fala enche ticks/total/dificuldade
   // e refaz o mesmo cálculo que digitar refaria ----
