@@ -56,6 +56,31 @@ const morrer = (m) => { console.error(`\n✘ ${m}\n`); process.exit(1); };
 const ehAncestral = (a, b) => tenta(() => { git(`git merge-base --is-ancestor ${a} ${b}`); return true; }, false);
 
 /**
+ * O GÊMEO DE MESMA MENSAGEM dentro do `main`, se houver (L81, achado na
+ * rodada 43: um `BASE` órfão quase sempre é um commit REPLANTADO por rebase
+ * feito fora da worktree de quem o escreveu, e o replante gera um commit
+ * NOVO (mesma mensagem, sha diferente) que fica dentro do `main` enquanto
+ * o original vira órfão). Procura pela SUBJECT (`%s`, a primeira linha), não
+ * pelo corpo inteiro: é o que a rodada 43 comparou à mão, e é estável mesmo
+ * quando o corpo muda por causa do próprio rebase.
+ *
+ * Devolve `null` sem gêmeo (pode ser reescrita de história por outro motivo,
+ * não só rebase de worktree: aí é investigação de verdade, não este achado).
+ */
+function acharGemeo(base) {
+  const msg = tenta(() => git(`git log -1 --format=%s ${base}`));
+  if (!msg) return null;
+  const linhas = tenta(() => git('git log --format=%H%x1f%s HEAD'), '');
+  for (const l of linhas.split('\n')) {
+    const i = l.indexOf('\x1f');
+    if (i < 0) continue;
+    const h = l.slice(0, i), s = l.slice(i + 1);
+    if (s === msg && h !== base) return h;
+  }
+  return null;
+}
+
+/**
  * O TOPO, por ANCESTRALIDADE, e não por diferença.
  *
  * O defeito original (`origemMain === sha ? sha : origemMain`) tratava toda
@@ -215,6 +240,40 @@ const sha = git('git rev-parse HEAD');
 // frente de revisão do lado), a linha fica em prosa para alguém preencher.
 const base = tenta(() => git('git rev-parse HEAD', REV));
 if (!base) console.log(`\n⚑ sem worktree da revisora em ${path.relative(RAIZ, REV)}: preencha BASE à mão.`);
+
+// O PORTÃO DO BASE (L81, achado na rodada 43): o HEAD da worktree da revisora
+// responde com PRECISÃO a "qual foi o último commit que ela viu ALI", mas a
+// pergunta que este script quer fazer é "qual foi o último commit que ela viu
+// no `main`", e as duas só divergem quando um push dela precisou de rebase
+// feito por outra mão, deixando o `HEAD` local órfão enquanto o commit
+// replantado (mesma mensagem, sha diferente) segue vivo no `main`. Três dos
+// nove avisos antes deste (rodadas 40, 42 e 43) nasceram com esse BASE órfão,
+// calados, porque nada aqui conferia ancestralidade.
+//
+// NÃO É SOBRE BASE ANTIGO: um `HEAD` de worktree atrasado (ela ainda não
+// revisou a última rodada) continua sendo ANCESTRAL de `HEAD`, e isso é
+// normal: o portão fica verde, e está certo em ficar. O que recusa é só a
+// NÃO ancestralidade, que histórico algum explica sem reescrita por baixo.
+//
+// O QUE ESTE PORTÃO NÃO FAZ: ele não confere o `TOPO`. O `TOPO` envelhece
+// DEPOIS de qualquer conferência feita na abertura ou no envio, a cada commit
+// que chega antes de a revisora dar checkout, e não há como um portão na
+// abertura da rodada cobrir isso; quem conserta é ela, recompondo com
+// `git log SHA..origin/main` depois do `fetch` (achado e resolvido assim na
+// própria rodada 43).
+if (base && !ehAncestral(base, sha)) {
+  const gemeo = acharGemeo(base);
+  morrer(`BASE (${base}) não é ancestral do HEAD atual (${sha}).\n`
+    + (gemeo
+      ? `  Existe um commit de MESMA MENSAGEM dentro do main: ${gemeo}\n`
+        + '  Leitura mais provável (L81, rodada 43): o commit da revisora foi replantado'
+        + '\n  por rebase feito fora da worktree dela, e o HEAD local ficou órfão. Confira'
+        + `\n  se ${gemeo} é o BASE certo (\`git show ${gemeo}\` para ver o que ele diz)`
+        + '\n  antes de abrir a rodada com ele.'
+      : '  Não achei nenhum commit de MESMA MENSAGEM dentro do main: isto pode ser'
+        + '\n  reescrita de história por outro motivo, não só o rebase de worktree do L81.'
+        + '\n  Investigue à mão antes de abrir a rodada.'));
+}
 
 // TOPO: por ancestralidade (`calcularTopo`, acima). Só informativo aqui — o
 // valor que vale de verdade é o que o `--enviar` relê na hora de commitar,
