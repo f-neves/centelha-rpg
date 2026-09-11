@@ -28,3 +28,7 @@ da máquina (`date +%H:%M`).
   por voz sem clique, `<select>` responde a `change`, recálculo refeito. `npm run validate`: só o
   portão de procedência vermelho (9 citações, deslocamento de linhas de sempre) — flagueando ao
   Arquiteto, não vou reapontar por âncora.
+- 00:28 — reaponte do Arquiteto (23 citações, 7d157c0) mais o gancho de coautoria (bf66f24, fora
+  desta rodada). Rodada 35 enviada em um único `--enviar` (sha do aviso 082e189, sha de trabalho
+  bf66f24). `test-procedencia.mjs` conferido por mim antes de publicar o número no aviso: 73
+  citações, 0 quebradas.
