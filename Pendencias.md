@@ -4172,16 +4172,35 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   antes de mexer] O `test-grid` no CI saltou para 13m32s depois que o modelo de 31 MB foi
   versionado, e ninguém reproduziu a causa.**
 
-  **Os números, e os três são de 11/09/2026:** o job `Smoke · test-grid` do fluxo "Validar dados e
-  regras" levou **13m32s** no run do commit que versionou o modelo (05:28:33 → 05:42:05, run
-  `34566095806`, conclusão `success`); nos runs anteriores do mesmo dia, o mesmo job ficou entre
-  **~3min e ~10m40s**; e na máquina da Executora o carregamento do modelo custa **1,3 a 1,5 s**,
-  medido por ela e remedido pela Revisora.
+  **OS PRIMEIROS NÚMEROS DESTE ITEM ESTAVAM ERRADOS, E O ERRO ERA MEU** (corrigido no mesmo dia,
+  11/09/2026, ao instrumentar a medição). Eu escrevi "13m32s contra ~3min a ~10m40s nos runs
+  anteriores", e essa faixa **misturava dois jobs diferentes** (`Smoke · test-grid` e
+  `Smoke · test-grid-simultaneo`) e deixava de fora justamente o run mais longo. Medido job a job,
+  só o `Smoke · test-grid` do fluxo "Validar dados e regras", em 11/09/2026:
 
-  **A hipótese é do Arquiteto e está SEM CONFIRMAÇÃO:** com o modelo versionado, o CI passou a
-  encontrá-lo presente onde antes encontrava ausente, então a cena do consentimento carrega 31 MB de
-  verdade lá também. **A Revisora tentou reproduzir a ordem de grandeza localmente e não conseguiu**
-  · o hiato continua sem explicação por qualquer teste feito até agora.
+  | run (hora de criação) | duração | |
+  |---|---:|---|
+  | 03:44:53 | **790 s** | antes do modelo |
+  | 03:47:07 | 537 s | antes |
+  | 04:00:08 | 640 s | antes |
+  | 04:12:30 | 459 s | antes |
+  | 04:13:52 | 522 s | antes |
+  | 05:28:31 | **812 s** | **depois do modelo** |
+
+  **A leitura muda com os números certos:** a variação natural do job já ia de 459 s a 790 s SEM
+  modelo nenhum, e o run pós-modelo (812 s) está **3% acima** desse pico. Não é um salto, é o topo
+  da faixa que já existia. E na máquina local o carregamento do modelo custa **1,3 a 1,5 s**, medido
+  pela Executora e remedido pela Revisora.
+
+  **A forma, e ela é do `CATALOGO`:** *a conferência que CONTA em vez de NOMEAR*. Eu comparei "a
+  duração dos jobs que casam com `test-grid`" quando a pergunta era sobre UM job nomeado, e a
+  contagem trouxe dois. O alarme inteiro nasceu daí.
+
+  **A hipótese é do Arquiteto e hoje está FRACA, não só sem confirmação:** com o modelo versionado,
+  o CI passaria a encontrá-lo presente onde antes encontrava ausente, carregando 31 MB de verdade.
+  Contra ela: a Revisora tentou reproduzir a ordem de grandeza localmente e **não conseguiu**; e,
+  com os números corrigidos acima, **não há ordem de grandeza para explicar** · há 3% em cima de um
+  pico que já existia. O que sobra de suspeita é pequeno e pode ser só variação de runner.
 
   **A observação sólida, que independe da causa** (é da Revisora): o CI paga por uma cobertura que o
   `smoke` local já dá de graça antes de todo push. Se a espera vale, ela vale uma vez, não duas.
@@ -4191,12 +4210,13 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   marca de voltar, o número vira normal por hábito, e daqui a um mês o CI lento é só como as coisas
   são.* Este item existe para que isso não aconteça.
 
-  **O critério de conclusão, escrito para não depender de julgamento depois:** com mais **três**
-  runs do fluxo "Validar dados e regras" já com o modelo versionado, comparar a mediana do job
-  `Smoke · test-grid` contra a faixa antiga (~3 a ~10m40). Se ficar **em 13 min ou acima**, virou o
-  normal e o item vira decisão de agir (as três saídas já levantadas: pular a espera só no CI,
-  investigar a causa, ou tirar a espera de vez). Se **voltar para a faixa antiga**, foi runner ruim
-  e o item fecha sem obra.
+  **O critério de conclusão, escrito para não depender de julgamento depois** (e reescrito com os
+  números certos): com mais **três** runs já com o modelo versionado, comparar a mediana do job
+  `Smoke · test-grid` contra a mediana ANTIGA do mesmo job, que é **537 s** (as cinco medidas
+  acima). Se a mediana nova ficar **acima de 790 s**, que é o pico pré-modelo, aí sim há efeito e o
+  item vira decisão de agir (as três saídas já levantadas: pular a espera só no CI, investigar a
+  causa, ou tirar a espera de vez). Se ficar **dentro da faixa de 459 s a 790 s**, o item fecha sem
+  obra e o alarme foi meu.
 
   **Quem traz o número é o Arquiteto, sem o humano pedir.** Foi condição declarada na hora da
   escolha, e é a única parte disto que não pode ser esquecida.
