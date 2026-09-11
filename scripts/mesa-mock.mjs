@@ -628,7 +628,7 @@ if (BANDEIRAS) {
  *     dois círculos ainda se cruzam (2 m de centro a centro contra 2,5 m de
  *     raios somados), achado testando ao vivo nesta própria rodada, então
  *     `raioExtraHex` ARREDONDA PARA CIMA. Com o 3 a primeira caminhada
- *     estrita já chega direto à borda, sem precisar da segunda passada — o
+ *     estrita já chega direto à borda, sem precisar da segunda passada, o
  *     que bate com a previsão do Arquiteto no L67 ("a primeira caminhada
  *     consegue chegar lá").
  *
@@ -637,7 +637,7 @@ if (BANDEIRAS) {
  *     ter nascido dentro dessa zona"). Um deslocamento PURO (`mov.destino`,
  *     sem `mov.alvo`: `paraEm` fica 0, o L67 não entra aqui) para `q:9,r:4`
  *     não tem passo nenhum livre no primeiro pente (todo vizinho mais perto
- *     do destino também está dentro do círculo do Aboleth) — sem a segunda
+ *     do destino também está dentro do círculo do Aboleth): sem a segunda
  *     passada, `vz` fica PRESO em `q:5,r:4` para sempre. É o caso do "Enorme
  *     parado ao lado prendendo os seis vizinhos de quem encosta nele" que a
  *     proibição do L67 protege, e não depende do raio do alvo em ponto

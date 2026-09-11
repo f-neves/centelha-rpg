@@ -5,10 +5,10 @@
 // aceitação é uma PROIBIÇÃO: não remover a segunda passada de `caminharHex`
 // que afrouxa o veto, porque ela serve outro caso (o Enorme parado ao lado
 // prendendo os seis vizinhos de quem encosta nele). Quem implementa prova as
-// duas, não uma — e é isso que este arquivo faz, na cena `?cena=corpoacorpo`
+// duas, não uma: e é isso que este arquivo faz, na cena `?cena=corpoacorpo`
 // (`mesa-mock.mjs`), lendo só `window.__ESPELHO.posDe`, a posição CRUA da
 // peça no tabuleiro depois de rodar o motor de verdade (`avancarTickSimultaneo`
-// por `E.avancar()`) — nunca recalculando por dentro a condição que o próprio
+// por `E.avancar()`), nunca recalculando por dentro a condição que o próprio
 // código decide (o cuidado do L74).
 //
 //   node scripts/test-l67-corpoacorpo-mesa.mjs
@@ -54,7 +54,7 @@ try {
 
   console.log(`\n· at (perseguição contra o Aboleth): pos ${JSON.stringify(posAt)}, distância ${dAt}`);
   // Distância 3, e não 2: 1 (braço) + 2 (o raio do Aboleth arredondado PARA
-  // CIMA, `grid.astro`, `raioExtraHex`) — em 2 os círculos ainda se cruzam
+  // CIMA, `grid.astro`, `raioExtraHex`), em 2 os círculos ainda se cruzam
   // (2 m de centro a centro contra 2,5 m de raios somados), achado ao vivo
   // nesta própria rodada, com a agenda prometendo um Tick que a caminhada não
   // cumpria.
