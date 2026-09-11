@@ -4904,9 +4904,43 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
     o commit na primeira que encontra, antes mesmo de olhar as envelhecidas, então enquanto as 57
     não estiverem escritas o portão ampliado não pode ser ligado.
 
-  **A ordem obrigatória, que sai do parágrafo acima:** as 57 âncoras, depois os 21 ponteiros,
-  depois as 22 marcas, e o `ALVOS` ampliado por último, com o portão vermelho antes e verde depois
-  · ligar primeiro trava a equipe inteira.
+  **A ordem obrigatória, que sai do parágrafo acima:** as 57 âncoras, depois os ponteiros, depois
+  as marcas, e o `ALVOS` ampliado por último, com o portão vermelho antes e verde depois · ligar
+  primeiro trava a equipe inteira.
+
+  **AS 57 ÂNCORAS ESTÃO ESCRITAS (rodada 45, 11/09/2026), e elas reescalaram o resto do item.**
+  As sem âncora chegaram a **zero**, conferido no portão de verdade (cópia com `ALVOS` ampliado).
+  **E o número de ENVELHECIDAS subiu de 43 para 71.** Não é regressão: o portão, ao encontrar
+  citação sem âncora, faz `continue` e **nunca chega a conferir se ela envelheceu**
+  (`test-procedencia.mjs:345`, `if (!anc)`). As 57 âncoras destaparam 28 citações que já estavam
+  podres e que nenhuma medida anterior conseguia ver. **É o `L72` de novo, do outro lado:** o que
+  sai do escopo do portão não fica bom, fica invisível.
+
+  **A fila real da rodada 46, com os números de hoje:** **36 ponteiros vivos** (eram 21) e **35
+  marcas históricas** no `REVISORA.md` (eram 22).
+
+  **A CONFERÊNCIA QUE EU USEI PARA LIBERAR O COMMIT, melhor que a que tinha sido oferecida:** a
+  Executora ofereceu o `numstat` simétrico, que prova que nenhuma linha nasceu ou morreu. Comparei o
+  **conjunto inteiro de citações** de cada arquivo contra o `HEAD`, ordenado, e os nove conjuntos
+  saíram idênticos (`REVISORA.md` 40, `CONJURACAO.md` 22, `Migracao_Dominio.md` 22, `VOZ.md` 20,
+  `Grid_Mobile.md` 11, `CATALOGO.md` 6, `CONTEXTO.md` 5, `Auditoria_Tecnica.md` 2,
+  `Regua_Relacao.md` 1). Isso prova o que o `numstat` não prova: que só se acrescentou âncora, e que
+  **nenhum número foi corrigido**, inclusive dentro do registro histórico. **Vale como gesto sempre
+  que o trabalho é "acrescentar sem alterar".**
+
+  **E 18 DAS 57 NÃO PRECISAVAM EXISTIR, por erro MEU de especificação.** Eu mandei escrever âncora
+  nas citações do `REVISORA.md` dizendo que era "para poder MARCAR como `(citação histórica)`
+  depois". Fui ler o portão **depois** de mandar: a marca é conferida **ANTES** da âncora
+  (`test-procedencia.mjs:337`, `if (MARCA_HISTORICA.test(territorio))`), e uma citação marcada é
+  pulada sem que se olhe se ela tem âncora. **A marca sozinha bastava.** As 18 ficam, porque âncora
+  em registro histórico ainda diz o que aquela citação afirmava, mas o trabalho foi pedido por
+  quem não tinha lido a ordem das checagens do instrumento que estava mandando usar.
+
+  **UMA PROPRIEDADE DO PORTÃO QUE ISTO REVELOU, e que morde quem escreve âncora:** ele compara pelo
+  miolo, `anc.txt.split('(')[0]`. Uma âncora específica como `update({ condicoes: [...] })` é
+  conferida como `update`, que aparece dez vezes naquele arquivo. **Parêntese na âncora encurta a
+  âncora na hora da conferência**, e verde fica mais barato do que parece. Quem escrever âncora põe
+  o que é específico ANTES do primeiro parêntese.
 
   **A MEDIDA FOI REFEITA COM O PRÓPRIO PORTÃO, e bateu.** A tabela acima saiu de uma cópia minha da
   heurística dele, e a ordem inteira do trabalho depende do número 57, então tomar a cópia pela
