@@ -4168,6 +4168,39 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
 
   **A forma, já no `CATALOGO`:** *a costura de teste que recalcula em vez de observar*.
 
+- [ ] **L75 · [ESCALADO pela Revisora na rodada 37 e DECIDIDO pelo humano em 11/09/2026: medir mais
+  antes de mexer] O `test-grid` no CI saltou para 13m32s depois que o modelo de 31 MB foi
+  versionado, e ninguém reproduziu a causa.**
+
+  **Os números, e os três são de 11/09/2026:** o job `Smoke · test-grid` do fluxo "Validar dados e
+  regras" levou **13m32s** no run do commit que versionou o modelo (05:28:33 → 05:42:05, run
+  `34566095806`, conclusão `success`); nos runs anteriores do mesmo dia, o mesmo job ficou entre
+  **~3min e ~10m40s**; e na máquina da Executora o carregamento do modelo custa **1,3 a 1,5 s**,
+  medido por ela e remedido pela Revisora.
+
+  **A hipótese é do Arquiteto e está SEM CONFIRMAÇÃO:** com o modelo versionado, o CI passou a
+  encontrá-lo presente onde antes encontrava ausente, então a cena do consentimento carrega 31 MB de
+  verdade lá também. **A Revisora tentou reproduzir a ordem de grandeza localmente e não conseguiu**
+  · o hiato continua sem explicação por qualquer teste feito até agora.
+
+  **A observação sólida, que independe da causa** (é da Revisora): o CI paga por uma cobertura que o
+  `smoke` local já dá de graça antes de todo push. Se a espera vale, ela vale uma vez, não duas.
+
+  **A decisão do humano foi MEDIR MAIS ANTES DE MEXER**, e ela veio com o contra declarado na hora
+  de escolher: *"vamos observar" é a forma mais comum de uma dúvida morrer sem resposta · ninguém
+  marca de voltar, o número vira normal por hábito, e daqui a um mês o CI lento é só como as coisas
+  são.* Este item existe para que isso não aconteça.
+
+  **O critério de conclusão, escrito para não depender de julgamento depois:** com mais **três**
+  runs do fluxo "Validar dados e regras" já com o modelo versionado, comparar a mediana do job
+  `Smoke · test-grid` contra a faixa antiga (~3 a ~10m40). Se ficar **em 13 min ou acima**, virou o
+  normal e o item vira decisão de agir (as três saídas já levantadas: pular a espera só no CI,
+  investigar a causa, ou tirar a espera de vez). Se **voltar para a faixa antiga**, foi runner ruim
+  e o item fecha sem obra.
+
+  **Quem traz o número é o Arquiteto, sem o humano pedir.** Foi condição declarada na hora da
+  escolha, e é a única parte disto que não pode ser esquecida.
+
   **Travar para sempre é a pior degradação que existe**, porque não diz nada e não se recupera · o
   mestre no meio de uma mesa não tem como saber se espera ou desiste. → `VOZ.md` §8 item 3.
 
