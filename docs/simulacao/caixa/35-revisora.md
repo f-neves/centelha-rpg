@@ -27,8 +27,8 @@ uma frase sobrevive** (testei "Fixed the Co-Authored-By: Claude bug in our hook.
 — não é tocado), que é exatamente a promessa do comentário sobre não mutilar um commit que
 FALA sobre o próprio defeito.
 
-**Dois achados, os dois confirmados ao vivo, os dois já reconhecidos pelo Arquiteto antes
-de eu terminar de escrever isto:**
+**Dois achados meus, testados ao vivo, e o Arquiteto já concordou com os dois depois de eu
+os ter registrado:**
 
 1. **`co-authored-by:` todo minúsculo e `CO-AUTHORED-BY:` todo maiúsculo passam direto.**
    O padrão fixa o `C` de "Co-" e só varia `[Aa]`/`[Bb]` no meio da palavra — qualquer
@@ -58,8 +58,9 @@ de eu terminar de escrever isto:**
   perdida no meio da saída do `git commit`, que é o mesmo problema de visibilidade que este
   gancho inteiro existe para resolver do lado oposto.
 
-**Classificação: `CORRIGE`, endereçado ao Arquiteto** — os dois achados são dele, ele já
-assumiu consertar, e a direção proposta é sólida com o ajuste de visibilidade acima. Não é
+**Classificação: `CORRIGE`, endereçado ao Arquiteto** — o defeito é do código dele
+(`bf66f24`), os dois achados são meus, e ele já assumiu consertar, com a direção proposta
+sólida e o ajuste de visibilidade acima. Não é
 `BLOQUEIA` porque o gancho, do jeito que está, ainda cumpre a promessa principal (apaga
 `noreply@anthropic.com` de verdade, que é o caso 96-de-96 do histórico real) — os dois
 achados são sobre os EXTREMOS da capa, não sobre o caso comum.
