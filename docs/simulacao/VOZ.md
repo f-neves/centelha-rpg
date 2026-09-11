@@ -34,13 +34,13 @@ O levantamento pedido no §3 (respondido pela Executora) trouxe três correçõe
 documento supunha, e uma notícia boa:
 
 - **Desfazer não é a rede que este documento supunha.** Cobre posição e Vida
-  (`src/pages/mesa/grid.astro:10801` · `async function desfazer`), não cobre Mana, a declaração do golpe, o Tick nem a
+  (`src/pages/mesa/grid.astro:10814` · `async function desfazer`), não cobre Mana, a declaração do golpe, o Tick nem a
   agenda. A decisão de dispensar confirmação a cada comando (§4) dependia de desfazer barato, e
   ele não existe para metade do que a voz executaria;
 - **Escolher arma não existe.** A arma vem fixa da ficha do personagem; "ataca com o machado" não
   tem o que executar hoje. Os nomes de arma seguem no vocabulário de teste, porque medir palavra
   comum vale igual, mas não são parâmetro de comando (ver §2);
-- **Mana não distingue dar de tirar.** É uma função só (`src/pages/mesa/grid.astro:10494` · `async function ajustarMana`), então
+- **Mana não distingue dar de tirar.** É uma função só (`src/pages/mesa/grid.astro:10507` · `async function ajustarMana`), então
   o sinal vem da fala: "dá quatro de mana" e "tira quatro de mana" chamam a mesma função com
   valores opostos.
 
@@ -459,7 +459,7 @@ sendo clique, e é o certo por ora (ver §9.6).
 
 **A primeira redação deste parágrafo pedia `"acerto dezoito, dano sete"`, e estava errada.** O campo
 guarda as FACES e não o total, por decisão fechada em 06/09/2026 e escrita no próprio código:
-`src/pages/mesa/grid.astro:9584` · `O CAMPO GUARDA AS FACES, E NÃO O TOTAL`. Quem soma é a folha,
+`src/pages/mesa/grid.astro:9591` · `O CAMPO GUARDA AS FACES, E NÃO O TOTAL`. Quem soma é a folha,
 em `src/lib/rolagem.ts:93` · `const rolls`. Falar o total não é a mesma coisa dita mais curto, é
 **outra coisa**: com bolo de dados, a função lê `18` como UMA face e ainda soma o fixo por cima, que
 é o hábito antigo que o comentário logo abaixo existe para pegar. A entrada real é a de
@@ -506,8 +506,8 @@ Não entram letras, não entram casas, não entram nomes.
 | **números livres** | o ajuste avulso, os dois do raspão, o custo em Ticks, os três da válvula do improviso, e os campos da ficha do lance | aberta | a família do `-ze` inteira |
 
 Os campos da ficha do lance são 21, declarados em duas tabelas com rótulo:
-`src/pages/mesa/grid.astro:9768` · `const CAMPOS_ATQ`, e
-`src/pages/mesa/grid.astro:9781` · `const CAMPOS_ALVO`.
+`src/pages/mesa/grid.astro:9775` · `const CAMPOS_ATQ`, e
+`src/pages/mesa/grid.astro:9788` · `const CAMPOS_ALVO`.
 Dezessete deles são numéricos. Eles são **correção**, e não o gesto de toda rodada.
 
 **O risco da segunda lista é real e mensurável:** números falados em português têm famílias
@@ -591,7 +591,7 @@ Isto vem antes das decisões porque foi o que as moldou.
 
 | classe | dá para voz? | por quê |
 |---|---|---|
-| **campo de número dentro de caixa aberta** | **sim, e escala de graça** | os campos nascem de tabela com rótulo (`src/pages/mesa/grid.astro:9768` · `const CAMPOS_ATQ`). Um mecanismo só, "rótulo mais número", cobre todos |
+| **campo de número dentro de caixa aberta** | **sim, e escala de graça** | os campos nascem de tabela com rótulo (`src/pages/mesa/grid.astro:9775` · `const CAMPOS_ATQ`). Um mecanismo só, "rótulo mais número", cobre todos |
 | **gesto espacial** (arrastar, mirar, alvo, enquadrar, névoa) | **não, e por decisão** | o §2 fechou "o toque diz quem". Dizer posição por fala é mais lento que apontar, sempre |
 | **tela de preparo** (arena, aparência, setas, trilha) | tecnicamente trivial | **vale zero**: não aparece em gesto nenhum da medição do §9.1 |
 
@@ -608,9 +608,9 @@ tem teclado.
 
 **O que isso obriga, e é achado desta régua:** a tecla da voz **precisa de escuta própria**. O bloco
 de atalhos de hoje desiste dentro de diálogo
-(`src/pages/mesa/grid.astro:11441` · `document.querySelector('dialog[open]')`)
+(`src/pages/mesa/grid.astro:11454` · `document.querySelector('dialog[open]')`)
 e desiste com o foco num campo
-(`src/pages/mesa/grid.astro:11440` · `a.tagName === 'INPUT'`) · que é **exatamente** onde a voz
+(`src/pages/mesa/grid.astro:11453` · `a.tagName === 'INPUT'`) · que é **exatamente** onde a voz
 precisa funcionar, porque é dentro da folha e com o cursor num campo que o mestre fala. A escuta
 nova também tem de barrar a letra de entrar no campo enquanto a tecla estiver segurada, e ignorar a
 repetição automática do teclado.
@@ -681,7 +681,7 @@ seis" sem folha aberta abre **o golpe que está vencendo**, e não uma folha qua
 fala valer os 51%, porque abrir o cartão é 17% sozinho.
 
 **E a diferença entre as duas leituras não é de redação, é de possível e impossível.** A folha do
-golpe exige ATACANTE E ALVO (`src/pages/mesa/grid.astro:9184` · `function folhaDaAcao`). A decisão 4
+golpe exige ATACANTE E ALVO (`src/pages/mesa/grid.astro:9191` · `function folhaDaAcao`). A decisão 4
 dá o atacante e recusa nome próprio, então **não há de onde tirar o alvo**: "abrir a folha da peça
 da vez" não tem como ser construído sem reabrir a escolha de alvo por voz, que esta mesma régua
 fechou. O cartão vencido não tem esse problema **porque os dois lados já estão amarrados**: o golpe
@@ -695,7 +695,7 @@ tela antes de apertar o veredito.
 
 **13 · A bancada é do MESTRE agora, e o desenho já prevê a tela do JOGADOR.** Não é só ordem de
 fila, é obrigação de desenho: a folha do jogador **não tem a coluna do alvo**
-(`src/pages/mesa/grid.astro:9893` · `const campoAlvo = MESTRE`), porque a view da migração 27 não
+(`src/pages/mesa/grid.astro:9900` · `const campoAlvo = MESTRE`), porque a view da migração 27 não
 manda o bloco do inimigo para o navegador dele. Então **a camada contextual da folha é diferente nos
 dois lados**, e a régua diz qual: a gramática de uma caixa é montada da lista de campos que aquela
 tela DE FATO desenhou, e nunca de uma lista fixa escrita à mão. Escrito agora para não virar
