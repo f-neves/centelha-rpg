@@ -4743,12 +4743,33 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   vírgula onde era aposto, **parênteses nos três casos de travessão em par**, e ponto-médio onde a
   frase virava contra si mesma.
 
-  **E há uma prova barata de que a varredura não estragou nada além do que tocou:** o diff é
-  **100/100 no `Pendencias.md`, 37/37 no `ESTADO.md` e 5/5 no `VOZ.md`**, um para um. Contagem de
+  **E há uma prova barata de que a varredura não estragou nada além do que tocou:** o diff **da
+  varredura sozinha** é **100/100 no `Pendencias.md`, 37/37 no `ESTADO.md` e 5/5 no `VOZ.md`**, um
+  para um. São 146 ocorrências em 142 linhas, porque quatro linhas traziam duas cada. Contagem de
   linha inalterada quer dizer que ela não pode ter deslocado citação nenhuma, e por isso ela não
   precisou de reaponte · a única citação que envelheceu na rodada foi a do código da Executora.
   Vale como gesto: **substituição dentro da linha se confere pelo `numstat` simétrico**, e isso
   custa um comando.
+
+  **"DA VARREDURA SOZINHA" É A METADE QUE EU TINHA DEIXADO DE FORA, e a Revisora tropeçou nela.**
+  Ela mediu o `numstat` do COMMIT, que dá `146/102` no `Pendencias.md`, não bateu com o meu
+  `100/100`, separou por hunk e achou **101** linhas um-para-um · concluiu que o meu 100 era um
+  deslize de contagem. Medido dos dois lados depois: a varredura sozinha (o arquivo antes contra o
+  arquivo depois, guardados) é **100** exatas, e a 101ª é o **reaponte**: a citação que apontava a
+  linha 77 e hoje aponta `rodada.mjs:102` (`function calcularTopo`), que também é troca dentro da
+  linha e entrou no mesmo commit.
+
+  **Nenhum dos dois números estava errado, e é a forma do dia outra vez:** o meu 100 é sobre a
+  varredura, o 101 dela é sobre o commit, e eu publiquei o meu sem dizer sobre o quê. A conclusão
+  dela ("deslize pequeno") seguiu da premissa certa de que os dois falavam da mesma coisa, que é o
+  que acontece quando o escopo não vem escrito do lado do número. **O gesto continua sendo o
+  mesmo: dizer o escopo junto do número.**
+
+  **E o erro MEU de verdade é o que tornou a confusão possível, não o número.** A decisão do humano
+  dizia, com todas as letras, que a varredura é **commit próprio, fora de rodada, para o diff não
+  se misturar**. Eu a commitei junto com o reaponte e com a prosa nova do `L79` e do `L81`, e é por
+  isso que o `numstat` do commit é `146/102` em vez de `100/100`. A decisão existia exatamente para
+  a leitura ser trivial, e quem pagou o preço foi quem veio conferir.
 
   **O QUE FALTA, E É O QUE MANTÉM ESTE ITEM ABERTO:** o portão. Ele confere o arquivo inteiro, e
   não só as linhas adicionadas, e a decisão do humano é essa. Quem for construí-lo decide primeiro
@@ -4928,6 +4949,26 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   porque ela se repete: `b8b78ae2` é objeto inalcançável desde que a worktree dela saiu de cima, e
   um `git gc` o apaga · seria um teste que passa hoje e some sozinho, sem ninguém ver sumir. O
   órfão é fabricado dentro do teste, como o `test-carimbo` já faz com as migrações sintéticas.
+  Conferido pela Revisora lendo o `commitOrfao`, e não aceito da descrição.
+
+  **REVISADO na rodada 44 (`4453963`): SEGUE, sem CORRIGE, e ela foi além dos riscos que eu marquei.**
+  Rodou as 19 asserções e testou **dois cenários que o `test-rodada.mjs` não tinha**:
+
+  · **repositório sem worktree da revisora nenhuma** · degrada com segurança ("BASE a preencher à
+    mão"), sem quebrar. É o caminho que mais importa não travar, porque é o de quem clona o
+    repositório sem o arranjo montado.
+  · **dois commits de mesma mensagem na mesma branch** · e aqui está a lacuna. O `acharGemeo`
+    devolve o **primeiro** que encontra andando por `git log HEAD`, que é o mais recente, **em
+    silêncio**, sem dizer que havia um segundo candidato. Conferido na função: o laço tem `return h`
+    dentro, sem continuar procurando.
+
+  **A lacuna dos dois gêmeos é HARDENING e não CORRIGE, e a Revisora acertou em classificá-la
+  assim:** nunca aconteceu, e um commit replantado duas vezes é caso de segunda ordem. Mas o preço,
+  se acontecer, é o pior que este portão pode cobrar · ele existe para NOMEAR o gêmeo certo, e
+  nomear o errado com a mesma confiança manda quem lê para um `BASE` que também não serve. **É a
+  forma "achar por POSIÇÃO" dentro do instrumento construído para consertar um achado por posição.**
+  Quem for endurecer: colecionar todos os candidatos e, havendo mais de um, dizer quantos são em vez
+  de escolher.
 
   **O CONSERTO, tal como foi especificado antes de ser escrito:** o `rodada.mjs` recusa abrir quando o `BASE`
   computado não é ancestral do `SHA` (`git merge-base --is-ancestor`), e, havendo commit de mesma
