@@ -298,6 +298,31 @@ As cinco regras, e as cinco são obrigação da executora:
    preciso trabalhar, trabalha-se noutra branch e traz-se depois, para que o
    commit avisado continue sendo o topo quando a resposta chegar.
 
+### E a sexta, que é a mesma regra olhando para o outro arquivo
+
+6. **AVISO ENVIADO NÃO SE EDITA.** Correção de aviso já enviado vai para o
+   veredito ou para o arquivo de progresso, nunca para o próprio aviso.
+
+**O motivo NÃO é a garantia de checkout da revisora**, e essa foi a razão errada
+que o Arquiteto escreveu primeiro. Ela não quebra: o sha antigo continua lendo o
+texto antigo, faça-se o que se fizer no `HEAD`. **O motivo é o mesmo da regra 3
+acima**, achado pela Revisora em 11/09/2026 procurando neste arquivo em vez de
+aceitar a explicação que lhe deram: *"para ninguém achar depois que a revisora
+estava errada"* · é **atribuição**, e não versão.
+
+**O caso que mostrou:** na rodada 42 o aviso publicou "31 objetos soltos deixados
+pelo meu teste". O Arquiteto mediu e corrigiu para 1; a Revisora remediu do zero,
+datando cada objeto no disco, e confirmou. Com a emenda no aviso (mesmo revertida
+depois), por um instante existiu uma versão em que o número certo parecia ter
+vindo da medição original, e não da correção. Quem abrisse só o arquivo no `HEAD`
+não teria como separar **o que a Executora mediu** do **que alguém corrigiu por
+cima**.
+
+**E é a mesma lição que a rodada 35 já tinha cobrado**, quando o Arquiteto se
+creditou, por uma frase ambígua, de dois achados que eram da Revisora: este
+arranjo inteiro se sustenta em quem conferiu o quê. Apagar o erro de quem o
+cometeu apaga junto o crédito de quem o achou.
+
 ## O que o aviso tem de trazer
 
 O formato está em `MODELO-executora.md` e é fixo. A seção que carrega o peso é
