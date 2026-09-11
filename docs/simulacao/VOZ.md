@@ -446,16 +446,36 @@ medidos, e ela **não encerra a frente**: reduz o alvo dela de "tudo" para um al
 grande. A outra metade do bloqueio continua de pé e é do humano · as frases reais que ele quis
 dizer numa mesa de verdade.
 
-### 9.4 · O alvo real: a folha do golpe, e uma frase que vale 51%
+### 9.4 · O alvo real: a folha do golpe, e uma fala que vale 51%
 
 **Uma fala só cobre os dois primeiros gestos da tabela**, porque eles são consecutivos e o segundo
 já é a consequência do primeiro:
 
-> **"acerto dezoito, dano sete"**
+> **"acerto quatro dois seis, dano quatro dois"**
 
-Com um cartão vencido esperando na faixa, essa frase **abre o cartão** (17,0%) **e preenche os dois
-campos** (34,0%). **São 51% do trabalho medido do mestre numa frase.** O botão do veredito continua
+Com um cartão vencido esperando na faixa, essa fala **abre o cartão** (17,0%) **e preenche os dois
+campos** (34,0%). **São 51% do trabalho medido do mestre numa fala.** O botão do veredito continua
 sendo clique, e é o certo por ora (ver §9.6).
+
+**A primeira redação deste parágrafo pedia `"acerto dezoito, dano sete"`, e estava errada.** O campo
+guarda as FACES e não o total, por decisão fechada em 06/09/2026 e escrita no próprio código:
+`src/pages/mesa/grid.astro:9322` · `O CAMPO GUARDA AS FACES, E NÃO O TOTAL`. Quem soma é a folha,
+em `src/lib/rolagem.ts:93` · `const rolls`. Falar o total não é a mesma coisa dita mais curto, é
+**outra coisa**: com bolo de dados, a função lê `18` como UMA face e ainda soma o fixo por cima, que
+é o hábito antigo que o comentário logo abaixo existe para pegar. A entrada real é a de
+`src/pages/mesa/grid.astro:465` · `id="al-total"`, que pede as faces separadas por vírgula.
+
+**Três consequências, e elas não apontam todas para o mesmo lado:**
+
+- **o vocabulário do caminho quente encolhe para seis palavras** (`um` a `seis`), porque face de d6
+  não passa de seis. A família confundível do `-ze` **não existe** neste campo;
+- **mas a fala fica mais longa, e não mais curta.** Um bolo de dez dados são dez faces ditas. O
+  risco mudou de palavra confundível para **comprimento de sequência**, e é outro risco, medido de
+  outro jeito;
+- **a folha já tem meio detector de graça:** `src/lib/rolagem.ts:114` ·
+  `bateContagem: rolls.length === dadosExpr` marca o campo quando o número de faces digitadas não
+  bate com o que o bolo pede. **Ele pega face perdida ou repetida; não pega `quatro` ouvido como
+  `seis`.** É detector de contagem, e não prova de transcrição, e é assim que ele deve ser lido.
 
 **Por que isto cabe no desenho sem decisão nova de princípio:** o §2 desta frente diz, como decisão
 fechada, **"o toque diz quem, a voz diz o quê e quanto"**. Número é *quanto*. Não é posição, não é
@@ -478,14 +498,26 @@ primeiro acréscimo de vocabulário desde que a frente começou.
 **O que entra:** os números, mais as duas palavras que dizem qual campo é qual (`acerto`, `dano`).
 Não entram letras, não entram casas, não entram nomes.
 
-**O risco, e ele é real e mensurável:** números falados em português têm famílias confundíveis
-(`três` e `seis`, `dois` e `doze`, `treze` e `três`, a família toda terminada em `-ze`). **Esse
-risco é exatamente o que a bancada existe para medir**, e é o único ponto desta frente em que o
+**E os números são DUAS listas, não uma**, o que a primeira redação misturava:
+
+| lista | onde ela vale | tamanho | o risco |
+|---|---|---|---|
+| **faces de d6** | `al-total` e `al-dn`, os dois campos do caminho quente | **6 palavras**, `um` a `seis` | comprimento da sequência, não confusão de palavra |
+| **números livres** | o ajuste avulso, os dois do raspão, o custo em Ticks, os três da válvula do improviso, e os campos da ficha do lance | aberta | a família do `-ze` inteira |
+
+Os campos da ficha do lance são 21, declarados em tabela com rótulo em
+`src/pages/mesa/grid.astro:9506` · `const CAMPOS_ATQ` e `src/pages/mesa/grid.astro:9519` ·
+`const CAMPOS_ALVO`, e 17 deles são numéricos. Eles são **correção**, e não o gesto de toda rodada.
+
+**O risco da segunda lista é real e mensurável:** números falados em português têm famílias
+confundíveis (`três` e `seis`, `dois` e `doze`, `treze` e `três`, a família toda terminada em
+`-ze`). **Esse risco é o que a bancada existe para medir**, e é o único ponto desta frente em que o
 resultado da bancada decide o desenho, e não só a confiança nele.
 
 **A saída se a taxa for ruim, e ela não precisa ser decidida agora:** dígito a dígito
-(`"acerto um oito"`) em vez de por extenso, o que troca uma lista longa de palavras confundíveis
-por uma de dez, ao custo de a fala ficar menos natural. A bancada mede as duas.
+(`"ajuste um oito"`) em vez de por extenso, o que troca uma lista longa de palavras confundíveis
+por uma de dez, ao custo de a fala ficar menos natural. A bancada mede as duas. Para a lista das
+faces essa saída não faz sentido, porque a lista já é de seis.
 
 **Um cuidado de desenho que a régua dos verbos já resolve:** o parser recusa em vez de aproximar.
 Número que o reconhecedor não entendeu com confiança **não vira número no campo** · vira recusa com
@@ -516,7 +548,7 @@ economizando a coisa errada.
 | # | o que é | tamanho | o que destrava |
 |---|---|---|---|
 | 0 | **fechar o `L71`** · o modelo corrompido que trava sem mensagem | pequeno (um prazo) | a voz ser usável numa mesa de verdade, e não só quando tudo dá certo |
-| 1 | **medir os números na bancada**, por extenso e dígito a dígito | é rodar, não construir | decide a forma da fala do §9.5 |
+| 1 | **medir os números na bancada**, as duas listas do §9.5 em separado, e o acerto em função do COMPRIMENTO da sequência | é rodar, não construir | decide a forma da fala do §9.5 |
 | 2 | **`acerto` e `dano` na gramática**, no mesmo arquivo de dados | pequeno | 34,0% |
 | 3 | **a fala abrir o cartão vencido** quando há um esperando | médio | mais 17,0%, e é o que faz a frase valer 51% |
 | 4 | **recusa explícita de número duvidoso**, com a frase ouvida à mostra | pequeno | que a frente não corrompa ficção em silêncio |
