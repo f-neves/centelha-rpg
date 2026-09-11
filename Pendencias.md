@@ -4036,9 +4036,37 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   verdadeiro ainda sai errada se for generalizada um passo além do que o achado sustenta, e quem
   descobre é quem tenta executá-la, nunca quem a escreveu.
 
-- [ ] **L67 · [REGRA DECIDIDA pelo humano em 10/09/2026, tamanho medido, NÃO ABERTO · a frente da
-  voz vem antes] O corpo a corpo termina DENTRO do inimigo que ocupa mais de um hexágono, e o
-  estado que sobra é proibido pela própria regra de ocupação da mesa.**
+- [x] **L67 · [REGRA DECIDIDA pelo humano em 10/09/2026, CONSTRUÍDO nas rodadas 39 e 40, em
+  11/09/2026] O corpo a corpo terminava DENTRO do inimigo que ocupa mais de um hexágono, e o
+  estado que sobrava era proibido pela própria regra de ocupação da mesa.**
+
+  **FECHADO EM 11/09/2026. O que foi construído:** `raioExtraHex` (`src/pages/mesa/grid.astro:3344`
+  · `const raioExtraHex`), a única conversão de porte para hexágonos, e um terceiro parâmetro em
+  `src/lib/alcance.ts:91` · `export function alcancaNoCorpoACorpo`, com o `Math.max(0, …)` morando
+  na função que decide e não em cada chamador. **Dez lugares** ao todo, e não os sete que o
+  levantamento tinha contado.
+
+  **OS TRÊS QUE O LEVANTAMENTO NÃO ACHOU, e a lição é sobre o método, não sobre quem contou:** o
+  levantamento procurou quem chamava a régua **pelo nome**. O oitavo (`declararGolpe`) tinha a
+  conta copiada à mão, e o defeito era concreto: a prévia prometia um Tick e o motor gravava outro,
+  achado pelo `test-grid-simultaneo.mjs` quebrando. O nono (`valoresDoLance`) e o décimo (o texto
+  do `avisoAlcance` em `folhaDaAcao`) mostravam na tela um alcance que o motor não usava mais.
+  **Busca por nome não acha cópia manual**, e os três só apareceram porque alguém varreu por
+  `HEX_HASTE`/`HEX_CORPO_A_CORPO` crus e porque a Revisora leu o código em vez de confiar na busca.
+
+  **O critério de aceitação era uma proibição e foi cumprido:** a segunda passada de `caminharHex`
+  não foi tocada, e as duas situações estão provadas ao vivo em `scripts/test-l67-corpoacorpo-mesa.mjs`
+  · a perseguição parando na BORDA de um Aboleth, e uma peça nascida vizinha dele continuando a
+  chegar ao destino, que é o caso do Enorme prendendo os seis vizinhos.
+
+  **Um arredondamento consertado no caminho:** `raioExtraHex` usava chão, e com chão a peça parava
+  a 2 hexágonos de um Enorme com os círculos ainda sobrepostos (2 m de centro a centro contra 2,5 m
+  de raios somados). Com teto, a perseguição chega à borda num Tick só, que é o que este item
+  previa por escrito.
+
+  **O QUE FICOU DE FORA, e são dois itens abertos, não pontas soltas:** → `L76` (a interposição
+  continua de centro a centro) e → `L77` (**o raio do próprio atacante nunca entrou**, então a
+  régua está construída só de um lado · é decisão do humano e vale para metade do bestiário).
 
   **A REGRA, decidida em 10/09/2026:** o **alcance corpo a corpo se mede de BORDA A BORDA**, e não
   de centro a centro. O alvo grande ocupa área, e adjacência a ele é adjacência ao **corpo** dele,
@@ -4434,9 +4462,38 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **Não consertar agora**, instrução do humano. Os dois ficam ligados para quem abrir um achar o
   outro e decidir de uma vez só onde a regra vai morar. → `L66`, → `L67`, → `L62`.
 
-- [ ] **L68 · [LEVANTADO em 10/09/2026 numa batalha de mesa, PARADO esperando o humano · criar a
-  distinção é decisão dele] Arrastar uma peça fora do turno dela passa em silêncio, e a distinção
-  que resolveria isso já existe no motor, em outro eixo.**
+- [x] **L68 · [LEVANTADO em 10/09/2026 numa batalha de mesa, DECIDIDO pelo humano no mesmo dia,
+  CONSTRUÍDO na rodada 40 em 11/09/2026] Arrastar uma peça fora do turno dela passava em silêncio,
+  e a distinção que resolvia isso já existia no motor, em outro eixo.**
+
+  **FECHADO EM 11/09/2026.** O diálogo `fdv-dlg` pergunta qual das duas é, nunca "tem certeza", e
+  roteia: CORRIGIR POSIÇÃO não consome e grava o verbo "corrigiu"; AGIR FORA DO TURNO grava a marca
+  e, na Recuperação, passa pelo `foraDeHora` de verdade com a dívida que ele calcular. **Nenhuma
+  frase foi escrita à mão:** o texto de cada fase vem do `porque` que o próprio motor devolve, o
+  que a Revisora conferiu lendo o código. E o registro passou a guardar a diferença, que era a
+  metade do item sem a qual a distinção existiria no instante do clique e sumiria do histórico.
+
+  **A DIVERGÊNCIA QUE A EXECUTORA ACHOU ANTES DE CODAR, e ela mudou o desenho:** este item mandava
+  "rotear para o mecanismo que já existe", mas `src/lib/combate-tempo.ts:898` · `export function
+  foraDeHora` só devolve `pode:true` na **Recuperação**. Em `livre` a régua já diz "não paga nada",
+  em `preparo` o que cabe é abortar (mecanismo próprio, com botão próprio) e em `golpe` não se
+  interrompe. **Isso não é buraco no roteamento, é o roteamento:** o diálogo pergunta qual das duas
+  é, e quem diz o que custa é o motor, que sabe responder nas quatro fases. Em `livre` o custo é
+  zero e o valor inteiro da escolha é o REGISTRO.
+
+  **UM DEFEITO REAL NO PRIMEIRO GATILHO, medido antes de trocar:** ele disparava por
+  `!grupoDaVez().some(...)`, e `src/pages/mesa/grid.astro:4563` · `function grupoDaVez` devolve
+  lista **vazia** enquanto um golpe está caindo. Com lista vazia o diálogo abria em **todo**
+  arrasto naquele intervalo: medido no bench de doze peças com um golpe de verdade no ar,
+  **12 de 12 contra 7 de 12** depois da troca por um predicado da peça (`chegouAVez`, que usa o
+  mesmo `tickDaVez()`/`c.tick`, só sem o filtro do golpe). Sem essa troca o item viraria exatamente
+  o "modal a cada arrumação de tabuleiro" que o humano escreveu que não queria.
+
+  **Três asserções antigas de `scripts/test-grid-simultaneo.mjs` quebraram** porque o diálogo novo
+  intercepta o gesto que elas usavam. O bench compartilhado NÃO foi mexido (mudar fixture para o
+  comportamento novo passar é como se esconde regressão); as três passaram a declarar o estado de
+  vez que precisam. **E cada uma foi provada ainda pegando o que pegava**, quebrando de propósito o
+  mecanismo vigiado e confirmando o vermelho antes de reverter.
 
   **O que se quer, e não é proibir:** julgamento do mestre é jogo. O que falta é a mesa deixar de
   ser muda, sem cobrar um modal a cada arrumação de tabuleiro.
