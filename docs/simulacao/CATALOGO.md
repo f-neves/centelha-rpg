@@ -512,3 +512,21 @@ achando que o outro ja tinha o que precisava, e a conferencia disponivel medindo
 **Parente da "garantia correta sobre o eixo errado", e aqui a parentela e literal:** a afirmacao
 "commitado e limpo" e verdadeira, e a pergunta era outra. O conserto e um gesto no fecho de rodada,
 depois do `--enviar`: contar o que falta subir, e subir.
+
+**A MESMA FORMA, MEIA HORA DEPOIS, E DESTA VEZ QUASE CUSTOU O TRABALHO DE ALGUEM.** A Revisora
+commitou a contraprova do D38c na worktree dela, avisou que o push nao era fast-forward e nao
+empurrou, certo. Eu entao mandei a ela, como higiene para a rodada seguinte,
+`git fetch && git checkout --detach origin/main`. O commit dela, que nao estava no `origin` nem em
+lugar nenhum alem daquele `HEAD` destacado, **ficou sem referencia**: sobreviveu so no reflog, de
+onde eu o resgatei por `cherry-pick`.
+
+**A instrucao estava certa e incompleta, e incompleta aqui e o mesmo que errada.** Ressincronizar
+worktree destacada e o gesto certo; faltou a ordem: **primeiro o commit chega ao `main`, depois a
+worktree se move.** Um `HEAD` destacado nao tem ramo que segure o que ele criou, e trocar de
+commit ali apaga a unica referencia que existia.
+
+**E a raiz e a mesma da forma acima:** ninguem, nem ela nem eu, tinha um comando na rotina que
+respondesse "o que eu fiz ja existe fora desta maquina?". Ela mediu o certo (o push recusado) e eu
+respondi com um gesto que pressupunha o contrario. **A pergunta que faltava, de novo, e
+`git rev-list --count origin/main..HEAD`**, e desta vez ela precisava ser feita por QUEM MANDA o
+gesto, nao so por quem o executa.
