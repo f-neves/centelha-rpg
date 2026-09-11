@@ -3980,6 +3980,23 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   deslocaria duas vezes. O conserto é devolver os documentos ao `HEAD` e reaponhar uma vez só, com
   o diff completo · foi o que se fez, com `0` citações quebradas conferidas contra o `HEAD`.
 
+  **O LIMITE DO INSTRUMENTO, achado na rodada 39 em 11/09/2026: o script só sabe `grid.astro`.**
+  Ele foi escrito para o arquivo que concentra o pedágio, e por dezenas de rodadas isso bastou
+  porque as rodadas mexiam só nele. A 39 mexeu também em `src/lib/alcance.ts` (o terceiro
+  parâmetro de `alcancaNoCorpoACorpo`), e uma citação a esse arquivo envelheceu **sem o script
+  sequer olhar para ela**. Quem a pegou foi o portão, depois do reaponte, e o conserto foi à mão.
+
+  **O jeito como isso engana é o de sempre neste repositório:** o script imprime "0 citações
+  quebradas" e a frase é verdadeira sobre o que ele mediu. Ler isso como "o reaponte está
+  completo" é a mesma leitura larga que já produziu, no mesmo dia, a contagem errada do CI, a
+  amostra escolhida pela recência e a varredura de travessão que não via arquivo não rastreado.
+
+  **A regra que fica, e ela é de conferência e não de código:** depois do reaponte, **rodar o
+  portão** e ler o que ele acusa, em vez de confiar na saída do script. O portão olha todos os
+  arquivos citados; o script, um só. Se alguém for ampliá-lo um dia, o caminho é a lista `ALVO`
+  virar as N origens do diff, mas ampliar não dispensa a conferência · ampliar move o limite,
+  não o elimina.
+
 - [ ] **L67 · [REGRA DECIDIDA pelo humano em 10/09/2026, tamanho medido, NÃO ABERTO · a frente da
   voz vem antes] O corpo a corpo termina DENTRO do inimigo que ocupa mais de um hexágono, e o
   estado que sobra é proibido pela própria regra de ocupação da mesa.**
