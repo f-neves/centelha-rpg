@@ -4324,9 +4324,41 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **Travar para sempre é a pior degradação que existe**, porque não diz nada e não se recupera · o
   mestre no meio de uma mesa não tem como saber se espera ou desiste. → `VOZ.md` §8 item 3.
 
+- [ ] **L77 · [ACHADO pelo Arquiteto em 11/09/2026, conferindo a varredura da Executora na rodada
+  40 · DECISÃO DO HUMANO, não de implementação] O `L67` foi construído só de um lado: o raio do
+  ALVO entra na régua, o do próprio ATACANTE não entra em lugar nenhum.**
+
+  **A regra que o humano decidiu em 10/09 diz "de BORDA A BORDA".** Borda a borda corta os DOIS
+  raios, não um. O que está no código corta um: as cinco chamadas de `raioExtraHex`
+  (`src/pages/mesa/grid.astro:3344` · `const raioExtraHex`) passam todas o ALVO, e
+  `src/pages/mesa/grid.astro:5336` · `const alcanceDaPeca` soma só `raioExtraHex(alvo)`. As
+  constantes de alcance não sabem de porte: são número fixo.
+
+  **A consequência, concreta:** um Enorme tem 2 m de corpo e ataca um humano. As bordas se
+  encostam, e a régua continua exigindo que o CENTRO dele esteja a um hexágono do alvo, então o
+  motor diz "fora de alcance" para um golpe que a ficção dá. É um GATE e não texto de tela · ele
+  recusa o ataque, não só mostra número errado.
+
+  **POR QUE ISTO NÃO FOI CONSTRUÍDO JUNTO, e não é esquecimento de quem implementou:** o item do
+  `L67` fala do alvo grande o tempo inteiro, porque o defeito que o originou era o atacante
+  entrando no corpo do alvo perseguido. A metade simétrica nunca foi perguntada. A Executora
+  implementou fielmente o que estava escrito, e a Revisora conferiu fielmente o que estava escrito.
+
+  **POR QUE É DECISÃO DO HUMANO E NÃO CONSERTO:** isto muda o combate contra **toda** criatura
+  Enorme, Imensa ou Colossal, que é metade do bestiário, e muda a favor DELAS · monstro grande
+  passa a alcançar de mais longe. É mudança de dificuldade de mesa, não correção de defeito. E há
+  uma leitura honesta do outro lado: o porte grande já paga em outras réguas (deslocamento,
+  Furtividade, a Defesa por porte), e pode ser que o alcance tenha sido deixado de fora de
+  propósito, mesmo que ninguém tenha escrito isso.
+
+  **O que decidir, em uma frase:** o alcance corpo a corpo soma o raio dos dois corpos, ou só o do
+  alvo?
+
+  → `L67` (a metade construída), → `L76` (a mesma régua faltando na interposição).
+
 - [ ] **L76 · [ESCALADO pela Revisora na rodada 39, em 11/09/2026, e o Arquiteto RECUSOU consertar
-  de passagem] A interposição continua medindo de centro a centro depois do `L67`, e a régua nova
-  não chegou nela.**
+  de passagem · a Executora chegou nela sozinha na rodada 40, por outro caminho] A interposição
+  continua medindo de centro a centro depois do `L67`, e a régua nova não chegou nela.**
 
   **O caso:** `src/lib/alcance.ts:113` · `alcanceInterpor` chama, no ramo do corpo a corpo
   (`src/lib/alcance.ts:126` · `return alcancaNoCorpoACorpo`), com dois argumentos, e não passa o
@@ -4348,7 +4380,18 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   atravessa na frente de um golpe a dois hexágonos de distância é uma cena diferente de um humano
   fazendo o mesmo, e quem decide se essa cena vale é o humano.
 
-  → `L67` (a régua que originou), → `L70` (o outro que saiu pelo mesmo critério).
+  **DUAS LEITURAS DIFERENTES DA MESMA LINHA, e elas não são a mesma falta.** A Revisora leu como
+  faltando o raio do INTERPOSITOR (a ponta longe da medida, a casa onde ele termina). A Executora,
+  chegando aqui sozinha um dia depois, leu como faltando o raio do AGRESSOR (a ponta perto: um
+  Enorme com 2 m de corpo, e a régua exigindo que o interpositor esteja grudado no centro dele).
+  Pela semântica de hoje o terceiro parâmetro é o raio da ponta LONGE, então a leitura da Revisora
+  é a que casa com a função como ela está · mas a da Executora aponta para uma falta real, que é a
+  mesma do `L77`. **Quem for consertar decide as duas, não uma**, e o chamador, dentro de
+  `src/pages/mesa/grid.astro:6227` · `function candidatosParaInterpor`, monta a pergunta
+  (`src/pages/mesa/grid.astro:6248` · `const r = alcanceInterpor`) sem raio nenhum dos dois lados.
+
+  → `L67` (a régua que originou), → `L70` (o outro que saiu pelo mesmo critério), → `L77` (a
+  metade do atacante, que é a mesma pergunta de fundo).
 
 - [ ] **L70 · [REGISTRADO em 10/09/2026, ligado ao `L67`, NÃO ABERTO] A gravação de posição não
   passa pela checagem de ocupação, e a invariante mora nos chamadores em vez de morar na escrita.**
