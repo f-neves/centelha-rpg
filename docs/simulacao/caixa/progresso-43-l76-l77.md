@@ -124,3 +124,30 @@ não só por item), no instante em que ela fecha, hora lida da máquina (`date +
   não `5c9955010f39060addf2e18128d4a5ee989fab71` (o que o aviso diz). Confirmado com
   `git fetch` que nada mais entrou depois disso: `origin/main` é `3920074`, igual ao
   meu `HEAD`, árvore limpa.
+- 13:56 · O `BASE` do aviso 43 (`b8b78ae2`) TAMBÉM está errado, achado pelo Arquiteto
+  ao conferir a dúvida que eu levantei antes de escrever este aviso. Números, sem
+  adjetivo: `b8b78ae2` e `09b5c05` têm o mesmo autor, a mesma mensagem, o mesmo
+  instante (11/09 08:40:25) e o mesmo diff autorado (136 linhas, byte a byte
+  idênticas nos dois); os pais são diferentes, e o de `09b5c05` É ancestral do
+  `main` de hoje (confirmado com `git merge-base --is-ancestor 09b5c05 HEAD`), o
+  de `b8b78ae2` não é. É rebase: o commit da Revisora foi replantado em `main` por
+  outra mão, e o `HEAD` da worktree dela nunca soube. O `BASE` CERTO para este
+  aviso é `09b5c05489820835824fd613c7cff0b70cb728ca`, não
+  `b8b78ae2a389583abbcaa4f5eaa4a1aaae274994` (o que o aviso escreveu). A diferença
+  no intervalo é UM arquivo, nomeado: `git diff --name-only b8b78ae2..b8ab3ea` dá
+  14 caminhos, `git diff --name-only 09b5c05..b8ab3ea` dá 13, e o que sobra no
+  primeiro e não está no segundo é `docs/simulacao/caixa/progresso-42-l73.md` (o
+  progresso da rodada anterior DELA MESMA). O `CATALOGO.md` aparece nos dois,
+  porque esta rodada de fato o tocou. A tabela "O QUE MUDOU" do aviso não lista
+  nenhum dos dois arquivos que diferem entre os dois BASEs possíveis, então o
+  aviso não afirma nada falso; só o campo `BASE` está errado. NÃO editei o aviso
+  (`3920074`, já empurrado): regra 6, e aqui haveria o agravante de reescrever
+  história empurrada. Não toquei na worktree da Revisora: movimento de `HEAD` de
+  outro papel não é meu para fazer sozinha, e o Arquiteto fala com ela direto (o
+  `HEAD` dela está limpo e o conteúdo está inteiro no `main`, então o gesto é
+  seguro, mas é dela). ESCALA DO ACHADO, não só deste aviso: o Arquiteto conferiu
+  os últimos 9 avisos e achou 3 (o 40, o 42 e este 43) com `BASE` que não é
+  ancestral do `main`, calados, em três rodadas seguidas. `L81` aberto para a
+  causa (o `rodada.mjs` pergunta "qual o HEAD da worktree dela" e lê isso como
+  "qual o último commit que ela viu no main", e as duas divergem toda vez que um
+  push dela precisa de rebase feito de fora); não é desta rodada.
