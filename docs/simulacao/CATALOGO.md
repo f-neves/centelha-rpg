@@ -83,6 +83,7 @@ segunda tinha ficado verde por cegueira.
 | **a regra publicada que nunca é chamada** | *por gesto:* escrever "já existe" sobre uma peça, citando dados ou capítulo | existe em CÓDIGO com chamador, ou é texto publicado que ninguém executa? |
 | **o sinal de vida escrito no fim** | *por gesto:* escrever o arquivo de progresso, o log de etapas, o relatório com horários | esta linha está sendo escrita AGORA porque a etapa fechou agora, ou estou narrando de trás para a frente? |
 | **o rótulo de escopo do `git diff`** | `@@ -A,B +C,D @@ <texto>` | este texto depois do `@@` diz ONDE a edição está, ou é só a linha que PARECE cabeçalho de função mais próxima acima do hunk? |
+| **o `&&` depois do cano** | `comando \| tail -3 && próximo`, todo encadeamento em que a guarda vem depois de um cano | o `&&` está guardando o comando que eu escrevi, ou o código de saída do `tail`, que dá certo mesmo quando o da esquerda falhou? |
 
 **DUAS NOVAS, DE 06/09/2026, ACHADAS NA REVISÃO DO AVANÇO UNIFICADO:** a primeira é o gatilho —
 fica verde, o rótulo continua descrevendo o que deveria medir, e nada acusa a mudança por baixo. A
@@ -634,3 +635,30 @@ objetos soltos", e o numero foi lido como "o que o meu teste deixou". Eram **um*
 de `stash` largado por varias sessoes desde 04/08. A ferramenta respondeu sobre o repositorio
 inteiro; a pergunta era sobre um intervalo de dez minutos. **E a forma de 11/09 de novo**, e o
 gesto que a evita e o mesmo: dizer o escopo junto do numero.
+
+## O `&&` DEPOIS DO CANO · a guarda que guarda o `tail` (11/09/2026, Arquiteto)
+
+**O gesto:** `git pull --rebase 2>&1 | tail -3 && git commit ...`, escrito duas vezes na
+rodada 43, para não despejar quarenta linhas de saída de rebase no registro.
+
+**O que acontece:** o código de saída de um cano é o do ÚLTIMO comando dele. O `pull` falhou
+(`error: cannot pull with rebase: You have unstaged changes`), o `tail` imprimiu esse erro com
+sucesso, e o `&&` leu o sucesso do `tail`. O commit rodou como se o rebase tivesse acontecido.
+
+**Por que passou despercebido as duas vezes:** a mensagem de erro APARECE na saída, em letra
+vermelha, na primeira linha. Ela foi lida como aviso, não como recusa, porque o comando seguinte
+rodou · e um comando que roda depois de um erro é a evidência mais natural do mundo de que o erro
+não era grave. A cadeia de raciocínio está certa e a premissa é falsa.
+
+**O que salvou nas duas vezes foi sorte de intervalo:** ninguém tinha empurrado entre o último
+`fetch` e o `push`. Com a Executora empurrando `41827b4` entre os dois commits do Arquiteto, uma
+ordem um pouco diferente teria dado `push` recusado e rebase à mão de um commit de documento.
+
+**O conserto é de ORDEM e não de bandeira:** `git commit` primeiro, `git pull --rebase` depois,
+`git push` por último. Nessa ordem não há nada não commitado para o rebase reclamar, é o que os
+dois commits acabaram fazendo por acidente, e é o que a regra de convívio do `CLAUDE.md` quer
+dizer com "rebase antes de empurrar" num repositório com duas frentes.
+
+**A forma geral, para além do `git`:** toda vez que uma guarda (`&&`, um `if`, um `assert`) vem
+depois de um cano, ela está falando do fim do cano. Se o que interessa é o começo, o cano tem de
+sair da frente da guarda.

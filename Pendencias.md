@@ -4815,10 +4815,23 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
 
   **A ordem obrigatória, que sai do parágrafo acima:** as 57 âncoras, depois os 21 ponteiros,
   depois as 22 marcas, e o `ALVOS` ampliado por último, com o portão vermelho antes e verde depois
-  · ligar primeiro trava a equipe inteira. **E a medida das 43/57 tem de ser refeita por quem
-  executar**, porque ela saiu da minha cópia da heurística do portão, não do portão: a diferença
-  entre as duas, se houver, é exatamente o tipo de coisa que este item existe para não deixar
-  passar.
+  · ligar primeiro trava a equipe inteira.
+
+  **A MEDIDA FOI REFEITA COM O PRÓPRIO PORTÃO, e bateu.** A tabela acima saiu de uma cópia minha da
+  heurística dele, e a ordem inteira do trabalho depende do número 57, então tomar a cópia pela
+  coisa seria o defeito do dia com outra roupa. O gesto: uma cópia do `test-procedencia.mjs` no
+  scratchpad, com `RAIZ` fixo no repositório e o `ALVOS` com os doze documentos, rodada SEM tocar
+  no arquivo versionado (o gancho de `pre-commit` roda esse arquivo, e mexer nele enquanto a
+  Executora commita acenderia o portão dela por motivo que não é dela). O portão ampliado imprimiu
+  **57 sem âncora e 43 envelhecidas**, os mesmos dois números. A cópia e o original concordam.
+
+  **O REAPONTADOR TEM DE CRESCER JUNTO, e isto é condição e não observação.** O
+  `reapontar.mjs` tem a sua própria lista de documentos, hoje com três (`ESTADO.md`,
+  `Pendencias.md`, `VOZ.md`). Se o `ALVOS` do portão virar dez e a lista dele ficar em três, a
+  primeira rodada que mexer no `grid.astro` envelhece citação no `CONJURACAO.md` e no
+  `Grid_Mobile.md`, o portão trava o commit, e quem estiver commitando vai caçar dívida que não
+  criou. É o limite do `L65` reaparecendo um nível para fora, e a regra que fecha é: **as duas
+  listas mudam no mesmo commit, ou nenhuma muda.**
 
   **E o motivo de tudo isto vale repetir:** um script meu reescreveu onze citações num documento
   que conferência nenhuma olhava, e quem percebeu foi uma leitura de fora, não o instrumento.
