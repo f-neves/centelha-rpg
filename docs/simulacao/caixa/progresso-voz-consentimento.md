@@ -28,3 +28,6 @@ da máquina (`date +%H:%M`).
   trava"), o mesmo tipo de caso que `test-grid-simultaneo.mjs` já tem isento por âncora. Reescrevi
   a frase (não mexo no `NAO_E_TOLERANCIA`, é arquivo do Arquiteto) para não disparar o gatilho, sem
   mudar o sentido. `npm run validate` limpo, commitado (85b69a3).
+- 02:31 — reaponte do Arquiteto (9b35c78) e modelo versionado (4ab1a58), nessa ordem. Rodada 37
+  enviada em um único `--enviar` (sha do aviso 5b17077, sha de trabalho 4ab1a58). `test-procedencia.mjs`
+  conferido por mim antes de publicar o número: 75 citações, 0 quebradas.
