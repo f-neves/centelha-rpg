@@ -2537,6 +2537,133 @@ async function cenaGolpeAdiado(br, url) {
   await p.close();
 }
 
+/**
+ * O CAMINHO QUENTE DA VOZ (VOZ.md §10, rodada 34).
+ *
+ * NÃO TESTA microfone nem reconhecimento de verdade — isso é bancada do
+ * humano (VOZ.md §10.4). O que este cenário prova, com `?vozteste=1`
+ * expondo `window.__RECEBER_FALA` (o mesmo roteador que o microfone chama
+ * quando o Vosk devolve um texto):
+ *
+ *   1. a decisão 12 (fala com a tela FECHADA abre o cartão vencido da faixa
+ *      e preenche, sem clique nenhum);
+ *   2. a tecla V não deixa a letra cair no campo focado (o achado da
+ *      decisão 1: a tecla precisa de escuta própria, e o `ev.preventDefault`
+ *      é o que evita isto);
+ *   3. escrever pelo campo dispara o MESMO recálculo que digitar dispara —
+ *      o risco maior do item 3 do aviso, e a razão de medir o veredito
+ *      antes e depois.
+ */
+async function cenaVozQuente(br, url) {
+  console.log('\n· o caminho quente da voz: cartão vencido sem clique, tecla V, veredito refeito');
+  const p = await br.newPage();
+  await p.setViewport({ width: 1400, height: 950 });
+  const erros = [];
+  p.on('pageerror', (e) => erros.push(e.message));
+  await p.goto(`${url}/mesa/grid?id=${MESA}&bench=12&cols=24&rows=16&nevoa=0&adiado=1&vozteste=1`,
+    { waitUntil: 'networkidle0', timeout: 60000 });
+  await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
+  await espera(600);
+
+  // Chega no golpe vencendo na faixa, pelo mesmo caminho de `cenaGolpeAdiado`
+  // (declarar, confirmar, esperar cair) — mas SEM clicar o cartão: é o
+  // "tela fechada" que a decisão 12 pede.
+  await p.evaluate(async () => {
+    const pal = document.getElementById('gr-palco').getBoundingClientRect();
+    const naTela = (t) => { const r = t.getBoundingClientRect();
+      return r.left > pal.left + 4 && r.top > pal.top + 4
+        && r.right < pal.right - 4 && r.bottom < pal.bottom - 4; };
+    const toks = [...document.querySelectorAll('#gr-tokens .gr-token')].filter(naTela);
+    const a = toks.find((t) => t.dataset.c === 'c002');
+    const b = toks.find((t) => t !== a);
+    const ra = a.getBoundingClientRect(), rb = b.getBoundingClientRect();
+    const em = (el, t, x, y) => el.dispatchEvent(new PointerEvent(t, {
+      bubbles: true, clientX: x, clientY: y, pointerId: 1 }));
+    em(a, 'pointerdown', ra.left + ra.width / 2, ra.top + ra.height / 2);
+    em(document, 'pointermove', rb.left + rb.width / 2, rb.top + rb.height / 2);
+    em(document, 'pointerup', rb.left + rb.width / 2, rb.top + rb.height / 2);
+    await new Promise((r) => setTimeout(r, 1300));
+    document.getElementById('dc-ok')?.click();
+    await new Promise((r) => setTimeout(r, 900));
+  });
+  await p.waitForSelector('#gr-ar .ar-item', { timeout: 15000 });
+
+  // O cartão só fica VENCIDO depois de o relógio alcançar o Tick agendado
+  // (o mesmo avanço do passo 6 de `cenaGolpeAdiado`) — sem isto, o cartão
+  // existe na faixa mas `instanteDeGolpe()` ainda diz "não", e a decisão 12
+  // não tem nada para achar. Achado ao testar este item: chamar a fala
+  // antes disso caía no parser de VERBO por falta de contexto numérico.
+  await p.evaluate(async () => {
+    for (let i = 0; i < 34; i++) {
+      const btn = document.getElementById('ini-prox');
+      const tk = parseInt(document.getElementById('ini-tk')?.textContent || '0', 10);
+      const item = document.querySelector('#gr-ar .ar-item');
+      const alvo = item ? parseInt(item.dataset.t, 10) : null;
+      if (alvo == null || tk >= alvo || btn.disabled) break;
+      btn.click();
+      await new Promise((r) => setTimeout(r, 450));
+    }
+  });
+
+  const fechada = await p.evaluate(() => !!document.getElementById('alvo-dlg')?.open);
+  ok(!fechada, 'o cartão está vencido na faixa, e a folha ainda NÃO está aberta (o caso da decisão 12)');
+
+  // ---- 1: fala com a tela fechada abre o cartão vencido e preenche ----
+  const semClique = await p.evaluate(async () => {
+    await (window).__RECEBER_FALA('acerto quatro dois seis');
+    return {
+      abriu: !!document.getElementById('alvo-dlg')?.open,
+      total: document.getElementById('al-total')?.value,
+    };
+  });
+  ok(semClique.abriu, 'a fala abriu o cartão vencido, sem clique nenhum na faixa');
+  ok(semClique.total === '4,2,6',
+    `e já preencheu o campo do acerto no mesmo gesto ("${semClique.total}")`);
+
+  // ---- 2: a tecla V não deixa a letra cair no campo focado, mesmo com o
+  // foco dentro do dialog (o achado da decisão 1) ----
+  await p.evaluate(() => { document.getElementById('al-motivo').focus(); });
+  await p.keyboard.down('KeyV');
+  await espera(150);
+  const duranteAperto = await p.evaluate(() => ({ valorMotivo: document.getElementById('al-motivo').value }));
+  ok(duranteAperto.valorMotivo === '',
+    `a letra "v" não cai no campo focado enquanto a tecla está segurada (valor: "${duranteAperto.valorMotivo}")`);
+  await p.keyboard.up('KeyV');
+  // Sem o modelo de voz nesta bancada (o mesmo achado da rodada 33), segurar
+  // V tenta carregar e mostra "modelo não encontrado" — é a degradação
+  // graciosa funcionando, não o que este passo testa. Fecha antes de seguir.
+  await espera(250);
+  await p.evaluate(() => {
+    const dlg = [...document.querySelectorAll('dialog[open]')].find((d) => d.id !== 'alvo-dlg');
+    dlg?.querySelector('.ui-dlg-ok, .ui-dlg-x, button')?.click();
+  });
+  await espera(150);
+
+  // ---- 3: com a folha já aberta, uma segunda fala enche outro campo E
+  // dispara o MESMO recálculo que digitar dispara (o risco maior do item 3
+  // do aviso) — o pool do dano é o que muda, o veredito é só do acerto ----
+  const antesPoolDano = await p.evaluate(() => document.getElementById('al-dn-pool')?.textContent || '');
+  await p.evaluate(async () => { await (window).__RECEBER_FALA('dano quatro dois'); });
+  await espera(300);
+  const depois = await p.evaluate(() => ({
+    dano: document.getElementById('al-dn')?.value,
+    poolDano: document.getElementById('al-dn-pool')?.textContent || '',
+    folhaAindaAberta: !!document.getElementById('alvo-dlg')?.open,
+  }));
+  ok(depois.folhaAindaAberta, 'a folha continua a mesma, aberta desde o preenchimento sem clique');
+  ok(depois.dano === '4,2', `"dano quatro dois", com a folha já aberta, enche o campo do dano ("${depois.dano}")`);
+  ok(depois.poolDano !== antesPoolDano && depois.poolDano.trim() !== '',
+    `escrever pelo campo dispara o MESMO recálculo que digitar dispara: o pool do dano mudou ("${antesPoolDano}" → "${depois.poolDano}")`);
+
+  // fecha a folha sem aplicar nada na cena, do jeito mais barato
+  await p.evaluate(async () => {
+    const folha = document.getElementById('alvo-dlg');
+    if (folha?.open) { document.getElementById('al-nao').click(); await new Promise((x) => setTimeout(x, 800)); }
+  });
+
+  ok(erros.length === 0, `nenhum erro de página (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
+  await p.close();
+}
 
 /**
  * O QUASE-ACERTO NA FOLHA DA AÇÃO.
@@ -3569,6 +3696,7 @@ await cenaRastreador(br, dev.url);
   await cenaCelular(br, dev.url);
   await cenaCelular(br, dev.url, { papel: 'jogador' });
   await cenaGolpeAdiado(br, dev.url);
+  await cenaVozQuente(br, dev.url);
   await cenaQuaseAcerto(br, dev.url);
   await cenaFusao(br, dev.url);
   await cenaCondicaoAMao(br, dev.url);
@@ -3591,7 +3719,8 @@ console.log('\n✓ Grid OK · desenho, movimento, registro, névoa e card, nas d
   + ' a caixa de fundo girando e excluindo arte, o telefone nas duas cadeiras,'
   + ' a barra fundida com a escada de ícones e a ordem de combate de pé em tela cheia,'
   + ' o golpe adiado da declaração à queda, o Quase-Acerto na folha,'
-  + ' e a condição posta à mão indo do menu ao estado e daí à Defesa da folha');
+  + ' e a condição posta à mão indo do menu ao estado e daí à Defesa da folha,'
+  + ' o caminho quente da voz abrindo o cartão vencido sem clique e refazendo o veredito');
 // O carimbo: quando este portao passou nesta maquina. Ver `carimbo.mjs`.
 carimbar('test-grid');
 

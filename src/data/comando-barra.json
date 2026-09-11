@@ -41,5 +41,25 @@
       "desfaz": true,
       "exemplo": "esperar"
     }
+  ],
+  "notaNumeros": "VOZ.md §10 decisao 6 e §9.5: DUAS listas, nao uma. As faces de d6 (campos tipo 'faces') usam so um..seis, cada palavra desta MESMA tabela validada contra o intervalo 1-6 - nao existe tabela separada. Os campos tipo 'inteiro' usam a faixa inteira (0 a 60, com 'menos' para negativo e 'e' para compor dezena+unidade, ex. 'vinte e tres').",
+  "numeros": {
+    "unidades": {
+      "zero": 0, "um": 1, "dois": 2, "tres": 3, "quatro": 4, "cinco": 5, "seis": 6,
+      "sete": 7, "oito": 8, "nove": 9, "dez": 10, "onze": 11, "doze": 12, "treze": 13,
+      "catorze": 14, "quatorze": 14, "quinze": 15, "dezesseis": 16, "dezessete": 17,
+      "dezoito": 18, "dezenove": 19
+    },
+    "dezenas": { "vinte": 20, "trinta": 30, "quarenta": 40, "cinquenta": 50, "sessenta": 60 },
+    "juncao": "e",
+    "negativo": "menos"
+  },
+  "notaCampos": "VOZ.md §10 decisao 13: este catalogo tem TODOS os campos conhecidos, mas a gramatica de uma caixa aberta usa so os que aquela tela de fato desenhou (grid.astro confere no DOM e publica a lista - nenhuma lista fixa fica escrita a mao fora daqui). Rodada 34 so cobre o caminho quente (a folha do golpe); acao e magia ficam para depois.",
+  "campos": [
+    { "id": "acerto", "palavras": ["acerto"], "destino": "al-total", "tipo": "faces" },
+    { "id": "dano", "palavras": ["dano"], "destino": "al-dn", "tipo": "faces" },
+    { "id": "ajuste", "palavras": ["ajuste"], "destino": "al-mod", "tipo": "inteiro" },
+    { "id": "margem", "palavras": ["margem"], "destino": "al-qa-margem", "tipo": "inteiro", "min": 0 },
+    { "id": "raspao", "palavras": ["raspao"], "destino": "al-qa-dano", "tipo": "inteiro", "min": 0 }
   ]
 }

@@ -109,7 +109,7 @@ const SETAS = [
             esperar são de quem manda na peça), então o microfone também não
             é. Fica desabilitado até o modelo carregar, e mesmo desabilitado
             o título já diz o que apertar para carregar. */}
-        <button class="btn-fant" id="gr-voz" title="Segurar para falar um comando (carrega o modelo no primeiro toque)">🎤</button>
+        <button class="btn-fant" id="gr-voz" title="Segurar (ou a tecla V) para falar um comando (carrega o modelo no primeiro toque)">🎤</button>
         <span class="gr-vivo" id="gr-vivo" hidden><span class="pt"></span><span id="gr-vivo-n"></span></span>
         <button class="btn mini" id="gr-recarregar" title="Buscar as posições mais recentes">↻</button>
       </div>
@@ -2417,7 +2417,10 @@ const SETAS = [
     offsetParaAxial, letraColuna, caminharHex, alemDe, naLinhaHex,
   } from '../../lib/hex';
   import { uiConfirmar, uiErro, uiFormulario, uiEscolher, contadorDeConsultas } from '../../lib/ui-dialog';
-  import { interpretarComando, gramaticaDeVoz } from '../../lib/comando-barra';
+  import {
+    interpretarComando, gramaticaDeVoz, interpretarNumeros, comecaComPalavraDeCampo, CAMPOS,
+  } from '../../lib/comando-barra';
+  import type { CampoNumero, Preenchimento } from '../../lib/comando-barra';
   import { caminhosPadrao, carregarVoz, prepararReconhecedor, comecarAFalar as comecarAFalarVoz,
     pararDeFalar as pararDeFalarVoz, vozCarregada } from '../../lib/comando-voz';
   import {
@@ -2504,6 +2507,12 @@ const SETAS = [
   // extensão de comportamento que ele exige (ver `decidirAutomaticas`).
   // Desligado, nada disto existe e a mesa é a mesa.
   const ESPELHO_LIGADO = PARAMS.get('espelho') === '1';
+  // `?vozteste=1` expõe `window.__RECEBER_FALA`, o mesmo roteador que o
+  // microfone chama quando o Vosk devolve um texto reconhecido (VOZ.md §10,
+  // rodada 34) — para o smoke testar o caminho inteiro (campo, o `input`
+  // disparado, o veredito refeito) sem áudio nem modelo baixado. Desligado,
+  // nada disto existe; a fala de verdade continua sendo bancada do humano.
+  const VOZ_TESTE_LIGADO = PARAMS.get('vozteste') === '1';
 
   let SB: any, ID = '', MESTRE = false, EU = '';
   /**
@@ -2794,6 +2803,7 @@ const SETAS = [
     ligarMira();
     ligarCliqueDeVoz();
     ligarBotaoDeVoz();
+    ligarTeclaDeVoz();
     ligarNevoa();
     ligarSom();
     ligarReguaENavegacao();
@@ -4569,6 +4579,26 @@ const SETAS = [
     if (g == null) return false;
     const t = tickDaVez();
     return t == null || g <= t;
+  }
+
+  /**
+   * O golpe vencido mais cedo, com o DONO (VOZ.md §10 decisão 12) — mesma
+   * leitura que `golpeMaisCedo()`/`instanteDeGolpe()` já fazem, devolvendo
+   * também quem é. NÃO reusa `E.devido()` (o espelho de motor, mais abaixo
+   * neste arquivo): aquele lê `tickSim()` direto, que só é a régua certa no
+   * Simultâneo (`SIML()`) — no Normal/PGR a régua é `tickDaVez()`, que já
+   * sabe da diferença, e é o que `instanteDeGolpe()` usa. Copiar `E.devido()`
+   * aqui teria achado o cartão errado (ou nenhum) fora do Simultâneo.
+   */
+  function golpeVencidoNaFaixa(): { atacante: any; tick: number } | null {
+    if (!instanteDeGolpe()) return null;
+    const t = tickDaVez();
+    for (const c of naFila()) {
+      if (noChao(c)) continue;
+      const g = proximoGolpe(c.acao);
+      if (g != null && (t == null || g <= t)) return { atacante: c, tick: g };
+    }
+    return null;
   }
 
   // ------------------------------------------------ quem caiu, quem levantou
@@ -8654,6 +8684,8 @@ const SETAS = [
    */
   let COMANDO_ARMADO: { cid: string; verbo?: any; hex?: { q: number; r: number; nome: string } } | null = null;
 
+  const STATUS_PADRAO_VOZ = 'Segurar (ou a tecla V) para falar um comando (carrega o modelo no primeiro toque)';
+
   function vozStatus(texto: string) {
     const el2 = document.getElementById('gr-voz');
     if (el2) el2.title = texto;
@@ -8670,7 +8702,7 @@ const SETAS = [
       const hex = { ...h, nome: nomeHex(h.q, h.r) };
       if (!armado.verbo) { COMANDO_ARMADO = { ...armado, hex }; vozStatus(`casa ${hex.nome} marcada — fale o comando`); return; }
       COMANDO_ARMADO = null;
-      vozStatus('Segurar para falar um comando (carrega o modelo no primeiro toque)');
+      vozStatus(STATUS_PADRAO_VOZ);
       void prosseguirComComando(armado.cid, { verbo: armado.verbo, hex });
     }, true);
   }
@@ -8683,7 +8715,7 @@ const SETAS = [
       // tem hexágono nenhum, VOZ.md §2) — quando chega aqui já é um dos
       // quatro verbos sem parâmetro, prontos para despachar direto.
       COMANDO_ARMADO = null;
-      vozStatus('Segurar para falar um comando (carrega o modelo no primeiro toque)');
+      vozStatus(STATUS_PADRAO_VOZ);
       await prosseguirComComando(cid, cmd);
       return;
     }
@@ -8693,7 +8725,7 @@ const SETAS = [
       const hexJaMarcado = COMANDO_ARMADO?.hex;
       if (hexJaMarcado) {
         COMANDO_ARMADO = null;
-        vozStatus('Segurar para falar um comando (carrega o modelo no primeiro toque)');
+        vozStatus(STATUS_PADRAO_VOZ);
         await prosseguirComComando(cid, { verbo: cmd.verboParcial, hex: hexJaMarcado });
       } else {
         COMANDO_ARMADO = { cid, verbo: cmd.verboParcial };
@@ -8702,7 +8734,7 @@ const SETAS = [
       return;
     }
     COMANDO_ARMADO = null;
-    vozStatus('Segurar para falar um comando (carrega o modelo no primeiro toque)');
+    vozStatus(STATUS_PADRAO_VOZ);
     const escolha = await uiEscolher(`Não entendi "${cmd.ouvido}" (por voz)`,
       cmd.sugestoes.map((s) => ({ valor: s, rotulo: s })), { msg: cmd.motivo });
     if (!escolha) return;
@@ -8711,33 +8743,151 @@ const SETAS = [
     await executarComando(cid, escolha);
   }
 
+  // ==================================== o caminho quente (VOZ.md §10, rodada 34)
+  /**
+   * Os campos que estão de fato abertos AGORA (decisão 13: nunca uma lista
+   * fixa escrita à mão). Duas situações valem, e só elas:
+   *
+   * - a folha do golpe está aberta (`#alvo-dlg[open]`): os campos são os que
+   *   ELA de fato desenhou — confere no DOM em vez de assumir os cinco;
+   * - nenhuma folha aberta, mas há um golpe vencendo na faixa (decisão 12):
+   *   ainda não há tela para conferir, então usa o catálogo inteiro — nesta
+   *   rodada só existe UM tipo de caixa numérica (a folha do golpe), então a
+   *   aproximação não escolhe entre teias diferentes.
+   *
+   * Vazio nos dois sentidos: sem folha e sem cartão vencido, um número dito
+   * não tem onde cair, e a gramática nem inclui as palavras de campo — é o
+   * que faz "sem cartão vencido esperando, o número recusa" (decisão 12)
+   * acontecer sem código extra, só por o parser nunca ver a palavra.
+   */
+  function camposAtivos(): CampoNumero[] {
+    const dlg = document.getElementById('alvo-dlg') as HTMLDialogElement | null;
+    if (dlg?.open) return CAMPOS.filter((c) => document.getElementById(c.destino));
+    if (golpeVencidoNaFaixa()) return CAMPOS;
+    return [];
+  }
+
+  /** Espera até `id` virar `<dialog open>`, ou desiste depois de ~300ms. */
+  function aguardarDialogAberto(id: string, tentativas = 15): Promise<boolean> {
+    return new Promise((resolve) => {
+      const tenta = (n: number) => {
+        if ((document.getElementById(id) as HTMLDialogElement | null)?.open) { resolve(true); return; }
+        if (n <= 0) { resolve(false); return; }
+        setTimeout(() => tenta(n - 1), 20);
+      };
+      tenta(tentativas);
+    });
+  }
+
+  /**
+   * Escreve os preenchimentos e dispara o MESMO recálculo que digitar
+   * dispara: sem o evento `input`, o veredito e a conta do dano ficam
+   * mostrando o valor velho (era o risco maior deste item, avisado pelo
+   * Arquiteto). Os handlers de hoje estão pendurados em `.oninput`, que
+   * responde a um `Event('input')` despachado à mão exatamente como
+   * responderia a uma tecla de verdade.
+   */
+  function aplicarPreenchimentos(preenchimentos: Preenchimento[]) {
+    for (const p of preenchimentos) {
+      const campo = document.getElementById(p.destino) as HTMLInputElement | null;
+      if (!campo) continue;
+      campo.value = String(p.valor);
+      campo.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+  }
+
+  /** Abre o cartão vencido se preciso (decisão 12) e então preenche. */
+  async function aplicarNumeros(preenchimentos: Preenchimento[]) {
+    const dlg = document.getElementById('alvo-dlg') as HTMLDialogElement | null;
+    if (!dlg?.open) {
+      const g = golpeVencidoNaFaixa();
+      if (!g) { uiErro('Não há cartão vencido esperando para receber este número.'); return; }
+      // NÃO espera a folha fechar (ela só resolve quando o mestre decide o
+      // veredito) — só que ela ABRA, para escrever nos campos dela.
+      void resolverGolpeNoAr(g.atacante, g.tick);
+      const abriu = await aguardarDialogAberto('alvo-dlg');
+      if (!abriu) { uiErro('Não consegui abrir o cartão vencido a tempo.'); return; }
+    }
+    aplicarPreenchimentos(preenchimentos);
+  }
+
+  /**
+   * O roteador da fala reconhecida: números de campo primeiro (quando a
+   * fala parece mirar um, VOZ.md §10 decisões 6/8/12/13), verbo da barra
+   * como fallback (o caminho da rodada 33, intacto). As duas gramáticas não
+   * compartilham palavra nenhuma (`acerto`/`dano`/... contra
+   * `mover`/`tirar`/...), então a primeira palavra decide o domínio sem
+   * ambiguidade — uma vez decidido, uma falha é recusa de verdade, e não
+   * "tenta o outro parser por baixo".
+   *
+   * A checagem usa `CAMPOS` (o CATÁLOGO inteiro), e não `camposAtivos()`: se
+   * caísse para o verbo por falta de contexto, "acerto quatro dois seis" sem
+   * cartão vencido abriria o escolhedor de VERBO (sugerindo "mover H7",
+   * "tirar"...), que não tem nada a ver com o que foi dito. Decisão 12: sem
+   * cartão vencido esperando, a resposta certa é a RECUSA do domínio dos
+   * campos, nunca um palpite de verbo (achado ao testar este item).
+   *
+   * ISTO NÃO CONTRARIA A DECISÃO 2 (duas camadas): `CAMPOS` aqui só decide
+   * o ROTEAMENTO de um texto que JÁ FOI reconhecido — a GRAMÁTICA que o
+   * Vosk de fato escuta continua vindo só de `camposAtivos()`
+   * (`gramaticaDeVoz(campos)`, em `segurarVoz`, abaixo). Sem cartão vencido
+   * nem folha aberta, "acerto" nem está na gramática, então o reconhecedor
+   * de verdade nunca a devolve — este ramo só é alcançado por fala que já
+   * tinha contexto quando foi ouvida (e o contexto fechou antes do
+   * resultado chegar) ou por injeção de teste (`__RECEBER_FALA`). As duas
+   * camadas continuam do tamanho que a decisão 2 pede.
+   */
+  async function receberFala(texto: string) {
+    if (comecaComPalavraDeCampo(texto, CAMPOS)) {
+      vozStatus(STATUS_PADRAO_VOZ);
+      const campos = camposAtivos();
+      if (campos.length === 0) {
+        uiErro(`Não há cartão vencido esperando para receber "${texto}" (por voz).`);
+        return;
+      }
+      const num = interpretarNumeros(texto, campos);
+      if (num.ok) { await aplicarNumeros(num.preenchimentos); return; }
+      uiErro(`Não entendi "${num.ouvido}" (por voz): ${num.motivo}`);
+      return;
+    }
+    const cid = COMANDO_ARMADO?.cid ?? daVez()?.id;
+    if (!cid) {
+      vozStatus(STATUS_PADRAO_VOZ);
+      uiErro(`Não entendi "${texto}" (por voz), e não há quem esteja na vez para um comando.`);
+      return;
+    }
+    await receberFalaComando(cid, texto);
+  }
+
   let VOZ_GRAVANDO = false;
   async function segurarVoz() {
+    if (VOZ_GRAVANDO) return;
     const v = daVez();
-    if (!v || VOZ_GRAVANDO) return;
+    const campos = camposAtivos();
+    // Nada para fazer: nem verbo (sem ninguém na vez) nem número (sem folha
+    // aberta e sem cartão vencendo). Segurar o botão não abre a boca à toa.
+    if (!v && campos.length === 0) return;
     if (!vozCarregada()) {
       vozStatus('carregando o modelo de voz (31 MB)…');
       const r = await carregarVoz(caminhosPadrao(import.meta.env.BASE_URL));
-      if (!r.ok) { vozStatus('Segurar para falar um comando (carrega o modelo no primeiro toque)'); uiErro(r.erro); return; }
-      prepararReconhecedor(gramaticaDeVoz(), (parcial) => { if (parcial) vozStatus('ouvindo: ' + parcial); },
-        (resultado) => {
-          // O `cid` é o da peça QUANDO O MICROFONE FOI APERTADO
-          // (`COMANDO_ARMADO.cid`, gravado em `segurarVoz`), não `daVez()` de
-          // novo aqui: entre apertar e o resultado chegar a vez pode ter
-          // mudado, e quem falou mandou na peça que estava na vez quando
-          // começou a falar.
-          const cid = COMANDO_ARMADO?.cid;
-          if (cid && resultado.texto) void receberFalaComando(cid, resultado.texto);
-          else if (cid) vozStatus('não ouvi nada — segure e fale de novo');
-        });
+      if (!r.ok) { vozStatus(STATUS_PADRAO_VOZ); uiErro(r.erro); return; }
       vozStatus('modelo carregado — segure e fale');
       return; // o toque que carregou não grava: solta a mão, segura de novo
     }
-    COMANDO_ARMADO = COMANDO_ARMADO ?? { cid: v.id };
+    // A gramática é preparada A CADA TOQUE, e não só na primeira vez
+    // (diferente da rodada 33): os campos abertos mudam de um toque para o
+    // outro (folha abrindo e fechando), e `prepararReconhecedor` é barato —
+    // troca de gramática não recarrega o modelo (medido na bancada).
+    prepararReconhecedor(gramaticaDeVoz(campos), (parcial) => { if (parcial) vozStatus('ouvindo: ' + parcial); },
+      (resultado) => {
+        if (!resultado.texto) { vozStatus('não ouvi nada — segure e fale de novo'); return; }
+        void receberFala(resultado.texto);
+      });
+    if (v) COMANDO_ARMADO = COMANDO_ARMADO ?? { cid: v.id };
     VOZ_GRAVANDO = true;
     vozStatus('ouvindo…');
     try { await comecarAFalarVoz(); }
-    catch (e: any) { VOZ_GRAVANDO = false; vozStatus('Segurar para falar um comando'); uiErro('Erro no microfone: ' + (e?.message || e)); }
+    catch (e: any) { VOZ_GRAVANDO = false; vozStatus(STATUS_PADRAO_VOZ); uiErro('Erro no microfone: ' + (e?.message || e)); }
   }
   function soltarVoz() {
     if (!VOZ_GRAVANDO) return;
@@ -8753,6 +8903,34 @@ const SETAS = [
     btn.addEventListener('mouseleave', () => { if (VOZ_GRAVANDO) soltarVoz(); });
     btn.addEventListener('touchstart', (e) => { e.preventDefault(); segurarVoz(); });
     btn.addEventListener('touchend', (e) => { e.preventDefault(); soltarVoz(); });
+  }
+
+  /**
+   * A TECLA V, SEGURADA (VOZ.md §10 decisão 1) — o acionamento principal
+   * para quem tem teclado; o botão `#gr-voz` acima continua para o telefone.
+   * Escuta PRÓPRIA, fora do bloco de atalhos de baixo: aquele desiste dentro
+   * de diálogo e com o foco num campo — exatamente onde a folha do golpe
+   * precisa que a voz funcione.
+   */
+  function ligarTeclaDeVoz() {
+    let apertada = false;
+    document.addEventListener('keydown', (ev) => {
+      if (ev.key !== 'v' && ev.key !== 'V') return;
+      if (ev.ctrlKey || ev.metaKey || ev.altKey) return; // não rouba o Ctrl+V de colar
+      ev.preventDefault(); // a letra não cai no campo enquanto a mesa fala, nem na repetição
+      if (ev.repeat || apertada) return; // segurar não dispara em rajada
+      apertada = true;
+      void segurarVoz();
+    }, true); // captura: roda antes de qualquer coisa, dialog ou campo focado incluídos
+    document.addEventListener('keyup', (ev) => {
+      if (ev.key !== 'v' && ev.key !== 'V') return;
+      if (!apertada) return;
+      apertada = false;
+      soltarVoz();
+    }, true);
+    // Um keyup perdido (trocar de janela com a tecla presa) deixaria o
+    // microfone aberto para sempre — o pior estado desta frente.
+    window.addEventListener('blur', () => { if (apertada) { apertada = false; soltarVoz(); } });
   }
 
   /**
@@ -9968,6 +10146,8 @@ let roladoDano = '';
     };
     (window as any).__RESUMO_DE = (id: string) => RESUMO[id];
   }
+
+  if (VOZ_TESTE_LIGADO) (window as any).__RECEBER_FALA = receberFala;
 
   /**
    * O ESPELHO DE MOTOR, atrás de `?espelho=1`.

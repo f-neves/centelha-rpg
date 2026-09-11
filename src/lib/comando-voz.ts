@@ -21,6 +21,8 @@ export interface ConfigVoz {
   libUrl: string;
   workerUrl: string;
   wasmUrl: string;
+  /** Prazo do `createVoskClient` em ms (VOZ.md §9.7 item 0). Padrão 20000. */
+  prazoMs?: number;
 }
 
 /**
@@ -75,6 +77,9 @@ export function carregarVoz(cfg: ConfigVoz): Promise<{ ok: true } | { ok: false;
   if (carregando) return carregando;
   const semModelo = `Modelo ou biblioteca não encontrados em ${cfg.modeloUrl}. Baixe o modelo `
     + '(ver voz-bench-README.md, seção 1) e ponha em public/voz-modelo/model.tar.gz.';
+  const prazoMs = cfg.prazoMs ?? 20_000;
+  const prazoVencido = `O carregamento da voz passou de ${Math.round(prazoMs / 1000)}s sem `
+    + `terminar (modelo corrompido, ou baixando devagar). Confira ${cfg.modeloUrl} e tente de novo.`;
   carregando = (async () => {
     try {
       // CONFERE O MODELO ANTES DE ENTREGAR AO WORKER, DE PROPÓSITO: medido
@@ -94,12 +99,37 @@ export function carregarVoz(cfg: ConfigVoz): Promise<{ ok: true } | { ok: false;
       if (!resp.ok) return { ok: false as const, erro: semModelo };
 
       const mod = await import(/* @vite-ignore */ absoluta(cfg.libUrl));
-      cliente = await mod.createVoskClient({
-        modelUrl: absoluta(cfg.modeloUrl),
-        workerUrl: absoluta(cfg.workerUrl),
-        wasmUrl: absoluta(cfg.wasmUrl),
-        logLevel: 0,
+
+      // O L71 (VOZ.md §9.7 item 0): o `HEAD` acima pega o modelo AUSENTE, mas
+      // um `.tar.gz` CORROMPIDO passa no `HEAD` (200 OK, bytes errados por
+      // dentro) e trava o `createVoskClient` sem nunca resolver nem rejeitar
+      // — o mesmo defeito de fundo do achado da rodada 33 (o Worker não sabe
+      // desistir sozinho), só que desta vez nenhum `fetch` prévio pega o
+      // caso, porque o arquivo EXISTE. Um prazo é o único jeito de sair.
+      let venceuPrazo = false;
+      const prazo = new Promise<never>((_, reject) => {
+        setTimeout(() => { venceuPrazo = true; reject(new Error('prazo de carregamento vencido')); }, prazoMs);
       });
+      let resultado: any;
+      try {
+        resultado = await Promise.race([
+          mod.createVoskClient({
+            modelUrl: absoluta(cfg.modeloUrl),
+            workerUrl: absoluta(cfg.workerUrl),
+            wasmUrl: absoluta(cfg.wasmUrl),
+            logLevel: 0,
+          }),
+          prazo,
+        ]);
+      } catch (err: any) {
+        // O `createVoskClient` de verdade continua pendurado em segundo
+        // plano se foi o prazo que venceu a corrida; ele nunca chega a
+        // escrever em `cliente` (a atribuição está DEPOIS deste bloco), e o
+        // próximo toque no microfone chama `carregarVoz` de novo do zero.
+        if (venceuPrazo) return { ok: false as const, erro: prazoVencido };
+        throw err;
+      }
+      cliente = resultado;
       return { ok: true as const };
     } catch (err: any) {
       cliente = null;
