@@ -5015,6 +5015,29 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   controle vermelho-antes/verde-depois **com mecanismo próprio**, em vez de aceitar o `stash` da
   Executora.
 
+  **E ELA ACHOU UM BURACO QUE O `L80` INTEIRO NÃO FECHOU, ao rastrear um caso de borda até o
+  regex:** a **forma abreviada** de citação, `` `:1344-1348` `` sem nome de arquivo antes, **não é
+  reconhecida pelo portão**. O regex exige nome de arquivo, então essas referências não são
+  conferidas por instrumento nenhum · nunca foram, e não é defeito desta rodada. Mas elas **parecem
+  citação para quem lê**, o que é a pior combinação: autoridade de citação, conferência de nota de
+  rodapé.
+
+  **Medido por mim depois do achado dela, nos 12 documentos que o portão confere: 136 referências
+  abreviadas** (`Pendencias.md` 61, `REVISORA.md` 71, `Migracao_Dominio.md` 4). É mais que as 71
+  envelhecidas que esta frente passou três rodadas consertando. A repartição importa:
+
+  · **12** vêm logo depois de uma citação de CÓDIGO na mesma linha (o idioma
+    `` `arquivo.ts:32`, `:62`, `:106` ``). **Estas deveriam ser conferidas e não são**, e o dono
+    delas é recuperável por máquina, porque está na própria linha;
+  · 6 seguem citação de outro tipo (`.md`, `.json`, `.html`), que o portão não confere de todo jeito;
+  · **118 não têm citação completa nenhuma antes, na mesma linha.** O dono mora no parágrafo.
+    **Não investiguei se ele é recuperável** em cada caso, e digo isso em vez de supor: é a
+    diferença entre um conserto mecânico e uma releitura de 118 trechos.
+
+  **O que fica decidido aqui: nada.** Isto é matéria do `L80` numa parte que não existe ainda, e o
+  tamanho (12 baratas, 118 caras) é exatamente o que uma decisão precisaria saber. Fica medido e
+  aberto.
+
   **A ESCALA dela é a minha própria dúvida, confirmada:** o `reapontar.mjs --check` **raspa texto**
   do `ALVOS` em vez de ler o valor real. Funciona hoje e passou os três controles, mas a mesma
   família de risco volta se a declaração mudar de forma (spread, importação, lista montada em
