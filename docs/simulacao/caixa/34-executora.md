@@ -6,8 +6,8 @@ O código a revisar, e os TRÊS campos são obrigatórios desde 04/09/2026:
 
 ```
 BASE  87c4f19a1a2213a30443793cafe372ef5251c064
-SHA   4c1f7292842b918aaf482594882d59447e24ca40
-TOPO  4c1f7292842b918aaf482594882d59447e24ca40
+SHA   1b2f8a1b17e4ef231f8f72ffb78d89ab8b45108e
+TOPO  1b2f8a1b17e4ef231f8f72ffb78d89ab8b45108e
 ```
 
 **O TOPO existe porque este repositório tem mais de uma frente empurrando para o
