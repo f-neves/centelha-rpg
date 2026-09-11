@@ -4839,6 +4839,68 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   → `L65` (o reapontador e a sua conferência), → `L72` (o portão passou a ver item fechado),
   → `L79` (a outra regra sem portão).
 
+- [ ] **L81 · [ACHADO pela Executora em 11/09/2026, ao abrir a rodada 43, e MEDIDO pelo Arquiteto
+  no mesmo dia] O `BASE` do aviso sai do `HEAD` da worktree da Revisora, e esse `HEAD` fica num
+  commit órfão toda vez que o push dela precisa de rebase feito por outra mão. Três dos últimos
+  nove avisos saíram assim.**
+
+  **O que ela viu:** o `rodada.mjs` preencheu `BASE b8b78ae2`, e esse commit **não é ancestral do
+  `HEAD`**. Existe um `09b5c05` com a MESMA mensagem, o mesmo autor e o mesmo instante
+  (11/09/2026 08:40:25) que está de fato no `main`. Ela parou antes de escrever o aviso e escalou,
+  em vez de preencher um campo que ela não conseguia sustentar. **Essa parada é o comportamento
+  certo e vale registrar junto do defeito**, porque o campo teria passado sem ninguém notar: já
+  passou três vezes.
+
+  **O que a medida acrescentou ao que ela viu:**
+
+  · **nada se perdeu.** Os dois commits têm pais diferentes (`ce31cd0` contra `eb534e3`) e árvores
+    diferentes por 39 linhas, mas o **diff autorado é byte a byte idêntico**: `b8b78ae2^..b8b78ae2`
+    contra `09b5c05^..09b5c05`, 136 linhas cada. A árvore difere porque o rebase replantou o commit
+    numa base que já trazia essas 39 linhas, não porque alguém mexeu no que ela escreveu.
+  · **o reflog da worktree dela não tem entrada de rebase depois do commit.** Quem replantou foi
+    outra mão, de fora, e o `HEAD` local dela nunca soube.
+  · **não é de hoje.** Dos quatro últimos vereditos dela, a 40 (`fe7e220`) está no `main` e a
+    **39, 41 e 42 são órfãs**, cada uma com gêmea de mesma mensagem dentro do `main` (`fb489a6`,
+    `e28b41a`, `09b5c05`).
+  · **e o campo saiu errado três vezes em nove.** Conferida a ancestralidade do `BASE` dos avisos
+    35 a 43: o **40**, o **42** e o **43** trazem `BASE` que não está na história do `main`. Os
+    outros seis estão certos.
+
+  **A FORMA É A DO DIA, agora dentro da nossa própria ferramenta.** O `rodada.mjs` pergunta "qual
+  é o `HEAD` da worktree dela" e a resposta é exata sobre esse recorte. A pergunta que ele acha que
+  está fazendo é "qual o último commit que a Revisora viu **no `main`**", e as duas divergem toda
+  vez que um push dela precisa de rebase feito de fora. O comentário do próprio script já registra
+  um primo deste defeito (o worktree de nome antigo devolvendo "um `BASE` errado, e silencioso"),
+  o que mostra que o campo já foi conhecido por frágil e mesmo assim nunca ganhou conferência.
+
+  **O estrago da vez, medido em vez de estimado:** `git diff --name-only b8b78ae2..b8ab3ea` dá 14
+  caminhos e `09b5c05..b8ab3ea` dá 13. A diferença é **um** arquivo,
+  `docs/simulacao/caixa/progresso-42-l73.md`, o progresso da rodada anterior da própria Revisora.
+  A tabela de inventário do aviso não o lista, então nada no texto que ela lê afirma coisa falsa ·
+  o campo `BASE` está errado sozinho.
+
+  **O aviso NÃO foi corrigido, e a decisão é por regra e não por preguiça:** o `3920074` veio do
+  `--enviar` e está empurrado. Aviso enviado não se edita (regra 6 da caixa, pela razão de
+  atribuição escrita na regra 3 do mesmo arquivo), e aqui há o agravante de que reescrever história
+  empurrada seria pior que o defeito. A correção foi para o `progresso-43-l76-l77.md` e para o
+  recado que a Revisora recebeu antes do checkout.
+
+  **O CONSERTO, para a rodada 44, e ele é barato:** o `rodada.mjs` recusa abrir quando o `BASE`
+  computado não é ancestral do `SHA` (`git merge-base --is-ancestor`), e, havendo commit de mesma
+  mensagem dentro do `main`, **nomeia o gêmeo** em vez de só reclamar · dizer "o `BASE` está fora
+  da história" manda alguém investigar, dizer "o `BASE` está fora da história e o gêmeo é
+  `09b5c05`" resolve. Controle positivo e negativo obrigatórios: abrir uma rodada com `BASE` órfão
+  de propósito e ver vermelho, depois com o certo e ver verde.
+
+  **E o conserto acima não toca na CAUSA, o que tem de estar dito:** ele pega o sintoma na hora de
+  abrir a rodada. A causa é o `HEAD` da worktree ficar para trás quando o push dela é replantado de
+  fora, e quem mexe em `HEAD` de outro papel tem de ser o dono dele · foi mexendo nisso de fora que
+  eu orfanei um commit dela em 10/09/2026, resgatado depois por reflog e cherry-pick. O gesto que
+  conserta de graça é o próprio checkout do aviso seguinte, que tira ela do órfão; o que falta é
+  ninguém depender disso acontecer por acaso.
+
+  → `L65` (a sequência dos commits da rodada), → `L73` (o outro defeito do `rodada.mjs`).
+
 - [ ] **L70 · [REGISTRADO em 10/09/2026, ligado ao `L67`, ABERTO por decisão do humano em
   11/09/2026] A gravação de posição não passa pela checagem de ocupação, e a invariante mora nos
   chamadores em vez de morar na escrita.**
