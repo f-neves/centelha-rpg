@@ -1134,7 +1134,8 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   bandeira desligada é inerte compara ruído. Junto vêm a **branch congelada** (que deixa de ser
   criável assim que a primeira bandeira entra), o caminho do driver até a semente, e o despejo por
   Tick do que a folha calculou. `rolagem.ts:15` é `Math.random` e é a única fonte de acaso
-  do combate. Ganha ponto de injeção, e `mesa-ficha.ts:133` e `artes-grid.ts:1342` precisam do mesmo
+  do combate. Ganha ponto de injeção, e `mesa-ficha.ts:133` · `rolarIniciativaPC` e
+  `artes-grid.ts:1373` · `acaso()` precisam do mesmo
   tratamento. É o que permite o teste-espelho comparar as rolagens.
 - [x] **L6 · [O ESQUELETO FEITO em 02/09] O harness.** `scripts/sim/` com o laço do Tick, o elenco
   tirado da régua, o log com classe de parada, quatro invariantes, a repartição em processos e o
@@ -1165,7 +1166,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `resumoCombatePC`, as criaturas trazem o bloco pronto do `monsters-mesa.json` e não passam por
   lá. Riscos **F3** e **F2**.
 - [x] **L11 · [FEITO em 02/09] O golpe da rajada não pagava a penalidade dele.**
-  `rolarAcerto` (`grid.astro:9542`) sempre usa `linhas[0]`, e desde `f8459e6` (23/08) a folha é
+  `rolarAcerto` (`grid.astro:10503`) sempre usa `linhas[0]`, e desde `f8459e6` (23/08) a folha é
   aberta **uma por golpe** por `resolverGolpeNoAr`. Resultado: os golpes 2 e 3 de uma rajada saem
   com penalidade **zero** em vez de −1 e −2, e a rajada, cujo preço inteiro é essa penalidade, sai
   de graça. Está no **único** caminho que o Simultâneo usa (`adiaGolpe` é sempre true lá), as duas
@@ -1400,7 +1401,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   - o catálogo, 55 verbetes com número, em `src/data/condicoes.json`;
   - a soma: `export function somarCondicoes` (`src/lib/mesa-core.ts:178`);
-  - a leitura na folha do lance: `const cd = somarCondicoes` (`grid.astro:9514`);
+  - a leitura na folha do lance: `const cd = somarCondicoes` (`grid.astro:9600`);
   - o desconto chegando à Defesa: `alvo.condicoesDefesa` (`src/lib/lance.ts:159`);
   - a coluna: `add column if not exists condicoes` (`supabase/migracao-11.sql:25`);
   - e o RPC do jogador aceitando a chave: `condicoes` (`supabase/migracao-22.sql:125`).
@@ -1710,7 +1711,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **MAS ISTO NÃO FECHA O CASO À DISTÂNCIA, e a conferência pedida confirma a suspeita: não existe
   "linha do golpe" em lugar nenhum do combate mundano.** A das Artes usa `Math.hypot` entre dois pontos (`src/lib/artes-grid-mesa.ts:829`).
   A do ataque comum recebe a distância já pronta, num parâmetro chamado `metros` (`src/lib/alcance.ts:61`).
-  Quem a chama já calculou essa distância antes, com a variável `dist` (`src/pages/mesa/grid.astro:9634`).
+  Quem a chama já calculou essa distância antes, com a variável `dist` (`src/pages/mesa/grid.astro:9645`).
   As duas medem a mesma coisa: a distância entre um ponto e outro, nunca se um terceiro ponto está
   NA RETA entre os dois. Um arco de Alcance 30 m mediria "dentro do alcance" para qualquer peça a
   até 30 m do
@@ -1773,7 +1774,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `619c317`):** a Revisora rodou os dois cenários ao vivo (34 asserções, não só leu o código) e
   confirma que a conferência em par é a MESMA função nas duas portas, não duplicada por nome.
   Em `test-grid.mjs:1023`, o clique que abre a caixa de abortar: `data-a="abortar"`.
-  Em `test-grid.mjs:2969`, a caixa equivalente de fora-de-hora: `data-a="forahora"`.
+  Em `test-grid.mjs:3536`, a caixa equivalente de fora-de-hora: `data-a="forahora"`.
 
   **ITEM 4 (o que o escudo faz) NÃO É DECISÃO DE MESA, É BANDEIRA DESLIGADA — conferido em
   07/09/2026.** `bloqueio` é uma das 15 bandeiras (`src/data/regras.json:2535`,
@@ -2350,7 +2351,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **tira quando o Preparo acaba** (`marcarInvestida` e `varrerInvestida`, no `grid.astro`).
 
   **A remoção precisou ser explícita, e isso foi achado no caminho: o `ate` de uma condição não
-  tira ninguém.** `somarCondicoes` (`src/lib/mesa-core.ts:164`) soma tudo sem olhar prazo, e nenhum
+  tira ninguém.** `somarCondicoes` (`src/lib/mesa-core.ts:178`) soma tudo sem olhar prazo, e nenhum
   ponto do sistema lê a chave `ate` de uma condição. Sem a varredura do Tick, a marca ficaria
   grudada para sempre, penalizando em silêncio, que é pior que a dupla cobrança que ela conserta.
 
@@ -2359,7 +2360,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   problema por uma ordem de grandeza: a condição posta por Arte **é** varrida, só que **pelo relógio
   do EFEITO e não pelo da condição**. O `verificarEfeitos` derruba todo efeito vencido a cada Tick
   (`ATIVOS.filter((e) => venceu(e, t))`, `src/lib/artes-grid-mesa.ts:1766`) e o `encerrarEfeito`
-  **leva a condição junto** (`src/lib/artes-grid-mesa.ts:1889`). O `ate` da condição é redundante
+  **leva a condição junto** (`src/lib/artes-grid-mesa.ts:2001` · `tirarCondicao`). O `ate` da condição é redundante
   com isso, não a única linha de defesa. Quem fica grudado de verdade é só quem põe condição **sem
   deixar efeito para trás**, que é o caso da Investida e mais um · ver **L38**.
 
@@ -2415,7 +2416,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   **E o que sobra para a fase 3 é a Corrida, pelo mesmo desenho.** Ela tem hoje o defeito oposto e
   mais antigo: **nenhuma cobrança automática nenhuma** · o −4 dela em `MODOS_MOV` é só o texto da
-  nota (`nota: \`Defesa ${CORRIDA.defesa`, `src/lib/combate-tempo.ts:912`), e quem cobra é só a
+  nota (`enquanto corre e até se recompor`, `src/lib/combate-tempo.ts:1005`), e quem cobra é só a
   condição `correndo`, à mão. É o defeito nomeado no cabeçalho do `src/lib/mesa-condicoes.ts`, e o
   `marcarInvestida` é o molde pronto do conserto dele.
 
@@ -2425,17 +2426,17 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   **O CUSTO, pelo mesmo molde do `custo-tela.mjs`.** Aplicar `correndo` à mão é o caminho do
   MENU, e não existe caminho mais curto porque `abrirCondicoes` só é chamada de um lugar
-  (`grid.astro:7335`, dentro do `switch` do menu de contexto): botão direito na peça (1) + ◈
-  Condições (1) + clicar o chip "Correndo" no catálogo (1, `mesa-condicoes.ts:100-106`) + fechar
-  o diálogo (1, `mesa-condicoes.ts:126`) = **4 gestos para aplicar**. Tirar quando a Corrida
+  (`grid.astro:7421` · `abrirCondicoes(cid)`, dentro do `if`/`else` do menu de contexto): botão direito na peça (1) + ◈
+  Condições (1) + clicar o chip "Correndo" no catálogo (1, `mesa-condicoes.ts:100-106` · `chip.addEventListener`) + fechar
+  o diálogo (1, `mesa-condicoes.ts:126` · `cond-fechar`) = **4 gestos para aplicar**. Tirar quando a Corrida
   acaba é o MESMO caminho, trocando o chip do catálogo pelo **✕** do chip ativo
-  (`mesa-condicoes.ts:80-85`): mais **4 gestos**. Uma Corrida completa (começa e termina) custa
+  (`mesa-condicoes.ts:80-85` · `.cond-x`): mais **4 gestos**. Uma Corrida completa (começa e termina) custa
   **8 gestos**, contra **0** da Investida, que o tabuleiro aplica e tira sozinho desde a decisão
-  de 05/09 (`marcarInvestida`, `grid.astro:6199`).
+  de 05/09 (`marcarInvestida`, `grid.astro:6223`).
 
   **NÃO ENTRA NA ESCADA DESTA BATERIA, e a razão é a mesma do `modoCorre`/`adiaGolpe` do L48:
   ocasião zero.** A `decisaoAutomatica` foge com `mov.modo: 'corrida'` direto no objeto da ação
-  (`motor.mjs:249`), sem abrir diálogo nenhum: é o robô fugindo, headless, e ninguém aplica
+  (`motor.mjs:255` · `modo: 'corrida'`), sem abrir diálogo nenhum: é o robô fugindo, headless, e ninguém aplica
   condição em ninguém. O custo dos 8 gestos só existe numa mesa com **Corrida declarada por
   gente** (perseguir, reposicionar), que esta bateria não tem (`bateria.mjs`, a lista de
   invenções: nenhuma peça de jogador). **Fica registrado aqui, e não na escada**, para não
@@ -3523,7 +3524,8 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
 - [x] **L49 · [FECHADO em 07/09/2026, commit `2fe37cd`] `test-bandeiras-mesa.mjs` entrou no
   `smoke` do `package.json` (9 scripts) e não entrou na matriz do `.github/workflows/validate.yml`
   (8 nomes fixos): a prova inteira de porte/gate na Vida nunca rodava no CI, só na máquina de
-  quem lembrasse de rodar `npm run smoke` antes de empurrar. E `test-portoes.mjs:408` afirmava
+  quem lembrasse de rodar `npm run smoke` antes de empurrar. E `test-portoes.mjs:454`
+  · `roda os mesmos em matriz a cada push` afirmava
   "o CI roda os mesmos em matriz a cada push" sem nada no repositório conferir isso — o próprio
   caso que o arquivo existe para pegar.
 
@@ -3732,11 +3734,12 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   Revisora sobre `docs/simulacao/caixa/27-executora.md`, nenhum bloqueando o veredito (SEGUE).**
 
   1. **Citação de linha errada, não corrigida no arquivo original (histórico congelado):** o aviso
-     cita `scripts/test-grid.mjs:533-545`/`:542` para a cena `cenaLembranca`; a função real está em
-     `:3481-3545`, a asserção `(3,1)` em `:3524`. A afirmação em si é verdadeira (a Revisora rodou e
-     confirmou); só a procedência escrita erra. Correção mora no veredito (`27-revisora.md`), não em
-     reescrever `27-executora.md`.
-  2. **Bug real em `scripts/rodada.mjs:144`, classe nova, não a mesma do `4058b4c` (rodada 19):**
+     cita `scripts/test-grid.mjs:533-545`/`:542` (citação histórica) para a cena `cenaLembranca`; a
+     afirmação em si é verdadeira (a Revisora rodou e confirmou), só a procedência escrita erra, e é
+     esse erro que esta entrada guarda, não o número certo do dia. Correção mora no veredito
+     (`27-revisora.md`), não em reescrever `27-executora.md`. **A função de verdade, hoje** (11/09/2026,
+     depois de rodadas que cresceram o arquivo): `cenaLembranca` (`scripts/test-grid.mjs:4048`).
+  2. **Bug real em `scripts/rodada.mjs:77` · `function calcularTopo`, classe nova, não a mesma do `4058b4c` (rodada 19):**
      o campo TOPO compara `origin/main` contra o SHA local e, se diferentes, assume que alguém
      empurrou DEPOIS (`topo = origemMain`). A conta não cobre o caso desta sessão: `origin/main`
      ficou parado em `f8f72d0` enquanto sete commits só locais se acumulavam, então `origemMain` é
@@ -3777,13 +3780,15 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
      é o commit inteiro não chegando ao histórico principal.
   3. Inventário "O QUE MUDOU" do aviso ficou dois arquivos curto do diff real (faltavam os dois
      arquivos da caixa da própria rodada 26). Menor, não corrigido.
-  4. A asserção `(3,1)` do mock (`scripts/mesa-mock.mjs:156`/`391`) é mais fraca do que o texto
+  4. A asserção `(3,1)` do mock (`scripts/mesa-mock.mjs:1003` · `vistos`, a peça `c-lembr` definida
+     em `:395`) é mais fraca do que o texto
      sugere pelo lado do movimento — confirmado pela Revisora, não reforçado porque a migração 33
      não rodou (feature inerte em produção) e reforçar exigiria escopo de mock novo. Registro para
      quando a 33 rodar, não antes.
 
   Observação de robustez do harness, fora de escopo: ao falsificar a marcação `lembranca`, o script
-  crashou com excepção não tratada (`test-grid.mjs:3541`, `null.getBoundingClientRect`) em vez de só
+  crashou com excepção não tratada (em `test-grid.mjs`, um `getBoundingClientRect` chamado num
+  elemento nulo; sintoma observado numa rodada de teste, sem linha estável para citar) em vez de só
   reportar mais um `✘` e seguir. Não invalida a prova (as três asserções relevantes já tinham
   falhado pelo motivo certo antes do crash).
 
@@ -4040,7 +4045,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   11/09/2026] O corpo a corpo terminava DENTRO do inimigo que ocupa mais de um hexágono, e o
   estado que sobrava era proibido pela própria regra de ocupação da mesa.**
 
-  **FECHADO EM 11/09/2026. O que foi construído:** `raioExtraHex` (`src/pages/mesa/grid.astro:3344`
+  **FECHADO EM 11/09/2026. O que foi construído:** `raioExtraHex` (`src/pages/mesa/grid.astro:3364`
   · `const raioExtraHex`), a única conversão de porte para hexágonos, e um terceiro parâmetro em
   `src/lib/alcance.ts:91` · `export function alcancaNoCorpoACorpo`, com o `Math.max(0, …)` morando
   na função que decide e não em cada chamador. **Dez lugares** ao todo, e não os sete que o
@@ -4474,15 +4479,16 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   metade do item sem a qual a distinção existiria no instante do clique e sumiria do histórico.
 
   **A DIVERGÊNCIA QUE A EXECUTORA ACHOU ANTES DE CODAR, e ela mudou o desenho:** este item mandava
-  "rotear para o mecanismo que já existe", mas `src/lib/combate-tempo.ts:898` · `export function
-  foraDeHora` só devolve `pode:true` na **Recuperação**. Em `livre` a régua já diz "não paga nada",
+  "rotear para o mecanismo que já existe", mas `foraDeHora` (`src/lib/combate-tempo.ts:898`)
+  só devolve `pode:true` na **Recuperação**. Em `livre` a régua já diz "não paga nada",
   em `preparo` o que cabe é abortar (mecanismo próprio, com botão próprio) e em `golpe` não se
   interrompe. **Isso não é buraco no roteamento, é o roteamento:** o diálogo pergunta qual das duas
   é, e quem diz o que custa é o motor, que sabe responder nas quatro fases. Em `livre` o custo é
   zero e o valor inteiro da escolha é o REGISTRO.
 
-  **UM DEFEITO REAL NO PRIMEIRO GATILHO, medido antes de trocar:** ele disparava por
-  `!grupoDaVez().some(...)`, e `src/pages/mesa/grid.astro:4563` · `function grupoDaVez` devolve
+  **UM DEFEITO REAL NO PRIMEIRO GATILHO, medido antes de trocar:** ele disparava perguntando
+  ao GRUPO inteiro, em vez de à peça: `function grupoDaVez` (`src/pages/mesa/grid.astro:4563`)
+  devolve
   lista **vazia** enquanto um golpe está caindo. Com lista vazia o diálogo abria em **todo**
   arrasto naquele intervalo: medido no bench de doze peças com um golpe de verdade no ar,
   **12 de 12 contra 7 de 12** depois da troca por um predicado da peça (`chegouAVez`, que usa o

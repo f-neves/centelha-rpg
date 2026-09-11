@@ -561,3 +561,37 @@ numero. Nao "rodei a varredura", e sim "rodei a varredura no diff do codigo". Na
 790 s", e sim "o pico das cinco ultimas antes do modelo era 790 s". O escopo dito em voz alta e
 onde o erro aparece, porque quem le percebe na hora que o escopo nao e a pergunta · e, com
 frequencia, quem ESCREVE percebe antes de terminar a frase.
+
+**"ÂNCORA MAIS PRÓXIMA" É UMA REGRA SOBRE BYTES, NÃO SOBRE O QUE O OLHO VÊ, E ELA PREFERE O
+ANTES.** *Achado na rodada 41 (L72), reapontando à mão as citações de código que o portão de
+procedência nunca tinha olhado dentro de item fechado.*
+
+O script que confere `arquivo.ts:NNN` escolhe a âncora (o trecho entre crases que diz O QUE a
+citação afirma) pela crase mais próxima do número citado. "Mais próxima" ali é distância de
+CARACTERES a partir do INÍCIO da citação, contada nas duas direções. Isso parece simétrico e não
+é: uma âncora que vem DEPOIS da citação só começa a contar depois do fim dela (o próprio texto da
+citação, `src/pages/mesa/grid.astro:4563`, tem trinta e tantos caracteres), enquanto uma âncora
+ANTES conta a partir do início, sem esse desconto. A citação mais longa que a âncora empurra o
+"depois" para mais longe do que o "antes" parece, de um jeito que ninguém vê olhando a linha
+impressa: o olho lê `algo` (`arquivo:N`) `outra_coisa` como três pedaços igualmente próximos, e o
+script lê dois deles a distâncias bem diferentes.
+
+**Duas citações reais desta mesma rodada caíram nisso**, as duas escritas por quem está contando
+este achado: `grupoDaVez` (`grid.astro:4563`) tinha a âncora certa (`function grupoDaVez`) escrita
+DEPOIS da citação, e o script escolheu `!grupoDaVez` (um fragmento de código histórico, também em
+crases, escrito ANTES) por ser mais "próximo" em bytes. O mesmo aconteceu com
+`mesa-condicoes.ts:100-106`, onde a âncora nova foi escrita numa linha seguinte por causa da
+quebra do markdown, e a quebra de linha, sozinha, já bastava para separar âncora e citação em
+"linhas" diferentes para o script, que só olha uma linha de texto por vez.
+
+**Por que é difícil de ver de dentro:** o conserto parece pronto assim que a citação aponta para o
+lugar certo e a âncora certa está escrita ao lado, em texto. Só rodando o verificador de novo
+depois de cada lote é que os dois casos apareceram: a leitura visual da linha corrigida não
+distinguia "a âncora que eu quis" da "âncora que o script vai escolher", porque as duas estavam ali,
+em crases, a olho igualmente coladas na citação.
+
+**O gesto que evita isso, e ele é o mesmo dos outros da lista:** depois de reapontar uma âncora à
+mão, rodar o verificador de novo antes de seguir para a próxima, em vez de confiar na leitura. E,
+ao escrever a âncora, colocá-la na MESMA linha da citação e o mais perto possível dela, sem outro
+trecho em crases entre as duas — não porque o script exija exatamente isso, mas porque é o único
+jeito de a distância em bytes bater com a distância que o olho vê.

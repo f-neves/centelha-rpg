@@ -252,19 +252,22 @@ for (const nome of fs.readdirSync(DOCS)) {
 // comentário acrescentado logo acima empurra a linha citada sem tornar a citação
 // falsa, e cobrar precisão de uma linha faria o portão acender por reformatação.
 //
-// O ESCOPO É O DOS DOCUMENTOS QUE FALAM DE HOJE, e a exclusão é a mesma família
-// da que já existe para as tabelas do ESTADO.md:
+// O ESCOPO É O `ESTADO.md` E O `Pendencias.md` INTEIROS, ITEM FECHADO INCLUÍDO
+// (L72, ligado em 11/09/2026). Item fechado ficou de fora até aqui pela ideia de
+// que "leitura de um dia não envelhece, ela data" — mas a CITAÇÃO não é a
+// leitura, é o ENDEREÇO dela, e endereço apodrece igual dentro ou fora de um
+// item fechado. A medida no dia em que isto foi ligado achou 77 citações de
+// código em itens fechados, 23 delas quebradas (15) ou sem âncora (8) — e duas
+// eram da PRÓPRIA rodada que tinha acabado de fechar o L67/L68, apodrecidas no
+// mesmo dia. Fechar item aumentava a dívida invisível em vez de zerá-la, que é
+// o incentivo errado: o registro ficava mais pobre justamente quando o
+// trabalho ficava pronto. As 23 foram reapontadas à mão nesta mesma rodada
+// (L72), cada âncora procurada, nunca escolhida pela proximidade quando
+// repetia no arquivo alvo.
 //
-//   `ESTADO.md`      · o cabeçalho promete procedência para a página inteira;
-//   `Pendencias.md`  · SÓ os itens ABERTOS. Item fechado é o registro de uma
-//                      leitura de um dia, e leitura de um dia não envelhece, ela
-//                      data. Corrigir o número dentro dele transformaria um
-//                      registro datado numa afirmação sobre hoje, que é o
-//                      contrário do que ele é.
-//
-// Os diagnósticos `00` a `09` ficam de fora pelo mesmo motivo do item fechado.
-// **Mas citação histórica não vira fonte:** um número daqueles que volte a ser
-// usado volta com âncora e com a linha de hoje, ou não volta.
+// Os diagnósticos `00` a `09` ficam de fora, porque não são `ESTADO.md` nem
+// `Pendencias.md`. **Mas citação histórica não vira fonte:** um número daqueles
+// que volte a ser usado volta com âncora e com a linha de hoje, ou não volta.
 {
   // O CAMINHO ANTES DO NOME É OPCIONAL, e não era: `[A-Za-z0-9_.-]+` não casa
   // com a barra, então `src/lib/lance.ts:144` não era reconhecida como citação.
@@ -290,41 +293,48 @@ for (const nome of fs.readdirSync(DOCS)) {
   varrer(path.join(RAIZ, 'src'));
   varrer(path.join(RAIZ, 'scripts'));
 
-  /**
-   * As linhas em que a conferência vale.
-   *
-   * No `Pendencias.md` a resposta depende do ITEM em que a linha está: aberto
-   * (`- [ ]` ou `- [~]`) conta, fechado (`- [x]`) não.
-   */
-  const valeAqui = (arq, linhas) => {
-    if (path.basename(arq) !== 'Pendencias.md') return () => true;
-    const aberto = [];
-    let atual = false;
-    for (const l of linhas) {
-      const m = /^- \[( |x|~)\] \*\*/.exec(l);
-      if (m) atual = m[1] !== 'x';
-      aberto.push(atual);
-    }
-    return (i) => aberto[i];
-  };
+  // A MARCA `(citação histórica)`, para o caso que o `L72` achou e o gatilho
+  // por âncora não sabe representar: uma citação que não afirma nada sobre o
+  // código de HOJE, porque ela está guardando o que um documento ALHEIO disse
+  // (certo ou errado) num dia passado. Corrigi-la apagaria o próprio achado
+  // que a linha existe para registrar.
+  //
+  // A MARCA VALE PARA A CITAÇÃO MAIS PRÓXIMA, e não para a linha inteira: uma
+  // linha pode ter duas citações (a errada que se guarda, e a correção que
+  // continua viva), e marcar a linha caiaria as duas juntas — a marca que cala
+  // demais é pior que citação podre, porque ninguém mais olha ali. "Mais
+  // próxima" aqui é posição no texto (qual citação a marca está do lado de),
+  // não é a mesma conta de caracteres do desempate de âncora: cada citação
+  // "possui" o trecho da linha até a próxima citação (ou o fim da linha), e a
+  // marca vale para quem quer que seja dono desse pedaço.
+  const MARCA_HISTORICA = /\(citaç[aã]o histórica\)/;
 
   const ALVOS = [path.join(DOCS, 'ESTADO.md'), path.join(RAIZ, 'Pendencias.md')];
   const velhas = [];
   const semAncora = [];
   let conferidas = 0;
+  let historicas = 0;
   for (const arq of ALVOS) {
     const linhas = fs.readFileSync(arq, 'utf8').split(/\r?\n/);
-    const vale = valeAqui(arq, linhas);
     for (let i = 0; i < linhas.length; i += 1) {
-      if (!vale(i)) continue;
       const l = linhas[i];
       const crases = [...l.matchAll(/`([^`]+)`/g)].map((m) => ({ em: m.index, txt: m[1] }));
-      for (const m of l.matchAll(CITACAO)) {
+      const todasCitacoes = [...l.matchAll(CITACAO)];
+      for (const m of todasCitacoes) {
         const [, nome, n1] = m;
         const alvo = porNome[nome];
         // Arquivo que não existe mais é outro assunto (o documento fala de algo
         // que saiu), e cobrá-lo aqui misturaria duas coisas. Fica de fora.
         if (!alvo) continue;
+        const onde = `${path.basename(arq)}:${i + 1} → ${nome}:${n1}`;
+        // O TERRITÓRIO desta citação: do fim dela até a próxima citação (ou o
+        // fim da linha). A marca só vale se estiver aqui dentro.
+        const proximaEm = todasCitacoes
+          .map((o) => o.index)
+          .filter((em) => em > m.index)
+          .sort((a, b) => a - b)[0] ?? l.length;
+        const territorio = l.slice(m.index + m[0].length, proximaEm);
+        if (MARCA_HISTORICA.test(territorio)) { historicas += 1; continue; }
         const fonte = fs.readFileSync(alvo, 'utf8').split(/\r?\n/);
         const n = Number(n1);
         // A âncora: o trecho entre crases MAIS PRÓXIMO que não seja outra
@@ -332,7 +342,6 @@ for (const nome of fs.readdirSync(DOCS)) {
         const anc = crases
           .filter((c) => !ehCitacao(c.txt) && !/^[\d\s.,:;()-]+$/.test(c.txt))
           .sort((a, b) => Math.abs(a.em - m.index) - Math.abs(b.em - m.index))[0];
-        const onde = `${path.basename(arq)}:${i + 1} → ${nome}:${n}`;
         if (!anc) { semAncora.push(onde); continue; }
         conferidas += 1;
         const janela = fonte.slice(Math.max(0, n - 1 - JANELA), n + JANELA).join('\n');
@@ -354,7 +363,8 @@ for (const nome of fs.readdirSync(DOCS)) {
     console.log('    Mover linha é a coisa mais comum que existe: reaponte, procurando a âncora no arquivo.');
     process.exit(1);
   }
-  console.log(`  ✓ ${conferidas} citação(ões) de código conferidas pela âncora (ESTADO.md e os itens abertos do Pendencias.md)`);
+  console.log(`  ✓ ${conferidas} citação(ões) de código conferidas pela âncora (ESTADO.md e Pendencias.md, aberto e fechado)`
+    + (historicas ? `, ${historicas} marcada(s) \`(citação histórica)\` e puladas` : ''));
 }
 
 if (!citacoes) {
