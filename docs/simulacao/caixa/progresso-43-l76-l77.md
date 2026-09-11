@@ -109,3 +109,18 @@ não só por item), no instante em que ela fecha, hora lida da máquina (`date +
   Arquiteto trabalhando nele agora. Leitura: peguei o arquivo no meio de uma escrita
   dele. Registrando para não alarmar por um sintoma que já sumiu. Rodada pronta:
   código dentro, empurrado, aviso a escrever.
+- 13:54 · AVISO ENVIADO (sha `3920074`) COM O `TOPO` JÁ VELHO NO MOMENTO DO ENVIO,
+  correção por fora porque o aviso enviado é congelado (a mesma regra da rodada 42).
+  Escrevi `TOPO 5c99550` porque era o HEAD que eu tinha lido; entre eu escrever e
+  rodar `--enviar`, o Arquiteto commitou `b8ab3ea` ("L80 conferido com o próprio
+  portão... e a forma nova do `&&` depois do cano") direto na árvore compartilhada,
+  46 segundos antes do meu `--enviar`. O `--enviar` releu o `HEAD` fresco (a correção
+  da rodada 42) e o commit do aviso saiu com `b8ab3ea` como pai de verdade, então a
+  ÁRVORE que a Revisora vai ler JÁ TEM esse commit dentro, só o campo `TOPO`
+  ESCRITO no aviso ficou apontando para um HEAD anterior a ele, um passo atrás do
+  que devia. `git diff --stat cb20d8e..b8ab3ea`: só `Pendencias.md` e
+  `docs/simulacao/CATALOGO.md`, nenhuma linha de código. O número certo para o
+  Arquiteto passar à Revisora quando chamar: `TOPO b8ab3ea00ddaf1247c327de079ecac3984eaccd5`,
+  não `5c9955010f39060addf2e18128d4a5ee989fab71` (o que o aviso diz). Confirmado com
+  `git fetch` que nada mais entrou depois disso: `origin/main` é `3920074`, igual ao
+  meu `HEAD`, árvore limpa.
