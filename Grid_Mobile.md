@@ -64,8 +64,8 @@ mas só 388 deles estão na tela quando a página abre. A página inteira mede *
 - **`.al-sec` quebra em 4 fileiras** ("O acerto" e "O dano"), o rótulo quebra em duas linhas, e o
   campo do motivo corta o texto no meio ("por quê (vai para o registr…").
 - **O menu da peça mede 439px de altura**, 10 itens de 36px. Em retrato passa raspando; em
-  **paisagem** (390px de altura) não cabe, e o encaixe de `grid.astro:4247` (`Math.min(y, innerHeight
-  - r.height - 8)`) devolve um topo **negativo**: o menu sai pela borda de cima e não há rolagem
+  **paisagem** (390px de altura) não cabe, e o encaixe de `grid.astro:4247` (`innerHeight - r.height - 8`)
+  devolve um topo **negativo**: o menu sai pela borda de cima e não há rolagem
   dentro dele.
 - **`.rg-acs` (`grid.astro:1263`) nasce com `opacity: 0` e só acende no `:hover`.** No dedo não há
   hover: **os botões de editar e apagar linha do registro são invisíveis no telefone**. Bug, e não
@@ -73,7 +73,7 @@ mas só 388 deles estão na tela quando a página abre. A página inteira mede *
 - **Não existe pinça.** Não há nenhum manipulador de dois dedos em todo o `src/`. O zoom do
   tabuleiro é só pelos botões − e +, de 24px, na sexta fileira da barra.
 - `.gr-palco` ganha `max-height: 70vh` abaixo de 1100px (`grid.astro:654`) e `ajustarAltura()`
-  (`grid.astro:2600`) desliga abaixo de 1101px de propósito, porque a grade vira pilha. As duas
+  (`grid.astro:2600` · `function ajustarAltura`) desliga abaixo de 1101px de propósito, porque a grade vira pilha. As duas
   decisões estão certas para o layout de hoje e são exatamente o que o layout novo substitui.
 
 ---
@@ -199,7 +199,7 @@ Esta é a parte que o pedido nomeou, e a que tem o defeito mais caro já medido.
   parar de quebrar em duas linhas. O `al-motivo` ganha a linha inteira.
 - **`outra-dlg`.** Mesmo tratamento, é irmã da folha da ação.
 - **`arte-dlg`, o ajuste da arte.** O caso difícil, e o único que muda de ideia. Ele é **de
-  propósito** um painel não modal (`grid.astro:320`), porque o gesto principal do ajuste é arrastar
+  propósito** um painel não modal (`grid.astro:320` · `function modoAjuste`), porque o gesto principal do ajuste é arrastar
   a arte no tabuleiro **atrás** dele. No telefone não existe "atrás": a proposta é uma **meia
   folha** (40% da tela, o mapa vivo nos 60% de cima), com o d-pad e os controles de zoom e giro
   dentro dela.
@@ -224,7 +224,7 @@ Esta é a parte que o pedido nomeou, e a que tem o defeito mais caro já medido.
 - **Toque duplo = caber**, que é o par natural da pinça.
 - **Um dedo arrasta**: a peça, se começou em cima de uma peça (já funciona, por `pointerdown`); o
   mapa, no resto (a rolagem nativa do palco já dá conta).
-- **Toque longo** já abre o menu (`grid.astro:4155`, 400ms com folga de 8px). Fica, e ganha
+- **Toque longo** já abre o menu (`grid.astro:4155` · `toque longo`, 400ms com folga de 8px). Fica, e ganha
   `navigator.vibrate(10)`, que é o que diz ao dedo que o gesto pegou.
 - **Escolher alvo no dedo**: depois do menu, o alvo é confirmado no primeiro `pointerdown`, sem
   prévia. Estender o padrão da **mira no dedo** que as Artes já usam (posicionar, ver, confirmar).

@@ -241,7 +241,7 @@ matemática.
 Usando os números do jogo (herói de referência: Influência 4, Compostura 4, Sociabilidade 4,
 Centelha 2):
 
-- **Ataque Social típico** ~18–21; **Defesa Social** de um par ~20 (`calc.ts:49`).
+- **Ataque Social típico** ~18–21; **Defesa Social** de um par ~20 (`calc.ts:49` · `function defesaSocial`).
 - **Jogada única típica:** folga 0–2 → **+1 passo**. Folga 6 (Ataque 26 vs 20) → **+2 passos**.
   Romper o Neutro numa tacada (3 passos) exigiria folga 12 (Ataque ~32): **raríssimo**.
 - **Logo, sair do Neutro custa ~3 cenas boas OU um feito grande.** Um "serviço grande" (+2) já

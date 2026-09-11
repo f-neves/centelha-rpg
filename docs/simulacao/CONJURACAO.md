@@ -17,7 +17,7 @@ em aberto está marcado como aberto, com o nome de quem decide.
 ## 0 · O fato que decide o tamanho de tudo
 
 **A conjuração de uma Arte pelo jogador é SÍNCRONA hoje.** `conjurar()`
-(`src/lib/artes-grid-mesa.ts:767-815`) abre a caixa, posiciona a figura, paga a Mana e declara o
+(`src/lib/artes-grid-mesa.ts:767-815` · `function conjurar`) abre a caixa, posiciona a figura, paga a Mana e declara o
 custo em Ticks · tudo no mesmo instante, num `finally` só. **Não existe hoje o estado "em Preparo,
 esperando o Tick de saída" para Arte lançada pela interface.**
 
@@ -70,7 +70,7 @@ nova reusa esse nome e essa fórmula, e não inventa um terceiro.
 
 | para quê | qual conta | onde está |
 |---|---|---|
-| **quanto CUSTA** (Mana) | a **SOMA** dos graus investidos | `artes-grid.ts:231-235`, `regras.astro:382` |
+| **quanto CUSTA** (Mana) | a **SOMA** dos graus investidos | `artes-grid.ts:231-235` (`interface Custo`) e `regras.astro:382` (`Some os níveis investidos`) |
 | **quanto DEMORA** (Preparação) e o gating | o **MÁXIMO** · o nível efetivo | `artes-grid-mesa.ts:1287-1290`, `arcano.composta` |
 
 Isto não é contradição, é uma distinção que o sistema já tem. **Toda linha desta régua diz qual
@@ -99,7 +99,7 @@ distribuição aberta, que foi o que o humano pediu.
 **E O D-C1 NÃO TEM BURACO, corrigido em 10/09/2026 pelo humano, porque quem ler o §1 vai fazer
 esta pergunta.** Declarar nível efetivo 3 **não** libera distribuir 3 em todos os Parâmetros de
 graça. **Cada grau de cada Parâmetro é pago**, e a conta já existe (`custoDe`,
-`src/lib/artes-grid.ts:250-268`): o custo é a SOMA dos graus, com dois descontos · um pela
+`src/lib/artes-grid.ts:250-268` · `function custoDe`): o custo é a SOMA dos graus, com dois descontos · um pela
 **Centelha**, que abate do total, e outro pelo **material consumido**. Passar do nível de maestria
 num Parâmetro ainda multiplica o custo dele.
 
@@ -122,7 +122,7 @@ custa um Tick a mais" e mandou conferir contra o que existe. O que existe é
 `regras.json:2441-2444` · `preparoBase: 2, preparoPorNivel: 1`, consumido por `reguaDaArte`. **O
 incremento bate; a base 2 é o que a descrição não menciona.** Fica a base 2, porque a instrução foi
 "se a escala já estiver definida em outro lugar, vale a que existe", e porque ela já está publicada
-no site (`src/pages/artes/regras.astro:305-322`, a Arte sai no ÚLTIMO Tick da montagem).
+no site (`src/pages/artes/regras.astro:305-322` · `A Arte sai no último Tick`, a Arte sai no ÚLTIMO Tick da montagem).
 
 **A Arte sai no ÚLTIMO Tick, e esse Tick é o GOLPE.** É a §5.3 do Arcano, já no ar, e a régua nova
 não a toca.
@@ -149,7 +149,7 @@ físico" de "Preparação de Arte" em todo lugar que hoje pergunta só `faseEm(.
 
 **Existe precedente para forçar modo sem perguntar**, e vale citar porque é o mecanismo que a
 implementação vai reusar: a fuga automática de criatura já monta o movimento com `modo: 'corrida'`
-direto, sem diálogo (`grid.astro:5845`).
+direto, sem diálogo (`grid.astro:5845` · `modo: 'corrida'`).
 
 #### Interromper por vontade própria
 
@@ -159,7 +159,7 @@ Preparação, que se perdem.
 **O Abortar já existe, publicado e implementado**, e é ele que se estende: `regras.json:2497-2508`
 · só na fase de Preparo, custa 1 Tick por metro para a saída, e **perde o investido**
 (`perdeOInvestido: true`). O código é `podeAbortar`/`abrirAbortar` e o botão "✋ Abortar o gesto"
-(`grid.astro:7111`).
+(`grid.astro:7111` · `Abortar o gesto`).
 
 **O que muda:** hoje o Abortar serve só a ação física, e a lista `nuncaPara: "atacar"` o proíbe
 para ataque. **A Preparação de Arte entra como fase abortável**, com a mesma regra de perder o
@@ -185,7 +185,7 @@ Golpe importa só para o gating do Efeito · o que a Arte consegue fazer.
 **A Mana é paga aqui, no Golpe, e não na declaração.**
 
 **Isto é sequência nova, e não um "quando" mudado.** Hoje `gastarMana` é chamada no mesmo `finally`
-da conjuração (`artes-grid-mesa.ts:812`). **Não existe hoje um intervalo em que a Mana esteja
+da conjuração (`artes-grid-mesa.ts:812` · `ctx.gastarMana`). **Não existe hoje um intervalo em que a Mana esteja
 comprometida e ainda não gasta**, e é esse intervalo que a régua cria.
 
 **Mana insuficiente no Golpe:**
@@ -231,7 +231,7 @@ persistência, sem inventar armazenamento.
 
 **O teste é reusado, e não inventado:** `regras.json:arcano.tempo` →
 `improviso.combinacoes.concentracao.aoSofrerDano` · **Vontade + Acerto Arcano** para segurar;
-falhando, cai. Está publicado em `src/pages/artes/regras.astro:151`.
+falhando, cai. Está publicado em `src/pages/artes/regras.astro:151` (`concentracao.aoSofrerDano`).
 
 **Três ressalvas honestas sobre esse reuso:**
 
@@ -385,7 +385,7 @@ Nesta ordem, e nenhuma parte começa antes de o humano aprovar a régua.
 |---|---|---|---|
 | 1 | ligar `reguaDaArte` ao fluxo real | `artes-grid-mesa.ts`, `conjurar()` | a fórmula existe e está morta · é chamada, não escrita |
 | 2 | abrir o estado "Arte em Preparo" | `conjurar()` deixa de ser síncrona | **é o grosso do trabalho**, e é estado novo no motor |
-| 3 | a Mana sair da declaração para o Golpe | `artes-grid-mesa.ts:812` | pequeno, e perigoso: é onde o gasto pode sumir |
+| 3 | a Mana sair da declaração para o Golpe | `artes-grid-mesa.ts:812` (`ctx.gastarMana`) | pequeno, e perigoso: é onde o gasto pode sumir |
 | 4 | a reabertura dos Parâmetros no Golpe | caixa nova, com o teto | médio |
 | 5 | caminhada automática na Preparação | `moverSimultaneo` | pequeno, se `D-C2` ficar de pé |
 | 6 | o Abortar aceitar Preparação de Arte | `podeAbortar` e a lista `nuncaPara` | pequeno |

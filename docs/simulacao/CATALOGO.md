@@ -94,7 +94,7 @@ não é, o laço é espera, e espera não reporta ordinal como se fosse achado.
 avanço unificado não é o ARQUIVO nem a FORMA do código, é a QUERY da cena. Uma cena cujo `goto()`
 não pede `tempo=simultaneo` cai no `else` de `SIML()` (o modo antigo) e não sentiu a mudança de
 contrato nenhuma, mesmo tendo a MESMA forma de laço e o mesmo `dica`/`.title` que as cenas
-afetadas. `test-grid.mjs:2407` é a forma exata, e é falso positivo por isso: quem varrer de novo
+afetadas. `test-grid.mjs:2407` (`dica: btn.title`) é a forma exata, e é falso positivo por isso: quem varrer de novo
 por esta família olha o `goto` da cena antes do laço, não o laço sozinho.
 
 **São 35**, e a contagem é do dia em que o arquivo nasceu (nasceu com 25, fechou o primeiro dia
@@ -134,7 +134,7 @@ isso. A primeira já tem instrumento parcial (a lista de proibições observáve
 o dela em 05/09/2026, com a tabela `migracoes` da migração 36.
 
 **UM CASO QUE FOI CHAMADO DE DORMENTE E NÃO ERA, corrigido em 06/09/2026 (mesmo dia do achado
-inicial):** a entrada anterior desta lista registrava `scripts/sim/agregar.mjs:307` lendo
+inicial):** a entrada anterior desta lista registrava `scripts/sim/agregar.mjs:307` (`x.fracaoSemGolpe || 0`) lendo
 `x.fracaoSemGolpe || 0` como um risco "que não dispara hoje". Uma segunda conferência mediu o
 corpus em disco (19 diretórios, 288.900 batalhas) em vez de confiar na leitura do código, e achou
 que DISPARAVA, todo dia, em 57,1% das batalhas: a fase de fuga tem `ticks = 0` sempre que ninguém
@@ -572,7 +572,7 @@ O script que confere `arquivo.ts:NNN` escolhe a âncora (o trecho entre crases q
 citação afirma) pela crase mais próxima do número citado. "Mais próxima" ali é distância de
 CARACTERES a partir do INÍCIO da citação, contada nas duas direções. Isso parece simétrico e não
 é: uma âncora que vem DEPOIS da citação só começa a contar depois do fim dela (o próprio texto da
-citação, `src/pages/mesa/grid.astro:4563`, tem trinta e tantos caracteres), enquanto uma âncora
+citação, `src/pages/mesa/grid.astro:4563` · `function grupoDaVez`, tem trinta e tantos caracteres), enquanto uma âncora
 ANTES conta a partir do início, sem esse desconto. A citação mais longa que a âncora empurra o
 "depois" para mais longe do que o "antes" parece, de um jeito que ninguém vê olhando a linha
 impressa: o olho lê `algo` (`arquivo:N`) `outra_coisa` como três pedaços igualmente próximos, e o
@@ -582,7 +582,7 @@ script lê dois deles a distâncias bem diferentes.
 este achado: `grupoDaVez` (`grid.astro:4563`) tinha a âncora certa (`function grupoDaVez`) escrita
 DEPOIS da citação, e o script escolheu `!grupoDaVez` (um fragmento de código histórico, também em
 crases, escrito ANTES) por ser mais "próximo" em bytes. O mesmo aconteceu com
-`mesa-condicoes.ts:100-106`, onde a âncora nova foi escrita numa linha seguinte por causa da
+`mesa-condicoes.ts:100-106` (`chip.addEventListener`), onde a âncora nova foi escrita numa linha seguinte por causa da
 quebra do markdown, e a quebra de linha, sozinha, já bastava para separar âncora e citação em
 "linhas" diferentes para o script, que só olha uma linha de texto por vez.
 

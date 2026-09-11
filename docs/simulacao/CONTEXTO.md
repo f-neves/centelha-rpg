@@ -92,7 +92,7 @@ Estado em 10/09/2026:
 **O levantamento que dimensionou a frente** (10/09/2026): não existe ponto único por onde toda
 ação passe; das dezesseis ações do menu, **cinco são chamáveis direto** com objeto pronto e as
 outras oito misturam coleta (`uiFormulario`) ou dependem de diálogo com callback. **O desfazer
-cobre só posição e Vida** (`grid.astro:10240-10261`), não cobre Mana, a declaração do golpe, o
+cobre só posição e Vida** (`grid.astro:10240-10261` · `function desfazer`), não cobre Mana, a declaração do golpe, o
 Tick nem a agenda. **"Escolher arma" não existe** como verbo. **Mana não distingue dar de
 tirar** (`ajustarMana`, `grid.astro:9944`, uma função só).
 

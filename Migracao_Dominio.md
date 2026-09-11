@@ -117,10 +117,10 @@ Estes se ajustam sozinhos, porque leem o `base` em vez de escrevê-lo. **Mexer n
 que seria erro.**
 
 - **`import.meta.env.BASE_URL`, em 15 lugares** (`src/lib/site.ts:2`, `mesa-core.ts:20`,
-  `ficha-card.ts:23`, `Base.astro:352`, `bestiario.astro:666`, `conta.astro:37`,
-  `entrar.astro:68`, `mesas.astro:55`, `personagem.astro:123`, `admin.astro:25`,
-  `marcadores.astro:14`, `redefinir-senha.astro:31`, `configuracoes.astro:407`,
-  `ArvoreTecnicas.astro:41`, `Referencias.astro:11`, `BestiaEditor.astro:455`).
+  `ficha-card.ts:23` (`BASE_URL`), `Base.astro:352` (`BASE_URL`), `bestiario.astro:666` (`BASE_URL`), `conta.astro:37` (`BASE_URL`),
+  `entrar.astro:68` (`BASE_URL`), `mesas.astro:55` (`BASE_URL`), `personagem.astro:123` (`BASE_URL`), `admin.astro:25` (`BASE_URL`),
+  `marcadores.astro:14` (`BASE_URL`), `redefinir-senha.astro:31` (`BASE_URL`), `configuracoes.astro:407` (`BASE_URL`),
+  `ArvoreTecnicas.astro:41` (`BASE_URL`), `Referencias.astro:11` (`BASE_URL`), `BestiaEditor.astro:455` (`BASE_URL`).
   Sem `base` no config, a Astro põe `/` neles e o `url()` de `site.ts` devolve caminhos
   de raiz. Nada a fazer.
 - **`Astro.site`**, em `src/layouts/Base.astro:33` e `:36`, que monta `og:url` e
@@ -178,7 +178,7 @@ que muda é a lista de destinos que o Supabase aceita.
 com aba aberta no endereço antigo, e um link de recuperação gerado lá tem de continuar
 funcionando. Tirar depois, junto da fase F.
 
-**O que exatamente quebra se esquecer:** `src/pages/conta.astro:49` monta o destino com
+**O que exatamente quebra se esquecer:** `src/pages/conta.astro:49` (`redirectTo`) monta o destino com
 `${location.origin}${base}redefinir-senha`, ou seja, ele **se adapta sozinho** ao endereço
 novo. O Supabase é que recusa um destino fora da lista. O sintoma é o pior possível:
 nenhuma mensagem de erro na tela, e o link do e-mail vai para o lugar errado ou não vem.
@@ -189,7 +189,7 @@ nenhuma mensagem de erro na tela, e o link do e-mail vai para o lugar errado ou 
 
 *Uma hora, e é o único ganho técnico da compra que se paga sozinho. Pendência J1b.*
 
-Hoje o cadastro (`src/lib/auth.ts:54`) e a recuperação de senha (`:65`) saem pelo SMTP
+Hoje o cadastro (`src/lib/auth.ts:54` · `auth.signUp`) e a recuperação de senha (`:65`) saem pelo SMTP
 embutido do Supabase, **limitado a 2 e-mails por hora, em todos os planos, inclusive no
 pago**. Três pessoas criando conta na mesma hora e a terceira não recebe a confirmação.
 O `traduzErro` da linha 93 já tem tradução para "rate limit", o que sugere que isso já
@@ -229,7 +229,7 @@ São 7 chaves (`centelha:ficha`, `centelha:ficha:personagem-id`, `centelha:marca
 `centelha:config`, `centelha:bestiario:elem-extra`, `tema`, `sidebar`).
 
 **Atenuação possível, se valer o trabalho:** a `/ficha` já sabe ler um estado em base64
-no *hash* da URL (`src/pages/ficha.astro:21`). Dá para pôr um aviso na página antiga
+no *hash* da URL (`src/pages/ficha.astro:21` · `atob(m[1])`). Dá para pôr um aviso na página antiga
 oferecendo um link de mudança que carrega a ficha para o domínio novo. É uma tela e um
 botão. Vale a pena se houver gente usando; se o site ainda é só seu, não vale.
 

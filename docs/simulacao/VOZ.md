@@ -472,8 +472,8 @@ em `src/lib/rolagem.ts:93` · `const rolls`. Falar o total não é a mesma coisa
 - **mas a fala fica mais longa, e não mais curta.** Um bolo de dez dados são dez faces ditas. O
   risco mudou de palavra confundível para **comprimento de sequência**, e é outro risco, medido de
   outro jeito;
-- **a folha já tem meio detector de graça:** `src/lib/rolagem.ts:114` ·
-  `bateContagem: rolls.length === dadosExpr` marca o campo quando o número de faces digitadas não
+- **a folha já tem meio detector de graça:** `src/lib/rolagem.ts:114` · `bateContagem: rolls.length === dadosExpr`
+  marca o campo quando o número de faces digitadas não
   bate com o que o bolo pede. **Ele pega face perdida ou repetida; não pega `quatro` ouvido como
   `seis`.** É detector de contagem, e não prova de transcrição, e é assim que ele deve ser lido.
 
