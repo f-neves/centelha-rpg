@@ -3996,6 +3996,30 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   completo" é a mesma leitura larga que já produziu, no mesmo dia, a contagem errada do CI, a
   amostra escolhida pela recência e a varredura de travessão que não via arquivo não rastreado.
 
+  **O REAPONTADOR NÃO ESTAVA NO REPOSITÓRIO, e ninguém tinha notado até 11/09/2026.** Ele viveu
+  por dezenas de rodadas no scratchpad do Arquiteto da vez. Quem achou foi a Executora, na rodada
+  46: recebeu de mim a instrução "as duas listas mudam no mesmo commit", foi procurar a segunda
+  lista e **não achou ferramenta nenhuma com esse nome**. Em vez de improvisar, perguntou.
+
+  **O risco era maior que uma instrução confusa:** a sessão acaba e a ferramenta some junto, e quem
+  vier depois cai de volta na **busca por âncora**, que é justamente o que este item proíbe porque
+  deixa o portão VERDE sobre citação FALSA. Versionado como `scripts/reapontar.mjs` (`601bce1`).
+
+  **E A MINHA REGRA ESTAVA MAL FORMULADA.** O certo não é "mesmo commit", é DIREÇÃO: **a lista do
+  reapontador nunca pode ser mais ESTREITA que o `ALVOS` do portão.** Portão com 12 e reapontador
+  com 3 faz citação envelhecer nos outros nove e travar o commit de quem não criou a dívida;
+  reapontador com 12 e portão com 2 só conserta citação que ninguém confere, o que é inócuo. **Daí
+  ampliar o reapontador PRIMEIRO e o portão DEPOIS ser sempre seguro**, e a conferência de
+  cobertura do `--check` ser de um lado só.
+
+  **O `--check` QUASE ENTROU CEGO, e o controle negativo foi quem pegou.** A primeira versão lia só
+  a PRIMEIRA linha da atribuição de `ALVOS`, e a atribuição de lá passou a ocupar nove linhas:
+  ele imprimiu `✓ os 0 documento(s) do portão estão entre os 12 daqui` e saiu **verde sobre nada
+  medido**. É o zero ambíguo do `CATALOGO` dentro da conferência escrita para evitá-lo. O controle
+  positivo não teria pego, porque verde é verde; quem pegou foi tirar um documento de propósito e
+  o vermelho não vir. Hoje são três controles, e o terceiro recusa quando não acha o `ALVOS`, em
+  vez de passar.
+
   **A regra que fica, e ela é de conferência e não de código:** depois do reaponte, **rodar o
   portão** e ler o que ele acusa, em vez de confiar na saída do script. O portão olha todos os
   arquivos citados; o script, um só. Se alguém for ampliá-lo um dia, o caminho é a lista `ALVO`
@@ -4912,12 +4936,47 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   As sem âncora chegaram a **zero**, conferido no portão de verdade (cópia com `ALVOS` ampliado).
   **E o número de ENVELHECIDAS subiu de 43 para 71.** Não é regressão: o portão, ao encontrar
   citação sem âncora, faz `continue` e **nunca chega a conferir se ela envelheceu**
-  (`test-procedencia.mjs:345`, `if (!anc)`). As 57 âncoras destaparam 28 citações que já estavam
+  (`test-procedencia.mjs:360`, `if (!anc)`). As 57 âncoras destaparam 28 citações que já estavam
   podres e que nenhuma medida anterior conseguia ver. **É o `L72` de novo, do outro lado:** o que
   sai do escopo do portão não fica bom, fica invisível.
 
   **A fila real da rodada 46, com os números de hoje:** **36 ponteiros vivos** (eram 21) e **35
   marcas históricas** no `REVISORA.md` (eram 22).
+
+  **FEITO na rodada 46, em 11/09/2026 (`3c5201d`), e a conta revelou uma TERCEIRA categoria que
+  este item não previa.** As 71 se resolveram assim: 35 marcas no `REVISORA.md`, **32 citações
+  renumeradas** e **4 consertadas trocando a ÂNCORA, com o número de linha intacto**. O plano
+  escrito acima só tinha duas caixas (reapontar ou marcar), e a terceira apareceu ao perseguir uma
+  diferença de três unidades entre a contagem da Executora e a minha.
+
+  **As quatro, nomeadas, cada uma já com a âncora CERTA do lado** (a errada vem descrita em prosa
+  de propósito, e o parágrafo seguinte diz por quê):
+
+  · `artes-grid-ui.ts:182` (`null = improviso`), que antes apontava para uma chave do regras.json;
+  · `artes-grid.ts:23` (`interface Efeito`), que antes apontava para o arquivo de dados;
+  · `artes-grid.ts:35` (`interface Parametro`), idem;
+  · `auth.ts:54` (`auth.signUp`), no `Dominio.md`, cuja âncora anterior nomeava a recuperação de
+    senha, que mora na linha 65 e não na 54.
+
+  **E ESCREVER ESTE PARÁGRAFO ACENDEU O PORTÃO, o que é a melhor demonstração possível do
+  problema.** A primeira versão citava a âncora ERRADA entre crases, para mostrar o que tinha sido
+  consertado · e o portão, que casa pela âncora mais próxima em caracteres, leu a âncora errada
+  como sendo a afirmação da citação e acusou as três. **Âncora antiga se descreve em prosa, nunca
+  entre crases na mesma linha da citação**, senão o documento que conta o conserto reintroduz o
+  defeito que ele conta.
+
+  **E A TERCEIRA CATEGORIA É PIOR QUE A PRIMEIRA, o que o portão não sabe dizer.** Citação com
+  endereço velho está no lugar errado e **diz a coisa certa**: o conserto é aritmética, e o
+  reapontador faz sozinho. Citação com âncora errada está no lugar certo e **AFIRMA A COISA
+  ERRADA** · o `Dominio.md` dizia que a linha 54 era sobre recuperação de senha quando ela é sobre
+  cadastro. Reapontar não conserta, porque não há nada de errado com o endereço; só ler o alvo
+  conserta. **O portão acusa as duas do mesmo jeito**, com a mesma frase, o que faz a segunda
+  parecer a primeira e convida quem estiver com pressa a mexer no número em vez de ler o código.
+
+  **Uma unidade continua sem reconciliar** entre a contagem dela (33 ponteiros) e a minha (32
+  renumeradas), possivelmente na classificação de um conserto de âncora. **Registrada como "1 de
+  diferença, causa não investigada"**, que é a formulação certa quando não se testou, e não uma
+  hipótese com cara de medida.
 
   **A CONFERÊNCIA QUE EU USEI PARA LIBERAR O COMMIT, melhor que a que tinha sido oferecida:** a
   Executora ofereceu o `numstat` simétrico, que prova que nenhuma linha nasceu ou morreu. Comparei o
@@ -4931,7 +4990,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **E 18 DAS 57 NÃO PRECISAVAM EXISTIR, por erro MEU de especificação.** Eu mandei escrever âncora
   nas citações do `REVISORA.md` dizendo que era "para poder MARCAR como `(citação histórica)`
   depois". Fui ler o portão **depois** de mandar: a marca é conferida **ANTES** da âncora
-  (`test-procedencia.mjs:337`, `if (MARCA_HISTORICA.test(territorio))`), e uma citação marcada é
+  (`test-procedencia.mjs:352`, `if (MARCA_HISTORICA.test(territorio))`), e uma citação marcada é
   pulada sem que se olhe se ela tem âncora. **A marca sozinha bastava.** As 18 ficam, porque âncora
   em registro histórico ainda diz o que aquela citação afirmava, mas o trabalho foi pedido por
   quem não tinha lido a ordem das checagens do instrumento que estava mandando usar.
