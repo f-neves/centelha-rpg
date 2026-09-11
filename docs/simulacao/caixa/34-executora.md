@@ -6,9 +6,18 @@ O código a revisar, e os TRÊS campos são obrigatórios desde 04/09/2026:
 
 ```
 BASE  87c4f19a1a2213a30443793cafe372ef5251c064
-SHA   1b2f8a1b17e4ef231f8f72ffb78d89ab8b45108e
-TOPO  1b2f8a1b17e4ef231f8f72ffb78d89ab8b45108e
+SHA   4c1f7292842b918aaf482594882d59447e24ca40
+TOPO  7fc49f886b020b908b2640ea176cd2d6e4d23c0b
 ```
+
+**CORREÇÃO DO ARQUITETO, e leia antes de conferir os campos.** O `--enviar` rodou duas
+vezes por engano, no mesmo minuto. Na segunda vez o `HEAD` já era o commit do PRIMEIRO
+aviso (`1b2f8a1`), e o script, que relê o `HEAD` de propósito, reescreveu `SHA` e `TOPO`
+apontando para o próprio aviso. Corrigi os dois à mão: `SHA` é o último commit de
+TRABALHO (`4c1f729`) e `TOPO` é o topo do `main` agora (`7fc49f8`, o sinal de vida do
+progresso, que não é código). A cobertura nunca esteve furada · `git log BASE..SHA`
+trazia tudo nos dois casos; o que estava errado era o campo dizer coisa diferente do que
+nomeia. Os commits a revisar são **`e22b4b3` (Executora)** e **`4c1f729` (Arquiteto)**.
 
 **O TOPO existe porque este repositório tem mais de uma frente empurrando para o
 `main`.** O `duo.mjs` já congela a revisão no commit deste aviso, então ela nunca
