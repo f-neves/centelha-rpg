@@ -4971,13 +4971,25 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   existe em nenhum dos dez documentos**. As duas afirmações não cabem juntas: o que não existe não
   pode explicar diferença. Medido: as 71 se distribuem por **dez** arquivos, e o décimo é o
   `Dominio.md`, **o único dos doze que a rodada 45 não tocou** (ele já tinha as duas âncoras que
-  precisava), contribuindo com exatamente **1**. Uma lista montada a partir dos arquivos TOCADOS na
-  rodada dá 70.
+  precisava), contribuindo com exatamente **1**.
+
+  **A CAUSA CONFIRMADA POR ELA, no próprio script, e a hipótese dela estava errada nas DUAS
+  pontas:** o `Dominio.md` (o arquivo puro, que não é o `Migracao_Dominio.md`) **nunca esteve no
+  `ALVOS` do script dela**; e o script **tem** a lógica da marca histórica desde a rodada 43. Posto
+  o arquivo de volta, o script dela imprime **71**, batendo exato. As duas metades da frase que ela
+  escreveu para explicar a diferença eram falsas, e nenhuma das duas tinha sido conferida.
+
+  **E A MINHA EXPLICAÇÃO TAMBÉM ERA HIPÓTESE NÃO TESTADA, na frase em que eu escrevia a regra.** Eu
+  deduzi que a lista dela saíra "dos arquivos TOCADOS na rodada", o que explicaria a ausência do
+  `Dominio.md`. Não era: o arquivo simplesmente nunca tinha entrado no `ALVOS` dela. Eu medi a
+  CAUSA (o `Dominio.md` vale 1) e inventei a causa da causa, no mesmo parágrafo onde cobrava que
+  hipótese se testa. Quem conferiu foi ela, lendo o próprio script.
 
   **O que fica disso, e não é sobre esta unidade:** hipótese oferecida para explicar discrepância
   tem de ser TESTADA, porque explicação errada fecha a pergunta pior do que explicação nenhuma.
-  Ela disse honestamente que não perseguiu, o que é melhor do que fingir; mas a hipótese entrou no
-  relatório do lado do número, e quem ler depois vai levar a hipótese junto.
+  "Não tive tempo de perseguir" e "hipótese testada" são duas frases diferentes, e a primeira não
+  pode emprestar a cara da segunda · dito assim por ela, e vale para os dois lados, porque eu caí
+  na mesma no parágrafo seguinte.
 
   **A MEDIDA FOI REFEITA COM O PRÓPRIO PORTÃO, e bateu.** A tabela acima saiu de uma cópia minha da
   heurística dele, e a ordem inteira do trabalho depende do número 57, então tomar a cópia pela
