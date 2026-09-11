@@ -4774,10 +4774,46 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **O QUE FALTA, E É O QUE MANTÉM ESTE ITEM ABERTO:** o portão. Ele confere o arquivo inteiro, e
   não só as linhas adicionadas, e a decisão do humano é essa. Quem for construí-lo decide primeiro
   uma coisa que a varredura deixou explícita e que não está decidida: **se ele olha só `.md` ou
-  também comentário de código**. Se olhar código, os 139 dos oito arquivos do `51e5f10` acendem, e
-  a varredura do código vem antes, medida de novo. Um deles apareceu nesta própria rodada, no
-  `rodada.mjs:100` (dentro do comentário do `calcularTopo`), e foi deixado de propósito para não
-  misturar varredura não decidida dentro do commit do portão do `L81`.
+  também código**.
+
+  **E A MEDIDA DO LADO DO CÓDIGO ESTAVA ERRADA NESTE ITEM, por escopo, escrita por mim.** Eu
+  registrei "os 139 dos oito arquivos do `51e5f10`" como se fosse a dívida do código. **Os 139 são
+  a dívida dos oito arquivos que aquele commit por acaso tocou.** Medido no repositório inteiro em
+  11/09/2026, depois da rodada 44: **702 ocorrências em 116 arquivos** de `src/` e `scripts/`. É
+  cinco vezes o número que este item anunciava, e a frase do `CATALOGO` que eu repito para os
+  outros vale igual para mim · dizer o escopo junto do número.
+
+  **E O CÓDIGO NÃO É PROSA, o que é o achado de verdade da medida.** Classificadas as 702:
+
+  | o que é | quantas | pode trocar? |
+  |---|---:|---|
+  | comentário | 478 | sim, é prosa |
+  | texto entre aspas | 150 | **depende** · parte é frase que o mestre lê na tela, parte não |
+  | **o travessão como GLIFO DE VAZIO** (`'—'`) | **50** | **não** |
+  | **classe de caractere de regex** (`[−–—]`) | **5** | **não** |
+  | outro | 19 | ler caso a caso |
+
+  **As 55 das duas linhas em negrito não são pontuação e trocá-las quebraria coisa.** O glifo de
+  vazio é o travessão tipográfico usado como "sem valor" numa célula (`ra?.ataque || '—'`,
+  `dist != null ? fmtM(dist) : '—'`): trocar por ponto-médio mudaria o que a mesa MOSTRA, e
+  ponto-médio não quer dizer vazio para ninguém. A classe de regex existe **precisamente para
+  normalizar travessão** (`.replace(/[−–—]/g, '-')`, em `lance.ts` e `rolagem.ts`, sobre as cadeias
+  de ataque do bestiário): tirar o travessão de lá quebraria a leitura dos monstros.
+
+  **O que isso obriga em qualquer portão de código:** ele tem de saber a diferença, ou vai exigir
+  55 edições erradas no primeiro dia e ser desligado no segundo. Portão que não distingue o
+  travessão-pontuação do travessão-símbolo não é rede, é ruído.
+
+  Um caso apareceu na própria rodada 44, no `rodada.mjs:100` (`function calcularTopo`), no
+  comentário logo acima da função, e foi deixado de propósito para não misturar varredura não
+  decidida dentro do commit do portão do `L81`.
+
+  **E A EXCEÇÃO QUE ESTE PRÓPRIO ITEM PRECISOU USAR, escrita antes que alguém a ache:** os cinco
+  travessões que sobraram no `Pendencias.md` depois da varredura estão TODOS dentro de crases,
+  nomeando o caractere (a tabela acima, os exemplos de glifo e de regex). **Nomear o símbolo não é
+  usá-lo como pontuação**, e não dá para documentar "o travessão usado como célula vazia" sem
+  escrever o travessão. Qualquer portão que venha depois precisa aceitar travessão dentro de trecho
+  entre crases, ou vai acender sobre a única página que explica por que ele existe.
 
   **O ESCOPO DA DECISÃO É OS TRÊS DOCUMENTOS DA FRENTE**, que foi o que ele viu medido:
   `Pendencias.md`, `ESTADO.md`, `VOZ.md`. Os **139** travessões dos oito arquivos do commit
