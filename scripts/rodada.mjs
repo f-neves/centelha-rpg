@@ -108,6 +108,31 @@ if (!fs.existsSync(MODELO)) morrer(`sem modelo em ${path.relative(RAIZ, MODELO)}
 
 // ----------------------------------------------------------------- --enviar
 if (ENVIAR) {
+  // L73 (achado na rodada 34, 10/09/2026): `--enviar` chamado DUAS VEZES
+  // seguidas. Na segunda vez a árvore já está limpa (o aviso da primeira
+  // chamada já foi commitado), então os dois guardas de baixo (modelo por
+  // preencher, sujeira fora do aviso) passam batido. Sem esta checagem, o
+  // `HEAD` relido logo abaixo (de propósito, porque a árvore pode ter andado
+  // entre abrir e enviar) já É o commit do primeiro aviso, e o script
+  // gravaria `SHA`/`TOPO` apontando para ele mesmo: o campo passaria a
+  // nomear o mensageiro, e não o trabalho. A releitura de `HEAD` continua
+  // certa para o caso normal (alguém commitou trabalho de verdade entre
+  // abrir e enviar); o que se distingue aqui é só o caso em que quem andou
+  // foi o PRÓPRIO `--enviar` anterior.
+  //
+  // A mensagem do commit do aviso é fixa (linha do `git commit` mais abaixo),
+  // e é o sinal mais simples de "isto já é um aviso, não é trabalho": um
+  // commit de trabalho nunca nasce com este texto exato.
+  const msgHead = tenta(() => git('git log -1 --format=%s'), '');
+  if (/^rodada \d+ · aviso à revisora$/.test(msgHead)) {
+    const shaHead = git('git rev-parse HEAD');
+    morrer(`o aviso desta rodada já foi enviado: HEAD já é o commit dele (sha ${shaHead}).\n`
+      + '  Não rode --enviar duas vezes seguidas: a segunda chamada gravaria SHA/TOPO'
+      + '\n  apontando para o próprio aviso, em vez do trabalho (L73). Se há trabalho novo'
+      + '\n  para avisar, comece uma rodada nova (`npm run rodada`, sem --enviar) antes de'
+      + '\n  enviar de novo.');
+  }
+
   const nn = avisos().pop();
   if (!nn) morrer('não há aviso nenhum na caixa. Rode `npm run rodada` primeiro.');
   const arq = path.join(CAIXA, `${nn}-executora.md`);
