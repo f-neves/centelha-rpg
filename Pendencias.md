@@ -4083,10 +4083,32 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   EXISTÊNCIA e é lida como se respondesse sobre a UTILIDADE. Parente de "a garantia correta sobre o
   eixo errado" · verdadeira sobre a dimensão que mede, e a dimensão não é a que importa.
 
-  **As duas saídas, sem escolha feita:** (a) um prazo no carregamento, que devolve a mão ao usuário
+  **As duas saídas:** (a) um prazo no carregamento, que devolve a mão ao usuário
   com mensagem e é o conserto mínimo, e não distingue "corrompido" de "rede lenta"; (b) trocar o
   Worker por um que rejeite de verdade, que resolve a classe inteira e é trabalho de outra ordem,
   porque o Worker é vendorizado de terceiro. **A (a) não impede a (b)** e é pequena.
+
+  **A (a) JÁ FOI CONSTRUÍDA, e este item passou um dia dizendo o contrário.** Achado pelo Arquiteto
+  em 11/09/2026, conferindo o caminho por outro motivo: o prazo está em
+  `src/lib/comando-voz.ts:111` · `venceuPrazo`, 20 s por omissão, com `Promise.race` contra o
+  `createVoskClient` e mensagem própria. Entrou na **rodada 34** (`e22b4b3`, 10/09 às 23:17), com
+  comentário no código citando este item pelo nome. Ninguém voltou aqui para dizer isso. **O item
+  ficou "não corrigido" sobre código que existe**, que é a mesma família do que o `CATALOGO`
+  chama de conferência sobre o eixo errado: o texto era verdadeiro quando escrito e virou falso
+  sem que nada o avisasse.
+
+  **O QUE CONTINUA ABERTO, e são duas coisas diferentes:**
+
+  - **A (b) segue sem escolha feita, e é decisão do humano.** Trocar o Worker vendorizado é de outra
+    ordem de tamanho, e a (a) sendo barata pode ser suficiente para sempre. Não decidir também é
+    decidir aqui, e por ora a decisão implícita é ficar só com a (a);
+  - **o prazo NUNCA FOI EXERCITADO POR TESTE.** `prazoMs` é configurável (`comando-voz.ts:25`),
+    então o caminho é barato de provar com um valor pequeno e um `model.tar.gz` corrompido, que é
+    exatamente o arranjo com que a Revisora provou o defeito ao vivo na rodada 33. Enquanto isso
+    não existir, o que se sabe do conserto é que ele foi escrito, não que ele funciona · e a
+    distinção importa mais aqui do que no resto do repositório, porque o modelo de 31 MB passou a
+    ser servido pelo site publicado em 11/09 e a primeira pessoa a atravessar esse caminho numa
+    rede ruim vai ser o humano, na bancada dele.
 
 - [ ] **L72 · [achado pelo Arquiteto em 10/09/2026, ao reapontar a rodada 34] O portão da
   procedência só confere os itens ABERTOS deste arquivo, e as citações dos itens FECHADOS
