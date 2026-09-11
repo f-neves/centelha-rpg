@@ -82,7 +82,7 @@ entra em CORRIGE ou BLOQUEIA como qualquer outro.
 
   **Conferido e respondido: não há payload novo.** O `ResumoCombate` é montado no
   navegador, e o `monsters-mesa.json` já leva os nove atributos das 309 desde antes
-  (`CAMPOS_MESA` tem `atributos`, `gen-monsters.mjs:295`). A forma da ressalva
+  (`CAMPOS_MESA` tem `atributos`, `gen-monsters.mjs:295` (citação histórica)). A forma da ressalva
   segue valendo para o próximo caso; este não é ele.
 
   **E a distinção que fecha isto, e que vale para toda acusação de vazamento
@@ -184,9 +184,9 @@ entra em CORRIGE ou BLOQUEIA como qualquer outro.
 - **CONDIÇÃO VENCIDA NÃO É VARRIDA POR NINGUÉM · dado errado em produção, e por
   isso FORA do congelamento** (05/09/2026). **Conferido por mim, e não aceito do
   briefing:** `porCondicao` escreve `ate = tickAtual + turnos × TICKS_POR_TURNO`
-  (`src/lib/artes-grid-mesa.ts:1335`), e **nada em `src/` lê o `ate` de uma
+  (`src/lib/artes-grid-mesa.ts:1335` (citação histórica)), e **nada em `src/` lê o `ate` de uma
   condição** · a varredura por `.ate` só devolve geometria e faixas da ficha.
-  `somarCondicoes` (`src/lib/mesa-core.ts:164-181`) **não recebe Tick nenhum** e
+  `somarCondicoes` (`src/lib/mesa-core.ts:164-181` (citação histórica)) **não recebe Tick nenhum** e
   soma tudo.
 
   **E aqui eu errei, e o erro é de método, não de leitura** (corrigido pela
@@ -287,7 +287,7 @@ entra em CORRIGE ou BLOQUEIA como qualquer outro.
 
   **E aqui a colisão tem forma concreta, que eu já li no código:** `porCondicao` e
   `tirarCondicao` fazem **leitura-modificação-escrita do vetor `condicoes`
-  inteiro** (`src/lib/artes-grid-mesa.ts:1336-1340` · `update({ condicoes: [...] })` e `:1344-1348`:
+  inteiro** (`src/lib/artes-grid-mesa.ts:1336-1340` (citação histórica) · `update({ condicoes: [...] })` e `:1344-1348`:
   `update({ condicoes: [...] })` a partir da cópia local `c.condicoes`). Dois
   caminhos que limpam a partir de fotografias diferentes **não somam: o último a
   escrever apaga o trabalho do outro**, e o que se perde é a remoção de terceiro
@@ -309,17 +309,17 @@ entra em CORRIGE ou BLOQUEIA como qualquer outro.
   e não sobre commit congelado; é orientação, não revisão). Escrita de **coleção
   inteira a partir de cópia local**, que é a forma exata do risco:
 
-  - `condicoes` · **3** (`artes-grid-mesa.ts:1338`, `:1347`, `:1646`);
+  - `condicoes` · **3** (`artes-grid-mesa.ts:1338` (citação histórica), `:1347`, `:1646`);
   - `mordidos` · **4** (`:1495`, `:1564`, `:1698`, `:1751`), e é mapa, não vetor,
     mas a forma é a mesma: `{ ...(ef.mordidos || {}), ... }` e escreve o todo;
-  - `log` · **2** (`grid.astro:9634`, `combate.astro:1200`).
+  - `log` · **2** (`grid.astro:9634` (citação histórica), `combate.astro:1200` (citação histórica)).
 
   **Nove.** Fora da conta ficam os objetos de configuração remontados de formulário
   (`revelar`, `trilha`, `combate`, `meta`, `perfil`): mesma forma de escrita, risco
   outro, porque quem edita é um mestre sozinho numa caixa de diálogo.
 
   **O pior dos nove não é condição: é o `log`, e por assimetria.** O jogador
-  registra por RPC (`SB.rpc('jogador_registra', …)`, `grid.astro:9629`), que
+  registra por RPC (`SB.rpc('jogador_registra', …)`, `grid.astro:9629` (citação histórica)), que
   ACRESCENTA no banco; o mestre grava `update({ log: LOG })` com o vetor inteiro da
   memória dele. **A linha que o jogador acabou de registrar some se o `LOG` do
   mestre for anterior a ela**, e some sem erro. O que teria de ser verdade para
@@ -356,7 +356,7 @@ entra em CORRIGE ou BLOQUEIA como qualquer outro.
   **E o tamanho do `log` encolheu quando eu fiz a pergunta irmã, antes de a
   executora começar** (05/09/2026). "E se ninguém fizesse, o que apareceria?" me
   levou ao recebedor do aviso: `assuntos.has('registro')` chama
-  `carregarLog(true)` (`grid.astro:7390`), e o `doBanco` **relê `mesa_arenas.log`
+  `carregarLog(true)` (`grid.astro:7390` (citação histórica)), e o `doBanco` **relê `mesa_arenas.log`
   do banco** antes de repovoar o `LOG` do mestre (`:2867-2870`). Então a resposta à
   pergunta do humano é **sim, é relido**, e não é verdade que toda mesa perdeu
   linha: o que existe é **janela de corrida** entre a linha do jogador e a chegada
@@ -377,7 +377,7 @@ entra em CORRIGE ou BLOQUEIA como qualquer outro.
   quase certeza.
 
   **A reclassificação dos outros oito por essa régua, feita em 05/09/2026:** a
-  forma pior não é exclusiva do `log`. Em `artes-grid-mesa.ts:1446` a tela abre
+  forma pior não é exclusiva do `log`. Em `artes-grid-mesa.ts:1446` (citação histórica) a tela abre
   `uiEscolher('Sair da área …')`, **espera a escolha de uma pessoa**, rola os
   dados, escreve no registro, e só então faz
   `ef.mordidos = { ...(ef.mordidos || {}), [alvo.id]: … }` e sobe o mapa inteiro
@@ -425,7 +425,7 @@ entra em CORRIGE ou BLOQUEIA como qualquer outro.
   ele reconstrói o que o MOTOR escreveu sobre efeitos, e Arte conjurada por
   jogador é ação dele. **A consequência que eu confiro no diff, e ela é maior que
   ajustar a asserção:** hoje o filtro é `LOG.filter((e: any) => !e.ef)`, e o `ef`
-  vem de `grid.astro:2670`, onde o `ctxArtes().logar` carimba `ef: true` em **toda**
+  vem de `grid.astro:2670` (citação histórica), onde o `ctxArtes().logar` carimba `ef: true` em **toda**
   linha de Arte, sem olhar quem dirige. Então **`ef: true` quer dizer "linha de
   Arte", e não "linha do motor"**, e o filtro atual não tem como separar as duas.
   Pior: a linha gravada não carrega autor nenhum. Conferi o `jogador_registra`
@@ -448,7 +448,7 @@ entra em CORRIGE ou BLOQUEIA como qualquer outro.
   distingue as duas sem um registro do que foi apagado.** É o zero ambíguo uma
   camada acima: a ausência esconde duas histórias. O sintoma inverte de novo: não é
   linha que some, é linha que volta. **Some a poda de 300, que roda nos dois lados
-  com vistas diferentes** (`grid.astro:9613` · `LOG.splice` e a mesma poda dentro do RPC,
+  com vistas diferentes** (`grid.astro:9613` · `LOG.splice` (citação histórica) e a mesma poda dentro do RPC,
   `migracao-22.sql:263-269`): uma linha pode estar legitimamente fora do banco por
   poda e presente na memória do mestre.
 
@@ -557,7 +557,7 @@ entra em CORRIGE ou BLOQUEIA como qualquer outro.
   interroga um TETO acidental e pergunta quem se apoia nele. Teto que ninguém
   pensou como regra costuma sustentar mais coisa do que quem o pôs imaginava.
 
-  **RESPOSTA PARCIAL QUE EU JÁ TENHO, conferida em `main` hoje** (`grid.astro:2862-2892`):
+  **RESPOSTA PARCIAL QUE EU JÁ TENHO, conferida em `main` hoje** (`grid.astro:2862-2892` (citação histórica)):
   **o teto não é um, são dois, e o segundo também PROJETA.** O jogador não lê a
   coluna: lê a view `arena_log_visao` com `select('id, ts, txt, ord')`, `order ord
   desc`, `limit(60)`, e depois `.reverse()`. Ou seja, na aba do jogador a linha
@@ -641,10 +641,10 @@ entra em CORRIGE ou BLOQUEIA como qualquer outro.
   para a leva de hoje · TRÊS COISAS CONFERIDAS EM `main` ANTES DE ELA RODAR.**
 
   **1 · `||` não apaga chave, e um dos quatro pontos APAGA.** O
-  `marcarMordido(ctx, ef, A_SAIR, null)` (`artes-grid-mesa.ts:1739`) cai no
+  `marcarMordido(ctx, ef, A_SAIR, null)` (`artes-grid-mesa.ts:1739` (citação histórica)) cai no
   `if (valor == null) delete base[chave]` (`:1636`). Com `mordidos || p_dados->'mordidos'`
   no servidor, chave ausente da carga **sobrevive**: tirar a marca vira operação
-  silenciosamente sem efeito, o `deveSair` (`artes-grid.ts:1456`) fica verdadeiro
+  silenciosamente sem efeito, o `deveSair` (`artes-grid.ts:1456` (citação histórica)) fica verdadeiro
   para sempre e o efeito não para de tentar sair. **É a terceira aparição da mesma
   família**: o conserto que não sabe exprimir remoção · lá era a mescla por id
   ressuscitando linha, aqui é o `||` ressuscitando marca. E é o mesmo zero
@@ -693,7 +693,7 @@ entra em CORRIGE ou BLOQUEIA como qualquer outro.
 
   **AS DUAS ASSINATURAS DO `__a_sair`, que são espelho uma da outra.** Conferido
   em `main`: `A_SAIR` quer dizer "esta Arte ainda vai sair", posta na criação
-  quando o Tick é futuro (`artes-grid-mesa.ts:1296` · `[A_SAIR]: 1`), e o laço da saída é
+  quando o Tick é futuro (`artes-grid-mesa.ts:1296` · `[A_SAIR]: 1` (citação histórica)), e o laço da saída é
   `if (!deveSair(ef) || montando(ef, t)) continue` (`:1738`).
   · **Marca PERDIDA** (o defeito antigo, sobrescrita por objeto inteiro):
     `deveSair` falso, o laço **pula o efeito para sempre** e o `saidaDaArte`
@@ -937,8 +937,8 @@ entra em CORRIGE ou BLOQUEIA como qualquer outro.
 
   **ERRO MEU, 05/09/2026: "a 35 entra inerte" estava errado, e ele agiu por ela.**
   Eu li o `marcarMordido` gravar `ctx.SB.from('arena_efeitos').update(...)`
-  (`artes-grid-mesa.ts:1639` · `function marcarMordido`) e concluí que a RPC não estava nesse caminho. **Só
-  vale para o mestre.** O `sbDoJogador` (`grid.astro:2619-2657`) devolve um objeto
+  (`artes-grid-mesa.ts:1639` · `function marcarMordido` (citação histórica)) e concluí que a RPC não estava nesse caminho. **Só
+  vale para o mestre.** O `sbDoJogador` (`grid.astro:2619-2657` (citação histórica)) devolve um objeto
   **com a mesma cara** do Supabase que desvia as escritas: `from('arena_efeitos')
   .update(campos)` vira `SB.rpc('jogador_muda_efeito', { p_id, p_dados: campos })`
   (`:2649`). O cliente do jogador passa pela RPC **desde sempre**. A saída dupla
@@ -958,7 +958,7 @@ entra em CORRIGE ou BLOQUEIA como qualquer outro.
 
   **RECLASSIFICAÇÃO QUE SAI DAÍ, e vale para os sete pendentes:** eu tinha aceito
   o critério "um mestre sozinho numa caixa não é dois caminhos concorrentes". Os
-  três pontos de `condicoes` (`artes-grid-mesa.ts:1338`, `:1347`, `:1706`) também
+  três pontos de `condicoes` (`artes-grid-mesa.ts:1338` (citação histórica), `:1347`, `:1706`) também
   usam `ctx.SB`, logo **para o jogador viram `jogador_muda_peca` com o vetor
   inteiro**. Não são do mestre sozinho. **E dois deles (`:1347`, `:1706`) são
   REMOÇÕES escritas como vetor inteiro** · se alguém "consertar" o
@@ -1176,7 +1176,7 @@ o commit são **seus**, e você decide. A Alabarda passando a bater de corte **n
 
    - **custo em gestos declarado sem dizer em qual papel foi contado é item**, e
      não observação. O Grid decide o que existe por `MESTRE = ctx.ehMestre`
-     (`grid.astro:2700` · `MESTRE = ctx.ehMestre`), então "3 gestos" sem papel é meia medição, do mesmo jeito
+     (`grid.astro:2700` · `MESTRE = ctx.ehMestre` (citação histórica)), então "3 gestos" sem papel é meia medição, do mesmo jeito
      que alcançabilidade medida num papel só. Vale para custo lido do código e para
      custo medido na tela, e a diferença entre os dois também é item: **gesto
      declarado e gesto executado são duas coisas**.
@@ -1199,7 +1199,7 @@ o commit são **seus**, e você decide. A Alabarda passando a bater de corte **n
    - `.github/workflows/validate.yml:54` · declarava TOLERÂNCIA com uma desculpa
      que era afirmação de fato ("há erros antigos fora dos módulos do tabuleiro"),
      e o fato tinha expirado: `npx tsc --noEmit` responde "No errors found";
-   - `grid.astro:8364` · `penDados[0]` · DESCREVE COMPORTAMENTO ("o campo fica com o primeiro
+   - `grid.astro:8364` · `penDados[0]` (citação histórica) · DESCREVE COMPORTAMENTO ("o campo fica com o primeiro
      golpe"), e a descrição envelheceu com o golpe adiado, fazendo `penDados[0]`
      parecer proposital enquanto os golpes 2 e 3 da rajada saíam de graça.
 
@@ -1308,7 +1308,7 @@ o commit são **seus**, e você decide. A Alabarda passando a bater de corte **n
    **Bancada prova coisa sobre a bancada.** Aconteceu duas vezes, com os papéis
    trocados: a rodada 04 acima, e depois o `ESTADO.md` afirmando que "o Grid já
    guarda os dois vereditos" quando `registrarLance` só grava com `?lances=1`
-   ligado (`grid.astro:5103` · `function registrarLance` e `:2455`), em memória de página, para a bancada do
+   ligado (`grid.astro:5103` · `function registrarLance` (citação histórica) e `:2455`), em memória de página, para a bancada do
    oráculo. Duas vezes uma afirmação que decidia um item da fila se apoiou em
    instrumento de bancada tratado como evidência sobre o produto. Antes de citar
    um instrumento como prova, confira **o que ele liga a quê e onde ele roda**.
@@ -1502,9 +1502,9 @@ o commit são **seus**, e você decide. A Alabarda passando a bater de corte **n
 
    **E dois dos três nomeados não são trabalho de tela**, pelo próprio L34: a
    Investida não tem motor (`ModoMov` é `'andar' | 'batalha' | 'corrida'`,
-   `src/lib/combate-tempo.ts:763`, e a linha "−6 investindo" do `regras.json:2287`
+   `src/lib/combate-tempo.ts:763` (citação histórica), e a linha "−6 investindo" do `regras.json:2287`
    nunca é alcançada), e o Interpor não tem regra, só a saída do abortar mudando o
-   verbo do log (`src/lib/mesa-tempo-ui.ts:325` · `saida: string`), o que é decisão de mesa e
+   verbo do log (`src/lib/mesa-tempo-ui.ts:325` · `saida: string` (citação histórica)), o que é decisão de mesa e
    portanto ESCALA. Vale registrar junto com a contagem: parte da fase não anda
    pela executora sozinha, e o plano já dizia isso antes do congelamento.
 
@@ -1564,7 +1564,7 @@ silêncio**, porque foi escrito como **lista de campos** e ninguém atualiza lis
 quando cria chave nova.
 
 O caso, inteiro: `pericias` não estava em `CAMPOS_MESA`
-(`scripts/gen-monsters.mjs:293` · `CAMPOS_MESA`), que é o recorte magro que vai para o navegador
+(`scripts/gen-monsters.mjs:293` · `CAMPOS_MESA` (citação histórica)), que é o recorte magro que vai para o navegador
 (`:307`, `for (const k of CAMPOS_MESA) if (m[k] !== undefined)`). Tabela, fórmula e
 bestiário cheio estavam todos certos, e a **Percepção Passiva de TODA criatura da
 mesa saía `null`**, porque o bloco `sentidos` do `ResumoCombate` lê
@@ -1592,7 +1592,7 @@ ela chegar, **o par de asserção é o que separa varredura de inventário**: um
 conferida à mão hoje volta a ficar velha na próxima chave nova. O caso é o Interpor da fase 1, onde a auditoria dizia "sem tela" e a
 tela estava lá: o item aparece no menu de 7 das 12 peças, a dois passos, e a
 escolha entra na frase do registro e em nada mais (`abortarGesto`,
-`grid.astro:5667`, usa só `novoTick` e `frase`, e não existe campo para dizer por
+`grid.astro:5667` (citação histórica), usa só `novoTick` e `frase`, e não existe campo para dizer por
 quem se interpõe, nem mecanismo que redirecione golpe). A frente vinha achando
 sempre a mesma metade porque só perguntava de um lado.
 
@@ -1625,7 +1625,7 @@ alinhar ao sha do aviso, e **pedir a base na PERGUNTA se vier um sha só**.
 2. **O custo em gestos foi lido do código** (aplicar 3, tirar 3, ver 0). Medir no
    Edge, que agora dá: **gesto declarado e gesto executado são duas coisas**.
    Contar do tabuleiro até o campo, e nos dois papéis, porque o Grid decide o que
-   existe por `MESTRE` (`grid.astro:2700`).
+   existe por `MESTRE` (`grid.astro:2700` (citação histórica)).
 
    **E o que uma diferença por papel devolve ao ESTADO.** A tabela do
    `scripts/sim/custo-tela.mjs` **não tem eixo de papel**: `gestosDe(tipo,
@@ -1654,7 +1654,7 @@ par nos dois sentidos, porque asserção que passa com o mecanismo desligado é 
 ambíguo com outra roupa.
 
 **E a resposta é por papel, não uma só.** O Grid decide o que existe a partir de
-`MESTRE = ctx.ehMestre` (`grid.astro:2700`), então alcançável para o mestre e
+`MESTRE = ctx.ehMestre` (`grid.astro:2700` (citação histórica)), então alcançável para o mestre e
 alcançável para o jogador são duas medições, e a vista do jogador é justamente o
 que a fase promete. Alcançabilidade medida num papel só é meia medição.
 
@@ -1954,8 +1954,8 @@ diferentes (superfície da ponte sem consumidor × função da mesa ausente do h
 a quase coincidência é consequência de a ponte ter sido montada olhando a mesa.
 
 **2 · `temGesto` · cópia com o mesmo corpo, e o comentário é o achado.**
-`src/lib/combate-tempo.ts:181` (`export const temGesto`) e `scripts/sim/motor.mjs:40` (`temGesto`) têm o **mesmo corpo**,
-byte a byte fora da anotação de tipo. `motor.mjs:39` (`temGesto`) diz *"com o mesmo nome, para o
+`src/lib/combate-tempo.ts:181` (`temGesto` (citação histórica)) e `scripts/sim/motor.mjs:40` (`temGesto` (citação histórica)) têm o **mesmo corpo**,
+byte a byte fora da anotação de tipo. `motor.mjs:39` (`temGesto` (citação histórica)) diz *"com o mesmo nome, para o
 laço ler igual à mesa"*: **item 6 na variante quieta**, presente do indicativo sobre
 comportamento, sem nenhuma palavra de garantia, portanto fora de toda varredura por
 gatilho. **O comentário É a asserção que ninguém escreveu.**
@@ -1971,7 +1971,7 @@ vermelho está medindo outra coisa. Conferir que a união pegou **os dois sítio
 (`motor.mjs:354` · `function resolverContra` e `:357`) e que a cópia local saiu.
 
 **3 · Importes mortos · quatro, e um que não é.**
-`penDadosDaRegua` (`grid.astro:2433`), `contrapeAcaba` (`:2436`), `golpeDevido`
+`penDadosDaRegua` (`grid.astro:2433` (citação histórica)), `contrapeAcaba` (`:2436`), `golpeDevido`
 (`:2437`) e `previsaoDeEncontro` (`:2441`) aparecem **só na linha de importe**, nunca
 chamados. Os quatro têm teste próprio (`test-combate-tempo.mjs`,
 `test-simultaneo.mjs`, `test-lance.mjs`), que é a forma *"teste que exercita a função
@@ -1984,7 +1984,7 @@ mesa e ausente do harness, ou seja, é da família das 21.
 **exatamente** o de fuga vazia · **asserção de identidade, e não de total**.
 
 **5 · `paradasSubLado` · desenho certo, risco com endereço.**
-`agregar.mjs:400-402` reparte por lado; `:410` calcula `temLado` com **`.some(...)`**;
+`agregar.mjs:400-402` (citação histórica) reparte por lado; `:410` calcula `temLado` com **`.some(...)`**;
 `:417` é trava que cobra a soma por lado em **todo** tipo, com `exit 1` e a razão
 escrita; `:534` é a bandeira de bateria anterior ao campo. **O desenho está certo, e
 isso vale dito.**
@@ -1996,7 +1996,7 @@ errado que manda consertar o arquivo errado.** As duas operações do lote de 06
 (**regravar** e **carimbar corpora legados**) são justamente as que criam corpus misto.
 
 **6 · Escada e papel · não há coluna para gesto de mestre.**
-`scripts/sim/custo-tela.mjs:88`, `gestosDe(tipo, rolagem)`, tem `mesa` e `site`
+`scripts/sim/custo-tela.mjs:88` (citação histórica), `gestosDe(tipo, rolagem)`, tem `mesa` e `site`
 (`:93`), que são **modos de rolagem** e não mestre e jogador. A distinção de papel só
 existe em prosa (`:34` e o ⚑ de `:79`). **Um gesto do MESTRE não tem coluna onde
 entrar**, e é por isso que a Corrida (o mestre digita, não existe `marcarCorrida`) é
@@ -2021,7 +2021,7 @@ harness deixou de jogar, é importe morto na mesa também, junto com `contrapeAc
 
 **Continuam abertas, das rodadas anteriores:** o `bench=12` semeando peça com golpe
 em andamento precisa de registro fora do comentário; e o `/golpe caindo/i` de
-`test-grid-simultaneo.mjs:190` (`/golpe caindo/i`) está na fila, não é exceção.
+`test-grid-simultaneo.mjs:190` (`/golpe caindo/i` (citação histórica)) está na fila, não é exceção.
 
 ## A frente de simulação encerrou (06-07/09/2026), e o que muda para você
 

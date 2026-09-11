@@ -252,8 +252,9 @@ for (const nome of fs.readdirSync(DOCS)) {
 // comentário acrescentado logo acima empurra a linha citada sem tornar a citação
 // falsa, e cobrar precisão de uma linha faria o portão acender por reformatação.
 //
-// O ESCOPO É O `ESTADO.md` E O `Pendencias.md` INTEIROS, ITEM FECHADO INCLUÍDO
-// (L72, ligado em 11/09/2026). Item fechado ficou de fora até aqui pela ideia de
+// O ESCOPO ERA SÓ O `ESTADO.md` E O `Pendencias.md` INTEIROS, ITEM FECHADO
+// INCLUÍDO (L72, ligado em 11/09/2026; ampliado para doze documentos no L80,
+// rodada 46, ver `ALVOS` abaixo). Item fechado ficou de fora até aqui pela ideia de
 // que "leitura de um dia não envelhece, ela data" — mas a CITAÇÃO não é a
 // leitura, é o ENDEREÇO dela, e endereço apodrece igual dentro ou fora de um
 // item fechado. A medida no dia em que isto foi ligado achou 77 citações de
@@ -309,7 +310,21 @@ for (const nome of fs.readdirSync(DOCS)) {
   // marca vale para quem quer que seja dono desse pedaço.
   const MARCA_HISTORICA = /\(citaç[aã]o histórica\)/;
 
-  const ALVOS = [path.join(DOCS, 'ESTADO.md'), path.join(RAIZ, 'Pendencias.md')];
+  // AMPLIADO PARA DEZ DOCUMENTOS (L80, rodada 46): o portão cobria só ESTADO.md e
+  // Pendencias.md, e uma citação de código sem âncora em qualquer outro documento
+  // de docs/simulacao/ (ou nos arquivos de decisão da raiz) ficava invisível para
+  // sempre: nenhuma rodada media, então nenhuma envelhecia aos olhos de ninguém.
+  // A varredura que achou os 57 sem âncora e as 69 envelhecidas (rodadas 45/46)
+  // usou esta mesma lista antes de entrar aqui.
+  const ALVOS = [
+    path.join(DOCS, 'ESTADO.md'), path.join(RAIZ, 'Pendencias.md'),
+    path.join(DOCS, 'REVISORA.md'),
+    path.join(RAIZ, 'Migracao_Dominio.md'), path.join(RAIZ, 'Dominio.md'),
+    path.join(DOCS, 'CONJURACAO.md'), path.join(RAIZ, 'Grid_Mobile.md'),
+    path.join(DOCS, 'CATALOGO.md'), path.join(DOCS, 'VOZ.md'),
+    path.join(DOCS, 'CONTEXTO.md'), path.join(RAIZ, 'Auditoria_Tecnica.md'),
+    path.join(RAIZ, 'Regua_Relacao.md'),
+  ];
   const velhas = [];
   const semAncora = [];
   let conferidas = 0;
@@ -363,7 +378,7 @@ for (const nome of fs.readdirSync(DOCS)) {
     console.log('    Mover linha é a coisa mais comum que existe: reaponte, procurando a âncora no arquivo.');
     process.exit(1);
   }
-  console.log(`  ✓ ${conferidas} citação(ões) de código conferidas pela âncora (ESTADO.md e Pendencias.md, aberto e fechado)`
+  console.log(`  ✓ ${conferidas} citação(ões) de código conferidas pela âncora (${ALVOS.length} documentos, aberto e fechado)`
     + (historicas ? `, ${historicas} marcada(s) \`(citação histórica)\` e puladas` : ''));
 }
 

@@ -653,7 +653,7 @@ campos do caminho quente; e os números livres em todo o resto. O campo guarda a
 
 **7 · O texto livre ganha DITADO SEM GRAMÁTICA, e só nele.** São três campos: o "o quê" da ação
 (`src/pages/mesa/grid.astro:546` · `id="ou-oque"`), o motivo do ajuste avulso, e o filtro de efeitos
-da magia (`src/lib/artes-grid-ui.ts:678` · `id="ag-busca"`). Nesses, o reconhecedor roda solto e
+da magia (`src/lib/artes-grid-ui.ts:792` · `id="ag-busca"`). Nesses, o reconhecedor roda solto e
 transcreve o que vier. **A taxa de erro é bem pior, e o erro cai onde ninguém calcula**: estraga o
 registro, não a conta. Fora desses três campos, ditado livre não existe.
 
@@ -668,7 +668,7 @@ funções do tabuleiro, que hoje disparam a promessa de clique incondicionalment
 por parâmetro (`src/lib/artes-grid-mesa.ts:702` · `escolherAlvoNoMapa`).
 
 **10 · Parâmetro de magia entra por VALOR DIRETO NO PLANO.** Hoje Alcance, Dano, Duração, Área e
-Alvos só existem como botão mais e menos (`src/lib/artes-grid-ui.ts:577` · `data-par`), então não há
+Alvos só existem como botão mais e menos (`src/lib/artes-grid-ui.ts:689` · `data-par`), então não há
 onde "dano cinco" cair. **Esta é a única mudança estrutural que a régua exige**: abrir na caixa de
 conjurar um caminho que escreva o valor e repinte, em vez de simular cliques. Fala absoluta, e não
 relativa.

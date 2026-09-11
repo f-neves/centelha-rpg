@@ -585,7 +585,7 @@ que as pessoas acham que muda mas é do hospedeiro e não do domínio.
 Este é o item mais concreto de todo o documento, e não tem a ver com velocidade.
 
 O `/entrar` manda e-mail em dois momentos: confirmação de cadastro (`signUp`, em
-`src/lib/auth.ts:54`) e recuperação de senha (`resetPasswordForEmail`, linha 65). Os dois
+`src/lib/auth.ts:54` (`auth.signUp`)) e recuperação de senha (`resetPasswordForEmail`, linha 65). Os dois
 saem hoje pelo **SMTP embutido do Supabase**, que é limitado a **2 e-mails por hora**, e
 esse limite **é igual em todos os planos, inclusive no pago**. O próprio `traduzErro`, na
 linha 93, já tem uma tradução para "rate limit", o que sugere que isso já apareceu.
