@@ -4199,9 +4199,40 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
     ser servido pelo site publicado em 11/09 e a primeira pessoa a atravessar esse caminho numa
     rede ruim vai ser o humano, na bancada dele.
 
-- [ ] **L72 · [achado pelo Arquiteto em 10/09/2026, ao reapontar a rodada 34] O portão da
-  procedência só confere os itens ABERTOS deste arquivo, e as citações dos itens FECHADOS
-  apodreceram sem ninguém ver.**
+- [x] **L72 · [achado pelo Arquiteto em 10/09/2026 ao reapontar a rodada 34, CONSTRUÍDO na rodada
+  41 em 11/09/2026] O portão da procedência só conferia os itens ABERTOS deste arquivo, e as
+  citações dos itens FECHADOS apodreciam sem ninguém ver.**
+
+  **FECHADO EM 11/09/2026, e a medida veio antes do conserto:** havia **77 citações de código em
+  itens fechados**, o ponto cego inteiro, e **23 com problema** (15 com a âncora fora da janela, 8
+  sem âncora nenhuma), uns 30%. As 23 foram consertadas à mão, uma a uma, e o filtro que separava
+  item aberto de fechado saiu do `scripts/test-procedencia.mjs`.
+
+  **A lista de exceções foi RECUSADA, e o motivo vale além deste item:** uma tolerância cujas
+  entradas todas dissessem "ainda não consertei" não é tolerância, é o portão sendo mandado não
+  olhar. A convenção daqui exige prazo ou condição ao lado de cada uma (`TOLERÂNCIA` + `EXPIRA EM:`
+  / `LEVANTA QUANDO:`), e nenhuma das 23 teria o que escrever ali.
+
+  **O que a medida revelou e ninguém sabia:** o script de reaponte já mexia em TODAS as citações do
+  arquivo, abertas ou fechadas · quem não olhava era só o portão. Então o apodrecimento nunca veio
+  do gesto normal de uma rodada, veio de edição à mão e de coisa anterior ao script, e ligar a
+  conferência não criou pedágio novo nas próximas rodadas.
+
+  **O INCENTIVO ESTAVA INVERTIDO, e é o melhor exemplo que este item podia ter:** duas das 15
+  quebradas nasceram no mesmo dia em que o item delas fechou (a rodada 40). **Fechar item mandava
+  as citações dele para fora da vigilância**, então o registro ficava mais frágil justamente quando
+  o trabalho ficava pronto.
+
+  **UMA CONVENÇÃO NOVA saiu daqui, para o único caso legítimo:** `(citação histórica)`, que faz o
+  portão pular aquela citação. Ela existe porque o `L61` guarda **de propósito** uma citação errada
+  (o registro de que o aviso 27 citou errado), e corrigi-la apagaria o achado. A marca mora no
+  texto, visível a quem lê, nunca numa lista à parte, e vale por CITAÇÃO e não por linha · provado
+  com duas citações na mesma linha, a marcada muda e a viva acendendo.
+
+  **Os controles que sustentam o "está ligado":** positivo (quebrar citação em item FECHADO e ver
+  vermelho), negativo (citação em item ABERTO continua acendendo, provando que o filtro novo SOMOU
+  em vez de substituir) e o da marca. A Revisora repetiu os três com casos diferentes dos da
+  Executora, e refez a medida dos 77/15/8 com script próprio, batendo linha a linha.
 
   **O mecanismo:** `scripts/test-procedencia.mjs` confere "ESTADO.md e os itens abertos do
   `Pendencias.md`" · é o que ele imprime, e é o que ele faz. Item fechado não entra na conta. Como o
