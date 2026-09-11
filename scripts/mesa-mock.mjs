@@ -99,6 +99,10 @@ const BANDEIRAS = P.get('cena') === 'bandeiras';
 // decidido em 10/09/2026). Ver o bloco `if (CORPOACORPO)` mais abaixo.
 const CORPOACORPO = P.get('cena') === 'corpoacorpo';
 
+// A CENA DO FORA DA VEZ: `?cena=foradavez` (Pendencias.md L68, decidido em
+// 10/09/2026). Ver o bloco `if (FORADAVEZ)` mais abaixo.
+const FORADAVEZ = P.get('cena') === 'foradavez';
+
 // A CENA DO INTERPOR: `?cena=interpor[&fase=preparo|recuperacao]` (L34 §6,
 // rodada 15/16/17).
 //
@@ -113,9 +117,9 @@ const INTERPOR = P.get('cena') === 'interpor';
 const INTERPOR_FASE = P.get('fase') === 'recuperacao' ? 'recuperacao' : 'preparo';
 
 const COLS = ESPELHO ? ESPELHO.tab.cols : CAIDO ? 14 : BANDEIRAS ? 10 : CORPOACORPO ? 20
-  : INTERPOR ? 10 : parseInt(P.get('cols') || '24', 10);
+  : FORADAVEZ ? 16 : INTERPOR ? 10 : parseInt(P.get('cols') || '24', 10);
 const ROWS = ESPELHO ? ESPELHO.tab.rows : CAIDO ? 8 : BANDEIRAS ? 8 : CORPOACORPO ? 18
-  : INTERPOR ? 8 : parseInt(P.get('rows') || '16', 10);
+  : FORADAVEZ ? 12 : INTERPOR ? 8 : parseInt(P.get('rows') || '16', 10);
 const NEVOA = P.get('nevoa') === '1';
 /**
  * `?sombra=1`: DUAS zonas que não acendem o chão, para a névoa poder escondê-las.
@@ -671,6 +675,20 @@ if (CORPOACORPO) {
         mov: { alvo: null, destino: { q: 9, r: 4 }, modo: 'batalha', porTick: 12, auto: true },
       },
     },
+    // `pv`: golpe JÁ AGENDADO contra `en` (como a cena `bandeiras` faz), para o
+    // teste abrir a folha direto por `window.__ESPELHO.abrir('pv', 2)` e ler o
+    // NONO e o DÉCIMO lugar do L67 (`valoresDoLance`/`avisoAlcance`, rodada 40):
+    // a distância 4 (hexágonos) até `en` é maior que o alcance de sempre (1) mas
+    // menor que o alcance com o raio do Aboleth somado (1 + 2 = 3 não cobre 4
+    // de qualquer forma; o que este par prova é que os DOIS lugares mostram o
+    // MESMO número "3", e não o "1" de antes, tenha ou não aviso).
+    {
+      id: 'pv', tipo: 'pc', monstro_id: null, q: 4, r: 0,
+      acao: {
+        golpes: [2], livre: 7, desde: 0, tipo: 'simples', arma: numeros.arma,
+        alvo: 'en', aResolver: [2],
+      },
+    },
   ];
   let k = 0;
   for (const p of por) {
@@ -683,6 +701,83 @@ if (CORPOACORPO) {
       tick: 0, iniciativa: 20 - k,
       acao: p.acao,
       dados: p.tipo === 'pc' ? { ...numeros } : {},
+      condicoes: [], ativo: true, oculto: false, imagem: null, retrato: null,
+    });
+    TOKENS.push({
+      arena_id: ARENA, combatente_id: p.id, q: p.q, r: p.r,
+      movido_em: new Date(1700000000000 + (k++) * 1000).toISOString(),
+    });
+  }
+}
+
+/**
+ * A CENA DO FORA DA VEZ `?cena=foradavez` (Pendencias.md L68, decidido em
+ * 10/09/2026): arrastar uma peça que não está na vez dela pergunta CORRIGIR
+ * POSIÇÃO ou AGIR FORA DO TURNO, e a segunda resposta se comporta diferente
+ * em cada fase (`foraDeHora`, `combate-tempo.ts`). `encontros.tick_atual` é
+ * fixado em 10, e cinco peças, cada uma provando uma resposta:
+ *
+ *   `ok` · `tick:9` (≤ 10, ESTÁ na vez), `acao:{}` (livre). Regressão: o
+ *     arrasto dela continua silencioso, como sempre foi.
+ *   `lv` · `tick:12` (fora da vez), `acao:{}` (livre). AGIR FORA DO TURNO
+ *     aparece e não cobra nada (`foraDeHora` já diz isso com todas as letras).
+ *   `pp` · `tick:35`, golpe agendado no Tick 30 (`preparo`, T=10 < 30).
+ *     AGIR FORA DO TURNO não é oferecido: o motor manda abortar.
+ *   `gp` · `tick:15`, golpe agendado EXATAMENTE no Tick 10 (`golpe`).
+ *     AGIR FORA DO TURNO não é oferecido: "não se interrompe".
+ *   `rc` · `tick:15`, golpe caído no Tick 5, livre só no 15 (`recuperação`,
+ *     T=10 entre os dois). AGIR FORA DO TURNO roteia para `agirForaDeHora`
+ *     de verdade, com a dívida.
+ *
+ * NENHUMA delas tem `aResolver` (só `golpes`, para `faseEm`): é
+ * `golpesNoAr`/`aResolver` que decide "há golpe caindo agora" para
+ * `grupoDaVez` (`golpeMaisCedo`, `grid.astro`), e com ele setado em
+ * qualquer peça TODO MUNDO deixaria de estar na vez, inclusive `ok` — a cena
+ * provaria menos do que promete.
+ */
+if (FORADAVEZ) {
+  const r = resumoCombatePC(KAEL);
+  const numeros = {
+    arma: r.arma, ataque: r.ataque, dano: r.dano,
+    defesa: r.defesa, soak: r.soak, resistPerf: r.resistPerf, perfArma: r.perfArma,
+    velocidade: 5, classe: 'leve', passo: r.passo, qa: r.qa,
+  };
+  COMBS.length = 0; TOKENS.length = 0;
+  const por = [
+    // `ok` PRECISA estar fora de `livre`: uma peça livre no simultâneo, mesmo
+    // na vez, ainda abre o `mov-dlg` de sempre (pergunta modo/velocidade,
+    // rodada de 06/09/2026, nada a ver com o L68). Recuperação (golpe caído
+    // no 5, livre só no 20) é a fase em que `moverSimultaneo` já cai direto
+    // em `porNoMapa` sem perguntar nada, e é ESSE silêncio que a regressão
+    // prova continuar de pé para quem está na vez.
+    {
+      id: 'ok', q: 2, r: 5, tick: 9,
+      acao: { golpes: [5], livre: 20, desde: 0, tipo: 'simples', arma: numeros.arma },
+    },
+    { id: 'lv', q: 6, r: 5, tick: 12, acao: {} },
+    {
+      id: 'pp', q: 10, r: 5, tick: 35,
+      acao: { golpes: [30], livre: 35, desde: 0, tipo: 'simples', arma: numeros.arma },
+    },
+    {
+      id: 'gp', q: 2, r: 9, tick: 15,
+      acao: { golpes: [10], livre: 15, desde: 0, tipo: 'simples', arma: numeros.arma },
+    },
+    {
+      id: 'rc', q: 6, r: 9, tick: 15,
+      acao: { golpes: [5], livre: 15, desde: 0, tipo: 'simples', arma: numeros.arma },
+    },
+  ];
+  let k = 0;
+  for (const p of por) {
+    COMBS.push({
+      id: p.id, encontro_id: ENC, nome: `Peça ${p.id}`,
+      tipo: 'pc', grupo: 'aliado', monstro_id: null, personagem_id: null,
+      pv_max: 999, pv_atual: 999,
+      mana_max: null, mana_atual: null,
+      tick: p.tick, iniciativa: 20 - k,
+      acao: p.acao,
+      dados: { ...numeros },
       condicoes: [], ativo: true, oculto: false, imagem: null, retrato: null,
     });
     TOKENS.push({
@@ -970,7 +1065,7 @@ const TABELAS = {
   mesa_arenas: ARENAS,
   arena_visao: ARENAS,
   // A CENA DO CAÍDO começa no Tick 1: o teste avança um e o golpe vence no 2.
-  encontros: [{ id: ENC, mesa_id: MESA, ativo: true, tick_atual: CAIDO ? 1 : TICK_CENA,
+  encontros: [{ id: ENC, mesa_id: MESA, ativo: true, tick_atual: CAIDO ? 1 : FORADAVEZ ? 10 : TICK_CENA,
     rodada: 1, estado: null, ordem: 0, criado_em: '2026-01-01T00:00:00Z', nome: 'Cena' }],
   // `encontro_visao` é COMPUTADA, e por projeção de coluna. Ver `COLUNAS` abaixo.
   encontro_visao: [],

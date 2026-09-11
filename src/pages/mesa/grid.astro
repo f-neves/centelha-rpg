@@ -418,6 +418,26 @@ const SETAS = [
     </form>
   </dialog>
 
+  {/* L68 (Pendencias.md, decidido em 10/09/2026): arrastar uma peça que não
+      está na vez dela pergunta qual das duas é, em vez de gravar `mover` em
+      silêncio. A pergunta é nova; o que cada resposta faz já existe (o
+      precedente da correção sem custo é `mudarEfeito`, `artes-grid-mesa.ts`;
+      o de agir fora da hora é `foraDeHora`/`agirForaDeHora`, que já sabe
+      responder nas quatro fases). Mestre só, como o resto do que mexe no
+      relógio de outra peça. */}
+  <dialog id="fdv-dlg" class="mesa-dlg">
+    <form method="dialog">
+      <h3 id="fdv-titulo">Fora da vez</h3>
+      <p class="muted dlg-txt" id="fdv-linha"></p>
+      <p class="muted dlg-txt" id="fdv-nota"></p>
+      <menu>
+        <button type="button" class="btn" id="fdv-cancelar">Cancelar</button>
+        <button type="button" class="btn" id="fdv-corrigir" title="A mesa arrumando o que ela mesma escreveu: não consome nada, não vira evento.">Corrigir posição</button>
+        <button type="button" class="btn primary" id="fdv-forahora">Agir fora do turno</button>
+      </menu>
+    </form>
+  </dialog>
+
   <dialog id="alvo-dlg" class="mesa-dlg dlg-larga">
     <form method="dialog">
       <h3 id="al-titulo">Ataque</h3>
@@ -2464,7 +2484,7 @@ const SETAS = [
     rolaNoSite, ticksDeDeslocamento, armaDoCatalogo, ticksDeEntrada,
     contrapeEm, contrapeDe, faseDeQuemVaiAgir, preparoDe, ordemDaFila,
     adiaGolpe, agendar, golpesNoAr, golpeResolvido, proximoGolpe,
-    podeSerInterrompido, atrasarGesto, modoCorre, INVESTIDA,
+    podeSerInterrompido, atrasarGesto, modoCorre, INVESTIDA, foraDeHora,
     ehSimultaneo, agendaSimultanea, ticksDeViagem, decideEmValeDepois, comOverride,
     passoDoGolpe, reprojetarAgenda,
     decisaoAutomatica, MODOS_MOV,
@@ -4564,6 +4584,30 @@ const SETAS = [
   const daVez = (): any | null => grupoDaVez()[0] || null;
 
   /**
+   * É a vez DESTA PEÇA, sem passar por `grupoDaVez()` (L68, achado do
+   * Arquiteto lendo o gatilho do arrasto). `grupoDaVez()` devolve lista
+   * VAZIA em dois estados do RELÓGIO que nada têm a ver com a peça
+   * perguntada: todo mundo no chão, e um golpe caindo (`golpeMaisCedo() <=
+   * t`): com lista vazia, testar `!grupoDaVez().some(...)` dá verdadeiro
+   * para QUALQUER peça, abrindo o diálogo do L68 em todo arrasto enquanto um
+   * braço declarado Ticks atrás está chegando, que é exatamente o "modal a
+   * cada arrumação de tabuleiro" que o item foi escrito para evitar. Medido
+   * num bench de 12: com golpe no ar, o gatilho velho abria para as 12; este
+   * predicado continua nas mesmas 7 de antes do golpe.
+   *
+   * "A vez dela" é só a pergunta que a régua de sempre já faz peça a peça
+   * (`grupoDaVez`, linhas acima): o Tick dela já chegou. Sem fila de pé
+   * (`tickDaVez()` nulo), não há vez de ninguém para comparar, e a resposta
+   * é "sim": não há "fora da vez" quando não há vez alguma na mesa.
+   */
+  function chegouAVez(c: any): boolean {
+    const t = tickDaVez();
+    if (t == null) return true;
+    if (SIML()) return (c.tick ?? 0) <= t;
+    return (c.tick ?? 0) === t;
+  }
+
+  /**
    * Onde a cena está, mesmo quando ninguém está de pé.
    *
    * `tickDaVez` devolve nada com todos no chão, e nada não serve para medir
@@ -6081,6 +6125,62 @@ const SETAS = [
   }
 
   /**
+   * O DIÁLOGO ENTRE CORRIGIR E AGIR (L68, Pendencias.md, decidido em
+   * 10/09/2026), quando o arrasto solta uma peça que NÃO está na vez dela
+   * (`chegouAVez(c)`, o predicado da PEÇA, e não `grupoDaVez()` inteiro: o
+   * gatilho que faltava para o item não virar modal em toda arrumação comum
+   * de tabuleiro, e que não vale para todo mundo só porque um golpe cai).
+   *
+   * A PERGUNTA É NOVA; NENHUMA FRASE AQUI É ESCRITA À MÃO, e é a FASE, não o
+   * `pode` de `foraDeHora`, que decide se o botão aparece: as duas coisas
+   * discordam de propósito. `foraDeHora` só devolve `pode:true` na
+   * Recuperação (é ela que sabe cobrar a dívida de verdade); em `livre` ela
+   * devolve `pode:false` com a frase "não paga nada por isso", e É ESSA
+   * frase, não a ausência do botão, que representa "de graça" aqui. As
+   * DUAS opções aparecem em `livre` (decisão do Arquiteto), e só em
+   * `preparo`/`golpe` (onde o motor manda abortar ou recusa) o botão some e
+   * a frase dela vira a explicação do porquê.
+   *
+   * MESTRE SÓ: `agirForaDeHora` já é (não há `jogador_*` para isto), e
+   * corrigir a posição da PRÓPRIA peça não é gesto que precise de pergunta.
+   */
+  async function perguntarForaDaVez(c: any, destino: { q: number; r: number }): Promise<void> {
+    const T = relogio();
+    const acao = acaoNo(c);
+    const fase = faseEm(acao, T);
+    const fh = foraDeHora(acao, T, velDaPeca(c));
+    const dlg = el('fdv-dlg') as HTMLDialogElement;
+    (el('fdv-titulo') as HTMLElement).textContent = `${c.nome}: não é a vez dele`;
+    (el('fdv-linha') as HTMLElement).textContent =
+      'A mesa está arrumando o tabuleiro, ou a ficção aconteceu? As duas custam coisas diferentes.';
+    const btnFora = el('fdv-forahora') as HTMLButtonElement;
+    const nota = el('fdv-nota') as HTMLElement;
+    // Só preparo e golpe TIRAM o botão: são as fases em que o motor recusa a
+    // ação fora de hora por inteiro (manda abortar, ou não se interrompe).
+    const ofertaForaHora = fase !== 'preparo' && fase !== 'golpe';
+    btnFora.hidden = !ofertaForaHora;
+    nota.textContent = fh.pode ? '' : fh.porque;
+    nota.hidden = fh.pode;
+    const escolha = await new Promise<'corrigir' | 'forahora' | null>((resolve) => {
+      let r: 'corrigir' | 'forahora' | null = null;
+      (el('fdv-corrigir') as HTMLElement).onclick = () => { r = 'corrigir'; dlg.close(); };
+      btnFora.onclick = () => { r = 'forahora'; dlg.close(); };
+      (el('fdv-cancelar') as HTMLElement).onclick = () => dlg.close();
+      dlg.addEventListener('close', () => resolve(r), { once: true });
+      dlg.showModal();
+    });
+    if (escolha === 'corrigir') { await porNoMapa(c.id, destino.q, destino.r, true, { verbo: 'corrigir' }); return; }
+    if (escolha !== 'forahora') return;
+    // Na Recuperação, `foraDeHora` cobra de verdade: rotear para o mecanismo
+    // que já existe (`agirForaDeHora`), que abre a própria caixa da dívida e
+    // só então pousa o token. Fora dela (só sobra `livre`, o outro caso em
+    // que o botão aparece) é o mesmo `porNoMapa` de sempre, sem custo, só
+    // com o verbo do registro trocado: não há dívida nenhuma para abrir.
+    if (fase === 'recuperacao') { await agirForaDeHora(c.id, destino); return; }
+    await porNoMapa(c.id, destino.q, destino.r, true, { verbo: 'forahora' });
+  }
+
+  /**
    * DECLARAR UM ATAQUE NO SIMULTÂNEO, com ou sem caixa na frente.
    *
    * É o irmão de `declararNoTabuleiro` com a agenda do simultâneo: decidir no
@@ -6321,8 +6421,14 @@ const SETAS = [
    *
    * MESTRE SÓ, pelo mesmo motivo do abortar: o jogador escreve em `combatentes`
    * pelas funções `jogador_*` da migração 22, e não há uma para isto.
+   *
+   * `destino`, opcional, é o L68: quando `perguntarForaDaVez` chama esta
+   * função a partir de um arrasto (a peça estava sendo levada para uma casa
+   * nova, não só reagindo no lugar), o token pousa lá DEPOIS que a reação
+   * grava, pelo mesmo `porNoMapa` de sempre, com o verbo `forahora`. Sem
+   * `destino` (o caminho do menu, de sempre), nada muda.
    */
-  async function agirForaDeHora(cid: string) {
+  async function agirForaDeHora(cid: string, destino?: { q: number; r: number }) {
     const c = COMBS.find((x: any) => x.id === cid); if (!c) return;
     const a = acaoNo(c); if (!a) return;
     const T = relogio();
@@ -6363,6 +6469,7 @@ const SETAS = [
         pintarIniciativa(); pintarTokens(); pintarLista();
         avisarAgora('combatentes');
         await logar(c, `${r.frase} · livre no tick ${r.novoTick} (sairia no ${a.livre})`, { acao: null });
+        if (destino) await porNoMapa(cid, destino.q, destino.r, true, { verbo: 'forahora' });
       }, candidatosParaInterpor(c));
   }
 
@@ -6622,6 +6729,19 @@ const SETAS = [
       const eu = COMBS.find((c: any) => c.id === id);
       if (outro && eu && TOKENS[id]) { await resolverAtaque(eu, outro); return; }
       if (!destino) return;
+      // L68 (Pendencias.md, decidido em 10/09/2026): arrastar peça do mapa que
+      // NÃO está na vez dela pergunta qual das duas é, em vez de gravar
+      // `mover` em silêncio (o gatilho é a vez, não a fase, e é por isso que
+      // este bloco vem ANTES do que decide COMO ela anda). `chegouAVez(eu)`,
+      // e não `grupoDaVez()`: o grupo esvazia (e faria o diálogo abrir para
+      // QUALQUER peça) enquanto um golpe declarado Ticks atrás está caindo,
+      // que não tem nada a ver com a peça arrastada (achado do Arquiteto).
+      // Mestre só, como o mecanismo que ele chama; peça vinda da lista e peça
+      // caída continuam de fora, como já eram para o `moverSimultaneo` (não
+      // têm "vez" a medir).
+      if (MESTRE && deOnde === 'mapa' && eu && TOKENS[id] && !noChao(eu) && !chegouAVez(eu)) {
+        await perguntarForaDaVez(eu, destino); return;
+      }
       // No simultâneo, soltar peça do mapa num hexágono vazio pergunta COMO ela
       // vai até lá, em vez de teleportar. Peça vinda da lista (entrando em
       // cena) e peça caída continuam pousando direto.
@@ -7026,7 +7146,24 @@ const SETAS = [
   }
 
   // ============================================================== gravar
-  async function porNoMapa(cid: string, q: number, r: number, registrar = true) {
+  /**
+   * `motivo` é o L68 (Pendencias.md, decidido em 10/09/2026): a MARCA que o
+   * registro guarda quando o arrasto não é a vez da peça, e só entra quando
+   * `perguntarForaDaVez` (abaixo) já perguntou qual das duas era.
+   *
+   *   `corrigir` · a mesa arrumando o que ela mesma escreveu: nunca cobra
+   *     `cobrarDeslocamento`, e o verbo do registro é "corrigiu", nunca
+   *     "moveu" (precedente `mudarEfeito`, `artes-grid-mesa.ts:1895`);
+   *   `forahora` · a ficção aconteceu fora da vez: cobra normalmente (na
+   *     fase `livre` isso já é de graça, por conta de `cobrarDeslocamento`
+   *     só cobrar na Recuperação), e o verbo é "agiu fora do turno".
+   *
+   * Sem `motivo`, o comportamento é o de sempre: "moveu", com o custo normal.
+   */
+  async function porNoMapa(
+    cid: string, q: number, r: number, registrar = true,
+    motivo?: { verbo: 'corrigir' | 'forahora' },
+  ) {
     if (ocupadoPor(q, r, cid)) return;
     const antes = TOKENS[cid] ? { ...TOKENS[cid] } : null;
     if (antes && antes.q === q && antes.r === r) return;   // largou onde já estava
@@ -7049,12 +7186,19 @@ const SETAS = [
     if (antes) {
       const passos = distanciaHex(antes, { q, r });
       const m = passos * (Number(ARENA.escala_m) || 1);
-      await logar(c, `${c?.nome} foi de ${nomeHex(antes.q, antes.r)} para ${casa} · ${fmtM(m)} (${passos} hex)`,
-        { acao: 'mover', cid, de: antes, para: { q, r } });
+      const frase = motivo?.verbo === 'corrigir'
+        ? `${c?.nome} corrigiu a posição para ${casa} (sem custo)`
+        : motivo?.verbo === 'forahora'
+          ? `${c?.nome} agiu fora do turno e foi de ${nomeHex(antes.q, antes.r)} para ${casa}`
+            + ` · ${fmtM(m)} (${passos} hex)`
+          : `${c?.nome} foi de ${nomeHex(antes.q, antes.r)} para ${casa} · ${fmtM(m)} (${passos} hex)`;
+      await logar(c, frase, { acao: motivo?.verbo || 'mover', cid, de: antes, para: { q, r } });
     } else {
       await logar(c, `${c?.nome} entrou em ${casa}`, { acao: 'por', cid, de: null, para: { q, r } });
     }
-    if (antes) await cobrarDeslocamento(c, distanciaHex(antes, { q, r }) * (Number(ARENA.escala_m) || 1));
+    if (antes && motivo?.verbo !== 'corrigir') {
+      await cobrarDeslocamento(c, distanciaHex(antes, { q, r }) * (Number(ARENA.escala_m) || 1));
+    }
     // Andar é o gesto que faz alguém pisar numa zona de fogo ou sair de uma
     // aura, então é aqui que os efeitos são reconferidos.
     await verificarEfeitos(ctxArtes());
@@ -9589,8 +9733,8 @@ const SETAS = [
           : '';
       }
       return alcancaNoCorpoACorpo(hexes, classe === 'haste', raioExtraHex(alvo)) ? ''
-        : `Corpo a corpo a ${fmtM(dist!)}: ${classe === 'haste'
-          ? `a haste alcança ${HEX_HASTE}` : `a arma alcança ${HEX_CORPO_A_CORPO}`} hexágono(s).`;
+        : `Corpo a corpo a ${fmtM(dist!)}: a ${classe === 'haste' ? 'haste' : 'arma'} alcança`
+          + ` ${(classe === 'haste' ? HEX_HASTE : HEX_CORPO_A_CORPO) + raioExtraHex(alvo)} hexágono(s).`;
     })();
     const cxAviso = el('al-aviso') as HTMLElement;
     cxAviso.hidden = !avisoAlcance;
@@ -10069,7 +10213,7 @@ let roladoDano = '';
      */
     const valoresDoLance = (): [string, string, string][] => {
       const a = anat();
-      const alc = classeAtq === 'haste' ? HEX_HASTE : HEX_CORPO_A_CORPO;
+      const alc = (classeAtq === 'haste' ? HEX_HASTE : HEX_CORPO_A_CORPO) + raioExtraHex(alvo);
       const pAtq = passoDaPeca(atacante), pAlv = passoDaPeca(alvo);
       return [
         ['dist', 'Distância', dist != null ? fmtM(dist) : '—'],

@@ -67,6 +67,30 @@ try {
   ok(!(posVz?.q === 5 && posVz?.r === 4),
     'e, em particular, não fica parado na casa de nascença (a segunda passada de caminharHex segue viva)');
 
+  // O nono e o décimo lugar (rodada 40): dois DISPLAYS que mostravam o alcance
+  // cru (`HEX_CORPO_A_CORPO`/`HEX_HASTE`), sem o raio do alvo, mesmo depois de o
+  // GATE já somar (achado pelo Arquiteto ao ler o achado do oitavo lugar).
+  // `pv` tem um golpe já agendado contra `en`, a distância 4 (fora do alcance
+  // de qualquer jeito), só para abrir a folha e ler os dois números.
+  await p.evaluate(() => window.__ESPELHO.abrir('pv', 2));
+  const abriuFolha = await p.waitForFunction(
+    () => document.getElementById('alvo-dlg')?.open === true, { timeout: 5000 },
+  ).then(() => true).catch(() => false);
+  ok(abriuFolha, 'a folha abre para pv, com o golpe agendado contra o Aboleth');
+  if (abriuFolha) {
+    const alc = await p.evaluate(() =>
+      document.querySelector('#al-ficha-c .al-f.lido[data-l="alc"] .al-f-v')?.textContent || '');
+    ok(alc.trim() === '3 hex',
+      `nono lugar (valoresDoLance, "Alcance da arma"): mostra "3 hex", com o raio do Aboleth somado ("${alc}")`);
+    const aviso = await p.evaluate(() => document.getElementById('al-aviso')?.textContent || '');
+    ok(/alcança 3 hexágono/.test(aviso),
+      `décimo lugar (avisoAlcance, o texto da recusa): diz "alcança 3", não "alcança 1" ("${aviso}")`);
+    await p.evaluate(() => {
+      document.getElementById('al-nao')?.click();
+    });
+    await p.evaluate(() => window.__ESPELHO.esperar());
+  }
+
   ok(erros.length === 0, `nenhum erro de página (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
 } finally {
   await br.close();

@@ -97,6 +97,7 @@ jobs:
           - test-bandeiras-mesa
           - test-interpor-mesa
           - test-l67-corpoacorpo-mesa
+          - test-l68-foradavez-mesa
           - test-grid-simultaneo
           - test-etapa0
           - test-bench-tempo

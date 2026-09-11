@@ -581,6 +581,19 @@ async function cenaAlvoQueFoge(br, url) {
   const hexLivre = (ref, modo, faixa) => hexLivreDe(p, ref, modo, faixa);
   const soltarEm = (cid, ponto) => soltarEmDe(p, cid, ponto);
 
+  // C003 PRECISA ESTAR NA VEZ (L68, Pendencias.md, rodada 40): o `bench=12`
+  // espalha `tick: i % 4` só para a fila mostrar fases variadas na tela, e com
+  // `tick_atual` em 0 isso deixa c003 (tick 3) fora da vez por acidente de
+  // montagem — o arrasto dela abriria o diálogo NOVO do L68 (`fdv-dlg`) em vez
+  // do `mov-dlg`/silêncio que esta cena testa, e o diálogo, deixado aberto,
+  // bloquearia o arrasto seguinte (o `decl-dlg` da declaração nunca abriria).
+  // Esta cena testa a AGENDA re-projetada, não o turno: forçar c003 para a vez
+  // é o que isola as duas coisas.
+  await p.evaluate(() => {
+    const c = (window.__SB?.tabelas?.combatentes || []).find((x) => x.id === 'c003');
+    if (c) c.tick = 0;
+  });
+
   // ---- 1: os dois heróis, a uma distância curta e sem ninguém no meio ----
   // Armado à mão de propósito: na bancada as peças nascem emboladas, e uma
   // perseguição precisa de campo aberto para ser medida.
@@ -707,6 +720,15 @@ async function cenaInvestidaUmaVez(br, url) {
     { waitUntil: 'networkidle0', timeout: 60000 });
   await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
   await espera(700);
+
+  // C003 NA VEZ (mesmo achado da cena `cenaAlvoQueFoge`, L68/rodada 40): o
+  // `tick: i % 4` do bench deixa c003 fora da vez por acidente de montagem, e
+  // o arrasto dela abriria o `fdv-dlg` novo em vez do `mov-dlg`/silêncio que
+  // esta cena precisa para armar o cenário da Investida.
+  await p.evaluate(() => {
+    const c = (window.__SB?.tabelas?.combatentes || []).find((x) => x.id === 'c003');
+    if (c) c.tick = 0;
+  });
 
   /** As condicoes de uma peca, como o navegador as tem. */
   const condsDe = (cid) => p.evaluate((cid) => {
@@ -1030,6 +1052,15 @@ async function cenaTetoForcado(br, url) {
   // caixa de deslocamento solto (`moverSimultaneo`, `grid.astro:5878`); as
   // outras caem direto em `porNoMapa`, sem diálogo nenhum (`grid.astro:5887`,
   // dentro de `moverSimultaneo`).
+  //
+  // C003 TAMBÉM PRECISA ESTAR NA VEZ (L68/rodada 40, mesmo achado das outras
+  // cenas deste arquivo): o `tick: i % 4` do bench deixa ela fora da vez por
+  // acidente de montagem, e sem este ajuste o arrasto abriria o `fdv-dlg`
+  // novo em vez do `mov-dlg` que esta cena testa.
+  await p.evaluate(() => {
+    const c = (window.__SB?.tabelas?.combatentes || []).find((x) => x.id === 'c003');
+    if (c) c.tick = 0;
+  });
   //
   // O CANTO LIVRE MAIS LONGE do palco (a mesma técnica da cena 1, item 5): no
   // passo padrão (modo `batalha`), chegar lá exige muito mais que 2 Ticks,
