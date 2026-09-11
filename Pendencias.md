@@ -4899,6 +4899,29 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   conserta de graça é o próprio checkout do aviso seguinte, que tira ela do órfão; o que falta é
   ninguém depender disso acontecer por acaso.
 
+  **O GESTO QUE PARA A RECORRÊNCIA, e ele é dela e de uma linha:** quando o
+  `git push origin HEAD:main` for recusado, **rebaseie no próprio worktree** (`git fetch` e
+  `git rebase origin/main`), de modo que o `HEAD` local siga o sha novo, e só então empurre de
+  novo. **Nunca deixar outra instância replantar o commit por ela** · replantar de fora produz
+  exatamente o gêmeo órfão, e é o que aconteceu três vezes. Isto vale a partir de agora e não
+  espera o portão da 44.
+
+  **A OUTRA PONTA DO INTERVALO TAMBÉM APODRECE, e nenhum portão de envio pode pegar isso.** O
+  campo `TOPO` diz, pelo texto do próprio aviso, "com `TOPO` igual a `SHA`, o trecho é o main
+  inteiro desde a `BASE`" · ou seja, "não entrou commit de outra frente". Isso é verdade no
+  instante do `--enviar` e deixa de ser a cada commit que chega antes de a Revisora dar checkout.
+  **Aconteceu nesta rodada, e a culpa é minha:** o aviso 43 saiu com `TOPO b8ab3ea` e depois
+  entraram `dfbd24a` (o progresso corrigido) e `b6d14ea` (este item), os dois de documento. O
+  `rodada.mjs` já escreve, no comentário do `--enviar`, que **o aviso é o ÚLTIMO commit da rodada**,
+  e eu commitei depois dele. A regra existia e eu passei por cima.
+
+  **O que isso ensina sobre o portão da 44:** o `merge-base --is-ancestor` conserta o `BASE`, que é
+  computado antes e pode ser conferido antes. O `TOPO` não tem conserto no envio, porque ele
+  envelhece DEPOIS de qualquer conferência que se faça ali. **Quem o conserta é a Revisora, no
+  checkout**, recomputando com `git log SHA..origin/main` depois do `fetch` em vez de acreditar no
+  campo. Quem construir o portão precisa saber disso, ou vai entregá-lo achando que cobriu os dois
+  campos quando cobriu um.
+
   → `L65` (a sequência dos commits da rodada), → `L73` (o outro defeito do `rodada.mjs`).
 
 - [ ] **L70 · [REGISTRADO em 10/09/2026, ligado ao `L67`, ABERTO por decisão do humano em
