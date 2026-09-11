@@ -596,15 +596,16 @@ citação que aponta para outro lugar. É o mesmo desfecho de "o portão que cas
 mesmo que o `L65` proíbe ao vetar reaponte por busca de âncora: a conferência passa a **confirmar
 a coisa errada em vez de acusar**, e o vermelho, que é barato, nunca chega.
 
-**A REGRA PRÁTICA É UMA ÂNCORA POR LINHA, E NÃO UMA POSIÇÃO PREFERIDA.** O Arquiteto escreveu
-primeiro, neste mesmo catálogo, que a saída era pôr a âncora DEPOIS do número, e estava errado:
-pelo que está medido acima, o script prefere justamente a de ANTES. Uma linha com duas âncoras é
-ambígua em qualquer ordem, e a única forma que o olho e o script leem igual é **uma citação, uma
-âncora, sem segundo trecho entre crases na mesma linha**. Quando o parágrafo precisar de dois
-pedaços de código, ponha cada um na sua linha.
+**E O ARQUITETO ERROU A PRESCRIÇÃO NA PRIMEIRA TENTATIVA, o que vale registrar porque é a quarta
+vez no mesmo dia.** Ele escreveu, numa segunda entrada deste catálogo (removida e fundida nesta),
+que a saída era pôr a âncora **depois** do número de linha. É o contrário do que está medido acima:
+o script prefere a de ANTES. A regra certa é a que ela escreveu no fim deste verbete, e não uma
+posição preferida · **uma âncora só, sem segundo trecho em crases na mesma linha.** O padrão do
+erro é o do dia inteiro: uma regra deduzida de um achado verdadeiro, generalizada um passo além do
+que o achado sustentava, e escrita por quem não tinha feito a medição.
 
 **O gesto que evita isso, e ele é o mesmo dos outros da lista:** depois de reapontar uma âncora à
 mão, rodar o verificador de novo antes de seguir para a próxima, em vez de confiar na leitura. E,
 ao escrever a âncora, colocá-la na MESMA linha da citação e o mais perto possível dela, sem outro
-trecho em crases entre as duas — não porque o script exija exatamente isso, mas porque é o único
+trecho em crases entre as duas · não porque o script exija exatamente isso, mas porque é o único
 jeito de a distância em bytes bater com a distância que o olho vê.
