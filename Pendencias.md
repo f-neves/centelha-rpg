@@ -6114,6 +6114,16 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   contra que ele escolheu comprar, e que era o mais longo dos quatro: hoje a coluna teria **um leitor
   só**, e campo com um leitor só é campo que para de ser escrito sem ninguém notar.
 
+  **A ORDEM IMPORTA, e isto só ficou claro ao enfileirar as tarefas depois da rodada fechada: a
+  primeira das duas perguntas abertas abaixo tem de ser respondida ANTES de a migração 38 ser
+  escrita.** A pergunta é o que "nível" indexa no `acelerar-a-cura`, e a coluna `nivel_arte` foi
+  escolhida sobre UMA das duas respostas possíveis (o nível da Arte, que é a leitura que a prosa do
+  Efeito sustenta com "Com Vida 1 ou 2" e "exige Vida 3"). Se a resposta for a outra (o grau do
+  parâmetro Cura), **o número a guardar é outro e a coluna decidida é a errada**. A decisão do humano
+  não está em dúvida: ela é a resposta certa PARA A LEITURA em que foi tomada, e o que falta é
+  confirmar a leitura. Escrever a migração antes disso seria fazer o mesmo que esta rodada já
+  registrou duas vezes: tratar como fechado o que ainda não foi perguntado.
+
   **TRÊS COISAS QUE A MIGRAÇÃO 38 TEM DE FAZER JUNTO, e que não são enfeite:**
 
   1. **Corrigir o comentário da coluna `nivel`**, que hoje diz ser "o nível efetivo da conjuração" e

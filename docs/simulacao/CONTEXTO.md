@@ -132,6 +132,19 @@ resíduo mora no `Pendencias.md`, nos itens de mesmo nome.
 não tem (`armadilha`) e de uma ação de jogo que não existe; `maos-sobre-a-multidao` é
 `forma: "zona"`, e zona não tem caminho de resolução nenhum, nem para dano nem para cura.
 
+### O PRÓXIMO PASSO, em uma linha
+
+**Levar ao humano as duas perguntas abertas do `L86`, em múltipla escolha, ANTES de escrever a
+migração 38.** Não é ordem de conveniência, é dependência: a primeira das duas pergunta o que
+"nível" indexa no `acelerar-a-cura`, e **a coluna `nivel_arte` foi escolhida sobre uma das duas
+respostas possíveis**. Se a resposta for a outra (o grau do parâmetro Cura, e não o nível da
+Arte), o que precisa ser guardado é outro número e a coluna decidida é a errada. A decisão do
+humano continua valendo para a leitura em que ela foi tomada; o que falta é confirmar a leitura.
+
+Com as duas respondidas, a ordem é: escrever o arquivo da migração 38 (para a mão dele, nunca
+rodada daqui), e abrir a rodada 56 no `L86b`. O `maos-sobre-a-multidao` não depende da migração,
+mas depende da segunda pergunta e do caminho de resolução de zona, que não existe.
+
 ## O congelamento
 
 Nenhuma varredura nova, nenhuma pendência aberta por iniciativa, nenhum conserto fora dos itens
