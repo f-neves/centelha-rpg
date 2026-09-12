@@ -132,3 +132,17 @@ no instante em que ele é encontrado e classificado, hora lida da máquina
   ou 2 nas rodadas anteriores) é grande demais para eu decidir sozinha o que
   fazer. Todo o código está no disco, testado e funcionando; só falta poder
   commitar. Trazendo ao Arquiteto antes de qualquer coisa.
+- 22:45 · Arquiteto reapontou (72 citações, não 66: o reapontador move pelo
+  mapa de hunks, e achou 6 a mais que o portão não tinha acusado, todas
+  apontando para a linha errada com âncora fraca demais para notar, três delas
+  a palavra `if`). Não commitou os documentos de propósito: pediu para eu
+  commitar o código primeiro. `npm run validate` confirmado verde (saída 0)
+  antes de commitar. COMMIT FEITO: `5a6bb93`, pathspec em `grid.astro`,
+  `mesa-mock.mjs`, `test-l70-ocupacao-mesa.mjs`, `package.json`,
+  `.github/workflows/validate.yml` e este arquivo, nada dos documentos do
+  Arquiteto (continuam modificados e não commitados na árvore, como estavam).
+  Push confirmado (`89f6e00..5a6bb93`), `git rev-list --count
+  origin/main..HEAD` = 0. Avisando o Arquiteto para ele commitar os
+  documentos. Preparando o aviso, com os dois achados que ele pediu para
+  registrar: o contorno do arrasto (achado, não solução) e a taxa 6/71 do
+  reaponte.
