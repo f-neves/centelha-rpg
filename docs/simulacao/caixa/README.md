@@ -303,6 +303,17 @@ As cinco regras, e as cinco são obrigação da executora:
 6. **AVISO ENVIADO NÃO SE EDITA.** Correção de aviso já enviado vai para o
    veredito ou para o arquivo de progresso, nunca para o próprio aviso.
 
+   **E O COMMIT DO PROGRESSO É A ÚNICA EXCEÇÃO À REGRA DE NÃO COMMITAR DEPOIS DO
+   AVISO**, resolvida em 11/09/2026 porque as duas regras se contradiziam e cada
+   rodada renegociava a contradição do zero. A regra "o aviso é o último commit da
+   rodada" existe para proteger o sentido do campo `TOPO` (`TOPO` igual a `SHA`
+   afirma que não entrou nada de outra frente). Mas escrever no progresso exige
+   commitar, senão a correção não existe para ninguém. **As duas se conciliam
+   assim:** depois do `--enviar`, o único commit permitido é o do arquivo de
+   progresso da própria rodada, e ele é justamente o canal que esta regra 6 manda
+   usar. Qualquer outro commit depois do aviso é o defeito que a regra evita, e o
+   Arquiteto fez seis deles na rodada 43 antes de escrever isto.
+
 **O motivo NÃO é a garantia de checkout da revisora**, e essa foi a razão errada
 que o Arquiteto escreveu primeiro. Ela não quebra: o sha antigo continua lendo o
 texto antigo, faça-se o que se fizer no `HEAD`. **O motivo é o mesmo da regra 3
