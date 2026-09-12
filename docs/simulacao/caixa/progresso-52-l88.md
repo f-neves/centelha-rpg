@@ -141,3 +141,48 @@ Sinal de vida da Executora. Uma linha por etapa pequena, hora real (`date +%H:%M
   mudou desde o último reponte, e agora são 71 citações, não mais 74).
   Mensagem enviada ao Arquiteto. Parado aqui.
 
+- (commitado como `8d7b450`, empurrado, aviso enviado como `5c5cf81`.)
+
+- CORRIGE da Revisora, depois do veredito: `abrirCondicoes`'s `repintar`
+  (`grid.astro`) só chamava `pintarLista()`, nunca `pintarIniciativa()`.
+  `conferirOcupacao` só roda dentro de `pintarIniciativa`, então tirar uma
+  condição à mão pela caixa (um dos CINCO caminhos passivos que o L88
+  nomeia por escrito) nunca disparava o detector: 0 gritos, medido ao vivo
+  pela Revisora. O Arquiteto reclassificou de ESCALA para CORRIGE contra o
+  próprio veredito dela, com o motivo escrito: a causa é pré-existente
+  (rodada 51), mas a CONSEQUÊNCIA é desta rodada, porque o L88 promete
+  cobrir justamente esse caminho e não cobria.
+
+  Conserto de uma linha: `repintar: () => { pintarLista(); pintarIniciativa(); }`.
+  De brinde, fecha também uma assimetria que a Revisora achou na rodada 51
+  (a tela de quem está na vez ficava desatualizada enquanto o resto da mesa
+  já se corrigia pelo tempo real).
+
+  UM ERRO MEU NO CAMINHO: ao reescrever o comentário acima da linha, apaguei
+  por engano os campos `gravar`/`registrar` do mesmo objeto (o `old_string`/
+  `new_string` do meu editor não os incluiu). O primeiro teste que exercitou
+  o botão "✕" de tirar condição quebrou em runtime (`ctx.registrar is not a
+  function`), pego na hora por rodar o teste antes de seguir. Corrigido
+  devolvendo as duas linhas.
+
+  Asserção nova em `test-l88-ocupacao-detector-mesa.mjs`, pelo caminho exato
+  que a Revisora usou ao vivo: dar "Caído" em `pa` (fecha a sobreposição de
+  novo, sem grito novo, correto) e depois TIRAR "Caído" pela caixa (reabre a
+  sobreposição), exigindo o grito NA HORA (sem esperar uma repintura não
+  relacionada passar depois). 7 asserções novas (helpers de abrir/aplicar/
+  tirar condição pela caixa, mais as duas transições). 15 no arquivo,
+  todas verdes.
+
+  CONTROLE NEGATIVO por `git stash` do meu próprio `grid.astro` não
+  commitado: contra o código de antes deste CORRIGE, a asserção nova (e só
+  ela) falha, reproduzindo exatamente o "0 gritos" que a Revisora mediu.
+  Restaurado, verde de novo.
+
+  Bateria de regressão (L84 caído-na-fila, L70 ocupação, Grid simultâneo)
+  verde. `npm run validate`: único vermelho é procedência, 12 citações
+  movidas (edição pequena, perto do fim do arquivo). Commit pronto.
+
+- 04:53 · commit BLOQUEADO pelo gancho de pre-commit, como esperado (12
+  citações). Mensagem enviada ao Arquiteto. Parado aqui, sem tocar em
+  `CATALOGO.md` (dele, mid-edit) nem em nenhum documento.
+

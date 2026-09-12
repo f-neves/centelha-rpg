@@ -56,6 +56,55 @@ async function curarPeloMenu(p, cid, quanto) {
   }, { cid, quanto });
 }
 
+/** Abre "◈ Condições" pelo menu de contexto do token `cid`. Devolve `false` se não abriu. */
+async function abrirCondicoesPeloMenu(p, cid) {
+  return p.evaluate(async (cid) => {
+    const tk = document.querySelector(`#gr-tokens .gr-token[data-c="${cid}"]`);
+    if (!tk) return false;
+    const r = tk.getBoundingClientRect();
+    tk.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, clientX: r.left + 5, clientY: r.top + 5 }));
+    await new Promise((res) => setTimeout(res, 300));
+    const b = document.querySelector('#tok-menu button[data-a="condicoes"]');
+    if (!b) return false;
+    b.click();
+    await new Promise((res) => setTimeout(res, 300));
+    return document.getElementById('cond-dlg')?.open === true;
+  }, cid);
+}
+
+/** Com o diálogo de condições já aberto, filtra pelo nome e clica o chip do catálogo. */
+async function porCondicaoNoDialogoAberto(p, nomeCond) {
+  return p.evaluate(async (nomeCond) => {
+    const busca = document.getElementById('cond-busca');
+    if (!busca) return false;
+    busca.value = nomeCond;
+    busca.dispatchEvent(new Event('input', { bubbles: true }));
+    await new Promise((res) => setTimeout(res, 200));
+    const chip = [...document.querySelectorAll('#cond-catalogo .cond')]
+      .find((x) => (x.querySelector('.cond-n')?.textContent || '') === nomeCond);
+    if (!chip) return false;
+    chip.click();
+    await new Promise((res) => setTimeout(res, 300));
+    return true;
+  }, nomeCond);
+}
+
+/** Com o diálogo de condições já aberto, tira `id` (o `data-cond` do ✕) das ativas. */
+async function tirarCondicaoNoDialogoAberto(p, id) {
+  return p.evaluate(async (id) => {
+    const btn = document.querySelector(`#cond-ativas .cond-x[data-cond="${id}"]`);
+    if (!btn) return false;
+    btn.click();
+    await new Promise((res) => setTimeout(res, 300));
+    return true;
+  }, id);
+}
+
+/** Fecha o diálogo de condições já aberto ("Pronto"). */
+async function fecharDialogoCondicoes(p) {
+  await p.evaluate(() => document.getElementById('cond-fechar')?.click());
+}
+
 /** Arrasta a FICHA `cid` (da lista lateral) até o CENTRO do hexágono `(q, r)`. */
 async function arrastarDaListaParaHex(p, cid, q, r) {
   await p.evaluate(async ({ cid, q, r }) => {
@@ -105,6 +154,38 @@ try {
     `e a linha nomeia os dois lados (${JSON.stringify(linhaGrito)})`);
   const gritosAteAqui = depoisDeCurar.filter((t) => /Ocupação inválida/.test(t)).length;
   ok(gritosAteAqui === 1, `uma linha só, não uma por repintura (achou ${gritosAteAqui})`);
+
+  // ------ 2.5: CORRIGE da rodada 52 · tirar condição à mão avisa NA HORA
+  //
+  // O caminho que a Revisora testou ao vivo: dar "Caído" (fecha a desculpa
+  // de novo, sem grito novo), curar não muda nada aqui (a Vida já subiu no
+  // passo 2), e TIRAR "Caído" pela caixa reabre a mesma sobreposição. Antes
+  // do `pintarIniciativa()` no `repintar` de `abrirCondicoes`, essa escrita
+  // nunca chamava `conferirOcupacao`, e o detector ficava cego para
+  // exatamente um dos cinco caminhos passivos que o L88 nomeia.
+  console.log('\n· dar Caído fecha de novo; TIRAR Caído pela caixa reabre, e o grito é NA HORA');
+  const abriu1 = await abrirCondicoesPeloMenu(p, 'pa');
+  ok(abriu1, 'o diálogo de condições abriu em pa');
+  const deuCaido = await porCondicaoNoDialogoAberto(p, 'Caído');
+  ok(deuCaido, 'o chip "Caído" foi encontrado e clicado');
+  await fecharDialogoCondicoes(p);
+  await espera(200);
+  const semNovoGrito = await linhasDoLog(p);
+  ok(semNovoGrito.filter((t) => /Ocupação inválida/.test(t)).length === gritosAteAqui,
+    'dar Caído FECHA a sobreposição de novo: nenhum grito novo');
+
+  const abriu2 = await abrirCondicoesPeloMenu(p, 'pa');
+  ok(abriu2, 'o diálogo de condições abriu em pa de novo');
+  const tirouCaido = await tirarCondicaoNoDialogoAberto(p, 'caido');
+  ok(tirouCaido, 'o ✕ de "Caído" foi encontrado e clicado');
+  await fecharDialogoCondicoes(p);
+  // SEM espera extra além da que os próprios helpers já fizeram: o ponto é
+  // provar que o grito sai do MESMO gesto, não de uma repintura seguinte
+  // sem relação.
+  const depoisDeTirar = await linhasDoLog(p);
+  const gritosNovos25 = depoisDeTirar.filter((t) => /Ocupação inválida/.test(t)).length - gritosAteAqui;
+  ok(gritosNovos25 === 1,
+    `tirar Caído pela caixa reabre a sobreposição e o detector grita NA HORA (achou ${gritosNovos25} nova(s))`);
 
   // ------------------------------------- 3: o negativo, o caso que treme
   console.log('\n· mv arrastada para cima de bq: recusada, e o instante otimista não grita');

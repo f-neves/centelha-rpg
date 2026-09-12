@@ -11187,11 +11187,17 @@ let roladoDano = '';
     const publicavel = (c.tipo === 'pc' || REV.condInimigo) && !c.oculto;
     abrirCondDlg({
       // L87: `gravarPeca` agora devolve `Promise<{ error }>` de verdade (antes
-      // era o builder do Supabase, daí o `as any` que morava aqui), e já toca
-      // a campainha sozinho: `repintar` só cuida do desenho local.
+      // era o builder do Supabase, daí o `as any` que morava aqui).
       gravar: (id, conds) => gravarPeca(id, { condicoes: conds }),
       registrar: (txt, pub) => logar(c, txt, { acao: null, pub }),
-      repintar: () => { pintarLista(); },
+      // CORRIGE da rodada 52: `pintarIniciativa()` também, e não só
+      // `pintarLista()`. Sem ela, tirar uma condição à mão (um dos cinco
+      // caminhos passivos que o `L88` nomeia) nunca chama `conferirOcupacao`,
+      // e o detector fica cego para exatamente o caminho que o item existe
+      // para cobrir. De brinde, a tela de QUEM ESTÁ NA VEZ (que só
+      // `pintarIniciativa` desenha) parava de acompanhar uma condição posta
+      // à mão, enquanto o resto da mesa já se corrigia pelo tempo real.
+      repintar: () => { pintarLista(); pintarIniciativa(); },
       uiErro,
     }, c, publicavel);
   }
