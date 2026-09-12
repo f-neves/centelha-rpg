@@ -38,16 +38,6 @@ Sinal de vida da Executora. Uma linha por etapa pequena, hora real (`date +%H:%M
   (item 9 da régua: "o teste de Vontade + Acerto Arcano rodando de verdade...
   é o primeiro", ainda não implementado para NENHUM caminho). Bloqueio real,
   reportando ao Arquiteto antes de escrever qualquer linha, como pedido.
-- 11:42 · Destravada: AA segue com 0 (estrutural, não exceção), peso fica
-  fora (L95, item novo), duas asserções extras pedidas (peso 0 finito, uma
-  implementação só). Eixo 1 fechado: `src/lib/forca-empurrao.ts` novo, com
-  `pesoMaximoErguido(fah, F)` (o teto de erguer) e `alcanceArremesso(faa,
-  peso, maxKg, F)` (o teto de arremesso embutido, devolve 0 acima dele e
-  também para peso <= 0, guarda ANTES da divisão por peso). `ficha-engine.ts`
-  chama as duas agora; conferido por grep que `cabeca`/`qIni`/as sete
-  constantes de `arremesso*` sumiram de lá (uma implementação só). `npx tsc
-  --noEmit` e `npm run validate` verdes (o `test-kael.mjs` dentro do
-  validate prova que a extração não mudou nenhum número da ficha).
 - 11:35 · Duas correções depois de um segundo conselho (advisor) antes de
   escrever qualquer código: (1) a caracterização do achado 1 estava errada no
   progresso acima: `dist(w)` NÃO é pura só de `(faa, peso)`, ela fecha sobre
@@ -76,3 +66,68 @@ Sinal de vida da Executora. Uma linha por etapa pequena, hora real (`date +%H:%M
   Reportando ao Arquiteto antes de decidir se entra no escopo desta rodada
   (a régua nova lê peso duas vezes, nos dois tetos, então um peso errado
   afeta os dois).
+- 11:42 · Destravada: AA segue com 0 (estrutural, não exceção), peso fica
+  fora (L95, item novo), duas asserções extras pedidas (peso 0 finito, uma
+  implementação só). Eixo 1 fechado: `src/lib/forca-empurrao.ts` novo, com
+  `pesoMaximoErguido(fah, F)` (o teto de erguer) e `alcanceArremesso(faa,
+  peso, maxKg, F)` (o teto de arremesso embutido, devolve 0 acima dele e
+  também para peso <= 0, guarda ANTES da divisão por peso). `ficha-engine.ts`
+  chama as duas agora; conferido por grep que `cabeca`/`qIni`/as sete
+  constantes de `arremesso*` sumiram de lá (uma implementação só). `npx tsc
+  --noEmit` e `npm run validate` verdes (o `test-kael.mjs` dentro do
+  validate prova que a extração não mudou nenhum número da ficha).
+- 12:03 · Eixo 2 fechado: `deslocar()` (`artes-grid-mesa.ts`) troca
+  `escolhas['Força']`/`escolhas['Alcance']` por FAH/FAA de verdade
+  (`plano.nivelArte` + Acerto Arcano de `fonteDe(ctx,c).fonte.skills2`, 0
+  para criatura sem exceção escrita). Nova `resultadoDoEmpurrao(faa, peso,
+  maxKg, F)`, exportada pela mesma razão de `condicoesDoEmpurrao` (testar a
+  decisão sem abrir as duas caixas de `deslocar`): devolve `{metros,
+  pesaDemais}`. Acima do teto de arremesso, `metros=0` e `pesaDemais=false`
+  (a condição `caido` da própria Arte ainda se aplica: derruba). Acima do
+  teto de erguer, `pesaDemais=true`: o laço de resolução pula peça, sem
+  mover/aplicar condição/aplicar dano, só regista "pesa demais". Linha do
+  `?.pesoKg` trocada por `pesoDoPorte(alvo) || 70` com comentário apontando
+  o L95 (peso de verdade é dado que falta, não bug de uma linha). Novo
+  `scripts/test-l85-forca-empurrao.mjs` (Node puro, mesmo molde do
+  `test-l70-empurrao.mjs`): 20 asserções, domínio do FAH (níveis 1-6 batendo
+  com os pesos do despacho), peso 0/negativo finito, três portes reais do
+  bestiário arremessados (Miúdo>Pequeno>Médio em distância), Grande (derruba,
+  não pesa demais) e Enorme/Colossal (pesam demais, nada acontece), e um
+  grep automatizado provando que `ficha-engine.ts` não guarda cópia da
+  fórmula. Registrado em `package.json` (`validate`, é Node puro e rápido).
+  `npx tsc --noEmit` limpo, `npm run validate` verde.
+- 12:03 · `npm run validate` acusou 21 citações envelhecidas (esperado, minha
+  edição deslocou linhas de `artes-grid-mesa.ts`): Pendencias.md 18,
+  CONJURACAO.md 2, Auditoria_Tecnica.md 1. Duas delas (`Pendencias.md:6153` e
+  `:6172`) apontavam para as linhas exatas que eu APAGUEI (o
+  `escolhas['Força']`/`const metros` velhos): mesmo caso do L93, marcar como
+  histórica em vez de reapontar é decisão do Arquiteto, não minha. Não toquei
+  nenhum documento.
+- 12:03 · `npm run smoke` não roda nesta máquina agora: `astro dev` trava com
+  `UnknownCompilerError · WebAssembly.instantiate(): size 305922048 >
+  maximum function size 7654321` ao compilar `grid.astro`, o mesmo defeito
+  já registrado em memória ("Astro trava no Windows... é da máquina").
+  CONFERIDO que não é meu: `git stash push -- src/lib/artes-grid-mesa.ts
+  package.json` (só os meus arquivos, `Pendencias.md`/`CATALOGO.md` do
+  Arquiteto ficaram sujos do lado, sem tocar), matei os processos node
+  antigos, limpei `.astro/`, e o MESMO erro apareceu com o código de ANTES
+  da rodada. Stash devolvido depois. `npm run validate` (não usa o
+  compilador Astro) segue verde; a bateria de navegador só pode ser
+  conferida pelo CI (Linux, sem esse defeito) depois do push.
+- 12:06 · CORREÇÃO do Arquiteto, aplicada antes de qualquer commit: Acerto
+  Arcano sai da fórmula inteiro (`regras.json.arcano.resistencia.rolagem`
+  reserva essa perícia para efeitos MIRADOS, e o Empurrão é
+  `forma: "movimento"`, nunca foi mirado). FAA = nível da Arte × 4 (mesmo
+  princípio do FAH: 1..6 varre 2..24, encosta no teto no nível 6, igual
+  1..6 varre 3..40). `src/data/efeitos.json` (o dado, fonte de verdade)
+  corrigido primeiro: parâmetro FAA do `empurrao-elemental` vira
+  `"(nível da Arte) × 4"`. `artes-grid-mesa.ts`: `faa = plano.nivelArte * 4`,
+  removido `fonteDe`/`acertoArcano` de `deslocar()` (ainda usado em outro
+  lugar do arquivo, sem quebrar nada). Conferido por `Grep` (não `git diff`):
+  nenhum capítulo em `src/content/` cita a fórmula velha. Teste atualizado
+  (27 asserções agora: FAA 3=12 bate com o número que o Arquiteto citou,
+  Miúdo arremessa ~26 m contra os 200 m do código antigo, domínio do FAA
+  1..6→2..24 ganhou seção própria). `npx tsc --noEmit` limpo, `npm run
+  validate` sem nenhuma citação nova envelhecida (a "sem âncora" em
+  Pendencias.md:6187 é texto do Arquiteto, não mexi). Esperando ordem para
+  commitar: "nada de commitar ainda" foi a instrução explícita.
