@@ -5911,21 +5911,66 @@ const SETAS = [
       // vazia, e a peça ia e voltava entre as duas mesmas casas para sempre.
       // Era invisível enquanto o cartão vencia na hora marcada; com a agenda
       // re-projetada virava perseguição eterna, que foi como apareceu.
+      let casaExata: ((h: any) => boolean) | null = null;
       if (distAntes > paraEm && distanciaHex(novo, mira) >= distAntes) {
-        const casaExata = (h: any) => Object.entries(TOKENS).some(([cid, t]: any) =>
+        casaExata = (h: any) => Object.entries(TOKENS).some(([cid, t]: any) =>
           cid !== c.id && t.q === h.q && t.r === h.r);
         novo = caminharHex(pos, mira, passos, paraEm, casaExata);
       }
-      const atravessou = mira !== alvoPos && (novo.q !== pos.q || novo.r !== pos.r);
+      let atravessou = mira !== alvoPos && (novo.q !== pos.q || novo.r !== pos.r);
       if (novo.q !== pos.q || novo.r !== pos.r) {
-        const em = new Date().toISOString();
-        const m = distanciaHex(pos, novo) * escala;
-        TOKENS[c.id] = { q: novo.q, r: novo.r, em } as any;
-        await gravarToken(c.id, novo.q, novo.r, em);
-        await logar(c, atravessou
-          ? `${c.nome} atravessa ${fmtM(m)} pela inércia da corrida e sai em ${nomeHex(novo.q, novo.r)}`
-          : `${c.nome} avança ${fmtM(m)} (${mov.modo}) até ${nomeHex(novo.q, novo.r)}`,
-        { acao: null });
+        // L93 (Pendencias.md, rodada 53): os TRÊS problemas do mesmo
+        // descuido. (1) marca PENDENTE, mesmo gesto do L88 em `porNoMapa`,
+        // porque a posição otimista abaixo pode ser exatamente a que a
+        // gravação recusa a seguir. (2) CONFERE `error` e desfaz o cache:
+        // a segunda passada (`casaExata`, comentário acima) pode achar uma
+        // casa que `ocupadoPor` (a régua de verdade, dentro de
+        // `gravarToken`) recusa: um Colossal veta um raio que `casaExata`
+        // não vê, por medir só a casa exata. (3) SÓ REGISTRA no sucesso:
+        // sem isso o registro afirma "avança"/"atravessa" um movimento que
+        // não aconteceu, e é a mentira que o mestre lê quando não viu.
+        //
+        // A CASA QUE A SOLTA ACHA E A GRAVAÇÃO RECUSA não é sinal de parar:
+        // é sinal de tentar a PRÓXIMA que a mesma solta permitiria, vetando
+        // só a casa recusada (não a régua inteira, que já foi a estrita
+        // acima e não achou nada). O laço termina sozinho, sem número
+        // escolhido: cada volta veta mais uma casa das poucas que cabem em
+        // `passos` passos, e essa lista é finita por geometria, não por
+        // teto. Sem isto, uma casa que a solta insiste em achar (e a
+        // gravação sempre recusa) travava a peça ali para sempre: era o
+        // mesmo Tick se repetindo, sem nunca sobrar `error` nenhum para
+        // quem chama decidir por ela.
+        const vetadas = new Set<string>();
+        for (;;) {
+          const em = new Date().toISOString();
+          const m = distanciaHex(pos, novo) * escala;
+          TOKENS[c.id] = { q: novo.q, r: novo.r, em } as any;
+          POSICAO_PENDENTE.add(c.id);
+          // eslint-disable-next-line no-await-in-loop
+          const { error } = await gravarToken(c.id, novo.q, novo.r, em);
+          POSICAO_PENDENTE.delete(c.id);
+          if (!error) {
+            await logar(c, atravessou
+              ? `${c.nome} atravessa ${fmtM(m)} pela inércia da corrida e sai em ${nomeHex(novo.q, novo.r)}`
+              : `${c.nome} avança ${fmtM(m)} (${mov.modo}) até ${nomeHex(novo.q, novo.r)}`,
+            { acao: null });
+            break;
+          }
+          TOKENS[c.id] = pos;
+          // O gesto não aconteceu: "atravessou" não pode encerrar o `mov`
+          // lá embaixo por uma travessia que a gravação recusou. Se a peça
+          // já estava perto o bastante antes desta tentativa, o outro braço
+          // do `if` (a distância de verdade) ainda pega isso sozinho.
+          atravessou = false;
+          if (!casaExata || (error as any)?.ocupada !== true) break;
+          vetadas.add(chaveHex(novo.q, novo.r));
+          const tentativa = caminharHex(pos, mira, passos, paraEm,
+            (h) => casaExata!(h) || vetadas.has(chaveHex(h.q, h.r)));
+          if ((tentativa.q === pos.q && tentativa.r === pos.r)
+            || vetadas.has(chaveHex(tentativa.q, tentativa.r))) break;
+          novo = tentativa;
+          atravessou = mira !== alvoPos;
+        }
       }
       // Chegou: o trajeto sai da ação. No movimento puro a peça fica livre JÁ,
       // porque a estimativa da declaração pode ter sido mais longa que o

@@ -573,7 +573,21 @@ async function cenaAlvoQueFoge(br, url) {
   await p.setViewport({ width: 1400, height: 950 });
   const erros = [];
   p.on('pageerror', (e) => erros.push(e.message));
-  await p.goto(`${url}/mesa/grid?id=${MESA}&bench=12&cols=24&rows=16&nevoa=0&tempo=simultaneo`,
+  // `bench=8`, E NÃO O `bench=12` PADRÃO das outras cenas (Pendencias.md L93,
+  // rodada 53, achado do assessor): com 12 peças a bancada preenche uma
+  // SEGUNDA fileira (`(i*3) % cols`, `mesa-mock.mjs`) de Grande/Enorme a cada
+  // 3 hexágonos, e Enorme (raio 2 m) ao lado de Enorme 3 hexágonos à frente
+  // não deixa vão nenhum que `ocupadoPor` aceite (2+2+0,5 > 3): é parede, não
+  // aperto. Antes do L93 a perseguição atravessava essa parede porque a
+  // escrita recusada nunca era conferida (o próprio detector do L88 registrava
+  // a violação enquanto a cena passava verde); corrigido o L93 a régua de
+  // verdade recusa, e a cena virou geometricamente impossível de testar o que
+  // ela quer testar (a agenda reprojetando enquanto o alvo foge), não porque o
+  // conserto esteja errado. `bench=8` mantém as quatro peças em jogo (c000 a
+  // c003) e as quatro criaturas de porte variado da PRIMEIRA fileira (c004 a
+  // c007, que cabem inteiras em uma linha com `cols=24` e nunca embolam),
+  // sem a segunda fileira que fecha o vão.
+  await p.goto(`${url}/mesa/grid?id=${MESA}&bench=8&cols=24&rows=16&nevoa=0&tempo=simultaneo`,
     { waitUntil: 'networkidle0', timeout: 60000 });
   await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
   await espera(700);
@@ -805,23 +819,44 @@ async function cenaInvestidaUmaVez(br, url) {
   // então `saiu` dava sempre 1, em toda execução — o "quando" saiu da
   // medição, e um teste que passasse a condição sobrevivendo três Ticks a mais
   // passaria igual, porque nada media o NÚMERO do Tick. O conserto compara o
-  // Tick em que a marca sumiu com o Tick de fim do Preparo que a própria cena
-  // declarou (`decl.tick`, "golpe cai no Tick N"), e não com a posição no
-  // laço.
+  // Tick em que a marca sumiu com a AGENDA AO VIVO do golpe, lida do próprio
+  // cartão da faixa (`#gr-ar .ar-item[data-golpe]`, o mesmo lugar que
+  // `faixa0` já lê na cena 1) no instante em que a marca some — e não com
+  // `decl.tick`, o Tick que a caixa projetou na DECLARAÇÃO.
+  //
+  // A DIFERENÇA É REAL, e apareceu na rodada 53 (L93): antes, uma peça que
+  // não alcançava a régua de verdade (`ocupadoPor`) ainda "avançava" porque a
+  // escrita nunca era conferida, e a Investida sempre fechava no Tick
+  // declarado por acidente. Corrigido o L93, um obstáculo de verdade no
+  // caminho aciona o MESMO reprojetar que já existe para o alvo que foge
+  // (`reprojetarAgenda`, "golpe adiado do Tick X para o Y", visível no
+  // registro) — e o Preparo tem de terminar onde a agenda REPROJETADA diz,
+  // não onde a declaração original chutou. `decl.tick` vira só contexto.
   let tickSaida = null;
+  let golpeVivo = null;
   for (let i = 0; i < 8; i++) {
     const st = await p.evaluate(() => !!document.getElementById('ini-prox')?.disabled);
     if (st) break;
     await p.click('#ini-prox');
     await espera(700);
-    const agora = await condsDe('c002');
-    if (!agora.some((k) => k.startsWith('investindo'))) {
-      tickSaida = await p.evaluate(() => parseInt(document.getElementById('ini-tk')?.textContent || '0', 10));
+    const agora = await p.evaluate(() => {
+      const c = (window.__SB?.tabelas?.combatentes || []).find((x) => x.id === 'c002');
+      const item = document.querySelector('#gr-ar .ar-item[data-golpe]');
+      return {
+        conds: (c?.condicoes || []).map((k) => `${k.id}${k.auto ? ':auto' : ':mao'}`),
+        tick: parseInt(document.getElementById('ini-tk')?.textContent || '0', 10),
+        golpeAgendado: item ? parseInt(item.dataset.t, 10) : null,
+      };
+    });
+    if (!agora.conds.some((k) => k.startsWith('investindo'))) {
+      tickSaida = agora.tick;
+      golpeVivo = agora.golpeAgendado;
       break;
     }
   }
-  ok(tickSaida != null && tickSaida === decl.tick,
-    `e o relogio TIRA a marca exatamente quando o Preparo acaba (saiu no Tick ${tickSaida}, fim do Preparo no ${decl.tick})`);
+  ok(tickSaida != null && golpeVivo != null && tickSaida === golpeVivo,
+    `e o relogio TIRA a marca exatamente quando o Preparo acaba (saiu no Tick ${tickSaida}, `
+    + `agenda ao vivo do golpe ${golpeVivo}, declaração original ${decl.tick})`);
 
   ok(erros.length === 0, `nenhum erro de pagina (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
   await p.close();

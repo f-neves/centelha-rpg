@@ -119,6 +119,10 @@ const LEVANTAR = P.get('cena') === 'levantar';
 // Ver o bloco `if (OCUPACAODETECTOR)` mais abaixo.
 const OCUPACAODETECTOR = P.get('cena') === 'ocupacaodetector';
 
+// A CENA DO PASSO AUTOMÁTICO CERCADO: `?cena=passocolossal` (L93, rodada
+// 53). Ver o bloco `if (PASSOCOLOSSAL)` mais abaixo.
+const PASSOCOLOSSAL = P.get('cena') === 'passocolossal';
+
 // A CENA DO INTERPOR: `?cena=interpor[&fase=preparo|recuperacao]` (L34 §6,
 // rodada 15/16/17).
 //
@@ -134,9 +138,11 @@ const INTERPOR_FASE = P.get('fase') === 'recuperacao' ? 'recuperacao' : 'preparo
 
 const COLS = ESPELHO ? ESPELHO.tab.cols : CAIDO ? 14 : BANDEIRAS ? 10 : CORPOACORPO ? 20
   : FORADAVEZ ? 16 : OCUPACAO ? 16 : CAIDOFILA ? 12 : LEVANTAR ? 16 : OCUPACAODETECTOR ? 16
+  : PASSOCOLOSSAL ? 20
   : INTERPOR ? 10 : parseInt(P.get('cols') || '24', 10);
 const ROWS = ESPELHO ? ESPELHO.tab.rows : CAIDO ? 8 : BANDEIRAS ? 8 : CORPOACORPO ? 18
   : FORADAVEZ ? 12 : OCUPACAO ? 12 : CAIDOFILA ? 8 : LEVANTAR ? 10 : OCUPACAODETECTOR ? 10
+  : PASSOCOLOSSAL ? 18
   : INTERPOR ? 8 : parseInt(P.get('rows') || '16', 10);
 const NEVOA = P.get('nevoa') === '1';
 /**
@@ -1029,6 +1035,43 @@ if (OCUPACAODETECTOR) {
 }
 
 /**
+ * A CENA DO PASSO CERCADO `?cena=passocolossal` (Pendencias.md L93, rodada
+ * 53): `md` (Médio) nasce colado num Colossal (`mon-tarrasque`, raio 8 m) e
+ * declara um deslocamento puro de 1 hexágono. O passo estrito
+ * (`ocupadoPor`) não avança nenhum passo (tudo ao redor está no raio do
+ * Colossal), então o traçado cai na segunda passada (`casaExata`), que só
+ * veta a casa exata do Colossal e "acha" livre um destino que ainda está
+ * bem dentro do raio de verdade. `gravarToken` recusa esse destino, e é
+ * exatamente aí que os três problemas do `L93` se encontram: sem o
+ * conserto, `TOKENS` fica com a posição ilegal para sempre e o registro
+ * afirma um avanço que nunca aconteceu.
+ */
+if (PASSOCOLOSSAL) {
+  COMBS.length = 0; TOKENS.length = 0;
+  const posColossal = offsetParaAxial(9, 9);
+  const posMd = offsetParaAxial(10, 9);
+  COMBS.push({
+    id: 'co', encontro_id: ENC, nome: 'Peça co',
+    tipo: 'criatura', grupo: 'inimigo', monstro_id: 'mon-tarrasque', personagem_id: null,
+    pv_max: 999, pv_atual: 999, mana_max: null, mana_atual: null,
+    tick: 0, iniciativa: 20, acao: {}, dados: {},
+    condicoes: [], ativo: true, oculto: false, imagem: null, retrato: null,
+  });
+  COMBS.push({
+    id: 'md', encontro_id: ENC, nome: 'Peça md',
+    tipo: 'pc', grupo: 'aliado', monstro_id: null, personagem_id: null,
+    pv_max: 20, pv_atual: 20, mana_max: null, mana_atual: null,
+    tick: 0, iniciativa: 10, acao: {
+      golpes: [], livre: 0, desde: 0,
+      mov: { alvo: null, destino: offsetParaAxial(11, 9), modo: 'batalha', porTick: 1, auto: true },
+    }, dados: {},
+    condicoes: [], ativo: true, oculto: false, imagem: null, retrato: null,
+  });
+  TOKENS.push({ arena_id: ARENA, combatente_id: 'co', ...posColossal, movido_em: '2026-01-01T00:00:00Z' });
+  TOKENS.push({ arena_id: ARENA, combatente_id: 'md', ...posMd, movido_em: '2026-01-01T00:00:00Z' });
+}
+
+/**
  * A CENA DO INTERPOR `?cena=interpor[&fase=preparo|recuperacao]`: o golpe
  * adiado que fica no ar, e um terceiro token pronto para cobri-lo (L34 §6,
  * decidido em 07/09/2026, implementado nas rodadas 15/16/17: a régua, a
@@ -1308,7 +1351,7 @@ const TABELAS = {
   // A CENA DO CAÍDO começa no Tick 1: o teste avança um e o golpe vence no 2.
   encontros: [{ id: ENC, mesa_id: MESA, ativo: true,
     tick_atual: CAIDO ? 1 : FORADAVEZ ? 10 : OCUPACAO ? 10 : CAIDOFILA ? 0 : LEVANTAR ? 0
-      : OCUPACAODETECTOR ? 0 : TICK_CENA,
+      : OCUPACAODETECTOR ? 0 : PASSOCOLOSSAL ? 0 : TICK_CENA,
     rodada: 1, estado: null, ordem: 0, criado_em: '2026-01-01T00:00:00Z', nome: 'Cena' }],
   // `encontro_visao` é COMPUTADA, e por projeção de coluna. Ver `COLUNAS` abaixo.
   encontro_visao: [],
