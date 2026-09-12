@@ -415,7 +415,7 @@ que pedem uma escolha humana de verdade, que são 4% delas.
 próprio agregador calcula a partir do cenário PISO do avanço unificado (a versão
 pessimista, um cartão absorvido por parada e o resto sobrando), de um dia em que
 nenhum dos degraus existia em código. O código real que está no Grid hoje
-(`avancarAteParar`, `grid.astro:6073-6088`) entrega mais do que o PISO assumia:
+(`avancarAteParar`, `grid.astro:6118-6133`) entrega mais do que o PISO assumia:
 ele não absorve só o Tick morto, resolve TODO golpe vencido do Tick em que para
 (a medição de 06/09/2026, acima). Isso bate com o cenário SEM-GESTO do mesmo
 agregado, não o PISO, e é por isso que a tabela de PISO (que chegava a 573.255,
@@ -556,7 +556,7 @@ afirmações que o sustentavam.** As duas eram minhas e as duas estavam erradas:
 | o que eu escrevi | o que o código diz |
 |---|---|
 | "o Grid já guarda os dois separados, a conta da régua e o botão do mestre" | guarda **só com a bancada ligada**: `registrarLance` começa com `if (!LANCES_LIGADO) return;`, e `LANCES_LIGADO` é o parâmetro `?lances=1`, desligado por padrão. O destino é `window.__LANCES`, memória da página, e o único consumidor é `coletar-lances.mjs`. Não há coluna nem migração no Supabase. **Numa mesa de verdade os dois campos não coexistem em lugar nenhum, e a página descarta tudo ao fechar** |
-| "não há lance em que o veredito não seja derivável" | há **três caminhos que devolvem `null`**: `lance.ts:144` (`if (alvo.defesaBase == null) return null`), `grid.astro:10333` (o ternário exige `soma != null && def2 != null`) e `grid.astro:10239` (`defesaBase: r?.defesa ?? null`) |
+| "não há lance em que o veredito não seja derivável" | há **três caminhos que devolvem `null`**: `lance.ts:144` (`if (alvo.defesaBase == null) return null`), `grid.astro:10378` (o ternário exige `soma != null && def2 != null`) e `grid.astro:10284` (`defesaBase: r?.defesa ?? null`) |
 
 **O item passa a valer entre 0% e 17,0%**, e a banda não é de imprecisão, é de
 ignorância: o valor depende da taxa em que a mesa aperta um botão diferente do que a
@@ -747,9 +747,9 @@ mecanismo (calcular e destacar, e não mostrar três botões iguais para o mestr
 escolher do zero) já existe, e existia antes desta seção ser escrita.
 `pintarVeredito` lê `contaDoLance()` e, com os três números presentes, escreve a
 conta por extenso ("acerta (15 > 13)", "erra por 4: raspa (margem 2)") e destaca UM
-dos três botões (`sim.classList.toggle('primary', ...)`, `grid.astro:10445-10447`).
+dos três botões (`sim.classList.toggle('primary', ...)`, `grid.astro:10490-10492`).
 Sem soma ou sem Defesa, nenhum é destacado e a caixa diz o que falta
-(`if (L.soma == null || L.defesa == null)`, `grid.astro:10414`).
+(`if (L.soma == null || L.defesa == null)`, `grid.astro:10459`).
 
 **Nasceu em `67fbb29`** (21/08/2026, "a folha da ação, e quem rola os dados vira
 escolha da mesa"); **o guarda de nulo veio em `579581b`** (04/09/2026, "a tela
@@ -784,10 +784,10 @@ do golpe que o fez parar: **o cartão daquele golpe some junto com o clique.**
 
 **A pergunta era "quanto do item 5 o item 3 já absorve", e a resposta é: os dois
 já estão no mesmo commit, e não faltava construir nada entre eles.**
-`avancarAteParar` (`grid.astro:6072`), ao achar `instanteDeGolpe()`, não abre só
+`avancarAteParar` (`grid.astro:6117`), ao achar `instanteDeGolpe()`, não abre só
 a folha do golpe que fez o laço parar: ela itera **todas** as peças de pé e
 resolve **todos** os golpes de cada uma com Tick já vencido, um após o outro,
-antes de parar: `for (const c of emPe) {`, `grid.astro:6082`. O item 5 ("a
+antes de parar: `for (const c of emPe) {`, `grid.astro:6127`. O item 5 ("a
 parada abre todos os golpes do Tick, e não só um") descrevia exatamente este
 comportamento como refinamento SEPARADO do item 3; o código que foi escrito já
 nasceu com os dois juntos.
@@ -802,7 +802,7 @@ leva até o Tick (já contado à parte, na linha "o ⏭ que abre uma parada").
 **Uma lacuna real, pequena e que se autocorrige:** se uma mordida sem diálogo ou
 uma consulta acontecem no MESMO Tick em que um golpe também vence, o laço já
 retornou por essa razão antes de o `for` de cima rodar de novo para aquele Tick:
-`if (contadorDeMordidas() > mordidasAntes) return;`, `grid.astro:6095` · o cartão
+`if (contadorDeMordidas() > mordidasAntes) return;`, `grid.astro:6140` · o cartão
 fica vencido na tela por um instante, e não soma-se um clique extra: o próximo ⏭
 (que o mestre já ia dar para continuar) o resolve na hora. Não é gesto a mais, é
 ordem de exibição.

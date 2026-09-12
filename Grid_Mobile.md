@@ -54,7 +54,7 @@ mas só 388 deles estão na tela quando a página abre. A página inteira mede *
   propósito ("são os controles densos de /mesa e /admin, que viram grade se esticados"), e a
   barra da arena é feita quase só de `.btn.mini` e `.btn-fant`. No telefone a isenção se inverteu:
   **os campos incharam para 44px e os botões continuaram com 24**.
-- **O tabuleiro abre a 100% de zoom.** `caber()` (`grid.astro:6786` · `function caber`) só roda no botão ⤢, na tela
+- **O tabuleiro abre a 100% de zoom.** `caber()` (`grid.astro:6831` · `function caber`) só roda no botão ⤢, na tela
   cheia e no `resize`. Numa arena de 24 colunas isso é mostrar 6 hexágonos de 24: o jogador chega
   numa cena e não vê a cena.
 - **A folha da ação abre com 745px de altura numa janela de 844, e o conteúdo tem 813.** Ela já
@@ -64,7 +64,7 @@ mas só 388 deles estão na tela quando a página abre. A página inteira mede *
 - **`.al-sec` quebra em 4 fileiras** ("O acerto" e "O dano"), o rótulo quebra em duas linhas, e o
   campo do motivo corta o texto no meio ("por quê (vai para o registr…").
 - **O menu da peça mede 439px de altura**, 10 itens de 36px. Em retrato passa raspando; em
-  **paisagem** (390px de altura) não cabe, e o encaixe de `grid.astro:7746` (`innerHeight - r.height - 8`)
+  **paisagem** (390px de altura) não cabe, e o encaixe de `grid.astro:7791` (`innerHeight - r.height - 8`)
   devolve um topo **negativo**: o menu sai pela borda de cima e não há rolagem
   dentro dele.
 - **`.rg-acs` (`grid.astro:1964`) nasce com `opacity: 0` e só acende no `:hover`.** No dedo não há
@@ -199,7 +199,7 @@ Esta é a parte que o pedido nomeou, e a que tem o defeito mais caro já medido.
   parar de quebrar em duas linhas. O `al-motivo` ganha a linha inteira.
 - **`outra-dlg`.** Mesmo tratamento, é irmã da folha da ação.
 - **`arte-dlg`, o ajuste da arte.** O caso difícil, e o único que muda de ideia. Ele é **de
-  propósito** um painel não modal (`grid.astro:6962` · `function modoAjuste`), porque o gesto principal do ajuste é arrastar
+  propósito** um painel não modal (`grid.astro:7007` · `function modoAjuste`), porque o gesto principal do ajuste é arrastar
   a arte no tabuleiro **atrás** dele. No telefone não existe "atrás": a proposta é uma **meia
   folha** (40% da tela, o mapa vivo nos 60% de cima), com o d-pad e os controles de zoom e giro
   dentro dela.
@@ -224,7 +224,7 @@ Esta é a parte que o pedido nomeou, e a que tem o defeito mais caro já medido.
 - **Toque duplo = caber**, que é o par natural da pinça.
 - **Um dedo arrasta**: a peça, se começou em cima de uma peça (já funciona, por `pointerdown`); o
   mapa, no resto (a rolagem nativa do palco já dá conta).
-- **Toque longo** já abre o menu (`grid.astro:7581` · `toque longo`, 400ms com folga de 8px). Fica, e ganha
+- **Toque longo** já abre o menu (`grid.astro:7626` · `toque longo`, 400ms com folga de 8px). Fica, e ganha
   `navigator.vibrate(10)`, que é o que diz ao dedo que o gesto pegou.
 - **Escolher alvo no dedo**: depois do menu, o alvo é confirmado no primeiro `pointerdown`, sem
   prévia. Estender o padrão da **mira no dedo** que as Artes já usam (posicionar, ver, confirmar).
