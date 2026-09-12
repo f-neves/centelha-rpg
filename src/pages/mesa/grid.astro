@@ -2650,12 +2650,28 @@ const SETAS = [
    * nome e no `oculto` do inimigo escondido. As funções `jogador_*` conferem
    * quem está pedindo e escrevem só o que aquele verbo permite.
    *
+   * TOCA A CAMPAINHA NO SUCESSO desde o L87 (Pendencias.md, rodada 51):
+   * `pv_atual`, `mana_atual` e `condicoes` são sempre assunto de `combatentes`,
+   * então não há o que rotear, e antes desta rodada os 9 chamadores decidiam
+   * cada um por conta própria se avisava, quando avisava e em qual ordem. Dois
+   * não avisavam nunca (`declararAtaqueSimultaneo`, ao marcar a Investida, e
+   * `verificarEfeitos` com nenhuma Arte ativa no tabuleiro), e ninguém tinha
+   * como notar sem ler o corpo inteiro de cada chamador.
+   *
+   * NÃO É `avisarMudancas` (a versão que só toca se uma assinatura de estado
+   * mudou): aqui QUEM GRAVA SABE o que mudou, e o comentário de `avisarAgora`
+   * já explica por que "eu sei" e "descubra o quê" não são a mesma pergunta.
+   *
    * Do lado de cá, o formato de retorno é o mesmo dos dois lados (`{ error }`),
    * então o resto do arquivo não precisa saber quem está jogando.
    */
-  const gravarPeca = (cid: string, campos: Record<string, any>) => (MESTRE
-    ? SB.from('combatentes').update(campos).eq('id', cid)
-    : SB.rpc('jogador_muda_peca', { p_comb: cid, p_dados: campos }));
+  const gravarPeca = async (cid: string, campos: Record<string, any>): Promise<{ error: any }> => {
+    const { error } = await (MESTRE
+      ? SB.from('combatentes').update(campos).eq('id', cid)
+      : SB.rpc('jogador_muda_peca', { p_comb: cid, p_dados: campos }));
+    if (!error) avisarAgora('combatentes');
+    return { error };
+  };
 
   /**
    * L70: a conferência de ocupação mora AQUI, não em cada chamador. Nenhum dos
@@ -2783,6 +2799,12 @@ const SETAS = [
     // vez de escrever direto em `arena_tokens`, pelo mesmo motivo do
     // `margem`/`medida` acima.
     gravarToken,
+    // L87 (rodada 51): quem grava condição é quem tem a regra de aviso (a
+    // campainha mora em `gravarPeca` agora, não em cada chamador).
+    // `porCondicao`/`tirarCondicao`/`varrerCondicoesVencidas` pedem em vez de
+    // escrever direto em `combatentes.condicoes`, pelo mesmo motivo do
+    // `gravarToken` acima (L70, rodada 50): o campo que faltava nesse idioma.
+    gravarCondicao: (cid: string, condicoes: any[]) => gravarPeca(cid, { condicoes }),
     // As Artes escrevem em três lugares (o efeito, a peça invocada, a Vida e as
     // condições de quem foi mordido) e sempre terminam chamando um destes dois.
     // A campainha toca AQUI, e não dentro de cada escrita lá: assim o módulo das
@@ -6291,6 +6313,13 @@ const SETAS = [
    * MOMENTO: a marca tem de sair antes do passo do Tick, porque a peça que
    * atravessa o alvo neste Tick já não está preparando, e o
    * `varrerCondicoesVencidas` só roda no fim, junto dos efeitos.
+   *
+   * L87 (Pendencias.md, rodada 51): esta função nunca avisou a campainha
+   * sozinha, e um dos dois chamadores (`declararAtaqueSimultaneo`) também
+   * não avisava depois dela, um buraco de verdade medido nesta rodada
+   * (`gravarRelogio` avisa ANTES desta escrita, não depois). Fechado por
+   * `gravarPeca` avisar no próprio sucesso, e não por esta função ganhar
+   * uma chamada nova.
    */
   async function marcarInvestida(c: any, investindo: boolean, ateTick: number | null) {
     if (!c) return;
@@ -7392,8 +7421,8 @@ const SETAS = [
       c.condicoes = semCaido;
       const { error } = await gravarPeca(cid, { condicoes: semCaido });
       if (error) { c.condicoes = condAntes; return uiErro('Erro: ' + error.message); }
+      // L87: gravarPeca já toca a campainha no sucesso; aqui só o repaint local.
       pintarIniciativa(); pintarTokens();
-      avisarAgora('combatentes');
       await logar(c, `${c.nome} se levanta.`, { acao: null });
       return;
     }
@@ -7419,8 +7448,9 @@ const SETAS = [
       // visível pelo erro na tela.
       return uiErro(`${c.nome} levantou, mas a condição não gravou: ` + errCond.message);
     }
+    // L87: gravarPeca já toca a campainha no sucesso; porNoMapa já avisou
+    // 'tokens' pela posição. Aqui só o repaint local.
     pintarIniciativa(); pintarTokens();
-    avisarAgora('combatentes');
   }
 
   async function tirarDoMapa(cid: string, registrar = true) {
@@ -11036,6 +11066,10 @@ let roladoDano = '';
     // A fila também: Vida a zero tira da ordem na hora, sem esperar a próxima
     // repintura vinda de outro lugar.
     atualizarAnel(alvo); pintarLista(); pintarIniciativa();
+    // L87: FICA, mesmo com gravarPeca avisando sozinho agora. O lado jogador
+    // de baixarVida chama `jogador_dano` direto, sem passar por gravarPeca, e
+    // essa chamada é a ÚNICA campainha que aquele caminho tem. Tirar daria
+    // silêncio no jogador para consertar uma dobra do mestre.
     avisarAgora('combatentes');
     await logar(alvo, `${atacante.nome} ${opts.raspao ? 'raspou' : 'acertou'} ${alvo.nome}: `
       + `${liquido} de dano (${TIPO_LBL[tipo]})`
@@ -11067,9 +11101,12 @@ let roladoDano = '';
     // pública de qualquer jeito, e disso quem cuida é o `logar`.
     const publicavel = (c.tipo === 'pc' || REV.condInimigo) && !c.oculto;
     abrirCondDlg({
-      gravar: (id, conds) => gravarPeca(id, { condicoes: conds }) as any,
+      // L87: `gravarPeca` agora devolve `Promise<{ error }>` de verdade (antes
+      // era o builder do Supabase, daí o `as any` que morava aqui), e já toca
+      // a campainha sozinho: `repintar` só cuida do desenho local.
+      gravar: (id, conds) => gravarPeca(id, { condicoes: conds }),
       registrar: (txt, pub) => logar(c, txt, { acao: null, pub }),
-      repintar: () => { pintarLista(); avisarAgora('combatentes'); },
+      repintar: () => { pintarLista(); },
       uiErro,
     }, c, publicavel);
   }
@@ -11086,8 +11123,8 @@ let roladoDano = '';
     const { error } = await gravarPeca(cid, { pv_atual: pv });
     if (error) return uiErro('Erro: ' + error.message);
     c.pv_atual = pv;
+    // L87: gravarPeca já toca a campainha no sucesso.
     atualizarAnel(c); pintarLista();
-    avisarAgora('combatentes');
     await logar(c, `${c.nome} recuperou ${q}${c.pv_max ? ` · ${pv}/${c.pv_max}` : ''}`,
       { acao: 'vida', cid, de: antesPv, para: pv });
     // Depois do registro, e não antes: quem estava no chão volta à fila aqui, e
@@ -11118,6 +11155,8 @@ let roladoDano = '';
     const r = await baixarVida(c, q);
     if (r.erro) return uiErro('Erro: ' + r.erro);
     atualizarAnel(c); pintarLista();
+    // L87: FICA, pelo mesmo motivo de aplicarDano (baixarVida no jogador não
+    // passa por gravarPeca).
     avisarAgora('combatentes');
     const causa = (v.causa || '').trim();
     await logar(c, `${c.nome} perdeu ${q} de Vida${causa ? ` (${causa})` : ''}` + r.estado, r.inverso);
@@ -11153,6 +11192,11 @@ let roladoDano = '';
     const max = MESTRE ? Math.max(0, parseInt(v.max, 10) || 0) : teto;
     const atual = Math.max(0, Math.min(max, parseInt(v.atual, 10) || 0));
     const antes = c.mana_atual ?? 0;
+    // L87: FICA a campainha explícita abaixo. O ramo MESTRE escreve
+    // `mana_max` e `mana_atual` juntos direto em `SB`, sem passar por
+    // `gravarPeca` (o campo composto não cabe na chamada de hoje), então é
+    // esta linha que avisa aquele ramo. Só o ramo JOGADOR (que usa
+    // `gravarPeca`) dobra: sinalizado ao Arquiteto, não resolvido sozinha.
     const { error } = MESTRE
       ? await SB.from('combatentes').update({ mana_max: max, mana_atual: atual }).eq('id', cid)
       : await gravarPeca(cid, { mana_atual: atual });
@@ -11226,8 +11270,8 @@ let roladoDano = '';
     const { error } = await gravarPeca(cid, { mana_atual: atual });
     if (error) return;
     c.mana_atual = atual;
+    // L87: gravarPeca já toca a campainha no sucesso.
     atualizarMana(c); pintarLista();
-    avisarAgora('combatentes');
   }
 
   /**
@@ -11430,8 +11474,8 @@ let roladoDano = '';
     const { error } = await gravarPeca(cid, { pv_atual: pv });
     if (error) return uiErro('Erro: ' + error.message);
     c.pv_atual = pv;
+    // L87: gravarPeca já toca a campainha no sucesso.
     atualizarAnel(c); pintarLista(); pintarIniciativa();
-    avisarAgora('combatentes');
   }
 
   /** Põe o "auto" de volta ao valor de antes. Usado só pelo desfazer. */

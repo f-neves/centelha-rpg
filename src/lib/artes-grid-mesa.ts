@@ -90,6 +90,18 @@ export interface CtxGrid {
    * conferir que não veio `error`.
    */
   gravarToken: (cid: string, q: number, r: number, em: string) => Promise<{ data: any; error: any }>;
+  /**
+   * Grava a lista de condições inteira de um combatente, com a mesma
+   * campainha que `gravarPeca` toca no sucesso (L87, `grid.astro`, rodada
+   * 51): quem sabe se algo mudou é quem escreve, e antes desta função as
+   * três escritas de condição daqui (`porCondicao`, `tirarCondicao`,
+   * `varrerCondicoesVencidas`) iam direto por `ctx.SB`, sem avisar ninguém
+   * além de quem chamasse `ctx.repintar()` depois. Devolve `{ error }`;
+   * sucesso não mexe em `c.condicoes` sozinho, quem chama grava por conta
+   * própria só depois de conferir que não veio `error` (mesmo desenho do
+   * `gravarToken` acima).
+   */
+  gravarCondicao: (cid: string, condicoes: any[]) => Promise<{ error: any }>;
   logar: (c: any, txt: string, extra: Record<string, any>) => Promise<void>;
   recarregar: () => Promise<void>;
   repintar: () => void;
@@ -1447,15 +1459,21 @@ export async function gravarEfeito(ctx: CtxGrid, c: any, plano: Plano, extra: {
  * O `ate` viaja junto da condição porque quem a tira é o relógio, e não quem a
  * pôs: o rastreador já soma condições sem saber de onde vieram, e assim a
  * penalidade do Sopro do Norte vale na aba Combate sem nenhuma linha nova lá.
+ *
+ * L87 (rodada 51): grava por `ctx.gravarCondicao`, não mais por `ctx.SB`
+ * direto. A campainha mora lá agora, e não em quem chama `ctx.repintar()`
+ * depois (que continua existindo, para a repintura LOCAL, mas não é mais
+ * quem avisa a mesa).
  */
 async function porCondicao(ctx: CtxGrid, c: any, id: string, turnos: number): Promise<void> {
   if (!c || !id) return;
   const ate = tickAtual(ctx) + Math.max(1, turnos) * TICKS_POR_TURNO;
   const atuais = (c.condicoes || []).filter((k: any) => k.id !== id);
   const nova = { id, ate, porArte: true };
-  const { error } = await ctx.SB.from('combatentes').update({ condicoes: [...atuais, nova] }).eq('id', c.id);
+  const novas = [...atuais, nova];
+  const { error } = await ctx.gravarCondicao(c.id, novas);
   if (error) return;
-  c.condicoes = [...atuais, nova];
+  c.condicoes = novas;
   MORDIDAS += 1;
 }
 
@@ -1463,7 +1481,8 @@ async function tirarCondicao(ctx: CtxGrid, c: any, id: string): Promise<void> {
   if (!c || !id) return;
   const restam = (c.condicoes || []).filter((k: any) => k.id !== id);
   if (restam.length === (c.condicoes || []).length) return;
-  await ctx.SB.from('combatentes').update({ condicoes: restam }).eq('id', c.id);
+  const { error } = await ctx.gravarCondicao(c.id, restam);
+  if (error) return;
   c.condicoes = restam;
 }
 
@@ -1839,7 +1858,14 @@ async function varrerCondicoesVencidas(ctx: CtxGrid, t: number): Promise<void> {
     const venceram = atuais.filter((k: any) => k?.ate != null && Number(k.ate) <= t);
     if (!venceram.length) continue;
     const restam = atuais.filter((k: any) => !venceram.includes(k));
-    const { error } = await ctx.SB.from('combatentes').update({ condicoes: restam }).eq('id', c.id);
+    // L87: por `ctx.gravarCondicao`, que avisa sozinho. Antes, esta escrita
+    // só chegava a avisar a mesa se `verificarEfeitos` alcançasse um
+    // `ctx.repintar()` depois dela, e o `if (!ATIVOS.length) return` logo
+    // acima dela na chamadora fazia isso NUNCA acontecer sem Arte ativa no
+    // tabuleiro (o caso comum): condição vencia, saía, e nenhum assinante
+    // de `combatentes` ficava sabendo. Agora o aviso sai daqui, e não
+    // depende mais de quem chamou continuar até o repaint.
+    const { error } = await ctx.gravarCondicao(c.id, restam);
     if (error) continue;
     c.condicoes = restam;
     for (const k of venceram) {

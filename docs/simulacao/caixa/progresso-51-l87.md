@@ -92,3 +92,71 @@ Sinal de vida da Executora. Uma linha por etapa pequena, hora real (`date +%H:%M
   comportamentos, ou os dois `gravarCondicao` continuam distintos por razão
   escrita. Não decidi isso, só medi.
 
+- 03:34 · DECISÃO DO ARQUITETO: as duas campainhas não são alternativas.
+  `avisarAgora` já chama `marcarEstado()` (o "por conferido" que impede
+  `avisarMudancas` de tocar de novo pela mesma mudança), então o desenho é
+  `gravarPeca` avisar com `avisarAgora('combatentes')` no sucesso, e o
+  `ctx.repintar()` das Artes continuar existindo só para o que MAIS muda
+  numa conjuração (as manchas, a névoa), sem precisar recuar.
+
+  EIXO ÚNICO ESCRITO (a rodada inteira é um estrangulamento, não cinco):
+  - `gravarPeca` (`grid.astro:2656`) virou `async`, de verdade: espera os
+    dois backends, confere `error`, chama `avisarAgora('combatentes')` só
+    no sucesso, devolve `{ error }`. Antes devolvia o builder do Supabase
+    cru (por isso o `as any` que morava em `abrirCondicoes`, removido).
+  - `gravarCondicao` nova em `CtxGrid`/`ctxArtes()`
+    (`grid.astro:2801`/`artes-grid-mesa.ts:92`), mesmo idioma do
+    `gravarToken` (L70): `(cid, condicoes) => gravarPeca(cid, {condicoes})`.
+  - `porCondicao`/`tirarCondicao`/`varrerCondicoesVencidas`
+    (`artes-grid-mesa.ts`) passam a chamar `ctx.gravarCondicao` em vez de
+    `ctx.SB.from('combatentes').update(...)` direto. Isso fecha o buraco do
+    `varrerCondicoesVencidas` (a condição vencida que só avisava se
+    `verificarEfeitos` chegasse ao `repintar()`, e o `if (!ATIVOS.length)
+    return` fazia isso nunca acontecer sem Arte ativa): agora o aviso sai
+    na hora da escrita, não depende de mais nada acontecer depois.
+  - 7 dos 9 chamadores do lado do Grid perderam a chamada explícita a
+    `avisarAgora('combatentes')` que existia SÓ por causa desta escrita
+    (`levantarDoChao` os dois, `curar`, `gastarMana`, `devolverVida`, e o
+    `repintar:` de `abrirCondicoes`).
+  - 2 FICARAM com a chamada explícita, e registrados com comentário
+    dizendo por quê: `aplicarDano`/`tirarVida` (o lado jogador de
+    `baixarVida` chama `jogador_dano` direto, sem passar por `gravarPeca`,
+    e aquela é a ÚNICA campainha que aquele caminho tem) e `ajustarMana` (o
+    ramo MESTRE escreve `mana_max`+`mana_atual` juntos direto em `SB`,
+    também sem passar por `gravarPeca`). Os dois são "na dúvida, deixe os
+    dois": dobra no ramo que já usa `gravarPeca`, sem risco de silêncio no
+    ramo que não usa.
+  - `marcarInvestida` ganhou o comentário explicando o buraco que fechou
+    (a declaração de Investida nunca avisava essa escrita específica).
+
+  TESTE: `test-arte-na-mesa.mjs` tinha um `ctx` de mentira sem
+  `gravarCondicao` (`CtxGrid` ganhou o campo como obrigatório), e a Arte
+  "Prisão" do próprio teste exercita `porCondicao`: faltava e quebrava em
+  runtime (sem checagem de tipo nesses testes, bundlados por esbuild). Somei
+  o mock (grava no banco de mentira, sem campainha: não há mesa de verdade
+  ali para ouvir). 33 asserções continuam verdes.
+
+  BATERIA COMPLETA RODADA: `test-arte-na-mesa` (33), `test-artes-grid`,
+  `test-l70-empurrao` (15), `test-l67-corpoacorpo-mesa`,
+  `test-l68-foradavez-mesa`, `test-l70-ocupacao-mesa`,
+  `test-l84-caidofila-mesa`, `test-l84-levantar-mesa`,
+  `test-grid-simultaneo` (79) e `test-grid.mjs` todos verdes. `test-grid.mjs`
+  falhou (1 ou 2 asserções, flakiness do arrasto por mouse simulado) em duas
+  das quatro rodadas, e passou nas outras duas; confirmado pré-existente via
+  `git stash` dos meus dois arquivos (`grid.astro`/`artes-grid-mesa.ts`): a
+  MESMA falha aparece no código de ANTES desta rodada, sem eu ter tocado
+  `porNoMapa`/`gravarToken` (o caminho que aquele teste mede) nesta rodada.
+
+  `npm run validate`: único vermelho é o portão de procedência, esperado.
+  119 citações movidas (edição grande, `gravarPeca` perto do topo do
+  arquivo desloca tudo abaixo), em `ESTADO.md`, `Pendencias.md`,
+  `CONJURACAO.md`, `Grid_Mobile.md`, `CATALOGO.md`, `VOZ.md`,
+  `CONTEXTO.md`, `Auditoria_Tecnica.md`. Não toquei nenhum. Commit pronto,
+  aguardando reponte.
+
+- 03:36 · commit BLOQUEADO pelo gancho de pre-commit, como esperado (o
+  `validate` do gancho vê as 119 citações acima). Mensagem enviada ao
+  Arquiteto com a contagem e os 8 documentos. Parado aqui, sem tocar nos
+  documentos e sem `--no-verify`.
+
+

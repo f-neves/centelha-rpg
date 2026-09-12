@@ -184,6 +184,13 @@ function cena({ tick = 3 } = {}) {
     recarregar: async () => {},
     repintar: () => {},
     repintarEfeitos: () => {},
+    // L87: mesmo gesto do `gravarPeca` real (grid.astro), só que contra o
+    // banco de mentira: grava e devolve `{ error }`, sem repintar nem avisar
+    // campainha nenhuma (não há mesa de verdade aqui para ouvir).
+    gravarCondicao: async (cid, condicoes) => {
+      const { error } = await banco.SB.from('combatentes').update({ condicoes }).eq('id', cid);
+      return { error };
+    },
   };
   return { banco, ctx, conjurador, alvo, registro, relogio };
 }
