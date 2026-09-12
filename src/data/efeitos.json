@@ -4731,11 +4731,13 @@
       },
       {
         "nome": "Cura",
-        "tipo": "padrao"
+        "tipo": "fixo",
+        "valor": "1 PV por nível da Arte",
+        "nota": "2 de Mana por nível, como toda cura"
       }
     ],
     "efeito": "Cura de uma vez todo mundo que estiver na área, aliado ou não, amigo ou inimigo. Não dá para separar: quem está dentro sara.",
-    "notas": "É a exceção que a Cura não tem: curar em Área. O valor continua sendo dividido entre todos os que estiverem dentro.",
+    "notas": "É a exceção que a Cura não tem: curar em Área. O valor NÃO é dividido: cada um que estiver dentro recebe a cura inteira, e o nível é o da Arte de quem conjurou, a mesma conta do Acelerar a Cura. Em troca, curar a multidão custa o mesmo por alvo que curar uma pessoa só, e isso está anotado como provavelmente barato demais.",
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
@@ -6031,7 +6033,7 @@
       {
         "nome": "Cura",
         "tipo": "fixo",
-        "valor": "1 PV por nível",
+        "valor": "1 PV por nível da Arte",
         "nota": "2 de Mana por nível, como toda cura"
       },
       {
@@ -6041,7 +6043,7 @@
       }
     ],
     "efeito": "A Vida não fecha o ferimento: ela apressa o corpo a fechá-lo sozinho, até o dobro da velocidade natural. Com Vida 1 ou 2 só acelera o que o corpo já sabe curar depressa, ou seja, dano de Impacto e ferimentos não letais. Curar dano Letal por esta via exige Vida 3.",
-    "notas": "Cura é sempre mais cara: 2 de Mana por nível, como na Arte de Cura. E aqui rende menos, 1 PV por nível em vez da régua dela.",
+    "notas": "Cura é sempre mais cara: 2 de Mana por nível, como na Arte de Cura. E aqui rende menos, 1 PV por nível da Arte (o nível investido por quem conjura, o mesmo que a prosa chama de Vida 1, 2 ou 3) em vez da régua dela.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",

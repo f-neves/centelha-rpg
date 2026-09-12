@@ -128,22 +128,26 @@ veredito `873b772`) e a **55** (`L86a`, a Arte `Mão Firme` curando no tabuleiro
 resíduo mora no `Pendencias.md`, nos itens de mesmo nome.
 
 **A próxima é o `L86b`:** as outras três Artes de cura, e nenhuma delas é só fórmula.
-`acelerar-a-cura` espera a migração 38 abaixo; `cura-guardada` precisa de um gatilho que o motor
-não tem (`armadilha`) e de uma ação de jogo que não existe; `maos-sobre-a-multidao` é
-`forma: "zona"`, e zona não tem caminho de resolução nenhum, nem para dano nem para cura.
+`acelerar-a-cura` é a única pronta para código, com a conta confirmada e a migração 38 escrita;
+`cura-guardada` precisa de um gatilho que o motor não tem (`armadilha`), de uma ação de jogo que não
+existe e da definição de "1 PV por ponto", que não está escrita em lugar nenhum;
+`maos-sobre-a-multidao` é `forma: "zona"`, e zona não tem caminho de resolução nenhum, nem para dano
+nem para cura.
 
 ### O PRÓXIMO PASSO, em uma linha
 
-**Levar ao humano as duas perguntas abertas do `L86`, em múltipla escolha, ANTES de escrever a
-migração 38.** Não é ordem de conveniência, é dependência: a primeira das duas pergunta o que
-"nível" indexa no `acelerar-a-cura`, e **a coluna `nivel_arte` foi escolhida sobre uma das duas
-respostas possíveis**. Se a resposta for a outra (o grau do parâmetro Cura, e não o nível da
-Arte), o que precisa ser guardado é outro número e a coluna decidida é a errada. A decisão do
-humano continua valendo para a leitura em que ela foi tomada; o que falta é confirmar a leitura.
+**Abrir a rodada 56 no `L86b`, começando pelo `acelerar-a-cura`**, que é o único dos três com
+caminho de disparo e com a conta definida. As duas perguntas que travavam o item foram respondidas
+em 12/09/2026 (nível é o da Arte de quem conjura; a cura em área não divide), as duas entraram no
+`src/data/efeitos.json`, e `supabase/migracao-38.sql` está escrito e carimbado, esperando a mão do
+humano no SQL Editor. → `Pendencias.md` **L86**.
 
-Com as duas respondidas, a ordem é: escrever o arquivo da migração 38 (para a mão dele, nunca
-rodada daqui), e abrir a rodada 56 no `L86b`. O `maos-sobre-a-multidao` não depende da migração,
-mas depende da segunda pergunta e do caminho de resolução de zona, que não existe.
+O que a rodada 56 tem de fazer, pela ordem: gravar `nivel_arte` em `gravarEfeito`, degradando sem
+quebrar enquanto a migração não tiver rodado; ler a coluna no laço por-turno, com nulo significando
+"não sei" e nunca 1; e o teto, que já mora em `curarPv`. O `maos-sobre-a-multidao` **não** entra:
+ele depende de um caminho de resolução para `forma: "zona"`, que não existe nem para dano nem para
+cura, e isso é desenho antes de código. O `cura-guardada` continua sem gatilho `armadilha` e sem a
+definição de "1 PV por ponto".
 
 ## O congelamento
 
@@ -176,9 +180,8 @@ passagem vira linha no `Pendencias.md` e para ali.
   `docs/simulacao/09-bateria-grande.md`, seção "modo `site`"; `ESTADO.md`, linha "os 34,0% que
   o modo `site` valia".
 - **Rodar a migração 33 em produção** · os três itens do gatilho dela estão satisfeitos.
-- **Duas perguntas ficaram abertas DENTRO de uma decisão que a mesa já tomou em 12/09/2026**, e
-  não são reabertura dela: o que "nível" indexa no `acelerar-a-cura`, e se a cura em área divide
-  o valor entre quem está dentro. As duas travam o `L86b`. → `Pendencias.md` **L86**.
+- **Rodar a 37 e a 38**, que não dependem de decisão nenhuma, só da mão dele no SQL Editor. A 38 não
+  muda comportamento sozinha: ela é o chão da cura por turno que escala com o nível de quem conjura.
 
 ## As decisões da mesa que não moram em arquivo nenhum
 
@@ -232,10 +235,11 @@ aplicadas**. A **33 é a única não aplicada**, e o que faltava nela era a tela
 falta a decisão do humano de rodar. A **34 não existe** como arquivo. A **37 está escrita e
 espera a mesa**, sem risco de formato. → **L42**, **L45**.
 
-**A 38 foi DECIDIDA em 12/09/2026 e NÃO está escrita**, de propósito: a coluna `nivel_arte` na
-`arena_efeitos`, para a linha do efeito guardar o nível da Arte de quem conjurou. Três coisas
-têm de entrar nela junto com a coluna, e estão listadas no **L86**. A fila para a mão do humano
-no SQL Editor é, então, **33, 37 e 38**.
+**A 38 está ESCRITA e carimbada desde 12/09/2026**, depois de as duas perguntas do `L86` serem
+respondidas: a coluna `nivel_arte` na `arena_efeitos`, nula de propósito e sem `default`, para a
+linha do efeito guardar o nível da Arte de quem conjurou. As três coisas que tinham de entrar junto
+com a coluna estão nela, e o cabeçalho do arquivo diz o que ela NÃO mexe. A fila para a mão do
+humano no SQL Editor é, então, **33, 37 e 38**.
 
 ## O mapa dos documentos
 

@@ -6156,6 +6156,42 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   anotação do resíduo do humano lê como se não dividisse. As duas são da rodada do
   `maos-sobre-a-multidao`.
 
+  **AS DUAS FORAM RESPONDIDAS PELO HUMANO em 12/09/2026, na ordem que este item exigia: antes de a
+  migração 38 existir.**
+
+  1. **"Nível" é o NÍVEL DA ARTE de quem conjura**, o que a prosa do Efeito chama de "Com Vida 1 ou 2"
+     e "exige Vida 3", e não o grau do parâmetro Cura. A leitura sobre a qual a coluna `nivel_arte`
+     havia sido escolhida é a confirmada, então a decisão anterior fica de pé inteira e a coluna é o
+     número certo. O que pesou contra, e ele escolheu comprar: a nota de Mana do mesmo Efeito ("2 de
+     Mana por nível, como toda cura") continua soando como grau comprado.
+  2. **A cura em área NÃO divide**: cada um que estiver dentro do `maos-sobre-a-multidao` recebe a cura
+     inteira, 1 PV por nível da Arte. É a leitura da anotação de resíduo do próprio humano, e a que
+     sustenta o motivo da decisão de 12/09 (a diferença entre as duas Artes é o alcance, não um número
+     novo). O `notas` do Efeito dizia o contrário e foi corrigido.
+
+  **AS DUAS ENTRARAM NO DADO JUNTO, que é a lição da correção acima e da rodada 54**, em
+  `src/data/efeitos.json`: o parâmetro Cura do `maos-sobre-a-multidao` deixou de ser `tipo: padrao` sem
+  valor e passou a `tipo: fixo`, `valor: "1 PV por nível da Arte"`, com a mesma nota de Mana do
+  `acelerar-a-cura`; o `notas` dele passou a dizer que o valor não é dividido e por que; e o `valor` do
+  `acelerar-a-cura` deixou de dizer só "1 PV por nível" para dizer "por nível da Arte", que é a
+  ambiguidade inteira que custou esta pergunta, e o `notas` dele ganhou a mesma explicação entre
+  parênteses. `npm run validate` verde depois das quatro escritas.
+
+  **A MIGRAÇÃO 38 ESTÁ ESCRITA e espera a mão do humano no SQL Editor** (`supabase/migracao-38.sql`,
+  carimbada): coluna `nivel_arte` em `arena_efeitos`, **nula de propósito e sem `default`** (nulo é
+  "esta linha não sabe", e `default 1` seria o zero ambíguo outra vez), mais o `comment on column` dela
+  e o da vizinha `nivel`, que hoje se descreve como "o nível efetivo da conjuração" e é a constante do
+  catálogo. Os três itens exigidos acima estão no arquivo, e ele também registra o que NÃO muda: a view
+  `efeito_visao` não ganha a coluna (o que o jogador vê é decisão de jogo), o Dissipar continua lendo
+  `nivel`, e nenhuma RLS nova. A fila para a mão dele passa a ser **33, 37 e 38**.
+
+  **RESÍDUO QUE A ESCRITA NO DADO COMPROU, e ele é do motor e não da regra:** com a Cura do
+  `maos-sobre-a-multidao` virando `fixo`, ela sai de `parametrosAjustaveis` e **deixa de custar Mana
+  em `custoDe`**, como já acontece com o `acelerar-a-cura` e o `dreno`, que também têm Cura `fixo` e
+  nota de "2 de Mana por nível". A nota diz um preço que o motor não cobra em nenhuma das três. Não é
+  regressão desta escrita (é a medida que esta rodada já registrou acima, agora com uma Arte a mais
+  dentro dela) e **não se conserta aqui**: fica anotado com o nome de quem o denuncia.
+
   **O `L86a` FECHOU em 12/09/2026, rodada 55, veredito PROCEDE SEM RESSALVA em `55-revisora.md`
   (sha `3cc14b5`), código em `57f6bcb`.** O `mao-firme` cura 1 PV por turno no tabuleiro, pelo mesmo
   fluxo de confirmação do dano; a régua (`curaDoEfeito`) só lê campo estruturado e devolve nulo nas
