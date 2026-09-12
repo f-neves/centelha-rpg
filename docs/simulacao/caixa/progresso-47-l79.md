@@ -138,3 +138,10 @@ não só por parte), no instante em que ela fecha, hora lida da máquina (`date 
   Registrado em `npm run validate` (entre `test-procedencia` e `test-rodada` no
   `package.json`), e o próprio `test-portoes.mjs` confirma que o novo teste está no
   portão (não sobrou órfão). `npm run validate` completo: verde, saída 0.
+- 21:27 · COMMIT DA PARTE 2 FEITO: `8fb54f4`, pathspec em `package.json` +
+  `scripts/test-travessao-capitulos.mjs` + este arquivo, nada mais misturado.
+  `CATALOGO.md` do Arquiteto seguia sujo de novo (ele deve ter mexido entre as duas
+  partes); repeti o `git stash push -u -m ... -- docs/simulacao/CATALOGO.md`, rebase
+  limpo, push confirmado (`8bcc1d1..8fb54f4`), `git rev-list --count
+  origin/main..HEAD` = 0, e `git stash pop` devolveu `CATALOGO.md` intocado. As duas
+  partes do L79 estão em `main`. Preparando o aviso.
