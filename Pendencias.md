@@ -6200,6 +6200,30 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **O `L86` NÃO fecha**: o `L86b` continua aberto com as outras três Artes, e o resíduo abaixo
   mantém o próprio `mao-firme` fora de "pronto".
 
+  **ESTADO DO `L86b` EM 12/09/2026, e ele já não é "as outras três" por igual.** O
+  `acelerar-a-cura` tem código empurrado (rodada 56, `65d9b7a`) e **espera o veredito da Revisora**:
+  ele cura pelo `nivel_arte` da linha, a régua ganhou o campo estruturado `porNivel` (gêmeo de
+  `pontos`, e `pontos` vence em silêncio se os dois existirem), e a cena avisa uma vez por turno
+  quando a cura era devida e a linha não guarda o nível. **Nada disso funciona em produção antes de a
+  migração 38 rodar**, e a degradação é de propósito. Os outros dois continuam onde estavam: o
+  `cura-guardada` sem o gatilho `armadilha` e sem a definição de "1 PV por ponto", e o
+  `maos-sobre-a-multidao` sem caminho de resolução para `forma: "zona"`, com o parâmetro Cura dele
+  deixado SEM `porNivel` de propósito, porque campo sem leitor é o contra que a mesa já comprou uma
+  vez neste mesmo item.
+
+  **E uma ferramenta apareceu mentindo no meio disto, consertada na mesma rodada:** o
+  `reapontar.mjs` dizia, no comentário da própria autoconferência, que o mapa dele é HEAD para árvore,
+  e o código lia `git diff -U0`, que é ÍNDICE para árvore. Com o trabalho da Executora no `git add`, ele
+  escreveu 160 onde a âncora estava em 168 e 283 onde ela estava em 312 · deslocamento pequeno demais,
+  porque o índice já continha a maior parte do diff. **A direção da falha é a pior que existe aqui:
+  citação nova e errada deixa o portão VERDE, e a velha ao menos fica vermelha.** Ela reverteu antes de
+  commitar, o que foi a decisão certa, e o conserto (`git diff HEAD -U0`) entrou em `65d9b7a`.
+
+  **Ruído de CI para não ser caçado como defeito:** o job `Smoke · test-grid` falhou no `ea8a899`
+  (commit de documento, que não toca o Grid) com "a peça saiu do lugar" e "mover custa de 2 a 7 idas ao
+  banco (foram 0)", e passou no `bcc40bd`, cujo código de Grid é o mesmo. É instabilidade do job de
+  navegador, não regressão, e não abre frente nenhuma.
+
   **A ESCALA QUE A REVISORA ACHOU, e eu a reenquadro depois de conferir no disco, porque do jeito que
   ela saiu manda alguém caçar um defeito que não existe.** Ela achou duas outras contas de teto fora do
   alcance do teste (que confere só o corpo do `curar()`), e leu a primeira como divergência de
