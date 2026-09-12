@@ -134,7 +134,7 @@ ação de magia e o mestre manda deslocar, o deslocamento sai como caminhada, se
 Para usar Deslocamento de Batalha ou Corrida, é preciso interromper a Preparação.
 
 **Isto é estado NOVO, e não a regra de hoje.** Hoje quem está comprometido com um gesto não vê
-nem a caixa de modo: `moverSimultaneo` (`grid.astro:6153` · `function moverSimultaneo`) desvia direto para um
+nem a caixa de modo: `moverSimultaneo` (`grid.astro:6232` · `function moverSimultaneo`) desvia direto para um
 posicionamento cru, e a regra publicada para quem se mexe fora da vez no meio de um gesto é o
 **desvio de emergência**, a 1 Tick por metro (`src/content/chapters/combate.md:181-184`).
 
@@ -149,7 +149,7 @@ físico" de "Preparação de Arte" em todo lugar que hoje pergunta só `faseEm(.
 
 **Existe precedente para forçar modo sem perguntar**, e vale citar porque é o mecanismo que a
 implementação vai reusar: a fuga automática de criatura já monta o movimento com `modo: 'corrida'`
-direto, sem diálogo (`grid.astro:6086` · `modo: 'corrida'`).
+direto, sem diálogo (`grid.astro:6165` · `modo: 'corrida'`).
 
 #### Interromper por vontade própria
 
@@ -159,7 +159,7 @@ Preparação, que se perdem.
 **O Abortar já existe, publicado e implementado**, e é ele que se estende: `regras.json:2497-2508`
 · só na fase de Preparo, custa 1 Tick por metro para a saída, e **perde o investido**
 (`perdeOInvestido: true`). O código é `podeAbortar`/`abrirAbortar` e o botão "✋ Abortar o gesto"
-(`grid.astro:7623` · `Abortar o gesto`).
+(`grid.astro:7708` · `Abortar o gesto`).
 
 **O que muda:** hoje o Abortar serve só a ação física, e a lista `nuncaPara: "atacar"` o proíbe
 para ataque. **A Preparação de Arte entra como fase abortável**, com a mesma regra de perder o
