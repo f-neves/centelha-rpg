@@ -53,16 +53,18 @@ das quinze**, porque a segunda bateria não acontece e ele deixou de ser o alvo.
 → estado técnico completo, com os shas: `Pendencias.md` **L22**, **L25**;
 `src/data/regras.json`, campo `bandeiras.notaEstado`.
 
-**`teto6` continua desligado, e o que o precede não é código, é definição.** A frase que
-justifica a espera ("sentinela e magnitude dividem o mesmo campo") **não está presa a
-arquivo e linha em documento nenhum** — levantado em 10/09/2026, é a única das nove
-bandeiras da tabela do `02-projeto-harness.md:1818-1827` sem citação de código ao lado. A
-flag existe desligada (`src/data/regras.json:2537`) e não é lida em lugar nenhum do motor;
-os dois pontos que somam Defesa sem teto hoje são `somarCondicoes` (`src/lib/mesa-core.ts:178`)
-e `defesaPerdida` (`src/lib/combate-tempo.ts:696`, com comentário próprio dizendo que acumula
-sem teto). **Aplicar o teto seria pequeno; achar o que a frase quer dizer é o que bloqueia**,
-e isso é pergunta para o humano, não investigação de código. → **L64**, com o levantamento
-inteiro e as três respostas possíveis.
+**`teto6` continua desligado, e o que o precede é trabalho, não mais pergunta.** A frase que
+justificava a espera ("sentinela e magnitude dividem o mesmo campo") **foi respondida pelo humano
+em 10/09/2026**: o campo é `Condicao.velocidade`, e a sentinela é o `-99` da condição
+`fora-do-tempo`, que quer dizer **não age** e não "age muito devagar". Quatro das 55 condições usam
+o campo, três carregam grandeza de verdade, e nada no formato as distingue · um teto ingênuo ali
+transforma "não age" em "age seis Ticks mais rápido", sem exceção e sem teste vermelho.
+
+**E em 12/09/2026 o escopo foi decidido: SÓ SEPARAR.** Marca própria para "não age", `velocidade`
+só com grandeza, o consumidor lendo a marca antes da conta, e o teste afirmando a marca em vez do
+valor. **O Grid continua ignorando o campo de propósito** (então "Fora do tempo" segue sem mexer no
+relógio do Simultâneo), e `teto6` segue desligado. O contra comprado: esta entrega não aparece para
+quem joga. → **L64**, com o tamanho medido e as duas metades.
 
 ## Comando por voz · a frente, e ela já tem código
 
@@ -177,12 +179,11 @@ passagem vira linha no `Pendencias.md` e para ali.
 
 ## O que espera decisão da mesa, sem dono de código ainda
 
-- **O que "sentinela e magnitude no mesmo campo" quer dizer** · precede `teto6`, e não está
-  escrito em lugar nenhum. Ver acima.
-- **A conversa do modo `site`** (a folha abrindo já rolada, o dado digitado em vez do gesto de
-  rolar) · os números do que ela economizaria estão medidos, a decisão de construir não. →
-  `docs/simulacao/09-bateria-grande.md`, seção "modo `site`"; `ESTADO.md`, linha "os 34,0% que
-  o modo `site` valia".
+- **Quem digita o total do dado**, que é o que sobrou DENTRO da decisão do modo `site` de
+  12/09/2026 e não é reabertura dela. Hoje é o mestre, e os 398.476 gestos medidos (34,0% do
+  trabalho dele) são todos dele; a outra leitura é cada jogador informar o total na ficha dele, o
+  que não muda o dado na mão nem a conta e tira trabalho de quem é um passando para quem é muitos.
+  Isso mora na fase 5, que não começou. → `Pendencias.md` **L29**, item 1.
 - **Rodar a migração 33 em produção** · os três itens do gatilho dela estão satisfeitos.
 - **Rodar a 37 e a 38**, que não dependem de decisão nenhuma, só da mão dele no SQL Editor. A 38 não
   muda comportamento sozinha: ela é o chão da cura por turno que escala com o nível de quem conjura.
@@ -213,6 +214,12 @@ Pelo NOME, porque número de opção depende de qual lista se está lendo.
   decisão.
 - **PERGUNTA DE REGRA DE JOGO VEM EM LISTA ÚNICA, não item a item** · quando uma frente
   levantar várias, o Arquiteto junta e traz todas de uma vez.
+- **O DADO É ROLADO PELOS JOGADORES E PELO MESTRE, E O QUE CHEGA AO GRID É O TOTAL** (12/09/2026).
+  Mata as duas formas do modo `site`: a folha aceitando as faces (o `roladaManual` deixa de ser a
+  direção) e o site rolando para a mesa confirmar. Somar é da mesa, e o dado fica na mão. →
+  `Pendencias.md` **L29**, item 1, com o que isso faz com os tetos publicados lá.
+- **A SEPARAÇÃO DE SENTINELA E MAGNITUDE VAI ATÉ A SEPARAÇÃO, E PARA ALI** (12/09/2026): o Grid
+  continua não lendo `velocidade` de propósito, e `teto6` continua desligado. → **L64**.
 
 ## O que está começado e não terminado
 

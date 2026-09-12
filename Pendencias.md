@@ -2150,6 +2150,25 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   frente (61,8% e 93,7%) foi publicado como limite natural e era o alcance dos
   consertos daquele dia.
 
+  **DECIDIDO PELO HUMANO em 12/09/2026, e o item 1 desta tabela NÃO acontece na forma
+  escrita:** *o dado é rolado pelos jogadores e pelo mestre, e o que chega ao Grid é o
+  TOTAL.* Isso recusa as duas formas que eu pus na mesa · a folha aceitando as faces
+  (o mecanismo `roladaManual`, que existe e tem teste no `validate`, deixa de ser a
+  direção) e o site rolando e a mesa confirmando. O dado na mão fica, e somar é da mesa.
+
+  **O que isso faz com o teto publicado acima, e eu não vou inventar o número novo:** os
+  99,7% e os 76,7% incluem os 34,0% deste item 1, que agora está fora. Recalcular não é
+  subtrair 34 de 76,7 · a repartição dos gestos é que decide, e ela mora no `ESTADO.md`
+  e no `custo-tela.mjs`. **Até alguém medir de novo, os dois tetos acima valem como
+  retrato do dia em que foram escritos, e não como alcance de hoje.** É a própria regra
+  do teto deste item, aplicada a ele mesmo.
+
+  **E ficou uma pergunta DENTRO da decisão**, que não é reabertura dela: quem digita o
+  total. Hoje é o mestre, e os 398.476 gestos medidos são todos dele; a leitura alternativa
+  é cada jogador informar o total na ficha dele, que não muda o dado na mão nem a conta,
+  e tira trabalho do mestre passando-o para quem é muitos. Isso é a fase 5 (a experiência
+  do jogador), que não começou. → levado ao humano na mesma conversa.
+
 - [x] **L27 · [FECHADO em 06/09/2026] Apagar `rpg-system/centelha-revisora/`
   e tirar a linha do `.gitignore` junto.** A linha saiu em 03/09 (as cinco, com o comentário),
   que era a metade que importava: a regra permanente escondendo um caminho que não devia existir.
@@ -3925,6 +3944,22 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **`teto6` NÃO SE CONSTRÓI**, instrução explícita do humano em 10/09/2026, e agora por um motivo
   confirmado em vez de suposto: **primeiro a separação de sentinela e valor no campo `velocidade`,
   com o tamanho acima; o teto depois.** O tamanho ele já tem; o que falta é a vez.
+
+  **DECIDIDO PELO HUMANO em 12/09/2026, e é a pergunta que sobrou deste item depois da resposta
+  (b): SÓ SEPARAR.** A separação é o escopo inteiro · marca própria para "não age", `velocidade`
+  ficando só com grandeza, o único consumidor lendo a marca antes da conta em
+  `src/pages/mesa/combate.astro:1404` · `const novo = Math.max`, e o teste reescrito para afirmar a
+  marca em vez do valor, porque hoje ele afirma a sentinela PELA magnitude dela em
+  `scripts/test-artes-grid.mjs:366` · `foraDoTempo.velocidade <= -50`, que é a mesma confusão
+  escrita como asserção verde. **O Grid continua ignorando o campo de propósito**, então "Fora do tempo" continua não
+  fazendo nada com o relógio no Simultâneo, e `teto6` continua desligado.
+
+  **O contra que ele comprou, e fica escrito porque é o mais forte:** esta entrega não aparece para
+  quem joga, e a regra permanente da fase diz que nenhuma fase termina em documento. A resposta é
+  que isto não é fase, é dívida de instrumento · e que o preço de aplicar no Grid junto seria
+  decidir de passagem o que "não age" faz com a agenda do Tick (sai da fila? fica e perde a vez?
+  por quantos Ticks?), que não está escrito em lugar nenhum e é exatamente como o defeito original
+  nasceu.
 
   **O SEGUNDO PREJUÍZO DO MESMO ARQUIVO PERDIDO.** O referente estava escrito no texto que a
   sessão antiga produziu para virar o `PORQUE.md`, e que **nunca foi commitado**. O primeiro
