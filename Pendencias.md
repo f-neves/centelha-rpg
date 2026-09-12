@@ -5447,8 +5447,26 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   sinal. Foi assim que o `L62` nasceu (a barra de comando chamou e não trouxe sinal), e foi assim
   que o `L67` nasceu (a perseguição gravou e não perguntou). O terceiro chamador vai repetir.
 
-  **Não consertar agora**, instrução do humano. Os dois ficam ligados para quem abrir um achar o
-  outro e decidir de uma vez só onde a regra vai morar. → `L66`, → `L67`, → `L62`.
+  **A LINHA "não consertar agora" SAIU DAQUI em 11/09/2026, e ela estava contradizendo o próprio
+  item.** Era instrução do humano de 10/09, escrita quando a pergunta "onde a regra mora" ainda
+  estava aberta; ele decidiu no dia seguinte, e a decisão está no primeiro parágrafo. Deixá-la
+  seria o item mandando duas coisas opostas para quem fosse implementar, e quem lê de baixo para
+  cima leria a mais antiga. → `L66`, → `L67`, → `L62`.
+
+  **DESPACHADO na rodada 49, em 11/09/2026, com três exigências que saem dos erros já pagos:**
+
+  · **o levantamento vem ANTES da primeira linha de código.** Todos os caminhos que gravam posição,
+    trazidos como lista, com o tamanho. A rodada 40 provou que **busca por nome de função não acha
+    todos**: dois lugares escaparam por terem a conta copiada à mão em vez de chamarem a função.
+    Varre-se o GESTO (escrever `q`/`r`, gravar token, mover peça), não o nome.
+  · **o conserto não pode recriar o `L66`.** A decisão é que a regra mora na escrita · mas escrita
+    que recusa **em silêncio** é exatamente o `L66`, e trocar um defeito pelo outro não é progresso.
+    A função que grava devolve **por que** recusou, e quem chama mostra esse texto, no mesmo desenho
+    que o `L68` já usa (o texto de cada fase vem do `porque` que o motor devolve, nada escrito à
+    mão).
+  · **cada caminho existente é exercitado antes e depois.** O risco deste item não é erro de código,
+    é caminho esquecido · e caminho esquecido **não dá erro**, dá peça em cima de peça numa sessão
+    de jogo do humano.
 
 - [x] **L68 · [LEVANTADO em 10/09/2026 numa batalha de mesa, DECIDIDO pelo humano no mesmo dia,
   CONSTRUÍDO na rodada 40 em 11/09/2026] Arrastar uma peça fora do turno dela passava em silêncio,
