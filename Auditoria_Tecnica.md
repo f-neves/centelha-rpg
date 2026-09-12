@@ -226,7 +226,7 @@ gr-log     1× ·   7,6 KB ·  0,7 ms ·    42 nós (   41 idênticos)
 Os "2×" e "3×" não são acaso. `porNoMapa()` pinta de forma otimista
 (`pintarTokens(); pintarLista(); pintarIniciativa(); pintarAlcance()`), grava, e no
 fim chama `verificarEfeitos()`, que **sempre** termina em `ctx.repintar()` mesmo
-quando não há um único efeito no tabuleiro (`artes-grid-mesa.ts:1832` · `function verificarEfeitos`). O
+quando não há um único efeito no tabuleiro (`artes-grid-mesa.ts:1861` · `function verificarEfeitos`). O
 `repintar()` refaz tudo de novo e mais a névoa, os efeitos e o painel lateral.
 Metade do trabalho medido acima é a segunda volta.
 

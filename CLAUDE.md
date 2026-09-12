@@ -35,6 +35,15 @@ Regras de convívio:
   que o risco**, e quem está trabalhando nela commita na hora. A regra vale nos dois
   sentidos, e recusar um gesto que mexe em trabalho não commitado alheio é o comportamento
   certo, mesmo quando quem pede é o Arquiteto.
+  **O que esta regra NÃO proíbe: guardar o SEU próprio arquivo, com pathspec.**
+  `git stash push -- caminho/seu.ts` é o gesto certo e não encosta em ninguém, e ele tem um uso
+  que vale a pena: é como se constrói o CONTROLE NEGATIVO de um conserto, guardando a mudança
+  nova e exigindo que a asserção falhe contra o código de antes. A Executora fez isso em
+  12/09/2026 para provar o `L84`, com os documentos do Arquiteto sujos na árvore ao lado, e nada
+  foi tocado. O perigo do `stash` é o alcance (`git stash` sem pathspec leva a árvore inteira,
+  inclusive o que não é seu), não a ferramenta. Ler esta regra como "nunca use `stash`" seria uma
+  correção grande demais, e custaria o controle negativo, que é o teste que pega o que o positivo
+  não pega.
 - **`git pull --rebase` antes de commitar e antes de dar push.** As duas empurram
   para `main`; sem rebase o push é recusado, e com rebase o conflito só aparece se
   ambas tocarem a mesma linha.

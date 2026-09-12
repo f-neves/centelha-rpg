@@ -135,6 +135,8 @@ const MARCA_HISTORICA = /\(citaç[aã]o histórica\)/;
 let total = 0;
 let historicas = 0;
 const caidas = [];
+/** Cada citação que este script moveu, para ele conferir o próprio trabalho no fim. */
+const movidas = [];
 for (const doc of DOCS) {
   if (!fs.existsSync(doc)) { console.log(`  ! ${doc} não existe, pulando`); continue; }
   const linhas = fs.readFileSync(doc, 'utf8').split(/\r?\n/);
@@ -158,6 +160,7 @@ for (const doc of DOCS) {
       const nb = b ? mapear(base, +b) : null;
       if (na === +a && (!b || nb === +b)) { nova += todo; continue; }
       mudou += 1;
+      movidas.push({ doc, i, base, alvo: porNome[base], de: +a, para: na });
       nova += todo.replace(`${base}:${a}${b ? `-${b}` : ''}`, `${base}:${na}${b ? `-${nb ?? b}` : ''}`);
     }
     nova += l.slice(cursor);
@@ -168,6 +171,48 @@ for (const doc of DOCS) {
   if (mudou) console.log(`${doc}: ${mudou} citação(ões) reapontadas`);
 }
 for (const c of caidas) console.log(`  ! ${c} caiu dentro do diff, deixada como está`);
+
+// ---- 4. A CONFERÊNCIA DO PRÓPRIO TRABALHO, e ela existe por um estrago de verdade.
+//
+// Em 12/09/2026 o Arquiteto rodou este script DUAS VEZES contra o mesmo diff não commitado
+// (a Executora tinha um eixo pronto e começou o seguinte antes de commitar). O mapa é
+// HEAD→árvore, então o deslocamento foi aplicado uma segunda vez sobre citações que já
+// estavam certas: 39 quebraram de uma vez, e `async function curar` foi parar 80 linhas
+// adiante. O script não tinha como notar, porque ele MOVIA EM SILÊNCIO: quem descobria era
+// o portão, três passos depois, sem dizer qual das duas passadas causou.
+//
+// A conferência abaixo é a MESMA do portão (âncora entre crases mais próxima na linha,
+// janela de ±3, comparação pelo miolo antes do primeiro parêntese). Rodar duas vezes
+// continua sendo possível; o que muda é que agora ele GRITA na segunda.
+const JANELA = 3;
+const ehCitacaoTxt = (t) => /^[\w./-]+\.(?:ts|astro|mjs):\d+(?:-\d+)?$/.test(t.trim());
+const quebradas = [];
+for (const mv of movidas) {
+  if (!mv.alvo || !fs.existsSync(mv.alvo)) continue;
+  const linhaDoc = fs.readFileSync(mv.doc, 'utf8').split(/\r?\n/)[mv.i] ?? '';
+  const emCit = linhaDoc.indexOf(`${mv.base}:${mv.para}`);
+  if (emCit < 0) continue;
+  const crases = [...linhaDoc.matchAll(/`([^`]+)`/g)].map((m) => ({ em: m.index, txt: m[1] }));
+  const anc = crases
+    .filter((c) => !ehCitacaoTxt(c.txt) && !/^[\d\s.,:;()-]+$/.test(c.txt))
+    .sort((a, b) => Math.abs(a.em - emCit) - Math.abs(b.em - emCit))[0];
+  if (!anc) continue;                       // sem âncora o portão já reclama por conta dele
+  const fonte = fs.readFileSync(mv.alvo, 'utf8').split(/\r?\n/);
+  const janela = fonte.slice(Math.max(0, mv.para - 1 - JANELA), mv.para + JANELA).join('\n');
+  const chave = anc.txt.split('(')[0].trim();
+  if (!janela.includes(chave)) {
+    quebradas.push(`${mv.doc}:${mv.i + 1}  ${mv.base}:${mv.de} → ${mv.para}, mas \`${chave}\` não está lá`);
+  }
+}
+if (quebradas.length) {
+  console.log(`\n✘ EU MOVI E QUEBREI ${quebradas.length} citação(ões). NÃO COMMITE ASSIM.`);
+  for (const q of quebradas) console.log(`    ${q}`);
+  console.log('\n  A causa mais provável é ESTE SCRIPT TER RODADO DUAS VEZES sobre o mesmo diff');
+  console.log('  não commitado: o mapa é HEAD→árvore, e a segunda passada desloca de novo o que');
+  console.log('  a primeira já tinha acertado. O conserto NÃO é buscar âncora (o `L65` proíbe, e');
+  console.log('  âncoras como `if` aparecem centenas de vezes): é commitar o código e reapontar');
+  console.log('  a partir do commit, ou refazer as citações do último commit que estava verde.');
+}
 
 console.log(`\n${total} citação(ões) movidas pelo mapa do diff`
   + (historicas ? `, ${historicas} pulada(s) por \`(citação histórica)\`` : '') + '.');

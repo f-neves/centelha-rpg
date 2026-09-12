@@ -56,7 +56,7 @@ do humano e o motor concordam em quase tudo; onde as palavras diferem, aqui fica
 | Efeito Especial | **Efeito**, do catálogo, com `nivel` fixo | `src/data/efeitos.json`, `artes-grid.ts:23-33` (`interface Efeito`) |
 | Parâmetro | **Parâmetro**, com graus de 0 a 6 | `artes-grid.ts:35-45` (`interface Parametro`), `regras.json:arcano.improviso.graus` |
 | os Parâmetros declarados | **`Escolhas`**, o mapa nome→grau | `artes-grid.ts:229`, vivo só durante a caixa |
-| NÍVEL do Efeito | **nível efetivo** | `gravarEfeito`, `artes-grid-mesa.ts:1335` (`function gravarEfeito`) |
+| NÍVEL do Efeito | **nível efetivo** | `gravarEfeito`, `artes-grid-mesa.ts:1364` (`function gravarEfeito`) |
 
 **O "Nível = o maior Parâmetro declarado" JÁ EXISTE, ao pé da letra.** `gravarEfeito` calcula
 `Math.max` sobre os graus investidos quando não há Efeito comprado, e chama isso de **nível
@@ -71,7 +71,7 @@ nova reusa esse nome e essa fórmula, e não inventa um terceiro.
 | para quê | qual conta | onde está |
 |---|---|---|
 | **quanto CUSTA** (Mana) | a **SOMA** dos graus investidos | `artes-grid.ts:231-235` (`interface Custo`) e `regras.astro:382` (`Some os níveis investidos`) |
-| **quanto DEMORA** (Preparação) e o gating | o **MÁXIMO** · o nível efetivo | `artes-grid-mesa.ts:1360-1363`, `arcano.composta` |
+| **quanto DEMORA** (Preparação) e o gating | o **MÁXIMO** · o nível efetivo | `artes-grid-mesa.ts:1389-1392`, `arcano.composta` |
 
 Isto não é contradição, é uma distinção que o sistema já tem. **Toda linha desta régua diz qual
 dos dois está usando.** Confundi-los é o erro mais provável da implementação, e ele sai como
@@ -134,7 +134,7 @@ ação de magia e o mestre manda deslocar, o deslocamento sai como caminhada, se
 Para usar Deslocamento de Batalha ou Corrida, é preciso interromper a Preparação.
 
 **Isto é estado NOVO, e não a regra de hoje.** Hoje quem está comprometido com um gesto não vê
-nem a caixa de modo: `moverSimultaneo` (`grid.astro:6109` · `function moverSimultaneo`) desvia direto para um
+nem a caixa de modo: `moverSimultaneo` (`grid.astro:6131` · `function moverSimultaneo`) desvia direto para um
 posicionamento cru, e a regra publicada para quem se mexe fora da vez no meio de um gesto é o
 **desvio de emergência**, a 1 Tick por metro (`src/content/chapters/combate.md:181-184`).
 
@@ -149,7 +149,7 @@ físico" de "Preparação de Arte" em todo lugar que hoje pergunta só `faseEm(.
 
 **Existe precedente para forçar modo sem perguntar**, e vale citar porque é o mecanismo que a
 implementação vai reusar: a fuga automática de criatura já monta o movimento com `modo: 'corrida'`
-direto, sem diálogo (`grid.astro:6042` · `modo: 'corrida'`).
+direto, sem diálogo (`grid.astro:6064` · `modo: 'corrida'`).
 
 #### Interromper por vontade própria
 
@@ -159,7 +159,7 @@ Preparação, que se perdem.
 **O Abortar já existe, publicado e implementado**, e é ele que se estende: `regras.json:2497-2508`
 · só na fase de Preparo, custa 1 Tick por metro para a saída, e **perde o investido**
 (`perdeOInvestido: true`). O código é `podeAbortar`/`abrirAbortar` e o botão "✋ Abortar o gesto"
-(`grid.astro:7424` · `Abortar o gesto`).
+(`grid.astro:7593` · `Abortar o gesto`).
 
 **O que muda:** hoje o Abortar serve só a ação física, e a lista `nuncaPara: "atacar"` o proíbe
 para ataque. **A Preparação de Arte entra como fase abortável**, com a mesma regra de perder o
