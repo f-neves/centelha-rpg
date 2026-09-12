@@ -5843,6 +5843,21 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
     **(Força ou Destreza) + Briga**, com **−2 na ação** para quem está deitado. A perícia existe
     (`briga` é primária em `src/data/habilidades.json`). Falta dizer se essa mesma forma serve ao corpo
     arremessado, e o item abaixo explica por que ela provavelmente não serve inteira.
+  **COMO A DISPUTA SE RESOLVE, DECIDIDO PELO HUMANO em 12/09/2026: DOIS ROLAMENTOS COMPARADOS.** Cada
+  lado rola e o maior total ganha.
+
+  **Eu recomendei o contrário e ele decidiu assim, e o registro guarda os dois lados.** A minha
+  recomendação era rolar contra um número derivado do alvo, porque é a convenção que o sistema já tem:
+  o capítulo de ações diz por extenso que **"a Dificuldade descreve o que se está tentando, nunca o
+  personagem que tenta"**, e o combate resolve ataque rolando contra uma **Defesa** derivada do alvo,
+  não comparando dois rolamentos.
+
+  **A CONSEQUÊNCIA QUE VEM JUNTO E QUE NÃO PODE FICAR SÓ NO GRID: isto é um MODO DE RESOLUÇÃO NOVO
+  para o sistema.** Até hoje há um só (rolar contra um número). Um segundo precisa estar escrito no
+  capítulo de regras, e não apenas implementado na mesa · senão o jogador encontra na tela uma
+  mecânica que o livro não menciona, e a próxima pessoa que desenhar uma regra não saberá que pode
+  usá-la. **Quem implementar não fecha o item sem a entrada no capítulo.**
+
   · **Quem rola pelo lado de quem voa.** O corpo arremessado não tem agência, e rolar a Força DELE
     inverte a ficção: um saco de grãos atirado por um gigante resistiria com a própria Força do saco.
     **O número certo já está no código:** a distância é `nível × 200 ÷ peso`, logo o ORÇAMENTO
