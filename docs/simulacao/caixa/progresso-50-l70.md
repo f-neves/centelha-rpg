@@ -373,7 +373,7 @@ que ela fecha, hora lida da máquina (`date +%H:%M`).
 
   UM BUG DE VERDADE, achado pelo teste antes de qualquer commit: a primeira
   versão buscava o vizinho livre com `ocupadoPor`, que isenta quem
-  `podeDividir` — e `c` ainda estava `caido` (`noChao`) no instante da busca,
+  `podeDividir`: `c` ainda estava `caido` (`noChao`) no instante da busca,
   então `podeDividir(c, outro)` valia sempre `true` e QUALQUER vizinho
   "parecia" livre, mesmo tomado. Pior: a condição `caido` era removida ANTES
   de confirmar o destino, então uma recusa deixava a peça de pé, sem
@@ -505,3 +505,21 @@ que ela fecha, hora lida da máquina (`date +%H:%M`).
   conferidas), reponte do Arquiteto já chegou para os eixos 4 e 5. EIXO 4
   COMMITADO E EMPURRADO: `7030d1f`, `origin/main..HEAD` = 0. Commitando o
   eixo 5 agora, em separado.
+
+- 02:42 · ADENDO PARA QUEM LÊ ESTA RODADA DE FORA, pedido explícito do
+  Arquiteto depois do aviso já enviado (por isso vai aqui, e não editando
+  `50-executora.md`, que é frozen desde `3c13075`): **a separação do L84
+  conserta cinco Artes que hoje, no `main` de antes desta rodada, funcionam
+  como atordoamento de 5 Ticks disfarçado de empurrão.** Empurrão, Onda,
+  Maremoto, Onde é Embaixo e Tromba (`grid.forma: movimento` com
+  `grid.condicao: "caido"`, medidas pelo Arquiteto em
+  `src/data/efeitos.json`) tiravam o alvo da fila e cobravam
+  `DELAY_AO_LEVANTAR` (5 Ticks) para ele voltar, porque `caido` estava no
+  balde que a fila lia como "fora de combate". Ninguém desenhou isso: é a
+  condição fazendo o que a ficha dela sempre disse (prono) e o Grid lendo
+  como outra coisa (fora de combate). Depois desta rodada, as cinco voltam
+  a ser empurrão de verdade: o alvo cai, mas continua na fila e não paga o
+  atraso. Isto está provado por `test-l84-caidofila-mesa.mjs` (aplica
+  `Caído` e confere `naLuta`/tick/log) e é mais concreto para quem abre a
+  mesa amanhã do que qualquer descrição da refatoração em volta.
+
