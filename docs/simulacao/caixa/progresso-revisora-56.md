@@ -59,3 +59,11 @@ Arquiteto em `bbb67b2` antes desta sessão começar.
   via `rtk proxy git diff`, 1598 linhas batendo com `--stat` de
   1047+75): zero linhas adicionadas com "—". Meu arquivo novo varrido:
   limpo. Escrevendo o veredito.
+- 17:39: ao tentar dar push, `origin/main` tinha avançado com `f34a896`
+  (o Arquiteto corrigiu o próprio aviso: SHA vira `65d9b7a`, não mais
+  igual a TOPO `819f0d7`, porque a migração é commit dele, de fora) e
+  `a73c840` (só Pendencias.md, avisando que o veredito ainda não
+  chegou). Atualizei a seção "Recorte" do veredito para refletir o SHA
+  corrigido; nenhum achado muda (eu já tratava `migracao-38.sql` como
+  commit de fora, não como trabalho da Executora a avaliar). Rebaseando
+  e empurrando de novo.

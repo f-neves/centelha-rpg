@@ -1,16 +1,21 @@
 # Rodada 56 · resposta da revisora (L86b: Acelerar a Cura, por nível da Arte)
 
-Revisora: aviso em `bbb67b2`. BASE `3cc14b5`, SHA/TOPO `819f0d7`.
+Revisora: aviso em `bbb67b2`. BASE `3cc14b5`, SHA `65d9b7a`, TOPO `819f0d7`.
 
 ## Recorte
 
 `git rev-parse --show-toplevel` → `C:/Users/Neves/ClaudeCode/centelha-techlead-revisora`;
-`git rev-parse HEAD` → `bbb67b296a38995a65a1d0f8a59d8feea95a07f0`. Batem. BASE ancestral de SHA,
-`git log 819f0d7..origin/main` só mostra o próprio `bbb67b2`: TOPO = SHA procede.
-`git log 3cc14b5..819f0d7` tem seis commits, não dois: os quatro primeiros (`bcc40bd`,
+`git rev-parse HEAD` → `bbb67b296a38995a65a1d0f8a59d8feea95a07f0`. Batem. BASE ancestral de SHA.
+**Nota sobre a correção do aviso, feita pelo Arquiteto depois que eu já tinha lido a versão
+original (commit `f34a896`):** o `SHA` mudou de `819f0d7` para `65d9b7a`, porque `819f0d7` é o
+commit DELE (`supabase/migracao-38.sql`, a função `jogador_conjura`), não código de cliente desta
+rodada; `TOPO` ficou em `819f0d7` para sinalizar exatamente esse commit de fora entrando no
+intervalo. Não muda nenhum achado abaixo: eu já tinha tratado `migracao-38.sql` como algo a
+considerar pela interação com o código do cliente (Ponto 2), não como trabalho da Executora a
+avaliar por si. `git log 3cc14b5..65d9b7a` tem cinco commits: os quatro primeiros (`bcc40bd`,
 `ea8a899`, `b534e27`, `f0d8e0b`) são do Arquiteto, fechando a rodada 55 e decidindo as duas
-perguntas do L86 antes desta rodada abrir. Não os atribuo a esta rodada. Os dois que o aviso
-declara (`65d9b7a`, código; `819f0d7`, migração) são os revisados.
+perguntas do L86 antes desta rodada abrir; não os atribuo a esta rodada. O quinto, `65d9b7a`, é o
+código revisado; `819f0d7` é o commit de fora que o `TOPO` aponta.
 
 ## Os números
 
