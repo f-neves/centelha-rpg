@@ -3935,6 +3935,33 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   pior que o primeiro, porque o primeiro só gastou uma correção e este gastou uma investigação
   inteira que chegou à conclusão errada.
 
+- [ ] **L91 · [MEDIDO pelo Arquiteto em 12/09/2026, depois do CORRIGE da rodada 50] Sobram 59
+  travessões de prosa em SEIS documentos que nunca foram varridos, e o `L79` não mentiu sobre isso.**
+
+  **A medida, com o escopo colado:** fora de crase, `docs/simulacao/CATALOGO.md` 34,
+  `Dominio.md` 8, `Regua_Relacao.md` 7, `docs/simulacao/CONTEXTO.md` 6, `CLAUDE.md` 3,
+  `Migracao_Dominio.md` 1. Total 59. **Nem todos são violação:** uma regra sobre o travessão
+  precisa poder nomear o caractere, e os 3 do `CLAUDE.md` são disso. A triagem é parte do item, e o
+  número acima é teto e não veredito.
+
+  **E os três documentos que o `L79` varreu estão em ZERO**, conferidos hoje: `Pendencias.md`,
+  `docs/simulacao/ESTADO.md` e `docs/simulacao/VOZ.md`, exatamente os três que ele nomeou.
+
+  **ISTO É O MELHOR ARGUMENTO QUE ESTE PROJETO TEM PARA A DISCIPLINA DO ESCOPO, e vale mais que a
+  dívida que o item registra.** Eu cheguei nesta medida desconfiando de que o `L79` estivesse
+  fechado por cima de trabalho não feito, que é a acusação mais grave que se pode fazer a um item
+  fechado. Fui ler antes de afirmar, e ele se defendeu sozinho: ele diz **"nos três documentos que a
+  equipe escreve todo dia"**, lista os três com o número de cada um, e tem uma frase inteira
+  chamada *"o escopo da primeira varredura, dito do lado do número porque ele não era o total"*.
+  **O item de um ano atrás escreveu a defesa contra a suspeita de hoje**, e a defesa funcionou sem
+  ninguém estar por perto para explicá-la. → `CATALOGO` (diga o escopo ao lado do número),
+  → `L79`, → `L82` (a dívida equivalente no código).
+
+  **O portão automático não pega nada disto**, por decisão do humano: ele cobre `src/content/**`,
+  os capítulos publicados. Documento e comentário de código dependem de conferência à mão, e a
+  conferência à mão dependia de um instrumento quebrado (ver a forma nova do `CATALOGO`: o `git
+  diff` deste ambiente devolve uma fração da saída).
+
 - [ ] **L90 · [ACHADO de passagem pela Executora na rodada 50, em 12/09/2026, PROVADO pré-existente
   e não investigado] Uma cena de `scripts/test-grid.mjs` falha por intermitência no arrasto por
   mouse simulado, e passa na repetição seguinte.**

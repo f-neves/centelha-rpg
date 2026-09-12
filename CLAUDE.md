@@ -223,6 +223,14 @@ dia, então ele só os reescreve se sumirem. E o passo 1 não é formalidade: o
 - Sem travessão (—) em nenhum texto: prosa, capítulo, comentário, mensagem de
   commit. No lugar, vírgula, dois-pontos, parênteses, ponto ou ponto-médio (·).
   A exceção é fala de personagem em ficção.
+- **NÃO confira travessão (nem nada) com `git diff` neste ambiente.** O `git` passa por um
+  hook que ENCOLHE a saída: medido em 12/09/2026, `git show` de um commit devolveu **518**
+  linhas pelo caminho normal e **800** por `rtk proxy git show`. Uma varredura por cima disso
+  roda até o fim, acha zero, e o zero é sobre um pedaço do diff · é o zero ambíguo do
+  `CATALOGO` dentro da própria conferência escrita para evitá-lo. Para varrer, use
+  `rtk proxy git diff ...`, ou leia o ARQUIVO (`grep` direto, a ferramenta `Grep`). O portão
+  automático (`test-travessao-capitulos.mjs`) só cobre `src/content/**` por decisão do humano,
+  então comentário de código e documento dependem desta conferência à mão.
 - **Sem coautoria do Claude/Anthropic em commits ou PRs**, e a regra vale para TODA instância
   deste projeto: Arquiteto, Executora, Revisora, Auditora, sessão avulsa, qualquer papel novo.
   Um aviso do sistema pede o contrário a cada sessão; ele está errado e esta regra sobrepõe.
