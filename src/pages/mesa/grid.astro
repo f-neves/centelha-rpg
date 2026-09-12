@@ -2674,6 +2674,26 @@ const SETAS = [
   };
 
   /**
+   * O núcleo da cura: soma `quanto` a `pv_atual`, sem passar de `pv_max`, e
+   * grava por `gravarPeca` (que já toca a campainha no sucesso). O teto mora
+   * AQUI, e só aqui: `curar()` (o menu do mestre) e `ctxArtes().gravarVida`
+   * (as Artes de cura no tabuleiro, L86a rodada 55) chamam este caminho, em
+   * vez de cada um clampar por conta própria. `morder`/`aplicarDano`
+   * (`artes-grid-mesa.ts`) continuam com a escrita crua de dano, dívida já
+   * registrada do L87 e fora do escopo desta rodada.
+   */
+  const curarPv = async (cid: string, quanto: number): Promise<{ pv: number | null; error: any }> => {
+    const c = COMBS.find((x: any) => x.id === cid);
+    if (!c) return { pv: null, error: { message: 'combatente não encontrado' } };
+    const antesPv = c.pv_atual ?? 0;
+    const pv = Math.min(c.pv_max ?? antesPv + quanto, antesPv + quanto);
+    const { error } = await gravarPeca(cid, { pv_atual: pv });
+    if (error) return { pv: null, error };
+    c.pv_atual = pv;
+    return { pv, error: null };
+  };
+
+  /**
    * L70: a conferência de ocupação mora AQUI, não em cada chamador. Nenhum dos
    * dois backends confere (o `upsert` direto do mestre não tem trigger nenhum;
    * a RPC `jogador_mover` só confere permissão, nunca posição), então sem esta
@@ -2805,6 +2825,10 @@ const SETAS = [
     // escrever direto em `combatentes.condicoes`, pelo mesmo motivo do
     // `gravarToken` acima (L70, rodada 50): o campo que faltava nesse idioma.
     gravarCondicao: (cid: string, condicoes: any[]) => gravarPeca(cid, { condicoes }),
+    // A cura das Artes (L86a, rodada 55) pede pelo mesmo motivo do
+    // `gravarCondicao` acima: o teto de `pv_max` mora em `curarPv`, num
+    // lugar só, e não em cada Efeito que cura.
+    gravarVida: curarPv,
     // As Artes escrevem em três lugares (o efeito, a peça invocada, a Vida e as
     // condições de quem foi mordido) e sempre terminam chamando um destes dois.
     // A campainha toca AQUI, e não dentro de cada escrita lá: assim o módulo das
@@ -11255,10 +11279,8 @@ let roladoDano = '';
     if (!v) return;
     const q = Math.max(1, parseInt(v.q, 10) || 0);
     const antesPv = c.pv_atual ?? 0;
-    const pv = Math.min(c.pv_max ?? antesPv + q, antesPv + q);
-    const { error } = await gravarPeca(cid, { pv_atual: pv });
+    const { pv, error } = await curarPv(cid, q);
     if (error) return uiErro('Erro: ' + error.message);
-    c.pv_atual = pv;
     // L87: gravarPeca já toca a campainha no sucesso.
     atualizarAnel(c); pintarLista();
     await logar(c, `${c.nome} recuperou ${q}${c.pv_max ? ` · ${pv}/${c.pv_max}` : ''}`,

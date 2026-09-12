@@ -45,6 +45,16 @@ export interface Parametro {
    * marca ele leria a régua da matéria e nasceria oito vezes menor.
    */
   regua?: 'breve' | 'longa' | 'manifestacao' | 'materia';
+  /**
+   * Quanto o parâmetro Cura vale em PV, ESTRUTURADO ao lado do rótulo em prosa
+   * (`valor: "1 PV por turno"`). A régua de `curaDoEfeito`, abaixo, só lê este
+   * campo, nunca a frase: se ela interpretasse o texto, a frase e o padrão
+   * virariam duas especificações da mesma coisa, e se separariam em silêncio
+   * assim que uma mudasse sem a outra (o mesmo formato do `casaExata`, L93).
+   * Hoje só o `mao-firme` tem este campo (rodada 55, L86a); os outros Efeitos
+   * de cura ficam sem ele até a ambiguidade de cada um virar decisão registrada.
+   */
+  pontos?: number;
 }
 export interface GridEfeito {
   forma: Forma; ancora: Ancora; gatilho: Gatilho; alvo: string;
@@ -223,6 +233,22 @@ export function dadosDeDano(p: Parametro, n: number, arte: Arte): number {
 export function bonusPlano(p: Parametro, n: number): number {
   const v = valorNoNivel(p, n);
   return /^\s*[+−-]/.test(v) ? soNumero(v.replace('−', '-')) : 0;
+}
+
+/**
+ * Quanto este Efeito cura, em PV, a cada disparo do gatilho. `null` quando a
+ * régua não sabe ler o Efeito, e quem chama não cura nesse caso, nunca chuta
+ * um número.
+ *
+ * Só lê `Parametro.pontos`, o campo estruturado (ver o comentário dele). Um
+ * Efeito sem parâmetro Cura, ou com Cura sem `pontos` (a régua padrão de
+ * dado, ou uma prosa ainda sem número ao lado), devolve `null`: é assim que o
+ * improviso (sem `efeito_id`, sem parâmetro Cura nenhum) fica de fora sem
+ * precisar de um `if` à parte.
+ */
+export function curaDoEfeito(efeito: Efeito | null): number | null {
+  const p = efeito?.parametros.find((x) => x.nome === 'Cura');
+  return typeof p?.pontos === 'number' ? p.pontos : null;
 }
 
 // ================================================================== o custo

@@ -1702,7 +1702,8 @@
       {
         "nome": "Cura",
         "tipo": "fixo",
-        "valor": "1 PV por turno"
+        "valor": "1 PV por turno",
+        "pontos": 1
       },
       {
         "nome": "Duração",

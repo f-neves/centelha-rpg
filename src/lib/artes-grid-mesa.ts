@@ -12,7 +12,7 @@ import {
   figuraDoEfeito, hexesDaFigura, recolocarFigura,
   pontoNaFigura, centroEmMetros, encaixeMaisProximo, encaixeNoCentro,
   raioEmMetros, danoNoAlvo, rolar,
-  turnosRestantes, venceu, jaMordido, rodadaDoTick, dentroDoEfeito,
+  turnosRestantes, venceu, jaMordido, rodadaDoTick, dentroDoEfeito, curaDoEfeito,
   metrosParaSair, metrosParaSairDosHexes, desvioDaArea, desEsqDaDefesa,
   rotuloDuracao, TICKS_POR_TURNO, LARGURA_LINHA, montando,
   A_SAIR, deveSair, planoDaSaida,
@@ -103,6 +103,14 @@ export interface CtxGrid {
    * `gravarToken` acima).
    */
   gravarCondicao: (cid: string, condicoes: any[]) => Promise<{ error: any }>;
+  /**
+   * Cura `cid` em `quanto` PV, sem passar do `pv_max` (o teto mora aqui, do
+   * lado da aba, não neste módulo): mesmo formato do `gravarCondicao` acima,
+   * mesma campainha (`gravarPeca` toca sozinha no sucesso). L86a, rodada 55:
+   * evita replicar a escrita crua de `morder`/`aplicarDano`, que é dívida do
+   * L87 e não desta rodada.
+   */
+  gravarVida: (cid: string, quanto: number) => Promise<{ pv: number | null; error: any }>;
   logar: (c: any, txt: string, extra: Record<string, any>) => Promise<void>;
   recarregar: () => Promise<void>;
   repintar: () => void;
@@ -1782,6 +1790,24 @@ async function aplicarDano(ctx: CtxGrid, alvo: any, bruto: number, plano: Plano,
   await ctx.logar(alvo, `${alvo.nome} sofreu ${golpe.liquido} de dano por ${motivo} [${golpe.nota}]`, { acao: null });
 }
 
+/**
+ * Cura o alvo de um Efeito, pelo caminho novo (L86a, rodada 55).
+ *
+ * Ao contrário de `morder`/`aplicarDano`, não escreve cru por `ctx.SB`: chama
+ * `ctx.gravarVida`, que já tem o teto de `pv_max` e a campainha. Não herda o
+ * bypass do L87 porque não precisa herdar nada, o caminho certo já existe.
+ */
+async function curarAlvo(ctx: CtxGrid, ef: EfeitoAtivo, alvo: any, quanto: number, verbo: string): Promise<void> {
+  if (!ef || !alvo || quanto <= 0) return;
+  const { pv, error } = await ctx.gravarVida(alvo.id, quanto);
+  if (error) return uiErro('Erro ao curar: ' + error.message);
+  alvo.pv_atual = pv;
+  await marcarMordido(ctx, ef, alvo.id, rodadaDoTick(tickAtual(ctx)));
+  const est = alvo.pv_max ? ` · ${pv}/${alvo.pv_max}` : '';
+  await ctx.logar(alvo, `${ef.nome} ${verbo} ${alvo.nome}: ${quanto} PV curado${quanto > 1 ? 's' : ''}${est}`,
+    { acao: null });
+}
+
 // ======================================================= a marca da mordida
 /**
  * PÕE (ou TIRA) UMA CHAVE DO `mordidos` SEM ATROPELAR AS OUTRAS.
@@ -1983,10 +2009,15 @@ export async function verificarEfeitos(ctx: CtxGrid, palco?: HTMLElement): Promi
     await saidaDaArte(ctx, ef);
   }
 
-  // 2. quem está pego e ainda não sofreu a mordida nesta rodada
-  const pendentes: { ef: EfeitoAtivo; alvo: any }[] = [];
+  // 2. quem está pego e ainda não sofreu a mordida (ou a cura) nesta rodada
+  const pendentes: { ef: EfeitoAtivo; alvo: any; cura: number | null }[] = [];
   for (const ef of ATIVOS) {
-    if (!ef.dano_dados && !ef.condicao) continue;
+    // `curaDoEfeito` devolve `null` pro improviso (sem `efeito_id`) e pra todo
+    // Efeito de cura sem `pontos` estruturado (L86a, rodada 55: hoje só o
+    // `mao-firme`), então esta linha não abre a guarda além do que a régua
+    // sabe responder.
+    const cura = ef.efeito_id ? curaDoEfeito(EFEITO[ef.efeito_id] || null) : null;
+    if (!ef.dano_dados && !ef.condicao && cura == null) continue;
     // Ainda na mão do conjurador: não queima ninguém. O muro de fogo que sai no
     // Tick 8 não é obstáculo no 5, e cobrar a mordida antes da hora seria dar de
     // graça os Ticks de montagem que a regra existe para cobrar.
@@ -1998,7 +2029,7 @@ export async function verificarEfeitos(ctx: CtxGrid, palco?: HTMLElement): Promi
       if (cid === ef.conjurador_id && ef.forma === 'aura') continue;   // a própria aura não queima o dono
       if (jaMordido(ef, cid, t)) continue;
       const alvo = combDe(ctx, cid);
-      if (alvo) pendentes.push({ ef, alvo });
+      if (alvo) pendentes.push({ ef, alvo, cura });
     }
   }
   // Há efeito no chão, mas ninguém novo foi pego. Ainda assim é preciso
@@ -2012,15 +2043,26 @@ export async function verificarEfeitos(ctx: CtxGrid, palco?: HTMLElement): Promi
       valor: String(i),
       rotulo: `${p.alvo.nome} · ${p.ef.nome}`,
       nota: [p.ef.dano_dados ? `${p.ef.dano_dados}d6` : '',
+        p.cura != null ? `+${p.cura} PV` : '',
         (() => {
           const condId = p.ef.condicao || p.ef.condicaoAparente;
           return condId && CONDICAO[condId] ? CONDICAO[condId].nome : '';
         })(),
         `${turnosRestantes(p.ef, t)} turnos`].filter(Boolean).join(' · '),
-      grupo: 'Confirmar a mordida',
+      // A cura sob "Confirmar a mordida" leria ao contrário do que é (L86a,
+      // rodada 55): o rótulo do grupo segue o tipo do item, não um rótulo só.
+      // A ORDEM AQUI TEM DE SER A MESMA da resolução, dois blocos abaixo
+      // (`dano_dados` primeiro, `condicao` depois, `cura` por último): um
+      // Efeito com dano E cura ao mesmo tempo (o `dreno`, L86b, "1 PV a cada
+      // 2 de dano que passar") resolve como dano, e o rótulo tem de prometer
+      // a mesma coisa que a resolução faz, não a outra.
+      grupo: p.ef.dano_dados || p.ef.condicao ? 'Confirmar a mordida' : 'Confirmar a cura',
     })),
-    { valor: '__todos', rotulo: 'Cobrar todos de uma vez', grupo: 'Confirmar a mordida' },
-  ], { msg: 'Cada criatura sofre um mesmo efeito no máximo uma vez por turno.' });
+    // Sem `grupo`: sai numa linha própria, antes do catálogo (`ui-dialog.ts`,
+    // `opcoesHTML`), porque "resolver todos" é ação sobre a lista inteira, e a
+    // lista pode ser só mordida, só cura, ou as duas ao mesmo tempo.
+    { valor: '__todos', rotulo: 'Resolver todos de uma vez' },
+  ], { msg: 'Cada criatura recebe um mesmo efeito no máximo uma vez por turno.' });
 
   // Fechou a caixa sem cobrar nada: mesma história do caso acima.
   if (!escolha) { repintarSoEfeitos(); return; }
@@ -2032,6 +2074,8 @@ export async function verificarEfeitos(ctx: CtxGrid, palco?: HTMLElement): Promi
       await marcarMordido(ctx, p.ef, p.alvo.id, rodadaDoTick(t));
       await ctx.logar(p.alvo, `${p.ef.nome} pegou ${p.alvo.nome}: ${CONDICAO[p.ef.condicao]?.nome || p.ef.condicao}`,
         { acao: null });
+    } else if (p.cura != null) {
+      await curarAlvo(ctx, p.ef, p.alvo, p.cura, 'curou');
     }
   }
   ctx.repintar();
