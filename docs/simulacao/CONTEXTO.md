@@ -11,7 +11,7 @@ Três regras que o mantêm útil:
   de próprio é o que veio do chat e não mora em arquivo nenhum.** E apontar é dar nome,
   caminho e para que serve, nunca descrever o conteúdo do outro arquivo (`ARQUITETO.md §5.5`).
 
-Última reescrita: **10/09/2026**.
+Última reescrita: **12/09/2026**.
 
 ---
 
@@ -120,6 +120,18 @@ verdade e trazer a lista do que incomodou. → `PLANO.md` §9.
 **Regra permanente da fase:** *nenhuma fase termina em documento, toda fase termina com coisa
 funcionando na mesa.*
 
+## A rodada corrente
+
+**Últimas fechadas, as duas em 12/09/2026:** a **54** (`L85`, a régua de empurrão das Artes,
+veredito `873b772`) e a **55** (`L86a`, a Arte `Mão Firme` curando no tabuleiro, código
+`57f6bcb`, veredito `3cc14b5`, fechamento `f0d8e0b`). O que cada uma entregou e o que deixou de
+resíduo mora no `Pendencias.md`, nos itens de mesmo nome.
+
+**A próxima é o `L86b`:** as outras três Artes de cura, e nenhuma delas é só fórmula.
+`acelerar-a-cura` espera a migração 38 abaixo; `cura-guardada` precisa de um gatilho que o motor
+não tem (`armadilha`) e de uma ação de jogo que não existe; `maos-sobre-a-multidao` é
+`forma: "zona"`, e zona não tem caminho de resolução nenhum, nem para dano nem para cura.
+
 ## O congelamento
 
 Nenhuma varredura nova, nenhuma pendência aberta por iniciativa, nenhum conserto fora dos itens
@@ -151,6 +163,9 @@ passagem vira linha no `Pendencias.md` e para ali.
   `docs/simulacao/09-bateria-grande.md`, seção "modo `site`"; `ESTADO.md`, linha "os 34,0% que
   o modo `site` valia".
 - **Rodar a migração 33 em produção** · os três itens do gatilho dela estão satisfeitos.
+- **Duas perguntas ficaram abertas DENTRO de uma decisão que a mesa já tomou em 12/09/2026**, e
+  não são reabertura dela: o que "nível" indexa no `acelerar-a-cura`, e se a cura em área divide
+  o valor entre quem está dentro. As duas travam o `L86b`. → `Pendencias.md` **L86**.
 
 ## As decisões da mesa que não moram em arquivo nenhum
 
@@ -203,6 +218,11 @@ do que qualquer resumo. O levantamento das pendentes está no **L42**.
 aplicadas**. A **33 é a única não aplicada**, e o que faltava nela era a tela, que já existe ·
 falta a decisão do humano de rodar. A **34 não existe** como arquivo. A **37 está escrita e
 espera a mesa**, sem risco de formato. → **L42**, **L45**.
+
+**A 38 foi DECIDIDA em 12/09/2026 e NÃO está escrita**, de propósito: a coluna `nivel_arte` na
+`arena_efeitos`, para a linha do efeito guardar o nível da Arte de quem conjurou. Três coisas
+têm de entrar nela junto com a coluna, e estão listadas no **L86**. A fila para a mão do humano
+no SQL Editor é, então, **33, 37 e 38**.
 
 ## O mapa dos documentos
 
