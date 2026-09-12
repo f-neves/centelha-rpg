@@ -3,6 +3,7 @@
 // A persistência e o orçamento são configuráveis via opts, para servir tanto a /ficha
 // (localStorage) quanto a /personagem (Supabase, com XP definido pelo mestre).
 import { MODULOS } from './modulos';
+import { pesoMaximoErguido, alcanceArremesso } from './forca-empurrao';
 import { custoPontos, custoTecnica, custoArte, custoEfeito, custoEspecialidade, pisoXp, pv, defesa, defesaMental, defesaSocial, energia, mana, folego, iniciativa, deslocamento, ataqueCentelha, aparenciaMod, empilharArmaduras, soakNatural, MODO_NOME, MODO_ORDEM, SOAK_CATS, regras } from './calc';
 import ATTRS_D from '../data/atributos.json';
 import HAB_D from '../data/habilidades.json';
@@ -1563,30 +1564,16 @@ export function montarFicha(opts: FichaOpts) {
     // inteiro, com corrida de aproximação e giro de quadril.
     const fah = Math.max(3, Math.min(40, 3 * forca + halt));
     const faa = Math.max(2, Math.min(24, 2 * forca + atl + arr));
-    const maxKg = F.levantamento[fah] as number;
+    // A conta de erguer/arremessar mora em `forca-empurrao.ts` (L85, rodada
+    // 54): o Grid precisa da mesma régua para a Arte que entra no lugar dos
+    // músculos, e uma segunda cópia à mão é o defeito do `L93` de novo.
+    const maxKg = pesoMaximoErguido(fah, F);
     // O peso máximo não é um número só: quanto mais alto o peso precisa ir, menos peso vai.
     // Do chão ao quadril é o maxKg cheio; acima da cabeça, metade; arremessar, um quarto.
     const acimaKg = maxKg * (F.levantamentoAcimaCabeca as number);
     const tetoKg = maxKg * (F.arremessoTeto as number);
     const apice = F.arremessoApice as number;
-    // Alcance = C × FAA^a ÷ peso^b, e o número já supõe a melhor situação possível,
-    // correndo e girando. O FAA entra com expoente porque dobrar a reserva não dobra o
-    // alcance: o alcance vai com v², e a velocidade não cresce proporcional a pontos.
-    const cabeca = (F.arremessoConst as number) * Math.pow(faa, F.arremessoExpFaa as number);
-    const pesado = (w: number) => cabeca / Math.pow(w, F.arremessoExpMassa as number);
-    // Abaixo do ápice a velocidade do braço SATURA: um objeto de 2 g e um de 50 g saem à
-    // mesma velocidade, porque a inércia do próprio braço domina os dois. Dali para baixo
-    // não se ganha velocidade e só se perde para o ar, então o alcance para de crescer e
-    // cai devagar: cada vez que o peso cai pela metade, perde 10%.
-    const leve = (w: number) => pesado(apice) * Math.pow(w / apice, F.arremessoExpLeve as number);
-    // e nos últimos 20% até o teto ele desaba até zero, que é onde o objeto deixa de ser
-    // arremessável e passa a ser só erguível
-    const qIni = tetoKg * (F.arremessoQueda as number);
-    const dist = (w: number) => {
-      if (w <= 0 || w > tetoKg) return 0;
-      const d = w < apice ? leve(w) : pesado(w);
-      return w > qIni ? d * (tetoKg - w) / (tetoKg - qIni) : d;
-    };
+    const dist = (w: number) => alcanceArremesso(faa, w, maxKg, F);
     // Velocidade de deslocamento com carga, em fração da normal. Ajuste sobre a literatura de
     // locomoção com carga: os quinze soldados da MOLLE 4000 andam a 96% do passo com 22% do
     // corpo nas costas, 87% com 44% e 76% com 66%, o que dá expoente 1,62 com menos de um
