@@ -1166,7 +1166,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `resumoCombatePC`, as criaturas trazem o bloco pronto do `monsters-mesa.json` e não passam por
   lá. Riscos **F3** e **F2**.
 - [x] **L11 · [FEITO em 02/09] O golpe da rajada não pagava a penalidade dele.**
-  `rolarAcerto` (`grid.astro:10555`) sempre usa `linhas[0]`, e desde `f8459e6` (23/08) a folha é
+  `rolarAcerto` (`grid.astro:10565`) sempre usa `linhas[0]`, e desde `f8459e6` (23/08) a folha é
   aberta **uma por golpe** por `resolverGolpeNoAr`. Resultado: os golpes 2 e 3 de uma rajada saem
   com penalidade **zero** em vez de −1 e −2, e a rajada, cujo preço inteiro é essa penalidade, sai
   de graça. Está no **único** caminho que o Simultâneo usa (`adiaGolpe` é sempre true lá), as duas
@@ -1312,7 +1312,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   que fazia o carimbo valer: alguém que leia o perfil na hora de aplicar a regra.**
 
   O perfil é gravado, viaja no encontro, aparece na tela, é comparável e é recarimbável. E é lido
-  em **um** lugar do código de produção, `grid.astro:9978` (`perfil: { ...REGRAS_CENA }`), onde ele é copiado para dentro da
+  em **um** lugar do código de produção, `grid.astro:9988` (`perfil: { ...REGRAS_CENA }`), onde ele é copiado para dentro da
   entrada do lance, para o oráculo. `entrada.perfil` **não é consultado em lugar nenhum**: nem em
   `resolverGolpe`, nem em `quase-acerto.ts`, nem em `calc.ts`, nem no harness. Nenhuma das quinze
   bandeiras faz o motor tomar um caminho diferente.
@@ -1401,7 +1401,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   - o catálogo, 55 verbetes com número, em `src/data/condicoes.json`;
   - a soma: `export function somarCondicoes` (`src/lib/mesa-core.ts:178`);
-  - a leitura na folha do lance: `const cd = somarCondicoes` (`grid.astro:9648`);
+  - a leitura na folha do lance: `const cd = somarCondicoes` (`grid.astro:9658`);
   - o desconto chegando à Defesa: `alvo.condicoesDefesa` (`src/lib/lance.ts:159`);
   - a coluna: `add column if not exists condicoes` (`supabase/migracao-11.sql:25`);
   - e o RPC do jogador aceitando a chave: `condicoes` (`supabase/migracao-22.sql:125`).
@@ -1411,8 +1411,8 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   O diálogo saiu da aba Combate e virou três peças compartilhadas (`src/lib/mesa-condicoes.ts`,
   `src/components/CondDlg.astro`, e o estilo no `MesaCab.astro`). O que entrou no tabuleiro:
 
-  - o item no menu da peça: `condicoes', '◈ Condições'` (`grid.astro:7405`);
-  - o selo de ícones na lista lateral, que custa zero gestos: `const selo` (`grid.astro:6540`);
+  - o item no menu da peça: `condicoes', '◈ Condições'` (`grid.astro:7415`);
+  - o selo de ícones na lista lateral, que custa zero gestos: `const selo` (`grid.astro:6550`);
   - e a aba Combate chamando o mesmo módulo: `function abrirCondicoes` (`combate.astro:1750`), para
     não haver duas cópias divergindo no primeiro conserto que só uma receber.
 
@@ -1433,14 +1433,14 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   **O estado em que estava:** um efeito no chão tinha, na coluna, **exatamente um controle**, e ele
   era o destrutivo · o `✕` com o título "Desfazer este efeito agora", com o painel ligando handler
-  só em `[data-fim]` (`src/lib/artes-grid-mesa.ts:481`). Mudar duração, alvos, posição ou ângulo
+  só em `[data-fim]` (`src/lib/artes-grid-mesa.ts:491`). Mudar duração, alvos, posição ou ângulo
   do que já estava posto só dava apagando e conjurando de novo.
 
   **A DECISÃO DE CUSTO, e ela era a única coisa a decidir dentro do item.** A pergunta posta foi:
   mudar um efeito posto deve custar alguma coisa, já que hoje custa a Mana outra vez? A resposta é
   que **a Mana nunca foi preço de mudar · ela é o troco de não haver como mudar**. A cobrança é
   automática, sai da reserva do personagem e mora no `finally` da `conjurar`:
-  `await ctx.gastarMana` (`src/lib/artes-grid-mesa.ts:811`). Então o cone que saiu 15° torto registrava DUAS conjurações
+  `await ctx.gastarMana` (`src/lib/artes-grid-mesa.ts:821`). Então o cone que saiu 15° torto registrava DUAS conjurações
   para um personagem que conjurou UMA. Isso não é preço decidido: é o registro mentindo sobre a
   ficção. E o inverso também vale · se o personagem de fato reapontou a Arte, o débito está certo,
   porque a régua não tem "reapontar por menos que uma conjuração".
@@ -1508,7 +1508,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   E o RPC do jogador continua sem caminho: `jogador_muda_efeito` (`supabase/migracao-22.sql:217`)
   aceita **duas chaves só**, `mordidos` e `ate_tick`, e por ele passa hoje apenas a marca de mordida
-  que a varredura grava: `{ mordidos: base }` (`src/lib/artes-grid-mesa.ts:1686`, dentro de
+  que a varredura grava: `{ mordidos: base }` (`src/lib/artes-grid-mesa.ts:1759`, dentro de
   `marcarMordido` · a escrita migrou de `grid.astro` para cá em 05/09/2026, no conserto da L46).
   Um `✎` de jogador precisaria de migração nova, e não está pedido.
 
@@ -1615,8 +1615,8 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   gravava só a ação limpa, sem guardar qual golpe ela cobria (o estado ANTES da rodada que fechou
   esta seção, mantido aqui porque é ele que explica a decisão). **IMPLEMENTADO nessa mesma rodada,
   as duas portas:** a do Preparo exige escolher qual golpe no ar a interposição cobre, em
-  `abortarGesto` (`grid.astro:6415`), e grava isso em `acao: nova` (`grid.astro:6426`); a da
-  Recuperação reusa o mesmo candidato, em `candidatosParaInterpor` (`grid.astro:6513`), e o preço
+  `abortarGesto` (`grid.astro:6425`), e grava isso em `acao: nova` (`grid.astro:6436`); a da
+  Recuperação reusa o mesmo candidato, em `candidatosParaInterpor` (`grid.astro:6523`), e o preço
   sai de `custoInterporRecuperacao` (`src/lib/mesa-tempo-ui.ts:556`), travado no campo de
   Velocidade em vez de digitado. As duas portas gravam a cobertura quando há um golpe escolhido.
 
@@ -1709,9 +1709,9 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   verdade sobre o que interpor contra uma espada exige.
 
   **MAS ISTO NÃO FECHA O CASO À DISTÂNCIA, e a conferência pedida confirma a suspeita: não existe
-  "linha do golpe" em lugar nenhum do combate mundano.** A das Artes usa `Math.hypot` entre dois pontos (`src/lib/artes-grid-mesa.ts:829`).
+  "linha do golpe" em lugar nenhum do combate mundano.** A das Artes usa `Math.hypot` entre dois pontos (`src/lib/artes-grid-mesa.ts:839`).
   A do ataque comum recebe a distância já pronta, num parâmetro chamado `metros` (`src/lib/alcance.ts:61`).
-  Quem a chama já calculou essa distância antes, com a variável `dist` (`src/pages/mesa/grid.astro:9693`).
+  Quem a chama já calculou essa distância antes, com a variável `dist` (`src/pages/mesa/grid.astro:9703`).
   As duas medem a mesma coisa: a distância entre um ponto e outro, nunca se um terceiro ponto está
   NA RETA entre os dois. Um arco de Alcance 30 m mediria "dentro do alcance" para qualquer peça a
   até 30 m do
@@ -1742,7 +1742,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   existe.** Um traçado de reta em coordenadas cúbicas (interpolar entre os dois centros e
   arredondar CADA PASSO em cubo, não eixo a eixo) devolve a sequência exata de casas que o
   segmento cruza, sem largura nem tolerância: é geometria resolvida, não decisão. A função mais
-  próxima que já existe, `afastar` (`src/lib/artes-grid-mesa.ts:1163`), arredonda `q` e `r` **por
+  próxima que já existe, `afastar` (`src/lib/artes-grid-mesa.ts:1236`), arredonda `q` e `r` **por
   eixo** (`Math.round` em cada um separado), o que não garante hexágonos vizinhos passo a passo e
   não serve para "quais casas a reta cruza" sem risco de pular uma. **Não é reuso, é função nova
   e pequena, e não carrega número novo para decidir.**
@@ -1944,7 +1944,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   **LEVANTAMENTO em 07/09/2026 (rodada 24, `docs/simulacao/caixa/24-executora.md`): o achado
   "relógio em Tick 0" está DEFASADO.** A migração 31 rodou em produção em 05/09/2026 (`L42`), e
-  o cliente já tinha a degradação `SEM_RELOGIO` pronta antes disso (`grid.astro:3103`,
+  o cliente já tinha a degradação `SEM_RELOGIO` pronta antes disso (`grid.astro:3113`,
   `test-grid.mjs:1441-1460`, cenário `SIM5`).
 
   **FECHADO em 07/09/2026 (rodada 25, commit `cffcec9`, `docs/simulacao/caixa/25-executora.md`):
@@ -2359,8 +2359,8 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   varre condição vencida" e generalizava demais. O certo é mais estreito e muda o tamanho do
   problema por uma ordem de grandeza: a condição posta por Arte **é** varrida, só que **pelo relógio
   do EFEITO e não pelo da condição**. O `verificarEfeitos` derruba todo efeito vencido a cada Tick
-  (`ATIVOS.filter((e) => venceu(e, t))`, `src/lib/artes-grid-mesa.ts:1766`) e o `encerrarEfeito`
-  **leva a condição junto** (`src/lib/artes-grid-mesa.ts:2001` · `tirarCondicao`). O `ate` da condição é redundante
+  (`ATIVOS.filter((e) => venceu(e, t))`, `src/lib/artes-grid-mesa.ts:1839`) e o `encerrarEfeito`
+  **leva a condição junto** (`src/lib/artes-grid-mesa.ts:2074` · `tirarCondicao`). O `ate` da condição é redundante
   com isso, não a única linha de defesa. Quem fica grudado de verdade é só quem põe condição **sem
   deixar efeito para trás**, que é o caso da Investida e mais um · ver **L38**.
 
@@ -2426,13 +2426,13 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   **O CUSTO, pelo mesmo molde do `custo-tela.mjs`.** Aplicar `correndo` à mão é o caminho do
   MENU, e não existe caminho mais curto porque `abrirCondicoes` só é chamada de um lugar
-  (`grid.astro:7466` · `abrirCondicoes(cid)`, dentro do `if`/`else` do menu de contexto): botão direito na peça (1) + ◈
+  (`grid.astro:7476` · `abrirCondicoes(cid)`, dentro do `if`/`else` do menu de contexto): botão direito na peça (1) + ◈
   Condições (1) + clicar o chip "Correndo" no catálogo (1, `mesa-condicoes.ts:100-106` · `chip.addEventListener`) + fechar
   o diálogo (1, `mesa-condicoes.ts:126` · `cond-fechar`) = **4 gestos para aplicar**. Tirar quando a Corrida
   acaba é o MESMO caminho, trocando o chip do catálogo pelo **✕** do chip ativo
   (`mesa-condicoes.ts:80-85` · `.cond-x`): mais **4 gestos**. Uma Corrida completa (começa e termina) custa
   **8 gestos**, contra **0** da Investida, que o tabuleiro aplica e tira sozinho desde a decisão
-  de 05/09 (`marcarInvestida`, `grid.astro:6263`).
+  de 05/09 (`marcarInvestida`, `grid.astro:6273`).
 
   **NÃO ENTRA NA ESCADA DESTA BATERIA, e a razão é a mesma do `modoCorre`/`adiaGolpe` do L48:
   ocasião zero.** A `decisaoAutomatica` foge com `mov.modo: 'corrida'` direto no objeto da ação
@@ -2496,9 +2496,9 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   | ponto | o que faz | vai para a RPC? |
   |---|---|---|
-  | `porCondicao`, `artes-grid-mesa.ts:1331` | **PÕE**, escrevendo o vetor inteiro | **sim** · chamado do `gravarEfeito` e da saída, sem trava de mestre |
-  | `tirarCondicao`, `artes-grid-mesa.ts:1359` | **TIRA**, escrevendo o vetor inteiro | **sim** · chamado do `encerrarEfeito`, que roda na aba do jogador |
-  | `varrerCondicoesVencidas`, `artes-grid-mesa.ts:1730` | **TIRA**, escrevendo o vetor inteiro | **não** · abre com `if (!ctx.mestre) return;` |
+  | `porCondicao`, `artes-grid-mesa.ts:1404` | **PÕE**, escrevendo o vetor inteiro | **sim** · chamado do `gravarEfeito` e da saída, sem trava de mestre |
+  | `tirarCondicao`, `artes-grid-mesa.ts:1432` | **TIRA**, escrevendo o vetor inteiro | **sim** · chamado do `encerrarEfeito`, que roda na aba do jogador |
+  | `varrerCondicoesVencidas`, `artes-grid-mesa.ts:1803` | **TIRA**, escrevendo o vetor inteiro | **não** · abre com `if (!ctx.mestre) return;` |
 
   **O AVISO, E ELE ESTÁ ESCRITO ANTES DE CUSTAR ALGUMA COISA:** a `jogador_muda_peca` hoje
   **substitui**: `supabase/migracao-22.sql:125` é `condicoes  = coalesce(p_dados->'condicoes', condicoes),`
@@ -2540,7 +2540,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | mestre à mão | o diálogo de condições | `{ id }`, ou o objeto caseiro | **não** |
 
   Os três, com linha. A Arte grava em
-  `const nova = { id, ate, porArte: true };`, `artes-grid-mesa.ts:1352`. O chip do catálogo grava em
+  `const nova = { id, ate, porArte: true };`, `artes-grid-mesa.ts:1425`. O chip do catálogo grava em
   `c.condicoes = [...(c.condicoes || []), { id: achou.id }];`, `mesa-condicoes.ts:103`, e o
   formulário caseiro logo abaixo, no `cc-add`.
 
@@ -2559,7 +2559,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   porque todo o resto sai junto do efeito (ver a correção no **L37**). São dois casos:
 
   1. **a Investida** · consertada no L37, pela `varrerInvestida`;
-  2. **o empurrão** (`if (g?.condicao) for (const a of ajustes)`, `artes-grid-mesa.ts:1132`), o
+  2. **o empurrão** (`if (g?.condicao) for (const a of ajustes)`, `artes-grid-mesa.ts:1192`), o
      caminho das Artes que deslocam. Ele resolve **na
      declaração** e sai por `return await deslocar(...)` (`:788`) **antes** do `gravarEfeito`, então
      não existe linha em `arena_efeitos` para vencer, e o `encerrarEfeito` nunca é chamado.
@@ -2594,7 +2594,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `grid.condicaoAparente` (só classificação, os 9).*
 
   Nove Efeitos têm `grid.forma: "nenhuma"` **e** `grid.condicao` preenchida. Esse caminho registra
-  no log e retorna (`if (forma === 'nenhuma')`, `src/lib/artes-grid-mesa.ts:779`), então a condição
+  no log e retorna (`if (forma === 'nenhuma')`, `src/lib/artes-grid-mesa.ts:789`), então a condição
   declarada nunca chega a ninguém. Condição escrita no dado e nunca executada, que é o mesmo feitio
   do −6 do **L34 §5**.
 
@@ -2643,7 +2643,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   citava o `if (forma === 'nenhuma')` de `:779`). Dezesseis pontos de leitura em cinco arquivos:
 
   **MOTOR, sete blocos, chamam `porCondicao`/`tirarCondicao`, aplicam ou retiram de verdade:**
-  `src/lib/artes-grid-mesa.ts:1149` (`await porCondicao(ctx, combDe(ctx, a.cid), g.condicao, plano.turnos);`);
+  `src/lib/artes-grid-mesa.ts:1222` (`await porCondicao(ctx, combDe(ctx, a.cid), g.condicao, plano.turnos);`);
   `:1242` (`await porCondicao(ctx, combDe(ctx, id), plano.condicao, turnosRestantes(ef, t));`);
   `:1299`, onde `plano.condicao` da linha de cima nasce (`condicao: g?.condicao || null,`);
   `:1330` (`if (g?.condicao && !deveSair(novo)) {`);
@@ -2652,7 +2652,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `:1973`-`1979` (`if (trocouAlvo && ef.condicao) {` até `await porCondicao(ctx, combDe(ctx, id), ef.condicao, d.turnos);`, a condição segue o alvo quando ele muda);
   `:1994`-`1997` (`if (ef.condicao) {` até `await tirarCondicao(ctx, combDe(ctx, cid), ef.condicao);`, dentro de `encerrarEfeito`).
 
-  **PORTÃO, um bloco:** `src/lib/artes-grid-mesa.ts:1808` (`if (!ef.dano_dados && !ef.condicao) continue;`) decide se o Efeito entra no laço da mordida por área
+  **PORTÃO, um bloco:** `src/lib/artes-grid-mesa.ts:1881` (`if (!ef.dano_dados && !ef.condicao) continue;`) decide se o Efeito entra no laço da mordida por área
   (2ª metade de `verificarEfeitos`). **Não é o ponto de atenção real**: ver a conferência abaixo.
 
   **A CONFERÊNCIA QUE FALTAVA, feita em 07/09/2026: os 9 nunca chegam a existir como `ATIVOS`,
@@ -2666,13 +2666,13 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
      mesmo conjunto de 37 Efeitos (conferido por varredura total, não amostra), e são os únicos
      nove desse conjunto que também carregam `condicao`.
   2. **O despacho da conjuração é um `if`/`else` excludente sobre essa mesma `forma`**, e o
-     primeiro ramo é o dos 9, retornando antes de qualquer outro: `forma === 'nenhuma'` (`src/lib/artes-grid-mesa.ts:798`).
+     primeiro ramo é o dos 9, retornando antes de qualquer outro: `forma === 'nenhuma'` (`src/lib/artes-grid-mesa.ts:808`).
      Os ramos seguintes do mesmo `if`/`else` (que levam a `invocar`/`deslocar`/`encadear`/`grudarNoAlvo`, entre as linhas 802 e 806 do mesmo arquivo) ficam, por construção,
      inalcançáveis para quem já tomou o primeiro ramo. Não é falta de sorte, é estrutura de
      `if`/`else` sobre a mesma variável.
   3. **E todo caminho que leva a `ATIVOS.push` passa por `gravarEfeito`.** O comentário do arquivo
      já nomeia `morder` e `porCondicao` como os `DOIS pontos` por onde toda aplicação de dano ou condição passa nesta mesa (`src/lib/artes-grid-mesa.ts:41`).
-     E dentro de `gravarEfeito`, `ATIVOS.push` (`src/lib/artes-grid-mesa.ts:1324`) só roda depois da linha que grava no banco, e é a única ocorrência no arquivo inteiro.
+     E dentro de `gravarEfeito`, `ATIVOS.push` (`src/lib/artes-grid-mesa.ts:1397`) só roda depois da linha que grava no banco, e é a única ocorrência no arquivo inteiro.
 
   **Os quatro blocos de MOTOR que não são o laço da mordida** (`:1149`, `:1242`, `:1299`→`:1330`)
   também dependem de `gravarEfeito` já ter rodado: `:1149` é dentro de `deslocar` (o ramo
@@ -2712,7 +2712,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   **CLASSIFICA/EXIBE, quatro blocos, atualizados para ler `ef.condicao || ef.condicaoAparente`
   (fechado, ver `docs/simulacao/caixa/19-executora.md`):**
-  `src/lib/artes-grid-mesa.ts:458` (`const condId = ef.condicao || ef.condicaoAparente;`);
+  `src/lib/artes-grid-mesa.ts:468` (`const condId = ef.condicao || ef.condicaoAparente;`);
   `:1836` (`const condId = p.ef.condicao || p.ef.condicaoAparente;`, texto de log);
   `src/lib/artes-grid.ts:1496`-`1497` (`if (ef.condicao && alvos.length) {`): a prévia só entra se
   `alvos.length`, e os 9 problemáticos têm `alvo: "nenhum"`: **já seguro por construção, não tocado**;
@@ -2797,9 +2797,9 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **O DEFEITO.** No Grid os dois papéis escrevem o mesmo campo por caminhos que não se conhecem.
 
   O jogador acrescenta pelo banco, e o banco lê a coluna e concatena lá dentro:
-  `SB.rpc('jogador_registra', { p_arena: ARENA.id, p_linha: linha })`, `grid.astro:11162`.
+  `SB.rpc('jogador_registra', { p_arena: ARENA.id, p_linha: linha })`, `grid.astro:11172`.
   O mestre grava o vetor inteiro da memória dele:
-  `await SB.from('mesa_arenas').update({ log: LOG }).eq('id', ARENA.id);`, `grid.astro:11197`. **A linha que o jogador acabou de
+  `await SB.from('mesa_arenas').update({ log: LOG }).eq('id', ARENA.id);`, `grid.astro:11207`. **A linha que o jogador acabou de
   registrar some se o `LOG` do mestre for anterior a ela, sem erro nenhum.** É o caminho normal dos
   dois durante uma cena.
 
@@ -2809,7 +2809,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   **O `LOG` do mestre NUNCA é relido antes de uma escrita.** O `persistirLog` escreve a cópia em
   memória, sem `select`. Ele é atualizado só pela campainha do tempo real:
-  `if (assuntos.has('registro')) { await carregarLog(true); pintarLog(); }`, `grid.astro:7970`, e é
+  `if (assuntos.has('registro')) { await carregarLog(true); pintarLog(); }`, `grid.astro:7980`, e é
   o `doBanco` que vai ao banco.
 
   **Então a janela é o atraso da campainha, e ela tem números.** Todos em
@@ -2822,7 +2822,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | e enquanto o mestre está OCUPADO, a releitura é adiada | `RETENTAR_OCUPADO` × `MAX_ADIAMENTOS` | 700 × 30 = **~21 s** |
 
   **O piso é ~340 ms e o teto é ~21 segundos**, e o teto não é raro: `ocupado` inclui
-  `|| !el('tok-menu').hidden || !!document.querySelector('dialog[open]')`, `grid.astro:7885`, e
+  `|| !el('tok-menu').hidden || !!document.querySelector('dialog[open]')`, `grid.astro:7895`, e
   diálogo aberto é exatamente o estado do mestre no instante em que ele vai registrar (confirmar
   dano, confirmar acerto, pôr condição). **A janela larga acontece justamente quando ele está
   prestes a escrever.**
@@ -2842,10 +2842,10 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | gesto | o que faz hoje |
   |---|---|
   | `logar()` | empurra uma linha e grava o vetor |
-  | `desfazer()` | tira a última linha com `acao` (`LOG.splice(idx, 1);`, `grid.astro:11286`) e grava o vetor |
+  | `desfazer()` | tira a última linha com `acao` (`LOG.splice(idx, 1);`, `grid.astro:11296`) e grava o vetor |
   | `editarLinha(id)` | muda `txt`/`pub` de uma linha, e grava o vetor |
-  | `excluirLinha(id)` | tira por id (`LOG.splice(i, 1);`, `grid.astro:11381`) e grava o vetor |
-  | `refazerLogDosEfeitos()` | `LOG = LOG.filter((e: any) => !minha(e));` (`grid.astro:11432`) e empurra N linhas novas |
+  | `excluirLinha(id)` | tira por id (`LOG.splice(i, 1);`, `grid.astro:11391`) e grava o vetor |
+  | `refazerLogDosEfeitos()` | `LOG = LOG.filter((e: any) => !minha(e));` (`grid.astro:11442`) e empurra N linhas novas |
 
   **E UMA CORREÇÃO AO ENUNCIADO: não existe zerar no Grid.** O `LOG = []` é do `combate.astro`
   (`if (zLog) { LOG = []; await persistLog(); }`, `combate.astro:2068`), na caixa de reiniciar
@@ -2879,7 +2879,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   **E UM ACHADO NO INVENTÁRIO, que virou decisão de mesa: o Refazer NÃO apaga linha de jogador.**
   Ele apagava toda linha marcada `ef`, e a marca é posta pelo `logar` que a aba entrega ao módulo
-  das Artes (`logar(c, txt, { ...extra, ef: true })`, `grid.astro:2764`) · **inclusive quando quem
+  das Artes (`logar(c, txt, { ...extra, ef: true })`, `grid.astro:2769`) · **inclusive quando quem
   conjurou foi o jogador**.
 
   **A mesa decidiu em 05/09/2026 que não apaga**, e o motivo é o que dá a regra: *o Refazer existe
@@ -3045,7 +3045,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **E O RISCO QUE EU FUI CONFERIR ANTES DE DIZER QUE NÃO HÁ:** a 32 faz `centro` e `conjurador_id`
   poderem vir nulos, e o cliente não foi mudado para isso. Conferido: o `centro` **não é lido em
   lugar nenhum** do cliente · a única ocorrência dele é uma escrita, em
-  `patch.centro = { q: nova.q, r: nova.r };`, `artes-grid-mesa.ts:1964`.
+  `patch.centro = { q: nova.q, r: nova.r };`, `artes-grid-mesa.ts:2037`.
   E o `conjurador_id` já era tratado como opcional em todos os pontos que o usam. **`alvos` nunca vem nulo** (a view faz `coalesce` para `[]`). O cabeçalho da 32 diz
   que ela não depende de mudança de tela, e a leitura do cliente confirma.
 
@@ -3111,7 +3111,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **E A MARCA `__a_sair` VAI JUNTO, e a resposta à pergunta da mesa é: não, a Arte não soltava · ela
   DEIXAVA DE SOLTAR.** A marca é o que segura a Arte em montagem: com ela, `deveSair()` é verdadeiro
   e a Arte ainda deve o efeito. Apagada, o laço da saída passa direto e **a Arte nunca sai**:
-  `src/lib/artes-grid-mesa.ts:1758` é `if (!deveSair(ef) || montando(ef, t)) continue;`
+  `src/lib/artes-grid-mesa.ts:1831` é `if (!deveSair(ef) || montando(ef, t)) continue;`
 
   **O SINTOMA, e ele vai escrito com estas palavras porque é o que alguém vai relatar de uma mesa
   antiga sem saber o nome:** a Mana foi paga, a mancha fica no chão **a duração inteira sem ferir
@@ -3248,7 +3248,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   **O CASO.** Eu li o `marcarMordido`, vi `ctx.SB.from('arena_efeitos').update(...)` e escrevi que
   ele *"grava direto na tabela e nunca chama a RPC"* · e daí concluí que a migração 35 entrava
-  **inerte**. Vale só para o mestre: o `sbDoJogador()` (`src/pages/mesa/grid.astro:2713`) devolve um
+  **inerte**. Vale só para o mestre: o `sbDoJogador()` (`src/pages/mesa/grid.astro:2718`) devolve um
   objeto **com a mesma cara** que troca toda escrita pelas funções do banco, e o `ctxArtes()` o
   entrega no lugar do Supabase quando quem joga não é o mestre.
 
@@ -3453,7 +3453,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   e É o que atrasa a entrada, a medição do turno anterior). `contrapeEm` e
   `contrapeDe` são igualmente baratas de ligar (o par que lê e carrega o contrapé que
   `ticksDeEntrada` gravaria), **mas não mudam duração nenhuma**: a régua da mesa manda o
-  contrapé ficar **mostrado e não descontado** (`grid.astro:5313`, `GUARDADO na ação e MOSTRADO`, "o valor final da jogada é do
+  contrapé ficar **mostrado e não descontado** (`grid.astro:5323`, `GUARDADO na ação e MOSTRADO`, "o valor final da jogada é do
   mestre"), então ele nunca entra numa rolagem que o harness resolve sozinho. Ligá-las é
   completar o mecanismo do `ticksDeEntrada` (senão o contrapé fica escrito e nunca decai), não
   medir mais nada.
@@ -4171,7 +4171,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   11/09/2026] O corpo a corpo terminava DENTRO do inimigo que ocupa mais de um hexágono, e o
   estado que sobrava era proibido pela própria regra de ocupação da mesa.**
 
-  **FECHADO EM 11/09/2026. O que foi construído:** `raioExtraHex` (`src/pages/mesa/grid.astro:3381`
+  **FECHADO EM 11/09/2026. O que foi construído:** `raioExtraHex` (`src/pages/mesa/grid.astro:3391`
   · `const raioExtraHex`), a única conversão de porte para hexágonos, e um terceiro parâmetro em
   `src/lib/alcance.ts:95` · `export function alcancaNoCorpoACorpo`, com o `Math.max(0, …)` morando
   na função que decide e não em cada chamador. **Dez lugares** ao todo, e não os sete que o
@@ -4224,23 +4224,23 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **A cadeia, e são dois mecanismos onde o segundo dispara por causa do primeiro:**
 
   - o alcance de perseguição é medido de CENTRO A CENTRO e nunca soma o raio do alvo ·
-    `src/pages/mesa/grid.astro:5745` · `const pararA = mov.alvo ? alcanceDaPeca(c) : 0;`. A régua
+    `src/pages/mesa/grid.astro:5755` · `const pararA = mov.alvo ? alcanceDaPeca(c) : 0;`. A régua
     que ele usa compara distância crua contra 1 ou 2 hexágonos, e o porte do alvo não entra na
     conta em lugar nenhum · `src/lib/alcance.ts:98` · `return hexagonos <=`. Para um Enorme, que
-    mede 4 m em `src/pages/mesa/grid.astro:3355` · `'Enorme': 4, 'Imenso': 8, 'Colossal': 16,`,
+    mede 4 m em `src/pages/mesa/grid.astro:3365` · `'Enorme': 4, 'Imenso': 8, 'Colossal': 16,`,
     numa arena de 1 m por hexágono, "distância 1 do centro" É dentro do corpo. **O destino que a
     perseguição mira já nasce errado**, antes de qualquer passo;
   - a primeira caminhada veta certo (ela evita as casas ocupadas pelo círculo do inimigo), então
     ela NÃO CONSEGUE chegar nesse destino. Não ter aproximado é justamente o gatilho da repetição
     que afrouxa o veto para a casa exata do outro token ·
-    `src/pages/mesa/grid.astro:5785` · `novo = caminharHex`
+    `src/pages/mesa/grid.astro:5795` · `novo = caminharHex`
     . A casa exata de uma criatura grande é só o centro dela, e o resto do
     corpo fica livre. **A peça entra.**
 
   **O estado proibido, e é isto que faz o achado ser maior:** a gravação não passa pela porta que
-  confere ocupação · `src/pages/mesa/grid.astro:5792` · `await gravarToken`. Depois dela, a
+  confere ocupação · `src/pages/mesa/grid.astro:5802` · `await gravarToken`. Depois dela, a
   função que a mesa usa para decidir se um ponto está bloqueado responde SIM para a casa onde o
-  atacante acabou de parar · `src/pages/mesa/grid.astro:7176` · `function ocupadoPor`. **O motor
+  atacante acabou de parar · `src/pages/mesa/grid.astro:7186` · `function ocupadoPor`. **O motor
   chegou num estado que a própria regra de ocupação dele proíbe.** Esse estado é inalcançável
   pelo arrasto e inalcançável pela barra de comando; só a perseguição automática o produz.
 
@@ -4457,9 +4457,9 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   OBSERVAR o que a tela escreveu.**
 
   **O caso concreto:** o status que diz qual modo está ouvindo é escrito em
-  `src/pages/mesa/grid.astro:9410` · `vozStatus(textoOuvindo(ditado))`, e essa linha só é alcançada
+  `src/pages/mesa/grid.astro:9420` · `vozStatus(textoOuvindo(ditado))`, e essa linha só é alcançada
   depois de o modelo de 31 MB estar carregado, o que um teste headless não faz. Então a costura
-  exposta para o teste (`src/pages/mesa/grid.astro:10698` · `__TEXTO_OUVINDO`) chama a mesma função
+  exposta para o teste (`src/pages/mesa/grid.astro:10708` · `__TEXTO_OUVINDO`) chama a mesma função
   por fora e devolve o texto **recomputado**, em vez de ler o que a tela de fato exibiu.
 
   **A prova não é raciocínio, é experimento.** A Revisora reverteu a linha real para o
@@ -4585,8 +4585,8 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
 
   **A regra que o humano decidiu em 10/09 diz "de BORDA A BORDA".** Borda a borda corta os DOIS
   raios, não um. O que está no código corta um: as cinco chamadas de `raioExtraHex`
-  (`src/pages/mesa/grid.astro:3381` · `const raioExtraHex`) passam todas o ALVO, e
-  `src/pages/mesa/grid.astro:5420` · `const alcanceDaPeca` soma só `raioExtraHex(alvo)`. As
+  (`src/pages/mesa/grid.astro:3391` · `const raioExtraHex`) passam todas o ALVO, e
+  `src/pages/mesa/grid.astro:5430` · `const alcanceDaPeca` soma só `raioExtraHex(alvo)`. As
   constantes de alcance não sabem de porte: são número fixo.
 
   **A consequência, concreta:** um Enorme tem 2 m de corpo e ataca um humano. As bordas se
@@ -4687,8 +4687,8 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   Pela semântica de hoje o terceiro parâmetro é o raio da ponta LONGE, então a leitura da Revisora
   é a que casa com a função como ela está · mas a da Executora aponta para uma falta real, que é a
   mesma do `L77`. **Quem for consertar decide as duas, não uma**, e o chamador, dentro de
-  `src/pages/mesa/grid.astro:6367` · `function candidatosParaInterpor`, monta a pergunta
-  (`src/pages/mesa/grid.astro:6388` · `const r = alcanceInterpor`) sem raio nenhum dos dois lados.
+  `src/pages/mesa/grid.astro:6377` · `function candidatosParaInterpor`, monta a pergunta
+  (`src/pages/mesa/grid.astro:6398` · `const r = alcanceInterpor`) sem raio nenhum dos dois lados.
 
   **RESOLVIDO PELA FÓRMULA DO `L77` em 11/09/2026, e as duas leituras deixam de competir.** A
   pergunta que `alcanceInterpor` faz é se o AGRESSOR alcança a casa onde o interpositor terminaria,
@@ -5494,7 +5494,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
     de jogo do humano.
 
   **RODADA 49 (`5a6bb93`), REVISADA em `d9ed457`: SEGUE, sem CORRIGE.** A conferência passou a morar
-  no `gravarToken` (`src/pages/mesa/grid.astro:2672`), que devolve **por que** recusou em vez de
+  no `gravarToken` (`src/pages/mesa/grid.astro:2677`), que devolve **por que** recusou em vez de
   recusar calada, e o `porNoMapa` perdeu a checagem duplicada que tinha. **Um** estrangulamento
   convertido, de propósito: a fachada das Artes e o `deslocar` ficam para a rodada 50.
 
@@ -5505,7 +5505,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   nenhuma.
 
   **E DIVIDIR HEXÁGONO É LEGAL EM DOIS CASOS**, o que o levantamento não tinha trazido e muda a
-  regra inteira: `podeDividir` (`grid.astro:7130`) diz que **gente miúda cabe junta** (ambos com
+  regra inteira: `podeDividir` (`grid.astro:7140`) diz que **gente miúda cabe junta** (ambos com
   diâmetro ≤ 0,5 m) e que **quem está no chão virou parte do chão**. A conferência na escrita é o
   `ocupadoPor` inteiro, com isso dentro · qualquer trava mais simples **proíbe jogo válido**. É por
   isso que trava no BANCO fica difícil de propósito: uma `unique` em `(arena_id, q, r)` estaria
@@ -5519,12 +5519,12 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   exercita a conferência nova (o teste entrou pela lista lateral). **A Revisora rastreou o
   mecanismo em vez de aceitar a descrição**, e o achado dela é o que salva a rodada de ser um
   exagero: a interceptação é por ELEMENTO VISUAL, `document.elementFromPoint` seguido de
-  `closest<HTMLElement>` em `grid.astro:6768`, e não por raio de ocupação.
+  `closest<HTMLElement>` em `grid.astro:6778`, e não por raio de ocupação.
 
   **MAS A PREMISSA COM QUE NÓS DOIS SUSTENTAMOS ISSO ESTAVA ERRADA, e a correção estreita o
   achado.** A frase que circulou (dela, aceita por mim) era "arrasto para DENTRO do corpo de uma
   criatura grande, mas FORA do token visual dela". **Esse conjunto é vazio:** o token é desenhado no
-  tamanho FÍSICO da criatura · `grid.astro:3434` (`const diametroPx`), e o CSS diz isso por extenso
+  tamanho FÍSICO da criatura · `grid.astro:3444` (`const diametroPx`), e o CSS diz isso por extenso
   em `grid.astro:1525` (`O token é desenhado no TAMANHO FÍSICO dele`). Um Enorme de 4 m tem token de
   4 m, então dentro do corpo **é** em cima do token.
 
@@ -5555,8 +5555,28 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   outros portes e os cantos do hexágono esperam, porque ampliar varredura por cima de premissa que
   já caiu duas vezes é o gesto errado.
 
-  **O veredito continua ESCALA e não CORRIGE, mas agora por ausência de prova em vez de por
-  argumento.** E o registro que fica é sobre o método: **três premissas caíram nesta discussão, duas
+  **MEDIDO EM 12/09/2026 pela Revisora, e os TRÊS pontos se confirmaram.** Ela fabricou um segundo
+  Enorme na cena `?cena=corpoacorpo`, arrastou de verdade com `PointerEvent` sintético até `q:7,r:4`,
+  distância 3 do outro, e apagou a peça e o script depois (árvore limpa, conferida). Ponto a ponto:
+  `elementFromPoint` devolveu um `DIV` comum e o `closest('.gr-token')` deu `null`, então **não achou
+  o token**; a caixa de declarar ataque **não abriu**, abriu a de deslocamento; e pelo caminho direto,
+  que chega no `gravarToken` de verdade, a recusa veio com o motivo por extenso, "Não deu para mover:
+  J5 já está ocupada", com a peça parada onde estava.
+
+  **ENTÃO A REGIÃO DESCOBERTA EXISTE, e ela é inofensiva por um motivo que vale registrar:** o gesto
+  não vira ataque, cai no caminho do movimento, e o movimento passa pela porta nova. O buraco é na
+  INTERCEPTAÇÃO, não na invariante. E soltar a `raioMeu` de distância não é "soltar em cima de
+  alguém": é soltar num hexágono vazio, então tratar como movimento é a leitura certa do gesto, e não
+  uma falha dele.
+
+  **ACHADO A MAIS, que ela trouxe de graça e que fecha o `L66` neste caminho:** a classe `hx proibido`
+  que o `function marcarAlvo` (`src/pages/mesa/grid.astro:7082`) põe DURANTE o arrasto já chama o `ocupadoPor`
+  de verdade, então o hexágono aparece vermelho **antes de soltar**. O comentário do código dizia que
+  o atalho de atacar arrastando nasceu porque "o arrasto terminava em nada"; hoje ele termina em aviso
+  visual antes do gesto e em motivo escrito depois dele.
+
+  **VEREDITO FINAL: fecha sem CORRIGE, e a ESCALA se resolve na medida em vez de na discussão.** E o
+  registro que fica é sobre o método: **três premissas caíram nesta discussão, duas
   eram minhas**, e nenhuma custou código errado porque as três caíram antes de virar decisão. A
   Revisora testou antes de eu pedir, reportou contra o próprio veredito, e **não reclassificou
   sozinha quando a base factual mudou** · é o que separa revisar de carimbar.
@@ -5570,8 +5590,155 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
 
   **E o comentário do próprio código guarda um acoplamento que vale para a rodada 50:** o gesto de
   atacar arrastando existe **porque** a casa ocupada recusava o movimento e o arrasto terminava em
-  nada · `grid.astro:6763` (`A casa ocupada recusa o movimento`). Mexer na recusa mexe na razão de
+  nada · `grid.astro:6773` (`A casa ocupada recusa o movimento`). Mexer na recusa mexe na razão de
   ser daquele atalho.
+
+- [ ] **L83 · [PERGUNTADO pelo Arquiteto em 12/09/2026 ao abrir a rodada 50, DESENHADO pelo humano
+  no mesmo dia] O que acontece quando um empurrão joga um corpo para cima de outro. A regra passou a
+  existir; o que falta são seis peças dela, e uma delas contradiz uma decisão antiga.**
+
+  **O MODELO, como ele o escreveu:** rola-se um teste de Empurrão. Se quem foi arremessado **ganha**,
+  o outro é derrubado, e se ganhar por muito os **dois** seguem a trajetória. Se **perde**, bate e cai
+  um hexágono antes, no chão. E o outro pode **desviar**, e aí o corpo passa direto, ou os dois ficam
+  no chão no mesmo hexágono. Essa última parte ele acertou contra o meu palpite: dividir hexágono
+  **já é legal hoje** quando um está no chão, `const podeDividir` (`src/pages/mesa/grid.astro:7140`).
+
+  **O INTERINO, decidido junto e já em vigor: para uma casa antes E cai.** É o galho "perdeu" do
+  modelo, inteiro. Quando o teste existir, ele vira aquele galho sem nada ser jogado fora, e o galho
+  "ganhou" entra por cima. **A anotação que ele pediu junto é esta linha: a regra volta para revisão
+  depois**, e o interino não é resposta final, é a metade conservadora dela.
+
+  **O QUE ESTE ITEM PRECISA RESOLVER, medido antes de o modelo ser escrito e não descoberto depois:**
+
+  · **Hoje o empurrão não rola NADA, e isso foi decidido de propósito.** O efeito `empurrao-elemental`
+    (em `src/data/efeitos.json`, citado por id porque o reapontador não cobre JSON) diz que o que manda
+    é o **peso**: a Arte entra no lugar dos músculos, a régua de Força dá a distância. Um teste de
+    Empurrão é rolagem nova num efeito desenhado para não ter uma, e vale para os 19 Efeitos de
+    movimento de uma vez.
+  · **"Teste de Empurrão" não existia.** Procurado: "embate de força" e "disputa de Força" apareciam só
+    como **prosa em habilidade de bestiário**, herdadas da conversão de D&D, nunca como mecânica. A
+    resposta à dúvida dele ("não sei se já decidimos") era **não**. **Deixou de ser em 12/09/2026, por
+    um caminho lateral:** ao decidir o levantar do `L84` ele escreveu a forma da disputa, que é
+    **(Força ou Destreza) + Briga**, com **−2 na ação** para quem está deitado. A perícia existe
+    (`briga` é primária em `src/data/habilidades.json`). Falta dizer se essa mesma forma serve ao corpo
+    arremessado, e o item abaixo explica por que ela provavelmente não serve inteira.
+  · **Quem rola pelo lado de quem voa.** O corpo arremessado não tem agência, e rolar a Força DELE
+    inverte a ficção: um saco de grãos atirado por um gigante resistiria com a própria Força do saco.
+    **O número certo já está no código:** a distância é `nível × 200 ÷ peso`, logo o ORÇAMENTO
+    `nível × 200` (em kg·m) é constante e independe da massa. É ele que mede a pancada. Os metros não
+    servem para isso: eles já são o orçamento dividido pelo peso, então dois impactos iguais aparecem
+    como distâncias muito diferentes.
+  · **Bater em parede já tem regra, bater em gente não.** O mesmo `empurrao-elemental` diz que bater em
+    obstáculo **duro** machuca como uma queda daquela distância. Falta dizer se um corpo amortece mais
+    que pedra.
+  · **Desviar precisa de preço.** A mesa já cobra reação fora da vez: o desvio de emergência custa
+    **1 Tick por metro** e empurra a próxima ação (`combate.md`, seção do desvio). Desviar de graça de
+    um corpo voador seria melhor que esquivar de um golpe.
+  · **A cascata precisa de freio.** "Os dois seguem a trajetória" põe o segundo corpo em movimento, e o
+    destino dele também pode estar ocupado. Sem limite escrito (uma colisão por empurrão? até o
+    orçamento acabar?) isso é recursão numa mesa.
+  · **Criatura grande não tem "a outra pessoa".** Um Enorme arrastado cobre vários hexágonos e bate em
+    três ao mesmo tempo.
+
+  **UMA DIVERGÊNCIA ACHADA DE PASSAGEM, e ela é do tipo que o `CLAUDE.md` manda resolver a favor do
+  JSON:** o bloco de fórmula do `empurrao-elemental` define **FAA** como `(nível da Arte + Acerto
+  Arcano) × 2`, "entra na tabela de arremesso e diz a distância". O código não usa nada disso:
+  `(nivel * 200)` (`src/lib/artes-grid-mesa.ts:1188`) é um orçamento fixo de 200 por nível, dividido
+  pelo peso, sem Acerto Arcano e sem a tabela de arremesso, que existe e é usada na ficha. **Não está
+  medido se 200 é uma calibração daquela tabela ou um número solto**, e é isso que falta antes de
+  chamar de defeito. → `L70` (o conserto que abriu a pergunta), → `L84` (a queda depende dele).
+
+- [ ] **L84 · [MEDIDO pelo Arquiteto em 12/09/2026 ao conferir o modelo do `L83`, DECIDIDO pelo humano
+  no mesmo dia] `noChao` responde duas perguntas diferentes com uma função só, e a condição "Caído"
+  paga a conta.**
+
+  **A condição diz uma coisa e o Grid faz outra.** No catálogo, `caido` é **prono e lutando**: alvo
+  fácil de perto (−2 na Defesa), alvo menor de longe (+2), e *"levantar consome movimento"*. No
+  tabuleiro, `const NO_CHAO` (`src/pages/mesa/grid.astro:7128`) põe `caido` no mesmo balde de
+  `inconsciente`, `morrendo`, `estabilizado` e `morto`, e esse balde **sai da iniciativa**: a coluna
+  mostra "No chão, fora da fila", e voltar custa 5 Ticks com o gesto que estava no ar apagado
+  (`const tick = agora + DELAY_AO_LEVANTAR`, `src/pages/mesa/grid.astro:4779`).
+
+  **Isto já estava quebrado antes do `L83`**, e é o `L83` que o torna carregador: o modelo do empurrão
+  derruba gente como **resultado normal**, então empurrar alguém contra um aliado tiraria os dois do
+  combate por 5 Ticks cada, o que faria do empurrão o efeito mais forte do jogo por acidente de
+  implementação, e não por desenho.
+
+  **DECIDIDO: separar estar no chão de estar fora de combate.** Nas palavras dele, quem está no chão
+  **pode agir** (e normalmente a primeira ação é levantar); quem está **inconsciente** não tem ação e
+  sai do combate até ser acordado.
+
+  **O CONSERTO NÃO É TIRAR `caido` DO BALDE, É PARTIR O BALDE EM DOIS**, e essa é a parte que quase
+  passou: a mesma função responde *"dá para passar por cima?"*, e é ela que autoriza dois corpos no
+  mesmo hexágono em `const podeDividir` (`src/pages/mesa/grid.astro:7140`). Prono e inconsciente estão
+  os **dois** no chão, então os dois continuam dividindo espaço · que é exatamente o caso que ele
+  descreveu no fim do `L83`. O que se separa é só a fila: dela sai apenas quem não tem ação.
+
+  **O BURACO QUE A SEPARAÇÃO ABRE, e ele é o motivo de verdade para a queda e a separação andarem
+  juntas.** Hoje a divisão de hexágono com quem está caído é inofensiva porque o caído **não age**: ele
+  só sai do chão quando o mestre tira a condição. Depois da separação ele age, e a primeira ação dele é
+  levantar. Aí: uma peça de pé em cima de uma prona, a prona levanta, e ficam **dois corpos de pé no
+  mesmo hexágono**, que é justamente o que `const podeDividir` (`src/pages/mesa/grid.astro:7140`)
+  proíbe.
+
+  **E o `L70` não pega isso, o que é a parte que importa:** a decisão do `L70` é que a regra mora na
+  GRAVAÇÃO de posição, e levantar **não grava posição nenhuma** · muda uma condição e um tick. A
+  invariante de ocupação é violada **sem que ninguém escreva uma coordenada**, então a porta nova passa
+  ao largo. É o primeiro caso conhecido em que a conferência na escrita não basta, e ele nasce da
+  própria decisão que o humano tomou. → `L70`.
+
+  **A REGRA, DECIDIDA PELO HUMANO EM 12/09/2026 no mesmo dia da pergunta: normalmente quem está prono
+  DESLOCA para um hexágono adjacente para levantar.** Querer levantar no mesmo hexágono é uma
+  **disputa de (Força ou Destreza) + Briga**, para ver quem empurra quem para o lado, e quem está
+  deitado tem desvantagem, normalmente **−2 na ação**.
+
+  **ESSA RESPOSTA FECHA METADE DO BURACO DE CIMA, e por um caminho melhor do que qualquer uma das
+  quatro saídas que eu tinha oferecido.** Se levantar com alguém em cima passa a ser um
+  **deslocamento**, então levantar **grava posição**, e a porta do `L70` cobre o caso pela porta da
+  frente. Levantar sozinho no próprio hexágono continua não gravando nada, e continua não precisando,
+  porque ali não há ninguém para conflitar.
+
+  **A METADE QUE ELA NÃO FECHA, e eu cheguei a dizer em voz alta que fechava inteiro antes de
+  conferir:** o caminho DELIBERADO está coberto, o **PASSIVO** não. O comentário do `conferirChao`
+  lista cinco retornos ao estado de pé que não são ação de quem estava no chão: a cura do menu, a Arte
+  que devolve Vida, a condição que o mestre tira à mão, o efeito que venceu sozinho, e a campainha do
+  tempo real trazendo pronto de fora. **Nenhum desses desloca, e nenhum grava coordenada.** Curar um
+  inconsciente que está debaixo de uma peça de pé põe dois corpos de pé no mesmo hexágono sem nenhuma
+  escrita de posição acontecer. Isso é regra que falta, não código que falta, e vai ao humano junto
+  com a disputa do `L83`.
+
+  **A frase certa, estreita:** a conferência na gravação fecha o caminho da posição, e a regra nova do
+  levantar traz o levantar deliberado para dentro desse caminho. O retorno passivo continua fora.
+
+  **O QUE ELA PEDE NOS DADOS:** a condição `caido` (em `src/data/condicoes.json`) hoje tem
+  `defesaCaC` −2 e `defesaDist` +2, e **nenhum modificador de ação**. O −2 na ação é campo novo nela, e
+  o campo já existe no catálogo com esse nome, usado por `imobilizado`.
+
+  **O CANTO QUE SOBRA, e é pequeno:** quando NÃO houver hexágono adjacente livre, a disputa deixa de
+  ser escolha e vira o único caminho. Não é contradição da regra, é o caso em que o "normalmente" dela
+  não se aplica, e quem implementar tem de escrevê-lo em vez de deixar o prono sem saída.
+
+  **E ELA DÁ AO `L83` A PRIMEIRA PEÇA CONCRETA QUE FALTAVA:** a disputa de
+  (Força ou Destreza) + Briga é a forma do teste de Empurrão que não existia, agora nomeada com
+  perícia que existe de verdade (`briga` é primária em `src/data/habilidades.json`). O `L83` continua
+  aberto, mas deixou de estar sem chão.
+
+  **O TAMANHO, medido antes de prometer, e eu tinha chutado para menos:** `noChao` tem **30 chamadas**,
+  todas em `src/pages/mesa/grid.astro` e nenhuma em outro arquivo. Não é troca mecânica: cada uma tem
+  de ser lida para dizer qual das duas perguntas ela faz, e há casos que não são óbvios (o arrasto que
+  recusa peça no chão, a bandeira `chao:` que sai para fora). Eu tinha suposto de 8 a 10.
+
+  **DECIDIDO PELO HUMANO: tudo entra na rodada 50**, junto com a gravação e a queda do empurrão, contra
+  a minha recomendação de partir em duas. O registro do porquê da minha recomendação fica: 30
+  julgamentos mais a refatoração da escrita num só diff dá à Revisora dois eixos de risco no mesmo
+  lugar. **A contrapartida que ele comprou é real e é a razão dele:** a queda nunca chega a existir num
+  estado em que derrubar alguém o tire do combate, que é o que aconteceria se ela viesse uma rodada
+  antes da separação.
+
+  **O que fica sem número de propósito:** levantar do prono "consome movimento" na ficha da condição, e
+  o preço disso em Ticks **não está decidido**. Os 5 Ticks de hoje são o atraso de **acordar**, não o de
+  ficar de pé, e inventar um aqui seria escrever regra na tela, que é o erro que o
+  `cobrarDeslocamento` já registra por escrito. → `L83`, → a triagem das 55 condições.
 
 - [x] **L68 · [LEVANTADO em 10/09/2026 numa batalha de mesa, DECIDIDO pelo humano no mesmo dia,
   CONSTRUÍDO na rodada 40 em 11/09/2026] Arrastar uma peça fora do turno dela passava em silêncio,
@@ -5593,7 +5760,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   zero e o valor inteiro da escolha é o REGISTRO.
 
   **UM DEFEITO REAL NO PRIMEIRO GATILHO, medido antes de trocar:** ele disparava perguntando
-  ao GRUPO inteiro, em vez de à peça: `function grupoDaVez` (`src/pages/mesa/grid.astro:4601`)
+  ao GRUPO inteiro, em vez de à peça: `function grupoDaVez` (`src/pages/mesa/grid.astro:4611`)
   devolve
   lista **vazia** enquanto um golpe está caindo. Com lista vazia o diálogo abria em **todo**
   arrasto naquele intervalo: medido no bench de doze peças com um golpe de verdade no ar,
@@ -5613,12 +5780,12 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **O motor DISTINGUE as duas coisas, em dois lugares, e nenhum deles está no arrasto:**
 
   - a régua das Artes, escrita como regra e não como implementação ·
-    `src/lib/artes-grid-mesa.ts:1872` · `ONDE A MESA CORRIGE O PRÓPRIO REGISTRO, NÃO COBRA.` Ela é
+    `src/lib/artes-grid-mesa.ts:1945` · `ONDE A MESA CORRIGE O PRÓPRIO REGISTRO, NÃO COBRA.` Ela é
     cumprida por omissão (a correção não debita Mana e não declara tempo) e o registro escreve
     "corrigiu", nunca "conjurou", para a mesa ler a diferença na linha do log;
   - agir fora da vez, que tem custo real e campo próprio ·
     `src/lib/combate-tempo.ts:129` · `divida?: number;`
-    , oferecido no menu da peça em `src/pages/mesa/grid.astro:7427` · `'forahora'`.
+    , oferecido no menu da peça em `src/pages/mesa/grid.astro:7437` · `'forahora'`.
 
   **O que existe no arrasto, e está no eixo errado:** a caixa do deslocamento no simultâneo já tem
   DOIS botões, e o segundo é `src/pages/mesa/grid.astro:415` · `mv-direto`, uma ferramenta de
@@ -5628,7 +5795,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **E ela quase nunca abre no caso relatado**, por duas razões somadas: só existe no sistema
   simultâneo, para peça vinda do mapa e de pé, e mesmo aí só quando a peça está livre de gesto ·
   a condição é a fase da ação, e não a vez. A verificação de vez existe e é usada em outro lugar ·
-  `src/pages/mesa/grid.astro:7336` · `const ehAVez = grupoDaVez`. Nunca foi ligada ao arrasto.
+  `src/pages/mesa/grid.astro:7346` · `const ehAVez = grupoDaVez`. Nunca foi ligada ao arrasto.
 
   **O registro também não guarda a diferença depois do fato:** a gravação do movimento anota a
   ação como mover, com origem e destino, e nenhuma marca de turno. Quem ler o log amanhã não tem
@@ -5736,7 +5903,7 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   `arena_log` como tabela, uma linha por entrada, e o desfazer virando um `delete`.
 - [ ] **I5 · [FAZER] Um editor de cenário no Grid.** Hoje o mestre só põe peças: o tabuleiro não
   tem parede, terreno difícil nem item no chão, e o único veto de passo é casa ocupada
-  (`ocupadoPor`, `grid.astro:7175`). Decidido em 02/09/2026, ao desenhar o harness de simulação
+  (`ocupadoPor`, `grid.astro:7185`). Decidido em 02/09/2026, ao desenhar o harness de simulação
   (`docs/simulacao/02-projeto-harness.md` §0.4 P2): a **parede entra como funcionalidade**, e o
   encaixe já existe, porque `caminharHex` recebe um veto arbitrário (`hex.ts:131`). O terreno
   difícil tem gancho pronto e não usado: a condição `terreno-dificil` existe em `condicoes.json`

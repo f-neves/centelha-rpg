@@ -54,7 +54,7 @@ mas só 388 deles estão na tela quando a página abre. A página inteira mede *
   propósito ("são os controles densos de /mesa e /admin, que viram grade se esticados"), e a
   barra da arena é feita quase só de `.btn.mini` e `.btn-fant`. No telefone a isenção se inverteu:
   **os campos incharam para 44px e os botões continuaram com 24**.
-- **O tabuleiro abre a 100% de zoom.** `caber()` (`grid.astro:6646` · `function caber`) só roda no botão ⤢, na tela
+- **O tabuleiro abre a 100% de zoom.** `caber()` (`grid.astro:6656` · `function caber`) só roda no botão ⤢, na tela
   cheia e no `resize`. Numa arena de 24 colunas isso é mostrar 6 hexágonos de 24: o jogador chega
   numa cena e não vê a cena.
 - **A folha da ação abre com 745px de altura numa janela de 844, e o conteúdo tem 813.** Ela já
@@ -64,7 +64,7 @@ mas só 388 deles estão na tela quando a página abre. A página inteira mede *
 - **`.al-sec` quebra em 4 fileiras** ("O acerto" e "O dano"), o rótulo quebra em duas linhas, e o
   campo do motivo corta o texto no meio ("por quê (vai para o registr…").
 - **O menu da peça mede 439px de altura**, 10 itens de 36px. Em retrato passa raspando; em
-  **paisagem** (390px de altura) não cabe, e o encaixe de `grid.astro:7452` (`innerHeight - r.height - 8`)
+  **paisagem** (390px de altura) não cabe, e o encaixe de `grid.astro:7462` (`innerHeight - r.height - 8`)
   devolve um topo **negativo**: o menu sai pela borda de cima e não há rolagem
   dentro dele.
 - **`.rg-acs` (`grid.astro:1964`) nasce com `opacity: 0` e só acende no `:hover`.** No dedo não há
@@ -73,7 +73,7 @@ mas só 388 deles estão na tela quando a página abre. A página inteira mede *
 - **Não existe pinça.** Não há nenhum manipulador de dois dedos em todo o `src/`. O zoom do
   tabuleiro é só pelos botões − e +, de 24px, na sexta fileira da barra.
 - `.gr-palco` ganha `max-height: 70vh` abaixo de 1100px (`grid.astro:1074` (`max-height: 70vh`)) e `ajustarAltura()`
-  (`grid.astro:4155` · `function ajustarAltura`) desliga abaixo de 1101px de propósito, porque a grade vira pilha. As duas
+  (`grid.astro:4165` · `function ajustarAltura`) desliga abaixo de 1101px de propósito, porque a grade vira pilha. As duas
   decisões estão certas para o layout de hoje e são exatamente o que o layout novo substitui.
 
 ---
@@ -103,7 +103,7 @@ Já existem dois precedentes prontos no repositório, e o plano os copia em vez 
 - **A ficha em abas** (`FichaSkeleton.astro:1128-1290`): `body.ficha-abas` ligada por
   `matchMedia('(max-width: 900px)')`, painel por aba, barra fixa no pé com
   `env(safe-area-inset-bottom)`, folha de ações atrás do ⋯, e linhas de 48px.
-- **A mira no dedo** (`artes-grid-mesa.ts:505-510`): a pergunta certa é `pointer: coarse`, e não a
+- **A mira no dedo** (`artes-grid-mesa.ts:515-520`): a pergunta certa é `pointer: coarse`, e não a
   largura, e o gesto sem hover ganha um passo de confirmação em vez de confirmar no primeiro toque.
 
 ---
@@ -199,7 +199,7 @@ Esta é a parte que o pedido nomeou, e a que tem o defeito mais caro já medido.
   parar de quebrar em duas linhas. O `al-motivo` ganha a linha inteira.
 - **`outra-dlg`.** Mesmo tratamento, é irmã da folha da ação.
 - **`arte-dlg`, o ajuste da arte.** O caso difícil, e o único que muda de ideia. Ele é **de
-  propósito** um painel não modal (`grid.astro:6816` · `function modoAjuste`), porque o gesto principal do ajuste é arrastar
+  propósito** um painel não modal (`grid.astro:6826` · `function modoAjuste`), porque o gesto principal do ajuste é arrastar
   a arte no tabuleiro **atrás** dele. No telefone não existe "atrás": a proposta é uma **meia
   folha** (40% da tela, o mapa vivo nos 60% de cima), com o d-pad e os controles de zoom e giro
   dentro dela.
@@ -224,7 +224,7 @@ Esta é a parte que o pedido nomeou, e a que tem o defeito mais caro já medido.
 - **Toque duplo = caber**, que é o par natural da pinça.
 - **Um dedo arrasta**: a peça, se começou em cima de uma peça (já funciona, por `pointerdown`); o
   mapa, no resto (a rolagem nativa do palco já dá conta).
-- **Toque longo** já abre o menu (`grid.astro:7292` · `toque longo`, 400ms com folga de 8px). Fica, e ganha
+- **Toque longo** já abre o menu (`grid.astro:7302` · `toque longo`, 400ms com folga de 8px). Fica, e ganha
   `navigator.vibrate(10)`, que é o que diz ao dedo que o gesto pegou.
 - **Escolher alvo no dedo**: depois do menu, o alvo é confirmado no primeiro `pointerdown`, sem
   prévia. Estender o padrão da **mira no dedo** que as Artes já usam (posicionar, ver, confirmar).

@@ -226,7 +226,7 @@ gr-log     1× ·   7,6 KB ·  0,7 ms ·    42 nós (   41 idênticos)
 Os "2×" e "3×" não são acaso. `porNoMapa()` pinta de forma otimista
 (`pintarTokens(); pintarLista(); pintarIniciativa(); pintarAlcance()`), grava, e no
 fim chama `verificarEfeitos()`, que **sempre** termina em `ctx.repintar()` mesmo
-quando não há um único efeito no tabuleiro (`artes-grid-mesa.ts:1759` · `function verificarEfeitos`). O
+quando não há um único efeito no tabuleiro (`artes-grid-mesa.ts:1832` · `function verificarEfeitos`). O
 `repintar()` refaz tudo de novo e mais a névoa, os efeitos e o painel lateral.
 Metade do trabalho medido acima é a segunda volta.
 
@@ -303,7 +303,7 @@ Abertura de cada aba, com o registro de toda chamada ao cliente:
 | as outras cinco | 4 a 6 | 4 a 6 |
 
 O Grid é o único que cresce com o tamanho da cena, e a causa é uma só:
-`semearMana()` (`grid.astro:3286`) faz **um UPDATE sequencial por combatente** sem
+`semearMana()` (`grid.astro:3296`) faz **um UPDATE sequencial por combatente** sem
 `mana_max`. Com 30 peças, 26 idas em fila. Em produção isso semeia uma vez e para,
 mas *toda cena nova* paga a fila inteira antes do primeiro desenho, em série.
 

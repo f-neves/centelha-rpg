@@ -86,6 +86,8 @@ segunda tinha ficado verde por cegueira.
 | **o `&&` depois do cano** | `comando \| tail -3 && próximo`, todo encadeamento em que a guarda vem depois de um cano | o `&&` está guardando o comando que eu escrevi, ou o código de saída do `tail`, que dá certo mesmo quando o da esquerda falhou? |
 | **o intervalo medido da ponta errada** | *por gesto:* ler `idle`, um horário de notificação, um "parado desde", e concluir atraso de alguém | este intervalo começa quando o OUTRO recebeu a tarefa, ou quando EU olhei pela última vez? |
 | **narrar o conserto na notação que o portão lê** | "era X e virou Y" sobre uma citação de código, com X escrito como `arquivo:NNN` entre crases | o portão vai ler X como afirmação de HOJE, ou eu escrevi o estado antigo na única forma que o instrumento entende como atual? |
+| **o `git diff` que não vê o arquivo novo** *(irmã da de cima, achada pela Executora em 12/09)* | conferir a própria edição com `git diff` numa rodada que criou arquivo | o `git diff` está calado porque não há o que achar, ou porque o arquivo ainda não é rastreado e ele não vê o que o git não conhece? Em arquivo novo, `grep` direto no arquivo resolve numa linha. |
+| **a contagem que vira condição de parada do outro** | dizer a alguém quantos itens conferir ("o comentário lista quatro caminhos") | este número é o que eu quero que ele MEÇA, ou vai virar o ponto em que ele PARA? Nomear os itens custa uma linha e não trunca varredura. |
 
 **DUAS NOVAS, DE 06/09/2026, ACHADAS NA REVISÃO DO AVANÇO UNIFICADO:** a primeira é o gatilho —
 fica verde, o rótulo continua descrevendo o que deveria medir, e nada acusa a mudança por baixo. A
@@ -574,14 +576,14 @@ O script que confere `arquivo.ts:NNN` escolhe a âncora (o trecho entre crases q
 citação afirma) pela crase mais próxima do número citado. "Mais próxima" ali é distância de
 CARACTERES a partir do INÍCIO da citação, contada nas duas direções. Isso parece simétrico e não
 é: uma âncora que vem DEPOIS da citação só começa a contar depois do fim dela (o próprio texto da
-citação, `src/pages/mesa/grid.astro:4601` · `function grupoDaVez`, tem trinta e tantos caracteres), enquanto uma âncora
+citação, `src/pages/mesa/grid.astro:4611` · `function grupoDaVez`, tem trinta e tantos caracteres), enquanto uma âncora
 ANTES conta a partir do início, sem esse desconto. A citação mais longa que a âncora empurra o
 "depois" para mais longe do que o "antes" parece, de um jeito que ninguém vê olhando a linha
 impressa: o olho lê `algo` (`arquivo:N`) `outra_coisa` como três pedaços igualmente próximos, e o
 script lê dois deles a distâncias bem diferentes.
 
 **Duas citações reais desta mesma rodada caíram nisso**, as duas escritas por quem está contando
-este achado: `grupoDaVez` (`grid.astro:4601`) tinha a âncora certa (`function grupoDaVez`) escrita
+este achado: `grupoDaVez` (`grid.astro:4611`) tinha a âncora certa (`function grupoDaVez`) escrita
 DEPOIS da citação, e o script escolheu `!grupoDaVez` (um fragmento de código histórico, também em
 crases, escrito ANTES) por ser mais "próximo" em bytes. O mesmo aconteceu com
 `mesa-condicoes.ts:100-106` (`chip.addEventListener`), onde a âncora nova foi escrita numa linha seguinte por causa da
@@ -695,3 +697,27 @@ errado sobre o trabalho de outra pessoa é outra coisa.**
 **O gesto que fica:** antes de escrever que alguém demorou, achar o commit ou a mensagem que deu a
 partida e medir dali. Se não der para achar o começo, a frase é "não sei quando ela recebeu", e
 não um intervalo.
+
+## A CONTAGEM QUE VIRA CONDIÇÃO DE PARADA DO OUTRO (12/09/2026, Arquiteto)
+
+**O gesto:** passar um número de itens para quem vai conferi-los, sem que ele seja a conferência.
+
+**O que aconteceu.** Eu mandei à Revisora que o comentário do `conferirChao` listava **quatro**
+caminhos pelos quais alguém volta ao estado de pé. São **cinco**: a cura do menu, a Arte que devolve
+Vida, a condição que o mestre tira à mão, o efeito que venceu sozinho, e a campainha do tempo real
+trazendo pronto de fora. Ela respondeu falando dos "quatro", porque eu tinha escrito quatro.
+
+**Por que isso é diferente de errar um número sozinho.** Ela ia conferir os caminhos **contra o
+código**, que é o gesto certo. Mas um número dado de fora não entra na cabeça de quem confere como
+dado a medir: entra como **quando parar**. Conferidos quatro, a tarefa parece cumprida. O quinto não
+seria refutado nem confirmado, seria simplesmente não olhado · e no caso era o do tempo real, que é o
+único em que o estado chega de fora já decidido, ou seja, o mais difícil dos cinco.
+
+**A diferença que importa:** um número errado num registro é uma frase errada, e quem ler depois pode
+conferir. Um número errado numa INSTRUÇÃO é uma varredura truncada, e o que falta nela não deixa
+rastro nenhum. Ninguém escreve "não olhei o quinto", porque ninguém soube que havia um quinto.
+
+**O gesto que fica:** ao mandar alguém conferir um conjunto, ou **nomear os itens** em vez de
+contá-los, ou dizer que o número é do comentário e não da medição. E do lado de quem recebe: contar
+de novo antes de usar a contagem alheia como fim de tarefa. É a mesma família do "diga o escopo ao
+lado do número", agora na direção em que o número não descreve, **manda**.
