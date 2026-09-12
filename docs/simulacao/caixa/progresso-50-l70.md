@@ -310,3 +310,40 @@ que ela fecha, hora lida da máquina (`date +%H:%M`).
   citações acima). Mensagem enviada ao Arquiteto com a contagem e os 6
   documentos. Parado aqui até o reponte, sem tocar nos documentos e sem
   `--no-verify`.
+
+- 01:43 · DOIS ACHADOS DO ARQUITETO chegaram enquanto o eixo 2 esperava
+  reponte: (1) cinco Artes de `grid.forma: movimento` (Empurrão, Onda,
+  Maremoto, Onde é Embaixo, Tromba) aplicam `caido` ao alvo sem depender de
+  colisão, e no código de ANTES desta rodada isso as tornava atordoamento de
+  5 Ticks disfarçado, sem ninguém desenhar; a separação do L84 conserta as
+  cinco de graça. (2) `Pendencias.md` L85 (novo, medido pelo Arquiteto): a
+  distância do empurrão não segue a régua dos dados (FAH/FAA), e o `nivel`
+  em `artes-grid-mesa.ts:1187` lê `escolhas['Alcance']` por falta de
+  parâmetro "Força" nos efeitos, um terceiro defeito dentro do mesmo bloco.
+  NÃO É MINHA RODADA: não toquei em `artes-grid-mesa.ts:1187` nem na régua de
+  distância, exatamente como pedido.
+
+  Construí o caso de teste do achado (1): `scripts/test-l84-caidofila-mesa.mjs`
+  (novo, registrado em `smoke` e na matriz de CI), com uma cena nova
+  `?cena=caidofila` em `mesa-mock.mjs` (duas peças de pé, sem token
+  compartilhado). Aplica `Caído` pelo diálogo de condições de verdade (mesmo
+  caminho que `test-grid-simultaneo.mjs` já usa) e confere: a peça continua
+  em `window.__ESPELHO.naLuta()`, o `tick` dela não muda, e nenhuma linha
+  "volta a agir" é escrita. Controle negativo NO MESMO arquivo: `Inconsciente`
+  na outra peça AINDA tira da fila (a peneira discrimina, não parou de tirar
+  qualquer um). Controle negativo por `git stash` só de `grid.astro` (meu
+  próprio não commitado, não de outra instância): contra o código de antes
+  do L84 a mesma asserção de "continua na luta" FALHA (`naLuta` nem existe
+  lá, o teste cai no nome velho `dePe` de propósito, comentado no código).
+  Restaurado com `stash pop`, conferido verde nos dois lados.
+
+  Corrigi de passagem um comentário agora falso em `mesa-mock.mjs` (dizia que
+  "caido tiraria a peça da fila", verdade antes do L84, falsa depois).
+
+- 01:43 · EIXO 2 COMMITADO E EMPURRADO: `28d8944`, `origin/main..HEAD` = 0.
+  Pathspec: `grid.astro`, `progresso-50-l70.md`, `mesa-mock.mjs`,
+  `test-l84-caidofila-mesa.mjs`, `package.json`,
+  `.github/workflows/validate.yml`. Não toquei nos 5 documentos que estavam
+  em reponte no meio do caminho (`Grid_Mobile.md`, `CONJURACAO.md`,
+  `CONTEXTO.md`, `ESTADO.md`, `VOZ.md`) nem em `Pendencias.md` (L85 do
+  Arquiteto). Próximo: eixo 3 (`acao: -2` em `condicoes.json` para `caido`).
