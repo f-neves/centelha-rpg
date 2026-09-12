@@ -145,3 +145,13 @@ não só por parte), no instante em que ela fecha, hora lida da máquina (`date 
   limpo, push confirmado (`8bcc1d1..8fb54f4`), `git rev-list --count
   origin/main..HEAD` = 0, e `git stash pop` devolveu `CATALOGO.md` intocado. As duas
   partes do L79 estão em `main`. Preparando o aviso.
+- 21:31 · AVISO ENVIADO: `npm run rodada -- --enviar` (commit `67c4931`, BASE
+  `d6a6e19`, SHA/TOPO `b67e1a8`). `CATALOGO.md` do Arquiteto seguia sujo de novo na
+  hora de abrir e de enviar; repeti o `git stash push -u -m ... --
+  docs/simulacao/CATALOGO.md` nas duas vezes, sempre com `git stash pop` logo
+  depois de cada rebase/push. Verifiquei os campos do commit enviado com `git show
+  67c4931:docs/simulacao/caixa/47-executora.md`, batendo com o que foi escrito.
+  Rebase limpo, push confirmado (`b67e1a8..67c4931`), `git rev-list --count
+  origin/main..HEAD` = 0. Rodada 47 fechada: sweep (`8bcc1d1`), portão (`8fb54f4`),
+  registro (`b67e1a8`) e aviso (`67c4931`), todos em `main`. Parando aqui para
+  aguardar o veredito.
