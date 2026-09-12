@@ -5528,17 +5528,38 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   em `grid.astro:1525` (`O token é desenhado no TAMANHO FÍSICO dele`). Um Enorme de 4 m tem token de
   4 m, então dentro do corpo **é** em cima do token.
 
-  **O caso protegido existe, e é outro: o ANEL.** O `ocupadoPor` proíbe quando a distância é menor
-  que `raioMeu + raioOutro`, então a zona proibida sobra para fora da borda visual do alvo **um raio
-  da peça arrastada**. Um Médio largado perto de um Enorme: token até 2 m, proibição até 2,5 m,
-  **meio metro de anel onde o cursor não está sobre token nenhum e a gravação recusa**. É esse anel
-  que cai no caminho protegido, e não o corpo.
+  **E A REVISORA TESTOU AO VIVO, derrubando a afirmação dela E a minha correção.** Na cena do
+  Aboleth ela mediu `elementFromPoint` em seis pontos, inclusive os quatro hexágonos vazios na borda
+  externa do raio ocupado: **nos seis, o elemento achado foi o token do Aboleth**. E ela nomeou a
+  causa estrutural, que é o melhor pedaço de toda esta discussão: **`diametroPx` e `ocupadoPor` saem
+  da MESMA `diametroM`**. Não são duas contas que coincidem por sorte · o desenho é dimensionado a
+  partir do mesmo dado que decide ocupação, então **a interceptação sempre enxerga o corpo do alvo,
+  por construção**, e não há como descolar os dois.
 
-  **O veredito continua o mesmo (ESCALA, não CORRIGE), e o erro de premissa é dos dois:** ela
-  escreveu, eu conferi a CITAÇÃO e não conferi o DESENHO, e a conclusão passou com a razão errada
-  por baixo. A prova ao vivo fica para a rodada 50, mirando o anel: Enorme parado, Médio arrastado
-  para entre a borda visual e meio metro além, e a asserção é que o gesto **não** vira ataque e **é**
-  recusado com motivo. Se virar ataque ali, a interceptação pega mais do que a leitura diz.
+  **Mas a regra tem DOIS termos e o desenho carrega UM.** A proibição é
+  `distância < raioMeu + raioOutro`; o token do alvo cobre `raioOutro`; **o `raioMeu`, o raio de
+  quem está sendo ARRASTADO, não aparece no desenho do alvo em lugar nenhum.** A região descoberta
+  é exatamente `raioMeu` de largura, para fora da borda visual.
+
+  **E foi aí que o meu "anel" caiu também, por uma razão que eu não tinha conferido: ele é vazio no
+  DISCRETO.** Um Médio tem `raioMeu` de 0,5 m, e meio metro **não contém centro de hexágono nenhum**
+  na escala de 1 m · distância 2 está no token e proibida, distância 3 está fora e permitida. O anel
+  existe no contínuo e não cabe um hexágono dentro dele. Eu escrevi "anel" sem medir se cabia.
+
+  **O CASO QUE SOBRA É PEÇA GRANDE SENDO ARRASTADA, e ele tem previsão exata.** Enorme arrastado
+  contra Enorme parado: `raioMeu` 2, `raioOutro` 2, proibido abaixo de 4 m, token do alvo até 2 m ·
+  **a distância 3 está FORA do token e AINDA proibida**. A previsão, escrita para poder ser
+  derrubada: ali `elementFromPoint` não acha o token, o gesto não vira ataque, e a gravação recusa
+  com motivo. **Se achar o token a 3, a minha conta do desenho está errada; se virar ataque, a
+  interceptação pega mais do que a leitura diz.** É a primeira medida da rodada 50, e só ela: os
+  outros portes e os cantos do hexágono esperam, porque ampliar varredura por cima de premissa que
+  já caiu duas vezes é o gesto errado.
+
+  **O veredito continua ESCALA e não CORRIGE, mas agora por ausência de prova em vez de por
+  argumento.** E o registro que fica é sobre o método: **três premissas caíram nesta discussão, duas
+  eram minhas**, e nenhuma custou código errado porque as três caíram antes de virar decisão. A
+  Revisora testou antes de eu pedir, reportou contra o próprio veredito, e **não reclassificou
+  sozinha quando a base factual mudou** · é o que separa revisar de carimbar.
 
   **Conferi essa afirmação do lado de fora porque ela era a razão de eu NÃO pedir CORRIGE**, e
   quase a rejeitei por erro meu de busca: procurei `closest('.gr-token')` e achei só dois usos que
