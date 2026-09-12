@@ -347,3 +347,14 @@ que ela fecha, hora lida da máquina (`date +%H:%M`).
   em reponte no meio do caminho (`Grid_Mobile.md`, `CONJURACAO.md`,
   `CONTEXTO.md`, `ESTADO.md`, `VOZ.md`) nem em `Pendencias.md` (L85 do
   Arquiteto). Próximo: eixo 3 (`acao: -2` em `condicoes.json` para `caido`).
+
+- 01:47 · EIXO 3 ESCRITO: `acao: -2` em `caido`, `src/data/condicoes.json`
+  (mesmo campo que `imobilizado` já usa, somado por `somarCondicoes` em
+  `mesa-core.ts:178`, então nenhuma mudança de código: o motor já lê `acao`
+  de qualquer condição). Nota do verbete ganhou a frase "Também −2 para agir
+  (mira e postura ruins do chão)", no mesmo padrão das outras condições com
+  `acao`. Edição NEUTRA em contagem de linha (estendi as duas linhas que já
+  existiam, não abri linha nova): `condicoes.json:61` (citado em
+  `Pendencias.md` para `investindo`) continua na mesma linha, conferido por
+  leitura direta. `validate-data.mjs` e `npm run validate` inteiro verdes
+  (o reponte do eixo 2 já tinha chegado na árvore compartilhada quando rodei).

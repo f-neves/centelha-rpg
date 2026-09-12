@@ -11,8 +11,8 @@
   "lista": [
     {
       "id": "caido", "nome": "Caído", "icone": "⤓", "grupo": "posicao", "cor": "alerta",
-      "defesaCaC": -2, "defesaDist": 2,
-      "nota": "Prono. De perto é alvo fácil (−2 na Defesa); de longe vira alvo menor (+2). Levantar consome movimento.",
+      "defesaCaC": -2, "defesaDist": 2, "acao": -2,
+      "nota": "Prono. De perto é alvo fácil (−2 na Defesa); de longe vira alvo menor (+2). Também −2 para agir (mira e postura ruins do chão). Levantar consome movimento.",
       "fonte": "combateTatico · alvo prono"
     },
     {
