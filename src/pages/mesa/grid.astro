@@ -4859,7 +4859,7 @@ const SETAS = [
     conferirFila();
     pintarCarimbo();
     const fila = naFila();
-    // L84: "de pé" aqui é "pode agir", não "está em pé de verdade" — caído
+    // L84: "de pé" aqui é "pode agir", não "está em pé de verdade": caído
     // conta como de pé para a fila, mesmo prono no desenho do tabuleiro.
     const emPe = fila.filter((c: any) => !foraDaFila(c));
     pintarChao(fila.filter((c: any) => foraDaFila(c)));
