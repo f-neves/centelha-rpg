@@ -5519,10 +5519,26 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   exercita a conferência nova (o teste entrou pela lista lateral). **A Revisora rastreou o
   mecanismo em vez de aceitar a descrição**, e o achado dela é o que salva a rodada de ser um
   exagero: a interceptação é por ELEMENTO VISUAL, `document.elementFromPoint` seguido de
-  `closest<HTMLElement>` em `grid.astro:6768`, e não por raio de ocupação. **Um arrasto para dentro
-  do corpo de uma criatura grande, mas fora do token visual dela, cai no caminho protegido e é
-  conferido.** O buraco é de desenho de interface, não reabre o `L67`/`L70` para corpos grandes, e
-  por isso é ESCALA e não CORRIGE.
+  `closest<HTMLElement>` em `grid.astro:6768`, e não por raio de ocupação.
+
+  **MAS A PREMISSA COM QUE NÓS DOIS SUSTENTAMOS ISSO ESTAVA ERRADA, e a correção estreita o
+  achado.** A frase que circulou (dela, aceita por mim) era "arrasto para DENTRO do corpo de uma
+  criatura grande, mas FORA do token visual dela". **Esse conjunto é vazio:** o token é desenhado no
+  tamanho FÍSICO da criatura · `grid.astro:3434` (`const diametroPx`), e o CSS diz isso por extenso
+  em `grid.astro:1525` (`O token é desenhado no TAMANHO FÍSICO dele`). Um Enorme de 4 m tem token de
+  4 m, então dentro do corpo **é** em cima do token.
+
+  **O caso protegido existe, e é outro: o ANEL.** O `ocupadoPor` proíbe quando a distância é menor
+  que `raioMeu + raioOutro`, então a zona proibida sobra para fora da borda visual do alvo **um raio
+  da peça arrastada**. Um Médio largado perto de um Enorme: token até 2 m, proibição até 2,5 m,
+  **meio metro de anel onde o cursor não está sobre token nenhum e a gravação recusa**. É esse anel
+  que cai no caminho protegido, e não o corpo.
+
+  **O veredito continua o mesmo (ESCALA, não CORRIGE), e o erro de premissa é dos dois:** ela
+  escreveu, eu conferi a CITAÇÃO e não conferi o DESENHO, e a conclusão passou com a razão errada
+  por baixo. A prova ao vivo fica para a rodada 50, mirando o anel: Enorme parado, Médio arrastado
+  para entre a borda visual e meio metro além, e a asserção é que o gesto **não** vira ataque e **é**
+  recusado com motivo. Se virar ataque ali, a interceptação pega mais do que a leitura diz.
 
   **Conferi essa afirmação do lado de fora porque ela era a razão de eu NÃO pedir CORRIGE**, e
   quase a rejeitei por erro meu de busca: procurei `closest('.gr-token')` e achei só dois usos que
