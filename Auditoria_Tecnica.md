@@ -303,7 +303,7 @@ Abertura de cada aba, com o registro de toda chamada ao cliente:
 | as outras cinco | 4 a 6 | 4 a 6 |
 
 O Grid é o único que cresce com o tamanho da cena, e a causa é uma só:
-`semearMana()` (`grid.astro:3269`) faz **um UPDATE sequencial por combatente** sem
+`semearMana()` (`grid.astro:3286`) faz **um UPDATE sequencial por combatente** sem
 `mana_max`. Com 30 peças, 26 idas em fila. Em produção isso semeia uma vez e para,
 mas *toda cena nova* paga a fila inteira antes do primeiro desenho, em série.
 
