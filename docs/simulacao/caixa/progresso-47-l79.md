@@ -155,3 +155,16 @@ não só por parte), no instante em que ela fecha, hora lida da máquina (`date 
   origin/main..HEAD` = 0. Rodada 47 fechada: sweep (`8bcc1d1`), portão (`8fb54f4`),
   registro (`b67e1a8`) e aviso (`67c4931`), todos em `main`. Parando aqui para
   aguardar o veredito.
+- 21:35 · Arquiteto avisou (por mensagem, não por commit) que o portão de diagramas
+  podia estar vermelho pela minha varredura em `qual-sistema.md`. Já não está:
+  `node scripts/gen-mermaid.mjs --check` dá `✓ diagramas em dia · 6 desenhos` e
+  `npm run validate` completo passa, saída 0, agora mesmo. A regravação já tinha
+  acontecido às 20:55 (ver acima) e foi commitada dentro de `8bcc1d1`, antes do
+  aviso. Respondi confirmando e também: (1) a categoria "travessão dentro de rótulo
+  de mermaid" É pontuação de verdade e ENTROU nos 240 (os 2 de `qual-sistema.md`),
+  com a regravação do artefato como parte do mesmo commit, não separada; (2)
+  `combate.md:35` não ficou ambíguo: os dois travessões da linha são célula vazia,
+  o primeiro com nota explicativa do lado (`(é a maior)`), mesma convenção da
+  tabela, é literalmente o exemplo citado no comentário de `CELULA_VAZIA` em
+  `scripts/test-travessao-capitulos.mjs`. Árvore verde do meu lado (só
+  `CATALOGO.md` do Arquiteto segue pendente, e é dele).
