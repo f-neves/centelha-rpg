@@ -6,9 +6,17 @@ O código a revisar, e os TRÊS campos são obrigatórios desde 04/09/2026:
 
 ```
 BASE  3cc14b55fa183d00bf59fe425b3931751f5f1419
-SHA   819f0d74c96e530805877068acd81bac0ef36f38
+SHA   65d9b7ab0e23671ada2f4a0d98e4d0512035b1d2
 TOPO  819f0d74c96e530805877068acd81bac0ef36f38
 ```
+
+**Corrigido à mão, por pedido do Arquiteto**: o `npm run rodada` tinha preenchido
+`SHA` igual a `TOPO` (819f0d7), porque esse já era o `HEAD` quando a rodada abriu.
+Mas `819f0d7` é um commit do Arquiteto (`supabase/migracao-38.sql`, a função
+`jogador_conjura` com `nivel_arte`), não código de cliente, e não é o que esta
+rodada avisa. `SHA` aqui é `65d9b7a`, meu, o código desta rodada; `TOPO` fica em
+`819f0d7` porque `git log 65d9b7a..819f0d7` mostra exatamente esse commit de fora
+entrando no intervalo, e é para isso que o campo existe.
 
 **O TOPO existe porque este repositório tem mais de uma frente empurrando para o
 `main`.** O `duo.mjs` já congela a revisão no commit deste aviso, então ela nunca
@@ -80,7 +88,7 @@ Decisão sem custo escrito é decisão pela metade.
 |---|---|---|
 | D01 | Quando `gravarEfeito` degrada por `nivel_arte` ausente, a linha em memória (`ATIVOS.push`) guarda o que o banco de fato devolveu, nunca o valor que o cliente computou antes da coluna recusar. | a Arte não cura na sessão corrente enquanto a migração não roda, nem um turno; a alternativa (forçar o valor do cliente em memória) curaria durante a sessão e pararia sozinha no primeiro F5, sem ninguém mudar nada, o que achei pior. |
 | D02 | A redação "fato mais conferência" que o Arquiteto decidiu para o log de cena (`artes-grid-mesa.ts:2063`) também entrou na mensagem de asserção do teste, não só no código de produção, por leitura de que "e decido" fechava os dois lugares. | se essa leitura estiver errada, o rótulo do teste precisa de mais uma correção; não é o código de produção, então o custo de estar errado é baixo. |
-| D03 | A última citação quebrada pelo `reapontar.mjs` (`Pendencias.md`, a âncora de `ATIVOS.push`) foi corrigida à mão (1515 → 1524) depois de confirmar por `Grep` que é ocorrência única no arquivo. | é correção manual de uma citação, não busca de âncora ambígua (o que o `L65` proíbe); se a ocorrência deixar de ser única num commit futuro, esta linha para de valer sem avisar ninguém. |
+| D03 | A última citação quebrada pelo `reapontar.mjs` foi corrigida à mão: `Pendencias.md:2677`, a âncora `ATIVOS.push` em `src/lib/artes-grid-mesa.ts`, de `:1515` para `:1524`. Confirmada por `Grep` como a ÚNICA ocorrência de `ATIVOS.push(daLinha` no arquivo inteiro (o próprio texto da linha 2677 já afirma isso: "é a única ocorrência no arquivo inteiro") antes de escrever o número novo. | é correção manual de uma citação já localizada pelo mapa do diff (só o número saiu errado), não busca de âncora por texto com múltiplas ocorrências possíveis, que é a forma que o `L65` proíbe; se a linha ganhar uma segunda ocorrência de `ATIVOS.push` num commit futuro, a afirmação de unicidade escrita em `:2677` para de valer sem avisar ninguém, e quem mexer lá precisa conferir de novo. |
 
 ## O QUE FICOU EM ABERTO
 
