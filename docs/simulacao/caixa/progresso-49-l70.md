@@ -146,3 +146,13 @@ no instante em que ele é encontrado e classificado, hora lida da máquina
   documentos. Preparando o aviso, com os dois achados que ele pediu para
   registrar: o contorno do arrasto (achado, não solução) e a taxa 6/71 do
   reaponte.
+- 22:50 · CORREÇÃO: escrevi "72 citações, não 66" acima, e misturei dois
+  números do Arquiteto que medem coisas diferentes. O certo, como ele
+  corrigiu: 71 citações ao `grid.astro` se moveram de lugar; o portão acusou
+  65; 6 passaram verdes apontando para a linha errada (71 − 65, a taxa de
+  âncora fraca do `L65`); o reapontador contou 72 porque uma faixa `NNN-MMM`
+  entra como uma citação só para ele e foi contada diferente na minha medida.
+  O par que importa é 71 contra 65; o 72 é detalhe de instrumento. Corrigido
+  na tabela de procedência do aviso antes de enviar. Documentos do Arquiteto
+  commitados e empurrados: `e468182`. Árvore limpa fora do meu rascunho de
+  aviso. Enviando.
