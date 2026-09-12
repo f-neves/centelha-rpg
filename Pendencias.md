@@ -6231,6 +6231,14 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   fora, e quem voltar a mexer no mesmo bloco parte de um endereço já torto. Corrigido à mão pela
   Executora, com a unicidade da ocorrência conferida antes.
 
+  **E o vizinho disso, achado ao escrever a régua nova: o `CONTRATO-REVISORA.md` passou a citar
+  código e NÃO está entre os alvos do portão de procedência** (nem entre os documentos que o
+  `reapontar.mjs` cobre). Os dois cegos ao mesmo tempo, no documento de que a Revisora nasce: a
+  citação que eu pus lá está marcada `(citação histórica)` de propósito, e é isso que a mantém
+  honesta, porque nenhuma máquina vai avisar quando ela envelhecer. Anotado, não consertado ·
+  ampliar a lista do portão é mexer em instrumento, e a ordem (reapontador primeiro, portão depois)
+  está escrita no próprio `reapontar.mjs`.
+
   **ESTADO DO `L86b` EM 12/09/2026, e ele já não é "as outras três" por igual.** Do lado pronto, o
   que a rodada 56 deixou na mesa: a régua ganhou o campo estruturado `porNivel` (gêmeo de
   `pontos`, e `pontos` vence em silêncio se os dois existirem), e a cena avisa uma vez por turno

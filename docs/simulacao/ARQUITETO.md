@@ -265,6 +265,23 @@ Método, forma nova, princípio e lição vão direto para o arquivo, não para 
 
 Um relato por lote, não por item. Item a item multiplica a conversa por três.
 
+### 5.2.1 · Correção nova só depois de a anterior aterrissar
+
+**Escrito em 12/09/2026, rodada 56, e o custo foi dela e não meu.** Mandei à Executora uma
+correção dizendo para usar a régua `curaDoEfeito` como se ela já cobrisse o caso (não cobria: só lê
+`pontos`, e aquele Efeito não tem) e, pouco depois, uma segunda mensagem trocando a forma do campo
+de dado. As duas cruzaram com relatos dela em trânsito, e o resultado foi ela **reverter código já
+empurrado e depois reverter de volta**, duas vezes, por uma decisão que nunca precisou mudar.
+
+**A regra:** uma correção por vez, e a próxima só depois de a anterior aparecer no disco (commit,
+arquivo, teste rodando). Quando duas mensagens de coordenação estão no ar ao mesmo tempo, quem
+recebe não tem como saber qual é a mais nova · ela aplica na ordem em que chegam, que não é a ordem
+em que foram pensadas.
+
+**E o corolário que vale mais:** quando isso acontecer, o erro de sequência é do coordenador, e
+dizer isso para quem executou é parte do conserto. Caso contrário a próxima correção chega a alguém
+que está tentando adivinhar qual das duas mensagens valia.
+
 ### 5.3 · Quem revisa fala em três momentos
 
 Quando revisa um lote, quando acha algo que bloqueia, e quando é perguntado. Não a cada
