@@ -23,6 +23,18 @@ Regras de convívio:
 - **Se o `git pull --rebase` falhar com `Please commit or stash them`, tem coisa de
   outra frente no caminho.** Rode `git status --short` e confira se a coluna da
   esquerda (staged) tem arquivo que não é seu antes de commitar.
+- **Mudança não commitada de outra instância NÃO se mexe sem pedir**, nem com `git stash`,
+  nem com `checkout --`, nem com `restore`. A tentação é achar que guardar e devolver é um
+  ida-e-volta seguro, e ele é, até não ser: em 11/09/2026 um `git stash` sobre o
+  `CATALOGO.md` do Arquiteto falhou com `could not write index` porque colidiu com o
+  **commit dele do mesmo arquivo, no mesmo instante**. Nada se perdeu (conferido por
+  `fsck`, reflog e comparação com `origin/main`), e o que salvou foi a colisão ter sido no
+  `stash` e não no `pop` · se a sessão morresse entre os dois, o trabalho ficaria num objeto
+  que só o reflog conhece, que é exatamente como um commit da Revisora foi orfanado em
+  10/09. **Se a árvore suja de outro papel está te bloqueando, peça: o pedido custa menos
+  que o risco**, e quem está trabalhando nela commita na hora. A regra vale nos dois
+  sentidos, e recusar um gesto que mexe em trabalho não commitado alheio é o comportamento
+  certo, mesmo quando quem pede é o Arquiteto.
 - **`git pull --rebase` antes de commitar e antes de dar push.** As duas empurram
   para `main`; sem rebase o push é recusado, e com rebase o conflito só aparece se
   ambas tocarem a mesma linha.
