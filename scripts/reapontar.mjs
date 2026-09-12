@@ -95,7 +95,13 @@ for (const f of mudados) {
 const mapas = {};
 for (const [base, arq] of Object.entries(porNome)) {
   if (!arq) continue;
-  const diff = execSync(`git diff -U0 -- "${arq}"`, { encoding: 'utf8', maxBuffer: 1 << 28 });
+  // CONTRA HEAD, NÃO CONTRA O ÍNDICE. `git diff` sem argumento é índice→árvore,
+  // e um arquivo `git add`-ado e editado de novo (`MM` no `status`) tem duas
+  // metades: o que já está no índice e o que ainda não foi. `-U0` sem `HEAD`
+  // só via a segunda metade, e desloca pelo mapa errado: medido em
+  // 13/09/2026, `src/lib/artes-grid.ts` deu 31+/24− sem `HEAD` e 51+/7− com.
+  // As citações existem contra o que a ÁRVORE tem agora, não contra o índice.
+  const diff = execSync(`git diff HEAD -U0 -- "${arq}"`, { encoding: 'utf8', maxBuffer: 1 << 28 });
   const hunks = [];
   for (const m of diff.matchAll(/^@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@/gm)) {
     hunks.push({

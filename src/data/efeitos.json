@@ -6034,7 +6034,8 @@
         "nome": "Cura",
         "tipo": "fixo",
         "valor": "1 PV por nível da Arte",
-        "nota": "2 de Mana por nível, como toda cura"
+        "nota": "2 de Mana por nível, como toda cura",
+        "porNivel": true
       },
       {
         "nome": "Duração",

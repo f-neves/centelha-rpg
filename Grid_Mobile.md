@@ -103,7 +103,7 @@ Já existem dois precedentes prontos no repositório, e o plano os copia em vez 
 - **A ficha em abas** (`FichaSkeleton.astro:1128-1290`): `body.ficha-abas` ligada por
   `matchMedia('(max-width: 900px)')`, painel por aba, barra fixa no pé com
   `env(safe-area-inset-bottom)`, folha de ações atrás do ⋯, e linhas de 48px.
-- **A mira no dedo** (`artes-grid-mesa.ts:536-541`): a pergunta certa é `pointer: coarse`, e não a
+- **A mira no dedo** (`artes-grid-mesa.ts:537-542`): a pergunta certa é `pointer: coarse`, e não a
   largura, e o gesto sem hover ganha um passo de confirmação em vez de confirmar no primeiro toque.
 
 ---

@@ -247,13 +247,22 @@ const planoMaoFirme = (over = {}) => ({
 console.log('· a régua (`curaDoEfeito`) só lê `pontos`, contra o catálogo real');
 {
   ok(M.curaDoEfeito(M.EFEITO['mao-firme']) === 1, '`mao-firme` devolve 1 (o único com `pontos` estruturado)');
+  // `acelerar-a-cura` ganhou `porNivel` na rodada 56 (L86b): esta chamada de
+  // UM argumento só continua devolvendo null, mas agora pelo motivo certo
+  // ("sem nível, sem cura"), não por falta de campo estruturado.
   ok(M.curaDoEfeito(M.EFEITO['acelerar-a-cura']) === null,
-    '`acelerar-a-cura` devolve null: "por nível" não tem `pontos`, e a régua não adivinha');
+    '`acelerar-a-cura` sem `nivelArte` devolve null: tem `porNivel` desde a rodada 56, mas sem nível não há conta a fazer');
   ok(M.curaDoEfeito(M.EFEITO['cura-guardada']) === null,
-    '`cura-guardada` devolve null: "por ponto" não tem `pontos`, e "ponto" nem está definido');
+    '`cura-guardada` devolve null: "por ponto" não tem `pontos` nem `porNivel`, e "ponto" nem está definido');
+  // O humano decidiu em 12/09 (Pendencias.md L86): "1 PV por nível da Arte",
+  // e o Arquiteto já escreveu isso no JSON (`tipo: "fixo"`, não mais
+  // "padrao"). Continua devolvendo null, mas por outro motivo agora: falta
+  // `porNivel`, DE PROPÓSITO (`forma: "zona"` não tem caminho de resolução
+  // nenhum; campo escrito sem leitor é o contra que o humano já comprou uma
+  // vez hoje, e não se escreve de novo sem necessidade).
   ok(M.curaDoEfeito(M.EFEITO['maos-sobre-a-multidao']) === null,
-    '`maos-sobre-a-multidao` devolve null: o parâmetro Cura dele ainda é "padrao" no JSON, sem `pontos` '
-    + '(1 PV/nível já foi decidido pelo humano em 12/09, mas ainda não foi escrito ali; Pendencias.md L86)');
+    '`maos-sobre-a-multidao` devolve null: o parâmetro Cura já é "1 PV por nível da Arte" (fixo) no JSON, '
+    + 'mas sem `porNivel` (de propósito: zona não tem onde resolver cura ainda)');
   ok(M.curaDoEfeito(null) === null, 'sem Efeito (o improviso) devolve null, sem precisar de `if` à parte');
 }
 conferir();

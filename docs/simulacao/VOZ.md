@@ -665,7 +665,7 @@ os dois do raspão, mais o que as telas de ação e magia pedem, mais as listas 
 curvatura, Velocidade. O dedo aperta Conjurar e marca no chão. **Direção declarada para depois, se
 tudo der certo: escolher o alvo e conjurar por voz também** · e aí será preciso mexer nas quatro
 funções do tabuleiro, que hoje disparam a promessa de clique incondicionalmente e não aceitam alvo
-por parâmetro (`src/lib/artes-grid-mesa.ts:733` · `escolherAlvoNoMapa`).
+por parâmetro (`src/lib/artes-grid-mesa.ts:734` · `escolherAlvoNoMapa`).
 
 **10 · Parâmetro de magia entra por VALOR DIRETO NO PLANO.** Hoje Alcance, Dano, Duração, Área e
 Alvos só existem como botão mais e menos (`src/lib/artes-grid-ui.ts:689` · `data-par`), então não há

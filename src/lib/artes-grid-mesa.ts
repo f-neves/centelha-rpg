@@ -13,9 +13,10 @@ import {
   pontoNaFigura, centroEmMetros, encaixeMaisProximo, encaixeNoCentro,
   raioEmMetros, danoNoAlvo, rolar,
   turnosRestantes, venceu, jaMordido, rodadaDoTick, dentroDoEfeito, curaDoEfeito,
+  curaPrecisaNivelArte,
   metrosParaSair, metrosParaSairDosHexes, desvioDaArea, desEsqDaDefesa,
   rotuloDuracao, TICKS_POR_TURNO, LARGURA_LINHA, montando,
-  A_SAIR, deveSair, planoDaSaida,
+  A_SAIR, deveSair, planoDaSaida, SEM_NIVEL_ARTE,
   type EfeitoAtivo, type Forma, type Figura, type Encaixe, type Desvio,
 } from './artes-grid';
 import { pool, regras } from './calc';
@@ -1462,6 +1463,10 @@ export async function gravarEfeito(ctx: CtxGrid, c: any, plano: Plano, extra: {
     // improviso, que é a mesma regra de gating de `arcano.composta`.
     nivel: plano.efeito?.nivel
       ?? Math.max(1, ...Object.values(plano.escolhas).map((n) => Number(n) || 0)),
+    // Migração 38: o nível da ARTE de quem conjurou, e não o do Efeito (linha
+    // acima). Existe para a cura por-turno que escala com ele (`acelerar-a-
+    // cura`), e para qualquer Arte futura na mesma família.
+    nivel_arte: plano.nivelArte,
     forma: extra.forma,
     molde: plano.molde,
     angulo: plano.angulo,
@@ -1486,7 +1491,19 @@ export async function gravarEfeito(ctx: CtxGrid, c: any, plano: Plano, extra: {
     mordidos: t > agora ? { [A_SAIR]: 1 } : {},
     oculto: !!c.oculto,
   };
-  const { data, error } = await ctx.SB.from('arena_efeitos').insert(linha).select('*').limit(1);
+  let { data, error } = await ctx.SB.from('arena_efeitos').insert(linha).select('*').limit(1);
+  // MIGRAÇÃO 38 PODE AINDA NÃO TER RODADO: `nivel_arte` é melhoria, não
+  // requisito, mesmo princípio do `carimbarSeFaltar` (migração 29,
+  // `grid.astro`). O PostgREST recusa coluna inexistente com `PGRST204` (ou a
+  // mensagem cita a coluna e "schema cache"/"does not exist"); nesse caso, e
+  // só nesse, regrava sem ela. Qualquer outro erro cai no `uiErro` de sempre:
+  // a gravação do efeito não pode falhar inteira por um campo que é melhoria,
+  // mas também não pode engolir um erro de verdade calado.
+  if (error && /nivel_arte/i.test(error.message || '')
+      && (error.code === 'PGRST204' || /schema cache|does not exist|column/i.test(error.message || ''))) {
+    const { nivel_arte: _semColuna, ...semNivelArte } = linha;
+    ({ data, error } = await ctx.SB.from('arena_efeitos').insert(semNivelArte).select('*').limit(1));
+  }
   if (error) {
     return uiErro(/arena_efeitos|figura/i.test(error.message)
       ? 'A tabela das Artes está desatualizada. Rode supabase/migracao-19.sql no SQL Editor.'
@@ -1495,7 +1512,15 @@ export async function gravarEfeito(ctx: CtxGrid, c: any, plano: Plano, extra: {
   // O `|| linha` é a rede: se o cliente não devolver a linha inserida, o efeito
   // em memória sai do que se tentou gravar, marca inclusive, em vez de sair de
   // `undefined`. Sem ele a falta de retorno reproduziria em silêncio o mesmo
-  // defeito que esta função acabou de consertar.
+  // defeito que esta função acabou de consertar. NÃO FORÇAR `nivel_arte` de
+  // volta do `plano` aqui é deliberado: se a gravação degradou (a coluna não
+  // existe), a linha em memória tem de refletir o MESMO "não sei" que uma
+  // releitura do banco traria depois; fingir que sabíamos, só porque o
+  // cliente computou o número antes de a coluna recusar, criaria uma Arte
+  // que cura durante a sessão corrente e para de curar sozinha no primeiro
+  // F5, sem ninguém ter mudado nada (o mesmo formato de inconsistência que o
+  // `carimbarSeFaltar`, migração 29, evita ao não atualizar `ENC.perfil`
+  // quando o carimbo falha).
   ATIVOS.push(daLinha((data || [])[0] || linha));
 
   // A condição entra em quem foi marcado (melhoria e marca) NO TICK EM QUE A
@@ -2012,12 +2037,34 @@ export async function verificarEfeitos(ctx: CtxGrid, palco?: HTMLElement): Promi
   // 2. quem está pego e ainda não sofreu a mordida (ou a cura) nesta rodada
   const pendentes: { ef: EfeitoAtivo; alvo: any; cura: number | null }[] = [];
   for (const ef of ATIVOS) {
-    // `curaDoEfeito` devolve `null` pro improviso (sem `efeito_id`) e pra todo
-    // Efeito de cura sem `pontos` estruturado (L86a, rodada 55: hoje só o
-    // `mao-firme`), então esta linha não abre a guarda além do que a régua
-    // sabe responder.
-    const cura = ef.efeito_id ? curaDoEfeito(EFEITO[ef.efeito_id] || null) : null;
-    if (!ef.dano_dados && !ef.condicao && cura == null) continue;
+    // `curaDoEfeito` devolve `null` pro improviso (sem `efeito_id`), pra todo
+    // Efeito de cura sem `pontos`/`porNivel` estruturado, e pro que pede
+    // `porNivel` sem ter `nivel_arte` na linha (linha velha, cliente velho,
+    // ou migração 38 não rodada, tanto faz qual): esta linha não abre a
+    // guarda além do que a régua sabe responder.
+    const efeitoCatalogo = ef.efeito_id ? EFEITO[ef.efeito_id] || null : null;
+    const cura = curaDoEfeito(efeitoCatalogo, ef.nivel_arte);
+    if (!ef.dano_dados && !ef.condicao && cura == null) {
+      // AVISA, NO MÁXIMO UMA VEZ POR TURNO, quando o Efeito DEVERIA curar por
+      // nível e a linha não tem o dado: `SEM_NIVEL_ARTE` reusa o mesmo mapa
+      // de `mordidos`/`jaMordido` que já throttla mordida e cura de verdade,
+      // não é mordida nenhuma, só o mesmo relógio. Fora da montagem: Arte
+      // ainda no gesto não é Arte que falhou em curar, é Arte que ainda não
+      // saiu, e avisar aqui seria alarme falso.
+      if (!montando(ef, t) && curaPrecisaNivelArte(efeitoCatalogo) && ef.nivel_arte == null
+          && !jaMordido(ef, SEM_NIVEL_ARTE, t)) {
+        await marcarMordido(ctx, ef, SEM_NIVEL_ARTE, rodadaDoTick(t));
+        // O FATO mais a CONFERÊNCIA, nunca o diagnóstico: nulo tem mais de
+        // uma causa (linha velha, cliente velho, migração não rodada), e
+        // apontar uma aponta a errada para quem já rodou. A linha diz o que
+        // sabe (não guarda o nível) e oferece o que conferir, sem afirmar
+        // qual das causas foi.
+        await ctx.logar(ef.conjurador_id ? combDe(ctx, ef.conjurador_id) : null,
+          `${ef.nome} não cura: esta linha não guarda o nível da Arte (confira se a migração 38 rodou)`,
+          { acao: null });
+      }
+      continue;
+    }
     // Ainda na mão do conjurador: não queima ninguém. O muro de fogo que sai no
     // Tick 8 não é obstáculo no 5, e cobrar a mordida antes da hora seria dar de
     // graça os Ticks de montagem que a regra existe para cobrar.

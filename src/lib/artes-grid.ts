@@ -55,6 +55,27 @@ export interface Parametro {
    * de cura ficam sem ele até a ambiguidade de cada um virar decisão registrada.
    */
   pontos?: number;
+  /**
+   * O parâmetro Cura escala com o NÍVEL DA ARTE de quem conjurou
+   * (`plano.nivelArte`, gravado em `EfeitoAtivo.nivel_arte` pela migração 38):
+   * quando `true`, o valor é o próprio `nivelArte`, 1 PV por nível. Estrutura
+   * gêmea de `pontos`, pela mesma regra: nunca lido da prosa. Desde a rodada
+   * 56 (L86b), só `acelerar-a-cura` tem este campo.
+   *
+   * `pontos` É TESTADO PRIMEIRO E VENCE EM SILÊNCIO se os dois existirem no
+   * mesmo parâmetro: nenhum Efeito do catálogo hoje tem os dois, então não
+   * há guarda contra essa combinação, só o registro de que `pontos` ganha.
+   *
+   * O TETO DESTE CAMPO: nenhuma Arte do catálogo cura K PV por nível com K
+   * diferente de 1 hoje. `transferir-dor` (3 de dano por nível) e
+   * `refazer-o-corpo` (1d6 por nível) escalam por nível mas não cabem aqui,
+   * porque a conta delas não é soma simples de cura (uma é dano, a outra é
+   * dado): precisam de semântica própria, não de um multiplicador neste
+   * campo. O dia em que uma Arte de cura precisar de K ≠ 1, este campo vira
+   * `pontos vezes porNivel` (um número, não um booleano); não é para
+   * antecipar essa forma agora, sem Arte real que a peça.
+   */
+  porNivel?: boolean;
 }
 export interface GridEfeito {
   forma: Forma; ancora: Ancora; gatilho: Gatilho; alvo: string;
@@ -240,15 +261,40 @@ export function bonusPlano(p: Parametro, n: number): number {
  * régua não sabe ler o Efeito, e quem chama não cura nesse caso, nunca chuta
  * um número.
  *
- * Só lê `Parametro.pontos`, o campo estruturado (ver o comentário dele). Um
- * Efeito sem parâmetro Cura, ou com Cura sem `pontos` (a régua padrão de
- * dado, ou uma prosa ainda sem número ao lado), devolve `null`: é assim que o
- * improviso (sem `efeito_id`, sem parâmetro Cura nenhum) fica de fora sem
- * precisar de um `if` à parte.
+ * Só lê `Parametro.pontos` e `Parametro.porNivel`, os campos estruturados
+ * (ver os comentários deles). `pontos` numérico vence; senão `porNivel`
+ * verdadeiro devolve o próprio `nivelArte`, se `nivelArte` for um número;
+ * senão `null`. Um Efeito sem parâmetro Cura, ou com Cura sem nenhum dos
+ * dois (a régua padrão de dado, ou uma prosa ainda sem número ao lado),
+ * devolve `null`: é assim que o improviso (sem `efeito_id`, sem parâmetro
+ * Cura nenhum) fica de fora sem precisar de um `if` à parte.
+ *
+ * `nivelArte` é OPCIONAL, e de propósito: quem só quer saber "este Efeito
+ * cura um valor FIXO, independente de quem conjurou" chama com um argumento
+ * só (`curaDoEfeito(efeito)`), e `acelerar-a-cura` continua devolvendo
+ * `null` nessa chamada, não por a régua não saber, mas porque sem nível não
+ * há conta a fazer. É `curaPrecisaNivelArte`, abaixo, que distingue "este
+ * Efeito não cura" de "cura, mas falta o `nivel_arte` desta linha"
+ * (migração 38): o `null` sozinho daqui é ambíguo entre os dois, e não diz
+ * qual das causas foi (linha velha, cliente velho, migração não rodada).
  */
-export function curaDoEfeito(efeito: Efeito | null): number | null {
+export function curaDoEfeito(efeito: Efeito | null, nivelArte: number | null = null): number | null {
   const p = efeito?.parametros.find((x) => x.nome === 'Cura');
-  return typeof p?.pontos === 'number' ? p.pontos : null;
+  if (typeof p?.pontos === 'number') return p.pontos;
+  if (p?.porNivel && typeof nivelArte === 'number') return nivelArte;
+  return null;
+}
+
+/**
+ * Este Efeito cura por `porNivel`, e por isso PRECISA de `nivel_arte` para
+ * responder? Separado de `curaDoEfeito` porque `null` ali é ambíguo
+ * (ver o comentário dela), e só esta função diz se a ausência do nível é a
+ * causa, para quem chama decidir se vale avisar que a linha não guarda o
+ * nível da Arte.
+ */
+export function curaPrecisaNivelArte(efeito: Efeito | null): boolean {
+  const p = efeito?.parametros.find((x) => x.nome === 'Cura');
+  return !!p?.porNivel;
 }
 
 // ================================================================== o custo
@@ -1407,6 +1453,13 @@ export interface EfeitoAtivo {
   arena_id: string;
   /** O nível efetivo da conjuração. É por ele que o Dissipar decide o que apaga. */
   nivel: number;
+  /**
+   * O nível investido na Arte por quem conjurou esta linha (`plano.nivelArte`
+   * no cliente), e não o nível do Efeito (migração 38). `null` significa "não
+   * sabemos": linha de antes da migração, ou cliente que ainda não escreve a
+   * coluna. NUNCA lido como 1 (`curaDoEfeito`/`curaPrecisaNivelArte`, acima).
+   */
+  nivel_arte: number | null;
   efeito_id: string | null;     // null = improviso, a Arte crua
   arte_id: string;
   conjurador_id: string | null;
@@ -1485,6 +1538,16 @@ export const montando = (ef: EfeitoAtivo, tickAtual: number): boolean =>
 export const A_SAIR = '__a_sair';
 export const deveSair = (ef: Pick<EfeitoAtivo, 'mordidos'>): boolean =>
   !!(ef.mordidos || {})[A_SAIR];
+
+/**
+ * Outra marca sintética no mesmo `mordidos`, não um combatente: o "já avisei
+ * nesta rodada que esta linha não guarda o nível da Arte" (rodada 56, L86b).
+ * Reusa `jaMordido`/`marcarMordido` para herdar de graça a mesma régua de
+ * "uma vez por turno", em vez de inventar um relógio novo para um aviso. O
+ * aviso em si nunca nomeia a causa (linha velha, cliente velho, migração 38
+ * não rodada): `null` não diz qual das três foi.
+ */
+export const SEM_NIVEL_ARTE = '__sem_nivel_arte';
 
 /** O que a mesa deve fazer no instante em que a Arte deixa de ser gesto. */
 export type PlanoDaSaida =
