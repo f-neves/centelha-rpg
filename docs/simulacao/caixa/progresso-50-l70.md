@@ -390,7 +390,7 @@ que ela fecha, hora lida da máquina (`date +%H:%M`).
   sozinho (levanta no lugar, sem custo), `pa`+`pb` dividindo com um vizinho
   livre (levanta indo para lá, por `porNoMapa`, mesma frase de log de sempre),
   `pc`+`pd` dividindo com os seis vizinhos tomados (recusa, com o motivo,
-  `caido` intacto). 15 asserções, todas verdes; foi rodando este arquivo que
+  `caido` intacto). 17 asserções, todas verdes; foi rodando este arquivo que
   o bug acima apareceu.
 
   Bateria completa verde (corpo a corpo, fora da vez, ocupação, empurrão,
@@ -480,7 +480,7 @@ que ela fecha, hora lida da máquina (`date +%H:%M`).
   de uma casa que outra peça já pode ter tomado no intervalo). Mostro o
   erro e a mesa fica com a posição certa e a condição pendente, visível.
 
-  `test-l84-levantar-mesa.mjs` continua com as 15 asserções verdes depois do
+  `test-l84-levantar-mesa.mjs` continua com as 17 asserções verdes depois do
   conserto (os três casos: sozinho, dividindo com vizinho livre, dividindo
   sem vizinho livre). NÃO CONSTRUÍ um teste da corrida entre clientes de
   verdade: neste mock, cada página tem seu `window.__SB` isolado, sem
