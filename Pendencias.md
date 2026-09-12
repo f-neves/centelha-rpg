@@ -4703,8 +4703,9 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
 
   → `L77` (a régua que o derivado sustenta), → `L67`.
 
-- [ ] **L79 · [MEDIDO pelo Arquiteto em 11/09/2026, na rodada 43] A regra do travessão não tem
-  portão nenhum, e a dívida acumulada nos documentos da frente é de 146 ocorrências.**
+- [x] **L79 · [MEDIDO pelo Arquiteto em 11/09/2026, na rodada 43, FECHADO na rodada 48 no mesmo
+  dia] A regra do travessão não tem portão nenhum, e a dívida acumulada nos documentos da frente
+  é de 146 ocorrências.**
 
   **A medida, feita nos três documentos que a equipe escreve todo dia:** `Pendencias.md` 104,
   `docs/simulacao/ESTADO.md` 38, `docs/simulacao/VOZ.md` 5, somando 147. Nenhuma delas é fala de
@@ -4865,6 +4866,33 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   conserto é o primeiro item da rodada 48, com **controle sintético** (fabricar um capítulo
   temporário com diálogo, exigir verde; tirar a exceção, exigir vermelho no mesmo arquivo), que é o
   mesmo gesto do `test-carimbo` com as migrações fabricadas.
+
+  **FECHADO na rodada 48 (`cc409b6`), revisado em `8ba3cbb`: SEGUE, sem CORRIGE.** A exceção é uma
+  constante, `/^\s*(?:>\s*)*—/`, que exime a LINHA INTEIRA quando ela começa com travessão,
+  inclusive depois de `> ` de citação aninhado. A linha inteira, e não só a abertura, porque uma
+  fala com inciso do narrador tem três travessões e os três são da mesma convenção.
+
+  **O CONTROLE É O ITEM, e não um acessório dele.** Zero linhas dos 13 capítulos casam com a
+  exceção: ela **não tem nenhum caso real no repositório**, e sem controle seria a forma "o
+  mecanismo que nada executa" do `CATALOGO`. A Executora fabricou um capítulo, provou verde com a
+  exceção e vermelho em 3 linhas sem ela, e **apagou a fixture depois**, que é o certo · mas isso
+  deixou a prova existindo só no relato.
+
+  **A Revisora REFABRICOU do zero em vez de aceitar prova apagada**, e o controle dela é melhor que
+  o original, porque ela acrescentou dois casos de ATAQUE que faltavam: um item de lista que começa
+  com **hífen** e carrega um travessão real mais adiante na mesma linha, e uma frase de narração
+  comum com travessão no meio. Com a isenção ligada, só os dois ataques acenderam e as cinco falas
+  passaram; desligada, acenderam 7, as cinco mais os dois. **A fronteira hífen contra travessão
+  ficou respondida pela própria refabricação**, nos dois estados.
+
+  **E O BURACO CONHECIDO FICA ESCRITO, porque foi decidido e não esquecido:** eximir a linha
+  inteira significa que qualquer linha começada com travessão tem todo o resto eximido, inclusive
+  pontuação que não fosse fala. Eu julguei que é limite inerente à convenção, por não haver como
+  distinguir por sintaxe, e levei a dúvida a ela em vez de fechar sozinho. **Ela chegou ao mesmo
+  lugar por caminho próprio**, e o caminho importa: pensou em contar paridade de travessões para
+  saber se o inciso fechou, e **descartou por ser heurística especulativa contra um caso sem
+  exemplo real** · a mesma família da proximidade em bytes e do achar por posição, que já custaram
+  caro aqui.
 
   **O CONTRA, e ele é o argumento mais forte contra a própria decisão, escrito porque foi aceito de
   olhos abertos:** o que CRESCE é o código. Os dez travessões da rodada 43 nasceram em comentário e
