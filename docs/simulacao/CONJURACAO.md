@@ -17,7 +17,7 @@ em aberto está marcado como aberto, com o nome de quem decide.
 ## 0 · O fato que decide o tamanho de tudo
 
 **A conjuração de uma Arte pelo jogador é SÍNCRONA hoje.** `conjurar()`
-(`src/lib/artes-grid-mesa.ts:790-838` · `function conjurar`) abre a caixa, posiciona a figura, paga a Mana e declara o
+(`src/lib/artes-grid-mesa.ts:798-846` · `function conjurar`) abre a caixa, posiciona a figura, paga a Mana e declara o
 custo em Ticks · tudo no mesmo instante, num `finally` só. **Não existe hoje o estado "em Preparo,
 esperando o Tick de saída" para Arte lançada pela interface.**
 
@@ -55,8 +55,8 @@ do humano e o motor concordam em quase tudo; onde as palavras diferem, aqui fica
 | Efeito (Improviso) | **Improviso** · `plano.efeito === null` | `regras.json:arcano.improviso`, `artes-grid-ui.ts:182` (`null = improviso`) |
 | Efeito Especial | **Efeito**, do catálogo, com `nivel` fixo | `src/data/efeitos.json`, `artes-grid.ts:23-33` (`interface Efeito`) |
 | Parâmetro | **Parâmetro**, com graus de 0 a 6 | `artes-grid.ts:35-45` (`interface Parametro`), `regras.json:arcano.improviso.graus` |
-| os Parâmetros declarados | **`Escolhas`**, o mapa nome→grau | `artes-grid.ts:229`, vivo só durante a caixa |
-| NÍVEL do Efeito | **nível efetivo** | `gravarEfeito`, `artes-grid-mesa.ts:1428` (`function gravarEfeito`) |
+| os Parâmetros declarados | **`Escolhas`**, o mapa nome→grau | `artes-grid.ts:255`, vivo só durante a caixa |
+| NÍVEL do Efeito | **nível efetivo** | `gravarEfeito`, `artes-grid-mesa.ts:1436` (`function gravarEfeito`) |
 
 **O "Nível = o maior Parâmetro declarado" JÁ EXISTE, ao pé da letra.** `gravarEfeito` calcula
 `Math.max` sobre os graus investidos quando não há Efeito comprado, e chama isso de **nível
@@ -70,8 +70,8 @@ nova reusa esse nome e essa fórmula, e não inventa um terceiro.
 
 | para quê | qual conta | onde está |
 |---|---|---|
-| **quanto CUSTA** (Mana) | a **SOMA** dos graus investidos | `artes-grid.ts:231-235` (`interface Custo`) e `regras.astro:382` (`Some os níveis investidos`) |
-| **quanto DEMORA** (Preparação) e o gating | o **MÁXIMO** · o nível efetivo | `artes-grid-mesa.ts:1453-1456`, `arcano.composta` |
+| **quanto CUSTA** (Mana) | a **SOMA** dos graus investidos | `artes-grid.ts:257-261` (`interface Custo`) e `regras.astro:382` (`Some os níveis investidos`) |
+| **quanto DEMORA** (Preparação) e o gating | o **MÁXIMO** · o nível efetivo | `artes-grid-mesa.ts:1461-1464`, `arcano.composta` |
 
 Isto não é contradição, é uma distinção que o sistema já tem. **Toda linha desta régua diz qual
 dos dois está usando.** Confundi-los é o erro mais provável da implementação, e ele sai como
@@ -99,7 +99,7 @@ distribuição aberta, que foi o que o humano pediu.
 **E O D-C1 NÃO TEM BURACO, corrigido em 10/09/2026 pelo humano, porque quem ler o §1 vai fazer
 esta pergunta.** Declarar nível efetivo 3 **não** libera distribuir 3 em todos os Parâmetros de
 graça. **Cada grau de cada Parâmetro é pago**, e a conta já existe (`custoDe`,
-`src/lib/artes-grid.ts:250-268` · `function custoDe`): o custo é a SOMA dos graus, com dois descontos · um pela
+`src/lib/artes-grid.ts:276-294` · `function custoDe`): o custo é a SOMA dos graus, com dois descontos · um pela
 **Centelha**, que abate do total, e outro pelo **material consumido**. Passar do nível de maestria
 num Parâmetro ainda multiplica o custo dele.
 
@@ -134,7 +134,7 @@ ação de magia e o mestre manda deslocar, o deslocamento sai como caminhada, se
 Para usar Deslocamento de Batalha ou Corrida, é preciso interromper a Preparação.
 
 **Isto é estado NOVO, e não a regra de hoje.** Hoje quem está comprometido com um gesto não vê
-nem a caixa de modo: `moverSimultaneo` (`grid.astro:6277` · `function moverSimultaneo`) desvia direto para um
+nem a caixa de modo: `moverSimultaneo` (`grid.astro:6301` · `function moverSimultaneo`) desvia direto para um
 posicionamento cru, e a regra publicada para quem se mexe fora da vez no meio de um gesto é o
 **desvio de emergência**, a 1 Tick por metro (`src/content/chapters/combate.md:181-184`).
 
@@ -149,7 +149,7 @@ físico" de "Preparação de Arte" em todo lugar que hoje pergunta só `faseEm(.
 
 **Existe precedente para forçar modo sem perguntar**, e vale citar porque é o mecanismo que a
 implementação vai reusar: a fuga automática de criatura já monta o movimento com `modo: 'corrida'`
-direto, sem diálogo (`grid.astro:6210` · `modo: 'corrida'`).
+direto, sem diálogo (`grid.astro:6234` · `modo: 'corrida'`).
 
 #### Interromper por vontade própria
 
@@ -159,7 +159,7 @@ Preparação, que se perdem.
 **O Abortar já existe, publicado e implementado**, e é ele que se estende: `regras.json:2497-2508`
 · só na fase de Preparo, custa 1 Tick por metro para a saída, e **perde o investido**
 (`perdeOInvestido: true`). O código é `podeAbortar`/`abrirAbortar` e o botão "✋ Abortar o gesto"
-(`grid.astro:7753` · `Abortar o gesto`).
+(`grid.astro:7777` · `Abortar o gesto`).
 
 **O que muda:** hoje o Abortar serve só a ação física, e a lista `nuncaPara: "atacar"` o proíbe
 para ataque. **A Preparação de Arte entra como fase abortável**, com a mesma regra de perder o
@@ -185,7 +185,7 @@ Golpe importa só para o gating do Efeito · o que a Arte consegue fazer.
 **A Mana é paga aqui, no Golpe, e não na declaração.**
 
 **Isto é sequência nova, e não um "quando" mudado.** Hoje `gastarMana` é chamada no mesmo `finally`
-da conjuração (`artes-grid-mesa.ts:835` · `ctx.gastarMana`). **Não existe hoje um intervalo em que a Mana esteja
+da conjuração (`artes-grid-mesa.ts:843` · `ctx.gastarMana`). **Não existe hoje um intervalo em que a Mana esteja
 comprometida e ainda não gasta**, e é esse intervalo que a régua cria.
 
 **Mana insuficiente no Golpe:**
@@ -220,7 +220,7 @@ quiser: desliga tudo, e ele religa quando quiser. Simples, sem granularidade.
 
 **Onde isso mora, e o precedente já existe:** "não me pergunte" não existe hoje em nenhuma forma.
 O que existe é o **Tempo da mesa**, que já é configuração persistida POR MESA e não por navegador
-· `combateDaMesa` (`grid.astro:2869`), o botão `#gr-tempo` e `abrirEscolhaDoTempo`
+· `combateDaMesa` (`grid.astro:2893`), o botão `#gr-tempo` e `abrirEscolhaDoTempo`
 (`src/lib/mesa-tempo-ui.ts`). O botão novo entra ao lado, no mesmo lugar e no mesmo mecanismo de
 persistência, sem inventar armazenamento.
 
@@ -338,15 +338,15 @@ a interface estaria oferecendo uma escolha vazia.**
 **O que o gating faz hoje com o nível efetivo, levantado em 10/09/2026:**
 
 - **o `nivel` gravado na linha do efeito É LIDO, e num lugar só:** `dissipar`
-  (`src/lib/artes-grid-mesa.ts:1012`) · `const alcanca = (e.nivel || 1) <= meu;`. Um efeito de
+  (`src/lib/artes-grid-mesa.ts:1020`) · `const alcanca = (e.nivel || 1) <= meu;`. Um efeito de
   nível N só pode ser dissipado por quem investiu pelo menos N pontos na Dissipar. Quem não
   alcança recebe recusa com o motivo escrito no registro;
 - **portanto o gesto NÃO é vazio.** Baixar o nível efetivo no Golpe **torna o próprio efeito mais
   fácil de dissipar**. É uma consequência real, e negativa para quem conjura · o que faz dela um
   motivo para NÃO baixar, e não um prêmio por baixar;
 - **e o resto do gating não olha para ele.** O que filtra quais Efeitos o personagem pode escolher
-  é o `nivelArte`, a maestria da ficha (`efeitosDisponiveis`, `artes-grid.ts:321`), e o que
-  encarece Parâmetro acima da maestria também é o `nivelArte` (`custoDe`, `artes-grid.ts:250`).
+  é o `nivelArte`, a maestria da ficha (`efeitosDisponiveis`, `artes-grid.ts:347`), e o que
+  encarece Parâmetro acima da maestria também é o `nivelArte` (`custoDe`, `artes-grid.ts:276`).
   Nenhum dos dois enxerga o nível efetivo da conjuração.
 
 **Uma coisa achada de passagem que quem implementar precisa saber:** o `dissipar` compara
@@ -385,7 +385,7 @@ Nesta ordem, e nenhuma parte começa antes de o humano aprovar a régua.
 |---|---|---|---|
 | 1 | ligar `reguaDaArte` ao fluxo real | `artes-grid-mesa.ts`, `conjurar()` | a fórmula existe e está morta · é chamada, não escrita |
 | 2 | abrir o estado "Arte em Preparo" | `conjurar()` deixa de ser síncrona | **é o grosso do trabalho**, e é estado novo no motor |
-| 3 | a Mana sair da declaração para o Golpe | `artes-grid-mesa.ts:835` (`ctx.gastarMana`) | pequeno, e perigoso: é onde o gasto pode sumir |
+| 3 | a Mana sair da declaração para o Golpe | `artes-grid-mesa.ts:843` (`ctx.gastarMana`) | pequeno, e perigoso: é onde o gasto pode sumir |
 | 4 | a reabertura dos Parâmetros no Golpe | caixa nova, com o teto | médio |
 | 5 | caminhada automática na Preparação | `moverSimultaneo` | pequeno, se `D-C2` ficar de pé |
 | 6 | o Abortar aceitar Preparação de Arte | `podeAbortar` e a lista `nuncaPara` | pequeno |

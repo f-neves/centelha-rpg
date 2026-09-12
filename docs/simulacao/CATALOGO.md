@@ -586,14 +586,14 @@ O script que confere `arquivo.ts:NNN` escolhe a âncora (o trecho entre crases q
 citação afirma) pela crase mais próxima do número citado. "Mais próxima" ali é distância de
 CARACTERES a partir do INÍCIO da citação, contada nas duas direções. Isso parece simétrico e não
 é: uma âncora que vem DEPOIS da citação só começa a contar depois do fim dela (o próprio texto da
-citação, `src/pages/mesa/grid.astro:4633` · `function grupoDaVez`, tem trinta e tantos caracteres), enquanto uma âncora
+citação, `src/pages/mesa/grid.astro:4657` · `function grupoDaVez`, tem trinta e tantos caracteres), enquanto uma âncora
 ANTES conta a partir do início, sem esse desconto. A citação mais longa que a âncora empurra o
 "depois" para mais longe do que o "antes" parece, de um jeito que ninguém vê olhando a linha
 impressa: o olho lê `algo` (`arquivo:N`) `outra_coisa` como três pedaços igualmente próximos, e o
 script lê dois deles a distâncias bem diferentes.
 
 **Duas citações reais desta mesma rodada caíram nisso**, as duas escritas por quem está contando
-este achado: `grupoDaVez` (`grid.astro:4633`) tinha a âncora certa (`function grupoDaVez`) escrita
+este achado: `grupoDaVez` (`grid.astro:4657`) tinha a âncora certa (`function grupoDaVez`) escrita
 DEPOIS da citação, e o script escolheu `!grupoDaVez` (um fragmento de código histórico, também em
 crases, escrito ANTES) por ser mais "próximo" em bytes. O mesmo aconteceu com
 `mesa-condicoes.ts:100-106` (`chip.addEventListener`), onde a âncora nova foi escrita numa linha seguinte por causa da
@@ -773,3 +773,37 @@ quando um termo pedir dado que ninguém tem (campo inexistente, valor a inventar
 entradas), suspeitar do termo antes de responder à pergunta que ele criou. O conserto também é dos
 dois lados: trocar só o código deixaria o JSON mandando o contrário, e a próxima pessoa
 "consertaria" o código de volta para o errado.
+
+## A HIERARQUIA DE FONTES NÃO ORDENA O TEMPO (12/09/2026, Arquiteto)
+
+**O gesto:** usar a regra de quem vence entre duas fontes para decidir uma pergunta em que o que
+estava em jogo não era o posto de cada uma, era a IDADE de cada uma.
+
+**O que aconteceu, e é o mesmo dia da forma anterior.** Ao julgar o levantamento da rodada 55 eu
+disse à Executora que o "1 PV por nível" do `maos-sobre-a-multidao` era texto solto meu, que o
+`tipo: padrao` do `efeitos.json` era dado autorado, e que portanto o dado vencia. Os dois lados
+estavam trocados. O "1 PV por nível" era **decisão do humano**, tomada naquela mesma manhã e
+registrada no `Pendencias.md` com a razão dela por escrito. O `tipo: padrao` do JSON era dado
+**anterior à decisão**, que ninguém tinha atualizado ainda. Eu tratei o mais velho como o mais
+autorizado porque ele morava no arquivo de posto mais alto.
+
+**Por que a regra do `CLAUDE.md` não cobria isso.** "Quando o JSON e o capítulo discordam, o JSON
+vence" ordena os textos por JURISDIÇÃO. Ela não diz nada sobre qual dos dois é o mais recente, e não
+podia dizer: posto é propriedade do arquivo, atualidade é propriedade da escrita. Uma fonte da
+verdade desatualizada continua sendo a fonte da verdade **da pergunta que ela já respondeu**, e não
+vira automaticamente a resposta de uma pergunta decidida depois, em outro lugar.
+
+**O sinal que estava na minha frente e eu não li:** eu fui ao `Pendencias.md` para ESCREVER a
+decisão nova, e o que achei lá foi a decisão anterior, no mesmo item, de algumas horas antes. O
+documento onde as decisões ficam era o primeiro lugar a olhar ANTES de dizer qual fonte vence, e eu
+o abri depois, por outro motivo. **Antes de declarar que um dado vence um combinado, procurar o
+combinado onde os combinados moram.**
+
+**O parentesco com a forma acima, e é o que faz as duas valerem juntas:** lá eu li o JSON como
+legítimo quando ninguém tinha jurisdição; aqui eu li o JSON como atual quando a decisão era mais
+nova que ele. As duas vêm de tratar "o JSON vence" como uma resposta, quando ela é só um critério de
+desempate, e um critério de desempate só serve depois de você saber quem está empatado.
+
+**O conserto tem a mesma forma dos dois casos:** a decisão entra no DADO junto com o código. Enquanto
+ela mora só no documento, todo mundo que abrir o JSON vai ler o contrário, e vai estar lendo a
+melhor fonte que existe para aquela pergunta.
