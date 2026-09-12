@@ -34,7 +34,7 @@ import { resumoCombatePC } from '../src/lib/combate-resumo';
 // A NÉVOA DO MOCK USA AS FUNÇÕES DE VERDADE. Reimplementá-las aqui faria a
 // bancada concordar consigo mesma, que é a falha que este arquivo existe para
 // não ter: `token_visao` era cópia da escrita e o jogador recebia tudo.
-import { distanciaHex } from '../src/lib/hex';
+import { distanciaHex, vizinhos, dentro } from '../src/lib/hex';
 import { montando, venceu } from '../src/lib/artes-grid';
 import { armaDoCatalogo, classeDeTempo, velocidadeDaArma, ticksDeEntrada } from '../src/lib/combate-tempo';
 import { resumoFicha, resumoParaBanco } from '../src/lib/mesa-ficha';
@@ -111,6 +111,10 @@ const OCUPACAO = P.get('cena') === 'ocupacao';
 // `if (CAIDOFILA)` mais abaixo.
 const CAIDOFILA = P.get('cena') === 'caidofila';
 
+// A CENA DO LEVANTAR: `?cena=levantar` (L84, rodada 50). Ver o bloco
+// `if (LEVANTAR)` mais abaixo.
+const LEVANTAR = P.get('cena') === 'levantar';
+
 // A CENA DO INTERPOR: `?cena=interpor[&fase=preparo|recuperacao]` (L34 §6,
 // rodada 15/16/17).
 //
@@ -125,9 +129,11 @@ const INTERPOR = P.get('cena') === 'interpor';
 const INTERPOR_FASE = P.get('fase') === 'recuperacao' ? 'recuperacao' : 'preparo';
 
 const COLS = ESPELHO ? ESPELHO.tab.cols : CAIDO ? 14 : BANDEIRAS ? 10 : CORPOACORPO ? 20
-  : FORADAVEZ ? 16 : OCUPACAO ? 16 : CAIDOFILA ? 12 : INTERPOR ? 10 : parseInt(P.get('cols') || '24', 10);
+  : FORADAVEZ ? 16 : OCUPACAO ? 16 : CAIDOFILA ? 12 : LEVANTAR ? 16
+  : INTERPOR ? 10 : parseInt(P.get('cols') || '24', 10);
 const ROWS = ESPELHO ? ESPELHO.tab.rows : CAIDO ? 8 : BANDEIRAS ? 8 : CORPOACORPO ? 18
-  : FORADAVEZ ? 12 : OCUPACAO ? 12 : CAIDOFILA ? 8 : INTERPOR ? 8 : parseInt(P.get('rows') || '16', 10);
+  : FORADAVEZ ? 12 : OCUPACAO ? 12 : CAIDOFILA ? 8 : LEVANTAR ? 10
+  : INTERPOR ? 8 : parseInt(P.get('rows') || '16', 10);
 const NEVOA = P.get('nevoa') === '1';
 /**
  * `?sombra=1`: DUAS zonas que não acendem o chão, para a névoa poder escondê-las.
@@ -903,6 +909,70 @@ if (CAIDOFILA) {
 }
 
 /**
+ * A CENA DO LEVANTAR `?cena=levantar` (Pendencias.md L84, rodada 50):
+ * `levantarDoChao` (`grid.astro`), a peça `caido` que decide ficar de pé.
+ *
+ *   `pe`               · caído SOZINHO no hexágono: levanta no lugar, sem
+ *     deslocamento nenhum.
+ *   `pa` (caído) + `pb` · DIVIDEM um hexágono, com UM vizinho livre (os
+ *     outros cinco tomados por `pf1..pf5`, gerados por `vizinhos()`, a mesma
+ *     função que `levantarDoChao` usa): levanta INDO para o vizinho livre.
+ *   `pc` (caído) + `pd` · DIVIDEM outro hexágono, com os SEIS vizinhos
+ *     tomados (`pg1..pg6`): levanta RECUSA, sem hexágono para ir.
+ *
+ * Todo mundo sem gesto nenhum (`acao: {}`, fase `livre`): `cobrarDeslocamento`
+ * só cobra Ticks na Recuperação (`grid.astro:7212`), então o deslocamento de
+ * `pa` sai de graça aqui, do mesmo jeito que qualquer passo em fase livre já
+ * sai. A cobrança em Recuperação é contrato de `porNoMapa`/`cobrarDeslocamento`,
+ * já provado em `test-l68-foradavez-mesa.mjs` ("andou … na Recuperação: +N
+ * Ticks"); este arquivo não reconstrói aquele número, só prova que
+ * `levantarDoChao` usa a MESMA porta.
+ */
+if (LEVANTAR) {
+  COMBS.length = 0; TOKENS.length = 0;
+  const pv = { pv_max: 20, pv_atual: 20, mana_max: null, mana_atual: null };
+  const base = (id, nome, extra = {}) => ({
+    id, encontro_id: ENC, nome, tipo: 'pc', grupo: 'aliado',
+    monstro_id: null, personagem_id: null, ...pv,
+    tick: 0, iniciativa: 10, acao: {}, dados: {},
+    condicoes: [], ativo: true, oculto: false, imagem: null, retrato: null, ...extra,
+  });
+  const caidoCond = { condicoes: [{ id: 'caido' }] };
+
+  // ---- pe: caído sozinho ----
+  const posSozinho = offsetParaAxial(2, 2);
+  COMBS.push(base('pe', 'Peça pe', caidoCond));
+  TOKENS.push({ arena_id: ARENA, combatente_id: 'pe', ...posSozinho, movido_em: '2026-01-01T00:00:00Z' });
+
+  // ---- pa + pb: dividem, um vizinho livre ----
+  const posA = offsetParaAxial(8, 6);
+  COMBS.push(base('pa', 'Peça pa', caidoCond));
+  COMBS.push(base('pb', 'Peça pb'));
+  TOKENS.push({ arena_id: ARENA, combatente_id: 'pa', ...posA, movido_em: '2026-01-01T00:00:00Z' });
+  TOKENS.push({ arena_id: ARENA, combatente_id: 'pb', ...posA, movido_em: '2026-01-01T00:00:00Z' });
+  const vizA = vizinhos(posA).filter((h) => dentro(h, COLS, ROWS));
+  // O PRIMEIRO fica livre de propósito (é o destino esperado do teste); os
+  // demais tomam um filler cada.
+  vizA.slice(1).forEach((h, i) => {
+    const id = `pf${i + 1}`;
+    COMBS.push(base(id, `Peça ${id}`));
+    TOKENS.push({ arena_id: ARENA, combatente_id: id, ...h, movido_em: '2026-01-01T00:00:00Z' });
+  });
+
+  // ---- pc + pd: dividem, SEM vizinho livre ----
+  const posC = offsetParaAxial(8, 2);
+  COMBS.push(base('pc', 'Peça pc', caidoCond));
+  COMBS.push(base('pd', 'Peça pd'));
+  TOKENS.push({ arena_id: ARENA, combatente_id: 'pc', ...posC, movido_em: '2026-01-01T00:00:00Z' });
+  TOKENS.push({ arena_id: ARENA, combatente_id: 'pd', ...posC, movido_em: '2026-01-01T00:00:00Z' });
+  vizinhos(posC).filter((h) => dentro(h, COLS, ROWS)).forEach((h, i) => {
+    const id = `pg${i + 1}`;
+    COMBS.push(base(id, `Peça ${id}`));
+    TOKENS.push({ arena_id: ARENA, combatente_id: id, ...h, movido_em: '2026-01-01T00:00:00Z' });
+  });
+}
+
+/**
  * A CENA DO INTERPOR `?cena=interpor[&fase=preparo|recuperacao]`: o golpe
  * adiado que fica no ar, e um terceiro token pronto para cobri-lo (L34 §6,
  * decidido em 07/09/2026, implementado nas rodadas 15/16/17: a régua, a
@@ -1181,7 +1251,7 @@ const TABELAS = {
   arena_visao: ARENAS,
   // A CENA DO CAÍDO começa no Tick 1: o teste avança um e o golpe vence no 2.
   encontros: [{ id: ENC, mesa_id: MESA, ativo: true,
-    tick_atual: CAIDO ? 1 : FORADAVEZ ? 10 : OCUPACAO ? 10 : CAIDOFILA ? 0 : TICK_CENA,
+    tick_atual: CAIDO ? 1 : FORADAVEZ ? 10 : OCUPACAO ? 10 : CAIDOFILA ? 0 : LEVANTAR ? 0 : TICK_CENA,
     rodada: 1, estado: null, ordem: 0, criado_em: '2026-01-01T00:00:00Z', nome: 'Cena' }],
   // `encontro_visao` é COMPUTADA, e por projeção de coluna. Ver `COLUNAS` abaixo.
   encontro_visao: [],

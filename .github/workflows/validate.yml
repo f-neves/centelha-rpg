@@ -100,6 +100,7 @@ jobs:
           - test-l68-foradavez-mesa
           - test-l70-ocupacao-mesa
           - test-l84-caidofila-mesa
+          - test-l84-levantar-mesa
           - test-l77-alcancecentro-mesa
           - test-grid-simultaneo
           - test-etapa0

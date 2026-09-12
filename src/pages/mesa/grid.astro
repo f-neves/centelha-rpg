@@ -2434,7 +2434,7 @@ const SETAS = [
   import {
     centroHex, verticesHex, tabuleiro, medidaTabuleiro, margemTabuleiro,
     hexEmPonto, dentro, chaveHex, distanciaHex, nomeHex, larguraHex,
-    offsetParaAxial, letraColuna, caminharHex, alemDe, naLinhaHex,
+    offsetParaAxial, letraColuna, caminharHex, alemDe, naLinhaHex, vizinhos,
   } from '../../lib/hex';
   import { uiConfirmar, uiErro, uiFormulario, uiEscolher, contadorDeConsultas } from '../../lib/ui-dialog';
   import {
@@ -6134,7 +6134,7 @@ const SETAS = [
     // de sempre. Peça só em trajeto conta como livre e REDECLARA: arrastar de
     // novo é mudar de ideia sobre o caminho, que é a regra deste modo.
     if (faseEm(acaoNo(c), T) !== 'livre') {
-      return porNoMapa(c.id, destino.q, destino.r);
+      await porNoMapa(c.id, destino.q, destino.r); return;
     }
     const dlg = el('mov-dlg') as HTMLDialogElement;
     const de = TOKENS[c.id];
@@ -6180,7 +6180,7 @@ const SETAS = [
       dlg.showModal();
     });
     if (!escolha) return;
-    if (escolha === 'direto') return porNoMapa(c.id, destino.q, destino.r);
+    if (escolha === 'direto') { await porNoMapa(c.id, destino.q, destino.r); return; }
 
     const v = Math.max(0.5, parseFloat(vel.value || '3') || 3);
     // A peça fica "presa" até a chegada projetada; se o caminho encurtar (o
@@ -7262,16 +7262,27 @@ const SETAS = [
    *
    * Sem `motivo`, o comportamento é o de sempre: "moveu", com o custo normal.
    */
+  /**
+   * DEVOLVE `{ error }` desde o L88 (Pendencias.md, achado do Arquiteto,
+   * rodada 50): antes disso a função mostrava o motivo da recusa ao
+   * USUÁRIO (`uiErro`) e voltava sem dizer nada a QUEM CHAMA, então nenhum
+   * chamador conseguia saber se o movimento entrou ou não sem reler
+   * `TOKENS` por conta própria. `levantarDoChao` foi o primeiro a precisar
+   * saber: sem o retorno, ele não tinha como decidir se persiste a condição
+   * removida ou desfaz na memória. O contrato copia `gravarToken`/
+   * `empurrarAteLivre` (`{ error }`, `null` quando deu certo), não um
+   * booleano solto, porque é a forma que o resto do arquivo já espera.
+   */
   async function porNoMapa(
     cid: string, q: number, r: number, registrar = true,
     motivo?: { verbo: 'corrigir' | 'forahora' },
-  ) {
+  ): Promise<{ error: any }> {
     // A ocupação não se confere mais aqui (L70): `gravarToken` é quem confere,
     // e devolve o motivo em `error` como um erro de rede qualquer. O bloco
     // logo abaixo já desfazia o otimista e mostrava `uiErro` para erro de
     // rede; agora é o MESMO bloco que mostra "já está ocupada".
     const antes = TOKENS[cid] ? { ...TOKENS[cid] } : null;
-    if (antes && antes.q === q && antes.r === r) return;   // largou onde já estava
+    if (antes && antes.q === q && antes.r === r) return { error: null };   // largou onde já estava
     // Otimista: o token pula na hora. O carimbo entra junto porque é ele que
     // ordena a pilha quando dois dividem a casa, e quem acabou de chegar tem de
     // aparecer por cima já no primeiro desenho.
@@ -7282,10 +7293,11 @@ const SETAS = [
     if (error) {
       if (antes) TOKENS[cid] = antes; else delete TOKENS[cid];
       pintarTokens(); pintarLista(); pintarIniciativa(); pintarAlcance();
-      return uiErro('Não deu para mover: ' + error.message);
+      uiErro('Não deu para mover: ' + error.message);
+      return { error };
     }
     avisarAgora('tokens');
-    if (!registrar) return;
+    if (!registrar) return { error: null };
     const c = COMBS.find((x: any) => x.id === cid);
     const casa = nomeHex(q, r);
     if (antes) {
@@ -7307,6 +7319,108 @@ const SETAS = [
     // Andar é o gesto que faz alguém pisar numa zona de fogo ou sair de uma
     // aura, então é aqui que os efeitos são reconferidos.
     await verificarEfeitos(ctxArtes());
+    return { error: null };
+  }
+
+  /**
+   * LEVANTAR, quando `caido` está dividindo o hexágono com outra peça
+   * (Pendencias.md L84, decisão do humano em 12/09/2026).
+   *
+   * NÃO CONFUNDIR com `levantar(gente)`, lá em cima: aquela é o "acordar" de
+   * quem SAIU da fila (inconsciente, morrendo…) e volta com o atraso de
+   * `DELAY_AO_LEVANTAR`. Esta é o caído, que nunca saiu da fila (L84), ficando
+   * de pé.
+   *
+   * SOZINHO NO HEXÁGONO, levantar não desloca nada: só tira a condição, sem
+   * custo nenhum. DIVIDINDO com alguém, a regra de hoje é só a metade fácil:
+   * um deslocamento para um hexágono ADJACENTE LIVRE, pela mesma porta de
+   * sempre (`porNoMapa`, que já confere ocupação por `gravarToken` e já cobra
+   * o Tick de deslocamento por `cobrarDeslocamento`, nenhum número novo
+   * aqui). SEM hexágono livre ao lado, a peça RECUSA com o motivo: a outra
+   * metade, ficar de pé NO MESMO hexágono por disputa de (Força ou Destreza)
+   * + Briga com −2 para quem está deitado, é `Pendencias.md` L83, ainda sem
+   * decisão, e esta função não inventa uma rolagem para preenchê-la.
+   *
+   * A CHECAGEM DE "ESTÁ DIVIDINDO" não usa `ocupadoPor`: aquela função isenta
+   * quem `podeDividir`, e `c` ainda está `caido` (prono) no instante em que
+   * este código roda, então toda sobreposição seria perdoada e a pergunta
+   * "tem alguém aqui?" sempre voltaria "não". O que se quer aqui é o
+   * contrário: saber SE há alguém, não se a divisão é permitida.
+   *
+   * A BUSCA DO VIZINHO LIVRE tem o MESMO problema, por um instante, e por
+   * isso `c.condicoes` é mutado ANTES de perguntar a `ocupadoPor`: sem tirar
+   * `caido` primeiro, `podeDividir(c, outro)` valeria `true` para QUALQUER
+   * vizinho só por `c` ainda estar `noChao`, e `ocupadoPor` devolveria
+   * "livre" para uma casa já tomada (foi o defeito real que
+   * `test-l84-levantar-mesa.mjs` pegou ao escrever esta função: a peça
+   * "achava" vaga numa casa cheia, só porque a própria queda dela virava
+   * desculpa para dividir o que já não era mais dela).
+   *
+   * SEGUNDO ACHADO, do Arquiteto (L88): tirar `caido` da MEMÓRIA não bastava
+   * só na busca, porque a escrita de verdade (`gravarPeca`) rodava ANTES do
+   * `porNoMapa` mover. Se o movimento recusasse (a corrida que o `L70` mede:
+   * o hexágono livre foi tomado por outro cliente entre a busca e a
+   * escrita), a peça ficava de pé NO BANCO, sem `caido`, presa na mesma casa
+   * dividida: exatamente o estado que este comentário já prometia impedir,
+   * só que a promessa não bastava sem a ORDEM certa. A inversão ingênua
+   * (mover primeiro, tirar `caido` depois) tem o MESMO defeito espelhado:
+   * `porNoMapa` gravaria com `c` ainda `caido` na memória, e `ocupadoPor`
+   * perdoaria o destino de novo. A saída é separar MEMÓRIA de PERSISTÊNCIA:
+   * `c.condicoes` muda na memória antes de mover (para a conferência do
+   * PRÓPRIO movimento não se perdoar), e só é GRAVADA depois que `porNoMapa`
+   * confirma que entrou. Isso só é possível porque `porNoMapa` agora devolve
+   * `{ error }` (também L88): antes ele mostrava o erro ao usuário e voltava
+   * void, sem dizer nada a quem chama.
+   */
+  async function levantarDoChao(cid: string) {
+    const c = COMBS.find((x: any) => x.id === cid); if (!c) return;
+    const pos = TOKENS[cid]; if (!pos) return;
+    const condAntes = c.condicoes || [];
+    if (!condAntes.some((k: any) => k.id === 'caido')) return;
+    const semCaido = condAntes.filter((k: any) => k.id !== 'caido');
+    const escala = Number(ARENA?.escala_m) || 1;
+    const meuRaio = diametroM(c) / 2;
+    const dividindo = Object.entries(TOKENS).some(([outroId, t]: [string, any]) => {
+      if (outroId === cid) return false;
+      const outro = COMBS.find((x: any) => x.id === outroId);
+      if (!outro) return false;
+      const metros = distanciaHex(pos, t) * escala;
+      return metros + 1e-9 < meuRaio + diametroM(outro) / 2;
+    });
+
+    if (!dividindo) {
+      c.condicoes = semCaido;
+      const { error } = await gravarPeca(cid, { condicoes: semCaido });
+      if (error) { c.condicoes = condAntes; return uiErro('Erro: ' + error.message); }
+      pintarIniciativa(); pintarTokens();
+      avisarAgora('combatentes');
+      await logar(c, `${c.nome} se levanta.`, { acao: null });
+      return;
+    }
+
+    // MEMÓRIA primeiro (ver o comentário da função): sem `caido` aqui, a
+    // busca E o `porNoMapa` logo abaixo conferem ocupação como quem já está
+    // de pé.
+    c.condicoes = semCaido;
+    const livre = vizinhos(pos).find((h) => dentro(h, ARENA.cols, ARENA.rows) && !ocupadoPor(h.q, h.r, cid)) ?? null;
+    if (!livre) {
+      c.condicoes = condAntes;
+      return uiErro(`${c.nome} não tem hexágono livre ao lado para levantar `
+        + '(ficar de pé dividindo o hexágono ainda não tem regra).');
+    }
+    const { error } = await porNoMapa(cid, livre.q, livre.r);
+    if (error) { c.condicoes = condAntes; return; }   // porNoMapa já mostrou o motivo ao usuário
+    const { error: errCond } = await gravarPeca(cid, { condicoes: semCaido });
+    if (errCond) {
+      // A posição JÁ FOI GRAVADA e já está no registro de `porNoMapa`: desfazer
+      // o passo por causa de uma falha em gravar a condição abriria uma SEGUNDA
+      // corrida (voltar por cima de uma casa que outra peça já pode ter tomado
+      // no intervalo). A mesa fica com a posição certa e a condição pendente,
+      // visível pelo erro na tela.
+      return uiErro(`${c.nome} levantou, mas a condição não gravou: ` + errCond.message);
+    }
+    pintarIniciativa(); pintarTokens();
+    avisarAgora('combatentes');
   }
 
   async function tirarDoMapa(cid: string, registrar = true) {
@@ -7442,6 +7556,11 @@ const SETAS = [
         ? item('esperar', `⏳ Esperar 1 Tick (contrapé ${contrapeEm(c.acao, c.tick ?? 0)}d6 → ${
           contrapeEm(c.acao, (c.tick ?? 0) + 1)
             ? `${contrapeEm(c.acao, (c.tick ?? 0) + 1)}d6` : 'nenhum'})`) : '',
+      // LEVANTAR só aparece em quem está `caido` (L84). O rótulo já avisa a
+      // metade que falta: dividindo o hexágono, a peça vai para o lado; sem
+      // hexágono livre, `levantarDoChao` recusa com o motivo, sem dado nenhum.
+      (MESTRE || meu) && (c.condicoes || []).some((k: any) => k.id === 'caido')
+        ? item('levantar', '⤒ Levantar') : '',
       sep,
       // AS CONDIÇÕES, no tabuleiro pela primeira vez (04/09/2026).
       //
@@ -7523,6 +7642,7 @@ const SETAS = [
       else if (a === 'arte') usarArte(cid);
       else if (a === 'outra') abrirOutra(cid);
       else if (a === 'esperar') esperarUmTick(cid);
+      else if (a === 'levantar') levantarDoChao(cid);
       else if (a === 'condicoes') abrirCondicoes(cid);
       else if (a === 'alcance') alternarAlcance(cid);
       else if (a === 'abortar') abortarGesto(cid);
