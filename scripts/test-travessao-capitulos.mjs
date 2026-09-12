@@ -27,6 +27,19 @@
 //     e listada à parte no L79 (13 ocorrências, medidas e não tocadas na
 //     varredura) precisamente por não ser o mesmo tipo de travessão. Sem esta
 //     isenção o portão acenderia contra o próprio estado que o L79 deixou.
+//   · a FALA DE PERSONAGEM: uma linha que COMEÇA com travessão, a marca da fala
+//     em português (`— Fala do personagem.`), inclusive depois de `> ` de
+//     citação (uma ou mais vezes, para blockquote aninhado) e de espaço de
+//     indentação. É a única exceção que o CLAUDE.md admite em prosa (rodada 47,
+//     abertura da rodada 48). Ela exime a LINHA INTEIRA, e não só o primeiro
+//     caractere: uma fala com inciso do narrador no meio (`— Vou embora — disse
+//     ela — e não volto.`) é a mesma convenção, não pontuação de outro tipo.
+//     Nenhum capítulo hoje tem essa marca (verificado no L79); esta isenção
+//     nunca foi exercitada por um caso real, e por isso o controle deste item é
+//     um capítulo FABRICADO, não uma amostra do repositório.
+//     O CARACTERE QUE ABRE A LINHA TEM DE SER TRAVESSÃO (`—`, U+2014), NUNCA
+//     HÍFEN (`-`, U+002D): o hífen abre item de lista em Markdown, e confundir
+//     os dois deixaria passar prosa comum disfarçada de item de lista.
 //
 // O QUE ELE NÃO ACEITA: qualquer outro travessão em qualquer `.md` sob
 // `src/content/`, dentro ou fora de bloco cercado (` ``` `), porque a rodada 47
@@ -57,34 +70,44 @@ function mdSob(dir) {
 // não a linha inteira.
 const CELULA_VAZIA = /\|\s*—\s*(?:\([^|]*\))?\s*(?=\|)/g;
 
+// A FALA: início da linha, espaço opcional, zero ou mais `>` de citação (cada um
+// seguido de espaço opcional, para blockquote aninhado), e então o TRAVESSÃO
+// (nunca hífen: são caracteres diferentes, `—` contra `-`, e o regex só casa o
+// primeiro). Exime a linha inteira, não só a abertura.
+const FALA = /^\s*(?:>\s*)*—/;
+
 /** Marca de posição para não perder o índice ao apagar trecho aceito. */
 const ESPACO = (m) => ' '.repeat(m.length);
 
 let violacoes = 0;
-console.log('· travessão fora de crase e fora de célula vazia, em src/content/**');
+console.log('· travessão fora de crase, célula vazia e fala de personagem, em src/content/**');
 for (const arq of mdSob(CONTEUDO).sort()) {
   const texto = fs.readFileSync(arq, 'utf8');
   if (!texto.includes('—')) continue;
+  const linhasOrig = texto.split(/\r?\n/);
 
-  // Tira as crases (inline, `` `...` ``) e as células vazias ANTES de procurar:
-  // o que sobra é só o travessão que teria de ser pontuação de prosa.
-  const semCrase = texto.replace(/`[^`\n]*`/g, ESPACO);
-  const semNada = semCrase.replace(CELULA_VAZIA, ESPACO);
+  for (let i = 0; i < linhasOrig.length; i += 1) {
+    const origLinha = linhasOrig[i];
+    if (!origLinha.includes('—')) continue;
+    if (FALA.test(origLinha)) continue;
 
-  if (!semNada.includes('—')) continue;
-  const linhas = semNada.split(/\r?\n/);
-  for (let i = 0; i < linhas.length; i += 1) {
-    if (!linhas[i].includes('—')) continue;
-    const origLinha = texto.split(/\r?\n/)[i];
+    // Tira as crases (inline, `` `...` ``) e as células vazias ANTES de
+    // procurar: o que sobra é só o travessão que teria de ser pontuação de
+    // prosa. Por linha, e não no arquivo inteiro, porque a FALA acima já é
+    // por linha e as três isenções precisam da mesma unidade de decisão.
+    const semCrase = origLinha.replace(/`[^`\n]*`/g, ESPACO);
+    const semNada = semCrase.replace(CELULA_VAZIA, ESPACO);
+    if (!semNada.includes('—')) continue;
+
     violacoes += 1;
     console.log(`  ✗ ${path.relative(RAIZ, arq)}:${i + 1}: ${origLinha.trim().slice(0, 100)}`);
   }
 }
 
 if (violacoes) {
-  console.log(`\n✗ ${violacoes} travessão(ões) fora de crase e fora de célula vazia em src/content/**.`);
+  console.log(`\n✗ ${violacoes} travessão(ões) fora das três isenções (crase, célula vazia, fala) em src/content/**.`);
   console.log('  Troque por dois-pontos, vírgula, parênteses ou ponto-médio (·), lendo a frase.');
   console.log('  Ver o método do L79 em `docs/simulacao/caixa/progresso-47-l79.md`.');
   process.exit(1);
 }
-console.log('✓ Travessão em src/content/** OK · nenhuma pontuação de prosa fora das duas isenções (crase, célula vazia)');
+console.log('✓ Travessão em src/content/** OK · nenhuma pontuação de prosa fora das três isenções (crase, célula vazia, fala)');
