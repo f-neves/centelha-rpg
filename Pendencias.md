@@ -4834,6 +4834,38 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   sem portão nenhum olhando. O que o portão protege é o texto que sai do repositório e chega no
   jogador; o resto continua sendo disciplina de quem escreve.
 
+  **CONSTRUÍDO na rodada 47, em 11/09/2026, e REVISADO (`55c4122`): SEGUE, sem CORRIGE.** A
+  varredura trocou **240** travessões de pontuação nos 13 capítulos publicados, frase a frase, e
+  deixou **13** marcadores de célula vazia intocados. O portão é o `scripts/test-travessao-capitulos.mjs`,
+  sobre `src/content/**`, com duas exceções por PADRÃO (crase inline e célula vazia) e quatro
+  controles.
+
+  **Uma categoria que ninguém tinha listado apareceu no meio:** dois travessões moravam **dentro de
+  rótulos de nó do mermaid** (`S["SOCIAL — rola vs Defesa Social"]`). São pontuação de verdade, e o
+  leitor os lê no desenho, mas têm **artefato gerado acoplado** · trocá-los mudou o hash e deixou o
+  portão dos diagramas vermelho até o `gen-mermaid.mjs` rodar. **Varredura de `.md` que toque
+  diagrama não está completa sem regerar**, e isso vai reaparecer na próxima.
+
+  **A Revisora não aceitou amostra em nenhum dos três riscos.** Leu o **diff inteiro** de três
+  capítulos e amostra representativa dos outros dez (nenhuma frase mudou de sentido); **contou todo
+  travessão restante** em vez de conferir a contagem divulgada, e achou exatamente 9 linhas com 13
+  ocorrências, sem sobra escondida; e **reproduziu os controles com mecanismo próprio**, checkout do
+  pai e travessão inserido de propósito, em vez de aceitar o relato.
+
+  **ESTE ITEM CONTINUA ABERTO, e a razão é o que o `CATALOGO` chama de "fechado com condição
+  pendente dentro".** O portão **não tem representação da exceção de ficção**, que é a única que o
+  `CLAUDE.md` admite em prosa. Ele passa hoje só porque nenhum capítulo tem fala de personagem · e
+  no dia em que alguém escrever uma cena de abertura, ele bloqueia um uso legítimo, e quem estiver
+  escrevendo vai estragar o diálogo ou desligar o portão. **Marcar isto como fechado seria fechar
+  com o defeito dentro.**
+
+  **A lacuna foi achada pela própria Executora, no próprio trabalho dela**, e classificada como
+  ESCALA e não CORRIGE pela Revisora, com razão dela e não minha: é teórica hoje, não há exemplo
+  real no repositório, e construir suporte para um caso sem exemplo é engenharia especulativa. O
+  conserto é o primeiro item da rodada 48, com **controle sintético** (fabricar um capítulo
+  temporário com diálogo, exigir verde; tirar a exceção, exigir vermelho no mesmo arquivo), que é o
+  mesmo gesto do `test-carimbo` com as migrações fabricadas.
+
   **O CONTRA, e ele é o argumento mais forte contra a própria decisão, escrito porque foi aceito de
   olhos abertos:** o que CRESCE é o código. Os dez travessões da rodada 43 nasceram em comentário e
   em texto de asserção de teste, **nenhum em `.md`**. Um portão que cobre só os documentos cobre a
