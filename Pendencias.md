@@ -5951,9 +5951,16 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   corpos, `dreno` cura em função do dano que passou (depende do resultado do golpe), e
   `refazer-o-corpo` fala de **membro recuperado**, que é vocabulário de um sistema que a mesa não tem.
 
-  **E um não tem regra nenhuma:** `maos-sobre-a-multidao` declara `Cura` como parâmetro padrão, sem
-  valor. Quanto ele cura não está escrito em lugar nenhum, e isso é pergunta para o humano, não para
-  quem implementar.
+  **E um não tinha regra nenhuma:** `maos-sobre-a-multidao` declarava `Cura` como parâmetro padrão,
+  sem valor. **DECIDIDO PELO HUMANO em 12/09/2026: 1 PV por nível, a mesma conta do
+  `acelerar-a-cura`.** A razão que ganhou é de mesa e não de planilha: a conta já existe, o jogador já
+  a conhece, e a diferença entre as duas Artes passa a ser o **alcance** (uma pessoa contra uma área)
+  em vez de um número novo para decorar.
+
+  **O RESÍDUO QUE ELE COMPROU JUNTO, registrado para não sumir:** a nota do próprio dado diz "2 de
+  Mana por nível, como toda cura", então a versão em área custa **o mesmo por alvo** que a individual,
+  o que provavelmente é barato demais. Ele escolheu com esse contra na frente. Fica anotado como coisa
+  a olhar quando houver batalha simulada com cura, **não como decisão reaberta**.
 
   **O que isso muda no planejamento:** as quatro somas simples (`mao-firme`, `acelerar-a-cura`,
   `cura-guardada`, e o alvo do `dreno` depois que o dano estiver resolvido) são rodada de código. As
