@@ -4800,6 +4800,84 @@ const SETAS = [
     if (gente.length) void levantar(gente);
   }
 
+  // ------------------------------------------------------ L88 · o detector
+  /**
+   * Quem `porNoMapa` já pintou mas ainda não confirmou com o banco.
+   *
+   * NASCEU DE UMA PERGUNTA ERRADA: a primeira versão media "quanto tempo uma
+   * sobreposição precisa sobreviver" (um relógio, com um número escolhido
+   * sem medir a ida e volta de verdade). A pergunta certa não é QUANTO
+   * TEMPO, é SE A ESCRITA JÁ FOI CONFIRMADA, e essa resposta o próprio
+   * `porNoMapa` já tem: `TOKENS[cid]` guarda a posição otimista NA HORA
+   * (antes de perguntar ao banco), e só o `await gravarToken` sabe quando
+   * ela deixa de ser palpite. Marcar aqui é a mesma régua do L70 outra vez:
+   * a resposta mora no estrangulamento da escrita, não num intervalo
+   * escolhido do lado de fora.
+   */
+  const POSICAO_PENDENTE = new Set<string>();
+  /** Pares (`id menor|id maior`) já anunciados, para não repetir enquanto persistirem. */
+  const OCUPACAO_ANUNCIADA = new Set<string>();
+
+  /**
+   * Os pares ilegalmente sobrepostos AGORA, pela MESMA regra que
+   * `gravarToken` usa para recusar uma escrita (`ocupadoPor`, L70): não uma
+   * régua nova. `ocupadoPor` decide SE alguém está mal (a fonte da verdade,
+   * reaproveitada); o laço aqui só ACHA COM QUEM, para o registro poder
+   * nomear os dois lados, e essa segunda metade não muda a régua, só lê a
+   * mesma distância e o mesmo `podeDividir` que `ocupadoPor` já leu.
+   *
+   * PULA QUEM ESTÁ EM `POSICAO_PENDENTE`, dos dois lados do par: a posição
+   * otimista de uma escrita ainda não confirmada não é fato, é palpite, e
+   * julgar palpite é como o "instante que treme" nascia antes desta versão.
+   */
+  function paresIlegaisAgora(): Map<string, [any, any]> {
+    const pares = new Map<string, [any, any]>();
+    const fila = naFila().filter((c: any) => TOKENS[c.id] && !POSICAO_PENDENTE.has(c.id));
+    const escala = Number(ARENA?.escala_m) || 1;
+    for (const a of fila) {
+      const pa = TOKENS[a.id];
+      if (!ocupadoPor(pa.q, pa.r, a.id)) continue;
+      for (const b of fila) {
+        if (b.id === a.id) continue;
+        const chave = a.id < b.id ? `${a.id}|${b.id}` : `${b.id}|${a.id}`;
+        if (pares.has(chave)) continue;
+        const pb = TOKENS[b.id];
+        if (podeDividir(a, b)) continue;
+        const metros = distanciaHex(pa, pb) * escala;
+        if (metros + 1e-9 < diametroM(a) / 2 + diametroM(b) / 2) pares.set(chave, [a, b]);
+      }
+    }
+    return pares;
+  }
+
+  /**
+   * Confere ocupação a cada repintura, e avisa no registro o que sobrevive
+   * (o que `paresIlegaisAgora` já filtrou por `POSICAO_PENDENTE`).
+   *
+   * Mora aqui, ao lado de `conferirFila`, pela mesma razão dela: o caminho
+   * que fecha uma sobreposição passa por lugares demais para vigiar um a
+   * um (a corrida entre clientes do L70; o retorno PASSIVO do L84: curar,
+   * uma Arte que devolve Vida, o mestre tirando a condição à mão; e os
+   * caminhos que ainda escrevem em `combatentes` por fora do `gravarPeca`
+   * do L87). Todos terminam em `pintarIniciativa()`, então é aqui que dá
+   * para pegar todos de uma vez, sem conhecer nenhuma causa.
+   */
+  function conferirOcupacao() {
+    if (!MESTRE) return;
+    const agora = paresIlegaisAgora();
+    for (const chave of [...OCUPACAO_ANUNCIADA]) {
+      if (!agora.has(chave)) OCUPACAO_ANUNCIADA.delete(chave);
+    }
+    for (const [chave, par] of agora) {
+      if (OCUPACAO_ANUNCIADA.has(chave)) continue;
+      OCUPACAO_ANUNCIADA.add(chave);
+      const pos = TOKENS[par[0].id];
+      void logar(null, `⚑ Ocupação inválida: ${par[0].nome} e ${par[1].nome} dividem `
+        + `${nomeHex(pos.q, pos.r)} sem poder dividir (isto não deveria acontecer: avise `
+        + 'quem mantém o código).', { acao: null });
+    }
+  }
+
   /**
    * Voltou (acordou): volta para a fila com o atraso, contado do agora da cena.
    *
@@ -4879,6 +4957,7 @@ const SETAS = [
     const box = el('gr-ini');
     // Antes de desenhar, porque é o desenho que revela quem voltou.
     conferirFila();
+    conferirOcupacao();
     pintarCarimbo();
     const fila = naFila();
     // L84: "de pé" aqui é "pode agir", não "está em pé de verdade": caído
@@ -7292,7 +7371,7 @@ const SETAS = [
    * Sem `motivo`, o comportamento é o de sempre: "moveu", com o custo normal.
    */
   /**
-   * DEVOLVE `{ error }` desde o L88 (Pendencias.md, achado do Arquiteto,
+   * DEVOLVE `{ error }` desde o L66 (Pendencias.md, achado do Arquiteto,
    * rodada 50): antes disso a função mostrava o motivo da recusa ao
    * USUÁRIO (`uiErro`) e voltava sem dizer nada a QUEM CHAMA, então nenhum
    * chamador conseguia saber se o movimento entrou ou não sem reler
@@ -7317,8 +7396,14 @@ const SETAS = [
     // aparecer por cima já no primeiro desenho.
     const agora = new Date().toISOString();
     TOKENS[cid] = { q, r, em: agora };
+    // L88: marcada PENDENTE enquanto o banco não confirma. `conferirOcupacao`
+    // pula quem está aqui dentro: a posição otimista pode ser exatamente a
+    // que a próxima linha vai desfazer, e sem a marca o detector julgaria uma
+    // sobreposição que nunca chegou a existir de verdade.
+    POSICAO_PENDENTE.add(cid);
     pintarTokens(); pintarLista(); pintarIniciativa(); pintarAlcance();
     const { error } = await gravarToken(cid, q, r, agora);
+    POSICAO_PENDENTE.delete(cid);
     if (error) {
       if (antes) TOKENS[cid] = antes; else delete TOKENS[cid];
       pintarTokens(); pintarLista(); pintarIniciativa(); pintarAlcance();
@@ -7385,7 +7470,7 @@ const SETAS = [
    * "achava" vaga numa casa cheia, só porque a própria queda dela virava
    * desculpa para dividir o que já não era mais dela).
    *
-   * SEGUNDO ACHADO, do Arquiteto (L88): tirar `caido` da MEMÓRIA não bastava
+   * SEGUNDO ACHADO, do Arquiteto (L66): tirar `caido` da MEMÓRIA não bastava
    * só na busca, porque a escrita de verdade (`gravarPeca`) rodava ANTES do
    * `porNoMapa` mover. Se o movimento recusasse (a corrida que o `L70` mede:
    * o hexágono livre foi tomado por outro cliente entre a busca e a
@@ -7398,7 +7483,7 @@ const SETAS = [
    * `c.condicoes` muda na memória antes de mover (para a conferência do
    * PRÓPRIO movimento não se perdoar), e só é GRAVADA depois que `porNoMapa`
    * confirma que entrou. Isso só é possível porque `porNoMapa` agora devolve
-   * `{ error }` (também L88): antes ele mostrava o erro ao usuário e voltava
+   * `{ error }` (também L66): antes ele mostrava o erro ao usuário e voltava
    * void, sem dizer nada a quem chama.
    */
   async function levantarDoChao(cid: string) {

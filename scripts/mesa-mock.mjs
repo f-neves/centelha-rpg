@@ -115,6 +115,10 @@ const CAIDOFILA = P.get('cena') === 'caidofila';
 // `if (LEVANTAR)` mais abaixo.
 const LEVANTAR = P.get('cena') === 'levantar';
 
+// A CENA DO DETECTOR DE OCUPAÇÃO: `?cena=ocupacaodetector` (L88, rodada 52).
+// Ver o bloco `if (OCUPACAODETECTOR)` mais abaixo.
+const OCUPACAODETECTOR = P.get('cena') === 'ocupacaodetector';
+
 // A CENA DO INTERPOR: `?cena=interpor[&fase=preparo|recuperacao]` (L34 §6,
 // rodada 15/16/17).
 //
@@ -129,10 +133,10 @@ const INTERPOR = P.get('cena') === 'interpor';
 const INTERPOR_FASE = P.get('fase') === 'recuperacao' ? 'recuperacao' : 'preparo';
 
 const COLS = ESPELHO ? ESPELHO.tab.cols : CAIDO ? 14 : BANDEIRAS ? 10 : CORPOACORPO ? 20
-  : FORADAVEZ ? 16 : OCUPACAO ? 16 : CAIDOFILA ? 12 : LEVANTAR ? 16
+  : FORADAVEZ ? 16 : OCUPACAO ? 16 : CAIDOFILA ? 12 : LEVANTAR ? 16 : OCUPACAODETECTOR ? 16
   : INTERPOR ? 10 : parseInt(P.get('cols') || '24', 10);
 const ROWS = ESPELHO ? ESPELHO.tab.rows : CAIDO ? 8 : BANDEIRAS ? 8 : CORPOACORPO ? 18
-  : FORADAVEZ ? 12 : OCUPACAO ? 12 : CAIDOFILA ? 8 : LEVANTAR ? 10
+  : FORADAVEZ ? 12 : OCUPACAO ? 12 : CAIDOFILA ? 8 : LEVANTAR ? 10 : OCUPACAODETECTOR ? 10
   : INTERPOR ? 8 : parseInt(P.get('rows') || '16', 10);
 const NEVOA = P.get('nevoa') === '1';
 /**
@@ -973,6 +977,58 @@ if (LEVANTAR) {
 }
 
 /**
+ * A CENA DO DETECTOR DE OCUPAÇÃO `?cena=ocupacaodetector` (Pendencias.md
+ * L88, rodada 52): `conferirOcupacao` (`grid.astro`), o mestre conferindo o
+ * RESULTADO a cada repintura em vez de confiar só na escrita.
+ *
+ *   `pa` (PV 0, `noChao` pela Vida, sem condição) + `pb` (de pé) dividem um
+ *     hexágono: LEGAL hoje (`podeDividir` perdoa por `pa` estar no chão). O
+ *     positivo do L88: curar `pa` fecha a desculpa e ninguém desloca nada
+ *     (o retorno PASSIVO do L84), e o detector tem de gritar.
+ *   `mv` (só na lista, fora do mapa) + `bq` (de pé em `q:6,r:5`): o negativo
+ *     do "caso que treme" (`ATRASO_CONFERENCIA_OCUPACAO`, `grid.astro`)
+ *     arrastar `mv` para cima de `bq` é recusado por `gravarToken` (L70), mas
+ *     passa por um instante otimista em que `TOKENS` tem os dois no mesmo
+ *     lugar. O detector NÃO pode gritar por causa disso.
+ */
+if (OCUPACAODETECTOR) {
+  COMBS.length = 0; TOKENS.length = 0;
+  const posAB = offsetParaAxial(3, 3);
+  COMBS.push({
+    id: 'pa', encontro_id: ENC, nome: 'Peça pa',
+    tipo: 'pc', grupo: 'aliado', monstro_id: null, personagem_id: null,
+    pv_max: 20, pv_atual: 0, mana_max: null, mana_atual: null,
+    tick: 0, iniciativa: 20, acao: {}, dados: {},
+    condicoes: [], ativo: true, oculto: false, imagem: null, retrato: null,
+  });
+  COMBS.push({
+    id: 'pb', encontro_id: ENC, nome: 'Peça pb',
+    tipo: 'pc', grupo: 'aliado', monstro_id: null, personagem_id: null,
+    pv_max: 20, pv_atual: 20, mana_max: null, mana_atual: null,
+    tick: 0, iniciativa: 19, acao: {}, dados: {},
+    condicoes: [], ativo: true, oculto: false, imagem: null, retrato: null,
+  });
+  TOKENS.push({ arena_id: ARENA, combatente_id: 'pa', ...posAB, movido_em: '2026-01-01T00:00:00Z' });
+  TOKENS.push({ arena_id: ARENA, combatente_id: 'pb', ...posAB, movido_em: '2026-01-01T00:00:00Z' });
+
+  COMBS.push({
+    id: 'mv', encontro_id: ENC, nome: 'Peça mv',
+    tipo: 'pc', grupo: 'aliado', monstro_id: null, personagem_id: null,
+    pv_max: 999, pv_atual: 999, mana_max: null, mana_atual: null,
+    tick: 0, iniciativa: 10, acao: {}, dados: {},
+    condicoes: [], ativo: true, oculto: false, imagem: null, retrato: null,
+  });
+  COMBS.push({
+    id: 'bq', encontro_id: ENC, nome: 'Peça bq',
+    tipo: 'pc', grupo: 'aliado', monstro_id: null, personagem_id: null,
+    pv_max: 999, pv_atual: 999, mana_max: null, mana_atual: null,
+    tick: 0, iniciativa: 9, acao: {}, dados: {},
+    condicoes: [], ativo: true, oculto: false, imagem: null, retrato: null,
+  });
+  TOKENS.push({ arena_id: ARENA, combatente_id: 'bq', q: 6, r: 5, movido_em: '2026-01-01T00:00:00Z' });
+}
+
+/**
  * A CENA DO INTERPOR `?cena=interpor[&fase=preparo|recuperacao]`: o golpe
  * adiado que fica no ar, e um terceiro token pronto para cobri-lo (L34 §6,
  * decidido em 07/09/2026, implementado nas rodadas 15/16/17: a régua, a
@@ -1251,7 +1307,8 @@ const TABELAS = {
   arena_visao: ARENAS,
   // A CENA DO CAÍDO começa no Tick 1: o teste avança um e o golpe vence no 2.
   encontros: [{ id: ENC, mesa_id: MESA, ativo: true,
-    tick_atual: CAIDO ? 1 : FORADAVEZ ? 10 : OCUPACAO ? 10 : CAIDOFILA ? 0 : LEVANTAR ? 0 : TICK_CENA,
+    tick_atual: CAIDO ? 1 : FORADAVEZ ? 10 : OCUPACAO ? 10 : CAIDOFILA ? 0 : LEVANTAR ? 0
+      : OCUPACAODETECTOR ? 0 : TICK_CENA,
     rodada: 1, estado: null, ordem: 0, criado_em: '2026-01-01T00:00:00Z', nome: 'Cena' }],
   // `encontro_visao` é COMPUTADA, e por projeção de coluna. Ver `COLUNAS` abaixo.
   encontro_visao: [],
