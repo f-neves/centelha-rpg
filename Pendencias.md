@@ -6162,9 +6162,40 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   escrever **sem** avisar de propósito. → `L88` (que depende disto), → `L70` (o mesmo conserto no
   outro eixo), → `L66`.
 
-- [ ] **L85 · [MEDIDO pelo Arquiteto em 12/09/2026, saindo do `L83`, onde estava como pergunta] O
+- [x] **L85 · [FECHADO em 12/09/2026, rodada 54, veredito PROCEDE SEM RESSALVA em `54-revisora.md`,
+  sha `873b772`. MEDIDO pelo Arquiteto, saindo do `L83`, onde estava como pergunta] O
   empurrão das Artes não implementa a régua que os próprios dados definem, e a diferença chega a
   7,8× no caso leve e a mover o que a Arte não consegue arremessar.**
+
+  **COMO FECHOU.** Três commits de código: `6e65660` tira a conta de erguer/arremessar de dentro de
+  `renderForca()` para `src/lib/forca-empurrao.ts`, compartilhado com a ficha; `4b2d875` põe o
+  `deslocar` do Grid na régua de verdade, com os dois tetos e a correção do dado; `8c63698` os
+  documentos. O teste é `scripts/test-l85-forca-empurrao.mjs`, 27 asserções, com asserção PRÓPRIA
+  para cada teto, para o peso 0 dar número finito (a régua divide por `peso^0,4`, e sem guarda um
+  corpo sem massa voa infinito) e para a implementação ser única.
+
+  **O que a Revisora falsificou, e é o que eu tinha pedido porque a justificativa era minha.** O
+  `× 4` do FAA se sustenta por simetria, não por derivação, então ela calculou a tabela real dos
+  seis níveis em vez de conferir a prosa: FAH de 5 a 40 (razão 16,67×), FAA de 4 a 24 (a 3 kg, de
+  11,9 m a 41,7 m, razão 3,51×, que é o `6^0,7` do expoente). A 70 kg a progressão é monotônica e
+  sem explosão, zero nos níveis 1 e 2 (não arremessa aquele peso) e de 7,3 m a 11,8 m do 3 ao 6. O
+  `25,7 m` do aviso ela reproduziu exato. Nenhuma fragilidade.
+
+  **RESÍDUO CONHECIDO, e fica registrado aqui porque é onde quem mexer na regra vai olhar.** A
+  extração deixou DUAS constantes em `ficha-engine.ts` de propósito, `arremessoApice` e
+  `arremessoTeto`, porque lá elas desenham os sub-tetos para o jogador e não recalculam a conta. A
+  consequência é que `maxKg * F.arremessoTeto` existe em dois arquivos: dentro de
+  `alcanceArremesso` e no desenho da ficha. Hoje é inofensivo, porque os dois leem a MESMA
+  constante. **Deixa de ser no dia em que o teto de arremesso parar de ser uma fração fixa do que
+  se ergue**: quem mudar a regra mexe na régua e a ficha continua desenhando a antiga, calada. É a
+  forma "duas implementações da mesma pergunta" em miniatura, e o motivo de não ter virado item é
+  que ela só materializa com uma mudança de regra que ainda não foi pedida.
+
+  **Uma imprecisão de prosa, achada pela Revisora e NÃO corrigida, de propósito.** O
+  `progresso-54-l85.md` diz que o grep conferiu "as sete" constantes; ele confere cinco, e as
+  outras duas ficam em `ficha-engine.ts` por razão legítima (o resíduo acima). O progresso é
+  registro congelado de uma rodada fechada, e o gesto desta casa é não reescrever registro: a
+  correção mora no veredito, `873b772`, ao lado do número errado e para sempre.
 
   **O `CLAUDE.md` manda resolver a favor do JSON quando os dois discordam**, e aqui eles discordam em
   três eixos separados. Os dados especificam a regra por inteiro, nos `parametros` do
