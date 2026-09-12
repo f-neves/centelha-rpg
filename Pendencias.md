@@ -5814,9 +5814,46 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **só a tela de quem agiu fica desatualizada**, que é o avesso do que se esperaria.
 
   **O que isto ensina sobre a decisão do `L70`, e vale mais que os dois defeitos:** a regra passou a
-  morar na gravação de POSIÇÃO, e aqui há duas gravações de CONDIÇÃO que não passam por porta nenhuma.
+  morar na gravação de POSIÇÃO, e aqui há gravações de CONDIÇÃO que não passam por porta nenhuma.
   Condição é o outro eixo que decide ocupação (é ela que põe alguém no chão), então "a regra mora na
   escrita" só vale inteiro quando as duas escritas têm porta. → `L84`, → `L70`.
+
+  ---
+
+  **VARRIDO PELO ARQUITETO em 12/09/2026, e o item cresceu: não são duas escritas distraídas, é que a
+  aba Grid NÃO TEM ESTRANGULAMENTO para escrita de condição, e a aba Combate tem.**
+
+  **O contraste é a melhor parte, porque os dois já existem no produto, escritos por mãos diferentes,
+  e um dos dois já explicou por escrito por que está certo.**
+  `async function upComb` (`src/pages/mesa/combate.astro:593`) é o escritor único da aba Combate
+  e toca a campainha ele
+  mesmo, com o comentário dizendo o porquê: todo dano, toda condição e todo tick daquela aba passam
+  por ali, e é o lugar de tocar **uma vez só** em vez de espalhar o aviso por vinte chamadas. O
+  equivalente do Grid, `const gravarPeca` (`src/pages/mesa/grid.astro:2656`), é uma escrita crua: não
+  repinta e **não toca campainha nenhuma**. Cada um dos nove chamadores decide sozinho, que é
+  exatamente a forma do `L66` e do `L70` no eixo da condição.
+
+  **E o módulo das Artes nem passa por ele.** As três escritas de condição de lá vão direto pela
+  fachada: `condicoes: [...atuais, nova]` (`src/lib/artes-grid-mesa.ts:1456`, o `porCondicao`),
+  `condicoes: restam` (`src/lib/artes-grid-mesa.ts:1466`, o `tirarCondicao`) e
+  `condicoes: restam` (`src/lib/artes-grid-mesa.ts:1842`, a varredura de prazo). **O eixo 1 da rodada
+  50 fechou a fachada para POSIÇÃO e deixou a de CONDIÇÃO aberta, no mesmo arquivo, pelo mesmo
+  `ctx.SB`.** A medida que a Executora trouxe e que ficou guardada (`ctx.SB` aparece 15 vezes, sendo
+  **9 em `combatentes`**) era o tamanho disto, e ninguém tinha lido assim: daquelas nove, **três
+  escrevem `condicoes` e duas escrevem `pv_atual`**, que são precisamente os dois campos de que
+  `noChao` depende.
+
+  **Um chamador provadamente mudo, além dos da Revisora:**
+  `condicoes: novas` (`src/pages/mesa/grid.astro:6306`), a condição automática de investida,
+  cuja função **termina na linha seguinte**. Grava e não avisa ninguém.
+
+  **O DESENHO PARA A RODADA 51, e ele tem precedente no próprio repositório com a justificativa já
+  escrita:** `gravarPeca` vira o estrangulamento que toca a campainha, como `upComb` já é, e as
+  Artes passam a escrever condição por ele em vez de pela fachada crua. Duas coisas a medir ANTES de
+  escrever, e nenhuma é opinião: **quantos dos nove chamadores já tocam a campainha logo depois** (o
+  risco é tocar duas vezes, provavelmente inócuo mas não medido), e se algum chamador precisa
+  escrever **sem** avisar de propósito. → `L88` (que depende disto), → `L70` (o mesmo conserto no
+  outro eixo), → `L66`.
 
 - [ ] **L85 · [MEDIDO pelo Arquiteto em 12/09/2026, saindo do `L83`, onde estava como pergunta] O
   empurrão das Artes não implementa a régua que os próprios dados definem, e a diferença chega a
