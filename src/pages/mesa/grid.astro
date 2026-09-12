@@ -2657,10 +2657,27 @@ const SETAS = [
     ? SB.from('combatentes').update(campos).eq('id', cid)
     : SB.rpc('jogador_muda_peca', { p_comb: cid, p_dados: campos }));
 
-  const gravarToken = (cid: string, q: number, r: number, em: string) => (MESTRE
-    ? SB.from('arena_tokens').upsert({ arena_id: ARENA.id, combatente_id: cid, q, r, movido_em: em },
-        { onConflict: 'arena_id,combatente_id' })
-    : SB.rpc('jogador_mover', { p_arena: ARENA.id, p_comb: cid, p_q: q, p_r: r }));
+  /**
+   * L70: a conferência de ocupação mora AQUI, não em cada chamador. Nenhum dos
+   * dois backends confere (o `upsert` direto do mestre não tem trigger nenhum;
+   * a RPC `jogador_mover` só confere permissão, nunca posição), então sem esta
+   * checagem a ocupação seria uma convenção que o servidor não garante e que
+   * qualquer chamador novo poderia esquecer de pedir.
+   *
+   * Recusa COM MOTIVO (`{ error: { message } }`, a mesma forma de um erro de
+   * rede) em vez de calada: quem chama já trata `error` (`porNoMapa` desfaz o
+   * otimista e mostra `uiErro`), então a recusa passa a ter o mesmo caminho de
+   * um erro de verdade, e não um `return` que ninguém vê.
+   */
+  const gravarToken = (cid: string, q: number, r: number, em: string) => {
+    if (ocupadoPor(q, r, cid)) {
+      return Promise.resolve({ data: null, error: { message: `${nomeHex(q, r)} já está ocupada.` } });
+    }
+    return MESTRE
+      ? SB.from('arena_tokens').upsert({ arena_id: ARENA.id, combatente_id: cid, q, r, movido_em: em },
+          { onConflict: 'arena_id,combatente_id' })
+      : SB.rpc('jogador_mover', { p_arena: ARENA.id, p_comb: cid, p_q: q, p_r: r });
+  };
 
   const apagarToken = (cid: string) => (MESTRE
     ? SB.from('arena_tokens').delete().eq('arena_id', ARENA.id).eq('combatente_id', cid)
@@ -7189,7 +7206,10 @@ const SETAS = [
     cid: string, q: number, r: number, registrar = true,
     motivo?: { verbo: 'corrigir' | 'forahora' },
   ) {
-    if (ocupadoPor(q, r, cid)) return;
+    // A ocupação não se confere mais aqui (L70): `gravarToken` é quem confere,
+    // e devolve o motivo em `error` como um erro de rede qualquer. O bloco
+    // logo abaixo já desfazia o otimista e mostrava `uiErro` para erro de
+    // rede; agora é o MESMO bloco que mostra "já está ocupada".
     const antes = TOKENS[cid] ? { ...TOKENS[cid] } : null;
     if (antes && antes.q === q && antes.r === r) return;   // largou onde já estava
     // Otimista: o token pula na hora. O carimbo entra junto porque é ele que

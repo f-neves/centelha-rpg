@@ -98,6 +98,7 @@ jobs:
           - test-interpor-mesa
           - test-l67-corpoacorpo-mesa
           - test-l68-foradavez-mesa
+          - test-l70-ocupacao-mesa
           - test-l77-alcancecentro-mesa
           - test-grid-simultaneo
           - test-etapa0

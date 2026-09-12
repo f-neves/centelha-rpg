@@ -79,3 +79,56 @@ no instante em que ele é encontrado e classificado, hora lida da máquina
   Caminho 4 o único que hoje não confere ocupação NENHUMA e o Caminho 3 o único
   com recusa em silêncio (padrão L66). Trazendo a lista ao Arquiteto e parando
   aqui, sem escrever código nenhum, como pedido.
+
+- 22:22 · Arquiteto respondeu: os itens 6 e 7 do levantamento não são caminhos
+  separados, são os DOIS BACKENDS de `gravarToken`; conserto num só
+  estrangulamento (`gravarToken`) cobre os sete lugares, sem tocar nos nove
+  chamadores de `porNoMapa`. Também trouxe o achado que meu levantamento não
+  cobriu: DIVIDIR HEXÁGONO É LEGAL (`podeDividir`, miúdo com miúdo ou alguém no
+  chão), então a checagem certa é `ocupadoPor` inteiro, não "hexágono livre?".
+  Trava no banco fica para depois (dado do cliente: PV, condições, porte),
+  decisão do humano, não desta rodada. Escopo fechado: só `gravarToken`.
+
+- 22:30 · CÓDIGO ESCRITO. `gravarToken` (`grid.astro:2660`) agora confere
+  `ocupadoPor(q, r, cid)` primeiro e devolve `{ data: null, error: { message:
+  \`${nomeHex(q, r)} já está ocupada.\` } }` sem tocar em nenhum backend quando
+  ocupado. `porNoMapa` (`:7205`) perdeu a própria checagem de `ocupadoPor`
+  (comentário no lugar explicando por quê): o bloco de `error` que já existia
+  (desfaz o otimista, mostra `uiErro`) passou a ser o MESMO caminho para a
+  recusa por ocupação. Não toquei nos nove chamadores nem no `prosseguirComComando`
+  (a checagem duplicada dele continua, redundante mas inofensiva; fica para
+  quem decidir simplificá-la, fora do escopo desta rodada).
+
+- 22:35 · CENA E TESTE NOVOS. `?cena=ocupacao` em `scripts/mesa-mock.mjs`: `bq`
+  parada em `q:6,r:5` (Médio, de pé) e `mv` só na LISTA (fora do mapa), de
+  propósito: soltar um token que JÁ ESTÁ no mapa em cima de outro é lido como
+  ATAQUE (`grid.astro:6761`, achado ao vivo: minha primeira tentativa arrastando
+  `mv` já posicionada abriu `decl-dlg`, não a recusa), e só uma peça ENTRANDO
+  pela lista cai direto em `porNoMapa`. `scripts/test-l70-ocupacao-mesa.mjs`:
+  solta `mv` em cima de `bq` (recusa, com `.ui-dlg.perigo` e mensagem "I6 já
+  está ocupada", posição continua fora do mapa, nada logado) e depois numa casa
+  vazia (entra normalmente, log "entrou em"). Registrado em `smoke`
+  (`package.json`) e na matriz do CI (`.github/workflows/validate.yml`).
+
+  QUATRO CONTROLES: (1) o teste passa com o fix, verde; (2) `test-l67`,
+  `test-l68`, `test-l77` e `test-grid-simultaneo` (79 asserções) continuam
+  verdes, os nove chamadores de `porNoMapa` e o movimento automático do Tick
+  sem regressão; (3) NEGATIVO: `git stash` só de `grid.astro` (o código, não a
+  cena) e rodei o teste novo contra o código VELHO: a posição não mudou e nada
+  foi logado (a recusa aconteceu), mas a caixa de erro NÃO abriu: o teste falhou
+  exatamente nessa asserção, provando que ele pega recusa muda e não passaria
+  se o L70 virasse L66; `git stash pop` devolveu o fix. (4) reconferido o teste
+  novo verde de novo depois do pop.
+
+- 22:39 · BLOQUEIO, PARANDO ANTES DE COMMITAR. `npm run validate` (e portanto o
+  gancho de pre-commit) está VERMELHO: meu `gravarToken` cresceu +25 linhas
+  líquidas perto do topo do script de `grid.astro` (comentário + refatoração), e
+  isso desloca TODA citação de linha abaixo dele. `test-procedencia.mjs` achou
+  66 âncoras envelhecidas: 65 apontando para `grid.astro` (`ESTADO.md` 6,
+  `Pendencias.md` 34, `CONJURACAO.md` 4, `Grid_Mobile.md` 5, `CATALOGO.md` 2,
+  `VOZ.md` 8, `CONTEXTO.md` 2, `Auditoria_Tecnica.md` 1) e 1 para
+  `mesa-mock.mjs` (`Pendencias.md:3783`, da minha própria cena nova). NÃO toquei
+  em nenhum desses documentos: não são meu território, e a escala (66, contra 1
+  ou 2 nas rodadas anteriores) é grande demais para eu decidir sozinha o que
+  fazer. Todo o código está no disco, testado e funcionando; só falta poder
+  commitar. Trazendo ao Arquiteto antes de qualquer coisa.

@@ -103,6 +103,10 @@ const CORPOACORPO = P.get('cena') === 'corpoacorpo';
 // 10/09/2026). Ver o bloco `if (FORADAVEZ)` mais abaixo.
 const FORADAVEZ = P.get('cena') === 'foradavez';
 
+// A CENA DA OCUPAÇÃO: `?cena=ocupacao` (L70, rodada 49). Ver o bloco
+// `if (OCUPACAO)` mais abaixo.
+const OCUPACAO = P.get('cena') === 'ocupacao';
+
 // A CENA DO INTERPOR: `?cena=interpor[&fase=preparo|recuperacao]` (L34 §6,
 // rodada 15/16/17).
 //
@@ -117,9 +121,9 @@ const INTERPOR = P.get('cena') === 'interpor';
 const INTERPOR_FASE = P.get('fase') === 'recuperacao' ? 'recuperacao' : 'preparo';
 
 const COLS = ESPELHO ? ESPELHO.tab.cols : CAIDO ? 14 : BANDEIRAS ? 10 : CORPOACORPO ? 20
-  : FORADAVEZ ? 16 : INTERPOR ? 10 : parseInt(P.get('cols') || '24', 10);
+  : FORADAVEZ ? 16 : OCUPACAO ? 16 : INTERPOR ? 10 : parseInt(P.get('cols') || '24', 10);
 const ROWS = ESPELHO ? ESPELHO.tab.rows : CAIDO ? 8 : BANDEIRAS ? 8 : CORPOACORPO ? 18
-  : FORADAVEZ ? 12 : INTERPOR ? 8 : parseInt(P.get('rows') || '16', 10);
+  : FORADAVEZ ? 12 : OCUPACAO ? 12 : INTERPOR ? 8 : parseInt(P.get('rows') || '16', 10);
 const NEVOA = P.get('nevoa') === '1';
 /**
  * `?sombra=1`: DUAS zonas que não acendem o chão, para a névoa poder escondê-las.
@@ -814,6 +818,48 @@ if (FORADAVEZ) {
 }
 
 /**
+ * A CENA DA OCUPAÇÃO `?cena=ocupacao` (Pendencias.md L70, rodada 49): arrastar
+ * uma peça para uma casa ocupada tem de recusar, e a recusa tem de dizer o
+ * porquê (`gravarToken`, `grid.astro:2660`, é quem confere `ocupadoPor` agora,
+ * não mais `porNoMapa` calado).
+ *
+ * O ARRASTO VEM DA LISTA, E NÃO DO MAPA, de propósito: soltar um token que JÁ
+ * ESTÁ no mapa em cima de outro é lido como ATAQUE (`grid.astro:6761`, "soltar
+ * em cima de alguém é atacar" — o `if (outro && eu && TOKENS[id])` exige a
+ * peça arrastada JÁ estar em `TOKENS`), então esse drop nunca chegaria a
+ * `porNoMapa`. Uma peça que ENTRA no mapa pela lista não passa por ali
+ * (`deOnde === 'lista'`, e o bloco do ataque exige `'mapa'`), e cai direto em
+ * `porNoMapa` — o mesmo caminho de sempre para "pôr uma peça nova em cena".
+ *
+ *   `mv` · só em `COMBS`, sem entrada em `TOKENS`: nasce na LISTA lateral
+ *     (`.gr-ficha[data-c="mv"]`), fora do mapa.
+ *   `bq` · em `q:6,r:5`, de pé (`pv_atual: 999`, sem condição), porte Médio
+ *     (padrão de PC/NPC de cena, `diametroM`, `grid.astro:3358`): dois Médios
+ *     não dividem casa (`podeDividir`, `grid.astro:7130`), então `mv` solta em
+ *     `q:6,r:5` tem de ser recusada.
+ *   `q:9,r:5` fica livre de propósito: é o destino do controle positivo (o
+ *     mesmo arrasto, para uma casa vazia, tem de continuar funcionando).
+ */
+if (OCUPACAO) {
+  COMBS.length = 0; TOKENS.length = 0;
+  COMBS.push({
+    id: 'mv', encontro_id: ENC, nome: 'Peça mv',
+    tipo: 'pc', grupo: 'aliado', monstro_id: null, personagem_id: null,
+    pv_max: 999, pv_atual: 999, mana_max: null, mana_atual: null,
+    tick: 0, iniciativa: 20, acao: {}, dados: {},
+    condicoes: [], ativo: true, oculto: false, imagem: null, retrato: null,
+  });
+  COMBS.push({
+    id: 'bq', encontro_id: ENC, nome: 'Peça bq',
+    tipo: 'pc', grupo: 'aliado', monstro_id: null, personagem_id: null,
+    pv_max: 999, pv_atual: 999, mana_max: null, mana_atual: null,
+    tick: 0, iniciativa: 19, acao: {}, dados: {},
+    condicoes: [], ativo: true, oculto: false, imagem: null, retrato: null,
+  });
+  TOKENS.push({ arena_id: ARENA, combatente_id: 'bq', q: 6, r: 5, movido_em: '2026-01-01T00:00:00Z' });
+}
+
+/**
  * A CENA DO INTERPOR `?cena=interpor[&fase=preparo|recuperacao]`: o golpe
  * adiado que fica no ar, e um terceiro token pronto para cobri-lo (L34 §6,
  * decidido em 07/09/2026, implementado nas rodadas 15/16/17: a régua, a
@@ -1091,7 +1137,7 @@ const TABELAS = {
   mesa_arenas: ARENAS,
   arena_visao: ARENAS,
   // A CENA DO CAÍDO começa no Tick 1: o teste avança um e o golpe vence no 2.
-  encontros: [{ id: ENC, mesa_id: MESA, ativo: true, tick_atual: CAIDO ? 1 : FORADAVEZ ? 10 : TICK_CENA,
+  encontros: [{ id: ENC, mesa_id: MESA, ativo: true, tick_atual: CAIDO ? 1 : FORADAVEZ ? 10 : OCUPACAO ? 10 : TICK_CENA,
     rodada: 1, estado: null, ordem: 0, criado_em: '2026-01-01T00:00:00Z', nome: 'Cena' }],
   // `encontro_visao` é COMPUTADA, e por projeção de coluna. Ver `COLUNAS` abaixo.
   encontro_visao: [],
