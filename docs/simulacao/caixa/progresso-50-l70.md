@@ -206,3 +206,44 @@ que ela fecha, hora lida da máquina (`date +%H:%M`).
   precisando virar duas. 5 ficam, 21 migram, 4 pedem decisão, 1 função
   estrutural se parte em duas. Trazendo antes de escrever qualquer linha do
   eixo 2, como pedido.
+- 01:11 · REAPONTAMENTO FEITO: 112 citações movidas em 12 documentos, 22
+  puladas por `(citação histórica)`, portão fechado em 267 citações
+  conferidas. Uma sobrou vermelha (a âncora do Arquiteto em
+  `const destino = afastar`, que EU reescrevi em vez de só deslocar, movendo
+  a citação para fora do hunk): ele trocou pela linha do orçamento
+  (`(nivel * 200)`), a âncora certa desde o começo. Antes de commitar, corrigi
+  o comentário que dizia "queda adiada para a rodada 51" (não está mais):
+  reescrevi o mesmo parágrafo, mesma contagem de linhas (7 antes, 7 depois,
+  conferido por leitura direta), então nada mais deslocou. COMMIT DO EIXO 1
+  FEITO: `ca6d567`, pathspec em `grid.astro`, `artes-grid-mesa.ts`,
+  `test-l70-empurrao.mjs`, `package.json` e este arquivo, nada dos 8
+  documentos do Arquiteto. `npm run validate` verde antes de commitar. Push
+  confirmado (`231fd08..ca6d567`), `git rev-list --count origin/main..HEAD` =
+  0.
+
+  CORREÇÃO IMPORTANTE PARA O AVISO: a regra do levantar fecha só o caminho
+  DELIBERADO (o prono decide levantar com alguém em cima, isso é
+  deslocamento, isso grava). NÃO fecha o caminho PASSIVO: curar, uma Arte que
+  devolve Vida, o mestre tirando a condição à mão, um efeito que vence
+  sozinho, ou a campainha do tempo real trazendo isso pronto de fora
+  (`conferirChao`, o comentário dela mesma lista os cinco): nenhum desses é
+  ação de quem está no chão, nenhum passa por deslocamento, nenhum grava
+  coordenada. Curar um inconsciente debaixo de uma peça de pé pode pôr dois
+  corpos de pé no mesmo hexágono sem NENHUMA escrita de posição. Frase certa
+  para o aviso: "a conferência na gravação fecha o caminho da posição, e a
+  regra do levantar traz o levantar DELIBERADO para dentro desse caminho; o
+  retorno PASSIVO ao estado de pé continua fora, e continua sem regra."
+  Registrando como pendência aberta, não minha para resolver: o Arquiteto
+  leva ao humano junto com a disputa do `L83` (é regra, não código).
+
+  CATALOGO: pedido para acrescentar o achado do travessão em arquivo novo
+  como variante de "o rótulo de escopo do `git diff`", não como forma nova.
+  `docs/simulacao/CATALOGO.md` está modificado na árvore pelo Arquiteto
+  agora, não vou editá-lo por cima. Mandei o texto sugerido por mensagem
+  para ele dobrar no próprio commit dele: "em arquivo novo/não rastreado,
+  `grep` direto no arquivo resolve numa linha, porque `git diff` não vê o que
+  o git ainda não conhece."
+
+  Ainda esperando resposta do Arquiteto sobre a classificação das 30
+  chamadas de `noChao` (as 4 que pedem decisão e o achado estrutural do
+  `noChaoAgora()`) antes de escrever qualquer código do eixo 2.
