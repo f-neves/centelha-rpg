@@ -5493,6 +5493,49 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
     é caminho esquecido · e caminho esquecido **não dá erro**, dá peça em cima de peça numa sessão
     de jogo do humano.
 
+  **RODADA 49 (`5a6bb93`), REVISADA em `d9ed457`: SEGUE, sem CORRIGE.** A conferência passou a morar
+  no `gravarToken` (`src/pages/mesa/grid.astro:2672`), que devolve **por que** recusou em vez de
+  recusar calada, e o `porNoMapa` perdeu a checagem duplicada que tinha. **Um** estrangulamento
+  convertido, de propósito: a fachada das Artes e o `deslocar` ficam para a rodada 50.
+
+  **O MAPA CERTO TEM DOIS ESTRANGULAMENTOS, e não os sete caminhos do levantamento.** Dois dos sete
+  eram os dois **backends** do mesmo escritor (mestre grava direto, jogador vai pelo RPC), e quem
+  passa pelo `gravarToken` já está roteado. O segundo estrangulamento é a **fachada de SB** que a
+  aba entrega ao módulo das Artes, e é por ela que o `deslocar` escapa sem herdar conferência
+  nenhuma.
+
+  **E DIVIDIR HEXÁGONO É LEGAL EM DOIS CASOS**, o que o levantamento não tinha trazido e muda a
+  regra inteira: `podeDividir` (`grid.astro:7130`) diz que **gente miúda cabe junta** (ambos com
+  diâmetro ≤ 0,5 m) e que **quem está no chão virou parte do chão**. A conferência na escrita é o
+  `ocupadoPor` inteiro, com isso dentro · qualquer trava mais simples **proíbe jogo válido**. É por
+  isso que trava no BANCO fica difícil de propósito: uma `unique` em `(arena_id, q, r)` estaria
+  errada, e uma versão fiel precisaria de PV, condições, o catálogo de condições e a tabela de
+  porte, que são dados do cliente. Duplicar a regra em SQL é a forma "duas implementações da mesma
+  pergunta" do `CATALOGO`, e a pergunta sobre o banco só vai ao humano **com medida**, depois que o
+  lado do cliente estiver de pé.
+
+  **O QUE FICOU ABERTO, e foi julgado em vez de descoberto depois:** soltar uma peça em cima de
+  outra é **interceptado como ataque** e não chega na gravação, então esse caminho de interface não
+  exercita a conferência nova (o teste entrou pela lista lateral). **A Revisora rastreou o
+  mecanismo em vez de aceitar a descrição**, e o achado dela é o que salva a rodada de ser um
+  exagero: a interceptação é por ELEMENTO VISUAL, `document.elementFromPoint` seguido de
+  `closest<HTMLElement>` em `grid.astro:6768`, e não por raio de ocupação. **Um arrasto para dentro
+  do corpo de uma criatura grande, mas fora do token visual dela, cai no caminho protegido e é
+  conferido.** O buraco é de desenho de interface, não reabre o `L67`/`L70` para corpos grandes, e
+  por isso é ESCALA e não CORRIGE.
+
+  **Conferi essa afirmação do lado de fora porque ela era a razão de eu NÃO pedir CORRIGE**, e
+  quase a rejeitei por erro meu de busca: procurei `closest('.gr-token')` e achei só dois usos que
+  são guarda do arrasto do mapa. O código real escreve `closest<HTMLElement>('.gr-token')`, com o
+  parâmetro de tipo no meio, e o meu padrão exigia os dois grudados. **A busca foi precisa sobre um
+  recorte mais estreito do que a pergunta**, que é a forma do dia pela enésima vez, agora dentro da
+  conferência de uma conferência.
+
+  **E o comentário do próprio código guarda um acoplamento que vale para a rodada 50:** o gesto de
+  atacar arrastando existe **porque** a casa ocupada recusava o movimento e o arrasto terminava em
+  nada · `grid.astro:6763` (`A casa ocupada recusa o movimento`). Mexer na recusa mexe na razão de
+  ser daquele atalho.
+
 - [x] **L68 · [LEVANTADO em 10/09/2026 numa batalha de mesa, DECIDIDO pelo humano no mesmo dia,
   CONSTRUÍDO na rodada 40 em 11/09/2026] Arrastar uma peça fora do turno dela passava em silêncio,
   e a distinção que resolvia isso já existia no motor, em outro eixo.**
