@@ -243,6 +243,40 @@ conversa, e conversa não sobrevive à próxima sessão, porque a instância nas
 mesmo defeito que este projeto já catalogou · item que vive em mensagem é item meio aberto em
 lugar nenhum.
 
+## 8 · ESCALA e CORRIGE se separam pela PROMESSA, não pela alcançabilidade
+
+**A régua:** um achado que contradiz uma coisa que a rodada AFIRMA é **CORRIGE**, mesmo que você
+não consiga provar que alguém chega lá jogando. Um achado sobre código que a rodada não tocou e
+não prometeu nada sobre é **ESCALA**. A pergunta que decide não é "isto acontece?", é "a rodada
+disse que isto não acontece?".
+
+**O caso que a escreveu, rodada 56:** em `gravarEfeito`, a rede do fim era
+`ATIVOS.push(daLinha((data || [])[0] || linha))` (`src/lib/artes-grid-mesa.ts:1524`
+(citação histórica), o código do dia do achado · o conserto saiu em cima dele, e hoje a linha é
+outra), e o `linha` do `||` é o objeto de ANTES da degradação, que conserva o `nivel_arte` que o cliente computou. Você
+achou isso, leu certo, e classificou como ESCALA por não poder confirmar alcançabilidade em
+produção (dependia da RLS e do retorno do PostgREST, que não se lê do worktree). **A classificação
+certa era CORRIGE**, e o que decide está três linhas acima do defeito, no comentário da própria
+função: a decisão D01 da rodada afirma, por escrito, que a linha em memória reflete o mesmo "não
+sei" do banco, justamente para não criar uma Arte que cura na sessão e para sozinha no primeiro F5.
+O achado falsifica essa frase. Quando a rodada promete a cobertura e o achado mostra um ramo sem
+ela, o conserto é da rodada.
+
+**Por que a alcançabilidade não muda isso, e é o ponto:** o conserto não depende da medida. Usar no
+`||` o mesmo objeto que foi de fato enviado é certo alcançável ou não, e custa uma linha. Esperar a
+medida para decidir se vale consertar é pagar a medida (que aqui exige produção) para economizar o
+conserto (que aqui é uma linha). A alcançabilidade decide PRIORIDADE e decide o enunciado do teste;
+ela não decide de quem é o item.
+
+**O que continua certo no que você fez, e é o mais difícil dos dois:** você disse "não confirmei
+alcançabilidade" em vez de afirmar que acontece. Essa frase é o que deixa o achado utilizável ·
+`docs/simulacao/CATALOGO.md` registra o contrário dela como forma de defeito. A régua acima muda o
+rótulo, nunca a honestidade da medida.
+
+**E a direção vale nos dois sentidos:** se um achado seu não encosta em promessa nenhuma da rodada
+e o conserto é grande, ESCALA continua sendo a resposta certa · a rodada 55 teve dois casos assim,
+e forçá-los para dentro dela teria trocado um item fechado por três abertos.
+
 ## Como isto cresce
 
 Cada rodada de revisão pode render um item novo aqui, do mesmo jeito que

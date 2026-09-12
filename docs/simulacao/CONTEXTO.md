@@ -122,10 +122,16 @@ funcionando na mesa.*
 
 ## A rodada corrente
 
-**Últimas fechadas, as duas em 12/09/2026:** a **54** (`L85`, a régua de empurrão das Artes,
-veredito `873b772`) e a **55** (`L86a`, a Arte `Mão Firme` curando no tabuleiro, código
-`57f6bcb`, veredito `3cc14b5`, fechamento `f0d8e0b`). O que cada uma entregou e o que deixou de
-resíduo mora no `Pendencias.md`, nos itens de mesmo nome.
+**Últimas fechadas, as três em 12/09/2026:** a **54** (`L85`, a régua de empurrão das Artes,
+veredito `873b772`), a **55** (`L86a`, a Arte `Mão Firme` curando no tabuleiro, código `57f6bcb`,
+veredito `3cc14b5`, fechamento `f0d8e0b`) e a **56** (`acelerar-a-cura` curando por nível da Arte,
+código `65d9b7a`, veredito PROCEDE em `b82ae80`, CORRIGE em `3eeb8fd`). O que cada uma entregou e o
+que deixou de resíduo mora no `Pendencias.md`, nos itens de mesmo nome.
+
+**A régua nova que a 56 escreveu, e ela vale para toda revisão daqui pra frente:**
+`CONTRATO-REVISORA.md §8` · **ESCALA e CORRIGE se separam pela PROMESSA, não pela
+alcançabilidade.** Achado que contradiz o que a rodada afirma é conserto da rodada, mesmo sem prova
+de que alguém chega lá jogando; achado sobre código que a rodada não tocou nem prometeu é ESCALA.
 
 **A próxima é o `L86b`:** as outras três Artes de cura, e nenhuma delas é só fórmula.
 `acelerar-a-cura` é a única pronta para código, com a conta confirmada e a migração 38 escrita;
@@ -136,18 +142,16 @@ nem para cura.
 
 ### O PRÓXIMO PASSO, em uma linha
 
-**Abrir a rodada 56 no `L86b`, começando pelo `acelerar-a-cura`**, que é o único dos três com
-caminho de disparo e com a conta definida. As duas perguntas que travavam o item foram respondidas
-em 12/09/2026 (nível é o da Arte de quem conjura; a cura em área não divide), as duas entraram no
-`src/data/efeitos.json`, e `supabase/migracao-38.sql` está escrito e carimbado, esperando a mão do
-humano no SQL Editor. → `Pendencias.md` **L86**.
+**É do humano, e não de engenharia: rodar a migração 38 no SQL Editor** (a fila é **33, 37 e 38**).
+Sem ela o `acelerar-a-cura` está pronto no código e não cura nada na mesa · degrada de propósito,
+avisa uma vez por turno que a linha não guarda o nível, e nada regride.
 
-O que a rodada 56 tem de fazer, pela ordem: gravar `nivel_arte` em `gravarEfeito`, degradando sem
-quebrar enquanto a migração não tiver rodado; ler a coluna no laço por-turno, com nulo significando
-"não sei" e nunca 1; e o teto, que já mora em `curarPv`. O `maos-sobre-a-multidao` **não** entra:
-ele depende de um caminho de resolução para `forma: "zona"`, que não existe nem para dano nem para
-cura, e isso é desenho antes de código. O `cura-guardada` continua sem gatilho `armadilha` e sem a
-definição de "1 PV por ponto".
+**Nenhuma rodada nova abre por iniciativa.** O que sobrou do `L86b` não é código: o
+`maos-sobre-a-multidao` depende de um caminho de resolução para `forma: "zona"`, que não existe nem
+para dano nem para cura, e o `cura-guardada` depende de um gatilho `armadilha` que o motor não tem,
+de uma ação de jogo que não existe, e da definição de "1 PV por ponto", que não está escrita em
+lugar nenhum. Os três são desenho de regra antes de qualquer linha, e a fila de qual vem primeiro é
+decisão da mesa.
 
 ## O congelamento
 

@@ -6200,12 +6200,41 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **O `L86` NÃO fecha**: o `L86b` continua aberto com as outras três Artes, e o resíduo abaixo
   mantém o próprio `mao-firme` fora de "pronto".
 
-  **ESTADO DO `L86b` EM 12/09/2026, e ele já não é "as outras três" por igual.** O
-  `acelerar-a-cura` tem código empurrado (rodada 56, `65d9b7a`) e **espera o veredito da Revisora**:
-  ele cura pelo `nivel_arte` da linha, a régua ganhou o campo estruturado `porNivel` (gêmeo de
+  **A RODADA 56 FECHOU em 12/09/2026, veredito PROCEDE em `56-revisora.md` (sha `b82ae80`,
+  conferido ancestral de `origin/main` antes de eu fechar nada), código em `65d9b7a` e o CORRIGE em
+  `3eeb8fd`.** O `acelerar-a-cura` cura pelo `nivel_arte` da linha, e **o `L86b` não fecha**: os
+  outros dois continuam sem caminho, e nada disto chega à mesa antes de a migração 38 rodar.
+
+  **O CORRIGE, e ele é o que a rodada quase entregou errado.** A Revisora achou que a rede do fim de
+  `gravarEfeito` caía em `linha`, o objeto de ANTES da degradação, que conserva o `nivel_arte` que o
+  cliente calculou: com o insert degradado passando sem devolver a linha, a memória "lembrava" um
+  número que a coluna recusou, e a Arte curaria na sessão corrente para parar sozinha no primeiro F5.
+  O conserto é uma variável (`enviada`) que guarda o objeto de fato enviado, e hoje a rede é
+  `ATIVOS.push(daLinha((data || [])[0] || enviada));` (`src/lib/artes-grid-mesa.ts:1529`).
+
+  **Ela classificou como ESCALA por não poder provar alcançabilidade em produção, e eu reclassifiquei
+  como CORRIGE:** o comentário três linhas acima do defeito AFIRMAVA a garantia que o achado
+  falsifica (a decisão D01 da própria rodada). **Promessa da rodada, e não alcançabilidade, é o que
+  decide de quem é o item**, porque o conserto não dependia da medida: uma linha, certa de qualquer
+  jeito. A régua virou `CONTRATO-REVISORA.md §8`, com a direção contrária junto. A alcançabilidade
+  continua **não medida**, e medir exigiria ver a RLS de produção.
+
+  **Provado com controle negativo de verdade:** a asserção nova (cena 4 do
+  `test-l86b-acelerar-cura.mjs`, 27 asserções) ficou VERMELHA contra o código de antes, e vermelha
+  **da forma que o defeito prevê** · a linha em memória trazia `nivel_arte` 3 e a Arte tentava curar.
+  O `stash` foi escopado no arquivo dela, com documento meu sujo na árvore ao lado, intocado.
+
+  **E o `reapontar.mjs` ainda erra um caso, por desenho e não por defeito novo:** quando a linha
+  citada cai DENTRO de um bloco reescrito, o mapa a manda para a PRIMEIRA linha do bloco novo. Foi o
+  que aconteceu com a âncora `ATIVOS.push` nesta rodada: ele escreveu `:1527`, a linha real era
+  `:1529`. **A janela de ±3 do portão esconde esse erro**, então a citação fica verde dois números
+  fora, e quem voltar a mexer no mesmo bloco parte de um endereço já torto. Corrigido à mão pela
+  Executora, com a unicidade da ocorrência conferida antes.
+
+  **ESTADO DO `L86b` EM 12/09/2026, e ele já não é "as outras três" por igual.** Do lado pronto, o
+  que a rodada 56 deixou na mesa: a régua ganhou o campo estruturado `porNivel` (gêmeo de
   `pontos`, e `pontos` vence em silêncio se os dois existirem), e a cena avisa uma vez por turno
-  quando a cura era devida e a linha não guarda o nível. **Nada disso funciona em produção antes de a
-  migração 38 rodar**, e a degradação é de propósito. Os outros dois continuam onde estavam: o
+  quando a cura era devida e a linha não guarda o nível. Os outros dois continuam onde estavam: o
   `cura-guardada` sem o gatilho `armadilha` e sem a definição de "1 PV por ponto", e o
   `maos-sobre-a-multidao` sem caminho de resolução para `forma: "zona"`, com o parâmetro Cura dele
   deixado SEM `porNivel` de propósito, porque campo sem leitor é o contra que a mesa já comprou uma
