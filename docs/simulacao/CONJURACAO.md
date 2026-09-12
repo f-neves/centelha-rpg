@@ -17,7 +17,7 @@ em aberto está marcado como aberto, com o nome de quem decide.
 ## 0 · O fato que decide o tamanho de tudo
 
 **A conjuração de uma Arte pelo jogador é SÍNCRONA hoje.** `conjurar()`
-(`src/lib/artes-grid-mesa.ts:789-837` · `function conjurar`) abre a caixa, posiciona a figura, paga a Mana e declara o
+(`src/lib/artes-grid-mesa.ts:790-838` · `function conjurar`) abre a caixa, posiciona a figura, paga a Mana e declara o
 custo em Ticks · tudo no mesmo instante, num `finally` só. **Não existe hoje o estado "em Preparo,
 esperando o Tick de saída" para Arte lançada pela interface.**
 
@@ -56,7 +56,7 @@ do humano e o motor concordam em quase tudo; onde as palavras diferem, aqui fica
 | Efeito Especial | **Efeito**, do catálogo, com `nivel` fixo | `src/data/efeitos.json`, `artes-grid.ts:23-33` (`interface Efeito`) |
 | Parâmetro | **Parâmetro**, com graus de 0 a 6 | `artes-grid.ts:35-45` (`interface Parametro`), `regras.json:arcano.improviso.graus` |
 | os Parâmetros declarados | **`Escolhas`**, o mapa nome→grau | `artes-grid.ts:229`, vivo só durante a caixa |
-| NÍVEL do Efeito | **nível efetivo** | `gravarEfeito`, `artes-grid-mesa.ts:1376` (`function gravarEfeito`) |
+| NÍVEL do Efeito | **nível efetivo** | `gravarEfeito`, `artes-grid-mesa.ts:1428` (`function gravarEfeito`) |
 
 **O "Nível = o maior Parâmetro declarado" JÁ EXISTE, ao pé da letra.** `gravarEfeito` calcula
 `Math.max` sobre os graus investidos quando não há Efeito comprado, e chama isso de **nível
@@ -71,7 +71,7 @@ nova reusa esse nome e essa fórmula, e não inventa um terceiro.
 | para quê | qual conta | onde está |
 |---|---|---|
 | **quanto CUSTA** (Mana) | a **SOMA** dos graus investidos | `artes-grid.ts:231-235` (`interface Custo`) e `regras.astro:382` (`Some os níveis investidos`) |
-| **quanto DEMORA** (Preparação) e o gating | o **MÁXIMO** · o nível efetivo | `artes-grid-mesa.ts:1401-1404`, `arcano.composta` |
+| **quanto DEMORA** (Preparação) e o gating | o **MÁXIMO** · o nível efetivo | `artes-grid-mesa.ts:1453-1456`, `arcano.composta` |
 
 Isto não é contradição, é uma distinção que o sistema já tem. **Toda linha desta régua diz qual
 dos dois está usando.** Confundi-los é o erro mais provável da implementação, e ele sai como
@@ -185,7 +185,7 @@ Golpe importa só para o gating do Efeito · o que a Arte consegue fazer.
 **A Mana é paga aqui, no Golpe, e não na declaração.**
 
 **Isto é sequência nova, e não um "quando" mudado.** Hoje `gastarMana` é chamada no mesmo `finally`
-da conjuração (`artes-grid-mesa.ts:834` · `ctx.gastarMana`). **Não existe hoje um intervalo em que a Mana esteja
+da conjuração (`artes-grid-mesa.ts:835` · `ctx.gastarMana`). **Não existe hoje um intervalo em que a Mana esteja
 comprometida e ainda não gasta**, e é esse intervalo que a régua cria.
 
 **Mana insuficiente no Golpe:**
@@ -338,7 +338,7 @@ a interface estaria oferecendo uma escolha vazia.**
 **O que o gating faz hoje com o nível efetivo, levantado em 10/09/2026:**
 
 - **o `nivel` gravado na linha do efeito É LIDO, e num lugar só:** `dissipar`
-  (`src/lib/artes-grid-mesa.ts:1011`) · `const alcanca = (e.nivel || 1) <= meu;`. Um efeito de
+  (`src/lib/artes-grid-mesa.ts:1012`) · `const alcanca = (e.nivel || 1) <= meu;`. Um efeito de
   nível N só pode ser dissipado por quem investiu pelo menos N pontos na Dissipar. Quem não
   alcança recebe recusa com o motivo escrito no registro;
 - **portanto o gesto NÃO é vazio.** Baixar o nível efetivo no Golpe **torna o próprio efeito mais
@@ -385,7 +385,7 @@ Nesta ordem, e nenhuma parte começa antes de o humano aprovar a régua.
 |---|---|---|---|
 | 1 | ligar `reguaDaArte` ao fluxo real | `artes-grid-mesa.ts`, `conjurar()` | a fórmula existe e está morta · é chamada, não escrita |
 | 2 | abrir o estado "Arte em Preparo" | `conjurar()` deixa de ser síncrona | **é o grosso do trabalho**, e é estado novo no motor |
-| 3 | a Mana sair da declaração para o Golpe | `artes-grid-mesa.ts:834` (`ctx.gastarMana`) | pequeno, e perigoso: é onde o gasto pode sumir |
+| 3 | a Mana sair da declaração para o Golpe | `artes-grid-mesa.ts:835` (`ctx.gastarMana`) | pequeno, e perigoso: é onde o gasto pode sumir |
 | 4 | a reabertura dos Parâmetros no Golpe | caixa nova, com o teto | médio |
 | 5 | caminhada automática na Preparação | `moverSimultaneo` | pequeno, se `D-C2` ficar de pé |
 | 6 | o Abortar aceitar Preparação de Arte | `podeAbortar` e a lista `nuncaPara` | pequeno |

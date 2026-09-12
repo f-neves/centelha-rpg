@@ -731,3 +731,45 @@ rastro nenhum. Ninguém escreve "não olhei o quinto", porque ninguém soube que
 contá-los, ou dizer que o número é do comentário e não da medição. E do lado de quem recebe: contar
 de novo antes de usar a contagem alheia como fim de tarefa. É a mesma família do "diga o escopo ao
 lado do número", agora na direção em que o número não descreve, **manda**.
+
+
+## O TERMO QUE O DADO MANDAVA E O DOMÍNIO NÃO ACEITAVA (12/09/2026, Arquiteto)
+
+**O gesto:** carregar uma fórmula inteira da fonte da verdade para uma rodada, e não conferir se
+cada TERMO dela pertence ao domínio onde ela vai rodar.
+
+**O que aconteceu.** O `efeitos.json` especifica o `empurrao-elemental` com dois parâmetros fixos:
+`FAH = (nível da Arte × 7) − 2` e `FAA = (nível da Arte + Acerto Arcano) × 2`. Eu levei os dois ao
+despacho da rodada 54 como "a regra está completa e não precisa de número novo", e estava certo
+sobre os números e errado sobre um termo. O `regras.json` diz, em `arcano.resistencia.rolagem`,
+que Acerto Arcano só é rolado nos efeitos **MIRADOS**, "o que sai da mão e voa até o alvo", e que o
+resto se resolve por tabela ou Dificuldade fixa. O `empurrao-elemental` é `forma: "movimento"`,
+`ancora: "alvo"`. Nunca foi mirado. O termo não estava errado de valor: estava errado de
+**pertencer**.
+
+**O que isto faz com a regra do `CLAUDE.md`, e é a parte que vale guardar.** "Quando o JSON e o
+capítulo discordam, o JSON vence" resolve DISCORDÂNCIA entre a descrição e a definição. Ela não diz
+que todo termo escrito no JSON é legítimo, e eu a usei como se dissesse: o dado mandava, então eu
+não conferi. **Fonte da verdade é sobre quem decide quando dois textos brigam, não sobre quem está
+certo quando os dois calam.** Aqui os dois calavam e um terceiro documento (`regras.json`) era o
+que tinha jurisdição.
+
+**O sintoma que eu li como outra coisa.** O termo emprestado gerou uma pergunta cara: as 309
+criaturas do bestiário não têm campo de Acerto Arcano, e 77 delas conjuram. Levei ao humano uma
+decisão de quatro opções sobre de onde tirar esse número, uma das quais era preencher 77 valores à
+mão. A decisão inteira era sobre um termo que não devia estar ali, e quem desmontou a premissa foi
+o humano, em uma frase, respondendo à pergunta com "o que um tem a ver com o outro". **Uma pergunta
+difícil sobre um termo é o momento de perguntar se o termo devia existir**, e eu tratei a
+dificuldade como sinal de que a pergunta era importante, quando ela era sinal de que a premissa era
+estranha ao domínio.
+
+**A parte que enganou:** a fórmula FECHAVA. Dava distâncias plausíveis, encostava no teto humano no
+nível 6, e os dois tetos da regra saíam certos. Uma conta que fecha não é evidência de que os
+termos dela pertencem, porque fechar é propriedade da forma e pertencer é propriedade do domínio.
+
+**O gesto que fica:** ao trazer fórmula pronta de um dado, conferir cada termo contra a regra
+escrita do domínio onde ela vai rodar, e não a forma da conta contra a forma de onde ela veio. E
+quando um termo pedir dado que ninguém tem (campo inexistente, valor a inventar para centenas de
+entradas), suspeitar do termo antes de responder à pergunta que ele criou. O conserto também é dos
+dois lados: trocar só o código deixaria o JSON mandando o contrário, e a próxima pessoa
+"consertaria" o código de volta para o errado.
