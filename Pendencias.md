@@ -3994,7 +3994,30 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   acima se encontram. **O item do `L70` avisava:** "dois lugares escaparam por terem a conta copiada à
   mão em vez de chamarem a função".
 
-  **Não é da rodada 52 e não bloqueia o veredito dela:** é pré-existente e está fora do escopo. Mas é
+  **FEITO E FECHADO na rodada 53, em 12/09/2026 (`75bcb32`), veredito PROCEDE (`fcf778e`), com um
+  CORRIGE mecânico de três travessões (`971300c`).** Os três problemas fecharam: a posição otimista
+  passa a ser marcada, o `error` da gravação é conferido e o cache é desfeito na recusa, e a linha do
+  registro só sai com a gravação confirmada. A raiz também: o traçado deixou de usar a conta copiada à
+  mão e pergunta a régua de verdade, com um **laço de nova tentativa dentro do mesmo Tick** contra um
+  conjunto de vetos que cresce · ideia dela, que eu não pedi, e sem a qual o conserto trocaria o
+  estrago por uma recusa frequente.
+
+  **O MAIOR RISCO DESTA RODADA FOI MEU, e eu o marquei antes de ela revisar.** O conserto honesto
+  tornou um cenário de teste geometricamente impossível, e **eu mandei consertar o CENÁRIO** · a
+  instrução mais perigosa que existe, porque sempre se pode fazer um teste passar enfraquecendo-o. A
+  Revisora atacou isso primeiro e o cenário resistiu: ela capturou a saída ao vivo e mediu um
+  adiamento real de 7 Ticks (agendado no 2, resolvido no 9), com a reprojeção genuína.
+
+  **E ELA ACHOU UM SEGUNDO ERRO MEU, num lugar que eu não tinha marcado.** Eu mandei a Executora
+  medir se a fila que barrava era aliada ou inimiga, dizendo que se fosse aliada a decisão do `L94`
+  resolveria o cenário sem reescrita. A medida saiu certa (inimigo) e **não era carregadora**:
+  `podeDividir`, `ocupadoPor` e `casaExata` **não leem `grupo` em lugar nenhum**, então o conserto era
+  necessário de um jeito ou de outro. A minha instrução supunha que o código já distinguia aliado, e
+  eu não conferi antes de pedir a medida. Ela classificou como ESCALA e contexto para quando o `L94`
+  ganhar código, não como erro de medição, e está certa nas duas coisas. → `CATALOGO`, a forma que
+  saiu daqui.
+
+  **Não era da rodada 52 e não bloqueava o veredito dela:** era pré-existente e estava fora do escopo. Mas é
   a prova de que "a regra mora na escrita" fecha a DECISÃO e não fecha o que o chamador faz com a
   resposta · a escrita recusou certo nos três casos, e o estrago veio de ninguém ter olhado.
   → `L70`, → `L88`, → `L66` (a recusa que não chega a quem chama).
