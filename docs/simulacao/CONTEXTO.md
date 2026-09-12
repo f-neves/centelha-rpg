@@ -92,9 +92,9 @@ Estado em 10/09/2026:
 **O levantamento que dimensionou a frente** (10/09/2026): não existe ponto único por onde toda
 ação passe; das dezesseis ações do menu, **cinco são chamáveis direto** com objeto pronto e as
 outras oito misturam coleta (`uiFormulario`) ou dependem de diálogo com callback. **O desfazer
-cobre só posição e Vida** (`grid.astro:11448` · `function desfazer`), não cobre Mana, a declaração do golpe, o
+cobre só posição e Vida** (`grid.astro:11492` · `function desfazer`), não cobre Mana, a declaração do golpe, o
 Tick nem a agenda. **"Escolher arma" não existe** como verbo. **Mana não distingue dar de
-tirar** (`ajustarMana`, `grid.astro:11141`, uma função só).
+tirar** (`ajustarMana`, `grid.astro:11180`, uma função só).
 
 **A regra de ação nova continua valendo:** toda ação NOVA do Grid separa a função que decide o
 efeito (recebe objeto, nunca lê `el(...)`/`.value`) da caixa de diálogo que coleta o clique.

@@ -582,14 +582,14 @@ O script que confere `arquivo.ts:NNN` escolhe a âncora (o trecho entre crases q
 citação afirma) pela crase mais próxima do número citado. "Mais próxima" ali é distância de
 CARACTERES a partir do INÍCIO da citação, contada nas duas direções. Isso parece simétrico e não
 é: uma âncora que vem DEPOIS da citação só começa a contar depois do fim dela (o próprio texto da
-citação, `src/pages/mesa/grid.astro:4611` · `function grupoDaVez`, tem trinta e tantos caracteres), enquanto uma âncora
+citação, `src/pages/mesa/grid.astro:4633` · `function grupoDaVez`, tem trinta e tantos caracteres), enquanto uma âncora
 ANTES conta a partir do início, sem esse desconto. A citação mais longa que a âncora empurra o
 "depois" para mais longe do que o "antes" parece, de um jeito que ninguém vê olhando a linha
 impressa: o olho lê `algo` (`arquivo:N`) `outra_coisa` como três pedaços igualmente próximos, e o
 script lê dois deles a distâncias bem diferentes.
 
 **Duas citações reais desta mesma rodada caíram nisso**, as duas escritas por quem está contando
-este achado: `grupoDaVez` (`grid.astro:4611`) tinha a âncora certa (`function grupoDaVez`) escrita
+este achado: `grupoDaVez` (`grid.astro:4633`) tinha a âncora certa (`function grupoDaVez`) escrita
 DEPOIS da citação, e o script escolheu `!grupoDaVez` (um fragmento de código histórico, também em
 crases, escrito ANTES) por ser mais "próximo" em bytes. O mesmo aconteceu com
 `mesa-condicoes.ts:100-106` (`chip.addEventListener`), onde a âncora nova foi escrita numa linha seguinte por causa da

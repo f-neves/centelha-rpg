@@ -207,11 +207,21 @@ for (const mv of movidas) {
 if (quebradas.length) {
   console.log(`\n✘ EU MOVI E QUEBREI ${quebradas.length} citação(ões). NÃO COMMITE ASSIM.`);
   for (const q of quebradas) console.log(`    ${q}`);
-  console.log('\n  A causa mais provável é ESTE SCRIPT TER RODADO DUAS VEZES sobre o mesmo diff');
-  console.log('  não commitado: o mapa é HEAD→árvore, e a segunda passada desloca de novo o que');
-  console.log('  a primeira já tinha acertado. O conserto NÃO é buscar âncora (o `L65` proíbe, e');
-  console.log('  âncoras como `if` aparecem centenas de vezes): é commitar o código e reapontar');
-  console.log('  a partir do commit, ou refazer as citações do último commit que estava verde.');
+  console.log('\n  SÃO DUAS CAUSAS POSSÍVEIS, e elas pedem consertos opostos:');
+  console.log('\n  (a) A LINHA CITADA FOI REESCRITA, e não só deslocada. O mapa do diff sabe para');
+  console.log('      onde uma linha ANDOU, e não tem o que dizer sobre uma que virou outra coisa.');
+  console.log('      Confira a âncora no arquivo: se aquele trecho não existe mais, a citação não');
+  console.log('      é para reapontar, é para ATUALIZAR (o texto também mudou de assunto) ou para');
+  console.log('      marcar `(citação histórica)`, quando ela existe para guardar o que o código');
+  console.log('      dizia no dia do achado. Esta é a causa mais comum quando a rodada MUDOU');
+  console.log('      justamente o código que o documento descrevia, que é o caso de um conserto.');
+  console.log('\n  (b) ESTE SCRIPT RODOU DUAS VEZES sobre o mesmo diff não commitado: o mapa é');
+  console.log('      HEAD→árvore, e a segunda passada desloca de novo o que a primeira acertou.');
+  console.log('      Sintoma: MUITAS citações quebradas de uma vez, em documentos variados, e');
+  console.log('      nenhuma relação entre elas e o que a rodada mexeu. O conserto é commitar o');
+  console.log('      código e reapontar do commit, ou refazer as citações do último commit verde.');
+  console.log('\n  Em nenhum dos dois o conserto é BUSCAR A ÂNCORA no arquivo: o `L65` proíbe, e');
+  console.log('  a medida de 12/09/2026 mostra por quê (âncoras como `if` aparecem 884 vezes).');
 }
 
 console.log(`\n${total} citação(ões) movidas pelo mapa do diff`
