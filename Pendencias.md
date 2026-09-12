@@ -5934,6 +5934,32 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   de dois corpos de pé no mesmo hexágono, porque ele não tira ninguém do chão. Ele sai da lista dos
   cinco por não existir, não por ser seguro.
 
+  **MEDIDO O TAMANHO em 12/09/2026, e o item é maior do que a frase "falta um ramo no despacho".** Os
+  sete declaram um parâmetro `Cura`, e **as sete fórmulas são diferentes, escritas em prosa**:
+
+  | efeito | o que o dado diz |
+  |---|---|
+  | `mao-firme` | 1 PV por turno |
+  | `acelerar-a-cura` | 1 PV por nível |
+  | `cura-guardada` | 1 PV por ponto |
+  | `transferir-dor` | transfere 3 de dano por nível |
+  | `refazer-o-corpo` | 1d6 por nível, até o máximo do membro recuperado |
+  | `dreno` | 1 PV a cada 2 de dano que passar |
+  | `maos-sobre-a-multidao` | **nada**: o parâmetro é `tipo: padrao`, sem valor |
+
+  **Três não são cura simples e não cabem num ramo de soma:** `transferir-dor` **move** dano entre dois
+  corpos, `dreno` cura em função do dano que passou (depende do resultado do golpe), e
+  `refazer-o-corpo` fala de **membro recuperado**, que é vocabulário de um sistema que a mesa não tem.
+
+  **E um não tem regra nenhuma:** `maos-sobre-a-multidao` declara `Cura` como parâmetro padrão, sem
+  valor. Quanto ele cura não está escrito em lugar nenhum, e isso é pergunta para o humano, não para
+  quem implementar.
+
+  **O que isso muda no planejamento:** as quatro somas simples (`mao-firme`, `acelerar-a-cura`,
+  `cura-guardada`, e o alvo do `dreno` depois que o dano estiver resolvido) são rodada de código. As
+  outras três são desenho de regra antes de qualquer linha. **Quebrar o item em dois é o gesto certo**,
+  e chamá-lo de "sete Artes" numa rodada só faria a rodada prometer o que não pode entregar.
+
 - [ ] **L87 · [ACHADO pela Revisora em 12/09/2026, na mesma auditoria] Duas escritas de condição
   gravam no banco sem repintar a coluna de iniciativa, e uma delas não avisa a mesa.**
 
