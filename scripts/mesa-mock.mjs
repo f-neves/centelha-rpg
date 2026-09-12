@@ -107,6 +107,10 @@ const FORADAVEZ = P.get('cena') === 'foradavez';
 // `if (OCUPACAO)` mais abaixo.
 const OCUPACAO = P.get('cena') === 'ocupacao';
 
+// A CENA DO CAÍDO NA FILA: `?cena=caidofila` (L84, rodada 50). Ver o bloco
+// `if (CAIDOFILA)` mais abaixo.
+const CAIDOFILA = P.get('cena') === 'caidofila';
+
 // A CENA DO INTERPOR: `?cena=interpor[&fase=preparo|recuperacao]` (L34 §6,
 // rodada 15/16/17).
 //
@@ -121,9 +125,9 @@ const INTERPOR = P.get('cena') === 'interpor';
 const INTERPOR_FASE = P.get('fase') === 'recuperacao' ? 'recuperacao' : 'preparo';
 
 const COLS = ESPELHO ? ESPELHO.tab.cols : CAIDO ? 14 : BANDEIRAS ? 10 : CORPOACORPO ? 20
-  : FORADAVEZ ? 16 : OCUPACAO ? 16 : INTERPOR ? 10 : parseInt(P.get('cols') || '24', 10);
+  : FORADAVEZ ? 16 : OCUPACAO ? 16 : CAIDOFILA ? 12 : INTERPOR ? 10 : parseInt(P.get('cols') || '24', 10);
 const ROWS = ESPELHO ? ESPELHO.tab.rows : CAIDO ? 8 : BANDEIRAS ? 8 : CORPOACORPO ? 18
-  : FORADAVEZ ? 12 : OCUPACAO ? 12 : INTERPOR ? 8 : parseInt(P.get('rows') || '16', 10);
+  : FORADAVEZ ? 12 : OCUPACAO ? 12 : CAIDOFILA ? 8 : INTERPOR ? 8 : parseInt(P.get('rows') || '16', 10);
 const NEVOA = P.get('nevoa') === '1';
 /**
  * `?sombra=1`: DUAS zonas que não acendem o chão, para a névoa poder escondê-las.
@@ -382,7 +386,8 @@ for (let i = 0; i < N_COMB; i++) {
       : EX_COND && i % 3 === 1 ? [{ id: 'desgaste-2' }]
         : EX_COND ? [{ id: 'inspirado' }] : [])
       // `imobilizado` e nao `caido`: a varredura nao olha qual e a condicao,
-      // e `caido` tiraria a peca da fila, que e outra medida.
+      // e o que ela mede aqui e o prazo vencendo, nao a fila (`caido` nao tira
+      // mais a peca da fila desde o L84; quem mede isso e `?cena=caidofila`).
       .concat(EX_PRESA && i === 1 ? [{ id: 'imobilizado', ate: 1, porArte: true }] : []),
     ativo: true, oculto: false, imagem: null, retrato: null,
   });
@@ -860,6 +865,44 @@ if (OCUPACAO) {
 }
 
 /**
+ * A CENA DO CAÍDO NA FILA `?cena=caidofila` (Pendencias.md L84, rodada 50):
+ * prova que `caido`, posto à mão pelo diálogo de condições do mestre, NÃO
+ * tira mais a peça da fila (`foraDaFila`, `grid.astro`, logo depois de
+ * `podeDividir`) nem cobra o atraso de "voltar" (`DELAY_AO_LEVANTAR`,
+ * `conferirFila`): o achado do Arquiteto de que Empurrão e as outras quatro
+ * Artes de `grid.forma: movimento` que aplicam `caido` (`src/data/
+ * efeitos.json`) estavam, sem ninguém desenhar isso, atordoando por 5 Ticks.
+ *
+ *   `x0` · quem leva `caido` no teste (o positivo): continua na fila.
+ *   `x1` · o CONTROLE NEGATIVO, quem leva `inconsciente`: essa SIM sai da
+ *     fila, para provar que a peneira ainda discrimina (e não que parou de
+ *     tirar qualquer um).
+ *
+ * As duas nascem com `iniciativa` diferente para a ordem da fila não empatar
+ * (`naOrdem`/`ordemDaFila`), e ambas com token no mapa: `naFila()` exige
+ * `TOKENS[c.id]` (`grid.astro:4569`).
+ */
+if (CAIDOFILA) {
+  COMBS.length = 0; TOKENS.length = 0;
+  COMBS.push({
+    id: 'x0', encontro_id: ENC, nome: 'Peça x0',
+    tipo: 'pc', grupo: 'aliado', monstro_id: null, personagem_id: null,
+    pv_max: 20, pv_atual: 20, mana_max: null, mana_atual: null,
+    tick: 0, iniciativa: 20, acao: {}, dados: {},
+    condicoes: [], ativo: true, oculto: false, imagem: null, retrato: null,
+  });
+  COMBS.push({
+    id: 'x1', encontro_id: ENC, nome: 'Peça x1',
+    tipo: 'pc', grupo: 'aliado', monstro_id: null, personagem_id: null,
+    pv_max: 20, pv_atual: 20, mana_max: null, mana_atual: null,
+    tick: 0, iniciativa: 19, acao: {}, dados: {},
+    condicoes: [], ativo: true, oculto: false, imagem: null, retrato: null,
+  });
+  TOKENS.push({ arena_id: ARENA, combatente_id: 'x0', q: 3, r: 3, movido_em: '2026-01-01T00:00:00Z' });
+  TOKENS.push({ arena_id: ARENA, combatente_id: 'x1', q: 5, r: 3, movido_em: '2026-01-01T00:00:00Z' });
+}
+
+/**
  * A CENA DO INTERPOR `?cena=interpor[&fase=preparo|recuperacao]`: o golpe
  * adiado que fica no ar, e um terceiro token pronto para cobri-lo (L34 §6,
  * decidido em 07/09/2026, implementado nas rodadas 15/16/17: a régua, a
@@ -1137,7 +1180,8 @@ const TABELAS = {
   mesa_arenas: ARENAS,
   arena_visao: ARENAS,
   // A CENA DO CAÍDO começa no Tick 1: o teste avança um e o golpe vence no 2.
-  encontros: [{ id: ENC, mesa_id: MESA, ativo: true, tick_atual: CAIDO ? 1 : FORADAVEZ ? 10 : OCUPACAO ? 10 : TICK_CENA,
+  encontros: [{ id: ENC, mesa_id: MESA, ativo: true,
+    tick_atual: CAIDO ? 1 : FORADAVEZ ? 10 : OCUPACAO ? 10 : CAIDOFILA ? 0 : TICK_CENA,
     rodada: 1, estado: null, ordem: 0, criado_em: '2026-01-01T00:00:00Z', nome: 'Cena' }],
   // `encontro_visao` é COMPUTADA, e por projeção de coluna. Ver `COLUNAS` abaixo.
   encontro_visao: [],

@@ -4573,11 +4573,11 @@ const SETAS = [
    * O tick em que a cena está: o menor entre quem ainda pode agir.
    *
    * Com as ações custando Ticks diferentes, o relógio deixa de andar de um em
-   * um e passa a pular para onde está a próxima pessoa. Quem está caído não
-   * segura o relógio: ele não vai agir, e o mundo não espera por ele.
+   * um e passa a pular para onde está a próxima pessoa. Quem está FORA DE
+   * COMBATE não segura o relógio (L84: caído segura, porque age).
    */
   function tickDaVez(): number | null {
-    const emPe = naFila().filter((c: any) => !noChao(c));
+    const emPe = naFila().filter((c: any) => !foraDaFila(c));
     if (!emPe.length) return null;
     // No simultâneo o relógio é da CENA, e não derivado da fila: ele anda um
     // Tick por clique e nunca pula. Ver `Combate_Simultaneo.md`.
@@ -4610,7 +4610,7 @@ const SETAS = [
    */
   function grupoDaVez(): any[] {
     const t = tickDaVez();
-    if (t == null) return [];   // todos no chão: não é a vez de ninguém
+    if (t == null) return [];   // todos fora de combate: não é a vez de ninguém
     // E TAMBÉM NÃO É A VEZ DE NINGUÉM ENQUANTO UM GOLPE ESTÁ CAINDO. O braço que
     // foi declarado três Ticks atrás chega antes da próxima escolha de quem quer
     // que seja, e deixar alguém agir por cima dele resolveria a cena fora de
@@ -4624,8 +4624,8 @@ const SETAS = [
     // No simultâneo não existe "a vez de um": decide todo mundo que está livre
     // no Tick corrente. `<=` e não `===`, porque quem ficou livre dois Ticks
     // atrás e ainda não declarou continua podendo.
-    if (SIML()) return naFila().filter((c: any) => !noChao(c) && (c.tick ?? 0) <= t);
-    return naFila().filter((c: any) => !noChao(c) && (c.tick ?? 0) === t);
+    if (SIML()) return naFila().filter((c: any) => !foraDaFila(c) && (c.tick ?? 0) <= t);
+    return naFila().filter((c: any) => !foraDaFila(c) && (c.tick ?? 0) === t);
   }
 
   /** Quem recebe o custo da próxima ação: o primeiro do grupo. */
@@ -4681,17 +4681,18 @@ const SETAS = [
   }
 
   /**
-   * O Tick do golpe agendado mais próximo, entre quem está de pé.
+   * O Tick do golpe agendado mais próximo, entre quem pode agir.
    *
-   * De pé porque quem caiu não solta o braço: o gesto morre com quem o fazia, e
-   * deixar a agenda dele travando a cena obrigaria a mesa a resolver um golpe
-   * que nunca vai sair. `null` quando não há nada no ar, que é sempre o caso com
-   * a chave desligada.
+   * Fora de combate porque quem fica inconsciente não solta o braço: o gesto
+   * morre com quem o fazia, e deixar a agenda dele travando a cena obrigaria a
+   * mesa a resolver um golpe que nunca vai sair. `caido` (L84) NÃO entra
+   * nesse corte: prono ainda solta o golpe que já vinha armando. `null`
+   * quando não há nada no ar, que é sempre o caso com a chave desligada.
    */
   function golpeMaisCedo(): number | null {
     let menor: number | null = null;
     for (const c of naFila()) {
-      if (noChao(c)) continue;
+      if (foraDaFila(c)) continue;
       const g = proximoGolpe(c.acao);
       if (g != null && (menor == null || g < menor)) menor = g;
     }
@@ -4719,61 +4720,75 @@ const SETAS = [
     if (!instanteDeGolpe()) return null;
     const t = tickDaVez();
     for (const c of naFila()) {
-      if (noChao(c)) continue;
+      if (foraDaFila(c)) continue;
       const g = proximoGolpe(c.acao);
       if (g != null && (t == null || g <= t)) return { atacante: c, tick: g };
     }
     return null;
   }
 
-  // ------------------------------------------------ quem caiu, quem levantou
+  // ------------------------------------------------ quem sai da fila, quem volta
   /**
    * O atraso de quem volta a ficar de pé, em Ticks.
    *
-   * Levantar não é de graça: quem estava no chão não age no instante em que
-   * abre os olhos. Cinco Ticks é o preço de uma ação comum, então quem acorda
-   * entra na fila como se tivesse acabado de agir.
+   * ACORDAR não é de graça: quem estava inconsciente não age no instante em
+   * que abre os olhos. Cinco Ticks é o preço de uma ação comum, então quem
+   * acorda entra na fila como se tivesse acabado de agir.
+   *
+   * L84: isto é o atraso de ACORDAR, não o de FICAR DE PÉ. `caido` saiu do
+   * balde que dispara este atraso (`foraDaFila`, acima): levantar de prono é
+   * ação de quem já está na fila, e paga o preço dela mesma (o deslocamento
+   * de se levantar), não este.
    */
   const DELAY_AO_LEVANTAR = 5;
-  /** Quem estava no chão na conferência anterior. `null` = ainda não olhamos. */
-  let CHAO_ANTES: Set<string> | null = null;
+  /** Quem estava FORA DA FILA na conferência anterior. `null` = ainda não olhamos. */
+  let FORA_ANTES: Set<string> | null = null;
   let LEVANTANDO = false;
   const noChaoAgora = () => new Set(naFila().filter((c: any) => noChao(c)).map((c: any) => c.id));
+  /**
+   * O par Q2 de `noChaoAgora()`, acima: aquele alimenta a regra do golpe no
+   * caído (`CAIDOS_AO_ABRIR`, físico, não muda com o L84); este alimenta
+   * `conferirFila`, que precisa saber quem estava FORA DE COMBATE, não quem
+   * estava no chão. Duas funções de propósito, e não uma reaproveitada: são
+   * perguntas diferentes, e é exatamente a mistura das duas que o L84 existe
+   * para desfazer.
+   */
+  const foraDaFilaAgora = () => new Set(naFila().filter((c: any) => foraDaFila(c)).map((c: any) => c.id));
 
   /**
-   * Confere o chão a cada repintura e cobra o atraso de quem levantou.
+   * Confere a fila a cada repintura e cobra o atraso de quem voltou (acordou).
    *
-   * Mora no desenho, e não em cada lugar que cura, porque ficar de pé acontece
-   * por caminhos demais: a cura do menu, a Arte que devolve Vida, a condição
+   * Mora no desenho, e não em cada lugar que cura, porque voltar acontece por
+   * caminhos demais: a cura do menu, a Arte que devolve Vida, a condição
    * "inconsciente" que o mestre tira, o efeito que venceu sozinho e até a
    * campainha do tempo real trazendo isso pronto de fora. Todos terminam
    * repintando a coluna, então é aqui que dá para pegar todos de uma vez.
    *
    * A primeira conferência só anota: no F5 de uma cena com gente de pé, ninguém
-   * "acabou de levantar", e cobrar atraso ali empurraria a fila inteira.
+   * "acabou de voltar", e cobrar atraso ali empurraria a fila inteira.
    */
-  function conferirChao() {
-    const agora = noChaoAgora();
-    const antes = CHAO_ANTES;
-    CHAO_ANTES = agora;
+  function conferirFila() {
+    const agora = foraDaFilaAgora();
+    const antes = FORA_ANTES;
+    FORA_ANTES = agora;
     if (!antes || LEVANTANDO || !MESTRE) return;
     const gente = [...antes].filter((id) => !agora.has(id))
-      // Sair do tabuleiro também tira da fila, e isso não é levantar.
+      // Sair do tabuleiro também tira da fila, e isso não é voltar.
       .map((id) => COMBS.find((c: any) => c.id === id && TOKENS[id])).filter(Boolean) as any[];
     if (gente.length) void levantar(gente);
   }
 
   /**
-   * Levantou: volta para a fila com o atraso, contado do agora da cena.
+   * Voltou (acordou): volta para a fila com o atraso, contado do agora da cena.
    *
    * O tick antigo dele é lixo, e não ponto de partida: parou no instante em que
-   * ele caiu, muitas vezes dezenas de Ticks atrás, e usá-lo faria o curado agir
+   * ele saiu, muitas vezes dezenas de Ticks atrás, e usá-lo faria o curado agir
    * várias vezes seguidas até a cena o alcançar. O agora é medido SEM contar
-   * quem acabou de levantar, justamente porque o tick dele ainda é o velho.
+   * quem acabou de voltar, justamente porque o tick dele ainda é o velho.
    */
   async function levantar(gente: any[]) {
     const ids = new Set(gente.map((c) => c.id));
-    const outros = naFila().filter((c: any) => !noChao(c) && !ids.has(c.id));
+    const outros = naFila().filter((c: any) => !foraDaFila(c) && !ids.has(c.id));
     const agora = outros.length ? (outros[0].tick ?? 0)
       : Math.max(0, ...naFila().map((c: any) => c.tick ?? 0));
     const tick = agora + DELAY_AO_LEVANTAR;
@@ -4799,7 +4814,7 @@ const SETAS = [
           + ` (+${DELAY_AO_LEVANTAR} do tick ${agora})`, { acao: null });
       }
     } finally { LEVANTANDO = false; }
-    CHAO_ANTES = noChaoAgora();
+    FORA_ANTES = foraDaFilaAgora();
     pintarIniciativa(); pintarTokens();
     avisarAgora('combatentes');
   }
@@ -4840,12 +4855,14 @@ const SETAS = [
 
   function pintarIniciativa() {
     const box = el('gr-ini');
-    // Antes de desenhar, porque é o desenho que revela quem levantou.
-    conferirChao();
+    // Antes de desenhar, porque é o desenho que revela quem voltou.
+    conferirFila();
     pintarCarimbo();
     const fila = naFila();
-    const emPe = fila.filter((c: any) => !noChao(c));
-    pintarChao(fila.filter((c: any) => noChao(c)));
+    // L84: "de pé" aqui é "pode agir", não "está em pé de verdade" — caído
+    // conta como de pé para a fila, mesmo prono no desenho do tabuleiro.
+    const emPe = fila.filter((c: any) => !foraDaFila(c));
+    pintarChao(fila.filter((c: any) => foraDaFila(c)));
     if (!fila.length) {
       esquecerCaixa(box);
       box.innerHTML = `<p class="ini-vazio">${MESTRE
@@ -5074,21 +5091,21 @@ const SETAS = [
   function pintarOrdem() {
     const box = el('ord-lista');
     const fila = naFila();
-    const emPe = fila.filter((c: any) => !noChao(c));
-    const caidos = fila.filter((c: any) => noChao(c));
+    const emPe = fila.filter((c: any) => !foraDaFila(c));
+    const foraDeCombate = fila.filter((c: any) => foraDaFila(c));
     const tick = relogio();
-    if (!emPe.length && !caidos.length) {
+    if (!emPe.length && !foraDeCombate.length) {
       box.innerHTML = '<p class="ini-vazio">Ninguém em cena.</p>';
       el('ord-conta').textContent = '';
       return;
     }
     el('ord-conta').textContent = `Tick ${tick} · rodada ${Math.floor(tick / 6) + 1} · `
-      + `${emPe.length} de pé${caidos.length ? `, ${caidos.length} no chão` : ''}. `
+      + `${emPe.length} de pé${foraDeCombate.length ? `, ${foraDeCombate.length} fora de combate` : ''}. `
       + 'Toque numa peça para abrir o menu dela.';
     const itens = itensDaFila(pecasDaFila(emPe), tick, { marcacao: TEMPO.marcacao });
     box.innerHTML = itens.map((i) => i.html).join('')
-      + (caidos.length ? `<div class="ord-chao"><h4>No chão, fora da fila</h4>${
-        caidos.map((c: any) => `<div class="ini-caido" data-c="${c.id}">${
+      + (foraDeCombate.length ? `<div class="ord-chao"><h4>Fora de combate, fora da fila</h4>${
+        foraDeCombate.map((c: any) => `<div class="ini-caido" data-c="${c.id}">${
           avatarDe(c, 'av-p')}<span class="nm">${esc(c.nome)}</span></div>`).join('')}</div>` : '');
     box.querySelectorAll<HTMLElement>('[data-c]').forEach((linha) => {
       linha.onclick = () => {
@@ -5117,7 +5134,7 @@ const SETAS = [
   function pintarLinhaDoTempo(tick: number) {
     const cx = el('gr-linha');
     if (!ARENA || !LINHA_LIGADA || TEMPO.marcacao !== 'fita') { cx.hidden = true; aplicarLinha(); return; }
-    const emPe = naFila().filter((c: any) => !noChao(c));
+    const emPe = naFila().filter((c: any) => !foraDaFila(c));
     const comGesto = emPe.filter((c: any) => gestoNo(c));
     const proximos = emPe.filter((c: any) => !gestoNo(c)).slice(0, Math.max(0, 6 - comGesto.length));
     const linhas = [...comGesto, ...proximos].slice(0, 8)
@@ -5160,14 +5177,17 @@ const SETAS = [
     g?.classList.toggle('sem-linha', !!(el('gr-linha') as HTMLElement).hidden);
   }
 
-  /** A tira dos caídos, no pé da coluna. Sem números: eles não estão na ordem. */
-  function pintarChao(caidos: any[]) {
+  /**
+   * A tira de quem está FORA DE COMBATE, no pé da coluna. Sem números: eles
+   * não estão na ordem. L84: não é mais quem caiu, é quem não tem ação.
+   */
+  function pintarChao(foraDeCombate: any[]) {
     const tira = el('ini-chao') as HTMLElement;
-    tira.hidden = !caidos.length;
-    if (!caidos.length) { esquecerCaixa(tira); tira.innerHTML = ''; return; }
+    tira.hidden = !foraDeCombate.length;
+    if (!foraDeCombate.length) { esquecerCaixa(tira); tira.innerHTML = ''; return; }
     reconciliar(tira, [
-      { chave: '#h', html: `<div class="ini-chao-h">No chão · ${caidos.length}</div>` },
-      ...caidos.map((c: any) => {
+      { chave: '#h', html: `<div class="ini-chao-h">Fora de combate · ${foraDeCombate.length}</div>` },
+      ...foraDeCombate.map((c: any) => {
         const pct = pctDe100(c);
         return { chave: c.id, html: `<div class="ini-caido g-${esc(c.grupo || 'inimigo')}" data-c="${c.id}"
           title="${esc(c.nome)} · fora da fila até voltar a ficar de pé${
@@ -5290,11 +5310,12 @@ const SETAS = [
    * iniciativa nova é uma cena nova.
    */
   async function rolarIniciativas() {
-    // OS CAÍDOS FICAM DE FORA. A entrada é relativa ao MAIOR da cena, e um
-    // inconsciente que tirasse o maior valor definiria o passo de uma luta em
-    // que ele não vai agir: todo mundo entraria um degrau mais tarde por causa
-    // de quem está no chão.
-    const fila = naFila().filter((c: any) => !noChao(c));
+    // QUEM ESTÁ FORA DE COMBATE FICA DE FORA. A entrada é relativa ao MAIOR
+    // da cena, e um inconsciente que tirasse o maior valor definiria o passo
+    // de uma luta em que ele não vai agir: todo mundo entraria um degrau mais
+    // tarde por causa de quem não vai fazer nada. O caído entra normalmente
+    // (L84: ele age, só está prono).
+    const fila = naFila().filter((c: any) => !foraDaFila(c));
     if (!fila.length) return;
     if (!await uiConfirmar(`Rolar a iniciativa dos ${fila.length} no tabuleiro?`
       + ' Quem tirar o maior entra no Tick 0; os demais entram mais tarde, pela régua da iniciativa.',
@@ -5741,7 +5762,7 @@ const SETAS = [
     await varrerInvestida(T);
     const escala = Number(ARENA?.escala_m) || 1;
     for (const c of naFila()) {
-      if (noChao(c)) continue;
+      if (foraDaFila(c)) continue;
       const mov = (c.acao as any)?.mov as Mov | undefined;
       if (!mov?.auto || !TOKENS[c.id]) continue;
       // A decisão vale um Tick depois de declarada: o passo do Tick T só sai se
@@ -5898,7 +5919,7 @@ const SETAS = [
    * um caso raro de teste.
    */
   function cenaAssentada(): boolean {
-    return !naFila().some((c: any) => !noChao(c)
+    return !naFila().some((c: any) => !foraDaFila(c)
       && (golpesNoAr(c.acao).length > 0 || !!(c.acao as any)?.mov));
   }
 
@@ -5953,11 +5974,12 @@ const SETAS = [
     for (;;) {
       if (instanteDeGolpe()) {
         const t = tickDaVez();
-        const emPe = naFila().filter((c: any) => !noChao(c));
+        const emPe = naFila().filter((c: any) => !foraDaFila(c));
         // OS GOLPES DEVIDOS AGORA, pela mesma régua do `instanteDeGolpe`: todo
-        // golpe de qualquer peça de pé com Tick <= o Tick da vez. Pode ser
-        // mais de um (é "simultâneo"): resolve todos, na ordem em que
-        // `naFila()` já lista as peças, antes de parar o laço.
+        // golpe de qualquer peça que ainda está na fila com Tick <= o Tick da
+        // vez (L84: caído solta golpe normalmente, só inconsciente/morto etc.
+        // não). Pode ser mais de um (é "simultâneo"): resolve todos, na ordem
+        // em que `naFila()` já lista as peças, antes de parar o laço.
         for (const c of emPe) {
           for (const g of golpesNoAr(c.acao).filter((x: number) => t == null || x <= t)) {
             await resolverGolpeNoAr(c, g);
@@ -5971,11 +5993,11 @@ const SETAS = [
       avancos += 1;
       if (contadorDeConsultas() > consultasAntes) return;   // alguém foi consultado
       if (contadorDeMordidas() > mordidasAntes) return;     // um efeito mordeu, sem diálogo
-      if (!naFila().some((c: any) => !noChao(c))) return;   // ninguém de pé: nada mais a avançar
+      if (!naFila().some((c: any) => !foraDaFila(c))) return; // ninguém na fila: nada mais a avançar
       if (cenaAssentada()) return;                          // (b) nada agendado nem em trânsito
       if (avancos >= TETO_AVANCO_SEM_PARADA) {
         TETO_AVANCO_ACESO += 1;
-        const dePe = naFila().filter((c: any) => !noChao(c)).length;
+        const dePe = naFila().filter((c: any) => !foraDaFila(c)).length;
         await logar(null, `⚑ ⏭ parou depois de ${avancos} Ticks sem achar uma parada real `
           + `(Tick ${tickSim()}, ${dePe} de pé) · isto não deveria acontecer: avise quem mantém `
           + 'o código, porque a condição de "cena assentada" não cobriu este caso.', { acao: null });
@@ -5995,7 +6017,7 @@ const SETAS = [
    */
   async function decidirAutomaticas(T: number) {
     if (!MESTRE) return;
-    const emPe = naFila().filter((c: any) => !noChao(c));
+    const emPe = naFila().filter((c: any) => !foraDaFila(c));
     const inimigosDe = (c: any) => emPe.filter((o: any) =>
       (o.tipo === 'criatura') !== (c.tipo === 'criatura') && TOKENS[o.id]);
     for (const c of emPe) {
@@ -6079,7 +6101,7 @@ const SETAS = [
     const mg = margem();
     const tracos: string[] = [];
     for (const c of naFila()) {
-      if (noChao(c)) continue;
+      if (foraDaFila(c)) continue;
       const mov = (c.acao as any)?.mov as Mov | undefined;
       const pos = TOKENS[c.id];
       if (!mov || !pos) continue;
@@ -6789,14 +6811,20 @@ const SETAS = [
       // QUALQUER peça) enquanto um golpe declarado Ticks atrás está caindo,
       // que não tem nada a ver com a peça arrastada (achado do Arquiteto).
       // Mestre só, como o mecanismo que ele chama; peça vinda da lista e peça
-      // caída continuam de fora, como já eram para o `moverSimultaneo` (não
-      // têm "vez" a medir).
-      if (MESTRE && deOnde === 'mapa' && eu && TOKENS[id] && !noChao(eu) && !chegouAVez(eu)) {
+      // fora de combate continuam de fora, como já eram para o
+      // `moverSimultaneo` (não têm "vez" a medir). L84: o caído SAIU desta
+      // exceção, porque tem vez e a mede como qualquer um; quem sai é só quem
+      // está fora de combate de verdade.
+      if (MESTRE && deOnde === 'mapa' && eu && TOKENS[id] && !foraDaFila(eu) && !chegouAVez(eu)) {
         await perguntarForaDaVez(eu, destino); return;
       }
       // No simultâneo, soltar peça do mapa num hexágono vazio pergunta COMO ela
       // vai até lá, em vez de teleportar. Peça vinda da lista (entrando em
-      // cena) e peça caída continuam pousando direto.
+      // cena) e peça caída continuam pousando direto: aqui o `noChao` FICA (e
+      // não migra com o resto do L84), porque rastejar não está decidido, e
+      // perguntar "como você vai" a quem não pode andar hoje é pergunta mal
+      // posta. Quando a Trilha de rastejo existir, esta linha volta a ser
+      // revista.
       if (SIML() && deOnde === 'mapa' && eu && TOKENS[id] && !noChao(eu)) {
         await moverSimultaneo(eu, destino); return;
       }
@@ -7136,9 +7164,31 @@ const SETAS = [
    *
    * Gente miúda cabe junta, e quem está caído virou parte do chão: passa-se por
    * cima. Fora esses dois casos, um metro quadrado é de um só.
+   *
+   * NÃO MUDA COM O L84: prono e inconsciente estão os DOIS no chão, e os dois
+   * continuam dividindo espaço. O que a separação abaixo mexe é só a FILA.
    */
   const podeDividir = (a: any, b: any) =>
     noChao(a) || noChao(b) || (diametroM(a) <= 0.5 && diametroM(b) <= 0.5);
+
+  // -------------------------------------------- quem sai da fila (L84)
+  /**
+   * `noChao` responde DUAS perguntas com uma função só, e a condição `caido`
+   * pagava a conta: fisicamente no chão (acima, para dividir espaço) e FORA DE
+   * COMBATE (aqui, para sair da iniciativa) não são a mesma coisa. Quem está
+   * caído está prono e LUTANDO (o catálogo diz isso: `defesaCaC`, `defesaDist`,
+   * `acao`), e a primeira ação dele costuma ser levantar. Quem está
+   * inconsciente, morrendo, estabilizado ou morto não tem ação nenhuma.
+   *
+   * `FORA_DA_FILA` é `NO_CHAO` menos `caido`, de propósito: é o mesmo balde,
+   * só sem o estado que passou a agir.
+   */
+  const FORA_DA_FILA = new Set(['inconsciente', 'morrendo', 'estabilizado', 'morto']);
+  /** Está fora de combate: sai da iniciativa. `caido` NÃO entra aqui: ele age. */
+  function foraDaFila(c: any): boolean {
+    if (c.pv_max != null && (c.pv_atual ?? 0) <= 0) return true;
+    return (c.condicoes || []).some((k: any) => FORA_DA_FILA.has(k.id) || COND[k.id]?.foraDeCombate);
+  }
 
   /**
    * O DESLOCAMENTO PAGO (K20, §14.10 do `Combate_Tempo.md`).
@@ -8492,6 +8542,10 @@ const SETAS = [
   async function destinoDoGolpe(atacante: any, alvo: any, tick: number): Promise<any | null> {
     const de = TOKENS[atacante.id];
     const alc = alcanceDaPeca(atacante);
+    // `noChao` FICA (não migra com o resto do L84): a razão aqui é física, não
+    // de fila. Um corpo no chão está fora do arco de um golpe que ia na
+    // altura de quem estava de pé, então não entra como alvo de redirecionamento,
+    // caído por queda ou por estar fora de combate.
     const candidatos = naFila().filter((o: any) =>
       o.id !== atacante.id && !noChao(o) && TOKENS[o.id] && de
       && (o.tipo === 'criatura') !== (atacante.tipo === 'criatura')
@@ -10734,7 +10788,7 @@ let roladoDano = '';
       devido: () => {
         const T = tickSim();
         for (const c of naFila()) {
-          if (noChao(c)) continue;
+          if (foraDaFila(c)) continue;
           const g = golpesNoAr(c.acao).filter((x: number) => x <= T).sort((a, b) => a - b)[0];
           if (g != null) return { id: c.id, tick: g };
         }
@@ -10778,8 +10832,15 @@ let roladoDano = '';
        * ONDE, porque `pvDe` só diz o efeito, não a causa.
        */
       resumoDe: (id: string) => JSON.parse(JSON.stringify(RESUMO[id] ?? null)),
-      /** Quem ainda está de pé, por lado, para o driver saber que a cena acabou. */
-      dePe: () => naFila().filter((c: any) => !noChao(c)).map((c: any) => c.id),
+      /**
+       * Quem ainda está na luta (não saiu da fila), por lado, para o driver
+       * saber que a cena acabou. Chamava-se `dePe`: renomeado no L84 porque
+       * o caído também está "na luta" (só está prono), e o nome velho
+       * respondia fisicamente a uma pergunta que aqui é de fila. Sem
+       * consumidor hoje em `scripts/`/`.claude/` (medido antes de decidir);
+       * fica porque campo sem consumidor hoje é campo com consumidor amanhã.
+       */
+      naLuta: () => naFila().filter((c: any) => !foraDaFila(c)).map((c: any) => c.id),
       pendente: null as any,
     };
     (window as any).__ESPELHO = E;
@@ -11946,7 +12007,7 @@ let roladoDano = '';
       }
       if (/^[1-9]$/.test(ev.key)) {
         if (MIRA) return;
-        const fila = naFila().filter((c: any) => !noChao(c));
+        const fila = naFila().filter((c: any) => !foraDaFila(c));
         const c = fila[parseInt(ev.key, 10) - 1];
         if (!c) return;
         ev.preventDefault();

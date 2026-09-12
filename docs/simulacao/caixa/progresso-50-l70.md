@@ -247,3 +247,66 @@ que ela fecha, hora lida da máquina (`date +%H:%M`).
   Ainda esperando resposta do Arquiteto sobre a classificação das 30
   chamadas de `noChao` (as 4 que pedem decisão e o achado estrutural do
   `noChaoAgora()`) antes de escrever qualquer código do eixo 2.
+- 01:14 · OS 4 JULGADOS PELO ARQUITETO: `:6794` migra para Q2 (a razão da
+  exceção, "não tem vez para medir", deixou de valer); `:6800` fica em Q1,
+  razão diferente da minha (não é "sem vez para medir", é "rastejar não está
+  decidido", pergunta mal posta hoje, escrever isso no código);
+  `:8496` fica em Q1, razão trocada pela física certa (corpo no chão fora do
+  arco de um golpe mirado em quem está de pé, não "achar corpo por perto");
+  `:10782` (`dePe` do espelho) muda de pergunta: ele mediu os consumidores e
+  não achou nenhum (nem em `scripts/`, nem em `.claude/`), então não é
+  "qual das duas perguntas", é "não responde a ninguém ainda": Q2 e
+  RENOMEAR (o nome `dePe` é armadilha para o primeiro consumidor futuro),
+  mantendo o campo.
+
+  Minha aritmética: Q1 final = 6 (`:7141`x2, `:5692`, `:8556`, `:6800`,
+  `:8496`); Q2 final = 22 (os 21 originais + `:6794`); `:10782` some das duas
+  contagens porque migra semanticamente mas não tem consumidor para "migrar"
+  de verdade, só renomear; `:4741`/`noChaoAgora()` fica de fora das duas
+  contagens por ser o item ESTRUTURAL (vira duas funções). 6 + 22 + 1 + 1 =
+  30. O placar dele soma diferente ("2 pedem regra que ainda não existe") e
+  não bati com exatidão essa frase; como cada item individual está claro e
+  sem ambiguidade, vou implementar pela decisão item a item e trago a
+  diferença de contagem se ela importar depois de escrito.
+
+  ESCREVENDO O EIXO 2 agora, autorizado. Confirmando de novo: eixo 1 já
+  estava commitado e empurrado (`ca6d567`, `10fc4f1`) antes desta mensagem
+  chegar.
+
+- 01:29 · EIXO 2 ESCRITO, as 30 chamadas de `noChao(` resolvidas uma a uma.
+  Migraram para `foraDaFila` (Q2, 24 pontos): `pintarLinhaDoTempo` (`emPe`),
+  `rolarIniciativas` (com o comentário reescrito, porque o dele já dizia
+  "inconsciente" e não "caído"), `avancarTickSimultaneo` (o passo automático),
+  `pintarRotas`, o `devido` do espelho, `cenaAssentada`, as três de
+  `avancarAteParar` (golpes devidos, "ninguém na fila" e a contagem só de
+  log), `decidirAutomaticas`, o atalho de teclado 1-9, o `perguntarForaDaVez`
+  do arrastar (comentário reescrito: a razão "não tem vez" caiu porque o
+  caído agora TEM vez), e o `dePe` do espelho (RENOMEADO para `naLuta`,
+  mantendo o campo mesmo sem consumidor hoje: medi de novo antes de renomear,
+  `grep` em `scripts/` e `.claude/` por `.dePe(` e `__ESPELHO`, achei só um
+  `dePe` homônimo e não relacionado dentro de `scripts/sim/motor.mjs`, local
+  aquele arquivo e sem ligação com o campo do espelho da mesa).
+
+  Ficaram em Q1 (`noChao`, 6 pontos) com comentário corrigido onde a razão
+  do Arquiteto discordava da minha: o gate de `moverSimultaneo` no arrastar
+  (razão certa: rastejar não está decidido, perguntar "como você vai" para
+  quem não anda é pergunta mal posta hoje, não "sem vez para medir"), e o
+  filtro de `destinoDoGolpe` (razão certa: um corpo no chão está fora do
+  arco de um golpe mirado em quem estava de pé, não "achar corpo por
+  perto"). Sem mudança: as duas definições (`noChao`/`podeDividir`), o
+  campo `chao:` de diagnóstico, e o `CAIDOS_AO_ABRIR` do golpe-no-caído.
+
+  Bateria completa rodada depois da escrita: `test-l67-corpoacorpo-mesa`,
+  `test-l68-foradavez-mesa`, `test-l70-ocupacao-mesa`, `test-l70-empurrao`,
+  `test-grid-simultaneo` (79 asserções) todos verdes, e `npm run validate`
+  inteiro rodado: o único vermelho é o portão de procedência, esperado desta
+  vez também (edição grande desloca linha). 67 citações envelheceram em 6
+  documentos (`ESTADO.md`, `Pendencias.md`, `CONJURACAO.md`, `Grid_Mobile.md`,
+  `VOZ.md`, `CONTEXTO.md`); não toquei nenhum dos seis, reporto a contagem ao
+  Arquiteto e espero o reponte antes de subir.
+
+- 01:31 · commit do eixo 2 BLOQUEADO pelo gancho de pre-commit (ele roda o
+  `validate` inteiro, e o portão de procedência está vermelho pelas 67
+  citações acima). Mensagem enviada ao Arquiteto com a contagem e os 6
+  documentos. Parado aqui até o reponte, sem tocar nos documentos e sem
+  `--no-verify`.
