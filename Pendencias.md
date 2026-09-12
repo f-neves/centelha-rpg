@@ -6049,6 +6049,27 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   de ser lida para dizer qual das duas perguntas ela faz, e há casos que não são óbvios (o arrasto que
   recusa peça no chão, a bandeira `chao:` que sai para fora). Eu tinha suposto de 8 a 10.
 
+  **RODADA 50 FECHADA em 12/09/2026, veredito CORRIGE sem bloqueio (`529e21c`), corrigida e no ar
+  (`cb21dbd`).** Cinco eixos (`ca6d567`, `28d8944`, `d968802`, `7030d1f`, `8359d0b`), três arquivos de
+  teste novos, **44 asserções**. A Revisora reproduziu por conta própria os números que sustentam o
+  aviso em vez de aceitar a tabela: as 44 rodando cada arquivo isolado, e a contagem de `noChao` em
+  7 linhas, 8 ocorrências, 6 pontos lógicos.
+
+  **Os dois julgamentos que eram MEUS resistiram ao ceticismo que eu pedi**, e por medida e não por
+  deferência: ela conferiu que a rota direta do `moverSimultaneo` ainda cobra deslocamento pela
+  distância real (não é de graça, só não é declarada), e que a razão física do `destinoDoGolpe` é
+  coerente com o resto da função.
+
+  **O CORRIGE foi dois travessões, e um deles já não existia.** O do `grid.astro` era real e foi
+  trocado por dois-pontos. O do progresso tinha saído sozinho: no sha congelado dela havia 1, no
+  commit seguinte da Executora havia 0, porque ela reescreveu o trecho ao pôr o adendo. **A árvore
+  congelada da Revisora é o protocolo funcionando**, e a diferença fica registrada em vez de virar
+  pedido de reconferência.
+
+  **DOIS BUGS REAIS morreram antes de qualquer commit, os dois pegos por teste e não por leitura:** a
+  busca do vizinho livre perdoava qualquer casa porque a peça ainda estava `caido` (então "livre" era
+  sempre sim), e a remoção da condição era persistida antes de o movimento ser confirmado.
+
   **DECIDIDO PELO HUMANO: tudo entra na rodada 50**, junto com a gravação e a queda do empurrão, contra
   a minha recomendação de partir em duas. O registro do porquê da minha recomendação fica: 30
   julgamentos mais a refatoração da escrita num só diff dá à Revisora dois eixos de risco no mesmo
