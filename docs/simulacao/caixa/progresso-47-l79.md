@@ -100,3 +100,41 @@ não só por parte), no instante em que ela fecha, hora lida da máquina (`date 
   varredura, sem misturar nada, com pathspec nos 13 capítulos + `diagramas.json`
   regravado + este arquivo de progresso, excluindo `CATALOGO.md` (edição do
   Arquiteto na árvore, não é minha).
+- 21:20 · `npm run validate` ficou verde (inclui `gen-mermaid.mjs --check`, que já
+  passa porque regravei `diagramas.json` durante a varredura). Como `CATALOGO.md` do
+  Arquiteto seguia sujo na árvore e bloqueava `git pull --rebase`, usei `git stash
+  push -u -m rodada47-preserva-catalogo-arquiteto -- docs/simulacao/CATALOGO.md`
+  (método validado pelo Arquiteto na rodada 46) para tirá-lo do caminho sem tocá-lo.
+  COMMIT DA PARTE 1 FEITO: `8bcc1d1`, pathspec nos 13 capítulos + `diagramas.json` +
+  este arquivo, nada mais misturado. `git pull --rebase` limpo, push confirmado
+  (`git rev-list --count origin/main..HEAD` = 0 depois do push), e o stash foi
+  devolvido (`git stash pop`): `CATALOGO.md` está de volta exatamente como estava,
+  intocado. Indo para a parte 2: o portão sobre `src/content/**`.
+- 21:25 · PORTÃO ESCRITO: `scripts/test-travessao-capitulos.mjs`. Escopo é
+  `mdSob(src/content)`, recursivo por diretório (não lista de arquivo). Duas
+  isenções: travessão dentro de crase inline (`` `—` ``) e o glifo de célula vazia
+  em tabela (`\|\s*—\s*(?:\([^|]*\))?\s*(?=\|)`). Antes de aceitar a isenção da
+  célula vazia, testei SEM ela (cópia temporária do script) contra o estado atual:
+  achou exatamente as 9 linhas de tabela já mapeadas na varredura (13 ocorrências,
+  armas-e-armaduras:40/41/111, combate:35/128/129/230, racas:32/37), nada mais,
+  confirmando que a isenção é um padrão estrutural preciso e não uma cobertura para
+  contagem errada dos 253.
+
+  QUATRO CONTROLES, todos rodados manualmente e revertidos depois:
+  1. VERMELHO ANTES: `git checkout c02dd9e -- src/content/chapters` (o commit pai da
+     varredura) + rodar o portão → 203 violações. `git checkout HEAD --
+     src/content/chapters` restaurou o estado pós-varredura sem sobra (`git status`
+     limpo).
+  2. VERDE DEPOIS: portão no estado atual (pós-varredura) → 0 violações.
+  3. NEGATIVO: troquei um dois-pontos de volta por travessão em
+     `coracao-do-sistema.md:10` de propósito → o portão acusou exatamente essa
+     linha, 1 violação, saída 1. Revertido (`git diff --numstat` deu vazio: byte a
+     byte igual ao commitado).
+  4. POSITIVO DA ISENÇÃO DE CRASE (não pedido explicitamente, mas nenhum capítulo
+     atual usa a crase para nomear o caractere, então a isenção nunca tinha sido
+     exercitada de verdade): inseri `` `—` `` citado entre crases na mesma linha →
+     portão continuou verde. Revertido do mesmo jeito, `numstat` vazio de novo.
+
+  Registrado em `npm run validate` (entre `test-procedencia` e `test-rodada` no
+  `package.json`), e o próprio `test-portoes.mjs` confirma que o novo teste está no
+  portão (não sobrou órfão). `npm run validate` completo: verde, saída 0.
