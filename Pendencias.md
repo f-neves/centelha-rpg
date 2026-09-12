@@ -3935,6 +3935,36 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   pior que o primeiro, porque o primeiro só gastou uma correção e este gastou uma investigação
   inteira que chegou à conclusão errada.
 
+- [ ] **L93 · [LEVANTADO pela Executora ao fechar a rodada 52, CONFERIDO e AMPLIADO pelo Arquiteto em
+  12/09/2026] O passo automático grava posição, ignora a recusa, e escreve no registro que a peça
+  andou.**
+
+  **Ela trouxe um dos três problemas; os outros dois apareceram ao conferir.** O trecho é o do avanço
+  automático, e ele faz três coisas em sequência: escreve a posição otimista em `TOKENS`, chama
+  `gravarToken`, e registra a linha.
+
+  · **(1, o dela) Não marca `POSICAO_PENDENTE`.** Não passa pelo `porNoMapa`, então o detector do
+    `L88` pode julgar um instante otimista como violação.
+  · **(2) A recusa é IGNORADA.** `await gravarToken(...)` (`src/pages/mesa/grid.astro:5924`) não
+    guarda o `error`. Se a casa estiver ocupada, a gravação recusa, **o cache local fica com a posição
+    ilegal e nunca é desfeito**. É o mesmo defeito de cache que ela própria consertou no eixo 1 da
+    rodada 50, em outro lugar.
+  · **(3, o pior) A linha do registro sai de qualquer jeito**, dizendo que a peça avançou, mesmo
+    quando a gravação recusou. O registro é o que o mestre lê para saber o que aconteceu, e aqui ele
+    **afirma um movimento que não existiu**.
+
+  **E a origem é a forma que o `L70` já tinha nomeado:** o traçado usa uma conta de ocupação **copiada
+  à mão**, `const casaExata` (`src/pages/mesa/grid.astro:5915`), que compara hexágono exato e só. Não
+  é `ocupadoPor`, então ela não conhece raio nem `podeDividir`. Uma criatura grande passando ao lado
+  de outra é permitida pelo traçado e recusada pela gravação, que é exatamente como os três problemas
+  acima se encontram. **O item do `L70` avisava:** "dois lugares escaparam por terem a conta copiada à
+  mão em vez de chamarem a função".
+
+  **Não é da rodada 52 e não bloqueia o veredito dela:** é pré-existente e está fora do escopo. Mas é
+  a prova de que "a regra mora na escrita" fecha a DECISÃO e não fecha o que o chamador faz com a
+  resposta · a escrita recusou certo nos três casos, e o estrago veio de ninguém ter olhado.
+  → `L70`, → `L88`, → `L66` (a recusa que não chega a quem chama).
+
 - [ ] **L92 · [ACHADO pela Executora na rodada 51, em 12/09/2026, CONFERIDO pelo Arquiteto] O tipo
   não protege os dublês: campo novo obrigatório numa interface passa pelo compilador e quebra em
   tempo de execução, e só se um teste exercitar aquele caminho.**
