@@ -6146,6 +6146,52 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   anotação do resíduo do humano lê como se não dividisse. As duas são da rodada do
   `maos-sobre-a-multidao`.
 
+  **O `L86a` FECHOU em 12/09/2026, rodada 55, veredito PROCEDE SEM RESSALVA em `55-revisora.md`
+  (sha `3cc14b5`), código em `57f6bcb`.** O `mao-firme` cura 1 PV por turno no tabuleiro, pelo mesmo
+  fluxo de confirmação do dano; a régua (`curaDoEfeito`) só lê campo estruturado e devolve nulo nas
+  outras três; o teto de `pv_max` passou a morar em `curarPv` (`src/pages/mesa/grid.astro:2685`), que o
+  menu do mestre também chama. `npx tsc --noEmit` limpo, zero travessão no diff, 32 asserções.
+  **O `L86` NÃO fecha**: o `L86b` continua aberto com as outras três Artes, e o resíduo abaixo
+  mantém o próprio `mao-firme` fora de "pronto".
+
+  **A ESCALA QUE A REVISORA ACHOU, e eu a reenquadro depois de conferir no disco, porque do jeito que
+  ela saiu manda alguém caçar um defeito que não existe.** Ela achou duas outras contas de teto fora do
+  alcance do teste (que confere só o corpo do `curar()`), e leu a primeira como divergência de
+  comportamento: `mexerVida` (`src/pages/mesa/combate.astro:1282`) teria piso em zero e o `curarPv`
+  não. **As duas contas existem e isso está certo. A divergência de comportamento não existe onde se
+  pode chegar jogando**, e o motivo é que `mexerVida` recebe delta dos DOIS sinais, então o piso dela
+  é a trava de dano da aba Combate, não uma regra de cura diferente. Curar nunca precisa de piso.
+
+  **A conferência que fecha isso, e ela vale por si:** TODO caminho de dano grampeia em zero, nos
+  quatro escritores e no servidor:
+  `Math.max(0, (alvo.pv_atual ?? 0) - golpe.liquido)` (`src/lib/artes-grid-mesa.ts:1753`), o mesmo em `:1787`,
+  `const pv = Math.max(0, antes - quanto);` (`src/pages/mesa/grid.astro:11179`),
+  `Math.max(0, Math.min(c.pv_max, c.pv_atual + delta))` (`src/pages/mesa/combate.astro:1286`) e, no banco,
+  `set pv_atual = greatest(0, coalesce(pv_atual, 0) - p_quanto)` (`supabase/migracao-22.sql:146`).
+  **O resíduo verdadeiro não é "dois tetos que discordam", é que a Vida tem quatro escritores e
+  nenhuma régua comum**, que é a família do `L87` no eixo do PV em vez do eixo da condição.
+
+  **E UM ACHADO QUE SAIU DESSA CONFERÊNCIA, sem relação com a cura:** existe exatamente UM caminho que
+  escreve Vida negativa, e é a caixa de editar peça do mestre:
+  `pvat = Math.min(pvat, pvmax)` (`src/pages/mesa/combate.astro:1704`) grampeia o teto e não grampeia
+  o piso, enquanto o campo do relógio, duas linhas abaixo, ganha o grampo de baixo que falta a este.
+  Pode ser liberdade de mestre deliberada e pode ser
+  descuido, e **não decido isto aqui**: fica anotado com o vizinho que o denuncia.
+
+  **O QUE ISSO FAZ COM A PROVA QUE EU EXIGI, e a correção é minha.** Eu pedi a asserção do chão nas
+  duas direções (curar 1 PV em quem está em −5 dá −4 e a criatura CONTINUA fora da fila) chamando-a de
+  caso discriminante, o que separa a guarda do teto da guarda da fila. Ela está verde e a conta está
+  certa, mas **o estado de partida não é alcançável jogando**: só a edição à mão da caixa acima produz
+  Vida negativa. O caso que a mesa realmente encontra é o zero, e a asserção dele é a mesma conta, o
+  que salva o resultado, não o enunciado. **Exigir o caso que separa duas guardas não basta: é preciso
+  conferir que o produto consegue entrar naquele estado**, senão a separação é teórica.
+
+  **E a Revisora confirmou o furo de método do ponto 3, que eu tinha desconfiado do meu próprio
+  enunciado:** a seção do chão não CHAMA `foraDaFila` em lugar nenhum. Ela testa o número e cita, em
+  comentário, uma leitura de código feita no levantamento. O cabeçalho do teste admite isso por
+  escrito, e o fato conferido hoje bate, mas **o dia em que `foraDaFila` mudar, esse teste não vai
+  perceber**. Conserto barato quando alguém voltar aqui: chamar a função de verdade.
+
   **RESÍDUO DO `mao-firme`, levantado pela Executora e deixado de fora de propósito:** a Arte promete
   DUAS coisas, e a rodada 55 entrega uma. Além do PV por turno, a prosa do Efeito diz "e não morre de
   sangramento enquanto a sua mão estiver nele", e isso não é a mesma conta: o sangramento tem regra
