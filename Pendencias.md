@@ -5904,8 +5904,37 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   `condicoes: novas` (`src/pages/mesa/grid.astro:6335`), a condição automática de investida,
   cuja função **termina na linha seguinte**. Grava e não avisa ninguém.
 
-  **O DESENHO PARA A RODADA 51, e ele tem precedente no próprio repositório com a justificativa já
-  escrita:** `gravarPeca` vira o estrangulamento que toca a campainha, como `upComb` já é, e as
+  **FEITO E FECHADO na rodada 51, em 12/09/2026 (`454a1d8`), veredito PROCEDE SEM RESSALVA
+  (`71a0228`).** `gravarPeca` virou o escritor que grava **e avisa**, e `gravarCondicao` levou o mesmo
+  idioma ao `CtxGrid`, de modo que as três escritas de condição das Artes pararam de ir pela fachada
+  crua. Os dois buracos medidos no levantamento fecharam: o do `marcarInvestida` e o do
+  `varrerCondicoesVencidas`, este último **sem depender** do `if (!ATIVOS.length) return`, que era o
+  que o tornava traiçoeiro.
+
+  **A conferência que importava foi a do lado perigoso, e ela a fez uma a uma:** sete chamadores
+  PERDERAM a campainha explícita por ela ter virado redundante, e tirar campainha é silêncio, que é a
+  doença que a rodada trata. A Revisora foi aos sete e **nenhum tocava por um segundo motivo**
+  (nenhum assunto diferente, nenhuma segunda escrita, nenhum caminho de erro dependente).
+
+  **E O ESTRANGULAMENTO NÃO É ÚNICO, o que está declarado em vez de escondido.** São **três**
+  caminhos conhecidos que escrevem em `combatentes` sem passar por ele. Dois a Executora declarou no
+  próprio aviso, contra o próprio trabalho: o lado do jogador de `baixarVida`, que chama
+  `jogador_dano` direto, e o ramo do mestre que grava `mana_max` e `mana_atual` juntos. **O terceiro a
+  Revisora achou fora do que eu pedi**, lendo em volta.
+  `async function alternarAuto` (`src/pages/mesa/grid.astro:6098`) e
+  `async function devolverAuto` (`src/pages/mesa/grid.astro:11482`)
+  escrevem `dados` direto, repintam **só o próprio cliente** e
+  nunca tocam a campainha, nem antes nem depois desta rodada. É simétrico (a ida e o desfazer calam
+  igual), pré-existente, e nunca passou pelos nove auditados, que é por isso que ficou de fora do
+  conjunto. Gravidade baixa porque o campo é `auto` e o outro lado o recupera na próxima campainha
+  qualquer, mas **é o mesmo defeito**.
+
+  **Por que os três NÃO são urgentes, e a razão é a decisão do humano:** o `L88` é um detector que
+  olha o RESULTADO, então ele pega o que qualquer um dos três causar sem precisar conhecê-los. Rotear
+  os três é higiene e vem depois. → `L88`.
+
+  **O DESENHO DA RODADA 51, que foi executado, e ele tinha precedente no próprio repositório com a
+  justificativa já escrita:** `gravarPeca` vira o estrangulamento que toca a campainha, como `upComb` já é, e as
   Artes passam a escrever condição por ele em vez de pela fachada crua. Duas coisas a medir ANTES de
   escrever, e nenhuma é opinião: **quantos dos nove chamadores já tocam a campainha logo depois** (o
   risco é tocar duas vezes, provavelmente inócuo mas não medido), e se algum chamador precisa
