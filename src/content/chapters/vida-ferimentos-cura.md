@@ -5,14 +5,14 @@ titulo: "Vida, Ferimentos & Cura"
 resumo: "Pontos de Vida, limiares de ferimento, nocaute, morte e recuperação."
 ---
 
-Heróis aguentam o tranco. O combate não começa com a morte à espreita a cada golpe — a não ser que a diferença de poder seja gritante. Os **Pontos de Vida** medem o quanto você suporta antes de cair.
+Heróis aguentam o tranco. O combate não começa com a morte à espreita a cada golpe, a não ser que a diferença de poder seja gritante. Os **Pontos de Vida** medem o quanto você suporta antes de cair.
 
 Quando você sofre dano (o que sobra do golpe depois da Absorção), você o **marca** na sua folha. Ele vem em duas trilhas, que se comportam de modo diferente:
 
-- **Impacto** (contundente) — em regra só **nocauteia**: derruba, mas não mata.
-- **Letal** (cortante e perfurante) — **fere de verdade**: é o que tira vidas.
+- **Impacto** (contundente), em regra só **nocauteia**: derruba, mas não mata.
+- **Letal** (cortante e perfurante), **fere de verdade**: é o que tira vidas.
 
-A **soma das duas** trilhas é o seu dano total, e é ela que define o seu estado. A morte, porém, só olha para o Letal — como você verá.
+A **soma das duas** trilhas é o seu dano total, e é ela que define o seu estado. A morte, porém, só olha para o Letal, como você verá.
 
 ## Pontos de Vida
 
@@ -32,11 +32,11 @@ Essa é a durabilidade de uma criatura de **porte Médio**, o padrão dos humano
 
 A sua **Vida restante** é o PV máximo menos o dano total marcado; é a porcentagem dela que diz em que estado você está, na tabela abaixo.
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Bram tem <strong>PV 37</strong>. Numa briga feia, leva <strong>20 de Impacto + 8 de Letal = 28</strong> de dano: restam <strong>9 PV</strong> (24% → <strong>Grave</strong>). Está mal — mas longe de morrer: a morte exigiria <strong>37 de Letal</strong>, e ele só tem 8. Se cair a 0 com a maior parte sendo Impacto, ele <em>desmaia</em>, não morre.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Bram tem <strong>PV 37</strong>. Numa briga feia, leva <strong>20 de Impacto + 8 de Letal = 28</strong> de dano: restam <strong>9 PV</strong> (24% → <strong>Grave</strong>). Está mal, mas longe de morrer: a morte exigiria <strong>37 de Letal</strong>, e ele só tem 8. Se cair a 0 com a maior parte sendo Impacto, ele <em>desmaia</em>, não morre.</div>
 
 ## Limiares de Ferimento
 
-Conforme a Vida restante cai, a dor cobra seu preço — as penalidades incidem nas suas **jogadas** e na sua **Defesa**:
+Conforme a Vida restante cai, a dor cobra seu preço, as penalidades incidem nas suas **jogadas** e na sua **Defesa**:
 
 | Vida restante | Estado | Penalidade |
 |---|---|---|
@@ -49,7 +49,7 @@ Conforme a Vida restante cai, a dor cobra seu preço — as penalidades incidem 
 
 ## Nocaute e Morte
 
-Cair a 0 PV deixa você **incapacitado**; se o golpe que o derrubou foi sobretudo de Impacto, você apenas desmaia. A morte verdadeira só chega quando o **dano Letal acumulado iguala o seu PV máximo** — dá para nocautear alguém sem matá-lo, mas tirar uma vida exige sangue suficiente.
+Cair a 0 PV deixa você **incapacitado**; se o golpe que o derrubou foi sobretudo de Impacto, você apenas desmaia. A morte verdadeira só chega quando o **dano Letal acumulado iguala o seu PV máximo**: dá para nocautear alguém sem matá-lo, mas tirar uma vida exige sangue suficiente.
 
 ## Sangramento e Estabilização
 
@@ -57,18 +57,18 @@ Nem todo ferimento para de doer quando o golpe termina. O **Sangramento** repres
 
 Há duas formas de começar a sangrar:
 
-- **Ferimento muito grave** — cair ao estado **Grave** (ou pior) por dano **Letal** (corte/perfuração) abre um **Sangramento 1**.
-- **Arma ou poder próprio para isso** — armas com a tag **Sangramento** (lâminas serrilhadas, garras) e certas Técnicas/Artes que rasgam carne abrem um **Sangramento igual à Margem do golpe** (máximo 3), em qualquer estado.
+- **Ferimento muito grave**: cair ao estado **Grave** (ou pior) por dano **Letal** (corte/perfuração) abre um **Sangramento 1**.
+- **Arma ou poder próprio para isso**: armas com a tag **Sangramento** (lâminas serrilhadas, garras) e certas Técnicas/Artes que rasgam carne abrem um **Sangramento igual à Margem do golpe** (máximo 3), em qualquer estado.
 
 Sangramentos não se somam livremente: vale o **maior**, e cada fonte adicional acrescenta apenas +1 (teto **5**).
 
-<div class="callout"><span class="lbl">Estabilizar</span>Uma ação dedicada e um teste de <strong>Cura vs Dif 10</strong> (pano limpo, pressão, sutura) encerra um Sangramento. Sozinho, cerrando os dentes, role <strong>Vigor + Convicção vs Dif 10</strong>. Qualquer cura de PV — descanso, Cura ou magia — também o estanca.</div>
+<div class="callout"><span class="lbl">Estabilizar</span>Uma ação dedicada e um teste de <strong>Cura vs Dif 10</strong> (pano limpo, pressão, sutura) encerra um Sangramento. Sozinho, cerrando os dentes, role <strong>Vigor + Convicção vs Dif 10</strong>. Qualquer cura de PV (descanso, Cura ou magia) também o estanca.</div>
 
 <p class="muted">Um aliado <strong>Caído</strong> que ainda sangra continua acumulando dano Letal rumo à morte: alguém precisa chegar até ele. É a hora em que parar para estabilizar o companheiro pesa tanto quanto desferir mais um golpe.</p>
 
 ## Recuperação
 
-Você recupera o equivalente ao seu Vigor em PV a cada intervalo — tão mais lento quanto pior o estado:
+Você recupera o equivalente ao seu Vigor em PV a cada intervalo, tão mais lento quanto pior o estado:
 
 | Estado | Recupera o Vigor em PV… |
 |---|---|

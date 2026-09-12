@@ -2,7 +2,7 @@
 ordem: 24
 numeral: "XVIII"
 titulo: "Criação de Personagem"
-resumo: "Montar um herói gastando XP a partir de pisos — com a ficha auto-calculável."
+resumo: "Montar um herói gastando XP a partir de pisos, com a ficha auto-calculável."
 ---
 
 Um personagem é construído gastando **Experiência** (XP) a partir de valores-piso. Não há pacotes por categoria: você recebe um bolo de XP e o investe onde a sua história pede.
@@ -11,9 +11,9 @@ Um personagem é construído gastando **Experiência** (XP) a partir de valores-
 
 ## Passo a passo da criação
 
-Se é a sua primeira vez, siga esta ordem — os detalhes de cada passo estão nas seções abaixo, e a [Ficha](/ficha) faz as contas por você.
+Se é a sua primeira vez, siga esta ordem: os detalhes de cada passo estão nas seções abaixo, e a [Ficha](/ficha) faz as contas por você.
 
-1. **Conceito.** Quem é o herói? Uma frase basta ("batedora silenciosa", "capitão que inspira tropas") — ela guia todas as escolhas seguintes.
+1. **Conceito.** Quem é o herói? Uma frase basta ("batedora silenciosa", "capitão que inspira tropas"), ela guia todas as escolhas seguintes.
 2. **Orçamento.** Combine com o Mestre: **1500** (iniciante), **2000** (veterano) ou **2600** (herói). Todo o resto sai desse bolo de XP.
 3. **Atributos.** Suba do piso 1. Teto **5** na criação, com **um único** atributo em **6** (o seu pico).
 4. **Habilidades e Especialidades.** Teto **4**, com **uma única** primária em **5** (o pico de perícia). Secundárias são mais baratas e cobrem nichos; cada Especialidade afia um escopo estreito de uma Habilidade.
@@ -21,9 +21,9 @@ Se é a sua primeira vez, siga esta ordem — os detalhes de cada passo estão n
 6. **Força de Vontade e Aparência.** Suba a Vontade do piso 0 (um herói costuma levá-la a 5+); escolha a Aparência (0–12, normal por volta de 5–7).
 7. **Centelha.** Teto **3** na criação. Ela **não custa XP**: o tier é definido com o Mestre e define o que você alcança. A maioria começa em 1; quem quer um herói de saga começa em 3 (Herói).
 8. **Proezas, Técnicas e Artes.** Gaste o restante em poder: as Técnicas que a Centelha destrava e, se for feiticeiro, os níveis de Arte e os Efeitos Especiais.
-9. **Derivados.** PV, Defesas, Energia/Mana e Iniciativa saem de fórmulas — confira na tabela mais abaixo, ou deixe a Ficha calcular.
+9. **Derivados.** PV, Defesas, Energia/Mana e Iniciativa saem de fórmulas: confira na tabela mais abaixo, ou deixe a Ficha calcular.
 
-<p class="muted">Não há ordem obrigatória de <em>compra</em> — esta é só a sequência mais fácil de raciocinar.</p>
+<p class="muted">Não há ordem obrigatória de <em>compra</em>: esta é só a sequência mais fácil de raciocinar.</p>
 
 ## Pisos e princípios
 
@@ -53,7 +53,7 @@ O custo é para subir ao próximo ponto, em função do *novo* valor.
 | Nível de Arte (Arcano) | 10 + (nível × 5) | 0→1 = 15 · 2→3 = 25 · 5→6 = 40 |
 | Efeito Especial de Arte | nível × 4 | 4 · 8 · 12 · 16 · 20 · 24 · **não acumula** |
 
-<p class="muted">Duas trilhas <strong>não acumulam</strong>: a Proeza e o Efeito Especial. Você paga só o preço do nível que está comprando, sem passar pelos de baixo — um Efeito de nível 2 custa 8 e não exige ter o de nível 1; subir uma Proeza do nível 2 para o 3 paga só a diferença. Nas demais trilhas o custo é cumulativo: você paga cada degrau até chegar lá. Técnica de nível <em>N</em> exige Centelha ≥ N, e é esse portão que limita a profundidade; Arte de qualquer nível exige apenas Centelha &gt; 0 (qualquer fagulha).</p>
+<p class="muted">Duas trilhas <strong>não acumulam</strong>: a Proeza e o Efeito Especial. Você paga só o preço do nível que está comprando, sem passar pelos de baixo: um Efeito de nível 2 custa 8 e não exige ter o de nível 1; subir uma Proeza do nível 2 para o 3 paga só a diferença. Nas demais trilhas o custo é cumulativo: você paga cada degrau até chegar lá. Técnica de nível <em>N</em> exige Centelha ≥ N, e é esse portão que limita a profundidade; Arte de qualquer nível exige apenas Centelha &gt; 0 (qualquer fagulha).</p>
 
 <div class="callout"><span class="lbl">O portão da Centelha</span>A Centelha <strong>não custa XP</strong>. Ela sobe só com <strong>permissão do Mestre</strong>, num marco de história ou feito maior: o salto de tier, de herói a semideus, é uma conquista narrativa e não uma transação de balcão. Cobrar XP por ela criava a situação estranha de o Mestre conceder o marco e o jogador responder que não tinha guardado o suficiente.</div>
 
@@ -61,7 +61,7 @@ O custo é para subir ao próximo ponto, em função do *novo* valor.
 
 Atributo máximo **4**; Habilidade máxima **3**; Centelha máxima **2** (a maioria dos heróis começa em 1). O 5º ponto e tiers maiores vêm com o jogo.
 
-Cada herói pode ter **um pico**: você está autorizado a levar **um único Atributo a 5** e **uma única Habilidade primária a 4** já na criação — o talento superlativo que o define. Os demais respeitam os tetos acima.
+Cada herói pode ter **um pico**: você está autorizado a levar **um único Atributo a 5** e **uma única Habilidade primária a 4** já na criação: o talento superlativo que o define. Os demais respeitam os tetos acima.
 
 ## Traços derivados
 
@@ -135,7 +135,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 
 ## O mortal-tocado: magia como estudo, não como tier
 
-Os três acima sobem a Centelha junto com a magia, como manda a intuição. Mas a regra de Arcano **separa as duas coisas**: para aprender e conjurar uma Arte basta **Centelha maior que 0** (uma fagulha qualquer) — a Centelha é só o interruptor, não a medida da profundidade. A profundidade (o nível da Arte) vem do estudo, comprada com XP. Isso abre um arquétipo que os exemplos anteriores escondem — o feiticeiro **mortal-tocado**, que estudou fundo o que quase não tem por natureza.
+Os três acima sobem a Centelha junto com a magia, como manda a intuição. Mas a regra de Arcano **separa as duas coisas**: para aprender e conjurar uma Arte basta **Centelha maior que 0** (uma fagulha qualquer): a Centelha é só o interruptor, não a medida da profundidade. A profundidade (o nível da Arte) vem do estudo, comprada com XP. Isso abre um arquétipo que os exemplos anteriores escondem: o feiticeiro **mortal-tocado**, que estudou fundo o que quase não tem por natureza.
 
 ### Bram, o Erudito-tocado · Veterano (Centelha 1)
 

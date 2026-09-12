@@ -5,20 +5,20 @@ titulo: "Combate Físico"
 resumo: "Como uma luta funciona: a linha do tempo, o ataque, o dano, a defesa, o movimento, a vantagem tática e as Técnicas."
 ---
 
-O combate não corre em turnos rígidos: corre numa **linha do tempo de Ticks** (cada um ≈ **1 segundo**). Cada ação custa um tempo — a sua **Velocidade** — e, depois de agir, você só volta a jogar quando esses Ticks passarem. Escolher *quando* agir vale tanto quanto *como*.
+O combate não corre em turnos rígidos: corre numa **linha do tempo de Ticks** (cada um ≈ **1 segundo**). Cada ação custa um tempo (a sua **Velocidade**) e, depois de agir, você só volta a jogar quando esses Ticks passarem. Escolher *quando* agir vale tanto quanto *como*.
 
 ## Como uma luta acontece
 
 Antes dos detalhes, o esqueleto de uma briga, do começo ao fim:
 
-1. **Role a Iniciativa** (1d6 + Raciocínio + Prontidão) — ela diz **em que Tick cada um entra** na linha de Ticks.
+1. **Role a Iniciativa** (1d6 + Raciocínio + Prontidão): ela diz **em que Tick cada um entra** na linha de Ticks.
 2. **Na sua vez, escolha uma ação.** Cada ação custa um tempo (a **Velocidade**); após agir, você só volta quando esses Ticks passarem.
-3. **Para acertar, role seu pool de ataque** e compare com a **Defesa** do alvo — um número fixo. Se o total **superar** a Defesa, você acerta (empate erra).
-4. **Quanto melhor o acerto, mais forte o golpe:** a cada **6 pontos acima da Defesa**, o dano ganha **+1d6** — isso se chama **Margem**.
+3. **Para acertar, role seu pool de ataque** e compare com a **Defesa** do alvo: um número fixo. Se o total **superar** a Defesa, você acerta (empate erra).
+4. **Quanto melhor o acerto, mais forte o golpe:** a cada **6 pontos acima da Defesa**, o dano ganha **+1d6**, isso se chama **Margem**.
 5. **O dano, menos a Absorção** (a absorção do alvo), vira ferimento.
 6. **Quem chega a 0 de Vida cai.** Ferimentos, morte e sangramento são assunto do próximo capítulo, [Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura).
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Kael ataca um bandido de <strong>Defesa 10</strong>. Seu pool de ataque dá <strong>3d6+5</strong>; ele rola e soma <strong>16</strong>. 16 supera 10 → acerta, com diferença de 6 — exatamente <strong>uma Margem</strong>, então o dano ganha <strong>+1d6</strong>. Ele rola o dano da espada (1d6) + a Margem (1d6) + a Força, desconta a Absorção do bandido, e o que sobra abre ferimento.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Kael ataca um bandido de <strong>Defesa 10</strong>. Seu pool de ataque dá <strong>3d6+5</strong>; ele rola e soma <strong>16</strong>. 16 supera 10 → acerta, com diferença de 6, exatamente <strong>uma Margem</strong>, então o dano ganha <strong>+1d6</strong>. Ele rola o dano da espada (1d6) + a Margem (1d6) + a Força, desconta a Absorção do bandido, e o que sobra abre ferimento.</div>
 
 No osso, é só isso. O resto do capítulo são as camadas que dão profundidade tática: **quando** agir, **como** se mover, **usar a posição** e **desencadear Técnicas**.
 
@@ -28,7 +28,7 @@ No início, cada um rola a **Iniciativa = 1d6 + Raciocínio + Prontidão** (de 2
 
 <p class="formula">Quem tirar o maior entra sozinho no <strong>Tick 1</strong> · os demais entram <strong>um Tick depois por degrau de 6 pontos</strong> de atraso, arredondando para cima</p>
 
-Cada degrau custa também **1d6 na ação** — é o **contrapé**, de quem chegou atrasado à briga e ainda está reencontrando o eixo. (Empate na maior iniciativa: entram juntos no Tick 1, e age primeiro quem tiver o maior Raciocínio; persistindo, decidam no 1d6.)
+Cada degrau custa também **1d6 na ação**: é o **contrapé**, de quem chegou atrasado à briga e ainda está reencontrando o eixo. (Empate na maior iniciativa: entram juntos no Tick 1, e age primeiro quem tiver o maior Raciocínio; persistindo, decidam no 1d6.)
 
 | Atrás da maior | Entra no | Contrapé |
 |---|:---:|:---:|
@@ -43,11 +43,11 @@ Cada degrau custa também **1d6 na ação** — é o **contrapé**, de quem cheg
 
 O contrapé **cai 1d6 a cada Tick que passa**, e não depende de você fazer nada: ele é do relógio, e não da sua ação. Quem entrou no Tick 3 com −2d6 escolhe entre **bater no Tick 3 por −2d6**, **no Tick 4 por −1d6** ou **no Tick 5 inteiro**.
 
-Essa é a decisão que a iniciativa cria, e ela é real: num sistema em que a jogada é *total supera a Defesa*, **um dado a menos corta a chance de acertar quase pela metade**. Esperar custa tempo — e tempo, aqui, é a moeda de tudo. A vantagem de quem rolou bem não é "o outro erra": é **o outro chega depois**.
+Essa é a decisão que a iniciativa cria, e ela é real: num sistema em que a jogada é *total supera a Defesa*, **um dado a menos corta a chance de acertar quase pela metade**. Esperar custa tempo, e tempo, aqui, é a moeda de tudo. A vantagem de quem rolou bem não é "o outro erra": é **o outro chega depois**.
 
 <p class="muted">E é por isso que o contrapé não se apaga fazendo qualquer coisa. Se bastasse gastar um Tick com uma bobagem para limpá-lo, a jogada certa seria sempre essa, e uma penalidade que vale metade da luta não pode custar um instante.</p>
 
-Cada ação tem uma **Velocidade** — quantos Ticks ela custa antes de você poder agir de novo:
+Cada ação tem uma **Velocidade**, quantos Ticks ela custa antes de você poder agir de novo:
 
 | Ticks | Tipo de ação | Exemplos |
 |:---:|---|---|
@@ -65,9 +65,9 @@ Para atacar, monte o pool de **Atributo + Habilidade**, some o **Acerto da Arma*
 
 <p class="formula">Ataque = (Atributo + Habilidade)/2 + Especialidade + Arma + Centelha</p>
 
-<p class="muted">O <strong>Atributo</strong> usado em combate corpo a corpo (armas ou punhos) é <strong>Destreza ou Força</strong>, à escolha de quem ataca — normalmente o maior dos dois (Força 5 e Destreza 2? use a Força). Para <strong>arremessos</strong>, sempre Destreza; para <strong>atirar</strong> (arco ou besta), sempre Percepção.</p>
+<p class="muted">O <strong>Atributo</strong> usado em combate corpo a corpo (armas ou punhos) é <strong>Destreza ou Força</strong>, à escolha de quem ataca, normalmente o maior dos dois (Força 5 e Destreza 2? use a Força). Para <strong>arremessos</strong>, sempre Destreza; para <strong>atirar</strong> (arco ou besta), sempre Percepção.</p>
 
-A Defesa é um valor **fixo** e **passivo** — o alvo não rola para se defender:
+A Defesa é um valor **fixo** e **passivo**, o alvo não rola para se defender:
 
 <p class="formula">Defesa = (Destreza + Habilidade) × 2 + Especialidade + Centelha</p>
 
@@ -77,7 +77,7 @@ Acertar não é tudo ou nada: a cada **6 pontos acima da Defesa**, você ganha *
 
 ### Empunhadura dupla: um ataque por mão
 
-Via de regra, **cada ação rende um só ataque** — uma arma, um golpe. Ninguém divide a ação em vários golpes com uma arma na mão (mais ataques numa ação vêm só de **duas armas** ou de uma Técnica que os conceda). A exceção é lutar com **uma arma em cada mão**: aí você pode desferir **um ataque por mão** na mesma ação (mesma Velocidade). Não é obrigatório abrir os dois — se preferir, faça só o golpe da mão hábil, normal, sem penalidade.
+Via de regra, **cada ação rende um só ataque**: uma arma, um golpe. Ninguém divide a ação em vários golpes com uma arma na mão (mais ataques numa ação vêm só de **duas armas** ou de uma Técnica que os conceda). A exceção é lutar com **uma arma em cada mão**: aí você pode desferir **um ataque por mão** na mesma ação (mesma Velocidade). Não é obrigatório abrir os dois, se preferir, faça só o golpe da mão hábil, normal, sem penalidade.
 
 Ao desferir os dois golpes:
 
@@ -85,7 +85,7 @@ Ao desferir os dois golpes:
 - cada golpe rola o próprio acerto e o próprio dano, com a arma daquela mão (a Força soma uma vez em cada);
 - podem cair no **mesmo alvo** ou em **alvos diferentes**, um por mão.
 
-O preço não está tanto nos dados — pela régua da Margem, um golpe que **encosta** já rende quase todo o dano —, e sim na **exposição**: cada ataque que você faz baixa a Esquiva e o Bloqueio (ver *Guarda sob pressão*), então brigar com as duas mãos derruba a sua guarda o **dobro** de um golpe só, até seu próximo turno. Em troca, a **Defesa das armas continua valendo** para aparar: empunhar duas lâminas ataca e defende ao mesmo tempo — o que custa é ficar aberto, não largar a guarda da arma.
+O preço não está tanto nos dados (pela régua da Margem, um golpe que **encosta** já rende quase todo o dano), e sim na **exposição**: cada ataque que você faz baixa a Esquiva e o Bloqueio (ver *Guarda sob pressão*), então brigar com as duas mãos derruba a sua guarda o **dobro** de um golpe só, até seu próximo turno. Em troca, a **Defesa das armas continua valendo** para aparar: empunhar duas lâminas ataca e defende ao mesmo tempo: o que custa é ficar aberto, não largar a guarda da arma.
 
 Uma **arma de duas mãos** ocupa as duas e não permite o segundo ataque; um **escudo** na mão inábil troca o golpe extra por Bloqueio. É a terceira via da empunhadura, ao lado do dano concentrado das duas mãos e da muralha do escudo: **tempo e pressão**, dois golpes por vez ao custo da própria guarda.
 
@@ -93,35 +93,35 @@ Uma **arma de duas mãos** ocupa as duas e não permite o segundo ataque; um **e
 
 <p class="formula">Dano = (Dado da Arma + Margem) + Força − Absorção</p>
 
-O **Dado da Arma** vem da classe (leve 1d6−2, média 1d6, pesada 2d6, haste 1d6+2, distância/arremesso 1d6 a 1d6+2). Armas de uma mão somam a **Força**; as de duas mãos, o **dobro da Força** — **exceto as hastes de estocada** (Lança e afins), que ferem por alcance e precisão, não por peso, e somam apenas a **Força simples**. Cada Margem (6 pontos acima da Defesa) acrescenta +1d6.
+O **Dado da Arma** vem da classe (leve 1d6−2, média 1d6, pesada 2d6, haste 1d6+2, distância/arremesso 1d6 a 1d6+2). Armas de uma mão somam a **Força**; as de duas mãos, o **dobro da Força**: **exceto as hastes de estocada** (Lança e afins), que ferem por alcance e precisão, não por peso, e somam apenas a **Força simples**. Cada Margem (6 pontos acima da Defesa) acrescenta +1d6.
 
 ### Os três modos de dano
 
-Todo golpe tem um **modo**, e a maioria das armas pode usar mais de um — você escolhe conforme o alvo:
+Todo golpe tem um **modo**, e a maioria das armas pode usar mais de um, você escolhe conforme o alvo:
 
-- **Cortante** — gume deslizante (espada, machado). Letal.
-- **Perfurante** — ponta ou projétil que fura: estocada, adaga de rondel, bico de picareta, flecha, virote, dardo lançado. Letal. (Não há distinção entre projétil e estocada: ambos são Perfurante.)
-- **Impacto** — maça, martelo, malho; também socos e quedas. Em regra **nocauteia** (ver [Vida & Ferimentos](/regras/vida-ferimentos-cura)).
+- **Cortante**: gume deslizante (espada, machado). Letal.
+- **Perfurante**, ponta ou projétil que fura: estocada, adaga de rondel, bico de picareta, flecha, virote, dardo lançado. Letal. (Não há distinção entre projétil e estocada: ambos são Perfurante.)
+- **Impacto**: maça, martelo, malho; também socos e quedas. Em regra **nocauteia** (ver [Vida & Ferimentos](/regras/vida-ferimentos-cura)).
 
-A **Absorção** total de um golpe é **Absorção natural + a absorção da armadura**. A armadura tem **três Absorções** — Impacto, Corte e Perfuração —, e o **dano Perfurante usa a Absorção de Perfuração**:
+A **Absorção** total de um golpe é **Absorção natural + a absorção da armadura**. A armadura tem **três Absorções** (Impacto, Corte e Perfuração), e o **dano Perfurante usa a Absorção de Perfuração**:
 
-- **Absorção natural:** **Vigor + Centelha** contra o **Impacto** (o corpo e a fagulha amortecem a pancada); **só a Centelha** contra os letais (Cortante e Perfurante) — a carne nua não para o fio nem a ponta, apenas a dureza sobre-humana da **Centelha** o faz. Um mortal (Centelha 0) tem **0** de Absorção natural contra lâminas: depende inteiramente da armadura.
+- **Absorção natural:** **Vigor + Centelha** contra o **Impacto** (o corpo e a fagulha amortecem a pancada); **só a Centelha** contra os letais (Cortante e Perfurante): a carne nua não para o fio nem a ponta, apenas a dureza sobre-humana da **Centelha** o faz. Um mortal (Centelha 0) tem **0** de Absorção natural contra lâminas: depende inteiramente da armadura.
 - **+ armadura:** a placa quase zera o Corte, mal segura o Impacto e tem Perfuração baixa. Empilhar peças vale a **maior Absorção de cada categoria**; ver [Armas & Armaduras](/regras/armas-e-armaduras).
 
 ### O gate de Perfuração
 
 O modo **Perfurante** tem um **Nível de Perfuração** (0–3) e enfrenta o **Nível** (Resistência à Perfuração) da armadura:
 
-- Se o Nível de Perfuração da arma for **menor** que o da armadura, o golpe **resvala — dano 0** (nem rola).
-- Se for **igual ou maior**, o gate abre: rola o dano e subtrai a **Absorção de Perfuração** (baixa — ao furar, encontra pouca proteção).
+- Se o Nível de Perfuração da arma for **menor** que o da armadura, o golpe **resvala, dano 0** (nem rola).
+- Se for **igual ou maior**, o gate abre: rola o dano e subtrai a **Absorção de Perfuração** (baixa, ao furar, encontra pouca proteção).
 
-**Cortante e Impacto não passam pelo gate** — sempre subtraem a absorção direto. É por isso que a placa completa (Nível 3) é à prova de qualquer arma de mão (espada, flecha, lança, besta, picareta param em N0–N2), cedendo só ao Impacto, à perfuração nível 3+ (cerco, magia), Proeza ou feitiçaria. O **Nível nunca soma** ao empilhar armaduras: vale sempre o maior.
+**Cortante e Impacto não passam pelo gate**: sempre subtraem a absorção direto. É por isso que a placa completa (Nível 3) é à prova de qualquer arma de mão (espada, flecha, lança, besta, picareta param em N0–N2), cedendo só ao Impacto, à perfuração nível 3+ (cerco, magia), Proeza ou feitiçaria. O **Nível nunca soma** ao empilhar armaduras: vale sempre o maior.
 
 ### Couraça de Porte
 
 Bichos muito maiores que um homem não são só sacos de vida maiores: a pura massa, a pele grossa, as escamas e o casco viram **armadura de carne**. Cada porte acima do Médio soma uma **Couraça** à Absorção, e os maiores ganham um **Nível de Perfuração natural** (o mesmo gate da placa: flecha e lança comuns resvalam).
 
-A Couraça incide **só em Corte e Perfuração** — o **Impacto a ignora**. Cortar ou furar uma montanha de carne arranha a superfície; já uma pancada concentrada (maça, martelo, malho, um pedregulho) transfere a energia para dentro, do mesmo jeito que o Impacto vence a placa. Contra um titã, **esmague, não corte** — e contra os maiores, nem isso basta sem Centelha.
+A Couraça incide **só em Corte e Perfuração**: o **Impacto a ignora**. Cortar ou furar uma montanha de carne arranha a superfície; já uma pancada concentrada (maça, martelo, malho, um pedregulho) transfere a energia para dentro, do mesmo jeito que o Impacto vence a placa. Contra um titã, **esmague, não corte**, e contra os maiores, nem isso basta sem Centelha.
 
 | Porte | Couraça (Corte/Perf.) | Perfuração natural |
 |---|---|---|
@@ -137,20 +137,20 @@ A Couraça **empilha** com armadura (soma na Absorção) e com a Absorção de P
 
 ### Trocar de modo
 
-Cada arma tem um **modo principal** (sem custo) e, às vezes, **secundários** — alternar para um secundário custa **−2 ao acerto e −1d6 no dano** (estocar com uma lâmina de corte é mais difícil e sai mais fraco). Algumas armas, como a **Alabarda**, têm vários modos *principais*: alternam sem penalidade.
+Cada arma tem um **modo principal** (sem custo) e, às vezes, **secundários**: alternar para um secundário custa **−2 ao acerto e −1d6 no dano** (estocar com uma lâmina de corte é mais difícil e sai mais fraco). Algumas armas, como a **Alabarda**, têm vários modos *principais*: alternam sem penalidade.
 
 ## Quase-Acerto
 
-Errar por pouco ainda raspa o alvo. Como o **Quase-Acerto** funciona em detalhe — a Margem do raspão, os valores por classe de arma e de armadura, e os modificadores que o afetam — é o assunto do próximo capítulo, [Quase-Acerto](/regras/quase-acerto).
+Errar por pouco ainda raspa o alvo. Como o **Quase-Acerto** funciona em detalhe (a Margem do raspão, os valores por classe de arma e de armadura, e os modificadores que o afetam) é o assunto do próximo capítulo, [Quase-Acerto](/regras/quase-acerto).
 
 ## Esquivar ou Bloquear
 
 Sua Defesa pode vir de duas fontes, e você usa **a melhor** delas contra cada golpe:
 
-- **Esquiva** — com a habilidade Esquiva, mais a mobilidade do terreno. Some sai da frente.
-- **Bloqueio** — com a Habilidade **Bloqueio** (a mesma para qualquer arma, escudo ou mão), mais a **Defesa da Arma** e o escudo. Apara o golpe.
+- **Esquiva**: com a habilidade Esquiva, mais a mobilidade do terreno. Some sai da frente.
+- **Bloqueio**: com a Habilidade **Bloqueio** (a mesma para qualquer arma, escudo ou mão), mais a **Defesa da Arma** e o escudo. Apara o golpe.
 
-A **Defesa da Arma** (coluna *Defesa* em [Armas & Armaduras](/regras/armas-e-armaduras)) entra no **Bloqueio**: uma espada acrescenta **+1**, uma haste **+2** (o alcance afasta o golpe), e as **armas pesadas de duas mãos −2** (o espadão e o martelo dão muito dano, mas comprometem a guarda e **expõem o lutador entre os golpes**). Quem usa **uma só mão** pode ocupar a outra: um **escudo** (+1 a +3) ou uma **arma na mão inábil** (+1) eleva o Bloqueio. E a arma da mão inábil não só defende — ela rende um **segundo ataque** na ação (ver *Empunhadura dupla*), e o Bloqueio dela continua valendo mesmo quando você golpeia com ela. É a troca central da empunhadura: **dano concentrado e alcance com as duas mãos, a muralha do escudo, ou dois golpes por vez com uma arma em cada mão.**
+A **Defesa da Arma** (coluna *Defesa* em [Armas & Armaduras](/regras/armas-e-armaduras)) entra no **Bloqueio**: uma espada acrescenta **+1**, uma haste **+2** (o alcance afasta o golpe), e as **armas pesadas de duas mãos −2** (o espadão e o martelo dão muito dano, mas comprometem a guarda e **expõem o lutador entre os golpes**). Quem usa **uma só mão** pode ocupar a outra: um **escudo** (+1 a +3) ou uma **arma na mão inábil** (+1) eleva o Bloqueio. E a arma da mão inábil não só defende: ela rende um **segundo ataque** na ação (ver *Empunhadura dupla*), e o Bloqueio dela continua valendo mesmo quando você golpeia com ela. É a troca central da empunhadura: **dano concentrado e alcance com as duas mãos, a muralha do escudo, ou dois golpes por vez com uma arma em cada mão.**
 
 ### Projéteis rápidos: só Esquiva ou escudo
 
@@ -192,15 +192,15 @@ O jogo tem **um só número de andar em combate**, e ele serve para duas coisas:
 - **O primeiro Tick é de graça durante outra ação** (atacar, conjurar), em qualquer direção e sem gastar a vez. É o arqueiro que recua e dispara, o duelista que circula enquanto golpeia.
 - **Para ir além, cada Tick a mais rende outro tanto.** Não há ação separada nem tabela: andar cobra Tick como qualquer outra coisa, e você para quando quiser.
 
-Ele é, na prática, **um Tick de movimento**: como um Tick é mais ou menos um segundo, o número em metros é também a sua velocidade em metros por segundo. A faixa é humana de propósito — **de 2 a 5 m/s**. Andar tranquilo são 1,4; fechar distância numa briga, sem perder a guarda nem o equilíbrio, fica entre 2 e 4; e o teto de 5 é o acrobata. O resto do tempo da ação você não está andando, está lutando.
+Ele é, na prática, **um Tick de movimento**: como um Tick é mais ou menos um segundo, o número em metros é também a sua velocidade em metros por segundo. A faixa é humana de propósito: **de 2 a 5 m/s**. Andar tranquilo são 1,4; fechar distância numa briga, sem perder a guarda nem o equilíbrio, fica entre 2 e 4; e o teto de 5 é o acrobata. O resto do tempo da ação você não está andando, está lutando.
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Kael anda <strong>4 m por Tick</strong>. O inimigo está a <strong>9 metros</strong>. Ele gasta <strong>2 Ticks</strong> fechando a distância (8 m) e ataca do terceiro, com o último metro saindo no passo grátis da própria investida. Se preferisse correr, cobriria os 9 m em menos de dois Ticks — mas correndo não se ataca, e a guarda vai junto.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Kael anda <strong>4 m por Tick</strong>. O inimigo está a <strong>9 metros</strong>. Ele gasta <strong>2 Ticks</strong> fechando a distância (8 m) e ataca do terceiro, com o último metro saindo no passo grátis da própria investida. Se preferisse correr, cobriria os 9 m em menos de dois Ticks, mas correndo não se ataca, e a guarda vai junto.</div>
 
-Ele é, na prática, **um Tick de movimento**: como um Tick é mais ou menos um segundo, o número em metros é também a sua velocidade em metros por segundo. A faixa é humana de propósito — **de 2 a 5 m/s**. Andar tranquilo são 1,4 m/s; fechar distância numa briga, sem perder a guarda nem o equilíbrio, fica entre 2 e 4; e o teto de 5 é o acrobata. O resto do tempo da ação você não está andando, está lutando.
+Ele é, na prática, **um Tick de movimento**: como um Tick é mais ou menos um segundo, o número em metros é também a sua velocidade em metros por segundo. A faixa é humana de propósito: **de 2 a 5 m/s**. Andar tranquilo são 1,4 m/s; fechar distância numa briga, sem perder a guarda nem o equilíbrio, fica entre 2 e 4; e o teto de 5 é o acrobata. O resto do tempo da ação você não está andando, está lutando.
 
 <p class="muted">Quem tem <strong>perna curta</strong> (anão, gnomo, halfling) desliza <strong>dois terços</strong> disso, e corre e salta metade.</p>
 
-Para ir além, gaste a vez numa **ação de movimento** — Corrida ou Salto, ambas **Velocidade 3**.
+Para ir além, gaste a vez numa **ação de movimento**: Corrida ou Salto, ambas **Velocidade 3**.
 
 ### Corrida (Velocidade 3)
 
@@ -211,7 +211,7 @@ Vai **50 a 67% mais longe por Tick** que o Deslocamento de Batalha, e o preço �
 É o mesmo −4 do Tick do Golpe e das condições surpreso, cego e imobilizado, e ele diz uma coisa
 só: **correndo não se apara nem se esquiva**. O acerto não sofre, porque quem parou, parou.
 
-Interrompível a **qualquer Tick** — você decide quando parar. A largada acelera: os **3 primeiros Ticks** correm à **Velocidade de Arranque** (a explosão do disparo); do **4º Tick em diante**, à **Velocidade de Corrida** (o ritmo sustentado). Cada valor é em metros por Tick.
+Interrompível a **qualquer Tick**: você decide quando parar. A largada acelera: os **3 primeiros Ticks** correm à **Velocidade de Arranque** (a explosão do disparo); do **4º Tick em diante**, à **Velocidade de Corrida** (o ritmo sustentado). Cada valor é em metros por Tick.
 
 | Fase | Quando | m por Tick |
 |---|---|---|
@@ -234,7 +234,7 @@ Preparo que a sua arma já tem, atravessado à velocidade de Corrida.
 
 A arma **leve tem Preparo 0**, e por isso não investe de graça: ela precisa comprar Preparo antes
 (a carga voluntária). É a arma que **arma** o golpe que investe bem, e a pesada, com Preparo 2, é a
-que investe melhor — que é exatamente a imagem de quem atravessa o salão com o martelo erguido.
+que investe melhor, que é exatamente a imagem de quem atravessa o salão com o martelo erguido.
 
 ### Salto (Velocidade 3)
 
@@ -243,12 +243,12 @@ Um impulso único que, **uma vez iniciado, não pode ser interrompido**. Três a
 | Salto | Alcance | Fórmula |
 |---|---|---|
 | **Vertical** | altura, em cm | (Força × 20) + (Atletismo × 10) + (Destreza × 4) + 50 por Centelha |
-| **Horizontal — parado** | distância, em m | (Força + Atletismo + Centelha) ÷ 2 |
-| **Horizontal — correndo** | distância, em m | Velocidade atual + (Atletismo ÷ 2) + Centelha |
+| **Horizontal (parado)** | distância, em m | (Força + Atletismo + Centelha) ÷ 2 |
+| **Horizontal (correndo)** | distância, em m | Velocidade atual + (Atletismo ÷ 2) + Centelha |
 
-<p class="muted">No salto correndo, <strong>Velocidade atual</strong> é a sua velocidade no instante do impulso — Arranque se você corre há ≤3 Ticks, Corrida depois (na ficha, supõe-se corrida plena). O <strong>Salto</strong> é a explosão de força do corpo: a Força lança, o Atletismo controla, a Destreza ajusta — e a Centelha rompe os limites mortais, do pulo humano ao salto lendário.</p>
+<p class="muted">No salto correndo, <strong>Velocidade atual</strong> é a sua velocidade no instante do impulso: Arranque se você corre há ≤3 Ticks, Corrida depois (na ficha, supõe-se corrida plena). O <strong>Salto</strong> é a explosão de força do corpo: a Força lança, o Atletismo controla, a Destreza ajusta, e a Centelha rompe os limites mortais, do pulo humano ao salto lendário.</p>
 
-<div class="callout regra"><span class="lbl">Regra opcional</span>O <strong>Fôlego</strong> — o cansaço que limita as rajadas de golpes, o <strong>Esforço</strong> (forçar o golpe por mais dados) e a ação de <strong>Tomar Fôlego</strong> — é um <strong>módulo avançado, desligado por padrão</strong>: fica guardado à parte, no <a href="/regras/folego">módulo Fôlego</a>, e o site não mostra os números dele. As mesas que quiserem ligá-lo o encontram lá; nada mais no Combate depende disso.</div>
+<div class="callout regra"><span class="lbl">Regra opcional</span>O <strong>Fôlego</strong>, o cansaço que limita as rajadas de golpes, o <strong>Esforço</strong> (forçar o golpe por mais dados) e a ação de <strong>Tomar Fôlego</strong>, é um <strong>módulo avançado, desligado por padrão</strong>: fica guardado à parte, no <a href="/regras/folego">módulo Fôlego</a>, e o site não mostra os números dele. As mesas que quiserem ligá-lo o encontram lá; nada mais no Combate depende disso.</div>
 
 ## Vantagem tática: posição e número
 
@@ -262,18 +262,18 @@ Posição, cobertura e postura mudam o combate sem mudar suas fichas: todos eles
 | Alvo errático (movimento imprevisível), à distância | **+2** |
 | Atacante em terreno alto | **−2** |
 | Mirar (gasta uma ação preparando o golpe) | **−2** |
-| Alvo prono — atacado **corpo a corpo** | **−2** |
-| Alvo prono — atacado **à distância** | **+2** |
+| Alvo prono, atacado **corpo a corpo** | **−2** |
+| Alvo prono, atacado **à distância** | **+2** |
 | Flanco ou pelas costas | **−2** |
 | Alvo surpreso, cego ou imobilizado | **−4** |
 
-<p class="muted">A <strong>postura agressiva</strong> é a exceção que mexe nos dois lados: você baixa <strong>−2</strong> a sua própria Defesa até a próxima ação em troca de <strong>+2</strong> no seu ataque. O empilhamento de modificadores numa mesma Defesa é limitado a <strong>±6</strong> — nenhuma soma de vantagens transforma o golpe em acerto (ou erro) automático.</p>
+<p class="muted">A <strong>postura agressiva</strong> é a exceção que mexe nos dois lados: você baixa <strong>−2</strong> a sua própria Defesa até a próxima ação em troca de <strong>+2</strong> no seu ataque. O empilhamento de modificadores numa mesma Defesa é limitado a <strong>±6</strong>: nenhuma soma de vantagens transforma o golpe em acerto (ou erro) automático.</p>
 
-<p class="formula">Cobertura total — sem nenhuma linha de visão — não pode ser alvejada; primeiro é preciso flanquear ou destruir o anteparo.</p>
+<p class="formula">Cobertura total (sem nenhuma linha de visão) não pode ser alvejada; primeiro é preciso flanquear ou destruir o anteparo.</p>
 
 ### Golpes no mesmo instante
 
-Quando dois golpes caem no **mesmo Tick**, os dois atacantes estão abertos ao mesmo tempo: cada um ataca contra a guarda comprometida do outro. Não importa quem a mesa resolveu primeiro — a escada se lê pela **agenda**, e não pela ordem em que as jogadas foram narradas.
+Quando dois golpes caem no **mesmo Tick**, os dois atacantes estão abertos ao mesmo tempo: cada um ataca contra a guarda comprometida do outro. Não importa quem a mesa resolveu primeiro: a escada se lê pela **agenda**, e não pela ordem em que as jogadas foram narradas.
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span>Duas adagas (Preparo 0) agem no <strong>Tick 4</strong>. As duas golpeiam nesse instante, então as duas estão em <strong>−4</strong>: cada uma ataca uma Defesa aberta. Se uma delas fosse uma espada longa (Preparo 1) declarada no Tick 3, o golpe dela também cairia no 4, e valeria o mesmo.</div>
 
@@ -298,13 +298,13 @@ Isso é **só no acerto**: não muda a Defesa passiva do alvo, **não entra no t
 
 Cada inimigo extra desgasta a sua guarda, e cada golpe que **você** desfere também.
 
-<div class="callout regra"><span class="lbl">Guarda sob pressão</span>Cada ataque que você <strong>faz ou recebe</strong> reduz sua <strong>Esquiva e Bloqueio em −2</strong>, e o efeito <strong>acumula até a sua próxima ação</strong> — quando você age, a guarda se refaz e o acúmulo zera. <strong>Sem teto:</strong> ninguém desvia de uma dúzia de golpes. Atacar te expõe (e atacar com as <strong>duas mãos</strong>, o dobro); ser cercado te expõe muito mais. Um único oponente brilhante resiste a alguns fracos — mas a maré da multidão acaba furando qualquer guarda.</div>
+<div class="callout regra"><span class="lbl">Guarda sob pressão</span>Cada ataque que você <strong>faz ou recebe</strong> reduz sua <strong>Esquiva e Bloqueio em −2</strong>, e o efeito <strong>acumula até a sua próxima ação</strong>: quando você age, a guarda se refaz e o acúmulo zera. <strong>Sem teto:</strong> ninguém desvia de uma dúzia de golpes. Atacar te expõe (e atacar com as <strong>duas mãos</strong>, o dobro); ser cercado te expõe muito mais. Um único oponente brilhante resiste a alguns fracos, mas a maré da multidão acaba furando qualquer guarda.</div>
 
-A posição fecha o cerco: quem ataca pelo **flanco ou pelas costas** ganha o **−2 na Defesa** do alvo, porque ele não pode voltar a melhor guarda contra todos ao mesmo tempo. Dois inimigos coordenados — um prendendo a frente, outro contornando — combinam a penalidade de pressão com a de flanco: é assim que o número vira vantagem tática, e não só mais dados.
+A posição fecha o cerco: quem ataca pelo **flanco ou pelas costas** ganha o **−2 na Defesa** do alvo, porque ele não pode voltar a melhor guarda contra todos ao mesmo tempo. Dois inimigos coordenados (um prendendo a frente, outro contornando) combinam a penalidade de pressão com a de flanco: é assim que o número vira vantagem tática, e não só mais dados.
 
 ### Regra de Horda
 
-Quando muitos capangas iguais avançam juntos, não role um por um — trate o bando como **um só esquadrão**. O tamanho vira **Magnitude**, e cada degrau exige cerca do **dobro** de gente:
+Quando muitos capangas iguais avançam juntos, não role um por um: trate o bando como **um só esquadrão**. O tamanho vira **Magnitude**, e cada degrau exige cerca do **dobro** de gente:
 
 <div class="table-wrap">
 
@@ -314,18 +314,18 @@ Quando muitos capangas iguais avançam juntos, não role um por um — trate o b
 
 </div>
 
-- **Ataque** — o esquadrão faz **um ataque por inimigo engajado, até Magnitude + 1** (o teto é a frente de combate: só cabe tanta gente em volta). Contra um alvo só, os golpes **concentram numa rolagem**; contra vários, **espalham-se** um por inimigo. Cada ataque rola o pool de um capanga **+ Magnitude d6 no acerto e + Magnitude d6 no dano** (o enxame que conecta cai todo em cima). O esquadrão **não** aplica a penalidade de guarda da Pressão; sua ameaça já é a chuva de dados.
-- **Modos** — os ataques podem misturar **Impacto / Corte / Perfuração** e **corpo a corpo ou à distância**. Um esquadrão **híbrido** o bastante — armas variadas — ataca sempre pelo **modo de menor Absorção do alvo**, achando a brecha na guarda.
-- **Defesa** — a de um capanga **−2**: multidão amontoada é alvo fácil.
-- **Baixas** — o esquadrão tem **PV = nº de membros × o PV-de-horda do capanga** (Comum **5**, Treinado **10**, Elite **15**). Na horda o capanga perde o **piso de durabilidade de 25**, que protege só heróis e NPCs nomeados. O dano que você causa **acumula**; cada vez que o total passa o PV-de-horda de um capanga, **cai um membro** — um golpe pesado derruba vários de uma vez. Conforme caem, a **Magnitude desce em degraus**, até sobrar um (Magnitude 0), que volta a ser um NPC comum. Ataques em **área** batem direto no PV do esquadrão.
+- **Ataque**: o esquadrão faz **um ataque por inimigo engajado, até Magnitude + 1** (o teto é a frente de combate: só cabe tanta gente em volta). Contra um alvo só, os golpes **concentram numa rolagem**; contra vários, **espalham-se** um por inimigo. Cada ataque rola o pool de um capanga **+ Magnitude d6 no acerto e + Magnitude d6 no dano** (o enxame que conecta cai todo em cima). O esquadrão **não** aplica a penalidade de guarda da Pressão; sua ameaça já é a chuva de dados.
+- **Modos**: os ataques podem misturar **Impacto / Corte / Perfuração** e **corpo a corpo ou à distância**. Um esquadrão **híbrido** o bastante (armas variadas) ataca sempre pelo **modo de menor Absorção do alvo**, achando a brecha na guarda.
+- **Defesa**, a de um capanga **−2**: multidão amontoada é alvo fácil.
+- **Baixas**: o esquadrão tem **PV = nº de membros × o PV-de-horda do capanga** (Comum **5**, Treinado **10**, Elite **15**). Na horda o capanga perde o **piso de durabilidade de 25**, que protege só heróis e NPCs nomeados. O dano que você causa **acumula**; cada vez que o total passa o PV-de-horda de um capanga, **cai um membro**: um golpe pesado derruba vários de uma vez. Conforme caem, a **Magnitude desce em degraus**, até sobrar um (Magnitude 0), que volta a ser um NPC comum. Ataques em **área** batem direto no PV do esquadrão.
 
-Na prática, um lutador resistente abre caminho por ~**20 Comuns**, ~**8 Treinados** ou ~**5 Elites** antes de correr risco real — mas uma maré de **30 ou 40** afoga até ele. É o pilar do sistema: um herói vence vários fracos e, ainda assim, **perde para a multidão**.
+Na prática, um lutador resistente abre caminho por ~**20 Comuns**, ~**8 Treinados** ou ~**5 Elites** antes de correr risco real, mas uma maré de **30 ou 40** afoga até ele. É o pilar do sistema: um herói vence vários fracos e, ainda assim, **perde para a multidão**.
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Sora encara <strong>20 recrutas</strong> (Comuns). Magnitude <strong>4</strong>: o PV do esquadrão é 20 × 5 = <strong>100</strong>, e o ataque deles é <strong>1d6 + 4d6</strong> no acerto e <strong>+4d6</strong> no dano. No 1º golpe Sora rola o montante e causa 19 de dano: 19 ÷ 5 = <strong>3 baixas</strong> (sobram 4 acumulados). Restam 17 — ainda Magnitude 4. Ela ceifa ~4–5 por rodada; ao chegar a 15 membros a Magnitude cai para 3 e a horda morde menos.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Sora encara <strong>20 recrutas</strong> (Comuns). Magnitude <strong>4</strong>: o PV do esquadrão é 20 × 5 = <strong>100</strong>, e o ataque deles é <strong>1d6 + 4d6</strong> no acerto e <strong>+4d6</strong> no dano. No 1º golpe Sora rola o montante e causa 19 de dano: 19 ÷ 5 = <strong>3 baixas</strong> (sobram 4 acumulados). Restam 17: ainda Magnitude 4. Ela ceifa ~4–5 por rodada; ao chegar a 15 membros a Magnitude cai para 3 e a horda morde menos.</div>
 
 ## Técnicas em combate: tempo e combos
 
-As Técnicas das Proezas entram na luta por **dois medidores independentes**: a **Energia** é o combustível da *cena* (quanto você ainda tem no tanque); os **Ticks** são o custo do *momento* (quanto tempo o poder rouba da sua linha do tempo). Decidir entre os dois — "gasto tempo agora ou guardo o tanque?" — é metade da tática.
+As Técnicas das Proezas entram na luta por **dois medidores independentes**: a **Energia** é o combustível da *cena* (quanto você ainda tem no tanque); os **Ticks** são o custo do *momento* (quanto tempo o poder rouba da sua linha do tempo). Decidir entre os dois ("gasto tempo agora ou guardo o tanque?") é metade da tática.
 
 | Tipo de Técnica | Ticks | Como entra |
 |---|:---:|---|
@@ -336,11 +336,11 @@ As Técnicas das Proezas entram na luta por **dois medidores independentes**: a 
 
 ### Combos: concentrar num golpe só
 
-Numa única ação você pode **empilhar várias Técnicas suplementares** sobre o mesmo golpe — mas cada acréscimo encarece. A **k-ésima** Técnica somada à ação cobra uma **sobretaxa de +(k−1) de Energia** (a 2ª custa +1, a 3ª +2, a 4ª +3…).
+Numa única ação você pode **empilhar várias Técnicas suplementares** sobre o mesmo golpe, mas cada acréscimo encarece. A **k-ésima** Técnica somada à ação cobra uma **sobretaxa de +(k−1) de Energia** (a 2ª custa +1, a 3ª +2, a 4ª +3…).
 
 <p class="formula">Separado: golpe A com Téc. X (custo X) + golpe B com Téc. Y (custo Y) = X + Y, em duas ações.<br>Combo: um golpe com X e Y juntos = X + Y + 1, numa ação só.</p>
 
-Combinar é **mais caro em Energia**, mas economiza **Ticks** e concentra os efeitos — mais Margem, um único impacto demolidor em vez de dois mornos. O teto é o seu bolso: a Energia ((Vigor + Compostura + Raciocínio + Vontade) ÷ 2 + Centelha × 2) é que diz até onde o combo vai, e é por isso que a Centelha mais alta comba mais fundo. Bandas 4–5 ainda cobram Vontade (+1 e +2), o que torna combos de elite raros e climáticos.
+Combinar é **mais caro em Energia**, mas economiza **Ticks** e concentra os efeitos: mais Margem, um único impacto demolidor em vez de dois mornos. O teto é o seu bolso: a Energia ((Vigor + Compostura + Raciocínio + Vontade) ÷ 2 + Centelha × 2) é que diz até onde o combo vai, e é por isso que a Centelha mais alta comba mais fundo. Bandas 4–5 ainda cobram Vontade (+1 e +2), o que torna combos de elite raros e climáticos.
 
 ### Posturas sustentadas
 

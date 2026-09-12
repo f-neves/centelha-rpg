@@ -34,8 +34,8 @@ A pergunta não é se a coisa é mágica. É **por onde ela age**.
 ```mermaid
 flowchart TD
   A(["Quero mexer com outra pessoa"]) --> B{"O efeito passa pelo juízo dela?"}
-  B -->|"SIM: ela ouve, pondera e decide (argumento, charme, sedução, ameaça, engano, ler o rosto)"| S["SOCIAL — rola vs Defesa Social"]
-  B -->|"NÃO: entra direto na mente, contorna o juízo (ordem obedecida sozinha, emoção ou visão plantada, ler pensamento, controle)"| M["MENTAL — rola vs Defesa Mental"]
+  B -->|"SIM: ela ouve, pondera e decide (argumento, charme, sedução, ameaça, engano, ler o rosto)"| S["SOCIAL: rola vs Defesa Social"]
+  B -->|"NÃO: entra direto na mente, contorna o juízo (ordem obedecida sozinha, emoção ou visão plantada, ler pensamento, controle)"| M["MENTAL: rola vs Defesa Mental"]
   S --> S2{"É o dia a dia ou uma cena decisiva?"}
   S2 -->|"Dia a dia: um pedido, um favor, construir um vínculo"| Regua["Régua de Relação (ver fluxo)"]
   S2 -->|"Cena tensa: dobrar alguém agora, custe o que custar"| CS["Combate Social (gastar Vontade para não ceder)"]

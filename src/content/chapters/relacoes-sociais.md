@@ -158,7 +158,7 @@ Quando o alvo **não** paga a Vontade, ele **cede o ponto** daquela troca: aceit
 
 Quando não há pressa nem plateia (um cortejo de meses, uma amizade cultivada, um vassalo trabalhado com paciência), em vez de rolar você pode **tomar a média** do seu pool de influência e ir **empilhando Firulas** (aqui elas são gestos: um presente certeiro, um favor lembrado, uma visita na hora certa) até furar a Defesa Social do alvo. Numa cena tensa ao vivo, volta o Combate Social com dados.
 
-**A média** de um pool é fixa e **não se arredonda** — o meio ponto é real, porque 3d6 tira 10,5 mesmo. Os bônus (o +2 de soma ímpar, o Peso, a Centelha, as Firulas) continuam somando:
+**A média** de um pool é fixa e **não se arredonda**: o meio ponto é real, porque 3d6 tira 10,5 mesmo. Os bônus (o +2 de soma ímpar, o Peso, a Centelha, as Firulas) continuam somando:
 
 | Dados | 1d6 | 2d6 | 3d6 | 4d6 | 5d6 | 6d6 |
 |---|:--:|:--:|:--:|:--:|:--:|:--:|
@@ -182,7 +182,7 @@ O salto para +4 no nível 3 é de propósito: a excelência paga dobrado. Um ges
 
 **A leitura** ("já é o suficiente?") é opcional e **exige acesso ao alvo**: você rola **Perspicácia + Empatia** contra a Defesa Social dele. No sucesso, você sabe **se já passou**; a cada **6 de folga** na leitura, descobre **+1 ponto** do que ainda falta. A sua influência é confiável (média), mas saber se pegou é incerto (você rola a leitura): ler mal faz você parar cedo ou gastar Firulas à toa.
 
-Cada Firula **leva tempo** (um +1 é rápido; um +3 é uma empreitada), e o intervalo-base **escala com a longevidade da raça** (um elfo corteja em estações onde um humano leva semanas). O **período** do teto acima é esse mesmo intervalo, escolhido na [escada de seis degraus](/regras/acoes-e-sistema) — Tick, minuto, hora, dia, semana, estação. Furar a Defesa concede o pedido; furar **por 6+** rende passos na régua, sempre respeitando o **teto de vidro** (±2 por Firulas sozinhas) e o **favor alugado**.
+Cada Firula **leva tempo** (um +1 é rápido; um +3 é uma empreitada), e o intervalo-base **escala com a longevidade da raça** (um elfo corteja em estações onde um humano leva semanas). O **período** do teto acima é esse mesmo intervalo, escolhido na [escada de seis degraus](/regras/acoes-e-sistema): Tick, minuto, hora, dia, semana, estação. Furar a Defesa concede o pedido; furar **por 6+** rende passos na régua, sempre respeitando o **teto de vidro** (±2 por Firulas sozinhas) e o **favor alugado**.
 
 ---
 

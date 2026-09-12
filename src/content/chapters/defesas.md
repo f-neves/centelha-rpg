@@ -2,7 +2,7 @@
 ordem: 17
 numeral: "XI"
 titulo: "As Três Defesas"
-resumo: "As três muralhas de toda criatura — corpo, postura e mente. Qual delas um ataque testa, como decidir entre Social e Mental, e o número de cada uma."
+resumo: "As três muralhas de toda criatura: corpo, postura e mente. Qual delas um ataque testa, como decidir entre Social e Mental, e o número de cada uma."
 ---
 
 Toda criatura carrega **três muralhas**, uma para cada jeito de ser atingida: o **corpo**, a **postura** e a **mente**. Metade da regra é saber qual muralha um ataque testa; a outra metade é o número que ela vale. Este capítulo cobre as duas.

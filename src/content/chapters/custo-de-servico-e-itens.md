@@ -5,9 +5,9 @@ titulo: "Custo de Serviço & Itens"
 resumo: "Moedas, renda por estrato, qualidade de armas e armaduras e o catálogo de preços do mundo."
 ---
 
-O dinheiro mede tempo e trabalho. Esta página reúne **o que se ganha**, **o que se gasta** e **como a qualidade muda o preço** de uma arma ou armadura — do raspão de cobre do servo ao lavor de joias da relíquia nobre.
+O dinheiro mede tempo e trabalho. Esta página reúne **o que se ganha**, **o que se gasta** e **como a qualidade muda o preço** de uma arma ou armadura: do raspão de cobre do servo ao lavor de joias da relíquia nobre.
 
-<div class="callout"><span class="lbl">Provisório</span>Os nomes das armaduras já foram <strong>traduzidos</strong> e alinhados ao vocabulário de <a href="/regras/armas-e-armaduras">Armas &amp; Armaduras</a> (Cap. XI) — Couro, Camisa de malha, Peitoral, Cota de malha, Lamelar, Peitoral reforçado, Placa articulada, Malha completa, Placa completa. Ainda assim, as <strong>listas e os preços</strong> dos dois capítulos não batem por completo: use como referência de ordem de grandeza; a reconciliação final vem depois.</div>
+<div class="callout"><span class="lbl">Provisório</span>Os nomes das armaduras já foram <strong>traduzidos</strong> e alinhados ao vocabulário de <a href="/regras/armas-e-armaduras">Armas &amp; Armaduras</a> (Cap. XI): Couro, Camisa de malha, Peitoral, Cota de malha, Lamelar, Peitoral reforçado, Placa articulada, Malha completa, Placa completa. Ainda assim, as <strong>listas e os preços</strong> dos dois capítulos não batem por completo: use como referência de ordem de grandeza; a reconciliação final vem depois.</div>
 
 ## Moedas & Conversão
 
@@ -28,11 +28,11 @@ O dinheiro mede tempo e trabalho. Esta página reúne **o que se ganha**, **o qu
 
 </div>
 
-<p class="muted">Uma <strong>algibeira comum</strong> leva ~5 litros / 5 kg — até <strong>150 moedas</strong>. Toda moeda pesa o mesmo (30 g): carregar uma fortuna em cobre é literalmente um peso morto.</p>
+<p class="muted">Uma <strong>algibeira comum</strong> leva ~5 litros / 5 kg, até <strong>150 moedas</strong>. Toda moeda pesa o mesmo (30 g): carregar uma fortuna em cobre é literalmente um peso morto.</p>
 
 ## Serviços & Renda
 
-O nível de **Recursos** é a faixa social do trabalho. **Renda** é o bruto que entra; **Livre** é o que sobra depois do custo de vida — o que dá para juntar.
+O nível de **Recursos** é a faixa social do trabalho. **Renda** é o bruto que entra; **Livre** é o que sobra depois do custo de vida: o que dá para juntar.
 
 <div class="table-wrap">
 
@@ -56,7 +56,7 @@ O nível de **Recursos** é a faixa social do trabalho. **Renda** é o bruto que
 
 ## Qualidade de Itens
 
-Uma arma ou armadura não é só "a peça": cada **ponto de qualidade** a mais ou a menos é uma virtude ou um defeito de fabricação. A **qualidade** define dois eixos ao mesmo tempo — o **preço** (multiplicador sobre a base) e quantos **pontos** você tem para gastar em melhorias (ou é obrigado a tomar em pioras).
+Uma arma ou armadura não é só "a peça": cada **ponto de qualidade** a mais ou a menos é uma virtude ou um defeito de fabricação. A **qualidade** define dois eixos ao mesmo tempo: o **preço** (multiplicador sobre a base) e quantos **pontos** você tem para gastar em melhorias (ou é obrigado a tomar em pioras).
 
 <div class="table-wrap">
 
@@ -73,7 +73,7 @@ Uma arma ou armadura não é só "a peça": cada **ponto de qualidade** a mais o
 
 <p class="muted">A <strong>Relíquia</strong> é cara por valor agregado: joias cravejadas, materiais nobres, lavor artístico. Mecanicamente vale o mesmo que uma Ótima (+2).</p>
 
-Cada ponto compra um efeito. A soma dos modificadores tem de **fechar no orçamento** da qualidade: uma arma **Boa** (+1) leva uma melhoria de +1; uma **Ótima** (+2) leva duas, ou uma de +2 — ou ainda uma de +2 paga em parte com uma piora.
+Cada ponto compra um efeito. A soma dos modificadores tem de **fechar no orçamento** da qualidade: uma arma **Boa** (+1) leva uma melhoria de +1; uma **Ótima** (+2) leva duas, ou uma de +2, ou ainda uma de +2 paga em parte com uma piora.
 
 <div class="cat-grid">
 
@@ -120,13 +120,13 @@ Cada ponto compra um efeito. A soma dos modificadores tem de **fechar no orçame
 </div>
 
 
-<p class="muted">Não há como deixar a arma <strong>mais rápida</strong> (−1 de Velocidade) só com melhoria de qualidade. Melhorar a qualidade também pode, a critério do Narrador, <strong>reduzir o peso</strong>, <strong>aumentar o alcance/distância</strong>, <strong>baixar o custo de Fôlego</strong> e afins — cada um equivale a uma melhoria de +1.</p>
+<p class="muted">Não há como deixar a arma <strong>mais rápida</strong> (−1 de Velocidade) só com melhoria de qualidade. Melhorar a qualidade também pode, a critério do Narrador, <strong>reduzir o peso</strong>, <strong>aumentar o alcance/distância</strong>, <strong>baixar o custo de Fôlego</strong> e afins: cada um equivale a uma melhoria de +1.</p>
 
 <div class="callout exemplo"><span class="lbl">Machado (base 30 pp)</span>Um <strong>Machado Péssimo</strong> sai por menos de <strong>15 pp</strong>; <strong>Ruim</strong> por até <strong>15 pp</strong>; <strong>Bom</strong> por ao menos <strong>45 pp</strong>; <strong>Ótimo</strong> por ao menos <strong>90 pp</strong>; <strong>Relíquia</strong> por ao menos <strong>150 pp</strong>. Um Machado <strong>Bom</strong> (+1) pode vir com <strong>+1 de Dano</strong> ou <strong>+2 de Acerto</strong>; um <em>Ótimo</em> (+2) com <strong>+1 de Dano</strong> e <strong>+2 de Acerto</strong> ou <strong>+1 nível de Penetração</strong> </div>
 
 ## Catálogo de Equipamento
 
-<p class="muted">Preço <strong>base</strong> (qualidade Comum). Munição vendida em maços. Clique no cabeçalho <strong>Preço</strong> para ordenar — a conversão entre moedas é respeitada (2 po &gt; 15 pp).</p>
+<p class="muted">Preço <strong>base</strong> (qualidade Comum). Munição vendida em maços. Clique no cabeçalho <strong>Preço</strong> para ordenar: a conversão entre moedas é respeitada (2 po &gt; 15 pp).</p>
 
 <div class="cat-grid">
 
@@ -225,7 +225,7 @@ Cada ponto compra um efeito. A soma dos modificadores tem de **fechar no orçame
 | Cerveja ruim | ½ pc |
 | Cerveja média | 2 pc |
 | Cerveja ótima | 1 pp |
-| Cerveja — barril | ×100 |
+| Cerveja (barril) | ×100 |
 | Vinho ruim | 2 pc |
 | Vinho médio | 8 pc |
 | Vinho fino | 2 po |
@@ -316,7 +316,7 @@ Cada ponto compra um efeito. A soma dos modificadores tem de **fechar no orçame
 
 ## Escravos
 
-<div class="callout"><span class="lbl">Cenário</span>Tabela de ambientação sombria — o tráfico de pessoas existe no mundo, mas seu uso na mesa é decisão do grupo.</div>
+<div class="callout"><span class="lbl">Cenário</span>Tabela de ambientação sombria: o tráfico de pessoas existe no mundo, mas seu uso na mesa é decisão do grupo.</div>
 
 <div class="table-wrap">
 
@@ -400,12 +400,12 @@ Cada ponto compra um efeito. A soma dos modificadores tem de **fechar no orçame
 
 ## Pacotes de Equipamento
 
-Conjuntos prontos para começar uma aventura — o preço é a **soma dos itens** (tabela acima).
+Conjuntos prontos para começar uma aventura: o preço é a **soma dos itens** (tabela acima).
 
-- **Artista — 3 po 6 pp** — mochila, saco de dormir, 2 fantasias, 5 velas, 5 dias de rações, cantil e kit de disfarce.
-- **Assaltante — 1 po 8 pp 6 pc** — mochila, saco com 1.000 esferas de metal, 3 m de linha, sino, 5 velas, pé de cabra, martelo, 10 pítons, lanterna coberta, 2 frascos de óleo, 5 dias de rações, caixa de fogo, cantil e 15 m de corda de cânhamo.
-- **Aventureiro — 1 po 1 pp** — mochila, pé de cabra, martelo, 10 pítons, 10 tochas, caixa de fogo, 10 dias de rações, cantil e 15 m de corda de cânhamo.
-- **Diplomata — 10 po 6 pp 8 pc** — baú, 2 caixas para mapas/pergaminhos, conjunto de roupas finas, vidro de tinta, caneta tinteiro, lâmpada, 2 frascos de óleo, 5 folhas de papel, vidro de perfume, parafina e sabão.
-- **Estudioso — 3 po 8 pp 2 pc** — mochila, livro de estudo, vidro de tinta, caneta tinteiro, 10 folhas de pergaminho, saquinho de areia e uma faca pequena.
-- **Explorador — 8 pp 5 pc** — mochila, saco de dormir, kit de refeição, caixa de fogo, 10 tochas, 10 dias de rações, cantil e 15 m de corda de cânhamo.
-- **Sacerdote — 1 po 4 pp 9 pc** — mochila, cobertor, 10 velas, caixa de fogo, caixa de esmolas, 2 blocos de incenso, incensário, vestes, 2 dias de rações e cantil.
+- **Artista (3 po 6 pp)**: mochila, saco de dormir, 2 fantasias, 5 velas, 5 dias de rações, cantil e kit de disfarce.
+- **Assaltante (1 po 8 pp 6 pc)**: mochila, saco com 1.000 esferas de metal, 3 m de linha, sino, 5 velas, pé de cabra, martelo, 10 pítons, lanterna coberta, 2 frascos de óleo, 5 dias de rações, caixa de fogo, cantil e 15 m de corda de cânhamo.
+- **Aventureiro (1 po 1 pp)**: mochila, pé de cabra, martelo, 10 pítons, 10 tochas, caixa de fogo, 10 dias de rações, cantil e 15 m de corda de cânhamo.
+- **Diplomata (10 po 6 pp 8 pc)**: baú, 2 caixas para mapas/pergaminhos, conjunto de roupas finas, vidro de tinta, caneta tinteiro, lâmpada, 2 frascos de óleo, 5 folhas de papel, vidro de perfume, parafina e sabão.
+- **Estudioso (3 po 8 pp 2 pc)**: mochila, livro de estudo, vidro de tinta, caneta tinteiro, 10 folhas de pergaminho, saquinho de areia e uma faca pequena.
+- **Explorador (8 pp 5 pc)**: mochila, saco de dormir, kit de refeição, caixa de fogo, 10 tochas, 10 dias de rações, cantil e 15 m de corda de cânhamo.
+- **Sacerdote (1 po 4 pp 9 pc)**: mochila, cobertor, 10 velas, caixa de fogo, caixa de esmolas, 2 blocos de incenso, incensário, vestes, 2 dias de rações e cantil.
