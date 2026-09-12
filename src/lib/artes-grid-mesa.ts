@@ -18,7 +18,8 @@ import {
   A_SAIR, deveSair, planoDaSaida,
   type EfeitoAtivo, type Forma, type Figura, type Encaixe, type Desvio,
 } from './artes-grid';
-import { pool } from './calc';
+import { pool, regras } from './calc';
+import { pesoMaximoErguido, alcanceArremesso } from './forca-empurrao';
 import {
   abrirConjuracao, abrirNPC, abrirEmpurroes, abrirMudarEfeito, escolherItem, itensDoAlvo,
   npcVazio, type Plano, type Empurrado,
@@ -1208,6 +1209,28 @@ export function condicoesDoEmpurrao(gCondicao: string | undefined | null, parouA
   return [...condicoes];
 }
 
+/**
+ * O QUE A FORÇA (a Arte no lugar dos músculos) FAZ COM UM PESO (Pendencias.md
+ * L85, rodada 54): dois tetos, duas respostas diferentes. Acima do teto de
+ * ARREMESSO (um quarto do erguido, embutido em `alcanceArremesso`), ela ainda
+ * ERGUE o corpo, só não lança: `metros` fica 0, e é `condicoesDoEmpurrao`
+ * (não esta função) quem decide que isso derruba. Acima do teto de ERGUER
+ * (`maxKg`, `forca.levantamento[fah]`), ela nem tira o corpo do chão:
+ * `pesaDemais` avisa o chamador para não mover nem aplicar condição nenhuma.
+ *
+ * EXPORTADA PARA TESTE, pela mesma razão de sempre neste arquivo:
+ * `deslocar` pede `palco: HTMLElement` de verdade e duas caixas
+ * (`abrirConjuracao`, `abrirEmpurroes`), então comparar a distância contra a
+ * tabela de `regras.json.forca` em vários pesos, sem abrir as duas caixas,
+ * é o que separa "provei a régua" de "precisei simular um clique".
+ */
+export function resultadoDoEmpurrao(
+  faa: number, peso: number, maxKg: number, F: Parameters<typeof alcanceArremesso>[3],
+): { metros: number; pesaDemais: boolean } {
+  if (peso > maxKg) return { metros: 0, pesaDemais: true };
+  return { metros: Math.round(alcanceArremesso(faa, peso, maxKg, F)), pesaDemais: false };
+}
+
 /** Empurrar, arrastar, teleportar: calcula, deixa ajustar, e só então move. */
 async function deslocar(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLElement): Promise<void> {
   const meu = ctx.tokens[c.id];
@@ -1219,11 +1242,32 @@ async function deslocar(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLElement):
   if (!alvo || !pos || !meu) return uiErro('As duas peças precisam estar no mapa.');
 
   // A distância sai do peso: `arcano` diz que a Arte entra no lugar dos músculos,
-  // e a régua de Força já resolve quanto um corpo daquele peso voa. Sem peso
-  // declarado o palpite é o de um adulto.
-  const peso = Number(MON[alvo.monstro_id]?.dimensoes?.pesoKg) || pesoDoPorte(alvo) || 70;
-  const nivel = Math.max(1, plano.escolhas['Força'] ?? plano.escolhas['Alcance'] ?? 1);
-  const metros = Math.max(0, Math.round((nivel * 200) / Math.max(1, peso)));
+  // e a régua de Força (`forca-empurrao.ts`, L85) já resolve quanto um corpo
+  // daquele peso ergue e arremessa. Sem peso declarado no bestiário
+  // (`dimensoes.peso` é texto solto, "70 kg"/"2,7 t", e não um número: ler
+  // dele é o conserto do L95, item novo) o palpite é o do porte.
+  const peso = pesoDoPorte(alvo) || 70;
+  // FAH/FAA saem só do nível investido na Arte (`plano.nivelArte`, já
+  // resolvido pela caixa de conjuração), o mesmo princípio aplicado duas
+  // vezes: FAH varre 1..6 em 3..40 (× 7 − 2), FAA varre 1..6 em 2..24
+  // (× 4). SEM Acerto Arcano: `regras.json` (`arcano.resistencia.rolagem`)
+  // reserva essa perícia para efeitos MIRADOS ("o que sai da mão e voa até
+  // o alvo"), e o Empurrão é `forma: "movimento"`, `ancora: "alvo"`, nunca
+  // foi mirado. A primeira versão desta rodada carregava o Acerto Arcano
+  // por analogia com a ficha (onde o FAA da Força leva duas perícias) sem
+  // conferir se a analogia valia; não valia, e o dado (`efeitos.json`,
+  // parâmetro FAA do `empurrao-elemental`) está corrigido junto.
+  const F = (regras as any).forca;
+  const fah = plano.nivelArte * 7 - 2;
+  const faa = plano.nivelArte * 4;
+  const maxKg = pesoMaximoErguido(fah, F);
+  // DOIS TETOS, e são coisas diferentes (`resultadoDoEmpurrao`, acima).
+  // Acima do teto de ARREMESSO a Força ainda ERGUE o corpo, só não o lança
+  // (`metros` 0, e quem esbarra cai é o que `condicoesDoEmpurrao` já aplica
+  // sozinho, sem código novo aqui). Acima do teto de ERGUER ela nem tira o
+  // corpo do chão: NADA acontece, e é `pesaDemais` que avisa isso, porque
+  // sem ele uma Arte de nível 1 derrubaria um Colossal de 40 toneladas.
+  const { metros } = resultadoDoEmpurrao(faa, peso, maxKg, F);
 
   const ajustes = await abrirEmpurroes(`${plano.nome} · para onde vai`, [{
     cid: alvoId, nome: alvo.nome, peso, metros, ajustado: metros, dano: 0,
@@ -1232,6 +1276,14 @@ async function deslocar(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLElement):
 
   const g = plano.efeito?.grid;
   for (const a of ajustes) {
+    // O teto de erguer não é ajustável na caixa: é a Força que decide se o
+    // corpo sai do chão, não o mestre corrigindo distância por parede.
+    if (resultadoDoEmpurrao(faa, a.peso, maxKg, F).pesaDemais) {
+      await ctx.logar(alvo, `${c.nome} tentou usar ${plano.nome} em ${a.nome}, mas ${a.nome} `
+        + `pesa demais (${a.peso} kg, a Força ergue até ${Math.round(maxKg)} kg): nada aconteceu`,
+      { acao: null });
+      continue;
+    }
     const passos = Math.max(0, Math.round(a.ajustado / esc_));
     let destino = pos;
     let metrosReais = 0;
@@ -1266,7 +1318,7 @@ async function deslocar(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLElement):
 }
 
 /** Peso estimado pelo porte, quando o bloco não declara quilos. */
-function pesoDoPorte(c: any): number {
+export function pesoDoPorte(c: any): number {
   const P: Record<string, number> = {
     'Miúdo': 3, 'Pequeno': 20, 'Médio': 70, 'Grande': 250,
     'Enorme': 1200, 'Imenso': 8000, 'Colossal': 40000,

@@ -6,9 +6,9 @@
 // NÚCLEO da conta (`dist(w)`, as sete constantes de `regras.json.forca` e a
 // tabela `levantamento`) é puro, não toca nada disso. Só a CHAMADORA de
 // `renderForca` (que deriva `fah`/`faa` das perícias do personagem) é da
-// ficha; a Arte no Grid deriva `fah`/`faa` de um jeito diferente (nível da
-// Arte + Acerto Arcano, não Força/Atletismo/Halterofilismo), e por isso essa
-// parte fica em cada chamador. O que se move para cá é só a régua de
+// ficha; a Arte no Grid deriva `fah`/`faa` de um jeito diferente (só do
+// nível investido na Arte, não Força/Atletismo/Halterofilismo), e por isso
+// essa parte fica em cada chamador. O que se move para cá é só a régua de
 // verdade, para não nascer copiada à mão (o `casaExata` do L93, de novo).
 //
 // DUAS TABELAS, DOIS TETOS: `pesoMaximoErguido` dá o que a Força ERGUE

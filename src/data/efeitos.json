@@ -424,7 +424,7 @@
       {
         "nome": "FAA",
         "tipo": "fixo",
-        "valor": "(nível da Arte + Acerto Arcano) × 2",
+        "valor": "(nível da Arte) × 4",
         "nota": "entra na tabela de arremesso e diz a distância"
       }
     ],
