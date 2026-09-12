@@ -120,7 +120,7 @@ const conferir = () => {
 // migração 38 (`PGRST204`, mensagem citando a coluna e "schema cache"). É
 // como se simula, sem banco de verdade, o lado que a migração ainda não
 // rodou.
-function bancoFalso({ semColunaNivelArte = false } = {}) {
+function bancoFalso({ semColunaNivelArte = false, semRetornoNoRetry = false } = {}) {
   const tabelas = { arena_efeitos: [], combatentes: [] };
   let seq = 0;
   const from = (tabela) => ({
@@ -151,6 +151,15 @@ function bancoFalso({ semColunaNivelArte = false } = {}) {
       }
       const nova = { id: `ef${++seq}`, ...linha };
       tabelas[tabela].push(nova);
+      // SEM_RETORNO_NO_RETRY simula o caso que a rodada 56b corrige: o insert
+      // DEGRADADO (já sem `nivel_arte`, é por isso que olha para a AUSÊNCIA da
+      // chave) acontece de verdade (a linha entra na tabela, por isso o push
+      // acima continua), mas o `select().limit(1)` que o devolve não traz nada
+      // (RLS ou latência do PostgREST, não se lê daqui). É o `data` vazio que
+      // obriga `gravarEfeito` a cair no `|| enviada`.
+      if (tabela === 'arena_efeitos' && semRetornoNoRetry && !('nivel_arte' in linha)) {
+        return { select: () => ({ limit: async () => ({ data: [], error: null }) }) };
+      }
       return { select: () => ({ limit: async () => ({ data: [nova], error: null }) }) };
     },
     update(campos) {
@@ -171,8 +180,8 @@ function bancoFalso({ semColunaNivelArte = false } = {}) {
 }
 
 /** A cena: conjurador, alvo, relógio, `gravarVida` (duble da fórmula real de `curarPv`). */
-function cena({ tick = 0, pvAtual = 20, pvMax = 30, semColunaNivelArte = false } = {}) {
-  const banco = bancoFalso({ semColunaNivelArte });
+function cena({ tick = 0, pvAtual = 20, pvMax = 30, semColunaNivelArte = false, semRetornoNoRetry = false } = {}) {
+  const banco = bancoFalso({ semColunaNivelArte, semRetornoNoRetry });
   const conjurador = { id: 'c1', nome: 'Curandeira', tipo: 'custom', tick, condicoes: [], oculto: false };
   const alvo = { id: 'a1', nome: 'Ogro', tipo: 'custom', tick, condicoes: [], pv_atual: pvAtual, pv_max: pvMax };
   banco.tabelas.combatentes.push(conjurador, alvo);
@@ -319,6 +328,36 @@ console.log('\n· `nivel_arte` nulo (migração 38 não rodou): não cura, avisa
   await M.verificarEfeitos(ctx);
   ok(registro.length === antesDoRegistro + 1, 'Tick 6 (rodada 2): avisa de novo, uma vez');
   ok(alvo.pv_atual === 10, 'e continua sem curar nenhuma rodada');
+}
+conferir();
+
+// ========== 4 · CORRIGE (veredito b82ae80): insert degradado sem `data` de volta
+console.log('\n· insert degradado que não devolve `data`: a rede não pode ressuscitar o `nivel_arte`');
+{
+  // `semColunaNivelArte` força o PRIMEIRO insert (com `nivel_arte`) a falhar
+  // por `PGRST204`, como nas cenas acima; `semRetornoNoRetry` faz o SEGUNDO
+  // insert (já sem a coluna, o retry de `gravarEfeito`) devolver `data: []`
+  // em vez da linha gravada. Antes do conserto, `ATIVOS.push(daLinha((data ||
+  // [])[0] || linha))` caía no `linha` original, que SEMPRE carrega o
+  // `nivel_arte` do `plano`, gravação tendo degradado ou não: a Arte
+  // "lembraria" o número que a coluna recusou.
+  const { ctx, alvo, relogio, curas } = cena({
+    tick: 0, pvAtual: 10, pvMax: 30, semColunaNivelArte: true, semRetornoNoRetry: true,
+  });
+  await M.carregarEfeitos(ctx);
+  await M.gravarEfeito(ctx, ctx.combs[0], planoAcelerar({ nivelArte: 3 }),
+    { forma: 'alvo', figura: null, alvos: ['a1'] });
+  const ef = M.efeitosAtivos()[0];
+  ok(ef != null, 'a gravação não falhou inteira mesmo sem `data` de volta no retry');
+  ok(ef.nome === 'Acelerar a Cura', 'e a linha é a Arte certa');
+  ok(ef.nivel_arte == null,
+    `a linha em memória NÃO "lembra" o nivel_arte do cliente quando o banco não devolveu nada (achou: ${ef.nivel_arte})`);
+
+  relogio.t = 5;
+  await M.verificarEfeitos(ctx);
+  ok(alvo.pv_atual === 10,
+    'e por isso a Arte NÃO cura no turno seguinte: sem a linha confirmar o dado, a guarda não inventa 3');
+  ok(curas.length === 0, 'e `gravarVida` nunca foi chamado');
 }
 conferir();
 

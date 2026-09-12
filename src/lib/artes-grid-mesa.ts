@@ -1491,6 +1491,7 @@ export async function gravarEfeito(ctx: CtxGrid, c: any, plano: Plano, extra: {
     mordidos: t > agora ? { [A_SAIR]: 1 } : {},
     oculto: !!c.oculto,
   };
+  let enviada: typeof linha | Omit<typeof linha, 'nivel_arte'> = linha;
   let { data, error } = await ctx.SB.from('arena_efeitos').insert(linha).select('*').limit(1);
   // MIGRAÇÃO 38 PODE AINDA NÃO TER RODADO: `nivel_arte` é melhoria, não
   // requisito, mesmo princípio do `carimbarSeFaltar` (migração 29,
@@ -1502,6 +1503,7 @@ export async function gravarEfeito(ctx: CtxGrid, c: any, plano: Plano, extra: {
   if (error && /nivel_arte/i.test(error.message || '')
       && (error.code === 'PGRST204' || /schema cache|does not exist|column/i.test(error.message || ''))) {
     const { nivel_arte: _semColuna, ...semNivelArte } = linha;
+    enviada = semNivelArte;
     ({ data, error } = await ctx.SB.from('arena_efeitos').insert(semNivelArte).select('*').limit(1));
   }
   if (error) {
@@ -1509,19 +1511,22 @@ export async function gravarEfeito(ctx: CtxGrid, c: any, plano: Plano, extra: {
       ? 'A tabela das Artes está desatualizada. Rode supabase/migracao-19.sql no SQL Editor.'
       : 'Erro ao gravar o efeito: ' + error.message);
   }
-  // O `|| linha` é a rede: se o cliente não devolver a linha inserida, o efeito
-  // em memória sai do que se tentou gravar, marca inclusive, em vez de sair de
-  // `undefined`. Sem ele a falta de retorno reproduziria em silêncio o mesmo
-  // defeito que esta função acabou de consertar. NÃO FORÇAR `nivel_arte` de
-  // volta do `plano` aqui é deliberado: se a gravação degradou (a coluna não
-  // existe), a linha em memória tem de refletir o MESMO "não sei" que uma
-  // releitura do banco traria depois; fingir que sabíamos, só porque o
-  // cliente computou o número antes de a coluna recusar, criaria uma Arte
-  // que cura durante a sessão corrente e para de curar sozinha no primeiro
-  // F5, sem ninguém ter mudado nada (o mesmo formato de inconsistência que o
+  // O `|| enviada` é a rede: se o cliente não devolver a linha inserida, o
+  // efeito em memória sai do que se tentou gravar, marca inclusive, em vez de
+  // sair de `undefined`. Sem ele a falta de retorno reproduziria em silêncio o
+  // mesmo defeito que esta função acabou de consertar. É `enviada`, NÃO
+  // `linha`: quando a gravação degrada (a coluna não existe), o que foi de
+  // fato enviado ao banco é `semNivelArte`, sem o campo, e é ESSE objeto que
+  // tem de cair aqui se o banco não devolver nada. Usar `linha` (que sempre
+  // carrega o `nivel_arte` calculado, gravação tendo degradado ou não) faria a
+  // linha em memória "lembrar" um número que a coluna recusou: uma Arte que
+  // cura durante a sessão corrente e para de curar sozinha no primeiro F5,
+  // sem ninguém ter mudado nada (o mesmo formato de inconsistência que o
   // `carimbarSeFaltar`, migração 29, evita ao não atualizar `ENC.perfil`
-  // quando o carimbo falha).
-  ATIVOS.push(daLinha((data || [])[0] || linha));
+  // quando o carimbo falha). CORRIGE da rodada 56 (veredito `b82ae80`): a
+  // rede usava `linha` e desfazia esta garantia sempre que o insert
+  // degradado não devolvia `data`.
+  ATIVOS.push(daLinha((data || [])[0] || enviada));
 
   // A condição entra em quem foi marcado (melhoria e marca) NO TICK EM QUE A
   // ARTE SAI. Enquanto ela está sendo montada não há prisão nem escudo: o gesto
