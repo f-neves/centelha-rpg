@@ -111,7 +111,7 @@ Sinal de vida da Executora. Uma linha por etapa pequena, hora real (`date +%H:%M
   degrada com graça (não trava, não mente, só não anda). Também registrado,
   sem consertar: "Investindo venceu o prazo e saiu (Tick 3)" imprime o
   `ate` original da condição, nunca atualizado pela reprojeção, não o Tick
-  real da saída (4) — mesma família do problema 3 do L93, em outro lugar.
+  real da saída (4): mesma família do problema 3 do L93, em outro lugar.
   Falha minha do próprio turno, corrigida acima: quatro entradas deste
   arquivo tinham hora inventada (09:40/10:20/10:40/10:50) em vez de hora
   real de escrita; eram todas do mesmo lote escrito de uma vez às 10:05,

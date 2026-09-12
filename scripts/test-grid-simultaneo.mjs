@@ -821,7 +821,7 @@ async function cenaInvestidaUmaVez(br, url) {
   // passaria igual, porque nada media o NÚMERO do Tick. O conserto compara o
   // Tick em que a marca sumiu com a AGENDA AO VIVO do golpe, lida do próprio
   // cartão da faixa (`#gr-ar .ar-item[data-golpe]`, o mesmo lugar que
-  // `faixa0` já lê na cena 1) no instante em que a marca some — e não com
+  // `faixa0` já lê na cena 1) no instante em que a marca some, e não com
   // `decl.tick`, o Tick que a caixa projetou na DECLARAÇÃO.
   //
   // A DIFERENÇA É REAL, e apareceu na rodada 53 (L93): antes, uma peça que
@@ -830,7 +830,7 @@ async function cenaInvestidaUmaVez(br, url) {
   // declarado por acidente. Corrigido o L93, um obstáculo de verdade no
   // caminho aciona o MESMO reprojetar que já existe para o alvo que foge
   // (`reprojetarAgenda`, "golpe adiado do Tick X para o Y", visível no
-  // registro) — e o Preparo tem de terminar onde a agenda REPROJETADA diz,
+  // registro), e o Preparo tem de terminar onde a agenda REPROJETADA diz,
   // não onde a declaração original chutou. `decl.tick` vira só contexto.
   let tickSaida = null;
   let golpeVivo = null;
