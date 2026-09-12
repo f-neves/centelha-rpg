@@ -2799,9 +2799,9 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **O DEFEITO.** No Grid os dois papéis escrevem o mesmo campo por caminhos que não se conhecem.
 
   O jogador acrescenta pelo banco, e o banco lê a coluna e concatena lá dentro:
-  `SB.rpc('jogador_registra', { p_arena: ARENA.id, p_linha: linha })`, `grid.astro:11482`.
+  `SB.rpc('jogador_registra', { p_arena: ARENA.id, p_linha: linha })`, `grid.astro:11488`.
   O mestre grava o vetor inteiro da memória dele:
-  `await SB.from('mesa_arenas').update({ log: LOG }).eq('id', ARENA.id);`, `grid.astro:11517`. **A linha que o jogador acabou de
+  `await SB.from('mesa_arenas').update({ log: LOG }).eq('id', ARENA.id);`, `grid.astro:11523`. **A linha que o jogador acabou de
   registrar some se o `LOG` do mestre for anterior a ela, sem erro nenhum.** É o caminho normal dos
   dois durante uma cena.
 
@@ -2844,10 +2844,10 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | gesto | o que faz hoje |
   |---|---|
   | `logar()` | empurra uma linha e grava o vetor |
-  | `desfazer()` | tira a última linha com `acao` (`LOG.splice(idx, 1);`, `grid.astro:11606`) e grava o vetor |
+  | `desfazer()` | tira a última linha com `acao` (`LOG.splice(idx, 1);`, `grid.astro:11612`) e grava o vetor |
   | `editarLinha(id)` | muda `txt`/`pub` de uma linha, e grava o vetor |
-  | `excluirLinha(id)` | tira por id (`LOG.splice(i, 1);`, `grid.astro:11701`) e grava o vetor |
-  | `refazerLogDosEfeitos()` | `LOG = LOG.filter((e: any) => !minha(e));` (`grid.astro:11752`) e empurra N linhas novas |
+  | `excluirLinha(id)` | tira por id (`LOG.splice(i, 1);`, `grid.astro:11707`) e grava o vetor |
+  | `refazerLogDosEfeitos()` | `LOG = LOG.filter((e: any) => !minha(e));` (`grid.astro:11758`) e empurra N linhas novas |
 
   **E UMA CORREÇÃO AO ENUNCIADO: não existe zerar no Grid.** O `LOG = []` é do `combate.astro`
   (`if (zLog) { LOG = []; await persistLog(); }`, `combate.astro:2068`), na caixa de reiniciar
@@ -5867,7 +5867,46 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   detector não roda naquele caminho. **`L87` deixa de ser defeito solto e vira pré-requisito deste
   item**, ou o detector nasce com um ponto cego exatamente onde já sabemos que há um buraco.
 
-  **NÃO É DA RODADA 50.** Ela já carrega a gravação, a separação do balde, a condição nova e a queda.
+  **FEITO E FECHADO na rodada 52, em 12/09/2026 (`8d7b450`), veredito PROCEDE (`697fc29`), com um
+  CORRIGE de uma linha (`33ec6f1`).** `conferirOcupacao` mora dentro do `pintarIniciativa`, só o
+  mestre confere, e a decisão vem do `ocupadoPor` que o `gravarToken` já consulta, sem regra nova.
+
+  **A PRIMEIRA VERSÃO TINHA UM NÚMERO INVENTADO, e ele saiu.** Ela usou um relógio de 600ms para
+  esperar o instante otimista passar; perguntei de onde vinha o número e a resposta foi **"de lugar
+  nenhum, era margem escolhida sem medir"**. Trocou por uma marca determinística (`POSICAO_PENDENTE`)
+  posta e tirada dentro do `porNoMapa`, que pergunta *"esta escrita já foi confirmada?"* em vez de
+  *"quanto tempo é seguro esperar?"*. **O desenho ficou mais simples DEPOIS de ficar mais correto**
+  (sumiram a constante, o mapa de relógios e a reconferência no disparo), que é sinal de que a versão
+  anterior estava errada e não de que era um meio-termo.
+
+  **O RACIOCÍNIO QUE VALEU MAIS QUE A SOLUÇÃO:** ela descobriu que a forma da transição do
+  `conferirChao` **não** bastava, e por quê (o `porNoMapa` grava otimista antes de perguntar ao banco,
+  então a posição ilegal existe por um instante). E **recusou o filtro óbvio** ("só reclama em duas
+  conferências seguidas") pela razão certa: um `curar` isolado repinta uma vez só, e a violação de
+  verdade ficaria presa em silêncio para sempre. Trocar um falso positivo por um silêncio permanente
+  é o pior negócio que existe neste projeto.
+
+  **O CORRIGE, e ele veio de uma discordância de classificação que vale registrar.** A Revisora testou
+  ao vivo um segundo caminho passivo e achou que **tirar uma condição à mão não gerava alarme nenhum**,
+  porque o `repintar` daquela caixa chamava só `pintarLista`. Ela classificou ESCALA, por a lacuna ser
+  pré-existente. **Reclassifiquei para CORRIGE:** "a condição que o mestre tira à mão" é **um dos cinco
+  caminhos que este item nomeia por escrito**, então a causa é velha mas a promessa quebrada nasceu na
+  rodada, e fechar como ESCALA deixaria o registro afirmando cobertura que a medida dela falsifica.
+  Uma linha resolveu, e ela conserta de quebra a assimetria do `L87` (a tela de quem age ficando
+  velha enquanto as outras se corrigiam pelo tempo real). → `CATALOGO`, a regra de classificação que
+  saiu daqui.
+
+  **E A REVISORA NÃO ACEITOU O CONTROLE DE REGRESSÃO DE SEGUNDA MÃO:** refez o `git stash` por conta
+  própria, com o código de antes e o teste novo, e mediu que **3 das 8 asserções caem e 5 passam**,
+  incluindo o controle negativo. "O controle passou" e "o teste discrimina" são afirmações diferentes,
+  e só a segunda vale alguma coisa.
+
+  **O QUE O DETECTOR AINDA NÃO COBRE, dito porque o item promete cobertura:** o passo automático grava
+  posição fora do `porNoMapa` e ignora a recusa (→ `L93`), e os três caminhos que escapam do
+  estrangulamento do `L87` continuam existindo. O detector pega o ESTADO que qualquer um deles
+  produzir **desde que alguma repintura de iniciativa aconteça**; numa mesa parada, não.
+
+  **NÃO ERA DA RODADA 50.** Ela já carregava a gravação, a separação do balde, a condição nova e a queda.
   → `L70` (a medida), → `L84` (o retorno passivo), → `L87` (o pré-requisito), → `L86`.
 
 - [ ] **L86 · [ACHADO pela Revisora em 12/09/2026, auditando os caminhos do `L84`, CONFERIDO pelo
@@ -5884,7 +5923,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **Conferido pelo outro lado também:** toda escrita de `pv_atual` no módulo das Artes é subtração
   (`pv_atual: pv` em `src/lib/artes-grid-mesa.ts:1694`, com `pv` já calculado como
   `max(0, atual − líquido)`). Não existe soma de Vida em lugar nenhum de `src/lib`. Curar existe como
-  ação do mestre, no menu (`async function curar`, `src/pages/mesa/grid.astro:11199`); **nenhuma Arte
+  ação do mestre, no menu (`async function curar`, `src/pages/mesa/grid.astro:11205`); **nenhuma Arte
   cura pelo tabuleiro**.
 
   **A Revisora contou seis e são sete**, e ela escreveu "pelo menos 6", que é a forma honesta de dar
@@ -5968,7 +6007,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   `jogador_dano` direto, e o ramo do mestre que grava `mana_max` e `mana_atual` juntos. **O terceiro a
   Revisora achou fora do que eu pedi**, lendo em volta.
   `async function alternarAuto` (`src/pages/mesa/grid.astro:6177`) e
-  `async function devolverAuto` (`src/pages/mesa/grid.astro:11567`)
+  `async function devolverAuto` (`src/pages/mesa/grid.astro:11573`)
   escrevem `dados` direto, repintam **só o próprio cliente** e
   nunca tocam a campainha, nem antes nem depois desta rodada. É simétrico (a ida e o desfazer calam
   igual), pré-existente, e nunca passou pelos nove auditados, que é por isso que ficou de fora do

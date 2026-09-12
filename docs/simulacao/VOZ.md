@@ -34,13 +34,13 @@ O levantamento pedido no §3 (respondido pela Executora) trouxe três correçõe
 documento supunha, e uma notícia boa:
 
 - **Desfazer não é a rede que este documento supunha.** Cobre posição e Vida
-  (`src/pages/mesa/grid.astro:11577` · `async function desfazer`), não cobre Mana, a declaração do golpe, o Tick nem a
+  (`src/pages/mesa/grid.astro:11583` · `async function desfazer`), não cobre Mana, a declaração do golpe, o Tick nem a
   agenda. A decisão de dispensar confirmação a cada comando (§4) dependia de desfazer barato, e
   ele não existe para metade do que a voz executaria;
 - **Escolher arma não existe.** A arma vem fixa da ficha do personagem; "ataca com o machado" não
   tem o que executar hoje. Os nomes de arma seguem no vocabulário de teste, porque medir palavra
   comum vale igual, mas não são parâmetro de comando (ver §2);
-- **Mana não distingue dar de tirar.** É uma função só (`src/pages/mesa/grid.astro:11265` · `async function ajustarMana`), então
+- **Mana não distingue dar de tirar.** É uma função só (`src/pages/mesa/grid.astro:11271` · `async function ajustarMana`), então
   o sinal vem da fala: "dá quatro de mana" e "tira quatro de mana" chamam a mesma função com
   valores opostos.
 
@@ -609,9 +609,9 @@ tem teclado.
 
 **O que isso obriga, e é achado desta régua:** a tecla da voz **precisa de escuta própria**. O bloco
 de atalhos de hoje desiste dentro de diálogo
-(`src/pages/mesa/grid.astro:12217` · `document.querySelector('dialog[open]')`)
+(`src/pages/mesa/grid.astro:12223` · `document.querySelector('dialog[open]')`)
 e desiste com o foco num campo
-(`src/pages/mesa/grid.astro:12216` · `a.tagName === 'INPUT'`) · que é **exatamente** onde a voz
+(`src/pages/mesa/grid.astro:12222` · `a.tagName === 'INPUT'`) · que é **exatamente** onde a voz
 precisa funcionar, porque é dentro da folha e com o cursor num campo que o mestre fala. A escuta
 nova também tem de barrar a letra de entrar no campo enquanto a tecla estiver segurada, e ignorar a
 repetição automática do teclado.
