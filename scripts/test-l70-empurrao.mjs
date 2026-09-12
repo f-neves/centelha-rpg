@@ -14,6 +14,14 @@
 // (`deslocar` escolhendo o alvo, abrindo a caixa de ajuste) não mudou e já era
 // coberta por uso manual, não por este arquivo.
 //
+// L84 (rodada 50) somou `condicoesDoEmpurrao`: quem esbarra no meio do
+// caminho (`parouAntes`) cai, além da condição que a própria Arte já
+// declare. É lógica pura (recebe a condição e o booleano, devolve a lista),
+// extraída de `deslocar` por EXATAMENTE o mesmo motivo que separa este
+// arquivo do resto do módulo: `deslocar` pede `palco: HTMLElement` de
+// verdade e um diálogo, e testar a DECISÃO sem arrastar a caixa inteira é
+// o que cabe em Node.
+//
 //   node scripts/test-l70-empurrao.mjs
 import { build } from 'esbuild';
 import path from 'node:path';
@@ -47,7 +55,7 @@ const saida = path.join(os.tmpdir(), `l70-empurrao-${process.pid}.mjs`);
 await build({
   stdin: {
     contents: `
-      export { empurrarAteLivre, PARA_NA_ULTIMA_CASA_LIVRE } from './src/lib/artes-grid-mesa';
+      export { empurrarAteLivre, PARA_NA_ULTIMA_CASA_LIVRE, condicoesDoEmpurrao } from './src/lib/artes-grid-mesa';
     `,
     resolveDir: ROOT, loader: 'ts',
   },
@@ -55,7 +63,7 @@ await build({
   loader: { '.json': 'json' }, logLevel: 'error',
   define: { 'import.meta.env': 'globalThis.__ENV__' },
 });
-const { empurrarAteLivre, PARA_NA_ULTIMA_CASA_LIVRE } = await import(pathToFileURL(saida).href);
+const { empurrarAteLivre, PARA_NA_ULTIMA_CASA_LIVRE, condicoesDoEmpurrao } = await import(pathToFileURL(saida).href);
 fs.rmSync(saida, { force: true });
 
 let PASSOU = 0; const FALHAS = [];
@@ -110,7 +118,32 @@ console.log('\n· empurrarAteLivre: erro de verdade (não ocupação) não tenta
 console.log('\n· PARA_NA_ULTIMA_CASA_LIVRE é a decisão do humano (Pendencias.md L83): true');
 ok(PARA_NA_ULTIMA_CASA_LIVRE === true, `constante exportada é true (achou ${PARA_NA_ULTIMA_CASA_LIVRE})`);
 
+// -------------------------------------------------- L84: quem esbarra cai
+console.log('\n· condicoesDoEmpurrao (L84): quem esbarra cai, além da condição da Arte');
+{
+  const semArteSemColisao = condicoesDoEmpurrao(undefined, false);
+  ok(semArteSemColisao.length === 0,
+    `Arte sem condicao própria, sem esbarrar: nada a aplicar (${JSON.stringify(semArteSemColisao)})`);
+
+  const arteSemColisao = condicoesDoEmpurrao('atordoado', false);
+  ok(JSON.stringify(arteSemColisao) === JSON.stringify(['atordoado']),
+    `Arte com condição própria, sem esbarrar: só a dela (${JSON.stringify(arteSemColisao)})`);
+
+  const semArteComColisao = condicoesDoEmpurrao(undefined, true);
+  ok(JSON.stringify(semArteComColisao) === JSON.stringify(['caido']),
+    `Arte sem condição própria, ESBARROU: caido sozinho (${JSON.stringify(semArteComColisao)})`);
+
+  const arteDiferenteComColisao = condicoesDoEmpurrao('atordoado', true);
+  ok(arteDiferenteComColisao.includes('atordoado') && arteDiferenteComColisao.includes('caido')
+    && arteDiferenteComColisao.length === 2,
+    `Arte com OUTRA condição, ESBARROU: as duas, sem perder nenhuma (${JSON.stringify(arteDiferenteComColisao)})`);
+
+  const arteCaidoComColisao = condicoesDoEmpurrao('caido', true);
+  ok(JSON.stringify(arteCaidoComColisao) === JSON.stringify(['caido']),
+    `Arte que JÁ é caido e ESBARROU: uma só, sem duplicar (${JSON.stringify(arteCaidoComColisao)})`);
+}
+
 console.log(FALHAS.length
   ? `\n✗ L70 · empurrão das Artes: ${FALHAS.length} falha(s) de ${PASSOU + FALHAS.length}`
-  : `\n✓ L70 · empurrão das Artes OK · ${PASSOU} asserções: caminho livre, para na última casa livre, erro de verdade não retenta`);
+  : `\n✓ L70 · empurrão das Artes OK · ${PASSOU} asserções: caminho livre, para na última casa livre, erro de verdade não retenta, e quem esbarra cai (L84)`);
 process.exit(FALHAS.length ? 1 : 0);

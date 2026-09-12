@@ -358,3 +358,150 @@ que ela fecha, hora lida da máquina (`date +%H:%M`).
   `Pendencias.md` para `investindo`) continua na mesma linha, conferido por
   leitura direta. `validate-data.mjs` e `npm run validate` inteiro verdes
   (o reponte do eixo 2 já tinha chegado na árvore compartilhada quando rodei).
+
+- 02:00 · EIXO 4 ESCRITO: `levantarDoChao(cid)`, nova, logo depois de
+  `porNoMapa` em `grid.astro`. Sozinho no hexágono, tira `caido` sem custo.
+  Dividindo com outra peça, procura um vizinho livre (`vizinhos()`,
+  `src/lib/hex.ts`, agora importada em `grid.astro`) e vai por `porNoMapa`
+  (mesma conferência de ocupação do L70, mesmo `cobrarDeslocamento`, nenhum
+  número novo). Sem vizinho livre, recusa com o motivo, sem inventar rolagem
+  (a disputa Força/Destreza + Briga é `Pendencias.md` L83, fora de escopo).
+  Novo item de menu "⤒ Levantar", só em quem tem `caido`, para MESTRE ou dono
+  da peça. Nome deliberadamente DIFERENTE do `levantar(gente)` já existente
+  (o "acordar" de quem saiu da fila): comentário cruzado nos dois para não
+  confundir.
+
+  UM BUG DE VERDADE, achado pelo teste antes de qualquer commit: a primeira
+  versão buscava o vizinho livre com `ocupadoPor`, que isenta quem
+  `podeDividir` — e `c` ainda estava `caido` (`noChao`) no instante da busca,
+  então `podeDividir(c, outro)` valia sempre `true` e QUALQUER vizinho
+  "parecia" livre, mesmo tomado. Pior: a condição `caido` era removida ANTES
+  de confirmar o destino, então uma recusa deixava a peça de pé, sem
+  `caido`, presa na mesma casa dividida. Corrigido: a busca do vizinho tira
+  `caido` de `c.condicoes` SÓ NA MEMÓRIA antes de perguntar `ocupadoPor`
+  (desfeito se não sobrar candidato), e a escrita de verdade
+  (`gravarPeca`) só acontece depois de confirmado o destino (ou a ausência
+  dele). Registro aqui porque é exatamente o tipo de achado que o CATALOGO
+  pede: um controle que pegou o defeito antes de ele subir, não depois.
+
+  Teste novo `scripts/test-l84-levantar-mesa.mjs` (registrado em `smoke` e
+  na matriz de CI), com cena `?cena=levantar` em `mesa-mock.mjs` (três casos,
+  cada vizinho gerado por `vizinhos()` de verdade, não escrito à mão): `pe`
+  sozinho (levanta no lugar, sem custo), `pa`+`pb` dividindo com um vizinho
+  livre (levanta indo para lá, por `porNoMapa`, mesma frase de log de sempre),
+  `pc`+`pd` dividindo com os seis vizinhos tomados (recusa, com o motivo,
+  `caido` intacto). 15 asserções, todas verdes; foi rodando este arquivo que
+  o bug acima apareceu.
+
+  Bateria completa verde (corpo a corpo, fora da vez, ocupação, empurrão,
+  caído-na-fila, levantar, simultâneo). `npm run validate`: único vermelho é
+  o portão de procedência, esperado (38 citações movidas por esta edição, em
+  `ESTADO.md`, `Pendencias.md`, `CONJURACAO.md`, `Grid_Mobile.md`, `VOZ.md`,
+  `CONTEXTO.md`; uma delas, `Pendencias.md:3783`, aponta para
+  `mesa-mock.mjs:1118`, mas a CITAÇÃO mora em `Pendencias.md`, que não é meu
+  para tocar, mesmo o alvo sendo meu arquivo). Não toquei em nenhum dos seis
+  documentos do Arquiteto. Falta: eixo 5 (o empurrão aplicando `caido` a
+  quem esbarra).
+
+- 02:01 · commit do eixo 4 BLOQUEADO pelo gancho de pre-commit (mesmo motivo
+  do eixo 2: o `validate` inteiro roda, e o portão de procedência está
+  vermelho pelas 38 citações acima). Mensagem enviada ao Arquiteto com a
+  contagem, os 6 documentos e a ressalva de `Pendencias.md:3783`. Indo
+  escrever o eixo 5 por cima do código já pronto (só não commitado) enquanto
+  espero o reponte, do mesmo jeito que fiz entre o eixo 2 e o eixo 3.
+
+- 02:05 · EIXO 5 ESCRITO (o último): `condicoesDoEmpurrao(gCondicao, parouAntes)`,
+  nova função pura e exportada em `artes-grid-mesa.ts`, logo antes de
+  `deslocar`. Devolve a LISTA deduplicada de condições a aplicar: a que a
+  própria Arte declara (`g.condicao`, o `caido` das cinco Artes que o
+  Arquiteto mediu) e, agora, `caido` de novo se a peça esbarrou no caminho
+  (`parouAntes`, o mesmo booleano que já existia para o log "parou antes do
+  previsto"). Um `Set` por baixo evita chamar `porCondicao` duas vezes
+  quando as duas coincidem (ela substitui, não soma, mas duplicar a chamada
+  duplicaria `MORDIDAS`). `deslocar` ficou mais simples: o loop que aplicava
+  `g.condicao` depois de mover todo mundo virou parte do MESMO loop que já
+  movia e logava cada alvo.
+
+  EXTRAÍDA EM FUNÇÃO PURA de propósito, e não deixada inline: `deslocar`
+  pede `palco: HTMLElement` de verdade (`escolherAlvoNoMapa` espera um
+  clique) e um diálogo (`abrirEmpurroes`), então testar a DECISÃO sem
+  arrastar a caixa inteira era a diferença entre um teste de Node e um
+  teste de navegador que eu não tinha orçamento para montar (casting de
+  Arte pelo assistente, que o próprio arquivo já registra como "precisa de
+  DOM"). Mesma lição do `empurrarAteLivre` desta rodada, aplicada de novo.
+
+  5 asserções novas em `test-l70-empurrao.mjs` (Arte sem condição e sem
+  esbarrar: nada; com condição própria e sem esbarrar: só a dela; sem
+  condição própria e ESBARROU: `caido` sozinho; com OUTRA condição e
+  ESBARROU: as duas; já é `caido` e ESBARROU: uma só, sem duplicar). 15
+  asserções no arquivo, todas verdes. `test-artes-grid.mjs` e
+  `test-arte-na-mesa.mjs` continuam verdes (o resto do módulo não mudou).
+
+  Bateria completa verde (corpo a corpo, fora da vez, ocupação, empurrão,
+  caído-na-fila, levantar, simultâneo, Artes). `npm run validate`: único
+  vermelho é o portão de procedência, esperado (21 citações movidas, todas
+  para `artes-grid-mesa.ts`, em `Pendencias.md`, `CONJURACAO.md` e
+  `Auditoria_Tecnica.md`; não toquei nenhum). OS CINCO EIXOS da rodada 50
+  estão escritos. Falta: reponte + commit dos eixos 4 e 5, e depois o
+  aviso.
+
+- 02:06 · confirmado: commit do eixo 4 continua BLOQUEADO (tentei de novo,
+  isolado, para não empilhar em cima do eixo 5 sem necessidade) porque o
+  `validate` do gancho olha a ÁRVORE inteira, e `artes-grid-mesa.ts` (ainda
+  não commitado, do eixo 5) já está no meio dela com as 21 citações
+  próprias. Mensagem enviada ao Arquiteto com a contagem do eixo 5. Os dois
+  eixos vão como DOIS commits pathspec assim que o reponte chegar (eixo 4
+  primeiro, depois eixo 5), na ordem em que foram escritos.
+
+- 02:31 · O ARQUITETO ACHOU UM DEFEITO REAL no `levantarDoChao` antes do
+  commit, e tinha razão: a escrita da condição (`gravarPeca`) rodava ANTES
+  de `porNoMapa` mover. Uma recusa por ocupação (a corrida entre clientes
+  que o `L70` mede, virou `L88`) deixava a peça de pé NO BANCO, sem `caido`,
+  presa na mesma casa dividida: exatamente o estado que meu próprio
+  comentário já prometia impedir, e a promessa não bastava sem a ORDEM
+  certa. A inversão óbvia (mover primeiro, tirar depois) tem o MESMO defeito
+  espelhado, porque `porNoMapa` gravaria com `c` ainda `caido` na memória e
+  `ocupadoPor` perdoaria o destino de novo.
+
+  Corrigido separando MEMÓRIA de PERSISTÊNCIA: `c.condicoes` muda na
+  memória antes de mover (a mesma técnica que a busca do vizinho livre já
+  usava), e só é GRAVADA depois que o movimento confirma que entrou. Isso
+  exigiu que `porNoMapa` passasse a devolver `{ error }` (achado maior do
+  Arquiteto: antes ele mostrava o erro ao USUÁRIO e voltava void, sem dizer
+  nada a QUEM CHAMA, o `L66` um nível acima do `L70`). Conferi os 10
+  chamadores de `porNoMapa` antes de mudar a assinatura, como pedido: 8 já
+  ignoravam o retorno como statement (`await porNoMapa(...);`, sem usar o
+  valor), e só 2 (os dois `return porNoMapa(...)` dentro de
+  `moverSimultaneo`, que é `Promise<void>`) precisaram virar
+  `await porNoMapa(...); return;`.
+
+  Se a escrita da condição falhar DEPOIS do movimento já ter entrado, não
+  desfaço a posição: desfazer abriria uma SEGUNDA corrida (voltar por cima
+  de uma casa que outra peça já pode ter tomado no intervalo). Mostro o
+  erro e a mesa fica com a posição certa e a condição pendente, visível.
+
+  `test-l84-levantar-mesa.mjs` continua com as 15 asserções verdes depois do
+  conserto (os três casos: sozinho, dividindo com vizinho livre, dividindo
+  sem vizinho livre). NÃO CONSTRUÍ um teste da corrida entre clientes de
+  verdade: neste mock, cada página tem seu `window.__SB` isolado, sem
+  backend compartilhado entre abas, então a corrida (que só existe ENTRE
+  clientes, nunca dentro de um só, porque não há `await` entre a busca e a
+  escrita) não é reproduzível aqui sem uma infraestrutura de mock nova, que
+  não é desta rodada. Registro isto para não superafirmar cobertura que não
+  tenho: a correção é certa por inspeção e pela forma que o Arquiteto
+  descreveu, e o teste que existe prova que os três casos funcionais
+  continuam corretos depois da correção, não que a corrida foi reproduzida.
+
+  Bateria completa rodada de novo depois do conserto: verde, incluindo
+  `test-l67-corpoacorpo-mesa`, `test-l68-foradavez-mesa`,
+  `test-l70-ocupacao-mesa`, `test-l84-caidofila-mesa`,
+  `test-grid-simultaneo` (79 asserções) e `test-grid.mjs` (uma falha de
+  flakiness pré-existente do arrasto por mouse simulado, confirmada IDÊNTICA
+  no código de antes desta rodada via `git stash` do meu próprio
+  `grid.astro` não commitado, e verde de novo na repetição seguinte: não é
+  regressão minha).
+
+- 02:31 · CONFIRMADO: `npm run validate` inteiro verde (276 citações
+  conferidas), reponte do Arquiteto já chegou para os eixos 4 e 5. EIXO 4
+  COMMITADO E EMPURRADO: `7030d1f`, `origin/main..HEAD` = 0. Commitando o
+  eixo 5 agora, em separado.

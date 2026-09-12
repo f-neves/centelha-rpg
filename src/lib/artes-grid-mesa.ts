@@ -1170,6 +1170,32 @@ export async function empurrarAteLivre(
   return { destino: ultimoDestino, passosReais: 0, error: { message: 'Não deu para empurrar.' } };
 }
 
+/**
+ * QUEM ESBARRA CAI (L84, decisão do humano em 12/09/2026, junto com a
+ * separação de fila do `caido` em `NO_CHAO`, `grid.astro`). Parar antes do
+ * previsto (`parouAntes`) é bater em alguém no meio do caminho, e isso
+ * derruba por si, além da condição que a própria Arte já declare
+ * (`gCondicao`, o `caido` das cinco Artes de `grid.forma: movimento` medidas
+ * pelo Arquiteto: Empurrão, Onda, Maremoto, Onde é Embaixo, Tromba).
+ *
+ * EXPORTADA PARA TESTE, e não inline em `deslocar`, pela mesma razão de
+ * sempre neste arquivo: `deslocar` pede `palco: HTMLElement` de verdade
+ * (`escolherAlvoNoMapa` espera um clique) e um diálogo (`abrirEmpurroes`),
+ * então testar a DECISÃO ("quais condições aplicar") sem arrastar a CAIXA
+ * inteira é o que separa "provei a regra" de "precisei simular um clique".
+ *
+ * Devolve uma LISTA, não chama `porCondicao`: um `Set` por baixo evita
+ * aplicar `caido` duas vezes quando `gCondicao` já é `caido` e a peça também
+ * esbarrou (`porCondicao` seria idempotente, ela substitui e não soma, mas
+ * chamá-la duas vezes duplicaria `MORDIDAS`).
+ */
+export function condicoesDoEmpurrao(gCondicao: string | undefined | null, parouAntes: boolean): string[] {
+  const condicoes = new Set<string>();
+  if (gCondicao) condicoes.add(gCondicao);
+  if (parouAntes) condicoes.add('caido');
+  return [...condicoes];
+}
+
 /** Empurrar, arrastar, teleportar: calcula, deixa ajustar, e só então move. */
 async function deslocar(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLElement): Promise<void> {
   const meu = ctx.tokens[c.id];
@@ -1192,6 +1218,7 @@ async function deslocar(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLElement):
   }]);
   if (!ajustes) return;
 
+  const g = plano.efeito?.grid;
   for (const a of ajustes) {
     const passos = Math.max(0, Math.round(a.ajustado / esc_));
     let destino = pos;
@@ -1217,10 +1244,12 @@ async function deslocar(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLElement):
     await ctx.logar(alvo, `${c.nome} usou ${plano.nome}: ${a.nome} foi de ${nomeHex(pos.q, pos.r)} `
       + `para ${nomeHex(destino.q, destino.r)} · ${parouAntes ? metrosReais : a.ajustado} m`
       + (parouAntes ? ' (parou antes do previsto: o caminho estava ocupado)' : ''), { acao: null });
-    if (a.dano > 0) await aplicarDano(ctx, combDe(ctx, a.cid), a.dano, plano, 'colisão');
+    const alvoA = combDe(ctx, a.cid);
+    if (a.dano > 0) await aplicarDano(ctx, alvoA, a.dano, plano, 'colisão');
+    for (const id of condicoesDoEmpurrao(g?.condicao, parouAntes)) {
+      await porCondicao(ctx, alvoA, id, plano.turnos);
+    }
   }
-  const g = plano.efeito?.grid;
-  if (g?.condicao) for (const a of ajustes) await porCondicao(ctx, combDe(ctx, a.cid), g.condicao, plano.turnos);
   ctx.repintar();
 }
 
