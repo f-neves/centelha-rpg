@@ -84,6 +84,7 @@ segunda tinha ficado verde por cegueira.
 | **o sinal de vida escrito no fim** | *por gesto:* escrever o arquivo de progresso, o log de etapas, o relatório com horários | esta linha está sendo escrita AGORA porque a etapa fechou agora, ou estou narrando de trás para a frente? |
 | **o rótulo de escopo do `git diff`** | `@@ -A,B +C,D @@ <texto>` | este texto depois do `@@` diz ONDE a edição está, ou é só a linha que PARECE cabeçalho de função mais próxima acima do hunk? |
 | **o `&&` depois do cano** | `comando \| tail -3 && próximo`, todo encadeamento em que a guarda vem depois de um cano | o `&&` está guardando o comando que eu escrevi, ou o código de saída do `tail`, que dá certo mesmo quando o da esquerda falhou? |
+| **o intervalo medido da ponta errada** | *por gesto:* ler `idle`, um horário de notificação, um "parado desde", e concluir atraso de alguém | este intervalo começa quando o OUTRO recebeu a tarefa, ou quando EU olhei pela última vez? |
 | **narrar o conserto na notação que o portão lê** | "era X e virou Y" sobre uma citação de código, com X escrito como `arquivo:NNN` entre crases | o portão vai ler X como afirmação de HOJE, ou eu escrevi o estado antigo na única forma que o instrumento entende como atual? |
 
 **DUAS NOVAS, DE 06/09/2026, ACHADAS NA REVISÃO DO AVANÇO UNIFICADO:** a primeira é o gatilho —
@@ -663,3 +664,34 @@ dizer com "rebase antes de empurrar" num repositório com duas frentes.
 **A forma geral, para além do `git`:** toda vez que uma guarda (`&&`, um `if`, um `assert`) vem
 depois de um cano, ela está falando do fim do cano. Se o que interessa é o começo, o cano tem de
 sair da frente da guarda.
+
+## O INTERVALO MEDIDO DA PONTA ERRADA (11/09/2026, Arquiteto)
+
+**O gesto:** ler a hora de uma notificação de `idle`, comparar com agora, e concluir que a outra
+instância demorou a começar.
+
+**O que aconteceu, duas vezes no mesmo dia.** Na rodada 45 eu registrei que "entre o despacho e o
+início passou cerca de uma hora com ela marcada como disponível". Na 47, que tinham passado três
+horas. Conferido depois no `git log`, que é onde a hora do despacho mora de verdade:
+
+| rodada | commit do despacho | ela começou | intervalo real |
+|---|---|---|---|
+| 45 | `873c920`, 15:37 | 15:38 | **1 minuto** |
+| 47 | `964f8f9`, 20:50 | 20:51 | **1 minuto** |
+
+**As três horas eram minhas.** O veredito da rodada 46 entrou às 17:40 e eu só o absorvi e despachei
+a 47 às 20:50. O relógio que eu estava lendo era o da minha própria demora.
+
+**Por que engana:** a notificação de `idle` traz hora e a palavra "disponível", e as duas juntas
+parecem dizer "esperando desde então". Elas dizem outra coisa: "estava sem tarefa às H". O começo
+do intervalo que interessa é **quando o trabalho foi despachado**, e isso não está em notificação
+nenhuma · está no commit, ou na hora da mensagem enviada.
+
+**E o custo não é de contagem.** Uma observação com forma de acusação sobre um colega, publicada
+para o humano, baseada num intervalo que eu não conferi. O trabalho dela estava certo nas duas
+vezes, e o registro dizia o contrário. **Medir do lado errado é erro de número; medir do lado
+errado sobre o trabalho de outra pessoa é outra coisa.**
+
+**O gesto que fica:** antes de escrever que alguém demorou, achar o commit ou a mensagem que deu a
+partida e medir dali. Se não der para achar o começo, a frase é "não sei quando ela recebeu", e
+não um intervalo.
