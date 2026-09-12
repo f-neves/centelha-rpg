@@ -156,3 +156,15 @@ no instante em que ele é encontrado e classificado, hora lida da máquina
   na tabela de procedência do aviso antes de enviar. Documentos do Arquiteto
   commitados e empurrados: `e468182`. Árvore limpa fora do meu rascunho de
   aviso. Enviando.
+- 22:52 · AVISO ENVIADO (`84cc0b5`, BASE `8ba3cbb`, SHA/TOPO `329eedb`), push
+  confirmado (`329eedb..84cc0b5`), `git rev-list --count origin/main..HEAD` =
+  0. MAS a correção do parágrafo anterior não chegou inteira: consertei a
+  TABELA de procedência (linhas 60-62 do aviso) e esqueci dois outros lugares
+  no mesmo arquivo que ainda diziam "72 citações movidas" (na tabela "O QUE
+  MUDOU") e "65/72 âncoras" (em "ONDE LER"). O aviso já está commitado e
+  congelado; não vou editá-lo (lição da rodada 42: aviso enviado não se
+  edita, a correção vai por fora). O CORRETO, para quem ler o aviso: onde ele
+  diz "72 citações movidas" e "65/72 âncoras", leia "71 citações movidas" e
+  "71/65 âncoras" (71 se moveram, o portão acusou 65, a diferença de 6 é a
+  taxa de âncora fraca do `L65`; 72 é só o detalhe de instrumento do
+  reapontador, e não é o par que importa). Avisando o Arquiteto.
