@@ -2668,10 +2668,15 @@ const SETAS = [
    * rede) em vez de calada: quem chama já trata `error` (`porNoMapa` desfaz o
    * otimista e mostra `uiErro`), então a recusa passa a ter o mesmo caminho de
    * um erro de verdade, e não um `return` que ninguém vê.
+   *
+   * `error.ocupada` (rodada 50) distingue esta recusa específica de qualquer
+   * outra (rede, permissão): é o sinal que `deslocar`
+   * (`artes-grid-mesa.ts`) usa para saber se vale tentar uma casa mais perto,
+   * ou se o erro é de outra natureza e não adianta encurtar nada.
    */
   const gravarToken = (cid: string, q: number, r: number, em: string) => {
     if (ocupadoPor(q, r, cid)) {
-      return Promise.resolve({ data: null, error: { message: `${nomeHex(q, r)} já está ocupada.` } });
+      return Promise.resolve({ data: null, error: { message: `${nomeHex(q, r)} já está ocupada.`, ocupada: true } });
     }
     return MESTRE
       ? SB.from('arena_tokens').upsert({ arena_id: ARENA.id, combatente_id: cid, q, r, movido_em: em },
@@ -2773,6 +2778,11 @@ const SETAS = [
     // A moldura dos rótulos empurra o tabuleiro: quem desenha a grade é quem
     // sabe onde ela começa, então as camadas das Artes pedem em vez de calcular.
     margem, medida,
+    // L70: quem grava posição é quem tem a regra de ocupação (`ocupadoPor`
+    // mora aqui, não lá). `deslocar` (empurrar/arrastar/teleportar) pede em
+    // vez de escrever direto em `arena_tokens`, pelo mesmo motivo do
+    // `margem`/`medida` acima.
+    gravarToken,
     // As Artes escrevem em três lugares (o efeito, a peça invocada, a Vida e as
     // condições de quem foi mordido) e sempre terminam chamando um destes dois.
     // A campainha toca AQUI, e não dentro de cada escrita lá: assim o módulo das

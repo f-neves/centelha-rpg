@@ -1,0 +1,208 @@
+# Progresso · rodada 50 (L70: o segundo estrangulamento, a fachada de SB das Artes e o `deslocar`)
+
+Sinal de vida (ARQUITETO.md §1.2). Uma linha por etapa PEQUENA, no instante em
+que ela fecha, hora lida da máquina (`date +%H:%M`).
+
+- 23:22 (sha 231fd08, 0 à frente/atrás de `origin/main`): começando. Item 1,
+  antes de qualquer código: confirmar ou derrubar a previsão do Arquiteto
+  (`deslocar`, `artes-grid-mesa.ts:1139`, é o ÚNICO lugar que escreve posição
+  fora do `gravarToken`), varrendo o GESTO (`arena_tokens`, `jogador_mover`,
+  `.q =`/`.r =`, escrita em `ctx.tokens[...]`) e não o nome de função (lição
+  da rodada 40). Se aparecer um segundo lugar, parar e trazer antes de
+  continuar. Desenho já decidido pelo Arquiteto: `gravarToken` entra no
+  `CtxGrid`, `deslocar` chama ele (não copia a conta). Defeito à parte a
+  nomear: `ctx.tokens[a.cid] = {...}` grava ANTES de conferir se o upsert deu
+  certo, vira corrupção de cache assim que a recusa existir. Medida à parte
+  (não trabalho): tamanho de estreitar `SB: any` no `CtxGrid` (quantos usos de
+  `ctx.SB`, quantas tabelas). Pergunta de regra do humano (não decido
+  sozinha): empurrão em casa ocupada falha inteiro ou para na última casa
+  livre? Escrever o comportamento de hoje EXPLÍCITO com o motivo, trocável
+  numa linha. Fora de escopo: trava no banco, e a interceptação do arrasto
+  como ataque (com a Revisora, não encostar).
+- 23:23 · PREVISÃO CONFIRMADA. Varri o gesto, não o nome: `arena_tokens` só
+  aparece em `grid.astro` (os lugares já conhecidos do `gravarToken` e da
+  fachada) e em `artes-grid-mesa.ts:1139`, um só. `jogador_mover` não tem
+  chamador novo. `ctx.tokens[...] =` só existe em `artes-grid-mesa.ts:1143`.
+  `.q =`/`.r =` (atribuição direta, não objeto literal) não aparece em
+  `src/lib/*.ts` nenhum. Conferido também `artes-grid.ts` e `artes-grid-ui.ts`
+  (irmãos do mesmo módulo): nenhum dos dois toca posição. O `deslocar` é
+  mesmo o único caminho fora do `gravarToken`. Indo ler `CtxGrid` e o
+  `deslocar` inteiro antes de desenhar o conserto.
+- 23:25 · MEDIDA DO ITEM 5 (a fachada, não é trabalho desta rodada): `ctx.SB.`
+  aparece 15 vezes em `artes-grid-mesa.ts`, em 3 tabelas distintas
+  (`combatentes` 9, `arena_efeitos` 5, `arena_tokens` 1). Levando ao Arquiteto
+  como número, não decisão.
+
+  LIDO `CtxGrid` (`artes-grid-mesa.ts:51-117`) e `ctxArtes()`
+  (`grid.astro:2754`): já existe o idioma certo (`hexNaTela`, `margem`,
+  `medida`, `gastarMana`, `declararTempo`, `logar`), com o comentário que o
+  Arquiteto citou ("quem desenha a grade é quem sabe onde ela começa"). O
+  plano: `gravarToken` entra em `CtxGrid`, `deslocar` chama ele por casa, do
+  passo mais longe até o mais curto, parando na primeira que `gravarToken`
+  aceitar (a mesma ideia do movimento automático do Tick). Só grava
+  `ctx.tokens[a.cid]` quando a escrita realmente deu certo. Distingue
+  "ocupada" (tenta a casa mais curta) de outro erro qualquer (rede, permissão:
+  propaga na hora, não adianta encurtar). Resposta de hoje para a pergunta de
+  regra do Arquiteto: PARA NA ÚLTIMA CASA LIVRE, não falha a Arte inteira,
+  escrita como constante nomeada e comentada, trocável numa linha.
+- 23:28 · CÓDIGO ESCRITO. `CtxGrid` ganhou `gravarToken` (documentado,
+  `artes-grid-mesa.ts:81-89`); `ctxArtes()` (`grid.astro:2775-2780`) empresta
+  a MESMA função que `porNoMapa` usa. `gravarToken` (`grid.astro`) ganhou
+  `error.ocupada: true` na recusa por ocupação, para distinguir de qualquer
+  outro erro. Nova função `empurrarAteLivre` (`artes-grid-mesa.ts`): tenta do
+  passo mais longe até o mais curto via `ctx.gravarToken`, para na primeira
+  casa aceita; erro sem `.ocupada` propaga na hora, sem encurtar. Constante
+  `PARA_NA_ULTIMA_CASA_LIVRE = true` documentada como a resposta de HOJE,
+  trocável numa linha (a pergunta de regra está com o Arquiteto, não decidi
+  sozinha). `deslocar` reescrito para chamar `empurrarAteLivre` em vez do
+  `ctx.SB.from('arena_tokens').upsert` direto, e só grava `ctx.tokens[a.cid]`
+  DEPOIS de confirmar que não veio `error` (conserta o item 4: antes disso o
+  cache era escrito antes de saber se a gravação deu certo).
+
+- 23:30 · TESTE NOVO (Node puro, sem navegador): `scripts/test-l70-empurrao.mjs`,
+  importando `empurrarAteLivre`/`PARA_NA_ULTIMA_CASA_LIVRE` via a mesma casca
+  de `esbuild` + DOM de mentira que `test-arte-na-mesa.mjs` já usa. Três cenas
+  com `ctx.gravarToken` falso: caminho livre (chega ao passo pedido, 1
+  chamada); caminho parcialmente ocupado (para na última casa livre, 2
+  chamadas); erro de verdade, sem `.ocupada` (propaga na hora, 1 chamada só,
+  não tenta encurtar). Mais a conferência de que a constante hoje é `true`.
+  10 asserções, todas verdes depois de um erro meu na primeira rodada (mock
+  chamado com a forma errada, corrigido). Registrado em `validate`
+  (`package.json`), ao lado de `test-arte-na-mesa`. Rodei também
+  `test-arte-na-mesa.mjs` (33 asserções) e `test-artes-grid.mjs` (o motor
+  puro) de novo: nenhuma regressão na maquinaria das Artes ao redor do
+  `deslocar`.
+
+- 23:32 · BLOQUEIO, DE NOVO. `npm run validate` vermelho: meus dois arquivos
+  cresceram (grid.astro +10 linhas líquidas, `artes-grid-mesa.ts` +55ish) e
+  deslocaram citações nos dois. `test-procedencia.mjs` achou 99 âncoras
+  envelhecidas (72 para `grid.astro`, 27 para `artes-grid-mesa.ts`), em 8
+  documentos: `ESTADO.md` 7, `Pendencias.md` 60, `CONJURACAO.md` 9,
+  `Grid_Mobile.md` 5, `CATALOGO.md` 2, `VOZ.md` 12, `CONTEXTO.md` 2,
+  `Auditoria_Tecnica.md` 2. Mesmo protocolo da rodada 49: não toquei em
+  nenhum documento. Código completo, testado, no disco, sem commitar.
+  Trazendo ao Arquiteto.
+- 00:36 · ADENDO do Arquiteto: a resposta do humano chegou. (1) "Para na
+  última casa livre" é EXATAMENTE o que `PARA_NA_ULTIMA_CASA_LIVRE = true` já
+  fazia; nenhuma mudança de comportamento, só reescrevi o comentário para
+  dizer que é decisão do humano (`Pendencias.md` L83), não mais "resposta
+  provisória de hoje sem decisão". (2) "Quem apanha cai" fica de fora de
+  propósito, adiada para a rodada 51 junto da separação `caido`/`inconsciente`
+  na fila (`L84`, `NO_CHAO`, `grid.astro:7118`): documentei o motivo no
+  comentário da constante, para ninguém achar que foi esquecimento. (3) e (4)
+  não pedem ação minha (nota de `L84` para quando ela chegar; achado do FAA do
+  `empurrao-elemental` registrado no `L83`, não é para eu mexer). Achei e
+  corrigi DOIS travessões que tinham escapado do meu próprio código
+  (`artes-grid-mesa.ts`, no comentário novo) e um no `test-l70-empurrao.mjs`:
+  o `git diff` não pega arquivo novo/não rastreado, então a checagem de antes
+  tinha passado por cima deles sem avisar. Lição: para arquivo novo, `grep`
+  direto, não `git diff`. Nenhum código funcional mudou, só os comentários.
+  Avisando o Arquiteto que o código parou de mexer.
+- 00:38 · Arquiteto trouxe duas correções. (1) CONFERIDO: o teste NÃO afirma
+  "recusa" para destino ocupado. A cena 2 (`test-l70-empurrao.mjs:89-99`) já
+  testava exatamente "para uma casa antes" (`passosReais = 2`, um a menos que
+  o pedido, `!r.error`), porque o teste foi escrito DEPOIS de
+  `empurrarAteLivre` já existir com `PARA_NA_ULTIMA_CASA_LIVRE = true` (a
+  mesma resposta que virou decisão do humano): o código não mudou entre
+  escrever a função e escrever o teste, só o STATUS da decisão mudou (de "hoje,
+  sem decisão" para "decisão do L83"). Nada a corrigir no teste. (2) ACHADO
+  REAL, para não afirmar demais no fechamento: a conferência em `gravarToken`
+  fecha o caminho da ESCRITA de posição, não a invariante de ocupação inteira.
+  Levantar (`caido` → de pé, quando a separação de fila do L84 existir) muda
+  uma condição e um tick, não grava coordenada nenhuma, então dois corpos
+  podem ficar de pé no mesmo hexágono sem NENHUMA escrita passar pelo
+  `gravarToken`. Registrando para não afirmar no aviso que "a conferência
+  fecha a invariante de ocupação": ela fecha o caminho da posição, e é uma
+  frase diferente. (3) `noChao` tem 30 chamadores, todos em `grid.astro`, e o
+  Arquiteto levou o número ao humano. Sem novidade de escopo até agora:
+  seguindo com a gravação e "para uma casa antes", sem a queda.
+- 01:00 · A RODADA CRESCEU. Decisão do humano (contra a recomendação do
+  Arquiteto de partir em duas): a separação Caído/Inconsciente entra JUNTO
+  desta rodada, porque a queda não pode existir num estado em que derrubar
+  tire do combate. Cinco eixos, um commit por eixo: (1) gravação das Artes
+  (feito, segue igual); (2) separa `noChao` em dois predicados (`podeDividir`
+  continua com os dois estados; um novo, só fila, decide quem sai da
+  iniciativa), 30 chamadas, todas em `grid.astro`, CADA UMA lida antes de
+  classificar, dois casos já avisados como não óbvios (arrasto que recusa
+  peça no chão, bandeira `chao:` que sai para fora); (3) `caido` ganha
+  `acao: -2` no catálogo de condições (campo já existe, usado por
+  `imobilizado`); (4) levantar com alguém em cima é DESLOCAMENTO (Força ou
+  Destreza + Briga, com o -2, mas a disputa em si não é desta rodada: sem
+  hexágono livre adjacente, recusa com motivo e o mestre resolve à mão; o
+  custo em Ticks é o `cobrarDeslocamento` de sempre, só na Recuperação;
+  `DELAY_AO_LEVANTAR` (5 Ticks) passa a valer só para inconsciente, conferir
+  que o gatilho usa o predicado novo e não o `noChao` velho); (5) o empurrão
+  volta a aplicar a condição `caido` em quem esbarra (a peça que faltava do
+  L83), e o teste precisa de ajuste para isso.
+
+  ANTES DE ESCREVER O EIXO 2: trazer as 30 chamadas de `noChao` classificadas,
+  como lista, com a pergunta de cada uma ("passa por cima?" ou "fora da
+  fila?"). Se não couber numa rodada, dizer com o número, não decidir
+  sozinha. Indo ler as 30, uma a uma.
+- 01:05 · AS 30 LIDAS, cada uma no contexto, classificadas em três grupos.
+  `podeDividir` (`:7141`, as duas chamadas `noChao(a)`/`noChao(b)`) é o ponto
+  de ancoragem de Q1 e não migra: é ele que define "posso passar por cima".
+
+  GRUPO Q1 · fica em `noChao`, sem mudar (5): `:7141` x2 (`podeDividir`);
+  `:5692` (`despejarTickInterno`, campo `chao:` do despejo de diagnóstico:
+  reporta estado físico, não fila); `:8556` (`resolverGolpeNoAr`, a regra do
+  "golpe no caído": se o alvo já estava no chão ANTES deste Tick, redireciona,
+  e isso é sobre o instante físico do golpe, não sobre quem age); `:4741`
+  (definição de `noChaoAgora`, mas com ressalva, ver abaixo).
+
+  GRUPO Q2 · migra para o predicado novo, "está fora de combate/da fila?"
+  (21): `:4580` (`tickDaVez`, "quem está caído não segura o relógio", mas
+  agora segura, porque age); `:4627`/`:4628` (`grupoDaVez`, quem pode agir
+  agora); `:4694`/`:4722` (`golpeMaisCedo`/`golpeVencidoNaFaixa`, golpe
+  agendado de quem está de pé, caído com golpe no ar deve contar);
+  `:4776` (dentro de `levantar`, calcula em que Tick reinserir quem levantou:
+  é pergunta de fila); `:4847`/`:4848` (`pintarIniciativa`, a divisão visual
+  "de pé" × "No chão, fora da fila": o rótulo mesmo diz "fora da fila", que
+  deixa de ser verdade para caído); `:5077`/`:5078` (`pintarOrdem`, mesmo
+  rótulo "No chão, fora da fila"); `:5120` (`pintarLinhaDoTempo`, a fita só
+  mostra quem pode agir); `:5297` (`rolarIniciativas`, o comentário já dá a
+  razão certa: "um INCONSCIENTE que tirasse o maior valor", fala de quem não
+  age, não de quem está caído); `:5744` (`avancarTickSimultaneo`, pula
+  movimento automático de quem está fora); `:5901` (`cenaAssentada`, golpe
+  agendado de quem pode agir); `:5956`/`:5974`/`:5978` (`avancarAteParar`,
+  quem resolve golpe devido e quantos "de pé" para o log); `:5998`
+  (`decidirAutomaticas`, quem o robô controla); `:6082` (`pintarRotas`, só
+  desenha trajeto de quem pode agir); `:10737` (espelho de motor, `devido`,
+  espelha `golpeMaisCedo`); `:11949` (atalho de teclado 1-9, seleciona pela
+  posição na fila).
+
+  ACHADO ESTRUTURAL, não é um dos 30 mas nasce de classificar o `:4741`:
+  `noChaoAgora()` (a função, não a chamada) é consumida em DOIS lugares que
+  querem coisas diferentes. `:5731` (`avancarTickSimultaneo`, `CAIDOS_AO_ABRIR
+  = noChaoAgora()`) alimenta a regra do golpe no caído (`:8556`, Q1, físico).
+  `:4756` (dentro de `conferirChao`) e `:4802` (depois de `levantar` resolver)
+  usam o MESMO `noChaoAgora()` para detectar quem SAIU da fila e cobrar
+  `DELAY_AO_LEVANTAR`: isso é Q2, e é EXATAMENTE o gatilho que o Arquiteto
+  pediu para conferir ("se ficar no `noChao` antigo, todo prono que levantar
+  vai levar 5 Ticks de graça"). `noChaoAgora()` tem de virar duas funções: a
+  de hoje (Q1, para `:5731`) e uma irmã nova (Q2, para `:4756`/`:4802`), ou o
+  gatilho do acordar dispara para caído levantando sozinho, que é exatamente o
+  defeito que a separação existe para fechar.
+
+  GRUPO PRECISA DE DECISÃO, não decidi sozinha (4): `:6794`/`:6800` (o
+  arrasto que recusa peça no chão: "peça caída continua de fora" do gatilho
+  de vez/diálogo, comentário do próprio código, porque hoje ela "não tem vez
+  para medir"; agora TEM. Arrastar um caído fora da vez dele deveria abrir o
+  mesmo diálogo "corrigir ou fora do turno" que qualquer peça de pé, ou
+  continuar pousando direto porque é o mestre "arrumando a cena"? Minha
+  inclinação é migrar para Q2, caído tem vez agora, mas é decisão de produto,
+  não minha); `:8496` (`destinoDoGolpe`, candidatos a redirecionar um golpe
+  perdido: um alvo caído-mas-consciente pode ser o NOVO alvo do golpe
+  perdido, ou continua fora da lista de candidatos como hoje? Minha
+  inclinação é Q1 (fica de fora), porque a regra é sobre achar um corpo por
+  perto, não sobre quem pode agir, mas não tenho certeza); `:10782` (espelho
+  de motor, `dePe()`, usado pelo driver para saber se a cena acabou: um lado
+  todo caído-mas-consciente não foi derrotado, só derrubado, devo contar
+  como "ainda em cena" (Q2) para o driver não achar batalha encerrada cedo
+  demais? Minha inclinação é Q2, mas o nome do campo (`dePe`, literalmente
+  "de pé") sugere Q1, e é meio caminho ele mesmo).
+
+  RESUMO PARA O ARQUITETO: 30 chamadas diretas + a função `noChaoAgora()`
+  precisando virar duas. 5 ficam, 21 migram, 4 pedem decisão, 1 função
+  estrutural se parte em duas. Trazendo antes de escrever qualquer linha do
+  eixo 2, como pedido.

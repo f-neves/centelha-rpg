@@ -80,6 +80,16 @@ export interface CtxGrid {
    */
   margem?: () => { x: number; y: number };
   medida?: () => { largura: number; altura: number };
+  /**
+   * Grava a posição de um token, com a mesma conferência de ocupação que
+   * `porNoMapa` usa (`grid.astro`, L70): quem sabe se a casa está livre é
+   * quem tem a regra, pelo mesmo motivo do `margem`/`medida` acima. Recusa
+   * devolve `{ error: { message, ocupada: true } }` para a casa ocupada
+   * (distinto de qualquer outro erro, que não tem `ocupada`); sucesso não
+   * mexe em `ctx.tokens` sozinho, quem chama grava o cache só depois de
+   * conferir que não veio `error`.
+   */
+  gravarToken: (cid: string, q: number, r: number, em: string) => Promise<{ data: any; error: any }>;
   logar: (c: any, txt: string, extra: Record<string, any>) => Promise<void>;
   recarregar: () => Promise<void>;
   repintar: () => void;
@@ -1110,6 +1120,56 @@ async function invocar(ctx: CtxGrid, c: any, plano: Plano): Promise<void> {
   await ctx.recarregar();
 }
 
+/**
+ * DECISÃO DO HUMANO (L70, rodada 50, `Pendencias.md` L83): quando o destino de
+ * um empurrão está ocupado, o corpo voa até esbarrar e PARA NO ÚLTIMO
+ * HEXÁGONO LIVRE do trajeto (o mesmo princípio do movimento automático do
+ * Tick em `grid.astro`, `caminharHex` + `ocupadoPor`). A Arte NÃO FALHA, e não
+ * grava por cima de ninguém.
+ *
+ * O `L83` marca que esta regra volta para revisão depois (é o galho "perdeu"
+ * de um modelo maior, ainda sem o teste de Empurrão que o completaria): não
+ * é um "talvez" desta rodada, é decisão tomada com aviso de que pode mudar.
+ * Continua uma CONSTANTE, e não um valor cravado no meio de `empurrarAteLivre`,
+ * exatamente por causa desse aviso: quando a revisão chegar, muda aqui.
+ *
+ * O QUE ESTE COMENTÁRIO NÃO COBRE MAIS (era `L84`/rodada 51, e deixou de
+ * ser): quem SOFRE o empurrão e esbarra também cai (condição `caido`),
+ * decisão do humano no mesmo dia que juntou a queda com a separação de fila
+ * entre `caido` (age) e `inconsciente` (não age) em `NO_CHAO`
+ * (`grid.astro:7118`). As duas entram nesta rodada; aplicar a condição mora
+ * em `deslocar`, não nesta constante. `podeDividir` (`grid.astro:7130`) não
+ * muda: os dois estados continuam dividindo espaço, só a fila se separa.
+ */
+export const PARA_NA_ULTIMA_CASA_LIVRE = true;
+
+/**
+ * Empurra `cid` de `de` até `passos` hexágonos na direção de `ate` (via
+ * `afastar`), gravando pela regra de ocupação de verdade (`ctx.gravarToken`,
+ * L70), não mais por geometria pura. Tenta do passo mais longe até o mais
+ * curto, e para na primeira casa que `gravarToken` aceitar.
+ *
+ * A DISTINÇÃO QUE IMPORTA: `error.ocupada` (só a recusa por ocupação tem essa
+ * marca) diz se vale tentar uma casa mais perto; qualquer outro erro (rede,
+ * permissão) é propagado na hora, porque encurtar a distância não conserta
+ * uma queda de rede.
+ */
+export async function empurrarAteLivre(
+  ctx: CtxGrid, cid: string, de: Hex, ate: Hex, passos: number, cols: number, rows: number,
+): Promise<{ destino: Hex; passosReais: number; error: any }> {
+  const minimo = PARA_NA_ULTIMA_CASA_LIVRE ? 0 : passos;
+  let ultimoDestino = ate;
+  for (let p = passos; p >= minimo; p--) {
+    const destino = afastar(de, ate, p, cols, rows);
+    ultimoDestino = destino;
+    const { error } = await ctx.gravarToken(cid, destino.q, destino.r, new Date().toISOString());
+    if (!error) return { destino, passosReais: p, error: null };
+    if (!error.ocupada) return { destino, passosReais: 0, error };
+    if (p === minimo) return { destino, passosReais: 0, error };
+  }
+  return { destino: ultimoDestino, passosReais: 0, error: { message: 'Não deu para empurrar.' } };
+}
+
 /** Empurrar, arrastar, teleportar: calcula, deixa ajustar, e só então move. */
 async function deslocar(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLElement): Promise<void> {
   const meu = ctx.tokens[c.id];
@@ -1134,16 +1194,29 @@ async function deslocar(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLElement):
 
   for (const a of ajustes) {
     const passos = Math.max(0, Math.round(a.ajustado / esc_));
-    const destino = afastar(meu, pos, passos, ctx.arena.cols, ctx.arena.rows);
+    let destino = pos;
+    let metrosReais = 0;
     if (passos > 0) {
-      await ctx.SB.from('arena_tokens').upsert(
-        { arena_id: ctx.arena.id, combatente_id: a.cid, q: destino.q, r: destino.r, movido_em: new Date().toISOString() },
-        { onConflict: 'arena_id,combatente_id' },
-      );
+      const r = await empurrarAteLivre(ctx, a.cid, meu, pos, passos, ctx.arena.cols, ctx.arena.rows);
+      if (r.error) {
+        // Erro de verdade (não é o caso comum, que é ocupação e já foi
+        // resolvido dentro de `empurrarAteLivre`): nem registra "moveu", nem
+        // aplica dano, porque a peça não saiu do lugar.
+        uiErro(`Não deu para empurrar ${alvo.nome}: ${r.error.message}`);
+        continue;
+      }
+      // Só grava o cache DEPOIS de confirmar que a escrita deu certo: antes
+      // disso, `ctx.tokens[a.cid]` era atualizado sem checar o resultado do
+      // `upsert`, e uma recusa por ocupação (que não existia antes do L70)
+      // teria feito a tela mostrar a peça movida com a gravação recusada.
+      destino = r.destino;
       ctx.tokens[a.cid] = { q: destino.q, r: destino.r };
+      metrosReais = r.passosReais * esc_;
     }
+    const parouAntes = passos > 0 && metrosReais < a.ajustado;
     await ctx.logar(alvo, `${c.nome} usou ${plano.nome}: ${a.nome} foi de ${nomeHex(pos.q, pos.r)} `
-      + `para ${nomeHex(destino.q, destino.r)} · ${a.ajustado} m`, { acao: null });
+      + `para ${nomeHex(destino.q, destino.r)} · ${parouAntes ? metrosReais : a.ajustado} m`
+      + (parouAntes ? ' (parou antes do previsto: o caminho estava ocupado)' : ''), { acao: null });
     if (a.dano > 0) await aplicarDano(ctx, combDe(ctx, a.cid), a.dano, plano, 'colisão');
   }
   const g = plano.efeito?.grid;
