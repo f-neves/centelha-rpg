@@ -3935,6 +3935,29 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   pior que o primeiro, porque o primeiro só gastou uma correção e este gastou uma investigação
   inteira que chegou à conclusão errada.
 
+- [ ] **L90 · [ACHADO de passagem pela Executora na rodada 50, em 12/09/2026, PROVADO pré-existente
+  e não investigado] Uma cena de `scripts/test-grid.mjs` falha por intermitência no arrasto por
+  mouse simulado, e passa na repetição seguinte.**
+
+  **O que está provado:** ela confirmou que a falha é **idêntica no código de antes da rodada 50**,
+  guardando o próprio `grid.astro` não commitado com `git stash` de pathspec e rodando de novo. Não é
+  regressão da rodada. E é intermitente de verdade: verde na repetição seguinte, sem nenhuma mudança.
+
+  **O que NÃO está investigado, e fica dito em vez de suposto:** qual cena, com que frequência, e por
+  quê. Ela estava no meio de cinco eixos e a decisão de não perseguir foi certa; registrar é o que
+  faltava para o achado não morrer dentro de um arquivo de progresso.
+
+  **POR QUE ISTO NÃO É DETALHE.** Teste intermitente não custa o teste, custa **a suíte**: ele ensina
+  quem roda a repetir em vez de investigar, e o dia em que uma regressão de verdade aparecer naquela
+  cena, a primeira reação de todo mundo vai ser rodar de novo. É a mesma família do zero ambíguo do
+  `CATALOGO`, num lugar pior: aqui o verde da segunda tentativa **apaga** o vermelho da primeira, e
+  ninguém escreve que houve uma primeira.
+
+  **O gesto que resolve, quando alguém pegar:** rodar a cena isolada N vezes e trazer a taxa antes de
+  tocar em qualquer código. Sem a taxa não dá para saber se um conserto consertou ou se a moeda caiu
+  do lado bom. → `CATALOGO` (o zero ambíguo), → `L89` (medir antes de consertar, aprendido caro no
+  mesmo dia).
+
 - [ ] **L89 · [ESTRAGO do Arquiteto em 12/09/2026, CONSERTADO no mesmo dia, e a ferramenta ganhou
   a conferência que faltava] O reapontador movia em silêncio, e rodá-lo duas vezes sobre o mesmo
   diff não commitado quebrou 39 citações de uma vez.**
