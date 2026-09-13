@@ -1401,7 +1401,14 @@ import CondDlg from '../../components/CondDlg.astro';
     const antes = c.tick;
     const antesAcao = c.acao;
     const cd = somarCondicoes(condsDe(c));
-    const novo = Math.max(0, antes + Math.max(0, quanto + (cd.velocidade || 0)));
+    // A MARCA ANTES DA CONTA (L64, rodada 57): `cd.naoAge` (Fora do tempo)
+    // lida primeiro, e o Tick nem entra na conta de `velocidade` quando ela
+    // está ligada. Antes, a sentinela `-99` fazia o mesmo por saturação: o
+    // `Math.max(0, quanto + cd.velocidade)` afundava em zero, e só por
+    // coincidência dava o mesmo resultado (nenhum Tick avança). Separado, o
+    // resultado para a mesa é idêntico; o que muda é que agora é uma marca
+    // lida, não um número que por acaso sempre vencia a soma.
+    const novo = cd.naoAge ? antes : Math.max(0, antes + Math.max(0, quanto + (cd.velocidade || 0)));
     c.tick = novo;
     // A ação e o Tick andam juntos: a ação diz o que acontece DENTRO do ciclo
     // que o Tick acabou de reservar. Gravar em duas idas daria uma janela em

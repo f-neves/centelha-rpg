@@ -259,7 +259,7 @@
       "icone": "⏸",
       "grupo": "arcano",
       "cor": "bom",
-      "velocidade": -99,
+      "naoAge": true,
       "nota": "As suas ações não custam Ticks: o relógio da mesa não anda enquanto você age. É o Parar, da Arte do Tempo, resolvido do seu lado do relógio em vez do dos outros."
     },
     {

@@ -363,8 +363,15 @@ const parar = M.EFEITO['parar'];
 eq(parar.grid.alvo, 'si', 'Parar cai em quem conjura');
 eq(parar.grid.condicao, 'fora-do-tempo', 'Parar deixa a condição Fora do tempo');
 const foraDoTempo = M.CONDICAO['fora-do-tempo'];
-ok(foraDoTempo && foraDoTempo.velocidade <= -50,
-  'Fora do tempo zera o custo em Ticks pela via que o rastreador já soma');
+// L64 (rodada 57): a condição carregava a SENTINELA (-99) no mesmo campo que
+// as outras três carregam GRANDEZA de verdade, e a asserção velha provava a
+// sentinela pela magnitude dela, a própria confusão escrita como teste verde.
+// Agora a marca é um campo próprio; `velocidade` não carrega mais sentinela
+// nenhuma (ver `scripts/test-l64-velocidade.mjs` para a separação completa).
+ok(foraDoTempo && foraDoTempo.naoAge === true,
+  'Fora do tempo carrega a marca `naoAge`, não mais um número de velocidade');
+ok(foraDoTempo && foraDoTempo.velocidade == null,
+  'e `velocidade` não guarda mais a sentinela: não é -99, nem 0, é ausente');
 
 // Dissipar escolhe um efeito no tabuleiro, e não um chão nem um corpo.
 ok(M.EFEITO['dissipar'].grid.dissipa, 'Dissipar apaga efeito alheio');

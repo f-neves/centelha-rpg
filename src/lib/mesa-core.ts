@@ -167,6 +167,14 @@ export interface Condicao {
   id: string; nome: string; icone?: string; grupo?: string; cor?: string;
   acao?: number; dados?: number; defesa?: number; defesaCaC?: number; defesaDist?: number;
   ataque?: number; velocidade?: number; soak?: number; porRodada?: number;
+  // A MARCA, SEPARADA DO NÚMERO (L64, rodada 57). `velocidade` só carrega
+  // grandeza de verdade (`acelerado` −2, `retardado` +2, `terreno-dificil`
+  // +1); `fora-do-tempo` ("não age") usava o mesmo campo com a sentinela
+  // `-99`, funcionando por saturação aritmética no consumidor (o `Math.max`
+  // de `combate.astro`). `naoAge` é essa marca, como campo próprio: quando
+  // true, o consumidor ignora `velocidade` por completo, em vez de somar um
+  // número que nunca devia ter sido grandeza.
+  naoAge?: boolean;
   nota?: string; fonte?: string; foraDeCombate?: boolean; marcaOculto?: boolean;
   ate?: number | null; // tick em que expira (só na instância aplicada)
 }
@@ -176,7 +184,7 @@ export const COND: Record<string, Condicao> = Object.fromEntries(COND_LISTA.map(
 
 /** Soma o efeito de todas as condições ativas de um combatente. */
 export function somarCondicoes(cs: Condicao[] | null | undefined) {
-  const t = { acao: 0, dados: 0, defesa: 0, defesaCaC: 0, defesaDist: 0, ataque: 0, velocidade: 0, soak: 0, porRodada: 0, fora: false };
+  const t = { acao: 0, dados: 0, defesa: 0, defesaCaC: 0, defesaDist: 0, ataque: 0, velocidade: 0, soak: 0, porRodada: 0, fora: false, naoAge: false };
   for (const c of cs || []) {
     t.acao += c.acao || 0;
     t.dados += c.dados || 0;
@@ -190,6 +198,10 @@ export function somarCondicoes(cs: Condicao[] | null | undefined) {
     t.defesaCaC += (c.defesaCaC ?? d);
     t.defesaDist += (c.defesaDist ?? d);
     if (c.foraDeCombate) t.fora = true;
+    // A MARCA, SEPARADA (L64): `naoAge` some no total por OU, nunca por soma,
+    // porque ela não é grandeza. `velocidade` continua somando só número:
+    // a marca não zera nem some o que outra condição no mesmo lote carregar.
+    if (c.naoAge) t.naoAge = true;
   }
   return t;
 }
@@ -205,7 +217,12 @@ export function condChipHTML(c: Condicao, rm = false, dono = '') {
     else if (c.defesaCaC) partes.push(`def ${sinal(c.defesaCaC)}`);
   } else if (c.defesa) partes.push(`def ${sinal(c.defesa)}`);
   if (c.ataque) partes.push(`atq ${sinal(c.ataque)}`);
-  if (c.velocidade) partes.push(`vel ${sinal(c.velocidade)}`);
+  // A MARCA, NÃO O NÚMERO (L64): onde `fora-do-tempo` mostrava "vel -99", a
+  // tela passa a dizer a palavra que a condição já usa. A grandeza de
+  // verdade (`acelerado`/`retardado`/`terreno-dificil`) continua saindo como
+  // número, sem mudar nada no que as outras 54 condições exibem.
+  if (c.naoAge) partes.push('não age');
+  else if (c.velocidade) partes.push(`vel ${sinal(c.velocidade)}`);
   if (c.soak) partes.push(`abs ${sinal(c.soak)}`);
   if (c.porRodada) partes.push(`−${c.porRodada}/rodada`);
   const dica = [c.nota, partes.length ? `(${partes.join(' · ')})` : '',

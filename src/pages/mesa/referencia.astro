@@ -68,7 +68,11 @@ const modEfeito = (c: any) => {
     else if (c.defesaCaC) p.push(`Defesa ${sinal(c.defesaCaC)}`);
   } else if (c.defesa) p.push(`Defesa ${sinal(c.defesa)}`);
   if (c.ataque) p.push(`acerto ${sinal(c.ataque)}`);
-  if (c.velocidade) p.push(`Velocidade ${sinal(c.velocidade)}`);
+  // A MARCA, NÃO O NÚMERO (L64, rodada 57): `fora-do-tempo` não carrega mais
+  // a sentinela `-99` em `velocidade`, carrega `naoAge`. A grandeza de
+  // verdade continua saindo como número.
+  if (c.naoAge) p.push('não age');
+  else if (c.velocidade) p.push(`Velocidade ${sinal(c.velocidade)}`);
   if (c.soak) p.push(`Absorção ${sinal(c.soak)}`);
   if (c.porRodada) p.push(`−${c.porRodada} por rodada`);
   if (c.foraDeCombate) p.push('fora de combate');
