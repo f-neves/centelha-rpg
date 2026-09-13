@@ -3850,8 +3850,9 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   fora: é decidir se a linha dele ganha a nota de que o número preciso mora no `ESTADO.md`.
   Achado conferindo outra coisa, registrado e parado aqui.
 
-- [ ] **L64 · [RESPONDIDO pelo humano em 10/09/2026 · a resposta é (b), o referente existe, e o
-  tamanho está medido. FAZER: a separação primeiro; o `teto6` NÃO se constrói ainda] A separação
+- [x] **L64 · [FECHADO em 12/09/2026, rodada 57, veredito PROCEDE em `88a5cfe`, código `972d11b`.
+  A separação está feita e a marca `naoAge` existe; o `teto6` continua desligado de propósito e é
+  rodada própria, com a asserção que impede ligá-lo às cegas já no `validate`] A separação
   de sentinela e magnitude que precede o `teto6`.**
 
   Aberta como item de trabalho, investigada sem escrever código, e **parada porque o que
@@ -3954,12 +3955,41 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   escrita como asserção verde. **O Grid continua ignorando o campo de propósito**, então "Fora do tempo" continua não
   fazendo nada com o relógio no Simultâneo, e `teto6` continua desligado.
 
-  **O contra que ele comprou, e fica escrito porque é o mais forte:** esta entrega não aparece para
-  quem joga, e a regra permanente da fase diz que nenhuma fase termina em documento. A resposta é
-  que isto não é fase, é dívida de instrumento · e que o preço de aplicar no Grid junto seria
+  **O contra que ele comprou, e fica escrito porque era o mais forte:** esta entrega não apareceria
+  para quem joga, e a regra permanente da fase diz que nenhuma fase termina em documento. A resposta
+  era que isto não é fase, é dívida de instrumento · e que o preço de aplicar no Grid junto seria
   decidir de passagem o que "não age" faz com a agenda do Tick (sai da fila? fica e perde a vez?
   por quantos Ticks?), que não está escrito em lugar nenhum e é exatamente como o defeito original
   nasceu.
+
+  **FECHADO em 12/09/2026, rodada 57, veredito PROCEDE em `57-revisora.md` (sha `88a5cfe`,
+  conferido ancestral de `origin/main`), código em `972d11b`.** O `-99` saiu do dado,
+  `fora-do-tempo` carrega `naoAge`, `somarCondicoes` devolve marca e grandeza separadas, e o
+  consumidor lê a marca antes da conta. A asserção que dá sentido à rodada é de comportamento e não
+  de texto: duas condições sintéticas de +5 somam 10, então **um teto ingênuo de ±6 no ponto de soma
+  deixa esse teste vermelho** · a Revisora reproduziu à mão e mediu a falha exata (esperado 10,
+  achou 6), com as outras 22 asserções seguindo verdes, e desfez antes de reportar.
+
+  **E O CONTRA ACIMA NÃO SE REALIZOU, por uma razão que nenhum dos dois levantamentos viu: a
+  entrega APARECE na mesa.** O `condChipHTML` é chamado pelo diálogo compartilhado de condições, em
+  `src/lib/mesa-condicoes.ts:78` · `ativas.map((x) => condChipHTML(x, true, c.id))`, e esse módulo é
+  importado pelo tabuleiro · então o Grid **exibia** o campo todo esse tempo, e exibia "vel −99". Hoje exibe "não age", de graça, sem uma linha escrita para
+  isso. **A distinção que o registro estava perdendo é entre APLICAR e EXIBIR:** o Grid nunca
+  aplicou `velocidade` no relógio e continua não aplicando (é a decisão do humano, e o que falta
+  para aplicar é regra de jogo que não existe), mas ler para mostrar ele sempre leu. Escrever "o
+  Grid não lê o campo" era impreciso nos dois sentidos · subestimava o alcance da correção e
+  prometia um silêncio que não havia.
+
+  **O que a Revisora conferiu e eu não teria conferido de dentro:** os quatro leitores reais de
+  `Condicao.velocidade` estão todos guardados (`|| 0` ou teste de verdade), então tirar o campo de
+  uma condição **não produz NaN** em lugar nenhum · era o risco clássico da remoção, e a direção
+  fácil (as outras três ainda têm número) era a única que o teste da rodada cobria. Zero `-99` em
+  código vivo. E ela releu `modEfeito` e `avancarTick` linha a linha, que é onde as três asserções
+  declaradamente fracas (por texto, porque as funções vivem dentro de `.astro`) não alcançam.
+
+  **Ela também refalsificou o CORRIGE da rodada 56** (`3eeb8fd`), trocando `enviada` por `linha` na
+  rede do `ATIVOS.push`: o teste quebrou, ela desfez, 27/27 de novo. O conserto está certo por
+  medida de duas pessoas diferentes, e não por relato.
 
   **O SEGUNDO PREJUÍZO DO MESMO ARQUIVO PERDIDO.** O referente estava escrito no texto que a
   sessão antiga produziu para virar o `PORQUE.md`, e que **nunca foi commitado**. O primeiro

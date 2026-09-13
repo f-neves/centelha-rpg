@@ -60,11 +60,16 @@ em 10/09/2026**: o campo é `Condicao.velocidade`, e a sentinela é o `-99` da c
 o campo, três carregam grandeza de verdade, e nada no formato as distingue · um teto ingênuo ali
 transforma "não age" em "age seis Ticks mais rápido", sem exceção e sem teste vermelho.
 
-**E em 12/09/2026 o escopo foi decidido: SÓ SEPARAR.** Marca própria para "não age", `velocidade`
-só com grandeza, o consumidor lendo a marca antes da conta, e o teste afirmando a marca em vez do
-valor. **O Grid continua ignorando o campo de propósito** (então "Fora do tempo" segue sem mexer no
-relógio do Simultâneo), e `teto6` segue desligado. O contra comprado: esta entrega não aparece para
-quem joga. → **L64**, com o tamanho medido e as duas metades.
+**E em 12/09/2026 a separação FOI FEITA** (escopo decidido pelo humano: só separar; rodada 57,
+código `972d11b`, veredito `88a5cfe`). `fora-do-tempo` carrega a marca `naoAge`, `velocidade` ficou
+só com grandeza, `somarCondicoes` devolve as duas coisas separadas, e **o `validate` agora tem a
+asserção que impede ligar o `teto6` às cegas**: duas condições sintéticas de +5 somam 10, então um
+teto ingênuo de ±6 no ponto de soma fica vermelho.
+
+**O que o Grid faz com o campo, na distinção que o registro estava perdendo:** ele nunca **aplicou**
+`velocidade` no relógio e continua não aplicando (falta regra de jogo, não código · o que "não age"
+faz com a agenda do Tick não está escrito em lugar nenhum), mas **sempre exibiu** o campo, pelo
+diálogo compartilhado de condições. Exibia "vel −99"; hoje exibe "não age", de graça. → **L64**.
 
 ## Comando por voz · a frente, e ela já tem código
 
@@ -219,7 +224,8 @@ Pelo NOME, porque número de opção depende de qual lista se está lendo.
   direção) e o site rolando para a mesa confirmar. Somar é da mesa, e o dado fica na mão. →
   `Pendencias.md` **L29**, item 1, com o que isso faz com os tetos publicados lá.
 - **A SEPARAÇÃO DE SENTINELA E MAGNITUDE VAI ATÉ A SEPARAÇÃO, E PARA ALI** (12/09/2026): o Grid
-  continua não lendo `velocidade` de propósito, e `teto6` continua desligado. → **L64**.
+  continua não APLICANDO `velocidade` no relógio (exibir é outra coisa, e ele exibe), e `teto6`
+  continua desligado, agora com asserção que impede ligá-lo às cegas. → **L64**, fechado.
 
 ## O que está começado e não terminado
 
