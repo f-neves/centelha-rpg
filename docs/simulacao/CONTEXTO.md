@@ -11,7 +11,7 @@ Três regras que o mantêm útil:
   de próprio é o que veio do chat e não mora em arquivo nenhum.** E apontar é dar nome,
   caminho e para que serve, nunca descrever o conteúdo do outro arquivo (`ARQUITETO.md §5.5`).
 
-Última reescrita: **12/09/2026**.
+Última reescrita: **13/09/2026**.
 
 ---
 
@@ -31,7 +31,7 @@ ESTÁ ENCERRADA".
 **O teto que fica:** o trabalho do mestre na configuração de hoje não é uma coisa, são
 três: **51% aritmética** (597.714 gestos), **32% o ⏭**, a cadência do relógio (375.005),
 **17% julgamento** (199.238). E **o teto do que os consertos já desenhados tiram é
-76,7%** (273.445 de 1.171.957 gestos) — não são duas testemunhas independentes batendo,
+76,7%** (273.445 de 1.171.957 gestos), e não são duas testemunhas independentes batendo:
 é o MESMO contador (`golpeNoTick`, `log.mjs:224-226`) lido por duas exibições
 algebricamente equivalentes, que por isso nunca poderiam discordar. → `ESTADO.md`, seção
 "O que sobra depois de tudo, e o teto de verdade". (O `02-projeto-harness.md:33` arredonda
@@ -45,8 +45,8 @@ das quinze**, porque a segunda bateria não acontece e ele deixou de ser o alvo.
 
 - **`porte`**: `modificadorPorte`/`porteDeRotulo` (`src/lib/calc.ts`), somado em `ajAtq.flat`.
 - **`gate`**: `gatePerfuracaoAbre` (`calc.ts`) contra `perfArma` do atacante, aplicado nos
-  TRÊS pontos de `folhaDaAcao` que decidem dano (`contaDoLance`, `fim` — o que `aplicarDano`
-  de fato usa — e `pintarDano`).
+  TRÊS pontos de `folhaDaAcao` que decidem dano (`contaDoLance`, `fim`, que é o que `aplicarDano`
+  de fato usa, e `pintarDano`).
 - **Provado na Vida, não só no log**: `scripts/test-bandeiras-mesa.mjs`, asserta em
   `__ESPELHO.pvDe`.
 
@@ -129,23 +129,21 @@ funcionando na mesa.*
 
 ## A rodada corrente
 
-**Últimas fechadas, as três em 12/09/2026:** a **54** (`L85`, a régua de empurrão das Artes,
+**Últimas fechadas, as quatro em 12/09/2026:** a **54** (`L85`, a régua de empurrão das Artes,
 veredito `873b772`), a **55** (`L86a`, a Arte `Mão Firme` curando no tabuleiro, código `57f6bcb`,
-veredito `3cc14b5`, fechamento `f0d8e0b`) e a **56** (`acelerar-a-cura` curando por nível da Arte,
-código `65d9b7a`, veredito PROCEDE em `b82ae80`, CORRIGE em `3eeb8fd`). O que cada uma entregou e o
-que deixou de resíduo mora no `Pendencias.md`, nos itens de mesmo nome.
+veredito `3cc14b5`, fechamento `f0d8e0b`), a **56** (`acelerar-a-cura` curando por nível da Arte,
+código `65d9b7a`, veredito PROCEDE em `b82ae80`, CORRIGE em `3eeb8fd`) e a **57** (`L64`, a
+separação de sentinela e magnitude, código `972d11b`, veredito `88a5cfe`, fechamento `4b11929`).
+O que cada uma entregou e o que deixou de resíduo mora no `Pendencias.md`, nos itens de mesmo nome.
 
 **A régua nova que a 56 escreveu, e ela vale para toda revisão daqui pra frente:**
 `CONTRATO-REVISORA.md §8` · **ESCALA e CORRIGE se separam pela PROMESSA, não pela
 alcançabilidade.** Achado que contradiz o que a rodada afirma é conserto da rodada, mesmo sem prova
 de que alguém chega lá jogando; achado sobre código que a rodada não tocou nem prometeu é ESCALA.
 
-**A próxima é o `L86b`:** as outras três Artes de cura, e nenhuma delas é só fórmula.
-`acelerar-a-cura` é a única pronta para código, com a conta confirmada e a migração 38 escrita;
-`cura-guardada` precisa de um gatilho que o motor não tem (`armadilha`), de uma ação de jogo que não
-existe e da definição de "1 PV por ponto", que não está escrita em lugar nenhum;
-`maos-sobre-a-multidao` é `forma: "zona"`, e zona não tem caminho de resolução nenhum, nem para dano
-nem para cura.
+**O `L86b` continua aberto, com uma das três Artes já entregue em código.** O `acelerar-a-cura`
+está feito (rodada 56) e espera só a migração 38 para curar na mesa; as outras duas não têm caminho,
+e o que falta nelas é desenho de regra, não linha de código.
 
 ### O PRÓXIMO PASSO, em uma linha
 
@@ -175,7 +173,7 @@ passagem vira linha no `Pendencias.md` e para ali.
   trabalhar em pedaços que fecham sozinhos.
 - **Conferir estado antes de afirmar estado** (`ARQUITETO.md §1`, cinco regras). Nenhum relato
   de que alguém está trabalhando, esperando ou terminando sem mtime, `git log` ou processo
-  conferido — **para qualquer instância, sem exceção para a que se comporta bem**. Toda tarefa
+  conferido, **para qualquer instância, sem exceção para a que se comporta bem**. Toda tarefa
   nasce com pedido de progresso em disco. Rótulo ("idle", "terminei") não é estado. Quem dispara
   um comando lê o código de saída antes de falar dele. E trabalho alheio na árvore não se põe de
   lado com `stash` para o próprio commit passar: espera-se, ou pede-se que ela commite.
@@ -326,7 +324,7 @@ humano no SQL Editor é, então, **33, 37 e 38**.
 - **O hook do RTK estraga `grep`/`rg` e heredoc no Bash.** Arquivo multilinha vai pelo
   `Write`; busca vai pela ferramenta `Grep` ou por `awk`.
 - **O portão de procedência exige âncora e citação NA MESMA LINHA**, e pareia a citação com
-  o ÚLTIMO trecho entre crases da linha — cite código com número de linha e reconfira
+  o ÚLTIMO trecho entre crases da linha · cite código com número de linha e reconfira
   quando o arquivo citado crescer acima da citação. **E ele trava commit de qualquer
   frente**: edição não commitada de uma instância desloca linha citada e o portão recusa o
   commit da outra.
