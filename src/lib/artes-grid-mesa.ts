@@ -1531,6 +1531,17 @@ export async function gravarEfeito(ctx: CtxGrid, c: any, plano: Plano, extra: {
     // acima). Existe para a cura por-turno que escala com ele (`acelerar-a-
     // cura`), e para qualquer Arte futura na mesma família.
     nivel_arte: plano.nivelArte,
+    // Migração 39: quantos PV uma CURA PRESA carrega. Só Efeito de cura com
+    // gatilho de armadilha escreve isto; para todo o resto fica nulo, que é o
+    // estado da quase totalidade das linhas.
+    //
+    // O NÚMERO É GRAVADO AGORA PORQUE ELE NÃO SOBREVIVE. A regra é "1 PV por
+    // ponto de Mana gasto" (decisão de 13/09/2026), e a Mana gasta sai de
+    // `max(0, total - centelha)`: depende da Centelha de quem conjurou, que a
+    // linha não guarda e que muda com o tempo. Recalcular depois daria outro
+    // número, e duas conjurações iguais de feiticeiros diferentes guardam
+    // quantidades diferentes de propósito.
+    cura_pontos: (g?.cura && g?.gatilho === 'armadilha') ? plano.custo.mana : null,
     forma: extra.forma,
     molde: plano.molde,
     angulo: plano.angulo,
@@ -1555,20 +1566,32 @@ export async function gravarEfeito(ctx: CtxGrid, c: any, plano: Plano, extra: {
     mordidos: t > agora ? { [A_SAIR]: 1 } : {},
     oculto: !!c.oculto,
   };
-  let enviada: typeof linha | Omit<typeof linha, 'nivel_arte'> = linha;
-  let { data, error } = await ctx.SB.from('arena_efeitos').insert(linha).select('*').limit(1);
-  // MIGRAÇÃO 38 PODE AINDA NÃO TER RODADO: `nivel_arte` é melhoria, não
-  // requisito, mesmo princípio do `carimbarSeFaltar` (migração 29,
+  // AS COLUNAS DE MELHORIA, e a lista é o que generaliza o conserto que a
+  // migração 38 fez para uma só. Cada uma nasce numa migração diferente, e a
+  // gravação do efeito NÃO pode falhar inteira porque uma delas ainda não
+  // existe: é o mesmo princípio do `carimbarSeFaltar` (migração 29,
   // `grid.astro`). O PostgREST recusa coluna inexistente com `PGRST204` (ou a
-  // mensagem cita a coluna e "schema cache"/"does not exist"); nesse caso, e
-  // só nesse, regrava sem ela. Qualquer outro erro cai no `uiErro` de sempre:
-  // a gravação do efeito não pode falhar inteira por um campo que é melhoria,
-  // mas também não pode engolir um erro de verdade calado.
-  if (error && /nivel_arte/i.test(error.message || '')
-      && (error.code === 'PGRST204' || /schema cache|does not exist|column/i.test(error.message || ''))) {
-    const { nivel_arte: _semColuna, ...semNivelArte } = linha;
-    enviada = semNivelArte;
-    ({ data, error } = await ctx.SB.from('arena_efeitos').insert(semNivelArte).select('*').limit(1));
+  // mensagem cita a coluna e "schema cache"/"does not exist").
+  //
+  // CADA UMA SAI SOZINHA, E SÓ QUANDO O ERRO A NOMEIA. Tirar todas de uma vez
+  // seria mais curto e perderia dado à toa: com a 38 rodada e a 39 não, o
+  // `nivel_arte` é gravável e não há motivo para abrir mão dele. O laço tenta
+  // no máximo uma vez por coluna opcional, então ele termina sempre.
+  //
+  // Qualquer outro erro cai no `uiErro` de sempre: a gravação não engole erro
+  // de verdade calada só porque sabe degradar.
+  const OPCIONAIS = ['nivel_arte', 'cura_pontos'] as const;
+  let enviada: Record<string, unknown> = linha;
+  let { data, error } = await ctx.SB.from('arena_efeitos').insert(enviada).select('*').limit(1);
+  for (let i = 0; i < OPCIONAIS.length && error; i += 1) {
+    const msg = error.message || '';
+    const semColuna = error.code === 'PGRST204'
+      || /schema cache|does not exist|column/i.test(msg);
+    const falta = OPCIONAIS.find((col) => col in enviada && semColuna && new RegExp(col, 'i').test(msg));
+    if (!falta) break;
+    const { [falta]: _fora, ...resto } = enviada;
+    enviada = resto;
+    ({ data, error } = await ctx.SB.from('arena_efeitos').insert(enviada).select('*').limit(1));
   }
   if (error) {
     return uiErro(/arena_efeitos|figura/i.test(error.message)

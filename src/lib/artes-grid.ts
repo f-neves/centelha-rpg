@@ -1499,6 +1499,19 @@ export interface EfeitoAtivo {
    * coluna. NUNCA lido como 1 (`curaDoEfeito`/`curaPrecisaNivelArte`, acima).
    */
   nivel_arte: number | null;
+  /**
+   * Quantos PV esta CURA PRESA devolve quando disparar (migração 39), gravado
+   * na hora da conjuração porque não é recalculável depois: o número é a Mana
+   * gasta, e a Mana gasta depende da Centelha de quem conjurou, que a linha não
+   * guarda e que muda com o tempo.
+   *
+   * `null` significa "esta linha não carrega cura presa", que é o caso da quase
+   * totalidade das linhas. **ZERO É DIFERENTE DE NULO e é valor legítimo**: quem
+   * conjura com Centelha alta o bastante paga zero de Mana e guarda zero PV.
+   * Quem lê usa `curaPresaDe`, que faz essa distinção; comparar com `||` a
+   * apagaria, tratando o zero como ausência.
+   */
+  cura_pontos: number | null;
   efeito_id: string | null;     // null = improviso, a Arte crua
   arte_id: string;
   conjurador_id: string | null;
@@ -1587,6 +1600,26 @@ export const deveSair = (ef: Pick<EfeitoAtivo, 'mordidos'>): boolean =>
  * não rodada): `null` não diz qual das três foi.
  */
 export const SEM_NIVEL_ARTE = '__sem_nivel_arte';
+
+/**
+ * QUANTOS PV UMA CURA PRESA CARREGA, ou nulo quando a linha não carrega nenhuma.
+ *
+ * A régua da coluna `cura_pontos` (migração 39). Ela existe por uma razão só, e
+ * é a razão de a função existir em vez de o consumidor ler o campo direto:
+ * **ZERO É RESPOSTA E NULO NÃO É.** Quem conjura com Centelha alta o bastante
+ * paga zero de Mana e guarda uma cura de zero PV, que é diferente de uma linha
+ * que nunca guardou cura nenhuma. Um `ef.cura_pontos || 0` no ponto de consumo
+ * juntaria as duas, e a diferença é justamente a que a coluna foi criada para
+ * registrar.
+ *
+ * O TETO DESTA FUNÇÃO, dito porque ela nasce antes do consumidor: nada na mesa
+ * dispara uma cura presa hoje. O escopo de 13/09/2026 foi o chão (a coluna, os
+ * dois escritores e esta régua), e os gatilhos ficaram para rodada própria ·
+ * o disparo automático na incapacitação, o disparo pela mão do alvo e a trava
+ * de uma cura presa por alvo. Ver `Pendencias.md`, L86b.
+ */
+export const curaPresaDe = (ef: Pick<EfeitoAtivo, 'cura_pontos'>): number | null =>
+  typeof ef.cura_pontos === 'number' ? ef.cura_pontos : null;
 
 /** O que a mesa deve fazer no instante em que a Arte deixa de ser gesto. */
 export type PlanoDaSaida =
