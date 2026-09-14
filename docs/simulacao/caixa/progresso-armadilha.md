@@ -50,3 +50,6 @@ Ancorada em `f28387f`, árvore limpa (conferido por `rtk proxy git status --porc
   `Grep`, e não por `git diff`: zero.
 - **15:49** · `npm run validate` LIDO, e não só disparado: saiu `0`, com a ressalva de sempre
   (`test-editor-bestiario` nunca rodou nesta máquina, que é anterior a esta rodada). Vou commitar.
+- **15:50** · TERMINADO e PUBLICADO. Commit `f9874cf`, e `git rev-list --count origin/main..HEAD`
+  deu **0** · commit local não é publicação, e este foi conferido. O `pull --rebase` trouxe um
+  commit de outra frente no caminho (`594f9ac`), sem conflito.
