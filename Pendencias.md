@@ -6346,6 +6346,47 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   `cura-guardada` é ponto de MANA GASTO**; e **parâmetro `fixo` passa a ter preço** no `custoDe`,
   deixando de significar "não custa" junto com "o jogador não escolhe".
 
+  **O QUE FOI ENTREGUE EM 13-14/09/2026, quatro rodadas, todas no ar.**
+
+  1. **A fila da aba Combate**, pré-requisito da migração 33. A linha de lembrança sai da fila e ganha
+     seção própria, seguindo o precedente que o Grid já tinha (`naFila`: peça de memória não tem vez).
+     **O estrago não era cosmético, e eu o tinha descrito menor do que é:** `ordemDaFila` ordena por
+     `(a.tick ?? 0)` e a lembrança vem com `tick` nulo, então ela ia para a FRENTE, virava o `atual`
+     de `pintar`, congelava o relógio exibido em Tick 0, era marcada na tira com `vez`/`age`, e o
+     painel do turno era montado em cima de uma memória. O card ainda desenhava a palavra "null" no
+     lugar do Tick e "ini 0" no meta. Depois disso a **33 rodou**.
+  2. **`maos-sobre-a-multidao` cura.** Não foi um campo: `planoDaSaida` ganhou o ramo `cura`, que vem
+     DEPOIS de `dano` e `condicao` porque essa é a mesma ordem da varredura por turno, e o pagamento
+     entrou nos dois caminhos (a Arte que sai na hora lê `plano.nivelArte`; a que deve Ticks de
+     montagem lê `nivel_arte` da linha).
+  3. **O preço que a nota promete passou a ser cobrado**, pelo campo `custaMana`, e só nos 3
+     parâmetros que o prometem.
+  4. **O chão da cura presa** (migração 39, coluna `cura_pontos`), com a degradação de colunas de
+     melhoria generalizada para uma lista, e sem gatilho nenhum.
+
+  **A FORMA DO MEU ERRO, repetida quatro vezes numa sessão só, e é a lição que vale mais que as
+  quatro entregas.** Em cada um dos quatro itens eu estimei o tamanho DE MEMÓRIA e a medição me
+  desmentiu: a zona "sem caminho de resolução" (tinha), a gravidade da lembrança na fila (era maior),
+  o `maos-sobre-a-multidao` "a um campo" (era um caminho inteiro) e o `fixo` como categoria pequena
+  (são 114 de 140). **Três das quatro foram levadas ao humano como DECISÃO antes da medida**, e duas
+  delas ele teve de decidir duas vezes. A régua: **antes de levar uma decisão à mesa, medir o que a
+  decisão custa** · e afirmar que algo NÃO EXISTE é afirmação sobre o repositório inteiro, que precisa
+  da mesma prova que uma afirmação sobre uma linha.
+
+  **A `migracoes_fronteira` DEVOLVE NULO desde que a 33 rodou, e o instrumento está certo.** A 33 se
+  carimbou como automática e virou o menor número automático (candidato 33); a 35 é `a_mao = true` e
+  está acima dela, então a invariante quebrou e a view recusa dar um número que mentiria. **O caso
+  que o cabeçalho da 37 previa era outro** (arquivo rodado em pedaços); o real é uma migração ABAIXO
+  da carga histórica sendo rodada DEPOIS dela, que ninguém previu por escrito. É permanente até
+  alguém decidir o que fazer com a linha da 35, não quebra nada que funcione, e fica **anotado e não
+  consertado**.
+
+  **E O NÚMERO QUE FALTAVA NA PENDÊNCIA DO REAPONTADOR: são 49 das 268 citações** de código que vivem
+  DENTRO da janela de ±3 do portão sem estar na linha exata. Medido nesta sessão comparando a árvore
+  contra `HEAD` a cada commit, e o resultado dessa conferência é que **as quatro rodadas não pioraram
+  nenhuma**: 49 antes, as mesmas 49 depois, em números deslocados. A dívida é anterior e continua
+  anotada, não consertada.
+
   **E uma ferramenta apareceu mentindo no meio disto, consertada na mesma rodada:** o
   `reapontar.mjs` dizia, no comentário da própria autoconferência, que o mapa dele é HEAD para árvore,
   e o código lia `git diff -U0`, que é ÍNDICE para árvore. Com o trabalho da Executora no `git add`, ele

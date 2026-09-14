@@ -11,7 +11,7 @@ Três regras que o mantêm útil:
   de próprio é o que veio do chat e não mora em arquivo nenhum.** E apontar é dar nome,
   caminho e para que serve, nunca descrever o conteúdo do outro arquivo (`ARQUITETO.md §5.5`).
 
-Última reescrita: **13/09/2026**.
+Última reescrita: **14/09/2026**.
 
 ---
 
@@ -141,21 +141,23 @@ O que cada uma entregou e o que deixou de resíduo mora no `Pendencias.md`, nos 
 alcançabilidade.** Achado que contradiz o que a rodada afirma é conserto da rodada, mesmo sem prova
 de que alguém chega lá jogando; achado sobre código que a rodada não tocou nem prometeu é ESCALA.
 
-**O `L86b` continua aberto, e as três Artes agora têm caminho.** O `acelerar-a-cura` está feito
-(rodada 56) e **cura na mesa desde 13/09/2026**, quando a migração 38 rodou. As outras duas deixaram
-de ser desenho de regra em aberto: as decisões de 13/09 responderam o que travava cada uma, e o que
-sobra nelas é código. → a seção das decisões, abaixo.
+**O `L86b` está quase fechado.** Das três Artes, **duas curam na mesa**: o `acelerar-a-cura` desde a
+migração 38, e o `maos-sobre-a-multidao` desde que a cura imediata em área ganhou caminho próprio no
+`planoDaSaida`. A terceira, `cura-guardada`, tem o chão de pé (migração 39) e nenhum gatilho. **E os
+três parâmetros que prometiam Mana na nota passaram a cobrá-la.**
 
 ### O PRÓXIMO PASSO, em uma linha
 
-**A fila da aba Combate, e ela é pré-requisito da migração 33**, por decisão do humano em
-13/09/2026. A linha de lembrança precisa de marca visível e precisa parar de ordenar como Tick 0.
-Só depois disso a 33 roda.
+**As quatro rodadas que as decisões de 13/09/2026 abriram estão ENTREGUES e no ar**, e o que sobra
+do `L86b` é o gatilho `armadilha`, que é desenho de regra e não implementação: ele é família de
+QUATRO Efeitos (`brasa-retardada`, `semente-adormecida`, `salvaguarda` e `cura-guardada`) que
+disparam por condições diferentes, e nenhuma delas está decidida.
 
-**As quatro rodadas que as decisões de 13/09/2026 abriram**, na ordem em que foram decididas e não
-necessariamente na ordem em que se fazem: a fila do Combate (acima), o `porNivel` do
-`maos-sobre-a-multidao`, o preço do parâmetro fixo no `custoDe`, e o `cura-guardada`. As quatro
-estão nomeadas na seção das decisões, abaixo.
+**Para a `cura-guardada` especificamente**, com o chão já de pé (migração 39): falta o disparo
+automático na incapacitação (gancho no caminho do dano), o disparo pela mão do alvo (ação de jogo que
+não existe) e a trava de uma cura presa por alvo. → **L86b**.
+
+**Nenhuma rodada nova abre por iniciativa.**
 
 ## O congelamento
 
@@ -237,11 +239,22 @@ Pelo NOME, porque número de opção depende de qual lista se está lendo.
 - **"1 PV POR PONTO" DO `cura-guardada` É PONTO DE MANA GASTO** (13/09/2026): cada ponto de Mana
   investido na guarda vira 1 PV guardado. **O contra comprado:** vira conversão linear de Mana em
   Vida sem teto, que é a forma que quebra economia de recurso se a Mana for recuperável entre cenas.
-- **PARÂMETRO `fixo` GANHA PREÇO** (13/09/2026). Hoje `fixo` quer dizer duas coisas ao mesmo tempo,
-  "o jogador não escolhe" e "não custa", porque `parametrosAjustaveis` filtra o fixo fora e o
-  `custoDe` nunca o vê. Passa a querer dizer só a primeira. **O contra comprado:** mexe no motor de
-  custo de TODAS as Artes de uma vez, e tudo que usou `fixo` até hoje foi escrito contando que não
-  custava, então pode encarecer Arte que ninguém queria encarecer.
+- **COBRA-SE ONDE A NOTA PROMETE, E SÓ ALI** (13/09/2026, e esta decisão SUBSTITUI a que foi tomada
+  poucas horas antes, "parâmetro `fixo` ganha preço"). A primeira versão foi tomada sobre um número
+  meu que estava errado; com a medida na mão ela caiu. **A medida: 114 dos 140 Efeitos têm algum
+  parâmetro `fixo`**, e os mais comuns são `Alcance` (58), `Dificuldade` (46) e `Jogada` (26), que
+  ninguém compra · não existe resposta para "quanto custa uma Dificuldade". **Exatamente 3
+  parâmetros no catálogo inteiro prometem Mana na nota**, os três `Cura`, e são esses que passaram a
+  cobrar (2 por nível da Arte, pelo campo `custaMana`). **O contra comprado:** cria a terceira
+  categoria, `fixo` deixa de querer dizer uma coisa só, e a exceção envelhece calada.
+- **A CURA EM ÁREA DO `maos-sobre-a-multidao` ENTROU COM O MOLDE PADRÃO** (13/09/2026), e o preço
+  real dela não foi o que eu estimei: não era um campo, era um caminho de resolução inteiro, porque
+  não existia cura imediata em área em lugar nenhum do motor. → **L86b**.
+- **"1 PV POR PONTO" CUSTA UMA COLUNA** (13/09/2026). A decisão de que o ponto é de MANA GASTA tem
+  uma consequência que só apareceu depois: o número não é recalculável (a Mana gasta depende da
+  Centelha de quem conjurou, que a linha não guarda), então ele precisa ser gravado na hora. É a
+  migração 39. **O contra comprado, escolhido com ele à vista:** a coluna nasce com zero
+  consumidores na mesa, porque o gatilho ficou para rodada própria.
 
 ## O que está começado e não terminado
 
@@ -263,23 +276,25 @@ Pelo NOME, porque número de opção depende de qual lista se está lendo.
 **Quem manda é o cabeçalho de cada `supabase/migracao-NN.sql`**, e ele costuma dizer mais
 do que qualquer resumo. O levantamento das pendentes está no **L42**.
 
-**Lido direto no banco em 13/09/2026** (`public.migracoes`): **1 a 32 e 35 a 38 aplicadas**. A
-**34 não existe** como arquivo, e a **33 é a única escrita e não aplicada**. → **L42**, **L45**.
+**Lido direto no banco em 14/09/2026** (`public.migracoes`): **TODAS as escritas estão aplicadas,
+de 1 a 39.** A **34 não existe** como arquivo, e é a única ausência. → **L42**, **L45**.
 
-**A 37 e a 38 rodaram em 13/09/2026**, e cada uma passou na conferência que o próprio arquivo
-escreve. A 37 deixou `migracoes_fronteira` devolvendo `fronteira = 36` com `fronteira_vale`
-verdadeiro, que é a previsão do cabeçalho dela. A 38 criou `nivel_arte` nula e sem `default`,
-corrigiu o comentário da coluna vizinha, deixou a view do jogador SEM a coluna nova (ali a ausência
-é a resposta certa) e recriou `jogador_conjura` nomeando a coluna, com o `execute` de volta. **O que
-elas mudaram para quem joga: o `acelerar-a-cura` passou a curar de verdade**, 1 PV por nível da Arte
-por turno.
+**A 33, a 37, a 38 e a 39 rodaram em 13-14/09/2026**, e cada uma passou na conferência que o próprio
+arquivo escreve. O que elas mudaram para quem joga, em uma linha cada: a **37** nada (comentário e
+uma view de conferência); a **38** fez o `acelerar-a-cura` curar de verdade, 1 PV por nível da Arte
+por turno; a **33** fez a névoa esconder a EXISTÊNCIA da criatura, com a lembrança do que já foi
+visto; a **39** nada ainda, porque é chão de uma Arte sem gatilho.
 
-**E a regra de quem roda migração mudou uma vez, para estas duas.** Elas não foram rodadas à mão no
-SQL Editor: o humano passou um token de acesso e mandou rodar, em 13/09/2026. **Isso não virou regra
-nova**, e o padrão continua sendo a mão dele no SQL Editor até que ele diga o contrário.
+**E a regra de quem roda migração mudou, para estas quatro.** Elas não foram rodadas à mão no SQL
+Editor: o humano passou um token de acesso e mandou rodar. **Isso não virou regra nova**, e o padrão
+continua sendo a mão dele no SQL Editor até que ele diga o contrário.
 
-**A 33 não roda até a fila da aba Combate ser consertada**, e isso é decisão de 13/09/2026, com
-causa conferida no código. Ver a seção das decisões.
+**A `migracoes_fronteira` (migração 37) devolve NULO desde que a 33 rodou**, e o instrumento está
+CERTO. A 33 se carimbou como automática e virou o menor número automático; a 35 é `a_mao = true` e
+está acima dela, então a invariante quebrou e a view recusa dar um número que mentiria. **O caso que
+o cabeçalho da 37 previa era outro** (arquivo rodado em pedaços); o real é uma migração ABAIXO da
+carga histórica sendo rodada DEPOIS dela. É permanente até alguém decidir o que fazer com a linha da
+35, não quebra nada que funcione, e está registrado no **L86b** sem conserto.
 
 ## O mapa dos documentos
 
