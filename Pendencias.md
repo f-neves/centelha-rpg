@@ -6313,6 +6313,39 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   deixado SEM `porNivel` de propósito, porque campo sem leitor é o contra que a mesa já comprou uma
   vez neste mesmo item.
 
+  **EM 13/09/2026 EU CORRIJO O PARÁGRAFO ACIMA, E O ERRO É MEU.** Escrevi aqui, no `CONTEXTO.md` e no
+  chat que `forma: "zona"` não tem caminho de resolução nenhum, nem para dano nem para cura. **É falso
+  nas duas metades**, e bastava ler o que já estava escrito. A zona resolve e tem molde padrão: o
+  `porForma` de `src/data/regras.json` mapeia `"zona"` para `"explosao"`, e a lista `escolhe` diz que
+  ela é a única forma cujo molde o mestre troca na caixa; `moldeDaForma` (`src/lib/artes-grid.ts`)
+  executa isso, e `OCUPA_CHAO` (`src/lib/artes-grid-mesa.ts`) inclui `zona` ao lado de aura, muro,
+  cone e linha. E o laço de cura por turno é INDIFERENTE À FORMA: qualquer coisa que não seja `alvo`
+  nem `token` passa por `dentroDoEfeito`, e **cada um dentro recebe o valor cheio, sem divisão**, que
+  é exatamente a regra que a mesa decidiu para cura em área.
+
+  **O que de fato faltava era um campo**, e não desenho de regra: o parâmetro Cura do
+  `maos-sobre-a-multidao` não tem `porNivel`, então `curaDoEfeito` devolve nulo e ele não cura. O
+  argumento que o deixou de fora na rodada 56 era "campo sem leitor"; **esse argumento morreu quando a
+  migração 38 rodou** e o `acelerar-a-cura` provou o leitor.
+
+  **A forma do erro, para o `CATALOGO`:** eu repeti por três dias uma ausência que nunca conferi,
+  porque ela veio de um levantamento meu e não de uma leitura do arquivo. Afirmar que algo NÃO EXISTE
+  é uma afirmação sobre o repositório inteiro, e ela precisa da mesma prova que uma afirmação sobre
+  uma linha. A régua que já existia e que teria pego isto é a da própria tabela do `CONTEXTO`: ao
+  escrever "não há como", "nunca", "não existe", perguntar **e a outra direção?**
+
+  **E UM RESÍDUO ACHADO NA MESMA CONFERÊNCIA, anotado e não consertado:** a prosa diz **"23 Efeitos"**
+  usando a `zona` genérica, em dois lugares (`src/data/regras.json`, no `porForma` e no `aRevisar`, e
+  o comentário de `moldeDaForma` em `src/lib/artes-grid.ts`). **Contei 26** no `efeitos.json`. É a
+  forma que o `CATALOGO` já nomeia ("a lista não é contada"), agora em dois arquivos que precisam
+  concordar e são sustentados só por disciplina.
+
+  **AS DECISÕES DA MESA DE 13/09/2026 sobre este item**, com o contra que cada uma comprou escrito no
+  `CONTEXTO.md`: o `maos-sobre-a-multidao` **entra com o molde padrão** (ganha `porNivel`, cura todo
+  mundo dentro da zona, valor cheio, sem esperar o julgamento dos moldes); **"1 PV por ponto" do
+  `cura-guardada` é ponto de MANA GASTO**; e **parâmetro `fixo` passa a ter preço** no `custoDe`,
+  deixando de significar "não custa" junto com "o jogador não escolhe".
+
   **E uma ferramenta apareceu mentindo no meio disto, consertada na mesma rodada:** o
   `reapontar.mjs` dizia, no comentário da própria autoconferência, que o mapa dele é HEAD para árvore,
   e o código lia `git diff -U0`, que é ÍNDICE para árvore. Com o trabalho da Executora no `git add`, ele

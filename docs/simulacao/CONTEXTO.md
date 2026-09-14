@@ -141,22 +141,21 @@ O que cada uma entregou e o que deixou de resíduo mora no `Pendencias.md`, nos 
 alcançabilidade.** Achado que contradiz o que a rodada afirma é conserto da rodada, mesmo sem prova
 de que alguém chega lá jogando; achado sobre código que a rodada não tocou nem prometeu é ESCALA.
 
-**O `L86b` continua aberto, com uma das três Artes já entregue em código.** O `acelerar-a-cura`
-está feito (rodada 56) e espera só a migração 38 para curar na mesa; as outras duas não têm caminho,
-e o que falta nelas é desenho de regra, não linha de código.
+**O `L86b` continua aberto, e as três Artes agora têm caminho.** O `acelerar-a-cura` está feito
+(rodada 56) e **cura na mesa desde 13/09/2026**, quando a migração 38 rodou. As outras duas deixaram
+de ser desenho de regra em aberto: as decisões de 13/09 responderam o que travava cada uma, e o que
+sobra nelas é código. → a seção das decisões, abaixo.
 
 ### O PRÓXIMO PASSO, em uma linha
 
-**É do humano, e não de engenharia: rodar a migração 38 no SQL Editor** (a fila é **33, 37 e 38**).
-Sem ela o `acelerar-a-cura` está pronto no código e não cura nada na mesa · degrada de propósito,
-avisa uma vez por turno que a linha não guarda o nível, e nada regride.
+**A fila da aba Combate, e ela é pré-requisito da migração 33**, por decisão do humano em
+13/09/2026. A linha de lembrança precisa de marca visível e precisa parar de ordenar como Tick 0.
+Só depois disso a 33 roda.
 
-**Nenhuma rodada nova abre por iniciativa.** O que sobrou do `L86b` não é código: o
-`maos-sobre-a-multidao` depende de um caminho de resolução para `forma: "zona"`, que não existe nem
-para dano nem para cura, e o `cura-guardada` depende de um gatilho `armadilha` que o motor não tem,
-de uma ação de jogo que não existe, e da definição de "1 PV por ponto", que não está escrita em
-lugar nenhum. Os três são desenho de regra antes de qualquer linha, e a fila de qual vem primeiro é
-decisão da mesa.
+**As quatro rodadas que as decisões de 13/09/2026 abriram**, na ordem em que foram decididas e não
+necessariamente na ordem em que se fazem: a fila do Combate (acima), o `porNivel` do
+`maos-sobre-a-multidao`, o preço do parâmetro fixo no `custoDe`, e o `cura-guardada`. As quatro
+estão nomeadas na seção das decisões, abaixo.
 
 ## O congelamento
 
@@ -187,9 +186,8 @@ passagem vira linha no `Pendencias.md` e para ali.
   trabalho dele) são todos dele; a outra leitura é cada jogador informar o total na ficha dele, o
   que não muda o dado na mão nem a conta e tira trabalho de quem é um passando para quem é muitos.
   Isso mora na fase 5, que não começou. → `Pendencias.md` **L29**, item 1.
-- **Rodar a migração 33 em produção** · os três itens do gatilho dela estão satisfeitos.
-- **Rodar a 37 e a 38**, que não dependem de decisão nenhuma, só da mão dele no SQL Editor. A 38 não
-  muda comportamento sozinha: ela é o chão da cura por turno que escala com o nível de quem conjura.
+- **A migração 33 espera a fila da aba Combate**, e não mais a mão do humano no SQL Editor. Ver a
+  decisão abaixo, que diz o que a trava e por quê.
 
 ## As decisões da mesa que não moram em arquivo nenhum
 
@@ -224,6 +222,26 @@ Pelo NOME, porque número de opção depende de qual lista se está lendo.
 - **A SEPARAÇÃO DE SENTINELA E MAGNITUDE VAI ATÉ A SEPARAÇÃO, E PARA ALI** (12/09/2026): o Grid
   continua não APLICANDO `velocidade` no relógio (exibir é outra coisa, e ele exibe), e `teto6`
   continua desligado, agora com asserção que impede ligá-lo às cegas. → **L64**, fechado.
+- **A FILA DA ABA COMBATE VEM ANTES DA MIGRAÇÃO 33** (13/09/2026). A causa é conferida, e não
+  suposta: `ordemDaFila` (`src/lib/combate-tempo.ts`) ordena por `(a.tick ?? 0)`, e a linha de
+  lembrança que a 33 passa a mandar tem `tick` nulo. Sem conserto, a criatura lembrada sobe ao TOPO
+  da fila do jogador, com a Vida da fotografia e sem marca nenhuma. O Grid trata a lembrança certo
+  (desenha apagada, bloqueia mirar, tira da contagem); a aba Combate não conhece a coluna. **O que a
+  mesa comprou ao esperar:** hoje o vazamento é MAIOR (o bicho no escuro chega com nome, retrato,
+  Tick, iniciativa e Vida), e esperar mantém o furo grande aberto mais tempo.
+- **O `maos-sobre-a-multidao` ENTRA COM O MOLDE PADRÃO, sem esperar julgamento** (13/09/2026): ganha
+  `porNivel` na Cura e passa a curar todo mundo dentro da zona, valor cheio para cada um, com o molde
+  Explosão que a `zona` já usa. **O contra que a mesa comprou:** o próprio `regras.json` chama a
+  calibragem dos moldes de proposta que ainda espera mesa, então a Arte entra no ar com uma FORMA que
+  ninguém julgou, e quem jogar com ela vai calibrar a regra por acidente.
+- **"1 PV POR PONTO" DO `cura-guardada` É PONTO DE MANA GASTO** (13/09/2026): cada ponto de Mana
+  investido na guarda vira 1 PV guardado. **O contra comprado:** vira conversão linear de Mana em
+  Vida sem teto, que é a forma que quebra economia de recurso se a Mana for recuperável entre cenas.
+- **PARÂMETRO `fixo` GANHA PREÇO** (13/09/2026). Hoje `fixo` quer dizer duas coisas ao mesmo tempo,
+  "o jogador não escolhe" e "não custa", porque `parametrosAjustaveis` filtra o fixo fora e o
+  `custoDe` nunca o vê. Passa a querer dizer só a primeira. **O contra comprado:** mexe no motor de
+  custo de TODAS as Artes de uma vez, e tudo que usou `fixo` até hoje foi escrito contando que não
+  custava, então pode encarecer Arte que ninguém queria encarecer.
 
 ## O que está começado e não terminado
 
@@ -245,16 +263,23 @@ Pelo NOME, porque número de opção depende de qual lista se está lendo.
 **Quem manda é o cabeçalho de cada `supabase/migracao-NN.sql`**, e ele costuma dizer mais
 do que qualquer resumo. O levantamento das pendentes está no **L42**.
 
-**Sondado direto no banco em 08/09/2026** (`public.migracoes`, chave anon): **1 a 32, 35 e 36
-aplicadas**. A **33 é a única não aplicada**, e o que faltava nela era a tela, que já existe ·
-falta a decisão do humano de rodar. A **34 não existe** como arquivo. A **37 está escrita e
-espera a mesa**, sem risco de formato. → **L42**, **L45**.
+**Lido direto no banco em 13/09/2026** (`public.migracoes`): **1 a 32 e 35 a 38 aplicadas**. A
+**34 não existe** como arquivo, e a **33 é a única escrita e não aplicada**. → **L42**, **L45**.
 
-**A 38 está ESCRITA e carimbada desde 12/09/2026**, depois de as duas perguntas do `L86` serem
-respondidas: a coluna `nivel_arte` na `arena_efeitos`, nula de propósito e sem `default`, para a
-linha do efeito guardar o nível da Arte de quem conjurou. As três coisas que tinham de entrar junto
-com a coluna estão nela, e o cabeçalho do arquivo diz o que ela NÃO mexe. A fila para a mão do
-humano no SQL Editor é, então, **33, 37 e 38**.
+**A 37 e a 38 rodaram em 13/09/2026**, e cada uma passou na conferência que o próprio arquivo
+escreve. A 37 deixou `migracoes_fronteira` devolvendo `fronteira = 36` com `fronteira_vale`
+verdadeiro, que é a previsão do cabeçalho dela. A 38 criou `nivel_arte` nula e sem `default`,
+corrigiu o comentário da coluna vizinha, deixou a view do jogador SEM a coluna nova (ali a ausência
+é a resposta certa) e recriou `jogador_conjura` nomeando a coluna, com o `execute` de volta. **O que
+elas mudaram para quem joga: o `acelerar-a-cura` passou a curar de verdade**, 1 PV por nível da Arte
+por turno.
+
+**E a regra de quem roda migração mudou uma vez, para estas duas.** Elas não foram rodadas à mão no
+SQL Editor: o humano passou um token de acesso e mandou rodar, em 13/09/2026. **Isso não virou regra
+nova**, e o padrão continua sendo a mão dele no SQL Editor até que ele diga o contrário.
+
+**A 33 não roda até a fila da aba Combate ser consertada**, e isso é decisão de 13/09/2026, com
+causa conferida no código. Ver a seção das decisões.
 
 ## O mapa dos documentos
 
