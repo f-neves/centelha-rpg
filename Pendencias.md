@@ -6400,6 +6400,31 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   banco (foram 0)", e passou no `bcc40bd`, cujo código de Grid é o mesmo. É instabilidade do job de
   navegador, não regressão, e não abre frente nenhuma.
 
+  **EM 14/09/2026 ISSO DEIXOU DE SER LEITURA E VIROU EXPERIMENTO, porque a taxa piorou o bastante
+  para eu desconfiar da própria conclusão acima.** Três validações falharam SEGUIDAS (`1b8d79a`,
+  `4a2915d`, `28c3d3f`), sempre nas mesmas duas asserções, e a última é commit só de documento. O
+  padrão antes era alternado, e "alternado" e "três seguidas" não são a mesma hipótese: a segunda
+  admite regressão introduzida no meio. **Duas rodadas de conferência, e as duas com `gh run rerun`,
+  que reexecuta o MESMO commit:**
+
+  - **controle positivo** · `0a53dee`, que tinha PASSADO, passou de novo;
+  - **o decisivo** · `28c3d3f`, que tinha FALHADO, **passou no rerodado**.
+
+  **O mesmo commit deu os dois resultados**, e isso fecha a pergunta: o teste é não determinístico, e
+  nada entre `0a53dee` e `28c3d3f` quebrou o mover. A conclusão de antes estava certa; o que faltava
+  nela era prova, e rerodar o commit que falhou é a prova que custa um comando.
+
+  **O QUE EU NÃO INVESTIGUEI, e está dito para ninguém ler causa onde há só forma:** as duas
+  asserções que caem leem ZERO as duas (a peça não andou, e foram 0 idas ao banco), o que é a forma de
+  "o arrasto não aconteceu" e não a de "o arrasto fez a coisa errada". **Isso é o formato da falha,
+  não a causa dela**, e a causa não foi procurada.
+
+  **E O RESÍDUO QUE IMPORTA MAIS QUE ESTE ITEM:** contando os dois rerodados, o job falhou em cerca
+  de metade das execuções sobre código inalterado. **Um portão que reprova metade das vezes sem
+  defeito não é portão**, e a consequência prática já está acontecendo: toda falha dele precisa de um
+  rerodado para virar informação, e uma falha de verdade chegaria vestida de ruído. Anotado, não
+  consertado, e é candidato natural a próxima frente de instrumento.
+
   **A ESCALA QUE A REVISORA ACHOU, e eu a reenquadro depois de conferir no disco, porque do jeito que
   ela saiu manda alguém caçar um defeito que não existe.** Ela achou duas outras contas de teto fora do
   alcance do teste (que confere só o corpo do `curar()`), e leu a primeira como divergência de
