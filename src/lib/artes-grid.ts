@@ -1554,6 +1554,12 @@ export type PlanoDaSaida =
   | { tipo: 'cadeia'; alvos: { id: string; dados: number }[] }
   | { tipo: 'dano'; alvos: string[] }
   | { tipo: 'condicao'; alvos: string[]; condicao: string }
+  // QUEM ESTÁ DENTRO NÃO VEM NO PLANO, e é a diferença desta para as de cima.
+  // As outras três resolvem por `ef.alvos`, a lista que a mira montou. A cura
+  // imediata é de ZONA, e quem está dentro de uma zona só se sabe comparando
+  // posição com figura, que é trabalho do executor (`dentroDoEfeito`, com os
+  // tokens e a escala na mão). O que se decide aqui é o QUANTO e o SE.
+  | { tipo: 'cura'; quanto: number }
   | { tipo: 'nada' };
 
 /**
@@ -1575,7 +1581,7 @@ export type PlanoDaSaida =
  *              condição, todos de gatilho `passivo`, que a varredura de mordidas
  *              pula de propósito: sem este ramo eles não entrariam nunca.
  */
-export function planoDaSaida(ef: EfeitoAtivo): PlanoDaSaida {
+export function planoDaSaida(ef: EfeitoAtivo, cura: number | null = null): PlanoDaSaida {
   const alvos = ef.alvos || [];
   if (ef.forma === 'cadeia') {
     return {
@@ -1588,6 +1594,18 @@ export function planoDaSaida(ef: EfeitoAtivo): PlanoDaSaida {
   }
   if (ef.condicao && alvos.length) {
     return { tipo: 'condicao', alvos, condicao: ef.condicao };
+  }
+  // A CURA VEM POR ÚLTIMO, e a ordem é obrigatória, não estética: é a MESMA da
+  // varredura por turno (`verificarEfeitos`, `dano_dados` primeiro, `condicao`
+  // depois, `cura` por fim). Um Efeito que fere E cura (o `dreno`, "1 PV a cada
+  // 2 de dano que passar") tem de resolver como dano nos dois caminhos, senão a
+  // mesma Arte faz uma coisa quando sai na hora e outra quando deve Ticks.
+  //
+  // O `quanto` chega de fora porque ele mora no CATÁLOGO (`curaDoEfeito`), e
+  // esta função não lê catálogo nenhum de propósito: ela decide sobre a linha, e
+  // é isso que a mantém provável em teste sem banco.
+  if (cura != null && cura > 0 && ef.gatilho === 'imediato') {
+    return { tipo: 'cura', quanto: cura };
   }
   return { tipo: 'nada' };
 }

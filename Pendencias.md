@@ -1508,7 +1508,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   E o RPC do jogador continua sem caminho: `jogador_muda_efeito` (`supabase/migracao-22.sql:217`)
   aceita **duas chaves só**, `mordidos` e `ate_tick`, e por ele passa hoje apenas a marca de mordida
-  que a varredura grava: `{ mordidos: base }` (`src/lib/artes-grid-mesa.ts:1915`, dentro de
+  que a varredura grava: `{ mordidos: base }` (`src/lib/artes-grid-mesa.ts:1979`, dentro de
   `marcarMordido` · a escrita migrou de `grid.astro` para cá em 05/09/2026, no conserto da L46).
   Um `✎` de jogador precisaria de migração nova, e não está pedido.
 
@@ -1742,7 +1742,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   existe.** Um traçado de reta em coordenadas cúbicas (interpolar entre os dois centros e
   arredondar CADA PASSO em cubo, não eixo a eixo) devolve a sequência exata de casas que o
   segmento cruza, sem largura nem tolerância: é geometria resolvida, não decisão. A função mais
-  próxima que já existe, `afastar` (`src/lib/artes-grid-mesa.ts:1338`), arredonda `q` e `r` **por
+  próxima que já existe, `afastar` (`src/lib/artes-grid-mesa.ts:1370`), arredonda `q` e `r` **por
   eixo** (`Math.round` em cada um separado), o que não garante hexágonos vizinhos passo a passo e
   não serve para "quais casas a reta cruza" sem risco de pular uma. **Não é reuso, é função nova
   e pequena, e não carrega número novo para decidir.**
@@ -2378,8 +2378,8 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   varre condição vencida" e generalizava demais. O certo é mais estreito e muda o tamanho do
   problema por uma ordem de grandeza: a condição posta por Arte **é** varrida, só que **pelo relógio
   do EFEITO e não pelo da condição**. O `verificarEfeitos` derruba todo efeito vencido a cada Tick
-  (`ATIVOS.filter((e) => venceu(e, t))`, `src/lib/artes-grid-mesa.ts:2002`) e o `encerrarEfeito`
-  **leva a condição junto** (`src/lib/artes-grid-mesa.ts:2277` · `tirarCondicao`). O `ate` da condição é redundante
+  (`ATIVOS.filter((e) => venceu(e, t))`, `src/lib/artes-grid-mesa.ts:2066`) e o `encerrarEfeito`
+  **leva a condição junto** (`src/lib/artes-grid-mesa.ts:2341` · `tirarCondicao`). O `ate` da condição é redundante
   com isso, não a única linha de defesa. Quem fica grudado de verdade é só quem põe condição **sem
   deixar efeito para trás**, que é o caso da Investida e mais um · ver **L38**.
 
@@ -2515,9 +2515,9 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   | ponto | o que faz | vai para a RPC? |
   |---|---|---|
-  | `porCondicao`, `artes-grid-mesa.ts:1535` | **PÕE**, escrevendo o vetor inteiro | **sim** · chamado do `gravarEfeito` e da saída, sem trava de mestre |
-  | `tirarCondicao`, `artes-grid-mesa.ts:1569` | **TIRA**, escrevendo o vetor inteiro | **sim** · chamado do `encerrarEfeito`, que roda na aba do jogador |
-  | `varrerCondicoesVencidas`, `artes-grid-mesa.ts:1959` | **TIRA**, escrevendo o vetor inteiro | **não** · abre com `if (!ctx.mestre) return;` |
+  | `porCondicao`, `artes-grid-mesa.ts:1599` | **PÕE**, escrevendo o vetor inteiro | **sim** · chamado do `gravarEfeito` e da saída, sem trava de mestre |
+  | `tirarCondicao`, `artes-grid-mesa.ts:1633` | **TIRA**, escrevendo o vetor inteiro | **sim** · chamado do `encerrarEfeito`, que roda na aba do jogador |
+  | `varrerCondicoesVencidas`, `artes-grid-mesa.ts:2023` | **TIRA**, escrevendo o vetor inteiro | **não** · abre com `if (!ctx.mestre) return;` |
 
   **O AVISO, E ELE ESTÁ ESCRITO ANTES DE CUSTAR ALGUMA COISA:** a `jogador_muda_peca` hoje
   **substitui**: `supabase/migracao-22.sql:125` é `condicoes  = coalesce(p_dados->'condicoes', condicoes),`
@@ -2559,7 +2559,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | mestre à mão | o diálogo de condições | `{ id }`, ou o objeto caseiro | **não** |
 
   Os três, com linha. A Arte grava em
-  `const nova = { id, ate, porArte: true };`, `artes-grid-mesa.ts:1561`. O chip do catálogo grava em
+  `const nova = { id, ate, porArte: true };`, `artes-grid-mesa.ts:1625`. O chip do catálogo grava em
   `c.condicoes = [...(c.condicoes || []), { id: achou.id }];`, `mesa-condicoes.ts:103`, e o
   formulário caseiro logo abaixo, no `cc-add`.
 
@@ -2578,7 +2578,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   porque todo o resto sai junto do efeito (ver a correção no **L37**). São dois casos:
 
   1. **a Investida** · consertada no L37, pela `varrerInvestida`;
-  2. **o empurrão** (`if (g?.condicao) for (const a of ajustes)`, `artes-grid-mesa.ts:1283`), o
+  2. **o empurrão** (`if (g?.condicao) for (const a of ajustes)`, `artes-grid-mesa.ts:1315`), o
      caminho das Artes que deslocam. Ele resolve **na
      declaração** e sai por `return await deslocar(...)` (`:788`) **antes** do `gravarEfeito`, então
      não existe linha em `arena_efeitos` para vencer, e o `encerrarEfeito` nunca é chamado.
@@ -2662,7 +2662,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   citava o `if (forma === 'nenhuma')` de `:779`). Dezesseis pontos de leitura em cinco arquivos:
 
   **MOTOR, sete blocos, chamam `porCondicao`/`tirarCondicao`, aplicam ou retiram de verdade:**
-  `src/lib/artes-grid-mesa.ts:1323` (`await porCondicao(ctx, alvoA, id, plano.turnos);`, no `deslocar`,
+  `src/lib/artes-grid-mesa.ts:1355` (`await porCondicao(ctx, alvoA, id, plano.turnos);`, no `deslocar`,
   hoje dentro do laço que percorre o que `condicoesDoEmpurrao` devolve; até a rodada 50 era uma
   chamada única com a condição da própria Arte, e passou a poder devolver duas quando a peça esbarra);
   `:1242` (`await porCondicao(ctx, combDe(ctx, id), plano.condicao, turnosRestantes(ef, t));`);
@@ -2673,7 +2673,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `:1973`-`1979` (`if (trocouAlvo && ef.condicao) {` até `await porCondicao(ctx, combDe(ctx, id), ef.condicao, d.turnos);`, a condição segue o alvo quando ele muda);
   `:1994`-`1997` (`if (ef.condicao) {` até `await tirarCondicao(ctx, combDe(ctx, cid), ef.condicao);`, dentro de `encerrarEfeito`).
 
-  **PORTÃO, um bloco:** `src/lib/artes-grid-mesa.ts:2050` (`if (!ef.dano_dados && !ef.condicao && cura == null) continue;`) decide se o Efeito entra no laço da mordida por área
+  **PORTÃO, um bloco:** `src/lib/artes-grid-mesa.ts:2114` (`if (!ef.dano_dados && !ef.condicao && cura == null) continue;`) decide se o Efeito entra no laço da mordida por área
   (2ª metade de `verificarEfeitos`). **Não é o ponto de atenção real**: ver a conferência abaixo.
 
   **A CONFERÊNCIA QUE FALTAVA, feita em 07/09/2026: os 9 nunca chegam a existir como `ATIVOS`,
@@ -2693,7 +2693,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
      `if`/`else` sobre a mesma variável.
   3. **E todo caminho que leva a `ATIVOS.push` passa por `gravarEfeito`.** O comentário do arquivo
      já nomeia `morder` e `porCondicao` como os `DOIS pontos` por onde toda aplicação de dano ou condição passa nesta mesa (`src/lib/artes-grid-mesa.ts:43`).
-     E dentro de `gravarEfeito`, `ATIVOS.push` (`src/lib/artes-grid-mesa.ts:1529`) só roda depois da linha que grava no banco, e é a única ocorrência no arquivo inteiro.
+     E dentro de `gravarEfeito`, `ATIVOS.push` (`src/lib/artes-grid-mesa.ts:1593`) só roda depois da linha que grava no banco, e é a única ocorrência no arquivo inteiro.
 
   **Os quatro blocos de MOTOR que não são o laço da mordida** (`:1149`, `:1242`, `:1299`→`:1330`)
   também dependem de `gravarEfeito` já ter rodado: `:1149` é dentro de `deslocar` (o ramo
@@ -2735,9 +2735,9 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   (fechado, ver `docs/simulacao/caixa/19-executora.md`):**
   `src/lib/artes-grid-mesa.ts:490` (`const condId = ef.condicao || ef.condicaoAparente;`);
   `:1836` (`const condId = p.ef.condicao || p.ef.condicaoAparente;`, texto de log);
-  `src/lib/artes-grid.ts:1585`-`1497` (`if (ef.condicao && alvos.length) {`): a prévia só entra se
+  `src/lib/artes-grid.ts:1591`-`1497` (`if (ef.condicao && alvos.length) {`): a prévia só entra se
   `alvos.length`, e os 9 problemáticos têm `alvo: "nenhum"`: **já seguro por construção, não tocado**;
-  `src/lib/artes-grid.ts:1766` (`const condId = ef.condicao || ef.condicaoAparente;`);
+  `src/lib/artes-grid.ts:1784` (`const condId = ef.condicao || ef.condicaoAparente;`);
   `src/lib/artes-grid-ui.ts:47` (`const condId = g.condicao || g.condicaoAparente;`).
 
   **RELATÓRIO, sem risco de capítulo, atualizado (fechado):** `scripts/gen-grid-artes.mjs:410` (`efeitosNovos.filter((e) => e.grid.condicao).length`, dentro de um `console.log`, com uma segunda
@@ -3066,7 +3066,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **E O RISCO QUE EU FUI CONFERIR ANTES DE DIZER QUE NÃO HÁ:** a 32 faz `centro` e `conjurador_id`
   poderem vir nulos, e o cliente não foi mudado para isso. Conferido: o `centro` **não é lido em
   lugar nenhum** do cliente · a única ocorrência dele é uma escrita, em
-  `patch.centro = { q: nova.q, r: nova.r };`, `artes-grid-mesa.ts:2240`.
+  `patch.centro = { q: nova.q, r: nova.r };`, `artes-grid-mesa.ts:2304`.
   E o `conjurador_id` já era tratado como opcional em todos os pontos que o usam. **`alvos` nunca vem nulo** (a view faz `coalesce` para `[]`). O cabeçalho da 32 diz
   que ela não depende de mudança de tela, e a leitura do cliente confirma.
 
@@ -3132,7 +3132,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **E A MARCA `__a_sair` VAI JUNTO, e a resposta à pergunta da mesa é: não, a Arte não soltava · ela
   DEIXAVA DE SOLTAR.** A marca é o que segura a Arte em montagem: com ela, `deveSair()` é verdadeiro
   e a Arte ainda deve o efeito. Apagada, o laço da saída passa direto e **a Arte nunca sai**:
-  `src/lib/artes-grid-mesa.ts:1994` é `if (!deveSair(ef) || montando(ef, t)) continue;`
+  `src/lib/artes-grid-mesa.ts:2058` é `if (!deveSair(ef) || montando(ef, t)) continue;`
 
   **O SINTOMA, e ele vai escrito com estas palavras porque é o que alguém vai relatar de uma mesa
   antiga sem saber o nome:** a Mana foi paga, a mancha fica no chão **a duração inteira sem ferir
@@ -6091,7 +6091,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   do achado, e não acompanha o conserto.
 
   **Conferido pelo outro lado também:** toda escrita de `pv_atual` no módulo das Artes é subtração
-  (`pv_atual: pv` em `src/lib/artes-grid-mesa.ts:1784`, com `pv` já calculado como
+  (`pv_atual: pv` em `src/lib/artes-grid-mesa.ts:1848`, com `pv` já calculado como
   `max(0, atual − líquido)`). Não existe soma de Vida em lugar nenhum de `src/lib`. Curar existe como
   ação do mestre, no menu (`async function curar`, `src/pages/mesa/grid.astro:11274`); **nenhuma Arte
   cura pelo tabuleiro**.
@@ -6146,7 +6146,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   já citada acima. `cura-guardada` (gatilho `armadilha`) é excluído de propósito três linhas depois, e
   **não existe no tabuleiro nenhum mecanismo de observar-e-disparar** para pendurar nele. E
   `maos-sobre-a-multidao` (`forma: "zona"`) passa por uma função que desenha a figura, grava, e não
-  resolve nada: `marcarNoChao` (`src/lib/artes-grid-mesa.ts:872`). **A única resolução imediata do
+  resolve nada: `marcarNoChao` (`src/lib/artes-grid-mesa.ts:902`). **A única resolução imediata do
   arquivo está presa a `forma: "alvo"`.** Os dois primeiros têm laço para estender; o quarto não tem
   laço nenhum.
 
@@ -6162,7 +6162,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
     do parâmetro, porque o parâmetro fixo não tem grau. A prosa do próprio Efeito diz qual nível é:
     ela fala em "Com Vida 1 ou 2" e em "exige Vida 3", que é o nível da ARTE. **E é exatamente esse
     número que a linha gravada não guarda:** o que fica gravado é
-    `nivel: plano.efeito?.nivel` (`src/lib/artes-grid-mesa.ts:1464`), a constante do catálogo, e não o
+    `nivel: plano.efeito?.nivel` (`src/lib/artes-grid-mesa.ts:1528`), a constante do catálogo, e não o
     nível da Arte de quem conjurou. O laço por-turno lê a linha, e a linha não sabe quanto curar.
   - `cura-guardada` some da lista das somas simples por um terceiro motivo, além do gatilho sem
     mecanismo e do "o alvo escolhe a hora" sem ação de jogo: **"1 PV por ponto" não tem definição em
@@ -6275,7 +6275,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   cliente calculou: com o insert degradado passando sem devolver a linha, a memória "lembrava" um
   número que a coluna recusou, e a Arte curaria na sessão corrente para parar sozinha no primeiro F5.
   O conserto é uma variável (`enviada`) que guarda o objeto de fato enviado, e hoje a rede é
-  `ATIVOS.push(daLinha((data || [])[0] || enviada));` (`src/lib/artes-grid-mesa.ts:1529`).
+  `ATIVOS.push(daLinha((data || [])[0] || enviada));` (`src/lib/artes-grid-mesa.ts:1593`).
 
   **Ela classificou como ESCALA por não poder provar alcançabilidade em produção, e eu reclassifiquei
   como CORRIGE:** o comentário três linhas acima do defeito AFIRMAVA a garantia que o achado
@@ -6369,7 +6369,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
 
   **A conferência que fecha isso, e ela vale por si:** TODO caminho de dano grampeia em zero, nos
   quatro escritores e no servidor:
-  `Math.max(0, (alvo.pv_atual ?? 0) - golpe.liquido)` (`src/lib/artes-grid-mesa.ts:1783`), o mesmo em `:1787`,
+  `Math.max(0, (alvo.pv_atual ?? 0) - golpe.liquido)` (`src/lib/artes-grid-mesa.ts:1847`), o mesmo em `:1787`,
   `const pv = Math.max(0, antes - quanto);` (`src/pages/mesa/grid.astro:11179`),
   `Math.max(0, Math.min(c.pv_max, c.pv_atual + delta))` (`src/pages/mesa/combate.astro:1339`) e, no banco,
   `set pv_atual = greatest(0, coalesce(pv_atual, 0) - p_quanto)` (`supabase/migracao-22.sql:146`).
@@ -6409,7 +6409,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   gravam no banco sem repintar a coluna de iniciativa, e uma delas não avisa a mesa.**
 
   **A grave, e é o furo real dos cinco caminhos do `L84`:**
-  `async function varrerCondicoesVencidas` (`src/lib/artes-grid-mesa.ts:1960`) grava as condições
+  `async function varrerCondicoesVencidas` (`src/lib/artes-grid-mesa.ts:2024`) grava as condições
   vencidas direto no Supabase e atualiza o
   objeto local, **sem chamar pintura nenhuma e sem `avisarAgora`**. Quando não há efeito ativo na
   arena (o caso comum: uma Arte que só deixou uma condição, sem marca visível no tabuleiro), a função
@@ -6584,7 +6584,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **Nenhum dos doze efeitos de movimento tem parâmetro "Força"** (conferido nos doze), então o
   primeiro é sempre indefinido e o que sobra é o **Alcance escolhido**: a distância que um corpo voa
   passa a ser governada por **de quão longe você mirou**. E o mesmo arquivo sabe fazer certo, dezenas
-  de linhas acima: `const nivel` (`src/lib/artes-grid-mesa.ts:1095`) lê `plano.efeito?.nivel`, que é o
+  de linhas acima: `const nivel` (`src/lib/artes-grid-mesa.ts:1127`) lê `plano.efeito?.nivel`, que é o
   nível da Arte de verdade. Não é ambiguidade do dado, é inconsistência dentro de um arquivo só.
 
   **CORREÇÃO de 12/09/2026, e ela é sobre a frase acima, não sobre o defeito:** `plano.efeito?.nivel`
@@ -6806,7 +6806,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **O motor DISTINGUE as duas coisas, em dois lugares, e nenhum deles está no arrasto:**
 
   - a régua das Artes, escrita como regra e não como implementação ·
-    `src/lib/artes-grid-mesa.ts:2148` · `ONDE A MESA CORRIGE O PRÓPRIO REGISTRO, NÃO COBRA.` Ela é
+    `src/lib/artes-grid-mesa.ts:2212` · `ONDE A MESA CORRIGE O PRÓPRIO REGISTRO, NÃO COBRA.` Ela é
     cumprida por omissão (a correção não debita Mana e não declara tempo) e o registro escreve
     "corrigiu", nunca "conjurou", para a mesa ler a diferença na linha do log;
   - agir fora da vez, que tem custo real e campo próprio ·

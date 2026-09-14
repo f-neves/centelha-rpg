@@ -56,7 +56,7 @@ do humano e o motor concordam em quase tudo; onde as palavras diferem, aqui fica
 | Efeito Especial | **Efeito**, do catálogo, com `nivel` fixo | `src/data/efeitos.json`, `artes-grid.ts:23-33` (`interface Efeito`) |
 | Parâmetro | **Parâmetro**, com graus de 0 a 6 | `artes-grid.ts:35-45` (`interface Parametro`), `regras.json:arcano.improviso.graus` |
 | os Parâmetros declarados | **`Escolhas`**, o mapa nome→grau | `artes-grid.ts:301`, vivo só durante a caixa |
-| NÍVEL do Efeito | **nível efetivo** | `gravarEfeito`, `artes-grid-mesa.ts:1437` (`function gravarEfeito`) |
+| NÍVEL do Efeito | **nível efetivo** | `gravarEfeito`, `artes-grid-mesa.ts:1501` (`function gravarEfeito`) |
 
 **O "Nível = o maior Parâmetro declarado" JÁ EXISTE, ao pé da letra.** `gravarEfeito` calcula
 `Math.max` sobre os graus investidos quando não há Efeito comprado, e chama isso de **nível
@@ -71,7 +71,7 @@ nova reusa esse nome e essa fórmula, e não inventa um terceiro.
 | para quê | qual conta | onde está |
 |---|---|---|
 | **quanto CUSTA** (Mana) | a **SOMA** dos graus investidos | `artes-grid.ts:303-307` (`interface Custo`) e `regras.astro:382` (`Some os níveis investidos`) |
-| **quanto DEMORA** (Preparação) e o gating | o **MÁXIMO** · o nível efetivo | `artes-grid-mesa.ts:1462-1465`, `arcano.composta` |
+| **quanto DEMORA** (Preparação) e o gating | o **MÁXIMO** · o nível efetivo | `artes-grid-mesa.ts:1526-1529`, `arcano.composta` |
 
 Isto não é contradição, é uma distinção que o sistema já tem. **Toda linha desta régua diz qual
 dos dois está usando.** Confundi-los é o erro mais provável da implementação, e ele sai como
@@ -338,7 +338,7 @@ a interface estaria oferecendo uma escolha vazia.**
 **O que o gating faz hoje com o nível efetivo, levantado em 10/09/2026:**
 
 - **o `nivel` gravado na linha do efeito É LIDO, e num lugar só:** `dissipar`
-  (`src/lib/artes-grid-mesa.ts:1021`) · `const alcanca = (e.nivel || 1) <= meu;`. Um efeito de
+  (`src/lib/artes-grid-mesa.ts:1053`) · `const alcanca = (e.nivel || 1) <= meu;`. Um efeito de
   nível N só pode ser dissipado por quem investiu pelo menos N pontos na Dissipar. Quem não
   alcança recebe recusa com o motivo escrito no registro;
 - **portanto o gesto NÃO é vazio.** Baixar o nível efetivo no Golpe **torna o próprio efeito mais

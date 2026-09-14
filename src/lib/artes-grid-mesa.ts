@@ -868,6 +868,36 @@ async function dentroDoAlcance(ctx: CtxGrid, meu: Hex, plano: Plano, onde: Encai
     { titulo: 'Fora de alcance', ok: 'Conjurar' });
 }
 
+/**
+ * A ARTE DE CURA QUE OCUPA CHÃO E SAI NA HORA.
+ *
+ * O GÊMEO QUE FALTAVA. Para forma de alvo isto já existia desde sempre (o
+ * `morder` logo depois do `gravarEfeito` em `grudarNoAlvo`), e só para dano: a
+ * Arte que fere na hora do golpe morde ali mesmo. Não havia o equivalente para
+ * CURA, e não havia nenhum para ZONA · uma Arte de cura imediata em área era
+ * gravada no banco e não acontecia, em silêncio.
+ *
+ * POR QUE O NÚMERO SAI DO PLANO E NÃO DA LINHA, e a diferença é real: aqui a
+ * conjuração está acontecendo AGORA, com `plano.nivelArte` na mão (o mesmo
+ * caminho que o FAH/FAA do `empurrao-elemental` já usava). A coluna `nivel_arte`
+ * da migração 38 existe para o outro caso, o do efeito que é relido Ticks ou
+ * turnos depois, quando o plano já não existe. Consequência boa e deliberada:
+ * esta cura funciona mesmo onde a coluna estiver nula.
+ *
+ * QUEM DEVE TICKS DE MONTAGEM NÃO CURA AQUI. A Arte resolve no ÚLTIMO Tick do
+ * gesto (§5.3 do Arcano), e quem paga esse caso é a `saidaDaArte`, que ganhou o
+ * ramo de cura na mesma rodada. Curar nos dois lugares curaria duas vezes.
+ */
+async function curaImediataNoChao(ctx: CtxGrid, plano: Plano): Promise<void> {
+  const g = plano.efeito?.grid;
+  if (!g?.cura || g.gatilho !== 'imediato') return;
+  const ef = ATIVOS[ATIVOS.length - 1];
+  if (!ef || deveSair(ef)) return;
+  const quanto = curaDoEfeito(plano.efeito, plano.nivelArte);
+  if (quanto == null || quanto <= 0) return;
+  await curarQuemEstaDentro(ctx, ef, quanto);
+}
+
 /** Aura, zona, muro, cone e linha: tudo o que ocupa chão. */
 async function marcarNoChao(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLElement, forma: Forma): Promise<void> {
   const meu = ctx.tokens[c.id];
@@ -878,9 +908,10 @@ async function marcarNoChao(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLEleme
   // Escala de região cobre tudo: não há onde clicar, e perguntar seria teatro.
   if (g?.arenaInteira) {
     const e0 = encaixeNoCentro(meu, esc_);
-    return await gravarEfeito(ctx, c, plano, {
+    await gravarEfeito(ctx, c, plano, {
       forma, figura: { tipo: 'arena', ax: e0.x, ay: e0.y, q: meu.q, r: meu.r }, alvos: [],
     });
+    return await curaImediataNoChao(ctx, plano);
   }
 
   // A figura sai do MOTOR, num lugar só: quem decide o molde é a forma que o
@@ -967,6 +998,7 @@ async function marcarNoChao(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLEleme
   }
 
   await gravarEfeito(ctx, c, plano, { forma, figura: monta(ancora, dir), alvos: [] });
+  await curaImediataNoChao(ctx, plano);
 }
 
 /** Melhoria, marca e item: o efeito gruda numa peça e anda com ela. */
@@ -1394,9 +1426,37 @@ function afastar(de: Hex, ate: Hex, passos: number, cols: number, rows: number):
  * provar um "quando" exige comparar a decisão com o Tick em que ela é pedida:
  * isso cabe em teste de Node, e morder, escrever condição e gravar não cabem.
  */
+/**
+ * QUEM ESTÁ DENTRO RECEBE, E CADA UM RECEBE O VALOR CHEIO.
+ *
+ * A regra de mesa é essa e está decidida: cura em área NÃO divide. O valor não
+ * é repartido entre os alvos, e por isso não há divisão nenhuma nesta função ·
+ * ela só descobre quem está dentro e chama a cura uma vez por peça.
+ *
+ * A LISTA SAI DO MESMO LUGAR QUE A DA VARREDURA POR TURNO, de propósito: forma
+ * de alvo usa a lista que a mira montou, qualquer forma que ocupe chão pergunta
+ * ao `dentroDoEfeito`. Duas maneiras diferentes de responder "quem está dentro"
+ * no mesmo motor divergiriam no primeiro caso de borda.
+ *
+ * O `curarAlvo` marca a mordida, então a peça curada aqui não é curada de novo
+ * pela varredura na mesma rodada: o relógio é um só.
+ */
+async function curarQuemEstaDentro(ctx: CtxGrid, ef: EfeitoAtivo, quanto: number): Promise<void> {
+  const dentro = ef.forma === 'alvo' || ef.forma === 'token'
+    ? (ef.alvos || []) : dentroDoEfeito(vigente(ctx, ef), ctx.tokens, escalaM(ctx));
+  for (const cid of dentro) {
+    const alvo = combDe(ctx, cid);
+    if (alvo) await curarAlvo(ctx, ef, alvo, quanto, 'curou');
+  }
+}
+
 async function saidaDaArte(ctx: CtxGrid, ef: EfeitoAtivo): Promise<void> {
   const t = tickAtual(ctx);
-  const plano = planoDaSaida(ef);
+  // O QUANTO VEM DO CATÁLOGO E DA LINHA, e é aqui que `nivel_arte` (migração 38)
+  // é lido: a saída adiada acontece Ticks depois da conjuração, e o plano que a
+  // originou já não existe. É a mesma razão pela qual a coluna foi criada.
+  const catalogo = ef.efeito_id ? EFEITO[ef.efeito_id] || null : null;
+  const plano = planoDaSaida(ef, curaDoEfeito(catalogo, ef.nivel_arte));
   if (plano.tipo === 'cadeia') {
     for (const elo of plano.alvos) {
       const alvo = combDe(ctx, elo.id);
@@ -1417,6 +1477,10 @@ async function saidaDaArte(ctx: CtxGrid, ef: EfeitoAtivo): Promise<void> {
     for (const id of plano.alvos) {
       await porCondicao(ctx, combDe(ctx, id), plano.condicao, turnosRestantes(ef, t));
     }
+    return;
+  }
+  if (plano.tipo === 'cura') {
+    await curarQuemEstaDentro(ctx, ef, plano.quanto);
   }
 }
 
