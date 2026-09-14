@@ -1413,7 +1413,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   - o item no menu da peça: `condicoes', '◈ Condições'` (`grid.astro:7768`);
   - o selo de ícones na lista lateral, que custa zero gestos: `const selo` (`grid.astro:6749`);
-  - e a aba Combate chamando o mesmo módulo: `function abrirCondicoes` (`combate.astro:1757`), para
+  - e a aba Combate chamando o mesmo módulo: `function abrirCondicoes` (`combate.astro:1810`), para
     não haver duas cópias divergindo no primeiro conserto que só uma receber.
 
   Asserção em par, em `cenaCondicaoAMao` (`scripts/test-grid.mjs`): a mesma folha do golpe aberta
@@ -1952,14 +1952,14 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   real, não só teórica: sonda com a bancada (`?tick=5&tempo=simultaneo`) mostrou `#enc-tick` em
   0 com a arena em 5, para mestre E jogador · `AGORA = emCampo[0]?.tick ?? 0` lia o Tick
   individual de uma peça `livre`, que fica parado enquanto `tick_atual` anda. Corrigido: no
-  Simultâneo o relógio agora lê `ENC?.tick_atual` (`combate.astro:903`), igual ao Grid; normal
+  Simultâneo o relógio agora lê `ENC?.tick_atual` (`combate.astro:938`), igual ao Grid; normal
   e P/G/R não mudaram. E a lacuna de prova no P/G/R fechou com um par de asserção novo
   (`test-grid.mjs:1475`, knob `?deslocafila=N` em `mesa-mock.mjs`): o jogador calcula o
   mesmo relógio que o mestre, e o número muda junto com o deslocamento, em vez de ficar parado
   em Tick 0 (que era indistinguível de máscara quebrada antes deste teste existir).
 
   **Veredito SEGUE em 07/09/2026 (rodada 25, `docs/simulacao/caixa/25-revisora.md`).** A
-  revisora refez a prova de regressão por conta própria (reverteu `combate.astro:903` (`ENC?.tick_atual`),
+  revisora refez a prova de regressão por conta própria (reverteu `combate.astro:938` (`ENC?.tick_atual`),
   viu as duas asserções falharem em `(0)`, restaurou) e rodou o par do P/G/R e a suíte
   completa sem reversão, tudo verde; confirmou que `?tick=` e `?deslocafila=` não se
   pisam, linha a linha em `mesa-mock.mjs`. Nada a corrigir. Item 1 do lote 2 fechado.
@@ -2869,7 +2869,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | `refazerLogDosEfeitos()` | `LOG = LOG.filter((e: any) => !minha(e));` (`grid.astro:11825`) e empurra N linhas novas |
 
   **E UMA CORREÇÃO AO ENUNCIADO: não existe zerar no Grid.** O `LOG = []` é do `combate.astro`
-  (`if (zLog) { LOG = []; await persistLog(); }`, `combate.astro:2075`), na caixa de reiniciar
+  (`if (zLog) { LOG = []; await persistLog(); }`, `combate.astro:2128`), na caixa de reiniciar
   combate, e lá não há escritor concorrente. **Zerar não precisa de caminho novo:** precisa ficar
   onde está.
 
@@ -6362,7 +6362,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **A ESCALA QUE A REVISORA ACHOU, e eu a reenquadro depois de conferir no disco, porque do jeito que
   ela saiu manda alguém caçar um defeito que não existe.** Ela achou duas outras contas de teto fora do
   alcance do teste (que confere só o corpo do `curar()`), e leu a primeira como divergência de
-  comportamento: `mexerVida` (`src/pages/mesa/combate.astro:1282`) teria piso em zero e o `curarPv`
+  comportamento: `mexerVida` (`src/pages/mesa/combate.astro:1335`) teria piso em zero e o `curarPv`
   não. **As duas contas existem e isso está certo. A divergência de comportamento não existe onde se
   pode chegar jogando**, e o motivo é que `mexerVida` recebe delta dos DOIS sinais, então o piso dela
   é a trava de dano da aba Combate, não uma regra de cura diferente. Curar nunca precisa de piso.
@@ -6371,14 +6371,14 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   quatro escritores e no servidor:
   `Math.max(0, (alvo.pv_atual ?? 0) - golpe.liquido)` (`src/lib/artes-grid-mesa.ts:1783`), o mesmo em `:1787`,
   `const pv = Math.max(0, antes - quanto);` (`src/pages/mesa/grid.astro:11179`),
-  `Math.max(0, Math.min(c.pv_max, c.pv_atual + delta))` (`src/pages/mesa/combate.astro:1286`) e, no banco,
+  `Math.max(0, Math.min(c.pv_max, c.pv_atual + delta))` (`src/pages/mesa/combate.astro:1339`) e, no banco,
   `set pv_atual = greatest(0, coalesce(pv_atual, 0) - p_quanto)` (`supabase/migracao-22.sql:146`).
   **O resíduo verdadeiro não é "dois tetos que discordam", é que a Vida tem quatro escritores e
   nenhuma régua comum**, que é a família do `L87` no eixo do PV em vez do eixo da condição.
 
   **E UM ACHADO QUE SAIU DESSA CONFERÊNCIA, sem relação com a cura:** existe exatamente UM caminho que
   escreve Vida negativa, e é a caixa de editar peça do mestre:
-  `pvat = Math.min(pvat, pvmax)` (`src/pages/mesa/combate.astro:1711`) grampeia o teto e não grampeia
+  `pvat = Math.min(pvat, pvmax)` (`src/pages/mesa/combate.astro:1764`) grampeia o teto e não grampeia
   o piso, enquanto o campo do relógio, duas linhas abaixo, ganha o grampo de baixo que falta a este.
   Pode ser liberdade de mestre deliberada e pode ser
   descuido, e **não decido isto aqui**: fica anotado com o vizinho que o denuncia.
@@ -6435,7 +6435,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
 
   **O contraste é a melhor parte, porque os dois já existem no produto, escritos por mãos diferentes,
   e um dos dois já explicou por escrito por que está certo.**
-  `async function upComb` (`src/pages/mesa/combate.astro:593`) é o escritor único da aba Combate
+  `async function upComb` (`src/pages/mesa/combate.astro:610`) é o escritor único da aba Combate
   e toca a campainha ele
   mesmo, com o comentário dizendo o porquê: todo dano, toda condição e todo tick daquela aba passam
   por ali, e é o lugar de tocar **uma vez só** em vez de espalhar o aviso por vinte chamadas. O

@@ -64,6 +64,14 @@ import CondDlg from '../../components/CondDlg.astro';
             <h3 class="col-h col-h-fora">Fora de combate</h3>
             <div id="cmb-fora" class="cmb-lista cmb-lista-fora"></div>
           </div>
+          <!-- A MEMÓRIA, e ela não é a fila. A `combate_visao` da migração 33
+               manda o que o jogador já viu e agora está no escuro, com o estado
+               daquela hora e `tick` nulo. Isso não pode entrar na fila: ver o
+               comentário de `pintar`. Fica aqui embaixo, separado e dito. -->
+          <div id="cmb-lembr-wrap" hidden>
+            <h3 class="col-h col-h-fora">Vistos antes (não estão à vista)</h3>
+            <div id="cmb-lembr" class="cmb-lista cmb-lista-lembr"></div>
+          </div>
         </div>
 
         <aside class="cmb-col-lado">
@@ -356,6 +364,15 @@ import CondDlg from '../../components/CondDlg.astro';
   .cmb-lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr));
     gap: .5rem; align-items: stretch; }
   .cmb-lista-fora { opacity: .72; }
+  /* A MEMÓRIA TEM DE PARECER MEMÓRIA. O Grid resolve isso no tabuleiro com
+     dessaturação e contorno pontilhado; aqui o card recebe o mesmo vocabulário,
+     porque o jogador transita entre as duas telas e a mesma coisa não pode ter
+     duas aparências. Sem isto, a Vida da fotografia lê como leitura de agora. */
+  .cmb-lista-lembr { opacity: .72; }
+  .cbt.lembr { filter: grayscale(1) brightness(.92); outline: 2px dotted color-mix(in srgb, var(--ink) 45%, transparent);
+    outline-offset: -2px; }
+  .cbt-lembr-selo { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
+    letter-spacing: .06em; color: var(--ink-soft); font-style: italic; }
 
   /* O card que a tira acabou de apontar. Rolar até ele não basta numa grade de
      doze iguais: o olho precisa de onde pousar, e o brilho morre sozinho. */
@@ -886,8 +903,26 @@ import CondDlg from '../../components/CondDlg.astro';
   }
 
   function pintar() {
-    const emCampo = visiveis().filter((c) => c.ativo !== false).sort(ordenar);
-    const fora = visiveis().filter((c) => c.ativo === false).sort(ordenar);
+    // A LEMBRANÇA NÃO ESTÁ NA FILA, e a regra é a mesma que o Grid já aplica
+    // em `naFila` (`grid.astro`): peça de memória não tem vez. A migração 33
+    // faz a `combate_visao` mandar o que o jogador já viu e agora está no
+    // escuro, com `tick` e `iniciativa` nulos de propósito.
+    //
+    // O QUE ACONTECIA SEM ESTE CORTE, e não é uma linha mal desenhada na lista:
+    // `ordemDaFila` ordena por `(a.tick ?? 0)`, então a lembrança ia para a
+    // FRENTE, virava o `atual` daqui, e daí saía tudo errado de uma vez · o
+    // relógio exibido congelava em Tick 0 (`atual?.tick ?? 0`), a tira a
+    // marcava com `vez` e `age`, e o painel do turno era montado em cima de uma
+    // memória. O mesmo `?? 0` que mascara o campo em todo lugar é o que a
+    // promove aqui.
+    //
+    // Ela não some da tela: vai para a seção própria, embaixo, porque nesta aba
+    // não há mapa onde ela possa ficar. Tirar a memória inteira seria devolver
+    // ao jogador a amnésia que a migração 33 existe para não causar.
+    const lembradas = visiveis().filter((c) => c.lembranca);
+    const naCena = visiveis().filter((c) => !c.lembranca);
+    const emCampo = naCena.filter((c) => c.ativo !== false).sort(ordenar);
+    const fora = naCena.filter((c) => c.ativo === false).sort(ordenar);
     const atual = emCampo[0] || null;
 
     el('enc-nome').textContent = ENC.nome;
@@ -912,6 +947,8 @@ import CondDlg from '../../components/CondDlg.astro';
       : '<p class="vazio">Ninguém em campo. Adicione personagens e criaturas.</p>';
     el('cmb-fora-wrap').hidden = !fora.length;
     el('cmb-fora').innerHTML = fora.map((c) => cardCombatente(c, false)).join('');
+    el('cmb-lembr-wrap').hidden = !lembradas.length;
+    el('cmb-lembr').innerHTML = lembradas.map((c) => cardCombatente(c, false)).join('');
 
     pintarPainel(atual, emCampo);
     pintarLog();
@@ -1050,6 +1087,18 @@ import CondDlg from '../../components/CondDlg.astro';
   const nomeDe = (id: string) => COMBS.find((x) => x.id === id)?.nome || 'alguém';
 
   function cardCombatente(c: any, atual: boolean) {
+    // A LEMBRANÇA, e o card dela não é o card de quem está na cena. A
+    // `combate_visao` da migração 33 manda `tick` e `iniciativa` NULOS de
+    // propósito (o que é do instante cala na memória), e sem este trecho o
+    // cabeçalho desenhava a palavra "null" no lugar do Tick e o meta dizia
+    // "ini 0", que é pior que não dizer nada: é um número inventado sobre
+    // uma peça que o jogador não está vendo.
+    //
+    // O mestre nunca cai aqui: ele lê a tabela crua, onde a coluna não existe.
+    const lembr = !!c.lembranca;
+    const vistoHora = lembr && c.visto_em
+      ? new Date(c.visto_em).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' })
+      : '';
     const r = RESUMO[c.id];
     const mostra = verStats(c);
     const vida = verVida(c);
@@ -1110,10 +1159,12 @@ import CondDlg from '../../components/CondDlg.astro';
     const abreCard = EH_MESTRE && c.tipo === 'criatura' && !!MON[c.monstro_id];
     const cCard = abreCard ? ' ver-card' : '';
     const aCard = abreCard ? ` data-mon="${esc(c.monstro_id)}" title="Ver o card de ${esc(MON[c.monstro_id].nome)}"` : '';
-    return `<article class="cbt g-${esc(c.grupo || 'inimigo')}${atual ? ' atual' : ''}${c.ativo === false ? ' fora' : ''}${c.oculto ? ' oculto' : ''}" data-c="${c.id}">
+    return `<article class="cbt g-${esc(c.grupo || 'inimigo')}${atual ? ' atual' : ''}${c.ativo === false ? ' fora' : ''}${c.oculto ? ' oculto' : ''}${lembr ? ' lembr' : ''}" data-c="${c.id}">
       <header class="cbt-cab">
-        <span class="cbt-tick">${c.tick}<small>tick</small></span>
-        ${seloFaseHTML(acaoDe(c), AGORA)}
+        ${lembr
+          ? `<span class="cbt-lembr-selo" title="${vistoHora ? `Visto em ${esc(vistoHora)}` : 'Visto antes, e não está à vista agora'}">lembrança</span>`
+          : `<span class="cbt-tick">${c.tick}<small>tick</small></span>`}
+        ${lembr ? '' : seloFaseHTML(acaoDe(c), AGORA)}
         <span class="espaco"></span>
         ${chip}
         ${!EH_MESTRE && c.oculto ? '<span class="cbt-selo" title="Oculto dos jogadores">🙈</span>' : ''}
@@ -1122,7 +1173,9 @@ import CondDlg from '../../components/CondDlg.astro';
       <div class="cbt-av${cCard}"${aCard}>${avatarDe(c)}</div>
       <div class="cbt-id">
         <span class="cbt-nome${cCard}"${aCard}>${esc(c.nome)}</span>
-        <span class="cbt-meta">${esc(tipoTxt)} · ini ${c.iniciativa ?? 0} · ${GRUPO_LBL[c.grupo] || 'Inimigo'}</span>
+        <span class="cbt-meta">${esc(tipoTxt)} · ${lembr
+          ? `Vida da última vez${vistoHora ? `, ${esc(vistoHora)}` : ''}`
+          : `ini ${c.iniciativa ?? 0}`} · ${GRUPO_LBL[c.grupo] || 'Inimigo'}</span>
       </div>
       ${barras}${stats}${fitaDoCard(c)}
       ${conds.length ? `<div class="conds">${conds.map((x) => condChipHTML(x, EH_MESTRE, c.id)).join('')}</div>` : ''}
