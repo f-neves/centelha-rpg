@@ -23,18 +23,29 @@ enquanto ela ainda está no meio de julgar um diff — e nesse caso ela está
 revisando duas árvores achando que é uma, sem saber qual pedaço do veredito
 vale para qual commit.
 
-**Onde está agora:** `C:/Users/Neves/ClaudeCode/centelha-techlead-revisora`,
-detached, pinado em `ae007b6` desde 08/09/2026, conferido por `git rev-parse HEAD` nesta
-data — um commit à frente de `77c3dc3` (a atualização de §3/§4) de propósito: `ae007b6` é
-o commit que registra ESTE MESMO parágrafo apontando para `77c3dc3`, e avançar o worktree
-até ele evita que a Revisora leia um contrato que já se descreve como desatualizado no
-instante em que abre o arquivo. As duas réguas (§3/§4) continuam presentes desde
-`77c3dc3`, antes do primeiro diff da tela da lembrança — isso não muda. Antes disso ficou
-pinado em `99123cd` (aviso da rodada 25, fecho do resíduo do relógio). Antes disso, em
-`44d5601` (aviso da rodada 22, L31), em `bdc9680` (aviso da rodada 19, L39), em `8dd27d4`
-(aviso da rodada 17, fecho dos Lotes 2 e 3 do Interpor), em `54d337c` (aviso da rodada 15)
-e, antes dessa, em `46656ba` desde a criação do worktree (antes do primeiro diff de
-verdade, por decisão explícita do humano — não esperar o diff para montar o isolamento).
+**Onde está agora:** `C:/Users/Neves/ClaudeCode/centelha-techlead-revisora`, detached, no sha
+que o último aviso de rodada mandou. **Qual sha é esse não se escreve aqui**, e a ausência é
+deliberada: quem sabe onde a árvore está é a própria árvore, e a resposta sai de
+`git rev-parse HEAD` rodado nela, que é o passo 0 logo abaixo.
+
+**Por que este parágrafo deixou de nomear um commit** (mudado em 14/09/2026, a versão anterior
+apagada e não deixada como superada). Ele dizia "pinado em `ae007b6` desde 08/09/2026,
+conferido por `git rev-parse HEAD` nesta data", e trazia a lista dos pinos anteriores. A árvore
+estava em `88a5cfe`, seis rodadas adiante, e ninguém tinha reconciliado a frase · **achado pela
+própria Revisora na abertura de 14/09, lendo o contrato antes do primeiro aviso.**
+
+O que torna o caso feio é o argumento que a frase carregava: ela explicava que o pino fora
+escolhido para a Revisora não ler "um contrato que já se descreve como desatualizado no instante
+em que abre o arquivo", e era exatamente isso que ela fazia. É a forma que o `CATALOGO.md`
+nomeia como o documento que se justifica por um fato falso sobre si, e a régua do
+`ARQUITETO.md §5.5` já mandava a saída: **onde já existe dono, aponte.** O dono do sha é o
+`git`, e uma cópia em prosa dele só podia envelhecer, porque o pino muda a cada rodada e o
+parágrafo não.
+
+A lista dos pinos antigos saiu junto, pelo mesmo motivo e sem perda: ela é uma segunda lista que
+precisa concordar com o `reflog`, sustentada só por disciplina, e o `git` já a guarda inteira e
+sem erro. O histórico de qual rodada pinou onde continua legível nos avisos de cada rodada, na
+`caixa/`.
 
 **Passo 0, antes de qualquer outra coisa, em toda revisão:**
 
