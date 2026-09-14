@@ -230,15 +230,41 @@ Quando a conversa nova começar, é isso que vai voltar primeiro.
 
 ## 9 · Como reabrir o arranjo
 
-Quando o humano pedir "preciso do prompt para iniciar o Arquiteto", a resposta é o bloco
-abaixo, precedido do comando de terminal.
+**Desde 14/09/2026 há um atalho: `/arquiteto`.** Dentro de uma sessão aberta na pasta do
+repositório, esse comando abre o papel de Arquiteto E cria os dois teammates de uma vez. Ele mora
+em `.claude/commands/arquiteto.md`, é versionado, e **não carrega cópia nenhuma do prompt**: ele
+aponta para esta seção, que continua sendo a fonte. Uma segunda cópia do prompt divergiria da
+primeira na próxima edição, que é a forma que o `CATALOGO.md` chama de duas listas que precisam
+concordar. O que o comando acrescenta ao texto abaixo é operacional: a criação dos teammates e o
+lembrete de que ela vem ANTES do portão de orçamento.
+
+**Quem lê o quê:** o humano digita `/arquiteto`; o arquivo do comando manda ler esta seção; esta
+seção tem o prompt. Se o título "O prompt de abertura do Arquiteto" mudar de lugar, o comando
+falha ALTO (ele manda parar e avisar em vez de improvisar um prompt), e não em silêncio.
+
+Quando o humano pedir "preciso do prompt para iniciar o Arquiteto" à mão, a resposta continua
+sendo o bloco abaixo, precedido do comando de terminal.
 
 ### O terminal
 
-Abrir o Claude Code na pasta do repositório principal:
+Abrir o Claude Code na pasta do repositório principal, **já com o nome da sessão**:
 
     cd C:\Users\Neves\ClaudeCode\rpg-system
-    claude
+    claude -n "Arquiteto (RPG)"
+
+e, dentro dela, `/arquiteto`.
+
+**O `-n` não é enfeite.** O nome aparece na caixa do prompt, no seletor do `/resume` e no título
+do terminal, e o arranjo inteiro tem UMA janela: a Executora e a Revisora são teammates desta
+sessão, não janelas próprias. Perder esta de vista entre várias abertas é perder o arranjo. O
+`/arquiteto` também pede o nome, mas **renomear no meio da sessão pode não estar disponível**;
+quando não estiver, ele avisa e devolve esta linha, em vez de dizer que nomeou.
+
+**E o `/arquiteto` CONFERE a equipe depois de criá-la**, por `ListAgents`, nome a nome. Se
+faltar uma das duas, ele para e avisa em vez de seguir: trabalhar sem revisão é decisão do
+humano, e ela só é dele se ele souber que está tomando. É a regra do `ARQUITETO.md §1`
+("conferir estado antes de afirmar estado") aplicada ao nascimento da própria equipe, e ela
+existe porque "criei as duas" é rótulo, não estado.
 
 A Executora e a Revisora não são sessões separadas: são teammates criados pelo Arquiteto dentro
 da sessão dele, e nascem do prompt. A Auditora é sessão à parte, aberta em
