@@ -45,3 +45,16 @@ Hora lida da máquina a cada linha, nunca estimada. Etapa sem hora é honesta; h
   `docs/simulacao/caixa/`. Registrado no veredito em vez de citado como se tivesse coberto.
 - 16:11 · veredito escrito em `docs/simulacao/caixa/58-revisora.md`. Vai commitar e empurrar
   ANTES de eu avisar que terminei (§7).
+- 16:14 · **o `main` tinha andado.** `git fetch` antes de commitar: `origin/main` em `e1c84c5`,
+  um commit à frente do meu pino, tocando os dois documentos da rodada e zero arquivos de código.
+  Li o `diff` dos dois documentos (e só ele) para não publicar item fechado como aberto, e escrevi
+  no veredito qual é o escopo dessa leitura. Não reancorei para revisar: a revisão é de `48b8bdf`.
+- 16:14:46 · commitado com pathspec, `282c95c`, gancho de `pre-commit` verde. Mensagem conferida:
+  zero linha de coautoria.
+- 16:15:01 · push recusado por não ser fast-forward, como o §7 previa. **Não forcei.** Rebasei o
+  MEU único commit sobre `origin/main` (`git rebase origin/main`, sem conflito: meus dois arquivos
+  são novos), o que não descarta nada · conferido por `merge-base --is-ancestor` que o `e1c84c5`
+  continua na história. Isso move o meu `HEAD`, e o Arquiteto precisa saber: foi DEPOIS do veredito
+  escrito e só para publicar, nunca para revisar.
+- 16:15:11 · **publicado.** `0af1e77` no `origin/main`,
+  `git rev-list --count origin/main..HEAD` = 0, árvore limpa.
