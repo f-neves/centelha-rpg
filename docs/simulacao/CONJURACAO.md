@@ -55,7 +55,7 @@ do humano e o motor concordam em quase tudo; onde as palavras diferem, aqui fica
 | Efeito (Improviso) | **Improviso** · `plano.efeito === null` | `regras.json:arcano.improviso`, `artes-grid-ui.ts:182` (`null = improviso`) |
 | Efeito Especial | **Efeito**, do catálogo, com `nivel` fixo | `src/data/efeitos.json`, `artes-grid.ts:23-33` (`interface Efeito`) |
 | Parâmetro | **Parâmetro**, com graus de 0 a 6 | `artes-grid.ts:35-45` (`interface Parametro`), `regras.json:arcano.improviso.graus` |
-| os Parâmetros declarados | **`Escolhas`**, o mapa nome→grau | `artes-grid.ts:301`, vivo só durante a caixa |
+| os Parâmetros declarados | **`Escolhas`**, o mapa nome→grau | `artes-grid.ts:328`, vivo só durante a caixa |
 | NÍVEL do Efeito | **nível efetivo** | `gravarEfeito`, `artes-grid-mesa.ts:1501` (`function gravarEfeito`) |
 
 **O "Nível = o maior Parâmetro declarado" JÁ EXISTE, ao pé da letra.** `gravarEfeito` calcula
@@ -70,7 +70,7 @@ nova reusa esse nome e essa fórmula, e não inventa um terceiro.
 
 | para quê | qual conta | onde está |
 |---|---|---|
-| **quanto CUSTA** (Mana) | a **SOMA** dos graus investidos | `artes-grid.ts:303-307` (`interface Custo`) e `regras.astro:382` (`Some os níveis investidos`) |
+| **quanto CUSTA** (Mana) | a **SOMA** dos graus investidos | `artes-grid.ts:330-334` (`interface Custo`) e `regras.astro:382` (`Some os níveis investidos`) |
 | **quanto DEMORA** (Preparação) e o gating | o **MÁXIMO** · o nível efetivo | `artes-grid-mesa.ts:1526-1529`, `arcano.composta` |
 
 Isto não é contradição, é uma distinção que o sistema já tem. **Toda linha desta régua diz qual
@@ -99,7 +99,7 @@ distribuição aberta, que foi o que o humano pediu.
 **E O D-C1 NÃO TEM BURACO, corrigido em 10/09/2026 pelo humano, porque quem ler o §1 vai fazer
 esta pergunta.** Declarar nível efetivo 3 **não** libera distribuir 3 em todos os Parâmetros de
 graça. **Cada grau de cada Parâmetro é pago**, e a conta já existe (`custoDe`,
-`src/lib/artes-grid.ts:322-340` · `function custoDe`): o custo é a SOMA dos graus, com dois descontos · um pela
+`src/lib/artes-grid.ts:349-379` · `function custoDe`): o custo é a SOMA dos graus, com dois descontos · um pela
 **Centelha**, que abate do total, e outro pelo **material consumido**. Passar do nível de maestria
 num Parâmetro ainda multiplica o custo dele.
 
@@ -345,8 +345,8 @@ a interface estaria oferecendo uma escolha vazia.**
   fácil de dissipar**. É uma consequência real, e negativa para quem conjura · o que faz dela um
   motivo para NÃO baixar, e não um prêmio por baixar;
 - **e o resto do gating não olha para ele.** O que filtra quais Efeitos o personagem pode escolher
-  é o `nivelArte`, a maestria da ficha (`efeitosDisponiveis`, `artes-grid.ts:393`), e o que
-  encarece Parâmetro acima da maestria também é o `nivelArte` (`custoDe`, `artes-grid.ts:322`).
+  é o `nivelArte`, a maestria da ficha (`efeitosDisponiveis`, `artes-grid.ts:432`), e o que
+  encarece Parâmetro acima da maestria também é o `nivelArte` (`custoDe`, `artes-grid.ts:349`).
   Nenhum dos dois enxerga o nível efetivo da conjuração.
 
 **Uma coisa achada de passagem que quem implementar precisa saber:** o `dissipar` compara

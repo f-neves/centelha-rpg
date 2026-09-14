@@ -76,6 +76,33 @@ export interface Parametro {
    * antecipar essa forma agora, sem Arte real que a peça.
    */
   porNivel?: boolean;
+  /**
+   * QUANTO DE MANA, POR NÍVEL DA ARTE, ESTE PARÂMETRO FIXO COBRA.
+   *
+   * O DEFEITO QUE ELE FECHA, medido em 13/09/2026: três parâmetros do catálogo
+   * carregam na prosa a frase "2 de Mana por nível, como toda cura", e o motor
+   * não cobrava nada em nenhum dos três. A causa é a forma do `fixo`:
+   * `parametrosAjustaveis` filtra o fixo fora, e o `custoDe` nunca o vê. Um
+   * preço escrito só em prosa é um preço que não existe.
+   *
+   * ELE NÃO É "FIXO PASSA A CUSTAR", e a diferença é a medida que a decisão
+   * usou: 114 dos 140 Efeitos têm ALGUM parâmetro fixo, e os mais comuns são
+   * `Alcance` (58), `Dificuldade` (46) e `Jogada` (26), que ninguém compra.
+   * Cobrar por eles exigiria inventar uma regra de quantidade para cada nome,
+   * e não há resposta para "quanto custa uma Dificuldade". Este campo cobra
+   * onde a nota promete, e só ali: hoje são três, todos `Cura`.
+   *
+   * É UM NÚMERO E NÃO UM BOOLEANO de propósito. O "2" da frase passa a morar
+   * no dado, e não na prosa: se ele fosse booleano, o preço continuaria escrito
+   * só no texto e as duas especificações se separariam na primeira mudança, que
+   * é o mesmo formato que o `pontos` e o `porNivel` já fecharam para o VALOR da
+   * cura. A prosa vira rótulo do número, nunca a fonte dele.
+   *
+   * A QUANTIDADE É O NÍVEL DA ARTE, decidido pelo humano: "nível", nestas
+   * notas, é o nível investido na Arte por quem conjura, e não o grau do
+   * parâmetro. Os três cobram igual; o que difere entre eles é quanto CURAM.
+   */
+  custaMana?: number;
 }
 export interface GridEfeito {
   forma: Forma; ancora: Ancora; gatilho: Gatilho; alvo: string;
@@ -334,6 +361,18 @@ export function custoDe(
     const custo = n * porNivel * (acima + 1);
     if (acima > 0) esticados.push({ nome: p.nome, acima, custo });
     parametros += custo;
+  }
+  // O PREÇO DOS PARÂMETROS FIXOS QUE COBRAM, e ele é um laço à parte porque a
+  // fonte da quantidade é outra. O laço acima cobra pelo que o JOGADOR ESCOLHEU
+  // (`escolhas[p.nome]`), e parâmetro fixo não tem escolha nenhuma: passar os
+  // fixos por lá daria `n = 0` e cobraria zero, que é o defeito com mais uma
+  // linha. Aqui a quantidade é o NÍVEL DA ARTE, que é o que a nota promete.
+  //
+  // Sem `esticados`: esticar é gastar um parâmetro acima do nível investido, e
+  // um fixo não pode ser esticado porque ninguém o escolhe.
+  for (const p of (efeito?.parametros || [])) {
+    if (p.tipo !== 'fixo' || !p.custaMana) continue;
+    parametros += p.custaMana * Math.max(0, nivelArte);
   }
   const total = base + parametros;
   const mana = Math.max(0, total - centelha);

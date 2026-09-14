@@ -4734,7 +4734,8 @@
         "tipo": "fixo",
         "valor": "1 PV por nível da Arte",
         "nota": "2 de Mana por nível, como toda cura",
-        "porNivel": true
+        "porNivel": true,
+        "custaMana": 2
       }
     ],
     "efeito": "Cura de uma vez todo mundo que estiver na área, aliado ou não, amigo ou inimigo. Não dá para separar: quem está dentro sara.",
@@ -6036,7 +6037,8 @@
         "tipo": "fixo",
         "valor": "1 PV por nível da Arte",
         "nota": "2 de Mana por nível, como toda cura",
-        "porNivel": true
+        "porNivel": true,
+        "custaMana": 2
       },
       {
         "nome": "Duração",
@@ -6088,7 +6090,8 @@
         "nome": "Cura",
         "tipo": "fixo",
         "valor": "1 PV a cada 2 de dano que passar",
-        "nota": "2 de Mana por nível, como toda cura"
+        "nota": "2 de Mana por nível, como toda cura",
+        "custaMana": 2
       },
       {
         "nome": "Jogada",

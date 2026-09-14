@@ -1135,7 +1135,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   criável assim que a primeira bandeira entra), o caminho do driver até a semente, e o despejo por
   Tick do que a folha calculou. `rolagem.ts:15` é `Math.random` e é a única fonte de acaso
   do combate. Ganha ponto de injeção, e `mesa-ficha.ts:133` · `rolarIniciativaPC` e
-  `artes-grid.ts:1445` · `acaso()` precisam do mesmo
+  `artes-grid.ts:1484` · `acaso()` precisam do mesmo
   tratamento. É o que permite o teste-espelho comparar as rolagens.
 - [x] **L6 · [O ESQUELETO FEITO em 02/09] O harness.** `scripts/sim/` com o laço do Tick, o elenco
   tirado da régua, o log com classe de parada, quatro invariantes, a repartição em processos e o
@@ -1731,7 +1731,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   feitas antes de escrever código, como pedido:**
 
   **3a · o `linha` das Artes mede outra coisa, e reusá-lo seria a fachada.** A função
-  `pontoNaFigura` testa `f.tipo === 'linha'` girando o ponto para o referencial da faixa (`src/lib/artes-grid.ts:1261`-`1196`): a origem é a posição de quem conjura, o comprimento e a
+  `pontoNaFigura` testa `f.tipo === 'linha'` girando o ponto para o referencial da faixa (`src/lib/artes-grid.ts:1300`-`1196`): a origem é a posição de quem conjura, o comprimento e a
   direção são escolha de quem lança a Arte, e a largura (`larguraM`, padrão `LARGURA_LINHA`) é um
   número decidido para dimensionar Efeito, não para decidir quem bloqueia uma flecha. É a mesma
   matemática (retângulo girado) para uma pergunta diferente (área de efeito de quem conjura,
@@ -2735,9 +2735,9 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   (fechado, ver `docs/simulacao/caixa/19-executora.md`):**
   `src/lib/artes-grid-mesa.ts:490` (`const condId = ef.condicao || ef.condicaoAparente;`);
   `:1836` (`const condId = p.ef.condicao || p.ef.condicaoAparente;`, texto de log);
-  `src/lib/artes-grid.ts:1591`-`1497` (`if (ef.condicao && alvos.length) {`): a prévia só entra se
+  `src/lib/artes-grid.ts:1630`-`1497` (`if (ef.condicao && alvos.length) {`): a prévia só entra se
   `alvos.length`, e os 9 problemáticos têm `alvo: "nenhum"`: **já seguro por construção, não tocado**;
-  `src/lib/artes-grid.ts:1784` (`const condId = ef.condicao || ef.condicaoAparente;`);
+  `src/lib/artes-grid.ts:1823` (`const condId = ef.condicao || ef.condicaoAparente;`);
   `src/lib/artes-grid-ui.ts:47` (`const condId = g.condicao || g.condicaoAparente;`).
 
   **RELATÓRIO, sem risco de capítulo, atualizado (fechado):** `scripts/gen-grid-artes.mjs:410` (`efeitosNovos.filter((e) => e.grid.condicao).length`, dentro de um `console.log`, com uma segunda
@@ -6151,8 +6151,8 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   laço nenhum.
 
   **A MEDIDA QUE DECIDE O TAMANHO DE TUDO, e que faltou ao levantamento:** o filtro por
-  `p.tipo !== 'fixo'` de `parametrosAjustaveis` (`src/lib/artes-grid.ts:180`) é a lista pela qual
-  `custoDe` (`src/lib/artes-grid.ts:322`) varre as escolhas do jogador. **Parâmetro `fixo` não entra
+  `p.tipo !== 'fixo'` de `parametrosAjustaveis` (`src/lib/artes-grid.ts:207`) é a lista pela qual
+  `custoDe` (`src/lib/artes-grid.ts:349`) varre as escolhas do jogador. **Parâmetro `fixo` não entra
   em `escolhas`, não tem grau, e não custa Mana.** Isso reescreve os quatro casos:
 
   - `mao-firme` tem Cura `fixo` valendo "1 PV por turno". Sem grau e sem escolha, é 1 PV liso, por
