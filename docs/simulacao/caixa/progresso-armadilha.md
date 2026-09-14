@@ -53,3 +53,16 @@ Ancorada em `f28387f`, árvore limpa (conferido por `rtk proxy git status --porc
 - **15:50** · TERMINADO e PUBLICADO. Commit `f9874cf`, e `git rev-list --count origin/main..HEAD`
   deu **0** · commit local não é publicação, e este foi conferido. O `pull --rebase` trouxe um
   commit de outra frente no caminho (`594f9ac`), sem conflito.
+- **15:53** · REABERTO para três consertos meus, achados relendo o que publiquei. Um deles muda
+  o preço que eu tinha dado ao Arquiteto, então não podia esperar.
+- **15:53** · conserto 1: "as outras três ficam inertes" era negativa sem par. Eu tinha LIDO só o
+  ramo de escala de região do `marcarNoChao`. Li o ramo normal: ele também fecha com
+  `alvos: []` (`artes-grid-mesa.ts:1000`), então a `brasa-retardada` não vaza mesmo · mas por
+  AUSÊNCIA de alvos e não por trava, e isso está dito agora.
+- **15:54** · conserto 2, o que importa: o item B NÃO era reúso barato. O `dissipar` compara
+  contra `plano.custo.total`, que só existe durante a conjuração, e a linha grava
+  `nivel: plano.efeito?.nivel`, que para a `salvaguarda` é sempre 1. O número que a regra dela
+  nomeia não sobrevive, que é o argumento da migração 39 outra vez. B passa a custar migração,
+  e nasceu a `P7b`.
+- **15:54** · conserto 3: o `TOPO` do bloco de commit estava igual ao `SHA`, o que lê como
+  "não entrou nada que não é meu", e tinha entrado (`594f9ac`, do Arquiteto, só documento).

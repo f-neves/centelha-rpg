@@ -8,8 +8,14 @@ três campos iguais: a árvore que este documento mede é a mesma que já estava
 ```
 BASE  f28387ff8b66cc53f87cfeb11c953171d0854f5f
 SHA   f28387ff8b66cc53f87cfeb11c953171d0854f5f
-TOPO  f28387ff8b66cc53f87cfeb11c953171d0854f5f
+TOPO  594f9acf0a0d2a9e0f4b8e4e2ad0b3b6a1f7c1e0
 ```
+
+**O `TOPO` diferente do `SHA` diz o que ele existe para dizer: entrou coisa que não é minha.**
+O `594f9ac` é do Arquiteto e é só documento (o contrato da Revisora deixando de copiar o sha
+do pino), então ele não muda a árvore de código que esta medição leu. A primeira versão deste
+bloco trazia os três campos iguais, e estava errada: quando ela foi escrita, o `origin/main`
+já tinha o `594f9ac` e eu ainda não tinha rebasado.
 
 Não há código a revisar: o que esta rodada produz é medida e lista de perguntas. O único
 arquivo novo é este, mais o `progresso-armadilha.md` ao lado.
@@ -34,7 +40,9 @@ Três de pé, uma caída.
 
 **A premissa 4 caiu por duas coisas diferentes, e a segunda importa mais que a primeira.**
 
-São **sete** ocorrências de `armadilha` fora de `src/data/`, nomeadas em vez de contadas:
+São **sete** ocorrências de `armadilha` EM CÓDIGO, nomeadas em vez de contadas (a palavra
+aparece muito mais vezes em prosa, em `.md`, em cabeçalho de `.sql` e em dois comentários sem
+relação no `grid.astro`, e nenhuma dessas é leitura do gatilho):
 
 | onde | o que faz ali |
 |---|---|
@@ -188,9 +196,13 @@ inteira, sem nunca se gastar**, num Efeito de **nível 1**. O que a régua prome
 engolir UM efeito arcano e se gastar. Não é a promessa cumprida pela metade, é outra promessa.
 
 **E é por isso que UM dos quatro vaza e três não.** Dos 23 Efeitos de `forma: "alvo"` com
-condição, 18 são `passivo`, 2 `imediato`, 2 `por-turno` e **1 é `armadilha`**. A `brasa-retardada`
-tem condição mas é zona (lista de alvos vazia, a guarda `alvos.length` fecha o ramo), e as outras
-duas têm `condicao: null`. **O gatilho `armadilha` foi excluído da varredura e nunca foi excluído
+condição, 18 são `passivo`, 2 `imediato`, 2 `por-turno` e **1 é `armadilha`**. As outras duas
+têm `condicao: null` e não têm o que vazar. A `brasa-retardada` TEM condição (`em-chamas`) e não
+vaza por outro motivo, e este eu li em vez de deduzir: o caminho de chão fecha a chamada com
+`alvos: []` (`src/lib/artes-grid-mesa.ts:1000`), tanto no ramo normal quanto no de escala de
+região (`:912`), então a guarda `alvos.length` do `planoDaSaida` fecha o ramo e `gravarEfeito`
+não tem em quem pôr a condição. **É uma ausência de alvos, e não uma trava**: qualquer rodada
+futura que faça uma zona marcar alvos ao nascer liga o `em-chamas` da brasa junto, sem aviso. **O gatilho `armadilha` foi excluído da varredura e nunca foi excluído
 do caminho da condição**, e só um Efeito da família cai nessa combinação.
 
 **Não consertei.** Buff errado não é perda de dado, então a exceção permanente do congelamento
@@ -210,8 +222,24 @@ condição dos alvos e limpa a linha). O que falta é chamar o resolvedor e depo
 | item | o que pede | tamanho |
 |---|---|---|
 | **A · as duas de zona** (`brasa-retardada`, `semente-adormecida`) | a geometria JÁ existe (`dentroDoEfeito`, o mesmo do `ao-entrar`). Falta tirar as duas da exclusão da varredura e resolver uma vez só. A semente soma a rolagem de detecção. | **pequeno**, e é um item só para as duas: mesmo laço, mesma pergunta |
-| **B · `salvaguarda`** | um ponto onde a Arte que CHEGA pergunta se o alvo carrega guarda. A comparação de nível é reúso do `dissipar`. Mais desfazer o `protegido` de hoje. | **médio**, um lugar novo no caminho da conjuração |
+| **B · `salvaguarda`** | um ponto onde a Arte que CHEGA pergunta se o alvo carrega guarda, mais desfazer o `protegido` de hoje, mais **uma coluna** (abaixo) | **médio, e com migração**, não o "reúso" que eu escrevi primeiro |
 | **C · `cura-guardada`** | o disparo pela mão do alvo (ação de jogo que não existe), a trava de uma por alvo, e o gancho da incapacitação | **o maior dos três**, pelo motivo abaixo |
+
+**O item B custa uma coluna, e eu quase publiquei o contrário.** Escrevi primeiro que a
+comparação de nível era reúso do `dissipar` e que o gatilho sairia barato. A COMPARAÇÃO é reúso;
+o LIMIAR não é. O `dissipar` compara contra `plano.custo.total` (`src/lib/artes-grid-mesa.ts:1051`),
+que só existe durante aquela conjuração. A Salvaguarda tem de comparar num instante POSTERIOR, e
+o número que a regra dela nomeia ("nível igual ou menor ao que você INVESTIU") **não sobrevive na
+linha**: `gravarEfeito` grava `nivel: plano.efeito?.nivel` (`src/lib/artes-grid-mesa.ts:1528`),
+que para a Salvaguarda é **sempre 1**, o nível de catálogo, e ela é `escalonavel: true`, então o
+investido é exatamente o que varia. O `custo.total` (`base + parametros`, `src/lib/artes-grid.ts:377`)
+não é gravado em campo nenhum da linha.
+
+**É o mesmo argumento que o cabeçalho da migração 39 faz para o `cura_pontos`**, com outro
+número: entrada que não sobrevive vira coluna, ou a regra fica sem o número que ela nomeia. Fica
+aberta uma pergunta que é de regra e não minha: se o `nivel_arte` da migração 38 (que JÁ está na
+linha) serve de "o que você investiu", a coluna não é necessária · mas é outro número, e quem
+decide qual dos dois a regra quis dizer é a mesa.
 
 **E o preço do C não é o que o nome sugere.** "Um gancho no caminho do dano" pressupõe que
 existe UM caminho. **São cinco pontos que baixam Vida hoje**, nomeados:
@@ -232,8 +260,8 @@ segundo ponto de decisão, dentro da MESMA função", multiplicada por cinco arq
 
 ## O QUE FALTA DE REGRA · a lista única, para o humano
 
-Nenhuma destas eu decidi. Todas cabem em duas leituras ou mais, e o formato é o que o
-Arquiteto pediu.
+São DEZ (as nove numeradas mais a `P7b`), nenhuma decidida por mim, todas cabendo em duas
+leituras ou mais.
 
 **P1 · O "tempo combinado" das duas armadilhas de zona existe?** Os dois textos dizem
 "ou ao fim de um tempo combinado" / "ou até a hora combinada", e não há campo para isso.
@@ -270,6 +298,14 @@ jogando com um Efeito de nível 1 que dá +3 de Absorção permanente.
 ou menor". **(X)** qualquer Arte que mire o alvo, inclusive a que fere; **(Y)** só as que deixam
 condição ou prisão, e o dano passa; **(Z)** qualquer uma, e o `Alvos` comprado diz em quantos
 aliados a marca pode ser posta.
+
+**P7b · "Nível igual ou menor ao que você INVESTIU" é qual número?** Nenhum dos dois candidatos
+está resolvido, e a resposta decide se o item B leva migração. **(X)** é o `custo.total` da
+conjuração, que é o que o `dissipar` usa e o que NÃO está gravado na linha (então precisa de
+coluna nova, pelo mesmo argumento da migração 39); **(Y)** é o `nivel_arte`, que a migração 38 já
+gravou (então sai de graça, e o Efeito passa a medir outra coisa); **(Z)** é o nível do Efeito,
+que para a Salvaguarda é sempre 1 (então ela nunca engole nada acima de 1, e a escalabilidade
+dela serve só para os outros parâmetros).
 
 **P8 · A `cura-guardada` dispara em qual limiar?** O texto diz "se ele cair incapacitado", e a
 mesa tem escada de estados (`tierDe`). **(X)** ao chegar a zero PV; **(Y)** ao entrar no estado
