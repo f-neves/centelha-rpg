@@ -288,6 +288,38 @@ rótulo, nunca a honestidade da medida.
 e o conserto é grande, ESCALA continua sendo a resposta certa · a rodada 55 teve dois casos assim,
 e forçá-los para dentro dela teria trocado um item fechado por três abertos.
 
+## 9 · Quando o push é recusado: rebaseie o SEU commit, e meça antes
+
+**O buraco que este item fecha, e ele é entre duas regras que já existiam.** O `§7.1` manda
+empurrar antes de avisar que terminou. O `§7.2` proíbe forçar quando o push não é fast-forward.
+**Nenhum dos dois diz o que fazer quando o push é recusado**, e os dois juntos fazem um impasse:
+publicar é obrigatório e o caminho óbvio está proibido. Achado na rodada 58, quando a Revisora
+encontrou a saída sozinha, sob pressão, e perguntou depois se tinha sido certa. Tinha.
+
+**A saída:** rebaseie o SEU commit sobre `origin/main` e empurre. Rebasear commit próprio não
+apaga nada de ninguém, que é o dano que o `§7.2` existe para impedir. O modo de falhar com cinco
+ocorrências neste projeto é o veredito órfão em `HEAD` destacado, e ele é pior: o registro diz
+que houve revisão, e não há.
+
+**E as duas conferências, nesta ordem, porque são elas que tornam o gesto seguro em vez de só
+plausível.** A segunda é a conhecida; **a primeira é a que ninguém faz sob pressão**, e é a que
+decide se rebasear é sequer a resposta certa:
+
+1. **O que entrou, e ele toca o que eu julguei?** `git log --oneline <seu pino>..origin/main` e o
+   `--name-only` dele. **Se o que chegou tocou o código que você acabou de julgar, NÃO rebaseie:
+   avise.** O veredito passaria a falar de uma árvore e a ser lido sobre outra, e nenhuma ordem de
+   commits conserta isso. O rebase é seguro quando o que chegou não muda o julgamento, e só aí.
+2. **Nada sumiu?** `git merge-base --is-ancestor <o que chegou> HEAD`, depois do rebase, antes de
+   empurrar.
+
+**O que continua proibido, e não mudou:** forçar, e rebasear ou mexer em commit de outra
+instância. A saída é sobre o seu próprio commit e mais nada.
+
+**A regra vizinha que este item NÃO afrouxa:** "não reancore por conta própria" continua inteira,
+e ela é sobre a **âncora da revisão** · não mover a base debaixo de um julgamento em curso, que é
+o que o congelamento compra. Mover o `HEAD` depois do veredito escrito, para publicar, é outra
+coisa. A redação anterior não separava as duas, e a confusão foi do Arquiteto e não de quem leu.
+
 ## Como isto cresce
 
 Cada rodada de revisão pode render um item novo aqui, do mesmo jeito que
