@@ -1396,3 +1396,82 @@ no código, a tabela de PV por porte em `vida-ferimentos-cura.md:25`, e prosa se
 miúda", "miudezas", "gente miúda"). **Nenhuma delas se toca.**
 
 Não era defeito antes: virou um quando `porte` deixou de ser prosa e passou a ser campo.
+
+---
+
+## M-28 · a raça é um passo da criação, e vem antes dos Atributos
+
+Decidido em 15/09/2026.
+
+### O ORIGINAL, como está no disco
+
+**`src/content/chapters/criacao-de-personagem.md:12-25`**, o passo a passo, com nove passos:
+
+> **1.** Conceito · **2.** Orçamento · **3.** Atributos · **4.** Habilidades e Especialidades ·
+> **5.** Virtudes · **6.** Força de Vontade e Aparência · **7.** Centelha · **8.** Proezas,
+> Técnicas e Artes · **9.** Derivados
+
+**A palavra "raça" não aparece uma vez na lista.**
+
+**`src/lib/ficha-engine.ts:2041-2042`**, a ficha, que cobra:
+
+```ts
+const xr = RACA[S.raca]?.custo || 0;
+const total = xa + xs + xsp + xv + xw + xap + xc + x2 + xt + xar + xef + xan + xr;
+```
+
+**`criacao-de-personagem.md:86-97`**, o exemplo do Kael, e os outros três (Sora, Veil, Bram) na
+mesma forma: **nenhuma linha de raça, em nenhum dos quatro.**
+
+### A INCONSISTÊNCIA
+
+**A ficha cobra de 20 a 50 XP por uma escolha que o livro não manda fazer.** Quem segue os nove
+passos monta o personagem inteiro sem nunca escolher raça. Abre a ficha, o seletor já está em
+Humano, e se trocar para Gnomo o total sobe 30 sem que passo nenhum o tenha avisado.
+
+**E os quatro exemplos são humanos sem dizer que são.** O PV do Kael é 37, que é `25 + Vigor 4×3`,
+porte médio. Os quatro totais fecham porque Humano custa 0, ou seja, **está certo por acidente**:
+nada no texto declara a escolha, e o leitor não tem como saber se o exemplo omitiu a raça ou se
+ela custa zero mesmo.
+
+**E há uma razão de ORDEM, não só de contabilidade:** a raça mexe nos **tetos de Atributo**
+(`+1 teto de Vigor, até 7`), que são exatamente o assunto do passo 3. Escolher raça depois dos
+Atributos é escolher depois que a régua já foi usada.
+
+### A DECISÃO
+
+**A raça vira o passo 3, entre Orçamento e Atributos, e os quatro exemplos ganham a linha
+`Raça | Humano | 0`.**
+
+O passo a passo passa a ter dez passos, e o motivo da posição está escrito na própria decisão: a
+raça vem **antes** dos Atributos porque move os tetos que o passo seguinte usa.
+
+**Nenhum total muda**, porque Humano custa 0. A linha não corrige número: **ela declara a
+escolha**, que é a coisa que faltava.
+
+### O QUE ISTO MANDA FAZER, e o custo medido
+
+1. **O passo novo**, e a renumeração de 3 a 9 para 4 a 10. **Medido: não há referência por número
+   a passar vergonha.** Varri `src/` com Python atrás de "passo N": a única ocorrência é
+   `grid.astro:10833`, sobre outra coisa. A renumeração é segura, e esta conferência é o que a
+   régua do `CATALOGO` (referência por posição envelhece na primeira linha inserida) pede antes
+   de inserir linha em lista numerada.
+2. **A linha `Raça | Humano | 0` nos quatro exemplos.**
+3. **Um portão que soma a coluna de XP e compara com o Total declarado.** Medido antes de pedir:
+   **os quatro fecham hoje**, exatos (Kael 1230, Sora 1643, Veil 2104, Bram 1868). Ou seja, o
+   portão nasce verde e passa a guardar a linha nova. **Ele NÃO cobre o `A-03`**, que é outra
+   coisa: lá o problema é a linha das Técnicas não ser derivável por dentro, e a soma da coluna
+   não olha para dentro de linha nenhuma.
+
+### O QUE FICA ABERTO, e esta decisão o deixa mais visível
+
+**O teto de Atributo do capítulo colide com o teto racial.** `criacao-de-personagem.md:62` diz
+*"Atributo máximo 5; … um único Atributo a 6"*, e a raça promete `+1 teto … até 7`; hoje o
+`capFor` da ficha deixa chegar a 7. Pôr a raça antes dos Atributos põe as duas frases a um passo
+uma da outra, onde antes havia seis passos entre elas. **É a `M-22`, e ela continua aberta depois
+desta.** Isto foi dito à mesa junto com a escolha.
+
+**E os Antecedentes têm a mesma forma do defeito que esta decisão conserta:** `ficha-engine.ts`
+soma `xan` (antecedentes) no mesmo total, e **nenhum dos quatro exemplos tem linha de
+Antecedentes** tampouco. Não entra nesta decisão porque não foi medido, mas é o mesmo molde e
+merece medição própria.
