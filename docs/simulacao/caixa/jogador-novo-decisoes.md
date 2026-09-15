@@ -1451,11 +1451,22 @@ escolha**, que é a coisa que faltava.
 
 ### O QUE ISTO MANDA FAZER, e o custo medido
 
-1. **O passo novo**, e a renumeração de 3 a 9 para 4 a 10. **Medido: não há referência por número
-   a passar vergonha.** Varri `src/` com Python atrás de "passo N": a única ocorrência é
-   `grid.astro:10833`, sobre outra coisa. A renumeração é segura, e esta conferência é o que a
-   régua do `CATALOGO` (referência por posição envelhece na primeira linha inserida) pede antes
-   de inserir linha em lista numerada.
+1. **O passo novo**, e a renumeração de 3 a 9 para 4 a 10. Varri `src/` com Python atrás de
+   "passo N": a única ocorrência é `grid.astro:10833`, sobre outra coisa.
+
+   **CORREÇÃO, escrita depois da implementação: eu disse "não há referência por número a passar
+   vergonha", e a frase valia só para `src/`.** A varredura estava certa dentro do escopo dela e
+   a conclusão saiu maior que o escopo, que é a forma de defeito do `CATALOGO` chamada "a
+   conferência que cobre só a parte viva do registro". **Em `docs/` há SETE citações por número
+   ao passo a passo deste capítulo, e todas envelheceram em um:** `jogador-novo-fase1.md` nas
+   linhas 136, 138, 142, 145, 174 e 177 (achadas pela Executora), mais
+   `jogador-novo-fase2.md:195` (que a varredura dela também não pegou, e que cita o passo 5 das
+   Virtudes, hoje 6).
+
+   **Elas NÃO se renumeram**, e o motivo é o mesmo do "(citação histórica)" do `reapontar.mjs`:
+   aqueles documentos são o RELATO do que o jogador novo leu, e reescrever o número por dentro
+   falsificaria o que ele viu. O conserto é uma nota de cabeçalho por documento dizendo que a
+   numeração citada é a anterior a `b6a5293`.
 2. **A linha `Raça | Humano | 0` nos quatro exemplos.**
 3. **Um portão que soma a coluna de XP e compara com o Total declarado.** Medido antes de pedir:
    **os quatro fecham hoje**, exatos (Kael 1230, Sora 1643, Veil 2104, Bram 1868). Ou seja, o
