@@ -1919,3 +1919,87 @@ Depois do número, o capítulo perde: a separação das trilhas (`:12-15`), a re
 rodada do personagem"**, que é exatamente a redação substituída pela decisão M-04 ("a cada 6
 Ticks desde o ferimento"). Essa página escapou da varredura da rodada 66, e o conserto independe
 desta decisão.
+
+---
+
+## M-08 · a Centelha vai a 12, e o jogador para em 6
+
+Decidido em 15/09/2026.
+
+### O ORIGINAL
+
+**`src/data/regras.json → escalaCentelha`**, sete degraus, terminando em:
+
+> | 6 | **Semideus** | *"Material de fábula, venerado como divindade. Proezas até o nível 6 (teto)."* |
+
+**`src/lib/ficha-engine.ts:155`**, o teto do personagem:
+
+```ts
+const teto: Record<string, number> = { attr: 6, skill: 6, skill2: 6, virtue: 6, centelha: 6, willpower: 12, aparencia: 12, ... };
+```
+
+**`src/data/inimigos.json`**, as 309 criaturas:
+
+```
+Centelha: 0→106  1→55  2→38  3→19  4→41  5→24  6→16  7→5  9→4  10→1
+```
+
+**`scripts/validate-data.mjs:59`**, o portão:
+
+```js
+centelha: z.number().int().min(0).max(10),
+```
+
+### A INCONSISTÊNCIA
+
+**Dez criaturas estão fora da régua**, e não por desatenção de conversão: **as dez são
+`tipo: chefe` E `ameaça: 6`**, o topo das outras duas escalas ao mesmo tempo. Tarrasque em 10;
+Balor, Diabo do Fosso, Solar e Grande Wyrm em 9; Marilith, Planetar, Kraken e dois dragões em 7.
+São exatamente os seres que a fonte trata como deuses e príncipes demoníacos.
+
+**E o número paga:** cada ponto de Centelha vale `+1` ao ataque, `+1` a cada uma das quatro
+Defesas, e entra em Energia (`×2`) e Mana (`×2`).
+
+**Por que ninguém viu: o portão foi escrito para o DADO e não para a REGRA.** O `validate` aceita
+`max(10)` enquanto a `escalaCentelha` para em 6. As duas listas precisam concordar e nunca
+concordaram; cada uma estava coerente consigo mesma, e o defeito morava no espaço entre elas.
+
+### A DECISÃO
+
+**A escala vai de 0 a 12, e 12 é o teto real.** A faixa acima do Semideus é de **deuses e
+entidades cósmicas**.
+
+**O teto do JOGADOR continua em 6**, e isso passa a ser dito, não presumido. A palavra do humano:
+
+> *"A escala para os jogadores vai de Centelha 0 até 6, mas existem criaturas muito mais
+> poderosas. … Centelha 12 é para seres como deuses, entidades cósmicas, etc. É o teto real, assim
+> como em Exalted o máximo é Essência 10, e o recomendado para jogadores é chegar até Essência 5."*
+
+**Correção de um número da conversa:** a maior Centelha do bestiário hoje é **10** (Tarrasque), e
+não 9. Os 9 são quatro criaturas logo abaixo dela. A folga até o novo teto é de **dois** degraus,
+não de três.
+
+**O que a Centelha NÃO entrega acima de 6:** Proeza nova. O teto de Técnica é o nível 6 e "o nível
+N exige Centelha ≥ N". Acima disso ela só engorda ataque, Defesas, Energia e Mana, o que é
+apropriado para um deus e é a razão de o teto do jogador ficar onde está.
+
+### O QUE ISTO MANDA FAZER
+
+1. **`escalaCentelha` ganha os degraus 7 a 12.** O 12 é o teto real, de deus e entidade cósmica.
+   **Nomear cada um dos seis degraus novos é worldbuilding e FICA ABERTO** (ver abaixo); o que
+   esta decisão exige é que os números existam e que a faixa divina esteja descrita.
+2. **`validate-data.mjs:59` passa de `max(10)` para o topo da escala**, e **de preferência lendo o
+   tamanho de `escalaCentelha` em vez de repetir o número**. Foi a repetição que deixou as duas
+   listas divergirem por dez criaturas sem que o portão piscasse.
+3. **O teto do jogador (6) tem de estar ESCRITO**, no capítulo da Centelha. Um leitor que vê a
+   régua até 12 e o próprio teto em 6 sem explicação lê aquilo como defeito.
+4. **Três lugares renderizam a escala** e vão passar a mostrar treze degraus:
+   `ficha-engine.ts:114` (o popup da ficha), `referencia.astro:54` e `ref-index.json.ts:14`.
+   Nenhum número de criatura muda.
+
+### O QUE FICA ABERTO
+
+**Os nomes dos degraus 7 a 12.** O 0 a 6 tem rótulo próprio (Mortal, Tocado, Desperto, Herói,
+Grande herói, Lendário, Semideus), e a faixa nova precisa do mesmo tratamento ou de uma decisão
+explícita de não ter. É decisão de lore, não de regra, e depende do que este mundo diz existir
+acima de um semideus.
