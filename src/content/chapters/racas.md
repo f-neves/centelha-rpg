@@ -7,7 +7,7 @@ resumo: "O que cada povo é no mundo, e como sua herança move os tetos de Atrib
 
 Nem todo herói nasce humano. Cada povo carrega uma **herança** que molda corpo, mente e tempo de vida, e que, em regra de jogo, **desloca os limites** de alguns Atributos e abre **traços** que ninguém mais tem. Escolher uma raça é pagar um custo em **XP** por essa herança; o **Humano** é a régua contra a qual todos os outros são descritos.
 
-<div class="callout regra"><span class="lbl">Como ler um traço racial</span>Um <strong>+1 de teto</strong> num Atributo significa que ele pode chegar a <strong>7</strong>: um ponto acima do teto humano de 6. Um <strong>−1 de teto</strong> trava o Atributo em <strong>5</strong>. Não é bônus grátis: você ainda compra cada ponto com XP (Atributo = 5 + novo × 5); a raça só <strong>move o limite</strong> de onde dá para chegar.</div>
+<div class="callout regra"><span class="lbl">Como ler um traço racial</span>O <strong><code>+1</code> racial faz duas coisas</strong>, e é preciso ler as duas. Ele <strong>levanta o teto</strong> daquele Atributo para <strong>7</strong>, um ponto acima do teto humano de 6, <strong>e levanta o piso</strong>: aquele Atributo <strong>começa em 2</strong> em vez de 1, e esse ponto <strong>vem de graça</strong>. O <strong><code>−1</code> racial</strong> é diferente: ele trava o Atributo em <strong>5</strong> e <strong>não mexe no piso</strong>, que continua sendo 1 como o de todo mundo. Fora o ponto de brinde, você compra cada nível com XP (Atributo = 5 + novo × 5).</div>
 
 <div class="callout"><span class="lbl">Provisório</span>Os <strong>custos de XP</strong> das raças são uma primeira passada, recusteada da tabela antiga para a economia atual (orçamentos de 1500–2600). Tratam-se de números a calibrar conforme o peso real de cada herança na mesa. <strong>Os custos E as idades das oito serão refeitos de uma vez</strong>, depois que as inconsistências de herança fecharem: o que está na tabela hoje vale para jogar e não vale como régua fechada. O <strong>Gnomo</strong> é o caso vivo disso: caiu de 40 para 30 ao virar de porte pequeno, e esse 30 entra na conta futura como qualquer outro.</div>
 
@@ -27,7 +27,7 @@ Em regra, o humano é o **baseline neutro**:
 
 <div class="table-wrap">
 
-| Raça | Custo XP | Teto +1 (até 7) | Teto −1 (máx 5) | Porte |
+| Raça | Custo XP | `+1` racial (começa em 2, vai até 7) | `−1` racial (máx 5) | Porte |
 |---|:---:|---|---|---|
 | Humano | 0 | — | — | médio |
 | Anão | 30 | Vigor | Perspicácia | baixo, corpulento |
@@ -45,8 +45,8 @@ Em regra, o humano é o **baseline neutro**:
 Humanóides de baixa estatura, mas muito corpulentos. Vivem nas montanhas e colinas, muitas vezes **dentro** delas. Têm pele de tons mais morenos e raramente cabelos ou olhos claros. Medem de **1,20 a 1,50 m** e pesam **70–100 kg**. Atingem a maturidade por volta dos 18 anos e podem viver mais de **300 anos**.
 
 - **Custo de XP:** 30
-- **+1 teto de Vigor** (até 7): corpulência de pedra.
-- **−1 teto de Perspicácia** (máx 5): arrogantes e prepotentes, pouco tato social.
+- **`+1` de Vigor**: começa em **2** e vai até **7**. Corpulência de pedra.
+- **`−1` teto de Perspicácia** (máx 5, piso normal): arrogantes e prepotentes, pouco tato social.
 - **Baixa estatura**, pernas curtas: **todo deslocamento vale dois terços** do de um humano, o passo em combate, o Arranque, a Corrida **e os Saltos**.
 - **Resistência a venenos**: todo teste para resistir a veneno é feito com **+1d6** na parada.
 - **Visão no escuro**: enxergam na escuridão total, mas **sem cores**; os olhos precisam de um tempo para se adaptar a mudanças de iluminação.
@@ -57,8 +57,8 @@ Humanóides de baixa estatura, mas muito corpulentos. Vivem nas montanhas e coli
 Seres ligados ao mundo natural. Esguios, de aparência mais frágil que a das outras raças, com **orelhas pontudas** e faces alongadas e angulares. A variação de cores de cabelo, pele e olhos é maior que a humana. Pesam **40–65 kg** e medem **1,40–1,70 m**. Maturidade aos 20 anos; podem viver mais de **600 anos**.
 
 - **Custo de XP:** 50
-- **+1 teto de Destreza** (até 7): graça sobre-humana.
-- **−1 teto de Vigor** (máx 5): corpo frágil.
+- **`+1` de Destreza**: começa em **2** e vai até **7**. Graça sobre-humana.
+- **`−1` teto de Vigor** (máx 5, piso normal): corpo frágil.
 - **Aparência Universal**, descendentes das fadas, sua beleza atrai quase toda raça: o elfo **não sofre penalidades de Aparência** ao lidar com outras raças humanóides, mesmo as que lhe seriam hostis.
 - **Sentidos Naturais Aguçados**: em ambiente natural, concentrando-se por 6 Ticks inteiros, faz testes de **Percepção** de visão ou audição com **+1d6** e **enxerga o dobro da distância** de um humano. Dura uma cena, enquanto permanecer no ambiente natural.
 - **Resiliência Mental**, naturalmente resistente a controle mental: qualquer efeito do tipo contra o elfo tem a **dificuldade aumentada em +4**, ou o elfo recebe **+1d6** para resistir (o que for melhor para ele).
@@ -68,8 +68,8 @@ Seres ligados ao mundo natural. Esguios, de aparência mais frágil que a das ou
 Pequenos e resistentes. Pesam **20–45 kg** e medem **1,00–1,30 m**. Maturidade aos 20 anos; podem viver mais de **400 anos**.
 
 - **Custo de XP:** 30 <small>(provisório: desceu de 40 quando o Gnomo virou de porte **pequeno** e perdeu PV)</small>
-- **+1 teto de Vigor** (até 7): resistência teimosa num corpo pequeno.
-- **−1 teto de Força** (máx 5): pequenos demais para grande força bruta.
+- **`+1` de Vigor**: começa em **2** e vai até **7**. Resistência teimosa num corpo pequeno.
+- **`−1` teto de Força** (máx 5, piso normal): pequenos demais para grande força bruta.
 - **Baixa estatura**: **todo deslocamento vale dois terços** do de um humano, o passo em combate, o Arranque, a Corrida **e os Saltos**.
 - **Visão no escuro**: enxergam na escuridão total, sem distinguir cores; precisam de tempo para adaptar os olhos.
 - **Feitiçaria**, facilidade com ilusões: **+2** para **criar e detectar ilusões**.
@@ -80,8 +80,8 @@ Pequenos e resistentes. Pesam **20–45 kg** e medem **1,00–1,30 m**. Maturida
 Povo pequeno e ágil. Medem de **80 cm a 1,20 m** e pesam **20–35 kg**. Atingem a maturidade por volta dos 18 anos e podem viver mais de **300 anos**.
 
 - **Custo de XP:** 30
-- **+1 teto de Destreza** (até 7): mãos e pés leves.
-- **−1 teto de Força** (máx 5): porte pequeno, sem massa para força bruta.
+- **`+1` de Destreza**: começa em **2** e vai até **7**. Mãos e pés leves.
+- **`−1` teto de Força** (máx 5, piso normal): porte pequeno, sem massa para força bruta.
 - **Baixa estatura**: **todo deslocamento vale dois terços** do de um humano, o passo em combate, o Arranque, a Corrida **e os Saltos**.
 - **Atletas**, corpos incansáveis: **+1d6** em **Atletismo** e nas Habilidades secundárias correlatas.
 
@@ -99,8 +99,8 @@ Filhos de pais humanos com mães elfas. A concepção é rara, e o resultado se 
 Filhos de humano e orc: a força e o porte da herança orc temperados pelo sangue humano. Pele e pelos puxam ao marrom ou ao verde e as feições são rudes, mas menos que as de um orc puro. São altos e robustos. Atingem a maturidade por volta dos 14 anos; vida curta, pouco mais de **60 anos**.
 
 - **Custo de XP:** 40
-- **+1 teto de Força e de Vigor** (ambos até 7): a compleição forte da herança orc.
-- **−1 teto de Compostura e de Inteligência** (máx 5): o temperamento bruto e a lógica mais curta que a humana; o sangue humano poupa o tato social (a Perspicácia) que um orc puro perderia.
+- **`+1` de Força e de Vigor**: os dois começam em **2** e vão até **7**. A compleição forte da herança orc.
+- **`−1` teto de Compostura e de Inteligência** (máx 5, piso normal): o temperamento bruto e a lógica mais curta que a humana; o sangue humano poupa o tato social (a Perspicácia) que um orc puro perderia.
 - **Vitalidade**, couro grosso: ganha **+Vigor** pontos de vida adicionais (PV = 25 + Vigor×3 + Vigor).
 - **Frenesi contido**: pode entrar em fúria (só **ações físicas**, mais **Intimidar** como reflexo, **ignorando as penalidades de ferimento**), mas de forma menos intensa e mais controlável que a de um orc puro.
 - **Visão Noturna**: enxerga sem penalidade sob **penumbra**, mas não na escuridão completa.
@@ -113,8 +113,8 @@ Filhos de humano e orc: a força e o porte da herança orc temperados pelo sangu
 Humanóides de herança metamorfa, com constituição física superior a qualquer outra raça mediana. Pele e pelos variam do marrom ao verde; olhos e cabelos costumam ser pretos. Medem **1,80–2,30 m** e pesam **80–140 kg**. Maturidade por volta dos 14 anos; vivem pouco mais de **60 anos**. São mais bestiais que os meio-orcs, e pagam por isso em juízo e trato.
 
 - **Custo de XP:** 40
-- **+1 teto de Força e de Vigor** (ambos até 7): criaturas poderosas e truculentas.
-- **−1 teto de Perspicácia, Compostura e Inteligência** (máx 5): a força não vem acompanhada de tato social nem de lógica fina.
+- **`+1` de Força e de Vigor**: os dois começam em **2** e vão até **7**. Criaturas poderosas e truculentas.
+- **`−1` teto de Perspicácia, Compostura e Inteligência** (máx 5, piso normal): a força não vem acompanhada de tato social nem de lógica fina.
 - **Aparência rebaixada**: a Aparência do orc vale **1 a menos** que o nível pago (paga Aparência 7, vale 6).
 - **Vitalidade**, couro grosso: ganha **+Vigor** pontos de vida adicionais (PV = 25 + Vigor×3 + Vigor).
 - **Frenesi**: pode entrar em fúria como certas feras. No frenesi só realiza **ações físicas** (mais **Intimidar**, que vira ação reflexa) e **ignora as penalidades de ferimento**. Ao intimidar nesse estado, recebe **+2 dados** na parada.

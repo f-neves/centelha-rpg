@@ -195,6 +195,63 @@ eq(C.pv(3, 'Pequeno'), 34, 'porte escrito errado cai em Médio, calado: é por i
   }
 }
 
+// ------------------ 6. o `+1` racial é piso E teto, por DOIS caminhos (`M-30b`)
+//
+// O humano registrou que os dois efeitos podem vir a ser separados por raça
+// ("o Gnomo ganha o segundo ponto mas mantém o máximo em 6"). Enquanto os dois
+// saem do mesmo campo, a separação futura só é barata se a LEITURA já estiver
+// partida: aí ela troca de onde um dos dois lê, em vez de virar migração de
+// dado. Este bloco guarda o seam, e não o campo.
+{
+  const eng = ler('src/lib/ficha-engine.ts');
+
+  ok(/function pisoRacialAttr\(/.test(eng),
+    'o caminho do PISO sumiu da ficha: sem ele o `+1` racial volta a ser só teto');
+  ok(/function tetoRacialAttr\(/.test(eng),
+    'o caminho do TETO sumiu da ficha');
+  ok(!/(?<![a-zA-Z])racialAttr\(/.test(eng),
+    'voltou a existir um `racialAttr` único: piso e teto têm de ler por dois caminhos separados (`M-30b`)');
+
+  // O piso lê SÓ O POSITIVO, e isto não é zelo: `atributos` guarda os dois
+  // sinais no mesmo campo (o Elfo tem `destreza: 1` e `vigor: -1`), e somar o
+  // negativo faria o Elfo abrir com Vigor 0, abaixo do piso de todo mundo.
+  const linhaPiso = eng.split('\n').find((l) => /function pisoRacialAttr\(/.test(l)) || '';
+  ok(/Math\.max\(0,/.test(linhaPiso),
+    'o caminho do PISO tem de descartar o `−1` racial: sem o `Math.max(0, …)` o Elfo abriria com Vigor 0');
+
+  // O XP cobra a partir do piso racial, e não do piso da régua.
+  ok(/custoPontos\('atributo', pisoAttr\(/.test(eng),
+    'o XP dos Atributos voltou a cobrar do piso da régua: o ponto que a raça dá de graça está sendo vendido');
+
+  // O piso passou a depender da CHAVE, e os três leitores têm de usar o novo.
+  ok(/const pisoDe = \(kind: string, key\?: string\)/.test(eng), 'o `pisoDe(kind, key)` sumiu');
+  const soltos = eng.split('\n').filter((l) => /floorOf\[kind\]/.test(l) && !/^\s*(\/\/|\*)/.test(l) && !/pisoDe = /.test(l));
+  eq(soltos.length, 0,
+    'sobrou `floorOf[kind]` solto fora do `pisoDe`: o Atributo bonificado tem piso próprio, e ali ele seria tratado como os outros oito');
+
+  // E a ficha salva abaixo do piso novo SOBE, e sobe AVISANDO.
+  ok(/SUBIU_PELO_PISO/.test(eng),
+    'a ficha parou de tratar o dado vivo: uma ficha de Elfo salva com Destreza 1 existe e fica abaixo do piso novo');
+  ok(/uiPainel\('A sua raça passou a dar estes pontos de graça'\)/.test(eng),
+    'a subida do piso voltou a ser silenciosa: é um número que o jogador escolheu, e ele tem de saber');
+}
+
+// -------------------- 7. o preço do brinde, medido, para a conta futura da M-46
+{
+  // `custoPontos(chave, de, ate)` cobra de `de+1` até `ate`: passar o piso
+  // racial como `de` tira exatamente o preço dos níveis regalados. Medido aqui
+  // em vez de afirmado, porque é o número que a `M-46` vai usar.
+  for (const n of [2, 3, 4, 5, 6, 7]) {
+    eq(C.custoPontos('atributo', 1, n) - C.custoPontos('atributo', 2, n), 15,
+      `o brinde do piso 2 tem de valer 15 XP no nível ${n}, e não mudar com o nível`);
+  }
+  const brinde = (r) => 15 * Object.values(r.atributos || {}).filter((v) => v > 0).length;
+  eq(RACAS.filter((r) => brinde(r) === 30).map((r) => r.id).sort(), ['meio-orc', 'orc'],
+    'as raças de DOIS `+1` (30 XP de brinde) mudaram sem a M-46 saber');
+  eq(RACAS.filter((r) => brinde(r) === 0).map((r) => r.id).sort(), ['humano', 'meio-elfo'],
+    'as raças sem `+1` (nenhum brinde) mudaram sem a M-46 saber');
+}
+
 if (falhas.length) {
   console.error(`\n✘ porte-raca: ${falhas.length} falha(s)\n` + falhas.map((f) => '  · ' + f).join('\n'));
   process.exit(1);
@@ -202,4 +259,5 @@ if (falhas.length) {
 console.log('✓ porte-raca: as oito raças declaram porte, o Halfling e o Gnomo são Pequenos e o porte chega ao `pv()`,'
   + ' a explicação da ficha sai da tabela em vez de guardar cópia à mão,'
   + ' o capítulo (que NÃO é gerado) diz o mesmo custo e o mesmo porte que o dado,'
+  + ' o `+1` racial é piso E teto por dois caminhos separados e vale 15 XP de brinde,'
   + ' e o Fôlego parou de prometer base por raça');

@@ -137,7 +137,32 @@ export function montarFicha(opts: FichaOpts) {
       .map((c) => '<div>' + c.map(render).join('') + '</div>').join('');
   };
   const centReq = (b: number) => b;
-  function racialAttr(key?: string): number { return key ? (RACA[S.raca]?.atributos?.[key] || 0) : 0; }
+  /**
+   * O `+1` racial visto pelo TETO: quanto a raça move o limite daquele Atributo.
+   *
+   * Lê COM SINAL: um `−1` racial baixa o teto de 6 para 5, e é o que a Perspicácia
+   * do Anão faz.
+   */
+  function tetoRacialAttr(key?: string): number { return key ? (RACA[S.raca]?.atributos?.[key] || 0) : 0; }
+
+  /**
+   * O `+1` racial visto pelo PISO: quantos pontos a raça já dá de graça.
+   *
+   * SÃO DOIS CAMINHOS SEPARADOS DE PROPÓSITO (`M-30b`), e hoje os dois leem o
+   * mesmo campo. O humano registrou que os dois efeitos do `+1` podem vir a ser
+   * separados por raça ("o Gnomo ganha o segundo ponto mas mantém o máximo em
+   * 6"), e com a leitura partida essa separação futura troca de ONDE UM DELES LÊ,
+   * em vez de virar migração de dado. Um campo novo agora seria campo sem
+   * consumidor, que foi exatamente o que o `porte` foi até a `M-29`.
+   *
+   * E ele lê SÓ O POSITIVO, o que não é detalhe: `atributos` guarda os dois
+   * sinais no mesmo lugar (o Elfo tem `destreza: 1` e `vigor: -1`), e somar o
+   * negativo aqui faria o Elfo abrir com Vigor 0, abaixo do piso de todo mundo.
+   */
+  function pisoRacialAttr(key?: string): number { return Math.max(0, key ? (RACA[S.raca]?.atributos?.[key] || 0) : 0); }
+
+  /** O piso de um Atributo NESTA ficha: o piso da régua mais o que a raça já deu. */
+  function pisoAttr(key?: string): number { return pisoXp('atributo') + pisoRacialAttr(key); }
   /**
    * O teto de cada trilha. Não há mais modo de Criação: o que segura a ficha é o
    * ORÇAMENTO de XP, não uma trava por cima do que se pode marcar. Sobra só o teto da
@@ -148,7 +173,7 @@ export function montarFicha(opts: FichaOpts) {
     // Feitiçaria: a trava de nível por Ocultismo foi removida. Basta Centelha > 0 para tocar a magia;
     // a profundidade (nível da Arte) é comprada com XP. (Relação com Ocultismo será refeita nas Trilhas de Feitiçaria.)
     if (kind === 'arte2') return (S.centelha || 0) > 0 ? 6 : 0;
-    const rac = kind === 'attr' ? racialAttr(key) : 0;
+    const rac = kind === 'attr' ? tetoRacialAttr(key) : 0;
     const teto: Record<string, number> = { attr: 6, skill: 6, skill2: 6, virtue: 6, centelha: 6, willpower: 12, aparencia: 12, ante: 6, anten: 6 };
     return (teto[kind] ?? 6) + rac;
   }
@@ -158,12 +183,20 @@ export function montarFicha(opts: FichaOpts) {
   // Estado de tela, não de ficha: o que está aberto e o que está filtrado não é escolha
   // de personagem e não vai para o arquivo salvo.
   const OPEN = { cam: {} as Record<string, boolean>, ef: {} as Record<string, boolean> };
+  /**
+   * O que o `normalize` SUBIU ao abrir uma ficha salva antes da `M-30b`.
+   *
+   * Existe para o aviso: mudar um número que o jogador escolheu, em silêncio,
+   * numa ficha que ele já tinha, seria a coisa errada. Fica vazio em toda ficha
+   * que abre em dia, que é o caso normal.
+   */
+  const SUBIU_PELO_PISO: { nome: string; de: number; para: number }[] = [];
   /** Efeitos: mostrar só os comprados, e se os grupos estão abertos. */
   const EF = { soComprados: false, tudoAberto: true };
   function fresh() {
     // Ficha nova nasce no piso de cada trilha: custo zero até o jogador comprar algo.
     S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: pisoXp('vontade'), aparencia: pisoXp('aparencia'), centelha: 0, raca: 'humano', tech: {}, arte: {}, efeito: {}, ante: {}, anteNom: {}, budget: 1500, equip: { armaduras: [] }, arsenal: [], conjuntos: mkConjuntos(), bolsas: mkBolsas(), defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
-    (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = pisoXp('atributo')));
+    (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = pisoAttr(a.id)));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] = pisoXp('habilidadePrimaria'); S.spec[h.id] = []; });
     (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] = pisoXp('virtude')));
     SECONDARY.forEach(([n]) => { S.skills2[slug(n)] = 0; S.spec2[slug(n)] = []; });
@@ -290,7 +323,27 @@ export function montarFicha(opts: FichaOpts) {
       if ((S.spec2?.[velho] || []).length && !(S.spec2?.[novo] || []).length) S.spec2[novo] = S.spec2[velho];
       delete S.skills2[velho]; if (S.spec2) delete S.spec2[velho];
     }
-    S.willpower ??= pisoXp('vontade'); S.aparencia ??= pisoXp('aparencia'); S.centelha ??= 0; S.raca ??= 'humano'; if (!RACA[S.raca]) S.raca = 'humano'; S.budget ??= 1500; S.derivCol ??= true; delete S.modo;   // o modo Criacao/Evolucao foi removido
+    S.willpower ??= pisoXp('vontade'); S.aparencia ??= pisoXp('aparencia'); S.centelha ??= 0; S.raca ??= 'humano'; if (!RACA[S.raca]) S.raca = 'humano';
+    // DADO VIVO (`M-30b`): o `+1` racial virou TAMBÉM piso, e uma ficha de Elfo
+    // salva com Destreza 1 existe, é legítima e agora está abaixo do piso dela.
+    //
+    // ELA SOBE, e sobe AVISANDO. Deixar abaixo do piso seria pior de três
+    // maneiras: a bolinha de brinde ficaria apagada, o XP cobraria um ponto que
+    // a raça dá de graça, e o primeiro clique em qualquer bolinha subiria o valor
+    // sozinho pelo clamp do `applyVal`, sem ninguém entender por quê. Subir
+    // calada também não serve: é um número que o jogador escolheu.
+    //
+    // Esta linha roda DEPOIS de `S.raca` estar garantido, e não antes: sem raça
+    // válida o piso não existe.
+    if (S.raca) {
+      for (const a of (ATTRS_D as any[])) {
+        const piso = pisoAttr(a.id);
+        const v = S.attrs[a.id] ?? piso;
+        if (v >= piso) continue;
+        SUBIU_PELO_PISO.push({ nome: a.nome || a.id, de: v, para: piso });
+        S.attrs[a.id] = piso;
+      }
+    } S.budget ??= 1500; S.derivCol ??= true; delete S.modo;   // o modo Criacao/Evolucao foi removido
     S.ante ??= {}; S.anteNom ??= {};
     // Cada Nomeado é uma lista; entrada sem uid ganha um, senão a linha não tem chave estável.
     for (const a of ANTE_NOM) {
@@ -2030,7 +2083,11 @@ export function montarFicha(opts: FichaOpts) {
   }
   function recompute() {
     let xa = 0, xs = 0, xsp = 0, xv = 0, xw = 0, xap = 0, xc = 0, x2 = 0, xt = 0, xar = 0, xef = 0;
-    (ATTRS_D as any[]).forEach((a) => (xa += custoPontos('atributo', undefined, S.attrs[a.id] ?? 1)));
+    // O ponto que a raça dá não se compra (`M-30b`): o `de` de `custoPontos` é o
+    // nível a partir do qual se cobra, então passar o piso racial ali tira
+    // exatamente o preço dos níveis regalados, sem tocar em `calc.ts`. Medido:
+    // com `de = 2`, some 15 XP em todo nível de 2 a 7.
+    (ATTRS_D as any[]).forEach((a) => (xa += custoPontos('atributo', pisoAttr(a.id), S.attrs[a.id] ?? pisoAttr(a.id))));
     (HAB_D as any[]).filter((h) => !h.secundaria).forEach((h) => { xs += custoPontos('habilidadePrimaria', undefined, S.skills[h.id] || 0); xsp += specCostSum(S.spec[h.id]); });
     ['esquiva', 'bloqueio', 'social', 'mental'].forEach((k) => ((S.defSpec?.[k] || []) as any[]).forEach((e) => (xsp += triCost(e.v || 0))));
     (VIRT_D as any[]).forEach((v) => (xv += custoPontos('virtude', undefined, S.virtues[v.id] ?? 1)));
@@ -2059,10 +2116,20 @@ export function montarFicha(opts: FichaOpts) {
     virtue: pisoXp('virtude'), centelha: pisoXp('centelha'), willpower: pisoXp('vontade'),
     aparencia: pisoXp('aparencia'), arte2: pisoXp('arte'), ante: 0, anten: 0,
   };
+  /**
+   * O piso de uma trilha, e desde a `M-30b` ele depende da CHAVE e não só da
+   * trilha: o Atributo bonificado pela raça nasce em 2, os outros oito em 1.
+   *
+   * É a única mudança de FORMA desta tarefa, e ela tem três leitores: as bolinhas
+   * (`refreshDots`), o clamp de `applyVal` e o `setDot`. Um `floorOf[kind]` solto
+   * que sobrevivesse em qualquer um deles deixaria a bolinha de brinde apagada,
+   * ou deixaria o jogador descer abaixo do piso da própria raça.
+   */
+  const pisoDe = (kind: string, key?: string): number => (kind === 'attr' ? pisoAttr(key) : (floorOf[kind] ?? 0));
   const valOf = (k: string, key: string) => ({ attr: S.attrs[key], skill: S.skills[key], skill2: S.skills2[key] || 0, virtue: S.virtues[key], centelha: S.centelha, willpower: S.willpower, aparencia: S.aparencia, arte2: S.arte[key] || 0, ante: S.ante?.[key] || 0, anten: anteInst(key)?.v || 0 } as any)[k] || 0;
   function refreshDots(kind: string, key: string) {
     const span = document.querySelector(`.dots[data-kind="${kind}"][data-key="${key}"]`); if (!span) return;
-    const floor = floorOf[kind], val = valOf(kind, key);
+    const floor = pisoDe(kind, key), val = valOf(kind, key);
     span.setAttribute('aria-valuenow', String(val));
     span.querySelectorAll('.dot').forEach((d) => {
       const dd = +(d as HTMLElement).dataset.d!, acesa = dd <= val;
@@ -2082,7 +2149,7 @@ export function montarFicha(opts: FichaOpts) {
     });
   }
   function applyVal(kind: string, key: string, nv: number) {
-    const floor = floorOf[kind]; nv = Math.max(floor, Math.min(nv, capFor(kind, key)));
+    const floor = pisoDe(kind, key); nv = Math.max(floor, Math.min(nv, capFor(kind, key)));
     if (kind === 'attr') S.attrs[key] = nv;
     else if (kind === 'skill') { S.skills[key] = nv; S.spec[key] = clampSpecs(S.spec[key], nv); renderSkills(); }
     else if (kind === 'skill2') { S.skills2[key] = nv; S.spec2[key] = clampSpecs(S.spec2[key], nv); renderSecondary(); }
@@ -2098,7 +2165,7 @@ export function montarFicha(opts: FichaOpts) {
     recompute();
   }
   function setDot(kind: string, key: string, d: number) {
-    const floor = floorOf[kind], val = valOf(kind, key);
+    const floor = pisoDe(kind, key), val = valOf(kind, key);
     applyVal(kind, key, d <= floor ? floor : val === d ? d - 1 : d);
   }
   function bump(kind: string, key: string, delta: number) {
@@ -2765,7 +2832,18 @@ export function montarFicha(opts: FichaOpts) {
       renderBolsas(); save();
     }
   });
-  el('raca-sel').addEventListener('change', (e) => { if (opts.readOnly) return; S.raca = (e.target as HTMLSelectElement).value; (ATTRS_D as any[]).forEach((a) => { const c = capFor('attr', a.id); if ((S.attrs[a.id] || 1) > c) S.attrs[a.id] = c; }); renderAttrs(); renderPower(); renderRaca(); recompute(); save(); });
+  el('raca-sel').addEventListener('change', (e) => {
+    if (opts.readOnly) return;
+    S.raca = (e.target as HTMLSelectElement).value;
+    // A troca de raça mexe nos DOIS lados agora (`M-30b`): o teto pode ter
+    // descido (e o que passou dele desce junto) e o PISO pode ter subido (e o que
+    // ficou abaixo sobe, porque aquele ponto passou a ser de graça).
+    (ATTRS_D as any[]).forEach((a) => {
+      const v = S.attrs[a.id] ?? pisoXp('atributo');
+      S.attrs[a.id] = Math.max(pisoAttr(a.id), Math.min(v, capFor('attr', a.id)));
+    });
+    renderAttrs(); renderPower(); renderRaca(); recompute(); save();
+  });
   el('f-reset').addEventListener('click', async () => { if (opts.readOnly) return; if (await uiConfirmar('Limpar a ficha? Tudo o que está preenchido se perde.', { titulo: 'Limpar ficha', ok: 'Limpar', perigo: true })) { opts.aoResetar?.(); fresh(); if (opts.budgetValor != null) S.budget = opts.budgetValor; renderAll(); } });
   el('f-link').addEventListener('click', () => {
     const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(S))));
@@ -2780,6 +2858,18 @@ export function montarFicha(opts: FichaOpts) {
     if (loaded && typeof loaded === 'object') { S = loaded; normalize(); } else { fresh(); }
     if (opts.budgetValor != null) S.budget = opts.budgetValor;
     renderAll();
+    // O aviso do piso racial, uma vez, depois de a ficha estar desenhada.
+    if (SUBIU_PELO_PISO.length && !opts.readOnly) {
+      const linhas = SUBIU_PELO_PISO.map((x) => `<li><strong>${esc(x.nome)}</strong>: ${x.de} → ${x.para}</li>`).join('');
+      const { corpo } = uiPainel('A sua raça passou a dar estes pontos de graça');
+      corpo.innerHTML = '<p>O <code>+1</code> racial deixou de ser só teto e passou a ser também '
+        + '<strong>piso</strong>: o Atributo que a sua raça bonifica <strong>começa em 2</strong>, '
+        + 'e você não paga por esse ponto.</p>'
+        + '<p>A sua ficha estava abaixo desse piso e subiu:</p><ul>' + linhas + '</ul>'
+        + '<p class="muted">O XP foi recalculado junto, e você deve ter sobrado com mais do que '
+        + 'tinha. Nada mais mudou.</p>';
+      SUBIU_PELO_PISO.length = 0;
+    }
     if (opts.readOnly) {
       ['f-import', 'f-reset', 'f-file'].forEach((i) => { const e = document.getElementById(i); if (e) (e as HTMLElement).style.display = 'none'; });
       document.querySelectorAll<HTMLElement>('.rollv').forEach((e) => (e.style.display = 'none'));
