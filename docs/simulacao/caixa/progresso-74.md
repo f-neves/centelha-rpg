@@ -34,3 +34,10 @@ Mais um conserto que independe: `referencia.astro:170`, que escapou da varredura
   ela NAO modela o Sangramento, que come a margem por fora, e com PV/4 um unico tique de sangue
   consome quase toda ela. Isso puxa a conta para o limite maior, e eu nao medi porque o
   `sim-grupo` nao tem condicao continua.
+- **15:37** · o commit bateu no `index.lock` (o Arquiteto estava gravando a `M-08` no mesmo
+  instante). Nao toquei no lock, como da outra vez: esperei em laco, ele saiu sozinho na quarta
+  tentativa, e o commit passou. Publicado em `356e29d`, `pendentes` = 0.
+- **15:37** · fim. `validate` e `build` verdes, os tres simuladores rodam (`sim-defesas`,
+  `sim-caps`, `sim-grupo`), e o `sim-morte` e o quarto. Zero coautoria, zero travessao nas linhas
+  que eu escrevi (os que restam no `sim-grupo` e no `referencia.astro` sao pre-existentes:
+  cabecalho, separadores e marcadores de celula vazia).
