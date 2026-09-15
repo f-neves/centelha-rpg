@@ -2163,3 +2163,83 @@ O **+1d6** no golpe não foi tocado e continua como está.
 encontro depende dos dois. Quem recua estica a corrida, e não está decidido se ela estica
 indefinidamente, se o atacante pode desistir no meio (a Corrida é interrompível a qualquer Tick,
 então provavelmente sim) e o que acontece com o +1d6 de quem para de correr antes de encontrar.
+
+---
+
+## M-21b · as quatro perguntas que a M-21 abriu, decididas
+
+Decididas em 15/09/2026, a partir da medição do item 4 da rodada 75
+(`docs/simulacao/caixa/progresso-75.md`). **A inconsistência é a mesma nas quatro:** a M-21 tirou
+as duas trilhas de dano, e com elas o chão de regras publicadas que falavam de Impacto, de Letal e
+de um "limiar de morte" que agora é derivado.
+
+### 1 · QUEM MARCA A MORTE · o mestre, como hoje
+
+**O original:** `src/data/condicoes.json` traz `{"id": "morto", "nome": "Morto", "icone": "☠",
+"foraDeCombate": true, "nota": "Fim."}`, e quem a põe é o mestre, à mão. A mesa já põe `caido`
+sozinha ao chegar a zero (`src/pages/mesa/combate.astro:1348`), então o molde de marcar sozinha existe e é da
+própria casa.
+
+**A decisão: a mesa NÃO marca.** O limite aparece na tela como informação, e a condição `morto`
+continua sendo gesto do mestre. **O contra comprado:** uma régua que só vale quando alguém lembra
+é justamente do que o relato do jogador novo mais reclamou, e a morte pode passar despercebida no
+meio da briga.
+
+### 2 · INQUEBRANTÁVEL · o Impacto não atravessa o zero
+
+**O original:** `src/data/tecnicas.json`, a Técnica `inquebrantavel` (Pele de Pedra, nível 4,
+passiva): *"Dano de Impacto nunca te mata, só nocauteia; +1 ao limiar de morte."* As duas metades
+perderam o chão: a primeira ERA a regra das duas trilhas, e a segunda mexe num limiar que virou
+derivado e não tem campo.
+
+**A decisão: golpe de Impacto derruba quem tem a Técnica, e para em 0.** Só outro tipo de dano a
+leva abaixo do zero. O motor já sabe o tipo do golpe, porque é ele que escolhe a Absorção.
+
+**O contra comprado:** isto ressuscita a contabilidade por tipo de dano exatamente onde a M-21 a
+tirou. A diferença que a torna aceitável é o alcance: ali era o sistema inteiro somando duas
+colunas o tempo todo, aqui é uma Técnica de nível 4 olhando o tipo do golpe que atravessaria o
+zero, uma vez, no instante em que atravessaria.
+
+### 3 · A ARTE VIDA · a restrição cai
+
+**O original:** `src/data/regras.json`, `arcano.cura.outrasArtes`: *"A Vida, por exemplo, não fecha
+ferimento: apressa o corpo a fechá-lo sozinho, e só alcança dano Letal a partir do nível 3."*
+
+**A decisão: a Vida cura abaixo de zero, em qualquer nível.** A frase perde a cláusula do Letal, e
+o que continua valendo da regra é o que o mesmo parágrafo já diz: toda Arte que cura sem ser a
+Cura cura MENOS pelo mesmo Mana.
+
+**O contra comprado:** a Vida fica mais forte do que quem a comprou esperava, e a mesa não decidiu
+subir o poder dela, só tirou o chão de uma frase.
+
+**E FICA ANOTADO, por pedido do humano na hora de decidir:** como a **Cura** e a **Vida** se
+comportam diante de **níveis diferentes de dano** é conversa própria, ainda não tida. Não bloqueia
+nada e não tem dono de código; quando acontecer, é aqui que a cláusula que saiu pode voltar em
+outra forma.
+
+### 4 · CURAR QUEM PASSOU DO LIMITE · não alcança
+
+**O original:** as quatro entradas de cura (`curarPv` em `src/pages/mesa/grid.astro:2682`, `curarAlvo` em
+`src/lib/artes-grid-mesa.ts:1921`, `devolverVida` em `grid.astro:11626` e `jogador_muda_peca` em
+`supabase/migracao-22.sql:123`) não têm noção nenhuma de morto: **curar um morto o traz de volta
+em silêncio**, e isso acontece hoje, por acidente e não por desenho.
+
+**A decisão: passou do limite, a cura não alcança.** O mestre que quiser desfazer tira a condição
+à mão, e essa porta é deliberada. **O contra comprado:** fecha por código uma porta que uma Arte
+de ressurreição futura vai querer, e obriga a pensar nela quando ela aparecer.
+
+### A CONSEQUÊNCIA DE ENGENHARIA, decidida pelo Arquiteto e escrita aqui porque muda código
+
+**A trava da cura vai pelo NÚMERO, e não pela condição `morto`.** Ela mora onde a Vida é escrita e
+compara com o limite derivado de `pv_max`. Se dependesse da condição, e a decisão 1 põe a condição
+na mão do mestre, a porta ficaria aberta em silêncio exatamente enquanto ele não tivesse clicado,
+que é o defeito que a trava existe para fechar.
+
+### O QUE ISTO MANDA FAZER
+
+1. **`regras.json`**: a cláusula do Letal sai de `arcano.cura.outrasArtes`.
+2. **`tecnicas.json`**: o texto do `inquebrantavel` passa a dizer que o Impacto para no zero, e o
+   "+1 ao limiar" sai.
+3. **As quatro entradas de cura** ganham a trava pelo número, e o servidor também, porque uma
+   delas é RPC.
+4. **Nada marca a morte sozinho**, e o que a tela ganha é o limite visível.
