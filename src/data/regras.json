@@ -728,9 +728,13 @@
     "estadoQueda": "Caído",
     "condicaoMorte": "morto",
     "limiteDivisor": 2,
-    "limiteArredonda": "baixo",
+    "limiteArredonda": {
+      "semCentelha": "baixo",
+      "comCentelha": "alto"
+    },
     "limiteComparacao": "<=",
-    "limiteNota": "O limite é a METADE do PV MÁXIMO, contada abaixo do zero: morre-se quando a Vida chega a −(PV máximo ÷ 2) ou menos. O NÚMERO NÃO SE ESCREVE em lugar nenhum, porque PV máximo varia por Vigor e por porte (`derivados.pv`): ele se deriva de cada ficha por este divisor. Arredonda para BAIXO, que é a direção mais mortal: PV 34 morre em −17 e PV 37 morre em −18.",
+    "limiteNota": "O limite é a METADE do PV MÁXIMO, contada abaixo do zero: morre-se quando a Vida chega a −(PV máximo ÷ 2) ou menos. O NÚMERO NÃO SE ESCREVE em lugar nenhum, aqui inclusive, porque PV máximo varia por Vigor e por porte (`derivados.pv`): ele se deriva de cada ficha por este divisor, e os exemplos moram no capítulo, que é onde o portão os confere.",
+    "limiteArredondaNota": "QUEM NÃO TEM CENTELHA ARREDONDA PARA BAIXO, QUEM TEM ARREDONDA PARA CIMA (`M-21c`). Só muda alguma coisa em PV ímpar, e a diferença é de um ponto: o meio ponto que sobra da divisão vira a favor de quem tem a fagulha. Não é número novo, é a direção do arredondamento de um número que já existia. O contra comprado: é exceção num sistema que arredonda para baixo em toda parte, e exceção de um cálculo só é a cláusula que envelhece calada.",
     "porqueMetade": "Decidido em 15/09/2026 com medição (docs/simulacao/caixa/m21-morte-medicao.md). Socorrer um caído custa cerca de 4 Ticks; o limite de um quarto do PV dá 5 Ticks de margem mediana e empata com o próprio socorro já a 8 metros, enquanto metade dá 10 Ticks no cenário comum. E três coisas que a medição não cobre puxam para o limite maior: o Sangramento come a margem por fora, a medição rodou uma build maximizada, e a Velocidade da ação de estabilizar é suposição.",
     "contraComprado": "Com metade do PV e o inimigo ignorando quem caiu, ninguém morre por acidente: morrer vira decisão de quem está batendo. Foi comprado de propósito, e é a mesma leitura que substituiu as duas trilhas: fazer de 'não matar' a decisão de PARAR DE BATER, que acontece na mesa e no momento.",
     "estadoDaMesa": "A tabela `ferimentos` continua respondendo pelo que se vê: Vida 0 ou menos é `Caído`, em qualquer profundidade. O que a régua nova acrescenta abaixo do zero é o FIM dessa faixa, e o estado seguinte é a condição `morto` de condicoes.json. O Grid ainda não implementa nenhum dos dois: ele tem um `pv_atual` só e não conhece limite (`M-21`, item 4)."

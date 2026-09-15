@@ -122,7 +122,14 @@ próprio, e ele muda a conta:
 **Total corrigido: OITO pontos que podem baixar a Vida** (sete no cliente, um no servidor), mais o
 `jogador_muda_peca` genérico. E a aba Combate é a que está em melhor forma das duas: `mexerVida` é
 estrangulamento de verdade, e **já é o único lugar do projeto com gancho de estado no zero**
-(`:1348` põe a condição `caido` quando a Vida chega a 0 vindo de cima).
+(`combate.astro:1351` · `{ id: 'inconsciente' }`, posto quando a Vida chega a 0 vindo de cima, e
+só se a peça ainda não tiver condição de fora de combate).
+
+> **CORRIGIDO na rodada 76** (`CORRIGE 5` da rodada 59 da Revisora): a primeira redação desta
+> linha dizia que `:1348` punha `caido`. A condição posta é `inconsciente`, e `caido` é OUTRA
+> condição do `condicoes.json`. O molde existe como está escrito e o argumento sobrevive inteiro;
+> o nome estava errado, e ele já tinha viajado para um documento de decisão. As duas lemos o
+> COMENTÁRIO de `:1346`, que fala em "caído", em vez da linha que escreve.
 
 ### **E `pv_max` É NULO DE VERDADE, o que muda a resposta sobre a migração**
 
@@ -140,16 +147,26 @@ pequena, a decisão que ela precisa carregar não é.
 
 Quem MARCA a morte. A condição `morto` existe em `condicoes.json` e o mestre a põe à mão; marcar
 sozinho no caminho do dano é gancho novo, e ninguém decidiu se a mesa deve fazer isso ou se a
-morte é anúncio do mestre. O molde existe e é da própria casa: `combate.astro:1348` já põe `caido`
-ao chegar a zero. **Não construí nada disto.**
+morte é anúncio do mestre. O molde existe e é da própria casa: a aba Combate já põe uma condição
+sozinha ao chegar a zero (`combate.astro:1351` · `{ id: 'inconsciente' }`). **Não construí nada
+disto.**
 
-### Duas regras PUBLICADAS que a M-21 deixou sem chão, e são decisão da mesa
+### QUATRO regras PUBLICADAS que a M-21 deixou sem chão, e são decisão da mesa
+
+**As duas primeiras foram as que eu achei; as duas últimas são da Revisora, rodada 59, e entram
+aqui porque o meu "duas" virou condição de parada de quem decidiu** (a decisão da mesa saiu no dia
+seguinte e tratou das duas que eu nomeei, e de nenhuma das outras).
 
 - **`tecnicas.json` · `inquebrantavel`** (Pele de Pedra, nível 4): *"Dano de Impacto nunca te mata,
   só nocauteia; +1 ao limiar de morte."* As duas metades caem: a primeira É a regra das duas
   trilhas, e a segunda mexe num "limiar de morte" que agora é derivado e não tem campo.
-- **A Arte Vida** (`regras.json` · `arcano.outrasArtes` e `efeitos.json:6049`): *"só alcança dano
-  Letal a partir do nível 3"*, um portão sobre uma trilha que deixou de existir.
+- **A Arte Vida** (`regras.json` · `arcano.cura.outrasArtes` e `efeitos.json:6049`): *"só alcança
+  dano Letal a partir do nível 3"*, um portão sobre uma trilha que deixou de existir. (O caminho
+  do campo estava errado na primeira redação, sem o `cura`: `CORRIGE 5` da rodada 59.)
+- **`tecnicas.json` · `mao-de-ferro`** (nível 1): *"podem causar dano Letal à vontade"*, com o par
+  no dado das armas (`armas.json:819` · *"dano de Impacto (Letal só com a Técnica Mão de Ferro)"*).
+- **`tecnicas.json` · `fechar-feridas`** (nível 3): *"cura dano Letal leve em minutos"*, com o
+  irmão em `artes.json:778` · *"cura Letal moderado"*.
 
-Nenhuma das duas é conserto de texto: são regras que um jogador compra. Ficaram FORA do escopo do
-portão de propósito, e o comentário dele diz isso.
+Nenhuma das quatro é conserto de texto: são regras que um jogador compra. Ficaram FORA do escopo
+do portão de propósito, e o comentário dele diz isso.

@@ -243,9 +243,12 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
 // O ESCOPO DA VARREDURA DA REGRA VELHA, dito em voz alta porque ele não é o
 // repositório inteiro: os dois capítulos que publicavam a morte, a condição que a
 // citava, e os três blocos de `regras.json` que a regra governa. O `Letal` que
-// sobra em `artes.json`, `tecnicas.json`, `efeitos.json` e `arcano.outrasArtes` é
-// adjetivo de tipo de dano em regra de OUTRA família (uma Técnica e uma Arte que
-// dependiam das duas trilhas), e mexer nele é decisão de regra, não conferência.
+// sobra em `artes.json`, `tecnicas.json`, `efeitos.json` e `arcano.cura.outrasArtes`
+// é adjetivo de tipo de dano em regra de OUTRA família: são QUATRO regras compráveis
+// escritas sobre as duas trilhas (`inquebrantavel`, `mao-de-ferro`, `fechar-feridas`
+// e o portão de nível 3 da Arte Vida), e mexer nelas é decisão de regra, não
+// conferência. A contagem e o caminho do campo saíram errados na primeira redação
+// deste comentário (eram "duas", e o caminho não tinha o `cura`).
 {
   const RAIZ = path.join(DIR, '..', '..');
   const regrasM = read('regras.json');
@@ -255,9 +258,16 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
     fail(`regras.json: não há bloco \`morte\`. O limite da morte (\`M-21\`) é dado, e o capítulo `
       + `${CAP_MORTE} publica a fórmula que sai dele.`);
   } else {
-    const arredonda = M.limiteArredonda === 'baixo' ? Math.floor
-      : M.limiteArredonda === 'alto' ? Math.ceil : null;
-    if (!arredonda) fail(`regras.json · morte.limiteArredonda: "${M.limiteArredonda}" não é "baixo" nem "alto"`);
+    // O ARREDONDAMENTO SÃO DOIS, e a Centelha escolhe (`M-21c`): quem não a tem
+    // arredonda para baixo, quem a tem arredonda para cima. Só muda em PV ímpar.
+    const FUNCAO = { baixo: Math.floor, alto: Math.ceil };
+    const arr = M.limiteArredonda || {};
+    const arredonda = { semCentelha: FUNCAO[arr.semCentelha], comCentelha: FUNCAO[arr.comCentelha] };
+    const arredondaOk = !!(arredonda.semCentelha && arredonda.comCentelha);
+    if (!arredondaOk) {
+      fail(`regras.json · morte.limiteArredonda precisa das duas direções (\`M-21c\`), cada uma `
+        + `"baixo" ou "alto": veio ${JSON.stringify(M.limiteArredonda)}`);
+    }
     if (!(Number.isInteger(M.limiteDivisor) && M.limiteDivisor >= 1)) {
       fail(`regras.json · morte.limiteDivisor: "${M.limiteDivisor}" não é divisor inteiro do PV máximo`);
     }
@@ -271,7 +281,7 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
       fail(`regras.json · morte.condicaoMorte "${M.condicaoMorte}" não existe em condicoes.json`);
     }
 
-    const limiteDe = (pvMax) => -(arredonda || Math.floor)(pvMax / (M.limiteDivisor || 1));
+    const limiteDe = (pvMax, lado) => -arredonda[lado](pvMax / (M.limiteDivisor || 1));
     const cap = fs.readFileSync(path.join(RAIZ, CAP_MORTE), 'utf8');
 
     // A PRESENÇA, que é o par da ausência lá embaixo: a fórmula publicada.
@@ -284,31 +294,123 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
     }
 
     // Os exemplos, achados por FORMA e não por posição: todo "PV N … morre em −X"
-    // da prosa é refeito pela derivação. O `−` publicado é o menos tipográfico.
-    const pares = [...cap.matchAll(/PV\s*\*{0,2}(\d+)\*{0,2}[^.]*?morre em\s*\*{0,2}[−-](\d+)/g)]
-      .map((m) => ({ pvMax: Number(m[1]), morreEm: -Number(m[2]) }));
-    if (!pares.length) {
+    // do texto é refeito pela derivação. O `−` publicado é o menos tipográfico.
+    //
+    // A PRIMEIRA VERSÃO DESTE EXTRATOR VIA DOIS DOS TRÊS, e o que ela perdia era
+    // justamente o callout do exemplo do Bram, que é a primeira coisa que um
+    // jogador lê. Duas causas somadas, achadas pela Revisora na rodada 59
+    // trocando o −17 de lá por −99 e vendo o portão passar verde: o `[^.]*?` não
+    // atravessa ponto (e entre o `PV 34` e o `morre em` do callout há três), e o
+    // número vinha dentro de `<strong>`, que o `\*{0,2}` não previa.
+    //
+    // O conserto não é um regex maior, é OUTRA forma de procurar: acha-se cada
+    // "morre em −X" e caminha-se PARA TRÁS até o `PV N` mais próximo. E a trava
+    // que torna isso conferível: a contagem dos dois lados tem de bater. Um
+    // "morre em" que o extrator não consiga emparelhar é erro, e não silêncio.
+    //
+    // O ESCOPO, dito em voz alta: isto cobre o número publicado NA FORMA
+    // "PV N … morre em −X". Um limite publicado noutra forma (uma célula de
+    // tabela, por exemplo) não passa por aqui, e é por isso que os exemplos do
+    // capítulo são prosa.
+    const semTags = (t) => String(t).replace(/<[^>]+>/g, '');
+    const paresDe = (texto) => {
+      const t = semTags(texto);
+      const achados = [...t.matchAll(/morre em\s*\*{0,2}[−-](\d+)/g)];
+      const pares = [];
+      const semPar = [];
+      for (const a of achados) {
+        const antes = t.slice(Math.max(0, a.index - 400), a.index);
+        const pv = [...antes.matchAll(/PV\s*\*{0,2}(\d+)/g)].pop();
+        if (!pv) { semPar.push(a[0]); continue; }
+        pares.push({ pvMax: Number(pv[1]), morreEm: -Number(a[1]), janela: antes.slice(pv.index) });
+      }
+      return { pares, semPar, total: achados.length };
+    };
+
+    const { pares, semPar, total } = paresDe(cap);
+    if (!total) {
       fail(`${CAP_MORTE}: nenhum exemplo no formato "PV N … morre em −X". Sem exemplo, a fórmula `
         + `publicada não tem controle, e esta conferência não teria o que medir.`);
     }
-    for (const p of pares) {
-      if (p.morreEm !== limiteDe(p.pvMax)) {
-        fail(`${CAP_MORTE}: o exemplo de PV ${p.pvMax} publica morte em ${p.morreEm}, e a régua `
-          + `(PV ÷ ${M.limiteDivisor}, arredondando para ${M.limiteArredonda}) dá ${limiteDe(p.pvMax)}`);
+    for (const s of semPar) {
+      fail(`${CAP_MORTE}: "${s}" está publicado sem nenhum "PV N" antes dele, e por isso a régua `
+        + `não tem como conferir esse número.`);
+    }
+    // DE QUE LADO CADA EXEMPLO ESTÁ. A janela é o texto entre o `PV N` e o
+    // `morre em` dele, e a negativa é testada PRIMEIRO de propósito: "não tem
+    // Centelha" contém "tem Centelha", e a ordem inversa classificaria todo
+    // exemplo de mortal como exemplo de Tocado.
+    const ladoDe = (janela) => {
+      if (/(sem|não tem|nao tem|nenhuma) Centelha|Centelha 0/i.test(janela)) return 'semCentelha';
+      if (/(com|tem) Centelha|Centelha 1|Tocado/i.test(janela)) return 'comCentelha';
+      return null;
+    };
+    // O RESTO DA DIVISÃO É QUEM DECIDE SE O LADO IMPORTA: com PV par as duas
+    // direções dão a MESMA resposta, e cobrar o rótulo ali seria cobrar o que não
+    // se mede. Com PV ímpar, exemplo sem lado é exemplo que não prova nada.
+    const sobraResto = (pv) => pv % M.limiteDivisor !== 0;
+    const ladosVistos = new Set();
+    if (arredondaOk) {
+      for (const p of pares) {
+        const lado = ladoDe(p.janela);
+        if (!lado && sobraResto(p.pvMax)) {
+          fail(`${CAP_MORTE}: o exemplo de PV ${p.pvMax} morre em ${p.morreEm} sem dizer se é de `
+            + `quem TEM ou de quem NÃO TEM Centelha, e em PV ímpar isso muda a resposta (\`M-21c\`)`);
+          continue;
+        }
+        if (lado) ladosVistos.add(lado);
+        const esperados = lado ? [lado] : ['semCentelha', 'comCentelha'];
+        for (const l of esperados) {
+          if (p.morreEm !== limiteDe(p.pvMax, l)) {
+            fail(`${CAP_MORTE}: o exemplo de PV ${p.pvMax}${lado ? ` (${lado})` : ''} publica morte `
+              + `em ${p.morreEm}, e a régua (PV ÷ ${M.limiteDivisor}, arredondando para `
+              + `${arr[l]}) dá ${limiteDe(p.pvMax, l)}`);
+          }
+        }
+      }
+      // AS DUAS OCASIÕES, e não uma: a régua da `M-21c` tem dois lados, e um
+      // capítulo que só exemplifica um deles deixa o outro sem testemunha.
+      for (const l of ['semCentelha', 'comCentelha']) {
+        const tem = pares.some((p) => sobraResto(p.pvMax) && ladoDe(p.janela) === l);
+        if (!tem) {
+          fail(`${CAP_MORTE}: falta um exemplo de PV ímpar do lado \`${l}\`. Com PV par as duas `
+            + `direções dão a mesma resposta, então só o ímpar prova que este lado está certo.`);
+        }
       }
     }
-    if (pares.length && !pares.some((p) => p.pvMax % M.limiteDivisor !== 0)) {
-      fail(`${CAP_MORTE}: todos os exemplos têm PV divisível por ${M.limiteDivisor}, e nesses o `
-        + `arredondamento não muda nada. Sem um exemplo que sobre resto, o \`limiteArredonda\` `
-        + `("${M.limiteArredonda}") passa verde estando errado.`);
+
+    // O NÚMERO NÃO SE ESCREVE NO DADO, e o campo que prometia isso era justamente
+    // onde ele estava escrito (`CORRIGE 4` da rodada 59: o `limiteNota` publicava
+    // "PV 34 morre em −17 e PV 37 morre em −18" duas frases depois de dizer que o
+    // número não se escreve, e nenhum portão lia esse campo). A mesma máquina que
+    // confere o capítulo vigia o bloco, e aqui o par CERTO também é erro: o lugar
+    // do exemplo é o capítulo, onde a conferência alcança.
+    const noDado = paresDe(JSON.stringify(M));
+    if (noDado.total) {
+      fail(`regras.json · morte: o bloco escreve ${noDado.total} exemplo(s) "PV N … morre em −X", `
+        + `e a própria \`limiteNota\` promete que o número não se escreve. O exemplo mora no `
+        + `capítulo, que é onde o portão o confere.`);
     }
 
     // A AUSÊNCIA, com escopo nomeado: a regra velha das duas trilhas não volta por
     // uma edição distraída nos lugares onde ela morava.
-    const VELHO = /\bLetal\b/;
+    //
+    // A FLAG `i` NÃO É ZELO, É O CASO REAL: a forma que existia neste repositório
+    // e que a rodada 75 apagou era MINÚSCULA (`contra os letais`, em
+    // `combate.md`). Sem ela o portão vigiava a maiúscula e deixava passar a
+    // grafia que de fato aparecia. Falsificado pela Revisora na rodada 59: com
+    // `dano letal` plantado no capítulo vigiado, o portão saía verde.
+    //
+    // E A TELA DA MESA É A QUINTA ENTRADA pelo mesmo motivo por que existe a
+    // lista: `referencia.astro` publicava a regra velha CINCO LINHAS acima do
+    // campo já corrigido, e é a página que o mestre abre para conferir regra.
+    // Trocar só a palavra deixaria o arquivo de fora da vigia, que é a forma da
+    // conferência que cobre só a parte viva do registro.
+    const VELHO = /\bletal\b/i;
     const ondeNaoPodeVoltar = [
       [CAP_MORTE, cap],
       ['src/content/chapters/combate.md', fs.readFileSync(path.join(RAIZ, 'src/content/chapters/combate.md'), 'utf8')],
+      ['src/pages/mesa/referencia.astro', fs.readFileSync(path.join(RAIZ, 'src/pages/mesa/referencia.astro'), 'utf8')],
       ['condicoes.json', JSON.stringify(read('condicoes.json'))],
       ['regras.json · ferimentos/morte/sangramento', JSON.stringify([regrasM.ferimentos, regrasM.morte, regrasM.sangramento])],
     ];

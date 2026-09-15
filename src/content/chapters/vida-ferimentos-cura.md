@@ -52,7 +52,9 @@ Chegar a **0 PV ou menos** deixa você **Caído**: incapacitado, fora da briga, 
 
 <p class="formula">Morre em Vida ≤ −(PV máximo ÷ 2)</p>
 
-Metade do seu PV máximo, contada abaixo do zero, é a margem que você tem depois de cair. Bram, de **PV 34**, cai em **0** e morre em **−17**. Quem tem PV ímpar arredonda para baixo: **PV 37** cai em 0 e morre em **−18**.
+Metade do seu PV máximo, contada abaixo do zero, é a margem que você tem depois de cair. Bram, de **PV 34**, cai em **0** e morre em **−17**, e nesse caso a divisão é exata.
+
+**Quando ela não é exata, a Centelha decide para que lado o meio ponto cai**: quem não tem Centelha arredonda para baixo, quem tem arredonda para cima. Um **PV 37** sem Centelha morre em **−18**; o mesmo **PV 37** de quem tem Centelha morre em **−19**. É um ponto de diferença, e ele fica com quem tem a fagulha.
 
 Essa margem é a razão de a cena existir. Um aliado que caiu não está morto: alguém pode atravessar o campo, estancar o sangue e trazê-lo de volta, e quem está batendo escolhe se continua batendo nele. **Matar deixa de ser acidente de dado e vira decisão de quem tem a arma na mão**, tomada na mesa, no momento.
 
