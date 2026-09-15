@@ -47,7 +47,7 @@ Humanóides de baixa estatura, mas muito corpulentos. Vivem nas montanhas e coli
 - **Custo de XP:** 30
 - **+1 teto de Vigor** (até 7): corpulência de pedra.
 - **−1 teto de Perspicácia** (máx 5): arrogantes e prepotentes, pouco tato social.
-- **Baixa estatura**, pernas curtas: **deslocamento pela metade** da velocidade de um humano.
+- **Baixa estatura**, pernas curtas: **todo deslocamento vale dois terços** do de um humano, o passo em combate, o Arranque, a Corrida **e os Saltos**.
 - **Resistência a venenos**: todo teste para resistir a veneno é feito com **+1d6** na parada.
 - **Visão no escuro**: enxergam na escuridão total, mas **sem cores**; os olhos precisam de um tempo para se adaptar a mudanças de iluminação.
 - **Mestre dos Ofícios**, desde cedo trabalham pedra e metal: **+1d6** em testes de **Ofícios Gerais**, desde que já tenham ao menos 1 ponto na Habilidade.
@@ -70,7 +70,7 @@ Pequenos e resistentes. Pesam **20–45 kg** e medem **1,00–1,30 m**. Maturida
 - **Custo de XP:** 40
 - **+1 teto de Vigor** (até 7): resistência teimosa num corpo miúdo.
 - **−1 teto de Força** (máx 5): pequenos demais para grande força bruta.
-- **Baixa estatura**: **deslocamento pela metade** da velocidade de um humano.
+- **Baixa estatura**: **todo deslocamento vale dois terços** do de um humano, o passo em combate, o Arranque, a Corrida **e os Saltos**.
 - **Visão no escuro**: enxergam na escuridão total, sem distinguir cores; precisam de tempo para adaptar os olhos.
 - **Feitiçaria**, facilidade com ilusões: **+2** para **criar e detectar ilusões**.
 - **Empatia com animais**, o carisma natural alcança outros seres: **+2** ao lidar com animais.
@@ -82,7 +82,7 @@ Povo pequeno e ágil. Medem de **80 cm a 1,20 m** e pesam **20–35 kg**. Atinge
 - **Custo de XP:** 30
 - **+1 teto de Destreza** (até 7): mãos e pés leves.
 - **−1 teto de Força** (máx 5): porte miúdo.
-- **Baixa estatura**: **deslocamento pela metade** da velocidade de um humano.
+- **Baixa estatura**: **todo deslocamento vale dois terços** do de um humano, o passo em combate, o Arranque, a Corrida **e os Saltos**.
 - **Atletas**, corpos incansáveis: **+1d6** em **Atletismo** e nas Habilidades secundárias correlatas.
 
 ### Meio-Elfo

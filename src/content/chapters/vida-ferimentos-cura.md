@@ -32,7 +32,7 @@ Essa é a durabilidade de uma criatura de **porte Médio**, o padrão dos humano
 
 A sua **Vida restante** é o PV máximo menos o dano total marcado; é a porcentagem dela que diz em que estado você está, na tabela abaixo.
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Bram tem <strong>PV 37</strong>. Numa briga feia, leva <strong>20 de Impacto + 8 de Letal = 28</strong> de dano: restam <strong>9 PV</strong> (24% → <strong>Grave</strong>). Está mal, mas longe de morrer: a morte exigiria <strong>37 de Letal</strong>, e ele só tem 8. Se cair a 0 com a maior parte sendo Impacto, ele <em>desmaia</em>, não morre.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Bram tem <strong>PV 34</strong>. Numa briga feia, leva <strong>20 de Impacto + 8 de Letal = 28</strong> de dano: restam <strong>6 PV</strong> (18% → <strong>Grave</strong>). Está mal, mas longe de morrer: a morte exigiria <strong>34 de Letal</strong>, e ele só tem 8. Se cair a 0 com a maior parte sendo Impacto, ele <em>desmaia</em>, não morre.</div>
 
 ## Limiares de Ferimento
 
@@ -72,9 +72,10 @@ Você recupera o equivalente ao seu Vigor em PV a cada intervalo, tão mais lent
 
 | Estado | Recupera o Vigor em PV… |
 |---|---|
-| Saudável (>75%) | por dia |
-| Machucado / Ferido (50–75%) | a cada 3 dias |
-| Grave (25–50%) | a cada 5 dias |
-| Crítico (<25%) | por semana |
+| Saudável (76–100%) | por dia |
+| Machucado (51–75%) | a cada 3 dias |
+| Ferido (26–50%) | a cada 3 dias |
+| Grave (11–25%) | a cada 5 dias |
+| Crítico (1–10%) | por semana |
 
 <p class="muted">Dano de Impacto sara muito mais rápido que o Letal; a Cura e a magia aceleram a cura.</p>

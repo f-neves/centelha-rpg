@@ -80,7 +80,7 @@ Em **feras** (bichos de instinto, Inteligência 1) troca-se **Sociabilidade por 
 
 A Mental é uma **soma simples** (sem o ×2 das outras): a mente se defende com os três pilares (a rapidez do **Raciocínio**, a firmeza da **Integridade** e a reserva da **Força de Vontade**), mais a Centelha.
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Kael tem Destreza 3, Esquiva 3, Compostura 2, Sociabilidade 2, Raciocínio 3, Integridade 2, Força de Vontade 5 e Centelha 1. Sua <strong>Esquiva</strong> é (3+3)×2 + 1 = <strong>13</strong>; sua <strong>Defesa Social</strong> é (2+2)×2 + 1 = <strong>9</strong>; sua <strong>Defesa Mental</strong> é 3+2+5+1 = <strong>11</strong>. Cada ataque compara o próprio total com a muralha certa.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Kael tem Destreza 4, Esquiva 3, Compostura 2, Raciocínio 3, Força de Vontade 7 e Centelha 3, e nenhum ponto em Sociabilidade nem em Integridade. Sua <strong>Esquiva</strong> é (4+3)×2 + 3 = <strong>17</strong>; sua <strong>Defesa Social</strong> é (2+0)×2 + 3 = <strong>7</strong>; sua <strong>Defesa Mental</strong> é 3+0+7+3 = <strong>13</strong>. Cada ataque compara o próprio total com a muralha certa.</div>
 
 ## Especialidade: o foco que só vale às vezes
 

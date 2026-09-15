@@ -44,7 +44,7 @@ Você tem **sucesso** quando o total **supera** o alvo: a Defesa de um inimigo o
 
 <p class="muted">No nível "à altura", tarefas fáceis e médias são um cara-ou-coroa; a maestria traz confiabilidade. Quem não tem competência simplesmente não alcança as dificuldades altas.</p>
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Para escalar um muro liso (Dificuldade 10), Kael soma <strong>Força 3 + Atletismo 2 = 5</strong> → rola <strong>2d6+2</strong>. Saem 9 nos dados, +2 = <strong>11</strong>: supera 10, ele sobe. Se tivesse passado de 16 (6 acima do alvo), ganharia uma <strong>Margem</strong>: subiria mais rápido, ou alcançaria um peitoril mais alto.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Para escalar um muro liso (Dificuldade 10), Kael soma <strong>Força 3 + Atletismo 3 = 6</strong> → rola <strong>3d6</strong>. Saem <strong>11</strong> nos dados: supera 10, ele sobe. Se tivesse passado de 16 (6 acima do alvo), ganharia uma <strong>Margem</strong>: subiria mais rápido, ou alcançaria um peitoril mais alto.</div>
 
 ## Margem: graus de sucesso
 

@@ -59,9 +59,9 @@ O custo é para subir ao próximo ponto, em função do *novo* valor.
 
 ## Limites na criação
 
-Atributo máximo **4**; Habilidade máxima **3**; Centelha máxima **2** (a maioria dos heróis começa em 1). O 5º ponto e tiers maiores vêm com o jogo.
+Atributo máximo **5**; Habilidade máxima **4**; Centelha máxima **3** (a maioria dos heróis começa em 1). O ponto seguinte e os tiers maiores vêm com o jogo.
 
-Cada herói pode ter **um pico**: você está autorizado a levar **um único Atributo a 5** e **uma única Habilidade primária a 4** já na criação: o talento superlativo que o define. Os demais respeitam os tetos acima.
+Cada herói pode ter **um pico**: você está autorizado a levar **um único Atributo a 6** e **uma única Habilidade primária a 5** já na criação: o talento superlativo que o define. Os demais respeitam os tetos acima.
 
 ## Traços derivados
 

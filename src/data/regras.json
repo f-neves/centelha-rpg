@@ -497,7 +497,7 @@
     10,
     20
   ],
-  "centelhaGate": "A Centelha só aumenta com permissão do Mestre, num marco de história ou feito maior. O XP paga o custo (×10), mas o salto de tier é narrativo — não se compra em massa.",
+  "centelhaGate": "A Centelha só aumenta com permissão do Mestre, num marco de história ou feito maior. Ela NÃO custa XP (ver `xp.centelha`): o salto de tier é narrativo, e não se compra em massa.",
   "xp": {
     "modelo": "O preço de UM nível é (base + mult × nível). O tipo diz como somar: 'acum' soma os preços do piso+1 até o nível; 'flat' cobra só o preço do nível pedido, sem os de baixo; 'gratis' não custa XP.",
     "atributo": {

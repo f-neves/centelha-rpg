@@ -198,7 +198,7 @@ Ele é, na prática, **um Tick de movimento**: como um Tick é mais ou menos um 
 
 Ele é, na prática, **um Tick de movimento**: como um Tick é mais ou menos um segundo, o número em metros é também a sua velocidade em metros por segundo. A faixa é humana de propósito: **de 2 a 5 m/s**. Andar tranquilo são 1,4 m/s; fechar distância numa briga, sem perder a guarda nem o equilíbrio, fica entre 2 e 4; e o teto de 5 é o acrobata. O resto do tempo da ação você não está andando, está lutando.
 
-<p class="muted">Quem tem <strong>perna curta</strong> (anão, gnomo, halfling) desliza <strong>dois terços</strong> disso, e corre e salta metade.</p>
+<p class="muted">Quem tem <strong>perna curta</strong> (anão, gnomo, halfling) desliza <strong>dois terços</strong> disso, e a mesma fração vale para a Corrida e para os Saltos.</p>
 
 Para ir além, gaste a vez numa **ação de movimento**: Corrida ou Salto, ambas **Velocidade 3**.
 
