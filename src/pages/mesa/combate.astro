@@ -50,7 +50,7 @@ import CondDlg from '../../components/CondDlg.astro';
           <div class="ini-relogio">
             <span class="ini-tk-n" id="enc-tick"></span>
             <span class="ini-tk-rot">Tick</span>
-            <span class="ini-rd" id="enc-rodada"></span>
+            
           </div>
         </div>
         <div id="cmb-fila" class="fila-lista"></div>
@@ -937,7 +937,6 @@ import CondDlg from '../../components/CondDlg.astro';
     // aqui contra tick_atual=5 no Grid.
     const tick = ehSimultaneo(TEMPO) ? (ENC?.tick_atual ?? 0) : (atual?.tick ?? 0);
     AGORA = tick;
-    el('enc-rodada').textContent = `Rodada ${Math.floor(tick / 6) + 1}`;
     // Só o número: a palavra "Tick" é estática, ao lado dele, na tira.
     el('enc-tick').textContent = String(tick);
     pintarTira(emCampo, tick);

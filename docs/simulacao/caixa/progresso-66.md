@@ -42,3 +42,13 @@ texto e esperam bem).
   descreve: 19 citacoes quebradas em documentos variados, sem relacao com o que eu mexi.
   Consertado do jeito que ele manda: `git checkout --` nos cinco documentos de citacao, UMA
   passada, e sobrou 1 citacao, que e caso (a) de verdade (eu reescrevi a linha citada).
+- **05:53** · ITEM 3 feito: o `Rodada N` saiu da tela. Mas sao TRES lugares e nao dois. Os dois
+  do despacho sao `grid.astro:5003` (o relogio grande) e `:12099` (a barra do telefone, que
+  copiava o texto do primeiro e ainda trazia `rodada 1` escrito a mao no HTML). O terceiro e o
+  MESMO rotulo na aba Combate (`combate.astro:940`, id `enc-rodada`), e eu tirei tambem: deixar
+  um so faria as duas telas discordarem sobre a existencia da unidade. Tirei o elemento, a
+  escrita e as duas regras de CSS que passaram a nao selecionar nada.
+- **05:53** · nao inventei palavra substituta, como ele mandou. O Tick continua onde estava, em
+  corpo grande, e nao mexi no `.ini-tk-n` (que ainda diz `grid-row: 1 / span 2`): a linha 2 do
+  grid so fica vazia, e a posicao do numero nao muda um pixel. `build` verde e tres portoes de
+  navegador que desenham esse cabecalho passam.

@@ -140,7 +140,6 @@ const SETAS = [
           <div class="ini-relogio">
             <span class="ini-tk-n" id="ini-tk"></span>
             <span class="ini-tk-rot">Tick</span>
-            <span class="ini-rd" id="ini-rd"></span>
           </div>
           <div class="ini-rodada">
             <!-- O custo em Ticks da PRÓXIMA ação. Fica na mesma linha da rodada
@@ -311,7 +310,7 @@ const SETAS = [
       <nav class="gr-app" id="gr-app" aria-label="Comandos do tabuleiro">
         {/* O relógio não é botão: é o número do qual todos os outros dependem, e
             no telefone ele perdeu o canto da tira da iniciativa. */}
-        <span class="ga-b ga-rel"><b id="ga-tk">0</b><small id="ga-rd">rodada 1</small></span>
+        <span class="ga-b ga-rel"><b id="ga-tk">0</b></span>
         <button type="button" class="ga-b ga-prox" id="ga-prox" hidden><i aria-hidden="true">⏭</i><small>próximo</small></button>
         <button type="button" class="ga-b" id="ga-agir"><i aria-hidden="true">⚔</i><small>agir</small></button>
         <button type="button" class="ga-b" id="ga-campo" aria-expanded="false"><i aria-hidden="true">☰</i><small>campo</small></button>
@@ -1182,8 +1181,6 @@ const SETAS = [
        fazia sentido com a rodada ao lado. */
     :is(body.grid-tv, body.fila-empe) .ini-tk-n {
       grid-row: auto; font-size: clamp(1rem, 2vw, 2.6rem); }
-    :is(body.grid-tv, body.fila-empe) .ini-rd {
-      grid-column: auto; grid-row: auto; white-space: normal; text-align: center; }
     /* O "próximo" é a única coisa aqui que se clica no meio da cena, e o rótulo
        dele traz o custo em Ticks. Sem `nowrap` ele quebrava LETRA A LETRA numa
        coluna de 115px: uma torre com "P R Ó X I M O". */
@@ -5000,7 +4997,6 @@ const SETAS = [
     // Só o NÚMERO: a palavra "Tick" é estática no cabeçalho, ao lado dele, e
     // escrevê-la aqui de novo dava "TICK 0 TICK" na tela.
     el('ini-tk').textContent = String(tick);
-    el('ini-rd').textContent = `Rodada ${Math.floor(tick / 6) + 1}`;
     if (MESTRE) {
       (el('ini-rolar') as HTMLElement).hidden = false;
       const prox = el('ini-prox') as HTMLButtonElement;
@@ -12096,7 +12092,6 @@ let roladoDano = '';
   function sincronizarApp() {
     if (!MOB) return;
     el('ga-tk').textContent = el('ini-tk').textContent || '0';
-    el('ga-rd').textContent = (el('ini-rd').textContent || '').toLowerCase() || 'rodada 1';
     const fonte = el('ini-prox') as HTMLButtonElement;
     const meu = el('ga-prox') as HTMLButtonElement;
     meu.hidden = fonte.hidden;
