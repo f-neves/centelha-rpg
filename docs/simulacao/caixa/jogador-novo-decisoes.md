@@ -777,3 +777,85 @@ próximo regen**.
 código** ficam como estão. Elas não são lidas por ninguém que jogue, renomeá-las é mexer no
 bestiário, na mesa e no editor de criaturas de uma vez, e o ganho para o leitor é zero. **Se a
 mesa quiser a troca completa, ela é uma frente própria e não um item.**
+
+---
+
+## M-06 + M-19 · Virtude e Vontade não se somam a nada · DECIDIDO em 15/09/2026
+
+**A mesa não respondeu a pergunta: derrubou a premissa dela.** Eu perguntei COMO a Vontade entra
+num pool, e a resposta é que nem ela nem as Virtudes entram em pool nenhum.
+
+### O que ficou decidido
+
+1. **A Virtude não se rola com mais nada**, nem com Atributo nem com Habilidade. **Se for rolada,
+   é sozinha.**
+2. **A Força de Vontade não é Atributo**, e também não se rola com Atributo nem com Habilidade.
+   **Se for rolada, é por si só.** Sai da lista de Atributos da Integridade em
+   `src/data/habilidades.json`.
+3. **O Canalizar Virtude mantém a CONTA e perde o LIMITE.** A soma continua sendo
+   `Atributo + Habilidade + Virtude`. O *"uma vez por cena, por Virtude"* está errado: pode ser
+   usado mais vezes. **O que o limita é que canalizar CONSOME a Virtude, e a recuperação dela é
+   muito lenta.**
+
+### PROVISÓRIO, dito como provisório pela própria mesa
+
+**O teste de Virtude será provavelmente `1d6 + nível da Virtude`, com Dificuldade básica 5 ou 6.**
+Palavras dela: *"ainda não determinei 100% como são os testes de Virtude"*. **Não implementar como
+regra fechada.**
+
+### ABERTO, e adiado de propósito
+
+**Como a Virtude se recupera depois de canalizada.** *"a recuperação da virtude é muito lenta,
+podemos discutir como é isso depois"*. Sem isso, o Canalizar não é jogável, porque não há como
+saber quando a Virtude volta.
+
+**E isto transforma a Virtude num traço de dois papéis:** ela é nota de 1 a 6 (a régua moral, a
+conduta esperada) **e** reserva que se gasta. As duas coisas na mesma linha da ficha, e a ficha
+hoje não sabe disso.
+
+### O QUE ISTO DERRUBA, varrido no disco
+
+**Vinte e duas rolagens publicadas passam a ser ilegais.** Nenhuma delas é conserto de uma
+palavra: cada uma precisa virar outra coisa.
+
+| onde | quantas | o que diz hoje |
+|---|---:|---|
+| `aparencia-virtudes-vontade.md:65` | 1 | *"role a Virtude apropriada somada a um Atributo"* · **é a fonte do padrão** |
+| `vida-ferimentos-cura.md:67` | 1 | Estabilizar sozinho: *"Vigor + Convicção vs Dif 10"* |
+| `condicoes.json:136` | 1 | a mesma frase, escrita na rodada 65 |
+| `regras.json` | 3 | *"Vigor + Convicção (em si mesmo)"*, *"(resistência de fortitude)"*, *"Vontade + Acerto Arcano para segurar"* |
+| `efeitos.json` | 14 | 9 × `Vigor + Convicção`, 2 × `Vontade + Convicção`, 3 × `Vontade + Ocultismo` |
+| `habilidades.json` | 1 | `vontade` na lista de Atributos da Integridade |
+| `aparencia-virtudes-vontade.md:69` | 1 | o *"uma vez por cena"* do Canalizar |
+
+**E o que NÃO cai, pela leitura que eu faço da decisão:** a Vontade e as Virtudes continuam em
+**valores fixos**, que não são rolagens. A **Defesa Mental** (`Raciocínio + Integridade + Vontade
++ Centelha`) e a **Energia** (`(Vigor + Compostura + Raciocínio + Vontade) ÷ 2 + Centelha × 2`)
+ficam como estão. **Esta leitura é minha e a mesa não a confirmou:** se a intenção era tirar a
+Vontade também dos derivados, isso muda a ficha inteira e precisa ser dito.
+
+### A CONSEQUÊNCIA QUE NINGUÉM PEDIU, e é a maior
+
+**As 22 rolagens não mudam só de fórmula: mudam de ESCALA, e por isso mudam de Dificuldade.**
+
+Um pool de `Vigor 4 + Convicção 3` soma 7, rola `3d6+2`, e tem média **12,5** contra a Dif 10 que
+o texto publica. Um teste de Virtude `1d6 + 3` tem média **6,5**, e contra Dif 10 é
+**impossível**. **Nenhuma das 22 Dificuldades publicadas sobrevive à troca de fórmula**, e é por
+isso que a mesa já falou em Dificuldade básica 5 ou 6 para esse tipo de teste.
+
+### A MEDIÇÃO QUE A PRÓXIMA DECISÃO VAI QUERER
+
+As Virtudes vão de **1 a 6** (`virtudes.json`, seis degraus). Com sucesso sendo `total > Dif`:
+
+| Virtude | Dif 5 | Dif 6 |
+|---:|---:|---:|
+| 1 | 33% | 17% |
+| 2 | 50% | 33% |
+| 3 | 67% | 50% |
+| 4 | 83% | 67% |
+| 5 | **100%** | 83% |
+| 6 | 100% | **100%** |
+
+**A Dificuldade 6 mapeia a escada inteira sem desperdício:** um sexto por nível, e só a Virtude 6
+passa sempre. **A Dificuldade 5 satura no 5**, e aí os dois degraus mais caros da escada viram o
+mesmo número na mesa.
