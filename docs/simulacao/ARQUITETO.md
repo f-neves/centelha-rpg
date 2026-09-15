@@ -282,6 +282,25 @@ em que foram pensadas.
 dizer isso para quem executou é parte do conserto. Caso contrário a próxima correção chega a alguém
 que está tentando adivinhar qual das duas mensagens valia.
 
+### 5.2.2 · Decisão que cruza uma revisão em curso chega tarde para ser medida
+
+**Escrito em 15/09/2026, e é a irmã da regra acima, com a Revisora no lugar da Executora.** A
+mesa decidiu a régua do arredondamento (`M-21c`) com a revisão da rodada 75 já correndo, e eu
+mandei a decisão à Revisora como nota de estado, para ela não gastar achado com uma direção que
+tinha acabado de mudar. Ela absorveu e o veredito não mudou.
+
+**O que isso custou, e quem disse foi ela:** a ordem que ela mediu depois (consertar o extrator
+ANTES de escrever os exemplos ímpares novos) só apareceu porque a decisão chegou DEPOIS do
+veredito escrito. Se a régua nova tivesse vindo junto com o aviso, ela teria medido o portão
+contra ela e provavelmente não teria separado as duas coisas · o achado teria nascido inteiro,
+em vez de em duas metades que eu tive de juntar.
+
+**A regra:** decisão de mesa que toca a FAIXA em revisão vai no aviso, ou espera o veredito.
+Tomada no meio, ela não é erro e não se esconde, mas quem revisa não pode medir contra ela, e o
+que sai é uma revisão sobre uma régua que já mudou. Desta vez saiu barato e até melhorou a ordem
+da rodada seguinte; o custo dela é invisível quando é caro, que é exatamente o motivo de estar
+escrita.
+
 ### 5.3 · Quem revisa fala em três momentos
 
 Quando revisa um lote, quando acha algo que bloqueia, e quando é perguntado. Não a cada
