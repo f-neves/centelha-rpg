@@ -1286,3 +1286,129 @@ em que isso custa faz o Mestre **poder devolver 1 de Força de Vontade** (ou out
 critério dele). Não contradiz a decisão, porque é recompensa discricionária e não relógio, e por
 isso não mexi nele. **Mas muda a conta do segundo resíduo:** o teto por cena, se existir, terá de
 contar três torneiras e não duas, e a terceira é a única que já estava no ar.
+
+---
+
+## Achados da execução · rodada 63 · os três simuladores
+
+Os três voltaram a rodar (`exit 0`, sem `NaN` e sem `undefined`). O que segue é o que a execução
+mediu e o que ela deixou ESCRITO em vez de consertar por iniciativa.
+
+### `A-13` · as duas doenças eram duas, e agora por observação
+
+O Arquiteto separou o `NaN` do estouro do mapa de armaduras e pediu que eu dissesse se ele estava
+certo. Está, e não por leitura: com a tradução de armadura, escudo e Quase-Acerto JÁ FEITA, uma
+cópia do `sim-defesas` com **só** a rotina velha de XP de volta imprime as seis linhas em `NaN` e
+**continua rodando até o fim**, exit 0. Consertar armadura não encosta no `NaN`; consertar o `NaN`
+não encosta em armadura.
+
+- doença 1 (`NaN`, só no `sim-defesas`): dez leituras de `xp.<chave>.valor`, e a tabela de XP não
+  tem mais o campo `valor` (hoje é `{tipo, base, mult, piso}`). É literalmente a causa do `C-49`.
+- doença 2 (estouro, nos três): `ARM['leve']` não existe, porque `leve` deixou de ser um `id` e
+  virou o campo `classe`.
+
+### `A-14` · a tradução dos ids, decidida por número e não por nome
+
+O despacho perguntou se `'leve'` virou `couro` ou `gambeson`. A resposta estava no histórico: os
+catálogos VELHOS nomeiam o próprio representante, e o número confere.
+
+| o que o script lia | virou | a medida que decide |
+| --- | --- | --- |
+| `armadura: 'leve'` | `couro` | em `2d64777^` o registro de `id: "leve"` se chamava **"Leve (couro)"**, com `soak: 2` e `protecao: 1`. O `couro` de hoje: Corte 2, `resistPerf` 1. Bate nos dois. O `gambeson` daria Corte 4 e `resistPerf` 0. |
+| `armadura: 'media'` | `malha` | o registro de `id: "media"` se chamava **"Média (malha)"**. E a escolha é INERTE para estes scripts: as três médias (malha, brigandina, lamelar) têm Corte 6, `resistPerf` 1 e `penalidade` 2 iguais, e as duas armas usadas (espada curta e longa) são de Corte. |
+| `escudo: 'escudo'` | `redondo` | em `d502eeb` o `id: "escudo"` era "O padrão", `bloqueio: 2`. O único escudo de hoje com `bloqCaC` 2 é o `redondo` ("o melhor todo-terreno barato"). |
+| `escudo: 'broquel'` | `broquel` | sobreviveu com o mesmo nome e o mesmo número: `bloqueio: 1` então, `bloqCaC: 1` hoje. |
+
+A `penalidade` é idêntica dentro de cada classe (leve 1·1, média 2·2·2, pesada 3·3·3), então a
+escolha do representante **não move o termo de Esquiva** em nenhum dos três. Ela só poderia mover
+a Absorção, e no caso da média não move nem isso.
+
+### `A-15` · a forma dos registros, campo a campo
+
+Sete campos mortos, os mesmos nos três (a resolução de dano é copiada entre eles). Nenhum foi
+tapado com `|| 0`: cada um foi ligado ao seu correspondente vivo.
+
+| campo morto | correspondente vivo | onde a regra mora hoje |
+| --- | --- | --- |
+| `arm.esquiva` (somava) | `arm.penalidade` (subtrai) | `combate-resumo.ts:146` faz `defesa({...}) - penFisica` |
+| `esc.bloqueio` | `esc.bloqCaC` | renomeado em `096db36` |
+| `armDef.soak` (número) | `armDef.soak[categoria]` | `2d64777` partiu a Absorção em Impacto/Corte/Perfuração. A categoria sai do `tipoDano` da arma, e `perfurante` lê `perfuracao` |
+| `armDef.protecao` | `armDef.resistPerf` | `calc.ts:169`, `gatePerfuracaoAbre(modo, perfArma, resistPerf)` |
+| `armDef.reducaoQA` | `regras.quaseAcerto.porClasseArmadura[classe].reducao` | `096db36` tirou os números dos registros e fez tabela por classe |
+| `wpn.bonusQA` · `wpn.danoQA` | `qaDaArma(id).bonus` · `.dano` | mesma tabela, do lado da arma, com a classe saindo do dano médio |
+| `xp.<chave>.valor` | `custoPontos(chave, ...)` | `calc.ts:229` |
+
+**Nenhuma fórmula foi recopiada.** Os três passaram a importar `calc.ts` e `quase-acerto.ts` pela
+ponte que já existia (`scripts/sim/lib-ponte.mjs`, com a lista de exportações estendida), que é o
+mesmo remédio da rodada 60 no `cost-examples.mjs`. A segunda cópia da regra é o que matou estes
+scripts, e deixá-la viva teria marcado a data da próxima morte.
+
+### `A-16` · um campo cujo NOME sobreviveu e cuja FORMA mudou
+
+A varredura por nome de campo dá VERDE em `armadura.soak`, porque a chave existe. Em
+`sim-caps.mjs:143` ela ia direto para dentro de uma string, e o `|| 0` não salva: objeto é sempre
+verdadeiro. A saída imprimia `soak(let) 2[object Object]`. Quem pegou foi ler a saída, não a
+varredura. Corrigido para ler a categoria do dano.
+
+### `A-17` · quatro divergências entre o simulador e o motor, ESCRITAS e não consertadas
+
+Todas são anteriores a esta rodada e nenhuma impede o script de rodar. Consertar qualquer uma
+muda o número, e isso é decisão de mesa.
+
+1. **Portão de Perfuração, erro de um.** O script bloqueia quando `pen <= resistPerf`
+   (`sim-defesas.mjs:181` e os pares nos outros dois); o motor abre quando `pen >= resistPerf`
+   (`calc.ts:172`). No empate o script anula o dano e o motor deixa passar.
+2. **Margem do Quase-Acerto.** O script usa `bônus da arma + Centelha do atacante`; o motor usa
+   `bônus da arma + bônus da ARMADURA do alvo` (`quase-acerto.ts`, `regras.json → quaseAcerto`).
+   São duas contas diferentes: o script premia a Centelha, o motor premia raspar um alvo blindado.
+3. **Quanto faltou para acertar.** O script compara `Defesa − soma`; o motor usa
+   `errouPor = Defesa − total + 1`, porque a regra do acerto é `total > Defesa` e empate não
+   passa. O script raspa uma unidade menos do que o motor.
+4. **A armadura ficou um ponto mais pesada na Esquiva.** A tabela velha dava `esquiva` 0 / −1 / −2
+   para leve / média / pesada; a `penalidade` de hoje é 1 / 2 / 3. A tradução é fiel ao disco de
+   hoje, mas significa que estes scripts, comparados às medições antigas, dão um ponto de Defesa a
+   menos em toda classe, inclusive na leve, que antes não custava nada.
+
+E uma consequência da tabela de XP, que não é divergência e sim regra nova: a Centelha hoje é
+`"tipo": "gratis"`, então o núcleo de XP das builds do `sim-defesas` não cobra mais por ela.
+
+### `A-18` · o número que foi pedido, e o que ele revela
+
+**Quantos Ticks dura uma luta típica.** Duelo espelhado entre dois ofensivos do mesmo tier,
+regime `as-is` (conteúdo de hoje), com a regra viva na defesa (Centelha flat):
+
+- tier 1 (Centelha 1): **63 Ticks**
+- tier 2 (Centelha 3): **76 Ticks**
+- tier 3 (Centelha 5): **97 Ticks**
+
+Com espada curta a 5 Ticks por golpe, 63 Ticks são cerca de doze trocas para cada lado.
+
+**E a luta típica não é o caso ruim.** Dois DEFENSIVOS iguais ("Muralha", média mais escudo) não
+se matam: 100% de impasse no teto de 600 Ticks, em todos os três tiers e nas três variantes de
+defesa. O mesmo acontece com dois OFENSIVOS se você trocar a armadura deles por
+`placa-completa` mais `heater`: 100% de impasse, em todos os tiers.
+
+Esse par de resultados é também a prova de que a armadura CHEGA no número em vez de virar zero
+em silêncio: mesmo duelo T1, mesma regra, pelado **50** Ticks, com `couro` e `redondo` **63**, com
+`placa-completa` e `heater` **a luta não termina**.
+
+### `A-19` · o custo dos três, para a decisão do portão
+
+Medido nesta máquina, `exit 0` conferido em cada um:
+
+| script | tempo |
+| --- | --- |
+| `sim-defesas.mjs` | 8,8 s (8834 ms e 8623 ms em duas medidas) |
+| `sim-caps.mjs` | 2,8 s |
+| `sim-grupo.mjs` | 4,2 s |
+
+Os três juntos custam cerca de 16 s. O `validate` inteiro custa 7 s hoje, e ele roda a cada
+commit pelo gancho. **A decisão de pôr os três no portão, e em qual modo, é do Arquiteto**, e eu
+não a tomei. Registro só o que a medida diz: no `validate` eles mais que triplicam o custo de todo
+commit do repositório; no `smoke` o custo cai sobre o CI, que já é mais lento.
+
+Um segundo ponto que a decisão precisa: **os três usam `Math.random()` sem semente.** Rodados
+duas vezes seguidas devolvem números diferentes. Como portão eles só podem cobrar faixa, nunca
+igualdade, ou ficam vermelhos sozinhos. E o `test-portoes.mjs` cobra que todo `scripts/test-*.mjs`
+esteja num dos dois modos; estes se chamam `sim-*`, então hoje eles estão fora dessa cobrança e
+entrar no portão é escolha, não obrigação.

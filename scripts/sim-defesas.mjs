@@ -11,25 +11,39 @@ import regras from '../src/data/regras.json' with { type: 'json' };
 import armasJ from '../src/data/armas.json' with { type: 'json' };
 import armadurasJ from '../src/data/armaduras.json' with { type: 'json' };
 import escudosJ from '../src/data/escudos.json' with { type: 'json' };
+import { carregarLib } from './sim/lib-ponte.mjs';
+
+// As regras vivas, importadas e não recopiadas. O que matou estes três foi
+// justamente a segunda cópia: custo de XP, Quase-Acerto e forma da armadura
+// mudaram em `src/` e o script ficou lendo campos que não existem mais.
+const LIB = await carregarLib();
 
 const ARMAS = Object.fromEntries(armasJ.map((a) => [a.id, a]));
 const ARM = Object.fromEntries(armadurasJ.map((a) => [a.id, a]));
 const ESC = Object.fromEntries(escudosJ.map((a) => [a.id, a]));
 const fl = Math.floor, ce = Math.ceil;
+
+// A absorção da armadura deixou de ser um número e virou um objeto de três
+// categorias (`2d64777`). O modo de dano da arma diz qual categoria ler, e o
+// nome do modo perfurante não é o nome da categoria.
+const CAT_DANO = { impacto: 'impacto', corte: 'corte', perfurante: 'perfuracao' };
+const soakDe = (arm, tipoDano) => (arm?.soak?.[CAT_DANO[tipoDano] || 'impacto'] || 0);
+// Os quatro números do Quase-Acerto saíram dos registros de arma e de armadura
+// e viraram tabela por CLASSE em `regras.json` (`096db36`).
+const qaArma = (id) => LIB.qaDaArma(id);
+const qaArmadura = (arm) => LIB.qaDeArmaduras([{ classe: arm?.classe }]);
 const d6 = () => (Math.random() * 6 | 0) + 1;
 const rollN = (n) => { let s = 0; for (let i = 0; i < n; i++) s += d6(); return s; };
 
-// ---------- custo de XP (espelha calc.ts) ----------
-const xp = regras.xp, pisos = regras.pisos;
-const sumStep = (mult, de, ate) => { let c = 0; for (let v = de + 1; v <= ate; v++) c += v * mult; return c; };
-function custoAtributo(v) { return sumStep(xp.atributo.valor, pisos.atributo, v); }
-function custoHabPrim(v) { return sumStep(xp.habilidadePrimaria.valor, pisos.habilidade, v); }
-function custoHabSec(v) { return sumStep(xp.habilidadeSecundaria.valor, pisos.habilidade, v); }
-function custoVirtude(v) { return sumStep(xp.virtude.valor, pisos.virtude, v); }
-function custoVontade(v) { return sumStep(xp.vontade.valor, pisos.vontade, v); }
-function custoCentelha(v) { return sumStep(xp.centelha.valor, pisos.centelha, v); }
-const custoTecnica = (banda) => banda * xp.tecnica.valor;
-function custoArte(nivel) { let c = 0; for (let n = 1; n <= nivel; n++) c += n * xp.arte.valor; return c; }
+// ---------- custo de XP (vem de calc.ts, sem segunda cópia) ----------
+const pisos = regras.pisos;
+const custoAtributo = (v) => LIB.custoPontos('atributo', undefined, v);
+const custoHabPrim = (v) => LIB.custoPontos('habilidadePrimaria', undefined, v);
+const custoVirtude = (v) => LIB.custoPontos('virtude', undefined, v);
+const custoVontade = (v) => LIB.custoPontos('vontade', undefined, v);
+const custoCentelha = (v) => LIB.custoPontos('centelha', undefined, v);
+const custoTecnica = (nivel) => LIB.custoTecnica(nivel);
+const custoArte = (nivel) => LIB.custoArte(nivel);
 
 // soma o XP "núcleo" (traços que importam no duelo) de uma build
 function xpCore(b) {
@@ -38,7 +52,7 @@ function xpCore(b) {
   for (const v of [b.des, b.vigor, b.forca, b.raciocinio, b.percepcao, b.inteligencia]) c += custoAtributo(v || pisos.atributo);
   // perícias primárias relevantes
   for (const v of [b.weaponSkill, b.esquivaSkill, b.escudosSkill, b.prontidao, b.ocultismo, b.atletismo, b.resistencia]) c += custoHabPrim(v || 0);
-  c += (b.espWeapon || 0) * xp.especialidadePrimaria.valor + (b.espEsquiva || 0) * xp.especialidadePrimaria.valor;
+  c += LIB.custoEspecialidade(b.espWeapon || 0) + LIB.custoEspecialidade(b.espEsquiva || 0);
   // virtudes (assume Valor/Convicção relevantes; resto piso 1)
   for (const v of [b.valor || 1, b.conviccao || 1, b.temperanca || 1, b.compaixao || 1]) c += custoVirtude(v);
   for (const t of b.tecnicas || []) c += custoTecnica(t);
@@ -56,7 +70,7 @@ const BUILDS = {
     des: 5, vigor: 4, forca: 4, raciocinio: 3, percepcao: 3,
     weaponSkill: 5, esquivaSkill: 4, prontidao: 4, atletismo: 3, resistencia: 2,
     espWeapon: 2, espEsquiva: 1, valor: 4, conviccao: 3, temperanca: 2, vontade: 7,
-    arma: 'espada-curta', armadura: 'leve', escudo: 'nenhum',
+    arma: 'espada-curta', armadura: 'couro', escudo: 'nenhum',
     tecnicas: [1, 1, 1, 1, 1, 2, 2, 3], // Fúria, Postura Fluida, Bote, Golpe do Titã etc.
   },
   t1def: {
@@ -64,7 +78,7 @@ const BUILDS = {
     des: 4, vigor: 5, forca: 4, raciocinio: 2, percepcao: 2,
     weaponSkill: 4, esquivaSkill: 4, escudosSkill: 4, prontidao: 3, resistencia: 4,
     espWeapon: 1, espEsquiva: 2, valor: 3, conviccao: 3, temperanca: 3, vontade: 7,
-    arma: 'espada-longa', armadura: 'media', escudo: 'escudo',
+    arma: 'espada-longa', armadura: 'malha', escudo: 'redondo',
     tecnicas: [1, 1, 1, 1, 2, 2], // Aparar, Reflexos de Vento, Pele Curtida etc.
   },
   // ===== TIER 2 — Centelha 3, alguns Caminhos, alvo 1500 XP =====
@@ -73,7 +87,7 @@ const BUILDS = {
     des: 5, vigor: 4, forca: 5, raciocinio: 4, percepcao: 3,
     weaponSkill: 5, esquivaSkill: 5, prontidao: 4, atletismo: 4, resistencia: 3,
     espWeapon: 3, espEsquiva: 2, valor: 4, conviccao: 4, temperanca: 3, vontade: 8,
-    arma: 'espada-curta', armadura: 'leve', escudo: 'nenhum',
+    arma: 'espada-curta', armadura: 'couro', escudo: 'nenhum',
     tecnicas: [1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 4, 5], // toolbox de herói
   },
   t2def: {
@@ -81,7 +95,7 @@ const BUILDS = {
     des: 4, vigor: 5, forca: 5, raciocinio: 3, percepcao: 3,
     weaponSkill: 5, esquivaSkill: 5, escudosSkill: 5, prontidao: 4, resistencia: 5,
     espWeapon: 2, espEsquiva: 3, valor: 4, conviccao: 4, temperanca: 4, vontade: 8,
-    arma: 'espada-longa', armadura: 'media', escudo: 'escudo',
+    arma: 'espada-longa', armadura: 'malha', escudo: 'redondo',
     tecnicas: [1, 1, 1, 1, 2, 2, 2, 3, 3, 4, 5],
   },
   // ===== TIER 3 — Centelha 5, Caminhos + Arcano, alvo 1800 XP =====
@@ -90,7 +104,7 @@ const BUILDS = {
     des: 5, vigor: 4, forca: 5, raciocinio: 4, percepcao: 3, inteligencia: 5,
     weaponSkill: 5, esquivaSkill: 5, prontidao: 4, atletismo: 4, ocultismo: 5,
     espWeapon: 3, espEsquiva: 2, valor: 4, conviccao: 4, temperanca: 3, vontade: 9,
-    arma: 'espada-curta', armadura: 'leve', escudo: 'nenhum',
+    arma: 'espada-curta', armadura: 'couro', escudo: 'nenhum',
     tecnicas: [1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 4, 5],
     artes: [5, 3], // Fogo 5, Forças 3
   },
@@ -99,7 +113,7 @@ const BUILDS = {
     des: 4, vigor: 5, forca: 5, raciocinio: 3, percepcao: 3, inteligencia: 4,
     weaponSkill: 5, esquivaSkill: 5, escudosSkill: 5, prontidao: 4, resistencia: 5, ocultismo: 4,
     espWeapon: 2, espEsquiva: 3, valor: 4, conviccao: 5, temperanca: 4, vontade: 9,
-    arma: 'espada-longa', armadura: 'media', escudo: 'escudo',
+    arma: 'espada-longa', armadura: 'malha', escudo: 'redondo',
     tecnicas: [1, 1, 1, 1, 2, 2, 2, 3, 3, 4, 5],
     artes: [4, 2], // Proteção 4, Cura 2
   },
@@ -117,10 +131,10 @@ const DEFVAR = {
 // valor PASSIVO de Defesa (melhor entre Esquiva e Bloqueio)
 function defesaValor(b, centTerm, mod = 0) {
   const arm = ARM[b.armadura], esc = ESC[b.escudo], wpn = ARMAS[b.arma];
-  const esq = (b.des + b.esquivaSkill) * 2 + (b.espEsquiva || 0) + centTerm + (arm.esquiva || 0);
+  const esq = (b.des + b.esquivaSkill) * 2 + (b.espEsquiva || 0) + centTerm - (arm.penalidade || 0);
   // bloqueio: usa a maior perícia de bloqueio; armadura NÃO penaliza bloqueio
   const blqSkill = Math.max(b.escudosSkill || 0, b.weaponSkill || 0);
-  const blq = (b.des + blqSkill) * 2 + (b.espEsquiva || 0) + centTerm + (wpn.defesaArma || 0) + (esc.bloqueio || 0);
+  const blq = (b.des + blqSkill) * 2 + (b.espEsquiva || 0) + centTerm + (wpn.defesaArma || 0) + (esc.bloqCaC || 0);
   return Math.max(esq, blq) + mod;
 }
 
@@ -176,15 +190,15 @@ function umGolpe(att, def, centTermDef, regime, atkBonus, woundsOn, atkPV, defPV
     const letal = wpn.tipoDano !== 'impacto';
     let soak = letal ? fl(def.vigor / 2) : def.vigor;
     const ruptura = wpn.tags?.includes('ruptura');
-    soak += ruptura && !letal ? 0 : (armDef.soak || 0); // ruptura ignora soak de armadura (impacto)
+    soak += ruptura && !letal ? 0 : soakDe(armDef, wpn.tipoDano); // ruptura ignora soak de armadura (impacto)
     // penetração (perfurante): Pen ≤ Proteção anula
-    if (wpn.tipoDano === 'perfurante' && (wpn.pen || 0) <= (armDef.protecao || 0)) return { hit: true, dano: 0, qa: false };
+    if (wpn.tipoDano === 'perfurante' && (wpn.pen || 0) <= (armDef.resistPerf || 0)) return { hit: true, dano: 0, qa: false };
     return { hit: true, dano: Math.max(0, raw - soak) };
   }
   // ERRO: quase-acerto?
-  const margemQA = (wpn.bonusQA || 0) + att.centelha;
+  const margemQA = qaArma(att.arma).bonus + att.centelha;
   if (D - atkSum <= margemQA) {
-    const dano = Math.max(0, (wpn.danoQA || 0) - (armDef.reducaoQA || 0));
+    const dano = Math.max(0, qaArma(att.arma).dano - qaArmadura(armDef).reducao);
     return { hit: false, qa: true, dano };
   }
   return { hit: false, qa: false, dano: 0 };
@@ -342,8 +356,8 @@ function eDanoQA(att, def, valvula, N = 60000) {
     if (r.hit) { dano += r.dano; }
     else if (r.qa) {
       qas++;
-      const base = valvula === 'atual' ? Math.max(0, (wpn.danoQA || 0) - (armDef.reducaoQA || 0))
-        : Math.max(0, (wpn.danoQA || 0) + att.centelha - (armDef.reducaoQA || 0));
+      const base = valvula === 'atual' ? Math.max(0, qaArma(att.arma).dano - qaArmadura(armDef).reducao)
+        : Math.max(0, qaArma(att.arma).dano + att.centelha - qaArmadura(armDef).reducao);
       dano += base;
     }
   }

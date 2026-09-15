@@ -8,10 +8,26 @@ import regras from '../src/data/regras.json' with { type: 'json' };
 import armasJ from '../src/data/armas.json' with { type: 'json' };
 import armadurasJ from '../src/data/armaduras.json' with { type: 'json' };
 import escudosJ from '../src/data/escudos.json' with { type: 'json' };
+import { carregarLib } from './sim/lib-ponte.mjs';
+
+// As regras vivas, importadas e não recopiadas: o Quase-Acerto virou tabela por
+// classe em `regras.json` e a armadura virou absorção por categoria, e este
+// script lia os campos antigos, que hoje não existem.
+const LIB = await carregarLib();
 const ARMAS = Object.fromEntries(armasJ.map((a) => [a.id, a]));
 const ARM = Object.fromEntries(armadurasJ.map((a) => [a.id, a]));
 const ESC = Object.fromEntries(escudosJ.map((a) => [a.id, a]));
 const fl = Math.floor, ce = Math.ceil;
+
+// A absorção da armadura deixou de ser um número e virou um objeto de três
+// categorias (`2d64777`). O modo de dano da arma diz qual categoria ler, e o
+// nome do modo perfurante não é o nome da categoria.
+const CAT_DANO = { impacto: 'impacto', corte: 'corte', perfurante: 'perfuracao' };
+const soakDe = (arm, tipoDano) => (arm?.soak?.[CAT_DANO[tipoDano] || 'impacto'] || 0);
+// Os quatro números do Quase-Acerto saíram dos registros de arma e de armadura
+// e viraram tabela por CLASSE em `regras.json` (`096db36`).
+const qaArma = (id) => LIB.qaDaArma(id);
+const qaArmadura = (arm) => LIB.qaDeArmaduras([{ classe: arm?.classe }]);
 const d6 = () => (Math.random() * 6 | 0) + 1;
 const rollN = (n) => { let s = 0; for (let i = 0; i < n; i++) s += d6(); return s; };
 
@@ -22,7 +38,7 @@ const skillBoosts = (c) => ALLOT[c].flatMap((x) => [x, x]).sort((a, b) => b - a)
 
 // duelista de Destreza maximizado: maior reforço de atributo → Des; os dois
 // maiores reforços de perícia → arma e esquiva; o 3º → escudos (bloqueio).
-function maxDuelista(c, arma = 'espada-curta', armadura = 'leve', escudo = 'broquel') {
+function maxDuelista(c, arma = 'espada-curta', armadura = 'couro', escudo = 'broquel') {
   const sk = skillBoosts(c);
   const des = 5 + maxBoost(c);
   // 2º maior reforço de atributo → Vigor (PV/soak)
@@ -50,9 +66,9 @@ const DEFVAR = {
 // Plano B: Centelha também soma à SOMA do ataque
 function defesaValor(b, centTerm) {
   const arm = ARM[b.armadura], esc = ESC[b.escudo], wpn = ARMAS[b.arma];
-  const esq = (b.des + b.esquivaSkill) * 2 + b.espEsquiva + centTerm + (arm.esquiva || 0);
+  const esq = (b.des + b.esquivaSkill) * 2 + b.espEsquiva + centTerm - (arm.penalidade || 0);
   const blqSkill = Math.max(b.escudosSkill || 0, b.weaponSkill || 0);
-  const blq = (b.des + blqSkill) * 2 + b.espEsquiva + centTerm + (wpn.defesaArma || 0) + (esc.bloqueio || 0);
+  const blq = (b.des + blqSkill) * 2 + b.espEsquiva + centTerm + (wpn.defesaArma || 0) + (esc.bloqCaC || 0);
   return Math.max(esq, blq);
 }
 function ferimento(hp, hpMax) {
@@ -78,12 +94,12 @@ function umGolpe(att, def, centTermDef, { planoB = false, qaC = false, wounds = 
     const forcaAp = wpn.maos === 2 ? att.forca : ce(att.forca / 2);
     const raw = rollN(wd) + (wpn.tags?.includes('distância') ? 0 : forcaAp);
     const letal = wpn.tipoDano !== 'impacto';
-    let soak = (letal ? fl(def.vigor / 2) : def.vigor) + (armDef.soak || 0);
-    if (wpn.tipoDano === 'perfurante' && (wpn.pen || 0) <= (armDef.protecao || 0)) return { hit: true, dano: 0 };
+    let soak = (letal ? fl(def.vigor / 2) : def.vigor) + soakDe(armDef, wpn.tipoDano);
+    if (wpn.tipoDano === 'perfurante' && (wpn.pen || 0) <= (armDef.resistPerf || 0)) return { hit: true, dano: 0 };
     return { hit: true, dano: Math.max(0, raw - soak), margem };
   }
-  const margemQA = (wpn.bonusQA || 0) + att.centelha;
-  if (D - atkSum <= margemQA) return { hit: false, qa: true, dano: Math.max(0, (wpn.danoQA || 0) + (qaC ? att.centelha : 0) - (armDef.reducaoQA || 0)) };
+  const margemQA = qaArma(att.arma).bonus + att.centelha;
+  if (D - atkSum <= margemQA) return { hit: false, qa: true, dano: Math.max(0, qaArma(att.arma).dano + (qaC ? att.centelha : 0) - qaArmadura(armDef).reducao) };
   return { hit: false, qa: false, dano: 0 };
 }
 
@@ -124,7 +140,7 @@ console.log('C | Des wpn esq esc Vig | pool ataque | Defesa flat | Defesa 2C | P
 for (let c = 0; c <= 5; c++) {
   const b = DUEL[c], soma = b.des + b.weaponSkill, dd = fl(soma / 2), bo = soma % 2 ? 2 : 0;
   const atk = `${dd}d6${bo ? '+2' : ''}+${(ARMAS[b.arma].acerto || 0) + b.espWeapon}`;
-  console.log(`${c} |  ${b.des}   ${b.weaponSkill}   ${b.esquivaSkill}   ${b.escudosSkill}   ${b.vigor}  | ${atk.padEnd(11)} |    ${defesaValor(b, c)}      |    ${defesaValor(b, 2 * c)}    | ${pv(b)} |   ${fl(b.vigor / 2) + (ARM[b.armadura].soak || 0)}`);
+  console.log(`${c} |  ${b.des}   ${b.weaponSkill}   ${b.esquivaSkill}   ${b.escudosSkill}   ${b.vigor}  | ${atk.padEnd(11)} |    ${defesaValor(b, c)}      |    ${defesaValor(b, 2 * c)}    | ${pv(b)} |   ${fl(b.vigor / 2) + soakDe(ARM[b.armadura], ARMAS[b.arma].tipoDano)}`);
 }
 
 function matchup(cLo, cHi, label) {

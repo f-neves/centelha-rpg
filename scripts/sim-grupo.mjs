@@ -9,10 +9,26 @@ import regras from '../src/data/regras.json' with { type: 'json' };
 import armasJ from '../src/data/armas.json' with { type: 'json' };
 import armadurasJ from '../src/data/armaduras.json' with { type: 'json' };
 import escudosJ from '../src/data/escudos.json' with { type: 'json' };
+import { carregarLib } from './sim/lib-ponte.mjs';
+
+// As regras vivas, importadas e não recopiadas: o Quase-Acerto virou tabela por
+// classe em `regras.json` e a armadura virou absorção por categoria, e este
+// script lia os campos antigos, que hoje não existem.
+const LIB = await carregarLib();
 const ARMAS = Object.fromEntries(armasJ.map((a) => [a.id, a]));
 const ARM = Object.fromEntries(armadurasJ.map((a) => [a.id, a]));
 const ESC = Object.fromEntries(escudosJ.map((a) => [a.id, a]));
 const fl = Math.floor, ce = Math.ceil;
+
+// A absorção da armadura deixou de ser um número e virou um objeto de três
+// categorias (`2d64777`). O modo de dano da arma diz qual categoria ler, e o
+// nome do modo perfurante não é o nome da categoria.
+const CAT_DANO = { impacto: 'impacto', corte: 'corte', perfurante: 'perfuracao' };
+const soakDe = (arm, tipoDano) => (arm?.soak?.[CAT_DANO[tipoDano] || 'impacto'] || 0);
+// Os quatro números do Quase-Acerto saíram dos registros de arma e de armadura
+// e viraram tabela por CLASSE em `regras.json` (`096db36`).
+const qaArma = (id) => LIB.qaDaArma(id);
+const qaArmadura = (arm) => LIB.qaDeArmaduras([{ classe: arm?.classe }]);
 const d6 = () => (Math.random() * 6 | 0) + 1;
 const rollN = (n) => { let s = 0; for (let i = 0; i < n; i++) s += d6(); return s; };
 
@@ -20,7 +36,7 @@ const ALLOT = { 0: [], 1: [1, 1], 2: [2, 1], 3: [2, 1, 1], 4: [2, 2, 1, 1], 5: [
 const maxBoost = (c) => (ALLOT[c].length ? Math.max(...ALLOT[c]) : 0);
 const skillBoosts = (c) => ALLOT[c].flatMap((x) => [x, x]).sort((a, b) => b - a);
 
-function maxDuelista(c, arma = 'espada-curta', armadura = 'leve', escudo = 'broquel') {
+function maxDuelista(c, arma = 'espada-curta', armadura = 'couro', escudo = 'broquel') {
   const sk = skillBoosts(c), sorted = [...ALLOT[c]].sort((a, b) => b - a);
   return {
     centelha: c, des: 5 + maxBoost(c), vigor: 5 + (sorted[1] || 0), forca: 5 + (sorted[2] || 0),
@@ -32,9 +48,9 @@ const pvMax = (b) => regras.derivados.pv.base + b.vigor * regras.derivados.pv.vi
 
 function defesaValor(b, centTerm) {
   const arm = ARM[b.armadura], esc = ESC[b.escudo], wpn = ARMAS[b.arma];
-  const esq = (b.des + b.esquivaSkill) * 2 + b.espEsquiva + centTerm + (arm.esquiva || 0);
+  const esq = (b.des + b.esquivaSkill) * 2 + b.espEsquiva + centTerm - (arm.penalidade || 0);
   const blqSkill = Math.max(b.escudosSkill || 0, b.weaponSkill || 0);
-  const blq = (b.des + blqSkill) * 2 + b.espEsquiva + centTerm + (wpn.defesaArma || 0) + (esc.bloqueio || 0);
+  const blq = (b.des + blqSkill) * 2 + b.espEsquiva + centTerm + (wpn.defesaArma || 0) + (esc.bloqCaC || 0);
   return Math.max(esq, blq);
 }
 function ferimento(hp, hpM) { const p = hp <= 0 ? 0 : hp / hpM * 100; for (const f of regras.ferimentos) if (p >= f.minPct && p <= f.maxPct) return f; return regras.ferimentos.at(-1); }
@@ -54,12 +70,12 @@ function golpe(att, def, cfg, { flank = 0, extraDice = 0, atkHP, defHP } = {}) {
     const forcaAp = wpn.maos === 2 ? att.forca : ce(att.forca / 2);
     const raw = rollN(wpn.dado + margem + extraDice) + forcaAp;
     const letal = wpn.tipoDano !== 'impacto';
-    let soak = (letal ? fl(def.vigor / 2) : def.vigor) + (armDef.soak || 0);
-    if (wpn.tipoDano === 'perfurante' && (wpn.pen || 0) <= (armDef.protecao || 0)) return 0;
+    let soak = (letal ? fl(def.vigor / 2) : def.vigor) + soakDe(armDef, wpn.tipoDano);
+    if (wpn.tipoDano === 'perfurante' && (wpn.pen || 0) <= (armDef.resistPerf || 0)) return 0;
     return Math.max(0, raw - soak);
   }
-  const margemQA = (wpn.bonusQA || 0) + att.centelha;
-  if (D - atkSum <= margemQA) return Math.max(0, (wpn.danoQA || 0) + (cfg.qaC ? att.centelha : 0) - (armDef.reducaoQA || 0));
+  const margemQA = qaArma(att.arma).bonus + att.centelha;
+  if (D - atkSum <= margemQA) return Math.max(0, qaArma(att.arma).dano + (cfg.qaC ? att.centelha : 0) - qaArmadura(armDef).reducao);
   return 0;
 }
 
