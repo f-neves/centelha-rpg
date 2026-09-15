@@ -1850,7 +1850,7 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Deixa a cura presa no alvo, dormindo, sem gastar a sua ação depois e sem exigir que você esteja perto. Quem decide a hora é o alvo, e ela dispara sozinha se ele cair incapacitado. Um alvo carrega uma cura guardada por vez.",
+    "efeito": "Deixa a cura presa no alvo, dormindo, sem gastar a sua ação depois e sem exigir que você esteja perto. Ela tem dois disparos: o alvo pode soltá-la quando quiser, e ela sai sozinha se ele chegar a zero de Vida. Um alvo carrega uma cura guardada por vez.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
@@ -3776,7 +3776,7 @@
       "alvo": "varios",
       "persiste": true,
       "materia": null,
-      "condicao": "protegido",
+      "condicao": null,
       "condicaoAparente": null,
       "pegaItem": false,
       "arenaInteira": false,

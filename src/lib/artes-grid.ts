@@ -1497,6 +1497,14 @@ export interface EfeitoAtivo {
    * no cliente), e não o nível do Efeito (migração 38). `null` significa "não
    * sabemos": linha de antes da migração, ou cliente que ainda não escreve a
    * coluna. NUNCA lido como 1 (`curaDoEfeito`/`curaPrecisaNivelArte`, acima).
+   *
+   * E É ESTE O NÚMERO QUE VALE POR "O NÍVEL QUE VOCÊ INVESTIU" na Salvaguarda
+   * (decisão do humano, 14/09/2026): ela engole um efeito arcano de nível igual
+   * ou menor ao investido, e o investido é este campo, que a linha já carrega.
+   * **NÃO É PRECISO COLUNA NOVA NEM MIGRAÇÃO** para construir esse gatilho, e
+   * isto está escrito aqui porque a conclusão contrária já foi tirada uma vez,
+   * lendo o `nivel` da linha de cima (que é o do Efeito, e para a Salvaguarda é
+   * sempre 1) em vez deste campo ao lado.
    */
   nivel_arte: number | null;
   /**

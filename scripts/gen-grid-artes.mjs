@@ -155,6 +155,20 @@ const DISSIPA = ['dissipar'];
  * rolagens no mesmo turno).
  * `por-turno` volta sozinho a cada rodada em quem já está preso.
  * `armadilha` dorme até alguém pisar, e gasta-se ao disparar.
+ *
+ * O QUE JÁ ESTÁ DECIDIDO SOBRE `armadilha`, e está aqui para não ser redecidido (14/09/2026,
+ * decisões do humano; o registro inteiro em `docs/simulacao/caixa/59-fila-de-aterrissagem.md`).
+ * Nenhuma delas roda ainda: os quatro continuam pulados na varredura da mesa.
+ *
+ *   · VENCER SEM DISPARAR É SUMIR, e detonar é a exceção que o próprio Efeito declara no
+ *     texto. Dos quatro, só `brasa-retardada` ("ou ao fim de um tempo combinado") e
+ *     `semente-adormecida` ("ou até a hora combinada") declaram, então só essas duas detonam
+ *     ao fim da Duração. `salvaguarda` e `cura-guardada` somem. E isso é o que responde "de
+ *     onde sai o tempo combinado": da Duração já comprada, SEM PARÂMETRO NOVO.
+ *   · "PASSA" E "TOCAR" SÃO A MESMA PORTA, e "tocar" é prosa de sabor. Não construa um verbo
+ *     de tocar para o tabuleiro: ele não existe e não é para existir.
+ *   · A `semente-adormecida` NÃO PÕE CONDIÇÃO NENHUMA. Ela fere e pronto. A palavra "agarra"
+ *     no texto dela é sabor, fica como está, e não é para virar campo nem condição nova.
  */
 const GATILHO = {
   'por-turno': ['fogo-que-nao-apaga', 'esmagar', 'chuva-de-fogo', 'tempestade', 'afogar',
@@ -244,7 +258,18 @@ const CONDICAO = {
   marcado: ['marca-do-fim'],
   amaldicoado: ['azar-marcado'],
   abencoado: ['mare-da-sorte', 'aviso', 'momento-certo'],
-  protegido: ['anteparo', 'barreira', 'pele-de-pedra', 'escudo-de-forca', 'salvaguarda',
+  // A `salvaguarda` SAIU desta lista em 14/09/2026, e sair é a decisão (P6): ela não é
+  // escudo, é gatilho. Entrou aqui junto com os sete de verdade, e a consequência não era
+  // classificação nenhuma · a condição é aplicada por caminho que NÃO olha o gatilho
+  // (`gravarEfeito`, e o ramo de condição do `planoDaSaida`), então um Efeito de NÍVEL 1
+  // dava Absorção +3 em todos os modos, pela duração inteira, sem nunca se gastar, quando o
+  // texto dele promete engolir UM efeito arcano e se gastar ao fazê-lo. Observado na mesa
+  // pela Revisora, não deduzido.
+  //
+  // E ela fica SEM CONDIÇÃO NENHUMA até o gatilho existir (rodada 59b): não fazer nada é
+  // honesto, fazer a coisa errada não é. Não ponha uma condição interina aqui para ela
+  // "não ficar vazia".
+  protegido: ['anteparo', 'barreira', 'pele-de-pedra', 'escudo-de-forca',
     'escudo-de-vento', 'campo-de-alivio', 'santuario'],
   voando: ['asas', 'salto-do-vento'],
   escondido: ['manto-de-treva', 'manto-alheio', 'esconder-a-carga', 'ninguem-passou-por-aqui'],

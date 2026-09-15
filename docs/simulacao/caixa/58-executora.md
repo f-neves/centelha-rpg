@@ -1,7 +1,15 @@
 # Rodada 58 · a família do gatilho `armadilha`, medida
 
-**Rodada de MEDIÇÃO. Nenhuma linha de `src/` mudou**, e por isso o bloco abaixo tem os
-três campos iguais: a árvore que este documento mede é a mesma que já estava no ar.
+**Rodada de MEDIÇÃO. Nenhuma linha de `src/` mudou** nela: a árvore que este documento mede é
+a que já estava no ar.
+
+> **O QUE A RODADA 59a JÁ CONSERTOU DESTE RETRATO (14/09/2026), para ninguém ler o retrato
+> como estado de hoje.** Duas coisas medidas aqui deixaram de valer de propósito: a
+> `salvaguarda` não tem mais `condicao: "protegido"` (saiu da lista do gerador, decisão P6), e
+> a prosa da `cura-guardada` não fala mais em "incapacitado" (passou a dizer os dois disparos,
+> decisão P8). **Tudo o mais que este documento mede continua de pé**, inclusive os quatro
+> Efeitos continuarem sem gatilho nenhum. As correções feitas DENTRO do texto estão marcadas
+> onde estão.
 
 ## COMMIT
 
@@ -48,14 +56,14 @@ relação no `grid.astro`, e nenhuma dessas é leitura do gatilho):
 |---|---|
 | `src/lib/artes-grid-mesa.ts:1535` | comentário da coluna `cura_pontos` |
 | `src/lib/artes-grid-mesa.ts:1544` | a gravação de `cura_pontos` (o chão da migração 39) |
-| `src/lib/artes-grid-mesa.ts:2164` | a EXCLUSÃO da varredura por turno |
+| `src/lib/artes-grid-mesa.ts:2175` | a EXCLUSÃO da varredura por turno |
 | `src/lib/artes-grid.ts:122` | o tipo `Gatilho`, onde a palavra é definida |
 | `scripts/validate-data.mjs:155` | o vocabulário fechado que o `validate` cobra |
 | `scripts/gen-grid-artes.mjs:157` | comentário: "dorme até alguém pisar, e gasta-se ao disparar" |
-| `scripts/gen-grid-artes.mjs:162` | **a lista dos quatro nomes, escrita à mão** |
+| `scripts/gen-grid-artes.mjs:176` | **a lista dos quatro nomes, escrita à mão** |
 
 **E a que muda a forma do trabalho é a última.** O bloco `grid` do `efeitos.json` é
-**GERADO**: `gen-grid-artes.mjs` grava o arquivo (`writeFileSync`, linha 396) e o build roda
+**GERADO**: `gen-grid-artes.mjs` grava o arquivo (`writeFileSync`, linha 421) e o build roda
 o `--check`. Então a pertença à família, a condição de cada Efeito e o gatilho de cada um
 **não moram no JSON**, moram no gerador · mexer no JSON direto morre no próximo regen, que é
 exatamente a lição do `bestiario-centelha-b10`. Isto vale para qualquer rodada futura que
@@ -108,7 +116,7 @@ tabuleiro. A (c) não tem campo: `ate_tick` é o VENCIMENTO da linha e `desde_ti
 ela nasce, e nenhum dos dois é "a hora marcada para detonar".
 
 **O gancho.** Nada dispara este Efeito hoje. Ele é pulado na varredura
-(`artes-grid-mesa.ts:2164`) e a condição `em-chamas` não entra porque a lista de alvos de
+(`artes-grid-mesa.ts:2175`) e a condição `em-chamas` não entra porque a lista de alvos de
 uma zona nasce vazia (`gravarEfeito` só põe condição em `extra.alvos`).
 
 ### 2 · `semente-adormecida` (Arte de Vida, nível 3)
@@ -140,7 +148,7 @@ ponto" é ponto de Mana GASTA) já no dado, e o chão da migração 39 de pé.
 
 **As três peças que faltam: CONFIRMADAS, e são de fato as três.** O texto nomeia exatamente
 três coisas (a hora escolhida pelo alvo, o disparo automático na incapacitação, e uma por
-alvo), e nenhuma tem código. `curaPresaDe` (`src/lib/artes-grid.ts:1621`) lê a coluna e não
+alvo), e nenhuma tem código. `curaPresaDe` (`src/lib/artes-grid.ts:1629`) lê a coluna e não
 tem um único chamador na mesa.
 
 **O que existe.** A leitura do valor (`curaPresaDe`) e a cura em si (`curarAlvo`,
@@ -175,13 +183,14 @@ não a que promete.**
 
 O mecanismo, medido e não suposto:
 
-- o bloco `grid` dela carrega `condicao: "protegido"`, posto à mão no gerador
-  (`scripts/gen-grid-artes.mjs:247`, na lista dos oito Efeitos de escudo);
+- o bloco `grid` dela carregava `condicao: "protegido"`, posto à mão no gerador, na lista dos
+  oito Efeitos de escudo (a lista mora hoje em `scripts/gen-grid-artes.mjs:272` e já não tem a
+  `salvaguarda`: a rodada 59a a tirou de lá, e o comentário acima dela conta por quê);
 - `protegido` é `soak: 3`, "Barreira arcana: soma Absorção em todos os modos enquanto durar"
   (`src/data/condicoes.json:238`);
 - a condição é aplicada por **dois caminhos que não olham o gatilho**: na conjuração, o laço
   sobre `extra.alvos` (`src/lib/artes-grid-mesa.ts:1622`); e na saída adiada, o ramo
-  `tipo: 'condicao'` do `planoDaSaida` (`src/lib/artes-grid.ts:1667`), cuja única guarda é
+  `tipo: 'condicao'` do `planoDaSaida` (`src/lib/artes-grid.ts:1675`), cuja única guarda é
   `ef.condicao && alvos.length`.
 
 **ALCANÇÁVEL, e esta é a conferência que faz o achado valer** (a régua da rodada 55: divergência
@@ -198,11 +207,26 @@ engolir UM efeito arcano e se gastar. Não é a promessa cumprida pela metade, �
 **E é por isso que UM dos quatro vaza e três não.** Dos 23 Efeitos de `forma: "alvo"` com
 condição, 18 são `passivo`, 2 `imediato`, 2 `por-turno` e **1 é `armadilha`**. As outras duas
 têm `condicao: null` e não têm o que vazar. A `brasa-retardada` TEM condição (`em-chamas`) e não
-vaza por outro motivo, e este eu li em vez de deduzir: o caminho de chão fecha a chamada com
-`alvos: []` (`src/lib/artes-grid-mesa.ts:1000`), tanto no ramo normal quanto no de escala de
-região (`:912`), então a guarda `alvos.length` do `planoDaSaida` fecha o ramo e `gravarEfeito`
-não tem em quem pôr a condição. **É uma ausência de alvos, e não uma trava**: qualquer rodada
-futura que faça uma zona marcar alvos ao nascer liga o `em-chamas` da brasa junto, sem aviso. **O gatilho `armadilha` foi excluído da varredura e nunca foi excluído
+vaza por outro motivo: ela nunca ganha alvo nenhum.
+
+**REVISADO EM 14/09/2026**, porque a primeira redação desta afirmação era uma negativa
+categórica sobre dois ramos e a Revisora a marcou como não conferida. O que a conferência
+sustenta são TRÊS coisas, e as três juntas, não duas:
+
+1. `conjurar` roteia toda forma de chão para `marcarNoChao` (`src/lib/artes-grid-mesa.ts:839`),
+   e a `brasa-retardada` é `zona`;
+2. `marcarNoChao` tem exatamente dois `gravarEfeito`, o de escala de região
+   (`src/lib/artes-grid-mesa.ts:912`) e o normal (`src/lib/artes-grid-mesa.ts:1000`), e os dois
+   passam `alvos` vazio. Conferido por varredura de TODAS as cinco chamadas de `gravarEfeito`
+   em `src/`: as outras três são `grudarNoAlvo`, `encadear` e `invocar`, e nenhuma monta zona;
+3. o segundo caminho que mexe em alvos depois, o diálogo de corrigir efeito posto, só oferece
+   peças quando `ef.forma === 'alvo'` (`src/lib/artes-grid-mesa.ts:2291`) e só computa a troca
+   sob a mesma guarda (`src/lib/artes-grid-mesa.ts:2309`). **Este terceiro eu não tinha olhado
+   na primeira redação**, e era ele que faltava.
+
+**Continua sendo ausência de alvos e não trava:** nada no código pergunta o gatilho antes de
+pôr condição, e uma rodada futura que faça zona marcar alvos ao nascer liga o `em-chamas` da
+brasa junto, sem aviso. **O gatilho `armadilha` foi excluído da varredura e nunca foi excluído
 do caminho da condição**, e só um Efeito da família cai nessa combinação.
 
 **Não consertei.** Buff errado não é perda de dado, então a exceção permanente do congelamento
@@ -214,7 +238,7 @@ não se aplica, e a rodada é de medição. Decisão do Arquiteto.
 duas sub-famílias do despacho.
 
 **O que os quatro compartilham, e é pequeno:** "dispara uma vez e se gasta". A metade do
-"se gasta" já existe inteira (`encerrarEfeito`, `src/lib/artes-grid-mesa.ts:2360`, que já tira a
+"se gasta" já existe inteira (`encerrarEfeito`, `src/lib/artes-grid-mesa.ts:2371`, que já tira a
 condição dos alvos e limpa a linha). O que falta é chamar o resolvedor e depois ela.
 
 **O que cada um pede de próprio:**
@@ -222,7 +246,7 @@ condição dos alvos e limpa a linha). O que falta é chamar o resolvedor e depo
 | item | o que pede | tamanho |
 |---|---|---|
 | **A · as duas de zona** (`brasa-retardada`, `semente-adormecida`) | a geometria JÁ existe (`dentroDoEfeito`, o mesmo do `ao-entrar`). Falta tirar as duas da exclusão da varredura e resolver uma vez só. A semente soma a rolagem de detecção. | **pequeno**, e é um item só para as duas: mesmo laço, mesma pergunta |
-| **B · `salvaguarda`** | um ponto onde a Arte que CHEGA pergunta se o alvo carrega guarda, mais desfazer o `protegido` de hoje, mais **uma coluna** (abaixo) | **médio, e com migração**, não o "reúso" que eu escrevi primeiro |
+| **B · `salvaguarda`** | um ponto onde a Arte que CHEGA pergunta se o alvo carrega guarda. O `protegido` já foi desfeito na 59a. | **pequeno, e SEM migração** (ver a nota abaixo, corrigida duas vezes) |
 | **C · `cura-guardada`** | o disparo pela mão do alvo (ação de jogo que não existe), a trava de uma por alvo, e o gancho da incapacitação | **o maior dos três**, pelo motivo abaixo |
 
 **O item B custa uma coluna, e eu quase publiquei o contrário.** Escrevi primeiro que a
@@ -235,11 +259,17 @@ que para a Salvaguarda é **sempre 1**, o nível de catálogo, e ela é `escalon
 investido é exatamente o que varia. O `custo.total` (`base + parametros`, `src/lib/artes-grid.ts:377`)
 não é gravado em campo nenhum da linha.
 
-**É o mesmo argumento que o cabeçalho da migração 39 faz para o `cura_pontos`**, com outro
-número: entrada que não sobrevive vira coluna, ou a regra fica sem o número que ela nomeia. Fica
-aberta uma pergunta que é de regra e não minha: se o `nivel_arte` da migração 38 (que JÁ está na
-linha) serve de "o que você investiu", a coluna não é necessária · mas é outro número, e quem
-decide qual dos dois a regra quis dizer é a mesa.
+**E A MESA RESPONDEU, EM 14/09/2026, QUE NÃO HÁ COLUNA: "o nível que você investiu" é o
+`nivel_arte`**, que a migração 38 já gravou e que a linha já carrega
+(`src/lib/artes-grid.ts:1496`, gravado em `src/lib/artes-grid-mesa.ts:1533`). O item B volta a
+ser pequeno, e **esta é a segunda correção do mesmo parágrafo**: primeiro eu o escrevi barato
+lendo só o `dissipar`, depois caro lendo o campo `nivel` (que é o do Efeito, sempre 1 aqui) e
+não o `nivel_arte` ao lado. Fica registrado nos dois erros porque eles têm a mesma forma: um
+campo vizinho com nome parecido respondendo a pergunta errada.
+
+**A trava para a migração fantasma não mora aqui**, e sim no comentário do próprio campo, onde
+quem for construir o gatilho vai olhar (`src/lib/artes-grid.ts:1496`). Documento não impede
+ninguém de reconstruir uma migração.
 
 **E o preço do C não é o que o nome sugere.** "Um gancho no caminho do dano" pressupõe que
 existe UM caminho. **São cinco pontos que baixam Vida hoje**, nomeados:
@@ -329,8 +359,14 @@ antiga, que se perde.
 **Não é a mesma forma de buraco.** Os quatro `ao-tocar` (`arma-elemental`, `arma-conjurada`,
 `projetil-conjurado`, `metal-incandescente`) são armas: são pulados na varredura por turno
 porque quem cobra o dano deles é o GOLPE da arma e não o relógio, e os `passivo` são pulados
-porque o ramo de condição do `planoDaSaida` já os pega. **O `armadilha` é o único pulado na
-varredura sem que ninguém mais o pegue.**
+porque o ramo de condição do `planoDaSaida` já os pega.
+
+**CORRIGIDO EM 14/09/2026, achado da Revisora.** A frase que fechava esta seção dizia que "o
+`armadilha` é o único pulado na varredura sem que ninguém mais o pegue", e ela contradiz o
+QUEBROU desta mesma rodada: o ramo que pega os `passivo` é **exatamente o mesmo** que pega a
+`salvaguarda`, e é por ele que o `protegido` entrava. A frase certa é mais estreita: **dos
+quatro `armadilha`, três não são pegos por ninguém, e a `salvaguarda` era pega pelo ramo de
+condição sem que o gatilho dela fosse consultado**, que é o defeito.
 
 ## O SCRIPT DA MEDIÇÃO
 

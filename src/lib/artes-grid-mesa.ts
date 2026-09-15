@@ -2161,6 +2161,17 @@ export async function verificarEfeitos(ctx: CtxGrid, palco?: HTMLElement): Promi
     // Tick 8 não é obstáculo no 5, e cobrar a mordida antes da hora seria dar de
     // graça os Ticks de montagem que a regra existe para cobrar.
     if (montando(ef, t)) continue;
+    // OS TRÊS PULADOS NÃO SÃO O MESMO CASO, e a diferença é onde a rodada 59b vai mexer.
+    // `ao-tocar` são armas: quem cobra o dano delas é o golpe, não o relógio. `passivo` é
+    // pego pelo ramo de condição do `planoDaSaida`, no Tick em que a Arte sai. `armadilha`
+    // é o único que ninguém mais pega, e é por isso que os quatro dormem.
+    //
+    // O QUE JÁ ESTÁ DECIDIDO PARA QUANDO ELE FOR LIGADO (14/09/2026, decisões do humano; o
+    // registro em `docs/simulacao/caixa/59-fila-de-aterrissagem.md`):
+    //   · vencer sem disparar é SUMIR. Detonar ao fim da Duração é exceção, e só a declaram
+    //     `brasa-retardada` e `semente-adormecida`, pelo texto delas. Não há parâmetro de
+    //     "tempo combinado" para criar: ele É a Duração comprada.
+    //   · "passa" e "tocar" são a MESMA porta. Não há verbo de tocar para construir.
     if (ef.gatilho === 'armadilha' || ef.gatilho === 'passivo' || ef.gatilho === 'ao-tocar') continue;
     const dentro = ef.forma === 'alvo' || ef.forma === 'token'
       ? (ef.alvos || []) : dentroDoEfeito(vigente(ctx, ef), ctx.tokens, escalaM(ctx));
