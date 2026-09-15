@@ -107,8 +107,49 @@ curar um morto o traz de volta em silêncio.
   tem `pv_max` para derivar, e o caminho honesto ali é não adivinhar, deixando o número vir da
   campainha depois da RPC.
 
+### **16:25 · A CORREÇÃO DA MEDIÇÃO, e ela é minha:** faltava a aba Combate
+
+A varredura acima escolheu o escopo `grid.astro` + `artes-grid-mesa.ts` + `supabase/`, e o disse
+em voz alta, **mas a pergunta era sobre a MESA e a aba Combate é mesa**. Ela tem motor de Vida
+próprio, e ele muda a conta:
+
+| onde | o que faz | `pv_max` à mão? |
+|---|---|---|
+| `combate.astro:1338` · `mexerVida` | `Math.max(0, Math.min(pv_max, pv_atual + delta))`, **um ponto só para as duas direções** | exige: `:1336` desiste quando `pv_max` é nulo |
+| `combate.astro:1816` · o formulário de editar a peça | escreve `pv_atual` absoluto, preso ao teto em `:1812` e sem piso | sim |
+| `combate.astro:2151` · encher a barra | escreve `pv_atual = pv_max` | sim |
+
+**Total corrigido: OITO pontos que podem baixar a Vida** (sete no cliente, um no servidor), mais o
+`jogador_muda_peca` genérico. E a aba Combate é a que está em melhor forma das duas: `mexerVida` é
+estrangulamento de verdade, e **já é o único lugar do projeto com gancho de estado no zero**
+(`:1348` põe a condição `caido` quando a Vida chega a 0 vindo de cima).
+
+### **E `pv_max` É NULO DE VERDADE, o que muda a resposta sobre a migração**
+
+`pv_max` é `integer` sem `not null` (`supabase/migracao-2.sql:135`), e não é hipótese: o
+`jogador_invoca` insere `(p_dados->>'pv_max')::int` **sem `coalesce`**
+(`supabase/migracao-22.sql:168`), então uma invocação sem esse campo nasce com o máximo nulo. O
+cliente inteiro já se defende disso (`combate.astro:1336` desiste, `grid.astro:3381` devolve nulo).
+
+**O limite da morte DIVIDE `pv_max`.** Para uma peça de `pv_max` nulo não existe limite nenhum, e
+isso não é conta, é regra: ou essas peças não morrem, ou o `jogador_dano` precisa de um
+comportamento escrito para o caso. **Então "uma migração de uma linha" está incompleto**: a linha é
+pequena, a decisão que ela precisa carregar não é.
+
 ### O que NÃO está medido, porque é decisão e não conta
 
 Quem MARCA a morte. A condição `morto` existe em `condicoes.json` e o mestre a põe à mão; marcar
 sozinho no caminho do dano é gancho novo, e ninguém decidiu se a mesa deve fazer isso ou se a
-morte é anúncio do mestre. **Não construí nada disto.**
+morte é anúncio do mestre. O molde existe e é da própria casa: `combate.astro:1348` já põe `caido`
+ao chegar a zero. **Não construí nada disto.**
+
+### Duas regras PUBLICADAS que a M-21 deixou sem chão, e são decisão da mesa
+
+- **`tecnicas.json` · `inquebrantavel`** (Pele de Pedra, nível 4): *"Dano de Impacto nunca te mata,
+  só nocauteia; +1 ao limiar de morte."* As duas metades caem: a primeira É a regra das duas
+  trilhas, e a segunda mexe num "limiar de morte" que agora é derivado e não tem campo.
+- **A Arte Vida** (`regras.json` · `arcano.outrasArtes` e `efeitos.json:6049`): *"só alcança dano
+  Letal a partir do nível 3"*, um portão sobre uma trilha que deixou de existir.
+
+Nenhuma das duas é conserto de texto: são regras que um jogador compra. Ficaram FORA do escopo do
+portão de propósito, e o comentário dele diz isso.
