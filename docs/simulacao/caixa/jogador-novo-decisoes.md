@@ -174,3 +174,59 @@ mesa que jogar.
 2. **Há teto por cena?** Sem teto, quem descreve bem toda rolagem recupera Vontade em toda
    rolagem, e a reserva deixa de ser escassa · que é o oposto do que os 90 XP do Bram compram.
    Com teto, falta o número. **Este é o que morde primeiro**, e é balanço, não redação.
+
+---
+
+## M-12 · a penalidade de ferimento sai de pontos ou de dados · DECIDIDO em 15/09/2026
+
+**É PONTO NO TOTAL DA ROLAGEM**, e a decisão ratifica o que o motor já faz. O trabalho é de
+publicação, não de desenho: a regra existia, decidida e escrita, num lugar que ninguém lê.
+
+### O que a medição achou antes de a mesa decidir
+
+1. **O motor responde a mesma coisa nos dois lugares que importam.** `rolarExpr`
+   (`src/lib/rolagem.ts:71`) faz `total = soma dos dados + flat`: o número entra **depois** que a
+   quantidade de dados já está fechada, e não a altera. O simulador separa os dois canais com
+   todas as letras (`scripts/sim-defesas.mjs:159-164`): `dados = fl(soma / 2) + …` de um lado,
+   `flat += f.penAcao` do outro. Na mesa, `ajAtq` devolve `{ flat, dados }` e o ferimento só
+   entra no `flat` (`src/pages/mesa/grid.astro:10216-10222`).
+2. **A declaração da moeda já existe por escrito**, no `nota` do topo de `src/data/condicoes.json`:
+   *"`acao` é penalidade/bônus FLAT nas jogadas (mesma moeda dos Limiares de Ferimento), `dados`
+   é em d6 (moeda do Desgaste, cap. Resistir)"*.
+3. **E ela nunca é impressa.** `src/pages/mesa/referencia.astro:180` publica um parágrafo escrito
+   à mão no lugar do `nota` do arquivo. **É a forma do M-10 outra vez:** decidido no dado,
+   invisível para quem joga.
+4. **As duas moedas já convivem sem se misturar no catálogo:** das 55 condições, 13 carregam
+   `acao` (ponto) e 9 carregam `dados` (d6, família Desgaste).
+5. **O peso, pela calibração do próprio projeto** (`regras.json → combateTatico.nota`: *"cada ±1
+   ≈ ∓6% de chance perto do baseline (~42%)"*): o `−4` do Crítico vale uns **24 pontos
+   percentuais** de chance de acertar. A dúvida 68 supôs que "−4 no total é pouco", e a suposição
+   não se sustenta contra a régua de calibração que já está no arquivo.
+
+**Detalhe que reforça a leitura:** a coluna da **Defesa** da mesma tabela não é ambígua, porque
+Defesa é valor passivo e não pool. As duas colunas vivem na mesma célula do mesmo estado.
+
+### O que isto manda fazer
+
+1. **A tabela de `src/content/chapters/vida-ferimentos-cura.md:41-48` ganha a unidade.** "−1 em
+   ações" passa a dizer que o número sai do **total da jogada**, e não do punhado de dados.
+2. **Uma frase no capítulo separando as duas moedas**, porque é o capítulo que o jogador lê:
+   ponto sai do total (ferimento e situação), dado sai do pool (Desgaste, capítulo Resistir).
+   **Deixá-la só no JSON seria repetir exatamente o defeito que esta decisão conserta.**
+3. **Nada de código muda.** Nenhum dos 4 pontos de `src/` nem dos 4 scripts de simulação é
+   tocado, e nenhum número de balanço se move.
+
+### O CONTRA que a mesa comprou, com ele à vista
+
+Congela a mais leve das três leituras. No Crítico, com 1 a 10% da Vida, o personagem leva `−4` e
+**continua rolando a mesma quantidade de dados de quando estava inteiro**. Um sistema em que
+estar a 5% de vida quase não muda o punhado de dados pode soar sem peso na mesa.
+
+### ANOTADO, NÃO ABERTO
+
+**O teto de modificadores não olha o ferimento.** `regras.json → combateTatico.modificadorCap` é
+`6` e a página o publica como *"teto de ±6 somando tudo"*, mas `defesaAtual`
+(`src/pages/mesa/combate.astro:874`) computa `base + ferimento + cond + dv.total` **sem teto
+nenhum**. Se a pena de ferimento conta ou não para aquele teto é pergunta real e ainda não
+respondida. **Não entra nesta decisão**: é o conserto que revela o vizinho (`ARQUITETO.md §4.2`),
+e abri-lo aqui pararia a fila.
