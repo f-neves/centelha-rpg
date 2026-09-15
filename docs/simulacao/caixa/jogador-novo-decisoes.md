@@ -602,3 +602,78 @@ tempo de Ticks sendo o que ela promete ser.
 2. **A palavra "rodada" continua em três lugares dos capítulos**, e só um deles carrega regra (o
    Sangramento). Os outros dois são prosa (a Horda e o raspão). Uniformizar o vocabulário é
    conserto, não decisão, e o `C-29` já existe para isso.
+
+---
+
+## Correção à M-04 · o trabalho de código é maior do que eu registrei
+
+A seção da `M-04` diz que o Sangramento *"ganha o contador por combatente"*, como se fosse
+acréscimo. **Não é: é substituição de uma implementação existente e contrária**, achada depois de
+gravar.
+
+`src/pages/mesa/combate.astro:1478-1484` já resolve o efeito contínuo, e o comentário declara a
+leitura que a mesa acabou de descartar:
+
+> *Efeitos por rodada disparam **quando o combatente age**: é assim que a regra de Sangramento
+> define "início da rodada do personagem".*
+
+**E não é só o Sangramento.** A chave `porRodada` existe em **cinco condições** (`sangrando` 1,
+`envenenado` 1, `sufocando` 2, `em-chamas` 3, `morrendo` 1) e é lida por `src/lib/mesa-core.ts`
+(`:169, :187, :194, :227`), `src/lib/mesa-condicoes.ts:120` e a aba Combate (`:1236, :1480`). A
+decisão do relógio próprio muda as cinco de uma vez.
+
+**E a mesa fecha o resíduo 1 da `M-04`:** o contador se conta **da ferida**, não da entrada na
+luta. *"a cada 6 ticks desde o ferimento dele, vai sangrar"*. Quem levar dois Sangramentos em
+momentos diferentes terá dois contadores desalinhados no mesmo corpo, e isso é consequência aceita.
+
+---
+
+## M-04b · o livro passa a contar SÓ em Ticks · DECIDIDO em 15/09/2026
+
+**"Turno" e "rodada" saem do livro e do dado. Tudo vira Tick, a 6 Ticks por turno.**
+
+### O que a medição achou antes de a mesa decidir
+
+1. **O jogo tem TRÊS sistemas de tempo declarados, e os três são de Tick**
+   (`regras.json → combate.sistemas`): Normal (`sistemaPadrao`), Três fases (P/G/R) e Simultâneo.
+   **Não existe sistema por turnos no livro.**
+2. **Turno e rodada são a mesma coisa**, e são o ciclo em que todos agem, como no D&D e no
+   Pathfinder. Dito pela mesa: é uma maneira possível de jogar, **e não é a recomendada deste
+   sistema**.
+3. **Mesmo assim, 88 números estão escritos nessa unidade**, contra 17 em "rodada":
+
+| onde | "turno" | "rodada" |
+|---|---:|---:|
+| `regras.json` (a escada de Duração 1·2·4·10·20·50) | 22 | 2 |
+| `efeitos.json` (o campo `unidade: "turnos"` e as escadas) | 41 | 0 |
+| `tecnicas.json` (usa as duas palavras misturadas) | 9 | 5 |
+| `condicoes.json` (inclui a CHAVE `porRodada`) | 1 | 7 |
+| `artes.json` | 3 | 0 |
+| capítulos e páginas | 12 | 3 |
+
+**O defeito, em uma frase:** o livro escreve as durações do modo recomendado na unidade de um modo
+que ele nunca define, e essa unidade tem dois nomes.
+
+### O que isto manda fazer
+
+1. **A escada de Duração das Artes** (`regras.json`, o parâmetro): `1 · 2 · 4 · 10 · 20 · 50`
+   turnos passa a **`6 · 12 · 24 · 60 · 120 · 300` Ticks**.
+2. **`efeitos.json`**: o campo `"unidade": "turnos"` passa a Ticks e as `escala` acompanham. As
+   escadas que hoje começam com `"1 tick"` e seguem em turnos ficam inteiras em Ticks.
+   **CONFIRA ANTES SE ESSES CAMPOS SÃO GERADOS**: `gen-grid-artes.mjs` escreve o bloco `grid`, e
+   conserto por cima de campo gerado morre no próximo `--check`.
+3. **`tecnicas.json`**: as quatorze ocorrências, que hoje misturam as duas palavras.
+4. **`condicoes.json` e o código**: a chave `porRodada` muda de nome nas cinco condições e nos
+   três arquivos que a leem. **O nome NÃO pode ser `ciclo`**, que já significa outra coisa neste
+   repositório (a Velocidade inteira de uma ação, `Anatomia.ciclo` em `combate-tempo.ts`).
+   `porSeisTicks` serve; quem escreve o código escolhe, sabendo dessa colisão.
+5. **Os capítulos e as páginas**: as 15 ocorrências de prosa.
+6. **`notaTurno` (`regras.json:1237`) deixa de ser a única fonte da conversão** e vira o que
+   sobra dela: a ponte para quem quiser jogar por turnos.
+
+### ABERTO, editorial, e não bloqueia
+
+**Se a duração longa ganha o tempo real entre parênteses.** Um Tick vale cerca de um segundo por
+regra publicada (`combate.md:8`), então "300 Ticks" pode virar "300 Ticks (cinco minutos)" de
+graça. A mesa padronizou em Ticks e não pediu o parênteses; ele continua disponível como escolha
+de redação, e não como regra.
