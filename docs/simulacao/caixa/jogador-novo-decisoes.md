@@ -2442,3 +2442,44 @@ troca uma cláusula morta por uma vaga, e a mesa segue decidindo no olho quanto 
    lista. Quem executar procura por conta própria antes de dar a lista por fechada, e o portão do
    `CORRIGE 1` da rodada 75 (insensível a caixa, com a tela da mesa dentro) é o que impede a
    quinta de aparecer depois.
+
+---
+
+## A ORDEM DA FILA · básicas primeiro, Artes depois, Proezas por último
+
+Decidido em 15/09/2026, no meio do M-40, e vale para todas as perguntas `M` que ainda não foram
+à mesa.
+
+**A razão, dita pelo humano ao ver o M-40:** as Proezas acumulam várias inconsistências com as
+regras, e decidir uma a uma, intercaladas com o resto, faz a mesa julgar casos particulares antes
+de a régua geral estar de pé. **Regra básica primeiro, e o caso particular depois dela.**
+
+| ordem | bloco | o que é |
+|---|---|---|
+| 1 | **regras básicas** | criação, ficha, atributos, combate genérico, social, orçamento, editorial |
+| 2 | **Artes** | o Arcano: conjuração, efeitos, escadas de Arte |
+| 3 | **Proezas** | Caminhos, Técnicas, e tudo que um jogador compra em árvore |
+
+**O que isso muda na prática:** o `M-39` (a `habilidade_ancora`), o `M-40` (o teto do Quebrar
+Guarda), o `M-41` (as Técnicas sem número) e o `M-44` (Centelha 1 e Técnica 1) saem da fila de
+agora e vão para o fim. O `M-15`, o `M-16`, o `M-34` e o `M-35` ficam no bloco das Artes, em
+penúltimo. **O `M-15` está aí por decisão de classificação e não por evidência:** ele é uma
+perícia secundária (Energia Espiritual), mas o que ele promete mexer é a reserva de Mana, então
+ele é economia de magia e não de perícia. Se a mesa discordar, ele volta para as básicas.
+
+### O que JÁ ficou decidido do M-40, e não espera o fim da fila
+
+**A PRESSÃO CONTINUA SEM TETO.** `combate.escada` traz `pressaoPorAtaque: -2` e `pressaoTeto:
+null`, e fica como está: ela não é modificador de situação, é a escada de estar comprometido, e
+ser cercado deve doer sem limite.
+
+**O contra comprado:** é o único número do combate que cresce indefinidamente, e transforma
+quantidade na resposta para qualquer Defesa alta. Cinco capangas medianos derrubam a guarda de um
+herói mais do que um chefe sozinho consegue.
+
+**O que fica para o fim da fila, junto com as Proezas:** se o −3 do `quebrar-guarda`
+(`src/data/tecnicas.json`, Punho de Ferro, nível 1) entra no teto de ±6 dos modificadores
+situacionais. A inconsistência medida fica registrada aqui para não se perder: a regra do teto
+(`regras.json` · `empilhamentoProezas.defesaReflexiva`) fala de **bônus** reflexivos, e só deles.
+Ela nasceu para impedir que alguém empilhe defesas próprias, e não diz nada sobre **penalidade**
+imposta pela Proeza de outro, que é o que o Quebrar Guarda é.
