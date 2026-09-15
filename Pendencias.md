@@ -7158,6 +7158,15 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   misturam**: superfícies e riscos de natureza diferente, e juntas ninguém sabe qual quebrou
   o quê. Os dois bloqueios técnicos da subida já saíram em 14/08 (o dev server centralizado
   e a aposentadoria do `@vite-pwa/astro`), e o `rehypeBaseLinks` sai na fase B do endereço.
+- [ ] **J6 · [CONSERTAR] `/mesa/referencia` rola de lado no telefone, e a culpa é da classe
+  do embrulho.** Medido em 15/09/2026 (rodada 75, `M-08`) a 390px: a página tem `scrollWidth`
+  494 contra 390 de tela, e quem passa é uma `table.tab-mesa` de 449px. **`global.css` dá
+  `overflow-x: auto` à `.table-wrap`, mas não à `.tab-wrap`**, que é a que as tabelas da mesa
+  usam; a `.tab-wrap` só recebe `position: relative`. **Não é dos degraus novos da Centelha**:
+  o controle negativo apagou do DOM as seis linhas de nível 7 a 12 e a barra continuou, com o
+  mesmo `scrollWidth` de 494. Achado de passagem e congelado, porque mexer em `global.css` é
+  o lugar onde as duas frentes se encostam.
+
 - [ ] **J4 · [DECIDIR] Fraquezas e resistências do bestiário não chegam ao dano.** Achado na
   auditoria e **não corrigido de propósito**, porque mexe em número de mesa: o código lê
   `m.fraquezas`/`m.resistencias` no topo da criatura, e elas moram dentro de `combate`.

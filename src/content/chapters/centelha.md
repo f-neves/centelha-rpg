@@ -11,7 +11,7 @@ O que separa um mestre-de-armas mortal de um herói de lenda é a **Centelha**, 
 
 A Centelha é a **fagulha de poder** que mora (ou não) em alguém. É o eixo central deste jogo: tudo que é extraordinário, as **Proezas**, a feitiçaria do **Arcano** e a estatura que vai do mortal ao semideus, pende dela. A esmagadora maioria das pessoas tem Centelha **0** e vive uma vida inteira sem nunca tocar o sobrenatural. Acender uma Centelha é o que torna alguém especial.
 
-Ela vai de **0 a 6**. Cada degrau não é "um pouco mais forte": é um **salto de tier**, uma mudança de natureza.
+A régua vai de **0 a 12**, e a **faixa do jogador é de 0 a 6**: os seis degraus de cima são do bestiário, e a tabela abaixo é a parte jogável. Cada degrau não é "um pouco mais forte": é um **salto de tier**, uma mudança de natureza.
 
 | Nível | Estatura | Raridade | O que abre |
 |:---:|---|---|---|
@@ -22,6 +22,8 @@ Ela vai de **0 a 6**. Cada degrau não é "um pouco mais forte": é um **salto d
 | **4** | Grande herói | ~1 em 250 | Proezas até o **nível 4** |
 | **5** | Lendário | quase-mito | Proezas até o **nível 5** |
 | **6** | Semideus | um punhado no mundo | Proezas até o **nível 6** (o teto) |
+
+<div class="callout regra"><span class="lbl">O teto do jogador é 6, e a régua vai até 12</span>A tabela acima é a <strong>faixa jogável</strong>. A régua da Centelha continua depois dela, até <strong>12</strong>, e os degraus de <strong>7 a 12</strong> pertencem ao bestiário e à ficção: anjos maiores, senhores demoníacos, dragões ancestrais, o Tarrasque, divindades. <strong>Nenhum personagem chega lá</strong>, e a razão é mecânica, não de gosto: acima de 6 a Centelha <strong>não destrava Proeza nenhuma</strong>, porque o nível máximo de Proeza é 6 e o portão é <em>o nível N exige Centelha ≥ N</em>. Do 7 para cima ela só engorda ataque, as Defesas, Energia e Mana, que é o que convém a um deus e não a um herói. <strong>Os nomes dos seis degraus divinos ainda não foram escolhidos</strong>, e por isso a régua os exibe como <em>Divino · a nomear</em>.</div>
 
 **0 · Mortal.** A imensa maioria das pessoas, cerca de **95% do mundo**, é Centelha 0. Não há fagulha, e por isso não há Proeza nem magia: o personagem vive inteiramente daquilo que treinou. Isso está longe de torná-lo inútil. Um general genial, um assassino frio, um sábio de barba branca podem ser mortais formidáveis, mas são mortais do começo ao fim. Seus Atributos param no teto humano (6), seus saltos são saltos de atleta, sua força é força de gente forte, e sua lábia convence pela razão, não por encanto. Quando um Centelha 0 cai, cai como qualquer um.
 
@@ -35,7 +37,7 @@ Ela vai de **0 a 6**. Cada degrau não é "um pouco mais forte": é um **salto d
 
 **5 · Lendário.** Sobre essas pessoas há lendas. Elas mudaram o rumo de nações: foram grandes reis, viraram o destino de guerras e povos, e seus poderes mal são compreendidos por quem os testemunha. Podem flutuar, nadar como peixes por horas sem respirar, beber veneno como quem bebe água, derrubar uma muralha com um soco. Suas **Proezas chegam ao nível 5.** Surgem poucas por era, e seus nomes ficam nos livros de história muito depois de mortas.
 
-**6 · Semideus.** Aqui mora o que vira fábula e conto infantil. São seres que lutaram contra criaturas que não existem mais, que voam livremente, que se movem rápido a ponto de serem só um borrão nos olhos de quem tenta enxergá-los, e que são venerados como divindades por povos inteiros. Suas **Proezas chegam ao nível 6**, o teto da escala. Existe um punhado deles no mundo todo, e a passagem de cada um deixa marca na própria paisagem.
+**6 · Semideus.** Aqui mora o que vira fábula e conto infantil. São seres que lutaram contra criaturas que não existem mais, que voam livremente, que se movem rápido a ponto de serem só um borrão nos olhos de quem tenta enxergá-los, e que são venerados como divindades por povos inteiros. Suas **Proezas chegam ao nível 6**, que é o teto das Proezas e o teto do jogador. A régua da Centelha segue até 12, mas do 7 para cima nenhuma Proeza nova se abre. Existe um punhado deles no mundo todo, e a passagem de cada um deixa marca na própria paisagem.
 
 ## O que a Centelha faz
 

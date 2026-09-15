@@ -17,6 +17,13 @@ const custo = z.object({ energia: z.number().int().nonnegative().optional(), man
 const soakModos = z.object({ impacto: z.number().int(), corte: z.number().int(), perfuracao: z.number().int() });
 // Um degrau de régua, igual em todo lugar: número, rótulo do degrau e o texto dele.
 const escala = z.array(z.object({ nivel: z.number().int(), rotulo: z.string().optional(), texto: z.string(), conduta: z.string().optional() }));
+// O TOPO DA CENTELHA SAI DA ESCALA, e não de um número repetido aqui (`M-08`).
+// Foi a repetição que deixou DEZ criaturas passarem: a `escalaCentelha` terminava
+// em 6 e este esquema aceitava até 10, cada lista coerente consigo mesma e o
+// defeito morando no espaço entre elas. Derivado, o portão fica vermelho no dia em
+// que alguém escrever uma criatura acima da régua publicada.
+const TETO_CENTELHA = Math.max(...(read('regras.json').escalaCentelha || []).map((e) => e.nivel));
+
 const S = {
   atributos: z.object({ id: z.string(), nome: z.string(), grupo: z.enum(['fisico', 'social', 'mental']), descricao: z.string(), niveis: escala.optional() }),
   habilidades: z.object({ id: z.string(), nome: z.string(), grupo: z.enum(['combate', 'fisica', 'social', 'saber', 'tecnica']), atributos: z.array(z.string()).optional(), secundaria: z.boolean().optional(), descricao: z.string(), niveis: escala.optional() }),
@@ -56,7 +63,7 @@ const S = {
   inimigos: z.object({
     id: z.string(), nome: z.string(), tipo: z.enum(['capanga', 'soldado', 'elite', 'fera', 'chefe']),
     categoria: z.string().optional(),
-    ameaca: z.number().int().min(1).max(6), centelha: z.number().int().min(0).max(10),
+    ameaca: z.number().int().min(1).max(6), centelha: z.number().int().min(0).max(TETO_CENTELHA),
     conceito: z.string(), descricao: z.string(), tags: z.array(z.string()),
     pv: z.number().int(), defesa: z.number().int(), defesaSocial: z.union([z.number().int(), z.literal('-')]), defesaMental: z.union([z.number().int(), z.literal('-')]),
     vontade: z.number().int(),

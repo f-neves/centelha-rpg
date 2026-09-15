@@ -70,9 +70,46 @@
     {
       "nivel": 6,
       "rotulo": "Semideus",
-      "texto": "Material de fábula, venerado como divindade. Proezas até o nível 6 (teto)."
+      "texto": "Material de fábula, venerado como divindade. Proezas até o nível 6 (teto). É AQUI QUE O JOGADOR PARA: a régua segue até 12, mas os degraus acima são da ficção e do bestiário."
+    },
+    {
+      "nivel": 7,
+      "rotulo": "Divino · a nomear",
+      "provisorio": true,
+      "texto": "Onde o jogador para e a ficção continua: o primeiro degrau que nenhum personagem alcança. Não destrava Proeza nenhuma (o teto de nível de Proeza é 6), e daí para cima a Centelha só engorda ataque, as três Defesas, Energia e Mana. Anjo maior, senhor demoníaco, dragão ancestral."
+    },
+    {
+      "nivel": 8,
+      "rotulo": "Divino · a nomear",
+      "provisorio": true,
+      "texto": "A presença pesa no lugar antes de o ser agir. Ainda uma criatura do mundo, mas uma que exércitos não detêm."
+    },
+    {
+      "nivel": 9,
+      "rotulo": "Divino · a nomear",
+      "provisorio": true,
+      "texto": "Poder de escala regional: o que ele decide muda o mapa. É onde estão o Balor, o Solar e o Grande Wyrm."
+    },
+    {
+      "nivel": 10,
+      "rotulo": "Divino · a nomear",
+      "provisorio": true,
+      "texto": "Calamidade nomeada. Existe uma por era, e o mundo se organiza em volta dela. É o degrau do Tarrasque."
+    },
+    {
+      "nivel": 11,
+      "rotulo": "Divino · a nomear",
+      "provisorio": true,
+      "texto": "Força cosmológica menor: um princípio do mundo com vontade própria."
+    },
+    {
+      "nivel": 12,
+      "rotulo": "Divino · a nomear",
+      "provisorio": true,
+      "texto": "O teto real da régua. Divindade plena, entidade cósmica: o que não se enfrenta, se negocia ou se sobrevive."
     }
   ],
+  "notaEscalaCentelha": "A régua vai de 0 a 12, e o 12 é o teto real (`M-08`). O TETO DO JOGADOR é 6, e a razão é mecânica e não de gosto: acima de 6 a Centelha não destrava Proeza nenhuma, porque o nível máximo de Proeza é 6 e o portão é 'o nível N exige Centelha >= N'. Do 7 para cima ela só engorda ataque, as três Defesas, Energia e Mana, que é o que convém a um deus e não a um personagem. Os RÓTULOS dos degraus 7 a 12 estão marcados como `provisorio`: nomeá-los é worldbuilding e voltará à mesa como decisão de lore. Os degraus 7, 9 e 10 existem porque o bestiário já os usa: dez criaturas passam de 6, e as dez são `tipo: chefe` com `ameaça: 6`.",
   "escalasProeza": {
     "nota": "Cada Técnica cresce conforme seu nível (1 a 6). O TIPO de melhora define a trilha e a escala. A maioria das Técnicas é 'estado' (uma capacidade, sem número). Os valores abaixo somam por cima do +2/ponto de Centelha que já pesa em ataque e nas 4 defesas.",
     "trilhas": {
