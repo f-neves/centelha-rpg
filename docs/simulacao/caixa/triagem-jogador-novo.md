@@ -57,6 +57,24 @@ só.
 
 ---
 
+**Lote H6 · o travessão está no produto, e o portão não olha onde ele mora.** Achado ao absorver
+o relatório, e não dentro dele: os doze travessões dos dois arquivos dela estão todos **dentro de
+citação** do texto do site, e ela declarou a exceção no topo com a razão certa (trocá-los
+falsificaria a citação). Conferido na fonte: `src/data/glossario.json` tem 3,
+`src/data/efeitos.json` tem 5, `src/components/FichaSkeleton.astro` tem 4.
+
+**O que torna isto mais que uma varredura:** a regra do projeto vale para todo texto, e o portão
+`scripts/test-travessao-capitulos.mjs` cobre **só `src/content/**`**. Os doze vivem exatamente
+fora dessa janela, em JSON e `.astro`, onde nada checa · e o `CLAUDE.md` já registra que a
+cobertura estreita foi decisão do humano, com a conferência do resto deixada à mão. Isto é a
+forma "a conferência que cobre só a parte viva do registro" do `CATALOGO.md`.
+
+**Duas coisas a decidir junto, e só a segunda é do humano:** trocar os doze é conserto direto;
+**alargar o portão para o dado e os componentes é decisão dele**, porque foi dele a decisão de
+estreitá-lo. Sem alargar, a próxima dúzia entra igual.
+
+---
+
 ## Pilha 2 · O QUE MUDA ONDE O CONSERTO VAI
 
 **Antes de qualquer lote acima.** Dois capítulos são **gerados**, e conserto escrito por cima
