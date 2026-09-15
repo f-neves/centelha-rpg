@@ -91,3 +91,13 @@ Escopo: `C-49` primeiro (a ferramenta), depois `C-02`, `C-01`, `C-03`, `C-04`, `
   número, é trocar o personagem do exemplo ou dar-lhe uma perícia que ele não tem, e o próprio
   item oferece as duas saídas sem escolher. Escalado.
 - **23:22** · `npm run validate` LIDO depois dos consertos de capítulo: `exit 0`.
+- **23:23** · travessão conferido nas MINHAS linhas, lendo o diff por `git` chamado direto do
+  Python (sem o hook do RTK, que encolhe a saída): 235 linhas adicionadas, **zero** com
+  travessão. Os que restam em `combate.md`, `racas.md`, `regras.json` e `FichaSkeleton.astro`
+  são anteriores a mim e não são do meu item.
+- **23:23** · a mensagem do commit saiu com uma palavra comida, e consertei antes de publicar:
+  a crase em volta de `valor`, dentro do `-m`, virou substituição de comando do bash e apagou a
+  palavra. Refiz por `--amend -F arquivo`, que é local e ainda não publicado. **A lição é do
+  canal, não do descuido:** mensagem de commit com crase não vai por `-m` neste ambiente.
+- **23:24** · TERMINADO e PUBLICADO. Commit `fc76f73`, onze arquivos, e
+  `git rev-list --count origin/main..HEAD` deu **0**.
