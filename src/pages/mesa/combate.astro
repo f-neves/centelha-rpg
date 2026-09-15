@@ -547,7 +547,7 @@ import CondDlg from '../../components/CondDlg.astro';
 <script>
   import {
     abrirMesa, u, esc, norm, sinal, avatarHTML, urlsImagens, hpBarHTML, estadoChipHTML, atualizarBarra,
-    tierDe, pctDe, condChipHTML, somarCondicoes, COND, novoId, bancoAntigo,
+    tierDe, pctDe, condChipHTML, somarCondicoes, danoContinuoDevido, COND, novoId, bancoAntigo,
     revelarDaMesa, REVELAR_PADRAO, semMigracao14, nomesDe,
   } from '../../lib/mesa-core';
   import { abrirCondicoes as abrirCondDlg, condsDe } from '../../lib/mesa-condicoes';
@@ -1470,23 +1470,68 @@ import CondDlg from '../../components/CondDlg.astro';
     // esperar) não o apaga. Ele desce sozinho, um dado por Tick.
     c.acao = { ...contrapeDe(antesAcao), ...(acao || {}) };
     await upComb(cid, { tick: novo, acao: c.acao });
-    registrarDesfazer(`Tick de ${c.nome} (${antes} → ${novo})`, async () => {
+    await logar(`${txt} · tick ${antes} → ${novo}.`);
+    // O DANO CONTÍNUO NÃO DISPARA MAIS AO AGIR (`M-04`). Ele corre no relógio de
+    // cada ferido, a cada 6 Ticks contados da ferida, e cobra de TODO MUNDO que
+    // deve, não só de quem acabou de agir: quem está imobilizado, inconsciente ou
+    // apenas esperando sangrava zero pelo caminho antigo, que é o oposto do que o
+    // Sangramento existe para fazer.
+    //
+    // DEPOIS do `carregar()`, e isso não é detalhe: `AGORA` só é recalculado
+    // dentro de `pintar()` (`:939`), e `pintar` sai de `carregar`. Varrer antes
+    // cobraria contra o relógio de antes do Tick que acabou de andar, e o tique
+    // sairia sempre uma passada atrasado.
+    await carregar();
+    const sangue = await varrerDanoContinuo();
+    // UM REGISTRO SÓ PARA O TICK E PARA O SANGUE QUE ELE FEZ CORRER. São duas
+    // escritas, e separá-las em dois desfazeres deixaria o mestre desfazer o
+    // relógio com a Vida já tirada, ou o contrário. Registrado DEPOIS da
+    // varredura porque só aqui se sabe quem sangrou.
+    registrarDesfazer(`Tick de ${c.nome} (${antes} → ${novo})`
+      + (sangue.length ? ` e o sangue de ${sangue.length}` : ''), async () => {
+      for (const volta of sangue) await volta();
       c.tick = antes; c.acao = antesAcao;
       await upComb(cid, { tick: antes, acao: antesAcao || {} }); await carregar();
     });
-    await logar(`${txt} · tick ${antes} → ${novo}.`);
-    // O dano contínuo dispara quando o combatente age, e a `M-04` decidiu OUTRA
-    // coisa: a cada 6 Ticks contados DA FERIDA, no relógio de cada um. O gatilho
-    // novo é trabalho de código que ainda não foi feito (precisa de estado por
-    // ferida, persistido, e de um laço que não perca tique quando o relógio pula
-    // vários Ticks de uma vez). Até lá esta é a aproximação que já existia, e o
-    // texto do livro já conta a regra nova: ver `vida-ferimentos-cura.md`.
-    if (cd.porSeisTicks > 0) {
-      await mexerVida(cid, -cd.porSeisTicks, true);
-      await logar(`${c.nome} perdeu ${cd.porSeisTicks} por condição contínua · ${c.pv_atual}/${c.pv_max}.`, 'dano',
-        fraseVida(c, `${c.nome} perdeu ${cd.porSeisTicks} por condição contínua`));
+  }
+
+  /**
+   * O dano contínuo de todos os feridos, no Tick corrente da mesa.
+   *
+   * Esta aba NÃO tinha varredura nenhuma: nem de prazo, nem de dano. O que
+   * existia era um disparo ao agir, dentro de `avancarTick`, e tirá-lo sem pôr
+   * isto no lugar deixaria a aba sem Sangramento.
+   *
+   * A conta é a mesma do Grid (`danoContinuoDevido`, em `mesa-core.ts`), e é
+   * de propósito: o que não podia ficar em duas cópias é a conta. O que muda
+   * entre as telas é só quem grava, e cada uma grava pelo seu caminho.
+   */
+  async function varrerDanoContinuo(): Promise<Array<() => Promise<void>>> {
+    const voltas: Array<() => Promise<void>> = [];
+    if (!EH_MESTRE) return voltas;
+    for (const p of danoContinuoDevido(COMBS, AGORA)) {
+      const c = COMBS.find((x) => x.id === p.cid);
+      if (!c) continue;
+      // O ANTES, guardado para o desfazer do Tick que provocou esta cobrança.
+      // Sem isto, desfazer o Tick voltaria o relógio e deixaria a Vida tirada,
+      // e o próximo Tick cobraria de novo em cima do que já foi cobrado.
+      const pvAntes = c.pv_atual;
+      const condAntes = c.condicoes;
+      // O carimbo antes do dano: se a rede cair entre as duas escritas, o tique
+      // é cobrado de novo na próxima passada, e não cobrado duas vezes.
+      const { error } = await upComb(p.cid, { condicoes: p.condicoes });
+      if (error) continue;
+      c.condicoes = p.condicoes;
+      voltas.push(async () => {
+        c.condicoes = condAntes; c.pv_atual = pvAntes;
+        await upComb(p.cid, { condicoes: condAntes, pv_atual: pvAntes });
+      });
+      if (p.total <= 0) continue;
+      await mexerVida(p.cid, -p.total, true);
+      await logar(`${c.nome} perdeu ${p.total} por condição contínua (Tick ${AGORA}) · ${c.pv_atual}/${c.pv_max}.`,
+        'dano', fraseVida(c, `${c.nome} perdeu ${p.total} por condição contínua`));
     }
-    await carregar();
+    return voltas;
   }
 
   // ================================================================ ligações
@@ -1818,6 +1863,7 @@ import CondDlg from '../../components/CondDlg.astro';
       registrar: (txt, pub) => logar(txt, 'sistema', pub),
       repintar: pintar,
       uiErro,
+      agora: () => AGORA,
     }, c, verCondJogador(c));
   }
 

@@ -17,7 +17,7 @@
 //   ela, e a cena segue (mesmo princípio do `carimbarSeFaltar`, migração 29).
 //   Gravação de efeito não pode falhar inteira por um campo que é melhoria.
 //
-//   LER (o laço por-turno de `verificarEfeitos`, aberto na rodada 55 para a
+//   LER (o laço por-seis-ticks de `verificarEfeitos`, aberto na rodada 55 para a
 //   cura): `nivel_arte` nulo é "não sei", NUNCA 1. Um Efeito que pede cura
 //   por nível e não tem o dado não cura, e a cena avisa no registro, no
 //   máximo uma vez por turno: O FATO ("esta linha não guarda o nível da

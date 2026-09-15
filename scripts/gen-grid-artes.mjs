@@ -153,7 +153,8 @@ const DISSIPA = ['dissipar'];
  * quando alguém pisa dentro ou passa por ali, e no máximo UMA vez por turno para
  * a mesma criatura (decisão de mesa: entrar, encostar e atacar não viram três
  * rolagens no mesmo turno).
- * `por-turno` volta sozinho a cada rodada em quem já está preso.
+ * `por-seis-ticks` volta sozinho a cada 6 Ticks em quem já está preso, contados
+ * do relógio de cada um (`M-04`) e não de um batimento da mesa.
  * `armadilha` dorme até alguém pisar, e gasta-se ao disparar.
  *
  * O QUE JÁ ESTÁ DECIDIDO SOBRE `armadilha`, e está aqui para não ser redecidido (14/09/2026,
@@ -171,7 +172,7 @@ const DISSIPA = ['dissipar'];
  *     no texto dela é sabor, fica como está, e não é para virar campo nem condição nova.
  */
 const GATILHO = {
-  'por-turno': ['fogo-que-nao-apaga', 'esmagar', 'chuva-de-fogo', 'tempestade', 'afogar',
+  'por-seis-ticks': ['fogo-que-nao-apaga', 'esmagar', 'chuva-de-fogo', 'tempestade', 'afogar',
     'mao-firme', 'acelerar-a-cura', 'coracao-verde', 'aurora'],
   armadilha: ['brasa-retardada', 'semente-adormecida', 'cura-guardada', 'salvaguarda'],
   'ao-tocar': ['arma-elemental', 'metal-incandescente', 'arma-conjurada', 'projetil-conjurado'],

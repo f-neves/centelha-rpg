@@ -1360,7 +1360,7 @@
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
-      "gatilho": "por-turno",
+      "gatilho": "por-seis-ticks",
       "alvo": "ponto",
       "persiste": true,
       "materia": null,
@@ -1716,7 +1716,7 @@
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
-      "gatilho": "por-turno",
+      "gatilho": "por-seis-ticks",
       "alvo": "varios",
       "persiste": true,
       "materia": null,
@@ -3179,7 +3179,7 @@
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
-      "gatilho": "por-turno",
+      "gatilho": "por-seis-ticks",
       "alvo": "varios",
       "persiste": true,
       "materia": "impacto",
@@ -4345,7 +4345,7 @@
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
-      "gatilho": "por-turno",
+      "gatilho": "por-seis-ticks",
       "alvo": "ponto",
       "persiste": true,
       "materia": null,
@@ -4451,7 +4451,7 @@
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
-      "gatilho": "por-turno",
+      "gatilho": "por-seis-ticks",
       "alvo": "ponto",
       "persiste": true,
       "materia": null,
@@ -4804,7 +4804,7 @@
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
-      "gatilho": "por-turno",
+      "gatilho": "por-seis-ticks",
       "alvo": "ponto",
       "persiste": true,
       "materia": null,
@@ -5435,7 +5435,7 @@
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
-      "gatilho": "por-turno",
+      "gatilho": "por-seis-ticks",
       "alvo": "varios",
       "persiste": true,
       "materia": null,
@@ -5603,7 +5603,7 @@
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
-      "gatilho": "por-turno",
+      "gatilho": "por-seis-ticks",
       "alvo": "varios",
       "persiste": true,
       "materia": null,
@@ -6051,7 +6051,7 @@
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
-      "gatilho": "por-turno",
+      "gatilho": "por-seis-ticks",
       "alvo": "varios",
       "persiste": true,
       "materia": null,

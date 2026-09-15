@@ -11268,6 +11268,7 @@ let roladoDano = '';
       // à mão, enquanto o resto da mesa já se corrigia pelo tempo real.
       repintar: () => { pintarLista(); pintarIniciativa(); },
       uiErro,
+      agora: () => relogio(),
     }, c, publicavel);
   }
 

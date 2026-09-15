@@ -152,7 +152,7 @@ const ELEM_VOCAB = new Set([
 // isso no meio da cena.
 const G_FORMAS = new Set(['nenhuma', 'alvo', 'aura', 'zona', 'muro', 'cone', 'linha', 'cadeia', 'token', 'movimento']);
 const G_ANCORAS = new Set(['nenhuma', 'conjurador', 'ponto', 'alvo', 'objeto']);
-const G_GATILHOS = new Set(['passivo', 'imediato', 'ao-entrar', 'por-turno', 'ao-tocar', 'armadilha']);
+const G_GATILHOS = new Set(['passivo', 'imediato', 'ao-entrar', 'por-seis-ticks', 'ao-tocar', 'armadilha']);
 const G_MATERIAS = new Set(['impacto', 'corte', 'perfuracao']);
 const COND_IDS = new Set((read('condicoes.json').lista || []).map((c) => c.id));
 for (const a of data.artes || []) {

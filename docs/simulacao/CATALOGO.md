@@ -596,7 +596,7 @@ script lê dois deles a distâncias bem diferentes.
 este achado: `grupoDaVez` (`grid.astro:4657`) tinha a âncora certa (`function grupoDaVez`) escrita
 DEPOIS da citação, e o script escolheu `!grupoDaVez` (um fragmento de código histórico, também em
 crases, escrito ANTES) por ser mais "próximo" em bytes. O mesmo aconteceu com
-`mesa-condicoes.ts:100-106` (`chip.addEventListener`), onde a âncora nova foi escrita numa linha seguinte por causa da
+`mesa-condicoes.ts:110-117` (`chip.addEventListener`), onde a âncora nova foi escrita numa linha seguinte por causa da
 quebra do markdown, e a quebra de linha, sozinha, já bastava para separar âncora e citação em
 "linhas" diferentes para o script, que só olha uma linha de texto por vez.
 

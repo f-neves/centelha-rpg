@@ -72,8 +72,8 @@ eq(A.planoDaSaida(linha(), null).tipo, 'nada',
   'sem número de cura (catálogo não sabe, ou linha sem nível) não vira plano de cura: não se chuta um valor');
 eq(A.planoDaSaida(linha(), 0).tipo, 'nada',
   'cura ZERO também não vira plano: pagar zero encheria o registro de linhas que não curaram nada');
-eq(A.planoDaSaida(linha({ gatilho: 'por-turno' }), 3).tipo, 'nada',
-  'gatilho `por-turno` não sai por aqui: quem paga esse é a varredura, e pagar nos dois curaria duas vezes');
+eq(A.planoDaSaida(linha({ gatilho: 'por-seis-ticks' }), 3).tipo, 'nada',
+  'gatilho `por-seis-ticks` não sai por aqui: quem paga esse é a varredura, e pagar nos dois curaria duas vezes');
 eq(A.planoDaSaida(linha({ gatilho: 'armadilha' }), 3).tipo, 'nada',
   '`armadilha` também não, e este é o gatilho que o `cura-guardada` espera (ainda sem motor)');
 

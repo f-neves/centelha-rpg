@@ -4,7 +4,7 @@
 // (`artes-grid-ui.ts`, que só pergunta) e a aba Grid, que é dona do Supabase e
 // dos hexágonos. A aba entrega um contexto e chama quatro funções; tudo o mais
 // mora aqui, e é por isso que `grid.astro` quase não muda para ganhar isso.
-import { esc, novoId, somarCondicoes, COND, tierDe, elementosCombate } from './mesa-core';
+import { esc, novoId, somarCondicoes, danoContinuoDevido, COND, tierDe, elementosCombate } from './mesa-core';
 import { MON } from './mesa-bestiario';
 import { uiErro, uiConfirmar, uiEscolher, uiPainel } from './ui-dialog';
 import {
@@ -1528,7 +1528,7 @@ export async function gravarEfeito(ctx: CtxGrid, c: any, plano: Plano, extra: {
     nivel: plano.efeito?.nivel
       ?? Math.max(1, ...Object.values(plano.escolhas).map((n) => Number(n) || 0)),
     // Migração 38: o nível da ARTE de quem conjurou, e não o do Efeito (linha
-    // acima). Existe para a cura por-turno que escala com ele (`acelerar-a-
+    // acima). Existe para a cura por-seis-ticks que escala com ele (`acelerar-a-
     // cura`), e para qualquer Arte futura na mesma família.
     nivel_arte: plano.nivelArte,
     // Migração 39: quantos PV uma CURA PRESA carrega. Só Efeito de cura com
@@ -1644,9 +1644,11 @@ export async function gravarEfeito(ctx: CtxGrid, c: any, plano: Plano, extra: {
  */
 async function porCondicao(ctx: CtxGrid, c: any, id: string, turnos: number): Promise<void> {
   if (!c || !id) return;
-  const ate = tickAtual(ctx) + Math.max(1, turnos) * TICKS_POR_TURNO;
+  const agora = tickAtual(ctx);
+  const ate = agora + Math.max(1, turnos) * TICKS_POR_TURNO;
   const atuais = (c.condicoes || []).filter((k: any) => k.id !== id);
-  const nova = { id, ate, porArte: true };
+  // `desde`/`pago`: o relógio do dano contínuo, contado da ferida (`M-04`).
+  const nova = { id, ate, porArte: true, desde: agora, pago: agora };
   const novas = [...atuais, nova];
   const { error } = await ctx.gravarCondicao(c.id, novas);
   if (error) return;
@@ -2070,6 +2072,43 @@ async function varrerCondicoesVencidas(ctx: CtxGrid, t: number): Promise<void> {
   }
 }
 
+/**
+ * O dano contínuo cobra o que venceu, a cada 6 Ticks contados DA FERIDA.
+ *
+ * Irmã de `varrerCondicoesVencidas`, e pelo mesmo motivo: o relógio anda, e
+ * alguma coisa tem de acontecer sem ninguém clicar. A diferença é que esta
+ * tira Vida, então ela é a única varredura do arquivo que mexe em dano, e por
+ * isso a conta NÃO mora aqui: ela mora em `danoContinuoDevido`
+ * (`mesa-core.ts`), que é pura, é a mesma das duas telas e tem portão próprio.
+ *
+ * O `pago` é o que a torna idempotente sem depender de quem chama: com a aba
+ * Combate e o Grid abertos, as duas varrem o mesmo Tick e a segunda cobra zero.
+ *
+ * E ELA DIZ O QUE TIROU. Vida que some sozinha é exatamente o que a mesa não
+ * consegue explicar depois, e o registro é o que transforma isso em regra
+ * visível em vez de fantasma.
+ */
+async function varrerDanoContinuo(ctx: CtxGrid, t: number): Promise<void> {
+  // Só o mestre escreve em `combatentes`; a tela do jogador apanharia da RLS.
+  if (!ctx.mestre) return;
+  for (const p of danoContinuoDevido(ctx.combs || [], t)) {
+    const c = (ctx.combs || []).find((x: any) => x.id === p.cid);
+    if (!c) continue;
+    // O carimbo primeiro: se a rede cair entre as duas escritas, o pior que
+    // acontece é o tique ser cobrado de novo na próxima passada, e não o
+    // contrário (cobrar e esquecer que cobrou, que dobraria o dano).
+    const { error } = await ctx.gravarCondicao(c.id, p.condicoes);
+    if (error) continue;
+    c.condicoes = p.condicoes;
+    if (p.total <= 0) continue;
+    const { pv, error: e2 } = await ctx.gravarVida(c.id, -p.total);
+    if (e2) continue;
+    c.pv_atual = pv;
+    const est = c.pv_max ? ` · ${pv}/${c.pv_max}` : '';
+    await ctx.logar(c, `${c.nome} perdeu ${p.total} por condição contínua (Tick ${t})${est}.`, { acao: null });
+  }
+}
+
 // ============================================================ o relógio anda
 /**
  * Passou o tempo: cobra quem está dentro, e tira o que venceu.
@@ -2092,6 +2131,11 @@ export async function verificarEfeitos(ctx: CtxGrid, palco?: HTMLElement): Promi
   // 1.2 · e a condição com prazo vence sozinha, tenha efeito atrás dela ou não.
   // ANTES do corte do chão limpo, de propósito: ver o cabeçalho da função.
   await varrerCondicoesVencidas(ctx, t);
+
+  // 1.3 · e o dano contínuo cobra o que venceu, no relógio de cada ferido.
+  // DEPOIS do vencimento, de propósito: a condição que acabou de expirar neste
+  // mesmo Tick não cobra mais um tique de saída.
+  await varrerDanoContinuo(ctx, t);
 
   // Chão limpo: não há aura para reposicionar, prazo para contar nem mordida
   // para conferir, e quem chamou já pintou o que mexeu. (Se alguma coisa acabou

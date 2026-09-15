@@ -119,7 +119,7 @@ export interface GridEfeito {
 }
 export type Forma = 'nenhuma' | 'alvo' | 'aura' | 'zona' | 'muro' | 'cone' | 'linha' | 'cadeia' | 'token' | 'movimento';
 export type Ancora = 'nenhuma' | 'conjurador' | 'ponto' | 'alvo' | 'objeto';
-export type Gatilho = 'passivo' | 'imediato' | 'ao-entrar' | 'por-turno' | 'ao-tocar' | 'armadilha';
+export type Gatilho = 'passivo' | 'imediato' | 'ao-entrar' | 'por-seis-ticks' | 'ao-tocar' | 'armadilha';
 
 export const ARTES = ARTES_D as unknown as Arte[];
 export const EFEITOS = EFEITOS_D as unknown as Efeito[];

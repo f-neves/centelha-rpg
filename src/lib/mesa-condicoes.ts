@@ -39,6 +39,16 @@ export interface CtxCond {
   repintar: () => void;
   /** O erro na cara do usuário. Cada página tem o seu. */
   uiErro: (m: string) => any;
+  /**
+   * O Tick corrente da mesa, para carimbar a FERIDA.
+   *
+   * O dano contínuo corre a cada 6 Ticks contados de quando a condição entrou
+   * (`M-04`), e é este número que marca esse zero. Sem ele a varredura carimba
+   * sozinha no primeiro Tick em que passa, o que é aceitável para o que já
+   * estava salvo, mas erraria por alguns Ticks o que está sendo aplicado agora,
+   * bem na frente do mestre.
+   */
+  agora?: () => number;
 }
 
 /** As condições de uma peça, já resolvidas contra o catálogo. */
@@ -100,7 +110,8 @@ export function abrirCondicoes(ctx: CtxCond, c: any, publicavel = true) {
       chip.addEventListener('click', async () => {
         const achou = COND_LISTA.find((x) => x.nome === nome);
         if (!achou) return;
-        c.condicoes = [...(c.condicoes || []), { id: achou.id }];
+        const t0 = ctx.agora ? ctx.agora() : null;
+        c.condicoes = [...(c.condicoes || []), t0 == null ? { id: achou.id } : { id: achou.id, desde: t0, pago: t0 }];
         await ctx.registrar(`${c.nome}: ${achou.nome}.`, pub(`${c.nome}: ${achou.nome}.`));
         await gravar();
       });
@@ -114,10 +125,12 @@ export function abrirCondicoes(ctx: CtxCond, c: any, publicavel = true) {
   (elo('cc-add') as HTMLButtonElement).onclick = async () => {
     const nome = nInp('cc-nome').value.trim();
     if (!nome) return;
+    const t0 = ctx.agora ? ctx.agora() : null;
     c.condicoes = [...(c.condicoes || []), {
       id: 'x-' + norm(nome).replace(/\W+/g, '-'), nome, cor: 'neutro', icone: '◆',
       acao: num('cc-acao'), dados: num('cc-dados'), defesa: num('cc-defesa'),
       porSeisTicks: num('cc-seis-ticks'), nota: nInp('cc-nota').value,
+      ...(t0 == null ? {} : { desde: t0, pago: t0 }),
     }];
     nInp('cc-nome').value = '';
     await ctx.registrar(`${c.nome}: ${nome} (condição caseira).`, pub(`${c.nome}: ${nome}.`));

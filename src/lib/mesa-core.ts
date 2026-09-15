@@ -189,6 +189,20 @@ export interface Condicao {
   naoAge?: boolean;
   nota?: string; fonte?: string; foraDeCombate?: boolean; marcaOculto?: boolean;
   ate?: number | null; // tick em que expira (só na instância aplicada)
+  /**
+   * O Tick da FERIDA, e o Tick até o qual o dano contínuo já foi cobrado.
+   *
+   * Os dois só existem na instância aplicada, como o `ate`. `desde` é o que faz
+   * o relógio do Sangramento ser de cada um e não da mesa (`M-04`), e por isso
+   * duas feridas em momentos diferentes dão dois contadores desalinhados no
+   * mesmo corpo: `condicoes` é um array e não deduplica, então isso sai de graça
+   * e é a consequência que a mesa aceitou de propósito.
+   *
+   * `pago` é o que impede a cobrança dobrada quando o mestre está com a aba
+   * Combate e o Grid abertos ao mesmo tempo.
+   */
+  desde?: number | null;
+  pago?: number | null;
 }
 export const COND_GRUPOS = (CONDICOES as any).grupos as { id: string; nome: string }[];
 export const COND_LISTA = (CONDICOES as any).lista as Condicao[];
@@ -245,6 +259,82 @@ export function condChipHTML(c: Condicao, rm = false, dono = '') {
   return `<span class="cond cond-${esc(c.cor || 'neutro')}" title="${esc(dica)}">
     ${c.icone ? `<span class="cond-i">${esc(c.icone)}</span>` : ''}<span class="cond-n">${esc(c.nome)}</span>${partes.length ? `<span class="cond-m">${esc(partes[0])}</span>` : ''}${rm ? `<button class="cond-x" data-cond="${esc(c.id)}" data-dono="${esc(dono)}" title="Remover condição" type="button">✕</button>` : ''}
   </span>`;
+}
+
+// ------------------------------------------------ o relógio do dano contínuo
+/** O ciclo em que o dano contínuo cobra. `M-04`: a cada 6 Ticks, contados da ferida. */
+export const TICKS_DO_CONTINUO = 6;
+
+/**
+ * Quantos tiques de dano contínuo caem até `agora`, dado o que já foi pago.
+ *
+ * É a única parte disto que é conta pura, e por isso é a única que dá para
+ * travar barato. Ela recebe INTERVALO e não instante, e o motivo é concreto: a
+ * aba Combate anda `quanto` Ticks de uma vez (`avancarTick`), não um. Um ferido
+ * com Sangramento 1 que leve um pulo de treze Ticks tem de perder DOIS pontos,
+ * e não um (perder tique) nem treze (cobrar por Tick em vez de por ciclo).
+ *
+ * `pago` é o Tick até o qual já se cobrou, e mora na instância da condição. Ele
+ * é o que torna a cobrança idempotente SEM depender de quem chama: duas telas
+ * abertas, duas varreduras no mesmo Tick, e a segunda devolve zero. Idempotência
+ * que depende da chamadora não é idempotência.
+ */
+export function tiquesDevidos(desde: number, pago: number, agora: number): number {
+  const d = Number(desde);
+  if (!Number.isFinite(d)) return 0;
+  const p = Number.isFinite(Number(pago)) ? Number(pago) : d;
+  const a = Number(agora);
+  if (!Number.isFinite(a) || a <= p) return 0;
+  const marcos = (t: number) => Math.floor(Math.max(0, t - d) / TICKS_DO_CONTINUO);
+  return Math.max(0, marcos(a) - marcos(p));
+}
+
+/** Quanto uma instância de condição cobra por tique, pelos dois nomes do campo. */
+export function continuoDe(k: { porSeisTicks?: number; porRodada?: number; id?: string } | null | undefined): number {
+  if (!k) return 0;
+  const propria = k.porSeisTicks ?? k.porRodada;
+  if (propria != null) return Number(propria) || 0;
+  // A condição de catálogo é gravada só como `{ id }`: o número mora na lista.
+  const cat = k.id ? (COND as any)[k.id] : null;
+  return Number(cat?.porSeisTicks ?? cat?.porRodada ?? 0) || 0;
+}
+
+export interface TiqueContinuo { cid: string; nome: string; total: number; condicoes: any[] }
+
+/**
+ * O que cada combatente deve de dano contínuo agora, e as condições já quitadas.
+ *
+ * Devolve proposta e não efeito: quem grava e quem tira Vida é a tela, porque
+ * as duas telas escrevem por caminhos diferentes (a do Grid por `gravarCondicao`,
+ * a do rastreador pelo seu próprio `upComb`). O que não podia ficar em duas
+ * cópias é a CONTA, e é ela que mora aqui.
+ *
+ * O carimbo retroativo está aqui de propósito: instância salva antes da `M-04`
+ * não tem `desde`, e não há migração que alcance JSON dentro de uma coluna. Ela
+ * recebe o Tick corrente e passa a contar dali. Tratar a falta como zero faria
+ * uma ferida antiga numa cena no Tick 60 cobrar dez pontos de uma vez, no
+ * primeiro Tick depois do deploy.
+ */
+export function danoContinuoDevido(combs: any[] | null | undefined, agora: number): TiqueContinuo[] {
+  const saida: TiqueContinuo[] = [];
+  for (const c of combs || []) {
+    const atuais: any[] = Array.isArray(c?.condicoes) ? c.condicoes : [];
+    if (!atuais.length) continue;
+    let total = 0;
+    let mexeu = false;
+    const novas = atuais.map((k: any) => {
+      const porTique = continuoDe(k);
+      if (!porTique) return k;
+      if (k.desde == null) { mexeu = true; return { ...k, desde: agora, pago: agora }; }
+      const n = tiquesDevidos(k.desde, k.pago ?? k.desde, agora);
+      if (!n) return k;
+      total += n * porTique;
+      mexeu = true;
+      return { ...k, pago: agora };
+    });
+    if (mexeu) saida.push({ cid: c.id, nome: c.nome, total, condicoes: novas });
+  }
+  return saida;
 }
 
 // -------------------------------------------------------------- retratos

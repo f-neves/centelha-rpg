@@ -401,7 +401,7 @@ console.log('\n· um Efeito com dano E cura ao mesmo tempo: rótulo e resoluçã
       { nome: 'Cura', tipo: 'fixo', valor: '1 PV a cada 2 de dano que passar', pontos: 1 },
     ],
     grid: {
-      forma: 'alvo', ancora: 'alvo', gatilho: 'por-turno', alvo: 'um', persiste: true,
+      forma: 'alvo', ancora: 'alvo', gatilho: 'por-seis-ticks', alvo: 'um', persiste: true,
       materia: null, condicao: null, condicaoAparente: null, pegaItem: false,
       arenaInteira: false, dissipa: false, fere: true, cura: true, teste: false,
     },
