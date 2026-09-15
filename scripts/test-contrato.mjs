@@ -250,6 +250,63 @@ eq(E.armaDoSlot({ ref: 'a:espada-lomga' }), null, 'id errado vira null, e é jus
   }
 }
 
+// ------------ 10. a lista "arma × armadura" do capítulo sai de `armaduras.json`
+//
+// A lista de `armas-e-armaduras.md` traz os números da Placa Completa à mão, e o
+// capítulo NÃO é gerado. Antes da `M-31` ela misturava duas parcelas numa linha
+// sim e noutra não: escrevia "Corte = 8 (10 no cavaleiro, com o corpo)", somando
+// um corpo que contra Corte vale ZERO (o `+2` eram Centelha, não corpo), e dois
+// marcadores abaixo escrevia "Impacto = só 4", esquecendo o corpo justamente no
+// modo em que ele entra inteiro (`Vigor + Centelha`).
+//
+// Somava o corpo na linha em que ele não existe e o esquecia na linha em que ele
+// é o maior pedaço. E era o "só 4" que sustentava a conclusão de que o malho é a
+// via contra placa.
+//
+// Agora a lista mostra SÓ a armadura, e este portão prende os três números à
+// peça. Mesmo molde do custo de raça: o que é derivável do dado não pode ficar
+// divergindo à mão.
+{
+  const armaduras = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/armaduras.json'), 'utf8'));
+  const regras = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/regras.json'), 'utf8'));
+  const cap = fs.readFileSync(path.join(ROOT, 'src/content/chapters/armas-e-armaduras.md'), 'utf8');
+  const placa = armaduras.find((a) => a.id === 'placa-completa');
+  ok(placa, 'a placa completa sumiu do catálogo');
+
+  const linha = (re) => cap.split('\n').find((l) => re.test(l)) || '';
+  const num = (l) => {
+    const m = /=\s*\*\*(\d+)\*\*\s*de Absorção/.exec(l) || /=\s*\*\*(\d+)\*\*\s*de Absorção/.exec(l);
+    return m ? Number(m[1]) : null;
+  };
+
+  const lCorte = linha(/^\- \*\*Placa completa × Corte\*\*/);
+  const lImp = linha(/^\- \*\*Placa × Impacto\*\*/);
+  const lPerf = linha(/^\- \*\*Placa × Perfuração nível 3\+\*\*/);
+  ok(lCorte && lImp && lPerf, 'uma das três linhas de número da lista arma × armadura sumiu');
+
+  eq(num(lCorte), placa.soak.corte, 'o Corte da lista não bate com `armaduras.json`');
+  eq(num(lImp), placa.soak.impacto, 'o Impacto da lista não bate com `armaduras.json`');
+  ok(new RegExp(`\\*\\*${placa.soak.perfuracao}\\*\\*`).test(lPerf),
+    'a Perfuração da lista não bate com `armaduras.json`');
+
+  // E O CORPO NÃO ENTRA NA LISTA. Esta é a asserção que pega a volta do defeito:
+  // qualquer "com o corpo", "no cavaleiro" ou segundo número entre parênteses
+  // nessas linhas é a mistura das duas parcelas voltando.
+  for (const [nome, l] of [['Corte', lCorte], ['Impacto', lImp], ['Perfuração 3+', lPerf]]) {
+    ok(!/com o corpo|no cavaleiro/i.test(l),
+      `a linha de ${nome} voltou a somar o corpo na lista: os números da lista são só os da ARMADURA (M-31)`);
+  }
+
+  // e a frase que lembra a Absorção natural tem de estar ACIMA da lista
+  const iFrase = cap.toLowerCase().indexOf('números desta lista são só os da armadura');
+  ok(iFrase > 0, 'sumiu a frase que avisa que a lista traz só a armadura');
+  ok(iFrase < cap.indexOf(lCorte), 'a frase da Absorção natural tem de vir ANTES da lista');
+
+  // e a régua de qual modo recebe o quê: contra Corte o corpo vale zero.
+  eq(regras.dano.centelhaNoSoak, 1,
+    'o `centelhaNoSoak` mudou: o exemplo do cavaleiro na lista foi calculado com ele valendo 1');
+}
+
 for (const f of tmp) fs.rmSync(f, { force: true });
 if (falhas.length) {
   console.error(`\n✘ Contrato ficha↔mesa FALHOU (${falhas.length}):`);

@@ -7122,7 +7122,7 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
 
 ## J. Infraestrutura · endereço, hospedagem e versão
 
-- [ ] **J0 · 42 travessões sobreviveram dentro de `src/data/*.json`**, que é texto publicado e nenhum portão cobre: `regras.json` 22, `tecnicas.json` 15, `efeitos.json` 5. O `test-travessao-capitulos.mjs` só varre `src/content/**`, por decisão do humano, e o dado ficou de fora. Achado na rodada 65 ao converter "turno" em Tick: um deles está na MESMA linha que eu editei, e consertá-lo sozinho seria arbitrário. É varredura de uma passada, e a pergunta que vem junto é se o portão passa a cobrir `src/data` depois dela.
+- [ ] **J0 · 41 travessões sobreviveram dentro de `src/data/*.json`**, que é texto publicado e nenhum portão cobre: `regras.json` 21, `tecnicas.json` 15, `efeitos.json` 5 (o 22º do `regras.json` saiu na rodada 73, junto com a M-31, porque a M-31 mexia naquele bloco). O `test-travessao-capitulos.mjs` só varre `src/content/**`, por decisão do humano, e o dado ficou de fora. Achado na rodada 65 ao converter "turno" em Tick: um deles está na MESMA linha que eu editei, e consertá-lo sozinho seria arbitrário. É varredura de uma passada, e a pergunta que vem junto é se o portão passa a cobrir `src/data` depois dela.
 
 - [x] **J1 · [DECIDIDO 15/08/2026] O endereço será `centelha.rec.br`.** R$ 40/ano no
   Registro.br, categoria de recreação e jogos, portátil, preço fixo em real, e **4,6× mais

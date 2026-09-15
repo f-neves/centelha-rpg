@@ -146,12 +146,14 @@ Contra **projéteis rápidos** (flecha, virote, bala de funda, dardo), o escudo 
 
 ## A Interação Arma × Armadura
 
-A pedra-papel-tesoura sai dos números acima:
+A pedra-papel-tesoura sai dos números acima. **Os números desta lista são só os da ARMADURA**, direto da tabela: a [Absorção natural](/regras/combate) do defensor soma por cima, e ela não é igual nos três modos. Contra **Impacto** o corpo entra inteiro (**Vigor + Centelha**); contra **Corte** e **Perfuração** entra **só a Centelha**, porque a carne não para o fio nem a ponta.
 
-- **Placa completa × Corte** = 8 de Absorção (10 no cavaleiro, com o corpo): uma espada de topo abre poucos pontos; uma lâmina leve, quase nada. **Ninguém corta placa de leve**, mas um golpe forte ainda arranha.
+- **Placa completa × Corte** = **8** de Absorção: uma espada de topo abre poucos pontos; uma lâmina leve, quase nada. **Ninguém corta placa de leve**, mas um golpe forte ainda arranha.
 - **Placa × Perfurante nível 0–2** (flecha, arco, lança, adaga, qualquer besta, picareta) = **resvala**: o Nível 3 não é vencido. A placa completa é à prova de qualquer arma de mão ou de tiro perfurante.
-- **Placa × Impacto** (maça, martelo) = só 4 de Absorção: o malho **passa** (a vulnerabilidade nunca resolvida, a principal via contra placa; a maça é o abre-lata de uma mão, o martelo de duas).
+- **Placa × Impacto** (maça, martelo) = **4** de Absorção, a menor das três. **Mas é justamente aqui que o corpo devolve o que a placa não segura**, e a vantagem do malho é menor do que estes números sozinhos sugerem: ver o quadro abaixo.
 - **Placa × Perfuração nível 3+** (cerco, aríete, magia, armas épicas, Proeza) = o gate abre, e aí a placa só tem **4** de Absorção de Perfuração: dificílimo de furar, mas quando fura, fura fundo.
 - Sem armadura, o **corte** brilha; a **malha** mata o corte mas cede ao impacto; cada armadura tem seu furo.
 
-<div class="callout"><span class="lbl">Como derrotar cada armadura</span>O cavaleiro de placas é quase intocável por gume, flecha e estocada, mas um camponês com um malho (Impacto) ainda o amassa, e três deles o derrubam pela lentidão. Contra o topo da placa, o caminho é Impacto, Perfuração nível 3+ (cerco/magia), Proeza ou feitiçaria.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Um cavaleiro de <strong>placa completa</strong>, Vigor 3 e Centelha 2, contra um atacante de <strong>Força 4</strong>. Somando a Absorção natural: contra <strong>Corte</strong> ele tem 8 + (0 + 2) = <strong>10</strong>; contra <strong>Impacto</strong>, 4 + (3 + 2) = <strong>9</strong>. A diferença é de <strong>um ponto</strong>, e não de quatro. No dano médio, o <strong>martelo de guerra</strong> (2d6, duas mãos) atravessa <strong>6</strong>; o <strong>montante</strong>, que é Corte, atravessa <strong>5</strong>; e a <strong>maça de uma mão</strong> (1d6) atravessa <strong>zero</strong>.</div>
+
+<div class="callout"><span class="lbl">Como derrotar cada armadura</span>O cavaleiro de placas é quase intocável por flecha e estocada, e o Impacto é a via mais confiável contra ele, mas é preciso <strong>peso de verdade</strong>: um malho de duas mãos amassa devagar, e uma maça de uma mão não o alcança. Contra o topo da placa, os caminhos são Impacto <em>pesado</em>, Perfuração nível 3+ (cerco/magia), Proeza ou feitiçaria, e o número de atacantes, que a lentidão da placa não resolve.</div>

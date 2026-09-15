@@ -831,7 +831,7 @@
     }
   },
   "dano": {
-    "nota": "Três MODOS de ataque (Cortante, Perfurante, Impacto). A arma escolhe o modo por golpe. A armadura tem TRÊS Absorções: Impacto, Corte e Perfuração — o Perfurante usa a Absorção de Perfuração (não se distingue projétil de estocada). A Absorção total de um golpe = Absorção natural do modo (Vigor + Centelha no Impacto; só a Centelha em Cortante/Perfurante) + a absorção da armadura na categoria correspondente.",
+    "nota": "Três MODOS de ataque (Cortante, Perfurante, Impacto). A arma escolhe o modo por golpe. A armadura tem TRÊS Absorções: Impacto, Corte e Perfuração, e o Perfurante usa a Absorção de Perfuração (não se distingue projétil de estocada). A Absorção total de um golpe = Absorção natural do modo (Vigor + Centelha no Impacto; só a Centelha em Cortante/Perfurante) + a absorção da armadura na categoria correspondente.",
     "modos": [
       {
         "id": "corte",
