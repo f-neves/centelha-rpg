@@ -56,3 +56,11 @@ ensaio dos três sentidos) e os consertos do `M-10`.
   e elas usam "Trilha" para as TRÊS (corpo, voz, mente), que é o sentido da tabela da decisão.
   **Não mexi.** Dois usos divergentes achados e registrados sem conserto, no fim do documento.
 - **00:57** · `npm run validate` LIDO depois do `M-10`: `exit 0`.
+- **00:59** · marcado dentro da ordem de serviço (`C-01` FEITO na 61 com a nota velha preservada
+  porque o erro dela é o achado, `C-12` com a linha das Artes feita) e cinco achados novos numa
+  seção no fim, `A-07` a `A-11`, nenhum consertado. **Nada apagado**: o diff dá 130 linhas
+  adicionadas contra 29 removidas, e as 29 são a reescrita dos próprios `href` e das frases do
+  `M-10`, nenhuma delas item da lista.
+- **01:00** · TERMINADO e PUBLICADO. Commit `607ee46`, 17 arquivos, e
+  `git rev-list --count origin/main..HEAD` deu **0**. Travessão conferido lendo os arquivos e o
+  diff pelo Python, fora do hook: zero nas linhas novas e zero no portão novo.
