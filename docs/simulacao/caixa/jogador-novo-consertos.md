@@ -948,12 +948,12 @@ entre elas.
 
 | Código | A pergunta | As leituras que competem, ou o que falta |
 | --- | --- | --- |
-| **M-10** (146, 147, 153) | como as Artes rolam de vez? | é o primeiro dos 21 itens da lista "Em revisão" da própria página. Sem ele o Arcano não é jogável. Junto: "Aprender uma Arte é percorrer uma de suas Trilhas" e **nenhuma Trilha existe**, enquanto a Criação compra Artes só com XP |
-| **M-11** (62) | como se recupera Força de Vontade? | não há regra em fonte nenhuma (procurei `recup` em `regras.json`: nenhuma chave; em `calc.ts` só `folego` e `mana` têm recuperação). É a reserva que paga Técnicas, Artes e Combate Social |
-| **M-12** (68) | a penalidade de ferimento sai de dados ou de pontos? | `regras.json → ferimentos` guarda `penAcao: -1..-4` e `penDefesa: 0..-3` como números puros, **sem unidade**. Decide quanto pesa estar ferido |
-| **M-13** (126, 199) | quanto custa recarregar uma besta? | `recarga` existe como **tag** em `armas.json` (quatro bestas a têm) e como filtro em `/equipamentos`, e **não tem custo em Tick em lugar nenhum**. A arma de maior dano do catálogo não é jogável |
+| **M-10** (146, 147, 153) | como as Artes rolam de vez? | é o primeiro dos 21 itens da lista "Em revisão" da própria página. Sem ele o Arcano não é jogável. Junto: "Aprender uma Arte é percorrer uma de suas Trilhas" e **nenhuma Trilha existe**, enquanto a Criação compra Artes só com XP · **DECIDIDO** `4dac366`, no ar na rodada 61 (`607ee46`). |
+| **M-11** (62) | como se recupera Força de Vontade? | não há regra em fonte nenhuma (procurei `recup` em `regras.json`: nenhuma chave; em `calc.ts` só `folego` e `mana` têm recuperação). É a reserva que paga Técnicas, Artes e Combate Social · **DECIDIDO** `b1f28ff`, no ar na rodada 62 (`5d9f164`). Dois resíduos abertos, e o `A-12` achou uma terceira torneira. |
+| **M-12** (68) | a penalidade de ferimento sai de dados ou de pontos? | `regras.json → ferimentos` guarda `penAcao: -1..-4` e `penDefesa: 0..-3` como números puros, **sem unidade**. Decide quanto pesa estar ferido · **DECIDIDO** `ec0ae07`, no ar na rodada 62 (`5d9f164`). |
+| **M-13** (126, 199) | quanto custa recarregar uma besta? | `recarga` existe como **tag** em `armas.json` (quatro bestas a têm) e como filtro em `/equipamentos`, e **não tem custo em Tick em lugar nenhum**. A arma de maior dano do catálogo não é jogável · **DECIDIDO** `08759df`, ainda NÃO implementado. |
 | **M-01** (22) | a ficha deve travar os limites de criação? | `ficha-engine.ts:141-155` deliberadamente não trava ("o que segura a ficha é o ORÇAMENTO de XP"), e os dois textos do capítulo XVIII dizem que trava |
-| **M-02** (34) | o Bram tem sete Artes ou oito? | a lista do texto diz sete, o preço de 870 XP é exatamente o de oito |
+| **M-02** (34) | o Bram tem sete Artes ou oito? | a lista do texto diz sete, o preço de 870 XP é exatamente o de oito · **DECIDIDO** `6dcbe8b`, no ar na rodada 61 (`607ee46`), pela linha das Artes do `C-12`. |
 | **M-03** (177) | a Especialidade entra no Valor Passivo? | `calc.ts:273-275` não a soma; `coracao-do-sistema.md` e o glossário somam |
 | **M-04** (92, 155) | quantos Ticks tem uma rodada, e um turno? | as Durações do bloco `arcano` são medidas em **turnos**, o combate é medido em **Ticks**, e não há conversão. A Duração breve de um efeito não é conversível para a linha do tempo do combate |
 | **M-05** (14) | quem tem Atributo 1 e perícia 0 deve ser incapaz de passar na Dificuldade 5? | é o que o motor faz hoje (total fixo 2), e ninguém escreveu se é de propósito |
