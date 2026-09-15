@@ -99,15 +99,27 @@ Cada nível custa **8 + (nível × 4)** numa Habilidade primária (12 · 16 · 2
 ## Firulas · recompensa à ousadia
 
 Descrever uma ação com criatividade e uso do cenário rende uma **Firula**: um bônus naquele lance,
-e só nele. O Mestre define o nível:
+e mais um pouco de fôlego que fica. O Mestre define o nível:
 
-| Nível | Bônus |
-|:---:|---|
-| 1 | +2 fixo |
-| 2 | +1d6 |
-| 3 | +2d6 |
+| Nível | Na jogada | E devolve |
+|:---:|---|---|
+| 1 | +2 fixo | **1 de Energia** |
+| 2 | +1d6 | **2 de Energia**, ou **1 de Mana**, ou **1 de Força de Vontade** |
+| 3 | +2d6 | **5 de Energia**, ou **3 de Mana**, ou **3 de Força de Vontade**, e ainda **XP** |
 
-**Do nível 2 para cima a Firula devolve também 1 de [Força de Vontade](/regras/aparencia-virtudes-vontade).** É o segundo dos dois jeitos de repor a reserva, e a razão de a Firula valer duas vezes: o bônus vale naquele lance, e o ponto de Vontade fica.
+**A escolha da reserva é sua, uma por Firula, e elas não somam:** você pega uma das três, não as
+três. É a razão de a Firula valer duas vezes: o bônus vale naquele lance, e o que ela devolve fica.
+
+**Não há teto por cena.** Nem de quantas Firulas, nem de quanto se recupera, em nenhuma das três
+reservas. Uma cena inteira bem descrita devolve o que ela render.
+
+**E a Firula não é coisa de combate.** Ela vale para qualquer ação **relevante** e que seja um
+**desafio**: a escalada em que se joga o gancho na gárgula em vez de na cornija, a mentira que usa
+o brasão na parede, o conserto feito com a peça errada. Fora do combate quase toda rolagem é
+candidata, e é ali que ela mais aparece.
+
+<p class="muted">Quanto XP o nível 3 devolve <strong>ainda não foi decidido</strong>, e é número, não
+redação: até a mesa fechar isso, vale o critério do Mestre.</p>
 
 A Firula não se compra nem se aprende: ela não é uma [Técnica](/caminhos), não sai de
 catálogo nenhum e está aberta a qualquer personagem, do camponês ao semideus. O que ela cobra é

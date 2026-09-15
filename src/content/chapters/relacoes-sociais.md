@@ -142,7 +142,7 @@ Um golpe que supera a Defesa **moveria** o alvo. Para **segurar firme**, ele gas
 | 12–17 (Margem 2) | **3** Vontade | cede, e a régua anda **2 passos** |
 | cada +6 além disso | **+1** Vontade | **+1 passo** |
 
-A Vontade é a mesma reserva das Proezas e das Artes e volta devagar (descanso/cena), então segurar-se num embate longo **custa caro**: vira uma queda de braço de recursos, em que ganha quem tem mais paciência e convicção. Gastar Vontade **não** vale contra **leitura** (não dá para se recusar a ser lido); vale só contra os golpes que tentam te **mover**.
+A Vontade é a mesma reserva das Proezas e das Artes e **volta devagar**: 1 ponto por noite de sono, 1 ou 3 por [Firula](/regras/habilidades) conforme o nível, e 1 por agir fiel à própria régua moral. Então segurar-se num embate longo **custa caro**: vira uma queda de braço de recursos, em que ganha quem tem mais paciência e convicção. Gastar Vontade **não** vale contra **leitura** (não dá para se recusar a ser lido); vale só contra os golpes que tentam te **mover**.
 
 ### Ceder, ou mover a régua
 

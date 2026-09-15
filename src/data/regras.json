@@ -282,10 +282,14 @@
   ],
   "recuperacaoVontade": {
     "sono": "1 ponto por noite de sono, em meditação, descanso completo ou sono profundo",
-    "firula": "1 ponto por Firula de nível 2 ou acima, quando o Mestre premiar a descrição",
-    "quanto": 1,
+    "firula": "Por Firula, quando o Mestre premiar a descrição, E se a Vontade for a reserva escolhida pelo jogador: 1 ponto no nível 2, 3 pontos no nível 3. O nível 1 não devolve Vontade (devolve 1 de Energia).",
+    "firulaPorNivel": { "1": 0, "2": 1, "3": 3 },
+    "reguaMoral": "1 ponto quando o personagem age fiel à conduta da própria Virtude num momento em que isso lhe custa, a critério do Mestre",
+    "tetoPorCena": null,
+    "quantoPorSono": 1,
     "nota": "A Vontade era a única das quatro reservas sem relógio: o Fôlego volta por Tick, a Mana por hora (`arcano.recuperacaoMana`) e a Energia por cena. O gatilho do sono reusa de propósito o vocabulário da Mana, em vez de inventar uma taxonomia de descanso curto e longo que o sistema não tem.",
-    "aRevisar": "se a Firula de nível 3 devolve mais que a de nível 2, e se há teto de quantos pontos uma cena devolve"
+    "respondido": "As duas metades caíram na `M-11b`, em 15/09/2026. A Firula de nível 3 devolve MAIS: 3 contra 1. E NÃO há teto por cena, nem de quantas Firulas nem de quantos pontos, em nenhuma das três reservas. `tetoPorCena` é `null` por decisão explícita da mesa, e não por falta de número.",
+      "aRevisar": "quanto XP a Firula de nível 3 devolve, além da reserva. Não foi decidido, e é número e não redação."
   },
   "escalaAparencia": [
     {
@@ -2073,7 +2077,8 @@
     "recuperacaoMana": {
       "normal": "Centelha por hora",
       "descanso": "2 × Centelha por hora em meditação, descanso completo ou sono profundo",
-      "nota": "A reserva não volta por cena: o feiticeiro que se esvazia numa luta precisa de horas, não de um respiro. É o que separa a economia do Arcano da economia das Proezas (a Energia, essa sim, é o combustível da cena).",
+      "firula": "1 de Mana por Firula de nível 2 e 3 por Firula de nível 3, quando a Mana for a reserva escolhida pelo jogador (`M-11b`). É a única porta que devolve Mana dentro da cena, e ela não é relógio, é recompensa.",
+      "nota": "Pelo RELÓGIO a reserva não volta por cena: o feiticeiro que se esvazia numa luta precisa de horas, não de um respiro. É o que separa a economia do Arcano da economia das Proezas (a Energia, essa sim, é o combustível da cena).",
       "arteManipulacao": "A Arte Mana soma +1 por nível dela a cada 2 horas, e o dobro em descanso."
     },
     "fonteElemental": {

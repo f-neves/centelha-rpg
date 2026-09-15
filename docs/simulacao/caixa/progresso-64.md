@@ -59,3 +59,23 @@ vira Stunt). Se a rodada ficar longa, fecho no que estiver pronto e digo o que s
   coisas na linguagem dele: a lista publica a INCLINACAO, e a combinacao concreta sai da
   descricao. Os cinco exemplos ficam, porque o que ele retratou foi a conclusao e nao o exemplo.
   A frase a mao do `habilidades.md` voltou a `lista quais` e ganhou a palavra inclinacao.
+- **03:56** · FRENTE 3 (`M-11b`) escrita, as sete metades. A escada nova em tabela de tres colunas
+  no `habilidades.md`; a escolha do jogador (uma por Firula, nao somam); SEM TETO POR CENA dito
+  com todas as letras e marcado como decisao e nao esquecimento; a Firula fora do combate, com
+  exemplos que nao sao de briga; e o XP do nivel 3 dito como ABERTO. No
+  `aparencia-virtudes-vontade.md` os caminhos viraram TRES (o `A-12` fechado) com o numero por
+  nivel (2 devolve 1, 3 devolve 3) e o relogio ao lado, que e o que da o peso: uma Firula de
+  nivel 3 vale tres noites de sono. E o `relacoes-sociais.md:145` parou de prometer
+  `descanso/cena` e passou a dizer a regra.
+- **03:56** · no dado: `recuperacaoVontade` ganhou `firulaPorNivel`, `reguaMoral` e
+  `tetoPorCena: null` (explicito, para ninguem ler o vazio como falta de numero), e o `aRevisar`
+  virou `respondido` mais um `aRevisar` novo, que e so o XP. E o `quanto: 1` virou
+  `quantoPorSono: 1`, porque `quanto` deixou de ser verdade no instante em que o nivel 3 passou
+  a devolver 3.
+- **03:56** · um defeito que a decisao CRIA e que eu nao consertei calado: o
+  `arcano.recuperacaoMana.nota` dizia `A reserva nao volta por cena`, e a Firula passou a ser
+  porta de Mana dentro da cena. E o mesmo caso do `relacoes-sociais:145` que ele mandou
+  reescrever, entao tratei igual: entrou a chave `firula` no bloco da Mana e a nota passou a
+  dizer `pelo RELOGIO a reserva nao volta por cena`. Nenhuma prosa publicada repetia a frase
+  (varri os 23 capitulos). Nenhuma linha de codigo le `recuperacaoVontade` nem
+  `recuperacaoMana`: sao dado de documentacao.
