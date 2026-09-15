@@ -496,3 +496,38 @@ texto não dá número. Não foi perguntado nesta rodada.
 **E não resolve o `M-19`**, que é o vizinho: como se rola Virtude + Atributo, Vontade + Habilidade
 ou Virtude sozinha. Aquilo são traços que não são Atributo nem Habilidade entrando no par, e é
 outra pergunta.
+
+---
+
+## Adendo à M-13 · a medição que faltava chegou, e ela ABSOLVE os números
+
+A `M-13` foi decidida dizendo, com todas as letras, que os `9 · 12 · 15` saíram da escala
+publicada e **não de uma medição**, porque os três simuladores estavam mortos. A rodada 63 os
+ressuscitou (`0e780a6`) e o número existe.
+
+**Uma luta típica dura 63 a 97 Ticks** (duelo espelhado, tier 1 a tier 3, regra viva). Posto
+contra a decisão:
+
+| arma | ciclo | tiros numa luta típica |
+|---|---:|---|
+| Besta Pequena | 9 | sete a dez |
+| Besta Média | 12 | cinco a oito |
+| Besta Grande | 15 | quatro a seis |
+
+**O medo que a mesa declarou ao escolher era "uma bala por combate", e ele não se confirma.** A
+luta é longa o bastante para a arbalesta disparar várias vezes. **O que a besta perde de verdade
+não é o número de tiros, é o passo:** catorze Ticks plantada, num combate em que o espadachim ao
+lado anda em todos eles.
+
+**Isso muda o que a mesa disse sobre revisar para baixo.** O humano decidiu os números *contando*
+a desvantagem de ficar parado, e disse que talvez precisassem diminuir por causa dela. **A medição
+aponta para o lado contrário:** não há escassez de tiros a compensar, e se houver ajuste ele não é
+para baixo por esse motivo.
+
+**E uma segunda medição desfaz uma inferência minha.** Escrevi na `M-13` que o besteiro fica
+"comprometido catorze Ticks com a escada de Defesa aberta em cima dele", e tratei isso como peso
+crescente. Medido Tick a Tick por `defesaPerdida` num ciclo 15 de classe `distancia`: a penalidade
+é **−2 constante** do Tick 0 ao 13 e **−4** no Tick do Golpe, **exatamente como num ciclo de 6**.
+Ela **não acumula com o tamanho do Preparo**. Um Preparo de catorze Ticks não é catorze vezes pior
+que um de cinco: é o mesmo −2 durando quase três vezes mais tempo. O achado é da Executora
+(`A-22b`), e a inferência corrigida é minha.
