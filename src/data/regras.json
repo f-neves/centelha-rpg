@@ -280,6 +280,13 @@
       "texto": "Vontade no teto humano: um poço quase inesgotável de combustível heroico."
     }
   ],
+  "recuperacaoVontade": {
+    "sono": "1 ponto por noite de sono, em meditação, descanso completo ou sono profundo",
+    "firula": "1 ponto por Firula de nível 2 ou acima, quando o Mestre premiar a descrição",
+    "quanto": 1,
+    "nota": "A Vontade era a única das quatro reservas sem relógio: o Fôlego volta por Tick, a Mana por hora (`arcano.recuperacaoMana`) e a Energia por cena. O gatilho do sono reusa de propósito o vocabulário da Mana, em vez de inventar uma taxonomia de descanso curto e longo que o sistema não tem.",
+    "aRevisar": "se a Firula de nível 3 devolve mais que a de nível 2, e se há teto de quantos pontos uma cena devolve"
+  },
   "escalaAparencia": [
     {
       "nivel": 0,

@@ -107,6 +107,8 @@ e só nele. O Mestre define o nível:
 | 2 | +1d6 |
 | 3 | +2d6 |
 
+**Do nível 2 para cima a Firula devolve também 1 de [Força de Vontade](/regras/aparencia-virtudes-vontade).** É o segundo dos dois jeitos de repor a reserva, e a razão de a Firula valer duas vezes: o bônus vale naquele lance, e o ponto de Vontade fica.
+
 A Firula não se compra nem se aprende: ela não é uma [Técnica](/caminhos), não sai de
 catálogo nenhum e está aberta a qualquer personagem, do camponês ao semideus. O que ela cobra é
 atenção ao que está em volta · o lampião pendurado, a mesa entre vocês, o nome que o outro não

@@ -41,11 +41,13 @@ Conforme a Vida restante cai, a dor cobra seu preço, as penalidades incidem nas
 | Vida restante | Estado | Penalidade |
 |---|---|---|
 | 76–100% | Saudável | nenhuma |
-| 51–75% | Machucado | −1 em ações |
-| 26–50% | Ferido | −2 em ações, −1 Defesa |
-| 11–25% | Grave | −3 em ações, −2 Defesa |
-| 1–10% | Crítico | −4 em ações, −3 Defesa |
+| 51–75% | Machucado | −1 no total das ações |
+| 26–50% | Ferido | −2 no total das ações, −1 Defesa |
+| 11–25% | Grave | −3 no total das ações, −2 Defesa |
+| 1–10% | Crítico | −4 no total das ações, −3 Defesa |
 | ≤ 0 | Caído | incapacitado |
+
+<div class="callout regra"><span class="lbl">As duas moedas, e elas não se misturam</span>O jogo penaliza de dois jeitos, e a diferença muda a conta na mesa. O <strong>ponto</strong> sai do <strong>total</strong> depois que os dados pararam de rolar: é a moeda do ferimento acima e da maior parte dos modificadores de situação, e um ferido a 5% da Vida continua rolando o mesmo punhado de dados de quando estava inteiro, só somando menos no fim. O <strong>dado</strong> sai do <strong>pool</strong>, antes de rolar: é a moeda do <strong>Desgaste</strong> (fome, sede, sono, veneno, exaustão), no capítulo <a href="/centelha-rpg/regras/acoes-resistir">Resistir</a>, e ali some dado da mão. Ponto e dado nunca são a mesma coisa nem se convertem um no outro.</div>
 
 ## Nocaute e Morte
 

@@ -179,6 +179,10 @@ const PORTE_NOME: Record<string, string> = {
       <h2>Condições</h2>
       <p class="ref-nota">O rastreador de combate aplica estas com um clique, e o número entra sozinho na conta do
         acerto e da Defesa. Aqui elas ficam para consulta.</p>
+      <p class="ref-nota"><strong>Duas moedas, e elas não se misturam.</strong> O <strong>ponto</strong> sai do
+        <strong>total</strong> depois de rolar: é a moeda dos Limiares de Ferimento e da maior parte das condições.
+        O <strong>dado</strong> sai do <strong>pool</strong> antes de rolar: é a moeda do <strong>Desgaste</strong>
+        (fome, sede, sono, veneno, exaustão), do capítulo Resistir. Uma condição nunca converte uma na outra.</p>
       {COND_GRUPOS.map((g) => (
         <>
           <h3>{g.nome}</h3>

@@ -1228,9 +1228,61 @@ que publicam os Caminhos usam a palavra assim, certo, e **não foram tocadas**. 
 Só o primeiro é divergência de verdade. Não consertado: renomear cabeçalho de tabela num
 capítulo publicado é outro tamanho, e a decisão manda registrar.
 
-### A-11 · um `bash.exe.stackdump` mora dentro de `src/content/chapters/`
+### A-11 · um `bash.exe.stackdump` mora dentro de `src/content/chapters/` · **FEITO na rodada 62**
+
+> **Era lixo na árvore, não arquivo versionado**, e por isso saiu com `rm` e não com `git rm`:
+> `git ls-files --error-unmatch` não o conhece e `git check-ignore -v` aponta `.gitignore:29`
+> (`*.stackdump`). O commit da rodada não carrega remoção nenhuma, e é assim que tinha de ser.
+> **Há outros nove iguais na árvore** (na raiz, em `D&D/`, em `public/icones-bestiario/`, no
+> `.sim/`), todos ignorados do mesmo jeito. Ficam: o item nomeou um, e apagar os outros nove
+> seria abrir frente vizinha.
 
 `src/content/chapters/bash.exe.stackdump`, 1.221 bytes, de **20/07/2026**. Não é meu (a data é
 anterior a esta frente), não aparece em `git status`, e nem o `validate` nem o `build`
 reclamam dele. Fica registrado porque é lixo dentro da pasta de uma coleção de conteúdo, que é
 o tipo de arquivo que um dia vira erro de parser sem ninguém entender por quê.
+
+---
+
+# Rodada 62 · o que saiu das decisões `M-11` e `M-12`
+
+**As duas moram na seção PARA A MESA acima, em linha de TABELA**, e marcá-las lá quebraria a
+tabela. Ficam marcadas aqui, e quem cuida daquela seção reaponta se quiser.
+
+### `M-11` · a recuperação da Força de Vontade · **FEITO**
+
+Três lugares, que são os três que a decisão manda:
+
+- `src/data/regras.json` · `recuperacaoVontade`, irmão de `escalaVontade` (que é onde a Vontade
+  já morava) e com a FORMA de `arcano.recuperacaoMana`: os dois gatilhos, o valor `1` e a `nota`.
+  Os dois resíduos foram para o campo `aRevisar`, que é o nome que o próprio arquivo já usa para
+  pergunta aberta;
+- `src/content/chapters/aparencia-virtudes-vontade.md` · a frase da Vontade passou a nomear os
+  dois caminhos com o número;
+- `src/content/chapters/habilidades.md` · uma linha na seção das Firulas, reusando a escada
+  publicada ali. A seção fica **fora** do bloco `gen:primarias`, então é edição à mão e não morre
+  no regen.
+
+**Nenhum dos dois resíduos foi respondido**, e o texto foi escrito para isso: não diz nada sobre
+frequência (o teto por cena) nem sobre o que a Firula de nível 3 devolve.
+
+### `M-12` · a penalidade de ferimento é ponto no total · **FEITO**
+
+- `src/content/chapters/vida-ferimentos-cura.md` · as quatro linhas com penalidade passaram a
+  dizer "no total das ações", e entrou um callout separando as duas moedas: ponto sai do total
+  depois de rolar, dado sai do pool antes de rolar (o Desgaste, do capítulo Resistir);
+- `src/pages/mesa/referencia.astro` · a mesma distinção, que a decisão deixou opcional. O
+  parágrafo escrito à mão continua no lugar do `nota` do JSON, porque aquele texto é escrito para
+  quem programa; o que faltava era a frase, e ela está lá.
+
+**Nenhuma linha de código mudou**, que é parte da decisão: nem `rolagem.ts`, nem os `sim-*.mjs`,
+nem `combate.astro`, nem `grid.astro`. **E o teto de modificadores não foi aberto.**
+
+### O achado da rodada 62
+
+**`A-12` · a decisão do `M-11` diz DOIS métodos, e o disco já publicava um TERCEIRO, com número.**
+`aparencia-virtudes-vontade.md`, o callout "A régua moral": agir fiel à própria régua num momento
+em que isso custa faz o Mestre **poder devolver 1 de Força de Vontade** (ou outro alívio, a
+critério dele). Não contradiz a decisão, porque é recompensa discricionária e não relógio, e por
+isso não mexi nele. **Mas muda a conta do segundo resíduo:** o teto por cena, se existir, terá de
+contar três torneiras e não duas, e a terceira é a única que já estava no ar.

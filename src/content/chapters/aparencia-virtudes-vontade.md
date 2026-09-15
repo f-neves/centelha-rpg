@@ -74,7 +74,9 @@ As Virtudes não são só interpretação, elas têm peso mecânico em três fre
 
 A **Força de Vontade** é a reserva interior de determinação: o tanto de si que o personagem consegue **queimar para forçar o destino**. Vai de **0 a 12** e **começa em 0**, o piso grátis, que não é uma vontade fraca e sim reserva nenhuma, nada a queimar. O nível 1 já é comprado, e um herói típico leva a Vontade para 5 ou mais.
 
-Você gasta Vontade para **turbinar uma ação importante**, **resistir** a medo e manipulação, **ignorar penalidades** e **conjurar** as Técnicas e Artes mais poderosas. Ela se recupera com descanso e respiro, e também quando o personagem **age fiel à sua régua moral** (as Virtudes, acima).
+Você gasta Vontade para **turbinar uma ação importante**, **resistir** a medo e manipulação, **ignorar penalidades** e **conjurar** as Técnicas e Artes mais poderosas.
+
+**Ela volta 1 ponto de cada vez, por dois caminhos.** O primeiro é uma **noite de sono**: meditação, descanso completo ou sono profundo, o mesmo repouso que a Mana pede. O segundo é uma **[Firula](/regras/habilidades) de nível 2 ou acima**, quando o Mestre premia a descrição. O personagem também recupera Vontade quando **age fiel à sua régua moral** (as Virtudes, acima).
 
 Mais que isso, a Vontade é a **espinha dos seus traços derivados**: entra na **Mana** (Centelha×2 + Vontade), na **Energia** e na **Defesa Mental**. Uma vontade fraca não só cede sob pressão: encolhe tudo o que o personagem tem de reserva.
 
