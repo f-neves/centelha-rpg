@@ -8,6 +8,13 @@ Um veredito por dúvida da Fase 1, com arquivo e linha.
 > do Metal Incandescente usa "—" para "sem valor"). Trocá-los falsificaria a citação,
 > que é o que estes dois arquivos têm de útil.
 
+> Nota de numeração, acrescentada em 15/09/2026: as citações por número ao **passo a passo
+> da Criação** (`passo 4`, `passo 5`, `passo 6`, `passo 7`) usam a numeração **anterior a
+> `b6a5293`**, quando a Raça virou o passo 3 (`M-28`) e os seguintes andaram um: o que aqui é
+> `passo 4` hoje é o 5, o `5` é o 6, o `6` é o 7 e o `7` é o 8. **Elas ficam como estão**,
+> porque este documento é o relato do que o leitor viu, e renumerar por dentro falsificaria
+> o relato. São sete no total, uma aqui e seis na Fase 1.
+
 
 - **(A) BURACO DE PUBLICAÇÃO** · a resposta existe na fonte e a página não a mostra, ou
   mostra onde o jogador não acha. Conserto de texto ou de apresentação.

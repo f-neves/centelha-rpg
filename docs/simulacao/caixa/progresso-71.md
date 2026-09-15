@@ -58,3 +58,13 @@ Conferir por mim mesma, antes de aceitar: que o `de` de `custoPontos` cobra cert
 - **14:12** · fim. Publicado em `4ed3ba4`, `git rev-list --count origin/main..HEAD` = 0.
   `validate` e `build` verdes, `test-kael`, `test-contrato` e `test-exemplos-criacao` exit 0.
   Zero coautoria, zero travessao nas linhas que eu escrevi (conferido lendo os ARQUIVOS).
+- **14:16** · adendo da rodada 70, pedido depois: a nota de CABECALHO nos dois documentos do
+  jogador novo, e nada por dentro. Conferi a setima citacao que ele achou
+  (, o passo das Virtudes) e as sete batem. A nota entrou como irma da
+   que os dois ja tinham, que era o molde pronto, e cada uma diz de si mesma
+  ( contra ). As sete citacoes por dentro
+  seguem intactas, conferidas depois da edicao.
+- **14:16** · e o mecanismo do portao que se pegou foi guardado na memoria
+  (): parser que descarta uma coluna transforma 
+  em , que e sempre verdadeiro; e so o TERCEIRO sentido pega, porque nos
+  dois primeiros o portao parece certo.
