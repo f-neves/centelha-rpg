@@ -83,3 +83,52 @@ sistema, então a palavra publicada vai brigar com a intuição dele na mesa.
 
 **Aberto de propósito, e não bloqueia nada:** a conjuração por Tradição (se um efeito Moldado
 rola por perícia própria) continua sendo pergunta, e é a metade do item 529 que fica.
+
+---
+
+## M-02 · o Bram tem sete Artes ou oito · DECIDIDO em 15/09/2026
+
+**SÃO SETE, e o preço publicado é que está errado.** A palavra vence o número: a descrição do
+personagem é a intenção de quem o escreveu, e o número é aritmética.
+
+**A SÉTIMA É CONJURAÇÃO, no nível 3.** Ela foi escolhida por um fio de dentro do próprio
+exemplo, e não por conceito: o Bram tem a Especialidade **"Ocultismo: invocação"** listada duas
+linhas acima na mesma tabela, **sem nenhuma Arte por trás dela**. Nomear Conjuração fecha as
+duas lacunas de uma vez. O contra comprado, com ele à vista: a Especialidade pode ter sido
+escrita como sabor de erudito, sem intenção de apontar Arte nenhuma.
+
+### O que isto manda fazer
+
+Em `src/content/chapters/criacao-de-personagem.md`, na tabela do Bram:
+
+- a linha **Artes** passa de `870` para **745**, e `"Fascinação e mais uma no 3"` passa a
+  `"Fascinação e Conjuração no 3"`;
+- o **Total** passa de `1993` para **1868**.
+
+**O contra que a mesa comprou, escrito porque foi dito na hora de decidir:** o orçamento do Bram
+é 2000 e ele fechava em 1993, encostado. Com 1868 sobram 132 XP, e um exemplo que sobra dinheiro
+ensina pior do que um que aperta.
+
+### O QUE ESTA DECISÃO NÃO RESOLVE, e é maior que ela
+
+**A linha das Artes é uma de SEIS que não fecham no exemplo do Bram.** Medido rodando o
+`scripts/cost-examples.mjs` depois do conserto da rodada 60, que chama as mesmas funções da
+ficha:
+
+| linha | a régua | o capítulo |
+|---|---:|---:|
+| Atributos | 415 | 496 |
+| Habilidades | 222 | 220 |
+| Secundárias | 56 | 66 |
+| Especialidades | 72 | 48 |
+| Virtudes | 74 | 63 |
+| **Artes** | **745** | **870** |
+| Técnicas | não conferível | 120 |
+
+**E a linha de Técnicas não é conferível em NENHUM dos quatro exemplos** (Kael, Sora, Veil,
+Bram): a lista de Técnicas deles não existe no dado. Então **o total de nenhum dos quatro pode
+ser verificado hoje**, e este é o achado `A-03` da Executora, que não tem item na lista original
+porque o levantamento não o alcançava sem rodar a conta.
+
+Consertar só a linha das Artes deixa cinco divergências de pé. **Isso é escolha consciente e
+fica registrada**, não descuido.
