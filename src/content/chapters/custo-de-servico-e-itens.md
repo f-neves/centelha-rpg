@@ -7,7 +7,7 @@ resumo: "Moedas, renda por estrato, qualidade de armas e armaduras e o catálogo
 
 O dinheiro mede tempo e trabalho. Esta página reúne **o que se ganha**, **o que se gasta** e **como a qualidade muda o preço** de uma arma ou armadura: do raspão de cobre do servo ao lavor de joias da relíquia nobre.
 
-<div class="callout"><span class="lbl">Provisório</span>Os nomes das armaduras já foram <strong>traduzidos</strong> e alinhados ao vocabulário de <a href="/regras/armas-e-armaduras">Armas &amp; Armaduras</a> (Cap. XI): Couro, Camisa de malha, Peitoral, Cota de malha, Lamelar, Peitoral reforçado, Placa articulada, Malha completa, Placa completa. Ainda assim, as <strong>listas e os preços</strong> dos dois capítulos não batem por completo: use como referência de ordem de grandeza; a reconciliação final vem depois.</div>
+<div class="callout"><span class="lbl">Provisório</span>Os nomes das armaduras já foram <strong>traduzidos</strong> e alinhados ao vocabulário de <a href="/centelha-rpg/regras/armas-e-armaduras">Armas &amp; Armaduras</a> (Cap. XI): Couro, Camisa de malha, Peitoral, Cota de malha, Lamelar, Peitoral reforçado, Placa articulada, Malha completa, Placa completa. Ainda assim, as <strong>listas e os preços</strong> dos dois capítulos não batem por completo: use como referência de ordem de grandeza; a reconciliação final vem depois.</div>
 
 ## Moedas & Conversão
 
@@ -332,7 +332,7 @@ Cada ponto compra um efeito. A soma dos modificadores tem de **fechar no orçame
 
 ## Equipamento de Aventura
 
-<p class="muted">Itens avulsos que compõem os pacotes. Preços em <a href="/regras/custo-de-servico-e-itens">cobre na fonte de dados</a> (<code>src/data/precos.json</code>), exibidos na maior moeda exata.</p>
+<p class="muted">Itens avulsos que compõem os pacotes. Preços em <a href="/centelha-rpg/regras/custo-de-servico-e-itens">cobre na fonte de dados</a> (<code>src/data/precos.json</code>), exibidos na maior moeda exata.</p>
 
 <div class="cat-grid">
 

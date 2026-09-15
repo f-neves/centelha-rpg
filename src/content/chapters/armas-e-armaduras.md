@@ -7,7 +7,7 @@ resumo: "Classes + Tags: a arma define o estilo, não a potência bruta."
 
 Cada arma é uma **classe-base** recombinada com **tags**. O pilar é simples: a arma define o *estilo*, não a potência bruta. Pegar "a mais forte" não existe: cada escolha vence umas situações e perde outras.
 
-<div class="callout regra"><span class="lbl">Catálogo</span>Para filtrar e comparar todo o equipamento, veja a página de <a href="/equipamentos">Equipamentos</a>, e escolha arma/armadura direto na <a href="/ficha">Ficha</a> para ver o ataque, a Defesa e a Absorção já calculada.</div>
+<div class="callout regra"><span class="lbl">Catálogo</span>Para filtrar e comparar todo o equipamento, veja a página de <a href="/centelha-rpg/equipamentos">Equipamentos</a>, e escolha arma/armadura direto na <a href="/centelha-rpg/ficha">Ficha</a> para ver o ataque, a Defesa e a Absorção já calculada.</div>
 
 ## Como ler uma arma
 
@@ -98,7 +98,7 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 
 </div>
 
-<p class="muted"><strong>Modos:</strong> <strong>I</strong> = Impacto · <strong>C</strong> = Cortante · <strong>P</strong> = Perfurante (estocada ou projétil, sem distinção). <strong>★</strong> = modo principal (sem custo); os secundários saem com <strong>−2 ao acerto e −1d6 no dano</strong>. O <strong>(N0)–(N5)</strong> após o P é o <strong>Nível de Perfuração</strong>. <strong>Velocidade</strong> = Ticks da ação · <strong>Defesa</strong> = bônus de Bloqueio da arma · <strong>Distância</strong> = alcance máximo · <strong>Mãos</strong> = empunhadura (a <em>Versátil</em> soma Força×2 quando usada com as duas mãos). O <strong>Quase-Acerto</strong> é fixo pela classe (peso) da arma; ver o <a href="/regras/quase-acerto">capítulo próprio</a>.</p>
+<p class="muted"><strong>Modos:</strong> <strong>I</strong> = Impacto · <strong>C</strong> = Cortante · <strong>P</strong> = Perfurante (estocada ou projétil, sem distinção). <strong>★</strong> = modo principal (sem custo); os secundários saem com <strong>−2 ao acerto e −1d6 no dano</strong>. O <strong>(N0)–(N5)</strong> após o P é o <strong>Nível de Perfuração</strong>. <strong>Velocidade</strong> = Ticks da ação · <strong>Defesa</strong> = bônus de Bloqueio da arma · <strong>Distância</strong> = alcance máximo · <strong>Mãos</strong> = empunhadura (a <em>Versátil</em> soma Força×2 quando usada com as duas mãos). O <strong>Quase-Acerto</strong> é fixo pela classe (peso) da arma; ver o <a href="/centelha-rpg/regras/quase-acerto">capítulo próprio</a>.</p>
 
 ## Armaduras
 

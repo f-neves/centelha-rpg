@@ -5,7 +5,7 @@ titulo: "Sentidos, Engano e Fé"
 resumo: "O que se percebe, o que se esconde, o que se negocia e o que se pede aos deuses. Quatro famílias que ainda esperam ficha, com a jogada de partida de cada ação."
 ---
 
-<p class="muted">Parte do capítulo <strong>Ações & Sistema</strong>. Os cinco modos de ação, de onde sai a Dificuldade, o que a Margem mede e as regras de ajuda estão em <a href="/regras/acoes-e-sistema">A Régua Comum</a>, e valem para tudo o que vem aqui.</p>
+<p class="muted">Parte do capítulo <strong>Ações & Sistema</strong>. Os cinco modos de ação, de onde sai a Dificuldade, o que a Margem mede e as regras de ajuda estão em <a href="/centelha-rpg/regras/acoes-e-sistema">A Régua Comum</a>, e valem para tudo o que vem aqui.</p>
 
 Quatro famílias reunidas aqui, e elas têm em comum mais do que o tema: são as que ainda esperam regra fechada. **Esgueirar-se** é a única com ficha. Nas outras, o texto diz o que a ação é e qual jogada usar como ponto de partida, e a régua comum completa o resto.
 

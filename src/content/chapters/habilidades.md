@@ -69,7 +69,7 @@ O que o personagem sabe e o que ele consegue descobrir. São as perícias que ab
 
 <p class="muted"><strong>Armas</strong> cobre todo o corpo a corpo, independentemente da empunhadura ou do tipo de dano: a mesma Habilidade vale para a adaga que fura, a espada que retalha, a maça que esmaga e o montante de duas mãos. Cortante, perfurante, impacto e o número de mãos são propriedade da <em>arma</em>; o que diferencia o duelista do brutamontes é o <strong>Atributo</strong> (Destreza ou Força) e a <strong>Especialidade</strong> ("espada longa", "montante").</p>
 
-<p class="muted">Três perícias que já foram primárias hoje vivem entre as <a href="/regras/habilidades-secundarias"><strong>Secundárias</strong></a>, mais baratas e de foco estreito: <strong>Liderança</strong>, <strong>Cura</strong> e <strong>Energia Espiritual</strong>.</p>
+<p class="muted">Três perícias que já foram primárias hoje vivem entre as <a href="/centelha-rpg/regras/habilidades-secundarias"><strong>Secundárias</strong></a>, mais baratas e de foco estreito: <strong>Liderança</strong>, <strong>Cura</strong> e <strong>Energia Espiritual</strong>.</p>
 
 ## Especialidade · o escopo afiado
 

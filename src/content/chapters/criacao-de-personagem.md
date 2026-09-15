@@ -7,7 +7,7 @@ resumo: "Montar um herói gastando XP a partir de pisos, com a ficha auto-calcul
 
 Um personagem é construído gastando **Experiência** (XP) a partir de valores-piso. Não há pacotes por categoria: você recebe um bolo de XP e o investe onde a sua história pede.
 
-<div class="callout regra"><span class="lbl">Atalho</span>A <a href="/ficha">Ficha de Personagem</a> faz toda esta conta ao vivo: gaste pontos e veja o XP e os derivados se atualizarem.</div>
+<div class="callout regra"><span class="lbl">Atalho</span>A <a href="/centelha-rpg/ficha">Ficha de Personagem</a> faz toda esta conta ao vivo: gaste pontos e veja o XP e os derivados se atualizarem.</div>
 
 ## Passo a passo da criação
 
@@ -151,8 +151,8 @@ Passou a vida entre grimórios; a fagulha que carrega é mínima, mas o que sabe
 | Força de Vontade | 0 → 9 | 90 |
 | Aparência | 0 → 4 (feio, −1) | 20 |
 | Centelha | 0 → 1 (Tocado) | grátis |
-| Artes | sete: Adivinhação, Forças, Proteção, Cura e Fogo no **nível 5** · Fascinação e mais uma no 3 | 870 |
+| Artes | sete: Adivinhação, Forças, Proteção, Cura e Fogo no **nível 5** · Fascinação e Conjuração no 3 | 745 |
 | Técnicas | 12, de Mente Afiada e Erudito (nível 1) | 120 |
-| **Total** | | **1993** |
+| **Total** | | **1868** |
 
 <p class="muted">Derivados: PV 34 · Defesa 13 · Def. Mental 13 · Def. Social 9 · Energia 10 · <strong>Mana 11</strong> · Iniciativa 1d6+6. Fecha no orçamento. Repare no preço da fagulha mínima: com Centelha 1, sua <strong>Mana é só 11</strong>: ele conhece magia tão funda quanto Veil, mas o tanque o obriga a poucos Feitiços por cena. Largura de conhecimento, estreiteza de combustível: o feiticeiro de torre, não o de campo.</p>

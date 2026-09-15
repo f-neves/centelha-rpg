@@ -5,7 +5,7 @@ titulo: "Ofício e Mundo"
 resumo: "Construir, reparar, melhorar e ganhar a vida com um ofício, mais viagem e obra. O maior subsistema do capítulo, e ele cabe inteiro na Jogada Longa."
 ---
 
-<p class="muted">Parte do capítulo <strong>Ações & Sistema</strong>. Os cinco modos de ação, de onde sai a Dificuldade, o que a Margem mede e as regras de ajuda estão em <a href="/regras/acoes-e-sistema">A Régua Comum</a>, e valem para tudo o que vem aqui.</p>
+<p class="muted">Parte do capítulo <strong>Ações & Sistema</strong>. Os cinco modos de ação, de onde sai a Dificuldade, o que a Margem mede e as regras de ajuda estão em <a href="/centelha-rpg/regras/acoes-e-sistema">A Régua Comum</a>, e valem para tudo o que vem aqui.</p>
 
 Construir alguma coisa parece pedir um sistema próprio, e não pede: **é a Jogada Longa com tabela.** A divisão de trabalho dos três números cai em cima do ofício com uma precisão que nenhuma outra ação teve.
 
@@ -50,7 +50,7 @@ O primeiro é um degrau, não uma parede: um faz-tudo excepcional bate uma espad
 
 Os ofícios são **[Habilidades Secundárias](/regras/habilidades-secundarias)**, ilimitadas e mais baratas: Ferreiro, Carpintaria, Alvenaria, Couraria, Costura, Joalheria, Gastronomia, Artesanato, Navegação, e o que mais a história pedir (Olaria, Vidraria, Construção Naval). O Atributo é **Destreza** para trabalho de mão e **Inteligência** para projeto, traçado e cálculo.
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>O ferreiro tem Ferreiro 5 e Ofícios Gerais 3. Pela <a href="/regras/acoes-e-sistema">regra da maior e da menor</a>, ele rola com Ferreiro e soma +3 ao total.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>O ferreiro tem Ferreiro 5 e Ofícios Gerais 3. Pela <a href="/centelha-rpg/regras/acoes-e-sistema">regra da maior e da menor</a>, ele rola com Ferreiro e soma +3 ao total.</div>
 
 ## A montagem se paga uma vez: o lote
 

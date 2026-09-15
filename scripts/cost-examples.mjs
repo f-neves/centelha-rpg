@@ -122,7 +122,7 @@ const EXEMPLOS = {
     integridade: 3, raciocinio: 3, compostura: 3, sociabilidade: null,
   },
   'Bram, o Erudito-tocado': {
-    orcamento: r.orcamentoVeterano, totalPub: 1993,
+    orcamento: r.orcamentoVeterano, totalPub: 1868,
     atributos: { inteligencia: 6, influencia: 4, percepcao: 4, raciocinio: 3, vigor: 3, destreza: 3, perspicacia: 3, forca: 2, compostura: 2 },
     atributosPub: 496,
     habPrim: { 5: 1, 3: 4, 2: 5, 1: 1 }, habSec: {}, habilidadesPub: 220,
@@ -135,10 +135,10 @@ const EXEMPLOS = {
     vontade: 9, vontadePub: 90,
     aparencia: 4, aparenciaPub: 20,
     centelha: 1,
-    // A ficha LISTA sete Artes (cinco no nível 5, duas no 3). O preço publicado,
-    // 870, é o de OITO (seis no 5, duas no 3). Qual das duas vale é decisão de
-    // mesa em aberto (M-02), e por isso a divergência aqui é esperada.
-    artes: [5, 5, 5, 5, 5, 3, 3], artesPub: 870,
+    // M-02, decidido em 15/09/2026: são SETE Artes, e a sétima é Conjuração no
+    // nível 3. A palavra venceu o número, e o preço publicado (870, que era o de
+    // oito Artes) passou a 745, que é o que esta linha calcula.
+    artes: [5, 5, 5, 5, 5, 3, 3], artesPub: 745,
     tecnicasPub: 120,
     derivadosPub: { pv: 34, defM: 13, defS: 9, energia: 10, mana: 11 },
     integridade: 0, raciocinio: 3, compostura: 2, sociabilidade: 2,

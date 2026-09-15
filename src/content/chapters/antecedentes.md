@@ -77,7 +77,7 @@ O situacional de Antecedente é mais estreito que os dois:
 Dito de outro jeito: um Antecedente acelera **construir a relação**, não ganhar o duelo social do
 momento.
 
-<p class="muted">A Régua de Relação e o Combate Social, citados acima, são o capítulo <a href="/regras/relacoes-sociais"><strong>Relações Sociais</strong></a>. Antecedentes vem antes dele no livro porque é matéria de ficha, e não de cena: você compra estes traços quando monta o personagem, junto dos Atributos e das Habilidades.</p>
+<p class="muted">A Régua de Relação e o Combate Social, citados acima, são o capítulo <a href="/centelha-rpg/regras/relacoes-sociais"><strong>Relações Sociais</strong></a>. Antecedentes vem antes dele no livro porque é matéria de ficha, e não de cena: você compra estes traços quando monta o personagem, junto dos Atributos e das Habilidades.</p>
 
 ## Os catorze Antecedentes
 

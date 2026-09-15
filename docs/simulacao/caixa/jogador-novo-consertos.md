@@ -76,6 +76,18 @@ não tropeça nisso.
 
 ### C-01 (45) · todo link de HTML cru perde o `/centelha-rpg`
 
+> **FEITO NA RODADA 61**, à mão e com portão, por decisão do Arquiteto. **Os quinze eram
+> quinze**, e a lista acima está certa: os catorze de markdown foram prefixados à mão e o
+> décimo quinto (`FichaSkeleton.astro:125`) já tinha saído na rodada 60 com
+> `import.meta.env.BASE_URL`. **E a metade que o plugin ia comprar foi comprada de outro jeito:**
+> `scripts/test-links-base.mjs`, no `validate`, reprova qualquer `href` root-relativo sem o base
+> escrito à mão, com controle positivo embutido e aprovado no ensaio dos três sentidos. É ele que
+> impede o décimo sexto.
+>
+> **E A NOTA DA RODADA 60 ABAIXO ESTAVA ERRADA, pelo motivo que o achado A-07 conta.** Ela fica
+> aqui, e não some, porque o erro dela é o achado. Leia-a sabendo que os números que ela cita
+> saíram de um `dist/` servido de cache.
+>
 > **PARADO NA RODADA 60** · `fc76f73`. **O conserto preferido não conserta**, e isto foi medido
 > no HTML GERADO e com controle negativo, não lido no código: escrevi o ramo `raw` no plugin,
 > buildei, e sobraram os mesmos **12** links sem prefixo no `dist/`; apaguei o `.astro/` e refiz,
@@ -286,6 +298,17 @@ nível que está comprando, e não a soma dos de baixo".
 
 ### C-12 (34) · as quatro linhas de XP do Bram não saem da função de custo
 
+> **A LINHA DAS ARTES ESTÁ FEITA NA RODADA 61**, com o `M-02` decidido (são SETE, e a sétima é
+> Conjuração no nível 3): a linha passou a `745` com "Fascinação e Conjuração no 3", e o Total
+> do Bram a `1868`. O `cost-examples.mjs` foi atualizado junto, senão ele passaria a acusar o
+> conserto como divergência, e a linha de Artes dele ficou **✓ 745**.
+> **AS OUTRAS CINCO LINHAS CONTINUAM DE PÉ, por decisão consciente da mesa** (Atributos,
+> Habilidades, Secundárias, Especialidades, Virtudes), e o conferidor as mostra: seis
+> divergências viraram cinco. O registro está em `jogador-novo-decisoes.md`, no `M-02`.
+> **A leitura em que a decisão se apoiava foi conferida no arquivo antes do conserto**, porque
+> ela podia não estar lá: `criacao-de-personagem.md:149` traz mesmo "Especialidades | seis
+> (Ocultismo: invocação · Adivinhação · Conhecimentos…)".
+>
 > **PARADO NA RODADA 60**, e o motivo é o que o próprio item já nomeia: as quatro linhas
 > dependem do **M-02** (o Bram tem sete Artes ou oito?), que ninguém decidiu. Parar o item e
 > seguir foi a instrução.
@@ -1037,6 +1060,13 @@ se prova no fonte:
 - **C-39**, o `[object Object]`: a página `/artes/regras` não pode conter essa string
 - **C-15**, o "(Valor)" dentro do SVG do diagrama
 
+**ATUALIZAÇÃO DA RODADA 61 sobre o balde 3.** O `C-01` saiu dele: consertado à mão, ele se
+confere no FONTE, e quem o guarda daqui em diante é `scripts/test-links-base.mjs`, no
+`validate`. **E a leitura do `dist/` ganhou uma condição que faltava aqui**, porque sem ela
+duas medições concordam pelo motivo errado: o Astro serve páginas de cache (`.astro/`,
+`node_modules/.astro/`), e um `npm run build` termina verde entregando HTML velho. Para
+conferir qualquer coisa no gerado, **`rm -rf .astro node_modules/.astro dist` antes**. Ver A-07.
+
 Quando isso estiver feito, eu releio na mesma ordem da Fase 1, pelo site publicado, e
 digo o que sobrou. **O que eu não consigo conferir sozinho** são as decisões de mesa: se
 uma resposta entrar no dado, ela vira regra nova e eu a leio como jogador pela primeira
@@ -1133,3 +1163,74 @@ O `git` deste ambiente passa por um hook que **encolhe a saída**, então zero v
 varredura sobre `git diff` é o zero ambíguo com outra roupa. As conferências desta rodada
 foram feitas lendo o ARQUIVO, e a de travessão foi feita chamando o `git` direto do Python,
 fora do hook: 235 linhas adicionadas, zero travessões.
+
+---
+
+# Achados da execução · rodada 61 (`fc76f73` + os desta rodada), escritos e NÃO consertados
+
+### A-07 · **O `A-04` ESTAVA ERRADO, e o controle negativo do `C-01` também.** Retratação.
+
+Os dois foram publicados na rodada 60 como medida no HTML gerado, e eram medida num `dist/`
+servido de **cache**. A retratação vem com o que a desfez:
+
+1. prefixei os doze `href` no fonte e rodei `npm run build`: o `dist/` continuou com **os
+   mesmos doze**, com o fonte dizendo `/centelha-rpg/equipamentos` e o gerado dizendo
+   `/equipamentos` na mesma frase. Um build que termina verde entregando HTML anterior ao
+   conserto;
+2. `rm -rf .astro node_modules/.astro dist` e rebuild do zero: sobraram **dois**, que são
+   exatamente os dois que o `A-04` declarava "já saíam prefixados sem ninguém mexer".
+
+**Então: os quinze eram quinze, e este documento estava certo desde o começo.** Os dois nunca
+saíam prefixados; eu media o build anterior. E o controle negativo do `C-01` (plugin novo
+contra plugin antigo dando o mesmo número) **não provou nada**: as duas medições liam o mesmo
+`dist/` velho, e por isso concordavam. **Não sei se o conserto pelo plugin funcionaria**, e a
+frase honesta é essa. O conserto à mão mais o portão resolveram o problema por outro caminho.
+
+**A forma, para o catálogo:** é a do "instrumento que filtra a própria saída", com outra
+ferramenta. Um par de medições que concorda é lido como robustez, e aqui a concordância vinha
+de as duas dependerem do mesmo insumo velho · exatamente a armadilha das "duas metades de um
+par movendo-se juntas". O gesto que a evita é barato e está escrito no cabeçalho do portão
+novo: **apagar os dois caches antes de medir o `dist/`**.
+
+### A-08 · três lugares usavam a palavra cancelada e a decisão do `M-10` não os nomeia
+
+A decisão manda consertar `arcano.astro:56`, `:57`, `:103` e `artes/regras.astro:529`. Faltavam:
+
+- `src/pages/arcano.astro`, a `descricao` da página ("as Trilhas de ensino"), que é o que sai
+  no `<meta>` e nos resultados de busca;
+- `src/pages/artes/regras.astro`, o `lead` da página, com a mesma frase;
+- `src/pages/artes/regras.astro`, o parágrafo que apresenta as Trilhas, com a palavra **três
+  vezes** e repetindo a promessa cancelada ("O mapa de cada Arte com suas Trilhas vem num
+  próximo passo").
+
+**Consertados junto**, porque deixá-los publicaria o contrário da decisão na mesma passada, e
+porque são o mesmo item. Registrado aqui por serem a quinta correção ao levantamento.
+
+### A-09 · a âncora `#trilhas` fica, e é resíduo declarado
+
+A seção do Arcano continua com `id="trilhas"`, e o único link que aponta para ela
+(`artes/regras.astro`) continua apontando. **Não renomeei de propósito:** id é endereço, não
+vocabulário, e trocá-lo quebra qualquer link salvo por quem já leu a página. Fica como
+resíduo declarado, para quem decidir que vale o preço.
+
+### A-10 · dois usos de "Trilha" fora do Arcano que não batem com a tabela da decisão
+
+A tabela do `M-10` diz que "Trilha" é das Proezas e são três (corpo, voz, mente). As páginas
+que publicam os Caminhos usam a palavra assim, certo, e **não foram tocadas**. Mas:
+
+- `src/content/chapters/centelha.md`, a tabela das escadas de efeito, usa "Trilha" como
+  cabeçalho de uma lista que é **Bônus, Absorção, Dano, Penetração, Carga, Salto**. É um
+  TERCEIRO sentido da palavra, e nem é o das Proezas nem o do Arcano;
+- `src/layouts/Base.astro` usa "Trilha de navegação" para o breadcrumb, e `src/pages/mesa/
+  grid.astro` usa "Trilha" para a música de fundo da arena. **Esses dois são outra palavra
+  com o mesmo som e não conflitam com nada.**
+
+Só o primeiro é divergência de verdade. Não consertado: renomear cabeçalho de tabela num
+capítulo publicado é outro tamanho, e a decisão manda registrar.
+
+### A-11 · um `bash.exe.stackdump` mora dentro de `src/content/chapters/`
+
+`src/content/chapters/bash.exe.stackdump`, 1.221 bytes, de **20/07/2026**. Não é meu (a data é
+anterior a esta frente), não aparece em `git status`, e nem o `validate` nem o `build`
+reclamam dele. Fica registrado porque é lixo dentro da pasta de uma coleção de conteúdo, que é
+o tipo de arquivo que um dia vira erro de parser sem ninguém entender por quê.

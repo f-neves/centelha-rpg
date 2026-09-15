@@ -43,7 +43,7 @@ const EX_CONTA: [string, string, number][] = [
 <Base title="Regras das Artes" largura="wide" descricao="Como se conjura no Centelha: parâmetros, custo em Mana, a fonte do elemento, esticar, Rituais e o que o alvo opõe.">
   <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size: var(--fs-micro);margin:0">Capítulo XV</p>
   <h1>Regras das Artes</h1>
-  <p class="lead">Como se conjura, o que custa e o que o alvo pode fazer a respeito. Cada <strong>Arte</strong> tem <strong>6 níveis</strong>: basta <strong>Centelha &gt; 0</strong> (qualquer fagulha) para tocar a magia; a profundidade (o nível da Arte) você compra e evolui um a um. Dentro do seu nível, você monta o efeito girando os parâmetros. O panorama, os nomes da feitiçaria e as Trilhas de ensino estão em <a href={url('arcano')}>O Arcano</a>.</p>
+  <p class="lead">Como se conjura, o que custa e o que o alvo pode fazer a respeito. Cada <strong>Arte</strong> tem <strong>6 níveis</strong>: basta <strong>Centelha &gt; 0</strong> (qualquer fagulha) para tocar a magia; a profundidade (o nível da Arte) você compra e evolui um a um. Dentro do seu nível, você monta o efeito girando os parâmetros. O panorama, os nomes da feitiçaria e as Tradições de ensino estão em <a href={url('arcano')}>O Arcano</a>.</p>
 
   <nav class="artes-nav artes-nav-topo" data-pagefind-ignore>
     <a class="cap-card" href={url('artes/efeitos')}>
@@ -60,7 +60,7 @@ const EX_CONTA: [string, string, number][] = [
 
   <section class="arcano-regras">
     <h2>Como se aprende uma Arte</h2>
-    <p>Nenhuma Arte se aprende no vácuo: você chega a ela por uma <a href={url('arcano') + '#trilhas'}>Trilha de Feitiçaria</a>, o caminho que explica <em>como</em> aquele personagem passou a lançá-la. A mesma Arte tem Trilhas diferentes (a do erudito, a do monge, a do pactuário), e cada uma cobra o seu preço em treino e em ficção. Comprar e subir uma Arte custa <strong>XP</strong> como qualquer traço; a Trilha diz o que mais é preciso ter vivido para que aquilo faça sentido. O mapa de cada Arte com suas Trilhas vem num próximo passo.</p>
+    <p>Nenhuma Arte se aprende no vácuo: você chega a ela por uma <a href={url('arcano') + '#trilhas'}>Tradição de Feitiçaria</a>, o método que explica <em>como</em> aquele personagem passou a lançá-la, e que ele declara por Arte. A mesma Arte chega por Tradições diferentes (a do erudito, a do monge, a do pactuário). Comprar e subir uma Arte custa <strong>XP</strong> como qualquer traço, e a Tradição <strong>não muda número nenhum</strong>: ela diz o que é preciso ter vivido para aquilo fazer sentido, e com que cara o feitiço sai.</p>
   </section>
 
   <section class="arcano-regras">
@@ -526,7 +526,7 @@ const EX_CONTA: [string, string, number][] = [
     <div class="callout revisao"><span class="lbl">Em revisão</span>
       Esta parte do capítulo está sendo reescrita. Ainda falta definir:
       <ul>
-        <li>Como as Artes rolam de vez (o acerto pela perícia Acerto Arcano e a conjuração por Tradição), e a ligação de cada Arte com suas Trilhas.</li>
+        <li>A <strong>conjuração por Tradição</strong>: se um efeito Moldado rola por perícia própria. (A rolagem geral já está fechada e não é mais pergunta: só os efeitos <strong>mirados</strong> rolam, com Percepção + Acerto Arcano, e o resto se resolve por Dificuldade fixa, pela Defesa passiva do alvo ou por tabela.)</li>
         <li>Revisar a <strong>primeira leva</strong> de Efeitos das Artes não elementais: os números e os limites de cada um ainda não passaram por mesa.</li>
         <li>Como o Efeito Especial entra no <strong>bestiário</strong> (na ficha ele já tem lugar).</li>
         {FONTE.pendencias.map((p: string) => <li>{p}</li>)}

@@ -5,7 +5,7 @@ titulo: "Resistir"
 resumo: "Veneno, doença, ambiente, sufocamento e sono. Cinco relógios diferentes, e uma moeda só para os cinco: o Desgaste."
 ---
 
-<p class="muted">Parte do capítulo <strong>Ações & Sistema</strong>. Os cinco modos de ação, de onde sai a Dificuldade, o que a Margem mede e as regras de ajuda estão em <a href="/regras/acoes-e-sistema">A Régua Comum</a>, e valem para tudo o que vem aqui.</p>
+<p class="muted">Parte do capítulo <strong>Ações & Sistema</strong>. Os cinco modos de ação, de onde sai a Dificuldade, o que a Margem mede e as regras de ajuda estão em <a href="/centelha-rpg/regras/acoes-e-sistema">A Régua Comum</a>, e valem para tudo o que vem aqui.</p>
 
 Cinco coisas tentam derrubar um corpo ao longo do tempo: veneno, doença, ambiente, falta de ar e falta de sono. As cinco têm relógios próprios, e duas delas nem rolam dado. O que elas compartilham é a moeda.
 

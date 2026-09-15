@@ -5,7 +5,7 @@ titulo: "Corpo e Movimento"
 resumo: "O corpo contra o mundo físico. Fichas de Escalar, Nadar, Cair e Feito de força, mais o que a ficha de personagem já responde sem jogada nenhuma."
 ---
 
-<p class="muted">Parte do capítulo <strong>Ações & Sistema</strong>. Os cinco modos de ação, de onde sai a Dificuldade, o que a Margem mede e as regras de ajuda estão em <a href="/regras/acoes-e-sistema">A Régua Comum</a>, e valem para tudo o que vem aqui.</p>
+<p class="muted">Parte do capítulo <strong>Ações & Sistema</strong>. Os cinco modos de ação, de onde sai a Dificuldade, o que a Margem mede e as regras de ajuda estão em <a href="/centelha-rpg/regras/acoes-e-sistema">A Régua Comum</a>, e valem para tudo o que vem aqui.</p>
 
 Esta é a família do corpo contra o mundo físico: distância, altura, água, peso, superfície. Quase tudo aqui é sobre chegar a algum lugar, ou tirar alguma coisa do caminho, e é a família mais concreta do capítulo, porque o resultado costuma ser visível de onde todo mundo está sentado: ou o vão foi vencido, ou não foi.
 
