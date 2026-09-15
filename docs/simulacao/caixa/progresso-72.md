@@ -49,3 +49,7 @@ leitura de `forcaMult`, relato ANTES de consertar, porque a lista de três é a 
   com nada. O teste ficou vermelho dizendo `veio 1d6 +1 (P)`, que era o valor CERTO, e por dois
   minutos eu procurei o defeito no codigo em vez de no teste. Tres bytes removidos, e varri os
   seis arquivos da rodada atras de outros caracteres de controle: zero.
+- **14:44** · fim. Publicado em `2946398`, `git rev-list --count origin/main..HEAD` = 0.
+  `validate` e `build` verdes, mais `test-espelho`, `test-contrato`, `test-kael`,
+  `test-porte-raca` e `test-exemplos-criacao`: exit 0 em todos. Zero coautoria, zero travessao
+  nas linhas que eu escrevi (conferido lendo os ARQUIVOS).
