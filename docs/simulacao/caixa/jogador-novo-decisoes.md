@@ -859,3 +859,62 @@ As Virtudes vão de **1 a 6** (`virtudes.json`, seis degraus). Com sucesso sendo
 **A Dificuldade 6 mapeia a escada inteira sem desperdício:** um sexto por nível, e só a Virtude 6
 passa sempre. **A Dificuldade 5 satura no 5**, e aí os dois degraus mais caros da escada viram o
 mesmo número na mesa.
+
+---
+
+## M-19b · o teste de Virtude · DECIDIDO em 15/09/2026 (a escada alta segue aberta)
+
+### O que ficou decidido
+
+**`1d6 + nível da Virtude + Firula`, e tem de SUPERAR a Dificuldade**, como todo o resto do jogo.
+Nada de empate valendo: a regra do capítulo I continua valendo sem exceção.
+
+**A Firula entra como número CRU, `+1`, `+2` ou `+3`, pelo nível dela.** Não entra como dado: num
+teste de um dado só, dar dados quebraria a escala. É a segunda forma da Firula, ao lado da que
+entra em pool (`+N` dados descartando os N menores, `M-11b`).
+
+**A Dificuldade básica é 5.**
+
+**O máximo humano é 15:** 6 no dado, 6 de Virtude, 3 de Firula. **Então a Dificuldade 15 é número
+morto** · ninguém a supera nunca. A última Dificuldade viva é **14**, e ela exige o máximo
+absoluto.
+
+### A régua, medida
+
+Sucesso é `1d6 + Virtude + Firula > Dif`, então cada ponto de Dificuldade vale exatamente **um
+sexto**, e cada ponto de Virtude ou de Firula devolve exatamente um sexto. São todos a mesma moeda.
+
+**Sem Firula:**
+
+| Virtude | Dif 5 | Dif 6 | Dif 8 | Dif 10 | Dif 12 |
+|---:|---:|---:|---:|---:|---:|
+| 1 | 33% | 17% | 0 | 0 | 0 |
+| 2 | 50% | 33% | 0 | 0 | 0 |
+| 3 | 67% | 50% | 17% | 0 | 0 |
+| 4 | 83% | 67% | 33% | 0 | 0 |
+| 5 | 100% | 83% | 50% | 17% | 0 |
+| 6 | 100% | 100% | 67% | 33% | 0 |
+
+**Com Firula 3:**
+
+| Virtude | Dif 8 | Dif 10 | Dif 12 | Dif 14 |
+|---:|---:|---:|---:|---:|
+| 1 | 33% | 0 | 0 | 0 |
+| 3 | 67% | 33% | 0 | 0 |
+| 6 | 100% | 83% | 50% | 17% |
+
+**A propriedade que isto cria, e ela não foi pedida mas é boa:** acima da Dificuldade 9, **nenhuma
+Virtude passa sem Firula**. A partir dali descrever bem deixa de ser bônus e vira **preço de
+entrada**. O teste heroico de alma só acontece para quem narra o gesto.
+
+### ABERTO · a escada acima da básica
+
+A mesa disse **5** para a básica e antes se inclinou por **6** média e **8** alta, sem confirmar
+depois que a Firula entrou na conta. **A Firula muda o teto útil de 11 para 14**, então a metade
+de cima da escada ganhou espaço que não tinha quando aqueles números foram pensados.
+
+### E FICA UMA COLISÃO DE NÚMEROS, anotada e não resolvida
+
+A tabela de Dificuldade do sistema é `5 · 10 · 15 · 20 · 25 · 30` (`regras.json → dificuldade`).
+"Dificuldade 10" num teste de Habilidade é **Média**; num teste de Virtude é quase impossível sem
+Firula. **O mesmo número com dois significados, e nada na página avisa qual é qual.**
