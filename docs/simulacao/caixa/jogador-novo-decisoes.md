@@ -1267,3 +1267,84 @@ número escrito à mão dentro da frase, que era a forma de defeito que o ponto 
 **Gnomo e Anão estão gravados como `medio`**, e isto é o comportamento de hoje tornado
 explícito, **não uma decisão**. Se a mesa disser Pequeno, é trocar a palavra e o portão
 acompanha sozinho.
+
+---
+
+## M-29b · o Gnomo também é Pequeno, o Anão não
+
+Decidido em 15/09/2026, logo depois da M-29. **Fecha o porte das oito raças.**
+
+### O ORIGINAL
+
+O que as três raças de Baixa estatura dizem de si em `src/data/racas.json → descricao`:
+
+| raça | a própria descrição | Vigor | custo |
+|---|---|---|---|
+| **Gnomo** | *"**Pequenos** e resistentes, engenhosos e ilusionistas, de vida longa (400+ anos)."* | +1 | 40 XP |
+| **Halfling** | *"Pequenos e ágeis, atléticos apesar do **porte**, de vida longa (300+ anos)."* | 0 | 30 XP |
+| **Anão** | *"**Baixos e corpulentos**, de vida longa (300+ anos)."* | +1 | 30 XP |
+
+E o traço que as três carregam, palavra por palavra, idêntico:
+
+> *"Baixa estatura: todo deslocamento vale DOIS TERÇOS do de um humano · o passo em combate, o
+> Arranque, a Corrida e os Saltos."*
+
+### A INCONSISTÊNCIA
+
+**O traço compartilhado não decide o porte, e confundi-los seria o erro.** Ele mede **perna**, e
+já foi aceito para as três desde que `deslocamentoFrac` virou conta. PV mede **massa**, e é outro
+eixo. Uma raça pode ser baixa e densa.
+
+O que decide, então, é a prosa, e a prosa **está desalinhada**: o Gnomo abre a própria descrição
+com a palavra "Pequenos", enquanto o Anão diz "corpulentos", que é massa e não estatura.
+
+### A DECISÃO
+
+**O Gnomo é `pequeno`, junto com o Halfling. O Anão continua `medio`.**
+
+A régua que isto estabelece, e que vale para raça nova: **baixo não é pequeno, largo compensa.**
+O porte acompanha a MASSA, não a altura; a altura já tem o seu efeito próprio, que é o ⅔ de
+deslocamento.
+
+O que move, medido (Gnomo tem Vigor +1, então joga com Vigor base +1):
+
+| Vigor jogado | PV como médio | PV como pequeno | queda |
+|---|---|---|---|
+| 3 | 34 | 26 | −8 |
+| 4 (base 3 +1 racial) | 37 | 28 | −9 |
+| 5 | 40 | 30 | −10 |
+| 7 (teto 6 +1) | 46 | 34 | −12 |
+
+O Gnomo custa **40 XP, contra 30 do Halfling e do Anão**, e é o que mais perde nesta decisão.
+(Ao levar a escolha à mesa eu escrevi que ele era "a raça mais cara do jogo". **Não é:** o Elfo
+custa 50, e o Gnomo empata em 40 com o Orc e o Meio-Orc. A comparação com os dois outros baixos,
+que é a que pesava na escolha, estava certa.) A resposta do humano sobre o que fazer com o custo
+está no item abaixo.
+
+### O QUE ISTO MANDA FAZER
+
+**Uma palavra em `src/data/racas.json`**: o `porte` do Gnomo, de `"medio"` para `"pequeno"`. O
+portão acompanha sozinho, porque o `z.enum` dos sete portes entrou no `validate` em `b753e68`.
+
+### O QUE FICA MARCADO PARA DEPOIS, por decisão do humano
+
+**O custo em XP das raças será recalculado quando todas as inconsistências estiverem fechadas**,
+e não agora. O motivo é que o custo é a soma de tudo que a raça dá e tira, e **a conta ainda está
+se mexendo**: a M-30 (todo traço com número vira campo com escopo) ainda não foi implementada, a
+Vitalidade do Orc ainda não é aplicada, e o porte acabou de mudar para duas das oito. Recalcular
+agora seria calcular sobre um alvo em movimento, e daria um número que envelhece antes de ser
+escrito.
+
+**Os custos atuais das oito e o que já se sabe que vai pressionar cada um**, para quando a conta
+for feita:
+
+- **Gnomo, 40 XP** · o mais caro dos três baixos, e agora o que mais perdeu (PV de pequeno, sem o
+  atletismo do Halfling para compensar). É o candidato mais forte a cair.
+- **Halfling, 30 XP** · também perdeu PV, e o traço "Atletas" (+1d6) ainda vai ganhar forma de
+  campo pela M-30.
+- **Anão, 30 XP** · não perdeu nada aqui, e ganha dois +1d6 pela M-30.
+- **Orc e Meio-Orc, 40 XP cada** · vão **ganhar** PV quando a Vitalidade passar a ser aplicada,
+  porque hoje ela não é. O custo deles hoje está pago sobre um bônus que o jogador nunca recebeu.
+- **Elfo, 50 XP** · o mais caro de todos, e o único que não é tocado por nada desta decisão. Serve
+  de âncora quando a régua de custo for refeita.
+- **Meio-Elfo, 20 XP, e Humano, 0** · o piso da escala, e também intocados aqui.
