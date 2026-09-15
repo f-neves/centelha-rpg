@@ -4,7 +4,7 @@
 // (localStorage) quanto a /personagem (Supabase, com XP definido pelo mestre).
 import { MODULOS } from './modulos';
 import { pesoMaximoErguido, alcanceArremesso } from './forca-empurrao';
-import { custoPontos, custoTecnica, custoArte, custoEfeito, custoEspecialidade, pisoXp, pv, pvPorte, type Porte, defesa, defesaMental, defesaSocial, energia, mana, folego, iniciativa, deslocamento, ataqueCentelha, aparenciaMod, empilharArmaduras, soakNatural, MODO_NOME, MODO_ORDEM, SOAK_CATS, regras } from './calc';
+import { custoPontos, custoTecnica, custoArte, custoEfeito, custoEspecialidade, pisoXp, pv, pvPorte, type Porte, comRequisitoDeForca, forcaFaltando, defesa, defesaMental, defesaSocial, energia, mana, folego, iniciativa, deslocamento, ataqueCentelha, aparenciaMod, empilharArmaduras, soakNatural, MODO_NOME, MODO_ORDEM, SOAK_CATS, regras } from './calc';
 import ATTRS_D from '../data/atributos.json';
 import HAB_D from '../data/habilidades.json';
 import SEC_D from '../data/habilidades-secundarias.json';
@@ -860,7 +860,12 @@ export function montarFicha(opts: FichaOpts) {
     const armorPen = empilharArmaduras(pecasArmadura()).penalidade || 0;
     const habil = itemDe(cj.habil);
     const inabil = it2H(habil) ? { kind: 'nada', nome: '—', def: 0, pen: 0 } : itemDe(cj.inabil);
-    const atk = (habil.kind === 'arma' || habil.kind === 'custom') ? habil.w : ARMA['desarmado'];
+    // O requisito de Força REBAIXA a arma antes de qualquer conta (`M-32`): a
+    // arma não fica proibida, fica rendendo o patamar comum. Aplicado aqui, no
+    // topo, e não dentro de cada fórmula: assim o `db`, o `capF` e o `mult` que
+    // vêm abaixo já saem certos, e as três versões de `ap` deste bloco também.
+    const atkBruto = (habil.kind === 'arma' || habil.kind === 'custom') ? habil.w : ARMA['desarmado'];
+    const atk = comRequisitoDeForca(atkBruto, forca);
     const soma = ataqueAtrib(atk) + (S.skills[atk.pericia] || S.skills2[atk.pericia] || 0);
     const dados = Math.floor(soma / 2), bonus = soma % 2 === 1 ? 2 : 0;
     const flat = (atk.acerto || 0) + ataqueCentelha(C) - armorPen;
@@ -882,9 +887,13 @@ export function montarFicha(opts: FichaOpts) {
       const mult = dist ? (atk.forcaMult ?? 1) : (atk.maos === 2 ? (atk.forcaMult ?? fm.duasMaos) : (atk.forcaMult ?? fm.umaMao));
       versoes.push({ rot: '', ap: db + capF * mult });
     }
-    const reqForca = (atk.forcaMin && forca < atk.forcaMin) ? atk.forcaMin : 0;
+    // O aviso sai da arma BRUTA: a rebaixada já não tem requisito a cobrar.
+    const reqForca = forcaFaltando(atkBruto, forca);
     // Empunhadura dupla: se a mão inábil também é arma, ela rende um 2º ataque (hábil −1d6, inábil −2d6).
-    const inabilArma = (inabil.kind === 'arma' || inabil.kind === 'custom') ? inabil.w : null;
+    // A mão INÁBIL passa pelo mesmo freio: o Arco Composto cabe neste slot, e
+    // sem isto ele sairia freado na mão hábil e inteiro na outra, que é meia
+    // regra e pior do que nenhuma.
+    const inabilArma = (inabil.kind === 'arma' || inabil.kind === 'custom') ? comRequisitoDeForca(inabil.w, forca) : null;
     let dupla: any = null;
     if (inabilArma) {
       const somaI = ataqueAtrib(inabilArma) + (S.skills[inabilArma.pericia] || S.skills2[inabilArma.pericia] || 0);
@@ -1449,7 +1458,7 @@ export function montarFicha(opts: FichaOpts) {
     const dano = c.versoes.map((v: any) => `${v.rot ? v.rot + ': ' : ''}${c.atk.dado}d6${v.ap ? ' ' + sgn(v.ap) : ''}`).join(' · ');
     return `<b>Acerto</b> ${atk} · <b>Dano</b> ${dano} · <b>Defesa</b> ${sgn(c.defSum)}` +
       `${trava ? ' <span class="muted">(2 mãos: inábil travada)</span>' : ''}` +
-      `${c.reqForca ? ` · <span class="conj-req">requer Força ${c.reqForca}</span>` : ''}`;
+      `${c.reqForca ? ` · <span class="conj-req" title="A arma não fica proibida: ela rende o patamar comum (Força×1 e sem o bônus da curva) até o braço alcançar o requisito.">sem a Força ${c.reqForca}: rende o comum</span>` : ''}`;
   }
   function duplaConj(c: any) {
     if (!c.dupla) return '';

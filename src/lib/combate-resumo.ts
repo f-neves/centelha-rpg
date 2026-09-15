@@ -2,7 +2,7 @@
 // Puro e reaproteitável: extrai Ataque, Dano e Defesa física (Esquiva) usando a
 // mesma matemática de ficha-engine (renderCombate/renderDerived), sem tocar no DOM.
 // Serve ao rastreador de combate da mesa, que só tem a ficha crua do personagem.
-import { defesa, defesaMental, ataqueCentelha, empilharArmaduras, soakNatural, regras, MODO_ORDEM, MODO_SIGLA, deslocamento } from './calc';
+import { defesa, defesaMental, ataqueCentelha, empilharArmaduras, soakNatural, regras, MODO_ORDEM, MODO_SIGLA, deslocamento, comRequisitoDeForca } from './calc';
 import { ARMA, ESCUDO, armaDoSlot, escudoDoSlot, armadurasDe } from './equip';
 import { qaDaPeca, type QACombate } from './quase-acerto';
 import RACA_D from '../data/racas.json';
@@ -97,6 +97,12 @@ export function resumoCombatePC(S: any): ResumoCombate {
   const dist = (w.tags || []).includes('distância');
   const fm = regras.derivados.danoForca as { umaMao: number; duasMaos: number };
   const versatil = (w.tags || []).includes('versátil');
+  // O requisito de Força REBAIXA a arma antes de qualquer conta (`M-32`), e é
+  // aqui que ele precisa estar tanto quanto na ficha: é por este módulo que o
+  // número do PC chega à mesa (`mesa-ficha` e `mesa-bestiario` o importam).
+  // Consertar só a ficha faria ela dizer `1d6+1` e o Grid dizer `1d6+4` para o
+  // MESMO personagem, sem conflito no git e sem aviso nenhum.
+  w = comRequisitoDeForca(w, forca);
   const capF = w.forcaCap != null ? Math.min(forca, w.forcaCap) : forca;
   const mult = dist ? (w.forcaMult ?? 1) : (w.maos === 2 ? (w.forcaMult ?? fm.duasMaos) : (versatil && inabilVazio ? fm.duasMaos : (w.forcaMult ?? fm.umaMao)));
   const forcaAp = (w.danoBonus || 0) + capF * mult;

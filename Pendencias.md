@@ -940,7 +940,7 @@ revistos por ela.
 
 - [ ] **K25 · [DECIDIR] A Defesa da arma e a do escudo somam, e o escudeiro vira parede.** A
   `defesas.md` escreve "**+ defesa da arma/escudo**", no singular, mas a ficha **soma as duas**
-  (`ficha-engine.ts:1521`, `Bloqueio soma a Defesa das armas/escudos do conjunto EM USO`). Com
+  (`ficha-engine.ts:1530`, `Bloqueio soma a Defesa das armas/escudos do conjunto EM USO`). Com
   espada longa (+1) e heater (+3) dá **+4** sobre a Defesa nua 21, e o acerto contra guarda cheia
   desaba: espada longa **6%**, adaga 10%, montante **3%** (com Centelha ×1, pool 5d6). Contra
   guarda comida pela Pressão (−4) o mesmo par vai a 40%, ou seja: **o combate contra escudeiro
@@ -6621,8 +6621,8 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   decisão que eu tinha montado em cima dela. O ×4 não é número novo: é o MESMO princípio do
   `×7 − 2`, que faz os seis níveis de Arte varrerem a faixa humana inteira e encostarem no teto no
   nível 6. A faixa humana do FAH é 3 a 40 e a do FAA é 2 a 24:
-  `const fah = Math.max(3, Math.min(40` em `ficha-engine.ts:1624` e
-  `const faa = Math.max(2, Math.min(24` em `ficha-engine.ts:1625`. O mesmo princípio, aplicado
+  `const fah = Math.max(3, Math.min(40` em `ficha-engine.ts:1633` e
+  `const faa = Math.max(2, Math.min(24` em `ficha-engine.ts:1634`. O mesmo princípio, aplicado
   à segunda tabela. **O conserto é dos dois lados:** o `parametros` do `empurrao-elemental` em
   `src/data/efeitos.json` muda junto com o código, senão o dado fica mandando o contrário e a
   próxima pessoa conserta o código "de volta" para o errado. → `CATALOGO`, a forma que saiu daqui.

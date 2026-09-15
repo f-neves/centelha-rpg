@@ -159,6 +159,43 @@ export function soakNatural(vigor: number, cat: Modo | SoakCat) {
 }
 
 /** Empilha peças de armadura: maior Soak de cada categoria; Resist.Perf (Nível) = MAIOR (nunca soma); Penalidade SOMA. */
+/**
+ * A arma como ela RENDE nas mãos deste braço, quando ela pede Força e o braço
+ * não tem (`M-32`).
+ *
+ * O Arco Composto pede `forcaMin: 4` e é o único do jogo. Antes disto o
+ * requisito imprimia um aviso e não fazia mais nada: o personagem de Força 1
+ * equipava, lia "requer Força 4" na própria ficha, e atirava com o `Força×2`
+ * inteiro. A ficha avisava e concedia na mesma linha, e o resultado PREMIAVA
+ * quem ignorasse, porque na Força 1 o Composto batia `1d6+4` contra o `1d6+1`
+ * do Arco Longo, que é a arma que ele deveria não conseguir usar.
+ *
+ * Agora ele não fica proibido: fica sendo um arco comum caro. Quem não arma o
+ * arco por inteiro não recebe o que a curva daria, que é a mesma razão física
+ * que dá o `×2` ao Composto (a curva dura guarda mais energia E exige braço).
+ *
+ * O que ela devolve é a arma com `forcaMult` e `danoBonus` REBAIXADOS ao
+ * patamar comum (`×1` e `+0`), e não uma arma diferente: assim cada chamador
+ * aplica isto UMA vez no topo e todo o resto da conta dele (o `capF`, o `mult`,
+ * o `danoBonus`) já sai certo, sem espalhar um `if` por cada fórmula.
+ *
+ * Hoje só o Arco Composto tem `forcaMin`. Se um dia uma arma de CORPO A CORPO
+ * ganhar o campo, a mesa precisa dizer se ela também cai em `+0`: perder o
+ * `danoBonus` inteiro é natural num arco (ele vem da curva) e não é óbvio num
+ * martelo.
+ */
+export function comRequisitoDeForca<T extends { forcaMin?: number; forcaMult?: number; danoBonus?: number }>(
+  w: T, forca: number,
+): T {
+  if (!w || !w.forcaMin || forca >= w.forcaMin) return w;
+  return { ...w, forcaMult: 1, danoBonus: 0 };
+}
+
+/** O requisito de Força que esta arma NÃO está cumprindo, ou 0. Para a tela dizer. */
+export function forcaFaltando(w: { forcaMin?: number } | null | undefined, forca: number): number {
+  return w?.forcaMin && forca < w.forcaMin ? w.forcaMin : 0;
+}
+
 export function empilharArmaduras(
   pecas: Array<{ soak?: Partial<Record<SoakCat, number>>; resistPerf?: number; penalidade?: number }>,
 ) {

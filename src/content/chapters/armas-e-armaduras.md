@@ -83,7 +83,7 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 |---|:---:|---|:---:|:---:|:---:|:---:|:---:|---|
 | Arco Curto | Distância | ★P(N1) | 6 | 1d6−1 | +1 | 120 m | 2 | Munição. Soma Força **até +3**; resvala na placa |
 | Arco Longo | Distância | ★P(N1) | 6 | 1d6 | +0 | 250 m | 2 | Munição. Soma **Força inteira**; resvala na placa |
-| Arco Composto | Distância | ★P(N1) | 6 | 1d6+2 | +0 | 300 m | 2 | Munição, **caro**. **Requer Força 4**, soma **Força×2**; resvala na placa |
+| Arco Composto | Distância | ★P(N1) | 6 | 1d6+2 | +0 | 300 m | 2 | Munição, **caro**. Com **Força 4+**, soma **Força×2** e o `+2`; **abaixo disso rende como um Arco Longo** (Força×1, sem o `+2`). Resvala na placa |
 | Besta Pequena | Distância | ★P(N1) | 9 | 1d6+2 | +1 | 100 m | 2 | Munição, recarga **parado**. Não usa Força (mecanismo) |
 | Besta Média | Distância | ★P(N1) | 12 | 1d6+4 | +1 | 200 m | 2 | Munição, recarga **parado**. Não usa Força; o virote (N1) fura couro e malha, resvala na placa |
 | Besta Grande | Distância | ★P(N2) | 15 | 1d6+8 | +1 | 300 m | 2 | Munição, recarga **parado**, pesada. Arbalesta; o virote pesado (N2) fura brigandina; dano bruto altíssimo, mas resvala na placa |

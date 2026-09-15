@@ -190,6 +190,9 @@ export function montarArma(w) {
     // A haste de estocada (Lança e afins) traz `forcaMult: 1` no dado: ela fere por alcance e
     // precisão, não por peso, e NÃO soma o dobro da Força como as outras de duas mãos.
     forcaMult: w.forcaMult ?? (w.maos === 2 ? 2 : 1),
+    // O requisito de Força (`M-32`): só o Arco Composto o tem, e ele viaja até a
+    // conta de dano porque quem sabe a Força do braço é lá, e não aqui.
+    forcaMin: w.forcaMin || 0,
     modo: principal.tipo, perf: principal.perf || 0,
     pen: w.pen || 0,
     distancia: (w.tags || []).includes('distância'),
@@ -328,7 +331,15 @@ export function atacar(A, D, R, rnd, log = null) {
     const soak = soakNat + armSoak;
     const gateFechado = A.arma.modo === 'perfurante' && A.arma.perf < D.armadura.resistPerf;
     if (!gateFechado) {
-      let d = A.forca * A.arma.forcaMult + A.arma.danoBonus - soak;
+      // SEM A FORÇA, A ARMA RENDE O PATAMAR COMUM (`M-32`): `×1` e `+0`. É a
+      // mesma regra de `comRequisitoDeForca` (`src/lib/calc.ts`), escrita de novo
+      // aqui porque este arquivo é INLINADO dentro do `combate-tempo-bench.html`
+      // e não pode importar de `src/lib`. Quem mantém as duas honestas é o
+      // `test-espelho`: se divergirem, ele fica vermelho.
+      const semReq = A.arma.forcaMin && A.forca < A.arma.forcaMin;
+      const multF = semReq ? 1 : A.arma.forcaMult;
+      const bonusF = semReq ? 0 : A.arma.danoBonus;
+      let d = A.forca * multF + bonusF - soak;
       for (let i = 0; i < A.arma.dado + margem; i++) d += rnd.d6();
       dano = Math.max(0, d);
     } else if (log) {

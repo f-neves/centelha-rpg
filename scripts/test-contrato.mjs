@@ -164,6 +164,92 @@ eq(CR.resumoCombatePC(pelado).arma, 'Desarmado / Briga', 'ficha vazia cai no des
 eq(E.armaDoSlot({ ref: 'a:espada-lomga' }), null, 'id errado vira null, e é justamente isso que o resto do teste cobra');
 
 // ------------------------------------------------------------------ fim
+// ------------------- 9. o requisito de Força, e a junta que ele PRECISA atravessar
+//
+// O Arco Composto pede `forcaMin: 4` e é o único do jogo. Até a `M-32` o
+// requisito imprimia um aviso e não fazia mais nada: o arqueiro de Força 1 lia
+// "requer Força 4" na própria ficha e atirava com o `Força×2` inteiro, batendo
+// `1d6+4` contra o `1d6+1` do Arco Longo, que é a arma que ele deveria não
+// conseguir usar. A ficha avisava e concedia na mesma linha.
+//
+// O QUE ESTE BLOCO GUARDA É A JUNTA, e não a regra: a regra é uma função só
+// (`comRequisitoDeForca`, em `calc.ts`), mas ela precisa ser CHAMADA em dois
+// lugares que ninguém obriga a concordar. `ficha-engine` desenha o número para o
+// jogador; `combate-resumo` é por onde o mesmo número chega à mesa
+// (`mesa-ficha` e `mesa-bestiario` o importam). Consertar só um faria a ficha
+// dizer `1d6+1` e o Grid dizer `1d6+4` para o MESMO personagem, sem conflito no
+// git e sem aviso nenhum: é o "contrato silencioso" que o `CLAUDE.md` nomeia.
+//
+// `test-contrato` não pegava isto sozinho: a ficha de fixação usa espada longa e
+// arco longo, e nenhuma das duas tem `forcaMin`.
+{
+  const C = await carregar('src/lib/calc.ts');
+  const composto = armas.find((a) => a.id === 'arco-composto');
+  ok(composto, 'o Arco Composto sumiu do catálogo');
+  eq(composto?.forcaMin, 4, 'o Arco Composto continua pedindo Força 4');
+  eq(armas.filter((a) => a.forcaMin).length, 1,
+    'apareceu uma SEGUNDA arma com `forcaMin`: a mesa precisa dizer se ela também cai em `+0`,'
+    + ' porque perder o `danoBonus` inteiro é natural num arco (ele vem da curva) e não num martelo');
+
+  // A ponte tolera a função AUSENTE de propósito: sem isso o teste estoura na
+  // primeira linha quando ela ainda não existe, e o vermelho fica cego para tudo
+  // o que vem depois, que é justamente a JUNTA.
+  ok(typeof C.comRequisitoDeForca === 'function', '`calc.ts` não exporta `comRequisitoDeForca`');
+  const comReq = typeof C.comRequisitoDeForca === 'function' ? C.comRequisitoDeForca : (w) => w;
+
+  // a regra, na função que os dois chamam
+  const fraco = comReq(composto, 1);
+  eq(fraco.forcaMult, 1, 'sem a Força, o Composto soma Força×1');
+  eq(fraco.danoBonus, 0, 'e parte de +0');
+  const forte = comReq(composto, 4);
+  eq(forte.forcaMult, composto.forcaMult, 'com a Força, o multiplicador é o do catálogo');
+  eq(forte.danoBonus, composto.danoBonus, 'e o bônus também');
+  ok(forte === composto, 'quem cumpre o requisito não paga nem uma cópia de objeto');
+  // e o controle negativo: arma SEM requisito não é tocada em Força nenhuma
+  const longo = armas.find((a) => a.id === 'arco-longo');
+  ok(comReq(longo, 0) === longo, 'arma sem `forcaMin` atravessa intacta');
+
+  // e o que sai do Composto sem a Força tem de ser o que sai do Arco Longo
+  eq(fraco.forcaMult, longo.forcaMult ?? 1, 'o Composto freado soma o mesmo que o Arco Longo');
+  eq(fraco.danoBonus, longo.danoBonus || 0, 'e parte do mesmo lugar');
+
+  // A JUNTA: o número que chega à mesa, com uma ficha de Força 1 e o Composto.
+  const fichaFraca = {
+    attrs: { forca: 1, destreza: 3, percepcao: 3, vigor: 2 },
+    skills: { atirador: 2 }, skills2: {}, centelha: 0, willpower: 0,
+    equip: { arma: 'arco-composto', escudo: 'nenhum', armaduras: [] },
+    conjuntos: [], arte: {}, tech: {},
+  };
+  // O que atravessa é a STRING de dano, que é o que a mesa desenha.
+  const r1 = CR.resumoCombatePC(fichaFraca);
+  ok(/^1d6 \+1/.test(r1.dano),
+    `na mesa, o Composto de um arqueiro de Força 1 tem de sair "1d6 +1" (o do Arco Longo), e veio "${r1.dano}"`);
+  ok(!/\+4/.test(r1.dano), `e nunca "+4": veio "${r1.dano}"`);
+
+  const fichaForte = { ...fichaFraca, attrs: { ...fichaFraca.attrs, forca: 4 } };
+  const r4 = CR.resumoCombatePC(fichaForte);
+  ok(/^1d6 \+10/.test(r4.dano),
+    `com Força 4 ele volta a somar Força×2 mais o bônus da curva (4×2+2 = 10), e veio "${r4.dano}"`);
+
+  // O TERCEIRO LEITOR: o motor da bancada, que NÃO pode importar de `src/lib`
+  // (ele é inlinado dentro do `combate-tempo-bench.html`). A regra é escrita de
+  // novo lá, e é aqui que as duas escritas se encontram.
+  const LT = await import(pathToFileURL(path.join(ROOT, 'scripts/lib-tempo.mjs')).href);
+  const traduz = LT.armaDoCatalogo || LT.traduzArma || null;
+  if (traduz) {
+    const w = traduz(composto);
+    eq(w.forcaMin, 4, 'o motor da bancada precisa CARREGAR o `forcaMin` até a conta de dano');
+  } else {
+    // a tradução não é exportada: então a conferência é do texto, que é o que
+    // resta e ainda assim pega o caso que importa (o campo ser descartado).
+    const fonte = fs.readFileSync(path.join(ROOT, 'scripts/lib-tempo.mjs'), 'utf8');
+    ok(/forcaMin: w\.forcaMin/.test(fonte),
+      'o motor da bancada voltou a descartar o `forcaMin` na tradução: a conta de dano não pode vê-lo');
+    ok(/A\.forca < A\.arma\.forcaMin/.test(fonte),
+      'o motor da bancada não aplica o requisito de Força, e vai divergir da ficha no espelho');
+  }
+}
+
 for (const f of tmp) fs.rmSync(f, { force: true });
 if (falhas.length) {
   console.error(`\n✘ Contrato ficha↔mesa FALHOU (${falhas.length}):`);
