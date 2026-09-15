@@ -903,9 +903,15 @@ sexto**, e cada ponto de Virtude ou de Firula devolve exatamente um sexto. São 
 | 3 | 67% | 33% | 0 | 0 |
 | 6 | 100% | 83% | 50% | 17% |
 
-**A propriedade que isto cria, e ela não foi pedida mas é boa:** acima da Dificuldade 9, **nenhuma
-Virtude passa sem Firula**. A partir dali descrever bem deixa de ser bônus e vira **preço de
-entrada**. O teste heroico de alma só acontece para quem narra o gesto.
+**A propriedade que isto cria, e ela não foi pedida mas é boa:** quanto mais alta a Dificuldade,
+mais a Firula deixa de ser bônus e vira **preço de entrada**. O teste heroico de alma só acontece
+para quem narra o gesto.
+
+> **CORRIGIDO no mesmo dia.** A primeira redação desta frase dizia *"acima da Dificuldade 9,
+> nenhuma Virtude passa sem Firula"*, e **a tabela logo acima já a desmentia**: na Dif 10 a Virtude
+> 6 passa 33% sozinha e na 11 ainda passa 17%. **O ponto em que ninguém passa sem Firula é a
+> Dificuldade 12.** O erro é da prosa e não do número, e ficou registrado porque é a forma
+> catalogada da asserção que contradiz a evidência impressa ao lado dela.
 
 ### ABERTO · a escada acima da básica
 
@@ -918,3 +924,52 @@ de cima da escada ganhou espaço que não tinha quando aqueles números foram pe
 A tabela de Dificuldade do sistema é `5 · 10 · 15 · 20 · 25 · 30` (`regras.json → dificuldade`).
 "Dificuldade 10" num teste de Habilidade é **Média**; num teste de Virtude é quase impossível sem
 Firula. **O mesmo número com dois significados, e nada na página avisa qual é qual.**
+
+---
+
+## M-19c · a escada de Dificuldade do teste de Virtude · DECIDIDO em 15/09/2026
+
+**A escada publicada vai de 5 a 12, e acima de 9 já é quase sobre-humano.**
+
+Não são degraus nomeados: é uma faixa contínua com um marco no meio. A básica é 5, o teto
+publicado é 12, e a partir do 10 a coisa muda de natureza.
+
+### A régua inteira, medida
+
+`1d6 + Virtude + Firula > Dif`. Cada ponto vale exatamente um sexto, em qualquer das três parcelas.
+
+**Sem Firula:**
+
+| Virtude | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |
+|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| 1 | 33% | 17% | 0 | 0 | 0 | 0 | 0 | 0 |
+| 2 | 50% | 33% | 17% | 0 | 0 | 0 | 0 | 0 |
+| 3 | 67% | 50% | 33% | 17% | 0 | 0 | 0 | 0 |
+| 4 | 83% | 67% | 50% | 33% | 17% | 0 | 0 | 0 |
+| 5 | 100% | 83% | 67% | 50% | 33% | 17% | 0 | 0 |
+| 6 | 100% | 100% | 83% | 67% | 50% | 33% | 17% | **0** |
+
+**Com Firula 3:**
+
+| Virtude | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |
+|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| 1 | 83% | 67% | 50% | 33% | 17% | 0 | 0 | 0 |
+| 3 | 100% | 100% | 83% | 67% | 50% | 33% | 17% | 0 |
+| 6 | 100% | 100% | 100% | 100% | 100% | 83% | 67% | **50%** |
+
+### O que a medição diz do marco em 9, e ele se sustenta
+
+- **até a Dificuldade 9**, qualquer Virtude de 4 para cima ainda joga sozinha;
+- **da 10 em diante**, só as duas Virtudes mais altas passam sem Firula (5 a 17%, 6 a 33%);
+- **na 11**, só a Virtude 6, e a 17%;
+- **na 12**, **ninguém passa sem Firula**. O teto publicado é exatamente o ponto em que descrever
+  bem deixa de ser vantagem e passa a ser a única porta.
+
+**Por isso "acima de 9 é quase sobre-humano" é uma descrição exata, e não uma figura de
+linguagem.**
+
+### O que fica de fora de propósito
+
+**As Dificuldades 13 e 14 existem na matemática** (a Virtude 6 com Firula 3 passa 33% e 17%) **e
+não entram na escada publicada.** O máximo humano é 15 e a 15 é número morto. Quem quiser uma cena
+acima de 12 está fora da régua, e isso é escolha da mesa.
