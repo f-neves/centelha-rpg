@@ -132,3 +132,45 @@ porque o levantamento não o alcançava sem rodar a conta.
 
 Consertar só a linha das Artes deixa cinco divergências de pé. **Isso é escolha consciente e
 fica registrada**, não descuido.
+
+---
+
+## M-11 · como se recupera a Força de Vontade · DECIDIDO em 15/09/2026
+
+**São DOIS métodos normais, e os dois devolvem 1 de Força de Vontade.**
+
+1. **Uma noite de sono.** O gatilho reusa o vocabulário que a regra da Mana já usa,
+   `arcano.recuperacaoMana.descanso`: *"meditação, descanso completo ou sono profundo"*. Não se
+   cria taxonomia de descanso curto e longo · o sistema não tem uma, e inventá-la obrigaria a
+   reler as economias do Fôlego (por Tick) e da Mana (por hora) à luz dela.
+2. **Uma Firula de nível 2 ou acima.** A escada já está publicada e numerada em
+   `src/content/chapters/habilidades.md`, na seção "Firulas · recompensa à ousadia":
+   nível 1 = +2 fixo, **nível 2 = +1d6**, **nível 3 = +2d6**, com o Mestre definindo o nível.
+
+**O que isto fecha, e é maior que a pergunta.** A Força de Vontade era a única das quatro
+reservas sem relógio: o Fôlego volta por Tick, a Mana por hora, a Energia por cena (declarado na
+nota da Mana, que separa as economias com todas as letras), e a Vontade não tinha nada · apesar
+de custar 90 XP para subir de 0 a 9, e de pagar ação turbinada, resistência extra e conjuração
+(o `ritual.modoAcima` cobra 1 por grau de tempo esticado).
+
+**E o segundo método dá à Firula um trabalho que ela não tinha.** Hoje ela é só bônus do lance;
+passa a ser também a torneira da reserva psicológica, o que premia descrever bem duas vezes.
+
+### O que isto manda fazer
+
+Um bloco de recuperação da Vontade em `src/data/regras.json`, irmão do `recuperacaoMana`, com
+os dois gatilhos e o valor. E a frase correspondente onde a Vontade é apresentada, mais uma
+linha na seção das Firulas dizendo que a partir do nível 2 ela devolve Vontade.
+
+### DOIS RESÍDUOS, achados ao gravar e NÃO decididos
+
+**Nenhum dos dois bloqueia a implementação do que está acima**, e os dois aparecem na primeira
+mesa que jogar.
+
+1. **A Firula de nível 3 devolve mais que a de nível 2?** A decisão diz "nível 2 ou acima" e "1
+   de Força de Vontade". Lido ao pé da letra, o nível 3 devolve o mesmo que o 2, e aí a escada
+   premia só no bônus do lance. A outra leitura é 1 no nível 2 e 2 no nível 3, acompanhando a
+   escada.
+2. **Há teto por cena?** Sem teto, quem descreve bem toda rolagem recupera Vontade em toda
+   rolagem, e a reserva deixa de ser escassa · que é o oposto do que os 90 XP do Bram compram.
+   Com teto, falta o número. **Este é o que morde primeiro**, e é balanço, não redação.
