@@ -45,3 +45,15 @@ e nenhum código muda) e `A-11` (apagar o `bash.exe.stackdump`).
   commit não carrega remoção nenhuma. **Há outros nove iguais na árvore**, todos ignorados, e
   esses ficam: o item nomeou um.
 - **02:23** · `npm run validate` LIDO: `exit 0`.
+- **02:25** · marcado no `jogador-novo-consertos.md`. O `A-11` ganhou o `FEITO` no próprio item
+  (é da minha seção de achados); o `M-11` e o `M-12` moram em linha de TABELA na seção PARA A
+  MESA, que é onde o Arquiteto está trabalhando agora, então marquei num bloco no FIM em vez de
+  mexer na tabela dele. Nada apagado: 75 linhas adicionadas contra 6 removidas, e as 6 são as
+  frases que os próprios itens mandam reescrever.
+- **02:26** · TERMINADO e PUBLICADO. Commit `5d9f164`, sete arquivos, e
+  `git rev-list --count origin/main..HEAD` deu **0**. Travessão conferido lendo os arquivos e o
+  diff pelo Python, fora do hook: zero nas linhas novas.
+- **02:26** · uma do canal, para o registro: o `git pull --rebase` recusou com "Please commit or
+  stash them" porque a MINHA árvore estava suja, e não por arquivo de outra frente. Commitei
+  primeiro e rebasei depois, que é a ordem que o `CLAUDE.md` já manda e que o caso do `&&` depois
+  do cano existe para proteger.
