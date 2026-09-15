@@ -62,7 +62,7 @@
       "salto-do-grilo"
     ],
     "aliases": [],
-    "texto": "Enquanto se mover, corre por paredes, tetos e sobre a água por um turno.",
+    "texto": "Enquanto se mover, corre por paredes, tetos e sobre a água por 6 Ticks.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -170,7 +170,7 @@
       "borrao"
     ],
     "aliases": [],
-    "texto": "1×/turno, faça um **ataque extra** a custo de Ticks reduzido — golpe antes que percebam.",
+    "texto": "1× a cada 6 Ticks, faça um **ataque extra** a custo de Ticks reduzido — golpe antes que percebam.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -545,7 +545,7 @@
       "voz-de-comando"
     ],
     "aliases": [],
-    "texto": "Uma ordem (vs Defesa Mental) que o alvo deve gastar **Vontade a cada turno** para resistir; pode compelir atos perigosos (não diretamente suicidas).",
+    "texto": "Uma ordem (vs Defesa Mental) que o alvo deve gastar **Vontade a cada 6 Ticks** para resistir; pode compelir atos perigosos (não diretamente suicidas).",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -936,7 +936,7 @@
       "carne-de-granito"
     ],
     "aliases": [],
-    "texto": "Imune a dano não-mágico por um turno.",
+    "texto": "Imune a dano não-mágico por 6 Ticks.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -1410,7 +1410,7 @@
       "recuperacao-acelerada"
     ],
     "aliases": [],
-    "texto": "Ignora a penalidade de um ferimento por um turno.",
+    "texto": "Ignora a penalidade de um ferimento por 6 Ticks.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -1480,7 +1480,7 @@
       "fechar-feridas"
     ],
     "aliases": [],
-    "texto": "Recupera PV igual ao seu Vigor no início de cada turno.",
+    "texto": "Recupera PV igual ao seu Vigor a cada 6 Ticks.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -1765,7 +1765,7 @@
       "desarme"
     ],
     "aliases": [],
-    "texto": "Não sofre desgaste de defesa contra vários atacantes por uma rodada.",
+    "texto": "Não sofre desgaste de defesa contra vários atacantes por 6 Ticks.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -1905,7 +1905,7 @@
       "sede-de-sangue"
     ],
     "aliases": [],
-    "texto": "Ataca repetidamente sem as penalidades de múltiplos ataques por uma rodada.",
+    "texto": "Ataca repetidamente sem as penalidades de múltiplos ataques por 6 Ticks.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -1975,7 +1975,7 @@
       "presenca-imponente"
     ],
     "aliases": [],
-    "texto": "Aliados que o ouvem ganham +3 nas ações por um turno.",
+    "texto": "Aliados que o ouvem ganham +3 nas ações por 6 Ticks.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -3585,7 +3585,7 @@
       "cerrar-os-dentes"
     ],
     "aliases": [],
-    "texto": "ao chegar a 0 PV, fica de pé por mais um turno.",
+    "texto": "ao chegar a 0 PV, fica de pé por mais 6 Ticks.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -7228,7 +7228,7 @@
       "mascara-sustentada"
     ],
     "aliases": [],
-    "texto": "Ignora uma penalidade social ou de medo por rodada; provocações e Influência que **dependam de te abalar** falham se não superarem sua Compostura por 6+.",
+    "texto": "Ignora uma penalidade social ou de medo a cada 6 Ticks; provocações e Influência que **dependam de te abalar** falham se não superarem sua Compostura por 6+.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -7291,7 +7291,7 @@
       "pegada-de-ferro"
     ],
     "aliases": [],
-    "texto": "Enquanto segura o alvo, começa a comprimir: dano leve por rodada e o preso age com −1 até se soltar.",
+    "texto": "Enquanto segura o alvo, começa a comprimir: dano leve a cada 6 Ticks e o preso age com −1 até se soltar.",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
@@ -7379,7 +7379,7 @@
       "aguentar-firme"
     ],
     "aliases": [],
-    "texto": "Quando cairia a um estado de ferimento pior, resiste por uma rodada e segue de pé como se não fosse.",
+    "texto": "Quando cairia a um estado de ferimento pior, resiste por 6 Ticks e segue de pé como se não fosse.",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
@@ -7484,7 +7484,7 @@
       "duas lâminas",
       "mão trocada"
     ],
-    "texto": "Suas duas mãos golpeiam como uma só. Na empunhadura dupla, o ataque da mão inábil deixa de sofrer o dado extra: em vez de −2d6, sai a −1d6, igual à mão hábil. A guarda ainda cai por cada golpe (dois ataques = −4 até seu turno); o que a Ambidestria apaga é a desvantagem da mão fraca, não a exposição.",
+    "texto": "Suas duas mãos golpeiam como uma só. Na empunhadura dupla, o ataque da mão inábil deixa de sofrer o dado extra: em vez de −2d6, sai a −1d6, igual à mão hábil. A guarda ainda cai por cada golpe (dois ataques = −4 pelos próximos 6 Ticks); o que a Ambidestria apaga é a desvantagem da mão fraca, não a exposição.",
     "pendente": false,
     "nivel": 2,
     "efeito": "bonus"

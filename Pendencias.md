@@ -1400,7 +1400,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   Era a única das seis que era mesmo **só tela**, e o mecanismo existia inteiro:
 
   - o catálogo, 55 verbetes com número, em `src/data/condicoes.json`;
-  - a soma: `export function somarCondicoes` (`src/lib/mesa-core.ts:186`);
+  - a soma: `export function somarCondicoes` (`src/lib/mesa-core.ts:198`);
   - a leitura na folha do lance: `const cd = somarCondicoes` (`grid.astro:10016`);
   - o desconto chegando à Defesa: `alvo.condicoesDefesa` (`src/lib/lance.ts:159`);
   - a coluna: `add column if not exists condicoes` (`supabase/migracao-11.sql:25`);
@@ -1413,7 +1413,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   - o item no menu da peça: `condicoes', '◈ Condições'` (`grid.astro:7768`);
   - o selo de ícones na lista lateral, que custa zero gestos: `const selo` (`grid.astro:6749`);
-  - e a aba Combate chamando o mesmo módulo: `function abrirCondicoes` (`combate.astro:1810`), para
+  - e a aba Combate chamando o mesmo módulo: `function abrirCondicoes` (`combate.astro:1814`), para
     não haver duas cópias divergindo no primeiro conserto que só uma receber.
 
   Asserção em par, em `cenaCondicaoAMao` (`scripts/test-grid.mjs`): a mesma folha do golpe aberta
@@ -2370,7 +2370,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **tira quando o Preparo acaba** (`marcarInvestida` e `varrerInvestida`, no `grid.astro`).
 
   **A remoção precisou ser explícita, e isso foi achado no caminho: o `ate` de uma condição não
-  tira ninguém.** `somarCondicoes` (`src/lib/mesa-core.ts:186`) soma tudo sem olhar prazo, e nenhum
+  tira ninguém.** `somarCondicoes` (`src/lib/mesa-core.ts:198`) soma tudo sem olhar prazo, e nenhum
   ponto do sistema lê a chave `ate` de uma condição. Sem a varredura do Tick, a marca ficaria
   grudada para sempre, penalizando em silêncio, que é pior que a dupla cobrança que ela conserta.
 
@@ -2869,7 +2869,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | `refazerLogDosEfeitos()` | `LOG = LOG.filter((e: any) => !minha(e));` (`grid.astro:11825`) e empurra N linhas novas |
 
   **E UMA CORREÇÃO AO ENUNCIADO: não existe zerar no Grid.** O `LOG = []` é do `combate.astro`
-  (`if (zLog) { LOG = []; await persistLog(); }`, `combate.astro:2128`), na caixa de reiniciar
+  (`if (zLog) { LOG = []; await persistLog(); }`, `combate.astro:2132`), na caixa de reiniciar
   combate, e lá não há escritor concorrente. **Zerar não precisa de caminho novo:** precisa ficar
   onde está.
 
@@ -3044,7 +3044,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | # | muda o QUE CHEGA ao jogador? | o quê, exatamente |
   |---|---|---|
   | **29** | **sim, ganha colunas** | a `encontro_visao` passa a mandar `tick_atual`, `rodada`, `perfil` e `perfil_em`. **Hoje não manda nenhuma das quatro** (sondado: `42703` nas duas primeiras) |
-  | **30** | quase nada | acrescenta `gravar_lances` ao `select('*')` de `mesas` (`mesa-core.ts:457`). Nada enumera as chaves desse objeto e nada o grava de volta inteiro · não há `from('mesas').update` no código |
+  | **30** | quase nada | acrescenta `gravar_lances` ao `select('*')` de `mesas` (`mesa-core.ts:471`). Nada enumera as chaves desse objeto e nada o grava de volta inteiro · não há `from('mesas').update` no código |
   | **31** | **sim, e some coisa** | mesma FORMA em `token_visao` e `efeito_visao`, mas menos LINHAS: peça que só chegava porque um fogo não-caído acendia o chão **para de chegar**, e efeito fora do intervalo do relógio também. E a `encontro_visao` ganha `tick_atual` e `rodada`, como na 29 |
   | **32** | **sim, e campo que nunca era nulo passa a ser** | mesmas 24 colunas da `efeito_visao`, mas `conjurador_id` e `centro` passam a poder vir **null**, e `hexes` vem **filtrado** pelas casas claras |
   | **35** | **nada** | ela troca o corpo de uma função, e nenhuma view. O `mordidos` **não chega ao jogador nem antes nem depois** (a `efeito_visao` o corta de propósito), então a tela dele não sente. E o poder dele **diminui**: antes podia zerar o mapa, agora só acrescenta chave |
@@ -3873,7 +3873,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
     `:354`, o empilhamento numa mesma Defesa limitado a ±6);
   - **os dois pontos que somam Defesa sem teto hoje** são os candidatos a receber o corte, e
     são estes dois:
-    - `src/lib/mesa-core.ts:186` · `export function somarCondicoes(`
+    - `src/lib/mesa-core.ts:198` · `export function somarCondicoes(`
     - `src/lib/combate-tempo.ts:696` · `export function defesaPerdida(`, esta com comentário
       próprio na linha de cima dizendo que acumula sem teto e só zera quando o ciclo fecha.
 
@@ -3913,7 +3913,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   nada no formato as distingue.
 
   **Por que um teto ingênuo era exatamente o defeito de que a frase avisava:** as quatro entram
-  pela mesma soma, em `src/lib/mesa-core.ts:192` · `t.velocidade += c.velocidade`. Um teto de ±6
+  pela mesma soma, em `src/lib/mesa-core.ts:204` · `t.velocidade += c.velocidade`. Um teto de ±6
   aplicado ali transforma −99 em −6, ou seja, transforma **"não age"** em **"age seis Ticks mais
   rápido"**. Não é um número errado, é uma grandeza virando outra, e sai sem exceção e sem teste
   vermelho.
@@ -6444,7 +6444,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
 
   **E UM ACHADO QUE SAIU DESSA CONFERÊNCIA, sem relação com a cura:** existe exatamente UM caminho que
   escreve Vida negativa, e é a caixa de editar peça do mestre:
-  `pvat = Math.min(pvat, pvmax)` (`src/pages/mesa/combate.astro:1764`) grampeia o teto e não grampeia
+  `pvat = Math.min(pvat, pvmax)` (`src/pages/mesa/combate.astro:1768`) grampeia o teto e não grampeia
   o piso, enquanto o campo do relógio, duas linhas abaixo, ganha o grampo de baixo que falta a este.
   Pode ser liberdade de mestre deliberada e pode ser
   descuido, e **não decido isto aqui**: fica anotado com o vizinho que o denuncia.
@@ -7117,6 +7117,8 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
 ---
 
 ## J. Infraestrutura · endereço, hospedagem e versão
+
+- [ ] **J0 · 42 travessões sobreviveram dentro de `src/data/*.json`**, que é texto publicado e nenhum portão cobre: `regras.json` 22, `tecnicas.json` 15, `efeitos.json` 5. O `test-travessao-capitulos.mjs` só varre `src/content/**`, por decisão do humano, e o dado ficou de fora. Achado na rodada 65 ao converter "turno" em Tick: um deles está na MESMA linha que eu editei, e consertá-lo sozinho seria arbitrário. É varredura de uma passada, e a pergunta que vem junto é se o portão passa a cobrir `src/data` depois dela.
 
 - [x] **J1 · [DECIDIDO 15/08/2026] O endereço será `centelha.rec.br`.** R$ 40/ano no
   Registro.br, categoria de recreação e jogos, portátil, preço fixo em real, e **4,6× mais

@@ -60,7 +60,7 @@ Seres ligados ao mundo natural. Esguios, de aparência mais frágil que a das ou
 - **+1 teto de Destreza** (até 7): graça sobre-humana.
 - **−1 teto de Vigor** (máx 5): corpo frágil.
 - **Aparência Universal**, descendentes das fadas, sua beleza atrai quase toda raça: o elfo **não sofre penalidades de Aparência** ao lidar com outras raças humanóides, mesmo as que lhe seriam hostis.
-- **Sentidos Naturais Aguçados**: em ambiente natural, concentrando-se por um turno inteiro, faz testes de **Percepção** de visão ou audição com **+1d6** e **enxerga o dobro da distância** de um humano. Dura uma cena, enquanto permanecer no ambiente natural.
+- **Sentidos Naturais Aguçados**: em ambiente natural, concentrando-se por 6 Ticks inteiros, faz testes de **Percepção** de visão ou audição com **+1d6** e **enxerga o dobro da distância** de um humano. Dura uma cena, enquanto permanecer no ambiente natural.
 - **Resiliência Mental**, naturalmente resistente a controle mental: qualquer efeito do tipo contra o elfo tem a **dificuldade aumentada em +4**, ou o elfo recebe **+1d6** para resistir (o que for melhor para ele).
 
 ### Gnomo

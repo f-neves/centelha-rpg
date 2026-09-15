@@ -47,7 +47,7 @@
     {
       "id": "defesa-total", "nome": "Defesa total", "icone": "🛡", "grupo": "posicao", "cor": "bom",
       "defesa": 4,
-      "nota": "Abre mão do ataque na rodada para se proteger.",
+      "nota": "Abre mão do ataque para se proteger.",
       "fonte": "combateTatico"
     },
     {
@@ -89,7 +89,7 @@
     {
       "id": "guarda-quebrada", "nome": "Guarda quebrada", "icone": "✖", "grupo": "posicao", "cor": "perigo",
       "defesa": -4,
-      "nota": "Fez dois ataques na rodada (empunhadura dupla) ou perdeu a guarda: −4 até o próximo turno.",
+      "nota": "Fez dois ataques no mesmo lance (empunhadura dupla) ou perdeu a guarda: −4 pelos próximos 6 Ticks.",
       "fonte": "combate · empunhadura dupla"
     },
 
@@ -132,14 +132,14 @@
 
     {
       "id": "sangrando", "nome": "Sangrando", "icone": "🩸", "grupo": "corpo", "cor": "perigo",
-      "porRodada": 1,
-      "nota": "No início da rodada perde 1 de Letal (ignora Absorção). Estabilizar: Cura contra Dif 10, ou Vigor + Convicção em si mesmo.",
+      "porSeisTicks": 1,
+      "nota": "A cada 6 Ticks desde o ferimento perde 1 de Letal (ignora Absorção). Estabilizar: Cura contra Dif 10, ou Vigor + Convicção em si mesmo.",
       "fonte": "regras.json · sangramento"
     },
     {
       "id": "envenenado", "nome": "Envenenado", "icone": "☠", "grupo": "corpo", "cor": "perigo",
-      "dados": -1, "porRodada": 1,
-      "nota": "Desgaste de veneno: −1d6 por degrau e dano por rodada até resistir (cap. Resistir)."
+      "dados": -1, "porSeisTicks": 1,
+      "nota": "Desgaste de veneno: −1d6 por degrau e dano a cada 6 Ticks até resistir (cap. Resistir)."
     },
     {
       "id": "doente", "nome": "Doente", "icone": "🤒", "grupo": "corpo", "cor": "alerta",
@@ -170,13 +170,13 @@
     },
     {
       "id": "sufocando", "nome": "Sufocando", "icone": "🫁", "grupo": "corpo", "cor": "perigo",
-      "porRodada": 2,
-      "nota": "Afogamento, fumaça, garganta presa: dano crescente por rodada, ignora Absorção."
+      "porSeisTicks": 2,
+      "nota": "Afogamento, fumaça, garganta presa: dano crescente a cada 6 Ticks, ignora Absorção."
     },
     {
       "id": "em-chamas", "nome": "Em chamas", "icone": "🔥", "grupo": "corpo", "cor": "perigo",
-      "porRodada": 3,
-      "nota": "Queima por rodada até apagar (ação inteira, rolar no chão ou água)."
+      "porSeisTicks": 3,
+      "nota": "Queima a cada 6 Ticks até apagar (ação inteira, rolar no chão ou água)."
     },
     {
       "id": "inconsciente", "nome": "Inconsciente", "icone": "💤", "grupo": "corpo", "cor": "morte",
@@ -185,7 +185,7 @@
     },
     {
       "id": "morrendo", "nome": "Morrendo", "icone": "✝", "grupo": "corpo", "cor": "morte",
-      "foraDeCombate": true, "porRodada": 1,
+      "foraDeCombate": true, "porSeisTicks": 1,
       "nota": "Zerou com dano Letal em maioria. Precisa ser estabilizado (Cura, Dif 10) antes que o Letal acumulado alcance o PV máximo."
     },
     {
@@ -215,7 +215,7 @@
     {
       "id": "confuso", "nome": "Confuso", "icone": "🌀", "grupo": "mente", "cor": "alerta",
       "acao": -2,
-      "nota": "Alvo e intenção erráticos. O mestre decide a direção da ação em metade das rodadas."
+      "nota": "Alvo e intenção erráticos. O mestre decide a direção da ação em metade das vezes."
     },
     {
       "id": "enfurecido", "nome": "Enfurecido", "icone": "💢", "grupo": "mente", "cor": "alerta",

@@ -96,7 +96,7 @@ Média igual ou menor que a Dificuldade não impede tentar: o personagem simples
 
 ### Reflexiva
 
-Uma jogada que não consome a ação do turno. Notar o vulto, reagir ao chão que cede, amortecer a queda.
+Uma jogada que não consome a ação do lance. Notar o vulto, reagir ao chão que cede, amortecer a queda.
 
 ### Passiva
 

@@ -296,7 +296,7 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
   // vontade, e é bom que fale.
   const escrevem = src.split('\n')
     .map((l, i) => [i + 1, l])
-    .filter(([, l]) => /c\.condicoes\s*=/.test(l) || /^\s*(id|nome|cor|icone|acao|dados|defesa|porRodada|nota|ate)\s*:/.test(l))
+    .filter(([, l]) => /c\.condicoes\s*=/.test(l) || /^\s*(id|nome|cor|icone|acao|dados|defesa|porSeisTicks|nota|ate)\s*:/.test(l))
     .filter(([, l]) => !/^\s*(\/\/|\*)/.test(l));
   const comAte = escrevem.filter(([, l]) => /\bate\b\s*:/.test(l));
   if (comAte.length) {

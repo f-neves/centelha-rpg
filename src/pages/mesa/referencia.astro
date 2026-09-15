@@ -74,7 +74,7 @@ const modEfeito = (c: any) => {
   if (c.naoAge) p.push('não age');
   else if (c.velocidade) p.push(`Velocidade ${sinal(c.velocidade)}`);
   if (c.soak) p.push(`Absorção ${sinal(c.soak)}`);
-  if (c.porRodada) p.push(`−${c.porRodada} por rodada`);
+  if (c.porSeisTicks) p.push(`−${c.porSeisTicks} a cada 6 Ticks`);
   if (c.foraDeCombate) p.push('fora de combate');
   return p.join(' · ') || '—';
 };
@@ -314,7 +314,7 @@ const PORTE_NOME: Record<string, string> = {
         </div>
       </div>
       <ul class="ref-lista">
-        <li><strong>Ataques</strong> — {HORDA.ataquesPorRodada}. {HORDA.ataque}</li>
+        <li><strong>Ataques</strong> — {HORDA.ataquesPorSeisTicks}. {HORDA.ataque}</li>
         <li><strong>Defesa</strong> — {HORDA.defesaNota}</li>
         <li><strong>Baixas</strong> — {HORDA.baixas}</li>
         <li><strong>Fim</strong> — {HORDA.fim}</li>

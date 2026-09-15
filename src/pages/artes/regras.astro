@@ -37,7 +37,7 @@ const EX_CONTA: [string, string, number][] = [
   ['Acender uma vela: tudo no grau 0', '0', 0],
   ['Toque ardente: Dano 1 (1d6)', '1', 1],
   ['Dardo: Alcance 3 (4 m) + Dano 2 (2d6)', '3 + 2', 5],
-  ['Labareda de dois turnos: Volume 3 (50 cm de lado) + Dano 2 (2d6) + Duração 2 (2 turnos)', '3 + 2 + 2', 7],
+  ['Labareda de 12 Ticks: Volume 3 (50 cm de lado) + Dano 2 (2d6) + Duração 2 (12 Ticks)', '3 + 2 + 2', 7],
 ];
 ---
 <Base title="Regras das Artes" largura="wide" descricao="Como se conjura no Centelha: parâmetros, custo em Mana, a fonte do elemento, esticar, Rituais e o que o alvo opõe.">
@@ -148,7 +148,7 @@ const EX_CONTA: [string, string, number][] = [
     <div class="callout regra"><span class="lbl">O que sai de graça</span>
       {COMB.grauZero}
     </div>
-    <p><strong>Sustentar cobra por turno.</strong> {COMB.concentracao.acao}, {COMB.concentracao.posicao}, e {COMB.concentracao.defesa}. Ao sofrer dano, {COMB.concentracao.aoSofrerDano}.</p>
+    <p><strong>Sustentar cobra a cada 6 Ticks.</strong> {COMB.concentracao.acao}, {COMB.concentracao.posicao}, e {COMB.concentracao.defesa}. Ao sofrer dano, {COMB.concentracao.aoSofrerDano}.</p>
     <ul class="fraq">
       {COMB.consequencias.map((x: string) => <li>{x}</li>)}
     </ul>

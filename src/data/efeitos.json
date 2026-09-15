@@ -497,7 +497,7 @@
         "nota": "dobra para quem corre, cavalga ou luta"
       }
     ],
-    "efeito": "O piso deixa de cooperar. Andar exige teste, e quem falha cai; correr, cavalgar ou lutar em cima dobra a dificuldade. Na areia movediça, quem cai afunda a cada turno.",
+    "efeito": "O piso deixa de cooperar. Andar exige teste, e quem falha cai; correr, cavalgar ou lutar em cima dobra a dificuldade. Na areia movediça, quem cai afunda a cada 6 Ticks.",
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
@@ -680,17 +680,17 @@
         "nome": "Duração",
         "tipo": "substitui",
         "substitui": "duracao",
-        "unidade": "turnos",
+        "unidade": "Ticks",
         "escala": [
           "1 tick",
-          "1 turno",
-          "2 turnos",
-          "3 turnos",
-          "4 turnos",
-          "5 turnos",
-          "6 turnos"
+          "6 Ticks",
+          "12 Ticks",
+          "18 Ticks",
+          "24 Ticks",
+          "30 Ticks",
+          "36 Ticks"
         ],
-        "nota": "1 turno a cada ponto"
+        "nota": "6 Ticks a cada ponto"
       },
       {
         "nome": "Ataque",
@@ -1641,17 +1641,17 @@
         "nome": "Duração",
         "tipo": "substitui",
         "substitui": "duracao",
-        "unidade": "turnos",
+        "unidade": "Ticks",
         "escala": [
           "—",
           "—",
-          "1 turno",
-          "1 turno",
-          "2 turnos",
-          "2 turnos",
-          "3 turnos"
+          "6 Ticks",
+          "6 Ticks",
+          "12 Ticks",
+          "12 Ticks",
+          "18 Ticks"
         ],
-        "nota": "1 turno a cada 2 pontos de Mana"
+        "nota": "6 Ticks a cada 2 pontos de Mana"
       },
       {
         "nome": "Ataque",
@@ -1702,7 +1702,7 @@
       {
         "nome": "Cura",
         "tipo": "fixo",
-        "valor": "1 PV por turno",
+        "valor": "1 PV a cada 6 Ticks",
         "pontos": 1
       },
       {
@@ -1711,7 +1711,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Em vez de fechar tudo de uma vez, a cura fica trabalhando: o alvo recupera a Cura escolhida a cada turno enquanto durar, e não morre de sangramento enquanto a sua mão estiver nele. Não é uma cura muito eficiente, mas impede que o alvo piore.",
+    "efeito": "Em vez de fechar tudo de uma vez, a cura fica trabalhando: o alvo recupera a Cura escolhida a cada 6 Ticks enquanto durar, e não morre de sangramento enquanto a sua mão estiver nele. Não é uma cura muito eficiente, mas impede que o alvo piore.",
     "notas": "Serve no meio da luta, quando não há tempo de parar para curar direito.",
     "grid": {
       "forma": "alvo",
@@ -1892,7 +1892,7 @@
         "nome": "Dano",
         "tipo": "fixo",
         "valor": "1d6 por nível",
-        "nota": "só em quem atravessa, uma vez por turno"
+        "nota": "só em quem atravessa, uma vez a cada 6 Ticks"
       },
       {
         "nome": "Duração",
@@ -2657,7 +2657,7 @@
         "tipo": "padrao"
       }
     ],
-    "efeito": "Guarda uma re-rolagem e a solta depois, sua ou de um aliado à vista, mesmo fora do seu turno. Vale o segundo resultado, bom ou ruim.",
+    "efeito": "Guarda uma re-rolagem e a solta depois, sua ou de um aliado à vista, mesmo fora do seu lance. Vale o segundo resultado, bom ou ruim.",
     "grid": {
       "forma": "nenhuma",
       "ancora": "nenhuma",
@@ -2746,7 +2746,7 @@
         "valor": "Defesa Mental do alvo"
       }
     ],
-    "efeito": "Enquanto durar, o alvo tropeça na hora errada: a corda arrebenta, a arma prende na bainha, o pé escorrega. Não é dano nem penalidade fixa; é o Mestre podendo cobrar o azar uma vez por turno.",
+    "efeito": "Enquanto durar, o alvo tropeça na hora errada: a corda arrebenta, a arma prende na bainha, o pé escorrega. Não é dano nem penalidade fixa; é o Mestre podendo cobrar o azar uma vez a cada 6 Ticks.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
@@ -3174,7 +3174,7 @@
         "valor": "(nível da Arte) × 5"
       }
     ],
-    "efeito": "Comprime o alvo de todos os lados de uma vez. O dano volta a cada turno enquanto durar, e quem está sendo esmagado não fala, não conjura e mal se mexe. Contra objeto, amassa e arrebenta.",
+    "efeito": "Comprime o alvo de todos os lados de uma vez. O dano volta a cada 6 Ticks enquanto durar, e quem está sendo esmagado não fala, não conjura e mal se mexe. Contra objeto, amassa e arrebenta.",
     "notas": "Contra objeto não há jogada: amassa, entorta e arrebenta o que couber na mão fechada da magia.",
     "grid": {
       "forma": "alvo",
@@ -4341,7 +4341,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "O fogo cai sobre a área e continua caindo: o dano volta a cada turno enquanto durar, e o que é combustível pega e segue queimando depois que a magia acaba. Não separa amigo de inimigo.",
+    "efeito": "O fogo cai sobre a área e continua caindo: o dano volta a cada 6 Ticks enquanto durar, e o que é combustível pega e segue queimando depois que a magia acaba. Não separa amigo de inimigo.",
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
@@ -4385,7 +4385,7 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Traz o inverno para a região. A água vira chão, o barro endurece, a plantação morre e quem fica exposto perde Fôlego turno após turno. A região demora a esquecer que você passou por ali.",
+    "efeito": "Traz o inverno para a região. A água vira chão, o barro endurece, a plantação morre e quem fica exposto perde Fôlego de 6 em 6 Ticks. A região demora a esquecer que você passou por ali.",
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
@@ -4447,7 +4447,7 @@
         "valor": "(nível da Arte) × 4"
       }
     ],
-    "efeito": "Chama a tempestade. A cada turno um raio cai onde você apontar dentro da área, sem gastar a sua ação, e quem veste metal atrai o próximo.",
+    "efeito": "Chama a tempestade. A cada 6 Ticks um raio cai onde você apontar dentro da área, sem gastar a sua ação, e quem veste metal atrai o próximo.",
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
@@ -4549,7 +4549,7 @@
         "nome": "Jogada",
         "tipo": "fixo",
         "valor": "Força + Atletismo",
-        "nota": "o alvo rola a cada turno para se manter de pé"
+        "nota": "o alvo rola a cada 6 Ticks para se manter de pé"
       },
       {
         "nome": "Dificuldade",
@@ -4781,7 +4781,7 @@
         "nome": "Dano",
         "tipo": "fixo",
         "valor": "1d6 por nível",
-        "nota": "em quem a mata agarrar no turno"
+        "nota": "em quem a mata agarrar no lance"
       },
       {
         "nome": "Duração",
@@ -5431,7 +5431,7 @@
         "valor": "(nível da Arte) × 4"
       }
     ],
-    "efeito": "O fogo gruda e continua queimando: o dano volta a cada turno e não sai com água, areia nem rolando no chão. Só acaba quando a duração acaba, ou quando alguém desfaz a magia.",
+    "efeito": "O fogo gruda e continua queimando: o dano volta a cada 6 Ticks e não sai com água, areia nem rolando no chão. Só acaba quando a duração acaba, ou quando alguém desfaz a magia.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
@@ -5599,7 +5599,7 @@
         "valor": "(nível da Arte) × 5"
       }
     ],
-    "efeito": "A água entra pela boca e pelo nariz do alvo e fica lá. Ele não fala, não conjura e perde Fôlego a cada turno enquanto durar, mesmo em terra seca. Quem estiver ao lado pode gastar uma ação para virá-lo e drenar.",
+    "efeito": "A água entra pela boca e pelo nariz do alvo e fica lá. Ele não fala, não conjura e perde Fôlego a cada 6 Ticks enquanto durar, mesmo em terra seca. Quem estiver ao lado pode gastar uma ação para virá-lo e drenar.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
@@ -6403,10 +6403,10 @@
       {
         "nome": "Bônus",
         "tipo": "fixo",
-        "valor": "+1d6 por nível, uma vez por turno, na rolagem que o alvo escolher"
+        "valor": "+1d6 por nível, uma vez a cada 6 Ticks, na rolagem que o alvo escolher"
       }
     ],
-    "efeito": "A sorte fica do lado de quem você marcou enquanto durar: a corda aparece, o guarda olha para o outro lado, o dado vira. Não é bônus constante, é uma coincidência por turno.",
+    "efeito": "A sorte fica do lado de quem você marcou enquanto durar: a corda aparece, o guarda olha para o outro lado, o dado vira. Não é bônus constante, é uma coincidência a cada 6 Ticks.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",

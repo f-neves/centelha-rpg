@@ -55,7 +55,7 @@ Cair a 0 PV deixa você **incapacitado**; se o golpe que o derrubou foi sobretud
 
 ## Sangramento e Estabilização
 
-Nem todo ferimento para de doer quando o golpe termina. O **Sangramento** representa feridas abertas que continuam drenando vida. No **início de cada rodada** do personagem, um Sangramento **N** causa **N de dano Letal** (já passa direto pelo Absorção). Ele é lento de propósito: há tempo de reagir antes que mate.
+Nem todo ferimento para de doer quando o golpe termina. O **Sangramento** representa feridas abertas que continuam drenando vida. A cada **6 Ticks desde o ferimento**, um Sangramento **N** causa **N de dano Letal** (já passa direto pelo Absorção). O relógio é de cada um, e não da mesa: quem levou duas feridas em momentos diferentes sangra por dois contadores desalinhados. Ele é lento de propósito: há tempo de reagir antes que mate.
 
 Há duas formas de começar a sangrar:
 

@@ -28,7 +28,7 @@
         },
         "exemplos": [
           "acender ou apagar uma fogueira pequena",
-          "dardo que gruda e queima por mais de um turno",
+          "dardo que gruda e queima por mais de 6 Ticks",
           "fogo na arma pela cena inteira",
           "aguentar frio intenso sem tremer"
         ]
@@ -43,7 +43,7 @@
         "exemplos": [
           "jato de fogo em linha, 3d6",
           "incendiar uma porta ou um monte de palha a 50 m",
-          "sustentar uma parede baixa de chamas por alguns turnos"
+          "sustentar uma parede baixa de chamas por 12 ou 24 Ticks"
         ]
       },
       {
@@ -578,7 +578,7 @@
       {
         "nivel": 2,
         "nome": "Ofuscar",
-        "efeito": "o feixe cega um alvo por alguns turnos; a luz denuncia quem se esconde por perto",
+        "efeito": "o feixe cega um alvo por 12 ou 24 Ticks; a luz denuncia quem se esconde por perto",
         "custo": {
           "mana": 2
         },

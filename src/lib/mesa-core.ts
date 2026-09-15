@@ -166,7 +166,19 @@ export function atualizarBarra(raiz: ParentNode, chave: string, cur: number, max
 export interface Condicao {
   id: string; nome: string; icone?: string; grupo?: string; cor?: string;
   acao?: number; dados?: number; defesa?: number; defesaCaC?: number; defesaDist?: number;
-  ataque?: number; velocidade?: number; soak?: number; porRodada?: number;
+  ataque?: number; velocidade?: number; soak?: number;
+  /**
+   * Dano contínuo, a cada 6 Ticks (`M-04b`: o livro conta só em Ticks).
+   *
+   * `porRodada` é o nome velho do mesmo campo, e ele continua sendo LIDO porque
+   * a condição caseira é gravada inteira dentro de `combatentes.condicoes`: uma
+   * mesa que salvou "Maldição do pântano" antes desta rodada tem o nome antigo
+   * no banco, e nenhuma migração alcança JSON dentro de uma coluna. A escrita
+   * nova usa só `porSeisTicks`.
+   */
+  porSeisTicks?: number;
+  /** @deprecated o nome antes da `M-04b`. Só leitura, para o que já está salvo. */
+  porRodada?: number;
   // A MARCA, SEPARADA DO NÚMERO (L64, rodada 57). `velocidade` só carrega
   // grandeza de verdade (`acelerado` −2, `retardado` +2, `terreno-dificil`
   // +1); `fora-do-tempo` ("não age") usava o mesmo campo com a sentinela
@@ -184,14 +196,15 @@ export const COND: Record<string, Condicao> = Object.fromEntries(COND_LISTA.map(
 
 /** Soma o efeito de todas as condições ativas de um combatente. */
 export function somarCondicoes(cs: Condicao[] | null | undefined) {
-  const t = { acao: 0, dados: 0, defesa: 0, defesaCaC: 0, defesaDist: 0, ataque: 0, velocidade: 0, soak: 0, porRodada: 0, fora: false, naoAge: false };
+  const t = { acao: 0, dados: 0, defesa: 0, defesaCaC: 0, defesaDist: 0, ataque: 0, velocidade: 0, soak: 0, porSeisTicks: 0, fora: false, naoAge: false };
   for (const c of cs || []) {
     t.acao += c.acao || 0;
     t.dados += c.dados || 0;
     t.ataque += c.ataque || 0;
     t.velocidade += c.velocidade || 0;
     t.soak += c.soak || 0;
-    t.porRodada += c.porRodada || 0;
+    // os dois nomes, pelo motivo escrito na interface: o velho ainda existe no banco.
+    t.porSeisTicks += c.porSeisTicks ?? c.porRodada ?? 0;
     // `defesa` vale para os dois lados; CaC/Dist só ajustam o lado que citam.
     const d = c.defesa || 0;
     t.defesa += d;
@@ -224,7 +237,8 @@ export function condChipHTML(c: Condicao, rm = false, dono = '') {
   if (c.naoAge) partes.push('não age');
   else if (c.velocidade) partes.push(`vel ${sinal(c.velocidade)}`);
   if (c.soak) partes.push(`abs ${sinal(c.soak)}`);
-  if (c.porRodada) partes.push(`−${c.porRodada}/rodada`);
+  const cont = c.porSeisTicks ?? c.porRodada ?? 0;
+  if (cont) partes.push(`−${cont}/6 Ticks`);
   const dica = [c.nota, partes.length ? `(${partes.join(' · ')})` : '',
     c.defesaCaC != null && (c.defesaCaC ?? 0) !== (c.defesaDist ?? 0) ? '— o par é perto/longe.' : '',
   ].filter(Boolean).join(' ');

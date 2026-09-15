@@ -88,7 +88,7 @@ Ao desferir os dois golpes:
 - cada golpe rola o próprio acerto e o próprio dano, com a arma daquela mão (a Força soma uma vez em cada);
 - podem cair no **mesmo alvo** ou em **alvos diferentes**, um por mão.
 
-O preço não está tanto nos dados (pela régua da Margem, um golpe que **encosta** já rende quase todo o dano), e sim na **exposição**: cada ataque que você faz baixa a Esquiva e o Bloqueio (ver *Guarda sob pressão*), então brigar com as duas mãos derruba a sua guarda o **dobro** de um golpe só, até seu próximo turno. Em troca, a **Defesa das armas continua valendo** para aparar: empunhar duas lâminas ataca e defende ao mesmo tempo: o que custa é ficar aberto, não largar a guarda da arma.
+O preço não está tanto nos dados (pela régua da Margem, um golpe que **encosta** já rende quase todo o dano), e sim na **exposição**: cada ataque que você faz baixa a Esquiva e o Bloqueio (ver *Guarda sob pressão*), então brigar com as duas mãos derruba a sua guarda o **dobro** de um golpe só, pelos próximos 6 Ticks. Em troca, a **Defesa das armas continua valendo** para aparar: empunhar duas lâminas ataca e defende ao mesmo tempo: o que custa é ficar aberto, não largar a guarda da arma.
 
 Uma **arma de duas mãos** ocupa as duas e não permite o segundo ataque; um **escudo** na mão inábil troca o golpe extra por Bloqueio. É a terceira via da empunhadura, ao lado do dano concentrado das duas mãos e da muralha do escudo: **tempo e pressão**, dois golpes por vez ao custo da própria guarda.
 
@@ -345,7 +345,7 @@ Quando muitos capangas iguais avançam juntos, não role um por um: trate o band
 
 Na prática, um lutador resistente abre caminho por ~**20 Comuns**, ~**8 Treinados** ou ~**5 Elites** antes de correr risco real, mas uma maré de **30 ou 40** afoga até ele. É o pilar do sistema: um herói vence vários fracos e, ainda assim, **perde para a multidão**.
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Sora encara <strong>20 recrutas</strong> (Comuns). Magnitude <strong>4</strong>: o PV do esquadrão é 20 × 5 = <strong>100</strong>, e o ataque deles é <strong>1d6 + 4d6</strong> no acerto e <strong>+4d6</strong> no dano. No 1º golpe Sora rola o montante e causa 19 de dano: 19 ÷ 5 = <strong>3 baixas</strong> (sobram 4 acumulados). Restam 17: ainda Magnitude 4. Ela ceifa ~4–5 por rodada; ao chegar a 15 membros a Magnitude cai para 3 e a horda morde menos.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Sora encara <strong>20 recrutas</strong> (Comuns). Magnitude <strong>4</strong>: o PV do esquadrão é 20 × 5 = <strong>100</strong>, e o ataque deles é <strong>1d6 + 4d6</strong> no acerto e <strong>+4d6</strong> no dano. No 1º golpe Sora rola o montante e causa 19 de dano: 19 ÷ 5 = <strong>3 baixas</strong> (sobram 4 acumulados). Restam 17: ainda Magnitude 4. Ela ceifa ~4–5 a cada 6 Ticks; ao chegar a 15 membros a Magnitude cai para 3 e a horda morde menos.</div>
 
 ## Técnicas em combate: tempo e combos
 
@@ -376,5 +376,5 @@ Proezas dão bônus, e bônus que se somam sem limite quebram o combate. Quatro 
 
 - **Absorção de Proeza** não soma entre passivas: vale a **maior** de cada tipo de dano (Impacto, Corte, Perfuração). Bônus reflexivos ou de cena (como Tensionar) entram por cima só naquele golpe. A Absorção de Proeza soma normalmente com a da **armadura** e com a **natural** (Vigor/Centelha).
 - **Defesa reflexiva** de Proeza (Aparar, Reflexos de Vento, Voz Calma, +3) conta para o **teto de ±6** dos modificadores situacionais: não empilha além disso com cobertura, flanco e postura.
-- **Ação extra** não acumula: no máximo **uma ação extra por turno**, não importa de quantas fontes (Proeza ou Arte). Os vários "aja de novo" não se somam.
+- **Ação extra** não acumula: no máximo **uma ação extra a cada 6 Ticks**, não importa de quantas fontes (Proeza ou Arte). Os vários "aja de novo" não se somam.
 - **Ignorar a Absorção da armadura** (Punho que Parte Pedra, Esmagar) afeta só a parte da **armadura**; a Absorção **natural** do alvo continua valendo.

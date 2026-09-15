@@ -194,7 +194,7 @@
     "atributos": [
       "destreza"
     ],
-    "descricao": "Não estar onde o golpe chega: o passo para o lado, o corpo que gira, o mergulho para trás do muro. É uma das duas maneiras de não ser atingido, e a mais versátil, porque serve contra qualquer coisa, do soco à flecha, da armadilha ao desabamento. Em compensação exige espaço e pés livres: encurralado, em meio à multidão ou preso à formação, ela vale pouco. Sustenta a Defesa por Esquiva, e como toda defesa é usada em praticamente todo turno de combate.",
+    "descricao": "Não estar onde o golpe chega: o passo para o lado, o corpo que gira, o mergulho para trás do muro. É uma das duas maneiras de não ser atingido, e a mais versátil, porque serve contra qualquer coisa, do soco à flecha, da armadilha ao desabamento. Em compensação exige espaço e pés livres: encurralado, em meio à multidão ou preso à formação, ela vale pouco. Sustenta a Defesa por Esquiva, e como toda defesa é usada em praticamente todo lance de combate.",
     "niveis": [
       {
         "nivel": 0,
@@ -289,7 +289,7 @@
       "destreza",
       "vigor"
     ],
-    "descricao": "O corpo em movimento e em esforço: correr, saltar, escalar, nadar, rolar, se pendurar e atravessar o que estiver no caminho. É a perícia que define o quanto você anda por turno e a que distância consegue saltar, e a primeira a ser pedida em qualquer perseguição, fuga ou subida. O que ela mede é o desempenho do corpo inteiro; a mão fina fica com Prestidigitação e o fôlego longo da marcha, com Resistência.",
+    "descricao": "O corpo em movimento e em esforço: correr, saltar, escalar, nadar, rolar, se pendurar e atravessar o que estiver no caminho. É a perícia que define o quanto você anda por Tick e a que distância consegue saltar, e a primeira a ser pedida em qualquer perseguição, fuga ou subida. O que ela mede é o desempenho do corpo inteiro; a mão fina fica com Prestidigitação e o fôlego longo da marcha, com Resistência.",
     "niveis": [
       {
         "nivel": 0,

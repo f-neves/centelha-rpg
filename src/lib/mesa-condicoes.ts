@@ -117,7 +117,7 @@ export function abrirCondicoes(ctx: CtxCond, c: any, publicavel = true) {
     c.condicoes = [...(c.condicoes || []), {
       id: 'x-' + norm(nome).replace(/\W+/g, '-'), nome, cor: 'neutro', icone: '◆',
       acao: num('cc-acao'), dados: num('cc-dados'), defesa: num('cc-defesa'),
-      porRodada: num('cc-rodada'), nota: nInp('cc-nota').value,
+      porSeisTicks: num('cc-seis-ticks'), nota: nInp('cc-nota').value,
     }];
     nInp('cc-nome').value = '';
     await ctx.registrar(`${c.nome}: ${nome} (condição caseira).`, pub(`${c.nome}: ${nome}.`));
