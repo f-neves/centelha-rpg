@@ -1740,3 +1740,75 @@ ficha:**
 `mesa-ficha` (`scripts/mapa-cobertura.mjs:53`).
 
 **O aviso da ficha (`:1452`) continua**, e passa a dizer a consequência em vez de só o requisito.
+
+---
+
+## M-31 · a lista "arma × armadura" passa a mostrar só a armadura
+
+Decidido em 15/09/2026. **A pergunta original era de onde saíam dois pontos; a medição achou um
+segundo erro, pior, na mesma lista.**
+
+### O ORIGINAL
+
+**`src/content/chapters/combate.md:113`**, a regra:
+
+> **Absorção natural:** **Vigor + Centelha** contra o **Impacto** (o corpo e a fagulha amortecem
+> a pancada); **só a Centelha** contra os letais (Cortante e Perfurante): a carne nua não para o
+> fio nem a ponta, apenas a dureza sobre-humana da **Centelha** o faz.
+
+**`src/content/chapters/armas-e-armaduras.md:151-153`**, três marcadores da MESMA lista:
+
+> - **Placa completa × Corte** = 8 de Absorção (**10 no cavaleiro, com o corpo**) …
+> - **Placa × Perfurante nível 0–2** … = **resvala**
+> - **Placa × Impacto** (maça, martelo) = **só 4 de Absorção**: o malho **passa** …
+
+**`src/lib/calc.ts:157-159`**, o código, que concorda com a regra e não com o exemplo:
+
+```ts
+export function soakNatural(vigor: number, cat: Modo | SoakCat) {
+  return cat === 'impacto' ? vigor : 0;
+}
+```
+
+### A INCONSISTÊNCIA
+
+**1. Os "2 pontos do corpo" não vêm do corpo.** `armaduras.json` dá `corte: 8` à Placa completa e
+`regras.dano.centelhaNoSoak` vale **1**, então os 10 são `8 + Centelha 2`. O exemplo supõe um
+cavaleiro de **Centelha 2 sem dizer**, e chama isso de "o corpo", que é a única palavra que a
+regra da linha 113 nega explicitamente: contra Corte o corpo dá **zero**.
+
+**2. E o erro maior está dois marcadores abaixo.** O de Corte **soma** a absorção natural; o de
+Impacto **não soma nada**. Mas Impacto é justamente o modo em que o corpo entra (`Vigor +
+Centelha`): o mesmo cavaleiro, com Vigor 3, absorve **4 + 3 + 2 = 9** de Impacto, não 4.
+
+**A lista adiciona o corpo na linha em que ele não existe e o esquece na linha em que ele é o
+maior pedaço.** E isso sustenta uma conclusão: o marcador do Impacto existe para dizer *"o malho
+**passa**, é a via contra placa"*, com um número que subestima a defesa em mais do dobro.
+
+### A DECISÃO
+
+**As cinco linhas passam a mostrar só a absorção da ARMADURA** (Corte 8, Impacto 4, Perfuração
+4), e uma frase acima da lista lembra que a Absorção natural soma por cima, com a régua de qual
+modo recebe o quê.
+
+A lista é sobre arma contra **armadura**; o corpo é outra parcela, e misturar as duas numa linha
+sim e noutra não foi o que produziu os dois defeitos. Os números passam a sair direto de
+`armaduras.json`, onde **um portão pode prendê-los**, e o cavaleiro fantasma de Centelha 2 some.
+
+**O que se perde, e foi dito à mesa:** era a única linha do livro que mostrava quanto um cavaleiro
+de verdade aguenta. E a conclusão *"o malho passa"* fica apoiada só no 8 contra 4, sem o corpo,
+que é justamente o que torna o malho **menos** decisivo do que a frase sugere. **Se a frase do
+malho precisar de ajuste, ele é consequência desta decisão e não uma decisão nova.**
+
+### O QUE ISTO MANDA FAZER
+
+1. **As cinco linhas de `armas-e-armaduras.md:151-155`**, com os números da peça.
+2. **A frase de cabeçalho da lista**, dizendo que a natural soma por cima.
+3. **Um portão que prenda os números da lista a `armaduras.json`**, agora que eles são
+   derriváveis. É o mesmo molde do portão que a rodada 69 fez para o custo de raça.
+
+### ACHADO DE PASSAGEM, para consertar junto
+
+**`src/data/regras.json → dano.nota` tem um travessão** (*"três Absorções: Impacto, Corte e
+Perfuração — o Perfurante usa…"*). O portão automático só cobre `src/content/**` por decisão do
+humano, então dado e comentário dependem da conferência à mão, e esta é uma.
