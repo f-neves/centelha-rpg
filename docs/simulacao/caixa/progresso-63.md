@@ -97,3 +97,7 @@ Duas frentes: os três simuladores mortos (`sim-defesas`, `sim-caps`, `sim-grupo
   14 Ticks NAO acumula. Medi com `defesaPerdida` Tick a Tick: **-2 constante** do 0 ao 13 e **-4**
   no Tick do Golpe, igual ao ciclo de 6. O capitulo passou a dizer o numero em vez de descrever a
   sensacao, e o achado ficou como `A-22b`.
+- **03:15** · fim. As duas frentes publicadas: `0e780a6` (os tres simuladores) e `8d7d776` (o
+  `M-13`). `git rev-list --count origin/main..HEAD` = 0 nos dois. `validate` verde, `build` verde
+  (107 paginas), `smoke` com 17 de 18 e o 18o falhando igual sem a minha mudanca. Arvore limpa
+  fora o `jogador-novo-prompt-executor.md`, que nao e meu e eu nao encostei.
