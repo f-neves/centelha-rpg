@@ -53,3 +53,62 @@ MEDIDO e não construído.
     dão a mesma resposta, e a asserção mediria nada.
   Verde com tudo no lugar, e os dois arquivos conferidos byte a byte contra a cópia de antes do
   ensaio (`diff` vazio nos dois).
+- **16:20** · `npm run validate` verde, lido pelo código de saída e não pela última linha
+  (`EXIT=0`, sem cano na frente da guarda).
+- **16:21** · itens 1 a 3 no ar: `6221b4a`, empurrado. `origin/main..HEAD` = 0, conferido, e sem
+  coautoria nenhuma na mensagem (conferido por `grep` na mensagem já commitada).
+- **16:21** · começa o item 4, que é MEDIÇÃO e não construção.
+- **16:22** · varridos os pontos de escrita da Vida, contados por mim e não herdados de contagem
+  de ninguém. O escopo da varredura, dito em voz alta: `src/pages/mesa/grid.astro`,
+  `src/lib/artes-grid-mesa.ts` e os arquivos de `supabase/`, por `pv_atual`.
+
+## ITEM 4 · o custo de ensinar o limite à mesa, MEDIDO
+
+**Escopo da medição:** os pontos que ESCREVEM `pv_atual`, no cliente e no servidor. Não olhei o
+que só LÊ (a barra de Vida, a fila, o oráculo), porque ler Vida negativa já funciona: `tierDe`
+(`src/lib/mesa-core.ts`) devolve `Caído` para qualquer valor ≤ 0 e `pctDe` prende a barra em 0.
+
+### Os SEIS pontos que BAIXAM a Vida
+
+| onde | o piso de hoje | `pv_max` à mão? |
+|---|---|---|
+| `grid.astro:11175` · `baixarVida`, ramo do MESTRE | `Math.max(0, …)` | sim, usado duas linhas abaixo |
+| `grid.astro:11188` · `baixarVida`, eco local do JOGADOR | `Math.max(0, …)` | **não**: a view esconde a Vida do inimigo e `pv_max` chega nulo |
+| `supabase/migracao-22.sql:146` · `jogador_dano` | `greatest(0, …)` **no servidor** | sim, é coluna da mesma tabela |
+| `artes-grid-mesa.ts:1872` · `morder` | `Math.max(0, …)`, escrita crua por `ctx.SB` | sim |
+| `artes-grid-mesa.ts:1906` · dano de Efeito pela outra via | `Math.max(0, …)`, escrita crua | sim |
+| `artes-grid-mesa.ts:2104` · condição contínua (o Sangramento) | **nenhum** | sim |
+
+**O sexto é o achado da medição, e ele contradiz o que eu mesma escrevi na rodada 74** ("a mesa
+não implementa morte nenhuma", que continua verdadeiro, e "tem um `pv_atual` só", idem): o tique
+da condição contínua chama `gravarVida(c.id, −total)`, e `curarPv` (`grid.astro:2682`) só tem
+TETO (`Math.min(pv_max, …)`), nunca piso. **O Sangramento já escreve Vida negativa hoje**, sem
+que nada no desenho tenha decidido isso. É o único caminho que atravessa o zero, e atravessa por
+acidente.
+
+### Os QUATRO pontos que SOBEM a Vida, e é onde a morte não pode se desfazer
+
+`curarPv` (`grid.astro:2682`, menu do mestre e Artes de cura), `curarAlvo`
+(`artes-grid-mesa.ts:1921`, que chama o primeiro), `devolverVida` (`grid.astro:11626`, o desfazer,
+que escreve valor absoluto cru) e `jogador_muda_peca` (`supabase/migracao-22.sql:123`, que escreve
+o `pv_atual` que o cliente mandar, sem piso e sem teto). Nenhum dos quatro tem noção de morto:
+curar um morto o traz de volta em silêncio.
+
+### Coluna nova? NÃO. Migração? UMA, e de uma linha
+
+- **Coluna:** nenhuma. `pv_max` já existe (`supabase/migracao-2.sql:135`) e `pv_atual` é
+  `integer` **sem check constraint** (`:136`), então Vida negativa já é armazenável hoje. O limite
+  deriva de `pv_max` e não precisa ser guardado.
+- **Migração:** uma, e pequena. O piso `greatest(0, …)` do `jogador_dano` mora no SERVIDOR: é um
+  `create or replace function` com uma linha alterada. Enquanto ele estiver lá, **nenhum golpe de
+  jogador leva ninguém abaixo de zero**, e a régua nova simplesmente não existe do lado deles.
+- **Cliente:** cinco pisos a trocar, e nenhum deles é o mesmo gesto. Quatro viram
+  `Math.max(limite, …)` com o limite derivado de `pv_max`; o quinto (`grid.astro:11188`) não
+  tem `pv_max` para derivar, e o caminho honesto ali é não adivinhar, deixando o número vir da
+  campainha depois da RPC.
+
+### O que NÃO está medido, porque é decisão e não conta
+
+Quem MARCA a morte. A condição `morto` existe em `condicoes.json` e o mestre a põe à mão; marcar
+sozinho no caminho do dano é gancho novo, e ninguém decidiu se a mesa deve fazer isso ou se a
+morte é anúncio do mestre. **Não construí nada disto.**
