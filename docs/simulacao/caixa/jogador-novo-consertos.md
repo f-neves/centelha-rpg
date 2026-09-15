@@ -76,6 +76,21 @@ não tropeça nisso.
 
 ### C-01 (45) · todo link de HTML cru perde o `/centelha-rpg`
 
+> **PARADO NA RODADA 60** · `fc76f73`. **O conserto preferido não conserta**, e isto foi medido
+> no HTML GERADO e com controle negativo, não lido no código: escrevi o ramo `raw` no plugin,
+> buildei, e sobraram os mesmos **12** links sem prefixo no `dist/`; apaguei o `.astro/` e refiz,
+> os mesmos 12; guardei a minha mudança com `git stash push -- astro.config.mjs`, buildei com o
+> plugin ANTIGO, e deu **os mesmos 12**. A mudança não move o número em direção nenhuma, e por
+> isso foi desfeita em vez de ficar no repositório sem efeito.
+> **O que o diagnóstico estreita:** o plugin FUNCIONA para link em sintaxe markdown
+> (`[Ficha](/ficha)`, `criacao-de-personagem.md:14`, sai prefixado no `dist/`). Quem ele não
+> alcança é o HTML cru dos callouts. Escolher entre insistir no plugin e trocar os `href` à mão
+> é decisão do Arquiteto, e ela está com ele.
+> **O que ENTROU deste item:** só `src/components/FichaSkeleton.astro:125`, que não é markdown e
+> nunca poderia depender do plugin. Passou a usar `import.meta.env.BASE_URL`, e está prefixado no
+> `dist/`. **Restam 12 dos 15**, e não 14: os de `criacao-de-personagem.md:10` e `combate.md:251`
+> já saíam prefixados no HTML gerado antes de qualquer mudança minha. Ver o achado A-04 no fim.
+
 `astro.config.mjs:69`, `rehypeBaseLinks`, só visita nós com `node.tagName === 'a'`, ou
 seja, links escritos em **sintaxe markdown**. Os quinze links abaixo estão escritos como
 **HTML cru** dentro de `<div class="callout">` e `<p class="muted">`, nunca viram nó `a`
@@ -122,6 +137,11 @@ comprovadamente a velha.
 
 ### C-02 (22, 23, 24, 25, 119) · os tetos da criação, duas vezes na mesma página
 
+> **FEITO** `fc76f73`. Escolhida a PRIMEIRA das duas saídas que o item oferece: reescrever 62 e
+> 64 com os números do JSON, e não apagar a seção. Por isso a conferência escrita abaixo não
+> serve como está (ela pressupõe a segunda saída); a que vale é
+> `grep -c "Atributo máximo \*\*4\*\*"` = 0. Ver A-05.
+
 `src/content/chapters/criacao-de-personagem.md:62`:
 "Atributo máximo **4**; Habilidade máxima **3**; Centelha máxima **2**", e a linha 64
 dá pico "um único Atributo a 5 e uma única Habilidade primária a 4".
@@ -140,6 +160,12 @@ e `capFor` devolve teto 6 para Atributo, Habilidade, Virtude e Centelha.
 
 ### C-03 (73) · a Centelha custa XP ou não, e as duas respostas estão no mesmo JSON
 
+> **FEITO** `fc76f73`, nos dois lados (`centelhaGate` e o callout do `centelha.md`). A frase do
+> JSON tinha um travessão e ele saiu junto. **A conferência abaixo pega um falso positivo**:
+> `grep -rn "paga o custo" src/` casa também com um comentário de código sem relação
+> (`artes-grid-mesa.ts`, "o ganho visual não paga o custo"). A que vale é
+> `grep -rn "O XP paga o custo" src/` = 0.
+
 `src/data/regras.json → xp.centelha` = `{"tipo": "gratis", ...}` com a nota "Não custa XP.
 O tier de Centelha é concedido pelo Mestre".
 `src/data/regras.json → centelhaGate` = "A Centelha só aumenta com permissão do Mestre...
@@ -152,6 +178,11 @@ Conserto: apagar "O XP paga o custo (×10), mas" de `centelhaGate`. O capítulo
 **Confere:** `grep -rn "paga o custo" src/` = 0.
 
 ### C-04 (65) · duas tabelas de ferimento com faixas diferentes, no mesmo capítulo
+
+> **FEITO** `fc76f73`. As cinco faixas do `regras.json` entraram. **Não inventei cadência nova**:
+> Machucado e Ferido ficaram os dois em "a cada 3 dias", que é exatamente o que a linha antiga
+> dizia quando os juntava numa só. Dar ao Machucado uma cadência própria seria decidir regra de
+> jogo, e o item não pede isso.
 
 `src/content/chapters/vida-ferimentos-cura.md:76-78`:
 "Machucado / Ferido (50–75%)", "Grave (25–50%)", "Crítico (<25%)".
@@ -167,6 +198,9 @@ que são cinco e não três.
 
 ### C-05 (66) · o Bram tem dois PV
 
+> **FEITO** `fc76f73`. Mudou a conta inteira do exemplo e não só o PV: 34 de PV, 28 de dano,
+> restam **6** (18%), e a morte exigiria **34** de Letal. A faixa continua Grave.
+
 `src/content/chapters/vida-ferimentos-cura.md:35`: "Bram tem **PV 37**".
 Contra `criacao-de-personagem.md:157`, onde o Bram tem Vigor 3 e **PV 34**.
 Manda `regras.json → derivados.pv` (`base 25`, `vigorMult 3`) com `calc.ts:30`:
@@ -175,6 +209,11 @@ conta dele (28 de dano) muda de faixa de ferimento por causa disso.
 **Confere:** `grep -n "PV 37" src/content/chapters/vida-ferimentos-cura.md` = 0.
 
 ### C-06 (112, 94) · anão, gnomo e halfling: metade ou dois terços
+
+> **FEITO** `fc76f73`, nos quatro lugares, com a frase do `racas.json`. **A conferência abaixo
+> está errada e eu não a segui ao pé da letra**: `grep "pela metade" racas.md` = 0 apagaria
+> também a linha 109, que fala do "meio-orc temperado pela metade humana" e nada tem a ver com
+> deslocamento. A que vale é `grep -c "deslocamento pela metade" racas.md` = 0. Ver A-05.
 
 `src/content/chapters/racas.md:50`, `:73` e `:85`, as três idênticas:
 "**deslocamento pela metade** da velocidade de um humano".
@@ -247,6 +286,16 @@ nível que está comprando, e não a soma dos de baixo".
 
 ### C-12 (34) · as quatro linhas de XP do Bram não saem da função de custo
 
+> **PARADO NA RODADA 60**, e o motivo é o que o próprio item já nomeia: as quatro linhas
+> dependem do **M-02** (o Bram tem sete Artes ou oito?), que ninguém decidiu. Parar o item e
+> seguir foi a instrução.
+> **O que a rodada 60 entregou aqui:** o `C-49` de pé, então as quatro linhas agora saem de um
+> conferidor e não de conta à mão. Ele confirma os quatro números deste item por caminho
+> independente: Atributos **415**, Habilidades **222**, Virtudes **74**, Artes **745** para as
+> sete listadas. Os controles também batem (Kael 375 e 201, Sora 460, Veil 420).
+> **E ele achou duas linhas do Bram que este item não lista:** Especialidades (a régua dá 72, o
+> capítulo publica 48) e Secundárias (56 contra 66). Ver A-02.
+
 Refeito com `regras.json → xp` e `calc.ts:228-236`:
 
 | Linha do Bram | A tabela diz | A função dá |
@@ -268,6 +317,18 @@ sete Artes ou oito?**
 baterem com a tabela do capítulo.
 
 ### C-13 (97, 141, 86) · o Kael é um personagem diferente em cada capítulo
+
+> **METADE FEITA** `fc76f73`, **metade PARADA**. Feita a parte que é número:
+> · `coracao-do-sistema.md` · o Atletismo virou 3, e com ele a conta inteira, porque a soma passa
+>   de 5 para 6 e a régua de dados manda `3d6` em vez de `2d6+2`. **O "passado de 16" da mesma
+>   linha NÃO foi tocado**: é o `C-14`, e não estava no escopo desta rodada.
+> · `defesas.md` · o exemplo tinha SEIS traços errados e agora sai da ficha do XVIII: Esquiva
+>   **17**, Social **7**, Mental **13**, os três batendo com os derivados publicados no capítulo
+>   e com o `cost-examples.mjs`.
+> **Parada a parte que é edição:** os três exemplos que dão ARMA ao Kael (espada em `combate.md`,
+> martelo na Investida, espada longa em `quase-acerto.md`). Não é número: é trocar o personagem
+> do exemplo ou dar-lhe uma perícia que ele não tem, e o item oferece as duas saídas sem
+> escolher. Decisão do Arquiteto.
 
 A ficha dele está em `criacao-de-personagem.md:88-97` e é a única fonte que declara os
 números (e as contas dela fecham, ver C-12). Contra ela:
@@ -705,6 +766,19 @@ Conserto: uma linha de rodapé em cada ("a régua continua na mesma proporção"
 
 ### C-49 (34) · `scripts/cost-examples.mjs` devolve NaN em todas as linhas de XP
 
+> **FEITO** `fc76f73`, e ele saiu maior do que este item descreve. Ver A-01 e A-03.
+> A causa do `NaN` era única: o script lia um campo chamado "valor" que a tabela
+> `regras.json → xp` deixou de ter (hoje cada entrada é `{tipo, base, mult, piso}`). **E ele
+> deixou de ter régua própria**: agora empacota o `calc.ts` com o esbuild e chama as MESMAS
+> funções que a ficha usa, então não há mais uma segunda cópia da regra para divergir · era essa
+> cópia que o tinha quebrado em silêncio.
+> Os quatro controles deste documento passaram a sair dele: Kael Atributos 375 e Habilidades 201,
+> Sora Atributos 460, Veil Artes 420.
+> **Ele NÃO é portão, de propósito:** sai com código 0 mesmo divergindo, porque hoje diverge de
+> verdade (as linhas do Bram, o `C-12`, esperam o `M-02`). Pendurá-lo no `validate` antes disso o
+> faria nascer vermelho e ensinaria a ignorá-lo. A troca é de uma linha e está dita no cabeçalho
+> dele.
+
 O script se anuncia como "recusteia os 4 builds-exemplo pela tabela REAL (regras.json)".
 É exatamente o conferidor do C-12. Rodei (ele só imprime, não grava):
 
@@ -967,3 +1041,95 @@ Quando isso estiver feito, eu releio na mesma ordem da Fase 1, pelo site publica
 digo o que sobrou. **O que eu não consigo conferir sozinho** são as decisões de mesa: se
 uma resposta entrar no dado, ela vira regra nova e eu a leio como jogador pela primeira
 vez, que é exatamente o teste que vale.
+
+---
+
+# Achados da execução · rodada 60 (`fc76f73`), escritos e NÃO consertados
+
+**Esta seção é da Executora, e existe para a releitura não perder valor.** Nada aqui foi
+consertado de passagem: é o que apareceu no caminho dos itens executados, registrado no
+fim para ficar ao lado da lista original em vez de dentro dela.
+
+**O escopo da rodada 60 foi:** `C-49` primeiro, depois `C-02`, `C-01`, `C-03`, `C-04`,
+`C-05`, `C-06`, `C-12`, `C-13`. Cada um está marcado no próprio item acima.
+
+### A-01 · o `C-49` era maior, e o pedaço a mais era obrigatório
+
+Tirar o `NaN` não bastava: **os quatro `BUILDS` dentro do script também estavam velhos.** O
+Kael de lá tinha Percepção 5 e Centelha 2; o do capítulo XVIII tem 6 e 3. Um script sem
+`NaN` e com personagens que não existem é pior que um com `NaN`, porque parece que confere.
+Os quatro foram refeitos a partir das fichas do capítulo. **Os orçamentos também**: o script
+trazia 1400/1800/2400 e o `regras.json` traz 1500/2000/2600, que é o que este documento já
+tinha registrado.
+
+### A-02 · duas linhas do Bram que o `C-12` não lista
+
+Com o conferidor de pé, o Bram diverge em **seis** linhas e não em quatro. Além das quatro
+do `C-12`:
+
+| Linha | A régua dá | O capítulo publica |
+|---|---|---|
+| Especialidades | 72 | 48 |
+| Secundárias | 56 | 66 |
+
+A de Especialidades supõe seis primárias de nível 1, que é a leitura que faz Kael (36), Sora
+(60) e Veil (60) baterem. A de Secundárias é mais fraca porque **o capítulo dá só a contagem
+("oito"), sem os níveis**, então a entrada do script é suposição minha e está marcada como
+tal na saída dele.
+
+### A-03 · a linha de Técnicas dos quatro exemplos não é derivável de nada no dado
+
+**É o buraco maior que a rodada achou, e ele não tem item.** O capítulo publica uma contagem
+e os caminhos ("29, de Olho de Águia, Sombra e Vento, níveis 1 a 3"), e não a lista. Testei a
+única hipótese que fecharia (somar em `tecnicas.json` as Técnicas desses caminhos, nesses
+níveis) e ela cai nos quatro, em proporções diferentes:
+
+| Exemplo | Derivado dos caminhos | Publicado |
+|---|---|---|
+| Kael | 19 Técnicas · 285 XP | 29 · 450 |
+| Sora | 19 · 270 | 35 · 590 |
+| Veil | 23 · 375 | 34 · 615 |
+| Bram | 6 · 60 | 12 · 120 |
+
+Não é fator constante, então não é régua nenhuma. **O conferidor marca a linha como NÃO
+CONFERÍVEL, com o motivo**, em vez de fabricar uma lista que batesse: somar o número
+publicado ali faria o total se autoconfirmar. Enquanto isso não fechar, **o TOTAL de cada
+exemplo não é conferível**, porque as Técnicas são a maior parcela dos quatro.
+
+### A-04 · a quarta correção ao relatório anterior: os quinze links são doze
+
+Este documento já traz três correções ao próprio relatório (a linha do `[object Object]`, os
+quinze editáveis à mão, o `efeitos.json` preservando o que é escrito à mão). **Esta é a
+quarta, e ela é sobre o disco contra a citação.**
+
+A lista do `C-01` tem quinze linhas de fonte, e está certa sobre o fonte. **No HTML GERADO,
+porém, só doze saem sem prefixo**: os de `criacao-de-personagem.md:10` (`/ficha`) e
+`combate.md:251` (`/regras/folego`) já saíam prefixados no `dist/` **antes de qualquer
+mudança**, conferido com o plugin original. O décimo quinto,
+`src/components/FichaSkeleton.astro:125`, não é markdown e foi consertado à mão nesta rodada.
+
+**A régua que isto sugere para a releitura:** para link, a varredura no fonte e a varredura
+no HTML gerado respondem perguntas diferentes, e é a segunda que diz o que dá 404.
+
+### A-05 · duas conferências deste documento não fazem o que prometem
+
+Não é defeito de conteúdo, é do comando escrito na linha `Confere`, e registro porque a
+releitura vai rodá-los:
+
+- **`C-06`** · `grep -rn "pela metade" src/content/chapters/racas.md` = 0 exige apagar também
+  a linha 109, que fala do "meio-orc temperado **pela metade** humana" e nada tem a ver com
+  deslocamento. O comando certo é `grep -c "deslocamento pela metade"`.
+- **`C-03`** · `grep -rn "paga o custo" src/` = 0 casa também com um comentário de código sem
+  relação nenhuma (`artes-grid-mesa.ts`, "o ganho visual não paga o custo"). O certo é
+  `grep -rn "O XP paga o custo" src/`.
+
+E o **`C-02`** não é erro: a conferência dele pressupõe a segunda das duas saídas que o item
+oferece (apagar a seção). Executada a primeira (reescrever), o comando que vale é
+`grep -c "Atributo máximo \*\*4\*\*"`.
+
+### A-06 · nota de ambiente, para quem for conferir daqui
+
+O `git` deste ambiente passa por um hook que **encolhe a saída**, então zero vindo de
+varredura sobre `git diff` é o zero ambíguo com outra roupa. As conferências desta rodada
+foram feitas lendo o ARQUIVO, e a de travessão foi feita chamando o `git` direto do Python,
+fora do hook: 235 linhas adicionadas, zero travessões.

@@ -101,3 +101,6 @@ Escopo: `C-49` primeiro (a ferramenta), depois `C-02`, `C-01`, `C-03`, `C-04`, `
   canal, não do descuido:** mensagem de commit com crase não vai por `-m` neste ambiente.
 - **23:24** · TERMINADO e PUBLICADO. Commit `fc76f73`, onze arquivos, e
   `git rev-list --count origin/main..HEAD` deu **0**.
+- **23:26** · REABERTO para as cinco adições que o Arquiteto mandou depois: marcar `FEITO <sha>`
+  dentro do próprio `jogador-novo-consertos.md`, sem apagar nem reorganizar nada, e registrar no
+  FIM dele o que eu achei de passagem em vez de deixar só no relato de chat.
