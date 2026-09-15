@@ -11,7 +11,7 @@ Três regras que o mantêm útil:
   de próprio é o que veio do chat e não mora em arquivo nenhum.** E apontar é dar nome,
   caminho e para que serve, nunca descrever o conteúdo do outro arquivo (`ARQUITETO.md §5.5`).
 
-Última reescrita: **14/09/2026**.
+Última reescrita: **15/09/2026**.
 
 ---
 
@@ -127,35 +127,69 @@ verdade e trazer a lista do que incomodou. → `PLANO.md` §9.
 **Regra permanente da fase:** *nenhuma fase termina em documento, toda fase termina com coisa
 funcionando na mesa.*
 
-## A rodada corrente
+## A frente corrente: o JOGADOR NOVO, e ela não é fase
 
-**Últimas fechadas, as quatro em 12/09/2026:** a **54** (`L85`, a régua de empurrão das Artes,
-veredito `873b772`), a **55** (`L86a`, a Arte `Mão Firme` curando no tabuleiro, código `57f6bcb`,
-veredito `3cc14b5`, fechamento `f0d8e0b`), a **56** (`acelerar-a-cura` curando por nível da Arte,
-código `65d9b7a`, veredito PROCEDE em `b82ae80`, CORRIGE em `3eeb8fd`) e a **57** (`L64`, a
-separação de sentinela e magnitude, código `972d11b`, veredito `88a5cfe`, fechamento `4b11929`).
-O que cada uma entregou e o que deixou de resíduo mora no `Pendencias.md`, nos itens de mesmo nome.
+**Uma leitura do livro inteiro, feita como quem nunca jogou**, que virou duas listas: os `C-nn`,
+consertos de texto e de dado, e os `M-nn`, lugares onde a REGRA NÃO EXISTE e por isso vão à mesa.
+Os três arquivos dela, em `docs/simulacao/caixa/`: `jogador-novo-consertos.md` (os itens e a
+seção PARA A MESA), `jogador-novo-decisoes.md` (as respostas do humano, uma entrada por decisão,
+com o que cada uma manda fazer) e os `progresso-NN.md` de cada rodada.
+
+**Em 15/09/2026 a frente está na rodada 75**, e toda decisão de mesa já tomada tem commit de
+implementação, conferido um a um pelo `git log`. O que continua aberto são as perguntas `M` que
+ninguém levou à mesa ainda, listadas na seção PARA A MESA daquele arquivo.
+
+**As últimas decisões, todas de 15/09/2026:**
+
+- **M-08** (`ae515c0`) · a escala de Centelha vai a 12 e o teto do jogador fica em 6, escrito e
+  não presumido. Fica aberto nomear os degraus 7 a 12, que é lore.
+- **M-21** (`206fcef`) · dano é dano, cura é cura, cai-se em PV 0 ou menos, e **morre-se ao perder
+  além do zero até metade do PV máximo**. As duas trilhas Impacto/Letal acabaram.
+- **M-21b** (`19afbbc`) · as quatro que a medição abriu: a morte continua sendo marcada só pelo
+  mestre, o `inquebrantavel` passa a dizer que o Impacto derruba e para em zero, a cláusula do
+  Letal cai da Arte Vida (que passa a curar abaixo de zero) e passar do limite trava as quatro
+  entradas de cura.
+- **M-21c** (`e9b4c95`) · **o arredondamento do limite depende da Centelha**: sem Centelha para
+  baixo, com Centelha para cima. Só muda em PV ímpar.
+- **M-24** (`2ac58ef`) · a **Investida é uma Corrida que termina em ataque**, com a escada inteira,
+  a corrida contendo o Preparo, o Tick do golpe sendo o encontro, Defesa −4 e mínimo de 5 metros.
+
+**No ar pela rodada 75** (`206fcef..8d2787b`): o bloco `morte` no `regras.json` com o limite
+derivado, o capítulo `vida-ferimentos-cura.md` reescrito, a condição `morrendo` e as notas de
+Sangramento sem a palavra Letal, e um portão dentro do `validate-data.mjs` que refaz a conta em
+cima de cada exemplo publicado. **Em revisão**, ancorada em `0b81484`.
+
+**A rodada seguinte já tem escopo e não abre antes do veredito:** implementar a M-21c, a M-21b e a
+M-24.
+
+**Duas coisas que a rodada 75 mediu e que valem fora dela:**
+
+- **o Sangramento já escreve Vida negativa hoje**, por acidente: o tique da condição contínua
+  chama `gravarVida` sem piso e `curarPv` (`src/pages/mesa/grid.astro:2682`) só tem teto. É o único caminho do
+  projeto que atravessa o zero, e ninguém o desenhou assim;
+- **o servidor não conhece Centelha.** A tabela `combatentes` (`supabase/migracao-2.sql:128-142`)
+  não tem a coluna, e quem sabe é o cliente, que monta a peça com `centelha` (`src/lib/combate-resumo.ts:161`). Cobra
+  resposta quando a trava da cura chegar ao RPC.
+
+## A frente do Grid, que a do jogador novo interrompeu
+
+**Últimas rodadas fechadas, as quatro em 12/09/2026:** a **54** (`L85`, a régua de empurrão das
+Artes, veredito `873b772`), a **55** (`L86a`, a Arte `Mão Firme` curando no tabuleiro, código
+`57f6bcb`, veredito `3cc14b5`, fechamento `f0d8e0b`), a **56** (`acelerar-a-cura` curando por
+nível da Arte, código `65d9b7a`, veredito PROCEDE em `b82ae80`, CORRIGE em `3eeb8fd`) e a **57**
+(`L64`, a separação de sentinela e magnitude, código `972d11b`, veredito `88a5cfe`, fechamento
+`4b11929`). O que cada uma entregou mora no `Pendencias.md`, nos itens de mesmo nome.
 
 **A régua nova que a 56 escreveu, e ela vale para toda revisão daqui pra frente:**
 `CONTRATO-REVISORA.md §8` · **ESCALA e CORRIGE se separam pela PROMESSA, não pela
 alcançabilidade.** Achado que contradiz o que a rodada afirma é conserto da rodada, mesmo sem prova
 de que alguém chega lá jogando; achado sobre código que a rodada não tocou nem prometeu é ESCALA.
 
-**O `L86b` está quase fechado.** Das três Artes, **duas curam na mesa**: o `acelerar-a-cura` desde a
-migração 38, e o `maos-sobre-a-multidao` desde que a cura imediata em área ganhou caminho próprio no
-`planoDaSaida`. A terceira, `cura-guardada`, tem o chão de pé (migração 39) e nenhum gatilho. **E os
-três parâmetros que prometiam Mana na nota passaram a cobrá-la.**
-
-### O PRÓXIMO PASSO, em uma linha
-
-**As quatro rodadas que as decisões de 13/09/2026 abriram estão ENTREGUES e no ar**, e o que sobra
-do `L86b` é o gatilho `armadilha`, que é desenho de regra e não implementação: ele é família de
-QUATRO Efeitos (`brasa-retardada`, `semente-adormecida`, `salvaguarda` e `cura-guardada`) que
-disparam por condições diferentes, e nenhuma delas está decidida.
-
-**Para a `cura-guardada` especificamente**, com o chão já de pé (migração 39): falta o disparo
-automático na incapacitação (gancho no caminho do dano), o disparo pela mão do alvo (ação de jogo que
-não existe) e a trava de uma cura presa por alvo. → **L86b**.
+**O que sobra do `L86b`** é o gatilho `armadilha`, que é desenho de regra e não implementação: ele
+é família de QUATRO Efeitos (`brasa-retardada`, `semente-adormecida`, `salvaguarda` e
+`cura-guardada`) que disparam por condições diferentes, e nenhuma delas está decidida. Para a
+`cura-guardada`, com o chão de pé (migração 39): falta o disparo automático na incapacitação, o
+disparo pela mão do alvo e a trava de uma cura presa por alvo. → **L86b**.
 
 **Nenhuma rodada nova abre por iniciativa.**
 
