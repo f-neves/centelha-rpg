@@ -36,7 +36,7 @@ const ALLOT = { 0: [], 1: [1, 1], 2: [2, 1], 3: [2, 1, 1], 4: [2, 2, 1, 1], 5: [
 const maxBoost = (c) => (ALLOT[c].length ? Math.max(...ALLOT[c]) : 0);
 const skillBoosts = (c) => ALLOT[c].flatMap((x) => [x, x]).sort((a, b) => b - a);
 
-function maxDuelista(c, arma = 'espada-curta', armadura = 'couro', escudo = 'broquel') {
+export function maxDuelista(c, arma = 'espada-curta', armadura = 'couro', escudo = 'broquel') {
   const sk = skillBoosts(c), sorted = [...ALLOT[c]].sort((a, b) => b - a);
   return {
     centelha: c, des: 5 + maxBoost(c), vigor: 5 + (sorted[1] || 0), forca: 5 + (sorted[2] || 0),
@@ -44,7 +44,7 @@ function maxDuelista(c, arma = 'espada-curta', armadura = 'couro', escudo = 'bro
     espWeapon: 1, espEsquiva: 1, arma, armadura, escudo,
   };
 }
-const pvMax = (b) => regras.derivados.pv.base + b.vigor * regras.derivados.pv.vigorMult;
+export const pvMax = (b) => regras.derivados.pv.base + b.vigor * regras.derivados.pv.vigorMult;
 
 function defesaValor(b, centTerm) {
   const arm = ARM[b.armadura], esc = ESC[b.escudo], wpn = ARMAS[b.arma];
@@ -56,7 +56,7 @@ function defesaValor(b, centTerm) {
 function ferimento(hp, hpM) { const p = hp <= 0 ? 0 : hp / hpM * 100; for (const f of regras.ferimentos) if (p >= f.minPct && p <= f.maxPct) return f; return regras.ferimentos.at(-1); }
 
 // um golpe de att em def. cfg = { defTerm:fn, qaC, planoB }. extraDice = combo do chefe.
-function golpe(att, def, cfg, { flank = 0, extraDice = 0, atkHP, defHP } = {}) {
+export function golpe(att, def, cfg, { flank = 0, extraDice = 0, atkHP, defHP } = {}) {
   const wpn = ARMAS[att.arma], armDef = ARM[def.armadura];
   const soma = att.des + att.weaponSkill;
   let dados = fl(soma / 2) + extraDice;
@@ -80,11 +80,24 @@ function golpe(att, def, cfg, { flank = 0, extraDice = 0, atkHP, defHP } = {}) {
 }
 
 // um combate grupo(nGrp × Clo) × 1 chefe(Chi). retorna true se o GRUPO vence.
-function combate(grpProto, chefeProto, cfg, { nGrp = 3, flankOn = true, bossCombo = 0, bossTargets = 1, bossVelocidadeMult = 1 } = {}) {
-  const grp = Array.from({ length: nGrp }, () => ({ b: grpProto, hp: pvMax(grpProto), next: 0 }));
+//
+// A MORTE ABAIXO DE ZERO (`M-21`), instrumentada na rodada 74 para MEDIR e não
+// para mudar: quem chega a 0 fica CAÍDO e sai da briga, e só MORRE se continuar
+// perdendo vida além do zero até o `limiteMorte`. Com `limiteMorte: 0`, que é o
+// padrão, caío e morto são a mesma coisa e o laço se comporta exatamente como
+// antes desta instrumentação. O relatório de balanço que este arquivo já tinha
+// não passa nenhum dos parâmetros novos.
+//
+// `chefeRemata` diz o que o chefe faz com quem caiu: `true` é rematar (ele
+// continua batendo em quem está no chão), `false` é ignorar e ir para outro
+// alvo, que é o caso em que a janela de socorro existe.
+export function combate(grpProto, chefeProto, cfg, { nGrp = 3, flankOn = true, bossCombo = 0, bossTargets = 1, bossVelocidadeMult = 1, limiteMorte = 0, chefeRemata = true, diario = null } = {}) {
+  const pvG = pvMax(grpProto);
+  const grp = Array.from({ length: nGrp }, () => ({ b: grpProto, hp: pvG, next: 0, caiuEm: null, morreuEm: null }));
   const chefe = { b: chefeProto, hp: pvMax(chefeProto), next: 0 };
   const wGrp = ARMAS[grpProto.arma].ticks;
   const wChefe = Math.max(2, ce(ARMAS[chefeProto.arma].ticks / bossVelocidadeMult));
+  const morto = (g) => g.hp <= -limiteMorte;
   let t = 0;
   while (chefe.hp > 0 && grp.some((g) => g.hp > 0) && t < 800) {
     // próximo a agir
@@ -93,10 +106,18 @@ function combate(grpProto, chefeProto, cfg, { nGrp = 3, flankOn = true, bossComb
     const ator = cands.reduce((a, b) => (a.next <= b.next ? a : b));
     t = ator.next;
     if (ator === chefe) {
-      // chefe foca os bossTargets de menor HP
-      const alvos = [...vivos].sort((a, b) => a.hp - b.hp).slice(0, bossTargets);
+      // chefe foca os bossTargets de menor HP. Quando ele remata, o caído que
+      // ainda não morreu continua na fila de alvos e vem PRIMEIRO, porque é o de
+      // menor HP: é o pior caso para quem quer socorrer.
+      const naMira = chefeRemata
+        ? grp.filter((g) => !morto(g))
+        : vivos;
+      const alvos = [...naMira].sort((a, b) => a.hp - b.hp).slice(0, bossTargets);
       for (const al of alvos) {
+        const antes = al.hp;
         al.hp -= golpe(chefeProto, grpProto, cfg, { flank: 0, extraDice: bossCombo, atkHP: chefe.hp, defHP: al.hp });
+        if (antes > 0 && al.hp <= 0 && al.caiuEm == null) al.caiuEm = t;
+        if (al.morreuEm == null && morto(al)) al.morreuEm = t;
       }
       chefe.next += wChefe;
     } else {
@@ -104,6 +125,17 @@ function combate(grpProto, chefeProto, cfg, { nGrp = 3, flankOn = true, bossComb
       chefe.hp -= golpe(grpProto, chefeProto, cfg, { flank, extraDice: 0, atkHP: ator.hp, defHP: chefe.hp });
       ator.next += wGrp;
     }
+  }
+  // O diário é o que a medição lê, e ele só é preenchido quando alguém o pede.
+  if (diario) {
+    for (const g of grp) {
+      if (g.caiuEm == null) continue;
+      diario.caidos += 1;
+      if (g.morreuEm != null) { diario.mortos += 1; diario.margem.push(g.morreuEm - g.caiuEm); }
+      else diario.sobreviveram += 1;
+    }
+    diario.batalhas += 1;
+    diario.pv = pvG;
   }
   return chefe.hp <= 0 && grp.some((g) => g.hp > 0) ? 'grupo' : (grp.every((g) => g.hp <= 0) ? 'chefe' : 'empate');
 }
@@ -116,6 +148,12 @@ function winGrupo(clo, chi, cfg, opts, N = 4000) {
 }
 
 // ===================== RELATÓRIO =====================
+// SÓ QUANDO ESTE ARQUIVO É O PROGRAMA. A medição da `M-21` (`sim-morte.mjs`)
+// IMPORTA o `combate` daqui para não escrever uma segunda cópia do laço, e sem
+// esta guarda o relatório de balanço inteiro rodaria junto, quatro segundos por
+// import. Rodar o arquivo direto continua fazendo exatamente o que fazia.
+const EH_PROGRAMA = !!process.argv[1] && import.meta.url.endsWith(process.argv[1].split(/[\/]/).pop());
+if (EH_PROGRAMA) {
 const CFG = {
   'baseline (flat + QA atual)': { defTerm: (c) => c, qaC: false },
   'só-teto + QA+C': { defTerm: () => 0, qaC: true },
@@ -153,4 +191,5 @@ for (const [clo, chi] of [[2, 3], [3, 4]]) {
     const r2 = winGrupo(clo, chi, cfg, { bossCombo: cb, bossTargets: 2 }, 6000);
     console.log(`   combo+${cb}: 1alvo=${(r.g * 100).toFixed(0)}%  2alvos=${(r2.g * 100).toFixed(0)}%`);
   }
+}
 }
