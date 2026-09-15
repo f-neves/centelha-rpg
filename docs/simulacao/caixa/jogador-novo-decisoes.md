@@ -424,3 +424,75 @@ Executora. **Com a decisão acima o número certo é três**, e as duas linhas s
 Vontade *"volta devagar (descanso/cena)"*. A parte "cena" não existia em regra nenhuma quando foi
 escrita; **agora existe**, pela Firula, e a frase passou de falsa a verdadeira por acidente. Vale
 reescrevê-la para dizer o que a regra de fato é.
+
+---
+
+## M-14 · com que Atributo se rolam as secundárias · DECIDIDO em 15/09/2026
+
+**A pergunta era das 66 secundárias e a resposta vale para as 24 primárias também.** Ela não
+acrescenta dado: ela corrige o sentido do dado que já existe.
+
+### A decisão
+
+**QUEM DETERMINA O PAR É A DESCRIÇÃO DA AÇÃO, e não a ficha.** O jogador diz como o personagem
+agiu; o Mestre lê a descrição e nomeia o Atributo e a Habilidade daquela jogada. As listas
+publicadas em cada perícia são **o usual, e não o possível**.
+
+Os exemplos vieram da mesa, e é por eles que a regra se entende:
+
+- soco no inimigo: **Força ou Destreza + Briga**, porque o jogador disse que era um soco;
+- a mesma intenção com uma espada: **Força ou Destreza + Armas**;
+- convencer o inimigo a se render: **Influência + Persuasão**; **ameaçar** para que ele se renda:
+  **Força ou Influência + Intimidação**, e a mesma intenção mudou de perícia E de Atributo por
+  causa de como foi descrita;
+- identificar o estilo de luta de um oponente: **Inteligência + Briga**, ou **Inteligência +
+  Armas** conforme ele lute com as mãos ou com arma.
+
+**As perícias geralmente têm um TIPO associado (Físico, Social, Mental), e ele serve de exemplo,
+não de limite.**
+
+### Por que isto reformula também as primárias
+
+O último exemplo é a prova. `habilidades.json` publica `Briga → ["forca","destreza"]`, e o
+capítulo imprime isso em itálico como `*(Força · Destreza)*`. **Pela notação de hoje, "Inteligência
++ Briga" é ilegal**, e ela é o exemplo que a própria mesa deu. Então a notação não está errada no
+conteúdo: está errada no **sentido**, porque se lê como lista fechada.
+
+E o exemplo da ameaça mostra por que nenhuma das saídas estruturais funcionaria:
+**Intimidação é secundária do grupo `sociais`** e o par legítimo dela inclui **Força**. Nem um
+mapa por grupo nem uma lista fixa por perícia sobreviveria a isso.
+
+### O QUE JÁ ESTAVA CERTO, e não muda
+
+**O motor nunca amarrou perícia a Atributo.** `pool(atributo, habilidade)` (`src/lib/calc.ts:17`)
+recebe os dois números e não sabe de onde vieram, e `passivo(id, nome, atributo, habilidade)`
+(`src/lib/mesa-ficha.ts:37`) também. **Nenhuma linha de código muda com esta decisão.** É a mesma
+forma da `M-12`: o motor já estava certo e o texto é que dizia outra coisa.
+
+**E os três tipos já existem no dado**: `src/data/atributos.json` traz `grupo` em cada um dos
+nove, com `fisico` (Força, Destreza, Vigor), `social` (Influência, Perspicácia, Compostura) e
+`mental` (Percepção, Inteligência, Raciocínio), três em cada.
+
+### O que isto manda fazer
+
+1. **Um parágrafo de regra onde o leitor monta o pool** (`coracao-do-sistema.md`), dizendo que a
+   descrição da ação determina o par, e que a lista de cada perícia é a usual e não a única.
+2. **A notação em itálico dos capítulos II precisa dizer que é exemplo.** Hoje `*(Influência ·
+   Compostura)*` se lê como fechada. Muda o molde de `linhaPrim` em
+   `scripts/gen-cap-pericias.mjs:44`, que é gerado, **e não o capítulo à mão**.
+3. **As 66 secundárias podem ganhar o campo, agora como sugestão e não como regra.** Deixa de ser
+   obrigatório: a ficha passa a ter um padrão para oferecer, sem que ele limite nada. É trabalho
+   opcional, e a decisão não depende dele.
+4. **A ficha tem de permitir qualquer Atributo com qualquer perícia.** O motor já permite;
+   confira se alguma tela restringe antes de dizer que está feito.
+
+### O QUE ESTA DECISÃO NÃO RESOLVE
+
+**A regra do `habilidades-secundarias.md:16` continua de pé e continua precisando de contas:**
+*"quando as duas cabem na mesma ação, a maior entra no pool e a menor entra como bônus fixo"*.
+Decidido quem escolhe o Atributo, ainda falta dizer **quanto vale o bônus fixo da menor** · o
+texto não dá número. Não foi perguntado nesta rodada.
+
+**E não resolve o `M-19`**, que é o vizinho: como se rola Virtude + Atributo, Vontade + Habilidade
+ou Virtude sozinha. Aquilo são traços que não são Atributo nem Habilidade entrando no par, e é
+outra pergunta.
