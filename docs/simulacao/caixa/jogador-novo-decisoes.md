@@ -328,3 +328,99 @@ isso que a mesa os deixou revisáveis.
 **E corrige uma frase da `M-12`**: lá está escrito que "o simulador faz igual". O que é verdade é
 que **o código-fonte dele faz igual**; ele não roda. A decisão da `M-12` não muda, porque quem
 decide ali é `src/lib/rolagem.ts`, o motor vivo, e esse roda.
+
+---
+
+## M-11b · a Firula vira Stunt, e as três reservas ganham torneira · DECIDIDO em 15/09/2026
+
+**A pergunta era o resíduo da `M-11`** (teto por cena, e se o nível 3 devolve mais que o 2). **A
+mesa respondeu reescrevendo a Firula inteira**, no molde do Stunt de Exalted, e respondeu o teto
+com todas as letras.
+
+### A escada decidida
+
+| nível | na jogada | e devolve |
+|---|---|---|
+| **1** | +2 fixo | **1 de Energia** |
+| **2** | +1d6 | **2 de Energia** ou **1 de Mana** ou **1 de Força de Vontade** |
+| **3** | +2d6 | **5 de Energia** ou **3 de Mana** ou **3 de Força de Vontade**, e **XP** |
+
+**NÃO HÁ TETO POR CENA**, e vale para as três reservas. Dito assim pelo humano: *"não existe, no
+momento, um limite para a quantidade de Força de Vontade (ou Energia ou Mana) que se pode
+recuperar na cena"*.
+
+**A escolha é do jogador**, uma por Firula: as reservas não somam, ele pega uma das três.
+
+**E a Firula não é coisa de combate.** Dito na mesma resposta: *"serve para qualquer ação, desde
+que ela seja relevante e seja um desafio para o jogador"*. Isso importa para o balanço mais do
+que parece, porque multiplica as ocasiões: fora de combate quase toda rolagem é candidata.
+
+**O nível 3 também dá XP, e QUANTO não foi dito.** Fica aberto, e é número, não redação.
+
+### O que isto muda no que já está publicado
+
+A `M-11` entrou no ar hoje (`5d9f164`) dizendo que a Firula de nível 2 ou acima devolve **1 de
+Força de Vontade**. Continua verdade para o nível 2, e **deixa de ser verdade para o nível 3**,
+que passa a devolver 3. Os dois textos da rodada 62 precisam acompanhar:
+`src/content/chapters/habilidades.md:110` e `aparencia-virtudes-vontade.md:79`, mais o
+`recuperacaoVontade` do `regras.json`, cujo `aRevisar` fica respondido nas duas metades.
+
+### O TAMANHO REAL DOS NÚMEROS, medido antes de gravar
+
+As reservas dos quatro exemplos publicados, de `scripts/cost-examples.mjs` (`derivadosPub`):
+
+| exemplo | Energia | Mana | Vontade | Centelha |
+|---|---:|---:|---:|---:|
+| Kael | 14 | 13 | 7 | 3 |
+| Sora | 15 | 14 | 8 | 3 |
+| Veil | 17 | 16 | 8 | 4 |
+| Bram | 10 | 11 | 9 | 1 |
+
+O que a Firula de nível 3 vale, como fatia da reserva:
+
+- **5 de Energia** é de 29% (Veil) a **50% (Bram)** do pool;
+- **3 de Mana** é de 19% a 27%;
+- **3 de Vontade** é de **33% a 43%**.
+
+**E em relógio, que é a comparação que mais pesa:**
+
+- a Energia volta **por cena**, então os 5 só valem DENTRO da cena. É a opção menos inflacionária
+  das três, e provavelmente a mais saudável;
+- a Mana volta **por Centelha, por hora**. Três de Mana são **três horas de descanso para o Bram**
+  (Centelha 1) e **quarenta e cinco minutos para o Veil** (Centelha 4). A recompensa vale MAIS
+  para o conjurador fraco, o que inverte a escada da Centelha. Pode ser bom de propósito;
+- a Vontade volta **1 por noite de sono**. Três de Vontade são **três noites**, para qualquer um.
+  **É o número mais forte da tabela, e de longe.**
+
+**A comparação com o modelo que a mesa nomeou.** No Exalted 2e o stunt 3 dá 2 de Força de Vontade
+sobre um pool típico de 7 a 10 (perto de 25%) e 5 motes sobre 30 a 60 (perto de 10%). Aqui, 3 de
+Vontade sobre 7 a 9 são 33% a 43%, e 5 de Energia sobre 10 a 17 são 29% a 50%. **Os números desta
+mesa são proporcionalmente mais generosos que os do sistema que serviu de molde**, porque as
+reservas daqui são muito menores que as de lá. Isto não é objeção: é a medida que faltava para
+saber o que se está testando.
+
+**O XP do nível 3, para quando for escolhido:** `regras.json → progressaoPorSessao` é `[10, 20]`
+por sessão. No Exalted o stunt 3 dá 1 XP contra 4 a 6 por sessão, perto de 20%. A proporção
+equivalente aqui seria **2 a 4 XP por Firula de nível 3**. Acima disso, duas ou três Firulas boas
+passam a valer mais que a sessão inteira.
+
+### O QUE FICA ABERTO, e a mesa sabe
+
+1. **Quanto XP dá o nível 3.**
+2. **Os números são para testar, e não régua fechada.** Dito assim: *"vamos considerar assim para
+   ver se fica equilibrado ou não"*.
+3. **O que testaria isto não existe hoje.** Os três simuladores medem duelo de armas, e nenhum
+   deles conta gasto de Energia, Mana ou Vontade por cena. Medir isto pede instrumento novo, e o
+   primeiro passo é a rodada 63, que ressuscita os três.
+
+### E UMA CONTRADIÇÃO DE TEXTO QUE NASCEU HOJE, e é conserto e não decisão
+
+`habilidades.md:110` diz que a Firula é *"o segundo dos **dois** jeitos de repor a reserva"* e
+`aparencia-virtudes-vontade.md:79` lista **três** (sono, Firula, e a régua moral do callout `:71`,
+que já estava no ar antes de tudo isto e devolve 1 de Vontade a critério do Mestre). É o `A-12` da
+Executora. **Com a decisão acima o número certo é três**, e as duas linhas se corrigem juntas.
+
+**Some-se a isso um quarto texto, anterior a tudo**: `relacoes-sociais.md:145` promete que a
+Vontade *"volta devagar (descanso/cena)"*. A parte "cena" não existia em regra nenhuma quando foi
+escrita; **agora existe**, pela Firula, e a frase passou de falsa a verdadeira por acidente. Vale
+reescrevê-la para dizer o que a regra de fato é.
