@@ -1036,3 +1036,69 @@ Sobram **190** ocorrências, todas do lado da máquina: `scripts` 106, `src/lib`
 `src/components` 22, `src/pages` 9. São identificadores, ids de elemento e comentários. **Os
 rótulos visíveis foram trocados** (o `BestiaEditor` agora diz "+ Habilidade" no botão e
 "Habilidade" nos dois campos), e o escopo da decisão continua sendo "onde o leitor lê".
+
+---
+
+## M-30 (+ M-26, M-28, M-29 em parte) · os traços de raça viram dado com escopo · DECIDIDO em 15/09/2026
+
+**Todo traço racial que carrega um número vira CAMPO, e o campo declara o ESCOPO em que vale.** A
+ficha o **oferece** sem somá-lo automaticamente, exatamente como a Especialidade é oferecida.
+
+É a mesma forma decidida hoje em `M-03/M-25/M-37`: bônus com portão situacional não cabe em número
+calculado antes de a situação existir, mas cabe numa lista que a ficha mostra na hora certa.
+
+### O que a medição achou
+
+**São OITO raças** (não sete): Humano, Anão, Elfo, Gnomo, Halfling, Meio-Elfo, Orc, Meio-Orc.
+
+**São 24 traços. Seis estão apoiados num campo do dado, e dezoito são prosa que nada lê.** Os seis
+que funcionam provam que o caminho existe e já foi percorrido uma vez: `deslocamentoFrac` (os três
+de baixa estatura), `aparenciaUniversal` (elfo e meio-elfo) e `aparenciaMod` (a "Aparência bruta"
+do Orc).
+
+**Os dez números que estão escritos e não acontecem:**
+
+| raça | traço | número |
+|---|---|---|
+| Anão | resistência a venenos | +1d6 |
+| Anão | mestre dos ofícios | +1d6 |
+| Elfo | sentidos naturais aguçados | +1d6 |
+| Elfo | resiliência mental | +4 de Dificuldade, ou +1d6 |
+| Gnomo | feitiçaria ilusória | +2 |
+| Gnomo | empatia com animais | +2 |
+| Halfling | atletas | +1d6 |
+| Meio-Elfo | resiliência mental menor | +2 |
+| Orc | frenesi, ao intimidar | +2d6 |
+| **Orc e Meio-Orc** | **Vitalidade** | **+Vigor de PV** |
+
+**A Vitalidade é diferente das outras nove, e é um ERRO DE FICHA e não uma pendência.** Ela é
+incondicional e mexe num número que a ficha **já imprime**. Varrido `calc.ts` e `ficha-engine.ts`:
+não há termo racial de PV. **Todo Orc jogado até hoje tem PV menor do que a própria raça
+promete.** O `+1` de Vigor do campo `atributos` dá +3 de PV pelo multiplicador, e o bônus do traço
+não dá nada.
+
+### O que isto manda fazer
+
+1. **Uma forma de campo nova**, com o bônus e o escopo em que ele vale. O nome dos campos é de
+   quem escrever o código; o que a decisão exige é que **escopo e bônus andem juntos**, senão o
+   campo vira parcela fixa e a decisão se perde.
+2. **Os dez traços da tabela viram esse campo.** A Vitalidade entra com escopo "sempre", e com ela
+   o PV do Orc passa a sair certo.
+3. **A ficha precisa saber MOSTRAR bônus condicional.** Isto estava anotado como
+   *"aberto, e é apresentação e não regra"* na decisão da Especialidade, e **deixou de ser
+   opcional**: as duas frentes agora dependem da mesma tela.
+4. **`deslocamentoFrac` entra no esquema do `validate`** (`scripts/validate-data.mjs:49`), de onde
+   falta hoje: ele existe em três raças, é lido pela ficha, e o portão não o conhece.
+
+### O QUE FICA ABERTO, e é o irmão desta decisão
+
+**O `porte` e o `folego` por raça continuam sem resposta**, e eles não são traços: são campos
+ausentes. A pergunta respondida foi sobre os traços, e estes dois pedem uma decisão própria porque
+mudam número, e muito:
+
+- **nenhuma raça tem `porte`**, então `pv(vigor, 'medio')` dá `25 + Vigor×3` para todo mundo, e
+  **um Halfling tem exatamente o PV de um Orc de mesmo Vigor**. Pôr o Halfling em `pequeno`
+  (base 20, multiplicador 2) levaria um Halfling de Vigor 3 de **34 para 26 de PV**, uma queda de
+  quase um quarto;
+- **nenhuma raça tem `folego`**, e `derivados.folego` promete por escrito *"base por raça (humano
+  = 10)"*, entregando um número só.
