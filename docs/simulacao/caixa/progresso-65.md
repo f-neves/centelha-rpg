@@ -59,3 +59,8 @@ estado de mesa e em dano aplicado: se ele crescer, fecho o primeiro e trago o se
   salvo nao tem `desde` e nenhuma migracao alcanca JSON em coluna; so o mestre escreve, pela RLS;
   e duas abas abertas podem cobrar duas vezes. Esse ultimo tem uma decisao de desenho que e dele,
   e eu recomendo com o preco escrito.
+- **05:29** · fim. Item 1 publicado em `b6a71b7`, o plano do item 2 em `3abb159`, os dois com
+  `git rev-list --count origin/main..HEAD` = 0. `validate` e `build` verdes, mais seis portoes de
+  navegador que enxergam o que eu toquei (`test-artes-grid`, `test-arte-na-mesa`, `test-l86a-cura`,
+  `test-bandeiras-mesa`, `test-grid-simultaneo`, `test-golpe-caido`): exit 0 nos seis. Zero
+  coautoria. A arvore tem so arquivos do Arquiteto, e eu nao encostei em nenhum.
