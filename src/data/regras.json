@@ -687,7 +687,7 @@
   ],
   "derivados": {
     "pv": {
-      "nota": "PV base considera criatura de porte Médio (humanoide). base + Vigor×vigorMult. Criaturas de outros portes usam a tabela `porte` (base e multiplicador escalam com o tamanho): maiores aguentam mais mesmo com o mesmo Vigor. Médio = valores do topo (default para PCs).",
+      "nota": "PV base considera criatura de porte Médio (humanoide). base + Vigor×vigorMult. Criaturas de outros portes usam a tabela `porte` (base e multiplicador escalam com o tamanho): maiores aguentam mais mesmo com o mesmo Vigor. Médio = valores do topo (default para PCs). O PC também usa a tabela: o porte vem de `racas.json` (`M-29`). E a régua para decidir o porte de uma raça nova, da `M-29b`: BAIXO NÃO É PEQUENO, LARGO COMPENSA. O porte acompanha a MASSA e não a altura, porque a altura já tem efeito próprio (o dois terços de deslocamento, `deslocamentoFrac`). É por isso que das três raças de baixa estatura duas são pequenas (Gnomo e Halfling) e o Anão, \"baixo e corpulento\", é médio.",
       "base": 25,
       "vigorMult": 3,
       "porte": {

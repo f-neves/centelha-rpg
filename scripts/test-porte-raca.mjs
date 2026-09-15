@@ -56,8 +56,22 @@ for (const r of RACAS) {
   ok(r.porte != null, `a raça ${r.id} não declara porte, e ausente é indistinguível de Médio decidido`);
   ok(PORTES.includes(r.porte), `o porte de ${r.id} (${r.porte}) não está na tabela de portes`);
 }
-eq(RACAS.filter((r) => r.porte === 'pequeno').map((r) => r.id), ['halfling'],
-  'o Halfling é a única raça Pequena decidida (`M-29`); Gnomo e Anão seguem Médios até a mesa decidir');
+// O ROL do que a mesa DECIDIU, e ele e uma lista e nao uma regra: mexer nele e
+// legitimo, e o que o portão cobra é que o gesto seja DELIBERADO e traga a
+// decisão pelo nome. Ele já cobrou uma vez: a `M-29b` mudou o Gnomo e esta linha
+// ficou vermelha na hora, que é exatamente o serviço dela.
+//
+//   `M-29`  (15/09) · Halfling → pequeno
+//   `M-29b` (15/09) · Gnomo → pequeno, Anão continua médio
+//
+// A régua que a `M-29b` deixou para raça nova: baixo não é pequeno, largo
+// compensa. O porte acompanha a MASSA; a altura já tem efeito próprio, que é o
+// dois terços de deslocamento, e é por isso que as TRÊS raças baixas não caem
+// juntas: o Anão é "baixo e corpulento".
+eq(RACAS.filter((r) => r.porte === 'pequeno').map((r) => r.id).sort(), ['gnomo', 'halfling'],
+  'o rol das raças Pequenas decididas mudou sem a decisão passar por aqui');
+eq(RACAS.find((r) => r.id === 'anao').porte, 'medio',
+  'o Anão é baixo e CORPULENTO: baixa estatura não decide porte, massa decide (`M-29b`)');
 
 // ------------------------------------------------- 2. a tabela alcança de verdade
 // A ponte tolera `pvPorte` AUSENTE de propósito: sem isso o teste estoura na
@@ -72,6 +86,20 @@ eq(C.pv(3, 'medio'), 34, 'e o mesmo Vigor num Médio: 25 + 3×3');
 ok(C.pv(3, 'pequeno') !== C.pv(3, 'medio'), 'os dois portes têm de dar números DIFERENTES, senão a tabela não está sendo lida');
 // o controle negativo: porte que não existe cai no default, e isso é de propósito
 eq(C.pv(3, 'Pequeno'), 34, 'porte escrito errado cai em Médio, calado: é por isso que o esquema do portão o valida');
+
+// --------------------- 2.5 a frase da ficha, COMPOSTA pela linha da tabela
+// O molde é o mesmo de `ficha-engine.ts`, e os dois casos existem para provar que
+// a função resolveu de verdade: com um caso só, um número escrito à mão que por
+// acaso batesse passaria.
+{
+  const frase = (vigor, porte) => {
+    const t = pvPorte(porte);
+    return `${t.base} + Vigor ${vigor}×${t.vigorMult} = ${C.pv(vigor, porte)}`;
+  };
+  eq(frase(3, 'pequeno'), '20 + Vigor 3×2 = 26', 'a linha do Halfling de Vigor 3');
+  eq(frase(4, 'pequeno'), '20 + Vigor 4×2 = 28', 'a linha do Gnomo de Vigor 4 (base 3 + 1 racial)');
+  eq(frase(3, 'medio'), '25 + Vigor 3×3 = 34', 'e a linha de um Médio de Vigor 3');
+}
 
 // --------------------------- 3. a ficha não guarda cópia à mão dos dois números
 {
@@ -104,6 +132,6 @@ if (falhas.length) {
   console.error(`\n✘ porte-raca: ${falhas.length} falha(s)\n` + falhas.map((f) => '  · ' + f).join('\n'));
   process.exit(1);
 }
-console.log('✓ porte-raca: as oito raças declaram porte, o Halfling é Pequeno e chega ao `pv()`,'
+console.log('✓ porte-raca: as oito raças declaram porte, o Halfling e o Gnomo são Pequenos e o porte chega ao `pv()`,'
   + ' a explicação da ficha sai da tabela em vez de guardar cópia à mão,'
   + ' e o Fôlego parou de prometer base por raça');
