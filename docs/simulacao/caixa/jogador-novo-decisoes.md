@@ -2010,3 +2010,61 @@ plena no 12), então o que falta é só o nome do degrau.
 Grande herói, Lendário, Semideus), e a faixa nova precisa do mesmo tratamento ou de uma decisão
 explícita de não ter. É decisão de lore, não de regra, e depende do que este mundo diz existir
 acima de um semideus.
+
+---
+
+## M-21 · o limite da morte é METADE do PV máximo
+
+Decidido em 15/09/2026, com a medição da rodada 74 na mão (`docs/simulacao/caixa/m21-morte-medicao.md`).
+
+**A decisão de regra que faltava**, e ela completa a M-21 sem reabrir nada do que já estava
+decidido ali (dano é dano, cura é cura, cai a PV 0 ou menos):
+
+> **Morre-se ao perder vida além do zero, até METADE do PV máximo negativo.** Um personagem de
+> PV 34 cai em 0 e morre em −17.
+
+### POR QUE METADE, com os números que decidiram
+
+Socorrer um caído custa **4 Ticks** (até 4 metros, com a ação utilitária de 4 Ticks). A margem
+mediana que cada limite dá, contra esse custo:
+
+| limite | margem no `combo+2` | margem no `combo+3` | morrem (chefe remata) |
+|---|---:|---:|---:|
+| 0, a regra de hoje | 0 Tick | 0 Tick | 100% |
+| PV ÷ 4 | 5 Ticks | 5 Ticks | 87% · 79% |
+| **PV ÷ 2** | **10 Ticks** | 5 Ticks | 82% · 70% |
+
+Com limite 0 a cena do aliado caído **não existe**: cair é morrer, e é isso que o capítulo promete
+e o jogo não entrega. Com PV ÷ 4 ela existe e empata com o próprio custo do socorro já a 8 metros.
+Três coisas que a medição não cobre puxam todas para o mesmo lado, o do limite maior: o
+**Sangramento** come a margem por fora (com PV ÷ 4, um único tique de sangue consome quase toda
+ela), a medição roda uma build **maximizada** (um personagem comum tem PV menor, e um quarto dele
+é menor ainda), e a Velocidade da ação de estabilizar é suposição, com 5 Ticks tão plausível
+quanto 4.
+
+**O CONTRA QUE A MESA COMPROU, escrito porque foi dito na hora de decidir:** com PV ÷ 2 e o chefe
+ignorando os caídos, **0% morrem**. Morrer deixa de ser risco da briga e vira decisão de quem está
+batendo, e um combate em que ninguém morre por acidente perde tensão. A leitura que sustenta a
+escolha assim mesmo é a da decisão da M-21: fazer de "não matar" a decisão de **parar de bater**,
+que acontece na mesa e no momento, foi exatamente o que substituiu as duas trilhas.
+
+### O QUE ISTO MANDA FAZER
+
+1. **O limite vira DADO**, em `src/data/regras.json`, e não só prosa de capítulo: é a régua que a
+   mesa vai ler, e hoje não existe bloco de morte em lugar nenhum do JSON.
+2. **O capítulo `src/content/chapters/vida-ferimentos-cura.md` se reescreve, agora de uma vez.**
+   Saem: as duas trilhas da abertura, a regra velha da morte, a frase de que o Impacto sara mais
+   rápido, e o exemplo do Bram que conta Letal separado. Entram: dano é dano, cai em 0, morre em
+   −PV ÷ 2, e o tipo de dano pesando na Absorção e não na cicatriz.
+3. **Um portão prende o texto ao dado**, para as duas listas não divergirem de novo: foi o espaço
+   entre `escalaCentelha` e o `validate` que deixou dez criaturas fora da régua na M-08.
+4. **O que a mesa (o Grid) faz com o limite é MEDIDO antes de construído.** Hoje ela não
+   implementa morte nenhuma, e quanto custa ensiná-la é pergunta aberta, não trabalho aprovado.
+
+### O QUE FICA ABERTO
+
+**O Sangramento em quem já caiu.** Ele come a margem por fora e a medição não o modelou (o
+`sim-grupo` não tem condição contínua). A regra publicada hoje diz que um caído que sangra
+continua acumulando dano rumo à morte, e isso continua verdadeiro com o limite novo. Se a mesa
+sentir que o sangue mata rápido demais quem está caído, o número a mexer é o intervalo de 6 Ticks
+ou uma suspensão do Sangramento abaixo de zero, e é decisão de regra.
