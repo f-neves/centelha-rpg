@@ -677,3 +677,103 @@ que ele nunca define, e essa unidade tem dois nomes.
 regra publicada (`combate.md:8`), então "300 Ticks" pode virar "300 Ticks (cinco minutos)" de
 graça. A mesa padronizou em Ticks e não pediu o parênteses; ele continua disponível como escolha
 de redação, e não como regra.
+
+---
+
+## M-03 + M-25 + M-37 · onde a Especialidade entra · DECIDIDO em 15/09/2026
+
+**As três perguntas eram uma, e a resposta não cria regra nova: ela nomeia o PORTÃO que a regra
+publicada já tinha.**
+
+### A decisão
+
+**O portão é a SITUAÇÃO, e ele vale em todo lugar.** A Especialidade entra na jogada ou no cálculo
+**somente quando o escopo nomeado dela se aplica**, e por isso ela se chama assim. Palavras da
+mesa: *"se o jogador tem uma especialidade em Armas (Machados) 2, apenas quando estiver usando
+Machados a especialidade entra na conta"*.
+
+**E o formato é o que já está publicado** (`habilidades.md:93`): numa rolagem, **+N dados
+descartando os N menores**, onde N é o nível. *"Furtividade (Becos Escuros) 3, quando estiver se
+escondendo em becos escuros, ganha +3 dados na jogada, retirando os 3 menores resultados."*
+
+### O QUE ISTO RESOLVE, e é mais do que parece
+
+**O `calc.ts` está CERTO, e pelo motivo errado.** `valorPassivo` não soma a Especialidade
+(`src/lib/calc.ts:274`), e o comentário justifica dizendo que *"nem a criatura nem a ficha guardam
+especialidade POR PERÍCIA hoje"*. **Essa justificativa é meia falsa:** a ficha guarda, nomeada e
+com nível (`S.spec[habilidade] = [{s: nome, v: nível}]`, `ficha-engine.ts:235`); só o bestiário
+não guarda, e nas 309 criaturas do `inimigos.json` não há uma sequer.
+
+**Mas a conclusão dele sobrevive, por uma razão melhor:** um Valor Passivo é calculado **sem
+saber quem ataca nem como**. Um bônus cujo portão é a situação **não pode** entrar num número
+calculado antes de a situação existir. Então o número base sai sem Especialidade e ela é somada no
+instante em que o escopo se revela · que é exatamente o que o capítulo já manda: *"a ficha não a
+soma automaticamente no rolador"*.
+
+**O `especialidade: true` das três Defesas em `derivados` passa a significar "pode somar quando o
+escopo se aplicar", e não "soma sempre".** Precisa dessa palavra, senão continua se lendo como
+parcela fixa.
+
+### OS QUATRO DEFEITOS QUE ISTO CONSERTA
+
+1. **O Valor Passivo tinha três fórmulas.** Glossário: *"(Atributo + Habilidade) × 2 +
+   Especialidade + Centelha"*. `acoes-e-sistema.md:105`: *"2 × (Atributo + Habilidade)"*, sem os
+   dois. `calc.ts:274`: com Centelha, sem Especialidade. **A terceira é a certa**, e as outras
+   duas se corrigem: a do glossário ganha o portão, a do capítulo ganha a Centelha.
+2. **A Defesa Mental discordava de si mesma:** `derivados.defesaMental` tem `especialidade: true`
+   e o glossário não a menciona. Passa a mencionar, com o portão.
+3. **O ataque social não nomeava a Especialidade e o físico nomeava**, sendo os dois a mesma
+   coisa. O ataque social (`relacoes-sociais.md:125`) passa a nomeá-la, com o portão.
+4. **E a fórmula do ataque físico escreve a regra ERRADA** (`combate.md:66`):
+   `Ataque = (Atributo + Habilidade)/2 + Especialidade + Arma + Centelha`. Numa **rolagem** a
+   Especialidade não é parcela somada: é **+N dados com descarte dos N menores**. As duas não são
+   equivalentes, e a diferença é justamente o que a Especialidade significa · o dado extra com
+   descarte sobe a **confiabilidade** sem mexer no teto. **Este achado é novo e não tinha item.**
+
+### O CONTRA que fica registrado
+
+**As 309 criaturas não têm Especialidade nenhuma.** Onde o portão abrir para um personagem, ele
+nunca abre para uma criatura. Não é assimetria fatal, porque criatura e personagem são construídos
+por orçamentos diferentes, mas quem comparar os dois números está comparando coisas diferentes, e
+isso não está escrito em lugar nenhum.
+
+### ABERTO, e é apresentação e não regra
+
+**Como a ficha mostra uma Defesa cujo bônus é situacional.** Hoje ela imprime um número. Podia
+imprimir "18, e +2 contra machados", e isso é decisão de tela.
+
+---
+
+## M-47 · a palavra "Perícia" sai do livro · DECIDIDO em 15/09/2026
+
+**O termo correto é HABILIDADE, em todo lugar em que o leitor lê.** Pedido da mesa: *"veja onde
+que está escrito 'Perícia', essa é uma palavra que não devemos usar, provavelmente o certo é
+'Habilidade' em todos os lugares que está 'Perícia'"*.
+
+### A medição, e ela tem uma surpresa
+
+**Os capítulos têm ZERO ocorrências da palavra.** Ela chega à tela por outro caminho: os blocos
+**gerados**. O que existe, separando texto de máquina:
+
+| onde | ocorrências | o que é |
+|---|---:|---|
+| `monsters.json` | 118 | *"Perícias notáveis: Furtividade 2…"*, no `notas` de cada criatura |
+| `inimigos.json` | 118 | as mesmas, **geradas** a partir do anterior |
+| `habilidades.json` | 17 | prosa das descrições, publicada no capítulo II gerado |
+| `habilidades-secundarias.json` | 11 | idem |
+| `regras.json` | 5 | prosa |
+| `antecedentes.json` | 2 | prosa |
+| páginas e componentes | ~10 | rótulos de tela (o `BestiaEditor` diz "+ perícia") |
+| **capítulos `.md`** | **0** | a palavra nunca foi escrita à mão |
+
+### O que isto manda fazer, e o que NÃO manda
+
+**MANDA:** trocar as ~280 ocorrências de **texto visível**. As 118 de `inimigos.json` são
+geradas, então o conserto é na fonte (`monsters.json`) e não no derivado, **senão morre no
+próximo regen**.
+
+**NÃO MANDA, e esta parte é decisão minha, para a mesa derrubar se quiser:** as **chaves de dado**
+(`"pericias"`, 928 ocorrências, e `"pericia"` singular em `armas.json`) e os **identificadores de
+código** ficam como estão. Elas não são lidas por ninguém que jogue, renomeá-las é mexer no
+bestiário, na mesa e no editor de criaturas de uma vez, e o ganho para o leitor é zero. **Se a
+mesa quiser a troca completa, ela é uma frente própria e não um item.**
