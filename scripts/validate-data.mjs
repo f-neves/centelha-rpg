@@ -222,6 +222,105 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
   }
 }
 
+// ------------------------------------ M-21 · o limite da morte, e quem o publica
+//
+// A REGRA NOVA MORA NO DADO (`regras.json` · `morte`) E É LIDA NO CAPÍTULO, e o
+// espaço entre os dois é onde o defeito da M-08 morou por dez meses: o esquema
+// aceitava Centelha até 10 enquanto a régua publicada parava em 6, cada lista
+// coerente consigo mesma, dez criaturas passando.
+//
+// O QUE ESTE BLOCO NÃO FAZ: procurar o número "17" no capítulo. O limite não é um
+// número, é uma DERIVAÇÃO (PV máximo ÷ `limiteDivisor`), porque PV máximo varia
+// por Vigor e por porte. Ele extrai os pares "PV N … morre em −X" que o capítulo
+// publica e refaz a conta em cima de cada um: trocar o divisor no JSON e não
+// reescrever o exemplo acende aqui.
+//
+// E ELE EXIGE UM EXEMPLO DE PV ÍMPAR, que é a ocasião sem a qual a asserção não
+// mede nada: com PV par, `baixo` e `alto` dão a MESMA resposta, e o campo
+// `limiteArredonda` poderia estar errado com tudo verde. O exemplo ímpar é o
+// único caso em que os dois arredondamentos discordam.
+//
+// O ESCOPO DA VARREDURA DA REGRA VELHA, dito em voz alta porque ele não é o
+// repositório inteiro: os dois capítulos que publicavam a morte, a condição que a
+// citava, e os três blocos de `regras.json` que a regra governa. O `Letal` que
+// sobra em `artes.json`, `tecnicas.json`, `efeitos.json` e `arcano.outrasArtes` é
+// adjetivo de tipo de dano em regra de OUTRA família (uma Técnica e uma Arte que
+// dependiam das duas trilhas), e mexer nele é decisão de regra, não conferência.
+{
+  const RAIZ = path.join(DIR, '..', '..');
+  const regrasM = read('regras.json');
+  const M = regrasM.morte;
+  const CAP_MORTE = 'src/content/chapters/vida-ferimentos-cura.md';
+  if (!M) {
+    fail(`regras.json: não há bloco \`morte\`. O limite da morte (\`M-21\`) é dado, e o capítulo `
+      + `${CAP_MORTE} publica a fórmula que sai dele.`);
+  } else {
+    const arredonda = M.limiteArredonda === 'baixo' ? Math.floor
+      : M.limiteArredonda === 'alto' ? Math.ceil : null;
+    if (!arredonda) fail(`regras.json · morte.limiteArredonda: "${M.limiteArredonda}" não é "baixo" nem "alto"`);
+    if (!(Number.isInteger(M.limiteDivisor) && M.limiteDivisor >= 1)) {
+      fail(`regras.json · morte.limiteDivisor: "${M.limiteDivisor}" não é divisor inteiro do PV máximo`);
+    }
+    if (M.quedaVida !== 0) fail(`regras.json · morte.quedaVida é ${M.quedaVida}, e a regra da queda é Vida 0 ou menos`);
+    // As duas pontas do bloco existem mesmo: o estado da queda é uma linha da
+    // tabela de ferimentos, e a morte é uma condição que a mesa sabe pôr.
+    if (!(regrasM.ferimentos || []).some((f) => f.estado === M.estadoQueda)) {
+      fail(`regras.json · morte.estadoQueda "${M.estadoQueda}" não é nenhum estado da tabela \`ferimentos\``);
+    }
+    if (!(read('condicoes.json').lista || []).some((c) => c.id === M.condicaoMorte)) {
+      fail(`regras.json · morte.condicaoMorte "${M.condicaoMorte}" não existe em condicoes.json`);
+    }
+
+    const limiteDe = (pvMax) => -(arredonda || Math.floor)(pvMax / (M.limiteDivisor || 1));
+    const cap = fs.readFileSync(path.join(RAIZ, CAP_MORTE), 'utf8');
+
+    // A PRESENÇA, que é o par da ausência lá embaixo: a fórmula publicada.
+    const formula = cap.split('\n').find((l) => /class="formula"/.test(l) && /Morre/.test(l));
+    if (!formula) {
+      fail(`${CAP_MORTE}: sumiu a linha \`<p class="formula">\` que publica o limite da morte`);
+    } else if (!new RegExp(`÷\\s*${M.limiteDivisor}\\b`).test(formula)) {
+      fail(`${CAP_MORTE}: a fórmula publicada não divide o PV máximo por ${M.limiteDivisor}, `
+        + `que é o \`morte.limiteDivisor\`: "${formula.trim()}"`);
+    }
+
+    // Os exemplos, achados por FORMA e não por posição: todo "PV N … morre em −X"
+    // da prosa é refeito pela derivação. O `−` publicado é o menos tipográfico.
+    const pares = [...cap.matchAll(/PV\s*\*{0,2}(\d+)\*{0,2}[^.]*?morre em\s*\*{0,2}[−-](\d+)/g)]
+      .map((m) => ({ pvMax: Number(m[1]), morreEm: -Number(m[2]) }));
+    if (!pares.length) {
+      fail(`${CAP_MORTE}: nenhum exemplo no formato "PV N … morre em −X". Sem exemplo, a fórmula `
+        + `publicada não tem controle, e esta conferência não teria o que medir.`);
+    }
+    for (const p of pares) {
+      if (p.morreEm !== limiteDe(p.pvMax)) {
+        fail(`${CAP_MORTE}: o exemplo de PV ${p.pvMax} publica morte em ${p.morreEm}, e a régua `
+          + `(PV ÷ ${M.limiteDivisor}, arredondando para ${M.limiteArredonda}) dá ${limiteDe(p.pvMax)}`);
+      }
+    }
+    if (pares.length && !pares.some((p) => p.pvMax % M.limiteDivisor !== 0)) {
+      fail(`${CAP_MORTE}: todos os exemplos têm PV divisível por ${M.limiteDivisor}, e nesses o `
+        + `arredondamento não muda nada. Sem um exemplo que sobre resto, o \`limiteArredonda\` `
+        + `("${M.limiteArredonda}") passa verde estando errado.`);
+    }
+
+    // A AUSÊNCIA, com escopo nomeado: a regra velha das duas trilhas não volta por
+    // uma edição distraída nos lugares onde ela morava.
+    const VELHO = /\bLetal\b/;
+    const ondeNaoPodeVoltar = [
+      [CAP_MORTE, cap],
+      ['src/content/chapters/combate.md', fs.readFileSync(path.join(RAIZ, 'src/content/chapters/combate.md'), 'utf8')],
+      ['condicoes.json', JSON.stringify(read('condicoes.json'))],
+      ['regras.json · ferimentos/morte/sangramento', JSON.stringify([regrasM.ferimentos, regrasM.morte, regrasM.sangramento])],
+    ];
+    for (const [nome, texto] of ondeNaoPodeVoltar) {
+      if (VELHO.test(texto)) {
+        fail(`${nome}: voltou a falar em dano "Letal". A M-21 fundiu as duas trilhas: dano é dano, `
+          + `e o tipo do golpe escolhe a Absorção (\`dano.modos\`), não a cicatriz.`);
+      }
+    }
+  }
+}
+
 // ------------------------------------- a mesma regra escrita em três arquivos
 //
 // A INVESTIDA ESTÁ ESCRITA COM NÚMERO EM TRÊS LUGARES QUE NENHUM GERADOR LIGA:

@@ -133,7 +133,7 @@
     {
       "id": "sangrando", "nome": "Sangrando", "icone": "🩸", "grupo": "corpo", "cor": "perigo",
       "porSeisTicks": 1,
-      "nota": "A cada 6 Ticks desde o ferimento perde 1 de Letal (ignora Absorção). Estabilizar: Cura contra Dif 10, ou Vigor + Convicção em si mesmo.",
+      "nota": "A cada 6 Ticks desde o ferimento perde 1 de Vida (ignora Absorção). Estabilizar: Cura contra Dif 10, ou Vigor + Convicção em si mesmo.",
       "fonte": "regras.json · sangramento"
     },
     {
@@ -186,7 +186,7 @@
     {
       "id": "morrendo", "nome": "Morrendo", "icone": "✝", "grupo": "corpo", "cor": "morte",
       "foraDeCombate": true, "porSeisTicks": 1,
-      "nota": "Zerou com dano Letal em maioria. Precisa ser estabilizado (Cura, Dif 10) antes que o Letal acumulado alcance o PV máximo."
+      "nota": "Vida em 0 ou menos, ainda acima do limite da morte (`regras.json` · `morte`: metade do PV máximo, abaixo do zero). Precisa ser estabilizado (Cura, Dif 10) antes que a Vida chegue ao limite."
     },
     {
       "id": "estabilizado", "nome": "Estabilizado", "icone": "✚", "grupo": "corpo", "cor": "bom",

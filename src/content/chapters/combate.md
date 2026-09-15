@@ -104,13 +104,15 @@ O **Dado da Arma** vem da classe (leve 1d6−2, média 1d6, pesada 2d6, haste 1d
 
 Todo golpe tem um **modo**, e a maioria das armas pode usar mais de um, você escolhe conforme o alvo:
 
-- **Cortante**: gume deslizante (espada, machado). Letal.
-- **Perfurante**, ponta ou projétil que fura: estocada, adaga de rondel, bico de picareta, flecha, virote, dardo lançado. Letal. (Não há distinção entre projétil e estocada: ambos são Perfurante.)
-- **Impacto**: maça, martelo, malho; também socos e quedas. Em regra **nocauteia** (ver [Vida & Ferimentos](/regras/vida-ferimentos-cura)).
+- **Cortante**: gume deslizante (espada, machado).
+- **Perfurante**, ponta ou projétil que fura: estocada, adaga de rondel, bico de picareta, flecha, virote, dardo lançado. (Não há distinção entre projétil e estocada: ambos são Perfurante.)
+- **Impacto**: maça, martelo, malho; também socos e quedas.
+
+O modo escolhe a **Absorção**, e para ali: o dano que passa é um só, e qualquer um dos três mata (ver [Vida & Ferimentos](/regras/vida-ferimentos-cura)).
 
 A **Absorção** total de um golpe é **Absorção natural + a absorção da armadura**. A armadura tem **três Absorções** (Impacto, Corte e Perfuração), e o **dano Perfurante usa a Absorção de Perfuração**:
 
-- **Absorção natural:** **Vigor + Centelha** contra o **Impacto** (o corpo e a fagulha amortecem a pancada); **só a Centelha** contra os letais (Cortante e Perfurante): a carne nua não para o fio nem a ponta, apenas a dureza sobre-humana da **Centelha** o faz. Um mortal (Centelha 0) tem **0** de Absorção natural contra lâminas: depende inteiramente da armadura.
+- **Absorção natural:** **Vigor + Centelha** contra o **Impacto** (o corpo e a fagulha amortecem a pancada); **só a Centelha** contra o Cortante e o Perfurante: a carne nua não para o fio nem a ponta, apenas a dureza sobre-humana da **Centelha** o faz. Um mortal (Centelha 0) tem **0** de Absorção natural contra lâminas: depende inteiramente da armadura.
 - **+ armadura:** a placa quase zera o Corte, mal segura o Impacto e tem Perfuração baixa. Empilhar peças vale a **maior Absorção de cada categoria**; ver [Armas & Armaduras](/regras/armas-e-armaduras).
 
 ### O gate de Perfuração
