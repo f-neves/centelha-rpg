@@ -2243,3 +2243,54 @@ que é o defeito que a trava existe para fechar.
 3. **As quatro entradas de cura** ganham a trava pelo número, e o servidor também, porque uma
    delas é RPC.
 4. **Nada marca a morte sozinho**, e o que a tela ganha é o limite visível.
+
+---
+
+## M-21c · o arredondamento do limite depende da Centelha
+
+Decidido em 15/09/2026, depois de a rodada 75 publicar o limite com arredondamento para baixo.
+
+**O ORIGINAL, e ele tem um dia de idade:** `src/data/regras.json`, bloco `morte`, com
+`limiteDivisor: 2` e arredondamento para **baixo**, escolhido pela Executora pela convenção da
+casa (a mesma de `dano.penalidade.movimento`) e relatado por ela como escolha que a mesa podia
+querer trocar.
+
+**A INCONSISTÊNCIA que ela mesma levantou:** para baixo é a direção MAIS mortal (PV 37 morre em
+−18 e não em −19), e os três argumentos que escolheram metade em vez de um quarto empurram todos
+para a margem maior: o Sangramento comendo a margem por fora, a medição ter rodado numa build
+maximizada, e a ação de estabilizar podendo custar 5 Ticks em vez de 4. A mesma decisão comprava
+margem no atacado e devolvia meio ponto dela no varejo.
+
+**A DECISÃO: quem não tem Centelha arredonda para baixo, quem tem arredonda para cima.**
+
+| Centelha | limite de um PV 37 | quem é |
+|---|---|---|
+| 0 | −18 | o mortal comum, e a maior parte do bestiário |
+| 1 ou mais | −19 | o Tocado para cima, e todo personagem de jogador |
+
+O meio ponto passa a ser o que a Centelha é: não vira número novo, vira a direção do
+arredondamento de um número que já existia. Só muda alguma coisa em PV ímpar, e a diferença é de
+um ponto.
+
+**O contra comprado:** é uma exceção de arredondamento num sistema que arredonda para baixo em
+todo lugar, e exceção que vale num cálculo só é a cláusula que envelhece calada, porque ninguém a
+relê depois de decorar a convenção. O que a torna defensável é ela não ser arbitrária: ela diz uma
+coisa sobre o mundo, e é a mesma coisa que a Centelha diz em toda parte.
+
+### O QUE ISTO MANDA FAZER
+
+1. **`regras.json`, bloco `morte`:** o arredondamento deixa de ser um valor e passa a ser a régua
+   com as duas direções, escolhida pela Centelha de quem está caindo.
+2. **O capítulo publica as duas linhas**, com o exemplo ímpar de cada lado, porque um exemplo par
+   não distingue nada (é o controle de ocasião que o portão da rodada 75 já usa).
+3. **O portão passa a exigir os dois casos.** Hoje ele refaz a conta com um arredondamento só, e
+   ficaria verde com a régua nova pela metade.
+
+### O QUE ISTO ENCOSTA, e não é desta rodada
+
+**O servidor não conhece Centelha.** A tabela `combatentes` (`supabase/migracao-2.sql:128-142`)
+tem `pv_max` e `pv_atual` e nenhuma coluna de Centelha; quem sabe a Centelha de uma peça é o
+CLIENTE, pelo `RESUMO` (`src/lib/combate-resumo.ts:161`). Isso não atrapalha hoje, porque a morte
+é marcada pela mão do mestre (M-21b, decisão 1) e nada no servidor precisa do limite. **Vai cobrar
+resposta quando a trava da cura chegar ao RPC**, que é uma das quatro entradas e é a única que
+mora no banco.
