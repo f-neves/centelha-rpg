@@ -1654,3 +1654,89 @@ e pode entrar antes dela.
 exatamente no 12 quando a Centelha chega a 6); `6 + Centelha` só num Atributo de pico; meio ponto
 por tier (`6 + ⌈Centelha÷2⌉`, que põe o topo de PC em 9 e tira o 12 do alcance); ou decidir que
 **não há tabela** e o acima de 6 é permissão do Mestre, caso a caso.
+
+---
+
+## M-32 · sem a Força, o Arco Composto rende como um Arco Longo
+
+Decidido em 15/09/2026.
+
+### O ORIGINAL, como está no disco
+
+**`src/content/chapters/armas-e-armaduras.md:86`**, a linha da arma:
+
+> | Arco Composto | Distância | ★P(N1) | 6 | 1d6+2 | +0 | 300 m | 2 | Munição, **caro**.
+> **Requer Força 4**, soma **Força×2**; resvala na placa |
+
+**`src/data/armas.json:427`**, o único lugar do jogo onde este campo existe:
+
+```json
+"forcaMin": 4
+```
+
+**`src/lib/ficha-engine.ts:885` e `:1452`**, tudo o que o código faz com ele:
+
+```ts
+const reqForca = (atk.forcaMin && forca < atk.forcaMin) ? atk.forcaMin : 0;
+...
+`${c.reqForca ? ` · <span class="conj-req">requer Força ${c.reqForca}</span>` : ''}`
+```
+
+### A INCONSISTÊNCIA
+
+**O requisito imprime um aviso e não faz mais nada.** O personagem de Força 1 equipa o Arco
+Composto, lê "requer Força 4" na própria ficha, e atira com o `Força×2` inteiro. A ficha avisa e
+concede na mesma linha. Não há, em capítulo nenhum nem em `regras.json`, uma frase que diga a
+consequência de não ter a Força.
+
+**E o aviso sem dentes premia quem o ignora**, porque a arma é boa demais sem ele:
+
+| Força | Arco Curto | Arco Longo | **Arco Composto** |
+|---|---|---|---|
+| 1 | 1d6+0 | 1d6+1 | **1d6+4** |
+| 2 | 1d6+1 | 1d6+2 | **1d6+6** |
+| 3 | 1d6+2 | 1d6+3 | **1d6+8** |
+| 4 | 1d6+2 | 1d6+4 | **1d6+10** |
+
+**Na Força 1 o Composto bate 3 pontos mais forte que o Arco Longo**, que é a arma que ele deveria
+não conseguir usar, e a vantagem CRESCE quanto mais fraco é o arqueiro em relação ao requisito
+(na Força 3 são 5 pontos). Qualquer jogador que leia a tabela com atenção compra o Composto, seja
+qual for a Força.
+
+**O freio que sobraria também não existe:** a arma é marcada como "caro", e **nenhuma arma em
+`armas.json` tem campo de preço**.
+
+### A DECISÃO
+
+**Abaixo de Força 4, o Arco Composto soma `Força×1` e parte de `+0`**, que são os números exatos
+do **Arco Longo**, a arma da linha de cima da tabela.
+
+A justificativa física é a mesma que dá ao Composto o `×2`: a curva dura é o que guarda mais
+energia e o que exige braço. **Quem não arma o arco por inteiro não recebe o que a curva daria**,
+e o que sobra é um arco comum caro. Na Força 1 sai `1d6+1` em vez de `1d6+4`, e o incentivo se
+inverte sozinho.
+
+**Nenhum vocabulário novo entra no sistema**: os dois números já existem, na arma ao lado.
+
+**O que isto obriga no texto:** a palavra **"Requer"** da tabela passa a estar errada, porque a
+arma não fica proibida, fica inútil. A linha tem de dizer o que de fato acontece.
+
+### O QUE ISTO MANDA FAZER, e o custo medido
+
+**São TRÊS leitores de dano por `forcaMult`, e dois deles têm de concordar ou a mesa diverge da
+ficha:**
+
+1. **`src/lib/ficha-engine.ts:879-885`** · onde o `mult` e o `db` são montados.
+2. **`src/lib/combate-resumo.ts:101`** · o mesmo cálculo, e este é o que alimenta
+   `mesa-ficha.ts` e `mesa-bestiario.ts`, ou seja, **é por ele que o número do PC chega à mesa**.
+   Consertar só o primeiro faz a ficha dizer `1d6+1` e o Grid dizer `1d6+4` para o mesmo
+   personagem. É exatamente o "contrato silencioso" que o `CLAUDE.md` nomeia sobre `equip.ts`:
+   muda a forma, não dá conflito no git, e quebra o combate sem aviso.
+3. **`scripts/lib-tempo.mjs:331`** · o motor da simulação (`A.forca * A.arma.forcaMult +
+   A.arma.danoBonus`). Se ele não acompanhar, o espelho de motor passa a divergir, e a
+   divergência será culpa do dado e não do código.
+
+**Já existe portão cobrindo a junta:** `test-contrato.mjs` cobre `combate-resumo`, `equip` e
+`mesa-ficha` (`scripts/mapa-cobertura.mjs:53`).
+
+**O aviso da ficha (`:1452`) continua**, e passa a dizer a consequência em vez de só o requisito.
