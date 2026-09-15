@@ -230,3 +230,101 @@ estar a 5% de vida quase não muda o punhado de dados pode soar sem peso na mesa
 nenhum**. Se a pena de ferimento conta ou não para aquele teto é pergunta real e ainda não
 respondida. **Não entra nesta decisão**: é o conserto que revela o vizinho (`ARQUITETO.md §4.2`),
 e abri-lo aqui pararia a fila.
+
+---
+
+## M-13 · quanto custa recarregar uma besta · DECIDIDO em 15/09/2026
+
+**O custo mora na VELOCIDADE da própria besta, e são 9 · 12 · 15.**
+
+| arma | `ticks` hoje | `ticks` decidido | comparação |
+|---|---:|---:|---|
+| Besta Pequena | 6 | **9** | 1,5 × o arco |
+| Besta Média | 6 | **12** | 2 × o arco |
+| Besta Grande | 7 | **15** | 2,5 × o arco |
+
+**E uma desvantagem nova, que nenhuma outra arma tem: para recarregar é preciso estar PARADO.**
+
+### Por que o custo cabe na Velocidade, e não num campo novo
+
+O modelo de tempo de quem atira já diz que **o ciclo inteiro de uma arma de distância é o
+carregamento**, e que o tiro sai no último Tick. Está em `regras.json → combate.pgr.preparo.distancia`:
+`"daVelocidade": -1`, com a nota *"a flecha encaixada é preparo; a soltura é instantânea"*. Então
+a manivela da arbalesta não precisa de conceito novo: ela é mais Ticks de Preparo, e o virote sai
+no fim deles. Zero campo novo, zero estado novo, e o motor inteiro já respeita `ticks`
+(iniciativa, fita P/G/R, Grid, bestiário).
+
+**A consequência que o motor entrega de graça:** com Preparo igual à Velocidade menos 1, quem
+declara o tiro de Besta Grande fica comprometido **catorze Ticks** girando a manivela, com a
+escada de Defesa aberta em cima dele o tempo todo. É exatamente a vulnerabilidade que o pavês
+existe para cobrir, e o livro já chama o pavês de *"a parede portátil do besteiro"*
+(`armas-e-armaduras.md:129`).
+
+### O que a medição achou antes de a mesa decidir
+
+1. **São TRÊS bestas, não quatro** como o item `M-13` dizia.
+2. **Hoje a recarga não custa nada.** `recarga` é tag no dado, vira filtro clicável em
+   `/equipamentos` (a página monta os filtros a partir das tags, sem saber o que cada uma
+   significa) e é prosa em três notas. **Nenhuma linha de código lê essa tag**: varrido
+   `src/pages`, `src/lib` e `src/components`, zero ocorrências fora de `recarregar`, o botão de
+   atualizar da mesa.
+3. **O desequilíbrio que isso produzia era real.** Besta Média e Arco Longo tinham a MESMA
+   Velocidade (6), e a besta fazia `1d6+4` fixo com `+1` de Acerto contra o `1d6 + Força` e `0`
+   de Acerto do arco. Para qualquer personagem de Força 4 ou menos a besta ganhava em dano, em
+   acerto e empatava em tempo. A Besta Grande fazia `1d6+8` com Perfuração N2 por **um único
+   Tick a mais** que um arco.
+
+### A DESVANTAGEM NOVA · recarregar exige estar parado
+
+Nenhuma outra arma do catálogo tem isto. A forma da regra usa a máquina que já está publicada:
+o sistema já sabe descrever o que se faz DURANTE o Preparo, e é assim que a **Investida** é
+definida (*"gastar o Preparo CORRENDO em vez de andando"*, `combate.movimento.investida`). A
+besta é o espelho disso: **o Preparo dela não admite deslocamento nenhum, nem o Tick grátis do
+Deslocamento de Batalha** (`combate.movimento.batalha.primeiroTickGratis`).
+
+**É aqui que a tag `recarga` deixa de ser decoração**: ela passa a ser a bandeira que o motor lê
+para proibir o passo. É o único gancho de código desta decisão.
+
+### O QUE A MESA JÁ DISSE QUE FICA ABERTO
+
+1. **Proezas futuras vão poder encurtar a recarga**, e é assim que a besta volta a competir com
+   as outras armas. Não existe nenhuma hoje, e esta decisão não cria nenhuma.
+2. **Os números podem cair depois dos testes.** A mesa decidiu 9 · 12 · 15 **contando a
+   desvantagem de ficar parado**, e disse com todas as letras que talvez o tempo precise
+   diminuir um pouco por causa dela. **Os três são revisáveis por medição**, e não são régua
+   fechada.
+
+### E UM RESÍDUO QUE A DECISÃO NÃO RESOLVE
+
+**O que acontece se o besteiro se mexer no meio da recarga?** A regra diz que ele precisa estar
+parado, e o sistema já tem um caminho para quem se move no meio de um Preparo: o **desvio de
+emergência**, a 1 Tick por metro, fora da vez (`combate.md:182`). Perde os Ticks já investidos,
+ou a recarga só pausa? **Não foi perguntado e não se inventa por iniciativa.**
+
+### O que isto manda fazer
+
+1. `src/data/armas.json`: `ticks` das três bestas para 9, 12 e 15.
+2. `src/content/chapters/armas-e-armaduras.md:87-89`: a coluna de Velocidade acompanha.
+3. A tabela de Velocidade de `src/content/chapters/combate.md:52-59` vai de 3 a 7 e **precisa
+   dizer que existe ação acima de 7**, senão a besta contradiz a régua na página ao lado.
+4. A regra do "parado para recarregar" escrita onde o jogador a lê, e a tag `recarga` lida pelo
+   motor para proibir o passo de graça.
+
+### ACHADO GRANDE, encontrado ao tentar medir isto · os simuladores de balanço estão MORTOS
+
+`scripts/sim-defesas.mjs`, `sim-caps.mjs` e `sim-grupo.mjs` quebram os três na mesma linha,
+`ARM[b.armadura].esquiva`: pedem armaduras de id `'leve'`, `'media'` e `'pesada'`, e o
+`armaduras.json` de hoje traz `nenhuma, gambeson, couro, malha, brigandina, lamelar,
+placa-transicao, placa-municao, placa-completa`. O catálogo foi reescrito e os três simuladores
+nunca foram atualizados. O `sim-defesas` ainda imprime `NaN` em todas as linhas de XP antes de
+estourar, que é a mesma doença do `C-49`. **Nenhum dos três está no `validate`**, então nada
+acusou.
+
+**Isto tem consequência imediata nesta decisão:** a rota empírica para escolher os números (ler o
+`ticksMedio` do duelo, que existe no `sim-defesas`) não estava disponível. Os 9 · 12 · 15 saíram
+da escala publicada e da equivalência de um Tick por segundo, **e não de uma medição**. É por
+isso que a mesa os deixou revisáveis.
+
+**E corrige uma frase da `M-12`**: lá está escrito que "o simulador faz igual". O que é verdade é
+que **o código-fonte dele faz igual**; ele não roda. A decisão da `M-12` não muda, porque quem
+decide ali é `src/lib/rolagem.ts`, o motor vivo, e esse roda.
