@@ -15,13 +15,14 @@ Se é a sua primeira vez, siga esta ordem: os detalhes de cada passo estão nas 
 
 1. **Conceito.** Quem é o herói? Uma frase basta ("batedora silenciosa", "capitão que inspira tropas"), ela guia todas as escolhas seguintes.
 2. **Orçamento.** Combine com o Mestre: **1500** (iniciante), **2000** (veterano) ou **2600** (herói). Todo o resto sai desse bolo de XP.
-3. **Atributos.** Suba do piso 1. Teto **5** na criação, com **um único** atributo em **6** (o seu pico).
-4. **Habilidades e Especialidades.** Teto **4**, com **uma única** primária em **5** (o pico de Habilidade). Secundárias são mais baratas e cobrem nichos; cada Especialidade afia um escopo estreito de uma Habilidade.
-5. **Virtudes.** As quatro, de 1 a 6.
-6. **Força de Vontade e Aparência.** Suba a Vontade do piso 0 (um herói costuma levá-la a 5+); escolha a Aparência (0–12, normal por volta de 5–7).
-7. **Centelha.** Teto **3** na criação. Ela **não custa XP**: o tier é definido com o Mestre e define o que você alcança. A maioria começa em 1; quem quer um herói de saga começa em 3 (Herói).
-8. **Proezas, Técnicas e Artes.** Gaste o restante em poder: as Técnicas que a Centelha destrava e, se for feiticeiro, os níveis de Arte e os Efeitos Especiais.
-9. **Derivados.** PV, Defesas, Energia/Mana e Iniciativa saem de fórmulas: confira na tabela mais abaixo, ou deixe a Ficha calcular.
+3. **[Raça](/regras/racas).** Escolha o povo do seu herói e **pague o custo em XP** dele (o Humano custa **0**; os outros vão de 20 a 50). Ela vem antes dos Atributos porque é ela que **move os tetos**: um `+1 de teto` deixa aquele Atributo chegar mais alto do que chegaria, e um `−1` o trava mais baixo. Escolher a raça depois seria escolher com a régua do passo seguinte já usada.
+4. **Atributos.** Suba do piso 1. Teto **5** na criação, com **um único** atributo em **6** (o seu pico), respeitados os tetos que a sua raça moveu.
+5. **Habilidades e Especialidades.** Teto **4**, com **uma única** primária em **5** (o pico de Habilidade). Secundárias são mais baratas e cobrem nichos; cada Especialidade afia um escopo estreito de uma Habilidade.
+6. **Virtudes.** As quatro, de 1 a 6.
+7. **Força de Vontade e Aparência.** Suba a Vontade do piso 0 (um herói costuma levá-la a 5+); escolha a Aparência (0–12, normal por volta de 5–7).
+8. **Centelha.** Teto **3** na criação. Ela **não custa XP**: o tier é definido com o Mestre e define o que você alcança. A maioria começa em 1; quem quer um herói de saga começa em 3 (Herói).
+9. **Proezas, Técnicas e Artes.** Gaste o restante em poder: as Técnicas que a Centelha destrava e, se for feiticeiro, os níveis de Arte e os Efeitos Especiais.
+10. **Derivados.** PV, Defesas, Energia/Mana e Iniciativa saem de fórmulas: confira na tabela mais abaixo, ou deixe a Ficha calcular.
 
 <p class="muted">Não há ordem obrigatória de <em>compra</em>: esta é só a sequência mais fácil de raciocinar.</p>
 
@@ -85,6 +86,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 
 | Compra | Detalhe | XP |
 |---|---|:---:|
+| Raça | Humano (a régua: nenhum teto movido, nenhum traço racial) | 0 |
 | Atributos | Percepção 6 (pico) · Destreza, Vigor 4 · Força, Raciocínio 3 · Inteligência, Influência, Perspicácia, Compostura 2 | 375 |
 | Habilidades | Furtividade 5 (pico) · Atirador, Prontidão, Esquiva, Atletismo, Sobrevivência 3 · Investigação, Briga 2 · Cura 1 (secundária) | 201 |
 | Secundárias | quatro em 2 (Rastreio, Escalada, Falcoaria, Armadilhas) | 28 |
@@ -102,6 +104,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 
 | Compra | Detalhe | XP |
 |---|---|:---:|
+| Raça | Humano (a régua: nenhum teto movido, nenhum traço racial) | 0 |
 | Atributos | Destreza 6 (pico) · Força, Vigor, Influência 4 · Percepção, Raciocínio, Perspicácia, Compostura 3 · Inteligência 2 | 460 |
 | Habilidades | Armas 5 (pico) · oito em 3 (Esquiva, Prontidão, Atletismo, Integridade, Política, Manha, Resistência, Sociabilidade) · duas em 2 · uma em 1 | 276 |
 | Secundárias | sete (duas em 3, cinco em 2: Estratégia, Cavalgar, Jogos de Guerra…) | 59 |
@@ -119,6 +122,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 
 | Compra | Detalhe | XP |
 |---|---|:---:|
+| Raça | Humano (a régua: nenhum teto movido, nenhum traço racial) | 0 |
 | Atributos | Inteligência 6 (pico) · Força, Destreza, Vigor 4 · Percepção, Raciocínio, Influência, Perspicácia, Compostura 3 | 480 |
 | Habilidades | Ocultismo 5 (pico) · oito em 3 (Esquiva, Prontidão, Integridade, Conhecimentos…) · três em 2 | 284 |
 | Secundárias | seis (três em 3, três em 2) | 57 |
@@ -143,6 +147,7 @@ Passou a vida entre grimórios; a fagulha que carrega é mínima, mas o que sabe
 
 | Compra | Detalhe | XP |
 |---|---|:---:|
+| Raça | Humano (a régua: nenhum teto movido, nenhum traço racial) | 0 |
 | Atributos | Inteligência 6 (pico) · Influência, Percepção 4 · Raciocínio, Vigor, Destreza, Perspicácia 3 · Força, Compostura 2 | 496 |
 | Habilidades | Ocultismo 5 (pico) · Conhecimentos, Investigação, Esquiva, Prontidão 3 · Cura, Resistência, Furtividade, Sociabilidade, Ciências 2 · Persuasão 1 | 220 |
 | Secundárias | oito (Astronomia, Alquimia, Caligrafia, História, Herbologia, Genealogia…) | 66 |
