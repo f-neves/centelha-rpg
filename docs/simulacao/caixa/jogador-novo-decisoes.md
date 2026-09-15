@@ -1812,3 +1812,110 @@ malho precisar de ajuste, ele é consequência desta decisão e não uma decisã
 **`src/data/regras.json → dano.nota` tem um travessão** (*"três Absorções: Impacto, Corte e
 Perfuração — o Perfurante usa…"*). O portão automático só cobre `src/content/**` por decisão do
 humano, então dado e comentário dependem da conferência à mão, e esta é uma.
+
+---
+
+## M-21 · dano é dano, cura é cura, e a morte muda de régua
+
+Decidido em 15/09/2026. **A pergunta era quanto mais rápido o Impacto sara. A medição mostrou que
+a pergunta era outra, e a resposta reescreveu a regra da morte.**
+
+### O ORIGINAL
+
+**`src/content/chapters/vida-ferimentos-cura.md:12-15`**, as duas trilhas:
+
+> - **Impacto** (contundente), em regra só **nocauteia**: derruba, mas não mata.
+> - **Letal** (cortante e perfurante), **fere de verdade**: é o que tira vidas.
+>
+> A **soma das duas** trilhas é o seu dano total … A morte, porém, só olha para o Letal.
+
+**`vida-ferimentos-cura.md:54`**, onde a separação vira regra de vida ou morte:
+
+> A morte verdadeira só chega quando o **dano Letal acumulado iguala o seu PV máximo**.
+
+**`vida-ferimentos-cura.md:75-83`**, a tabela de Recuperação, com **uma coluna só**, e embaixo:
+
+> *Dano de Impacto sara muito mais rápido que o Letal.*
+
+### A INCONSISTÊNCIA
+
+**A frase promete uma diferença e a tabela não tem onde guardá-la.** "Muito mais rápido" não é
+número, e a tabela tem uma linha por estado, não duas.
+
+**E o problema real é maior.** Varri todo o código de `src/` atrás de "Letal": **ela aparece uma
+única vez, dentro de um texto de tela** (`referencia.astro:170`). Não existe acumulador, não
+existe segunda trilha, não existe coluna. O Grid tem **um** `pv_atual`, e o tipo de dano serve só
+para escolher a Absorção da armadura.
+
+**A regra que decidia morrer ou desmaiar nunca foi implementada.**
+
+### A DECISÃO
+
+**1. Dano é dano, cura é cura.** Qualquer dano soma no mesmo número: corte, perfuração, impacto,
+queimadura, queda, veneno. Qualquer cura cura, seja qual for o método.
+
+**2. O personagem cai quando chega a PV zero ou menos**, independentemente de como.
+
+**3. Morre ao perder vida ALÉM do zero, até um limite.** O limite é **metade ou um quarto do PV
+máximo**, e **qual dos dois será determinado por TESTE**, não por escolha de mesa. Enquanto o
+teste não sair, **o capítulo não publica a regra nova**: já há duas regras publicadas que se
+declaram inacabadas (o orçamento de XP e o teto de Atributo por Centelha), e o relato do jogador
+novo reclamou das duas. Não se acrescenta a terceira.
+
+**4. O tipo de dano continua importando, no lugar onde já importa:** ele escolhe a Absorção da
+armadura. A Placa completa absorve 8 de Corte e **4** de Impacto, então o malho contra placa
+continua sendo a via que era. **O tipo pesa no golpe, não na cicatriz.**
+
+### POR QUE UMA TRILHA, e não duas
+
+**A regra nova entrega o que as duas trilhas existiam para entregar.** Desmaiar a 0 e morrer só
+abaixo de 0 faz de "não matar" a decisão de **parar de bater**, que acontece na mesa, no momento,
+em vez de numa segunda coluna.
+
+**E seis armas trocam de modo entre golpes:**
+
+| arma | modos |
+|---|---|
+| Alabarda · Montante | corte, perfurante, **impacto** |
+| Martelo de Guerra | **impacto**, perfurante |
+| Picareta de Guerra | perfurante, **impacto** |
+| Machado · Machado de Arremesso | corte, **impacto** |
+
+Com duas trilhas, cada golpe de uma mesma arma iria para um pool diferente, e o Mestre teria de
+lembrar para onde foi cada um dos quatro a seis golpes de uma briga. **O sistema convida a
+alternar (é isso que os modos são), e a contabilidade puniria quem usa a arma como ela foi
+desenhada.**
+
+**E o custo bateria onde é mais caro:** coluna nova em `combatentes`, migração de Supabase rodada
+à mão, e dois números por combatente na tela do Grid.
+
+**O que se perde:** a recuperação acontece fora da tela, em dias e semanas, então separar as
+trilhas obrigaria o Mestre a carregar por semanas de tempo de jogo a memória de quanto do dano
+foi hematoma. É pouco, e foi dito à mesa junto com a escolha.
+
+### PONTO DE MELHORIA, registrado por pedido do humano
+
+**Diferenciação de dano e de cura**, por tipo. Fica como extensão conhecida, com o custo já
+medido nesta seção (coluna, migração, roteamento por modo, dois números na tela), para ser feita
+se a mesa sentir falta. **O "por enquanto" é literal.**
+
+### O QUE ISTO MANDA FAZER
+
+**Primeiro o teste, depois o texto.** O capítulo só se reescreve uma vez, com o limite já
+decidido.
+
+O que o teste precisa responder: com o limite em **metade** e em **um quarto** do PV máximo,
+quantas vezes um combatente que chega a 0 de fato **morre** antes de a briga acabar, e quanto
+tempo (em Ticks) um caído tem antes de a margem se esgotar. O golpe mediano deste sistema tira
+**7,5** antes da Absorção, então metade do PV de um Vigor 3 (17) são cerca de dois golpes e um
+quarto (8) é cerca de um.
+
+Depois do número, o capítulo perde: a separação das trilhas (`:12-15`), a regra antiga da morte
+(`:54`), e a frase da recuperação (`:83`). E ganha as três regras novas.
+
+### ACHADO DE PASSAGEM
+
+**`src/pages/mesa/referencia.astro:170` ainda diz que o Sangramento causa Letal "no início da
+rodada do personagem"**, que é exatamente a redação substituída pela decisão M-04 ("a cada 6
+Ticks desde o ferimento"). Essa página escapou da varredura da rodada 66, e o conserto independe
+desta decisão.
