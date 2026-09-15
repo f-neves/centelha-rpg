@@ -1586,3 +1586,71 @@ futura é trocar de onde um dos dois lê, e não uma migração.
 
 **Não é para inventar o campo novo agora.** Campo sem consumidor foi exatamente o que o `porte`
 foi até hoje de manhã, e a M-29 existe por causa disso.
+
+---
+
+## M-22 · ADIADA, mas com a medição feita
+
+Levada à mesa em 15/09/2026 e **devolvida à pendência por decisão do humano**: *"ainda não temos
+uma tabela de aumento de atributo por nível de Centelha. Não quero determinar isso agora."*
+
+**Este registro existe para a medição não se perder**, porque ela foi feita e responde metade da
+pergunta sozinha.
+
+### O ORIGINAL
+
+**`src/content/chapters/atributos.md:72-74`:**
+
+> A faixa **1 a 6 é a régua mortal**, e o **6** é o ápice que um ser humano já alcançou. Valores
+> de **7 a 12** são **sobre-humanos** … e **só se abrem pela Centelha** … *Como* a Centelha eleva
+> esse teto é assunto do capítulo da Centelha.
+
+**`src/content/chapters/centelha.md:44`, para onde ele aponta:**
+
+> **Autoriza o sobre-humano.** … cada salto de tier abre teto além do humano, liberado pelo
+> Mestre junto com o avanço. *(A tabela exata de quanto cada nível libera **ainda está em
+> calibração**.)*
+
+**`src/lib/ficha-engine.ts:155-156`:**
+
+```ts
+const teto: Record<string, number> = { attr: 6, skill: 6, ... };
+return (teto[kind] ?? 6) + rac;
+```
+
+### O QUE FOI MEDIDO, e vale para quando a decisão vier
+
+**Um capítulo manda para o outro, e o outro avisa que não está pronto.** A Centelha não entra no
+`capFor`: o teto é 6 mais o racial, igual para Centelha 0 e para Centelha 6.
+
+**E o bestiário já responde outra coisa.** As 309 criaturas, por porte:
+
+| porte | n | maior Atributo (mediana / máx) | Força (mediana / máx) |
+|---|---|---|---|
+| Miúdo | 24 | 4 / 9 | 1 / 2 |
+| Pequeno | 27 | 4 / 7 | 2 / 5 |
+| Médio | 120 | 5 / 8 | 4 / 8 |
+| Grande | 92 | 7 / 12 | 7 / 12 |
+| Enorme | 31 | 10 / 13 | 10 / 13 |
+| Imenso | 10 | 13 / 14 | 13 / 14 |
+| Colossal | 5 | 16 / 16 | 16 / 16 |
+
+**123 das 309 passam de 6**, e o teto delas segue o **porte**, não a Centelha: um **Braquiossauro
+de Centelha 0 tem Força 14**, e a Tarrasque chega a **16**, acima do 12 que o capítulo dá como
+topo.
+
+**A régua mortal, do outro lado, se confirma:** entre os 120 Médios de Centelha 0 ou 1, o maior
+Atributo é **5** em praticamente todos. As duas exceções são o Limo Cinzento (8) e o Basidirond
+(6), que não são gente.
+
+### O QUE ISTO JÁ DECIDE, mesmo sem a tabela
+
+**São DUAS escadas, e só uma está escrita.** A frase *"7 a 12 … só se abrem pela Centelha"* está
+certa sobre **pessoas** e falsa sobre **bichos**, e não diz de qual dos dois está falando. A
+segunda cláusula (o teto de criatura vem do porte) é conserto de texto **independente da tabela**,
+e pode entrar antes dela.
+
+**As quatro formas que foram à mesa**, para não serem redescobertas: teto `6 + Centelha` (cai
+exatamente no 12 quando a Centelha chega a 6); `6 + Centelha` só num Atributo de pico; meio ponto
+por tier (`6 + ⌈Centelha÷2⌉`, que põe o topo de PC em 9 e tira o 12 do alcance); ou decidir que
+**não há tabela** e o acima de 6 é permissão do Mestre, caso a caso.
