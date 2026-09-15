@@ -24,3 +24,13 @@ linha. O custo de XP das raças NÃO se ajusta (`M-46`); se eu achar algo que me
 - **13:36** · e a regua da `M-29b` foi morar onde a tabela de porte ja e explicada, a
   `derivados.pv.nota` do `regras.json`. Sem secao nova, como ele pediu: e o lugar que quem for
   criar raca nova le antes de escolher o porte.
+- **13:40** · um achado pequeno de VOCABULARIO, anotado e nao consertado: o capitulo das racas
+  usa `miudo` como prosa em duas linhas (`racas.md:71`, o Gnomo, e `:84`, o Halfling, que diz
+  `porte miudo`). `Miudo` e o ROTULO do porte `minusculo` no vocabulario do proprio jogo
+  (`PORTE_M` do `grid.astro:3406`), e as duas racas sao `pequeno` e nao `minusculo`. Nao muda
+  numero nenhum, e agora que `porte` e campo de verdade a palavra passou a colidir.
+- **13:40** · e nada que eu tenha achado mexe no CUSTO de uma raca, entao nao ha o que anotar
+  para a `M-46` alem do que a propria decisao ja registra (o Gnomo custa 40 e e o que mais perde).
+- **13:40** · fim. Publicado em `c45e068`, `git rev-list --count origin/main..HEAD` = 0.
+  `validate` e `build` verdes, `test-kael`, `test-contrato` e `test-porte-raca` exit 0.
+  Zero coautoria, zero travessao nas linhas que eu escrevi (conferido lendo os ARQUIVOS).
