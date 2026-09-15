@@ -2176,9 +2176,15 @@ de um "limiar de morte" que agora é derivado.
 ### 1 · QUEM MARCA A MORTE · o mestre, como hoje
 
 **O original:** `src/data/condicoes.json` traz `{"id": "morto", "nome": "Morto", "icone": "☠",
-"foraDeCombate": true, "nota": "Fim."}`, e quem a põe é o mestre, à mão. A mesa já põe `caido`
-sozinha ao chegar a zero (`src/pages/mesa/combate.astro:1348`), então o molde de marcar sozinha existe e é da
-própria casa.
+"foraDeCombate": true, "nota": "Fim."}`, e quem a põe é o mestre, à mão. A mesa já marca sozinha ao
+chegar a zero, e a condição que ela põe é `inconsciente` (`src/pages/mesa/combate.astro:1351`), então o molde
+de marcar sozinha existe e é da própria casa.
+
+**Correção de 15/09/2026, achada pela Revisora na rodada 75 (CORRIGE 5):** esta entrada dizia
+`caido`, copiando o relatório da Executora, e as duas leram o COMENTÁRIO em vez da linha. O
+comentário de `combate.astro:1346` diz "marca como caído" e o código põe `inconsciente` cinco
+linhas abaixo. O argumento sobrevive inteiro, porque o que ele afirma é que existe gancho de
+estado no zero, e existe; o nome estava errado nos dois documentos.
 
 **A decisão: a mesa NÃO marca.** O limite aparece na tela como informação, e a condição `morto`
 continua sendo gesto do mestre. **O contra comprado:** uma régua que só vale quando alguém lembra
@@ -2237,7 +2243,10 @@ que é o defeito que a trava existe para fechar.
 
 ### O QUE ISTO MANDA FAZER
 
-1. **`regras.json`**: a cláusula do Letal sai de `arcano.cura.outrasArtes`.
+1. **`regras.json`**: a cláusula do Letal sai de `arcano.cura.outrasArtes`, **e sai também de
+   `src/data/efeitos.json:6049`**, que publica a MESMA cláusula com outras palavras ("Curar dano
+   Letal por esta via exige Vida 3"). O segundo lugar entrou em 15/09/2026, pelo ESCALA 2 da
+   Revisora: o relatório citava os dois e esta lista herdou um.
 2. **`tecnicas.json`**: o texto do `inquebrantavel` passa a dizer que o Impacto para no zero, e o
    "+1 ao limiar" sai.
 3. **As quatro entradas de cura** ganham a trava pelo número, e o servidor também, porque uma
@@ -2376,3 +2385,60 @@ no dado, porque a de tempo fixo sempre existe.
 **Cortar a corda** é a única saída sem número: não há regra de dano contra objeto neste sistema, e
 inventar uma aqui seria escrever mecânica inteira de passagem. Fica como gesto de mesa (o mestre
 diz quantos Ticks a lâmina leva) até alguém precisar de mais do que isso.
+
+---
+
+## M-21d · as outras duas regras órfãs, que a minha lista não tinha
+
+Decididas em 15/09/2026. **Elas existem como entrada própria por causa de um defeito meu, e ele
+está catalogado:** a M-21b decidiu sobre "as DUAS regras publicadas que a M-21 deixou sem chão",
+que era o número que o relatório da Executora trazia, e o número não descreveu, **mandou**. Ele
+virou a condição de parada de quem decidiu. A Revisora varreu e achou mais duas, do mesmo tipo
+(regra que um jogador COMPRA, escrita em cima das duas trilhas), no `CORRIGE 2` da rodada 75.
+
+### 1 · MÃO DE FERRO · o punho atravessa o zero
+
+**O original:** `src/data/tecnicas.json:278`, `mao-de-ferro` (Punho de Ferro, nível 1, passiva):
+*"Golpes desarmados contam como arma (sem penalidade vs armados) e podem causar dano **Letal** à
+vontade."* O par mora no dado das armas, `src/data/armas.json:819`, na linha do Desarmado: *"dano
+de Impacto (**Letal só com a Técnica Mão de Ferro**)"*.
+
+**A inconsistência:** a segunda metade comprava o direito de matar com as mãos. Com "dano é
+dano", o soco já mata como qualquer coisa, e metade de uma Técnica de nível 1 passou a comprar
+nada.
+
+**A decisão: os golpes desarmados de quem tem a Técnica NÃO param no zero como Impacto comum.**
+Eles atravessam, como qualquer outro dano. A Técnica volta a comprar o que sempre comprou, matar
+com as mãos, agora na régua nova, e passa a conversar com o `inquebrantavel` da M-21b, que diz que
+o Impacto derruba e para em zero.
+
+**O contra comprado:** uma Técnica de nível 1 vira a resposta direta a uma de nível 4, e isso é
+muito poder por um nível. É também a primeira corrida de exceções deste sistema, uma comprando
+contra a outra, e vale saber que ela começou aqui.
+
+### 2 · FECHAR FERIDAS · só cai a palavra
+
+**O original:** `src/data/tecnicas.json:1449`, `fechar-feridas` (Cerne Vital, nível 3, 3 de
+Energia): *"Estanca sangramentos e cura **dano Letal leve** em minutos."* O irmão está em
+`src/data/artes.json:778`, a Arte Vida nível 3: *"**cura Letal moderado**; suspende a dor"*.
+
+**A inconsistência:** com "cura é cura", restringir a cura a uma trilha que não existe é texto
+morto dentro de um poder que custa 3 de Energia.
+
+**A decisão: cai a palavra Letal, e o GRAU fica.** A Técnica passa a "estanca sangramentos e cura
+dano leve em minutos"; a Arte Vida nível 3 passa a "cura moderado; suspende a dor". O eixo troca
+de TIPO para GRAU, que é o vocabulário que as duas já usavam ao lado (a Vida nível 2 cura "leve a
+moderado").
+
+**O contra comprado:** leve e moderado não têm número em lugar nenhum do sistema, então isto
+troca uma cláusula morta por uma vaga, e a mesa segue decidindo no olho quanto cada uma cura.
+
+### O QUE ISTO MANDA FAZER
+
+1. `tecnicas.json`: os textos de `mao-de-ferro` e `fechar-feridas`.
+2. `armas.json:819`: a linha do Desarmado perde o parêntese da trilha.
+3. `artes.json:778`: a Arte Vida nível 3 perde a palavra.
+4. **E a varredura vai junto:** estas duas apareceram porque alguém varreu em vez de confiar na
+   lista. Quem executar procura por conta própria antes de dar a lista por fechada, e o portão do
+   `CORRIGE 1` da rodada 75 (insensível a caixa, com a tela da mesa dentro) é o que impede a
+   quinta de aparecer depois.
