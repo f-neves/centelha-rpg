@@ -1216,7 +1216,14 @@ export function resumoDaAcao(acao: Acao | null | undefined, tick: number): strin
   const dv = defesaPerdida(a, tick);
   const falta = Math.max(0, a.livre - tick);
   const q = f === 'golpe' && a.golpes.length > 1 ? ` ${a.golpes.indexOf(tick) + 1}/${a.golpes.length}` : '';
-  return `${FASE_ROTULO[f]}${q} · Defesa ${dv.total} · livre em ${falta}t`;
+  // O Tick do Golpe que ainda está por vir. A fita tem largura fixa, e numa ação
+  // longa (a besta de recarga, ciclo 15) a célula do Golpe fica fora da janela:
+  // sem esta frase o número não aparece em lugar nenhum da tela. E "livre em 15t"
+  // não substitui, porque só quem sabe que o Preparo de distância é
+  // `Velocidade − 1` deduz dali em que Tick o virote sai.
+  const proximo = a.golpes.find((t) => t > tick);
+  const g = proximo != null ? ` · Golpe no t${proximo}` : '';
+  return `${FASE_ROTULO[f]}${q} · Defesa ${dv.total}${g} · livre em ${falta}t`;
 }
 
 /**

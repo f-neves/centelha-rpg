@@ -1609,15 +1609,15 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   **A alcançabilidade responde o contrário do de sempre aqui:** o caminho existe e é curto (botão
   direito → `✋ Abortar`, 2 passos), a caixa já tem os três rádios
-  (`const SAIDAS`, `src/lib/mesa-tempo-ui.ts:287`), e o que falta é **o sistema do outro lado da
+  (`const SAIDAS`, `src/lib/mesa-tempo-ui.ts:298`), e o que falta é **o sistema do outro lado da
   caixa**. Escolher "interpor" mudava só o verbo da frase do registro
-  (`const verbo`, `src/lib/mesa-tempo-ui.ts:418`), e a saída escolhida era descartada pelo Grid, que
+  (`const verbo`, `src/lib/mesa-tempo-ui.ts:429`), e a saída escolhida era descartada pelo Grid, que
   gravava só a ação limpa, sem guardar qual golpe ela cobria (o estado ANTES da rodada que fechou
   esta seção, mantido aqui porque é ele que explica a decisão). **IMPLEMENTADO nessa mesma rodada,
   as duas portas:** a do Preparo exige escolher qual golpe no ar a interposição cobre, em
   `abortarGesto` (`grid.astro:6624`), e grava isso em `acao: nova` (`grid.astro:6635`); a da
   Recuperação reusa o mesmo candidato, em `candidatosParaInterpor` (`grid.astro:6722`), e o preço
-  sai de `custoInterporRecuperacao` (`src/lib/mesa-tempo-ui.ts:556`), travado no campo de
+  sai de `custoInterporRecuperacao` (`src/lib/mesa-tempo-ui.ts:567`), travado no campo de
   Velocidade em vez de digitado. As duas portas gravam a cobertura quando há um golpe escolhido.
 
   **O CAPÍTULO NÃO TEM UMA LINHA**, e é o primeiro fato do levantamento: `interpor`, `desviar` e

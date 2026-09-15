@@ -1960,7 +1960,7 @@ laço ler igual à mesa"*: **item 6 na variante quieta**, presente do indicativo
 comportamento, sem nenhuma palavra de garantia, portanto fora de toda varredura por
 gatilho. **O comentário É a asserção que ninguém escreveu.**
 
-**A assimetria que fecha:** a cópia da lib tem teste (`test-combate-tempo.mjs:309` · `T.temGesto` e
+**A assimetria que fecha:** a cópia da lib tem teste (`test-combate-tempo.mjs:316` · `T.temGesto` e
 `:327`, via `T.temGesto`); a do harness não tem nenhum. **No dia da divergência o
 verde continua verde.**
 

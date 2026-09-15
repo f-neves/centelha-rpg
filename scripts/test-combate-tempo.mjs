@@ -31,7 +31,14 @@ async function carregar(rel) {
     entryPoints: [path.join(ROOT, rel)],
     outfile: saida, bundle: true, format: 'esm', platform: 'node',
     loader: { '.json': 'json' }, logLevel: 'error',
+    // A lib de TELA (`mesa-tempo-ui.ts`) arrasta o cliente do Supabase, que lê
+    // `import.meta.env` no topo do módulo. Fora do Astro esse objeto não existe
+    // e o import estoura antes de qualquer asserção rodar. Trocar por um global
+    // vazio é o mesmo caminho que a ponte dos simuladores já usa, e não muda nada
+    // para os módulos que não leem `env`.
+    define: { 'import.meta.env': 'globalThis.__ENV__' },
   });
+  globalThis.__ENV__ = globalThis.__ENV__ || { BASE_URL: '/', MODE: 'test' };
   tmp.push(saida);
   return import(pathToFileURL(saida).href);
 }
@@ -706,6 +713,90 @@ const HX = await carregar('src/lib/hex.ts');
   eq(HX.naLinhaHex(a, b, { q: 4, r: 4 }), false, 'uma casa fora do segmento não está na reta');
 }
 
+// 7f. a fita de largura fixa DIZ que cortou, e o resumo diz o Tick do Golpe.
+//
+// A fita tem uma célula por Tick e largura FIXA (9 no token do Grid, 10 na tira
+// da fila, 12 no card do rastreador). Isso é de propósito: a régua vertical da
+// primeira célula só deixa comparar dois combatentes se as linhas tiverem o
+// mesmo tamanho. O preço é que uma ação mais longa que a janela saía daqui
+// CHEIA e homogênea, do tamanho de sempre, sem buraco e sem aviso, e o olho lia
+// "está montando um gesto" em vez de "tem mais adiante".
+//
+// A besta de recarga (M-13, ciclo 15) é o caso que criou o problema, e ela é o
+// pior possível: em arma de distância o Preparo é `Velocidade − 1`, então a
+// célula do Golpe é a ÚLTIMA do ciclo, que é exatamente a que fica de fora.
+// Em corpo a corpo o Golpe cai no Tick 1 ou 2 e o que a fita corta é cauda de
+// Recuperação, que é uniforme e não carrega informação.
+//
+// Este portão trava as duas metades do conserto contra as TRÊS larguras reais.
+const UI = await carregar('src/lib/mesa-tempo-ui.ts');
+const LARGURAS = [['token do Grid', 9], ['tira da fila', 10], ['card do rastreador', 12]];
+{
+  ok(typeof UI.fitaHTML === 'function', 'mesa-tempo-ui não exporta fitaHTML');
+
+  // a besta grande: ciclo 15, Golpe no Tick 14, fora das três janelas
+  const aBesta = T.anatomia({ classe: 'distancia', velocidade: 15, sistema: 'pgr', golpes: 1 });
+  const besta = T.declarar(0, aBesta);
+  eq([aBesta.preparo, aBesta.offs[0], aBesta.ciclo], [14, 14, 15],
+    'a besta grande monta 14 Ticks e solta no 14º');
+
+  for (const [onde, larg] of LARGURAS) {
+    const h = UI.fitaHTML(besta, 0, { largura: larg });
+    eq((h.match(/fita-c/g) || []).length, larg, `a fita do ${onde} tem largura fixa de ${larg}`);
+    ok(h.includes('continua'), `a fita do ${onde} tem de DIZER que cortou um ciclo de 15`);
+    ok(!h.includes('f-golpe'), `no ${onde} a célula do Golpe de um ciclo de 15 fica mesmo fora`);
+    ok(h.includes('Golpe no t14'), `o ${onde} diz em que Tick o virote sai, ainda que a célula não caiba`);
+  }
+
+  // e a marca vai na ÚLTIMA célula, e não em qualquer uma: é a borda da janela
+  // que diz "daqui para a frente tem mais", e no começo ela mentiria ao contrário
+  {
+    const cels = UI.fitaHTML(besta, 0, { largura: 12 }).split('<i ').slice(1);
+    eq(cels.length, 12, 'a fita do card sai com doze células');
+    ok(cels[11].includes('continua'), 'a marca de corte fica na ÚLTIMA célula da fita');
+    ok(!cels.slice(0, 11).some((c) => c.includes('continua')), 'e em nenhuma outra');
+  }
+
+  // A BORDA, que é onde um erro de um se esconde: a besta Média tem ciclo 12 e
+  // solta no Tick 11, então na fita de 12 ela CABE inteira, com o Golpe na última
+  // célula e Recuperação zero. Marcar aí seria dizer que cortou o que não cortou.
+  {
+    const media = T.declarar(0, T.anatomia({ classe: 'distancia', velocidade: 12, sistema: 'pgr', golpes: 1 }));
+    const h12 = UI.fitaHTML(media, 0, { largura: 12 });
+    ok(!h12.includes('continua'), 'um ciclo de 12 cabe exatamente na fita de 12 e NÃO é marcado');
+    ok(h12.includes('f-golpe'), 'e a célula do Golpe dele é a última, visível');
+    ok(UI.fitaHTML(media, 0, { largura: 10 }).includes('continua'),
+      'mas o mesmo ciclo de 12 na fita de 10 corta, e aí a marca aparece');
+  }
+
+  // o controle negativo do mesmo portão: o que CABE não pode ser marcado
+  const aArco = T.anatomia({ classe: 'distancia', velocidade: 6, sistema: 'pgr', golpes: 1 });
+  const arco = T.declarar(0, aArco);
+  for (const [onde, larg] of LARGURAS) {
+    const h = UI.fitaHTML(arco, 0, { largura: larg });
+    ok(!h.includes('continua'), `o arco (ciclo 6) cabe na fita do ${onde} e NÃO pode ser marcado`);
+    ok(h.includes('f-golpe'), `e a célula do Golpe do arco aparece no ${onde}`);
+  }
+  // e quem está livre também não: a fita apagada não cortou nada
+  for (const [onde, larg] of LARGURAS) {
+    ok(!UI.fitaHTML(null, 0, { largura: larg }).includes('continua'),
+      `a fita vazia do ${onde} não cortou ação nenhuma`);
+  }
+
+  // o Tick do Golpe, no resumo: aparece enquanto ele está por vir e some depois
+  ok(T.resumoDaAcao(besta, 0).includes('Golpe no t14'),
+    'o resumo nomeia o Tick do Golpe durante o Preparo');
+  ok(!T.resumoDaAcao(arco, 5).includes('Golpe no t'),
+    'e não nomeia nenhum quando o Golpe é AGORA e não sobra nenhum pela frente');
+  // numa rajada ele aponta o PRÓXIMO, e não o que está caindo
+  const raj = T.declarar(0, T.anatomia({ classe: 'media', velocidade: 6, sistema: 'pgr', manobra: 'rajada', golpes: 3 }));
+  ok(raj.golpes.length === 3, 'a rajada de três agenda três golpes');
+  ok(T.resumoDaAcao(raj, raj.golpes[0]).includes(`Golpe no t${raj.golpes[1]}`),
+    'no primeiro golpe da rajada o resumo já aponta o segundo');
+  ok(!T.resumoDaAcao(raj, raj.golpes[2]).includes('Golpe no t'),
+    'e no último não aponta nenhum');
+}
+
 for (const f of tmp) { try { fs.unlinkSync(f); } catch {} }
 if (falhas.length) {
   console.error(`\n✘ combate-tempo: ${falhas.length} falha(s)\n` + falhas.map((f) => '  · ' + f).join('\n'));
@@ -713,4 +804,5 @@ if (falhas.length) {
 }
 console.log('✓ combate-tempo: a régua dos dois sistemas bate com o catálogo e com a §14.11,'
   + ' a iniciativa distribui os Ticks de entrada, a distância cai nas quatro faixas'
-  + ' e o Interpor (L34 §6) cobre o golpe certo, cobra o preço certo em cada porta e mede a reta em cubo');
+  + ' e o Interpor (L34 §6) cobre o golpe certo, cobra o preço certo em cada porta e mede a reta em cubo,'
+  + ' e a fita de largura fixa diz quando cortou um ciclo que não cabe nela');

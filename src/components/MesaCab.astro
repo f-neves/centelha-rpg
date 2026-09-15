@@ -598,6 +598,13 @@ const { aba } = Astro.props;
      sem contar casas. Sombra em vez de borda, para não engordar a célula e
      desalinhar a fita inteira. */
   .fita-c.agora { box-shadow: 0 0 0 1px var(--accent); }
+  /* A última célula de uma ação mais longa que a fita: desvanece para a direita,
+     dizendo "tem mais adiante". A fita tem largura fixa de propósito, então sem
+     isto uma besta de recarga (ciclo 15) sai cheia e homogênea e o olho lê
+     "montando um gesto" em vez de "cortou". Máscara, e não borda, pelo mesmo
+     motivo do `agora`: não engordar a célula nem desalinhar a fita inteira. */
+  .fita-c.continua { -webkit-mask-image: linear-gradient(to right, #000 40%, transparent);
+    mask-image: linear-gradient(to right, #000 40%, transparent); }
   .fita-mini .fita-c { width: .3rem; height: .5rem; }
   .fita-rot { margin-left: .4rem; font-size: var(--fs-micro); color: var(--ink-soft);
     font-variant-numeric: tabular-nums; }

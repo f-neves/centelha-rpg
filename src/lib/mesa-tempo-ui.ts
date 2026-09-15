@@ -41,10 +41,21 @@ export function fitaHTML(
   const largura = opts.largura ?? 12;
   const cels = fita(acao, tickAgora, largura);
   const dica = acaoVazia(acao) ? 'Livre: a guarda está inteira.' : resumoDaAcao(acao, tickAgora);
-  const corpo = cels.map((c) => {
+  // A ação mais longa que a janela sai daqui CHEIA e homogênea, do tamanho de
+  // sempre, sem buraco e sem aviso: o olho lê "está montando um gesto" e não lê
+  // "tem mais adiante". A besta de recarga (ciclo 15 contra fitas de 9, 10 e 12)
+  // é o caso que criou isto, e a célula do Golpe dela é a ÚLTIMA do ciclo, que é
+  // exatamente a que fica de fora. Alargar a fita não serve (16 células são 92 px
+  // dentro de uma peça de 104 px no telefone) e largura variável por linha mata a
+  // régua vertical, que é o que deixa comparar dois combatentes sem contar casas.
+  // Então a largura fica, e a última célula passa a DIZER que foi cortada.
+  const cortou = !acaoVazia(acao) && (acao as Acao).livre > tickAgora + largura;
+  const corpo = cels.map((c, i) => {
     const dv = defesaPerdida(acao, c.tick);
+    const ultima = cortou && i === cels.length - 1;
     const t = c.fase === 'livre' ? `Tick ${c.tick}: livre` : `Tick ${c.tick}: ${FASE_ROTULO[c.fase]}, Defesa ${dv.total}`;
-    return `<i class="fita-c ${CLS[c.fase]}${c.agora ? ' agora' : ''}" title="${esc(t)}"></i>`;
+    const tc = ultima ? `${t} · a ação continua além da fita` : t;
+    return `<i class="fita-c ${CLS[c.fase]}${c.agora ? ' agora' : ''}${ultima ? ' continua' : ''}" title="${esc(tc)}"></i>`;
   }).join('');
   const rot = opts.rotulo && !acaoVazia(acao)
     ? `<span class="fita-rot">${esc(resumoDaAcao(acao, tickAgora))}</span>` : '';
