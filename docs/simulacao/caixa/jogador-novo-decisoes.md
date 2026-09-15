@@ -1102,3 +1102,132 @@ mudam número, e muito:
   quase um quarto;
 - **nenhuma raça tem `folego`**, e `derivados.folego` promete por escrito *"base por raça (humano
   = 10)"*, entregando um número só.
+
+---
+
+## M-29 e M-26 · o Halfling é Pequeno, e o Fôlego não tem base por raça
+
+Decidido em 15/09/2026. **Duas decisões numa**, porque as duas eram a mesma ausência (campo que a
+regra exige e `racas.json` não tem) e o humano respondeu as duas na mesma frase.
+
+### O ORIGINAL, como está no disco
+
+**O primeiro, `src/data/regras.json → derivados.pv` (a tabela que existe e ninguém alimenta):**
+
+> *"PV base considera criatura de porte Médio (humanoide). base + Vigor×vigorMult. Criaturas de
+> outros portes usam a tabela `porte` (base e multiplicador escalam com o tamanho): maiores
+> aguentam mais mesmo com o mesmo Vigor. Médio = valores do topo (default para PCs)."*
+
+```
+"base": 25, "vigorMult": 3,
+"porte": { "minusculo": {15, 1}, "pequeno": {20, 2}, "medio": {25, 3},
+           "grande": {30, 4}, "enorme": {35, 5}, "imenso": {40, 5}, "colossal": {45, 5} }
+```
+
+**O segundo, `src/lib/calc.ts:29-34`:**
+
+```ts
+/** PV máximo. base + Vigor×mult, escalando com o porte (Médio = default, usado por PCs). */
+export function pv(vigor: number, porte: Porte = 'medio') {
+```
+
+**Os dois únicos chamadores vivos**, `src/lib/ficha-engine.ts:1471` e `src/lib/mesa-ficha.ts:80`,
+chamam `pv(vig)`, sem segundo argumento.
+
+**O terceiro, `src/data/racas.json`**, nas oito raças: **não existe campo `porte`**. E o que as três
+raças baixas dizem de si, em `descricao`:
+
+| raça | a própria descrição | Vigor |
+|---|---|---|
+| Gnomo | *"**Pequenos** e resistentes, engenhosos e ilusionistas"* | +1 |
+| Halfling | *"Pequenos e ágeis, atléticos apesar do **porte**"* | 0 |
+| Anão | *"**Baixos e corpulentos**, de vida longa"* | +1 |
+
+**O quarto, `src/data/regras.json → derivados.folego`**, a promessa do Fôlego:
+
+> *"(...) `<25%` do pool = −1d6 em ações físicas; 0 = exausto (só defende ou Toma Fôlego).
+> **Base por raça (humano = 10)**."*
+
+```
+"base": 10, "vigorMult": 5, "resistenciaMult": 4, "vontadeMult": 2
+```
+
+### A INCONSISTÊNCIA
+
+**No porte:** a tabela `derivados.pv.porte` existe, tem sete linhas calibradas, e **nenhum
+personagem jogável a alcança**, porque o argumento que a escolhe nunca é passado. O efeito
+prático é que `pv(vigor)` devolve `25 + Vigor×3` para todo mundo e **um Halfling tem exatamente
+o PV de um Orc de mesmo Vigor**. Não é uma regra tolerante: é uma regra que não roda.
+
+É a mesma forma exata que o `deslocamentoFrac` teve, e o comentário que consertou aquela está em
+`ficha-engine.ts:1492`, escrito pela própria casa:
+
+> *"A BAIXA ESTATURA VIRA CONTA. O traço era prosa dentro de `tracos`, e nenhum código o lia: a
+> ficha do anão mostrava os metros de um humano."*
+
+A ficha do halfling mostra o PV de um humano, pelo mesmo motivo e no mesmo arquivo.
+
+**No Fôlego:** a nota promete *"base por raça"* e o dado entrega **um número só**, 10, igual para
+as oito. A promessa não tem onde pousar: `calc.ts:123` nem recebe a raça.
+
+### A DECISÃO
+
+**1. O Halfling é `pequeno`.** Passa a valer `20 + Vigor×2`. O que isso move, medido:
+
+| Vigor | PV hoje (médio) | PV decidido (pequeno) | queda |
+|---|---|---|---|
+| 2 | 31 | 24 | −7 |
+| 3 | 34 | 26 | −8 |
+| 4 | 37 | 28 | −9 |
+| 6 (teto) | 43 | 32 | −11 |
+
+**2. O Fôlego NÃO ganha base por raça, e a regra fica em stand by.** Todas as raças básicas têm
+a mesma base, 10. A parte de "stand by" **já é o estado do código**: `src/lib/modulos.ts:13` traz
+`folego: false`, e o número não aparece na ficha nem a página entra no índice do site
+(`site.ts:63`). O que a decisão manda fazer é **apagar a frase "Base por raça (humano = 10)"** da
+nota, que é a única coisa no disco que ainda promete o contrário.
+
+### O QUE ISTO MANDA FAZER, e o custo medido
+
+1. **`src/data/racas.json` · `porte` explícito nas OITO**, e não só no Halfling. Ausente e
+   decidido-Médio são indistinguíveis, e `d.porte?.[porte] ?? {base, vigorMult}` cai no valor de
+   Médio para qualquer erro de digitação, calado. É o zero ambíguo do `CATALOGO`, na forma de
+   campo faltando.
+2. **`scripts/validate-data.mjs:49` · `porte: z.enum([...])`.** O zod **descarta chave
+   desconhecida sem erro**, então sem a entrada no esquema um `"Pequeno"` com maiúscula joga como
+   Médio e o portão fica verde. **Na mesma edição entra o `deslocamentoFrac`**, que a decisão
+   M-30 já mandou e que falta pelo mesmo motivo.
+3. **`src/lib/ficha-engine.ts:1471` e `src/lib/mesa-ficha.ts:80`** passam o porte da raça ao `pv()`.
+4. **`src/lib/ficha-engine.ts:1481`, e este é o que morre calado:**
+
+   ```ts
+   r('Pontos de Vida', pvv, `25 + Vigor ${vig}×3 = ${pvv}`)
+   ```
+
+   Os dois números estão escritos à mão dentro da explicação. Sem mexer nele, a ficha do Halfling
+   imprime **"25 + Vigor 3×3 = 26"**, uma conta que não fecha na própria linha. A explicação tem
+   de sair da linha de `porte` em uso, não de outra cópia à mão.
+5. **Linha de commit para quem abre a mesa amanhã:** `pv_max` é **coluna gravada** em
+   `combatentes`. Halfling que já foi enviado para uma mesa continua com 34 até ser reenviado, e
+   **não há migração que alcance isso**. O conserto é o reenvio pela ficha.
+
+### O QUE FICA ABERTO, e não é para a Executora decidir
+
+**O porte do PC não chega ao Grid.** `src/pages/mesa/grid.astro:10216` decide o porte assim:
+
+```ts
+const porteRotuloDe = (c: any) => (c?.tipo === 'criatura' ? MON[c.monstro_id]?.porte : null);
+```
+
+PC é sempre `null`, que normaliza para Médio, e o comentário logo acima diz que isso é de
+propósito: *"PC sem `porte` (`null`) normaliza para `medio`, que é a metade implícita do par
+atacante/alvo em toda mesa de PCs."*
+
+Com `porteAcerto.porDiferenca[1] = 3`, ligar esse caminho daria ao Halfling **+3 para acertar
+qualquer alvo Médio, e −3 para quem o ataca**, em toda jogada física, nos dois sentidos. Isso é
+um ganho de combate que **ninguém pediu e ninguém precificou**: a pergunta que foi à mesa era de
+PV. Então esta decisão implementa o PV e **deixa o Grid como está**, sabendo que por enquanto
+`racas.json` diz `pequeno` e o Grid joga Médio para o mesmo personagem. As duas listas precisam
+concordar, e concordam depois de uma decisão própria sobre o ±3.
+
+**O Gnomo e o Anão continuam sem porte decidido**, e a pergunta vai à mesa em seguida.
