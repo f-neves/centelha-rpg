@@ -543,3 +543,62 @@ crescente. Medido Tick a Tick por `defesaPerdida` num ciclo 15 de classe `distan
 Ela **não acumula com o tamanho do Preparo**. Um Preparo de catorze Ticks não é catorze vezes pior
 que um de cinco: é o mesmo −2 durando quase três vezes mais tempo. O achado é da Executora
 (`A-22b`), e a inferência corrigida é minha.
+
+---
+
+## M-04 · quantos Ticks tem uma rodada, e um turno · DECIDIDO em 15/09/2026
+
+**A pergunta encolheu ao ser medida: a conversão já existe, decidida e no dado.** O que faltava
+era publicação, uma palavra, e um relógio.
+
+### O que a medição achou antes de a mesa decidir
+
+1. **`src/data/regras.json:1237`**, dentro do bloco `arcano`, campo `notaTurno`: *"**1 turno = 6
+   ticks.** A régua breve inteira cabe dentro de uma briga: o nível 6 são 50 turnos, 300 ticks,
+   cinco minutos."*
+2. **O motor implementa o mesmo número**: `export const TICKS_POR_TURNO = 6`
+   (`src/lib/artes-grid.ts:142`), e `rodadaDoTick = Math.floor(tick / 6) + 1` (`:1565`).
+3. **`notaTurno` não é lida por ninguém.** Varridos `src/pages`, `src/lib` e `scripts`: zero
+   consumidores. E nenhum capítulo diz "6 Ticks" em lugar nenhum.
+4. **O relatório do jogador novo errou neste ponto**, e vale registrar para quem o reler: ele
+   afirma que *"não existe conversão Tick ↔ rodada em fonte nenhuma"* (`C-29`). A linha 1237 está
+   no `regras.json`, que ela declarou ter lido inteiro. **A ausência era de leitura, não de
+   fonte** · que é a primeira forma da tabela do `CATALOGO.md`, e desta vez apareceu dentro do
+   próprio instrumento que existia para achá-la.
+
+### A decisão
+
+**1 turno = 1 rodada = 6 Ticks**, o que ratifica o dado e o motor.
+
+**E o Sangramento corre no RELÓGIO DE CADA UM, não no da mesa.** Cada ferido tem o próprio
+contador de seis Ticks, e a palavra *"do personagem"* que já está no texto
+(`vida-ferimentos-cura.md:58`) passa a significar o que diz.
+
+**O contra que a mesa comprou, com ele à vista:** é estado novo por combatente, que a mesa não
+guarda hoje, e um contador a mais para o mestre acompanhar em cada ferido. O resultado prático
+fica quase igual ao do relógio global (todo mundo sangra a cada 6 Ticks, só que desalinhado),
+então paga complexidade por uma diferença que aparece pouco.
+
+**Por que a mesa não quis o relógio global, e isso é coerência e não capricho:** o capítulo abre
+dizendo que *"o combate não corre em turnos rígidos"*. Um batimento global de seis em seis seria
+um turno rígido reinstalado pela porta dos fundos, e o relógio próprio é o que mantém a linha do
+tempo de Ticks sendo o que ela promete ser.
+
+### O que isto manda fazer
+
+1. **Publicar a conversão onde o leitor a procura.** Ela vale para o combate inteiro e mora dentro
+   do bloco do Arcano, onde só quem conjura olha. A frase entra em `combate.md`, e o `notaTurno`
+   deixa de ser a única fonte.
+2. **Ligar "rodada" a "turno" no DADO.** Hoje quem faz essa ponte é um comentário de código.
+3. **O Sangramento ganha o contador por combatente na mesa.** É o único trabalho de código desta
+   decisão, e não é pequeno: o rastreador e o Grid precisam saber, por ferido, quando cai o
+   próximo tique de sangue.
+
+### DOIS RESÍDUOS, não decididos
+
+1. **De quando se conta o primeiro tique?** "Seis Ticks contados dele" pode ser do instante em que
+   ele entrou na luta ou do instante em que a ferida abriu. As duas são defensáveis e mudam quando
+   o primeiro dano cai. **Não foi perguntado.**
+2. **A palavra "rodada" continua em três lugares dos capítulos**, e só um deles carrega regra (o
+   Sangramento). Os outros dois são prosa (a Horda e o raspão). Uniformizar o vocabulário é
+   conserto, não decisão, e o `C-29` já existe para isso.
