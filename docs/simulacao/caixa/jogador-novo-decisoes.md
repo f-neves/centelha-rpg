@@ -2294,3 +2294,85 @@ CLIENTE, pelo `RESUMO` (`src/lib/combate-resumo.ts:161`). Isso não atrapalha ho
 é marcada pela mão do mestre (M-21b, decisão 1) e nada no servidor precisa do limite. **Vai cobrar
 resposta quando a trava da cura chegar ao RPC**, que é uma das quatro entradas e é a única que
 mora no banco.
+
+---
+
+## M-33 · Imobilizado não é uma prisão, são quatro
+
+Decidido em 15/09/2026. **A pergunta era "o que Imobiliza faz", e a resposta foi que a pergunta
+estava mal posta:** o sistema tinha uma condição só para situações que se resolvem de maneiras
+diferentes.
+
+### O ORIGINAL, e são quatro vozes
+
+**`src/content/chapters/armas-e-armaduras.md:52`**, o capítulo:
+
+> **Imobiliza**, não causa dano: um acerto deixa o alvo **Imobilizado** até escapar (**Força ou
+> Atletismo** vs o lançamento).
+
+**`src/data/armas.json`**, a nota da Rede:
+
+> Não fere: um acerto deixa o alvo Imobilizado (Defesa para prender; escapar com **Força ou
+> Acrobacias** vs o lançamento).
+
+**`src/data/tecnicas.json`**, a Técnica `imobilizar` (Agarrão do Urso, nível 1, 1 de Energia):
+
+> prende o agarrado (**ele gasta ação para escapar**).
+
+**`src/data/condicoes.json`**, a condição, que é quem o motor lê:
+
+> `{"id": "imobilizado", "defesa": -4, "acao": -2, "nota": "Agarrado, preso ou amarrado.
+> Praticamente sem esquiva ativa."}`
+
+### A INCONSISTÊNCIA, e ela é quádrupla
+
+1. **O capítulo e o dado discordam da perícia** para a MESMA rolagem: Atletismo contra Acrobacias.
+2. **"Vs o lançamento" não nomeia número nenhum.** Não há alvo em `regras.json` nem em
+   `condicoes.json`, e o total do arremesso é um número que aconteceu uma vez e ninguém guarda.
+3. **A Técnica resolve a mesma situação SEM rolagem**, só gastando ação. É uma terceira regra para
+   a mesma pergunta.
+4. **E "Acrobacias" NÃO EXISTE.** Não está entre as 24 primárias, e a secundária que faz esse
+   trabalho chama-se **Ginástica** (`src/data/habilidades-secundarias.json`, id `ginastica`), cuja descrição abre
+   com *"Acrobacia: cambalhota, salto mortal, rolamento de queda, passar por um vão apertado"*. O
+   dado cita uma perícia pelo nome errado, e ninguém percebeu porque o nome é plausível.
+
+### A DECISÃO · quatro prisões, e cada uma sai do seu jeito
+
+| prisão | como se sai | contra o quê |
+|---|---|---|
+| **Agarrado** por uma criatura | disputa, e escapar gasta a ação do preso | **Força ou Destreza + Briga** dos dois lados |
+| **Amarrado** com corda | desfazer os nós, **ou cortar a corda** | **Prestidigitação** contra a **jogada de quem atou** |
+| **Envolvido** por rede | sair leva tempo, e o teste é atalho | **4 Ticks** sem rolar nada, ou um teste contra **Dif 10** |
+| **Preso sob peso** | tirar a coisa de cima | a **régua de carga** que o `regras.json` já publica |
+
+**O par do agarrão segue a régua da M-14:** o Atributo é escolhido pela descrição da ação, então
+quem rompe usa Força e quem escorrega usa Destreza, com a mesma perícia (Briga) nos dois casos.
+
+**Duas coisas foram aplicadas como engenharia, e não decididas**, porque a régua já existe: os
+**4 Ticks** da rede são a faixa utilitária da tabela de Velocidade do capítulo de Combate, e o
+peso sai das cinco faixas de carga sobre o peso máximo, que o `regras.json` traz com a queda de
+velocidade por `1 − (peso ÷ 3P/4)^1,5`.
+
+**O contra comprado, dito na hora:** quatro saídas é mais regra do que uma, e a rede ganha duas
+sozinha. O que torna isso defensável é que as quatro situações já existiam e eram resolvidas por
+improviso na mesa; o que se ganha é que nenhuma delas prende um jogador a combate inteiro por azar
+no dado, porque a de tempo fixo sempre existe.
+
+### O QUE ISTO MANDA FAZER
+
+1. **`condicoes.json`:** a condição `imobilizado` precisa dizer de que tipo ela é. A forma no dado
+   é da Executora, com uma condição: o tipo tem de ser explícito, e não inferido do texto da nota.
+2. **`regras.json`:** o bloco das quatro saídas, com as perícias, a Dif 10 da rede e os 4 Ticks.
+3. **`armas-e-armaduras.md:52` e a nota da Rede** se reescrevem pelas quatro linhas da tabela, e
+   a palavra Acrobacias sai dos dois.
+4. **A Técnica `imobilizar`** passa a apontar para a regra do Agarrado em vez de publicar a
+   terceira resolução.
+5. **Um portão que exija que toda perícia citada em dado e em capítulo EXISTA na lista de
+   perícias.** É ele que teria pego "Acrobacias" no dia em que foi escrita, e o defeito é da
+   família que o `CATALOGO.md` chama de duas listas que precisam concordar.
+
+### O QUE FICA ABERTO
+
+**Cortar a corda** é a única saída sem número: não há regra de dano contra objeto neste sistema, e
+inventar uma aqui seria escrever mecânica inteira de passagem. Fica como gesto de mesa (o mestre
+diz quantos Ticks a lâmina leva) até alguém precisar de mais do que isso.
