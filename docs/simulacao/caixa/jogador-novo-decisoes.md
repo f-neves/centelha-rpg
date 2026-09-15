@@ -1985,19 +1985,26 @@ apropriado para um deus e é a razão de o teto do jogador ficar onde está.
 
 ### O QUE ISTO MANDA FAZER
 
-1. **`escalaCentelha` ganha os degraus 7 a 12.** O 12 é o teto real, de deus e entidade cósmica.
+1. **FEITO** `ae515c0` · **`escalaCentelha` ganha os degraus 7 a 12.** O 12 é o teto real, de deus e entidade cósmica.
    **Nomear cada um dos seis degraus novos é worldbuilding e FICA ABERTO** (ver abaixo); o que
    esta decisão exige é que os números existam e que a faixa divina esteja descrita.
-2. **`validate-data.mjs:59` passa de `max(10)` para o topo da escala**, e **de preferência lendo o
+2. **FEITO** `ae515c0` · **`validate-data.mjs:59` passa de `max(10)` para o topo da escala**, e **de preferência lendo o
    tamanho de `escalaCentelha` em vez de repetir o número**. Foi a repetição que deixou as duas
    listas divergirem por dez criaturas sem que o portão piscasse.
-3. **O teto do jogador (6) tem de estar ESCRITO**, no capítulo da Centelha. Um leitor que vê a
+3. **FEITO** `ae515c0` · **O teto do jogador (6) tem de estar ESCRITO**, no capítulo da Centelha. Um leitor que vê a
    régua até 12 e o próprio teto em 6 sem explicação lê aquilo como defeito.
-4. **Três lugares renderizam a escala** e vão passar a mostrar treze degraus:
+4. **FEITO** `ae515c0` · **Três lugares renderizam a escala** e vão passar a mostrar treze degraus:
    `ficha-engine.ts:114` (o popup da ficha), `referencia.astro:54` e `ref-index.json.ts:14`.
    Nenhum número de criatura muda.
 
 ### O QUE FICA ABERTO
+
+**O RÓTULO PROVISÓRIO QUE ENTROU, dito aqui porque a decisão pediu que eu dissesse qual foi:**
+os seis degraus renderizam como **"Divino · a nomear"**, e cada um carrega `provisorio: true` no
+dado (`ae515c0`). A escolha é de propósito feia de ler: quem abrir a ficha, a referência da mesa ou o
+índice vê que aquilo é um lugar guardado e não um nome. Os TEXTOS dos seis degraus, esses, foram
+escritos (anjo maior e senhor demoníaco no 7, o Balor e o Solar no 9, o Tarrasque no 10, divindade
+plena no 12), então o que falta é só o nome do degrau.
 
 **Os nomes dos degraus 7 a 12.** O 0 a 6 tem rótulo próprio (Mortal, Tocado, Desperto, Herói,
 Grande herói, Lendário, Semideus), e a faixa nova precisa do mesmo tratamento ou de uma decisão
