@@ -1231,3 +1231,39 @@ PV. Então esta decisão implementa o PV e **deixa o Grid como está**, sabendo 
 concordar, e concordam depois de uma decisão própria sobre o ±3.
 
 **O Gnomo e o Anão continuam sem porte decidido**, e a pergunta vai à mesa em seguida.
+
+### ADENDO · o porte do PC não chega ao Grid em TRÊS lugares, não em um
+
+Escrito em 15/09/2026, depois da implementação (`b753e68`). Eu tinha nomeado **um** lugar, e a
+Executora achou mais dois ao implementar. Os três leem a mesma coisa, `MON[c.monstro_id]?.porte`,
+e os três dizem "no tabuleiro, só criatura tem porte". **As consequências são diferentes**, e por
+isso valem citação separada:
+
+1. **`src/pages/mesa/grid.astro:10211`** · o rótulo que vira o **±3 de acerto**. É o que a decisão
+   já nomeou e mandou deixar como está.
+2. **`src/pages/mesa/grid.astro:3412`** · `diametroM(c)`, que dá **1 metro a todo PC** e alimenta
+   a medida de alcance **de borda a borda** decidida no L67. Um Halfling de meio metro mudaria
+   geometria de alcance. **Não é o ±3: é outra conta, com outro efeito.**
+3. **`src/lib/artes-grid-mesa.ts:1367`** · `pesoDoPorte(c)`, que devolve **0 para PC**, porque o
+   bloco não declara quilos e o porte não chega. Onde esse peso entra numa conta, o PC entra como
+   zero.
+
+A divergência que esta decisão aceitou de propósito (`racas.json` diz `pequeno`, o Grid joga
+Médio) tem portanto **três frentes**, e as três se fecham juntas quando a mesa decidir o ±3. É
+uma decisão maior do que parecia quando eu a parquei, e a estimativa de uma linha estava errada
+por dois terços.
+
+**E a implementação achou um segundo lugar no Fôlego também:** além da nota do `regras.json`, o
+capítulo repetia a promessa onde o jogador de fato lê, em `src/content/chapters/folego.md:12`
+(a fórmula escrita como *"10 (base racial) + Vigor × 5…"*, e logo abaixo *"Um humano comum parte
+de 10"*). Os dois saíram. Conserto de promessa em dado **sem varrer o capítulo** teria deixado a
+metade visível de pé.
+
+**Como o ponto 4 foi resolvido, e vale registrar:** a explicação da linha de PV na ficha não foi
+corrigida à mão para `20 + ×2`. Ganhou uma função, `pvPorte(porte)` em `calc.ts`, que devolve a
+**linha da tabela em uso**, e quem calcula e quem explica passaram a ler a mesma. Não sobrou
+número escrito à mão dentro da frase, que era a forma de defeito que o ponto 4 apontava.
+
+**Gnomo e Anão estão gravados como `medio`**, e isto é o comportamento de hoje tornado
+explícito, **não uma decisão**. Se a mesa disser Pequeno, é trocar a palavra e o portão
+acompanha sozinho.
