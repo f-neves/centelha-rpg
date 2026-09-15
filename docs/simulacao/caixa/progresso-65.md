@@ -44,3 +44,18 @@ estado de mesa e em dano aplicado: se ele crescer, fecho o primeiro e trago o se
 - **05:24** · oito citacoes envelheceram (o `mesa-core.ts` e o `combate.astro` estao na lista dos
   doze) e o `validate` pegou as oito. Re-apontadas pela ancora: `mesa-core.ts` 186->198, 192->204,
   457->471; `combate.astro` 1764->1768, 1810->1814, 2128->2132. `validate` e `build` verdes.
+- **05:28** · ITEM 2 medido e trazido como PLANO, sem executar, que era a instrucao se ele
+  crescesse. Cresceu: mexe em dano aplicado e em estado gravado de mesa viva. Escrito em
+  `docs/simulacao/caixa/m04-sangramento-plano.md`.
+- **05:28** · e a medicao desarmou a parte que eu achava mais dificil: NAO ha relogio novo a
+  inventar. As duas telas ja concordam sobre o agora (`tick_atual` no Simultaneo, o Tick de quem
+  esta na vez no resto), e ja existe uma varredura por Tick sobre `c.condicoes`
+  (`varrerCondicoesVencidas`, `artes-grid-mesa.ts:2047`), com campo so-de-instancia (`ate`),
+  escrita por `gravarCondicao` e guarda de mestre. O Sangramento pede o campo gemeo (`desde`) e
+  uma varredura irma. E os dois contadores desalinhados que a mesa aceitou saem DE GRACA: o
+  array de condicoes nao deduplica.
+- **05:28** · quatro riscos levantados, nenhum hipotetico: o relogio PULA (`avancarTick` anda
+  `quanto` Ticks de uma vez, entao a conta e por INTERVALO e nao por instante); o que ja esta
+  salvo nao tem `desde` e nenhuma migracao alcanca JSON em coluna; so o mestre escreve, pela RLS;
+  e duas abas abertas podem cobrar duas vezes. Esse ultimo tem uma decisao de desenho que e dele,
+  e eu recomendo com o preco escrito.
