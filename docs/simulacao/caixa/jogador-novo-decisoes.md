@@ -2068,3 +2068,98 @@ que acontece na mesa e no momento, foi exatamente o que substituiu as duas trilh
 continua acumulando dano rumo à morte, e isso continua verdadeiro com o limite novo. Se a mesa
 sentir que o sangue mata rápido demais quem está caído, o número a mexer é o intervalo de 6 Ticks
 ou uma suspensão do Sangramento abaixo de zero, e é decisão de regra.
+
+---
+
+## M-24 · a Investida é uma Corrida que termina em ataque
+
+Decidido em 15/09/2026, em quatro respostas da mesa. **A pergunta era "a Investida usa o Arranque
+ou a Corrida", e a resposta trocou a natureza da ação em vez de escolher entre as duas
+velocidades.**
+
+### O ORIGINAL
+
+**`src/content/chapters/combate.md:228-240`**, a seção Investida, como está publicada:
+
+> Investir é **gastar o Preparo correndo** em vez de andando. Não é ação nova nem regra nova: é o
+> Preparo que a sua arma já tem, atravessado à velocidade de Corrida.
+>
+> | **Preparo investindo** | velocidade de Corrida por Tick | −2 **a mais** | **+1d6** |
+>
+> *Kael, de martelo (Preparo 2), anda 4 m por Tick e corre 6. Fechando a distância no Preparo ele
+> cobre 8 metros com a Defesa em −2. Investindo, cobre 12, com a Defesa em −4.*
+
+**`combate.md:219-224`**, a Corrida, três seções acima, com duas velocidades:
+
+> A largada acelera: os **3 primeiros Ticks** correm à Velocidade de **Arranque**; do **4º Tick em
+> diante**, à Velocidade de **Corrida**.
+
+**`src/data/regras.json`**, `combate.movimento.investida`: `danoDados: 1`, `defesaExtra: -2`, e o
+mesmo texto do capítulo.
+
+### A INCONSISTÊNCIA, e ela é tripla
+
+Kael tem Força 3, Destreza 4, Atletismo 3, o que dá **Arranque 5,5** (mostra 6) e **Corrida 8,5**
+(mostra 9).
+
+1. **O exemplo não usa a velocidade que a regra manda.** Ele diz "corre 6", e 6 é o Arranque. Pela
+   regra escrita, Kael cobriria 9 por Tick e 18 metros, não 12.
+2. **A regra escrita é inalcançável pela régua do mesmo capítulo.** O Preparo máximo de arma corpo
+   a corpo é 2 Ticks (`combate.pgr.preparo`: leve 0, média 1, haste e pesada 2), então nenhuma
+   investida chegava ao Tick 4, e "velocidade de Corrida" nomeava uma faixa em que nenhum golpe
+   pisava.
+3. **A mesa já jogava o contrário do livro.** `src/pages/mesa/grid.astro:5614`, em `passoNoModo`, devolve
+   `p.arranque` para Corrida e Investida, com o comentário logo acima afirmando que a Investida
+   "cobre a distância da Corrida por Tick". O código fazia uma coisa e o comentário dizia outra, e
+   nenhum teste discordava.
+
+### A DECISÃO, em quatro partes
+
+**1 · A INVESTIDA É UMA CORRIDA QUE TERMINA EM ATAQUE**, com a escada de velocidade inteira:
+Arranque nos três primeiros Ticks, Corrida do quarto em diante. **Ela não é o Preparo atravessado
+correndo**, que é coisa diferente e continua existindo: preparar um golpe e se deslocar durante a
+preparação é o Deslocamento de Batalha, com a guarda de pé.
+
+**2 · A CORRIDA CONTÉM O PREPARO.** Os Ticks correndo são o Preparo da arma, e **o Tick do golpe é
+o encontro entre o atacante e o alvo**. O martelo (Preparo 2) corre pelo menos dois Ticks; a arma
+média, um; a leve, nenhum, e por isso o mínimo em metros abaixo é o que a mantém honesta.
+
+**3 · A DEFESA CONTINUA EM −4 enquanto atravessa**, e a decisão anterior da mesa fica de pé:
+*investir é forma de aproximação, mesma família da Corrida, e gasta a guarda dela e nada mais*. Na
+régua isso já nasce somado, `escada.preparo` (−2) mais `investida.defesaExtra` (−2), e dá
+exatamente a `corrida.defesa` (−4). **O que foi recusado de novo, agora com o modelo novo à
+vista, é o −6** (somar Corrida com Preparo como duas coisas). O contra comprado: a corrida agora
+pode durar dez Ticks em vez de dois, e cobrar o mesmo por dez e por dois faz da investida longa a
+melhor forma de chegar, quando ela deveria ser a mais arriscada.
+
+**4 · O MÍNIMO SÃO 5 METROS**, e ele é em METROS e não em Ticks. Um mínimo em Ticks cobraria mais
+metros justamente de quem corre melhor, que é o contrário do que a Investida deve premiar. Os 5
+metros são o topo da faixa humana do Deslocamento de Batalha (2 a 5 m por Tick): investe-se de
+onde um passo de combate não alcança em um Tick. Quem corre rápido cobre isso em um Tick e o lento
+em dois, e é aí que o rápido é favorecido. O contra comprado: com hexágono de 1 metro, 5 metros é
+perto, então quase toda briga vai permitir investir, e a Investida perde o ar de travessia.
+
+O **+1d6** no golpe não foi tocado e continua como está.
+
+### O QUE ISTO MANDA FAZER
+
+1. **`regras.json`, `combate.movimento.investida`:** o texto deixa de dizer que é o Preparo
+   atravessado correndo e passa a dizer o que a mesa decidiu, e o bloco ganha o mínimo de 5 metros
+   como DADO. `danoDados` e `defesaExtra` não mudam.
+2. **`combate.md`, a seção Investida:** reescrita pelas quatro partes acima, com o exemplo do Kael
+   refeito (correndo dois Ticks ele cobre 12 metros em Arranque; correndo cinco, cobre 36, porque
+   o quarto e o quinto já são Corrida).
+3. **O Grid ganha a escada inteira.** Hoje `passoNoModo` devolve `p.arranque` para toda a corrida,
+   e o comentário explica que "quase toda perseguição de combate cabe nos três primeiros Ticks".
+   Com a corrida podendo ser longa, isso deixou de ser verdade: do quarto Tick em diante o passo é
+   o de Corrida.
+4. **O mínimo de 5 metros vira recusa na declaração**, e não conselho de texto.
+5. **Um portão prende os três lugares** (o dado, o capítulo e o passo do Grid), que é o que faltava
+   para as três vozes divergirem por meses sem ninguém piscar.
+
+### O QUE FICA ABERTO
+
+**O que acontece quando o alvo se move durante a corrida.** O Tick do golpe é o encontro, e o
+encontro depende dos dois. Quem recua estica a corrida, e não está decidido se ela estica
+indefinidamente, se o atacante pode desistir no meio (a Corrida é interrompível a qualquer Tick,
+então provavelmente sim) e o que acontece com o +1d6 de quem para de correr antes de encontrar.
