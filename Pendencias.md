@@ -4004,6 +4004,18 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   pior que o primeiro, porque o primeiro só gastou uma correção e este gastou uma investigação
   inteira que chegou à conclusão errada.
 
+- [ ] **L96 · [ESCALA 1 da Revisora na rodada 75, 15/09/2026] Duas varreduras de dano contínuo
+  escrevem a Vida por motores diferentes, e só uma tem piso.** O tique de condição contínua do
+  Grid chama `gravarVida`, que é `curarPv` (`src/pages/mesa/grid.astro:2682`) e só tem TETO, nunca piso; a aba
+  Combate faz a MESMA varredura por `mexerVida` (`src/pages/mesa/combate.astro:1334`), e o piso dela está em `:1338`, que tem
+  `Math.max(0, …)`. Com as duas abertas, **quem varre primeiro decide** se a peça vai a −1 ou para
+  em 0, e isso é anterior à regra nova da morte: é o único caminho do projeto que já atravessava o
+  zero, e atravessava por acidente. Conferido pela Revisora na cadeia inteira, **sem exercitar em
+  produção**, e está escrito assim. Não é conserto da rodada 75, que não tocou nenhum dos dois
+  motores nem prometeu nada sobre eles. **O que decide se isto vira trabalho:** a rodada que puser
+  a trava da cura pelo número vai mexer nos dois pisos de qualquer jeito, e aí se mede se o
+  conserto fecha este item de passagem ou se ele sobrevive.
+
 - [ ] **L95 · [ACHADO pela Executora no levantamento da rodada 54, CONFERIDO e AMPLIADO pelo
   Arquiteto em 12/09/2026] O peso de quem é empurrado nunca vem do bestiário: o campo lido não
   existe, e a estimativa por porte responde sempre, calada.**
