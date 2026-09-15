@@ -41,3 +41,6 @@ radar, sem medição.
   ANTECEDENTES, e o `xan` entra no mesmo total da ficha. Mesmo molde do defeito desta rodada, e
   o portao novo NAO o pega, porque somar a coluna nao sente falta de uma linha que nunca existiu
   (ao contrario da Raca, que agora e cobrada por asserção propria).
+- **13:57** · fim. Publicado em `b6a5293`, `git rev-list --count origin/main..HEAD` = 0.
+  `validate` e `build` verdes. Zero coautoria, zero travessao nas linhas que eu escrevi
+  (conferido lendo os ARQUIVOS: o capitulo e o teste novo tem zero).
