@@ -43,3 +43,14 @@ mandou não escrever, e as duas citações erradas do `progresso-75.md`, que sã
   · um lado apagado do capítulo → 1 erro nomeando o lado que ficou sem testemunha;
   · `PV 34 morre em −17` de volta na `limiteNota`, com o número CERTO → 1 erro, porque o lugar do
     exemplo é o capítulo. Verde com tudo no lugar, e `diff` vazio contra as cópias de antes.
+- **18:43** · item 5 FEITO, e é conserto meu no `progresso-75.md`: `combate.astro:1351` põe
+  `inconsciente` e não `caido` (as duas lemos o COMENTÁRIO de `:1346`, que fala em "caído", e não
+  a linha que escreve), o campo da Arte Vida é `arcano.cura.outrasArtes`, e as regras órfãs são
+  QUATRO e não duas. A correção está escrita como correção, com a data, porque o "duas" já tinha
+  virado condição de parada de quem decidiu. O comentário de escopo do portão carregava as duas
+  mesmas citações erradas e foi consertado junto.
+- **18:43** · `npm run validate` verde, `EXIT=0` lido do código de saída.
+- **18:44** · `544cfba` empurrado, `origin/main..HEAD` = 0. Travessão e coautoria conferidos nos
+  seis arquivos que toquei, lendo o arquivo e não o `diff`: as contagens antigas não se moveram
+  (15 no `validate-data.mjs`, 21 no `regras.json`, 9 no `referencia.astro`, 0 nos dois capítulos
+  e nos dois progressos) e nenhuma linha minha traz um.
