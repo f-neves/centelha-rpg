@@ -35,3 +35,8 @@ que decida porte de PC, eu relato e não conserto.
   isso e outra consequencia, nao a mesma. E ha `artes-grid-mesa.ts:1367`, o `pesoDoPorte`, que
   devolve 0 para PC (o bloco nao declara quilos e o porte nao chega). Os tres leem
   `MON[c.monstro_id]?.porte`, ou seja, so criatura tem porte no tabuleiro.
+- **13:27** · fim. Publicado em `b753e68`, `git rev-list --count origin/main..HEAD` = 0.
+  `validate` e `build` verdes, mais quatro portoes de dado que enxergam o que toquei
+  (`test-kael`, `test-contrato`, `test-cobertura-lib`, `test-deslocamento`): exit 0 nos quatro.
+  Zero coautoria, zero travessao nas linhas que eu escrevi (conferido lendo os ARQUIVOS, e
+  achei um no cabecalho do meu proprio teste, corrigido antes do commit).
