@@ -973,3 +973,66 @@ linguagem.**
 **As Dificuldades 13 e 14 existem na matemática** (a Virtude 6 com Firula 3 passa 33% e 17%) **e
 não entram na escada publicada.** O máximo humano é 15 e a 15 é número morto. Quem quiser uma cena
 acima de 12 está fora da régua, e isso é escolha da mesa.
+
+---
+
+## Correção à M-47 · a minha medição estava errada, e o instrumento é que estava quebrado
+
+Duas afirmações da seção `M-47` são falsas. As duas foram achadas pela Executora ao executar, e
+as duas eu reconferi no disco antes de escrever isto.
+
+### 1 · "Os capítulos têm ZERO ocorrências" · eram CINQUENTA
+
+Medido em `c407b0e^`, o commit anterior ao conserto dela, contando com Python:
+`habilidades.md` 25, `habilidades-secundarias.md` 12, `coracao-do-sistema.md` 3,
+`qual-sistema.md` 3, `acoes-oficio-e-mundo.md` 2, `antecedentes.md` 2,
+`criacao-de-personagem.md` 2, `acoes-resistir.md` 1. **Total 50.**
+
+**E a frase mais bonita da seção morre com isso**: eu escrevi que *"a palavra nunca foi escrita à
+mão, ela chega à tela pela geração"*. Parte vinha de bloco gerado, mas **nove eram prosa à mão**.
+A conclusão elegante veio de um número errado, e não do material.
+
+### 2 · A direção da geração estava INVERTIDA, e esta é a cara
+
+Eu escrevi: *"as 118 de `inimigos.json` são geradas, então o conserto é na fonte
+(`monsters.json`)"*. **É o contrário.** `scripts/gen-monsters.mjs`, segunda linha do arquivo:
+
+> *Fonte: inimigos.json (stat block, **GERADO por gen-bestiario.mjs**) + os satélites…*
+
+A cadeia é `gen-bestiario.mjs` → `inimigos.json` → `gen-monsters.mjs` → `monsters.json`. O
+`monsters.json` é **duas vezes derivado**, e a fonte de verdade das 118 frases é **uma linha**:
+`gen-bestiario.mjs:407`, que monta o texto "Perícias notáveis: …".
+
+**A Executora provou por observação e não por leitura:** trocou as 118 do `monsters.json`, rodou o
+gerador, e elas voltaram todas. É o mesmo gesto que salvou a rodada 61, e é o que separa medir de
+supor.
+
+### 3 · POR QUE EU ERREI · o instrumento filtrava a própria saída
+
+Todas as minhas varreduras usaram a classe de caracteres `per[íi]cia`. **Ela não casa com a forma
+acentuada** neste ambiente. Reproduzido no mesmo diretório, contra `src/lib`:
+
+```
+grep -rio 'per[íi]cia' src/lib   → 27
+grep -rio 'perícia'    src/lib   → 24
+grep -rio 'pericia'    src/lib   → 27
+```
+
+**A classe devolve exatamente o mesmo que a forma SEM acento**, e os 24 acentuados somem sem erro
+nenhum. Como as chaves de dado são `pericias` sem acento e **todo texto visível usa a forma
+acentuada**, o meu instrumento contou máquina e cegou para o texto · que era precisamente o que a
+decisão queria medir. Os capítulos deram zero porque eles só têm a forma acentuada.
+
+**É a forma do `CATALOGO.md` "o instrumento que filtra a própria saída"**, e o zero que ela
+produziu foi um zero ambíguo que eu tratei como achado.
+
+**A regra que fica:** contagem sobre texto com acento se faz com Python lendo o arquivo, nunca com
+classe de caracteres pelo `grep` deste ambiente. Vale junto com a regra do `CLAUDE.md` sobre o
+`git diff` encolhido: **as duas dizem que o número que vem do atalho não vale.**
+
+### O estado de hoje, recontado com Python
+
+Sobram **190** ocorrências, todas do lado da máquina: `scripts` 106, `src/lib` 53,
+`src/components` 22, `src/pages` 9. São identificadores, ids de elemento e comentários. **Os
+rótulos visíveis foram trocados** (o `BestiaEditor` agora diz "+ Habilidade" no botão e
+"Habilidade" nos dois campos), e o escopo da decisão continua sendo "onde o leitor lê".
