@@ -31,3 +31,9 @@ Ancorada em `1da19a8`. A árvore tem dois arquivos NÃO RASTREADOS que não são
 - **22:48** · travessão conferido LENDO OS ARQUIVOS, nos trechos que eu escrevi: zero. Os dois
   que existem no `gen-grid-artes.mjs` (linhas 347 e 445) são anteriores a mim e não são do meu
   item.
+- **22:50** · TERMINADO e PUBLICADO. Commit `dc2aa63`, sete arquivos, e
+  `git rev-list --count origin/main..HEAD` deu **0**. Um efeito colateral do commit com
+  pathspec a registrar: o `triagem-jogador-novo.md`, que estava STAGED pelo Arquiteto (`A `),
+  voltou a `??` depois do commit parcial. **O conteúdo dele está intacto no disco** (estava
+  `A ` sem modificação pendente, então índice e disco eram iguais); o que se perdeu foi só a
+  marca de `git add`, e quem a repõe é ele, não eu.
