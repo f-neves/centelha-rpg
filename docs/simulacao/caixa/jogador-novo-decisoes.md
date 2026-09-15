@@ -458,9 +458,20 @@ capítulo imprime isso em itálico como `*(Força · Destreza)*`. **Pela notaç�
 + Briga" é ilegal**, e ela é o exemplo que a própria mesa deu. Então a notação não está errada no
 conteúdo: está errada no **sentido**, porque se lê como lista fechada.
 
-E o exemplo da ameaça mostra por que nenhuma das saídas estruturais funcionaria:
-**Intimidação é secundária do grupo `sociais`** e o par legítimo dela inclui **Força**. Nem um
-mapa por grupo nem uma lista fixa por perícia sobreviveria a isso.
+**E o que a lista publicada É, corrigido em 15/09/2026 pelo humano**, porque eu a havia entendido
+maior do que ela é. Eu escrevi que "o par legítimo da Intimidação inclui Força". **Não é isso:**
+aquilo foi um exemplo para mostrar que Atributo e Habilidade se combinam por contexto, e não a
+declaração de um par canônico. As duas coisas convivem:
+
+- **cada Habilidade tem uma INCLINAÇÃO para um grupo de Atributos**, e é ela que a lista em
+  itálico já publica. Briga puxa os físicos, Burocracia puxa os mentais, Oratória puxa os sociais;
+- **e a combinação concreta de uma jogada sai da descrição da ação**, que pode pedir um Atributo
+  fora da inclinação quando a ficção justificar.
+
+**A notação de hoje está boa e NÃO muda.** Palavras do humano: *"do jeito que está na página de
+Habilidades está bom, no final de cada habilidade está o atributo (ou atributos) que mais se
+relaciona com elas"*. O que falta não é um aviso na lista: é a regra do par, que nunca foi
+escrita.
 
 ### O QUE JÁ ESTAVA CERTO, e não muda
 
@@ -477,9 +488,10 @@ nove, com `fisico` (Força, Destreza, Vigor), `social` (Influência, Perspicáci
 
 1. **Um parágrafo de regra onde o leitor monta o pool** (`coracao-do-sistema.md`), dizendo que a
    descrição da ação determina o par, e que a lista de cada perícia é a usual e não a única.
-2. **A notação em itálico dos capítulos II precisa dizer que é exemplo.** Hoje `*(Influência ·
-   Compostura)*` se lê como fechada. Muda o molde de `linhaPrim` em
-   `scripts/gen-cap-pericias.mjs:44`, que é gerado, **e não o capítulo à mão**.
+2. **A notação em itálico NÃO muda.** A lista de cada perícia é a inclinação dela, e publicá-la
+   assim já está certo. **Corrigido depois de eu ter mandado o contrário**: o despacho da rodada
+   64 pedia mexer no molde `linhaPrim` de `scripts/gen-cap-pericias.mjs:44`, e o pedido foi
+   retirado no mesmo dia.
 3. **As 66 secundárias podem ganhar o campo, agora como sugestão e não como regra.** Deixa de ser
    obrigatório: a ficha passa a ter um padrão para oferecer, sem que ele limite nada. É trabalho
    opcional, e a decisão não depende dele.
