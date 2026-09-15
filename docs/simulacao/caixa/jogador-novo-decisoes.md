@@ -1348,3 +1348,51 @@ for feita:
 - **Elfo, 50 XP** · o mais caro de todos, e o único que não é tocado por nada desta decisão. Serve
   de âncora quando a régua de custo for refeita.
 - **Meio-Elfo, 20 XP, e Humano, 0** · o piso da escala, e também intocados aqui.
+
+### ADENDO · o Gnomo cai para 30 XP por enquanto, e as idades entram na mesma conta
+
+Decidido em 15/09/2026, minutos depois da M-29b, em resposta ao custo que a própria decisão
+mediu.
+
+**1. O custo do Gnomo desce de 40 para 30 XP, e o "por enquanto" é literal.** Ele passa a empatar
+com o Halfling e o Anão. O motivo é o que a M-29b registrou: das oito, o Gnomo é o que mais
+perdeu, e perdeu sem compensação (o Halfling ao menos tem "Atletas"). **O 30 de hoje é um número
+provisório e entra na régua futura como qualquer outro**, não como piso fixado.
+
+Dois lugares guardam esse número, e o segundo não acompanha sozinho:
+
+- `src/data/racas.json` · o campo `custo`;
+- `src/content/chapters/racas.md:69` · *"**Custo de XP:** 40"*, **escrito à mão**. Não há gerador
+  para este capítulo (nenhum script de `scripts/` cita `racas.md`), então **cinco dos oito custos
+  vivem em dois lugares sem nada que os prenda juntos**. O portão vale mais que a correção da
+  linha.
+
+**2. As idades entram na pendência, junto com o custo.** Além de recalcular o custo de XP de cada
+raça, o humano acrescentou **recalcular as idades**. O que existe hoje:
+
+- a `descricao` de cada raça em `racas.json` traz a longevidade em prosa (*"de vida longa (400+
+  anos)"*);
+- o capítulo repete e detalha (`racas.md:68`, *"Maturidade aos 20 anos; podem viver mais de 400
+  anos"*; `:80`, *"maturidade por volta dos 18 anos… mais de 300 anos"*);
+- e **a tabela de Envelhecimento existe só no capítulo**, `racas.md:123-142`, com quatro marcos
+  por raça (Adulto, Maturidade, Velho, Venerável) e a penalidade cumulativa de −1 e −2 nos
+  Atributos físicos. **Nenhum dado a guarda**, o que é a mesma forma do `deslocamentoFrac` antes
+  da M-30: número em prosa que nada lê.
+
+As duas contas (custo e idade) só acontecem **depois que todas as inconsistências fecharem**,
+pelo mesmo motivo já registrado: a conta ainda se mexe.
+
+**3. Um achado de vocabulário, que a implementação do porte tornou defeito.** O capítulo usa
+**"miúdo"** em duas linhas de prosa, `racas.md:71` (Gnomo, *"num corpo miúdo"*) e `:84`
+(Halfling, *"porte miúdo"*). **"Miúdo" é o RÓTULO de `minusculo`** no vocabulário do próprio jogo
+(`grid.astro:3407` dá `'Miúdo': 0.25` contra `'Pequeno': 0.5`; `bestia-editor.ts:21` faz o mesmo
+mapeamento), e as duas raças são `pequeno`. A segunda linha é a pior: ela cola a palavra `porte`,
+que é termo mecânico, ao rótulo errado, com **fator 2** entre o que o capítulo diz e o que o dado
+diz.
+
+Varrido `src/` inteiro com Python (o `grep` não casa acento neste ambiente): **94 ocorrências, e
+só estas duas são o defeito**. As outras 92 são o rótulo legítimo de `minusculo` no bestiário e
+no código, a tabela de PV por porte em `vida-ferimentos-cura.md:25`, e prosa sem relação ("letra
+miúda", "miudezas", "gente miúda"). **Nenhuma delas se toca.**
+
+Não era defeito antes: virou um quando `porte` deixou de ser prosa e passou a ser campo.
