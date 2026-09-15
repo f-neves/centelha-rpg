@@ -457,7 +457,7 @@
     "acerto": 1,
     "defesaArma": 0,
     "maos": 2,
-    "ticks": 6,
+    "ticks": 9,
     "folego": 20,
     "forcaMult": 0,
     "alcance": "medio",
@@ -477,7 +477,7 @@
       "distância",
       "projétil veloz"
     ],
-    "notas": "Mira e dispara sem Força (mecanismo faz a tração); requer recarga. Alcance médio. Perfura couro e malha (N1).",
+    "notas": "Mira e dispara sem Força (mecanismo faz a tração); requer recarga (9 Ticks), e recarregar exige estar PARADO: o Preparo dela não admite deslocamento, nem o primeiro Tick de graça. Alcance médio. Perfura couro e malha (N1).",
     "danoBonus": 2,
     "distMax": 100,
     "alcanceLivreFrac": 0.4
@@ -492,7 +492,7 @@
     "acerto": 1,
     "defesaArma": 0,
     "maos": 2,
-    "ticks": 6,
+    "ticks": 12,
     "folego": 20,
     "forcaMult": 0,
     "alcance": "longo",
@@ -512,7 +512,7 @@
       "distância",
       "projétil veloz"
     ],
-    "notas": "O virote (N1) fura couro e malha e resvala na placa; recarga lenta. Alcance longo. A resposta de longe contra tropa e cavalo.",
+    "notas": "O virote (N1) fura couro e malha e resvala na placa; recarga lenta (12 Ticks) e PARADO: o Preparo dela não admite deslocamento, nem o primeiro Tick de graça. Alcance longo. A resposta de longe contra tropa e cavalo.",
     "danoBonus": 4,
     "distMax": 200,
     "alcanceLivreFrac": 0.3
@@ -527,7 +527,7 @@
     "acerto": 1,
     "defesaArma": 0,
     "maos": 2,
-    "ticks": 7,
+    "ticks": 15,
     "folego": 20,
     "forcaMult": 0,
     "alcance": "longo",
@@ -548,7 +548,7 @@
       "projétil veloz",
       "pesada"
     ],
-    "notas": "Arbalesta de manivela: o virote pesado (N2) fura malha e brigandina, mas ainda resvala na placa completa (N3). Recarga muito lenta, alcance longo; o dano bruto derruba homem e cavalo.",
+    "notas": "Arbalesta de manivela: o virote pesado (N2) fura malha e brigandina, mas ainda resvala na placa completa (N3). Recarga muito lenta (15 Ticks) e PARADO: o Preparo dela não admite deslocamento, nem o primeiro Tick de graça. Alcance longo; o dano bruto derruba homem e cavalo.",
     "danoBonus": 8,
     "distMax": 300,
     "alcanceLivreFrac": 0.27

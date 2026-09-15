@@ -2414,6 +2414,15 @@
         "defesaExtra": -2,
         "texto": "Gastar o Preparo CORRENDO em vez de andando: o golpe cobre a distância da Corrida em vez da de Batalha, a Defesa cai −2 além do que o Preparo já cobra, e o golpe sai com +1d6 de dano. Não é regra nova: é o Preparo que a arma já tem, atravessado a outra velocidade.",
         "semPreparo": "A arma leve tem Preparo 0 e por isso não investe de graça: ela compra Preparo pela carga voluntária (§3 do Combate_Tempo.md) e aí investe. É a arma que ARMA o golpe que investe bem, e a pesada, com Preparo 2, é a que investe melhor."
+      },
+      "recarga": {
+        "titulo": "Recarga",
+        "tag": "recarga",
+        "permiteDeslocamento": false,
+        "permitePrimeiroTickGratis": false,
+        "texto": "O espelho da Investida: gastar o Preparo PARADO, porque não há outro jeito de girar a manivela. A arma com a tag `recarga` (as três bestas) não anda durante o Preparo, e isso inclui o primeiro Tick de Deslocamento de Batalha, que toda outra ação ganha de graça. O tiro sai no último Tick do ciclo, como em qualquer arma de distância; o que a besta perde é o passo, não o disparo.",
+        "porque": "O custo da recarga mora na Velocidade da própria arma (9, 12 e 15 Ticks), e o Preparo de distância é `velocidade - 1`, então quem declara o tiro da Besta Grande fica catorze Ticks comprometido com a escada de Defesa aberta em cima. Ficar parado é o que torna essa exposição real em vez de decorativa, e é o que o pavês existe para cobrir.",
+        "aberto": "O que acontece se o besteiro se mexer no meio da recarga (perde os Ticks já investidos, ou a recarga só pausa) NÃO foi decidido, e o motor ainda não lê esta bandeira: hoje ela é regra de mesa."
       }
     },
     "pgr": {

@@ -67,7 +67,7 @@ const ESPERADO = {
   'montante':          [2, 1, 4],  // pesada, 7t
   'martelo-de-guerra': [2, 1, 4],
   'arco-longo':        [5, 1, 0],  // distância: P = Velocidade − 1
-  'besta-grande':      [6, 1, 0],
+  'besta-grande':      [14, 1, 0], // 15t pela recarga (M-13): a regra P = Velocidade - 1 nao tem teto
   'azagaia':           [3, 1, 1],  // arremesso: P = Velocidade − 2
   'dardos':            [2, 1, 1],
 };

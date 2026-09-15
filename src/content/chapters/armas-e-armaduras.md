@@ -84,9 +84,9 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 | Arco Curto | Distância | ★P(N1) | 6 | 1d6−1 | +1 | 120 m | 2 | Munição. Soma Força **até +3**; resvala na placa |
 | Arco Longo | Distância | ★P(N1) | 6 | 1d6 | +0 | 250 m | 2 | Munição. Soma **Força inteira**; resvala na placa |
 | Arco Composto | Distância | ★P(N1) | 6 | 1d6+2 | +0 | 300 m | 2 | Munição, **caro**. **Requer Força 4**, soma **Força×2**; resvala na placa |
-| Besta Pequena | Distância | ★P(N1) | 6 | 1d6+2 | +1 | 100 m | 2 | Munição, recarga. Não usa Força (mecanismo) |
-| Besta Média | Distância | ★P(N1) | 6 | 1d6+4 | +1 | 200 m | 2 | Munição, recarga. Não usa Força; o virote (N1) fura couro e malha, resvala na placa |
-| Besta Grande | Distância | ★P(N2) | 7 | 1d6+8 | +1 | 300 m | 2 | Munição, recarga, pesada. Arbalesta; o virote pesado (N2) fura brigandina; dano bruto altíssimo, mas resvala na placa |
+| Besta Pequena | Distância | ★P(N1) | 9 | 1d6+2 | +1 | 100 m | 2 | Munição, recarga **parado**. Não usa Força (mecanismo) |
+| Besta Média | Distância | ★P(N1) | 12 | 1d6+4 | +1 | 200 m | 2 | Munição, recarga **parado**. Não usa Força; o virote (N1) fura couro e malha, resvala na placa |
+| Besta Grande | Distância | ★P(N2) | 15 | 1d6+8 | +1 | 300 m | 2 | Munição, recarga **parado**, pesada. Arbalesta; o virote pesado (N2) fura brigandina; dano bruto altíssimo, mas resvala na placa |
 | Funda | Arremesso | ★I | 6 | 1d6 | +1 | 200 m | 1 | Munição. Pedras a longa distância; Impacto (sem gate) |
 | Bumerangue | Arremesso | ★I | 5 | 1d6 | +1 | 50 m | 1 | Atinge em curva e volta à mão se erra |
 | Azagaia | Arremesso | ★P(N1) | 5 | 1d6+1 | +1 | 40 m | 1 | Javelina: fura à distância ou na estocada em punho |
@@ -99,6 +99,8 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 </div>
 
 <p class="muted"><strong>Modos:</strong> <strong>I</strong> = Impacto · <strong>C</strong> = Cortante · <strong>P</strong> = Perfurante (estocada ou projétil, sem distinção). <strong>★</strong> = modo principal (sem custo); os secundários saem com <strong>−2 ao acerto e −1d6 no dano</strong>. O <strong>(N0)–(N5)</strong> após o P é o <strong>Nível de Perfuração</strong>. <strong>Velocidade</strong> = Ticks da ação · <strong>Defesa</strong> = bônus de Bloqueio da arma · <strong>Distância</strong> = alcance máximo · <strong>Mãos</strong> = empunhadura (a <em>Versátil</em> soma Força×2 quando usada com as duas mãos). O <strong>Quase-Acerto</strong> é fixo pela classe (peso) da arma; ver o <a href="/centelha-rpg/regras/quase-acerto">capítulo próprio</a>.</p>
+
+<div class="callout regra"><span class="lbl">Besta: o preço da manivela</span>A besta não usa Força e fura melhor que qualquer arco, e paga por isso em tempo: <strong>Velocidade 9, 12 e 15</strong>, contra 6 de todos os arcos. E paga de outro jeito também: <strong>recarregar exige estar parado</strong>. O Preparo da besta é o único do jogo que não admite deslocamento nenhum, nem o primeiro Tick de Deslocamento de Batalha que toda outra ação ganha de graça. É o espelho exato da <a href="/centelha-rpg/regras/combate#investida">Investida</a>, que gasta o Preparo correndo: a besta gasta o dela plantada. Quem atira de arbalesta fica <strong>catorze Ticks</strong> comprometido antes de o virote sair, com a escada de Defesa aberta em cima o tempo todo, e é por isso que o pavês existe.</div>
 
 ## Armaduras
 

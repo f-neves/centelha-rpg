@@ -1412,3 +1412,98 @@ duas vezes seguidas devolvem números diferentes. Como portão eles só podem co
 igualdade, ou ficam vermelhos sozinhos. E o `test-portoes.mjs` cobra que todo `scripts/test-*.mjs`
 esteja num dos dois modos; estes se chamam `sim-*`, então hoje eles estão fora dessa cobrança e
 entrar no portão é escolha, não obrigação.
+
+## Achados da execução · rodada 63 · a metade de dado da `M-13`
+
+O `jogador-novo-decisoes.md` é do Arquiteto e ele está nele nesta janela, então o que a `M-13`
+produziu de achado fica aqui.
+
+### `A-20` · `ticks` de duas casas: três dos quatro pontos aguentam, e o quarto NÃO
+
+A conferência foi pedida antes de eu dizer que estava feito, e ela foi feita no disco, não por
+suposição.
+
+| ponto | aguenta 15? | como foi conferido |
+| --- | --- | --- |
+| `classeDeTempo` | sim | `combate-tempo.ts:234`: quando a arma ESTÁ no catálogo ele devolve `classeDaArma`, que lê o campo `classe`, e a Velocidade nem é olhada. A besta continua `distancia` com `ticks` 15. A escada `5 leve / 6 média / 7+ pesada` só vale para a criatura do bestiário, que não tem catálogo |
+| iniciativa | sim | `calc.ts`, `iniciativa()`: `1d6 + Raciocínio + Prontidão`. Não lê `ticks` |
+| `preparoDe` | sim | `distancia` é `{"daVelocidade": -1}`, sem `fixo` e sem teto. Medido: v=15 dá Preparo 14, Golpe no offset 14, Recuperação 0, ciclo 15. `P + G + R` fecha |
+| **a fita de Ticks** | **NÃO** | largura FIXA em três dos quatro lugares que a desenham |
+
+**A fita é o problema, e o número é este.** Chamei `faseEm` célula a célula, para cada largura que
+o código usa de verdade:
+
+| Velocidade | fita 9 (token do Grid) | fita 10 (tira da fila) | fita 12 (card do rastreador) | fita adaptativa (`mesa-tempo-ui.ts:636`) |
+| ---: | :---: | :---: | :---: | :---: |
+| 6 (hoje) | mostra o Golpe | mostra | mostra | mostra |
+| 9 (Besta Pequena) | mostra (na última célula) | mostra | mostra | mostra |
+| 12 (Besta Média) | **não mostra** | **não mostra** | mostra | mostra |
+| 15 (Besta Grande) | **não mostra** | **não mostra** | **não mostra** | mostra |
+
+Não quebra, não erra conta e não avisa: a fita simplesmente desenha parede de Preparo até onde ela
+alcança, e o Tick em que o virote sai fica fora da tela. Na hora da declaração nenhuma das três
+mostra onde o tiro cai: a célula do Golpe só entra na fita depois de passados 3 Ticks (a de 12),
+6 Ticks (a de 9) ou 5 (a de 10).
+
+**Não consertei**, porque a instrução foi explícita. Registro o que a medida diz sobre o conserto:
+as três larguras são literais nos chamadores (`mesa-tempo-ui.ts:150` com 9, `combate.astro:1203`
+com 10, `combate.astro:1085` com 12), e a quarta já mostra a forma certa,
+`Math.max(8, a.livre + 1)`. Trocar literal por essa expressão é uma linha em cada um, mas a fita
+de 16 células tem de caber na moldura do token e na do celular, e isso é decisão de tela, não de
+regra.
+
+**E vale notar que este é um problema NOVO, não um pré-existente que ninguém viu.** Antes da `M-13`
+a ação mais longa do jogo custava **11 Ticks** (espada longa em rajada de três, com empunhadura
+dupla), e a fita de 12 dava conta de todas: a arma mais lenta é 7, a régua da Arte dá ciclo
+`3 + nível` (8 no grau 5), a rajada soma 2 por golpe extra com teto de 3 golpes, e a dupla soma 1.
+A besta é a primeira coisa que estoura até a fita mais larga.
+
+### `A-21` · dois portões caíram com a mudança, e os dois estavam certos
+
+Nenhum dos dois é defeito: os dois são o repositório fazendo o que foi construído para fazer.
+
+1. `combate-tempo-bench.html` é GERADO e ficou velho. Regerado com `node scripts/gen-bench-tempo.mjs`,
+   que é o comando que o próprio erro manda rodar.
+2. `test-combate-tempo.mjs:70` cobrava `P/G/R` de `besta-grande` em `[6, 1, 0]`. Passou a
+   `[14, 1, 0]`, que é a MESMA regra (`P = Velocidade − 1`) com a Velocidade nova. A asserção
+   mudou de número, não de forma, e é isso que prova que a regra escalou sozinha.
+
+### `A-22` · onde a regra do "parado" foi escrita, e por que também no JSON
+
+O `CLAUDE.md` diz que `src/data/*.json` é a fonte da verdade e que o capítulo descreve. A `M-13`
+aponta por nome para `combate.movimento.investida` e `combate.movimento.batalha.primeiroTickGratis`,
+que são as duas entradas de `regras.json` que a decisão usa como máquina. Então a regra entrou lá,
+espelhando a forma do bloco da Investida: `combate.movimento.recarga`, com `permiteDeslocamento:
+false`, `permitePrimeiroTickGratis: false`, o `texto`, o `porque` e um campo `aberto` que carrega o
+resíduo que a mesa não decidiu (o que acontece com os Ticks já investidos se o besteiro se mexer).
+
+**Nada lê essa chave**, e isso é de propósito: o gancho de código ficou de fora desta rodada por
+instrução. **Se o nome da chave não servir ao gancho quando ele for construído, renomear é barato
+agora e caro depois**, e é a única coisa desta metade que eu decidi sozinha.
+
+### `A-22b` · a escada de Defesa do Preparo longo, medida antes de a prosa sair
+
+Escrevi no capítulo que o besteiro passa catorze Ticks com a Defesa aberta, e isso era inferência
+da tabela da Investida, não medida. Medi: chamei `defesaPerdida` Tick a Tick numa ação
+`distancia` de ciclo 15. A penalidade é **−2 constante** do Tick 0 ao 13 e **−4** no Tick do Golpe,
+exatamente como no ciclo de 6. **Ela não acumula com o tamanho do Preparo**, e isso importa para a
+decisão: um Preparo de catorze Ticks não é catorze vezes pior que um de cinco, é o mesmo −2
+durando quase três vezes mais tempo. A prosa do capítulo passou a dizer o número em vez de
+descrever a sensação.
+
+### `A-23` · o `ticksMedio` calibra a `M-13`, e a mesa não tinha esse número
+
+A `M-13` diz, com todas as letras, que os 9 · 12 · 15 saíram da escala publicada e não de uma
+medição, porque os simuladores estavam mortos. Agora eles rodam, e o número existe: uma luta
+típica dura **63 a 97 Ticks** (duelo espelhado, tier 1 a tier 3, regra viva, conteúdo de hoje).
+
+Posto contra a decisão, isso quer dizer:
+
+- **Besta Pequena (9 Ticks):** sete a dez tiros numa luta típica.
+- **Besta Média (12):** cinco a oito.
+- **Besta Grande (15):** quatro a seis.
+
+Não é "uma besta por combate", que era o risco que a mesa temia ao escolher 15. A luta é longa o
+bastante para a arbalesta disparar várias vezes. O que a besta perde de verdade não é o número de
+tiros, é o passo: catorze Ticks plantado, num combate em que o espadachim ao lado anda em todos
+eles.

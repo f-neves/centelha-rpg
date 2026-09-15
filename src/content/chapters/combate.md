@@ -56,8 +56,11 @@ Cada ação tem uma **Velocidade**, quantos Ticks ela custa antes de você poder
 | 5 | Ataque leve | faca, adaga, espada curta, bastão |
 | 6 | Ataque médio | espada longa, machado de uma mão, lança |
 | 7 | Ataque pesado | martelo de guerra, montante, alabarda |
+| 9 a 15 | Ação longa | recarregar uma besta, conjurar uma Arte de grau alto |
 
 <p class="muted">Armas leves agem mais vezes e defendem melhor; as pesadas batem como um trovão, mas deixam você exposto entre os golpes. A arma define o seu estilo.</p>
+
+<p class="muted"><strong>A tabela não termina no 7.</strong> Ela desenha a faixa em que quase tudo cai, e não um teto: a Velocidade é só quantos Ticks a ação custa, e nada impede uma de custar mais. As <strong>bestas</strong> são o caso concreto (9, 12 e 15, pela recarga), e as Artes de grau alto sobem pela mesma escada. Acima de 7 a diferença não é de regra, é de exposição: quem se compromete por doze Ticks fica doze Ticks com a escada de Defesa aberta em cima.</p>
 
 ## O ataque: acertar e a Margem
 
@@ -235,6 +238,27 @@ Preparo que a sua arma já tem, atravessado à velocidade de Corrida.
 A arma **leve tem Preparo 0**, e por isso não investe de graça: ela precisa comprar Preparo antes
 (a carga voluntária). É a arma que **arma** o golpe que investe bem, e a pesada, com Preparo 2, é a
 que investe melhor, que é exatamente a imagem de quem atravessa o salão com o martelo erguido.
+
+### Recarga: o Preparo que não anda
+
+O espelho da Investida. Se investir é gastar o Preparo **correndo**, recarregar uma besta é gastá-lo
+**parado**, porque não há outro jeito de girar a manivela.
+
+<p class="formula">Arma com <strong>recarga</strong> (as três bestas): durante o Preparo você <strong>não se desloca</strong>, e isso inclui o primeiro Tick de graça</p>
+
+É a única arma do jogo que perde o passo grátis. O arqueiro recua e dispara; o besteiro planta os
+pés e conta os Ticks. O tiro continua saindo no último Tick do ciclo, como em toda arma de
+distância: o que a besta perde é o passo, não o disparo.
+
+O preço é grande porque o ciclo é grande. A **Besta Grande** custa **15 Ticks**, e o Preparo de uma
+arma de distância é a Velocidade menos 1: são **catorze Ticks** de manivela, imóvel, com a Defesa
+em **−2** o tempo todo (o mesmo −2 de qualquer Preparo: ele não cresce, mas também não alivia), e
+só então o virote sai. É exatamente a vulnerabilidade que o **pavês**
+existe para cobrir, e é por isso que o livro chama o pavês de parede portátil do besteiro.
+
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Bram, de Besta Média (Velocidade 12), declara o tiro no Tick 0. Ele fica dos Ticks 0 ao 10 em Preparo, sem sair do lugar, e o virote sai no Tick 11. Um espadachim de espada longa (Velocidade 6) atravessa esse mesmo intervalo golpeando duas vezes, e andando nos dois. Se Bram precisar sair do caminho de uma investida no Tick 7, a saída é a mesma de qualquer um pego no meio de um Preparo: o desvio de emergência, a 1 Tick por metro, fora da vez.</div>
+
+<p class="muted">O que acontece com os Ticks já investidos quando o besteiro se mexe (perde tudo, ou a recarga apenas pausa) ainda não foi decidido, e o Grid não trava o passo sozinho: por enquanto é o Mestre que segura.</p>
 
 ### Salto (Velocidade 3)
 
