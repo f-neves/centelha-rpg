@@ -1458,6 +1458,87 @@ dupla), e a fita de 12 dava conta de todas: a arma mais lenta é 7, a régua da 
 `3 + nível` (8 no grau 5), a rajada soma 2 por golpe extra com teto de 3 golpes, e a dupla soma 1.
 A besta é a primeira coisa que estoura até a fita mais larga.
 
+#### `A-20b` · o que o jogador VÊ, e de quem é o defeito
+
+Quatro perguntas do Arquiteto sobre o `A-20`, medidas e não supostas.
+
+**1 · Os quatro lugares.** Três com literal, um adaptativo:
+
+| onde | largura | linha |
+| --- | ---: | --- |
+| token do Grid (a fita `mini`, dentro da peça) | 9 | `mesa-tempo-ui.ts:150` |
+| tira da fila (uma linha por combatente) | 10 | `combate.astro:1203` |
+| card do rastreador (com rótulo de texto ao lado) | 12 | `combate.astro:1085` |
+| **prévia da ação, no painel de escolha do tempo** | `Math.max(8, a.livre + 1)` | `mesa-tempo-ui.ts:636` |
+
+O quarto é o modelo, e ele é o único que desenha uma linha SOZINHA. Isso não é
+detalhe: os outros três desenham linhas que se COMPARAM entre si, e é por isso
+que eles são fixos.
+
+**2 · O que se vê: nada de anormal, e é esse o problema.** `fita()`
+(`combate-tempo.ts:1228`) monta SEMPRE exatamente `largura` células, uma por
+Tick, pintando cada uma com `faseEm`. Então, com ciclo 15 numa fita de 12, as
+doze células saem pintadas de Preparo e a fita fica **cheia, homogênea e do
+tamanho de sempre**. Não corta, não deixa buraco, não fica em branco e não
+avisa: ela parece uma fita completa de alguém que está montando um gesto. A
+célula do Golpe simplesmente nunca entra na janela.
+
+O número sobrevive em texto, mas indireto: `resumoDaAcao`
+(`combate-tempo.ts:1219`) devolve `Preparo · Defesa −2 · livre em 15t`. Ele diz
+quando a pessoa fica LIVRE, não quando o tiro sai. Para arma de distância o
+Golpe é `livre − 1`, e quem não souber essa regra não tira o Tick do virote de
+lá. E esse texto só aparece visível no card do rastreador, que passa
+`rotulo: true`; nos outros dois é dica de passar o mouse.
+
+**3 · A `M-13` CRIOU o defeito, não o revelou.** Medi as três coisas que
+poderiam já estar acima de 9:
+
+- **rajada e empunhadura dupla.** A ação mais longa antes da `M-13` era de 11
+  Ticks (arma média, rajada de três, dupla). Mas em corpo a corpo o Golpe cai no
+  offset 1 ou 2 e **todo o resto do ciclo é Recuperação**: a fita de 9 cortava só
+  a cauda, que é uniforme e não carrega informação. Nenhuma ação de corpo a corpo
+  jamais perdeu a célula do Golpe.
+- **bestiário.** Varri as 309 criaturas do `inimigos.json`: a Velocidade máxima é
+  **7**, e **zero** ataques acima de 9.
+- **Artes.** `ciclo = nível + 3` e `Preparo = 2 + nível`, com o grau mais alto
+  publicado sendo 6. Grau 6 dá ciclo 9 e Golpe na célula 8, que é **exatamente a
+  última da fita mais estreita**. Cabe, mas por um Tick.
+
+A diferença que decide é a classe: **só `distancia` põe o Golpe na ÚLTIMA célula**
+(`Preparo = Velocidade − 1`), e a arma de distância mais lenta era 7. Cortar a
+cauda é inofensivo em tudo, menos exatamente onde a `M-13` mexeu.
+
+**4 · O que eu recomendo, e o preço.**
+
+**Não recomendo alargar para 16** (o número da maior Velocidade de hoje). Duas
+razões medidas. A largura: a célula é `.5rem` com `gap: 1px`, e `.3rem` na fita
+`mini`. Passar de 9 para 16 leva o token do Grid de **51 para 92 px**, dentro de
+uma peça que no telefone tem 104 px de largura inteira; a tira da fila vai de
+**89 para 143 px** por linha. E o número apodrece: a próxima arma acima de 15
+quebra de novo.
+
+**Também não recomendo fazer as três adaptativas.** O comentário do próprio
+`fitaHTML` explica por quê: *"a primeira célula leva a régua vertical, que é o que
+deixa comparar duas linhas sem contar casas"*. Largura variável por linha destrói
+esse alinhamento justamente nos dois lugares que existem para comparar
+combatentes. O quarto pode ser adaptativo porque desenha uma linha só.
+
+**Recomendo a terceira, que custa menos que as duas e não mexe em nenhum dos três
+chamadores:** manter a largura fixa e fazer a fita DIZER que foi cortada.
+
+- **uma condição em `fitaHTML`** (`mesa-tempo-ui.ts:36`): quando
+  `acao.livre > tickAgora + largura`, a última célula ganha uma classe de
+  "continua". Cerca de **duas linhas de TypeScript e uma regra de CSS** em
+  `MesaCab.astro`, onde `.fita-c` já mora. Zero mudança de layout, régua vertical
+  preservada, e serve para qualquer ciclo futuro sem número mágico.
+- **uma linha em `resumoDaAcao`** (`combate-tempo.ts:1219`): dizer o Tick do
+  Golpe além de "livre em Nt". É a informação que o mestre quer de verdade, e ela
+  já está no objeto (`acao.golpes`). Cerca de **uma linha**, que aparece nos três
+  lugares de uma vez.
+
+As duas juntas são **três linhas de código e uma de CSS**, e resolvem o caso da
+arbalesta sem tocar em largura nenhuma. **Não fiz**, por instrução.
+
 ### `A-21` · dois portões caíram com a mudança, e os dois estavam certos
 
 Nenhum dos dois é defeito: os dois são o repositório fazendo o que foi construído para fazer.

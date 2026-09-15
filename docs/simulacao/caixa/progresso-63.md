@@ -107,3 +107,11 @@ Duas frentes: os três simuladores mortos (`sim-defesas`, `sim-caps`, `sim-grupo
   `test-procedencia`. Re-apontado pela ancora (`pen`/`resistPerf`) e nao por aritmetica: 195, mais
   os pares reais nos outros dois (`sim-caps.mjs:98`, `sim-grupo.mjs:74`). Conferi as outras dez
   citacoes das duas secoes uma a uma; as dez estavam certas.
+- **03:23** · o Arquiteto pediu quatro coisas sobre a fita e nenhuma era suposicao aceitavel.
+  Medidas: (a) os quatro lugares com arquivo e linha, e o adaptativo e o da PREVIA, que desenha
+  uma linha sozinha; (b) o que se ve e uma fita CHEIA e homogenea, do tamanho de sempre, sem
+  buraco e sem aviso, porque `fita()` monta sempre `largura` celulas; (c) a `M-13` CRIOU o
+  defeito: a acao mais longa de antes era 11 Ticks, mas em corpo a corpo o Golpe cai no offset
+  1 ou 2 e a cauda cortada e so Recuperacao; varri as 309 criaturas do bestiario (maxima 7,
+  zero acima de 9) e as Artes (grau 6 = ciclo 9, Golpe na ultima celula da fita mais estreita,
+  cabe por um Tick); (d) o preco, em px e em linhas. Escrito como `A-20b`.
