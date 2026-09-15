@@ -101,3 +101,9 @@ Duas frentes: os três simuladores mortos (`sim-defesas`, `sim-caps`, `sim-grupo
   `M-13`). `git rev-list --count origin/main..HEAD` = 0 nos dois. `validate` verde, `build` verde
   (107 paginas), `smoke` com 17 de 18 e o 18o falhando igual sem a minha mudanca. Arvore limpa
   fora o `jogador-novo-prompt-executor.md`, que nao e meu e eu nao encostei.
+- **03:18** · uma citacao minha envelheceu dentro da propria rodada, e e a forma da 59a: o `A-17`
+  apontava `sim-defesas.mjs:181`, numero que li ANTES de inserir o import e os ajudantes no mesmo
+  arquivo. O portao nao pega porque este documento nao esta na lista dos doze do
+  `test-procedencia`. Re-apontado pela ancora (`pen`/`resistPerf`) e nao por aritmetica: 195, mais
+  os pares reais nos outros dois (`sim-caps.mjs:98`, `sim-grupo.mjs:74`). Conferi as outras dez
+  citacoes das duas secoes uma a uma; as dez estavam certas.

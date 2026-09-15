@@ -1356,7 +1356,7 @@ Todas são anteriores a esta rodada e nenhuma impede o script de rodar. Conserta
 muda o número, e isso é decisão de mesa.
 
 1. **Portão de Perfuração, erro de um.** O script bloqueia quando `pen <= resistPerf`
-   (`sim-defesas.mjs:181` e os pares nos outros dois); o motor abre quando `pen >= resistPerf`
+   (`sim-defesas.mjs:195`, `sim-caps.mjs:98` e `sim-grupo.mjs:74`); o motor abre quando `pen >= resistPerf`
    (`calc.ts:172`). No empate o script anula o dano e o motor deixa passar.
 2. **Margem do Quase-Acerto.** O script usa `bônus da arma + Centelha do atacante`; o motor usa
    `bônus da arma + bônus da ARMADURA do alvo` (`quase-acerto.ts`, `regras.json → quaseAcerto`).
