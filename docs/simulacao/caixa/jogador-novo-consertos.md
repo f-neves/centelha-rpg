@@ -1,0 +1,969 @@
+# Ordem de serviço · os defeitos que o jogador novo levantou
+
+Este arquivo existe para ser **executado por outra instância**, e depois conferido por
+mim. Ele não repete o raciocínio: para cada defeito traz o arquivo, a linha, a frase que
+está lá hoje, quem tem jurisdição, o que escrever no lugar, e **como conferir que ficou
+pronto**. A origem de cada item está em `jogador-novo-fase1.md` (a dúvida do jogador) e
+`jogador-novo-fase2.md` (o veredito com a prova); os números entre parênteses são as
+dúvidas, para quem quiser o caminho todo.
+
+> Nota de escrita: não uso travessão. Os dois que aparecem neste arquivo estão **dentro
+> de citações literais** do que está no disco hoje (o rótulo da ficha escreve
+> "ARCANO — ARTES", o glossário escreve "Vontade — Força de Vontade"). Trocá-los
+> falsificaria a citação, que é o que torna o item conferível. Os dois somem quando os
+> itens C-18 e C-42 forem executados.
+
+## O congelamento pode ser levantado
+
+`59-fila-de-aterrissagem.md` congelou `src/`, `scripts/gen-*` e todo push que mude o
+site publicado porque **uma instância estava lendo as regras como jogador novo**. Essa
+instância era eu, as duas fases estão fechadas e escritas, e o congelamento não protege
+mais nada. Quem pegar este arquivo pode mexer em `src/`.
+
+## Quem é dono de qual arquivo
+
+Conferido rodando a varredura de `writeFileSync` nos catorze `scripts/gen-*.mjs`. Isto
+decide **onde** se conserta, e conserto por cima de arquivo gerado morre no próximo
+`--check`:
+
+| Arquivo | Dono | O que isso implica |
+| --- | --- | --- |
+| `src/data/{regras,habilidades,habilidades-secundarias,racas,virtudes,atributos,armas,armaduras,escudos,glossario,caminhos,tecnicas}.json` | mão | conserta direto |
+| `src/data/artes.json` e `src/data/efeitos.json` | mão, **menos a chave `grid`** de cada entrada | `gen-grid-artes.mjs:420-421` reescreve os dois arquivos, mas com `{...e, grid: ...}`: **todo campo escrito à mão sobrevive**. Não edite `grid`. |
+| `src/data/diagramas.json` | `gen-mermaid.mjs:36` | é o SVG renderizado dos blocos mermaid. Mexer na fonte do diagrama **exige rodar o gerador**, senão a página continua mostrando o texto velho |
+| `src/content/chapters/habilidades.md` linhas 22 a 68 | `gen-cap-pericias.mjs` | miolo entre `<!-- gen:primarias -->`; a fonte é `habilidades.json` |
+| `src/content/chapters/habilidades-secundarias.md`, bloco `gen:secundarias` | `gen-cap-pericias.mjs` | fonte: `habilidades-secundarias.json` |
+| `src/content/chapters/antecedentes.md` linhas 84 a 302 | `gen-cap-antecedentes.mjs` | fora desse intervalo é mão |
+| todos os outros `src/content/chapters/*.md` | mão | nenhum gerador grava neles |
+
+**Correção ao meu próprio relatório:** a Fase 2 diz que o link quebrado de
+`habilidades.md` "sai de `gen-cap-pericias.mjs`, não da mão de ninguém". Está errado: ele
+está na **linha 72**, e o bloco gerado termina na 68. É editável à mão. O mesmo vale para
+`antecedentes.md:80`, que fica antes do marcador da linha 84. **Os quinze links são todos
+editáveis à mão.**
+
+## Jurisdição, quando duas fontes discordam
+
+1. `src/data/regras.json` é o que o motor lê. Ele vence de qualquer capítulo.
+2. `src/lib/calc.ts` vence quando o JSON é genérico de propósito e quem decide é o
+   chamador (é o caso da Defesa física e do Valor Passivo).
+3. **`src/data/glossario.json` é um JSON e NÃO é fonte de regra.** É prosa guardada em
+   JSON, carregada por `src/content.config.ts:148`. Lido ao pé da letra, "o JSON vence"
+   tornaria verdade o piso 5 da Vontade e os 10 XP de Especialidade. Onde ele discorda de
+   `regras.json`, **ele é que está errado**.
+4. Capítulo contra capítulo e dado contra dado no mesmo arquivo não têm regra escrita.
+   Nos quatro casos assim eu digo o que o motor faz e qual das duas frases ele
+   implementa.
+
+## O que NÃO se toca neste lote
+
+Os Efeitos `salvaguarda`, `cura-guardada`, `brasa-retardada`, `semente-adormecida` e a
+família `armadilha` estão nas dez decisões de 14/09 (`59-fila-de-aterrissagem.md`) e têm
+engenharia própria pendente. Varri os meus dois arquivos: **a única linha que os toca é a
+dúvida 169**, marcada `[JÁ EM DECISÃO]` e sem veredito. Nada neste documento colide com
+aquela fila.
+
+Também **não** entra aqui o desacordo entre o motor e a régua sobre "o nível da Arte
+usada". A fila o registra como anotado e deliberadamente não aberto, e ele não saiu do
+meu relatório porque **a régua do humano não está publicada**: `/artes/regras` diz que o
+nível da Arte é o que você comprou e que ir além é esticar pagando mais caro, que é o que
+`custoDe` faz (`src/lib/artes-grid.ts:371`). Site e motor concordam entre si. Um jogador
+não tropeça nisso.
+
+---
+
+# LOTE 1 · uma função conserta quinze links
+
+### C-01 (45) · todo link de HTML cru perde o `/centelha-rpg`
+
+`astro.config.mjs:69`, `rehypeBaseLinks`, só visita nós com `node.tagName === 'a'`, ou
+seja, links escritos em **sintaxe markdown**. Os quinze links abaixo estão escritos como
+**HTML cru** dentro de `<div class="callout">` e `<p class="muted">`, nunca viram nó `a`
+nessa árvore, e saem no ar sem o prefixo do GitHub Pages. Todos dão 404.
+
+```
+src/content/chapters/acoes-corpo-e-movimento.md:8     /regras/acoes-e-sistema
+src/content/chapters/acoes-oficio-e-mundo.md:8        /regras/acoes-e-sistema
+src/content/chapters/acoes-oficio-e-mundo.md:53       /regras/acoes-e-sistema
+src/content/chapters/acoes-resistir.md:8              /regras/acoes-e-sistema
+src/content/chapters/acoes-sentidos-e-engano.md:8     /regras/acoes-e-sistema
+src/content/chapters/antecedentes.md:80               /regras/relacoes-sociais
+src/content/chapters/armas-e-armaduras.md:10          /equipamentos
+src/content/chapters/armas-e-armaduras.md:10          /ficha
+src/content/chapters/armas-e-armaduras.md:101         /regras/quase-acerto
+src/content/chapters/combate.md:251                   /regras/folego
+src/content/chapters/criacao-de-personagem.md:10      /ficha
+src/content/chapters/custo-de-servico-e-itens.md:10   /regras/armas-e-armaduras
+src/content/chapters/custo-de-servico-e-itens.md:335  /regras/custo-de-servico-e-itens
+src/content/chapters/habilidades.md:72                /regras/habilidades-secundarias
+src/components/FichaSkeleton.astro:125                /regras/antecedentes
+```
+
+**Conserto preferido:** fazer `rehypeBaseLinks` visitar também os nós `raw`, o que
+conserta os quinze de uma vez **e impede o décimo sexto**. O alternativo é trocar os
+quinze `href` à mão, que deixa a armadilha armada.
+
+**Confere:** a varredura abaixo tem de voltar vazia.
+
+```sh
+python -c "import os,re;pat=re.compile(r'href=\"(/[^\"]*)\"');[print(os.path.join(dp,f)+':'+str(i),m.group(1)) for root in ['src/content/chapters','src/components','src/pages','src/layouts'] for dp,_,fs in os.walk(root) for f in fs for i,l in enumerate(open(os.path.join(dp,f),encoding='utf-8'),1) for m in pat.finditer(l) if not m.group(1).startswith('/centelha-rpg') and not m.group(1).startswith('//')]"
+```
+
+Se o conserto for pelo plugin, a varredura continua achando os quinze `href` no fonte e a
+conferência passa a ser **no site publicado**: abrir `/centelha-rpg/regras/combate` e
+clicar em Fôlego. Este item cai no balde "só se confere depois do deploy".
+
+---
+
+# LOTE 2 · contradições de número, com jurisdição já decidida
+
+Nenhum item deste lote precisa de decisão de mesa. Em todos, uma das duas frases é
+comprovadamente a velha.
+
+### C-02 (22, 23, 24, 25, 119) · os tetos da criação, duas vezes na mesma página
+
+`src/content/chapters/criacao-de-personagem.md:62`:
+"Atributo máximo **4**; Habilidade máxima **3**; Centelha máxima **2**", e a linha 64
+dá pico "um único Atributo a 5 e uma única Habilidade primária a 4".
+Contra as linhas 18, 19 e 22 do mesmo arquivo: teto 5 / 4 / 3, com pico 6 e 5.
+
+Manda `src/data/regras.json → limitesCriacao` =
+`{atributo 5, habilidade 4, centelha 3, picoAtributo 6, picoHabilidade 5, picoQuantidade 1}`.
+**O passo a passo está certo; as linhas 62 e 64 são a versão velha.**
+
+Conserto: reescrever 62 e 64 com os números do JSON, ou apagar a seção "Limites na
+criação" inteira (60 a 65), já que ela só repete o passo a passo.
+**Confere:** `grep -n "Atributo máximo" src/content/chapters/criacao-de-personagem.md` = 0.
+**Sobra aberto (M-01):** a ficha não trava nenhum dos dois. `src/lib/ficha-engine.ts:141-155`
+diz em comentário "Não há mais modo de Criação: o que segura a ficha é o ORÇAMENTO de XP",
+e `capFor` devolve teto 6 para Atributo, Habilidade, Virtude e Centelha.
+
+### C-03 (73) · a Centelha custa XP ou não, e as duas respostas estão no mesmo JSON
+
+`src/data/regras.json → xp.centelha` = `{"tipo": "gratis", ...}` com a nota "Não custa XP.
+O tier de Centelha é concedido pelo Mestre".
+`src/data/regras.json → centelhaGate` = "A Centelha só aumenta com permissão do Mestre...
+**O XP paga o custo (×10)**, mas o salto de tier é narrativo".
+
+Manda `xp.centelha`, porque é ela que `calc.ts:229-231` lê (devolve 0 para `tipo: 'gratis'`,
+e a ficha cobra zero). **`centelhaGate` é a frase velha.**
+Conserto: apagar "O XP paga o custo (×10), mas" de `centelhaGate`. O capítulo
+`centelha.md`, que copia esse lado, muda junto.
+**Confere:** `grep -rn "paga o custo" src/` = 0.
+
+### C-04 (65) · duas tabelas de ferimento com faixas diferentes, no mesmo capítulo
+
+`src/content/chapters/vida-ferimentos-cura.md:76-78`:
+"Machucado / Ferido (50–75%)", "Grave (25–50%)", "Crítico (<25%)".
+Contra a tabela de Limiares do mesmo arquivo: 76–100 / 51–75 / 26–50 / 11–25 / 1–10.
+
+Manda `src/data/regras.json → ferimentos`, cujos `minPct/maxPct` são exatamente
+76-100, 51-75, 26-50, 11-25, 1-10. **A tabela de Recuperação é a errada**, e não por
+arredondamento: ela move o Grave de 11–25% para 25–50%. Com 40% de vida o jogador está
+Ferido numa tabela e Grave na outra.
+Conserto: reescrever as faixas da tabela de Recuperação com as cinco de `regras.json`,
+que são cinco e não três.
+**Confere:** `grep -n "25–50" src/content/chapters/vida-ferimentos-cura.md` = 0.
+
+### C-05 (66) · o Bram tem dois PV
+
+`src/content/chapters/vida-ferimentos-cura.md:35`: "Bram tem **PV 37**".
+Contra `criacao-de-personagem.md:157`, onde o Bram tem Vigor 3 e **PV 34**.
+Manda `regras.json → derivados.pv` (`base 25`, `vigorMult 3`) com `calc.ts:30`:
+25 + 3×3 = **34**. O exemplo do capítulo IV está com o PV de outra pessoa, e o resto da
+conta dele (28 de dano) muda de faixa de ferimento por causa disso.
+**Confere:** `grep -n "PV 37" src/content/chapters/vida-ferimentos-cura.md` = 0.
+
+### C-06 (112, 94) · anão, gnomo e halfling: metade ou dois terços
+
+`src/content/chapters/racas.md:50`, `:73` e `:85`, as três idênticas:
+"**deslocamento pela metade** da velocidade de um humano".
+`src/content/chapters/combate.md:201`: "desliza **dois terços** disso, e corre e salta
+**metade**".
+
+Manda `src/data/racas.json`, que traz `deslocamentoFrac: 0.667` nas três raças e o traço
+em prosa "Baixa estatura: **todo** deslocamento vale DOIS TERÇOS do de um humano · o
+passo em combate, o Arranque, a Corrida **e os Saltos**".
+**São dois terços em tudo.** As três linhas de `racas.md` estão erradas; a de `combate.md`
+acerta o passo e erra a corrida e o salto.
+**Confere:** `grep -rn "pela metade" src/content/chapters/racas.md` = 0 e
+`grep -n "corre e salta metade" src/content/chapters/combate.md` = 0.
+
+### C-07 (56) · Defesa Social sem o ×2 e sem a Especialidade
+
+`src/content/chapters/aparencia-virtudes-vontade.md`, última seção: "vem da Compostura +
+Sociabilidade + Centelha".
+Contra `defesas.md`: "( Compostura + Sociabilidade ) **× 2** + Centelha + Especialidade".
+Manda `regras.json → derivados.defesaSocial` (`mult: 2`, `centelhaMult: 1`,
+`especialidade: true`) com `calc.ts:87-92`. **O capítulo III erra nas duas coisas.**
+**Confere:** a frase do capítulo III passa a ter o ×2 e a Especialidade.
+
+### C-08 (98, 135, 64) · Defesa Mental sem a Especialidade, em três lugares
+
+`defesas.md` escreve certo: "Raciocínio + Integridade + Força de Vontade + Centelha +
+**Especialidade**". Sem a Especialidade: `aparencia-virtudes-vontade.md`,
+`criacao-de-personagem.md:72` e `src/data/glossario.json` (verbete *Defesa Mental*).
+Manda `regras.json → derivados.defesaMental` (`"especialidade": true`) com
+`calc.ts:82-85`, que soma `opts.especialidade`. **Os três estão desatualizados.**
+
+### C-09 (8, 37, 43, 84, 100) · quatro redações da Defesa física, e uma delas é falsa
+
+- `defesas.md`: "( Destreza + **Esquiva** )" e "( Destreza + **Bloqueio** )" · **certo**
+- `qual-sistema.md`: "perícia que você escolher" · **errado**
+- `combate.md` e `criacao-de-personagem.md:71`: "(Destreza + Habilidade) × 2" · genérico
+
+Manda `regras.json → derivados.defesa`, que é genérico de propósito (`atributo: "destreza"`,
+`mult: 2`), com `calc.ts:75-78`, que recebe `habilidade` **como parâmetro**: quem decide a
+perícia é o chamador, e na ficha o chamador usa Esquiva numa e Bloqueio na outra.
+`Bloqueio` é perícia primária com id próprio em `src/data/habilidades.json`, não uma
+escolha livre.
+Conserto: `qual-sistema.md` passa a nomear Esquiva e Bloqueio; os outros dois ganham o
+nome da perícia ou um link para `defesas.md`.
+**Confere:** `grep -n "perícia que você escolher" src/content/chapters/qual-sistema.md` = 0.
+
+### C-10 (90, 103, 125) · a espada longa tem três danos diferentes
+
+`src/content/chapters/combate.md:134`: o exemplo do Verme Púrpura, "espada longa
+(**2d6+3, média 10**)".
+Contra `quase-acerto.md` ("dano médio **3,5**") e `armas-e-armaduras.md` ("**1d6**").
+Manda `src/data/armas.json`: `{"id":"espada-longa","dado":1,"acerto":1,"defesaArma":1,"ticks":6}`,
+ou seja **1d6, média 3,5**. O exemplo do capítulo IX está errado, e é o exemplo que ensina
+a ler Absorção.
+De quebra, no mesmo capítulo: o resumo "distância/arremesso 1d6 a 1d6+2" não cobre o
+catálogo, que tem Besta Média `1d6+4` e Besta Grande `1d6+8`.
+**Confere:** `grep -n "2d6+3" src/content/chapters/combate.md` = 0.
+
+### C-11 (36) · Especialidade: "não acumula" contra "paga só a diferença"
+
+`src/content/chapters/criacao-de-personagem.md:56`: "Você paga só o preço do nível que
+está comprando, sem passar pelos de baixo".
+A regra é `regras.json → xp.tecnica` com `"tipo": "flat"`, e `calc.ts:231` devolve
+`precoNivel(chave, ate)`, o **preço cheio do nível comprado**. Subir do 2 para o 3 custa
+**20**, não 5. As duas frases da linha 56 se contradizem, e a segunda induz o leitor a
+orçar quatro vezes menos.
+Conserto: manter "não acumulam" e trocar a segunda oração por "você paga o preço cheio do
+nível que está comprando, e não a soma dos de baixo".
+**Confere:** `grep -n "só o preço do nível" src/content/chapters/criacao-de-personagem.md` = 0.
+
+### C-12 (34) · as quatro linhas de XP do Bram não saem da função de custo
+
+Refeito com `regras.json → xp` e `calc.ts:228-236`:
+
+| Linha do Bram | A tabela diz | A função dá |
+| --- | --- | --- |
+| Atributos | 496 | **415** |
+| Virtudes | 63 | **74** |
+| Artes | 870 | **745** para as sete Artes listadas |
+| Habilidades | 220 | **222** |
+
+Controle, e ele importa: Kael Atributos 375 = 375, Kael Habilidades 201 = 201, Sora
+Atributos 460 = 460, Veil Artes 420 = 420. **A função está certa e só o Bram está fora.**
+
+E o 870 não é ruído: **870 é exatamente o preço de OITO Artes**, seis no nível 5 e duas no
+3. `criacao-de-personagem.md:154` lista **sete**. O preço e a lista descrevem personagens
+diferentes.
+Conserto: recustear as quatro linhas. **Precisa de uma decisão antes (M-02): o Bram tem
+sete Artes ou oito?**
+**Confere:** rodar `node scripts/cost-examples.mjs` depois do C-49 e ver as quatro linhas
+baterem com a tabela do capítulo.
+
+### C-13 (97, 141, 86) · o Kael é um personagem diferente em cada capítulo
+
+A ficha dele está em `criacao-de-personagem.md:88-97` e é a única fonte que declara os
+números (e as contas dela fecham, ver C-12). Contra ela:
+
+| Onde | A página afirma | A ficha do XVIII diz |
+| --- | --- | --- |
+| `coracao-do-sistema.md` | "Força 3 + **Atletismo 2**" | Atletismo **3** |
+| `combate.md`, 1º exemplo | ataca com **espada** | o Kael não tem a perícia **Armas** |
+| `combate.md`, Investida | "de **martelo** (Preparo 2)" | idem |
+| `defesas.md` | Destreza 3, Sociabilidade 2, Integridade 2, Vontade 5, Centelha 1 | Destreza 4, sem Sociabilidade, sem Integridade, Vontade 7, Centelha 3 |
+| `quase-acerto.md` | **espada longa** | idem |
+
+Isto é onde o novato aprende a fórmula conferindo o número, e os números não conferem
+entre si.
+Conserto: ou os exemplos passam a usar a ficha dele, **ou os capítulos IX e XII trocam de
+personagem**. O Kael é batedor de arco; o martelo e a espada longa pedem a Sora, que tem
+Armas 5.
+**Confere:** cada exemplo que nomeia o Kael usa só traços que estão na ficha do XVIII.
+
+### C-14 (16, 171) · a Margem do exemplo do capítulo I erra por um
+
+`src/content/chapters/coracao-do-sistema.md:40`, o exemplo: "se tivesse **passado de 16**".
+Contra a regra na linha 44 do mesmo arquivo ("a cada 6 pontos que seu total **supera** o
+alvo") e `relacoes-sociais.md` ("Margem = [(Ataque − Defesa) ÷ 6]", tabela "6–11 = Margem 1").
+Com Defesa 10, o total **16** já dá Margem 1. **O exemplo é o errado.**
+**Confere:** `grep -n "passado de 16" src/content/chapters/coracao-do-sistema.md` = 0.
+
+### C-15 (9, 59, 99) · "(Valor)" é o id do banco vazando para a prosa
+
+`src/data/virtudes.json` traz `{"id": "valor", "nome": "Bravura"}`. Os outros três ids
+batem com o nome (`compaixao`, `conviccao`, `temperanca`); só esse não. As três
+ocorrências:
+
+```
+src/content/chapters/defesas.md:39        "Teste de Bravura (Valor)"
+src/content/chapters/qual-sistema.md:59   fonte mermaid: FB["Teste de Bravura (Valor)"]
+src/content/chapters/qual-sistema.md:111  "medo da cena = Bravura (Valor)"
+```
+
+Conserto: apagar os três "(Valor)". **Não renomeie o id**: a persistência da ficha é por
+slug e renomear exige entrada em `RENOMES` (`ficha-engine.ts`).
+**Atenção ao gerado:** a linha 59 é fonte **mermaid**. O SVG publicado vem de
+`src/data/diagramas.json`, escrito por `gen-mermaid.mjs:36`. Editar o `.md` não muda a
+página: é preciso **rodar `node scripts/gen-mermaid.mjs`** depois.
+**Confere:** `grep -rn "(Valor)" src/content/ src/data/diagramas.json` = 0.
+
+### C-16 (74, 102) · três defesas ou quatro
+
+`src/content/chapters/centelha.md`: "+1 às **quatro** defesas: Esquiva, Bloqueio, Defesa
+Mental e Defesa Social".
+Contra o título e a estrutura de `defesas.md`: "As **Três** Defesas".
+Manda o bloco `derivados` de `regras.json`, que tem **três** chaves de defesa (`defesa`,
+`defesaMental`, `defesaSocial`) e **uma só** fórmula física parametrizada pela perícia.
+São três defesas com duas rotas na física; o capítulo V conta rotas como se fossem
+defesas.
+**Confere:** `grep -n "quatro defesas" src/content/chapters/centelha.md` = 0.
+
+### C-17 (115, 138) · Miúdo contra Minúsculo
+
+`vida-ferimentos-cura.md` escreve "**Miúdo**". `combate.md`, `glossario.json` (verbete
+*Porte*) e `calc.ts:26` (`type Porte = 'minusculo' | ...`) escrevem **Minúsculo**, que é
+a chave de `derivados.pv.porte` em `regras.json`.
+O bestiário publicado usa as duas ao mesmo tempo: o Corvo sai com conceito "animal
+Minúsculo" e campo porte "Miúdo".
+**Confere:** `grep -rn "Miúdo" src/` = 0 (e conferir o bestiário gerado depois de
+`gen-bestiario.mjs`).
+
+### C-18 (196) · o rótulo da ficha cobra a Arte pela metade no primeiro nível
+
+`src/components/FichaSkeleton.astro:117`:
+`Arcano — Artes <small>(nível×10 · exige Centelha &gt; 0)</small>`.
+Manda `regras.json → xp.arte` = `{"tipo": "acum", "base": 10, "mult": 5}`, com a nota
+"15·20·25·30·35·40", que é o que `criacao-de-personagem.md:53` publica ("10 + (nível × 5)
+| 0→1 = 15"). **O motor cobra certo; só o rótulo mente**, e mente justo no primeiro nível
+(10 contra 15), que é o único que todo mundo compra.
+Conserto: trocar por `(10 + nível×5 · exige Centelha > 0)`.
+**Confere:** `grep -n "nível×10" src/components/FichaSkeleton.astro` = 0.
+
+### C-19 (163) · o Efeito custa 2× ou 4× o nível
+
+`/artes/efeitos` diz "Cada Efeito custa **2 × o nível** dele em XP".
+Contra `criacao-de-personagem.md:54`: "Efeito Especial de Arte | nível × 4 | 4 · 8 · 12 ·
+16 · 20 · 24".
+Manda `regras.json → xp.efeito` = `{"tipo": "flat", "base": 0, "mult": 4}`. Rodei a
+função: o Efeito de nível 3 custa **12**. **A página de Efeitos erra para menos, pela
+metade.**
+**Confere:** `grep -rn "2 × o nível" src/` = 0.
+
+### C-20 (197) · a armadura "Nenhuma" promete que o Vigor te defende de lâminas
+
+`src/data/armaduras.json`, entrada `nenhuma`, campo `notas`:
+"Sem proteção; máxima mobilidade. **Só o Soak natural (Vigor) defende você.**"
+Contra `combate.md` ("só a **Centelha** contra os letais... um mortal tem 0 de Absorção
+natural contra lâminas") e `soakNatural` em `calc.ts`, onde o Vigor entra **só no
+Impacto**.
+Este é o texto que o jogador lê no instante em que decide não usar armadura.
+Conserto: "Sem proteção. Contra Impacto resta a Absorção natural (Vigor + Centelha);
+contra Corte e Perfuração, só a Centelha."
+**Confere:** `grep -n "natural (Vigor) defende" src/data/armaduras.json` = 0.
+
+### C-21 (167) · a Aura tem duas escadas dentro do mesmo objeto
+
+`src/data/efeitos.json`, Efeito `aura`, dentro de `parametros[Volume]`:
+`"escala": ["0,25 m","0,5 m","1 m","1,5 m","2 m","2,5 m","3 m"]`
+e, ao lado, `"nota": "esfera com você no centro, **1 metro de raio por nível**"`.
+Manda a `escala`, que é o que a página imprime e o que `regras.json → arcano.moldes.aura`
+confirma ("a Aura mantém a régua dela e é menor de propósito... o número é raio, não
+diâmetro"). **A `nota` é a frase velha.**
+Conserto: "esfera com você no centro; o raio segue a escada do Volume da Aura, que é
+menor que a dos outros moldes."
+**Atenção:** editar o campo `nota`, **nunca** a chave `grid` da entrada.
+**Confere:** `grep -n "1 metro de raio por nível" src/data/efeitos.json` = 0, e
+`node scripts/gen-grid-artes.mjs --check` continua verde.
+
+### C-22 (172) · a iniciativa social inventa um Tick 0 e apaga os degraus
+
+`src/content/chapters/relacoes-sociais.md`: "começa no **Tick 0**; os demais no **Tick 1**,
+com a mesma regra de defasagem do físico".
+Manda a nota de `derivados.iniciativa` em `regras.json`: `"tickDoPrimeiro": 1`,
+`"gapPorPenalidade": 6`, "Quem tirar o MAIOR entra sozinho no **Tick 1**; os demais entram
+um Tick depois **por degrau de atraso**".
+A frase erra o Tick inicial, apaga os degraus, e ainda afirma ser "a mesma regra".
+**Confere:** `grep -n "Tick 0" src/content/chapters/relacoes-sociais.md` = 0.
+
+### C-23 (177) · três redações do Valor Passivo, e o motor não bate com duas
+
+- `acoes-e-sistema.md`: "Valor Passivo = 2 × (Atributo + Habilidade)"
+- `coracao-do-sistema.md` e `glossario.json`: "(Atributo + Habilidade) × 2 + Especialidade + Centelha"
+- `src/lib/calc.ts:273-275`, `valorPassivo`: `(atributo + habilidade) * 2 + centelha`
+
+O motor soma a Centelha e **não** soma a Especialidade. Jurisdição: `calc.ts`, cujo
+comentário cita `coracao-do-sistema.md:59`.
+Conserto: alinhar os dois textos ao motor (o capítulo VIII está incompleto e o glossário
+tem uma parcela a mais). **Se a Especialidade deve entrar, isso é decisão de mesa (M-03)
+e muda `calc.ts`, não o texto.**
+
+### C-24 (139) · duas escalas de Firula, e o capítulo que a apresenta só conhece uma
+
+As duas existem e são reais: `habilidades.md` traz +2 / +1d6 / +2d6, e
+`relacoes-sociais.md` traz +1 / +2 / +4. O glossário junta as duas na mesma linha sem
+dizer que são réguas de contextos diferentes, e o capítulo II, onde a Firula é
+apresentada, não menciona a segunda.
+Conserto: uma oração em cada, dizendo qual vale onde.
+
+### C-25 (123) · a régua de penetração é 0 a 3, e a página anuncia N0 a N5
+
+`src/data/armas.json`, campo `pen`, vai de **0 a 2**; `src/data/armaduras.json`, campo
+`resistPerf`, vai de **0 a 3**. O "(N0)–(N5)" de `armas-e-armaduras.md` e de
+`/equipamentos` é folga escrita como se fosse régua, e faz o leitor procurar armas que não
+existem.
+**Confere:** `grep -rn "N5" src/content/chapters/armas-e-armaduras.md` = 0.
+
+### C-26 (129) · o Pavês parece dar +6
+
+`src/data/escudos.json`: o Pavês tem `bloqCaC: 3` e `habilProjetil: true`, e **não existe
+campo separado** de bônus antiprojétil. Logo é **+3**, e o "(+3)" da segunda coluna repete
+o mesmo número em vez de somar. A página é que é ambígua.
+Conserto: a coluna de projétil deixa de imprimir um número e passa a imprimir "sim/não",
+ou ganha cabeçalho dizendo que repete o bloqueio.
+
+### C-27 (200) · o catálogo de armas tem 26 linhas e a tabela do capítulo tem 25
+
+`src/data/armas.json` tem **26** armas, incluindo `desarmado`. A tabela de
+`armas-e-armaduras.md` foi escrita à mão e ficou com 25; `/equipamentos` é gerada do JSON e
+traz as 26. A linha que falta é justamente o **Desarmado**, que `quase-acerto.md` cita.
+**Confere:** contar as linhas da tabela do capítulo = 26.
+
+### C-28 (198) · ★ e * significam o oposto um do outro
+
+Os dois símbolos descrevem o mesmo dado (`modos[].principal` em `armas.json`), com
+convenções opostas: `armas-e-armaduras.md` usa ★ para o **principal** e `/equipamentos`
+usa * para o **secundário**. Conferi arma por arma: os dados batem, só a legenda diverge.
+Conserto: uma convenção só, nos dois lugares.
+
+### C-29 (92, 69, 105) · "rodada" é de um sistema que não existe mais
+
+`combate.md` abre dizendo que não há turnos rígidos, e o tempo do motor é o **Tick**
+(`regras.json → combate.pgr` e `derivados.iniciativa` só conhecem Tick). Mesmo assim
+"rodada" aparece em `vida-ferimentos-cura.md` (Sangramento), em `combate.md` (Regra de
+Horda) e em `quase-acerto.md` (raspões), e "turno" aparece em `/artes/regras`.
+**Não existe conversão Tick ↔ rodada em fonte nenhuma**, então toda regra escrita em
+rodadas fica sem âncora: o Sangramento não tem quando acontecer.
+Conserto: trocar por Tick onde a conversão for óbvia. **Onde não for, é decisão de mesa
+(M-04)**, e as Durações do bloco `arcano`, medidas em turnos, são o caso maior.
+**Confere:** `grep -rn "rodada" src/content/ src/pages/` só devolve ocorrências
+deliberadas.
+
+### C-30 (82) · um parágrafo publicado duas vezes
+
+`src/content/chapters/combate.md`, linhas **195** e **199**, o mesmo parágrafo: "Ele é, na
+prática, **um Tick de movimento**...". Estão separados pelo `<div class="callout exemplo">`
+do Kael. A segunda cópia é a que traz "1,4 m/s".
+Conserto: apagar uma das duas, de preferência a primeira, guardando o "1,4 m/s".
+**Confere:** `grep -c "um Tick de movimento" src/content/chapters/combate.md` = 1.
+
+---
+
+# LOTE 3 · regras que existem no dado e não estão em capítulo nenhum
+
+Estes não são erros de digitação: é regra viva que o jogador não tem como aprender lendo
+o livro. Custam texto novo, não uma frase.
+
+### C-31 (81, 85, 162, 191) · Preparo, Golpe e Recuperação, o maior buraco do livro
+
+O sistema existe inteiro e com números em `src/data/regras.json → combate.pgr`:
+
+- `preparo` por classe de arma: `leve 0`, `media 1`, `haste 2`, `pesada 2`; distância =
+  Velocidade − 1; arremesso = Velocidade − 2; Arte = Velocidade − 1
+- `pgr.nota`: "O Golpe é sempre 1 Tick; a Recuperação é o que sobra da Velocidade
+  (P + G + R = Velocidade)"
+- `combate.escada`: `preparo: -2`, `golpe: -4`, `recuperacaoPorGolpe: -2`,
+  `pressaoPorAtaque: -2`, `pressaoTeto: null`, `alivioSegundaMao: 2`, `zeraEm: "livre"`
+
+**Nada disso está em capítulo nenhum.** `src/content/chapters/combate.md` usa "Preparo"
+treze vezes (a Investida, "Golpes no mesmo instante", a fuga de área) e "Tick do Golpe" na
+Corrida, sempre como se o conceito já tivesse sido apresentado. O único texto publicado
+que explica é a caixa "No tempo" da ficha, montada em `src/lib/ficha-engine.ts`.
+
+Conserto: **uma seção nova no capítulo IX**, com a tabela de `combate.pgr` e a escada de
+`combate.escada`. É o conserto de maior retorno da lista inteira: destrava a Investida, a
+leitura da coluna de Ticks de qualquer arma, e os golpes simultâneos.
+**Confere:** a palavra "Preparo" aparece definida em `combate.md` **antes** da primeira
+vez que é usada.
+
+### C-32 (193) · existem dois sistemas de tempo e nenhum capítulo diz isso
+
+A nota de `combate.escada` em `regras.json` diz: "No sistema normal a escada colapsa para
+o que o capítulo IX já cobrava, mais o −4 no Tick em que o golpe sai". Ou seja, há o
+sistema tático (Tick a Tick, com P/G/R) e o sistema normal, e as penalidades são
+diferentes nos dois. O jogador não sabe em qual está jogando.
+Conserto: uma caixa no alto do capítulo IX dizendo que há dois, qual é o padrão da mesa, e
+o que muda. Anda junto com C-31.
+
+### C-33 (192) · quantos golpes uma ação rende: o capítulo diz um, o motor diz até três
+
+`src/content/chapters/combate.md`: "Via de regra, **cada ação rende um só ataque**...
+Ninguém divide a ação em vários golpes com uma arma na mão."
+Contra `regras.json → combate.rajada`: "Atacar N vezes com a MESMA arma numa ação só,
+declarado de uma vez, sem parar no meio: P → G → G → R", com `penDadosPorGolpeExtra: -1`,
+`penDadosAcumula: true`, `velocidadePorGolpeExtra: 2` e `teto: {leve 3, media 3, haste 2,
+pesada 2}`.
+Manda o JSON. **A ficha está certa e o capítulo IX está desatualizado**, e a diferença é
+o dobro ou o triplo de golpes por ação: muda o combate inteiro.
+Na mesma vizinhança, um segundo desacordo: `combate.dupla` diz `penDados: -1` com
+`penDadosAmbasAsMaos: true` (as duas mãos a −1d6), enquanto `combate.md` diz hábil −1d6 e
+inábil −2d6.
+Conserto: reescrever o parágrafo com a Rajada e a empunhadura dupla como o JSON as define.
+**Confere:** `grep -n "cada ação rende um só ataque" src/content/chapters/combate.md` = 0.
+
+### C-34 (14) · quem tem perícia 0 rola zero dados, e isso não está escrito
+
+`src/lib/calc.ts:17` devolve, para soma 1, `{dados: 0, bonus: 2}`: **zero dados e um +2
+fixo**. Soma 0 devolve 0. Um personagem de Atributo 1 e perícia não treinada tem total
+fixo 2 e **nunca** supera nem a Dificuldade 5.
+Isso não está em capítulo nenhum nem no glossário, e é o caso mais comum da mesa.
+Conserto: uma linha no capítulo I. **Antes disso, provavelmente uma decisão (M-05): é
+mesmo para ser impossível?**
+
+### C-35 (13) · o capítulo I escreve a fórmula do pool onde o leitor espera o número de dados
+
+`src/content/chapters/coracao-do-sistema.md:17`, em destaque:
+`[(Atributo + Habilidade) ÷ 2] + 2 se a soma for ímpar`.
+No motor (`calc.ts:17-20`) o `÷2` dá **dados** e o `+2` é **bônus ao resultado**, não um
+dado a mais. O `/rolador` e o glossário escrevem certo; o capítulo I, não, e é a primeira
+fórmula que o leitor encontra.
+**Confere:** a linha 17 separa visualmente as duas grandezas.
+
+### C-36 (39, 67, 75) · Absorção é usada em três capítulos antes de ser definida no nono
+
+Está definida em `combate.md`, seção "Dano e Armadura" (natural = Vigor + Centelha no
+Impacto, **só a Centelha** em Cortante e Perfurante, mais a da armadura), em
+`glossario.json` e em `calc.ts` (`soakNatural`). Os capítulos II, IV e V a usam antes, sem
+link.
+Conserto: um parágrafo curto no capítulo II ou IV, mais link.
+
+### C-37 (122, 194) · FAA e FAH aparecem na ficha sem serem abertos, e FAH tem dois sentidos
+
+`src/lib/ficha-engine.ts:1688` e a linha seguinte: `FAH = Força × 3 + Halterofilismo` e
+`FAA = Força × 2 + Atletismo + Arremesso`. As siglas aparecem na caixa "Peso, Arremesso e
+Corrida" da ficha e **em lugar nenhum mais**.
+Pior: **FAH é reusada com outro sentido** em `src/data/efeitos.json` ("FAH: (nível da Arte
+× 7) − 2"). Duas coisas diferentes, mesma sigla, no mesmo site.
+Conserto: abrir as duas na ficha, e renomear uma das FAH.
+
+---
+
+# LOTE 4 · páginas .astro que digitaram o que deviam ler do dado
+
+### C-38 (144, 107) · cinco páginas imprimem um numeral de capítulo diferente do índice
+
+`src/lib/site.ts`, constante `NAV`, dá **XV** para `caminhos`, **XVI** para `arcano` e
+**XVII** para `artes/regras`, com comentários que confirmam a intenção. Contra isso:
+
+| Arquivo e linha | Imprime | `NAV` diz |
+| --- | --- | --- |
+| `src/pages/caminhos/index.astro:9` | Capítulo **XIV** | XV |
+| `src/pages/arcano.astro:38` | Capítulo **XV** | XVI |
+| `src/pages/artes/regras.astro:44` | Capítulo **XV** | XVII |
+| `src/pages/artes/efeitos.astro:26` | Capítulo **XV** | XVII |
+| `src/pages/artes/catalogo.astro:12` | Capítulo **XV** | XVII |
+
+Os capítulos em markdown pegam o numeral do próprio frontmatter e por isso nunca erram;
+estas cinco digitaram.
+Conserto: **ler o numeral do `NAV`**, não trocar o número à mão, senão volta a divergir na
+próxima inserção de capítulo.
+**Confere:** `grep -rn "Capítulo X" src/pages/` não devolve numeral literal.
+
+### C-39 (150) · "[object Object]" impresso no meio do capítulo das Artes
+
+`src/pages/artes/regras.astro:**274**` tem `<p class="muted">{MOLDES.aura}</p>`, e
+`MOLDES.aura` é um **objeto** em `regras.json → arcano.moldes.aura`
+(`{id, medida, figura, nome, compra, escala, nota}`). Astro imprime `[object Object]`.
+Conserto: `{MOLDES.aura.nota}`.
+Conferi as outras doze chaves de `moldes` usadas na página: `aura` é a única que é objeto
+e sai crua. As demais ou são string, ou já são acessadas por campo.
+**Correção ao meu relatório:** a Fase 2 diz linha 275. É a **274**; a 275 é
+`{MOLDES.cadeiaRessalva}`, que é string e está correta.
+**Confere:** `grep -n "{MOLDES.aura}" src/pages/artes/regras.astro` = 0. No ar, a página
+`/artes/regras` não contém "[object Object]" (balde de pós-deploy).
+
+### C-40 (201, 202) · a /mestre escreveu a tabela de dificuldade à mão e inventou um degrau
+
+`src/pages/mestre.astro:53`: `{ dif: '20', nome: 'Muito difícil', ... }`.
+Manda `regras.json → dificuldade`, onde 20 é **"Limite humano"**, que é o nome que os
+capítulos I, VIII e XIX usam.
+E `mestre.astro:49` inventa `{ dif: '3', nome: 'Trivial' }`, degrau que **não existe** em
+`regras.json` (a régua começa em 5).
+A causa das duas é a mesma: a tabela foi digitada em `mestre.astro:49-55` em vez de lida
+do dado.
+Conserto: renderizar do bloco `dificuldade`.
+**Confere:** `grep -n "Muito difícil" src/pages/mestre.astro` = 0.
+Item vizinho, sem número contraditório: a `/mestre` chama de "Fácil" uma razão relativa à
+soma escolhida (×4/3) e os capítulos chamam de "Fácil" o 5 absoluto. Os números batem
+(o `aaltura` de cada linha é `dif × 3/5`), falta a página dizer que são réguas diferentes.
+
+### C-41 (203) · a /mestre manda intimidação para a Defesa Mental
+
+`src/pages/mestre.astro:88`:
+`['Intimidar soldado comum', 'Intimidação', 12, 'vs Defesa Mental do alvo']`.
+Contra `src/content/chapters/defesas.md`, que decide isso **duas vezes**: na régua dos três
+medos ("Intimidação... → **Defesa Social**") e na dúzia de casos ("Um brutamontes ruge para
+te fazer fugir → **Social**"). A nota de `derivados.defesaSocial` em `regras.json`
+concorda ("resiste a ser convencido/movido").
+`defesas.md` é o capítulo escrito para resolver essa fronteira. **A linha da /mestre está
+errada.**
+**Confere:** `grep -n "Defesa Mental do alvo" src/pages/mestre.astro` = 0.
+
+---
+
+# LOTE 5 · o glossário
+
+Quatro verbetes contradizem `regras.json`. Pesa mais do que parece: o glossário não é uma
+página que se visita, é o **balão de ajuda que abre dentro dos capítulos**, então o leitor
+recebe a versão errada no meio da leitura da versão certa.
+
+### C-42 (134) · Vontade "piso 5"
+
+`src/data/glossario.json`, verbete *Vontade*: "Força de Vontade — reserva (**piso 5**)".
+Manda `regras.json`: `pisos.vontade = 0` e `xp.vontade.piso = 0`, com a nota "O piso
+desceu de 1 para 0: o nível 1 passou a ser comprado". `criacao-de-personagem.md:30`
+escreve "Força de Vontade 0".
+**O glossário é o único lugar do site que ainda diz 5.**
+
+### C-43 (133) · Especialidade "10 XP por nível"
+
+Mesmo arquivo, verbete *Especialidade*, fim da definição: "Custa **10 XP por nível** na
+primária, **5** na secundária".
+Manda `regras.json`: `xp.especialidadePrimaria` = `{base: 8, mult: 4}` e
+`xp.especialidadeSecundaria` = `{base: 4, mult: 2}`, usados por `calc.ts:245`. Rodei a
+função: **12, 16, 20** na primária, 6 · 8 · 10 na secundária, que é o que
+`criacao-de-personagem.md:47` e `habilidades.md` publicam.
+
+### C-44 (136, 151) · Mana "custa o nível do efeito"
+
+Verbete *Mana*: "Combustível do Arcano: (Centelha × 2) + Vontade. **Conjurar custa Mana =
+nível do efeito.**"
+A primeira frase está certa. A segunda contradiz a seção de custo de `/artes/regras`,
+servida do bloco `arcano` de `regras.json`: **soma dos níveis de parâmetro, menos a
+Centelha**. É o texto que aparece ao passar o mouse em "Mana" dentro do capítulo que
+ensina a conta certa.
+
+### C-45 (137) · Dificuldade com três dos seis degraus
+
+Verbete *Dificuldade*: "(5 fácil, 10 média, 20 limite humano)". `regras.json → dificuldade`
+tem seis, e o que falta no meio é justamente **15 · Difícil**, além de 25 e 30.
+
+**Confere o lote inteiro:**
+`grep -n "piso 5\|10 XP por nível\|Mana = nível do efeito" src/data/glossario.json` = 0.
+
+---
+
+# LOTE 6 · o que mora em arquivo gerado
+
+O conserto destes **não é no `.md`**. Ver a tabela de donos no alto.
+
+### C-46 (44) · Vontade listada como Atributo da perícia Integridade
+
+`src/data/habilidades.json`, verbete `integridade`:
+`"atributos": ["vontade","vigor","inteligencia","raciocinio"]`.
+**Vontade não é um dos nove Atributos** (`src/data/atributos.json`): é o traço de 0 a 12 do
+capítulo III. O capítulo II publica essa lista porque `gen-cap-pericias.mjs` a gera do
+JSON.
+Não há, em fonte nenhuma, regra dizendo como uma reserva de 0 a 12 entra num pool de
+Atributo + Habilidade. **Isto é decisão de mesa (M-06)**; o conserto mecânico (tirar
+`vontade` da lista) só vale depois dela.
+
+### C-47 (46, 47, 48, 50, 51) · verbetes de perícia que prometem número e não dão
+
+Todos moram no campo `descricao` de `src/data/habilidades.json`, e chegam ao capítulo II
+pelo gerador:
+
+| Verbete | A frase sem número | O que existe na fonte |
+| --- | --- | --- |
+| Furtividade | "desanda com armadura pesada" | `armaduras.json` tem campo `penalidade` por peça |
+| Esquiva | "vale pouco encurralado" | nada |
+| Bloqueio | "escudo de verdade" | `escudos.json` marca quais servem contra projétil rápido, e `armas-e-armaduras.md` define hábil como "cobre ≥30% do corpo": **isto resolve o caso do escudo, e é só escrever** |
+| Firula | "a segunda vez impressiona menos" | nada |
+| primária + secundária | "a menor vira bônus fixo" | `acoes-e-sistema.md` tem a tabela com os números |
+
+Conserto: os dois com fonte (escudo, bônus fixo) são texto e link. Os três sem número vão
+para a mesa (M-07).
+**Confere:** depois de mexer em `habilidades.json`, rodar
+`node scripts/gen-cap-pericias.mjs` e conferir que o capítulo II mudou junto.
+
+### C-48 (15, 41, 19) · tabelas cortadas sem dizer que a régua continua
+
+`calc.ts:17` não tem teto, e `/mestre` publica a tabela do pool até a soma 16 (8d6). A
+tabela do capítulo I para em 12 sem avisar. A tabela de Defesa Passiva para em 10 pelo
+mesmo motivo, e nada em `calc.ts` nem em `regras.json` a limita.
+Conserto: uma linha de rodapé em cada ("a régua continua na mesma proporção").
+
+---
+
+# LOTE 7 · a ferramenta que existia para pegar o erro do Bram está quebrada
+
+### C-49 (34) · `scripts/cost-examples.mjs` devolve NaN em todas as linhas de XP
+
+O script se anuncia como "recusteia os 4 builds-exemplo pela tabela REAL (regras.json)".
+É exatamente o conferidor do C-12. Rodei (ele só imprime, não grava):
+
+```
+Kael (1400)
+  Atrib NaN · Aparência NaN · Perícias NaN · Secund. NaN · Esp. NaN · Virtudes NaN ·
+  Vontade NaN · Centelha NaN · Técnicas NaN · Artes 0
+  TOTAL NaN / 1400  (sobra NaN)
+```
+
+**Todas as linhas de XP dos quatro exemplos saem NaN**, e o total também. Três coisas saem
+daí:
+
+1. O erro do Bram tem explicação de mecanismo, não de descuido: o único conferidor
+   automático parou de conferir, então as quatro linhas puderam derivar sem nada apitar.
+   **Consertar o script vale mais que recustear à mão**, porque ele volta a segurar as
+   próximas.
+2. Os orçamentos dentro do script são **1400 / 1800 / 2400**; os de `regras.json` são
+   **1500 / 2000 / 2600**. É mais uma cópia de número, desatualizada.
+3. Os derivados que ele imprime também não batem: Kael sai com Defesa Mental **9** e
+   Defesa Social **12**, contra 13 e 7 no capítulo XVIII e 11 e 9 no capítulo XI. E o Bram
+   sai com **PV 34**, que é a terceira confirmação independente do C-05.
+
+**Confere:** `node scripts/cost-examples.mjs` roda sem NaN e os quatro totais batem com as
+tabelas dos capítulos.
+
+---
+
+# LOTE 8 · varreduras de uma palavra
+
+Cada linha é uma troca, não uma decisão. Agrupadas porque uma passada resolve todas.
+
+| Item | Palavra | Onde | Trocar por |
+| --- | --- | --- | --- |
+| C-50 (75) | **Soak** | 8 páginas publicadas, incluindo bestiário, Técnicas e `/equipamentos` | Absorção (é alias no glossário, mas nunca traduzido na tela) |
+| C-51 (79) | **dials** | capítulo V | parâmetros, que é o nome do campo em `efeitos.json` |
+| C-52 (156) | **cast** | `/artes/regras` | conjuração |
+| C-53 (176) | **baseline** | `/artes/regras` **e `src/data/racas.json`**, no traço do humano | valor de partida |
+| C-54 (187) | **knockback** | `src/data/tecnicas.json` | empurrão |
+| C-55 (89, 181) | **banda** | `combate.md` usa como sinônimo de Nível; `acoes-e-sistema.md` usa "banda morta" com outro sentido | usar "Nível" no primeiro caso e manter "banda morta" só no segundo |
+| C-56 (104, 154) | **datas de decisão** | prosa de `quase-acerto.md`; campos de texto do bloco `arcano` em `regras.json` ("decidido em 2026-08-18", "depois de 23/08", "a faixa estreitou em 22/08") | apagar: é histórico de bastidor sendo publicado como regra |
+| C-57 (190) | **"uma Técnica de um Proeza"** | primeira frase de `src/pages/caminhos/index.astro` | "de uma Proeza" |
+| C-58 (152) | **`8 + 2 × metros`** | item "Tempo e área" da lista "Em revisão" em `/artes/regras` | a fórmula viva é `5 + 5 × metros`, com a tabela 10/15/20/25 publicada logo acima, do mesmo `regras.json`. É texto de bastidor que sobrou e contradiz a própria página |
+
+**Confere:** `grep -rin "soak\|dials\|baseline\|knockback" src/` só devolve nomes de tipo
+em `.ts` (`SoakCat`), nunca texto que chega à tela.
+
+---
+
+# LOTE 9 · o que falta ligar, nomear ou legendar
+
+Nenhum destes é contradição: é resposta que existe na fonte e não está onde o leitor
+olha. Todos são uma frase ou um link.
+
+| Item | O que o leitor encontra | O que falta |
+| --- | --- | --- |
+| C-59 (1, 3) | a capa usa "pool de d6" e conta Proeza, Técnica e Arte | uma linha do que são, ou link; os três têm verbete no glossário |
+| C-60 (5, 6) | o capítulo XIX dá quatro números de Dificuldade | dizer que o número é o alvo do **total dos dados**, e que "cada 6" é 6 **pontos** de folga, não dados que caíram em 6 |
+| C-61 (7) | "Esp." em `qual-sistema.md` e `defesas.md` | legenda ou link: é Especialidade, e são as duas únicas páginas que abreviam |
+| C-62 (17) | o capítulo I põe a Especialidade numa fórmula | quanto ela vale: +1 por nível em valor fixo, +1d6 descartando o menor no pool |
+| C-63 (18) | o capítulo I exige a Centelha | ela é o capítulo V; `derivados.defesa.centelhaMult` e `ataque.centelhaMult` valem 1 |
+| C-64 (21) | "empates favorecem quem defende" | isso é da **rolagem oposta**; contra Dificuldade e Valor Passivo a regra é `total > alvo` e o empate perde. O capítulo não separa os dois casos |
+| C-65 (20, 178, 179, 180) | "Ação Estendida" no capítulo I, "Acumulada" e "Longa" no VIII | três nomes para duas coisas, e a "banda morta de uma Margem" (errou por menos de 6: nada; por 6 ou mais: perde a diferença) só existe no VIII. Unificar o nome e linkar |
+| C-66 (29) | as fórmulas de Energia e Mana na Criação | para que servem: Energia é o combustível das Técnicas de Proeza, Mana o do Arcano. Nem o capítulo XVIII nem o V dizem |
+| C-67 (30) | "[nível ÷ 2]" na tabela de Especialidade | nível **de quê**: a regra é "cada 2 níveis de Habilidade abrem 1 de Especialidade", em `xp.especialidadePrimaria.limite` |
+| C-68 (31, 40) | "Desperto" usado no capítulo XVIII | é o rótulo do tier de Centelha 2 (`escalaCentelha[2].rotulo`), batizado treze capítulos antes, sem verbete no glossário |
+| C-69 (32, 33) | "as quatro Virtudes", "(feio, −1)" | nomear as quatro (`virtudes.json`) e linkar a tabela de Aparência (−5 a +5), que está no capítulo III e em `regras.json → aparencia` |
+| C-70 (38) | o capítulo II separa Destreza e Força em verbetes | `combate.md` responde: "Destreza ou Força, **à escolha de quem ataca**", e `habilidades.json` traz `armas: {"atributos": ["destreza","forca"]}`. O capítulo II nunca junta as duas metades |
+| C-71 (42) | "Conhec. Gerais", "Ofícios" nas tabelas de exemplo | os nomes canônicos de `habilidades.json` são `conhecimentos-gerais` e `oficios-gerais`; as tabelas abreviam por conta própria |
+| C-72 (49) | o capítulo II lista de um a quatro Atributos por verbete | a regra, escrita uma vez no alto: "você diz **como** está fazendo, e o **como** define o Atributo". Repetir no ponto de uso |
+| C-73 (63) | "Clique no nome da Virtude na ficha, **ou aqui no texto**" | `aparencia-virtudes-vontade.md` não tem **um único** atributo `data-*` nem link nos nomes das Virtudes: não há gancho para nada abrir. A régua existe (`virtudes.json`, campo `niveis`, seis degraus) e a ficha a mostra |
+| C-74 (77, 78) | o capítulo V cita horda e "armadura natural" | o "~20 Comuns" está em `combate.md`, seção Regra de Horda, e "armadura natural" é a **Couraça de Porte** (`porteAcerto`/`bloqueioLimite`). Falta nomear e linkar |
+| C-75 (95, 96) | o capítulo IX cita sete Técnicas e resume a regra de área | as sete estão em `tecnicas.json` com página própria em `/caminhos/<proeza>`; a regra de área ("a área não se esquiva nem se bloqueia, ela se abandona") mora no capítulo das Artes. Falta link nos dois sentidos |
+| C-76 (110) | duas classificações de arma | `armas.json` tem o campo `classe` (leve/media/pesada/haste/distancia/arremesso) e o campo `folego`; o Quase-Acerto usa três classes derivadas do **dano médio**. São réguas diferentes e nenhuma página diz isso |
+| C-77 (127) | a tabela de `combate.md` rotula 4 Ticks como "Utilitária" | `armas.json` dá `ticks: 4` aos Dardos, que atacam. A tabela é lista de exemplos, não contrato, e não avisa |
+| C-78 (130, 131) | a fórmula de dano de `combate.md` | a nota de `derivados.danoForca` resolve: "1 mão ×1, 2 mãos ×2 (versáteis com as duas também ×2)", e a tag "Pesada" não altera isso. A tag "Ágil" (Destreza no dano) existe em `armas.json` e não aparece na fórmula |
+| C-79 (145, 184) | "as três Trilhas" no capítulo das Proezas | são `corpo`, `voz` e `mente` em `caminhos.json`, e cada página de Proeza já imprime a sua. Nenhuma das duas páginas diz quais são as três |
+| C-80 (148) | o Arcano cita a regra do Efeito em outra Arte | ela existe em `regras.json → arcano.outraArte` e é citada como se já tivesse sido dita |
+| C-81 (149, 165) | `/artes/efeitos` diz "Artes Universais 15" | `artes.json` tem **24** Artes; a página conta só as que **ela** mostra, e não mostra `manipulacao-mana`, que não aparece no campo `artes` de nenhum dos 140 Efeitos. Rótulo de conteúdo apresentado como contagem do sistema. E a descrição de uma linha da Mana no Arcano continua sem dizer o que ela faz |
+| C-82 (166) | o índice de `/artes/efeitos` soma 189 por Arte | `efeitos.json` tem **140** entradas; a diferença é o compartilhamento (o Projétil Conjurado vale para sete Artes). Falta uma frase dizendo que se sobrepõem |
+| C-83 (157) | a Cura tem régua própria | ela começa em 1 de propósito ("cada nível de parâmetro da Cura custa 2 de Mana", em `regras.json → arcano`). Falta a frase dizendo que a Cura não tem grau 0 |
+| C-84 (156) | os números do Ritual | estão na mesma página, 400 linhas abaixo, vindos de `arcano.ritual`. Falta link no ponto em que o Ritual é mencionado |
+| C-85 (186) | o ☆ ao lado de cada Técnica e Arte | é botão de marcador (`TecnicaItem.astro`, `title="Marcar"`), explicado só em `/marcadores`, página que o leitor abre **depois** de ver a estrela cinquenta vezes |
+| C-86 (189) | a página de Proeza imprime o nível de cada Técnica | o preço existe (`xp.tecnica`: 10·15·20·25·30·35, sem acumular) e não é impresso ao lado |
+| C-87 (195) | a tabela de arremesso despenca nos últimos 20% | é intencional e está comentado em `ficha-engine.ts:1625` ("nos últimos 20% até o teto o alcance desaba até zero"). A tabela mostra o penhasco sem dizer que é penhasco |
+| C-88 (205) | `habilidades.md` diz que a ficha não soma a Especialidade sozinha | e o `/rolador` (`rolador.astro:8`) oferece o campo para declarar que ela se aplica. Não é contradição: falta a frase na página do rolador |
+| C-89 (88, 107, 108) | o capítulo XX (Fôlego) está fora do índice | **é de propósito**: `src/lib/modulos.ts` define `MODULOS = { folego: false }` e `site.ts:70` o inclui no `NAV` só com a bandeira ligada, "a página segue acessível pela URL para os links dos outros capítulos não quebrarem". Sobram dois defeitos reais: o único link que a alcançava está quebrado (é o `combate.md:251` do C-01, então a intenção do comentário não se cumpre), e `combate.md` afirma que "o site não mostra os números dele", o que é falso: a página mostra tudo |
+| C-90 (183) | `/mestre` e o capítulo I imprimem "30+" | `regras.json → dificuldade` termina em `{"dif": 30, "desafio": "Sobre-humano"}`, sem "+". Licença de texto, não contradição |
+| C-91 (91) | o exemplo do Verme Púrpura e do Tarrasque | os números são dado de bestiário (`inimigos.json`: Verme `soak {impacto 12, corte 13, perfuracao 13}`, Tarrasque `{24, 27, 27}`), e **nenhum dos dois sai da conta que o capítulo acabou de ensinar**. Pior: o **24** citado é o de Impacto, e a frase fala de "qualquer aço mortal", que é Corte, onde o número seria 27. Conserto: trocar o exemplo ou explicar que o bestiário tem Absorção própria |
+| C-92 (91b) | a escala de Centelha vai de 0 a 6 | `inimigos.json` tem criaturas com Centelha **7, 9 e 10** (o Tarrasque tem 10, o Verme tem 1). Ou a escala tem uma faixa de monstro não escrita, ou o bestiário estourou a régua: **decisão de mesa (M-08)** |
+| C-93 (72) | "a base **e o multiplicador** escalam com o tamanho" | só a base escala: `derivados.pv.porte` traz `enorme {base 35, vigorMult 5}`, `imenso {40, 5}`, `colossal {45, 5}`. O multiplicador para em 5 de propósito. Regra certa, frase que promete duas escadas e entrega uma |
+| C-94 (93) | "o empilhamento de modificadores numa mesma Defesa é limitado a ±6", seguido de uma seção "Sem teto" | são dois tetos de coisas diferentes: `combateTatico.modificadorCap: 6` é dos **modificadores situacionais** (cobertura, flanco, prono, postura) e `combate.escada.pressaoTeto: null` é da Pressão, que não tem teto. `porteAcerto.nota` até diz que o porte "NÃO entra no teto ±6". Falta escrever "destes modificadores" |
+| C-95 (25b) | o Veil tem Centelha 4 na criação | `criacao-de-personagem.md:119`, contra `limitesCriacao.centelha = 3`. Ou o exemplo é uma exceção declarada, ou o número desce |
+
+---
+
+# Adendo ao lote 2 · quatro que só se separaram na revisão final
+
+### C-96 (57) · a Defesa Social cobre duas coisas, e o capítulo diz que cobre uma
+
+`src/content/chapters/defesas.md` escreve, no alto, "Segura quem tenta te convencer,
+seduzir, coagir, provocar, **ou simplesmente te ler**", e mais abaixo, no mesmo arquivo,
+"protege contra quem tenta te ler", como se fosse só isso.
+Manda a nota de `derivados.defesaSocial` em `regras.json`: "O escudo social geral: resiste
+a ser convencido/movido **E** a ser lido". **A segunda frase é a estreita.**
+
+### C-97 (83, 170) · a conta do ataque social sai sem o d6 e sem o +2 no capítulo IX
+
+`src/content/chapters/relacoes-sociais.md` escreve a versão executável:
+"Ataque = [ (Influência + Habilidade) ÷ 2 ] **d6** ( +2 se a soma for ímpar ) + ...", e é
+exatamente o que `calc.ts:17-20` faz.
+`src/content/chapters/combate.md` escreve a mesma conta **sem o `d6` e sem o `+2`**.
+Nenhum número muda; muda o que o leitor consegue executar.
+Conserto: copiar a redação de `relacoes-sociais.md`.
+
+### C-98 (164) · duas contas de custo de conjuração, em duas páginas irmãs
+
+`/artes/efeitos`: "o custo é **o nível do Efeito mais** os parâmetros usados".
+`/artes/regras`: "Some os níveis investidos... do total subtraia a Centelha", e os
+**quatro exemplos de conta da página não somam nível de Efeito nenhum**.
+Os dois textos vêm do mesmo bloco `arcano` de `regras.json`; a conta publicada com
+exemplos conferíveis é a de `/artes/regras`. **A frase de `/artes/efeitos` está errada**,
+e ela some junto com o C-19, que é da mesma página.
+
+### C-99 (175) · "a escada de seis degraus" são duas escadas diferentes
+
+`relacoes-sociais.md` chama de "a escada de seis degraus" algo que existe em dois sabores:
+a das Ações (Tick · minuto · hora · dia · semana · estação) e a do Ritual (Ticks · 1 min ·
+6 min · 60 min · 6 h · 24 h, no bloco `arcano` de `regras.json`). Usar o mesmo nome para
+as duas é confusão de texto.
+Conserto: nomear cada uma.
+**Fica aberto (M-09):** "o intervalo-base escala com a longevidade da raça" não tem
+conversão em `racas.json` nem em `regras.json`.
+
+---
+
+# PARA A MESA · não execute, ninguém decidiu
+
+Estes **não são erros**: são lugares onde a regra não existe. Escrever qualquer coisa aqui
+é inventar sistema. Trago as leituras que competem quando elas existem, e não escolho
+entre elas.
+
+**Os quatro primeiros travam a primeira sessão.**
+
+| Código | A pergunta | As leituras que competem, ou o que falta |
+| --- | --- | --- |
+| **M-10** (146, 147, 153) | como as Artes rolam de vez? | é o primeiro dos 21 itens da lista "Em revisão" da própria página. Sem ele o Arcano não é jogável. Junto: "Aprender uma Arte é percorrer uma de suas Trilhas" e **nenhuma Trilha existe**, enquanto a Criação compra Artes só com XP |
+| **M-11** (62) | como se recupera Força de Vontade? | não há regra em fonte nenhuma (procurei `recup` em `regras.json`: nenhuma chave; em `calc.ts` só `folego` e `mana` têm recuperação). É a reserva que paga Técnicas, Artes e Combate Social |
+| **M-12** (68) | a penalidade de ferimento sai de dados ou de pontos? | `regras.json → ferimentos` guarda `penAcao: -1..-4` e `penDefesa: 0..-3` como números puros, **sem unidade**. Decide quanto pesa estar ferido |
+| **M-13** (126, 199) | quanto custa recarregar uma besta? | `recarga` existe como **tag** em `armas.json` (quatro bestas a têm) e como filtro em `/equipamentos`, e **não tem custo em Tick em lugar nenhum**. A arma de maior dano do catálogo não é jogável |
+| **M-01** (22) | a ficha deve travar os limites de criação? | `ficha-engine.ts:141-155` deliberadamente não trava ("o que segura a ficha é o ORÇAMENTO de XP"), e os dois textos do capítulo XVIII dizem que trava |
+| **M-02** (34) | o Bram tem sete Artes ou oito? | a lista do texto diz sete, o preço de 870 XP é exatamente o de oito |
+| **M-03** (177) | a Especialidade entra no Valor Passivo? | `calc.ts:273-275` não a soma; `coracao-do-sistema.md` e o glossário somam |
+| **M-04** (92, 155) | quantos Ticks tem uma rodada, e um turno? | as Durações do bloco `arcano` são medidas em **turnos**, o combate é medido em **Ticks**, e não há conversão. A Duração breve de um efeito não é conversível para a linha do tempo do combate |
+| **M-05** (14) | quem tem Atributo 1 e perícia 0 deve ser incapaz de passar na Dificuldade 5? | é o que o motor faz hoje (total fixo 2), e ninguém escreveu se é de propósito |
+| **M-06** (44) | como a Vontade entra num pool? | `habilidades.json` lista `vontade` entre os Atributos da perícia Integridade. Ela é uma reserva de 0 a 12 num sistema de Atributos de 0 a 6. Entra cheia? Pela metade? Não entra? |
+| **M-07** (46, 47, 50) | os três números que faltam nos verbetes | quanto a armadura pesada tira da Furtividade (existe o campo `penalidade` em `armaduras.json`, falta a ligação); quanto a Esquiva perde encurralada; quanto a segunda Firula impressiona menos |
+| **M-08** (91) | a escala de Centelha vai até 6 ou até 10? | `escalaCentelha` tem 0 a 6; `inimigos.json` tem criaturas com 7, 9 e 10 |
+| **M-09** (175) | o intervalo entre passos de Relação escala com a longevidade da raça, como? | a frase existe, a conversão não |
+| **M-14** (52) | com que Atributo se rolam as secundárias? | **ausência no dado, não no texto**: `habilidades.json` tem o campo `atributos` em cada primária; as 66 entradas de `habilidades-secundarias.json` têm só `descricao, grupo, id, niveis, nome` |
+| **M-15** (53) | o que faz a secundária Energia Espiritual? | o verbete promete mexer em reserva, recuperação e saque máximo de Mana. `calc.ts:116-120` calcula `mana = centelha × 2 + vontade + MANA_ARTE_BONUS[...]`: **nenhum termo de Energia Espiritual em lugar nenhum** |
+| **M-16** (54) | Acerto Arcano é obrigatório para conjurar? | é secundária comum em `habilidades-secundarias.json`, sem marca de obrigatória, e a página de Artes a cita dentro de um item em revisão |
+| **M-17** (55) | há teto de quantas secundárias se compra? | `capFor` não limita, `xp.habilidadeSecundaria` só diz "metade exata da primária" |
+| **M-18** (58) | Canalizar Virtude tem teto por cena, ou contrapartida? | o capítulo dá "uma vez por cena, **por Virtude**", ou seja quatro pools dobrados por cena. Não há implementação em `calc.ts` nem em `ficha-engine.ts`: o motor não opina |
+| **M-19** (60, 70, 158) | como se rola Virtude + Atributo, Vontade + Habilidade, ou Virtude sozinha? | `calc.ts:17` só conhece `pool(atributo, habilidade)`. O livro usa as três combinações (o medo da cena, "Vigor + Convicção" na cura) |
+| **M-20** (61) | como a Compostura mascara a Aparência? | `calc.ts` tem `aparenciaMod(nivel)` e nada que cruze com Compostura |
+| **M-21** (71) | Impacto sara mais rápido que Letal, quanto? | a tabela de Recuperação tem um valor por estado e `regras.json` não separa as duas trilhas |
+| **M-22** (76) | a Centelha levanta o teto de Atributo? | não há tabela em `regras.json` nem em `calc.ts`; `capFor` dá teto 6 fixo mais o racial, sem olhar Centelha. O próprio capítulo se declara em calibração |
+| **M-23** (80) | o que é "mais um raspão" como degrau de efeito? | a tabela do capítulo V promete um efeito extra por degrau e não diz qual; não há efeito de nível 2 padronizado com esse nome |
+| **M-24** (86, 87, 142) | a Investida usa o Arranque ou a Corrida? | `regras.json → combate.investida` diz "o golpe cobre a distância da **Corrida** em vez da de Batalha", e a tabela do mesmo capítulo reserva os 3 primeiros Ticks ao **Arranque**. As duas fórmulas de `derivados.deslocamento` dão 5,5 e 8,5 para o Kael, e o capítulo afirma 6 |
+| **M-25** (101) | a Especialidade empilha na defesa? | `habilidades.md` fala em níveis com aquele nome; `defesas.md` diz "entra **uma por golpe** (a mais específica), sem empilhar". Podem conviver, e nenhuma fonte diz que convivem |
+| **M-26** (109) | qual é o Fôlego de cada raça? | `derivados.folego` tem `base: 10` e a nota "Base por raça (humano = 10)", e **`racas.json` não tem campo de Fôlego**. A base racial existe como promessa |
+| **M-27** (111) | o Esforço do Fôlego convive com a Rajada? | são dois jeitos de atacar mais de uma vez, um no módulo opcional e outro no sistema normal |
+| **M-28** (113) | a raça é um passo da criação? | o passo a passo de `criacao-de-personagem.md:16-24` não tem passo de raça, e **nenhum dos quatro exemplos paga** os 20 a 50 XP do campo `custo` de `racas.json`. A ficha tem seletor e cobra. Ou a raça entra no passo a passo, ou os exemplos declaram que são todos humanos |
+| **M-29** (114) | qual é o porte de cada raça? | **ausência no dado**: `racas.json` não tem campo `porte` em nenhuma das oito, e `derivados.pv.porte` exige um porte para calcular PV. **Não há como saber o PV de um halfling.** A ficha usa Médio para todo mundo, sem dizer |
+| **M-30** (116, 117, 120, 121) | os traços de raça, em prosa, sem mecânica | o "+2" do gnomo não diz se é ponto ou dado; o traço do elfo propõe uma rolagem de resistência num sistema cuja Defesa Mental é **passiva**; `aparenciaUniversal: true` não diz se apaga o −5 inteiro de graça; a tabela de envelhecimento só existe no capítulo |
+| **M-31** (124) | de onde saem os "2 pontos do corpo" do cavaleiro de placa? | `soakNatural` dá **0** de Absorção natural contra Corte para Centelha 0. Ou o exemplo supõe Centelha 2 sem dizer, ou o número é livre |
+| **M-32** (128) | o que acontece com quem não tem a Força do Arco Composto? | o requisito existe (`forcaMin 4`, citado em `derivados.danoForca`) e **nenhuma regra diz a consequência de falhar** |
+| **M-33** (132) | o que "Imobiliza" faz? | a resolução citada ("Força ou Atletismo vs o lançamento") não tem alvo numérico em `regras.json` nem em `condicoes.json` |
+| **M-34** (159) | escapar de um efeito "vs o nível", qual número? | não há valor no bloco `arcano` |
+| **M-35** (168) | a escada de dano do Metal Incandescente | começa com dois traços em `efeitos.json`, e a penalidade ("igual à quantidade de dados de dano jogados") não diz a unidade |
+| **M-36** (173) | a largura da banda neutra da Régua de Relação | "sair do Neutro = 3 passos" e o exemplo do Lírio (quatro passos até o +1) não fecham, e não há bloco de Régua de Relação em `regras.json` |
+| **M-37** (174) | o ataque social não soma Especialidade e a Defesa Social soma. É de propósito? | a assimetria é real e não há nota em fonte nenhuma |
+| **M-38** (182) | num teste coletivo, "+2 por pessoa" conta quem rola? | não há bloco de teste coletivo em `regras.json` |
+| **M-39** (185) | o que a `habilidade_ancora` de uma Proeza faz mecanicamente? | `caminhos.json` tem os dois campos (`atributo` e `habilidade_ancora`) e `caminhos/[id].astro:25` só os imprime |
+| **M-40** (188) | o −3 de Quebrar Guarda entra no teto de ±6, e empilha com a Pressão? | `combate.md` diz que "a Defesa reflexiva de Proeza conta para o teto de ±6"; a Pressão não tem teto (`pressaoTeto: null`) |
+| **M-41** (187) | as Técnicas com efeito sem número | "knockback", "atordoa (perde Ticks)" e "teste de Vigor" **sem Dificuldade**, como estão em `tecnicas.json`. Sem número não é jogável |
+| **M-42** (26) | "Herói" é o orçamento de 2600 ou o tier de Centelha 3? | `orcamentoHeroico` e `escalaCentelha[3].rotulo` usam a mesma palavra para coisas diferentes, e nada as desambigua |
+| **M-43** (27) | os orçamentos 1500 / 2000 / 2600 estão calibrados? | a nota "Pendente" do capítulo está certa: a fonte não tem um segundo conjunto de números |
+| **M-44** (35) | um personagem de Centelha 1 depende inteiramente do Mestre para passar da Técnica 1 | `xp.tecnica.nota`: "O nível N exige Centelha ≥ N", e `xp.centelha` é `gratis`, concedida pelo Mestre. É consequência escrita; se é o desejado não está decidido |
+| **M-45** (2, 4, 12) | onde o novato entra no livro | o botão "Criar personagem" da capa aponta para `/ficha` por escolha de `index.astro`; não existe ordem de leitura recomendada em fonte nenhuma (a ordem do `NAV` é de índice, não de aprendizado); e o capítulo XIX, que é o mapa do novato, tem `ordem: 27` |
+| **M-46** (118, 160) | o que a própria fonte já declara provisório | o custo de raça (0/20/30/40/50), os "21 itens em revisão" das Artes, o "rascunho a fechar". Não são defeitos: são promessas da fonte esperando a mesa |
+
+---
+
+# Onde eu me enganei, para ninguém "consertar" o que está certo
+
+Cinco dúvidas se dissolveram ao ler a fonte. Em quatro delas **a frase que me induziu
+continua sendo defeito de texto**, e essas viraram itens acima; a quinta é erro só meu.
+
+| Dúvida | O que eu achei que fosse | O que é | Sobra |
+| --- | --- | --- | --- |
+| 25 | os exemplos quebram os limites de criação | os exemplos obedecem `limitesCriacao`; quem está fora é a seção **chamada** "Limites na criação" | C-02, e o Veil em C-95 |
+| 72 | a escada de PV por porte está quebrada | o multiplicador para em 5 de propósito | C-93: o capítulo promete que "a base **e o multiplicador** escalam" |
+| 93 | o teto de ±6 contradiz a seção "Sem teto" | são dois pools diferentes | C-94: falta escrever "destes modificadores" |
+| 106 e 166 | contagens erradas | eu li errado, ajudado pelo resumo e pelo índice | C-82, e o resumo de `combate.md` vira o C-10 |
+| 161 | há uma lista de formas solta no meio da página | **erro só meu**: `FormasPop.astro` é `hidden` com `display:none`, e quem viu foi o meu extrator de texto, não um leitor. **Não mexer** | nada |
+
+---
+
+# Por onde começar
+
+Ordenado por quanto atrapalha alguém a começar de fato, não por tamanho.
+
+1. **C-02** os tetos da criação. É o primeiro número que o jogador precisa e não consegue.
+2. **C-31 e C-32** Preparo, Golpe e Recuperação, mais os dois sistemas de tempo. Sem isso
+   não dá para investir, nem ler a coluna de Ticks de nenhuma arma.
+3. **C-01** os quinze links, pelo plugin.
+4. **C-33** quantos golpes uma ação rende. Muda o combate inteiro.
+5. **C-03** a Centelha custa XP ou não.
+6. **C-49** o script de conferência, **antes** do C-12: com ele de pé, o Bram se conserta
+   sozinho e os próximos não passam.
+7. **C-13** o Kael, que é onde o novato aprende conferindo.
+8. **M-29** o porte das raças, porque sem ele não há PV.
+9. **C-06** dois terços, em quatro lugares.
+10. **C-04** as duas tabelas de ferimento.
+
+Depois disso, o Lote 5 inteiro (quatro frases no glossário, alto retorno porque é o balão
+de ajuda), o Lote 8 (uma passada de varredura) e o Lote 9 (frases e links, sem risco).
+
+**As decisões de mesa não bloqueiam o resto.** M-10, M-11, M-12 e M-13 travam a primeira
+sessão de jogo, mas nenhuma delas impede que os lotes 1 a 9 sejam executados hoje.
+
+---
+
+# Protocolo de conferência
+
+Para a minha releitura depois do conserto, cada item cai num destes três baldes:
+
+**Balde 1 · confere por `grep` no fonte, sem rodar nada.** A maioria. O comando de
+conferência está escrito no item, e a regra é a mesma: **a frase velha tem de sumir**.
+Passar significa devolver zero.
+
+**Balde 2 · confere rodando.**
+- `node scripts/cost-examples.mjs` sem NaN, e os quatro totais batendo (C-49, C-12)
+- `node scripts/gen-grid-artes.mjs --check` verde depois de mexer em `efeitos.json` (C-21)
+- `node scripts/gen-cap-pericias.mjs` rodado depois de mexer em `habilidades.json`
+  (C-46, C-47)
+- `node scripts/gen-mermaid.mjs` rodado depois de mexer na fonte do diagrama (C-15)
+- `npm run validate` verde no fim de tudo
+
+**Balde 3 · só se confere no site publicado, depois do deploy.** São três, e nenhum deles
+se prova no fonte:
+- **C-01**, se o conserto for pelo plugin: os `href` continuam no fonte e o que muda é o
+  HTML gerado. Abrir `/centelha-rpg/regras/combate` e clicar em Fôlego
+- **C-39**, o `[object Object]`: a página `/artes/regras` não pode conter essa string
+- **C-15**, o "(Valor)" dentro do SVG do diagrama
+
+Quando isso estiver feito, eu releio na mesma ordem da Fase 1, pelo site publicado, e
+digo o que sobrou. **O que eu não consigo conferir sozinho** são as decisões de mesa: se
+uma resposta entrar no dado, ela vira regra nova e eu a leio como jogador pela primeira
+vez, que é exatamente o teste que vale.
