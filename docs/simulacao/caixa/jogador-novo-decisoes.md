@@ -1475,3 +1475,103 @@ desta.** Isto foi dito à mesa junto com a escolha.
 soma `xan` (antecedentes) no mesmo total, e **nenhum dos quatro exemplos tem linha de
 Antecedentes** tampouco. Não entra nesta decisão porque não foi medido, mas é o mesmo molde e
 merece medição própria.
+
+---
+
+## M-30b · o `+1` racial vira piso 2, e continua sendo teto 7
+
+Decidido em 15/09/2026. **Não vem de inconsistência achada: é mudança de desenho pedida pelo
+humano**, e é registrada no mesmo formato porque o que ela move é grande.
+
+### O ORIGINAL, como está no disco
+
+**`src/content/chapters/racas.md:30-31`**, o cabeçalho da tabela resumo:
+
+> | Raça | Custo XP | **Teto +1 (até 7)** | **Teto −1 (máx 5)** | Porte |
+
+**`racas.md:60-61`**, o Elfo, e as outras sete na mesma forma:
+
+> - **+1 teto de Destreza** (até 7): graça sobre-humana.
+> - **−1 teto de Vigor** (máx 5): corpo frágil.
+
+**`src/lib/ficha-engine.ts:154-156`**, que é tudo o que a raça faz com Atributo hoje:
+
+```ts
+const rac = kind === 'attr' ? racialAttr(key) : 0;
+const teto: Record<string, number> = { attr: 6, skill: 6, ... };
+return (teto[kind] ?? 6) + rac;
+```
+
+**`ficha-engine.ts:2057-2059`**, o piso, que é **por trilha e não por atributo**:
+
+```ts
+const floorOf: Record<string, number> = {
+  attr: pisoXp('atributo'), skill: pisoXp('habilidadePrimaria'), ...
+```
+
+### A MUDANÇA
+
+**O `+1` racial deixa de ser só teto e passa a ser TAMBÉM piso.** O Elfo abre a ficha com
+**Destreza 2**; o Orc e o Meio-Orc, com **Força 2 e Vigor 2**. O jogador não compra esse ponto.
+
+**O `−1` racial não mexe no piso.** O mesmo Elfo abre com **Vigor 1**, como todo mundo, e perde só
+o topo: **máximo 5 em vez de 6**.
+
+**O `+1` continua levantando o teto até 7**, decidido explicitamente. As duas coisas andam juntas,
+**por enquanto** (ver o que fica aberto).
+
+### O QUE ISSO VALE, medido
+
+O preço de um Atributo é `5 + 5×nível`, então **o nível 2 custa 15**, e começar no 2 vale **15 XP
+por atributo bonificado**, para quem leve o atributo a 2 ou mais (que é todo mundo):
+
+| raça | atributos com `+1` | XP que a raça passa a dar de graça | custo hoje |
+|---|---|---|---|
+| **Orc** | Força, Vigor | **30** | 40 |
+| **Meio-Orc** | Força, Vigor | **30** | 40 |
+| Elfo | Destreza | 15 | 50 |
+| Anão | Vigor | 15 | 30 |
+| Gnomo | Vigor | 15 | 30 (provisório) |
+| Halfling | Destreza | 15 | 30 |
+| Humano · Meio-Elfo | nenhum | 0 | 0 · 20 |
+
+**Isto entra na conta da `M-46`**, e é a segunda coisa a mexer no custo das raças no mesmo dia: o
+Orc e o Meio-Orc passam a receber 30 XP de graça mais dois tetos de 7, pelos mesmos 40 que o
+Gnomo paga por um teto e 15 XP.
+
+### O QUE ISTO MANDA FAZER, e o custo medido
+
+**A boa notícia: a costura já existe, e o conserto é pequeno.**
+
+1. **`ficha-engine.ts:2033`** · a soma do XP de Atributo é
+   ```ts
+   (ATTRS_D as any[]).forEach((a) => (xa += custoPontos('atributo', undefined, S.attrs[a.id] ?? 1)));
+   ```
+   e o `undefined` é justamente o parâmetro `de` de `custoPontos(chave, de = pisoXp(chave), ate)`
+   (`calc.ts:242`). **Passar o piso racial ali já cobra certo, sem tocar em `calc.ts`.**
+2. **`floorOf` passa a ser por ATRIBUTO, não por trilha.** É a única mudança de forma: hoje é um
+   mapa `kind → número`, e o piso do `attr` passa a depender da chave. Três leitores
+   (`:2065`, `:2085`, `:2101`).
+3. **Trocar de raça tem de subir o que ficou abaixo do piso novo** (`ficha-engine.ts:2768`), e
+   **carregar ficha salva também**. Uma ficha de Elfo salva com Destreza 1 existe hoje e é
+   legítima; depois desta decisão ela está abaixo do piso. Isto é dado vivo, não hipótese.
+4. **O capítulo muda em dois lugares**, como o custo do Gnomo mudou: a linha de cada raça e o
+   cabeçalho da tabela resumo, que hoje diz **"Teto +1 (até 7)"** e passa a ter de dizer as duas
+   coisas.
+
+### O QUE FICA ABERTO, por pedido explícito do humano
+
+**Os dois efeitos do `+1` podem vir a ser separados POR RAÇA.** A palavra do humano:
+
+> *"podemos discutir se todas as raças aumentam o teto para os atributos ou se algumas ganham o
+> segundo ponto mas não aumentam o máximo. Por exemplo: Orc ganha o segundo ponto em Força e
+> Vigor e aumenta o limite desses atributos para 7. Gnomo ganha o segundo ponto de Vigor, mas
+> mantém o máximo em 6."*
+
+Hoje **todas as raças recebem os dois**, e o dado continua sendo o `atributos: { vigor: 1 }` que
+já existe. **O que a implementação deve garantir é o SEAM, não o campo:** piso e teto passam a
+ser lidos por dois caminhos separados, alimentados hoje pelo mesmo campo. Assim a separação
+futura é trocar de onde um dos dois lê, e não uma migração.
+
+**Não é para inventar o campo novo agora.** Campo sem consumidor foi exatamente o que o `porte`
+foi até hoje de manhã, e a M-29 existe por causa disso.
