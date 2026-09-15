@@ -91,7 +91,7 @@ export function montarFicha(opts: FichaOpts) {
   const SEC_DESC: Record<string, string> = Object.fromEntries((SEC_D as any[]).map((s) => [s.id, s.descricao]));
   const SEC_NIV: Record<string, any[]> = Object.fromEntries((SEC_D as any[]).map((s) => [s.id, s.niveis]));
   const TRACO_DESC: Record<string, string> = {
-    centelha: 'O nível de poder pessoal, do mortal ao semideus. Destrava os níveis das Proezas e dimensiona Energia e Mana.',
+    centelha: 'O nível de poder pessoal. A régua vai de 0 a 12, mas o personagem para em 6 (Semideus): acima disso não se destrava Proeza nenhuma, e os degraus divinos são do bestiário. Destrava os níveis das Proezas e dimensiona Energia e Mana.',
     willpower: 'Reserva de determinação (0 a 12, piso 0, custo ×2 por nível). Gasta-se para potencializar ações, resistir a medo e manipulação, e conjurar.',
     aparencia: 'Traço próprio (0 a 12, piso 0, custo ×2 por nível). Modificador direcional na jogada social: ajuda alinhado (seduzir, impressionar) e atrapalha invertido (intimidar). A Compostura mascara parte dele.',
   };
