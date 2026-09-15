@@ -46,3 +46,7 @@ qualquer outro. Se eu achar algo que mexa em valor ou idade, anoto.
   `M-46` refizer as idades, sao tres copias a acertar e nao uma, e duas ja nascem divergentes.
 - **13:45** · e nada mais que eu tenha achado mexe no VALOR de uma raca alem do 30 do Gnomo que
   ele proprio decidiu.
+- **13:47** · fim. Publicado em `fa68d11`, `git rev-list --count origin/main..HEAD` = 0.
+  `validate` e `build` verdes, `test-porte-raca` e `test-kael` exit 0. Zero coautoria, zero
+  travessao nas linhas que eu escrevi (os dois do `racas.md` sao marcadores de celula vazia na
+  tabela, pre-existentes, e o portao de travessao dos capitulos passa verde por cima deles).
