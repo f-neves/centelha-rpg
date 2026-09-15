@@ -40,7 +40,25 @@ exatamente o campo que ela corrigiu para "sofre N de dano".
 
 **O efeito é o pior possível para uma página de consulta:** a mesma seção da tela publica as
 duas redações, uma acima da outra, e é a página que o mestre abre na mesa para conferir regra.
-É `CORRIGE 1`, e é uma palavra.
+
+**E o conserto NÃO é uma palavra, que foi a minha primeira leitura e estava errada.** A lista
+`ondeNaoPodeVoltar` do portão novo (`scripts/validate-data.mjs:309`) tem quatro entradas: os dois
+capítulos e os dois blocos de JSON. `referencia.astro` não é nenhuma delas. Trocar a palavra
+deixa o mesmo buraco aberto no mesmo arquivo, e é a forma da conferência que cobre só a parte
+viva do registro. `CORRIGE 1` são **duas coisas**: a palavra, e a quinta entrada na lista.
+
+**E a lista tem um segundo furo, medido junto, que se conserta na mesma linha:** o `VELHO` é
+`/\bLetal\b/` (`scripts/validate-data.mjs:308`), sensível a caixa. A forma que de fato existia
+neste repositório e que esta rodada apagou era **minúscula**: `contra os letais`, em
+`combate.md`. Falsifiquei: plantei `causa **N de dano letal**` no capítulo que o portão vigia e
+rodei. `EXIT=0`, verde. Desfeito no mesmo fôlego, `diff` vazio.
+
+A versão insensível a caixa fica **verde hoje** nas quatro entradas atuais (medido: zero
+ocorrências de `/\bletal\b/i` nos dois capítulos, no `condicoes.json` e nos três blocos de
+`regras.json`) e **vermelha** na quinta, com a única ocorrência sendo justamente a de
+`referencia.astro:170`. Os dois consertos se encaixam: a lista ganha a quinta entrada, o `VELHO`
+ganha a flag `i`, o portão nasce vermelho, a palavra sai, e ele fica verde. O ensaio dos três
+sentidos vem de graça, nessa ordem.
 
 **O resto do que a varredura achou, classificado, para o escopo ficar honesto:** quatro regras
 publicadas que perderam o chão (abaixo, `CORRIGE 2`); `scripts/sim-caps.mjs:96`,
@@ -222,7 +240,10 @@ tem ocasião de verdade, e os vermelhos que eu refiz saem como ela relatou.
 **CORRIGE**, por ordem de custo para quem lê o jogo hoje:
 
 1. `src/pages/mesa/referencia.astro:170` · a regra velha viva na tela da mesa, cinco linhas
-   acima da nova. Uma palavra.
+   acima da nova. **Não é só a palavra:** a página não está na lista `ondeNaoPodeVoltar` do
+   portão, e o `VELHO` é sensível a caixa (medido: `dano letal` minúsculo plantado no capítulo
+   passa verde). A quinta entrada mais a flag `i` fecham os dois, e nessa ordem o portão nasce
+   vermelho antes de a palavra sair.
 2. a lista de regras órfãs diz duas e são quatro (`mao-de-ferro` + `armas.json:819`,
    `fechar-feridas` + `artes.json:778`). Registro, não regra.
 3. o portão não vê o terceiro exemplo do capítulo, medido por falsificação.

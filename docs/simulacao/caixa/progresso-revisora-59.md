@@ -36,3 +36,8 @@ Reancorada em `0b8148431b1bc3774d85c76c7a5883b3af5184df` (o sha do aviso), confe
   fast-forward. Não forcei (contrato §7.2). Para o commit não ficar sem referência em detached
   HEAD, criei o ramo LOCAL `revisora-59` apontando para ele. `HEAD` continua onde o aviso
   mandou, e eu não reancoro por conta própria.
+- 17:49 · corrigi o MEU veredito: o CORRIGE 1 dizia "é uma palavra" e não era. A lista
+  `ondeNaoPodeVoltar` do portão (`validate-data.mjs:309`) não inclui `referencia.astro`, e o
+  `VELHO` (`:308`) é sensível a caixa. Falsifiquei: `dano letal` minúsculo plantado no capítulo
+  passa VERDE. Desfeito, `diff` vazio. A versão insensível fica verde nas quatro entradas de
+  hoje e vermelha na quinta.
