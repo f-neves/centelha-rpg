@@ -78,3 +78,7 @@ texto e esperam bem).
   `monsters.json` de 958 KB por nada. 199 na primeira passada, 26 na segunda, mais a linha do
   gerador do bestiario. Sobraram 29 ocorrencias, TODAS em comentario de codigo, e elas ficam: o
   escopo da decisao e `onde o leitor le`, e ninguem que jogue le comentario.
+- **06:04** · fim. As tres frentes publicadas: `88a6ce1` (o relogio do Sangramento), `dcacb68`
+  (o `Rodada N` fora da tela) e `c407b0e` (as quatro decisoes). `validate` e `build` verdes nas
+  tres, `git rev-list --count origin/main..HEAD` = 0, zero coautoria. Rodei tambem oito portoes
+  de navegador e quatro de dado que enxergam o que toquei: exit 0 em todos.
