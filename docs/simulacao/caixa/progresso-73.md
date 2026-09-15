@@ -36,3 +36,7 @@ NÃO mexer em número de `armaduras.json` nem em `centelhaNoSoak`. E o travessã
   sao exatamente o defeito antigo (`veio null` porque a linha trazia dois numeros, e `voltou a
   somar o corpo`); (2) verde; (3) plantei o Impacto voltando a `9 (no cavaleiro, com o corpo)` e
   cairam as duas assercoes dele, a do numero e a da mistura.
+- **14:58** · fim. Publicado em `b123bbb`, `git rev-list --count origin/main..HEAD` = 0.
+  `validate` e `build` verdes, mais `test-contrato`, `test-kael`, `test-travessao-capitulos` e
+  `test-porte-raca`: exit 0. Zero coautoria, zero travessao nas linhas que eu escrevi (os tres
+  que restam no capitulo sao marcadores de celula vazia em tabela, pre-existentes).
