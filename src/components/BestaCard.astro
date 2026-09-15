@@ -100,7 +100,7 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
           {(i.combate.fraquezas?.length || i.combate.resistencias?.length) && (
             <div class="besta-elem">
               {i.combate.fraquezas?.length && (
-                <span class="el-linha" title="Dano deste tipo não é absorvido por nada (nem armadura, nem Absorção natural, nem Centelha) e é agravado: não fecha com descanso nem com a perícia Cura.">
+                <span class="el-linha" title="Dano deste tipo não é absorvido por nada (nem armadura, nem Absorção natural, nem Centelha) e é agravado: não fecha com descanso nem com a Habilidade Cura.">
                   <span class="el-lbl">Fraqueza</span>
                   {i.combate.fraquezas.map((k: string) => <span class="el el-fra">{ELEM[k] ?? k}</span>)}
                 </span>

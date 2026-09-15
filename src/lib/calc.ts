@@ -257,9 +257,18 @@ export const custoEspecialidade = (nivel: number, secundaria = false) =>
  * (`combate-resumo`) e o bestiário (`mesa-bestiario`). Pô-la num dos dois faria
  * o outro importar dele, e o bestiário já importa a ficha: seria ciclo.
  *
- * A ESPECIALIDADE NÃO ENTRA, e a ausência é declarada em vez de esquecida: nem a
- * criatura nem a ficha guardam especialidade POR PERÍCIA hoje. Quando guardarem,
- * ela soma aqui e em mais lugar nenhum.
+ * A ESPECIALIDADE NÃO ENTRA, e o motivo NÃO é falta de dado. A ficha guarda,
+ * nomeada e com nível (`S.spec[habilidade] = [{ s: nome, v: nível }]`,
+ * `ficha-engine.ts:235`); quem não guarda é o bestiário, e nas 309 criaturas do
+ * `inimigos.json` não há uma sequer. Este comentário dizia o contrário até a
+ * `M-03`, e a conclusão dele sobrevivia por sorte.
+ *
+ * O motivo de verdade é melhor: o portão da Especialidade é a SITUAÇÃO, e um
+ * Valor Passivo é calculado SEM SABER quem ataca nem como. Um bônus que só vale
+ * quando o escopo nomeado se aplica não cabe num número calculado antes de a
+ * situação existir. Então a base sai sem ela, e ela entra no instante em que o
+ * escopo se revela, que é o que o capítulo já manda: a ficha não a soma
+ * automaticamente no rolador.
  *
  * O TIPO `Sentidos` QUE MOROU AQUI FOI EMBORA em 04/09/2026, junto com o bloco
  * por assunto do `ResumoCombate`: com os nove atributos e as perícias crus no

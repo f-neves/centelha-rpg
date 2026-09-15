@@ -18,7 +18,7 @@ flowchart TD
   Start(["Quero fazer algo e não sei a regra"]) --> Q0{"Há oposição ou risco real?"}
   Q0 -->|"Não, é trivial"| Livre["Descreva e resolva. Sem rolagem."]
   Q0 -->|"Sim"| Q1{"Sobre o quê você age?"}
-  Q1 -->|"O mundo físico ou uma tarefa"| Tarefa["Ação comum: Atributo + Perícia vs Dificuldade"]
+  Q1 -->|"O mundo físico ou uma tarefa"| Tarefa["Ação comum: Atributo + Habilidade vs Dificuldade"]
   Q1 -->|"Ferir o corpo de alguém numa luta"| Fisico["Combate Físico (ver 'Qual defesa física')"]
   Q1 -->|"A vontade, a mente ou o vínculo de alguém"| SM["Social ou Mental? (ver fluxo)"]
   Q1 -->|"Notar ou perceber algo"| PP["Percepção ou Perspicácia? (ver fluxo)"]
@@ -82,7 +82,7 @@ flowchart TD
 flowchart TD
   D(["Vão te acertar no corpo"]) --> D1{"Como você se protege deste golpe?"}
   D1 -->|"Desviando com corpo e reflexo"| DE["Esquiva = (Destreza + Esquiva) x2 + Centelha + Esp."]
-  D1 -->|"Aparando com arma ou escudo"| DB["Bloqueio = (Destreza + perícia que você escolher) x2 + Centelha + Esp. + defesa da arma/escudo"]
+  D1 -->|"Aparando com arma ou escudo"| DB["Bloqueio = (Destreza + Habilidade que você escolher) x2 + Centelha + Esp. + defesa da arma/escudo"]
   DE --> N["Você usa a maior das duas; a ficha mostra ambas"]
   DB --> N
 ```
@@ -105,7 +105,7 @@ flowchart TD
 ## Folha de bolso (sem diagrama)
 
 - **Rola dado?** Só com oposição ou risco. Trivial, não. Pedido dentro do nível da relação, não.
-- **Ação comum:** Atributo + Perícia vs Dificuldade (5 fácil / 10 média / 15 difícil / 20 limite humano). Supera o alvo = sucesso; cada 6 acima = +1 Margem.
+- **Ação comum:** Atributo + Habilidade vs Dificuldade (5 fácil / 10 média / 15 difícil / 20 limite humano). Supera o alvo = sucesso; cada 6 acima = +1 Margem.
 - **Social x Mental:** passa pelo juízo = Social; contorna o juízo = Mental. (Ver [As Três Defesas](/regras/defesas).)
 - **Régua x Combate Social:** dia a dia = Régua (jogada única); cena grande e tensa = Combate Social (gastar Vontade para não ceder). (Ver [Relações Sociais](/regras/relacoes-sociais).)
 - **Três medos:** intimidação = Social; medo mágico = Mental; medo da cena = Bravura (Valor).

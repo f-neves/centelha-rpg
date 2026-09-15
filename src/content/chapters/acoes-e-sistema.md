@@ -102,7 +102,9 @@ Uma jogada que não consome a ação do lance. Notar o vulto, reagir ao chão qu
 
 Sem jogada e sem dado: um **valor parado**.
 
-<p class="formula">Valor Passivo = 2 × (Atributo + Habilidade)</p>
+<p class="formula">Valor Passivo = (Atributo + Habilidade) × 2 + Centelha</p>
+
+<p class="muted">A <strong>Especialidade não entra aqui</strong>, e não por esquecimento: ela só vale quando o escopo nomeado dela se aplica, e um valor parado é calculado sem saber quem vem nem como. Ela entra na hora em que a situação aparece, somada por cima.</p>
 
 Ele funciona como uma [Defesa](/regras/defesas): é o número que o mundo precisa superar para passar despercebido por você. Por isso ele quebra de propósito o escalonamento da média, e a compensação vem do outro lado, de quem está tentando passar.
 

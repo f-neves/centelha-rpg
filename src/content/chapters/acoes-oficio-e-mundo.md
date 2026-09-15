@@ -32,11 +32,11 @@ Requisito e Dificuldade parecem a mesma coisa dita duas vezes, e não são. **O 
 
 Só a **Habilidade** conta para o Requisito, nunca a soma com o Atributo: destreza de mão não substitui não saber.
 
-O **Piso** existe porque há serviço que não é técnica, é mão. Uma cota de malha são milhares de anéis rebitados um a um, e nenhuma perícia do mundo cria dedos extras: o mestre armeiro faz uma cota **melhor** que o oficial, não uma cota em três dias.
+O **Piso** existe porque há serviço que não é técnica, é mão. Uma cota de malha são milhares de anéis rebitados um a um, e nenhuma Habilidade do mundo cria dedos extras: o mestre armeiro faz uma cota **melhor** que o oficial, não uma cota em três dias.
 
 ## Ofícios Gerais e os ofícios
 
-**Ofícios Gerais** é o faz-tudo: pregos e dobradiças, cabo de arma, flecha rústica, entalhe, porta, cerca, polimento, remendo de armadura. O escopo dele não é fixo, **cresce com a perícia**.
+**Ofícios Gerais** é o faz-tudo: pregos e dobradiças, cabo de arma, flecha rústica, entalhe, porta, cerca, polimento, remendo de armadura. O escopo dele não é fixo, **cresce com a Habilidade**.
 
 <p class="formula">Ofícios Gerais cobre sozinho toda peça de <b>Dificuldade até o nível da Habilidade</b></p>
 

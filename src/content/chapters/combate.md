@@ -64,7 +64,9 @@ Cada ação tem uma **Velocidade**, quantos Ticks ela custa antes de você poder
 
 ## O ataque: acertar e a Margem
 
-Para atacar, monte o pool de **Atributo + Habilidade**, some o **Acerto da Arma**, aplique Especialidade, Firulas e Técnicas, e role. Você acerta se o total **superar a Defesa** do alvo (empate erra).
+Para atacar, monte o pool de **Atributo + Habilidade**, some o **Acerto da Arma**, aplique Firulas e Técnicas, e role. Você acerta se o total **superar a Defesa** do alvo (empate erra).
+
+<p class="muted"><strong>A Especialidade não é parcela somada numa rolagem.</strong> Se o escopo nomeado dela se aplica ao que você está fazendo (Armas <em>(machados)</em> com um machado na mão), ela rende <strong>+N dados, descartando os N menores</strong>, onde N é o nível. É por isso que ela sobe a confiança do golpe sem mexer no teto dele.</p>
 
 <p class="formula">Ataque = (Atributo + Habilidade)/2 + Especialidade + Arma + Centelha</p>
 

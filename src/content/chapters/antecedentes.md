@@ -111,7 +111,7 @@ momento.
 | **5** | Uma figura de peso no mundo: um general, um arquimago, um senhor de terras que arrisca muito por você. |
 | **6** | Um dos maiores poderes vivos: um rei, um arquimago lendário, uma figura que move o mundo por você. |
 
-**Amarra com:** cada aliado **nasce em Aliança (+3) ou Devoção (+4) na Régua de Relação** e tem ficha própria (some Centelha e perícia conforme o nível). Não é "+N em algo", é um NPC. Se você o trata mal, a régua cai e o aliado esfria. Cuidar deles é parte do jogo.
+**Amarra com:** cada aliado **nasce em Aliança (+3) ou Devoção (+4) na Régua de Relação** e tem ficha própria (some Centelha e Habilidade conforme o nível). Não é "+N em algo", é um NPC. Se você o trata mal, a régua cai e o aliado esfria. Cuidar deles é parte do jogo.
 
 ### Contatos
 
@@ -192,7 +192,7 @@ momento.
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span><strong>Reputação 2 (Guarda-costas) · Reputação 3 (Cantor lírico) · Reputação 1 (Confiável)</strong>. A de guarda-costas ajuda a ser contratado e a intimidar, mas atrapalha a passar despercebido; a de cantor abre salões e atrapalha a ser levado a sério numa briga; a de confiável ajuda em tudo que dependa de palavra.</div>
 
-**Amarra com:** um **bônus situacional às jogadas que movem a Régua de Relação**, no contexto em que a fama pesa (ver "Antecedentes como bônus na jogada"): entra quando quem você aborda conhece aquela reputação, some com outros situacionais até +6, e **não** buffa o Combate Social nem perícias soltas. Uma boa reputação **acelera romper o Neutro** com quem já ouviu falar bem de você; uma temível ajuda a coagir e atrapalha a passar despercebido. Alimenta Proezas como Lenda Viva e Presença Aterradora.
+**Amarra com:** um **bônus situacional às jogadas que movem a Régua de Relação**, no contexto em que a fama pesa (ver "Antecedentes como bônus na jogada"): entra quando quem você aborda conhece aquela reputação, some com outros situacionais até +6, e **não** buffa o Combate Social nem Habilidades soltas. Uma boa reputação **acelera romper o Neutro** com quem já ouviu falar bem de você; uma temível ajuda a coagir e atrapalha a passar despercebido. Alimenta Proezas como Lenda Viva e Presença Aterradora.
 
 ### Relíquia
 

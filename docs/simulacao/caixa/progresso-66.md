@@ -52,3 +52,29 @@ texto e esperam bem).
   corpo grande, e nao mexi no `.ini-tk-n` (que ainda diz `grid-row: 1 / span 2`): a linha 2 do
   grid so fica vazia, e a posicao do numero nao muda um pixel. `build` verde e tres portoes de
   navegador que desenham esse cabecalho passam.
+- **06:01** · ITEM 2, primeira metade (`M-03`/`M-25`/`M-37`): os seis consertos feitos. O
+  comentario do `calc.ts` reescrito pelo motivo certo (a ficha GUARDA especialidade por
+  habilidade, `ficha-engine.ts:235`; quem nao guarda e o bestiario, e o que sustenta a exclusao e
+  que valor passivo se calcula sem saber quem ataca); o `acoes-e-sistema.md` ganhou a Centelha e
+  a nota do portao; o glossario teve as QUATRO formulas alinhadas (Valor Passivo, Defesa, Defesa
+  Mental e Defesa Social), e a Mental era a unica das tres que nao mencionava a Especialidade; o
+  ataque social passou a nomea-la; o `combate.md` parou de escrever `+ Especialidade` como
+  parcela somada; e o `especialidade: true` do `derivados` ganhou a nota dizendo `pode somar
+  quando o escopo se aplicar`.
+- **06:01** · ITEM 2, `M-47`: DUAS premissas da medicao cairam, e a segunda custaria o item.
+  (a) `os capitulos tem ZERO ocorrencias` esta errado: eles tem 37, das quais a maioria vem dos
+  blocos gerados (certo) mas nove sao prosa A MAO (`habilidades.md` fora do bloco,
+  `qual-sistema.md`), e havia mais 26 em paginas, componentes e outros capitulos que a tabela
+  contou como `~10 rotulos de tela`.
+- **06:01** · (b) e a mais cara: `as 118 de inimigos.json sao geradas, entao o conserto e na
+  fonte (monsters.json)` esta INVERTIDO. O `gen-monsters.mjs` diz na primeira linha que a fonte
+  dele e o `inimigos.json`, que por sua vez e gerado pelo `gen-bestiario.mjs`. Eu tinha acabado
+  de trocar as 118 do `monsters.json` quando rodei o gerador e elas voltaram todas. A fonte de
+  verdade e uma linha so: `gen-bestiario.mjs:407`, que monta a frase `Pericias notaveis: ...`.
+  Consertada la, os dois derivados saem limpos no regen.
+- **06:01** · a troca foi de TEXTO e nao de JSON, por uma medida: as CHAVES sao `pericias` e
+  `pericia` SEM acento e todo texto visivel usa a forma ACENTUADA. Os dois conjuntos sao
+  disjuntos, entao trocar so as acentuadas nao encosta em chave nenhuma e nao reserializa o
+  `monsters.json` de 958 KB por nada. 199 na primeira passada, 26 na segunda, mais a linha do
+  gerador do bestiario. Sobraram 29 ocorrencias, TODAS em comentario de codigo, e elas ficam: o
+  escopo da decisao e `onde o leitor le`, e ninguem que jogue le comentario.

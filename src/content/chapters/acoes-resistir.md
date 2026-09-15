@@ -23,7 +23,7 @@ O pool **nunca desce abaixo de 1d6**, e o +2 da soma ímpar continua valendo: me
 
 **Recuperação padrão:** um degrau por noite de sono com abrigo, comida e água.
 
-A perícia das três que rolam é **Resistência**, e ela é de Vigor puro.
+A Habilidade das três que rolam é **Resistência**, e ela é de Vigor puro.
 
 ## Veneno
 

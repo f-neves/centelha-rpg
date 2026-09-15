@@ -85,7 +85,7 @@
       "esquiva",
       "bloqueio"
     ],
-    "definicao": "Valor fixo e passivo que o atacante precisa superar: (Destreza + Habilidade) × 2 + Especialidade + Centelha. Vem por Esquiva ou por Bloqueio (arma/escudo). Contra projéteis rápidos (flecha, virote, bala de funda, dardo) não se bloqueia com arma nem com a mão: só Esquiva, ou Bloqueio com escudo hábil (cobre ≥30% do corpo, médio+ para um usuário Médio) estando apto a manejá-lo. Arremessos lentos (lança, machado, pedra grande) bloqueiam normalmente."
+    "definicao": "Valor fixo e passivo que o atacante precisa superar: (Destreza + Habilidade) × 2 + Centelha, mais a Especialidade quando o escopo nomeado dela se aplicar (ela não é parcela fixa: o portão dela é a situação). Vem por Esquiva ou por Bloqueio (arma/escudo). Contra projéteis rápidos (flecha, virote, bala de funda, dardo) não se bloqueia com arma nem com a mão: só Esquiva, ou Bloqueio com escudo hábil (cobre ≥30% do corpo, médio+ para um usuário Médio) estando apto a manejá-lo. Arremessos lentos (lança, machado, pedra grande) bloqueiam normalmente."
   },
   {
     "id": "defesa-mental",
@@ -93,7 +93,7 @@
     "aliases": [
       "resistência mental"
     ],
-    "definicao": "Muro passivo contra manipulação e poderes mentais: Integridade + Raciocínio + Vontade + Centelha."
+    "definicao": "Muro passivo contra manipulação e poderes mentais: Integridade + Raciocínio + Vontade + Centelha, mais a Especialidade quando o escopo nomeado dela se aplicar."
   },
   {
     "id": "defesa-social",
@@ -101,7 +101,7 @@
     "aliases": [
       "resistência social"
     ],
-    "definicao": "Muro passivo contra a influência e a leitura social: (Compostura + Sociabilidade) × 2 + Especialidade + Centelha."
+    "definicao": "Muro passivo contra a influência e a leitura social: (Compostura + Sociabilidade) × 2 + Centelha, mais a Especialidade quando o escopo nomeado dela se aplicar."
   },
   {
     "id": "centelha",
@@ -217,7 +217,7 @@
       "passiva",
       "percepção passiva"
     ],
-    "definicao": "Quando só um lado rola: (Atributo + Habilidade) × 2 + Especialidade + Centelha do outro serve de alvo. Como Especialidade e Centelha são raras, na prática a maioria é só (Atributo + Habilidade) × 2."
+    "definicao": "Quando só um lado rola: (Atributo + Habilidade) × 2 + Centelha do outro serve de alvo. A Especialidade NÃO entra no número parado, porque o portão dela é a situação e um valor passivo é calculado sem saber quem vem nem como; ela é somada por cima no instante em que o escopo nomeado se aplica. Como a Centelha é rara, na prática a maioria é só (Atributo + Habilidade) × 2."
   },
   {
     "id": "porte",

@@ -992,7 +992,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Furtividade 2, Sobrevivência 1.",
+    "notas": "Habilidades notáveis: Furtividade 2, Sobrevivência 1.",
     "pendente": true,
     "pericias": {
       "prontidao": 1,
@@ -1048,7 +1048,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Ofícios 1, Furtividade 1, Prontidão 1.",
+    "notas": "Habilidades notáveis: Ofícios 1, Furtividade 1, Prontidão 1.",
     "pendente": true,
     "pericias": {
       "prontidao": 1,
@@ -1104,7 +1104,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Prontidão 1.",
+    "notas": "Habilidades notáveis: Prontidão 1.",
     "pendente": true,
     "pericias": {
       "prontidao": 1,
@@ -1159,7 +1159,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Furtividade 2, Prontidão 1.",
+    "notas": "Habilidades notáveis: Furtividade 2, Prontidão 1.",
     "pendente": true,
     "pericias": {
       "prontidao": 1,
@@ -1215,7 +1215,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Prontidão 1.",
+    "notas": "Habilidades notáveis: Prontidão 1.",
     "pendente": true,
     "pericias": {
       "prontidao": 1,
@@ -1271,7 +1271,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Furtividade 3, Prontidão 2.",
+    "notas": "Habilidades notáveis: Furtividade 3, Prontidão 2.",
     "pendente": true,
     "pericias": {
       "prontidao": 1,
@@ -1327,7 +1327,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Atletismo 1, Sobrevivência 1.",
+    "notas": "Habilidades notáveis: Atletismo 1, Sobrevivência 1.",
     "pendente": true,
     "pericias": {
       "prontidao": 1,
@@ -1383,7 +1383,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Furtividade 1.",
+    "notas": "Habilidades notáveis: Furtividade 1.",
     "pendente": true,
     "pericias": {
       "prontidao": 1,
@@ -1439,7 +1439,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Atletismo 1.",
+    "notas": "Habilidades notáveis: Atletismo 1.",
     "pendente": true,
     "pericias": {
       "prontidao": 1,
@@ -1494,7 +1494,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Prontidão 3, Sobrevivência 2.",
+    "notas": "Habilidades notáveis: Prontidão 3, Sobrevivência 2.",
     "pendente": true,
     "pericias": {
       "prontidao": 1,
@@ -1550,7 +1550,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Prontidão 1.",
+    "notas": "Habilidades notáveis: Prontidão 1.",
     "pendente": true,
     "poderes": [
       {
@@ -1614,7 +1614,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Atletismo 2, Prontidão 1.",
+    "notas": "Habilidades notáveis: Atletismo 2, Prontidão 1.",
     "pendente": true,
     "pericias": {
       "prontidao": 1,
@@ -1669,7 +1669,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Furtividade 3, Atletismo 2.",
+    "notas": "Habilidades notáveis: Furtividade 3, Atletismo 2.",
     "pendente": true,
     "pericias": {
       "prontidao": 1,
@@ -1726,7 +1726,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Ofícios 2, Prontidão 2.",
+    "notas": "Habilidades notáveis: Ofícios 2, Prontidão 2.",
     "pendente": true,
     "poderes": [
       {
@@ -1797,7 +1797,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Atletismo 2, Prontidão 1.",
+    "notas": "Habilidades notáveis: Atletismo 2, Prontidão 1.",
     "pendente": true,
     "pericias": {
       "prontidao": 1,
@@ -1860,7 +1860,7 @@
         "nivel": 1
       }
     ],
-    "notas": "Perícias notáveis: Prontidão 3, Ofícios 2.",
+    "notas": "Habilidades notáveis: Prontidão 3, Ofícios 2.",
     "pendente": true,
     "poderes": [
       {
@@ -1945,7 +1945,7 @@
         "nivel": 2
       }
     ],
-    "notas": "Perícias notáveis: Prontidão 4, Conhecimentos 2.",
+    "notas": "Habilidades notáveis: Prontidão 4, Conhecimentos 2.",
     "pendente": true,
     "poderes": [
       {
@@ -2022,7 +2022,7 @@
         "nivel": 1
       }
     ],
-    "notas": "Perícias notáveis: Ofícios 2, Prontidão 2.",
+    "notas": "Habilidades notáveis: Ofícios 2, Prontidão 2.",
     "pendente": true,
     "poderes": [
       {
@@ -2086,7 +2086,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Prontidão 2, Furtividade 2, Sobrevivência 2.",
+    "notas": "Habilidades notáveis: Prontidão 2, Furtividade 2, Sobrevivência 2.",
     "pendente": true,
     "poderes": [
       {
@@ -2149,7 +2149,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Prontidão 2, Furtividade 2.",
+    "notas": "Habilidades notáveis: Prontidão 2, Furtividade 2.",
     "pendente": true,
     "pericias": {
       "prontidao": 1,
@@ -2204,7 +2204,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Atletismo 3, Prontidão 1.",
+    "notas": "Habilidades notáveis: Atletismo 3, Prontidão 1.",
     "pendente": true,
     "pericias": {
       "prontidao": 1,
@@ -2259,7 +2259,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Furtividade 3, Prontidão 2.",
+    "notas": "Habilidades notáveis: Furtividade 3, Prontidão 2.",
     "pendente": true,
     "poderes": [
       {
@@ -2328,7 +2328,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Furtividade 3, Atletismo 2.",
+    "notas": "Habilidades notáveis: Furtividade 3, Atletismo 2.",
     "pendente": true,
     "pericias": {
       "prontidao": 2,
@@ -2383,7 +2383,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Prontidão 1.",
+    "notas": "Habilidades notáveis: Prontidão 1.",
     "pendente": true,
     "pericias": {
       "prontidao": 1,
@@ -2438,7 +2438,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Prontidão 1.",
+    "notas": "Habilidades notáveis: Prontidão 1.",
     "pendente": true,
     "pericias": {
       "prontidao": 1,
@@ -2493,7 +2493,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Prontidão 2.",
+    "notas": "Habilidades notáveis: Prontidão 2.",
     "pendente": true,
     "poderes": [
       {
@@ -2562,7 +2562,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Atletismo 3.",
+    "notas": "Habilidades notáveis: Atletismo 3.",
     "pendente": true,
     "pericias": {
       "prontidao": 1,
@@ -2617,7 +2617,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Furtividade 2, Atletismo 2.",
+    "notas": "Habilidades notáveis: Furtividade 2, Atletismo 2.",
     "pendente": true,
     "pericias": {
       "prontidao": 1,
@@ -2672,7 +2672,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Furtividade 2, Atletismo 2.",
+    "notas": "Habilidades notáveis: Furtividade 2, Atletismo 2.",
     "pendente": true,
     "poderes": [
       {
@@ -2735,7 +2735,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Furtividade 3, Atletismo 3.",
+    "notas": "Habilidades notáveis: Furtividade 3, Atletismo 3.",
     "pendente": true,
     "poderes": [
       {
@@ -2802,7 +2802,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Furtividade 1.",
+    "notas": "Habilidades notáveis: Furtividade 1.",
     "pendente": true,
     "poderes": [
       {
@@ -2867,7 +2867,7 @@
       "sentidos-apurados"
     ],
     "artes": [],
-    "notas": "Perícias notáveis: Prontidão 3, Atletismo 2.",
+    "notas": "Habilidades notáveis: Prontidão 3, Atletismo 2.",
     "pendente": true,
     "poderes": [
       {
@@ -2936,7 +2936,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Prontidão 3.",
+    "notas": "Habilidades notáveis: Prontidão 3.",
     "pendente": true,
     "pericias": {
       "prontidao": 2,
@@ -2991,7 +2991,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Furtividade 2, Atletismo 2.",
+    "notas": "Habilidades notáveis: Furtividade 2, Atletismo 2.",
     "pendente": true,
     "pericias": {
       "prontidao": 1,
@@ -3049,7 +3049,7 @@
       "imobilizar"
     ],
     "artes": [],
-    "notas": "Perícias notáveis: Prontidão 4.",
+    "notas": "Habilidades notáveis: Prontidão 4.",
     "pendente": true,
     "poderes": [
       {
@@ -3115,7 +3115,7 @@
       "faro"
     ],
     "artes": [],
-    "notas": "Perícias notáveis: Prontidão 3, Sobrevivência 2.",
+    "notas": "Habilidades notáveis: Prontidão 3, Sobrevivência 2.",
     "pendente": true,
     "poderes": [
       {
@@ -3191,7 +3191,7 @@
         "nivel": 2
       }
     ],
-    "notas": "Perícias notáveis: Oratória 2, Furtividade 2.",
+    "notas": "Habilidades notáveis: Oratória 2, Furtividade 2.",
     "pendente": true,
     "poderes": [
       {
@@ -3261,7 +3261,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Furtividade 3.",
+    "notas": "Habilidades notáveis: Furtividade 3.",
     "pendente": true,
     "poderes": [
       {
@@ -3331,7 +3331,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Prontidão 2, Atletismo 2.",
+    "notas": "Habilidades notáveis: Prontidão 2, Atletismo 2.",
     "pendente": true,
     "pericias": {
       "prontidao": 1,
@@ -3387,7 +3387,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Prontidão 2.",
+    "notas": "Habilidades notáveis: Prontidão 2.",
     "pendente": true,
     "pericias": {
       "prontidao": 1,
@@ -3443,7 +3443,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Prontidão 2, Atletismo 1.",
+    "notas": "Habilidades notáveis: Prontidão 2, Atletismo 1.",
     "pendente": true,
     "poderes": [
       {
@@ -3517,7 +3517,7 @@
         "nivel": 2
       }
     ],
-    "notas": "Perícias notáveis: Prontidão 3, Furtividade 1.",
+    "notas": "Habilidades notáveis: Prontidão 3, Furtividade 1.",
     "pendente": true,
     "poderes": [
       {
@@ -3586,7 +3586,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Prontidão 2, Furtividade 1.",
+    "notas": "Habilidades notáveis: Prontidão 2, Furtividade 1.",
     "pendente": true,
     "poderes": [
       {
@@ -3654,7 +3654,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Prontidão 3.",
+    "notas": "Habilidades notáveis: Prontidão 3.",
     "pendente": true,
     "poderes": [
       {
@@ -3724,7 +3724,7 @@
         "nivel": 3
       }
     ],
-    "notas": "Perícias notáveis: Furtividade 2, Prontidão 3.",
+    "notas": "Habilidades notáveis: Furtividade 2, Prontidão 3.",
     "pendente": true,
     "poderes": [
       {
@@ -3794,7 +3794,7 @@
         "nivel": 2
       }
     ],
-    "notas": "Perícias notáveis: Prontidão 2.",
+    "notas": "Habilidades notáveis: Prontidão 2.",
     "pendente": true,
     "poderes": [
       {
@@ -3864,7 +3864,7 @@
         "nivel": 3
       }
     ],
-    "notas": "Perícias notáveis: Prontidão 4.",
+    "notas": "Habilidades notáveis: Prontidão 4.",
     "pendente": true,
     "poderes": [
       {
@@ -3936,7 +3936,7 @@
         "nivel": 1
       }
     ],
-    "notas": "Perícias notáveis: Furtividade 3, Prontidão 2.",
+    "notas": "Habilidades notáveis: Furtividade 3, Prontidão 2.",
     "pendente": true,
     "poderes": [
       {
@@ -4013,7 +4013,7 @@
         "nivel": 2
       }
     ],
-    "notas": "Perícias notáveis: Furtividade 3.",
+    "notas": "Habilidades notáveis: Furtividade 3.",
     "pendente": true,
     "poderes": [
       {
@@ -4083,7 +4083,7 @@
         "nivel": 1
       }
     ],
-    "notas": "Perícias notáveis: Prontidão 3.",
+    "notas": "Habilidades notáveis: Prontidão 3.",
     "pendente": true,
     "poderes": [
       {
@@ -4202,7 +4202,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Furtividade 4.",
+    "notas": "Habilidades notáveis: Furtividade 4.",
     "pendente": true,
     "poderes": [
       {
@@ -4272,7 +4272,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Furtividade 3, Prontidão 2.",
+    "notas": "Habilidades notáveis: Furtividade 3, Prontidão 2.",
     "pendente": true,
     "poderes": [
       {
@@ -4350,7 +4350,7 @@
         "nivel": 2
       }
     ],
-    "notas": "Perícias notáveis: Persuasão 2, Sobrevivência 3.",
+    "notas": "Habilidades notáveis: Persuasão 2, Sobrevivência 3.",
     "pendente": true,
     "poderes": [
       {
@@ -4421,7 +4421,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Prontidão 1.",
+    "notas": "Habilidades notáveis: Prontidão 1.",
     "pendente": true,
     "pericias": {
       "prontidao": 1,
@@ -4477,7 +4477,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perícias notáveis: Atletismo 3, Prontidão 2.",
+    "notas": "Habilidades notáveis: Atletismo 3, Prontidão 2.",
     "pendente": true,
     "pericias": {
       "prontidao": 1,
@@ -4551,7 +4551,7 @@
         "nivel": 2
       }
     ],
-    "notas": "Perícias notáveis: Conhecimentos 4, Ocultismo 3, Percepção 3.",
+    "notas": "Habilidades notáveis: Conhecimentos 4, Ocultismo 3, Percepção 3.",
     "pendente": true,
     "poderes": [
       {
@@ -4745,7 +4745,7 @@
         "nivel": 1
       }
     ],
-    "notas": "Perícias notáveis: Furtividade 2, Prontidão 2.",
+    "notas": "Habilidades notáveis: Furtividade 2, Prontidão 2.",
     "pendente": true,
     "poderes": [
       {
@@ -4822,7 +4822,7 @@
         "nivel": 2
       }
     ],
-    "notas": "Perícias notáveis: Furtividade 3, Prontidão 2.",
+    "notas": "Habilidades notáveis: Furtividade 3, Prontidão 2.",
     "pendente": true,
     "poderes": [
       {
@@ -4899,7 +4899,7 @@
         "nivel": 2
       }
     ],
-    "notas": "Perícias notáveis: Furtividade 4.",
+    "notas": "Habilidades notáveis: Furtividade 4.",
     "pendente": true,
     "poderes": [
       {
@@ -4975,7 +4975,7 @@
         "nivel": 2
       }
     ],
-    "notas": "Perícias notáveis: Furtividade 3, Prontidão 2.",
+    "notas": "Habilidades notáveis: Furtividade 3, Prontidão 2.",
     "pendente": true,
     "poderes": [
       {
@@ -5052,7 +5052,7 @@
         "nivel": 3
       }
     ],
-    "notas": "Perícias notáveis: Furtividade 4, Persuasão 3, Prontidão 3.",
+    "notas": "Habilidades notáveis: Furtividade 4, Persuasão 3, Prontidão 3.",
     "pendente": true,
     "poderes": [
       {
@@ -5135,7 +5135,7 @@
         "nivel": 3
       }
     ],
-    "notas": "Perícias notáveis: Furtividade 4, Prontidão 3.",
+    "notas": "Habilidades notáveis: Furtividade 4, Prontidão 3.",
     "pendente": true,
     "poderes": [
       {
@@ -5212,7 +5212,7 @@
         "nivel": 3
       }
     ],
-    "notas": "Perícias notáveis: Prontidão 3.",
+    "notas": "Habilidades notáveis: Prontidão 3.",
     "pendente": true,
     "poderes": [
       {
@@ -5288,7 +5288,7 @@
         "nivel": 4
       }
     ],
-    "notas": "Perícias notáveis: Prontidão 3, Furtividade 2.",
+    "notas": "Habilidades notáveis: Prontidão 3, Furtividade 2.",
     "pendente": true,
     "poderes": [
       {
@@ -5372,7 +5372,7 @@
         "nivel": 1
       }
     ],
-    "notas": "Perícias notáveis: Manha 5, Persuasão 4, Furtividade 3.",
+    "notas": "Habilidades notáveis: Manha 5, Persuasão 4, Furtividade 3.",
     "pendente": true,
     "poderes": [
       {
@@ -5471,7 +5471,7 @@
         "nivel": 3
       }
     ],
-    "notas": "Perícias notáveis: Ocultismo 5, Conhecimentos 5, Prontidão 3.",
+    "notas": "Habilidades notáveis: Ocultismo 5, Conhecimentos 5, Prontidão 3.",
     "pendente": true,
     "poderes": [
       {
@@ -5558,7 +5558,7 @@
         "nivel": 1
       }
     ],
-    "notas": "Perícias notáveis: Prontidão 1.",
+    "notas": "Habilidades notáveis: Prontidão 1.",
     "pendente": true,
     "poderes": [
       {
@@ -5636,7 +5636,7 @@
         "nivel": 2
       }
     ],
-    "notas": "Perícias notáveis: Furtividade 4, Manha 2.",
+    "notas": "Habilidades notáveis: Furtividade 4, Manha 2.",
     "pendente": true,
     "poderes": [
       {
@@ -5729,7 +5729,7 @@
         "nivel": 4
       }
     ],
-    "notas": "Perícias notáveis: Persuasão 4, Manha 4, Empatia 3.",
+    "notas": "Habilidades notáveis: Persuasão 4, Manha 4, Empatia 3.",
     "pendente": true,
     "poderes": [
       {
@@ -5822,7 +5822,7 @@
         "nivel": 4
       }
     ],
-    "notas": "Perícias notáveis: Prontidão 4, Atletismo 3.",
+    "notas": "Habilidades notáveis: Prontidão 4, Atletismo 3.",
     "pendente": true,
     "poderes": [
       {
@@ -5903,7 +5903,7 @@
         "nivel": 4
       }
     ],
-    "notas": "Perícias notáveis: Prontidão 4, Atletismo 3.",
+    "notas": "Habilidades notáveis: Prontidão 4, Atletismo 3.",
     "pendente": true,
     "poderes": [
       {
@@ -5984,7 +5984,7 @@
         "nivel": 4
       }
     ],
-    "notas": "Perícias notáveis: Ocultismo 4, Persuasão 4, Prontidão 4.",
+    "notas": "Habilidades notáveis: Ocultismo 4, Persuasão 4, Prontidão 4.",
     "pendente": true,
     "poderes": [
       {
@@ -6062,7 +6062,7 @@
       "aperto-esmagador"
     ],
     "artes": [],
-    "notas": "Perícias notáveis: Armas 5, Prontidão 4, Liderança 4. Centelha acima do teto mortal (entidade).",
+    "notas": "Habilidades notáveis: Armas 5, Prontidão 4, Liderança 4. Centelha acima do teto mortal (entidade).",
     "pendente": true,
     "poderes": [
       {
@@ -6148,7 +6148,7 @@
         "nivel": 4
       }
     ],
-    "notas": "Perícias notáveis: Armas 5, Ocultismo 5, Prontidão 5, Liderança 5. Centelha acima do teto mortal (entidade).",
+    "notas": "Habilidades notáveis: Armas 5, Ocultismo 5, Prontidão 5, Liderança 5. Centelha acima do teto mortal (entidade).",
     "pendente": true,
     "poderes": [
       {
@@ -6316,7 +6316,7 @@
         "nivel": 2
       }
     ],
-    "notas": "Perícias notáveis: Furtividade 4, Manha 3.",
+    "notas": "Habilidades notáveis: Furtividade 4, Manha 3.",
     "pendente": true,
     "poderes": [
       {
@@ -6408,7 +6408,7 @@
         "nivel": 3
       }
     ],
-    "notas": "Perícias notáveis: Armas 3, Prontidão 3.",
+    "notas": "Habilidades notáveis: Armas 3, Prontidão 3.",
     "pendente": true,
     "poderes": [
       {
@@ -6493,7 +6493,7 @@
         "nivel": 4
       }
     ],
-    "notas": "Perícias notáveis: Atirador 4, Persuasão 3, Prontidão 4.",
+    "notas": "Habilidades notáveis: Atirador 4, Persuasão 3, Prontidão 4.",
     "pendente": true,
     "poderes": [
       {
@@ -6589,7 +6589,7 @@
         "nivel": 1
       }
     ],
-    "notas": "Perícias notáveis: Prontidão 4, Furtividade 3, Ocultismo 3.",
+    "notas": "Habilidades notáveis: Prontidão 4, Furtividade 3, Ocultismo 3.",
     "pendente": true,
     "poderes": [
       {
@@ -6676,7 +6676,7 @@
         "nivel": 3
       }
     ],
-    "notas": "Perícias notáveis: Armas 5, Ocultismo 4, Liderança 4.",
+    "notas": "Habilidades notáveis: Armas 5, Ocultismo 4, Liderança 4.",
     "pendente": true,
     "poderes": [
       {
@@ -6771,7 +6771,7 @@
         "nivel": 4
       }
     ],
-    "notas": "Perícias notáveis: Manha 5, Furtividade 4, Persuasão 3.",
+    "notas": "Habilidades notáveis: Manha 5, Furtividade 4, Persuasão 3.",
     "pendente": true,
     "poderes": [
       {
@@ -6862,7 +6862,7 @@
         "nivel": 4
       }
     ],
-    "notas": "Perícias notáveis: Ocultismo 5, Liderança 5, Prontidão 5, Persuasão 5. Centelha acima do teto mortal (entidade).",
+    "notas": "Habilidades notáveis: Ocultismo 5, Liderança 5, Prontidão 5, Persuasão 5. Centelha acima do teto mortal (entidade).",
     "pendente": true,
     "poderes": [
       {
@@ -6964,7 +6964,7 @@
         "nivel": 1
       }
     ],
-    "notas": "Perícias notáveis: Prontidão 3, Atletismo 2.",
+    "notas": "Habilidades notáveis: Prontidão 3, Atletismo 2.",
     "pendente": true,
     "poderes": [
       {
@@ -7055,7 +7055,7 @@
         "nivel": 2
       }
     ],
-    "notas": "Perícias notáveis: Armas 4, Ocultismo 4, Persuasão 4, Prontidão 4.",
+    "notas": "Habilidades notáveis: Armas 4, Ocultismo 4, Persuasão 4, Prontidão 4.",
     "pendente": true,
     "poderes": [
       {
@@ -7144,7 +7144,7 @@
         "nivel": 4
       }
     ],
-    "notas": "Perícias notáveis: Armas 5, Ocultismo 5, Persuasão 4, Prontidão 5. Centelha acima do teto mortal (entidade).",
+    "notas": "Habilidades notáveis: Armas 5, Ocultismo 5, Persuasão 4, Prontidão 5. Centelha acima do teto mortal (entidade).",
     "pendente": true,
     "poderes": [
       {
@@ -7235,7 +7235,7 @@
         "nivel": 5
       }
     ],
-    "notas": "Perícias notáveis: Armas 5, Ocultismo 5, Oratória 5, Prontidão 5. Centelha acima do teto mortal (entidade).",
+    "notas": "Habilidades notáveis: Armas 5, Ocultismo 5, Oratória 5, Prontidão 5. Centelha acima do teto mortal (entidade).",
     "pendente": true,
     "poderes": [
       {
@@ -7327,7 +7327,7 @@
         "nivel": 2
       }
     ],
-    "notas": "Perícias notáveis: Ocultismo 4, Persuasão 3, Prontidão 4.",
+    "notas": "Habilidades notáveis: Ocultismo 4, Persuasão 3, Prontidão 4.",
     "pendente": true,
     "poderes": [
       {
@@ -7419,7 +7419,7 @@
         "nivel": 3
       }
     ],
-    "notas": "Perícias notáveis: Ocultismo 4, Oratória 4, Prontidão 4.",
+    "notas": "Habilidades notáveis: Ocultismo 4, Oratória 4, Prontidão 4.",
     "pendente": true,
     "poderes": [
       {
@@ -7513,7 +7513,7 @@
         "nivel": 4
       }
     ],
-    "notas": "Perícias notáveis: Ofícios 3, Persuasão 3, Prontidão 2.",
+    "notas": "Habilidades notáveis: Ofícios 3, Persuasão 3, Prontidão 2.",
     "pendente": true,
     "poderes": [
       {
@@ -7600,7 +7600,7 @@
         "nivel": 4
       }
     ],
-    "notas": "Perícias notáveis: Ofícios 4, Manha 3, Prontidão 3.",
+    "notas": "Habilidades notáveis: Ofícios 4, Manha 3, Prontidão 3.",
     "pendente": true,
     "poderes": [
       {
@@ -7685,7 +7685,7 @@
         "nivel": 2
       }
     ],
-    "notas": "Perícias notáveis: Ofícios 3, Armas 2.",
+    "notas": "Habilidades notáveis: Ofícios 3, Armas 2.",
     "pendente": true,
     "poderes": [
       {
@@ -7764,7 +7764,7 @@
         "nivel": 2
       }
     ],
-    "notas": "Perícias notáveis: Atletismo 2.",
+    "notas": "Habilidades notáveis: Atletismo 2.",
     "pendente": true,
     "poderes": [
       {
@@ -7840,7 +7840,7 @@
         "nivel": 3
       }
     ],
-    "notas": "Perícias notáveis: Prontidão 3, Furtividade 2.",
+    "notas": "Habilidades notáveis: Prontidão 3, Furtividade 2.",
     "pendente": true,
     "poderes": [
       {
@@ -7924,7 +7924,7 @@
         "nivel": 2
       }
     ],
-    "notas": "Perícias notáveis: Persuasão 3, Furtividade 3, Sobrevivência 3.",
+    "notas": "Habilidades notáveis: Persuasão 3, Furtividade 3, Sobrevivência 3.",
     "pendente": true,
     "poderes": [
       {
@@ -8007,7 +8007,7 @@
         "nivel": 3
       }
     ],
-    "notas": "Perícias notáveis: Ocultismo 3, Furtividade 4, Persuasão 3.",
+    "notas": "Habilidades notáveis: Ocultismo 3, Furtividade 4, Persuasão 3.",
     "pendente": true,
     "poderes": [
       {
@@ -8090,7 +8090,7 @@
         "nivel": 2
       }
     ],
-    "notas": "Perícias notáveis: Oratória 3, Persuasão 4, Furtividade 2.",
+    "notas": "Habilidades notáveis: Oratória 3, Persuasão 4, Furtividade 2.",
     "pendente": true,
     "poderes": [
       {
@@ -8167,7 +8167,7 @@
         "nivel": 2
       }
     ],
-    "notas": "Perícias notáveis: Furtividade 5, Ocultismo 2.",
+    "notas": "Habilidades notáveis: Furtividade 5, Ocultismo 2.",
     "pendente": true,
     "poderes": [
       {
@@ -8257,7 +8257,7 @@
         "nivel": 3
       }
     ],
-    "notas": "Perícias notáveis: Furtividade 5, Prontidão 3.",
+    "notas": "Habilidades notáveis: Furtividade 5, Prontidão 3.",
     "pendente": true,
     "poderes": [
       {
@@ -8340,7 +8340,7 @@
         "nivel": 3
       }
     ],
-    "notas": "Perícias notáveis: Furtividade 3, Atirador 2, Manha 2.",
+    "notas": "Habilidades notáveis: Furtividade 3, Atirador 2, Manha 2.",
     "pendente": true,
     "poderes": [
       {
@@ -8420,7 +8420,7 @@
         "nivel": 1
       }
     ],
-    "notas": "Perícias notáveis: Manha 4, Empatia 3, Furtividade 2.",
+    "notas": "Habilidades notáveis: Manha 4, Empatia 3, Furtividade 2.",
     "pendente": true,
     "poderes": [
       {
@@ -8503,7 +8503,7 @@
         "nivel": 1
       }
     ],
-    "notas": "Perícias notáveis: Prontidão 3, Atletismo 2.",
+    "notas": "Habilidades notáveis: Prontidão 3, Atletismo 2.",
     "pendente": true,
     "poderes": [
       {
@@ -8585,7 +8585,7 @@
         "nivel": 2
       }
     ],
-    "notas": "Perícias notáveis: Sobrevivência 4, Prontidão 3.",
+    "notas": "Habilidades notáveis: Sobrevivência 4, Prontidão 3.",
     "pendente": true,
     "poderes": [
       {
@@ -8682,7 +8682,7 @@
         "nivel": 2
       }
     ],
-    "notas": "Perícias notáveis: Ocultismo 3, Manha 3, Persuasão 3.",
+    "notas": "Habilidades notáveis: Ocultismo 3, Manha 3, Persuasão 3.",
     "pendente": true,
     "poderes": [
       {
@@ -8769,7 +8769,7 @@
         "nivel": 2
       }
     ],
-    "notas": "Perícias notáveis: Conhecimentos 5, Ocultismo 4, Prontidão 4.",
+    "notas": "Habilidades notáveis: Conhecimentos 5, Ocultismo 4, Prontidão 4.",
     "pendente": true,
     "poderes": [
       {
@@ -8851,7 +8851,7 @@
         "nivel": 3
       }
     ],
-    "notas": "Perícias notáveis: Ocultismo 4, Persuasão 3, Prontidão 4.",
+    "notas": "Habilidades notáveis: Ocultismo 4, Persuasão 3, Prontidão 4.",
     "pendente": true,
     "poderes": [
       {
@@ -8932,7 +8932,7 @@
         "nivel": 1
       }
     ],
-    "notas": "Perícias notáveis: Furtividade 3, Prontidão 3.",
+    "notas": "Habilidades notáveis: Furtividade 3, Prontidão 3.",
     "pendente": true,
     "poderes": [
       {
@@ -9012,7 +9012,7 @@
         "nivel": 3
       }
     ],
-    "notas": "Perícias notáveis: Manha 4, Furtividade 3, Ocultismo 2.",
+    "notas": "Habilidades notáveis: Manha 4, Furtividade 3, Ocultismo 2.",
     "pendente": true,
     "poderes": [
       {
@@ -9093,7 +9093,7 @@
         "nivel": 2
       }
     ],
-    "notas": "Perícias notáveis: Ocultismo 3, Manha 3, Furtividade 2.",
+    "notas": "Habilidades notáveis: Ocultismo 3, Manha 3, Furtividade 2.",
     "pendente": true,
     "poderes": [
       {
@@ -9177,7 +9177,7 @@
         "nivel": 4
       }
     ],
-    "notas": "Perícias notáveis: Prontidão 5, Ocultismo 4. Centelha acima do teto mortal (entidade).",
+    "notas": "Habilidades notáveis: Prontidão 5, Ocultismo 4. Centelha acima do teto mortal (entidade).",
     "pendente": true,
     "poderes": [
       {
@@ -9265,7 +9265,7 @@
         "nivel": 3
       }
     ],
-    "notas": "Perícias notáveis: Prontidão 4. Centelha acima do teto mortal (entidade).",
+    "notas": "Habilidades notáveis: Prontidão 4. Centelha acima do teto mortal (entidade).",
     "pendente": true,
     "poderes": [
       {
@@ -9351,7 +9351,7 @@
         "nivel": 3
       }
     ],
-    "notas": "Perícias notáveis: Prontidão 3, Atletismo 2, Manha 2.",
+    "notas": "Habilidades notáveis: Prontidão 3, Atletismo 2, Manha 2.",
     "pendente": true,
     "poderes": [
       {
@@ -9430,7 +9430,7 @@
         "nivel": 3
       }
     ],
-    "notas": "Perícias notáveis: Prontidão 4, Manha 3, Ocultismo 2.",
+    "notas": "Habilidades notáveis: Prontidão 4, Manha 3, Ocultismo 2.",
     "pendente": true,
     "poderes": [
       {
@@ -9517,7 +9517,7 @@
         "nivel": 3
       }
     ],
-    "notas": "Perícias notáveis: Prontidão 5, Persuasão 4, Ocultismo 3.",
+    "notas": "Habilidades notáveis: Prontidão 5, Persuasão 4, Ocultismo 3.",
     "pendente": true,
     "poderes": [
       {
@@ -9613,7 +9613,7 @@
         "nivel": 4
       }
     ],
-    "notas": "Perícias notáveis: Prontidão 5, Ocultismo 5, Persuasão 5, Conhecimentos 4. Centelha acima do teto mortal (entidade).",
+    "notas": "Habilidades notáveis: Prontidão 5, Ocultismo 5, Persuasão 5, Conhecimentos 4. Centelha acima do teto mortal (entidade).",
     "pendente": true,
     "poderes": [
       {
@@ -9708,7 +9708,7 @@
         "nivel": 5
       }
     ],
-    "notas": "Perícias notáveis: Prontidão 6, Ocultismo 6, Persuasão 5, Conhecimentos 5. Centelha acima do teto mortal (entidade).",
+    "notas": "Habilidades notáveis: Prontidão 6, Ocultismo 6, Persuasão 5, Conhecimentos 5. Centelha acima do teto mortal (entidade).",
     "pendente": true,
     "poderes": [
       {
@@ -9800,7 +9800,7 @@
         "nivel": 3
       }
     ],
-    "notas": "Perícias notáveis: Prontidão 3, Furtividade 3.",
+    "notas": "Habilidades notáveis: Prontidão 3, Furtividade 3.",
     "pendente": true,
     "poderes": [
       {
@@ -9891,7 +9891,7 @@
         "nivel": 3
       }
     ],
-    "notas": "Perícias notáveis: Furtividade 4, Prontidão 4, Manha 4.",
+    "notas": "Habilidades notáveis: Furtividade 4, Prontidão 4, Manha 4.",
     "pendente": true,
     "poderes": [
       {
@@ -9978,7 +9978,7 @@
         "nivel": 2
       }
     ],
-    "notas": "Perícias notáveis: Manha 4, Persuasão 4, Furtividade 3.",
+    "notas": "Habilidades notáveis: Manha 4, Persuasão 4, Furtividade 3.",
     "pendente": true,
     "poderes": [
       {
@@ -10073,7 +10073,7 @@
         "nivel": 3
       }
     ],
-    "notas": "Perícias notáveis: Ocultismo 5, Persuasão 5, Prontidão 5, Conhecimentos 5. Centelha acima do teto mortal (entidade).",
+    "notas": "Habilidades notáveis: Ocultismo 5, Persuasão 5, Prontidão 5, Conhecimentos 5. Centelha acima do teto mortal (entidade).",
     "pendente": true,
     "poderes": [
       {

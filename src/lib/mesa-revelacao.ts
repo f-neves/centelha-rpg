@@ -40,7 +40,7 @@ const VIDA_OPS: { v: NivelVida; t: string; d: string; amostra: string }[] = [
 const FICHA_OPS: { v: string; t: string; d: string }[] = [
   { v: 'nada', t: 'Só quem é', d: 'Retrato, nome, conceito e o jogador por trás. Nenhum número.' },
   { v: 'fisico', t: 'Mais o que se vê na pessoa', d: 'Força, Destreza, Vigor, Aparência e raça: o que dois dias de estrada ensinam.' },
-  { v: 'tudo', t: 'A ficha inteira', d: 'Perícias, Centelha, Virtudes, Artes, defesas. Mesa de peito aberto.' },
+  { v: 'tudo', t: 'A ficha inteira', d: 'Habilidades, Centelha, Virtudes, Artes, defesas. Mesa de peito aberto.' },
 ];
 
 function opcoesHTML(nome: string, ops: { v: string; t: string; d: string; amostra?: string }[], atual: string) {

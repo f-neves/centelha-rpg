@@ -49,7 +49,7 @@ const degraus = [
   { dif: '3', nome: 'Trivial', soma: '~2', desc: 'Quase ninguém falha. Só se rola sob pressão: pressa, escuro, ferido, alguém observando.' },
   { dif: '5', nome: 'Fácil', soma: '3', desc: 'Rotina para quem tem algum jeito; cara-ou-coroa para o destreinado. Rola-se sob risco ou plateia.' },
   { dif: '10', nome: 'Média', soma: '6', desc: 'O padrão do "incerto e importa". Cara-ou-coroa para o praticante; o perito resolve com folga; o leigo não alcança.' },
-  { dif: '15', nome: 'Difícil', soma: '9', desc: 'Exige perícia de verdade. Cara-ou-coroa para o perito; o praticante quase nunca; a referência domina.' },
+  { dif: '15', nome: 'Difícil', soma: '9', desc: 'Exige Habilidade de verdade. Cara-ou-coroa para o perito; o praticante quase nunca; a referência domina.' },
   { dif: '20', nome: 'Muito difícil', soma: '12', desc: 'Limite humano: a façanha que vira causo. Cara-ou-coroa para o grande mestre; a referência arrisca.' },
   { dif: '25', nome: 'Excepcional', soma: '~15', desc: 'Pouquíssimos alcançam, e mesmo eles falham mais que acertam. Pede Margem acumulada, Virtude canalizada ou Centelha.' },
   { dif: '30+', nome: 'Sobre-humano', soma: '~18', desc: 'Fora do que o corpo ou a mente comuns fazem. Requer Centelha, Proezas ou Arcano.' },
@@ -172,10 +172,10 @@ const exSociais = [
   </div>
 
   <h2 class="barh">Dificuldades de exemplo</h2>
-  <h3 class="sub">Tarefas físicas e de perícia</h3>
+  <h3 class="sub">Tarefas físicas e de Habilidade</h3>
   <div class="tab-wrap">
     <table class="ex">
-      <thead><tr><th>Tarefa</th><th>Perícia</th><th>Dif</th><th>Observação</th></tr></thead>
+      <thead><tr><th>Tarefa</th><th>Habilidade</th><th>Dif</th><th>Observação</th></tr></thead>
       <tbody>
         {exFisicas.map((e) => (
           <tr><td>{e[0]}</td><td class="per">{e[1]}</td><td class="c dif">{e[2]}</td><td class="obs">{e[3]}</td></tr>
@@ -187,7 +187,7 @@ const exSociais = [
   <h3 class="sub">Situações sociais comuns</h3>
   <div class="tab-wrap">
     <table class="ex">
-      <thead><tr><th>Situação</th><th>Perícia</th><th>Dif</th><th>Observação</th></tr></thead>
+      <thead><tr><th>Situação</th><th>Habilidade</th><th>Dif</th><th>Observação</th></tr></thead>
       <tbody>
         {exSociais.map((e) => (
           <tr><td>{e[0]}</td><td class="per">{e[1]}</td><td class="c dif">{e[2]}</td><td class="obs">{e[3]}</td></tr>

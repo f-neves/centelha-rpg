@@ -16,7 +16,7 @@ Se é a sua primeira vez, siga esta ordem: os detalhes de cada passo estão nas 
 1. **Conceito.** Quem é o herói? Uma frase basta ("batedora silenciosa", "capitão que inspira tropas"), ela guia todas as escolhas seguintes.
 2. **Orçamento.** Combine com o Mestre: **1500** (iniciante), **2000** (veterano) ou **2600** (herói). Todo o resto sai desse bolo de XP.
 3. **Atributos.** Suba do piso 1. Teto **5** na criação, com **um único** atributo em **6** (o seu pico).
-4. **Habilidades e Especialidades.** Teto **4**, com **uma única** primária em **5** (o pico de perícia). Secundárias são mais baratas e cobrem nichos; cada Especialidade afia um escopo estreito de uma Habilidade.
+4. **Habilidades e Especialidades.** Teto **4**, com **uma única** primária em **5** (o pico de Habilidade). Secundárias são mais baratas e cobrem nichos; cada Especialidade afia um escopo estreito de uma Habilidade.
 5. **Virtudes.** As quatro, de 1 a 6.
 6. **Força de Vontade e Aparência.** Suba a Vontade do piso 0 (um herói costuma levá-la a 5+); escolha a Aparência (0–12, normal por volta de 5–7).
 7. **Centelha.** Teto **3** na criação. Ela **não custa XP**: o tier é definido com o Mestre e define o que você alcança. A maioria começa em 1; quem quer um herói de saga começa em 3 (Herói).
@@ -44,7 +44,7 @@ O custo é para subir ao próximo ponto, em função do *novo* valor.
 | Atributo | 5 + (novo × 5) | 1→2 = 15 · 2→3 = 20 · 3→4 = 25 · 5→6 = 35 |
 | Habilidade primária | 4 + (novo × 2) | 0→1 = 6 · 2→3 = 10 · 5→6 = 16 |
 | Habilidade secundária | 2 + (novo × 1) | metade exata da primária: 3 · 4 · 5 · 6 · 7 · 8 |
-| Especialidade (prim. / sec.) | 8 + (nível × 4) / 4 + (nível × 2) | acumulativo por escopo nomeado (prim. 12 · 16 · 20 ; sec. 6 · 8 · 10). Até [nível ÷ 2] níveis por perícia |
+| Especialidade (prim. / sec.) | 8 + (nível × 4) / 4 + (nível × 2) | acumulativo por escopo nomeado (prim. 12 · 16 · 20 ; sec. 6 · 8 · 10). Até [nível ÷ 2] níveis por Habilidade |
 | Virtude | 4 + (novo × 2) | 1→2 = 8 · 2→3 = 10 · 5→6 = 16 |
 | Força de Vontade | novo × 2 | piso 0 · 0→1 = 2 · 5→6 = 12 · 11→12 = 24 |
 | Aparência | novo × 2 | piso 0 · mesma trilha da Vontade |

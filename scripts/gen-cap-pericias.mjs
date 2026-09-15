@@ -1,4 +1,4 @@
-// Regera os catálogos de perícias do capítulo II a partir dos dados.
+// Regera os catálogos de Habilidades do capítulo II a partir dos dados.
 //
 // O capítulo listava as 24 primárias à mão e não listava as secundárias de jeito nenhum.
 // Manter quase cem descrições copiadas entre o .md e o .json é drift garantido, então os
@@ -25,10 +25,10 @@ const NOME_ATTR = { ...Object.fromEntries(ATTR.map((a) => [a.id, a.nome])), vont
 const alfa = (a, b) => a.nome.localeCompare(b.nome, 'pt', { sensitivity: 'base' });
 
 const GRUPOS_PRIM = [
-  ['combate', 'Combate', 'O que se rola quando alguém está tentando machucar alguém. Todo personagem que pretenda entrar numa briga precisa de pelo menos uma perícia de ataque e uma de defesa.'],
-  ['fisica', 'Físicas', 'O corpo fora do combate, e a firmeza que segura o personagem inteiro. São as perícias que mais aparecem em cena de exploração e de fuga.'],
+  ['combate', 'Combate', 'O que se rola quando alguém está tentando machucar alguém. Todo personagem que pretenda entrar numa briga precisa de pelo menos uma Habilidade de ataque e uma de defesa.'],
+  ['fisica', 'Físicas', 'O corpo fora do combate, e a firmeza que segura o personagem inteiro. São as Habilidades que mais aparecem em cena de exploração e de fuga.'],
   ['social', 'Sociais', 'O que se rola quando o obstáculo é uma pessoa. Cada uma resolve um tipo diferente de conversa, e o Mestre escolhe pela intenção declarada, não pela frase dita.'],
-  ['saber', 'Saber', 'O que o personagem sabe e o que ele consegue descobrir. São as perícias que abrem caminho sem que ninguém precise sacar nada.'],
+  ['saber', 'Saber', 'O que o personagem sabe e o que ele consegue descobrir. São as Habilidades que abrem caminho sem que ninguém precise sacar nada.'],
 ];
 
 const GRUPOS_SEC = [

@@ -87,7 +87,7 @@
           "+12",
           "+15"
         ],
-        "uso": "perícia, ataque, defesa, resistir, disputa, penalidade ao alvo, Iniciativa, redução de Ticks"
+        "uso": "Habilidade, ataque, defesa, resistir, disputa, penalidade ao alvo, Iniciativa, redução de Ticks"
       },
       "soak": {
         "rotulo": "Absorção",
@@ -457,7 +457,7 @@
     "cargaCorte": 0.75
   },
   "furtividadeCriatura": {
-    "nota": "A Furtividade de uma criatura, por PORTE e CATEGORIA, sobre a Destreza. Existe porque o bestiário não guarda perícia nenhuma: das cinco que as regras de oposição pedem, quatro voltam invertendo a conta dos derivados (Prontidão de iniciativa - raciocínio, Esquiva da Defesa, Integridade da Defesa Mental, Sociabilidade da Defesa Social) e a Furtividade não volta de lugar nenhum: nada a consome. Sem ela não há comparação para o golpe vindo do escuro, e comparar contra um número fixo seria escrever a regra por omissão.",
+    "nota": "A Furtividade de uma criatura, por PORTE e CATEGORIA, sobre a Destreza. Existe porque o bestiário não guarda Habilidade nenhuma: das cinco que as regras de oposição pedem, quatro voltam invertendo a conta dos derivados (Prontidão de iniciativa - raciocínio, Esquiva da Defesa, Integridade da Defesa Mental, Sociabilidade da Defesa Social) e a Furtividade não volta de lugar nenhum: nada a consome. Sem ela não há comparação para o golpe vindo do escuro, e comparar contra um número fixo seria escrever a regra por omissão.",
     "porQueTabelaEnaoUmNumeroPorCriatura": "A alternativa era escrever 309 Furtividades à mão. Trezentas e nove decisões de regra que ninguém toma com cuidado produzem números que PARECEM dado e não são, que é a forma de erro mais cara deste projeto. A tabela erra de um jeito que se vê (o assassino humano fica igual ao camponês humano) e a exceção escrita conserta esse caso quando ele aparecer na mesa, uma linha por vez. Mesma forma da couraça por porte (dano.couracaPorte), que é a forma da casa.",
     "formula": "Furtividade = base do porte + ajuste da categoria + ajuste de tag, limitado a 0..6",
     "porte": {
@@ -730,6 +730,7 @@
       "atributo": "destreza",
       "mult": 2,
       "especialidade": true,
+      "especialidadeNota": "`true` quer dizer PODE SOMAR QUANDO O ESCOPO SE APLICAR, e não soma sempre (`M-03`). O portão da Especialidade é a situação, então ela não entra no número parado que a ficha imprime: entra por cima, na hora em que o escopo nomeado se revela. Vale igual nas três Defesas.",
       "maisCentelha": true,
       "centelhaMult": 1
     },
@@ -1404,7 +1405,7 @@
           "posicao": "o conjurador não sai do lugar",
           "defesa": "defender-se é permitido, porque proibir defesa faria de sustentar um suicídio",
           "aoSofrerDano": "teste de Vontade + Acerto Arcano para segurar; falhando, o efeito cai",
-          "aRevisar": "a dificuldade do teste (fixa ou crescendo com o tamanho do golpe), e a perícia definitiva quando a conjuração por Tradição fechar"
+          "aRevisar": "a dificuldade do teste (fixa ou crescendo com o tamanho do golpe), e a Habilidade definitiva quando a conjuração por Tradição fechar"
         },
         "consequencias": [
           "O improviso não tem bola de fogo: pôr uma explosão num ponto escolhido só sai com Efeito Especial comprado.",
@@ -2017,7 +2018,7 @@
       "nota": "Fraqueza e resistência não são comuns: a maioria das criaturas não tem nenhuma. Aparecem no sobrenatural (vampiro com sol, prata e fogo; lobisomem com prata; demônio com o sagrado; anjo com o profano) e no material de que a criatura é feita (folha, madeira, palha e gelo temem fogo; criatura de fogo ou de terra teme água; metal e pedra resistem ao fogo).",
       "fraqueza": [
         "o dano ignora TODA a Absorção, natural e de armadura",
-        "o dano é agravado: não fecha com descanso nem com a perícia Cura, só com tratamento específico ou a Arte de Cura",
+        "o dano é agravado: não fecha com descanso nem com a Habilidade Cura, só com tratamento específico ou a Arte de Cura",
         "aparar de mãos nuas fere: quem tenta bloquear o golpe com o corpo sofre o dano do mesmo jeito"
       ],
       "exemplo": "Um elemental de madeira que tenta aparar uma lâmina feita inteira de fogo leva o dano cheio, sem absorver nada, e a queimadura não fecha sozinha.",
@@ -2530,7 +2531,7 @@
       "nuncaPara": "atacar",
       "perdeOInvestido": true,
       "perdeOInvestidoNota": "Os Ticks já gastos no Preparo não voltam: você fica livre no Tick de agora, e não no Tick em que declarou. É esse o preço, e é ele que impede abortar de ser de graça.",
-      "levarAdiante": "Quem quiser ignorar o perigo e levar o golpe adiante pode, com um teste de Virtude. Como se conta um teste de Virtude ainda não está decidido (K12): não entram Atributos nem Perícias, só Virtudes."
+      "levarAdiante": "Quem quiser ignorar o perigo e levar o golpe adiante pode, com um teste de Virtude. Como se conta um teste de Virtude ainda não está decidido (K12): não entram Atributos nem Habilidades, só Virtudes."
     },
     "foraDeHora": {
       "nota": "Agir fora da sua vez: paga a Velocidade da ação empurrada para o seu próprio futuro, a guarda não se refaz, uma por ação. Interromper atrasa o alvo em tantos Ticks quantos o interruptor pagou (o espelho).",

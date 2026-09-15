@@ -33,7 +33,7 @@ O *pool* básico é determinado pela soma de Atributo + Habilidade. A metade des
 
 **A descrição da ação determina o Atributo e a Habilidade.** Você diz *como* o personagem está agindo; o Mestre lê a descrição e nomeia os dois. Duas coisas trabalham juntas aqui, e vale separá-las:
 
-- **cada Habilidade tem uma inclinação**, um grupo de Atributos com que ela mais se relaciona, e é essa inclinação que o parêntese de cada perícia publica no [capítulo das Habilidades](/regras/habilidades). Briga puxa os físicos, Burocracia puxa os mentais, Oratória puxa os sociais;
+- **cada Habilidade tem uma inclinação**, um grupo de Atributos com que ela mais se relaciona, e é essa inclinação que o parêntese de cada Habilidade publica no [capítulo das Habilidades](/regras/habilidades). Briga puxa os físicos, Burocracia puxa os mentais, Oratória puxa os sociais;
 - **e a combinação concreta de uma jogada sai da descrição**, que pode pedir um Atributo fora da inclinação quando a ficção o sustentar.
 
 A mesma intenção muda de par quando muda o *como*:
@@ -46,9 +46,9 @@ A mesma intenção muda de par quando muda o *como*:
 | fazer o inimigo se render | ameaçar | **Força** ou **Influência** + Intimidação |
 | ler o oponente | identificar o estilo de luta dele | **Inteligência** + Briga, ou + Armas |
 
-Repare em dois. A **ameaça** troca de perícia *e* de Atributo em relação a convencer, e a intenção das duas era a mesma: quem separou foi a descrição. E **identificar o estilo de luta** rola *Inteligência + Briga*, embora a inclinação de Briga seja física, porque o que está sendo feito ali é ler e deduzir, não bater.
+Repare em dois. A **ameaça** troca de Habilidade *e* de Atributo em relação a convencer, e a intenção das duas era a mesma: quem separou foi a descrição. E **identificar o estilo de luta** rola *Inteligência + Briga*, embora a inclinação de Briga seja física, porque o que está sendo feito ali é ler e deduzir, não bater.
 
-**Os Atributos também vêm em três grupos:** Força, Destreza e Vigor são físicos; Influência, Perspicácia e Compostura, sociais; Percepção, Inteligência e Raciocínio, mentais. Serve para saber por onde começar a pensar, e é a mesma natureza da inclinação das perícias.
+**Os Atributos também vêm em três grupos:** Força, Destreza e Vigor são físicos; Influência, Perspicácia e Compostura, sociais; Percepção, Inteligência e Raciocínio, mentais. Serve para saber por onde começar a pensar, e é a mesma natureza da inclinação das Habilidades.
 
 <p class="muted">Quem julga a descrição é o Mestre, e um par que a ficção não sustenta ele recusa. O que a regra pede é o contrário: não recusar um par que a descrição sustenta só porque ele está fora da inclinação publicada.</p>
 

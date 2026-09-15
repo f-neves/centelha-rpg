@@ -404,7 +404,7 @@ const CONV = DATA.map((m) => {
   const tags = [...new Set([slug(cat), ...(m.cent > 0 ? ['centelha'] : []), ...(/incorpóreo/.test(m.type) ? ['incorpóreo'] : []), ...(artes.length ? ['mágico'] : [])])];
   const briga = cl(ameaca + (m.cent > 0 ? 1 : 0), 1, 5);
   const notasPart = [];
-  if (m.sk && m.sk.length) notasPart.push(`Perícias notáveis: ${m.sk.join(', ')}.`);
+  if (m.sk && m.sk.length) notasPart.push(`Habilidades notáveis: ${m.sk.join(', ')}.`);
   // O teto mortal é 6 (Semideus) desde a Reescala; o 5 daqui era da régua velha e,
   // com o +1 do B10, passaria a marcar 16 Semideus como entidade.
   if (m.cent > 6) notasPart.push('Centelha acima do teto mortal (entidade).');

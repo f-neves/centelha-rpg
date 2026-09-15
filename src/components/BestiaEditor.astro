@@ -76,9 +76,9 @@ const PORTES = Object.keys(PORTE_LBL);
           <label class="ed-f"><span>Integridade</span><input type="number" data-ed="integridade" min="0" max="12" /></label>
           <label class="ed-f"><span>Prontidão</span><input type="number" data-ed="prontidao" min="0" max="12" /></label>
         </div>
-        <h4>Perícias <span class="ed-sub muted">(só as que a criatura usa)</span></h4>
+        <h4>Habilidades <span class="ed-sub muted">(só as que a criatura usa)</span></h4>
         <div class="ed-lista" id="ed-pericias"></div>
-        <button type="button" class="ed-mais" data-add="pericia">+ perícia</button>
+        <button type="button" class="ed-mais" data-add="pericia">+ Habilidade</button>
 
         <h4>Bônus <span class="ed-sub muted">(somam ao calculado, não substituem)</span></h4>
         <p class="ed-nota muted">Para a criatura que não cabe na fórmula: um couro grosso, uma casca, um corpo que aguenta mais. Deixe em zero quando a fórmula bastar.</p>
@@ -198,7 +198,7 @@ const PORTES = Object.keys(PORTE_LBL);
 
 <template id="tpl-pericia">
   <div class="ed-linha" data-linha="pericia">
-    <input type="text" data-campo="nome" list="ed-dl-pericias" placeholder="perícia" class="ed-c-per" />
+    <input type="text" data-campo="nome" list="ed-dl-pericias" placeholder="Habilidade" class="ed-c-per" />
     <input type="number" data-campo="valor" min="0" max="12" value="1" />
     <button type="button" class="ed-tira" aria-label="Remover">✕</button>
   </div>
@@ -207,7 +207,7 @@ const PORTES = Object.keys(PORTE_LBL);
   <div class="ed-linha ed-linha-atk" data-linha="ataque">
     <input type="text" data-campo="nome" placeholder="nome do ataque" class="ed-c-nome" />
     <select data-campo="atrib" title="Atributo">{opcoes.atributos.map((a) => <option value={a}>{a.slice(0, 3)}</option>)}</select>
-    <input type="text" data-campo="pericia" list="ed-dl-pericias" placeholder="perícia" class="ed-c-per" />
+    <input type="text" data-campo="pericia" list="ed-dl-pericias" placeholder="Habilidade" class="ed-c-per" />
     <label class="ed-mini" title="Dados de dano">d<input type="number" data-campo="dado" min="1" max="4" value="1" /></label>
     <select data-campo="tipo" title="Tipo de dano">{TIPOS_DANO.map((t) => <option value={t}>{t}</option>)}</select>
     <label class="ed-mini" title="Acerto">ac<input type="number" data-campo="acerto" value="0" /></label>

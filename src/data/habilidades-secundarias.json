@@ -3,7 +3,7 @@
     "id": "halterofilismo",
     "nome": "Halterofilismo",
     "grupo": "corpo",
-    "descricao": "O treino específico de erguer peso morto: postura, respiração, o jeito certo de pegar e a segurança de saber quando a carga vai vencer. Entra direto na conta de quanto você levanta, empurra e arremessa, e é a única perícia que faz um personagem carregar mais do que o músculo bruto sugeriria.",
+    "descricao": "O treino específico de erguer peso morto: postura, respiração, o jeito certo de pegar e a segurança de saber quando a carga vai vencer. Entra direto na conta de quanto você levanta, empurra e arremessa, e é a única Habilidade que faz um personagem carregar mais do que o músculo bruto sugeriria.",
     "niveis": [
       {
         "nivel": 0,
@@ -89,7 +89,7 @@
     "id": "ginastica",
     "nome": "Ginástica",
     "grupo": "corpo",
-    "descricao": "Acrobacia: cambalhota, salto mortal, rolamento de queda, passar por um vão apertado, cair de altura sem quebrar nada. É a perícia do corpo que se dobra e se joga, e ela aparece toda vez que a saída é por cima ou por baixo, e não pela porta.",
+    "descricao": "Acrobacia: cambalhota, salto mortal, rolamento de queda, passar por um vão apertado, cair de altura sem quebrar nada. É a Habilidade do corpo que se dobra e se joga, e ela aparece toda vez que a saída é por cima ou por baixo, e não pela porta.",
     "niveis": [
       {
         "nivel": 0,
@@ -648,7 +648,7 @@
     "id": "acerto-arcano",
     "nome": "Acerto Arcano",
     "grupo": "conhecimento",
-    "descricao": "A pontaria da magia: acertar com o efeito que sai da mão e voa até o alvo, calculando distância, movimento e o instante de soltar. É a perícia de ataque de quem conjura, e sem ela o feitiço mais devastador do mundo passa a um palmo do inimigo.",
+    "descricao": "A pontaria da magia: acertar com o efeito que sai da mão e voa até o alvo, calculando distância, movimento e o instante de soltar. É a Habilidade de ataque de quem conjura, e sem ela o feitiço mais devastador do mundo passa a um palmo do inimigo.",
     "niveis": [
       {
         "nivel": 0,
@@ -992,7 +992,7 @@
     "id": "geografia",
     "nome": "Geografia",
     "grupo": "conhecimento",
-    "descricao": "As terras e o caminho entre elas: rotas, distâncias, passagens de montanha, rios navegáveis, clima de cada estação, o que se encontra em cada região e quanto tempo leva chegar lá. É a perícia que planeja a viagem antes de ela começar.",
+    "descricao": "As terras e o caminho entre elas: rotas, distâncias, passagens de montanha, rios navegáveis, clima de cada estação, o que se encontra em cada região e quanto tempo leva chegar lá. É a Habilidade que planeja a viagem antes de ela começar.",
     "niveis": [
       {
         "nivel": 0,
@@ -1207,7 +1207,7 @@
     "id": "bestiario",
     "nome": "Bestiário",
     "grupo": "conhecimento",
-    "descricao": "Criaturas: onde vivem, o que comem, como caçam, como se reproduzem, o que as afugenta e onde é o ponto fraco. É a perícia que transforma um monstro desconhecido num problema com solução conhecida, e vale ouro antes de uma caçada.",
+    "descricao": "Criaturas: onde vivem, o que comem, como caçam, como se reproduzem, o que as afugenta e onde é o ponto fraco. É a Habilidade que transforma um monstro desconhecido num problema com solução conhecida, e vale ouro antes de uma caçada.",
     "niveis": [
       {
         "nivel": 0,
@@ -1852,7 +1852,7 @@
     "id": "navegacao",
     "nome": "Navegação",
     "grupo": "oficio",
-    "descricao": "Conduzir uma embarcação e achar o rumo: vela, leme, corrente, maré, vento, sondagem, e a decisão de encarar ou contornar a tempestade. Cobre desde a barcaça de rio até o navio de mar aberto, e é uma perícia de campanha inteira, porque quem a tem define por onde a história pode ir.",
+    "descricao": "Conduzir uma embarcação e achar o rumo: vela, leme, corrente, maré, vento, sondagem, e a decisão de encarar ou contornar a tempestade. Cobre desde a barcaça de rio até o navio de mar aberto, e é uma Habilidade de campanha inteira, porque quem a tem define por onde a história pode ir.",
     "niveis": [
       {
         "nivel": 0,
@@ -1938,7 +1938,7 @@
     "id": "escrivao",
     "nome": "Escrivão",
     "grupo": "oficio",
-    "descricao": "O ofício do papel: redigir carta, contrato e ata na fórmula que a lei aceita, copiar sem erro, manter livro de registro, preparar tinta e pena e decifrar letra ruim ou documento antigo. É a perícia que permite a um personagem produzir um documento que ninguém questiona, e numa terra em que quase ninguém lê, quem escreve tem poder sobre o que ficou escrito.",
+    "descricao": "O ofício do papel: redigir carta, contrato e ata na fórmula que a lei aceita, copiar sem erro, manter livro de registro, preparar tinta e pena e decifrar letra ruim ou documento antigo. É a Habilidade que permite a um personagem produzir um documento que ninguém questiona, e numa terra em que quase ninguém lê, quem escreve tem poder sobre o que ficou escrito.",
     "niveis": [
       {
         "nivel": 0,
@@ -2282,7 +2282,7 @@
     "id": "contacao-de-historias",
     "nome": "Contação de Histórias",
     "grupo": "expressao",
-    "descricao": "Narrar de modo que quem ouve fique: escolher o que contar, guardar a virada para a hora certa, imitar as vozes e fazer uma sala inteira prender a respiração. É a perícia que transforma o que o grupo fez numa lenda, e lenda é influência que trabalha sozinha.",
+    "descricao": "Narrar de modo que quem ouve fique: escolher o que contar, guardar a virada para a hora certa, imitar as vozes e fazer uma sala inteira prender a respiração. É a Habilidade que transforma o que o grupo fez numa lenda, e lenda é influência que trabalha sozinha.",
     "niveis": [
       {
         "nivel": 0,
@@ -2325,7 +2325,7 @@
     "id": "pintura",
     "nome": "Pintura",
     "grupo": "expressao",
-    "descricao": "Pintar e desenhar: retrato, painel, afresco, esboço de memória e o cartaz que a guarda vai pregar na praça. Além da arte, é a perícia que registra um rosto, um lugar ou um símbolo com precisão suficiente para outra pessoa reconhecer.",
+    "descricao": "Pintar e desenhar: retrato, painel, afresco, esboço de memória e o cartaz que a guarda vai pregar na praça. Além da arte, é a Habilidade que registra um rosto, um lugar ou um símbolo com precisão suficiente para outra pessoa reconhecer.",
     "niveis": [
       {
         "nivel": 0,
@@ -2454,7 +2454,7 @@
     "id": "abrir-mecanismos",
     "nome": "Abrir Mecanismos",
     "grupo": "subterfugio",
-    "descricao": "Vencer o que foi feito para não abrir, ou para se fechar em cima de você: cadeado, tranca, ferrolho, cofre, corrente, e também a armadilha já localizada, o alçapão engatilhado e o engenho que prende a porta. Cobre sentir o pino com a gazua, forçar sem quebrar, deixar a fechadura sem marca quando isso importa, e desarmar o gatilho sem que ele dispare. É a perícia da mão parada e do pulso firme, e a que mais aparece numa masmorra. Ela abre e desarma; encontrar o mecanismo escondido antes de tropeçar nele é Ocultação.",
+    "descricao": "Vencer o que foi feito para não abrir, ou para se fechar em cima de você: cadeado, tranca, ferrolho, cofre, corrente, e também a armadilha já localizada, o alçapão engatilhado e o engenho que prende a porta. Cobre sentir o pino com a gazua, forçar sem quebrar, deixar a fechadura sem marca quando isso importa, e desarmar o gatilho sem que ele dispare. É a Habilidade da mão parada e do pulso firme, e a que mais aparece numa masmorra. Ela abre e desarma; encontrar o mecanismo escondido antes de tropeçar nele é Ocultação.",
     "niveis": [
       {
         "nivel": 0,
@@ -2669,7 +2669,7 @@
     "id": "autocontrole",
     "nome": "Autocontrole",
     "grupo": "interior",
-    "descricao": "Segurar o que vem de dentro: raiva, pânico, vício, luxúria, luto, o impulso de responder à provocação. Integridade resiste ao que os outros fazem com você; Autocontrole resiste ao que você faz consigo mesmo, e é a perícia dos personagens que carregam alguma coisa perigosa por dentro.",
+    "descricao": "Segurar o que vem de dentro: raiva, pânico, vício, luxúria, luto, o impulso de responder à provocação. Integridade resiste ao que os outros fazem com você; Autocontrole resiste ao que você faz consigo mesmo, e é a Habilidade dos personagens que carregam alguma coisa perigosa por dentro.",
     "niveis": [
       {
         "nivel": 0,
