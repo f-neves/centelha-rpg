@@ -1134,7 +1134,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   bandeira desligada é inerte compara ruído. Junto vêm a **branch congelada** (que deixa de ser
   criável assim que a primeira bandeira entra), o caminho do driver até a semente, e o despejo por
   Tick do que a folha calculou. `rolagem.ts:15` é `Math.random` e é a única fonte de acaso
-  do combate. Ganha ponto de injeção, e `mesa-ficha.ts:133` · `rolarIniciativaPC` e
+  do combate. Ganha ponto de injeção, e `mesa-ficha.ts:140` · `rolarIniciativaPC` e
   `artes-grid.ts:1484` · `acaso()` precisam do mesmo
   tratamento. É o que permite o teste-espelho comparar as rolagens.
 - [x] **L6 · [O ESQUELETO FEITO em 02/09] O harness.** `scripts/sim/` com o laço do Tick, o elenco
@@ -2750,7 +2750,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   capítulo. O gerador (`CONDICAO_APARENTE`, mesmo arquivo, perto de `CONDICAO`) também foi atualizado: era
   quem regenerava `grid.condicao` para os 9 e travava o `--check` do `npm run validate` até fazer isso.
 
-  **VALIDADOR, confere os DOIS campos depois do split (fechado):** `scripts/validate-data.mjs:170` (`if (g.condicao && !COND_IDS.has(g.condicao))`), mais o invariante
+  **VALIDADOR, confere os DOIS campos depois do split (fechado):** `scripts/validate-data.mjs:176` (`if (g.condicao && !COND_IDS.has(g.condicao))`), mais o invariante
   `(g.forma === 'nenhuma') === (g.alvo === 'nenhum')` logo abaixo, na mesma função.
 
   **O que isto mudou no split:** os sete blocos de MOTOR não precisaram de auditoria individual,
@@ -6621,8 +6621,8 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   decisão que eu tinha montado em cima dela. O ×4 não é número novo: é o MESMO princípio do
   `×7 − 2`, que faz os seis níveis de Arte varrerem a faixa humana inteira e encostarem no teto no
   nível 6. A faixa humana do FAH é 3 a 40 e a do FAA é 2 a 24:
-  `const fah = Math.max(3, Math.min(40` em `ficha-engine.ts:1565` e
-  `const faa = Math.max(2, Math.min(24` em `ficha-engine.ts:1566`. O mesmo princípio, aplicado
+  `const fah = Math.max(3, Math.min(40` em `ficha-engine.ts:1571` e
+  `const faa = Math.max(2, Math.min(24` em `ficha-engine.ts:1572`. O mesmo princípio, aplicado
   à segunda tabela. **O conserto é dos dois lados:** o `parametros` do `empurrao-elemental` em
   `src/data/efeitos.json` muda junto com o código, senão o dado fica mandando o contrário e a
   próxima pessoa conserta o código "de volta" para o errado. → `CATALOGO`, a forma que saiu daqui.

@@ -9,9 +9,9 @@ resumo: "O corpo que cansa: módulo opcional que acrescenta gestão de cansaço 
 
 Se as [Virtudes e a Vontade](/regras/aparencia-virtudes-vontade) são a alma e a determinação, o **Fôlego** é o **corpo**: a reserva física de onde sai toda ação extenuante: atacar, correr, saltar, carregar peso. É grande, mas só se renova quando o corpo descansa: depois de uma rajada de esforço, ele pede um respiro.
 
-<p class="formula">Fôlego = 10 (base racial) + Vigor × 5 + Resistência × 4 + Força de Vontade × 2</p>
+<p class="formula">Fôlego = 10 + Vigor × 5 + Resistência × 4 + Força de Vontade × 2</p>
 
-Ele nasce dos três traços que dizem o quanto o corpo aguenta: o **Vigor** (o motor), a **Resistência** (o tanque) e a **Força de Vontade** (a teimosia de seguir quando o corpo já pediu para parar). Um humano comum parte de **10**; um lutador de Vigor e Resistência altos chega à casa dos 50–70.
+Ele nasce dos três traços que dizem o quanto o corpo aguenta: o **Vigor** (o motor), a **Resistência** (o tanque) e a **Força de Vontade** (a teimosia de seguir quando o corpo já pediu para parar). Todo personagem parte de **10**, qualquer que seja a raça; um lutador de Vigor e Resistência altos chega à casa dos 50–70.
 
 ## Rajada e respiro
 

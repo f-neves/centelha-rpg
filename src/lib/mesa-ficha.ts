@@ -6,12 +6,17 @@
 // aqui sem tocar no DOM — a engine inteira tem 156 KB e desenha uma ficha.
 import {
   pv, energia, mana, folego, defesa, defesaSocial, defesaMental, pool, poolStr, regras,
-  empilharArmaduras, soakNatural,
+  empilharArmaduras, soakNatural, type Porte,
 } from './calc';
+import RACAS_D from '../data/racas.json';
 import { armadurasDe } from './equip';
 import { resumoCombatePC } from './combate-resumo';
 import { qaDaPeca, type QACombate } from './quase-acerto';
 import { d6 } from './rolagem';
+
+/** O porte da raça do personagem, ou Médio quando ele não tem raça escolhida. */
+const porteDaRaca = (id?: string | null): Porte =>
+  (((RACAS_D as any[]).find((r) => r.id === (id || ''))?.porte || 'medio') as Porte);
 
 export interface Passivo { id: string; nome: string; dados: number; bonus: number; media: number; str: string }
 
@@ -77,7 +82,9 @@ export function resumoFicha(S: any): ResumoFicha {
     raca: S?.raca || '',
     centelha: C, vontade: W, aparencia: S?.aparencia || 0,
     attrs: S?.attrs || {}, skills: S?.skills || {}, skills2: S?.skills2 || {}, virtudes: S?.virtues || {},
-    pv: pv(vig),
+    // O porte da raça, como na ficha (`M-29`): sem ele o Halfling ia para a
+    // mesa com o PV de um Médio.
+    pv: pv(vig, porteDaRaca(S?.raca)),
     energia: energia({ vigor: vig, compostura: A('compostura'), raciocinio: A('raciocinio'), vontade: W, centelha: C }),
     mana: mana({ centelha: C, vontade: W, manipulacao: S?.arte?.['manipulacao-mana'] || 0 }),
     folego: folego({ vigor: vig, resistencia: SK('resistencia'), vontade: W }),

@@ -4,7 +4,7 @@
 // (localStorage) quanto a /personagem (Supabase, com XP definido pelo mestre).
 import { MODULOS } from './modulos';
 import { pesoMaximoErguido, alcanceArremesso } from './forca-empurrao';
-import { custoPontos, custoTecnica, custoArte, custoEfeito, custoEspecialidade, pisoXp, pv, defesa, defesaMental, defesaSocial, energia, mana, folego, iniciativa, deslocamento, ataqueCentelha, aparenciaMod, empilharArmaduras, soakNatural, MODO_NOME, MODO_ORDEM, SOAK_CATS, regras } from './calc';
+import { custoPontos, custoTecnica, custoArte, custoEfeito, custoEspecialidade, pisoXp, pv, pvPorte, type Porte, defesa, defesaMental, defesaSocial, energia, mana, folego, iniciativa, deslocamento, ataqueCentelha, aparenciaMod, empilharArmaduras, soakNatural, MODO_NOME, MODO_ORDEM, SOAK_CATS, regras } from './calc';
 import ATTRS_D from '../data/atributos.json';
 import HAB_D from '../data/habilidades.json';
 import SEC_D from '../data/habilidades-secundarias.json';
@@ -1468,7 +1468,13 @@ export function montarFicha(opts: FichaOpts) {
     const defEsq = defesa({ destreza: dex, habilidade: SK('esquiva'), centelha: C }) - penFisica;
     // Bloqueio soma a Defesa das armas/escudos do conjunto EM USO. O escudo não penaliza o próprio Bloqueio.
     const defBlq = defesa({ destreza: dex, habilidade: SK('bloqueio'), centelha: C }) + (act.defSum || 0) - armPen;
-    const pvv = pv(vig), en = energia({ vigor: vig, compostura: A('compostura'), raciocinio: A('raciocinio'), vontade: W, centelha: C }), mn = mana({ centelha: C, vontade: W, manipulacao: S.arte['manipulacao-mana'] || 0 });
+    // O PORTE DA RAÇA CHEGA AO `pv()` (`M-29`). Antes ninguém passava o segundo
+    // argumento, então a tabela `derivados.pv.porte` (sete linhas calibradas)
+    // não era alcançada por personagem jogável nenhum e um Halfling tinha
+    // exatamente o PV de um Orc de mesmo Vigor.
+    const porteR = ((RACA[S.raca] as any)?.porte || 'medio') as Porte;
+    const linhaPV = pvPorte(porteR);
+    const pvv = pv(vig, porteR), en = energia({ vigor: vig, compostura: A('compostura'), raciocinio: A('raciocinio'), vontade: W, centelha: C }), mn = mana({ centelha: C, vontade: W, manipulacao: S.arte['manipulacao-mana'] || 0 });
     const fo = folego({ vigor: vig, resistencia: SK('resistencia'), vontade: W });
     const soc = defesaSocial({ compostura: A('compostura'), sociabilidade: SK('sociabilidade'), centelha: C });
     const men = defesaMental({ raciocinio: A('raciocinio'), integridade: integ, vontade: W, centelha: C });
@@ -1478,7 +1484,7 @@ export function montarFicha(opts: FichaOpts) {
     const defParts = [act.habil, act.inabil].filter((it: any) => it.def).map((it: any) => ` ${it.def >= 0 ? '+' : '−'} ${Math.abs(it.def)} (${it.nome})`).join('');
     const soakCalc = `Impacto ${soaks[0]} = Vigor ${vig} + Centelha ${C}${armSt.soak.impacto ? ` + ${armSt.soak.impacto} (armadura)` : ''} · Corte ${soaks[1]} e Perfuração ${soaks[2]} = Centelha ${C}${(armSt.soak.corte || armSt.soak.perfuracao) ? ' + armadura' : ''}${armSt.resistPerf ? ` · Resist. Perfuração Nível ${armSt.resistPerf}` : ''}`;
     el('derived').innerHTML =
-      r('Pontos de Vida', pvv, `25 + Vigor ${vig}×3 = ${pvv}`) +
+      r('Pontos de Vida', pvv, `${linhaPV.base} + Vigor ${vig}×${linhaPV.vigorMult} = ${pvv}`) +
       r('Defesa (Esquiva)', defEsq, `(Destreza ${dex} + Esquiva ${SK('esquiva')})×2 + Centelha ${C}${pArm}${pEsc} = ${defEsq}`) +
       r('Defesa (Bloqueio)', defBlq, `(Destreza ${dex} + Bloqueio ${SK('bloqueio')})×2 + Centelha ${C}${defParts}${pArm} = ${defBlq}`) +
       r('Defesa Social', soc, `(Compostura ${A('compostura')} + Sociabilidade ${SK('sociabilidade')})×2 + Centelha ${C} = ${soc}`) +

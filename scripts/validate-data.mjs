@@ -46,7 +46,13 @@ const S = {
     efeito: z.string(), notas: z.string().optional(),
   }),
   glossario: z.object({ id: z.string(), termo: z.string(), aliases: z.array(z.string()), definicao: z.string() }),
-  racas: z.object({ id: z.string(), nome: z.string(), custo: z.number().int().nonnegative(), atributos: z.record(z.number().int()), aparenciaMod: z.number().int(), aparenciaUniversal: z.boolean(), descricao: z.string(), tracos: z.array(z.string()) }),
+  // O `porte` e o `deslocamentoFrac` entram no esquema porque o zod DESCARTA
+  // chave desconhecida sem erro: sem eles, um `"Pequeno"` com maiuscula entraria
+  // como campo estranho, seria jogado fora em silencio, e `pv()` cairia no
+  // default de Medio com o portao VERDE. O `porte` e obrigatorio nas oito, e nao
+  // so no Halfling, porque ausente e decidido-Medio sao indistinguiveis (`M-29`);
+  // o `deslocamentoFrac` e opcional porque so as tres racas baixas o tem (`M-30`).
+  racas: z.object({ id: z.string(), nome: z.string(), porte: z.enum(['minusculo', 'pequeno', 'medio', 'grande', 'enorme', 'imenso', 'colossal']), custo: z.number().int().nonnegative(), atributos: z.record(z.number().int()), aparenciaMod: z.number().int(), aparenciaUniversal: z.boolean(), descricao: z.string(), tracos: z.array(z.string()), deslocamentoFrac: z.number().positive().optional() }),
   inimigos: z.object({
     id: z.string(), nome: z.string(), tipo: z.enum(['capanga', 'soldado', 'elite', 'fera', 'chefe']),
     categoria: z.string().optional(),

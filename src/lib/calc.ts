@@ -26,10 +26,23 @@ export function poolStr(atributo: number, habilidade: number) {
 
 export type Porte = 'minusculo' | 'pequeno' | 'medio' | 'grande' | 'enorme' | 'imenso' | 'colossal';
 
+/**
+ * A LINHA de `derivados.pv.porte` em uso, para quem precisa EXPLICAR a conta e
+ * não só fazê-la.
+ *
+ * Ela existe porque a explicação da ficha trazia os dois números escritos à mão
+ * (`25 + Vigor 3×3`), e com o Halfling virando `pequeno` (`M-29`) essa linha
+ * passaria a imprimir "25 + Vigor 3×3 = 26", uma conta que não fecha dentro da
+ * própria frase. Quem explica e quem calcula leem a MESMA linha daqui.
+ */
+export function pvPorte(porte: Porte = 'medio') {
+  const d = regras.derivados.pv as { base: number; vigorMult: number; porte?: Record<string, { base: number; vigorMult: number }> };
+  return d.porte?.[porte] ?? { base: d.base, vigorMult: d.vigorMult };
+}
+
 /** PV máximo. base + Vigor×mult, escalando com o porte (Médio = default, usado por PCs). */
 export function pv(vigor: number, porte: Porte = 'medio') {
-  const d = regras.derivados.pv as { base: number; vigorMult: number; porte?: Record<string, { base: number; vigorMult: number }> };
-  const t = d.porte?.[porte] ?? { base: d.base, vigorMult: d.vigorMult };
+  const t = pvPorte(porte);
   return t.base + vigor * t.vigorMult;
 }
 

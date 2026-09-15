@@ -1,6 +1,7 @@
 [
   {
     "id": "humano",
+    "porte": "medio",
     "nome": "Humano",
     "custo": 0,
     "atributos": {},
@@ -13,6 +14,7 @@
   },
   {
     "id": "anao",
+    "porte": "medio",
     "nome": "Anão",
     "custo": 30,
     "atributos": { "vigor": 1, "perspicacia": -1 },
@@ -29,6 +31,7 @@
   },
   {
     "id": "elfo",
+    "porte": "medio",
     "nome": "Elfo",
     "custo": 50,
     "atributos": { "destreza": 1, "vigor": -1 },
@@ -43,6 +46,7 @@
   },
   {
     "id": "gnomo",
+    "porte": "medio",
     "nome": "Gnomo",
     "custo": 40,
     "atributos": { "vigor": 1, "forca": -1 },
@@ -59,6 +63,7 @@
   },
   {
     "id": "halfling",
+    "porte": "pequeno",
     "nome": "Halfling",
     "custo": 30,
     "atributos": { "destreza": 1, "forca": -1 },
@@ -73,6 +78,7 @@
   },
   {
     "id": "meio-elfo",
+    "porte": "medio",
     "nome": "Meio-Elfo",
     "custo": 20,
     "atributos": {},
@@ -86,6 +92,7 @@
   },
   {
     "id": "orc",
+    "porte": "medio",
     "nome": "Orc",
     "custo": 40,
     "atributos": { "forca": 1, "vigor": 1, "perspicacia": -1, "compostura": -1, "inteligencia": -1 },
@@ -101,6 +108,7 @@
   },
   {
     "id": "meio-orc",
+    "porte": "medio",
     "nome": "Meio-Orc",
     "custo": 40,
     "atributos": { "forca": 1, "vigor": 1, "compostura": -1, "inteligencia": -1 },

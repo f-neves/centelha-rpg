@@ -773,7 +773,7 @@
       "maisVontade": true
     },
     "folego": {
-      "nota": "Reserva física p/ ações comuns (atacar, correr, saltar, carregar). Você recupera +Vigor de Fôlego por Tick SEMPRE QUE NÃO está numa ação que gaste Fôlego — defender, recuar e parar recuperam; atacar e correr gastam e NÃO recuperam. Cada golpe custa o Fôlego (cheio) da arma (campo 'folego' em armas.json: leve 15, médio 24, pesado 38); como atacar não recupera, uma sequência de golpes drena rápido e força um respiro. Tomar Fôlego (ação Velocidade 5, só defendendo) = +metade do máximo. <25% do pool = −1d6 em ações físicas; 0 = exausto (só defende ou Toma Fôlego). Base por raça (humano = 10).",
+      "nota": "Reserva física p/ ações comuns (atacar, correr, saltar, carregar). Você recupera +Vigor de Fôlego por Tick SEMPRE QUE NÃO está numa ação que gaste Fôlego — defender, recuar e parar recuperam; atacar e correr gastam e NÃO recuperam. Cada golpe custa o Fôlego (cheio) da arma (campo 'folego' em armas.json: leve 15, médio 24, pesado 38); como atacar não recupera, uma sequência de golpes drena rápido e força um respiro. Tomar Fôlego (ação Velocidade 5, só defendendo) = +metade do máximo. <25% do pool = −1d6 em ações físicas; 0 = exausto (só defende ou Toma Fôlego).",
       "base": 10,
       "vigorMult": 5,
       "resistenciaMult": 4,
