@@ -263,3 +263,30 @@ tem ocasião de verdade, e os vermelhos que eu refiz saem como ela relatou.
 **PERGUNTA:** nenhuma. As cinco coisas que o aviso mandou julgar foram medidas, e onde eu não
 exercitei o caminho (o Sangramento em produção) está escrito que não exercitei, em vez de
 afirmado.
+
+---
+
+## Nota de estado, posterior ao veredito · a M-21c
+
+O Arquiteto avisou, depois deste veredito escrito, que a mesa decidiu o arredondamento em
+`e9b4c95` (M-21c): quem não tem Centelha arredonda para baixo, quem tem arredonda para cima. A
+faixa revisada é a mesma, o "para baixo" era escolha declarada da Executora, e **nada do que está
+acima muda**. Não opino sobre a régua nova.
+
+Três coisas que eu medi por causa dela, e nenhuma repete o que o `e9b4c95` já manda fazer:
+
+- **O `CORRIGE 4` fica mais caro com a régua nova.** `regras.json` · `morte.limiteNota` escreve
+  `PV 37 morre em −18`, e a partir da M-21c esse par vale só para Centelha 0. O campo que nenhum
+  portão lê passa de "número repetido" a "número repetido que a régua nova torna meia verdade".
+- **O `CORRIGE 3` vem ANTES do item 3 da lista do `e9b4c95`.** Aquele item manda o portão exigir
+  os dois casos, e o capítulo vai ganhar exemplos ímpares novos, um por lado. Todos eles passam
+  pelo mesmo extrator que hoje perde o par do callout do Bram por causa do `[^.]*?`. Se o
+  extrator for consertado depois de os exemplos serem escritos, alguns podem nascer fora do
+  portão sem ninguém ver; consertado antes, os novos nascem cobertos.
+- **A troca do campo falha ALTO, e isso é bom, com uma ressalva de uma linha.**
+  `scripts/validate-data.mjs:258-260` aceita só `"baixo"` ou `"alto"` e chama `fail` em qualquer
+  outra coisa, então o item 1 da lista não passa em silêncio. A ressalva: o `fail` acumula e o
+  bloco SEGUE com `(arredonda || Math.floor)` (`scripts/validate-data.mjs:274`), então, no mesmo
+  `EXIT=1`, as conferências
+  dos exemplos continuam sendo feitas com "para baixo". O vermelho é verdadeiro; o que vem
+  depois dele, naquela rodada, não é.

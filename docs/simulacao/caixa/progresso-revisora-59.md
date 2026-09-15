@@ -41,3 +41,6 @@ Reancorada em `0b8148431b1bc3774d85c76c7a5883b3af5184df` (o sha do aviso), confe
   `VELHO` (`:308`) é sensível a caixa. Falsifiquei: `dano letal` minúsculo plantado no capítulo
   passa VERDE. Desfeito, `diff` vazio. A versão insensível fica verde nas quatro entradas de
   hoje e vermelha na quinta.
+- 17:52 · nota de estado acrescentada ao veredito, pelo aviso da M-21c (`e9b4c95`, que JÁ está
+  em `origin/main`, conferido por `merge-base --is-ancestor`). Nada do julgamento muda. Medi
+  três consequências e nenhuma repete o que o próprio `e9b4c95` já manda fazer.
