@@ -31,3 +31,8 @@ Reancorada em `0b8148431b1bc3774d85c76c7a5883b3af5184df` (o sha do aviso), confe
   (só lê), nenhum baixa Vida. A conta dela de oito pontos fica de pé.
 - 17:42 · li os dois commits FORA da faixa. `19afbbc` decide sobre as duas regras que ela
   listou, e herda a citação errada do `caido`. Achado.
+- 17:45 · veredito escrito e commitado (`7039045`), e o PUSH FOI RECUSADO: `origin/main`
+  andou dois commits (`2ac58ef`, `19afbbc`) depois do sha do aviso, então `HEAD:main` não é
+  fast-forward. Não forcei (contrato §7.2). Para o commit não ficar sem referência em detached
+  HEAD, criei o ramo LOCAL `revisora-59` apontando para ele. `HEAD` continua onde o aviso
+  mandou, e eu não reancoro por conta própria.
