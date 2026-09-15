@@ -9,7 +9,7 @@ Nem todo herói nasce humano. Cada povo carrega uma **herança** que molda corpo
 
 <div class="callout regra"><span class="lbl">Como ler um traço racial</span>Um <strong>+1 de teto</strong> num Atributo significa que ele pode chegar a <strong>7</strong>: um ponto acima do teto humano de 6. Um <strong>−1 de teto</strong> trava o Atributo em <strong>5</strong>. Não é bônus grátis: você ainda compra cada ponto com XP (Atributo = 5 + novo × 5); a raça só <strong>move o limite</strong> de onde dá para chegar.</div>
 
-<div class="callout"><span class="lbl">Provisório</span>Os <strong>custos de XP</strong> das raças são uma primeira passada, recusteada da tabela antiga para a economia atual (orçamentos de 1500–2600). Tratam-se de números a calibrar conforme o peso real de cada herança na mesa.</div>
+<div class="callout"><span class="lbl">Provisório</span>Os <strong>custos de XP</strong> das raças são uma primeira passada, recusteada da tabela antiga para a economia atual (orçamentos de 1500–2600). Tratam-se de números a calibrar conforme o peso real de cada herança na mesa. <strong>Os custos E as idades das oito serão refeitos de uma vez</strong>, depois que as inconsistências de herança fecharem: o que está na tabela hoje vale para jogar e não vale como régua fechada. O <strong>Gnomo</strong> é o caso vivo disso: caiu de 40 para 30 ao virar de porte pequeno, e esse 30 entra na conta futura como qualquer outro.</div>
 
 ## O Humano: a régua do mundo
 
@@ -31,7 +31,7 @@ Em regra, o humano é o **baseline neutro**:
 |---|:---:|---|---|---|
 | Humano | 0 | — | — | médio |
 | Anão | 30 | Vigor | Perspicácia | baixo, corpulento |
-| Gnomo | 40 | Vigor | Força | muito baixo |
+| Gnomo | 30 | Vigor | Força | muito baixo |
 | Halfling | 30 | Destreza | Força | muito baixo |
 | Elfo | 50 | Destreza | Vigor | esguio |
 | Meio-Elfo | 20 | — | — | médio-alto |
@@ -67,8 +67,8 @@ Seres ligados ao mundo natural. Esguios, de aparência mais frágil que a das ou
 
 Pequenos e resistentes. Pesam **20–45 kg** e medem **1,00–1,30 m**. Maturidade aos 20 anos; podem viver mais de **400 anos**.
 
-- **Custo de XP:** 40
-- **+1 teto de Vigor** (até 7): resistência teimosa num corpo miúdo.
+- **Custo de XP:** 30 <small>(provisório: desceu de 40 quando o Gnomo virou de porte **pequeno** e perdeu PV)</small>
+- **+1 teto de Vigor** (até 7): resistência teimosa num corpo pequeno.
 - **−1 teto de Força** (máx 5): pequenos demais para grande força bruta.
 - **Baixa estatura**: **todo deslocamento vale dois terços** do de um humano, o passo em combate, o Arranque, a Corrida **e os Saltos**.
 - **Visão no escuro**: enxergam na escuridão total, sem distinguir cores; precisam de tempo para adaptar os olhos.
@@ -81,7 +81,7 @@ Povo pequeno e ágil. Medem de **80 cm a 1,20 m** e pesam **20–35 kg**. Atinge
 
 - **Custo de XP:** 30
 - **+1 teto de Destreza** (até 7): mãos e pés leves.
-- **−1 teto de Força** (máx 5): porte miúdo.
+- **−1 teto de Força** (máx 5): porte pequeno, sem massa para força bruta.
 - **Baixa estatura**: **todo deslocamento vale dois terços** do de um humano, o passo em combate, o Arranque, a Corrida **e os Saltos**.
 - **Atletas**, corpos incansáveis: **+1d6** em **Atletismo** e nas Habilidades secundárias correlatas.
 

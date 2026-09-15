@@ -128,10 +128,78 @@ eq(C.pv(3, 'Pequeno'), 34, 'porte escrito errado cai em Médio, calado: é por i
   ok(!/base racial/i.test(cap), 'o capítulo do Fôlego voltou a chamar a base de racial');
 }
 
+// ------------------------ 5. o capítulo das raças NÃO é gerado, e não acompanha
+//
+// `racas.md` é escrito à mão: nenhum script o cita (varrido em 15/09/2026). O
+// custo de cada raça aparece em DOIS lugares dentro dele (a tabela resumo e o
+// primeiro marcador da seção) e um TERCEIRO no dado, e nada prendia os três
+// juntos. O Gnomo é o caso vivo: a `M-29b` derrubou o PV dele, o humano baixou
+// o custo de 40 para 30, e sem este portão o capítulo continuaria dizendo 40 em
+// dois lugares com o `validate` verde.
+{
+  const cap = ler('src/content/chapters/racas.md');
+  const linhas = cap.split('\n');
+
+  // as seções por raça: `### Nome` até o próximo `###`
+  const secoes = {};
+  let atual = null;
+  for (const l of linhas) {
+    const m = /^### (.+)$/.exec(l);
+    if (m) { atual = m[1].trim(); secoes[atual] = []; } else if (atual) secoes[atual].push(l);
+  }
+
+  // a TABELA RESUMO é a que tem `Custo XP` no cabeçalho. O capítulo tem outra
+  // tabela com uma coluna numérica logo depois do nome (a das IDADES), e pegar
+  // a errada faria o portão comparar custo com idade de maturidade.
+  const iCab = linhas.findIndex((l) => /^\| Ra[cç]a \| Custo XP \|/.test(l));
+  ok(iCab > 0, 'a tabela resumo das raças (a que traz `Custo XP`) sumiu do capítulo');
+  const tabela = {};
+  for (let i = iCab + 2; i < linhas.length && linhas[i].startsWith('|'); i++) {
+    const m = /^\| ([^|]+?) \| (\d+) \|/.exec(linhas[i]);
+    if (m) tabela[m[1].trim()] = Number(m[2]);
+  }
+
+  for (const r of RACAS) {
+    eq(tabela[r.nome], r.custo, `o custo de ${r.nome} na TABELA do capítulo não bate com \`racas.json\``);
+    const sec = secoes[r.nome];
+    if (!sec) continue; // o Humano não tem seção própria: ele é a régua, e está na prosa de abertura
+    const m = /\*\*Custo de XP:\*\*\s*(\d+)/.exec(sec.join('\n'));
+    ok(m, `a seção de ${r.nome} não diz o Custo de XP`);
+    if (m) eq(Number(m[1]), r.custo, `o custo de ${r.nome} na SEÇÃO do capítulo não bate com \`racas.json\``);
+  }
+
+  // ---- e o rótulo de porte que o capítulo usa tem de ser o porte do dado ----
+  //
+  // O DEFEITO que isto guarda é medido e não hipotético: o Gnomo e o Halfling
+  // eram descritos como "miúdo", e `Miúdo` é o rótulo de `minusculo` no
+  // vocabulário do próprio jogo (`grid.astro`, `bestia-editor.ts`), contra
+  // `Pequeno` que é o porte real dos dois. Fator DOIS entre os dois rótulos na
+  // tabela de diâmetro, e o capítulo dizendo um enquanto o dado diz o outro.
+  //
+  // A lista de palavras é CURTA de propósito, e a medição é o motivo: varrendo
+  // as sete com os sete rótulos, "pequenos demais para grande força bruta"
+  // (Gnomo) casava `grande`, que ali é adjetivo comum e não tamanho. Um portão
+  // com falso positivo é um portão que alguém desliga. `miúdo` e `minúsculo`
+  // não são adjetivos comuns descrevendo raça jogável, e é essa a classe de
+  // defeito que existe aqui.
+  const ROTULO = { miúdo: 'minusculo', miúda: 'minusculo', miúdos: 'minusculo', miúdas: 'minusculo', minúsculo: 'minusculo', minúsculos: 'minusculo' };
+  for (const [nome, sec] of Object.entries(secoes)) {
+    const r = RACAS.find((x) => x.nome === nome);
+    if (!r) continue;
+    const txt = sec.join('\n');
+    for (const [palavra, porte] of Object.entries(ROTULO)) {
+      if (!new RegExp(`\\b${palavra}\\b`, 'i').test(txt)) continue;
+      ok(r.porte === porte,
+        `a seção de ${nome} usa "${palavra}", que é o rótulo do porte \`${porte}\`, e o dado diz \`${r.porte}\``);
+    }
+  }
+}
+
 if (falhas.length) {
   console.error(`\n✘ porte-raca: ${falhas.length} falha(s)\n` + falhas.map((f) => '  · ' + f).join('\n'));
   process.exit(1);
 }
 console.log('✓ porte-raca: as oito raças declaram porte, o Halfling e o Gnomo são Pequenos e o porte chega ao `pv()`,'
   + ' a explicação da ficha sai da tabela em vez de guardar cópia à mão,'
+  + ' o capítulo (que NÃO é gerado) diz o mesmo custo e o mesmo porte que o dado,'
   + ' e o Fôlego parou de prometer base por raça');

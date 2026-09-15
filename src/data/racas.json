@@ -48,7 +48,7 @@
     "id": "gnomo",
     "porte": "pequeno",
     "nome": "Gnomo",
-    "custo": 40,
+    "custo": 30,
     "atributos": { "vigor": 1, "forca": -1 },
     "aparenciaMod": 0,
     "aparenciaUniversal": false,
