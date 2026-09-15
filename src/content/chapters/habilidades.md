@@ -17,7 +17,7 @@ Se o [Atributo](/regras/atributos) é o que você é, a Habilidade é o que voc�
 | **5** | Mestre | Um dos melhores que existem. |
 | **6** | Lendário | O ápice absoluto do ofício. |
 
-Cada Habilidade **pareia com um ou mais Atributos** conforme o uso, e o parêntese ao fim de cada verbete lista quais. A mesma Investigação é *Percepção* para achar a pista no chão, *Raciocínio* para deduzir na hora e *Inteligência* para reconstituir o que houve. Quem escolhe o par é o Mestre, pela descrição da ação: você diz **como** está fazendo, e o **como** define o Atributo.
+Cada Habilidade **pareia com um ou mais Atributos** conforme o uso, e o parêntese ao fim de cada verbete lista quais: é a **inclinação** da perícia, o grupo de Atributos com que ela mais se relaciona. A mesma Investigação é *Percepção* para achar a pista no chão, *Raciocínio* para deduzir na hora e *Inteligência* para reconstituir o que houve. Quem escolhe o par é o Mestre, pela descrição da ação: você diz **como** está fazendo, e o **como** define o Atributo. A regra inteira está em [Quem escolhe o par](/regras/coracao-do-sistema#quem-escolhe-o-par).
 
 <!-- gen:primarias -->
 

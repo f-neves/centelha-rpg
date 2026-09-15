@@ -27,3 +27,35 @@ vira Stunt). Se a rodada ficar longa, fecho no que estiver pronto e digo o que s
   `mesa-tempo-ui.ts` 287->298 (`const SAIDAS`), 418->429 (`const verbo`), 556->567
   (`custoInterporRecuperacao`) no `Pendencias.md`, e `test-combate-tempo.mjs` 309->316
   (`T.temGesto`) no `REVISORA.md`. `validate` verde.
+- **03:47** · FRENTE 2 (`M-14`) escrita. A notacao mudou no GERADOR
+  (`gen-cap-pericias.mjs`, o molde `linhaPrim`): `*(Destreza . Forca)*` virou
+  `*(o usual: Destreza . Forca)*`, e rodei o gerador (24 primarias regeradas, conferidas as 24).
+  A regra entrou em `coracao-do-sistema.md` como secao `Quem escolhe o par`, logo depois da
+  tabela do pool, com os cinco exemplos da mesa em tabela. E a frase A MAO do `habilidades.md`
+  (linha 20, FORA do bloco gerado) dizia que o parenteses 'lista quais', que e leitura fechada:
+  passou a dizer 'o usual, nao o possivel', com o exemplo de `Inteligencia + Briga`.
+- **03:47** · e a conferencia do item 4, que era a que podia me desmentir: NENHUMA tela restringe
+  o par. Varri quem le `habilidades.json`: so o `ficha-engine.ts`, e ele usa os niveis e o XP,
+  nunca o campo `atributos`. O unico `select` de Atributo do site (`BestiaEditor.astro:209`)
+  oferece os NOVE, montados de `ATR` em `bestiario.astro:24`, sem filtro por pericia. O que
+  existe e `mesa-ficha.ts`, que fixa um Atributo por passivo (Investigacao = Percepcao): e
+  resumo pre-calculado para o painel do mestre, um PADRAO oferecido, que e exatamente o que a
+  decisao abencoa. Nao criei o campo `atributos` nas 66 secundarias, como ele mandou.
+- **03:49** · o commit da `M-14` FALHOU com `index.lock`, e foi bom que falhasse: o Arquiteto
+  estava commitando no mesmo instante, e o commit dele era `8ca6627`, **retirando o item 2 do
+  despacho**. A notacao em italico das pericias NAO muda: a lista publica a INCLINACAO da
+  pericia e isso ja esta certo; o que faltava era so a regra do par. Nao mexi no `index.lock`
+  (nao e trabalho meu e podia ter git rodando); esperei, e trinta segundos depois ele tinha
+  sumido sozinho junto com o `jogador-novo-consertos.md` que aparecia sujo na arvore.
+- **03:49** · desfazendo o que a correcao retirou: o `linhaPrim` volta ao que era e o capitulo
+  II e regerado. E a secao que eu ja tinha escrito no `coracao-do-sistema.md` precisa de
+  reescrita, nao de conserto de virgula: ela dizia `o usual, e nao o possivel` e repetia a
+  leitura da Intimidacao que ele acabou de retratar.
+- **03:51** · `M-14` refeita segundo a correcao. O `gen-cap-pericias.mjs` voltou byte a byte ao
+  que era (saiu do `git diff`) e o capitulo II foi regerado: zero ocorrencias de `o usual:`.
+  A secao do `coracao-do-sistema.md` foi REESCRITA e nao remendada, porque o que estava errado
+  nela era a tese: ela dizia `o usual, e nao o possivel` e concluia que o par legitimo de uma
+  pericia social inclui a Forca, que e exatamente a leitura retratada. Agora ela separa as duas
+  coisas na linguagem dele: a lista publica a INCLINACAO, e a combinacao concreta sai da
+  descricao. Os cinco exemplos ficam, porque o que ele retratou foi a conclusao e nao o exemplo.
+  A frase a mao do `habilidades.md` voltou a `lista quais` e ganhou a palavra inclinacao.
