@@ -2420,13 +2420,19 @@ contra a outra, e vale saber que ela começou aqui.
 
 **O original:** `src/data/tecnicas.json:1449`, `fechar-feridas` (Cerne Vital, nível 3, 3 de
 Energia): *"Estanca sangramentos e cura **dano Letal leve** em minutos."* O irmão está em
-`src/data/artes.json:778`, a Arte Vida nível 3: *"**cura Letal moderado**; suspende a dor"*.
+`src/data/artes.json:778`, o nível 3 da Arte **CURA**, chamado "Fechar Feridas": *"**cura Letal
+moderado**; suspende a dor"*.
+
+**Correção de 15/09/2026, achada pela Executora na rodada 77 ao editar a linha:** esta entrada
+dizia "a Arte **Vida** nível 3", e a linha 778 é da Arte **Cura**. O ALVO estava certo (a linha e
+o texto), o NOME da Arte não · a Arte Vida nível 3 é "anima plantas para enredar" e não cura
+nada. Ela editou a linha certa e não mexeu na decisão, que é o comportamento certo.
 
 **A inconsistência:** com "cura é cura", restringir a cura a uma trilha que não existe é texto
 morto dentro de um poder que custa 3 de Energia.
 
 **A decisão: cai a palavra Letal, e o GRAU fica.** A Técnica passa a "estanca sangramentos e cura
-dano leve em minutos"; a Arte Vida nível 3 passa a "cura moderado; suspende a dor". O eixo troca
+dano leve em minutos"; o nível 3 da Arte Cura passa a "cura moderado; suspende a dor". O eixo troca
 de TIPO para GRAU, que é o vocabulário que as duas já usavam ao lado (a Vida nível 2 cura "leve a
 moderado").
 
@@ -2437,7 +2443,7 @@ troca uma cláusula morta por uma vaga, e a mesa segue decidindo no olho quanto 
 
 1. `tecnicas.json`: os textos de `mao-de-ferro` e `fechar-feridas`.
 2. `armas.json:819`: a linha do Desarmado perde o parêntese da trilha.
-3. `artes.json:778`: a Arte Vida nível 3 perde a palavra.
+3. `artes.json:778`: o nível 3 da Arte Cura perde a palavra.
 4. **E a varredura vai junto:** estas duas apareceram porque alguém varreu em vez de confiar na
    lista. Quem executar procura por conta própria antes de dar a lista por fechada.
 
