@@ -2901,9 +2901,36 @@ desfaz uma morte sem ver aviso nenhum. O botão é destrutivo nos dois sentidos 
 aberto de propósito, e a própria mensagem de erro da trava o indica como saída. **Porta com placa
 não é porta esquecida.**
 
-### O QUE ISTO MANDA FAZER
+### A PREMISSA DESTA DECISÃO CAIU NO DIA SEGUINTE, e a decisão volta para a mesa
 
-1. O Reiniciar ganha o parágrafo, do mesmo tamanho e no mesmo lugar que o do desfazer.
+**Achado pela Revisora na rodada 81, poucas horas depois.** O argumento acima diz que o Reiniciar
+"vem com" zerar Tick, zerar condições e `ativo = true` **na mesma passagem**, e é disso que ele
+tira a conclusão de que aquilo é recomeço de cena e não cura. **São seis caixas INDEPENDENTES**
+(`src/pages/mesa/combate.astro:257-262`), marcadas por padrão e lidas cada uma no seu próprio `if`.
+
+**Desmarcando as outras cinco e deixando só "restaurar a Vida ao máximo", o clique devolve a Vida
+cheia de todo mundo, mortos inclusive, e não zera relógio, não limpa condição e não devolve
+ninguém.** Não há recomeço de cena nenhum: é **cura em massa**, e o rótulo da caixa a chama assim.
+
+**O que sobra de pé:** a decisão vale para o clique com o pacote inteiro, que é o padrão da tela. O
+que ela não faz é distinguir os dois casos, e a placa escrita na rodada 81 descreve a decisão em
+vez de descrever o que o clique é obrigado a fazer.
+
+**E o erro foi das duas pontas, e ela disse isso primeiro:** na rodada 79 ela escreveu que ia
+"medir o que viaja junto no mesmo update" e aceitou o pacote sem abrir o diálogo; eu decidi em cima
+disso sem conferir o diálogo também. **A pergunta certa não é "o que mais viaja neste write", é "o
+que mais viaja NECESSARIAMENTE nele": vizinho dentro de um `if` próprio é vizinho opcional.** A
+forma nova do `CATALOGO.md` ganhou essa segunda linha.
+
+**A pergunta que volta para a mesa**, e está no dossiê: um botão de mestre pode desfazer uma morte
+quando é usado só para isso? As duas leituras honestas são "o Reiniciar é mobília da mesa e não
+gesto de jogo, então vale inteiro" e "a caixa da Vida sozinha é cura e respeita o limite".
+
+### O QUE ISTO MANDAVA FAZER, e o que sobrou
+
+1. O Reiniciar ganha o parágrafo, do mesmo tamanho e no mesmo lugar que o do desfazer. **FEITO na
+   rodada 81, e o texto dele precisa ser refeito pela decisão nova**, porque hoje ele afirma a
+   premissa que caiu.
 2. **O recorte da varredura muda, e essa é a lição maior que o item.** A Revisora varreu *todo
    ponto que ESCREVE `pv_atual`*, e não "as entradas de cura" · e é essa diferença que fez a
    quarta porta aparecer para a Executora, porque **ela não se chamava cura em lugar nenhum: era
