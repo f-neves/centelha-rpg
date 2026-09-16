@@ -350,6 +350,14 @@ de validade. Cada uma achou algo real; nenhuma moveu a fila.
 em dois dias, e cada forma nova custou uma rodada de conversa. Ele congela quando estiver
 bom, e volta a crescer quando um defeito não couber nele.
 
+**E a outra metade disto, escrita em 16/09/2026 pela Revisora, porque sem ela a regra acima vira
+desculpa para nunca escrever:** *há diferença entre uma régua que as pessoas não seguem e uma régua
+que não existe, e só a segunda se conserta escrevendo.* O caso: três correções seguidas da mesma
+frase escreveram "não faz mais nada" sem olhar o segundo lado de uma régua · e o segundo lado **não
+estava escrito** na entrada do catálogo. Ninguém tinha esquecido de aplicá-lo; ele não estava lá
+para ser aplicado. Antes de recusar escrever, a pergunta é qual das duas: se a régua existe e não
+se seguiu, escrever de novo não conserta; se ela não existe, só escrever conserta.
+
 **Repetição.** A mesma mensagem colada quatro vezes, prompt mandado para a instância
 errada duas vezes, e trabalho refeito porque o coordenador pediu o que já estava pronto.
 

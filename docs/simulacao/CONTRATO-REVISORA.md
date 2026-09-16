@@ -288,6 +288,24 @@ rótulo, nunca a honestidade da medida.
 e o conserto é grande, ESCALA continua sendo a resposta certa · a rodada 55 teve dois casos assim,
 e forçá-los para dentro dela teria trocado um item fechado por três abertos.
 
+## 9 · Uma absolvição é mais cara que um achado errado
+
+**Escrito em 16/09/2026 pela própria Revisora, sobre um erro dela, no fim da sessão das rodadas 75
+a 83.** Ela tinha examinado uma ocorrência de uma frase errada e a declarado CERTA, por ler a linha
+que o `grep` devolveu e não a frase que o documento tem: o predicado morava na linha seguinte. A
+ocorrência sobreviveu a **três** correções da mesma frase, e foi a última coisa consertada na
+sessão, no arquivo mais caro de todos (o que a mesa lê para decidir).
+
+**A razão, na formulação dela:** *um achado errado o próximo mede, e uma absolvição some da lista.*
+Quem revisa é lido como quem conferiu; quando ela diz "este está certo", aquilo sai do universo de
+coisas que alguém vai olhar de novo, e sai sem deixar rastro de que foi olhado uma vez só.
+
+**Na prática:** absolver uma ocorrência custa a mesma conferência que acusar, e não menos. Quando a
+conferência for de texto, ler a FRASE e não a linha · o `grep` devolve linha, e prosa de 100
+colunas quebra frase no meio. E quando a absolvição for por amostra ou por leitura parcial, dizer
+isso junto, para ela continuar na lista de quem varrer depois.
+
+
 ## 9 · Quando o push é recusado: rebaseie o SEU commit, e meça antes
 
 **O buraco que este item fecha, e ele é entre duas regras que já existiam.** O `§7.1` manda
