@@ -2191,7 +2191,7 @@ continua sendo gesto do mestre. **O contra comprado:** uma régua que só vale q
 é justamente do que o relato do jogador novo mais reclamou, e a morte pode passar despercebida no
 meio da briga.
 
-### 2 · INQUEBRANTÁVEL · o Impacto não atravessa o zero
+### 2 · INQUEBRANTÁVEL · o Impacto não atravessa o zero PARA QUEM TEM A TÉCNICA
 
 **O original:** `src/data/tecnicas.json`, a Técnica `inquebrantavel` (Pele de Pedra, nível 4,
 passiva): *"Dano de Impacto nunca te mata, só nocauteia; +1 ao limiar de morte."* As duas metades
@@ -2205,6 +2205,24 @@ leva abaixo do zero. O motor já sabe o tipo do golpe, porque é ele que escolhe
 tirou. A diferença que a torna aceitável é o alcance: ali era o sistema inteiro somando duas
 colunas o tempo todo, aqui é uma Técnica de nível 4 olhando o tipo do golpe que atravessaria o
 zero, uma vez, no instante em que atravessaria.
+
+**O CABEÇALHO DESTA SEÇÃO ESTAVA GENERALIZANDO O QUE O CORPO RESTRINGE, e isso propagou. Corrigido
+em 15/09/2026, achado pela Revisora na rodada 77.** Ele dizia "o Impacto não atravessa o zero",
+sem a restrição, e a M-21d citou a leitura do cabeçalho: a rodada 77 publicou em DOIS arquivos de
+dado comprável (`tecnicas.json` e `armas.json`) que o **Impacto comum** para no zero. Isso
+contradiz a M-21 inteira ("dano é dano"), contradiz `combate.md:111` ("qualquer um dos três mata")
+e, pior, **faria o `inquebrantavel` de nível 4 comprar nada**, porque ele existiria para dar o que
+todo mundo já tem.
+
+**E a Revisora nomeou a consequência que ninguém teria visto:** o `CLAUDE.md` manda o JSON vencer e
+o capítulo se corrigir. Aplicada a esta divergência, essa regra mandaria reescrever o
+`combate.md:111` para dizer que o Impacto para no zero · **revogando a M-21 para um dos três modos
+por um caminho que ninguém decidiu.** Uma regra de precedência boa, aplicada sobre um dado errado,
+executa o erro com autoridade.
+
+**A decisão não mudou:** vale o CORPO, que é o que a mesa escolheu (a opção dizia, com todas as
+letras, "só outro tipo de dano leva **quem tem a Técnica** abaixo do zero"). O que estava errado
+era o título, e os dois textos de dado se corrigem na rodada seguinte.
 
 ### 3 · A ARTE VIDA · a restrição cai
 
