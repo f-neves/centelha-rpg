@@ -2483,3 +2483,59 @@ situacionais. A inconsistência medida fica registrada aqui para não se perder:
 (`regras.json` · `empilhamentoProezas.defesaReflexiva`) fala de **bônus** reflexivos, e só deles.
 Ela nasceu para impedir que alguém empilhe defesas próprias, e não diz nada sobre **penalidade**
 imposta pela Proeza de outro, que é o que o Quebrar Guarda é.
+
+---
+
+## M-01 · a ficha avisa os limites da criação, e não trava
+
+Decidido em 15/09/2026. Primeiro item do bloco das **regras básicas**, pela ordem de fila
+decidida hoje.
+
+### O ORIGINAL, e os três lados dele
+
+**`src/data/regras.json`** · `limitesCriacao`: `atributo: 5`, `habilidade: 4`, `centelha: 3`,
+`picoAtributo: 6`, `picoHabilidade: 5`, `picoQuantidade: 1`.
+
+**`src/content/chapters/criacao-de-personagem.md`**, a seção "Limites na criação":
+
+> Atributo máximo **5**; Habilidade máxima **4**; Centelha máxima **3** (a maioria dos heróis
+> começa em 1). … Cada herói pode ter **um pico**: você está autorizado a levar **um único
+> Atributo a 6** e **uma única Habilidade primária a 5** já na criação: o talento superlativo que
+> o define. Os demais respeitam os tetos acima.
+
+**`src/lib/ficha-engine.ts:167`**, o comentário do `capFor`:
+
+> Não há mais modo de Criação: o que segura a ficha é o ORÇAMENTO de XP, não uma trava por cima
+> do que se pode marcar. Sobra só o teto da régua (0 a 6, ou 0 a 12 em Vontade e Aparência) e o da
+> raça, que é traço da raça e não limite de criação.
+
+### A INCONSISTÊNCIA
+
+O dado guarda os limites, o capítulo os publica como regra, e a ficha **não os aplica**: `capFor`
+devolve o teto da régua (6) e ignora o `limitesCriacao` inteiro. Um novato monta três Atributos em
+6, a ficha aceita, e ele só descobre que era ilegal se outra pessoa ler a ficha.
+
+**E o comentário registra que o modo de Criação foi REMOVIDO de propósito**, o que muda a natureza
+da pergunta: travar de novo é desfazer uma decisão anterior, não consertar um esquecimento.
+
+### A DECISÃO: a ficha AVISA e não trava
+
+O que passa do limite de criação aparece marcado, com a regra ao lado, e continua podendo ser
+marcado. A ficha não ganha modo de criação de volta.
+
+**Por quê:** a mesma ficha serve para criar e para jogar, e o segundo uso é o mais longo dos dois.
+Uma trava que não sabe quando a criação acabou atrapalha o personagem em jogo, e foi essa pergunta
+(quem decide que a criação acabou) que matou o modo da primeira vez.
+
+**O contra comprado:** aviso que não impede é aviso que se ignora, e o novato, que é exatamente
+quem não sabe que aquilo importa, vai clicar por cima dele. Ficha fora da régua continua podendo
+ser enviada para a mesa.
+
+### O QUE ISTO MANDA FAZER
+
+1. A ficha lê o `limitesCriacao` (que hoje nenhum caminho dela lê) e marca o que passa, **com a
+   regra ao lado do aviso**, e não só um vermelho sem explicação.
+2. O **pico** entra no aviso como o que é: UM Atributo em 6 e UMA Habilidade primária em 5. O
+   segundo pico é que vira aviso, não o primeiro.
+3. **O comentário do `capFor` deixa de dizer que a ficha não sabe dos limites**, porque ela passa
+   a saber; o que continua verdadeiro é que ela não trava.
