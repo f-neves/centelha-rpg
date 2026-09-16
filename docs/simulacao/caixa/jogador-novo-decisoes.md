@@ -2655,3 +2655,66 @@ deixou de existir como momento), e estas duas não perderam nada: ficaram vagas,
 
 Então elas seguem a régua da fila decidida hoje e vão **com as Proezas, no fim**. Fica escrito
 aqui para não se perder, e para a próxima varredura não as achar como novidade.
+
+---
+
+## M-05 · soma 1 não passa em Fácil sozinha, e a saída é a Firula
+
+Decidido em 15/09/2026. Bloco das **regras básicas**.
+
+### O ORIGINAL
+
+**`src/lib/calc.ts:18`**, o `pool`: `soma = atributo + habilidade`, `dados = floor(soma / 2)`, e
+`bonus = 2` quando a soma é ímpar.
+
+**`src/content/chapters/coracao-do-sistema.md:57`**: *"Você tem **sucesso** quando o total
+**supera** o alvo."*
+
+**`src/data/regras.json`** · `dificuldade`: `Dif 5` é **Fácil**, com altura de referência
+`3 · Iniciante`.
+
+**`src/data/glossario.json:211`**, a Firula: *"Bônus daquele lance, por descrever a ação com
+criatividade e uso do cenário: **+2 fixo, +1d6 ou +2d6**. Não se compra nem se aprende."*
+
+### A INCONSISTÊNCIA, e o defeito por baixo dela
+
+Atributo 1 com perícia 0 dá soma 1, que rende **zero dados e +2 fixo**. Como o sucesso exige
+SUPERAR, 2 contra Dif 5 é impossível, sempre.
+
+**E o achado é maior que a pergunta: existe um pool que não rola dado nenhum.** Não é difícil, é
+determinístico, e era a única coisa do sistema sem acaso.
+
+### A DECISÃO: a fórmula não muda, e a Firula é a porta
+
+**Soma 1 não passa em Fácil por conta própria, e isso fica escrito em vez de descoberto na mesa.**
+O caminho de quem é muito incapaz é o mesmo que o sistema já dá a todo mundo: **descrever bem**.
+
+Os números, conferidos contra o glossário e a escada de Dificuldade:
+
+| o que se tem | o total | passa em Dif 5 (precisa de 6 ou mais) |
+|---|---|---|
+| soma 1, sem Firula | **2 fixo** | não, nunca |
+| soma 1 + Firula 1 (+2 fixo) | **4 fixo** | não, nunca |
+| soma 1 + Firula 2 (+1d6) | **2 + 1d6**, de 3 a 8 | **sim**, com 4 ou mais no dado |
+| soma 1 + Firula 3 (+2d6) | **2 + 2d6**, de 4 a 14 | sim, com folga |
+
+**A palavra do humano, que é a razão da escolha:** *"uma pessoa muito incapaz com uma ideia boa
+ainda tem chance de passar em um teste fácil"*.
+
+**E repare no que a Firula de nível 2 faz, porque é o que fecha o defeito de baixo:** ela devolve
+o DADO a quem não tinha nenhum. O pool determinístico deixa de ser determinístico exatamente
+quando a mesa premia a descrição, que é onde este sistema quer que a atenção esteja.
+
+**O contra comprado:** um personagem continua sem poder TENTAR nada sozinho naquela faixa, e
+depender da Firula é depender de o Mestre premiar. Quem tiver um Mestre avaro fica com um
+personagem que não passa em tarefa fácil nenhuma, e a régua não tem outra saída para ele.
+
+### O QUE ISTO MANDA FAZER
+
+1. **O capítulo publica o fundo da escala**: soma 1 dá 2 fixo, não rola dado, e não supera Dif 5.
+   Hoje isso se descobre jogando.
+2. **E publica a saída junto**, na mesma frase, porque o número sozinho parece um beco: a Firula
+   de nível 2 devolve o dado e torna o teste possível.
+3. **A fórmula do `pool` não se toca.** Foi considerado um piso de um dado (`max(1, …)`) e
+   recusado: ele mexeria na conta que alimenta ataque, Defesa, perícia e as 309 criaturas para
+   resolver um caso que a Firula já resolve.
