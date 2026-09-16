@@ -20,6 +20,16 @@ Regras de convívio:
   Isso já deu errado três vezes (a última foi `114e31c`, um commit das Artes que levou
   junto três arquivos da mesa), e as duas primeiras regras falharam porque descreviam
   o sintoma e não o mecanismo.
+- **O pathspec protege contra ARQUIVO alheio, e não contra EDIÇÃO alheia no mesmo arquivo.**
+  Achado em 16/09/2026: a Executora commitou com pathspec, certinho, e levou junto três
+  documentos com edição não commitada do Arquiteto · porque os arquivos estavam na lista dela
+  (o `reapontar.mjs` tinha reescrito as citações deles) e o pathspec leva o arquivo INTEIRO, não
+  o pedaço que é seu. Nada se perdeu, e a mensagem de commit passou a descrever metade do que o
+  commit continha. **Antes de commitar um arquivo que um script seu reescreveu, veja se ele já
+  estava sujo** (`git diff --stat` antes de rodar o script, ou `git log -1 --stat` depois, lendo
+  o que entrou). Ferramenta que varre muitos arquivos (`reapontar.mjs` é o caso) transforma
+  "commitar o meu" em "commitar o de todo mundo que mexeu nestes arquivos".
+
 - **Se o `git pull --rebase` falhar com `Please commit or stash them`, tem coisa de
   outra frente no caminho.** Rode `git status --short` e confira se a coluna da
   esquerda (staged) tem arquivo que não é seu antes de commitar.
