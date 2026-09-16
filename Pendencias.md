@@ -4004,6 +4004,29 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   pior que o primeiro, porque o primeiro só gastou uma correção e este gastou uma investigação
   inteira que chegou à conclusão errada.
 
+- [ ] **L99 · [MEDIDO pela Executora na rodada 79, 16/09/2026, e a escolha fica para o dia em que
+  um caminho real aparecer] A trava da cura não existe no SERVIDOR, e as quatro saídas têm preço.**
+  A trava da `M-21b` (passou do limite, a cura não alcança) fechou as portas de INTERFACE em
+  16/09/2026: o menu do mestre, as Artes e os botões da aba Combate, com o desfazer deixado aberto
+  de propósito e o Sopro de Vida atravessando por porta nomeada. **A única entrada de cura que mora
+  no banco é a `jogador_muda_peca`** (`supabase/migracao-22.sql`), que escreve `pv_atual` absoluto
+  vindo de um jsonb, sem piso e sem teto · o `jogador_dano` só baixa e o `jogador_invoca` cria
+  (varrido por `pv_atual` em `supabase/*.sql`). **O que falta lá dentro não é o PV máximo, que está
+  na mesma linha da mesma tabela: é o LADO DO ARREDONDAMENTO, que depende da Centelha, e
+  `combatentes` não tem essa coluna.**
+
+  | saída | custo | o que se compra e o que se perde |
+  |---|---|---|
+  | coluna `centelha` em `combatentes` | migração de esquema, mais os pontos de escrita que criam peça | o servidor fica igual ao cliente, e peça já em jogo nasce nula (não há backfill) |
+  | parâmetro na RPC | `create or replace function`, sem esquema novo | o cliente já sabe a Centelha, mas o cliente é do JOGADOR: dá para mentir, e o que se ganha mentindo é **1 ponto de Vida, só em PV ímpar** |
+  | o servidor usa sempre o lado permissivo | uma linha | zero Centelha e zero esquema; o servidor discorda do cliente em 1 ponto para mortal de PV ímpar |
+  | o servidor lê a ficha | um join, sem esquema novo | `personagens.ficha->>'centelha'` alcança peça de PC; **não alcança criatura**, porque `monstro_id` é texto e o bestiário não está no banco, então criatura cairia no lado permissivo de qualquer jeito |
+
+  **O escopo do que está aberto, dito em voz alta:** a RPC aceita `pv_atual` absoluto de quem a
+  chamar direto, e **nenhum caminho de tela do jogador passa por ela para curar hoje**. Por isso o
+  Arquiteto decidiu em 16/09/2026 não abrir rodada: escolher agora seria calibrar uma trava contra
+  um atacante que não existe. → a medição completa em `docs/simulacao/caixa/progresso-79.md`.
+
 - [ ] **L98 · [ESCALA da Revisora na rodada 77, 15/09/2026] O gancho passou a escrever `.astro/` a
   cada commit de código, e o `.astro/` é compartilhado por quem divide a árvore.** O `CLAUDE.md`
   declara que `dist/` e `.astro/` são compartilhados e que uso simultâneo produz saída corrompida e
