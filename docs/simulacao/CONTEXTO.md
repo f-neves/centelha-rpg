@@ -135,32 +135,44 @@ Os três arquivos dela, em `docs/simulacao/caixa/`: `jogador-novo-consertos.md` 
 seção PARA A MESA), `jogador-novo-decisoes.md` (as respostas do humano, uma entrada por decisão,
 com o que cada uma manda fazer) e os `progresso-NN.md` de cada rodada.
 
-**Em 15/09/2026 a frente está na rodada 75**, e toda decisão de mesa já tomada tem commit de
-implementação, conferido um a um pelo `git log`. O que continua aberto são as perguntas `M` que
-ninguém levou à mesa ainda, listadas na seção PARA A MESA daquele arquivo.
+**Em 16/09/2026 a frente está na rodada 81**, e o que mudou desde a 75 é que ela ganhou
+denominador. **A conta, medida e não estimada:**
 
-**As últimas decisões, todas de 15/09/2026:**
+| o que | total | fechado | aberto |
+|---|---:|---:|---:|
+| perguntas `M` (a regra não existe) | 46 | 28 | **18** |
+| consertos `C` (o texto se contradiz) | **99** | 21 | **78** |
 
-- **M-08** (`ae515c0`) · a escala de Centelha vai a 12 e o teto do jogador fica em 6, escrito e
-  não presumido. Fica aberto nomear os degraus 7 a 12, que é lore.
-- **M-21** (`206fcef`) · dano é dano, cura é cura, cai-se em PV 0 ou menos, e **morre-se ao perder
-  além do zero até metade do PV máximo**. As duas trilhas Impacto/Letal acabaram.
-- **M-21b** (`19afbbc`) · as quatro que a medição abriu: a morte continua sendo marcada só pelo
-  mestre, o `inquebrantavel` passa a dizer que o Impacto derruba e para em zero, a cláusula do
-  Letal cai da Arte Vida (que passa a curar abaixo de zero) e passar do limite trava as quatro
-  entradas de cura.
-- **M-21c** (`e9b4c95`) · **o arredondamento do limite depende da Centelha**: sem Centelha para
-  baixo, com Centelha para cima. Só muda em PV ímpar.
-- **M-24** (`2ac58ef`) · a **Investida é uma Corrida que termina em ataque**, com a escada inteira,
-  a corrida contendo o Preparo, o Tick do golpe sendo o encontro, Defesa −4 e mínimo de 5 metros.
+**As 18 perguntas abertas estão num dossiê publicado**, uma por uma, com o texto do livro citado,
+a inconsistência e as saídas com pró e contra: `https://claude.ai/artifact/2H8aDMgNmU7A6hP5wo26s4`.
+A página guarda a marca do humano (resolver agora · depois do reset · não mexer), e é por ela que
+a fila das próximas rodadas vai ser ordenada. **A ordem dos blocos é decisão da mesa de 15/09:**
+regras básicas primeiro, Artes em penúltimo, Proezas por último.
 
-**No ar pela rodada 75** (`206fcef..8d2787b`): o bloco `morte` no `regras.json` com o limite
-derivado, o capítulo `vida-ferimentos-cura.md` reescrito, a condição `morrendo` e as notas de
-Sangramento sem a palavra Letal, e um portão dentro do `validate-data.mjs` que refaz a conta em
-cima de cada exemplo publicado. **Em revisão**, ancorada em `0b81484`.
+**O inventário dos `C` é de 16/09 e tem uma ressalva que viaja com ele**
+(`docs/simulacao/caixa/inventario-c.md`): dos 38 abertos do `LOTE 8`, **15 têm evidência direta e
+23 têm evidência NEGATIVA** (procurou-se um termo e ele não estava lá), que é prova mais fraca.
+Quem tiver escrito a explicação com outras palavras continua contado como aberto.
 
-**A rodada seguinte já tem escopo e não abre antes do veredito:** implementar a M-21c, a M-21b e a
-M-24.
+**As rodadas 75 a 81, em uma linha cada**, todas com veredito PROCEDE:
+
+- **75** · a M-21 no ar: o bloco `morte` no dado, o capítulo reescrito, o portão que refaz a conta
+  dos exemplos publicados, e a medição do custo no Grid;
+- **76** · a régua do arredondamento por Centelha, e os três furos do portão que a Revisora achou;
+- **77** · as cinco regras compráveis param de falar da trilha morta, e o typecheck entra no gancho
+  (só em commit de `src/` ou `scripts/`);
+- **78** · a regra geral que ninguém decidiu sai do dado, e o gancho passa a dizer o que faz;
+- **79** · a trava da cura, com o Sopro de Vida como exceção nomeada, e a quarta porta que a
+  Executora achou (`mexerVida`, que devolvia zero num clique);
+- **80** · o inventário dos `C`, medição pura;
+- **81** · a placa da quinta porta (o Reiniciar), a entrada que faltava no portão, e os 46 do
+  `LOTE 8`. **Em revisão, ancorada em `317ae74`.**
+
+**As decisões de 15 e 16/09, por nome:** M-01, M-05, M-07, M-08, M-21 (mais `b`, `c`, `d`, `e`,
+`f`, `g`), M-24, M-33, M-42, M-43. O que cada uma decidiu e o contra que a mesa comprou está no
+`jogador-novo-decisoes.md`, uma seção por decisão.
+
+**Seis decisões esperam mão de obra e não decisão:** M-01, M-05, M-07, M-24, M-33 e M-42.
 
 **Duas coisas que a rodada 75 mediu e que valem fora dela:**
 
