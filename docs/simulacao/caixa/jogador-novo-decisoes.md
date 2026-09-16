@@ -2439,9 +2439,16 @@ troca uma cláusula morta por uma vaga, e a mesa segue decidindo no olho quanto 
 2. `armas.json:819`: a linha do Desarmado perde o parêntese da trilha.
 3. `artes.json:778`: a Arte Vida nível 3 perde a palavra.
 4. **E a varredura vai junto:** estas duas apareceram porque alguém varreu em vez de confiar na
-   lista. Quem executar procura por conta própria antes de dar a lista por fechada, e o portão do
-   `CORRIGE 1` da rodada 75 (insensível a caixa, com a tela da mesa dentro) é o que impede a
-   quinta de aparecer depois.
+   lista. Quem executar procura por conta própria antes de dar a lista por fechada.
+
+   **A segunda metade deste item era FALSA e foi apagada em 15/09/2026, no mesmo dia em que foi
+   escrita.** Ela dizia que o portão do `CORRIGE 1` da rodada 75 impediria uma quinta de aparecer
+   depois. A Revisora mediu: plantou `dano Letal` numa Técnica e o portão ficou VERDE, porque ele
+   vigia cinco lugares e **nenhum deles é arquivo de regra comprável** · o comentário de escopo do
+   próprio portão já dizia isso, e eu afirmei o contrário sem conferir. É a forma que o
+   `CATALOGO.md` chama de garantia correta sobre o eixo errado: ele protege de verdade, mas outra
+   dimensão. **E a prova caiu pelos dois lados no mesmo dia:** existe uma quinta
+   (`ultimo-suspiro`), e ela apareceu exatamente onde o portão não olha.
 
 ---
 
