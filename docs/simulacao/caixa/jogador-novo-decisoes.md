@@ -2546,3 +2546,47 @@ ser enviada para a mesa.
    segundo pico é que vira aviso, não o primeiro.
 3. **O comentário do `capFor` deixa de dizer que a ficha não sabe dos limites**, porque ela passa
    a saber; o que continua verdadeiro é que ela não trava.
+
+---
+
+## M-21e · a quinta regra órfã: o Último Suspiro dispara na janela
+
+Decidido em 15/09/2026. **Achada pela Revisora na rodada 76**, varrendo os doze JSONs de coisa
+comprável em duas passadas, uma pelo vocabulário da trilha e outra pelo da morte. Ela é a quinta,
+e apareceu exatamente onde o portão não olha, que é a outra metade do achado.
+
+### O ORIGINAL
+
+**`src/data/tecnicas.json`**, a Técnica `ultimo-suspiro` (Carne Teimosa, nível 5, ativa, 5 de
+Energia e 1 de Vontade, exige `vontade-de-viver`):
+
+> no **limiar da morte**, realiza uma última ação heroica plena.
+
+### A INCONSISTÊNCIA
+
+"O limiar da morte" era coisa definida na régua velha: o dano Letal acumulado alcançando o PV
+máximo. Na régua nova existe um **limite**, mas o limiar como MOMENTO não existe mais, porque a
+M-21 abriu uma **janela** entre chegar a zero e cruzar o limite. A Técnica não diz em que ponto
+dela dispara, e a diferença é grande: a janela vai até metade do PV máximo.
+
+**É literalmente a metade que a M-21b apagou do `inquebrantavel`** ("+1 ao limiar de morte"), com
+uma diferença que a Revisora nomeou: lá o limiar era número a modificar, aqui é condição de
+disparo.
+
+### A DECISÃO: dispara na janela, abaixo de zero e acima do limite
+
+A Técnica é **exceção ao estar incapacitado**: quem está na janela age uma vez, plenamente.
+
+**O contra comprado:** a janela pode ir até metade do PV máximo, então o momento heroico acontece
+com folga de sobra e longe do fio da morte, e o nome da Técnica passa a prometer mais aperto do
+que a regra entrega.
+
+**E uma exceção à ordem da fila, dita porque ela foi fixada hoje:** esta é Proeza, e Proezas vão
+por último. Ela entrou agora por ser **rastro da M-21** e não inconsistência antiga de Proeza, e
+o humano decidiu com a opção de guardá-la à vista.
+
+### O QUE ISTO MANDA FAZER
+
+1. `tecnicas.json`: o texto do `ultimo-suspiro` passa a nomear a janela em vez do limiar.
+2. **Entra na mesma varredura das outras quatro**, e pelo mesmo motivo: a lista fechada por
+   contagem é a que deixou a quinta de fora duas vezes.
