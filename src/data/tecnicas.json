@@ -275,7 +275,7 @@
       "golpe-pesado"
     ],
     "aliases": [],
-    "texto": "Golpes desarmados contam como arma (sem penalidade vs armados) e **atravessam o zero**: não param como o Impacto comum, e matam como qualquer outro dano.",
+    "texto": "Golpes desarmados contam como arma (sem penalidade vs armados) e **atravessam o zero mesmo contra quem pararia o Impacto nele** (o Inquebrantável e o que vier depois dele).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"

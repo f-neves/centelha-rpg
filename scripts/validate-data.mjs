@@ -324,6 +324,18 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
     //
     // Então: a janela do PV atravessa o exemplo anterior, e a do LADO começa onde
     // o exemplo anterior terminou.
+    //
+    // E NÃO ALARGUE A JANELA DO LADO PARA CONSERTAR UM FALSO VERMELHO. Duas
+    // redações corretas saem vermelhas hoje (o rótulo antes do `PV N`, e o rótulo
+    // depois do número), e as duas erram na direção segura. A tentação é tirar o
+    // piso do `inicioPv`; a Revisora mediu o que acontece, na rodada 61: com os
+    // dois exemplos do mesmo PV em ordem inversa, o `comCentelha` passa a ser
+    // classificado como `semCentelha`, porque a janela alcança a prosa da REGRA
+    // ("quem não tem Centelha arredonda para baixo…"), que traz a negativa e é
+    // testada primeiro. Alargar para trás vaza para a regra, alargar para a frente
+    // vazaria para o exemplo seguinte, e as duas trocam um vermelho honesto por um
+    // VERDE errado. O piso é carga, e a mensagem do vermelho é que diz a regra de
+    // escrita em vez de acusar o texto de não dizer o que diz.
     const semTags = (t) => String(t).replace(/<[^>]+>/g, '');
     const paresDe = (texto) => {
       const t = semTags(texto);
@@ -374,8 +386,10 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
       for (const p of pares) {
         const lado = ladoDe(p.janela);
         if (!lado && sobraResto(p.pvMax)) {
-          fail(`${CAP_MORTE}: o exemplo de PV ${p.pvMax} morre em ${p.morreEm} sem dizer se é de `
-            + `quem TEM ou de quem NÃO TEM Centelha, e em PV ímpar isso muda a resposta (\`M-21c\`)`);
+          fail(`${CAP_MORTE}: no exemplo de PV ${p.pvMax} (morre em ${p.morreEm}), o lado da `
+            + `Centelha precisa estar dito ENTRE o "PV ${p.pvMax}" e o "morre em", que é o trecho `
+            + `que esta conferência lê. Em PV ímpar o lado muda a resposta (\`M-21c\`), e dizê-lo `
+            + `antes do PV ou depois do número deixa este vermelho aceso mesmo com a frase certa.`);
           continue;
         }
         // Só o exemplo com RESTO testemunha um lado: no PV par os dois

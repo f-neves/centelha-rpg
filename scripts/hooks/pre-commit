@@ -57,17 +57,42 @@ if ! npm run --silent validate; then
   exit 1
 fi
 
-# O QUE VAI NO COMMIT, e não o que está na árvore: num commit com pathspec
-# (`git commit -m ... -- caminho`) o git monta um índice temporário e aponta o
-# `GIT_INDEX_FILE` para ele, então `--cached` responde sobre o commit que está
-# nascendo, e não sobre o índice compartilhado com a outra instância.
+# QUEM DECIDE É O COMMIT, QUEM É CONFERIDO É A ÁRVORE, e as duas metades desta
+# frase são medidas.
+#
+# A decisão: num commit com pathspec (`git commit -m ... -- caminho`) o git monta
+# um índice temporário e aponta o `GIT_INDEX_FILE` para ele, então `--cached`
+# responde sobre o commit que está nascendo, e não sobre o índice compartilhado.
+#
+# A conferência: o `tsc` lê a ÁRVORE, e não o índice. A Revisora mediu na rodada
+# 61, plantando erro de tipo em `src/lib/mesa-core.ts` com o índice VAZIO: o `tsc`
+# acusou. Num diretório dividido por duas frentes, o commit de uma pode ser
+# recusado por erro não commitado da outra, e pode passar por uma correção que não
+# está nele. **Isto é de propósito e não se conserta checando só o que está
+# staged:** tipo é global, um arquivo não commitado quebra o que o commit inclui,
+# e um typecheck "só dos staged" ficaria verde sobre um repositório que não
+# compila. O comentário existe para que ninguém tente.
+#
+# O RECORTE TEM UM FURO CONHECIDO, e ele está aqui escrito porque é mais honesto
+# que fingir cobertura: `tsconfig.json`, `package.json` e `astro.config.mjs`
+# DECIDEM o typecheck (o preset `strict`, o `include`, a versão do `typescript`) e
+# nenhum casa o padrão abaixo. Por isso eles entraram no padrão em 15/09/2026:
+# mexer em quem governa a conferência passou a disparar a conferência.
 ARQS=$(git diff --cached --name-only --diff-filter=ACMR)
-if printf '%s\n' "$ARQS" | grep -Eq '^(src|scripts)/'; then
+if printf '%s\n' "$ARQS" | grep -Eq '^(src|scripts)/|^(tsconfig\.json|package\.json|package-lock\.json|astro\.config\.mjs)$'; then
   echo "· pre-commit: npx astro sync && npx tsc --noEmit (há código no commit)"
-  if ! npx astro sync >/dev/null; then
+  # A SAÍDA DO `astro sync` SE GUARDA, e não se joga fora. Ele é a ÚNICA
+  # conferência de schema que os `src/data/*.json` e o frontmatter dos capítulos
+  # recebem no commit (medido pela Revisora na rodada 61: `ordem: "seis"` num
+  # capítulo faz ele falhar, nomeando o arquivo). Com `>/dev/null` o autor lia
+  # "erro de ambiente" onde podia estar o dado errado do próprio commit dele.
+  if ! SYNC=$(npx astro sync 2>&1); then
     echo ""
-    echo "✘ O \`astro sync\` falhou, e sem ele o \`tsc\` acusaria erro que não é seu."
-    echo "  O commit não foi feito."
+    echo "$SYNC"
+    echo ""
+    echo "✘ O \`astro sync\` falhou, e o commit não foi feito."
+    echo "  Ele valida o schema dos dados e o frontmatter dos capítulos, então a causa"
+    echo "  pode ser deste commit. A saída dele está acima: leia antes de culpar o ambiente."
     exit 1
   fi
   if ! npx tsc --noEmit; then
