@@ -143,6 +143,28 @@ quase não se cruzam, exceto em quatro lugares:
 - `src/lib/site.ts` é só da frente das regras (não há entrada de `/mesa` nele), e
   `src/lib/mesa-*.ts` é só da frente da mesa.
 
+## Fim de linha · e a segunda causa, que é a ferramenta de quem edita
+
+**Achado em 16/09/2026, e ele não é o caso da seção abaixo.** Quatro arquivos apareceram com CRLF
+no disco e índice em LF, `git status` limpo · e não eram herança de clone antigo: eram os quatro
+que o Arquiteto tinha editado naquele dia **com Python**. O `open(caminho, "w")` do Python no
+Windows traduz `
+` para `
+` por padrão, o `.gitattributes` normaliza de volta no commit, e o
+disco fica divergente do índice sem nada acusar.
+
+**O custo apareceu noutra frente:** a Executora perdeu três tentativas escrevendo um extrator,
+porque em JavaScript o `$` de uma regex **sem a flag `m`** não casa antes do ``, e um regex certo
+devolvia ZERO seções num arquivo cheio delas.
+
+**A regra:** quem editar arquivo do repositório por script Python escreve com
+`open(caminho, "w", encoding="utf-8", newline="
+")`. E quem for varrer um `.md` com regex não
+supõe o fim de linha: ancore com `?$`, ou leia com `newline=''` e normalize antes.
+
+O conserto de quem já escreveu torto é o mesmo da seção abaixo, e vale por arquivo: apagar e
+`git checkout -- .`, que reescreve em LF.
+
 ## Fim de linha · o clone que já existia
 
 O `.gitattributes` fixa tudo em LF, **e ele só age no checkout**. Uma árvore criada
