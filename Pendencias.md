@@ -4004,6 +4004,20 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   pior que o primeiro, porque o primeiro só gastou uma correção e este gastou uma investigação
   inteira que chegou à conclusão errada.
 
+- [ ] **L98 · [ESCALA da Revisora na rodada 77, 15/09/2026] O gancho passou a escrever `.astro/` a
+  cada commit de código, e o `.astro/` é compartilhado por quem divide a árvore.** O `CLAUDE.md`
+  declara que `dist/` e `.astro/` são compartilhados e que uso simultâneo produz saída corrompida e
+  erros fantasma de "Duplicate id"; o `astro sync` que entrou no `pre-commit` em 15/09/2026 escreve
+  ali toda vez que o commit toca `src/` ou `scripts/`. **A Revisora mediu o que dava para medir de
+  onde ela estava** (há duas árvores, e o `.astro/` de `rpg-system` existe) e escreveu que NÃO
+  mediu se há duas instâncias dentro de `rpg-system` hoje. **A medida que faltava, e é minha:
+  HÁ DUAS** · o Arquiteto e a Executora são a mesma árvore, porque a Executora é teammate e não
+  worktree. **O que segura o gatilho hoje é a divisão de trabalho e não o desenho:** a Executora
+  commita código e o Arquiteto commita documento, e commit de documento não dispara o `astro sync`.
+  No dia em que duas frentes commitarem código na mesma árvore, o gatilho passa a existir de
+  verdade. **A saída que o próprio `CLAUDE.md` já descreve é a worktree por frente**, e ela continua
+  não feita.
+
 - [ ] **L97 · [ACHADO pelo Arquiteto em 15/09/2026, lendo o CI] O `test-grid` do smoke falha de
   forma INTERMITENTE, e a taxa medida é alta: 2 das últimas 6 execuções.** As duas falhas trazem
   exatamente as mesmas duas asserções, o que afasta ruído genérico: *"a peça saiu do lugar"* e
