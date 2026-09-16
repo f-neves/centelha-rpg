@@ -2906,11 +2906,21 @@ não é porta esquecida.**
 **Achado pela Revisora na rodada 81, poucas horas depois.** O argumento acima diz que o Reiniciar
 "vem com" zerar Tick, zerar condições e `ativo = true` **na mesma passagem**, e é disso que ele
 tira a conclusão de que aquilo é recomeço de cena e não cura. **São seis caixas INDEPENDENTES**
-(`src/pages/mesa/combate.astro:257-262`), marcadas por padrão e lidas cada uma no seu próprio `if`.
+(`src/pages/mesa/combate.astro:257-262`), **cinco marcadas por padrão** (a sexta, "apagar o
+registro", nasce desmarcada), e lidas cada uma no seu próprio `if`.
 
 **Desmarcando as outras cinco e deixando só "restaurar a Vida ao máximo", o clique devolve a Vida
-cheia de todo mundo, mortos inclusive, e não zera relógio, não limpa condição e não devolve
-ninguém.** Não há recomeço de cena nenhum: é **cura em massa**, e o rótulo da caixa a chama assim.
+cheia de todo mundo, mortos inclusive, e a ENERGIA junto** · que está escrita na mesma linha
+(`combate.astro:2188`), sem caixa própria para desligar, e é o único vizinho obrigatório daquela
+escrita. Fora isso, não zera relógio, não limpa condição e não devolve ninguém. Não há recomeço de
+cena nenhum: é **cura em massa**, e o rótulo da caixa a chama assim.
+
+**Esta correção é de 16/09/2026 e é a QUARTA tentativa da mesma frase.** A Revisora tinha absolvido
+esta ocorrência na rodada 82 por ler a linha que o `grep` devolveu e não a frase que o documento
+tem: o "marcadas por padrão" mora na linha SEGUINTE. Eu repeti a absolvição dela sem conferir, e
+corrigi o dossiê publicado achando que era o mesmo texto. **O gesto que fecha isto é varrer a
+FRASE no repositório inteiro depois de corrigir, e não a lista de lugares que alguém escreveu** ·
+é a mesma diferença entre varrer pela escrita e varrer pelo nome.
 
 **O que sobra de pé:** a decisão vale para o clique com o pacote inteiro, que é o padrão da tela. O
 que ela não faz é distinguir os dois casos, e a placa escrita na rodada 81 descreve a decisão em
