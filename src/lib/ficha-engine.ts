@@ -2869,7 +2869,7 @@ export function montarFicha(opts: FichaOpts) {
     renderAll();
     // O aviso do piso racial, uma vez, depois de a ficha estar desenhada.
     if (SUBIU_PELO_PISO.length && !opts.readOnly) {
-      const linhas = SUBIU_PELO_PISO.map((x) => `<li><strong>${esc(x.nome)}</strong>: ${x.de} → ${x.para}</li>`).join('');
+      const linhas = SUBIU_PELO_PISO.map((x) => `<li><strong>${escapeHtml(x.nome)}</strong>: ${x.de} → ${x.para}</li>`).join('');
       const { corpo } = uiPainel('A sua raça passou a dar estes pontos de graça');
       corpo.innerHTML = '<p>O <code>+1</code> racial deixou de ser só teto e passou a ser também '
         + '<strong>piso</strong>: o Atributo que a sua raça bonifica <strong>começa em 2</strong>, '
