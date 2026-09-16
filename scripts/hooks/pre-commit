@@ -78,6 +78,16 @@ fi
 # DECIDEM o typecheck (o preset `strict`, o `include`, a versão do `typescript`) e
 # nenhum casa o padrão abaixo. Por isso eles entraram no padrão em 15/09/2026:
 # mexer em quem governa a conferência passou a disparar a conferência.
+#
+# E SOBRA UM FURO DE CLASSE, que é de desenho e não de esquecimento: o `include`
+# do `tsconfig.json` é `**/*`, então o `tsc` confere TODO `.ts` do repositório,
+# enquanto este padrão só dispara por `src/` e `scripts/`. Um `.ts` fora dessas
+# duas pastas é checado pelo `tsc` e não dispara o `tsc`. **Contado em
+# 16/09/2026, por mim e não herdado: são 51 `.ts`/`.tsx` rastreados, e ZERO fora
+# de `src/` e `scripts/`**, então hoje o furo é vazio. Ele deixa de ser no dia em
+# que alguém criar o primeiro, e é por isso que está escrito aqui em vez de
+# virar mais uma alternância no padrão: um caminho que não existe na lista é
+# regra sem caso, e ela envelhece sem ninguém notar.
 ARQS=$(git diff --cached --name-only --diff-filter=ACMR)
 if printf '%s\n' "$ARQS" | grep -Eq '^(src|scripts)/|^(tsconfig\.json|package\.json|package-lock\.json|astro\.config\.mjs)$'; then
   echo "· pre-commit: npx astro sync && npx tsc --noEmit (há código no commit)"

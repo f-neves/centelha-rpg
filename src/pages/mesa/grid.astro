@@ -2427,7 +2427,7 @@ const SETAS = [
   } from '../../lib/mesa-tempo-real';
   import { MON, resumoDe, iniDeMonstro, d6, cardCriaturaHTML, criaturaCompleta } from '../../lib/mesa-bestiario';
   import { rolarIniciativaPC, resumoFicha } from '../../lib/mesa-ficha';
-  import { mana as manaDaFicha, modificadorPorte, porteDeRotulo, gatePerfuracaoAbre } from '../../lib/calc';
+  import { mana as manaDaFicha, modificadorPorte, porteDeRotulo, gatePerfuracaoAbre, limiteDaMorte, passouDoLimite } from '../../lib/calc';
   import {
     centroHex, verticesHex, tabuleiro, medidaTabuleiro, margemTabuleiro,
     hexEmPonto, dentro, chaveHex, distanciaHex, nomeHex, larguraHex,
@@ -2679,10 +2679,35 @@ const SETAS = [
    * (`artes-grid-mesa.ts`) continuam com a escrita crua de dano, dívida já
    * registrada do L87 e fora do escopo desta rodada.
    */
-  const curarPv = async (cid: string, quanto: number): Promise<{ pv: number | null; error: any }> => {
+  const curarPv = async (
+    cid: string, quanto: number, opts: { atravessaMorte?: boolean } = {},
+  ): Promise<{ pv: number | null; error: any }> => {
     const c = COMBS.find((x: any) => x.id === cid);
     if (!c) return { pv: null, error: { message: 'combatente não encontrado' } };
     const antesPv = c.pv_atual ?? 0;
+    // A TRAVA DA CURA (`M-21b`, decisão 4): passou do limite, a cura não alcança.
+    //
+    // Ela vai pelo NÚMERO e não pela condição `morto`, e a razão é da decisão 1
+    // da mesma decisão: a condição é posta À MÃO pelo mestre, então uma trava que
+    // dependesse dela ficaria aberta em silêncio exatamente enquanto ele não
+    // tivesse clicado, que é o buraco que ela existe para fechar.
+    //
+    // SÓ VALE PARA CURA. Com `quanto` negativo este mesmo caminho é o tique da
+    // condição contínua (`artes-grid-mesa.ts`, o Sangramento), e travar ali
+    // faria a trava da morte impedir a morte.
+    //
+    // A EXCEÇÃO TEM NOME (`M-21f`): a Arte Cura nível 6, "Sopro de Vida", existe
+    // para trazer o recém-morto e é comprável hoje. Ela chega aqui por
+    // `atravessaMorte`, e nasce declarada em vez de descoberta depois: uma trava
+    // que nascesse cega iria ao ar quebrando uma Arte publicada.
+    if (quanto > 0 && !opts.atravessaMorte
+        && passouDoLimite(c.pv_atual, c.pv_max, PERFIL[cid]?.centelha ?? null)) {
+      return { pv: null, error: {
+        message: `${c.nome} passou do limite da morte (${limiteDaMorte(c.pv_max, PERFIL[cid]?.centelha ?? null)}), `
+          + 'e a cura não alcança. Só o Sopro de Vida (Cura 6) atravessa; para desfazer um engano, '
+          + 'a Vida se corrige à mão na aba Combate.',
+      } };
+    }
     const pv = Math.min(c.pv_max ?? antesPv + quanto, antesPv + quanto);
     const { error } = await gravarPeca(cid, { pv_atual: pv });
     if (error) return { pv: null, error };
@@ -11276,11 +11301,32 @@ let roladoDano = '';
     if (!v) return;
     const q = Math.max(1, parseInt(v.q, 10) || 0);
     const antesPv = c.pv_atual ?? 0;
-    const { pv, error } = await curarPv(cid, q);
+    // A PORTA DO SOPRO DE VIDA, e ela é deliberada (`M-21b` decisão 4, `M-21f`).
+    //
+    // A trava do `curarPv` recusa curar quem passou do limite, e é ela que impede
+    // o morto de voltar em silêncio. Só que a Arte que EXISTE para isso, a Cura
+    // nível 6, não tem Efeito no tabuleiro: o mestre a resolve pela mão, por este
+    // menu. Sem esta pergunta, a trava iria ao ar tornando impossível de jogar uma
+    // Arte publicada e comprável.
+    //
+    // A pergunta é o que separa o gesto deliberado do acidente: o mestre diz o
+    // NOME da Arte que está aplicando, e o registro guarda que foi ela.
+    const limite = limiteDaMorte(c.pv_max, PERFIL[cid]?.centelha ?? null);
+    let sopro = false;
+    if (passouDoLimite(c.pv_atual, c.pv_max, PERFIL[cid]?.centelha ?? null)) {
+      sopro = await uiConfirmar(
+        `${c.nome} passou do limite da morte (${limite}), e a cura comum não alcança. `
+        + 'Só o Sopro de Vida (Cura 6) traz o recém-morto. É isso que está acontecendo?',
+        { ok: 'É o Sopro de Vida', cancelar: 'Não curar' },
+      );
+      if (!sopro) return;
+    }
+    const { pv, error } = await curarPv(cid, q, { atravessaMorte: sopro });
     if (error) return uiErro('Erro: ' + error.message);
     // L87: gravarPeca já toca a campainha no sucesso.
     atualizarAnel(c); pintarLista();
-    await logar(c, `${c.nome} recuperou ${q}${c.pv_max ? ` · ${pv}/${c.pv_max}` : ''}`,
+    await logar(c, `${c.nome} ${sopro ? 'voltou pelo Sopro de Vida' : 'recuperou'} ${q}`
+      + `${c.pv_max ? ` · ${pv}/${c.pv_max}` : ''}`,
       { acao: 'vida', cid, de: antesPv, para: pv });
     // Depois do registro, e não antes: quem estava no chão volta à fila aqui, e
     // a linha do atraso tem de vir DEPOIS da linha da cura para a história ficar
@@ -11622,7 +11668,18 @@ let roladoDano = '';
    * do registro em vez de virar uma linha nova, senão desfazer três vezes
    * deixaria seis linhas contando uma história que não aconteceu.
    */
-  /** Põe a Vida de volta onde estava. Usado só pelo desfazer. */
+  /**
+   * Põe a Vida de volta onde estava. Usado só pelo desfazer.
+   *
+   * **E ELE NÃO PASSA PELA TRAVA DA MORTE, por decisão e não por esquecimento.**
+   * A trava (`curarPv`, `M-21b` decisão 4) existe para que curar um morto não o
+   * traga de volta em silêncio. O desfazer não cura: ele devolve o que uma ação
+   * anterior tirou, e nos dois ramos o número vem do próprio registro (o `de`
+   * guardado, no dano do mestre; o `quanto` exato, no dano do jogador). Travá-lo
+   * faria o mestre perder a única saída para um número digitado
+   * errado, justamente no caso em que o erro mata alguém, e deixaria o desfazer
+   * falhando em silêncio (é o que ele faz quando não grava).
+   */
   async function devolverVida(cid: string, pv: number | null) {
     const c = COMBS.find((x: any) => x.id === cid);
     if (!c || pv == null) return;

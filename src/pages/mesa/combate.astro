@@ -566,7 +566,7 @@ import CondDlg from '../../components/CondDlg.astro';
   } from '../../lib/combate-tempo';
   import { MON, MON_LIST, cardCriaturaHTML, criaturaCompleta, resumoDe, iniDeMonstro, d6 } from '../../lib/mesa-bestiario';
   import { rolarIniciativaPC } from '../../lib/mesa-ficha';
-  import { pv as pvDe, mana as manaDe } from '../../lib/calc';
+  import { pv as pvDe, mana as manaDe, limiteDaMorte, passouDoLimite } from '../../lib/calc';
   import { armaDoSlot } from '../../lib/equip';
   import { rolarExpr, descreverRolada, tipoDeDano } from '../../lib/rolagem';
   import { uiConfirmar, uiErro, uiPerguntar } from '../../lib/ui-dialog';
@@ -1334,6 +1334,26 @@ import CondDlg from '../../components/CondDlg.astro';
   async function mexerVida(cid: string, delta: number, semDesfazer = false) {
     const c = COMBS.find((x) => x.id === cid);
     if (!c || c.pv_atual == null || c.pv_max == null) return null;
+    // A TRAVA DA CURA TAMBÉM AQUI (`M-21b` decisão 4), e ela é necessária por um
+    // motivo que o piso desta função esconde: com a Vida em −20, um clique no
+    // "+" fazia `Math.max(0, …)` devolver ZERO, e a peça voltava viva num gesto.
+    // A trava do Grid não alcança esta aba: são dois motores de Vida, e este é o
+    // que o mestre usa com a lista aberta.
+    //
+    // SÓ PARA CURA: com `delta` negativo esta mesma função é o tique da condição
+    // contínua, e travar ali impediria a morte em vez de impedir a ressurreição.
+    //
+    // A CENTELHA NÃO ESTÁ À MÃO NESTA ABA (ela não monta perfil por peça), então
+    // o lado do arredondamento vai como desconhecido, e `limiteDaMorte` erra para
+    // o lado de deixar vivo. A diferença é de UM ponto e só em PV ímpar, e a
+    // direção é a escolhida: nunca declarar morto por falta de dado.
+    if (delta > 0 && passouDoLimite(c.pv_atual, c.pv_max, null)) {
+      await uiErro(`${c.nome} passou do limite da morte `
+        + `(${limiteDaMorte(c.pv_max, null)}), e a cura não alcança. `
+        + 'Só o Sopro de Vida (Cura 6) traz o recém-morto, e ele se aplica no Grid; '
+        + 'para desfazer um engano, corrija a Vida no formulário da peça.');
+      return null;
+    }
     const antes = c.pv_atual;
     const novo = Math.max(0, Math.min(c.pv_max, c.pv_atual + delta));
     if (novo === antes) return novo;

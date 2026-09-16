@@ -25,7 +25,7 @@ await build({
   stdin: {
     contents: `
       export * from './src/lib/bandeiras';
-      export { modificadorPorte, porteDeRotulo, gatePerfuracaoAbre } from './src/lib/calc';
+      export { modificadorPorte, porteDeRotulo, gatePerfuracaoAbre, limiteDaMorte, passouDoLimite } from './src/lib/calc';
     `,
     resolveDir: ROOT, loader: 'ts',
   },
@@ -136,6 +136,39 @@ ok(B.estadoDoCarimbo({ perfil: { ...B.PERFIL_CORRENTE } }).difere.length === 0,
   'carimbo igual ao site não tem diferença nenhuma, e a linha da tela não aparece');
 ok(B.estadoDoCarimbo(null).temCarimbo === false && /sem carimbo/.test(B.estadoDoCarimbo(null).frase),
   'e sem encontro a frase diz que a cena não tem carimbo');
+
+// ---- 6: o limite da morte, a régua da M-21 e da M-21c ----
+//
+// A CONTA MORA AQUI PORQUE ELA É PURA, e o que ela decide não é: a trava da cura
+// no Grid (`curarPv`) pergunta a esta função se o alvo passou do limite. O que
+// este bloco NÃO prova é a ligação: a trava em si não tem teste automatizado, e
+// isso está dito no `progresso-79.md` em vez de subentendido.
+console.log('\n· o limite da morte (M-21), e o arredondamento pela Centelha (M-21c)');
+{
+  const m = regras.morte || {};
+  ok(m.limiteDivisor === 2, `o divisor publicado é 2 (${m.limiteDivisor})`);
+  // PV PAR: os dois lados dão o MESMO número, e é por isso que ele não serve de
+  // testemunha do arredondamento (a mesma razão que o portão do capítulo cobra).
+  ok(B.limiteDaMorte(34, 0) === -17 && B.limiteDaMorte(34, 3) === -17,
+    'PV 34 morre em −17 dos dois lados: a divisão é exata');
+  // PV ÍMPAR: é o único caso em que a Centelha muda a resposta.
+  ok(B.limiteDaMorte(37, 0) === -18, 'PV 37 sem Centelha morre em −18 (arredonda para baixo)');
+  ok(B.limiteDaMorte(37, 1) === -19, 'PV 37 com Centelha 1 morre em −19 (arredonda para cima)');
+  ok(B.limiteDaMorte(37, 6) === -19, 'e a Centelha 6 dá o mesmo que a 1: o que conta é ter ou não ter');
+  // AUSÊNCIA NÃO É ZERO, nos dois campos, e as duas erram para lados escolhidos.
+  ok(B.limiteDaMorte(null, 2) === null && B.limiteDaMorte(0, 2) === null,
+    'sem PV máximo não há limite, e o que volta é `null` e não um número');
+  ok(B.limiteDaMorte(37, null) === -19,
+    'Centelha desconhecida erra para o lado de deixar vivo (o limite mais fundo)');
+  // O PAR DA TRAVA: um caso que passa e um que não, para a asserção não medir só
+  // a direção fácil.
+  ok(B.passouDoLimite(-17, 34, 0) === true, 'Vida −17 num PV 34 passou do limite');
+  ok(B.passouDoLimite(-16, 34, 0) === false, 'e −16 no mesmo PV 34 ainda não passou');
+  ok(B.passouDoLimite(-18, 37, 1) === false && B.passouDoLimite(-18, 37, 0) === true,
+    'o mesmo −18 num PV 37 é morte sem Centelha e vida com ela, que é o ponto da M-21c');
+  ok(B.passouDoLimite(-99, null, 0) === false,
+    'sem PV máximo ninguém passa do limite: não saber não é morrer');
+}
 
 console.log(`\n${FALHAS.length ? '✗' : '✓'} Perfil de regras OK · ${PASSOU} asserções · 15 bandeiras`
   + ` (${LIGADAS_NO_MOTOR.length} ligadas na mesa: ${LIGADAS_NO_MOTOR.join(', ')}), e o carimbo protege o chão da cena`);

@@ -2802,3 +2802,62 @@ contabilidade da mesa.
    duas coisas fica preso entre elas. Medir antes se a graduação é a mesma.
 2. `regras.json` ganha a escada da Esquiva, com as três âncoras, e o verbete aponta para ela.
 3. O capítulo publica a regra da Firula repetida junto da tabela de níveis, que é onde ela se lê.
+
+---
+
+## M-42 e M-43 · a palavra "Herói" fica com a Centelha, e os orçamentos esperam
+
+Decididos em 16/09/2026. Bloco das **regras básicas**, e os dois são do mesmo assunto.
+
+### O ORIGINAL
+
+**`src/data/regras.json`**: `orcamentoPadrao: 1500`, `orcamentoVeterano: 2000`,
+`orcamentoHeroico: 2600`. E `escalaCentelha[3]`: `{"rotulo": "Herói", "texto": "Façanhas
+sobre-humanas que assombram mortais. Proezas até o nível 3."}`
+
+**`src/content/chapters/criacao-de-personagem.md:37`**, a nota que a própria fonte escreveu:
+
+> **Pendente.** Os orçamentos de 1500 / 2000 / 2600 foram calibrados na economia antiga, quando as
+> Proezas comiam cerca de 40% do bolo. Com a curva nova elas se acumulam ao longo da campanha em
+> vez de saírem da criação, e um personagem inicial típico fecha perto de **1050 XP**.
+
+### M-42 · A INCONSISTÊNCIA E A DECISÃO
+
+A palavra "Herói" nomeia **duas coisas diferentes** e nada as desambigua: um orçamento de XP e o
+degrau 3 da Centelha. Quem combina "um herói" com o Mestre não sabe qual dos dois está combinando.
+
+**A decisão: o ORÇAMENTO troca de nome, e os três passam a ser `iniciante`, `veterano` e
+`especialista`.** "Herói" fica só com a Centelha 3.
+
+**Por quê:** "Herói" está preso numa sequência de sete degraus (Mortal, Tocado, Desperto, Herói,
+Grande herói, Lendário, Semideus), e um "Grande herói" acima de um degrau que não se chamasse herói
+ficaria sem sentido. Os nomes dos orçamentos são rótulos soltos e saem baratos.
+
+**O contra comprado:** "herói" é a palavra que uma mesa usa naturalmente para dizer o tamanho do
+personagem que vai criar, e tirá-la do orçamento obriga todo mundo a aprender vocabulário novo
+para uma conversa que já funcionava. A mesa vai continuar dizendo "herói" de qualquer jeito.
+
+### M-43 · A INCONSISTÊNCIA E A DECISÃO
+
+Os três orçamentos estão declarados desatualizados **pela própria fonte**, com a medida ao lado:
+2600 para um personagem que fecha perto de 1050.
+
+**A decisão: recalibrar ESPERA**, e espera pelo mesmo motivo e no mesmo lote que o custo das raças
+(`M-46`): a conta ainda se mexe. A `M-30` não foi implementada, a Vitalidade do Orc não é aplicada,
+o porte mudou em duas das oito raças, e calibrar duas vezes custa o dobro e erra as duas.
+
+**O contra comprado:** enquanto espera, o livro publica três números que ele mesmo chama de
+pendentes, na primeira página que o novato abre. É a terceira regra auto-declarada provisória, e o
+relato do jogador novo reclamou exatamente disso.
+
+**O gatilho, escrito para não depender de lembrança:** recalibrar quando a fila `M` fechar, junto
+com o custo das raças e com as idades, que já esperam ali.
+
+### O QUE ISTO MANDA FAZER
+
+1. `regras.json`: a chave `orcamentoHeroico` passa a se chamar pelo nome novo, e as outras duas
+   acompanham a nomenclatura. **Cuidado de quem executar:** chave de dado renomeada quebra quem a
+   lê, e o `cost-examples.mjs` lê as três.
+2. O capítulo XVIII e o glossário trocam a palavra nos três rótulos.
+3. **A nota "Pendente" do `:37` FICA**, e ganha o gatilho escrito: ela sai quando a fila `M`
+   fechar, e não antes.

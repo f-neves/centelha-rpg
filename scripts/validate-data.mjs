@@ -446,13 +446,45 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
     // campo já corrigido, e é a página que o mestre abre para conferir regra.
     // Trocar só a palavra deixaria o arquivo de fora da vigia, que é a forma da
     // conferência que cobre só a parte viva do registro.
+    // E OS CATÁLOGOS DE COISA COMPRÁVEL ENTRARAM EM 16/09/2026, que é onde a
+    // regra velha sobreviveu mais tempo: CINCO poderes que o jogador compra
+    // continuaram descrevendo as duas trilhas por rodadas, e o que os achou foi
+    // varredura à mão, não portão. O comentário antigo daqui dizia que eles
+    // ficavam de fora de propósito, e ficar de fora era justamente o furo.
+    //
+    // O PADRÃO É DE PALAVRA E NÃO DE FRASE, e isso foi MEDIDO pela Revisora na
+    // rodada 62: um padrão de frase (`dano letal`, `cura letal`) perde três das
+    // seis detecções reais, e uma delas escapa por um motivo que nada tem a ver
+    // com vocabulário · o NEGRITO do markdown mete `**` entre as duas palavras
+    // (`dano **Letal**`), e a frase deixa de casar. Literal que atravessa
+    // formatação não é escolha de escopo, é sorte.
+    //
+    // O PREÇO DA PALAVRA são os falsos positivos, e eles foram consertados ONDE
+    // NASCEM em vez de virarem lista de exceção: `pele-adamantina` e
+    // `corpo-inospito` diziam "ambientes letais", que é português comum e não a
+    // trilha, e passaram a dizer "ambientes mortais". Lista de exceção por `id`
+    // foi recusada pelas duas pontas: ela envelhece calada, e cada nome nela é um
+    // lugar onde a próxima ocorrência de verdade passa despercebida.
+    //
+    // **E O QUE ELE NÃO VÊ, dito aqui porque a garantia sem o limite ao lado é
+    // pior do que não ter garantia:** ele pega quem USA A PALAVRA, e não quem
+    // descreve a regra morta sem ela. Os dois casos medidos: `imortalidade-tenue`
+    // ("só a destruição total o mata") e o `ultimo-suspiro` antes da `M-21e` ("no
+    // limiar da morte"), que falam de um momento que a régua nova não tem e não
+    // casariam padrão nenhum de vocabulário. Quem procura regra órfã continua
+    // precisando varrer pelo CONCEITO; este portão só garante que a palavra não
+    // volta.
     const VELHO = /\bletal\b/i;
+    const compravel = (f) => [`${f} (regra comprável)`, JSON.stringify(read(f))];
     const ondeNaoPodeVoltar = [
       [CAP_MORTE, cap],
       ['src/content/chapters/combate.md', fs.readFileSync(path.join(RAIZ, 'src/content/chapters/combate.md'), 'utf8')],
       ['src/pages/mesa/referencia.astro', fs.readFileSync(path.join(RAIZ, 'src/pages/mesa/referencia.astro'), 'utf8')],
       ['condicoes.json', JSON.stringify(read('condicoes.json'))],
       ['regras.json · ferimentos/morte/sangramento', JSON.stringify([regrasM.ferimentos, regrasM.morte, regrasM.sangramento])],
+      compravel('tecnicas.json'), compravel('artes.json'), compravel('efeitos.json'),
+      compravel('armas.json'), compravel('armaduras.json'), compravel('escudos.json'),
+      compravel('antecedentes.json'),
     ];
     for (const [nome, texto] of ondeNaoPodeVoltar) {
       if (VELHO.test(texto)) {

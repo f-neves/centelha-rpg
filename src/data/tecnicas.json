@@ -955,7 +955,7 @@
       "fortaleza-viva"
     ],
     "aliases": [],
-    "texto": "Quase indestrutível: reduz drasticamente todo dano e ignora ambientes letais.",
+    "texto": "Quase indestrutível: reduz drasticamente todo dano e ignora ambientes mortais.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -3482,7 +3482,7 @@
       "imunidade"
     ],
     "aliases": [],
-    "texto": "sobrevive em ambientes letais (sem ar, submerso, veneno no ar) por um tempo.",
+    "texto": "sobrevive em ambientes mortais (sem ar, submerso, veneno no ar) por um tempo.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"

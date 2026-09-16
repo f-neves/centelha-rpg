@@ -47,6 +47,50 @@ export function pv(vigor: number, porte: Porte = 'medio') {
 }
 
 /**
+ * O LIMITE DA MORTE, abaixo do zero (`M-21`). Morre-se quando a Vida chega a
+ * ESTE número ou menos.
+ *
+ * Ele não está escrito em lugar nenhum de propósito: sai do PV MÁXIMO de cada
+ * um, porque PV máximo varia por Vigor e por porte. O arredondamento depende da
+ * CENTELHA (`M-21c`): quem não a tem arredonda para baixo, quem a tem arredonda
+ * para cima. Só muda em PV ímpar, e a diferença é de um ponto.
+ *
+ * **Devolve `null` quando não há PV máximo**, e isso não é o mesmo que zero: sem
+ * PV máximo não existe limite, e inventar um aqui seria decidir por omissão. A
+ * coluna `pv_max` de `combatentes` é anulável e nasce nula numa invocação sem o
+ * campo, então este caso acontece de verdade. Quem chama trata o `null` como
+ * "não sei", nunca como "morreu".
+ *
+ * **E a Centelha DESCONHECIDA erra para o lado de deixar vivo**, de propósito:
+ * quem chama nem sempre tem a ficha do alvo na mão (o jogador não monta o perfil
+ * das peças dos outros). Entre tratar como morto alguém que talvez esteja vivo e
+ * o contrário, o segundo é recuperável na mesa e o primeiro não.
+ */
+export function limiteDaMorte(
+  pvMax: number | null | undefined,
+  centelha: number | null | undefined,
+): number | null {
+  if (pvMax == null || !(pvMax > 0)) return null;
+  const m = (regras as any).morte || {};
+  const divisor = m.limiteDivisor || 2;
+  const arr = m.limiteArredonda || {};
+  const lado = centelha == null || centelha > 0 ? 'comCentelha' : 'semCentelha';
+  const arredonda = arr[lado] === 'alto' ? Math.ceil : Math.floor;
+  return -arredonda(pvMax / divisor);
+}
+
+/** Passou do limite: a Vida chegou ao limite da morte ou abaixo dele. */
+export function passouDoLimite(
+  vida: number | null | undefined,
+  pvMax: number | null | undefined,
+  centelha: number | null | undefined,
+): boolean {
+  const limite = limiteDaMorte(pvMax, centelha);
+  if (limite == null || vida == null) return false;
+  return vida <= limite;
+}
+
+/**
  * O rótulo do porte, como o bestiário escreve ("Miúdo", "Médio"), normalizado
  * para a chave de `Porte`. MESMA FORMA e MESMO MOTIVO do `norm` de
  * `gen-bestiario.mjs`: minúsculas, sem acento, com "miudo" mapeado para

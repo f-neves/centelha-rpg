@@ -436,7 +436,16 @@ console.log('\n· uma implementação só: o teto mora em `curarPv`, não copiad
 {
   const txt = fs.readFileSync(path.join(ROOT, 'src/pages/mesa/grid.astro'), 'utf8');
   ok(txt.includes('const curarPv = async'), '`curarPv` existe em grid.astro');
-  ok(/const curarPv[\s\S]{0,400}?Math\.min\(c\.pv_max/.test(txt),
+  // O CORPO, E NÃO UMA DISTÂNCIA EM CARACTERES. A primeira redação desta
+  // asserção procurava `Math.min(c.pv_max` dentro de 400 caracteres depois do
+  // `const curarPv`, e ficou vermelha em 16/09/2026 quando a trava da morte
+  // (`M-21b`) entrou ANTES do clamp e empurrou os dois para longe um do outro.
+  // O código estava certo e a asserção media a distância entre duas linhas, que
+  // não é o que ela quer dizer. Recortar o corpo da função responde à pergunta
+  // de verdade: o teto mora AQUI DENTRO.
+  const corpoCurarPv = /const curarPv = async[\s\S]*?\n  \};/.exec(txt);
+  ok(!!corpoCurarPv, 'achou o corpo de `curarPv` para conferir');
+  ok(!!corpoCurarPv && corpoCurarPv[0].includes('Math.min(c.pv_max'),
     '`curarPv` tem o clamp de `pv_max` (a régua do teto)');
   ok(txt.includes('gravarVida: curarPv'), '`ctxArtes()` empresta `curarPv` como `gravarVida`, sem copiar a fórmula');
 
