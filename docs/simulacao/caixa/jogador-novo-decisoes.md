@@ -2945,3 +2945,207 @@ gesto de jogo, então vale inteiro" e "a caixa da Vida sozinha é cura e respeit
    ponto que ESCREVE `pv_atual`*, e não "as entradas de cura" · e é essa diferença que fez a
    quarta porta aparecer para a Executora, porque **ela não se chamava cura em lugar nenhum: era
    o "+" de uma barra**. Varredura de comportamento se faz pela ESCRITA, não pelo nome.
+
+---
+
+## As 19 do dossiê · sessão de conversa em 16/09/2026, execução adiada
+
+**Nenhum destes itens foi implementado nesta sessão.** O humano pediu para discutir e registrar
+as respostas, e disse explicitamente para só executar amanhã, depois do reset semanal (quinta
+17/09, 18h) · a sessão estava em 93% de uso, com teto combinado em 95%. Cada entrada abaixo é a
+resposta à pergunta com o mesmo código do dossiê (`https://claude.ai/artifact/2H8aDMgNmU7A6hP5wo26s4`),
+na ordem em que a mesa já tinha fixado (básicas · Artes · Proezas).
+
+### M-21h · o Reiniciar do mestre e a morte · DECIDIDO em 16/09/2026
+
+A pergunta estava em aberto neste mesmo arquivo, acima (rodada 81, premissa caída na 83): um
+clique de mestre pode desfazer morte? **Decisão: a caixa da Vida sozinha avisa, e o mestre
+confirma.** Mesmo desenho do Sopro de Vida (M-21 antiga): a porta existe, é deliberada, ninguém a
+atravessa sem ver. Descarta as outras duas leituras ("vale inteiro, é mobília" e "só a caixa da
+Vida respeita o limite sem aviso").
+
+**O que isto manda fazer:** em `src/pages/mesa/combate.astro`, a caixa "restaurar a Vida ao
+máximo" (linhas 257-262 e a escrita em 2171/2188) ganha uma confirmação antes de aplicar quando
+ela for a única marcada (ou quando o clique alcançar alguém abaixo do limite de morte) — mesmo
+padrão de diálogo do Sopro de Vida. Reescrever o parágrafo da rodada 81 que descreve a premissa
+caída.
+
+### M-09 · tempo de um passo de Relação por povo · ADIADO
+
+Fica para depois do reset. Não decidido agora.
+
+### M-17 · teto de Habilidades secundárias compradas · DECIDIDO em 16/09/2026
+
+**Sem teto de quantidade, e isso passa a estar escrito.** É o que o motor já faz hoje; o
+orçamento de XP é a trava real (cada secundária é uma primária que não subiu). Não vira teto
+ligado à primária-mãe, nem teto fixo na criação.
+
+**O que isto manda fazer:** `src/content/chapters/` (o capítulo de Habilidades secundárias) ganha
+a frase afirmando que não há teto de quantidade, só o orçamento de XP.
+
+### M-18 · Canalizar Virtude: teto ou contrapartida · DECIDIDO em 16/09/2026
+
+**Não fica sem custo, mas o custo não é Vontade nem esvazia a Virtude.** Desenho novo, inspirado
+em Exalted 2e mas diferente dele: cada Virtude guarda **uma carga binária** de Canalizar
+(carregada ou gasta), independente da Vontade. Gastar a carga soma o valor da Virtude à rolagem,
+como o texto publicado já diz. **A Virtude em si nunca diminui** — só a carga fica marcada como
+gasta. **Recarregar exige agir de acordo com aquela Virtude um número de vezes igual ao nível
+dela** (Virtude 3 pede três ações coerentes com ela para recarregar); o que conta como ação
+válida fica a critério do Mestre, caso a caso. Não é banal: com Virtude baixa a carga recarrega
+rápido, com Virtude alta ela é mais rara de usar mas também mais rara de recarregar.
+
+**O que isto manda fazer:** é regra nova de verdade, não conserto de texto. `regras.json` ganha
+um bloco de Canalizar com o estado de carga por Virtude (provavelmente por personagem, não global);
+a ficha precisa de um indicador visual de carregada/gasta por Virtude; `aparencia-virtudes-vontade.md:69`
+perde o parêntese "sem risco nem contrapartida" e ganha a descrição do ciclo de carga/recarga.
+Maior que os outros itens desta lista — vale abrir como item de fase própria, não como C/M pontual.
+
+### M-20 · Compostura mascarando a Aparência · DECIDIDO em 16/09/2026
+
+**A Compostura mascara os dois lados do modificador de Aparência (bônus e penalidade), sob
+controle ativo do jogador, quando ele quiser.** Não é passiva: um personagem muito belo ou muito
+feio que queira passar despercebido numa multidão rola **Compostura + Furtividade** (isso é além
+de disfarce, maquiagem ou máscara física, que continuam valendo à parte). **Cada ponto de
+Compostura mascara um ponto do módulo do modificador de Aparência**, positivo ou negativo.
+
+**O que isto manda fazer:** `aparenciaMod(nivel)` em `calc.ts` ganha um caminho onde, sob teste de
+Compostura+Furtividade bem-sucedido, o módulo aplicado se reduz em até `Compostura` pontos (piso
+zero). `aparencia-virtudes-vontade.md:16` ganha a frase com o par de rolagem e a regra do ponto a
+ponto.
+
+### M-23 · o que a Margem entrega fora do combate · DECIDIDO em 16/09/2026
+
+**Tabela de conversão por eixo.** Cada Margem vale um degrau numa lista curta (tempo, qualidade,
+duração), e o Mestre escolhe o eixo pela ação. Fica para a mesma rodada escrever a tabela — não
+está redigida ainda, só a forma foi escolhida.
+
+**O que isto manda fazer:** escrever a tabela (três eixos, degraus fixos por Margem) e conferir
+contra a escada de tempo do capítulo de Ações, que já existe e não pode discordar.
+
+### M-27 · Esforço do Fôlego vs. Rajada · SUSPENSO
+
+**Não decidir nada sobre Fôlego agora.** É um módulo opcional (adendo) e continua fora de uso até
+o humano decidir abri-lo. Diferente de "depois do reset": não tem previsão, não entra na fila.
+
+### M-36 · quantos passos para sair do Neutro · DECIDIDO em 16/09/2026
+
+**A banda é 3, e o exemplo do Lírio se corrige** (ele soma 4 hoje). A regra escrita vence; o
+exemplo tem erro de conta.
+
+**O que isto manda fazer:** `relacoes-sociais.md:107`, o exemplo do Lírio, ajusta a soma dos atos
+para fechar em 3 pontos até romper o Neutro (cortar um dos atos, ou reduzir o valor de um deles).
+
+### M-38 · teste coletivo, "+2 por pessoa" conta quem rola? · DECIDIDO em 16/09/2026, com regra nova
+
+**A pergunta original ficou pequena diante da resposta: existem TRÊS tipos de teste com várias
+pessoas, e o livro só nomeia um deles direito.** O humano escreveu a mecânica completa dos três,
+e ela substitui o parágrafo de `acoes-e-sistema.md:158`:
+
+1. **Trabalho em Grupo** · tarefas em que cada pessoa extra é trabalho extra completo (cavar um
+   buraco, por exemplo). Cada um faz o próprio teste, e os resultados somam além da Dificuldade.
+2. **Ajudante** · servir de auxiliar numa tarefa que outra pessoa realiza (ajudar uma cirurgia,
+   forjar, dar aula). O ajudante rola contra **metade da Dificuldade** (arredondado para cima); a
+   cada 6 pontos acima disso, concede **+1** à jogada de quem está realizando a tarefa. Em jogada
+   estendida, pode-se usar a média das jogadas do ajudante. Há um limite de ajudantes por tarefa,
+   a critério do Mestre.
+3. **Teste Coletivo** · um grupo inteiro precisa passar numa tarefa que é responsabilidade de
+   todos (caça em grupo, deslocamento furtivo coletivo, apresentação de dança). Quem rola é a
+   pessoa com a **menor parada de dados** (empate: menor Habilidade; empate de novo: qualquer
+   uma). **A Dificuldade sobe +2 por participante** (aqui a pergunta original se resolve: conta
+   TODOS os participantes, inclusive quem rola). Um líder é eleito e faz uma jogada própria: a
+   cada 6 pontos acima da Dificuldade, ele concede **+1d6** a quem tem a menor parada. **Penalidade
+   de cada participante entra na jogada final**: −1 físico de um dançarino e −2 de armadura de dois
+   furtivos somam −4 na jogada coletiva.
+
+**O que isto manda fazer:** reescrever `acoes-e-sistema.md:158` como três subseções nomeadas em
+vez de um parágrafo só, com as três réguas acima. É trabalho de capítulo, não de uma frase — entra
+na mesma categoria dos itens "Preparo/Golpe/Recuperação" do prompt de entrega da Executora.
+
+### M-45 · por onde o novato entra no livro · NÃO É INCONSISTÊNCIA, deixa como está
+
+**Decisão: não mexer agora.** A capa já mostra "Começar a Ler" (primeiro capítulo) e "Criar
+Personagem" (ficha) logo no topo — as duas coisas que um novato precisa ver, mesmo sem saber o que
+é Centelha ainda. Não é ausência de caminho. Fica anotado como possível remodelação futura, fora
+desta lista: repensar se "Explorar Proezas" precisa estar citado na capa, e o que fazer com "50
+Proezas · 461 Técnicas · 24 Artes" logo abaixo — mas isso é preferência de capa, não conserto.
+
+### M-46 · custo de raça e idades divergentes · ADIADO
+
+Fica para depois, junto com o orçamento (`M-43`) e a fila que precisa fechar primeiro. Não
+decidido agora.
+
+### M-15 · o que a Habilidade Energia Espiritual faz · PENDÊNCIA, com direção provável
+
+**Não fechado — vira pendência explícita**, mas com uma pista do humano: **provavelmente aumenta
+a taxa de recuperação de Mana**, e há a possibilidade de o efeito passar a valer para recuperar
+"Energia" em vez de Mana, caso esse recurso mude de nome/forma mais adiante. Não decidir a
+fórmula agora; registrar a pista para quando a pergunta voltar à mesa.
+
+### M-16 · Acerto Arcano é obrigatório para conjurar · DECIDIDO em 16/09/2026
+
+**Não é obrigatória, e o verbete baixa o tom.** Nenhuma mecânica muda: `acerto-arcano` continua
+uma secundária comum, sem marca. A frase do verbete passa a nomear que ela pesa só nos efeitos
+MIRADOS (que já rolam Percepção + Acerto Arcano pela `M-10`), sem prometer que é obrigatória para
+conjurar de modo geral.
+
+**O que isto manda fazer:** `habilidades-secundarias.json · acerto-arcano` perde a frase "sem ela
+o feitiço mais devastador do mundo passa a um palmo do inimigo" e ganha uma que nomeia os efeitos
+mirados como o caso em que ela pesa.
+
+### M-34 · escapar de efeito "vs o nível" · DECIDIDO em 16/09/2026
+
+**O nível vira Dificuldade pela régua que já existe: nível × 5.** Arte nível 2 prende em Dif 10,
+nível 6 em Dif 30 ("Sobre-humano" na tabela publicada) — decisão de poder assumida conscientemente,
+não só conversão.
+
+**O que isto manda fazer:** `regras.json · arcano`, tabela de resistências — "Força ou Atletismo
+vs o nível efetivo do efeito" ganha a fórmula `nível × 5` como a Dificuldade a bater.
+
+### M-35 · Metal Incandescente, escala e penalidade · DECIDIDO em 16/09/2026, redesenho completo
+
+**O Efeito é redesenhado, não só corrigido.** Novos números, substituindo a escala de sete casas
+e a penalidade sem unidade:
+
+- **Dano:** 1d6, fixo (não escala mais por Mana investida);
+- **Duração:** 6 Ticks por ponto (de Mana investido, presumivelmente — confirmar com o humano se
+  a unidade de investimento mudar antes de escrever);
+- **Penalidade:** 1d6 para ações físicas enquanto o alvo estiver tocando o metal incandescente.
+
+**O que isto manda fazer:** `efeitos.json · metal-incandescente` troca a escala `Dano` inteira
+(`["—","—","1d6","1d6","2d6","2d6","3d6"]`) pelos três campos acima. Como muda a forma do Efeito
+(de escala por nível para fixo + duração + penalidade separada), confirmar com o humano antes de
+escrever se algum outro Efeito usa o mesmo molde e merece o mesmo tratamento, ou se este é
+único.
+
+### M-39 · a Habilidade âncora de um Caminho · DECIDIDO em 16/09/2026, não mexe
+
+**É sabor, e já está certo como está.** O humano notou, ao reler o item: nem toda
+`habilidade_ancora` é a única Habilidade com que a Proeza pode ser usada — algumas são, outras
+não. Como o campo só é exibido na página do Caminho (não tem efeito mecânico e não promete ter),
+não precisa de conserto de texto nem de mecânica nova.
+
+### M-40 · o −3 de Quebrar Guarda e o teto de ±6 · DECIDIDO em 16/09/2026
+
+**Fica fora do teto de ±6, como a Pressão.** Quem paga a Técnica sempre vê o efeito; casa com a
+decisão já tomada para a Pressão em 15/09 (penalidade de Defesa sem teto).
+
+**O que isto manda fazer:** `regras.json · empilhamentoProezas.defesaReflexiva` ganha a exceção
+nomeada (Quebrar Guarda, e qualquer penalidade IMPOSTA por Proeza de outro, por analogia com a
+Pressão) fora do cálculo do teto de ±6.
+
+### M-41 · Técnicas com efeito sem número · ADIADO, com direção
+
+**Não corrigir agora.** Vira item de revisão geral: depois do reset, revisar as Proezas para achar
+todas as descrições vagas e padronizá-las como as Artes já estão hoje (com número em cada efeito).
+Não é conserto pontual do Soco Trovejante e da Investida Devastadora — é levantamento novo,
+parecido em escopo com a leitura que gerou esta lista inteira.
+
+### M-44 · Centelha 1 tranca a Técnica no nível 1 · DECIDIDO em 16/09/2026
+
+**É de propósito, e passa a estar escrito.** A Centelha é o eixo de história do sistema; amarrar
+profundidade de Técnica a ela é o desenho pretendido, não acidente. Dizer isso em voz alta evita
+a frustração de um jogador descobrir sozinho que o XP parou de comprar profundidade.
+
+**O que isto manda fazer:** `regras.json · xp.tecnica` ganha a frase afirmando que o portão
+`Centelha ≥ N` é intencional, e o motivo (a Centelha é concedida pelo Mestre em marco de história,
+de propósito, e não se compra com XP).
