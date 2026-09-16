@@ -55,3 +55,18 @@ número 7 está escrito no `CLAUDE.md` e envelheceu com os testes que entraram d
 
 **Não decidi nada, e a decisão não é minha.** O que eu acrescento como medida: o gancho roda a
 cada commit, inclusive nos de documento, e hoje os commits de `.md` já pagam os 15,2 s inteiros.
+
+## O CI, lido e não presumido
+
+- **21:17** · `e46581c` empurrado, `origin/main..HEAD` = 0.
+- **21:27** · run **35039365010** (`Validar dados e regras`, sha `e46581c`): o trabalho **Dados e
+  regras** fechou **SUCCESS**, e dentro dele o passo **`Tipos`** (que é `npx astro sync && npx
+  tsc --noEmit`, o que estava vermelho desde 15:22) saiu **success**. Lido passo a passo, e não
+  pela cor do run.
+- **21:27** · a RUN INTEIRA ainda estava `in_progress` neste instante, com um trabalho de pé:
+  `Smoke · test-grid`, que é o mais longo da matriz (cerca de 6 minutos no runner). Os outros
+  dezessete do smoke já estavam verdes. **Dizer "o CI está verde" agora seria dizer a cor de um
+  pedaço**, e é justamente o que custou as três horas.
+- **21:31** · a run **35039365010** fechou **completed success**, os dezoito do smoke mais o
+  `Dados e regras`. Esta é a cor da RUN inteira, e não de um trabalho dela. O `gh run watch`
+  ficou de pé até o fim em vez de eu perguntar de novo e presumir.
