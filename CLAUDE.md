@@ -182,8 +182,15 @@ dia, então ele só os reescreve se sumirem. E o passo 1 não é formalidade: o
   regressão de personagem (`test-kael.mjs`). `npm run build` roda os dois antes do
   Astro, então build verde é garantia real, não formalidade.
 - **O `validate` roda sozinho a cada commit, e não por lembrança.** O gancho está
-  versionado em `scripts/hooks/pre-commit` e custa 7 segundos. Ligar, **uma vez por
-  clone** (as worktrees herdam, porque a configuração mora no diretório comum):
+  versionado em `scripts/hooks/pre-commit` e custa **15,2 segundos** (medido em
+  15/09/2026, duas amostras: 15.173 ms e 15.208 ms). **Dizia 7 aqui, e o número
+  envelheceu** com os testes que entraram depois dele. **Commit que toca `src/` ou
+  `scripts/` paga mais 13,4 s**, do `npx astro sync && npx tsc --noEmit`, que entrou
+  no gancho em 15/09/2026 porque nem o `validate` nem o `astro build` checam tipo:
+  um `esc(...)` chamado num arquivo sem `esc` passou por doze commits e ficou três
+  horas no ar estourando a ficha, com o CI vermelho e ninguém lendo. Commit só de
+  documento não paga esse pedaço. Ligar, **uma vez por clone** (as worktrees herdam,
+  porque a configuração mora no diretório comum):
 
   ```sh
   git config core.hooksPath scripts/hooks

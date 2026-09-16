@@ -6046,7 +6046,7 @@
         "regua": "longa"
       }
     ],
-    "efeito": "A Vida não fecha o ferimento: ela apressa o corpo a fechá-lo sozinho, até o dobro da velocidade natural. Com Vida 1 ou 2 só acelera o que o corpo já sabe curar depressa, ou seja, dano de Impacto e ferimentos não letais. Curar dano Letal por esta via exige Vida 3.",
+    "efeito": "A Vida não fecha o ferimento: ela apressa o corpo a fechá-lo sozinho, até o dobro da velocidade natural. Ela acelera em qualquer nível e em qualquer profundidade, inclusive abaixo do zero: o que muda com o nível é o quanto, e não o que ela alcança (`M-21b`).",
     "notas": "Cura é sempre mais cara: 2 de Mana por nível, como na Arte de Cura. E aqui rende menos, 1 PV por nível da Arte (o nível investido por quem conjura, o mesmo que a prosa chama de Vida 1, 2 ou 3) em vez da régua dela.",
     "grid": {
       "forma": "alvo",

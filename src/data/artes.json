@@ -775,7 +775,7 @@
       {
         "nivel": 3,
         "nome": "Fechar Feridas",
-        "efeito": "cura Letal moderado; suspende a dor",
+        "efeito": "cura moderado; suspende a dor",
         "custo": {
           "mana": 3
         },

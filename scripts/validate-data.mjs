@@ -312,17 +312,36 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
     // "PV N … morre em −X". Um limite publicado noutra forma (uma célula de
     // tabela, por exemplo) não passa por aqui, e é por isso que os exemplos do
     // capítulo são prosa.
+    // E SÃO DUAS JANELAS, NÃO UMA, que é o furo que a Revisora achou na rodada 60.
+    // O PV pode vir de um exemplo anterior, de propósito: "o mesmo PV 37" e "um PV
+    // 41 sem Centelha …, e com Centelha …" dizem o número uma vez só, e essa é a
+    // forma mais natural de publicar os dois lados. O RÓTULO não pode. Com uma
+    // janela só, o segundo exemplo herdava o "sem Centelha" do primeiro, e ela
+    // plantou "Um PV 41 sem Centelha morre em −20, e com Centelha morre em −20"
+    // com o portão VERDE sobre o segundo número errado. O que segurava o portão
+    // era a redação do capítulo repetir "PV 37" nas duas metades, e redação não é
+    // portão.
+    //
+    // Então: a janela do PV atravessa o exemplo anterior, e a do LADO começa onde
+    // o exemplo anterior terminou.
     const semTags = (t) => String(t).replace(/<[^>]+>/g, '');
     const paresDe = (texto) => {
       const t = semTags(texto);
       const achados = [...t.matchAll(/morre em\s*\*{0,2}[−-](\d+)/g)];
       const pares = [];
       const semPar = [];
+      let fimDoAnterior = 0;
       for (const a of achados) {
         const antes = t.slice(Math.max(0, a.index - 400), a.index);
         const pv = [...antes.matchAll(/PV\s*\*{0,2}(\d+)/g)].pop();
-        if (!pv) { semPar.push(a[0]); continue; }
-        pares.push({ pvMax: Number(pv[1]), morreEm: -Number(a[1]), janela: antes.slice(pv.index) });
+        const inicioPv = pv ? a.index - antes.length + pv.index : null;
+        if (!pv) { semPar.push(a[0]); fimDoAnterior = a.index + a[0].length; continue; }
+        pares.push({
+          pvMax: Number(pv[1]),
+          morreEm: -Number(a[1]),
+          janela: t.slice(Math.max(inicioPv, fimDoAnterior), a.index),
+        });
+        fimDoAnterior = a.index + a[0].length;
       }
       return { pares, semPar, total: achados.length };
     };
@@ -336,10 +355,11 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
       fail(`${CAP_MORTE}: "${s}" está publicado sem nenhum "PV N" antes dele, e por isso a régua `
         + `não tem como conferir esse número.`);
     }
-    // DE QUE LADO CADA EXEMPLO ESTÁ. A janela é o texto entre o `PV N` e o
-    // `morre em` dele, e a negativa é testada PRIMEIRO de propósito: "não tem
-    // Centelha" contém "tem Centelha", e a ordem inversa classificaria todo
-    // exemplo de mortal como exemplo de Tocado.
+    // DE QUE LADO CADA EXEMPLO ESTÁ. A janela é a segunda das duas de cima: do
+    // `PV N` (ou do fim do exemplo anterior, o que vier depois) até o `morre em`.
+    // A negativa é testada PRIMEIRO de propósito: "não tem Centelha" contém "tem
+    // Centelha", e a ordem inversa classificaria todo exemplo de mortal como
+    // exemplo de Tocado.
     const ladoDe = (janela) => {
       if (/(sem|não tem|nao tem|nenhuma) Centelha|Centelha 0/i.test(janela)) return 'semCentelha';
       if (/(com|tem) Centelha|Centelha 1|Tocado/i.test(janela)) return 'comCentelha';
@@ -358,7 +378,10 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
             + `quem TEM ou de quem NÃO TEM Centelha, e em PV ímpar isso muda a resposta (\`M-21c\`)`);
           continue;
         }
-        if (lado) ladosVistos.add(lado);
+        // Só o exemplo com RESTO testemunha um lado: no PV par os dois
+        // arredondamentos dão o mesmo número, e contá-lo como testemunha deixaria
+        // a régua nova meio provada com o portão verde.
+        if (lado && sobraResto(p.pvMax)) ladosVistos.add(lado);
         const esperados = lado ? [lado] : ['semCentelha', 'comCentelha'];
         for (const l of esperados) {
           if (p.morreEm !== limiteDe(p.pvMax, l)) {
@@ -369,10 +392,13 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
         }
       }
       // AS DUAS OCASIÕES, e não uma: a régua da `M-21c` tem dois lados, e um
-      // capítulo que só exemplifica um deles deixa o outro sem testemunha.
+      // capítulo que só exemplifica um deles deixa o outro sem testemunha. Quem
+      // responde é o `ladosVistos` de cima, e não um segundo `ladoDe` sobre a
+      // mesma janela: duas leituras da mesma coisa é a cópia que diverge, e esta
+      // aqui já tinha divergido de um jeito barato (o `Set` era escrito e nunca
+      // lido, `CORRIGE 2` da rodada 60).
       for (const l of ['semCentelha', 'comCentelha']) {
-        const tem = pares.some((p) => sobraResto(p.pvMax) && ladoDe(p.janela) === l);
-        if (!tem) {
+        if (!ladosVistos.has(l)) {
           fail(`${CAP_MORTE}: falta um exemplo de PV ímpar do lado \`${l}\`. Com PV par as duas `
             + `direções dão a mesma resposta, então só o ímpar prova que este lado está certo.`);
         }

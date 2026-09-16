@@ -275,7 +275,7 @@
       "golpe-pesado"
     ],
     "aliases": [],
-    "texto": "Golpes desarmados contam como arma (sem penalidade vs armados) e podem causar dano **Letal** à vontade.",
+    "texto": "Golpes desarmados contam como arma (sem penalidade vs armados) e **atravessam o zero**: não param como o Impacto comum, e matam como qualquer outro dano.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -899,7 +899,7 @@
       "aguentar-o-tranco"
     ],
     "aliases": [],
-    "texto": "Dano de Impacto nunca te mata, só nocauteia; +1 ao limiar de morte.",
+    "texto": "Golpe de Impacto te derruba e PARA em 0: só dano de outro tipo te leva abaixo do zero, na direção do limite.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -1446,7 +1446,7 @@
       "segundo-folego"
     ],
     "aliases": [],
-    "texto": "Estanca sangramentos e cura dano Letal leve em minutos.",
+    "texto": "Estanca sangramentos e cura dano leve em minutos.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3623,7 +3623,7 @@
       "vontade-de-viver"
     ],
     "aliases": [],
-    "texto": "no limiar da morte, realiza uma última ação heroica plena.",
+    "texto": "na janela entre cair a 0 e cruzar o limite da morte, age uma vez, plenamente, apesar de estar incapacitado.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"

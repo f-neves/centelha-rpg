@@ -11,9 +11,27 @@
 # faltava era ele NÃO DEPENDER DE ALGUÉM LEMBRAR, e é a mesma forma do L25: o
 # mecanismo existia e nada o executava.
 #
-# CUSTA 7 SEGUNDOS, medido nesta máquina, e é por isso que roda inteiro em vez
-# de escolher gates pelo que mudou: escolher exigiria um mapa de arquivo para
-# portão, e esse mapa seria mais uma lista para ficar velha (é o caso 13).
+# CUSTA 15,2 SEGUNDOS, medido nesta máquina em 15/09/2026, em duas amostras
+# (15.173 ms e 15.208 ms). Dizia 7 aqui, e o número envelheceu com os testes que
+# entraram depois dele. Ele roda inteiro em vez de escolher gates pelo que mudou:
+# escolher exigiria um mapa de arquivo para portão, e esse mapa seria mais uma
+# lista para ficar velha (é o caso 13).
+#
+# E O TYPECHECK ENTRA AQUI DESDE 15/09/2026, com UMA condição de caminho, que é
+# coisa diferente de um mapa: só roda quando o commit toca `src/` ou `scripts/`.
+# O caso que o comprou: `esc` foi chamado num arquivo que não tem `esc`
+# (`ficha-engine.ts`), e passou por DOZE commits porque nem o `validate` nem o
+# `astro build` checam tipo. Quem checava era o CI, e o resultado dele não
+# chegava a ninguém: três horas de vermelho no ar, com o site publicado e a ficha
+# estourando em `ReferenceError` para quem edita uma ficha de raça com piso.
+#
+# O `astro sync` VAI JUNTO e não é detalhe de instalação: ele gera
+# `.astro/types.d.ts`, que o `.gitignore` não versiona. Sem ele, num clone que
+# nunca rodou `astro dev`, o `tsc` cospe vinte erros de `astro:content` e de
+# `import.meta.env`, e o primeiro commit de quem clonou ficaria vermelho por erro
+# que não é dele. Custa 13,4 s somados (3,4 do sync + 10,0 do tsc), medidos no
+# mesmo dia, e é por isso que commit de documento não paga: ele não pode quebrar
+# tipo nenhum.
 #
 # NÃO USE `--no-verify`. Se o portão está vermelho, o commit está errado ou o
 # portão está errado, e as duas coisas se resolvem olhando, não pulando.
@@ -37,5 +55,26 @@ if ! npm run --silent validate; then
   echo "✘ O portão falhou, e o commit não foi feito."
   echo "  Conserte o que ele apontou e commite de novo."
   exit 1
+fi
+
+# O QUE VAI NO COMMIT, e não o que está na árvore: num commit com pathspec
+# (`git commit -m ... -- caminho`) o git monta um índice temporário e aponta o
+# `GIT_INDEX_FILE` para ele, então `--cached` responde sobre o commit que está
+# nascendo, e não sobre o índice compartilhado com a outra instância.
+ARQS=$(git diff --cached --name-only --diff-filter=ACMR)
+if printf '%s\n' "$ARQS" | grep -Eq '^(src|scripts)/'; then
+  echo "· pre-commit: npx astro sync && npx tsc --noEmit (há código no commit)"
+  if ! npx astro sync >/dev/null; then
+    echo ""
+    echo "✘ O \`astro sync\` falhou, e sem ele o \`tsc\` acusaria erro que não é seu."
+    echo "  O commit não foi feito."
+    exit 1
+  fi
+  if ! npx tsc --noEmit; then
+    echo ""
+    echo "✘ Os tipos não fecham, e o commit não foi feito."
+    echo "  Isto NÃO é lint: nome que o TypeScript não acha é \`ReferenceError\` na mesa."
+    exit 1
+  fi
 fi
 exit 0
