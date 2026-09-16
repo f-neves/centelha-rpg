@@ -4004,6 +4004,16 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   pior que o primeiro, porque o primeiro só gastou uma correção e este gastou uma investigação
   inteira que chegou à conclusão errada.
 
+- [ ] **L100 · [ACHADO pela Revisora na rodada 79, 16/09/2026, FORA da faixa] O foco da caixa de
+  diálogo cai no botão errado por ordem do DOM, e a intenção escrita é a oposta.** Na pergunta que
+  guarda o Sopro de Vida, o foco cai no **"Não curar"**, o que é seguro contra o Enter reflexo · mas
+  é seguro **por acidente**: o `querySelector` do `ui-dialog.ts` lista `.ui-dlg-ok` primeiro, ou
+  seja, a intenção declarada é focar o botão de confirmar, e o que decide é a ordem dos botões no
+  HTML, em que o cancelar vem antes. **Quem reordenar os botões dessa caixa muda o foco de todas as
+  perguntas do sistema sem tocar em nenhuma delas.** Não é defeito de comportamento hoje: é uma
+  garantia que está de pé pelo motivo errado, e por isso não sobrevive a uma edição inocente. O
+  `ui-dialog.ts` não estava na faixa da rodada, e por isso está aqui e não como conserto.
+
 - [ ] **L99 · [MEDIDO pela Executora na rodada 79, 16/09/2026, e a escolha fica para o dia em que
   um caminho real aparecer] A trava da cura não existe no SERVIDOR, e as quatro saídas têm preço.**
   A trava da `M-21b` (passou do limite, a cura não alcança) fechou as portas de INTERFACE em

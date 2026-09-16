@@ -2861,3 +2861,50 @@ com o custo das raças e com as idades, que já esperam ali.
 2. O capítulo XVIII e o glossário trocam a palavra nos três rótulos.
 3. **A nota "Pendente" do `:37` FICA**, e ganha o gatilho escrito: ela sai quando a fila `M`
    fechar, e não antes.
+
+---
+
+## M-21g · o Reiniciar da cena é porta legítima, e a trava não o alcança
+
+Decidido em 16/09/2026, **pelo Arquiteto e não pela mesa**, e escrito aqui para o humano derrubar
+se discordar. **Achado pela Revisora na rodada 79**, respondendo à pergunta que o aviso fez
+(existe uma quinta porta de cura?).
+
+### O ORIGINAL
+
+**`src/pages/mesa/combate.astro:2171`**, dentro do botão **Reiniciar**, com a caixa "zerar PV" marcada:
+
+```
+if (zPv && c.pv_max != null) { cols.pv_atual = c.pv_max; ... }
+```
+
+Ele escreve `pv_atual = pv_max` **direto**, sem passar por `mexerVida` nem por `curarPv`, para
+**todas as peças da cena de uma vez**. Com a Vida em −20, a peça volta viva e cheia. É o único
+caminho que ressuscita em lote.
+
+### A DECISÃO: é legítimo, e pelo mesmo argumento que deixou o desfazer de fora
+
+O Reiniciar **não cura: recomeça a cena.** Ele vem com as caixas de zerar Tick, zerar condições e
+trazer de volta quem estava fora de combate (`cols.ativo = true`, na mesma passagem), e nenhuma
+delas é gesto de jogo · são o gesto de montar a cena de novo. Travar ali tiraria do mestre a única
+forma de reusar um encontro, e a peça morta ficaria morta num combate que não aconteceu mais.
+
+**O que NÃO pode ficar, e é o achado:** ele não existir em texto nenhum, enquanto o texto ao lado
+afirma que as portas de interface estão fechadas. O desfazer ganhou um parágrafo dizendo por que
+fica fora; o Reiniciar não tem menção nenhuma. **Uma porta sem placa é uma porta esquecida**, e
+quem ler a afirmação de que as portas estão fechadas vai acreditar nela.
+
+**O contra comprado:** um mestre que clique em Reiniciar por engano, com "zerar PV" marcado,
+desfaz uma morte sem ver aviso nenhum. O botão é destrutivo nos dois sentidos e sempre foi.
+
+**E a sexta, que a Revisora registrou e que NÃO é achado:** o formulário de editar a peça está
+aberto de propósito, e a própria mensagem de erro da trava o indica como saída. **Porta com placa
+não é porta esquecida.**
+
+### O QUE ISTO MANDA FAZER
+
+1. O Reiniciar ganha o parágrafo, do mesmo tamanho e no mesmo lugar que o do desfazer.
+2. **O recorte da varredura muda, e essa é a lição maior que o item.** A Revisora varreu *todo
+   ponto que ESCREVE `pv_atual`*, e não "as entradas de cura" · e é essa diferença que fez a
+   quarta porta aparecer para a Executora, porque **ela não se chamava cura em lugar nenhum: era
+   o "+" de uma barra**. Varredura de comportamento se faz pela ESCRITA, não pelo nome.
