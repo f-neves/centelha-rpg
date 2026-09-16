@@ -2596,3 +2596,62 @@ o humano decidiu com a opção de guardá-la à vista.
 1. `tecnicas.json`: o texto do `ultimo-suspiro` passa a nomear a janela em vez do limiar.
 2. **Entra na mesma varredura das outras quatro**, e pelo mesmo motivo: a lista fechada por
    contagem é a que deixou a quinta de fora duas vezes.
+
+---
+
+## M-21f · o Sopro de Vida é a exceção nomeada da trava da cura
+
+Decidido em 15/09/2026. **Esta entrada existe porque uma decisão minha foi tomada sobre um fato
+falso, e quem achou foi a Executora na varredura da rodada 77.**
+
+### A PREMISSA FALSA, e ela estava no contra que a mesa comprou
+
+A **M-21b, decisão 4** fechou que passar do limite trava as quatro entradas de cura, e o contra
+que eu escrevi ao lado dizia:
+
+> fecha por código uma porta que uma Arte de ressurreição **futura** vai querer, e obriga a pensar
+> nela quando ela aparecer.
+
+**A porta não é futura.** `src/data/artes.json`, a Arte **Cura, nível 6**, chamada "Sopro de
+Vida", custo 6 de Mana, publicada e comprável hoje:
+
+> **traz o recém-morto**; expurga quase tudo
+
+com os exemplos *"chamar de volta quem morreu há pouco"* e *"desfazer uma morte"*. A trava, como
+foi decidida, **impediria a Cura 6 de fazer o que o livro diz que ela faz**, e quem comprou o
+nível 6 comprou uma ressurreição.
+
+### A DECISÃO: o Sopro de Vida é a exceção, e tem nome
+
+A trava vale para toda cura, **menos a Arte Cura nível 6**. O livro continua verdadeiro, quem
+pagou o nível 6 recebe o que comprou, e a exceção tem nome, preço alto e um dono só.
+
+**O contra comprado:** a primeira exceção nomeada numa trava é a que ensina o sistema a ter
+exceções. O motor deixa de perguntar "isto é cura?" e passa a perguntar "QUAL cura é esta?", e
+essa pergunta é bem mais cara de responder em quatro entradas, uma das quais mora no servidor,
+que hoje não sabe nem a Centelha da peça.
+
+### O QUE ISTO MANDA FAZER
+
+1. A trava da cura pelo número (rodada própria, ainda não aberta) nasce **já sabendo distinguir**
+   a Arte Cura nível 6 do resto. Não é para construí-la sem a exceção e emendar depois: uma trava
+   que nasce cega vai ao ar quebrando uma Arte publicada.
+2. **A entrada da M-21b fica como está, com o contra errado visível, e esta entrada a corrige.**
+   Reescrever o contra apagaria o registro de que a mesa decidiu com um fato errado na mão, e é
+   justamente esse registro que vale.
+
+### Nota do Arquiteto: a `imortalidade-tenue` NÃO entra agora, e a decisão é minha
+
+A Executora chamou de sexta regra órfã a `tecnicas.json` · `imortalidade-tenue` (Cerne Vital,
+nível 6): *"Volta de golpes que matariam e regenera membros; só a destruição total o mata."* **A
+Revisora, na rodada 76, tinha varrido a mesma família e deliberadamente NÃO a chamou de órfã**,
+junto com a `recusa-a-morte`, "para não inflar".
+
+**As duas estão defendendo coisas diferentes e as duas têm razão numa metade.** A frase continua
+lendo-se na régua nova (um golpe que mataria é o que levaria além do limite, e isso é definível),
+o que dá razão à Revisora; e "só a destruição total o mata" nomeia exceção sem mecanismo, o que dá
+razão à Executora. **A diferença para o `ultimo-suspiro` é que aquele perdeu o gatilho** (o limiar
+deixou de existir como momento), e estas duas não perderam nada: ficaram vagas, e já eram.
+
+Então elas seguem a régua da fila decidida hoje e vão **com as Proezas, no fim**. Fica escrito
+aqui para não se perder, e para a próxima varredura não as achar como novidade.
