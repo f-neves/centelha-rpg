@@ -85,8 +85,24 @@ Centelha.**
 | **o servidor usa sempre o lado permissivo** | uma linha na RPC | zero Centelha e zero migração; o preço é o servidor discordar do cliente em 1 ponto para um mortal de PV ímpar |
 | **o servidor lê a ficha** | um join, sem esquema novo | `personagens.ficha->>'centelha'` existe e alcança peça de PC; **não alcança criatura**, porque `monstro_id` é texto e o bestiário não está no banco, então criatura cairia no lado permissivo de qualquer jeito |
 
-**E o tamanho do buraco, dito com o escopo:** as travas que eu pus hoje cobrem as portas de
-INTERFACE (o menu do mestre, as Artes e os botões da aba Combate, mais o desfazer que fica aberto
-de propósito). A RPC continua aceitando `pv_atual` absoluto de quem a chamar direto. Nenhum
-caminho de tela do jogador passa por ela para curar hoje, então o que está aberto é a chamada
-fabricada, não um botão.
+**E o tamanho do buraco, dito com o escopo:** as travas que eu pus hoje cobrem QUATRO portas de
+interface (o menu do mestre, as Artes e os botões de Vida da aba Combate), mais o desfazer, que
+fica aberto de propósito. A RPC continua aceitando `pv_atual` absoluto de quem a chamar direto.
+Nenhum caminho de tela do jogador passa por ela para curar hoje, então o que está aberto ali é a
+chamada fabricada, e não um botão.
+
+> **CORRIGIDO EM 16/09/2026, E É A SEGUNDA CORREÇÃO DA MESMA FRASE.** A redação original dizia
+> que as travas cobriam "as portas de INTERFACE", no plural fechado, e isso era falso: a Revisora
+> achou uma QUINTA (o botão **Reiniciar** com a caixa "zerar PV", em `combate.astro`, que escreve
+> `pv_atual = pv_max` em todas as peças de uma vez, mortos inclusive).
+>
+> **A primeira correção trocou uma afirmação falsa por outra mais estreita**, e ela era minha:
+> escrevi, no `L99` e na placa do código, que a porta era legítima porque vinha acompanhada de
+> zerar relógio, limpar condições e devolver quem estava fora, no mesmo clique. **As seis caixas
+> do Reiniciar são independentes e marcadas por padrão** (`combate.astro`): desmarcando as outras
+> cinco, o clique devolve a Vida cheia de todo mundo e não faz mais nada. O "vem acompanhada" era
+> o PADRÃO DA TELA, não uma necessidade do botão.
+>
+> **O que esta frase pode afirmar hoje:** existe uma quinta escrita de Vida na interface, ela não
+> passa pela trava, e **se ela é legítima ou não é pergunta aberta na mesa (`M-21h`)**. Nada aqui
+> decide isso, e este arquivo não é o lugar onde se decide.

@@ -4034,12 +4034,17 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
 
   **O escopo do que está aberto, dito em voz alta:** a RPC aceita `pv_atual` absoluto de quem a
   chamar direto, e **nenhum caminho de tela do jogador passa por ela para curar hoje**.
-  **CORREÇÃO de 16/09/2026, e ela é da Revisora (rodada 63):** a frase original dizia que as
-  portas de INTERFACE estavam todas fechadas, e faltava uma · o botão **Reiniciar** com "zerar PV"
-  (`src/pages/mesa/combate.astro`) escreve `pv_atual = pv_max` em todas as peças de uma vez,
-  inclusive nas que passaram do limite. Ela fica ABERTA por decisão (`M-21g`): não é cura, é o
-  recomeço da cena, e vem com zerar relógio, limpar condições e devolver quem estava fora, no
-  mesmo clique. A placa mora ao lado da escrita, no código. Por isso o
+  **CORREÇÃO de 16/09/2026, e ela levou DUAS rodadas para ficar de pé.** A frase original dizia
+  que as portas de INTERFACE estavam todas fechadas, e faltava uma · o botão **Reiniciar** com a
+  caixa "zerar PV" (`src/pages/mesa/combate.astro`) escreve `pv_atual = pv_max` em todas as peças
+  de uma vez, inclusive nas que passaram do limite (achado da Revisora na rodada 63).
+  **A primeira correção trocou a afirmação falsa por outra mais estreita:** dizia que a porta era
+  legítima porque vinha acompanhada de zerar relógio, limpar condições e devolver quem estava
+  fora, no mesmo clique. **As seis caixas do Reiniciar são independentes e marcadas por padrão**,
+  então desmarcando as outras cinco o clique devolve a Vida cheia de todo mundo e não faz mais
+  nada. O "vem acompanhada" era o padrão da tela, não uma necessidade (rodada 64).
+  **O que se afirma hoje, e só isto:** existe uma quinta escrita de Vida na interface, ela não
+  passa pela trava, e **se é legítima ou não é pergunta aberta na mesa (`M-21h`)**. Por isso o
   Arquiteto decidiu em 16/09/2026 não abrir rodada: escolher agora seria calibrar uma trava contra
   um atacante que não existe. → a medição completa em `docs/simulacao/caixa/progresso-79.md`.
 

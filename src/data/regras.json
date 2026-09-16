@@ -2153,7 +2153,7 @@
       },
       "zeraCusto": "O desconto da fonte pode zerar o custo e deixar o efeito grátis e ilimitado. Não há nada de errado nisso: o mesmo efeito que fica grátis com Centelha 3 mais a fonte já ficaria grátis com Centelha 4 sem fonte nenhuma.",
       "penalidade": "A falta do elemento não penaliza. Perder o desconto já é o preço de lutar longe da sua fonte, e só um motivo específico da cena (fogo debaixo d’água, por exemplo) justifica cobrar mais.",
-      "notaAr": "O ar é o elemento mais abundante que existe, então o Vento tem desconto em quase todo lugar até o nível 3. Do 4 em diante é preciso vento de verdade: campo aberto com rajada constante, alto de uma torre, ventania, tempestade. A vantagem geral do Vento é proposital, porque é o elemento menos letal e o que causa menos dano.",
+      "notaAr": "O ar é o elemento mais abundante que existe, então o Vento tem desconto em quase todo lugar até o nível 3. Do 4 em diante é preciso vento de verdade: campo aberto com rajada constante, alto de uma torre, ventania, tempestade. A vantagem geral do Vento é proposital, porque é o elemento que menos mata e o que causa menos dano.",
       "abundancia": [
         {
           "arte": "fogo",

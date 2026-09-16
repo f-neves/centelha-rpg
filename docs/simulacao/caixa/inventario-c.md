@@ -145,6 +145,21 @@ palavra).
   explicação com outras palavras que as minhas continuaria contado como aberto aqui. Digo o
   método junto com o número porque a diferença é essa.
 
+  > **O RISCO REAL DESTA CLASSE NÃO É O QUE EU ESCREVI PRIMEIRO, e quem mediu foi a Revisora na
+  > rodada 64.** Eu avisei contra "item fechado contado como aberto", e ela amostrou cinco dos 23
+  > pela IDEIA e não pelo termo: quatro conferem como abertos, e um está **parcial**. O `C-70`
+  > (Destreza e Força em verbetes separados) pede que se escreva a regra da escolha, e
+  > `habilidades.md:70` já diz "o Atributo (Destreza ou Força)": o conserto dele encolheu de
+  > "escrever a regra" para "acrescentar três palavras", e a linha que o descreve está errada
+  > sobre o próprio tamanho.
+  >
+  > **Então o que esta classe esconde é "item MENOR do que a linha dele diz", e não "item já
+  > fechado".** É mais barato e mais difícil de ver: um item fechado some da fila na primeira vez
+  > que alguém abre o arquivo, e um item superdimensionado atravessa o planejamento inteiro
+  > custando o que não custa. **A amostra não foi estendida aos 23 de propósito** (dela e do
+  > Arquiteto): refazer 23 leituras para achar meia frase em uma é caro, e quem for executar cada
+  > item confere o tamanho dele no ato.
+
 **Os 8 FEITO, com a evidência:**
 
 | item | evidência |

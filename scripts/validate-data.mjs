@@ -481,13 +481,21 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
       ['src/content/chapters/combate.md', fs.readFileSync(path.join(RAIZ, 'src/content/chapters/combate.md'), 'utf8')],
       ['src/pages/mesa/referencia.astro', fs.readFileSync(path.join(RAIZ, 'src/pages/mesa/referencia.astro'), 'utf8')],
       ['condicoes.json', JSON.stringify(read('condicoes.json'))],
-      ['regras.json · ferimentos/morte/sangramento', JSON.stringify([regrasM.ferimentos, regrasM.morte, regrasM.sangramento])],
-      // E `arcano.cura`, que a lista não olhava e é onde morava um dos seis textos
-      // que a `M-21b` mandou reescrever. A Revisora mediu na rodada 63: plantando
-      // "só alcança dano Letal a partir do nível 3" de volta em
-      // `arcano.cura.outrasArtes`, o portão saía VERDE. Três blocos de um arquivo
-      // com trinta e tantos é recorte, e recorte cobre o que se lembrou de listar.
-      ['regras.json · arcano.cura', JSON.stringify((regrasM.arcano || {}).cura || {})],
+      // O `regras.json` INTEIRO, e não uma lista de blocos dele.
+      //
+      // ELE JÁ FOI TRÊS BLOCOS, DEPOIS QUATRO, E OS DOIS RECORTES VAZARAM pelo
+      // mesmo motivo: recorte cobre o que alguém lembrou de listar. A Revisora
+      // mediu as duas vezes · com três, plantar a cláusula velha em `arcano.cura`
+      // passava verde (rodada 63); com quatro, plantar `"Cortante e Perfurante
+      // sao Letal"` em `dano.nota` · o bloco que DEFINE os modos · passava verde
+      // (rodada 64). São 35 blocos de topo, e a lista vigiava quatro.
+      //
+      // O preço de vigiar o arquivo inteiro foi UMA frase reescrita, já nomeada
+      // desde a rodada 63: o `arcano.fonteElemental.notaAr` dizia "o elemento
+      // menos letal", que é português comum e não a trilha, e passou a dizer "o
+      // elemento que menos mata". Um falso positivo conhecido custa menos que um
+      // recorte que ninguém sabe onde termina.
+      ['regras.json', JSON.stringify(regrasM)],
       compravel('tecnicas.json'), compravel('artes.json'), compravel('efeitos.json'),
       compravel('armas.json'), compravel('armaduras.json'), compravel('escudos.json'),
       compravel('antecedentes.json'),
