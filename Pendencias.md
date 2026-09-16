@@ -4004,6 +4004,18 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   pior que o primeiro, porque o primeiro só gastou uma correção e este gastou uma investigação
   inteira que chegou à conclusão errada.
 
+- [ ] **L101 · [DITO pela Executora ao fechar a rodada 82, 16/09/2026] O alcance do portão de
+  vocabulário foi justificado por uma medida presa à lista de palavras de HOJE, e ela expira
+  sozinha se a lista crescer.** O portão passou a vigiar o `regras.json` inteiro (35 blocos de
+  topo) em vez de quatro blocos, e o preço medido foi **uma frase reescrita**, porque "letal"
+  aparece **uma única vez** no arquivo. **A medida vale para o padrão atual e não para um padrão
+  futuro:** se a lista de palavras vigiadas crescer (`nocaute`, `limiar de morte`, `trilha`), o
+  arquivo inteiro passa a ser uma superfície maior do que a medida cobriu, e a conta muda **sem
+  ninguém encostar no portão**. Ela disse isso por escrito em vez de deixar a justificativa
+  envelhecer calada, que é a régua herdada da fase 0: toda tolerância escrita vem com a condição de
+  expiração ao lado. **O que fecha este item:** a frase de expiração no comentário do próprio
+  portão, ao lado do alcance, para quem for crescer a lista remedir antes.
+
 - [ ] **L100 · [ACHADO pela Revisora na rodada 79, 16/09/2026, FORA da faixa] O foco da caixa de
   diálogo cai no botão errado por ordem do DOM, e a intenção escrita é a oposta.** Na pergunta que
   guarda o Sopro de Vida, o foco cai no **"Não curar"**, o que é seguro contra o Enter reflexo · mas
