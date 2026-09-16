@@ -4004,6 +4004,18 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   pior que o primeiro, porque o primeiro só gastou uma correção e este gastou uma investigação
   inteira que chegou à conclusão errada.
 
+- [ ] **L97 · [ACHADO pelo Arquiteto em 15/09/2026, lendo o CI] O `test-grid` do smoke falha de
+  forma INTERMITENTE, e a taxa medida é alta: 2 das últimas 6 execuções.** As duas falhas trazem
+  exatamente as mesmas duas asserções, o que afasta ruído genérico: *"a peça saiu do lugar"* e
+  *"mover custa de 2 a 7 idas ao banco (foram 0)"*. **Zero idas ao banco quer dizer que o gesto de
+  mover não aconteceu**, e não que ele aconteceu errado. Runs: `35038905035` (sha `810fd07`) e
+  `35039518490` (sha `101c944`), as duas com o commit seguinte passando no MESMO teste, e um
+  deles só de documento. **Por que isto importa mais do que uma falha solta:** um portão que fica
+  vermelho em uma de cada três vezes ensina quem o lê a ignorá-lo, e foi ignorando o CI que o erro
+  de tipo de hoje viveu três horas e doze commits. **O que decide se é defeito ou é o driver:**
+  saber se o clique de arrastar chegou à página (o teste conta idas ao banco, então zero é
+  silêncio total), e isso se mede instrumentando o próprio teste, não relendo o código do Grid.
+
 - [ ] **L96 · [ESCALA 1 da Revisora na rodada 75, 15/09/2026] Duas varreduras de dano contínuo
   escrevem a Vida por motores diferentes, e só uma tem piso.** O tique de condição contínua do
   Grid chama `gravarVida`, que é `curarPv` (`src/pages/mesa/grid.astro:2682`) e só tem TETO, nunca piso; a aba
