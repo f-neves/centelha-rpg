@@ -43,7 +43,7 @@ segunda tinha ficado verde por cegueira.
 | **o transporte que descarta** | `CAMPOS_*`, `pick`, `select('a,b')`, lista de chaves | a chave nova chega na OUTRA PONTA? |
 | **a leitura-modificação-escrita de foto local** (L41) | `{...obj}`, `.filter`, `update({ campo: inteiro })` | quem MAIS escreve este campo? |
 | **a fachada que preserva a forma e troca o destino** | `ctx.SB`, `SB`, cliente que chegou por parâmetro | quem é este SB NESTA aba, e o que a RPC faz com este campo? |
-| **o portão que casa por texto fixo** | `.test(`, `includes(`, `like '`, todo portão novo | o que faz este portão ficar VERDE sem o problema ter sido resolvido? |
+| **o portão que casa por texto fixo** | `.test(`, `includes(`, `like '`, todo portão novo | o que faz este portão ficar VERDE sem o problema ter sido resolvido? **E a variante de 16/09/2026, em que o literal nem é escolha de quem escreveu a regra, é FORMATAÇÃO:** um padrão de duas palavras (`dano letal`) não achou `dano **Letal**`, porque o negrito do markdown mete `**` entre elas. O portão lê a string e o leitor lê o texto renderizado, e os dois discordam sobre a mesma frase. Quem casa frase em texto que será renderizado tira a marcação antes, ou casa palavra. |
 | **a garantia correta sobre o eixo errado** | "cobre", "uma forma nova falha alto", "isto é coberto" | verdadeira sobre QUAL dimensão, e ela é a que importa aqui? |
 | **a remoção escrita como coleção inteira** | `.filter(` seguido de `update({ campo: ... })` | se este campo passar a SOMAR no servidor, esta remoção ainda remove? |
 | **o escalar que descreve um conjunto** | `min(`, `max(`, `última`, "a partir de", "desde" | isto é o limite, ou é a prova de que o CONJUNTO inteiro acima dele cumpre a regra? |
