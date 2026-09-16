@@ -82,7 +82,7 @@ sistema, então a palavra publicada vai brigar com a intuição dele na mesa.
 5. **O capítulo das Proezas** confere se usa "Trilha" e "Caminho" nos sentidos da tabela acima.
 
 **Aberto de propósito, e não bloqueia nada:** a conjuração por Tradição (se um efeito Moldado
-rola por perícia própria) continua sendo pergunta, e é a metade do item 529 que fica.
+rola por Habilidade própria) continua sendo pergunta, e é a metade do item 529 que fica.
 
 ---
 
@@ -436,19 +436,19 @@ acrescenta dado: ela corrige o sentido do dado que já existe.
 
 **QUEM DETERMINA O PAR É A DESCRIÇÃO DA AÇÃO, e não a ficha.** O jogador diz como o personagem
 agiu; o Mestre lê a descrição e nomeia o Atributo e a Habilidade daquela jogada. As listas
-publicadas em cada perícia são **o usual, e não o possível**.
+publicadas em cada Habilidade são **o usual, e não o possível**.
 
 Os exemplos vieram da mesa, e é por eles que a regra se entende:
 
 - soco no inimigo: **Força ou Destreza + Briga**, porque o jogador disse que era um soco;
 - a mesma intenção com uma espada: **Força ou Destreza + Armas**;
 - convencer o inimigo a se render: **Influência + Persuasão**; **ameaçar** para que ele se renda:
-  **Força ou Influência + Intimidação**, e a mesma intenção mudou de perícia E de Atributo por
+  **Força ou Influência + Intimidação**, e a mesma intenção mudou de Habilidade E de Atributo por
   causa de como foi descrita;
 - identificar o estilo de luta de um oponente: **Inteligência + Briga**, ou **Inteligência +
   Armas** conforme ele lute com as mãos ou com arma.
 
-**As perícias geralmente têm um TIPO associado (Físico, Social, Mental), e ele serve de exemplo,
+**As Habilidades geralmente têm um TIPO associado (Físico, Social, Mental), e ele serve de exemplo,
 não de limite.**
 
 ### Por que isto reformula também as primárias
@@ -475,7 +475,7 @@ escrita.
 
 ### O QUE JÁ ESTAVA CERTO, e não muda
 
-**O motor nunca amarrou perícia a Atributo.** `pool(atributo, habilidade)` (`src/lib/calc.ts:17`)
+**O motor nunca amarrou Habilidade a Atributo.** `pool(atributo, habilidade)` (`src/lib/calc.ts:17`)
 recebe os dois números e não sabe de onde vieram, e `passivo(id, nome, atributo, habilidade)`
 (`src/lib/mesa-ficha.ts:37`) também. **Nenhuma linha de código muda com esta decisão.** É a mesma
 forma da `M-12`: o motor já estava certo e o texto é que dizia outra coisa.
@@ -487,15 +487,15 @@ nove, com `fisico` (Força, Destreza, Vigor), `social` (Influência, Perspicáci
 ### O que isto manda fazer
 
 1. **Um parágrafo de regra onde o leitor monta o pool** (`coracao-do-sistema.md`), dizendo que a
-   descrição da ação determina o par, e que a lista de cada perícia é a usual e não a única.
-2. **A notação em itálico NÃO muda.** A lista de cada perícia é a inclinação dela, e publicá-la
+   descrição da ação determina o par, e que a lista de cada Habilidade é a usual e não a única.
+2. **A notação em itálico NÃO muda.** A lista de cada Habilidade é a inclinação dela, e publicá-la
    assim já está certo. **Corrigido depois de eu ter mandado o contrário**: o despacho da rodada
    64 pedia mexer no molde `linhaPrim` de `scripts/gen-cap-pericias.mjs:44`, e o pedido foi
    retirado no mesmo dia.
 3. **As 66 secundárias podem ganhar o campo, agora como sugestão e não como regra.** Deixa de ser
    obrigatório: a ficha passa a ter um padrão para oferecer, sem que ele limite nada. É trabalho
    opcional, e a decisão não depende dele.
-4. **A ficha tem de permitir qualquer Atributo com qualquer perícia.** O motor já permite;
+4. **A ficha tem de permitir qualquer Atributo com qualquer Habilidade.** O motor já permite;
    confira se alguma tela restringe antes de dizer que está feito.
 
 ### O QUE ESTA DECISÃO NÃO RESOLVE
@@ -740,11 +740,7 @@ isso não está escrito em lugar nenhum.
 ### ABERTO, e é apresentação e não regra
 
 **Como a ficha mostra uma Defesa cujo bônus é situacional.** Hoje ela imprime um número. Podia
-imprimir "18, e +2 contra machados", e isso é decisão de tela.
-
----
-
-## M-47 · a palavra "Perícia" sai do livro · DECIDIDO em 15/09/2026
+imprimir "18, e +2 contra machados", e isso é de## M-47 · a palavra "Perícia" sai do livro · DECIDIDO em 15/09/2026
 
 **O termo correto é HABILIDADE, em todo lugar em que o leitor lê.** Pedido da mesa: *"veja onde
 que está escrito 'Perícia', essa é uma palavra que não devemos usar, provavelmente o certo é
@@ -777,6 +773,9 @@ próximo regen**.
 código** ficam como estão. Elas não são lidas por ninguém que jogue, renomeá-las é mexer no
 bestiário, na mesa e no editor de criaturas de uma vez, e o ganho para o leitor é zero. **Se a
 mesa quiser a troca completa, ela é uma frente própria e não um item.**
+
+---
+ não um item.**
 
 ---
 
@@ -2353,7 +2352,7 @@ diferentes.
 
 ### A INCONSISTÊNCIA, e ela é quádrupla
 
-1. **O capítulo e o dado discordam da perícia** para a MESMA rolagem: Atletismo contra Acrobacias.
+1. **O capítulo e o dado discordam da Habilidade** para a MESMA rolagem: Atletismo contra Acrobacias.
 2. **"Vs o lançamento" não nomeia número nenhum.** Não há alvo em `regras.json` nem em
    `condicoes.json`, e o total do arremesso é um número que aconteceu uma vez e ninguém guarda.
 3. **A Técnica resolve a mesma situação SEM rolagem**, só gastando ação. É uma terceira regra para
@@ -2361,7 +2360,7 @@ diferentes.
 4. **E "Acrobacias" NÃO EXISTE.** Não está entre as 24 primárias, e a secundária que faz esse
    trabalho chama-se **Ginástica** (`src/data/habilidades-secundarias.json`, id `ginastica`), cuja descrição abre
    com *"Acrobacia: cambalhota, salto mortal, rolamento de queda, passar por um vão apertado"*. O
-   dado cita uma perícia pelo nome errado, e ninguém percebeu porque o nome é plausível.
+   dado cita uma Habilidade pelo nome errado, e ninguém percebeu porque o nome é plausível.
 
 ### A DECISÃO · quatro prisões, e cada uma sai do seu jeito
 
@@ -2373,7 +2372,7 @@ diferentes.
 | **Preso sob peso** | tirar a coisa de cima | a **régua de carga** que o `regras.json` já publica |
 
 **O par do agarrão segue a régua da M-14:** o Atributo é escolhido pela descrição da ação, então
-quem rompe usa Força e quem escorrega usa Destreza, com a mesma perícia (Briga) nos dois casos.
+quem rompe usa Força e quem escorrega usa Destreza, com a mesma Habilidade (Briga) nos dois casos.
 
 **Duas coisas foram aplicadas como engenharia, e não decididas**, porque a régua já existe: os
 **4 Ticks** da rede são a faixa utilitária da tabela de Velocidade do capítulo de Combate, e o
@@ -2389,13 +2388,13 @@ no dado, porque a de tempo fixo sempre existe.
 
 1. **`condicoes.json`:** a condição `imobilizado` precisa dizer de que tipo ela é. A forma no dado
    é da Executora, com uma condição: o tipo tem de ser explícito, e não inferido do texto da nota.
-2. **`regras.json`:** o bloco das quatro saídas, com as perícias, a Dif 10 da rede e os 4 Ticks.
+2. **`regras.json`:** o bloco das quatro saídas, com as Habilidades, a Dif 10 da rede e os 4 Ticks.
 3. **`armas-e-armaduras.md:52` e a nota da Rede** se reescrevem pelas quatro linhas da tabela, e
    a palavra Acrobacias sai dos dois.
 4. **A Técnica `imobilizar`** passa a apontar para a regra do Agarrado em vez de publicar a
    terceira resolução.
-5. **Um portão que exija que toda perícia citada em dado e em capítulo EXISTA na lista de
-   perícias.** É ele que teria pego "Acrobacias" no dia em que foi escrita, e o defeito é da
+5. **Um portão que exija que toda Habilidade citada em dado e em capítulo EXISTA na lista
+   de Habilidades.** É ele que teria pego "Acrobacias" no dia em que foi escrita, e o defeito é da
    família que o `CATALOGO.md` chama de duas listas que precisam concordar.
 
 ### O QUE FICA ABERTO
@@ -2495,8 +2494,8 @@ de a régua geral estar de pé. **Regra básica primeiro, e o caso particular de
 Guarda), o `M-41` (as Técnicas sem número) e o `M-44` (Centelha 1 e Técnica 1) saem da fila de
 agora e vão para o fim. O `M-15`, o `M-16`, o `M-34` e o `M-35` ficam no bloco das Artes, em
 penúltimo. **O `M-15` está aí por decisão de classificação e não por evidência:** ele é uma
-perícia secundária (Energia Espiritual), mas o que ele promete mexer é a reserva de Mana, então
-ele é economia de magia e não de perícia. Se a mesa discordar, ele volta para as básicas.
+Habilidade secundária (Energia Espiritual), mas o que ele promete mexer é a reserva de Mana, então
+ele é economia de magia e não de Habilidade. Se a mesa discordar, ele volta para as básicas.
 
 ### O que JÁ ficou decidido do M-40, e não espera o fim da fila
 
@@ -2696,7 +2695,7 @@ criatividade e uso do cenário: **+2 fixo, +1d6 ou +2d6**. Não se compra nem se
 
 ### A INCONSISTÊNCIA, e o defeito por baixo dela
 
-Atributo 1 com perícia 0 dá soma 1, que rende **zero dados e +2 fixo**. Como o sucesso exige
+Atributo 1 com Habilidade 0 dá soma 1, que rende **zero dados e +2 fixo**. Como o sucesso exige
 SUPERAR, 2 contra Dif 5 é impossível, sempre.
 
 **E o achado é maior que a pergunta: existe um pool que não rola dado nenhum.** Não é difícil, é
@@ -2734,5 +2733,72 @@ personagem que não passa em tarefa fácil nenhuma, e a régua não tem outra sa
 2. **E publica a saída junto**, na mesma frase, porque o número sozinho parece um beco: a Firula
    de nível 2 devolve o dado e torna o teste possível.
 3. **A fórmula do `pool` não se toca.** Foi considerado um piso de um dado (`max(1, …)`) e
-   recusado: ele mexeria na conta que alimenta ataque, Defesa, perícia e as 309 criaturas para
+   recusado: ele mexeria na conta que alimenta ataque, Defesa, Habilidade e as 309 criaturas para
    resolver um caso que a Firula já resolve.
+
+---
+
+## M-07 · os três números que os verbetes prometiam e não tinham
+
+Decididos em 16/09/2026. Bloco das **regras básicas**.
+
+### 1 · A ARMADURA TIRA DADO DA FURTIVIDADE, e não ponto
+
+**O original:** `src/data/habilidades.json`, o verbete da Furtividade: *"**Desanda com armadura
+pesada**, luz na mão, companhia barulhenta e pressa."* E `src/data/armaduras.json` tem o campo
+`penalidade`, graduado (leve 1, média 2, pesada 3).
+
+**A inconsistência:** o campo existe e está ligado noutro lugar. Hoje ele alimenta o **movimento**
+(`src/lib/combate-resumo.ts:180` · *"a armadura tira metade da penalidade em metros"*) e a conta do
+conjunto na ficha, e **nenhum termo de Furtividade o lê**. O verbete promete um efeito que o motor
+não tem.
+
+**A decisão: a armadura tira DADO do pool de Furtividade**, e não ponto do total.
+
+**O contra comprado, dito antes de escolher:** dado é a moeda do Desgaste (fome, sede, sono,
+veneno, exaustão), e o capítulo faz questão de separar as duas moedas · *"ponto e dado nunca são a
+mesma coisa nem se convertem um no outro"*. Usar dado aqui aproxima a armadura daquela família. O
+que a escolha compra é o peso certo: com placa completa, furtividade deixa de ser uma chance remota
+e passa a ser quase impossível, que é o que a ficção diz.
+
+### 2 · A ESQUIVA ENCURRALADA PERDE DE −2 A −6, por escada de espaço
+
+**O original:** o verbete da Esquiva: *"exige espaço e pés livres: **encurralado, em meio à
+multidão ou preso à formação, ela vale pouco**."* Não há número em fonte nenhuma.
+
+**A decisão: uma escada contínua por quanto espaço resta**, com as três situações do verbete como
+**âncora e não como lista fechada**:
+
+| quanto espaço resta | Defesa | as âncoras do verbete |
+|---|---:|---|
+| pouco | **−2** | em meio à multidão, corredor estreito |
+| quase nenhum | **−4** | encurralado, parede nas costas |
+| nenhum | **−6** | preso à formação, agarrado, sem pés livres |
+
+**O contra comprado:** âncora aberta devolve ao Mestre parte da decisão que o número deveria tirar,
+e duas mesas vão dar números diferentes para a mesma parede nas costas. **E há uma consequência
+medida que vale escrever ao lado:** o teto dos modificadores situacionais é ±6, então um **−6
+consome o teto inteiro** e nada mais pesa naquele lance · cobertura, flanco e postura deixam de
+existir para quem está preso à formação.
+
+### 3 · A SEGUNDA FIRULA DESCE UM NÍVEL
+
+**O original:** `src/content/chapters/habilidades.md:126`: *"o preço de repeti-la é que **a segunda
+vez impressiona menos que a primeira**."* A escada publicada é nível 1 = +2 fixo, nível 2 = +1d6,
+nível 3 = +2d6, cada um com a reserva que devolve.
+
+**A decisão: repetir a MESMA Firula na mesma cena vale um nível abaixo.** O 3 vira 2, o 2 vira 1, e
+o 1 não vale mais nada. O desconto é do bônus e da reserva de uma vez, porque os dois moram no
+mesmo degrau.
+
+**O contra comprado:** exige lembrar qual Firula já foi usada e por quem, e "a mesma Firula" é
+julgamento e não campo. É contabilidade nova no meio da cena, num sistema que passou meses tirando
+contabilidade da mesa.
+
+### O QUE ISTO MANDA FAZER
+
+1. `armaduras.json` ganha a ligação com a Furtividade, e o verbete passa a dizer o número. **Não
+   reusar o campo `penalidade` sem decidir:** ele já governa o movimento, e um campo que serve a
+   duas coisas fica preso entre elas. Medir antes se a graduação é a mesma.
+2. `regras.json` ganha a escada da Esquiva, com as três âncoras, e o verbete aponta para ela.
+3. O capítulo publica a regra da Firula repetida junto da tabela de níveis, que é onde ela se lê.
