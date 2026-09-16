@@ -4052,9 +4052,13 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   de uma vez, inclusive nas que passaram do limite (achado da Revisora na rodada 63).
   **A primeira correção trocou a afirmação falsa por outra mais estreita:** dizia que a porta era
   legítima porque vinha acompanhada de zerar relógio, limpar condições e devolver quem estava
-  fora, no mesmo clique. **As seis caixas do Reiniciar são independentes e marcadas por padrão**,
-  então desmarcando as outras cinco o clique devolve a Vida cheia de todo mundo e não faz mais
-  nada. O "vem acompanhada" era o padrão da tela, não uma necessidade (rodada 64).
+  fora, no mesmo clique. **O Reiniciar tem SEIS caixas independentes, CINCO marcadas** (a sexta,
+  "apagar o registro", nasce desmarcada), então desmarcando as outras quatro do pacote o clique
+  devolve a Vida cheia de todo mundo **e a Energia junto**. O "vem acompanhada" era o padrão da
+  tela, não uma necessidade (rodada 64). **E a Energia entrou na terceira redação** (rodada 65):
+  as duas primeiras diziam "não faz mais nada", e `energia_atual = energia_max` está no MESMO
+  `if`, sem caixa própria · vizinho em `if` próprio é opcional, vizinho no mesmo `if` é
+  obrigatório.
   **O que se afirma hoje, e só isto:** existe uma quinta escrita de Vida na interface, ela não
   passa pela trava, e **se é legítima ou não é pergunta aberta na mesa (`M-21h`)**. Por isso o
   Arquiteto decidiu em 16/09/2026 não abrir rodada: escolher agora seria calibrar uma trava contra

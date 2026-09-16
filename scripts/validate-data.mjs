@@ -495,6 +495,13 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
       // menos letal", que é português comum e não a trilha, e passou a dizer "o
       // elemento que menos mata". Um falso positivo conhecido custa menos que um
       // recorte que ninguém sabe onde termina.
+      //
+      // **E ESSE PREÇO EXPIRA COM A LISTA DE PALAVRAS** (`L101`): "uma frase" foi
+      // medido com o `VELHO` de hoje, que procura UMA palavra. Quem acrescentar
+      // outra (`nocaute`, `limiar de morte`, `trilha`) mede de novo ANTES de
+      // acrescentar, porque a superfície é o arquivo inteiro e a conta muda sem
+      // ninguém encostar aqui. Justificativa que envelhece calada é pior que
+      // nenhuma: a próxima pessoa lê "custou uma frase" e acredita.
       ['regras.json', JSON.stringify(regrasM)],
       compravel('tecnicas.json'), compravel('artes.json'), compravel('efeitos.json'),
       compravel('armas.json'), compravel('armaduras.json'), compravel('escudos.json'),

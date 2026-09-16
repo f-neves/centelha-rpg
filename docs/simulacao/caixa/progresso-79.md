@@ -98,10 +98,16 @@ chamada fabricada, e não um botão.
 >
 > **A primeira correção trocou uma afirmação falsa por outra mais estreita**, e ela era minha:
 > escrevi, no `L99` e na placa do código, que a porta era legítima porque vinha acompanhada de
-> zerar relógio, limpar condições e devolver quem estava fora, no mesmo clique. **As seis caixas
-> do Reiniciar são independentes e marcadas por padrão** (`combate.astro`): desmarcando as outras
-> cinco, o clique devolve a Vida cheia de todo mundo e não faz mais nada. O "vem acompanhada" era
-> o PADRÃO DA TELA, não uma necessidade do botão.
+> zerar relógio, limpar condições e devolver quem estava fora, no mesmo clique. **O Reiniciar tem
+> SEIS caixas independentes, CINCO marcadas** (`combate.astro`; a sexta, "apagar o registro",
+> nasce desmarcada): desmarcando as outras quatro do pacote, o clique devolve a Vida cheia de
+> todo mundo, **e a Energia junto**. O "vem acompanhada" era o PADRÃO DA TELA, não uma
+> necessidade do botão.
+>
+> **E a Energia é a segunda correção, de 16/09/2026:** as duas primeiras redações escreveram que
+> a escrita "não faz mais nada", e ela faz · `energia_atual = energia_max` está no MESMO `if`,
+> sem caixa própria. A régua tem dois lados e eu tinha usado um só: vizinho em `if` próprio é
+> opcional, vizinho no MESMO `if` é obrigatório.
 >
 > **O que esta frase pode afirmar hoje:** existe uma quinta escrita de Vida na interface, ela não
 > passa pela trava, e **se ela é legítima ou não é pergunta aberta na mesa (`M-21h`)**. Nada aqui

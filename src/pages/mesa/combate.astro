@@ -2176,10 +2176,19 @@ import CondDlg from '../../components/CondDlg.astro';
         // não decide.** A primeira redação daqui afirmava que era legítimo porque
         // o botão "não cura, recomeça a cena", vindo acompanhado de zerar o
         // relógio, limpar as condições e devolver quem estava fora. **A Revisora
-        // mediu que isso é o PADRÃO DA TELA e não uma necessidade:** as seis
-        // caixas são independentes e marcadas por padrão (o formulário logo acima),
-        // cada uma lida no seu próprio `if`, e desmarcando as outras cinco o clique
-        // devolve a Vida cheia de todo mundo e não faz mais nada.
+        // mediu que isso é o PADRÃO DA TELA e não uma necessidade:** o formulário
+        // logo acima tem SEIS caixas independentes, CINCO marcadas (a sexta,
+        // "apagar o registro", nasce desmarcada), e cada uma é lida no seu próprio
+        // `if`. Desmarcando as outras quatro do pacote, o clique devolve a Vida
+        // cheia de todo mundo, e a ENERGIA junto.
+        //
+        // A ENERGIA NÃO É DETALHE, é o que separa os dois lados da mesma régua:
+        // vizinho em `if` PRÓPRIO é opcional (some quando a caixa dele é
+        // desmarcada), vizinho no MESMO `if` é OBRIGATÓRIO. As duas primeiras
+        // redações desta placa usaram o primeiro lado para derrubar o "vem
+        // acompanhada" e esqueceram o segundo, e por isso as duas escreveram que a
+        // escrita "não faz mais nada". Ela faz: restaura a Energia, na mesma linha,
+        // sem caixa própria para desligar.
         //
         // Achada na rodada 63, varrendo todo ponto que ESCREVE `pv_atual`, e a
         // régua que a achou vale mais que o achado: varredura de comportamento se
