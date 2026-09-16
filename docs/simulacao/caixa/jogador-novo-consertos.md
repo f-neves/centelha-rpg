@@ -218,7 +218,11 @@ Contra `criacao-de-personagem.md:157`, onde o Bram tem Vigor 3 e **PV 34**.
 Manda `regras.json → derivados.pv` (`base 25`, `vigorMult 3`) com `calc.ts:30`:
 25 + 3×3 = **34**. O exemplo do capítulo IV está com o PV de outra pessoa, e o resto da
 conta dele (28 de dano) muda de faixa de ferimento por causa disso.
-**Confere:** `grep -n "PV 37" src/content/chapters/vida-ferimentos-cura.md` = 0.
+**Confere:** `grep -n "Bram tem \*\*PV 37\*\*" src/content/chapters/vida-ferimentos-cura.md` = 0.
+**A conferência anterior era `grep -n "PV 37"` = 0 e virou FALSO POSITIVO em 16/09/2026**, sem que
+o item mudasse de estado: a `M-21c` publicou no mesmo capítulo um exemplo de PV ÍMPAR ("um PV 37
+sem Centelha morre em −18"), que é outro assunto e casa o mesmo texto. A conferência passou a
+nomear o Bram, que é de quem o item fala.
 
 ### C-06 (112, 94) · anão, gnomo e halfling: metade ou dois terços
 

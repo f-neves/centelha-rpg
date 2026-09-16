@@ -482,6 +482,12 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
       ['src/pages/mesa/referencia.astro', fs.readFileSync(path.join(RAIZ, 'src/pages/mesa/referencia.astro'), 'utf8')],
       ['condicoes.json', JSON.stringify(read('condicoes.json'))],
       ['regras.json · ferimentos/morte/sangramento', JSON.stringify([regrasM.ferimentos, regrasM.morte, regrasM.sangramento])],
+      // E `arcano.cura`, que a lista não olhava e é onde morava um dos seis textos
+      // que a `M-21b` mandou reescrever. A Revisora mediu na rodada 63: plantando
+      // "só alcança dano Letal a partir do nível 3" de volta em
+      // `arcano.cura.outrasArtes`, o portão saía VERDE. Três blocos de um arquivo
+      // com trinta e tantos é recorte, e recorte cobre o que se lembrou de listar.
+      ['regras.json · arcano.cura', JSON.stringify((regrasM.arcano || {}).cura || {})],
       compravel('tecnicas.json'), compravel('artes.json'), compravel('efeitos.json'),
       compravel('armas.json'), compravel('armaduras.json'), compravel('escudos.json'),
       compravel('antecedentes.json'),

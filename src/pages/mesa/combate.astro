@@ -2168,6 +2168,21 @@ import CondDlg from '../../components/CondDlg.astro';
         // Zerar os Ticks apaga a ação junto: uma fita que aponta para o Tick 9
         // de um relógio que voltou ao zero é pior que fita nenhuma.
         if (zTick) { cols.tick = 0; cols.acao = {}; }
+        // A QUINTA PORTA, e ela NÃO passa pela trava da morte, por decisão
+        // (`M-21g`). Esta escrita devolve `pv_atual = pv_max` em todas as peças de
+        // uma vez, inclusive nas que passaram do limite, e isso é legítimo porque
+        // ela não é cura: é o RECOMEÇO da cena, e vem acompanhada de zerar o
+        // relógio, limpar as condições e devolver quem estava fora de combate, na
+        // mesma passagem e no mesmo clique. Curar um morto às escondidas é o que a
+        // trava impede; começar uma cena nova com o grupo inteiro de pé é o que
+        // este botão existe para fazer.
+        //
+        // A PLACA ESTÁ AQUI porque o texto que descrevia as portas afirmava que as
+        // de interface estavam todas fechadas, e esta estava aberta sem menção
+        // nenhuma. Achada pela Revisora na rodada 63, varrendo todo ponto que
+        // ESCREVE `pv_atual` · e a régua que a achou vale mais que o achado: a
+        // varredura de comportamento se faz pela escrita, e não pelo nome, porque
+        // esta porta não se chama cura em lugar nenhum.
         if (zPv && c.pv_max != null) { cols.pv_atual = c.pv_max; if (c.energia_max != null) cols.energia_atual = c.energia_max; }
         if (zCond) cols.condicoes = [];
         if (zFora) cols.ativo = true;

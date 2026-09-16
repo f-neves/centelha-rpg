@@ -4033,7 +4033,13 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   | o servidor lê a ficha | um join, sem esquema novo | `personagens.ficha->>'centelha'` alcança peça de PC; **não alcança criatura**, porque `monstro_id` é texto e o bestiário não está no banco, então criatura cairia no lado permissivo de qualquer jeito |
 
   **O escopo do que está aberto, dito em voz alta:** a RPC aceita `pv_atual` absoluto de quem a
-  chamar direto, e **nenhum caminho de tela do jogador passa por ela para curar hoje**. Por isso o
+  chamar direto, e **nenhum caminho de tela do jogador passa por ela para curar hoje**.
+  **CORREÇÃO de 16/09/2026, e ela é da Revisora (rodada 63):** a frase original dizia que as
+  portas de INTERFACE estavam todas fechadas, e faltava uma · o botão **Reiniciar** com "zerar PV"
+  (`src/pages/mesa/combate.astro`) escreve `pv_atual = pv_max` em todas as peças de uma vez,
+  inclusive nas que passaram do limite. Ela fica ABERTA por decisão (`M-21g`): não é cura, é o
+  recomeço da cena, e vem com zerar relógio, limpar condições e devolver quem estava fora, no
+  mesmo clique. A placa mora ao lado da escrita, no código. Por isso o
   Arquiteto decidiu em 16/09/2026 não abrir rodada: escolher agora seria calibrar uma trava contra
   um atacante que não existe. → a medição completa em `docs/simulacao/caixa/progresso-79.md`.
 

@@ -116,6 +116,51 @@ itens, dos quais 53 têm seção e 46 são linhas de tabela. Eu NÃO os inventar
 pediu os 53; medir os 46 é outra passada, e eles são mais baratos de conferir (cada um é uma
 palavra).
 
+## SEGUNDA PARTE (rodada 81) · os 46 itens de tabela do `LOTE 8`
+
+**`C-50` a `C-95`, as linhas de tabela**, medidas em 16/09/2026 com o mesmo método.
+
+| resposta | quantos |
+|---|---:|
+| **FEITO** | **8** |
+| **ABERTO** | **38** |
+| **PREJUDICADO** | **0** |
+| **NÃO SEI** | **0** |
+| **soma** | **46** |
+
+**E os 38 abertos NÃO são todos da mesma qualidade de prova, o que importa mais que o número:**
+
+- **15 têm evidência DIRETA**: o item cita um texto, e o texto está lá. São `C-50` (Soak em 1
+  página, 2 capítulos e 3 lugares de `tecnicas.json`), `C-51` (dials), `C-52` (cast, 2 em
+  `/artes/regras`), `C-53` (baseline, no traço do humano em `racas.json:12` e em `racas.md:18`),
+  `C-54` (knockback, 2 em `tecnicas.json`), `C-56` (as datas de decisão), `C-61` ("Esp.", 4),
+  `C-64` ("empates favorecem quem defende"), `C-67` ("[nível ÷ 2]", 2), `C-73` ("ou aqui no
+  texto"), `C-77` ("Utilitária"), `C-90` ("30+"), `C-93` ("e o multiplicador"), `C-94` ("Sem
+  teto") e `C-95` (o Veil em `Centelha 4`, contra `limitesCriacao.centelha = 3`).
+- **23 têm evidência NEGATIVA, e ela é mais fraca**: são os itens cujo defeito é uma frase, um
+  link ou um número que FALTA (`C-59`, `C-60`, `C-62`, `C-63`, `C-66`, `C-68`, `C-69`, `C-70`,
+  `C-72`, `C-74`, `C-75`, `C-76`, `C-78`, `C-79`, `C-80`, `C-83`, `C-84`, `C-85`, `C-86`, `C-87`,
+  `C-88`, `C-89`, `C-91`). Procurei no arquivo que cada um nomeia um termo que a explicação
+  pedida teria, e não achei. **Isso não é a mesma prova que achar o defeito**: quem escreveu a
+  explicação com outras palavras que as minhas continuaria contado como aberto aqui. Digo o
+  método junto com o número porque a diferença é essa.
+
+**Os 8 FEITO, com a evidência:**
+
+| item | evidência |
+|---|---|
+| **C-55** · "banda" como sinônimo de Nível | `"banda"` = **0** em `combate.md`; o "banda morta" de `acoes-e-sistema.md`, que o item mandava MANTER, é outro sentido |
+| **C-57** · "uma Técnica de um Proeza" | `"de um Proeza"` = **0** e `"uma Técnica de um"` = **0** |
+| **C-58** · `8 + 2 × metros` | `"8 + 2"` = **0** em `/artes/regras` |
+| **C-65** · "Ação Estendida" | `"Ação Estendida"` = **0** nos capítulos |
+| **C-71** · "Conhec. Gerais" | `"Conhec. Gerais"` = **0** nos capítulos |
+| **C-81** · "Artes Universais 15" | o número literal saiu: `efeitos.astro:22` traz só o rótulo, e a contagem da página vem de `d.efeitos.length` |
+| **C-82** · o índice soma 189 | `"189"` = **0** na página |
+| **C-92** · a escala de Centelha vai de 0 a 6 | `centelha.md:14` publica "A régua vai de **0 a 12**, e a **faixa do jogador é de 0 a 6**". Fechado pela `M-08`, e é o item que mais se aproxima de PREJUDICADO: ele foi respondido por uma decisão, e não executado como conserto |
+
+**O denominador final das duas partes juntas: 99 itens · 21 FEITO · 78 ABERTO · 0 PREJUDICADO ·
+0 NÃO SEI.**
+
 ## Três achados de passagem, que não são conserto e não foram consertados
 
 1. **A conferência escrita do `C-05` virou falso positivo, e a culpa é da rodada 79.** Ela manda
