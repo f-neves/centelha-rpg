@@ -4070,7 +4070,12 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   `35039518490` (sha `101c944`) e `35049813953` (sha `2f74e1d`), e nas duas primeiras o commit
   seguinte passou no MESMO teste, um deles só de documento. **A terceira queda é de 16/09/2026 e
   mudou a ordem de grandeza do problema:** de uma em três para quase uma em duas, num portão que
-  roda a cada push. **Por que isto importa mais do que uma falha solta:** um portão que fica
+  roda a cada push. **E a QUARTA, no mesmo dia (run `35058991317`, sha `3546d0b`), mudou a FORMA e
+  é o dado mais útil que este item tem:** caiu **uma asserção só**. A peça **saiu do lugar** (a
+  asserção que falhava junto passou) e as idas ao banco continuaram **zero**. As duas não são o
+  mesmo sintoma: o zero de escritas **não depende** de a peça ficar parada, então ele é o candidato
+  a sintoma primário e o "não saiu do lugar" a consequência. **Quem investigar começa pela escrita
+  que não acontece, e não pelo arrastar.** **Por que isto importa mais do que uma falha solta:** um portão que fica
   vermelho em uma de cada três vezes ensina quem o lê a ignorá-lo, e foi ignorando o CI que o erro
   de tipo de hoje viveu três horas e doze commits. **O que decide se é defeito ou é o driver:**
   saber se o clique de arrastar chegou à página (o teste conta idas ao banco, então zero é
