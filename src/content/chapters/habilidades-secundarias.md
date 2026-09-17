@@ -5,7 +5,7 @@ titulo: "Habilidades Secundárias"
 resumo: "O catálogo das Habilidades de nicho, em sete famílias: corpo, sociais, conhecimento, ofício, expressão, subterfúgio e interior."
 ---
 
-As [24 primárias](/regras/habilidades) cobrem o tronco. Tudo que for **mais específico**, um ofício, um campo de saber, um truque de nicho, entra como **Habilidade Secundária**. Elas são **ilimitadas em número**, criadas conforme a história pede, e **custam metade** do que custa uma primária. Existem para você ser **tão específico quanto precisar** e para cobrir o que nenhuma primária cobre.
+As [24 primárias](/regras/habilidades) cobrem o tronco. Tudo que for **mais específico**, um ofício, um campo de saber, um truque de nicho, entra como **Habilidade Secundária**. Elas são **ilimitadas em número**, criadas conforme a história pede, e **custam metade** do que custa uma primária. Existem para você ser **tão específico quanto precisar** e para cobrir o que nenhuma primária cobre. **Não há teto de quantidade compradas**, nem ligado à primária vizinha nem fixo na criação: a trava real é o orçamento de XP, porque cada Secundária comprada é uma primária que deixou de subir.
 
 Uma Secundária pode ser tão ampla quanto um campo inteiro (Herbologia, Direito, Astronomia, Navegação). É isso que a separa da [Especialidade](/regras/habilidades#especialidade--o-escopo-afiado), que é só um recorte *dentro* de uma primária.
 
@@ -47,7 +47,7 @@ Recortes finos do trato com gente, cada um com um jeito próprio de conseguir o 
 
 Campos de estudo. Cada um responde por um pedaço do mundo que Conhecimentos Gerais só arranha.
 
-- <span id="sec-acerto-arcano"></span>**Acerto Arcano** · A pontaria da magia: acertar com o efeito que sai da mão e voa até o alvo, calculando distância, movimento e o instante de soltar. É a Habilidade de ataque de quem conjura, e sem ela o feitiço mais devastador do mundo passa a um palmo do inimigo.
+- <span id="sec-acerto-arcano"></span>**Acerto Arcano** · A pontaria da magia: acertar com o efeito que sai da mão e voa até o alvo, calculando distância, movimento e o instante de soltar. É a Habilidade de ataque de quem conjura, e pesa nos efeitos MIRADOS, os que saem da mão e voam até o alvo.
 - <span id="sec-alquimia"></span>**Alquimia** · Extrair, destilar e combinar substâncias em preparados que fazem alguma coisa: elixir, ácido, fogo que gruda, sal que revela, fumaça que derruba. É trabalho de bancada, com tempo, material e risco, e a fronteira com a Herbologia é simples, uma colhe o ingrediente, a outra o transforma.
 - <span id="sec-arquitetura"></span>**Arquitetura** · Projetar e ler edifícios: o que sustenta o quê, onde ficam os vãos, por que aquele arco está rachando, como uma muralha foi levantada e por onde ela cede. Serve tanto para construir quanto para invadir e derrubar, que é o uso que a mesa costuma dar.
 - <span id="sec-astronomia"></span>**Astronomia** · O céu e o que se tira dele: orientar-se por estrela, marcar o calendário, prever a fase da lua, a maré e o eclipse. Numa terra sem estrada marcada, saber o céu é saber onde se está.

@@ -648,7 +648,7 @@
     "id": "acerto-arcano",
     "nome": "Acerto Arcano",
     "grupo": "conhecimento",
-    "descricao": "A pontaria da magia: acertar com o efeito que sai da mão e voa até o alvo, calculando distância, movimento e o instante de soltar. É a Habilidade de ataque de quem conjura, e sem ela o feitiço mais devastador do mundo passa a um palmo do inimigo.",
+    "descricao": "A pontaria da magia: acertar com o efeito que sai da mão e voa até o alvo, calculando distância, movimento e o instante de soltar. É a Habilidade de ataque de quem conjura, e pesa nos efeitos MIRADOS, os que saem da mão e voam até o alvo.",
     "niveis": [
       {
         "nivel": 0,
