@@ -34,7 +34,23 @@ A cada **6 pontos acima do alvo**, uma **Margem**. Ela não escolhe a Dificuldad
 
 <p class="formula">Margem = cada 6 pontos acima da Dificuldade</p>
 
-Cada ação diz o que a Margem compra ali: mais rápido, mais fino, mais silencioso, mais duradouro, mais material aproveitado. Em combate a conversão já é lei (+1d6 de dano); fora dele, quem declara é a ação.
+Cada ação diz o que a Margem compra ali: mais rápido, mais fino, mais silencioso, mais duradouro, mais material aproveitado. Em combate a conversão já é lei (+1d6 de dano); fora dele, quem declara é a ação, pela tabela geral a seguir.
+
+## O que a Margem compra fora do combate
+
+Fora do combate não existe uma conversão única: o Mestre escolhe, pela ação, qual das réguas abaixo a Margem sobe. Cada Margem vale **um degrau**, numa lista curta de três eixos.
+
+| Eixo | Um degrau é | A régua |
+|---|---|---|
+| **Tempo** | um degrau mais rápido | a mesma escada de intervalo desta seção: Estação → Semana → Dia → Hora → Minuto → Tick |
+| **Qualidade** | um grau melhor no resultado | a mesma régua dos [Ofícios](/regras/acoes-oficio-e-mundo): Sucata, Tosca, Comum, Boa, Ótima, Excepcional |
+| **Duração** | mais um degrau de tempo que o efeito perdura | a mesma escada de intervalo, contada como quanto dura, não quanto demora |
+
+<p class="formula">Margem = 1 degrau, na régua que a ação escolher</p>
+
+Onde já existe uma régua própria e mais detalhada para uma ação, como a qualidade de Ofício (que troca cinco números de uma vez, não só um grau), ela vale sobre esta tabela geral. Esta tabela é o padrão para a ação que ainda não tem a própria.
+
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Decifrar uma página antiga é Hora (Longa). Duas Margens de sobra: o jogador pode dividir entre eixos (uma em Tempo, termina em Minuto; outra em Qualidade, a tradução sai livre de erro) ou empilhar as duas no mesmo eixo (Tempo duas vezes: termina no próprio Tick).</div>
 
 ## Os cinco modos de ação
 
@@ -143,21 +159,21 @@ Quer subir o muro **agora**, com a ronda chegando? Role, mesmo com chance mínim
 
 ## Ajuda e ação em grupo
 
-Duas formas, e cada ação diz qual vale para ela.
+Três formas de mais de uma pessoa entrar na mesma tarefa, e cada uma resolve um problema diferente.
 
-**Somar Acúmulo.** Em tarefa simples e divisível, os progressos somam: dois cavando o mesmo túnel produzem o dobro por intervalo.
+### Trabalho em Grupo
 
-**Apoiar o principal.** Quando o trabalho não se divide (uma fechadura, um paciente, uma peça no torno), um age e os outros apoiam. O ajudante rola contra a mesma Dificuldade:
+Tarefas em que cada pessoa a mais é trabalho extra completo: cavar um buraco, carregar entulho, revistar uma sala. Cada um faz o **próprio teste**, e os resultados somam além da Dificuldade.
 
-| O ajudante | Dá ao principal |
-|---|---|
-| falhou | nada |
-| passou | **+2** |
-| passou com Margem | **+2**, e mais **+1d6 por Margem** |
+### Ajudante
 
-**Teste coletivo.** Quando o grupo inteiro enfrenta a mesma coisa e o pior estraga para todos, o normal continua sendo cada um por si. Quando a cena pedir um resultado único: a Dificuldade sobe **+2 por pessoa**, rola quem tem o **pior pool**, e os outros apoiam pela tabela acima.
+Servir de auxiliar numa tarefa que **outra pessoa realiza**: ajudar uma cirurgia, forjar, dar aula. O ajudante rola contra **metade da Dificuldade** (arredondado para cima); a cada **6 pontos** acima disso, concede **+1** à jogada de quem está realizando a tarefa. Numa jogada estendida, pode-se usar a média das jogadas do ajudante em vez de rolar a cada intervalo. Há um limite de ajudantes por tarefa, a critério do Mestre.
 
-Repare no que esses números fazem sozinhos. Cada pessoa a mais sobe a Dificuldade em 2, e essa mesma pessoa devolve +2 se passar: **o companheiro competente é neutro, o incompetente é peso, e o perito melhora o grupo**. O grupo grande não é punido por ser grande, é punido por levar gente que não sabe o que está fazendo.
+### Teste Coletivo
+
+Um grupo inteiro precisa passar numa tarefa que é **responsabilidade de todos**: uma caça em grupo, um deslocamento furtivo coletivo, uma apresentação de dança. Quem rola é a pessoa com a **menor parada de dados** (empate: menor Habilidade; empate de novo, qualquer uma). **A Dificuldade sobe +2 por participante**, contando **todos** os participantes, inclusive quem rola. Um líder pode ser eleito e faz uma jogada própria: a cada **6 pontos** acima da Dificuldade, ele concede **+1d6** a quem tem a menor parada. A penalidade de cada participante entra na jogada final: um dançarino com −1 físico e dois furtivos com −2 de armadura somam −4 na jogada coletiva.
+
+<p class="formula">Ajudante: rola contra Dificuldade ÷ 2 (arredondado para cima) · +1 por 6 pontos acima<br>Teste Coletivo: Dificuldade +2 por participante · líder dá +1d6 por 6 pontos acima</p>
 
 ## Quando a primária e a secundária cobrem a mesma ação
 
