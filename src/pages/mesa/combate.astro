@@ -2148,6 +2148,23 @@ import CondDlg from '../../components/CondDlg.astro';
       const on = (i: string) => (el(i) as HTMLInputElement).checked;
       const zTick = on('rs-tick'), zIni = on('rs-ini'), zPv = on('rs-pv'),
         zCond = on('rs-cond'), zFora = on('rs-fora'), zLog = on('rs-log');
+      // M-21h (16/09/2026): a caixa da Vida SOZINHA avisa, e o mestre confirma,
+      // mesmo desenho do Sopro de Vida (`grid.astro`, função `curar`). A Centelha
+      // não está à mão nesta aba (não monta perfil por peça), então `passouDoLimite`
+      // recebe `null` e erra para o lado de deixar vivo, igual `ajustarVida` acima.
+      if (zPv) {
+        const sozinha = !zTick && !zIni && !zCond && !zFora;
+        const atravessaMorte = COMBS.some((c) => c.pv_max != null && passouDoLimite(c.pv_atual, c.pv_max, null));
+        if (sozinha || atravessaMorte) {
+          const ok = await uiConfirmar(
+            atravessaMorte
+              ? 'Restaurar a Vida ao máximo vai trazer de volta quem passou do limite da morte. É isso que está acontecendo?'
+              : 'Restaurar a Vida ao máximo de todos, sem mexer em mais nada. Confirma?',
+            { ok: 'Restaurar a Vida', cancelar: 'Cancelar' },
+          );
+          if (!ok) return;
+        }
+      }
       dlg.close();
       // A iniciativa é rolada ANTES de escrever, porque a régua de entrada é
       // relativa: o Tick de cada um depende do maior valor da cena inteira, e
@@ -2172,15 +2189,14 @@ import CondDlg from '../../components/CondDlg.astro';
         // morte (`M-21b` decisão 4): devolve `pv_atual = pv_max` em todas as peças
         // de uma vez, inclusive nas que passaram do limite.
         //
-        // **SE ISSO É LEGÍTIMO OU NÃO ESTÁ NA MESA (`M-21h`), e este comentário
-        // não decide.** A primeira redação daqui afirmava que era legítimo porque
-        // o botão "não cura, recomeça a cena", vindo acompanhado de zerar o
-        // relógio, limpar as condições e devolver quem estava fora. **A Revisora
-        // mediu que isso é o PADRÃO DA TELA e não uma necessidade:** o formulário
-        // logo acima tem SEIS caixas independentes, CINCO marcadas (a sexta,
-        // "apagar o registro", nasce desmarcada), e cada uma é lida no seu próprio
-        // `if`. Desmarcando as outras quatro do pacote, o clique devolve a Vida
-        // cheia de todo mundo, e a ENERGIA junto.
+        // **DECIDIDO em 16/09/2026 (`M-21h`): a caixa da Vida sozinha avisa, e o
+        // mestre confirma**, mesmo desenho de diálogo do Sopro de Vida
+        // (`grid.astro`, função `curar`). A confirmação mora ACIMA deste laço, no
+        // `onclick` de `rs-ok`, antes de `dlg.close()`: dispara quando "restaurar a
+        // Vida" é a ÚNICA caixa marcada, ou quando o clique alcança alguém abaixo
+        // do limite de morte. O formulário acima tem SEIS caixas independentes,
+        // cada uma lida no seu próprio `if`; desmarcando as outras quatro do
+        // pacote, o clique devolve a Vida cheia de todo mundo, e a ENERGIA junto.
         //
         // A ENERGIA NÃO É DETALHE, é o que separa os dois lados da mesma régua:
         // vizinho em `if` PRÓPRIO é opcional (some quando a caixa dele é
