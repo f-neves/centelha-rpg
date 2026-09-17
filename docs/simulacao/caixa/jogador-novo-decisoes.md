@@ -3087,7 +3087,7 @@ Personagem" (ficha) logo no topo — as duas coisas que um novato precisa ver, m
 desta lista: repensar se "Explorar Proezas" precisa estar citado na capa, e o que fazer com "50
 Proezas · 461 Técnicas · 24 Artes" logo abaixo — mas isso é preferência de capa, não conserto.
 
-### M-46 · custo de raça e idades divergentes · PARCIALMENTE DECIDIDO em 17/09/2026 · a parte das idades FEITA em 17/09/2026 (`<pendente>`)
+### M-46 · custo de raça e idades divergentes · PARCIALMENTE DECIDIDO em 17/09/2026 · a parte das idades FEITA em 17/09/2026 (`1a15cd0`)
 
 **A recalibração do custo de raça continua esperando** a fila `M` fechar, junto do orçamento
 (`M-43`) — isso não mudou.
