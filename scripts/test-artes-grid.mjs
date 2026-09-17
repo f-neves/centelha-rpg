@@ -172,10 +172,13 @@ eq(M.bonusPlano(pAE, 2), 4, 'Arma Elemental nível 2 = +4 de dano');
 eq(armaEl.grid.gatilho, 'ao-tocar', 'a Arma Elemental morde no golpe');
 eq(armaEl.grid.ancora, 'objeto', 'a Arma Elemental pega uma peça, não o corpo');
 
-// Metal Incandescente: escala própria, e a Duração dele já é em turnos.
+// Metal Incandescente: Dano FIXO desde 16/09/2026 (M-35), não escala mais por
+// Mana investida; a Duração continua em escala própria, já em Ticks.
 const metal = M.EFEITO['metal-incandescente'];
 const pMD = metal.parametros.find((p) => p.nome === 'Dano');
-eq(M.dadosDeDano(pMD, 4, fogo), 2, 'Metal Incandescente 4 = 2d6, pela escala do próprio Efeito');
+eq(pMD.tipo, 'fixo', 'Metal Incandescente: Dano é fixo, não substitui mais');
+eq(M.dadosDeDano(pMD, 0, fogo), 1, 'Metal Incandescente = 1d6, fixo, não dobra com a Terra');
+eq(M.dadosDeDano(pMD, 4, terra), 1, 'e o dado que veio no `n` não muda nada nele');
 ok(metal.grid.pegaItem, 'Metal Incandescente marca uma peça de metal');
 ok(!M.EFEITO['aura'].grid.pegaItem, 'a Aura não pega peça nenhuma');
 

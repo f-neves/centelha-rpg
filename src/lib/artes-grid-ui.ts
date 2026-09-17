@@ -507,6 +507,10 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       const custo = custoDe(efeitoSel, arteSel, nivelArte, escolhas, ctx.centelha);
       const pAlc = acha('Alcance'), pArea = acha('Área') || acha('Volume');
       const pDano = acha('Dano'), pDur = acha('Duração'), pComp = acha('Comprimento');
+      // Dano FIXO (Metal Incandescente, desde 16/09/2026) não entra em `pars`
+      // (parametrosAjustaveis tira o fixo fora): sem isto o dano dele nunca
+      // sairia da caixa de conjurar, porque `pDano` ficaria vazio e `nD` zero.
+      const pDanoFixo = efeitoSel?.parametros.find((p) => p.nome === 'Dano' && p.tipo === 'fixo');
       const nA = escolhas['Alcance'] ?? 0;
       const nAr = escolhas[pArea?.nome || ''] ?? 0;
       const nD = escolhas['Dano'] ?? 0;
@@ -518,7 +522,7 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
         ? `${efeitoSel.nome} de ${arteSel.nome}`
         : `${arteSel.nome} ${nD ? `${dadosDeDano({ nome: 'Dano', tipo: 'padrao' }, nD, arteSel)}d6` : 'bruto'}`;
       const turnos = pDur && nDu ? turnosDeDuracao(nDu, pDur.regua || 'breve') : 0;
-      const danoDados = pDano && nD ? dadosDeDano(pDano, nD, arteSel) : 0;
+      const danoDados = pDano && nD ? dadosDeDano(pDano, nD, arteSel) : (pDanoFixo ? dadosDeDano(pDanoFixo, 0, arteSel) : 0);
       const danoBonus = pDano && nD ? bonusPlano(pDano, nD) : 0;
       const partes: string[] = [];
       if (pAlc && nA) partes.push(`Alcance ${valorNoNivel(pAlc, nA)}`);

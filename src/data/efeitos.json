@@ -662,25 +662,15 @@
       },
       {
         "nome": "Dano",
-        "tipo": "substitui",
-        "substitui": "dano",
-        "unidade": "pontos de Mana",
-        "escala": [
-          "—",
-          "—",
-          "1d6",
-          "1d6",
-          "2d6",
-          "2d6",
-          "3d6"
-        ],
-        "nota": "1d6 a cada 2 pontos de Mana"
+        "tipo": "fixo",
+        "valor": "1d6",
+        "nota": "Fixo: não escala mais por Mana investida (redesenho de 16/09/2026)."
       },
       {
         "nome": "Duração",
         "tipo": "substitui",
         "substitui": "duracao",
-        "unidade": "Ticks",
+        "unidade": "pontos de Mana",
         "escala": [
           "1 tick",
           "6 Ticks",
@@ -690,7 +680,13 @@
           "30 Ticks",
           "36 Ticks"
         ],
-        "nota": "6 Ticks a cada ponto"
+        "nota": "6 Ticks por ponto de Mana investido"
+      },
+      {
+        "nome": "Penalidade",
+        "tipo": "fixo",
+        "valor": "1d6",
+        "nota": "Para ações físicas, enquanto o alvo estiver tocando o metal incandescente (vestindo a armadura ou empunhando a arma)."
       },
       {
         "nome": "Ataque",
@@ -698,7 +694,7 @@
         "valor": "Percepção + Acerto Arcano"
       }
     ],
-    "efeito": "Envia um ataque elemental que aquece o metal que acerta, mesmo se o ataque for bloqueado. Quem veste armadura, ou empunha uma arma, de metal se queima e sofre penalidade igual à quantidade de dados de dano jogados enquanto o efeito durar e estiver vestindo ou segurando o objeto.",
+    "efeito": "Envia um ataque elemental que aquece o metal que acerta, mesmo se o ataque for bloqueado. Quem veste armadura, ou empunha uma arma, de metal se queima e sofre a Penalidade em ações físicas enquanto o efeito durar e estiver vestindo ou segurando o objeto.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",

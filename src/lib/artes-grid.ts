@@ -266,11 +266,12 @@ export function areaEmM2(p: Parametro, n: number): number {
 
 /** Quantos d6 o parâmetro Dano vale, contando a Terra que dobra o dado. */
 export function dadosDeDano(p: Parametro, n: number, arte: Arte): number {
-  // O Efeito que traz escala PRÓPRIA já diz o dado ("1d6 a cada 2 pontos de
-  // Mana", no Metal Incandescente). A Terra não dobra em cima disso: o Efeito
-  // negociou o próprio número, e dobrá-lo seria contá-lo duas vezes.
-  if (p.tipo === 'substitui') {
-    const m = String(valorNoNivel(p, n)).match(/(\d+)\s*d6/i);
+  // O Efeito que traz escala PRÓPRIA já diz o dado, ou o Efeito com Dano FIXO
+  // (Metal Incandescente, desde 16/09/2026) já diz o dado direto no `valor`. A
+  // Terra não dobra em cima disso: o Efeito negociou o próprio número, e
+  // dobrá-lo seria contá-lo duas vezes.
+  if (p.tipo === 'substitui' || p.tipo === 'fixo') {
+    const m = String(p.tipo === 'fixo' ? p.valor : valorNoNivel(p, n)).match(/(\d+)\s*d6/i);
     return m ? parseInt(m[1], 10) : 0;
   }
   // Na régua do livro o nível É o número de dados, e aí sim a Terra dobra.

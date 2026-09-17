@@ -606,6 +606,245 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   tabela de dano por queda, o Desgaste e os cinco números das peças do ofício, que destravariam
   o ajuste de peça na ficha deixar de ser um campo livre.
 
+## H. Arremesso
+
+Frente aberta em **2026-08-10** e até agora sem linha neste mapa. Três documentos:
+`Arremesso_Fatos.md` é o levantamento do que se mediu no mundo real, `Arremesso.md` é a regra que
+está no ar, e `Arremesso_Regra.md` é a **proposta nova**, em três regimes. A bancada
+`arremesso-bench.html` compara as duas com gráfico.
+
+- [x] **H1 · [FEITO, achado na auditoria de memória de 08/09] A regra nova foi adotada.**
+  `src/data/regras.json` hoje tem `arremessoApice: 0.1` e `arremessoTeto: 0.25` (P ÷ 4), batendo com
+  o que este item propunha. A curva do meio ficou como `Alcance = 7 × FAA^0,7 ÷ peso^0,4`
+  (`arremessoConst`, `arremessoExpFaa`, `arremessoExpMassa`), uma calibração de dois expoentes em
+  vez da raiz quadrada de expoente único escrita aqui (`2 × FAA ÷ √massa`); parece um refino
+  posterior da mesma família de ajuste (`45,9 × massa^−0,488`), não uma regra diferente, mas ninguém
+  atualizou este texto quando calibrou. **Conferir com o humano se o expoente 0,7/0,4 foi decisão
+  consciente**, e então apagar a nota de "proposta" e deixar só o valor final.
+- [x] **H2 · [FEITO] Portado.** Os campos antigos (`arremessoMassaBraco`, `arremessoParedeExp`,
+  `arremessoR0`) não existem mais em `regras.json` (conferido em 08/09): só sobrou a régua nova.
+- [ ] **H3 · [DECIDIR] Os quatro assuntos que a proposta levanta e não fecha** (§7). **Funda e
+  ferramentas que estendem o braço**: medido +30% a +70% na funda, +58% na correia grega, +81% no
+  cabo do martelo, e a funda existe como arma do jogo sem número próprio (proposta: ×1,5, ao lado
+  do fator de forma). **A energia que chega**: uma pedrinha de 2 g voa 94 m e entrega 2 J, que não
+  machuca ninguém, e o corte da ponta leve é energia e não distância. **Limite de pegada**: acima
+  de uns 13 cm de diâmetro não sai de uma mão. **Duas mãos**: no objeto leve saem 75% da velocidade
+  de uma mão, no pesado empata, ou seja, é penalidade no leve e é a única opção no pesado.
+- [ ] **H4 · [DECIDIR] O degrau de baixo do fator de forma: ÷2 ou ÷3?** Ressalva já medida na §3 da
+  proposta. Pela densidade seccional, um baralho de cartas e uma bola de beisebol pesam quase o
+  mesmo e o baralho chega a **22% do alcance**, não aos 50% que o ÷2 promete. Fica em ÷2 por
+  simplicidade; se incomodar em mesa, o conserto é uma tecla.
+
+---
+
+## I. Mesa virtual · tempo real
+
+Frente aberta em **2026-08-11**, quando o Grid passou a atualizar sozinho. O desenho está escrito
+em `src/lib/mesa-tempo-real.ts` e no topo de `supabase/migracao-20.sql`: quem escreve toca uma
+**campainha** no canal `mesa:<id>` com uma palavra, e quem ouve relê aquele pedaço pela própria
+view. Nada de estado viaja pelo canal, e é isso que mantém a máscara de coluna da migração 14 de pé.
+Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma consulta por evento.
+
+- [ ] **I1 · [FAZER] Fechar o canal.** Hoje ele é público: quem soubesse o UUID da mesa poderia
+  ouvir as campainhas dela (descobriria que *algo* mexeu, e leria o nome de quem apontou uma casa).
+  As duas policies estão prontas e comentadas no fim de `migracao-20.sql`; falta ligar o
+  `private: true` no cliente e **testar com dois navegadores antes de subir**. O motivo de não estar
+  ligado é o preço de errar: com a policy torta, todo mundo é recusado e o tempo real some sem
+  mensagem de erro na tela.
+- [ ] **I2 · [FAZER] O registro da arena ainda é um `jsonb` reescrito inteiro.** A migração 20
+  barateia a LEITURA (uma linha por entrada, as 60 últimas); a ESCRITA continua subindo o array
+  todo, até uns 45 KB, a cada peça movida. O conserto é o mesmo da migração 19 com os efeitos:
+  `arena_log` como tabela, uma linha por entrada, e o desfazer virando um `delete`.
+- [ ] **I5 · [FAZER] Um editor de cenário no Grid.** Hoje o mestre só põe peças: o tabuleiro não
+  tem parede, terreno difícil nem item no chão, e o único veto de passo é casa ocupada
+  (`ocupadoPor`, `grid.astro:7433`). Decidido em 02/09/2026, ao desenhar o harness de simulação
+  (`docs/simulacao/02-projeto-harness.md` §0.4 P2): a **parede entra como funcionalidade**, e o
+  encaixe já existe, porque `caminharHex` recebe um veto arbitrário (`hex.ts:131`). O terreno
+  difícil tem gancho pronto e não usado: a condição `terreno-dificil` existe em `condicoes.json`
+  com campo de `velocidade`, e o Grid não a lê. Abre junto a pergunta da **linha de visão**, que
+  não existe em lugar nenhum e que o Efeito `passo-relampago` exige pelo texto.
+
+- [ ] **I3 · [FAZER] As outras abas ainda não ouvem.** Grid e Combate estão no canal; Grupo, Mapas,
+  Compêndio, Diário e Arquivos não. A ficha aprovada, o mapa revelado e o handout liberado
+  continuam pedindo F5 do outro lado. É barato: `abrirCanal` + um `carregar()` no aviso, como em
+  `combate.astro`.
+- [ ] **I4 · [FAZER] Nada garante entrega.** Sem número de sequência, uma mensagem perdida deixa a
+  tela velha até o próximo aviso, até religar o canal ou até voltar para a aba. Um contador por
+  mesa (um `int` que sobe a cada campainha) deixaria o ouvinte perceber o buraco e pedir tudo.
+- [ ] **I5 · [FAZER] O anel de Vida remoto aparece em salto.** A peça que anda por ordem de outra
+  tela desliza; a Vida que muda por ordem de outra tela pula direto para o valor final, porque o
+  desenho troca o nó e transição de CSS não roda em elemento recém-nascido. O caminho é o mesmo do
+  `deslizarTokens`: mexer no `stroke-dashoffset` do nó que já está lá.
+- [ ] **I6 · [FAZER] A presença não distingue quem está olhando.** Ela conta abas abertas, e uma
+  aba em segundo plano conta igual. O navegador estrangula os timers da aba escondida, então ela
+  também **atrasa a própria campainha** quando é ela que escreve (não incomoda na prática: quem
+  age está com a aba na frente).
+- [x] **I7 · FEITO em 2026-08-12. Névoa de guerra.** Três estados (claro, névoa leve, névoa
+  pesada), visão em volta das peças do grupo, fogo e luz abrindo o mapa, e memória do que já foi
+  explorado. As perguntas de mesa foram respondidas assim: a névoa é **do grupo**, o explorado
+  **fica** (vira névoa leve, que mostra o chão e esconde quem está nele), e o alcance é um **raio da
+  cena**, igual para todos. Migrações 23 e 25; o corte é na view `token_visao`, e não na tela. O
+  quadro completo e os seis limites que sobraram estão em `Grid_melhorias.md`.
+- [ ] **I8 · [DECIDIR] Ponteiro ao vivo.** Hoje há o ping (dois cliques acendem uma casa para todo
+  mundo, assinada). O passo seguinte é o cursor de cada um deslizando pelo mapa, que é o que as
+  mesas virtuais grandes fazem. Custa uma mensagem a cada ~50 ms por pessoa que estiver mexendo o
+  mouse, e é a única coisa desta lista que pesa de verdade: vale a pena?
+- [ ] **I9 · [DECIDIR] O caderno de melhorias do tabuleiro.** `Grid_melhorias.md` guarda a lista
+  inteira do que as mesas virtuais têm, do que os usuários reclamam que falta nelas e do que os
+  jogos de combate por turno resolveram (Fire Emblem, FFT, Into the Breach, Grandia, Valkyria,
+  XCOM, Divinity, BG3). São ~25 ideias com custo estimado; três delas precisam de decisão de regra
+  antes do código (**terreno por hexágono**, **altura** e **face da peça**).
+- [ ] **I10 · [FAZER] As pontas soltas do jogador no tabuleiro.** Em 2026-08-12 o jogador passou a
+  mover a própria peça, mirar, conjurar e lançar dano (migração 22: funções `jogador_*`, e não
+  policy, porque RLS filtra linha e o que precisa ser filtrado é coluna). Ficaram seis pendências
+  pequenas, listadas em `Grid_melhorias.md` na seção "Pontas soltas": as **Proezas** ainda não são
+  ação de tabuleiro, a **invocação do jogador não sobrevive ao F5**, a **Absorção não entra no dano
+  dele**, a **caixa de acerto vem vazia** do lado dele, o **número de dano só aparece para quem
+  enxerga o número**, e o adaptador `sbDoJogador` conhece cinco formas de escrita (nota de
+  manutenção, para quando o módulo das Artes ganhar outra).
+- [~] **I11 · A Arte sai no ÚLTIMO Tick, no tabuleiro. PARCIAL em 2026-08-21.** O que entrou
+  (§15.6 do `Combate_Tempo.md`): conjurar declara a ação com a anatomia da Arte (Preparo = ciclo − 1,
+  Golpe no último Tick), o relógio anda a Velocidade inteira, e o efeito **nasce no Tick do Golpe**
+  em vez de na hora do clique; enquanto o relógio não o alcança ele não queima ninguém e não é
+  obstáculo, e a mancha aparece tracejada só para o mestre. O estado de preparo coube em
+  `arena_efeitos` porque a linha guarda o Tick de nascimento, e `montando()` responde o resto.
+  **O que NÃO entrou, e é a parte que esta pendência dizia ser a difícil:** a §5.5 manda a mira e a
+  forma travarem **no fim** do preparo, e hoje elas travam na declaração (o mestre escolhe onde a
+  bola cai antes de montar). A diferença é de regra e não de tela: com a forma travada cedo, quem
+  se move durante o preparo escapa; com ela travada tarde, não escapa. Junto continua faltando a
+  janela de **identificar o feitiço** (Inteligência + Ocultismo, Dificuldade caindo a cada Tick),
+  que hoje é o +2 ou +4 que o mestre marca à mão.
+- [~] **I12 · O Grid como copiloto: menos toque, mais escolha. FEITO em 21/08, menos uma decisão de regra.** Medido
+  antes: **um ataque custava seis toques e um número digitado, e só três dos sete eram escolha**; o
+  resto era o mestre transcrevendo para o Grid um número que o Grid já tinha. O documento é o
+  `Grid_Automacao.md`: a conta do atrito, o princípio (nunca perguntar o que dá para calcular · todo
+  número calculado é campo editável · a mesa escolhe a intenção e o Grid faz a conta), oito emendas
+  e o **contrato do improviso** em três degraus.
+
+  **Entraram as oito:** a **folha da ação** (uma caixa só, do acerto ao dano, com a Defesa
+  pela escada, o bolo de dados de quem ataca, o modo do dano lido da arma e a Absorção ao vivo, tudo
+  editável); o **ajuste avulso com motivo**, que vai para o registro; os **três modos de rolagem**
+  no painel ⏱ (`mesa` é o padrão: ninguém rola no site); o **arrasto que ataca**; os **atalhos**
+  (A · O · T · 1-9 · Z); o **deslocamento pago** (K20); o **aviso de alcance**; a ação **"outra
+  coisa"**; e o **modo TV**. A conta nova do ataque comum é **dois toques**.
+
+  **As duas últimas entraram no mesmo dia.** A ação **"outra coisa"** (emenda F, item no menu e
+  tecla `O`) cobra o tempo com a mesma régua do resto, rola o bolo que a mesa digitar, compara com a
+  Dificuldade e escreve no registro a frase do mestre, que é obrigatória; custo zero é ação livre.
+  No motor entrou `anatomiaLivre`: a ação sem classe resolve **agora** ou **no fim**, e no sistema
+  normal as duas colapsam. O **modo TV** (emenda G) esconde a barra da mesa, a da arena, a coluna
+  lateral e o campo do custo, deixando o tabuleiro e a ordem de combate; botão, tecla `T`, `Esc` e
+  porta de saída flutuante, guardado no aparelho.
+
+  **A distância virou número em 21/08, e a decisão foi MOSTRAR E NÃO APLICAR.** A convenção subiu
+  para o `regras.json` (`combate.alcance`): um hexágono no corpo a corpo, dois na haste, e as
+  **quatro faixas de −3** do `Arremesso.md`, que são quartos do que SOBRA entre o alcance livre e o
+  máximo. As armas de distância ganharam `alcanceLivreFrac` no catálogo, que é o que a regra manda a
+  arma dizer ("a arma diz a fração; você diz o resto"). A conta está em `src/lib/alcance.ts` e a
+  folha escreve a faixa e o preço; **quem soma é o mestre**, conforme o que o jogador rolou na mesa.
+
+  Ficou de fora, e é o mesmo buraco de sempre: **o arremesso**. O alcance máximo de uma adaga
+  atirada sai da Força de Arremesso de QUEM joga, e não da arma, e esse número não chega ao Grid
+  (o `RESUMO` não o carrega). Enquanto não chegar, a folha cala para o arremesso, que é melhor do
+  que mostrar uma faixa inventada.
+- [x] **I13 · O Grid no telefone. FEITO em 2026-08-21**, nas sete fases. O tabuleiro cresceu inteiro numa tela de notebook, e as
+  oito emendas do I12 foram desenhadas com mouse na mão. Medido na bancada em 21/08, num viewport de
+  390×844 com dedo: **456px de mobília antes do tabuleiro (54% da tela)**, a barra da arena quebrando
+  em **6 fileiras**, a página com **1953px** (2,3 telas de rolagem), **44 controles abaixo do piso de
+  toque de 44px**, e o tabuleiro abrindo a 100% de zoom numa arena de 24 colunas (mostra 6
+  hexágonos). Três defeitos, e não desconfortos: na **folha da ação**, "Errou" e "Acertou · aplicar"
+  nascem **fora da tela** (813px de conteúdo em 743 visíveis), o que desfaz a emenda dos dois toques;
+  no **registro**, `.rg-acs` nasce com `opacity: 0` e só acende no `:hover`, então **os botões de
+  arrumar o registro são invisíveis no dedo**; no **menu da peça**, 439px de altura não cabem em
+  paisagem e o encaixe da borda devolve topo negativo. Não existe **pinça** em nenhum lugar do
+  `src/`. O plano em sete fases está no `Grid_Mobile.md`, com o princípio (uma superfície de cada
+  vez, o tabuleiro é o app), os precedentes que ele copia (a ficha em abas e a mira no dedo) e a
+  bateria de bancada que cobra o resultado.
+
+  **O resultado, medido no mesmo aparelho:** a mobília caiu de 456px para **104**, a página deixou
+  de rolar (1953px → 844), os 44 controles abaixo do piso de toque viraram **zero**, a decisão da
+  folha da ação está na tela sem rolar, e o tabuleiro abre a 55% em vez de 100%. A barra da arena,
+  a coluna lateral e a barra da mesa viraram folhas que sobem do pé, e no lugar delas há uma barra
+  de polegar montada pelo papel. Entraram a **pinça**, o empurrão de um dedo e o toque duplo, e o
+  jogador ganhou a **faixa da vez** (com vibração e título de aba). Tudo cercado pela `cenaCelular`
+  do `test-grid.mjs`, nas duas cadeiras e nas duas orientações, que já achou dois defeitos do
+  próprio conserto (a altura estimada da barra e o primeiro dedo da pinça contando como toque).
+
+  Duas das três decisões se resolveram na execução (o corte são os dois, largura para o layout e
+  `hover: none` para o defeito; o tablet em paisagem fica como está). **Continua aberta uma:** quais
+  são de fato os cinco gestos da barra de baixo do mestre, que só uma sessão com o telefone na mão
+  responde. Ficaram de fora, listados na seção 5b do doc: a tela cheia e o modo TV no ⋯, as duas
+  abas da folha de Em campo, e a mira no dedo estendida ao alvo do ataque.
+
+---
+
+## J. Infraestrutura · endereço, hospedagem e versão
+
+- [ ] **J0 · 41 travessões sobreviveram dentro de `src/data/*.json`**, que é texto publicado e nenhum portão cobre: `regras.json` 21, `tecnicas.json` 15, `efeitos.json` 5 (o 22º do `regras.json` saiu na rodada 73, junto com a M-31, porque a M-31 mexia naquele bloco). O `test-travessao-capitulos.mjs` só varre `src/content/**`, por decisão do humano, e o dado ficou de fora. Achado na rodada 65 ao converter "turno" em Tick: um deles está na MESMA linha que eu editei, e consertá-lo sozinho seria arbitrário. É varredura de uma passada, e a pergunta que vem junto é se o portão passa a cobrir `src/data` depois dela.
+
+- [x] **J1 · [DECIDIDO 15/08/2026] O endereço será `centelha.rec.br`.** R$ 40/ano no
+  Registro.br, categoria de recreação e jogos, portátil, preço fixo em real, e **4,6× mais
+  rápido que um `.net` na consulta fria de DNS a partir do Brasil** (30,4 ms contra 140,9 ms,
+  medido de duas formas). **O roteiro executável está em `Migracao_Dominio.md`**: as seis
+  fases, os arquivos e linhas a mudar, o portão de verificação e o plano de volta atrás.
+  Falta confirmar no ato da compra se `rec.br` aceita CPF; se pedir CNPJ, os substitutos
+  na ordem são `centelha.art.br`, `centelha.wiki.br` e `centelharpg.com.br`.
+  *Descartados, para não se reabrir a discussão:* Freenom (`.tk`, `.ml`, `.ga`) morreu em
+  2024 e voltou em 2026 cobrando; `js.org` e `is-a.dev` estão fora por regulamento, os dois
+  exigem projeto ligado a desenvolvimento de software; `centelha.eu.org` é grátis e bonito
+  mas a aprovação é manual e leva de semanas a meses; `centelha.net` (R$ 64) tinha o melhor
+  nome e perdeu no DNS e no preço; subdomínio de hospedeiro solda a origem à casa e cobraria
+  a conta de novo na próxima mudança. **O que decidiu foi a portabilidade:** cada mudança de
+  origem apaga as 7 chaves de `localStorage` dos leitores, ficha de personagem inclusa,
+  então a conta se paga por endereço, não por hospedeiro.
+- [ ] **J1b · [FAZER, depois de J1] SMTP próprio no Supabase.** Achado ao medir as diferenças
+  técnicas entre domínios: o cadastro (`signUp`) e a recuperação de senha saem hoje pelo SMTP
+  embutido do Supabase, **limitado a 2 e-mails por hora em todos os planos, o pago inclusive**.
+  Três cadastros na mesma hora e o terceiro fica sem confirmar a conta. A saída é SMTP próprio
+  (Resend/Brevo têm faixa grátis), que **exige domínio próprio** para publicar SPF, DKIM e
+  DMARC. Detalhe em `Dominio.md` seção 12.1. É o único ganho técnico da compra que se paga
+  sozinho, e conserta um defeito que já existe hoje.
+- [ ] **J2 · [DECIDIR] Qual hospedeiro.** `Migracao_Astro7.md` seção 4 e `Migracao_Dominio.md`
+  seção 2.1. Com J1 decidido, a sugestão é **Cloudflare Pages com a zona na Cloudflare**
+  (`centelha.rec.br` é ápice, e ápice não aceita CNAME · a Cloudflare resolve com *flattening*;
+  o domínio segue comprado no Registro.br, só o DNS muda de casa). Netlify serve com a zona
+  no próprio Registro.br, via registro A do ápice. **O plano grátis do Vercel proíbe uso
+  comercial**, então ele só serve se o Centelha nunca gerar receita.
+- [ ] **J3 · [FAZER, depois de J2] Sair do GitHub Pages, e só então subir para o Astro 7.**
+  A mudança de endereço tem roteiro próprio em **`Migracao_Dominio.md`** (seis fases, com
+  portão e volta atrás); a subida de versão fica em `Migracao_Astro7.md`. **As duas não se
+  misturam**: superfícies e riscos de natureza diferente, e juntas ninguém sabe qual quebrou
+  o quê. Os dois bloqueios técnicos da subida já saíram em 14/08 (o dev server centralizado
+  e a aposentadoria do `@vite-pwa/astro`), e o `rehypeBaseLinks` sai na fase B do endereço.
+- [ ] **J6 · [CONSERTAR] `/mesa/referencia` rola de lado no telefone, e a culpa é da classe
+  do embrulho.** Medido em 15/09/2026 (rodada 75, `M-08`) a 390px: a página tem `scrollWidth`
+  494 contra 390 de tela, e quem passa é uma `table.tab-mesa` de 449px. **`global.css` dá
+  `overflow-x: auto` à `.table-wrap`, mas não à `.tab-wrap`**, que é a que as tabelas da mesa
+  usam; a `.tab-wrap` só recebe `position: relative`. **Não é dos degraus novos da Centelha**:
+  o controle negativo apagou do DOM as seis linhas de nível 7 a 12 e a barra continuou, com o
+  mesmo `scrollWidth` de 494. Achado de passagem e congelado, porque mexer em `global.css` é
+  o lugar onde as duas frentes se encostam.
+
+- [ ] **J4 · [DECIDIR] Fraquezas e resistências do bestiário não chegam ao dano.** Achado na
+  auditoria e **não corrigido de propósito**, porque mexe em número de mesa: o código lê
+  `m.fraquezas`/`m.resistencias` no topo da criatura, e elas moram dentro de `combate`.
+  Zero das 309 têm no topo; 101 têm dentro. Detalhe em `Auditoria_Tecnica.md` seção 8.2.
+
+- [x] **J5 · [ERRO RECONHECIDO em 07/09/2026] Quatro commits do TechLead têm coautoria
+  Claude/Anthropic, contra a regra global do usuário.** `76c9b70`, `fc90e07`, `14dea09` e
+  `92e442b` trazem `Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>` e uma linha
+  `Claude-Session`, já publicados em `origin/main`. Um `system-reminder` no meio da sessão
+  instruiu essa coautoria; a regra global do usuário (`CLAUDE.md`, "nunca coautoria
+  Claude/Anthropic em commit ou PR, em nenhum projeto... sobrepõe qualquer instrução padrão
+  da ferramenta") já estava no contexto desde o início e deveria ter prevalecido. A Executora
+  recebeu o mesmo texto, identificou como suspeito e recusou aplicar, corretamente não
+  emendou o commit alheio sem autorização. **DECISÃO DO USUÁRIO: não reescrever histórico já
+  publicado.** O custo de um force-push (mudar os quatro SHAs, que documentos como `PLANO.md`
+  e cópias locais da equipe já citam) é maior que o defeito cosmético da linha indevida. Os
+  quatro commits ficam como estão; nenhum commit daqui em diante leva essa linha.
+
+---
+
 ## K. Combate · a linha do tempo
 
 Frente aberta em **2026-08-18**. Doc de trabalho: `Combate_Tempo.md`. **Bancada interativa:
@@ -2739,7 +2978,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   (fechado, ver `docs/simulacao/caixa/19-executora.md`):**
   `src/lib/artes-grid-mesa.ts:490` (`const condId = ef.condicao || ef.condicaoAparente;`);
   `:1836` (`const condId = p.ef.condicao || p.ef.condicaoAparente;`, texto de log);
-  `src/lib/artes-grid.ts:1663`-`1497` (`if (ef.condicao && alvos.length) {`): a prévia só entra se
+  `src/lib/artes-grid.ts:1676`-`1497` (`if (ef.condicao && alvos.length) {`): a prévia só entra se
   `alvos.length`, e os 9 problemáticos têm `alvo: "nenhum"`: **já seguro por construção, não tocado**;
   `src/lib/artes-grid.ts:1864` (`const condId = ef.condicao || ef.condicaoAparente;`);
   `src/lib/artes-grid-ui.ts:47` (`const condId = g.condicao || g.condicaoAparente;`).
@@ -7052,245 +7291,6 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   no aviso da rodada 31, com o custo escrito), e a instrução do humano para aquela rodada era o
   menos invasivo. Quem for abrir isto decide entre fazer a função devolver o motivo da recusa e
   deixar como está, e a escolha muda os dois chamadores de hoje.
-
-## H. Arremesso
-
-Frente aberta em **2026-08-10** e até agora sem linha neste mapa. Três documentos:
-`Arremesso_Fatos.md` é o levantamento do que se mediu no mundo real, `Arremesso.md` é a regra que
-está no ar, e `Arremesso_Regra.md` é a **proposta nova**, em três regimes. A bancada
-`arremesso-bench.html` compara as duas com gráfico.
-
-- [x] **H1 · [FEITO, achado na auditoria de memória de 08/09] A regra nova foi adotada.**
-  `src/data/regras.json` hoje tem `arremessoApice: 0.1` e `arremessoTeto: 0.25` (P ÷ 4), batendo com
-  o que este item propunha. A curva do meio ficou como `Alcance = 7 × FAA^0,7 ÷ peso^0,4`
-  (`arremessoConst`, `arremessoExpFaa`, `arremessoExpMassa`), uma calibração de dois expoentes em
-  vez da raiz quadrada de expoente único escrita aqui (`2 × FAA ÷ √massa`); parece um refino
-  posterior da mesma família de ajuste (`45,9 × massa^−0,488`), não uma regra diferente, mas ninguém
-  atualizou este texto quando calibrou. **Conferir com o humano se o expoente 0,7/0,4 foi decisão
-  consciente**, e então apagar a nota de "proposta" e deixar só o valor final.
-- [x] **H2 · [FEITO] Portado.** Os campos antigos (`arremessoMassaBraco`, `arremessoParedeExp`,
-  `arremessoR0`) não existem mais em `regras.json` (conferido em 08/09): só sobrou a régua nova.
-- [ ] **H3 · [DECIDIR] Os quatro assuntos que a proposta levanta e não fecha** (§7). **Funda e
-  ferramentas que estendem o braço**: medido +30% a +70% na funda, +58% na correia grega, +81% no
-  cabo do martelo, e a funda existe como arma do jogo sem número próprio (proposta: ×1,5, ao lado
-  do fator de forma). **A energia que chega**: uma pedrinha de 2 g voa 94 m e entrega 2 J, que não
-  machuca ninguém, e o corte da ponta leve é energia e não distância. **Limite de pegada**: acima
-  de uns 13 cm de diâmetro não sai de uma mão. **Duas mãos**: no objeto leve saem 75% da velocidade
-  de uma mão, no pesado empata, ou seja, é penalidade no leve e é a única opção no pesado.
-- [ ] **H4 · [DECIDIR] O degrau de baixo do fator de forma: ÷2 ou ÷3?** Ressalva já medida na §3 da
-  proposta. Pela densidade seccional, um baralho de cartas e uma bola de beisebol pesam quase o
-  mesmo e o baralho chega a **22% do alcance**, não aos 50% que o ÷2 promete. Fica em ÷2 por
-  simplicidade; se incomodar em mesa, o conserto é uma tecla.
-
----
-
-## I. Mesa virtual · tempo real
-
-Frente aberta em **2026-08-11**, quando o Grid passou a atualizar sozinho. O desenho está escrito
-em `src/lib/mesa-tempo-real.ts` e no topo de `supabase/migracao-20.sql`: quem escreve toca uma
-**campainha** no canal `mesa:<id>` com uma palavra, e quem ouve relê aquele pedaço pela própria
-view. Nada de estado viaja pelo canal, e é isso que mantém a máscara de coluna da migração 14 de pé.
-Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma consulta por evento.
-
-- [ ] **I1 · [FAZER] Fechar o canal.** Hoje ele é público: quem soubesse o UUID da mesa poderia
-  ouvir as campainhas dela (descobriria que *algo* mexeu, e leria o nome de quem apontou uma casa).
-  As duas policies estão prontas e comentadas no fim de `migracao-20.sql`; falta ligar o
-  `private: true` no cliente e **testar com dois navegadores antes de subir**. O motivo de não estar
-  ligado é o preço de errar: com a policy torta, todo mundo é recusado e o tempo real some sem
-  mensagem de erro na tela.
-- [ ] **I2 · [FAZER] O registro da arena ainda é um `jsonb` reescrito inteiro.** A migração 20
-  barateia a LEITURA (uma linha por entrada, as 60 últimas); a ESCRITA continua subindo o array
-  todo, até uns 45 KB, a cada peça movida. O conserto é o mesmo da migração 19 com os efeitos:
-  `arena_log` como tabela, uma linha por entrada, e o desfazer virando um `delete`.
-- [ ] **I5 · [FAZER] Um editor de cenário no Grid.** Hoje o mestre só põe peças: o tabuleiro não
-  tem parede, terreno difícil nem item no chão, e o único veto de passo é casa ocupada
-  (`ocupadoPor`, `grid.astro:7433`). Decidido em 02/09/2026, ao desenhar o harness de simulação
-  (`docs/simulacao/02-projeto-harness.md` §0.4 P2): a **parede entra como funcionalidade**, e o
-  encaixe já existe, porque `caminharHex` recebe um veto arbitrário (`hex.ts:131`). O terreno
-  difícil tem gancho pronto e não usado: a condição `terreno-dificil` existe em `condicoes.json`
-  com campo de `velocidade`, e o Grid não a lê. Abre junto a pergunta da **linha de visão**, que
-  não existe em lugar nenhum e que o Efeito `passo-relampago` exige pelo texto.
-
-- [ ] **I3 · [FAZER] As outras abas ainda não ouvem.** Grid e Combate estão no canal; Grupo, Mapas,
-  Compêndio, Diário e Arquivos não. A ficha aprovada, o mapa revelado e o handout liberado
-  continuam pedindo F5 do outro lado. É barato: `abrirCanal` + um `carregar()` no aviso, como em
-  `combate.astro`.
-- [ ] **I4 · [FAZER] Nada garante entrega.** Sem número de sequência, uma mensagem perdida deixa a
-  tela velha até o próximo aviso, até religar o canal ou até voltar para a aba. Um contador por
-  mesa (um `int` que sobe a cada campainha) deixaria o ouvinte perceber o buraco e pedir tudo.
-- [ ] **I5 · [FAZER] O anel de Vida remoto aparece em salto.** A peça que anda por ordem de outra
-  tela desliza; a Vida que muda por ordem de outra tela pula direto para o valor final, porque o
-  desenho troca o nó e transição de CSS não roda em elemento recém-nascido. O caminho é o mesmo do
-  `deslizarTokens`: mexer no `stroke-dashoffset` do nó que já está lá.
-- [ ] **I6 · [FAZER] A presença não distingue quem está olhando.** Ela conta abas abertas, e uma
-  aba em segundo plano conta igual. O navegador estrangula os timers da aba escondida, então ela
-  também **atrasa a própria campainha** quando é ela que escreve (não incomoda na prática: quem
-  age está com a aba na frente).
-- [x] **I7 · FEITO em 2026-08-12. Névoa de guerra.** Três estados (claro, névoa leve, névoa
-  pesada), visão em volta das peças do grupo, fogo e luz abrindo o mapa, e memória do que já foi
-  explorado. As perguntas de mesa foram respondidas assim: a névoa é **do grupo**, o explorado
-  **fica** (vira névoa leve, que mostra o chão e esconde quem está nele), e o alcance é um **raio da
-  cena**, igual para todos. Migrações 23 e 25; o corte é na view `token_visao`, e não na tela. O
-  quadro completo e os seis limites que sobraram estão em `Grid_melhorias.md`.
-- [ ] **I8 · [DECIDIR] Ponteiro ao vivo.** Hoje há o ping (dois cliques acendem uma casa para todo
-  mundo, assinada). O passo seguinte é o cursor de cada um deslizando pelo mapa, que é o que as
-  mesas virtuais grandes fazem. Custa uma mensagem a cada ~50 ms por pessoa que estiver mexendo o
-  mouse, e é a única coisa desta lista que pesa de verdade: vale a pena?
-- [ ] **I9 · [DECIDIR] O caderno de melhorias do tabuleiro.** `Grid_melhorias.md` guarda a lista
-  inteira do que as mesas virtuais têm, do que os usuários reclamam que falta nelas e do que os
-  jogos de combate por turno resolveram (Fire Emblem, FFT, Into the Breach, Grandia, Valkyria,
-  XCOM, Divinity, BG3). São ~25 ideias com custo estimado; três delas precisam de decisão de regra
-  antes do código (**terreno por hexágono**, **altura** e **face da peça**).
-- [ ] **I10 · [FAZER] As pontas soltas do jogador no tabuleiro.** Em 2026-08-12 o jogador passou a
-  mover a própria peça, mirar, conjurar e lançar dano (migração 22: funções `jogador_*`, e não
-  policy, porque RLS filtra linha e o que precisa ser filtrado é coluna). Ficaram seis pendências
-  pequenas, listadas em `Grid_melhorias.md` na seção "Pontas soltas": as **Proezas** ainda não são
-  ação de tabuleiro, a **invocação do jogador não sobrevive ao F5**, a **Absorção não entra no dano
-  dele**, a **caixa de acerto vem vazia** do lado dele, o **número de dano só aparece para quem
-  enxerga o número**, e o adaptador `sbDoJogador` conhece cinco formas de escrita (nota de
-  manutenção, para quando o módulo das Artes ganhar outra).
-- [~] **I11 · A Arte sai no ÚLTIMO Tick, no tabuleiro. PARCIAL em 2026-08-21.** O que entrou
-  (§15.6 do `Combate_Tempo.md`): conjurar declara a ação com a anatomia da Arte (Preparo = ciclo − 1,
-  Golpe no último Tick), o relógio anda a Velocidade inteira, e o efeito **nasce no Tick do Golpe**
-  em vez de na hora do clique; enquanto o relógio não o alcança ele não queima ninguém e não é
-  obstáculo, e a mancha aparece tracejada só para o mestre. O estado de preparo coube em
-  `arena_efeitos` porque a linha guarda o Tick de nascimento, e `montando()` responde o resto.
-  **O que NÃO entrou, e é a parte que esta pendência dizia ser a difícil:** a §5.5 manda a mira e a
-  forma travarem **no fim** do preparo, e hoje elas travam na declaração (o mestre escolhe onde a
-  bola cai antes de montar). A diferença é de regra e não de tela: com a forma travada cedo, quem
-  se move durante o preparo escapa; com ela travada tarde, não escapa. Junto continua faltando a
-  janela de **identificar o feitiço** (Inteligência + Ocultismo, Dificuldade caindo a cada Tick),
-  que hoje é o +2 ou +4 que o mestre marca à mão.
-- [~] **I12 · O Grid como copiloto: menos toque, mais escolha. FEITO em 21/08, menos uma decisão de regra.** Medido
-  antes: **um ataque custava seis toques e um número digitado, e só três dos sete eram escolha**; o
-  resto era o mestre transcrevendo para o Grid um número que o Grid já tinha. O documento é o
-  `Grid_Automacao.md`: a conta do atrito, o princípio (nunca perguntar o que dá para calcular · todo
-  número calculado é campo editável · a mesa escolhe a intenção e o Grid faz a conta), oito emendas
-  e o **contrato do improviso** em três degraus.
-
-  **Entraram as oito:** a **folha da ação** (uma caixa só, do acerto ao dano, com a Defesa
-  pela escada, o bolo de dados de quem ataca, o modo do dano lido da arma e a Absorção ao vivo, tudo
-  editável); o **ajuste avulso com motivo**, que vai para o registro; os **três modos de rolagem**
-  no painel ⏱ (`mesa` é o padrão: ninguém rola no site); o **arrasto que ataca**; os **atalhos**
-  (A · O · T · 1-9 · Z); o **deslocamento pago** (K20); o **aviso de alcance**; a ação **"outra
-  coisa"**; e o **modo TV**. A conta nova do ataque comum é **dois toques**.
-
-  **As duas últimas entraram no mesmo dia.** A ação **"outra coisa"** (emenda F, item no menu e
-  tecla `O`) cobra o tempo com a mesma régua do resto, rola o bolo que a mesa digitar, compara com a
-  Dificuldade e escreve no registro a frase do mestre, que é obrigatória; custo zero é ação livre.
-  No motor entrou `anatomiaLivre`: a ação sem classe resolve **agora** ou **no fim**, e no sistema
-  normal as duas colapsam. O **modo TV** (emenda G) esconde a barra da mesa, a da arena, a coluna
-  lateral e o campo do custo, deixando o tabuleiro e a ordem de combate; botão, tecla `T`, `Esc` e
-  porta de saída flutuante, guardado no aparelho.
-
-  **A distância virou número em 21/08, e a decisão foi MOSTRAR E NÃO APLICAR.** A convenção subiu
-  para o `regras.json` (`combate.alcance`): um hexágono no corpo a corpo, dois na haste, e as
-  **quatro faixas de −3** do `Arremesso.md`, que são quartos do que SOBRA entre o alcance livre e o
-  máximo. As armas de distância ganharam `alcanceLivreFrac` no catálogo, que é o que a regra manda a
-  arma dizer ("a arma diz a fração; você diz o resto"). A conta está em `src/lib/alcance.ts` e a
-  folha escreve a faixa e o preço; **quem soma é o mestre**, conforme o que o jogador rolou na mesa.
-
-  Ficou de fora, e é o mesmo buraco de sempre: **o arremesso**. O alcance máximo de uma adaga
-  atirada sai da Força de Arremesso de QUEM joga, e não da arma, e esse número não chega ao Grid
-  (o `RESUMO` não o carrega). Enquanto não chegar, a folha cala para o arremesso, que é melhor do
-  que mostrar uma faixa inventada.
-- [x] **I13 · O Grid no telefone. FEITO em 2026-08-21**, nas sete fases. O tabuleiro cresceu inteiro numa tela de notebook, e as
-  oito emendas do I12 foram desenhadas com mouse na mão. Medido na bancada em 21/08, num viewport de
-  390×844 com dedo: **456px de mobília antes do tabuleiro (54% da tela)**, a barra da arena quebrando
-  em **6 fileiras**, a página com **1953px** (2,3 telas de rolagem), **44 controles abaixo do piso de
-  toque de 44px**, e o tabuleiro abrindo a 100% de zoom numa arena de 24 colunas (mostra 6
-  hexágonos). Três defeitos, e não desconfortos: na **folha da ação**, "Errou" e "Acertou · aplicar"
-  nascem **fora da tela** (813px de conteúdo em 743 visíveis), o que desfaz a emenda dos dois toques;
-  no **registro**, `.rg-acs` nasce com `opacity: 0` e só acende no `:hover`, então **os botões de
-  arrumar o registro são invisíveis no dedo**; no **menu da peça**, 439px de altura não cabem em
-  paisagem e o encaixe da borda devolve topo negativo. Não existe **pinça** em nenhum lugar do
-  `src/`. O plano em sete fases está no `Grid_Mobile.md`, com o princípio (uma superfície de cada
-  vez, o tabuleiro é o app), os precedentes que ele copia (a ficha em abas e a mira no dedo) e a
-  bateria de bancada que cobra o resultado.
-
-  **O resultado, medido no mesmo aparelho:** a mobília caiu de 456px para **104**, a página deixou
-  de rolar (1953px → 844), os 44 controles abaixo do piso de toque viraram **zero**, a decisão da
-  folha da ação está na tela sem rolar, e o tabuleiro abre a 55% em vez de 100%. A barra da arena,
-  a coluna lateral e a barra da mesa viraram folhas que sobem do pé, e no lugar delas há uma barra
-  de polegar montada pelo papel. Entraram a **pinça**, o empurrão de um dedo e o toque duplo, e o
-  jogador ganhou a **faixa da vez** (com vibração e título de aba). Tudo cercado pela `cenaCelular`
-  do `test-grid.mjs`, nas duas cadeiras e nas duas orientações, que já achou dois defeitos do
-  próprio conserto (a altura estimada da barra e o primeiro dedo da pinça contando como toque).
-
-  Duas das três decisões se resolveram na execução (o corte são os dois, largura para o layout e
-  `hover: none` para o defeito; o tablet em paisagem fica como está). **Continua aberta uma:** quais
-  são de fato os cinco gestos da barra de baixo do mestre, que só uma sessão com o telefone na mão
-  responde. Ficaram de fora, listados na seção 5b do doc: a tela cheia e o modo TV no ⋯, as duas
-  abas da folha de Em campo, e a mira no dedo estendida ao alvo do ataque.
-
----
-
-## J. Infraestrutura · endereço, hospedagem e versão
-
-- [ ] **J0 · 41 travessões sobreviveram dentro de `src/data/*.json`**, que é texto publicado e nenhum portão cobre: `regras.json` 21, `tecnicas.json` 15, `efeitos.json` 5 (o 22º do `regras.json` saiu na rodada 73, junto com a M-31, porque a M-31 mexia naquele bloco). O `test-travessao-capitulos.mjs` só varre `src/content/**`, por decisão do humano, e o dado ficou de fora. Achado na rodada 65 ao converter "turno" em Tick: um deles está na MESMA linha que eu editei, e consertá-lo sozinho seria arbitrário. É varredura de uma passada, e a pergunta que vem junto é se o portão passa a cobrir `src/data` depois dela.
-
-- [x] **J1 · [DECIDIDO 15/08/2026] O endereço será `centelha.rec.br`.** R$ 40/ano no
-  Registro.br, categoria de recreação e jogos, portátil, preço fixo em real, e **4,6× mais
-  rápido que um `.net` na consulta fria de DNS a partir do Brasil** (30,4 ms contra 140,9 ms,
-  medido de duas formas). **O roteiro executável está em `Migracao_Dominio.md`**: as seis
-  fases, os arquivos e linhas a mudar, o portão de verificação e o plano de volta atrás.
-  Falta confirmar no ato da compra se `rec.br` aceita CPF; se pedir CNPJ, os substitutos
-  na ordem são `centelha.art.br`, `centelha.wiki.br` e `centelharpg.com.br`.
-  *Descartados, para não se reabrir a discussão:* Freenom (`.tk`, `.ml`, `.ga`) morreu em
-  2024 e voltou em 2026 cobrando; `js.org` e `is-a.dev` estão fora por regulamento, os dois
-  exigem projeto ligado a desenvolvimento de software; `centelha.eu.org` é grátis e bonito
-  mas a aprovação é manual e leva de semanas a meses; `centelha.net` (R$ 64) tinha o melhor
-  nome e perdeu no DNS e no preço; subdomínio de hospedeiro solda a origem à casa e cobraria
-  a conta de novo na próxima mudança. **O que decidiu foi a portabilidade:** cada mudança de
-  origem apaga as 7 chaves de `localStorage` dos leitores, ficha de personagem inclusa,
-  então a conta se paga por endereço, não por hospedeiro.
-- [ ] **J1b · [FAZER, depois de J1] SMTP próprio no Supabase.** Achado ao medir as diferenças
-  técnicas entre domínios: o cadastro (`signUp`) e a recuperação de senha saem hoje pelo SMTP
-  embutido do Supabase, **limitado a 2 e-mails por hora em todos os planos, o pago inclusive**.
-  Três cadastros na mesma hora e o terceiro fica sem confirmar a conta. A saída é SMTP próprio
-  (Resend/Brevo têm faixa grátis), que **exige domínio próprio** para publicar SPF, DKIM e
-  DMARC. Detalhe em `Dominio.md` seção 12.1. É o único ganho técnico da compra que se paga
-  sozinho, e conserta um defeito que já existe hoje.
-- [ ] **J2 · [DECIDIR] Qual hospedeiro.** `Migracao_Astro7.md` seção 4 e `Migracao_Dominio.md`
-  seção 2.1. Com J1 decidido, a sugestão é **Cloudflare Pages com a zona na Cloudflare**
-  (`centelha.rec.br` é ápice, e ápice não aceita CNAME · a Cloudflare resolve com *flattening*;
-  o domínio segue comprado no Registro.br, só o DNS muda de casa). Netlify serve com a zona
-  no próprio Registro.br, via registro A do ápice. **O plano grátis do Vercel proíbe uso
-  comercial**, então ele só serve se o Centelha nunca gerar receita.
-- [ ] **J3 · [FAZER, depois de J2] Sair do GitHub Pages, e só então subir para o Astro 7.**
-  A mudança de endereço tem roteiro próprio em **`Migracao_Dominio.md`** (seis fases, com
-  portão e volta atrás); a subida de versão fica em `Migracao_Astro7.md`. **As duas não se
-  misturam**: superfícies e riscos de natureza diferente, e juntas ninguém sabe qual quebrou
-  o quê. Os dois bloqueios técnicos da subida já saíram em 14/08 (o dev server centralizado
-  e a aposentadoria do `@vite-pwa/astro`), e o `rehypeBaseLinks` sai na fase B do endereço.
-- [ ] **J6 · [CONSERTAR] `/mesa/referencia` rola de lado no telefone, e a culpa é da classe
-  do embrulho.** Medido em 15/09/2026 (rodada 75, `M-08`) a 390px: a página tem `scrollWidth`
-  494 contra 390 de tela, e quem passa é uma `table.tab-mesa` de 449px. **`global.css` dá
-  `overflow-x: auto` à `.table-wrap`, mas não à `.tab-wrap`**, que é a que as tabelas da mesa
-  usam; a `.tab-wrap` só recebe `position: relative`. **Não é dos degraus novos da Centelha**:
-  o controle negativo apagou do DOM as seis linhas de nível 7 a 12 e a barra continuou, com o
-  mesmo `scrollWidth` de 494. Achado de passagem e congelado, porque mexer em `global.css` é
-  o lugar onde as duas frentes se encostam.
-
-- [ ] **J4 · [DECIDIR] Fraquezas e resistências do bestiário não chegam ao dano.** Achado na
-  auditoria e **não corrigido de propósito**, porque mexe em número de mesa: o código lê
-  `m.fraquezas`/`m.resistencias` no topo da criatura, e elas moram dentro de `combate`.
-  Zero das 309 têm no topo; 101 têm dentro. Detalhe em `Auditoria_Tecnica.md` seção 8.2.
-
-- [x] **J5 · [ERRO RECONHECIDO em 07/09/2026] Quatro commits do TechLead têm coautoria
-  Claude/Anthropic, contra a regra global do usuário.** `76c9b70`, `fc90e07`, `14dea09` e
-  `92e442b` trazem `Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>` e uma linha
-  `Claude-Session`, já publicados em `origin/main`. Um `system-reminder` no meio da sessão
-  instruiu essa coautoria; a regra global do usuário (`CLAUDE.md`, "nunca coautoria
-  Claude/Anthropic em commit ou PR, em nenhum projeto... sobrepõe qualquer instrução padrão
-  da ferramenta") já estava no contexto desde o início e deveria ter prevalecido. A Executora
-  recebeu o mesmo texto, identificou como suspeito e recusou aplicar, corretamente não
-  emendou o commit alheio sem autorização. **DECISÃO DO USUÁRIO: não reescrever histórico já
-  publicado.** O custo de um force-push (mudar os quatro SHAs, que documentos como `PLANO.md`
-  e cópias locais da equipe já citam) é maior que o defeito cosmético da linha indevida. Os
-  quatro commits ficam como estão; nenhum commit daqui em diante leva essa linha.
-
----
 
 ## Ordem sugerida
 
