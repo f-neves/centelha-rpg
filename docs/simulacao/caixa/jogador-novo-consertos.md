@@ -844,7 +844,7 @@ O conserto destes **não é no `.md`**. Ver a tabela de donos no alto.
 
 ### C-46 (44) · Vontade listada como Atributo da perícia Integridade
 
-> **FEITO**, com a decisão M-06 de 15/09/2026 (Virtude e Vontade não se somam a nada):
+> **FEITO** `4496e4a`, com a decisão M-06 de 15/09/2026 (Virtude e Vontade não se somam a nada):
 > `habilidades.json` tira `vontade` da lista de Atributos de Integridade; capítulo II regerado.
 
 `src/data/habilidades.json`, verbete `integridade`:
@@ -858,7 +858,7 @@ Atributo + Habilidade. **Isto é decisão de mesa (M-06)**; o conserto mecânico
 
 ### C-47 (46, 47, 48, 50, 51) · verbetes de perícia que prometem número e não dão
 
-> **FEITO parcial**: os dois com fonte pronta. **Bloqueio** ganhou o número (escudo hábil, ≥30%
+> **FEITO parcial** `4496e4a`: os dois com fonte pronta. **Bloqueio** ganhou o número (escudo hábil, ≥30%
 > do corpo, do redondo pra cima). **primária+secundária** já tinha número e link publicados em
 > `acoes-e-sistema.md` (a tabela "A maior das duas entra no pool") e em
 > `habilidades-secundarias.md:15`; achado ao conferir, sem sha meu. **Continuam pendentes** os
@@ -885,7 +885,7 @@ para a mesa (M-07).
 
 ### C-48 (15, 41, 19) · tabelas cortadas sem dizer que a régua continua
 
-> **FEITO**: a tabela do pool (capítulo I) e a do Valor Passivo (capítulo VIII) ganharam a linha
+> **FEITO** `4496e4a`: a tabela do pool (capítulo I) e a do Valor Passivo (capítulo VIII) ganharam a linha
 > de rodapé. A tabela de Especialidade (item 19) já tem a fórmula geral `[nível ÷ 2]` publicada
 > como regra, não como corte de tabela; não achei tabela cortada lá para completar.
 
