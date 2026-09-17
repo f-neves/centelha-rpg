@@ -2956,7 +2956,7 @@ as respostas, e disse explicitamente para só executar amanhã, depois do reset 
 resposta à pergunta com o mesmo código do dossiê (`https://claude.ai/artifact/2H8aDMgNmU7A6hP5wo26s4`),
 na ordem em que a mesa já tinha fixado (básicas · Artes · Proezas).
 
-### M-21h · o Reiniciar do mestre e a morte · DECIDIDO em 16/09/2026
+### M-21h · o Reiniciar do mestre e a morte · DECIDIDO em 16/09/2026 · FEITO em 17/09/2026 (`2492336`)
 
 A pergunta estava em aberto neste mesmo arquivo, acima (rodada 81, premissa caída na 83): um
 clique de mestre pode desfazer morte? **Decisão: a caixa da Vida sozinha avisa, e o mestre
@@ -2974,7 +2974,7 @@ caída.
 
 Fica para depois do reset. Não decidido agora.
 
-### M-17 · teto de Habilidades secundárias compradas · DECIDIDO em 16/09/2026
+### M-17 · teto de Habilidades secundárias compradas · DECIDIDO em 16/09/2026 · FEITO em 17/09/2026 (`e4fe156`)
 
 **Sem teto de quantidade, e isso passa a estar escrito.** É o que o motor já faz hoje; o
 orçamento de XP é a trava real (cada secundária é uma primária que não subiu). Não vira teto
@@ -3000,7 +3000,7 @@ a ficha precisa de um indicador visual de carregada/gasta por Virtude; `aparenci
 perde o parêntese "sem risco nem contrapartida" e ganha a descrição do ciclo de carga/recarga.
 Maior que os outros itens desta lista — vale abrir como item de fase própria, não como C/M pontual.
 
-### M-20 · Compostura mascarando a Aparência · DECIDIDO em 16/09/2026
+### M-20 · Compostura mascarando a Aparência · DECIDIDO em 16/09/2026 · FEITO em 17/09/2026 (`903c99d`)
 
 **A Compostura mascara os dois lados do modificador de Aparência (bônus e penalidade), sob
 controle ativo do jogador, quando ele quiser.** Não é passiva: um personagem muito belo ou muito
@@ -3013,7 +3013,7 @@ Compostura+Furtividade bem-sucedido, o módulo aplicado se reduz em até `Compos
 zero). `aparencia-virtudes-vontade.md:16` ganha a frase com o par de rolagem e a regra do ponto a
 ponto.
 
-### M-23 · o que a Margem entrega fora do combate · DECIDIDO em 16/09/2026
+### M-23 · o que a Margem entrega fora do combate · DECIDIDO em 16/09/2026 · FEITO em 17/09/2026 (`83dcadd`)
 
 **Tabela de conversão por eixo.** Cada Margem vale um degrau numa lista curta (tempo, qualidade,
 duração), e o Mestre escolhe o eixo pela ação. Fica para a mesma rodada escrever a tabela — não
@@ -3027,7 +3027,7 @@ contra a escada de tempo do capítulo de Ações, que já existe e não pode dis
 **Não decidir nada sobre Fôlego agora.** É um módulo opcional (adendo) e continua fora de uso até
 o humano decidir abri-lo. Diferente de "depois do reset": não tem previsão, não entra na fila.
 
-### M-36 · quantos passos para sair do Neutro · DECIDIDO em 16/09/2026
+### M-36 · quantos passos para sair do Neutro · DECIDIDO em 16/09/2026 · FEITO em 17/09/2026 (`976afa8`)
 
 **A banda é 3, e o exemplo do Lírio se corrige** (ele soma 4 hoje). A regra escrita vence; o
 exemplo tem erro de conta.
@@ -3035,7 +3035,7 @@ exemplo tem erro de conta.
 **O que isto manda fazer:** `relacoes-sociais.md:107`, o exemplo do Lírio, ajusta a soma dos atos
 para fechar em 3 pontos até romper o Neutro (cortar um dos atos, ou reduzir o valor de um deles).
 
-### M-38 · teste coletivo, "+2 por pessoa" conta quem rola? · DECIDIDO em 16/09/2026, com regra nova
+### M-38 · teste coletivo, "+2 por pessoa" conta quem rola? · DECIDIDO em 16/09/2026, com regra nova · FEITO em 17/09/2026 (`83dcadd`)
 
 **A pergunta original ficou pequena diante da resposta: existem TRÊS tipos de teste com várias
 pessoas, e o livro só nomeia um deles direito.** O humano escreveu a mecânica completa dos três,
@@ -3081,7 +3081,7 @@ a taxa de recuperação de Mana**, e há a possibilidade de o efeito passar a va
 "Energia" em vez de Mana, caso esse recurso mude de nome/forma mais adiante. Não decidir a
 fórmula agora; registrar a pista para quando a pergunta voltar à mesa.
 
-### M-16 · Acerto Arcano é obrigatório para conjurar · DECIDIDO em 16/09/2026
+### M-16 · Acerto Arcano é obrigatório para conjurar · DECIDIDO em 16/09/2026 · FEITO em 17/09/2026 (`e4fe156`)
 
 **Não é obrigatória, e o verbete baixa o tom.** Nenhuma mecânica muda: `acerto-arcano` continua
 uma secundária comum, sem marca. A frase do verbete passa a nomear que ela pesa só nos efeitos
@@ -3092,7 +3092,7 @@ conjurar de modo geral.
 o feitiço mais devastador do mundo passa a um palmo do inimigo" e ganha uma que nomeia os efeitos
 mirados como o caso em que ela pesa.
 
-### M-34 · escapar de efeito "vs o nível" · DECIDIDO em 16/09/2026
+### M-34 · escapar de efeito "vs o nível" · DECIDIDO em 16/09/2026 · FEITO em 17/09/2026 (`f76b00f`)
 
 **O nível vira Dificuldade pela régua que já existe: nível × 5.** Arte nível 2 prende em Dif 10,
 nível 6 em Dif 30 ("Sobre-humano" na tabela publicada) — decisão de poder assumida conscientemente,
@@ -3101,7 +3101,7 @@ não só conversão.
 **O que isto manda fazer:** `regras.json · arcano`, tabela de resistências — "Força ou Atletismo
 vs o nível efetivo do efeito" ganha a fórmula `nível × 5` como a Dificuldade a bater.
 
-### M-35 · Metal Incandescente, escala e penalidade · DECIDIDO em 16/09/2026, redesenho completo
+### M-35 · Metal Incandescente, escala e penalidade · DECIDIDO em 16/09/2026, redesenho completo · FEITO em 17/09/2026 (`743cdb1`)
 
 **O Efeito é redesenhado, não só corrigido.** Novos números, substituindo a escala de sete casas
 e a penalidade sem unidade:
@@ -3124,7 +3124,7 @@ escrever se algum outro Efeito usa o mesmo molde e merece o mesmo tratamento, ou
 não. Como o campo só é exibido na página do Caminho (não tem efeito mecânico e não promete ter),
 não precisa de conserto de texto nem de mecânica nova.
 
-### M-40 · o −3 de Quebrar Guarda e o teto de ±6 · DECIDIDO em 16/09/2026
+### M-40 · o −3 de Quebrar Guarda e o teto de ±6 · DECIDIDO em 16/09/2026 · FEITO em 17/09/2026 (`f76b00f`)
 
 **Fica fora do teto de ±6, como a Pressão.** Quem paga a Técnica sempre vê o efeito; casa com a
 decisão já tomada para a Pressão em 15/09 (penalidade de Defesa sem teto).
@@ -3140,7 +3140,7 @@ todas as descrições vagas e padronizá-las como as Artes já estão hoje (com 
 Não é conserto pontual do Soco Trovejante e da Investida Devastadora — é levantamento novo,
 parecido em escopo com a leitura que gerou esta lista inteira.
 
-### M-44 · Centelha 1 tranca a Técnica no nível 1 · DECIDIDO em 16/09/2026
+### M-44 · Centelha 1 tranca a Técnica no nível 1 · DECIDIDO em 16/09/2026 · FEITO em 17/09/2026 (`f76b00f`)
 
 **É de propósito, e passa a estar escrito.** A Centelha é o eixo de história do sistema; amarrar
 profundidade de Técnica a ela é o desenho pretendido, não acidente. Dizer isso em voz alta evita

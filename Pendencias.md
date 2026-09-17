@@ -7292,6 +7292,22 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   menos invasivo. Quem for abrir isto decide entre fazer a função devolver o motivo da recusa e
   deixar como está, e a escolha muda os dois chamadores de hoje.
 
+- [ ] **L102 · [AUTOR] M-18, Canalizar Virtude: teto ou contrapartida. Regra nova de verdade, não
+  conserto pontual.**
+
+  Decidido em 16/09/2026 (`docs/simulacao/caixa/jogador-novo-decisoes.md`, seção "As 19 do
+  dossiê"): cada Virtude guarda uma **carga binária** de Canalizar (carregada ou gasta),
+  independente da Vontade. Gastar a carga soma o valor da Virtude à rolagem; a Virtude em si
+  nunca diminui, só a carga fica marcada como gasta. Recarregar exige agir de acordo com aquela
+  Virtude um número de vezes igual ao nível dela, a critério do Mestre.
+
+  **Deixado de fora do lote de execução de 17/09/2026** por decisão explícita do Arquiteto: é
+  maior que os outros itens da lista, vale abrir como item de fase própria. `regras.json` precisa
+  de um bloco de Canalizar com o estado de carga por Virtude (provavelmente por personagem, não
+  global); a ficha precisa de indicador visual carregada/gasta por Virtude; e
+  `aparencia-virtudes-vontade.md:69` perde o parêntese "sem risco nem contrapartida" e ganha a
+  descrição do ciclo de carga/recarga.
+
 ## Ordem sugerida
 
 1. ~~**E1**, Antecedentes ao site.~~ **Feito em 18/08:** capítulo VII, `antecedentes.json` e a aba
