@@ -670,7 +670,7 @@
         "nome": "Duração",
         "tipo": "substitui",
         "substitui": "duracao",
-        "unidade": "pontos de Mana",
+        "unidade": "Ticks",
         "escala": [
           "1 tick",
           "6 Ticks",
