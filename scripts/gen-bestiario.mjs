@@ -138,14 +138,14 @@ const NPCS = [
     attrs: { forca: 3, destreza: 3, vigor: 3 }, pericias: { 'armas-uma-mao': 2, esquiva: 2, prontidao: 2, furtividade: 2 }, integridade: 4, vontade: 5,
     armadura: 'couro',
     ataques: [{ nome: 'Facão', atrib: 'destreza', pericia: 'armas-uma-mao', dado: 1, mao: 1, tipo: 'corte', acerto: 2, ticks: 5 }],
-    notas: 'Couro leve (Soak +2). Tenta emboscar.' },
+    notas: 'Couro leve (Absorção +2). Tenta emboscar.' },
 
   { id: 'guarda-da-cidade', nome: 'Guarda da Cidade', tipo: 'soldado', ameaca: 2, centelha: 0,
     conceito: 'milícia treinada', descricao: 'Patrulha disciplinada, luta em formação com escudo.', tags: ['humano'],
     attrs: { forca: 3, destreza: 3, vigor: 3 }, pericias: { 'armas-uma-mao': 3, esquiva: 2, escudos: 2, prontidao: 3 }, integridade: 5, vontade: 5,
     armadura: 'malha',
     ataques: [{ nome: 'Espada curta', atrib: 'destreza', pericia: 'armas-uma-mao', dado: 1, mao: 1, tipo: 'corte', acerto: 2, ticks: 5 }],
-    notas: 'Malha (Soak +4, Esquiva −1) + escudo (+2 ao Bloqueio). Chama reforço.' },
+    notas: 'Malha (Absorção +4, Esquiva −1) + escudo (+2 ao Bloqueio). Chama reforço.' },
 
   { id: 'soldado-veterano', nome: 'Soldado Veterano', tipo: 'soldado', ameaca: 3, centelha: 0,
     conceito: 'lâmina experiente', descricao: 'Anos de guerra; lê o combate e explora aberturas.', tags: ['humano'],
@@ -173,7 +173,7 @@ const NPCS = [
     attrs: { forca: 3, destreza: 4, vigor: 4, influencia: 3 }, pericias: { 'armas-uma-mao': 4, esquiva: 3, escudos: 3, prontidao: 4, oratoria: 3, tatica: 3 }, integridade: 6, vontade: 7,
     armadura: 'placa-completa',
     ataques: [{ nome: 'Espada longa', atrib: 'destreza', pericia: 'armas-uma-mao', dado: 2, mao: 1, tipo: 'corte', acerto: 1, ticks: 6 }],
-    notas: 'Placa (Soak +6, Esquiva −2, lento) + escudo. Pico do que um mortal alcança.' },
+    notas: 'Placa (Absorção +6, Esquiva −2, lento) + escudo. Pico do que um mortal alcança.' },
 
   { id: 'assassino-das-sombras', nome: 'Assassino das Sombras', tipo: 'elite', ameaca: 4, centelha: 3,
     conceito: 'lâmina silenciosa', descricao: 'Surge das sombras, aplica um golpe e some.', tags: ['humano', 'centelha'],
@@ -194,7 +194,7 @@ const NPCS = [
   { id: 'feiticeiro-menor', nome: 'Feiticeiro Menor', tipo: 'elite', ameaca: 4, centelha: 1,
     conceito: 'conjurador iniciante', descricao: 'Frágil no corpo a corpo, perigoso à distância com fogo.', tags: ['humano', 'centelha', 'arcano'],
     attrs: { forca: 2, destreza: 3, vigor: 2, inteligencia: 4, percepcao: 4 }, pericias: { ocultismo: 3, 'acerto-arcano': 3, esquiva: 2, prontidao: 2 }, integridade: 5, vontade: 6,
-    ataques: [{ nome: 'Dardo flamejante (Fogo 1)', atrib: 'percepcao', pericia: 'acerto-arcano', dado: 1, distancia: true, tipo: 'fogo', ticks: 6, notas: 'Custa 1 Mana; resistido por Soak/Esquiva' }],
+    ataques: [{ nome: 'Dardo flamejante (Fogo 1)', atrib: 'percepcao', pericia: 'acerto-arcano', dado: 1, distancia: true, tipo: 'fogo', ticks: 6, notas: 'Custa 1 Mana; resistido por Absorção/Esquiva' }],
     artes: [{ id: 'fogo', nivel: 2 }],
     notas: 'Mana = Centelha×2 + Vontade = 8. Nível 2 (Labareda, 2d6) custa 2 Mana.' },
 
@@ -204,7 +204,7 @@ const NPCS = [
     armadura: 'placa-completa',
     ataques: [{ nome: 'Montante', atrib: 'forca', pericia: 'armas-duas-maos', dado: 3, mao: 2, tipo: 'corte', acerto: 0, ticks: 7 }],
     tecnicas: ['pele-curtida', 'aguentar-o-tranco', 'tensionar'],
-    notas: 'Placa + Pele de Pedra: Soak altíssimo contra corte. Vença-o com Impacto (a placa quase não absorve), perfuração nível 2+ ou Proeza.' },
+    notas: 'Placa + Pele de Pedra: Absorção altíssima contra corte. Vença-o com Impacto (a placa quase não absorve), perfuração nível 2+ ou Proeza.' },
 
   { id: 'campeao', nome: 'Campeão (herói inimigo)', tipo: 'chefe', ameaca: 6, centelha: 3,
     conceito: 'herói inimigo', descricao: 'Um adversário à altura dos PJs: rápido, forte e com Técnicas de herói.', tags: ['humano', 'centelha'],

@@ -128,7 +128,7 @@
       },
       "soak": {
         "rotulo": "Absorção",
-        "unidade": "+ Soak",
+        "unidade": "+ Absorção",
         "valores": [
           "+2",
           "+3",
@@ -154,14 +154,14 @@
       },
       "penetracao": {
         "rotulo": "Penetração",
-        "unidade": "Soak ignorado",
+        "unidade": "Absorção ignorada",
         "valores": [
           "2",
           "3",
           "4",
           "6",
           "toda a armadura",
-          "armadura + Soak natural"
+          "armadura + Absorção natural"
         ],
         "uso": "furar a defesa do alvo"
       },
@@ -1376,7 +1376,7 @@
           "8 m³"
         ],
         "notaVolume": "Esta é a régua da MATÉRIA, e ela vale para o Efeito Especial que cria elemento que fica. O Volume compra um LADO e o que se ganha é o cubo daquele lado, mas ele perdeu o direito de virar forma: a forma agora é o molde. Lido como massa ele está calibrado, e o que parecia pequeno era pergunta de chão feita a uma régua de massa: em pedra, o grau 3 são 169 kg, o grau 4 são 1,4 t e o grau 6 são 10,8 t; em gelo, com 10 cm de espessura e 2 m de altura, o grau 4 dá cinco metros de muro.",
-        "notaAreaOuVolume": "Área e Volume são as DUAS RÉGUAS do mesmo parâmetro, como Duração breve e Duração longa: o efeito usa uma ou a outra, nunca as duas, e custam o mesmo em pontos. Não é escolha de otimização do jogador, é o que o efeito faz que decide. VOLUME mede o CORPO do elemento, quanta matéria ou quanto fenômeno saiu: as Lascas, a Onda, a Tromba, o Clarão, o Muro. ÁREA mede a JURISDIÇÃO, a região onde a regra passa a valer, e ali não interessa quanto elemento existe, interessa quem está dentro: a Noite, o Santuário, a Barreira, o Círculo, a Praga, a Mordaça, a Bolha Temporal. Teste de mesa: o efeito é MATÉRIA ou é REGRA? Se a pergunta que ele responde é 'quanto elemento?', é Volume. Se é 'quem está dentro?', é Área. Uma mesma Arte usa as duas conforme o efeito: o Clarão de Luz é corpo, a Noite de Sombra é jurisdição. ESCOPO, decidido em 2026-08-18: este corte é dos EFEITOS ESPECIAIS. O improviso não escolhe entre Área e Volume, porque ele tem uma geometria só, que é a manifestação em fatias: lá o Volume compra o lado da base, e qualquer outra manifestação de volume é Efeito Especial.",
+        "notaAreaOuVolume": "Área e Volume são as DUAS RÉGUAS do mesmo parâmetro, como Duração breve e Duração longa: o efeito usa uma ou a outra, nunca as duas, e custam o mesmo em pontos. Não é escolha de otimização do jogador, é o que o efeito faz que decide. VOLUME mede o CORPO do elemento, quanta matéria ou quanto fenômeno saiu: as Lascas, a Onda, a Tromba, o Clarão, o Muro. ÁREA mede a JURISDIÇÃO, a região onde a regra passa a valer, e ali não interessa quanto elemento existe, interessa quem está dentro: a Noite, o Santuário, a Barreira, o Círculo, a Praga, a Mordaça, a Bolha Temporal. Teste de mesa: o efeito é MATÉRIA ou é REGRA? Se a pergunta que ele responde é 'quanto elemento?', é Volume. Se é 'quem está dentro?', é Área. Uma mesma Arte usa as duas conforme o efeito: o Clarão de Luz é corpo, a Noite de Sombra é jurisdição. ESCOPO: este corte é dos EFEITOS ESPECIAIS. O improviso não escolhe entre Área e Volume, porque ele tem uma geometria só, que é a manifestação em fatias: lá o Volume compra o lado da base, e qualquer outra manifestação de volume é Efeito Especial.",
         "volumePorEstado": {
           "nota": "O Volume mede corpo, e um metro cúbico de pedra, de água, de chama e de névoa são quantidades de esforço muito diferentes. O multiplicador vale só para o VOLUME DA MATÉRIA, o dos Efeitos: a Área é jurisdição e não depende do material, e o improviso tem o fator de estado dele, que incide no LADO DA BASE (Terra e Metal metade do lado, Ar e névoa o dobro, o resto igual). É a mesma verdade da tabela de dano dita pelo outro lado, e por isso as duas exceções são as mesmas em direções opostas: a Terra dobra o dado e divide o volume, o Ar não tem dano e multiplica o volume por oito.",
           "tabela": [
@@ -2020,7 +2020,7 @@
           },
           "direcoes": "As três direções valem, e todas cobram. Sair pelos lados, jogar-se ao chão (quando a faixa do elemento não encosta no piso) ou saltar por cima (quando ela é rasteira) são a mesma conta: o que importa é quantos metros faltam para o corpo ficar fora, e cada metro é um Tick. É aqui que as duas alturas da manifestação deixam de ser enfeite: faixa que sobe do chão obriga a sair pelos lados ou a saltar, faixa com o pé a um metro do chão se resolve caindo, e cair é barato. Onde o feiticeiro pousa a base decide qual saída ele deixa aberta."
         },
-        "contraOPasso": "Um molde só prende quem não o atravessa num Tick, e depois de 23/08 atravessar custa o Tick e a jogada mesmo estando livre. O Deslocamento de Batalha humano vai de 3 a 5 m por Tick (a faixa estreitou em 22/08, quando a fórmula virou 2 + (Des + Atl) ÷ 4), e a escada do lado da base (0,5 · 1 · 2 · 3 · 4 · 5 · 6 m) ainda a atravessa, só que mais acima: os três primeiros graus ficaram MENORES QUE O PASSO DE TODO MUNDO e só pegam quem está preso, surpreso ou sem vez; o grau 4 pega o camponês e o aventureiro; o 5 empata com o herói; e só o 6 passa dele. O piso de 2 m do passo é o preço disso, e foi escolhido de olhos abertos."
+        "contraOPasso": "Um molde só prende quem não o atravessa num Tick, e atravessar custa o Tick e a jogada mesmo estando livre. O Deslocamento de Batalha humano vai de 2 a 5 m por Tick (fórmula: 2 + (Des + Atl) ÷ 4), e a escada do lado da base (0,5 · 1 · 2 · 3 · 4 · 5 · 6 m) ainda a atravessa, só que mais acima: os três primeiros graus ficaram MENORES QUE O PASSO DE TODO MUNDO e só pegam quem está preso, surpreso ou sem vez; o grau 4 pega o camponês e o aventureiro; o 5 empata com o herói; e só o 6 passa dele. O piso de 2 m do passo é o preço disso, e foi escolhido de olhos abertos."
       },
       "aRevisar": [
         "A calibragem de `8 + 2 × metros` no desvio precisa de mesa: a forma está decidida e os números são provisórios. Os dois botões são o 8 (que move todo mundo) e o 2 por metro (que move só quem está fundo).",

@@ -41,7 +41,7 @@ Os valores são **fixos por classe**: nada de campo por arma. A classe da arma v
 
 </div>
 
-<p class="muted">Até 24/08/2026 a régua era o <strong>número de dados</strong> (1d6 leve, 2d6 média, 3d6 pesada). O catálogo mudou por baixo dela: hoje 24 das 26 armas têm um dado só e nenhuma tem três, e ao pé da letra a espada longa virava leve e a categoria pesada deixava de existir. O dano médio é a mesma ideia (quanto a arma pesa no golpe) medida por um número que ainda varia. Arma fora do catálogo (criatura, item improvisado) tem o dano médio lido da própria expressão de dano: ali a expressão <em>é</em> a arma.</p>
+<p class="muted">A régua não é o <strong>número de dados</strong> da arma: hoje 24 das 26 armas têm um dado só e nenhuma tem três, e ao pé da letra a espada longa viraria leve e a categoria pesada deixaria de existir. É o <strong>dano médio</strong> (quanto a arma pesa no golpe) que decide a classe, medido por um número que varia por arma. Arma fora do catálogo (criatura, item improvisado) tem o dano médio lido da própria expressão de dano: ali a expressão <em>é</em> a arma.</p>
 
 ### Armas
 

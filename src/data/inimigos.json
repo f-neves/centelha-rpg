@@ -101,7 +101,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Couro leve (Soak +2). Tenta emboscar.",
+    "notas": "Couro leve (Absorção +2). Tenta emboscar.",
     "pendente": false,
     "pericias": {
       "prontidao": 2,
@@ -156,7 +156,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Malha (Soak +4, Esquiva −1) + escudo (+2 ao Bloqueio). Chama reforço.",
+    "notas": "Malha (Absorção +4, Esquiva −1) + escudo (+2 ao Bloqueio). Chama reforço.",
     "pendente": false,
     "pericias": {
       "prontidao": 3,
@@ -379,7 +379,7 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Placa (Soak +6, Esquiva −2, lento) + escudo. Pico do que um mortal alcança.",
+    "notas": "Placa (Absorção +6, Esquiva −2, lento) + escudo. Pico do que um mortal alcança.",
     "pendente": false,
     "pericias": {
       "prontidao": 4,
@@ -555,7 +555,7 @@
         "dano": "1d6 fogo",
         "perfArma": null,
         "ticks": 6,
-        "notas": "Custa 1 Mana; resistido por Soak/Esquiva"
+        "notas": "Custa 1 Mana; resistido por Absorção/Esquiva"
       }
     ],
     "tecnicas": [],
@@ -626,7 +626,7 @@
       "tensionar"
     ],
     "artes": [],
-    "notas": "Placa + Pele de Pedra: Soak altíssimo contra corte. Vença-o com Impacto (a placa quase não absorve), perfuração nível 2+ ou Proeza.",
+    "notas": "Placa + Pele de Pedra: Absorção altíssima contra corte. Vença-o com Impacto (a placa quase não absorve), perfuração nível 2+ ou Proeza.",
     "pendente": false,
     "pericias": {
       "prontidao": 3,

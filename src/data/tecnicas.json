@@ -293,7 +293,7 @@
       "golpe-pesado"
     ],
     "aliases": [],
-    "texto": "Arremessa o alvo (knockback) e o **atordoa** (perde Ticks) se ele falhar num teste de Vigor.",
+    "texto": "Arremessa o alvo (empurrão) e o **atordoa** (perde Ticks) se ele falhar num teste de Vigor.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -831,7 +831,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+2 de Soak contra Impacto.",
+    "texto": "+2 de Absorção contra Impacto.",
     "pendente": false,
     "nivel": 1,
     "efeito": "soak"
@@ -865,7 +865,7 @@
       "pele-curtida"
     ],
     "aliases": [],
-    "texto": "Ao ser atingido, +2 de Soak contra aquele golpe.",
+    "texto": "Ao ser atingido, +2 de Absorção contra aquele golpe.",
     "pendente": false,
     "nivel": 1,
     "efeito": "soak"
@@ -883,7 +883,7 @@
       "pele-curtida"
     ],
     "aliases": [],
-    "texto": "+4 de Soak (todos os tipos) e reduz as penalidades de ferimento em 1.",
+    "texto": "+4 de Absorção (todos os tipos) e reduz as penalidades de ferimento em 1.",
     "pendente": false,
     "nivel": 3,
     "efeito": "soak"
@@ -1887,7 +1887,7 @@
       "brado-de-guerra"
     ],
     "aliases": [],
-    "texto": "Avança e ataca com +2d6 de dano por knockback.",
+    "texto": "Avança e ataca com +2d6 de dano por empurrão.",
     "pendente": false,
     "nivel": 3,
     "efeito": "dano"

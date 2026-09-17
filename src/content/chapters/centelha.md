@@ -71,14 +71,14 @@ O nível 2 (Desperto) é o meio-degrau entre o Tocado (1) e o Herói (3): os val
 | Trilha | O que cresce | N1 | N2 | N3 | N4 | N5 | N6 |
 |---|---|:---:|:---:|:---:|:---:|:---:|:---:|
 | **Bônus** | + à rolagem/disputa | +3 | +4 | +6 | +9 | +12 | +15 |
-| **Absorção** | + Soak | +2 | +3 | +4 | +6 | +9 | +12 |
+| **Absorção** | + Absorção | +2 | +3 | +4 | +6 | +9 | +12 |
 | **Dano** | + dados de dano | +1d6 | +1d6 | +2d6 | +3d6 | +4d6 | +6d6 |
-| **Penetração** | Soak ignorado | 2 | 3 | 4 | 6 | toda a armadura | armadura + natural |
+| **Penetração** | Absorção ignorada | 2 | 3 | 4 | 6 | toda a armadura | armadura + natural |
 | **Carga** | × peso que ergue | ×2 | ×3 | ×4 | ×10 | ×30 | ×100 |
 | **Salto** | × distância do salto | ×2 | ×3 | ×4 | ×8 | ×20 | ×50 |
 | **Velocidade** | × deslocamento | ×1,5 | ×1,75 | ×2 | ×3 | ×5 | ×10 |
 | **Tamanho** | porte que afeta | igual | igual | +1 | +2 | +3 | qualquer |
 
-A **maioria** das Técnicas, porém, não tem número nenhum: são **estados e capacidades** (ver no escuro, ficar invisível, imune a veneno, voar, controlar uma besta). O nível dessas é a régua de quão absoluto o efeito é: em disputa, só cede a quem traz poder efetivamente maior. Alcance, área, número de alvos e duração são **dials** que uma Técnica pode esticar por cima do efeito principal, na mesma lógica do improviso do Arcano.
+A **maioria** das Técnicas, porém, não tem número nenhum: são **estados e capacidades** (ver no escuro, ficar invisível, imune a veneno, voar, controlar uma besta). O nível dessas é a régua de quão absoluto o efeito é: em disputa, só cede a quem traz poder efetivamente maior. Alcance, área, número de alvos e duração são **parâmetros** que uma Técnica pode esticar por cima do efeito principal, na mesma lógica do improviso do Arcano.
 
 <div class="callout regra"><span class="lbl">O Portão da Centelha</span>A Centelha sobe <strong>só com permissão do Mestre</strong>, num marco de história ou feito maior. Ela <strong>não custa XP</strong>, e o <strong>salto de tier é narrativo</strong>: poder não se compra em massa, conquista-se na história.</div>
