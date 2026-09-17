@@ -1,30 +1,41 @@
-# Fechamento de sessão · lote C (consertos do jogador novo), 17/09/2026
+# Fechamento do lote C (consertos do jogador novo), 17/09/2026
 
-Escrito para quem retomar depois do reset semanal (18h BRT), sem precisar perguntar de novo.
-Parado por orçamento (96% de uso, teto 97%), não por bloqueio nem por fim da lista.
+**Atualização das 14:33: o lote está ENCERRADO**, não mais pausado por orçamento (o humano
+tirou o teto depois da primeira versão deste documento). Só sobram os dois itens PRECISA DE MIM
+e os três de M-07, todos de decisão, não de execução.
 
 Origem: `docs/simulacao/caixa/jogador-novo-prompt-executor.md` (commit `7dd1af3`), lista em
 `docs/simulacao/caixa/jogador-novo-consertos.md`. Progresso detalhado, item a item, com horário
 real de cada commit: `docs/simulacao/caixa/progresso-lote-c.md`.
 
-## O que está FEITO nesta sessão (commitado, empurrado, validate+typecheck verdes)
+## Tudo que foi FEITO nesta sessão (commitado, empurrado, validate+typecheck verdes)
 
-- C-31, C-32, C-33 · `77516b7`
+- C-31, C-32, C-33 (Preparo/Golpe/Recuperação, os dois sistemas de tempo, Rajada) · `77516b7`
 - Lote 5 inteiro (C-42 a C-45, o glossário) · `b03f4ab`
 - Lote 8 inteiro (C-50 a C-58, varredura de palavra) + C-20 · `dc4cd49`
 - Resto do Lote 2 (C-07, C-08, C-09, C-11, C-14, C-15, C-16, C-17, C-18, C-19, C-21, C-25, C-27,
   C-28, C-30) e Lote 3 (C-34, C-35, C-36, C-37), mais C-97 e C-98 · `7db14f1`
-- Marcadores FEITO/JÁ RESOLVIDO na origem (`jogador-novo-consertos.md`) e correção do carimbo de
-  horário do progresso · `1765fed`, `ae145fb`, `0429ab7`, `99205ce` (as marcações, não o código)
+- Lote 4 (C-38, C-40, C-41) · `7e0cddf`
+- Lote 6 (C-46, metade do C-47) · `4496e4a`
+- Lote 9 inteiro conferido (C-59 a C-95): ~18 fechados agora · `82313f5`; ~20 já estavam
+  resolvidos de rodadas anteriores, sem sha meu
 - CORRIGE da Revisora sobre a M-35 (unidade da Duração do Metal Incandescente) · `5f119aa`
 
-Todos os itens do bloco "Por onde começar" do prompt de entrega estão fechados, exceto os dois
-PRECISA DE MIM abaixo.
+Todos os marcadores FEITO/JÁ RESOLVIDO/RESOLVIDO estão na origem
+(`jogador-novo-consertos.md`), item por item.
 
-## Já estava resolvido antes desta sessão (marcado "JÁ RESOLVIDO" na origem, sem sha meu)
+## Achado importante: uma autoconferência estava errada
 
-C-01, C-03, C-04, C-05, C-06, C-10, C-22, C-24, C-26, C-29, C-49, C-96. Conferido no disco, não
-suposto. Não reabrir sem motivo novo.
+Cedo na sessão marquei o **C-10** (espada longa com dano trocado, "2d6+3" em vez de "1d6") como
+"JÁ RESOLVIDO", porque `grep -n "2d6+3" combate.md` não achou nada. Estava errado: havia uma
+**segunda ocorrência**, no exemplo do Verme Púrpura/Tarrasque (o mesmo parágrafo do C-91), e o
+`grep` deste ambiente relatou o número de linha de forma enganosa (problema já catalogado no
+próprio `CLAUDE.md`, seção "NÃO confira travessão com `git diff`" — aqui foi `grep`, não `git
+diff`, mas o sintoma é o mesmo tipo de instrumento mentindo por cima). Achado só ao mexer no
+C-91 horas depois. Corrigido, e a marcação do C-10 foi reescrita para não afirmar uma conferência
+que eu não tinha, de fato, feito direito. **Lição para quem reler**: um "JÁ RESOLVIDO" desta
+sessão vale o que um `grep` disse; se o texto citado é longo ou tem mais de uma ocorrência
+plausível, vale conferir com a ferramenta de leitura, não só grep.
 
 ## PRECISA DE MIM (decisão do Arquiteto, não é código)
 
@@ -36,33 +47,29 @@ suposto. Não reabrir sem motivo novo.
    Virtudes do exemplo do Bram) continuam divergindo da função de custo real, por **decisão
    consciente da mesa** já registrada em `jogador-novo-decisoes.md` (M-02). Não é pendência
    esquecida, é decisão que fica assim até a mesa reabrir o assunto.
+3. **Os três itens de M-07 dentro do C-47** (a armadura tira DADO da Furtividade, a Esquiva
+   encurralada perde −2 a −6 por escada de espaço, a segunda Firula desce um nível). A decisão
+   saiu em 16/09/2026, mas implementar é mecânica nova (Desgaste, escada de espaço, degradação
+   de Firula) — maior que "escrever o número que falta", não fiz por conta própria.
 
-## Residual registrado, não fechado (fora de escopo desta varredura)
+## Residual registrado, não fechado (fora de escopo de uma varredura de palavra)
 
 `src/data/inimigos.json`, campo `conceito` de ~20 criaturas (ex. "animal Minúsculo" do Corvo)
 ainda diz "Minúsculo" enquanto o campo `porte` da mesma criatura diz "Miúdo" (o rótulo que venceu
-em todo o resto do sistema). A fonte é `conversao-monstros.html`/`conversao-extra.json`, uma
-conversão grande de D&D; reescrever exigiria varrer esse material de conversão, não uma troca de
-palavra pontual. Registrado no C-17.
+em todo o resto do sistema, achado ao trabalhar no C-17). A fonte é
+`conversao-monstros.html`/`conversao-extra.json`, uma conversão grande de D&D; reescrever
+exigiria varrer esse material de conversão, não uma troca de palavra pontual.
 
-## O que falta da lista original
+## O que NÃO foi feito por decisão consciente (registrado no próprio item)
 
-- **Lote 4** (C-38 a C-41): numerais de capítulo lidos à mão em 5 páginas `.astro`, o
-  `[object Object]` de `/artes/regras`, a tabela de Dificuldade digitada à mão em `/mestre`, e a
-  linha de Intimidação indo para a Defesa errada. Quatro itens pequenos, sem decisão de mesa
-  pendente.
-- **Lote 6** (C-46 a C-48): agora DESTRAVADOS, porque M-06 e M-07 já foram decididos (15 e
-  16/09/2026) depois que o documento original os listou como bloqueados. C-46 (Vontade na lista
-  de Atributos de Integridade) e C-47 (três verbetes de perícia sem número) podem ser executados
-  direto.
-- **Lote 9** (C-59 a C-95): ~37 itens, a maioria "falta um link ou uma frase" que já existe na
-  fonte. Baixo risco por item, mas em volume. Não comecei nenhum.
-- **Adendo ao lote 2, C-99**: parcialmente resolvido (a ambiguidade de nome não se confirma mais
-  no texto vivo); o resíduo é o **M-09** (conversão do intervalo-base pela longevidade da raça),
-  que é pergunta de mesa, não código.
+- **C-72**: repetir a regra "o como define o Atributo" em cada um dos 24 verbetes de Habilidade.
+  Já está escrita uma vez, com destaque, antes da lista.
+- **C-87**: a tabela de arremesso já mostra "não arremessa" nas linhas do topo, o que já
+  comunica o penhasco; adicionar prosa dentro da tabela gerada arriscava a formatação apertada
+  que o próprio arquivo documenta com cuidado.
+- **C-85**: só `/caminhos` ganhou o link do marcador (é onde a estrela aparece em massa
+  primeiro); `/artes/catalogo` não tem o mesmo callout "Como ler" para pendurar a frase.
 
 ## Estado da árvore
 
-Limpa, só o de sempre (o arquivo alheio que não é meu, se ainda existir por lá, confira com
-`git status --short` antes de continuar). `npm run validate` verde na última checagem
-(commit `99205ce`).
+Limpa. `npm run validate` verde na última checagem (commit `82313f5`).

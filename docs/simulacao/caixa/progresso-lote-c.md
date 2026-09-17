@@ -27,12 +27,27 @@ Origem: `docs/simulacao/caixa/jogador-novo-prompt-executor.md` (commit `7dd1af3`
   C-18, C-19, C-20 já marcado, C-21, C-25, C-27, C-28, C-30) e o Lote 3 (C-34, C-35, C-36, C-37),
   mais C-97/C-98 do adendo. commit `7db14f1`, push feito, validate+typecheck verdes em cada
   passo. C-10, C-22, C-24, C-26, C-29, C-96 já estavam resolvidos de rodadas anteriores
-  (marcado "JÁ RESOLVIDO" na origem, sem sha meu). C-99 parcialmente (a ambiguidade de nome não
-  se confirma; o M-09 continua aberto, não é meu). C-06 e C-04 e C-01/03/05/49 já vinham feitos.
-  Achado no caminho: C-17 (Miúdo/Minúsculo) tinha convergido na direção OPOSTA à do item —
-  quase todo o sistema já usa "Miúdo", só combate.md e o glossário atrasados; corrigidos.
-  Resíduo não fechado: ~20 "conceito" no bestiário (fonte de conversão D&D) ainda dizem
-  "Minúsculo", registrado no item, fora de escopo de uma varredura de palavra.
-  Restam da lista original: C-12 e metade do C-13 (decisão do Arquiteto), o Lote 4 (C-38 a
-  C-41), o Lote 6 (C-46 a C-48, agora destravados por M-06/M-07 já decididos), o Lote 9 inteiro
-  (C-59 a C-95, ~37 itens de link/frase).
+  (marcado "JÁ RESOLVIDO" na origem, sem sha meu — achado depois que essa marcação do C-10
+  estava errada, ver 14:31). C-99 parcialmente (a ambiguidade de nome não se confirma; o M-09
+  continua aberto, não é meu). C-06 e C-04 e C-01/03/05/49 já vinham feitos. Achado no caminho:
+  C-17 (Miúdo/Minúsculo) tinha convergido na direção OPOSTA à do item — quase todo o sistema já
+  usa "Miúdo", só combate.md e o glossário atrasados; corrigidos. Resíduo não fechado: ~20
+  "conceito" no bestiário (fonte de conversão D&D) ainda dizem "Minúsculo", registrado no item,
+  fora de escopo de uma varredura de palavra.
+- 2026-09-17 13:22 · humano tirou o teto de orçamento. Retomado a partir do fechamento
+  (docs/simulacao/caixa/fechamento-lote-c-17set.md).
+- 2026-09-17 14:04 · Lote 4 (C-38, C-40, C-41; C-39 já resolvido) fechado, commit `7e0cddf`.
+- 2026-09-17 14:11 · Lote 6 (C-46, parte do C-47, C-48) fechado, commit `4496e4a` + `8ae6632`
+  (sha nos marcadores). Os três itens de M-07 (Furtividade/Esquiva/Firula) ficam para trabalho
+  próprio: são mecânica nova, não texto.
+- 2026-09-17 14:31 · Lote 9 inteiro conferido (C-59 a C-95). ~20 já estavam resolvidos de
+  rodadas anteriores (marcados JÁ RESOLVIDO/RESOLVIDO); ~18 fechados agora, commit `82313f5`.
+  Achado importante no caminho: C-10 (o "2d6+3" da espada longa) NÃO estava fechado como eu
+  tinha marcado às 13:18 — uma segunda ocorrência sobrevivia no exemplo do Verme
+  Púrpura/Tarrasque (mesmo parágrafo do C-91), e um `grep` deste ambiente relatou o número de
+  linha errado, mascarando o achado na minha primeira conferência. Corrigido junto com o C-91,
+  e a marcação do C-10 foi reescrita para não afirmar algo que eu não tinha, de fato, conferido
+  direito. C-72 e C-87 ficaram NÃO FEITOS por decisão consciente (baixo retorno / risco de
+  quebrar formatação gerada), registrado no próprio item.
+- 2026-09-17 14:33 · lote C encerrado. Restam da lista original: C-12 e metade do C-13
+  (decisão do Arquiteto), os três itens de M-07 dentro do C-47 (mecânica nova).
