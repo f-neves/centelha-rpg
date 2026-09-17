@@ -153,10 +153,20 @@ export function ataqueCentelha(centelha: number) {
   return centelha * (d?.centelhaMult ?? 0);
 }
 
-/** Modificador da Aparência (curva −4..+4) somado FLAT à jogada social alinhada. */
-export function aparenciaMod(nivel: number) {
+/**
+ * Modificador da Aparência (curva −4..+4) somado FLAT à jogada social alinhada.
+ *
+ * `mascararCom`, quando passado, é a Compostura de quem está mascarando o
+ * próprio módulo sob teste bem-sucedido de Compostura+Furtividade (M-20,
+ * 16/09/2026): cada ponto reduz o módulo em direção a zero, sem passar dele.
+ * Não rola dado nenhum aqui; quem chama já sabe que o teste passou.
+ */
+export function aparenciaMod(nivel: number, mascararCom?: number) {
   const a = regras.aparencia as { curva: Record<string, number> };
-  return a.curva[String(nivel)] ?? 0;
+  const base = a.curva[String(nivel)] ?? 0;
+  if (!mascararCom) return base;
+  const reduzido = Math.max(0, Math.abs(base) - Math.max(0, mascararCom));
+  return base < 0 ? -reduzido : reduzido;
 }
 
 /** Energia: (Vigor + Compostura + Raciocínio + Vontade) / 2 [floor] + Centelha×2. */

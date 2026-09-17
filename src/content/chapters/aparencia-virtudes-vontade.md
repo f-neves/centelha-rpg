@@ -13,7 +13,9 @@ A **Aparência** não é um Atributo, é um traço próprio, de **0 a 12** (como
 
 O **0 é o piso grátis**, e é onde o personagem nasce enquanto você não gastar XP nele. Não é o "normal": o normal fica entre **5 e 7**, e chegar lá custa pontos como qualquer outra coisa. Deixar a Aparência no chão é uma escolha, com o preço que a tabela mostra.
 
-E ela é **direcional**: ajuda quando está alinhada ao seu objetivo (seduzir, impressionar, cativar) e **atrapalha** quando vai contra ele: o belo tem **−** ao intimidar, o feio tem **+**; e quem é marcante demais sofre ao tentar passar despercebido. A **Compostura** define o quanto dessa aparência você consegue mascarar.
+E ela é **direcional**: ajuda quando está alinhada ao seu objetivo (seduzir, impressionar, cativar) e **atrapalha** quando vai contra ele: o belo tem **−** ao intimidar, o feio tem **+**; e quem é marcante demais sofre ao tentar passar despercebido.
+
+A **Compostura** mascara os dois lados do modificador, para os dois lados: sob controle ativo, e não como escudo automático. Quem quer passar despercebido numa multidão apesar de muito belo ou muito feio rola **Compostura + Furtividade** (além de disfarce, maquiagem ou máscara física, que continuam valendo à parte); com sucesso, **cada ponto de Compostura mascara um ponto do módulo do modificador de Aparência**, positivo ou negativo, até o piso zero.
 
 | Nível | | Modificador |
 |:---:|---|:---:|
