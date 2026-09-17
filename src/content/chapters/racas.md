@@ -65,7 +65,7 @@ Seres ligados ao mundo natural. Esguios, de aparência mais frágil que a das ou
 
 ### Gnomo
 
-Pequenos e resistentes. Pesam **20–45 kg** e medem **1,00–1,30 m**. Maturidade aos 20 anos; podem viver mais de **400 anos**.
+Pequenos e resistentes. Pesam **20–45 kg** e medem **1,00–1,30 m**. Maturidade aos 18 anos; podem viver mais de **400 anos**.
 
 - **Custo de XP:** 30 <small>(provisório: desceu de 40 quando o Gnomo virou de porte **pequeno** e perdeu PV)</small>
 - **`+1` de Vigor**: começa em **2** e vai até **7**. Resistência teimosa num corpo pequeno.
@@ -77,7 +77,7 @@ Pequenos e resistentes. Pesam **20–45 kg** e medem **1,00–1,30 m**. Maturida
 
 ### Halfling
 
-Povo pequeno e ágil. Medem de **80 cm a 1,20 m** e pesam **20–35 kg**. Atingem a maturidade por volta dos 18 anos e podem viver mais de **300 anos**.
+Povo pequeno e ágil. Medem de **80 cm a 1,20 m** e pesam **20–35 kg**. Atingem a maturidade por volta dos 16 anos e podem viver mais de **300 anos**.
 
 - **Custo de XP:** 30
 - **`+1` de Destreza**: começa em **2** e vai até **7**. Mãos e pés leves.

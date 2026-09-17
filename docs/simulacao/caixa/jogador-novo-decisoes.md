@@ -3087,7 +3087,7 @@ Personagem" (ficha) logo no topo — as duas coisas que um novato precisa ver, m
 desta lista: repensar se "Explorar Proezas" precisa estar citado na capa, e o que fazer com "50
 Proezas · 461 Técnicas · 24 Artes" logo abaixo — mas isso é preferência de capa, não conserto.
 
-### M-46 · custo de raça e idades divergentes · PARCIALMENTE DECIDIDO em 17/09/2026
+### M-46 · custo de raça e idades divergentes · PARCIALMENTE DECIDIDO em 17/09/2026 · a parte das idades FEITA em 17/09/2026 (`<pendente>`)
 
 **A recalibração do custo de raça continua esperando** a fila `M` fechar, junto do orçamento
 (`M-43`) — isso não mudou.
@@ -3102,6 +3102,13 @@ o motor) — os dois preços são diferentes e não precisam esperar juntos.
 **O que isto manda fazer:** decidir qual das duas cópias diverge do `racas.json` (a fonte real de
 `descricao`) e ajustar a outra para bater — Gnomo e Halfling, nos três lugares que M-46 já mediu
 (`racas.json`, a prosa de abertura da seção em `racas.md`, e a tabela resumo de `racas.md:129`/34).
+
+**FEITO.** `racas.json` não tinha divergência nenhuma para resolver: o campo `descricao` só cita
+o teto de vida (400+/300+ anos), que já batia dos dois lados. A divergência real era só entre a
+prosa de abertura e a tabela "Envelhecimento" (`racas.md:129-134`). Escolhida a tabela como fonte
+(é a estrutural, com as quatro colunas de marco por raça, comparável lado a lado com as outras
+seis): a prosa do Gnomo passou de "20 anos" para **18**, a do Halfling de "18" para **16**,
+batendo com a coluna Adulto da tabela nos dois casos.
 
 ### M-15 · o que a Habilidade Energia Espiritual faz · PENDÊNCIA, com direção provável
 

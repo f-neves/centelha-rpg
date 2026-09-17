@@ -379,7 +379,7 @@ baterem com a tabela do capítulo.
 > (batedor de arco). Conferir que todo outro traço citado no parágrafo (Preparo, dano, o resto do
 > exemplo) já bate com a ficha da Sora antes de trocar só o nome.
 >
-> **FEITO** `<pendente>`. Conferido traço a traço antes de trocar:
+> **FEITO** `5828931`. Conferido traço a traço antes de trocar:
 > - `combate.md`, 1º exemplo: o pool "3d6+5" era só ilustrativo (Kael nem tem Armas, então nunca
 >   vinha de ficha nenhuma). Recalculado para a Sora de verdade: Destreza 6 + Armas 5 = 11 →
 >   5 dados +2 (ímpar) +1 (acerto da espada) +3 (Centelha) = **5d6+6**. Conferido contra a Defesa
