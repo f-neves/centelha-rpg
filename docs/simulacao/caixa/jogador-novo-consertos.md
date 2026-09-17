@@ -446,6 +446,8 @@ metade.**
 
 ### C-20 (197) · a armadura "Nenhuma" promete que o Vigor te defende de lâminas
 
+> **FEITO** `dc4cd49`.
+
 `src/data/armaduras.json`, entrada `nenhuma`, campo `notas`:
 "Sem proteção; máxima mobilidade. **Só o Soak natural (Vigor) defende você.**"
 Contra `combate.md` ("só a **Centelha** contra os letais... um mortal tem 0 de Absorção
@@ -848,6 +850,11 @@ tabelas dos capítulos.
 ---
 
 # LOTE 8 · varreduras de uma palavra
+
+> **FEITO** `dc4cd49`, os oito. `Soak` também achado em três lugares que a tabela original não
+> listava: `armaduras.json` (a notas da armadura Nenhuma, ver C-20), `tecnicas.json` (efeitos de
+> Absorção) e a FONTE do bestiário (`gen-bestiario.mjs`, que escreve `inimigos.json`, `monsters.json`
+> e `monsters-mesa.json`); os três regenerados.
 
 Cada linha é uma troca, não uma decisão. Agrupadas porque uma passada resolve todas.
 
