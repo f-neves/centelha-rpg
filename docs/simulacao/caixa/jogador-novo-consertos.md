@@ -560,6 +560,11 @@ o livro. Custam texto novo, não uma frase.
 
 ### C-31 (81, 85, 162, 191) · Preparo, Golpe e Recuperação, o maior buraco do livro
 
+> **FEITO** `77516b7`. Duas seções novas em `combate.md`, logo depois de "A linha do tempo":
+> "Preparo, Golpe e Recuperação" (a tabela de `combate.pgr` e a escada de `combate.escada`) e
+> "Dois sistemas de tempo, e qual é o padrão" (o C-32). A primeira menção de "Preparo" no
+> arquivo passou a ser a própria definição.
+
 O sistema existe inteiro e com números em `src/data/regras.json → combate.pgr`:
 
 - `preparo` por classe de arma: `leve 0`, `media 1`, `haste 2`, `pesada 2`; distância =
@@ -582,6 +587,8 @@ vez que é usada.
 
 ### C-32 (193) · existem dois sistemas de tempo e nenhum capítulo diz isso
 
+> **FEITO** `77516b7`, junto com o C-31.
+
 A nota de `combate.escada` em `regras.json` diz: "No sistema normal a escada colapsa para
 o que o capítulo IX já cobrava, mais o −4 no Tick em que o golpe sai". Ou seja, há o
 sistema tático (Tick a Tick, com P/G/R) e o sistema normal, e as penalidades são
@@ -590,6 +597,10 @@ Conserto: uma caixa no alto do capítulo IX dizendo que há dois, qual é o padr
 o que muda. Anda junto com C-31.
 
 ### C-33 (192) · quantos golpes uma ação rende: o capítulo diz um, o motor diz até três
+
+> **FEITO** `77516b7`. A frase "cada ação rende um só ataque" saiu (reescrita para não prometer
+> teto nenhum), entrou a seção "Rajada: golpes extras com a mesma arma" com a tabela de teto por
+> classe, e a empunhadura dupla passou a dizer −1d6 nas duas mãos, como o JSON manda.
 
 `src/content/chapters/combate.md`: "Via de regra, **cada ação rende um só ataque**...
 Ninguém divide a ação em vários golpes com uma arma na mão."
@@ -706,6 +717,8 @@ errada.**
 ---
 
 # LOTE 5 · o glossário
+
+> **FEITO** `b03f4ab`, os quatro. Ver cada item abaixo.
 
 Quatro verbetes contradizem `regras.json`. Pesa mais do que parece: o glossário não é uma
 página que se visita, é o **balão de ajuda que abre dentro dos capítulos**, então o leitor
