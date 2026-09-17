@@ -173,7 +173,7 @@ aparece nos **Caminhos** de Comando e Marionete (o que remove a escolha) e no To
 (que baixa a Defesa Mental como preparo do combo de dominação).
 
 > **Caminhos, não Técnicas.** A frase acima já foi lida como "só duas Técnicas deveriam citar
-> Defesa Mental", e virou uma pendência que não existia (o **D4** do `Pendencias.md`, fechado sem
+> Defesa Mental", e virou uma pendência que não existia (o **D4** do `docs/pendencias/D-proezas-tecnicas.md`, fechado sem
 > causa em 17/08/2026). A armadilha é que **Marionete** também é o nome de uma Técnica de nível 6.
 > **Conferido no dado em 17/08:** as 15 Técnicas que citam Defesa Mental estão todas em Comando (9)
 > e Marionete (6). Além das 12 listadas acima, são o Tom de Autoridade e as duas de nível 2 que

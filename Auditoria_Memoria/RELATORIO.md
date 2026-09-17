@@ -38,7 +38,7 @@ registro. Duas achados fora do padrão "número velho":
 
 - uma **contradição real entre documentos** (não staleness de memória, staleness de decisão): a
   camada de Tradição das Artes (`trilhas-feiticaria.md`, proposta de 28/07) e a rolagem por
-  Tradição continuavam citadas como pendência em `Pendencias.md` (C1/C2) enquanto o próprio A11
+  Tradição continuavam citadas como pendência em `docs/pendencias/B-bestiario.md` (C1/C2) enquanto o próprio A11
   já tinha resolvido metade da pergunta em 17/08, sem separar as duas metades;
 - um **bug real documentado só num lugar** (`Auditoria_Tecnica.md` §8.2), nunca promovido ao
   `Pendencias.md`: o Grid da mesa lia fraqueza/resistência de criatura do campo errado do objeto.
@@ -114,7 +114,7 @@ Os dois são trabalho de auditoria manual, e auditoria manual só acontece quand
   envelhecidos nesta sessão) para checar **estado**, não só citação de linha: um item `[x]` cujo
   texto cita um arquivo/campo que não existe mais é um sinal auditável automaticamente, mesmo que
   parcial.
-- `Auditoria_Tecnica.md` e `Pendencias.md` guardam achados que se sobrepõem (o B12 é o exemplo:
+- `Auditoria_Tecnica.md` e `docs/pendencias/B-bestiario.md` guardam achados que se sobrepõem (o B12 é o exemplo:
   vivia inteiro na auditoria, ausente do mapa). Não recomendo fundir os dois documentos (têm papéis
   diferentes: um é auditoria pontual, o outro é o índice vivo), mas vale uma revisão futura
   perguntando "todo achado de `Auditoria_Tecnica.md` §8.2 em diante tem uma linha correspondente

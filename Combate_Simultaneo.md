@@ -338,5 +338,5 @@ Só para dar forma ao que a implementação provavelmente vira, sem comprometer 
 - `Golpe_Tardio.md` §9 (o que a mesa decidiu sobre resolução tardia), §10 a §14 (deslocamento e
   as quatro velocidades), §17 (a fatia do `golpeAdiado`, como precedente de implementação atrás
   de chave).
-- `Pendencias.md`, frente **K** (Combate · a linha do tempo) e **I9** (o caderno de melhorias do
+- `docs/pendencias/I-mesa-tempo-real.md`, frente **K** (Combate · a linha do tempo) e **I9** (o caderno de melhorias do
   tabuleiro, que já cita BG3 e Divinity, mas por outras features).

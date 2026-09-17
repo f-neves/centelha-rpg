@@ -1,6 +1,6 @@
 # A Centelha do bestiário · o item B10
 
-> Aberto em **2026-08-17**, a partir do **B10** do `Pendencias.md`. Este documento é a fonte de
+> Aberto em **2026-08-17**, a partir do **B10** do `docs/pendencias/B-bestiario.md`. Este documento é a fonte de
 > verdade da régua de Centelha das criaturas: o que aconteceu, o que foi decidido e como o conserto
 > se sustenta sozinho daqui para a frente.
 

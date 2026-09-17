@@ -663,7 +663,7 @@ veio**. Um personagem que chama a meia-estação de inverno pelo nome litúrgico
 sacerdotes, e quem a chama de "as oito noites" foi criado por avó.
 
 **[EM ABERTO]** os nomes em si: 12 meses, 8 dias da semana, 8 vigílias, 4 estações, 4 soleiras e as
-oito noites, cada um nas duas camadas. Ver F5 e F8 no `Pendencias.md`.
+oito noites, cada um nas duas camadas. Ver F5 e F8 no `docs/pendencias/F-lore.md`.
 
 ### 9.15. Versão alternativa do calendário [REGISTRADA, não adotada]
 

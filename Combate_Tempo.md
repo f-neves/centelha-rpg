@@ -801,7 +801,7 @@ Três leituras:
 - **No Preparo:** abortar, perdendo os Ticks investidos, e **só para mover, desviar ou se
   interpor**, nunca para atacar. É o desvio de emergência da §5.5 do Arcano virado regra geral, e
   é o que dá saída ao arqueiro e ao feiticeiro, que têm `R=0`. Quem quiser ignorar o perigo e
-  levar o golpe adiante pode, com um **teste de Virtude** (ver K12 no `Pendencias.md`: como se
+  levar o golpe adiante pode, com um **teste de Virtude** (ver K12 no `docs/pendencias/K-combate-linha-do-tempo.md`: como se
   conta um teste de Virtude ainda não está decidido).
   **O preço, fechado em 21/08:** você fica livre **no Tick de agora**, e não no Tick em que
   declarou. Tudo o que gastou montando o gesto foi para o lixo, e é isso que impede abortar de ser
@@ -1237,7 +1237,7 @@ fraca atrasa o tempo do par).**
 - **O escudo** entra na mesma estrutura (segurar sem golpear = alívio, mais o Bloqueio dele), mas
   medir isso está travado pela **K14**.
 - **A empunhadura de DUAS MÃOS** (Força ×2 na mesma arma) apareceu nesta discussão e é um problema
-  **de hoje**, maior que esta seção: ver K21 no `Pendencias.md`.
+  **de hoje**, maior que esta seção: ver K21 no `docs/pendencias/K-combate-linha-do-tempo.md`.
 ---
 
 ## 15. Os dois sistemas, e o plano de implementação (20/08/2026)
@@ -1766,7 +1766,7 @@ registro.
 
 O estudo mede o atrito das saídas, propõe onde a **Firula** entra (anunciada no Preparo, confirmada
 no Golpe) e desenha o aviso que a tela precisa dar para a espera não virar contabilidade. Seis
-decisões esperando a mesa, listadas na §9 de lá e na **K27** do `Pendencias.md`.
+decisões esperando a mesa, listadas na §9 de lá e na **K27** do `docs/pendencias/K-combate-linha-do-tempo.md`.
 
 ---
 

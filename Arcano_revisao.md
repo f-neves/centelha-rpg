@@ -1473,7 +1473,7 @@ sofre a Penalidade. Se um dia precisar de resistência, o lugar é aqui.
 **13. Efeitos elementais sem número.** Treze ainda estão só com parâmetros padrão, e Fogo, Raio e
 Luz não têm nada de nível 1. Frente de revisão do autor.
 
-**21. Revisar Área × Volume.** *(A13 no `Pendencias.md`.)* O parâmetro inteiro está em revisão pelo
+**21. Revisar Área × Volume.** *(A13 no `docs/pendencias/A-arcano-artes.md`.)* O parâmetro inteiro está em revisão pelo
 autor, e tudo que foi calibrado contra ele depende do resultado: a escada de Volume, a tabela de
 estado da matéria, o teste de que o Volume cabe embaixo da Área do mesmo grau, e o próprio corte
 entre corpo e jurisdição.

@@ -1,7 +1,7 @@
 # Ações & Sistema
 
 > Documento de frente aberto em **2026-08-09**. Ainda **não existe capítulo no site**: este
-> arquivo é o rascunho dele. Pendência **G1** no `Pendencias.md`.
+> arquivo é o rascunho dele. Pendência **G1** no `docs/pendencias/G-acoes-sistema.md`.
 >
 > Modelo: o capítulo **Drama and Systems** (cap. 4) do Exalted 2ª edição, que pega as ações que
 > todo mundo tenta fora do combate (subir num muro, nadar contra a corrente, cair de uma torre,
