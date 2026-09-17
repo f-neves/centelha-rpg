@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { url } from '../lib/site';
+import regras from '../data/regras.json';
 
 // ===== Probabilidades (calculadas no build) =====
 function distN(n: number): number[] {
@@ -44,16 +45,23 @@ const cor = (pct: number) => `hsl(${Math.round(pct * 1.2)} 82% 56%)`;
 const heatRows = somas.map((s) => ({ soma: s, dados: dadosStr(s), cells: difs.map((D) => { const p = Math.round(pSucesso(s, D) * 100); return { p, cor: cor(p) }; }) }));
 const legenda = Array.from({ length: 21 }, (_, i) => cor(i * 5));
 
-// Degraus de dificuldade (âncoras; o Mestre pode usar qualquer número)
-const degraus = [
-  { dif: '3', nome: 'Trivial', soma: '~2', desc: 'Quase ninguém falha. Só se rola sob pressão: pressa, escuro, ferido, alguém observando.' },
-  { dif: '5', nome: 'Fácil', soma: '3', desc: 'Rotina para quem tem algum jeito; cara-ou-coroa para o destreinado. Rola-se sob risco ou plateia.' },
-  { dif: '10', nome: 'Média', soma: '6', desc: 'O padrão do "incerto e importa". Cara-ou-coroa para o praticante; o perito resolve com folga; o leigo não alcança.' },
-  { dif: '15', nome: 'Difícil', soma: '9', desc: 'Exige Habilidade de verdade. Cara-ou-coroa para o perito; o praticante quase nunca; a referência domina.' },
-  { dif: '20', nome: 'Muito difícil', soma: '12', desc: 'Limite humano: a façanha que vira causo. Cara-ou-coroa para o grande mestre; a referência arrisca.' },
-  { dif: '25', nome: 'Excepcional', soma: '~15', desc: 'Pouquíssimos alcançam, e mesmo eles falham mais que acertam. Pede Margem acumulada, Virtude canalizada ou Centelha.' },
-  { dif: '30+', nome: 'Sobre-humano', soma: '~18', desc: 'Fora do que o corpo ou a mente comuns fazem. Requer Centelha, Proezas ou Arcano.' },
-];
+// Degraus de dificuldade, lidos de `regras.dificuldade` (C-40): a régua real começa em
+// 5 (não tem um degrau "Trivial" em 3), e o nome do degrau 20 é "Limite humano" no JSON,
+// não o rótulo mais informal que este arquivo digitava à mão antes de ler do dado.
+const DESC_DIF: Record<number, string> = {
+  5: 'Rotina para quem tem algum jeito; cara-ou-coroa para o destreinado. Rola-se sob risco ou plateia.',
+  10: 'O padrão do "incerto e importa". Cara-ou-coroa para o praticante; o perito resolve com folga; o leigo não alcança.',
+  15: 'Exige Habilidade de verdade. Cara-ou-coroa para o perito; o praticante quase nunca; a referência domina.',
+  20: 'Limite humano: a façanha que vira causo. Cara-ou-coroa para o grande mestre; a referência arrisca.',
+  25: 'Pouquíssimos alcançam, e mesmo eles falham mais que acertam. Pede Margem acumulada, Virtude canalizada ou Centelha.',
+  30: 'Fora do que o corpo ou a mente comuns fazem. Requer Centelha, Proezas ou Arcano.',
+};
+const degraus = regras.dificuldade.map((d, i) => ({
+  dif: i === regras.dificuldade.length - 1 ? `${d.dif}+` : String(d.dif),
+  nome: d.desafio,
+  soma: d.aaltura.split(' · ')[0],
+  desc: DESC_DIF[d.dif] ?? '',
+}));
 
 // Exemplos: tarefas físicas e de perícia
 const exFisicas = [
@@ -85,7 +93,7 @@ const exSociais = [
   ['Negociar estadia (quarto por favor/história)', 'Negociação/Lábia', 10, ''],
   ['Estadia de graça por uns dias', 'Lábia', 15, ''],
   ['Intimidar capanga isolado e hesitante', 'Intimidação', 8, ''],
-  ['Intimidar soldado comum', 'Intimidação', 12, 'vs Defesa Mental do alvo'],
+  ['Intimidar soldado comum', 'Intimidação', 12, 'vs Defesa Social do alvo'],
   ['Intimidar veterano endurecido', 'Intimidação', 16, ''],
   ['Intimidar fanático/sem medo', 'Intimidação', 20, ''],
   ['Seduzir alguém já receptivo', 'Sedução', 5, 'Aparência entra na jogada'],
@@ -142,6 +150,7 @@ const exSociais = [
     <li><b>Média</b> (~50%): Dif ≈ Soma × <b>5/3</b></li>
     <li><b>Difícil</b> (~25%): Dif = Soma × <b>2</b></li>
   </ul>
+  <p class="muted">Este "Fácil/Média/Difícil" é uma <strong>razão relativa à Soma de quem tenta</strong>, para calibrar uma Dificuldade nova na hora. É outro instrumento do "Fácil/Média/Difícil" <strong>absoluto</strong> da tabela abaixo (o mesmo nome que os capítulos usam para os degraus fixos 5/10/15): os dois concordam no número (o <code>aaltura</code> de cada degrau é <code>Dif × 3/5</code>), só nomeiam a régua de lados diferentes.</p>
   <div class="tab-wrap">
     <table class="prob">
       <thead><tr><th>Soma</th><th>Dados</th><th>Fácil (×4/3)</th><th>Média (×5/3)</th><th>Difícil (×2)</th></tr></thead>

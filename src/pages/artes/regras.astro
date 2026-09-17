@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import FormasPop from '../../components/FormasPop.astro';
 import VoltarAoTopo from '../../components/VoltarAoTopo.astro';
-import { url } from '../../lib/site';
+import { url, numeralDe } from '../../lib/site';
 import { loadData } from '../../lib/data';
 import { formaDe } from '../../lib/artes-fmt';
 import regras from '../../data/regras.json';
@@ -41,7 +41,7 @@ const EX_CONTA: [string, string, number][] = [
 ];
 ---
 <Base title="Regras das Artes" largura="wide" descricao="Como se conjura no Centelha: parâmetros, custo em Mana, a fonte do elemento, esticar, Rituais e o que o alvo opõe.">
-  <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size: var(--fs-micro);margin:0">Capítulo XV</p>
+  <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size: var(--fs-micro);margin:0">Capítulo {numeralDe('artes/regras')}</p>
   <h1>Regras das Artes</h1>
   <p class="lead">Como se conjura, o que custa e o que o alvo pode fazer a respeito. Cada <strong>Arte</strong> tem <strong>6 níveis</strong>: basta <strong>Centelha &gt; 0</strong> (qualquer fagulha) para tocar a magia; a profundidade (o nível da Arte) você compra e evolui um a um. Dentro do seu nível, você monta o efeito girando os parâmetros. O panorama, os nomes da feitiçaria e as Tradições de ensino estão em <a href={url('arcano')}>O Arcano</a>.</p>
 

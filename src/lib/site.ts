@@ -64,6 +64,20 @@ export const NAV = [
   ...(MODULOS.folego ? [{ slug: 'regras/folego', titulo: 'Fôlego', numeral: 'XX' }] : []),
 ];
 
+/**
+ * O numeral do capítulo, lido do `NAV` pelo slug, para as páginas `.astro` que não
+ * pegam o numeral do frontmatter de um capítulo em markdown (`caminhos`, `arcano`,
+ * `artes/regras`, `artes/efeitos`, `artes/catalogo`). Digitar o número à mão nessas
+ * cinco páginas foi o que fez cinco numerais divergirem do `NAV` (C-38).
+ */
+export function numeralDe(slug: string): string {
+  for (const item of NAV) {
+    if (item.slug === slug) return item.numeral;
+    if ('sub' in item && item.sub?.some((s) => s.slug === slug)) return item.numeral;
+  }
+  return '';
+}
+
 export const FERRAMENTAS = [
   { slug: 'mestre', titulo: 'Área do Mestre' },
   { slug: 'ficha', titulo: 'Ficha de Personagem' },

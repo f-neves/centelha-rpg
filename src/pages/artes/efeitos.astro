@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import FormasPop from '../../components/FormasPop.astro';
 import VoltarAoTopo from '../../components/VoltarAoTopo.astro';
-import { url } from '../../lib/site';
+import { url, numeralDe } from '../../lib/site';
 import { loadData } from '../../lib/data';
 import { idDe, formaDe, ordemPar, valorPar } from '../../lib/artes-fmt';
 const d = await loadData();
@@ -23,7 +23,7 @@ const BLOCOS: [string, string, any[]][] = [
 ];
 ---
 <Base title="Efeitos Especiais" largura="wide" descricao="Os Efeitos Especiais das Artes elementais: o que cada um faz, o que custa e quais parâmetros o jogador escolhe na hora de conjurar.">
-  <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size: var(--fs-micro);margin:0">Capítulo XV · <a href={url('artes/regras')}>As Artes</a></p>
+  <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size: var(--fs-micro);margin:0">Capítulo {numeralDe('artes/regras')} · <a href={url('artes/regras')}>As Artes</a></p>
   <h1>Os Efeitos Especiais</h1>
   <p class="lead">A Arte dá o elemento em estado bruto; o <strong>Efeito</strong> dá forma, nome e comportamento. A régua é simples: <em>se precisa de um substantivo próprio para ser descrito, é Efeito.</em> Fogo é Arte, muro é Efeito, e subir a Arte nunca substitui o Efeito, porque muro não é fogo maior, é fogo com forma.</p>
 
