@@ -118,3 +118,19 @@ lote das 11 decisões" carregou uma arrumação estrutural não anunciada.
 da Duração em `metal-incandescente` (M-35), que ninguém pediu para mudar, contradiz a própria
 mensagem do commit que a trouxe, e produz um texto errado nas duas telas onde o jogador lê o
 Efeito. Conserto de uma linha em `efeitos.json`; não precisa reabrir nada além dele.
+
+## Conferência do conserto · reancorada em `5f119aa`
+
+`git diff 3538388..5f119aa` mostra só a linha esperada: `unidade` de `metal-incandescente ·
+Duração` voltou de `"pontos de Mana"` para `"Ticks"`, nada mais no commit. O array `escala`
+continua igual (valores em Ticks), então a leitura conjunta escala+unidade em
+`ficha-engine.ts:664` e `efeitos.astro:71` volta a mostrar `(Ticks)`, correto e sem redundância
+nova. `npm run validate` rodado aqui: verde.
+
+Sobre a reordenação H/I/J: registrado que não foi intencional, e a Executora anotou o hábito de
+conferir o diff antes de commitar. Sem promessa contradita e sem perda de conteúdo (já conferido
+acima), não muda o veredito.
+
+**VEREDITO FINAL: PROCEDE.** O lote das 11 decisões (M-21h, M-17, M-20, M-23, M-36, M-38, M-16,
+M-34, M-35, M-40, M-44) está correto contra a promessa de cada item, com o CORRIGE da M-35 já
+aplicado e conferido.
