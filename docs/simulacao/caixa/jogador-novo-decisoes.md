@@ -2970,9 +2970,27 @@ ela for a única marcada (ou quando o clique alcançar alguém abaixo do limite 
 padrão de diálogo do Sopro de Vida. Reescrever o parágrafo da rodada 81 que descreve a premissa
 caída.
 
-### M-09 · tempo de um passo de Relação por povo · ADIADO
+### M-09 · tempo de um passo de Relação por povo · DECIDIDO em 17/09/2026
 
-Fica para depois do reset. Não decidido agora.
+**O original:** `relacoes-sociais.md:185`, o intervalo-base de uma Firula de cortejo "escala com a
+longevidade da raça (um elfo corteja em estações onde um humano leva semanas)", na escada de seis
+degraus do capítulo de Ações (Tick · minuto · hora · dia · semana · estação). Não existe conversão
+em fonte nenhuma.
+
+**A decisão: tabela de quatro faixas, pelos números de vida que `racas.json` já descreve em
+prosa.** Vida curta (orc, meio-orc · ~60 anos): um degrau mais rápido que o padrão. Padrão
+(humano, meio-elfo): sem ajuste. Vida longa (anão, gnomo, halfling · 300-400 anos): um degrau mais
+lento. Vida muito longa (elfo · 600+ anos): dois degraus mais lento — é a faixa que o próprio
+exemplo do capítulo já usa ("estações" em vez de "semanas").
+
+**O contra comprado:** quatro faixas por longevidade é mais regra nova do que a frase original
+prometia (ela só dava um exemplo, o elfo); a alternativa de duas faixas era mais simples de
+lembrar, mas perdia a distinção que o texto publicado já assume.
+
+**O que isto manda fazer:** `racas.json` ganha um campo de faixa de longevidade por raça (ou o
+Arquiteto decide reaproveitar o texto de `descricao` por parsing, o que for mais simples e não
+duplicar a fonte); `regras.json`, bloco da escada de Ações/Firula, ganha o deslocamento de degrau
+por faixa; `relacoes-sociais.md:185` aponta para a régua em vez de só dar um exemplo solto.
 
 ### M-17 · teto de Habilidades secundárias compradas · DECIDIDO em 16/09/2026 · FEITO em 17/09/2026 (`e4fe156`)
 
@@ -3069,10 +3087,21 @@ Personagem" (ficha) logo no topo — as duas coisas que um novato precisa ver, m
 desta lista: repensar se "Explorar Proezas" precisa estar citado na capa, e o que fazer com "50
 Proezas · 461 Técnicas · 24 Artes" logo abaixo — mas isso é preferência de capa, não conserto.
 
-### M-46 · custo de raça e idades divergentes · ADIADO
+### M-46 · custo de raça e idades divergentes · PARCIALMENTE DECIDIDO em 17/09/2026
 
-Fica para depois, junto com o orçamento (`M-43`) e a fila que precisa fechar primeiro. Não
-decidido agora.
+**A recalibração do custo de raça continua esperando** a fila `M` fechar, junto do orçamento
+(`M-43`) — isso não mudou.
+
+**As idades, separadas do custo, DECIDIDO agora: corrigir as duas divergências conhecidas hoje,
+sem esperar a recalibração inteira.** Gnomo: a prosa de abertura diz 20 anos de maturidade, a
+tabela (`racas.md:129`, coluna Adulto) diz 18. Halfling: prosa 18, tabela 16. As outras quatro
+raças já batem. **Por quê separar de M-43:** é correção de cópias que já discordam entre si (fato
+sobre o texto), não recálculo de número que depende de mecânica ainda não implementada (fato sobre
+o motor) — os dois preços são diferentes e não precisam esperar juntos.
+
+**O que isto manda fazer:** decidir qual das duas cópias diverge do `racas.json` (a fonte real de
+`descricao`) e ajustar a outra para bater — Gnomo e Halfling, nos três lugares que M-46 já mediu
+(`racas.json`, a prosa de abertura da seção em `racas.md`, e a tabela resumo de `racas.md:129`/34).
 
 ### M-15 · o que a Habilidade Energia Espiritual faz · PENDÊNCIA, com direção provável
 
@@ -3133,12 +3162,14 @@ decisão já tomada para a Pressão em 15/09 (penalidade de Defesa sem teto).
 nomeada (Quebrar Guarda, e qualquer penalidade IMPOSTA por Proeza de outro, por analogia com a
 Pressão) fora do cálculo do teto de ±6.
 
-### M-41 · Técnicas com efeito sem número · ADIADO, com direção
+### M-41 · Técnicas com efeito sem número · ADIADO, com direção CONFIRMADA em 17/09/2026
 
-**Não corrigir agora.** Vira item de revisão geral: depois do reset, revisar as Proezas para achar
-todas as descrições vagas e padronizá-las como as Artes já estão hoje (com número em cada efeito).
-Não é conserto pontual do Soco Trovejante e da Investida Devastadora — é levantamento novo,
-parecido em escopo com a leitura que gerou esta lista inteira.
+**Não corrigir agora.** Vira item de revisão geral: revisar as Proezas para achar todas as
+descrições vagas e padronizá-las como as Artes já estão hoje (com número em cada efeito). Não é
+conserto pontual do Soco Trovejante e da Investida Devastadora — é levantamento novo, parecido em
+escopo com a leitura que gerou esta lista inteira. **Confirmado em 17/09/2026: a revisão das
+Proezas ainda vai acontecer, e quando acontecer inclui esta padronização** — não é decisão
+esquecida, é decisão que espera o mesmo levantamento maior.
 
 ### M-44 · Centelha 1 tranca a Técnica no nível 1 · DECIDIDO em 16/09/2026 · FEITO em 17/09/2026 (`f76b00f`)
 

@@ -373,6 +373,11 @@ baterem com a tabela do capítulo.
 > martelo na Investida, espada longa em `quase-acerto.md`). Não é número: é trocar o personagem
 > do exemplo ou dar-lhe uma perícia que ele não tem, e o item oferece as duas saídas sem
 > escolher. Decisão do Arquiteto.
+>
+> **DECIDIDO em 17/09/2026: os três exemplos trocam Kael pela Sora.** Ela já tem Armas 5 na ficha
+> do capítulo XVIII, então não inventa perícia nova para ninguém, e preserva o conceito do Kael
+> (batedor de arco). Conferir que todo outro traço citado no parágrafo (Preparo, dano, o resto do
+> exemplo) já bate com a ficha da Sora antes de trocar só o nome.
 
 A ficha dele está em `criacao-de-personagem.md:88-97` e é a única fonte que declara os
 números (e as contas dela fecham, ver C-12). Contra ela:
