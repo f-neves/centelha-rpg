@@ -2970,7 +2970,7 @@ ela for a única marcada (ou quando o clique alcançar alguém abaixo do limite 
 padrão de diálogo do Sopro de Vida. Reescrever o parágrafo da rodada 81 que descreve a premissa
 caída.
 
-### M-09 · tempo de um passo de Relação por povo · DECIDIDO em 17/09/2026 · FEITO em 17/09/2026 (`<pendente>`)
+### M-09 · tempo de um passo de Relação por povo · DECIDIDO em 17/09/2026 · FEITO em 17/09/2026 (`40c48c1`)
 
 **O original:** `relacoes-sociais.md:185`, o intervalo-base de uma Firula de cortejo "escala com a
 longevidade da raça (um elfo corteja em estações onde um humano leva semanas)", na escada de seis
