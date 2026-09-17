@@ -45,7 +45,7 @@ O custo é para subir ao próximo ponto, em função do *novo* valor.
 | Atributo | 5 + (novo × 5) | 1→2 = 15 · 2→3 = 20 · 3→4 = 25 · 5→6 = 35 |
 | Habilidade primária | 4 + (novo × 2) | 0→1 = 6 · 2→3 = 10 · 5→6 = 16 |
 | Habilidade secundária | 2 + (novo × 1) | metade exata da primária: 3 · 4 · 5 · 6 · 7 · 8 |
-| Especialidade (prim. / sec.) | 8 + (nível × 4) / 4 + (nível × 2) | acumulativo por escopo nomeado (prim. 12 · 16 · 20 ; sec. 6 · 8 · 10). Até [nível ÷ 2] níveis por Habilidade |
+| Especialidade (prim. / sec.) | 8 + (nível × 4) / 4 + (nível × 2) | acumulativo por escopo nomeado (prim. 12 · 16 · 20 ; sec. 6 · 8 · 10). Até [nível da Habilidade ÷ 2] níveis de Especialidade por Habilidade |
 | Virtude | 4 + (novo × 2) | 1→2 = 8 · 2→3 = 10 · 5→6 = 16 |
 | Força de Vontade | novo × 2 | piso 0 · 0→1 = 2 · 5→6 = 12 · 11→12 = 24 |
 | Aparência | novo × 2 | piso 0 · mesma trilha da Vontade |
@@ -76,9 +76,13 @@ Cada herói pode ter **um pico**: você está autorizado a levar **um único Atr
 | Mana | (Centelha × 2) + Força de Vontade |
 | Iniciativa | 1d6 + Raciocínio + Prontidão |
 
+<p class="muted"><strong>Energia</strong> é o combustível das [Técnicas de Proeza](/caminhos); <strong>Mana</strong> é o do [Arcano](/arcano).</p>
+
 ## Três exemplos, um por orçamento
 
 Os três personagens abaixo mostram o que cada patamar entrega: **Kael** no iniciante, **Sora** no veterano e **Veil** no herói. Repare onde o XP vai: como os tetos de criação seguram os traços (5/4, mais o pico), boa parte do bolo se converte em **largura** (mais Proezas, Técnicas, habilidades e especialidades). É o toolbox que carrega a profundidade.
+
+<p class="muted">As quatro Virtudes das fichas abaixo (Bravura, Convicção, Temperança, Compaixão) e o modificador entre parênteses da Aparência (a régua de −5 a +5) estão detalhados no capítulo [Aparência, Virtudes & Vontade](/regras/aparencia-virtudes-vontade).</p>
 
 ### Kael, o Batedor · Iniciante (Centelha 3)
 
@@ -95,7 +99,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Força de Vontade | 0 → 7 | 56 |
 | Aparência | 0 → 4 (feio, −1) | 20 |
 | Centelha | 0 → 3 (Herói) | grátis |
-| Técnicas | 29, de Olho de Águia, Sombra e Vento (níveis 1 a 3, já com o Desperto) | 450 |
+| Técnicas | 29, de Olho de Águia, Sombra e Vento (níveis 1 a 3, já com o [Desperto](/regras/centelha), o degrau 2 da Centelha) | 450 |
 | **Total** | | **1230** |
 
 <p class="muted">Derivados: PV 37 · Defesa 17 · Def. Mental 13 · Def. Social 7 · Energia 14 · Mana 13 · Iniciativa 1d6+6. Fecha no orçamento. Mira firme à distância e some na sombra entre os tiros; guarda social baixa, porque não é o forte dele.</p>
@@ -119,6 +123,8 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 <p class="muted">Derivados: PV 37 · Defesa 21 · Def. Mental 17 · Def. Social 15 · Energia 15 · Mana 14 · Iniciativa 1d6+6. Fecha no orçamento. Uma líder de tropa que combina posturas defensivas, golpes precisos e uma guarda social sólida.</p>
 
 ### Veil, o Feiticeiro-guerreiro · Herói (Centelha 4)
+
+<p class="muted">**Exceção declarada:** o teto de criação é Centelha 3 (`limitesCriacao.centelha`); Veil sobe a 4 porque a Centelha não se compra com XP, é concedida pelo Mestre num marco de história, e o orçamento Herói é o único que já supõe esse marco alcançado. Não é o número padrão de um personagem recém-criado.</p>
 
 | Compra | Detalhe | XP |
 |---|---|:---:|

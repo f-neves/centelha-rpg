@@ -85,6 +85,8 @@ Quando alguém se opõe a você, em geral apenas o lado *ativo* rola, contra um 
 
 <p class="formula">Valor Passivo = (Atributo + Habilidade) × 2 + Especialidade + Centelha (+ modificadores)</p>
 
+<p class="muted">A <strong>Especialidade</strong> vale **+1 por nível** aqui, num valor fixo; numa jogada com dado, ela rende **+1d6 por nível, descartando o menor** do pool. Só entra quando o escopo nomeado dela se aplica. A <strong>[Centelha](/regras/centelha)</strong> soma **+1 por ponto** dos dois lados de qualquer disputa.</p>
+
 <div class="callout exemplo"><span class="lbl">Exemplo</span>Um ladrão se esgueira (rola Destreza + Furtividade) contra a <strong>Percepção Passiva</strong> do guarda, igual a (Percepção + Prontidão) × 2 + Especialidade + Centelha: para um guarda comum, sem as duas últimas, isso é só (Percepção + Prontidão) × 2. O guarda não rola: sua vigilância é um muro a ser superado.</div>
 
 Quando os dois agem de fato (uma queda de braço, uma corrida), ambos rolam e o maior total vence; empates favorecem quem defende ou mantém o *status quo*.

@@ -56,7 +56,7 @@ const EX_CONTA: [string, string, number][] = [
     </a>
   </nav>
 
-  <div class="callout regra"><span class="lbl">Os dois modos</span><strong>Feitiço</strong>, rápido, em combate: custa Ticks como uma ação (<strong>5</strong> nos níveis 1 a 3, <strong>6</strong> no 4, <strong>7</strong> nos 5 e 6), mais o Mana. Esses Ticks são de <strong>preparo</strong>, e a Arte sai no <a href="#tempo"><strong>último</strong></a> deles, ao contrário da ação comum, que resolve no primeiro. &nbsp; <strong>Ritual</strong>, estendido: a conjuração passa a levar minutos ou horas e, em troca, sai mais barato ou alcança mais alto do que a sua Arte permitiria.</div>
+  <div class="callout regra"><span class="lbl">Os dois modos</span><strong>Feitiço</strong>, rápido, em combate: custa Ticks como uma ação (<strong>5</strong> nos níveis 1 a 3, <strong>6</strong> no 4, <strong>7</strong> nos 5 e 6), mais o Mana. Esses Ticks são de <strong>preparo</strong>, e a Arte sai no <a href="#tempo"><strong>último</strong></a> deles, ao contrário da ação comum, que resolve no primeiro. &nbsp; <strong><a href="#rituais">Ritual</a></strong>, estendido: a conjuração passa a levar minutos ou horas e, em troca, sai mais barato ou alcança mais alto do que a sua Arte permitiria.</div>
 
   <section class="arcano-regras">
     <h2>Como se aprende uma Arte</h2>
@@ -433,6 +433,7 @@ const EX_CONTA: [string, string, number][] = [
 
     <h2 id="cura">A economia da Cura</h2>
     <p>{CURA.resumo}</p>
+    <p class="muted">A régua da Cura <strong>não tem grau 0</strong>: ela começa em 1, diferente dos outros parâmetros do catálogo (que têm um grau 0 de graça). Não há Cura "de brinde".</p>
     <div class="table-wrap">
       <table class="graus-tab">
         <thead><tr><th>Parâmetro</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
@@ -473,7 +474,7 @@ const EX_CONTA: [string, string, number][] = [
     <p>Você pode trançar <strong>várias Artes numa única conjuração</strong>, o mesmo idioma dos combos de Técnica. Junte K Artes e pague a <strong>soma dos Manas + uma sobretaxa progressiva de +(k−1)</strong> (a 2ª Arte +1, a 3ª +2…). É uma <strong>só rolagem</strong> (você escolhe a Arte condutora); o nível efetivo para gating é o do maior componente, e os Ticks seguem a escada dele.</p>
     <p class="formula">Fogo (Labareda, nível 3) + Forças (nível 1) = uma chama que persegue o alvo. Mana = 3 + 1 + <strong>1</strong> de sobretaxa = <strong>5</strong>, numa conjuração só.</p>
 
-    <h2>Rituais</h2>
+    <h2 id="rituais">Rituais</h2>
     <p><strong>Ritual é a conjuração estendida</strong>, não uma categoria de magia à parte. Um efeito que dura a cena não é Ritual: é um feitiço com o parâmetro de duração alto. O que faz um Ritual é <em>o tempo que você gasta conjurando</em>, subindo esta escada:</p>
     <p class="formula">{RITUAL.escalaTempo.join(' · ')}</p>
     <p>Subir a escada compra uma de duas coisas, e você escolhe qual em cada conjuração.</p>

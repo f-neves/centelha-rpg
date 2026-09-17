@@ -121,4 +121,4 @@ A relação do personagem consigo mesmo, e a fonte de onde ele tira o que gasta.
 
 <!-- /gen:secundarias -->
 
-<p class="muted">Uma Secundária também aceita <strong>Especialidade</strong>, na mesma conta de [nível ÷ 2] e pela metade do preço (6 · 8 · 10). Um Ferreiro 4 pode gastar os dois níveis em "gume" e "malha", e cada um deles só vale quando a peça na bigorna é aquela.</p>
+<p class="muted">Uma Secundária também aceita <strong>Especialidade</strong>, na mesma conta de [nível da Secundária ÷ 2] e pela metade do preço (6 · 8 · 10). Um Ferreiro 4 pode gastar os dois níveis em "gume" e "malha", e cada um deles só vale quando a peça na bigorna é aquela.</p>

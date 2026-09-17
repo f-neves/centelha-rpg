@@ -15,7 +15,7 @@ O tipo do golpe importa, e importa **antes**: é ele que escolhe a Absorção co
 
 <p class="formula">PV = 25 + (Vigor × 3)</p>
 
-Essa é a durabilidade de uma criatura de **porte Médio**, o padrão dos humanoides e dos personagens. Criaturas maiores aguentam mais e as menores bem menos, mesmo com o mesmo Vigor: a base e o multiplicador escalam com o tamanho. Um urso (Grande) de Vigor 5 tem 50 PV, enquanto um elfo (Médio) de mesmo Vigor tem 40.
+Essa é a durabilidade de uma criatura de **porte Médio**, o padrão dos humanoides e dos personagens. Criaturas maiores aguentam mais e as menores bem menos, mesmo com o mesmo Vigor: a base sobe com o tamanho o tempo todo, e o multiplicador de Vigor sobe até Enorme e para em 5 dali em diante (Imenso e Colossal só ganham base). Um urso (Grande) de Vigor 5 tem 50 PV, enquanto um elfo (Médio) de mesmo Vigor tem 40.
 
 | Porte | PV |
 |---|---|

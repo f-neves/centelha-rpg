@@ -52,13 +52,13 @@ Cada ação tem uma **Velocidade**, quantos Ticks ela custa antes de você poder
 | Ticks | Tipo de ação | Exemplos |
 |:---:|---|---|
 | 3 | Muito rápida | correr, saltar, abrir porta, sacar arma |
-| 4 | Utilitária | pegar item, interagir com o cenário |
+| 4 | Utilitária | pegar item, interagir com o cenário (também é a Velocidade dos Dardos, uma arma de ataque) |
 | 5 | Ataque leve | faca, adaga, espada curta, bastão |
 | 6 | Ataque médio | espada longa, machado de uma mão, lança |
 | 7 | Ataque pesado | martelo de guerra, montante, alabarda |
 | 9 a 15 | Ação longa | recarregar uma besta, conjurar uma Arte de grau alto |
 
-<p class="muted">Armas leves agem mais vezes e defendem melhor; as pesadas batem como um trovão, mas deixam você exposto entre os golpes. A arma define o seu estilo.</p>
+<p class="muted">Armas leves agem mais vezes e defendem melhor; as pesadas batem como um trovão, mas deixam você exposto entre os golpes. A arma define o seu estilo. A tabela é uma **lista de exemplos**, não um contrato: o "Tipo de ação" é só orientação de leitura, e a Velocidade real de cada arma está no catálogo de [Armas & Armaduras](/regras/armas-e-armaduras).</p>
 
 <p class="muted"><strong>A tabela não termina no 7.</strong> Ela desenha a faixa em que quase tudo cai, e não um teto: a Velocidade é só quantos Ticks a ação custa, e nada impede uma de custar mais. As <strong>bestas</strong> são o caso concreto (9, 12 e 15, pela recarga), e as Artes de grau alto sobem pela mesma escada. Acima de 7 a diferença não é de regra, é de exposição: quem se compromete por doze Ticks fica doze Ticks com a escada de Defesa aberta em cima.</p>
 
@@ -177,7 +177,7 @@ Uma **arma de duas mãos** ocupa as duas e não permite o segundo ataque; um **e
 
 <p class="formula">Dano = (Dado da Arma + Margem) + Força − Absorção</p>
 
-O **Dado da Arma** vem da classe (leve 1d6−2, média 1d6, pesada 2d6, haste 1d6+2, distância/arremesso 1d6 a 1d6+2). Armas de uma mão somam a **Força**; as de duas mãos, o **dobro da Força**: **exceto as hastes de estocada** (Lança e afins), que ferem por alcance e precisão, não por peso, e somam apenas a **Força simples**. Cada Margem (6 pontos acima da Defesa) acrescenta +1d6.
+O **Dado da Arma** vem da classe (leve 1d6−2, média 1d6, pesada 2d6, haste 1d6+2, distância/arremesso 1d6 a 1d6+2). Armas de uma mão somam a **Força**; as de duas mãos, o **dobro da Força**: **exceto as hastes de estocada** (Lança e afins), que ferem por alcance e precisão, não por peso, e somam apenas a **Força simples**; e **exceto as armas com a tag Ágil** (Adaga, Adaga de Arremesso, Dardos), que somam **Destreza** no lugar da Força. Cada Margem (6 pontos acima da Defesa) acrescenta +1d6.
 
 ### Os três modos de dano
 
@@ -217,7 +217,7 @@ A Couraça incide **só em Corte e Perfuração**: o **Impacto a ignora**. Corta
 | Imenso | +7 | 2 |
 | Colossal | +10 | 3 |
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Um <strong>Verme Púrpura</strong> (Imenso) tem Absorção <strong>13</strong> contra lâminas. Um soldado com espada longa (2d6+3, média 10) não abre um arranhão; a flecha (Perf. 1) resvala na Perfuração natural 2. Um herói de montante ainda crava 7, e uma Proeza que rasga ou um martelo no <strong>Impacto</strong> (que ignora a Couraça) é o caminho para feri-lo de verdade. Já o <strong>Tarrasque</strong> (Colossal, Absorção 24, Perf. 3) zomba de qualquer aço mortal: só Centelha, Proeza ou feitiçaria o marcam.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Um <strong>Verme Púrpura</strong> (Imenso) tem Absorção <strong>13</strong> contra lâminas. Um soldado com espada longa (1d6, média 3,5) não abre um arranhão; a flecha (Perf. 1) resvala na Perfuração natural 2. Um herói de montante (2d6, média 7) ainda não crava fundo, e uma Proeza que rasga ou um martelo no <strong>Impacto</strong> (que ignora a Couraça, Absorção 12) é o caminho para feri-lo de verdade. Já o <strong>Tarrasque</strong> (Colossal, Absorção 27 contra Corte, Perf. 3) zomba de qualquer aço mortal: só Centelha, Proeza ou feitiçaria o marcam.</div>
 
 A Couraça **empilha** com armadura (soma na Absorção) e com a Absorção de Proeza; o Nível de Perfuração natural entra no gate como o de uma armadura (vale sempre o **maior**, nunca soma).
 
@@ -353,7 +353,7 @@ Um impulso único que, **uma vez iniciado, não pode ser interrompido**. Três a
 
 <p class="muted">No salto correndo, <strong>Velocidade atual</strong> é a sua velocidade no instante do impulso: Arranque se você corre há ≤3 Ticks, Corrida depois (na ficha, supõe-se corrida plena). O <strong>Salto</strong> é a explosão de força do corpo: a Força lança, o Atletismo controla, a Destreza ajusta, e a Centelha rompe os limites mortais, do pulo humano ao salto lendário.</p>
 
-<div class="callout regra"><span class="lbl">Regra opcional</span>O <strong>Fôlego</strong>, o cansaço que limita as rajadas de golpes, o <strong>Esforço</strong> (forçar o golpe por mais dados) e a ação de <strong>Tomar Fôlego</strong>, é um <strong>módulo avançado, desligado por padrão</strong>: fica guardado à parte, no <a href="/centelha-rpg/regras/folego">módulo Fôlego</a>, e o site não mostra os números dele. As mesas que quiserem ligá-lo o encontram lá; nada mais no Combate depende disso.</div>
+<div class="callout regra"><span class="lbl">Regra opcional</span>O <strong>Fôlego</strong>, o cansaço que limita as rajadas de golpes, o <strong>Esforço</strong> (forçar o golpe por mais dados) e a ação de <strong>Tomar Fôlego</strong>, é um <strong>módulo avançado, desligado por padrão</strong>: fica guardado à parte, no <a href="/centelha-rpg/regras/folego">módulo Fôlego</a>, com os números todos publicados lá. As mesas que quiserem ligá-lo o encontram nessa página; nada mais no Combate depende disso.</div>
 
 ## Vantagem tática: posição e número
 
@@ -372,7 +372,7 @@ Posição, cobertura e postura mudam o combate sem mudar suas fichas: todos eles
 | Flanco ou pelas costas | **−2** |
 | Alvo surpreso, cego ou imobilizado | **−4** |
 
-<p class="muted">A <strong>postura agressiva</strong> é a exceção que mexe nos dois lados: você baixa <strong>−2</strong> a sua própria Defesa até a próxima ação em troca de <strong>+2</strong> no seu ataque. O empilhamento de modificadores numa mesma Defesa é limitado a <strong>±6</strong>: nenhuma soma de vantagens transforma o golpe em acerto (ou erro) automático.</p>
+<p class="muted">A <strong>postura agressiva</strong> é a exceção que mexe nos dois lados: você baixa <strong>−2</strong> a sua própria Defesa até a próxima ação em troca de <strong>+2</strong> no seu ataque. O empilhamento **destes modificadores situacionais** (cobertura, flanco, postura, prono e os outros desta tabela) numa mesma Defesa é limitado a <strong>±6</strong>: nenhuma soma de vantagens transforma o golpe em acerto (ou erro) automático. É um teto diferente do "sem teto" da Pressão (*Guarda sob pressão*, adiante) e do porte, que também fica fora dele.</p>
 
 <p class="formula">Cobertura total (sem nenhuma linha de visão) não pode ser alvejada; primeiro é preciso flanquear ou destruir o anteparo.</p>
 

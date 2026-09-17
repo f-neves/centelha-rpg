@@ -58,7 +58,7 @@ Se o Atributo é o que o personagem **consegue** fazer e a Habilidade é o que e
 
 **Bravura** · A disposição de encarar o que assusta: ficar quando o corpo inteiro manda correr, avançar contra o que é maior, dizer não a quem tem poder de destruir você. É a Virtude que decide se a cena chega a acontecer, porque quase toda cena perigosa começa com alguém escolhendo não sair dali. Não é ausência de medo, é o medo não mandando: a Bravura decide se você fica, e a Temperança decide se você mantém a cabeça fria enquanto fica.
 
-<p class="muted">Cada Virtude tem os seis degraus escritos, com a <strong>conduta</strong> esperada em cada um. Clique no nome da Virtude na ficha, ou aqui no texto, para ver a régua inteira.</p>
+<p class="muted">Cada Virtude tem os seis degraus escritos, com a <strong>conduta</strong> esperada em cada um, e a ficha mostra essa régua ao clicar no nome da Virtude.</p>
 
 ### O que elas fazem na mesa
 

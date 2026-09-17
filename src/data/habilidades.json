@@ -54,7 +54,7 @@
       "destreza",
       "forca"
     ],
-    "descricao": "O treino de lutar com uma arma na mão, qualquer arma branca: adaga, espada, machado, maça, lança, martelo, montante, de uma ou de duas mãos. É uma Habilidade só para todas porque o que muda de uma arma para a outra (peso, alcance, tipo de dano, número de mãos) é propriedade da arma, não do lutador; o que separa o duelista do brutamontes é o Atributo que ele usa e a Especialidade em que treinou. Cobre atacar, aparar com a própria lâmina e brigar em formação. Não cobre lutar de mãos vazias, que é Briga, nem lançar a arma, que é Arremesso. Junto com a sua defesa preferida, é a Habilidade mais rolada de qualquer personagem que entre em combate.",
+    "descricao": "O treino de lutar com uma arma na mão, qualquer arma branca: adaga, espada, machado, maça, lança, martelo, montante, de uma ou de duas mãos. É uma Habilidade só para todas porque o que muda de uma arma para a outra (peso, alcance, tipo de dano, número de mãos) é propriedade da arma, não do lutador; o que separa o duelista do brutamontes é o Atributo que ele usa (Destreza ou Força, à escolha de quem ataca) e a Especialidade em que treinou. Cobre atacar, aparar com a própria lâmina e brigar em formação. Não cobre lutar de mãos vazias, que é Briga, nem lançar a arma, que é Arremesso. Junto com a sua defesa preferida, é a Habilidade mais rolada de qualquer personagem que entre em combate.",
     "niveis": [
       {
         "nivel": 0,

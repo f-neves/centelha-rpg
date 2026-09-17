@@ -29,6 +29,8 @@ O dano do raspão **ignora a Absorção normal** (já é o que sobra de um golpe
 
 Os valores são **fixos por classe**: nada de campo por arma. A classe da arma vem do **dano médio** dela: `dado × 3,5 + bônus de dano`. Até **2** é leve, de **2,5 a 5,5** é média, **6 ou mais** é pesada. É o dano da ARMA, e não o do personagem: a Força de quem empunha não muda a classe, senão o mesmo aço raspava diferente em duas mãos.
 
+<p class="muted">Esta classe é uma régua PRÓPRIA do Quase-Acerto, e não a mesma classe de [Armas & Armaduras](/regras/armas-e-armaduras) (leve/média/pesada/haste/distância/arremesso, que decide Preparo e Velocidade). As duas concordam na maioria das armas comuns, mas nascem de contas diferentes: uma lê o dano médio, a outra lê o catálogo.</p>
+
 <div class="table-wrap">
 
 | Arma | Dano médio | Classe de QA |

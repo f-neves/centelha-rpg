@@ -105,7 +105,7 @@ flowchart TD
 ## Folha de bolso (sem diagrama)
 
 - **Rola dado?** Só com oposição ou risco. Trivial, não. Pedido dentro do nível da relação, não.
-- **Ação comum:** Atributo + Habilidade vs Dificuldade (5 fácil / 10 média / 15 difícil / 20 limite humano). Supera o alvo = sucesso; cada 6 acima = +1 Margem.
+- **Ação comum:** Atributo + Habilidade vs Dificuldade (5 fácil / 10 média / 15 difícil / 20 limite humano). O alvo é o **total dos dados somado**, não uma face que caiu; supera o alvo = sucesso; **cada 6 pontos** de folga acima dele = +1 Margem.
 - **Social x Mental:** passa pelo juízo = Social; contorna o juízo = Mental. (Ver [As Três Defesas](/regras/defesas).)
 - **Régua x Combate Social:** dia a dia = Régua (jogada única); cena grande e tensa = Combate Social (gastar Vontade para não ceder). (Ver [Relações Sociais](/regras/relacoes-sociais).)
 - **Três medos:** intimidação = Social; medo mágico = Mental; medo da cena = Bravura.
