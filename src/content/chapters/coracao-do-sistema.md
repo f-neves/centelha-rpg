@@ -13,10 +13,12 @@ Toda ação significativa nasce de uma soma simples: um **Atributo** (capacidade
 
 O *pool* básico é determinado pela soma de Atributo + Habilidade. A metade desse valor (arredondada para baixo) é a **quantidade de dados**. Se a soma for **ímpar**, some um **bônus fixo de +2** ao resultado.
 
-<p class="formula">Dados = [(Atributo + Habilidade) ÷ 2] + 2 se a soma for ímpar</p>
+<p class="formula">Dados = (Atributo + Habilidade) ÷ 2, arredondado para baixo<br>Se a soma for ÍMPAR: +2 somado ao RESULTADO da rolagem, não é um dado a mais</p>
 
 | Soma (Atrib + Hab) | Você rola |
 |:---:|:---:|
+| 0 | nada: total fixo **0** |
+| 1 | nenhum dado, total fixo **2** |
 | 2 | 1d6 |
 | 3 | 1d6 + 2 |
 | 4 | 2d6 |
@@ -28,6 +30,8 @@ O *pool* básico é determinado pela soma de Atributo + Habilidade. A metade des
 | 10 | 5d6 |
 | 11 | 5d6 + 2 |
 | 12 | 6d6 |
+
+<p class="muted">Soma **1** (Atributo 1 e Habilidade não treinada, o caso mais comum de personagem recém-criado) não rola dado nenhum: o total fixo de **2** nunca supera a Dificuldade **5**. É de propósito, não bug: quem não tem competência simplesmente não alcança as dificuldades altas, nem as fáceis. A saída não é mexer nesta fórmula (ela sustenta ataque, Defesa, perícia e o bestiário inteiro), é a **Firula de nível 2** (+1d6), que devolve o dado e torna a Dificuldade 5 possível com 4 ou mais.</p>
 
 ### Quem escolhe o par
 
@@ -67,7 +71,7 @@ Você tem **sucesso** quando o total **supera** o alvo: a Defesa de um inimigo o
 
 <p class="muted">No nível "à altura", tarefas fáceis e médias são um cara-ou-coroa; a maestria traz confiabilidade. Quem não tem competência simplesmente não alcança as dificuldades altas.</p>
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Para escalar um muro liso (Dificuldade 10), Kael soma <strong>Força 3 + Atletismo 3 = 6</strong> → rola <strong>3d6</strong>. Saem <strong>11</strong> nos dados: supera 10, ele sobe. Se tivesse passado de 16 (6 acima do alvo), ganharia uma <strong>Margem</strong>: subiria mais rápido, ou alcançaria um peitoril mais alto.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Para escalar um muro liso (Dificuldade 10), Kael soma <strong>Força 3 + Atletismo 3 = 6</strong> → rola <strong>3d6</strong>. Saem <strong>11</strong> nos dados: supera 10, ele sobe. Se tivesse chegado a 16 (6 acima do alvo), ganharia uma <strong>Margem</strong>: subiria mais rápido, ou alcançaria um peitoril mais alto.</div>
 
 ## Margem: graus de sucesso
 

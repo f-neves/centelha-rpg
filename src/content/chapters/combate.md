@@ -122,11 +122,12 @@ Para atacar, monte o pool de **Atributo + Habilidade**, some o **Acerto da Arma*
 
 <p class="muted"><strong>A Especialidade não é parcela somada numa rolagem.</strong> Se o escopo nomeado dela se aplica ao que você está fazendo (Armas <em>(machados)</em> com um machado na mão), ela rende <strong>+N dados, descartando os N menores</strong>, onde N é o nível. É por isso que ela sobe a confiança do golpe sem mexer no teto dele.</p>
 
-<p class="formula">Ataque = (Atributo + Habilidade)/2 + Especialidade + Arma + Centelha</p>
+<p class="formula">Ataque = [(Atributo + Habilidade) ÷ 2]d6 (+2 se a soma for ímpar) + Especialidade + Arma + Centelha</p>
 
 <p class="muted">O <strong>Atributo</strong> usado em combate corpo a corpo (armas ou punhos) é <strong>Destreza ou Força</strong>, à escolha de quem ataca, normalmente o maior dos dois (Força 5 e Destreza 2? use a Força). Para <strong>arremessos</strong>, sempre Destreza; para <strong>atirar</strong> (arco ou besta), sempre Percepção.</p>
 
-A Defesa é um valor **fixo** e **passivo**, o alvo não rola para se defender:
+A Defesa é um valor **fixo** e **passivo**, o alvo não rola para se defender. A Habilidade que
+entra é **Esquiva ou Bloqueio**, detalhado a seguir em *Esquivar ou Bloquear*:
 
 <p class="formula">Defesa = (Destreza + Habilidade) × 2 + Especialidade + Centelha</p>
 
@@ -277,8 +278,6 @@ O jogo tem **um só número de andar em combate**, e ele serve para duas coisas:
 - **O primeiro Tick é de graça durante outra ação** (atacar, conjurar), em qualquer direção e sem gastar a vez. É o arqueiro que recua e dispara, o duelista que circula enquanto golpeia.
 - **Para ir além, cada Tick a mais rende outro tanto.** Não há ação separada nem tabela: andar cobra Tick como qualquer outra coisa, e você para quando quiser.
 
-Ele é, na prática, **um Tick de movimento**: como um Tick é mais ou menos um segundo, o número em metros é também a sua velocidade em metros por segundo. A faixa é humana de propósito: **de 2 a 5 m/s**. Andar tranquilo são 1,4; fechar distância numa briga, sem perder a guarda nem o equilíbrio, fica entre 2 e 4; e o teto de 5 é o acrobata. O resto do tempo da ação você não está andando, está lutando.
-
 <div class="callout exemplo"><span class="lbl">Exemplo</span>Kael anda <strong>4 m por Tick</strong>. O inimigo está a <strong>9 metros</strong>. Ele gasta <strong>2 Ticks</strong> fechando a distância (8 m) e ataca do terceiro, com o último metro saindo no passo grátis da própria investida. Se preferisse correr, cobriria os 9 m em menos de dois Ticks, mas correndo não se ataca, e a guarda vai junto.</div>
 
 Ele é, na prática, **um Tick de movimento**: como um Tick é mais ou menos um segundo, o número em metros é também a sua velocidade em metros por segundo. A faixa é humana de propósito: **de 2 a 5 m/s**. Andar tranquilo são 1,4 m/s; fechar distância numa briga, sem perder a guarda nem o equilíbrio, fica entre 2 e 4; e o teto de 5 é o acrobata. O resto do tempo da ação você não está andando, está lutando.
@@ -387,7 +386,7 @@ Quando dois golpes caem no **mesmo Tick**, os dois atacantes estão abertos ao m
 
 ### Porte: o grande é fácil de acertar, o pequeno é difícil
 
-O tamanho conta na **jogada de acerto** dos **ataques físicos** (corpo a corpo e à distância): quanto **maior** o alvo em relação a quem o ataca, mais fácil cravar o golpe; quanto **menor**, mais difícil. Vale a diferença de **categorias de porte** (Minúsculo · Pequeno · Médio · Grande · Enorme · Imenso · Colossal):
+O tamanho conta na **jogada de acerto** dos **ataques físicos** (corpo a corpo e à distância): quanto **maior** o alvo em relação a quem o ataca, mais fácil cravar o golpe; quanto **menor**, mais difícil. Vale a diferença de **categorias de porte** (Miúdo · Pequeno · Médio · Grande · Enorme · Imenso · Colossal):
 
 | Diferença de porte (alvo − atacante) | Ao acerto |
 |---|:---:|

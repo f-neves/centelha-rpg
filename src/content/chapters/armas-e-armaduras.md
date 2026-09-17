@@ -18,7 +18,7 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 - **Acerto**: um bônus que **soma no seu pool de ataque** (a leve mira melhor; a pesada, pior).
 - **Def. (Defesa da Arma)**: quanto a arma acrescenta ao seu **Bloqueio**.
 - **Mãos**: uma ou duas; algumas são *Versáteis* e servem nas duas formas.
-- **Modos**: os **modos de ataque** da arma (Impacto, Cortante, Perfurante). A maioria das armas tem **mais de um**, e você escolhe por golpe conforme o alvo. Um deles é o **principal** (sem custo); os **secundários** saem com **−2 ao acerto e −1d6 no dano**. O modo **Perfurante** carrega um **Nível de Perfuração**, escrito **(N0)–(N5)**. Ver *Os três modos de dano* em [Combate](/regras/combate).
+- **Modos**: os **modos de ataque** da arma (Impacto, Cortante, Perfurante). A maioria das armas tem **mais de um**, e você escolhe por golpe conforme o alvo. Um deles é o **principal** (sem custo); os **secundários** saem com **−2 ao acerto e −1d6 no dano**. O modo **Perfurante** carrega um **Nível de Perfuração**, escrito **(N0)–(N2)**. Ver *Os três modos de dano* em [Combate](/regras/combate).
 - **Quase-Acerto**: errar por pouco ainda raspa. O valor é **fixo pela classe** (peso) da arma e da armadura; veja o capítulo [Quase-Acerto](/regras/quase-acerto).
 
 <div class="callout exemplo"><span class="lbl">Lendo uma arma</span>A <strong>Espada Longa</strong> é <em>Média · Versátil</em>: <strong>Velocidade 6</strong> (ataque médio), <strong>1d6</strong> de dado de dano + Força, <strong>+1</strong> no pool de ataque e <strong>+1</strong> no Bloqueio. Como é <em>Versátil</em>, empunhada a duas mãos ela soma <strong>Força×2</strong> no dano (em vez de Força×1), a mesma lâmina em dois estilos.</div>
@@ -59,6 +59,7 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 
 | Arma | Classe | Modos | Velocidade | Dano | Acerto | Defesa | Mãos | Destaque |
 |---|:---:|---|:---:|:---:|:---:|:---:|:---:|---|
+| Desarmado | Leve | ★I | 5 | 1d6−2 | +0 | 0 | 1 | Socos e agarrões (Briga), sem arma nenhuma na mão |
 | Adaga | Leve | ★P(N0) · C | 5 | 1d6−2 | +2 | +1 | 1 | Ágil, arremessável. Rápida e precisa; só fura pele (mira na fresta) |
 | Espada Curta | Leve | ★C · P(N1) | 5 | 1d6−2 | +2 | +1 | 1 | Veloz e defensiva |
 | Espada Longa | Média | ★C · P(N1) | 6 | 1d6 | +1 | +1 | 1 | Versátil (2 mãos: Força×2). A clássica adaptável |
@@ -98,7 +99,7 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 
 </div>
 
-<p class="muted"><strong>Modos:</strong> <strong>I</strong> = Impacto · <strong>C</strong> = Cortante · <strong>P</strong> = Perfurante (estocada ou projétil, sem distinção). <strong>★</strong> = modo principal (sem custo); os secundários saem com <strong>−2 ao acerto e −1d6 no dano</strong>. O <strong>(N0)–(N5)</strong> após o P é o <strong>Nível de Perfuração</strong>. <strong>Velocidade</strong> = Ticks da ação · <strong>Defesa</strong> = bônus de Bloqueio da arma · <strong>Distância</strong> = alcance máximo · <strong>Mãos</strong> = empunhadura (a <em>Versátil</em> soma Força×2 quando usada com as duas mãos). O <strong>Quase-Acerto</strong> é fixo pela classe (peso) da arma; ver o <a href="/centelha-rpg/regras/quase-acerto">capítulo próprio</a>.</p>
+<p class="muted"><strong>Modos:</strong> <strong>I</strong> = Impacto · <strong>C</strong> = Cortante · <strong>P</strong> = Perfurante (estocada ou projétil, sem distinção). <strong>★</strong> = modo principal (sem custo); os secundários saem com <strong>−2 ao acerto e −1d6 no dano</strong>. O <strong>(N0)–(N2)</strong> após o P é o <strong>Nível de Perfuração</strong>. <strong>Velocidade</strong> = Ticks da ação · <strong>Defesa</strong> = bônus de Bloqueio da arma · <strong>Distância</strong> = alcance máximo · <strong>Mãos</strong> = empunhadura (a <em>Versátil</em> soma Força×2 quando usada com as duas mãos). O <strong>Quase-Acerto</strong> é fixo pela classe (peso) da arma; ver o <a href="/centelha-rpg/regras/quase-acerto">capítulo próprio</a>.</p>
 
 <div class="callout regra"><span class="lbl">Besta: o preço da manivela</span>A besta não usa Força e fura melhor que qualquer arco, e paga por isso em tempo: <strong>Velocidade 9, 12 e 15</strong>, contra 6 de todos os arcos. E paga de outro jeito também: <strong>recarregar exige estar parado</strong>. O Preparo da besta é o único do jogo que não admite deslocamento nenhum, nem o primeiro Tick de Deslocamento de Batalha que toda outra ação ganha de graça. É o espelho exato da <a href="/centelha-rpg/regras/combate#investida">Investida</a>, que gasta o Preparo correndo: a besta gasta o dela plantada. Quem atira de arbalesta fica <strong>catorze Ticks</strong> comprometido antes de o virote sair, com a escada de Defesa aberta em cima o tempo todo, e é por isso que o pavês existe.</div>
 

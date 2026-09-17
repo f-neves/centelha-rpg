@@ -11,7 +11,7 @@ const CLASSE: Record<string, string> = { leve: 'Leve', media: 'Média', pesada: 
 const MODO: Record<string, string> = { corte: 'Cortante', perfurante: 'Perfurante', impacto: 'Impacto' };
 const MODO_ORDEM: Record<string, number> = { impacto: 0, corte: 1, perfurante: 2 };
 const modosOrd = (ms: any[]) => [...ms].sort((a, b) => (MODO_ORDEM[a.tipo] ?? 9) - (MODO_ORDEM[b.tipo] ?? 9));
-const modoStr = (m: any) => `${MODO[m.tipo]}${m.perf != null ? ` (N${m.perf})` : ''}${m.principal ? '' : '*'}`;
+const modoStr = (m: any) => `${m.principal ? '★' : ''}${MODO[m.tipo]}${m.perf != null ? ` (N${m.perf})` : ''}`;
 const ordem = ['leve', 'media', 'pesada', 'haste', 'distancia', 'arremesso'];
 armas.sort((a, b) => ordem.indexOf(a.classe) - ordem.indexOf(b.classe) || a.nome.localeCompare(b.nome));
 const allTags = [...new Set(armas.flatMap((a) => a.tags))].sort();
@@ -93,7 +93,7 @@ const linhaDados = (a: any) => ({
   </div>
   </section>
   <p class="muted ef-count"></p>
-  <p class="muted">A coluna <strong>Modos</strong> lista os modos de ataque da arma; <code>*</code> = modo secundário (−2 ao acerto e −1d6 no dano). <em>(N0)–(N5)</em> = Nível de Perfuração da arma (só o modo Perfurante passa pelo gate da armadura).</p>
+  <p class="muted">A coluna <strong>Modos</strong> lista os modos de ataque da arma; <strong>★</strong> = modo principal (sem custo), os sem marca são secundários (−2 ao acerto e −1d6 no dano). <em>(N0)–(N2)</em> = Nível de Perfuração da arma (só o modo Perfurante passa pelo gate da armadura).</p>
 
   <h2>Armaduras</h2>
   <p class="muted">Três Absorções: <strong>Impacto</strong>, <strong>Corte</strong> e <strong>Perfuração</strong> (o dano Perfurante usa o de Perfuração). O <strong>Nível</strong> entre parênteses é a Resistência à Perfuração: a Perfuração da arma precisa ser ≥ ele, senão resvala — e ele <em>não soma</em> ao empilhar (vale o maior). A <strong>Penalidade</strong> incide em qualquer ação física (Ataque, Esquiva, Bloqueio, Deslocamento, Salto) e <strong>dobra</strong> para Furtividade e atividades delicadas. Empilhar vale o maior Absorção de cada categoria; as penalidades somam.</p>

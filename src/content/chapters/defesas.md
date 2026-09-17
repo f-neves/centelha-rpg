@@ -36,7 +36,7 @@ Medo é o caso que mais engana, então fica a régua fechada:
 |---|---|
 | **Intimidação**: um grito, uma presença ameaçadora, uma demonstração de poder. Alguém *tentando* te assustar numa interação. | **Defesa Social** |
 | **Medo imposto na mente**: um ataque de medo, a aura de terror de um lich, um pavor mágico sem motivo. | **Defesa Mental** |
-| **Medo da situação**: encarar uma criatura enorme, um abismo, o escuro da mata. Ninguém te ataca, a cena é que assusta. | **Teste de Bravura (Valor)** |
+| **Medo da situação**: encarar uma criatura enorme, um abismo, o escuro da mata. Ninguém te ataca, a cena é que assusta. | **Teste de Bravura** |
 
 ### Uma dúzia de casos, já decididos
 

@@ -54,7 +54,7 @@ O custo é para subir ao próximo ponto, em função do *novo* valor.
 | Nível de Arte (Arcano) | 10 + (nível × 5) | 0→1 = 15 · 2→3 = 25 · 5→6 = 40 |
 | Efeito Especial de Arte | nível × 4 | 4 · 8 · 12 · 16 · 20 · 24 · **não acumula** |
 
-<p class="muted">Duas trilhas <strong>não acumulam</strong>: a Proeza e o Efeito Especial. Você paga só o preço do nível que está comprando, sem passar pelos de baixo: um Efeito de nível 2 custa 8 e não exige ter o de nível 1; subir uma Proeza do nível 2 para o 3 paga só a diferença. Nas demais trilhas o custo é cumulativo: você paga cada degrau até chegar lá. Técnica de nível <em>N</em> exige Centelha ≥ N, e é esse portão que limita a profundidade; Arte de qualquer nível exige apenas Centelha &gt; 0 (qualquer fagulha).</p>
+<p class="muted">Duas trilhas <strong>não acumulam</strong>: a Proeza e o Efeito Especial. Você paga o preço cheio do nível que está comprando, e não a soma dos de baixo: um Efeito de nível 2 custa 8 e não exige ter pago o de nível 1; subir uma Proeza do nível 2 para o 3 custa os 20 do nível 3 inteiro, não a diferença entre os dois. Nas demais trilhas o custo é cumulativo: você paga cada degrau até chegar lá. Técnica de nível <em>N</em> exige Centelha ≥ N, e é esse portão que limita a profundidade; Arte de qualquer nível exige apenas Centelha &gt; 0 (qualquer fagulha).</p>
 
 <div class="callout"><span class="lbl">O portão da Centelha</span>A Centelha <strong>não custa XP</strong>. Ela sobe só com <strong>permissão do Mestre</strong>, num marco de história ou feito maior: o salto de tier, de herói a semideus, é uma conquista narrativa e não uma transação de balcão. Cobrar XP por ela criava a situação estranha de o Mestre conceder o marco e o jogador responder que não tinha guardado o suficiente.</div>
 
@@ -70,7 +70,7 @@ Cada herói pode ter **um pico**: você está autorizado a levar **um único Atr
 |---|---|
 | Pontos de Vida | 25 + (Vigor × 3) |
 | Defesa | (Destreza + Habilidade) × 2 + Especialidade + Centelha |
-| Defesa Mental | Integridade + Raciocínio + Vontade + Centelha |
+| Defesa Mental | Integridade + Raciocínio + Vontade + Centelha + Especialidade |
 | Defesa Social | (Compostura + Sociabilidade) × 2 + Especialidade + Centelha |
 | Energia | (Vigor + Compostura + Raciocínio + Vontade) ÷ 2 [arredonda p/ baixo] + Centelha × 2 |
 | Mana | (Centelha × 2) + Força de Vontade |

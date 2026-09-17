@@ -56,7 +56,7 @@ flowchart TD
   F(["Algo assusta o personagem"]) --> F1{"De onde vem o medo?"}
   F1 -->|"Alguém tentando te assustar: grito, presença, demonstração de força"| FS["Defesa Social (intimidação)"]
   F1 -->|"Pavor mágico imposto: aura de lich, medo plantado sem motivo"| FM["Defesa Mental"]
-  F1 -->|"A própria cena: um abismo, uma criatura enorme, o escuro da mata"| FB["Teste de Bravura (Valor)"]
+  F1 -->|"A própria cena: um abismo, uma criatura enorme, o escuro da mata"| FB["Teste de Bravura"]
 ```
 
 ---
@@ -108,7 +108,7 @@ flowchart TD
 - **Ação comum:** Atributo + Habilidade vs Dificuldade (5 fácil / 10 média / 15 difícil / 20 limite humano). Supera o alvo = sucesso; cada 6 acima = +1 Margem.
 - **Social x Mental:** passa pelo juízo = Social; contorna o juízo = Mental. (Ver [As Três Defesas](/regras/defesas).)
 - **Régua x Combate Social:** dia a dia = Régua (jogada única); cena grande e tensa = Combate Social (gastar Vontade para não ceder). (Ver [Relações Sociais](/regras/relacoes-sociais).)
-- **Três medos:** intimidação = Social; medo mágico = Mental; medo da cena = Bravura (Valor).
+- **Três medos:** intimidação = Social; medo mágico = Mental; medo da cena = Bravura.
 - **Defesa física:** desviou = Esquiva; aparou = Bloqueio (usa a maior).
 - **Percepção x Perspicácia:** o mundo = Percepção; as pessoas = Perspicácia.
 - **Blindar a mente:** gastar Força de Vontade (pontual ou por cena/dia). Contra **leitura** não dá para se recusar: só o número da Defesa protege.
