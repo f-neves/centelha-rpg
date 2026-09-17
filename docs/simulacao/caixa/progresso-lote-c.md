@@ -23,3 +23,16 @@ Origem: `docs/simulacao/caixa/jogador-novo-prompt-executor.md` (commit `7dd1af3`
   monsters.json/monsters-mesa.json). Os três regenerados. commit `dc4cd49`.
 - 2026-09-17 13:00 · seguindo para o resto do Lote 2 (C-07 a C-30, exceto os já feitos) e o
   Lote 3 (C-34 a C-37), que não dependem de decisão de mesa nova.
+- 2026-09-17 13:18 · fechado o resto do Lote 2 (C-07, C-08, C-09, C-11, C-14, C-15, C-16, C-17,
+  C-18, C-19, C-20 já marcado, C-21, C-25, C-27, C-28, C-30) e o Lote 3 (C-34, C-35, C-36, C-37),
+  mais C-97/C-98 do adendo. commit `7db14f1`, push feito, validate+typecheck verdes em cada
+  passo. C-10, C-22, C-24, C-26, C-29, C-96 já estavam resolvidos de rodadas anteriores
+  (marcado "JÁ RESOLVIDO" na origem, sem sha meu). C-99 parcialmente (a ambiguidade de nome não
+  se confirma; o M-09 continua aberto, não é meu). C-06 e C-04 e C-01/03/05/49 já vinham feitos.
+  Achado no caminho: C-17 (Miúdo/Minúsculo) tinha convergido na direção OPOSTA à do item —
+  quase todo o sistema já usa "Miúdo", só combate.md e o glossário atrasados; corrigidos.
+  Resíduo não fechado: ~20 "conceito" no bestiário (fonte de conversão D&D) ainda dizem
+  "Minúsculo", registrado no item, fora de escopo de uma varredura de palavra.
+  Restam da lista original: C-12 e metade do C-13 (decisão do Arquiteto), o Lote 4 (C-38 a
+  C-41), o Lote 6 (C-46 a C-48, agora destravados por M-06/M-07 já decididos), o Lote 9 inteiro
+  (C-59 a C-95, ~37 itens de link/frase).

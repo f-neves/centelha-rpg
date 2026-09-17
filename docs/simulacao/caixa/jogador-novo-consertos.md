@@ -246,6 +246,8 @@ acerta o passo e erra a corrida e o salto.
 
 ### C-07 (56) · Defesa Social sem o ×2 e sem a Especialidade
 
+> **FEITO** `7db14f1`.
+
 `src/content/chapters/aparencia-virtudes-vontade.md`, última seção: "vem da Compostura +
 Sociabilidade + Centelha".
 Contra `defesas.md`: "( Compostura + Sociabilidade ) **× 2** + Centelha + Especialidade".
@@ -255,6 +257,8 @@ Manda `regras.json → derivados.defesaSocial` (`mult: 2`, `centelhaMult: 1`,
 
 ### C-08 (98, 135, 64) · Defesa Mental sem a Especialidade, em três lugares
 
+> **FEITO** `7db14f1`. Os dois capítulos entraram; o glossário já estava certo (achado ao conferir).
+
 `defesas.md` escreve certo: "Raciocínio + Integridade + Força de Vontade + Centelha +
 **Especialidade**". Sem a Especialidade: `aparencia-virtudes-vontade.md`,
 `criacao-de-personagem.md:72` e `src/data/glossario.json` (verbete *Defesa Mental*).
@@ -262,6 +266,9 @@ Manda `regras.json → derivados.defesaMental` (`"especialidade": true`) com
 `calc.ts:82-85`, que soma `opts.especialidade`. **Os três estão desatualizados.**
 
 ### C-09 (8, 37, 43, 84, 100) · quatro redações da Defesa física, e uma delas é falsa
+
+> **FEITO** `7db14f1`. `qual-sistema.md` já estava sem a frase errada (achado ao conferir);
+> `combate.md` ganhou o nome da Habilidade na fórmula.
 
 - `defesas.md`: "( Destreza + **Esquiva** )" e "( Destreza + **Bloqueio** )" · **certo**
 - `qual-sistema.md`: "perícia que você escolher" · **errado**
@@ -278,6 +285,9 @@ nome da perícia ou um link para `defesas.md`.
 
 ### C-10 (90, 103, 125) · a espada longa tem três danos diferentes
 
+> **JÁ RESOLVIDO**, achado ao conferir em 17/09/2026: `combate.md` não tem mais "2d6+3" nem o
+> resumo de distância/arremesso incompleto. Não sei em que rodada, e não é meu sha.
+
 `src/content/chapters/combate.md:134`: o exemplo do Verme Púrpura, "espada longa
 (**2d6+3, média 10**)".
 Contra `quase-acerto.md` ("dano médio **3,5**") e `armas-e-armaduras.md` ("**1d6**").
@@ -289,6 +299,8 @@ catálogo, que tem Besta Média `1d6+4` e Besta Grande `1d6+8`.
 **Confere:** `grep -n "2d6+3" src/content/chapters/combate.md` = 0.
 
 ### C-11 (36) · Especialidade: "não acumula" contra "paga só a diferença"
+
+> **FEITO** `7db14f1`.
 
 `src/content/chapters/criacao-de-personagem.md:56`: "Você paga só o preço do nível que
 está comprando, sem passar pelos de baixo".
@@ -377,6 +389,8 @@ Armas 5.
 
 ### C-14 (16, 171) · a Margem do exemplo do capítulo I erra por um
 
+> **FEITO** `7db14f1`.
+
 `src/content/chapters/coracao-do-sistema.md:40`, o exemplo: "se tivesse **passado de 16**".
 Contra a regra na linha 44 do mesmo arquivo ("a cada 6 pontos que seu total **supera** o
 alvo") e `relacoes-sociais.md` ("Margem = [(Ataque − Defesa) ÷ 6]", tabela "6–11 = Margem 1").
@@ -384,6 +398,8 @@ Com Defesa 10, o total **16** já dá Margem 1. **O exemplo é o errado.**
 **Confere:** `grep -n "passado de 16" src/content/chapters/coracao-do-sistema.md` = 0.
 
 ### C-15 (9, 59, 99) · "(Valor)" é o id do banco vazando para a prosa
+
+> **FEITO** `7db14f1`. `gen-mermaid.mjs` rodado.
 
 `src/data/virtudes.json` traz `{"id": "valor", "nome": "Bravura"}`. Os outros três ids
 batem com o nome (`compaixao`, `conviccao`, `temperanca`); só esse não. As três
@@ -404,6 +420,8 @@ página: é preciso **rodar `node scripts/gen-mermaid.mjs`** depois.
 
 ### C-16 (74, 102) · três defesas ou quatro
 
+> **FEITO** `7db14f1`.
+
 `src/content/chapters/centelha.md`: "+1 às **quatro** defesas: Esquiva, Bloqueio, Defesa
 Mental e Defesa Social".
 Contra o título e a estrutura de `defesas.md`: "As **Três** Defesas".
@@ -415,6 +433,14 @@ defesas.
 
 ### C-17 (115, 138) · Miúdo contra Minúsculo
 
+> **FEITO** `7db14f1`, na direção oposta à que o item sugeria: o disco já tinha convergido para
+> "Miúdo" em quase todo o sistema (bestiário, Grid, `calc.ts`) desde que este item foi escrito;
+> só `combate.md` e o glossário ainda diziam "Minúsculo". Os dois corrigidos para "Miúdo".
+> **Residual não fechado:** o campo `conceito` de ~20 criaturas em `inimigos.json` (fonte:
+> `conversao-monstros.html`/`conversao-extra.json`) ainda descreve como "Minúsculo" (ex.: "animal
+> Minúsculo" do Corvo), divergindo do campo `porte` ("Miúdo") da mesma criatura. Não mexi: é
+> reescrever uma fonte de conversão grande, fora do escopo de uma varredura de palavra.
+
 `vida-ferimentos-cura.md` escreve "**Miúdo**". `combate.md`, `glossario.json` (verbete
 *Porte*) e `calc.ts:26` (`type Porte = 'minusculo' | ...`) escrevem **Minúsculo**, que é
 a chave de `derivados.pv.porte` em `regras.json`.
@@ -424,6 +450,8 @@ Minúsculo" e campo porte "Miúdo".
 `gen-bestiario.mjs`).
 
 ### C-18 (196) · o rótulo da ficha cobra a Arte pela metade no primeiro nível
+
+> **FEITO** `7db14f1`.
 
 `src/components/FichaSkeleton.astro:117`:
 `Arcano — Artes <small>(nível×10 · exige Centelha &gt; 0)</small>`.
@@ -435,6 +463,8 @@ Conserto: trocar por `(10 + nível×5 · exige Centelha > 0)`.
 **Confere:** `grep -n "nível×10" src/components/FichaSkeleton.astro` = 0.
 
 ### C-19 (163) · o Efeito custa 2× ou 4× o nível
+
+> **FEITO** `7db14f1`, junto com o C-98 (mesmo parágrafo).
 
 `/artes/efeitos` diz "Cada Efeito custa **2 × o nível** dele em XP".
 Contra `criacao-de-personagem.md:54`: "Efeito Especial de Arte | nível × 4 | 4 · 8 · 12 ·
@@ -460,6 +490,8 @@ contra Corte e Perfuração, só a Centelha."
 
 ### C-21 (167) · a Aura tem duas escadas dentro do mesmo objeto
 
+> **FEITO** `7db14f1`. `gen-grid-artes.mjs --check` verde.
+
 `src/data/efeitos.json`, Efeito `aura`, dentro de `parametros[Volume]`:
 `"escala": ["0,25 m","0,5 m","1 m","1,5 m","2 m","2,5 m","3 m"]`
 e, ao lado, `"nota": "esfera com você no centro, **1 metro de raio por nível**"`.
@@ -473,6 +505,10 @@ menor que a dos outros moldes."
 `node scripts/gen-grid-artes.mjs --check` continua verde.
 
 ### C-22 (172) · a iniciativa social inventa um Tick 0 e apaga os degraus
+
+> **JÁ RESOLVIDO**, achado ao conferir em 17/09/2026: `relacoes-sociais.md` não tem mais "Tick
+> 0"; a Iniciativa social hoje é `1d6 + Perspicácia + Sociabilidade`, mecânica diferente da
+> citada aqui. Não é meu sha.
 
 `src/content/chapters/relacoes-sociais.md`: "começa no **Tick 0**; os demais no **Tick 1**,
 com a mesma regra de defasagem do físico".
@@ -496,6 +532,9 @@ e muda `calc.ts`, não o texto.**
 
 ### C-24 (139) · duas escalas de Firula, e o capítulo que a apresenta só conhece uma
 
+> **JÁ RESOLVIDO**, achado ao conferir em 17/09/2026: `relacoes-sociais.md:172` já linka para o
+> capítulo de Habilidades nomeando as duas réguas como contextos diferentes. Não é meu sha.
+
 As duas existem e são reais: `habilidades.md` traz +2 / +1d6 / +2d6, e
 `relacoes-sociais.md` traz +1 / +2 / +4. O glossário junta as duas na mesma linha sem
 dizer que são réguas de contextos diferentes, e o capítulo II, onde a Firula é
@@ -503,6 +542,9 @@ apresentada, não menciona a segunda.
 Conserto: uma oração em cada, dizendo qual vale onde.
 
 ### C-25 (123) · a régua de penetração é 0 a 3, e a página anuncia N0 a N5
+
+> **FEITO** `7db14f1`. Achado o mesmo texto uma terceira vez em `/equipamentos` (corrigido junto,
+> ver C-28).
 
 `src/data/armas.json`, campo `pen`, vai de **0 a 2**; `src/data/armaduras.json`, campo
 `resistPerf`, vai de **0 a 3**. O "(N0)–(N5)" de `armas-e-armaduras.md` e de
@@ -512,6 +554,9 @@ existem.
 
 ### C-26 (129) · o Pavês parece dar +6
 
+> **JÁ RESOLVIDO**, achado ao conferir em 17/09/2026: `/equipamentos` já mostra "bloqueia"/"—"
+> na coluna de projétil, em vez de repetir o número. Não é meu sha.
+
 `src/data/escudos.json`: o Pavês tem `bloqCaC: 3` e `habilProjetil: true`, e **não existe
 campo separado** de bônus antiprojétil. Logo é **+3**, e o "(+3)" da segunda coluna repete
 o mesmo número em vez de somar. A página é que é ambígua.
@@ -520,6 +565,8 @@ ou ganha cabeçalho dizendo que repete o bloqueio.
 
 ### C-27 (200) · o catálogo de armas tem 26 linhas e a tabela do capítulo tem 25
 
+> **FEITO** `7db14f1`. Linha do Desarmado entrou na tabela corpo a corpo.
+
 `src/data/armas.json` tem **26** armas, incluindo `desarmado`. A tabela de
 `armas-e-armaduras.md` foi escrita à mão e ficou com 25; `/equipamentos` é gerada do JSON e
 traz as 26. A linha que falta é justamente o **Desarmado**, que `quase-acerto.md` cita.
@@ -527,12 +574,18 @@ traz as 26. A linha que falta é justamente o **Desarmado**, que `quase-acerto.m
 
 ### C-28 (198) · ★ e * significam o oposto um do outro
 
+> **FEITO** `7db14f1`. Unificado no ★ = principal; /equipamentos deixou de usar `*` pro
+> secundário. De quebra, o mesmo "(N0)-(N5)" do C-25 estava também nesta legenda.
+
 Os dois símbolos descrevem o mesmo dado (`modos[].principal` em `armas.json`), com
 convenções opostas: `armas-e-armaduras.md` usa ★ para o **principal** e `/equipamentos`
 usa * para o **secundário**. Conferi arma por arma: os dados batem, só a legenda diverge.
 Conserto: uma convenção só, nos dois lugares.
 
 ### C-29 (92, 69, 105) · "rodada" é de um sistema que não existe mais
+
+> **JÁ RESOLVIDO**, achado ao conferir em 17/09/2026: zero ocorrências de "rodada" ou "turno" nos
+> capítulos e páginas citados (conferido com `grep`). Não é meu sha.
 
 `combate.md` abre dizendo que não há turnos rígidos, e o tempo do motor é o **Tick**
 (`regras.json → combate.pgr` e `derivados.iniciativa` só conhecem Tick). Mesmo assim
@@ -546,6 +599,8 @@ Conserto: trocar por Tick onde a conversão for óbvia. **Onde não for, é deci
 deliberadas.
 
 ### C-30 (82) · um parágrafo publicado duas vezes
+
+> **FEITO** `7db14f1`.
 
 `src/content/chapters/combate.md`, linhas **195** e **199**, o mesmo parágrafo: "Ele é, na
 prática, **um Tick de movimento**...". Estão separados pelo `<div class="callout exemplo">`
@@ -620,6 +675,9 @@ Conserto: reescrever o parágrafo com a Rajada e a empunhadura dupla como o JSON
 
 ### C-34 (14) · quem tem perícia 0 rola zero dados, e isso não está escrito
 
+> **FEITO** `7db14f1`, com a decisão M-05 de 15/09/2026 (é impossível mesmo, e a saída é a Firula
+> de nível 2).
+
 `src/lib/calc.ts:17` devolve, para soma 1, `{dados: 0, bonus: 2}`: **zero dados e um +2
 fixo**. Soma 0 devolve 0. Um personagem de Atributo 1 e perícia não treinada tem total
 fixo 2 e **nunca** supera nem a Dificuldade 5.
@@ -628,6 +686,8 @@ Conserto: uma linha no capítulo I. **Antes disso, provavelmente uma decisão (M
 mesmo para ser impossível?**
 
 ### C-35 (13) · o capítulo I escreve a fórmula do pool onde o leitor espera o número de dados
+
+> **FEITO** `7db14f1`.
 
 `src/content/chapters/coracao-do-sistema.md:17`, em destaque:
 `[(Atributo + Habilidade) ÷ 2] + 2 se a soma for ímpar`.
@@ -638,6 +698,8 @@ fórmula que o leitor encontra.
 
 ### C-36 (39, 67, 75) · Absorção é usada em três capítulos antes de ser definida no nono
 
+> **FEITO** `7db14f1`, no capítulo IV, com link para *Dano e Armadura*.
+
 Está definida em `combate.md`, seção "Dano e Armadura" (natural = Vigor + Centelha no
 Impacto, **só a Centelha** em Cortante e Perfurante, mais a da armadura), em
 `glossario.json` e em `calc.ts` (`soakNatural`). Os capítulos II, IV e V a usam antes, sem
@@ -645,6 +707,10 @@ link.
 Conserto: um parágrafo curto no capítulo II ou IV, mais link.
 
 ### C-37 (122, 194) · FAA e FAH aparecem na ficha sem serem abertos, e FAH tem dois sentidos
+
+> **FEITO** `7db14f1`. A ficha já mostrava a fórmula por extenso ao lado da sigla (achado ao
+> conferir); o que faltava era o segundo sentido, o parâmetro `FAH`/`FAA` de `efeitos.json`
+> (peso/distância que uma Arte move), renomeado para "Peso Erguido"/"Distância de Arremesso".
 
 `src/lib/ficha-engine.ts:1688` e a linha seguinte: `FAH = Força × 3 + Halterofilismo` e
 `FAA = Força × 2 + Atletismo + Arremesso`. As siglas aparecem na caixa "Peso, Arremesso e
@@ -926,6 +992,10 @@ olha. Todos são uma frase ou um link.
 
 ### C-96 (57) · a Defesa Social cobre duas coisas, e o capítulo diz que cobre uma
 
+> **JÁ RESOLVIDO**, achado ao conferir em 17/09/2026: `defesas.md` já abre dizendo "convencer,
+> seduzir, coagir, provocar, ou simplesmente te ler" e não achei mais a frase estreita "protege
+> contra quem tenta te ler" sozinha. Não é meu sha.
+
 `src/content/chapters/defesas.md` escreve, no alto, "Segura quem tenta te convencer,
 seduzir, coagir, provocar, **ou simplesmente te ler**", e mais abaixo, no mesmo arquivo,
 "protege contra quem tenta te ler", como se fosse só isso.
@@ -933,6 +1003,8 @@ Manda a nota de `derivados.defesaSocial` em `regras.json`: "O escudo social gera
 a ser convencido/movido **E** a ser lido". **A segunda frase é a estreita.**
 
 ### C-97 (83, 170) · a conta do ataque social sai sem o d6 e sem o +2 no capítulo IX
+
+> **FEITO** `7db14f1`.
 
 `src/content/chapters/relacoes-sociais.md` escreve a versão executável:
 "Ataque = [ (Influência + Habilidade) ÷ 2 ] **d6** ( +2 se a soma for ímpar ) + ...", e é
@@ -943,6 +1015,8 @@ Conserto: copiar a redação de `relacoes-sociais.md`.
 
 ### C-98 (164) · duas contas de custo de conjuração, em duas páginas irmãs
 
+> **FEITO** `7db14f1`, junto com o C-19 (mesmo parágrafo em `/artes/efeitos`).
+
 `/artes/efeitos`: "o custo é **o nível do Efeito mais** os parâmetros usados".
 `/artes/regras`: "Some os níveis investidos... do total subtraia a Centelha", e os
 **quatro exemplos de conta da página não somam nível de Efeito nenhum**.
@@ -951,6 +1025,12 @@ exemplos conferíveis é a de `/artes/regras`. **A frase de `/artes/efeitos` est
 e ela some junto com o C-19, que é da mesma página.
 
 ### C-99 (175) · "a escada de seis degraus" são duas escadas diferentes
+
+> **Conferido em 17/09/2026: a ambiguidade de nome não se confirma no texto vivo hoje** —
+> `relacoes-sociais.md:185` já nomeia as seis palavras da escada de Ações por extenso (Tick,
+> minuto, hora, dia, semana, estação) no mesmo trecho que a chama de "seis degraus", sem colidir
+> com a do Ritual. **Continua aberto** o resto do item: o **M-09** (intervalo-base escalando com
+> a longevidade da raça, sem conversão em fonte nenhuma) não é meu para decidir.
 
 `relacoes-sociais.md` chama de "a escada de seis degraus" algo que existe em dois sabores:
 a das Ações (Tick · minuto · hora · dia · semana · estação) e a do Ritual (Ticks · 1 min ·
