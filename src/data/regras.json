@@ -2622,5 +2622,20 @@
     "n6": false,
     "notaN1": "Enquanto n1 for false, quem manda e combate.simultaneo.decideEmValeDepois, que vale 1 (a acao comeca em T+1). No commit que escrever N1 os dois passam a ser a mesma coisa: decideEmValeDepois vira derivado de n1, e nao ha dois lugares dizendo a regra.",
     "notaCouraca": "A couraca de porte NAO esta aqui, e nao por esquecimento: ela ja e aplicada em tempo de geracao (scripts/gen-bestiario.mjs, linhas 36-45 e 79-82) e ja vem somada na absorcao de cada criatura do monsters-mesa.json. Uma bandeira de tempo de execucao a somaria DUAS VEZES. O que a bateria mede no lugar dela e o eixo do elenco: criatura grande contra criatura media."
+  },
+  "acoes": {
+    "escalaIntervalo": {
+      "nota": "A escada de seis degraus de intervalo usada pelos modos Acumulada e Longa (capítulo VIII) e pelo intervalo-base do cortejo social (Firula, capítulo X).",
+      "degraus": ["tick", "minuto", "hora", "dia", "semana", "estacao"]
+    },
+    "longevidadeFirula": {
+      "nota": "M-09 (17/09/2026): o intervalo-base de uma Firula de cortejo desloca conforme a longevidade da raça de quem corteja (racas.json -> longevidade). O deslocamento é relativo ao intervalo que a mesa já escolheu para a cena, não um degrau fixo da escada: positivo desloca para um degrau MAIS RÁPIDO (índice menor em escalaIntervalo.degraus), negativo para um degrau MAIS LENTO (índice maior).",
+      "porFaixa": {
+        "curta": { "deslocamento": 1, "exemplo": "orc, meio-orc (~60 anos): um degrau mais rápido que o padrão" },
+        "padrao": { "deslocamento": 0, "exemplo": "humano, meio-elfo: sem ajuste" },
+        "longa": { "deslocamento": -1, "exemplo": "anão, gnomo, halfling (300-400 anos): um degrau mais lento" },
+        "muito-longa": { "deslocamento": -2, "exemplo": "elfo (600+ anos): dois degraus mais lento" }
+      }
+    }
   }
 }

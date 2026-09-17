@@ -2970,7 +2970,7 @@ ela for a única marcada (ou quando o clique alcançar alguém abaixo do limite 
 padrão de diálogo do Sopro de Vida. Reescrever o parágrafo da rodada 81 que descreve a premissa
 caída.
 
-### M-09 · tempo de um passo de Relação por povo · DECIDIDO em 17/09/2026
+### M-09 · tempo de um passo de Relação por povo · DECIDIDO em 17/09/2026 · FEITO em 17/09/2026 (`<pendente>`)
 
 **O original:** `relacoes-sociais.md:185`, o intervalo-base de uma Firula de cortejo "escala com a
 longevidade da raça (um elfo corteja em estações onde um humano leva semanas)", na escada de seis
@@ -2991,6 +2991,16 @@ lembrar, mas perdia a distinção que o texto publicado já assume.
 Arquiteto decide reaproveitar o texto de `descricao` por parsing, o que for mais simples e não
 duplicar a fonte); `regras.json`, bloco da escada de Ações/Firula, ganha o deslocamento de degrau
 por faixa; `relacoes-sociais.md:185` aponta para a régua em vez de só dar um exemplo solto.
+
+**FEITO.** Escolhido o campo explícito (não parsing de prosa, que seria frágil e ainda duplicaria
+a lógica de bucket em código): `racas.json` ganha `longevidade` em cada raça (`curta` para orc e
+meio-orc, `padrao` para humano e meio-elfo, `longa` para anão/gnomo/halfling, `muito-longa` para
+elfo). `regras.json` ganha o bloco `acoes` novo (não existia nenhum bloco de escada de Ações
+codificado antes): `acoes.escalaIntervalo` nomeia os seis degraus, e
+`acoes.longevidadeFirula.porFaixa` dá o deslocamento de cada faixa (+1/0/−1/−2). O deslocamento é
+relativo ao intervalo que a mesa já escolheu para a cena, não um degrau absoluto — a régua vale
+para deslocar, não para fixar um degrau único por raça. `relacoes-sociais.md:185` nomeia as
+quatro faixas em vez de só o exemplo do elfo.
 
 ### M-17 · teto de Habilidades secundárias compradas · DECIDIDO em 16/09/2026 · FEITO em 17/09/2026 (`e4fe156`)
 
