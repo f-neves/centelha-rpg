@@ -119,5 +119,5 @@ fazem sentido.
   vermelho de novo com a regressão de propósito).
 - `docs/simulacao/caixa/progresso-56b-gravarefeito.md` · o CORRIGE do
   commit `3eeb8fd`, já avisado por mensagem antes deste aviso existir.
-- `Pendencias.md` · §L64 (a separação, com as citações agora marcadas
+- `docs/pendencias/L-simulacao-simultaneo.md` · §L64 (a separação, com as citações agora marcadas
   `(citação histórica)` onde o texto mudou de propósito, não só de linha).

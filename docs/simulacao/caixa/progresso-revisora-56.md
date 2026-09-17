@@ -25,7 +25,7 @@ Arquiteto em `bbb67b2` antes desta sessão começar.
   uma ocorrência só, linha 1524, exata com a citação corrigida. Conferi
   também o padrão do gate (`test-procedencia.mjs`): a âncora exige o
   formato `arquivo.ts:linha`; a outra menção a "ATIVOS.push" no mesmo
-  documento (`Pendencias.md:2701`, dentro de "`gravarEfeito` (`:1324`,
+  documento (`docs/pendencias/L-simulacao-simultaneo.md:1407`, dentro de "`gravarEfeito` (`:1324`,
   `ATIVOS.push`)") não tem esse formato, não é uma segunda citação
   formal, não colide. Unicidade confirmada por mim; `(citação
   histórica)` teria sido ERRADO aqui, porque a citação continua

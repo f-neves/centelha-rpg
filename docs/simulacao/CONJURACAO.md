@@ -196,7 +196,7 @@ comprometida e ainda não gasta**, e é esse intervalo que a régua cria.
 
 **Tudo que acontece no Tick do GOLPE acontece junto e não pode mais ser interrompido.** Golpe de
 espada, Arte saindo, qualquer coisa. Esta frase não é só da magia · ela é a fronteira entre esta
-régua e a ordem de resolução dentro do Tick (`Pendencias.md` L1, N4 e N5), e as duas têm de ser
+régua e a ordem de resolução dentro do Tick (`docs/pendencias/L-simulacao-simultaneo.md` L1, N4 e N5), e as duas têm de ser
 escritas com ela igual dos dois lados.
 
 ---
@@ -370,8 +370,8 @@ oferecida na interface ou é só consequência automática de baixar graus? Ele 
   nada** · são golpe, empurrão e efeito em área, que o motor já tem. Eles estão na mesma frase do
   §3.1 e seguem por ele, sem esperar fase nenhuma. O que espera é o terreno, e só ele.
 - **Criaturas que se teleportam ou se deslocam por baixo da terra** não seguem o caminho normal, e
-  isso toca esta régua **e** o item do corpo a corpo. → `Pendencias.md` `L69`, e por ele `L67`.
-- **A ordem de resolução dentro do Tick** (`Pendencias.md` `L1`, N4 e N5) é a outra metade da
+  isso toca esta régua **e** o item do corpo a corpo. → `docs/pendencias/L-simulacao-simultaneo.md` `L69`, e por ele `L67`.
+- **A ordem de resolução dentro do Tick** (`docs/pendencias/L-simulacao-simultaneo.md` `L1`, N4 e N5) é a outra metade da
   frase "tudo no Tick do Golpe acontece junto". As duas régua não podem ser escritas em
   desacordo, e a de lá ainda tem duas discordâncias abertas com o humano.
 

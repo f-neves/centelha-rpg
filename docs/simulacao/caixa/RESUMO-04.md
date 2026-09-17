@@ -44,7 +44,7 @@ O QUE FAZER:
 - se der HARNESS: conserte, e diga o que muda em cada numero ja publicado;
 - se der REGUA: PARE. NAO decida nada. Escreva no aviso, em O QUE FICOU EM ABERTO, marcado como PRECISA DO HUMANO, e nao mexa na regra.
 
-E CONFIRA, porque a frase refutada circulou inteira e esta em quatro lugares que eu ja levantei e NAO corrigi: docs/simulacao/09-bateria-grande.md linhas 454 e 455; Pendencias.md linha 1344; scripts/sim/agregar.mjs linha 496 (comentario). Alem disso, scripts/sim/bateria.mjs linhas 108 a 110 descreve o eixo E4 como se ele rodasse, e ele saiu da grade em 03/09. E a propria 09 se contradiz: a D31 (por volta da linha 925) diz que o eixo e inerte e foi cortado, no mesmo documento em que a §2.4 diz que o lado b anda com passo dobrado. Corrija os quatro lugares SO depois de saber qual e a causa verdadeira, e escreva a causa certa no lugar da errada.
+E CONFIRA, porque a frase refutada circulou inteira e esta em quatro lugares que eu ja levantei e NAO corrigi: docs/simulacao/09-bateria-grande.md linhas 454 e 455; docs/pendencias/L-simulacao-simultaneo.md linha 50; scripts/sim/agregar.mjs linha 496 (comentario). Alem disso, scripts/sim/bateria.mjs linhas 108 a 110 descreve o eixo E4 como se ele rodasse, e ele saiu da grade em 03/09. E a propria 09 se contradiz: a D31 (por volta da linha 925) diz que o eixo e inerte e foi cortado, no mesmo documento em que a §2.4 diz que o lado b anda com passo dobrado. Corrija os quatro lugares SO depois de saber qual e a causa verdadeira, e escreva a causa certa no lugar da errada.
 
 Julgue o ciclo contra isto, e não contra o que ele fez.
 
@@ -70,7 +70,7 @@ O QUE FAZER:
 - se der HARNESS: conserte, e diga o que muda em cada numero ja publicado;
 - se der REGUA: PARE. NAO decida nada. Escreva no aviso, em O QUE FICOU EM ABERTO, marcado como PRECISA DO HUMANO, e nao mexa na regra.
 
-E CONFIRA, porque a frase refutada circulou inteira e esta em quatro lugares que eu ja levantei e NAO corrigi: docs/simulacao/09-bateria-grande.md linhas 454 e 455; Pendencias.md linha 1344; scripts/sim/agregar.mjs linha 496 (comentario). Alem disso, scripts/sim/bateria.mjs linhas 108 a 110 descreve o eixo E4 como se ele rodasse, e ele saiu da grade em 03/09. E a propria 09 se contradiz: a D31 (por volta da linha 925) diz que o eixo e inerte e foi cortado, no mesmo documento em que a §2.4 diz que o lado b anda com passo dobrado. Corrija os quatro lugares SO depois de saber qual e a causa verdadeira, e escreva a causa certa no lugar da errada.
+E CONFIRA, porque a frase refutada circulou inteira e esta em quatro lugares que eu ja levantei e NAO corrigi: docs/simulacao/09-bateria-grande.md linhas 454 e 455; docs/pendencias/L-simulacao-simultaneo.md linha 50; scripts/sim/agregar.mjs linha 496 (comentario). Alem disso, scripts/sim/bateria.mjs linhas 108 a 110 descreve o eixo E4 como se ele rodasse, e ele saiu da grade em 03/09. E a propria 09 se contradiz: a D31 (por volta da linha 925) diz que o eixo e inerte e foi cortado, no mesmo documento em que a §2.4 diz que o lado b anda com passo dobrado. Corrija os quatro lugares SO depois de saber qual e a causa verdadeira, e escreva a causa certa no lugar da errada.
 
 · gasto do assunto até aqui: US$ 0.00 em 0 execução(ões), assunto "a assimetria dos lados: qual das duas ela e"
 

@@ -61,7 +61,7 @@ lido, deixando só o `SHA` de cima.
 
 ## ONDE LER
 
-- `Pendencias.md`, L34 §6 · a régua fechada
+- `docs/pendencias/L-simulacao-simultaneo.md`, L34 §6 · a régua fechada
 - `docs/simulacao/caixa/15-revisora.md` · o pedido original das duas portas
 - `docs/simulacao/caixa/16-executora.md` · a primeira metade (porta do Preparo)
 - `scripts/test-interpor-mesa.mjs` · os dois cenários e a conferência compartilhada

@@ -2,7 +2,7 @@
 
 Sinal de vida da Executora. Uma linha por etapa pequena, hora real (`date +%H:%M`).
 
-- 21:01 · Rodada aberta. Li o `L64` inteiro em `Pendencias.md` (não refiz o
+- 21:01 · Rodada aberta. Li o `L64` inteiro em `docs/pendencias/L-simulacao-simultaneo.md` (não refiz o
   levantamento). Escopo: só separar sentinela e magnitude no campo
   `Condicao.velocidade`, sem ligar `teto6`, sem tocar o Grid.
 
@@ -122,7 +122,7 @@ Sinal de vida da Executora. Uma linha por etapa pequena, hora real (`date +%H:%M
   delas citavam TEXTO que esta própria rodada reescreveu de propósito, não
   linha que só mudou de lugar). `node scripts/reapontar.mjs` (árvore sem
   `git add`) moveu 8 por mapa de diff e pulou 2 por `(citação histórica)`
-  sozinho; as 4 restantes (`Pendencias.md:3924,3933,3951,3953`, citando
+  sozinho; as 4 restantes (`docs/pendencias/L-simulacao-simultaneo.md:2630,3933,3951,3953`, citando
   `const novo = Math.max` e `foraDoTempo.velocidade <= -50`, os dois textos
   que este código não tem mais) marquei à mão como `(citação histórica)`,
   mesma convenção do `L95`: são descrição do estado de 10/09 e 12/09, não

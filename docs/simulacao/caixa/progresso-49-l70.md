@@ -127,7 +127,7 @@ no instante em que ele é encontrado e classificado, hora lida da máquina
   66 âncoras envelhecidas: 65 apontando para `grid.astro` (`ESTADO.md` 6,
   `Pendencias.md` 34, `CONJURACAO.md` 4, `Grid_Mobile.md` 5, `CATALOGO.md` 2,
   `VOZ.md` 8, `CONTEXTO.md` 2, `Auditoria_Tecnica.md` 1) e 1 para
-  `mesa-mock.mjs` (`Pendencias.md:3783`, da minha própria cena nova). NÃO toquei
+  `mesa-mock.mjs` (`docs/pendencias/L-simulacao-simultaneo.md:2489`, da minha própria cena nova). NÃO toquei
   em nenhum desses documentos: não são meu território, e a escala (66, contra 1
   ou 2 nas rodadas anteriores) é grande demais para eu decidir sozinha o que
   fazer. Todo o código está no disco, testado e funcionando; só falta poder

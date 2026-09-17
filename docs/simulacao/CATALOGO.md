@@ -430,7 +430,7 @@ procedência é justamente o que se lê para não precisar conferir. **A régua 
 está no `ARQUITETO.md §5.5`:** documento aponta para outro (nome, caminho, para que serve),
 não descreve o conteúdo dele.
 
-**UMA FORMA NOVA, DE 10/09/2026, ACHADA NUMA BATALHA DE MESA (`Pendencias.md` L67):** a
+**UMA FORMA NOVA, DE 10/09/2026, ACHADA NUMA BATALHA DE MESA (`docs/pendencias/L-simulacao-simultaneo.md` L67):** a
 perseguição no corpo a corpo mira um destino calculado do CENTRO do alvo, sem somar o raio dele.
 Contra uma criatura que ocupa vários hexágonos, esse destino cai DENTRO do corpo dela. A primeira
 caminhada veta as casas ocupadas e por isso **não consegue chegar lá** · que é a regra de ocupação

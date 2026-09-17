@@ -41,7 +41,7 @@ documento da rodada; aqui é só o inventário.
 | arquivo | o que mudou nele |
 |---|---|
 | `.gitignore` | Arquiteto: `*.7z` entra, para o `docs/simulacao.7z` do humano parar de travar `npm run rodada` |
-| `Pendencias.md` | Arquiteto: reaponta as dez citações de código que minhas edições em `grid.astro` deslocaram (L62), fora desta rodada |
+| `docs/pendencias/L-simulacao-simultaneo.md` | Arquiteto: reaponta as dez citações de código que minhas edições em `grid.astro` deslocaram (L62), fora desta rodada |
 | `docs/MAPA.md` | Arquiteto, fora desta rodada |
 | `docs/simulacao/ARQUITETO.md` | Arquiteto: §1, a regra de conferir estado antes de afirmar (§1.1-§1.5), fora desta rodada |
 | `docs/simulacao/CATALOGO.md` | Arquiteto, fora desta rodada |
@@ -94,6 +94,6 @@ humano** e não da revisora.
 O documento principal desta rodada e as seções que importam, na ordem em que
 fazem sentido.
 
-- `Pendencias.md` L62 · o achado original (recusa muda) e o contexto completo
+- `docs/pendencias/L-simulacao-simultaneo.md` L62 · o achado original (recusa muda) e o contexto completo
 - `src/pages/mesa/grid.astro` · `executarComando`, as três checagens novas, logo depois de `permissaoComando`
 - `docs/simulacao/caixa/progresso-barra-recusa-mover.md` · o roteiro de teste passo a passo, com horários e as mensagens exatas

@@ -350,7 +350,7 @@ antiga, que se perde.
 
 | # | a decisão | o que ela custa |
 |---|---|---|
-| D01 | Não abri o `Pendencias.md`. O achado da `salvaguarda` está DENTRO do item da rodada, então ele é relato e não linha de congelamento, e a linha de `Pendencias.md` é do Arquiteto absorver com o resto. | se a rodada for engavetada antes de ele absorver, o achado vive só neste arquivo da caixa. |
+| D01 | Não abri o `docs/pendencias/D-proezas-tecnicas.md`. O achado da `salvaguarda` está DENTRO do item da rodada, então ele é relato e não linha de congelamento, e a linha de `docs/pendencias/D-proezas-tecnicas.md` é do Arquiteto absorver com o resto. | se a rodada for engavetada antes de ele absorver, o achado vive só neste arquivo da caixa. |
 | D02 | Contei os sete pontos de `armadilha` no código, mas NOMEIEI todos na tabela, e nomeei os cinco pontos de baixar Vida em vez de dizer "cinco lugares". | nenhum, e é de propósito: contagem passada adiante vira condição de parada de quem confere. |
 | D03 | Não medi o resto da lista do `protegido` (os outros sete Efeitos). A pergunta era sobre a família `armadilha`, e varrer se os outros escudos também divergem do próprio texto é frente vizinha. | se houver o mesmo defeito nos outros sete, ele continua invisível. |
 

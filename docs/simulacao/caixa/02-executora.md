@@ -49,7 +49,7 @@ HEAD, e foram tratados sobre ele.
   gesto do jogador. As duas tabelas (`mesa` e `site`) agora saem com **dois
   denominadores**: o trabalho do MESTRE, que não muda com `G` (11,4% com piso e
   20,0% com teto, com qualquer `G`), e o trabalho da MESA, sobre o qual a fração
-  cai (8,1% a 6,2%). O `Pendencias.md` L24 e o `custo-tela.mjs` acompanharam. E a
+  cai (8,1% a 6,2%). O `docs/pendencias/L-simulacao-simultaneo.md` L24 e o `custo-tela.mjs` acompanharam. E a
   mesma troca estava na `09` §2.5, no sentido inverso ("33,6% do trabalho da
   mesa"), e virou "do mestre";
 - **PERGUNTA:** nada a responder.
@@ -142,7 +142,7 @@ em nenhum arquivo versionado além da caixa da `09` §4, que o cita como o erro.
 - **L27, a segunda metade:** a pasta `centelha-revisora/` da raiz está presa por
   outro processo e vazia;
 - **L28:** o alarme do E4 inerte é o único fora de `sinais.mjs` e sem teste;
-- **o L25, L20, L22, L23 e L24**, no `Pendencias.md`, como antes.
+- **o L25, L20, L22, L23 e L24**, no `docs/pendencias/L-simulacao-simultaneo.md`, como antes.
 
 ## ONDE LER
 
@@ -153,4 +153,4 @@ em nenhum arquivo versionado além da caixa da `09` §4, que o cita como o erro.
    que estavam em `node -e`) e 385 a 396 (o placar);
 3. `scripts/sim/agregar.mjs` · o bloco "AS CONTAS DA §2.4, DA §2.5 E DA §8.2" e o
    `--gravar`, logo no início;
-4. `Pendencias.md` · L24, L27 e L28.
+4. `docs/pendencias/L-simulacao-simultaneo.md` · L24, L27 e L28.

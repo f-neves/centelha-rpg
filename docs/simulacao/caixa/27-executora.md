@@ -40,18 +40,18 @@ avisado **e** o aviso sobre ele.
 **Deste lote (verificado nesta rodada, revisar de verdade):**
 - `5af06f8` · a tela da lembrança construída (fase 2.5, lote 2 item 2), pelo humano em 07/09
 - reverificação de hoje pela Executora: ensaio dos três sentidos (verde/vermelho/verde), `npm run smoke` inteiro em exit 0
-- `d1d70e4`, `457ca82` · Arquiteto corrige `Pendencias.md`/`CONTEXTO.md`: L34/L39 (fase 2, Interpor e grid.condicao) e L32/L33 (fase 2.5) estavam fechados no código e desatualizados no documento
+- `d1d70e4`, `457ca82` · Arquiteto corrige `docs/pendencias/L-simulacao-simultaneo.md`/`CONTEXTO.md`: L34/L39 (fase 2, Interpor e grid.condicao) e L32/L33 (fase 2.5) estavam fechados no código e desatualizados no documento
 - `9e66158` · Arquiteto substitui a regra de orçamento por percentual fixo pela pergunta ao humano no início de sessão (`ARQUITETO.md §0`)
 
 **Backlog acumulado, de outras frentes, já assentado antes desta sessão ou fora dela — reancorar apenas RECONHECE que existe, não pede revisão linha a linha agora (seria reabrir descoberta que o congelamento já fechou):** B12 fraqueza/resistência (`20daeea`, `5b17e2a`, `f8f72d0`), fecha H1/H2/K28/D2 (`b694eb6`), MAPA.md e arquivamento em legacy/raiz (`4b0fa3b`, `3df21ce`, `3cc6306`), README de docs/simulacao (`c27ba32`), CONTRATO-AUDITORA.md (`7704f2b`), renomeação TechLead→Arquiteto (`7af1e7a`), mais commits de organização de contrato/worktree da própria formação da equipe (`c0e46dc`, `9f6c805`, `9b09b0c`, `efc905f`, `0aa2f94`, `1b31f8d`, `62b4dcc`, `95f8091`, `92da7c0`, `d8bf443`, `05c4a92`, `7b8e66c`).
 
 ## PRECISA DE MIM
 
-Nada travado no humano por esta rodada: a única decisão pendente (rodar a migração 33 em produção) já está marcada como do humano, não minha, em `CONTEXTO.md`/`Pendencias.md` L33 e não precisa de aprovação nova aqui.
+Nada travado no humano por esta rodada: a única decisão pendente (rodar a migração 33 em produção) já está marcada como do humano, não minha, em `CONTEXTO.md`/`docs/pendencias/L-simulacao-simultaneo.md` L33 e não precisa de aprovação nova aqui.
 
 ## QUEBROU
 
-Nada quebrou nesta rodada. O que caiu foi premissa de DOCUMENTO, não de código: `Pendencias.md`/`CONTEXTO.md` afirmavam "a tela da lembrança nunca existiu, zero ocorrências em `src/`" (L33), e isso já era falso desde `5af06f8` (07/09). O Arquiteto já corrigiu em `457ca82`.
+Nada quebrou nesta rodada. O que caiu foi premissa de DOCUMENTO, não de código: `docs/pendencias/L-simulacao-simultaneo.md`/`CONTEXTO.md` afirmavam "a tela da lembrança nunca existiu, zero ocorrências em `src/`" (L33), e isso já era falso desde `5af06f8` (07/09). O Arquiteto já corrigiu em `457ca82`.
 
 Achado à parte, sem relação com a lembrança: `test-grid-simultaneo.mjs` falhou uma vez com `Execution context was destroyed, most likely because of a navigation` (puppeteer) rodando `npm run smoke` inteiro; não se repetiu numa segunda rodada limpa logo em seguida. Registro para quem acompanha flakiness dos scripts de bancada — não bloqueou nada aqui.
 
@@ -138,5 +138,5 @@ O documento principal desta rodada e as seções que importam, na ordem em que
 fazem sentido.
 
 - `docs/simulacao/CONTEXTO.md` · seção da fase 2.5 (L32/L33), corrigida em `457ca82`
-- `Pendencias.md` · L32, L33
+- `docs/pendencias/L-simulacao-simultaneo.md` · L32, L33
 - este aviso, seção ENTROU · o que está de fato em revisão nesta rodada

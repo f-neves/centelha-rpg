@@ -40,7 +40,7 @@ documento da rodada; aqui é só o inventário.
 
 | arquivo | o que mudou nele |
 |---|---|
-| `Pendencias.md` | Arquiteto: reaponta 25 citações deslocadas pelo meu comentário em `encerrarVez` (L65, método por hunk de `git diff`, não por busca de âncora), fora desta rodada |
+| `docs/pendencias/L-simulacao-simultaneo.md` | Arquiteto: reaponta 25 citações deslocadas pelo meu comentário em `encerrarVez` (L65, método por hunk de `git diff`, não por busca de âncora), fora desta rodada |
 | `docs/simulacao/CATALOGO.md` | Arquiteto: registra o achado L65 (o portão que casa âncora por texto repetido pode acertar a linha errada), fora desta rodada |
 | `docs/simulacao/CONJURACAO.md` | Arquiteto, frente separada (conjuração), fora desta rodada |
 | `docs/simulacao/ESTADO.md` | Arquiteto: reaponta 8 citações, mesmo motivo do `Pendencias.md`, fora desta rodada |

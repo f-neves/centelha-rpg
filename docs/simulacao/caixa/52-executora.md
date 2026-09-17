@@ -71,7 +71,7 @@ Decisão sem custo escrito é decisão pela metade.
 |---|---|---|
 | D01 | `conferirOcupacao()` mora em `pintarIniciativa()`, não em `pintarTokens()` | `curar` (a cena passiva do L84) não chama `pintarTokens()`, só `pintarIniciativa()`. Se o detector morasse em `pintarTokens`, o retorno passivo (curar alguém debaixo de uma peça de pé) nunca seria visto |
 | D02 | Primeira versão usava um relógio (`ATRASO_CONFERENCIA_OCUPACAO`, 600ms) para separar violação real de instante otimista; substituída por marca determinística (`POSICAO_PENDENTE`) depois de o Arquiteto perguntar de onde vinha o número (de lugar nenhum, não estava medido) | o desenho final é mais simples E mais correto (sem constante, sem `Map` de timers, sem reconferir no disparo); o teste caiu de 900ms para 300ms de espera |
-| D03 | Corrigi três comentários da rodada 50 que citavam "L88" quando o número certo é "L66" (conferido no `Pendencias.md`), sem tocar em documentos já fechados | `50-executora.md` (aviso enviado) e `progresso-50-l70.md` continuam com o número errado de propósito: documento congelado não se reescreve, a correção mora no progresso de quando foi achada |
+| D03 | Corrigi três comentários da rodada 50 que citavam "L88" quando o número certo é "L66" (conferido no `docs/pendencias/L-simulacao-simultaneo.md`), sem tocar em documentos já fechados | `50-executora.md` (aviso enviado) e `progresso-50-l70.md` continuam com o número errado de propósito: documento congelado não se reescreve, a correção mora no progresso de quando foi achada |
 
 ## O QUE FICOU EM ABERTO
 
@@ -103,5 +103,5 @@ fazem sentido.
   não resolve o caso que treme, a primeira versão com o relógio, a troca
   para `POSICAO_PENDENTE` depois da pergunta do Arquiteto, e o achado do
   "L88" que era "L66".
-- `Pendencias.md` L88 · o item original, com a medição da Revisora, a
+- `docs/pendencias/L-simulacao-simultaneo.md` L88 · o item original, com a medição da Revisora, a
   conferência do Arquiteto e a decisão do humano.

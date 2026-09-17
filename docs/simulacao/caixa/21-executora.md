@@ -45,7 +45,7 @@ nenhuma concorrência durante a minha janela de edição.
 
 | arquivo | o que mudou nele |
 |---|---|
-| `Pendencias.md` | fecha L31 com o resultado por gerador (dois com `--check`, quatro em `GERADORES_FORA` com o motivo real, um virou `[DECIDIR]` à parte); registra L50 (achado colateral do `gen-arte-equip.mjs`) |
+| `docs/pendencias/L-simulacao-simultaneo.md` | fecha L31 com o resultado por gerador (dois com `--check`, quatro em `GERADORES_FORA` com o motivo real, um virou `[DECIDIR]` à parte); registra L50 (achado colateral do `gen-arte-equip.mjs`) |
 | `package.json` | `gen-elementos.mjs --check` e `gen-deslocamento.mjs --check` entram na linha `validate` |
 | `scripts/gen-deslocamento.mjs` | ganha o bloco `--check` (padrão `gen-bestiario.mjs`), comparando a saída computada com `deslocamento-bestiario.json` commitado |
 | `scripts/gen-elementos.mjs` | o mesmo bloco `--check`, contra `elementos-bestiario.json` |
@@ -96,7 +96,7 @@ Decisão sem custo escrito é decisão pela metade.
 
 ## ONDE LER
 
-- `Pendencias.md`, L31 (a seção inteira, fechada, com o resultado nomeado de
+- `docs/pendencias/L-simulacao-simultaneo.md`, L31 (a seção inteira, fechada, com o resultado nomeado de
   cada um dos sete) e L50 (o achado novo)
 - `scripts/test-portoes.mjs`, `GERADORES_FORA` · os motivos reais dos cinco
   que não têm `--check`

@@ -41,7 +41,7 @@ documento da rodada; aqui é só o inventário.
 | arquivo | o que mudou nele |
 |---|---|
 | `.github/workflows/validate.yml` | `test-l68-foradavez-mesa` entra na matriz do smoke do CI |
-| `Pendencias.md` | L67 (nono/décimo) e L68 marcados resolvidos; L76 ganha a segunda leitura; L77 novo (o raio do próprio atacante, fora desta rodada); reaponte |
+| `docs/pendencias/L-simulacao-simultaneo.md` | L67 (nono/décimo) e L68 marcados resolvidos; L76 ganha a segunda leitura; L77 novo (o raio do próprio atacante, fora desta rodada); reaponte |
 | `docs/simulacao/CATALOGO.md` | entrada do Arquiteto sobre commit perdido em `HEAD` destacado (fora desta rodada) |
 | `docs/simulacao/ESTADO.md` | reaponte: linhas de `grid.astro` deslocadas pelos meus edits |
 | `docs/simulacao/VOZ.md` | reaponte: linhas de `grid.astro` deslocadas pelos meus edits |
@@ -76,7 +76,7 @@ Decisão sem custo escrito é decisão pela metade.
 |---|---|---|
 | D40a | Trocar o gatilho do L68 de `!grupoDaVez().some(...)` por `chegouAVez(c)`, um predicado por peça, achado depois de eu medir os dois números que o Arquiteto pediu (12 de 12 contra 7 de 12, com um golpe de verdade no ar via `aResolver`, `docs/simulacao/caixa/progresso-40-l67-l68.md:59`) | nenhum: é conserto do mesmo item, não escopo novo. Sem ele, o diálogo abriria em TODO arrasto durante cada golpe caindo (o grupo esvazia inteiro), que é exatamente o "modal a cada arrumação" que o item foi escrito para evitar |
 | D40b | Consertar as três asserções de `test-grid-simultaneo.mjs` forçando `c003.tick = 0` explicitamente (não ensinando-as a fechar `fdv-dlg`), autorizado pelo Arquiteto | nenhum de escopo; o risco era eu "consertar" mudando o que a asserção mede em vez do estado que ela precisa. Prova de que não foi isso: quebrei cada mecanismo vigiado de propósito e confirmei vermelho antes de reverter. `reprojetarAgenda(...)` virou `null` (fica vermelha "o registro conta o adiamento, e diz de onde para onde"); `MODOS_MOV.filter(...)` ganhou `&& m.id !== 'investida'` (fica vermelha "a caixa de ataque oferece a Investida..."); o `if` de `moverSimultaneo` virou `if (true)` (fica vermelha "soltar num canto livre e longe abre a caixa de deslocamento"). As três reversões confirmadas verdes de novo antes de seguir |
-| D40c | Registrar no `L65` (Pendencias.md) que a regra "código primeiro, documentos depois" que o Arquiteto escreveu era impossível de cumprir na forma como ele a generalizou, achado tentando cumpri-la de verdade (o gancho de `pre-commit` roda `validate` na árvore, e por isso PRECISA da árvore já reapontada antes de qualquer commit, inclusive o meu) | nenhum: o Arquiteto já corrigiu o item no `107d1a3`, com o motivo escrito. Registro aqui só porque ele pediu que a correção dissesse quem a achou tentando cumprir, e não deduzindo |
+| D40c | Registrar no `L65` (docs/pendencias/L-simulacao-simultaneo.md) que a regra "código primeiro, documentos depois" que o Arquiteto escreveu era impossível de cumprir na forma como ele a generalizou, achado tentando cumpri-la de verdade (o gancho de `pre-commit` roda `validate` na árvore, e por isso PRECISA da árvore já reapontada antes de qualquer commit, inclusive o meu) | nenhum: o Arquiteto já corrigiu o item no `107d1a3`, com o motivo escrito. Registro aqui só porque ele pediu que a correção dissesse quem a achou tentando cumprir, e não deduzindo |
 
 ## O QUE FICOU EM ABERTO
 
@@ -100,6 +100,6 @@ fazem sentido.
 
 - `docs/simulacao/caixa/progresso-40-l67-l68.md` · a linha das 06:52 (o achado da
   regressão) e a das 07:15 (o fecho, com os dois números do gatilho)
-- `Pendencias.md` · L67 (nono/décimo), L68 (a regra), L76/L77 (o que ficou de fora)
+- `docs/pendencias/L-simulacao-simultaneo.md` · L67 (nono/décimo), L68 (a regra), L76/L77 (o que ficou de fora)
 - `scripts/test-l68-foradavez-mesa.mjs` · as cinco respostas do diálogo novo
 - `scripts/test-l67-corpoacorpo-mesa.mjs:70-90` · o nono e o décimo lugar

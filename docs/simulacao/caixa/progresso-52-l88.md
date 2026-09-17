@@ -94,7 +94,7 @@ Sinal de vida da Executora. Uma linha por etapa pequena, hora real (`date +%H:%M
   `npm run validate`: único vermelho é o portão de procedência, esperado (73
   citações movidas, `conferirOcupacao` perto do topo de `grid.astro` desloca
   tudo abaixo). Em `ESTADO.md`, `Pendencias.md`, `CONJURACAO.md`,
-  `Grid_Mobile.md`, `VOZ.md`, `CONTEXTO.md`. Uma delas, `Pendencias.md:3785`,
+  `Grid_Mobile.md`, `VOZ.md`, `CONTEXTO.md`. Uma delas, `docs/pendencias/L-simulacao-simultaneo.md:2491`,
   aponta para `mesa-mock.mjs:1188`, mas a citação mora no documento do
   Arquiteto, não é minha para tocar (mesmo achado da rodada anterior). Não
   toquei nenhum dos seis documentos. Commit pronto, aguardando reponte.
@@ -127,7 +127,7 @@ Sinal de vida da Executora. Uma linha por etapa pequena, hora real (`date +%H:%M
   ACHADO DE PASSAGEM, procurando "L88" no código para conferir os
   comentários: DOIS comentários meus da rodada 50 (`levantarDoChao`/
   `porNoMapa`, o achado do Arquiteto sobre a corrida entre clientes)
-  citavam "L88" quando o número certo, conferido agora no `Pendencias.md`,
+  citavam "L88" quando o número certo, conferido agora no `docs/pendencias/L-simulacao-simultaneo.md`,
   é **L66** (o item antigo sobre função que recusa/escreve sem avisar quem
   chama). `L88` sempre foi o detector desta rodada; eu tinha escrito o
   número errado três vezes em `grid.astro` na rodada 50, sem perceber que

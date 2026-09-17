@@ -43,7 +43,7 @@ documento da rodada; aqui é só o inventário.
 | `Auditoria_Tecnica.md` | 1 âncora escrita (L80) |
 | `Grid_Mobile.md` | 4 âncoras escritas (L80) |
 | `Migracao_Dominio.md` | 17 âncoras escritas (L80) |
-| `Pendencias.md` | Arquiteto registra o L80 (a escala do achado: 43→71 envelhecidas, 21→36 ponteiros vivos, 22→35 marcas históricas) e o erro dele sobre as 18 âncoras do REVISORA.md |
+| `docs/pendencias/L-simulacao-simultaneo.md` | Arquiteto registra o L80 (a escala do achado: 43→71 envelhecidas, 21→36 ponteiros vivos, 22→35 marcas históricas) e o erro dele sobre as 18 âncoras do REVISORA.md |
 | `Regua_Relacao.md` | 1 âncora escrita (L80) |
 | `docs/simulacao/CATALOGO.md` | 4 âncoras escritas (L80) |
 | `docs/simulacao/CONJURACAO.md` | 10 âncoras escritas (L80) |
@@ -59,8 +59,8 @@ Cada número publicado nesta rodada, com o arquivo e a linha de onde ele sai.
 | número | o que é | de onde sai |
 |---|---|---|
 | 57 → 0 | citações de código sem âncora, nos dez documentos, antes e depois desta rodada | `docs/simulacao/caixa/progresso-45-l80.md` (medida com cópia do portão, `ALVOS` ampliado, refeita por mim e conferida pelo Arquiteto no portão de verdade) |
-| 43 → 71 | citações "envelhecidas" nos mesmos dez documentos, antes e depois: as 28 novas não são regressão desta rodada, são citações que já estavam podres e que a falta de âncora escondia da conferência (o portão faz `continue` na primeira sem âncora e nunca chega a medir se ela envelheceu) | `Pendencias.md` (o item L80, medido pelo Arquiteto) |
-| 21 → 36, 22 → 35 | ponteiros vivos e marcas históricas que a rodada 46 vai processar, antes e depois desta rodada (a escala mudou por causa das 28 citações destapadas) | `Pendencias.md` (o item L80) |
+| 43 → 71 | citações "envelhecidas" nos mesmos dez documentos, antes e depois: as 28 novas não são regressão desta rodada, são citações que já estavam podres e que a falta de âncora escondia da conferência (o portão faz `continue` na primeira sem âncora e nunca chega a medir se ela envelheceu) | `docs/pendencias/L-simulacao-simultaneo.md` (o item L80, medido pelo Arquiteto) |
+| 21 → 36, 22 → 35 | ponteiros vivos e marcas históricas que a rodada 46 vai processar, antes e depois desta rodada (a escala mudou por causa das 28 citações destapadas) | `docs/pendencias/L-simulacao-simultaneo.md` (o item L80) |
 | 18 de 57 | âncoras do `REVISORA.md` que não precisavam existir: a marca `(citação histórica)` é conferida ANTES da âncora no portão, então uma citação marcada nunca chega a ser cobrada por âncora | `scripts/test-procedencia.mjs:337` (a marca) e `:345` (a âncora, depois) |
 
 Se um número foi calculado e não está num arquivo, o comando que o produz entra na
@@ -108,7 +108,7 @@ humano** e não da revisora.
 O documento principal desta rodada e as seções que importam, na ordem em que
 fazem sentido.
 
-- `Pendencias.md` · L80 (a escala do achado, o erro do Arquiteto sobre o
+- `docs/pendencias/L-simulacao-simultaneo.md` · L80 (a escala do achado, o erro do Arquiteto sobre o
   `REVISORA.md`, e a régua para a rodada 46)
 - `docs/simulacao/caixa/progresso-45-l80.md` · o sinal de vida arquivo por
   arquivo, com o tropeço do `CONJURACAO.md:73` (empate de 20 caracteres) e o

@@ -1424,7 +1424,7 @@ mundo, inclusive para quem vê stats: a pontaria é segredo do jogo, não do pap
 - o **Tick em que o golpe cai** legível ao lado, que a fita já dá;
 - nada disso para a ação `mirado`, que mostra só que a pessoa está montando alguma coisa.
 
-Entra na mesma família do editor de cenário (`Pendencias.md` I5): o Grid deixando de ser um mapa de
+Entra na mesma família do editor de cenário (`docs/pendencias/I-mesa-tempo-real.md` I5): o Grid deixando de ser um mapa de
 peças e passando a mostrar intenção.
 
 ### 0.49 A fila de declaração na tela
@@ -1739,7 +1739,7 @@ inclusive para quem vê stats**: a pontaria é segredo do jogo, não do papel.
 - O comentário da migração 27 (L76-88) argumenta o contrário desta decisão e precisa ser substituído,
   não apagado: a migração 30 deve dizer o que mudou e por quê.
 - Fica como **melhoria futura** um teste para esconder as intenções, que é o que devolve ao ogro a
-  opção de disfarçar para onde vai o martelo. Anote-o junto do editor de cenário (`Pendencias.md` I5).
+  opção de disfarçar para onde vai o martelo. Anote-o junto do editor de cenário (`docs/pendencias/I-mesa-tempo-real.md` I5).
 - A migração 30 **não** leva mais a coluna `encontros.retrato`: o retrato ficou em memória (§0.8.2).
 
 **Prova.** Consulta de conferência dentro da própria migração, como nas anteriores. Detalhe na
@@ -2219,7 +2219,7 @@ imagem. Não é bloqueio de banco, é bloqueio de tela, e é anterior a esta rod
 
 **Não é para consertar agora, e fica registrado como risco com número.**
 
-O registro da arena é um `jsonb` reescrito inteiro a cada linha de log (`Pendencias.md` I2: "a
+O registro da arena é um `jsonb` reescrito inteiro a cada linha de log (`docs/pendencias/I-mesa-tempo-real.md` I2: "a
 ESCRITA continua subindo o array todo, até uns 45 KB, a cada peça movida"). Medido em 02/09
 (`03-respostas.md` §5.2): com **2 peças em trajeto**, `update:mesa_arenas` aparece **2,0 vezes por
 Tick**, ou seja **uma reescrita por peça que se move**.
@@ -2315,7 +2315,7 @@ um só.
 
 **DECIDIDO EM 06/09/2026: esta grade não é executada.** Fica registrada como
 desenhada e não executada, com o motivo em `docs/simulacao/ESTADO.md`
-("A FRENTE DE SIMULAÇÃO ESTÁ ENCERRADA") e em `Pendencias.md` (`L25`, agora
+("A FRENTE DE SIMULAÇÃO ESTÁ ENCERRADA") e em `docs/pendencias/L-simulacao-simultaneo.md` (`L25`, agora
 **dívida de produto**, não pré-requisito de bateria): nove das quinze
 bandeiras que esta seção pressupõe ligadas são regra a escrever, seis delas
 (`n1` a `n6`) o núcleo do Tick inteiro, e nenhuma roda isolada. O que segue
@@ -2385,7 +2385,7 @@ exercitado pelo nível Cauteloso de E6.
 por construção.
 
 > **REGRA GERAL, E NÃO NOTA DE UMA CÉLULA: nenhuma bandeira entra na grade antes de existir
-> caminho de produção que a chame.** Varrida em 03/09 (o **L25** do `Pendencias.md`), e o
+> caminho de produção que a chame.** Varrida em 03/09 (o **L25** do `docs/pendencias/L-simulacao-simultaneo.md`), e o
 > resultado é que **as quinze estão nessa situação**, e não só o `gate`. O perfil é lido em UM
 > lugar do código (`grid.astro:8139`) e lá ele é **gravado dentro da entrada do lance**, para o
 > oráculo; o tipo existe em `lance.ts` e **`entrada.perfil` não é consultado em lugar nenhum**,

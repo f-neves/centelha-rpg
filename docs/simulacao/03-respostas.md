@@ -542,7 +542,7 @@ mock, Edge sem cabeça e `?tempo=simultaneo`. Máquina: a mesma das medições d
    com dois movedores. Composição: um `upsert` de posição, uma reescrita do registro da arena e, em
    parte dos Ticks, um `update:combatentes` da agenda re-projetada.
 4. **A escrita mais cara é a do registro, e ela já é uma pendência conhecida.** `update:mesa_arenas`
-   aparece **2,0 vezes por Tick** com dois movedores, uma por linha de log, e o `Pendencias.md` I2
+   aparece **2,0 vezes por Tick** com dois movedores, uma por linha de log, e o `docs/pendencias/I-mesa-tempo-real.md` I2
    registra que "o registro da arena ainda é um `jsonb` reescrito inteiro... até uns 45 KB, a cada
    peça movida". Numa cena de 10 perseguidores isso é dez reescritas do array inteiro por Tick.
 5. **A fórmula que sai daqui:** `idas por Tick ≈ 2 + 2,3 × (peças em trajeto)`, e

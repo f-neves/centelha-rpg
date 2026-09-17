@@ -46,7 +46,7 @@ documento da rodada; aqui é só o inventário.
 | `package.json` | acrescenta `test-l70-ocupacao-mesa` ao `smoke` |
 | `.github/workflows/validate.yml` | acrescenta `test-l70-ocupacao-mesa` à matriz do CI |
 | `docs/simulacao/caixa/progresso-49-l70.md` | novo: sinal de vida da rodada (levantamento + conversão) |
-| `Pendencias.md`, `ESTADO.md`, `CONJURACAO.md`, `Grid_Mobile.md`, `CATALOGO.md`, `VOZ.md`, `CONTEXTO.md`, `Auditoria_Tecnica.md` | não são meus: reaponte do Arquiteto (72 citações movidas, mais a taxa de âncora fraca medida e registrada no `L65`), causado pelo deslocamento de linhas do meu próprio `gravarToken` |
+| `docs/pendencias/L-simulacao-simultaneo.md`, `ESTADO.md`, `CONJURACAO.md`, `Grid_Mobile.md`, `CATALOGO.md`, `VOZ.md`, `CONTEXTO.md`, `Auditoria_Tecnica.md` | não são meus: reaponte do Arquiteto (72 citações movidas, mais a taxa de âncora fraca medida e registrada no `L65`), causado pelo deslocamento de linhas do meu próprio `gravarToken` |
 
 ## O QUE ESTE RELATÓRIO AFIRMA
 

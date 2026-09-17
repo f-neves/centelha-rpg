@@ -40,7 +40,7 @@ onde a próxima pessoa a leria e acreditaria.
 ## 2 · Os três lugares estão certos, e o QUARTO continua errado · e fui eu que o absolvi
 
 **Os três da lista batem**, lidos um a um: a placa, `progresso-79.md:101-110` e
-`Pendencias.md:4055-4061`. Todos dizem seis independentes e cinco marcadas, nomeiam a `rs-log`, e
+`docs/pendencias/L-simulacao-simultaneo.md:2761-2767`. Todos dizem seis independentes e cinco marcadas, nomeiam a `rs-log`, e
 dizem a Energia com o motivo.
 
 **O quarto não.** `docs/simulacao/caixa/jogador-novo-decisoes.md:2908-2909`:

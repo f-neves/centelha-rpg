@@ -41,7 +41,7 @@ documento da rodada; aqui é só o inventário.
 | arquivo | o que mudou nele |
 |---|---|
 | `.github/workflows/validate.yml` | `test-l67-corpoacorpo-mesa` entra na matriz do smoke do CI |
-| `Pendencias.md` | L67 marcado resolvido (Executora); L75 medido e fechado sem obra (Arquiteto, fora desta rodada) |
+| `docs/pendencias/L-simulacao-simultaneo.md` | L67 marcado resolvido (Executora); L75 medido e fechado sem obra (Arquiteto, fora desta rodada) |
 | `docs/simulacao/CATALOGO.md` | entrada nova do Arquiteto sobre commit perdido em `HEAD` destacado (fora desta rodada) |
 | `docs/simulacao/ESTADO.md` | reaponte do Arquiteto: linhas de grid.astro deslocadas pelos meus edits |
 | `docs/simulacao/VOZ.md` | reaponte do Arquiteto: linhas de grid.astro deslocadas pelos meus edits |
@@ -88,7 +88,7 @@ Cada número publicado nesta rodada, com o arquivo e a linha de onde ele sai.
 
 | número | o que é | de onde sai |
 |---|---|---|
-| 7 | lugares do levantamento original do L67 que mediam alcance do centro (bateu com o número do Arquiteto) | `Pendencias.md:4002` |
+| 7 | lugares do levantamento original do L67 que mediam alcance do centro (bateu com o número do Arquiteto) | `docs/pendencias/L-simulacao-simultaneo.md:2708` |
 | 8 | lugares de verdade, contando o achado ao vivo (`declararGolpe` reimplementava a conta inline) | `src/pages/mesa/grid.astro:8179` |
 | 3 | a distância (hexágonos) em que a perseguição contra um alvo Enorme para, na cena de teste | `scripts/test-l67-corpoacorpo-mesa.mjs:61` |
 | `Math.ceil(...)` | o arredondamento de `raioExtraHex`, para cima e não para o chão | `src/pages/mesa/grid.astro:3346` |
@@ -131,6 +131,6 @@ fazem sentido.
 
 - `docs/simulacao/caixa/progresso-l71-l67.md` · as linhas de 04:20 e 05:22 (os dois achados de teste,
   com a conta geométrica do arredondamento)
-- `Pendencias.md` · L67 (a regra decidida) e L71 (o prazo)
+- `docs/pendencias/L-simulacao-simultaneo.md` · L67 (a regra decidida) e L71 (o prazo)
 - `scripts/test-l67-corpoacorpo-mesa.mjs` · as duas asserções do critério de aceitação
 - `scripts/test-grid.mjs` · `cenaVozPrazo`, com o comentário sobre o achado do IndexedDB por origem

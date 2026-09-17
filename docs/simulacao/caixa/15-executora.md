@@ -68,7 +68,7 @@ mensagem de commit e na conversa da rodada).
 | `scripts/test-combate-tempo.mjs` | seção 7 nova: `cobreGolpe`, `interposicaoConsumida`, `custoInterporRecuperacao`, `alcanceInterpor`, `linhaHex`/`naLinhaHex`, e o par que prova o conserto de `acaoVazia` |
 | `scripts/test-cobertura-lib.mjs` | `interposicaoConsumida` entrou em `SO_DA_MESA` (chamada pela mesa, não pelo harness) |
 | `docs/simulacao/ESTADO.md` | citações de linha reapontadas (`grid.astro`), duas vezes nesta rodada (porta do Preparo e depois porta da Recuperação) |
-| `Pendencias.md` | citações de linha reapontadas na L34 §6 e alhures, nas duas metades da rodada; a L34 §6 ganhou notas de "implementado" nas duas portas |
+| `docs/pendencias/L-simulacao-simultaneo.md` | citações de linha reapontadas na L34 §6 e alhures, nas duas metades da rodada; a L34 §6 ganhou notas de "implementado" nas duas portas |
 | **D15f/D15g, segunda metade** | |
 | `scripts/test-cobertura-lib.mjs` | `exportadasDe` conserta o classificador (procura `=>`/`function` até o próximo `export`, não só na mesma linha); `cobreGolpe` e `custoInterporRecuperacao` entraram em `SO_DA_MESA`; autoteste novo para o formato multi-linha |
 | `src/lib/mesa-tempo-ui.ts` | `abrirForaDeHora` ganha o modo "Se interpor" (checkbox, campo de metros, o mesmo picker de golpe da porta do Preparo), com o preço saindo de `custoInterporRecuperacao` em vez de digitado; `aoConfirmar` ganha `interpoe` opcional |
@@ -134,7 +134,7 @@ Decisões de engenharia tomadas sem perguntar, com o custo de cada uma.
 
 ## ONDE LER
 
-- `Pendencias.md`, L34 §6 · a régua fechada e as notas de "implementado" nas duas portas
+- `docs/pendencias/L-simulacao-simultaneo.md`, L34 §6 · a régua fechada e as notas de "implementado" nas duas portas
 - `src/lib/combate-tempo.ts` · `Acao.interpoe`, `cobreGolpe`, `interposicaoConsumida`, `custoInterporRecuperacao`, e a correção em `acaoVazia`
 - `src/lib/alcance.ts` · `alcanceInterpor`
 - `src/lib/hex.ts` · `linhaHex`/`naLinhaHex`

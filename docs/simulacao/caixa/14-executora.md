@@ -43,7 +43,7 @@ documento da rodada; aqui é só o inventário.
 | `.github/workflows/validate.yml` | `test-bandeiras-mesa` entrou na matriz do smoke (estava fora desde que nasceu) |
 | `CLAUDE.md` | regra nova: ação NOVA do Grid recebe objeto, não lê o DOM, com o escopo (não vale para bandeira que estende ação existente) |
 | `Grid_melhorias.md` | frente "Comandos por voz" registrada, só documentação, 7 decisões travadas |
-| `Pendencias.md` | L25 retagueada de pré-requisito de bateria para dívida de produto; porte/gate documentados como as duas primeiras bandeiras ligadas |
+| `docs/pendencias/L-simulacao-simultaneo.md` | L25 retagueada de pré-requisito de bateria para dívida de produto; porte/gate documentados como as duas primeiras bandeiras ligadas |
 | `docs/simulacao/02-projeto-harness.md` | nota de que a grade oficial (n=2.527) está desenhada e não rodada |
 | `docs/simulacao/CATALOGO.md` | sete casos novos: cópia sustentada por detector (não disciplina), segundo ponto de decisão na mesma função, par com insumo comum, trava que audita o nível errado, o gatilho operacional do insumo comum, e o teste que nasce fora do CI |
 | `docs/simulacao/ESTADO.md` | seção de encerramento da frente de simulação, com motivo e o que fica |
@@ -100,7 +100,7 @@ Decisão sem custo escrito é decisão pela metade.
 O que não foi resolvido, e por quê. Marcar explicitamente **o que precisa do
 humano** e não da revisora.
 
-- **A trava genérica dos sete `.map()`** (D14b) fica esperando decisão do humano: escrever a versão genérica agora, ou consertar caso a caso conforme cada campo estourar. Registrado como tamanho em `docs/simulacao/CATALOGO.md` (caso "o transporte que descarta") e em `Pendencias.md`.
+- **A trava genérica dos sete `.map()`** (D14b) fica esperando decisão do humano: escrever a versão genérica agora, ou consertar caso a caso conforme cada campo estourar. Registrado como tamanho em `docs/simulacao/CATALOGO.md` (caso "o transporte que descarta") e em `docs/pendencias/D-proezas-tecnicas.md`.
 - **teto6 continua desligado.** Confirmado nesta janela que o número em si está correto (não precisa de build), mas ele soma sentinela e magnitude no mesmo teto, e as duas coisas ainda dividem o campo do dado; ligar antes de separar os dois faria o teto contar duas grandezas como uma. Isto precisa do humano decidir a separação, não é conserto de código.
 - **A frente de comandos por voz** está só registrada (Grid_melhorias.md, 7 decisões travadas), zero linha de código. Espera decisão explícita de começar.
 - **grid.astro não importa `lance.ts`.** Duas implementações independentes da mesma conta, sincronizadas só pela fixture de 1315 lances (0% delas com bandeira ligada). Não é conserto desta rodada; é risco registrado em CATALOGO.md, esperando decisão de arquitetura do humano.
@@ -113,6 +113,6 @@ fazem sentido.
 
 - `docs/simulacao/CATALOGO.md` · os sete casos novos, no fim do arquivo, e a linha nova na tabela do topo
 - `docs/simulacao/ESTADO.md` · a seção de encerramento da frente de simulação
-- `Pendencias.md` · L25 retagueada, e o parágrafo de porte/gate como as duas primeiras bandeiras ligadas
+- `docs/pendencias/L-simulacao-simultaneo.md` · L25 retagueada, e o parágrafo de porte/gate como as duas primeiras bandeiras ligadas
 - `CLAUDE.md` · a regra "ações recebem objeto", no bloco "O essencial do repositório"
 - `Grid_melhorias.md` · "Comandos por voz", sob "Na fila"

@@ -8,17 +8,17 @@ Arquivo de sinal de vida (CONTRATO-REVISORA §6). Uma linha por etapa fechada, n
   `git diff 979ec38 107d1a3` (árvore), não `git log` (intervalo), para não me confundir com o
   aviso de "1 commit atrás" do checkout. Lendo o aviso agora.
 - 07:28 — achado próprio, antes de olhar código: a tabela "O QUE MUDOU" do aviso diz "L67
-  (nono/décimo) e L68 marcados resolvidos" em `Pendencias.md`, e isso não bate com o diff.
+  (nono/décimo) e L68 marcados resolvidos" em `docs/pendencias/L-simulacao-simultaneo.md`, e isso não bate com o diff.
   Conferi `git diff 979ec38 107d1a3 -- Pendencias.md`: as duas seções substantivas (fora
   reaponte de linha) são o texto novo do `L65` (a sequência dos três passos) e os itens novos
-  `L76`/`L77`. Não existe "nono"/"décimo" em `Pendencias.md` nenhuma (`Grep` no arquivo
+  `L76`/`L77`. Não existe "nono"/"décimo" em `docs/pendencias/L-simulacao-simultaneo.md` nenhuma (`Grep` no arquivo
   inteiro, zero ocorrências), e a entrada do `L68` (linha 4437) é byte a byte a mesma descrição
   de ANTES da implementação ("PARADO esperando o humano", "DECIDIDO: CONSTRÓI. Mas DEPOIS da
   voz, e não agora... Registrado agora... não aberto"), sem nenhuma linha nova dizendo que foi
   construído. Comparando com o precedente do próprio `L71` (que ganhou uma correção inline,
   "A (a) JÁ FOI CONSTRUÍDA, e este item passou um dia dizendo o contrário"), aqui não houve
   o equivalente. Vai para o veredito como CORRIGE (documentação, não código): quem ler
-  `Pendencias.md` sem ler este aviso acha que o L68 continua parado.
+  `docs/pendencias/L-simulacao-simultaneo.md` sem ler este aviso acha que o L68 continua parado.
 - 07:30 — falsifiquei o D40b eu mesma, uma das três (a pedido explícito: "repita pelo menos
   uma"). Forcei `reprojetarAgenda(...)` a `null` em `grid.astro:5782` e isolei `cenaAlvoQueFoge`
   em `test-grid-simultaneo.mjs` (comentando as outras seis chamadas, só para rodar mais rápido)

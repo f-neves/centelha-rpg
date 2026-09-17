@@ -10,7 +10,7 @@ origin/main` sozinho teria me levado a `4c6047f`, um commit adiante do aviso (o 
 tinha empurrado a entrada do CATALOGO na hora da mensagem): corrigi para o sha exato do aviso,
 `76145c8`, por §0.
 
-Dois commits desde a BASE: `6398e99` (Arquiteto, fecha L67/L68 no `Pendencias.md`) e `4d86d6c`
+Dois commits desde a BASE: `6398e99` (Arquiteto, fecha L67/L68 no `docs/pendencias/L-simulacao-simultaneo.md`) e `4d86d6c`
 (Executora, o L72). `git diff fe7e220 4d86d6c` (BASE é ancestral de verdade desta vez, o aviso
 confirma) cobre os dois.
 
@@ -21,9 +21,9 @@ espelhando a lógica de âncora do `test-procedencia.mjs`, classificando cada ci
 aberto/fechado, e rodei contra `Pendencias.md` no estado exato de `6398e99` (logo depois do
 fechamento do L67/L68, antes de qualquer reparo desta rodada). Resultado: **77 em itens fechados,
 15 quebradas, 8 sem âncora**, batendo número a número e LINHA A LINHA com o que o aviso publica.
-Confirmei as duas citações ligadas ao fechamento de ontem: `Pendencias.md:4043` citava
+Confirmei as duas citações ligadas ao fechamento de ontem: `docs/pendencias/L-simulacao-simultaneo.md:2749` citava
 `grid.astro:3344` para `raioExtraHex`, que mora de verdade em `3364` (erro de 20 linhas, já
-existia assim quando o item fechou); `Pendencias.md:4485` citava `grid.astro:4563` para
+existia assim quando o item fechou); `docs/pendencias/L-simulacao-simultaneo.md:3191` citava `grid.astro:4563` para
 `function grupoDaVez`, mas a âncora que o script realmente escolhe é `!grupoDaVez` (o fragmento
 ANTES da citação, mais próximo em caracteres), que hoje só existe dentro de um COMENTÁRIO em
 `4591`, fora da janela de `4563`. As duas apodreceram no dia do fechamento, exatamente como o
@@ -31,17 +31,17 @@ Arquiteto afirmou.
 
 **Risco 3 (a marca `(citação histórica)` cala só a citação, não a linha): falsificado ao vivo.**
 Inseri uma segunda citação de propósito, quebrada, na mesma linha do marcador
-(`Pendencias.md:3737`), logo DEPOIS do `(citação histórica)`. `node scripts/test-procedencia.mjs`
+(`docs/pendencias/L-simulacao-simultaneo.md:2443`), logo DEPOIS do `(citação histórica)`. `node scripts/test-procedencia.mjs`
 acendeu só a minha citação nova; a marcada original continuou muda. Revertido imediatamente,
 `git status`/`git diff --stat` limpos antes de qualquer outra coisa (CONTRATO §2).
 
 **Risco 4 (o controle negativo): repetido com um caso diferente do da Executora.** Quebrei
-`Pendencias.md:4387` (item `L77`, aberto, `grid.astro:3364` → `9999`) e confirmei o portão
+`docs/pendencias/L-simulacao-simultaneo.md:3093` (item `L77`, aberto, `grid.astro:3364` → `9999`) e confirmei o portão
 acender; revertido, verde de novo (148 conferidas, 1 histórica).
 
 **Risco 1 (o conserto por busca de âncora comum): amostrado por leitura, não por confiança.**
 `const cd = somarCondicoes` existe DUAS vezes em `grid.astro` (9600 e 10733). O conserto em
-`Pendencias.md:1404` ("a leitura na folha do lance") aponta para `9600`; li o código ao redor
+`docs/pendencias/L-simulacao-simultaneo.md:110` ("a leitura na folha do lance") aponta para `9600`; li o código ao redor
 (9590-9601, dentro da função que clona `RESUMO` para a folha) e a descrição bate com essa
 ocorrência, não com a do lado do mestre (10733): não foi picada pela proximidade, foi lida.
 

@@ -48,7 +48,7 @@ código (`57f6bcb`, meu) e os documentos (`974925b`, do Arquiteto).
 | `package.json` | `test-l86a-cura.mjs` entra na cadeia do `validate` |
 | `scripts/test-l86a-cura.mjs` | novo, 32 asserções |
 | `docs/simulacao/caixa/progresso-55-l86a.md` | novo, sinal de vida da rodada |
-| `Pendencias.md` | L86 remedido (a medida que faltava, a régua do `maos-sobre-a-multidao`); decisão da migração 38 (`nivel_arte`); correção do erro do Arquiteto sobre o L86; resíduo do `mao-firme` |
+| `docs/pendencias/L-simulacao-simultaneo.md` | L86 remedido (a medida que faltava, a régua do `maos-sobre-a-multidao`); decisão da migração 38 (`nivel_arte`); correção do erro do Arquiteto sobre o L86; resíduo do `mao-firme` |
 | `docs/simulacao/CATALOGO.md` | forma nova registrada (decisão de regra entra no dado junto com o código) |
 | `Auditoria_Tecnica.md` | reaponte de citação |
 | `Grid_Mobile.md` | reaponte de citação |
@@ -88,12 +88,12 @@ humano** e não da revisora.
 
 - **A migração 38 foi DECIDIDA e NÃO foi escrita, de propósito.** O humano
   escolheu a coluna `nivel_arte` para a linha do efeito guardar o nível da
-  Arte de quem conjurou (`Pendencias.md:6108-6109`). Não há arquivo de
+  Arte de quem conjurou (`docs/pendencias/L-simulacao-simultaneo.md:4814-4815`). Não há arquivo de
   migração neste commit e não vai haver sem ele: migração não se escreve nem
   se roda por conta própria. Precisa do humano, no SQL Editor, quando a fila
   chegar nela (a 33 e a 37 ainda esperam, à frente).
 - **Duas perguntas ficaram abertas DENTRO de uma decisão que já foi tomada**,
-  e não são reabertura dela (`Pendencias.md:6142-6147`): o que "nível" indexa
+  e não são reabertura dela (`docs/pendencias/L-simulacao-simultaneo.md:4848-4853`): o que "nível" indexa
   no `acelerar-a-cura` (a prosa usa nível da Arte; a nota de Mana aponta para
   grau de parâmetro, que o Efeito não tem), e se a versão em área
   (`maos-sobre-a-multidao`) divide o valor entre quem está dentro (o `notas`
@@ -103,7 +103,7 @@ humano** e não da revisora.
   PV/turno e "não morrer de sangramento enquanto a sua mão estiver nele") e a
   rodada entrega só a primeira. O sangramento tem regra própria
   (`regras.json → sangramento`) que não foi encaixada. A Arte NÃO está
-  registrada como pronta por causa desta linha (`Pendencias.md:6149-6155`).
+  registrada como pronta por causa desta linha (`docs/pendencias/L-simulacao-simultaneo.md:4855-4861`).
 - `acelerar-a-cura`, `cura-guardada` e `maos-sobre-a-multidao` continuam sem
   curar nada no tabuleiro (L86b): a primeira espera a migração 38 acima; a
   segunda precisa de um gatilho novo (`armadilha`, sem mecanismo hoje) e de
@@ -122,5 +122,5 @@ fazem sentido.
 
 - `docs/simulacao/caixa/progresso-55-l86a.md` · sinal de vida completo, do
   levantamento aos dois ajustes finais na caixa de confirmação.
-- `Pendencias.md` · §L86 (o levantamento remedido, a decisão da migração 38,
+- `docs/pendencias/L-simulacao-simultaneo.md` · §L86 (o levantamento remedido, a decisão da migração 38,
   as duas perguntas abertas, o resíduo do `mao-firme`).

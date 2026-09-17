@@ -27,7 +27,7 @@ Reproduz-se sem o código antigo: `fases.fuga.ticks === 0` conta **11.770** de 2
 `bmtq638zo`, e `21.600 − 11.770 = 9.830` é o mesmo número.
 
 **A `bmtq638zo` é POSTERIOR à REGRAVAÇÃO da fuga e ANTERIOR à ENTRADA ESCALONADA**,
-ligada em 06/09/2026 (`ticksDeEntrada`, `Pendencias.md` L48): quem rodar o código de
+ligada em 06/09/2026 (`ticksDeEntrada`, `docs/pendencias/L-simulacao-simultaneo.md` L48): quem rodar o código de
 hoje não reproduz mais este arquivo, reproduz o próximo (`bmtq8zam1`). A escada e o
 custo de tela abaixo, que são o que este documento mede, continuam vindo daqui,
 porque a entrada escalonada não muda nenhum deles de forma que valha regravar a
@@ -1126,7 +1126,7 @@ e a lição para a próxima frente é essa: a pergunta vem antes do instrumento.
 registrada como desenhada e não executada, com o motivo escrito, e não como
 trabalho parado por falta de mão.
 
-**O motivo.** Nove das quinze bandeiras de regra (`L25`, `Pendencias.md`) são
+**O motivo.** Nove das quinze bandeiras de regra (`L25`, `docs/pendencias/L-simulacao-simultaneo.md`) são
 regra a escrever, e seis delas (`n1` a `n6`) são o núcleo do Tick inteiro, que
 nenhuma roda isolada: N2 só é observável com N1 ligada, N5 precisa da cadeia
 de N4, nenhuma das seis tem como estar pronta com as outras faltando. Comparar

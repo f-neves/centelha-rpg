@@ -189,7 +189,7 @@ sem denominador definido. A medida é fechados sobre abertos no `Pendencias`, e 
 medida existe desde 08/09/2026: 120 abertos, 63 fechados, 4 parciais, 187 catalogados no
 total** · ela nasce inflada (inclui item já pronto e não riscado antes de a contagem existir), e
 isso está registrado junto dela. **A segunda medida é que vira sinal**, porque é a primeira que
-tem com o que comparar. → `Pendencias.md` **L52**.
+tem com o que comparar. → `docs/pendencias/L-simulacao-simultaneo.md` **L52**.
 
 ---
 

@@ -58,7 +58,7 @@ acompanhada" e não usou o segundo para ver o que vem junto de verdade. **A Ener
 vizinho obrigatório desta escrita, e é o que nenhuma das versões da placa menciona.**
 
 `CORRIGE 1`, e é a mesma oração nos **três** lugares onde a frase está hoje:
-`src/pages/mesa/combate.astro`, `docs/simulacao/caixa/progresso-79.md:101` e `Pendencias.md:4043`.
+`src/pages/mesa/combate.astro`, `docs/simulacao/caixa/progresso-79.md:101` e `docs/pendencias/L-simulacao-simultaneo.md:2749`.
 A quarta ocorrência (`jogador-novo-decisoes.md:2908`) é sua e diz só "independentes", sem o
 "marcadas", então está certa e não entra.
 
@@ -125,7 +125,7 @@ um, e o alcance que ela estendeu para a placa foi a decisão certa.
 1. "As seis caixas são independentes e marcadas por padrão": são seis independentes e **cinco**
    marcadas (`rs-log`, "apagar o registro", nasce desmarcada). E "não faz mais nada" omite a
    **Energia**, que é escrita no mesmo `if` e é o único vizinho obrigatório desta escrita. Está
-   nos três lugares: a placa, o `progresso-79.md:101` e o `Pendencias.md:4043`. A contagem errada
+   nos três lugares: a placa, o `progresso-79.md:101` e o `docs/pendencias/L-simulacao-simultaneo.md:2749`. A contagem errada
    começou comigo.
 2. A ressalva nova diz que o risco "não é" o que a primeira versão dizia. Cinco itens dão um caso
    de item menor e zero de item fechado, e 18 não foram olhados. A frase original é um limite de

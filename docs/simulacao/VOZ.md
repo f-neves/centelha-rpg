@@ -278,7 +278,7 @@ etapa que espera por elas.
 
 1. **A barra de comando** (item 1 do pedido de 10/09) · **FECHADA em 10/09/2026, rodada 30,
    veredito SEGUE (`30-revisora.md`, sha `f1f713d`, verificado ancestral do `main` antes de
-   registrar).** Achados não bloqueantes da revisão, registrados em `Pendencias.md L62`: sem
+   registrar).** Achados não bloqueantes da revisão, registrados em `docs/pendencias/L-simulacao-simultaneo.md L62`: sem
    teste automatizado commitado (só o roteiro puppeteer avulso), e `mover` contra casa ocupada
    falha em silêncio total (comportamento herdado de `porNoMapa`, não regressão desta rodada).
    **Parado aqui por decisão do humano: ele usa a barra numa batalha antes do item 2 abrir.**
@@ -330,7 +330,7 @@ etapa que espera por elas.
    linha. Não sobrou escolha entre duas respostas defensáveis.
 
    **O que continua aberto e é de propósito:** o teste ficou em bancada avulsa e não entrou no
-   `test-grid.mjs` (`D32c`). É o `Pendencias.md` `L62` item 1, que o humano deixou fora de escopo
+   `test-grid.mjs` (`D32c`). É o `docs/pendencias/L-simulacao-simultaneo.md` `L62` item 1, que o humano deixou fora de escopo
    quando a barra abriu.
 3. **A captura de áudio sobre a barra** (item 3), só depois dos dois anteriores fechados: botão de
    segurar para falar, preenchendo o mesmo campo, com o mesmo parser e a mesma execução · não é
@@ -357,7 +357,7 @@ etapa que espera por elas.
    erro. Conserto: um `HEAD` no modelo antes de entregar ao Worker.
 
    **E a moldura desse conserto tem buraco, achado pela Revisora e ESCALADO, não corrigido.** →
-   `Pendencias.md` `L71`.
+   `docs/pendencias/L-simulacao-simultaneo.md` `L71`.
 
    **O que NÃO foi provado ao vivo, e fica escrito porque leitura não é execução:** os dois fluxos de
    ordem do `mover` falado (falar e clicar, clicar e falar) e o cancelamento por `Esc` de um comando

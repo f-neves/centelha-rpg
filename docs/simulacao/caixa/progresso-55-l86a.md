@@ -200,7 +200,7 @@ Sinal de vida da Executora. Uma linha por etapa pequena, hora real (`date +%H:%M
 - 13:13 · Correção do Arquiteto: o `tipo: "padrao"` do `maos-sobre-a-multidao`
   em `efeitos.json` não é dado autorado contra um combinado frouxo, é dado
   DESATUALIZADO. O humano decidiu em 12/09 "1 PV por nível, a mesma conta do
-  `acelerar-a-cura`" (`Pendencias.md`, L86), e essa decisão nunca foi escrita
+  `acelerar-a-cura`" (`docs/pendencias/L-simulacao-simultaneo.md`, L86), e essa decisão nunca foi escrita
   no JSON. Não muda nada em `mao-firme` nem no escopo desta rodada
   (`maos-sobre-a-multidao` continua fora, agora só pelo motivo que já valia:
   zona não tem caminho de resolução nenhum). Corrigi só o TEXTO de duas

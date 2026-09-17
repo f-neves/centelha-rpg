@@ -12,7 +12,7 @@ Arquivo de sinal de vida (CONTRATO-REVISORA §6). Uma linha por etapa fechada, n
   citações para o limbo); (3) confirmar que `(citação histórica)` só cala a citação marcada, não
   a linha inteira; (4) repetir pelo menos um controle negativo (item aberto continua acusando).
 - 08:09 · risco 3 (a marca): inseri uma segunda citação de propósito, quebrada, na MESMA linha
-  do marcador histórico (`Pendencias.md:3737`), logo DEPOIS de `(citação histórica)`. Rodei
+  do marcador histórico (`docs/pendencias/L-simulacao-simultaneo.md:2443`), logo DEPOIS de `(citação histórica)`. Rodei
   `node scripts/test-procedencia.mjs`: acendeu só a minha citação nova (`grid.astro:9999  âncora
   \`cenaLembranca\` não está lá`), a original marcada continuou muda. Revertido imediatamente,
   `git status`/`git diff --stat` limpos.
@@ -27,10 +27,10 @@ Arquivo de sinal de vida (CONTRATO-REVISORA §6). Uma linha por etapa fechada, n
   dentro de um COMENTÁRIO em `4591`, fora da janela do `grid.astro:4563` citado): confirmado, as
   duas apodreceram no fechamento, não antes.
 - 08:10 · risco 4 (controle negativo): não repeti o mesmo caso da Executora, escolhi outro.
-  Quebrei `Pendencias.md:4387` (`L77`, item ABERTO, `grid.astro:3364`→`9999`) e confirmei o
+  Quebrei `docs/pendencias/L-simulacao-simultaneo.md:3093` (`L77`, item ABERTO, `grid.astro:3364`→`9999`) e confirmei o
   portão acender; revertido, `git status`/`git diff --stat` limpos, verde de novo (148/1).
 - 08:11 · risco 1 (amostra de conserto com âncora repetida): `const cd = somarCondicoes` existe
-  duas vezes em `grid.astro` (9600 e 10733). O conserto em `Pendencias.md:1404` ("a leitura na
+  duas vezes em `grid.astro` (9600 e 10733). O conserto em `docs/pendencias/L-simulacao-simultaneo.md:110` ("a leitura na
   folha do lance") aponta para `9600`; li o código ao redor (9590-9601, dentro da função que
   clona `RESUMO` para a folha) e bate com a descrição, não é a ocorrência do lado do mestre
   (10733). D41a (`switch`→`if`/`else`) também confirmado lendo `grid.astro:7415-7421`: é uma

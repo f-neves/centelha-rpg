@@ -365,12 +365,12 @@ capítulo, ou dois lugares do código discordam entre si). "Mesa" = `grid.astro`
 | Gate de Perfuração (L111-118) | **parcial na mesa**: a função existe (`gatePerfuracaoAbre`, `calc.ts:131-135`) e a folha só **escreve** "gate N" (`grid.astro:7504`; `combate.astro:1926`); ninguém lê o `perf` da arma na resolução. **Presente na bancada** (`lib-tempo.mjs:329-336`) |
 | Couraça de Porte (+2/+4/+7/+10; perfuração natural 1/2/3) (L120-136) | **ausente**: busca por `coura[cç]a|perfuracaoNatural` em `src/lib`, `src/pages/mesa` e `scripts/gen-monsters.mjs`: nada. **NÃO ENCONTREI** o número embutido na Absorção do bestiário (o gerador não o calcula) |
 | Quase-Acerto (L142-144) | ver 7.3 |
-| Esquivar **ou** Bloquear, a melhor das duas; Defesa da arma e escudo no Bloqueio (L146-153) | **divergente**: a resolução usa **só a Esquiva** (`combate-resumo.ts:86-87` → `RESUMO.defesa` → `grid.astro:7469-7470`). `mesa-ficha.ts:84` calcula `defBloqueio` **sem** a Defesa da arma nem o escudo, e a mesa não a usa. O escudo entra só pela penalidade (`combate-resumo.ts:53`). A bancada tem uma Defesa só e `usarDefesaArma: false` (`lib-tempo.mjs:43-46, 90`). `Pendencias.md` K14 e K25 |
+| Esquivar **ou** Bloquear, a melhor das duas; Defesa da arma e escudo no Bloqueio (L146-153) | **divergente**: a resolução usa **só a Esquiva** (`combate-resumo.ts:86-87` → `RESUMO.defesa` → `grid.astro:7469-7470`). `mesa-ficha.ts:84` calcula `defBloqueio` **sem** a Defesa da arma nem o escudo, e a mesa não a usa. O escudo entra só pela penalidade (`combate-resumo.ts:53`). A bancada tem uma Defesa só e `usarDefesaArma: false` (`lib-tempo.mjs:43-46, 90`). `docs/pendencias/K-combate-linha-do-tempo.md` K14 e K25 |
 | Projéteis rápidos: só Esquiva ou escudo hábil (L155-164) | **ausente na resolução**: o campo `habilProjetil` existe no catálogo e só a ficha o lê (`ficha-engine.ts:739, 755, 1552`) |
 | Força e porte: quando a guarda não segura (L166-175) | **ausente no motor**: `regras.json:953` `bloqueioLimite` é lido só por `mesa/referencia.astro:39` (página de consulta) |
 | Contra área, sair: Dif 5 + 5×metros, dobro para nada (L177-184) | **presente** nas Artes (`oferecerSaida`, `artes-grid-mesa.ts:1268-1332`) |
 | Deslocamento de Batalha = 2 + (Des+Atl)/4 (L190) | **presente** (`calc.ts:145-168`; `combate-resumo.ts:116-123`; bestiário por `deslocamento-bestiario.json`) |
-| O primeiro Tick de movimento é de graça durante outra ação; além disso cobra Tick (L192-193) | **divergente/parcial**: o Grid **não cobra** movimento em Preparo nem livre (`cobrarDeslocamento` só na Recuperação, `grid.astro:5853-5856`), e não limita a um Tick grátis. `Pendencias.md` K28: "o Grid não cobra o passo grátis, só mostra ao arrastar" (decisão de 21/08) |
+| O primeiro Tick de movimento é de graça durante outra ação; além disso cobra Tick (L192-193) | **divergente/parcial**: o Grid **não cobra** movimento em Preparo nem livre (`cobrarDeslocamento` só na Recuperação, `grid.astro:5853-5856`), e não limita a um Tick grátis. `docs/pendencias/K-combate-linha-do-tempo.md` K28: "o Grid não cobra o passo grátis, só mostra ao arrastar" (decisão de 21/08) |
 | Corrida: Velocidade 3, Defesa −4, Arranque 3 Ticks (L205-221) | **parcial**: o passo de Arranque entra no simultâneo (`passoNoModo`, `grid.astro:4882-4891`); a condição `correndo` (defesa −4, `condicoes.json`) tem de ser posta à mão; **ninguém a aplica sozinho** (`Combate_Simultaneo.md` §3.2 item 3) |
 | Investida: +1d6 de dano, −2 de Defesa (L223-237) | **ausente na aplicação**: `regras.json` `combate.movimento.investida` (L2331) e a condição `investindo` existem; nenhum lugar de `grid.astro` soma o dado ou a penalidade. A travessia do Golpe exige `modo === 'corrida'`, não investida (`combate-tempo.ts:765-777`) |
 | Salto (L239-249) | fora do combate; fórmulas em `calc.ts:162-167` |
@@ -388,7 +388,7 @@ capítulo, ou dois lugares do código discordam entre si). "Mesa" = `grid.astro`
 | Regra publicada | Estado no código |
 |---|---|
 | Esquiva = (Des+Esquiva)×2 + Centelha + Esp (L66) | **presente** (`calc.ts:37-40`) |
-| Bloqueio = (Des+Bloqueio)×2 + Centelha + Esp **+ defesa da arma/escudo** (L67) | **divergente**: `mesa-ficha.ts:84` sem arma nem escudo; a ficha soma arma **e** escudo (`Pendencias.md` K25 cita `ficha-engine.ts:1467`); a mesa não usa o Bloqueio em resolução alguma |
+| Bloqueio = (Des+Bloqueio)×2 + Centelha + Esp **+ defesa da arma/escudo** (L67) | **divergente**: `mesa-ficha.ts:84` sem arma nem escudo; a ficha soma arma **e** escudo (`docs/pendencias/K-combate-linha-do-tempo.md` K25 cita `ficha-engine.ts:1467`); a mesa não usa o Bloqueio em resolução alguma |
 | Defesa Social (L73-75) | **presente** na conta (`calc.ts:48-53`); na mesa aparece como número (`combate.astro:1669`) e o diálogo de ação tem o tipo `social` (L1979) sem comparar total com Defesa |
 | Defesa Mental (L79-81) | **presente** na conta (`calc.ts:42-46`; `combate-resumo.ts:92-97`); no Grid é só mostrada (`grid.astro:7502`) |
 | Centelha +1 em cada defesa e no ataque (L60) | **presente** (`regras.json:670, 696`; `calc.ts:39, 56-59`) |
@@ -464,7 +464,7 @@ elemento, conjuração composta, ritual e guardar feitiço estão ausentes.
 Não é divergência de código, é o capítulo atrasado; conta para a simulação porque "regra
 publicada" e "regra do motor" já não são a mesma coisa: P/G/R (`regras.json:2354`), escada (L2390),
 rajada (L2401), dupla (L2419), abortar (L2441), Recuperação paga (L2433), golpe adiado (L2286),
-simultâneo inteiro (L2247-2285). `Pendencias.md` K5 lista a fase "4 · capítulo IX" como a única
+simultâneo inteiro (L2247-2285). `docs/pendencias/K-combate-linha-do-tempo.md` K5 lista a fase "4 · capítulo IX" como a única
 que falta, esperando K12 e K17.
 
 ---
@@ -551,7 +551,7 @@ que falta, esperando K12 e K17.
   Ou seja: o avanço vazio custa cerca de **20× menos** que a espera fixa da suíte sugeria, e uma
   batalha de 37 Ticks com dez perseguidores custa da ordem de **4 segundos** só de avanços. A escrita
   mais cara é a reescrita do `jsonb` do registro da arena, uma por linha de log, que é a pendência
-  I2 do `Pendencias.md`.
+  I2 do `docs/pendencias/I-mesa-tempo-real.md`.
 - **Custo de repintura por ação** (o que limita o Grid como motor): medido em
   `Auditoria_Tecnica.md` §2.2 (L204-235) e cercado por `TETOS` em `test-grid.mjs:46-60`.
 

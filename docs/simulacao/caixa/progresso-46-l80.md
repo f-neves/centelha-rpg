@@ -63,7 +63,7 @@ não só por item), no instante em que ela fecha, hora lida da máquina (`date +
   adicionada (varredura no diff inteiro dos dez). Indo para a parte 3: o `ALVOS`
   ampliado, com o controle vermelho-antes/verde-depois.
 - 17:17 · PARTE 3: `ALVOS` de `scripts/test-procedencia.mjs` ampliado de 2 para 12
-  documentos (`ESTADO.md`/`Pendencias.md` originais + os dez do L80). CONTROLE
+  documentos (`ESTADO.md`/`docs/pendencias/L-simulacao-simultaneo.md` originais + os dez do L80). CONTROLE
   OBRIGATÓRIO feito com `git stash` (não achei "o reapontador" como script separado
   em `scripts/`, só o próprio `test-procedencia.mjs`; escalando essa dúvida ao
   Arquiteto antes de fechar a parte): stashei os dez documentos, ampliei o `ALVOS`,

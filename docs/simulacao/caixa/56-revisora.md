@@ -27,7 +27,7 @@ código revisado; `819f0d7` é o commit de fora que o `TOPO` aponta.
 `Grep` em `artes-grid-mesa.ts` por "ATIVOS.push": uma ocorrência só, linha 1524, exata com a
 citação corrigida (1515 → 1524). Fui também ver o padrão que `test-procedencia.mjs` exige de uma
 citação formal: o formato `arquivo.ts:linha`. A outra menção a "ATIVOS.push" no mesmo documento
-(`Pendencias.md:2701`, dentro de "`gravarEfeito` (`:1324`, `ATIVOS.push`)") não tem esse formato
+(`docs/pendencias/L-simulacao-simultaneo.md:1407`, dentro de "`gravarEfeito` (`:1324`, `ATIVOS.push`)") não tem esse formato
 (o `:1324` não tem arquivo antes do dois-pontos), então não é uma segunda citação formal e não
 colide com a corrigida. Unicidade confirmada por mim, de forma independente. `(citação
 histórica)` teria sido a escolha ERRADA aqui: essa marca exime uma citação de verificação porque

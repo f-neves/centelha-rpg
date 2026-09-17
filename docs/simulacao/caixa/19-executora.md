@@ -49,7 +49,7 @@ fora do commit avisado.
 
 | arquivo | o que mudou nele |
 |---|---|
-| `Pendencias.md` | reancora as 4 citações de código do L39 para as linhas novas (`artes-grid-mesa.ts:458`/`:1836`, `artes-grid.ts:1677`, `artes-grid-ui.ts:47`, `gen-grid-artes.mjs:410`/`:423`) e a de `artes-grid-mesa.ts:1960→1964`, que tinha envelhecido por deslocamento de linha; marca os quatro blocos CLASSIFICA/EXIBE, o RELATÓRIO e o VALIDADOR como fechados |
+| `docs/pendencias/L-simulacao-simultaneo.md` | reancora as 4 citações de código do L39 para as linhas novas (`artes-grid-mesa.ts:458`/`:1836`, `artes-grid.ts:1677`, `artes-grid-ui.ts:47`, `gen-grid-artes.mjs:410`/`:423`) e a de `artes-grid-mesa.ts:1960→1964`, que tinha envelhecido por deslocamento de linha; marca os quatro blocos CLASSIFICA/EXIBE, o RELATÓRIO e o VALIDADOR como fechados |
 | `scripts/gen-grid-artes.mjs` | `CONDICAO_APARENTE` (novo conjunto com os 9 ids) move o valor de `condicao` para `condicaoAparente` em `gridDoEfeito`; o relatório do `--check` ganha a contagem "evocam condição sem aplicar"; o `--lista` mostra `condicaoAparente` entre parênteses |
 | `scripts/rodada.mjs` | corrige o caminho hardcoded do worktree da Revisora (`centelha-revisora` → `centelha-techlead-revisora`), achado ao abrir esta rodada |
 | `scripts/test-arte-na-mesa.mjs` | dois cenários novos: `grid.condicaoAparente` sozinho não aciona `porCondicao`, e o par com `grid.condicao` aciona normalmente |
@@ -103,7 +103,7 @@ Decisão sem custo escrito é decisão pela metade.
 
 ## ONDE LER
 
-- `Pendencias.md`, L39 (a seção inteira, com os 16 pontos do mapa e as notas
+- `docs/pendencias/L-simulacao-simultaneo.md`, L39 (a seção inteira, com os 16 pontos do mapa e as notas
   que fechei nesta rodada)
 - `docs/simulacao/caixa/18-revisora.md` · o veredito SEGUE que fechou o
   Interpor, imediatamente antes desta frente abrir

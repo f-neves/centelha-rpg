@@ -16,7 +16,7 @@ Reproduzi o 66 total (65 apontando para `grid.astro`, 1 para `mesa-mock.mjs`) ro
 o portão real no commit de código puro (`5a6bb93`, antes do reaponte): `EXIT=1`, 66 citações
 envelhecidas, batendo exato com a primeira medida da Executora.
 
-Não aceitei a tabela dos "6 verdes por âncora fraca" (a entrada do L65 em `Pendencias.md`) só
+Não aceitei a tabela dos "6 verdes por âncora fraca" (a entrada do L65 em `docs/pendencias/L-simulacao-simultaneo.md`) só
 porque veio de uma conta feita à mão. Tracei o primeiro caso a fundo: `rolarAcerto`, endereço
 velho `grid.astro:10535`. Achei a função de verdade em `10441` no commit ANTES do L70
 (`8ba3cbb`), e confirmei que a citação `10535` não apontava para a função, apontava para um

@@ -18,7 +18,7 @@ Três regras que o mantêm útil:
 ## A frente de simulação (Grid) está ENCERRADA
 
 **Decidido em 06/09/2026: a segunda bateria (a grade de 112 células) não acontece.**
-Nove das quinze bandeiras de regra (`Pendencias.md` **L25**) são regra a escrever, e seis
+Nove das quinze bandeiras de regra (`docs/pendencias/L-simulacao-simultaneo.md` **L25**) são regra a escrever, e seis
 delas (`n1` a `n6`) são o núcleo do Tick inteiro, sem nenhuma rodando isolada: comparar
 regras nesse estado custaria mais do que a frente inteira produziu, respondendo uma
 pergunta que ninguém fez. O `L25` deixa de ser pré-requisito de bateria e passa a ser o
@@ -50,7 +50,7 @@ das quinze**, porque a segunda bateria não acontece e ele deixou de ser o alvo.
 - **Provado na Vida, não só no log**: `scripts/test-bandeiras-mesa.mjs`, asserta em
   `__ESPELHO.pvDe`.
 
-→ estado técnico completo, com os shas: `Pendencias.md` **L22**, **L25**;
+→ estado técnico completo, com os shas: `docs/pendencias/L-simulacao-simultaneo.md` **L22**, **L25**;
 `src/data/regras.json`, campo `bandeiras.notaEstado`.
 
 **`teto6` continua desligado, e o que o precede é trabalho, não mais pergunta.** A frase que
@@ -110,12 +110,12 @@ Não é retrofit. → `CLAUDE.md`.
 ## A fase corrente do Grid (fora da simulação)
 
 **Fase 2 · o tabuleiro como experiência completa de combate: FECHADA, 6/6, desde 07/09/2026.**
-→ `Pendencias.md` **L34** §6.
+→ `docs/pendencias/L-simulacao-simultaneo.md` **L34** §6.
 
 **Fase 2.5 · FECHADA, engenharia completa, em 10/09/2026.** Lote 1 (levantamento), lote 2 item
 1 (resíduo do relógio) e lote 2 item 2 (a tela da lembrança, construída pelo humano em
 `5af06f8`, reverificada com o ensaio dos três sentidos) fecharam, veredito SEGUE nos três. →
-`Pendencias.md` **L32**/**L33**. **O que resta não é código:** rodar a migração 33 em produção,
+`docs/pendencias/L-simulacao-simultaneo.md` **L32**/**L33**. **O que resta não é código:** rodar a migração 33 em produção,
 decisão do humano.
 
 **Fase 3 · não começou e não começa** até a mesa reavaliar o plano. Fica congelado mesmo com
@@ -233,7 +233,7 @@ passagem vira linha no `Pendencias.md` e para ali.
   12/09/2026 e não é reabertura dela. Hoje é o mestre, e os 398.476 gestos medidos (34,0% do
   trabalho dele) são todos dele; a outra leitura é cada jogador informar o total na ficha dele, o
   que não muda o dado na mão nem a conta e tira trabalho de quem é um passando para quem é muitos.
-  Isso mora na fase 5, que não começou. → `Pendencias.md` **L29**, item 1.
+  Isso mora na fase 5, que não começou. → `docs/pendencias/L-simulacao-simultaneo.md` **L29**, item 1.
 - **A migração 33 espera a fila da aba Combate**, e não mais a mão do humano no SQL Editor. Ver a
   decisão abaixo, que diz o que a trava e por quê.
 
@@ -259,14 +259,14 @@ Pelo NOME, porque número de opção depende de qual lista se está lendo.
 - **A FURTIVIDADE DAS CRIATURAS É POR PORTE E CATEGORIA (Saída B), não por criatura (Saída A).**
   Uma tabela pequena sobre a Destreza, forma da casa (é a mesma do `COURACA` por porte). O preço
   assumido: assassino e camponês da mesma espécie ficam iguais até virar exceção escrita. →
-  `Pendencias.md` **L35**, que ainda mostra as duas em aberto e precisa ser marcado com esta
+  `docs/pendencias/L-simulacao-simultaneo.md` **L35**, que ainda mostra as duas em aberto e precisa ser marcado com esta
   decisão.
 - **PERGUNTA DE REGRA DE JOGO VEM EM LISTA ÚNICA, não item a item** · quando uma frente
   levantar várias, o Arquiteto junta e traz todas de uma vez.
 - **O DADO É ROLADO PELOS JOGADORES E PELO MESTRE, E O QUE CHEGA AO GRID É O TOTAL** (12/09/2026).
   Mata as duas formas do modo `site`: a folha aceitando as faces (o `roladaManual` deixa de ser a
   direção) e o site rolando para a mesa confirmar. Somar é da mesa, e o dado fica na mão. →
-  `Pendencias.md` **L29**, item 1, com o que isso faz com os tetos publicados lá.
+  `docs/pendencias/L-simulacao-simultaneo.md` **L29**, item 1, com o que isso faz com os tetos publicados lá.
 - **A SEPARAÇÃO DE SENTINELA E MAGNITUDE VAI ATÉ A SEPARAÇÃO, E PARA ALI** (12/09/2026): o Grid
   continua não APLICANDO `velocidade` no relógio (exibir é outra coisa, e ele exibe), e `teto6`
   continua desligado, agora com asserção que impede ligá-lo às cegas. → **L64**, fechado.

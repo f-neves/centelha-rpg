@@ -54,7 +54,7 @@ conferia o reaponte, não desta frente).
 
 | arquivo | quem | o que mudou nele |
 |---|---|---|
-| `Pendencias.md` | Arquiteto | reaponta as citações a `grid.astro` deslocadas pelo `e22b4b3`; abre o `L72` (o portão de procedência só confere item ABERTO, e cinco citações de itens já fechados apodreceram sem acender nada) |
+| `docs/pendencias/L-simulacao-simultaneo.md` | Arquiteto | reaponta as citações a `grid.astro` deslocadas pelo `e22b4b3`; abre o `L72` (o portão de procedência só confere item ABERTO, e cinco citações de itens já fechados apodreceram sem acender nada) |
 | `docs/simulacao/CATALOGO.md` | Arquiteto | registra a forma do achado do `L72` |
 | `docs/simulacao/ESTADO.md` | Arquiteto | mesma reaponte, 8 citações |
 | `docs/simulacao/VOZ.md` | Arquiteto | mesma reaponte (10 citações do §10, que cita `grid.astro` dezoito vezes) e o parágrafo novo no `L65` sobre a ORDEM do reaponte (rodar o mapa do diff duas vezes em cima de documentos já deslocados dobra o deslocamento em silêncio; o conserto é devolver ao `HEAD` e reapontar uma vez só, com o diff completo) |

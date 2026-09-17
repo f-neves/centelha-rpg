@@ -61,7 +61,7 @@ Cada número publicado nesta rodada, com o arquivo e a linha de onde ele sai.
 | número | o que é | de onde sai |
 |---|---|---|
 | 30 | chamadas de `noChao(` em `grid.astro`, julgadas uma a uma. O resto migrou para `foraDaFila` (a contagem exata de quantas, por linha/ocorrência/ponto lógico, discutida e reconciliada em `progresso-50-l70.md`) | `grid.astro`: hoje sobram 7 linhas / 8 ocorrências / 6 pontos lógicos em `noChao` (`4747` a definição, `5713` o campo `chao:`, `6828` o arrasto no Simultâneo, `7158`/`7172`×2 a definição de `noChao`/`podeDividir`, `8670` `destinoDoGolpe`, `8730` `CAIDOS_AO_ABRIR`) |
-| 5 | Artes de `grid.forma: movimento` que declaram `grid.condicao: "caido"` (Empurrão, Onda, Maremoto, Onde é Embaixo, Tromba), medidas pelo Arquiteto em `src/data/efeitos.json` | não medi de novo; herdado da medição dele, registrado em `Pendencias.md` L84 |
+| 5 | Artes de `grid.forma: movimento` que declaram `grid.condicao: "caido"` (Empurrão, Onda, Maremoto, Onde é Embaixo, Tromba), medidas pelo Arquiteto em `src/data/efeitos.json` | não medi de novo; herdado da medição dele, registrado em `docs/pendencias/L-simulacao-simultaneo.md` L84 |
 | 12 | asserções em `test-l84-caidofila-mesa.mjs` | saída do próprio arquivo, `npm run smoke` |
 | 17 | asserções em `test-l84-levantar-mesa.mjs` | saída do próprio arquivo, `npm run smoke` |
 | 15 | asserções em `test-l70-empurrao.mjs` (10 de `empurrarAteLivre`, eixo 1 desta rodada, mais 5 novas de `condicoesDoEmpurrao`, eixo 5) | saída do próprio arquivo, `npm run validate` |
@@ -102,14 +102,14 @@ humano** e não da revisora.
   escreve coordenada, então nenhum é pego pela conferência de ocupação do
   L70. Curar um inconsciente que está debaixo de uma peça de pé põe dois
   corpos no mesmo hexágono sem nenhuma escrita de posição acontecer.
-- **`Pendencias.md` L83** (do humano): a disputa (Força ou Destreza) + Briga
+- **`docs/pendencias/L-simulacao-simultaneo.md` L83** (do humano): a disputa (Força ou Destreza) + Briga
   para ficar de pé NO MESMO hexágono, com −2 para quem está deitado. Fora de
   escopo desta rodada por instrução explícita; `levantarDoChao` recusa com o
   motivo em vez de inventar uma rolagem.
-- **`Pendencias.md` L85** (do Arquiteto): a distância do empurrão não segue
+- **`docs/pendencias/L-simulacao-simultaneo.md` L85** (do Arquiteto): a distância do empurrão não segue
   a régua que os dados definem (FAH/FAA de `empurrao-elemental`). Não
   toquei, por instrução explícita.
-- **`Pendencias.md` L86, L87, L88** (do Arquiteto, abertos durante esta
+- **`docs/pendencias/L-simulacao-simultaneo.md` L86, L87, L88** (do Arquiteto, abertos durante esta
   rodada): sete Artes de cura que não curam, duas escritas de condição que
   não repintam, e o L88 (detector no cliente) que depende do L87. Nenhum é
   meu nesta rodada.
@@ -130,6 +130,6 @@ fazem sentido.
   achados do Arquiteto durante a espera de reponte (as cinco Artes e o
   L85), o eixo 3, o bug do `levantarDoChao` achado pelo próprio teste e a
   correção seguinte do Arquiteto (L88), e o eixo 5 fechando a rodada.
-- `Pendencias.md` L83 a L88 · o mapa de pendências do Arquiteto, com a
+- `docs/pendencias/L-simulacao-simultaneo.md` L83 a L88 · o mapa de pendências do Arquiteto, com a
   decisão do humano, os achados durante a rodada e os dois itens de fora de
   escopo (L83, L85) citados acima.

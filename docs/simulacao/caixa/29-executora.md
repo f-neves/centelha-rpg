@@ -40,7 +40,7 @@ documento da rodada; aqui é só o inventário.
 
 | arquivo | o que mudou nele |
 |---|---|
-| `Pendencias.md` | Arquiteto: fecha L50 com o veredito SEGUE da Revisora (fora desta rodada) |
+| `docs/pendencias/L-simulacao-simultaneo.md` | Arquiteto: fecha L50 com o veredito SEGUE da Revisora (fora desta rodada) |
 | `scripts/rodada.mjs` | **o item desta rodada**: TOPO por ancestralidade em vez de diferença (`calcularTopo`), e SHA/TOPO relidos e reescritos no `--enviar`, não congelados na abertura |
 
 ## O QUE ESTE RELATÓRIO AFIRMA
@@ -82,5 +82,5 @@ humano** e não da revisora.
 O documento principal desta rodada e as seções que importam, na ordem em que
 fazem sentido.
 
-- `Pendencias.md` · L61, item 2, o texto completo do defeito e as duas ocorrências
+- `docs/pendencias/L-simulacao-simultaneo.md` · L61, item 2, o texto completo do defeito e as duas ocorrências
 - `scripts/rodada.mjs` · a função `calcularTopo` nova, e o bloco `SHA E TOPO RELIDOS AGORA` dentro do `--enviar`

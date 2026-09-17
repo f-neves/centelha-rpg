@@ -85,7 +85,7 @@ O agregado desta rodada é `resultados/09-bmtlxp622.txt` (417 linhas, bateria
 | "as linhas de 6,2% a 8,1% da rodada 02 eram o caso extremo" | `09-bmtlw3e2r.txt` `R:191` e `R:192` | ✓ **confirmado por identidade aritmética**: o trabalho da mesa daquelas linhas (1.552.533 e 2.009.197) é exatamente `mestre + G × 228.332`, isto é, TODA declaração das duas facções paga em cliques. É a linha "as duas facções" desta rodada, com o mesmo número |
 
 **E uma afirmação que NÃO passou na conferência.** Ela é de mecanismo, não de
-número, e está na `09` §2.4 e no `Pendencias.md` L24:
+número, e está na `09` §2.4 e no `docs/pendencias/L-simulacao-simultaneo.md` L24:
 
 > "não é meio a meio, por uma razão do desenho da grade e não do jogo: em metade das
 > células o lado `b` anda com passo dobrado (`passoMult`, o eixo coprimo da §1), fica
@@ -136,7 +136,7 @@ se é erro de redação ou assimetria do harness.
 - **⚠ PRECISA DO HUMANO · quem declara o NPC na mesa.** Esta rodada mediu os dois
   cenários e a largura entre eles (0,3 ponto), então a pergunta deixou de travar
   conta nenhuma. Continua sendo escolha de uso da mesa, e não regra de jogo;
-- **o L25, L20, L22, L23 e L27**, no `Pendencias.md`, como antes.
+- **o L25, L20, L22, L23 e L27**, no `docs/pendencias/L-simulacao-simultaneo.md`, como antes.
 
 ## ONDE LER
 
@@ -149,4 +149,4 @@ se é erro de redação ou assimetria do harness.
    que exige a soma dos dois lados por tipo, e o `temLado` que separa "bateria velha
    não sabe o lado" de "repartição furada";
 4. `scripts/test-procedencia.mjs` · a conferência de linha citada;
-5. `Pendencias.md` · L24.
+5. `docs/pendencias/L-simulacao-simultaneo.md` · L24.

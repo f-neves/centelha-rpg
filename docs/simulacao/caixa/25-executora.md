@@ -75,13 +75,13 @@ resultado justo porque a fila NÃO anda com `?tick=`).
 |---|---|---|
 | D25a | corrigi o `combate.astro` direto, sem escalar, pela autorização explícita do TechLead na própria atribuição desta rodada | nenhum: a autorização já previa o custo de eu decidir sozinha, contanto que o achado ficasse escrito (está, acima) |
 | D25b | criei `?deslocafila=N` em vez de generalizar `?tick=` para também andar a fila | isso teria quebrado silenciosamente a prova do Simultâneo do achado 1, que depende de `?tick=` mover SÓ a arena. Separar os dois é mais parâmetro, mas nenhum dos dois mente sobre o que anda |
-| D25c | não toquei o parágrafo de `Pendencias.md` L33 que descreve a lacuna do P/G/R como aberta ("ninguém montou uma cena... lacuna de PROVA"), mesmo ela estando desatualizada pelo que fiz aqui: só corrigi os NÚMEROS DE LINHA que test-procedencia.mjs cobra, não o conteúdo. Registrar que a lacuna fechou é decisão do TechLead, não minha | o parágrafo fica descrevendo um estado que este mesmo commit já resolve, até o TechLead atualizar |
+| D25c | não toquei o parágrafo de `docs/pendencias/L-simulacao-simultaneo.md` L33 que descreve a lacuna do P/G/R como aberta ("ninguém montou uma cena... lacuna de PROVA"), mesmo ela estando desatualizada pelo que fiz aqui: só corrigi os NÚMEROS DE LINHA que test-procedencia.mjs cobra, não o conteúdo. Registrar que a lacuna fechou é decisão do TechLead, não minha | o parágrafo fica descrevendo um estado que este mesmo commit já resolve, até o TechLead atualizar |
 
 ## O QUE FICOU EM ABERTO
 
 - Item 2 do lote 2 (a tela da lembrança, que destrava a migração 33) não foi
   tocado nesta rodada, por ser o próximo item da ordem, não este.
-- `Pendencias.md` L33 (ver D25c).
+- `docs/pendencias/L-simulacao-simultaneo.md` L33 (ver D25c).
 
 ## ONDE LER
 

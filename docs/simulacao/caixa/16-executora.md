@@ -16,7 +16,7 @@ trabalho (`git status` local: `ahead 1`, sem divergência).
 **Nota sobre onde o commit mora agora:** por causa da instabilidade descrita
 abaixo, o commit foi empurrado num ramo descartável (`interpor/e2e-golpe-
 adiado`) para o CI julgar antes de eu declarar a suíte verde, seguindo a
-mesma técnica já registrada em `Pendencias.md:2603-2615` (a falsificação 3 do
+mesma técnica já registrada em `docs/pendencias/L-simulacao-simultaneo.md:1309-1321` (a falsificação 3 do
 L40). O ramo compartilha a história com `main` (é um fast-forward simples,
 sem merge), então o commit é o mesmo `SHA` de cima em qualquer um dos dois; a
 Revisora pode dar checkout nele direto, e o ramo será apagado depois de o
@@ -76,7 +76,7 @@ resultado ser lido.
 
 ## ONDE LER
 
-- `Pendencias.md`, L34 §6 · a régua fechada
+- `docs/pendencias/L-simulacao-simultaneo.md`, L34 §6 · a régua fechada
 - `docs/simulacao/caixa/15-revisora.md` · o pedido original desta prova
 - `scripts/test-interpor-mesa.mjs` · o teste inteiro
 - `scripts/mesa-mock.mjs` · a cena `?cena=interpor`

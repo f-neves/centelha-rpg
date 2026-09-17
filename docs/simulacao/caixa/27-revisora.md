@@ -61,7 +61,7 @@ idênticos aos do primeiro verde. `git status` limpo nos três momentos em que c
 - `resolverAtaque` é o ponto único que recusa a lembrança como alvo, e cobre os dois
   caminhos (mira e arrasto): `if (alvo?.lembranca) { uiErro(...); return; }`
   (`grid.astro:7902-7907`) — bate com "não declara golpe, não move até ela, não mira nela".
-- As três regras de visual do caso D (`Pendencias.md:1992-1998`) contra o CSS
+- As três regras de visual do caso D (`docs/pendencias/L-simulacao-simultaneo.md:698-704`) contra o CSS
   (`grid.astro:1666-1676`): grayscale + contorno pontilhado + nome itálico + selo `◌` no
   canto (não é só opacidade, bate com a regra 1); Vida da fotografia confirmada pelo teste
   (regra 2); recusa de alvo confirmada pelo teste e pelo código (regra 3). As três passam
@@ -96,7 +96,7 @@ exposto a um `token_visao` que possa estar errado; (2) reforçar exigiria uma se
 criatura no mock com token vivo numa casa diferente de `vistos`, que é escopo de bancada
 novo, não desta reverificação; (3) nada no código sob teste mudou nesta rodada — é uma
 lacuna de cobertura que já existia desde `5af06f8` (07/09), não algo que este lote
-introduziu. Sugestão de registro: `Pendencias.md`, junto de L32/L33, uma linha dizendo que
+introduziu. Sugestão de registro: `docs/pendencias/L-simulacao-simultaneo.md`, junto de L32/L33, uma linha dizendo que
 o par completo de posições (viva ≠ lembrada) só será provado quando/se o mock ganhar essa
 segunda criatura — decisão do Arquiteto se vale abrir agora ou esperar a migração rodar.
 

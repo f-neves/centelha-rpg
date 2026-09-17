@@ -113,5 +113,5 @@ fazem sentido.
   achados antes de qualquer código), a decisão do Arquiteto sobre as duas
   campainhas (`avisarAgora` × `avisarMudancas`, e por que não são
   alternativas), o eixo único escrito, e a bateria completa.
-- `Pendencias.md` L87 · o item original, com a medição e a decisão do
+- `docs/pendencias/L-simulacao-simultaneo.md` L87 · o item original, com a medição e a decisão do
   humano de virar rodada.

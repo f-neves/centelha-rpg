@@ -93,7 +93,7 @@ cena NÃO estão em nenhum script**: foram calculados com `node -e` sobre o
   duas perguntas para quem joga, e nenhuma se responde com código ou bateria ·
   *por que a mesa rola o dado na mão?* (vale 33,6% do trabalho) e *com que
   frequência há efeito de chão ativo numa cena?* (decide se o piso de 11,4% vale
-  como medido). Ver `Pendencias.md`, L26;
+  como medido). Ver `docs/pendencias/L-simulacao-simultaneo.md`, L26;
 - **o furo de procedência acima**: dois grupos de números publicados saem de
   `node -e` avulso e não de script versionado;
 - **o L25**: nenhuma das quinze bandeiras é lida por caminho de produção nenhum.
@@ -101,7 +101,7 @@ cena NÃO estão em nenhum script**: foram calculados com `node -e` sobre o
   tela, sem quem lesse o perfil na hora de aplicar a regra. **É o maior achado da
   frente e o que eu mais gostaria que você conferisse**, porque ele é uma
   afirmação sobre ausência, e afirmação sobre ausência é a mais fácil de errar;
-- **o L20, L22, L23 e L24**, no `Pendencias.md`;
+- **o L20, L22, L23 e L24**, no `docs/pendencias/L-simulacao-simultaneo.md`;
 - **`centelha-revisora/CLAUDE.md` duplicado na raiz** (ver C4), que alguém pode
   apagar.
 

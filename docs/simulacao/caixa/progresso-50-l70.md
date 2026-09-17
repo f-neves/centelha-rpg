@@ -85,7 +85,7 @@ que ela fecha, hora lida da máquina (`date +%H:%M`).
 - 00:36 · ADENDO do Arquiteto: a resposta do humano chegou. (1) "Para na
   última casa livre" é EXATAMENTE o que `PARA_NA_ULTIMA_CASA_LIVRE = true` já
   fazia; nenhuma mudança de comportamento, só reescrevi o comentário para
-  dizer que é decisão do humano (`Pendencias.md` L83), não mais "resposta
+  dizer que é decisão do humano (`docs/pendencias/L-simulacao-simultaneo.md` L83), não mais "resposta
   provisória de hoje sem decisão". (2) "Quem apanha cai" fica de fora de
   propósito, adiada para a rodada 51 junto da separação `caido`/`inconsciente`
   na fila (`L84`, `NO_CHAO`, `grid.astro:7118`): documentei o motivo no
@@ -316,7 +316,7 @@ que ela fecha, hora lida da máquina (`date +%H:%M`).
   Maremoto, Onde é Embaixo, Tromba) aplicam `caido` ao alvo sem depender de
   colisão, e no código de ANTES desta rodada isso as tornava atordoamento de
   5 Ticks disfarçado, sem ninguém desenhar; a separação do L84 conserta as
-  cinco de graça. (2) `Pendencias.md` L85 (novo, medido pelo Arquiteto): a
+  cinco de graça. (2) `docs/pendencias/L-simulacao-simultaneo.md` L85 (novo, medido pelo Arquiteto): a
   distância do empurrão não segue a régua dos dados (FAH/FAA), e o `nivel`
   em `artes-grid-mesa.ts:1187` lê `escolhas['Alcance']` por falta de
   parâmetro "Força" nos efeitos, um terceiro defeito dentro do mesmo bloco.
@@ -345,7 +345,7 @@ que ela fecha, hora lida da máquina (`date +%H:%M`).
   `test-l84-caidofila-mesa.mjs`, `package.json`,
   `.github/workflows/validate.yml`. Não toquei nos 5 documentos que estavam
   em reponte no meio do caminho (`Grid_Mobile.md`, `CONJURACAO.md`,
-  `CONTEXTO.md`, `ESTADO.md`, `VOZ.md`) nem em `Pendencias.md` (L85 do
+  `CONTEXTO.md`, `ESTADO.md`, `VOZ.md`) nem em `docs/pendencias/L-simulacao-simultaneo.md` (L85 do
   Arquiteto). Próximo: eixo 3 (`acao: -2` em `condicoes.json` para `caido`).
 
 - 01:47 · EIXO 3 ESCRITO: `acao: -2` em `caido`, `src/data/condicoes.json`
@@ -365,7 +365,7 @@ que ela fecha, hora lida da máquina (`date +%H:%M`).
   `src/lib/hex.ts`, agora importada em `grid.astro`) e vai por `porNoMapa`
   (mesma conferência de ocupação do L70, mesmo `cobrarDeslocamento`, nenhum
   número novo). Sem vizinho livre, recusa com o motivo, sem inventar rolagem
-  (a disputa Força/Destreza + Briga é `Pendencias.md` L83, fora de escopo).
+  (a disputa Força/Destreza + Briga é `docs/pendencias/L-simulacao-simultaneo.md` L83, fora de escopo).
   Novo item de menu "⤒ Levantar", só em quem tem `caido`, para MESTRE ou dono
   da peça. Nome deliberadamente DIFERENTE do `levantar(gente)` já existente
   (o "acordar" de quem saiu da fila): comentário cruzado nos dois para não
@@ -397,7 +397,7 @@ que ela fecha, hora lida da máquina (`date +%H:%M`).
   caído-na-fila, levantar, simultâneo). `npm run validate`: único vermelho é
   o portão de procedência, esperado (38 citações movidas por esta edição, em
   `ESTADO.md`, `Pendencias.md`, `CONJURACAO.md`, `Grid_Mobile.md`, `VOZ.md`,
-  `CONTEXTO.md`; uma delas, `Pendencias.md:3783`, aponta para
+  `CONTEXTO.md`; uma delas, `docs/pendencias/L-simulacao-simultaneo.md:2489`, aponta para
   `mesa-mock.mjs:1118`, mas a CITAÇÃO mora em `Pendencias.md`, que não é meu
   para tocar, mesmo o alvo sendo meu arquivo). Não toquei em nenhum dos seis
   documentos do Arquiteto. Falta: eixo 5 (o empurrão aplicando `caido` a
@@ -406,7 +406,7 @@ que ela fecha, hora lida da máquina (`date +%H:%M`).
 - 02:01 · commit do eixo 4 BLOQUEADO pelo gancho de pre-commit (mesmo motivo
   do eixo 2: o `validate` inteiro roda, e o portão de procedência está
   vermelho pelas 38 citações acima). Mensagem enviada ao Arquiteto com a
-  contagem, os 6 documentos e a ressalva de `Pendencias.md:3783`. Indo
+  contagem, os 6 documentos e a ressalva de `docs/pendencias/L-simulacao-simultaneo.md:2489`. Indo
   escrever o eixo 5 por cima do código já pronto (só não commitado) enquanto
   espero o reponte, do mesmo jeito que fiz entre o eixo 2 e o eixo 3.
 

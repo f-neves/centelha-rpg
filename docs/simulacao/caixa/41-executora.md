@@ -54,7 +54,7 @@ Cada número publicado nesta rodada, com o arquivo e a linha de onde ele sai.
 | 77 | citações de código em itens FECHADOS do Pendencias.md, universo que o portão nunca conferia | `docs/simulacao/caixa/progresso-41-l72.md:14` |
 | 23 | dessas 77 com problema (15 quebradas + 8 sem âncora), uns 30% | `docs/simulacao/caixa/progresso-41-l72.md:18-25` |
 | 22 | consertadas à mão nesta rodada (21 por conta própria, 1 com o método do Arquiteto) | `docs/simulacao/caixa/progresso-41-l72.md:26` e `:51` |
-| 1 | citação que ficou com a marca `(citação histórica)`, em vez de reapontada | `Pendencias.md:3737` |
+| 1 | citação que ficou com a marca `(citação histórica)`, em vez de reapontada | `docs/pendencias/L-simulacao-simultaneo.md:2443` |
 | 148 | citações de código conferidas pela âncora, no estado final (ESTADO.md + Pendencias.md inteiro) | saída viva de `node scripts/test-procedencia.mjs` |
 
 Se um número foi calculado e não está num arquivo, o comando que o produz entra na
@@ -77,7 +77,7 @@ O que não foi resolvido, e por quê. Marcar explicitamente **o que precisa do
 humano** e não da revisora.
 
 - **Nada precisa do humano.** As duas linhas que precisavam de uma decisão que não era minha
-  para tomar (`Pendencias.md:1714` e `:3737`) já vieram resolvidas pelo Arquiteto nesta própria
+  para tomar (`docs/pendencias/L-simulacao-simultaneo.md:420` e `:3737`) já vieram resolvidas pelo Arquiteto nesta própria
   rodada, e estão aplicadas.
 - A marca `(citação histórica)` existe agora como mecanismo, mas só tem UM uso real no arquivo.
   Se aparecer um segundo caso (outro registro de "documento alheio disse X errado"), vale conferir
@@ -91,5 +91,5 @@ fazem sentido.
 - `docs/simulacao/caixa/progresso-41-l72.md` · a rodada inteira, do número medido (07:38) ao
   fecho (08:00)
 - `docs/simulacao/CATALOGO.md` · a entrada nova, "ÂNCORA MAIS PRÓXIMA É UMA REGRA SOBRE BYTES"
-- `Pendencias.md:3736-3741` · o L61, item 1, com a marca histórica e a correção viva lado a lado
+- `docs/pendencias/L-simulacao-simultaneo.md:2442-2447` · o L61, item 1, com a marca histórica e a correção viva lado a lado
 - `scripts/test-procedencia.mjs` · o bloco "A CITAÇÃO DE CÓDIGO QUE ENVELHECEU", com a marca nova

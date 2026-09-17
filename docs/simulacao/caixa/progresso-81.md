@@ -22,7 +22,7 @@ nenhum: era o "+" de uma barra), e é assim que a minha quarta tinha aparecido.
   (`combate.astro`, o `zPv` do Reiniciar), no tamanho do parágrafo do desfazer. Ela diz por que
   a porta é legítima (recomeço de cena, com relógio, condições e "fora de combate" na mesma
   passagem) e guarda a régua que a achou: varredura de comportamento pela ESCRITA, não pelo nome.
-- **02:14** · e o `L99` do `Pendencias.md` ganhou a correção junto, porque ele afirmava que as
+- **02:14** · e o `L99` do `docs/pendencias/L-simulacao-simultaneo.md` ganhou a correção junto, porque ele afirmava que as
   portas de interface estavam TODAS fechadas. Deixar a frase de pé seria manter no registro de
   itens abertos uma afirmação que a rodada 63 já falsificou.
 - **02:14** · item 3 FEITO: a conferência do `C-05` passou a nomear o Bram

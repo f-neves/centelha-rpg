@@ -46,7 +46,7 @@ documento da rodada; aqui é só o inventário.
 | `src/data/efeitos.json` | parâmetro `FAA` do `empurrao-elemental` vira `"(nível da Arte) × 4"` |
 | `scripts/test-l85-forca-empurrao.mjs` | novo: 27 asserções, Node puro |
 | `package.json` | `validate` ganha `node scripts/test-l85-forca-empurrao.mjs` |
-| `Pendencias.md` | L85 fechado; L94 (passar pelo espaço de outra criatura) e L95 (peso de verdade do bestiário) abertos pelo Arquiteto |
+| `docs/pendencias/L-simulacao-simultaneo.md` | L85 fechado; L94 (passar pelo espaço de outra criatura) e L95 (peso de verdade do bestiário) abertos pelo Arquiteto |
 | `docs/simulacao/CATALOGO.md` | formas novas registradas pelo Arquiteto |
 
 ## O QUE ESTE RELATÓRIO AFIRMA
@@ -112,5 +112,5 @@ fazem sentido.
 - `docs/simulacao/caixa/progresso-54-l85.md` · sinal de vida completo da
   rodada, com o levantamento antes do código, a correção do Acerto Arcano
   (com a troca de mensagens) e o controle negativo do `smoke`
-- `Pendencias.md` · L85 (o item desta rodada), L94 e L95 (abertos pelo
+- `docs/pendencias/L-simulacao-simultaneo.md` · L85 (o item desta rodada), L94 e L95 (abertos pelo
   Arquiteto a partir de achados desta rodada)

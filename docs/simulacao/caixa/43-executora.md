@@ -47,7 +47,7 @@ documento da rodada; aqui é só o inventário.
 | arquivo | o que mudou nele |
 |---|---|
 | `.github/workflows/validate.yml` | `test-l77-alcancecentro-mesa` entra na matriz do CI |
-| `Pendencias.md` | Arquiteto fecha o L77/L76 com as decisões do humano, reaponta 37 citações que meu código deslocou, e registra o L79 e o L80 (abertos, decididos, não desta rodada) |
+| `docs/pendencias/L-simulacao-simultaneo.md` | Arquiteto fecha o L77/L76 com as decisões do humano, reaponta 37 citações que meu código deslocou, e registra o L79 e o L80 (abertos, decididos, não desta rodada) |
 | `docs/simulacao/CATALOGO.md` | nova forma na tabela ("o rótulo de escopo do `git diff`") |
 | `docs/simulacao/ESTADO.md` | Arquiteto reaponta 8 citações deslocadas |
 | `docs/simulacao/VOZ.md` | Arquiteto reaponta 11 citações deslocadas |
@@ -65,8 +65,8 @@ Cada número publicado nesta rodada, com o arquivo e a linha de onde ele sai.
 
 | número | o que é | de onde sai |
 |---|---|---|
-| 4 m | alcance corpo a corpo, Aboleth (Enorme) atacando um Médio: `alcanceDoCentro(Enorme) 3,5 + raio(Médio) 0,5` | Pendencias.md, tabela do L77; reproduzido em hexágonos (escala 1 m) por `scripts/test-l77-alcancecentro-mesa.mjs` (a asserção do "4 hex"/"alcança 4") |
-| 2,5 m | alcance corpo a corpo, um Médio atacando o Aboleth: `alcanceDoCentro(Médio) 0,5 + raio(Enorme) 2` | Pendencias.md, tabela do L77; a mesa arredonda para 3 hex por causa do `Math.ceil` que já existia no L67, não é um número novo desta rodada |
+| 4 m | alcance corpo a corpo, Aboleth (Enorme) atacando um Médio: `alcanceDoCentro(Enorme) 3,5 + raio(Médio) 0,5` | docs/pendencias/L-simulacao-simultaneo.md, tabela do L77; reproduzido em hexágonos (escala 1 m) por `scripts/test-l77-alcancecentro-mesa.mjs` (a asserção do "4 hex"/"alcança 4") |
+| 2,5 m | alcance corpo a corpo, um Médio atacando o Aboleth: `alcanceDoCentro(Médio) 0,5 + raio(Enorme) 2` | docs/pendencias/L-simulacao-simultaneo.md, tabela do L77; a mesa arredonda para 3 hex por causa do `Math.ceil` que já existia no L67, não é um número novo desta rodada |
 | 1 m | a invariante: Médio contra Médio não muda | `scripts/test-combate-tempo.mjs`, as duas asserções que chamam `alcancaNoCorpoACorpo(1/2, false, 0, 0)` |
 | 6 | pontos em `grid.astro` que somavam só `raioExtraHex(alvo)` cru, achados por constante (`HEX_CORPO_A_CORPO`/`HEX_HASTE`), não por nome de função | `src/pages/mesa/grid.astro`: `alcanceDaPeca`, `declararGolpe` (2×), `folhaDaAcao` (2×), `valoresDoLance`, mais `candidatosParaInterpor` para o L76 |
 | 2 | controles positivos quebrados e revertidos de propósito, um por nível | `src/lib/alcance.ts:98-99` (nível puro) e `src/pages/mesa/grid.astro` (o `alc` de `valoresDoLance`, nível mesa); os dois com o registro em `docs/simulacao/caixa/progresso-43-l76-l77.md` (13:25) |
@@ -90,7 +90,7 @@ Decisão sem custo escrito é decisão pela metade.
 O que não foi resolvido, e por quê. Marcar explicitamente **o que precisa do
 humano** e não da revisora.
 
-- **`L79` (Pendencias.md) · DECIDIDO PELO HUMANO, NÃO DESTA RODADA.** A regra do
+- **`L79` (docs/pendencias/L-simulacao-simultaneo.md) · DECIDIDO PELO HUMANO, NÃO DESTA RODADA.** A regra do
   travessão não tem portão, e a dívida velha nos três documentos da frente
   (`Pendencias.md`/`ESTADO.md`/`VOZ.md`) é de 146 ocorrências. Decisão: varrer as
   146 num commit próprio, fora de rodada, e só então ligar o portão sobre o
@@ -98,7 +98,7 @@ humano** e não da revisora.
   código dos 8 arquivos desta rodada (114 no `grid.astro`) ficam FORA desta
   decisão, por escopo dito. Nada a fazer aqui: só sinalizando para não ser achado
   de novo por engano.
-- **`L80` (Pendencias.md) · DECIDIDO PELO HUMANO, NÃO DESTA RODADA.** O portão da
+- **`L80` (docs/pendencias/L-simulacao-simultaneo.md) · DECIDIDO PELO HUMANO, NÃO DESTA RODADA.** O portão da
   procedência confere hoje só `ESTADO.md` e `Pendencias.md`. Rodada a mesma lógica
   contra os outros dez documentos com citação de código: 71 conferidas, 43
   envelhecidas, 57 sem âncora. Decisão: ampliar o `ALVOS` do portão para os dez,
@@ -120,7 +120,7 @@ humano** e não da revisora.
 O documento principal desta rodada e as seções que importam, na ordem em que
 fazem sentido.
 
-- `Pendencias.md` · L77 (a fórmula do humano e a tabela de conferência), L76
+- `docs/pendencias/L-simulacao-simultaneo.md` · L77 (a fórmula do humano e a tabela de conferência), L76
   (a resolução pela mesma fórmula), L79 e L80 (abertos, decididos, não desta
   rodada)
 - `docs/simulacao/caixa/progresso-43-l76-l77.md` · o sinal de vida inteiro,

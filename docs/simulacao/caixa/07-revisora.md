@@ -143,7 +143,7 @@ levar para o lugar certo.
 
 ### 6 · O K30 publicado hoje conta 27 Efeitos cumpridos. A conta é anterior ao achado da rodada 06?
 
-`Pendencias.md:847` (no commit `3fd805a`) abre com **"A régua está cumprida para 27
+`docs/pendencias/J-infraestrutura.md:67` (no commit `3fd805a`) abre com **"A régua está cumprida para 27
 dos 140 Efeitos e não para 19."** Pela medição da rodada 06 ela está cumprida para
 **zero** pelo caminho novo, enquanto a marca não sobreviver ao `ATIVOS.push`: na
 bancada a Prisão entra na declaração, e o painel diz "cai em 5 Ticks" no mesmo

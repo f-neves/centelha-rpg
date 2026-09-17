@@ -34,7 +34,7 @@ hora lida da máquina (`date +%H:%M`).
   agora mostram "3 hex"/"alcança 3 hexágono(s)", não mais "1". `npm run validate`
   inteiro verde (exit 0), `test-grid-simultaneo`/`test-interpor-mesa` sem
   regressão (o Interpositor, que eu não toquei, continua passando). Começando o
-  L68 (item 2), lendo o item inteiro no Pendencias.md antes de código.
+  L68 (item 2), lendo o item inteiro no docs/pendencias/L-simulacao-simultaneo.md antes de código.
 - 06:52 · L68 CONSTRUÍDO E PROVADO AO VIVO NAS QUATRO FASES, mas achei uma
   regressão real em `test-grid-simultaneo.mjs` (não meu, de rodadas antigas)
   rodando o `smoke` inteiro. `fdv-dlg` novo (grid.astro), `perguntarForaDaVez`

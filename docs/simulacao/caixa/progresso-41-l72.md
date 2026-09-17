@@ -14,7 +14,7 @@ não só por item), no instante em que ela fecha, hora lida da máquina (`date +
   - **77 citações de código em itens FECHADOS** (contra as que já contam hoje, só
     nos abertos);
   - **8 sem âncora nenhuma** (categoria que hoje já é falha dura para item aberto:
-    `Pendencias.md:1137,1137,2429,2430,2432,2438,3780,4477`);
+    `docs/pendencias/K-combate-linha-do-tempo.md:290,1137,2429,2430,2432,2438,3780,4477`);
   - **15 quebradas** (a âncora não está na janela): `:1168,1403,1713,1776,2353,2362,
     2418,2428,2434,3526,3735,3739,3786,4043,4485`. Duas delas (`:4043`
     `raioExtraHex`, `:4485` `!grupoDaVez`) são da minha PRÓPRIA rodada 40, fechada
@@ -25,9 +25,9 @@ não só por item), no instante em que ela fecha, hora lida da máquina (`date +
     ligar direto ou entrar com lista de exceções.
 - 07:51 · 21 de 23 consertadas à mão, procurando a âncora uma por uma (nunca pela
   proximidade quando repetia). Duas ficam de verdade ambíguas e paro para trazer, como
-  instruído: `Pendencias.md:1714` (grid.astro, a variável `dist`) tem DOIS candidatos
+  instruído: `docs/pendencias/L-simulacao-simultaneo.md:420` (grid.astro, a variável `dist`) tem DOIS candidatos
   idênticos (`declararGolpe` e `folhaDaAcao`, cada um com `const hexes = ...; const dist =
-  ...` igual) e o parágrafo não diz qual chamador; `Pendencias.md:3737` (L61, revisão do
+  ...` igual) e o parágrafo não diz qual chamador; `docs/pendencias/L-simulacao-simultaneo.md:2443` (L61, revisão do
   aviso 27) cita `test-grid.mjs:533` DE PROPÓSITO, como registro histórico do que a aviso
   27 disse errado: corrigir o número apagaria o próprio achado que a entrada existe para
   guardar, mas a "correção" que o parágrafo escreve ao lado (`:3481-3545`) também já está

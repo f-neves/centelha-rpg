@@ -49,7 +49,7 @@ Arquivo de sinal de vida (CONTRATO-REVISORA §6). Uma linha por etapa fechada, n
   a mão, na própria árvore de `0d1c300` (grid.astro não muda nesse commit, é
   o mesmo conteúdo do pai `d691d97`): `ESTADO.md:418` aponta para
   `grid.astro:5856` ("avancarAteParar"), mas a função mora em `5819` nessa
-  árvore (o reaponte errou por ~37 linhas); `Pendencias.md:2799` aponta para
+  árvore (o reaponte errou por ~37 linhas); `docs/pendencias/L-simulacao-simultaneo.md:1505` aponta para
   `grid.astro:10966` ("SB.rpc"), mas as chamadas reais ficam em 2630/2635/2639
   (erro de mais de 8000 linhas). Não é deriva por commit seguinte: o erro já
   nasce errado no próprio commit do reaponte. O CI de `e0326a9` (o SHA desta
@@ -77,7 +77,7 @@ Arquivo de sinal de vida (CONTRATO-REVISORA §6). Uma linha por etapa fechada, n
   falsificação). O Arquiteto respondeu com correção a dois dos meus três achados sobre o
   `0d1c300`, ANTES de eu commitar (o `39-revisora.md` ainda era rascunho): o nono lugar em
   `valoresDoLance` procede como escrito. O achado do reaponte de `0d1c300` tinha DOIS erros
-  meus: eu tinha comparado a âncora `Pendencias.md:2799` contra o prefixo "SB.rpc" (que casa
+  meus: eu tinha comparado a âncora `docs/pendencias/L-simulacao-simultaneo.md:1505` contra o prefixo "SB.rpc" (que casa
   com três chamadas diferentes) em vez da citação inteira (`jogador_registra`), o que me deu
   um erro de "mais de 8000 linhas" quando o certo é 50; e eu tinha chamado de "defeito de
   cálculo do script" o que é ordem de commit (documento commitado antes do código que ele

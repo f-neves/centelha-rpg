@@ -103,7 +103,7 @@ não só por item), no instante em que ela fecha, hora lida da máquina (`date +
   `Pendencias.md`/`ESTADO.md`/`VOZ.md`, e `test-procedencia.mjs` não varre
   `CATALOGO.md`, então a linha nova não quebra citação nenhuma.
 - 13:39 · Rodando `npm run validate` mais uma vez pego um falso alarme (1 citação
-  "envelhecida" em `Pendencias.md:3737`, sobre `cenaLembranca`); rodei
+  "envelhecida" em `docs/pendencias/L-simulacao-simultaneo.md:2443`, sobre `cenaLembranca`); rodei
   `test-procedencia.mjs` sozinho de novo na hora seguinte e voltou verde. Não é meu:
   não toquei em `Pendencias.md` desde o commit, e o arquivo é compartilhado com o
   Arquiteto trabalhando nele agora. Leitura: peguei o arquivo no meio de uma escrita

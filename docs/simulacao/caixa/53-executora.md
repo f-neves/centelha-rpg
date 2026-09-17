@@ -113,5 +113,5 @@ fazem sentido.
 - `docs/simulacao/caixa/progresso-53-l93.md` · sinal de vida completo da
   rodada, com o levantamento antes do código, a regressão achada e resolvida
   em `test-grid-simultaneo.mjs`, e a troca de mensagens com o Arquiteto
-- `Pendencias.md` · L93 (o item desta rodada) e L94 (aberto pelo Arquiteto a
+- `docs/pendencias/L-simulacao-simultaneo.md` · L93 (o item desta rodada) e L94 (aberto pelo Arquiteto a
   partir do achado "cercado não é preso")

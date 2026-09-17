@@ -45,7 +45,7 @@ não passou pela caixa desde então, e não só o trabalho de hoje.
 
 | arquivo | o que mudou nele |
 |---|---|
-| `Pendencias.md` | L44 varrida; L45/L46/L47 abertos e fechados; L48 aberto (harness x mesa) e revisado duas vezes no mesmo dia; L27 fechado; item novo na Corrida (8 gestos por ocasião) |
+| `docs/pendencias/L-simulacao-simultaneo.md` | L44 varrida; L45/L46/L47 abertos e fechados; L48 aberto (harness x mesa) e revisado duas vezes no mesmo dia; L27 fechado; item novo na Corrida (8 gestos por ocasião) |
 | `docs/simulacao/CATALOGO.md` | duas formas novas achadas na revisão do avanço unificado (a asserção esvaziada por mudança de contrato; a que imprime ordinal/contagem cujo denominador é contrato), mais uma quinta acrescentada à família do escalar-que-descreve-um-conjunto |
 | `docs/simulacao/CONTEXTO.md` | reescrito para 06/09/2026: entrada/avanço unificado como "sim", a bateria regravada, o achado das 21 funções com resposta |
 | `docs/simulacao/ESTADO.md` | a citação de `bmtmbdppb` trocada por `bmtq638zo` (a regravação) em toda a página; a nota do teor da correção expandida |
@@ -76,8 +76,8 @@ Cada número publicado nesta rodada, com o arquivo e a linha de onde ele sai.
 | 63 exportadas, 22 nos dois, 0 só harness, 19 só mesa | funções de `combate-tempo.ts` chamadas pela mesa e pelo harness, depois do balde B | `node scripts/test-cobertura-lib.mjs`, roda no commit avisado |
 | 9.830 de 21.600 batalhas idênticas byte a byte | a regravação da bateria (`bmtmbdppb` → `bmtq638zo`), comparada batalha a batalha | NÃO reproduzível no commit avisado: exige o código de ANTES do `log.mjs:291` corrigido (`b9fa8ac`), rodado lado a lado com o de hoje na mesma semente. A ferramenta de diff usada não ficou versionada — é a lacuna que fica em aberto abaixo |
 | 23,4% no Tick 1, 76,6% no Tick 2, 0% no 3 ou 4 | onde `ticksDeEntrada` poria as 172.800 peças do plano de 21.600 cenas, se ligado | reproduz-se no commit avisado com o pacote da própria ponte mais um export avulso de `ticksDeEntrada` (ela não está na ponte, é o achado do L48); o comando exato também não ficou versionado, mesma lacuna |
-| 8 gestos por Corrida completa (4 aplicar + 4 tirar), 0 da Investida | o custo de tela da condição `correndo`, hoje só à mão | `Pendencias.md`, achado de 06/09/2026 dentro do L37; contagem sobre `src/lib/mesa-condicoes.ts:54-127` e `src/pages/mesa/grid.astro:7077` |
-| 5 de 8 funções do balde C exigem política nova; 3 são baratas, 1 delas muda duração | o tamanho do balde C do L48, antes de construir | `Pendencias.md` L48, o parágrafo "O TAMANHO DO BALDE C" |
+| 8 gestos por Corrida completa (4 aplicar + 4 tirar), 0 da Investida | o custo de tela da condição `correndo`, hoje só à mão | `docs/pendencias/L-simulacao-simultaneo.md`, achado de 06/09/2026 dentro do L37; contagem sobre `src/lib/mesa-condicoes.ts:54-127` e `src/pages/mesa/grid.astro:7077` |
+| 5 de 8 funções do balde C exigem política nova; 3 são baratas, 1 delas muda duração | o tamanho do balde C do L48, antes de construir | `docs/pendencias/L-simulacao-simultaneo.md` L48, o parágrafo "O TAMANHO DO BALDE C" |
 
 Se um número foi calculado e não está num arquivo, o comando que o produz entra na
 coluna da procedência, e ele tem de rodar no commit avisado.
@@ -92,7 +92,7 @@ Decisão sem custo escrito é decisão pela metade.
 | D42 | fechar o L27 apagando `centelha-revisora/` (a pasta errada dentro deste repo, não o worktree) sem esperar resposta sua: ela só continha um `bash.exe.stackdump` já coberto pelo `.gitignore` | zero: a árvore continua limpa, e o `.gitignore` já tinha perdido a linha em 03/09 |
 | D43 | regravar a `bmtmbdppb` inteira em vez de só corrigir a coluna viciada no agregado publicado | uma bateria completa (34,5 s) em vez de um patch manual em 420 linhas de texto; troquei tempo de máquina por garantia de que nenhuma outra coluna dependia do mesmo `frac` |
 | D44 | fechar só o balde B do L48 nesta rodada, e não tentar os outros dez ao mesmo tempo | o L48 fica com um pé aberto e um fechado; a alternativa (fechar tudo de uma vez) juntaria mudanças de risco muito diferente (refactor puro vs. política nova) no mesmo commit |
-| D45 | reclassificar `modoCorre`/`adiaGolpe` do balde C pro D depois de medir, contradizendo o que EU MESMA tinha reportado antes | nenhum código muda; o custo é reescrever duas vezes a mesma seção do `Pendencias.md` e admitir a correção no texto, em vez de deixar o número errado por vaidade |
+| D45 | reclassificar `modoCorre`/`adiaGolpe` do balde C pro D depois de medir, contradizendo o que EU MESMA tinha reportado antes | nenhum código muda; o custo é reescrever duas vezes a mesma seção do `docs/pendencias/D-proezas-tecnicas.md` e admitir a correção no texto, em vez de deixar o número errado por vaidade |
 | D46 | consertar `rodada.mjs` (BASE/TOPO nunca preenchidos desde 04/09) em vez de só preencher esta rodada à mão e seguir andando | uma rodada a mais no meio do trabalho pedido, para a próxima não nascer quebrada do mesmo jeito |
 
 ## O QUE FICOU EM ABERTO
@@ -103,7 +103,7 @@ humano** e não da revisora.
 - **⚠ PRECISA DO HUMANO · a caixa ficou muda entre a rodada 04 e hoje.** As respostas 05 a 08
   foram da revisora fora do ciclo, sem aviso da executora (cada uma diz isso no próprio
   cabeçalho, "sem aviso da executora"); depois da 08 nem isso: um achado dela datado de
-  06/09/2026 chegou por outro canal e virou o `Pendencias.md` L48 sem NENHUM arquivo na caixa.
+  06/09/2026 chegou por outro canal e virou o `docs/pendencias/L-simulacao-simultaneo.md` L48 sem NENHUM arquivo na caixa.
   A causa era `scripts/rodada.mjs` nunca ter sido atualizado quando o modelo passou a exigir
   BASE/SHA/TOPO em 04/09 — consertado nesta rodada (D46). Fica para você decidir se o `npm run
   duo` volta a rodar sozinho ou se o ciclo segue manual por enquanto.
@@ -123,9 +123,9 @@ humano** e não da revisora.
 O documento principal desta rodada e as seções que importam, na ordem em que
 fazem sentido.
 
-- `Pendencias.md` L48 · a lista completa (63/22/19), os quatro baldes, o tamanho do balde C
+- `docs/pendencias/L-simulacao-simultaneo.md` L48 · a lista completa (63/22/19), os quatro baldes, o tamanho do balde C
   medido antes de construir, e a correção do próprio achado anterior (`modoCorre`/`adiaGolpe`)
-- `Pendencias.md` L37 · a nota nova sobre a Corrida (8 gestos por ocasião, ocasião zero nesta
+- `docs/pendencias/L-simulacao-simultaneo.md` L37 · a nota nova sobre a Corrida (8 gestos por ocasião, ocasião zero nesta
   bateria), logo depois do parágrafo já fechado sobre a Investida
 - `docs/simulacao/CONTEXTO.md` · reescrito inteiro para 06/09/2026, é o ponto de entrada mais
   curto para quem está chegando agora

@@ -98,7 +98,7 @@ Sinal de vida da Executora. Uma linha por etapa pequena, hora real (`date +%H:%M
   `npx tsc --noEmit` limpo, `npm run validate` verde.
 - 12:03 · `npm run validate` acusou 21 citações envelhecidas (esperado, minha
   edição deslocou linhas de `artes-grid-mesa.ts`): Pendencias.md 18,
-  CONJURACAO.md 2, Auditoria_Tecnica.md 1. Duas delas (`Pendencias.md:6153` e
+  CONJURACAO.md 2, Auditoria_Tecnica.md 1. Duas delas (`docs/pendencias/L-simulacao-simultaneo.md:4859` e
   `:6172`) apontavam para as linhas exatas que eu APAGUEI (o
   `escolhas['Força']`/`const metros` velhos): mesmo caso do L93, marcar como
   histórica em vez de reapontar é decisão do Arquiteto, não minha. Não toquei
@@ -129,5 +129,5 @@ Sinal de vida da Executora. Uma linha por etapa pequena, hora real (`date +%H:%M
   Miúdo arremessa ~26 m contra os 200 m do código antigo, domínio do FAA
   1..6→2..24 ganhou seção própria). `npx tsc --noEmit` limpo, `npm run
   validate` sem nenhuma citação nova envelhecida (a "sem âncora" em
-  Pendencias.md:6187 é texto do Arquiteto, não mexi). Esperando ordem para
+  docs/pendencias/L-simulacao-simultaneo.md:4893 é texto do Arquiteto, não mexi). Esperando ordem para
   commitar: "nada de commitar ainda" foi a instrução explícita.

@@ -20,7 +20,7 @@
   `ESTADO.md`/`Pendencias.md` envelheceram porque minhas edições em `grid.astro` deslocaram as
   âncoras (mesma classe do que o Arquiteto já corrigiu uma vez nesta sessão). Parado aqui,
   avisando antes de tocar em arquivo que não é meu.
-- 14:33 — o Arquiteto já tinha reapontado as duas citações (`Pendencias.md:2819/2820`) antes de
+- 14:33 — o Arquiteto já tinha reapontado as duas citações (`docs/pendencias/L-simulacao-simultaneo.md:1525/2820`) antes de
   eu chegar lá para conferir. `npm run validate` verde agora (exit 0, reconferido). Commitando
   e abrindo a rodada.
 - 14:36 — commit `9fb409f` feito (só meus 2 arquivos, `git status` confere). `npm run rodada`

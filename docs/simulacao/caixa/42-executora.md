@@ -40,7 +40,7 @@ documento da rodada; aqui é só o inventário.
 
 | arquivo | o que mudou nele |
 |---|---|
-| `Pendencias.md` | Arquiteto fecha o L72 (números finais, a convenção da marca histórica) |
+| `docs/pendencias/L-simulacao-simultaneo.md` | Arquiteto fecha o L72 (números finais, a convenção da marca histórica) |
 | `docs/simulacao/CATALOGO.md` | Arquiteto funde a entrada dele com a minha sobre a âncora mais próxima em bytes |
 | `package.json` | `test-rodada.mjs` entra na lista do `validate` |
 | `scripts/rodada.mjs` | `--enviar` recusa quando `HEAD` já é o commit de um aviso, dizendo o sha certo (L73) |

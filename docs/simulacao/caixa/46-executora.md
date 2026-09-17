@@ -44,7 +44,7 @@ documento da rodada; aqui é só o inventário.
 | `Dominio.md` | 1 citação corrigida pela âncora, número intacto (L80, terceira categoria) |
 | `Grid_Mobile.md` | 10 citações reapontadas, uma delas de arquivo (`MesaCab.astro` → `grid.astro`) |
 | `Migracao_Dominio.md` | 1 citação reapontada; mais as 3 `BASE_URL` que a Revisora achou erradas na rodada 45 |
-| `Pendencias.md` | Arquiteto registra o L80 (a terceira categoria, a escala final, o achado do próprio reapontador) e reaponta 2 citações que meu `ALVOS` deslocou |
+| `docs/pendencias/L-simulacao-simultaneo.md` | Arquiteto registra o L80 (a terceira categoria, a escala final, o achado do próprio reapontador) e reaponta 2 citações que meu `ALVOS` deslocou |
 | `Regua_Relacao.md` | 1 citação reapontada |
 | `docs/simulacao/CATALOGO.md` | 4 citações reapontadas |
 | `docs/simulacao/CONJURACAO.md` | 10 citações reapontadas, 3 delas pela âncora (número intacto) |
@@ -64,7 +64,7 @@ Cada número publicado nesta rodada, com o arquivo e a linha de onde ele sai.
 | 254 | citações de código conferidas pela âncora, nos 12 documentos do `ALVOS` ampliado | `node scripts/test-procedencia.mjs`, saída viva |
 | 36 | citações marcadas `(citação histórica)` (35 do `REVISORA.md`, 1 do `Pendencias.md`) | `node scripts/test-procedencia.mjs`, saída viva |
 | 35 + 33 + 3 | marcas históricas, ponteiros reapontados na parte 2, e as `BASE_URL` reapontadas na abertura da rodada; 33+3 = 36, o total de "vivas" | `docs/simulacao/caixa/progresso-46-l80.md` |
-| 32 de 36 | ponteiros corrigidos por NÚMERO (endereço velho, afirmação certa) | `Pendencias.md` (o item L80, medido pelo Arquiteto comparando o conjunto de citações contra o `HEAD`); reconciliado com a minha própria contagem (29 da parte 2 mais as 3 `BASE_URL` da abertura) |
+| 32 de 36 | ponteiros corrigidos por NÚMERO (endereço velho, afirmação certa) | `docs/pendencias/L-simulacao-simultaneo.md` (o item L80, medido pelo Arquiteto comparando o conjunto de citações contra o `HEAD`); reconciliado com a minha própria contagem (29 da parte 2 mais as 3 `BASE_URL` da abertura) |
 | 4 de 36 | ponteiros corrigidos por ÂNCORA, número intacto (terceira categoria: endereço certo, afirmação errada) | `docs/simulacao/CONJURACAO.md:55,56,57` e `Dominio.md:588`, nomeados pelo Arquiteto e conferidos por mim |
 | 1 | citação que o meu próprio `ALVOS` ampliado deslocou (linhas velhas 337 e 345, hoje `test-procedencia.mjs:352` e `test-procedencia.mjs:360`), no parágrafo do Arquiteto sobre a terceira categoria | `docs/simulacao/caixa/progresso-46-l80.md` |
 
@@ -122,7 +122,7 @@ humano** e não da revisora.
 O documento principal desta rodada e as seções que importam, na ordem em que
 fazem sentido.
 
-- `Pendencias.md` · L80 (a terceira categoria, os dois erros do Arquiteto, a
+- `docs/pendencias/L-simulacao-simultaneo.md` · L80 (a terceira categoria, os dois erros do Arquiteto, a
   escala final)
 - `docs/simulacao/caixa/progresso-46-l80.md` · o sinal de vida inteiro, com o
   controle vermelho-antes/verde-depois do `stash` e a reconciliação do 33/32

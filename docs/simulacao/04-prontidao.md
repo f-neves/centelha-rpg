@@ -87,7 +87,7 @@ paradas são aritmética", isso é uma leitura de código de 02/09, não um resu
 | **E4 · assimetria de passo** | sim, é escolher raça e armadura | **armadura e raça**, logo Absorção e penalidade física, ver §B.2 | **alta** |
 | **E5 · perfil de regras (18)** | só depois de as bandeiras existirem | as bandeiras entre si (o deixe-uma-de-fora é cego a interação, já registrado) · e **`n1` desloca o próprio E1**, ver §B.2 | **alta** |
 | **E6 · política (5)** | sim, é código | **o elenco**, se cada política rodar sobre uma ficha diferente. O Conjurador é a exceção que não tem como evitar | média |
-| **E7 · obstáculo** | no harness sim; **na mesa não existe ainda** (a parede é L1 do `Pendencias.md`) | linha de visão, que não existe e fica declarada como limitação | baixa |
+| **E7 · obstáculo** | no harness sim; **na mesa não existe ainda** (a parede é L1 do `docs/pendencias/L-simulacao-simultaneo.md`) | linha de visão, que não existe e fica declarada como limitação | baixa |
 | **E9 · leitura** | sim, é uma bandeira da política | **E6**: só três das cinco políticas leem alguma coisa, e na âncora (Agressiva) o eixo é quase inerte | **alta** |
 | **E10 · quem entra no meio** | sim, mas **exige que haja peça entrando**, e a âncora não tem nenhuma: o eixo é **inerte na âncora** | E9, de propósito (está nos cruzamentos) | **alta** |
 | E8 e D1 (não custam célula) | pós-processamento do mesmo log | nada | nenhuma |

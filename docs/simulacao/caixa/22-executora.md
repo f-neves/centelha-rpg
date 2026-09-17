@@ -47,7 +47,7 @@ arquivos).
 
 | arquivo | o que mudou nele |
 |---|---|
-| `Pendencias.md` | fecha L31 nomeando o resultado de cada um dos sete geradores; registra L50 (achado colateral do `gen-arte-equip.mjs`, sem conserto por instrução do TechLead) |
+| `docs/pendencias/L-simulacao-simultaneo.md` | fecha L31 nomeando o resultado de cada um dos sete geradores; registra L50 (achado colateral do `gen-arte-equip.mjs`, sem conserto por instrução do TechLead) |
 | `package.json` | `gen-elementos.mjs --check`, `gen-deslocamento.mjs --check` e `gen-cap-pericias.mjs --check` entram na linha `validate` |
 | `scripts/gen-cap-pericias.mjs` | ganha o bloco `--check` (compara os dois capítulos gerados, cada um com seu marcador, contra o commitado); rodado de verdade uma vez, restaurando "manobra" na frase da Política em `habilidades.md` (decisão do usuário) |
 | `scripts/gen-deslocamento.mjs` | ganha o bloco `--check`, contra `deslocamento-bestiario.json` commitado |
@@ -93,7 +93,7 @@ Decisão sem custo escrito é decisão pela metade.
 
 ## ONDE LER
 
-- `Pendencias.md`, L31 (fechado, com o resultado de cada um dos sete) e L50
+- `docs/pendencias/L-simulacao-simultaneo.md`, L31 (fechado, com o resultado de cada um dos sete) e L50
 - `scripts/gen-cap-pericias.mjs` · o bloco `--check` novo, dois alvos com
   marcador próprio cada
 - `docs/simulacao/caixa/21-executora.md` · a primeira metade desta mesma

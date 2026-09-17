@@ -88,7 +88,7 @@ Decisão sem custo escrito é decisão pela metade.
 |---|---|---|
 | D01 | Quando `gravarEfeito` degrada por `nivel_arte` ausente, a linha em memória (`ATIVOS.push`) guarda o que o banco de fato devolveu, nunca o valor que o cliente computou antes da coluna recusar. | a Arte não cura na sessão corrente enquanto a migração não roda, nem um turno; a alternativa (forçar o valor do cliente em memória) curaria durante a sessão e pararia sozinha no primeiro F5, sem ninguém mudar nada, o que achei pior. |
 | D02 | A redação "fato mais conferência" que o Arquiteto decidiu para o log de cena (`artes-grid-mesa.ts:2063`) também entrou na mensagem de asserção do teste, não só no código de produção, por leitura de que "e decido" fechava os dois lugares. | se essa leitura estiver errada, o rótulo do teste precisa de mais uma correção; não é o código de produção, então o custo de estar errado é baixo. |
-| D03 | A última citação quebrada pelo `reapontar.mjs` foi corrigida à mão: `Pendencias.md:2677`, a âncora `ATIVOS.push` em `src/lib/artes-grid-mesa.ts`, de `:1515` para `:1524`. Confirmada por `Grep` como a ÚNICA ocorrência de `ATIVOS.push(daLinha` no arquivo inteiro (o próprio texto da linha 2677 já afirma isso: "é a única ocorrência no arquivo inteiro") antes de escrever o número novo. | é correção manual de uma citação já localizada pelo mapa do diff (só o número saiu errado), não busca de âncora por texto com múltiplas ocorrências possíveis, que é a forma que o `L65` proíbe; se a linha ganhar uma segunda ocorrência de `ATIVOS.push` num commit futuro, a afirmação de unicidade escrita em `:2677` para de valer sem avisar ninguém, e quem mexer lá precisa conferir de novo. |
+| D03 | A última citação quebrada pelo `reapontar.mjs` foi corrigida à mão: `docs/pendencias/L-simulacao-simultaneo.md:1383`, a âncora `ATIVOS.push` em `src/lib/artes-grid-mesa.ts`, de `:1515` para `:1524`. Confirmada por `Grep` como a ÚNICA ocorrência de `ATIVOS.push(daLinha` no arquivo inteiro (o próprio texto da linha 2677 já afirma isso: "é a única ocorrência no arquivo inteiro") antes de escrever o número novo. | é correção manual de uma citação já localizada pelo mapa do diff (só o número saiu errado), não busca de âncora por texto com múltiplas ocorrências possíveis, que é a forma que o `L65` proíbe; se a linha ganhar uma segunda ocorrência de `ATIVOS.push` num commit futuro, a afirmação de unicidade escrita em `:2677` para de valer sem avisar ninguém, e quem mexer lá precisa conferir de novo. |
 
 ## O QUE FICOU EM ABERTO
 
@@ -96,11 +96,11 @@ O que não foi resolvido, e por quê. Marcar explicitamente **o que precisa do
 humano** e não da revisora.
 
 - **A migração 38 está ESCRITA e carimbada, e NÃO foi rodada.** Precisa do
-  humano, no SQL Editor (`Pendencias.md:6180,6186`: a fila passa a ser 33, 37
+  humano, no SQL Editor (`docs/pendencias/L-simulacao-simultaneo.md:4886,6186`: a fila passa a ser 33, 37
   e 38). Até lá, `acelerar-a-cura` não cura nada em produção: a coluna
   `nivel_arte` não existe, `gravarEfeito` degrada sem quebrar, e a cena avisa
   o fato (nunca o diagnóstico) a cada turno em que a cura era devida.
-- `Pendencias.md:6200` ainda lê "o `L86b` continua aberto com as outras três
+- `docs/pendencias/L-simulacao-simultaneo.md:4906` ainda lê "o `L86b` continua aberto com as outras três
   Artes" sem distinguir que `acelerar-a-cura` já tem código pronto (esta
   rodada); a prosa do `Pendencias.md` é documento do Arquiteto, não toquei
   nela além do reaponte de citação, e não é meu lugar decidir a redação.
@@ -123,5 +123,5 @@ fazem sentido.
 - `docs/simulacao/caixa/progresso-56-l86b.md` · sinal de vida completo, das
   três correções do Arquiteto ao defeito do `reapontar.mjs` e ao conserto
   final.
-- `Pendencias.md` · §L86 (status da migração 38, a fila que ela abre, e o
+- `docs/pendencias/L-simulacao-simultaneo.md` · §L86 (status da migração 38, a fila que ela abre, e o
   resíduo do custo de Mana não cobrado nas três Artes de Cura `fixo`).

@@ -57,7 +57,7 @@ Sinal de vida da Executora. Uma linha por etapa pequena, hora real (`date +%H:%M
   de `artes-grid-mesa.ts` para baixo). `node scripts/reapontar.mjs` (árvore
   sem nada em `git add`, o mesmo jeito que a rodada 56 corrigiu): 16
   citação(ões) movidas, 15 puladas por `(citação histórica)`. Conferi à mão a
-  única que eu já tinha corrigido uma vez nesta história, `Pendencias.md:2677`
+  única que eu já tinha corrigido uma vez nesta história, `docs/pendencias/L-simulacao-simultaneo.md:1383`
   (a âncora `ATIVOS.push`): o reapontador escreveu `:1527`, a linha real é
   `:1529` (dentro da janela de ±3 do portão, mas não exata); corrigida para
   `:1529`, confirmada por `Grep` como a única ocorrência de

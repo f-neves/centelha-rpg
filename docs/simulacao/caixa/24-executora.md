@@ -3,7 +3,7 @@
 ## COMMIT
 
 Esta rodada não tem diff meu de código. O TechLead pediu levantamento das três
-frentes de "a vista do jogador como produto" (Pendencias.md L33, PLANO.md §2),
+frentes de "a vista do jogador como produto" (docs/pendencias/L-simulacao-simultaneo.md L33, PLANO.md §2),
 "sem escrever código, mesmo método da Fase 1". Entreguei o levantamento por
 mensagem; o TechLead registrou o resultado direto em `Pendencias.md` (corrige
 L33, abre L51), sem passar por mim:
@@ -37,8 +37,8 @@ Número ou claim sem procedência não entra.
 
 | claim | de onde sai |
 |---|---|
-| Migração 31 rodou em produção em 05/09/2026 | `Pendencias.md` L42 (:2870-2871, :2903); commit `2f26368` |
-| Migração 33 não rodou | cabeçalho de `supabase/migracao-33.sql` ("NAO RODE ESTA ANTES..."); `Pendencias.md` L42 (:2903, "NÃO · falta a TELA"); commit `dab2c48` ("NAO RODE A MIGRACAO 33 AINDA") |
+| Migração 31 rodou em produção em 05/09/2026 | `docs/pendencias/L-simulacao-simultaneo.md` L42 (:2870-2871, :2903); commit `2f26368` |
+| Migração 33 não rodou | cabeçalho de `supabase/migracao-33.sql` ("NAO RODE ESTA ANTES..."); `docs/pendencias/L-simulacao-simultaneo.md` L42 (:2903, "NÃO · falta a TELA"); commit `dab2c48` ("NAO RODE A MIGRACAO 33 AINDA") |
 | `SEM_RELOGIO` já degrada corretamente, com prova e2e | `src/pages/mesa/grid.astro:3010-3027` (lógica); `scripts/test-grid.mjs:1438-1457` (cenário `SIM5`, com e sem `&semrelogio=1`) |
 | O teste do relógio só cobre o sistema Simultâneo, por admissão própria | `scripts/test-grid.mjs:1433-1437` (comentário citando `tickDaVez`) |
 | `combate.astro` nunca lê `tick_atual` | `grep -n "tick_atual" src/pages/mesa/combate.astro` → 0 ocorrências (rodado nesta rodada) |
@@ -58,7 +58,7 @@ real. Fiz a 1 (leitura do client) e a 3 (nomeação da fonte real + auditoria
 de cobertura). **Não fiz a 2**: não abri uma mesa real e capturei um payload
 de rede de verdade para comparar contra o `.sql`. Isto é uma escolha de
 escopo minha, não uma medição que travou ou que degradei em silêncio: o
-método para fazer isso já existe e está documentado (`Pendencias.md` L42,
+método para fazer isso já existe e está documentado (`docs/pendencias/L-simulacao-simultaneo.md` L42,
 sondagem via chave anon), só não rodei nesta rodada porque o pedido era
 levantamento de código, não uma sessão de mesa ao vivo. Registro aqui para
 não passar como "as três medições feitas" quando só duas foram.
@@ -81,7 +81,7 @@ não passar como "as três medições feitas" quando só duas foram.
 
 ## ONDE LER
 
-- `Pendencias.md`, correção do achado do relógio (L33, em torno de `:1892`)
+- `docs/pendencias/L-simulacao-simultaneo.md`, correção do achado do relógio (L33, em torno de `:1892`)
   e L51 (novo, em torno de `:3476`), ambos de `92e442b`
 - `scripts/test-grid.mjs:1433-1437` · a admissão do próprio teste sobre o
   P/G/R

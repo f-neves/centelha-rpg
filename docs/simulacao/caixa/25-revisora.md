@@ -89,7 +89,7 @@ Nenhuma.
 
 ## ESCALA
 
-Nada novo. `Pendencias.md` L33 continua descrevendo a lacuna do P/G/R como
+Nada novo. `docs/pendencias/L-simulacao-simultaneo.md` L33 continua descrevendo a lacuna do P/G/R como
 aberta mesmo esta rodada já a tendo fechado (D25c) — decisão correta da
 Executora de não tocar conteúdo que não é dela para editar; fica para o
 TechLead atualizar quando quiser, não é bloqueio.

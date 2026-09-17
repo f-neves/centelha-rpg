@@ -314,7 +314,7 @@ rastreado.
 
 Os blocos da §2.4 somavam `48 + 22 + 12 + 2 + 9 + 1 + 2 + 6 = 102`, e o total dizia **103**. Erro de
 aritmética, não de bloco: o número saiu errado da minha conta e foi propagado assim mesmo para a
-`02` §0.5, §0.10.1 e §3 e para o **L6** do `Pendencias.md`.
+`02` §0.5, §0.10.1 e §3 e para o **L6** do `docs/pendencias/L-simulacao-simultaneo.md`.
 
 O que salva o número **não** é o erro: é a C2. O conserto do `gate` acrescenta exatamente a célula
 hospedeira que faltava, então uma grade com uma hospedeira só somaria 102 e a com duas soma 103. O
@@ -782,7 +782,7 @@ entrou o **L8**, a fusão das duas especificações de política.
 | **§6a, e §0.10.1 do `02`** | a hospedeira do `gate` ganha etiqueta obrigatória (`termina por desistência-20 · delta máximo por construção`), a regra da etiqueta vira mecânica pelo `cena.fim.motivo`, e a varredura achou o segundo desvio: a hospedeira do Conjurador tem **política mista**, senão as três bandeiras que ela hospeda voltam a ser inertes |
 | **F0, no `04` e na ordem do `02`** | o carimbo do perfil vira o item **1.0** da Etapa 1, e ganha as duas propriedades que faltavam: **visível** e **recarimbável**. Zero gravação por Tick, confirmado |
 | **F1, no `04`** | conferida a procedência da resposta: veio de sessão, em 02/09, com as quatro opções e o contra-argumento. Mantida |
-| **`Pendencias.md`** | L6 com a grade nova, L9 com as três propriedades do carimbo |
+| **`docs/pendencias/L-simulacao-simultaneo.md`** | L6 com a grade nova, L9 com as três propriedades do carimbo |
 
 ---
 

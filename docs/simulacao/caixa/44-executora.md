@@ -40,7 +40,7 @@ documento da rodada; aqui é só o inventário.
 
 | arquivo | o que mudou nele |
 |---|---|
-| `Pendencias.md` | Arquiteto varre o L79 (travessão → pontuação certa) e reaponta a citação que meu código deslocou |
+| `docs/pendencias/L-simulacao-simultaneo.md` | Arquiteto varre o L79 (travessão → pontuação certa) e reaponta a citação que meu código deslocou |
 | `docs/simulacao/ESTADO.md` | Arquiteto varre o L79 |
 | `docs/simulacao/VOZ.md` | Arquiteto varre o L79 |
 | `scripts/rodada.mjs` | novo portão na abertura: recusa `BASE` não ancestral do `main`, e nomeia o gêmeo de mesma mensagem quando existe (L81) |
@@ -53,10 +53,10 @@ Cada número publicado nesta rodada, com o arquivo e a linha de onde ele sai.
 
 | número | o que é | de onde sai |
 |---|---|---|
-| 146 | travessões trocados pela varredura do L79, zero restantes nos três documentos da frente (`Pendencias.md`/`ESTADO.md`/`VOZ.md`) | Arquiteto, `Pendencias.md` (o item L79) |
-| 100/100, 37/37, 5/5 | linhas trocadas contra linhas do documento, um para um, em `Pendencias.md`/`ESTADO.md`/`VOZ.md`: contagem de linha INALTERADA, o que prova que a varredura foi substituição dentro da linha e não deslocou citação nenhuma | Arquiteto, `Pendencias.md` (o item L79); reproduzível com `git diff --stat` nos três arquivos entre `BASE` e `SHA` |
-| 3 de 9 | avisos anteriores (rodadas 40, 42, 43) que nasceram com `BASE` órfão, calados, antes do L81 | `Pendencias.md` (o item L81) |
-| 1 | citação reapontada pelo Arquiteto por causa do meu código deslocar linhas: `rodada.mjs:77` → `:102` (`function calcularTopo`), conferida por duas contas independentes (a minha e a dele) batendo no mesmo número | `Pendencias.md` (o item L81); `grep -n "^function calcularTopo" scripts/rodada.mjs` |
+| 146 | travessões trocados pela varredura do L79, zero restantes nos três documentos da frente (`docs/pendencias/L-simulacao-simultaneo.md`/`ESTADO.md`/`VOZ.md`) | Arquiteto, `docs/pendencias/L-simulacao-simultaneo.md` (o item L79) |
+| 100/100, 37/37, 5/5 | linhas trocadas contra linhas do documento, um para um, em `docs/pendencias/L-simulacao-simultaneo.md`/`ESTADO.md`/`VOZ.md`: contagem de linha INALTERADA, o que prova que a varredura foi substituição dentro da linha e não deslocou citação nenhuma | Arquiteto, `docs/pendencias/L-simulacao-simultaneo.md` (o item L79); reproduzível com `git diff --stat` nos três arquivos entre `BASE` e `SHA` |
+| 3 de 9 | avisos anteriores (rodadas 40, 42, 43) que nasceram com `BASE` órfão, calados, antes do L81 | `docs/pendencias/L-simulacao-simultaneo.md` (o item L81) |
+| 1 | citação reapontada pelo Arquiteto por causa do meu código deslocar linhas: `rodada.mjs:77` → `:102` (`function calcularTopo`), conferida por duas contas independentes (a minha e a dele) batendo no mesmo número | `docs/pendencias/L-simulacao-simultaneo.md` (o item L81); `grep -n "^function calcularTopo" scripts/rodada.mjs` |
 
 Se um número foi calculado e não está num arquivo, o comando que o produz entra na
 coluna da procedência, e ele tem de rodar no commit avisado.
@@ -82,7 +82,7 @@ humano** e não da revisora.
   chega antes de a Revisora dar checkout, e não há como um portão na abertura
   cobrir isso. Quem conserta é ela, recompondo com `git log SHA..origin/main`
   depois do `fetch` (achado e resolvido assim na própria rodada 43).
-- **`L79` (Pendencias.md) · VARRIDO, MAS AINDA ABERTO, NÃO DESTA RODADA.** As
+- **`L79` (docs/pendencias/L-simulacao-simultaneo.md) · VARRIDO, MAS AINDA ABERTO, NÃO DESTA RODADA.** As
   146 ocorrências dos três documentos foram trocadas e zero restam, mas o item
   não fecha: falta o portão que trava a dívida nova, e falta a decisão de
   escopo dele (só `.md`, ou também comentário de código, que tem 139
@@ -94,7 +94,7 @@ humano** e não da revisora.
 O documento principal desta rodada e as seções que importam, na ordem em que
 fazem sentido.
 
-- `Pendencias.md` · L81 (a régua e a escala do achado), L79 (a varredura,
+- `docs/pendencias/L-simulacao-simultaneo.md` · L81 (a régua e a escala do achado), L79 (a varredura,
   aberto por falta de portão)
 - `docs/simulacao/caixa/progresso-44-l81.md` · o sinal de vida inteiro, com
   os três cenários, o achado ao escrevê-los (o órfão tem de existir no MESMO

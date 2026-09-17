@@ -62,7 +62,7 @@ tabela por mais que algumas semanas.
 | `Migracao_Dominio.md` | TRABALHO | citado por `Migracao_Astro7.md`, `Dominio.md`, `Pendencias.md` |
 | `Miniaturas_3D.md` | **ARQUIVADO** em 08/09/2026 → `legacy/raiz/Miniaturas_3D.md` | zero citação; motivo em `legacy/raiz/README.md` |
 | `Paleta_Centelha.html` | **ARQUIVADO** em 08/09/2026 → `legacy/raiz/Paleta_Centelha.html` | zero citação; motivo em `legacy/raiz/README.md` |
-| `Proezas_revisao.md` | TRABALHO, fica | conferido por inteiro em 08/09/2026 (pedido do humano): é o documento de trabalho da revisão das Proezas nos 9 atributos (48 subcaminhos); só Força fechou. `D2` (uma linha sobre Furtividade da Técnica) fechou hoje, mas `D1` (matar o campo `banda` do schema) e `D3` (densidade dos funis) continuam abertos no `Pendencias.md`, na mesma seção "D. Proezas e Técnicas · detalhe em Proezas_revisao.md" — o documento não foi absorvido, é a referência viva desses dois itens |
+| `Proezas_revisao.md` | TRABALHO, fica | conferido por inteiro em 08/09/2026 (pedido do humano): é o documento de trabalho da revisão das Proezas nos 9 atributos (48 subcaminhos); só Força fechou. `D2` (uma linha sobre Furtividade da Técnica) fechou hoje, mas `D1` (matar o campo `banda` do schema) e `D3` (densidade dos funis) continuam abertos no `docs/pendencias/D-proezas-tecnicas.md`, na mesma seção "D. Proezas e Técnicas · detalhe em Proezas_revisao.md" — o documento não foi absorvido, é a referência viva desses dois itens |
 | `Qual_Sistema.md` | TRABALHO | fluxograma de roteamento entre subsistemas da régua. Zero citação formal, mas é ferramenta de navegação declarada, não rascunho |
 | `REVISAR.md` | RESTO, deliberado | auto-declarado "registro histórico" desde o próprio cabeçalho ("gerado por `migrate-to-json.mjs`... itens já resolvidos ficam ✅"). Citado por `README.md` raiz. Não é candidato a arquivar: já está no lugar certo, fazendo o papel de histórico |
 | `Reescala.md` | TRABALHO | citado por `Bestiario_Centelha.md`, `Qual_Sistema.md`, `Antecedentes.md`, `Pendencias.md`. Bestiário/Kael da Fase 6 ainda pendentes |
@@ -94,7 +94,7 @@ tabela por mais que algumas semanas.
 |---|---|---|
 | `src/` | RÉGUA + TRABALHO | a régua mora dentro (`data/*.json`, `content/chapters/`); o motor e as páginas também (`lib/`, `pages/`, `components/`) |
 | `scripts/` | TRABALHO | geradores, testes, bancadas — a ferramentação inteira |
-| `supabase/` | TRABALHO | as migrações, numeradas; `Pendencias.md` `L42`/`L45` diz o que cada uma muda |
+| `supabase/` | TRABALHO | as migrações, numeradas; `docs/pendencias/L-simulacao-simultaneo.md` `L42`/`L45` diz o que cada uma muda |
 | `public/` | TRABALHO | o que o site serve direto (favicon, ícones) — distinto de `marca/`, que é só uso fora do site |
 | `docs/` | TRABALHO | hoje só contém `simulacao/` (mapeada em `docs/simulacao/README.md`) e este `MAPA.md` |
 | `.github/` | TRABALHO | os workflows (`deploy.yml`, `validate.yml`) |
@@ -104,7 +104,7 @@ tabela por mais que algumas semanas.
 | `provas/` | TRABALHO, deliberado | bancadas de prova visual que já se perderam uma vez (README próprio conta a história) |
 | `lore/` | TRABALHO | worldbuilding (`Lore_Centelha.md`, `creatures/`, `mapas/`); citado por `scripts/test-luas.mjs` |
 | `legacy/` | RESTO, deliberado | "guarda apenas o material-fonte histórico" (README raiz, textual). O site lê só de `src/data/`. Arquivo de propósito, não candidato a arquivar de novo — já é o arquivo |
-| `D&D/` | TRABALHO (não versionado) | material de referência (PDFs/artes D&D/Pathfinder), gitignorado por ser pesado. Conferido em 08/09/2026: só dois dos quatro geradores dependem de conteúdo PRÉ-EXISTENTE ali (`gen-arte-equip.mjs`, `gen-creditos-equip.mjs`); os outros dois (`gen-lista-equip.mjs`, `gen-prompts-folhas.mjs`) só usam a pasta como destino de escrita e a criam sozinhos. Risco real, já registrado como `L50` (`Pendencias.md`, `[FAZER]`): `gen-arte-equip.mjs`, num clone sem `D&D/`, roda com `exit 0` e sobrescreve o `src/styles/arte-equip.css` versionado por um quase-vazio, sem erro nenhum — falha CALADA. `gen-creditos-equip.mjs` falha ALTO (`process.exit(1)` com mensagem) quando falta o relatório do baixador |
+| `D&D/` | TRABALHO (não versionado) | material de referência (PDFs/artes D&D/Pathfinder), gitignorado por ser pesado. Conferido em 08/09/2026: só dois dos quatro geradores dependem de conteúdo PRÉ-EXISTENTE ali (`gen-arte-equip.mjs`, `gen-creditos-equip.mjs`); os outros dois (`gen-lista-equip.mjs`, `gen-prompts-folhas.mjs`) só usam a pasta como destino de escrita e a criam sozinhos. Risco real, já registrado como `L50` (`docs/pendencias/L-simulacao-simultaneo.md`, `[FAZER]`): `gen-arte-equip.mjs`, num clone sem `D&D/`, roda com `exit 0` e sobrescreve o `src/styles/arte-equip.css` versionado por um quase-vazio, sem erro nenhum — falha CALADA. `gen-creditos-equip.mjs` falha ALTO (`process.exit(1)` com mensagem) quando falta o relatório do baixador |
 | `_shots/` | TRABALHO, deliberado | limpa em 08/09/2026 (449 arquivos descartados); `_shots/README.md` (exceção ao `.gitignore`) lista os oito scripts que a regeneram e o que cada um fotografa |
 | `node_modules/` | TRABALHO (não versionado) | dependências instaladas |
 | `dist/` | TRABALHO (não versionado) | saída do build |

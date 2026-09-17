@@ -38,7 +38,7 @@ Nenhum número novo foi publicado nesta rodada. O trabalho foi investigação e 
 
 - **⚠ PRECISA DO HUMANO · a assimetria 1,178 é do HARNESS.** A causa está no `ordinal` assimétrico atribuído durante a montagem da cena em `scripts/sim/cena.mjs`. Lado A recebe ordinais 0 até n-1, lado B recebe ordinais n até 2n-1. Isso faz `iniciativaDaPeca(arq, ordinal)` gerar iniciativas sistematicamente maiores para o lado B, que portanto actiona primeiro em cada Tick e declara mais vezes. A bateria de espelho confirmou que essa assimetria TAMBÉM existe na mesa, então não é um artefato do harness sozinho: a mesa compartilha o `montarCena`. A correção foi testada em three formas (ordinais iguais, intercalação, nomes simétricos) e melhorou a assimetria de 1,178 para ~1,10, mas não a eliminou completamente, sugerindo que há mais de um fator envolvido. Decisão pendente: corrigir ou aceitar como propriedade da configuração ordinal da montagem?
 
-- **a frase refutada está ainda em quatro lugares**, conforme documentado na rodada 03: docs/simulacao/09-bateria-grande.md linhas 454-455; Pendencias.md linha 1344; scripts/sim/agregar.mjs linha 496 (comentário); docs/simulacao/09-bateria-grande.md linha 925 (D31 contradiz §2.4). Só corrijo depois que a decisão sobre a assimetria estiver clara.
+- **a frase refutada está ainda em quatro lugares**, conforme documentado na rodada 03: docs/simulacao/09-bateria-grande.md linhas 454-455; docs/pendencias/D-proezas-tecnicas.md linha 1344; scripts/sim/agregar.mjs linha 496 (comentário); docs/simulacao/09-bateria-grande.md linha 925 (D31 contradiz §2.4). Só corrijo depois que a decisão sobre a assimetria estiver clara.
 
 ## ONDE LER
 

@@ -41,7 +41,7 @@ não só por item), no instante em que ela fecha, hora lida da máquina (`date +
   travar a equipe. `node --check` limpo nos dois arquivos depois de cada revert.
   `npm run validate` inteiro a seguir.
 - 14:18 · `npm run validate` PAROU no `test-procedencia.mjs`: 1 citação envelheceu,
-  `Pendencias.md:3742 → rodada.mjs:77 · function calcularTopo`, porque a
+  `docs/pendencias/L-simulacao-simultaneo.md:2448 → rodada.mjs:77 · function calcularTopo`, porque a
   `acharGemeo`/o portão que escrevi entraram ANTES dela no arquivo e empurraram tudo
   abaixo. Linha certa hoje: `rodada.mjs:102`. Não toquei em `Pendencias.md` (é
   território do Arquiteto nesta rodada, ele está mexendo nos três documentos em

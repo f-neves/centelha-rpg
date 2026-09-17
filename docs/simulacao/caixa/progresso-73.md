@@ -27,7 +27,7 @@ NÃO mexer em número de `armaduras.json` nem em `centelhaNoSoak`. E o travessã
   verdade. O callout `Como derrotar cada armadura` acompanhou, pelo mesmo motivo, e ganhou o
   numero de atacantes, que era a outra metade que ele ja dizia.
 - **14:54** · o travessao do `dano.nota` saiu (virou virgula mais `e`), e atualizei a conta do
-  `J0` no `Pendencias.md`: 42 viraram 41, com o porque escrito ao lado.
+  `J0` no `docs/pendencias/J-infraestrutura.md`: 42 viraram 41, com o porque escrito ao lado.
 - **14:55** · PORTAO no `test-contrato`, mesmo molde do custo de raca: os tres numeros da lista
   saem de `armaduras.json`, e ha uma assercao separada dizendo que o CORPO nao entra na lista
   (`com o corpo` ou `no cavaleiro` em qualquer das tres linhas fica vermelho). Essa segunda e a

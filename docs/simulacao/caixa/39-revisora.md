@@ -87,7 +87,7 @@ próprio commit declara. Conferi duas a mão, na árvore do próprio `0d1c300` (
 
 - `ESTADO.md:418` aponta para `grid.astro:5856` (`avancarAteParar`); a função mora em `5819`
   nessa árvore · erro de 37 linhas.
-- `Pendencias.md:2799` aponta para `grid.astro:10966`, e a âncora certa é a chamada inteira,
+- `docs/pendencias/L-simulacao-simultaneo.md:1505` aponta para `grid.astro:10966`, e a âncora certa é a chamada inteira,
   `SB.rpc('jogador_registra', { p_arena: ARENA.id, p_linha: linha })` (não o prefixo `SB.rpc`,
   que casa com três chamadas diferentes, `jogador_muda_peca`/`jogador_mover`/`jogador_tira_do_mapa`,
   em 2630/2635/2639 · comparei contra o prefixo em vez da citação inteira, e o Arquiteto pegou

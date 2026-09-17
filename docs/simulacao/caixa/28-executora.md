@@ -41,7 +41,7 @@ documento da rodada; aqui é só o inventário.
 | arquivo | o que mudou nele |
 |---|---|
 | `.gitignore` | adiciona `voz-bench-modelo/` (o modelo do Vosk, 31 MB, não versiona) |
-| `Pendencias.md` | Arquiteto: registro do achado L61 (revisão do aviso 27) |
+| `docs/pendencias/L-simulacao-simultaneo.md` | Arquiteto: registro do achado L61 (revisão do aviso 27) |
 | `VOZ.md` | Arquiteto: registra três correções do levantamento (desfazer não cobre Mana, "escolher arma" não existe, Mana não distingue dar de tirar) e a contagem das Artes |
 | `docs/simulacao/PASSAGEM.md` | Arquiteto: registra por que o veredito da rodada 27 foi ao main por cherry-pick |
 | `scripts/gen-arte-equip.mjs` | **L50, o item desta rodada**: falha alto (exit 1) sem a pasta `D&D/` ou com uma folha só faltando, em vez de escrever `arte-equip.css` quase vazio por cima do commitado |
@@ -96,7 +96,7 @@ humano** e não da revisora.
 O documento principal desta rodada e as seções que importam, na ordem em que
 fazem sentido.
 
-- `Pendencias.md` · L50, o contexto completo do item
+- `docs/pendencias/L-simulacao-simultaneo.md` · L50, o contexto completo do item
 - `scripts/gen-creditos-equip.mjs` · o padrão de falha alta que `gen-arte-equip.mjs` passou a seguir
 - `scripts/gen-arte-equip.mjs:32-57` · as duas conferências novas, antes de qualquer escrita
 - `voz-bench.html`/`voz-bench-README.md` · a bancada do Vosk, também neste intervalo, ainda não revisada em rodada nenhuma

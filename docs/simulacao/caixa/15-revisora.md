@@ -48,7 +48,7 @@ funciona".
 
 ## O ataque, antes de escrever qualquer veredito
 
-Li a seção 6 inteira do `Pendencias.md` (L34 §6) antes de olhar o código: as
+Li a seção 6 inteira do `docs/pendencias/L-simulacao-simultaneo.md` (L34 §6) antes de olhar o código: as
 seis decisões de 07/09/2026 (quem leva o dano, teste, alcance/geometria de
 reta, escudo, duração, reconciliação dos dois preços) são o que o código
 precisa provar, não o que ele afirma sobre si mesmo.

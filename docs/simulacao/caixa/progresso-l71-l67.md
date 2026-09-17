@@ -25,7 +25,7 @@ da máquina (`date +%H:%M`).
   o cuidado do L74), o prazo de 1,5s venceu em ~1,5s de verdade, e um segundo toque tenta
   carregar de novo em vez de ficar preso. `npm run validate`: só procedência vermelha (27
   citações, deslocamento de sempre), flagueando ao Arquiteto quando o item 2 também fechar.
-  Começando o levantamento do L67 (Pendencias.md), sem tocar em código ainda.
+  Começando o levantamento do L67 (docs/pendencias/L-simulacao-simultaneo.md), sem tocar em código ainda.
 - 05:05 · LEVANTAMENTO DO L67 FEITO. Sete lugares medem alcance do centro, sem contar o raio
   do alvo, batendo exatamente com o número do Arquiteto (nenhuma discrepância a reportar):
   `grid.astro:5642` (`noAlcance` em `avancarTickSimultaneo`), `:5692` e `:5706` (parada de

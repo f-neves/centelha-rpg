@@ -62,7 +62,7 @@ DOM (a ficha do lance, o aviso de recusa), não recálculo.
 
 ## Achado próprio: a tabela "O QUE MUDOU" do aviso está errada sobre `Pendencias.md`
 
-O aviso diz "L67 (nono/décimo) e L68 marcados resolvidos" em `Pendencias.md`. Não é o que o diff
+O aviso diz "L67 (nono/décimo) e L68 marcados resolvidos" em `docs/pendencias/L-simulacao-simultaneo.md`. Não é o que o diff
 mostra. `git diff 979ec38 107d1a3 -- Pendencias.md` tem só duas seções substantivas fora reaponte
 de linha: o texto novo do `L65` (a sequência dos três passos) e os itens novos `L76`/`L77`. Não
 existe "nono" nem "décimo" em `Pendencias.md` nenhuma (busquei no arquivo inteiro, zero
@@ -72,7 +72,7 @@ e não agora... A ordem: entra depois da frente da voz. Registrado agora com a d
 aberto." Nenhuma linha nova diz que foi construído. Comparando com o precedente do próprio `L71`
 nesse mesmo arquivo, que ganhou uma correção inline quando ficou desatualizado ("A (a) JÁ FOI
 CONSTRUÍDA, e este item passou um dia dizendo o contrário"), aqui não houve o equivalente. Quem
-ler `Pendencias.md` sem ler o aviso desta rodada acha que o L68 continua parado esperando o humano.
+ler `docs/pendencias/L-simulacao-simultaneo.md` sem ler o aviso desta rodada acha que o L68 continua parado esperando o humano.
 CORRIGE, de documentação, não de código.
 
 ## A sequência nova do L65 (os três passos)
@@ -105,7 +105,7 @@ regressão do gatilho foi falsificada por mim, não aceita de palavra.
 
 ## CORRIGE
 
-1. `Pendencias.md`: a entrada do `L68` não reflete que o item foi construído nesta rodada — ainda
+1. `docs/pendencias/L-simulacao-simultaneo.md`: a entrada do `L68` não reflete que o item foi construído nesta rodada — ainda
    diz "PARADO esperando o humano" e "DECIDIDO: CONSTRÓI... e não agora", sem nenhuma linha
    dizendo que já foi feito. E a entrada do `L67` não ganhou nenhuma menção ao nono/décimo lugar,
    apesar da tabela do aviso dizer que sim.
@@ -119,5 +119,5 @@ convive com `grupoDaVez` em vez de substituí-lo (confirmado comparando as duas 
 linha). Falsifiquei eu mesma uma das três asserções protegidas do `test-grid-simultaneo.mjs`
 (`reprojetarAgenda` forçado a `null`), e ela caiu sozinha, como deveria. A sequência nova do L65
 não tem problema que eu tenha achado. Um achado próprio: a tabela do aviso afirma que
-`Pendencias.md` marca o L67 (nono/décimo) e o L68 como resolvidos, e isso não é verdade — nenhuma
+`docs/pendencias/L-simulacao-simultaneo.md` marca o L67 (nono/décimo) e o L68 como resolvidos, e isso não é verdade — nenhuma
 das duas entradas foi atualizada, e a do L68 ainda lê como item não construído. CORRIGE.
