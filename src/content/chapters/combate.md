@@ -62,6 +62,60 @@ Cada ação tem uma **Velocidade**, quantos Ticks ela custa antes de você poder
 
 <p class="muted"><strong>A tabela não termina no 7.</strong> Ela desenha a faixa em que quase tudo cai, e não um teto: a Velocidade é só quantos Ticks a ação custa, e nada impede uma de custar mais. As <strong>bestas</strong> são o caso concreto (9, 12 e 15, pela recarga), e as Artes de grau alto sobem pela mesma escada. Acima de 7 a diferença não é de regra, é de exposição: quem se compromete por doze Ticks fica doze Ticks com a escada de Defesa aberta em cima.</p>
 
+## Preparo, Golpe e Recuperação
+
+Por baixo da Velocidade, toda ação de ataque se divide em fases, e o capítulo já usa os três
+nomes antes de defini-los (a Investida, a Recarga, "Golpes no mesmo instante"): **Preparo** (o
+tempo até o golpe estar pronto), **Golpe** (o instante em que ele sai, sempre **1 Tick**) e
+**Recuperação** (o que sobra da Velocidade depois do golpe).
+
+<p class="formula">Preparo + Golpe + Recuperação = Velocidade</p>
+
+O Preparo depende da **classe da arma**, não da Velocidade dela:
+
+| Classe | Preparo |
+|---|:---:|
+| Leve | 0 |
+| Média | 1 |
+| Haste | 2 |
+| Pesada | 2 |
+| Distância | Velocidade − 1 |
+| Arremesso | Velocidade − 2 |
+| Arte (conjuração) | Velocidade − 1 |
+
+Nas armas de Distância e Arremesso o Golpe cai no **último Tick do ciclo**: quase toda a
+Velocidade é Preparo, e é por isso que a Besta Grande (Velocidade 15) passa catorze Ticks
+armando antes do virote sair.
+
+Cada fase custa Defesa, pela mesma moeda: estar comprometido com um gesto abre a guarda.
+
+<p class="formula">Preparo: Defesa −2 · Golpe (o Tick em que ele sai): Defesa −4</p>
+
+É a régua que já apareceu em *Correndo* (o mesmo −4 do Tick do Golpe), na Investida e na Recarga
+(o −2 do Preparo) e em *Golpes no mesmo instante* (o −4 no Tick do golpe). Empunhar duas armas e
+golpear só com uma alivia esse −4 para **−2** no Tick do Golpe: a outra mão continua guardando.
+
+## Dois sistemas de tempo, e qual é o padrão
+
+Existe mais de um jeito de jogar esta mesma régua, e o que muda é o **quanto** se separam
+Preparo, Golpe e Recuperação em Ticks distintos.
+
+- **Normal** (**o padrão desta mesa**, e o sistema deste capítulo): a ação resolve inteira no
+  Tick da declaração, com a Defesa em −2 durante o Preparo e −4 no Tick do golpe, exatamente
+  como descrito acima. Não há um Tick isolado de Recuperação: a Velocidade inteira empurra a
+  próxima ação, e é por isso que este capítulo fala em "Velocidade" e raramente em
+  "Recuperação" sozinha.
+- **Três fases (P/G/R)**, usado na mesa tática (o Grid): a mesma Velocidade se abre em Ticks
+  separados de verdade. Todo gesto com Preparo maior que zero **telegrafa** (dá para ver e
+  interromper, não só o de quem conjura), e ganha uma penalidade própria de Recuperação: **−2
+  de Defesa por golpe ainda pendurado**, além do Preparo e do Golpe. No Preparo ainda dá para
+  desistir; na Recuperação já não dá, só dá para pagar. A variante **Simultâneo (Tick a Tick)**
+  é a mesma física do P/G/R rodando um Tick por vez no tabuleiro digital, com o deslocamento
+  acontecendo passo a passo.
+
+A régua completa de P/G/R e da escada de Defesa vive em `regras.json → combate.pgr` e
+`combate.escada`, para quem joga na mesa tática.
+
 ## O ataque: acertar e a Margem
 
 Para atacar, monte o pool de **Atributo + Habilidade**, some o **Acerto da Arma**, aplique Firulas e Técnicas, e role. Você acerta se o total **superar a Defesa** do alvo (empate erra).
@@ -80,14 +134,38 @@ Acertar não é tudo ou nada: a cada **6 pontos acima da Defesa**, você ganha *
 
 <p class="muted">A <strong>Centelha</strong> soma <strong>+1 por ponto</strong> dos dois lados: ao ataque e a todas as defesas. Entre Centelhas iguais ela se cancela, e o duelo joga igual do mortal ao semideus; contra quem tem menos Centelha, a diferença vira vantagem líquida no acerto e na guarda, e cada tier vale um degrau de modificador.</p>
 
+### Rajada: golpes extras com a mesma arma
+
+Uma ação, um golpe: essa é a régua padrão. Duas coisas rendem mais: lutar com **duas armas** (a
+seguir) ou puxar uma **Rajada**, vários golpes com a **mesma** arma, corpo a corpo, declarados de
+uma vez, sem parar no meio.
+
+Cada golpe extra soma **−1d6 ao acerto** de todos os golpes daquela Rajada (acumulativo: o
+terceiro golpe sai a −2d6) e **+2 de Velocidade** ao ciclo inteiro. Há um teto de golpes por
+Rajada, pela classe da arma:
+
+| Classe | Golpes no teto |
+|---|:---:|
+| Leve | 3 |
+| Média | 3 |
+| Haste | 2 |
+| Pesada | 2 |
+
+No sistema P/G/R, cada golpe extra soma um Tick de Golpe e um de Recuperação ao ciclo (é o que
+consome os +2 de Velocidade).
+
 ### Empunhadura dupla: um ataque por mão
 
-Via de regra, **cada ação rende um só ataque**: uma arma, um golpe. Ninguém divide a ação em vários golpes com uma arma na mão (mais ataques numa ação vêm só de **duas armas** ou de uma Técnica que os conceda). A exceção é lutar com **uma arma em cada mão**: aí você pode desferir **um ataque por mão** na mesma ação (mesma Velocidade). Não é obrigatório abrir os dois, se preferir, faça só o golpe da mão hábil, normal, sem penalidade.
+A outra forma de multiplicar ataques é lutar com **uma arma em cada mão**: aí você pode
+desferir **um ataque por mão** na mesma ação (mesma Velocidade). Não é obrigatório abrir os
+dois; se preferir, faça só o golpe da mão hábil, normal, sem penalidade.
 
 Ao desferir os dois golpes:
 
-- a **mão hábil** ataca a **−1d6** e a **mão inábil** a **−2d6** (coordenar dois gumes tira precisão; a mão fraca tira mais). A Técnica **Ambidestria** (Dança da Lâmina) apaga o dado extra da mão fraca: com ela, a inábil também sai a −1d6;
-- cada golpe rola o próprio acerto e o próprio dano, com a arma daquela mão (a Força soma uma vez em cada);
+- **as duas mãos atacam a −1d6** (coordenar dois gumes tira precisão, e tira igual das duas). A
+  Técnica **Ambidestria** (Dança da Lâmina) apaga esse dado extra;
+- cada golpe rola o próprio acerto e o próprio dano, com a arma daquela mão (a Força soma uma
+  vez em cada);
 - podem cair no **mesmo alvo** ou em **alvos diferentes**, um por mão.
 
 O preço não está tanto nos dados (pela régua da Margem, um golpe que **encosta** já rende quase todo o dano), e sim na **exposição**: cada ataque que você faz baixa a Esquiva e o Bloqueio (ver *Guarda sob pressão*), então brigar com as duas mãos derruba a sua guarda o **dobro** de um golpe só, pelos próximos 6 Ticks. Em troca, a **Defesa das armas continua valendo** para aparar: empunhar duas lâminas ataca e defende ao mesmo tempo: o que custa é ficar aberto, não largar a guarda da arma.
