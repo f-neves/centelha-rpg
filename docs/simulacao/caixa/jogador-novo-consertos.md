@@ -378,6 +378,17 @@ baterem com a tabela do capítulo.
 > do capítulo XVIII, então não inventa perícia nova para ninguém, e preserva o conceito do Kael
 > (batedor de arco). Conferir que todo outro traço citado no parágrafo (Preparo, dano, o resto do
 > exemplo) já bate com a ficha da Sora antes de trocar só o nome.
+>
+> **FEITO** `<pendente>`. Conferido traço a traço antes de trocar:
+> - `combate.md`, 1º exemplo: o pool "3d6+5" era só ilustrativo (Kael nem tem Armas, então nunca
+>   vinha de ficha nenhuma). Recalculado para a Sora de verdade: Destreza 6 + Armas 5 = 11 →
+>   5 dados +2 (ímpar) +1 (acerto da espada) +3 (Centelha) = **5d6+6**. Conferido contra a Defesa
+>   publicada dela (21 = (6+3)×2, com Esquiva 3): bate.
+> - `combate.md`, Investida: martelo (Preparo 2, classe pesada, que `Armas` cobre). O deslocamento
+>   de Sora, por coincidência, arredonda para o MESMO 4 m/Tick do Kael (2 + (6+3)/4 = 4,25 → 4),
+>   então "anda 4, corre 6" continuou válido sem precisar mudar número nenhum.
+> - `quase-acerto.md`: o exemplo não depende de nenhum traço do atacante (é só classe da arma ×
+>   classe da armadura), então só o nome mudou.
 
 A ficha dele está em `criacao-de-personagem.md:88-97` e é a única fonte que declara os
 números (e as contas dela fecham, ver C-12). Contra ela:

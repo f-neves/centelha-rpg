@@ -18,7 +18,7 @@ Antes dos detalhes, o esqueleto de uma briga, do começo ao fim:
 5. **O dano, menos a Absorção** (a absorção do alvo), vira ferimento.
 6. **Quem chega a 0 de Vida cai.** Ferimentos, morte e sangramento são assunto do próximo capítulo, [Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura).
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Kael ataca um bandido de <strong>Defesa 10</strong>. Seu pool de ataque dá <strong>3d6+5</strong>; ele rola e soma <strong>16</strong>. 16 supera 10 → acerta, com diferença de 6, exatamente <strong>uma Margem</strong>, então o dano ganha <strong>+1d6</strong>. Ele rola o dano da espada (1d6) + a Margem (1d6) + a Força, desconta a Absorção do bandido, e o que sobra abre ferimento.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Sora ataca um bandido de <strong>Defesa 10</strong>. Seu pool de ataque dá <strong>5d6+6</strong> (Destreza 6 + Armas 5, mais o acerto da espada e a Centelha); ela rola e soma <strong>16</strong>. 16 supera 10 → acerta, com diferença de 6, exatamente <strong>uma Margem</strong>, então o dano ganha <strong>+1d6</strong>. Ela rola o dano da espada (1d6) + a Margem (1d6) + a Força, desconta a Absorção do bandido, e o que sobra abre ferimento.</div>
 
 No osso, é só isso. O resto do capítulo são as camadas que dão profundidade tática: **quando** agir, **como** se mover, **usar a posição** e **desencadear Técnicas**.
 
@@ -314,7 +314,7 @@ Preparo que a sua arma já tem, atravessado à velocidade de Corrida.
 | **Preparo andando** | Deslocamento de Batalha por Tick | o −2 do Preparo | — |
 | **Preparo investindo** | velocidade de Corrida por Tick | −2 **a mais** | **+1d6** |
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Kael, de martelo (Preparo 2), anda 4 m por Tick e corre 6. Fechando a distância no Preparo ele cobre <strong>8 metros</strong> com a Defesa em −2. Investindo, cobre <strong>12</strong>, com a Defesa em −4, e o martelo cai com <strong>+1d6</strong>.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Sora, de martelo (Preparo 2), anda 4 m por Tick e corre 6. Fechando a distância no Preparo ela cobre <strong>8 metros</strong> com a Defesa em −2. Investindo, cobre <strong>12</strong>, com a Defesa em −4, e o martelo cai com <strong>+1d6</strong>.</div>
 
 A arma **leve tem Preparo 0**, e por isso não investe de graça: ela precisa comprar Preparo antes
 (a carga voluntária). É a arma que **arma** o golpe que investe bem, e a pesada, com Preparo 2, é a
