@@ -241,7 +241,7 @@
       "destreza",
       "forca"
     ],
-    "descricao": "Interceptar o golpe em vez de sair da frente dele: aparar com o escudo, encostar a lâmina para desviar a do outro, receber no antebraço, na manopla ou no que estiver na mão. É a outra maneira de não ser atingido, e a que funciona quando não há para onde correr, no corredor estreito, na parede de escudos, no cerco. Sustenta a Defesa por Bloqueio e vale seja lá o que você esteja empunhando. Contra o projétil rápido só serve com escudo de verdade, porque ninguém apara uma flecha com a espada.",
+    "descricao": "Interceptar o golpe em vez de sair da frente dele: aparar com o escudo, encostar a lâmina para desviar a do outro, receber no antebraço, na manopla ou no que estiver na mão. É a outra maneira de não ser atingido, e a que funciona quando não há para onde correr, no corredor estreito, na parede de escudos, no cerco. Sustenta a Defesa por Bloqueio e vale seja lá o que você esteja empunhando. Contra o projétil rápido só serve com escudo hábil (cobre pelo menos 30% do corpo, do escudo redondo para cima), porque ninguém apara uma flecha com a espada nem com um broquel.",
     "niveis": [
       {
         "nivel": 0,
@@ -472,7 +472,6 @@
     "nome": "Integridade",
     "grupo": "fisica",
     "atributos": [
-      "vontade",
       "vigor",
       "inteligencia",
       "raciocinio"

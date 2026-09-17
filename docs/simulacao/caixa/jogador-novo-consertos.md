@@ -725,6 +725,8 @@ Conserto: abrir as duas na ficha, e renomear uma das FAH.
 
 ### C-38 (144, 107) · cinco páginas imprimem um numeral de capítulo diferente do índice
 
+> **FEITO** `7e0cddf`. Helper `numeralDe` novo em `site.ts`, lê o `NAV` pelo slug.
+
 `src/lib/site.ts`, constante `NAV`, dá **XV** para `caminhos`, **XVI** para `arcano` e
 **XVII** para `artes/regras`, com comentários que confirmam a intenção. Contra isso:
 
@@ -744,6 +746,9 @@ próxima inserção de capítulo.
 
 ### C-39 (150) · "[object Object]" impresso no meio do capítulo das Artes
 
+> **JÁ RESOLVIDO**, achado ao conferir em 17/09/2026: `{MOLDES.aura}` não existe mais em
+> `artes/regras.astro`. Não é meu sha.
+
 `src/pages/artes/regras.astro:**274**` tem `<p class="muted">{MOLDES.aura}</p>`, e
 `MOLDES.aura` é um **objeto** em `regras.json → arcano.moldes.aura`
 (`{id, medida, figura, nome, compra, escala, nota}`). Astro imprime `[object Object]`.
@@ -756,6 +761,9 @@ e sai crua. As demais ou são string, ou já são acessadas por campo.
 `/artes/regras` não contém "[object Object]" (balde de pós-deploy).
 
 ### C-40 (201, 202) · a /mestre escreveu a tabela de dificuldade à mão e inventou um degrau
+
+> **FEITO** `7e0cddf`. A tabela lê `regras.dificuldade` direto; a nota sobre as duas réguas de
+> "Fácil/Média/Difícil" entrou também.
 
 `src/pages/mestre.astro:53`: `{ dif: '20', nome: 'Muito difícil', ... }`.
 Manda `regras.json → dificuldade`, onde 20 é **"Limite humano"**, que é o nome que os
@@ -771,6 +779,8 @@ soma escolhida (×4/3) e os capítulos chamam de "Fácil" o 5 absoluto. Os núme
 (o `aaltura` de cada linha é `dif × 3/5`), falta a página dizer que são réguas diferentes.
 
 ### C-41 (203) · a /mestre manda intimidação para a Defesa Mental
+
+> **FEITO** `7e0cddf`.
 
 `src/pages/mestre.astro:88`:
 `['Intimidar soldado comum', 'Intimidação', 12, 'vs Defesa Mental do alvo']`.
@@ -834,6 +844,9 @@ O conserto destes **não é no `.md`**. Ver a tabela de donos no alto.
 
 ### C-46 (44) · Vontade listada como Atributo da perícia Integridade
 
+> **FEITO**, com a decisão M-06 de 15/09/2026 (Virtude e Vontade não se somam a nada):
+> `habilidades.json` tira `vontade` da lista de Atributos de Integridade; capítulo II regerado.
+
 `src/data/habilidades.json`, verbete `integridade`:
 `"atributos": ["vontade","vigor","inteligencia","raciocinio"]`.
 **Vontade não é um dos nove Atributos** (`src/data/atributos.json`): é o traço de 0 a 12 do
@@ -844,6 +857,15 @@ Atributo + Habilidade. **Isto é decisão de mesa (M-06)**; o conserto mecânico
 `vontade` da lista) só vale depois dela.
 
 ### C-47 (46, 47, 48, 50, 51) · verbetes de perícia que prometem número e não dão
+
+> **FEITO parcial**: os dois com fonte pronta. **Bloqueio** ganhou o número (escudo hábil, ≥30%
+> do corpo, do redondo pra cima). **primária+secundária** já tinha número e link publicados em
+> `acoes-e-sistema.md` (a tabela "A maior das duas entra no pool") e em
+> `habilidades-secundarias.md:15`; achado ao conferir, sem sha meu. **Continuam pendentes** os
+> três que foram para a mesa como M-07 (Furtividade x armadura, Esquiva encurralada, segunda
+> Firula): a decisão saiu em 16/09/2026, mas implementar as três é mecânica nova (Desgaste,
+> escada de espaço, degradação de Firula), maior que "escrever um número que falta" — registro
+> como trabalho separado, não fiz por conta própria.
 
 Todos moram no campo `descricao` de `src/data/habilidades.json`, e chegam ao capítulo II
 pelo gerador:
@@ -862,6 +884,10 @@ para a mesa (M-07).
 `node scripts/gen-cap-pericias.mjs` e conferir que o capítulo II mudou junto.
 
 ### C-48 (15, 41, 19) · tabelas cortadas sem dizer que a régua continua
+
+> **FEITO**: a tabela do pool (capítulo I) e a do Valor Passivo (capítulo VIII) ganharam a linha
+> de rodapé. A tabela de Especialidade (item 19) já tem a fórmula geral `[nível ÷ 2]` publicada
+> como regra, não como corte de tabela; não achei tabela cortada lá para completar.
 
 `calc.ts:17` não tem teto, e `/mestre` publica a tabela do pool até a soma 16 (8d6). A
 tabela do capítulo I para em 12 sem avisar. A tabela de Defesa Passiva para em 10 pelo

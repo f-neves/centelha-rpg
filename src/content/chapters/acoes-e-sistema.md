@@ -128,6 +128,8 @@ Ele funciona como uma [Defesa](/regras/defesas): é o número que o mundo precis
 |---|:--:|:--:|:--:|:--:|:--:|
 | **Valor Passivo** | 8 | 12 | 16 | 20 | 24 |
 
+<p class="muted">A régua continua na mesma proporção acima de 12: soma 14 dá Valor Passivo 28, soma 16 dá 32, sem teto.</p>
+
 ## O intervalo
 
 Acumulada e Longa declaram um terceiro número: **em que ritmo o progresso acontece**. A escada é fechada, em seis degraus.

@@ -31,6 +31,8 @@ O *pool* básico é determinado pela soma de Atributo + Habilidade. A metade des
 | 11 | 5d6 + 2 |
 | 12 | 6d6 |
 
+<p class="muted">A tabela para em 12 porque é onde o mortal comum termina, mas a régua não tem teto: soma 14 rola 7d6, soma 16 rola 8d6, e assim por diante, na mesma proporção (Centelha, Proezas e Artes é que levam gente até lá).</p>
+
 <p class="muted">Soma **1** (Atributo 1 e Habilidade não treinada, o caso mais comum de personagem recém-criado) não rola dado nenhum: o total fixo de **2** nunca supera a Dificuldade **5**. É de propósito, não bug: quem não tem competência simplesmente não alcança as dificuldades altas, nem as fáceis. A saída não é mexer nesta fórmula (ela sustenta ataque, Defesa, perícia e o bestiário inteiro), é a **Firula de nível 2** (+1d6), que devolve o dado e torna a Dificuldade 5 possível com 4 ou mais.</p>
 
 ### Quem escolhe o par
