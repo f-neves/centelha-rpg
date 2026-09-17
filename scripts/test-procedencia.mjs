@@ -317,7 +317,11 @@ for (const nome of fs.readdirSync(DOCS)) {
   // A varredura que achou os 57 sem âncora e as 69 envelhecidas (rodadas 45/46)
   // usou esta mesma lista antes de entrar aqui.
   const ALVOS = [
-    path.join(DOCS, 'ESTADO.md'), path.join(RAIZ, 'Pendencias.md'),
+    path.join(DOCS, 'ESTADO.md'),
+    path.join(RAIZ, 'docs', 'pendencias', 'B-bestiario.md'),
+    path.join(RAIZ, 'docs', 'pendencias', 'I-mesa-tempo-real.md'),
+    path.join(RAIZ, 'docs', 'pendencias', 'K-combate-linha-do-tempo.md'),
+    path.join(RAIZ, 'docs', 'pendencias', 'L-simulacao-simultaneo.md'),
     path.join(DOCS, 'REVISORA.md'),
     path.join(RAIZ, 'Migracao_Dominio.md'), path.join(RAIZ, 'Dominio.md'),
     path.join(DOCS, 'CONJURACAO.md'), path.join(RAIZ, 'Grid_Mobile.md'),

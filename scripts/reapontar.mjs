@@ -30,7 +30,10 @@ const PORTAO = 'scripts/test-procedencia.mjs';
 
 // Os documentos cujas citações este script mantém. Superconjunto do `ALVOS` do portão.
 const DOCS = [
-  'Pendencias.md',
+  'docs/pendencias/B-bestiario.md',
+  'docs/pendencias/I-mesa-tempo-real.md',
+  'docs/pendencias/K-combate-linha-do-tempo.md',
+  'docs/pendencias/L-simulacao-simultaneo.md',
   'docs/simulacao/ESTADO.md',
   'docs/simulacao/VOZ.md',
   'docs/simulacao/REVISORA.md',
