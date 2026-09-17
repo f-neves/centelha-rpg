@@ -20,7 +20,8 @@ resolver tudo de uma vez.**
 | Letra | Tema | Arquivo | Itens | Abertos | Fechados |
 |---|---|---|---:|---:|---:|
 | A | Arcano · As Artes | [`docs/pendencias/A-arcano-artes.md`](docs/pendencias/A-arcano-artes.md) | 28 | 20 | 8 |
-| B | Bestiário (inclui C1-C4, Trilhas de Feitiçaria, sem seção própria: ver nota abaixo) | [`docs/pendencias/B-bestiario.md`](docs/pendencias/B-bestiario.md) | 18 | 14 | 4 |
+| B | Bestiário | [`docs/pendencias/B-bestiario.md`](docs/pendencias/B-bestiario.md) | 14 | 10 | 4 |
+| C | Trilhas de Feitiçaria | [`docs/pendencias/C-trilhas-feiticaria.md`](docs/pendencias/C-trilhas-feiticaria.md) | 4 | 4 | 0 |
 | D | Proezas e Técnicas | [`docs/pendencias/D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 6 | 4 | 2 |
 | E | Social, Mental e Antecedentes | [`docs/pendencias/E-social-mental-antecedentes.md`](docs/pendencias/E-social-mental-antecedentes.md) | 3 | 2 | 1 |
 | F | Lore | [`docs/pendencias/F-lore.md`](docs/pendencias/F-lore.md) | 10 | 9 | 1 |
@@ -35,13 +36,12 @@ resolver tudo de uma vez.**
 arquivo (`- [ ]` aberto ou parcial, `- [x]` fechado) em 2026-09-17, e não pelo placar
 antigo deste arquivo (que era de 2026-08-17 e estava desatualizado havia semanas).
 
-**Nota sobre a letra C:** não existe, e nunca existiu, uma seção `## C.` própria neste
+**Nota sobre a letra C:** até 2026-09-17 não existia uma seção `## C.` própria neste
 mapa. Os itens **C1** a **C4** (Trilhas de Feitiçaria, a jogada das Artes por Tradição)
 sempre estiveram fisicamente dentro do bloco da letra B, sem cabeçalho próprio, entre
-o B13 e o D1. A divisão preservou essa mesma fronteira: C1-C4 estão no fim de
-`B-bestiario.md`, não num arquivo `C-*.md`. Isso não é erro de digitação nem coisa para
-corrigir sozinho: é como o arquivo já estava. Fica registrado aqui para quem procurar
-"C1" e não achar um tema C na lista acima.
+o B13 e o D1. A primeira divisão preservou essa fronteira dentro de `B-bestiario.md`;
+por pedido do humano, C1-C4 saíram dali e ganharam `C-trilhas-feiticaria.md` próprio,
+listado na tabela acima. As siglas C1-C4 não mudaram.
 
 ## Ordem sugerida
 
@@ -72,6 +72,5 @@ provisória.
   `A-arcano-artes.md` (A21 decidido "ARCO" em 2026-08-19, A22 decidido "AS DUAS" em 2026-08-19). A
   "Ordem sugerida" é texto mais antigo que não foi atualizado quando essas duas fecharam. Não foi
   editada aqui porque o pedido desta reorganização foi mover, não corrigir conteúdo.
-- Vale, numa próxima sessão, decidir se os itens C1-C4 merecem sair de dentro de `B-bestiario.md` e
-  virar tema próprio (talvez fundido com A, já que tratam de Arcano/Tradições, não de bestiário).
-  Não decidido aqui por ser mudança de estrutura, não só de arquivo.
+- **Feito em 2026-09-17:** C1-C4 saíram de `B-bestiario.md` e viraram `C-trilhas-feiticaria.md`,
+  por pedido do humano.
