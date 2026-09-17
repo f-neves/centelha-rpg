@@ -104,7 +104,7 @@ Com um total desconhecido, a régua começa no **Neutro**, a menos que haja uma 
 
 Um ato forte fura a baseline (um elfo que salva a vida de um anão vira, sim, um amigo dele), mas se a relação for abandonada ela escorrega de volta àquela velha desconfiança, não ao Neutro. O ódio herdado é o repouso, não uma sentença.
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>O cortesão Lírio quer que a Dama Vesna, uma desconhecida, o apresente ao Duque (favor de nível <strong>+2</strong>). Ela está no Neutro. Uma conversa boa sobe 1 passo: ainda Neutro. Lírio manda um presente pensado (+1) e depois lhe presta um serviço de verdade (+2): rompe para <strong>+1 Simpatia</strong>. Mais uma conversa boa e chega a <strong>+2 Apreço</strong>, e a apresentação sai sem mais rolagem. Os atos abriram a porta; a conversa terminou o serviço.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>O cortesão Lírio quer que a Dama Vesna, uma desconhecida, o apresente ao Duque (favor de nível <strong>+2</strong>). Ela está no Neutro. Lírio manda um presente pensado (+1) e depois lhe presta um serviço de verdade (+2): rompe para <strong>+1 Simpatia</strong>. Mais uma conversa boa e chega a <strong>+2 Apreço</strong>, e a apresentação sai sem mais rolagem. Os atos abriram a porta; a conversa terminou o serviço.</div>
 
 ---
 
