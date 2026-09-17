@@ -41,7 +41,7 @@
       "dif",
       "alvo"
     ],
-    "definicao": "O alvo de uma tarefa, na mesma régua de Atributo + Habilidade (5 fácil, 10 média, 20 limite humano)."
+    "definicao": "O alvo de uma tarefa, na mesma régua de Atributo + Habilidade (5 fácil, 10 média, 15 difícil, 20 limite humano, 25 excepcional, 30 sobre-humano)."
   },
   {
     "id": "soak",
@@ -120,7 +120,7 @@
       "willpower",
       "força de vontade"
     ],
-    "definicao": "Força de Vontade — reserva (piso 5) gasta para melhorar ações, resistir a efeitos mentais, ignorar penalidades e conjurar."
+    "definicao": "Força de Vontade — reserva (piso 0) gasta para melhorar ações, resistir a efeitos mentais, ignorar penalidades e conjurar."
   },
   {
     "id": "energia",
@@ -136,7 +136,7 @@
     "aliases": [
       "reserva mágica"
     ],
-    "definicao": "Combustível do Arcano: (Centelha × 2) + Vontade. Conjurar custa Mana = nível do efeito."
+    "definicao": "Combustível do Arcano: (Centelha × 2) + Vontade. Conjurar custa Mana = soma dos níveis dos parâmetros escolhidos, menos a Centelha."
   },
   {
     "id": "integridade",
@@ -152,7 +152,7 @@
     "aliases": [
       "especialização"
     ],
-    "definicao": "Treino focado num escopo estreito e NOMEADO de uma Habilidade (ex.: 'espada longa', 'nas sombras'). Cada Habilidade abre até [nível ÷ 2] níveis de Especialidade no total (um quadrado por nível; Habilidade 5: 2; Habilidade 1: nenhuma), que você distribui em especialidades diferentes ou concentra num nome só. Vale só quando o escopo se aplica (o Mestre julga), não em toda rolagem: por nível com aquele nome, role +1d6 e descarte o menor; em valores fixos, +1 por nível. Custa 10 XP por nível na primária, 5 na secundária."
+    "definicao": "Treino focado num escopo estreito e NOMEADO de uma Habilidade (ex.: 'espada longa', 'nas sombras'). Cada Habilidade abre até [nível ÷ 2] níveis de Especialidade no total (um quadrado por nível; Habilidade 5: 2; Habilidade 1: nenhuma), que você distribui em especialidades diferentes ou concentra num nome só. Vale só quando o escopo se aplica (o Mestre julga), não em toda rolagem: por nível com aquele nome, role +1d6 e descarte o menor; em valores fixos, +1 por nível. Custa 12·16·20 XP por nível na primária, 6·8·10 na secundária."
   },
   {
     "id": "banda",
