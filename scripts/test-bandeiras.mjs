@@ -60,7 +60,7 @@ const nucleo = ['n1', 'n2', 'n3', 'n4', 'n5', 'n6'];
 // `folhaDaAcao` (`grid.astro`) — porte em `ajAtq.flat`, gate em `resvalaGate`,
 // nos dois lugares que decidem dano ali (`contaDoLance` e `fim`). Só na MESA
 // — o harness (`scripts/sim/motor.mjs`) continua sem lê-las, porque a segunda
-// bateria não acontece (`Pendencias.md` L25).
+// bateria não acontece (`docs/pendencias/L-simulacao-simultaneo.md` L25).
 const LIGADAS_NO_MOTOR = ['porte', 'gate'];
 ok([...publicadas, ...nucleo].every((b) => B.PERFIL_CORRENTE[b] === LIGADAS_NO_MOTOR.includes(b)),
   `só as bandeiras que o motor aplica estão ligadas (${LIGADAS_NO_MOTOR.length} de 15)`);

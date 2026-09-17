@@ -544,7 +544,7 @@ const AL = await carregar('src/lib/alcance.ts');
   eq([AL.alcancaNoCorpoACorpo(2, true), AL.alcancaNoCorpoACorpo(3, true)], [true, false],
     'e a haste chega a dois, e não a três');
 
-  // L67 (Pendencias.md, decidido em 10/09/2026): o alcance corpo a corpo passa
+  // L67 (docs/pendencias/L-simulacao-simultaneo.md, decidido em 10/09/2026): o alcance corpo a corpo passa
   // a somar o raio do alvo, medido de BORDA A BORDA. Um Enorme (4 m de
   // diâmetro) soma 1,5 hexágono ao braço (1) e à haste (2); um alvo pequeno ou
   // médio nunca ENCURTA o alcance, porque "perto demais" não é penalidade
@@ -558,7 +558,7 @@ const AL = await carregar('src/lib/alcance.ts');
   eq(AL.alcancaNoCorpoACorpo(1, false), true,
     'sem o terceiro parâmetro, o alcance é o de sempre (centro a centro)');
 
-  // L77 (Pendencias.md, decidido em 11/09/2026): o L67 só somava o raio do
+  // L77 (docs/pendencias/L-simulacao-simultaneo.md, decidido em 11/09/2026): o L67 só somava o raio do
   // ALVO; faltava o quanto o porte do próprio ATACANTE estende o alcance do
   // CENTRO dele (`alcanceDoCentro = raio + braço`, `braço = max(0, raio −
   // 0,5)`). O 4º parâmetro é essa metade.
@@ -572,7 +572,7 @@ const AL = await carregar('src/lib/alcance.ts');
   eq([AL.alcancaNoCorpoACorpo(2, true, 0, 0), AL.alcancaNoCorpoACorpo(3, true, 0, 0)], [true, false],
     'e a haste Médio contra Médio também não muda, ainda 2 alcança, 3 não');
 
-  // A conferência contra a tabela do humano (Pendencias.md L77): um Enorme
+  // A conferência contra a tabela do humano (docs/pendencias/L-simulacao-simultaneo.md L77): um Enorme
   // (diâmetro 4 m) tem `alcanceDoCentro = 2 + 1,5 = 3,5 m`, que em hexágonos
   // (escala 1 m) soma 3 ao alcance do CENTRO, o 3,5 m menos os 0,5 m de um
   // atacante Médio que os `HEX_*` já embutem.
@@ -647,7 +647,7 @@ const AL2 = AL; // mesmo módulo já carregado na seção 6, o Interpor usa a me
   ok(/alcance do agressor/.test(cac(2).porque), 'e o motivo é dito');
   eq(cac(2, true).pode, true, 'com haste, dois hexágonos ainda alcançam');
 
-  // L76 (Pendencias.md, RESOLVIDO pela fórmula do L77 em 11/09/2026): a
+  // L76 (docs/pendencias/L-simulacao-simultaneo.md, RESOLVIDO pela fórmula do L77 em 11/09/2026): a
   // pergunta corpo a corpo é se o AGRESSOR alcança a casa onde o
   // INTERPOSITOR terminaria: `alcanceDoCentro(agressor) + raio(interpositor)`,
   // os mesmos dois parâmetros novos de `alcancaNoCorpoACorpo`.

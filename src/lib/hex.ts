@@ -166,7 +166,7 @@ export const alemDe = (de: Hex, alvo: Hex): Hex =>
 /**
  * A RETA entre dois hexágonos: a sequência exata de casas que o segmento cruza.
  *
- * Existe para o Interpor à distância (Pendencias.md, L34 §6, decidido em
+ * Existe para o Interpor à distância (docs/pendencias/L-simulacao-simultaneo.md, L34 §6, decidido em
  * 07/09/2026): "dentro do alcance" e "na linha do golpe" são perguntas
  * diferentes, e só esta responde a segunda. `afastar` (`artes-grid-mesa.ts:1163`)
  * arredonda `q` e `r` por eixo, separadamente, o que não garante hexágonos

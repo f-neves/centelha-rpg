@@ -1,6 +1,6 @@
 // test-l84-caidofila-mesa.mjs · caído fica na fila, e não leva o atraso de acordar.
 //
-// Pendencias.md L84 (rodada 50): `caido` sai do balde `FORA_DA_FILA` (a peça
+// docs/pendencias/L-simulacao-simultaneo.md L84 (rodada 50): `caido` sai do balde `FORA_DA_FILA` (a peça
 // está prona mas continua lutando). O achado do Arquiteto que este arquivo
 // prova: cinco Artes de `grid.forma: movimento` (`src/data/efeitos.json`,
 // Empurrão entre elas) aplicam `caido` ao alvo, sem depender de colisão

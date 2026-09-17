@@ -34,7 +34,7 @@
 // `guard += pressao` mais `efDef − pressao * guard` dá −4 por ataque, e o capítulo IX
 // (`combate.md:233`) escreve −2. O padrão agora é o correto; `pressaoDupla: true` reproduz o
 // regime antigo, e é o que `sim-ticks.mjs --legado` usa para reconferir as tabelas publicadas
-// antes dessa data. Ver K13 no `Pendencias.md`.
+// antes dessa data. Ver K13 no `docs/pendencias/K-combate-linha-do-tempo.md`.
 //
 // A CENTELHA soma **+1** por ponto no ataque e nas defesas (K23), como `regras.json`,
 // `defesas.md` e `centelha.md`. Até 20/08 este motor usava ×2; em espelho o efeito se cancela,

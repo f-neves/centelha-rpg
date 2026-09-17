@@ -1,6 +1,6 @@
 // forca-empurrao.ts · a régua de erguer e arremessar, num lugar só.
 //
-// Pendencias.md L85 (rodada 54): a conta de arremesso morava inteira dentro de
+// docs/pendencias/L-simulacao-simultaneo.md L85 (rodada 54): a conta de arremesso morava inteira dentro de
 // `renderForca()`, em `ficha-engine.ts`, fechada em cima de `S`/`el`/`A`/`SK`
 // (o estado e o DOM da ficha). Medido antes de escrever qualquer linha: o
 // NÚCLEO da conta (`dist(w)`, as sete constantes de `regras.json.forca` e a

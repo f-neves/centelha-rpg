@@ -519,7 +519,7 @@ const CUSTOM = (() => {
  *
  * O bestiário nunca teve a chave `pericias`: nenhuma das 309. E isso travava
  * TODA regra de oposição em que a criatura está de um dos lados, que são
- * catorze (ver o L35 no `Pendencias.md`), a começar pela que o combate acabou
+ * catorze (ver o L35 no `docs/pendencias/L-simulacao-simultaneo.md`), a começar pela que o combate acabou
  * de pedir: a Percepção Passiva do alvo contra a Furtividade de quem ataca do
  * escuro (`coracao-do-sistema.md:59`).
  *

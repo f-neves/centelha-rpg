@@ -95,11 +95,11 @@ const CAIDO_LONGE = P.get('longe') === '1';
 // Ver o bloco `if (BANDEIRAS)` mais abaixo para o porquê de cada peça.
 const BANDEIRAS = P.get('cena') === 'bandeiras';
 
-// A CENA DO CORPO A CORPO DE BORDA: `?cena=corpoacorpo` (Pendencias.md L67,
+// A CENA DO CORPO A CORPO DE BORDA: `?cena=corpoacorpo` (docs/pendencias/L-simulacao-simultaneo.md L67,
 // decidido em 10/09/2026). Ver o bloco `if (CORPOACORPO)` mais abaixo.
 const CORPOACORPO = P.get('cena') === 'corpoacorpo';
 
-// A CENA DO FORA DA VEZ: `?cena=foradavez` (Pendencias.md L68, decidido em
+// A CENA DO FORA DA VEZ: `?cena=foradavez` (docs/pendencias/L-simulacao-simultaneo.md L68, decidido em
 // 10/09/2026). Ver o bloco `if (FORADAVEZ)` mais abaixo.
 const FORADAVEZ = P.get('cena') === 'foradavez';
 
@@ -641,7 +641,7 @@ if (BANDEIRAS) {
 }
 
 /**
- * A CENA DO CORPO A CORPO DE BORDA `?cena=corpoacorpo` (Pendencias.md L67,
+ * A CENA DO CORPO A CORPO DE BORDA `?cena=corpoacorpo` (docs/pendencias/L-simulacao-simultaneo.md L67,
  * decidido em 10/09/2026): o alcance corpo a corpo passou a medir de BORDA A
  * BORDA, somando o raio do alvo, e o critério de aceitação é uma PROIBIÇÃO
  * (não remover a segunda passada de `caminharHex` que afrouxa o veto, porque
@@ -672,7 +672,7 @@ if (BANDEIRAS) {
  *     proibição do L67 protege, e não depende do raio do alvo em ponto
  *     nenhum: prova que consertar `at` não reabriu o defeito de `vz`.
  *
- *   `en` ataca `md` (Pendencias.md L77, decidido em 11/09/2026): a metade que
+ *   `en` ataca `md` (docs/pendencias/L-simulacao-simultaneo.md L77, decidido em 11/09/2026): a metade que
  *     faltava no L67, o raio do PRÓPRIO ATACANTE. `md` é Médio, em `q:4,r:9`,
  *     5 hexágonos de `en`. O alcance NOVO do Aboleth atacando é 4
  *     (`HEX_CORPO_A_CORPO(1) + alcanceCentroExtraHex(en)(3) +
@@ -693,7 +693,7 @@ if (CORPOACORPO) {
   // comentário do código), e sem a folga esse zigue-zague cruzaria q ou r
   // negativo, fora do tabuleiro.
   const por = [
-    // `en` ganha um golpe JÁ AGENDADO contra `md` (Pendencias.md L77, decidido
+    // `en` ganha um golpe JÁ AGENDADO contra `md` (docs/pendencias/L-simulacao-simultaneo.md L77, decidido
     // em 11/09/2026): o raio do PRÓPRIO ATACANTE, que faltava. `dados` escrito
     // à mão (`classe: 'leve'`) é o mesmo caminho que `resumoDe` usa para uma
     // peça sem ficha (o ajuste por instância vence a base do bestiário), só
@@ -762,7 +762,7 @@ if (CORPOACORPO) {
 }
 
 /**
- * A CENA DO FORA DA VEZ `?cena=foradavez` (Pendencias.md L68, decidido em
+ * A CENA DO FORA DA VEZ `?cena=foradavez` (docs/pendencias/L-simulacao-simultaneo.md L68, decidido em
  * 10/09/2026): arrastar uma peça que não está na vez dela pergunta CORRIGIR
  * POSIÇÃO ou AGIR FORA DO TURNO, e a segunda resposta se comporta diferente
  * em cada fase (`foraDeHora`, `combate-tempo.ts`). `encontros.tick_atual` é
@@ -839,7 +839,7 @@ if (FORADAVEZ) {
 }
 
 /**
- * A CENA DA OCUPAÇÃO `?cena=ocupacao` (Pendencias.md L70, rodada 49): arrastar
+ * A CENA DA OCUPAÇÃO `?cena=ocupacao` (docs/pendencias/L-simulacao-simultaneo.md L70, rodada 49): arrastar
  * uma peça para uma casa ocupada tem de recusar, e a recusa tem de dizer o
  * porquê (`gravarToken`, `grid.astro:2660`, é quem confere `ocupadoPor` agora,
  * não mais `porNoMapa` calado).
@@ -881,7 +881,7 @@ if (OCUPACAO) {
 }
 
 /**
- * A CENA DO CAÍDO NA FILA `?cena=caidofila` (Pendencias.md L84, rodada 50):
+ * A CENA DO CAÍDO NA FILA `?cena=caidofila` (docs/pendencias/L-simulacao-simultaneo.md L84, rodada 50):
  * prova que `caido`, posto à mão pelo diálogo de condições do mestre, NÃO
  * tira mais a peça da fila (`foraDaFila`, `grid.astro`, logo depois de
  * `podeDividir`) nem cobra o atraso de "voltar" (`DELAY_AO_LEVANTAR`,
@@ -919,7 +919,7 @@ if (CAIDOFILA) {
 }
 
 /**
- * A CENA DO LEVANTAR `?cena=levantar` (Pendencias.md L84, rodada 50):
+ * A CENA DO LEVANTAR `?cena=levantar` (docs/pendencias/L-simulacao-simultaneo.md L84, rodada 50):
  * `levantarDoChao` (`grid.astro`), a peça `caido` que decide ficar de pé.
  *
  *   `pe`               · caído SOZINHO no hexágono: levanta no lugar, sem
@@ -1035,7 +1035,7 @@ if (OCUPACAODETECTOR) {
 }
 
 /**
- * A CENA DO PASSO CERCADO `?cena=passocolossal` (Pendencias.md L93, rodada
+ * A CENA DO PASSO CERCADO `?cena=passocolossal` (docs/pendencias/L-simulacao-simultaneo.md L93, rodada
  * 53): `md` (Médio) nasce colado num Colossal (`mon-tarrasque`, raio 8 m) e
  * declara um deslocamento puro de 1 hexágono. O passo estrito
  * (`ocupadoPor`) não avança nenhum passo (tudo ao redor está no raio do

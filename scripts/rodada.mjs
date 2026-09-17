@@ -89,7 +89,7 @@ function acharGemeo(base) {
  * ANCESTRAL do HEAD real, não um topo mais novo: o aviso herdava um TOPO
  * velho, e `git log SHA..TOPO` saía vazio prometendo "nada de fora entrou"
  * quando o oposto podia ser verdade. Achado na revisão da rodada 27
- * (`Pendencias.md` L61, item 2).
+ * (`docs/pendencias/L-simulacao-simultaneo.md` L61, item 2).
  *
  * As quatro leituras possíveis de `origemMain` contra `sha`:
  *   sem origin, ou iguais         → TOPO = SHA (nada para comparar)
@@ -184,7 +184,7 @@ if (ENVIAR) {
 
   // SHA E TOPO RELIDOS AGORA, NÃO OS QUE O `abrir` ESCREVEU. Entre abrir e
   // enviar a árvore pode andar — a rodada 28 emendou o commit de trabalho no
-  // meio do caminho (`Pendencias.md` L61, item 2 · sugestão da Revisora) — e um
+  // meio do caminho (`docs/pendencias/L-simulacao-simultaneo.md` L61, item 2 · sugestão da Revisora) — e um
   // SHA congelado cedo demais aponta para um commit que já não existe mais,
   // mesmo com a árvore idêntica. `HEAD` aqui É o sha de trabalho: o aviso ainda
   // não foi commitado, então o topo do branch é exatamente o commit que se está

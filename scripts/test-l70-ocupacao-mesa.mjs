@@ -1,6 +1,6 @@
 // test-l70-ocupacao-mesa.mjs · pôr uma peça em cima de outra recusa, e diz o porquê.
 //
-// Pendencias.md L70 (rodada 49): a conferência de ocupação passa a morar em
+// docs/pendencias/L-simulacao-simultaneo.md L70 (rodada 49): a conferência de ocupação passa a morar em
 // `gravarToken` (`grid.astro:2660`), o estrangulamento por onde os dois
 // backends (upsert direto do mestre, RPC `jogador_mover` do jogador) gravam
 // posição. Antes, `porNoMapa` conferia `ocupadoPor` e recusava CALADA (só

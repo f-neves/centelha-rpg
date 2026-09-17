@@ -1,12 +1,12 @@
 // test-l70-empurrao.mjs · o empurrão das Artes grava pela regra de ocupação de verdade.
 //
-// Pendencias.md L70 (rodada 50, o segundo estrangulamento): `deslocar`
+// docs/pendencias/L-simulacao-simultaneo.md L70 (rodada 50, o segundo estrangulamento): `deslocar`
 // (`src/lib/artes-grid-mesa.ts`), a Arte que empurra/arrasta/teleporta, escrevia
 // posição direto em `arena_tokens`, sem conferir ocupação nenhuma, cliente ou
 // servidor. Agora ela chama `ctx.gravarToken` (o mesmo estrangulamento que a
 // rodada 49 pôs em `grid.astro`) por `empurrarAteLivre`, que tenta do passo mais
 // longe até o mais curto e para na primeira casa livre: a decisão do humano
-// para o destino ocupado (`Pendencias.md` L83, `PARA_NA_ULTIMA_CASA_LIVRE`).
+// para o destino ocupado (`docs/pendencias/L-simulacao-simultaneo.md` L83, `PARA_NA_ULTIMA_CASA_LIVRE`).
 //
 // Este teste é de Node puro (sem navegador): `empurrarAteLivre` só depende de
 // `ctx.gravarToken`, e o resto do módulo (diálogos, DOM) não entra no caminho
@@ -115,7 +115,7 @@ console.log('\n· empurrarAteLivre: erro de verdade (não ocupação) não tenta
   ok(chamadas.length === 1, `UMA chamada só, não tentou encurtar (achou ${chamadas.length})`);
 }
 
-console.log('\n· PARA_NA_ULTIMA_CASA_LIVRE é a decisão do humano (Pendencias.md L83): true');
+console.log('\n· PARA_NA_ULTIMA_CASA_LIVRE é a decisão do humano (docs/pendencias/L-simulacao-simultaneo.md L83): true');
 ok(PARA_NA_ULTIMA_CASA_LIVRE === true, `constante exportada é true (achou ${PARA_NA_ULTIMA_CASA_LIVRE})`);
 
 // -------------------------------------------------- L84: quem esbarra cai

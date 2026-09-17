@@ -611,7 +611,7 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
       + `(${comAte.map(([n]) => `mesa-condicoes.ts:${n}`).join(', ')}). `
       + 'A peneira do `varrerCondicoesVencidas` é "tem `ate`?", e ela só vale enquanto nada '
       + 'posto à mão tiver prazo: do jeito que está, a varredura vai derrubar o que o mestre pôs. '
-      + 'Ver L38 no Pendencias.md.');
+      + 'Ver L38 no docs/pendencias/L-simulacao-simultaneo.md.');
   }
 }
 

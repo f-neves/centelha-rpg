@@ -1,6 +1,6 @@
 // test-l86a-cura.mjs · a cura das Artes no tabuleiro, contra a régua e contra a mesa.
 //
-// Pendencias.md L86a (rodada 55): das sete Artes de cura, quatro eram "soma
+// docs/pendencias/L-simulacao-simultaneo.md L86a (rodada 55): das sete Artes de cura, quatro eram "soma
 // simples" na conta (`mao-firme` 1 PV/turno, `acelerar-a-cura` 1 PV/nível,
 // `cura-guardada` 1 PV/ponto, `maos-sobre-a-multidao` 1 PV/nível em área,
 // DECIDIDO PELO HUMANO em 12/09 mas ainda não escrito em `efeitos.json`, que
@@ -254,7 +254,7 @@ console.log('· a régua (`curaDoEfeito`) só lê `pontos`, contra o catálogo r
     '`acelerar-a-cura` sem `nivelArte` devolve null: tem `porNivel` desde a rodada 56, mas sem nível não há conta a fazer');
   ok(M.curaDoEfeito(M.EFEITO['cura-guardada']) === null,
     '`cura-guardada` devolve null: "por ponto" não tem `pontos` nem `porNivel`, e "ponto" nem está definido');
-  // O humano decidiu em 12/09 (Pendencias.md L86): "1 PV por nível da Arte",
+  // O humano decidiu em 12/09 (docs/pendencias/L-simulacao-simultaneo.md L86): "1 PV por nível da Arte",
   // e o Arquiteto já escreveu isso no JSON (`tipo: "fixo"`, não mais
   // "padrao"). Continua devolvendo null, mas por outro motivo agora: falta
   // `porNivel`, DE PROPÓSITO (`forma: "zona"` não tem caminho de resolução

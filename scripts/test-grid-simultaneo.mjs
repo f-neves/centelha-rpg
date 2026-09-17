@@ -573,7 +573,7 @@ async function cenaAlvoQueFoge(br, url) {
   await p.setViewport({ width: 1400, height: 950 });
   const erros = [];
   p.on('pageerror', (e) => erros.push(e.message));
-  // `bench=8`, E NÃO O `bench=12` PADRÃO das outras cenas (Pendencias.md L93,
+  // `bench=8`, E NÃO O `bench=12` PADRÃO das outras cenas (docs/pendencias/L-simulacao-simultaneo.md L93,
   // rodada 53, achado do assessor): com 12 peças a bancada preenche uma
   // SEGUNDA fileira (`(i*3) % cols`, `mesa-mock.mjs`) de Grande/Enorme a cada
   // 3 hexágonos, e Enorme (raio 2 m) ao lado de Enorme 3 hexágonos à frente
@@ -595,7 +595,7 @@ async function cenaAlvoQueFoge(br, url) {
   const hexLivre = (ref, modo, faixa) => hexLivreDe(p, ref, modo, faixa);
   const soltarEm = (cid, ponto) => soltarEmDe(p, cid, ponto);
 
-  // C003 PRECISA ESTAR NA VEZ (L68, Pendencias.md, rodada 40): o `bench=12`
+  // C003 PRECISA ESTAR NA VEZ (L68, docs/pendencias/L-simulacao-simultaneo.md, rodada 40): o `bench=12`
   // espalha `tick: i % 4` só para a fila mostrar fases variadas na tela, e com
   // `tick_atual` em 0 isso deixa c003 (tick 3) fora da vez por acidente de
   // montagem — o arrasto dela abriria o diálogo NOVO do L68 (`fdv-dlg`) em vez

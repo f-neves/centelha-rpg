@@ -1,6 +1,6 @@
 // test-l68-foradavez-mesa.mjs · arrastar peça fora da vez, nas quatro fases.
 //
-// Pendencias.md L68 (decidido em 10/09/2026): arrastar uma peça que não está
+// docs/pendencias/L-simulacao-simultaneo.md L68 (decidido em 10/09/2026): arrastar uma peça que não está
 // na vez dela para de gravar `mover` em silêncio e pergunta qual das duas é,
 // CORRIGIR POSIÇÃO (sem custo, verbo "corrigiu") ou AGIR FORA DO TURNO (roteia
 // para `foraDeHora`, que já sabe responder nas quatro fases). O gatilho é a

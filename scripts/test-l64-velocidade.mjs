@@ -1,6 +1,6 @@
 // test-l64-velocidade.mjs · separa sentinela e magnitude no campo `velocidade`.
 //
-// Pendencias.md L64 (rodada 57): `Condicao.velocidade` carregava duas coisas
+// docs/pendencias/L-simulacao-simultaneo.md L64 (rodada 57): `Condicao.velocidade` carregava duas coisas
 // com o mesmo número. Três condições usam grandeza de verdade (`acelerado`
 // −2, `retardado` +2, `terreno-dificil` +1); uma, `fora-do-tempo`, usava a
 // SENTINELA `-99` para dizer "não age", funcionando hoje por saturação

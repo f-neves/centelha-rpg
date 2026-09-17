@@ -417,7 +417,7 @@ const SETAS = [
     </form>
   </dialog>
 
-  {/* L68 (Pendencias.md, decidido em 10/09/2026): arrastar uma peça que não
+  {/* L68 (docs/pendencias/L-simulacao-simultaneo.md, decidido em 10/09/2026): arrastar uma peça que não
       está na vez dela pergunta qual das duas é, em vez de gravar `mover` em
       silêncio. A pergunta é nova; o que cada resposta faz já existe (o
       precedente da correção sem custo é `mudarEfeito`, `artes-grid-mesa.ts`;
@@ -2647,7 +2647,7 @@ const SETAS = [
    * nome e no `oculto` do inimigo escondido. As funções `jogador_*` conferem
    * quem está pedindo e escrevem só o que aquele verbo permite.
    *
-   * TOCA A CAMPAINHA NO SUCESSO desde o L87 (Pendencias.md, rodada 51):
+   * TOCA A CAMPAINHA NO SUCESSO desde o L87 (docs/pendencias/L-simulacao-simultaneo.md, rodada 51):
    * `pv_atual`, `mana_atual` e `condicoes` são sempre assunto de `combatentes`,
    * então não há o que rotear, e antes desta rodada os 9 chamadores decidiam
    * cada um por conta própria se avisava, quando avisava e em qual ordem. Dois
@@ -3438,7 +3438,7 @@ const SETAS = [
 
   /**
    * Quanto o PORTE de um alvo ESTENDE o alcance corpo a corpo, em hexágonos
-   * (Pendencias.md L67, decidido em 10/09/2026: o alcance se mede de BORDA A
+   * (docs/pendencias/L-simulacao-simultaneo.md L67, decidido em 10/09/2026: o alcance se mede de BORDA A
    * BORDA, não de centro a centro).
    *
    * O raio de um Médio (0,5 m) já está embutido no "1 hexágono alcança" de
@@ -3463,7 +3463,7 @@ const SETAS = [
 
   /**
    * Quanto o PORTE do próprio ATACANTE estende o alcance do CENTRO dele, em
-   * hexágonos (Pendencias.md L77, decidido em 11/09/2026).
+   * hexágonos (docs/pendencias/L-simulacao-simultaneo.md L77, decidido em 11/09/2026).
    *
    * A regra: `alcanceDoCentro = raio + braço`, `braço = max(0, raio − 0,5)`.
    * Os `HEX_CORPO_A_CORPO`/`HEX_HASTE` de hoje já embutem os 0,5 m de um
@@ -5964,7 +5964,7 @@ const SETAS = [
       }
       let atravessou = mira !== alvoPos && (novo.q !== pos.q || novo.r !== pos.r);
       if (novo.q !== pos.q || novo.r !== pos.r) {
-        // L93 (Pendencias.md, rodada 53): os TRÊS problemas do mesmo
+        // L93 (docs/pendencias/L-simulacao-simultaneo.md, rodada 53): os TRÊS problemas do mesmo
         // descuido. (1) marca PENDENTE, mesmo gesto do L88 em `porNoMapa`,
         // porque a posição otimista abaixo pode ser exatamente a que a
         // gravação recusa a seguir. (2) CONFERE `error` e desfaz o cache:
@@ -6388,7 +6388,7 @@ const SETAS = [
   }
 
   /**
-   * O DIÁLOGO ENTRE CORRIGIR E AGIR (L68, Pendencias.md, decidido em
+   * O DIÁLOGO ENTRE CORRIGIR E AGIR (L68, docs/pendencias/L-simulacao-simultaneo.md, decidido em
    * 10/09/2026), quando o arrasto solta uma peça que NÃO está na vez dela
    * (`chegouAVez(c)`, o predicado da PEÇA, e não `grupoDaVez()` inteiro: o
    * gatilho que faltava para o item não virar modal em toda arrumação comum
@@ -6483,7 +6483,7 @@ const SETAS = [
    * atravessa o alvo neste Tick já não está preparando, e o
    * `varrerCondicoesVencidas` só roda no fim, junto dos efeitos.
    *
-   * L87 (Pendencias.md, rodada 51): esta função nunca avisou a campainha
+   * L87 (docs/pendencias/L-simulacao-simultaneo.md, rodada 51): esta função nunca avisou a campainha
    * sozinha, e um dos dois chamadores (`declararAtaqueSimultaneo`) também
    * não avisava depois dela, um buraco de verdade medido nesta rodada
    * (`gravarRelogio` avisa ANTES desta escrita, não depois). Fechado por
@@ -7001,7 +7001,7 @@ const SETAS = [
       const eu = COMBS.find((c: any) => c.id === id);
       if (outro && eu && TOKENS[id]) { await resolverAtaque(eu, outro); return; }
       if (!destino) return;
-      // L68 (Pendencias.md, decidido em 10/09/2026): arrastar peça do mapa que
+      // L68 (docs/pendencias/L-simulacao-simultaneo.md, decidido em 10/09/2026): arrastar peça do mapa que
       // NÃO está na vez dela pergunta qual das duas é, em vez de gravar
       // `mover` em silêncio (o gatilho é a vez, não a fase, e é por isso que
       // este bloco vem ANTES do que decide COMO ela anda). `chegouAVez(eu)`,
@@ -7447,7 +7447,7 @@ const SETAS = [
 
   // ============================================================== gravar
   /**
-   * `motivo` é o L68 (Pendencias.md, decidido em 10/09/2026): a MARCA que o
+   * `motivo` é o L68 (docs/pendencias/L-simulacao-simultaneo.md, decidido em 10/09/2026): a MARCA que o
    * registro guarda quando o arrasto não é a vez da peça, e só entra quando
    * `perguntarForaDaVez` (abaixo) já perguntou qual das duas era.
    *
@@ -7461,7 +7461,7 @@ const SETAS = [
    * Sem `motivo`, o comportamento é o de sempre: "moveu", com o custo normal.
    */
   /**
-   * DEVOLVE `{ error }` desde o L66 (Pendencias.md, achado do Arquiteto,
+   * DEVOLVE `{ error }` desde o L66 (docs/pendencias/L-simulacao-simultaneo.md, achado do Arquiteto,
    * rodada 50): antes disso a função mostrava o motivo da recusa ao
    * USUÁRIO (`uiErro`) e voltava sem dizer nada a QUEM CHAMA, então nenhum
    * chamador conseguia saber se o movimento entrou ou não sem reler
@@ -7528,7 +7528,7 @@ const SETAS = [
 
   /**
    * LEVANTAR, quando `caido` está dividindo o hexágono com outra peça
-   * (Pendencias.md L84, decisão do humano em 12/09/2026).
+   * (docs/pendencias/L-simulacao-simultaneo.md L84, decisão do humano em 12/09/2026).
    *
    * NÃO CONFUNDIR com `levantar(gente)`, lá em cima: aquela é o "acordar" de
    * quem SAIU da fila (inconsciente, morrendo…) e volta com o atraso de
@@ -7542,7 +7542,7 @@ const SETAS = [
    * o Tick de deslocamento por `cobrarDeslocamento`, nenhum número novo
    * aqui). SEM hexágono livre ao lado, a peça RECUSA com o motivo: a outra
    * metade, ficar de pé NO MESMO hexágono por disputa de (Força ou Destreza)
-   * + Briga com −2 para quem está deitado, é `Pendencias.md` L83, ainda sem
+   * + Briga com −2 para quem está deitado, é `docs/pendencias/L-simulacao-simultaneo.md` L83, ainda sem
    * decisão, e esta função não inventa uma rolagem para preenchê-la.
    *
    * A CHECAGEM DE "ESTÁ DIVIDINDO" não usa `ocupadoPor`: aquela função isenta

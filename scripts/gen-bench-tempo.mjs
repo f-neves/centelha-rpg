@@ -132,7 +132,7 @@ const REGRAS_TEXTO = [
     <b>&minus;2</b>. O padrao agora e o correto. <code>node scripts/sim-ticks.mjs --legado</code>
     reproduz o regime antigo.
     <p class="nota">Nao e detalhe: a curva do Preparo do arco (&sect;7) <b>inverte</b>. Com &minus;4 o
-    Preparo custa win rate; com &minus;2 ele paga. Ver K13 no Pendencias.md.</p>`,
+    Preparo custa win rate; com &minus;2 ele paga. Ver K13 no docs/pendencias/K-combate-linha-do-tempo.md.</p>`,
   },
   {
     id: 'defarma-k14', titulo: 'A bancada so mede o canto "todo mundo esquiva"', estado: 'aberto',

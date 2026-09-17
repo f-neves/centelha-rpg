@@ -1,6 +1,6 @@
 // test-l93-passocolossal-mesa.mjs · a gravação recusa, e o registro não mente.
 //
-// Pendencias.md L93 (rodada 53): o passo automático do Tick
+// docs/pendencias/L-simulacao-simultaneo.md L93 (rodada 53): o passo automático do Tick
 // (`avancarTickSimultaneo`, `grid.astro`) tinha os mesmos três problemas do
 // achado do L88, na mesma passagem: (1) a posição otimista entrava em
 // `TOKENS` sem marcar `POSICAO_PENDENTE`; (2) o `await gravarToken` não

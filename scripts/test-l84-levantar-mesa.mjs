@@ -1,12 +1,12 @@
 // test-l84-levantar-mesa.mjs · caído levanta: sozinho no lugar, dividindo vai
 // para o lado, sem hexágono livre recusa com o motivo.
 //
-// Pendencias.md L84 (rodada 50, decisão do humano em 12/09/2026): a peça
+// docs/pendencias/L-simulacao-simultaneo.md L84 (rodada 50, decisão do humano em 12/09/2026): a peça
 // `caido` que decide ficar de pé, dividindo o hexágono com outra peça, se
 // desloca para um hexágono ADJACENTE LIVRE (`levantarDoChao`, `grid.astro`,
 // logo depois de `porNoMapa`). SEM hexágono livre, ela recusa com o motivo,
 // SEM inventar rolagem nenhuma: a metade que falta, ficar de pé NO MESMO
-// hexágono por disputa de (Força ou Destreza) + Briga, é `Pendencias.md` L83,
+// hexágono por disputa de (Força ou Destreza) + Briga, é `docs/pendencias/L-simulacao-simultaneo.md` L83,
 // ainda sem decisão.
 //
 // A CENA `?cena=levantar` (`mesa-mock.mjs`) monta três casos, cada um com o

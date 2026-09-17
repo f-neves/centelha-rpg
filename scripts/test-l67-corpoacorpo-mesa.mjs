@@ -1,6 +1,6 @@
 // test-l67-corpoacorpo-mesa.mjs · o corpo a corpo de borda, medido no tabuleiro.
 //
-// Pendencias.md L67 (decidido em 10/09/2026): o alcance corpo a corpo passa a
+// docs/pendencias/L-simulacao-simultaneo.md L67 (decidido em 10/09/2026): o alcance corpo a corpo passa a
 // somar o raio do alvo (borda a borda, não centro a centro), e o critério de
 // aceitação é uma PROIBIÇÃO: não remover a segunda passada de `caminharHex`
 // que afrouxa o veto, porque ela serve outro caso (o Enorme parado ao lado

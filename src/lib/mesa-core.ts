@@ -107,7 +107,7 @@ export const tierCls = (estado: string) => 't-' + norm(estado).replace(/\s+/g, '
  * Fraqueza e resistência (a elemento/tipo/natureza) de uma criatura do bestiário.
  *
  * O dado mora em `combate.fraquezas`/`combate.resistencias` (`gen-monsters.mjs`),
- * NUNCA no topo do objeto — achado B12 do Pendencias.md: quatro lugares liam do
+ * NUNCA no topo do objeto — achado B12 do docs/pendencias/B-bestiario.md: quatro lugares liam do
  * topo (sempre `[]`, porque nenhuma das 309 tem o campo lá) e nenhum dano de
  * Arte no Grid era agravado. Ler daqui em vez de repetir `m.combate?.fraquezas`
  * é o que impede o quinto lugar de nascer errado.

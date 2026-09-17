@@ -1,6 +1,6 @@
 // test-l85-forca-empurrao.mjs · a régua do empurrão, contra a tabela de verdade.
 //
-// Pendencias.md L85 (rodada 54): a linha que decidia a distância do empurrão
+// docs/pendencias/L-simulacao-simultaneo.md L85 (rodada 54): a linha que decidia a distância do empurrão
 // das Artes lia `escolhas['Força']`, que não existe em nenhum dos doze
 // efeitos de movimento (`grid.forma === 'movimento'`), e caía sempre no
 // Alcance escolhido pelo jogador · a distância que um corpo voa era governada

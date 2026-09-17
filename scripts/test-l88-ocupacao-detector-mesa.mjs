@@ -1,6 +1,6 @@
 // test-l88-ocupacao-detector-mesa.mjs · o mestre confere o RESULTADO, não só a escrita.
 //
-// Pendencias.md L88 (rodada 52): `conferirOcupacao` (`grid.astro`), a
+// docs/pendencias/L-simulacao-simultaneo.md L88 (rodada 52): `conferirOcupacao` (`grid.astro`), a
 // resposta a três caminhos que produzem o mesmo estado ilegal (dois corpos
 // que não podem dividir, dividindo) sem precisar conhecer nenhum deles: a
 // corrida entre clientes do L70, o retorno PASSIVO do L84 (curar alguém

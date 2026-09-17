@@ -1,6 +1,6 @@
 // test-l77-alcancecentro-mesa.mjs · o raio do PRÓPRIO ATACANTE, na mesa.
 //
-// Pendencias.md L77 (decidido em 11/09/2026): o L67 só somava o raio do
+// docs/pendencias/L-simulacao-simultaneo.md L77 (decidido em 11/09/2026): o L67 só somava o raio do
 // ALVO ao alcance corpo a corpo; o raio do próprio ATACANTE nunca entrava,
 // então um Enorme atacando não alcançava mais longe por ser Enorme. A regra
 // (`alcanceDoCentro = raio + braço`, `braço = max(0, raio - 0,5)`) e a

@@ -80,8 +80,8 @@ export function faixaDeDistancia(idOuNome: string | null | undefined, metros: nu
  * na tela.
  *
  * `raioAlvoHex` é o raio do ALVO, em hexágonos, medido de borda a borda
- * (Pendencias.md L67, 10/09/2026); `raioAtacanteHex` é o quanto o porte do
- * próprio ATACANTE estende o alcance do centro dele (Pendencias.md L77,
+ * (docs/pendencias/L-simulacao-simultaneo.md L67, 10/09/2026); `raioAtacanteHex` é o quanto o porte do
+ * próprio ATACANTE estende o alcance do centro dele (docs/pendencias/L-simulacao-simultaneo.md L77,
  * decidido em 11/09/2026 · `alcanceDoCentro = raio + braço`, e os `HEX_*` de
  * hoje já embutem os 0,5 m de um atacante Médio, então este parâmetro é só o
  * que PASSA disso). Quem chama já converteu porte e escala da arena para os
@@ -102,7 +102,7 @@ export function alcancaNoCorpoACorpo(
 /**
  * O TETO DE ALCANCE PARA SE INTERPOR entre um golpe e um aliado.
  *
- * Decidido em 07/09/2026 (Pendencias.md, L34 §6): não inventa número novo, reusa
+ * Decidido em 07/09/2026 (docs/pendencias/L-simulacao-simultaneo.md, L34 §6): não inventa número novo, reusa
  * a régua de alcance que já existe, medida do AGRESSOR (e não do aliado
  * original). No corpo a corpo isso é só "já estar adjacente a ele" — a régua
  * dizendo a verdade sobre o que interpor contra uma espada exige, e a reta é
@@ -116,7 +116,7 @@ export function alcancaNoCorpoACorpo(
  * regra do resto deste arquivo, "avisa e não impede".
  *
  * **A pergunta, no corpo a corpo, é se o AGRESSOR alcança a casa onde o
- * interpositor terminaria** (Pendencias.md L76, resolvido pela fórmula do L77
+ * interpositor terminaria** (docs/pendencias/L-simulacao-simultaneo.md L76, resolvido pela fórmula do L77
  * em 11/09/2026): `alcanceDoCentro(agressor) + raio(interpositor)`, os dois
  * termos de `alcancaNoCorpoACorpo`. `raioInterpositorHex` é o raio do
  * INTERPOSITOR (o lado "alvo" desta conta, borda a borda, L67);

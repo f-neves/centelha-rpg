@@ -1175,7 +1175,7 @@ async function invocar(ctx: CtxGrid, c: any, plano: Plano): Promise<void> {
 }
 
 /**
- * DECISÃO DO HUMANO (L70, rodada 50, `Pendencias.md` L83): quando o destino de
+ * DECISÃO DO HUMANO (L70, rodada 50, `docs/pendencias/L-simulacao-simultaneo.md` L83): quando o destino de
  * um empurrão está ocupado, o corpo voa até esbarrar e PARA NO ÚLTIMO
  * HEXÁGONO LIVRE do trajeto (o mesmo princípio do movimento automático do
  * Tick em `grid.astro`, `caminharHex` + `ocupadoPor`). A Arte NÃO FALHA, e não
@@ -2011,7 +2011,7 @@ async function marcarMordido(ctx: CtxGrid, ef: EfeitoAtivo, chave: string,
 /**
  * A CONDIÇÃO COM PRAZO VENCE SOZINHA, E A POSTA À MÃO NÃO VENCE NUNCA.
  *
- * A regra é da mesa (05/09/2026, L38 no `Pendencias.md`), e as duas metades
+ * A regra é da mesa (05/09/2026, L38 no `docs/pendencias/L-simulacao-simultaneo.md`), e as duas metades
  * dizem a mesma coisa por lados opostos: a duração é da FICÇÃO, então o motor é
  * dono dela e a derruba quando o prazo chega; a condição que o mestre pôs com a
  * própria mão é DELE, e a régua não calcula por cima do mestre. Ele a pôs, ele

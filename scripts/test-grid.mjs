@@ -4041,7 +4041,7 @@ async function cenaLogDoJogador(br, url) {
  * que `token_visao`/`combate_visao` terão quando a migração rodar: uma
  * criatura (`c-lembr`) sem token agora mas com uma entrada em `nevoa.vistos`
  * congelada em Vida 15/20, enquanto a Vida AO VIVO dela já é outra (3/20).
- * As três regras de visual são do humano (Pendencias.md L32): apagada de
+ * As três regras de visual são do humano (docs/pendencias/L-simulacao-simultaneo.md L32): apagada de
  * jeito visível sem precisar do mouse, Vida da última vez (não a de agora),
  * e não é alvo.
  */

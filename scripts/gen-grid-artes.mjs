@@ -283,7 +283,7 @@ const CONDICAO = {
   'fora-do-tempo': ['parar'],
 };
 
-// L39 (Pendencias.md): estes 9 Efeitos aparecem no `CONDICAO` acima porque o
+// L39 (docs/pendencias/L-simulacao-simultaneo.md): estes 9 Efeitos aparecem no `CONDICAO` acima porque o
 // TEXTO evoca a condição, mas nenhum deles tem `forma` ou `alvo` (são
 // "nenhuma"/"nenhum": nunca chegam a `ATIVOS`, nunca acionam `porCondicao`).
 // O vocabulário deles vai para `grid.condicaoAparente`, não para

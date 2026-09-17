@@ -1,6 +1,6 @@
 // test-l86b-acelerar-cura.mjs · acelerar-a-cura no tabuleiro, 1 PV por nível da Arte.
 //
-// Pendencias.md L86b (rodada 56): `acelerar-a-cura` cura `nivel_arte` PV por
+// docs/pendencias/L-simulacao-simultaneo.md L86b (rodada 56): `acelerar-a-cura` cura `nivel_arte` PV por
 // turno, onde `nivel_arte` é o nível investido na ARTE por quem conjurou
 // (`plano.nivelArte`), não o nível do Efeito nem o grau do parâmetro Cura
 // (esse parâmetro é `fixo`, não tem grau: `parametrosAjustaveis` filtra

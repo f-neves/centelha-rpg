@@ -17,7 +17,7 @@
 // (abortar, interromper, andar na Recuperação); duas não mudam duração
 // nenhuma (o par do contrapé); uma já foi medida (`ticksDeEntrada`). Duas
 // saíram da lista de origem por terem ocasião ZERO nesta bateria (`modoCorre`,
-// `adiaGolpe`): o detalhe inteiro está no `Pendencias.md` L48.
+// `adiaGolpe`): o detalhe inteiro está no `docs/pendencias/L-simulacao-simultaneo.md` L48.
 //
 //   node scripts/test-cobertura-lib.mjs           · o portão
 //   node scripts/test-cobertura-lib.mjs --lista   · só os nomes, sem veredito
@@ -156,7 +156,7 @@ const importesMortos = (bruto, nomes) => {
  *
  * A pergunta "este subconjunto é por decisão ou por sedimentação?" foi
  * respondida em 06/09/2026, e a resposta é **sedimentação** (a prova está no
- * `docs/simulacao/ESTADO.md`, e o índice dos itens no `Pendencias.md` L48).
+ * `docs/simulacao/ESTADO.md`, e o índice dos itens no `docs/pendencias/L-simulacao-simultaneo.md` L48).
  * Por isso esta lista é uma FILA e não um contrato: cada nome que sai daqui
  * porque o harness passou a chamá-lo é trabalho feito, e sair é o caminho
  * esperado de todos eles.
@@ -277,7 +277,7 @@ const HARNESS_FALSO = 'const y = L.nosDois(2);';
 console.log(`\n· ${LIB}: ${todas.size} exportadas (${funcoes.size} funções, ${todas.size - funcoes.size} constantes)`);
 console.log(`  mesa ${mesa.size} · harness ${harness.size} · nos dois ${nosDois.length}`
   + ` · só o harness ${soHarness.length} · só a mesa ${soMesa.length} funções`);
-console.log(`\n  AS FUNÇÕES QUE A MESA CHAMA E O HARNESS NÃO (Pendencias.md L48):`);
+console.log(`\n  AS FUNÇÕES QUE A MESA CHAMA E O HARNESS NÃO (docs/pendencias/L-simulacao-simultaneo.md L48):`);
 for (const n of soMesa) console.log(`    ${n}`);
 if (soHarness.length) console.log(`\n  só o harness: ${soHarness.join(', ')}`);
 
@@ -285,7 +285,7 @@ if (falhas.length) {
   console.log(`\n✘✘✘ ${falhas.length} divergência(s) entre a régua e a árvore:`);
   for (const f of falhas) console.log(`     ${f}`);
   console.log('\n     Se a mudança é legítima, a lista deste arquivo é que se atualiza,');
-  console.log('     e o item correspondente do `Pendencias.md` L48 se fecha junto.');
+  console.log('     e o item correspondente do `docs/pendencias/L-simulacao-simultaneo.md` L48 se fecha junto.');
   process.exit(1);
 }
 console.log('\n✓ a fronteira entre a mesa e o harness é a que está escrita aqui');

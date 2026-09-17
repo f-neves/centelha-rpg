@@ -1625,7 +1625,7 @@ export const SEM_NIVEL_ARTE = '__sem_nivel_arte';
  * dispara uma cura presa hoje. O escopo de 13/09/2026 foi o chão (a coluna, os
  * dois escritores e esta régua), e os gatilhos ficaram para rodada própria ·
  * o disparo automático na incapacitação, o disparo pela mão do alvo e a trava
- * de uma cura presa por alvo. Ver `Pendencias.md`, L86b.
+ * de uma cura presa por alvo. Ver `docs/pendencias/L-simulacao-simultaneo.md`, L86b.
  */
 export const curaPresaDe = (ef: Pick<EfeitoAtivo, 'cura_pontos'>): number | null =>
   typeof ef.cura_pontos === 'number' ? ef.cura_pontos : null;

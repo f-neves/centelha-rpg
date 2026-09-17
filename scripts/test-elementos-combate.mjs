@@ -1,4 +1,4 @@
-// test-elementos-combate.mjs — trava o achado B12 do Pendencias.md.
+// test-elementos-combate.mjs — trava o achado B12 do docs/pendencias/B-bestiario.md.
 //
 // `elementosCombate()` (src/lib/mesa-core.ts) é o único lugar que sabe onde
 // fraqueza/resistência do bestiário moram (`combate.fraquezas`/`combate.resistencias`,

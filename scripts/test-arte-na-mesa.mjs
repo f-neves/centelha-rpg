@@ -436,7 +436,7 @@ console.log('\n· e a palavra da RPC nao vaza para a escrita direta do mestre');
 
 // ================== N+2 · a rede de campo: `condicaoAparente` nao aciona nada
 //
-// O QUE ESTA CENA PROVA, e o que ela NAO prova (L39, Pendencias.md). Esta
+// O QUE ESTA CENA PROVA, e o que ela NAO prova (L39, docs/pendencias/L-simulacao-simultaneo.md). Esta
 // funcao (`gravarEfeito`) nao tem guarda nenhuma por `forma`: quem barra os 9
 // Efeitos "nenhuma/nenhum" de virar condicao de verdade e o despacho de
 // `conjurar` (DOM, fora do alcance deste arquivo, ver comentario no topo). O

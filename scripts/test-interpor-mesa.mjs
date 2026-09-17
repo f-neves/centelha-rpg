@@ -1,6 +1,6 @@
 // test-interpor-mesa.mjs · o redirecionamento de dano do Interpor, na Vida.
 //
-// O QUE ISTO GUARDA. A L34 §6 (`Pendencias.md`) fechou seis perguntas sobre o
+// O QUE ISTO GUARDA. A L34 §6 (`docs/pendencias/L-simulacao-simultaneo.md`) fechou seis perguntas sobre o
 // Interpor em 07/09/2026, e as rodadas seguintes a implementaram: a régua
 // pura tem prova (`test-combate-tempo.mjs` §7), e a fiação em `grid.astro` foi
 // lida linha a linha pela Revisora (`docs/simulacao/caixa/15-revisora.md`). O
