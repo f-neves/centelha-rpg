@@ -154,7 +154,7 @@ export function ataqueCentelha(centelha: number) {
 }
 
 /**
- * Modificador da Aparência (curva −4..+4) somado FLAT à jogada social alinhada.
+ * Modificador da Aparência (curva −6..+6, um ponto por nível, sem platô) somado FLAT à jogada social alinhada.
  *
  * `mascararCom`, quando passado, é a Compostura de quem está mascarando o
  * próprio módulo sob teste bem-sucedido de Compostura+Furtividade (M-20,

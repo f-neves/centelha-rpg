@@ -19,7 +19,7 @@ Se é a sua primeira vez, siga esta ordem: os detalhes de cada passo estão nas 
 4. **Atributos.** Suba do piso 1. Teto **5** na criação, com **um único** atributo em **6** (o seu pico), respeitados os tetos que a sua raça moveu.
 5. **Habilidades e Especialidades.** Teto **4**, com **uma única** primária em **5** (o pico de Habilidade). Secundárias são mais baratas e cobrem nichos; cada Especialidade afia um escopo estreito de uma Habilidade.
 6. **Virtudes.** As quatro, de 1 a 6.
-7. **Força de Vontade e Aparência.** Suba a Vontade do piso 0 (um herói costuma levá-la a 5+); escolha a Aparência (0–12, normal por volta de 5–7).
+7. **Força de Vontade e Aparência.** Suba a Vontade do piso 0 (um herói costuma levá-la a 5+); escolha a Aparência (0–12, normal no nível 6).
 8. **Centelha.** Teto **3** na criação. Ela **não custa XP**: o tier é definido com o Mestre e define o que você alcança. A maioria começa em 1; quem quer um herói de saga começa em 3 (Herói).
 9. **Proezas, Técnicas e Artes.** Gaste o restante em poder: as Técnicas que a Centelha destrava e, se for feiticeiro, os níveis de Arte e os Efeitos Especiais.
 10. **Derivados.** PV, Defesas, Energia/Mana e Iniciativa saem de fórmulas: confira na tabela mais abaixo, ou deixe a Ficha calcular.
@@ -82,7 +82,7 @@ Cada herói pode ter **um pico**: você está autorizado a levar **um único Atr
 
 Os três personagens abaixo mostram o que cada patamar entrega: **Kael** no iniciante, **Sora** no veterano e **Veil** no especialista. Repare onde o XP vai: como os tetos de criação seguram os traços (5/4, mais o pico), boa parte do bolo se converte em **largura** (mais Proezas, Técnicas, habilidades e especialidades). É o toolbox que carrega a profundidade.
 
-<p class="muted">As quatro Virtudes das fichas abaixo (Bravura, Convicção, Temperança, Compaixão) e o modificador entre parênteses da Aparência (a régua de −5 a +5) estão detalhados no capítulo [Aparência, Virtudes & Vontade](/regras/aparencia-virtudes-vontade).</p>
+<p class="muted">As quatro Virtudes das fichas abaixo (Bravura, Convicção, Temperança, Compaixão) e o modificador entre parênteses da Aparência (a régua de −6 a +6) estão detalhados no capítulo [Aparência, Virtudes & Vontade](/regras/aparencia-virtudes-vontade).</p>
 
 ### Kael, o Batedor · Iniciante (Centelha 3)
 
@@ -97,7 +97,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Especialidades | Furtividade, Atirador, Sobrevivência | 36 |
 | Virtudes | Bravura 4 · Convicção 3 · Temperança 2 · Compaixão 2 | 64 |
 | Força de Vontade | 0 → 7 | 56 |
-| Aparência | 0 → 4 (feio, −1) | 20 |
+| Aparência | 0 → 4 (feio, −2) | 20 |
 | Centelha | 0 → 3 (Herói) | grátis |
 | Técnicas | 29, de Olho de Águia, Sombra e Vento (níveis 1 a 3, já com o [Desperto](/regras/centelha), o degrau 2 da Centelha) | 450 |
 | **Total** | | **1230** |
@@ -115,7 +115,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Especialidades | cinco (Armas, Integridade, Política…) | 60 |
 | Virtudes | Bravura 4 · Convicção 4 · Temperança 3 · Compaixão 3 | 96 |
 | Força de Vontade | 0 → 8 | 72 |
-| Aparência | 0 → 5 (comum) | 30 |
+| Aparência | 0 → 5 (sem graça, −1) | 30 |
 | Centelha | 0 → 3 (Herói) | grátis |
 | Técnicas | 35, de Comando, Pele de Pedra e Dança da Lâmina (níveis 1 a 3) | 590 |
 | **Total** | | **1643** |
@@ -135,7 +135,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Especialidades | cinco (Ocultismo, Integridade…) | 60 |
 | Virtudes | Convicção 4 · Temperança 4 · Bravura 3 · Compaixão 3 | 96 |
 | Força de Vontade | 0 → 8 | 72 |
-| Aparência | 0 → 4 (feio, −1) | 20 |
+| Aparência | 0 → 4 (feio, −2) | 20 |
 | Centelha | 0 → 4 (Campeão) | grátis |
 | Artes | seis: Fogo e Forças no nível 4 · Cura, Raio, Proteção e Fortuna no 3 | 420 |
 | Técnicas | 34, de Mente Afiada, Reflexo Mental e Punho de Ferro (níveis 1 a 4) | 615 |
@@ -160,7 +160,7 @@ Passou a vida entre grimórios; a fagulha que carrega é mínima, mas o que sabe
 | Especialidades | seis (Ocultismo: invocação · Adivinhação · Conhecimentos…) | 48 |
 | Virtudes | Convicção 4 · Temperança 3 · Compaixão 3 · Bravura 2 | 63 |
 | Força de Vontade | 0 → 9 | 90 |
-| Aparência | 0 → 4 (feio, −1) | 20 |
+| Aparência | 0 → 4 (feio, −2) | 20 |
 | Centelha | 0 → 1 (Tocado) | grátis |
 | Artes | sete: Adivinhação, Forças, Proteção, Cura e Fogo no **nível 5** · Fascinação e Conjuração no 3 | 745 |
 | Técnicas | 12, de Mente Afiada e Erudito (nível 1) | 120 |

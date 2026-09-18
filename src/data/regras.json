@@ -331,33 +331,33 @@
   "escalaAparencia": [
     {
       "nivel": 0,
-      "rotulo": "Monstruoso (−5)",
-      "texto": "Provoca horror ou repulsa imediata em quem olha; o piso grátis, de quem não investe nada. −5 nas jogadas sociais alinhadas, e +5 ao INTIMIDAR."
+      "rotulo": "Monstruoso (−6)",
+      "texto": "Provoca horror ou repulsa imediata em quem olha; o piso grátis, de quem não investe nada. −6 nas jogadas sociais alinhadas, e +6 ao INTIMIDAR."
     },
     {
       "nivel": 1,
-      "rotulo": "Deformado (−4)",
-      "texto": "Repulsivo ou desfigurado. −4 nas jogadas sociais alinhadas, mas +4 ao INTIMIDAR."
+      "rotulo": "Deformado (−5)",
+      "texto": "Repulsivo ou desfigurado. −5 nas jogadas sociais alinhadas, mas +5 ao INTIMIDAR."
     },
     {
       "nivel": 2,
-      "rotulo": "Repulsivo (−3)",
+      "rotulo": "Repulsivo (−4)",
       "texto": "Causa desconforto imediato em quem olha."
     },
     {
       "nivel": 3,
-      "rotulo": "Muito feio (−2)",
+      "rotulo": "Muito feio (−3)",
       "texto": "Destoa na multidão pela falta de graça."
     },
     {
       "nivel": 4,
-      "rotulo": "Feio (−1)",
+      "rotulo": "Feio (−2)",
       "texto": "Pouco atraente, sem chamar atenção pelo bem."
     },
     {
       "nivel": 5,
-      "rotulo": "Comum",
-      "texto": "Aparência mediana, sem bônus nem ônus."
+      "rotulo": "Sem graça (−1)",
+      "texto": "Discreto, um pouco aquém do comum, sem chamar atenção por isso."
     },
     {
       "nivel": 6,
@@ -366,32 +366,32 @@
     },
     {
       "nivel": 7,
-      "rotulo": "Comum (situacional)",
-      "texto": "No teto do normal; o Mestre pode dar +1 em contexto favorável."
-    },
-    {
-      "nivel": 8,
       "rotulo": "Bonito (+1)",
       "texto": "Atraente; chama olhares."
     },
     {
+      "nivel": 8,
+      "rotulo": "Atraente (+2)",
+      "texto": "Chama atenção com facilidade; um rosto que as pessoas notam e comentam."
+    },
+    {
       "nivel": 9,
-      "rotulo": "Beleza (+2)",
+      "rotulo": "Beleza (+3)",
       "texto": "Beleza marcante; abre portas."
     },
     {
       "nivel": 10,
-      "rotulo": "Beleza universal (+3)",
+      "rotulo": "Beleza universal (+4)",
       "texto": "Quem o vê não esquece."
     },
     {
       "nivel": 11,
-      "rotulo": "Extraordinário (+4)",
+      "rotulo": "Extraordinário (+5)",
       "texto": "Beleza quase sobrenatural; para conversas num salão."
     },
     {
       "nivel": 12,
-      "rotulo": "Ápice (+5)",
+      "rotulo": "Ápice (+6)",
       "texto": "O auge do que um rosto humano alcança; presença de tirar o fôlego."
     }
   ],
@@ -402,19 +402,19 @@
     "max": 12,
     "custoMult": 2,
     "curva": {
-      "0": -5,
-      "1": -4,
-      "2": -3,
-      "3": -2,
-      "4": -1,
-      "5": 0,
+      "0": -6,
+      "1": -5,
+      "2": -4,
+      "3": -3,
+      "4": -2,
+      "5": -1,
       "6": 0,
-      "7": 0,
-      "8": 1,
-      "9": 2,
-      "10": 3,
-      "11": 4,
-      "12": 5
+      "7": 1,
+      "8": 2,
+      "9": 3,
+      "10": 4,
+      "11": 5,
+      "12": 6
     }
   },
   "pisos": {

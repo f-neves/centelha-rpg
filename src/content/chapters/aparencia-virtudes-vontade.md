@@ -11,7 +11,7 @@ Atributos e Habilidades dizem o que o corpo e a mente **conseguem fazer**. Este 
 
 A **Aparência** não é um Atributo, é um traço próprio, de **0 a 12** (como a Força de Vontade), que mede o impacto físico que você causa nos outros. Importa porque entra **direto nas jogadas sociais**: some um modificador (a tabela abaixo) sempre que a aparência for relevante.
 
-O **0 é o piso grátis**, e é onde o personagem nasce enquanto você não gastar XP nele. Não é o "normal": o normal fica entre **5 e 7**, e chegar lá custa pontos como qualquer outra coisa. Deixar a Aparência no chão é uma escolha, com o preço que a tabela mostra.
+O **0 é o piso grátis**, e é onde o personagem nasce enquanto você não gastar XP nele. Não é o "normal": o normal é o **nível 6**, e chegar lá custa pontos como qualquer outra coisa. Deixar a Aparência no chão é uma escolha, com o preço que a tabela mostra.
 
 E ela é **direcional**: ajuda quando está alinhada ao seu objetivo (seduzir, impressionar, cativar) e **atrapalha** quando vai contra ele: o belo tem **−** ao intimidar, o feio tem **+**; e quem é marcante demais sofre ao tentar passar despercebido.
 
@@ -19,21 +19,19 @@ A **Compostura** mascara os dois lados do modificador, para os dois lados: sob c
 
 | Nível | | Modificador |
 |:---:|---|:---:|
-| 0 | Monstruoso (piso) | −5 |
-| 1 | Deformado | −4 |
-| 2 | Repulsivo | −3 |
-| 3 | Muito feio | −2 |
-| 4 | Feio | −1 |
-| 5 | Comum | 0 |
+| 0 | Monstruoso (piso) | −6 |
+| 1 | Deformado | −5 |
+| 2 | Repulsivo | −4 |
+| 3 | Muito feio | −3 |
+| 4 | Feio | −2 |
+| 5 | Sem graça | −1 |
 | 6 | Comum | 0 |
-| 7 | Comum | 0* |
-| 8 | Bonito | +1 |
-| 9 | Beleza | +2 |
-| 10 | Beleza universal | +3 |
-| 11 | Extraordinário | +4 |
-| 12 | Ápice | +5 |
-
-<p class="muted">* - Pode receber bônus situacionais de acordo com a descrição da aparência.</p>
+| 7 | Bonito | +1 |
+| 8 | Atraente | +2 |
+| 9 | Beleza | +3 |
+| 10 | Beleza universal | +4 |
+| 11 | Extraordinário | +5 |
+| 12 | Ápice | +6 |
 
 ## As Quatro Virtudes
 
