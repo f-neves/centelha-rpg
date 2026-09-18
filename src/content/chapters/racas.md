@@ -13,7 +13,7 @@ Nem todo herói nasce humano. Cada povo carrega uma **herança** que molda corpo
 
 ## O Humano: a régua do mundo
 
-O **Humano** é o povo padrão: o mais numeroso, o mais espalhado e o mais inquieto. Não vive tanto quanto um elfo nem é tão resistente quanto um anão, mas compensa na **ambição** e na **adaptabilidade**: ergue cidades onde as outras raças apenas habitam, mistura culturas, inventa, conquista e reconstrói numa única geração curta. É a vara de medir: quando se diz que um anão é "mais forte" ou um elfo "mais ágil", é do humano que se está falando.
+O **Humano** é o povo padrão: o mais numeroso, o mais espalhado e o mais inquieto. Não vive tanto quanto um elfo nem é tão resistente quanto um anão, mas compensa na **ambição** e na **adaptabilidade**: ergue cidades onde as outras raças apenas habitam, mistura culturas, inventa, conquista e reconstrói numa única geração curta. É a vara de medir: quando se diz que um anão é "mais forte" ou um elfo "mais ágil", é do humano que se está falando. Atinge a idade adulta aos **16 anos**, a maturidade plena por volta dos **30**, e vive em média **80 anos**.
 
 Em regra, o humano é o **baseline neutro**:
 
@@ -42,7 +42,7 @@ Em regra, o humano é o **baseline neutro**:
 
 ### Anão
 
-Humanóides de baixa estatura, mas muito corpulentos. Vivem nas montanhas e colinas, muitas vezes **dentro** delas. Têm pele de tons mais morenos e raramente cabelos ou olhos claros. Medem de **1,20 a 1,50 m** e pesam **70–100 kg**. Atingem a maturidade por volta dos 18 anos e podem viver mais de **300 anos**.
+Humanóides de baixa estatura, mas muito corpulentos. Vivem nas montanhas e colinas, muitas vezes **dentro** delas. Têm pele de tons mais morenos e raramente cabelos ou olhos claros. Medem de **1,20 a 1,50 m** e pesam **70–100 kg**. Atingem a idade adulta aos **20 anos**, a maturidade plena por volta dos **100**, e podem viver mais de **300 anos**.
 
 - **Custo de XP:** 30
 - **`+1` de Vigor**: começa em **2** e vai até **7**. Corpulência de pedra.
@@ -54,7 +54,7 @@ Humanóides de baixa estatura, mas muito corpulentos. Vivem nas montanhas e coli
 
 ### Elfo
 
-Seres ligados ao mundo natural. Esguios, de aparência mais frágil que a das outras raças, com **orelhas pontudas** e faces alongadas e angulares. A variação de cores de cabelo, pele e olhos é maior que a humana. Pesam **40–65 kg** e medem **1,40–1,70 m**. Maturidade aos 20 anos; podem viver mais de **600 anos**.
+Seres ligados ao mundo natural. Esguios, de aparência mais frágil que a das outras raças, com **orelhas pontudas** e faces alongadas e angulares. A variação de cores de cabelo, pele e olhos é maior que a humana. Pesam **40–65 kg** e medem **1,40–1,70 m**. Atingem a idade adulta aos **25 anos**, a maturidade plena por volta dos **150**, e podem viver mais de **600 anos**.
 
 - **Custo de XP:** 50
 - **`+1` de Destreza**: começa em **2** e vai até **7**. Graça sobre-humana.
@@ -65,7 +65,7 @@ Seres ligados ao mundo natural. Esguios, de aparência mais frágil que a das ou
 
 ### Gnomo
 
-Pequenos e resistentes. Pesam **20–45 kg** e medem **1,00–1,30 m**. Maturidade aos 18 anos; podem viver mais de **400 anos**.
+Pequenos e resistentes. Pesam **20–45 kg** e medem **1,00–1,30 m**. Maturidade aos 18 anos; podem viver mais de **300 anos**.
 
 - **Custo de XP:** 30 <small>(provisório: desceu de 40 quando o Gnomo virou de porte **pequeno** e perdeu PV)</small>
 - **`+1` de Vigor**: começa em **2** e vai até **7**. Resistência teimosa num corpo pequeno.
@@ -77,7 +77,7 @@ Pequenos e resistentes. Pesam **20–45 kg** e medem **1,00–1,30 m**. Maturida
 
 ### Halfling
 
-Povo pequeno e ágil. Medem de **80 cm a 1,20 m** e pesam **20–35 kg**. Atingem a maturidade por volta dos 16 anos e podem viver mais de **300 anos**.
+Povo pequeno e ágil. Medem de **80 cm a 1,20 m** e pesam **20–35 kg**. Atingem a maturidade por volta dos 18 anos e podem viver por volta de **200 anos**.
 
 - **Custo de XP:** 30
 - **`+1` de Destreza**: começa em **2** e vai até **7**. Mãos e pés leves.
@@ -96,7 +96,7 @@ Filhos de pais humanos com mães elfas. A concepção é rara, e o resultado se 
 
 ### Meio-Orc
 
-Filhos de humano e orc: a força e o porte da herança orc temperados pelo sangue humano. Pele e pelos puxam ao marrom ou ao verde e as feições são rudes, mas menos que as de um orc puro. São altos e robustos. Atingem a maturidade por volta dos 14 anos; vida curta, pouco mais de **60 anos**.
+Filhos de humano e orc: a força e o porte da herança orc temperados pelo sangue humano. Pele e pelos puxam ao marrom ou ao verde e as feições são rudes, mas menos que as de um orc puro. São altos e robustos. Atingem a maturidade por volta dos 14 anos; vida curta, pouco mais de **70 anos**.
 
 - **Custo de XP:** 40
 - **`+1` de Força e de Vigor**: os dois começam em **2** e vão até **7**. A compleição forte da herança orc.
@@ -128,13 +128,13 @@ A herança também define **quanto tempo** o corpo dura. Ao cruzar cada marco, o
 
 | Raça | Adulto | Maturidade | Velho¹ | Venerável² |
 |---|:---:|:---:|:---:|:---:|
-| Humano | 15 | 35 | 50 | 70 |
-| Anão | 18 | 100 | 160 | 220 |
+| Humano | 16 | 30 | 45 | 60 |
+| Anão | 20 | 100 | 160 | 220 |
 | Gnomo | 18 | 75 | 125 | 175 |
-| Halfling | 16 | 45 | 70 | 100 |
-| Elfo | 20 | 85 | 170 | 250 |
+| Halfling | 18 | 45 | 70 | 100 |
+| Elfo | 25 | 150 | 300 | 450 |
 | Meio-Elfo | 15 | 55 | 85 | 110 |
-| Meio-Orc | 14 | 30 | 45 | 60 |
+| Meio-Orc | 14 | 30 | 53 | 70 |
 | Orc | 14 | 30 | 45 | 60 |
 
 </div>

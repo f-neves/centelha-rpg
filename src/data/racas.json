@@ -69,7 +69,7 @@
       { "bonus": "+2", "escopo": "criar e detectar feitiçarias de ilusão" },
       { "bonus": "+2", "escopo": "lidar com animais" }
     ],
-    "descricao": "Pequenos e resistentes, engenhosos e ilusionistas, de vida longa (400+ anos).",
+    "descricao": "Pequenos e resistentes, engenhosos e ilusionistas, de vida longa (300+ anos).",
     "tracos": [
       "Feitiçaria ilusória: +2 para criar e detectar feitiçarias de ilusão.",
       "Empatia com animais: +2 ao lidar com animais.",
@@ -90,7 +90,7 @@
     "bonusCondicional": [
       { "bonus": "+1d6", "escopo": "Atletismo e habilidades secundárias correlatas" }
     ],
-    "descricao": "Pequenos e ágeis, atléticos apesar do porte, de vida longa (300+ anos).",
+    "descricao": "Pequenos e ágeis, atléticos apesar do porte, de vida longa (cerca de 200 anos).",
     "tracos": [
       "Atletas: +1d6 em Atletismo e habilidades secundárias correlatas.",
       "Baixa estatura: todo deslocamento vale DOIS TERÇOS do de um humano · o passo em combate, o Arranque, a Corrida e os Saltos. É a mesma proporção do andar (1 m/s contra 1,5), e a ficha já faz a conta."

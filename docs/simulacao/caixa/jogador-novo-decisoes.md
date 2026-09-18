@@ -3157,6 +3157,15 @@ o motor) — os dois preços são diferentes e não precisam esperar juntos.
 `descricao`) e ajustar a outra para bater — Gnomo e Halfling, nos três lugares que M-46 já mediu
 (`racas.json`, a prosa de abertura da seção em `racas.md`, e a tabela resumo de `racas.md:129`/34).
 
+**Reaberto em 18/09/2026, e é revisão de lore nova, não erro do conserto de 17/09.** O humano
+revisou as idades de várias raças na mesma sessão em que pediu a Régua de Relação completa e
+mudou de ideia sobre o Halfling: maturidade volta de 16 para **18**, e a vida máxima desce de
+"mais de 300 anos" para "por volta de **200 anos**" (`racas.md` e `racas.json → descricao`, os
+dois ajustados). O Gnomo também mudou de novo, mas só a vida máxima: de "mais de 400" para
+"mais de **300 anos**" (a maturidade de 18 não mexeu). Nenhuma das duas mudanças toca
+`longevidade` (M-09): as duas continuam `"longa"`, e o humano concordou que 200 anos do Halfling
+ainda cabe nessa faixa, bem acima do padrão humano (~80).
+
 **FEITO.** `racas.json` não tinha divergência nenhuma para resolver: o campo `descricao` só cita
 o teto de vida (400+/300+ anos), que já batia dos dois lados. A divergência real era só entre a
 prosa de abertura e a tabela "Envelhecimento" (`racas.md:129-134`). Escolhida a tabela como fonte
