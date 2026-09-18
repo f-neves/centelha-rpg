@@ -806,7 +806,7 @@
       ],
       "centelhaMult": 1,
       "especialidade": true,
-      "reguaNota": "Termo da Régua de Relação, decisão de 18/09/2026 (ver relacoes-sociais.md, 'A história empurra o dado'): quando o Ataque Social tenta AQUECER o vínculo (aproximar, seduzir, persuadir a ajudar), soma o nível NEGATIVO da régua à Defesa Social do alvo; quando tenta ESFRIAR (intimidar, ameaçar, romper, semear desconfiança), soma o nível POSITIVO. Multiplicador ×1, sem teto além do próprio ±6 da régua, zera no Neutro. É situacional e por relação (quem é o alvo, contra quem), então não entra no número parado que a ficha imprime; entra por cima, como a Especialidade acima."
+      "reguaNota": "Termo da Régua de Relação, decisão de 18/09/2026 (ver relacoes-sociais.md, 'A história empurra o dado'): remar contra o que o alvo já sente soma o nível à Defesa Social dele; remar a favor subtrai. Ataque que AQUECE o vínculo (aproximar, seduzir, persuadir a ajudar): soma se o alvo já é hostil, subtrai se já é favorável. Ataque que ESFRIA (intimidar, ameaçar, romper, semear desconfiança): soma se o alvo já é favorável, subtrai se já é hostil. Multiplicador ×1, sem teto além do próprio ±6 da régua, zera no Neutro. É situacional e por relação (quem é o alvo, contra quem), então não entra no número parado que a ficha imprime; entra por cima, como a Especialidade acima."
     },
     "ataque": {
       "nota": "Bônus de Centelha somado à soma do ataque (as quatro defesas ganham o mesmo, +1 por ponto). Simétrico: entre Centelhas iguais cancela; favorece quem tem mais Centelha.",
