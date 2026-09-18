@@ -112,7 +112,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Atributos | Destreza 6 (pico) · Força, Vigor, Influência 4 · Percepção, Raciocínio, Perspicácia, Compostura 3 · Inteligência 2 | 460 |
 | Habilidades | Armas 5 (pico) · oito em 3 (Esquiva, Prontidão, Atletismo, Integridade, Política, Manha, Resistência, Sociabilidade) · duas em 2 · uma em 1 | 276 |
 | Secundárias | sete (duas em 3, cinco em 2: Estratégia, Cavalgar, Jogos de Guerra…) | 59 |
-| Especialidades | cinco (Armas, Integridade, Liderança…) | 60 |
+| Especialidades | cinco (Armas, Integridade, Política…) | 60 |
 | Virtudes | Bravura 4 · Convicção 4 · Temperança 3 · Compaixão 3 | 96 |
 | Força de Vontade | 0 → 8 | 72 |
 | Aparência | 0 → 5 (comum) | 30 |
@@ -132,7 +132,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Atributos | Inteligência 6 (pico) · Força, Destreza, Vigor 4 · Percepção, Raciocínio, Influência, Perspicácia, Compostura 3 | 480 |
 | Habilidades | Ocultismo 5 (pico) · oito em 3 (Esquiva, Prontidão, Integridade, Conhecimentos…) · três em 2 | 284 |
 | Secundárias | seis (três em 3, três em 2) | 57 |
-| Especialidades | cinco (Ocultismo, Fogo…) | 60 |
+| Especialidades | cinco (Ocultismo, Integridade…) | 60 |
 | Virtudes | Convicção 4 · Temperança 4 · Bravura 3 · Compaixão 3 | 96 |
 | Força de Vontade | 0 → 8 | 72 |
 | Aparência | 0 → 4 (feio, −1) | 20 |
