@@ -21,6 +21,8 @@ Em regra, o humano é o **baseline neutro**:
 - **Atributos:** todos os nove respeitam o teto comum (**6** no jogo, 5 na criação fora do pico). Nenhum sobe a 7, nenhum trava em 5.
 - **Sem traços raciais:** nenhuma visão no escuro, nenhuma resistência inata. Em troca, **nada o limita**: o humano é o único povo sem um único Atributo rebaixado.
 
+Em Relações Sociais, o humano não tem inimizades naturais: começa em **Neutro** com a maioria dos povos, e por isso transita e negocia onde outros não conseguem. Duas exceções, e nenhuma recíproca: olha o **Elfo** (e o **Meio-Elfo**, que puxa a ele) com **+1 (Simpatia)**, fascinado pela beleza élfica, e o **Orc** com **−1 (Antipatia)**, pela aparência bruta.
+
 <p class="muted">O preço da versatilidade é não ter um pico de herança: onde o orc nasce forte e o elfo nasce ágil, o humano precisa <strong>construir</strong> cada vantagem com XP. É também o mais barato de jogar: todo o orçamento vai para o personagem, nada para a raça.</p>
 
 ## As outras raças
@@ -51,6 +53,7 @@ Humanóides de baixa estatura, mas muito corpulentos. Vivem nas montanhas e coli
 - **Resistência a venenos**: todo teste para resistir a veneno é feito com **+1d6** na parada.
 - **Visão no escuro**: enxergam na escuridão total, mas **sem cores**; os olhos precisam de um tempo para se adaptar a mudanças de iluminação.
 - **Mestre dos Ofícios**, desde cedo trabalham pedra e metal: **+1d6** em testes de **Ofícios Gerais**, desde que já tenham ao menos 1 ponto na Habilidade.
+- **Relações Sociais:** partem de um fundo antigo e **assimétrico** com o Elfo: o Anão carrega **−4 (Hostilidade)**, o Elfo devolve só **−3 (Rancor)**, o mesmo ódio de origem esquecida, mas pesando diferente de cada lado. Contratam o **Orc** para o serviço pesado que ninguém mais quer fazer, e sentem **+1 (Simpatia)** por isso; o mesmo carinho torto vale para o **Meio-Elfo**, cuja origem violenta desperta pena, não desprezo. Com o resto (Humano, Gnomo, Halfling), Neutro.
 
 ### Elfo
 
@@ -62,6 +65,7 @@ Seres ligados ao mundo natural. Esguios, de aparência mais frágil que a das ou
 - **Aparência Universal**, descendentes das fadas, sua beleza atrai quase toda raça: o elfo **não sofre penalidades de Aparência** ao lidar com outras raças humanóides, mesmo as que lhe seriam hostis.
 - **Sentidos Naturais Aguçados**: em ambiente natural, concentrando-se por 6 Ticks inteiros, faz testes de **Percepção** de visão ou audição com **+1d6** e **enxerga o dobro da distância** de um humano. Dura uma cena, enquanto permanecer no ambiente natural.
 - **Resiliência Mental**, naturalmente resistente a controle mental: qualquer efeito do tipo contra o elfo tem a **dificuldade aumentada em +4**, ou o elfo recebe **+1d6** para resistir (o que for melhor para ele).
+- **Relações Sociais:** tratam a maioria dos outros povos como inferiores, por baseline: **−1 (Antipatia)** com Humano, Halfling e Meio-Orc. Duas exceções para pior: o **Orc**, que consideram bestas, leva **−2 (Desafeto)**; o **Meio-Elfo**, sangue que julgam diluído, também leva **−2 (Desafeto)**. Uma exceção para melhor: o **Gnomo**, cujo talento ilusório os diverte, ganha **+1 (Simpatia)**. Pelo Anão carregam **−3 (Rancor)**, o mesmo ódio antigo que o Anão devolve em **−4**.
 
 ### Gnomo
 
@@ -74,6 +78,7 @@ Pequenos e resistentes. Pesam **20–45 kg** e medem **1,00–1,30 m**. Maturida
 - **Visão no escuro**: enxergam na escuridão total, sem distinguir cores; precisam de tempo para adaptar os olhos.
 - **Feitiçaria**, facilidade com ilusões: **+2** para **criar e detectar ilusões**.
 - **Empatia com animais**, o carisma natural alcança outros seres: **+2** ao lidar com animais.
+- **Relações Sociais:** o povo mais fácil de conviver: **Neutro** com Humano, Anão e Orc, e **+1 (Simpatia)** só com quem os entende de perto, **Elfo** e **Halfling** (este último, recíproco).
 
 ### Halfling
 
@@ -84,6 +89,7 @@ Povo pequeno e ágil. Medem de **80 cm a 1,20 m** e pesam **20–35 kg**. Atinge
 - **`−1` teto de Força** (máx 5, piso normal): porte pequeno, sem massa para força bruta.
 - **Baixa estatura**: **todo deslocamento vale dois terços** do de um humano, o passo em combate, o Arranque, a Corrida **e os Saltos**.
 - **Atletas**, corpos incansáveis: **+1d6** em **Atletismo** e nas Habilidades secundárias correlatas.
+- **Relações Sociais:** desconfiam de quem é grande e sério demais: **−1 (Antipatia)** com **Anão** (sem volta: o Anão os trata como Neutro) e com **Elfo**; **+1 (Simpatia)** com o Gnomo, recíproco; **Neutro** com Humano e Orc.
 
 ### Meio-Elfo
 
@@ -93,6 +99,7 @@ Filhos de pais humanos com mães elfas. A concepção é rara, e o resultado se 
 - **Sem deslocamento de tetos**: herdam o equilíbrio físico humano.
 - **Aparência Universal**, o sangue feérico se reflete na aparência: o meio-elfo **não sofre penalidades de Aparência** ao lidar com outras raças humanóides.
 - **Resiliência Mental**, versão mais branda da do ancestral élfico: **+2** para resistir a qualquer efeito de controle mental.
+- **Relações Sociais:** herdam o pior do lado élfico (o Elfo os trata com **−2 (Desafeto)**, mais frio que a velha mágoa sugeriria) e o melhor do lado humano: Humano e Anão os recebem com **+1 (Simpatia)**, o Anão por pena de uma origem que sabe nascida de violência. Orc, Gnomo e Halfling tratam o meio-elfo como **Neutro**.
 
 ### Meio-Orc
 
@@ -104,7 +111,8 @@ Filhos de humano e orc: a força e o porte da herança orc temperados pelo sangu
 - **Vitalidade**, couro grosso: ganha **+Vigor** pontos de vida adicionais (PV = 25 + Vigor×3 + Vigor).
 - **Frenesi contido**: pode entrar em fúria (só **ações físicas**, mais **Intimidar** como reflexo, **ignorando as penalidades de ferimento**), mas de forma menos intensa e mais controlável que a de um orc puro.
 - **Visão Noturna**: enxerga sem penalidade sob **penumbra**, mas não na escuridão completa.
-- **Sangue partido**, criado entre dois mundos, o meio-orc **não carrega inimizades naturais** de povo: ele parte do **Neutro** com os outros. O inverso, porém, pesa: os demais povos o recebem em **−1 (Antipatia)** na Régua de Relação. Não é hostilidade, é a reserva que o sangue orc desperta; orcs e outros meio-orcs não têm essa reserva.
+- **Sangue partido**, criado entre dois mundos, o meio-orc **não carrega inimizades naturais** de povo: ele parte do **Neutro** com os outros.
+- **Relações Sociais:** o inverso do "Sangue partido" pesa: os demais povos recebem o meio-orc em **−1 (Antipatia)** na Régua de Relação. Não é hostilidade, é a reserva que o sangue orc desperta; orcs e outros meio-orcs não têm essa reserva.
 
 <p class="muted">O <strong>meio-orc</strong> é o sangue orc temperado pela metade humana; o <strong>orc puro</strong> (a seguir) é a mesma herança sem esse freio, mais penalizado no trato social e na aparência.</p>
 
@@ -119,6 +127,7 @@ Humanóides de herança metamorfa, com constituição física superior a qualque
 - **Vitalidade**, couro grosso: ganha **+Vigor** pontos de vida adicionais (PV = 25 + Vigor×3 + Vigor).
 - **Frenesi**: pode entrar em fúria como certas feras. No frenesi só realiza **ações físicas** (mais **Intimidar**, que vira ação reflexa) e **ignora as penalidades de ferimento**. Ao intimidar nesse estado, recebe **+2 dados** na parada.
 - **Visão Noturna**: enxerga sem penalidade sob **penumbra**, mas não na escuridão completa.
+- **Relações Sociais:** negociam com quem entende força bruta: **+1 (Simpatia)** pelo Anão. Devolvem ao Elfo o mesmo desprezo que recebem, **−2 (Desafeto)**. Preferem simplesmente evitar Gnomo e Halfling, sem que isso vire hostilidade: **Neutro**.
 
 ## Envelhecimento
 
