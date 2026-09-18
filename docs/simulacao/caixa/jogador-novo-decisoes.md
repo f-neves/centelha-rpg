@@ -2821,7 +2821,7 @@ sobre-humanas que assombram mortais. Proezas até o nível 3."}`
 > Proezas comiam cerca de 40% do bolo. Com a curva nova elas se acumulam ao longo da campanha em
 > vez de saírem da criação, e um personagem inicial típico fecha perto de **1050 XP**.
 
-### M-42 · A INCONSISTÊNCIA E A DECISÃO · FEITO em 18/09/2026 (`<pendente>`)
+### M-42 · A INCONSISTÊNCIA E A DECISÃO · FEITO em 18/09/2026 (`2520b5d`)
 
 A palavra "Herói" nomeia **duas coisas diferentes** e nada as desambigua: um orçamento de XP e o
 degrau 3 da Centelha. Quem combina "um herói" com o Mestre não sabe qual dos dois está combinando.
@@ -3008,7 +3008,7 @@ meio-orc, `padrao` para humano e meio-elfo, `longa` para anão/gnomo/halfling, `
 elfo). `regras.json` ganha o bloco `acoes` novo (não existia nenhum bloco de escada de Ações
 codificado antes): `acoes.escalaIntervalo` nomeia os seis degraus, e
 `acoes.longevidadeFirula.porFaixa` dá o deslocamento de cada faixa (+1/0/−1/−2). O deslocamento é
-relativo ao intervalo que a mesa já escolheu para a cena, não um degrau absoluto — a régua vale
+relativo ao intervalo que a mesa já escolheu para a cena, não um degrau absoluto: a régua vale
 para deslocar, não para fixar um degrau único por raça. `relacoes-sociais.md:185` nomeia as
 quatro faixas em vez de só o exemplo do elfo.
 

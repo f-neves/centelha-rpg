@@ -27,10 +27,10 @@ Origem: `docs/simulacao/caixa/jogador-novo-prompt-executor.md` (commit `7dd1af3`
   C-18, C-19, C-20 já marcado, C-21, C-25, C-27, C-28, C-30) e o Lote 3 (C-34, C-35, C-36, C-37),
   mais C-97/C-98 do adendo. commit `7db14f1`, push feito, validate+typecheck verdes em cada
   passo. C-10, C-22, C-24, C-26, C-29, C-96 já estavam resolvidos de rodadas anteriores
-  (marcado "JÁ RESOLVIDO" na origem, sem sha meu — achado depois que essa marcação do C-10
+  (marcado "JÁ RESOLVIDO" na origem, sem sha meu; achado depois que essa marcação do C-10
   estava errada, ver 14:31). C-99 parcialmente (a ambiguidade de nome não se confirma; o M-09
   continua aberto, não é meu). C-06 e C-04 e C-01/03/05/49 já vinham feitos. Achado no caminho:
-  C-17 (Miúdo/Minúsculo) tinha convergido na direção OPOSTA à do item — quase todo o sistema já
+  C-17 (Miúdo/Minúsculo) tinha convergido na direção OPOSTA à do item: quase todo o sistema já
   usa "Miúdo", só combate.md e o glossário atrasados; corrigidos. Resíduo não fechado: ~20
   "conceito" no bestiário (fonte de conversão D&D) ainda dizem "Minúsculo", registrado no item,
   fora de escopo de uma varredura de palavra.
@@ -43,7 +43,7 @@ Origem: `docs/simulacao/caixa/jogador-novo-prompt-executor.md` (commit `7dd1af3`
 - 2026-09-17 14:31 · Lote 9 inteiro conferido (C-59 a C-95). ~20 já estavam resolvidos de
   rodadas anteriores (marcados JÁ RESOLVIDO/RESOLVIDO); ~18 fechados agora, commit `82313f5`.
   Achado importante no caminho: C-10 (o "2d6+3" da espada longa) NÃO estava fechado como eu
-  tinha marcado às 13:18 — uma segunda ocorrência sobrevivia no exemplo do Verme
+  tinha marcado às 13:18: uma segunda ocorrência sobrevivia no exemplo do Verme
   Púrpura/Tarrasque (mesmo parágrafo do C-91), e um `grep` deste ambiente relatou o número de
   linha errado, mascarando o achado na minha primeira conferência. Corrigido junto com o C-91,
   e a marcação do C-10 foi reescrita para não afirmar algo que eu não tinha, de fato, conferido

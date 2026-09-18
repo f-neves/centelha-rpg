@@ -30,7 +30,7 @@ Cedo na sessão marquei o **C-10** (espada longa com dano trocado, "2d6+3" em ve
 "JÁ RESOLVIDO", porque `grep -n "2d6+3" combate.md` não achou nada. Estava errado: havia uma
 **segunda ocorrência**, no exemplo do Verme Púrpura/Tarrasque (o mesmo parágrafo do C-91), e o
 `grep` deste ambiente relatou o número de linha de forma enganosa (problema já catalogado no
-próprio `CLAUDE.md`, seção "NÃO confira travessão com `git diff`" — aqui foi `grep`, não `git
+próprio `CLAUDE.md`, seção "NÃO confira travessão com `git diff`": aqui foi `grep`, não `git
 diff`, mas o sintoma é o mesmo tipo de instrumento mentindo por cima). Achado só ao mexer no
 C-91 horas depois. Corrigido, e a marcação do C-10 foi reescrita para não afirmar uma conferência
 que eu não tinha, de fato, feito direito. **Lição para quem reler**: um "JÁ RESOLVIDO" desta
@@ -50,7 +50,7 @@ plausível, vale conferir com a ferramenta de leitura, não só grep.
 3. **Os três itens de M-07 dentro do C-47** (a armadura tira DADO da Furtividade, a Esquiva
    encurralada perde −2 a −6 por escada de espaço, a segunda Firula desce um nível). A decisão
    saiu em 16/09/2026, mas implementar é mecânica nova (Desgaste, escada de espaço, degradação
-   de Firula) — maior que "escrever o número que falta", não fiz por conta própria.
+   de Firula), maior que "escrever o número que falta"; não fiz por conta própria.
 
 ## Residual registrado, não fechado (fora de escopo de uma varredura de palavra)
 
