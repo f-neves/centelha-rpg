@@ -45,7 +45,7 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 ## Tags
 
 - **Alcance**: ataca a uma casa de distância; bônus contra quem se aproxima, penalidade colado.
-- **Ágil**: usa Destreza no dano; +1 na Defesa da Arma.
+- **Ágil**: só descritiva, sem efeito mecânico próprio; o jeito ágil da arma já está nos números dela (dano baixo, acerto alto).
 - **Versátil**, 1 ou 2 mãos: com uma mão soma Força no dano; com as duas, Força×2.
 - **Sangramento**, um golpe que abre Margem deixa uma ferida que continua drenando: **Sangramento igual à Margem** (máx 3). Ver *Sangramento e Estabilização* em Vida & Ferimentos.
 - **Arremessável · Munição · Pesada**: lançar; gastar munição; usar Força total e −1 em ações ágeis.
