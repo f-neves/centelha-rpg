@@ -40,10 +40,36 @@ dispachado pra Executora ainda; são propostas do Arquiteto esperando reação d
    Hoje, seduzir um Nêmesis (−6) custa o mesmo Ataque que seduzir um estranho Neutro, contanto que
    os traços sejam iguais. A única fricção que já existe é "sair do Neutro" (3 passos pra cruzar o
    meio), e ela não se aplica a alvos já hostis.
-   - **Proposta**: somar à Defesa Social um termo `+2 × |nível atual|` quando o nível já é
-     negativo (hostil) **e** o Ataque tenta melhorar a relação (não se aplica a Ataques de
-     Intimidação, que já pioram por conta própria). O `×2` foi escolhido por já ser o `mult` que a
-     Aparência acabou de adotar, não por ser o único número que funciona; pode trocar.
+   - **FECHADO em 18/09/2026, despachado pra Executora.** Não é o `+2 × |nível|` só-negativo da
+     proposta original: virou **um termo só, com sinal**, multiplicador **×1**. A Defesa Social
+     ganha o nível da régua quando o Ataque rema CONTRA o que a pessoa sente (`+nível` pra esfriar)
+     e perde quando rema A FAVOR (`−nível` pra aquecer). Uma regra em vez de duas, e fecha um
+     buraco que a versão só-negativa deixava: virar um amigo devotado contra você (nível +6,
+     ataque pra esfriar, Defesa 18 → 24, melhor cortesão do jogo cai pra 30,5%).
+   - **Por que ×1 e não ×2**, com a conta (convolução exata, alvo Vesna base 18, subir de −6 a 0
+     só com conversa): cortesão Aparência +6 faz em 9 trocas no ×1 e 50 no ×2; cortesão Aparência
+     0 leva 72 trocas no ×1 e trava no ×2; mediano trava nos dois. O ×2 fecha a porta até pro
+     especialista. **Um número circulou errado nesta conversa**: "×1 dá 9 trocas" era só do
+     cortesão com Aparência +6, não do caso típico.
+   - O travamento é conjunto (hostilidade profunda MAIS alvo composto), não do termo sozinho: o
+     mesmo mediano subindo de −6 leva 9 trocas contra base 7, 99 contra base 12, e trava de 15 pra
+     cima. E os **atos** (passo fixo, sem rolagem) furam o travamento: dois "salvar a vida" (+3)
+     atravessam de −6 a 0 sem rolar nada, que é o que o capítulo já promete.
+   - **Não vira código.** O nível é por relação, não está na ficha, e combate social não existe no
+     Grid. Texto de capítulo mais uma `reguaNota` em `regras.json → derivados.defesaSocial`,
+     seguindo o precedente do `especialidadeNota` ali ao lado.
+
+3. **Centelha no Ataque Social: CONFIRMADA como está** (pergunta do humano em 18/09, respondida
+   com conta e encerrada). Tirar a Centelha do ataque e manter na defesa equivale a `−Centelha do
+   atacante` em todo Ataque Social. Hoje ela cancela entre iguais (`ataque.centelhaMult: 1` e
+   `defesaSocial.centelhaMult: 1`, e a nota do `ataque` em `regras.json:811` **já declara** que a
+   simetria é intencional). Removê-la do ataque troca "cancela entre iguais" por deriva defensiva
+   crescente: dois personagens idênticos que só diferem na Centelha acertam 90,2% em qualquer
+   patamar hoje, e passariam a 90,2% / 69,5% / 40,0% nas Centelhas 0 / 3 / 6. Ou seja, a mesa
+   inteira ficaria socialmente mais inerte conforme a campanha avança, que é uma inversão de escala
+   num sistema cuja progressão é a Centelha. Resolveria a saturação do topo, mas isso tem conserto
+   mais barato (o termo de régua acima, mais publicar um defensor social de verdade: Defesa 27 já
+   derruba o cortesão máximo pra 60%).
 
 Ainda não abordado da lista original de quatro frentes que o humano pediu ("como mover a régua,
 quais jogadas fazer pra pedir favores, o que leva alguém a ser inimigo, qual a diferença pro duelo
