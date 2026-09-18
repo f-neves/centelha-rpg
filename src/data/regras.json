@@ -610,7 +610,7 @@
       "base": 0,
       "mult": 2,
       "piso": 0,
-      "nota": "Mesma trilha da Vontade. Piso 0, régua 0–12, modificador −5 a +5."
+      "nota": "Mesma trilha da Vontade. Piso 0, régua 0–12, modificador −6 a +6."
     },
     "centelha": {
       "tipo": "gratis",
