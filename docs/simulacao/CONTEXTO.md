@@ -301,6 +301,15 @@ Pelo NOME, porque número de opção depende de qual lista se está lendo.
   Centelha de quem conjurou, que a linha não guarda), então ele precisa ser gravado na hora. É a
   migração 39. **O contra comprado, escolhido com ele à vista:** a coluna nasce com zero
   consumidores na mesa, porque o gatilho ficou para rodada própria.
+- **O DEGRAU 4 DA CENTELHA TROCA DE "GRANDE HERÓI" PARA "CAMPEÃO"** (17/09/2026, conversa direta
+  do humano com o Arquiteto). Os outros seis rótulos (Mortal, Tocado, Desperto, Herói, Lendário,
+  Semideus) não mudam. Varrido `regras.json → escalaCentelha`, os capítulos que citavam o nome
+  velho (Centelha, Criação de Personagem) e as duas listas de `TIER_NOME` (`data.ts`,
+  `ArvoreTecnicas.astro`). **Não mexido:** citações históricas do raciocínio do M-42 em
+  `jogador-novo-decisoes.md` (explicam por que "Herói" foi escolhido para o orçamento, citando o
+  nome antigo do degrau vizinho) e três documentos de design pré-Reescala (`Proezas_revisao.md`,
+  `Reescala.md`, `Trilhas_Feiticaria.md`), que usam uma numeração de tiers diferente da atual e já
+  são material superado.
 
 ## O que está começado e não terminado
 

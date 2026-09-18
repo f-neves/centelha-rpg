@@ -136,7 +136,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Virtudes | Convicção 4 · Temperança 4 · Bravura 3 · Compaixão 3 | 96 |
 | Força de Vontade | 0 → 8 | 72 |
 | Aparência | 0 → 4 (feio, −1) | 20 |
-| Centelha | 0 → 4 (Grande herói) | grátis |
+| Centelha | 0 → 4 (Campeão) | grátis |
 | Artes | seis: Fogo e Forças no nível 4 · Cura, Raio, Proteção e Fortuna no 3 | 420 |
 | Técnicas | 34, de Mente Afiada, Reflexo Mental e Punho de Ferro (níveis 1 a 4) | 615 |
 | **Total** | | **2104** |
@@ -149,7 +149,7 @@ Os três acima sobem a Centelha junto com a magia, como manda a intuição. Mas 
 
 ### Bram, o Erudito-tocado · Veterano (Centelha 1)
 
-Passou a vida entre grimórios; a fagulha que carrega é mínima, mas o que sabe fazer com ela humilha conjuradores de tier maior. Conjura Artes de **nível 5** com Centelha **1**: a mesma profundidade que Veil, um Grande herói de Centelha 4, alcança, porque a profundidade vem do estudo (ele conjura com **Ocultismo 5**), não da Centelha. O que os separa é o combustível.
+Passou a vida entre grimórios; a fagulha que carrega é mínima, mas o que sabe fazer com ela humilha conjuradores de tier maior. Conjura Artes de **nível 5** com Centelha **1**: a mesma profundidade que Veil, um Campeão de Centelha 4, alcança, porque a profundidade vem do estudo (ele conjura com **Ocultismo 5**), não da Centelha. O que os separa é o combustível.
 
 | Compra | Detalhe | XP |
 |---|---|:---:|

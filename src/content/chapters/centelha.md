@@ -19,7 +19,7 @@ A régua vai de **0 a 12**, e a **faixa do jogador é de 0 a 6**: os seis degrau
 | **1** | Tocado | ~1 em 20 | Proezas de **nível 1**; ganha Energia e Mana |
 | **2** | Desperto | raro | Proezas até o **nível 2** |
 | **3** | Herói | mais raro | Proezas até o **nível 3** |
-| **4** | Grande herói | ~1 em 250 | Proezas até o **nível 4** |
+| **4** | Campeão | ~1 em 250 | Proezas até o **nível 4** |
 | **5** | Lendário | quase-mito | Proezas até o **nível 5** |
 | **6** | Semideus | um punhado no mundo | Proezas até o **nível 6** (o teto) |
 
@@ -33,7 +33,7 @@ A régua vai de **0 a 12**, e a **faixa do jogador é de 0 a 6**: os seis degrau
 
 **3 · Herói.** Agora os feitos assombram quem assiste. O Herói faz o sobre-humano de verdade: salta distâncias impossíveis para qualquer pessoa, ergue pesos inacreditáveis, segura sozinho uma ponte contra um pelotão inteiro (é o patamar em que um lutador aguenta cerca de **vinte capangas comuns** antes de correr risco, veja a [Regra de Horda](/regras/combate#regra-de-horda)), vira uma multidão com um discurso, desperta um sentimento com um simples toque. Seus Atributos começam a ultrapassar o teto mortal e suas **Proezas chegam ao nível 3**. É o degrau do protagonista de saga, gente sobre quem se compõem canções.
 
-**4 · Grande herói.** Seus feitos já são conhecidos em muitos lugares, e ele começa a quebrar as leis da física. As técnicas viram coisa indecifrável para quem olha de fora. Ele enfrenta dezenas de inimigos ao mesmo tempo sem ser tragado pela maré, e alcança patamares de intelecto e percepção que beiram o sobrenatural. Suas **Proezas chegam ao nível 4.** É raro a ponto de talvez existir um em cada 250, o tipo de figura cujo nome cruza reinos e cujas histórias já começam a virar lenda.
+**4 · Campeão.** Seus feitos já são conhecidos em muitos lugares, e ele começa a quebrar as leis da física. As técnicas viram coisa indecifrável para quem olha de fora. Ele enfrenta dezenas de inimigos ao mesmo tempo sem ser tragado pela maré, e alcança patamares de intelecto e percepção que beiram o sobrenatural. Suas **Proezas chegam ao nível 4.** É raro a ponto de talvez existir um em cada 250, o tipo de figura cujo nome cruza reinos e cujas histórias já começam a virar lenda.
 
 **5 · Lendário.** Sobre essas pessoas há lendas. Elas mudaram o rumo de nações: foram grandes reis, viraram o destino de guerras e povos, e seus poderes mal são compreendidos por quem os testemunha. Podem flutuar, nadar como peixes por horas sem respirar, beber veneno como quem bebe água, derrubar uma muralha com um soco. Suas **Proezas chegam ao nível 5.** Surgem poucas por era, e seus nomes ficam nos livros de história muito depois de mortas.
 
@@ -54,7 +54,7 @@ As Técnicas (as habilidades individuais que compõem uma Proeza) sobem por **se
 | 1 | Tocado | Centelha 1+ |
 | 2 | Desperto | Centelha 2+ |
 | 3 | Herói | Centelha 3+ |
-| 4 | Grande herói | Centelha 4+ |
+| 4 | Campeão | Centelha 4+ |
 | 5 | Lendário | Centelha 5+ |
 | 6 | Semideus | Centelha 6 |
 

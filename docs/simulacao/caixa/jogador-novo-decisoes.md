@@ -2006,7 +2006,7 @@ escritos (anjo maior e senhor demoníaco no 7, o Balor e o Solar no 9, o Tarrasq
 plena no 12), então o que falta é só o nome do degrau.
 
 **Os nomes dos degraus 7 a 12.** O 0 a 6 tem rótulo próprio (Mortal, Tocado, Desperto, Herói,
-Grande herói, Lendário, Semideus), e a faixa nova precisa do mesmo tratamento ou de uma decisão
+Campeão [renomeado de "Grande herói" em 17/09/2026], Lendário, Semideus), e a faixa nova precisa do mesmo tratamento ou de uma decisão
 explícita de não ter. É decisão de lore, não de regra, e depende do que este mundo diz existir
 acima de um semideus.
 
