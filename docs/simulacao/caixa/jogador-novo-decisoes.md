@@ -1038,7 +1038,7 @@ rótulos visíveis foram trocados** (o `BestiaEditor` agora diz "+ Habilidade" n
 
 ---
 
-## M-30 (+ M-26, M-28, M-29 em parte) · os traços de raça viram dado com escopo · DECIDIDO em 15/09/2026 · FEITO em 18/09/2026 (`<pendente>`)
+## M-30 (+ M-26, M-28, M-29 em parte) · os traços de raça viram dado com escopo · DECIDIDO em 15/09/2026 · FEITO em 18/09/2026 (`273f080`)
 
 **Todo traço racial que carrega um número vira CAMPO, e o campo declara o ESCOPO em que vale.** A
 ficha o **oferece** sem somá-lo automaticamente, exatamente como a Especialidade é oferecida.
