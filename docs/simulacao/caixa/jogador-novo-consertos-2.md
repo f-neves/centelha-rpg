@@ -50,7 +50,7 @@ inteira do arquivo com a ferramenta `Read`.
 
 ## C-100 · a Especialidade de Sora inclui uma Habilidade secundária, e a conta que "bate" não sabe disso
 
-> **FEITO** `<pendente>`, saída 1 (trocar o nome no exemplo): "Liderança" virou "Política"
+> **FEITO** `fa132bd`, saída 1 (trocar o nome no exemplo): "Liderança" virou "Política"
 > (primária de Sora, nível 3, já citada na linha de Habilidades dela). Mecânico, sem custo
 > narrativo, e mantém o total de 60 XP intacto (5 primárias de nível 1 × 12 = 60). Não mexi no
 > `cost-examples.mjs`: a "Pergunta encontrada" no fim deste documento fica para o Arquiteto
@@ -100,7 +100,7 @@ Não escolhi porque as duas są plausíveis e mudam o número publicado de forma
 
 ## C-101 · a Especialidade de Veil aponta para uma Arte, e Especialidade não existe fora de Habilidade
 
-> **FEITO** `<pendente>`. "Fogo" virou "Integridade" (primária de Veil, nível 3, já citada na
+> **FEITO** `fa132bd`. "Fogo" virou "Integridade" (primária de Veil, nível 3, já citada na
 > linha de Habilidades dele). Total de 60 XP intacto, mesma conta do C-100.
 
 **O texto original:** `src/content/chapters/criacao-de-personagem.md:135`
