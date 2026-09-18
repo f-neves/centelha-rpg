@@ -135,3 +135,29 @@ Força) que não existe em nenhum dos dois lugares onde o dano é de fato calcul
 `atrib` (usado só no acerto) e uma suposta regra de dano; a correção do texto herdou o engano sem
 conferir contra o motor. Precisa de decisão do Arquiteto/humano sobre qual das duas saídas tomar
 (tirar a frase, ou escrever o código que falta) antes de fechar o item.
+
+## Conferência do CORRIGE · reancorada em `51cb015`
+
+Decisão do humano: tirar a frase, não implementar Destreza no dano. Dois commits:
+
+**`1275ea0`** tira de `combate.md` a frase "e exceto as armas com a tag Ágil (Adaga, Adaga de
+Arremesso, Dardos), que somam Destreza no lugar da Força", sem substituir por outra (volta ao texto
+de antes da C-78, que já estava certo). Registrado em `jogador-novo-consertos.md` que a mesma
+invenção mora em `armas-e-armaduras.md:48`, como achado pendente.
+
+**`51cb015`** achou e tirou a mesma invenção de `armas-e-armaduras.md:48` sem esperar nova
+pergunta, porque é a mesma regra: a legenda da Tag "Ágil" prometia "usa Destreza no dano; +1 na
+Defesa da Arma". A segunda metade também não se sustenta — conferido contra `armas.json`: Dardos
+`defesaArma: 0`, Adaga de Arremesso `defesaArma: 0`, só a Adaga tem `defesaArma: 1` (coincidência
+daquela arma específica, não regra da tag "ágil"). A tag "ágil" não é lida em código nenhum
+(reconfirmado). A linha virou "só descritiva, sem efeito mecânico próprio", o que bate com o motor
+de fato: os números baixos de dano e altos de acerto dessas três armas (visíveis na tabela do
+mesmo capítulo) já entregam o "jeito ágil" sem precisar de regra própria.
+
+Varri de novo `src/content/chapters` por "Ágil"/"ágil": só sobram a legenda corrigida e as três
+linhas de tabela que citam a tag como descrição (Adaga, Dardos, Adaga de Arremesso), sem repetir a
+alegação em nenhum outro lugar. `npm run validate` rodado aqui: verde.
+
+**VEREDITO FINAL: PROCEDE.** O Lote C (Lote 4, Lote 6, Lote 9, incluindo C-10/C-91) e as três
+decisões novas (C-13, M-46, M-09) estão corretos contra a promessa de cada item, com o CORRIGE da
+C-78 aplicado nos dois lugares onde a mesma invenção morava.
