@@ -1038,7 +1038,7 @@ rótulos visíveis foram trocados** (o `BestiaEditor` agora diz "+ Habilidade" n
 
 ---
 
-## M-30 (+ M-26, M-28, M-29 em parte) · os traços de raça viram dado com escopo · DECIDIDO em 15/09/2026
+## M-30 (+ M-26, M-28, M-29 em parte) · os traços de raça viram dado com escopo · DECIDIDO em 15/09/2026 · FEITO em 18/09/2026 (`<pendente>`)
 
 **Todo traço racial que carrega um número vira CAMPO, e o campo declara o ESCOPO em que vale.** A
 ficha o **oferece** sem somá-lo automaticamente, exatamente como a Especialidade é oferecida.
@@ -1088,6 +1088,30 @@ não dá nada.
    opcional**: as duas frentes agora dependem da mesma tela.
 4. **`deslocamentoFrac` entra no esquema do `validate`** (`scripts/validate-data.mjs:49`), de onde
    falta hoje: ele existe em três raças, é lido pela ficha, e o portão não o conhece.
+
+**FEITO.** `deslocamentoFrac` já estava no esquema (achado ao conferir, não é meu). Campo novo
+`bonusCondicional` (array de `{bonus, escopo}`, mais `campo`/`nome` opcionais para a Vitalidade)
+em `racas.json`, nas sete raças que têm algum: Anão, Elfo, Gnomo (2 cada), Halfling, Meio-Elfo,
+Orc (1 Frenesi + Vitalidade), Meio-Orc (Vitalidade). Adicionado também ao esquema do `validate`,
+junto com `longevidade` (M-09), que também não estava lá.
+
+Vitalidade (escopo `"sempre"`, `campo: "pv"`) somada de verdade em `ficha-engine.ts`, no único
+call site de `pv()` que tem acesso à raça (a própria ficha): `pvv = pv(vig, porteR) + (vitalidade
+? vig : 0)`, com o tooltip do PV mostrando o termo extra. Testado no navegador
+(`node .claude/skills/run-centelha-rpg/driver.mjs` não cobre isto; rodei um script à parte
+selecionando raça no `#raca-sel` e lendo o DOM): Orc e Meio-Orc de Vigor 2 saem com PV 33
+(25 + 2×3 + 2 de Vitalidade), contra 31 de Anão/Humano de mesmo Vigor sem o traço.
+
+**Achado que não é meu para decidir:** há um SEGUNDO call site de `pv()` fora de
+`ficha-engine.ts`, em `src/pages/mesa/combate.astro:1687` (`adicionarPCs`, ao trazer um PC para o
+Grid), que não passa porte nem lê a raça de jeito nenhum, nem antes desta rodada, nem depois. Não
+mexi: `combate.astro` é território da frente da mesa, e o pedido nomeava `ficha-engine.ts`/
+`mesa-ficha.ts` (que não tem `pv()` nenhum). Fica registrado para quem cuida da mesa: um PC Orc
+adicionado ao Grid hoje ainda entra com o PV sem Vitalidade e sem porte.
+
+Os nove bônus situacionais (tudo menos a Vitalidade) aparecem na ficha num bloco novo
+("Bônus condicionais", em `renderRaca()`/`FichaSkeleton.astro`), listados como bônus + escopo,
+oferecidos e não somados, no mesmo espírito da Especialidade.
 
 ### O QUE FICA ABERTO, e é o irmão desta decisão
 
@@ -2856,6 +2880,12 @@ Os três orçamentos estão declarados desatualizados **pela própria fonte**, c
 (`M-46`): a conta ainda se mexe. A `M-30` não foi implementada, a Vitalidade do Orc não é aplicada,
 o porte mudou em duas das oito raças, e calibrar duas vezes custa o dobro e erra as duas.
 
+**Atualização em 18/09/2026:** dois dos três motivos caíram. `M-30` foi implementada (o campo
+`bonusCondicional` em `racas.json`, os dez traços migrados, a Vitalidade somando PV de verdade); o
+porte já tinha mudado nas duas raças antes disso. **A espera em si não muda**: ainda falta
+recalibrar os números, e isso continua sendo decisão de mesa, não consequência automática da
+implementação. Só a razão de esperar ficou mais curta.
+
 **O contra comprado:** enquanto espera, o livro publica três números que ele mesmo chama de
 pendentes, na primeira página que o novato abre. É a terceira regra auto-declarada provisória, e o
 relato do jogador novo reclamou exatamente disso.
@@ -3111,6 +3141,10 @@ Proezas · 461 Técnicas · 24 Artes" logo abaixo — mas isso é preferência d
 
 **A recalibração do custo de raça continua esperando** a fila `M` fechar, junto do orçamento
 (`M-43`) — isso não mudou.
+
+**Atualização em 18/09/2026, mesma nota do M-43:** dois dos três motivos de espera caíram
+(`M-30` implementada, o porte já tinha mudado antes). A espera do custo em si continua de pé,
+por decisão de mesa, não porque falte mecânica agora.
 
 **As idades, separadas do custo, DECIDIDO agora: corrigir as duas divergências conhecidas hoje,
 sem esperar a recalibração inteira.** Gnomo: a prosa de abertura diz 20 anos de maturidade, a

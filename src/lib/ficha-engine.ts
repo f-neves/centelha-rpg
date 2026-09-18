@@ -1536,7 +1536,13 @@ export function montarFicha(opts: FichaOpts) {
     // exatamente o PV de um Orc de mesmo Vigor.
     const porteR = ((RACA[S.raca] as any)?.porte || 'medio') as Porte;
     const linhaPV = pvPorte(porteR);
-    const pvv = pv(vig, porteR), en = energia({ vigor: vig, compostura: A('compostura'), raciocinio: A('raciocinio'), vontade: W, centelha: C }), mn = mana({ centelha: C, vontade: W, manipulacao: S.arte['manipulacao-mana'] || 0 });
+    // VITALIDADE (Orc, Meio-Orc), M-30: bônus incondicional de PV, achado como
+    // erro de ficha e não pendência (`calc.ts` e este arquivo nunca somavam o
+    // termo racial). Único item de `bonusCondicional` com escopo "sempre": os
+    // outros nove são oferecidos, não somados, como a Especialidade.
+    const vitalidade = ((RACA[S.raca] as any)?.bonusCondicional || [])
+      .find((b: any) => b.campo === 'pv' && b.escopo === 'sempre');
+    const pvv = pv(vig, porteR) + (vitalidade ? vig : 0), en = energia({ vigor: vig, compostura: A('compostura'), raciocinio: A('raciocinio'), vontade: W, centelha: C }), mn = mana({ centelha: C, vontade: W, manipulacao: S.arte['manipulacao-mana'] || 0 });
     const fo = folego({ vigor: vig, resistencia: SK('resistencia'), vontade: W });
     const soc = defesaSocial({ compostura: A('compostura'), sociabilidade: SK('sociabilidade'), centelha: C });
     const men = defesaMental({ raciocinio: A('raciocinio'), integridade: integ, vontade: W, centelha: C });
@@ -1546,7 +1552,7 @@ export function montarFicha(opts: FichaOpts) {
     const defParts = [act.habil, act.inabil].filter((it: any) => it.def).map((it: any) => ` ${it.def >= 0 ? '+' : '−'} ${Math.abs(it.def)} (${it.nome})`).join('');
     const soakCalc = `Impacto ${soaks[0]} = Vigor ${vig} + Centelha ${C}${armSt.soak.impacto ? ` + ${armSt.soak.impacto} (armadura)` : ''} · Corte ${soaks[1]} e Perfuração ${soaks[2]} = Centelha ${C}${(armSt.soak.corte || armSt.soak.perfuracao) ? ' + armadura' : ''}${armSt.resistPerf ? ` · Resist. Perfuração Nível ${armSt.resistPerf}` : ''}`;
     el('derived').innerHTML =
-      r('Pontos de Vida', pvv, `${linhaPV.base} + Vigor ${vig}×${linhaPV.vigorMult} = ${pvv}`) +
+      r('Pontos de Vida', pvv, `${linhaPV.base} + Vigor ${vig}×${linhaPV.vigorMult}${vitalidade ? ` + Vigor ${vig} (Vitalidade)` : ''} = ${pvv}`) +
       r('Defesa (Esquiva)', defEsq, `(Destreza ${dex} + Esquiva ${SK('esquiva')})×2 + Centelha ${C}${pArm}${pEsc} = ${defEsq}`) +
       r('Defesa (Bloqueio)', defBlq, `(Destreza ${dex} + Bloqueio ${SK('bloqueio')})×2 + Centelha ${C}${defParts}${pArm} = ${defBlq}`) +
       r('Defesa Social', soc, `(Compostura ${A('compostura')} + Sociabilidade ${SK('sociabilidade')})×2 + Centelha ${C} = ${soc}`) +
@@ -2346,7 +2352,15 @@ export function montarFicha(opts: FichaOpts) {
     if (r.aparenciaMod) mods.push(`Aparência ${r.aparenciaMod > 0 ? '+' : ''}${r.aparenciaMod}`);
     const custo = r.custo ? `<b>${r.custo} XP</b> · ` : '';
     const modStr = mods.length ? `<span class="mods">${mods.join(' · ')}</span>. ` : '';
-    el('raca-info').innerHTML = r.descricao ? `${custo}${modStr}${r.descricao}${(r.tracos || []).length ? ' <em>' + (r.tracos as string[]).join(' ') + '</em>' : ''}` : '';
+    // BÔNUS CONDICIONAL DE RAÇA (`M-30`): a ficha OFERECE, não soma sozinha, o
+    // mesmo desenho da Especialidade. A Vitalidade (escopo "sempre") fica de
+    // fora desta lista porque ela já entra somada no PV, e listá-la aqui
+    // sugeriria um botão para aplicar algo que já está aplicado.
+    const bonusOferecidos = ((r.bonusCondicional || []) as any[]).filter((b) => b.escopo !== 'sempre');
+    const bonusStr = bonusOferecidos.length
+      ? `<div class="raca-bonus"><b>Bônus condicionais</b> (some quando o escopo se aplica): ${bonusOferecidos.map((b) => `<span class="rb-item">${escapeHtml(b.bonus)} <span class="muted">(${escapeHtml(b.escopo)})</span></span>`).join(' · ')}</div>`
+      : '';
+    el('raca-info').innerHTML = r.descricao ? `${custo}${modStr}${r.descricao}${(r.tracos || []).length ? ' <em>' + (r.tracos as string[]).join(' ') + '</em>' : ''}${bonusStr}` : '';
   }
   /**
    * Antecedentes · o capital externo (capítulo VII).

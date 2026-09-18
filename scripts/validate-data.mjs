@@ -59,7 +59,11 @@ const S = {
   // default de Medio com o portao VERDE. O `porte` e obrigatorio nas oito, e nao
   // so no Halfling, porque ausente e decidido-Medio sao indistinguiveis (`M-29`);
   // o `deslocamentoFrac` e opcional porque so as tres racas baixas o tem (`M-30`).
-  racas: z.object({ id: z.string(), nome: z.string(), porte: z.enum(['minusculo', 'pequeno', 'medio', 'grande', 'enorme', 'imenso', 'colossal']), custo: z.number().int().nonnegative(), atributos: z.record(z.number().int()), aparenciaMod: z.number().int(), aparenciaUniversal: z.boolean(), descricao: z.string(), tracos: z.array(z.string()), deslocamentoFrac: z.number().positive().optional() }),
+  // `longevidade` (M-09) e `bonusCondicional` (M-30) entram pelo mesmo motivo:
+  // bonusCondicional e a forma unica dos dez tracos numericos, bonus e escopo
+  // sempre juntos (o campo `campo` so existe na Vitalidade, que aplica direto
+  // num derivado em vez de so ser oferecida).
+  racas: z.object({ id: z.string(), nome: z.string(), porte: z.enum(['minusculo', 'pequeno', 'medio', 'grande', 'enorme', 'imenso', 'colossal']), custo: z.number().int().nonnegative(), atributos: z.record(z.number().int()), aparenciaMod: z.number().int(), aparenciaUniversal: z.boolean(), descricao: z.string(), tracos: z.array(z.string()), deslocamentoFrac: z.number().positive().optional(), longevidade: z.enum(['curta', 'padrao', 'longa', 'muito-longa']).optional(), bonusCondicional: z.array(z.object({ bonus: z.string(), escopo: z.string(), campo: z.string().optional(), nome: z.string().optional() })).optional() }),
   inimigos: z.object({
     id: z.string(), nome: z.string(), tipo: z.enum(['capanga', 'soldado', 'elite', 'fera', 'chefe']),
     categoria: z.string().optional(),

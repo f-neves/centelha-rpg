@@ -23,6 +23,10 @@
     "aparenciaUniversal": false,
     "deslocamentoFrac": 0.667,
     "longevidade": "longa",
+    "bonusCondicional": [
+      { "bonus": "+1d6", "escopo": "resistir a venenos" },
+      { "bonus": "+1d6", "escopo": "qualquer Ofício em que já tenha pontos" }
+    ],
     "descricao": "Baixos e corpulentos, de vida longa (300+ anos). Mestres dos ofícios de pedra e metal.",
     "tracos": [
       "Resistência a venenos: +1d6 em testes de resistência a venenos.",
@@ -40,6 +44,10 @@
     "aparenciaMod": 0,
     "aparenciaUniversal": true,
     "longevidade": "muito-longa",
+    "bonusCondicional": [
+      { "bonus": "+1d6", "escopo": "Percepção (visão/audição), em ambiente natural após concentrar-se por 6 Ticks" },
+      { "bonus": "+4 de Dificuldade ou +1d6", "escopo": "resistir a controle mental" }
+    ],
     "descricao": "Esguios e graciosos, ligados à natureza, de vida muito longa (600+ anos).",
     "tracos": [
       "Aparência Universal: descendentes das fadas, não sofrem penalidade de Aparência ao lidar com outros povos.",
@@ -57,6 +65,10 @@
     "aparenciaUniversal": false,
     "deslocamentoFrac": 0.667,
     "longevidade": "longa",
+    "bonusCondicional": [
+      { "bonus": "+2", "escopo": "criar e detectar feitiçarias de ilusão" },
+      { "bonus": "+2", "escopo": "lidar com animais" }
+    ],
     "descricao": "Pequenos e resistentes, engenhosos e ilusionistas, de vida longa (400+ anos).",
     "tracos": [
       "Feitiçaria ilusória: +2 para criar e detectar feitiçarias de ilusão.",
@@ -75,6 +87,9 @@
     "aparenciaUniversal": false,
     "deslocamentoFrac": 0.667,
     "longevidade": "longa",
+    "bonusCondicional": [
+      { "bonus": "+1d6", "escopo": "Atletismo e habilidades secundárias correlatas" }
+    ],
     "descricao": "Pequenos e ágeis, atléticos apesar do porte, de vida longa (300+ anos).",
     "tracos": [
       "Atletas: +1d6 em Atletismo e habilidades secundárias correlatas.",
@@ -90,6 +105,9 @@
     "aparenciaMod": 0,
     "aparenciaUniversal": true,
     "longevidade": "padrao",
+    "bonusCondicional": [
+      { "bonus": "+2", "escopo": "resistir a controle mental" }
+    ],
     "descricao": "Filhos de humano e elfa, mais élficos na aparência; inférteis. Vivem até 200 anos.",
     "tracos": [
       "Aparência Universal: herda o fascínio élfico; não sofre penalidade de Aparência entre povos.",
@@ -105,6 +123,10 @@
     "aparenciaMod": -1,
     "aparenciaUniversal": false,
     "longevidade": "curta",
+    "bonusCondicional": [
+      { "bonus": "vigor", "campo": "pv", "escopo": "sempre", "nome": "Vitalidade" },
+      { "bonus": "+2d6", "escopo": "Intimidar, em Frenesi" }
+    ],
     "descricao": "Altos, truculentos e de herança metamorfa, com constituição física superior a qualquer outra raça mediana; feições rudes e vida curta (60 anos). Mais bestial e menos temperado que o meio-orc.",
     "tracos": [
       "Vitalidade: +Vigor de PV extra.",
@@ -122,6 +144,9 @@
     "aparenciaMod": 0,
     "aparenciaUniversal": false,
     "longevidade": "curta",
+    "bonusCondicional": [
+      { "bonus": "vigor", "campo": "pv", "escopo": "sempre", "nome": "Vitalidade" }
+    ],
     "descricao": "Filhos de humano e orc: a força e o porte da herança orc temperados pelo sangue humano. Robustos e brutos, mas menos bestiais que um orc puro (que vive na lore como criatura, não como raça jogável). Vida curta, cerca de 60 anos.",
     "tracos": [
       "Vitalidade: +Vigor de PV extra.",
