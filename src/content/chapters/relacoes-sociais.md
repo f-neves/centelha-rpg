@@ -98,9 +98,15 @@ Relação sem cuidado esfria. Sem contato, favores ou atos por uma **estação**
 
 Com um total desconhecido, a régua começa no **Neutro**, a menos que haja uma velha história entre os povos. Essa história é o **ponto de partida** e também o **repouso** para onde a relação volta quando abandonada.
 
-- **Humanos** não têm inimizades naturais: começam em **Neutro** com todos, e por isso transitam e negociam onde outros não conseguem.
-- **Anões e Elfos** partem de **−2 (Desafeto)** um com o outro: uma inimizade tão antiga que ninguém lembra mais a origem. Coexistem, mas de longe.
-- **Elfos** olham o **Meio-Elfo** de cima (−1), e o Meio-Elfo devolve parte da mágoa.
+- **Humanos** não têm inimizades naturais: começam em **Neutro** com a maioria, e por isso transitam e negociam onde outros não conseguem. Duas exceções, e nenhuma recíproca: olham o **Elfo** (e o **Meio-Elfo**, que puxa a ele) com **+1 (Simpatia)**, fascinados pela beleza élfica, e o **Orc** com **−1 (Antipatia)**, pela aparência bruta.
+- **Anões e Elfos** partem de um fundo antigo e **assimétrico**: o Anão carrega **−4 (Hostilidade)**, o Elfo devolve só **−3 (Rancor)**, o mesmo ódio de origem esquecida, mas pesando diferente de cada lado.
+- **Anões** contratam o **Orc** para o serviço pesado que ninguém mais quer fazer, e sentem **+1 (Simpatia)** por isso; o mesmo carinho torto vale para o **Meio-Elfo**, cuja origem violenta desperta pena, não desprezo. Com o resto (Humano, Gnomo, Halfling), Neutro.
+- **Elfos** tratam a maioria dos outros povos como inferiores, por baseline: **−1 (Antipatia)** com Humano, Halfling e Meio-Orc. Duas exceções para pior: o **Orc**, que consideram bestas, leva **−2 (Desafeto)**; o **Meio-Elfo**, sangue que julgam diluído, também leva **−2 (Desafeto)**. Uma exceção para melhor: o **Gnomo**, cujo talento ilusório os diverte, ganha **+1 (Simpatia)**.
+- **Gnomos** são o povo mais fácil de conviver: **Neutro** com Humano, Anão e Orc, e **+1 (Simpatia)** só com quem os entende de perto, **Elfo** e **Halfling** (este último, recíproco).
+- **Halflings** desconfiam de quem é grande e sério demais: **−1 (Antipatia)** com **Anão** (sem volta: o Anão trata o Halfling como Neutro) e com **Elfo**; **+1 (Simpatia)** com o Gnomo, recíproco; **Neutro** com Humano e Orc.
+- **Orcs** negociam com quem entende força bruta: **+1 (Simpatia)** pelo Anão. Devolvem ao Elfo o mesmo desprezo que recebem, **−2 (Desafeto)**. Preferem simplesmente evitar Gnomo e Halfling, sem que isso vire hostilidade: **Neutro**.
+- **Meio-Elfos** herdam o pior do lado élfico (o Elfo os trata com **−2 Desafeto**, mais frio que a velha mágoa sugeriria) e o melhor do lado humano: Humano e Anão os recebem com **+1 (Simpatia)**, o Anão por pena de uma origem que sabe nascida de violência. Orc, Gnomo e Halfling tratam o Meio-Elfo como **Neutro**.
+- **Meio-Orcs** não carregam inimizade nenhuma de povo: partem do **Neutro** com todos. O inverso pesa: os demais povos os recebem com **−1 (Antipatia)**, a reserva que o sangue orc desperta mesmo diluído. Orcs e outros Meio-Orcs não têm essa reserva.
 
 Um ato forte fura a baseline (um elfo que salva a vida de um anão vira, sim, um amigo dele), mas se a relação for abandonada ela escorrega de volta àquela velha desconfiança, não ao Neutro. O ódio herdado é o repouso, não uma sentença.
 
