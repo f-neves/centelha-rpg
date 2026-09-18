@@ -77,6 +77,46 @@ social"): o **ritmo de mover a régua** (passos, custo de favor, esfriar) e **on
 dia e começa o Combate Social** ainda não tiveram nenhuma proposta discutida; só a peça da
 Aparência dentro deles foi tocada até aqui.
 
+### Modo devagar · decidido com o humano em 18/09/2026, ainda não despachado
+
+Desenho fechado até aqui (conversa em andamento, faltam itens 2 e 3 e a regra de resistência):
+
+- **Dois modos.** RÁPIDO (na cena, com dados): Ataque Social como está, régua entra como
+  dificuldade e **não se move**; a Margem compra **alcance do pedido** (quantos níveis acima da
+  relação atual, só desta vez), reaproveitando a tabela de "Pedir as coisas". DEVAGAR (sem dados):
+  único lugar onde a régua anda. Isso colapsa em um só os **três** lugares que hoje movem a régua
+  (`:75`, `:153`, `:189`).
+- **Escala estática**: `Defesa estática = Compostura + Sociabilidade + Centelha + termo de régua`.
+  O `×2` cai porque ele existia para casar com a média de um pool (`soma × 1,75`); ataque estático
+  vale `soma × 1,0`, então a defesa que casa é `×1`. Não é número escolhido, é a mesma calibragem.
+  Vesna 18 → 11, vendedor 8 → 4. Ataque estático = Influência + Habilidade (0 a 12).
+- **O tempo é a moeda, não há teto de bônus** (decisão do humano, contra a minha proposta de teto):
+
+      Tempo do passo = máx(1, Defesa estática − (Influência + Habilidade) − Σ bônus dos gestos)
+      no máximo UM gesto por intervalo
+
+  O limite **emerge** (gesto que leve o tempo abaixo de 1 intervalo não compra nada) em vez de ser
+  decretado. A trava de um gesto por intervalo é o que impede quatro gestos +1 dominarem um +4.
+- **Ação e Firula são a mesma coisa** (achado: `:163` já chama de Firula "um presente certeiro, um
+  favor lembrado, uma visita na hora certa"). A ação diz o que foi feito, o nível da Firula diz
+  quão bem caiu. Não há lista separada nem bônus de ação separado.
+- **Dinheiro exponencial por nível** compra pressa, e a medida mostra que o trade é real: bruto
+  reconquistando um Nêmesis gasta 81 intervalos só com carisma, 42 com gestos +1 (1 moeda por
+  intervalo poupado), 25 com gestos +4 (4 moedas por intervalo poupado).
+- **Base de tempo = Defesa Social estática** (escolha do humano entre ela, Vontade e a mistura).
+  Ganha por carregar o termo da régua de graça e por não disputar emprego com a Vontade, que já é a
+  munição da resistência ativa.
+- **Resistir** (ainda não fechado, proposta medida): 1 Vontade por período, **travada até o cortejo
+  acabar**. Custo fixo simples não funciona (a recuperação passa por cima em qualquer duração);
+  escalante funciona mas muda de comportamento conforme o período, e o período aqui escala com
+  longevidade de raça. O travado dá "você resiste por tantos períodos quanto tem de Vontade",
+  independente da duração.
+
+**C-item nascido daqui, anterior a esta conversa, não misturar com o lote:** a escala de Firula
+deste capítulo (0/+1/+2/+4, teto +7) diverge da canônica em `habilidades.md:104-113`
+(+2 / +1d6 / +2d6, e "**não há teto por cena**"). O +7 é auto-referente (1+2+4) e não deriva de
+nada fora dali.
+
 **Buraco já localizado na frente do ritmo, conferido em 18/09/2026 e ainda sem proposta:** o
 capítulo não diz **com que frequência** se pode tentar mover a régua por conversa. Grep por
 "por cena / uma vez / por dia / por semana / período" em `relacoes-sociais.md` devolve só o teto de
