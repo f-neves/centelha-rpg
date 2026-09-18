@@ -74,6 +74,14 @@ Presentinhos repetidos e baratos **valem cada vez menos**: não dá para comprar
 
 Uma boa conversa também move a régua. Ela usa a jogada de influência (o seu **Ataque Social** contra a **Defesa Social** da pessoa): a régua sobe **1 passo a cada 6 pontos** de folga na jogada. Um sucesso apertado rende o **favor daquela cena**, mas não vira amizade: subir o vínculo custa esforço. E repare: conversa **afina** o laço (de amigo a leal); são os **atos** que costumam criá-lo do zero.
 
+### A história empurra o dado
+
+O nível da relação não é só o resultado da conversa, também entra nela. Quando o Ataque Social tenta **aquecer** a relação (aproximar, seduzir, persuadir a ajudar), a Defesa Social do alvo soma o **nível NEGATIVO** da régua: um Nêmesis (−6), já entrincheirado, ganha **+6** de Defesa contra quem tenta reconquistá-lo. Quando o Ataque tenta **esfriar** (intimidar, ameaçar, romper, semear desconfiança), a Defesa soma o **nível POSITIVO**: alguém em Consagração (+6) resiste com **+6** a quem tenta virá-lo contra você. Multiplicador **×1**, sem teto: o próprio ±6 da régua já é o limite natural.
+
+No Neutro (nível 0) o termo vale zero, e a conversa funciona exatamente como já funciona hoje. E ele não tranca a porta sozinho: um alvo hostil ainda se move pelos **atos** (a tabela acima), que continuam de passo fixo e sem rolagem nenhuma. Dois "salvar a vida" (+3 cada) atravessam um Nêmesis até o Neutro sem depender de nenhuma jogada de influência.
+
+<div class="callout exemplo"><span class="lbl">Exemplo</span>A Dama Vesna está em <strong>−6 (Nêmesis)</strong> com Lírio (Defesa Social base 18). Ele tenta reconquistá-la: a Defesa dela sobe 6, para <strong>24</strong> nesse lance. Se em vez disso ele tentasse azedar ainda mais a relação (esfriar), a Defesa desceria 6, para <strong>12</strong>: ela já está tão predisposta contra ele que fica fácil convencê-la de mais um motivo para odiá-lo.</div>
+
 ### Favor gasta crédito
 
 Cobrar um favor grande **consome** o carinho que você juntou. Quando a pessoa concede algo que estava no limite do nível dela, a régua **desce um passo**. Favor é capital: junta-se com atos, gasta-se ao cobrar. (Cortesias e trocas justas não custam nada.)
@@ -125,7 +133,7 @@ A **habilidade** é a da abordagem usada (Persuasão, Sedução, Intimidação, 
 - **Acerta** se o Ataque **superar** a Defesa Social; empatar ou ficar abaixo, a influência ricocheteia.
 - **Margem = [ (Ataque − Defesa Social) ÷ 6 ]**: o quanto o golpe apertou.
 
-Bater num alvo de Defesa Social muito acima da sua é bater numa muralha; a saída é trocar de abordagem, pegá-lo desprevenido ou preparar o terreno antes.
+Bater num alvo de Defesa Social muito acima da sua é bater numa muralha; a saída é trocar de abordagem, pegá-lo desprevenido ou preparar o terreno antes. Essa Defesa já carrega o peso da história entre vocês (o termo de "A história empurra o dado", na seção da régua): reconquistar um Nêmesis é bater numa muralha reforçada, discutir com um aliado é bater numa enfraquecida.
 
 ### Resistir: gastar Força de Vontade
 
@@ -152,7 +160,7 @@ Quando o alvo **não** paga a Vontade, ele **cede o ponto** daquela troca: aceit
 
 *(regra opcional, para quando há tempo e nenhuma pressão)*
 
-Quando não há pressa nem plateia (um cortejo de meses, uma amizade cultivada, um vassalo trabalhado com paciência), em vez de rolar você pode **tomar a média** do seu pool de influência e ir **empilhando Firulas** (aqui elas são gestos: um presente certeiro, um favor lembrado, uma visita na hora certa) até furar a Defesa Social do alvo. Numa cena tensa ao vivo, volta o Combate Social com dados.
+Quando não há pressa nem plateia (um cortejo de meses, uma amizade cultivada, um vassalo trabalhado com paciência), em vez de rolar você pode **tomar a média** do seu pool de influência e ir **empilhando Firulas** (aqui elas são gestos: um presente certeiro, um favor lembrado, uma visita na hora certa) até furar a Defesa Social do alvo. Numa cena tensa ao vivo, volta o Combate Social com dados. A Defesa que você fura carrega o mesmo termo de história da régua: aquecer um vínculo já hostil encontra a Defesa reforçada, esfriar um vínculo já favorável encontra a Defesa enfraquecida.
 
 **A média** de um pool é fixa e **não se arredonda**: o meio ponto é real, porque 3d6 tira 10,5 mesmo. Os bônus (o +2 de soma ímpar, o Peso, a Centelha, as Firulas) continuam somando:
 
@@ -186,6 +194,7 @@ Cada Firula **leva tempo** (um +1 é rápido; um +3 é uma empreitada), e o inte
 
 - **Régua** −6 a +6, meio Neutro largo. O nível diz o que a pessoa faz por (ou contra) você. Pedido dentro do nível: de graça; acima: mova a régua até lá.
 - **Move por:** atos (saltos fixos), conversa (Ataque vs [Defesa Social](/regras/defesas), +1 passo por 6 de folga) e gasto de crédito ao cobrar. Sair do Neutro = 3 passos; lábia sozinha para em +2. Esfria 1 passo por estação.
-- **Combate Social:** Ataque = [(Influência+Habilidade)/2]d6 (+2 ímpar) + Peso + Centelha, contra a Defesa Social; **Margem** = [(atk−def)/6]. Iniciativa = 1d6 + Perspicácia + Sociabilidade.
+- **A história pesa:** aquecer soma à Defesa Social do alvo o nível NEGATIVO da régua; esfriar soma o POSITIVO. ×1, sem teto (o próprio ±6 já é o limite). Zera no Neutro.
+- **Combate Social:** Ataque = [(Influência+Habilidade)/2]d6 (+2 ímpar) + Peso + Centelha, contra a Defesa Social (que já carrega o termo da história, acima); **Margem** = [(atk−def)/6]. Iniciativa = 1d6 + Perspicácia + Sociabilidade.
 - **Resistir:** para não ceder, gaste **1 + Margem** de Vontade no lance; se não pagar, cede o ponto e a régua anda **Margem** passos. Não vale contra leitura.
 - **Influência Estendida** (calma): tome a média (3,5/7/10,5/14/17,5/21) + Firulas (0/+1/+2/+4, teto +7/período), modo **Acumulada** (arrisca) ou **Longa** (seguro), leitura vs Defesa Social para saber quanto falta.
