@@ -40,7 +40,7 @@ dispachado pra Executora ainda; são propostas do Arquiteto esperando reação d
    Hoje, seduzir um Nêmesis (−6) custa o mesmo Ataque que seduzir um estranho Neutro, contanto que
    os traços sejam iguais. A única fricção que já existe é "sair do Neutro" (3 passos pra cruzar o
    meio), e ela não se aplica a alvos já hostis.
-   - **FECHADO em 18/09/2026, despachado pra Executora.** Não é o `+2 × |nível|` só-negativo da
+   - **FECHADO em 18/09/2026, rodada 84, PROCEDE em `1c6fab9`.** Não é o `+2 × |nível|` só-negativo da
      proposta original: virou **um termo só, com sinal**, multiplicador **×1**. A Defesa Social
      ganha o nível da régua quando o Ataque rema CONTRA o que a pessoa sente (`+nível` pra esfriar)
      e perde quando rema A FAVOR (`−nível` pra aquecer). Uma regra em vez de duas, e fecha um
@@ -76,6 +76,15 @@ quais jogadas fazer pra pedir favores, o que leva alguém a ser inimigo, qual a 
 social"): o **ritmo de mover a régua** (passos, custo de favor, esfriar) e **onde termina o dia a
 dia e começa o Combate Social** ainda não tiveram nenhuma proposta discutida; só a peça da
 Aparência dentro deles foi tocada até aqui.
+
+**Buraco já localizado na frente do ritmo, conferido em 18/09/2026 e ainda sem proposta:** o
+capítulo não diz **com que frequência** se pode tentar mover a régua por conversa. Grep por
+"por cena / uma vez / por dia / por semana / período" em `relacoes-sociais.md` devolve só o teto de
+Firulas da Influência Estendida (`:200`, "+7/período") e a frase de magnitude do `:97` ("uma
+conversa só raramente tira alguém do Neutro"), que fala de quanto e não de quantas vezes. Os atos
+têm passo fixo, o esfriar tem cadência (1 passo por estação), o favor tem custo (−1 passo), e a
+conversa não tem freio nenhum: o único custo é a Vontade do **defensor**, que é recurso dele e se
+recupera. Nada impede encadear tentativas até passar.
 
 ## Outras pendências da sessão, sem relação com Aparência
 
