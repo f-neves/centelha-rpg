@@ -2821,7 +2821,7 @@ sobre-humanas que assombram mortais. Proezas até o nível 3."}`
 > Proezas comiam cerca de 40% do bolo. Com a curva nova elas se acumulam ao longo da campanha em
 > vez de saírem da criação, e um personagem inicial típico fecha perto de **1050 XP**.
 
-### M-42 · A INCONSISTÊNCIA E A DECISÃO
+### M-42 · A INCONSISTÊNCIA E A DECISÃO · FEITO em 18/09/2026 (`<pendente>`)
 
 A palavra "Herói" nomeia **duas coisas diferentes** e nada as desambigua: um orçamento de XP e o
 degrau 3 da Centelha. Quem combina "um herói" com o Mestre não sabe qual dos dois está combinando.
@@ -2836,6 +2836,16 @@ ficaria sem sentido. Os nomes dos orçamentos são rótulos soltos e saem barato
 **O contra comprado:** "herói" é a palavra que uma mesa usa naturalmente para dizer o tamanho do
 personagem que vai criar, e tirá-la do orçamento obriga todo mundo a aprender vocabulário novo
 para uma conversa que já funcionava. A mesa vai continuar dizendo "herói" de qualquer jeito.
+
+**FEITO.** `regras.json`: as chaves de topo `orcamentoPadrao`, `orcamentoVeterano` e
+`orcamentoHeroico` viraram `iniciante`, `veterano` e `especialista` (valores 1500/2000/2600
+inalterados). `scripts/cost-examples.mjs`, único código que as lia, atualizado junto e conferido
+rodando (`node scripts/cost-examples.mjs`, mesma saída de antes, só com o rótulo novo). O
+capítulo XVIII (`criacao-de-personagem.md`) troca "herói" por "especialista" nos dois lugares que
+citam os três orçamentos e no cabeçalho do exemplo do Veil ("· Herói" → "· Especialista"). O
+glossário não tinha verbete nenhum para os orçamentos (conferido, não inventei um). A nota
+"Pendente" de `criacao-de-personagem.md:37` (M-43) não foi tocada, como pedido: fala dos números,
+não do nome.
 
 ### M-43 · A INCONSISTÊNCIA E A DECISÃO
 

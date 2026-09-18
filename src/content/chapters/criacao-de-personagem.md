@@ -14,7 +14,7 @@ Um personagem é construído gastando **Experiência** (XP) a partir de valores-
 Se é a sua primeira vez, siga esta ordem: os detalhes de cada passo estão nas seções abaixo, e a [Ficha](/ficha) faz as contas por você.
 
 1. **Conceito.** Quem é o herói? Uma frase basta ("batedora silenciosa", "capitão que inspira tropas"), ela guia todas as escolhas seguintes.
-2. **Orçamento.** Combine com o Mestre: **1500** (iniciante), **2000** (veterano) ou **2600** (herói). Todo o resto sai desse bolo de XP.
+2. **Orçamento.** Combine com o Mestre: **1500** (iniciante), **2000** (veterano) ou **2600** (especialista). Todo o resto sai desse bolo de XP.
 3. **[Raça](/regras/racas).** Escolha o povo do seu herói e **pague o custo em XP** dele (o Humano custa **0**; os outros vão de 20 a 50). Ela vem antes dos Atributos porque é ela que **move os tetos**: um `+1 de teto` deixa aquele Atributo chegar mais alto do que chegaria, e um `−1` o trava mais baixo. Escolher a raça depois seria escolher com a régua do passo seguinte já usada.
 4. **Atributos.** Suba do piso 1. Teto **5** na criação, com **um único** atributo em **6** (o seu pico), respeitados os tetos que a sua raça moveu.
 5. **Habilidades e Especialidades.** Teto **4**, com **uma única** primária em **5** (o pico de Habilidade). Secundárias são mais baratas e cobrem nichos; cada Especialidade afia um escopo estreito de uma Habilidade.
@@ -30,7 +30,7 @@ Se é a sua primeira vez, siga esta ordem: os detalhes de cada passo estão nas 
 
 Tudo começa no mínimo e é comprado dali: **Atributos 1** · **Habilidades 0** · **Virtudes 1** · **Força de Vontade 0** · **Aparência 0** · **Centelha 0** · qualquer **Proeza 0**.
 
-A **Centelha 0** é o mortal comum, cerca de 95% das pessoas, sem acesso a Técnicas ou Artes. Alcançar **Centelha 1** é o que torna alguém especial, e isso se conquista na história, não na planilha. Orçamento inicial padrão: **1500 XP** (iniciante), **2000** (veterano) ou **2600** (herói).
+A **Centelha 0** é o mortal comum, cerca de 95% das pessoas, sem acesso a Técnicas ou Artes. Alcançar **Centelha 1** é o que torna alguém especial, e isso se conquista na história, não na planilha. Orçamento inicial padrão: **1500 XP** (iniciante), **2000** (veterano) ou **2600** (especialista).
 
 > **Modelo de custo (fechado).** O preço de um nível é **base + (multiplicador × nível)**, no lugar do antigo *nível × custo*. A diferença prática: a escada dos níveis altos ficou muito mais suave, então o topo da régua passou a ser alcançável em jogo. **Vontade e Aparência descem para o piso 0** (você compra o nível 1) e a **Centelha deixa de custar XP**. Duas trilhas não acumulam, a Proeza e o Efeito Especial: paga-se só o preço do nível comprado.
 >
@@ -80,7 +80,7 @@ Cada herói pode ter **um pico**: você está autorizado a levar **um único Atr
 
 ## Três exemplos, um por orçamento
 
-Os três personagens abaixo mostram o que cada patamar entrega: **Kael** no iniciante, **Sora** no veterano e **Veil** no herói. Repare onde o XP vai: como os tetos de criação seguram os traços (5/4, mais o pico), boa parte do bolo se converte em **largura** (mais Proezas, Técnicas, habilidades e especialidades). É o toolbox que carrega a profundidade.
+Os três personagens abaixo mostram o que cada patamar entrega: **Kael** no iniciante, **Sora** no veterano e **Veil** no especialista. Repare onde o XP vai: como os tetos de criação seguram os traços (5/4, mais o pico), boa parte do bolo se converte em **largura** (mais Proezas, Técnicas, habilidades e especialidades). É o toolbox que carrega a profundidade.
 
 <p class="muted">As quatro Virtudes das fichas abaixo (Bravura, Convicção, Temperança, Compaixão) e o modificador entre parênteses da Aparência (a régua de −5 a +5) estão detalhados no capítulo [Aparência, Virtudes & Vontade](/regras/aparencia-virtudes-vontade).</p>
 
@@ -122,9 +122,9 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 
 <p class="muted">Derivados: PV 37 · Defesa 21 · Def. Mental 17 · Def. Social 15 · Energia 15 · Mana 14 · Iniciativa 1d6+6. Fecha no orçamento. Uma líder de tropa que combina posturas defensivas, golpes precisos e uma guarda social sólida.</p>
 
-### Veil, o Feiticeiro-guerreiro · Herói (Centelha 4)
+### Veil, o Feiticeiro-guerreiro · Especialista (Centelha 4)
 
-<p class="muted">**Exceção declarada:** o teto de criação é Centelha 3 (`limitesCriacao.centelha`); Veil sobe a 4 porque a Centelha não se compra com XP, é concedida pelo Mestre num marco de história, e o orçamento Herói é o único que já supõe esse marco alcançado. Não é o número padrão de um personagem recém-criado.</p>
+<p class="muted">**Exceção declarada:** o teto de criação é Centelha 3 (`limitesCriacao.centelha`); Veil sobe a 4 porque a Centelha não se compra com XP, é concedida pelo Mestre num marco de história, e o orçamento Especialista é o único que já supõe esse marco alcançado. Não é o número padrão de um personagem recém-criado.</p>
 
 | Compra | Detalhe | XP |
 |---|---|:---:|

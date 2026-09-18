@@ -68,7 +68,7 @@ const monte = (chave, mapa) => soma(Object.entries(mapa || {})
  */
 const EXEMPLOS = {
   'Kael, o Batedor': {
-    orcamento: r.orcamentoPadrao, totalPub: 1230,
+    orcamento: r.iniciante, totalPub: 1230,
     atributos: { percepcao: 6, destreza: 4, vigor: 4, forca: 3, raciocinio: 3, inteligencia: 2, influencia: 2, perspicacia: 2, compostura: 2 },
     atributosPub: 375,
     // A linha "Habilidades" do capítulo inclui uma secundária (Cura 1), então
@@ -86,7 +86,7 @@ const EXEMPLOS = {
     integridade: 0, raciocinio: 3, compostura: 2, sociabilidade: 0,
   },
   'Sora, a Capitã': {
-    orcamento: r.orcamentoVeterano, totalPub: 1643,
+    orcamento: r.veterano, totalPub: 1643,
     atributos: { destreza: 6, forca: 4, vigor: 4, influencia: 4, percepcao: 3, raciocinio: 3, perspicacia: 3, compostura: 3, inteligencia: 2 },
     atributosPub: 460,
     habPrim: { 5: 1, 3: 8, 2: 2, 1: 1 }, habSec: {}, habilidadesPub: 276,
@@ -102,7 +102,7 @@ const EXEMPLOS = {
     integridade: 3, raciocinio: 3, compostura: 3, sociabilidade: 3,
   },
   'Veil, o Feiticeiro-guerreiro': {
-    orcamento: r.orcamentoHeroico, totalPub: 2104,
+    orcamento: r.especialista, totalPub: 2104,
     atributos: { inteligencia: 6, forca: 4, destreza: 4, vigor: 4, percepcao: 3, raciocinio: 3, influencia: 3, perspicacia: 3, compostura: 3 },
     atributosPub: 480,
     habPrim: { 5: 1, 3: 8, 2: 3 }, habSec: {}, habilidadesPub: 284,
@@ -122,7 +122,7 @@ const EXEMPLOS = {
     integridade: 3, raciocinio: 3, compostura: 3, sociabilidade: null,
   },
   'Bram, o Erudito-tocado': {
-    orcamento: r.orcamentoVeterano, totalPub: 1868,
+    orcamento: r.veterano, totalPub: 1868,
     atributos: { inteligencia: 6, influencia: 4, percepcao: 4, raciocinio: 3, vigor: 3, destreza: 3, perspicacia: 3, forca: 2, compostura: 2 },
     atributosPub: 496,
     habPrim: { 5: 1, 3: 4, 2: 5, 1: 1 }, habSec: {}, habilidadesPub: 220,

@@ -435,9 +435,9 @@
     "picoQuantidade": 1,
     "notaPico": "Na criação permite-se UM atributo em 6 e UMA habilidade primária em 5 — o talento superlativo do herói."
   },
-  "orcamentoPadrao": 1500,
-  "orcamentoVeterano": 2000,
-  "orcamentoHeroico": 2600,
+  "iniciante": 1500,
+  "veterano": 2000,
+  "especialista": 2600,
   "forca": {
     "notaLevantamento": "FAH = (Força × 3) + Halterofilismo, de 3 a 24. Atletismo NÃO entra: erguer o máximo é contração estática, e Atletismo é mobilidade e fôlego. O que sai da tabela é o peso que se tira do CHÃO até a altura do quadril, uma vez, sem sair do lugar. Erguer o mesmo peso ACIMA DA CABEÇA custa metade disso, e ARREMESSAR custa um quarto: quanto mais alto o peso precisa ir, menos peso vai.",
     "notaCarga": "As cinco faixas de carga saem do peso máximo P: Mínima até P/8, Leve até P/4, Média até P/2, Pesada até 3P/4 e Máxima até P. A velocidade de deslocamento é vel = 1 − (peso ÷ 3P/4)^1,5. O expoente vem do ajuste da literatura de locomoção com carga: quinze soldados com mochila andam a 96% do passo carregando 22% do próprio peso, 87% carregando 44% e 76% carregando 66%, o que dá expoente 1,62 com menos de um ponto percentual de resíduo, e a varredura contra marcha e sprint juntos tem o mínimo em 1,5. Assim a Mínima acaba em 93%, a Leve em 81% e a Média em 46%. Na Pesada o deslocamento é pequeno mas existe, de 46% a zero. Acima de 3P/4 não há deslocamento nenhum: o peso se ergue e se segura, e não se leva a lugar nenhum.",
