@@ -177,7 +177,7 @@ Uma **arma de duas mãos** ocupa as duas e não permite o segundo ataque; um **e
 
 <p class="formula">Dano = (Dado da Arma + Margem) + Força − Absorção</p>
 
-O **Dado da Arma** vem da classe (leve 1d6−2, média 1d6, pesada 2d6, haste 1d6+2, distância/arremesso 1d6 a 1d6+2). Armas de uma mão somam a **Força**; as de duas mãos, o **dobro da Força**: **exceto as hastes de estocada** (Lança e afins), que ferem por alcance e precisão, não por peso, e somam apenas a **Força simples**; e **exceto as armas com a tag Ágil** (Adaga, Adaga de Arremesso, Dardos), que somam **Destreza** no lugar da Força. Cada Margem (6 pontos acima da Defesa) acrescenta +1d6.
+O **Dado da Arma** vem da classe (leve 1d6−2, média 1d6, pesada 2d6, haste 1d6+2, distância/arremesso 1d6 a 1d6+2). Armas de uma mão somam a **Força**; as de duas mãos, o **dobro da Força**: **exceto as hastes de estocada** (Lança e afins), que ferem por alcance e precisão, não por peso, e somam apenas a **Força simples**. Cada Margem (6 pontos acima da Defesa) acrescenta +1d6.
 
 ### Os três modos de dano
 
