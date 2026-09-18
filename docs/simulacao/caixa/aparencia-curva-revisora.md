@@ -59,3 +59,11 @@ que a rodada editou.
 (regras.json, o capítulo, o comentário de `calc.ts`, os quatro personagens). O único problema é a
 nota interna de `xp.aparencia` em `regras.json:613`, que ainda cita a régua antiga (−5 a +5) — não
 lida por código, não visível ao jogador, mas errada sobre o mesmo traço que a rodada mudou.
+
+## Conferência do CORRIGE · reancorada em `609e3e4`
+
+`git diff 459b266..609e3e4` mostra só a linha esperada: `xp.aparencia.nota` trocou "−5 a +5" por
+"−6 a +6". Nada mais no commit. `npm run validate` rodado aqui: verde.
+
+**VEREDITO FINAL: PROCEDE.** A curva de Aparência (regras.json, o capítulo, `calc.ts`, os quatro
+personagens) e o conserto da nota interna estão corretos.
