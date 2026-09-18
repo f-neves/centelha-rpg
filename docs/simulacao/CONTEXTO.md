@@ -11,9 +11,15 @@ Três regras que o mantêm útil:
   de próprio é o que veio do chat e não mora em arquivo nenhum.** E apontar é dar nome,
   caminho e para que serve, nunca descrever o conteúdo do outro arquivo (`ARQUITETO.md §5.5`).
 
-Última reescrita: **15/09/2026**.
+Última reescrita: **18/09/2026**.
 
 ---
+
+## Primeiro assunto ao reabrir: revisão de Aparência e Relações Sociais
+
+**Conversa aberta com o humano, sem lote dispachado.** Estado completo, o que já fechou e o que
+ainda não teve reação dele: `docs/simulacao/caixa/checkpoint-19set.md`. Não abra outro trabalho
+antes de retomar isso com ele.
 
 ## A frente de simulação (Grid) está ENCERRADA
 
