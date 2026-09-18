@@ -106,11 +106,29 @@ Desenho fechado até aqui (conversa em andamento, faltam itens 2 e 3 e a regra d
 - **Base de tempo = Defesa Social estática** (escolha do humano entre ela, Vontade e a mistura).
   Ganha por carregar o termo da régua de graça e por não disputar emprego com a Vontade, que já é a
   munição da resistência ativa.
+- **Intervalo**: base fixa em **uma semana (8 dias)**, e a longevidade vira **multiplicador**
+  (orc/meio-orc ×½ = 4 dias, humano/meio-elfo ×1 = 8, anão/gnomo/halfling ×2 = 16, elfo ×4 = 32).
+  **Motivo:** a regra escrita (`:189`, ajuste por degraus da escada de seis) **não encaixa**. O
+  ajuste racial precisa de quatro degraus consecutivos, então a base só caberia em minuto, hora ou
+  dia; "dia" é o único plausível e produz um orc que sai de estranho a Apreço em **4 horas**. Os
+  degraus da escada são multiplicativos de 8 a 24×, grossos demais para uma régua de quatro faixas.
+  Com o multiplicador: cortesão leva 32 dias (humano) a 1,3 estação (elfo) até Apreço; reconquistar
+  um Nêmesis custa 0,6 ano ao humano e 2,3 anos ao elfo. Razão construir/esfriar de 12:1, saudável.
+- **Ato vs gesto** (resolve contradição JÁ PUBLICADA): o `:65` dá a um presente **+1 passo inteiro**
+  e o `:163` trata o mesmo presente como Firula, valendo **+1 de bônus**, cerca de um décimo de
+  passo contra a Vesna. Fator ~10. E o `:91` ("lábia **e presentes** levam alguém só até +2")
+  contradiz o `:65` diretamente. **Decisão:** as linhas ±1 saem da tabela de atos e viram gesto que
+  acumula; a tabela fica só com o que se sustenta sozinho (+2 serviço grande, +3 salvar a vida, −2
+  insulto público, −3 traição, −4 traição grave, −5 o imperdoável). A fronteira vira pergunta
+  respondível: "este feito muda como ela te vê, sozinho?". **Teto de vidro ±2 para o que acumula,
+  sem teto para o que salta.** Custo aceito: a régua negativa perde o degrau −1.
+
 - **Resistir** (ainda não fechado, proposta medida): 1 Vontade por período, **travada até o cortejo
   acabar**. Custo fixo simples não funciona (a recuperação passa por cima em qualquer duração);
-  escalante funciona mas muda de comportamento conforme o período, e o período aqui escala com
-  longevidade de raça. O travado dá "você resiste por tantos períodos quanto tem de Vontade",
-  independente da duração.
+  escalante funciona mas exige rastrear custo crescente. Com os intervalos novos (≥4 dias) a
+  recuperação é sempre generosa o bastante para encher a reserva, então **escalante e travado dão o
+  mesmo resultado**: o alvo aguenta tantos períodos quanto tem de Vontade. Fica o travado, por ser
+  o mais simples de enunciar.
 
 **C-item nascido daqui, anterior a esta conversa, não misturar com o lote:** a escala de Firula
 deste capítulo (0/+1/+2/+4, teto +7) diverge da canônica em `habilidades.md:104-113`
