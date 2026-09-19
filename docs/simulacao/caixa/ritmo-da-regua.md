@@ -224,7 +224,14 @@ por número.
    seis degraus) **sai**, com o motivo do item 2 em uma linha.
 7. **"Folha de referência" (fim do arquivo)** · as linhas de "Move por", "Resistir" e "Influência
    Estendida" refletem tudo acima.
-8. **`src/data/regras.json`** · os números são a fonte da verdade e o capítulo descreve, então a
+8. **"Quando a cena vira duelo: o Combate Social" (`:117`)** · a primeira oração da seção diz
+   *"Na conversa comum, a influência apenas empurra a régua (a seção anterior)"*, e o item 1
+   **torna essa frase falsa**: conversa comum deixou de empurrar a régua. Reescreva a oração
+   para dizer o que a conversa comum faz agora (comprar alcance do pedido). **E pare ali:** o
+   gatilho da escalada ("crava os pés", "aposta real na mesa") fica com as palavras que já
+   tem, porque onde termina o dia a dia e começa o Combate Social é decisão aberta do humano,
+   e este lote não a decide. Ver a seção 6.
+9. **`src/data/regras.json`** · os números são a fonte da verdade e o capítulo descreve, então a
    escala estática, os multiplicadores de intervalo por povo e a fórmula do custo de resistência
    vão para lá, no bloco de `derivados.defesaSocial` ou num bloco vizinho. **A forma é da
    Executora propor e relatar o custo**, e nenhuma chave existente se renomeia (o `src/data/` é o
@@ -245,4 +252,8 @@ ficha. É capítulo mais dado, com o `validate` e o portão de travessão como p
 - **Onde termina o dia a dia e começa o Combate Social** · a quarta frente da lista original do
   humano, ainda sem proposta nenhuma discutida. O item 1 responde metade dela por construção (o
   rápido não move a régua), e a metade que falta é quando uma interação de dia a dia escala para
-  iniciativa e Ticks.
+  iniciativa e Ticks. **E o item 1 mexeu no chão dessa decisão sem resolvê-la:** a frase que
+  desenha a fronteira hoje (`:117`) se apoiava justamente em "a conversa comum apenas empurra a
+  régua", que deixou de ser verdade. O item 8 da seção 5 manda consertar a oração falsa e **não**
+  mexer no gatilho. Enquanto a decisão não vier, o capítulo fica com o gatilho em prosa, como
+  está hoje.
