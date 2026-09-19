@@ -123,12 +123,65 @@ Desenho fechado até aqui (conversa em andamento, faltam itens 2 e 3 e a regra d
   respondível: "este feito muda como ela te vê, sozinho?". **Teto de vidro ±2 para o que acumula,
   sem teto para o que salta.** Custo aceito: a régua negativa perde o degrau −1.
 
-- **Resistir** (ainda não fechado, proposta medida): 1 Vontade por período, **travada até o cortejo
-  acabar**. Custo fixo simples não funciona (a recuperação passa por cima em qualquer duração);
-  escalante funciona mas exige rastrear custo crescente. Com os intervalos novos (≥4 dias) a
-  recuperação é sempre generosa o bastante para encher a reserva, então **escalante e travado dão o
-  mesmo resultado**: o alvo aguenta tantos períodos quanto tem de Vontade. Fica o travado, por ser
-  o mais simples de enunciar.
+#### O modelo inteiro, em fórmula (para não depender de script nenhum)
+
+    Ataque estático   = Influência + Habilidade                          (0 a 12)
+    Defesa estática   = Compostura + Sociabilidade + Centelha + termo de régua
+    Tempo do passo    = máx(1, Defesa estática − Ataque estático − Σ bônus dos gestos)
+    trava             = no máximo UM gesto por intervalo (n ≤ Tempo)
+    Intervalo         = 8 dias × (orc ½ · humano 1 · anão/gnomo/halfling 2 · elfo 4)
+    Gesto             = Firula, 0 / +1 / +2 / +4, dinheiro exponencial por nível
+
+Defesas estáticas do elenco: guarda 3, vendedor 4, Kael 5, Sora 9, Vesna 11 (eram 6, 8, 7, 15, 18
+na escala dinâmica). Ataques estáticos de referência: cortesão 10, mediano 7, inepto 4, bruto 1.
+
+Jornadas contra a Vesna, só carisma natural, sem gesto nenhum: Neutro → +2 Apreço custa 4 · 10 · 22
+· 34 intervalos (cortesão · mediano · inepto · bruto); Nêmesis → Neutro custa 27 · 45 · 63 · 81.
+Com gestos +4 o bruto cai de 81 para 25 na reconquista, pagando 224 moedas contra 39 se usar só
+gestos +1 (que o levam a 42). O trade é dinheiro comprando pressa.
+
+#### Item 4, ÚNICO EM ABERTO: como o alvo resiste
+
+O humano recusou a minha proposta plana (1 Vontade = 1 intervalo) e propôs **trazer a Margem do
+modo rápido**: *"a cada 6 pontos que o ataque social passar da defesa social, gasta um de Força de
+Vontade a mais"*. Ou seja `custo por intervalo de resistência = 1 + piso(excedente ÷ 6)`, com
+`excedente = Ataque estático + Σ gestos − Defesa estática`.
+
+**Medido:** a regra dispara contra alvo mais fraco e fica **dormente contra alvo forte**, porque a
+trava de um gesto por intervalo limita os gestos a um só quando o tempo já está no piso. Intervalos
+que a Vontade do alvo compra:
+
+| alvo (defesa, Vontade) | cortesão | mediano | inepto | bruto |
+|---|---:|---:|---:|---:|
+| guarda (3, 3) | 1 | 1 | 3 | 3 |
+| vendedor (4, 4) | 2 | 2 | 4 | 4 |
+| Kael (5, 7) | 3 | 3 | 7 | 7 |
+| Sora (9, 7) | 7 | 7 | 7 | 7 |
+| Vesna (11, 8) | 8 | 8 | 8 | 8 |
+
+As três opções na mesa, com a **B recomendada por mim**:
+
+- **A** · a Margem com a trava como está. Simples, mas nunca aciona contra a Vesna.
+- **B** · a Margem, e o atacante pode **gastar intervalos extra de propósito** para empilhar gestos
+  e virar tempo em pressão. Cortesão contra a Vesna, por intervalos gastos: 1 → excedente 3, custo
+  1, ela aguenta 8, total 9; **2 → exc 7, custo 2, aguenta 4, total 6**; 3 → 11 / 2 / 4 / 7;
+  **4 → 15 / 3 / 2 / 6**; 6 → 23 / 4 / 2 / 8. Ótimo interior em 2 ou 4 intervalos, não degenera, e
+  o dinheiro desempata para o 2 (metade dos gestos). Faz "constância é a chave" virar mecânica.
+- **C** · adiamento plano, 1 Vontade compra 1 intervalo. Uma frase, mas ignora o esforço do
+  atacante e não conversa com o modo rápido.
+
+**Descartado antes, com medida:** custo fixo simples de 1 Vontade não funciona nunca (a recuperação
+de 1 por noite passa por cima de qualquer intervalo de 4 dias ou mais); e custo escalante (1, 2,
+3…) dá exatamente o mesmo número que o travado, porque a reserva sempre volta cheia, cobrando
+contabilidade por nada.
+
+#### Depois do item 4, ainda falta
+
+Nada disto foi discutido: **onde termina o dia a dia e começa o Combate Social** (a quarta frente da
+lista original do humano), e o despacho para a Executora, que vai ser grande: o modo rápido perde o
+movimento de régua e a Margem passa a comprar **alcance do pedido**, a tabela de resistir (`:142`)
+troca a coluna de passos, a Influência Estendida é reescrita inteira, e a tabela de atos perde as
+linhas ±1.
 
 **C-item nascido daqui, anterior a esta conversa, não misturar com o lote:** a escala de Firula
 deste capítulo (0/+1/+2/+4, teto +7) diverge da canônica em `habilidades.md:104-113`

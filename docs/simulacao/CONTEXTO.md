@@ -21,6 +21,13 @@ Três regras que o mantêm útil:
 ainda não teve reação dele: `docs/simulacao/caixa/checkpoint-19set.md`. Não abra outro trabalho
 antes de retomar isso com ele.
 
+**Onde exatamente parou em 18/09/2026:** o termo de régua na Defesa Social fechou com PROCEDE
+(rodada 84). O que está aberto é o **ritmo de mover a régua**, desenhado quase todo: itens 1 (o
+tempo é a moeda, sem teto de bônus), 2 (intervalo de 8 dias com multiplicador racial) e 3 (a
+fronteira ato/gesto) estão **decididos com o humano e ainda não despachados**. Falta só o **item
+4**, como o alvo resiste, com três opções medidas na mesa e a B recomendada. O checkpoint traz o
+modelo inteiro em fórmula, então não é preciso refazer conta nenhuma para retomar.
+
 ## A frente de simulação (Grid) está ENCERRADA
 
 **Decidido em 06/09/2026: a segunda bateria (a grade de 112 células) não acontece.**
