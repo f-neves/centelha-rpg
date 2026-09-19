@@ -2,6 +2,25 @@
 
 Registro de continuidade, não ordem de serviço. Serve pra retomar sem reconstruir tudo de memória.
 
+## ▶ RETOMAR AQUI
+
+**Se você é um Arquiteto que acabou de abrir a sessão, este é o primeiro assunto, e ele vem antes
+da fila do `PLANO.md §8`** (que é a fila do Grid, e está parada esperando uma decisão que o humano
+não está tomando agora).
+
+1. **Não despache nada ainda.** Falta uma decisão só, e é do humano.
+2. **A decisão que falta** é o **item 4** do ritmo da régua: como o alvo resiste ao cortejo longo.
+   Três opções medidas, a **B** recomendada. Está na seção "Item 4, ÚNICO EM ABERTO" mais abaixo,
+   com as tabelas. Leve as três a ele do jeito que ele pediu nesta conversa: **a problemática, como
+   é a regra hoje, três soluções com prós e contras, e uma recomendada.**
+3. **Assim que ele decidir**, o lote para a Executora é grande e está listado na seção "Depois do
+   item 4, ainda falta".
+4. **Como ele quer trabalhar** (pedido explícito nesta conversa): nada de pergunta direta sem
+   embasamento. Ele quer conta antes de decisão, e uma decisão por vez.
+
+O modelo inteiro está em fórmula na seção do modo devagar, então **não refaça conta nenhuma** para
+retomar: os números já estão todos aqui.
+
 ## Fechado nesta sessão, com PROCEDE da Revisora
 
 - Centelha: degrau 4 "Grande herói" → "Campeão" (`4ce6476`), M-42 (orçamentos `orcamentoPadrao/

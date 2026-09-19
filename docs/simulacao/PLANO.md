@@ -319,6 +319,23 @@ As decisões tomadas dentro do ciclo vão para o `CONTEXTO` como `D`, com motivo
 
 ## 8 · A ordem da fila
 
+> ### ⛔ ANTES DESTA FILA: há uma conversa aberta com o humano, e ela vem primeiro
+>
+> **Estado em 18/09/2026.** A fila numerada abaixo é da frente do **Grid**, e ela não é o próximo
+> passo. O próximo passo é **retomar a conversa de Relações Sociais** exatamente onde parou, e o
+> estado completo está em `docs/simulacao/caixa/checkpoint-19set.md`.
+>
+> **Onde parou, em uma linha:** o **item 4** do ritmo da régua, como o alvo resiste ao cortejo
+> longo, com três opções já medidas e a **B** recomendada pelo Arquiteto. Os itens 1, 2 e 3 já
+> foram decididos com o humano e **ainda não foram despachados** para a Executora.
+>
+> **Não abra a decisão "Fase 2.5 ou fase 4" (item 4 desta fila) sem o humano pedir.** Ela continua
+> desbloqueada e continua sendo dele, mas ele está no meio de outra coisa, e essa outra coisa tem
+> três decisões tomadas esperando virar lote.
+>
+> O checkpoint traz o modelo inteiro em fórmula, então não é preciso refazer conta nenhuma para
+> retomar a conversa.
+
 **Corrigido em 09/09/2026:** os itens 1 e 2 abaixo (Interpor, grid.condicao) já estavam
 fechados desde 07/09/2026 (`L34`, `L39`) quando esta seção ainda os listava como trabalho. Fila
 renumerada; o texto de cada item fica como registro de por que ele existiu.
