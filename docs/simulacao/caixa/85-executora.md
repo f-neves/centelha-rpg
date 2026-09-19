@@ -49,6 +49,22 @@ Alvo: `src/content/chapters/relacoes-sociais.md` e `src/data/regras.json`. Nada 
 
 ---
 
+## Duas coisas que eu tinha publicado sem marcar, e o conserto
+
+- **11:20** · reconferi os dois lugares onde o leitor que recalcula pelo texto publicado chega
+  num número diferente do publicado, que é exatamente a forma que o `E4` existe para nomear.
+  **O primeiro:** a jornada "Nêmesis → Neutro" que eu pus em exemplo só fecha se a faixa negativa
+  da régua for de um passo por nível, e o capítulo só dizia que o Neutro é largo de três passos
+  **na subida**. Simétrica, a mesma jornada daria 116 e não 81. O capítulo ganhou a oração que
+  diz a geometria, e o `E4` ganhou a segunda metade, porque **essa geometria é regra de jogo que
+  ninguém decidiu explicitamente** · junto com a pergunta irmã, se o termo da régua é fotografado
+  no começo do cortejo ou recalculado a cada passo (só o segundo fecha com os números medidos).
+  **O segundo:** a trava de um gesto por intervalo não diz por si quantos gestos escolher, e a
+  regra que reproduz o 42 e o 25 da especificação é "o maior número de gestos que ainda cabe no
+  Tempo que eles mesmos produzem". O capítulo ganhou essa oração com um exemplo numérico. E ela
+  tem um dente: `E8`, novo, porque com gestos de +4 um passo de 15 pontos sai em 3 intervalos e um
+  de 14 sai em 6, então o alvo mais difícil é cortejado em metade do tempo do mais fácil.
+
 ## A emenda que chegou no meio, e já estava coberta
 
 - **11:04** · o `git pull --rebase` de antes do push trouxe `18ee12e`, uma emenda da

@@ -227,7 +227,9 @@ O **gesto** é a Firula deste capítulo, lida com a régua daqui: um presente ce
 
 O salto para +4 no nível 3 é de propósito: a excelência paga dobrado. Um gesto que **desagrada** é uma **Firula Infeliz** e subtrai na mesma escala (−1 / −2 / −4).
 
-**A trava é o calendário: um gesto por intervalo.** Daí sai o resto, sem nenhuma regra nova: um passo aceita no máximo tantos gestos quantos forem os intervalos que ele leva. Empilhar gesto encurta o passo, encurtar o passo tira intervalo, e tirar intervalo tira onde caberia o gesto seguinte. É isso que impede comprar afeto com um saco de moedas, e é o que a régua quer dizer quando diz que presentinho repetido vale cada vez menos.
+**A trava é o calendário: um gesto por intervalo.** Daí sai o resto, sem nenhuma regra nova: um passo aceita no máximo tantos gestos quantos forem os intervalos que ele leva. Empilhar gesto encurta o passo, encurtar o passo tira intervalo, e tirar intervalo tira onde caberia o gesto seguinte.
+
+Na prática se conta ao contrário, e o Mestre faz isso uma vez por passo: **empilhe o maior número de gestos que ainda caiba no Tempo que eles mesmos produzem.** Um passo que precisa de 15 pontos aceita três gestos de +4 (15 − 12 = 3 intervalos, e três gestos cabem em três intervalos); um quarto gesto deixaria o passo em um intervalo só, e um intervalo não segura quatro gestos. É isso que impede comprar afeto com um saco de moedas, e é o que a régua quer dizer quando diz que presentinho repetido vale cada vez menos.
 
 Gesto alto **custa dinheiro**, e o preço cresce rápido com o nível. O que ele compra é **pressa**, e o trade é real: um bruto reconquistando um Nêmesis gasta **81 intervalos** com carisma nenhum além do próprio, **42** empilhando gestos de +1, e **25** com gestos de +4. O que cada gesto custa em moeda o Mestre decide pela mesa e pelo mundo ⚑, porque o preço de um presente não é número de ficha.
 
@@ -259,7 +261,7 @@ Leia a tabela de baixo para cima: contra alvo forte a resistência **empata em t
 
 Furar não concede pedido: o que o cortejo faz é **andar a régua**, um passo por vez, respeitando o **teto de vidro** (±2 para o que acumula) e o **favor alugado**. Pedido é a régua que responde, e ela responde depois.
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Reconquistar um Nêmesis é a jornada mais longa que este capítulo tem. A Dama Vesna em <strong>−6</strong>, defesa parada 11, com o termo da régua somando 6 no começo e caindo um por passo conquistado: são <strong>6 passos</strong> até o Neutro. Sem gesto nenhum, o cortesão leva <strong>27</strong> intervalos, o mediano <strong>45</strong>, o inepto <strong>63</strong> e o bruto <strong>81</strong>. Em dias humanos, o bruto está cortejando por quase dois anos; se quem corteja fosse um elfo, por quase sete. Esfriar custa um passo por estação; construir custa isto. A razão entre as duas é o que faz relação valer alguma coisa.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Reconquistar um Nêmesis é a jornada mais longa que este capítulo tem. A Dama Vesna em <strong>−6</strong>, defesa parada 11, com o termo da régua somando 6 no começo e caindo um por passo conquistado: são <strong>6 passos</strong> até o Neutro, porque abaixo do Neutro cada nível é um passo (o meio largo de três passos é da subida). Sem gesto nenhum, o cortesão leva <strong>27</strong> intervalos, o mediano <strong>45</strong>, o inepto <strong>63</strong> e o bruto <strong>81</strong>. Em dias humanos, o bruto está cortejando por quase dois anos; se quem corteja fosse um elfo, por quase sete. Esfriar custa um passo por estação; construir custa isto. A razão entre as duas é o que faz relação valer alguma coisa.</div>
 
 ---
 

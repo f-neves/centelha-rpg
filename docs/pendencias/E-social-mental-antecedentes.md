@@ -36,6 +36,24 @@
   passos de distância do Neutro (a régua anda mais rápido saindo do zero, e a banda larga deixa
   de morder duas vezes), ou a linha da jornada se corrige para 15 / 27 / 39. O capítulo publicou
   só o que fecha.
+  **E há uma segunda metade neste item, achada ao conferir a primeira:** a linha "Nêmesis →
+  Neutro" só reconstrói se a faixa NEGATIVA da régua for de **um passo por nível** (6 passos de
+  −6 até 0). O capítulo diz que o Neutro é largo de três passos **na subida** e nunca disse nada
+  sobre a descida; se ela fosse simétrica, −6 estaria a 8 passos do zero e o bruto gastaria 116
+  intervalos, não 81. A rodada 85 publicou a oração "abaixo do Neutro cada nível é um passo",
+  porque é a geometria que os números medidos pressupõem, **e isso é regra de jogo que ninguém
+  decidiu explicitamente.** Se a decisão for outra, cai com ela a jornada inteira e a oração do
+  capítulo. Junto vem a mesma pergunta para o termo da régua: ele é fotografado no começo do
+  cortejo ou recalculado a cada passo conquistado? Os números medidos só fecham com o segundo.
+- [ ] **E8 · [DECIDIR] A trava de um gesto por intervalo não é monotônica.** Achado pela
+  Executora na rodada 85 ao conferir o trio 81 → 42 → 25 da especificação. Com gestos de +4, um
+  passo que precisa de **15** pontos sai em **3** intervalos (três gestos, 15 − 12 = 3), e um
+  passo que precisa de **14** sai em **6** (só dois gestos cabem, 14 − 8 = 6). **O alvo mais
+  difícil é cortejado em metade do tempo do alvo mais fácil**, e o salto aparece sempre que
+  `defesa − ataque` cruza um múltiplo do nível do gesto. É propriedade do modelo decidido, não
+  erro de redação, e os números publicados dependem dela. Saídas: aceitar o dente e dizer isso na
+  prosa, arredondar o Tempo para cima antes de aplicar a trava, ou trocar a trava por "gestos ≤
+  Tempo calculado sem gestos".
 - [ ] **E5 · [DECIDIR] ⚑ O que a leitura revela no modo devagar.** O capítulo dizia "a cada 6 de
   folga, descobre +1 **ponto** do que ainda falta", e ponto era o que faltava para furar a Defesa.
   No modelo novo não há furo: o passo custa **intervalos**. A rodada 85 escreveu "um intervalo do
