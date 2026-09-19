@@ -49,7 +49,18 @@ Alvo: `src/content/chapters/relacoes-sociais.md` e `src/data/regras.json`. Nada 
 
 ---
 
-## A proposta do item 8, para o Arquiteto decidir
+## A emenda que chegou no meio, e já estava coberta
+
+- **11:04** · o `git pull --rebase` de antes do push trouxe `18ee12e`, uma emenda da
+  especificação escrita às 09:40, depois de eu ter começado: ela renumera a seção 5 e cria um
+  **item 8 novo**, mandando consertar a primeira oração de "Quando a cena vira duelo" (que dizia
+  *"na conversa comum, a influência apenas empurra a régua"*, falsa depois do item 1) e **não**
+  mexer no gatilho da escalada. As duas metades já estavam feitas no commit `d73a058`: a oração
+  hoje diz "compra o alcance do pedido e vai embora", e "crava os pés" e "aposta real na mesa"
+  estão palavra por palavra como estavam. **O `regras.json` virou o item 9**, e é a proposta
+  abaixo.
+
+## A proposta do `regras.json` (item 9 depois da emenda, item 8 no despacho), para o Arquiteto decidir
 
 **Não executada.** O despacho pediu proposta antes de execução, e ela é esta. Nenhuma chave
 existente é renomeada, e não há consumidor em código de nada abaixo.
