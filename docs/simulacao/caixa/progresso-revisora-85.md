@@ -28,3 +28,8 @@ na worktree `C:/Users/Neves/ClaudeCode/centelha-techlead-revisora`. `git status 
   em `src/` inteiro e nao so em `chapters/`: sao **sete lugares em cinco arquivos**, todos
   intocados pelo lote e todos no ar, incluindo o roteador em mermaid do `qual-sistema.md` que
   publica a regra revogada palavra por palavra. Reescrevendo o veredito.
+- 19:47 · veredito commitado e EMPURRADO. Rebase do meu proprio commit sobre `origin/main` foi
+  necessario (o push foi recusado), e as duas conferencias do §9 passaram antes: os tres commits
+  que chegaram desde o meu pino tocam so `docs/simulacao/`, zero arquivos em `src/`, entao nada do
+  que eu julguei mudou debaixo do veredito; e `git merge-base --is-ancestor origin/main HEAD` deu
+  OK depois do rebase. Sha final `b22129f`, `git rev-list --count origin/main..HEAD` = 0.
