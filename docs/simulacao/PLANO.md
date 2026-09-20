@@ -70,7 +70,7 @@ Dar ao mestre as ações que o sistema tem e a tela não oferecia.
 O Interpor era o único que exigia regra nova, porque o capítulo publicado não tem uma linha
 sobre interpor, desviar nem abortar. As seis respostas estão decididas e registradas no
 `L34 §6`. **Corrigido em 09/09/2026:** este documento dizia "em construção" seis dias depois
-de o item ter fechado — o checkbox do `L34` também estava errado. Os dois foram atualizados
+de o item ter fechado · o checkbox do `L34` também estava errado. Os dois foram atualizados
 juntos.
 
 ### FASE 2.5 · A vista do jogador · NÃO COMEÇADA · ~15%
@@ -321,20 +321,20 @@ As decisões tomadas dentro do ciclo vão para o `CONTEXTO` como `D`, com motivo
 
 > ### ⛔ ANTES DESTA FILA: há uma conversa aberta com o humano, e ela vem primeiro
 >
-> **Estado em 18/09/2026.** A fila numerada abaixo é da frente do **Grid**, e ela não é o próximo
-> passo. O próximo passo é **retomar a conversa de Relações Sociais** exatamente onde parou, e o
-> estado completo está em `docs/simulacao/caixa/checkpoint-19set.md`.
+> **Estado em 20/09/2026.** A fila numerada abaixo é da frente do **Grid**, e ela não é o próximo
+> passo. O próximo passo é a frente de **Relações Sociais**, e o estado corrente dela está no topo
+> do `CONTEXTO.md`.
 >
-> **Onde parou, em uma linha:** o **item 4** do ritmo da régua, como o alvo resiste ao cortejo
-> longo, com três opções já medidas e a **B** recomendada pelo Arquiteto. Os itens 1, 2 e 3 já
-> foram decididos com o humano e **ainda não foram despachados** para a Executora.
+> **Onde ela está, em uma linha:** o ritmo de mover a régua fechou nos quatro itens, foi construído
+> e está no ar (`d73a058`, `057b339`), e a **rodada 85 está em revisão** (aviso `03e5274`), aberta
+> depois do lote já publicado. Depois do veredito vem o **item 9**, o `regras.json`, que é decisão
+> do Arquiteto e não do humano.
 >
 > **Não abra a decisão "Fase 2.5 ou fase 4" (item 4 desta fila) sem o humano pedir.** Ela continua
-> desbloqueada e continua sendo dele, mas ele está no meio de outra coisa, e essa outra coisa tem
-> três decisões tomadas esperando virar lote.
+> desbloqueada e continua sendo dele, mas ele está no meio de outra frente.
 >
-> O checkpoint traz o modelo inteiro em fórmula, então não é preciso refazer conta nenhuma para
-> retomar a conversa.
+> O `checkpoint-19set.md` continua servindo como registro das contas e do que foi decidido, e o
+> topo dele avisa que o "▶ RETOMAR AQUI" dele está superado.
 
 **Corrigido em 09/09/2026:** os itens 1 e 2 abaixo (Interpor, grid.condicao) já estavam
 fechados desde 07/09/2026 (`L34`, `L39`) quando esta seção ainda os listava como trabalho. Fila
@@ -350,7 +350,7 @@ renumerada; o texto de cada item fica como registro de por que ele existiu.
    gravar o par régua-contra-botão numa mesa de verdade, decisão que continua sem ser tomada
    pelo humano. Não desbloqueável por Executora/Revisora.
 4. **Fase 2.5 ou fase 4** · decisão do humano. Os dois primeiros pré-requisitos (itens 1 e 2
-   originais) JÁ estão fechados — a decisão está desbloqueada agora, e ainda não foi tomada.
+   originais) JÁ estão fechados · a decisão está desbloqueada agora, e ainda não foi tomada.
 
 Enquanto isso, e sem entrar em lote: a conversa do modo site é do humano, e a fase 2.5 e a 4
 não começam sem ele dizer.

@@ -11,22 +11,36 @@ Três regras que o mantêm útil:
   de próprio é o que veio do chat e não mora em arquivo nenhum.** E apontar é dar nome,
   caminho e para que serve, nunca descrever o conteúdo do outro arquivo (`ARQUITETO.md §5.5`).
 
-Última reescrita: **18/09/2026**.
+Última reescrita: **20/09/2026**.
 
 ---
 
-## Primeiro assunto ao reabrir: revisão de Aparência e Relações Sociais
+## Primeiro assunto ao reabrir: a rodada 85 em revisão
 
-**Conversa aberta com o humano, sem lote dispachado.** Estado completo, o que já fechou e o que
-ainda não teve reação dele: `docs/simulacao/caixa/checkpoint-19set.md`. Não abra outro trabalho
-antes de retomar isso com ele.
+**Estado em 20/09/2026.** O ritmo de mover a Régua de Relação está **decidido nos quatro itens,
+construído e no ar**: o lote entrou em `d73a058` e `057b339` em 19/09 e o deploy é automático. O
+item 4 fechou na **opção A**, contra a recomendação do Arquiteto, com o contra comprado escrito
+(a regra fica dormente contra alvo forte). A fonte única do que foi decidido é
+`docs/simulacao/caixa/ritmo-da-regua.md` (`92ee772`, emendado em `18ee12e`).
 
-**Onde exatamente parou em 18/09/2026:** o termo de régua na Defesa Social fechou com PROCEDE
-(rodada 84). O que está aberto é o **ritmo de mover a régua**, desenhado quase todo: itens 1 (o
-tempo é a moeda, sem teto de bônus), 2 (intervalo de 8 dias com multiplicador racial) e 3 (a
-fronteira ato/gesto) estão **decididos com o humano e ainda não despachados**. Falta só o **item
-4**, como o alvo resiste, com três opções medidas na mesa e a B recomendada. O checkpoint traz o
-modelo inteiro em fórmula, então não é preciso refazer conta nenhuma para retomar.
+**O lote foi publicado antes de existir revisão**, e o erro de sequência é do Arquiteto: não houve
+aviso no dia. A revisão abriu em 20/09 com o aviso `03e5274`, faixa `18ee12e..057b339`, e a
+worktree da Revisora foi reancorada ali. Um BLOQUEIA nesta rodada não segura publicação nenhuma,
+vira commit de conserto.
+
+**O que espera o Arquiteto, depois do veredito:** o **item 9**, onde os números novos moram no
+`regras.json`. A proposta está na última seção do `85-executora.md` e não foi executada. Enquanto
+ela não roda, `acoes.longevidadeFirula` continua afirmando o deslocamento de degrau que o item 2
+derrubou, e pela regra da casa (o JSON vence) quem lê o dado hoje lê o modelo morto.
+
+**O que continua com o humano, e não foi abordado:** onde termina o dia a dia e começa o Combate
+Social, que é a quarta frente da lista original dele. E os `E4` a `E8`, que a rodada 85 abriu, dos
+quais o **E4** é regra de jogo que ninguém decidiu (a geometria da faixa negativa da régua, e se o
+termo da régua é fotografado no começo do cortejo ou recalculado a cada passo).
+
+**O `checkpoint-19set.md` está superado no que ele chama de "▶ RETOMAR AQUI"**, e o próprio arquivo
+diz isso no topo desde 20/09: ele foi escrito às 00:25 de 19/09, antes de o item 4 fechar às 09:37
+do mesmo dia. O que continua valendo nele é o registro do que foi decidido e das contas.
 
 ## A frente de simulação (Grid) está ENCERRADA
 

@@ -2,6 +2,19 @@
 
 Registro de continuidade, não ordem de serviço. Serve pra retomar sem reconstruir tudo de memória.
 
+> ## ⛔ ESTE ARQUIVO ESTÁ SUPERADO NO QUE ELE MANDA FAZER · marcado em 20/09/2026
+>
+> Ele foi escrito às **00:25 de 19/09/2026**, e o **item 4 fechou às 09:37 do mesmo dia**, na
+> **opção A** e não na B recomendada aqui (`92ee772`). O lote inteiro foi construído e publicado
+> ainda em 19/09 (`d73a058`, `057b339`).
+>
+> **Não siga o "▶ RETOMAR AQUI" abaixo:** levar as três opções do item 4 ao humano gastaria uma
+> decisão que ele já tomou. O estado corrente está no `CONTEXTO.md`, no topo.
+>
+> **O que continua valendo neste arquivo** é o registro: o que foi decidido nos itens 1 a 3, o
+> modelo em fórmula, as contas medidas, e a lista do que nunca foi abordado. É por isso que ele
+> não foi apagado.
+
 ## ▶ RETOMAR AQUI
 
 **Se você é um Arquiteto que acabou de abrir a sessão, este é o primeiro assunto, e ele vem antes
