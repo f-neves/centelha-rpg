@@ -336,6 +336,25 @@ decide se rebasear é sequer a resposta certa:
 2. **Nada sumiu?** `git merge-base --is-ancestor <o que chegou> HEAD`, depois do rebase, antes de
    empurrar.
 
+**O TERCEIRO CASO, que a primeira conferência não previa** (acrescentado em 20/09/2026, depois de
+a Revisora achá-lo na rodada 86 e decidir certo antes de perguntar). A conferência 1 tinha duas
+saídas, "toca o que julguei, não rebaseie" e "não muda o julgamento, rebaseie", e há um caso que
+não é nenhuma das duas: **o que chegou toca uma VERIFICAÇÃO DATADA sua, e não uma conclusão.**
+
+O caso real: ela tinha acabado de recontar o placar do `Pendencias.md` e publicar os números no
+veredito, e chegou um commit que abria uma pendência nova. O placar que ela publicou **ficou
+velho no instante em que ela o publicou**, e nenhum achado dela mudou.
+
+**A saída é a terceira, e não uma das duas:** rebaseie, e **escreva o delta dentro do próprio
+veredito**, dizendo para qual sha os seus números valem. Segurar o veredito seria caro por nada;
+rebasear calado deixaria um número que parece de hoje e é de antes.
+
+**A régua, e é ela que generaliza:** a pergunta não é se o que chegou toca um ARQUIVO que você
+leu, é se ele toca uma CONCLUSÃO ou uma CONTAGEM. Conclusão invalidada não se rebaseia, porque
+nenhuma ordem de commits conserta um veredito que fala de outra árvore. Contagem envelhecida se
+rebaseia com a data ao lado, porque uma contagem sem sha nunca foi afirmação sobre hoje, e dizer
+o sha é o mesmo gesto de dizer o escopo ao lado do número.
+
 **O que continua proibido, e não mudou:** forçar, e rebasear ou mexer em commit de outra
 instância. A saída é sobre o seu próprio commit e mais nada.
 
