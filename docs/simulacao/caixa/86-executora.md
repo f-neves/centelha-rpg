@@ -14,8 +14,14 @@ Cinco commits, todos empurrados, `origin/main..HEAD` = 0 depois de cada um.
 | `d56dfa1` | os dois capítulos de Ações param de apontar para o cortejo antigo (o mapeamento Acumulada/Longa, o degrau Estação e a palavra "período"). |
 | `6509801` | o `regras.json` ganha o bloco de topo `social`, o `acoes.longevidadeFirula` troca o deslocamento de degrau pelo multiplicador de intervalo, e o `acoes.escalaIntervalo` para de citar o cortejo. Nenhum código lê estas chaves; nada muda na regra, muda onde ela está escrita. |
 | `f85b09e` | três pendências novas (`E9`, `E10`, `J9`) e o placar do índice refeito contando as caixas: 244 → 247 itens, 168 → 171 abertos. |
+| `34e98a2` | a terceira linha da ESCALA, que eu tinha deixado passar: `:140` mandava comparar o Ataque com "o número passivo da ficha", cinco linhas antes de o capítulo dizer que a mesa soma o termo em cima. Agora as duas dizem a mesma coisa. |
 
 Nenhum deles depende de migração.
+
+**O deploy está no ar, e isto é lido e não suposto:** `gh run list` dá `Deploy site (GitHub Pages)`
+**completed success** para `08236a8`, que já contém os grupos A a D; o `34e98a2` foi empurrado
+depois deste relatório ser escrito. O workflow `Validar dados e regras` aparece `in_progress` nos
+disparos mais recentes e o último que fechou (`d56dfa1`) fechou em **success**.
 
 **O grupo A saiu sozinho e primeiro**, como o despacho mandou, e o terceiro arquivo dele não estava
 na lista: `src/data/diagramas.json` é o cache dos fluxogramas desenhados no build, com chave de
@@ -73,6 +79,14 @@ E o `dias` que saiu se reconstrói: 8 × 0,5 / 1 / 2 / 4 dá **4 / 8 / 16 / 32**
 que o `E4` guarda: aquela linha é uma jornada medida, e o bloco novo só publica as constantes da
 régua e as fórmulas.
 
+**E o sentido contrário, que a tabela acima não mede:** o capítulo publica números que o bloco
+novo **não** carrega, e nenhum deles é contradito por ele. São a escala dos gestos (0 / +1 / +2 /
++4 e a Firula Infeliz simétrica), os saltos dos atos (+2 e +3 a favor, −2 a −5 contra), o passo
+que o favor cobrado desce, e a mecânica do Combate Social por lance (custo 1 + Margem de Vontade,
+Peso de +0 a +3, iniciativa e as três Velocidades). Ausência não é divergência: o que o bloco
+promete é a régua e o modo devagar, e o `derivados.defesaSocial` continua sendo o dono da fórmula
+com dado. Se você quiser essas quatro famílias no dado também, é item novo e eu meço o custo.
+
 **As duas emendas do despacho estão nos dois lados.** A frase dos degraus entrou na `nota` do
 `longevidadeFirula` com a mesma restrição que o capítulo passou a publicar ("os saltos entre os
 degraus que caberiam aqui multiplicam de 8 a 24 vezes cada um"), e a palavra "lábia" não está nem
@@ -93,6 +107,9 @@ no capítulo nem na `tetoDeVidroNota`.
 - **A especificação continua com `Sora (9, 7)`** (`ritmo-da-regua.md`, seção 4). O capítulo está
   certo agora; a fonte do erro não. Quem reconstruir o capítulo pela especificação traz o 7 de
   volta. Não mexi: é documento seu.
+- **O `regua.passosParaRomperNeutro: 3` que eu gravei é o valor de hoje, e o `E3` é a decisão de
+  trocá-lo** ("banda neutra: 5 ou 3?"). Não é conflito: o dado publica o que vale agora. Digo
+  porque, com a régua no JSON, uma decisão do `E3` passa a ter dois lugares para mudar, e não um.
 - **O `regras.json` tem 23 travessões (U+2014)**, todos anteriores a mim, conferidos linha a linha.
   Seis deles são células de tabela que contêm só o caractere, e mexer nelas mudaria conteúdo
   publicado (`regras.json`, linhas 248 a 253). O
@@ -114,10 +131,17 @@ no capítulo nem na `tetoDeVidroNota`.
   `:113`. Confirmei quem é cada bloco pelos cabeçalhos antes de trocar o número, em vez de aceitar
   a citação. A diferença é da worktree congelada da Revisora, e não muda nada do achado.
 
+- **Eu fechei o item 8 pela metade na primeira passada**, e o conserto está no `34e98a2`. A ESCALA
+  nomeava três linhas (`:140`, `:145`, `:274`) e eu conferi o meu trabalho procurando a frase
+  "já carrega", que só existia em duas delas. A terceira dizia a mesma coisa com outras palavras,
+  entre parênteses, e passou. **A conferência por busca de literal só acha o que o literal
+  escreve**, e é a forma que o `CATALOGO` chama de portão que casa por texto fixo, aplicada à
+  minha própria revisão.
+
 ## BLOQUEADO
 
-Nada. Os quinze itens do despacho estão feitos: 1 e 2 no `16377fa`, 3 a 8 no `fd4497d`, 9 a 11 no
-`6509801`, 12 e 13 neste relatório, 14 e 15 no `d56dfa1`.
+Nada. Os quinze itens do despacho estão feitos: 1 e 2 no `16377fa`, 3 a 8 no `fd4497d` e no
+`34e98a2`, 9 a 11 no `6509801`, 12 e 13 neste relatório, 14 e 15 no `d56dfa1`.
 
 O que não foi tocado de propósito: `antecedentes.md` (regra de jogo, decisão do humano, rodada 87),
 os `E4` a `E8`, e a escala de Firula contra o `habilidades.md`.

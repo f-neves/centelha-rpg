@@ -60,4 +60,10 @@
   Commitadas e empurradas em `f85b09e`.
 - **20:05** · `86-executora.md` escrito, com a conferência do item 12 por nome e a tabela do item
   13 (cada número do bloco novo contra a linha do capítulo de onde ele sai). Zero U+2014 e zero
-  CRLF nos dois documentos desta rodada. Falta commitar os dois e relatar.
+  CRLF nos dois documentos desta rodada. Commitados e empurrados em `08236a8`.
+- **20:07** · conferi o deploy em vez de supor: `gh run list` dá `Deploy site (GitHub Pages)`
+  **completed success** no `08236a8`, que contém os grupos A a D. Conferi também que os rótulos
+  `E9`, `E10` e `J9` não colidem com item nenhum dos doze arquivos de pendência.
+- **20:09** · achei um buraco na minha própria conferência do item 8: a ESCALA nomeava TRÊS linhas
+  e eu procurei "já carrega", que só existia em duas. A terceira (`:140`, "o número passivo da
+  ficha") dizia o mesmo com outras palavras e tinha passado. Consertada e empurrada em `34e98a2`.
