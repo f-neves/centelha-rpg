@@ -67,3 +67,9 @@
 - **20:09** · achei um buraco na minha própria conferência do item 8: a ESCALA nomeava TRÊS linhas
   e eu procurei "já carrega", que só existia em duas. A terceira (`:140`, "o número passivo da
   ficha") dizia o mesmo com outras palavras e tinha passado. Consertada e empurrada em `34e98a2`.
+- **20:13** · o Arquiteto respondeu os cinco PRECISA DE MIM e pediu UMA coisa: abrir a pendência
+  dos travessões com a distinção escrita. Contei ocorrência a ocorrência antes de escrever: são
+  **6 semânticos** (os `valores` da linha "Estado" do bloco de porte, linhas 248 a 253, cuja
+  `unidade` é "capacidade sem número", então ali o caractere quer dizer "não se aplica") e
+  **17 de prosa**, em 15 linhas, duas delas com duas ocorrências. `J10` escrito, placar do índice
+  de 247 para 248.

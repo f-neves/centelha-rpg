@@ -56,6 +56,22 @@
   revisa. Saídas: fixar a semente do desenho, ou gravar só as entradas que faltam em vez do
   arquivo inteiro. Não é urgente e não afeta quem lê o site: o desenho publicado está certo.
 
+- [ ] **J10 · [DECIDIR] Os 23 travessões do `regras.json`, e seis deles NÃO são travessão.**
+  Contados pela Executora na rodada 86, ocorrência a ocorrência, com Python e não por `git diff`:
+  são **23 U+2014** no arquivo, e a régua da casa (sem travessão em texto nenhum) só tem portão
+  automático para `src/content/**`, por decisão do humano. A separação é o que decide o gesto:
+  - **seis são semânticos e ficam.** São os `valores` da linha "Estado" do bloco de porte
+    (`regras.json`, linhas 248 a 253), cuja `unidade` é "capacidade sem número": ali o caractere
+    é o marcador de "não se aplica", e é dado publicado. Trocar por ponto-médio mudaria o
+    sentido, não a forma.
+  - **dezessete são prosa e caem**, em quinze linhas (`436`, `627`, `831`, `853`, `923`, `1017`,
+    `1023`, `1145`, `1173`, `1175`, `1228`, `1263`, `2597`, `2598`, `2602`), dentro de `nota`,
+    `nome` e `formula`. Duas dessas linhas trazem o caractere duas vezes.
+
+  Não foi consertado na rodada 86 de propósito: é edição em dado publicado, e quem decide o que
+  vai para produção é o humano. Quando entrar, entra num lote só, com a palavra dele e com os seis
+  de cima intocados.
+
 - [ ] **J4 · [DECIDIR] Fraquezas e resistências do bestiário não chegam ao dano.** Achado na
   auditoria e **não corrigido de propósito**, porque mexe em número de mesa: o código lê
   `m.fraquezas`/`m.resistencias` no topo da criatura, e elas moram dentro de `combate`.
