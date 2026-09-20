@@ -97,7 +97,7 @@ A leitura é simples: **o estado de alerta é o que apaga a banda morta**. Um gu
 
 ## Social
 
-Quase tudo o que é troca social prolongada vive em [Relações Sociais](/regras/relacoes-sociais), e aquele capítulo já fala a língua dos cinco modos: o que ele chama de influência estendida é Acumulada, e o cortejo com calma é Longa.
+Quase tudo o que é troca social prolongada vive em [Relações Sociais](/regras/relacoes-sociais), e aquele capítulo tem régua própria: o **cortejo com calma** (a Influência Estendida) é um modo só, não rola dado para avançar, e mede o tempo em intervalos de 8 dias ajustados pela longevidade de quem corteja, e não nos degraus da escada deste capítulo.
 
 O que fica de fora dele, e ainda espera ficha:
 

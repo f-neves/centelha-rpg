@@ -141,13 +141,13 @@ Acumulada e Longa declaram um terceiro número: **em que ritmo o progresso acont
 | **Hora** | uma sentada | vasculhar a biblioteca, decifrar a página, costurar o ferimento |
 | **Dia** | uma jornada | marcha forçada, caçar e forragear, rastrear a caravana |
 | **Semana** | uma empreitada | forjar a espada, a viagem entre cidades, o treino |
-| **Estação** | uma obra | erguer o muro, administrar a terra, o cortejo longo |
+| **Estação** | uma obra | erguer o muro, administrar a terra |
 
 Os degraus estão longe uns dos outros de propósito, e é isso que faz a escolha ser fácil: **nenhuma tarefa fica entre dois degraus**. O Mestre narra quarenta minutos ou uma hora e meia à vontade; o que a ficha declara é o degrau.
 
 O degrau também revela o modo. Tick e minuto são território de Acumulada, porque ali o dado tem função; semana e estação são território de Longa, porque ninguém rola trinta vezes por uma espada. Hora e dia aceitam os dois.
 
-O **Tick é o mesmo do Combate**, cerca de um segundo, e é por isso que uma ação deste capítulo acontece no meio de uma luta sem tradução nenhuma. Em [Relações Sociais](/regras/relacoes-sociais), "período" quer dizer o intervalo declarado.
+O **Tick é o mesmo do Combate**, cerca de um segundo, e é por isso que uma ação deste capítulo acontece no meio de uma luta sem tradução nenhuma. Em [Relações Sociais](/regras/relacoes-sociais) o cortejo com calma tem intervalo próprio, de 8 dias ajustado pela longevidade de quem corteja, e não usa esta escada.
 
 ## Quem escolhe o modo é o jogador
 
