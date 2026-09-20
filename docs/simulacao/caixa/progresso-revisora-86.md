@@ -29,3 +29,8 @@ worktree `C:/Users/Neves/ClaudeCode/centelha-techlead-revisora`. `git status --s
   `J-infraestrutura.md`, que eu acabei de recontar): medi o delta, e o que chegou toca uma
   verificacao datada e nenhum achado, entao escrevi o delta dentro do veredito e vou rebasear.
   Falta commitar e empurrar.
+- 20:31 · quatro execucoes do CI fecharam depois do veredito sair, e a tabela da §6 envelheceu.
+  Apliquei em mim o remedio da propria secao: carimbei a leitura com a hora e reescrevi a tabela
+  completa. A proporcao nao mudou (10 fechadas, 5 em falha) e a evidencia melhorou, porque agora
+  commit so de `docs/` cai dos DOIS lados. O `4e56aa8`, que e o meu pino, falhou. Acrescentei
+  tambem a medida da sobreposicao das execucoes, como FATO e sem ligar a nada.

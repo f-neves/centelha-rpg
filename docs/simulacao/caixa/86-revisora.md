@@ -248,6 +248,43 @@ suposto", e a leitura escolhida não é a mais recente; a mais recente estava ve
 achado que contradiz o que a rodada afirma é conserto da rodada · então **`CORRIGE` a afirmação** e
 **`ESCALA` a instabilidade**.
 
+### Acrescentado às 20:31, e a data faz parte do dado
+
+**A tabela acima foi lida às 20:22 e já andou**, o que é exatamente o defeito que ela aponta ·
+então o mesmo remédio vale para mim, e o remédio é o carimbo. **Quatro execuções fecharam depois**,
+e agora a leitura completa é esta:
+
+| sha | resultado | duração |
+|---|---|---|
+| `2215cfc` | success | 23:14 → 23:26 |
+| `4e56aa8` | **failure** | 23:12 → 23:29 |
+| `08bf455` | success | 23:11 → 23:23 |
+| `0cd062d` | **failure** | 23:10 → 23:19 |
+| `34e98a2` | success | 23:09 → 23:24 |
+| `08236a8` | **failure** | 23:05 → 23:19 |
+| `f85b09e` | **failure** | 23:04 → 23:18 |
+| `6509801` | **failure** | 23:00 → 23:14 |
+| `e7fefd7` | success | 22:59 → 23:14 |
+| `c38f909` | success | 22:57 → 23:12 |
+
+**A proporção não mudou** (dez fechadas, cinco em falha) **e a evidência ficou melhor**: os commits
+só de `docs/` agora caem dos dois lados · `f85b09e`, `08236a8` e `0cd062d` falharam e `08bf455`
+passou, enquanto `34e98a2`, que é o único de `src/` do grupo, **passou**. Conteúdo não separa quem
+falha de quem passa, e agora isso está medido nas duas direções e não só numa.
+
+**E o `4e56aa8` falhou**, que é o pino desta revisão. Não muda o que eu verifiquei (o `validate`
+local deu exit 0 aqui e o `Deploy site`, que é outro workflow, fechou em success para esse mesmo
+sha), mas vale escrito: a revisão que você está lendo foi feita sobre uma árvore cujo "Validar
+dados e regras" fechou vermelho no mesmo job da §6.
+
+**Um segundo fato medido, e é só fato:** as execuções se sobrepõem pesado. Cada uma leva de 9 a 17
+minutos e elas começam de 1 a 5 minutos uma da outra, então às 23:12 havia **sete** rodando ao mesmo
+tempo (as criadas às 23:00, 23:04, 23:05, 23:09, 23:10, 23:11 e 23:12). A asserção que falha é
+*"mover custa de 2 a 7 idas ao banco (foram 0)"*, e outras asserções do mesmo teste contam linhas
+num banco ("42 linha(s) no banco"). **Registro os dois fatos lado a lado e não os ligo: não testei
+se há ligação**, e dizer que há seria a causa provável não testada que este mesmo veredito cobra da
+Executora três seções abaixo. Ficam aqui porque estreitam a busca de quem for diagnosticar.
+
 **O deploy, esse está bom, e eu confirmei em vez de herdar.** O relato observa honestamente que o
 `34e98a2` foi empurrado depois de ele ser escrito, e o `34e98a2` **toca `src/`**, então a leitura
 dela não cobria o último commit de código. Conferido agora: `Deploy site (GitHub Pages)` para
