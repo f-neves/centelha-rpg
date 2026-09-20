@@ -3012,6 +3012,28 @@ caída.
 
 ### M-09 · tempo de um passo de Relação por povo · DECIDIDO em 17/09/2026 · FEITO em 17/09/2026 (`40c48c1`)
 
+> **O MECANISMO DESTA ENTRADA FOI SUBSTITUÍDO EM 19/09/2026, e o resto dela continua valendo.**
+> Marcado em 20/09/2026, depois de a Executora achar que o registro ainda afirmava FEITO sobre uma
+> forma que o dado já não carrega (`E10`).
+>
+> **O que caiu:** o deslocamento de degrau (+1/0/−1/−2) sobre a escada de seis do capítulo de
+> Ações. **O motivo, medido e não preferido:** o ajuste racial precisa de quatro degraus
+> consecutivos, cada degrau da escada multiplica entre 8 e 24 vezes, e a única base plausível para
+> caber os quatro seria "dia", que produz um orc saindo de estranho a Apreço em **quatro horas**.
+> A escada é boa para ação longa e grossa demais para uma régua de quatro faixas.
+>
+> **O que entrou no lugar:** base fixa de **8 dias**, com a longevidade virando **multiplicador**
+> (orc/meio-orc ×½ = 4 dias · humano/meio-elfo ×1 = 8 · anão/gnomo/halfling ×2 = 16 · elfo ×4 =
+> 32). Decisão do humano em 18/09/2026, item 2 do ritmo da régua
+> (`caixa/ritmo-da-regua.md`), publicada no capítulo em `d73a058` e gravada no dado em `6509801`,
+> onde `acoes.longevidadeFirula.porFaixa` passou a trazer `multiplicador` no lugar de
+> `deslocamento`.
+>
+> **O que NÃO caiu, e é a maior parte desta entrada:** que o intervalo escala com a longevidade;
+> as quatro faixas e quem está em cada uma; o campo `longevidade` em `racas.json`, que continua
+> sendo a fonte e agora é lido pela régua nova; e o contra comprado lá embaixo, que era sobre as
+> quatro faixas e não sobre o mecanismo. **Só a conversão mudou.**
+
 **O original:** `relacoes-sociais.md:185`, o intervalo-base de uma Firula de cortejo "escala com a
 longevidade da raça (um elfo corteja em estações onde um humano leva semanas)", na escada de seis
 degraus do capítulo de Ações (Tick · minuto · hora · dia · semana · estação). Não existe conversão
