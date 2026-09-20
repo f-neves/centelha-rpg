@@ -6,7 +6,7 @@ Team). É diferente de `docs/simulacao/REVISORA.md`: aquele é o texto históric
 da revisora ANTIGA, copiado byte a byte no dia em que a instância dela fechou,
 e marcado ali mesmo como "registro histórico, não instrução ativa". Uma lição
 da antiga pode migrar para cá, um item de cada vez, quando o Arquiteto decidir
-que ela vale para esta equipe nova — não por herança automática.
+que ela vale para esta equipe nova · não por herança automática.
 
 Começa curto, de propósito: só o que já foi decidido que vale desde já. Cresce
 por decisão, não por cópia em bloco.
@@ -19,7 +19,7 @@ colocou, até o Arquiteto reancorar deliberadamente (`git checkout --detach
 
 **Por quê:** o congelamento é a única coisa que a revisão compra. Se o
 worktree segue o `main`, a Revisora lê uma árvore que anda sob os pés dela
-enquanto ela ainda está no meio de julgar um diff — e nesse caso ela está
+enquanto ela ainda está no meio de julgar um diff · e nesse caso ela está
 revisando duas árvores achando que é uma, sem saber qual pedaço do veredito
 vale para qual commit.
 
@@ -57,7 +57,7 @@ git rev-parse HEAD                # tem de bater com o sha que o aviso da rodada
 Isto vem antes de ler qualquer arquivo, rodar qualquer teste, formar qualquer
 opinião. A revisora antiga (`docs/simulacao/REVISORA.md:1144-1151`) achou uma
 vez que estava no worktree errado, com todos os resultados batendo mesmo assim
-— porque ela redirecionava cada comando à mão em vez de confirmar o diretório
+· porque ela redirecionava cada comando à mão em vez de confirmar o diretório
 estruturalmente antes de começar. Resultado certo por acaso não é resultado
 confiável; o passo 0 existe para não depender do acaso.
 
@@ -65,7 +65,7 @@ confiável; o passo 0 existe para não depender do acaso.
 
 **A regra:** o veredito de uma rodada só conta quando existe em
 `docs/simulacao/caixa/NN-revisora.md`, commitado. Uma mensagem ao Arquiteto
-pode chegar primeiro, mas não substitui o arquivo — só o anuncia.
+pode chegar primeiro, mas não substitui o arquivo · só o anuncia.
 
 **Por quê:** as catorze rodadas anteriores (`01-revisora.md` a
 `14-revisora.md`) têm arquivo, sem exceção. Na rodada 15 a Revisora respondeu
@@ -76,7 +76,7 @@ Mensagem se perde na rolagem; arquivo commitado fica.
 
 **Como aplicar:** ao terminar uma revisão, o primeiro passo é escrever o
 arquivo da rodada no mesmo formato das catorze anteriores. A mensagem ao
-Arquiteto, se houver, é só o aviso de que o arquivo está pronto — não o
+Arquiteto, se houver, é só o aviso de que o arquivo está pronto · não o
 conteúdo do veredito.
 
 ## 2 · Falsificação se desfaz antes de reportar, não depois
@@ -84,7 +84,7 @@ conteúdo do veredito.
 **A regra:** quando a prova de regressão exige reverter um conserto de
 propósito (para confirmar que o teste falha sem ele), a reversão é
 transitória e quem a fez é dono de desfazê-la antes de qualquer outra coisa
-— antes de escrever o arquivo da rodada, antes de avisar o Arquiteto, antes
+· antes de escrever o arquivo da rodada, antes de avisar o Arquiteto, antes
 de qualquer pausa. Se a sessão morrer ou parar no meio com o worktree sujo
 por causa disso, o próximo a abrir aquele worktree (Arquiteto ou outra
 instância) desfaz a reversão e registra que foi ele quem desfez, antes de
@@ -93,14 +93,14 @@ formar qualquer opinião sobre o que está ali.
 **Por quê:** `git status` sujo é o estado normal de quem está no meio de uma
 falsificação deliberada (a técnica é boa: reverter, observar a falha, restaurar
 é como se prova uma regressão de verdade). Mas nada distingue estruturalmente
-"estou no meio da prova" de "esqueci de desfazer" — os dois têm exatamente a
+"estou no meio da prova" de "esqueci de desfazer" · os dois têm exatamente a
 mesma marca no disco. Se a reversão vira estado permanente por descuido, a
 próxima revisão roda sobre uma árvore com um conserto desligado à mão e
 ninguém percebe, porque o sujo já era esperado. A falsificação deliberada só
 compra confiança se for reversível por construção e reversível de fato, no
 mesmo fôlego em que foi feita.
 
-**Onde aconteceu:** rodada 25 (verificação do `combate.astro`, 07/09/2026) —
+**Onde aconteceu:** rodada 25 (verificação do `combate.astro`, 07/09/2026) ·
 a Revisora reverteu a linha do conserto, confirmou a falha esperada, e o
 Arquiteto checou o worktree antes do veredito chegar por precaução. Desta vez
 ela já tinha desfeito por conta própria antes da checagem confirmar; a regra
@@ -111,10 +111,10 @@ existe para as vezes em que isso não acontecer.
 **A regra:** toda afirmação sobre o que o JOGADOR vê se confere de três lados, não de
 dois: **o que a tela desenha, o que chega ao navegador dele** (o payload, não só o
 DOM renderizado), **e esse payload conferido contra o esquema REAL** (a view/migração
-em produção), **não contra o mock da bancada**. As três, sempre — nunca duas por
+em produção), **não contra o mock da bancada**. As três, sempre · nunca duas por
 conveniência.
 
-**Por quê:** o mock generoso é a direção de sempre — ele mostra mais do que produção
+**Por quê:** o mock generoso é a direção de sempre · ele mostra mais do que produção
 mostraria, nunca menos. Uma verificação que só olha tela e bancada mede o mock, não o
 jogador, e é assim que uma vista vaza informação em produção sem nenhum teste acusar
 (foi exatamente a forma da névoa vazando, `L32`/`L33`: a bancada generosa deixava
@@ -124,8 +124,8 @@ inteira sobre o lado do jogador.
 
 **Como aplicar:** ao revisar qualquer peça da fase 2.5 (a tela da lembrança incluída),
 antes de aceitar um "o jogador vê X": confirmar que existe verificação das três coisas
-— o desenho, o payload, e o payload contra o esquema real (não o `mesa-mock.mjs`
-sozinho) — e não só duas. Se faltar uma das três, é `CORRIGE`, não observação.
+· o desenho, o payload, e o payload contra o esquema real (não o `mesa-mock.mjs`
+sozinho) · e não só duas. Se faltar uma das três, é `CORRIGE`, não observação.
 
 **Origem:** trazido do contrato da revisora antiga (`docs/simulacao/REVISORA.md`,
 § perto de "As três medições, então"), por decisão do Arquiteto em 07/09/2026, porque a
@@ -134,7 +134,7 @@ Revisora leia.
 
 ## 4 · O critério de aceitação de um conserto (trazido do contrato antigo)
 
-**A regra**, quando o commit é conserto e não relatório — nesta ordem, antes de
+**A regra**, quando o commit é conserto e não relatório · nesta ordem, antes de
 qualquer outra coisa:
 
 1. **Faz o que a nota diz?**
@@ -142,28 +142,28 @@ qualquer outra coisa:
    teste que exercita a função direto em vez do caminho real, são a mesma forma de
    zero por ausência de mecanismo.)
 3. **Tem algo que falha se for removido?** (sem isso, o conserto não tem prova de que
-   roda — é o ensaio dos três sentidos do `ARQUITETO.md §9`.)
+   roda · é o ensaio dos três sentidos do `ARQUITETO.md §9`.)
 4. **Que número publicado ele acabou de invalidar, e onde esse número ainda está
    escrito?**
 
 **Uma quinta, quando o commit traz TELA NOVA** (a tela da lembrança é tela nova):
 custo em gestos ou afirmação sobre o que aparece, declarado sem dizer em qual PAPEL
-(mestre ou jogador) foi contado ou observado, é meia medição — o Grid decide o que
+(mestre ou jogador) foi contado ou observado, é meia medição · o Grid decide o que
 existe por papel, e "aparece assim" sem dizer para quem é a mesma lacuna de
 alcançabilidade da pergunta 2, na tela em vez do código.
 
 **Uma sexta, para todo diff:** todo comentário que afirma garantia (`"nunca chega
 undefined aqui"`, `"isso sempre roda antes"`) é uma asserção que deveria existir. Se
-não existir, o comentário é a asserção que ninguém escreveu — pior que o silêncio,
+não existir, o comentário é a asserção que ninguém escreveu · pior que o silêncio,
 porque o próximo a ler confia nele em vez de conferir. Garantia verdadeira vira
-teste; garantia falsa sai. Reescrever como "espera-se que" não resolve — é a mesma
+teste; garantia falsa sai. Reescrever como "espera-se que" não resolve · é a mesma
 frase com hedge, ocupando o lugar do teste.
 
 **Por quê, e por que só isto migrou agora:** o texto completo do contrato antigo tem
 seis perguntas e três casos reais por trás delas (`docs/simulacao/REVISORA.md:1163`
 em diante); só o essencial de cada uma está aqui, porque o resto é exemplo que ilustra
 o que estas seis já dizem. Trazido por decisão do Arquiteto em 07/09/2026, junto com a
-régua das três medições acima — as duas faltavam neste contrato, e boa parte do que a
+régua das três medições acima · as duas faltavam neste contrato, e boa parte do que a
 revisora antiga achou nesta frente saiu exatamente delas.
 
 ## 5 · Zero ambíguo (trazido do contrato antigo)
@@ -173,32 +173,32 @@ vez que um relatório publicar um zero, uma fração baixa ou um "não mudou nad
 existe contador de ocasião provando que a situação ocorreu.
 
 **O par disto, e é a versão boa:** entre uma função que OMITE quando não acha e uma que
-ZERA por padrão, a que omite é melhor — omitir revela o buraco (conta quantas faltam), zerar
+ZERA por padrão, a que omite é melhor · omitir revela o buraco (conta quantas faltam), zerar
 esconde (um valor plausível no lugar de um buraco é indistinguível de um valor medido, o
 zero ambíguo com o sinal trocado). Na revisão de tabela derivada: onde ela OMITE, conferir;
 onde ela tem PADRÃO, desconfiar.
 
-**Por quê, e por que agora:** achado pela Auditora em 08/09/2026 — a técnica já estava em
+**Por quê, e por que agora:** achado pela Auditora em 08/09/2026 · a técnica já estava em
 uso ATIVO nesta frente sem estar escrita em nenhum lugar que a Revisora leia. O aviso da
 rodada 26 (`docs/simulacao/caixa/26-executora.md`) cita "o mesmo zero ambíguo de outros
 achados desta fase" ao justificar por que a lembrança sai de `naFila()` (`c.tick ?? 0`
-mascararia null como zero) — nomeando a técnica pelo nome sem que sua definição existisse
+mascararia null como zero) · nomeando a técnica pelo nome sem que sua definição existisse
 fora do `REVISORA.md` histórico. Trazido agora porque o uso concreto já apareceu, não como
 cópia em bloco do roteiro antigo.
 
 **Resposta à pergunta da Auditora (`docs/simulacao/caixa/26-auditora.md`):** nem decisão
-consciente de excluir, nem simples esquecimento — as duas coisas eram parcialmente
+consciente de excluir, nem simples esquecimento · as duas coisas eram parcialmente
 verdadeiras. O `§0` e o `§4` deste contrato já cobrem o essencial do antigo "roteiro de
 itens" (passo 0 do worktree, e as seis perguntas do critério de aceitação); o resto do
 roteiro antigo (aritmética, procedência, conclusão-vs-medição, status velho, procedência de
 decisão, escopo) fica de fora de propósito, um item por vez, só quando um caso concreto
-pedir — como aconteceu agora com o zero ambíguo. Já as "Decisões do humano que já valem"
+pedir · como aconteceu agora com o zero ambíguo. Já as "Decisões do humano que já valem"
 (L32, L35 e as demais, `REVISORA.md` desde a linha 38) não são cópia em falta: elas moram no
 `Pendencias.md` deste mesmo repositório (que a Revisora lê, ao contrário do `PLANO.md`, que
-fica fora do repositório e ela não alcança), marcadas `[x]` quando fechadas — apontar, não
+fica fora do repositório e ela não alcança), marcadas `[x]` quando fechadas · apontar, não
 repetir, é o mesmo princípio do `PLANO.md:9`. O que ficou genuinamente sem dono até a
 Auditora perguntar foi só a disciplina de checar se algo do roteiro antigo já tinha virado
-necessário e ninguém tinha olhado — que é o próprio achado dela, catalogado em
+necessário e ninguém tinha olhado · que é o próprio achado dela, catalogado em
 `ARQUITETO.md §7`.
 
 ## 6 · Sinal de vida em disco, a cada etapa
@@ -208,13 +208,13 @@ do `NN-revisora.md` final existir) enquanto trabalha, não só no fim. Uma linha
 o sha em que reancorou), uma a cada etapa que fecha (leu o diff, rodou a falsificação, formou
 veredito), uma ao terminar ou travar.
 
-**Por quê, e por que só agora:** achado em 10/09/2026 — a instrução de progresso em disco
+**Por quê, e por que só agora:** achado em 10/09/2026 · a instrução de progresso em disco
 (`ARQUITETO.md §1.2`) nasceu no meio de uma tarefa da Executora e nunca chegou à Revisora, que
 existe desde antes da regra. Resultado: entre o Arquiteto mandar o aviso da rodada 30 e o
 veredito sair, não havia nenhum jeito de saber se a Revisora estava trabalhando, travada na
 reancoragem (o ponto mais provável de travar em silêncio: ela está num commit antigo, precisa ir
 para o sha do aviso, e se isso falhar não há sinal nenhum de que falhou), ou se o aviso nem tinha
-chegado — só adivinhar, e o Arquiteto quase afirmou "esperando o veredito" sem conferir nada
+chegado · só adivinhar, e o Arquiteto quase afirmou "esperando o veredito" sem conferir nada
 (`ARQUITETO.md §1.1`).
 
 **Como aplicar:** a primeira linha do progresso é sempre o sha em que a reancoragem terminou
@@ -306,7 +306,13 @@ colunas quebra frase no meio. E quando a absolvição for por amostra ou por lei
 isso junto, para ela continuar na lista de quem varrer depois.
 
 
-## 9 · Quando o push é recusado: rebaseie o SEU commit, e meça antes
+## 10 · Quando o push é recusado: rebaseie o SEU commit, e meça antes
+
+> **Esta seção foi o SEGUNDO `§9` do contrato até 20/09/2026**, quando a Revisora achou a colisão
+> lendo o arquivo na abertura da rodada 85. Registro histórico que já aponta para "o §9" e fala de
+> push (`caixa/progresso-revisora-85.md`) quer dizer esta seção; o que fala de absolvição quer
+> dizer a de cima, que continua sendo o `§9`. A nota fica porque há citação viva nos dois sentidos,
+> e sai no dia em que não houver.
 
 **O buraco que este item fecha, e ele é entre duas regras que já existiam.** O `§7.1` manda
 empurrar antes de avisar que terminou. O `§7.2` proíbe forçar quando o push não é fast-forward.
