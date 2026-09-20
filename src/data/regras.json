@@ -2624,18 +2624,50 @@
     "notaN1": "Enquanto n1 for false, quem manda e combate.simultaneo.decideEmValeDepois, que vale 1 (a acao comeca em T+1). No commit que escrever N1 os dois passam a ser a mesma coisa: decideEmValeDepois vira derivado de n1, e nao ha dois lugares dizendo a regra.",
     "notaCouraca": "A couraca de porte NAO esta aqui, e nao por esquecimento: ela ja e aplicada em tempo de geracao (scripts/gen-bestiario.mjs, linhas 36-45 e 79-82) e ja vem somada na absorcao de cada criatura do monsters-mesa.json. Uma bandeira de tempo de execucao a somaria DUAS VEZES. O que a bateria mede no lugar dela e o eixo do elenco: criatura grande contra criatura media."
   },
+  "social": {
+    "nota": "A Régua de Relação e os dois modos, decisão de 18-19/09/2026 (ver o capítulo X, relacoes-sociais.md). O modo RÁPIDO (com dado) não move a régua: a Margem compra alcance do pedido, +1 nível por 6 de folga, só naquela cena. O modo DEVAGAR é o único lugar onde a conversa move a régua. Atos movem nos dois, com passo fixo e sem rolagem.",
+    "regua": {
+      "min": -6,
+      "max": 6,
+      "passosParaRomperNeutro": 3,
+      "tetoDeVidro": 2,
+      "tetoDeVidroNota": "Vale para tudo o que ACUMULA (gesto e cortejo). Só ato atravessa para +3 e acima, ou para -3 e abaixo.",
+      "esfriaPassosPorEstacao": 1
+    },
+    "modoRapido": {
+      "alcancePorMargem": 1,
+      "nota": "Alcance do pedido na tabela de Pedir as coisas, e nada mais. A régua não anda."
+    },
+    "modoDevagar": {
+      "nota": "Sem dado. Ataque parado = Influência + Habilidade. Defesa parada = (Compostura + Sociabilidade) × multDefesa + Centelha × centelhaMult + termo da régua. Tempo do passo, em intervalos = máx(pisoTempoDoPasso, defesa parada − ataque parado − soma dos gestos). O termo da régua é o mesmo de derivados.defesaSocial.reguaNota.",
+      "multDefesa": 1,
+      "multDefesaNota": "1 e não 2 porque não há dado: o ×2 de derivados.defesaSocial casa com a média de um punhado de dados rolados, e ataque parado vale a própria soma. Mesma calibragem, não outro número.",
+      "centelhaMult": 1,
+      "centelhaSoNaDefesa": true,
+      "pisoTempoDoPasso": 1,
+      "gestosPorIntervalo": 1,
+      "resistencia": {
+        "custoBase": 1,
+        "divisorExcedente": 6,
+        "excedenteComPisoZero": true,
+        "vontadePresa": true,
+        "vontadePresaNota": "A Vontade investida em segurar fica presa enquanto o cortejo durar, e só volta quando ele acaba ou o alvo desiste. Vale SÓ para o cortejo longo, porque a Vontade se recompõe a 1 por noite (recuperacaoVontade.quantoPorSono) e o intervalo tem 8 dias ou mais: sem a trava, qualquer custo por intervalo sai de graça."
+      }
+    }
+  },
   "acoes": {
     "escalaIntervalo": {
-      "nota": "A escada de seis degraus de intervalo usada pelos modos Acumulada e Longa (capítulo VIII) e pelo intervalo-base do cortejo social (Firula, capítulo X).",
+      "nota": "A escada de seis degraus de intervalo usada pelos modos Acumulada e Longa (capítulo VIII).",
       "degraus": ["tick", "minuto", "hora", "dia", "semana", "estacao"]
     },
     "longevidadeFirula": {
-      "nota": "M-09 (17/09/2026): o intervalo-base de uma Firula de cortejo desloca conforme a longevidade da raça de quem corteja (racas.json -> longevidade). O deslocamento é relativo ao intervalo que a mesa já escolheu para a cena, não um degrau fixo da escada: positivo desloca para um degrau MAIS RÁPIDO (índice menor em escalaIntervalo.degraus), negativo para um degrau MAIS LENTO (índice maior).",
+      "nota": "O intervalo do cortejo social (capítulo X, relacoes-sociais.md) escala com a longevidade da raça de quem corteja (racas.json -> longevidade): intervalo em dias = intervaloBaseDias × multiplicador da faixa. SUBSTITUI o deslocamento de degrau da M-09 (17/09/2026), e a escada de seis degraus saiu desta regra porque o ajuste racial precisa de quatro degraus seguidos, os saltos entre os degraus que caberiam aqui multiplicam de 8 a 24 vezes cada um, e a única base plausível produzia um orc saindo de estranho a Apreço em quatro horas.",
+      "intervaloBaseDias": 8,
       "porFaixa": {
-        "curta": { "deslocamento": 1, "exemplo": "orc, meio-orc (~60 anos): um degrau mais rápido que o padrão" },
-        "padrao": { "deslocamento": 0, "exemplo": "humano, meio-elfo: sem ajuste" },
-        "longa": { "deslocamento": -1, "exemplo": "anão, gnomo, halfling (300-400 anos): um degrau mais lento" },
-        "muito-longa": { "deslocamento": -2, "exemplo": "elfo (600+ anos): dois degraus mais lento" }
+        "curta": { "multiplicador": 0.5, "exemplo": "orc, meio-orc" },
+        "padrao": { "multiplicador": 1, "exemplo": "humano, meio-elfo" },
+        "longa": { "multiplicador": 2, "exemplo": "anão, gnomo, halfling" },
+        "muito-longa": { "multiplicador": 4, "exemplo": "elfo" }
       }
     }
   }
