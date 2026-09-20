@@ -172,8 +172,16 @@ piso:
 | guarda (3, 3) | 1 | 1 | 3 | 3 |
 | vendedor (4, 4) | 2 | 2 | 4 | 4 |
 | Kael (5, 7) | 3 | 3 | 7 | 7 |
-| Sora (9, 7) | 7 | 7 | 7 | 7 |
+| Sora (9, 8) | 8 | 8 | 8 | 8 |
 | Vesna (11, 8) | 8 | 8 | 8 | 8 |
+
+> **A linha da Sora dizia `(9, 7)` e as quatro células diziam 7, e era erro desta especificação**,
+> corrigido em 20/09/2026. A Vontade publicada dela é **8** (`criacao-de-personagem.md:117`), no
+> mesmo parágrafo de onde sai a Defesa Social 15 que vira a defesa estática 9 desta mesma linha.
+> Achado pela Revisora na rodada 85, refazendo as vinte células, e consertado no capítulo pela
+> Executora na rodada 86. **A correção sobe até aqui porque esta especificação é a fonte única do
+> lote:** quem reconstruísse o capítulo por ela traria o 7 de volta, e o capítulo certo passaria a
+> ser o que "diverge da fonte".
 
 **O contra que o humano comprou, escrito para não se perder:** a regra **fica dormente contra
 alvo forte**. Contra a Vesna o excedente do cortesão é 3, o custo nunca sai de 1, e ela compra 8
