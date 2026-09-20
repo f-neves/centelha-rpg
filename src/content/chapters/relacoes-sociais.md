@@ -137,7 +137,7 @@ Quem lê melhor a sala toma a palavra primeiro (começa no Tick 0; os demais no 
 
 <p class="formula">Ataque = [ (Influência + Habilidade) ÷ 2 ] d6  ( +2 se a soma for ímpar )  + Peso do argumento  + Centelha</p>
 
-A **habilidade** é a da abordagem usada (Persuasão, Sedução, Intimidação, Manha…), como o golpe físico escolhe a sua, e a **Especialidade** entra aqui do mesmo jeito que entra lá: se o escopo nomeado dela se aplica (Persuasão *(na corte)* numa audiência), rende **+N dados descartando os N menores**, e não uma parcela somada. O **Peso** é um bônus de **+0 a +3** que o Mestre concede conforme a abordagem é certeira: uma provocação ou um elogio acertam fácil e somam mais; um discurso longo pesa mais e soma menos. Compara-se com a **Defesa Social** do alvo (o número passivo da ficha):
+A **habilidade** é a da abordagem usada (Persuasão, Sedução, Intimidação, Manha…), como o golpe físico escolhe a sua, e a **Especialidade** entra aqui do mesmo jeito que entra lá: se o escopo nomeado dela se aplica (Persuasão *(na corte)* numa audiência), rende **+N dados descartando os N menores**, e não uma parcela somada. O **Peso** é um bônus de **+0 a +3** que o Mestre concede conforme a abordagem é certeira: uma provocação ou um elogio acertam fácil e somam mais; um discurso longo pesa mais e soma menos. Compara-se com a **Defesa Social** do alvo, que é o número passivo da ficha mais o termo da história, somado pela mesa na hora (logo abaixo):
 
 - **Acerta** se o Ataque **superar** a Defesa Social; empatar ou ficar abaixo, a influência ricocheteia.
 - **Margem = [ (Ataque − Defesa Social) ÷ 6 ]**: o quanto o golpe apertou.
