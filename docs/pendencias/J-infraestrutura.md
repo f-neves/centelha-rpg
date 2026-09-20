@@ -45,6 +45,17 @@
   mesmo `scrollWidth` de 494. Achado de passagem e congelado, porque mexer em `global.css` é
   o lugar onde as duas frentes se encostam.
 
+- [ ] **J9 · [CONSERTAR] `gen-mermaid.mjs` redesenha os seis diagramas a cada execução, e o
+  `--check` não enxerga isso.** Medido pela Executora na rodada 86, com controle negativo: rodar
+  `node scripts/gen-mermaid.mjs` **sem mudar fonte nenhuma** reescreveu as **6 de 6** entradas de
+  `src/data/diagramas.json` com bytes diferentes e **texto idêntico** nas seis (rótulos extraídos e
+  comparados um a um); a diferença está nos pontos de controle das curvas do contorno das caixas.
+  O `--check` compara só a CHAVE (o hash da fonte mermaid), então ele fica verde com o valor
+  trocado. O custo: todo commit que toque um diagrama carrega os outros cinco redesenhados
+  (383 KB de SVG no arquivo), e uma mudança de verdade fica indistinguível do ruído para quem
+  revisa. Saídas: fixar a semente do desenho, ou gravar só as entradas que faltam em vez do
+  arquivo inteiro. Não é urgente e não afeta quem lê o site: o desenho publicado está certo.
+
 - [ ] **J4 · [DECIDIR] Fraquezas e resistências do bestiário não chegam ao dano.** Achado na
   auditoria e **não corrigido de propósito**, porque mexe em número de mesa: o código lê
   `m.fraquezas`/`m.resistencias` no topo da criatura, e elas moram dentro de `combate`.

@@ -69,4 +69,21 @@
   no exemplo dos povos, e no duelo do Combate Social aceita **uma dança** com Defesa Social 18.
   Os três exemplos funcionam isolados e o leitor que ler o capítulo inteiro não reconhece a mesma
   pessoa. É `C`, não regra.
+- [ ] **E9 · [CONSERTAR] O `regras.json` também afirma a cláusula do Antecedente, e o dado vence o
+  capítulo.** Achado pela Executora na rodada 86, varrendo `src/` inteiro por "move a régua" antes
+  de fechar o grupo A: o bloco `aparencia` do `src/data/regras.json` (chave `nota`) diz que a pilha
+  situacional dos Antecedentes "só move a Régua de Relação, teto +6", que é a mesma afirmação de
+  `antecedentes.md:72-74` nomeada no veredito da rodada 85. A varredura da Revisora não a alcançou
+  (a frase não usa nenhum dos oito termos com a grafia que ela procurou), e o despacho da rodada 87
+  nomeia só o capítulo. **Pela regra da casa o JSON é a fonte da verdade**, então consertar o
+  capítulo e deixar esta frase faz o modelo morto vencer o vivo. Entra junto com a decisão do
+  humano de 20/09/2026 sobre o Antecedente, não antes dela.
+- [ ] **E10 · [CONSERTAR] O registro da M-09 continua publicando o modelo que a rodada 86
+  substituiu.** A `nota` de `acoes.longevidadeFirula` (`src/data/regras.json`) passou a dizer que o
+  intervalo do cortejo é `intervaloBaseDias` vezes o multiplicador da faixa, e que isso SUBSTITUI o
+  deslocamento de degrau da M-09. A decisão M-09 em si continua escrita como DECIDIDO e FEITO em
+  `docs/simulacao/caixa/jogador-novo-decisoes.md` (seção "M-09 · tempo de um passo de Relação por
+  povo", 17/09/2026), com o deslocamento +1/0/−1/−2 e o roteiro de como implementá-lo. É documento
+  de outra frente e não foi tocado de propósito; quem ler o registro sem ler o dado reimplementa o
+  modelo morto.
 

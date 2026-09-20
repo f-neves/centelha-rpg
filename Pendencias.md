@@ -23,19 +23,20 @@ resolver tudo de uma vez.**
 | B | Bestiário | [`docs/pendencias/B-bestiario.md`](docs/pendencias/B-bestiario.md) | 14 | 10 | 4 |
 | C | Trilhas de Feitiçaria | [`docs/pendencias/C-trilhas-feiticaria.md`](docs/pendencias/C-trilhas-feiticaria.md) | 4 | 4 | 0 |
 | D | Proezas e Técnicas | [`docs/pendencias/D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 6 | 4 | 2 |
-| E | Social, Mental e Antecedentes | [`docs/pendencias/E-social-mental-antecedentes.md`](docs/pendencias/E-social-mental-antecedentes.md) | 8 | 7 | 1 |
+| E | Social, Mental e Antecedentes | [`docs/pendencias/E-social-mental-antecedentes.md`](docs/pendencias/E-social-mental-antecedentes.md) | 10 | 9 | 1 |
 | F | Lore | [`docs/pendencias/F-lore.md`](docs/pendencias/F-lore.md) | 10 | 9 | 1 |
 | G | Ações & Sistema | [`docs/pendencias/G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 15 | 5 | 10 |
 | H | Arremesso | [`docs/pendencias/H-arremesso.md`](docs/pendencias/H-arremesso.md) | 4 | 2 | 2 |
 | I | Mesa virtual · tempo real | [`docs/pendencias/I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 14 | 12 | 2 |
-| J | Infraestrutura · endereço, hospedagem e versão | [`docs/pendencias/J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 8 | 6 | 2 |
+| J | Infraestrutura · endereço, hospedagem e versão | [`docs/pendencias/J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 9 | 7 | 2 |
 | K | Combate · a linha do tempo | [`docs/pendencias/K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 30 | 19 | 11 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`docs/pendencias/L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 103 | 70 | 33 |
 
-**Total: 244 itens, 168 abertos, 76 fechados.** Contado direto pelas caixas de cada
+**Total: 247 itens, 171 abertos, 76 fechados.** Contado direto pelas caixas de cada
 arquivo (`- [ ]` aberto ou parcial, `- [x]` fechado) em 2026-09-17, e não pelo placar
 antigo deste arquivo (que era de 2026-08-17 e estava desatualizado havia semanas).
-Mais os **cinco** que a rodada 85 abriu no tema E (E4 a E8), em 2026-09-19.
+Mais os **cinco** que a rodada 85 abriu no tema E (E4 a E8), em 2026-09-19, e os **três** que a
+rodada 86 abriu em 2026-09-20: E9 e E10 no tema E, J9 no tema J.
 
 **Nota sobre a letra C:** até 2026-09-17 não existia uma seção `## C.` própria neste
 mapa. Os itens **C1** a **C4** (Trilhas de Feitiçaria, a jogada das Artes por Tradição)
