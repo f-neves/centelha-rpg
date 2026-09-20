@@ -103,7 +103,7 @@ O meio da régua é **largo de propósito**: do centro até a primeira Simpatia 
 
 Isso modela uma verdade simples: **o difícil é deixar de ser um estranho.** Conversa nenhuma tira alguém do Neutro, por boa que seja, porque em cena a régua não anda. Um **ato** tira: um "serviço grande" (+2) já leva quase todo o caminho; "salvar a vida" (+3) rompe de uma vez. Sem ato, o caminho é o **cortejo com calma**, gesto sobre gesto, e ele leva o tempo que leva.
 
-**O teto de vidro é ±2, e ele é o segundo teto.** Tudo o que **acumula** (gesto, cortejo, lábia) para em **+2 (Apreço)** de um lado e em **−2 (Desafeto)** do outro. Só **ato** atravessa dali: para que uma pessoa **arrisque a vida por você** (+3 e acima), ou queira sua ruína (−3 e abaixo), é preciso um **vínculo** de verdade, um laço que nasce de histórias vividas juntos, não de favores contados. Amizade profunda, lealdade e ódio de morte se conquistam na aventura, não na conversa.
+**O teto de vidro é ±2, e ele é o segundo teto.** Tudo o que **acumula** (gesto e cortejo) para em **+2 (Apreço)** de um lado e em **−2 (Desafeto)** do outro. Só **ato** atravessa dali: para que uma pessoa **arrisque a vida por você** (+3 e acima), ou queira sua ruína (−3 e abaixo), é preciso um **vínculo** de verdade, um laço que nasce de histórias vividas juntos, não de favores contados. Amizade profunda, lealdade e ódio de morte se conquistam na aventura, não na conversa.
 
 E repare no lado de baixo: **nenhuma linha da tabela de atos para em −1**, porque o que valia −1 virou gesto. A **Antipatia** se alcança do jeito que se alcança de verdade, um punhado de desfeitas acumuladas, e não num gesto só.
 
@@ -142,7 +142,7 @@ A **habilidade** é a da abordagem usada (Persuasão, Sedução, Intimidação, 
 - **Acerta** se o Ataque **superar** a Defesa Social; empatar ou ficar abaixo, a influência ricocheteia.
 - **Margem = [ (Ataque − Defesa Social) ÷ 6 ]**: o quanto o golpe apertou.
 
-Bater num alvo de Defesa Social muito acima da sua é bater numa muralha; a saída é trocar de abordagem, pegá-lo desprevenido ou preparar o terreno antes. Essa Defesa já carrega o peso da história entre vocês (o termo de "A história empurra o dado", na seção da régua): reconquistar um Nêmesis é bater numa muralha reforçada, discutir com um aliado é bater numa enfraquecida.
+Bater num alvo de Defesa Social muito acima da sua é bater numa muralha; a saída é trocar de abordagem, pegá-lo desprevenido ou preparar o terreno antes. Essa Defesa **recebe** o peso da história entre vocês: o número da ficha é um só, e a mesa soma em cima dele o termo de "A história empurra o dado" (na seção da régua), que é por relação e muda conforme quem fala. Reconquistar um Nêmesis é bater numa muralha reforçada, discutir com um aliado é bater numa enfraquecida.
 
 ### Resistir: gastar Força de Vontade
 
@@ -212,7 +212,7 @@ O intervalo-base é de **8 dias**, e a longevidade do povo de quem corteja multi
 
 Quem vive pouco se apega depressa; quem vive séculos mede o mesmo afeto em estações. Um cortesão humano leva 32 dias até o Apreço de uma desconhecida difícil; um elfo, no lugar dele, leva mais de uma estação.
 
-**A escada de seis degraus não serve aqui** (Tick, minuto, hora, dia, semana, estação), e é por isso que ela saiu desta regra: o ajuste racial precisa de **quatro degraus seguidos**, cada degrau da escada multiplica entre 8 e 24 vezes, e a única base plausível para caber os quatro seria "dia", que produz um orc saindo de estranho a Apreço em quatro horas. A escada é boa para ações longas e grossa demais para uma régua de quatro faixas.
+**A escada de seis degraus não serve aqui** (Tick, minuto, hora, dia, semana, estação), e é por isso que ela saiu desta regra: o ajuste racial precisa de **quatro degraus seguidos**, os saltos entre os degraus que caberiam aqui multiplicam de 8 a 24 vezes cada um, e a única base plausível para caber os quatro seria "dia", que produz um orc saindo de estranho a Apreço em quatro horas. A escada é boa para ações longas e grossa demais para uma régua de quatro faixas.
 
 ### Os gestos são a moeda, e só cabe um por intervalo
 
@@ -252,14 +252,14 @@ Quantos intervalos a Vontade do alvo compra, com o pretendente empilhando um ges
 | um guarda (3, 3) | 1 | 1 | 3 | 3 |
 | um vendedor (4, 4) | 2 | 2 | 4 | 4 |
 | Kael (5, 7) | 3 | 3 | 7 | 7 |
-| Sora (9, 7) | 7 | 7 | 7 | 7 |
+| Sora (9, 8) | 8 | 8 | 8 | 8 |
 | a Dama Vesna (11, 8) | 8 | 8 | 8 | 8 |
 
 Leia a tabela de baixo para cima: contra alvo forte a resistência **empata em todas as colunas**, porque o excedente nunca chega a 6 e o custo nunca sai de 1. Quem resiste por muita Compostura já resistia pelo Tempo do passo; segurar com Vontade é o que salva quem era fácil.
 
 **A leitura** ("já é o suficiente?") continua rolando dado, e **exige acesso ao alvo**: você rola **Perspicácia + Empatia** contra a Defesa Social dele (a com dado, a da ficha). No sucesso você sabe **se o passo já caiu**; a cada **6 de folga**, o Mestre te diz **um intervalo** do que ainda falta. O cortejo é confiável e a leitura não é: ler mal faz parar cedo, ou gastar gesto à toa.
 
-Furar não concede pedido: o que o cortejo faz é **andar a régua**, um passo por vez, respeitando o **teto de vidro** (±2 para o que acumula) e o **favor alugado**. Pedido é a régua que responde, e ela responde depois.
+O cortejo não concede pedido: o que ele faz é **andar a régua**, um passo por vez, respeitando o **teto de vidro** (±2 para o que acumula) e o **favor alugado**. Pedido é a régua que responde, e ela responde depois.
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span>Reconquistar um Nêmesis é a jornada mais longa que este capítulo tem. A Dama Vesna em <strong>−6</strong>, defesa parada 11, com o termo da régua somando 6 no começo e caindo um por passo conquistado: são <strong>6 passos</strong> até o Neutro, porque abaixo do Neutro cada nível é um passo (o meio largo de três passos é da subida). Sem gesto nenhum, o cortesão leva <strong>27</strong> intervalos, o mediano <strong>45</strong>, o inepto <strong>63</strong> e o bruto <strong>81</strong>. Em dias humanos, o bruto está cortejando por quase dois anos; se quem corteja fosse um elfo, por quase sete. Esfriar custa um passo por estação; construir custa isto. A razão entre as duas é o que faz relação valer alguma coisa.</div>
 
@@ -268,9 +268,9 @@ Furar não concede pedido: o que o cortejo faz é **andar a régua**, um passo p
 ## Folha de referência
 
 - **Régua** −6 a +6, meio Neutro largo. O nível diz o que a pessoa faz por (ou contra) você. Pedido dentro do nível: de graça; acima: mova a régua até lá, ou compre **alcance** na cena.
-- **Move por:** atos (saltos fixos, de ±2 a −5) e gestos (só no cortejo, um por intervalo). Cobrar favor grande desce 1 passo. Sair do Neutro = 3 passos; **teto de vidro ±2** para tudo o que acumula, e só ato atravessa. Esfria 1 passo por estação.
+- **Move por:** atos (saltos fixos: +2 e +3 a seu favor, de −2 a −5 contra você) e gestos (só no cortejo, um por intervalo). Cobrar favor grande desce 1 passo. Sair do Neutro = 3 passos; **teto de vidro ±2** para tudo o que acumula, e só ato atravessa. Esfria 1 passo por estação.
 - **Cena com dado NÃO move a régua**, nem conversa nem duelo: rende **alcance do pedido**, +1 nível por 6 de folga, só naquela cena.
 - **A história pesa:** remar contra o que o alvo já sente soma o nível à Defesa Social dele; remar a favor subtrai. ×1, sem teto (o próprio ±6 já é o limite). Zera no Neutro.
-- **Combate Social:** Ataque = [(Influência+Habilidade)/2]d6 (+2 ímpar) + Peso + Centelha, contra a Defesa Social (que já carrega o termo da história, acima); **Margem** = [(atk−def)/6]. Iniciativa = 1d6 + Perspicácia + Sociabilidade.
+- **Combate Social:** Ataque = [(Influência+Habilidade)/2]d6 (+2 ímpar) + Peso + Centelha, contra a Defesa Social (o número da ficha, mais o termo da história somado na hora, acima); **Margem** = [(atk−def)/6]. Iniciativa = 1d6 + Perspicácia + Sociabilidade.
 - **Resistir:** para não ceder, gaste **1 + Margem** de Vontade no lance; se não pagar, cede o ponto e o pedido chega **Margem** níveis acima. Não vale contra leitura.
 - **Influência Estendida** (o modo devagar, sem dado): Ataque parado = Influência + Habilidade; Defesa parada = Compostura + Sociabilidade + Centelha + termo da régua; **Tempo do passo = máx(1, defesa − ataque − gestos)**, em intervalos de **8 dias ×½ ×1 ×2 ×4** pela longevidade de quem corteja. Gestos 0/+1/+2/+4, **um por intervalo**. Quem resiste paga **1 + [máx(0, ataque + gestos − defesa) ÷ 6]** de Vontade por intervalo, e essa Vontade fica **presa** até o cortejo acabar. Leitura vs Defesa Social (a com dado) para saber quanto falta.
