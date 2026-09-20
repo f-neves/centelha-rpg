@@ -1,109 +1,133 @@
-# Rodada 87 · despacho · o bônus de Antecedente, que ficou sem chão
+# Rodada 87 · despacho · o portão que ficou intermitente, os CORRIGE da 86, e o Antecedente
 
-> ## ⛔ ESTE DESPACHO NÃO ESTÁ ABERTO
+> ## ▶ ESTE DESPACHO ESTÁ ABERTO desde 20/09/2026
 >
-> Ele abre quando a **rodada 86 fechar** (relato da Executora mais veredito da Revisora).
-> Escrito antes porque as decisões abaixo **são do humano, foram tomadas em 20/09/2026**, e
-> decisão que existe só em mensagem de chat não é decisão neste projeto.
+> A rodada 86 fechou com **PROCEDE** (`a6e7e41`, conferido ancestral do `main`).
+> Progresso em `docs/simulacao/caixa/progresso-87.md`, relato em `87-executora.md`.
 >
-> **Não mande isto à Executora enquanto a 86 correr.** Correção que cruza trabalho em curso é o
-> que fez este projeto reverter código empurrado duas vezes (`ARQUITETO.md §5.2.1`).
+> **A ordem dos grupos não é sugestão.** O grupo 1 vem primeiro, sozinho, e o motivo está nele.
 
-## O problema, com o texto original primeiro
+## Grupo 1 · o `test-grid` ficou intermitente, e ele é o portão
 
-`src/content/chapters/antecedentes.md:72-74` publica hoje:
+**Conferido por mim no `gh run list`, não relatado:** desde as 22:26 de hoje, dez execuções do
+workflow `Validar dados e regras` fecharam e **cinco falharam**. Todas no mesmo job
+(`Smoke · test-grid`) e com a mesma assinatura:
 
-> Uma Reputação em contexto, um Contato bem posto, uma Posição que pesa naquela sala **só entram
-> nas jogadas que movem a Régua de Relação**, isto é, nas que constroem ou deslocam um vínculo.
-> Eles **não** turbinam um ataque no Combate Social nem uma Habilidade solta, e somam entre si até
-> um **teto de +6**, o mesmo dos modificadores de combate.
+```
+✘ Grid FALHOU (1 ou 2):
+  • a peça saiu do lugar          (aparece em três das cinco)
+  • mover custa de 2 a 7 idas ao banco (foram 0)     (aparece nas cinco)
+```
 
-Repetido em `:195` e `:311`. E a Executora achou a mesma afirmação **no dado**, em
-`src/data/regras.json:399` (`aparencia.nota`, "que só move a Régua de Relação, teto +6"), que o
-veredito da 85 não tinha listado.
+**A falha não acompanha conteúdo.** Falharam commits que só tocam `docs/` (`f85b09e`, `08236a8`,
+`0cd062d`) e passaram outros que só tocam `docs/` (`c38f909`, `e7fefd7`, `2215cfc`). As quatro
+execuções de 19/09 fecharam **todas verdes**. Achado pela Revisora na rodada 86, que mediu e
+**não ofereceu causa**; eu conferi e também não ofereço.
 
-**Depois do lote da rodada 85, esse conjunto é vazio.** A conversa com dado não move a régua, o
-Combate Social a própria frase exclui, e o cortejo com calma, que move, não tem jogada nenhuma. É
-um traço comprado com **XP a ×3 por ponto, até +6**, parado em qualquer ficha que o tenha. Achado
-pela Revisora na rodada 85, entregue com o alcance medido.
+**Por que isto vem antes de tudo.** Um portão que falha metade das vezes deixa de ser portão: ele
+ensina a ignorar vermelho. A história deste repositório tem o preço escrito · um `esc(...)` chamado
+num arquivo sem `esc` passou por doze commits e ficou **três horas no ar** estourando a ficha, com
+o CI vermelho e ninguém lendo. Estamos exatamente no estado que produz isso.
 
-## As três decisões do humano, 20/09/2026
+**E `foram 0` é a forma que o `CATALOGO` chama de zero ambíguo:** ou são zero idas medidas, ou a
+cena não rodou e ninguém foi contado. As duas leituras dão o mesmo texto.
 
-Pelo nome, na ordem em que foram tomadas. As três foram contra a recomendação do Arquiteto, e o
-contra comprado está escrito em cada uma.
+### A tarefa, e ela é DIAGNÓSTICO PRIMEIRO
 
-### 1 · O ANTECEDENTE MEXE NO PONTO DE PARTIDA DA RÉGUA
+**Não conserte antes de medir, e não me traga causa provável.** "Não investigado" é resposta
+melhor que explicação errada.
 
-Deixa de ser bônus de jogada. **O contra comprado:** vira estado inicial em vez de bônus vivo, e
-quem pagou XP ×3 aplica uma vez por pessoa e depois não sente mais.
+1. **Reproduza.** Rode o `test-grid` localmente em laço, o número de vezes que for preciso para a
+   falha aparecer, e diga **em quantas de quantas**. Se não reproduzir localmente em dez voltas,
+   diga isso: "não reproduz aqui" é dado, e muda o diagnóstico para diferença de ambiente.
+2. **Separe as duas leituras do zero.** A asserção conta idas ao banco. Descubra se o contador
+   lê **depois** de as idas acontecerem ou se pode ler antes, e se a cena do `mover` chegou a
+   montar. Instrumente se precisar, sem commitar a instrumentação.
+3. **Diga se as duas falhas são uma ou duas.** "A peça saiu do lugar" aparece em três das cinco e
+   "foram 0" nas cinco. Ou uma causa produz as duas, ou são duas coisas · e a resposta muda o
+   conserto.
+4. **O que mudou.** As quatro de 19/09 passaram e cinco de dez de hoje falharam. Procure o que
+   mudou entre os dois dias **no que o teste toca**, e diga também se não achou nada.
 
-**O que reforça a decisão depois de tomada, e não foi argumento dela:** a família já funcionava
-assim nos outros membros, e está publicado. `:131` põe os contatos em Simpatia (+1), `:114` faz
-cada aliado nascer em Aliança (+3) ou Devoção (+4), `:285` liga o Sangue às baselines de povo. A
-cláusula do situacional era a peça fora do lugar, um bônus por rolagem enxertado numa família de
-ponto de partida.
+**Só então o conserto**, e ele passa pelo ensaio dos três sentidos: vermelho hoje, verde com o
+conserto sem tocar no arquivo do portão, vermelho de novo com a regressão de propósito.
 
-### 2 · O MECANISMO É O DESCONTO NOS PASSOS PARA ROMPER O NEUTRO
+**Se o diagnóstico apontar para regra de jogo ou para produção, pare e me diga.** Se apontar para
+o instrumento, é seu.
 
-Nível N tira N dos 3 passos que separam do Neutro; com 3 ou mais, rompe de cara em **+1 Simpatia**.
+**Commite o grupo 1 sozinho**, antes de abrir os outros.
 
-**Recusada a alternativa** de deslocar o início travado no teto de vidro (±2), que era a
-recomendação do Arquiteto. **O contra comprado desta:** acima de 3 pontos o traço não compra mais
-nada, e casa naturalmente com fama, não com contato nem com posto.
+## Grupo 2 · os CORRIGE da rodada 86
 
-**A favor, e é o que decidiu:** é literalmente o que `:195` já promete hoje, palavra por palavra ·
-*"uma boa reputação acelera romper o Neutro com quem já ouviu falar bem de você"*.
+**5 · `relacoes-sociais.md:260`**, o parêntese *"(a com dado, a da ficha)"* na leitura do cortejo.
+A Revisora achou que ele põe dois eixos diferentes como se fossem um, e que o segundo é exatamente
+o que o `34e98a2` separou cinco parágrafos antes. **Ela diz no veredito que as duas leituras
+possíveis do parêntese são defeituosas**: leia as duas no `86-revisora.md` antes de escrever, e
+conserte o eixo, não a frase.
 
-### 3 · OS TRÊS TRAÇOS USAM O MESMO DESCONTO, E O QUE MUDA É QUEM ALCANÇA
+**6 · O `glossario.json`, verbete `defesa-social`, contra o `regras.json`,
+`derivados.defesaSocial.reguaNota`.** O primeiro define a Defesa Social **incluindo o termo da
+régua, sem nenhuma marca**; o segundo diz em tantas palavras que o termo *"não entra no número
+parado que a ficha imprime"*. **São dois arquivos de dado do mesmo repositório discordando sobre o
+mesmo número**, e os dois são fonte da verdade. O `regras.json` é o que está certo pela decisão da
+rodada 84 (o termo é situacional, por relação, e não vai para a ficha); o glossário se corrige.
 
-Uma regra só. O nível desconta passos para romper o Neutro, e o escopo é diferente em cada um:
+**7 · A frase do `86-executora.md` que declara o CI verde.** Ela citou `d56dfa1`, que não é a
+última execução que fechou: fecharam cinco depois dele, duas em falha, e o `fd4497d` que falhou é
+**anterior** ao que ela citou. O fato do **deploy** continua certo e conferido. Corrija o registro
+para dizer o que foi medido e com que recorte · é a mesma régua que você aplicou ao gerador de
+mermaid, agora virada para o próprio relato.
 
-- **Reputação** · com quem já ouviu falar de você;
-- **Contato** · com o círculo dele;
-- **Posição** · com quem se importa com o posto.
+**8 · Duas contagens no `86-executora.md`.** A Revisora enumerou em vez de aceitar: a faixa tem
+**11** commits e não 10, então **oito** são seus e não sete; e o relato diz "Cinco commits" com
+**seis** na tabela logo abaixo. Nenhum achado muda. Corrija os dois números.
 
-**A favor:** mantém o teto de +6 e o "somam entre si", e o Antecedente continua sendo uma família
-com regra comum, em vez de três casos. **O contra comprado, por escrito:** o Contato passa a ter
-duas vias, e a contradição da Posição continua de pé (ver a seção seguinte).
+## Grupo 3 · o Antecedente, que ficou sem chão
 
-## A leitura que resolve a via dupla do Contato, e ela é do Arquiteto
+O problema, o texto original e as três decisões do humano de 20/09/2026 estão **inteiros na versão
+anterior deste arquivo** (commit `c38f909`, `git show c38f909:docs/simulacao/caixa/87-despacho.md`).
+Leia de lá, porque a argumentação e os contras comprados não se resumem sem perder o porquê.
 
-**Decisão minha, não do humano, e registrada como minha para ser visível se estiver errada.**
+**O curto, para a tarefa:**
 
-O contra que o humano comprou foi que o Contato teria duas vias para o mesmo efeito. **Lendo os dois
-textos, elas não colidem: cobrem pessoas diferentes.**
+- o Antecedente **mexe no ponto de partida da régua** e deixa de ser bônus de jogada;
+- o mecanismo é o **desconto nos passos para romper o Neutro**: nível N tira N dos 3; com 3 ou
+  mais, rompe de cara em **+1 Simpatia**;
+- os **três traços usam o mesmo desconto**, mudando só **quem alcança**: Reputação com quem já
+  ouviu falar, Contato com o círculo dele, Posição com quem se importa com o posto.
 
-- `:131` ("contatos ficam em Simpatia, +1") fala do **contato em si**, a pessoa comprada. Ela já
-  nasce acima do Neutro, e o desconto é mudo para ela, porque não há Neutro a romper;
-- o desconto da decisão 3 fala do **círculo dele**, que é o escopo que a própria decisão nomeia.
-  Essas pessoas começam no Neutro como qualquer estranho, e é ali que o desconto morde.
+A tarefa:
 
-É aplicação de texto já escrito e não regra nova, por isso não voltou à mesa. **Se a leitura
-estiver errada, o sintoma será um contato comprado contando duas vezes com a mesma pessoa**, e aí
-volta à mesa.
+**9 · `antecedentes.md:72-74`**, a cláusula do situacional, reescrita: sai "jogadas que movem a
+Régua de Relação", entra o desconto com os três escopos nomeados. Fica o teto de +6 e o "somam
+entre si".
 
-## O que NÃO foi decidido, e vai ao humano na próxima lista
+**10 · `antecedentes.md:195`** (Reputação) e **`:311`** (a Folha) · mesma regra, mesma redação.
 
-Não escreva nada sobre estes dois.
+**11 · `src/data/regras.json`, bloco `aparencia`, chave `nota`** · a oração *"que só move a Régua
+de Relação, teto +6"* afirma a regra morta **no dado**, que é onde ela vence o capítulo. É o `E9`,
+que você achou na 86 e a varredura da Revisora não alcançou.
 
-- **A contradição da Posição**, anterior a tudo isto: a amarra dela (`:178`) promete *"bônus a
-  Etiqueta, Intimidação e comando em contexto"*, e a cláusula do situacional (`:72-74`) diz que o
-  traço **não** turbina *"uma Habilidade solta"*. As duas estão publicadas hoje e discordam;
-- **o teto de +6 e o preço**: com o desconto útil até 3, os pontos acima de 3 não compram nada, e o
-  traço custa XP ×3 por ponto até 6. Repreçar, ou dar segundo uso aos pontos altos, é decisão da
-  mesa e não conserto.
+**12 · Não toque** nas amarras de Contato (`:131`), Aliado (`:114`) e Posição (`:178`). Elas
+continuam valendo como estão, e a da Posição está na lista do humano.
 
-## A tarefa, quando abrir
+**13 · A conferência que eu quero escrita, por nome:** varra `src/` **inteiro, incluindo
+`src/data/`**, pela afirmação e não pela palavra, e diga quais lugares ainda ligam Antecedente a
+"jogada". A Revisora nomeou a própria falha aqui: na rodada 85 ela consertou o recorte de PADRÃO e
+manteve um recorte de DIRETÓRIO, rodando em `chapters/`, `pages/` e `lib/` e deixando `src/data/`
+de fora. **Diga o recorte ao lado do resultado.**
 
-1. **`antecedentes.md:72-74`** · a cláusula do situacional é reescrita: o Antecedente mexe em onde a
-   régua começa, pelo desconto nos passos do Neutro, com os três escopos nomeados. Sai "jogadas que
-   movem a Régua de Relação". Fica o teto de +6 e o "somam entre si".
-2. **`antecedentes.md:195`** (Reputação) e **`:311`** (a Folha) · mesma regra, mesma redação.
-3. **`src/data/regras.json:399`**, `aparencia.nota` · a oração "que só move a Régua de Relação,
-   teto +6" afirma a regra morta, **no dado**, que é onde ela vence o capítulo. Achado pela
-   Executora na rodada 86, fora do veredito.
-4. **Não toque** nas amarras de Contato (`:131`), Aliado (`:114`) e Posição (`:178`): elas
-   continuam valendo como estão, e a da Posição está na lista do humano.
-5. **A conferência que eu quero escrita, por nome:** varra `src/` inteiro pela afirmação, não pela
-   palavra, e diga quais lugares ainda ligam Antecedente a "jogada". A Executora já achou um que o
-   veredito não tinha; a pergunta é se há um terceiro.
+## O que NÃO é desta rodada
+
+- **A leitura da via dupla do Contato**, que é minha e está no `c38f909`: o `:131` fala do contato
+  em si, o desconto fala do círculo dele. Se estiver errada, o sintoma é um contato contando duas
+  vezes com a mesma pessoa. Não a reabra, só não a contradiga;
+- **a contradição da Posição** e **o repreçamento do Antecedente acima de 3 pontos** · na mesa do
+  humano;
+- **os 17 travessões de prosa do `regras.json`** (`J10`) · na mesa do humano, com os seis
+  semânticos intocados;
+- **o `E3`, os três passos do Neutro** · a Revisora mediu que eles estão em **cinco** lugares
+  (`relacoes-sociais.md` `:102`, `:120`, `:264`, `:271`, mais o JSON), dois deles callouts cujas
+  contas mudariam junto, e **zero detector**. É a fatura da dívida que eu assumi, é informação
+  para o humano, e não é trabalho agora;
+- **o `M-09`** · fechei eu, em `fb9310c`. Não é mais tarefa.
