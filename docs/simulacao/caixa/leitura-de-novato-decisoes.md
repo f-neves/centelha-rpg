@@ -288,6 +288,15 @@ elástico contra um alvo resistente. Isto não foi medido, só nomeado: se apare
 | Peçonha de aranha gigante | 18 | Tick | 1 minuto | 4 (Destreza) | atributo | Desgaste 1 |
 | Hálito de basilisco | 22 | minuto | 1 minuto | 48 (PV) | pv | Desgaste 1 |
 
+**Quarta via de entrada, decidida em 21/09/2026: `toque` (contato com pele intacta), com
+penalidade fixa na Potência.** `viaEntrada` passa a ter quatro valores: `toque`, `sangue`,
+`inalado`, `ingerido`. Toque em pele intacta abate **4 da Potência** antes de calcular a Potência
+efetiva (que já subtrai a Resistência do alvo, piso 0), espelhando a escala que o capítulo já usa
+nas circunstâncias de Tratar (`+4` para dose dobrada ou direto no sangue, `−2` para sangrar a
+ferida). **Se o ponto de contato tem ferimento aberto ou mucosa exposta, a penalidade não se
+aplica**: o toque passa a valer como via sangue. As duas regras são fixas do capítulo (a
+penalidade e a anulação por ferimento), não campo por veneno em `venenos.json`.
+
 **Habilidade Secundária "solta" em vários pontos do sistema** (item 7/24 da lista original):
 **causa raiz identificada, não é o que eu tinha suposto.** `habilidades.json` (primárias) já tem
 campo `atributos` estruturado (ex. Briga: `["forca","destreza"]`); `habilidades-secundarias.json`
