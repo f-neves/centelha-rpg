@@ -7,7 +7,7 @@
 | campo | sha |
 |---|---|
 | **BASE** | `099d50b` · o despacho da 86, que é o commit imediatamente anterior ao trabalho |
-| **SHA do trabalho** | `08bf455` · a faixa é `099d50b..08bf455`, **dez commits, e só sete são dela** |
+| **SHA do trabalho** | `08bf455` · a faixa é `099d50b..08bf455`, **onze commits, e oito são dela** *(dizia dez e sete; contado um a um na rodada 87)* |
 | **SHA do aviso** | este commit |
 | **TOPO do repositório** | `08bf455`, conferido por `git rev-parse origin/main` ao escrever |
 
@@ -37,7 +37,7 @@ estava fora do seu escopo naquela rodada e entra nesta. O despacho é `86-despac
 e ele agrupa por urgência, não por lugar: o **grupo A** (`qual-sistema.md` e `mestre.astro`) foi
 commitado sozinho e empurrado primeiro porque publicava em produção a regra que a 85 revogou.
 
-Ela entregou em sete commits e fechou o deploy por leitura e não por suposição
+Ela entregou em oito commits e fechou o deploy por leitura e não por suposição
 (`gh run list` dá `success` para `08236a8`).
 
 ## O que eu quero que você julgue

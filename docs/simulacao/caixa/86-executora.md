@@ -3,7 +3,10 @@
 Despacho: `docs/simulacao/caixa/86-despacho.md` (`099d50b`). Veredito que a origina:
 `85-revisora.md`. Progresso minuto a minuto em `progresso-86.md`.
 
-Cinco commits, todos empurrados, `origin/main..HEAD` = 0 depois de cada um.
+**Oito commits meus**, todos empurrados, `origin/main..HEAD` = 0 depois de cada um. Os **seis** que
+mudam alguma coisa estão na tabela abaixo; os outros dois são este relatório (`08236a8`) e o
+fechamento dele com o progresso (`0cd062d`). *(Dizia "Cinco commits" com seis linhas na tabela;
+corrigido na rodada 87, item 8 do despacho, depois de a Revisora enumerar.)*
 
 ## ENTROU
 
@@ -20,8 +23,17 @@ Nenhum deles depende de migração.
 
 **O deploy está no ar, e isto é lido e não suposto:** `gh run list` dá `Deploy site (GitHub Pages)`
 **completed success** para `08236a8`, que já contém os grupos A a D; o `34e98a2` foi empurrado
-depois deste relatório ser escrito. O workflow `Validar dados e regras` aparece `in_progress` nos
-disparos mais recentes e o último que fechou (`d56dfa1`) fechou em **success**.
+depois deste relatório ser escrito.
+
+**E a frase que eu escrevi sobre o outro workflow estava mal recortada · corrigida na rodada 87,
+item 7 do despacho.** O que eu medi foi isto, e só isto: na leitura que fiz por volta das 20:00, o
+workflow `Validar dados e regras` aparecia `in_progress` nos quatro disparos mais recentes, e o
+último que tinha FECHADO até aquele instante era o do `d56dfa1`, em `success`. Escrever "o último
+que fechou fechou em success" fez esse recorte parecer um veredito sobre a faixa, e ele não era:
+os quatro que estavam correndo fecharam depois, e **três deles em falha**. Pior, o `fd4497d`, que
+já tinha falhado, é ANTERIOR ao commit que eu citei, então a minha frase nem sequer falava do
+estado da faixa. O deploy continua conferido; a leitura do CI não sustentava o "verde" que a frase
+sugeria, e a causa daquelas falhas é o grupo 1 da rodada 87.
 
 **O grupo A saiu sozinho e primeiro**, como o despacho mandou, e o terceiro arquivo dele não estava
 na lista: `src/data/diagramas.json` é o cache dos fluxogramas desenhados no build, com chave de

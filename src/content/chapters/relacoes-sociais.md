@@ -257,7 +257,7 @@ Quantos intervalos a Vontade do alvo compra, com o pretendente empilhando um ges
 
 Leia a tabela de baixo para cima: contra alvo forte a resistência **empata em todas as colunas**, porque o excedente nunca chega a 6 e o custo nunca sai de 1. Quem resiste por muita Compostura já resistia pelo Tempo do passo; segurar com Vontade é o que salva quem era fácil.
 
-**A leitura** ("já é o suficiente?") continua rolando dado, e **exige acesso ao alvo**: você rola **Perspicácia + Empatia** contra a Defesa Social dele (a com dado, a da ficha). No sucesso você sabe **se o passo já caiu**; a cada **6 de folga**, o Mestre te diz **um intervalo** do que ainda falta. O cortejo é confiável e a leitura não é: ler mal faz parar cedo, ou gastar gesto à toa.
+**A leitura** ("já é o suficiente?") continua rolando dado, e **exige acesso ao alvo**: você rola **Perspicácia + Empatia** contra a Defesa Social dele: a **com dado**, e **sem o termo da história**, porque ler não aquece nem esfria o vínculo, e o termo só existe em cima de um ataque que rema contra ou a favor do que o alvo já sente. No sucesso você sabe **se o passo já caiu**; a cada **6 de folga**, o Mestre te diz **um intervalo** do que ainda falta. O cortejo é confiável e a leitura não é: ler mal faz parar cedo, ou gastar gesto à toa.
 
 O cortejo não concede pedido: o que ele faz é **andar a régua**, um passo por vez, respeitando o **teto de vidro** (±2 para o que acumula) e o **favor alugado**. Pedido é a régua que responde, e ela responde depois.
 
