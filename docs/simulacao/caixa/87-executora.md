@@ -1,9 +1,10 @@
-# Rodada 87 · Executora · grupo 1, o portão que ficou intermitente
+# Rodada 87 · Executora · o portão intermitente, os CORRIGE da 86, e o Antecedente
 
 Despacho: `docs/simulacao/caixa/87-despacho.md` (`fe09550`). Progresso minuto a minuto, com as
 horas medidas, em `progresso-87.md`.
 
-Este relato é só do **grupo 1**. Os grupos 2 e 3 não foram abertos, como o despacho mandou.
+Os três grupos entraram, em três commits, na ordem que o despacho fixou: o grupo 1 sozinho e
+primeiro (`e94cdb6`), depois o grupo 2 (`3dd2ac6`) e o grupo 3 (`b903a26`).
 
 ## O diagnóstico, na ordem em que o despacho pediu
 
@@ -96,12 +97,71 @@ Um commit, e ele leva junto o reaponte que o meu próprio conserto obrigou.
 - `docs/pendencias/J-infraestrutura.md` e `Pendencias.md` · a pendência nova, nomeada e não
   numerada, mais o placar (248 → 249 itens, 172 → 173 abertos).
 
+## Grupo 2 · os CORRIGE da rodada 86 (`3dd2ac6`)
+
+**Item 5, o parêntese do `:260`.** A Revisora disse que as duas leituras possíveis eram
+defeituosas e que ela não sabia qual era a pretendida. **O dado decide, e não eu:** o
+`derivados.defesaSocial.reguaNota` define o termo só em cima de um ataque que **rema contra ou a
+favor** do que o alvo já sente, e a leitura do cortejo não aquece nem esfria vínculo nenhum. Então
+o termo não tem direção para ter, e a leitura rola contra a Defesa Social **com dado e sem o
+termo**. O capítulo passou a dizer o eixo e o porquê. **Digo alto que isto encosta em regra de
+jogo:** é aplicação do que o dado já define, e não decisão minha; se a mesa quiser o contrário,
+custa uma oração e eu troco.
+
+**Item 6, o glossário contra o `regras.json`.** O verbete `defesa-social` somava o termo da régua
+dentro da fórmula, sem marca, enquanto o `reguaNota` diz em tantas palavras que ele não entra no
+número parado que a ficha imprime. Dois arquivos de dado do mesmo repositório discordando sobre o
+mesmo número; o `regras.json` é o certo pela decisão da rodada 84, e o glossário se corrigiu.
+
+**Itens 7 e 8, o registro da rodada 86.** A frase do CI foi reescrita para dizer o que foi medido
+e com que recorte: na leitura das 20:00 o `Validar dados e regras` aparecia `in_progress` nos
+quatro disparos mais recentes e o último FECHADO até ali era `d56dfa1`, em `success`. Escrever "o
+último que fechou fechou em success" fez o recorte parecer veredito sobre a faixa; os quatro que
+corriam fecharam depois, três em falha, e o `fd4497d` que já tinha falhado é anterior ao commit
+que eu citei. As duas contagens: o relato dizia "Cinco commits" com seis na tabela (são **oito**
+meus na faixa, seis com mudança), e o `86-aviso.md` dizia "dez commits, e só sete são dela"
+(são **onze**, e **oito** são minhas, contados um a um).
+
+## Grupo 3 · o Antecedente (`b903a26`)
+
+As três decisões do humano estão inteiras na versão anterior do despacho (`c38f909`), e eu li de
+lá. O que entrou: a cláusula do situacional saiu, e no lugar está o **desconto nos passos do
+Neutro**, com os três escopos nomeados, o teto de +6 e o "somam entre si" preservados. A seção
+mudou de nome (`O bônus na jogada` → `Onde a régua já começa`), porque o título era a afirmação
+derrubada. A Folha do capítulo acompanhou, e a `aparencia.nota` do `regras.json` parou de afirmar
+a regra morta no dado.
+
+**E o achado que mudou o alvo do conserto:** a amarra da Reputação **não se edita no capítulo**.
+Ela vive em `src/data/antecedentes.json`, e o catálogo do capítulo é gerado dela por
+`scripts/gen-cap-antecedentes.mjs`, que roda com `--check` dentro do `validate`. Eu tinha escrito
+à mão dentro do bloco gerado; a edição morreria no próximo regen e o portão teria pegado. Corrigi
+na fonte e regerei.
+
+**Item 13, a conferência, com o recorte ao lado do resultado.** Varri `src/` inteiro com
+`os.walk`, **incluindo `src/data/`**, duas vezes: por linha e depois por parágrafo (para não
+perder afirmação quebrada em duas linhas), casando qualquer de
+`antecedent|reputaç|contato|posição` com qualquer de
+`jogada|rolagem|bônus|turbina|buffa|move a régua|situacional`, e li cada acerto. Único arquivo
+excluído: `src/data/diagramas.json`, que é cache de SVG e não tem prosa.
+
+**Não há terceiro lugar.** Sobra a amarra da **Posição**, que o despacho mandou não tocar, e vale
+dizer onde ela realmente mora: `antecedentes.md:183` é o texto GERADO de
+`antecedentes.json:213`, então quando a mesa decidir a contradição dela, o conserto é na fonte e
+não no capítulo. As buscas por `jogadas que movem`, `situacional de Antecedente` e
+`pilha situacional` devolvem **zero** em `src/`.
+
 ## PRECISA DE MIM
 
 - **A linha de fechamento do teste é texto fixo e nomeia o que não rodou.** Fica como pendência,
   com as duas saídas medidas: a barata (~10 linhas, e nasce um número escrito à mão que envelhece)
   e a fiel (~40 sítios de bloco, e todo bloco novo tem de lembrar de se registrar). Decidido com o
   Arquiteto que não é desta rodada.
+- **O eixo da leitura do cortejo encosta em regra de jogo.** Escrevi "com dado e sem o termo"
+  porque é o que o `reguaNota` define, e não porque eu tenha decidido. Uma oração desfaz, se a
+  mesa quiser o contrário.
+- **O `glossario.json` tem três travessões (U+2014)**, todos anteriores a mim e nenhum no verbete
+  que eu toquei. O `J10` cobre só o `regras.json`; estes três ficam fora de qualquer lista. É a
+  mesma decisão do humano, e eu não mexi.
 - **Dois fatos do CI que a Revisora mediu e ninguém ligou**, e eu também não ligo: commit só de
   `docs/` cai dos dois lados, e as execuções se sobrepõem (sete ao mesmo tempo às 23:12). Um dado
   meu que encosta: a falha **reproduz local, 1 de 1, sem nenhuma execução concorrente**, o que não
@@ -125,6 +185,6 @@ Um commit, e ele leva junto o reaponte que o meu próprio conserto obrigou.
 
 ## BLOQUEADO
 
-Nada agora. Esteve bloqueado por um laço: o `pre-commit` varre o `CATALOGO.md` inteiro, a linha 40
+Nada agora, e nada dos grupos 2 e 3 ficou de fora. Esteve bloqueado por um laço: o `pre-commit` varre o `CATALOGO.md` inteiro, a linha 40
 dele estava vermelha por causa do meu conserto, e sem ela verde ninguém commitava neste
 repositório, nem commit só de documento. O Arquiteto corrigiu a própria linha e destravou.

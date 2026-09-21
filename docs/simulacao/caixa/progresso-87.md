@@ -98,3 +98,30 @@
 - *(sem hora medida)* · pendência nova escrita no `J-infraestrutura.md`, nomeada e não numerada
   (a linha de fechamento do teste, que é texto fixo), e o placar do índice refeito: 248 → 249
   itens, 172 → 173 abertos.
+- *(sem hora medida)* · grupo 1 commitado sozinho e empurrado: `e94cdb6`, sete arquivos, com o
+  `CATALOGO.md` entrando por autorização expressa do Arquiteto depois de ele corrigir a própria
+  linha 40, que era o que segurava o portão vermelho para todo mundo.
+- *(sem hora medida)* · grupo 2 feito e empurrado: `3dd2ac6`. O `:260` do capítulo social deixou
+  de juntar dois eixos num parêntese: a leitura do cortejo rola contra a Defesa Social com dado e
+  **sem** o termo da régua, e o capítulo agora diz por quê (ler não aquece nem esfria, e o termo
+  só existe em cima de um ataque que rema contra ou a favor · é o que o
+  `derivados.defesaSocial.reguaNota` define). O `glossario.json` parou de somar o termo dentro da
+  fórmula. E as duas correções de registro: o meu relato da 86 (oito commits meus, seis com
+  mudança na tabela; e a frase do CI reescrita dizendo o recorte que ela media) e o `86-aviso.md`
+  (dez → onze commits, sete → oito meus, contados um a um).
+- **21:16:53** · `npm run validate` rodado por mim antes de commitar o grupo 3: **exit 0**.
+- **21:17:41** · grupo 3 empurrado: `b903a26`. E o achado que muda o alvo do conserto: a amarra da
+  Reputação vive em `src/data/antecedentes.json`, e o catálogo do capítulo é **gerado** dela
+  (`gen-cap-antecedentes.mjs`, com `--check` no `validate`). Eu tinha escrito à mão dentro do
+  bloco gerado; a edição morreria no próximo regen, e o portão teria pegado. Consertado na fonte e
+  regerado.
+- **21:17:41** · item 13, a varredura, com o recorte dito ao lado: `os.walk('src')` inteiro, 164 a
+  170 arquivos conforme o filtro, **incluindo `src/data/`**, de linha em linha e depois de novo por
+  PARÁGRAFO (para não perder afirmação quebrada em duas linhas), casando qualquer de
+  `antecedent|reputaç|contato|posição` com qualquer de
+  `jogada|rolagem|bônus|turbina|buffa|move a régua|situacional`, e lendo cada acerto.
+  Único `.json` fora: o `diagramas.json`, que é cache de SVG e não tem prosa.
+  **Resultado: nenhum terceiro lugar.** Sobra só a amarra da Posição (`antecedentes.md:183` e a
+  fonte dela, `antecedentes.json:213`), que o despacho mandou não tocar e está na mesa do humano.
+  As buscas por `jogadas que movem`, `situacional de Antecedente` e `pilha situacional` devolvem
+  **zero** em `src/`.
