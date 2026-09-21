@@ -82,15 +82,78 @@ const espera = (ms) => new Promise((r) => setTimeout(r, ms));
 const falhas = [];
 const ok = (c, m) => { console.log((c ? '  ✓ ' : '  ✘ ') + m); if (!c) falhas.push(m); };
 
-/** Peça visível para pegar, e a casa livre mais longe de todas, dentro do palco. */
+/**
+ * Peça visível para pegar, e a casa livre mais longe de todas, dentro do palco.
+ *
+ * A PEÇA É ESCOLHIDA POR QUEM O PONTEIRO PEGA, E NÃO POR ORDEM NO DOM. Medido em
+ * 20/09/2026: o retângulo de DUAS peças cobria o ponto do clique, este seletor
+ * devolvia a primeira do documento ("Herói 1") e o `mouse.down` pegava a de cima
+ * ("Criatura 9"). Como a de cima não estava na vez, o arrasto abria a pergunta do
+ * L68 em vez de mover: zero escritas no banco (o `foram 0` do portão), a peça
+ * mirada parada, e um `dialog.mesa-dlg` cobrindo 312 dos 384 hexágonos, que fazia
+ * a volta seguinte não achar casa de destino e pular a medição inteira.
+ *
+ * Daí as duas condições novas: o `elementFromPoint` do centro tem de resolver na
+ * própria peça, e entre as que passam vem primeiro a que está NA VEZ (`.vez`),
+ * porque é a que o Grid deixa andar sem perguntar nada.
+ */
 const pontos = (p) => p.evaluate(() => {
   const pal = document.getElementById('gr-palco').getBoundingClientRect();
   const dentro = (b) => b.left > pal.left + 10 && b.right < pal.right - 10
     && b.top > pal.top + 10 && b.bottom < pal.bottom - 10;
-  const t = [...document.querySelectorAll('#gr-tokens .gr-token')].find((z) => dentro(z.getBoundingClientRect()));
-  if (!t) return null;
+  const todas = [...document.querySelectorAll('#gr-tokens .gr-token')];
+  const noPalco = todas.filter((z) => dentro(z.getBoundingClientRect()));
+  // ONDE O PONTEIRO PEGA ESTA PEÇA, e não "o centro dela". As peças se
+  // sobrepõem no tabuleiro, e no centro de uma costuma estar a de cima; o que o
+  // arrasto precisa é de um ponto DESTA peça que esteja livre. Varre o centro
+  // primeiro e depois oito pontos em volta, todos dentro do retângulo.
+  const pegaEm = (z) => {
+    const r = z.getBoundingClientRect();
+    const dx = r.width * 0.3, dy = r.height * 0.3;
+    const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+    const pontos = [[0, 0], [0, -dy], [0, dy], [-dx, 0], [dx, 0], [-dx, -dy], [dx, -dy], [-dx, dy], [dx, dy]];
+    for (const [ox, oy] of pontos) {
+      const x = cx + ox, y = cy + oy;
+      if (document.elementFromPoint(x, y)?.closest('.gr-token') === z) return { x, y };
+    }
+    return null;
+  };
+  const quemPega = (z) => {
+    const r = z.getBoundingClientRect();
+    return document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2);
+  };
+  // O `dentro()` vale para a CASA DE DESTINO, e não para a peça de origem: peça
+  // encostada na borda do palco continua sendo pegável, e exigir dela o mesmo
+  // enquadramento jogava fora justamente a que está na vez. Fica como desempate.
+  const pegaveis = [...noPalco, ...todas.filter((z) => !noPalco.includes(z))].filter((z) => pegaEm(z));
+  // O QUE CONTAR QUANDO NÃO DER, porque "não deu" sem motivo é o que mandou a
+  // medição inteira para o ralo em silêncio.
+  const diag = {
+    tokens: todas.length,
+    noPalco: noPalco.length,
+    pegaveis: pegaveis.length,
+    naVezPegaveis: pegaveis.filter((z) => z.classList.contains('vez')).length,
+    naVezNoPalco: noPalco.filter((z) => z.classList.contains('vez')).length,
+    naVezTotal: todas.filter((z) => z.classList.contains('vez')).length,
+    hexes: document.querySelectorAll('#gr-hexes .hx').length,
+    cobertos: [...document.querySelectorAll('#gr-hexes .hx')].filter((h) => {
+      const r = h.getBoundingClientRect();
+      return !document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2)?.closest('#gr-palco');
+    }).length,
+    dialogo: document.querySelector('dialog[open]')?.className || null,
+    porCima: noPalco[0]
+      ? (quemPega(noPalco[0])?.closest('.gr-token')?.title.split(' · ')[0]
+        || `${quemPega(noPalco[0])?.tagName}.${(quemPega(noPalco[0])?.className || '').toString().split(' ')[0]}`)
+      : null,
+  };
+  // A PEÇA NA VEZ VEM PRIMEIRO, e não por capricho: o Grid deixa ela andar sem
+  // perguntar nada, e qualquer outra abre a pergunta do L68 (fora da vez), que
+  // não grava nada e ainda cobre o tabuleiro com um diálogo.
+  const t = pegaveis.find((z) => z.classList.contains('vez')) || pegaveis[0];
+  if (!t) return { ...diag, nome: null, c: null, naVez: false, de: null, para: null };
   const b = t.getBoundingClientRect();
-  const toks = [...document.querySelectorAll('#gr-tokens .gr-token')].map((z) => {
+  const pegada = pegaEm(t);
+  const toks = todas.map((z) => {
     const r = z.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
   });
   // O ponto tem de cair DENTRO do palco: o retângulo dos hexágonos passa por
@@ -104,7 +167,18 @@ const pontos = (p) => p.evaluate(() => {
     const d = Math.min(...toks.map((z) => Math.hypot(z.x - x, z.y - y)));
     if (!melhor || d > melhor.d) melhor = { x, y, d };
   }
-  return { nome: t.title.split(' · ')[0], de: { x: b.left + b.width / 2, y: b.top + b.height / 2 }, para: melhor };
+  return {
+    ...diag,
+    nome: t.title.split(' · ')[0],
+    c: t.dataset.c || null,
+    naVez: t.classList.contains('vez'),
+    // `de` é ONDE PEGAR (ponto livre da peça) e `centro` é DE ONDE ELA SAIU. Os
+    // dois eram a mesma coisa quando o ponto era sempre o centro, e medir
+    // deslocamento contra o ponto da mão daria "andou" por 20 px de offset.
+    de: pegada,
+    centro: { x: b.left + b.width / 2, y: b.top + b.height / 2 },
+    para: melhor,
+  };
 });
 
 async function cena(br, url, { pecas, cols, rows, nevoa }) {
@@ -1080,13 +1154,27 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
 
   // ------------------------------------------------ mover uma peça, e o custo
   const pt = await pontos(p);
-  ok(!!pt && !!pt.para, 'há peça para arrastar e casa livre para soltar');
-  if (pt && pt.para) {
+  ok(!!pt.de && !!pt.para, `há peça para arrastar e casa livre para soltar`
+    + `${pt.de ? '' : ` (${pt.pegaveis} de ${pt.noPalco} peças pegáveis)`}`);
+  if (pt.de && pt.para) {
     // Uma volta de aquecimento antes de medir: a primeira ação de uma página
     // paga o que só acontece uma vez (compilação, filtros do SVG).
     for (const volta of ['aquece', 'mede']) {
       const q = await pontos(p);
-      if (!q?.para) break;
+      // ESTE `break` ERA MUDO, e é o que escondeu o defeito por dias. Sem casa de
+      // destino ele pulava as cinco asserções do movimento e o portão fechava
+      // VERDE sem ter medido nada: os quatro verdes de 19/09 e os três de hoje
+      // (`2215cfc`, `08bf455`, `34e98a2`) não trazem uma linha do bloco do mover.
+      // Agora ele grita, e diz o que estava na frente.
+      if (!q?.de || !q?.para) {
+        ok(false, `[${volta}] o movimento não foi medido: ${!q?.de ? 'nenhuma peça pegável' : 'nenhuma casa de destino'}`
+          + ` (${q.pegaveis} de ${q.noPalco} peças no palco pegáveis, ${q.naVezPegaveis} delas na vez`
+          + ` de ${q.naVezNoPalco} no palco e ${q.naVezTotal} no tabuleiro inteiro`
+          + `, ${q.cobertos} de ${q.hexes} hexágonos cobertos`
+          + `${q.porCima ? `, por cima da primeira: ${q.porCima}` : ''}`
+          + `${q.dialogo ? `, diálogo aberto: ${q.dialogo}` : ''})`);
+        break;
+      }
       await p.evaluate(() => { window.__PINT.reg.length = 0; window.__PINT.on = true; window.__SB.log.length = 0; });
       await p.mouse.move(q.de.x, q.de.y);
       await p.mouse.down();
@@ -1115,13 +1203,33 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
             .map(([k, v]) => `${k} ${v.n}× ${v.kb.toFixed(1)}KB`).join(', '),
         };
       });
-      const andou = await p.evaluate((x0, y0) => {
-        const t = document.querySelector('#gr-tokens .gr-token');
+      // A PEÇA ARRASTADA, e não a primeira do documento. Com `querySelector` sem
+      // filtro esta leitura media outra peça: em 20/09/2026 ela disse "andou" na
+      // cena de 30 enquanto a peça mirada não tinha saído do lugar, porque a
+      // primeira do DOM era uma terceira, parada longe do ponto de partida.
+      const andou = await p.evaluate((c, x0, y0) => {
+        const t = c ? document.querySelector(`#gr-tokens .gr-token[data-c="${c}"]`) : null;
+        if (!t) return null;
         const b = t.getBoundingClientRect();
         return Math.hypot(b.left + b.width / 2 - x0, b.top + b.height / 2 - y0) > 8;
-      }, q.de.x, q.de.y);
+      }, q.c, q.centro.x, q.centro.y);
+      // Soltar a peça abre PERGUNTA em dois casos legítimos (fora da vez, L68; e
+      // o "como você vai até lá" do simultâneo), e pergunta aberta não grava nada:
+      // é daí que saía o `foram 0`. O teste escolhe uma peça na vez justamente
+      // para não cair neles, então diálogo aqui é defeito, e agora tem nome.
+      const perguntou = await p.evaluate(() => {
+        const d = document.querySelector('dialog[open]');
+        return d ? `${d.className || '(sem classe)'}: ${(d.innerText || '').replace(/\s+/g, ' ').slice(0, 80)}` : '';
+      });
       if (volta !== 'mede') continue;
-      ok(andou, 'a peça saiu do lugar');
+      // QUEM FOI ARRASTADO, no log, sempre. Esta linha custa um `console.log` e é o
+      // que responde, sem sonda nenhuma, a pergunta que custou a rodada inteira:
+      // qual peça o teste pegou e se ela podia andar sem que o Grid perguntasse.
+      console.log(`    arrastei "${q.nome}"${q.naVez ? ', na vez' : ', FORA da vez'}`
+        + ` · ${q.naVezTotal} peça(s) na vez no tabuleiro, ${q.pegaveis} pegável(is) de ${q.tokens}`);
+      ok(!perguntou, `soltar a peça moveu, não abriu pergunta`
+        + `${perguntou ? ` · arrastei "${q.nome}"${q.naVez ? ', que está na vez,' : ', que NÃO está na vez,'} e veio ${perguntou}` : ''}`);
+      ok(andou === true, `a peça saiu do lugar${andou === null ? ' (a peça arrastada sumiu do tabuleiro)' : ''}`);
       ok(selecao === '', `arrastar não seleciona texto (veio "${selecao.slice(0, 40)}")`);
       // O teto subiu de 5 para 7 em 21/08, e de propósito: quem anda durante a
       // Recuperação passou a PAGAR o deslocamento (2 Ticks por metro, K20), e

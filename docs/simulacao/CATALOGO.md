@@ -37,7 +37,7 @@ segunda tinha ficado verde por cegueira.
 |---|---|---|
 | **o zero ambíguo** | `count`, `length`, `sum`, `?? 0`, todo 0 publicado | este zero é RESULTADO ou é ausência de medida? |
 | **a falha que devolve zero** | `catch`, `try`, valor de erro somado | isto é zero medido, ou é "não consegui ler"? |
-| **a asserção sem ocasião** | `ok(`, `assert`, todo teste verde de primeira | a ocasião foi MONTADA, ou ela passa provando nada? |
+| **a asserção sem ocasião** | `ok(`, `assert`, todo teste verde de primeira, **e `break`/`return`/`continue` DENTRO de um bloco de teste** | a ocasião foi MONTADA, ou ela passa provando nada? **E a dobra de 20/09/2026, que é o outro jeito de a ocasião sumir:** ela pode ter sido montada e depois **desmontada em tempo de execução**. **(citação histórica, o código mudou em 20/09/2026):** no `test-grid.mjs`, um `if (!q?.para) break` mudo saia do bloco quando não achava casa livre de destino, e a suíte seguia verde sem as cinco asserções do movimento · medido nos logs do `057b339` (19/09) e do `fe09550` (20/09), onde `há peça para arrastar` aparece duas vezes e `a peça saiu do lugar` aparece zero. **O agravante, e ele é o que torna a forma invisível:** a linha de fechamento verde era texto fixo, e imprimia `Grid OK · desenho, movimento, registro` **nomeando o movimento que não rodou**. A pergunta de quem revisa não é só "a ocasião foi montada": é **a asserção APARECEU no log deste run verde?**, e ela se responde com `grep` no log e não lendo o código. Uma saída que lista o que cobriu sem consultar o que rodou é a mesma forma do *portão que casa por texto fixo*, virada para o relatório de sucesso. |
 | **a asserção negativa sozinha** | `!`, `não`, `nenhum`, `zero` numa asserção | e o PAR que mostra a coisa acontecendo? |
 | **o mecanismo que nada executa** (L25) | constante exportada, bandeira, função nova | quem LÊ isto? |
 | **o transporte que descarta** | `CAMPOS_*`, `pick`, `select('a,b')`, lista de chaves | a chave nova chega na OUTRA PONTA? |
@@ -110,7 +110,7 @@ não é, o laço é espera, e espera não reporta ordinal como se fosse achado.
 avanço unificado não é o ARQUIVO nem a FORMA do código, é a QUERY da cena. Uma cena cujo `goto()`
 não pede `tempo=simultaneo` cai no `else` de `SIML()` (o modo antigo) e não sentiu a mudança de
 contrato nenhuma, mesmo tendo a MESMA forma de laço e o mesmo `dica`/`.title` que as cenas
-afetadas. `test-grid.mjs:2480` (`dica: btn.title`) é a forma exata, e é falso positivo por isso: quem varrer de novo
+afetadas. `test-grid.mjs:2588` (`dica: btn.title`) é a forma exata, e é falso positivo por isso: quem varrer de novo
 por esta família olha o `goto` da cena antes do laço, não o laço sozinho.
 
 **São 35**, e a contagem é do dia em que o arquivo nasceu (nasceu com 25, fechou o primeiro dia

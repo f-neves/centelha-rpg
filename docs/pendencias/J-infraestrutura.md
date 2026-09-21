@@ -56,6 +56,20 @@
   revisa. Saídas: fixar a semente do desenho, ou gravar só as entradas que faltam em vez do
   arquivo inteiro. Não é urgente e não afeta quem lê o site: o desenho publicado está certo.
 
+- [ ] **A linha de fechamento do `test-grid` é texto fixo · [DECIDIR]** *(nomeada e não numerada,
+  por decisão do Arquiteto em 20/09/2026.)* O teste termina imprimindo
+  `Grid OK · desenho, movimento, registro, névoa e card...`, uma frase escrita à mão que nomeia o
+  que o teste DEVERIA ter coberto, e não o que ele rodou. Na rodada 87 isso custou dias: o bloco do
+  movimento pulava as cinco asserções dele em silêncio e a frase continuava dizendo "movimento".
+  A falha silenciosa daquele bloco foi consertada, mas a frase segue podendo mentir sobre qualquer
+  outro. **O custo das duas saídas, medido e não estimado** (414 chamadas `ok(` em 4.277 linhas):
+  a barata (imprimir quantas asserções rodaram e falhar abaixo de um piso) são ~10 linhas de código
+  e faz nascer um número escrito à mão que envelhece a cada bloco novo, trocando um texto que mente
+  por um número que mente, a menos que o piso venha de uma catraca versionada; a fiel (cada bloco
+  se registra ao começar e ao terminar, e o fechamento lista o que rodou) são ~40 sítios de bloco no
+  arquivo, e todo bloco novo tem de lembrar de se registrar. A segunda é instrumento novo e passa
+  pelo `CATALOGO` antes de ser construída.
+
 - [ ] **J10 · [DECIDIR] Os 23 travessões do `regras.json`, e seis deles NÃO são travessão.**
   Contados pela Executora na rodada 86, ocorrência a ocorrência, com Python e não por `git diff`:
   são **23 U+2014** no arquivo, e a régua da casa (sem travessão em texto nenhum) só tem portão

@@ -28,16 +28,17 @@ resolver tudo de uma vez.**
 | G | Ações & Sistema | [`docs/pendencias/G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 15 | 5 | 10 |
 | H | Arremesso | [`docs/pendencias/H-arremesso.md`](docs/pendencias/H-arremesso.md) | 4 | 2 | 2 |
 | I | Mesa virtual · tempo real | [`docs/pendencias/I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 14 | 12 | 2 |
-| J | Infraestrutura · endereço, hospedagem e versão | [`docs/pendencias/J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 10 | 8 | 2 |
+| J | Infraestrutura · endereço, hospedagem e versão | [`docs/pendencias/J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 11 | 9 | 2 |
 | K | Combate · a linha do tempo | [`docs/pendencias/K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 30 | 19 | 11 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`docs/pendencias/L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 103 | 70 | 33 |
 
-**Total: 248 itens, 172 abertos, 76 fechados.** Contado direto pelas caixas de cada
+**Total: 249 itens, 173 abertos, 76 fechados.** Contado direto pelas caixas de cada
 arquivo (`- [ ]` aberto ou parcial, `- [x]` fechado) em 2026-09-17, e não pelo placar
 antigo deste arquivo (que era de 2026-08-17 e estava desatualizado havia semanas).
 Mais os **cinco** que a rodada 85 abriu no tema E (E4 a E8), em 2026-09-19, e os **três** que a
 rodada 86 abriu em 2026-09-20: E9 e E10 no tema E, J9 no tema J. Mais o **J10**, aberto no mesmo
-dia depois da palavra do Arquiteto sobre os travessões do `regras.json`.
+dia depois da palavra do Arquiteto sobre os travessões do `regras.json`. Mais uma da rodada 87, no
+tema J, **nomeada e não numerada** por decisão dele: a linha de fechamento do `test-grid`.
 
 **Nota sobre a letra C:** até 2026-09-17 não existia uma seção `## C.` própria neste
 mapa. Os itens **C1** a **C4** (Trilhas de Feitiçaria, a jogada das Artes por Tradição)
