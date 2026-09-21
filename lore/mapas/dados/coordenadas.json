@@ -1,0 +1,44 @@
+{
+  "_comentario": "Definição do sistema de coordenadas do mapa de Uldun. Gerado a partir da medição do pixel de terra mais ao sul de Mére na costa oficial (mascaras/costa_10240.png), em 2026-09-21.",
+  "planeta": {
+    "raio_km": 7963.75,
+    "raio_em_raios_terrestres": 1.25,
+    "circunferencia_km": 50038.5,
+    "distancia_polo_a_polo_km": 25019.25
+  },
+  "projecao": {
+    "tipo": "equirretangular",
+    "resolucao_tela_px": 10240,
+    "km_por_px_latitude": 1.25,
+    "px_por_grau": 111.2,
+    "km_por_grau": 139.0
+  },
+  "referencia": {
+    "y_equador_px": 7650,
+    "x_meridiano_zero_px": 5120,
+    "origem_do_y_equador": "pixel de terra mais ao sul da massa Mére (x=6211, y=7650) em mascaras/costa_10240.png",
+    "origem_do_x_meridiano": "centro horizontal da tela, provisório"
+  },
+  "formulas": {
+    "latitude_de_y": "lat = (7650 - y) / 111.2",
+    "longitude_de_x": "lon = (x - 5120) / 111.2",
+    "y_de_latitude": "y = 7650 - lat * 111.2",
+    "x_de_longitude": "x = 5120 + lon * 111.2",
+    "nota": "projeção equirretangular simples: 1 pixel vale os mesmos graus em qualquer latitude/longitude (NÃO corrigido por cos(latitude)). Para distância real entre dois pontos, converter para lat/lon com estas fórmulas e usar grande círculo (haversine) com o raio do planeta, nunca a régua da tela."
+  },
+  "limites_da_tela": {
+    "latitude_topo": 68.79,
+    "latitude_base": -23.29,
+    "longitude_esquerda": -46.04,
+    "longitude_direita": 46.04
+  },
+  "faixas_de_latitude_das_regioes": {
+    "_comentario": "derivado das caixas delimitadoras das massas de terra em render/analise, escala 10240. Aproximado, calculado a partir de bounding box, não do contorno exato.",
+    "Mere": { "lat_norte": 41.10, "lat_sul": 0.09, "massa_id": 1 },
+    "Syl": { "lat_norte": 25.45, "lat_sul": 1.44, "massa_id": 2 },
+    "White_Wall_bloco_principal": { "lat_norte": 68.79, "lat_sul": 60.13, "massa_id": 5 },
+    "White_Wall_faixa_leste": { "lat_norte": 68.79, "lat_sul": 55.85, "massa_id": 3 },
+    "Calin": { "lat_norte": 43.71, "lat_sul": 26.17, "massa_id": 6 },
+    "The_Neck": { "lat_norte": 55.31, "lat_sul": 49.15, "massa_id": 11 }
+  }
+}

@@ -18,9 +18,14 @@ _pages/
 # legado (saídas grandes — mantidas localmente, fora do repo do site)
 legacy/*.pdf
 
-# mapas originais em alta resolução (pesados; versionamos as cópias reduzidas Uldun_*.jpg)
-lore/mapas/Mapa Teste.jpg
-lore/mapas/Mapa Teste1.jpg
+# mapas: material de matéria-prima e saída pesada, fora do repo (versionamos as
+# cópias reduzidas Uldun_*.jpg, que ficam soltas em lore/mapas/, e o que está em
+# mascaras/, dados/, historico/ e ferramentas/, que são leves e são trabalho nosso)
+lore/mapas/fonte/
+lore/mapas/referencias/
+lore/mapas/simbolos/
+lore/mapas/render/
+lore/mapas/photoshop/
 
 # material de referência (PDFs/artes de D&D e Pathfinder — pesado, fora do repo)
 D&D/

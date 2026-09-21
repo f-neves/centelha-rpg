@@ -132,7 +132,7 @@ Este é o documento-cânone do worldbuilding de **Centelha** (um RPG). Se você 
 
 ## 6. Geografia: o mundo de Uldun (parte jogável)
 
-- **[TRAVADO] Planeta principal do sistema = Uldun.** O mapa atual **não é o mundo inteiro**: é a **parte "jogável"**, a região onde os jogadores mais vão atuar. Mapas em `lore/mapas/`: cópias reduzidas versionadas `Uldun_parte-jogavel_rotulado.jpg` (com rótulos) e `Uldun_parte-jogavel.jpg` (sem rótulos); os originais em alta (`Mapa Teste*.jpg`, 10240px) ficam locais, fora do git. Leitura do mapa: Waning é a landmass central em lua minguante; The Neck são as ilhas a noroeste; The White Wall, as montanhas ao norte.
+- **[TRAVADO] Planeta principal do sistema = Uldun.** O mapa atual **não é o mundo inteiro**: é a **parte "jogável"**, a região onde os jogadores mais vão atuar. Mapas em `lore/mapas/`: cópias reduzidas versionadas `Uldun_parte-jogavel_rotulado.jpg` (com rótulos) e `Uldun_parte-jogavel.jpg` (sem rótulos); os originais em alta ficam em `lore/mapas/fonte/` (`Mapa Teste.jpg`, 10240px, sem rótulo; `Mapa Teste1.jpg`, a mesma imagem em 10240px com os rótulos; `Mapa.psd`; os dois SVGs de traçado da costa), locais, fora do git. Documento central do projeto de mapa: `lore/mapas/CARTOGRAFO.md`. Leitura do mapa: Waning é o arquipélago central em lua minguante, três ilhas (Calin ao norte, Syl a oeste/sudoeste, Mére a leste, a maior); The Neck são as ilhas a noroeste, isoladas de Waning por mar aberto; The White Wall, as montanhas ao norte.
 
 ### Waning (o continente central)
 
