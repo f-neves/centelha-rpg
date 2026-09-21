@@ -110,7 +110,7 @@ não é, o laço é espera, e espera não reporta ordinal como se fosse achado.
 avanço unificado não é o ARQUIVO nem a FORMA do código, é a QUERY da cena. Uma cena cujo `goto()`
 não pede `tempo=simultaneo` cai no `else` de `SIML()` (o modo antigo) e não sentiu a mudança de
 contrato nenhuma, mesmo tendo a MESMA forma de laço e o mesmo `dica`/`.title` que as cenas
-afetadas. `test-grid.mjs:2588` (`dica: btn.title`) é a forma exata, e é falso positivo por isso: quem varrer de novo
+afetadas. `test-grid.mjs:2630` (`dica: btn.title`) é a forma exata, e é falso positivo por isso: quem varrer de novo
 por esta família olha o `goto` da cena antes do laço, não o laço sozinho.
 
 **São 35**, e a contagem é do dia em que o arquivo nasceu (nasceu com 25, fechou o primeiro dia

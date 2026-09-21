@@ -125,3 +125,27 @@
   fonte dela, `antecedentes.json:213`), que o despacho mandou não tocar e está na mesa do humano.
   As buscas por `jogadas que movem`, `situacional de Antecedente` e `pilha situacional` devolvem
   **zero** em `src/`.
+
+## A emenda do CI, depois de a rodada fechar
+
+- *(sem hora medida)* · o `e94cdb6` fechou **verde** no CI (run `35546855058`), mas o `3dd2ac6`,
+  que só toca `relacoes-sociais.md` e `glossario.json`, fechou **vermelho** na asserção NOVA.
+  Baixei o log do job (`106174713361`) e li inline, em vez de aceitar a posição do resumo:
+  `há peça para arrastar` passou às **00:17:08.606** e a falha veio às **00:17:11.017**, 2,4 s
+  depois, que é o tempo de UMA volta de arrasto. O resumo que aparece perto do bloco da lembrança
+  é impresso às **00:26:56**, dez minutos depois do evento, e não diz onde ele aconteceu.
+  Isso derruba a hipótese de resíduo do bloco anterior: diálogo sobrando teria coberto os 1200
+  hexágonos já no `há peça para arrastar`, que passou.
+- *(sem hora medida)* · a causa é minha, da primeira versão do conserto: o `pontos()` PREFERE a
+  peça na vez, mas tinha um **fallback** para qualquer peça pegável quando nenhuma na vez estava
+  desimpedida. No CI da cena de 30 ele caiu nesse fallback, a volta de AQUECIMENTO arrastou peça
+  fora da vez, o Grid perguntou (L68) e o diálogo cobriu o tabuleiro para a volta de medir.
+  Local, em quatro rodadas, nunca caiu nele.
+- **22:09:44** · (carimbo do log) segunda emenda rodada local: **exit 0**, com as duas cenas
+  medindo e as linhas novas por volta ·
+  `[aquece] vou arrastar "Criatura 9", na vez · 1 na vez no tabuleiro, 9 pegável(is) de 12` e
+  `[aquece] vou arrastar "Criatura 21", na vez · 1 na vez no tabuleiro, 21 pegável(is) de 30`.
+  As quatro mudanças: o fallback morreu (fora da vez não se arrasta, e a falha diz as
+  contagens), a pergunta depois de soltar vale nas DUAS voltas (o diálogo é fechado **depois** de
+  anotado, para a volta seguinte ainda medir), higiene na entrada do bloco contra diálogo de
+  qualquer bloco anterior, e uma linha de log por volta.

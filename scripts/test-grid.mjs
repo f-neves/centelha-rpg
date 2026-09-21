@@ -1153,6 +1153,22 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
   }
 
   // ------------------------------------------------ mover uma peça, e o custo
+  //
+  // HIGIENE ANTES DE MEDIR, e ela é um achado do CI de 21/09/2026: diálogo aberto
+  // cobre o tabuleiro inteiro e derruba TUDO o que vem depois, com uma falha que
+  // fala do sintoma e não de quem o produziu. Se sobrou diálogo de um bloco
+  // anterior, isto grita com o nome dele e fecha, para a medição seguir e a
+  // rodada render um achado em vez de uma cascata.
+  {
+    const residuo = await p.evaluate(() => {
+      const d = document.querySelector('dialog[open]');
+      if (!d) return null;
+      const nome = `${d.className || '(sem classe)'}: ${(d.innerText || '').replace(/\s+/g, ' ').slice(0, 90)}`;
+      d.close();
+      return nome;
+    });
+    if (residuo) ok(false, `nenhum diálogo sobrou do bloco anterior (veio ${residuo})`);
+  }
   const pt = await pontos(p);
   ok(!!pt.de && !!pt.para, `há peça para arrastar e casa livre para soltar`
     + `${pt.de ? '' : ` (${pt.pegaveis} de ${pt.noPalco} peças pegáveis)`}`);
@@ -1175,6 +1191,22 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
           + `${q.dialogo ? `, diálogo aberto: ${q.dialogo}` : ''})`);
         break;
       }
+      // E A PEÇA TEM DE ESTAR NA VEZ, senão o teste é quem abre o diálogo.
+      //
+      // Achado no CI de 21/09/2026 (run 35547045947, commit 3dd2ac6, cena de 30):
+      // a volta de aquecimento arrastou uma peça fora da vez, o Grid perguntou o
+      // que tinha de perguntar, e o diálogo cobriu os 1200 hexágonos para a volta
+      // de medir. Arrastar fora da vez não mede movimento nenhum, então nem se
+      // tenta: diz-se com quantas peças na vez se contava e para-se aqui.
+      if (!q.naVez) {
+        ok(false, `[${volta}] a peça pegável não está na vez, e arrastá-la abriria pergunta em vez de mover`
+          + ` (escolhida "${q.nome}"; ${q.naVezPegaveis} peça(s) na vez pegáveis,`
+          + ` ${q.naVezNoPalco} na vez no palco, ${q.naVezTotal} no tabuleiro inteiro,`
+          + ` ${q.pegaveis} pegáveis de ${q.noPalco} no palco)`);
+        break;
+      }
+      console.log(`    [${volta}] vou arrastar "${q.nome}", na vez`
+        + ` · ${q.naVezTotal} na vez no tabuleiro, ${q.pegaveis} pegável(is) de ${q.tokens}`);
       await p.evaluate(() => { window.__PINT.reg.length = 0; window.__PINT.on = true; window.__SB.log.length = 0; });
       await p.mouse.move(q.de.x, q.de.y);
       await p.mouse.down();
@@ -1221,14 +1253,24 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
         const d = document.querySelector('dialog[open]');
         return d ? `${d.className || '(sem classe)'}: ${(d.innerText || '').replace(/\s+/g, ' ').slice(0, 80)}` : '';
       });
+      // A PERGUNTA DEPOIS DE SOLTAR vale nas DUAS voltas, e não só na que mede:
+      // foi uma volta de aquecimento que abriu o diálogo no CI de 21/09/2026 e
+      // derrubou a medição seguinte. Aqui ela é falha em qualquer uma, e o
+      // diálogo é fechado logo em seguida para o resto do bloco ainda medir.
+      if (perguntou) {
+        // Fechar DEPOIS de anotar, e não em vez de anotar: o diálogo aberto
+        // cobre o tabuleiro e derruba a volta seguinte, e aí a rodada rende uma
+        // cascata em vez de um achado.
+        if (volta !== 'mede') {
+          ok(false, `[${volta}] soltar a peça moveu, não abriu pergunta`
+            + ` · arrastei "${q.nome}", que está na vez, e veio ${perguntou}`);
+        }
+        await p.evaluate(() => document.querySelector('dialog[open]')?.close());
+        await espera(200);
+      }
       if (volta !== 'mede') continue;
-      // QUEM FOI ARRASTADO, no log, sempre. Esta linha custa um `console.log` e é o
-      // que responde, sem sonda nenhuma, a pergunta que custou a rodada inteira:
-      // qual peça o teste pegou e se ela podia andar sem que o Grid perguntasse.
-      console.log(`    arrastei "${q.nome}"${q.naVez ? ', na vez' : ', FORA da vez'}`
-        + ` · ${q.naVezTotal} peça(s) na vez no tabuleiro, ${q.pegaveis} pegável(is) de ${q.tokens}`);
       ok(!perguntou, `soltar a peça moveu, não abriu pergunta`
-        + `${perguntou ? ` · arrastei "${q.nome}"${q.naVez ? ', que está na vez,' : ', que NÃO está na vez,'} e veio ${perguntou}` : ''}`);
+        + `${perguntou ? ` · arrastei "${q.nome}", que está na vez, e veio ${perguntou}` : ''}`);
       ok(andou === true, `a peça saiu do lugar${andou === null ? ' (a peça arrastada sumiu do tabuleiro)' : ''}`);
       ok(selecao === '', `arrastar não seleciona texto (veio "${selecao.slice(0, 40)}")`);
       // O teto subiu de 5 para 7 em 21/08, e de propósito: quem anda durante a

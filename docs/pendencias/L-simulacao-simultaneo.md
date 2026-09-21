@@ -719,7 +719,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `619c317`):** a Revisora rodou os dois cenários ao vivo (34 asserções, não só leu o código) e
   confirma que a conferência em par é a MESMA função nas duas portas, não duplicada por nome.
   Em `test-grid.mjs:1097`, o clique que abre a caixa de abortar: `data-a="abortar"`.
-  Em `test-grid.mjs:3644`, a caixa equivalente de fora-de-hora: `data-a="forahora"`.
+  Em `test-grid.mjs:3686`, a caixa equivalente de fora-de-hora: `data-a="forahora"`.
 
   **ITEM 4 (o que o escudo faz) NÃO É DECISÃO DE MESA, É BANDEIRA DESLIGADA, conferido em
   07/09/2026.** `bloqueio` é uma das 15 bandeiras (`src/data/regras.json:2535`,
@@ -890,7 +890,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **LEVANTAMENTO em 07/09/2026 (rodada 24, `docs/simulacao/caixa/24-executora.md`): o achado
   "relógio em Tick 0" está DEFASADO.** A migração 31 rodou em produção em 05/09/2026 (`L42`), e
   o cliente já tinha a degradação `SEM_RELOGIO` pronta antes disso (`grid.astro:3181`,
-  `test-grid.mjs:1549-1568`, cenário `SIM5`).
+  `test-grid.mjs:1591-1610`, cenário `SIM5`).
 
   **FECHADO em 07/09/2026 (rodada 25, commit `cffcec9`, `docs/simulacao/caixa/25-executora.md`):
   as duas lacunas que sobraram do levantamento.** A pergunta do `combate.astro` era divergência
@@ -899,7 +899,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   individual de uma peça `livre`, que fica parado enquanto `tick_atual` anda. Corrigido: no
   Simultâneo o relógio agora lê `ENC?.tick_atual` (`combate.astro:938`), igual ao Grid; normal
   e P/G/R não mudaram. E a lacuna de prova no P/G/R fechou com um par de asserção novo
-  (`test-grid.mjs:1583`, knob `?deslocafila=N` em `mesa-mock.mjs`): o jogador calcula o
+  (`test-grid.mjs:1625`, knob `?deslocafila=N` em `mesa-mock.mjs`): o jogador calcula o
   mesmo relógio que o mestre, e o número muda junto com o deslocamento, em vez de ficar parado
   em Tick 0 (que era indistinguível de máscara quebrada antes deste teste existir).
 
@@ -2708,7 +2708,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
      afirmação em si é verdadeira (a Revisora rodou e confirmou), só a procedência escrita erra, e é
      esse erro que esta entrada guarda, não o número certo do dia. Correção mora no veredito
      (`27-revisora.md`), não em reescrever `27-executora.md`. **A função de verdade, hoje** (11/09/2026,
-     depois de rodadas que cresceram o arquivo): `cenaLembranca` (`scripts/test-grid.mjs:4156`).
+     depois de rodadas que cresceram o arquivo): `cenaLembranca` (`scripts/test-grid.mjs:4198`).
   2. **Bug real em `scripts/rodada.mjs:102` · `function calcularTopo`, classe nova, não a mesma do `4058b4c` (rodada 19):**
      o campo TOPO compara `origin/main` contra o SHA local e, se diferentes, assume que alguém
      empurrou DEPOIS (`topo = origemMain`). A conta não cobre o caso desta sessão: `origin/main`
