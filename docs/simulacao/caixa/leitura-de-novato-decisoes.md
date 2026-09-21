@@ -162,34 +162,115 @@ Ver `docs/simulacao/caixa/leitura-de-novato-capitulos.md` e
 `docs/simulacao/caixa/leitura-de-novato-investigacao-baldeC.md` para o material de apoio de cada
 uma. Decisões fechadas até aqui:
 
-**Sufocamento** (item 2/12+30 da lista original): **tem dano gradual** (dado vence). O capítulo
-(`acoes-resistir.md`) se corrige para descrever o dano a cada 6 Ticks antes do apagão.
-Sufocamento deixa de ser "Modo: nenhum" e vira caso especial do modo **Passiva** (não envolve
-rolagem do jogador).
+**Sufocamento** (item 2/12+30 da lista original): **decisão anterior ("tem dano gradual, dado
+vence") ANULADA e substituída.** Estava errada: eu tinha invertido a direção (fiz o JSON vencer
+o capítulo), contradizendo o próprio critério que usei pro Envenenado logo depois (lá, o capítulo
+venceu o JSON). A leitora-novata pegou a inconsistência. Lendo o capítulo inteiro
+(`acoes-resistir.md:135-153`), o desenho de três fases que já existe (contagem regressiva sem
+rolagem → apagão instantâneo → janela de socorro) é coerente e deliberado; quem está errado é
+`condicoes.json` (`"porSeisTicks": 2` na condição "sufocando", que descreve dano que o capítulo
+explicitamente nega: "Não há queda gradual nem jogada de resistir").
 
-**Envenenado, e o formato novo de `venenos.json`** (item 3/13 da lista original): o relógio
-genérico `porSeisTicks` de `condicoes.json` **cai**. Veneno passa a ter esquema próprio
-estruturado, no mesmo espírito do esquema de item (todo campo descrito, em branco o que não se
-aplica a um veneno específico):
+**Redesenho completo, decidido com o humano nesta rodada.** Prender a respiração e sufocar viram
+dois relógios em sequência, não um:
 
-```json
-{
-  "id": "cicuta",
-  "nome": "Cicuta",
-  "potencia": 10,
-  "inicio": { "valor": 1, "unidade": "minuto" },
-  "doses": { "quantidade": 3, "intervalo": { "valor": 1, "unidade": "hora" } },
-  "efeitoPorDose": { "tipo": "atributo", "atributo": "vigor", "valor": -1 },
-  "ignoraAbsorcao": true,
-  "descricao": null
-}
-```
+1. **Prender a respiração** (o texto atual, quase sem mudança): `Ticks de ar = (Vigor+Resistência)×10`,
+   reduzido à metade por surpresa OU esforço, a um quarto pelas duas. +1 Desgaste no último quarto,
+   sem dano, sem rolagem.
+2. **Sufocamento** (mecânica nova, **Reflexiva acumulativa**: o alvo rola pra resistir a cada pulso,
+   numa jogada avulsa que não consome a ação do lance, e o resultado acumula dano ao longo do
+   relógio). Dois jeitos de entrar: pelo fim do relógio 1 (acabou o fôlego), ou direto, quando algo
+   impede a oxigenação na hora (mata-leão, magia que retira o ar, líquido no pulmão), sem precisar
+   ter prendido a respiração antes. Cobre golpe marcial (choke vascular) e afogamento (o tempo
+   "lento" do afogamento real já está no relógio 1; uma vez que o ar de verdade acabou, os dois
+   casos convergem pro mesmo ritmo).
+   - **Intervalo = 1 + Centelha do alvo**, em Ticks entre pulsos. A Resistência saiu daqui, mora só
+     na jogada (ver abaixo). **Decidido por enquanto (A das três alternativas testadas)**: a
+     Centelha compra **tempo real de cena**, não pulsos a mais de resistência (a Dificuldade sobe
+     por pulso, não por Tick, então o número de pulsos até desmaiar não muda; só o relógio some mais
+     devagar). No personagem médio calibrado (Vigor3/Resistência3), isso leva o tempo até desmaiar
+     de ~16 s (Centelha 0) pra **~112 s (Centelha 6, 7×)**. Testei duas alternativas e ficaram
+     piores sozinhas: Centelha somada direto na jogada (Vigor+Resistência+Centelha) rende **quase
+     nada** (~16 s → ~17 s, porque um bônus fixo pouco compra contra uma Dificuldade que sobe 5 por
+     pulso sem teto); reduzir o incremento da Dificuldade por Centelha (`5 − Centelha`, piso 1) dava
+     um meio-termo mais comportado (~16 s → ~28 s). **Explicitamente aceito como forte demais pra
+     ficar sozinho**: o plano é as Proezas específicas de sufocamento (a criar) contrabalançarem
+     isso do lado de quem ataca, igual a Perfuração ignorando parte da Absorção, pra um estrangulador
+     especialista conseguir derrubar um alvo de Centelha alta em tempo normal mesmo assim.
+   - **A cada pulso, o alvo rola Vigor + Resistência contra uma Dificuldade que começa em 5 e sobe
+     5 por pulso, SEM TETO** (5, 10, 15, 20, 25, 30, 35...). O teto em 30 foi cogitado e descartado:
+     testado contra um personagem forte (Vigor 5/Resistência 5, pool 10d6, média 35), um teto em 30
+     o deixava praticamente imune a piorar de ritmo (~40s pra desmaiar, sempre no melhor caso),
+     contradizendo a premissa de que ninguém segura o fôlego pra sempre. Sem teto, a escada sempre
+     alcança qualquer pool, cedo ou tarde.
+   - **Dano por pulso, em quatro degraus pela Margem** (mesma linguagem de Margem do resto do
+     sistema, 6 pontos por grau): **passou por Margem 1+ (6 ou mais acima da Dificuldade) = 0**;
+     passou raspando (menos de 6 acima) = **1**; falhou por menos de 6 = **2**; falhou por 6 ou
+     mais = **3**. Baseado só no alvo, sem variar por quem causa o sufocamento.
+   - **Recuperação: instantânea**, não persistente. Assim que o sufocamento acaba (ar volta), a Vida
+     perdida por ele volta por inteiro em poucos Ticks. Diferente de ferimento normal: não é reserva
+     de PV perdida "de verdade", é o susto do quase-desmaio.
+   - Continua rodando mesmo com o personagem Caído (0 PV), matando só pelo limite normal de Queda e
+     Morte (`−(PV máx ÷ 2)`), igual ao Sangramento de `vida-ferimentos-cura.md`.
 
-`efeitoPorDose` vira array quando o veneno faz mais de uma coisa por dose (ex. Peçonha de aranha
-gigante: Destreza −2 E Desgaste 1). Os 6 venenos de exemplo hoje só em prosa
-(`acoes-resistir.md:43-50`: Bebida forte do senhor local, Cicuta, Peçonha de víbora, Curare,
-Peçonha de aranha gigante, Hálito de basilisco) migram pra esse esquema. A condição "Envenenado"
-em `condicoes.json` vira só o marcador visual no rastreador; o relógio de verdade mora no veneno.
+   **Calibração testada** (rolando a média do pool a cada pulso, sem teto de Dificuldade, com a
+   redução por Margem 1+): camponês (Vigor2/Resistência1, PV31, pool 3d6) desmaia em ~12 s; médio
+   (Vigor3/Resistência3, PV34, pool 6d6) em ~16 s; forte (Vigor5/Resistência5, PV40, pool 10d6) em
+   ~20 s. Golpe marcial eficiente de verdade apaga gente saudável em 8-14 s; a régua bate nessa
+   faixa pro mais fraco e escala razoavelmente pra cima.
+
+`condicoes.json` (condição "sufocando") se corrige pra não usar mais `porSeisTicks` (esse campo
+continua servindo Em chamas e as outras condições que o usam de verdade). **Ainda em aberto**: se
+Sufocamento (e Sono, que usa a mesma frase "não se rola nada") ganham um sexto modo oficial
+("Reflexiva acumulativa", ou um nome próprio) em `acoes-e-sistema.md`, ou ficam como exceção
+documentada à parte (item 30 da lista original); e o desenho das Proezas específicas de
+sufocamento (diminuir intervalo, aumentar dano), citadas como plano mas não desenhadas ainda.
+
+**Envenenado, e o formato novo de `venenos.json`** (item 3/13 da lista original): **redesenho
+completo, além do que o esquema JSON original previa.** O relógio genérico `porSeisTicks` de
+`condicoes.json` continua caindo; a condição "Envenenado" vira só o marcador visual, o relógio de
+verdade mora no veneno. Mas o mecanismo por trás mudou bastante ao longo da rodada, puxado por
+referência real e por Exalted 2e (regras de veneno do próprio livro, citadas pelo humano). Ordem
+das peças, do jeito que ficaram decididas:
+
+1. **Bebida é um veneno.** "Bebida forte do senhor local" deixa de ser caso especial e vira só
+   mais uma entrada de `venenos.json`, de Potência baixa e efeito leve (Desgaste, não Atributo/PV).
+2. **Início varia por via de entrada, não por um número único pra "veneno comum".** Formalizando
+   um padrão que os 6 exemplos de `acoes-resistir.md:43-50` já seguiam sem ter sido escrito como
+   regra: **direto na corrente sanguínea** (picada, mordida, lâmina envenenada) ou **inalado** =
+   segundos a poucos minutos (Curare e Peçonha de aranha gigante, os dois a 1 Tick, já batem com
+   isso); **ingerido** (bebida, comida) = minutos a meia hora, porque precisa passar pela digestão
+   (Bebida forte a 10 minutos já bate). Cicuta/víbora/basilisco a 1 minuto ficam no meio, plausíveis
+   como picada/mordida com espalhamento não instantâneo.
+3. **Potência efetiva = Potência do veneno − Resistência do alvo, piso 0** (a "Tolerância" do
+   Exalted, adaptada): um veneno fraco contra alguém resistente pode não exigir rolagem nenhuma.
+   Isso é sobre o **corpo aguentar a substância antes de qualquer teste**, diferente do ponto
+   seguinte.
+4. **Dano vira um pool que drena por intervalo, não um efeito fixo repetido a cada dose** (ideia de
+   Exalted: "Damage/Intervalo", ex. 5 pontos de dano drenando 1 por hora). **Doses novas somam ao
+   pool pendente, estendendo a duração, e não multiplicam o dano por intervalo** (duas doses de "5
+   dano/hora" viram um pool de 10, levando o dobro do tempo, não o dobro de dano por hora): evita a
+   espiral de "duas doses = duas vezes mais letal por segundo" e bate com como veneno acumula no
+   corpo de verdade.
+5. **A cada intervalo, o alvo rola Vigor + Resistência contra a Potência efetiva pra reduzir o dano
+   daquele pulso** (pode chegar a zero, na linha da Margem que já usamos no Sufocamento: passa
+   folgado reduz mais, passa raspando reduz pouco, falha não reduz nada).
+6. **Mas dano e penalidade são duas trilhas separadas, e só o dano é redutível pela rolagem.**
+   Correção do humano em cima da primeira versão: no mundo real, resistir bem um veneno raramente
+   significa "não senti nada". Enquanto o pool de dano não zerar (o veneno ainda está circulando no
+   corpo), existe uma **penalidade mínima** (Desgaste, ou algo na mesma linha) que **não se reduz
+   pela rolagem de resistir**: representa a substância ainda ativa, mesmo que o corpo esteja
+   vencendo o dano dela. Só some quando o pool de dano zera de vez.
+7. **Efeito por veneno ganha duas formas** (resolvendo o gap que a Revisora achou): `tipo: "pv"`
+   pra venenos como víbora e basilisco (dano direto em Vida, ignorando Absorção, como já previsto),
+   e `tipo: "atributo"` pra Cicuta e companhia, com um campo `duracao` opcional pra casos como
+   Curare ("−3 Destreza por uma cena", que não segue a regra padrão de recuperação de 1 ponto por
+   dia de descanso).
+
+**Ainda por calibrar** (números, não decisões de forma): o total de cada pool de dano por veneno,
+o valor de Potência de cada um, e o tamanho da penalidade mínima da trilha 6. `Tratar`
+(Inteligência+Cura contra a Potência) continua existindo, sem mudança na forma, como jeito de
+acelerar a superação de fora.
 
 **Habilidade Secundária "solta" em vários pontos do sistema** (item 7/24 da lista original):
 **causa raiz identificada, não é o que eu tinha suposto.** `habilidades.json` (primárias) já tem
@@ -225,10 +306,17 @@ exagera.** Porte mecânico `medio` de Meio-Elfo/Meio-Orc/Orc em `racas.json` fic
 `racas.md` suaviza a descrição narrativa (deixa de dizer "alto, robusto") pra não prometer porte
 maior do que existe em regra.
 
-**Fé dentro ou fora da lista de "Antecedentes-pessoa"** (item 10/31 da lista original): **retirar
-Fé da lista de "pessoas".** A Folha de referência de `antecedentes.md` se corrige para não
-incluir Fé junto de Aliados/Contatos/Mentor/Séquito, igualando as duas listas do capítulo (que
-hoje discordam). Sem tratamento adicional além da remoção.
+**Fé dentro ou fora da lista de "Antecedentes-pessoa"** (item 10/31 da lista original): **decisão
+revista.** A remoção só da Folha de referência (`antecedentes.md:319`) não bastava: a
+leitora-novata achou que `antecedentes.json` (verbete Fé, campo `amarra`) também amarra Fé à
+Régua de Relação, só que "de forma coletiva" ("a fé é uma disposição de muitos de uma vez"),
+então tirar Fé só de um lugar deixava uma amarração contraditória no dado. **Decisão final: retirar
+Fé da Régua de Relação por completo, nos três lugares.** `antecedentes.md:319` perde Fé da lista
+de "pessoas" (já estava assim); `antecedentes.json` (verbete Fé, campo `amarra`) perde a cláusula
+"a Régua de forma coletiva (a fé é uma disposição de muitos de uma vez)", ficando só com
+"recuperação de Vontade em terreno sagrado; ganchos de trama religiosa e de lore". Fé deixa de
+render mecânica com a Régua de Relação; sobe e desce por ficção/trama, não por um número que
+esfria.
 
 **Ajudante: com que pool ele rola** (item 9/28 da lista original): **mesma combinação do
 ajudado.** O ajudante rola com o mesmo Atributo+Habilidade de quem ele está ajudando, mesmo que
@@ -242,8 +330,59 @@ pendência formal**, não decidido nesta rodada.
 decidido**. O humano pediu para pular e seguir para o próximo item; fica pendente pra uma
 próxima rodada de decisão.
 
-**Iniciativa Social** (item 4/19 da lista original): **Tick 1, igual ao físico.** Uniformiza os
-dois sistemas; `relacoes-sociais.md:134` se corrige para não ter deslocamento nenhum em relação
-à Iniciativa física, e a frase "a mesma regra de defasagem do físico" passa a ser literalmente
-verdade (hoje não era, porque a âncora inicial diferia em 1 Tick apesar da frase dizer "a
-mesma").
+**Iniciativa Social** (item 4/19 da lista original): **decisão "Tick 1, igual ao físico"
+REABERTA.** A Revisora bloqueou: aquilo só corrigia a âncora, não a tabela de degrau/contrapé
+inteira (`combate.md:25-44`: Tick2 −1d6, Tick3 −2d6, Tick4 −3d6 conforme a diferença de pontos),
+e como estava, deixava o social pior do que hoje, sem diferenciação nenhuma entre quem venceu a
+Iniciativa e quem perdeu. Essa parte (a estrutura de degrau) continua em aberto.
+
+**Velocidade do Combate Social (item 4/19, ampliado): Tick Social = 1 minuto.** O humano pediu
+para remodelar por completo os tempos do combate social, separando dois modelos que já existem
+no capítulo e são conceitualmente diferentes:
+
+- **Cortejo com calma** (`relacoes-sociais.md:170-209`): já tem tempo calculado, não fixo
+  (`Tempo do passo = máx(1, Defesa parada − Ataque parado − gestos)`, em intervalos de 8 dias
+  ajustados por longevidade). Não muda nesta decisão.
+- **Combate Social propriamente dito** (o "paralelo" do combate físico, `relacoes-sociais.md:130-166`):
+  hoje usa o Tick físico direto (`combate.md:8`, `acoes-e-sistema.md:139`: 1 Tick ≈ 1 segundo),
+  o que faz um lance pesado (7 Ticks) durar sete segundos, o mesmo tempo de um golpe de espada.
+  Um discurso ou esquema inteiro em sete segundos não é plausível.
+
+**A correção: o Combate Social ganha seu próprio Tick, o "Tick social", valendo 1 minuto**,
+desacoplado do Tick físico (que continua ~1 segundo, só no combate de verdade). A tabela de
+Velocidade (`relacoes-sociais.md`) mantém os mesmos três números (leve 5 / média 6 / pesada 7),
+só que agora em Tick social: leve 5 minutos, média 6 minutos (uma discussão inteira em seis
+minutos é plausível), pesada 7 minutos. A Iniciativa Social continua
+`1d6 + Perspicácia + Sociabilidade`, mas ordena Ticks sociais, não físicos.
+
+**Conversão, para quando um duelo social precisa se encaixar dentro de um combate físico
+acontecendo ao mesmo tempo (cena rara, mas existe): 1 Tick social ≈ 60 Ticks físicos.** Não é
+para uso normal de mesa, só para o Mestre situar aproximadamente onde a fala está na linha do
+tempo de quem está lutando.
+
+**Fechamento da BLOQUEIA da Revisora: o Combate Social abandona de vez o paralelo rígido com o
+degrau/contrapé do físico.** O humano trouxe a observação que resolve o impasse: ao contrário do
+físico, no social não existem dois relógios de Tick rodando ao mesmo tempo (não dá pra "atacar"
+socialmente ao mesmo tempo que o outro, um argumento espera o anterior acabar), então a mecânica
+de reentrada numa fila de Ticks simultâneos (que é pra isso que o degrau/contrapé serve no
+físico) não tem problema nenhum pra resolver aqui. Ela não migra, não por lacuna, mas porque o
+problema que ela resolve não existe no social. **Sistema aprovado** (Ataque, Resistir e Ceder de
+`relacoes-sociais.md:136-166` continuam exatamente como estão, sem mudança):
+
+1. **Iniciativa social** (`1d6 + Perspicácia + Sociabilidade`, sem mudança na fórmula) decide só
+   quem fala primeiro. Deixa de organizar fila de Tick.
+2. **Alternância estrita**: quem venceu a Iniciativa ataca, o outro Resiste ou Cede, a vez passa
+   para quem respondeu, e assim por diante. Sem sobreposição, porque não existe.
+3. **Domínio da conversa (peça nova, sem lastro em texto anterior)**: Margem 2 ou mais (12+
+   acima da Defesa Social) permite a quem atacou manter a palavra e atacar de novo no lance
+   seguinte, em vez de passar a vez. Margem 0-1 sempre passa a vez.
+4. **Velocidade (leve 5 / média 6 / pesada 7) vira duração narrativa em Tick social**, sem gatilho
+   sobre turno de ninguém; só bookkeeping de cena e a conversão do item acima.
+
+`relacoes-sociais.md:134` perde a frase "a mesma regra de defasagem do físico" (nunca foi
+literalmente verdade) e ganha a alternância estrita no lugar.
+
+**Registrado para revisão futura, não fechado como definitivo**: o humano quer poder reabrir o
+Combate Social mais adiante (por exemplo, se o módulo 3 acima, "domínio da conversa", se mostrar
+forte ou fraco demais na mesa, ou se aparecer necessidade de duelos com mais de duas pessoas, que
+este desenho não cobre).
