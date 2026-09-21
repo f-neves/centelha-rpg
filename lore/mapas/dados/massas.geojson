@@ -1,0 +1,294 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          17.3389,
+          17.7768
+        ]
+      },
+      "properties": {
+        "id": "mere-principal",
+        "regiao": "mere",
+        "status": "atribuida",
+        "area_px_2048": 279997,
+        "nota": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.1602,
+          14.4789
+        ]
+      },
+      "properties": {
+        "id": "syl-principal",
+        "regiao": "syl",
+        "status": "atribuida",
+        "area_px_2048": 182413,
+        "nota": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.6643,
+          33.9608
+        ]
+      },
+      "properties": {
+        "id": "calin-principal",
+        "regiao": "calin",
+        "status": "atribuida",
+        "area_px_2048": 81477,
+        "nota": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -25.4436,
+          52.7089
+        ]
+      },
+      "properties": {
+        "id": "the-neck-principal",
+        "regiao": "the-neck",
+        "status": "atribuida",
+        "area_px_2048": 8280,
+        "nota": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -22.7415,
+          65.339
+        ]
+      },
+      "properties": {
+        "id": "white-wall-bloco-principal",
+        "regiao": "white-wall",
+        "status": "atribuida",
+        "area_px_2048": 97932,
+        "nota": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.9851,
+          62.4017
+        ]
+      },
+      "properties": {
+        "id": "white-wall-faixa-leste",
+        "regiao": "white-wall",
+        "status": "atribuida",
+        "area_px_2048": 109825,
+        "nota": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -41.8651,
+          65.7523
+        ]
+      },
+      "properties": {
+        "id": "white-wall-canto-sup-esq",
+        "regiao": "white-wall",
+        "status": "atribuida",
+        "area_px_2048": 20903,
+        "nota": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -11.4991,
+          49.7755
+        ]
+      },
+      "properties": {
+        "id": "the-neck-ilha-sul",
+        "regiao": "the-neck",
+        "status": "atribuida",
+        "area_px_2048": 114,
+        "nota": "ilha do arquipelago do Neck mais proxima de Calin, usada na distancia Neck-Calin"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -40.6496,
+          60.9561
+        ]
+      },
+      "properties": {
+        "id": "amb-046",
+        "regiao": null,
+        "status": "duvidosa",
+        "area_px_2048": 470,
+        "nota": "perto de mais de uma regiao nomeada, decisao do usuario"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -11.1624,
+          55.5471
+        ]
+      },
+      "properties": {
+        "id": "amb-084",
+        "regiao": null,
+        "status": "duvidosa",
+        "area_px_2048": 154,
+        "nota": "perto de mais de uma regiao nomeada, decisao do usuario"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.7492,
+          55.3782
+        ]
+      },
+      "properties": {
+        "id": "amb-099",
+        "regiao": null,
+        "status": "duvidosa",
+        "area_px_2048": 117,
+        "nota": "perto de mais de uma regiao nomeada, decisao do usuario"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.4516,
+          0.0394
+        ]
+      },
+      "properties": {
+        "id": "amb-097",
+        "regiao": null,
+        "status": "duvidosa",
+        "area_px_2048": 121,
+        "nota": "perto de mais de uma regiao nomeada, decisao do usuario"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.606,
+          49.1912
+        ]
+      },
+      "properties": {
+        "id": "amb-107",
+        "regiao": null,
+        "status": "duvidosa",
+        "area_px_2048": 105,
+        "nota": "perto de mais de uma regiao nomeada, decisao do usuario"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.8129,
+          24.04
+        ]
+      },
+      "properties": {
+        "id": "amb-187",
+        "regiao": null,
+        "status": "duvidosa",
+        "area_px_2048": 32,
+        "nota": "perto de mais de uma regiao nomeada, decisao do usuario"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.0853,
+          23.9379
+        ]
+      },
+      "properties": {
+        "id": "amb-192",
+        "regiao": null,
+        "status": "duvidosa",
+        "area_px_2048": 31,
+        "nota": "perto de mais de uma regiao nomeada, decisao do usuario"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.6039,
+          29.7043
+        ]
+      },
+      "properties": {
+        "id": "amb-204",
+        "regiao": null,
+        "status": "duvidosa",
+        "area_px_2048": 27,
+        "nota": "perto de mais de uma regiao nomeada, decisao do usuario"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.7454,
+          25.508
+        ]
+      },
+      "properties": {
+        "id": "amb-218",
+        "regiao": null,
+        "status": "duvidosa",
+        "area_px_2048": 22,
+        "nota": "perto de mais de uma regiao nomeada, decisao do usuario"
+      }
+    }
+  ]
+}

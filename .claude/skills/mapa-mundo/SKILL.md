@@ -11,19 +11,14 @@ ferramenta de pintura) é escrito numa etapa seguinte, conforme a ferramenta des
 
 ## Obrigação, antes de qualquer ação
 
-**Leia `lore/mapas/CARTOGRAFO.md` inteiro antes de fazer qualquer coisa neste
-projeto.** Ele é o documento central: tem as decisões já tomadas, o sistema de
-coordenadas, a estrutura de pastas e a lista de decisões em aberto. Nada aqui
-substitui essa leitura.
+Use o comando `/cartografo` para carregar o contexto (o que ler sempre, o que ler
+só sob demanda, e a ordem). Se for chamado sem passar por ele, leia pelo menos
+`lore/mapas/CARTOGRAFO.md` inteiro antes de fazer qualquer coisa — é o documento
+central: tem o estado atual, as decisões já tomadas, o sistema de coordenadas, a
+estrutura de pastas e a lista de decisões em aberto.
 
-## Regras invioláveis (repetidas do CARTOGRAFO.md, valem sempre)
+## Regras invioláveis
 
-- A costa de terra e mar é definitiva. Nenhuma etapa altera, cria ou apaga terra.
-- Originais nunca são modificados ou sobrescritos. `fonte/Mapa.psd` só é aberto para
-  leitura por automação COM e fechado sem salvar.
-- Nada é instalado sem ok explícito do usuário.
-- Nenhum commit sem ok do usuário. Arte pesada nunca vai para o git.
-- Antes de processamento pesado (o PSD inteiro, imagens de 10240px ou mais), avisar
-  para fechar navegadores e outras sessões do Claude (máquina com 16 GB de RAM).
-- Nada de inventar API: o que não estiver documentado ou testado, dizer isso
-  explicitamente em vez de supor.
+**Não estão copiadas aqui.** Leia a seção "Regras invioláveis" do
+`lore/mapas/CARTOGRAFO.md` e siga exatamente o que estiver escrito lá — duas cópias
+das mesmas regras divergem na primeira edição de uma delas que não alcançar a outra.

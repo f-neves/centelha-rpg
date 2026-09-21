@@ -3,8 +3,9 @@
   "planeta": {
     "raio_km": 7963.75,
     "raio_em_raios_terrestres": 1.25,
-    "circunferencia_km": 50038.5,
-    "distancia_polo_a_polo_km": 25019.25
+    "circunferencia_km": 50037.72,
+    "distancia_polo_a_polo_km": 25018.86,
+    "_correcao_2026-09-21": "valores antigos (50038.5 e 25019.25) estavam levemente errados; recalculados do zero a partir de R=7963.75 (2*pi*R e pi*R)"
   },
   "projecao": {
     "tipo": "equirretangular",

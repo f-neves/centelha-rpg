@@ -4,6 +4,25 @@ Este é o documento que toda sessão futura sobre o mapa do mundo lê antes de c
 atualiza quando uma decisão nova for tomada. Registra só o que foi decidido ou
 confirmado pelo usuário; o que é recomendação de IA fica marcado como tal.
 
+## Estado atual
+
+*(Atualizar esta seção antes de encerrar toda sessão de trabalho no mapa — é a
+primeira coisa que `/cartografo` mostra.)*
+
+- **Última atualização:** 2026-09-21.
+- **Etapa:** revisão do esquema de dados e da especificação da ferramenta de pintura
+  concluída (`ESPEC-dados.md`, `ESPEC-ferramenta.md`), junto com correções de
+  medição (distância The Neck↔Calin, extensão leste-oeste de Waning) e a verificação
+  exaustiva de que Calin, Syl e Mère são massas de terra separadas. Nada disso foi
+  commitado ainda.
+- **Pendente:** aprovação final do usuário sobre o esquema de dados e a especificação
+  da ferramenta (ainda marcados como recomendação da IA, não decisão); instalar
+  shapely (pede ok); nomear as massas de terra sem nome; decidir pertencimento das 9
+  ilhas marcadas como `"duvidosa"` em `dados/massas.geojson`.
+- **Próximo passo:** usuário revisa `ESPEC-dados.md` e `ESPEC-ferramenta.md` e aprova
+  (ou pede ajuste) antes de qualquer construção da ferramenta. Nenhuma etapa de
+  código foi iniciada.
+
 ## Objetivo e estilo
 
 Mapa de fantasia medieval clássico, estilo Faerûn (Forgotten Realms). Por enquanto só
@@ -18,8 +37,11 @@ identificador; nome é opcional e entra depois.
   leitura por automação COM e fechado sem salvar.
 - Nada é instalado sem ok explícito do usuário (pacote Python, Node, etc.).
 - Nenhum commit sem ok do usuário. Arte pesada nunca vai para o git.
-- Antes de processamento pesado (o PSD inteiro, imagens de 10240px ou mais), avisar
-  para fechar navegadores e outras sessões do Claude (máquina com 16 GB de RAM).
+- Antes de processamento pesado — o PSD inteiro, qualquer imagem de 10240px ou mais,
+  ou varredura sobre a máscara inteira (preenchimento por inundação, contagem de
+  componentes, etc.) — avisar para fechar navegadores e outras sessões do Claude
+  (máquina com 16 GB de RAM) e esperar confirmação antes de rodar. O computador já
+  travou uma vez por isso (rodada de 2026-09-21).
 - Nada de inventar API: o que não estiver documentado ou testado, dizer isso
   explicitamente em vez de supor.
 
@@ -31,7 +53,7 @@ identificador; nome é opcional e entra depois.
 | `referencias/` | as 4 imagens do ChatGPT, `teste.png`, `teste1.png` | não |
 | `historico/` | os dois `PROMPT-*.md` da abordagem anterior (IA pintando o mapa inteiro), mantidos como registro | sim |
 | `mascaras/` | máscaras de controle, incluindo `costa_10240.png` (a costa oficial) | sim |
-| `dados/` | JSON de lugares, rios, estradas, regiões, coordenadas | sim |
+| `dados/` | JSON/GeoJSON de lugares, rios, estradas, regiões, massas de terra, coordenadas — esquema completo em `ESPEC-dados.md` | sim |
 | `simbolos/` | biblioteca de símbolos gerada por IA | não |
 | `render/` | saídas do gerador, incluindo `render/analise/` (prévias e conferências) | não |
 | `photoshop/` | PSD de montagem final (não é o `Mapa.psd` original) | não |
@@ -58,7 +80,21 @@ Definição completa, com fórmulas, em `dados/coordenadas.json`. Resumo:
 - Faixas de latitude aproximadas das regiões nomeadas (por caixa delimitadora, não
   pelo contorno exato): Mére 0,1°N–41,1°N · Syl 1,4°N–25,4°N · Calin 26,2°N–43,7°N ·
   The Neck 49,2°N–55,3°N · The White Wall até 68,8°N no topo da tela (terra segue além
-  da borda).
+  da borda). **Atenção**: essas faixas vêm da caixa delimitadora da MASSA DE TERRA
+  inteira; a latitude/longitude de cada rótulo em `dados/lugares.json` é a posição do
+  TEXTO do nome no mapa, não o centro nem os limites da região — as duas coisas medem
+  coisas diferentes e não devem ser confundidas.
+- Extensão de Waning (arquipélago Calin+Syl+Mére): **norte-sul** (sul de Mére até norte
+  de Calin) **6.074,9 km**; **leste-oeste** (oeste de Syl até leste de Mére)
+  **7.124,8 km** — a maior das duas. Tempos de referência (linha reta, não rota real):
+
+  | Extensão | Distância | A pé (25 km/dia) | Caravana (30 km/dia) | A cavalo (50 km/dia) |
+  |---|---|---|---|---|
+  | Norte-sul (sul de Mére ↔ norte de Calin) | 6.074,9 km | 243,0 dias | 202,5 dias | 121,5 dias |
+  | Leste-oeste (oeste de Syl ↔ leste de Mére) | 7.124,8 km | 285,0 dias | 237,5 dias | 142,5 dias |
+
+  Ver `render/analise/rotas_distancias.png` (norte-sul) e
+  `render/analise/waning_leste_oeste.png` (leste-oeste).
 
 ## Decisões tomadas
 
@@ -69,8 +105,10 @@ Definição completa, com fórmulas, em `dados/coordenadas.json`. Resumo:
 - Nomes existentes: **The White Wall**, **The Neck**, **Waning** (arquipélago de três
   ilhas: **Calin**, **Syl**, **Mére**).
 - **The Neck fica isolada de Waning por mar aberto, sem ilhas no caminho.** Intencional.
-  Medido nesta sessão: a travessia mais curta entre as duas é de aproximadamente
-  3.177 km em linha reta (ver `dados/` e `render/analise/rotas_distancias.png`).
+  Medido e corrigido: a primeira medição (3.177 km) usava só a ilha principal do Neck;
+  refeita usando a ilha do arquipélago do Neck mais próxima de Calin, dá
+  **2.217,9 km** em linha reta / **2.772,3 km** de rota real (+25%) — ver
+  `render/analise/rota_neck_calin_corrigida.png`.
 
 ### Clima e bioma
 As descrições de clima e bioma por região em `historico/PROMPT-mapa-completo-svg.md` e
@@ -115,12 +153,44 @@ prompts, IA pintando o mapa inteiro, está superada — ver seção Técnica). R
 - Resolução de trabalho 10240px; resolução final alvo **20480px** (0,625 km/px), em
   blocos se necessário.
 - Ferramenta de pintura: editor em canvas no navegador, com Python gerando o mapa. Sem
-  mesa digitalizadora — prioriza laço poligonal e preenchimento limitado pela costa
-  (ver `historico/` para a especificação completa da Fase seguinte).
+  mesa digitalizadora — prioriza laço poligonal e preenchimento limitado pela costa.
+  Especificação completa em `ESPEC-ferramenta.md`.
 - Photoshop só para montagem final e retoques. O PSD de montagem é criado pelo próprio
   usuário, uma vez, com um passo a passo escrito pela IA, usando objetos inteligentes
   vinculados. **Nada de API não documentada** — a automação de smart object vinculado
   não tem API oficial da Adobe (achado da sessão anterior), então essa etapa é manual.
+- **Áreas pintadas (relevo, cobertura, lagos, regiões-sobre-água) são guardadas como
+  vetor, em GeoJSON, com coordenadas em latitude/longitude do mundo** — não como
+  máscara raster de controle. A rasterização acontece na resolução que for precisa em
+  cada momento (prévia ou final), e não trava mais o desenho a um grid de pixel fixo.
+  Operações de unir, subtrair e apagar área usam a biblioteca **shapely** (Python) —
+  ainda não instalada, pede ok antes de instalar.
+- Relevo e cobertura são **camadas separadas**. Relevo: planície, colina, montanha,
+  alta montanha. Cobertura: floresta temperada, floresta tropical, floresta boreal,
+  selva, campo, deserto, pântano, tundra, geleira. Todo pedaço de terra tem os dois ao
+  mesmo tempo (um relevo e uma cobertura), nunca só um.
+- Terra que o usuário não pintou recebe **cobertura automática por latitude**, seguindo
+  o guia de clima da seção "Clima e bioma" acima. Qualquer pintura do usuário
+  sobrescreve o valor automático naquele trecho.
+- **Lagos internos** podem ser criados pelo usuário na ferramenta. É a única exceção à
+  regra da costa: o contorno do lago pode ser editado livremente, a costa do mar
+  continua intocável.
+- O ruído que deixa a borda de uma área pintada com aparência natural (em vez de um
+  polígono reto) usa **semente fixa por área** (guardada no dado da própria área), para
+  a borda sair sempre idêntica em qualquer renderização, não mudar a cada rasterização.
+- Identificador de ilha estável: massas de terra **não** são identificadas por número
+  de componente conectado (esse número muda se o método de detecção mudar). Cada massa
+  relevante recebe um **id curto permanente e um ponto de referência** (latitude e
+  longitude); a ilha correspondente é achada consultando a máscara oficial nesse ponto
+  em tempo de execução. Formato e dados em `dados/massas.geojson`.
+- Pertencimento de ilha a região é decidido pelo usuário na ferramenta.
+  **Atribuição automática só quando a ilha estiver a menos de 100 km da ilha PRINCIPAL
+  da região** (não da região inteira); todas as demais ficam sem região até o usuário
+  decidir. Testado nesta sessão com a regra dos 100km sobre as 5 regiões nomeadas:
+  **nenhuma massa de terra além das já nomeadas caiu dentro de 100km de uma ilha
+  principal** — os arquipélagos são isolados por mar aberto na escala do mundo, então
+  a atribuição automática praticamente não vai disparar sozinha; a maior parte da
+  decisão de pertencimento vai ser manual mesmo.
 
 ## Achados técnicos registrados (não são decisões, são fatos medidos)
 
@@ -140,6 +210,24 @@ prompts, IA pintando o mapa inteiro, está superada — ver seção Técnica). R
   pixel a pixel contra `Mapa Teste.jpg` reduzido, sem precisar deslocar).
 - Os dois SVGs de traçado (`Mapa Teste.svg` e `Mapa-Teste.svg`) são o mesmo contorno
   (0,11% de diferença entre si); ambos vêm de `Mapa Teste.jpg`, não de `Mapa Teste1.jpg`.
+- `fonte/Mapa Teste.jpg` **não é um raster simples em preto e branco**: ao recortar em
+  resolução nativa (item 4 da verificação de 2026-09-21) apareceu como uma imagem já
+  colorida (terra bege, mar azul-acinzentado com textura), no mesmo estilo dos
+  `Uldun_parte-jogavel*.jpg`. A suposição anterior de que era um raster binário (base
+  direta do traçado potrace) não tinha sido conferida visualmente — só numericamente
+  (limiar de cinza), o que funcionou para medir a costa mas descrevia a imagem errado.
+  Vale revisitar antes de usá-la como "máscara crua" em qualquer texto futuro.
+- **Calin e Syl são massas de terra separadas, e Syl e Mére também.** Confirmado por
+  varredura exaustiva (preenchimento por inundação de toda a máscara oficial de
+  10240px, conectividade 4, a partir de um pixel de terra dentro de cada ilha): a
+  região pintada a partir da semente de Calin nunca alcança a semente de Syl, nem a de
+  Syl alcança a de Mére — são três componentes conectados distintos em toda a extensão
+  do mapa, não só no ponto de maior aproximação medido antes. Isto substitui a suspeita
+  de istmo registrada em rodadas anteriores (baseada numa análise em 2048px, já
+  corrigida) e a verificação por amostragem da rodada passada (que só olhava o ponto
+  mais próximo, não o contorno inteiro). Ver `render/analise/istmo_costa_oficial.png` e
+  `istmo_mapa_teste_jpg.png` para o recorte nativo do ponto de maior aproximação entre
+  Calin e Syl.
 
 ## Decisões em aberto
 
@@ -147,10 +235,6 @@ prompts, IA pintando o mapa inteiro, está superada — ver seção Técnica). R
 - Nomes das massas de terra sem rótulo (a maioria do mapa).
 - Esquema completo de dados além de `lugares.json` (cidades, rios, estradas, marcos,
   fronteiras futuras) — **recomendação da IA pendente de aprovação**, não decidido
-  ainda.
-- Se Calin e Syl são de fato duas ilhas separadas por um istmo estreito ou uma massa só
-  na resolução de trabalho atual (na base vetorial de 10240px aparecem conectadas por
-  uma faixa fina de terra; o usuário já confirmou que no Lore elas são três ilhas
-  separadas — vale conferir visualmente antes de tratar como definitivo).
+  ainda. Proposta revisada completa em `ESPEC-dados.md`.
 - Resto do mapa sem nome (grande aglomerado a sudoeste, terras a leste, ilhas nas
   bordas) — nomear conforme a campanha pedir.
