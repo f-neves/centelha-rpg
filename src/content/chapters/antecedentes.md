@@ -58,24 +58,29 @@ Antecedentes que são **pessoas** (Aliados, Contatos, Mentor, Séquito) nascem n
 ferramenta esfria e desce a régua. O número compra a **capacidade e a lealdade inicial**, nunca a
 obediência eterna.
 
-## O bônus na jogada
+## Onde a régua já começa
 
-Um Antecedente pode somar a uma jogada, mas com regra estreita, para o social não inflar. Quem
-divide o terreno com ele é a [Aparência](/regras/aparencia-virtudes-vontade), que é o bônus social
-**geral** (entra em toda jogada social, incluindo o [Combate Social](/regras/relacoes-sociais),
-sempre que a aparência importe, para o bem ou para o mal), e a **Firula**
-([Habilidades](/regras/habilidades)), que entra em **qualquer** jogada, social ou não, pela
-qualidade da descrição.
+Um Antecedente **não soma a jogada nenhuma**: ele mexe em **onde a relação começa**. Quem soma a
+jogada é a [Aparência](/regras/aparencia-virtudes-vontade), o bônus social **geral** (entra em toda
+jogada social, incluindo o [Combate Social](/regras/relacoes-sociais), sempre que a aparência
+importe, para o bem ou para o mal), e a **Firula** ([Habilidades](/regras/habilidades)), que entra
+em **qualquer** jogada, social ou não, pela qualidade da descrição.
 
-O situacional de Antecedente é mais estreito que os dois:
+O Antecedente age antes de qualquer rolagem:
 
-> Uma Reputação em contexto, um Contato bem posto, uma Posição que pesa naquela sala **só entram
-> nas jogadas que movem a [Régua de Relação](/regras/relacoes-sociais)**, isto é, nas que
-> constroem ou deslocam um vínculo. Eles **não** turbinam um ataque no Combate Social nem uma
-> Habilidade solta, e somam entre si até um **teto de +6**, o mesmo dos modificadores de combate.
+> Uma Reputação em contexto, um Contato bem posto, uma Posição que pesa naquela sala **descontam
+> passos do Neutro**: o nível do traço tira esse tanto dos **três passos** que separam um estranho
+> da primeira Simpatia na [Régua de Relação](/regras/relacoes-sociais), e com **3 ou mais** a
+> relação já começa em **+1 (Simpatia)**. O que muda de um traço para o outro é **com quem** ele
+> vale: a **Reputação** com quem já ouviu falar de você, o **Contato** com o círculo dele, a
+> **Posição** com quem se importa com o posto. Eles **não** turbinam um ataque no Combate Social
+> nem uma Habilidade solta, e somam entre si até um **teto de +6**, o mesmo dos modificadores de
+> combate.
 
-Dito de outro jeito: um Antecedente acelera **construir a relação**, não ganhar o duelo social do
-momento.
+Dito de outro jeito: um Antecedente **encurta o caminho até a relação**, não ganha o duelo social
+do momento. E o desconto é mudo onde não há Neutro a romper: quem já nasce acima dele por outra
+amarra (os contatos em Simpatia, os aliados em Aliança ou Devoção) não desconta nada em cima
+disso.
 
 <p class="muted">A Régua de Relação e o Combate Social, citados acima, são o capítulo <a href="/centelha-rpg/regras/relacoes-sociais"><strong>Relações Sociais</strong></a>. Antecedentes vem antes dele no livro porque é matéria de ficha, e não de cena: você compra estes traços quando monta o personagem, junto dos Atributos e das Habilidades.</p>
 
@@ -192,7 +197,7 @@ momento.
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span><strong>Reputação 2 (Guarda-costas) · Reputação 3 (Cantor lírico) · Reputação 1 (Confiável)</strong>. A de guarda-costas ajuda a ser contratado e a intimidar, mas atrapalha a passar despercebido; a de cantor abre salões e atrapalha a ser levado a sério numa briga; a de confiável ajuda em tudo que dependa de palavra.</div>
 
-**Amarra com:** um **bônus situacional às jogadas que movem a Régua de Relação**, no contexto em que a fama pesa (ver "Antecedentes como bônus na jogada"): entra quando quem você aborda conhece aquela reputação, some com outros situacionais até +6, e **não** buffa o Combate Social nem Habilidades soltas. Uma boa reputação **acelera romper o Neutro** com quem já ouviu falar bem de você; uma temível ajuda a coagir e atrapalha a passar despercebido. Alimenta Proezas como Lenda Viva e Presença Aterradora.
+**Amarra com:** um **desconto nos passos que separam do Neutro** na Régua de Relação, no contexto em que a fama pesa (ver "Onde a régua já começa"): o nível do traço tira esse tanto dos três passos, vale com quem conhece aquela reputação, soma com os outros Antecedentes até +6, e **não** buffa o Combate Social nem Habilidades soltas. Uma boa reputação **acelera romper o Neutro** com quem já ouviu falar bem de você; uma temível ajuda a coagir e atrapalha a passar despercebido. Alimenta Proezas como Lenda Viva e Presença Aterradora.
 
 ### Relíquia
 
@@ -307,8 +312,9 @@ momento.
 - **Únicos:** Recursos, Linhagem, Fé. **Nomeados** (várias instâncias, cada uma de 1 a 6): os
   outros onze.
 - **Teto 3 na criação** para Recursos e Relíquia.
-- **Bônus:** Aparência é geral em toda jogada social; a Firula entra em qualquer jogada; o
-  situacional de Antecedente só move a Régua de Relação, somando até +6.
+- **Bônus:** Aparência é geral em toda jogada social; a Firula entra em qualquer jogada. O
+  Antecedente não soma a jogada nenhuma: ele **desconta passos do Neutro** na Régua de Relação, o
+  nível do traço por passo, somando entre os traços até +6.
 - **Voláteis:** sobem e caem na ficção, e o XP perdido volta como crédito.
 - **Pessoas** (Aliados, Contatos, Mentor, Séquito, Fé) vivem na Régua de Relação e esfriam se
   maltratadas. **Reputação** dá modificador social direcional. **Segredo** e **Dívida** são meio

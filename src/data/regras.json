@@ -396,7 +396,7 @@
     }
   ],
   "aparencia": {
-    "nota": "Traço próprio 0 a 12 (não é atributo), piso 0, custo ×2 por ponto (ver xp.aparencia). Bônus DIRECIONAL somado FLAT: é o bônus social GERAL, entra em TODA jogada social (incluindo o Combate Social), separado da pilha situacional dos Antecedentes (que só move a Régua de Relação, teto +6). + quando a aparência ajuda o objetivo (seduzir, impressionar), − quando atrapalha (intimidar, e o inverso para os feios). ALÉM do social: aparência muito alta é MEMORÁVEL e atrapalha passar despercebido (penalidade em furtividade urbana, seguir alguém, se misturar à multidão); o Mestre pode aplicar o mesmo a uma deformidade marcante, também inesquecível. A Compostura define o raio de quanto da Aparência real você consegue mascarar.",
+    "nota": "Traço próprio 0 a 12 (não é atributo), piso 0, custo ×2 por ponto (ver xp.aparencia). Bônus DIRECIONAL somado FLAT: é o bônus social GERAL, entra em TODA jogada social (incluindo o Combate Social), separado dos Antecedentes, que desde 20/09/2026 não somam a jogada nenhuma: eles descontam passos do Neutro na Régua de Relação (o nível do traço por passo, somando entre si até +6, ver antecedentes.md). + quando a aparência ajuda o objetivo (seduzir, impressionar), − quando atrapalha (intimidar, e o inverso para os feios). ALÉM do social: aparência muito alta é MEMORÁVEL e atrapalha passar despercebido (penalidade em furtividade urbana, seguir alguém, se misturar à multidão); o Mestre pode aplicar o mesmo a uma deformidade marcante, também inesquecível. A Compostura define o raio de quanto da Aparência real você consegue mascarar.",
     "piso": 0,
     "min": 0,
     "max": 12,
