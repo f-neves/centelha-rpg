@@ -328,6 +328,13 @@ A Revisora trabalha no worktree C:/Users/Neves/ClaudeCode/centelha-techlead-revi
 contrato em docs/simulacao/CONTRATO-REVISORA.md. Reancore o worktree no sha do aviso, nunca no
 topo, e nunca no meio de uma revisão.
 
+Pergunte também ao humano se ele quer que você suba a leitora-novata: uma subagente (isolation
+worktree) que lê o sistema como alguém que está aprendendo agora, sem memória de decisões
+anteriores, e lista inconsistências, incoerências, contradições e pontos não definidos entre os
+capítulos (src/content/chapters/) e os dados (src/data/*.json). Ela não faz parte do arranjo
+fixo (não entra em ListAgents como teammate, é subagente sob demanda) e só sobe se o humano
+pedir nesta pergunta. Registrado em 21/09/2026, rodada que abriu essa frente pela primeira vez.
+
 No início da sessão, antes de qualquer trabalho, leia o arquivo de uso semanal e pergunte ao
 humano se há limite de sessão ou de semana, do jeito que o §0 do ARQUITETO.md descreve. Sem
 resposta, nenhum lote abre.
