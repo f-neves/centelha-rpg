@@ -267,10 +267,26 @@ das peças, do jeito que ficaram decididas:
    Curare ("−3 Destreza por uma cena", que não segue a regra padrão de recuperação de 1 ponto por
    dia de descanso).
 
-**Ainda por calibrar** (números, não decisões de forma): o total de cada pool de dano por veneno,
-o valor de Potência de cada um, e o tamanho da penalidade mínima da trilha 6. `Tratar`
-(Inteligência+Cura contra a Potência) continua existindo, sem mudança na forma, como jeito de
-acelerar a superação de fora.
+**Números calibrados em 21/09/2026, decisão do humano: herdar os totais antigos.** Potência
+inalterada; pool total = soma das doses antigas do veneno; penalidade mínima fixa em Desgaste 1
+para todos os seis, aplicada enquanto o pool não zerar. `Tratar` (Inteligência+Cura contra a
+Potência) continua existindo, sem mudança na forma, como jeito de acelerar a superação de fora.
+
+**O contra que a mesa comprou ao escolher esta opção, e não se resolve sozinho:** a rolagem de
+resistir agora reduz o PULSO daquele intervalo por Margem, em vez de cortar o NÚMERO de doses
+como no mecanismo antigo. Um personagem com boa Resistência pode raspar o pool a zero cedo, e o
+veneno nunca chegar perto do total nominal na prática — o Hálito de basilisco (pool 48) pode virar
+elástico contra um alvo resistente. Isto não foi medido, só nomeado: se aparecer em mesa um veneno
+"forte no papel" que nunca morde, é aqui que olhar primeiro.
+
+| Veneno | Potência | Início | Intervalo | Pool total | Tipo | Penalidade mínima |
+|---|---:|---|---|---|---|---|
+| Bebida forte do senhor local | 5 | 10 min (ingerido) | — (efeito único) | 0 | — | Desgaste 1 |
+| Cicuta | 10 | minuto | 1 hora | 3 (Vigor) | atributo | Desgaste 1 |
+| Peçonha de víbora | 14 | minuto | 1 hora | 24 (PV) | pv | Desgaste 1 |
+| Curare | 14 | Tick | — (efeito único, duração 1 cena) | — (`duracao`) | atributo | Desgaste 1 |
+| Peçonha de aranha gigante | 18 | Tick | 1 minuto | 4 (Destreza) | atributo | Desgaste 1 |
+| Hálito de basilisco | 22 | minuto | 1 minuto | 48 (PV) | pv | Desgaste 1 |
 
 **Habilidade Secundária "solta" em vários pontos do sistema** (item 7/24 da lista original):
 **causa raiz identificada, não é o que eu tinha suposto.** `habilidades.json` (primárias) já tem
