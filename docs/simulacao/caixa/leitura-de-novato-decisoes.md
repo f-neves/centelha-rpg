@@ -767,3 +767,41 @@ o enum de `tipo`), e a tabela do capítulo virando gerada (item 1 do balde B, pr
 `11` acima se resolver sozinho). Ordem sugerida: schemas e dado primeiro, depois os dois
 consumidores (com teste manual na ficha e na mesa, não só `tsc`), depois o gerador da tabela do
 capítulo.
+
+**Fechado em 22/09/2026 pela Executora-4:** schema aninhado aplicado, `armas.json`/
+`armaduras.json`/`escudos.json` migrados, `municao.json` novo, todos os consumidores (`equip.ts`,
+`bestia-editor.ts`, `BestiaEditor.astro`, `bestiario.astro`, `equipamentos.astro`, catorze
+scripts via `scripts/lib-equip.mjs` novo) migrados. Nomes de arquivo mantidos separados por
+categoria (não unificou num `itens.json` único). `vsProjetilRapido` migrado nos 6 pontos reais
+(a auditoria original contou 4). Controle negativo: `inimigos.json` gerado ficou byte-a-byte
+igual. Faltou, de propósito: as 7 armas novas (sem stat block na auditoria) e a tabela do
+capítulo virando gerada (item 7 da ordem sugerida, pré-requisito do `11`).
+
+## 13 · As sete armas novas: stat block completo
+
+A auditoria (§3/§9) só tinha preço para estas sete, não dado/acerto/defesa/ticks/tipo de dano.
+Desenhadas pelo humano em 22/09/2026 seguindo os moldes já existentes de cada classe
+(leve/média/pesada/haste em `armas.json`):
+
+| Arma | Classe | Atrib | Dado | DanoBonus | Acerto | DefesaArma | Mãos | Ticks | Folego | Tipo dano | Pen | Preço |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Machadinha | leve | força | 1 | -2 | 1 | 0 | 1 | 5 | 15 | corte (principal) + impacto (sec.) | 0 | 80 pc (8 pp, já decidido no item 8) |
+| Machado pesado (2 mãos) | pesada | força | 2 | 0 | 0 | -2 | 2 | 7 | 38 | corte (principal) + impacto (sec.) | 0 | 800 pc (80 pp, valor da tabela antiga; não estava decidido, o humano fechou agora) |
+| Martelo (novo) | média | força | 1 | 0 | 1 | 1 | 1 | 6 | 24 | impacto | 0 | 250 pc (25 pp, já decidido; cópia exata do stat block da Maça) |
+| Bastão | leve | destreza | 1 | -2 | 2 | 1 | 1 | 5 | 15 | impacto | 0 | 40 pc (4 pp, já decidido) |
+| Lança Longa | haste | destreza | 1 | 2 | 0 | 3 | 2 | 7 | 28 | perfurante | 1 | 90 pc (9 pp; não estava decidido, o humano fechou agora, acima do valor antigo de 8 pp por ser a variante de mais alcance) |
+| Sabre | leve | destreza | 1 | -2 | 2 | 1 | 1 | 5 | 15 | corte (só principal, sem secundário) | 0 | 300 pc (30 pp, já decidido) |
+| Maça Estrela | média | força | 1 | 0 | 1 | 1 | 1 | 6 | 24 | impacto (principal) + perfurante (sec., espigões) | 0 | 320 pc (32 pp, já decidido) |
+
+Notas de desenho: Machado pesado copia o molde do Montante/Martelo de Guerra (pesada, 2 mãos,
+dado 2, defesaArma −2, ticks 7). Lança Longa troca acerto por defesaArma e ticks (mais lenta,
+mais alcance, perde o `arremessável` da Lança curta), folego 28 (entre a Lança 24 e a Alabarda
+32). Machadinha e Bastão seguem o molde leve da Adaga/Espada Curta: Bastão em destreza (manejo
+ágil), Machadinha em força (é machado). Sabre é a Espada Curta sem o modo secundário perfurante
+(a decisão do item original só cita "modo principal Corte"). Maça Estrela é a Maça com o
+secundário perfurante que a decisão pede.
+
+**O que a Executora implementa a partir daqui:** os sete stat blocks da tabela acima em
+`armas.json`, no mesmo envelope aninhado já usado pelo resto do catálogo (peso a estimar por
+comparação com arma de classe/mãos equivalente, descrição curta por arma). Depois, a tabela do
+capítulo virando gerada (item pendente da rodada anterior).
