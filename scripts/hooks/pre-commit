@@ -11,11 +11,11 @@
 # faltava era ele NÃO DEPENDER DE ALGUÉM LEMBRAR, e é a mesma forma do L25: o
 # mecanismo existia e nada o executava.
 #
-# CUSTA 15,2 SEGUNDOS, medido nesta máquina em 15/09/2026, em duas amostras
-# (15.173 ms e 15.208 ms). Dizia 7 aqui, e o número envelheceu com os testes que
-# entraram depois dele. Ele roda inteiro em vez de escolher gates pelo que mudou:
-# escolher exigiria um mapa de arquivo para portão, e esse mapa seria mais uma
-# lista para ficar velha (é o caso 13).
+# CUSTA ~15 SEGUNDOS (medido nesta máquina em 15/09/2026) mais o custo novo do
+# isolamento abaixo (checkout-index + junction, tipicamente <1s). Ele roda
+# inteiro em vez de escolher gates pelo que mudou: escolher exigiria um mapa de
+# arquivo para portão, e esse mapa seria mais uma lista para ficar velha (é o
+# caso 13).
 #
 # E O TYPECHECK ENTRA AQUI DESDE 15/09/2026, com UMA condição de caminho, que é
 # coisa diferente de um mapa: só roda quando o commit toca `src/` ou `scripts/`.
@@ -24,14 +24,6 @@
 # `astro build` checam tipo. Quem checava era o CI, e o resultado dele não
 # chegava a ninguém: três horas de vermelho no ar, com o site publicado e a ficha
 # estourando em `ReferenceError` para quem edita uma ficha de raça com piso.
-#
-# O `astro sync` VAI JUNTO e não é detalhe de instalação: ele gera
-# `.astro/types.d.ts`, que o `.gitignore` não versiona. Sem ele, num clone que
-# nunca rodou `astro dev`, o `tsc` cospe vinte erros de `astro:content` e de
-# `import.meta.env`, e o primeiro commit de quem clonou ficaria vermelho por erro
-# que não é dele. Custa 13,4 s somados (3,4 do sync + 10,0 do tsc), medidos no
-# mesmo dia, e é por isso que commit de documento não paga: ele não pode quebrar
-# tipo nenhum.
 #
 # NÃO USE `--no-verify`. Se o portão está vermelho, o commit está errado ou o
 # portão está errado, e as duas coisas se resolvem olhando, não pulando.
@@ -42,6 +34,55 @@
 #   git config core.hooksPath scripts/hooks
 #
 # Quem confere que isso foi feito é o próprio `test-portoes.mjs`.
+#
+# ===========================================================================
+# REESCRITO EM 2026-09-23 (pedido do usuário): ISOLAMENTO DO ÍNDICE
+# ===========================================================================
+#
+# ANTES: o `validate` e o `tsc` rodavam sobre a ÁRVORE DE TRABALHO inteira. Com
+# várias instâncias editando a mesma pasta ao mesmo tempo (o arranjo normal
+# deste repositório, ver CLAUDE.md), qualquer frente com trabalho EM ANDAMENTO
+# bloqueava o commit de TODAS as outras — mesmo commitando só arquivo próprio,
+# com pathspec, do jeito certo. Caso real que motivou a mudança: em 2026-09-22 a
+# frente do mapa ficou uma noite inteira sem conseguir commitar por causa de um
+# arquivo (`src/lib/rolagem.ts`) de outra frente, sem relação nenhuma com o mapa.
+#
+# AGORA: a validação roda sobre o ÍNDICE (o que está preparado para virar o
+# commit), materializado numa pasta temporária separada, nunca sobre a árvore de
+# trabalho. `git checkout-index` sempre respeita `$GIT_INDEX_FILE` -- e num
+# commit com pathspec (`git commit -m ... -- caminho`) o git JÁ aponta essa
+# variável para um índice temporário (HEAD + só os caminhos do pathspec) antes
+# de chamar o hook. Então: commit com pathspec valida exatamente o que vai virar
+# o commit, nem mais (o resto da árvore, sujo, fica de fora) nem menos (o
+# conteúdo de HEAD dos arquivos não tocados entra, porque é o que vai continuar
+# valendo depois deste commit).
+#
+# NÃO usa `git stash`: tiraria arquivo de OUTRA instância do lugar enquanto ela
+# trabalha -- teria o mesmo risco do L11 do CLAUDE.md (stash sem pathspec pega a
+# árvore inteira). `checkout-index` só LÊ o índice e ESCREVE numa pasta separada;
+# não toca no índice nem na árvore de trabalho de ninguém.
+#
+# `node_modules` é LINKADO (junction do Windows via PowerShell -- `git
+# checkout-index` não sabe criar link, só arquivo normal), nunca copiado: são
+# milhares de arquivos, read-only para o validate, e reinstalar a cada commit
+# seria mais lento que o próprio validate.
+#
+# MUDANÇA DE DESENHO EXPLÍCITA (o comentário antigo, removido, explicava por que
+# o `tsc` lia a ÁRVORE de propósito -- "tipo é global, um typecheck só dos
+# staged ficaria verde sobre um repositório que não compila"): isso continua
+# verdade sobre a ÁRVORE DE TRABALHO, mas deixou de ser o padrão certo de
+# comparação. O que importa não é "o repositório compila com todo mundo no meio
+# de editar", que nunca é um estado real de verdade (ninguém commita a árvore de
+# trabalho inteira) -- é "o repositório compila DEPOIS DESTE COMMIT", e é
+# exatamente isso que o índice (temporário, com pathspec) representa: HEAD mais
+# só as mudanças que vão entrar. Um erro de tipo já commitado por outra frente
+# ainda aparece (está em HEAD); um erro de tipo NÃO COMMITADO de outra frente,
+# no meio de um WIP dela, para de aparecer no commit de quem não mexeu nele --
+# que é o comportamento que se queria.
+#
+# O FURO CONHECIDO antigo (tsconfig.json/package.json/astro.config.mjs decidem o
+# typecheck e não batem no padrão de caminho abaixo) continua exatamente igual,
+# sem mudança -- não é deste isolamento.
 
 if ! command -v npm >/dev/null 2>&1; then
   echo "✘ pre-commit: npm não está no PATH, e sem ele o portão não roda."
@@ -49,54 +90,113 @@ if ! command -v npm >/dev/null 2>&1; then
   exit 1
 fi
 
-echo "· pre-commit: npm run validate"
-if ! npm run --silent validate; then
-  echo ""
-  echo "✘ O portão falhou, e o commit não foi feito."
-  echo "  Conserte o que ele apontou e commite de novo."
+if ! command -v powershell >/dev/null 2>&1; then
+  echo "✘ pre-commit: powershell não está no PATH, e o isolamento do índice"
+  echo "  precisa dele para linkar node_modules (junction). Conserte o PATH."
   exit 1
 fi
 
-# QUEM DECIDE É O COMMIT, QUEM É CONFERIDO É A ÁRVORE, e as duas metades desta
-# frase são medidas.
-#
-# A decisão: num commit com pathspec (`git commit -m ... -- caminho`) o git monta
-# um índice temporário e aponta o `GIT_INDEX_FILE` para ele, então `--cached`
-# responde sobre o commit que está nascendo, e não sobre o índice compartilhado.
-#
-# A conferência: o `tsc` lê a ÁRVORE, e não o índice. A Revisora mediu na rodada
-# 61, plantando erro de tipo em `src/lib/mesa-core.ts` com o índice VAZIO: o `tsc`
-# acusou. Num diretório dividido por duas frentes, o commit de uma pode ser
-# recusado por erro não commitado da outra, e pode passar por uma correção que não
-# está nele. **Isto é de propósito e não se conserta checando só o que está
-# staged:** tipo é global, um arquivo não commitado quebra o que o commit inclui,
-# e um typecheck "só dos staged" ficaria verde sobre um repositório que não
-# compila. O comentário existe para que ninguém tente.
-#
-# O RECORTE TEM UM FURO CONHECIDO, e ele está aqui escrito porque é mais honesto
-# que fingir cobertura: `tsconfig.json`, `package.json` e `astro.config.mjs`
-# DECIDEM o typecheck (o preset `strict`, o `include`, a versão do `typescript`) e
-# nenhum casa o padrão abaixo. Por isso eles entraram no padrão em 15/09/2026:
-# mexer em quem governa a conferência passou a disparar a conferência.
-#
-# E SOBRA UM FURO DE CLASSE, que é de desenho e não de esquecimento: o `include`
-# do `tsconfig.json` é `**/*`, então o `tsc` confere TODO `.ts` do repositório,
-# enquanto este padrão só dispara por `src/` e `scripts/`. Um `.ts` fora dessas
-# duas pastas é checado pelo `tsc` e não dispara o `tsc`. **Contado em
-# 16/09/2026, por mim e não herdado: são 51 `.ts`/`.tsx` rastreados, e ZERO fora
-# de `src/` e `scripts/`**, então hoje o furo é vazio. Ele deixa de ser no dia em
-# que alguém criar o primeiro, e é por isso que está escrito aqui em vez de
-# virar mais uma alternância no padrão: um caminho que não existe na lista é
-# regra sem caso, e ela envelhece sem ninguém notar.
+PASTA_VALIDACAO=$(mktemp -d) || {
+  echo "✘ pre-commit: não consegui criar a pasta temporária de validação."
+  exit 1
+}
+
+# SEGURANÇA DA LIMPEZA (corrigido em 2026-09-23, pedido do usuário): a pasta de
+# validação contém um JUNCTION apontando pro node_modules de verdade. Um
+# `rm -rf` ingênuo na pasta poderia, dependendo de como o bash do Git para
+# Windows trata o reparse point, DESCER NO JUNCTION e apagar o node_modules
+# real por baixo -- exatamente o tipo de blast radius que não se assume sem
+# medir. Por isso a limpeza nunca faz `rm -rf` direto: primeiro remove só o
+# LINK (com PowerShell `Remove-Item`, que documentadamente remove o reparse
+# point sem descer nele quando não se passa `-Recurse`), CONFERE que ele
+# sumiu, e só então apaga o resto. Se a remoção do link falhar por qualquer
+# motivo, a pasta fica intacta e o caminho é impresso -- nunca um `rm -rf`
+# às cegas. Testado com controle negativo (contagem de arquivos do
+# node_modules real, idêntica antes/depois, em três cenários: validação que
+# passa, que falha, e hook interrompido no meio).
+remover_link_node_modules_com_seguranca() {
+  CAMINHO_LINK="$1"
+  if [ ! -e "$CAMINHO_LINK" ]; then
+    return 0
+  fi
+  CAMINHO_LINK_WIN=$(cygpath -w "$CAMINHO_LINK")
+  # `Remove-Item` numa junction lança NullReferenceException nesta máquina
+  # (PowerShell 5.1, bug conhecido do provider de arquivo com reparse point) --
+  # achado testando este exato hook. `[System.IO.Directory]::Delete(caminho,
+  # $false)` é a API de baixo nível: o segundo argumento `$false` (não
+  # recursivo) é o que garante que só o PONTO DE REPARSE é removido, nunca o
+  # conteúdo do alvo -- documentado pela própria .NET, e é o que o teste de
+  # controle negativo abaixo confirma (contagem de arquivos do node_modules
+  # real idêntica antes/depois).
+  powershell -NoProfile -Command "
+    \$ErrorActionPreference = 'Stop'
+    \$item = Get-Item -LiteralPath '$CAMINHO_LINK_WIN' -Force
+    if (-not \$item.LinkType) {
+      Write-Error 'não é um link (LinkType vazio) -- recusando remover, por segurança'
+      exit 1
+    }
+    [System.IO.Directory]::Delete('$CAMINHO_LINK_WIN', \$false)
+  " 2>&1
+}
+
+limpar_pasta_validacao() {
+  NM="$PASTA_VALIDACAO/node_modules"
+  if [ -e "$NM" ]; then
+    if ! remover_link_node_modules_com_seguranca "$NM" || [ -e "$NM" ]; then
+      echo "✘ pre-commit: não consegui remover com segurança o link de"
+      echo "  node_modules -- deixando a pasta de validação intacta por"
+      echo "  segurança (nunca rodo \`rm -rf\` às cegas sobre um junction)."
+      echo "  Apague à mão depois de conferir: $PASTA_VALIDACAO"
+      return 1
+    fi
+  fi
+  rm -rf "$PASTA_VALIDACAO"
+}
+trap limpar_pasta_validacao EXIT INT TERM
+
+if ! git checkout-index --all --prefix="$PASTA_VALIDACAO/"; then
+  echo "✘ pre-commit: \`git checkout-index\` falhou -- não consegui materializar"
+  echo "  o índice (o que vai virar o commit) na pasta de validação."
+  exit 1
+fi
+
+RAIZ_REPO_WIN=$(cygpath -w "$(pwd)")
+PASTA_VALIDACAO_WIN=$(cygpath -w "$PASTA_VALIDACAO")
+if ! powershell -NoProfile -Command "New-Item -ItemType Junction -Path '$PASTA_VALIDACAO_WIN\node_modules' -Target '$RAIZ_REPO_WIN\node_modules' | Out-Null"; then
+  echo "✘ pre-commit: não consegui linkar node_modules na pasta de validação."
+  exit 1
+fi
+
+# Alguns scripts do `validate` (ex.: test-portoes.mjs) leem CONFIGURAÇÃO do git
+# (`core.hooksPath`), não só arquivo de conteúdo -- isso não existe numa pasta
+# sem `.git`. `GIT_DIR` aponta pro `.git` de VERDADE (config, hooks, refs);
+# `GIT_WORK_TREE` aponta pra a pasta de validação (o conteúdo isolado). Achado
+# rodando o primeiro teste deste hook: sem isto, `test-portoes.mjs` falhava
+# achando "core.hooksPath não configurada" -- falso, estava configurada no
+# repositório de verdade, só não visível de uma pasta sem `.git` nenhum.
+export GIT_DIR="$(pwd)/.git"
+export GIT_WORK_TREE="$PASTA_VALIDACAO"
+
+echo "· pre-commit: npm run validate (isolado do índice, em $PASTA_VALIDACAO)"
+if ! (cd "$PASTA_VALIDACAO" && npm run --silent validate); then
+  echo ""
+  echo "✘ O portão falhou (sobre o que vai virar o commit, não sobre a árvore de"
+  echo "  trabalho), e o commit não foi feito. Conserte o que ele apontou e"
+  echo "  commite de novo."
+  exit 1
+fi
+
+# QUEM DECIDE É O COMMIT, QUEM É CONFERIDO TAMBÉM É O COMMIT (mudou em
+# 2026-09-23 -- ver o bloco grande no topo do arquivo para o antes/depois).
 ARQS=$(git diff --cached --name-only --diff-filter=ACMR)
 if printf '%s\n' "$ARQS" | grep -Eq '^(src|scripts)/|^(tsconfig\.json|package\.json|package-lock\.json|astro\.config\.mjs)$'; then
-  echo "· pre-commit: npx astro sync && npx tsc --noEmit (há código no commit)"
+  echo "· pre-commit: npx astro sync && npx tsc --noEmit (isolado, há código no commit)"
   # A SAÍDA DO `astro sync` SE GUARDA, e não se joga fora. Ele é a ÚNICA
   # conferência de schema que os `src/data/*.json` e o frontmatter dos capítulos
   # recebem no commit (medido pela Revisora na rodada 61: `ordem: "seis"` num
   # capítulo faz ele falhar, nomeando o arquivo). Com `>/dev/null` o autor lia
   # "erro de ambiente" onde podia estar o dado errado do próprio commit dele.
-  if ! SYNC=$(npx astro sync 2>&1); then
+  if ! SYNC=$(cd "$PASTA_VALIDACAO" && npx astro sync 2>&1); then
     echo ""
     echo "$SYNC"
     echo ""
@@ -105,7 +205,7 @@ if printf '%s\n' "$ARQS" | grep -Eq '^(src|scripts)/|^(tsconfig\.json|package\.j
     echo "  pode ser deste commit. A saída dele está acima: leia antes de culpar o ambiente."
     exit 1
   fi
-  if ! npx tsc --noEmit; then
+  if ! (cd "$PASTA_VALIDACAO" && npx tsc --noEmit); then
     echo ""
     echo "✘ Os tipos não fecham, e o commit não foi feito."
     echo "  Isto NÃO é lint: nome que o TypeScript não acha é \`ReferenceError\` na mesa."
