@@ -27,6 +27,63 @@ foram absorvidas nesta. Ainda é especificação para revisão, não construçã
 - **Terra sem relevo pintado é `planície`**; terra sem cobertura pintada usa a
   automática por latitude. As duas calculadas ao vivo, nunca gravadas como feature.
 
+## Travamento · `travado` e o cadeado por camada (decidido em 2026-09-23)
+
+Para não tirar nada do lugar sem querer. Vale para **todo objeto editável**, não só
+para lugar: `lugares.geojson`, `rios.json`, `estradas.json` e
+`areas-pintadas.geojson` · definido aqui de uma vez, em vez de por ferramenta, para
+que a ferramenta de Área já nasça com isto em vez de receber um retrofit depois.
+
+**1. `travado` no objeto.** Campo booleano nas `properties` de cada feature,
+**padrão `false`** (um objeto sem o campo conta como livre; a ferramenta grava o
+campo explícito ao criar, para o arquivo ser legível sem consultar o padrão):
+
+```json
+{ "properties": { "id": "porto-de-calin", "tipo": "porto", "travado": false } }
+```
+
+**2. Cadeado geral por camada** · `dados/camadas_travadas.json`, arquivo próprio:
+
+```json
+{
+  "versao_esquema": 1,
+  "camadas": [
+    { "id": "lugares",  "travada": false },
+    { "id": "rios",     "travada": false },
+    { "id": "estradas", "travada": false },
+    { "id": "relevo",   "travada": false },
+    { "id": "cobertura","travada": false },
+    { "id": "lago",     "travada": false }
+  ]
+}
+```
+
+Vocabulário fechado de `id`: uma camada por tipo de objeto, e **três** para
+`areas-pintadas.geojson` (o campo `camada` da feature: relevo, cobertura, lago) ·
+por isso o arquivo é separado, e o flag não mora no `properties` de cada coleção.
+
+**3. A trava efetiva é a OU das duas**: `travado do objeto OU travada da camada`. Um
+objeto com `travado: false` numa camada travada **está travado**. Isso é o que faz o
+pedido "ao destravar a camada, cada objeto volta ao que era" ser verdade sem
+restaurar nada: **travar a camada nunca escreve no objeto**, então não há o que
+restaurar depois.
+
+**4. O que a trava impede**: mover, apagar e editar o objeto. Travar/destravar o
+objeto em si tem caminho próprio (senão nada travado poderia ser destravado), e ele
+respeita a trava da camada. **Camada travada também não recebe objeto novo**
+(decisão da IA, 2026-09-23: é o que um cadeado de camada significa em qualquer
+editor; destravar remove a restrição sem deixar rastro no dado).
+
+**5. Recusar por trava não é erro de dado.** São duas classes diferentes no backend
+(`travas.Travado` x `ValueError`) e dois códigos HTTP diferentes (409 x 422), para a
+interface poder dar um **aviso discreto** de "está travado" em vez da faixa de erro
+de gravação, sem precisar interpretar a mensagem.
+
+**6. Travar e destravar passam pelo desfazer**, as duas · a do objeto como qualquer
+edição de feature, a da camada como uma operação sobre
+`dados/camadas_travadas.json` (mesmo mecanismo de patch por id já usado pelas
+camadas de referência).
+
 ## `dados/massas.geojson` — identidade estável das massas de terra
 
 ```json
@@ -168,6 +225,8 @@ misturado aqui.
 **Esquema de `capital` e `importancia` (decidido na segunda rodada, 2026-09-21;
 recuperado em 2026-09-23)**:
 - `capital`: booleano. Só pode ser `true` quando `tipo == "cidade"`.
+- `travado`: booleano, padrão `false` — ver "Travamento", acima. Vale igual aqui,
+  em rios, estradas e áreas pintadas.
 - `importancia`: `"pequena"`, `"media"`, `"grande"`, ou `null`. `null` tem o mesmo
   tratamento VISUAL de `"pequena"` na ferramenta (tamanho do marcador) — mas o
   valor gravado no dado pode ficar `null` (lugar ainda não classificado) sem que

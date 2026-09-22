@@ -9,149 +9,176 @@ confirmado pelo usuário; o que é recomendação de IA fica marcado como tal.
 *(Atualizar esta seção antes de encerrar toda sessão de trabalho no mapa — é a
 primeira coisa que `/cartografo` mostra.)*
 
-- **Última atualização:** 2026-09-23 (terceira rodada do dia). Duas tarefas
-  urgentes pedidas ("antes de qualquer outra coisa"): backup do trabalho sem
-  commit, e um hook de `pre-commit` novo que isola a validação do índice (não
-  mais a árvore de trabalho inteira) — as duas feitas, **hook só testado, NÃO
-  ativado** (aguardando aprovação). Uma quarta rodada de pedidos (resultado do
-  teste no navegador + 4 ajustes de UI: zoom por lista de níveis, botões
-  reset/automático no ChatGPT, régua com rótulo/múltiplos pontos/tempo de
-  viagem/salvar, cursor em cruz) **chegou registrada mas NÃO INICIADA** — as
-  duas tarefas urgentes vieram primeiro, por pedido explícito, e o orçamento da
-  rodada acabou nelas. Fica para a próxima sessão.
-- **BACKUP feito**: `C:\Users\Neves\ClaudeCode\backup-mapa\backup-mapa_20260922_122540.zip`
-  (947 KiB / 969.718 bytes), com os 31 arquivos modificados/novos de
-  `lore/mapas/` (sem `render/`, `.venv/`, `fonte/`, `referencias/` — nenhum
-  apareceu, os quatro já são ignorados pelo git) mais um `git diff` dos mesmos
-  caminhos (`git-diff-lore-mapas.txt`, dentro do zip). Nada em `.claude/` foi
-  incluído: os dois arquivos do mapa lá (`.claude/commands/cartografo.md`,
-  `.claude/skills/mapa-mundo/SKILL.md`) já estavam commitados, sem mudança —
-  nada pra fazer backup.
-- **Hook de `pre-commit` reescrito e testado, NÃO ativado**: rascunho em
-  `scripts/hooks/pre-commit.proposto` (nome diferente de propósito — o git só
-  invoca um arquivo chamado exatamente `pre-commit`, então este rascunho não
-  afeta nenhum commit de ninguém enquanto não for renomeado). Mecanismo: `git
-  checkout-index --all --prefix=PASTA/` materializa o que `$GIT_INDEX_FILE`
-  aponta (o índice — automaticamente o temporário do pathspec, num commit
-  `git commit -m ... -- caminho`) numa pasta separada; `node_modules` é
-  linkado por junction do Windows (PowerShell `New-Item -ItemType Junction`,
-  não copiado); `GIT_DIR`/`GIT_WORK_TREE` exportados pra scripts que leem
-  CONFIGURAÇÃO do git (achado rodando o primeiro teste: `test-portoes.mjs`
-  falhava achando `core.hooksPath` não configurada — falso, só não visível de
-  uma pasta sem `.git`). **Sem `git stash` em nenhum momento** (pedido
-  explícito). **Os dois testes pedidos, com índice de teste isolado (nunca
-  tocou o índice real nem a árvore de trabalho — `GIT_INDEX_FILE` apontado pra
-  um arquivo em `/tmp`, e conferido depois que nada mudou no repositório de
-  verdade)**:
-  1. **Controle negativo** (commit com erro real tem que ser recusado): índice
-     de teste com `src/data/armas.json` substituído por JSON quebrado de
-     propósito → **hook saiu com código 1**, apontando o `SyntaxError` exato.
-  2. **Controle positivo** (commit só do mapa, com outra frente suja na árvore
-     de trabalho, tem que passar): índice de teste só com os 31 arquivos do
-     mapa (conteúdo real, atual), rodado com a árvore de trabalho de verdade
-     cheia de outras frentes sujas (`src/lib/*`, `scripts/*`,
-     `src/data/armas.json` etc., inalterados) → **hook saiu com código 0**.
-     Achado a mais: essa mesma rodada mostrou que o bloqueio atual
-     (`combate-tempo-bench.html`) SOME quando a validação roda isolada do
-     índice — confirma que era mesmo trabalho não commitado de outra frente, não
-     um problema real.
-  - **Efeito colateral achado, registrado pra você decidir**: o hook antigo
-    checava `tsc` contra a ÁRVORE de propósito (comentário removido explicava:
-    "tipo é global, um typecheck só dos staged ficaria verde sobre um
-    repositório que não compila"). O hook novo muda esse desenho: valida o que
-    o repositório vai ficar DEPOIS deste commit (índice = HEAD + pathspec), não
-    o estado transitório de "todo mundo editando ao mesmo tempo". Isto é
-    coerente e resolve o problema que você pediu pra resolver, mas é uma
-    mudança de politica, não só mecanismo — por isso não ativei sozinho.
-  - **Pra ativar**: renomear `scripts/hooks/pre-commit.proposto` para
-    `scripts/hooks/pre-commit` (substituindo o atual). Não fiz isso ainda.
-- **Commit: AINDA BLOQUEADO** (pelo motivo de outra frente descrito abaixo, não
-  pelo hook — o hook novo ainda não está ativo). O bloqueio original
-  (`src/lib/rolagem.ts`/`mesa-core.ts`, 11 divergências) **foi resolvido** — os
-  dois arquivos estão limpos agora (`git status` confirma, e o log mostra
-  commits recentes de outra frente sobre o sistema de combate). Rodei
-  `npm run validate` de novo pra confirmar, e **o portão continua vermelho por
-  um motivo diferente e não relacionado ao mapa**: `combate-tempo-bench.html
-  está desatualizado. Rode: node scripts/gen-bench-tempo.mjs` — sinal de que
-  outra frente (equipamento/bestiário, a julgar pelo `git status` atual:
-  `armas.json`, `armaduras.json`, `escudos.json`, `equip.ts`, `bestiario.astro`
-  todos sujos) está no meio de um trabalho que ainda não gerou esse arquivo.
-  **Não é meu lugar mexer nisso** (não é arquivo do mapa) — só registrando que o
-  portão não abriu, para não fazer o usuário achar que já pode pedir pra
-  commitar. **Nada foi commitado ainda.**
-- **As 4 ações desta rodada (2026-09-23, segunda)**:
-  1. **`ESPEC-dados-revisao2.md` trazido para o repo** em `historico/`, e
-     comparado item por item com `ESPEC-dados.md` atual. **Achado corrigido**: a
-     rodada anterior tinha concluído (errado) que o esquema de `importancia`
-     "nunca existiu" — na verdade **existia em `ESPEC-dados-revisao2.md`
-     (guardado pelo usuário fora do repositório) e foi apagado pela terceira
-     reescrita, antes do commit `96e4188`.** Restaurado (era perda de fato, não
-     suposição): esquema de `capital`/`importancia` e a validação dos 17 pontos
-     de `massas.geojson` (as duas em `ESPEC-dados.md`, com nota de recuperação
-     no fim do arquivo). Mudanças intencionais da terceira rodada (atração de
-     5km em vez da tolerância de 300m, reestruturação de `regioes.json`,
-     `amb-*→ilha-*`, validação de rio por segmento, tolerância de foz, etc.) NÃO
-     foram restauradas — são decisão posterior, não perda. Dois gaps de prosa
-     (vocabulário de `valor` em áreas pintadas, motivo do relevo/cobertura
-     automático nunca virar feature) ganharam ponteiro pra `CARTOGRAFO.md`, sem
-     duplicar a lista.
-  2. **Resultado do teste do usuário no navegador**: não veio descrito na
-     mensagem (só um placeholder em branco) — não tenho como saber o que
-     funcionou e o que não. **Achado por evidência indireta**: `dados/
-     lugares.geojson` tem uma feature `"id": "teste"` (`tipo: "vila"`,
-     `lon=-13.96, lat=21.57`) que não veio de nenhum script meu — é rastro real
-     de o usuário ter usado o botão "+ lugar" da UI com sucesso. Deixei a
-     feature no arquivo (não é meu lugar apagar dado de teste do usuário sem
-     ele pedir). Fora isso, nenhuma outra informação sobre o teste.
-  3. **Portão de commit**: ver bullet acima — continua fechado, motivo novo, não
-     é do mapa. Nenhum commit feito.
-  4. **Rótulos: `--confirmo` rodado com sucesso.** Memória livre estava 3,39 GB
-     (acima do piso recomendado de ~2,4 GB medido ontem). Resultado: 4,5s,
-     pico 1.624 MB (bate com a previsão de 1.619 MB do `--teste`), 57 tiles no
-     zoom máximo (101 no total, 1,9 MB em disco). **Validado com controle
-     negativo**: pixel único no `rotulo` de Mère deu alfa=0 (não é bug — o ponto
-     de referência não cai necessariamente em cima de tinta); janela de ~50×50px
-     em volta achou 735 pixels com alfa>0 (controle positivo com janela, não
-     pixel único). Mar aberto longe de nome: 0 pixels com alfa>0 na mesma
-     janela — sem ruído de JPEG passando o limiar. Detalhe completo em
-     `ESPEC-ferramenta.md`. `rotulos.visivel` continua `false` em
-     `dados/camadas_referencia.json` — não liguei sozinho, é o usuário quem
-     decide pela ferramenta.
+- **Última atualização:** 2026-09-23 (sétima rodada do dia). **Travar objeto**,
+  **tema claro/escuro** e **o acúmulo de três rodadas finalmente commitado**.
+  - **Travar objeto (item 1)**: esquema definido em `ESPEC-dados.md`
+    ("Travamento") **para todos os objetos editáveis de uma vez** · lugar, rio,
+    estrada e área · não só para o que existe hoje. Duas travas independentes:
+    `travado` no objeto (padrão `false`) e o **cadeado por camada**
+    (`dados/camadas_travadas.json`, arquivo novo), sendo a trava efetiva a OU das
+    duas. **O cadeado de camada nunca escreve no objeto** · é o que faz
+    "destravar a camada devolve cada um ao que era" ser verdade sem restaurar
+    nada. Recusa por trava é **409** e não 422, para a interface dar aviso
+    discreto em vez da faixa vermelha de erro. Tecla `T`, cadeadinho no mapa e na
+    lista, as duas travas passam pelo desfazer. 15 testes novos, 79 no total.
+  - **Tema (item 2)**: botão `☾`/`☀` na barra de cima, tecla `D`, escolha
+    lembrada em `localStorage`, lida num script inline no `<head>` para a página
+    não piscar. Nenhum dos temas toca em `#mapa`.
+- **Rodada anterior (sexta), para referência:** Três itens: regra
+  nova contra inferir o que o usuário fez a partir de rastro de uso (e remoção
+  da inferência que eu tinha escrito); **a ressalva de "terra ou mar sob o
+  cursor" estava ERRADA e foi corrigida E implementada**; e a régua deixou de
+  usar `prompt()` pro nome da medição. **Nada commitado** (pedido explícito).
+  - **Terra/mar sob o cursor, implementado** (`static/js/terra-ou-mar.js`): o
+    usuário apontou que não precisa da máscara de 10240px — o bloco da costa
+    que o navegador já baixou JÁ é a resposta (terra tem alfa 255, mar tem 0).
+    Canvas oculto, `ImageData` guardado por bloco (teto de 60, descarte do mais
+    antigo), leitura no zoom nativo, nenhuma chamada ao servidor por movimento
+    do mouse. Dois achados do caminho: **bloco ausente (404) = mar** (o gerador
+    não grava tile totalmente transparente) e **o único impedimento real seria
+    CORS** (tile de outra origem deixaria o canvas "tainted") — não é o caso
+    aqui, mesma origem, mas o código trata. Conferido com controle negativo
+    contra os mesmos arquivos de tile: terra conhecida → alfa 255; mar aberto →
+    bloco ausente; e mar DENTRO de um bloco que existe → alfa 0 (o controle que
+    prova que a regra não é "bloco existe = terra"). **O caminho do canvas no
+    navegador em si só um teste no navegador exercita.**
+  - **Régua: `prompt()` → `#modal-medicao`**, mesmo padrão do de Lugar (Enter
+    salva, Esc cancela, foco no campo, resumo da medição no topo, erro dentro
+    do modal). Não sobra nenhum `prompt()` na ferramenta. Guarda nova no
+    servidor com controle negativo: nome só de espaço vira `null`
+    (`test_medicoes.py`, 2 testes novos — 64 no total, todos verdes).
+- **Rodada anterior (quinta):** Modal de Lugar no
+  lugar dos `prompt()`/`confirm()`, e as 10 melhorias de interface pedidas
+  (atalhos + ajuda, lista lateral, barra inferior, indicador de salvamento,
+  seções que abrem/fecham, símbolo por tipo, tecla da costa, teclas de
+  opacidade, confirmação só onde não há desfazer, tema escuro). **Nada
+  commitado nesta rodada** (pedido explícito). **3 ressalvas registradas** em
+  `ESPEC-ferramenta.md` ("Ressalvas registradas") em vez de forçar — item 4 do
+  pedido. Dívida de processo dos commits da rodada anterior registrada em
+  "Dívida técnica registrada", e a regra nova ("ordem dos commits segue a
+  dependência; se a ordem pedida conflitar, avisar ANTES") em "Regras
+  invioláveis".
+- **O que o usuário testou e aprovou das rodadas anteriores: EM ABERTO.** Os
+  relatos vieram em branco ("[escreva o que funcionou e o que não]") em três
+  rodadas. **Nada foi aprovado explicitamente**, então nada das rodadas de
+  interface (quarta, quinta e sexta) está commitado.
+  - **Correção registrada em 2026-09-23 (sexta rodada)**: a versão anterior
+    deste bloco concluía, a partir do `dados/.operacoes/log.jsonl`, que o
+    usuário "tinha exercitado o reset e o ciclo editar/apagar". Isso era
+    inferência sobre rastro de uso: o log mostra que as OPERAÇÕES aconteceram,
+    não que ele as tenha feito, testado ou aprovado. A conclusão saiu daqui e
+    virou regra em "Regras invioláveis".
+  - O que continua sendo FATO sobre o estado dos arquivos (sem conclusão sobre
+    quem fez nem sobre aprovação): `dados/lugares.geojson` está vazio;
+    `chatgpt-2` está invisível e com os limites do mundo, e o
+    `bounds_automatico` dela preserva os limites do alinhamento automático.
+- **Rodada anterior (quarta), para referência:** **O portão de
+  commit foi aprovado, corrigido e ATIVADO** (`scripts/hooks/pre-commit` já é
+  a versão isolada do índice); **5 commits do mapa feitos** (etapa 2 com
+  correções, B1, B2, B3, recuperação do ESPEC-dados — sem push); e os **4
+  ajustes de UI pedidos foram feitos, mas NÃO commitados** (pedido explícito:
+  servidor no ar pra você testar antes). Ver detalhe completo abaixo.
+- **Hook de `pre-commit`: corrigido, testado com controle negativo de
+  segurança, e ATIVO.** Achado ao testar a versão anterior: `rm -rf` na pasta
+  de validação, que contém um JUNCTION pro `node_modules` real, arriscava
+  descer no link e apagar o `node_modules` de verdade. Corrigido: a limpeza
+  primeiro remove só o link (`[System.IO.Directory]::Delete(caminho, $false)`
+  — `Remove-Item` do PowerShell lança exceção nesta máquina, achado testando),
+  confere que sumiu, e só então apaga o resto; se a remoção do link falhar, a
+  pasta fica intacta (nunca `rm -rf` às cegas). **Contagem de arquivos do
+  `node_modules` real, idêntica nos três cenários testados**: validação que
+  passa (23.278 antes/depois), que falha (23.278/23.278), e interrompida com
+  `kill -9` no meio — o pior caso, trap nunca roda — (23.278/23.278, só uma
+  pasta temporária órfã sobrou, sem nenhum dano, limpa à mão). Ativado
+  (`scripts/hooks/pre-commit.proposto` → `pre-commit`) e commitado sozinho
+  (`1925029`), com uma nota curta no `CLAUDE.md` da raiz explicando a mudança
+  para as outras frentes (`76d6afc`) — autorizado pelo usuário mexer nesses
+  dois arquivos fora do mapa, só para isto.
+- **5 commits do mapa, sem push** (`git show --stat` de cada um mostrado ao
+  usuário na resposta desta rodada):
+  1. `281186e` — B1 (infraestrutura de gravação e desfazer/refazer).
+  2. `57083af` — B2 (Ferramenta de Lugar, esquema de importância restaurado).
+  3. `0716791` — B3 (régua e grade de lat/lon).
+  4. `939f07d` — etapa 2 com correções (Ocean Deep, Rótulos, alinhamento
+     automático, zoom fracionário, persistência de camadas) — **inclui
+     `main.py`/`app.js`/`index.html`/`estilo.css` inteiros**, mesmo tendo
+     endpoints/wiring de B1/B2/B3 também: são arquivos compartilhados, e
+     `git commit -- pathspec` não separa por hunk sem tocar o índice
+     compartilhado (regra do CLAUDE.md) — registrado na mensagem do commit.
+  5. `30b0164` — recuperação de `ESPEC-dados.md` + `historico/ESPEC-dados-
+     revisao2.md` + criação de `dados/medicoes.json`.
+  - **Ordem escolhida por dependência, não a ordem literal do pedido** (que
+    era etapa2→B1→B2→B3→recuperação): B1/B2/B3 vieram primeiro porque o
+    commit 4 (`main.py` etc.) IMPORTA os módulos deles (`lugares.py`,
+    `operacoes.py`) — na ordem pedida, o commit da etapa 2 teria uma árvore
+    com import quebrado. Registrado aqui por transparência.
+- **4 ajustes de UI (2026-09-23, quarta rodada) — feitos, NÃO commitados**:
+  1. **Zoom por lista de níveis**: `NIVEIS_ZOOM_PCT` (5% a 800%, 33 degraus)
+     substitui o passo fixo de ~25%; botões e roda do mouse vão pro nível mais
+     próximo NA DIREÇÃO do clique/rolagem (`scrollWheelZoom` nativo desligado,
+     tratado à mão com `setZoomAround` ancorado no cursor); campo de
+     porcentagem continua aceitando qualquer valor digitado.
+  2. **ChatGPT — alinhamento manual por 2 pontos REMOVIDO da UI**; troca por
+     "reset" (encaixa nos limites do mundo) e "automático" (volta pra
+     `bounds_automatico`, campo próprio que `scripts/alinhar_chatgpt_auto.py`
+     grava e NUNCA sobrescreve num ajuste manual posterior — as 4 imagens já
+     têm esse campo, retropreenchido a partir do `bounds` atual). Toda mudança
+     de posição (numérica, reset, automático) agora passa pelo desfazer:
+     `operacoes.py` foi generalizado (`chave_lista`, "features" ou "camadas")
+     pra também gravar patches de `dados/camadas_referencia.json`, não só
+     GeoJSON.
+  3. **Régua reescrita**: vários pontos por medição (trecho a trecho + total);
+     rótulo de distância escrito sobre a linha, ângulo calculado uma vez em
+     espaço de tela (invariante a pan/zoom nesta CRS) e somado 180° se cairia
+     de cabeça pra baixo; clique na linha apaga (com confirmação); botão
+     "limpar" apaga todas; Esc cancela a medição em andamento; tempo de viagem
+     de referência (a pé/caravana/cavalo/barco) junto do total; botão "salvar"
+     grava em `dados/medicoes.json` via `POST /api/medicoes`
+     (`backend/medicoes.py`, novo, `"reproduzivel": true`, todos os pontos).
+  4. **Cursor em cruz** (`.cursor-cruz` no container do Leaflet) enquanto
+     Lugar ou a régua esperam um clique de ponto.
+  - **Testado**: 62 testes pytest (18 novos: `test_referencias.py` — 10,
+    incluindo bounds_automatico nunca sobrescrito por ajuste manual, tile
+    recusa mudar posição; `test_medicoes.py` — 8, incluindo menos de 2 pontos,
+    ponto sem lat/lon, contagem de trechos errada, distância não positiva).
+    Testado também por API real (`curl`): reset/automático/desfazer em
+    `chatgpt-1`, medição inválida e válida — tudo revertido depois, sem sobra
+    nos dados reais.
+- **Interface, quinta rodada (2026-09-23) — feita, NÃO commitada**:
+  - **Modal de Lugar** (`static/js/lugares.js` reescrito + `#modal-lugar` no
+    HTML): nome, id, tipo, importância, capital, lat e lon, todos editáveis;
+    `Enter` salva, `Esc` cancela, foco no nome ao abrir, "salvar e criar
+    outro"; o mesmo modal edita, com "apagar" dentro. Validação sempre no
+    modal, nunca `alert` — inclusive a que só o servidor sabe (id repetido,
+    ponto no mar), que volta pela resposta e aparece no mesmo campo de erro.
+  - **`static/js/interface.js` (novo)**: atalhos (`L`, `R`, `Esc`, `Ctrl+Z/Y`,
+    espaço segurado pra arrastar, `C` segurado pra ver só a costa, `[`/`]`
+    opacidade da camada ativa, `+`/`-` zoom, `?` ajuda) + tela de ajuda + barra
+    inferior (coordenada, zoom, sob o cursor, salvamento) + seções do painel
+    que abrem/fecham com o estado em `localStorage` + indicador de salvamento
+    ("✓ salvo" some sozinho; "✘ NÃO SALVOU" fica).
+  - **Lista lateral de lugares** com busca e destaque recíproco com o mapa;
+    **símbolo por tipo** (◉ cidade, ● vila, ▲ fortaleza, ⚓ porto, ✖ ruína,
+    ★ marco) e **tamanho por importância**; **tema escuro** sem tocar nas cores
+    do mapa (nenhum filtro sobre `#mapa`); **apagar lugar não pergunta mais**
+    (o desfazer cobre), confirmação ficou só em "limpar todas as medições".
+  - **3 ressalvas registradas em vez de forçar** (item 4 do pedido), detalhe em
+    `ESPEC-ferramenta.md`: (1) "sob o cursor" mostra o LUGAR, não terra/mar —
+    terra/mar exigiria consultar a máscara de 10240px a cada `mousemove`; (2) a
+    tecla `C` depende da ordem das camadas no DOM; (3) a régua ainda usa
+    `prompt()` pro nome da medição (o pedido do modal era só da Lugar).
+  - **Conferência**: 62 testes pytest verdes (nenhum caminho novo de gravação
+    no backend nesta rodada — o modal usa os mesmos endpoints já cobertos com
+    controle negativo em `test_lugares.py`); `node --check` em todos os JS; e
+    uma checagem de que todo `getElementById` dos JS existe no HTML novo (o
+    risco real de uma reestruturação de HTML desse tamanho).
 - **Pendente:**
-  - **Aprovar (ou não) o hook novo** e, se aprovado, renomear
-    `pre-commit.proposto` → `pre-commit` — só depois disso os commits acontecem.
-  - **Ajustes de UI pedidos na rodada seguinte (2026-09-23, quarta), NÃO
-    INICIADOS**:
-    1. Zoom por lista de níveis fixos (5% a 800%, ~33 degraus), não mais passo
-       fixo — botões e roda do mouse vão pro nível mais próximo na direção do
-       clique; campo de porcentagem continua aceitando qualquer valor digitado.
-    2. Tirar o alinhamento manual por 2 pontos da UI das imagens do ChatGPT;
-       trocar por dois botões em "posição": "reset" (encaixa nos limites do
-       mundo) e "automático" (volta pros limites do alinhamento automático,
-       guardados num campo próprio pra nunca se perderem). Campos numéricos
-       continuam. Toda mudança de posição passa pelo desfazer (== tem que virar
-       uma operação em `operacoes.py`, não só uma chamada direta à API de
-       camadas de referência — hoje `camadas-referencia.js` não passa pelo B1).
-    3. Régua: rótulo de distância escrito sobre a linha (nunca de cabeça pra
-       baixo); apagar uma medição clicando nela; botão "limpar todas"; Esc
-       cancela a medição em andamento; vários pontos na mesma régua (trecho a
-       trecho + total); tempo de viagem junto do total (a pé 25km/dia, caravana
-       30, a cavalo 50, barco médio 100-130, como referência); botão salvar em
-       `dados/medicoes.json` com todos os pontos, nome opcional,
-       `"reproduzivel": true`.
-    4. Cursor em cruz (igual ao do modal de alinhamento) em toda ferramenta que
-       marca ponto: régua, Lugar, e as próximas.
-    - Pedido explícito: **testes com controle negativo pra tudo que grava
-      dado** (a régua salva medição agora; Lugar/posição do ChatGPT via
-      desfazer).
-  - **Portão de commit ainda fechado** (motivo novo, de outra frente — ver
-    acima). Nada commitado ainda: nem o trabalho de 2026-09-22 nem o de hoje.
-  - **B4 (Área/Geoman)** pode começar (o item 3/operacoes.py que o bloqueava já
-    foi feito na rodada anterior) — ainda não iniciado.
-  - **Testar no navegador**: alinhamento por 2 pontos, Ferramenta de Lugar
-    completa (o campo de importância é novo), régua, grade lat/lon, campo de
-    zoom, e agora também **os novos tiles de Rótulos** (ligar
-    `rotulos.visivel`).
+  - **Usuário testar no navegador** os ajustes da quarta rodada (zoom por
+    nível, reset/automático, régua nova, cursor em cruz) E os desta quinta
+    (modal, atalhos, lista, barra inferior, tema escuro) — nada disso foi
+    aprovado ainda, e nada foi commitado.
+  - **B4 (Área/Geoman)** — não iniciado (Leaflet-Geoman free ainda não
+    baixado).
   - Confirmar a suposição de que a atração automática de 5km vale também pro
     início de um braço de delta contra o rio-mãe.
   - Gerar o cache de identidade de ilha: processamento pesado, ainda não
@@ -160,14 +187,14 @@ primeira coisa que `/cartografo` mostra.)*
   - Confirmar na prática, na etapa 5, se o Leaflet-Geoman free cobre
     cortar/rotacionar/dividir/escalar/snap (plugin nem foi instalado ainda).
   - Nomear as massas de terra sem nome; decidir pertencimento das 9 ilhas `ilha-*`.
-- **Servidor: NO AR**, sem precisar reiniciar nesta rodada (só arquivo estático
-  novo, nenhum código do servidor mudou depois do último restart).
-  `http://127.0.0.1:8420/`. Para subir de novo, se cair:
+- **Servidor: NO AR**, reiniciado nesta rodada (o HTML foi reestruturado e o
+  `interface.js` é arquivo novo). `http://127.0.0.1:8420/`. Para subir de novo,
+  se cair:
   ```
   cd lore/mapas/ferramentas
   .venv\Scripts\python.exe -m uvicorn backend.main:app --host 127.0.0.1 --port 8420
   ```
-- **44 testes pytest, todos verdes** (`cd ferramentas &&
+- **64 testes pytest, todos verdes** (`cd ferramentas &&
   .venv/Scripts/python.exe -m pytest`).
 - **Instalação e código da etapa 1** — sem mudança desde a última atualização
   (commitados): `.venv` próprio, Leaflet 1.9.4 baixado pronto (sem npm/CDN),
@@ -186,9 +213,12 @@ primeira coisa que `/cartografo` mostra.)*
   `ferramentas/static/js/app.js`, `ferramentas/static/js/camadas-referencia.js`
   (criado), `ferramentas/templates/index.html`. Nada de `render/tiles/` nem
   `.venv/`.
-- **Próximo passo:** aguardar o usuário avisar que o bloqueio de commit foi
-  resolvido, então commitar por etapa; enquanto isso, testar tudo num navegador
-  de verdade (nada rodou fora de `curl`/pytest ainda).
+- **Próximo passo:** o usuário abrir `http://127.0.0.1:8420/` e testar as TRÊS
+  rodadas de interface sem aprovação (quarta: zoom por nível,
+  reset/automático, régua com vários pontos, cursor em cruz; quinta: modal de
+  Lugar, atalhos + `?`, lista lateral, barra inferior, tema escuro; sexta:
+  terra/mar sob o cursor e o modal da medição) — só depois disso commitar, e
+  aí em commits separados, um por rodada.
 
 ## Objetivo e estilo
 
@@ -236,6 +266,21 @@ identificador; nome é opcional e entra depois.
   chegar nele, não — impossível de reproduzir ou conferir depois. Uma medição sem
   pontos guardados entra em `dados/medicoes.json` como `"reproduzivel": false`
   com o motivo, nunca fica só como número solto no CARTOGRAFO.
+- **Nunca inferir o que o usuário fez, testou ou aprovou a partir de rastro de
+  uso** — log de operações, arquivo de dados, histórico, horário de gravação,
+  nada disso. Esses rastros dizem no máximo que uma AÇÃO ACONTECEU, nunca quem
+  a fez, com que intenção, nem que o resultado foi aprovado. **Se o usuário não
+  disse, fica em aberto** e é escrito como em aberto. Regra criada em
+  2026-09-23 (sexta rodada) depois de eu concluir, a partir do
+  `dados/.operacoes/log.jsonl`, que ele "tinha exercitado o reset e o ciclo
+  editar/apagar" — o log mostrava as operações, e eu transformei isso em
+  conclusão sobre o teste dele, que ele não tinha relatado.
+- **A ordem dos commits segue a DEPENDÊNCIA: base primeiro, quem usa depois.**
+  Regra criada em 2026-09-23 (quinta rodada) a partir de uma dívida real, ver
+  "Dívida técnica registrada" abaixo. **Se a ordem que o usuário pedir conflitar
+  com a dependência, avisar ANTES de commitar**, não resolver sozinho — foi
+  exatamente o que faltou na rodada que criou a dívida (eu reordenei por conta
+  própria e só avisei depois).
 
 ## Estrutura de pastas (`lore/mapas/`)
 
@@ -538,6 +583,31 @@ prompts, IA pintando o mapa inteiro, está superada — ver seção Técnica). R
   mais próximo, não o contorno inteiro). Ver `render/analise/istmo_costa_oficial.png` e
   `istmo_mapa_teste_jpg.png` para o recorte nativo do ponto de maior aproximação entre
   Calin e Syl.
+
+## Dívida técnica registrada
+
+- **Os commits `281186e` (B1), `57083af` (B2) e `0716791` (B3) não compilam
+  sozinhos** (2026-09-23, registrado a pedido do usuário; **não vai ser
+  refeito**, o histórico fica como está). Cada um deles introduz módulos
+  (`historico.py`/`operacoes.py`, `lugares.py`, `regua.js`) que só passam a ser
+  IMPORTADOS/incluídos no commit seguinte (`939f07d`, a etapa 2, que carrega
+  `main.py`, `app.js`, `index.html`, `estilo.css` inteiros) — então, olhando
+  cada um isolado, `main.py` daquele ponto do histórico ainda não conhece os
+  módulos novos, e os módulos novos ainda não são chamados por ninguém. Não
+  quebra nada na prática (nenhum deles deixa um import pendurado; o que falta é
+  a ligação, não a base), mas um `git checkout` num desses commits não dá uma
+  ferramenta funcional com aquelas etapas ligadas.
+  - **Por que passou pelo portão**: o `pre-commit` valida o ÍNDICE com HEAD por
+    baixo (o estado do repositório DEPOIS daquele commit), e nesse estado nada
+    está quebrado — o portão não tem como ver "este commit isolado não faz
+    sentido sozinho", porque não é isso que ele mede.
+  - **Causa**: eu reordenei os commits por dependência (B1→B2→B3→etapa 2) em vez
+    da ordem que o usuário pediu (etapa 2→B1→B2→B3), e a reordenação resolveu
+    METADE do problema (evitou import quebrado) sem resolver a outra metade
+    (`main.py`/`app.js` continuam entrando todos de uma vez no fim, porque
+    `git commit -- pathspec` é arquivo inteiro). A regra nova em "Regras
+    invioláveis" (ordem por dependência, e avisar ANTES se a ordem pedida
+    conflitar) vem daqui.
 
 ## Decisões em aberto
 

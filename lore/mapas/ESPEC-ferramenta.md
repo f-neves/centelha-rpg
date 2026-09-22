@@ -646,3 +646,142 @@ aberto longe de qualquer nome, x=1000,y=5000) deu 0 pixels com alfa>0 na mesma
 janela — sem ruído de compressão JPEG passando pelo limiar de 30.
 `rotulos.visivel` em `dados/camadas_referencia.json` continua `false` (estado
 que já estava lá) — não mudei sozinho, é o usuário quem liga pela ferramenta.
+
+## Interface: modal de Lugar e melhorias (2026-09-23, quinta rodada)
+
+Substitui os `prompt()`/`confirm()` nativos da primeira versão da Ferramenta de
+Lugar e acrescenta as melhorias de interface pedidas. Arquivo novo:
+`static/js/interface.js` (atalhos, ajuda, barra inferior, seções que
+abrem/fecham, indicador de salvamento) — o contrato entre os `<script src>`
+desta ferramenta continua sendo um punhado de funções globais nomeadas, sem
+módulo ES nem bundler (decisão da etapa 1, sem mudança).
+
+- **Modal de Lugar**: nome, id, tipo, importância, capital, latitude e
+  longitude, todos editáveis. `Enter` salva, `Esc` cancela, foco no nome ao
+  abrir, "salvar e criar outro" mantém o modal aberto e limpo (o tipo é
+  herdado do anterior, que é o caso comum de marcar vários em sequência). O
+  MESMO modal edita um lugar existente, com "apagar" dentro dele. O `id` é
+  sugerido a partir do nome (slug sem acento) enquanto o usuário não digita um
+  próprio, e vira somente-leitura na edição (id é permanente, ver
+  `ESPEC-dados.md`). **Validação aparece no próprio modal, nunca em `alert`** —
+  tanto a do navegador (campo em branco, formato do id, capital fora de cidade)
+  quanto a que só o servidor sabe (id repetido, ponto caindo no mar), que volta
+  pela resposta e é mostrada no mesmo lugar.
+- **Atalhos**: `L` lugar, `R` régua, `Esc` sai da ferramenta, `Ctrl+Z`/`Ctrl+Y`
+  desfazer/refazer, `espaço` segurado arrasta sem sair da ferramenta, `C`
+  segurado mostra só a costa, `[`/`]` opacidade da camada de referência ativa,
+  `+`/`-` zoom, `?` abre a tela de ajuda com a lista toda. Dentro de um campo de
+  texto nenhuma tecla de ferramenta dispara (só `Esc` e `Enter`).
+- **Lista lateral de lugares** com busca por nome/id, clique centraliza e
+  destaca, e o destaque é recíproco com o mapa.
+- **Barra inferior**: coordenada do cursor (saiu do topo), zoom em
+  porcentagem, o que está sob o cursor, e o estado do salvamento.
+- **Indicador de salvamento**: "salvando..." → "✓ salvo" (some sozinho em 2,5s)
+  e, quando falha, "✘ NÃO SALVOU: <motivo>" em vermelho que **não some
+  sozinho** — inclusive quando o servidor não responde (erro de rede), que
+  antes passava batido.
+- **Confirmação só em ação destrutiva sem desfazer**: apagar um lugar deixou de
+  perguntar (é operação registrada, o desfazer cobre); "limpar todas as
+  medições" da régua continua perguntando, porque medição da régua é estado do
+  navegador e não passa pelo log de operações.
+- **Tema escuro por padrão**, com as cores do mapa preservadas: nenhum
+  `filter`/`opacity` global sobre `#mapa` — o escuro é só da moldura (painéis,
+  barras, modais), então tile de costa, Ocean Deep e Rótulos saem exatamente
+  como o gerador os fez.
+
+### Ressalvas registradas (item 4 do pedido: parar e avisar em vez de forçar)
+
+1. ~~**"O que está sob o cursor" mostra o LUGAR sob o ponteiro, não terra/mar.**
+   Saber se o pixel é terra ou mar exigiria consultar `costa_10240.png` a cada
+   movimento do mouse (...)~~ — **RESSALVA ERRADA, corrigida em 2026-09-23
+   (sexta rodada) e implementada**. O usuário apontou o furo: não é preciso a
+   máscara de 10240px nenhuma. **O bloco da costa que o navegador já baixou JÁ
+   É a resposta** — `scripts/gerar_tiles.py` pinta terra com alfa 255 e mar com
+   alfa 0, então "é terra?" é ler o alfa daquele pixel. Implementado em
+   `static/js/terra-ou-mar.js`: o bloco é desenhado uma vez num canvas oculto,
+   o `ImageData` fica guardado por bloco (teto de 60 blocos, ~15 MB, com
+   descarte do mais antigo), a leitura seguinte é um índice em array, e a
+   leitura é sempre no zoom NATIVO, então o cache não é refeito a cada
+   aproximação. Sem chamada ao servidor por movimento do mouse. Dois detalhes
+   que só aparecem fazendo:
+   - **404 é resposta, não erro**: `gerar_tiles.py` não grava tile totalmente
+     transparente, e tile de costa totalmente transparente é um pedaço de
+     mundo que é só mar — então bloco ausente = mar, guardado como tal.
+   - **O único impedimento real seria CORS**: `getImageData` num canvas com
+     imagem de outra origem sem CORS lança, e o canvas fica "tainted". Aqui os
+     tiles vêm do próprio servidor da ferramenta (mesma origem), então não
+     acontece; o código trata o caso mesmo assim (marca o bloco como
+     desconhecido em vez de tentar de novo a cada movimento), porque é o que
+     quebraria se um dia os tiles saíssem para outro domínio.
+   - **Conferido com controle negativo**, lendo os mesmos arquivos de tile que
+     o navegador lê, pela mesma regra: terra conhecida (Mére, px 6211,7650)
+     deu `alfa=255 → terra`; mar aberto conhecido (px 1000,5000) caiu num
+     bloco AUSENTE → mar; e — o controle que importa — um pixel de mar DENTRO
+     de um bloco que existe (px 6211,7900) deu `alfa=0 → mar`, provando que a
+     regra não é "o bloco existe, então é terra". O que essa conferência NÃO
+     cobre: o caminho do canvas no navegador (`getImageData`), que só um teste
+     no navegador de verdade exercita.
+2. **A tecla `C` (só a costa) depende da ORDEM das camadas no DOM**: a regra
+   CSS esconde todo `.leaflet-layer` do painel de tiles menos o primeiro, e o
+   primeiro é a costa porque `app.js` a adiciona antes das outras. Funciona, mas
+   é uma suposição de ordem, não uma ligação explícita com a camada. Se um dia
+   alguma camada for adicionada antes da costa, a tecla esconde a coisa errada.
+3. ~~**A régua ainda usa `prompt()` para o nome ao salvar uma medição.**~~ —
+   **RESOLVIDO em 2026-09-23 (sexta rodada)**: virou `#modal-medicao`, no mesmo
+   padrão do de Lugar (Enter salva, Esc cancela, foco no campo ao abrir, resumo
+   da medição — pontos, km e tempos de viagem — no topo, e o erro aparece
+   DENTRO do modal, nunca em `alert`; inclusive o erro que só o servidor sabe).
+   Com isso não sobra nenhum `prompt()`/`confirm()` de navegador na ferramenta,
+   exceto o `confirm()` de ação destrutiva sem desfazer (apagar uma medição,
+   limpar todas), que é intencional.
+   - **Guarda nova no servidor, com controle negativo**: nome só de espaço
+     (`"   "`) vira `null` em vez de virar uma descrição que parece existir e
+     não diz nada — a API é chamável direto, então a garantia mora no
+     `backend/medicoes.py`, não só no modal (`tests/test_medicoes.py`:
+     `test_nome_so_de_espaco_vira_nulo` e `test_nome_com_espaco_nas_pontas_e_aparado`).
+
+## Travar objeto e tema claro/escuro (sétima rodada, 2026-09-23)
+
+### Travar objeto (item 1)
+
+Esquema completo em `ESPEC-dados.md`, seção "Travamento" · definido lá de uma vez
+para **todos** os objetos editáveis (lugar, rio, estrada, área), não só para o que
+existe hoje, para a ferramenta de Área já nascer com isto.
+
+O que mora na ferramenta:
+
+- `backend/travas.py` · o cadeado por camada (`dados/camadas_travadas.json`) e as
+  duas guardas de entrada (`exigir_camada_livre`, `exigir_objeto_livre`). A classe
+  `Travado` é **separada de `ValueError` de propósito**, e vira **HTTP 409**:
+  o frontend precisa distinguir "está travado" (aviso discreto) de "dado inválido"
+  (faixa vermelha de erro de gravação) sem interpretar a mensagem.
+- `backend/lugares.py` · as guardas em mover/apagar/editar/criar e o caminho próprio
+  `definir_trava`. A trava é checada **antes** da validação de terra: um lugar
+  travado nem chega a ser avaliado, e o aviso diz "está travado", não "caiu no mar".
+- `static/js/lugares.js` · marcador travado nasce com `draggable: false` (em vez de
+  cancelar o arrasto no meio e brigar com o Leaflet), cadeadinho discreto no canto do
+  símbolo e na lista lateral, o modal vira só-leitura menos a própria trava, e o
+  cadeado da camada é um botão na seção LUGARES.
+- `static/js/interface.js` · `mostrarAviso()` (mesma discrição do "✓ salvo", some
+  sozinho, nunca a faixa vermelha) e a tecla `T` no objeto selecionado.
+
+**Testes, com controle negativo** (`tests/test_travas.py`, 15 novos, 79 no total):
+travado não move / não apaga / não edita, com o dado conferido intacto depois de
+cada recusa; destravado volta a mover (controle positivo, senão um bug que recusasse
+tudo passaria); `travado` não booleano é `ValueError` e não `Travado`; a camada
+travada bloqueia objeto livre; **o teste que pega a implementação ingênua do item
+1d**: trava a camada, compara `lugares.geojson` byte a byte antes/durante/depois e
+exige que travar a camada não tenha escrito `travado` em ninguém; camada inventada
+recusada; e desfazer/refazer das duas travas, inclusive a prova de que desfazer uma
+trava de camada não some com as outras cinco camadas do arquivo. Conferido também
+por HTTP de verdade: 409 na recusa por trava, 422 no ponto no mar, 404 na camada
+inventada · e as operações de teste desfeitas depois, sem sobra no dado real.
+
+### Tema claro/escuro (item 2)
+
+Tokens de cor redefinidos em `:root[data-tema="claro"]`, botão `☾`/`☀` na barra de
+cima, tecla `D`, escolha lembrada em `localStorage` (leitura em `try/catch`, como a
+das seções). A leitura inicial é um script inline no `<head>`, e não no
+`interface.js`: no `interface.js` a página nasceria escura e piscaria para o claro.
+**Nenhum dos dois temas toca em `#mapa`** · nem `filter`, nem `opacity`, nem a cor
+de fundo dele: o fundo de `#mapa` é o mar provisório, que é MAPA e não moldura.
