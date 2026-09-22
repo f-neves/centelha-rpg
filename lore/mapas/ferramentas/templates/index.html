@@ -37,7 +37,8 @@
       </div>
       <div class="secao">
         <h2>CAMADAS DE REFERENCIA</h2>
-        <p class="nota">chegam na etapa 2 — ainda não ligadas aqui.</p>
+        <div id="lista-camadas-referencia"></div>
+        <p class="nota">Ocean Deep chega depois (extração pesada do PSD).</p>
       </div>
       <div class="secao">
         <h2>FERRAMENTAS</h2>
@@ -57,8 +58,11 @@
     // Injetado pelo servidor a partir de dados/coordenadas.json (backend/coordenadas.py) —
     // nenhum número de projeção é digitado à mão aqui.
     const PARAMETROS_LEAFLET = /*__PARAMETROS_LEAFLET__*/;
+    // Injetado a partir de dados/camadas_referencia.json (backend/referencias.py).
+    const CAMADAS_REFERENCIA_INICIAL = /*__CAMADAS_REFERENCIA__*/;
   </script>
   <script src="/static/js/minimapa.js"></script>
+  <script src="/static/js/camadas-referencia.js"></script>
   <script src="/static/js/app.js"></script>
 </body>
 </html>

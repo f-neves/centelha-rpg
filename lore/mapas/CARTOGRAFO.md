@@ -10,79 +10,71 @@ confirmado pelo usuário; o que é recomendação de IA fica marcado como tal.
 primeira coisa que `/cartografo` mostra.)*
 
 - **Última atualização:** 2026-09-21.
-- **Etapa:** **etapa 1 da ferramenta concluída e verificada** (sessão de
-  remote-control). Instalação feita, código escrito, tiles da costa e do mar gerados,
-  servidor testado num navegador de verdade (Leaflet mostrando o contorno de Uldun,
-  zoom, minimapa, leitura de lat/lon, seletor de camada). **Servidor deixado rodando**
-  em `http://127.0.0.1:8420/` para o usuário abrir.
-- **Instalação feita nesta sessão** (`lore/mapas/ferramentas/`, fora do git exceto
-  onde dito):
-  - Ambiente virtual `.venv` (Python 3.14) com `fastapi==0.141.1`, `uvicorn==0.53.0`
-    **sem `[standard]`**, `shapely`, `Pillow`, `numpy` — versões exatas em
-    `requirements.txt`. O shapely do Python global (sessão anterior) não foi tocado.
-  - Leaflet 1.9.4 baixado pronto (sem npm, sem CDN) para
-    `static/vendor/leaflet-1.9.4/` (`leaflet.js`, `leaflet.css`, `images/`,
-    `LICENSE` — BSD-2-Clause confirmada no arquivo). **Estes arquivos vão para o
-    git.**
-  - Leaflet-Geoman **não instalado** (fica para a etapa 5). `leaflet-minimap`
-    **não usado** — minimapa é código próprio.
-  - `.venv` acrescentado ao `.gitignore` da raiz.
-- **Código de etapa 1** em `lore/mapas/ferramentas/`: servidor FastAPI
-  (`backend/main.py`, `backend/coordenadas.py`), página (`templates/index.html`,
-  `static/css/estilo.css`, `static/js/app.js`, `static/js/minimapa.js`), miniatura do
-  minimapa (`static/img/minimapa.jpg`, gerada a partir de `Uldun_parte-jogavel.jpg`
-  já existente, sem reprocessar a máscara nativa) e o script de tiles
-  (`scripts/gerar_tiles.py`). CRS própria de Uldun verificada contra o código-fonte
-  oficial do Leaflet 1.9.4 (`CRS.Simple.js`, `Transformation.js`, tag `v1.9.4`), não
-  só suposta. Zoom do Leaflet vai até `MAX_ZOOM_MAPA=9` (3 níveis além dos 6 nativos,
-  o navegador estica o tile de zoom 6 sozinho — nenhum bloco ampliado é gerado).
-- **Tiles gerados nesta sessão** (`scripts/gerar_tiles.py --confirmo`, depois do
-  usuário confirmar com navegadores fechados): 3.184 tiles (1.163 costa + 2.021 mar),
-  10,4s, pico de 298 MB de memória (a máscara é lida em modo "L", 1 canal, ~105 MB —
-  nunca existe uma imagem RGBA do mapa inteiro; a colorização acontece tile a tile),
-  3,9 MB em disco. Script recusa rodar se `render/tiles/` já existir (sem
-  sobrescrever) e recusa rodar sem `--confirmo` (sem tocar em nada). Detalhe completo,
-  com a tabela de métricas, em `ESPEC-ferramenta.md`, seção "Etapa 1".
-- **Achado corrigido nesta sessão, antes de gerar os tiles**: `costa_10240.png` é
-  modo "L" nativo (sem canal alfa de verdade); uma leitura de sessão anterior que
-  convertia pra RGBA e checava o alfa sempre dava "terra" (alfa sintético sempre 255)
-  — não testava nada. Achado, corrigido e a validação dos 17 pontos de
-  `massas.geojson` refeita com o canal certo (conclusão não mudou). Ver "Achados
-  técnicos registrados" abaixo.
-- **Verificação visual feita nesta sessão** (navegador real via `claude-in-chrome`):
-  costa aparece corretamente com zoom, navegação, minimapa (retângulo acompanha a
-  área visível, clique navega), leitura de lat/lon sob o cursor e seletor de camada
-  ativa — tudo conferido funcionando. Sem erro no console. Detalhe (inclusive um
-  achado sobre cliques automatizados de teste vs. clique real, que não indica
-  problema no app) em `ESPEC-ferramenta.md`.
-- **Trabalho de dados feito nesta sessão** (conversão/correção de arquivo, autorizado
-  pela decisão 1 e pelas correções 7, 8 e 9 — anterior à liberação da etapa 1):
-  - **`dados/regioes.json` criado**: as 6 regiões já nomeadas, cada uma com `rotulo`
-    (movido de `lugares.geojson`) e sem campo `massas` (pertencimento de ilha agora
-    só em `massas.geojson`, campo `regiao`).
-  - **`dados/lugares.geojson` esvaziado**: pronto para assentamento de verdade.
-  - **`dados/massas.geojson`**: ids `amb-*` → `ilha-*` (mesmo número).
-  - **`dados/coordenadas.json` reescrito**: `px_por_grau`/`km_por_grau` derivados de
-    `raio_km` e `km_por_px_latitude`; `limites_da_tela` derivado das mesmas fórmulas;
-    `massa_id` numérico trocado pelos ids estáveis de `massas.geojson`.
-  - Esboço da tela atualizado (`render/analise/esboco_ferramenta_v2.png`).
+- **Etapa:** **etapa 1 concluída, testada e aprovada pelo usuário; etapa 2 (camadas
+  de referência) preparada até a parada obrigatória** (sessão de remote-control).
+  **Commit feito** (`git show --stat` na mesma sessão): instalação, código da etapa
+  1, dados da terceira rodada dos ESPEC. Trabalho de etapa 2 (`camadas_referencia.json`
+  + backend + frontend) está pronto e testado, mas **ainda não commitado** (não foi
+  pedido). **Servidor deixado rodando** em `http://127.0.0.1:8420/`.
+- **Regra nova nas "Regras invioláveis" (pedida pelo usuário)**: toda validação
+  precisa de um controle negativo. Ver a regra abaixo e o achado que a motivou em
+  "Achados técnicos registrados".
+- **Instalação e código da etapa 1** — sem mudança desde a última atualização
+  (commitados nesta sessão): `.venv` próprio, Leaflet 1.9.4 baixado pronto (sem
+  npm/CDN), Geoman e `leaflet-minimap` de fora, minimapa próprio, CRS verificada
+  contra o código-fonte do Leaflet, 3.184 tiles de costa/mar gerados (10,4s, pico
+  298 MB). Detalhe completo em `ESPEC-ferramenta.md`.
+- **Validação dos 17 pontos de `massas.geojson` refeita com controle negativo**: um
+  ponto de oceano aberto conhecido, testado primeiro, devolveu `terra=False` como
+  tem que devolver — só depois disso os 17 pontos foram checados de novo (continuam
+  todos `terra=True`). Ver "Achados técnicos registrados".
+- **Commit da etapa 1** (`96e41882`, sem push): `.gitignore` (mais a regra nova de
+  `__pycache__/`), `CARTOGRAFO.md`, `ESPEC-dados.md`, `ESPEC-ferramenta.md`,
+  `dados/regioes.json`, `dados/lugares.geojson` (criado) e `dados/lugares.json`
+  (removido), `dados/massas.geojson`, `dados/coordenadas.json`, e todo
+  `lore/mapas/ferramentas/` (sem `.venv/` nem `render/tiles/`, os dois fora do git).
+  Nada de outra frente foi tocado (`docs/simulacao/caixa/87-despacho.md` e
+  `jogador-novo-bestiario.md` seguem como estavam, intocados).
+- **Etapa 2 (camadas de referência), feito nesta sessão, sem commit ainda:**
+  - `dados/camadas_referencia.json` criado: as 4 imagens do ChatGPT
+    (retângulo-placeholder, o usuário ajusta) + `rotulos`
+    (`fonte/Mapa Teste1.jpg`, já nasce alinhado ao mundo inteiro — **testado,
+    os nomes caem exatamente em cima do contorno certo**).
+  - `backend/referencias.py` (leitura/gravação atômica) e `backend/main.py` ganharam
+    `GET`/`POST /api/camadas-referencia` e servem `/referencias` e `/fonte` crus
+    (sem processamento — o navegador decodifica como decodificaria um `<img>`
+    qualquer, não é o "processamento pesado" da regra abaixo).
+  - `static/js/camadas-referencia.js`: cada camada vira `L.imageOverlay`
+    (liga/desliga, opacidade, posição por 4 campos numéricos). Testado num
+    navegador de verdade: liga/desliga, opacidade, gravação em disco — tudo
+    funcionando, sem erro no console.
+  - **`scripts/extrair_ocean_deep.py` escrito, NÃO rodado — parada obrigatória
+    desta sessão.** Abre `fonte/Mapa.psd` (594 MB) por automação COM do Photoshop,
+    processamento mais pesado que o da costa. Ao contrário de `gerar_tiles.py`, essa
+    automação COM não foi testada de ponta a ponta (rodar de verdade é o próprio
+    processamento pesado). Reforço de código pra "regra de ouro" (nunca salvar o
+    original): trabalha só numa cópia (`Duplicate()`), confere
+    `doc_original.Saved` antes de fechar e recusa fechar sozinho se isso disparar.
+    Detalhe completo em `ESPEC-ferramenta.md`, seção "Etapa 2".
 - **Pendente:**
-  - Confirmar a suposição desta rodada de que a atração automática de 5km (correção 3
-    do `ESPEC-dados.md`) vale também para o início de um braço de delta contra o
-    traçado do rio-mãe — o pedido original só deu a distância para o caso de lugar.
+  - **Rodar `scripts/extrair_ocean_deep.py --confirmo`** (Python global, não o
+    `.venv`) — precisa do Photoshop instalado, sem outro documento pesado aberto, e
+    do usuário confirmando depois de fechar navegadores/sessões.
+  - Depois da extração: plugar a pirâmide de tiles do Ocean Deep no
+    `app.js`/`camadas-referencia.js` (ainda não escrito, só faz sentido depois de
+    saber que os tiles existem).
+  - Ajustar posição/escala das 4 imagens do ChatGPT na ferramenta (hoje num
+    retângulo-placeholder pequeno, sem relação com a costa real).
+  - Confirmar a suposição de que a atração automática de 5km (correção 3 do
+    `ESPEC-dados.md`) vale também pro início de um braço de delta contra o rio-mãe.
   - Gerar o cache de identidade de ilha (etapa 10 da ferramenta): processamento
     pesado, ainda não rodado.
   - Confirmar na prática, na etapa 5 da ferramenta, se o Leaflet-Geoman free cobre
-    cortar/rotacionar/dividir/escalar/snap (não bloqueia — a arquitetura já não
-    depende disso).
-  - Nomear as massas de terra sem nome; decidir pertencimento das 9 ilhas
-    `ilha-*` em `dados/massas.geojson`.
-  - Vale o usuário clicar o "+"/"−" de zoom com o próprio mouse ao abrir a página,
-    pra confirmar que funciona liso (achado desta sessão sobre clique automatizado,
-    ver `ESPEC-ferramenta.md`) — não deveria repetir, mas é rápido de conferir.
-- **Próximo passo:** o usuário abrir `http://127.0.0.1:8420/` e conferir a ferramenta.
-  Depois disso, definir a próxima etapa (2: camadas de referência, com o aviso de
-  processamento pesado do Ocean Deep) ou outra prioridade.
+    cortar/rotacionar/dividir/escalar/snap.
+  - Nomear as massas de terra sem nome; decidir pertencimento das 9 ilhas `ilha-*`.
+- **Próximo passo:** o usuário decidir se autoriza rodar
+  `scripts/extrair_ocean_deep.py --confirmo` agora (com Photoshop aberto e pronto) ou
+  se prefere seguir por outra frente primeiro — é a parada obrigatória da etapa 2.
 
 ## Objetivo e estilo
 

@@ -371,3 +371,73 @@ Conferido com `claude-in-chrome` nesta sessão:
 - **Seletor de camada ativa**: aparece na barra superior (`RELEVO`/`Planície`), como
   no esboço — ainda não conectado a nada (não tem o que selecionar até a etapa 5).
 - Sem erro no console do navegador em nenhum dos testes.
+
+## Etapa 2 — camadas de referência, preparada até a parada obrigatória
+
+### Feito nesta sessão (sem processamento pesado)
+
+- **`dados/camadas_referencia.json` criado**: 5 entradas (as 4 imagens do ChatGPT +
+  `rotulos`), cada uma com `visivel`, `opacidade` e `bounds` (retângulo em lat/lon —
+  posição e escala são a mesma coisa: esticar a imagem sobre esse retângulo). As 4
+  do ChatGPT nascem com um retângulo-placeholder pequeno no centro do mundo
+  (`sul/norte/oeste/leste = -10/10/-10/10`), porque não têm orientação nem escala
+  conhecida — o usuário ajusta. `rotulos` (`fonte/Mapa Teste1.jpg`) já nasce com o
+  retângulo do mundo inteiro, porque é derivado da mesma tela de 10240px da costa —
+  **testado, alinha perfeitamente com o contorno** (ver abaixo).
+- **`backend/referencias.py`**: lê/grava `camadas_referencia.json` com gravação
+  atômica (arquivo temporário + `os.replace`) e validação (opacidade entre 0 e 1,
+  `sul<norte`, `oeste<leste`) antes de gravar.
+- **`backend/main.py` ganhou**: `GET /api/camadas-referencia` (devolve o documento
+  com uma `url` calculada por camada); `POST /api/camadas-referencia/{id}` (aplica
+  mudança parcial — `visivel`, `opacidade` ou `bounds` — e grava); montagem estática
+  de `/referencias` e `/fonte` (servidos **crus**, sem nenhum processamento Python —
+  o navegador decodifica como decodificaria qualquer `<img>`; isso não é o
+  "processamento pesado" da regra do CARTOGRAFO, que é sobre o SERVIDOR decompor ou
+  varrer a imagem, não sobre servir os bytes).
+- **`static/js/camadas-referencia.js`**: cada camada vira um `L.imageOverlay`
+  (bounds = retângulo, opacidade = slider); checkbox liga/desliga, slider de
+  opacidade, botão "posição" abre 4 campos numéricos (sul/norte/oeste/leste) +
+  "aplicar", que salva no servidor e redesenha o overlay. Sem arrasto de
+  canto/redimensionar visualmente — números digitados, mais simples, e ainda é
+  "ajustável à mão" como o ESPEC pede.
+- **Testado num navegador de verdade**: a camada `rotulos` aparece por cima da costa
+  com opacidade 0.7, os nomes (The White Wall, The Neck, Calin, Waning, Mére, Syl)
+  caem exatamente em cima do contorno certo — confirma que os bounds do mundo
+  inteiro (`dados/coordenadas.json`, `limites_da_tela`) estão certos também para
+  essa finalidade. Testado ligar/desligar uma camada do ChatGPT (apareceu no
+  retângulo-placeholder, como esperado) e a gravação da mudança em
+  `camadas_referencia.json` (conferida no arquivo em disco). Sem erro no console.
+
+### Ocean Deep — parada obrigatória, código escrito e NÃO executado
+
+`scripts/extrair_ocean_deep.py` está escrito (abre `fonte/Mapa.psd` por automação
+COM do Photoshop, isola a camada "Ocean Deep", exporta um PNG a partir de uma
+**cópia** do documento — nunca do original — e gera uma pirâmide de tiles a partir
+dele, do mesmo jeito que `gerar_tiles.py`). **Não foi rodado.**
+
+- **Mais pesado que a costa**: abre um arquivo de 594 MB pelo Photoshop (aplicação
+  inteira, não só decodificar um PNG) — cai na regra do CARTOGRAFO.md sobre
+  processamento pesado, com um agravante a mais: precisa do Photoshop instalado e
+  sem outro documento grande aberto.
+- **Não testado, ao contrário de `gerar_tiles.py`**: usa a API de automação COM do
+  Photoshop (`win32com`), que só se comprova rodando de verdade — e rodar de
+  verdade é exatamente o processamento pesado que está sendo evitado até o usuário
+  confirmar. Os pontos mais incertos (documentados como "VERIFICAR NA PRIMEIRA
+  EXECUÇÃO" no código): se "Ocean Deep" está solta ou dentro de um grupo de
+  camadas, e se `MergeVisibleLayers` preserva transparência do jeito esperado numa
+  camada que não cobre a tela inteira.
+- **Regra de ouro reforçada no código, não só na intenção**: o documento original
+  (`Mapa.psd` aberto) nunca leva `.Save()`, só é lido e duplicado; todo o trabalho
+  de isolar/exportar acontece na cópia. Antes de fechar o original, o script confere
+  `doc_original.Saved` (o Photoshop diria `False` se achasse que algo mudou) e
+  **recusa fechar sozinho** se isso disparar, em vez de arriscar a opção de
+  salvamento errada — prefere parar e pedir pra um humano olhar.
+- **Roda com o Python GLOBAL da máquina, não o `.venv` da ferramenta**: `win32com`
+  já está instalado nele (sessão anterior de automação COM) e não foi instalado no
+  `.venv` — instalar de novo só pra essa automação de uso único não faria sentido, e
+  entraria na regra de "nada instalado sem ok".
+- **Ao rodar com sucesso**, ainda falta plugar a pirâmide de tiles do Ocean Deep no
+  `app.js`/`camadas-referencia.js` (hoje eles só sabem de imagem inteira + tiles
+  costa/mar; Ocean Deep é tile, mas não é costa nem mar) — fica para depois da
+  extração, não fazia sentido escrever esse fiozinho antes de saber que os tiles
+  vão existir.

@@ -71,4 +71,7 @@
 
   // Minimapa próprio (static/js/minimapa.js).
   iniciarMinimapa(mapa, limites);
+
+  // Camadas de referência (etapa 2, static/js/camadas-referencia.js).
+  iniciarCamadasReferencia(mapa, CAMADAS_REFERENCIA_INICIAL);
 })();

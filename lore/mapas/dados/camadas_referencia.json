@@ -1,0 +1,71 @@
+{
+  "_comentario": "Camadas de referência com transparência (ESPEC-ferramenta.md, correção 10 / etapa 2). Posição/escala guardadas como um retângulo em lat/lon (bounds), não como pixel — a ferramenta desenha cada imagem esticada exatamente sobre esse retângulo. As 4 imagens do ChatGPT não batem com a costa oficial (nascem sem escala nem orientação definida) e começam com um retângulo-placeholder pequeno no centro do mundo; o usuário ajusta. 'Rótulos' é derivado do próprio mapa (fonte/Mapa Teste1.jpg, 10240px, mesma tela que costa_10240.png) e por isso já nasce alinhado ao mundo inteiro, sem precisar de ajuste.",
+  "versao_esquema": 1,
+  "camadas": [
+    {
+      "id": "chatgpt-1",
+      "nome": "ChatGPT ref 1",
+      "arquivo": "referencias/ChatGPT Image 15 de jul. de 2026, 16_21_08.png",
+      "visivel": false,
+      "opacidade": 0.6,
+      "bounds": {
+        "sul": -10,
+        "norte": 10,
+        "oeste": -10,
+        "leste": 10
+      }
+    },
+    {
+      "id": "chatgpt-2",
+      "nome": "ChatGPT ref 2",
+      "arquivo": "referencias/ChatGPT Image 15 de jul. de 2026, 16_30_50.png",
+      "visivel": false,
+      "opacidade": 0.6,
+      "bounds": {
+        "sul": -10,
+        "norte": 10,
+        "oeste": -10,
+        "leste": 10
+      }
+    },
+    {
+      "id": "chatgpt-3",
+      "nome": "ChatGPT ref 3",
+      "arquivo": "referencias/ChatGPT Image 15 de jul. de 2026, 17_20_46.png",
+      "visivel": false,
+      "opacidade": 0.6,
+      "bounds": {
+        "sul": -10,
+        "norte": 10,
+        "oeste": -10,
+        "leste": 10
+      }
+    },
+    {
+      "id": "chatgpt-4",
+      "nome": "ChatGPT ref 4",
+      "arquivo": "referencias/ChatGPT Image 15 de jul. de 2026, 17_56_20.png",
+      "visivel": false,
+      "opacidade": 0.6,
+      "bounds": {
+        "sul": -10,
+        "norte": 10,
+        "oeste": -10,
+        "leste": 10
+      }
+    },
+    {
+      "id": "rotulos",
+      "nome": "Rótulos (Mapa Teste1)",
+      "arquivo": "fonte/Mapa Teste1.jpg",
+      "visivel": true,
+      "opacidade": 0.7,
+      "bounds": {
+        "sul": -23.292,
+        "norte": 68.798,
+        "oeste": -46.045,
+        "leste": 46.045
+      }
+    }
+  ]
+}

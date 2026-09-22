@@ -55,6 +55,32 @@ html, body {
   pointer-events: none;
 }
 
+.linha-camada-referencia {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  font-size: 11px;
+  margin-bottom: 4px;
+}
+.nome-camada-referencia { flex: 1 1 auto; min-width: 90px; }
+.linha-camada-referencia input[type="range"] { width: 50px; }
+.linha-camada-referencia button {
+  font-size: 10px;
+  padding: 1px 4px;
+}
+.caixa-ajuste-bounds {
+  flex-basis: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px;
+  background: #eee;
+  border: 1px solid #ccc;
+}
+.caixa-ajuste-bounds label { font-size: 10px; }
+.caixa-ajuste-bounds input { width: 55px; }
+
 #painel-selecao {
   height: 30px;
   display: flex;
