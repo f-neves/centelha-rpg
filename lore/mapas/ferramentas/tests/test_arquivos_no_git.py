@@ -9,10 +9,19 @@ dois arquivos que a página carrega de verdade (`dist/leaflet-geoman.css` e
 nada quebrou: o arquivo estava no disco. Num clone novo a ferramenta abriria sem a
 caneta de desenhar, sem mensagem nenhuma.
 
-O teste compara o que está no DISCO com o que o git RASTREIA, dentro da ferramenta e
-dos dados, e falha nomeando o que sobrar. O que fica de fora de propósito está na
-lista `PROPOSITAIS`, abaixo, e é a única saída: um arquivo novo ou entra no git, ou
-entra nessa lista com motivo escrito.
+A comparação é entre o que está no DISCO e o que o git RASTREIA, dentro da ferramenta
+e dos dados. O que sobra se divide em dois, e só um deles é defeito (divisão pedida
+pelo usuário na décima rodada):
+
+- **escondido pelo `.gitignore`**: invisível, e é o que `test_nada_necessario_esta_
+  escondido_pelo_gitignore` FAZ FALHAR;
+- **apenas ainda não commitado**: visível no `git status`, trabalho em andamento, e
+  `test_lista_o_que_ainda_nao_foi_commitado` só LISTA, sem reprovar. Sem essa
+  separação a suíte terminava vermelha em toda rodada que acabasse com etapa nova sem
+  commit, que é quase toda.
+
+O que fica de fora de propósito está na lista `PROPOSITAIS`, abaixo, e é a única
+saída: um arquivo novo ou entra no git, ou entra nessa lista com motivo escrito.
 """
 
 import os
@@ -113,32 +122,37 @@ def _escondido_pelo_gitignore(rel: str) -> bool:
     ).returncode == 0
 
 
-def test_nada_necessario_ficou_fora_do_git():
-    """O teste em si. Falha nomeando cada arquivo, e separando os dois casos, que
-    têm gravidade bem diferente:
-
-    - **escondido pelo `.gitignore`**: o defeito que criou este teste. Não aparece em
-      `git status`, não dá erro nenhum aqui, e só quebra num clone novo.
-    - **só ainda não commitado**: trabalho em andamento. Aparece em `git status` como
-      `??`, e some quando a etapa for commitada. Continua falhando de propósito (o
-      pedido foi "falha se houver arquivo necessário fora do git"), mas a mensagem
-      diz qual é qual para ninguém sair caçando defeito onde não há.
+def test_nada_necessario_esta_escondido_pelo_gitignore():
+    """**Este é o que falha**, e só para o defeito invisível: arquivo que o
+    `.gitignore` esconde, não aparece em `git status`, não dá erro nenhum na máquina
+    de quem escreveu, e só quebra num clone novo. Foi o caso do `dist/` do Geoman.
     """
-    sobrando = sorted(fora_do_git())
-    escondidos = [f for f in sobrando if _escondido_pelo_gitignore(f)]
-    apenas_novos = [f for f in sobrando if f not in escondidos]
-    recado = []
-    if escondidos:
-        recado.append(
-            "ESCONDIDO PELO .gitignore (o defeito do dist/, invisível no git status):\n  "
-            + "\n  ".join(escondidos)
-        )
-    if apenas_novos:
-        recado.append(
-            "ainda não commitado (aparece no git status, some ao commitar a etapa):\n  "
-            + "\n  ".join(apenas_novos)
-        )
-    assert not sobrando, "\n".join(recado)
+    escondidos = sorted(f for f in fora_do_git() if _escondido_pelo_gitignore(f))
+    assert not escondidos, (
+        "arquivo necessário ESCONDIDO pelo .gitignore (invisível no git status, "
+        "quebra num clone novo). Ou entra no git com `git add -f`, ou entra em "
+        "PROPOSITAIS com motivo:\n  " + "\n  ".join(escondidos)
+    )
+
+
+def test_lista_o_que_ainda_nao_foi_commitado(capsys):
+    """**Este NÃO falha**: só lista. Arquivo apenas não commitado é trabalho em
+    andamento, aparece em `git status` como `??` e some quando a etapa for
+    commitada; fazer a suíte inteira ficar vermelha por causa dele custaria mais do
+    que vale, porque quase toda rodada termina com uma etapa nova sem commit
+    (decisão do usuário, 2026-09-23, décima rodada, depois de ver a suíte vermelha
+    por construção no fim da rodada anterior).
+
+    A lista sai com `pytest -s`, ou no relatório de falha de qualquer outro teste.
+    """
+    novos = sorted(f for f in fora_do_git() if not _escondido_pelo_gitignore(f))
+    if novos:
+        print("\nainda não commitado (visível no git status, não é defeito):")
+        for f in novos:
+            print("  " + f)
+    # A única asserção é sobre o próprio levantamento ter acontecido: uma lista é
+    # informação, não veredito.
+    assert isinstance(novos, list)
 
 
 def test_pega_um_arquivo_escondido_pelo_gitignore():
@@ -158,6 +172,7 @@ def test_pega_um_arquivo_escondido_pelo_gitignore():
         assert ignorado, "o .gitignore parou de esconder dist/: reveja este controle"
         rel = arquivo.relative_to(RAIZ_REPO).as_posix()
         assert rel in fora_do_git(), "o detector não viu um arquivo escondido pelo .gitignore"
+        assert _escondido_pelo_gitignore(rel), "e ele tem que cair no teste que FALHA, não no que só lista"
     finally:
         arquivo.unlink(missing_ok=True)
         alvo.rmdir()
