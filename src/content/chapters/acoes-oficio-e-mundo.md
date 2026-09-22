@@ -93,7 +93,7 @@ A espada serve de gabarito da régua inteira:
 | **Comum** | 3 | 7 | 22 | dia | oficial, 6,3 dias |
 | Boa | 4 | 10 | 33 | dia | Ferreiro 4 e soma 10, 4,4 dias |
 | Ótima | 5 | 13 | 50 | **semana** | mestre (soma 12), 6,3 semanas |
-| Excepcional | 6 | 16 | 74 | semana | mestre em oficina de mestre, 8 semanas |
+| Excepcional | 6 | 16 | 74 | semana | mestre em oficina de mestre, ~15 semanas |
 
 A subida do intervalo na Ótima é o que impede a peça fina de sair no ritmo da peça de tropa. E a última linha mostra o teto do sistema funcionando: a soma máxima de um humano é 12, o que dá média 21 e cinco pontos por semana contra a Dificuldade 16, ou seja quinze semanas. **Uma espada Excepcional não sai numa forja de vila.** O que a torna viável são a oficina de mestre, o bônus fixo do ofício geral e a Especialidade.
 
