@@ -273,19 +273,26 @@ gere 4, 7, 11, 12, 14 por conta). Investigação completa em
 quatro citados, mais Herói/Semideus fora da mesa) cobrindo uma faixa mais estreita, sempre
 crescentes, sem nunca se declararem como régua própria no texto.
 
-**Resolução: nota de documentação, sem mexer em nenhum número.** O mesmo padrão já existe e já
-tem redação publicada em `quase-acerto.md:32` ("Esta classe é uma régua PRÓPRIA do Quase-Acerto,
-e não a mesma classe de Armas & Armaduras... As duas concordam na maioria dos casos comuns, mas
-nascem de contas diferentes"). Escalar e Nadar recebem a mesma explicação, adaptada: uma frase
-dizendo que usam escala própria, mais fina que a régua comum de seis degraus, mas seguindo a
-mesma lógica (quanto maior o número, mais difícil). Não é conserto de valor porque não há valor
-errado, é lacuna de explicação.
+**Resolução (Escalar, e as três águas bravas de Nadar): nota de documentação, sem mexer em
+nenhum número.** O mesmo padrão já existe e já tem redação publicada em `quase-acerto.md:32`
+("Esta classe é uma régua PRÓPRIA do Quase-Acerto, e não a mesma classe de Armas & Armaduras...
+As duas concordam na maioria dos casos comuns, mas nascem de contas diferentes"). Escalar por
+inteiro, e o que sobra do teste de Nadar depois do redesenho em **§4e**, recebem a mesma
+explicação, adaptada: uma frase dizendo que usam escala própria, mais fina que a régua comum de
+seis degraus, mas seguindo a mesma lógica (quanto maior o número, mais difícil). Não é conserto
+de valor porque não há valor errado, é lacuna de explicação.
 
-**Texto proposto para a Executora inserir**, uma vez em cada ficha (Escalar, logo após a tabela
-de Dificuldade em `acoes-corpo-e-movimento.md:20-26`; Nadar, após a de `acoes-corpo-e-movimento.md:46-52`):
+**Nadar em si deixou de ser só esta nota**: ao trazer o item para decisão, ficou claro que a
+forma inteira da ação estava errada, não só a régua de Dificuldade. Ver **§4e**, que substitui
+esta resolução para Nadar (mantém só as três Dificuldades mais altas, 11/14/18, como teste).
+
+**Texto proposto para a Executora inserir** em Escalar, logo após a tabela de Dificuldade em
+`acoes-corpo-e-movimento.md:20-26`:
 
 > *Esta tabela usa uma escala própria, mais fina que a régua comum de seis degraus, mas segue a
 > mesma lógica: quanto maior o número, mais difícil.*
+
+(O mesmo texto vale para a tabela reduzida de Nadar que sobra depois de §4e.)
 
 **Conferido ao revisar o restante do capítulo** (Cair, Amortecer, Agarrar a borda, Feito de
 força): nenhuma outra inconsistência, contradição ou número órfão encontrado. As Dificuldades
@@ -293,6 +300,56 @@ das duas Reflexivas de Cair (10 e 15) já batem com a régua comum, e as tabelas
 velocidade têm nota de "regra de bolso" própria (`dano ≈ altura × 2,2`), sem conflito com nada
 já decidido nesta rodada. **Balde C fechado: os cinco itens (2, 3, 8, 15, 54) estão todos
 resolvidos.**
+
+## 4e · Redesenho de Nadar, decidido em 22/09/2026
+
+**Como Nadar existe hoje** (`acoes-corpo-e-movimento.md`, seção Nadar): teste sempre, modo
+Acumulada, Vigor + Atletismo (secundária Natação) contra Dificuldade fixa por tipo de água
+(4/7/11/14/18), Acúmulo em metros de distância, Margem compra mais 5 metros por Margem, e carga/
+armadura entram como Circunstância na Dificuldade (armadura pesada +4, carga acima da Leve +2,
+roupa pesada +2). Ou seja, é a mesma forma do teste de Escalar (§4d): sempre pede rolagem, sempre
+mede progresso por Acúmulo.
+
+**A inconsistência, levantada pelo humano ao revisar o item 54:** essa forma está errada para
+Nadar. Escalar é ação pontual contra obstáculo (uma parede tem dificuldade, e o personagem sobe
+por tentativa), mas nadar em água calma é **deslocamento contínuo**, do mesmo tipo que andar ou
+correr: o jogo já tem uma peça pronta para isso, a **Vel. de Corrida** (`ficha-engine.ts:1578`,
+derivada de Destreza+Atletismo, sem rolar) com o **Deslocamento com carga**
+(`ficha-engine.ts:1657-1667`, curva de fração por peso carregado, calibrada em 2026-08-09). Nadar
+nunca usou esse modelo: sempre tratou até "lago parado, mar de bonança" como se fosse escalar uma
+parede lisa, testando toda vez.
+
+**Resolução, em quatro peças:**
+
+1. **Água calma vira deslocamento derivado, sem rolar.** As duas primeiras linhas da tabela atual
+   (Dif 4, "lago parado, mar de bonança"; Dif 7, "rio de corrente mansa, mar com ondulação, água
+   gelada") deixam de pedir teste. O personagem nada na **Vel. de Natação** (abaixo), do mesmo
+   jeito que anda ou corre em terra: consulta o número, não rola.
+2. **Água brava continua Acumulada, só com as três Dificuldades mais altas.** Correnteza forte/
+   mar agitado/água muito fria (Dif 11), corredeira/ressaca/arrebentação (Dif 14) e cachoeira/
+   remoinho/mar de tempestade (Dif 18) continuam exigindo teste, Acúmulo em metros, Margem compra
+   mais 5 metros, exatamente como hoje. A Circunstância de carga/armadura continua entrando como
+   bônus/penalidade fixo na Dificuldade desses três testes, sem mudança (decisão explícita: não
+   duplicar a curva de fração dentro do teste, para não recalibrar duas coisas de uma vez). A nota
+   de "régua própria" de §4d passa a valer só para essas três linhas.
+3. **Vel. de Natação (m/s)** = `1 + Vigor × ¾ + (Atletismo + Natação) ÷ 2`. Mesmo molde da Vel. de
+   Corrida (`4 + Destreza×¾ + Atletismo÷2`), trocando Destreza por Vigor (é o atributo que a
+   jogada de Nadar sempre usou) e somando a secundária Natação ao Atletismo. Uma pessoa comum
+   (Vigor 2, Atletismo/Natação 0) nada a **2,5 m/s**, cerca de 45% da Vel. de Corrida da mesma
+   pessoa (5,5 m/s): mais lento que correr, na proporção real entre os dois gestos.
+4. **Curva de carga própria para a água, mais dura que a de terra.** Mesmo formato da curva de
+   Corrida (`fração = máx(0, 1 − (peso ÷ pesoMáximo ÷ corte)^expoente)`), mas com **corte 0,5 e
+   expoente 2** (contra corte 0,75 e expoente 1,5 da Corrida): na água, metade da carga máxima já
+   zera a velocidade (a pessoa para de nadar e começa a afundar, não só anda devagar), e a queda
+   é mais brusca antes disso. Essa curva vale só para a Vel. de Natação derivada (item 3); os três
+   testes de água brava (item 2) não a usam, pela mesma decisão do item 2.
+
+**O que fica de fora, registrado como pendente:** o texto exato da ficha/capítulo (onde a Vel. de
+Natação aparece, se junto dos outros derivados de Deslocamento ou em seção própria de Nadar) e a
+implementação em `ficha-engine.ts`/`calc.ts`/`regras.json` ficam para a Executora. Também não foi
+decidido nesta rodada se personagens sem nenhum ponto em Natação/Atletismo afundam com carga
+mínima (a curva pode zerar a Vel. de Natação já em pesos baixos para Vigor 1); se isso aparecer
+como problema na calibração, volta para decisão.
 
 ## 4 · O resto do balde B (itens 2-17 da lista original)
 
