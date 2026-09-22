@@ -49,7 +49,7 @@ Conforme a Vida restante cai, a dor cobra seu preço nas **ações físicas** (a
 
 ## Queda e Morte
 
-Chegar a **0 PV ou menos** deixa você **Caído**: incapacitado, fora da briga, e ainda vivo. A Vida não para no zero, ela continua descendo, e é abaixo do zero que mora a morte.
+Chegar a **0 PV ou menos** deixa você **Incapacitado**: fora da briga, e ainda vivo. A Vida não para no zero, ela continua descendo, e é abaixo do zero que mora a morte.
 
 <p class="formula">Morre em Vida ≤ −(PV máximo ÷ 2)</p>
 
@@ -72,7 +72,7 @@ Sangramentos não se somam livremente: vale o **maior**, e cada fonte adicional 
 
 <div class="callout"><span class="lbl">Estabilizar</span>Uma ação dedicada e um teste de <strong>Cura vs Dif 10</strong> (pano limpo, pressão, sutura) encerra um Sangramento. Sozinho, cerrando os dentes, role <strong>Vigor + Convicção vs Dif 10</strong>. Qualquer cura de PV (descanso, Cura ou magia) também o estanca.</div>
 
-<p class="muted">Um aliado <strong>Caído</strong> que ainda sangra continua perdendo Vida rumo ao limite: a margem de meio PV máximo encurta sozinha enquanto ninguém chega. É a hora em que parar para estabilizar o companheiro pesa tanto quanto desferir mais um golpe.</p>
+<p class="muted">Um aliado <strong>Incapacitado</strong> que ainda sangra continua perdendo Vida rumo ao limite: a margem de meio PV máximo encurta sozinha enquanto ninguém chega. É a hora em que parar para estabilizar o companheiro pesa tanto quanto desferir mais um golpe.</p>
 
 ## Recuperação
 
