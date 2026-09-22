@@ -214,6 +214,10 @@
   // (2026-09-23, item 1): o estado do cadeado de camada vem injetado junto.
   const ferramentaDeLugar = iniciarFerramentaDeLugar(mapa, LUGARES_INICIAL, TRAVAS_INICIAL);
 
+  // Ferramenta de Área (etapa B4, static/js/areas.js) -- desenho pelo Geoman
+  // free, recorte/gravação/desfazer nossos.
+  const ferramentaDeArea = iniciarFerramentaDeArea(mapa, AREAS_INICIAL, TRAVAS_INICIAL);
+
   // Régua + grade de lat/lon (etapa 4 / B3, static/js/regua.js).
   iniciarRegua(mapa, PARAMETROS_LEAFLET.raio_km);
   iniciarGradeLatLon(mapa, limites);
@@ -226,6 +230,15 @@
       subir: () => camadasReferencia.mudarOpacidadeDaAtiva(0.1),
       descer: () => camadasReferencia.mudarOpacidadeDaAtiva(-0.1),
     },
-    alternarTravaDoSelecionado: ferramentaDeLugar.alternarTravaDoSelecionado,
+    // A tecla T age sobre o que está SELECIONADO. Área tem prioridade: a
+    // seleção de área é a mais recente quando existe (clicar num polígono não
+    // desmarca o lugar selecionado antes, e o contrário também não).
+    alternarTravaDoSelecionado: async () => {
+      if (ferramentaDeArea.temSelecao()) {
+        const tratou = await ferramentaDeArea.alternarTravaDoSelecionado();
+        if (tratou) return;
+      }
+      ferramentaDeLugar.alternarTravaDoSelecionado();
+    },
   });
 })();

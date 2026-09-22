@@ -222,6 +222,9 @@ function iniciarFerramentaDeLugar(mapa, lugaresIniciais, travasIniciais) {
   function selecionar(id) {
     const anterior = idSelecionado;
     idSelecionado = id;
+    // Selecionar um lugar desmarca a área selecionada, e vice-versa (areas.js):
+    // a tecla T age sobre UM objeto, o último escolhido.
+    if (id && typeof window.limparSelecaoDeArea === "function") window.limparSelecaoDeArea();
     for (const alvo of [anterior, id]) {
       if (!alvo) continue;
       const feature = featuresAtuais.find((f) => f.properties.id === alvo);
@@ -230,6 +233,7 @@ function iniciarFerramentaDeLugar(mapa, lugaresIniciais, travasIniciais) {
     }
     redesenharLista();
   }
+  window.limparSelecaoDeLugar = () => { if (idSelecionado) selecionar(null); };
 
   // --- Modal (item 2) -------------------------------------------------------
   const modal = document.getElementById("modal-lugar");
@@ -445,6 +449,9 @@ function iniciarFerramentaDeLugar(mapa, lugaresIniciais, travasIniciais) {
 
   // --- Modo de adicionar ----------------------------------------------------
   function ativar() {
+    // Camada travada não recebe lugar novo: avisar aqui é melhor do que abrir o
+    // modal com todos os campos mortos e deixar o servidor recusar no fim.
+    if (camadaTravada) { mostrarAviso("a camada de lugares está travada"); return; }
     modoAdicionar = true;
     botaoAdicionar.classList.add("ativo");
     mapa.getContainer().classList.add("cursor-cruz");
@@ -463,7 +470,10 @@ function iniciarFerramentaDeLugar(mapa, lugaresIniciais, travasIniciais) {
   });
 
   mapa.on("click", (evento) => {
-    if (!modoAdicionar || arrastandoComEspaco()) return;
+    if (!modoAdicionar || arrastandoComEspaco()) {
+      if (!modoAdicionar && idSelecionado) selecionar(null); // clique no fundo desmarca
+      return;
+    }
     desativar();
     abrirModalCriacao(evento.latlng);
   });
@@ -487,6 +497,8 @@ function iniciarFerramentaDeLugar(mapa, lugaresIniciais, travasIniciais) {
     // Posição de camada de referência também pode ter sido desfeita -- recarrega
     // as camadas pra imagem voltar pro lugar certo sem F5.
     if (typeof recarregarCamadasReferencia === "function") recarregarCamadasReferencia();
+    // Idem para as áreas (B4): a operação desfeita pode ter sido um recorte.
+    if (typeof window.recarregarAreas === "function") window.recarregarAreas();
     atualizarBotoesPilha();
   }
   botaoDesfazer.addEventListener("click", () => desfazerOuRefazer("/api/desfazer"));
@@ -495,6 +507,9 @@ function iniciarFerramentaDeLugar(mapa, lugaresIniciais, travasIniciais) {
   aplicarTravas(travasIniciais || { camadas: [] });
   redesenharTudo(lugaresIniciais);
   atualizarBotoesPilha();
+  // Os botões de desfazer/refazer valem para o log inteiro, não só para lugares:
+  // a ferramenta de Área chama isto depois de cada gravação dela.
+  window.atualizarBotoesDaPilha = atualizarBotoesPilha;
 
   // O que a interface geral (interface.js) precisa chamar: a tecla T trava/destrava
   // o lugar selecionado.

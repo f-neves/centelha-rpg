@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <title>Uldun - editor do mapa</title>
 <link rel="stylesheet" href="/static/vendor/leaflet-1.9.4/leaflet.css">
+<link rel="stylesheet" href="/static/vendor/leaflet-geoman-free-2.20.0/dist/leaflet-geoman.css">
 <link rel="stylesheet" href="/static/css/estilo.css">
 <script>
   // Tema aplicado ANTES de pintar (item 2 de 2026-09-23): se isto ficasse no
@@ -25,12 +26,8 @@
         <option value="cobertura">COBERTURA</option>
         <option value="lago">LAGO</option>
       </select>
-      <select id="seletor-valor">
-        <option>Planicie</option>
-        <option>Colina</option>
-        <option>Montanha</option>
-        <option>Alta montanha</option>
-      </select>
+      <!-- preenchido por static/js/areas.js a partir do vocabulário da camada -->
+      <select id="seletor-valor"></select>
     </span>
     <span id="controle-zoom">
       <button type="button" id="zoom-menos" title="Nível de zoom anterior">-</button>
@@ -68,6 +65,12 @@
         <h2 class="cabecalho-secao">FERRAMENTAS</h2>
         <div class="corpo-secao">
           <button type="button" id="lugar-adicionar">+ lugar <kbd>L</kbd></button>
+          <div id="controle-area">
+            <button type="button" id="area-desenhar" title="Desenha um polígono na camada e no valor escolhidos na barra de cima. Duplo clique fecha a forma.">+ área <kbd>A</kbd></button>
+            <button type="button" id="area-apagar" disabled title="Apaga a área selecionada">apagar área</button>
+          </div>
+          <button type="button" id="trava-camada-areas" class="botao-trava-camada">🔓 relevo livre</button>
+          <div id="area-leitura" class="nota"></div>
           <div id="controle-desfazer">
             <button type="button" id="botao-desfazer" disabled>desfazer</button>
             <button type="button" id="botao-refazer" disabled>refazer</button>
@@ -175,7 +178,8 @@
         <tr><td><kbd>Ctrl</kbd>+<kbd>Y</kbd></td><td>refazer</td></tr>
         <tr><td><kbd>espaço</kbd> (segurado)</td><td>arrasta o mapa sem sair da ferramenta</td></tr>
         <tr><td><kbd>C</kbd> (segurado)</td><td>esconde tudo e mostra só a costa</td></tr>
-        <tr><td><kbd>T</kbd></td><td>trava/destrava o lugar selecionado (travado não se move nem se apaga)</td></tr>
+        <tr><td><kbd>A</kbd></td><td>ferramenta de Área (liga/desliga)</td></tr>
+        <tr><td><kbd>T</kbd></td><td>trava/destrava o objeto selecionado, área ou lugar (travado não se move nem se apaga)</td></tr>
         <tr><td><kbd>D</kbd></td><td>troca o tema claro/escuro (a escolha fica lembrada)</td></tr>
         <tr><td><kbd>[</kbd> / <kbd>]</kbd></td><td>opacidade da camada de referência ativa</td></tr>
         <tr><td><kbd>+</kbd> / <kbd>-</kbd></td><td>zoom (nível a nível)</td></tr>
@@ -190,6 +194,8 @@
   </div>
 
   <script src="/static/vendor/leaflet-1.9.4/leaflet.js"></script>
+  <!-- Leaflet-Geoman free 2.20.0 (MIT), baixado pronto: sem npm, sem CDN. -->
+  <script src="/static/vendor/leaflet-geoman-free-2.20.0/dist/leaflet-geoman.min.js"></script>
   <script>
     // Injetado pelo servidor a partir de dados/coordenadas.json (backend/coordenadas.py) —
     // nenhum número de projeção é digitado à mão aqui.
@@ -200,12 +206,15 @@
     const LUGARES_INICIAL = /*__LUGARES__*/;
     // Injetado a partir de dados/camadas_travadas.json (backend/travas.py).
     const TRAVAS_INICIAL = /*__TRAVAS__*/;
+    // Injetado a partir de dados/areas-pintadas.geojson (backend/areas.py).
+    const AREAS_INICIAL = /*__AREAS__*/;
   </script>
   <script src="/static/js/interface.js"></script>
   <script src="/static/js/terra-ou-mar.js"></script>
   <script src="/static/js/minimapa.js"></script>
   <script src="/static/js/camadas-referencia.js"></script>
   <script src="/static/js/lugares.js"></script>
+  <script src="/static/js/areas.js"></script>
   <script src="/static/js/regua.js"></script>
   <script src="/static/js/app.js"></script>
 </body>

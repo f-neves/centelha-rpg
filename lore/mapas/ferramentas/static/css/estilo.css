@@ -348,3 +348,16 @@ kbd {
   color: #7f1d1d;
 }
 :root[data-tema="claro"] .cadeado-lugar { text-shadow: 0 0 2px #fff; }
+
+/* --- Ferramenta de Área (etapa B4) ---------------------------------------- */
+#controle-area { display: flex; gap: 4px; margin-bottom: 4px; }
+#controle-area button { flex: 1; }
+#area-desenhar.ativo {
+  background: var(--destaque-fraco);
+  border-color: var(--destaque);
+  color: var(--destaque);
+}
+#area-leitura { min-height: 14px; margin-bottom: 6px; }
+/* A barra de ferramentas própria do Geoman fica escondida: quem liga o desenho
+   são os botões desta ferramenta (o Geoman entra só como a caneta). */
+.leaflet-pm-toolbar { display: none; }
