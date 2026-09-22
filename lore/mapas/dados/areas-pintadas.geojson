@@ -1,0 +1,8 @@
+{
+  "type": "FeatureCollection",
+  "properties": {
+    "versao_esquema": 1,
+    "_comentario": "Áreas pintadas de relevo, cobertura e lago (etapa B4, 2026-09-23). Esquema em ESPEC-dados.md. Polígonos gravados exatamente como desenhados; o recorte pela costa oficial acontece só na rasterização, e nunca aqui."
+  },
+  "features": []
+}

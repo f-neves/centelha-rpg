@@ -17,7 +17,7 @@ from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-from . import coordenadas, lugares, medicoes, operacoes, referencias, travas
+from . import areas, coordenadas, lugares, medicoes, operacoes, referencias, travas
 
 RAIZ_FERRAMENTA = Path(__file__).resolve().parents[1]
 RAIZ_MAPAS = RAIZ_FERRAMENTA.parent
@@ -74,6 +74,14 @@ class MudancaTravaCamada(BaseModel):
     travada: bool
 
 
+class NovaArea(BaseModel):
+    id: str
+    camada: str
+    valor: str
+    geometria: dict
+    semente_ruido: int | None = None
+
+
 class PontoMedicao(BaseModel):
     lat: float
     lon: float
@@ -106,6 +114,10 @@ def pagina_inicial() -> str:
     html = html.replace(
         "/*__TRAVAS__*/",
         json.dumps(travas.carregar(), ensure_ascii=False),
+    )
+    html = html.replace(
+        "/*__AREAS__*/",
+        json.dumps(areas.carregar(), ensure_ascii=False),
     )
     return html
 
@@ -293,6 +305,48 @@ def refazer() -> JSONResponse:
     if operacao is None:
         raise HTTPException(status_code=409, detail="nada para refazer")
     return JSONResponse({"operacao": operacao, "pilha": operacoes.estado_pilha()})
+
+
+# --- Ferramenta de Área (etapa B4, 2026-09-23) --------------------------------
+
+@app.get("/api/areas")
+def obter_areas() -> JSONResponse:
+    return JSONResponse(areas.carregar())
+
+
+@app.post("/api/areas")
+def criar_area(nova: NovaArea) -> JSONResponse:
+    try:
+        areas.criar_area(nova.id, nova.camada, nova.valor, nova.geometria, nova.semente_ruido)
+    except travas.Travado as e:
+        raise HTTPException(status_code=409, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
+    return JSONResponse(areas.carregar())
+
+
+@app.delete("/api/areas/{id_area}")
+def apagar_area(id_area: str) -> JSONResponse:
+    try:
+        areas.apagar_area(id_area)
+    except KeyError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except travas.Travado as e:
+        raise HTTPException(status_code=409, detail=str(e))
+    return JSONResponse(areas.carregar())
+
+
+@app.post("/api/areas/{id_area}/trava")
+def travar_area(id_area: str, mudanca: MudancaTrava) -> JSONResponse:
+    try:
+        areas.definir_trava(id_area, mudanca.travado)
+    except KeyError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except travas.Travado as e:
+        raise HTTPException(status_code=409, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
+    return JSONResponse(areas.carregar())
 
 
 # --- Medições salvas pela régua (item 3e, 2026-09-23) -------------------------
