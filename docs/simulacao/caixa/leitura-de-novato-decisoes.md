@@ -260,6 +260,40 @@ se há um preço por sair antes da hora. Isso continua pendente, registrado aqui
 e não bloqueia o que já foi decidido: o comportamento nos Limiares de Ferimento (esta seção) vale
 independente de como o resto do Frenesi acabar sendo desenhado.
 
+## 4d · Item 54, Escalar/Nadar fora da régua redonda, fechado em 21/09/2026
+
+**Texto no site** (`acoes-corpo-e-movimento.md`): Escalar usa Dificuldade 4/7/11/12/14 (por
+superfície) e Nadar usa 4/7/11/14/18 (por água). A régua comum (`acoes-e-sistema.md:19-23`) é
+5/10/15/20 (Fácil/Média/Difícil/Limite humano), em passos de 5.
+
+**Inconsistência apontada:** os números de Escalar e Nadar não batem com a régua comum, e também
+não vêm de nenhuma fórmula documentada (não achei variável nenhuma, altura/correnteza/peso, que
+gere 4, 7, 11, 12, 14 por conta). Investigação completa em
+`leitura-de-novato-investigacao-baldeC.md`, item 54: são cinco degraus (a régua comum tem
+quatro citados, mais Herói/Semideus fora da mesa) cobrindo uma faixa mais estreita, sempre
+crescentes, sem nunca se declararem como régua própria no texto.
+
+**Resolução: nota de documentação, sem mexer em nenhum número.** O mesmo padrão já existe e já
+tem redação publicada em `quase-acerto.md:32` ("Esta classe é uma régua PRÓPRIA do Quase-Acerto,
+e não a mesma classe de Armas & Armaduras... As duas concordam na maioria dos casos comuns, mas
+nascem de contas diferentes"). Escalar e Nadar recebem a mesma explicação, adaptada: uma frase
+dizendo que usam escala própria, mais fina que a régua comum de seis degraus, mas seguindo a
+mesma lógica (quanto maior o número, mais difícil). Não é conserto de valor porque não há valor
+errado, é lacuna de explicação.
+
+**Texto proposto para a Executora inserir**, uma vez em cada ficha (Escalar, logo após a tabela
+de Dificuldade em `acoes-corpo-e-movimento.md:20-26`; Nadar, após a de `acoes-corpo-e-movimento.md:46-52`):
+
+> *Esta tabela usa uma escala própria, mais fina que a régua comum de seis degraus, mas segue a
+> mesma lógica: quanto maior o número, mais difícil.*
+
+**Conferido ao revisar o restante do capítulo** (Cair, Amortecer, Agarrar a borda, Feito de
+força): nenhuma outra inconsistência, contradição ou número órfão encontrado. As Dificuldades
+das duas Reflexivas de Cair (10 e 15) já batem com a régua comum, e as tabelas de altura/dano/
+velocidade têm nota de "regra de bolso" própria (`dano ≈ altura × 2,2`), sem conflito com nada
+já decidido nesta rodada. **Balde C fechado: os cinco itens (2, 3, 8, 15, 54) estão todos
+resolvidos.**
+
 ## 4 · O resto do balde B (itens 2-17 da lista original)
 
 Ver `docs/simulacao/caixa/leitura-de-novato-capitulos.md` e
