@@ -32,3 +32,26 @@ corrigindo); editar `mesa-core.ts` é território da frente da mesa.
 onde o Grid de fato reduz o pool de ação (`grid.astro`, ainda não localizado). Até lá, a mesa
 mostra a tabela de 6 estados (com "Ferido") e penalidade em ponto puro; o capítulo mostra a de 5
 estados com dado. Divergência conhecida, registrada aqui.
+
+## Fechado em 22/09/2026
+
+Implementado conforme o formato decidido pelo Arquiteto em §4f de
+`leitura-de-novato-decisoes.md`, itens 1-5: `regras.json` → `ferimentos` passou para os 5 estados
+(Saudável/Machucado/Grave/Crítico/Incapacitado, "Ferido" some e "Caído" vira "Incapacitado",
+inclusive em `morte.estadoQueda`); `Tier` em `mesa-core.ts` ganhou `penAcaoDados`; `penTexto`
+mostra o dado; `ajAtq` (`grid.astro`) e `ataqueAtual` (`combate.astro`) somam
+`penAcaoDados` ao `dados` que já devolviam; `mesa.astro` e `referencia.astro` ganharam a coluna
+"Ação (dado)". As classes CSS de cor por estado (`MesaCab.astro`, `grid.astro`) foram renomeadas
+junto (`t-ferido` removida, `t-caido` → `t-incapacitado`), senão a barra/chip desses dois estados
+perdia a cor em silêncio.
+
+**Item 6 (o piso condicional de `rolarExpr`) ficou de fora deste commit, de propósito**: mexer
+nele sozinho (sem tocar nos itens 1-5) já derruba `test-lance.mjs` (11 lances da fixture antiga
+divergem em número de dados), e o `pre-commit` bloqueia por causa disso. Ver
+`docs/simulacao/caixa/rolagem-piso-fixture-pendente.md` para a decisão pendente (recoletar a
+fixture ou segurar); o código do item 6 está escrito, só não commitado.
+
+**Pendência nova aberta por esta mudança**: um descompasso de prosa achado em
+`vida-ferimentos-cura.md:52` (ainda diz "Caído", o dado agora diz "Incapacitado"), registrado mas
+não corrigido por estar fora do escopo desta tarefa (arquivo de capítulo, não de
+`src/lib`/`src/data`/mesa).

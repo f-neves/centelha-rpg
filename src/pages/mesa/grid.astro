@@ -1570,12 +1570,11 @@ const SETAS = [
   .gr-ghost .av { border-radius: 0; border: 0;
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     height: calc(var(--av-t) * 1.1547); }
-  .gr-token.t-saudavel  .anel-v { stroke: #43b85c; }
-  .gr-token.t-machucado .anel-v { stroke: #a9c22b; }
-  .gr-token.t-ferido    .anel-v { stroke: #e6a91d; }
-  .gr-token.t-grave     .anel-v { stroke: #e8791f; }
-  .gr-token.t-critico   .anel-v { stroke: #cf3327; }
-  .gr-token.t-caido     .anel-v { stroke: #6a6a6a; }
+  .gr-token.t-saudavel     .anel-v { stroke: #43b85c; }
+  .gr-token.t-machucado    .anel-v { stroke: #a9c22b; }
+  .gr-token.t-grave        .anel-v { stroke: #e8791f; }
+  .gr-token.t-critico      .anel-v { stroke: #cf3327; }
+  .gr-token.t-incapacitado .anel-v { stroke: #6a6a6a; }
   .gr-token .av { border-width: 1px; }
   /* Caído: a peça inteira perde a cor. Não é enfeite — numa fila de doze, o
      preto e branco é o que diz "este aqui parou" sem precisar de legenda. */
@@ -10235,12 +10234,13 @@ const SETAS = [
     // atacante/alvo em toda mesa de PCs.
     const porteRotuloDe = (c: any) => (c?.tipo === 'criatura' ? MON[c.monstro_id]?.porte : null);
     const ajAtq = (() => {
-      const f = tierDe(atacante.pv_atual, atacante.pv_max).penAcao ?? 0;
+      const tf = tierDe(atacante.pv_atual, atacante.pv_max);
+      const f = tf.penAcao ?? 0;
       const c2 = somarCondicoes((atacante.condicoes || []).map((k: any) => ({ ...(COND[k.id] || {}), ...k })));
       const porte = REGRAS_CENA.porte
         ? modificadorPorte(porteDeRotulo(porteRotuloDe(atacante)), porteDeRotulo(porteRotuloDe(alvo)))
         : 0;
-      return { flat: f + (c2.acao || 0) + (c2.ataque || 0) + porte, dados: c2.dados || 0 };
+      return { flat: f + (c2.acao || 0) + (c2.ataque || 0) + porte, dados: (c2.dados || 0) + (tf.penAcaoDados ?? 0) };
     })();
     // O GATE DE PERFURAÇÃO (06/09/2026, régua em `armas-e-armaduras.md:105,
     // 150`): abaixo do Nível de Perfuração do alvo, o golpe Perfurante
@@ -11187,7 +11187,7 @@ let roladoDano = '';
    *
    * O mestre manda o valor FINAL, porque ele sabe quanto o alvo tem. O jogador
    * manda QUANTO TIRAR, porque ele não sabe: a view esconde a Vida do inimigo
-   * (ele lê "Ferido", e não "14/20"), e do lado dele `pv_atual` chega nulo.
+   * (ele lê "Grave", e não "14/20"), e do lado dele `pv_atual` chega nulo.
    * Mandando o valor pronto, o primeiro golpe zerava o goblin.
    *
    * Devolve o que o registro precisa: a frase do estado (vazia para quem não

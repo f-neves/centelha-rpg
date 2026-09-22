@@ -289,23 +289,21 @@ const { aba } = Astro.props;
   .hpbar-txt .hp-sep { opacity: .8; margin: 0 .05rem; }
   .hpbar-txt .hp-est { font-weight: 600; opacity: .95; margin-left: .25rem; }
   .hpbar.mini .hp-est { display: none; }
-  .hpbar.t-saudavel  .hpbar-fill { background: linear-gradient(90deg, var(--ok), #43b85c); }
-  .hpbar.t-machucado .hpbar-fill { background: linear-gradient(90deg, #7fa61c, #a9c22b); }
-  .hpbar.t-ferido    .hpbar-fill { background: linear-gradient(90deg, #d08c12, #e6a91d); }
-  .hpbar.t-grave     .hpbar-fill { background: linear-gradient(90deg, #d5661a, #e8791f); }
-  .hpbar.t-critico   .hpbar-fill { background: linear-gradient(90deg, #b02a20, #cf3327); }
-  .hpbar.t-caido     .hpbar-fill { background: linear-gradient(90deg, #4a4a4a, #6a6a6a); }
+  .hpbar.t-saudavel     .hpbar-fill { background: linear-gradient(90deg, var(--ok), #43b85c); }
+  .hpbar.t-machucado    .hpbar-fill { background: linear-gradient(90deg, #7fa61c, #a9c22b); }
+  .hpbar.t-grave        .hpbar-fill { background: linear-gradient(90deg, #d5661a, #e8791f); }
+  .hpbar.t-critico      .hpbar-fill { background: linear-gradient(90deg, #b02a20, #cf3327); }
+  .hpbar.t-incapacitado .hpbar-fill { background: linear-gradient(90deg, #4a4a4a, #6a6a6a); }
   /* A etiqueta de estado: o que se vê do inimigo quando não há barra. Mesma
      escada de cor da barra, para o olho aprender uma coisa só. */
   .est-chip { font-family: 'Cinzel'; font-size: var(--fs-micro); font-weight: 700;
     letter-spacing: .04em; padding: .05rem .5rem; border-radius: 999px; cursor: help;
     border: 1px solid transparent; white-space: nowrap; color: var(--ink); }
-  .est-chip.t-saudavel  { background: color-mix(in srgb, var(--ok) 26%, transparent); }
-  .est-chip.t-machucado { background: color-mix(in srgb, #a9c22b 30%, transparent); }
-  .est-chip.t-ferido    { background: color-mix(in srgb, #e6a91d 32%, transparent); }
-  .est-chip.t-grave     { background: color-mix(in srgb, #e8791f 34%, transparent); }
-  .est-chip.t-critico   { background: color-mix(in srgb, #cf3327 36%, transparent); }
-  .est-chip.t-caido     { background: color-mix(in srgb, var(--ink) 30%, transparent); }
+  .est-chip.t-saudavel     { background: color-mix(in srgb, var(--ok) 26%, transparent); }
+  .est-chip.t-machucado    { background: color-mix(in srgb, #a9c22b 30%, transparent); }
+  .est-chip.t-grave        { background: color-mix(in srgb, #e8791f 34%, transparent); }
+  .est-chip.t-critico      { background: color-mix(in srgb, #cf3327 36%, transparent); }
+  .est-chip.t-incapacitado { background: color-mix(in srgb, var(--ink) 30%, transparent); }
   /* barra de Energia: mesma caixa, outra cor */
   .enbar .hpbar-fill { background: linear-gradient(90deg, #3b6fb0, #5b9bd8) !important; }
   /* barra de Mana: a mesma caixa da Energia, no azul do tabuleiro. Mais clara e

@@ -91,7 +91,7 @@ export function autoSalvar(
 }
 
 // ------------------------------------------------------- ferimentos e barras
-export interface Tier { minPct: number; maxPct: number; estado: string; penAcao: number | null; penDefesa: number | null }
+export interface Tier { minPct: number; maxPct: number; estado: string; penAcao: number | null; penAcaoDados: number | null; penDefesa: number | null }
 export const FERIMENTOS = regras.ferimentos as Tier[];
 
 /** Faixa de ferimento pela Vida restante. Sem PV máximo definido, devolve "Saudável". */
@@ -120,7 +120,9 @@ export const pctDe = (cur: number | null | undefined, max: number | null | undef
   max && max > 0 ? Math.max(0, Math.min(100, ((cur ?? 0) / max) * 100)) : 0;
 export const penTexto = (t: Tier) =>
   t.penAcao == null ? 'fora de combate'
-    : (t.penAcao || t.penDefesa) ? `ação ${t.penAcao} · defesa ${t.penDefesa}` : 'sem penalidade';
+    : (t.penAcao || t.penAcaoDados || t.penDefesa)
+      ? `ação ${t.penAcao}${t.penAcaoDados ? ' ' + sinal(t.penAcaoDados) + 'd6' : ''} · defesa ${t.penDefesa}`
+      : 'sem penalidade';
 
 /** Barra de vida com estado e cor por faixa. `chave` é o data-c usado para atualizar em lugar. */
 export function hpBarHTML(cur: number | null, max: number | null, chave: string, classe = '') {
@@ -132,7 +134,7 @@ export function hpBarHTML(cur: number | null, max: number | null, chave: string,
 }
 
 /**
- * A palavra, sem a barra: "Ferido", "Grave", "Caído".
+ * A palavra, sem a barra: "Machucado", "Grave", "Incapacitado".
  *
  * É o que o jogador recebe do inimigo quando o mestre não abriu os números.
  * Etiqueta e não barra de propósito: uma barra é uma régua, e o olho lê nela
@@ -140,7 +142,7 @@ export function hpBarHTML(cur: number | null, max: number | null, chave: string,
  * palavra diz o que se enxerga da criatura e para por aí.
  *
  * A faixa vem de uma porcentagem que o banco arredondou de 5 em 5, então perto
- * da fronteira ela pode cair na vizinha (26% vira 25%, e "Ferido" vira
+ * da fronteira ela pode cair na vizinha (31% vira 30%, e "Machucado" vira
  * "Grave"). Fica assim: a leitura do inimigo é palpite treinado, não planilha.
  */
 export function estadoChipHTML(pct: number | null, classe = '') {
@@ -452,7 +454,7 @@ import { ABAS as ABAS_L, ABA_JOGADOR } from './mesa-abas';
  * pior dos dois mundos: dado que chega e não aparece, ou espaço reservado
  * para dado que nunca vem.
  *
- * Os padrões são a mesa fechada: da Vida do inimigo sai o estado ("Ferido"),
+ * Os padrões são a mesa fechada: da Vida do inimigo sai o estado ("Grave"),
  * dos números de ataque e defesa não sai nada. Condições saem, porque elas são
  * a narração ("ele está cego") e escondê-las faz o jogador jogar no escuro
  * sobre o que ele mesmo causou.

@@ -878,9 +878,10 @@ import CondDlg from '../../components/CondDlg.astro';
 
   /** Ajustes que entram na jogada de acerto de quem está agindo. */
   function ataqueAtual(c: any) {
-    const ferimento = tierDe(c.pv_atual, c.pv_max).penAcao ?? 0;
+    const tf = tierDe(c.pv_atual, c.pv_max);
+    const ferimento = tf.penAcao ?? 0;
     const cd = somarCondicoes(condsDe(c));
-    return { ferimento, acao: cd.acao, ataque: cd.ataque, dados: cd.dados, flat: ferimento + cd.acao + cd.ataque };
+    return { ferimento, acao: cd.acao, ataque: cd.ataque, dados: (cd.dados || 0) + (tf.penAcaoDados ?? 0), flat: ferimento + cd.acao + cd.ataque };
   }
 
   /**
@@ -2113,7 +2114,7 @@ import CondDlg from '../../components/CondDlg.astro';
     el('rev1-vida').innerHTML = c.tipo === 'pc' ? '' : grupo('r1-vida', 'Vida', [
       ['', 'Como a mesa manda', `Hoje: ${padraoVida}.`],
       ['numero', 'Barra e número', 'Só este mostra a conta, mesmo com a mesa fechada.'],
-      ['estado', 'Só a palavra', 'Ferido, Grave, Caído.'],
+      ['estado', 'Só a palavra', 'Machucado, Grave, Incapacitado.'],
       ['nada', 'Só a cor do retrato', 'Nada escrito.'],
     ], rev.vida || '');
     el('rev1-stats').innerHTML = c.tipo === 'pc' ? '' : grupo('r1-stats', 'Números de ataque e defesa', [

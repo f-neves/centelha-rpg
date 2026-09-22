@@ -7,7 +7,8 @@ import { regras } from '../lib/calc';
 // A régua de dificuldade do Escudo sai calculada no build (as três colunas são
 // função da soma Atributo + Habilidade), igual à da página /mestre.
 const ANCORAS = regras.dificuldade as { dif: number; desafio: string; aaltura: string }[];
-const FERIMENTOS = regras.ferimentos as { minPct: number; maxPct: number; estado: string; penAcao: number | null; penDefesa: number | null }[];
+const FERIMENTOS = regras.ferimentos as { minPct: number; maxPct: number; estado: string; penAcao: number | null; penAcaoDados: number | null; penDefesa: number | null }[];
+const sinalTxt = (n: number) => (n > 0 ? `+${n}` : `−${Math.abs(n)}`);
 const MODS = (regras.combateTatico as any).modificadores as { nome: string; valor: number; alvo: string; nota: string }[];
 ---
 <Base title="Mesa" largura="full" telaCheia descricao="Escudo do Mestre: o painel da campanha.">
@@ -110,11 +111,12 @@ const MODS = (regras.combateTatico as any).modificadores as { nome: string; valo
         <details>
           <summary>Limiares de Ferimento</summary>
           <div class="tab-wrap"><table class="tab-mesa">
-            <thead><tr><th>Vida</th><th>Estado</th><th class="num">Ação</th><th class="num">Defesa</th></tr></thead>
+            <thead><tr><th>Vida</th><th>Estado</th><th class="num">Ação</th><th class="num">Ação (dado)</th><th class="num">Defesa</th></tr></thead>
             <tbody>{FERIMENTOS.map((f) => (
               <tr><td class="num">{f.minPct === f.maxPct ? f.minPct : `${f.minPct}–${f.maxPct}`}%</td>
                 <td>{f.estado}</td>
                 <td class="num">{f.penAcao == null ? '—' : f.penAcao || '0'}</td>
+                <td class="num">{f.penAcaoDados == null ? '—' : f.penAcaoDados ? sinalTxt(f.penAcaoDados) + 'd6' : '0'}</td>
                 <td class="num">{f.penDefesa == null ? '—' : f.penDefesa || '0'}</td></tr>))}</tbody>
           </table></div>
         </details>

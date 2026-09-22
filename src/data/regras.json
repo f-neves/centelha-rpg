@@ -683,52 +683,50 @@
   ],
   "ferimentos": [
     {
-      "minPct": 76,
+      "minPct": 61,
       "maxPct": 100,
       "estado": "Saudável",
       "penAcao": 0,
+      "penAcaoDados": 0,
       "penDefesa": 0
     },
     {
-      "minPct": 51,
-      "maxPct": 75,
+      "minPct": 31,
+      "maxPct": 60,
       "estado": "Machucado",
-      "penAcao": -1,
-      "penDefesa": 0
-    },
-    {
-      "minPct": 26,
-      "maxPct": 50,
-      "estado": "Ferido",
       "penAcao": -2,
-      "penDefesa": -1
+      "penAcaoDados": 0,
+      "penDefesa": -2
     },
     {
       "minPct": 11,
-      "maxPct": 25,
+      "maxPct": 30,
       "estado": "Grave",
-      "penAcao": -3,
-      "penDefesa": -2
+      "penAcao": 0,
+      "penAcaoDados": -1,
+      "penDefesa": -4
     },
     {
       "minPct": 1,
       "maxPct": 10,
       "estado": "Crítico",
-      "penAcao": -4,
-      "penDefesa": -3
+      "penAcao": 0,
+      "penAcaoDados": -2,
+      "penDefesa": -8
     },
     {
       "minPct": 0,
       "maxPct": 0,
-      "estado": "Caído",
+      "estado": "Incapacitado",
       "penAcao": null,
+      "penAcaoDados": null,
       "penDefesa": null
     }
   ],
   "morte": {
     "nota": "DANO É DANO, CURA É CURA (`M-21`). Todo dano soma no mesmo número (corte, perfuração, impacto, queimadura, queda, veneno) e qualquer cura cura, seja qual for o método. Não há segunda trilha e não há acumulador separado do que fere de verdade: o tipo do golpe pesa na ABSORÇÃO (`dano.modos`, `dano.soakNatural`) e não na cicatriz. Cai-se em Vida 0 ou menos, e morre-se ao perder vida ALÉM do zero até o limite abaixo.",
     "quedaVida": 0,
-    "estadoQueda": "Caído",
+    "estadoQueda": "Incapacitado",
     "condicaoMorte": "morto",
     "limiteDivisor": 2,
     "limiteArredonda": {
@@ -740,7 +738,7 @@
     "limiteArredondaNota": "QUEM NÃO TEM CENTELHA ARREDONDA PARA BAIXO, QUEM TEM ARREDONDA PARA CIMA (`M-21c`). Só muda alguma coisa em PV ímpar, e a diferença é de um ponto: o meio ponto que sobra da divisão vira a favor de quem tem a fagulha. Não é número novo, é a direção do arredondamento de um número que já existia. O contra comprado: é exceção num sistema que arredonda para baixo em toda parte, e exceção de um cálculo só é a cláusula que envelhece calada.",
     "porqueMetade": "Decidido em 15/09/2026 com medição (docs/simulacao/caixa/m21-morte-medicao.md). Socorrer um caído custa cerca de 4 Ticks; o limite de um quarto do PV dá 5 Ticks de margem mediana e empata com o próprio socorro já a 8 metros, enquanto metade dá 10 Ticks no cenário comum. E três coisas que a medição não cobre puxam para o limite maior: o Sangramento come a margem por fora, a medição rodou uma build maximizada, e a Velocidade da ação de estabilizar é suposição.",
     "contraComprado": "Com metade do PV e o inimigo ignorando quem caiu, ninguém morre por acidente: morrer vira decisão de quem está batendo. Foi comprado de propósito, e é a mesma leitura que substituiu as duas trilhas: fazer de 'não matar' a decisão de PARAR DE BATER, que acontece na mesa e no momento.",
-    "estadoDaMesa": "A tabela `ferimentos` continua respondendo pelo que se vê: Vida 0 ou menos é `Caído`, em qualquer profundidade. O que a régua nova acrescenta abaixo do zero é o FIM dessa faixa, e o estado seguinte é a condição `morto` de condicoes.json. O Grid ainda não implementa nenhum dos dois: ele tem um `pv_atual` só e não conhece limite (`M-21`, item 4)."
+    "estadoDaMesa": "A tabela `ferimentos` continua respondendo pelo que se vê: Vida 0 ou menos é `Incapacitado`, em qualquer profundidade. O que a régua nova acrescenta abaixo do zero é o FIM dessa faixa, e o estado seguinte é a condição `morto` de condicoes.json. O Grid ainda não implementa nenhum dos dois: ele tem um `pv_atual` só e não conhece limite (`M-21`, item 4)."
   },
   "derivados": {
     "pv": {
