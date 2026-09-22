@@ -168,6 +168,65 @@ dizendo isso.
   correção. **Decisão: o capítulo passa a publicar ~15 semanas**, o número que a própria conta já
   produz, sem bônus fantasma. Nenhum campo novo em `regras.json`.
 
+## 4b · Redesenho dos Limiares de Ferimento, decidido em 21/09/2026
+
+**Nasceu tentando fechar o item 3 (Frenesi contido do Meio-Orc, ver 4a acima), e virou redesenho
+do próprio capítulo.** Ao decidir se o Meio-Orc "ignora as penalidades de ferimento" igual ao
+Orc puro, o humano notou que a tabela de Limiares de `vida-ferimentos-cura.md` não estava do
+jeito que queria, e pediu pra resolver ela primeiro. **Item 3 continua em aberto**, e volta a
+fazer sentido decidir só depois desta tabela estar fechada, porque agora "ignorar as penalidades
+de ferimento" passa a significar mais coisa do que significava antes (ver a nota no fim).
+
+**A tabela nova, 5 estados em vez de 6 (o antigo "Ferido" some):**
+
+| Vida restante | Estado | Ações físicas | Defesa Física |
+|---|---|---|---|
+| 61–100% | Saudável | nenhuma | nenhuma |
+| 31–60% | Machucado | −2 | −2 |
+| 11–30% | Grave | −1d6 | −4 |
+| 1–10% | Crítico | −2d6 | −8 |
+| ≤0% | Incapacitado | incapacitado | — |
+
+**De onde vêm os números, pela fórmula do próprio motor** (`combate.md:125`, `Ataque =
+[(Atributo+Habilidade)÷2]d6, +2 se a soma for ímpar`, e `defesas.md`, `Defesa = (Atributo+
+Habilidade)×2 + ...`): o degrau de ferimento é lido como pontos equivalentes de Atributo+
+Habilidade perdidos — 1 (Machucado), 2 (Grave), 4 (Crítico). Cada ponto vale 2 no lado passivo
+(a Defesa), sempre, por isso −2/−4/−8. No lado da jogada, o efeito depende da paridade: 1 ponto
+tira só o `+2` da soma ímpar sem tocar no pool de dados (por isso Machucado é ponto puro, nunca
+reduz quantos d6 se rola); 2 e 4 pontos tiram um d6 inteiro do pool por vez (por isso Grave e
+Crítico são dado, não ponto). `1d6+2` Machucado vira `1d6`; `1d6` Machucado vira `1d6−2`. `3d6+2`
+Grave vira `2d6+2`; um pool de `1d6` ou só `+2` (sem dado nenhum) Grave zera a ação física por
+inteiro.
+
+**Escopo: só ações físicas**, definidas por atributo-base (Vigor ou Destreza), em todos os três
+graus — não há progressão para social/mental nos graus mais altos. Confirmado pelo humano: "todas
+as penalidades de dano entram nas ações físicas, o personagem está com dificuldade de se mover."
+
+**O piso do pool: mantido em 1d6, igual ao Desgaste.** Grave e Crítico nunca zeram o pool de
+verdade na prática (mesma regra que já protege o Desgaste, `acoes-resistir.md`), mesmo que a
+conta "crua" (tirar o dado do pool calculado) desse zero ou negativo.
+
+**A nota que precisa entrar no capítulo quando ele for reescrito:** o callout "As duas moedas, e
+elas não se misturam" (`vida-ferimentos-cura.md:47`) afirma que cada categoria usa uma moeda só
+(Ferimento sempre ponto, Desgaste sempre dado). Esta tabela quebra essa correspondência 1:1:
+Ferimento passa a ter DOIS graus em ponto e dado (Machucado ponto, Grave/Crítico dado), a mesma
+moeda que até hoje era exclusiva do Desgaste. Não é conversão entre as moedas (não existe regra
+de "1d6 vale X pontos" que um jogador aplique em mesa); é a categoria Ferimento atravessando as
+duas moedas conforme o grau. Consequência de mesa que fica registrada aqui e precisa virar prosa
+explícita: um personagem Grave/Crítico E com Desgaste ao mesmo tempo (ferido E envenenado, por
+exemplo) tem as duas fontes cortando do MESMO pool de dados, somando direto (piso comum em 1d6),
+o que hoje é impossível porque as duas moedas nunca se encontravam na mesma operação.
+
+**Dano localizado (perder um braço, penalidade por parte do corpo) fica de fora, de propósito.**
+O humano: "é uma regra mais específica que não vai ser usada muito." Registrado como item futuro
+separado, não uma extensão desta tabela — precisaria de uma condição nova por golpe (qual parte
+do corpo, o que ela impede especificamente), e nada disso existe hoje em `combate.md` nem em
+`condicoes.json`.
+
+**Ainda não implementado em `src/`.** `vida-ferimentos-cura.md` continua com a tabela de 6
+estados; nenhum dos campos calculados (Defesa Física, pool de ações) lê estado de ferimento
+ainda. Fica para a Executora, junto com o resto desta rodada, depois de passar pela Revisora.
+
 ## 4 · O resto do balde B (itens 2-17 da lista original)
 
 Ver `docs/simulacao/caixa/leitura-de-novato-capitulos.md` e
