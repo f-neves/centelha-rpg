@@ -4,5 +4,22 @@
     "versao_esquema": 1,
     "_comentario": "Esvaziado em 2026-09-21 (decisão 1, terceira rodada): os 6 registros tipo:'regiao' que existiam aqui eram rótulos de nome de região, não assentamentos — foram movidos para dados/regioes.json (campo 'rotulo' de cada região). Este arquivo fica pronto para assentamentos de verdade (tipo fechado: cidade, vila, fortaleza, porto, ruína, marco)."
   },
-  "features": []
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -20.1348323126638,
+          15.573753277648747
+        ]
+      },
+      "properties": {
+        "id": "teste",
+        "tipo": "vila",
+        "nome": null,
+        "capital": false
+      }
+    }
+  ]
 }
