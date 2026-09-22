@@ -672,3 +672,98 @@ literalmente verdade) e ganha a alternância estrita no lugar.
 Combate Social mais adiante (por exemplo, se o módulo 3 acima, "domínio da conversa", se mostrar
 forte ou fraco demais na mesa, ou se aparecer necessidade de duelos com mais de duas pessoas, que
 este desenho não cobre).
+
+
+## 5 · Fechamento do catálogo de itens (§1-§9), a partir da auditoria da Revisora, decidido em 22/09/2026
+
+A auditoria (`docs/simulacao/caixa/leitura-de-novato-revisora.md`, `f417f93`) foi escrita numa
+sessão anterior, sobre o repositório em `85a97fe`, antes de qualquer coisa deste catálogo ter sido
+implementada em `src/`. Ela achou um BLOQUEIA (o Combate Social, já fechado em `§4` acima, antes
+mesmo de eu ler a auditoria) e doze CORRIGE. Dois já morreram sozinhos: o `CORRIGE 6`
+(`porSeisTicks`) já estava resolvido do jeito certo (o campo cai só do Envenenado, continua
+servindo as outras quatro condições, exatamente como a auditoria pedia); o `CORRIGE 7` (o esquema
+antigo de veneno, `efeitoPorDose`/`ignoraAbsorcao`) morreu porque o Veneno foi redesenhado do zero
+nesta mesma sessão (ver a seção de Veneno acima), substituindo o esquema que a auditoria revisou.
+
+**O envelope de item vira ANINHADO, não flat.** Decisão do humano, contra a recomendação: cada
+item ganha `tipo` no topo (`arma`/`armadura`/`escudo`/`municao`/`geral`/...) e os campos
+específicos de cada categoria moram dentro de um bloco com o nome dela; as categorias que não se
+aplicam ficam `null`. Exemplo fechado:
+
+```json
+{ "id": "espada-longa", "tipo": "arma", "nome": "Espada Longa",
+  "arma": { "dado": 1, "acerto": 0, "defesaArma": 1, "maos": 1, "tipoDano": "corte" },
+  "armadura": null, "escudo": null }
+```
+
+**Consequência que a auditoria já mediu, e que a Executora precisa levar a sério** (`CORRIGE 3`):
+`src/lib/equip.ts` e `src/lib/bestia-editor.ts` leem hoje `arma.dado`, `arm.soak?.[m]` etc. **direto
+na raiz**. Migrar pro aninhado sem atualizar os dois quebra em silêncio (`arm.soak?.[m]` vira
+`undefined`, `nz()` transforma em `0`, a Absorção de armadura do bestiário some sem erro nenhum).
+`equip.ts` é o "contrato silencioso" que o `CLAUDE.md` já nomeia entre a ficha e o rastreador de
+combate da mesa. **Os dois arquivos migram no mesmo lote que o envelope**, com teste de verdade
+(não só `tsc`, que não pega isso: os schemas Zod de `content.config.ts` acusam alto no build pelo
+caminho de coleção, mas o `import` direto de `equip.ts`/`bestia-editor.ts` não passa por lá e
+falha calado).
+
+**Direção maior, pedida pelo humano e não restrita a este catálogo:** a maior parte dos dados do
+sistema passa a ser formatada nesse estilo estruturado quando fizer sentido, não só arma/armadura/
+escudo. Inclui, no mínimo: venenos, doenças, criaturas, itens em geral, serviços, servos. Isto é
+uma preferência de formato de dado daqui pra frente, não um mandado de migrar tudo que já existe
+de uma vez; cada JSON migra quando for mexido por outro motivo, ou quando um novo nascer.
+
+**Munição ganha `tipo` próprio, `"municao"`.** Flechas e Virotes (hoje `1 pp` cada dez, na tabela
+antiga) entram como itens desse tipo, com um jeito de amarrar com a arma que usa (arco/besta),
+ainda a definir pela Executora dentro do bloco `municao` (pelo menos o tipo de arma que aceita).
+
+**Escudos casam por `id`, não por nome** (`PERGUNTA 3`): `broquel`, `scutum`, `paves` no JSON,
+não as formas longas (`Broquel (buckler)`, `Scutum romano`, `Pavês (pavise)`) que a §6 usa em
+prosa. Resolvido, sem precisar de decisão nova: é a única leitura que não quebra ao implementar.
+
+**Contagem da §6 corrigida** (`PERGUNTA 2`): são seis nomes órfãos (Broquel, Madeira P, Madeira G,
+Metal P, Metal G, de Corpo) para sete escudos reais mais a entrada Nenhum, não "5 para 6" como o
+texto original dizia. O mapeamento em si estava certo, só a prosa que o explicava errava a conta.
+
+**Os demais CORRIGE (1, 2, 4, 5, 8, 9, 10, 11, 12), resolvidos como correção editorial do
+documento, sem fork de decisão:**
+
+- `1` · a lista de `tipo` não vem de cabeçalho nenhum de `custo-de-servico-e-itens.md` (Armas/
+  Armaduras/Escudos são `<p class="cat-cap">` dentro de "Catálogo de Equipamento", não `##`
+  próprios; "Comida & Bebida" não existe como tal, é metade de "Hospedagem & Comida"). É lista
+  **nova**, não derivada; o documento se corrige para dizer isso.
+- `2` · pelo menos dez consumidores em `src/`/`scripts/` leem `armas.json`/`armaduras.json`/
+  `escudos.json` hoje (schemas Zod, `equip.ts`, `ficha-engine.ts`, `bestia-editor.ts`, páginas do
+  bestiário, seis scripts de geração), não "dois scripts". A Executora audita a lista completa da
+  auditoria antes de migrar qualquer consumidor.
+- `4` · `preco` e `peso` entram nos schemas Zod de `content.config.ts` junto com o envelope (hoje
+  nenhum dos dois está declarado, e Zod sem `.strict()` os descarta em silêncio pelo caminho de
+  coleção).
+- `5` · `vsProjetilRapido` é decisão certa (a coluna do capítulo tem três estados: não/bloqueia/
+  bloqueia(+3), o booleano de hoje perde o "+3"), mas é mudança de **tela** (`ficha-engine.ts:1385`
+  decide o que mostrar no caso do meio), não de moeda de dado.
+- `8` · Machadinha (8 pp), Arco→Arco Longo (14 pp) e Besta→Besta Pequena/Média/Grande (35 pp,
+  genérico) já têm preço na tabela antiga sob nome idêntico ou mapeável; não entram como "a
+  definir" nem "preço novo". Flechas/Virotes (1 pp cada dez) entram junto, como munição (acima).
+- `9` · os preços de Bastão, Martelo, Sabre, Maça Estrela e das cinco armaduras da §5 **não são de
+  simulação**: são a tabela antiga, célula por célula. O que é de simulação nessas cinco peças é
+  soak/penalidade/peso, não o preço. O documento se corrige para não chamar preço herdado de
+  "número de simulação".
+- `10` · `armaduras.json` guarda penalidade como módulo positivo (`penalidade: 3`), e o schema
+  exige `min(0)`. A tabela de preços em prosa que descreve penalidade como negativo (`−1, −2, −3`)
+  é só notação de leitura; o valor que vai pro JSON é sempre o módulo.
+- `11` · "Super-pesada" some da **classe** (o schema já só aceita nenhuma/leve/média/pesada), mas
+  continua escrita em prosa em `custo-de-servico-e-itens.md:182-183` até a tabela do capítulo
+  virar gerada (item 1 do balde B) — nesse dia ela sai sozinha, porque o gerador não vai escrevê-la.
+- `12` · lista nomeada, não descrita, do que fica sem preço-base por enquanto: armas adiadas
+  (Espada Serrilhada, Picareta de Guerra, Adaga de Arremesso, Machado de Arremesso, Azagaia,
+  Funda, Dardos, Bumerangue, Rede, Pilum) e armaduras adiadas (Gambeson, Brigandina/coat of
+  plates, Placa de transição, Placa de munição; Couro endurecido fica marcado como dúvida de
+  mapeamento contra "Couro" da tabela antiga, não como adiado nem resolvido).
+
+**O que a Executora implementa a partir daqui:** o catálogo de itens inteiro (`itens.json` ou o
+nome que fizer mais sentido, envelope aninhado, `tipo` incluindo `municao`), a migração de
+`equip.ts` e `bestia-editor.ts` para o novo formato, os schemas Zod atualizados (`preco`, `peso`,
+o enum de `tipo`), e a tabela do capítulo virando gerada (item 1 do balde B, pré-requisito para o
+`11` acima se resolver sozinho). Ordem sugerida: schemas e dado primeiro, depois os dois
+consumidores (com teste manual na ficha e na mesa, não só `tsc`), depois o gerador da tabela do
+capítulo.
