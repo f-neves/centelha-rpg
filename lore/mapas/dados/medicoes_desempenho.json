@@ -1,0 +1,52 @@
+{
+  "_comentario": "Custo de calcular a cobertura automática, medido para comparar com o custo REAL quando a pintura estiver avançada. Gerado por scripts/medir_automatico.py --gravar; cada rodada acrescenta uma entrada em 'medicoes', nunca substitui, senão a comparação se perde.",
+  "versao_esquema": 1,
+  "medicoes": [
+    {
+      "quando": "2026-09-22 18:57:34",
+      "o_que": "cobertura_automatica.colecao()",
+      "repeticoes": 5,
+      "criterio": "mediana",
+      "poligonos": "sintéticos, espalhados pela tela, semente fixa 7",
+      "limite_do_usuario_ms": 500,
+      "linhas": [
+        {
+          "areas_pintadas": 50,
+          "vertices_por_area": 12,
+          "mediana_ms": 12.9,
+          "resposta_kb": 28.3
+        },
+        {
+          "areas_pintadas": 200,
+          "vertices_por_area": 12,
+          "mediana_ms": 46.0,
+          "resposta_kb": 89.1
+        },
+        {
+          "areas_pintadas": 500,
+          "vertices_por_area": 12,
+          "mediana_ms": 97.2,
+          "resposta_kb": 149.9
+        },
+        {
+          "areas_pintadas": 1000,
+          "vertices_por_area": 12,
+          "mediana_ms": 175.7,
+          "resposta_kb": 171.3
+        },
+        {
+          "areas_pintadas": 500,
+          "vertices_por_area": 100,
+          "mediana_ms": 230.8,
+          "resposta_kb": 961.3
+        },
+        {
+          "areas_pintadas": 500,
+          "vertices_por_area": 400,
+          "mediana_ms": 653.0,
+          "resposta_kb": 3743.9
+        }
+      ]
+    }
+  ]
+}
