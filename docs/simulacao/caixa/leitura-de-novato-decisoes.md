@@ -351,6 +351,72 @@ decidido nesta rodada se personagens sem nenhum ponto em Natação/Atletismo afu
 mínima (a curva pode zerar a Vel. de Natação já em pesos baixos para Vigor 1); se isso aparecer
 como problema na calibração, volta para decisão.
 
+## 4f · Formato do campo de dado na mesa, decidido em 22/09/2026
+
+**Achado pela Executora ao implementar §4b:** a decisão de §4b presumia que nenhum campo
+calculado lia o estado de ferimento ainda, e isso estava errado. `src/data/regras.json` →
+`ferimentos` e `src/lib/mesa-core.ts` (`Tier`, `tierDe`, `FERIMENTOS`, `penTexto`) já implementam
+o modelo VELHO de 6 estados (com "Ferido", que a §4b eliminou), consumidos por
+`combate.astro`/`grid.astro` para calcular `ajAtq`/`ataqueAtual` (o ajuste da jogada de ataque) e
+a Defesa mostrada no Grid. A `interface Tier` só tinha `penAcao`/`penDefesa` como número flat de
+ponto, sem onde representar o `−1d6`/`−2d6` de Grave/Crítico.
+
+**Investigado para fechar o formato:** `ajAtq` (`grid.astro:10237-10244`) e `ataqueAtual`
+(`combate.astro:880-884`) já devolvem um objeto `{ flat, dados }`, porque o Desgaste (condição,
+`condicoes.json`, campo `"dados": -1` a `-4`) **já usa a moeda de dado** nessas mesmas duas
+funções, via `somarCondicoes(...).dados`. Ou seja, a infraestrutura de "penalidade em dado na
+jogada de ataque" já existe e já está em uso; só falta o ferimento alimentar o mesmo campo.
+
+**Decisão de formato:**
+
+1. **`Tier` ganha um campo novo, `penAcaoDados: number | null`**, ao lado do `penAcao` que já
+   existe (que fica só para Machucado, o único degrau que ainda é ponto): `0` em Saudável,
+   `0` em Machucado (a penalidade dele é só o `penAcao: -2` de ponto), `-1` em Grave, `-2` em
+   Crítico, `null` em Incapacitado (mesmo sentinela de "fora de combate" que `penAcao == null`
+   já usa hoje, para não quebrar `penTexto`).
+2. **`penDefesa` não muda de formato**, continua número flat puro nos 5 estados (Defesa é sempre
+   valor passivo, nunca rolado, isso não muda com o redesenho): Saudável 0, Machucado −2, Grave
+   −4, Crítico −8, Incapacitado `null`.
+3. **Tabela nova completa para `regras.json` → `ferimentos`** (substitui o array de 6 tiers
+   inteiro):
+
+   | Estado | minPct | maxPct | penAcao | penAcaoDados | penDefesa |
+   |---|:--:|:--:|:--:|:--:|:--:|
+   | Saudável | 61 | 100 | 0 | 0 | 0 |
+   | Machucado | 31 | 60 | −2 | 0 | −2 |
+   | Grave | 11 | 30 | 0 | −1 | −4 |
+   | Crítico | 1 | 10 | 0 | −2 | −8 |
+   | Incapacitado | 0 | 0 | null | null | null |
+
+4. **`penTexto` (`mesa-core.ts:121-123`) precisa mostrar o dado também**, algo como
+   `ação ${t.penAcao}${t.penAcaoDados ? ' ' + sinalTxt(t.penAcaoDados) + 'd6' : ''} · defesa
+   ${t.penDefesa}` (reaproveitar o helper de sinal que `grid.astro:10472-10473` já usa para
+   formatar `+Nd6`/`−Nd6`).
+5. **`ajAtq` e `ataqueAtual` precisam somar o `penAcaoDados` do ferimento ao `dados` que já
+   devolvem**, junto do `c2.dados`/`cd.dados` do Desgaste: hoje só a condição alimenta esse campo,
+   o ferimento fica de fora. É uma linha em cada uma das duas funções.
+6. **O piso de 1d6, que a §4b decidiu para o ferimento e que o Desgaste já deveria ter, NÃO está
+   implementado em lugar nenhum.** Investigado: `rolarExpr` (`src/lib/rolagem.ts:64-71`, a função
+   que de fato rola os dados a partir de `extraDados`) faz `dados = Math.max(0, dados +
+   extraDados)` — piso em **zero**, não em um. Isso significa que hoje o Desgaste já pode zerar
+   uma parada pequena por inteiro, contra o que o capítulo de `acoes-resistir.md` promete. A regra
+   certa, que vale para as duas moedas de dado (Desgaste e o ferimento novo) e para qualquer
+   futura: **se a parada base (antes de qualquer penalidade de dado) já tinha pelo menos 1 dado,
+   o resultado nunca cai abaixo de 1 dado; se a parada base já era zero dados (o caso "+2" sem
+   d6 nenhum), a penalidade de dado não inventa um dado que não existia.** Ou seja, o piso é
+   condicional à base, não incondicional: `dados = baseDados > 0 ? Math.max(1, baseDados +
+   extraDados) : Math.max(0, baseDados + extraDados)`. `rolarExpr` precisa dessa mudança (é
+   função compartilhada, usada por ficha e mesa: qualquer teste depois da mudança tem que
+   continuar batendo com os exemplos de `combate.md`).
+
+**Onde a Executora pode mexer:** `mesa-core.ts` é exclusivo da frente da mesa por
+`CLAUDE.md`, mas esta decisão é do Arquiteto (dono do repositório), não de uma frente entrando no
+território de outra por conta própria; a mudança em si é pequena e localizada (um campo novo na
+interface, uma linha em duas funções de ajuste, uma tabela de dados). Fazer com cuidado: `git
+status --short` antes de commitar (não há frente de mesa ativa nesta sessão, mas o hábito vale),
+citar exatamente o que mudou no commit, e rodar `npm run validate` + `npx tsc --noEmit` (o gancho
+já cobre isso).
+
 ## 4 · O resto do balde B (itens 2-17 da lista original)
 
 Ver `docs/simulacao/caixa/leitura-de-novato-capitulos.md` e
