@@ -806,6 +806,65 @@ secundário perfurante que a decisão pede.
 comparação com arma de classe/mãos equivalente, descrição curta por arma). Depois, a tabela do
 capítulo virando gerada (item pendente da rodada anterior).
 
+**Fechado em 22/09/2026, ambos os commits pela Executora-4** (`7c6ff2d` armas, `484c33f` tabela
+gerada + três preços órfãos corrigidos, `f7ff757` registro em prosa). Revisão: rodada 89,
+PROCEDE com um CORRIGE (peso do Bastão, aplicado em `95e1e90`).
+
+## 14 · Teste de Virtude, fechado em 22/09/2026 (achado ao tentar fechar o Frenesi)
+
+**Achado ao tentar fechar a regra de ativação do Frenesi (ver §4c):** não existia, em lugar
+nenhum do texto publicado, um teste de Virtude de verdade. A única linha que descrevia algo assim
+(`aparencia-virtudes-vontade.md:65`, "Resistir... role a Virtude apropriada somada a um
+Atributo") descrevia uma parada `Atributo+Virtude` pela conversão normal do sistema, e o humano
+decidiu que **essa parada não deveria existir**: ela dilui demais o peso da Virtude, porque o
+Atributo (que não tem nada a ver com força de vontade) empurra todo mundo pra perto da média.
+
+**Decisão**: a Virtude sozinha alimenta a mesma conversão soma→dado que qualquer Atributo+Habilidade
+usa (`⌊soma÷2⌋d6, +2 fixo se ímpar`), sem somar nada. Ou seja:
+
+| Virtude | Parada |
+|:--:|---|
+| 1 | 2 (fixo) |
+| 2 | 1d6 |
+| 3 | 1d6+2 |
+| 4 | 2d6 |
+| 5 | 2d6+2 |
+| 6 | 3d6 |
+
+Compara contra a mesma tabela de Dificuldade de sempre (5/10/15/20/25, `acoes-e-sistema.md:19-24`),
+sucesso = total maior que a Dificuldade. Zero mecanismo novo, só um uso novo da função que já
+existe. Os números batem com a régua de intensidade de personalidade que o humano descreveu (1
+quebrado até 6 ápice quase inflexível): Virtude 2 passa só ~17% contra Dificuldade 5 sem ajuda
+extra; Virtude 6 passa só ~5% contra Dificuldade 15. Uma tentativa intermediária (`2d6+Virtude`)
+foi descartada por diluir demais o contraste entre Virtudes vizinhas.
+
+**O que isso corrige**: `aparencia-virtudes-vontade.md:65` (Resistir) precisa trocar "Virtude
+somada a um Atributo" por só "Virtude", pela tabela acima.
+
+**Não implementado ainda.** Fica para a Executora junto com o resto desta frente, depois de
+`§15` (Frenesi) fechar por completo.
+
+## 15 · Frenesi, entrada fechada em 22/09/2026; manutenção e saída em discussão externa
+
+**O que já foi decidido pra entrada em Frenesi/Frenesi Contido** (complementa §4c, que só cobria
+o comportamento nos Limiares de Ferimento):
+
+- **Gatilho**: teste de Temperança (pela mecânica de §14), contra a Dificuldade do que provocou a
+  fúria. A lista exata de gatilhos (tomar dano grave, ver aliado cair, etc.) ainda não foi
+  escrita.
+- **A penalidade de ferimento vira BÔNUS só nesse teste**: Machucado soma +2 pontos, Grave soma
+  +1d6, Crítico soma +2d6 (os mesmos valores de §4b/§4f, sinal trocado só pra este uso). Quanto
+  mais ferido, mais fácil entrar em fúria.
+- **Gastar 1 Força de Vontade soma +2 pontos** por cima, no mesmo teste.
+- **Custo pra entrar**: nenhum além do teste (traço racial, não Técnica paga).
+
+**Em aberto, discutido num documento à parte** (`virtude-jogada.md`, na raiz do repo, escrito
+pra uma conversa externa resolver enquanto esta sessão segue noutra frente): o teste de
+manutenção do Frenesi (fica cada vez mais difícil renovar, parada ainda não decidida entre
+Autocontrole e Vigor+Resistência), o relógio que dispara esse teste, e a penalidade de "ressaca"
+ao sair (moeda, tamanho e duração escalando com quanto tempo o personagem ficou em fúria). Quando
+essa conversa fechar, as decisões voltam pra cá antes de ir pra Executora.
+
 ## Fechado em 22/09/2026 pela Executora-4: as sete armas novas e a tabela do capítulo gerada
 
 Dois commits, os dois últimos que faltavam do catálogo de itens desde `a492010`.
