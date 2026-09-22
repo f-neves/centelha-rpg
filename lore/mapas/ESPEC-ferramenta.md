@@ -989,3 +989,65 @@ importar não existe na ferramenta. Se um dia chegar, os caminhos são, em ordem
 esforço: guardar a coleção em cache invalidado por gravação (o desconto só muda
 quando uma área muda), simplificar as faixas com `simplify` antes de devolver, ou
 passar o automático para tiles gerados uma vez, como a costa.
+
+## Relevo automático planície (2026-09-23, décima rodada)
+
+A outra metade da etapa 7 da lista de etapas: terra que o usuário não pintou tem
+relevo `planicie`. Mesma máquina da cobertura automática, agora compartilhada em
+`backend/automatico.py` (montar as faixas, subtrair o que está pintado NAQUELA camada,
+marcar como automático, nunca gravar); `backend/relevo_automatico.py` é só a faixa
+única, do topo à base da tela, e `GET /api/relevo-automatico` a serve.
+
+**Decisão de IA, registrada para o usuário poder derrubar**: na tela, o relevo
+automático entra num **interruptor desligado por padrão** ("relevo automático
+(planície)", na seção de ferramentas), e não numa camada sempre visível como a da
+cobertura. Motivo: `planicie` é um valor ÚNICO sobre toda a terra sem pintura, então
+desenhá-lo sempre cobriria as faixas de cobertura com uma cor chapada sem dizer nada
+que a ausência de pintura já não diga. Ligado, ele responde à pergunta que é útil:
+"onde ainda não pintei relevo". Se o usuário preferir as duas camadas empilhadas, ou o
+automático seguindo a camada ativa, é trocar o interruptor por essa regra.
+
+Pane z 380, logo abaixo da cobertura automática (390), abaixo da área pintada (400) e
+abaixo da camada do mar (450), com `interactive: false` pela mesma razão das outras
+faixas. A tecla `C` ("só a costa") esconde as duas camadas automáticas.
+
+**Com isto a etapa 7 da lista fecha**: camada de Cobertura, cobertura automática por
+latitude e relevo automático planície. A etapa 8 é a **Ferramenta de Rio**.
+
+## Ferramentas de bancada (décima primeira rodada)
+
+Duas coisas que não são do mapa, e sim de como se trabalha nele. Ficam registradas
+porque as duas nasceram de defeito repetido, não de gosto.
+
+- **`scripts/conferir_git.py`**: confere `core.hooksPath` e **acrescenta uma linha em
+  `lore/mapas/registro-git.jsonl`** a cada conferência (data e hora, valor
+  encontrado, valor esperado, se estava certo, e o arquivo de configuração de onde o
+  valor veio), inclusive quando está certo. **Nunca conserta nada**: sai com código 1
+  se estiver errado, e quem decide é o usuário. Nasceu do `core.hooksPath` voltar
+  sozinho para caminho absoluto duas vezes entre rodadas, sem ninguém saber quem
+  reescreve: consertar calado apaga a evidência, e só avisar não descobre a causa.
+  O passo 1 do `/cartografo` roda isto antes de qualquer trabalho.
+- **`scripts/medir_automatico.py`**: bancada do custo da cobertura automática, que
+  **acrescenta** cada medição em `dados/medicoes_desempenho.json` em vez de
+  substituir. Serve para comparar com o custo real quando a pintura estiver avançada.
+  Monta os cenários num arquivo temporário e prova, em teste, que não toca no
+  `dados/areas-pintadas.geojson` de verdade.
+
+### Alinhamento das imagens do ChatGPT: o que fica gravado
+
+Regravado em 2026-09-22 com `scripts/alinhar_chatgpt_auto.py --gravar`. **Método**:
+classificação de terra/mar por cor, busca de escala e posição **sem rotação**,
+maximizando a interseção sobre união das áreas de terra contra `costa_10240.png`
+reduzida a uma grade de 128×128. **Resultado**: `chatgpt-1` 70,4%, `chatgpt-2` 70,8%,
+`chatgpt-3` 55,3%, `chatgpt-4` 63,7%, todas acima do piso (2× o IoU da costa contra
+ela mesma girada 90°). As quatro ficam com `bounds == bounds_automatico`, e a data e
+o método estão em `alinhamento_automatico` dentro de cada camada.
+
+Dois defeitos do próprio script, achados ao rodá-lo pela **segunda** vez:
+
+1. `bounds_anterior_a_20260922` era reescrito a cada gravação, e o nome da chave tem
+   uma data dentro: na segunda gravação ela passava a guardar valor de outro dia. Essa
+   chave agora é histórica e intocável, e o valor de antes da gravação vai para
+   `bounds_antes_do_alinhamento`, com a data em que foi substituído.
+2. A data do alinhamento era o literal `"2026-09-22"` no código, então toda gravação
+   futura mentiria a data. Passa a ser a data em que o script roda.
