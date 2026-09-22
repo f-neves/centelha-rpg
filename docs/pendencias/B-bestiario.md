@@ -99,7 +99,7 @@ limitações conhecidas, que são as três de baixo.
   este item entrar no mapa, e quando entrou o código já estava em uso por outro achado. Renumerado
   para não haver dois itens com o mesmo código; o conteúdo não mudou. Achado colateral
   da rodada 16 do Interpor (`docs/simulacao/caixa/16-executora.md`), fora de escopo daquela
-  frente. `roladaManual` (`src/lib/rolagem.ts:95`) trata qualquer expressão sem `d6` como "total já
+  frente. `roladaManual` (`src/lib/rolagem.ts:130`) trata qualquer expressão sem `d6` como "total já
   pronto" quando só um número é digitado, certo para dano fixo de verdade, mas quando a expressão
   é um pool escrito como `"0d6+2"` (caso real de `mon-bat`/`mon-toad`) e a rolagem sai por
   `rolagem=site` e é relida como digitação manual, o `+2` fixo entra duas vezes: uma dentro do

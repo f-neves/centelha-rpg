@@ -111,7 +111,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `resumoCombatePC`, as criaturas trazem o bloco pronto do `monsters-mesa.json` e não passam por
   lá. Riscos **F3** e **F2**.
 - [x] **L11 · [FEITO em 02/09] O golpe da rajada não pagava a penalidade dele.**
-  `rolarAcerto` (`grid.astro:10944`) sempre usa `linhas[0]`, e desde `f8459e6` (23/08) a folha é
+  `rolarAcerto` (`grid.astro:10953`) sempre usa `linhas[0]`, e desde `f8459e6` (23/08) a folha é
   aberta **uma por golpe** por `resolverGolpeNoAr`. Resultado: os golpes 2 e 3 de uma rajada saem
   com penalidade **zero** em vez de −1 e −2, e a rajada, cujo preço inteiro é essa penalidade, sai
   de graça. Está no **único** caminho que o Simultâneo usa (`adiaGolpe` é sempre true lá), as duas
@@ -1767,9 +1767,9 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **O DEFEITO.** No Grid os dois papéis escrevem o mesmo campo por caminhos que não se conhecem.
 
   O jogador acrescenta pelo banco, e o banco lê a coluna e concatena lá dentro:
-  `SB.rpc('jogador_registra', { p_arena: ARENA.id, p_linha: linha })`, `grid.astro:11598`.
+  `SB.rpc('jogador_registra', { p_arena: ARENA.id, p_linha: linha })`, `grid.astro:11607`.
   O mestre grava o vetor inteiro da memória dele:
-  `await SB.from('mesa_arenas').update({ log: LOG }).eq('id', ARENA.id);`, `grid.astro:11633`. **A linha que o jogador acabou de
+  `await SB.from('mesa_arenas').update({ log: LOG }).eq('id', ARENA.id);`, `grid.astro:11642`. **A linha que o jogador acabou de
   registrar some se o `LOG` do mestre for anterior a ela, sem erro nenhum.** É o caminho normal dos
   dois durante uma cena.
 
@@ -1812,10 +1812,10 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | gesto | o que faz hoje |
   |---|---|
   | `logar()` | empurra uma linha e grava o vetor |
-  | `desfazer()` | tira a última linha com `acao` (`LOG.splice(idx, 1);`, `grid.astro:11733`) e grava o vetor |
+  | `desfazer()` | tira a última linha com `acao` (`LOG.splice(idx, 1);`, `grid.astro:11742`) e grava o vetor |
   | `editarLinha(id)` | muda `txt`/`pub` de uma linha, e grava o vetor |
-  | `excluirLinha(id)` | tira por id (`LOG.splice(i, 1);`, `grid.astro:11828`) e grava o vetor |
-  | `refazerLogDosEfeitos()` | `LOG = LOG.filter((e: any) => !minha(e));` (`grid.astro:11879`) e empurra N linhas novas |
+  | `excluirLinha(id)` | tira por id (`LOG.splice(i, 1);`, `grid.astro:11837`) e grava o vetor |
+  | `refazerLogDosEfeitos()` | `LOG = LOG.filter((e: any) => !minha(e));` (`grid.astro:11888`) e empurra N linhas novas |
 
   **E UMA CORREÇÃO AO ENUNCIADO: não existe zerar no Grid.** O `LOG = []` é do `combate.astro`
   (`if (zLog) { LOG = []; await persistLog(); }`, `combate.astro:2197`), na caixa de reiniciar
@@ -3828,7 +3828,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **O caso concreto:** o status que diz qual modo está ouvindo é escrito em
   `src/pages/mesa/grid.astro:9799` · `vozStatus(textoOuvindo(ditado))`, e essa linha só é alcançada
   depois de o modelo de 31 MB estar carregado, o que um teste headless não faz. Então a costura
-  exposta para o teste (`src/pages/mesa/grid.astro:11087` · `__TEXTO_OUVINDO`) chama a mesma função
+  exposta para o teste (`src/pages/mesa/grid.astro:11096` · `__TEXTO_OUVINDO`) chama a mesma função
   por fora e devolve o texto **recomputado**, em vez de ler o que a tela de fato exibiu.
 
   **A prova não é raciocínio, é experimento.** A Revisora reverteu a linha real para o
@@ -5147,7 +5147,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **Conferido pelo outro lado também:** toda escrita de `pv_atual` no módulo das Artes é subtração
   (`pv_atual: pv` em `src/lib/artes-grid-mesa.ts:1873`, com `pv` já calculado como
   `max(0, atual − líquido)`). Não existe soma de Vida em lugar nenhum de `src/lib`. Curar existe como
-  ação do mestre, no menu (`async function curar`, `src/pages/mesa/grid.astro:11296`); **nenhuma Arte
+  ação do mestre, no menu (`async function curar`, `src/pages/mesa/grid.astro:11305`); **nenhuma Arte
   cura pelo tabuleiro**.
 
   **A Revisora contou seis e são sete**, e ela escreveu "pelo menos 6", que é a forma honesta de dar
@@ -5490,7 +5490,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **A conferência que fecha isso, e ela vale por si:** TODO caminho de dano grampeia em zero, nos
   quatro escritores e no servidor:
   `Math.max(0, (alvo.pv_atual ?? 0) - golpe.liquido)` (`src/lib/artes-grid-mesa.ts:1872`), o mesmo em `:1787`,
-  `const pv = Math.max(0, antes - quanto);` (`src/pages/mesa/grid.astro:11200`),
+  `const pv = Math.max(0, antes - quanto);` (`src/pages/mesa/grid.astro:11209`),
   `Math.max(0, Math.min(c.pv_max, c.pv_atual + delta))` (`src/pages/mesa/combate.astro:1358`) e, no banco,
   `set pv_atual = greatest(0, coalesce(pv_atual, 0) - p_quanto)` (`supabase/migracao-22.sql:146`).
   **O resíduo verdadeiro não é "dois tetos que discordam", é que a Vida tem quatro escritores e
@@ -5598,7 +5598,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   `jogador_dano` direto, e o ramo do mestre que grava `mana_max` e `mana_atual` juntos. **O terceiro a
   Revisora achou fora do que eu pedi**, lendo em volta.
   `async function alternarAuto` (`src/pages/mesa/grid.astro:6267`) e
-  `async function devolverAuto` (`src/pages/mesa/grid.astro:11694`)
+  `async function devolverAuto` (`src/pages/mesa/grid.astro:11703`)
   escrevem `dados` direto, repintam **só o próprio cliente** e
   nunca tocam a campainha, nem antes nem depois desta rodada. É simétrico (a ida e o desfazer calam
   igual), pré-existente, e nunca passou pelos nove auditados, que é por isso que ficou de fora do

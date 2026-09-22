@@ -10417,7 +10417,16 @@ let roladoDano = '';
       // mão quanto o que `rolarAcerto`/`rolarDano` escrevem no campo depois de
       // rolar sozinhos: as duas origens caem na mesma conta, e a folha não
       // precisa saber de onde a face veio.
-      const rd = roladaManual(totalInp.value, e.atacante.ataque, e.atacante.ajusteFlat);
+      // `roladaManual` PRECISA do mesmo extraDados que decidiu quantos dados
+      // `rolarAcerto` rolou (`ajusteDados` + a penalidade DESTE golpe em
+      // `penDados[idx]`), não só o `ajusteFlat`: sem ele, a guarda de "isto é
+      // total pronto, não face" (achado de 22/09/2026, `rolagem.ts`) erra na
+      // borda em que um bolo que nasce `0d6` ganha dado de algum ajuste — ela
+      // acha que continua em zero e descarta o fixo por inteiro.
+      const rd = roladaManual(
+        totalInp.value, e.atacante.ataque, e.atacante.ajusteFlat,
+        e.atacante.ajusteDados + (e.atacante.penDados[idx] ?? 0),
+      );
       const t = rd ? rd.total : null;
       const soma = t != null ? t + e.modManual : null;
       const veredito = soma != null && def2 != null ? saidaDoAtaque(soma, def2, e.margemQA) : null;

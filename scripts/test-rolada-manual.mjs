@@ -89,6 +89,27 @@ r = M.roladaManual('5', '1d6+2', 0);
 ok(!!r && r.total === 7, `um número só COM d6 na expressão é uma face, e o fixo soma normal (${r?.total}, esperado 7)`);
 ok(!!r && r.bateContagem === true, `e a contagem bate: 1 face para uma arma de 1d6 (${r?.bateContagem})`);
 
+// ---- 6b: UMA ARMA QUE JÁ NASCE "0d6" (achado em 22/09/2026, bug de produção
+// desde 06/09/2026, `045f491`) — a guarda antiga só testava se o TEXTO tinha
+// a substring "d6", e "0d6" TEM, então nunca caía no caso 5. `rolarAcerto`
+// (`grid.astro`) escreve o TOTAL no campo quando o pool rola zero dado, e sem
+// a guarda certa esta função lia aquele total como se fosse UMA face e somava
+// o fixo de novo por cima: a jogada saía com o dobro do bônus fixo. Comum de
+// verdade: `combate-resumo.ts` escreve `${Math.floor(soma/2)}d6`, que é
+// literalmente "0d6" sempre que Atributo+Perícia ≤ 1.
+r = M.roladaManual('6', '0d6 +3', 3);
+ok(!!r && r.total === 6 && r.rolls.length === 0,
+  `arma "0d6": um número só é o TOTAL pronto, não dobra o fixo (${r?.total}, esperado 6)`);
+r = M.roladaManual('3', '0d6 +3', 0);
+ok(!!r && r.total === 3 && r.rolls.length === 0,
+  `mesmo sem extraFlat, "0d6" não inventa uma face (${r?.total}, esperado 3)`);
+// ---- 6c: mas um pool com 1+ dado no ajustado (base "0d6" + 1 de extraDados,
+// por exemplo uma condição que ACRESCENTA dado a um bolo que nasce zero)
+// continua exigindo uma face de verdade — a guarda não pode virar "sempre que
+// a expressão é 0d6", só quando o AJUSTADO também é zero.
+r = M.roladaManual('4', '0d6 +2', 0, 1);
+ok(!!r && r.total === 6, `pool "0d6" com extraDados que soma 1 dado: um número só é FACE, soma o fixo (${r?.total}, esperado 6)`);
+
 // ---- 7: o que sobe para o registro é a MESMA descrição que um auto-rolado usaria ----
 const desc = M.descreverRolada({ dados: 3, flat: 3, rolls: [3, 5, 1], total: 12 });
 ok(desc === '[3, 5, 1] +3 = 12', `descreverRolada lê a rolada manual com o mesmo formato do registro ("${desc}")`);

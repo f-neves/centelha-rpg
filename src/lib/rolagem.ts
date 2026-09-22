@@ -51,6 +51,32 @@ function flatDeExpr(expr: string): number {
 }
 
 /**
+ * Quantos d6 a EXPRESSÃO pede, sem ajuste nenhum: soma cada `NdN`, tratando
+ * `Nd6` sem número (`d6`) como 1, e `0d6` como exatamente ZERO — não como "sem
+ * número", que `parseInt("0d6") || 1` já confundiu uma vez (a marca de
+ * `bateContagem` contava 1 dado para uma arma de "0d6", o oposto do que a
+ * arma tem).
+ *
+ * Separado de `rolarExpr` porque `roladaManual` (abaixo) precisa da MESMA
+ * contagem sem rolar: as duas formas de "quantos dados este bolo tem" têm de
+ * concordar, ou a guarda de "isto é um total, não uma face" acende no lugar
+ * errado.
+ */
+function baseDadosDeExpr(expr: string): number {
+  const limpo = String(expr || '').replace(/[−–—]/g, '-').replace(/\([^)]*\)/g, ' ');
+  let baseDados = 0;
+  limpo.replace(/(\d*)d6/gi, (_m, n) => { baseDados += n === '' ? 1 : parseInt(n, 10); return ' '; });
+  return baseDados;
+}
+
+/**
+ * O piso do pool: nunca menos que zero dado.
+ */
+function dadosAjustados(baseDados: number, extraDados: number): number {
+  return Math.max(0, baseDados + extraDados);
+}
+
+/**
  * Rola uma expressão do tipo `4d6+2`, `3d6 +5 (C)` ou `1d6 −2`.
  *
  * Aceita o que o bestiário e a ficha escrevem, incluindo o menos tipográfico
@@ -62,10 +88,7 @@ function flatDeExpr(expr: string): number {
  * é a tela, e não a expressão.
  */
 export function rolarExpr(expr: string, extraDados = 0, extraFlat = 0): Rolada {
-  const limpo = String(expr || '').replace(/[−–—]/g, '-').replace(/\([^)]*\)/g, ' ');
-  let dados = 0;
-  limpo.replace(/(\d*)d6/gi, (_m, n) => { dados += n === '' ? 1 : parseInt(n, 10); return ' '; });
-  dados = Math.max(0, dados + extraDados);
+  const dados = dadosAjustados(baseDadosDeExpr(expr), extraDados);
   const flat = flatDeExpr(expr) + extraFlat;
   const rolls = Array.from({ length: dados }, d6);
   return { dados, flat, rolls, total: rolls.reduce((a, b) => a + b, 0) + flat };
@@ -83,16 +106,29 @@ export function rolarExpr(expr: string, extraDados = 0, extraFlat = 0): Rolada {
  * nada ainda", e ele tem de ser distinto de "digitou zero", que é uma face
  * impossível num d6 mas um total válido (um erro que não machucou nada).
  *
- * UM NÚMERO SÓ, E A EXPRESSÃO NÃO TEM `d6` NENHUM: só pode ser o TOTAL de uma
- * arma sem dado (dano fixo), e não a face de um dado que a arma não rola.
- * Tratar como face somaria o fixo em cima de um número que já É o total,
- * dobrando a conta. É o único caso em que esta função aceita um total pronto,
- * e só porque não há dado nenhum para digitar em seu lugar.
+ * UM NÚMERO SÓ, E O POOL AJUSTADO NÃO TEM DADO NENHUM: só pode ser o TOTAL de
+ * uma arma sem dado (dano fixo) ou de um bolo que o ferimento/condição zerou,
+ * e não a face de um dado que não foi rolado. Tratar como face somaria o
+ * fixo em cima de um número que já É o total, dobrando a conta. É o único
+ * caso em que esta função aceita um total pronto, e só porque não há dado
+ * nenhum para digitar em seu lugar.
+ *
+ * ACHADO EM 22/09/2026, bug de produção desde 06/09/2026 (`045f491`): a
+ * guarda testava `!/\d*d6/i.test(expr)`, "a expressão não tem a substring
+ * `d6`" — e uma arma que já nasce `0d6` (comum: `combate-resumo.ts` escreve
+ * `${Math.floor(soma/2)}d6`, que é `0d6` sempre que Atributo+Perícia ≤ 1)
+ * TEM a substring, então a guarda nunca disparava para ela. `rolarAcerto`
+ * escreve o TOTAL no campo quando o pool rola zero dado (`grid.astro:10868`),
+ * e sem a guarda essa mesma função lia aquele total como se fosse UMA face e
+ * somava o fixo de novo por cima — a jogada saía com o dobro do bônus fixo.
+ * A guarda agora testa o POOL AJUSTADO (`dadosAjustados`, a mesma conta que
+ * `rolarAcerto` usa para decidir quantos dados rolar), não o texto da arma.
  */
 export function roladaManual(texto: string, expr: string, extraFlat = 0, extraDados = 0): Rolada | null {
   const rolls = (String(texto || '').match(/-?\d+/g) || []).map(Number);
   if (!rolls.length) return null;
-  if (rolls.length === 1 && !/\d*d6/i.test(String(expr || ''))) {
+  const dadosExpr = dadosAjustados(baseDadosDeExpr(expr), extraDados);
+  if (rolls.length === 1 && dadosExpr === 0) {
     return { dados: 0, flat: 0, rolls: [], total: rolls[0], bateContagem: true };
   }
   const flat = flatDeExpr(expr) + extraFlat;
@@ -107,8 +143,6 @@ export function roladaManual(texto: string, expr: string, extraFlat = 0, extraDa
   // uma digitação certa — o mesmo risco que a rede do avanço existe para
   // não correr: um sinal que acende no caso errado apaga o sinal, em vez de
   // mostrá-lo.
-  const dadosExpr = Math.max(0, (String(expr || '').match(/(\d*)d6/gi) || [])
-    .reduce((a, m) => a + (parseInt(m, 10) || 1), 0) + extraDados);
   return {
     dados: rolls.length, flat, rolls, total: rolls.reduce((a, b) => a + b, 0) + flat,
     bateContagem: rolls.length === dadosExpr,
