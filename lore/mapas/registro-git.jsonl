@@ -1,0 +1,2 @@
+{"quando": "2026-09-22 18:56:31", "chave": "core.hooksPath", "valor": "scripts/hooks", "esperado": "scripts/hooks", "certo": true, "origem": "file:.git/config"}
+{"quando": "2026-09-22 18:56:43", "chave": "core.hooksPath", "valor": "scripts/hooks", "esperado": "scripts/hooks", "certo": true, "origem": "file:.git/config"}
