@@ -5,6 +5,15 @@
 <title>Uldun - editor do mapa</title>
 <link rel="stylesheet" href="/static/vendor/leaflet-1.9.4/leaflet.css">
 <link rel="stylesheet" href="/static/css/estilo.css">
+<script>
+  // Tema aplicado ANTES de pintar (item 2 de 2026-09-23): se isto ficasse no
+  // interface.js, quem escolheu "claro" veria a página nascer escura e piscar.
+  // Escuro continua sendo o padrão de quem nunca escolheu.
+  try {
+    const t = localStorage.getItem("uldun.tema");
+    if (t === "claro" || t === "escuro") document.documentElement.dataset.tema = t;
+  } catch (e) { /* sem armazenamento: fica no escuro, o padrão */ }
+</script>
 </head>
 <body>
   <header id="barra-topo">
@@ -24,59 +33,159 @@
       </select>
     </span>
     <span id="controle-zoom">
-      <button type="button" id="zoom-menos" title="Reduz ~25%">-</button>
+      <button type="button" id="zoom-menos" title="Nível de zoom anterior">-</button>
       <input type="text" id="campo-zoom-porcentagem" value="100%" title="Zoom em porcentagem da resolução nativa (100% = 1px da máscara de 10240px = 1px de tela). Digite um valor e aperte Enter.">
-      <button type="button" id="zoom-mais" title="Amplia ~25%">+</button>
+      <button type="button" id="zoom-mais" title="Próximo nível de zoom">+</button>
     </span>
-    <span id="leitura-cursor">--,--°  -   --,--°  -</span>
+    <button type="button" id="botao-tema" title="Trocar tema claro/escuro (D)">☾</button>
+    <button type="button" id="botao-ajuda" title="Atalhos de teclado (?)">?</button>
   </header>
 
   <div id="corpo">
     <aside id="painel-esquerdo">
-      <div class="secao">
-        <h2>NAVEGACAO</h2>
-        <div id="minimapa-caixa">
-          <img id="minimapa-img" src="/static/img/minimapa.jpg" alt="minimapa de Uldun">
-          <div id="minimapa-retangulo"></div>
+      <section class="secao" data-secao="navegacao">
+        <h2 class="cabecalho-secao">NAVEGACAO</h2>
+        <div class="corpo-secao">
+          <div id="minimapa-caixa">
+            <img id="minimapa-img" src="/static/img/minimapa.jpg" alt="minimapa de Uldun">
+            <div id="minimapa-retangulo"></div>
+          </div>
         </div>
-      </div>
-      <div class="secao">
-        <h2>CAMADAS DE REFERENCIA</h2>
-        <div id="lista-camadas-referencia"></div>
-        <p class="nota">Rótulos e Ocean Deep são tiles (sem posição ajustável, já
-          alinhados ao mundo inteiro). As 4 imagens do ChatGPT têm "alinhar" (2
-          pontos, sem rotação) e os campos numéricos pra ajuste fino.</p>
-      </div>
-      <div class="secao">
-        <h2>FERRAMENTAS</h2>
-        <button type="button" id="lugar-adicionar">+ lugar</button>
-        <div id="controle-desfazer">
-          <button type="button" id="botao-desfazer" disabled>desfazer</button>
-          <button type="button" id="botao-refazer" disabled>refazer</button>
+      </section>
+
+      <section class="secao" data-secao="camadas">
+        <h2 class="cabecalho-secao">CAMADAS DE REFERENCIA</h2>
+        <div class="corpo-secao">
+          <div id="lista-camadas-referencia"></div>
+          <p class="nota">Clique no NOME pra deixar a camada ativa (as teclas
+            <kbd>[</kbd>/<kbd>]</kbd> mudam a opacidade dela). Rótulos e Ocean
+            Deep são tiles, sem posição ajustável. As 4 do ChatGPT têm "posição"
+            com <b>reset</b> (limites do mundo) e <b>automático</b>.</p>
         </div>
-        <button type="button" id="regua-ativar">régua</button>
-        <div id="regua-leitura" class="nota"></div>
-        <label class="nota"><input type="checkbox" id="grade-latlon-ativa"> grade lat/lon (10°)</label>
-        <p class="nota">Lugar: cria, arrasta pra mover, clique abre editar/apagar.
-          Régua: clique 2 pontos, mostra distância real (grande círculo). Demais
-          ferramentas (área, rio, estrada...) ainda não ligadas.</p>
-      </div>
+      </section>
+
+      <section class="secao" data-secao="ferramentas">
+        <h2 class="cabecalho-secao">FERRAMENTAS</h2>
+        <div class="corpo-secao">
+          <button type="button" id="lugar-adicionar">+ lugar <kbd>L</kbd></button>
+          <div id="controle-desfazer">
+            <button type="button" id="botao-desfazer" disabled>desfazer</button>
+            <button type="button" id="botao-refazer" disabled>refazer</button>
+          </div>
+          <div id="controle-regua">
+            <button type="button" id="regua-ativar">régua <kbd>R</kbd></button>
+            <button type="button" id="regua-limpar" title="Apaga todas as medições">limpar</button>
+          </div>
+          <div id="regua-leitura" class="nota"></div>
+          <label class="nota"><input type="checkbox" id="grade-latlon-ativa"> grade lat/lon (10°)</label>
+        </div>
+      </section>
+
+      <section class="secao" data-secao="lugares">
+        <h2 class="cabecalho-secao">LUGARES</h2>
+        <div class="corpo-secao">
+          <button type="button" id="trava-camada-lugares" class="botao-trava-camada">🔓 camada livre</button>
+          <input type="search" id="busca-lugares" placeholder="buscar por nome...">
+          <ul id="lista-lugares"></ul>
+        </div>
+      </section>
     </aside>
 
     <main id="mapa"></main>
   </div>
 
-  <footer id="painel-selecao">
-    <span id="status-salvamento">etapa 2: camadas de referência (posição/opacidade
-      editável e persistida; Rótulos e Ocean Deep em tiles); sem dado de mundo
-      editável ainda (fica pra etapa 3 em diante)</span>
+  <footer id="barra-inferior">
+    <span id="leitura-cursor">--,--°  -   --,--°  -</span>
+    <span id="leitura-zoom">zoom --</span>
+    <span id="leitura-sob-cursor">—</span>
+    <span id="status-salvamento">pronto</span>
   </footer>
 
-  <div id="modal-alinhamento" style="display:none">
-    <div id="modal-alinhamento-caixa">
-      <p id="modal-alinhamento-instrucao"></p>
-      <img id="modal-alinhamento-img" alt="imagem de referência para alinhar">
-      <button type="button" id="modal-alinhamento-cancelar">cancelar</button>
+  <!-- Modal de Lugar: cria e edita, no lugar dos prompt/confirm do navegador -->
+  <div id="modal-lugar" class="modal" style="display:none">
+    <form id="form-lugar" class="caixa-modal">
+      <h3 id="titulo-modal-lugar">Novo lugar</h3>
+      <label>nome <input type="text" id="campo-lugar-nome" autocomplete="off"></label>
+      <label>id <input type="text" id="campo-lugar-id" autocomplete="off"
+        title="Identificador único e permanente. Gerado a partir do nome, editável só na criação."></label>
+      <label>tipo
+        <select id="campo-lugar-tipo">
+          <option value="cidade">cidade</option>
+          <option value="vila">vila</option>
+          <option value="fortaleza">fortaleza</option>
+          <option value="porto">porto</option>
+          <option value="ruina">ruína</option>
+          <option value="marco">marco</option>
+        </select>
+      </label>
+      <label>importância
+        <select id="campo-lugar-importancia">
+          <option value="">(não classificado)</option>
+          <option value="pequena">pequena</option>
+          <option value="media">média</option>
+          <option value="grande">grande</option>
+        </select>
+      </label>
+      <label class="linha-checkbox">
+        <input type="checkbox" id="campo-lugar-capital"> capital
+        <span class="nota" id="nota-capital">(só em cidade)</span>
+      </label>
+      <div class="linha-coordenadas">
+        <label>latitude <input type="number" step="0.0001" id="campo-lugar-lat"></label>
+        <label>longitude <input type="number" step="0.0001" id="campo-lugar-lon"></label>
+      </div>
+      <label class="linha-checkbox">
+        <input type="checkbox" id="campo-lugar-travado"> travado <kbd>T</kbd>
+        <span class="nota" id="nota-lugar-travado"></span>
+      </label>
+      <p id="erro-modal-lugar" class="erro-modal" hidden></p>
+      <div class="botoes-modal">
+        <button type="submit" id="botao-lugar-salvar">salvar</button>
+        <button type="button" id="botao-lugar-salvar-outro">salvar e criar outro</button>
+        <button type="button" id="botao-lugar-apagar" hidden>apagar</button>
+        <button type="button" id="botao-lugar-cancelar">cancelar <kbd>Esc</kbd></button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Modal de salvar medição da régua (mesmo padrão do de Lugar) -->
+  <div id="modal-medicao" class="modal" style="display:none">
+    <form id="form-medicao" class="caixa-modal">
+      <h3>Salvar medição</h3>
+      <p id="resumo-modal-medicao" class="nota"></p>
+      <label>nome <input type="text" id="campo-medicao-nome" autocomplete="off"
+        placeholder="opcional"></label>
+      <p id="erro-modal-medicao" class="erro-modal" hidden></p>
+      <div class="botoes-modal">
+        <button type="submit">salvar</button>
+        <button type="button" id="botao-medicao-cancelar">cancelar <kbd>Esc</kbd></button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Tela de ajuda (tecla ?) -->
+  <div id="modal-ajuda" class="modal" style="display:none">
+    <div class="caixa-modal">
+      <h3>Atalhos</h3>
+      <table class="tabela-atalhos">
+        <tr><td><kbd>L</kbd></td><td>ferramenta de Lugar (liga/desliga)</td></tr>
+        <tr><td><kbd>R</kbd></td><td>régua (liga/desliga)</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>sai da ferramenta ativa / fecha modal / cancela medição</td></tr>
+        <tr><td><kbd>Ctrl</kbd>+<kbd>Z</kbd></td><td>desfazer</td></tr>
+        <tr><td><kbd>Ctrl</kbd>+<kbd>Y</kbd></td><td>refazer</td></tr>
+        <tr><td><kbd>espaço</kbd> (segurado)</td><td>arrasta o mapa sem sair da ferramenta</td></tr>
+        <tr><td><kbd>C</kbd> (segurado)</td><td>esconde tudo e mostra só a costa</td></tr>
+        <tr><td><kbd>T</kbd></td><td>trava/destrava o lugar selecionado (travado não se move nem se apaga)</td></tr>
+        <tr><td><kbd>D</kbd></td><td>troca o tema claro/escuro (a escolha fica lembrada)</td></tr>
+        <tr><td><kbd>[</kbd> / <kbd>]</kbd></td><td>opacidade da camada de referência ativa</td></tr>
+        <tr><td><kbd>+</kbd> / <kbd>-</kbd></td><td>zoom (nível a nível)</td></tr>
+        <tr><td><kbd>?</kbd></td><td>esta tela</td></tr>
+      </table>
+      <p class="nota">Dentro de um campo de texto, as teclas de ferramenta não
+        disparam — só <kbd>Esc</kbd> e <kbd>Enter</kbd>.</p>
+      <div class="botoes-modal">
+        <button type="button" id="botao-ajuda-fechar">fechar</button>
+      </div>
     </div>
   </div>
 
@@ -89,7 +198,11 @@
     const CAMADAS_REFERENCIA_INICIAL = /*__CAMADAS_REFERENCIA__*/;
     // Injetado a partir de dados/lugares.geojson (backend/lugares.py).
     const LUGARES_INICIAL = /*__LUGARES__*/;
+    // Injetado a partir de dados/camadas_travadas.json (backend/travas.py).
+    const TRAVAS_INICIAL = /*__TRAVAS__*/;
   </script>
+  <script src="/static/js/interface.js"></script>
+  <script src="/static/js/terra-ou-mar.js"></script>
   <script src="/static/js/minimapa.js"></script>
   <script src="/static/js/camadas-referencia.js"></script>
   <script src="/static/js/lugares.js"></script>

@@ -1,15 +1,27 @@
 // Camadas de referência (etapa 2, ESPEC-ferramenta.md correção 10 + revisão
-// 2026-09-22). Dois tipos:
+// 2026-09-23). Dois tipos:
 // - 'imagem' (as 4 do ChatGPT): L.imageOverlay esticado sobre um retângulo em
-//   lat/lon (bounds). Posição/escala ajustável por 4 campos numéricos (fino) ou
-//   por "alinhar" (2 pontos: clique na imagem + clique no mapa, duas vezes, sem
-//   rotação).
+//   lat/lon (bounds). Posição por 4 campos numéricos (ajuste fino) ou pelos
+//   botões "reset" (limites do mundo) / "automático" (volta pro resultado do
+//   alinhamento automático, scripts/alinhar_chatgpt_auto.py). O alinhamento
+//   manual por 2 pontos SAIU da interface em 2026-09-23 (pedido do usuário,
+//   substituído pelos dois botões) -- toda mudança de posição passa pelo
+//   desfazer (backend/referencias.py -> operacoes.registrar_operacao).
 // - 'tile' (Rótulos, Ocean Deep): pirâmide de tiles pré-gerada, já alinhada ao
 //   mundo inteiro pela mesma CRS da costa — sem bounds, sem posição ajustável.
+
+// Exposta globalmente (contrato entre os <script src> desta ferramenta, sem
+// módulo ES): o desfazer/refazer de lugares.js chama isto quando a operação
+// desfeita era uma mudança de POSIÇÃO de camada de referência, pra imagem
+// voltar pro lugar certo sem recarregar a página.
+let recarregarCamadasReferencia = () => {};
 
 function iniciarCamadasReferencia(mapa, camadasIniciais, opcoesTile) {
   const lista = document.getElementById("lista-camadas-referencia");
   const overlaysPorId = {};
+  const controlesOpacidadePorId = {};
+  const linhasPorId = {};
+  let idCamadaAtiva = null;
 
   function boundsLeaflet(b) {
     return L.latLngBounds([b.sul, b.oeste], [b.norte, b.leste]);
@@ -51,140 +63,49 @@ function iniciarCamadasReferencia(mapa, camadasIniciais, opcoesTile) {
     }
   }
 
-  async function salvar(id, mudanca) {
-    const resp = await fetch(`/api/camadas-referencia/${encodeURIComponent(id)}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(mudanca),
-    });
-    if (!resp.ok) {
-      const erro = await resp.json().catch(() => ({}));
-      alert(`Não salvou: ${erro.detail || resp.status}`);
+  async function chamar(metodo, caminho, corpo) {
+    if (metodo !== "GET") mostrarSalvando();
+    let resp;
+    try {
+      resp = await fetch(caminho, {
+        method: metodo,
+        headers: corpo ? { "Content-Type": "application/json" } : undefined,
+        body: corpo ? JSON.stringify(corpo) : undefined,
+      });
+    } catch (e) {
+      if (metodo !== "GET") mostrarErroDeGravacao("o servidor não respondeu");
       return null;
     }
+    if (!resp.ok) {
+      const erro = await resp.json().catch(() => ({}));
+      if (metodo !== "GET") mostrarErroDeGravacao(erro.detail || `erro ${resp.status}`);
+      return null;
+    }
+    if (metodo !== "GET") mostrarSalvo();
     return resp.json();
   }
 
-  // --- Alinhamento por 2 pontos (só camada 'imagem') -----------------------
-  // Fluxo: clique 1 na imagem (no modal) -> clique 1 no mapa -> clique 2 na
-  // imagem -> clique 2 no mapa -> calcula escala/posição sem rotação e grava.
-  const modal = document.getElementById("modal-alinhamento");
-  const modalImg = document.getElementById("modal-alinhamento-img");
-  const modalInstrucao = document.getElementById("modal-alinhamento-instrucao");
-  const modalCancelar = document.getElementById("modal-alinhamento-cancelar");
-
-  let alinhamentoAtivo = null; // { camada, pontosImagem: [], pontosMapa: [] }
-
-  function encerrarAlinhamento() {
-    if (alinhamentoAtivo && alinhamentoAtivo.ouvinteMapa) {
-      mapa.off("click", alinhamentoAtivo.ouvinteMapa);
-    }
-    alinhamentoAtivo = null;
-    modal.style.display = "none";
-    modalImg.onclick = null;
+  async function salvar(id, mudanca) {
+    return chamar("POST", `/api/camadas-referencia/${encodeURIComponent(id)}`, mudanca);
   }
 
-  function atualizarInstrucao() {
-    const n = alinhamentoAtivo.pontosImagem.length;
-    if (alinhamentoAtivo.pontosImagem.length === alinhamentoAtivo.pontosMapa.length) {
-      const proximo = n + 1;
-      modalInstrucao.textContent =
-        `Ponto ${proximo} de 2: clique no local de referência NA IMAGEM abaixo.`;
-    } else {
-      modalInstrucao.textContent =
-        `Ponto ${n} de 2: agora clique no local CORRESPONDENTE no mapa (atrás deste aviso — feche com "cancelar" se precisar navegar antes).`;
+  // --- Camada ATIVA (teclas [ e ] mudam a opacidade dela) --------------------
+  function selecionarCamadaAtiva(id) {
+    idCamadaAtiva = id;
+    for (const [outroId, linha] of Object.entries(linhasPorId)) {
+      linha.classList.toggle("camada-ativa", outroId === id);
     }
   }
 
-  function calcularEGravarBounds() {
-    const [img1, img2] = alinhamentoAtivo.pontosImagem;
-    const [map1, map2] = alinhamentoAtivo.pontosMapa;
-    const dx = img2.x - img1.x;
-    const dy = img2.y - img1.y;
-    if (Math.abs(dx) < 1 || Math.abs(dy) < 1) {
-      alert("Os dois pontos ficaram quase na mesma posição na imagem — escolha "
-        + "pontos mais afastados (um em cada canto, por exemplo). Alinhamento cancelado.");
-      encerrarAlinhamento();
-      return;
-    }
-    const escalaX = (map2.lng - map1.lng) / dx;
-    const escalaY = (map2.lat - map1.lat) / dy;
-
-    const lonEm = (x) => map1.lng + escalaX * (x - img1.x);
-    const latEm = (y) => map1.lat + escalaY * (y - img1.y);
-
-    const lonEsquerda = lonEm(0);
-    const lonDireita = lonEm(alinhamentoAtivo.naturalWidth);
-    const latTopo = latEm(0);
-    const latBase = latEm(alinhamentoAtivo.naturalHeight);
-
-    const bounds = {
-      oeste: Math.min(lonEsquerda, lonDireita),
-      leste: Math.max(lonEsquerda, lonDireita),
-      sul: Math.min(latTopo, latBase),
-      norte: Math.max(latTopo, latBase),
-    };
-
-    const camada = alinhamentoAtivo.camada;
-    encerrarAlinhamento();
-    salvar(camada.id, { bounds }).then((doc) => {
-      if (doc) {
-        const atualizada = doc.camadas.find((c) => c.id === camada.id);
-        criarOuAtualizarOverlay(atualizada);
-        atualizarCamposBounds(camada.id, atualizada.bounds);
-      }
-    });
+  async function mudarOpacidadeDaAtiva(delta) {
+    if (!idCamadaAtiva) return;
+    const controle = controlesOpacidadePorId[idCamadaAtiva];
+    if (!controle) return;
+    const nova = Math.min(1, Math.max(0, Math.round((parseFloat(controle.value) + delta) * 100) / 100));
+    controle.value = nova;
+    const doc = await salvar(idCamadaAtiva, { opacidade: nova });
+    if (doc) criarOuAtualizarOverlay(doc.camadas.find((c) => c.id === idCamadaAtiva));
   }
-
-  function cliqueNaImagem(evento) {
-    const rect = modalImg.getBoundingClientRect();
-    const fracaoX = (evento.clientX - rect.left) / rect.width;
-    const fracaoY = (evento.clientY - rect.top) / rect.height;
-    const x = fracaoX * alinhamentoAtivo.naturalWidth;
-    const y = fracaoY * alinhamentoAtivo.naturalHeight;
-    alinhamentoAtivo.pontosImagem.push({ x, y });
-    atualizarInstrucao();
-
-    if (alinhamentoAtivo.pontosImagem.length > alinhamentoAtivo.pontosMapa.length) {
-      // Aguardando o clique correspondente no mapa: esconde o modal um instante
-      // pra não cobrir o mapa (reaparece sozinho no próximo clique na imagem, ou
-      // ao completar os 2 pares).
-      modal.style.display = "none";
-      const ouvinte = (eventoMapa) => {
-        alinhamentoAtivo.pontosMapa.push(eventoMapa.latlng);
-        mapa.off("click", ouvinte);
-        if (alinhamentoAtivo.pontosImagem.length === 2 && alinhamentoAtivo.pontosMapa.length === 2) {
-          calcularEGravarBounds();
-        } else {
-          modal.style.display = "flex";
-          atualizarInstrucao();
-        }
-      };
-      alinhamentoAtivo.ouvinteMapa = ouvinte;
-      mapa.on("click", ouvinte);
-    }
-  }
-
-  function iniciarAlinhamento(camada) {
-    encerrarAlinhamento();
-    const imgTeste = new Image();
-    imgTeste.onload = () => {
-      alinhamentoAtivo = {
-        camada,
-        pontosImagem: [],
-        pontosMapa: [],
-        naturalWidth: imgTeste.naturalWidth,
-        naturalHeight: imgTeste.naturalHeight,
-      };
-      modalImg.src = camada.url;
-      modalImg.onclick = cliqueNaImagem;
-      modal.style.display = "flex";
-      atualizarInstrucao();
-    };
-    imgTeste.onerror = () => alert("Não consegui carregar a imagem pra alinhar.");
-    imgTeste.src = camada.url;
-  }
-  modalCancelar.addEventListener("click", encerrarAlinhamento);
 
   // --- Uma linha por camada --------------------------------------------------
   const camposBoundsPorId = {};
@@ -199,6 +120,7 @@ function iniciarCamadasReferencia(mapa, camadasIniciais, opcoesTile) {
   function linhaDaCamada(camada) {
     const linha = document.createElement("div");
     linha.className = "linha-camada-referencia";
+    linhasPorId[camada.id] = linha;
 
     const chk = document.createElement("input");
     chk.type = "checkbox";
@@ -211,6 +133,9 @@ function iniciarCamadasReferencia(mapa, camadasIniciais, opcoesTile) {
     const nome = document.createElement("span");
     nome.textContent = camada.nome;
     nome.className = "nome-camada-referencia";
+    // Clicar no NOME deixa a camada ATIVA: as teclas [ e ] mudam a opacidade
+    // dela sem precisar mirar o slider (item 3h de 2026-09-23).
+    nome.addEventListener("click", () => selecionarCamadaAtiva(camada.id));
 
     const op = document.createElement("input");
     op.type = "range";
@@ -218,6 +143,7 @@ function iniciarCamadasReferencia(mapa, camadasIniciais, opcoesTile) {
     op.max = "1";
     op.step = "0.05";
     op.value = camada.opacidade;
+    controlesOpacidadePorId[camada.id] = op;
     op.addEventListener("change", async () => {
       const doc = await salvar(camada.id, { opacidade: parseFloat(op.value) });
       if (doc) criarOuAtualizarOverlay(doc.camadas.find((c) => c.id === camada.id));
@@ -233,11 +159,12 @@ function iniciarCamadasReferencia(mapa, camadasIniciais, opcoesTile) {
       return linha;
     }
 
-    const botaoAlinhar = document.createElement("button");
-    botaoAlinhar.type = "button";
-    botaoAlinhar.textContent = "alinhar";
-    botaoAlinhar.title = "Alinhar por 2 pontos (clique na imagem + clique no mapa, duas vezes)";
-    botaoAlinhar.addEventListener("click", () => iniciarAlinhamento(camada));
+    async function atualizarAposMudancaDePosicao(doc) {
+      if (!doc) return;
+      const atualizada = doc.camadas.find((c) => c.id === camada.id);
+      criarOuAtualizarOverlay(atualizada);
+      atualizarCamposBounds(camada.id, atualizada.bounds);
+    }
 
     const botaoAjustar = document.createElement("button");
     botaoAjustar.textContent = "posição";
@@ -246,6 +173,32 @@ function iniciarCamadasReferencia(mapa, camadasIniciais, opcoesTile) {
     const caixaAjuste = document.createElement("div");
     caixaAjuste.className = "caixa-ajuste-bounds";
     caixaAjuste.style.display = "none";
+
+    const linhaBotoesPosicao = document.createElement("div");
+    linhaBotoesPosicao.className = "linha-botoes-posicao";
+
+    const botaoReset = document.createElement("button");
+    botaoReset.type = "button";
+    botaoReset.textContent = "reset";
+    botaoReset.title = "Encaixa a imagem canto a canto nos limites do mundo";
+    botaoReset.addEventListener("click", async () => {
+      const doc = await chamar("POST", `/api/camadas-referencia/${encodeURIComponent(camada.id)}/resetar`);
+      atualizarAposMudancaDePosicao(doc);
+    });
+
+    const botaoAutomatico = document.createElement("button");
+    botaoAutomatico.type = "button";
+    botaoAutomatico.textContent = "automático";
+    botaoAutomatico.title = "Volta para os limites calculados pelo alinhamento automático";
+    botaoAutomatico.addEventListener("click", async () => {
+      const doc = await chamar("POST", `/api/camadas-referencia/${encodeURIComponent(camada.id)}/automatico`);
+      atualizarAposMudancaDePosicao(doc);
+    });
+
+    linhaBotoesPosicao.appendChild(botaoReset);
+    linhaBotoesPosicao.appendChild(botaoAutomatico);
+    caixaAjuste.appendChild(linhaBotoesPosicao);
+
     const campos = {};
     for (const rotulo of ["sul", "norte", "oeste", "leste"]) {
       const campo = document.createElement("label");
@@ -270,7 +223,7 @@ function iniciarCamadasReferencia(mapa, camadasIniciais, opcoesTile) {
         leste: parseFloat(campos.leste.value),
       };
       const doc = await salvar(camada.id, { bounds });
-      if (doc) criarOuAtualizarOverlay(doc.camadas.find((c) => c.id === camada.id));
+      atualizarAposMudancaDePosicao(doc);
     });
     caixaAjuste.appendChild(botaoSalvarBounds);
 
@@ -278,7 +231,6 @@ function iniciarCamadasReferencia(mapa, camadasIniciais, opcoesTile) {
       caixaAjuste.style.display = caixaAjuste.style.display === "none" ? "block" : "none";
     });
 
-    linha.appendChild(botaoAlinhar);
     linha.appendChild(botaoAjustar);
     linha.appendChild(caixaAjuste);
     return linha;
@@ -288,4 +240,23 @@ function iniciarCamadasReferencia(mapa, camadasIniciais, opcoesTile) {
     lista.appendChild(linhaDaCamada(camada));
     criarOuAtualizarOverlay(camada);
   }
+
+  // Primeira camada 'imagem' começa ativa, pra [ e ] já terem alvo sem clique.
+  const primeiraImagem = camadasIniciais.camadas.find((c) => c.tipo === "imagem");
+  if (primeiraImagem) selecionarCamadaAtiva(primeiraImagem.id);
+
+  // Recarrega do servidor (usado depois de um desfazer/refazer que mexeu na
+  // posição de uma camada): redesenha overlays e campos, sem recriar as linhas.
+  recarregarCamadasReferencia = async () => {
+    const doc = await chamar("GET", "/api/camadas-referencia");
+    if (!doc) return;
+    for (const camada of doc.camadas) {
+      criarOuAtualizarOverlay(camada);
+      if (camada.bounds) atualizarCamposBounds(camada.id, camada.bounds);
+      const controle = controlesOpacidadePorId[camada.id];
+      if (controle) controle.value = camada.opacidade;
+    }
+  };
+
+  return { mudarOpacidadeDaAtiva };
 }

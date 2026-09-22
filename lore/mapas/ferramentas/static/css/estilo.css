@@ -1,9 +1,67 @@
+/* Tema ESCURO por padrão (item 3j de 2026-09-23). A regra que o pedido fixa:
+   as cores do MAPA são preservadas -- os tiles (costa, mar, Ocean Deep,
+   Rótulos) são imagens e continuam exatamente como o gerador as fez; o escuro
+   é só da moldura (painéis, barras, modais). Por isso não existe nenhum
+   `filter: invert()` nem `opacity` global sobre #mapa aqui: isso mudaria a cor
+   do mapa, que é o que não pode acontecer. */
+:root {
+  --fundo: #1e1f22;
+  --fundo-painel: #26282c;
+  --fundo-campo: #17181a;
+  --borda: #3a3d42;
+  --texto: #dfe1e5;
+  --texto-fraco: #9aa0a6;
+  --destaque: #ffb300;
+  --destaque-fraco: #4a3b12;
+  --perigo: #ef5350;
+  --ok: #66bb6a;
+  --aviso: #ffb300;
+}
+
+/* Tema CLARO (item 2 de 2026-09-23): só os tokens mudam. Pela mesma razão do
+   escuro, nada aqui toca em #mapa -- nem `filter`, nem `opacity`, nem a cor de
+   fundo dele: o fundo de #mapa é o mar provisório, que é MAPA e não moldura. */
+:root[data-tema="claro"] {
+  --fundo: #f2f1ee;
+  --fundo-painel: #e6e4df;
+  --fundo-campo: #fbfaf8;
+  --borda: #bdb9b0;
+  --texto: #1d1f21;
+  --texto-fraco: #6b6f73;
+  --destaque: #b06a00;
+  --destaque-fraco: #f5e3c0;
+  --perigo: #c62828;
+  --ok: #2e7d32;
+  --aviso: #8a5a00;
+}
+
 html, body {
   height: 100%;
   margin: 0;
   font-family: "Consolas", "Courier New", monospace;
   font-size: 13px;
-  color: #111;
+  color: var(--texto);
+  background: var(--fundo);
+}
+
+button, input, select {
+  font-family: inherit;
+  font-size: 12px;
+  color: var(--texto);
+  background: var(--fundo-campo);
+  border: 1px solid var(--borda);
+  padding: 2px 5px;
+}
+button { cursor: pointer; }
+button:hover:not(:disabled) { border-color: var(--destaque); }
+button:disabled { color: var(--texto-fraco); cursor: default; }
+kbd {
+  background: var(--fundo-campo);
+  border: 1px solid var(--borda);
+  border-radius: 3px;
+  padding: 0 3px;
+  font-size: 10px;
+  color: var(--texto-fraco);
 }
 
 #barra-topo {
@@ -12,58 +70,72 @@ html, body {
   align-items: center;
   gap: 24px;
   padding: 0 12px;
-  border-bottom: 1px solid #333;
-  background: #f2f2f2;
+  border-bottom: 1px solid var(--borda);
+  background: var(--fundo-painel);
 }
-
 #titulo { font-weight: bold; }
-#leitura-cursor { }
-
 #controle-zoom { margin-left: auto; display: flex; align-items: center; gap: 2px; }
-#controle-zoom button { font-family: inherit; width: 22px; height: 22px; cursor: pointer; }
-#campo-zoom-porcentagem {
-  width: 52px;
-  text-align: center;
-  font-family: inherit;
-  font-size: 12px;
-}
+#controle-zoom button { width: 22px; height: 22px; }
+#campo-zoom-porcentagem { width: 52px; text-align: center; }
+#botao-ajuda, #botao-tema { width: 24px; height: 22px; font-weight: bold; }
 
 #corpo {
   display: flex;
-  height: calc(100% - 36px - 30px);
+  height: calc(100% - 36px - 26px);
 }
 
 #painel-esquerdo {
-  width: 230px;
-  flex: 0 0 230px;
-  border-right: 1px solid #333;
+  width: 240px;
+  flex: 0 0 240px;
+  border-right: 1px solid var(--borda);
   overflow-y: auto;
   padding: 8px;
   box-sizing: border-box;
+  background: var(--fundo-painel);
 }
 
-.secao { margin-bottom: 16px; }
-.secao h2 { font-size: 12px; margin: 0 0 6px 0; text-transform: uppercase; }
-.nota { color: #777; font-size: 12px; }
+/* Seções que abrem e fecham, estado lembrado em localStorage (item 3e) */
+.secao { margin-bottom: 12px; }
+.cabecalho-secao {
+  font-size: 12px;
+  margin: 0 0 6px 0;
+  text-transform: uppercase;
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 1px solid var(--borda);
+  padding-bottom: 2px;
+}
+.cabecalho-secao::before { content: "▾ "; color: var(--texto-fraco); }
+.secao.fechada .cabecalho-secao::before { content: "▸ "; }
+.secao.fechada .corpo-secao { display: none; }
+.nota { color: var(--texto-fraco); font-size: 11px; }
 
 #mapa {
   flex: 1;
-  background: #cfd8dc; /* mar, provisório até a costa em tiles existir */
+  background: #10161a; /* mar, provisório até a costa em tiles existir */
 }
+#mapa.arrastando { cursor: grab; }
+/* Tecla C segurada: só a costa (item 3g). Esconde as camadas de cima e o que
+   foi marcado, sem mexer nas cores de nada -- só visibilidade. */
+#mapa.so-costa .leaflet-overlay-pane,
+#mapa.so-costa .leaflet-marker-pane,
+#mapa.so-costa .leaflet-tooltip-pane { display: none; }
+#mapa.so-costa .leaflet-tile-pane .leaflet-layer:not(:first-child) { display: none; }
 
 #minimapa-caixa {
   position: relative;
   width: 200px;
   height: 200px;
-  border: 1px solid #333;
+  border: 1px solid var(--borda);
 }
 #minimapa-caixa img { width: 100%; height: 100%; display: block; cursor: crosshair; }
 #minimapa-retangulo {
   position: absolute;
-  border: 2px solid #e53935;
+  border: 2px solid var(--destaque);
   pointer-events: none;
 }
 
+/* --- Camadas de referência ------------------------------------------------ */
 .linha-camada-referencia {
   display: flex;
   align-items: center;
@@ -71,72 +143,208 @@ html, body {
   flex-wrap: wrap;
   font-size: 11px;
   margin-bottom: 4px;
+  padding: 1px 2px;
 }
-.nome-camada-referencia { flex: 1 1 auto; min-width: 90px; }
+.linha-camada-referencia.camada-ativa {
+  background: var(--destaque-fraco);
+  outline: 1px solid var(--destaque);
+}
+.nome-camada-referencia { flex: 1 1 auto; min-width: 90px; cursor: pointer; }
 .linha-camada-referencia input[type="range"] { width: 50px; }
-.linha-camada-referencia button {
-  font-size: 10px;
-  padding: 1px 4px;
-}
+.linha-camada-referencia button { font-size: 10px; padding: 1px 4px; }
 .caixa-ajuste-bounds {
   flex-basis: 100%;
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
   padding: 4px;
-  background: #eee;
-  border: 1px solid #ccc;
+  background: var(--fundo-campo);
+  border: 1px solid var(--borda);
 }
 .caixa-ajuste-bounds label { font-size: 10px; }
 .caixa-ajuste-bounds input { width: 55px; }
+.linha-botoes-posicao { flex-basis: 100%; display: flex; gap: 4px; margin-bottom: 2px; }
+.linha-botoes-posicao button { flex: 1; }
 
+/* --- Ferramentas ---------------------------------------------------------- */
 #lugar-adicionar { width: 100%; margin-bottom: 6px; }
-#lugar-adicionar.ativo, #regua-ativar.ativo { background: #ffe082; }
-#controle-desfazer { display: flex; gap: 4px; margin-bottom: 6px; }
+#lugar-adicionar.ativo, #regua-ativar.ativo {
+  background: var(--destaque-fraco);
+  border-color: var(--destaque);
+  color: var(--destaque);
+}
+#controle-desfazer, #controle-regua { display: flex; gap: 4px; margin-bottom: 4px; }
 #controle-desfazer button { flex: 1; }
-#regua-ativar { width: 100%; margin-bottom: 4px; }
+#regua-ativar { flex: 1; }
 #regua-leitura { min-height: 14px; margin-bottom: 6px; }
 
-.icone-lugar div {
-  background: #b71c1c;
-  border: 2px solid #fff;
-  border-radius: 50%;
-  box-shadow: 0 0 2px rgba(0,0,0,0.6);
+/* --- Lista lateral de lugares (item 3b) ----------------------------------- */
+#busca-lugares { width: 100%; box-sizing: border-box; margin-bottom: 4px; }
+#lista-lugares { list-style: none; margin: 0; padding: 0; max-height: 40vh; overflow-y: auto; }
+.item-lugar {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  padding: 2px 3px;
+  cursor: pointer;
+  font-size: 11px;
 }
+.item-lugar:hover { background: var(--fundo-campo); }
+.item-lugar.selecionado { background: var(--destaque-fraco); outline: 1px solid var(--destaque); }
+.simbolo-lista { color: var(--destaque); }
+.nome-lista { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tipo-lista { color: var(--texto-fraco); font-size: 10px; }
 
-#painel-selecao {
-  height: 30px;
+/* --- Travar objeto (2026-09-23, item 1) ----------------------------------- */
+.botao-trava-camada { width: 100%; margin-bottom: 4px; font-size: 11px; }
+.botao-trava-camada.ativo {
+  background: var(--destaque-fraco);
+  border-color: var(--destaque);
+  color: var(--destaque);
+}
+.cadeado-lista { font-size: 9px; opacity: 0.8; }
+/* Indicação discreta no mapa (item 1e): cadeadinho no canto do símbolo, sem
+   mudar o símbolo nem a cor do lugar -- e sem pegar clique. */
+.cadeado-lugar {
+  position: absolute;
+  right: -7px;
+  top: -7px;
+  font-size: 9px;
+  font-style: normal;
+  line-height: 9px;
+  pointer-events: none;
+  text-shadow: 0 0 2px #000;
+}
+.icone-lugar.travado { cursor: pointer; }
+
+/* --- Marcador de lugar: símbolo por tipo, tamanho por importância (3f) ---- */
+.icone-lugar {
+  position: relative; /* âncora do cadeadinho de "travado" */
   display: flex;
   align-items: center;
-  padding: 0 12px;
-  border-top: 1px solid #333;
-  background: #f2f2f2;
+  justify-content: center;
+  color: #ff7043;
+  text-shadow: 0 0 3px #000, 0 0 2px #000;
+}
+.icone-lugar.capital { color: var(--destaque); }
+.icone-lugar.selecionado span {
+  outline: 2px solid var(--destaque);
+  border-radius: 50%;
+  background: rgba(255, 179, 0, 0.25);
 }
 
-#modal-alinhamento {
+/* --- Barra inferior (item 3c) --------------------------------------------- */
+#barra-inferior {
+  height: 26px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 0 12px;
+  border-top: 1px solid var(--borda);
+  background: var(--fundo-painel);
+  font-size: 11px;
+}
+#leitura-sob-cursor { color: var(--texto-fraco); flex: 1 1 auto; }
+#status-salvamento { margin-left: auto; color: var(--texto-fraco); }
+#status-salvamento.status-salvando { color: var(--texto); }
+#status-salvamento.status-salvo { color: var(--ok); }
+/* Aviso discreto de travado (item 1b): cor de atenção, some sozinho, e NÃO é a
+   faixa vermelha de erro de gravação -- são coisas diferentes. */
+#status-salvamento.status-aviso { color: var(--aviso); }
+#status-salvamento.status-erro {
+  color: #fff;
+  background: var(--perigo);
+  padding: 1px 6px;
+  font-weight: bold;
+}
+
+/* --- Régua ---------------------------------------------------------------- */
+.rotulo-regua-trecho span {
+  display: inline-block;
+  background: #14161a;
+  border: 1px solid #ef5350;
+  color: #ff8a80;
+  font-size: 10px;
+  font-family: inherit;
+  padding: 0 3px;
+  white-space: nowrap;
+}
+.resumo-regua {
+  background: var(--fundo-painel);
+  border: 1px solid var(--borda);
+  color: var(--texto);
+  padding: 3px 5px;
+  font-size: 11px;
+  white-space: nowrap;
+  box-shadow: 0 0 4px rgba(0,0,0,0.7);
+}
+.resumo-regua .botao-salvar-medicao { font-size: 10px; margin-top: 2px; width: 100%; }
+
+/* Cursor em cruz nas ferramentas que marcam ponto no mapa (régua, Lugar). */
+.leaflet-container.cursor-cruz,
+.leaflet-container.cursor-cruz .leaflet-interactive { cursor: crosshair !important; }
+
+/* --- Modais (Lugar e ajuda) ----------------------------------------------- */
+.modal {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
 }
-#modal-alinhamento-caixa {
-  background: #fff;
-  border: 1px solid #333;
-  padding: 12px;
+.caixa-modal {
+  background: var(--fundo-painel);
+  border: 1px solid var(--borda);
+  padding: 14px 16px;
+  min-width: 300px;
   max-width: 90vw;
   max-height: 90vh;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  align-items: center;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.6);
 }
-#modal-alinhamento-instrucao { font-size: 13px; margin: 0; }
-#modal-alinhamento-img {
-  max-width: 80vw;
-  max-height: 70vh;
-  cursor: crosshair;
-  border: 1px solid #999;
+.caixa-modal h3 { margin: 0 0 4px 0; font-size: 13px; }
+.caixa-modal label { display: flex; align-items: center; gap: 6px; font-size: 12px; }
+.caixa-modal label input[type="text"],
+.caixa-modal label input[type="number"],
+.caixa-modal label select { flex: 1 1 auto; }
+.linha-checkbox { gap: 4px !important; }
+.linha-coordenadas { display: flex; gap: 8px; }
+.linha-coordenadas label { flex: 1; }
+.linha-coordenadas input { width: 100%; min-width: 0; }
+.erro-modal {
+  margin: 0;
+  padding: 4px 6px;
+  background: #4a1c1a;
+  border: 1px solid var(--perigo);
+  color: #ffcdd2;
+  font-size: 11px;
 }
+.botoes-modal { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+#botao-lugar-apagar { margin-left: auto; border-color: var(--perigo); color: #ffab91; }
+.tabela-atalhos { border-collapse: collapse; font-size: 12px; }
+.tabela-atalhos td { padding: 2px 10px 2px 0; vertical-align: top; }
+.tabela-atalhos td:first-child { white-space: nowrap; }
+
+/* Popup do Leaflet no escuro (senão sai branco no meio do tema). */
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  background: var(--fundo-painel);
+  color: var(--texto);
+}
+
+/* Os três lugares que tinham cor escura escrita na mão (não token) e ficariam
+   ilegíveis no claro. O rótulo da régua e o resumo continuam desenhados SOBRE o
+   mapa, então eles seguem a moldura, não as cores do mapa. */
+:root[data-tema="claro"] .rotulo-regua-trecho span {
+  background: #fff8f7;
+  color: #b71c1c;
+}
+:root[data-tema="claro"] .erro-modal {
+  background: #fdeaea;
+  color: #7f1d1d;
+}
+:root[data-tema="claro"] .cadeado-lugar { text-shadow: 0 0 2px #fff; }
