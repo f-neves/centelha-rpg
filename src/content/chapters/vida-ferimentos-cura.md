@@ -33,18 +33,19 @@ A sua **Vida restante** é o PV máximo menos o dano total marcado; é a porcent
 
 ## Limiares de Ferimento
 
-Conforme a Vida restante cai, a dor cobra seu preço, as penalidades incidem nas suas **jogadas** e na sua **Defesa**:
+Conforme a Vida restante cai, a dor cobra seu preço nas **ações físicas** (as que rolam Vigor ou Destreza) e na **Defesa Física**. Social e mental não sentem nenhum dos quatro graus abaixo: um personagem Crítico ainda pensa e convence direito, só não corre nem briga direito.
 
-| Vida restante | Estado | Penalidade |
-|---|---|---|
-| 76–100% | Saudável | nenhuma |
-| 51–75% | Machucado | −1 no total das ações |
-| 26–50% | Ferido | −2 no total das ações, −1 Defesa |
-| 11–25% | Grave | −3 no total das ações, −2 Defesa |
-| 1–10% | Crítico | −4 no total das ações, −3 Defesa |
-| ≤ 0 | Caído | incapacitado |
+| Vida restante | Estado | Ações físicas | Defesa Física |
+|---|---|---|---|
+| 61–100% | Saudável | nenhuma | nenhuma |
+| 31–60% | Machucado | −2 | −2 |
+| 11–30% | Grave | −1d6 | −4 |
+| 1–10% | Crítico | −2d6 | −8 |
+| ≤ 0% | Incapacitado | incapacitado | — |
 
-<div class="callout regra"><span class="lbl">As duas moedas, e elas não se misturam</span>O jogo penaliza de dois jeitos, e a diferença muda a conta na mesa. O <strong>ponto</strong> sai do <strong>total</strong> depois que os dados pararam de rolar: é a moeda do ferimento acima e da maior parte dos modificadores de situação, e um ferido a 5% da Vida continua rolando o mesmo punhado de dados de quando estava inteiro, só somando menos no fim. O <strong>dado</strong> sai do <strong>pool</strong>, antes de rolar: é a moeda do <strong>Desgaste</strong> (fome, sede, sono, veneno, exaustão), no capítulo <a href="/centelha-rpg/regras/acoes-resistir">Resistir</a>, e ali some dado da mão. Ponto e dado nunca são a mesma coisa nem se convertem um no outro.</div>
+**O pool nunca desce abaixo de 1d6**, mesma trava do Desgaste: Grave e Crítico tiram dado de verdade, mas nunca zeram a ação física por inteiro.
+
+<div class="callout regra"><span class="lbl">As duas moedas, lado a lado no mesmo degrau</span>O jogo penaliza de dois jeitos: o <strong>ponto</strong> sai do <strong>total</strong> depois que os dados pararam de rolar, o <strong>dado</strong> sai do <strong>pool</strong>, antes de rolar. Nenhuma categoria converte um no outro, mas o Ferimento agora atravessa os dois: <strong>Machucado é ponto</strong> (−2 no total, sem tirar dado da mão), <strong>Grave e Crítico são dado</strong> (−1d6 e −2d6 do pool), a mesma moeda que até aqui era exclusiva do <strong>Desgaste</strong> (fome, sede, sono, veneno, exaustão, no capítulo <a href="/centelha-rpg/regras/acoes-resistir">Resistir</a>). Um personagem Grave ou Crítico <strong>e</strong> com Desgaste ao mesmo tempo (ferido e envenenado, por exemplo) tem as duas fontes cortando do <strong>mesmo</strong> pool, somando direto, com o piso comum em 1d6.</div>
 
 ## Queda e Morte
 
@@ -79,10 +80,9 @@ Você recupera o equivalente ao seu Vigor em PV a cada intervalo, tão mais lent
 
 | Estado | Recupera o Vigor em PV… |
 |---|---|
-| Saudável (76–100%) | por dia |
-| Machucado (51–75%) | a cada 3 dias |
-| Ferido (26–50%) | a cada 3 dias |
-| Grave (11–25%) | a cada 5 dias |
+| Saudável (61–100%) | por dia |
+| Machucado (31–60%) | a cada 3 dias |
+| Grave (11–30%) | a cada 5 dias |
 | Crítico (1–10%) | por semana |
 
 <p class="muted">Cura é cura: a tabela vale para qualquer dano, venha ele de malho, de lâmina ou de queda. A perícia Cura e a magia aceleram a recuperação.</p>
