@@ -17,7 +17,8 @@ from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-from . import areas, coordenadas, lugares, medicoes, operacoes, referencias, travas
+from . import (areas, cobertura_automatica, coordenadas, lugares, medicoes,
+               operacoes, referencias, travas)
 
 RAIZ_FERRAMENTA = Path(__file__).resolve().parents[1]
 RAIZ_MAPAS = RAIZ_FERRAMENTA.parent
@@ -118,6 +119,11 @@ def pagina_inicial() -> str:
     html = html.replace(
         "/*__AREAS__*/",
         json.dumps(areas.carregar(), ensure_ascii=False),
+    )
+    # Calculada, nunca lida de arquivo: ver backend/cobertura_automatica.py.
+    html = html.replace(
+        "/*__COBERTURA_AUTOMATICA__*/",
+        json.dumps(cobertura_automatica.colecao(), ensure_ascii=False),
     )
     return html
 
@@ -312,6 +318,13 @@ def refazer() -> JSONResponse:
 @app.get("/api/areas")
 def obter_areas() -> JSONResponse:
     return JSONResponse(areas.carregar())
+
+
+@app.get("/api/cobertura-automatica")
+def obter_cobertura_automatica() -> JSONResponse:
+    """Faixas de latitude já descontadas do que o usuário pintou. CALCULADO: este
+    endpoint não lê nem escreve nenhum arquivo de área, e nada aqui vira feature."""
+    return JSONResponse(cobertura_automatica.colecao())
 
 
 @app.post("/api/areas")
