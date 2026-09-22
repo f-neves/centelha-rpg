@@ -1,0 +1,44 @@
+[
+  {
+    "id": "flechas",
+    "nome": "Flechas (10)",
+    "tipo": "municao",
+    "preco": {
+      "pc": 10
+    },
+    "peso": 0.3,
+    "descricao": "Maço de dez flechas para arco.",
+    "tags": [],
+    "arma": null,
+    "armadura": null,
+    "escudo": null,
+    "municao": {
+      "aceita": [
+        "arco-curto",
+        "arco-longo",
+        "arco-composto"
+      ]
+    }
+  },
+  {
+    "id": "virotes",
+    "nome": "Virotes (10)",
+    "tipo": "municao",
+    "preco": {
+      "pc": 10
+    },
+    "peso": 0.5,
+    "descricao": "Maço de dez virotes para besta.",
+    "tags": [],
+    "arma": null,
+    "armadura": null,
+    "escudo": null,
+    "municao": {
+      "aceita": [
+        "besta-pequena",
+        "besta-media",
+        "besta-grande"
+      ]
+    }
+  }
+]

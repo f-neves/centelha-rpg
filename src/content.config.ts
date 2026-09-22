@@ -154,50 +154,90 @@ const glossario = defineCollection({
   }),
 });
 
-const armas = defineCollection({
-  loader: file('src/data/armas.json'),
-  schema: z.object({
-    id: z.string(), nome: z.string(),
-    classe: z.enum(['leve', 'media', 'pesada', 'haste', 'distancia', 'arremesso']),
-    atrib: reference('atributos'), pericia: reference('habilidades'),
-    dado: z.number().int().min(1).max(3), danoBonus: z.number().int().optional(), acerto: z.number().int(),
-    defesaArma: z.number().int(),
-    maos: z.number().int().min(1).max(2), ticks: z.number().int(), folego: z.number().int().min(0),
-    forcaMult: z.number().optional(),
-    forcaCap: z.number().int().optional(), forcaMin: z.number().int().optional(),
-    alcance: z.enum(['curto', 'medio', 'longo']).optional(),
-    // distância máxima da arma, em metros. Só as de Distância e Arremesso têm.
-    distMax: z.number().int().positive().optional(),
-    tipoDano: z.enum(['corte', 'perfurante', 'impacto']), pen: z.number().int().min(0).max(5),
-    modos: z.array(z.object({
-      tipo: z.enum(['corte', 'perfurante', 'impacto']),
-      perf: z.number().int().min(0).max(5).optional(),
-      principal: z.boolean(),
-    })),
-    tags: z.array(z.string()), notas: z.string(),
-  }),
-});
+// O envelope comum a todo item do catálogo (armas.json, armaduras.json, escudos.json,
+// municao.json): `tipo` no topo decide qual dos blocos abaixo vem preenchido, os outros
+// ficam `null`. Decidido em leitura-de-novato-decisoes.md §5 (envelope aninhado, contra a
+// recomendação técnica original, por decisão explícita do humano).
+const preco = z.object({ pc: z.number().int().nonnegative() }).optional();
 
 const soakModos = z.object({
   impacto: z.number().int(), corte: z.number().int(), perfuracao: z.number().int(),
 });
 
+const blocoArma = z.object({
+  classe: z.enum(['leve', 'media', 'pesada', 'haste', 'distancia', 'arremesso']),
+  atrib: reference('atributos'), pericia: reference('habilidades'),
+  dado: z.number().int().min(1).max(3), danoBonus: z.number().int().optional(), acerto: z.number().int(),
+  defesaArma: z.number().int(),
+  maos: z.number().int().min(1).max(2), ticks: z.number().int(), folego: z.number().int().min(0),
+  forcaMult: z.number().optional(),
+  forcaCap: z.number().int().optional(), forcaMin: z.number().int().optional(),
+  alcance: z.enum(['curto', 'medio', 'longo']).optional(),
+  // distância máxima da arma, em metros. Só as de Distância e Arremesso têm.
+  distMax: z.number().int().positive().optional(),
+  tipoDano: z.enum(['corte', 'perfurante', 'impacto']), pen: z.number().int().min(0).max(5),
+  modos: z.array(z.object({
+    tipo: z.enum(['corte', 'perfurante', 'impacto']),
+    perf: z.number().int().min(0).max(5).optional(),
+    principal: z.boolean(),
+  })),
+  // Alabarda: os três modos são todos "principal" (ver notas do item); esta chave
+  // escolhe qual deles a ficha desenha por padrão no card.
+  fichaModo: z.enum(['corte', 'perfurante', 'impacto']).optional(),
+  // Fração do alcance que não sofre penalidade de mira (arcos e bestas).
+  alcanceLivreFrac: z.number().min(0).max(1).optional(),
+}).nullable();
+
+const blocoArmadura = z.object({
+  classe: z.enum(['nenhuma', 'leve', 'media', 'pesada']),
+  soak: soakModos, resistPerf: z.number().int().min(0),
+  penalidade: z.number().int().min(0),
+}).nullable();
+
+const blocoEscudo = z.object({
+  bloqCaC: z.number().int(), penalidade: z.number().int(),
+  // Substitui o booleano `habilProjetil`: a coluna real do capítulo tem três estados
+  // (não bloqueia / bloqueia / bloqueia com bônus, caso do Pavês, +3).
+  vsProjetilRapido: z.object({ bloqueia: z.boolean(), bonus: z.number().int().nonnegative() }),
+}).nullable();
+
+const blocoMunicao = z.object({
+  // ids de `armas.json` que aceitam esta munição.
+  aceita: z.array(z.string()),
+}).nullable();
+
+const envelopeItem = z.object({
+  id: z.string(), nome: z.string(),
+  tipo: z.enum(['arma', 'armadura', 'escudo', 'municao', 'geral', 'comida', 'roupa', 'montaria', 'veiculo', 'servo']),
+  preco,
+  peso: z.number().nonnegative(),
+  acesso: z.number().int().optional(),
+  descricao: z.string(),
+  tags: z.array(z.string()),
+  arma: blocoArma,
+  armadura: blocoArmadura,
+  escudo: blocoEscudo,
+  municao: blocoMunicao,
+});
+
+const armas = defineCollection({
+  loader: file('src/data/armas.json'),
+  schema: envelopeItem,
+});
+
 const armaduras = defineCollection({
   loader: file('src/data/armaduras.json'),
-  schema: z.object({
-    id: z.string(), nome: z.string(), classe: z.enum(['nenhuma', 'leve', 'media', 'pesada']),
-    soak: soakModos, resistPerf: z.number().int().min(0),
-    penalidade: z.number().int().min(0), acesso: z.number().int().optional(), notas: z.string(),
-  }),
+  schema: envelopeItem,
 });
 
 const escudos = defineCollection({
   loader: file('src/data/escudos.json'),
-  schema: z.object({
-    id: z.string(), nome: z.string(),
-    bloqCaC: z.number().int(), habilProjetil: z.boolean(), penalidade: z.number().int(),
-    acesso: z.number().int().optional(), notas: z.string(),
-  }),
+  schema: envelopeItem,
+});
+
+const municao = defineCollection({
+  loader: file('src/data/municao.json'),
+  schema: envelopeItem,
 });
 
 const inimigos = defineCollection({
@@ -259,5 +299,6 @@ export const collections = {
   armas,
   armaduras,
   escudos,
+  municao,
   chapters,
 };

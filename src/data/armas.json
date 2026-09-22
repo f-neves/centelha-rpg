@@ -2,545 +2,656 @@
   {
     "id": "adaga",
     "nome": "Adaga",
-    "classe": "leve",
-    "atrib": "destreza",
-    "pericia": "armas",
-    "dado": 1,
-    "acerto": 2,
-    "defesaArma": 1,
-    "maos": 1,
-    "ticks": 5,
-    "folego": 15,
-    "tipoDano": "perfurante",
+    "tipo": "arma",
+    "preco": {
+      "pc": 60
+    },
     "peso": 0.3,
-    "pen": 0,
-    "modos": [
-      {
-        "tipo": "perfurante",
-        "perf": 0,
-        "principal": true
-      },
-      {
-        "tipo": "corte",
-        "principal": false
-      }
-    ],
+    "descricao": "Rápida e precisa; perfura pele (N0), mas para em couro duro. Contra armadura, mira na fresta.",
     "tags": [
       "ágil",
       "arremessável"
     ],
-    "notas": "Rápida e precisa; perfura pele (N0), mas para em couro duro. Contra armadura, mira na fresta.",
-    "danoBonus": -2
+    "arma": {
+      "classe": "leve",
+      "atrib": "destreza",
+      "pericia": "armas",
+      "dado": 1,
+      "danoBonus": -2,
+      "acerto": 2,
+      "defesaArma": 1,
+      "maos": 1,
+      "ticks": 5,
+      "folego": 15,
+      "tipoDano": "perfurante",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "perfurante",
+          "perf": 0,
+          "principal": true
+        },
+        {
+          "tipo": "corte",
+          "principal": false
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
   },
   {
     "id": "espada-curta",
     "nome": "Espada Curta",
-    "classe": "leve",
-    "atrib": "destreza",
-    "pericia": "armas",
-    "dado": 1,
-    "acerto": 2,
-    "defesaArma": 1,
-    "maos": 1,
-    "ticks": 5,
-    "folego": 15,
-    "tipoDano": "corte",
+    "tipo": "arma",
+    "preco": {
+      "pc": 150
+    },
     "peso": 0.9,
-    "pen": 0,
-    "modos": [
-      {
-        "tipo": "corte",
-        "principal": true
-      },
-      {
-        "tipo": "perfurante",
-        "perf": 1,
-        "principal": false
-      }
-    ],
+    "descricao": "Veloz e defensiva. Corta (principal) ou estoca (N1).",
     "tags": [],
-    "notas": "Veloz e defensiva. Corta (principal) ou estoca (N1).",
-    "danoBonus": -2
+    "arma": {
+      "classe": "leve",
+      "atrib": "destreza",
+      "pericia": "armas",
+      "dado": 1,
+      "danoBonus": -2,
+      "acerto": 2,
+      "defesaArma": 1,
+      "maos": 1,
+      "ticks": 5,
+      "folego": 15,
+      "tipoDano": "corte",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "corte",
+          "principal": true
+        },
+        {
+          "tipo": "perfurante",
+          "perf": 1,
+          "principal": false
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
   },
   {
     "id": "espada-longa",
     "nome": "Espada Longa",
-    "classe": "media",
-    "atrib": "destreza",
-    "pericia": "armas",
-    "dado": 1,
-    "acerto": 1,
-    "defesaArma": 1,
-    "maos": 1,
-    "ticks": 6,
-    "folego": 24,
-    "tipoDano": "corte",
+    "tipo": "arma",
+    "preco": {
+      "pc": 250
+    },
     "peso": 1.4,
-    "pen": 0,
-    "modos": [
-      {
-        "tipo": "corte",
-        "principal": true
-      },
-      {
-        "tipo": "perfurante",
-        "perf": 1,
-        "principal": false
-      }
-    ],
+    "descricao": "A clássica adaptável (versátil: com uma mão soma Força, com duas soma Força×2). Corta ou estoca nas frestas (N1).",
     "tags": [
       "versátil"
     ],
-    "notas": "A clássica adaptável (versátil: com uma mão soma Força, com duas soma Força×2). Corta ou estoca nas frestas (N1).",
-    "danoBonus": 0
+    "arma": {
+      "classe": "media",
+      "atrib": "destreza",
+      "pericia": "armas",
+      "dado": 1,
+      "danoBonus": 0,
+      "acerto": 1,
+      "defesaArma": 1,
+      "maos": 1,
+      "ticks": 6,
+      "folego": 24,
+      "tipoDano": "corte",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "corte",
+          "principal": true
+        },
+        {
+          "tipo": "perfurante",
+          "perf": 1,
+          "principal": false
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
   },
   {
     "id": "machado",
     "nome": "Machado",
-    "classe": "media",
-    "atrib": "forca",
-    "pericia": "armas",
-    "dado": 1,
-    "acerto": 1,
-    "defesaArma": 0,
-    "maos": 1,
-    "ticks": 6,
-    "folego": 24,
-    "tipoDano": "corte",
+    "tipo": "arma",
     "peso": 1.2,
-    "pen": 0,
-    "modos": [
-      {
-        "tipo": "corte",
-        "principal": true
-      },
-      {
-        "tipo": "impacto",
-        "principal": false
-      }
-    ],
+    "descricao": "Corte pesado; pode bater de chapa (impacto) contra placa.",
     "tags": [],
-    "notas": "Corte pesado; pode bater de chapa (impacto) contra placa.",
-    "danoBonus": 0
+    "arma": {
+      "classe": "media",
+      "atrib": "forca",
+      "pericia": "armas",
+      "dado": 1,
+      "danoBonus": 0,
+      "acerto": 1,
+      "defesaArma": 0,
+      "maos": 1,
+      "ticks": 6,
+      "folego": 24,
+      "tipoDano": "corte",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "corte",
+          "principal": true
+        },
+        {
+          "tipo": "impacto",
+          "principal": false
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
   },
   {
     "id": "espada-serrilhada",
     "nome": "Espada Serrilhada",
-    "classe": "media",
-    "atrib": "forca",
-    "pericia": "armas",
-    "dado": 1,
-    "acerto": 0,
-    "defesaArma": 1,
-    "maos": 1,
-    "ticks": 6,
-    "folego": 24,
-    "tipoDano": "corte",
+    "tipo": "arma",
     "peso": 1.5,
-    "pen": 0,
-    "modos": [
-      {
-        "tipo": "corte",
-        "principal": true
-      },
-      {
-        "tipo": "perfurante",
-        "perf": 1,
-        "principal": false
-      }
-    ],
+    "descricao": "Sangramento: um golpe com Margem abre Sangramento igual à Margem (máx 3). Troca um pouco de Acerto pelo dano contínuo.",
     "tags": [
       "sangramento"
     ],
-    "notas": "Sangramento: um golpe com Margem abre Sangramento igual à Margem (máx 3). Troca um pouco de Acerto pelo dano contínuo.",
-    "danoBonus": 0
+    "arma": {
+      "classe": "media",
+      "atrib": "forca",
+      "pericia": "armas",
+      "dado": 1,
+      "danoBonus": 0,
+      "acerto": 0,
+      "defesaArma": 1,
+      "maos": 1,
+      "ticks": 6,
+      "folego": 24,
+      "tipoDano": "corte",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "corte",
+          "principal": true
+        },
+        {
+          "tipo": "perfurante",
+          "perf": 1,
+          "principal": false
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
   },
   {
     "id": "maca",
     "nome": "Maça",
-    "classe": "media",
-    "atrib": "forca",
-    "pericia": "armas",
-    "dado": 1,
-    "acerto": 1,
-    "defesaArma": 1,
-    "maos": 1,
-    "ticks": 6,
-    "folego": 24,
-    "tipoDano": "impacto",
+    "tipo": "arma",
     "peso": 1.3,
-    "pen": 0,
-    "modos": [
-      {
-        "tipo": "impacto",
-        "principal": true
-      }
-    ],
+    "descricao": "Anti-placa: o Impacto sofre pouca absorção de armadura (a energia atravessa o aço e quebra o corpo dentro).",
     "tags": [],
-    "notas": "Anti-placa: o Impacto sofre pouca absorção de armadura (a energia atravessa o aço e quebra o corpo dentro).",
-    "danoBonus": 0
+    "arma": {
+      "classe": "media",
+      "atrib": "forca",
+      "pericia": "armas",
+      "dado": 1,
+      "danoBonus": 0,
+      "acerto": 1,
+      "defesaArma": 1,
+      "maos": 1,
+      "ticks": 6,
+      "folego": 24,
+      "tipoDano": "impacto",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "impacto",
+          "principal": true
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
   },
   {
     "id": "picareta-de-guerra",
     "nome": "Picareta de Guerra",
-    "classe": "media",
-    "atrib": "forca",
-    "pericia": "armas",
-    "dado": 1,
-    "acerto": 1,
-    "defesaArma": 1,
-    "maos": 1,
-    "ticks": 6,
-    "folego": 24,
-    "tipoDano": "perfurante",
+    "tipo": "arma",
     "peso": 1.3,
-    "pen": 2,
-    "modos": [
-      {
-        "tipo": "perfurante",
-        "perf": 2,
-        "principal": true
-      },
-      {
-        "tipo": "impacto",
-        "principal": false
-      }
-    ],
+    "descricao": "O bico concentrado (N2) vence a placa pelo ponto; o lado do martelo bate (impacto). A arma-de-mão anti-placa.",
     "tags": [],
-    "notas": "O bico concentrado (N2) vence a placa pelo ponto; o lado do martelo bate (impacto). A arma-de-mão anti-placa.",
-    "danoBonus": 0
+    "arma": {
+      "classe": "media",
+      "atrib": "forca",
+      "pericia": "armas",
+      "dado": 1,
+      "danoBonus": 0,
+      "acerto": 1,
+      "defesaArma": 1,
+      "maos": 1,
+      "ticks": 6,
+      "folego": 24,
+      "tipoDano": "perfurante",
+      "pen": 2,
+      "modos": [
+        {
+          "tipo": "perfurante",
+          "perf": 2,
+          "principal": true
+        },
+        {
+          "tipo": "impacto",
+          "principal": false
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
   },
   {
     "id": "lanca",
     "nome": "Lança",
-    "classe": "haste",
-    "atrib": "destreza",
-    "pericia": "armas",
-    "dado": 1,
-    "acerto": 1,
-    "defesaArma": 2,
-    "maos": 2,
-    "ticks": 6,
-    "folego": 24,
-    "forcaMult": 1,
-    "tipoDano": "perfurante",
+    "tipo": "arma",
     "peso": 2,
-    "pen": 1,
-    "modos": [
-      {
-        "tipo": "perfurante",
-        "perf": 1,
-        "principal": true
-      }
-    ],
+    "descricao": "Alcance + estocada (N1): fura couro e malha, mas resvala na placa.",
     "tags": [
       "alcance",
       "arremessável"
     ],
-    "notas": "Alcance + estocada (N1): fura couro e malha, mas resvala na placa.",
-    "danoBonus": 2
+    "arma": {
+      "classe": "haste",
+      "atrib": "destreza",
+      "pericia": "armas",
+      "dado": 1,
+      "danoBonus": 2,
+      "acerto": 1,
+      "defesaArma": 2,
+      "maos": 2,
+      "ticks": 6,
+      "folego": 24,
+      "forcaMult": 1,
+      "tipoDano": "perfurante",
+      "pen": 1,
+      "modos": [
+        {
+          "tipo": "perfurante",
+          "perf": 1,
+          "principal": true
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
   },
   {
     "id": "alabarda",
     "nome": "Alabarda",
-    "classe": "haste",
-    "atrib": "forca",
-    "pericia": "armas",
-    "dado": 1,
-    "acerto": 1,
-    "defesaArma": 2,
-    "maos": 2,
-    "ticks": 6,
-    "folego": 32,
-    "tipoDano": "corte",
+    "tipo": "arma",
     "peso": 2.7,
-    "pen": 0,
-    "fichaModo": "corte",
-    "modos": [
-      {
-        "tipo": "corte",
-        "principal": true
-      },
-      {
-        "tipo": "perfurante",
-        "perf": 1,
-        "principal": true
-      },
-      {
-        "tipo": "impacto",
-        "principal": true
-      }
-    ],
+    "descricao": "Lâmina, ponta e malho num só cabo: Cortante, Perfurante e Impacto, todos PRINCIPAIS (sem penalidade ao alternar). Lenta. Cobre as três frentes contra qualquer armadura.",
     "tags": [
       "alcance",
       "pesada"
     ],
-    "notas": "Lâmina, ponta e malho num só cabo: Cortante, Perfurante e Impacto, todos PRINCIPAIS (sem penalidade ao alternar). Lenta. Cobre as três frentes contra qualquer armadura.",
-    "danoBonus": 2
+    "arma": {
+      "classe": "haste",
+      "atrib": "forca",
+      "pericia": "armas",
+      "dado": 1,
+      "danoBonus": 2,
+      "acerto": 1,
+      "defesaArma": 2,
+      "maos": 2,
+      "ticks": 6,
+      "folego": 32,
+      "tipoDano": "corte",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "corte",
+          "principal": true
+        },
+        {
+          "tipo": "perfurante",
+          "perf": 1,
+          "principal": true
+        },
+        {
+          "tipo": "impacto",
+          "principal": true
+        }
+      ],
+      "fichaModo": "corte"
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
   },
   {
     "id": "montante",
     "nome": "Montante",
-    "classe": "pesada",
-    "atrib": "forca",
-    "pericia": "armas",
-    "dado": 2,
-    "acerto": 0,
-    "defesaArma": -2,
-    "maos": 2,
-    "ticks": 7,
-    "folego": 38,
-    "tipoDano": "corte",
+    "tipo": "arma",
+    "preco": {
+      "pc": 700
+    },
     "peso": 2.8,
-    "pen": 0,
-    "modos": [
-      {
-        "tipo": "corte",
-        "principal": true
-      },
-      {
-        "tipo": "perfurante",
-        "perf": 1,
-        "principal": false
-      },
-      {
-        "tipo": "impacto",
-        "principal": false
-      }
-    ],
+    "descricao": "Espadão de duas mãos: corta com força, meia-espada estoca as frestas (N1) ou golpeia com o pomo (impacto). Lento.",
     "tags": [],
-    "notas": "Espadão de duas mãos: corta com força, meia-espada estoca as frestas (N1) ou golpeia com o pomo (impacto). Lento.",
-    "danoBonus": 0
+    "arma": {
+      "classe": "pesada",
+      "atrib": "forca",
+      "pericia": "armas",
+      "dado": 2,
+      "danoBonus": 0,
+      "acerto": 0,
+      "defesaArma": -2,
+      "maos": 2,
+      "ticks": 7,
+      "folego": 38,
+      "tipoDano": "corte",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "corte",
+          "principal": true
+        },
+        {
+          "tipo": "perfurante",
+          "perf": 1,
+          "principal": false
+        },
+        {
+          "tipo": "impacto",
+          "principal": false
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
   },
   {
     "id": "martelo-de-guerra",
     "nome": "Martelo de Guerra",
-    "classe": "pesada",
-    "atrib": "forca",
-    "pericia": "armas",
-    "dado": 2,
-    "acerto": 0,
-    "defesaArma": -2,
-    "maos": 2,
-    "ticks": 7,
-    "folego": 38,
-    "tipoDano": "impacto",
+    "tipo": "arma",
+    "preco": {
+      "pc": 1000
+    },
     "peso": 2.5,
-    "pen": 0,
-    "modos": [
-      {
-        "tipo": "impacto",
-        "principal": true
-      },
-      {
-        "tipo": "perfurante",
-        "perf": 2,
-        "principal": false
-      }
-    ],
+    "descricao": "Esmaga placas (Impacto, principal); o bico do reverso (N2) fura quando precisa. O fim da era do escudo.",
     "tags": [],
-    "notas": "Esmaga placas (Impacto, principal); o bico do reverso (N2) fura quando precisa. O fim da era do escudo.",
-    "danoBonus": 0
+    "arma": {
+      "classe": "pesada",
+      "atrib": "forca",
+      "pericia": "armas",
+      "dado": 2,
+      "danoBonus": 0,
+      "acerto": 0,
+      "defesaArma": -2,
+      "maos": 2,
+      "ticks": 7,
+      "folego": 38,
+      "tipoDano": "impacto",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "impacto",
+          "principal": true
+        },
+        {
+          "tipo": "perfurante",
+          "perf": 2,
+          "principal": false
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
   },
   {
     "id": "arco-curto",
     "nome": "Arco Curto",
-    "classe": "distancia",
-    "atrib": "percepcao",
-    "pericia": "atirador",
-    "dado": 1,
-    "acerto": 1,
-    "defesaArma": 0,
-    "maos": 2,
-    "ticks": 6,
-    "folego": 20,
-    "forcaMult": 1,
-    "forcaCap": 3,
-    "alcance": "curto",
-    "tipoDano": "perfurante",
+    "tipo": "arma",
+    "preco": {
+      "pc": 80
+    },
     "peso": 0.6,
-    "pen": 1,
-    "modos": [
-      {
-        "tipo": "perfurante",
-        "perf": 1,
-        "principal": true
-      }
-    ],
+    "descricao": "Pequeno e fácil de guardar; alcance curto. Soma Força até +3 (a haste curta não aguenta mais tração). Perfura couro e malha (N1), resvala na placa.",
     "tags": [
       "munição",
       "distância",
       "projétil veloz"
     ],
-    "notas": "Pequeno e fácil de guardar; alcance curto. Soma Força até +3 (a haste curta não aguenta mais tração). Perfura couro e malha (N1), resvala na placa.",
-    "danoBonus": -1,
-    "distMax": 120,
-    "alcanceLivreFrac": 0.333
+    "arma": {
+      "classe": "distancia",
+      "atrib": "percepcao",
+      "pericia": "atirador",
+      "dado": 1,
+      "danoBonus": -1,
+      "acerto": 1,
+      "defesaArma": 0,
+      "maos": 2,
+      "ticks": 6,
+      "folego": 20,
+      "forcaMult": 1,
+      "forcaCap": 3,
+      "alcance": "curto",
+      "distMax": 120,
+      "tipoDano": "perfurante",
+      "pen": 1,
+      "modos": [
+        {
+          "tipo": "perfurante",
+          "perf": 1,
+          "principal": true
+        }
+      ],
+      "alcanceLivreFrac": 0.333
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
   },
   {
     "id": "arco-longo",
     "nome": "Arco Longo",
-    "classe": "distancia",
-    "atrib": "percepcao",
-    "pericia": "atirador",
-    "dado": 1,
-    "acerto": 0,
-    "defesaArma": 0,
-    "maos": 2,
-    "ticks": 6,
-    "folego": 20,
-    "forcaMult": 1,
-    "alcance": "longo",
-    "tipoDano": "perfurante",
+    "tipo": "arma",
+    "preco": {
+      "pc": 150
+    },
     "peso": 0.8,
-    "pen": 1,
-    "modos": [
-      {
-        "tipo": "perfurante",
-        "perf": 1,
-        "principal": true
-      }
-    ],
+    "descricao": "Grande, de alcance longo. Soma a Força inteira ao dano. Perfura couro e malha (N1), resvala na placa.",
     "tags": [
       "munição",
       "distância",
       "projétil veloz"
     ],
-    "notas": "Grande, de alcance longo. Soma a Força inteira ao dano. Perfura couro e malha (N1), resvala na placa.",
-    "danoBonus": 0,
-    "distMax": 250,
-    "alcanceLivreFrac": 0.333
+    "arma": {
+      "classe": "distancia",
+      "atrib": "percepcao",
+      "pericia": "atirador",
+      "dado": 1,
+      "danoBonus": 0,
+      "acerto": 0,
+      "defesaArma": 0,
+      "maos": 2,
+      "ticks": 6,
+      "folego": 20,
+      "forcaMult": 1,
+      "alcance": "longo",
+      "distMax": 250,
+      "tipoDano": "perfurante",
+      "pen": 1,
+      "modos": [
+        {
+          "tipo": "perfurante",
+          "perf": 1,
+          "principal": true
+        }
+      ],
+      "alcanceLivreFrac": 0.333
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
   },
   {
     "id": "arco-composto",
     "nome": "Arco Composto",
-    "classe": "distancia",
-    "atrib": "percepcao",
-    "pericia": "atirador",
-    "dado": 1,
-    "acerto": 0,
-    "defesaArma": 0,
-    "maos": 2,
-    "ticks": 6,
-    "folego": 20,
-    "forcaMult": 2,
-    "forcaMin": 4,
-    "alcance": "longo",
-    "tipoDano": "perfurante",
+    "tipo": "arma",
+    "preco": {
+      "pc": 550
+    },
     "peso": 0.7,
-    "pen": 1,
-    "modos": [
-      {
-        "tipo": "perfurante",
-        "perf": 1,
-        "principal": true
-      }
-    ],
+    "descricao": "Laminado de chifre e tendão: exige Força 4 para armar, e soma Força×2 ao dano. Grande, alcance longo, arma cara. Perfura couro e malha (N1), resvala na placa.",
     "tags": [
       "munição",
       "distância",
       "projétil veloz",
       "caro"
     ],
-    "notas": "Laminado de chifre e tendão: exige Força 4 para armar, e soma Força×2 ao dano. Grande, alcance longo, arma cara. Perfura couro e malha (N1), resvala na placa.",
-    "danoBonus": 2,
-    "distMax": 300,
-    "alcanceLivreFrac": 0.333
+    "arma": {
+      "classe": "distancia",
+      "atrib": "percepcao",
+      "pericia": "atirador",
+      "dado": 1,
+      "danoBonus": 2,
+      "acerto": 0,
+      "defesaArma": 0,
+      "maos": 2,
+      "ticks": 6,
+      "folego": 20,
+      "forcaMult": 2,
+      "forcaMin": 4,
+      "alcance": "longo",
+      "distMax": 300,
+      "tipoDano": "perfurante",
+      "pen": 1,
+      "modos": [
+        {
+          "tipo": "perfurante",
+          "perf": 1,
+          "principal": true
+        }
+      ],
+      "alcanceLivreFrac": 0.333
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
   },
   {
     "id": "besta-pequena",
     "nome": "Besta Pequena",
-    "classe": "distancia",
-    "atrib": "percepcao",
-    "pericia": "atirador",
-    "dado": 1,
-    "acerto": 1,
-    "defesaArma": 0,
-    "maos": 2,
-    "ticks": 9,
-    "folego": 20,
-    "forcaMult": 0,
-    "alcance": "medio",
-    "tipoDano": "perfurante",
+    "tipo": "arma",
+    "preco": {
+      "pc": 300
+    },
     "peso": 2.5,
-    "pen": 1,
-    "modos": [
-      {
-        "tipo": "perfurante",
-        "perf": 1,
-        "principal": true
-      }
-    ],
+    "descricao": "Mira e dispara sem Força (mecanismo faz a tração); requer recarga (9 Ticks), e recarregar exige estar PARADO: o Preparo dela não admite deslocamento, nem o primeiro Tick de graça. Alcance médio. Perfura couro e malha (N1).",
     "tags": [
       "munição",
       "recarga",
       "distância",
       "projétil veloz"
     ],
-    "notas": "Mira e dispara sem Força (mecanismo faz a tração); requer recarga (9 Ticks), e recarregar exige estar PARADO: o Preparo dela não admite deslocamento, nem o primeiro Tick de graça. Alcance médio. Perfura couro e malha (N1).",
-    "danoBonus": 2,
-    "distMax": 100,
-    "alcanceLivreFrac": 0.4
+    "arma": {
+      "classe": "distancia",
+      "atrib": "percepcao",
+      "pericia": "atirador",
+      "dado": 1,
+      "danoBonus": 2,
+      "acerto": 1,
+      "defesaArma": 0,
+      "maos": 2,
+      "ticks": 9,
+      "folego": 20,
+      "forcaMult": 0,
+      "alcance": "medio",
+      "distMax": 100,
+      "tipoDano": "perfurante",
+      "pen": 1,
+      "modos": [
+        {
+          "tipo": "perfurante",
+          "perf": 1,
+          "principal": true
+        }
+      ],
+      "alcanceLivreFrac": 0.4
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
   },
   {
     "id": "besta-media",
     "nome": "Besta Média",
-    "classe": "distancia",
-    "atrib": "percepcao",
-    "pericia": "atirador",
-    "dado": 1,
-    "acerto": 1,
-    "defesaArma": 0,
-    "maos": 2,
-    "ticks": 12,
-    "folego": 20,
-    "forcaMult": 0,
-    "alcance": "longo",
-    "tipoDano": "perfurante",
+    "tipo": "arma",
+    "preco": {
+      "pc": 550
+    },
     "peso": 4.5,
-    "pen": 1,
-    "modos": [
-      {
-        "tipo": "perfurante",
-        "perf": 1,
-        "principal": true
-      }
-    ],
+    "descricao": "O virote (N1) fura couro e malha e resvala na placa; recarga lenta (12 Ticks) e PARADO: o Preparo dela não admite deslocamento, nem o primeiro Tick de graça. Alcance longo. A resposta de longe contra tropa e cavalo.",
     "tags": [
       "munição",
       "recarga",
       "distância",
       "projétil veloz"
     ],
-    "notas": "O virote (N1) fura couro e malha e resvala na placa; recarga lenta (12 Ticks) e PARADO: o Preparo dela não admite deslocamento, nem o primeiro Tick de graça. Alcance longo. A resposta de longe contra tropa e cavalo.",
-    "danoBonus": 4,
-    "distMax": 200,
-    "alcanceLivreFrac": 0.3
+    "arma": {
+      "classe": "distancia",
+      "atrib": "percepcao",
+      "pericia": "atirador",
+      "dado": 1,
+      "danoBonus": 4,
+      "acerto": 1,
+      "defesaArma": 0,
+      "maos": 2,
+      "ticks": 12,
+      "folego": 20,
+      "forcaMult": 0,
+      "alcance": "longo",
+      "distMax": 200,
+      "tipoDano": "perfurante",
+      "pen": 1,
+      "modos": [
+        {
+          "tipo": "perfurante",
+          "perf": 1,
+          "principal": true
+        }
+      ],
+      "alcanceLivreFrac": 0.3
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
   },
   {
     "id": "besta-grande",
     "nome": "Besta Grande",
-    "classe": "distancia",
-    "atrib": "percepcao",
-    "pericia": "atirador",
-    "dado": 1,
-    "acerto": 1,
-    "defesaArma": 0,
-    "maos": 2,
-    "ticks": 15,
-    "folego": 20,
-    "forcaMult": 0,
-    "alcance": "longo",
-    "tipoDano": "perfurante",
+    "tipo": "arma",
+    "preco": {
+      "pc": 950
+    },
     "peso": 7,
-    "pen": 2,
-    "modos": [
-      {
-        "tipo": "perfurante",
-        "perf": 2,
-        "principal": true
-      }
-    ],
+    "descricao": "Arbalesta de manivela: o virote pesado (N2) fura malha e brigandina, mas ainda resvala na placa completa (N3). Recarga muito lenta (15 Ticks) e PARADO: o Preparo dela não admite deslocamento, nem o primeiro Tick de graça. Alcance longo; o dano bruto derruba homem e cavalo.",
     "tags": [
       "munição",
       "recarga",
@@ -548,275 +659,353 @@
       "projétil veloz",
       "pesada"
     ],
-    "notas": "Arbalesta de manivela: o virote pesado (N2) fura malha e brigandina, mas ainda resvala na placa completa (N3). Recarga muito lenta (15 Ticks) e PARADO: o Preparo dela não admite deslocamento, nem o primeiro Tick de graça. Alcance longo; o dano bruto derruba homem e cavalo.",
-    "danoBonus": 8,
-    "distMax": 300,
-    "alcanceLivreFrac": 0.27
+    "arma": {
+      "classe": "distancia",
+      "atrib": "percepcao",
+      "pericia": "atirador",
+      "dado": 1,
+      "danoBonus": 8,
+      "acerto": 1,
+      "defesaArma": 0,
+      "maos": 2,
+      "ticks": 15,
+      "folego": 20,
+      "forcaMult": 0,
+      "alcance": "longo",
+      "distMax": 300,
+      "tipoDano": "perfurante",
+      "pen": 2,
+      "modos": [
+        {
+          "tipo": "perfurante",
+          "perf": 2,
+          "principal": true
+        }
+      ],
+      "alcanceLivreFrac": 0.27
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
   },
   {
     "id": "adaga-de-arremesso",
     "nome": "Adaga de Arremesso",
-    "classe": "arremesso",
-    "atrib": "destreza",
-    "pericia": "arremesso",
-    "dado": 1,
-    "acerto": 1,
-    "defesaArma": 0,
-    "maos": 1,
-    "ticks": 5,
-    "folego": 12,
-    "tipoDano": "perfurante",
+    "tipo": "arma",
     "peso": 0.2,
-    "pen": 0,
-    "modos": [
-      {
-        "tipo": "perfurante",
-        "perf": 0,
-        "principal": true
-      }
-    ],
+    "descricao": "Lâmina leve e balanceada para girar no ar. Rápida e precisa; carregada às dezenas no cinto.",
     "tags": [
       "ágil",
       "arremessável",
       "munição",
       "projétil veloz"
     ],
-    "notas": "Lâmina leve e balanceada para girar no ar. Rápida e precisa; carregada às dezenas no cinto.",
-    "danoBonus": -2,
-    "distMax": 10
+    "arma": {
+      "classe": "arremesso",
+      "atrib": "destreza",
+      "pericia": "arremesso",
+      "dado": 1,
+      "danoBonus": -2,
+      "acerto": 1,
+      "defesaArma": 0,
+      "maos": 1,
+      "ticks": 5,
+      "folego": 12,
+      "distMax": 10,
+      "tipoDano": "perfurante",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "perfurante",
+          "perf": 0,
+          "principal": true
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
   },
   {
     "id": "machado-de-arremesso",
     "nome": "Machado de Arremesso",
-    "classe": "arremesso",
-    "atrib": "forca",
-    "pericia": "arremesso",
-    "dado": 1,
-    "acerto": 1,
-    "defesaArma": 0,
-    "maos": 1,
-    "ticks": 5,
-    "folego": 20,
-    "tipoDano": "corte",
+    "tipo": "arma",
     "peso": 0.7,
-    "pen": 0,
-    "modos": [
-      {
-        "tipo": "corte",
-        "principal": true
-      },
-      {
-        "tipo": "impacto",
-        "principal": false
-      }
-    ],
+    "descricao": "Machado curto e pesado que gira no ar; golpe forte de curto alcance. Recuperável.",
     "tags": [
       "arremessável"
     ],
-    "notas": "Machado curto e pesado que gira no ar; golpe forte de curto alcance. Recuperável.",
-    "danoBonus": 2,
-    "distMax": 12
+    "arma": {
+      "classe": "arremesso",
+      "atrib": "forca",
+      "pericia": "arremesso",
+      "dado": 1,
+      "danoBonus": 2,
+      "acerto": 1,
+      "defesaArma": 0,
+      "maos": 1,
+      "ticks": 5,
+      "folego": 20,
+      "distMax": 12,
+      "tipoDano": "corte",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "corte",
+          "principal": true
+        },
+        {
+          "tipo": "impacto",
+          "principal": false
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
   },
   {
     "id": "azagaia",
     "nome": "Azagaia",
-    "classe": "arremesso",
-    "atrib": "destreza",
-    "pericia": "arremesso",
-    "dado": 1,
-    "acerto": 1,
-    "defesaArma": 0,
-    "maos": 1,
-    "ticks": 5,
-    "folego": 20,
-    "tipoDano": "perfurante",
+    "tipo": "arma",
     "peso": 0.8,
-    "pen": 1,
-    "modos": [
-      {
-        "tipo": "perfurante",
-        "perf": 1,
-        "principal": true
-      }
-    ],
+    "descricao": "Dardo de arremesso (javelina): fura à distância (N1) e ainda serve de lança curta na mão (estocada N1).",
     "tags": [
       "arremessável"
     ],
-    "notas": "Dardo de arremesso (javelina): fura à distância (N1) e ainda serve de lança curta na mão (estocada N1).",
-    "danoBonus": 1,
-    "distMax": 40
+    "arma": {
+      "classe": "arremesso",
+      "atrib": "destreza",
+      "pericia": "arremesso",
+      "dado": 1,
+      "danoBonus": 1,
+      "acerto": 1,
+      "defesaArma": 0,
+      "maos": 1,
+      "ticks": 5,
+      "folego": 20,
+      "distMax": 40,
+      "tipoDano": "perfurante",
+      "pen": 1,
+      "modos": [
+        {
+          "tipo": "perfurante",
+          "perf": 1,
+          "principal": true
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
   },
   {
     "id": "funda",
     "nome": "Funda",
-    "classe": "arremesso",
-    "atrib": "destreza",
-    "pericia": "arremesso",
-    "dado": 1,
-    "acerto": 1,
-    "defesaArma": 0,
-    "maos": 1,
-    "ticks": 6,
-    "folego": 12,
-    "tipoDano": "impacto",
+    "tipo": "arma",
     "peso": 0.1,
-    "pen": 0,
-    "modos": [
-      {
-        "tipo": "impacto",
-        "principal": true
-      }
-    ],
+    "descricao": "Lança pedras a grande distância; barata e silenciosa. Dano de Impacto (quebra ossos sob a armadura), não passa pelo gate de perfuração.",
     "tags": [
       "munição",
       "arremessável",
       "projétil veloz"
     ],
-    "notas": "Lança pedras a grande distância; barata e silenciosa. Dano de Impacto (quebra ossos sob a armadura), não passa pelo gate de perfuração.",
-    "danoBonus": 0,
-    "distMax": 200
+    "arma": {
+      "classe": "arremesso",
+      "atrib": "destreza",
+      "pericia": "arremesso",
+      "dado": 1,
+      "danoBonus": 0,
+      "acerto": 1,
+      "defesaArma": 0,
+      "maos": 1,
+      "ticks": 6,
+      "folego": 12,
+      "distMax": 200,
+      "tipoDano": "impacto",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "impacto",
+          "principal": true
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
   },
   {
     "id": "dardos",
     "nome": "Dardos",
-    "classe": "arremesso",
-    "atrib": "destreza",
-    "pericia": "arremesso",
-    "dado": 1,
-    "acerto": 2,
-    "defesaArma": 0,
-    "maos": 1,
-    "ticks": 4,
-    "folego": 12,
-    "tipoDano": "perfurante",
+    "tipo": "arma",
     "peso": 0.2,
-    "pen": 1,
-    "modos": [
-      {
-        "tipo": "perfurante",
-        "perf": 1,
-        "principal": true
-      }
-    ],
+    "descricao": "Pequenos e velozes, lançados em sequência; precisos de perto. Carregados às dezenas.",
     "tags": [
       "ágil",
       "arremessável",
       "munição",
       "projétil veloz"
     ],
-    "notas": "Pequenos e velozes, lançados em sequência; precisos de perto. Carregados às dezenas.",
-    "danoBonus": 0,
-    "distMax": 30
+    "arma": {
+      "classe": "arremesso",
+      "atrib": "destreza",
+      "pericia": "arremesso",
+      "dado": 1,
+      "danoBonus": 0,
+      "acerto": 2,
+      "defesaArma": 0,
+      "maos": 1,
+      "ticks": 4,
+      "folego": 12,
+      "distMax": 30,
+      "tipoDano": "perfurante",
+      "pen": 1,
+      "modos": [
+        {
+          "tipo": "perfurante",
+          "perf": 1,
+          "principal": true
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
   },
   {
     "id": "bumerangue",
     "nome": "Bumerangue",
-    "classe": "arremesso",
-    "atrib": "destreza",
-    "pericia": "arremesso",
-    "dado": 1,
-    "acerto": 1,
-    "defesaArma": 0,
-    "maos": 1,
-    "ticks": 5,
-    "folego": 12,
-    "tipoDano": "impacto",
+    "tipo": "arma",
     "peso": 0.3,
-    "pen": 0,
-    "modos": [
-      {
-        "tipo": "impacto",
-        "principal": true
-      }
-    ],
+    "descricao": "Atinge em curva (contorna cobertura parcial) e volta à mão quando erra — não gasta munição. Dano de Impacto.",
     "tags": [
       "arremessável"
     ],
-    "notas": "Atinge em curva (contorna cobertura parcial) e volta à mão quando erra — não gasta munição. Dano de Impacto.",
-    "danoBonus": 0,
-    "distMax": 50
+    "arma": {
+      "classe": "arremesso",
+      "atrib": "destreza",
+      "pericia": "arremesso",
+      "dado": 1,
+      "danoBonus": 0,
+      "acerto": 1,
+      "defesaArma": 0,
+      "maos": 1,
+      "ticks": 5,
+      "folego": 12,
+      "distMax": 50,
+      "tipoDano": "impacto",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "impacto",
+          "principal": true
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
   },
   {
     "id": "rede",
     "nome": "Rede",
-    "classe": "arremesso",
-    "atrib": "destreza",
-    "pericia": "arremesso",
-    "dado": 1,
-    "acerto": 0,
-    "defesaArma": 0,
-    "maos": 1,
-    "ticks": 5,
-    "folego": 12,
-    "tipoDano": "impacto",
+    "tipo": "arma",
     "peso": 1.5,
-    "pen": 0,
-    "modos": [
-      {
-        "tipo": "impacto",
-        "principal": true
-      }
-    ],
+    "descricao": "Não fere: um acerto deixa o alvo Imobilizado (Defesa para prender; escapar com Força ou Acrobacias vs o lançamento).",
     "tags": [
       "arremessável",
       "imobiliza"
     ],
-    "notas": "Não fere: um acerto deixa o alvo Imobilizado (Defesa para prender; escapar com Força ou Acrobacias vs o lançamento).",
-    "danoBonus": 0,
-    "distMax": 5
+    "arma": {
+      "classe": "arremesso",
+      "atrib": "destreza",
+      "pericia": "arremesso",
+      "dado": 1,
+      "danoBonus": 0,
+      "acerto": 0,
+      "defesaArma": 0,
+      "maos": 1,
+      "ticks": 5,
+      "folego": 12,
+      "distMax": 5,
+      "tipoDano": "impacto",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "impacto",
+          "principal": true
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
   },
   {
     "id": "pilum",
     "nome": "Pilum",
-    "classe": "arremesso",
-    "atrib": "forca",
-    "pericia": "arremesso",
-    "dado": 1,
-    "acerto": 1,
-    "defesaArma": 0,
-    "maos": 1,
-    "ticks": 5,
-    "folego": 20,
-    "tipoDano": "perfurante",
+    "tipo": "arma",
     "peso": 2,
-    "pen": 2,
-    "modos": [
-      {
-        "tipo": "perfurante",
-        "perf": 2,
-        "principal": true
-      }
-    ],
+    "descricao": "Dardo pesado anti-escudo: fura placa (N2) e entorta ao cravar, inutilizando o escudo atingido.",
     "tags": [
       "arremessável"
     ],
-    "notas": "Dardo pesado anti-escudo: fura placa (N2) e entorta ao cravar, inutilizando o escudo atingido.",
-    "danoBonus": 2,
-    "distMax": 25
+    "arma": {
+      "classe": "arremesso",
+      "atrib": "forca",
+      "pericia": "arremesso",
+      "dado": 1,
+      "danoBonus": 2,
+      "acerto": 1,
+      "defesaArma": 0,
+      "maos": 1,
+      "ticks": 5,
+      "folego": 20,
+      "distMax": 25,
+      "tipoDano": "perfurante",
+      "pen": 2,
+      "modos": [
+        {
+          "tipo": "perfurante",
+          "perf": 2,
+          "principal": true
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
   },
   {
     "id": "desarmado",
     "nome": "Desarmado / Briga",
-    "classe": "leve",
-    "atrib": "forca",
-    "pericia": "briga",
-    "dado": 1,
-    "acerto": 0,
-    "defesaArma": 0,
-    "maos": 1,
-    "ticks": 5,
-    "folego": 15,
-    "tipoDano": "impacto",
+    "tipo": "arma",
     "peso": 0,
-    "pen": 0,
-    "modos": [
-      {
-        "tipo": "impacto",
-        "principal": true
-      }
-    ],
+    "descricao": "Socos e agarrões; dano de Impacto (com a Técnica Mão de Ferro ele atravessa o zero mesmo contra quem pararia o Impacto nele, como o Inquebrantável).",
     "tags": [],
-    "notas": "Socos e agarrões; dano de Impacto (com a Técnica Mão de Ferro ele atravessa o zero mesmo contra quem pararia o Impacto nele, como o Inquebrantável).",
-    "danoBonus": -2
+    "arma": {
+      "classe": "leve",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "danoBonus": -2,
+      "acerto": 0,
+      "defesaArma": 0,
+      "maos": 1,
+      "ticks": 5,
+      "folego": 15,
+      "tipoDano": "impacto",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "impacto",
+          "principal": true
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
   }
 ]
