@@ -7,14 +7,28 @@ qualquer coisa nesta frente, carregue o contexto na ordem abaixo.
 
 ## 1. Leia sempre
 
-0. **Confira a configuração do git ANTES de qualquer trabalho**: rode
-   `git config core.hooksPath`. Se não devolver exatamente `scripts/hooks`, **avise o
-   usuário na hora**, antes de começar a tarefa, dizendo o que está lá e que o portão
-   de commit vai recusar. Não conserte por conta própria: `.git/config` é de toda a
-   máquina, não desta frente. Esta conferência entrou em 2026-09-23, a pedido do
-   usuário, depois de um commit ser recusado no fim de uma rodada por
-   `core.hooksPath` estar com caminho absoluto — o custo de descobrir no fim é ter a
-   rodada inteira pronta e travada.
+0. **Confira a configuração do git ANTES de qualquer trabalho, e REGISTRE**:
+
+   ```sh
+   cd lore/mapas/ferramentas && .venv/Scripts/python.exe scripts/conferir_git.py
+   ```
+
+   O script acrescenta uma linha em `lore/mapas/registro-git.jsonl` (data e hora,
+   valor encontrado, valor esperado, se estava certo, e o arquivo de configuração de
+   onde veio o valor) **toda vez**, inclusive quando está certo: é a sequência de
+   linhas que mostra quando o valor mudou e por onde. Ele sai com código 0 se estava
+   certo e 1 se estava errado, e **nunca conserta nada**.
+
+   - **Certo**: siga para o passo 1, sem comentar.
+   - **Errado**: avise o usuário **em uma linha**, dizendo o valor encontrado e
+     pedindo autorização para rodar `git config core.hooksPath scripts/hooks`, e
+     **siga trabalhando** no que não depende de commit em vez de parar a sessão. Com
+     o "sim" dele, conserte; sem resposta, não commite e diga por quê.
+
+   Histórico: a conferência entrou em 2026-09-23 depois de um commit ser recusado no
+   fim de uma rodada; o registro e a autorização em uma linha entraram na rodada
+   seguinte, quando o valor voltou sozinho para caminho absoluto pela segunda vez e
+   ficou claro que nem consertar calado nem só avisar descobre quem está mexendo.
 1. `lore/mapas/CARTOGRAFO.md` — documento central: **Estado atual** (primeira seção),
    objetivo, regras invioláveis, estrutura de pastas, sistema de coordenadas,
    decisões tomadas, achados técnicos e decisões em aberto. Todas as regras e o
