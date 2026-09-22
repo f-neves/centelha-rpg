@@ -107,13 +107,38 @@ def test_a_lista_de_propositais_esta_de_fato_filtrando():
     assert rel not in _no_disco()
 
 
+def _escondido_pelo_gitignore(rel: str) -> bool:
+    return subprocess.run(
+        ["git", "check-ignore", "-q", rel], cwd=RAIZ_REPO
+    ).returncode == 0
+
+
 def test_nada_necessario_ficou_fora_do_git():
-    """O teste em si. Falha nomeando cada arquivo."""
+    """O teste em si. Falha nomeando cada arquivo, e separando os dois casos, que
+    têm gravidade bem diferente:
+
+    - **escondido pelo `.gitignore`**: o defeito que criou este teste. Não aparece em
+      `git status`, não dá erro nenhum aqui, e só quebra num clone novo.
+    - **só ainda não commitado**: trabalho em andamento. Aparece em `git status` como
+      `??`, e some quando a etapa for commitada. Continua falhando de propósito (o
+      pedido foi "falha se houver arquivo necessário fora do git"), mas a mensagem
+      diz qual é qual para ninguém sair caçando defeito onde não há.
+    """
     sobrando = sorted(fora_do_git())
-    assert not sobrando, (
-        "arquivo no disco e fora do git (ou entra no git, ou entra em PROPOSITAIS "
-        "com motivo):\n  " + "\n  ".join(sobrando)
-    )
+    escondidos = [f for f in sobrando if _escondido_pelo_gitignore(f)]
+    apenas_novos = [f for f in sobrando if f not in escondidos]
+    recado = []
+    if escondidos:
+        recado.append(
+            "ESCONDIDO PELO .gitignore (o defeito do dist/, invisível no git status):\n  "
+            + "\n  ".join(escondidos)
+        )
+    if apenas_novos:
+        recado.append(
+            "ainda não commitado (aparece no git status, some ao commitar a etapa):\n  "
+            + "\n  ".join(apenas_novos)
+        )
+    assert not sobrando, "\n".join(recado)
 
 
 def test_pega_um_arquivo_escondido_pelo_gitignore():
