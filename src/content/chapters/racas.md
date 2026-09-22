@@ -109,7 +109,7 @@ Filhos de humano e orc: a força e o porte da herança orc temperados pelo sangu
 - **`+1` de Força e de Vigor**: os dois começam em **2** e vão até **7**. A compleição forte da herança orc.
 - **`−1` teto de Compostura e de Inteligência** (máx 5, piso normal): o temperamento bruto e a lógica mais curta que a humana; o sangue humano poupa o tato social (a Perspicácia) que um orc puro perderia.
 - **Vitalidade**, couro grosso: ganha **+Vigor** pontos de vida adicionais (PV = 25 + Vigor×3 + Vigor).
-- **Frenesi contido**: pode entrar em fúria (só **ações físicas**, mais **Intimidar** como reflexo, **ignorando as penalidades de ferimento**), mas de forma menos intensa e mais controlável que a de um orc puro.
+- **Frenesi contido**: pode entrar em fúria (só **ações físicas**, mais **Intimidar** como reflexo), **ignorando Machucado e Grave**. Ao entrar em **Crítico**, sai da fúria sozinho e volta a sentir a penalidade cheia; pode **reentrar** se a Vida voltar a Grave ou melhor. Forma menos intensa e mais controlável que a de um orc puro.
 - **Visão Noturna**: enxerga sem penalidade sob **penumbra**, mas não na escuridão completa.
 - **Sangue partido**, criado entre dois mundos, o meio-orc **não carrega inimizades naturais** de povo: ele parte do **Neutro** com os outros.
 - **Relações Sociais:** o inverso do "Sangue partido" pesa: os demais povos recebem o meio-orc em **−1 (Antipatia)** na Régua de Relação. Não é hostilidade, é a reserva que o sangue orc desperta; orcs e outros meio-orcs não têm essa reserva.
@@ -125,7 +125,7 @@ Humanóides de herança metamorfa, com constituição física superior a qualque
 - **`−1` teto de Perspicácia, Compostura e Inteligência** (máx 5, piso normal): a força não vem acompanhada de tato social nem de lógica fina.
 - **Aparência rebaixada**: a Aparência do orc vale **1 a menos** que o nível pago (paga Aparência 7, vale 6).
 - **Vitalidade**, couro grosso: ganha **+Vigor** pontos de vida adicionais (PV = 25 + Vigor×3 + Vigor).
-- **Frenesi**: pode entrar em fúria como certas feras. No frenesi só realiza **ações físicas** (mais **Intimidar**, que vira ação reflexa) e **ignora as penalidades de ferimento**. Ao intimidar nesse estado, recebe **+2 dados** na parada.
+- **Frenesi**: pode entrar em fúria como certas feras. No frenesi só realiza **ações físicas** (mais **Intimidar**, que vira ação reflexa) e **ignora as penalidades de ferimento até Incapacitado**. Ao intimidar nesse estado, recebe **+2 dados** na parada.
 - **Visão Noturna**: enxerga sem penalidade sob **penumbra**, mas não na escuridão completa.
 - **Relações Sociais:** negociam com quem entende força bruta: **+1 (Simpatia)** pelo Anão. Devolvem ao Elfo o mesmo desprezo que recebem, **−2 (Desafeto)**. Preferem simplesmente evitar Gnomo e Halfling, sem que isso vire hostilidade: **Neutro**.
 
