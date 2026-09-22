@@ -18,7 +18,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from . import (areas, cobertura_automatica, coordenadas, lugares, medicoes,
-               operacoes, referencias, travas)
+               operacoes, referencias, relevo_automatico, travas)
 
 RAIZ_FERRAMENTA = Path(__file__).resolve().parents[1]
 RAIZ_MAPAS = RAIZ_FERRAMENTA.parent
@@ -318,6 +318,13 @@ def refazer() -> JSONResponse:
 @app.get("/api/areas")
 def obter_areas() -> JSONResponse:
     return JSONResponse(areas.carregar())
+
+
+@app.get("/api/relevo-automatico")
+def obter_relevo_automatico() -> JSONResponse:
+    """Relevo `planicie` onde não há relevo pintado. Mesmo contrato do automático de
+    cobertura: calculado a cada pedido, nunca gravado."""
+    return JSONResponse(relevo_automatico.colecao())
 
 
 @app.get("/api/cobertura-automatica")
