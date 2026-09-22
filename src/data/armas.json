@@ -125,6 +125,9 @@
     "id": "machado",
     "nome": "Machado",
     "tipo": "arma",
+    "preco": {
+      "pc": 300
+    },
     "peso": 1.2,
     "descricao": "Corte pesado; pode bater de chapa (impacto) contra placa.",
     "tags": [],
@@ -265,6 +268,9 @@
     "id": "lanca",
     "nome": "Lança",
     "tipo": "arma",
+    "preco": {
+      "pc": 50
+    },
     "peso": 2,
     "descricao": "Alcance + estocada (N1): fura couro e malha, mas resvala na placa.",
     "tags": [
@@ -301,6 +307,9 @@
     "id": "alabarda",
     "nome": "Alabarda",
     "tipo": "arma",
+    "preco": {
+      "pc": 280
+    },
     "peso": 2.7,
     "descricao": "Lâmina, ponta e malho num só cabo: Cortante, Perfurante e Impacto, todos PRINCIPAIS (sem penalidade ao alternar). Lenta. Cobre as três frentes contra qualquer armadura.",
     "tags": [

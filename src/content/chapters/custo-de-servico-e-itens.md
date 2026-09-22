@@ -128,6 +128,8 @@ Cada ponto compra um efeito. A soma dos modificadores tem de **fechar no orçame
 
 <p class="muted">Preço <strong>base</strong> (qualidade Comum). Munição vendida em maços. Clique no cabeçalho <strong>Preço</strong> para ordenar: a conversão entre moedas é respeitada (2 po &gt; 15 pp).</p>
 
+<!-- gen:catalogo-equipamento -->
+
 <div class="cat-grid">
 
 <div>
@@ -138,26 +140,28 @@ Cada ponto compra um efeito. A soma dos modificadores tem de **fechar no orçame
 
 | Arma | Preço |
 |---|:---:|
-| Faca | 6 pp |
+| Adaga | 6 pp |
 | Bastão | 4 pp |
-| Lança | 5 pp |
-| Lança Longa | 8 pp |
+| Espada Curta | 15 pp |
 | Machadinha | 8 pp |
-| Machado | 30 pp |
-| Machado G | 80 pp |
-| Espada Média | 15 pp |
-| Espada | 25 pp |
-| Espada Grande | 70 pp |
-| Sabre | 30 pp |
-| Alabarda | 28 pp |
-| Martelo | 25 pp |
-| Martelo Grande | 100 pp |
+| Sabre | 3 po |
+| Espada Longa | 25 pp |
 | Maça Estrela | 32 pp |
-| Arco | 14 pp |
+| Machado | 3 po |
+| Martelo | 25 pp |
+| Machado Pesado | 8 po |
+| Martelo de Guerra | 10 po |
+| Montante | 7 po |
+| Alabarda | 28 pp |
+| Lança | 5 pp |
+| Lança Longa | 9 pp |
+| Arco Composto | 55 pp |
 | Arco Curto | 8 pp |
-| Arco Composto | 25 pp |
+| Arco Longo | 15 pp |
+| Besta Grande | 95 pp |
+| Besta Média | 55 pp |
+| Besta Pequena | 3 po |
 | Flechas (10) | 1 pp |
-| Besta | 35 pp |
 | Virotes (10) | 1 pp |
 
 </div>
@@ -172,15 +176,11 @@ Cada ponto compra um efeito. A soma dos modificadores tem de **fechar no orçame
 
 | Armadura | Classe | Preço |
 |---|:---:|:---:|
-| Couro | Leve | 12 pp |
-| Camisa de malha | Leve | 20 pp |
+| Camisa de malha | Leve | 2 po |
 | Peitoral | Leve | 28 pp |
-| Cota de malha | Média | 50 pp |
-| Lamelar | Média | 45 pp |
+| Malha completa | Pesada | 18 po |
 | Peitoral reforçado | Pesada | 9 po |
 | Placa articulada | Pesada | 14 po |
-| Malha completa | Super-pesada | 18 po |
-| Placa completa | Super-pesada | 25 po |
 
 </div>
 
@@ -190,18 +190,21 @@ Cada ponto compra um efeito. A soma dos modificadores tem de **fechar no orçame
 
 | Escudo | Preço |
 |---|:---:|
-| Broquel | 6 pp |
-| Madeira P | 3 pp |
-| Madeira G | 6 pp |
-| Metal P | 10 pp |
-| Metal G | 25 pp |
-| de Corpo | 45 pp |
+| Broquel (buckler) | 6 pp |
+| Heater | 1 po |
+| Hoplon | 6 pp |
+| Kite | 25 pp |
+| Pavês (pavise) | 45 pp |
+| Scutum romano | 35 pp |
+| Targe | 3 pp |
 
 </div>
 
 </div>
 
 </div>
+
+<!-- /gen:catalogo-equipamento -->
 
 ## Hospedagem & Comida
 
