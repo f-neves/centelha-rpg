@@ -9,7 +9,55 @@ confirmado pelo usuário; o que é recomendação de IA fica marcado como tal.
 *(Atualizar esta seção antes de encerrar toda sessão de trabalho no mapa — é a
 primeira coisa que `/cartografo` mostra.)*
 
-- **Última atualização:** 2026-09-23 (sétima rodada do dia). **Travar objeto**,
+- **Última atualização:** 2026-09-23 (oitava rodada do dia). **B4 commitada**, três
+  regras novas registradas, e o **recorte pela costa na renderização** feito e
+  conferido na tela, sem commit.
+  - **Commits desta rodada, 6, sem push** (os quatro primeiros são a B4, em ordem de
+    dependência): `d9167a9` o Geoman free em `static/vendor`; `f7677cd` o `dist/` do
+    Geoman, que o `.gitignore` da raiz escondia (a linha 3 é `dist/`, posta para o
+    build do Astro, e casa com QUALQUER pasta chamada `dist` · os dois arquivos que a
+    página carrega ficaram de fora do primeiro commit e entraram com `git add -f`, só
+    esses dois caminhos); `7c63e08` o servidor da Área (backend, `main.py`, o dado
+    vazio e os 18 testes); `00194ce` a Área na tela; `abc7b67` os documentos;
+    `092b3fb` o `/cartografo` conferindo `core.hooksPath`, separado por ser arquivo
+    fora do mapa.
+  - **Recorte pela costa na renderização (etapa desta rodada, NÃO commitada)**: o
+    polígono continua gravado cru, exatamente como desenhado, e quem esconde a parte
+    que caiu na água é a pirâmide `render/tiles/mar`, que já existia, posta numa pane
+    própria (z 450) acima da área vetorial e abaixo dos marcadores, com
+    `pointerEvents: "none"` (sem isso ela engoliria todo clique destinado aos
+    polígonos embaixo). **Conferido na tela**: um retângulo desenhado atravessando a
+    costa aparece pintado só na parte de terra, com a borda acompanhando a praia; o
+    **controle negativo** (desligar a pane e olhar o mesmo lugar) mostra o retângulo
+    inteiro, sobre mar e terra, provando que o dado está cru e que é só a imagem que
+    esconde. Clique ainda seleciona a área através da pane, e a tecla `C` ("só a
+    costa") também apaga a camada do mar.
+    - **Controle negativo do lado do arquivo**, em `tests/test_mar.py` (3 testes, 100
+      no total): a pirâmide do mar é comparada com a máscara oficial
+      `costa_10240.png` em terra conhecida (transparente), em oceano aberto
+      conhecido (sólido) e numa faixa de 200 amostras que OBRIGATORIAMENTE cruza a
+      costa (senão o teste falha dizendo que não testou nada). A varredura completa
+      dos 10240×10240 pixels deu **zero divergência** entre a imagem e a máscara.
+    - **Um susto que valeu a lição**: a primeira versão do teste "achou" uma
+      divergência que não existia · ela escolhia o pixel com `int()` e o servidor
+      escolhe com `round()`, então os dois liam pixels VIZINHOS, um de cada lado da
+      praia. Nada estava errado na pirâmide.
+  - **Três regras novas, todas decididas pelo usuário** (em "Regras invioláveis"): o
+    travessão é proibido no que eu escrevo PARA ELE na conversa e não nos documentos
+    e no código do projeto (nenhuma varredura, os documentos seguem como estão);
+    histórico do git não se reescreve por cosmética (a linha com `@` fica);
+    e toda sessão do mapa começa conferindo `core.hooksPath` (já no passo 1 de
+    `.claude/commands/cartografo.md` · nesta rodada estava certo, `scripts/hooks`).
+  - **Atração de 5 km: decidida como NOSSA**, no servidor, ao salvar, e não do
+    Geoman (a atração do plugin mede distância em pixels de tela, que muda de
+    significado a cada zoom, e não serve para uma regra escrita em quilômetros).
+    Registrada no ESPEC; **implementar quando as estradas chegarem**, porque hoje não
+    existe traçado nenhum para atrair.
+  - **Escalar e dividir não existem no Geoman free**, e o ESPEC agora registra o que
+    faríamos: `shapely.affinity.scale` e `shapely.ops.split`, do nosso lado, como já é
+    o recorte. Nenhum dos dois justifica pagar o Pro: o que o Pro venderia é a
+    interação, e a parte difícil continuaria sendo nossa.
+- **Rodada anterior (sétima), para referência:** **Travar objeto**,
   **tema claro/escuro** e **o acúmulo de três rodadas finalmente commitado**.
   - **Travar objeto (item 1)**: esquema definido em `ESPEC-dados.md`
     ("Travamento") **para todos os objetos editáveis de uma vez** · lugar, rio,
@@ -243,7 +291,7 @@ primeira coisa que `/cartografo` mostra.)*
   cd lore/mapas/ferramentas
   .venv\Scripts\python.exe -m uvicorn backend.main:app --host 127.0.0.1 --port 8420
   ```
-- **97 testes pytest, todos verdes** (`cd ferramentas &&
+- **100 testes pytest, todos verdes** (`cd ferramentas &&
   .venv/Scripts/python.exe -m pytest`).
 - **Instalação e código da etapa 1** — sem mudança desde a última atualização
   (commitados): `.venv` próprio, Leaflet 1.9.4 baixado pronto (sem npm/CDN),
@@ -262,11 +310,62 @@ primeira coisa que `/cartografo` mostra.)*
   `ferramentas/static/js/app.js`, `ferramentas/static/js/camadas-referencia.js`
   (criado), `ferramentas/templates/index.html`. Nada de `render/tiles/` nem
   `.venv/`.
-- **Próximo passo:** o usuário abrir `http://127.0.0.1:8420/` e testar a **B4**
-  (botão "+ área" ou tecla `A`, duplo clique fecha a forma; desenhar por cima de
-  outra área da mesma camada e ver o recorte; selecionar e travar com `T`;
-  desfazer). A B4 é o único trabalho não commitado. Depois dela, a etapa
-  seguinte é o **recorte pela costa**.
+- **Próximo passo:** o usuário abrir `http://127.0.0.1:8420/` e testar o **recorte
+  pela costa na renderização**: botão "+ área" (ou tecla `A`), desenhar um polígono
+  que atravesse a linha da costa, duplo clique para fechar, e ver que só a parte de
+  terra fica pintada. O dado continua inteiro: `GET /api/areas` devolve o polígono
+  como foi desenhado, mar incluído. **Não commitado**, como pedido · o que está
+  fora do git é `static/js/app.js`, `static/css/estilo.css` e `tests/test_mar.py`.
+  Depois disso, os candidatos a etapa seguinte são a **edição de vértice de área já
+  salva** (o `editMode` do Geoman existe e a ferramenta ainda não usa) e a **B5,
+  rios e estradas**, que é onde a atração de 5 km finalmente vira código.
+
+## Clone novo · o que a ferramenta precisa e o git não traz
+
+Medido em 2026-09-23 (nona rodada), **rodando de verdade**: clone do repositório numa
+pasta temporária, `python -m venv .venv`, `pip install -r requirements.txt`, servidor
+no ar numa porta separada, e cada peça sondada por HTTP. O resultado, e não a
+suposição:
+
+**Funciona sem nenhum arquivo extra**: a página abre (HTTP 200), o Leaflet e o Geoman
+carregam de `static/vendor/` (é o conserto do `dist/`, ver abaixo), a API de lugares
+responde, e a **validação de terra funciona** (`lon 17,34 / lat 17,78` aceito, o ponto
+de oceano aberto recusado com 422), porque `mascaras/costa_10240.png` está no git.
+**100 testes: 97 passam e 3 pulam** (os do mar, que precisam dos tiles).
+
+**Falta, e o que fazer:**
+
+| o que falta | sintoma no clone novo | como repor |
+|---|---|---|
+| `render/tiles/costa` e `render/tiles/mar` | mapa em branco, HTTP 500 em `/tiles/...` | **regerar**: `cd lore/mapas/ferramentas && .venv/Scripts/python.exe scripts/gerar_tiles.py --confirmo`, a partir de `mascaras/costa_10240.png`, que o git traz (3.184 blocos, cerca de 10 s) |
+| `render/tiles/rotulos` | camada de rótulos vazia | **regerar** com `scripts/gerar_rotulos.py`, que exige `fonte/Mapa Teste.jpg` e `fonte/Mapa Teste1.jpg`, **copiados à mão** (não estão no git) |
+| `render/tiles/ocean-deep` | camada de batimetria vazia | **regerar** com `scripts/extrair_ocean_deep.py`, que exige `referencias/ocean_deep_exportado.png` (400 MB), **copiado à mão** |
+| `referencias/*.png` (as 4 imagens do ChatGPT) | HTTP 500 na camada de referência | **copiar à mão**: são originais, e original não vai para o git |
+| `fonte/Mapa.psd` e demais originais | nada quebra sozinho | **copiar à mão** quando for preciso regerar a máscara |
+| `dados/.operacoes/` e `dados/.historico/` | nenhum | nascem sozinhos na primeira gravação |
+
+Ou seja: **o único arquivo pesado indispensável para a ferramenta rodar já está no
+git** (a máscara da costa), e tudo o mais é derivado dela ou de original que se copia.
+Um clone novo fica utilizável com um comando.
+
+### A lição do `.gitignore`, que vale para toda a frente do mapa
+
+O `.gitignore` da raiz **foi escrito para o site em Astro e alcança a ferramenta do
+mapa**, que nasceu depois e mora dentro do mesmo repositório. A linha 3 é `dist/`,
+posta para a saída do build, e ela casa com **qualquer** pasta chamada `dist` em
+qualquer profundidade: foi assim que `static/vendor/.../dist/leaflet-geoman.min.js`
+ficou fora de um commit feito com caminho explícito, sem erro nenhum, porque o arquivo
+continuava no disco aqui. Quem pagaria seria um clone novo, meses depois, com a
+ferramenta abrindo sem a caneta e sem mensagem.
+
+**A regra que fica**: arquivo de terceiro trazido para `static/vendor/` é conferido
+contra o git depois de commitado, e não só copiado para a pasta. Quem confere agora é
+`tests/test_arquivos_no_git.py`, que compara o disco com o que o git rastreia dentro
+de `ferramentas/` e `dados/` e falha nomeando o que sobrou; o que fica de fora de
+propósito (`.venv/`, `__pycache__/`, `.pytest_cache/`, `.historico/`, `.operacoes/`,
+`*.log`, `*.stackdump`) está numa lista explícita dentro do teste, e o controle
+negativo dele **recria o defeito** (um arquivo dentro de uma pasta `dist/`) para
+provar que o detector o pega.
 
 ## Objetivo e estilo
 
