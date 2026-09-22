@@ -98,3 +98,25 @@ três.
 **Estado atual**: `src/lib/rolagem.ts` (piso do item 6, restaurado) e `scripts/fixtures/lances.jsonl`
 (recoletada, reflete P0 + item 6) continuam só no working tree, não commitados, até a decisão
 acima.
+
+## Atualização de 22/09/2026, parte 4: decisão (b), aplicada, item 6 fechado
+
+O Arquiteto escolheu (b): `test-lance.mjs` passa a excluir dos campos de DANO os lances em que o
+Gate de Perfuração resvalou (`gateResvalou(l)`: `perfil.gate` ligado, `tipoDano === 'perfurante'`,
+veredito `acerto` ou `raspao` e `danoBruto === 0`), com o motivo comentado no próprio arquivo
+citando `CATALOGO.md`. `rolls.dano` e os campos de ACERTO continuam conferidos normalmente nesses
+lances, porque o gate não mexe neles — só a comparação de dano final, onde os dois lados já sabem,
+por desenho, que vão divergir.
+
+**Achado ao aplicar a exclusão**: o gate zera `bruto` tanto no acerto quanto no **raspão** (dano
+fixo do Quase-Acerto) — `grid.astro` aplica `if (resvalaGate) bruto = 0;` depois dos dois ramos,
+sem olhar o veredito. A primeira versão da exclusão só cobria `veredito === 'acerto'` e sobravam 6
+divergências residuais, todas raspão; corrigido para cobrir os dois vereditos. Duas outras
+asserções que também comparavam `danoNoCampo`/`danoBruto`/`danoQA` só com dados da própria fixture
+(sem `resolverGolpe`) tinham o mesmo problema por construção (o gate faz `danoNoCampo` e `danoBruto`
+divergirem DE PROPÓSITO) e ganharam a mesma exclusão, separada da contagem usada pela asserção "todo
+lance é completo hoje", que continua vendo os 1315 inteiros (não é sobre o gate).
+
+**`test-lance.mjs` fechou em 0 divergências**, `npm run validate` e `npx tsc --noEmit` verdes.
+Commit final: `rolagem.ts` (piso condicional) + a fixture recoletada + o ajuste de
+`test-lance.mjs`, juntos.

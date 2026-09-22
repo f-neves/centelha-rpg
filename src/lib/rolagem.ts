@@ -70,10 +70,14 @@ function baseDadosDeExpr(expr: string): number {
 }
 
 /**
- * O piso do pool: nunca menos que zero dado.
+ * O piso CONDICIONAL à parada base (Limiares de Ferimento §4f, `docs/simulacao/caixa/
+ * leitura-de-novato-decisoes.md`): uma parada que já tinha 1+ dado nunca cai abaixo
+ * de 1, mas uma parada "+2" sem d6 nenhum (ou uma arma que já nasce `0d6`, o
+ * caso que expôs o defeito de dobra em `roladaManual`) não ganha um dado que
+ * não existia.
  */
 function dadosAjustados(baseDados: number, extraDados: number): number {
-  return Math.max(0, baseDados + extraDados);
+  return baseDados > 0 ? Math.max(1, baseDados + extraDados) : Math.max(0, baseDados + extraDados);
 }
 
 /**

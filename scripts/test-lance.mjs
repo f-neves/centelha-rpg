@@ -104,6 +104,25 @@ const CAMPOS_ACERTO = ['defesa', 'total', 'soma', 'errouPor', 'veredito', 'tipo'
 const CAMPOS_DANO = ['danoBruto', 'absorcao', 'danoLiquido', 'pvDepois'];
 const igualArr = (a, b) => JSON.stringify(a || []) === JSON.stringify(b || []);
 
+// O GATE DE PERFURAÇÃO É OUTRO LUGAR, DE PROPÓSITO (achado em 22/09/2026,
+// `docs/simulacao/caixa/rolagem-piso-fixture-pendente.md`, parte 3). `resolverGolpe`
+// é pura e não conhece `perfArma`/`resistPerf` (não fazem parte de `EntradaLance`);
+// quem decide "abaixo do Nível de Perfuração, o golpe resvala, dano ZERO" é só
+// `grid.astro` (`resvalaGate`), por FORA da conta compartilhada. É a mesma lacuna
+// arquitetural já nomeada em `CATALOGO.md` ("dois lugares decidem dano"), e não é
+// este lote que fecha essa divisão — ensinar o gate a `resolverGolpe` mudaria o
+// contrato compartilhado por um motivo que não tem nada a ver com o piso de dado
+// que este arquivo está fechando. Por isso os campos de DANO não são comparados
+// nos lances em que o gate de fato resvalou: os dois lados sabem, por desenho,
+// que vão divergir aqui. `rolls.dano` continua conferido (o dado ainda é rolado
+// normalmente; só o dano aplicado é que o gate zera por fora), e os campos de
+// ACERTO (veredito, total, soma...) também, porque o gate não mexe neles.
+// O gate zera o `bruto` no acerto (o dado rolado) E no raspão (o dano fixo do
+// Quase-Acerto): `grid.astro` aplica `if (resvalaGate) bruto = 0;` depois dos
+// dois ramos, sem olhar o veredito.
+const gateResvalou = (l) => l.entrada.perfil?.gate && l.entrada.tipoDano === 'perfurante'
+  && (l.saida.veredito === 'acerto' || l.saida.veredito === 'raspao') && l.saida.danoBruto === 0;
+
 let conferidos = 0;
 const divergencias = [];
 const porCampo = {};
@@ -114,7 +133,8 @@ for (const l of lances) {
   // `danoNoCampo` fica fora da comparação com a cópia porque a função pura não
   // o produz: ela não tem caixa de texto. Ele é conferido logo abaixo, contra o
   // que a régua aplica, que é a pergunta que ele responde.
-  const campos = l.cobre === 'completo' ? [...CAMPOS_ACERTO, ...CAMPOS_DANO] : CAMPOS_ACERTO;
+  const campos = l.cobre === 'completo' && !gateResvalou(l) ? [...CAMPOS_ACERTO, ...CAMPOS_DANO]
+    : CAMPOS_ACERTO;
   for (const c of campos) {
     if (s[c] !== l.saida[c]) {
       dif.push(`${c}: mesa ${l.saida[c]} × cópia ${s[c]}`);
@@ -161,14 +181,20 @@ ok(divergencias.length === 0,
 
 // ---- danoNoCampo e danoBruto são coisas diferentes, e o teste tem de saber ----
 const completos = lances.filter((l) => l.cobre === 'completo');
-const acertos = completos.filter((l) => l.saida.veredito === 'acerto');
-const naoAcertos = completos.filter((l) => l.saida.veredito !== 'acerto');
+// EXCETO onde o Gate de Perfuração resvala (mesmo recorte de `gateResvalou`
+// acima): ali `grid.astro` zera `bruto` DE PROPÓSITO por fora da régua, e
+// `danoNoCampo` (o que a régua aplicaria) continua mostrando o valor de
+// verdade — as duas coisas DEVEM divergir, e não é o defeito que esta seção
+// prova ausente.
+const completosSemGate = completos.filter((l) => !gateResvalou(l));
+const acertos = completosSemGate.filter((l) => l.saida.veredito === 'acerto');
+const naoAcertos = completosSemGate.filter((l) => l.saida.veredito !== 'acerto');
 ok(acertos.length > 0 && acertos.every((l) => l.saida.danoNoCampo === l.saida.danoBruto),
   `no acerto, o que está no campo é o que a régua aplica (${acertos.length} lances)`);
 ok(naoAcertos.some((l) => l.saida.danoNoCampo !== l.saida.danoBruto),
   'e fora do acerto os dois DIVERGEM: no raspão vale o dano fixo do Quase-Acerto,'
   + ' no erro não vale nada, e o campo continua com o que foi rolado');
-ok(completos.filter((l) => l.saida.veredito === 'raspao')
+ok(completosSemGate.filter((l) => l.saida.veredito === 'raspao')
   .every((l) => l.saida.danoBruto === l.entrada.danoQA && l.saida.absorcao === 0),
   'todo raspão aplica o dano fixo e nenhuma Absorção');
 ok(completos.filter((l) => l.saida.veredito === 'erro')

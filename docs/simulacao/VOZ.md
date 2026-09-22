@@ -460,7 +460,7 @@ sendo clique, e é o certo por ora (ver §9.6).
 **A primeira redação deste parágrafo pedia `"acerto dezoito, dano sete"`, e estava errada.** O campo
 guarda as FACES e não o total, por decisão fechada em 06/09/2026 e escrita no próprio código:
 `src/pages/mesa/grid.astro:10414` · `O CAMPO GUARDA AS FACES, E NÃO O TOTAL`. Quem soma é a folha,
-em `src/lib/rolagem.ts:128` · `const rolls`. Falar o total não é a mesma coisa dita mais curto, é
+em `src/lib/rolagem.ts:132` · `const rolls`. Falar o total não é a mesma coisa dita mais curto, é
 **outra coisa**: com bolo de dados, a função lê `18` como UMA face e ainda soma o fixo por cima, que
 é o hábito antigo que o comentário logo abaixo existe para pegar. A entrada real é a de
 `src/pages/mesa/grid.astro:484` · `id="al-total"`, que pede as faces separadas por vírgula.
@@ -472,7 +472,7 @@ em `src/lib/rolagem.ts:128` · `const rolls`. Falar o total não é a mesma cois
 - **mas a fala fica mais longa, e não mais curta.** Um bolo de dez dados são dez faces ditas. O
   risco mudou de palavra confundível para **comprimento de sequência**, e é outro risco, medido de
   outro jeito;
-- **a folha já tem meio detector de graça:** `src/lib/rolagem.ts:148` · `bateContagem: rolls.length === dadosExpr`
+- **a folha já tem meio detector de graça:** `src/lib/rolagem.ts:152` · `bateContagem: rolls.length === dadosExpr`
   marca o campo quando o número de faces digitadas não
   bate com o que o bolo pede. **Ele pega face perdida ou repetida; não pega `quatro` ouvido como
   `seis`.** É detector de contagem, e não prova de transcrição, e é assim que ele deve ser lido.
@@ -649,7 +649,7 @@ transcrição de número inteiro**, e é escolha de jogo e não de interface, en
 **6 · Número é DUAS listas, e não uma** (a tabela do §9.5): as faces de d6, seis palavras, nos dois
 campos do caminho quente; e os números livres em todo o resto. O campo guarda as faces
 (`src/pages/mesa/grid.astro:484` · `id="al-total"`), e quem soma é a folha
-(`src/lib/rolagem.ts:128` · `const rolls`).
+(`src/lib/rolagem.ts:132` · `const rolls`).
 
 **7 · O texto livre ganha DITADO SEM GRAMÁTICA, e só nele.** São três campos: o "o quê" da ação
 (`src/pages/mesa/grid.astro:545` · `id="ou-oque"`), o motivo do ajuste avulso, e o filtro de efeitos

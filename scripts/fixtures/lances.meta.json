@@ -1,13 +1,13 @@
 {
-  "commit": "64bcdce521caeff5e6549b2efaec1fd27369cc25",
+  "commit": "138349dc4667120fced135ff2f1f1aeff3bc6386",
   "sujo": true,
-  "dados_hash": "c0de4484ddf82e6b",
-  "iso": "2026-09-03T15:26:11.085Z",
+  "dados_hash": "98f34b6ade6e64dc",
+  "iso": "2026-09-22T04:56:45.668Z",
   "semente": 20260902,
   "perfil": {
     "margem": false,
-    "gate": false,
-    "porte": false,
+    "gate": true,
+    "porte": true,
     "bloqueio": false,
     "modo2": false,
     "teto6": false,
