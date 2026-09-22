@@ -234,6 +234,16 @@ dia, então ele só os reescreve se sumirem. E o passo 1 não é formalidade: o
   documentos, então commit de `.md` passa pelo mesmo portão que commit de código.
   Foi pulando isso que um commit de documento derrubou o CI **e o deploy** em
   04/09/2026. Nada de `--no-verify`.
+- **Desde 22/09/2026, o `pre-commit` valida o conteúdo PREPARADO PARA O COMMIT**
+  (numa cópia temporária isolada), **não a pasta de trabalho inteira.** Trabalho em
+  andamento de uma frente não bloqueia mais o commit das outras. **Isto só vale
+  para commit com caminho explícito** (`git commit -m ... -- caminho1 caminho2`):
+  nesse caso o git já monta um índice temporário (HEAD + só os caminhos citados) e
+  é ele que o gancho isola e valida. **Um commit SEM caminho usa o índice real**,
+  que pode ter arquivo preparado por outra frente — validar isolado nesse caso
+  valida o que já está `git add`ado por todo mundo, não só o seu. Ver
+  `scripts/hooks/pre-commit` para o mecanismo (checkout-index + junction de
+  `node_modules`, sem `git stash`).
 - Catálogos de perícias nos capítulos são **gerados**, não escritos à mão:
   `node scripts/gen-cap-pericias.mjs` depois de mexer nos JSONs de habilidades.
 - A ficha (`/ficha`) é montada por JS no cliente, em `src/lib/ficha-engine.ts`.
