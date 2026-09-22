@@ -208,6 +208,10 @@
     const TRAVAS_INICIAL = /*__TRAVAS__*/;
     // Injetado a partir de dados/areas-pintadas.geojson (backend/areas.py).
     const AREAS_INICIAL = /*__AREAS__*/;
+    // CALCULADA pelo servidor a cada pedido (backend/cobertura_automatica.py), nunca
+    // lida de arquivo: a cobertura automática não é dado gravado, é o que a terra sem
+    // pintura mostra.
+    const COBERTURA_AUTOMATICA_INICIAL = /*__COBERTURA_AUTOMATICA__*/;
   </script>
   <script src="/static/js/interface.js"></script>
   <script src="/static/js/terra-ou-mar.js"></script>

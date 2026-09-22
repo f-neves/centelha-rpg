@@ -246,7 +246,9 @@
 
   // Ferramenta de Área (etapa B4, static/js/areas.js) -- desenho pelo Geoman
   // free, recorte/gravação/desfazer nossos.
-  const ferramentaDeArea = iniciarFerramentaDeArea(mapa, AREAS_INICIAL, TRAVAS_INICIAL);
+  const ferramentaDeArea = iniciarFerramentaDeArea(
+    mapa, AREAS_INICIAL, TRAVAS_INICIAL, COBERTURA_AUTOMATICA_INICIAL
+  );
 
   // Régua + grade de lat/lon (etapa 4 / B3, static/js/regua.js).
   iniciarRegua(mapa, PARAMETROS_LEAFLET.raio_km);

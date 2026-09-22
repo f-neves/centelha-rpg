@@ -28,7 +28,24 @@ const COR_POR_VALOR = {
   tundra: "#b0bec5", geleira: "#e1f5fe", lago: "#4fc3f7",
 };
 
-function iniciarFerramentaDeArea(mapa, areasIniciais, travasIniciais) {
+function iniciarFerramentaDeArea(mapa, areasIniciais, travasIniciais, coberturaAutomaticaInicial) {
+  // Cobertura automática por latitude: pane PRÓPRIA, abaixo das áreas pintadas
+  // (overlayPane, z 400) e abaixo da camada do mar (z 450, que recorta pela costa).
+  // `interactive: false` porque estas faixas cobrem o mundo inteiro: interativas,
+  // elas engoliriam todo clique destinado ao que está embaixo ou ao mapa.
+  mapa.createPane("cobertura-automatica");
+  mapa.getPane("cobertura-automatica").style.zIndex = 390;
+  const camadaAutomatica = L.geoJSON(null, {
+    pane: "cobertura-automatica",
+    interactive: false,
+    style: (feature) => ({
+      color: COR_POR_VALOR[feature.properties.valor] || "#888",
+      weight: 0,
+      fillColor: COR_POR_VALOR[feature.properties.valor] || "#888",
+      fillOpacity: 0.35,
+    }),
+  }).addTo(mapa);
+
   const camadaDesenho = L.geoJSON(null, { style: estiloDaArea, onEachFeature: ligarFeature }).addTo(mapa);
   let featuresAtuais = [];
   let idSelecionada = null;
@@ -100,11 +117,25 @@ function iniciarFerramentaDeArea(mapa, areasIniciais, travasIniciais) {
     camada.on("mouseout", () => destravarSobCursor());
   }
 
-  function redesenharTudo(colecao) {
+  function redesenharTudo(colecao, opcoes) {
     featuresAtuais = colecao.features || [];
     camadaDesenho.clearLayers();
     if (featuresAtuais.length) camadaDesenho.addData(colecao);
     atualizarLeitura();
+    // O automático vem do servidor JÁ DESCONTADO do que está pintado, então toda vez
+    // que o pintado muda (criar, apagar, desfazer, refazer) ele precisa ser refeito.
+    // Como todo caminho que muda área passa por aqui, basta este ponto.
+    if (!opcoes || opcoes.refazerAutomatica !== false) recarregarAutomatica();
+  }
+
+  function desenharAutomatica(colecao) {
+    camadaAutomatica.clearLayers();
+    if (colecao && (colecao.features || []).length) camadaAutomatica.addData(colecao);
+  }
+
+  async function recarregarAutomatica() {
+    const r = await chamar("GET", "/api/cobertura-automatica");
+    if (r.dados) desenharAutomatica(r.dados);
   }
 
   // Seleção de área e seleção de lugar são MUTUAMENTE EXCLUSIVAS. Sem isso a
@@ -254,7 +285,12 @@ function iniciarFerramentaDeArea(mapa, areasIniciais, travasIniciais) {
 
   preencherValores();
   aplicarTravas(travasIniciais || { camadas: [] });
-  redesenharTudo(areasIniciais);
+  // O primeiro desenho do automático vem injetado na página, então ele aparece junto
+  // com o resto em vez de piscar depois de uma ida ao servidor. `redesenharTudo`
+  // abaixo não repete esse pedido (`refazerAutomatica: false`); daí em diante quem
+  // manda é o `recarregarAutomatica` que ele dispara a cada mudança de área.
+  desenharAutomatica(coberturaAutomaticaInicial);
+  redesenharTudo(areasIniciais, { refazerAutomatica: false });
   // Desfazer/refazer é genérico (B1) e pode ter desfeito uma área ou uma trava:
   // lugares.js chama isto depois de cada desfazer/refazer.
   window.recarregarAreas = recarregar;

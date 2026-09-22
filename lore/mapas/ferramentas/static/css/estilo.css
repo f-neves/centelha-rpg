@@ -125,6 +125,9 @@ kbd {
    que só alcança o tile-pane, não a pega: com a tecla C segurada ela também some,
    senão "só a costa" mostraria a costa pintada de mar por cima. */
 #mapa.so-costa .leaflet-mar-pane { display: none; }
+/* Mesma razão para a cobertura automática (pane z 390, ver areas.js): sem esta
+   linha, "só a costa" mostraria a costa inteira pintada de faixa de latitude. */
+#mapa.so-costa .leaflet-cobertura-automatica-pane { display: none; }
 
 #minimapa-caixa {
   position: relative;
