@@ -2,7 +2,7 @@
   "type": "FeatureCollection",
   "properties": {
     "versao_esquema": 1,
-    "_comentario": "Áreas pintadas de relevo, cobertura e lago (etapa B4, 2026-09-23). Esquema em ESPEC-dados.md. Polígonos gravados exatamente como desenhados; o recorte pela costa oficial acontece só na rasterização, e nunca aqui."
+    "_comentario": "Áreas pintadas de relevo, cobertura e lago (etapa B4, 2026-09-23). Esquema em ESPEC-dados.md. Polígonos gravados exatamente como desenhados, mar incluído: o recorte pela costa oficial NUNCA acontece aqui. Ele acontece na renderização (na tela, desde 2026-09-23, por uma camada do mar desenhada por cima; e na rasterização final, pixel a pixel contra a máscara). A cobertura automática por latitude também não mora aqui: é calculada a cada pedido (backend/cobertura_automatica.py) e nunca vira feature."
   },
   "features": []
 }

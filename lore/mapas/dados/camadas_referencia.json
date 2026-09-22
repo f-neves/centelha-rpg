@@ -1,5 +1,5 @@
 {
-  "_comentario": "Camadas de referência (ESPEC-ferramenta.md, correção 10 / etapa 2). Dois tipos: 'imagem' (imageOverlay esticado sobre um retângulo em lat/lon, bounds = posição e escala) e 'tile' (pirâmide de tiles pré-gerada, sempre alinhada ao mundo inteiro pela mesma CRS da costa — sem bounds próprio, sem posição ajustável). As 4 imagens do ChatGPT são 'imagem', sem escala nem orientação conhecida: nascem com um retângulo-placeholder pequeno no centro do mundo, e o usuário ajusta pelos campos numéricos OU pelo alinhamento por 2 pontos (clique na imagem + clique no mapa, duas vezes, sem rotação). 'rotulos' e 'ocean-deep' são 'tile' desde 2026-09-22 (antes 'rotulos' era a imagem inteira de fonte/Mapa Teste1.jpg — trocado a pedido do usuário, que cobria a costa com o JPG de 10240px inteiro; a nova versão vem de scripts/gerar_rotulos.py, diferença entre Mapa Teste1.jpg e Mapa Teste.jpg, só o texto, fundo transparente, tiles em render/tiles/rotulos/ — script escrito, ainda NÃO RODADO nesta sessão, pendente de confirmação do usuário por ser processamento pesado).",
+  "_comentario": "Camadas de referência (ESPEC-ferramenta.md, correção 10 / etapa 2). Dois tipos: 'imagem' (imageOverlay esticado sobre um retângulo em lat/lon, bounds = posição e escala) e 'tile' (pirâmide de tiles pré-gerada, sempre alinhada ao mundo inteiro pela mesma CRS da costa, sem bounds próprio e sem posição ajustável). ATUALIZADO EM 2026-09-23 (décima rodada), porque este comentário descrevia estado que não existe mais: (1) as 4 imagens do ChatGPT NÃO nascem mais num retângulo pequeno no centro do mundo, e sim já alinhadas pelo scripts/alinhar_chatgpt_auto.py, que busca escala e posição maximizando a interseção sobre união das áreas de terra contra a costa oficial; (2) o alinhamento manual por 2 pontos foi SUBSTITUÍDO pelos botões 'posição / reset / automático' mais os campos numéricos (reset volta aos limites do mundo, automático volta ao resultado do alinhador, e os dois passam pelo desfazer); (3) os tiles de 'rotulos' JÁ FORAM GERADOS por scripts/gerar_rotulos.py (render/tiles/rotulos/), não são mais 'script escrito, ainda não rodado'. ATENÇÃO ao campo bounds_automatico: ele guarda o resultado da rodada do alinhador que gravou este arquivo, e não é recalculado sozinho. O de 'chatgpt-2' está VELHO (12,7°N a 49,9°N, de um método anterior do alinhador); rodando o alinhador hoje, chatgpt-2 alinha no mundo inteiro com a MELHOR das quatro interseções (70,8%). Para atualizar: .venv/Scripts/python.exe scripts/alinhar_chatgpt_auto.py --gravar.",
   "versao_esquema": 2,
   "camadas": [
     {
@@ -106,10 +106,10 @@
       "visivel": false,
       "opacidade": 0.6,
       "bounds": {
-        "oeste": -46.04526607585256,
-        "leste": 47.246518683711976,
-        "sul": -24.16872681169165,
-        "norte": 69.65079274538141
+        "oeste": -46.045,
+        "leste": 46.045,
+        "sul": -23.292,
+        "norte": 68.798
       },
       "bounds_anterior_a_20260922": {
         "sul": -10,
