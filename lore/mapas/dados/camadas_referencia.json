@@ -26,6 +26,12 @@
         "usado_como_posicao": true,
         "data": "2026-09-22",
         "metodo": "cor terra/mar, sem rotação, IoU (ver scripts/alinhar_chatgpt_auto.py)"
+      },
+      "bounds_automatico": {
+        "oeste": -46.04526607585256,
+        "leste": 47.246518683711976,
+        "sul": -24.16872681169165,
+        "norte": 69.65079274538141
       }
     },
     {
@@ -33,13 +39,13 @@
       "nome": "ChatGPT ref 2",
       "tipo": "imagem",
       "arquivo": "referencias/ChatGPT Image 15 de jul. de 2026, 16_30_50.png",
-      "visivel": true,
+      "visivel": false,
       "opacidade": 0.6,
       "bounds": {
-        "oeste": -31.594789216355547,
-        "leste": 34.97262000664034,
-        "sul": 12.704182974254946,
-        "norte": 49.93010294716481
+        "oeste": -46.045,
+        "leste": 46.045,
+        "sul": -23.292,
+        "norte": 68.798
       },
       "bounds_anterior_a_20260922": {
         "sul": -10,
@@ -52,6 +58,12 @@
         "usado_como_posicao": true,
         "data": "2026-09-22",
         "metodo": "cor terra/mar, sem rotação, IoU (ver scripts/alinhar_chatgpt_auto.py)"
+      },
+      "bounds_automatico": {
+        "oeste": -31.594789216355547,
+        "leste": 34.97262000664034,
+        "sul": 12.704182974254946,
+        "norte": 49.93010294716481
       }
     },
     {
@@ -78,6 +90,12 @@
         "usado_como_posicao": true,
         "data": "2026-09-22",
         "metodo": "cor terra/mar, sem rotação, IoU (ver scripts/alinhar_chatgpt_auto.py)"
+      },
+      "bounds_automatico": {
+        "oeste": -46.04526607585256,
+        "leste": 47.246518683711976,
+        "sul": -24.16872681169165,
+        "norte": 69.65079274538141
       }
     },
     {
@@ -104,6 +122,12 @@
         "usado_como_posicao": true,
         "data": "2026-09-22",
         "metodo": "cor terra/mar, sem rotação, IoU (ver scripts/alinhar_chatgpt_auto.py)"
+      },
+      "bounds_automatico": {
+        "oeste": -46.04526607585256,
+        "leste": 47.246518683711976,
+        "sul": -24.16872681169165,
+        "norte": 69.65079274538141
       }
     },
     {

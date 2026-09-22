@@ -89,37 +89,52 @@ def _gravar_cursor(valor: int) -> None:
     os.replace(tmp, CAMINHO_CURSOR)
 
 
-def _ler_featurecollection(caminho_absoluto: Path) -> dict:
+def _ler_documento(caminho_absoluto: Path) -> dict:
     with open(caminho_absoluto, encoding="utf-8") as f:
         return json.load(f)
 
 
-def _aplicar_mudancas(dados: dict, mudancas: dict, lado: str) -> dict:
-    """`lado` é "antes" (desfazer) ou "depois" (registrar/refazer). Substitui,
-    insere ou remove só as features citadas em `mudancas`, por id -- o resto do
-    FeatureCollection (outras features, `properties` do documento) não é tocado."""
-    indice_por_id = {f["properties"]["id"]: i for i, f in enumerate(dados["features"])}
-    features = list(dados["features"])
-    for id_feature, valor in mudancas.items():
+def _id_de(item: dict) -> str:
+    """GeoJSON feature (lugares.geojson) guarda id em properties.id; um item de
+    camadas_referencia.json guarda id direto -- os dois formatos convivem aqui
+    desde 2026-09-23 (posição das camadas de referência também passou a ser
+    desfazível)."""
+    if "id" in item:
+        return item["id"]
+    return item["properties"]["id"]
+
+
+def _aplicar_mudancas(dados: dict, mudancas: dict, lado: str, chave_lista: str) -> dict:
+    """`lado` é "antes" (desfazer) ou "depois" (registrar/refazer). `chave_lista`
+    é o campo do documento que é uma lista de itens com id ("features" num
+    FeatureCollection, "camadas" em camadas_referencia.json). Substitui, insere
+    ou remove só os itens citados em `mudancas`, por id -- o resto do documento
+    não é tocado."""
+    lista = dados[chave_lista]
+    indice_por_id = {_id_de(item): i for i, item in enumerate(lista)}
+    nova_lista = list(lista)
+    for id_item, valor in mudancas.items():
         alvo = valor[lado]
-        if id_feature in indice_por_id:
-            features[indice_por_id[id_feature]] = alvo  # None é removido no filtro abaixo
+        if id_item in indice_por_id:
+            nova_lista[indice_por_id[id_item]] = alvo  # None é removido no filtro abaixo
         elif alvo is not None:
-            features.append(alvo)
-    dados["features"] = [f for f in features if f is not None]
+            nova_lista.append(alvo)
+    dados[chave_lista] = [item for item in nova_lista if item is not None]
     return dados
 
 
-def registrar_operacao(tipo: str, caminho_arquivo: str, mudancas: dict) -> dict:
-    """`mudancas`: {id_feature: {"antes": feature|None, "depois": feature|None}} --
-    só as features afetadas por esta operação, nunca o arquivo inteiro (ver
-    docstring do módulo). Lê o arquivo atual do disco, aplica o lado "depois",
-    grava (atômico + histórico) e registra a operação no log, na posição do
-    cursor -- descartando qualquer "refazer" pendente. `caminho_arquivo` é
-    relativo a RAIZ_MAPAS (ex.: "dados/lugares.geojson"). Devolve a operação
-    registrada (com as `mudancas`, não o arquivo inteiro)."""
+def registrar_operacao(tipo: str, caminho_arquivo: str, mudancas: dict, chave_lista: str = "features") -> dict:
+    """`mudancas`: {id_item: {"antes": item|None, "depois": item|None}} -- só os
+    itens afetados por esta operação, nunca o arquivo inteiro (ver docstring do
+    módulo). Lê o arquivo atual do disco, aplica o lado "depois", grava (atômico
+    + histórico) e registra a operação no log, na posição do cursor --
+    descartando qualquer "refazer" pendente. `caminho_arquivo` é relativo a
+    RAIZ_MAPAS (ex.: "dados/lugares.geojson"). `chave_lista` (novo em
+    2026-09-23): o campo do documento que é a lista de itens -- "features"
+    (padrão, GeoJSON) ou "camadas" (dados/camadas_referencia.json). Devolve a
+    operação registrada (com as `mudancas`, não o arquivo inteiro)."""
     caminho_absoluto = RAIZ_MAPAS / caminho_arquivo
-    dados = _aplicar_mudancas(_ler_featurecollection(caminho_absoluto), mudancas, "depois")
+    dados = _aplicar_mudancas(_ler_documento(caminho_absoluto), mudancas, "depois", chave_lista)
     historico.gravar_json_com_historico(caminho_absoluto, dados)
 
     operacoes = _ler_log()
@@ -130,6 +145,7 @@ def registrar_operacao(tipo: str, caminho_arquivo: str, mudancas: dict) -> dict:
         "tipo": tipo,
         "arquivo": caminho_arquivo,
         "mudancas": mudancas,
+        "chave_lista": chave_lista,
         "timestamp": time.time(),
     }
     operacoes.append(operacao)
@@ -140,7 +156,7 @@ def registrar_operacao(tipo: str, caminho_arquivo: str, mudancas: dict) -> dict:
 
 def desfazer() -> dict | None:
     """Reaplica o lado "antes" das `mudancas` da última operação aplicada (lê o
-    arquivo atual, substitui só as features citadas, grava atomicamente com
+    arquivo atual, substitui só os itens citados, grava atomicamente com
     histórico) e recua o cursor. Devolve a operação desfeita, ou None se não há o
     que desfazer."""
     cursor = _ler_cursor()
@@ -149,7 +165,8 @@ def desfazer() -> dict | None:
     operacoes = _ler_log()
     operacao = operacoes[cursor - 1]
     caminho_absoluto = RAIZ_MAPAS / operacao["arquivo"]
-    dados = _aplicar_mudancas(_ler_featurecollection(caminho_absoluto), operacao["mudancas"], "antes")
+    chave_lista = operacao.get("chave_lista", "features")
+    dados = _aplicar_mudancas(_ler_documento(caminho_absoluto), operacao["mudancas"], "antes", chave_lista)
     historico.gravar_json_com_historico(caminho_absoluto, dados)
     _gravar_cursor(cursor - 1)
     return operacao
@@ -165,7 +182,8 @@ def refazer() -> dict | None:
         return None
     operacao = operacoes[cursor]
     caminho_absoluto = RAIZ_MAPAS / operacao["arquivo"]
-    dados = _aplicar_mudancas(_ler_featurecollection(caminho_absoluto), operacao["mudancas"], "depois")
+    chave_lista = operacao.get("chave_lista", "features")
+    dados = _aplicar_mudancas(_ler_documento(caminho_absoluto), operacao["mudancas"], "depois", chave_lista)
     historico.gravar_json_com_historico(caminho_absoluto, dados)
     _gravar_cursor(cursor + 1)
     return operacao

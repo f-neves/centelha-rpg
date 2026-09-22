@@ -278,6 +278,11 @@ def gravar_resultado(id_camada, bounds, iou_score, bounds_anterior, usar_como_gu
         }
         if usar_como_guia:
             camada["bounds"] = bounds
+            # Campo próprio, nunca sobrescrito por ajuste manual depois (correção
+            # de 2026-09-23): é o que o botão "automático" da ferramenta restaura,
+            # então o resultado do alinhamento nunca se perde mesmo que o usuário
+            # mexa nos campos numéricos ou aperte "reset".
+            camada["bounds_automatico"] = dict(bounds)
         break
     else:
         raise KeyError(id_camada)

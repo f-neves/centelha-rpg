@@ -7,7 +7,7 @@ import json
 import numpy as np
 import pytest
 
-from backend import coordenadas, lugares, operacoes, historico
+from backend import coordenadas, historico, lugares, operacoes, travas
 
 
 @pytest.fixture
@@ -29,6 +29,14 @@ def ambiente_isolado(tmp_path, monkeypatch):
         encoding="utf-8",
     )
     monkeypatch.setattr(lugares, "CAMINHO_LUGARES", caminho_lugares)
+
+    # camadas_travadas.json isolado, tudo livre (o estado de partida)
+    caminho_travas = tmp_path / "dados" / "camadas_travadas.json"
+    caminho_travas.write_text(
+        json.dumps({"versao_esquema": 1, "camadas": [{"id": c, "travada": False} for c in travas.CAMADAS_VALIDAS]}),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(travas, "CAMINHO_DADOS", caminho_travas)
 
     # costa sintética 20x20: metade de cima (y<10) é TERRA (255), metade de baixo é MAR (0)
     lugares._costa_array = None

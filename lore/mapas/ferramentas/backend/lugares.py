@@ -23,7 +23,9 @@ from pathlib import Path
 import numpy as np
 from PIL import Image
 
-from . import coordenadas, operacoes
+from . import coordenadas, operacoes, travas
+
+CAMADA = "lugares"  # a camada deste tipo de objeto no cadeado geral (travas.py)
 
 RAIZ_MAPAS = Path(__file__).resolve().parents[2]
 CAMINHO_LUGARES = RAIZ_MAPAS / "dados" / "lugares.geojson"
@@ -79,9 +81,16 @@ def validar_propriedades(propriedades: dict) -> None:
         raise ValueError(
             f"'importancia' tem que ser null ou um de {sorted(IMPORTANCIAS_VALIDAS)}, recebi {importancia!r}"
         )
+    travado = propriedades.get("travado", False)
+    if not isinstance(travado, bool):
+        raise ValueError("'travado' tem que ser booleano")
 
 
 def criar_lugar(id_lugar: str, lon: float, lat: float, propriedades: dict) -> dict:
+    # Camada travada é INERTE: não recebe objeto novo também. Decisão da IA (o
+    # pedido fala de mover e apagar); é o que um cadeado de camada significa em
+    # qualquer editor, e destravar desfaz a restrição sem deixar rastro.
+    travas.exigir_camada_livre(CAMADA, "criar um lugar")
     validar_propriedades(propriedades)
     if not ponto_em_terra(lon, lat):
         raise ValueError("o ponto cai fora de terra (mar, ou fora da tela) -- lugar tem que ficar em terra")
@@ -93,7 +102,10 @@ def criar_lugar(id_lugar: str, lon: float, lat: float, propriedades: dict) -> di
     feature = {
         "type": "Feature",
         "geometry": {"type": "Point", "coordinates": [lon, lat]},
-        "properties": {"id": id_lugar, **propriedades},
+        # `travado` sempre presente no dado (padrão false, ESPEC-dados.md): um
+        # campo ausente e um `false` valem o mesmo na leitura, mas gravar
+        # explícito deixa o arquivo legível sem consultar o padrão.
+        "properties": {"id": id_lugar, **propriedades, "travado": bool(propriedades.get("travado", False))},
     }
     operacoes.registrar_operacao(
         "criar_lugar", "dados/lugares.geojson",
@@ -110,10 +122,14 @@ def _achar(dados: dict, id_lugar: str) -> dict:
 
 
 def mover_lugar(id_lugar: str, lon: float, lat: float) -> dict:
-    if not ponto_em_terra(lon, lat):
-        raise ValueError("o ponto cai fora de terra (mar, ou fora da tela) -- lugar tem que ficar em terra")
     dados = carregar()
     feature_antes = _achar(dados, id_lugar)
+    # A trava é checada ANTES da validação de terra: um lugar travado nem chega a
+    # ser avaliado, e o aviso que o usuário recebe é "está travado", não "caiu no
+    # mar" (seriam dois motivos diferentes para a mesma recusa).
+    travas.exigir_objeto_livre(CAMADA, feature_antes["properties"], "mover este lugar")
+    if not ponto_em_terra(lon, lat):
+        raise ValueError("o ponto cai fora de terra (mar, ou fora da tela) -- lugar tem que ficar em terra")
     feature_depois = json.loads(json.dumps(feature_antes))
     feature_depois["geometry"]["coordinates"] = [lon, lat]
     operacoes.registrar_operacao(
@@ -126,6 +142,7 @@ def mover_lugar(id_lugar: str, lon: float, lat: float) -> dict:
 def editar_lugar(id_lugar: str, propriedades: dict) -> dict:
     dados = carregar()
     feature_antes = _achar(dados, id_lugar)
+    travas.exigir_objeto_livre(CAMADA, feature_antes["properties"], "editar este lugar")
     novas_propriedades = {**feature_antes["properties"], **propriedades, "id": id_lugar}
     validar_propriedades(novas_propriedades)
     feature_depois = json.loads(json.dumps(feature_antes))
@@ -140,7 +157,28 @@ def editar_lugar(id_lugar: str, propriedades: dict) -> dict:
 def apagar_lugar(id_lugar: str) -> None:
     dados = carregar()
     feature_antes = _achar(dados, id_lugar)  # KeyError se não existir
+    travas.exigir_objeto_livre(CAMADA, feature_antes["properties"], "apagar este lugar")
     operacoes.registrar_operacao(
         "apagar_lugar", "dados/lugares.geojson",
         {id_lugar: {"antes": feature_antes, "depois": None}},
     )
+
+
+def definir_trava(id_lugar: str, travado: bool) -> dict:
+    """Trava/destrava UM lugar. Caminho próprio, e não `editar_lugar`, por dois
+    motivos: `editar_lugar` recusa objeto travado (senão nada travado poderia ser
+    destravado), e a operação no log precisa se chamar "travar_lugar" pra ficar
+    legível. A trava DE CAMADA continua mandando: com a camada travada, nem o
+    estado individual muda (seria uma mudança sem efeito nenhum, e confusa)."""
+    if not isinstance(travado, bool):
+        raise ValueError("'travado' tem que ser booleano")
+    travas.exigir_camada_livre(CAMADA, "mudar a trava deste lugar")
+    dados = carregar()
+    feature_antes = _achar(dados, id_lugar)
+    feature_depois = json.loads(json.dumps(feature_antes))
+    feature_depois["properties"]["travado"] = travado
+    operacoes.registrar_operacao(
+        "travar_lugar" if travado else "destravar_lugar", "dados/lugares.geojson",
+        {id_lugar: {"antes": feature_antes, "depois": feature_depois}},
+    )
+    return feature_depois
