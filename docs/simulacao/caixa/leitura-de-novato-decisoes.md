@@ -146,6 +146,13 @@ dizendo isso.
 
 ## 4a · Os três últimos do balde B, decididos em 21/09/2026
 
+- **Item 3 (Frenesi contido do Meio-Orc): `racas.json` se corrige para bater com as outras três
+  fontes.** `racas.md:112` (Meio-Orc) e `racas.md:128`/`racas.json` (Orc puro) dizem "ignorando as
+  penalidades de ferimento"; só `racas.json` (Meio-Orc) diverge, com "sem penalidade de dano"
+  (mecanicamente outra coisa). Confirmado erro de cópia, não enfraquecimento proposital. **Decisão:
+  `racas.json` (Meio-Orc, traço "Frenesi contido") passa a dizer "ignorando as penalidades de
+  ferimento"**, igual às outras três. O que isso passa a significar de fato está fechado em §4c,
+  que nasceu tentando responder este item.
 - **Item 2 (relação social do Meio-Orc): `racas.json` se corrige para bater com `racas.md`.**
   `racas.md:115` ("−1 Antipatia") vs. `racas.json` ("Neutro baixo, a um passo da Antipatia").
   Investigado: os dois lados são prosa, sem campo mecânico que resolva sozinho (nenhum JSON de
@@ -226,6 +233,32 @@ do corpo, o que ela impede especificamente), e nada disso existe hoje em `combat
 **Ainda não implementado em `src/`.** `vida-ferimentos-cura.md` continua com a tabela de 6
 estados; nenhum dos campos calculados (Defesa Física, pool de ações) lê estado de ferimento
 ainda. Fica para a Executora, junto com o resto desta rodada, depois de passar pela Revisora.
+
+## 4c · Frenesi e Frenesi Contido, com a tabela nova de Limiares por trás
+
+**Decidido em 21/09/2026, parcial de propósito.** Com os graus de ferimento definidos em §4b
+(Machucado −2/−2, Grave −1d6/−4, Crítico −2d6/−8), o que "ignorar as penalidades de ferimento"
+significa para cada traço:
+
+- **Frenesi (Orc puro): ignora tudo, até desmaiar.** Nenhuma penalidade de Machucado, Grave ou
+  Crítico se aplica enquanto o Orc está em fúria; só cai quando a Vida chega em Incapacitado
+  (0 ou menos), igual a qualquer um.
+- **Frenesi Contido (Meio-Orc): protege até Grave, e QUEBRA sozinho ao cruzar pra Crítico.**
+  Machucado e Grave ficam ignorados (0 de penalidade nos dois). Ao entrar em Crítico, o
+  personagem **sai do estado de fúria automaticamente**: deixa de estar restrito a "só ações
+  físicas + Intimidar" (pode voltar a agir socialmente/mentalmente) e passa a sentir o Crítico
+  por inteiro, −2d6/−8 Defesa, igual a quem não tem o traço. É o que dá sentido mecânico ao "mais
+  controlável" que o texto do traço já promete, hoje só como adjetivo solto.
+- **Pode reentrar em Frenesi Contido** se a Vida voltar pra Grave ou melhor (cura no meio da
+  cena, por exemplo). Não fica indisponível pelo resto do combate.
+
+**O que fica de fora desta decisão, de propósito, e é o que falta pra fechar o traço por
+completo:** a regra inteira de Frenesi/Frenesi Contido além do ferimento. `racas.md` não diz
+como o estado é ativado (gatilho: dano sofrido? decisão do jogador? Convicção contra
+Dificuldade?), quanto tempo dura, se custa alguma coisa pra entrar ou sair voluntariamente, nem
+se há um preço por sair antes da hora. Isso continua pendente, registrado aqui pra não se perder,
+e não bloqueia o que já foi decidido: o comportamento nos Limiares de Ferimento (esta seção) vale
+independente de como o resto do Frenesi acabar sendo desenhado.
 
 ## 4 · O resto do balde B (itens 2-17 da lista original)
 
