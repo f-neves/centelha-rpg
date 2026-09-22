@@ -978,6 +978,261 @@
     "municao": null
   },
   {
+    "id": "machadinha",
+    "nome": "Machadinha",
+    "tipo": "arma",
+    "preco": {
+      "pc": 80
+    },
+    "peso": 0.8,
+    "descricao": "Machado leve de uma mão, rápido no giro; corta (principal) ou bate de chapa (impacto) contra placa.",
+    "tags": [],
+    "arma": {
+      "classe": "leve",
+      "atrib": "forca",
+      "pericia": "armas",
+      "dado": 1,
+      "danoBonus": -2,
+      "acerto": 1,
+      "defesaArma": 0,
+      "maos": 1,
+      "ticks": 5,
+      "folego": 15,
+      "tipoDano": "corte",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "corte",
+          "principal": true
+        },
+        {
+          "tipo": "impacto",
+          "principal": false
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
+  },
+  {
+    "id": "machado-pesado",
+    "nome": "Machado Pesado",
+    "tipo": "arma",
+    "preco": {
+      "pc": 800
+    },
+    "peso": 3,
+    "descricao": "Machado de duas mãos, golpe pesado e lento; corta com força ou bate de chapa (impacto) contra placa.",
+    "tags": [],
+    "arma": {
+      "classe": "pesada",
+      "atrib": "forca",
+      "pericia": "armas",
+      "dado": 2,
+      "danoBonus": 0,
+      "acerto": 0,
+      "defesaArma": -2,
+      "maos": 2,
+      "ticks": 7,
+      "folego": 38,
+      "tipoDano": "corte",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "corte",
+          "principal": true
+        },
+        {
+          "tipo": "impacto",
+          "principal": false
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
+  },
+  {
+    "id": "martelo",
+    "nome": "Martelo",
+    "tipo": "arma",
+    "preco": {
+      "pc": 250
+    },
+    "peso": 1.3,
+    "descricao": "Cabeça compacta de impacto; mesma anatomia da Maça, arma-de-mão simples contra placa.",
+    "tags": [],
+    "arma": {
+      "classe": "media",
+      "atrib": "forca",
+      "pericia": "armas",
+      "dado": 1,
+      "danoBonus": 0,
+      "acerto": 1,
+      "defesaArma": 1,
+      "maos": 1,
+      "ticks": 6,
+      "folego": 24,
+      "tipoDano": "impacto",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "impacto",
+          "principal": true
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
+  },
+  {
+    "id": "bastao",
+    "nome": "Bastão",
+    "tipo": "arma",
+    "preco": {
+      "pc": 40
+    },
+    "peso": 0.6,
+    "descricao": "Vara de madeira dura, ágil e barata; impacto puro, sem fio nem ponta. Preenche o buraco leve que faltava no Impacto.",
+    "tags": [],
+    "arma": {
+      "classe": "leve",
+      "atrib": "destreza",
+      "pericia": "armas",
+      "dado": 1,
+      "danoBonus": -2,
+      "acerto": 2,
+      "defesaArma": 1,
+      "maos": 1,
+      "ticks": 5,
+      "folego": 15,
+      "tipoDano": "impacto",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "impacto",
+          "principal": true
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
+  },
+  {
+    "id": "lanca-longa",
+    "nome": "Lança Longa",
+    "tipo": "arma",
+    "preco": {
+      "pc": 90
+    },
+    "peso": 2.4,
+    "descricao": "Variante de maior alcance da Lança: estocada mais longa (N1), fura couro e malha e resvala na placa. Mais lenta, perde o arremesso.",
+    "tags": [
+      "alcance"
+    ],
+    "arma": {
+      "classe": "haste",
+      "atrib": "destreza",
+      "pericia": "armas",
+      "dado": 1,
+      "danoBonus": 2,
+      "acerto": 0,
+      "defesaArma": 3,
+      "maos": 2,
+      "ticks": 7,
+      "folego": 28,
+      "forcaMult": 1,
+      "tipoDano": "perfurante",
+      "pen": 1,
+      "modos": [
+        {
+          "tipo": "perfurante",
+          "perf": 1,
+          "principal": true
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
+  },
+  {
+    "id": "sabre",
+    "nome": "Sabre",
+    "tipo": "arma",
+    "preco": {
+      "pc": 300
+    },
+    "peso": 0.8,
+    "descricao": "Lâmina curva de corte puro, ágil e precisa; sem estocada secundária, só o fio.",
+    "tags": [],
+    "arma": {
+      "classe": "leve",
+      "atrib": "destreza",
+      "pericia": "armas",
+      "dado": 1,
+      "danoBonus": -2,
+      "acerto": 2,
+      "defesaArma": 1,
+      "maos": 1,
+      "ticks": 5,
+      "folego": 15,
+      "tipoDano": "corte",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "corte",
+          "principal": true
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
+  },
+  {
+    "id": "maca-estrela",
+    "nome": "Maça Estrela",
+    "tipo": "arma",
+    "preco": {
+      "pc": 320
+    },
+    "peso": 1.5,
+    "descricao": "Cabeça de impacto com espigões: esmaga (principal) e ainda cutuca as frestas (N1, perfurante secundário).",
+    "tags": [],
+    "arma": {
+      "classe": "media",
+      "atrib": "forca",
+      "pericia": "armas",
+      "dado": 1,
+      "danoBonus": 0,
+      "acerto": 1,
+      "defesaArma": 1,
+      "maos": 1,
+      "ticks": 6,
+      "folego": 24,
+      "tipoDano": "impacto",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "impacto",
+          "principal": true
+        },
+        {
+          "tipo": "perfurante",
+          "perf": 1,
+          "principal": false
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
+  },
+  {
     "id": "desarmado",
     "nome": "Desarmado / Briga",
     "tipo": "arma",
