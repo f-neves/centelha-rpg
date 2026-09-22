@@ -121,6 +121,10 @@ kbd {
 #mapa.so-costa .leaflet-marker-pane,
 #mapa.so-costa .leaflet-tooltip-pane { display: none; }
 #mapa.so-costa .leaflet-tile-pane .leaflet-layer:not(:first-child) { display: none; }
+/* A camada do mar mora em pane própria (z 450, ver app.js), então a linha acima,
+   que só alcança o tile-pane, não a pega: com a tecla C segurada ela também some,
+   senão "só a costa" mostraria a costa pintada de mar por cima. */
+#mapa.so-costa .leaflet-mar-pane { display: none; }
 
 #minimapa-caixa {
   position: relative;

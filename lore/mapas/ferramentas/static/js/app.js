@@ -145,6 +145,36 @@
     bounds: limitesMundo,
   }).addTo(mapa);
 
+  // Recorte pela costa NA RENDERIZAÇÃO (decisão registrada como "correção 11" no
+  // ESPEC: o dado é gravado cru, exatamente como desenhado, e quem some é só a
+  // imagem). A pirâmide /tiles/mar veio da mesma varredura da máscara que a da
+  // costa: cada pixel de água é sólido na cor do mar, cada pixel de terra é
+  // transparente. Pondo essa imagem POR CIMA da área pintada, o que avançou sobre o
+  // mar fica coberto, e o que está em terra aparece -- sem rodar shapely nem gerar
+  // geometria nova a cada pan/zoom.
+  //
+  // Pane própria porque `L.tileLayer` comum cai no tilePane (z 200), que é ABAIXO do
+  // overlayPane (z 400) onde vive o L.geoJSON das áreas: o mar nunca cobriria nada.
+  // z 450 fica acima da área e abaixo de sombras (500), marcadores (600) e dicas
+  // (650), que é a ordem escrita no ESPEC.
+  mapa.createPane("mar");
+  mapa.getPane("mar").style.zIndex = 450;
+  // Sem isto a pane intercepta TODO clique destinado aos polígonos embaixo dela, e
+  // seleção de área, arrasto de lugar, régua e o próprio desenho morreriam calados.
+  mapa.getPane("mar").style.pointerEvents = "none";
+  L.tileLayer("/tiles/mar/{z}/{x}/{y}.png", {
+    pane: "mar",
+    tileSize: TILE_SIZE,
+    minZoom: 0,
+    maxZoom: MAX_ZOOM_MAPA,
+    maxNativeZoom: MAX_ZOOM,
+    noWrap: true,
+    bounds: limitesMundo,
+    // Bloco ausente = tudo terra (o gerador não grava tile totalmente transparente).
+    // É a direção inofensiva do erro: no pior caso deixa de esconder, nunca esconde
+    // terra por engano.
+  }).addTo(mapa);
+
   // Leitura de latitude/longitude sob o cursor -- desde 2026-09-23 na BARRA
   // INFERIOR, não mais no topo (item 3c). Formato pedido em 2026-09-22: grau,
   // espaço, vírgula decimal ("36,42° N  72,67° O"); traços quando o cursor sai
