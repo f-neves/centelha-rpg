@@ -78,6 +78,19 @@ mesma camada ao salvar). `Polygon`/`MultiPolygon` — ver `ESPEC-dados.md`.
     traçado (rio). Depois da atração, a validação ao salvar é exata, não por
     tolerância — ver `ESPEC-dados.md` correção 3 para o detalhe e a suposição em aberto
     sobre os 5 km valerem também pro delta.
+  - **A atração é NOSSA, não do plugin** (decidido pelo usuário em 2026-09-23, oitava
+    rodada, depois da conferência empírica do Geoman free). O `snappable` do Geoman
+    gruda em camada registrada no `pm`, com distância medida **em pixels de tela**, e
+    portanto muda de significado a cada zoom — não serve para uma regra escrita em
+    quilômetros. A atração de 5 km acontece **no servidor, ao salvar**: antes de
+    gravar, cada ponto do traçado é comparado com os lugares (e, no caso do delta, com
+    o traçado do rio-mãe), e o que estiver a menos de 5 km assume a coordenada exata
+    do alvo. Consequência que vale registrar: o que o usuário vê enquanto desenha é o
+    traçado cru, e o ponto "pula" para o alvo quando a resposta do servidor volta — é
+    o mesmo comportamento já usado pelo recorte de área (a tela sempre redesenha do
+    que o servidor devolveu, nunca do que o navegador desenhou).
+  - **Implementar quando as estradas chegarem** (etapa B5). Hoje não há nenhum traçado
+    para atrair, e o código não existe.
   - **Se um lugar for movido depois**, a estrada correspondente aparece marcada como
     "desalinhada" (cor própria no painel), sem se mover sozinha.
 - **Ponto**: lugar, com tipo fechado + capital + importância.
@@ -103,6 +116,20 @@ mesma camada ao salvar). `Polygon`/`MultiPolygon` — ver `ESPEC-dados.md`.
   rasterizado final) continua só acontecendo quando o usuário pede uma rasterização —
   esta camada é puramente visual, cosmética, pro usuário não estranhar o próprio
   desenho "vazando" pro mar enquanto trabalha.
+- **Ordem de empilhamento, fixada na implementação (oitava rodada)**: o Leaflet põe
+  tiles no `tilePane` (z 200) e vetores no `overlayPane` (z 400), então um
+  `L.tileLayer` comum NUNCA ficaria por cima da área pintada. A camada do mar vive
+  numa pane própria (`createPane("mar")`, z **450**): acima da área vetorial (400) e
+  abaixo de sombras (500), marcadores (600) e dicas (650). A pane leva
+  `pointerEvents: "none"`, senão ela intercepta todo clique destinado aos polígonos
+  embaixo dela (seleção de área, arrasto de lugar, régua e o próprio desenho morreriam
+  em silêncio).
+  - **Consequência para rios e estradas**, que ainda não existem: eles nascerão
+    vetores, e vetor nasce no `overlayPane` (400), que é ABAIXO de 450 · ou seja, o
+    mar cobriria um rio que passasse perto da costa. Para valer a ordem escrita acima
+    ("abaixo dos rios/estradas/lugares"), rio e estrada precisam de pane própria com
+    z acima de 450 quando chegarem. Registrado aqui para a etapa B5 não descobrir
+    isso na tela.
 - Esta camada de tiles do mar é gerada **junto** com a pirâmide de tiles da costa (etapa
   1, mesma máscara, mesma varredura, sem aviso adicional de processamento pesado além
   do já previsto pra costa) — são dois produtos (imagens coloridas diferentes) da mesma
@@ -785,3 +812,101 @@ das seções). A leitura inicial é um script inline no `<head>`, e não no
 `interface.js`: no `interface.js` a página nasceria escura e piscaria para o claro.
 **Nenhum dos dois temas toca em `#mapa`** · nem `filter`, nem `opacity`, nem a cor
 de fundo dele: o fundo de `#mapa` é o mar provisório, que é MAPA e não moldura.
+
+## Etapa B4 · Ferramenta de Área (2026-09-23)
+
+Desenhar polígono, salvar, recorte da mesma camada, MultiPolygon quando o corte
+parte uma área em duas, apagar, travar, desfazer e refazer. **Sem recorte pela
+costa**, que é a etapa seguinte, e sem edição de vértice de área já salva.
+
+### Instalação do Geoman
+
+Leaflet-Geoman **free 2.20.0**, MIT, baixado pronto para
+`static/vendor/leaflet-geoman-free-2.20.0/` (tarball do registro npm, extraído à
+mão: sem `npm install`, sem CDN). Do pacote ficaram só `dist/leaflet-geoman.css`,
+`dist/leaflet-geoman.min.js`, `LICENSE`, `README.md` e `package.json`. A barra de
+ferramentas própria do plugin fica escondida por CSS: quem liga o desenho são os
+botões da ferramenta, e o Geoman entra **só como a caneta**. O recorte, a
+gravação, o desfazer e a trava são código nosso.
+
+### O que o Geoman free oferece · conferido no navegador, não de memória
+
+Lido de um `L.map` de verdade na página da ferramenta (`L.PM.version` = 2.20.0),
+listando `L.PM.Map.prototype`, `pm.Toolbar.buttons` e as opções padrão de
+`pm.Draw.Polygon`:
+
+| recurso | no free? | como foi conferido |
+|---|---|---|
+| desenhar Marker, Line, Polygon, Rectangle, Circle, CircleMarker, Text | **sim** | `L.PM.Draw` e os 7 botões `draw*` da toolbar |
+| editar vértice (`editMode`) | **sim** | botão `editMode`, `enableGlobalEditMode` existe |
+| arrastar forma (`dragMode`) | **sim** | botão `dragMode` |
+| apagar (`removalMode`) | **sim** | botão `removalMode` |
+| **cortar (`cutPolygon`)** | **sim** | botão `cutPolygon`, `enableGlobalCutMode` existe |
+| **rotacionar (`rotateMode`)** | **sim** | botão `rotateMode`, `enableGlobalRotateMode` existe |
+| **escalar** | **NÃO (pago)** | `enableGlobalScaleMode` é `undefined` e não há botão `scaleMode`; o pacote free traz só o RÓTULO `scaleButton` nas traduções, sem implementação |
+| **dividir (split)** | **NÃO (inexistente no free)** | nenhum `splitMode`/`enableGlobalSplitMode`; a única ocorrência de "split" no bundle é código interno do rbush (índice espacial), nada a ver |
+| **atração (snap)** | **sim, no plugin · ainda sem efeito aqui** | `pm.Draw.Polygon.options`: `snappable: true`, `snapDistance: 20`, `snapMiddle: false`. **Mas o Geoman só gruda em camada que ELE conhece**, e as áreas desta ferramenta são desenhadas num `L.geoJSON` comum, que nunca passa pelo `pm` · então hoje não há alvo para grudar. **E não é ela que vai atender a atração de 5 km**: o usuário decidiu na oitava rodada que essa atração é nossa, no servidor, ao salvar (a distância do Geoman é em pixels de tela, não em quilômetros) · ver "Ferramentas · Linha", acima. |
+| medição durante o desenho | **não achado** | nenhuma opção de medida; `tooltips: true` é só a dica de "clique para continuar" |
+
+**Ressalva honesta**: "existe na API" e "serve para o que a gente precisa" são
+coisas diferentes. Cortar, rotacionar e a atração **não foram exercitados** pela
+ferramenta ainda (esta etapa usa só `enableDraw("Polygon")`); o que está
+conferido é que existem no free. O **cortar** do Geoman, pela documentação do
+próprio plugin, tira o pedaço sobreposto de uma forma; ele **não** divide uma
+área em duas features, então não substitui um "dividir".
+
+**O que faríamos se precisarmos de escalar ou dividir** (registrado a pedido do
+usuário, oitava rodada). Os dois faltantes são exatamente os dois que o shapely já
+resolve do nosso lado, e o shapely já está instalado e pinado:
+
+- **Escalar**: `shapely.affinity.scale(forma, xfact, yfact, origin)`. A interação
+  (pegar a forma pelo canto e arrastar) seria nossa; a matemática é uma chamada. O
+  cuidado é o mesmo do recorte: escalar em graus perto do polo distorce mais que no
+  equador, então a origem e os fatores teriam que ser calculados em quilômetros pela
+  fórmula de `coordenadas.json`, não em graus crus.
+- **Dividir**: `shapely.ops.split(poligono, linha)` devolve as partes, e cada parte
+  vira uma feature nova pela mesma infraestrutura de `criar_area` (uma operação só no
+  log, como já acontece quando um recorte parte uma área em duas). A interação seria
+  desenhar uma linha com o Geoman (`enableDraw("Line")`, que existe no free) e mandar
+  a linha pro servidor: **o plugin desenha, o shapely divide**, que é a mesma divisão
+  de trabalho desta etapa.
+
+Ou seja, nenhum dos dois é motivo para pagar o Geoman Pro: o que o Pro venderia é a
+interação, e a parte difícil (geometria correta, gravação atômica, desfazer) é nossa
+de qualquer jeito.
+
+### Decisões que o código precisou e o pedido não fixava
+
+1. **Área travada não é recortada: quem cede é a área NOVA.** Recortar é escrever
+   na área antiga, e "travado não muda" tem que valer contra qualquer escrita. Se
+   o polígono novo ficar sem nada depois de ceder, a criação é recusada e nada é
+   gravado.
+2. **Um traço é UMA operação.** A área nova e todas as antigas afetadas entram nas
+   mesmas `mudancas`; um desfazer devolve o estado inteiro de antes do traço.
+3. O polígono devolvido pelo Geoman é **descartado** na tela: quem manda é o que o
+   servidor devolve depois do recorte, senão a tela mostraria uma forma que o dado
+   não tem.
+4. `valor` de `lago` é um vocabulário de um item só (`"lago"`): o que distingue um
+   lago de outro é a geometria.
+
+### Tamanho do registro de operações com polígono grande (item 6 do pedido)
+
+Medido, não estimado: um polígono de N vértices, uma operação de recorte que
+atinge uma área existente, `dados/.historico/` incluído.
+
+| vértices | arquivo de dados | log da 1ª operação | o recorte acrescenta | histórico |
+|---|---|---|---|---|
+| 100 | 20 KB | 3 KB | **9 KB** | 28 KB |
+| 500 | 97 KB | 11 KB | **40 KB** | 135 KB |
+| 2000 | 387 KB | 45 KB | **159 KB** | 537 KB |
+
+A regra que sai daí: **uma operação custa cerca de duas vezes a geometria que ela
+toca** (o formato guarda `antes` e `depois` de cada feature afetada), e o
+histórico guarda cópias do arquivo inteiro.
+
+**Não cresce demais no uso real**: polígono desenhado à mão com o Geoman tem
+dezenas de vértices, não milhares, então uma operação custa alguns KB. Mil
+operações numa sessão longa ficariam na casa de poucas dezenas de MB. Fica
+registrado onde ficaria ruim: polígono de milhares de vértices (traçado
+importado, não desenhado), aí cada recorte passa de 100 KB e o log vira o
+problema que a correção de 2026-09-23 já tinha começado a atacar.

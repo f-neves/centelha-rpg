@@ -20,10 +20,55 @@ primeira coisa que `/cartografo` mostra.)*
     "destravar a camada devolve cada um ao que era" ser verdade sem restaurar
     nada. Recusa por trava é **409** e não 422, para a interface dar aviso
     discreto em vez da faixa vermelha de erro. Tecla `T`, cadeadinho no mapa e na
-    lista, as duas travas passam pelo desfazer. 15 testes novos, 79 no total.
+    lista, as duas travas passam pelo desfazer. 15 testes novos.
   - **Tema (item 2)**: botão `☾`/`☀` na barra de cima, tecla `D`, escolha
     lembrada em `localStorage`, lida num script inline no `<head>` para a página
     não piscar. Nenhum dos temas toca em `#mapa`.
+  - **Commits (item 3): 3 commits, e não os 9 itens listados.** `index.html`,
+    `app.js` e `estilo.css` carregam as quatro rodadas juntos, e
+    `git commit -- caminho` leva o arquivo inteiro: separar por pedaço exigiria
+    mexer no índice compartilhado com as outras frentes (proibido pelo
+    `CLAUDE.md` da raiz). A lista do pedido foi lida como CONTEÚDO, e a ordem
+    é a da dependência, que o próprio pedido fixou: `172c6ca` backend e testes,
+    `4035ce5` interface, `3c7e160` documentos. Sem push.
+    - **Defeito nas três mensagens**: elas começam com uma linha solta com um
+      `@`, de uma citação de shell que saiu errada. O conteúdo está inteiro e
+      legível; consertar exigiria reescrever os três commits, e o rebase é
+      recusado enquanto houver árvore suja de outra frente, que é o caso.
+  - **B4, Ferramenta de Área (item 4): FEITA, não commitada.** Geoman free
+    2.20.0 (MIT) baixado pronto para `static/vendor/`, sem npm e sem CDN; o
+    plugin entra só como a caneta, e recorte (shapely), gravação, desfazer e
+    trava são nossos. Conferida no navegador de verdade: desenho por clique,
+    recorte sem vão nem sobreposição, `MultiPolygon` quando o corte parte a
+    área, área travada intacta com a nova cedendo, e tudo desfeito depois (o
+    dado real voltou a zero). 18 testes novos, **97 no total**.
+  - **O que o Geoman free tem e o que é pago (item 5)**: conferido lendo a API
+    num mapa de verdade, não de memória. **Tem**: desenho (7 formas), editar
+    vértice, arrastar, apagar, **cortar**, **rotacionar** e **atração**
+    (`snappable: true`, `snapDistance: 20` · mas a atração só gruda em camada
+    registrada no `pm`, e as áreas daqui não são, então hoje ela não tem em que
+    grudar). **Não tem**: **escalar** (só o
+    rótulo da tradução vem no free, sem implementação) e **dividir** (não
+    existe). Tabela e o método da conferência em `ESPEC-ferramenta.md`.
+  - **Mudei uma configuração do git fora do mapa, e é preciso saber**: o portão
+    recusou o primeiro commit desta rodada porque `core.hooksPath` estava com
+    caminho ABSOLUTO (`C:\Users\...\scripts\hooks`) e o `test-portoes.mjs`
+    cobra o relativo. Rodei o comando que a própria mensagem do portão manda
+    (`git config core.hooksPath scripts/hooks`), que é o do `CLAUDE.md` da raiz
+    e o certo para worktree. **Isso é `.git/config`, não o hook**, e a
+    autorização desta frente era só o hook · fica registrado. Não sei quem pôs
+    o absoluto nem quando (na quarta rodada o mesmo portão passou com ele).
+  - **Correção depois do primeiro teste no navegador**: a tecla `T` ficava
+    presa na última área clicada (a seleção de área não se limpava sozinha), e
+    nenhum lugar voltava a travar pelo teclado. Seleção de área e de lugar
+    agora são mutuamente exclusivas, e clique no fundo do mapa desmarca as
+    duas. **Esta correção foi conferida só lendo o código**: a automação do
+    navegador parou de responder no meio do teste dela, e o resto da B4 tinha
+    sido conferido antes disso.
+  - **Tamanho do log de operações (item 6): medido, e não cresce demais.** Uma
+    operação custa cerca de 2× a geometria que toca. Polígono de 100 vértices:
+    9 KB por recorte. De 2000: 159 KB. Desenho à mão tem dezenas de vértices,
+    então o problema só apareceria com traçado importado. Tabela no ESPEC.
 - **Rodada anterior (sexta), para referência:** Três itens: regra
   nova contra inferir o que o usuário fez a partir de rastro de uso (e remoção
   da inferência que eu tinha escrito); **a ressalva de "terra ou mar sob o
@@ -173,19 +218,23 @@ primeira coisa que `/cartografo` mostra.)*
     uma checagem de que todo `getElementById` dos JS existe no HTML novo (o
     risco real de uma reestruturação de HTML desse tamanho).
 - **Pendente:**
-  - **Usuário testar no navegador** os ajustes da quarta rodada (zoom por
-    nível, reset/automático, régua nova, cursor em cruz) E os desta quinta
-    (modal, atalhos, lista, barra inferior, tema escuro) — nada disso foi
-    aprovado ainda, e nada foi commitado.
-  - **B4 (Área/Geoman)** — não iniciado (Leaflet-Geoman free ainda não
-    baixado).
+  - **Usuário testar a B4 no navegador** (desenhar área, recorte, travar,
+    desfazer) · é a única coisa desta rodada que ficou sem commit, por pedido
+    explícito. O que o usuário aprovou das rodadas anteriores continua **EM
+    ABERTO** (o relato veio em branco pela quarta vez); o que autorizou foi o
+    commit, e só isso.
+  - **Recorte pela costa** das áreas pintadas · a etapa seguinte da B4.
+  - Edição de vértice de área já salva (o Geoman tem `editMode`; a ferramenta
+    ainda não usa).
   - Confirmar a suposição de que a atração automática de 5km vale também pro
     início de um braço de delta contra o rio-mãe.
   - Gerar o cache de identidade de ilha: processamento pesado, ainda não
     rodado — é o que destrava reconstruir "The Neck ↔ Calin" em
     `dados/medicoes.json`.
-  - Confirmar na prática, na etapa 5, se o Leaflet-Geoman free cobre
-    cortar/rotacionar/dividir/escalar/snap (plugin nem foi instalado ainda).
+  - ~~Confirmar na prática se o Leaflet-Geoman free cobre
+    cortar/rotacionar/dividir/escalar/snap~~ · **RESOLVIDO em 2026-09-23**:
+    corta, rotaciona e tem atração; escalar e dividir são pagos/inexistentes.
+    Cortar e rotacionar existem mas ainda não foram usados pela ferramenta.
   - Nomear as massas de terra sem nome; decidir pertencimento das 9 ilhas `ilha-*`.
 - **Servidor: NO AR**, reiniciado nesta rodada (o HTML foi reestruturado e o
   `interface.js` é arquivo novo). `http://127.0.0.1:8420/`. Para subir de novo,
@@ -194,7 +243,7 @@ primeira coisa que `/cartografo` mostra.)*
   cd lore/mapas/ferramentas
   .venv\Scripts\python.exe -m uvicorn backend.main:app --host 127.0.0.1 --port 8420
   ```
-- **64 testes pytest, todos verdes** (`cd ferramentas &&
+- **97 testes pytest, todos verdes** (`cd ferramentas &&
   .venv/Scripts/python.exe -m pytest`).
 - **Instalação e código da etapa 1** — sem mudança desde a última atualização
   (commitados): `.venv` próprio, Leaflet 1.9.4 baixado pronto (sem npm/CDN),
@@ -213,12 +262,11 @@ primeira coisa que `/cartografo` mostra.)*
   `ferramentas/static/js/app.js`, `ferramentas/static/js/camadas-referencia.js`
   (criado), `ferramentas/templates/index.html`. Nada de `render/tiles/` nem
   `.venv/`.
-- **Próximo passo:** o usuário abrir `http://127.0.0.1:8420/` e testar as TRÊS
-  rodadas de interface sem aprovação (quarta: zoom por nível,
-  reset/automático, régua com vários pontos, cursor em cruz; quinta: modal de
-  Lugar, atalhos + `?`, lista lateral, barra inferior, tema escuro; sexta:
-  terra/mar sob o cursor e o modal da medição) — só depois disso commitar, e
-  aí em commits separados, um por rodada.
+- **Próximo passo:** o usuário abrir `http://127.0.0.1:8420/` e testar a **B4**
+  (botão "+ área" ou tecla `A`, duplo clique fecha a forma; desenhar por cima de
+  outra área da mesma camada e ver o recorte; selecionar e travar com `T`;
+  desfazer). A B4 é o único trabalho não commitado. Depois dela, a etapa
+  seguinte é o **recorte pela costa**.
 
 ## Objetivo e estilo
 
@@ -266,6 +314,26 @@ identificador; nome é opcional e entra depois.
   chegar nele, não — impossível de reproduzir ou conferir depois. Uma medição sem
   pontos guardados entra em `dados/medicoes.json` como `"reproduzivel": false`
   com o motivo, nunca fica só como número solto no CARTOGRAFO.
+- **O travessão (—) é proibido no que eu ESCREVO PARA O USUÁRIO na conversa, e não
+  nos documentos e no código deste projeto.** Decidido pelo usuário em 2026-09-23
+  (oitava rodada), depois de eu ter oferecido uma varredura para trocar os
+  travessões dos documentos do mapa: **não fazer varredura nenhuma**. Reescrever
+  documento recém-commitado por causa de pontuação é risco sem ganho, e este projeto
+  já perdeu decisão numa reescrita. Os documentos do mapa seguem usando travessão
+  normalmente. **Isto ESTREITA a regra geral do `CLAUDE.md` da raiz** (que proíbe
+  travessão também em documentação e comentário): fica registrado aqui para uma
+  sessão futura não "consertar" de volta e sair varrendo.
+- **Histórico do git não se reescreve para consertar cosmética.** Decidido pelo
+  usuário na mesma rodada, sobre a linha solta com `@` no começo das mensagens de
+  `172c6ca`, `4035ce5` e `3c7e160`: ficam como estão. Rebase e `filter-branch` num
+  repositório compartilhado com outra frente custam mais do que uma mensagem feia.
+- **Toda sessão do mapa começa conferindo a configuração do git**, junto com a
+  leitura deste documento, antes de qualquer trabalho: se `git config
+  core.hooksPath` não devolver `scripts/hooks`, avisar o usuário ANTES de começar,
+  em vez de descobrir no primeiro commit recusado. Pedido do usuário em 2026-09-23,
+  depois de o portão ter recusado o primeiro commit da sétima rodada por
+  `core.hooksPath` estar com caminho absoluto. A conferência está no passo 1 de
+  `.claude/commands/cartografo.md`.
 - **Nunca inferir o que o usuário fez, testou ou aprovou a partir de rastro de
   uso** — log de operações, arquivo de dados, histórico, horário de gravação,
   nada disso. Esses rastros dizem no máximo que uma AÇÃO ACONTECEU, nunca quem
