@@ -52,6 +52,28 @@ foram absorvidas nesta. Ainda é especificação para revisão, não construçã
 `status` é `"atribuida"` ou `"sem_regiao"`. `regiao` é o id de uma entrada de
 `dados/regioes.json`, ou `null` quando `status` é `"sem_regiao"`.
 
+### Validação dos pontos de referência (segunda rodada, 2026-09-21 — restaurada em
+2026-09-23, ver nota de recuperação no fim deste documento)
+
+Os 17 pontos foram conferidos: cada `[longitude, latitude]` convertido para pixel
+pelas fórmulas de `coordenadas.json` e lido contra `mascaras/costa_10240.png`
+(leitura de pixel único por ponto, não é a varredura pesada da regra do
+CARTOGRAFO). **Os 17 caem em terra.** Também foram conferidos contra as faixas de
+latitude por região em `coordenadas.json` (`faixas_de_latitude_das_regioes`):
+todos os pontos atribuídos a uma região nomeada caem dentro da faixa de latitude
+daquela região, com folga.
+
+**O que essa validação NÃO cobre:** confirmar que cada ponto está no mesmo
+componente conectado (a mesma ilha) que o restante da massa nomeada exige
+preenchimento por inundação a partir do ponto — isso é o trabalho do cache de
+identidade de ilha (etapa 10 da ferramenta, ainda não gerado), e cai na regra do
+CARTOGRAFO sobre processamento pesado. A checagem de latitude/terra acima é um
+indício forte, não uma prova de conectividade.
+
+(O método de leitura do pixel foi corrigido depois desta validação original —
+canal de cinza, não alfa sintético — sem mudar a conclusão; ver CARTOGRAFO.md,
+"Achados técnicos registrados", para esse achado específico.)
+
 ### Correção 9 (terceira rodada) — renomeação `amb-*` → `ilha-*`, feita nesta sessão
 
 Os 9 registros que tinham prefixo `amb-` (de "ambíguo", herdado do tempo em que o
@@ -142,6 +164,25 @@ verdade — o vocabulário fechado de `tipo` (`"cidade"`, `"vila"`, `"fortaleza"
 `"porto"`, `"ruina"`, `"marco"`), `capital` e `importancia`, definidos na segunda
 rodada, continuam válidos sem exceção agora que não há mais o caso "rótulo de região"
 misturado aqui.
+
+**Esquema de `capital` e `importancia` (decidido na segunda rodada, 2026-09-21;
+recuperado em 2026-09-23)**:
+- `capital`: booleano. Só pode ser `true` quando `tipo == "cidade"`.
+- `importancia`: `"pequena"`, `"media"`, `"grande"`, ou `null`. `null` tem o mesmo
+  tratamento VISUAL de `"pequena"` na ferramenta (tamanho do marcador) — mas o
+  valor gravado no dado pode ficar `null` (lugar ainda não classificado) sem que
+  isso force escrever `"pequena"` no arquivo.
+- **Correção da história registrada em 2026-09-22, feita em 2026-09-23**: a
+  rodada noturna de 2026-09-22 relatou (errado) que este esquema "nunca chegou a
+  ser escrito em nenhum commit" — a varredura de `git log -p` só olhou o
+  histórico do git, e a decisão de fato nunca entrou em nenhum commit, **mas
+  existia sim**, em `lore/mapas/historico/ESPEC-dados-revisao2.md` (a segunda
+  revisão completa do ESPEC-dados, guardada pelo usuário FORA do repositório,
+  trazida para dentro dele em 2026-09-23). O esquema foi **apagado pela terceira
+  reescrita, antes do commit `96e4188`** — uma perda de fato, não uma decisão
+  nunca tomada. Corrigido aqui; a regra "reescrita de ESPEC nunca apaga decisão
+  registrada sem o usuário decidir" (`CARTOGRAFO.md`, "Regras invioláveis")
+  continua valendo, e agora tem o caso real que a motivou.
 
 ## `dados/rios.json` — cursos d'água
 
@@ -269,6 +310,18 @@ de alinhamento deixa de existir por construção, em vez de ser checado depois:
 }
 ```
 
+- `camada`: `"relevo"`, `"cobertura"` ou `"lago"`. `valor`: vocabulário fechado —
+  ver `CARTOGRAFO.md`, seção "Técnica", para a lista (relevo: planície, colina,
+  montanha, alta montanha; cobertura: floresta temperada, floresta tropical,
+  floresta boreal, selva, campo, deserto, pântano, tundra, geleira). Não repetido
+  aqui de propósito, para não ter a mesma lista em dois lugares que podem
+  divergir — restaurado em 2026-09-23 como ponteiro, não como cópia (a segunda
+  revisão do ESPEC-dados tinha a lista escrita aqui também, e ela divergiu do
+  CARTOGRAFO nessa rodada por causa disso).
+- `semente_ruido`: inteiro fixo por área — o ruído que deixa a borda com aparência
+  natural usa essa semente, guardada na própria feature, para a borda sair sempre
+  idêntica em qualquer renderização (`CARTOGRAFO.md`, "Decisões tomadas > Técnica").
+
 ### Correção 4 (terceira rodada) — `Polygon` e `MultiPolygon`
 
 `geometry.type` pode ser `"Polygon"` **ou `"MultiPolygon"`** — uma única feature (um
@@ -327,3 +380,32 @@ a segunda rodada.
 - Se `Leaflet-Geoman` free cobre cortar/rotacionar/dividir/escalar/snap (não é
   usado pelo recorte de área, que é shapely no servidor, mas pode interessar por outro
   motivo) — ver `ESPEC-ferramenta.md`.
+
+## Nota de recuperação (2026-09-23)
+
+O usuário guardava `lore/mapas/historico/ESPEC-dados-revisao2.md` (a segunda
+revisão completa deste documento) FORA do repositório, e trouxe para dentro dele
+nesta data depois de perceber que a decisão de `importancia` (`"pequena"/"media"/
+"grande"`) tinha sumido. Comparação item por item contra o ESPEC-dados.md atual
+encontrou:
+
+- **Perdas de fato, restauradas nesta rodada**: o esquema de `capital`/
+  `importancia` (seção `lugares.geojson`, acima) e a validação dos 17 pontos de
+  `massas.geojson` (seção `massas.geojson`, acima) — as duas tinham sido escritas
+  na segunda revisão e não sobreviveram na reescrita que virou a terceira, antes
+  do commit `96e4188`.
+- **Mudanças intencionais da terceira revisão, NÃO restauradas** (o usuário deu o
+  exemplo desta: atração de 5km substituindo a tolerância de 300m em estradas):
+  a estrutura de `regioes.json` (de `FeatureCollection` com `properties.massas`
+  para o formato atual sem esse campo, com `rotulo`), a remoção do campo `massas`
+  de região (pertencimento de ilha só em `massas.geojson`), a troca de ids
+  `amb-*` para `ilha-*`, a validação de rio por segmento (não só vértice), a
+  tolerância de foz de 2km, o suporte a `MultiPolygon` em áreas pintadas, e a
+  reescrita derivada de `dados/coordenadas.json`. Todas essas aparecem descritas
+  como "correção N (terceira rodada)" no corpo deste documento, então já estão
+  registradas como decisão posterior, não como perda.
+- **Gaps de documentação (não decisão perdida, só prosa reduzida)**: a
+  justificativa de por que relevo/cobertura automáticos nunca viram feature
+  gravada, e o vocabulário fechado de `valor` em áreas pintadas — os dois existem
+  em `CARTOGRAFO.md` mas não eram citados aqui; adicionado um ponteiro (não uma
+  cópia, para não criar uma segunda fonte que possa divergir de novo).

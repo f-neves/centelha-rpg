@@ -1,0 +1,50 @@
+{
+  "_comentario": "Toda distância real registrada em CARTOGRAFO.md passa a guardar aqui os pontos de origem e destino (lat/lon) usados para calculá-la -- pedido do usuário em 2026-09-23, depois de descobrir que a medição 'The Neck <-> Calin' não tinha os pontos originais guardados em lugar nenhum. Regra daqui pra frente: nenhuma distância entra em CARTOGRAFO.md sem entrar aqui também, com os pontos.",
+  "versao_esquema": 1,
+  "medicoes": [
+    {
+      "id": "waning-norte-sul",
+      "descricao": "Extensão de Waning (arquipélago Calin+Syl+Mére), norte-sul: sul de Mére até norte de Calin",
+      "distancia_km": 6074.9,
+      "metodo": "linha reta (grande círculo)",
+      "origem": null,
+      "destino": null,
+      "reproduzivel": false,
+      "motivo_nao_reproduzivel": "Achado em 2026-09-23, investigando o mesmo problema da medição 'The Neck <-> Calin' abaixo: os pontos (lat/lon) usados nesta medição não sobreviveram em nenhum arquivo versionado nem em render/ (fora do git). Só a imagem render/analise/rotas_distancias.png sobreviveu -- é um desenho sobre a máscara reduzida a 2048px, sem coordenadas legíveis nem metadado embutido; extrair os pontos visualmente da imagem seria inventar dado, não reconstruir -- por isso não foi feito. O script que gerou a medição também não sobreviveu (buscado em git log -p, scripts/, historico/ -- nada).",
+      "registrada_em": "CARTOGRAFO.md, seção 'Sistema de coordenadas'"
+    },
+    {
+      "id": "waning-leste-oeste",
+      "descricao": "Extensão de Waning (arquipélago Calin+Syl+Mére), leste-oeste: oeste de Syl até leste de Mére",
+      "distancia_km": 7124.8,
+      "metodo": "linha reta (grande círculo)",
+      "origem": null,
+      "destino": null,
+      "reproduzivel": false,
+      "motivo_nao_reproduzivel": "Mesmo achado e mesmo motivo de 'waning-norte-sul' acima -- ver render/analise/waning_leste_oeste.png (mesma limitação: sem coordenadas legíveis).",
+      "registrada_em": "CARTOGRAFO.md, seção 'Sistema de coordenadas'"
+    },
+    {
+      "id": "the-neck-calin-linha-reta",
+      "descricao": "The Neck (ilha do arquipélago mais próxima de Calin) até Calin",
+      "distancia_km": 2217.9,
+      "metodo": "linha reta (grande círculo)",
+      "origem": null,
+      "destino": null,
+      "reproduzivel": false,
+      "motivo_nao_reproduzivel": "Pedido explícito do usuário em 2026-09-23: fica marcada como não reproduzível até o cache de identidade de ilha existir (etapa 10 da ferramenta) -- os pontos de referência de cada ilha em dados/massas.geojson são o CENTRO usado para identificação por inundação, não o ponto de aproximação mais próxima entre as duas costas que esta medição usou; sem o cache (que dá o contorno exato de cada ilha em tempo de execução), não dá pra recalcular o ponto certo com confiança.",
+      "registrada_em": "CARTOGRAFO.md, seção 'Decisões tomadas > Mundo'"
+    },
+    {
+      "id": "the-neck-calin-rota-real",
+      "descricao": "The Neck até Calin, rota real (não linha reta)",
+      "distancia_km": 2772.3,
+      "metodo": "linha reta x1.25 (fator de rota real usado no projeto para converter distância em linha reta em distância de rota real)",
+      "origem": null,
+      "destino": null,
+      "reproduzivel": false,
+      "motivo_nao_reproduzivel": "Depende de 'the-neck-calin-linha-reta' acima (é ela x1.25) -- mesma pendência.",
+      "registrada_em": "CARTOGRAFO.md, seção 'Decisões tomadas > Mundo'"
+    }
+  ]
+}
