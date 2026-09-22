@@ -34,6 +34,7 @@ def parametros_leaflet() -> dict:
     projecao = dados["projecao"]
     referencia = dados["referencia"]
     limites = dados["limites_da_tela"]
+    planeta = dados["planeta"]
 
     px_por_grau = projecao["px_por_grau"]
     escala_max_zoom = 2 ** MAX_ZOOM
@@ -43,6 +44,9 @@ def parametros_leaflet() -> dict:
         "max_zoom": MAX_ZOOM,
         "max_zoom_mapa": MAX_ZOOM + SOBRE_ZOOM,
         "resolucao_tela_px": projecao["resolucao_tela_px"],
+        # Régua (B3, rodada noturna de 2026-09-22): distância real usa grande círculo
+        # (haversine) sobre o raio do PLANETA de Uldun, nunca o raio da Terra real.
+        "raio_km": planeta["raio_km"],
         # Transformation(a, b, c, d) do Leaflet: point = scale(zoom) * (a*lng+b, c*lat+d).
         # Em zoom=MAX_ZOOM, scale=2**MAX_ZOOM, e o resultado tem que bater com as
         # fórmulas de coordenadas.json (x_de_longitude / y_de_latitude) em pixel
