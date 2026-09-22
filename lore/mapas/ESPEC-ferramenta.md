@@ -910,3 +910,82 @@ operações numa sessão longa ficariam na casa de poucas dezenas de MB. Fica
 registrado onde ficaria ruim: polígono de milhares de vértices (traçado
 importado, não desenhado), aí cada recorte passa de 100 KB e o log vira o
 problema que a correção de 2026-09-23 já tinha começado a atacar.
+
+## Cobertura automática por latitude (2026-09-23, nona rodada)
+
+Implementa a decisão antiga do `CARTOGRAFO.md` ("Técnica"): terra que o usuário não
+pintou mostra cobertura automática por latitude, pintar por cima sobrescreve, apagar
+devolve o automático, e **o automático nunca é gravado como feature**.
+
+`backend/cobertura_automatica.py`, sete faixas, do norte para o sul. As bordas de cima
+e de baixo saem de `dados/coordenadas.json` (`limites_da_tela`), nunca digitadas: se a
+tela mudar, a tabela acompanha.
+
+| faixa | de | até | de onde vem |
+|---|---|---|---|
+| `geleira` | 55°N | topo da tela | The White Wall, "terra gélida" |
+| `tundra` | 45°N | 55°N | The Neck, "frio porém habitável, tundra, coníferas esparsas" |
+| `floresta-boreal` | 35°N | 45°N | norte temperado frio (metade norte de Mére, "mais fria") |
+| `floresta-temperada` | 25°N | 35°N | Calin, "temperado" |
+| `campo` | 15°N | 25°N | faixa quente, aberta e sem afirmar aridez (ver a correção abaixo) |
+| `floresta-tropical` | base da tela | 15°N | trópico e equador |
+
+**Três decisões que o código precisou e o pedido não fixava:**
+
+1. **As faixas saem do servidor já DESCONTADAS do que está pintado de cobertura**
+   (shapely `difference`, a mesma chamada do recorte entre áreas). A alternativa seria
+   empilhar o pintado por cima e confiar na ordem de desenho, e ela não funciona: área
+   pintada é desenhada com `fillOpacity` 0,35, então a cor do automático continuaria
+   aparecendo por baixo e "pintar sobrescreve" seria mentira na tela. Descontar faz o
+   sobrescrever ser literal. Continua sem gravar nada: o desconto é calculado a cada
+   pedido.
+2. **Toda mudança em área refaz o automático.** Criar, apagar, desfazer e refazer
+   passam por `redesenharTudo` em `areas.js`, e é lá que o `GET
+   /api/cobertura-automatica` é refeito. Sem isso, desfazer devolveria a área mas não
+   fecharia o buraco que ela abriu no automático.
+3. **Pane própria em z 390**, abaixo da área pintada (`overlayPane`, 400) e da camada
+   do mar (450), com `interactive: false`. As faixas cobrem o mundo inteiro: se
+   fossem interativas, engoliriam todo clique destinado ao que está embaixo.
+
+**Correção do usuário em 2026-09-23 (décima rodada), e o motivo é o que interessa**:
+a primeira tabela punha `deserto` de 15°N a 25°N e `selva` do equador até 5°N,
+copiando o guia de clima ao pé da letra. Mas **nessa mesma faixa de 15°N a 25°N está
+Syl**, que o guia descreve como "a parte mais verdejante do mapa": o automático a
+pintaria inteira de deserto. **Deserto e selva são exceções REGIONAIS, não regra de
+latitude**, e passam a ser pintados à mão nos lugares que o guia indica. O padrão da
+faixa quente virou `campo` e o da faixa equatorial virou `floresta-tropical` (que,
+com isso, encostou na faixa de baixo, e as duas viraram uma só).
+
+O critério que fica para qualquer faixa futura: **só entra no automático o valor que
+vale para a latitude INTEIRA**. O que é verdade só em parte dela é pintura, não
+padrão. Refinar por longitude, ou por região consultando `massas.geojson`, continua
+sendo trabalho de uma etapa futura, não conserto desta.
+
+**Fora desta etapa, de propósito**: o relevo automático `planicie` (a mesma decisão
+prevê um padrão de relevo, e ele ainda não foi implementado) e o ruído de borda entre
+faixas, que hoje saem retas.
+
+### Custo do desconto, medido (décima rodada)
+
+Pedido do usuário: medir o tempo por pedido de `/api/cobertura-automatica` com muita
+área pintada, e avisar antes de seguir se passar de meio segundo. Medido com
+polígonos espalhados pela tela, mediana de 5 pedidos, mesma máquina:
+
+| áreas de cobertura pintadas | vértices cada | mediana por pedido | resposta |
+|---|---|---|---|
+| 0 | — | 1,2 ms | 1,5 KB |
+| 50 | 12 | 12,3 ms | 28 KB |
+| 200 | 12 | 44,3 ms | 85 KB |
+| 500 | 12 | 98,6 ms | 149 KB |
+| 1.000 | 12 | 169,8 ms | 158 KB |
+| 500 | 100 | 237 ms | 968 KB |
+| 500 | 400 | **658 ms** | 3,8 MB |
+
+Os casos pedidos (50, 200 e 500 áreas de desenho à mão) ficam **abaixo de 100 ms**, e
+o crescimento é linear no número de áreas. O meio segundo só é ultrapassado no último
+caso, que é 200 mil vértices: **desenho à mão não chega lá** (o próprio ESPEC já
+mediu que traço à mão tem dezenas de vértices), só um traçado importado chegaria, e
+importar não existe na ferramenta. Se um dia chegar, os caminhos são, em ordem de
+esforço: guardar a coleção em cache invalidado por gravação (o desconto só muda
+quando uma área muda), simplificar as faixas com `simplify` antes de devolver, ou
+passar o automático para tiles gerados uma vez, como a costa.
