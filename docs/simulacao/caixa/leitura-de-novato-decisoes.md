@@ -144,17 +144,29 @@ coisas diferentes: a circunstância "sem fazer barulho +4" é a intenção decla
 expertise). Não competem entre si. `acoes-corpo-e-movimento.md` ganha uma frase explícita
 dizendo isso.
 
-## 4a · A decidir (vieram do balde C, ainda não retomados)
+## 4a · Os três últimos do balde B, decididos em 21/09/2026
 
-- **Item 2 (relação social do Meio-Orc)**: `racas.md:115` ("−1 Antipatia") vs. `racas.json`
-  ("Neutro baixo, a um passo da Antipatia"). Prosa dos dois lados, sem campo mecânico que
-  resolva sozinho.
-- **Item 8 (Fôlego da Alabarda)**: `folego.md` fixa 24 pra classe Haste; `armas.json` tem 32 só
-  na Alabarda (a Lança, outra Haste, bate certinho com 24). Erro de digitação ou exceção
-  proposital, ainda não sabido.
-- **Item 15 (prazo da espada Excepcional)**: `acoes-oficio-e-mundo.md` promete 8 semanas, a
-  conta do próprio capítulo só fecha em ~15; os bônus citados ("oficina de mestre", "bônus do
-  ofício geral", "Especialidade") não têm valor definido em lugar nenhum do sistema.
+- **Item 2 (relação social do Meio-Orc): `racas.json` se corrige para bater com `racas.md`.**
+  `racas.md:115` ("−1 Antipatia") vs. `racas.json` ("Neutro baixo, a um passo da Antipatia").
+  Investigado: os dois lados são prosa, sem campo mecânico que resolva sozinho (nenhum JSON de
+  `src/data/` tem tabela ou campo numérico de régua de relação por raça). **Decisão: Antipatia
+  prevalece**, o verbete de `racas.json` (array `tracos`, traço "Sangue partido") passa a dizer
+  que os demais povos recebem o Meio-Orc em Antipatia, não em Neutro baixo. O Meio-Orc começa
+  hostil, como o capítulo sempre afirmou.
+- **Item 8 (Fôlego da Alabarda): registrado, sem correção de dado.** `folego.md` fixa 24 pra
+  classe Haste; `armas.json` tem 32 só na Alabarda (a Lança, outra Haste, bate certinho com 24).
+  **Conferido nesta rodada: `MODULOS.folego = false` (`src/lib/modulos.ts`).** O capítulo de
+  Fôlego é módulo avançado desligado da navegação e das ferramentas desde antes desta rodada; o
+  número existe no motor e nos dados, mas não aparece pra quem joga. Divergência sem efeito
+  observável hoje. Não corrigido: não vale o commit por um número que ninguém vê, e fica
+  registrado para o dia em que o módulo for religado.
+- **Item 15 (prazo da espada Excepcional): o texto muda pra ~15 semanas.**
+  `acoes-oficio-e-mundo.md` promete 8 semanas; a conta do próprio capítulo (Dificuldade 16,
+  Acúmulo 74, mestre soma 12 ⇒ 5 por semana) fecha em ~15, e os três bônus citados ("oficina de
+  mestre", "bônus do ofício geral", "Especialidade") não têm valor definido em lugar nenhum do
+  sistema — inventar os três só pra bater 8 semanas seria escrever regra nova disfarçada de
+  correção. **Decisão: o capítulo passa a publicar ~15 semanas**, o número que a própria conta já
+  produz, sem bônus fantasma. Nenhum campo novo em `regras.json`.
 
 ## 4 · O resto do balde B (itens 2-17 da lista original)
 
