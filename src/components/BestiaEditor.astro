@@ -328,7 +328,7 @@ const PORTES = Object.keys(PORTE_LBL);
 </style>
 
 <script>
-  import armasCat from '../data/armas.json';
+  import { ARMAS as armasCat } from '../lib/equip';
   import { derivados, rolagemAtaque, lerEdicoes, salvarEdicao, apagarEdicao, paraJson, porteSlug } from '../lib/bestia-editor';
   import type { CriaturaEdit } from '../lib/bestia-editor';
   import { ehAdmin } from '../lib/auth';

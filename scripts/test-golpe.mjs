@@ -32,7 +32,8 @@ const E = await import(pathToFileURL(await (async () => {
   });
   return s2;
 })()).href);
-const armas = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/armas.json'), 'utf8'));
+const { achataCatalogo } = await import('./lib-equip.mjs');
+const armas = achataCatalogo(JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/armas.json'), 'utf8')));
 
 const falhas = [];
 const ok = (c, m) => { if (!c) falhas.push(m); };

@@ -9,20 +9,21 @@ const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^
 const P = path.join(ROOT, 'src/data/armas.json');
 const armas = JSON.parse(fs.readFileSync(P, 'utf8'));
 
+// `classe`/`dado` moram no bloco `arma` do envelope aninhado; `tags` continua na raiz.
 const gross = (w) => {
   let g;
-  if (w.classe === 'leve') g = 15;
-  else if (w.classe === 'media') g = 24;
-  else if (w.classe === 'haste') g = 24;
-  else if (w.classe === 'distancia') g = 20;
-  else if (w.classe === 'pesada') g = 38;
-  else g = w.dado >= 2 ? 20 : 12; // arremesso
+  if (w.arma.classe === 'leve') g = 15;
+  else if (w.arma.classe === 'media') g = 24;
+  else if (w.arma.classe === 'haste') g = 24;
+  else if (w.arma.classe === 'distancia') g = 20;
+  else if (w.arma.classe === 'pesada') g = 38;
+  else g = w.arma.dado >= 2 ? 20 : 12; // arremesso
   if (w.tags.includes('pesada')) g += 8;
   return g;
 };
 
-for (const w of armas) w.folego = gross(w);
+for (const w of armas) w.arma.folego = gross(w);
 
 fs.writeFileSync(P, JSON.stringify(armas, null, 2) + '\n', 'utf8');
-for (const w of armas) console.log(`  ${w.nome}: Fôlego ${w.folego}`);
+for (const w of armas) console.log(`  ${w.nome}: Fôlego ${w.arma.folego}`);
 console.log(`✓ add-folego: ${armas.length} armas.`);

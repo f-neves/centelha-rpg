@@ -3,11 +3,12 @@
 // uso: node scripts/gen-bestiario.mjs   |   depois o JSON é a fonte editável.
 import fs from 'node:fs';
 import path from 'node:path';
+import { achataCatalogo } from './lib-equip.mjs';
 const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
 const regras = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/regras.json'), 'utf8'));
 const D = regras.derivados;
 const fl = Math.floor, ce = Math.ceil;
-const ARMAD = Object.fromEntries(JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/armaduras.json'), 'utf8')).map((a) => [a.id, a]));
+const ARMAD = Object.fromEntries(achataCatalogo(JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/armaduras.json'), 'utf8'))).map((a) => [a.id, a]));
 const SOAKCATS = ['impacto', 'corte', 'perfuracao'];
 const cNoSoak = regras.dano?.centelhaNoSoak ?? 0;
 // Soak natural por modo: Impacto = Vigor cheio; letais = metade do Vigor.

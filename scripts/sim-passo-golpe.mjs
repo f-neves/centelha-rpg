@@ -35,12 +35,13 @@ import {
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { achataCatalogo } from './lib-equip.mjs';
 
 const dir = dirname(fileURLToPath(import.meta.url));
 const data = join(dir, '..', 'src', 'data');
 const read = (f) => JSON.parse(readFileSync(join(data, f), 'utf8'));
-const ARMAS = read('armas.json');
-const ARMADURAS = read('armaduras.json');
+const ARMAS = achataCatalogo(read('armas.json'));
+const ARMADURAS = achataCatalogo(read('armaduras.json'));
 
 const cat = {
   armas: Object.fromEntries(ARMAS.map((w) => [w.id, montarArma(w)])),

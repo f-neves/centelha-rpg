@@ -38,8 +38,9 @@ const eq = (a, b, t) => ok(JSON.stringify(a) === JSON.stringify(b),
 
 const QA = await carregar('src/lib/quase-acerto.ts');
 const regras = JSON.parse(fs.readFileSync('src/data/regras.json', 'utf8'));
-const armas = JSON.parse(fs.readFileSync('src/data/armas.json', 'utf8'));
-const armaduras = JSON.parse(fs.readFileSync('src/data/armaduras.json', 'utf8'));
+const { achataCatalogo } = await import('./lib-equip.mjs');
+const armas = achataCatalogo(JSON.parse(fs.readFileSync('src/data/armas.json', 'utf8')));
+const armaduras = achataCatalogo(JSON.parse(fs.readFileSync('src/data/armaduras.json', 'utf8')));
 
 console.log('\n· a classe da arma sai do dano médio');
 {

@@ -9,13 +9,14 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { achataCatalogo } from './lib-equip.mjs';
 
 const raiz = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const ler = (n) => JSON.parse(readFileSync(resolve(raiz, 'src/data', n), 'utf8'));
 
-const armas = ler('armas.json');
-const armaduras = ler('armaduras.json');
-const escudos = ler('escudos.json');
+const armas = achataCatalogo(ler('armas.json'));
+const armaduras = achataCatalogo(ler('armaduras.json'));
+const escudos = achataCatalogo(ler('escudos.json'));
 const precos = ler('precos.json');
 
 // "Desarmado", "Nenhuma" e "Nenhum" existem como opção de regra, não como peça:

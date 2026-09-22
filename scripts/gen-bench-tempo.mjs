@@ -15,6 +15,7 @@
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { achataCatalogo } from './lib-equip.mjs';
 
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
 const ler = (p) => readFileSync(join(RAIZ, p), 'utf8');
@@ -27,8 +28,8 @@ const motor = ler('scripts/lib-tempo.mjs')
   .replace(/^export (const|function|let) /gm, '$1 ')
   .replace(/^export \{[^}]*\};?$/gm, '');
 
-const armas = JSON.parse(ler('src/data/armas.json'));
-const armaduras = JSON.parse(ler('src/data/armaduras.json'));
+const armas = achataCatalogo(JSON.parse(ler('src/data/armas.json')));
+const armaduras = achataCatalogo(JSON.parse(ler('src/data/armaduras.json')));
 
 // ---------------------------------------------------------------- as regras, em texto
 // Cada bloco vira um cartão na aba "As regras". `n` marca o número que a bancada mexe.

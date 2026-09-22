@@ -23,10 +23,12 @@
 //   node scripts/dano-por-tipo.mjs
 import { carregarLib, ligar, RAIZ } from './sim/lib-ponte.mjs';
 import { FICHAS } from './sim/elenco.mjs';
-import ARMAS from '../src/data/armas.json' with { type: 'json' };
+import ARMAS_J from '../src/data/armas.json' with { type: 'json' };
 import REGRAS from '../src/data/regras.json' with { type: 'json' };
 import BASE from './fixtures/kael.json' with { type: 'json' };
+import { achataCatalogo } from './lib-equip.mjs';
 
+const ARMAS = achataCatalogo(ARMAS_J);
 const L = await carregarLib();
 ligar(L);
 

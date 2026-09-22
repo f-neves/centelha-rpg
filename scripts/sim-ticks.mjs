@@ -21,6 +21,7 @@ import {
   REGRAS_PADRAO, REGRAS_PGR, REGRAS_HOJE, REGRAS_NORMAL, comRegras, montarArma, montarArmadura,
   bateria, refrega, roundRobin, porClasse, bateriaDistancia, criarRng, lutador, cena, atacar,
 } from './lib-tempo.mjs';
+import { achataCatalogo } from './lib-equip.mjs';
 
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
 const lerJson = (p) => JSON.parse(readFileSync(join(RAIZ, p), 'utf8'));
@@ -39,8 +40,8 @@ const LEGADO = ARG.legado ? { pressaoDupla: true, centelhaMult: 2 } : {};
 const M = (r) => comRegras(r, LEGADO);
 
 // ---------------------------------------------------------------- catálogo
-const armasJson = lerJson('src/data/armas.json');
-const armadurasJson = lerJson('src/data/armaduras.json');
+const armasJson = achataCatalogo(lerJson('src/data/armas.json'));
+const armadurasJson = achataCatalogo(lerJson('src/data/armaduras.json'));
 const CAT = {
   armas: Object.fromEntries(armasJson.map((w) => [w.id, montarArma(w)])),
   armaduras: Object.fromEntries(armadurasJson.map((a) => [a.id, montarArmadura(a)])),

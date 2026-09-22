@@ -4,7 +4,11 @@
 import { pv, defesa, defesaMental, defesaSocial, regras } from './calc';
 import type { Porte } from './calc';
 import vocab from '../data/elementos-vocab.json';
-import armaduras from '../data/armaduras.json';
+// Via `equip.ts`, e não `armaduras.json` direto: o JSON guarda o envelope aninhado
+// (`armadura: {...}`), e `ARMADURAS` já vem achatado (`soak`/`penalidade` na raiz),
+// o mesmo formato que este arquivo sempre leu. Ler o JSON direto aqui de novo reabriria
+// o mesmo jeito de quebrar em silêncio que a migração do catálogo já resolveu em `equip.ts`.
+import { ARMADURAS as armaduras } from './equip';
 
 /** Vocabulário de fraqueza e resistência, agrupado, vindo de `elementos-vocab.json`,
  *  que é a fonte única dele (o validador e o gen-elementos leem o mesmo arquivo).

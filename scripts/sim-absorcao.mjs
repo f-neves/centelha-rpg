@@ -3,9 +3,10 @@
 // uso: node scripts/sim-absorcao.mjs
 import fs from 'node:fs';
 import path from 'node:path';
+import { achataCatalogo } from './lib-equip.mjs';
 const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
 const rd = (f) => JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data', f), 'utf8'));
-const armas = rd('armas.json'), armaduras = rd('armaduras.json'), regras = rd('regras.json');
+const armas = achataCatalogo(rd('armas.json')), armaduras = achataCatalogo(rd('armaduras.json')), regras = rd('regras.json');
 const fl = Math.floor;
 const cNoSoak = regras.dano.centelhaNoSoak ?? 0;
 const danoForca = regras.derivados.danoForca; // {umaMao, duasMaos}

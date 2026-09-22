@@ -5,6 +5,7 @@
 import { readFileSync, writeFileSync, statSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { elementosDoMaterial } from './lib-materiais.mjs';
+import { achataCatalogo } from './lib-equip.mjs';
 import { dirname, join } from 'node:path';
 
 const dir = dirname(fileURLToPath(import.meta.url));
@@ -68,7 +69,7 @@ const catDe = (id, tipo) => CAT_OVERRIDE[id] || CAT_LABEL[tipo] || tipo || null;
 //      N)" no nome → arte, porque o gesto é conjuração);
 //   3. o resto (garras, presas, pancada, pseudópode, "Arma"…) → pela
 //      Velocidade, que é o atalho de sempre, agora explícito no dado.
-const ARMAS_CAT = read('armas.json');
+const ARMAS_CAT = achataCatalogo(read('armas.json'));
 const CLASSE_OVERRIDE = {
   // exceções por criatura, quando o nome e a velocidade enganarem; vazio por ora
 };

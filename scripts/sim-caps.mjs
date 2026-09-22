@@ -9,14 +9,15 @@ import armasJ from '../src/data/armas.json' with { type: 'json' };
 import armadurasJ from '../src/data/armaduras.json' with { type: 'json' };
 import escudosJ from '../src/data/escudos.json' with { type: 'json' };
 import { carregarLib } from './sim/lib-ponte.mjs';
+import { achataCatalogo } from './lib-equip.mjs';
 
 // As regras vivas, importadas e não recopiadas: o Quase-Acerto virou tabela por
 // classe em `regras.json` e a armadura virou absorção por categoria, e este
 // script lia os campos antigos, que hoje não existem.
 const LIB = await carregarLib();
-const ARMAS = Object.fromEntries(armasJ.map((a) => [a.id, a]));
-const ARM = Object.fromEntries(armadurasJ.map((a) => [a.id, a]));
-const ESC = Object.fromEntries(escudosJ.map((a) => [a.id, a]));
+const ARMAS = Object.fromEntries(achataCatalogo(armasJ).map((a) => [a.id, a]));
+const ARM = Object.fromEntries(achataCatalogo(armadurasJ).map((a) => [a.id, a]));
+const ESC = Object.fromEntries(achataCatalogo(escudosJ).map((a) => [a.id, a]));
 const fl = Math.floor, ce = Math.ceil;
 
 // A absorção da armadura deixou de ser um número e virou um objeto de três

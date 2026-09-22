@@ -25,6 +25,7 @@ import { pathToFileURL } from 'node:url';
 import fs from 'node:fs';
 import os from 'node:os';
 import { fichaSchema, refsExistem } from './ficha-schema.mjs';
+import { achataCatalogo } from './lib-equip.mjs';
 
 const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
 const tmp = [];
@@ -49,9 +50,9 @@ const CR = await carregar('src/lib/combate-resumo.ts');
 const MF = await carregar('src/lib/mesa-ficha.ts');
 
 const S = ler('scripts/fixtures/kael.json');
-const armas = lista(ler('src/data/armas.json'), 'armas');
-const escudos = lista(ler('src/data/escudos.json'), 'escudos');
-const armaduras = lista(ler('src/data/armaduras.json'), 'armaduras');
+const armas = achataCatalogo(lista(ler('src/data/armas.json'), 'armas'));
+const escudos = achataCatalogo(lista(ler('src/data/escudos.json'), 'escudos'));
+const armaduras = achataCatalogo(lista(ler('src/data/armaduras.json'), 'armaduras'));
 
 const falhas = [];
 const ok = (c, m) => { if (!c) falhas.push(m); };
@@ -267,7 +268,8 @@ eq(E.armaDoSlot({ ref: 'a:espada-lomga' }), null, 'id errado vira null, e é jus
 // peça. Mesmo molde do custo de raça: o que é derivável do dado não pode ficar
 // divergindo à mão.
 {
-  const armaduras = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/armaduras.json'), 'utf8'));
+  const { achataCatalogo } = await import('./lib-equip.mjs');
+  const armaduras = achataCatalogo(JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/armaduras.json'), 'utf8')));
   const regras = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/regras.json'), 'utf8'));
   const cap = fs.readFileSync(path.join(ROOT, 'src/content/chapters/armas-e-armaduras.md'), 'utf8');
   const placa = armaduras.find((a) => a.id === 'placa-completa');

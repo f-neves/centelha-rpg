@@ -780,7 +780,7 @@ export function montarFicha(opts: FichaOpts) {
   // um escudo não têm os mesmos números: a arma pede Velocidade/Acerto/Dano/Defesa,
   // o escudo pede Defesa/Penalidade. Uma opção só obrigava o escudo a nascer arma
   // e a ter os campos errados no ajuste.
-  const ESCUDO_LIVRE = { nome: 'Escudo personalizado', bloqCaC: 0, penalidade: 0, habilProjetil: false };
+  const ESCUDO_LIVRE = { nome: 'Escudo personalizado', bloqCaC: 0, penalidade: 0, vsProjetilRapido: { bloqueia: false, bonus: 0 } };
   const REF_ARMA_LIVRE = 'c', REF_ESCUDO_LIVRE = 'ce';
   const refLivre = (ref: any) => ref === REF_ARMA_LIVRE || ref === REF_ESCUDO_LIVRE;
   const ehLivre = (p: any) => refLivre(p && p.ref);
@@ -790,7 +790,7 @@ export function montarFicha(opts: FichaOpts) {
     if (ref === REF_ESCUDO_LIVRE) {
       const base = { ...ESCUDO_LIVRE, nome: (slot && slot.nome) || ESCUDO_LIVRE.nome };
       const s = escudoComMod(base, slot?.mod);
-      return { kind: 'escudo', nome: s.nome, def: s.bloqCaC || 0, pen: s.penalidade || 0, habilProjetil: !!s.habilProjetil, base, s };
+      return { kind: 'escudo', nome: s.nome, def: s.bloqCaC || 0, pen: s.penalidade || 0, vsProjetilRapido: s.vsProjetilRapido || { bloqueia: false, bonus: 0 }, base, s };
     }
     if (ref === 'c') {
       // O item personalizado passou a usar o mesmo "ajustar" das peças de catálogo,
@@ -806,7 +806,7 @@ export function montarFicha(opts: FichaOpts) {
     }
     if (ref.startsWith('e:')) {
       const base = ESCUDO[ref.slice(2)];
-      if (base) { const s = escudoComMod(base, slot?.mod); return { kind: 'escudo', nome: base.nome, def: s.bloqCaC || 0, pen: s.penalidade || 0, habilProjetil: !!s.habilProjetil, base, s }; }
+      if (base) { const s = escudoComMod(base, slot?.mod); return { kind: 'escudo', nome: base.nome, def: s.bloqCaC || 0, pen: s.penalidade || 0, vsProjetilRapido: s.vsProjetilRapido || { bloqueia: false, bonus: 0 }, base, s }; }
     }
     if (ref.startsWith('a:')) {
       const base = ARMA[ref.slice(2)];
@@ -1382,7 +1382,7 @@ export function montarFicha(opts: FichaOpts) {
   const statsBlocosEscudo = (s: any) => `<div class="eq-nums">
     <span class="eq-n def"><b>Defesa</b>${sgn(s.bloqCaC || 0)}</span>
     <span class="eq-n pen"><b>Penalid.</b>${s.penalidade ? '−' + s.penalidade : '0'}</span>
-    ${s.habilProjetil ? '<span class="eq-n"><b>Projétil</b>hábil</span>' : ''}</div>`;
+    ${s.vsProjetilRapido?.bloqueia ? `<span class="eq-n"><b>Projétil</b>hábil${s.vsProjetilRapido.bonus ? ` +${s.vsProjetilRapido.bonus}` : ''}</span>` : ''}</div>`;
   const statsBlocosArmadura = (a: any) => `<div class="eq-nums">
     <span class="eq-n"><b>Imp</b>${a.soak.impacto}</span>
     <span class="eq-n"><b>Cor</b>${a.soak.corte}</span>
@@ -1626,7 +1626,7 @@ export function montarFicha(opts: FichaOpts) {
       (MODULOS.folego ? `<div class="cmb muted">Custa ${w.folego ?? 0} de Fôlego por golpe; recupera Vigor/Tick fora dos ataques. Esforço: cada +1d6 dobra o Fôlego e +1 Velocidade.</div>` : '') +
       (act.dist ? '' : `<div class="cmb"><b>Defesa por Bloqueio</b> — <b>${blk}</b> <span class="muted">(inclui a Defesa das armas do conjunto)</span></div>`) +
       (escudos.length
-        ? `<div class="cmb muted">Projétil rápido: ${escudos.some((e: any) => e.habilProjetil) ? 'você tem escudo hábil, dá para Bloquear se estiver apto (consciente, braço livre, espaço para manobrar)' : 'escudo pequeno demais, não bloqueia projétil rápido, só Esquiva'}.</div>`
+        ? `<div class="cmb muted">Projétil rápido: ${escudos.some((e: any) => e.vsProjetilRapido?.bloqueia) ? 'você tem escudo hábil, dá para Bloquear se estiver apto (consciente, braço livre, espaço para manobrar)' : 'escudo pequeno demais, não bloqueia projétil rápido, só Esquiva'}.</div>`
         : `<div class="cmb muted">Projétil rápido (flecha, virote, bala de funda): sem escudo hábil, só Esquiva.</div>`) +
       (w.notas ? `<div class="cmb muted">${w.notas}</div>` : '') +
       (pecas.length ? `<div class="cmb muted">Armadura: ${pecas.map((p: any) => p.nome).join(' + ')}.</div>` : '');

@@ -3,9 +3,13 @@ import Base from '../layouts/Base.astro';
 import { url } from '../lib/site';
 import { MODULOS } from '../lib/modulos';
 import { getCollection } from 'astro:content';
-const armas = (await getCollection('armas')).map((e) => e.data);
-const armaduras = (await getCollection('armaduras')).map((e) => e.data);
-const escudos = (await getCollection('escudos')).map((e) => e.data);
+// O JSON guarda o item no envelope aninhado (`tipo` + bloco `arma`/`armadura`/`escudo`);
+// esta página lê os campos no formato PLANO de sempre, então achata uma vez aqui,
+// como `achata()` faz em `equip.ts` (mesma regra, importação diferente).
+const achata = (item: any) => { const { arma, armadura, escudo, municao, ...raiz } = item; return { ...raiz, ...(arma ?? armadura ?? escudo ?? municao ?? {}), notas: raiz.descricao }; };
+const armas = (await getCollection('armas')).map((e) => achata(e.data));
+const armaduras = (await getCollection('armaduras')).map((e) => achata(e.data));
+const escudos = (await getCollection('escudos')).map((e) => achata(e.data));
 const habs = Object.fromEntries((await getCollection('habilidades')).map((h) => [h.id, h.data.nome]));
 const CLASSE: Record<string, string> = { leve: 'Leve', media: 'Média', pesada: 'Pesada', haste: 'Haste', distancia: 'Distância', arremesso: 'Arremesso', nenhuma: 'Nenhuma' };
 const MODO: Record<string, string> = { corte: 'Cortante', perfurante: 'Perfurante', impacto: 'Impacto' };
@@ -113,7 +117,7 @@ const linhaDados = (a: any) => ({
   <div class="table-wrap">
     <table>
       <thead><tr><th>Escudo</th><th class="c">Defesa</th><th class="c">vs Projétil rápido</th><th class="c">Penalidade</th><th>Estilo</th></tr></thead>
-      <tbody>{escudos.filter((s) => s.bloqCaC > 0).map((s) => <tr><th>{s.nome}</th><td class="c">+{s.bloqCaC}</td><td class="c">{s.habilProjetil ? 'bloqueia' : '—'}</td><td class="c">{s.penalidade ? `−${s.penalidade}` : '0'}</td><td class="muted">{s.notas}</td></tr>)}</tbody>
+      <tbody>{escudos.filter((s) => s.bloqCaC > 0).map((s) => <tr><th>{s.nome}</th><td class="c">+{s.bloqCaC}</td><td class="c">{s.vsProjetilRapido?.bloqueia ? (s.vsProjetilRapido.bonus ? `bloqueia +${s.vsProjetilRapido.bonus}` : 'bloqueia') : '—'}</td><td class="c">{s.penalidade ? `−${s.penalidade}` : '0'}</td><td class="muted">{s.notas}</td></tr>)}</tbody>
     </table>
   </div>
 </Base>

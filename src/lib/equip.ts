@@ -10,9 +10,24 @@ import ARMA_D from '../data/armas.json';
 import ARMADURA_D from '../data/armaduras.json';
 import ESCUDO_D from '../data/escudos.json';
 
-export const ARMAS = ARMA_D as any[];
-export const ARMADURAS = ARMADURA_D as any[];
-export const ESCUDOS = ESCUDO_D as any[];
+/**
+ * O JSON guarda o item no envelope ANINHADO (`{ id, nome, tipo, preco, ..., arma: {...},
+ * armadura: null, escudo: null }`, decidido em leitura-de-novato-decisoes.md §5). Todo
+ * consumidor daqui pra baixo (ficha, mesa, editor de bestiário) continua lendo o formato
+ * PLANO de sempre (`w.dado`, `a.soak.impacto`, `s.bloqCaC`): achatar aqui, uma vez só, é o
+ * que evita repetir a migração em cada arquivo que importa este módulo.
+ */
+function achata(item: any): any {
+  const bloco = item.arma ?? item.armadura ?? item.escudo ?? item.municao ?? {};
+  const { arma, armadura, escudo, municao, ...raiz } = item;
+  // `descricao` é o nome do envelope; `notas` é como todo consumidor de baixo já lê.
+  // Alias, não substituição: mantém os dois para não caçar `.notas` em cada arquivo.
+  return { ...raiz, ...bloco, notas: raiz.descricao };
+}
+
+export const ARMAS = (ARMA_D as any[]).map(achata);
+export const ARMADURAS = (ARMADURA_D as any[]).map(achata);
+export const ESCUDOS = (ESCUDO_D as any[]).map(achata);
 export const ARMA: Record<string, any> = Object.fromEntries(ARMAS.map((w) => [w.id, w]));
 export const ARMADURA: Record<string, any> = Object.fromEntries(ARMADURAS.map((a) => [a.id, a]));
 export const ESCUDO: Record<string, any> = Object.fromEntries(ESCUDOS.map((s) => [s.id, s]));

@@ -5,7 +5,7 @@ import { loadData } from '../lib/data';
 import monsters from '../data/monsters.json';
 import BestiaEditor from '../components/BestiaEditor.astro';
 import BestaCard from '../components/BestaCard.astro';
-import armasCat from '../data/armas.json';
+import { ARMAS as armasCat } from '../lib/equip';
 const d = await loadData();
 /**
  * Quantas fichas nascem na página. O resto vai dentro de <template> e é montado

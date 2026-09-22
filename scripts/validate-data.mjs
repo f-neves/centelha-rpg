@@ -7,6 +7,7 @@ import { z } from 'zod';
 import ts from 'typescript';
 import { POR_MATERIAL as MATERIAIS } from './lib-materiais.mjs';
 import { semComentario, sabeTirarChave } from './lib-deteccao-remocao-jsonb.mjs';
+import { achataCatalogo } from './lib-equip.mjs';
 
 const DIR = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..', 'src', 'data');
 const read = (f) => JSON.parse(fs.readFileSync(path.join(DIR, f), 'utf8'));
@@ -78,20 +79,41 @@ const S = {
     poderes: z.array(z.object({ efeito: z.string(), tipo: z.enum(['proeza', 'feiticaria', 'natural']), alvo: z.string(), caminho: z.string().optional(), arte: z.string().optional() })).optional(),
     notas: z.string(), pendente: z.boolean(),
   }),
-  armas: z.object({
-    id: z.string(), nome: z.string(), classe: z.enum(['leve', 'media', 'pesada', 'haste', 'distancia', 'arremesso']),
-    atrib: z.string(), pericia: z.string(), dado: z.number().int().min(1).max(3), danoBonus: z.number().int().optional(), acerto: z.number().int(),
-    defesaArma: z.number().int(), maos: z.number().int().min(1).max(2), ticks: z.number().int(), folego: z.number().int().min(0).optional(),
-    forcaMult: z.number().optional(), forcaCap: z.number().int().optional(), forcaMin: z.number().int().optional(),
-    alcance: z.enum(['curto', 'medio', 'longo']).optional(),
-    tipoDano: z.enum(['corte', 'perfurante', 'impacto']), pen: z.number().int().min(0).max(5),
-    fichaModo: z.enum(['corte', 'perfurante', 'impacto']).optional(),
-    modos: z.array(z.object({ tipo: z.enum(['corte', 'perfurante', 'impacto']), perf: z.number().int().min(0).max(5).optional(), principal: z.boolean() })),
-    tags: z.array(z.string()), notas: z.string(),
-  }),
-  armaduras: z.object({ id: z.string(), nome: z.string(), classe: z.enum(['nenhuma', 'leve', 'media', 'pesada']), soak: soakModos, resistPerf: z.number().int().min(0), penalidade: z.number().int().min(0), acesso: z.number().int().optional(), notas: z.string() }),
-  escudos: z.object({ id: z.string(), nome: z.string(), bloqCaC: z.number().int(), habilProjetil: z.boolean(), penalidade: z.number().int(), acesso: z.number().int().optional(), notas: z.string() }),
 };
+
+// O envelope aninhado do catálogo de itens (decidido em leitura-de-novato-decisoes.md
+// §5): `tipo` no topo escolhe qual bloco abaixo vem preenchido, os outros ficam `null`.
+// Espelha o schema de `src/content.config.ts` — os dois validam o mesmo JSON por
+// caminhos diferentes (este roda antes do build, sem depender do Astro).
+const precoEnvelope = z.object({ pc: z.number().int().nonnegative() }).optional();
+const blocoArmaEnvelope = z.object({
+  classe: z.enum(['leve', 'media', 'pesada', 'haste', 'distancia', 'arremesso']),
+  atrib: z.string(), pericia: z.string(), dado: z.number().int().min(1).max(3), danoBonus: z.number().int().optional(), acerto: z.number().int(),
+  defesaArma: z.number().int(), maos: z.number().int().min(1).max(2), ticks: z.number().int(), folego: z.number().int().min(0).optional(),
+  forcaMult: z.number().optional(), forcaCap: z.number().int().optional(), forcaMin: z.number().int().optional(),
+  alcance: z.enum(['curto', 'medio', 'longo']).optional(),
+  distMax: z.number().int().positive().optional(), alcanceLivreFrac: z.number().min(0).max(1).optional(),
+  tipoDano: z.enum(['corte', 'perfurante', 'impacto']), pen: z.number().int().min(0).max(5),
+  fichaModo: z.enum(['corte', 'perfurante', 'impacto']).optional(),
+  modos: z.array(z.object({ tipo: z.enum(['corte', 'perfurante', 'impacto']), perf: z.number().int().min(0).max(5).optional(), principal: z.boolean() })),
+}).nullable();
+const blocoArmaduraEnvelope = z.object({
+  classe: z.enum(['nenhuma', 'leve', 'media', 'pesada']), soak: soakModos,
+  resistPerf: z.number().int().min(0), penalidade: z.number().int().min(0),
+}).nullable();
+const blocoEscudoEnvelope = z.object({
+  bloqCaC: z.number().int(), penalidade: z.number().int(),
+  vsProjetilRapido: z.object({ bloqueia: z.boolean(), bonus: z.number().int().nonnegative() }),
+}).nullable();
+const blocoMunicaoEnvelope = z.object({ aceita: z.array(z.string()) }).nullable();
+const envelopeItem = z.object({
+  id: z.string(), nome: z.string(),
+  tipo: z.enum(['arma', 'armadura', 'escudo', 'municao', 'geral', 'comida', 'roupa', 'montaria', 'veiculo', 'servo']),
+  preco: precoEnvelope, peso: z.number().nonnegative(), acesso: z.number().int().optional(),
+  descricao: z.string(), tags: z.array(z.string()),
+  arma: blocoArmaEnvelope, armadura: blocoArmaduraEnvelope, escudo: blocoEscudoEnvelope, municao: blocoMunicaoEnvelope,
+});
+S.armas = envelopeItem; S.armaduras = envelopeItem; S.escudos = envelopeItem; S.municao = envelopeItem;
 
 const data = {};
 for (const k of Object.keys(S)) {
@@ -103,7 +125,12 @@ for (const k of Object.keys(S)) {
     if (!r.success) fail(`${k}[${i}] (${item.id ?? '?'}): ${r.error.issues.map((e) => `${e.path.join('.')} ${e.message}`).join('; ')}`);
     if (item.id != null) { if (ids.has(item.id)) fail(`${k}: id duplicado "${item.id}"`); ids.add(item.id); }
   });
-  data[k] = arr;
+  // armas/armaduras/escudos/municao vêm no envelope aninhado; as conferências
+  // referenciais daqui pra baixo (atributo, perícia, `fichaModo`…) sempre leram o
+  // formato plano de sempre — achatar aqui evita duplicar a tradução em cada checagem.
+  data[k] = (k === 'armas' || k === 'armaduras' || k === 'escudos' || k === 'municao')
+    ? achataCatalogo(arr)
+    : arr;
 }
 
 // integridade referencial
