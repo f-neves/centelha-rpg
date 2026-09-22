@@ -195,7 +195,7 @@ const blocoArmadura = z.object({
 }).nullable();
 
 const blocoEscudo = z.object({
-  bloqCaC: z.number().int(), penalidade: z.number().int(),
+  bloqCaC: z.number().int(), penalidade: z.number().int().min(0),
   // Substitui o booleano `habilProjetil`: a coluna real do capítulo tem três estados
   // (não bloqueia / bloqueia / bloqueia com bônus, caso do Pavês, +3).
   vsProjetilRapido: z.object({ bloqueia: z.boolean(), bonus: z.number().int().nonnegative() }),

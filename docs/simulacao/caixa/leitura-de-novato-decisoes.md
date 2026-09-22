@@ -816,7 +816,7 @@ exatos da tabela do item 13. **O peso é estimativa minha, não da decisão orig
 não fixou peso): por comparação com arma de classe/mãos equivalente já no catálogo (Machadinha
 0,8 kg perto do Machado 1,2; Machado Pesado 3,0 kg perto do Montante 2,8 e do Martelo de Guerra
 2,5; Martelo 1,3 kg, cópia do peso da Maça, coerente com copiar o resto do stat block dela;
-Bastão 0,6 kg, mais leve que a Adaga por ser madeira; Lança Longa 2,4 kg, entre a Lança 2,0 e a
+Bastão 0,25 kg, mais leve que a Adaga (0,3 kg) por ser madeira; Lança Longa 2,4 kg, entre a Lança 2,0 e a
 Alabarda 2,7; Sabre 0,8 kg perto da Espada Curta 0,9; Maça Estrela 1,5 kg, um pouco acima da
 Maça 1,3 pelos espigões). Descrição curta por arma, no tom das já existentes.
 

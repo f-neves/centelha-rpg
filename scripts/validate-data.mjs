@@ -102,7 +102,7 @@ const blocoArmaduraEnvelope = z.object({
   resistPerf: z.number().int().min(0), penalidade: z.number().int().min(0),
 }).nullable();
 const blocoEscudoEnvelope = z.object({
-  bloqCaC: z.number().int(), penalidade: z.number().int(),
+  bloqCaC: z.number().int(), penalidade: z.number().int().min(0),
   vsProjetilRapido: z.object({ bloqueia: z.boolean(), bonus: z.number().int().nonnegative() }),
 }).nullable();
 const blocoMunicaoEnvelope = z.object({ aceita: z.array(z.string()) }).nullable();
