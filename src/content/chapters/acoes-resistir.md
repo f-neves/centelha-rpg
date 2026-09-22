@@ -27,33 +27,39 @@ A Habilidade das três que rolam é **Resistência**, e ela é de Vigor puro.
 
 ## Veneno
 
-**Modo** · Direta, **uma jogada por dose**. Cada dose é um evento fechado.
+**Modo** · Direta repetida por intervalo. Cada veneno abre um **pool** de dano que drena aos poucos, não um efeito fixo repetido por dose: doses novas somam ao pool pendente e estendem a duração, não multiplicam o dano por intervalo.
 
-**Jogada** · Vigor + Resistência contra a **Potência** do veneno. **Todo dano de veneno ignora a Absorção**, natural e de armadura: peçonha não se para com aço.
+**Potência efetiva = Potência do veneno − Resistência do alvo, piso 0.** É o corpo aguentando a substância antes de qualquer jogada: um veneno fraco contra alguém resistente pode nem chegar a exigir teste.
 
-| Resultado | O que acontece |
+**A cada intervalo, Vigor + Resistência contra a Potência efetiva reduz o dano daquele pulso**, na régua de Margem:
+
+| Resultado | Dano do pulso |
 |---|---|
-| Passa por **uma Margem** ou mais | nada, o corpo dá conta |
-| Passa | **metade** do efeito da dose, arredondando para cima |
-| Falha | o efeito **inteiro** |
-| Falha por **uma Margem** ou mais | o efeito inteiro **e uma dose a mais** do que o veneno previa |
+| Passou por **uma Margem** ou mais (6 ou mais acima) | 0 |
+| Passou raspando (menos de 6 acima) | 1 |
+| Falhou por menos de 6 | 2 |
+| Falhou por **6 ou mais** | 3 |
 
-**Cada veneno declara o que faz**, e é essa linha que dá sabor à família.
+Esse valor sai do **pool total**, na unidade que o **Tipo** do veneno declara (PV ou ponto de Atributo). **Todo dano de veneno ignora a Absorção**, natural e de armadura: peçonha não se para com aço.
 
-| Veneno | Potência | Início | Doses | Efeito por dose |
-|---|:--:|---|---|---|
-| Bebida forte do senhor local | 5 | 10 min | 1 por copo | Desgaste 1 |
-| Cicuta | 10 | minuto | 3, uma por hora | −1 Vigor |
-| Peçonha de víbora | 14 | minuto | 3, uma por hora | 8 PV |
-| Curare | 14 | Tick | 1 | −3 Destreza por uma cena |
-| Peçonha de aranha gigante | 18 | Tick | 2, uma por minuto | −2 Destreza e Desgaste 1 |
-| Hálito de basilisco | 22 | minuto | 4, uma por minuto | 12 PV |
+**Dano e penalidade são duas trilhas separadas, e só o dano se reduz pela rolagem.** Enquanto o pool não zerar, o alvo carrega a **penalidade mínima** do veneno (Desgaste, nos seis catalogados), que **não** se reduz por resistir bem: é a substância ainda circulando, mesmo que o corpo esteja vencendo o dano dela. Só some quando o pool zera de vez.
 
-**Atributo derrubado volta a um ponto por dia de descanso.** Um Atributo em **zero** incapacita naquele eixo, e o que isso significa depende de qual é: Vigor 0 é o corpo desligando, Destreza 0 é paralisia, Inteligência 0 é delírio. É por aqui que o veneno mata, sem precisar de regra de morte própria.
+| Veneno | Potência | Início | Intervalo | Pool total | Tipo | Penalidade mínima |
+|---|:--:|---|---|---|---|---|
+| Bebida forte do senhor local | 5 | 10 min (ingerido) | — (efeito único) | 0 | — | Desgaste 1 |
+| Cicuta | 10 | minuto | 1 hora | 3 (Vigor) | atributo | Desgaste 1 |
+| Peçonha de víbora | 14 | minuto | 1 hora | 24 (PV) | pv | Desgaste 1 |
+| Curare | 14 | Tick | — (efeito único, duração 1 cena) | — | atributo | Desgaste 1 |
+| Peçonha de aranha gigante | 18 | Tick | 1 minuto | 4 (Destreza) | atributo | Desgaste 1 |
+| Hálito de basilisco | 22 | minuto | 1 minuto | 48 (PV) | pv | Desgaste 1 |
 
-**Tratar** é Inteligência + Cura contra a Potência, uma vez por dose pendente. Passando, cancela as doses que faltam; com uma Margem, cancela e devolve um ponto de Atributo.
+**Quatro vias de entrada: toque, sangue, inalado, ingerido.** Cada veneno tem a via em que costuma chegar (a coluna Início já reflete isso: picada ou lâmina é sangue, hálito é inalado, bebida é ingerido). **Toque em pele intacta abate 4 da Potência** antes de calcular a Potência efetiva, o mesmo peso que a Circunstância abaixo já usa em Tratar. **Se o ponto de contato tem ferimento aberto ou mucosa exposta, a penalidade não se aplica**: o toque passa a valer como via sangue.
 
-**Circunstância** · sangrar a ferida no primeiro Tick **−2** · dose dobrada ou direto no sangue **+4** · antídoto específico em mãos dá **+4** à jogada de tratar.
+**Atributo drenado volta a um ponto por dia de descanso**, salvo o Curare, que se resolve pela duração declarada (uma cena) em vez de recuperação diária. Um Atributo em **zero** incapacita naquele eixo: Vigor 0 é o corpo desligando, Destreza 0 é paralisia, Inteligência 0 é delírio. É por aqui que o veneno mata, sem precisar de regra de morte própria.
+
+**Tratar** é Inteligência + Cura contra a Potência, uma vez por intervalo pendente. Passando, reduz o pool restante pela mesma régua de Margem da rolagem de resistir; antídoto específico em mãos dá **+4** à jogada.
+
+**Circunstância** · sangrar a ferida no primeiro Tick **−2** na Potência efetiva · dose dobrada ou direto no sangue **+4**.
 
 ## Doença
 

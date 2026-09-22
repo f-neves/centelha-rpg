@@ -138,8 +138,8 @@
     },
     {
       "id": "envenenado", "nome": "Envenenado", "icone": "☠", "grupo": "corpo", "cor": "perigo",
-      "dados": -1, "porSeisTicks": 1,
-      "nota": "Desgaste de veneno: −1d6 por degrau e dano a cada 6 Ticks até resistir (cap. Resistir)."
+      "dados": -1,
+      "nota": "Marcador visual: o relógio de verdade mora no veneno (pool por intervalo, penalidade mínima que não reduz por rolagem), ver src/data/venenos.json e cap. Resistir."
     },
     {
       "id": "doente", "nome": "Doente", "icone": "🤒", "grupo": "corpo", "cor": "alerta",

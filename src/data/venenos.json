@@ -1,0 +1,85 @@
+{
+  "nota": "Fonte da tabela de Veneno em acoes-resistir.md. Potencia efetiva = potencia - Resistencia do alvo, piso 0. A cada intervalo, Vigor+Resistencia reduz o dano do pulso pela regua de Margem (ver capitulo); o dano drena do pool na unidade indicada por tipo. penalidadeMinima nao se reduz pela rolagem, so some quando o pool zera. viaEntrada é a via padrão do veneno (a coluna Início do capítulo já reflete essa via); toque em pele intacta abate 4 da potência antes de calcular a potência efetiva, salvo ferimento aberto ou mucosa exposta (aí conta como sangue). Regra de toque é fixa do capítulo, não campo por veneno.",
+  "viaEntradaValores": ["toque", "sangue", "inalado", "ingerido"],
+  "toquePenalidadePotencia": -4,
+  "lista": [
+    {
+      "id": "bebida-forte-senhor-local",
+      "nome": "Bebida forte do senhor local",
+      "potencia": 5,
+      "inicio": { "tempo": "10 min", "viaEntrada": "ingerido" },
+      "intervalo": null,
+      "efeitoUnico": true,
+      "pool": 0,
+      "tipo": null,
+      "atributo": null,
+      "duracao": null,
+      "penalidadeMinima": { "efeito": "desgaste", "valor": 1 }
+    },
+    {
+      "id": "cicuta",
+      "nome": "Cicuta",
+      "potencia": 10,
+      "inicio": { "tempo": "1 minuto", "viaEntrada": "sangue" },
+      "intervalo": "1 hora",
+      "efeitoUnico": false,
+      "pool": 3,
+      "tipo": "atributo",
+      "atributo": "vigor",
+      "duracao": null,
+      "penalidadeMinima": { "efeito": "desgaste", "valor": 1 }
+    },
+    {
+      "id": "peconha-de-vibora",
+      "nome": "Peçonha de víbora",
+      "potencia": 14,
+      "inicio": { "tempo": "1 minuto", "viaEntrada": "sangue" },
+      "intervalo": "1 hora",
+      "efeitoUnico": false,
+      "pool": 24,
+      "tipo": "pv",
+      "atributo": null,
+      "duracao": null,
+      "penalidadeMinima": { "efeito": "desgaste", "valor": 1 }
+    },
+    {
+      "id": "curare",
+      "nome": "Curare",
+      "potencia": 14,
+      "inicio": { "tempo": "1 Tick", "viaEntrada": "sangue" },
+      "intervalo": null,
+      "efeitoUnico": true,
+      "pool": null,
+      "tipo": "atributo",
+      "atributo": "destreza",
+      "duracao": "1 cena",
+      "penalidadeMinima": { "efeito": "desgaste", "valor": 1 }
+    },
+    {
+      "id": "peconha-de-aranha-gigante",
+      "nome": "Peçonha de aranha gigante",
+      "potencia": 18,
+      "inicio": { "tempo": "1 Tick", "viaEntrada": "sangue" },
+      "intervalo": "1 minuto",
+      "efeitoUnico": false,
+      "pool": 4,
+      "tipo": "atributo",
+      "atributo": "destreza",
+      "duracao": null,
+      "penalidadeMinima": { "efeito": "desgaste", "valor": 1 }
+    },
+    {
+      "id": "halito-de-basilisco",
+      "nome": "Hálito de basilisco",
+      "potencia": 22,
+      "inicio": { "tempo": "1 minuto", "viaEntrada": "inalado" },
+      "intervalo": "1 minuto",
+      "efeitoUnico": false,
+      "pool": 48,
+      "tipo": "pv",
+      "atributo": null,
+      "duracao": null,
+      "penalidadeMinima": { "efeito": "desgaste", "valor": 1 }
+    }
+  ]
+}
