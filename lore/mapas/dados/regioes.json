@@ -1,0 +1,54 @@
+{
+  "_comentario": "Regiões nomeadas de Uldun. Criado em 2026-09-21 (decisão 1, terceira rodada), movendo os 6 rótulos de nome que antes estavam em lugares.geojson com tipo:'regiao'. Pertencimento de ilha mora só em dados/massas.geojson (campo 'regiao' de cada massa) — nenhuma região aqui lista suas massas (correção 7); a ferramenta descobre as ilhas de uma região filtrando massas.geojson por regiao==id. Regiões menores que uma ilha inteira (nenhuma ainda) usam 'geometria' (Polygon/MultiPolygon) em vez de depender de massas.geojson.",
+  "versao_esquema": 1,
+  "regioes": [
+    {
+      "id": "waning",
+      "nome": "Waning",
+      "tipo": "arquipelago",
+      "pai": null,
+      "geometria": null,
+      "rotulo": { "type": "Point", "coordinates": [6.34, 25.74] }
+    },
+    {
+      "id": "mere",
+      "nome": "Mére",
+      "tipo": "ilha",
+      "pai": "waning",
+      "geometria": null,
+      "rotulo": { "type": "Point", "coordinates": [15.18, 19.60] }
+    },
+    {
+      "id": "syl",
+      "nome": "Syl",
+      "tipo": "ilha",
+      "pai": "waning",
+      "geometria": null,
+      "rotulo": { "type": "Point", "coordinates": [-4.77, 16.05] }
+    },
+    {
+      "id": "calin",
+      "nome": "Calin",
+      "tipo": "ilha",
+      "pai": "waning",
+      "geometria": null,
+      "rotulo": { "type": "Point", "coordinates": [2.86, 31.50] }
+    },
+    {
+      "id": "the-neck",
+      "nome": "The Neck",
+      "tipo": "arquipelago",
+      "pai": null,
+      "geometria": null,
+      "rotulo": { "type": "Point", "coordinates": [-26.06, 51.57] }
+    },
+    {
+      "id": "white-wall",
+      "nome": "The White Wall",
+      "tipo": "arquipelago",
+      "pai": null,
+      "geometria": null,
+      "rotulo": { "type": "Point", "coordinates": [-24.37, 66.82] }
+    }
+  ]
+}

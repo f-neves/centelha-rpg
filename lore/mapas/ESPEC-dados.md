@@ -1,39 +1,47 @@
 # Especificação dos dados do mapa de Uldun
 
-Proposta da IA, revisada em 2026-09-21 a partir das correções do usuário. Ainda não é
-decisão fechada de formato (o formato pode mudar até a ferramenta ser construída), mas
-os PRINCÍPIOS abaixo já foram aprovados: ver `CARTOGRAFO.md`, seção "Decisões tomadas".
+Revisão de 2026-09-21 (terceira rodada), incorporando a decisão 1 e as correções 2, 3,
+4, 7, 8 e 9 pedidas pelo usuário sobre a segunda revisão. As correções 5, 6, 10 e 11
+daquela rodada já estão fechadas em código de dados (ver arquivos correspondentes) ou
+foram absorvidas nesta. Ainda é especificação para revisão, não construção — ver
+`CARTOGRAFO.md`, seção "Estado atual".
 
 ## Princípios gerais
 
-- Todo dado de posição é gravado em **latitude/longitude do mundo**, nunca em pixel de
-  tela, para o mapa poder crescer além da tela de 10240px sem renumerar nada.
-- Área pintada (relevo, cobertura, lago, região-sobre-água) é **vetor em GeoJSON**, não
-  máscara raster. Rasteriza-se sob demanda, na resolução que a operação pedir.
+- **Todo dado de posição é GeoJSON, com coordenadas `[longitude, latitude]`** (ordem
+  padrão do GeoJSON). Lugares são `Point`, rios e estradas são `LineString`, regiões são
+  `Polygon`/`MultiPolygon` (ou nenhuma geometria, quando a região é definida por
+  massas — ver `regioes.json` abaixo), áreas pintadas são `Polygon` **ou
+  `MultiPolygon`** (correção 4, terceira rodada: uma área pode ter mais de um pedaço
+  desconexo, por exemplo a mesma cobertura de "floresta boreal" espalhada em duas
+  manchas que não se tocam — antes só `Polygon` cobria isso mal, forçando duas features
+  com o mesmo `valor` só porque não são um polígono só).
 - Todo objeto tem um **id curto e permanente**; nome é opcional e pode ser preenchido
   depois.
-- Nenhum arquivo abaixo é gerado ainda, exceto `massas.geojson` (gerado nesta sessão
-  como parte da verificação, ver abaixo) e `lugares.json` (de uma sessão anterior).
+- **Todo arquivo de dados tem `versao_esquema`** (inteiro, começa em `1`).
+- Área pintada é **vetor em GeoJSON**, não máscara raster. Rasteriza-se sob demanda.
+- **Os polígonos são gravados exatamente como desenhados pelo usuário.** Recorte pela
+  costa oficial só na hora de rasterizar.
+- **Área nova recorta as áreas antigas da mesma camada ao salvar** (shapely
+  `difference`), nunca entre camadas diferentes.
+- **Terra sem relevo pintado é `planície`**; terra sem cobertura pintada usa a
+  automática por latitude. As duas calculadas ao vivo, nunca gravadas como feature.
 
 ## `dados/massas.geojson` — identidade estável das massas de terra
-
-Cada massa de terra relevante (ilha, arquipélago, continente) recebe um id e um ponto
-de referência. A forma da ilha nunca é gravada aqui: ela é sempre consultada na máscara
-oficial (`mascaras/costa_10240.png`) a partir do ponto de referência, em tempo de
-execução. Isso evita depender de "número do componente conectado", que muda se o
-algoritmo de detecção mudar.
 
 ```json
 {
   "type": "FeatureCollection",
+  "properties": { "versao_esquema": 1 },
   "features": [
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-8.83, 25.1] },
+      "geometry": { "type": "Point", "coordinates": [6.6643, 33.9608] },
       "properties": {
         "id": "calin-principal",
         "regiao": "calin",
         "status": "atribuida",
+        "area_px_2048": 81477,
         "nota": ""
       }
     }
@@ -41,136 +49,281 @@ algoritmo de detecção mudar.
 }
 ```
 
-`coordinates` é `[longitude, latitude]` (ordem padrão do GeoJSON, invertida em relação
-à convenção do resto do projeto — atenção ao converter). `status` é `"atribuida"`,
-`"duvidosa"` ou `"sem_regiao"`.
+`status` é `"atribuida"` ou `"sem_regiao"`. `regiao` é o id de uma entrada de
+`dados/regioes.json`, ou `null` quando `status` é `"sem_regiao"`.
 
-Gerado nesta sessão com 17 massas: as ilhas principais e secundárias das 5 regiões
-nomeadas, mais a ilha do arquipélago do Neck mais próxima de Calin (usada na distância
-corrigida), mais as 9 ilhas marcadas como duvidosas (perto de mais de uma região ao
-mesmo tempo). Não cobre as ~470 massas de terra sem nome e sem relevância de momento;
-uma massa nova entra no arquivo quando passar a importar (ganhar nome, região ou
-conteúdo).
+### Correção 9 (terceira rodada) — renomeação `amb-*` → `ilha-*`, feita nesta sessão
 
-## `dados/lugares.json` — pontos (já existe, sem mudança de formato)
+Os 9 registros que tinham prefixo `amb-` (de "ambíguo", herdado do tempo em que o
+`status` era `"duvidosa"`) agora usam prefixo `ilha-`, mesmo número:
+`amb-046→ilha-046`, `amb-084→ilha-084`, `amb-099→ilha-099`, `amb-097→ilha-097`,
+`amb-107→ilha-107`, `amb-187→ilha-187`, `amb-192→ilha-192`, `amb-204→ilha-204`,
+`amb-218→ilha-218`. Nenhum outro campo mudou. Arquivo já reescrito.
+
+**Padronização de id de região usada em todo o projeto a partir de agora**: slug curto,
+minúsculo, com hífen, igual ao valor já usado no campo `regiao` desta massa —
+`mere`, `syl`, `calin`, `the-neck`, `white-wall`, mais `waning` (a única região sem
+massa própria, pai das três primeiras). É o mesmo formato usado nos ids de
+`dados/regioes.json` (ver abaixo) — antes do `regioes.json` existir, o formato só
+aparecia aqui; agora os dois arquivos usam o mesmo padrão.
+
+### Correção 7 (terceira rodada) — pertencimento de ilha só aqui
+
+O campo `regiao` desta massa é a **única** fonte de pertencimento de ilha a região.
+`dados/regioes.json` não lista mais suas massas (campo `massas` removido de lá) — uma
+região descobre suas ilhas filtrando este arquivo por `regiao == id da região`. Antes
+(segunda rodada) a informação existia nos dois lugares (a lista `massas` de uma região
+E o campo `regiao` de cada massa), podendo divergir se só um fosse editado; agora só
+existe aqui.
+
+## `dados/regioes.json` — regiões nomeadas (criado nesta sessão)
 
 ```json
-{ "id": "...", "nome": "...", "tipo": "...", "latitude": 0.0, "longitude": 0.0, "origem": "..." }
+{
+  "versao_esquema": 1,
+  "regioes": [
+    {
+      "id": "waning",
+      "nome": "Waning",
+      "tipo": "arquipelago",
+      "pai": null,
+      "geometria": null,
+      "rotulo": { "type": "Point", "coordinates": [6.34, 25.74] }
+    },
+    {
+      "id": "mere",
+      "nome": "Mére",
+      "tipo": "ilha",
+      "pai": "waning",
+      "geometria": null,
+      "rotulo": { "type": "Point", "coordinates": [15.18, 19.60] }
+    }
+  ]
+}
 ```
+
+- `geometria`: `null` quando a região é uma ou mais massas inteiras de
+  `massas.geojson` (o caso comum); `Polygon`/`MultiPolygon` só quando a região é menor
+  que uma massa inteira (ex.: "metade norte de Mére") ou é uma área sobre água sem
+  massa pra referenciar (mar, golfo, baía, estreito nomeado). **Sem campo `massas`**
+  (correção 7, acima) — quem quiser a lista de ilhas de uma região consulta
+  `massas.geojson`.
+- `pai`: id de outra região, opcional. Ex.: `Calin`, `Syl`, `Mére` têm `pai: "waning"`.
+- **`rotulo`** (decisão 1, terceira rodada, novo campo, opcional): `Point` com a
+  posição do nome da região no mapa — o mesmo tipo de dado que já existia solto em
+  `lugares.geojson` com `tipo: "regiao"`. Vale também para região sobre água (um "Mar
+  de..." também tem um lugar no mapa onde o nome fica escrito).
+- **Sem bioma nem clima próprios** — continua em relevo/cobertura das áreas pintadas.
+- `tipo`: vocabulário fechado — `"arquipelago"`, `"ilha"`, `"provincia"`, `"reino"`,
+  `"mar"`, `"golfo"`, `"baia"`, `"estreito"`. Fechado por ora; abrir é decisão do
+  usuário, não da ferramenta.
+
+**Conteúdo criado nesta sessão**: as 6 regiões já nomeadas — `waning` (pai, sem
+massa própria), `mere`, `syl`, `calin` (`pai: "waning"`, tipo `"ilha"`, cada uma é a
+massa inteira de mesmo nome), `the-neck` e `white-wall` (tipo `"arquipelago"`, cada
+uma cobre várias massas de `massas.geojson` com o mesmo valor de `regiao`, sem listar
+quais — correção 7). Os 6 `rotulo` vieram dos 6 registros que existiam em
+`lugares.geojson` com `tipo: "regiao"` (mesmas coordenadas, convertidas).
+
+## `dados/lugares.geojson` — pontos (esvaziado nesta sessão)
+
+```json
+{
+  "type": "FeatureCollection",
+  "properties": { "versao_esquema": 1 },
+  "features": []
+}
+```
+
+**Decisão 1 (terceira rodada), resolve a inconsistência da segunda rodada**: os 6
+registros `tipo: "regiao"` saíram daqui e viraram `rotulo` de cada região em
+`regioes.json` (acima). `lugares.geojson` fica vazio, dedicado só a assentamento de
+verdade — o vocabulário fechado de `tipo` (`"cidade"`, `"vila"`, `"fortaleza"`,
+`"porto"`, `"ruina"`, `"marco"`), `capital` e `importancia`, definidos na segunda
+rodada, continuam válidos sem exceção agora que não há mais o caso "rótulo de região"
+misturado aqui.
 
 ## `dados/rios.json` — cursos d'água
 
 ```json
 {
-  "id": "rio-0001",
-  "nome": null,
-  "pontos": [ {"lat": 10.2, "lon": -5.1}, {"lat": 9.8, "lon": -5.4}, "..." ],
-  "afluente_de": null,
-  "termina_em": { "tipo": "mar", "id": null }
+  "type": "FeatureCollection",
+  "properties": { "versao_esquema": 1 },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": { "type": "LineString", "coordinates": [[-5.1, 10.2], [-5.4, 9.8]] },
+      "properties": {
+        "id": "rio-0001",
+        "nome": null,
+        "termina_em": { "tipo": "mar", "id": null },
+        "ramo_de": null
+      }
+    }
+  ]
 }
 ```
 
-- **Sem campo de nascente/foz**: são `pontos[0]` (nascente) e `pontos[-1]` (foz).
-- **Sem largura gravada**: a largura visual é calculada a partir de quantos afluentes
-  deságuam rio abaixo (mais afluentes acumulados = rio mais largo perto da foz), não é
-  um número editado à mão.
-- `termina_em.tipo` é `"mar"`, `"lago"` ou `"rio"` (rio principal, se for afluente);
-  `termina_em.id` é o id do lago/rio, ou `null` se for o mar. **A ferramenta valida na
-  hora de salvar**: todo rio tem que terminar num desses três destinos, um rio "solto"
-  no meio da terra é rejeitado.
-- `afluente_de`: id do rio principal, ou `null` se for o próprio rio principal.
+- `coordinates[0]` é a nascente, `coordinates[-1]` é a foz. Sem largura gravada
+  (calculada por afluentes acumulados). `termina_em.tipo`: `"mar"`, `"lago"` ou
+  `"rio"`. `ramo_de`: `null`, ou o id do rio-mãe quando esta feature é um braço de
+  delta (segunda rodada, sem mudança).
+
+### Correção 2 (terceira rodada) — validação por segmento, tolerância de foz
+
+- **A validação de "fica em terra" passa a checar cada segmento do traçado (o trecho
+  reto entre um vértice e o próximo), não só os vértices.** Um segmento que corta um
+  pedaço de mar no meio do caminho é rejeitado mesmo que os dois vértices que o formam
+  estejam em terra (o caso de um clique "pulando" um istmo estreito por cima da água,
+  por exemplo). Tecnicamente: o segmento é amostrado a cada pixel (ou a cada poucos
+  pixels, o suficiente pra não pular a espessura de um canal fino) contra
+  `costa_10240.png`, não só nos dois extremos.
+- **Exceção: o último segmento do rio (o que termina em `termina_em.tipo == "mar"`)
+  pode atravessar água.** É o trecho até a foz de verdade — sem essa exceção nenhum rio
+  conseguiria terminar no mar, porque o último segmento por definição vai de terra até
+  água.
+- **Tolerância da foz: o último ponto (`coordinates[-1]`) tem que estar OU dentro da
+  água OU a até 2 km da costa mais próxima** (medido por `costa_10240.png`, mesma
+  conversão de `coordenadas.json`). Isso dá folga para o usuário não precisar acertar o
+  pixel exato da linha da costa — um ponto final um pouco "curto", ainda em terra mas a
+  menos de 2 km do mar, é aceito; a rasterização estica visualmente até a costa. Um
+  ponto final a mais de 2 km da costa, em terra, é rejeitado (rio "não chegou" ao mar).
+- Rio (e delta) "solto" no meio da terra, sem cumprir nenhuma das duas condições acima,
+  continua rejeitado ao salvar, como já estava definido.
+- Regra de cruzamento entre rios (só na confluência) sem mudança da segunda rodada.
 
 ## `dados/estradas.json` — vias
 
 ```json
 {
-  "id": "estrada-0001",
-  "nome": null,
-  "tipo": "estrada",
-  "lugares": ["porto-de-calin", "vila-do-vau", "capital-de-calin"],
-  "pontos": [ {"lat": 0, "lon": 0}, "..." ]
+  "type": "FeatureCollection",
+  "properties": { "versao_esquema": 1 },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": { "type": "LineString", "coordinates": [[0, 0], [0.1, 0.05]] },
+      "properties": {
+        "id": "estrada-0001",
+        "nome": null,
+        "tipo": "estrada",
+        "lugares": ["porto-de-calin", "vila-do-vau", "capital-de-calin"]
+      }
+    }
+  ]
 }
 ```
 
-- `lugares` é a **lista completa** de lugares por onde a via passa, na ordem (não só
-  origem e destino) — permite estradas com paradas no meio.
-- `pontos` é o traçado geométrico completo (inclui curvas entre um lugar e outro), como
-  nos rios.
-- `tipo`: `"estrada"` ou `"trilha"`.
+`lugares`: lista completa de ids de `lugares.geojson` por onde a via passa, na ordem.
+`tipo`: `"estrada"` ou `"trilha"`.
 
-## `dados/regioes.json` — regiões nomeadas, sobre terra ou sobre água
+### Correção 3 (terceira rodada) — atração automática substitui a tolerância de 300m
 
-```json
-{
-  "id": "waning",
-  "nome": "Waning",
-  "tipo": "arquipelago",
-  "pai": null,
-  "massas": ["mere-principal", "syl-principal", "calin-principal"],
-  "poligono": null
-}
-```
+A validação por tolerância pós-salvamento da segunda rodada (300m, rejeitar se
+ultrapassar) foi **substituída por atração automática durante o desenho** — o problema
+de alinhamento deixa de existir por construção, em vez de ser checado depois:
 
-- Uma região é representada de **uma das duas formas**, nunca as duas ao mesmo tempo:
-  - `massas`: lista de ids de `massas.geojson` (uma região = uma ou mais ilhas
-    inteiras). É a forma padrão quando a região cobre a ilha toda.
-  - `poligono`: lista de pontos lat/lon (uma região = parte de uma ilha, por exemplo
-    "metade norte de Mére"). Só é usado quando a região é menor que uma massa inteira.
-- **Sem bioma nem clima próprios** — isso já está nas áreas pintadas (relevo/cobertura);
-  guardar de novo aqui duplicaria e poderia divergir.
-- `pai`: id de outra região, opcional. Ex.: `Calin`, `Syl` e `Mére` têm `pai: "waning"`.
-- `tipo`: livre (`"arquipelago"`, `"ilha"`, `"reino"`, `"mar"`, `"golfo"`, `"baia"`,
-  `"estreito"`, etc.) — inclui **regiões sobre água** (mares, golfos, baías, estreitos
-  nomeados), que usam `poligono` (não têm massa de terra para referenciar).
+- **Ao desenhar uma estrada, um ponto do traçado a menos de 5 km de um lugar já
+  marcado gruda na coordenada exata do lugar** (o clique do usuário é ajustado para a
+  posição exata de `lugares.geojson`, não fica "perto"). Depois desse ajuste, a
+  validação ao salvar é **exata**: o ponto do traçado onde o lugar está listado em
+  `lugares` tem que ser bit a bit igual à coordenada do lugar, não "dentro de uma
+  tolerância" — porque a atração já garantiu isso no momento do desenho.
+- **O início de um braço de delta gruda no traçado do rio-mãe** pelo mesmo mecanismo:
+  ao desenhar um novo rio com `ramo_de` apontando para outro, o primeiro ponto a menos
+  de 5 km do traçado do rio-mãe gruda no ponto mais próximo desse traçado (não
+  necessariamente um vértice existente — pode ser um ponto novo, interpolado, no meio
+  de um segmento do rio-mãe). Depois disso, a validação de sobreposição
+  nascente-do-delta/traçado-do-rio-mãe (`ESPEC-dados.md`, seção rios, herdada da
+  segunda rodada) também passa a ser exata. **Suposição desta revisão, não confirmada
+  pelo usuário**: os 5 km valem para os dois casos (lugar e delta) — o pedido original
+  só deu a distância para o caso do lugar; usei o mesmo valor pro delta por
+  consistência, mas é para o usuário confirmar ou corrigir quando a etapa 7 (rio) for
+  construída.
+- **Se um lugar listado for movido depois** (numa sessão futura, arrastando o ponto em
+  `lugares.geojson`): a marcação de **"desalinhada"** proposta na segunda rodada
+  continua valendo — a estrada não se move sozinha, mas aparece marcada até o usuário
+  escolher "ajustar o traçado até o lugar" ou "ignorar por agora". Isto continua sendo
+  recomendação da IA, a confirmar na etapa 8.
 
 ## `dados/areas-pintadas.geojson` — relevo, cobertura e lagos
 
 ```json
 {
   "type": "FeatureCollection",
+  "properties": { "versao_esquema": 1 },
   "features": [
     {
       "type": "Feature",
-      "geometry": { "type": "Polygon", "coordinates": [[[lon, lat], "..."]] },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[0, 0], [0.1, 0], [0.1, 0.1], [0, 0]]], [[[2, 2], [2.1, 2], [2.1, 2.1], [2, 2]]]]
+      },
       "properties": {
         "id": "area-0042",
-        "camada": "relevo",
-        "valor": "colina",
+        "camada": "cobertura",
+        "valor": "floresta-boreal",
         "semente_ruido": 8821
       }
-    },
-    {
-      "type": "Feature",
-      "geometry": { "type": "Polygon", "coordinates": [[[lon, lat], "..."]] },
-      "properties": { "id": "lago-0007", "camada": "lago", "valor": "lago" }
     }
   ]
 }
 ```
 
-- `camada`: `"relevo"`, `"cobertura"` ou `"lago"` (lago é tratado como camada própria,
-  não como um valor de cobertura, porque é a única exceção que pode mexer na costa
-  interna).
-- `valor`: um dos vocabulários fechados definidos no CARTOGRAFO (relevo: planície,
-  colina, montanha, alta montanha; cobertura: floresta temperada, floresta tropical,
-  floresta boreal, selva, campo, deserto, pântano, tundra, geleira).
-- `semente_ruido`: inteiro fixo por área, usado para gerar a borda irregular na hora de
-  rasterizar; garante que a mesma área sempre rasteriza igual.
-- Terra sem nenhuma feature de `camada: "cobertura"` sobrepondo recebe cobertura
-  automática por latitude (regra do CARTOGRAFO) na hora de rasterizar; a ferramenta
-  nunca grava essa automática como feature, só a calcula ao vivo — se gravasse, uma
-  mudança futura na regra de latitude não alcançaria terra já "coberta" por engano.
+### Correção 4 (terceira rodada) — `Polygon` e `MultiPolygon`
+
+`geometry.type` pode ser `"Polygon"` **ou `"MultiPolygon"`** — uma única feature (um
+`id`, um `valor`, uma `semente_ruido`) pode cobrir vários pedaços de terra desconexos
+da mesma camada e do mesmo valor, sem precisar virar duas features separadas. Faz
+diferença pro recorte da correção anterior (shapely `difference`, "Princípios gerais"):
+a operação de unir/subtrair/apagar trata as duas geometrias igual, shapely suporta as
+duas nativamente. `camada`, `valor` e `semente_ruido` sem mudança de vocabulário desde
+a segunda rodada.
 
 ## `dados/fronteiras.json` — reservado, vazio
 
 ```json
-[]
+{ "type": "FeatureCollection", "properties": { "versao_esquema": 1 }, "features": [] }
 ```
 
-Formato futuro (quando fronteiras de reino entrarem): `id`, `nome`, `poligono`,
-`reino: null`. Fica como array vazio até ter uso.
+## `dados/coordenadas.json` — reescrito nesta sessão (correção 8)
 
-## `dados/coordenadas.json` — já existe, sem mudança de formato
+```json
+{
+  "versao_esquema": 1,
+  "planeta": { "raio_km": 7963.75, "circunferencia_km": 50037.717, "distancia_polo_a_polo_km": 25018.858 },
+  "projecao": { "km_por_px_latitude": 1.25, "km_por_grau": 138.993658, "px_por_grau": 111.194927 },
+  "referencia": { "y_equador_px": 7650, "x_meridiano_zero_px": 5120 },
+  "limites_da_tela": { "latitude_topo": 68.798, "latitude_base": -23.292, "longitude_esquerda": -46.045, "longitude_direita": 46.045 }
+}
+```
 
-Sistema de coordenadas e fórmulas de conversão pixel↔lat/lon↔distância real. Ver
-`CARTOGRAFO.md`, seção "Sistema de coordenadas".
+(Esquema simplificado acima só para leitura; o arquivo de verdade tem também
+`formulas`, `_derivacao` e `faixas_de_latitude_das_regioes` — ver o arquivo em si.)
+
+- **`px_por_grau` e `km_por_grau` gravados uma vez, com precisão total, e derivados**:
+  `km_por_grau = circunferencia_km / 360` (mundo equirretangular sem correção por
+  cos(latitude), grau vale o mesmo em qualquer lugar); `px_por_grau = km_por_grau /
+  km_por_px_latitude`. `km_por_px_latitude` (1,25) é o único valor medido diretamente
+  (a escala da tela de 10240px contra o mundo); todo o resto deriva dele. Antes
+  (segunda rodada e anterior) `111.2`/`139.0` eram números arredondados repetidos em
+  três lugares do arquivo (`projecao`, e implicitamente nas fórmulas); agora aparecem
+  uma vez, com 6 casas decimais, e as fórmulas citam os campos pelo nome
+  (`referencia.y_equador_px`, `projecao.px_por_grau`, etc.) em vez de repetir o número.
+- **`limites_da_tela` agora é derivado das fórmulas**, não medido separadamente —
+  antes tinha os mesmos 4 números arredondados de forma independente; a diferença de
+  arredondamento é mínima (68,79 → 68,798) mas agora existe uma fonte só.
+- **`faixas_de_latitude_das_regioes`**: o campo `massa_id`, que era um número interno
+  de uma análise antiga (1, 2, 3, 5, 6, 11 — não existia em mais nenhum arquivo), virou
+  o id estável de `dados/massas.geojson` (`mere-principal`, `syl-principal`, etc.).
+- Arquivo já reescrito nesta sessão; ver `dados/coordenadas.json` para o conteúdo
+  completo e comentado.
+
+## Decisões em aberto
+
+- Vocabulário fechado de `tipo` em `regioes.json` pode precisar crescer; hoje cobre só
+  o que já existe no mapa.
+- Distância de atração de 5km pro início de um braço de delta contra o traçado do
+  rio-mãe (correção 3, acima): suposição desta revisão, a confirmar com o usuário.
+- Se `Leaflet-Geoman` free cobre cortar/rotacionar/dividir/escalar/snap (não é
+  usado pelo recorte de área, que é shapely no servidor, mas pode interessar por outro
+  motivo) — ver `ESPEC-ferramenta.md`.

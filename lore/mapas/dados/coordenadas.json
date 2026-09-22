@@ -1,18 +1,20 @@
 {
-  "_comentario": "Definição do sistema de coordenadas do mapa de Uldun. Gerado a partir da medição do pixel de terra mais ao sul de Mére na costa oficial (mascaras/costa_10240.png), em 2026-09-21.",
+  "_comentario": "Definição do sistema de coordenadas do mapa de Uldun. Gerado a partir da medição do pixel de terra mais ao sul de Mére na costa oficial (mascaras/costa_10240.png), em 2026-09-21. Revisado em 2026-09-21 (correção 8, terceira rodada): px_por_grau e km_por_grau passam a ser derivados de raio_km e km_por_px_latitude, gravados uma vez com precisão total; fórmulas e limites_da_tela passam a citar os campos pelo nome em vez de repetir o número.",
+  "versao_esquema": 1,
   "planeta": {
     "raio_km": 7963.75,
     "raio_em_raios_terrestres": 1.25,
-    "circunferencia_km": 50037.72,
-    "distancia_polo_a_polo_km": 25018.86,
-    "_correcao_2026-09-21": "valores antigos (50038.5 e 25019.25) estavam levemente errados; recalculados do zero a partir de R=7963.75 (2*pi*R e pi*R)"
+    "circunferencia_km": 50037.717,
+    "distancia_polo_a_polo_km": 25018.858,
+    "_derivacao": "circunferencia_km = 2*pi*raio_km; distancia_polo_a_polo_km = pi*raio_km"
   },
   "projecao": {
     "tipo": "equirretangular",
     "resolucao_tela_px": 10240,
     "km_por_px_latitude": 1.25,
-    "px_por_grau": 111.2,
-    "km_por_grau": 139.0
+    "km_por_grau": 138.993658,
+    "px_por_grau": 111.194927,
+    "_derivacao": "km_por_grau = planeta.circunferencia_km / 360 (mundo esférico, equirretangular sem correção por cos(latitude), então o grau vale o mesmo tamanho em qualquer latitude ou longitude). px_por_grau = km_por_grau / km_por_px_latitude. km_por_px_latitude é o único valor medido diretamente (não derivado): a escala da tela de 10240px contra o mundo. Toda fórmula abaixo usa px_por_grau por nome, não repete o número — se km_por_px_latitude for remedido, só ele muda e o resto recalcula."
   },
   "referencia": {
     "y_equador_px": 7650,
@@ -21,25 +23,26 @@
     "origem_do_x_meridiano": "centro horizontal da tela, provisório"
   },
   "formulas": {
-    "latitude_de_y": "lat = (7650 - y) / 111.2",
-    "longitude_de_x": "lon = (x - 5120) / 111.2",
-    "y_de_latitude": "y = 7650 - lat * 111.2",
-    "x_de_longitude": "x = 5120 + lon * 111.2",
-    "nota": "projeção equirretangular simples: 1 pixel vale os mesmos graus em qualquer latitude/longitude (NÃO corrigido por cos(latitude)). Para distância real entre dois pontos, converter para lat/lon com estas fórmulas e usar grande círculo (haversine) com o raio do planeta, nunca a régua da tela."
+    "latitude_de_y": "lat = (referencia.y_equador_px - y) / projecao.px_por_grau",
+    "longitude_de_x": "lon = (x - referencia.x_meridiano_zero_px) / projecao.px_por_grau",
+    "y_de_latitude": "y = referencia.y_equador_px - lat * projecao.px_por_grau",
+    "x_de_longitude": "x = referencia.x_meridiano_zero_px + lon * projecao.px_por_grau",
+    "nota": "projeção equirretangular simples: 1 pixel vale os mesmos graus em qualquer latitude/longitude (NÃO corrigido por cos(latitude)). Para distância real entre dois pontos, converter para lat/lon com estas fórmulas e usar grande círculo (haversine) com planeta.raio_km, nunca a régua da tela."
   },
   "limites_da_tela": {
-    "latitude_topo": 68.79,
-    "latitude_base": -23.29,
-    "longitude_esquerda": -46.04,
-    "longitude_direita": 46.04
+    "latitude_topo": 68.798,
+    "latitude_base": -23.292,
+    "longitude_esquerda": -46.045,
+    "longitude_direita": 46.045,
+    "_derivacao": "latitude_topo = referencia.y_equador_px / projecao.px_por_grau; latitude_base = -(projecao.resolucao_tela_px - referencia.y_equador_px) / projecao.px_por_grau; longitude_esquerda = -referencia.x_meridiano_zero_px / projecao.px_por_grau; longitude_direita = (projecao.resolucao_tela_px - referencia.x_meridiano_zero_px) / projecao.px_por_grau"
   },
   "faixas_de_latitude_das_regioes": {
-    "_comentario": "derivado das caixas delimitadoras das massas de terra em render/analise, escala 10240. Aproximado, calculado a partir de bounding box, não do contorno exato.",
-    "Mere": { "lat_norte": 41.10, "lat_sul": 0.09, "massa_id": 1 },
-    "Syl": { "lat_norte": 25.45, "lat_sul": 1.44, "massa_id": 2 },
-    "White_Wall_bloco_principal": { "lat_norte": 68.79, "lat_sul": 60.13, "massa_id": 5 },
-    "White_Wall_faixa_leste": { "lat_norte": 68.79, "lat_sul": 55.85, "massa_id": 3 },
-    "Calin": { "lat_norte": 43.71, "lat_sul": 26.17, "massa_id": 6 },
-    "The_Neck": { "lat_norte": 55.31, "lat_sul": 49.15, "massa_id": 11 }
+    "_comentario": "derivado das caixas delimitadoras das massas de terra em render/analise, escala 10240. Aproximado, calculado a partir de bounding box, não do contorno exato. 'massa_id' trocado pelo id estável de dados/massas.geojson (correção 8, terceira rodada) — o numérico antigo (1, 2, 3, 5, 6, 11) era interno a essa análise e não existe mais em nenhum outro arquivo.",
+    "Mere": { "lat_norte": 41.10, "lat_sul": 0.09, "massa_id": "mere-principal" },
+    "Syl": { "lat_norte": 25.45, "lat_sul": 1.44, "massa_id": "syl-principal" },
+    "White_Wall_bloco_principal": { "lat_norte": 68.79, "lat_sul": 60.13, "massa_id": "white-wall-bloco-principal" },
+    "White_Wall_faixa_leste": { "lat_norte": 68.79, "lat_sul": 55.85, "massa_id": "white-wall-faixa-leste" },
+    "Calin": { "lat_norte": 43.71, "lat_sul": 26.17, "massa_id": "calin-principal" },
+    "The_Neck": { "lat_norte": 55.31, "lat_sul": 49.15, "massa_id": "the-neck-principal" }
   }
 }

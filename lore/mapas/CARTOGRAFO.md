@@ -10,18 +10,79 @@ confirmado pelo usuário; o que é recomendação de IA fica marcado como tal.
 primeira coisa que `/cartografo` mostra.)*
 
 - **Última atualização:** 2026-09-21.
-- **Etapa:** revisão do esquema de dados e da especificação da ferramenta de pintura
-  concluída (`ESPEC-dados.md`, `ESPEC-ferramenta.md`), junto com correções de
-  medição (distância The Neck↔Calin, extensão leste-oeste de Waning) e a verificação
-  exaustiva de que Calin, Syl e Mère são massas de terra separadas. Nada disso foi
-  commitado ainda.
-- **Pendente:** aprovação final do usuário sobre o esquema de dados e a especificação
-  da ferramenta (ainda marcados como recomendação da IA, não decisão); instalar
-  shapely (pede ok); nomear as massas de terra sem nome; decidir pertencimento das 9
-  ilhas marcadas como `"duvidosa"` em `dados/massas.geojson`.
-- **Próximo passo:** usuário revisa `ESPEC-dados.md` e `ESPEC-ferramenta.md` e aprova
-  (ou pede ajuste) antes de qualquer construção da ferramenta. Nenhuma etapa de
-  código foi iniciada.
+- **Etapa:** **etapa 1 da ferramenta concluída e verificada** (sessão de
+  remote-control). Instalação feita, código escrito, tiles da costa e do mar gerados,
+  servidor testado num navegador de verdade (Leaflet mostrando o contorno de Uldun,
+  zoom, minimapa, leitura de lat/lon, seletor de camada). **Servidor deixado rodando**
+  em `http://127.0.0.1:8420/` para o usuário abrir.
+- **Instalação feita nesta sessão** (`lore/mapas/ferramentas/`, fora do git exceto
+  onde dito):
+  - Ambiente virtual `.venv` (Python 3.14) com `fastapi==0.141.1`, `uvicorn==0.53.0`
+    **sem `[standard]`**, `shapely`, `Pillow`, `numpy` — versões exatas em
+    `requirements.txt`. O shapely do Python global (sessão anterior) não foi tocado.
+  - Leaflet 1.9.4 baixado pronto (sem npm, sem CDN) para
+    `static/vendor/leaflet-1.9.4/` (`leaflet.js`, `leaflet.css`, `images/`,
+    `LICENSE` — BSD-2-Clause confirmada no arquivo). **Estes arquivos vão para o
+    git.**
+  - Leaflet-Geoman **não instalado** (fica para a etapa 5). `leaflet-minimap`
+    **não usado** — minimapa é código próprio.
+  - `.venv` acrescentado ao `.gitignore` da raiz.
+- **Código de etapa 1** em `lore/mapas/ferramentas/`: servidor FastAPI
+  (`backend/main.py`, `backend/coordenadas.py`), página (`templates/index.html`,
+  `static/css/estilo.css`, `static/js/app.js`, `static/js/minimapa.js`), miniatura do
+  minimapa (`static/img/minimapa.jpg`, gerada a partir de `Uldun_parte-jogavel.jpg`
+  já existente, sem reprocessar a máscara nativa) e o script de tiles
+  (`scripts/gerar_tiles.py`). CRS própria de Uldun verificada contra o código-fonte
+  oficial do Leaflet 1.9.4 (`CRS.Simple.js`, `Transformation.js`, tag `v1.9.4`), não
+  só suposta. Zoom do Leaflet vai até `MAX_ZOOM_MAPA=9` (3 níveis além dos 6 nativos,
+  o navegador estica o tile de zoom 6 sozinho — nenhum bloco ampliado é gerado).
+- **Tiles gerados nesta sessão** (`scripts/gerar_tiles.py --confirmo`, depois do
+  usuário confirmar com navegadores fechados): 3.184 tiles (1.163 costa + 2.021 mar),
+  10,4s, pico de 298 MB de memória (a máscara é lida em modo "L", 1 canal, ~105 MB —
+  nunca existe uma imagem RGBA do mapa inteiro; a colorização acontece tile a tile),
+  3,9 MB em disco. Script recusa rodar se `render/tiles/` já existir (sem
+  sobrescrever) e recusa rodar sem `--confirmo` (sem tocar em nada). Detalhe completo,
+  com a tabela de métricas, em `ESPEC-ferramenta.md`, seção "Etapa 1".
+- **Achado corrigido nesta sessão, antes de gerar os tiles**: `costa_10240.png` é
+  modo "L" nativo (sem canal alfa de verdade); uma leitura de sessão anterior que
+  convertia pra RGBA e checava o alfa sempre dava "terra" (alfa sintético sempre 255)
+  — não testava nada. Achado, corrigido e a validação dos 17 pontos de
+  `massas.geojson` refeita com o canal certo (conclusão não mudou). Ver "Achados
+  técnicos registrados" abaixo.
+- **Verificação visual feita nesta sessão** (navegador real via `claude-in-chrome`):
+  costa aparece corretamente com zoom, navegação, minimapa (retângulo acompanha a
+  área visível, clique navega), leitura de lat/lon sob o cursor e seletor de camada
+  ativa — tudo conferido funcionando. Sem erro no console. Detalhe (inclusive um
+  achado sobre cliques automatizados de teste vs. clique real, que não indica
+  problema no app) em `ESPEC-ferramenta.md`.
+- **Trabalho de dados feito nesta sessão** (conversão/correção de arquivo, autorizado
+  pela decisão 1 e pelas correções 7, 8 e 9 — anterior à liberação da etapa 1):
+  - **`dados/regioes.json` criado**: as 6 regiões já nomeadas, cada uma com `rotulo`
+    (movido de `lugares.geojson`) e sem campo `massas` (pertencimento de ilha agora
+    só em `massas.geojson`, campo `regiao`).
+  - **`dados/lugares.geojson` esvaziado**: pronto para assentamento de verdade.
+  - **`dados/massas.geojson`**: ids `amb-*` → `ilha-*` (mesmo número).
+  - **`dados/coordenadas.json` reescrito**: `px_por_grau`/`km_por_grau` derivados de
+    `raio_km` e `km_por_px_latitude`; `limites_da_tela` derivado das mesmas fórmulas;
+    `massa_id` numérico trocado pelos ids estáveis de `massas.geojson`.
+  - Esboço da tela atualizado (`render/analise/esboco_ferramenta_v2.png`).
+- **Pendente:**
+  - Confirmar a suposição desta rodada de que a atração automática de 5km (correção 3
+    do `ESPEC-dados.md`) vale também para o início de um braço de delta contra o
+    traçado do rio-mãe — o pedido original só deu a distância para o caso de lugar.
+  - Gerar o cache de identidade de ilha (etapa 10 da ferramenta): processamento
+    pesado, ainda não rodado.
+  - Confirmar na prática, na etapa 5 da ferramenta, se o Leaflet-Geoman free cobre
+    cortar/rotacionar/dividir/escalar/snap (não bloqueia — a arquitetura já não
+    depende disso).
+  - Nomear as massas de terra sem nome; decidir pertencimento das 9 ilhas
+    `ilha-*` em `dados/massas.geojson`.
+  - Vale o usuário clicar o "+"/"−" de zoom com o próprio mouse ao abrir a página,
+    pra confirmar que funciona liso (achado desta sessão sobre clique automatizado,
+    ver `ESPEC-ferramenta.md`) — não deveria repetir, mas é rápido de conferir.
+- **Próximo passo:** o usuário abrir `http://127.0.0.1:8420/` e conferir a ferramenta.
+  Depois disso, definir a próxima etapa (2: camadas de referência, com o aviso de
+  processamento pesado do Ocean Deep) ou outra prioridade.
 
 ## Objetivo e estilo
 
@@ -44,6 +105,14 @@ identificador; nome é opcional e entra depois.
   travou uma vez por isso (rodada de 2026-09-21).
 - Nada de inventar API: o que não estiver documentado ou testado, dizer isso
   explicitamente em vez de supor.
+- **Toda validação precisa de um controle negativo**: um caso que OBRIGATORIAMENTE
+  falha (por exemplo, um ponto conhecido no meio do mar, testado contra "cai em
+  terra"). Validação que nunca reprova nada é considerada quebrada, não aprovada —
+  mesmo que a conclusão pareça certa. Motivo: em 2026-09-21 a validação dos 17 pontos
+  de `massas.geojson` lia um canal alfa sintético (criado por um `.convert("RGBA")`
+  numa máscara que não tinha alfa de verdade, sempre 255) e aprovava **qualquer**
+  ponto, terra ou mar — a conclusão até bateu por sorte, mas o teste não testava
+  nada. Registrado por pedido explícito do usuário depois desse achado.
 
 ## Estrutura de pastas (`lore/mapas/`)
 
@@ -57,7 +126,7 @@ identificador; nome é opcional e entra depois.
 | `simbolos/` | biblioteca de símbolos gerada por IA | não |
 | `render/` | saídas do gerador, incluindo `render/analise/` (prévias e conferências) | não |
 | `photoshop/` | PSD de montagem final (não é o `Mapa.psd` original) | não |
-| `ferramentas/` | código da ferramenta de pintura e do gerador | sim |
+| `ferramentas/` | código da ferramenta de pintura e do gerador (`backend/`, `static/`, `templates/`, `scripts/`, `requirements.txt`) | sim, exceto `.venv/` (ambiente Python local, no `.gitignore`) |
 | raiz de `mapas/` | `Uldun_parte-jogavel.jpg` e `Uldun_parte-jogavel_rotulado.jpg` (cópias reduzidas, 2560px, já publicadas no site) | sim |
 
 ## Sistema de coordenadas
@@ -77,13 +146,17 @@ Definição completa, com fórmulas, em `dados/coordenadas.json`. Resumo:
   Longitude da borda esquerda ≈ -46,04° (46,04°O), da direita ≈ +46,04° (46,04°L).
 - **Coordenadas de tudo (cidades, rios, regiões) são gravadas em latitude/longitude,
   nunca em pixel da tela**, para o mapa poder crescer além da tela sem renumerar nada.
+  Desde 2026-09-21 (decisão 1, ver "Decisões tomadas › Técnica"), o formato de
+  gravação é GeoJSON, com a ordem `[longitude, latitude]` do padrão GeoJSON — invertida
+  em relação à ordem em que este documento costuma escrever "latitude/longitude" em
+  prosa; ao converter entre os dois, atenção à ordem.
 - Faixas de latitude aproximadas das regiões nomeadas (por caixa delimitadora, não
   pelo contorno exato): Mére 0,1°N–41,1°N · Syl 1,4°N–25,4°N · Calin 26,2°N–43,7°N ·
   The Neck 49,2°N–55,3°N · The White Wall até 68,8°N no topo da tela (terra segue além
   da borda). **Atenção**: essas faixas vêm da caixa delimitadora da MASSA DE TERRA
-  inteira; a latitude/longitude de cada rótulo em `dados/lugares.json` é a posição do
-  TEXTO do nome no mapa, não o centro nem os limites da região — as duas coisas medem
-  coisas diferentes e não devem ser confundidas.
+  inteira; a posição de cada rótulo em `dados/lugares.geojson` é a posição do TEXTO do
+  nome no mapa, não o centro nem os limites da região — as duas coisas medem coisas
+  diferentes e não devem ser confundidas.
 - Extensão de Waning (arquipélago Calin+Syl+Mére): **norte-sul** (sul de Mére até norte
   de Calin) **6.074,9 km**; **leste-oeste** (oeste de Syl até leste de Mére)
   **7.124,8 km** — a maior das duas. Tempos de referência (linha reta, não rota real):
@@ -152,26 +225,53 @@ prompts, IA pintando o mapa inteiro, está superada — ver seção Técnica). R
 ### Técnica
 - Resolução de trabalho 10240px; resolução final alvo **20480px** (0,625 km/px), em
   blocos se necessário.
-- Ferramenta de pintura: editor em canvas no navegador, com Python gerando o mapa. Sem
-  mesa digitalizadora — prioriza laço poligonal e preenchimento limitado pela costa.
-  Especificação completa em `ESPEC-ferramenta.md`.
+- Ferramenta de pintura: servidor Python (FastAPI) + **Leaflet** no navegador
+  (`L.CRS.Simple` com a transformação de `coordenadas.json`, não o CRS padrão baseado
+  no raio da Terra real), com o plugin **Leaflet-Geoman free** (MIT) para
+  desenhar/editar polígono. Decidido em 2026-09-21, substituindo a ideia anterior de
+  canvas próprio ou Konva.js — nenhum impedimento concreto foi encontrado para usar
+  Leaflet no lugar deles. Sem mesa digitalizadora — prioriza laço poligonal e
+  preenchimento limitado pela costa. Especificação completa em `ESPEC-ferramenta.md`.
 - Photoshop só para montagem final e retoques. O PSD de montagem é criado pelo próprio
   usuário, uma vez, com um passo a passo escrito pela IA, usando objetos inteligentes
   vinculados. **Nada de API não documentada** — a automação de smart object vinculado
   não tem API oficial da Adobe (achado da sessão anterior), então essa etapa é manual.
+- **Todo dado de posição (não só área pintada) é GeoJSON, `[longitude, latitude]`**
+  (decisão 1, 2026-09-21): lugares em `Point`, rios/estradas em `LineString`, regiões
+  em `Polygon`/`MultiPolygon` (ou sem geometria própria, quando definida por massas),
+  áreas pintadas em `Polygon` **ou `MultiPolygon`** (correção 4, 2026-09-21, terceira
+  rodada — um valor pode cobrir pedaços de terra desconexos numa feature só). Esquema
+  completo em `ESPEC-dados.md`.
+- **`dados/regioes.json` criado** (decisão 1, 2026-09-21, terceira rodada): as 6
+  regiões nomeadas, cada uma com `rotulo` (`Point`, posição do nome no mapa) — os 6
+  registros `tipo: "regiao"` que existiam em `lugares.geojson` (herança da segunda
+  rodada) foram movidos para lá. `lugares.geojson` fica vazio, dedicado só a
+  assentamento de verdade (tipo fechado: cidade, vila, fortaleza, porto, ruína,
+  marco).
+- **Pertencimento de ilha a região mora só em `massas.geojson`** (campo `regiao` de
+  cada massa; correção 7, 2026-09-21, terceira rodada) — `regioes.json` não lista mais
+  suas massas, pra não ter a mesma informação em dois lugares que podem divergir. Os 9
+  ids que eram `amb-*` (de "ambíguo", herdado do tempo do `status: "duvidosa"`) viraram
+  `ilha-*`, mesmo número (correção 9). Formato de id de região padronizado: slug
+  minúsculo com hífen (`mere`, `syl`, `calin`, `the-neck`, `white-wall`, `waning`),
+  igual em `massas.geojson` e `regioes.json`.
 - **Áreas pintadas (relevo, cobertura, lagos, regiões-sobre-água) são guardadas como
-  vetor, em GeoJSON, com coordenadas em latitude/longitude do mundo** — não como
-  máscara raster de controle. A rasterização acontece na resolução que for precisa em
-  cada momento (prévia ou final), e não trava mais o desenho a um grid de pixel fixo.
-  Operações de unir, subtrair e apagar área usam a biblioteca **shapely** (Python) —
-  ainda não instalada, pede ok antes de instalar.
+  vetor** — não como máscara raster de controle. **O polígono é gravado exatamente como
+  desenhado** (decisão 5, 2026-09-21): o recorte pela costa oficial só acontece na hora
+  de rasterizar (prévia ou final), nunca ao salvar — o dado pode ter um traço que
+  avança sobre o mar, e isso é esperado, não é erro. **Área nova recorta a área antiga
+  da MESMA camada ao salvar** (decisão 3, 2026-09-21; shapely `difference`) — relevo
+  nunca corta cobertura, e vice-versa, porque são independentes. Operações de unir,
+  subtrair e apagar área usam a biblioteca **shapely** (Python), instalada em
+  2026-09-21 (versão 2.1.2, autorizado pelo usuário).
 - Relevo e cobertura são **camadas separadas**. Relevo: planície, colina, montanha,
   alta montanha. Cobertura: floresta temperada, floresta tropical, floresta boreal,
   selva, campo, deserto, pântano, tundra, geleira. Todo pedaço de terra tem os dois ao
   mesmo tempo (um relevo e uma cobertura), nunca só um.
 - Terra que o usuário não pintou recebe **cobertura automática por latitude**, seguindo
-  o guia de clima da seção "Clima e bioma" acima. Qualquer pintura do usuário
-  sobrescreve o valor automático naquele trecho.
+  o guia de clima da seção "Clima e bioma" acima; e **relevo automático `planície`**
+  (decisão 4, 2026-09-21, novo — antes só cobertura tinha padrão). Qualquer pintura do
+  usuário sobrescreve o valor automático naquele trecho, nas duas camadas.
 - **Lagos internos** podem ser criados pelo usuário na ferramenta. É a única exceção à
   regra da costa: o contorno do lago pode ser editado livremente, a costa do mar
   continua intocável.
@@ -182,18 +282,97 @@ prompts, IA pintando o mapa inteiro, está superada — ver seção Técnica). R
   de componente conectado (esse número muda se o método de detecção mudar). Cada massa
   relevante recebe um **id curto permanente e um ponto de referência** (latitude e
   longitude); a ilha correspondente é achada consultando a máscara oficial nesse ponto
-  em tempo de execução. Formato e dados em `dados/massas.geojson`.
+  em tempo de execução. Formato e dados em `dados/massas.geojson`. **Correção
+  2026-09-21**: a consulta não roda mais por preenchimento por inundação a cada clique
+  — um cache (mapa de rótulos de componente, ou contorno vetorial) é gerado **uma vez**
+  a partir da máscara oficial inteira e fica salvo em `render/` (fora do git),
+  regenerável a qualquer momento. Isso é processamento pesado (varre a máscara inteira)
+  e cai na regra de aviso/confirmação da seção "Regras invioláveis"; ainda não foi
+  gerado. Detalhe em `ESPEC-ferramenta.md`.
 - Pertencimento de ilha a região é decidido pelo usuário na ferramenta.
   **Atribuição automática só quando a ilha estiver a menos de 100 km da ilha PRINCIPAL
-  da região** (não da região inteira); todas as demais ficam sem região até o usuário
-  decidir. Testado nesta sessão com a regra dos 100km sobre as 5 regiões nomeadas:
-  **nenhuma massa de terra além das já nomeadas caiu dentro de 100km de uma ilha
-  principal** — os arquipélagos são isolados por mar aberto na escala do mundo, então
-  a atribuição automática praticamente não vai disparar sozinha; a maior parte da
+  da região** (não da região inteira); todas as demais ficam `"sem_regiao"` até o
+  usuário decidir (vocabulário de `status` fechado a `"atribuida"`/`"sem_regiao"` desde
+  2026-09-21 — a palavra `"duvidosa"` foi removida por ser redundante com
+  `"sem_regiao"`). Testado nesta sessão com a regra dos 100km sobre as 5 regiões
+  nomeadas: **nenhuma massa de terra além das já nomeadas caiu dentro de 100km de uma
+  ilha principal** — os arquipélagos são isolados por mar aberto na escala do mundo,
+  então a atribuição automática praticamente não vai disparar sozinha; a maior parte da
   decisão de pertencimento vai ser manual mesmo.
+- **Validação dos pontos de referência de `massas.geojson`** (2026-09-21): os 17 pontos
+  caem em terra (leitura de pixel único contra `costa_10240.png`) e dentro da faixa de
+  latitude da região nomeada que cada um declara. Não confirma conectividade de
+  componente (depende do cache do item acima). Detalhe completo em `ESPEC-dados.md`.
+- **`dados/coordenadas.json` reescrito em 2026-09-21 (terceira rodada)**: `px_por_grau`
+  e `km_por_grau` passam a ser **derivados** de `raio_km` e `km_por_px_latitude`
+  (único valor medido diretamente), gravados uma vez com precisão total em vez de
+  repetidos arredondados em três lugares do arquivo; `limites_da_tela` também passa a
+  ser derivado das mesmas fórmulas. As fórmulas citam os campos pelo nome
+  (`referencia.y_equador_px`, `projecao.px_por_grau`) em vez de repetir o número.
+- **Salvamento automático a cada operação concluída** (correção 5, 2026-09-21,
+  terceira rodada): fechar um polígono, terminar um rio, criar um lugar, confirmar um
+  apagamento — cada um já grava sozinho, sem botão "Salvar" manual. Desfazer/refazer
+  **entre operações concluídas é código próprio** (registro de operações no servidor,
+  `dados/.operacoes/`), não o plugin de desenho — **verificado nesta sessão**: o
+  Leaflet-Geoman free só tem `removeLastVertex` (desfazer vértice dentro de uma forma
+  ainda sendo desenhada), não desfazer entre formas já salvas. Gravação atômica
+  (arquivo temporário + `os.replace`) e cópia das últimas 5 versões de cada arquivo em
+  `dados/.historico/` continuam valendo, como decisão separada (rede contra "salvei
+  errado por cima", não é o mesmo mecanismo do desfazer).
+- **Ocean Deep também vira tiles** (correção 10, 2026-09-21, terceira rodada), extraída
+  do `Mapa.psd` uma vez e convertida do mesmo jeito que a costa oficial — processamento
+  pesado, mesmo aviso. As 4 imagens do ChatGPT continuam entrando inteiras (posição,
+  escala e opacidade ajustáveis à mão), sem virar tile.
+- **Camada do mar desenhada por cima da pintura na visualização ao vivo** (correção 11,
+  2026-09-21, terceira rodada): um tile de água opaca (gerado junto com o tile da
+  costa, mesma varredura) fica acima da camada vetorial de área pintada no navegador,
+  cobrindo visualmente qualquer trecho de polígono que avance sobre o mar — dá a
+  impressão de recorte pela costa sem rodar shapely a cada pan/zoom. O recorte de
+  verdade continua só acontecendo na rasterização (decisão 5, mantida).
+- **Instalação da etapa 1, decidida em 2026-09-21**: Python isolado num `.venv`
+  próprio (não o Python global da máquina); Leaflet **baixado pronto, sem npm e sem
+  CDN** (a ferramenta tem que funcionar offline); Leaflet-Geoman só entra na etapa 5;
+  minimapa é **código próprio** (imagem fixa + retângulo clicável), não um plugin de
+  terceiro.
+- **Etapa 1 testada e aprovada pelo usuário em 2026-09-21.** Sem animação de
+  zoom/pan (`zoomAnimation`/`fadeAnimation`/`markerZoomAnimation: false`) — sugestão
+  da sessão, aprovada depois do teste: numa ferramenta de edição de precisão, zoom
+  instantâneo é melhor que animado enquanto o usuário posiciona algo.
+
+### Fases do projeto depois da ferramenta pronta
+
+**Ferramenta pronta não é mapa pronto.** Depois das 12 etapas da ferramenta (ver
+`ESPEC-ferramenta.md`), faltam três fases, sem especificação própria ainda:
+
+1. **Biblioteca de símbolos**, gerada por IA em nuvem, uma vez.
+2. **Renderizador no estilo Faerûn**: pega os dados vetoriais + a biblioteca de
+   símbolos e pinta o mapa final (Poisson-disc sampling, sombreamento, rios finos).
+3. **Montagem no Photoshop**, manual, passo a passo escrito pela IA (sem API
+   automatizada de smart object vinculado — não existe API oficial documentada).
 
 ## Achados técnicos registrados (não são decisões, são fatos medidos)
 
+- **`mascaras/costa_10240.png` é modo "L" (escala de cinza, 1 canal), não RGBA — não
+  tem canal alfa de verdade.** Achado em 2026-09-21 (sessão de geração de tiles):
+  255 = terra, 0 = mar, confirmado por amostragem (5000 pixels aleatórios, só esses
+  dois valores) e por checagem pontual (pontos de terra conhecidos deram 255, dois
+  pontos de oceano aberto deram 0). **Isto corrige uma leitura errada de sessão
+  anterior**: a validação dos 17 pontos de `massas.geojson` (registrada como
+  "correção 6" numa rodada passada do `ESPEC-dados.md`) tinha sido feita com
+  `Image.open(...).convert("RGBA")`, e esse `.convert` cria um canal alfa **sintético,
+  sempre 255**, em cima de uma imagem que não tinha alfa — a checagem "alfa ≥ 128 ⇒
+  terra" dava sempre verdadeiro, para qualquer pixel, terra ou mar; não testava nada.
+  **Refeita nesta sessão com o canal certo (valor de cinza, não alfa)**: a conclusão
+  não mudou (os 17 pontos continuam todos em terra), mas o método da vez passada
+  estava quebrado por sorte, não por acerto — registrado aqui porque é exatamente o
+  tipo de "não investigado vira explicação errada" que este projeto tenta evitar.
+  **Refeita de novo, com controle negativo** (pedido do usuário depois deste achado,
+  ver a regra nova em "Regras invioláveis"): um ponto de oceano aberto conhecido
+  (`px=(1000,5000)`, `lat=23.832`, `lon=-37.052`, longe de qualquer massa marcada)
+  testado contra o mesmo código — devolveu `terra=False`, valor L = 0, como tem que
+  devolver. Só depois desse controle passar é que os 17 pontos de `massas.geojson`
+  foram checados de novo: os 17 continuam `terra=True`. Agora sim é uma validação de
+  verdade, não uma que não reprova nada.
 - A camada `Land` do `Mapa.psd` bate com o traçado vetorial da costa: 1,27% de
   divergência contra `fonte/Mapa Teste.jpg` limiarizado, concentrada numa faixa fina de
   antialiasing ao redor do contorno, não em manchas soltas em alto-mar (ver
@@ -233,8 +412,19 @@ prompts, IA pintando o mapa inteiro, está superada — ver seção Técnica). R
 
 - Nome definitivo do mundo (hoje "Uldun" é provisório).
 - Nomes das massas de terra sem rótulo (a maioria do mapa).
-- Esquema completo de dados além de `lugares.json` (cidades, rios, estradas, marcos,
+- Esquema completo de dados além de `lugares.geojson` (cidades, rios, estradas, marcos,
   fronteiras futuras) — **recomendação da IA pendente de aprovação**, não decidido
-  ainda. Proposta revisada completa em `ESPEC-dados.md`.
+  ainda. Proposta revisada (terceira rodada) completa em `ESPEC-dados.md`.
 - Resto do mapa sem nome (grande aglomerado a sudoeste, terras a leste, ilhas nas
   bordas) — nomear conforme a campanha pedir.
+- Se `Leaflet-Geoman free` cobre cortar/rotacionar/dividir/escalar/snap, ou só a versão
+  Pro (a documentação pública não deixou isso claro) — não bloqueia a decisão de usar
+  o Geoman (a arquitetura já não depende desses botões), mas vale confirmar na prática
+  na etapa 5 da ferramenta (renumerada na terceira rodada).
+- **Suposição a confirmar (terceira rodada)**: a atração automática de 5km ao desenhar
+  uma estrada perto de um lugar (correção 3 do `ESPEC-dados.md`) foi estendida para o
+  início de um braço de delta contra o traçado do rio-mãe, pela mesma distância — o
+  pedido original só deu o número para o caso do lugar. Confirmar ou corrigir quando a
+  etapa 8 (rio) da ferramenta for construída.
+- **Lista de instalação da etapa 1** (`ESPEC-ferramenta.md`, seção final): proposta,
+  não aprovada ainda — é o bloqueio imediato para o código começar.

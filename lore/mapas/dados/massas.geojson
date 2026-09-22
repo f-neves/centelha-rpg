@@ -147,9 +147,9 @@
         ]
       },
       "properties": {
-        "id": "amb-046",
+        "id": "ilha-046",
         "regiao": null,
-        "status": "duvidosa",
+        "status": "sem_regiao",
         "area_px_2048": 470,
         "nota": "perto de mais de uma regiao nomeada, decisao do usuario"
       }
@@ -164,9 +164,9 @@
         ]
       },
       "properties": {
-        "id": "amb-084",
+        "id": "ilha-084",
         "regiao": null,
-        "status": "duvidosa",
+        "status": "sem_regiao",
         "area_px_2048": 154,
         "nota": "perto de mais de uma regiao nomeada, decisao do usuario"
       }
@@ -181,9 +181,9 @@
         ]
       },
       "properties": {
-        "id": "amb-099",
+        "id": "ilha-099",
         "regiao": null,
-        "status": "duvidosa",
+        "status": "sem_regiao",
         "area_px_2048": 117,
         "nota": "perto de mais de uma regiao nomeada, decisao do usuario"
       }
@@ -198,9 +198,9 @@
         ]
       },
       "properties": {
-        "id": "amb-097",
+        "id": "ilha-097",
         "regiao": null,
-        "status": "duvidosa",
+        "status": "sem_regiao",
         "area_px_2048": 121,
         "nota": "perto de mais de uma regiao nomeada, decisao do usuario"
       }
@@ -215,9 +215,9 @@
         ]
       },
       "properties": {
-        "id": "amb-107",
+        "id": "ilha-107",
         "regiao": null,
-        "status": "duvidosa",
+        "status": "sem_regiao",
         "area_px_2048": 105,
         "nota": "perto de mais de uma regiao nomeada, decisao do usuario"
       }
@@ -232,9 +232,9 @@
         ]
       },
       "properties": {
-        "id": "amb-187",
+        "id": "ilha-187",
         "regiao": null,
-        "status": "duvidosa",
+        "status": "sem_regiao",
         "area_px_2048": 32,
         "nota": "perto de mais de uma regiao nomeada, decisao do usuario"
       }
@@ -249,9 +249,9 @@
         ]
       },
       "properties": {
-        "id": "amb-192",
+        "id": "ilha-192",
         "regiao": null,
-        "status": "duvidosa",
+        "status": "sem_regiao",
         "area_px_2048": 31,
         "nota": "perto de mais de uma regiao nomeada, decisao do usuario"
       }
@@ -266,9 +266,9 @@
         ]
       },
       "properties": {
-        "id": "amb-204",
+        "id": "ilha-204",
         "regiao": null,
-        "status": "duvidosa",
+        "status": "sem_regiao",
         "area_px_2048": 27,
         "nota": "perto de mais de uma regiao nomeada, decisao do usuario"
       }
@@ -283,12 +283,15 @@
         ]
       },
       "properties": {
-        "id": "amb-218",
+        "id": "ilha-218",
         "regiao": null,
-        "status": "duvidosa",
+        "status": "sem_regiao",
         "area_px_2048": 22,
         "nota": "perto de mais de uma regiao nomeada, decisao do usuario"
       }
     }
-  ]
+  ],
+  "properties": {
+    "versao_esquema": 1
+  }
 }

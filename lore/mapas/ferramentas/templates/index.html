@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Uldun - editor do mapa</title>
+<link rel="stylesheet" href="/static/vendor/leaflet-1.9.4/leaflet.css">
+<link rel="stylesheet" href="/static/css/estilo.css">
+</head>
+<body>
+  <header id="barra-topo">
+    <span id="titulo">Uldun - editor</span>
+    <span id="camada-ativa">
+      camada ativa:
+      <select id="seletor-camada">
+        <option value="relevo">RELEVO</option>
+        <option value="cobertura">COBERTURA</option>
+        <option value="lago">LAGO</option>
+      </select>
+      <select id="seletor-valor">
+        <option>Planicie</option>
+        <option>Colina</option>
+        <option>Montanha</option>
+        <option>Alta montanha</option>
+      </select>
+    </span>
+    <span id="leitura-cursor">lat -- lon --</span>
+  </header>
+
+  <div id="corpo">
+    <aside id="painel-esquerdo">
+      <div class="secao">
+        <h2>NAVEGACAO</h2>
+        <div id="minimapa-caixa">
+          <img id="minimapa-img" src="/static/img/minimapa.jpg" alt="minimapa de Uldun">
+          <div id="minimapa-retangulo"></div>
+        </div>
+      </div>
+      <div class="secao">
+        <h2>CAMADAS DE REFERENCIA</h2>
+        <p class="nota">chegam na etapa 2 — ainda não ligadas aqui.</p>
+      </div>
+      <div class="secao">
+        <h2>FERRAMENTAS</h2>
+        <p class="nota">chegam a partir da etapa 3 — ainda não ligadas aqui.</p>
+      </div>
+    </aside>
+
+    <main id="mapa"></main>
+  </div>
+
+  <footer id="painel-selecao">
+    <span id="status-salvamento">etapa 1: sem dado editável ainda</span>
+  </footer>
+
+  <script src="/static/vendor/leaflet-1.9.4/leaflet.js"></script>
+  <script>
+    // Injetado pelo servidor a partir de dados/coordenadas.json (backend/coordenadas.py) —
+    // nenhum número de projeção é digitado à mão aqui.
+    const PARAMETROS_LEAFLET = /*__PARAMETROS_LEAFLET__*/;
+  </script>
+  <script src="/static/js/minimapa.js"></script>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
