@@ -33,6 +33,16 @@ lore/mapas/photoshop/
 # máquina, nunca versionado (2026-09-21). O `requirements.txt` ao lado é que é a fonte
 # de verdade das versões; cada máquina recria o .venv a partir dele.
 lore/mapas/ferramentas/.venv/
+lore/mapas/ferramentas/.pytest_cache/
+lore/mapas/ferramentas/**/__pycache__/
+
+# infraestrutura de gravação da ferramenta do mapa (B1, 2026-09-22): registro de
+# operações (desfazer/refazer) e cópias históricas de cada arquivo de dados --
+# estado de trabalho local, não conteúdo versionado (mesmo raciocínio de dados/
+# em geral: dados/*.json e dados/*.geojson SÃO versionados, mas estas duas
+# subpastas são derivadas/voláteis, regeneram sozinhas a partir do uso normal).
+lore/mapas/dados/.operacoes/
+lore/mapas/dados/.historico/
 
 # material de referência (PDFs/artes de D&D e Pathfinder — pesado, fora do repo)
 D&D/

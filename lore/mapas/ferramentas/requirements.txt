@@ -1,19 +1,24 @@
-# Ferramenta do mapa de Uldun. Ambiente: lore/mapas/ferramentas/.venv (Python 3.14),
-# criado e instalado em 2026-09-21. Gerado com `pip freeze` logo após a instalação —
-# inclui as dependências transitivas, não só os 5 pacotes pedidos diretamente
-# (fastapi, uvicorn sem [standard], shapely, Pillow, numpy), para a instalação em
-# outra máquina reproduzir exatamente o mesmo ambiente.
+# Ferramenta do mapa de Uldun. Ambiente: lore/mapas/ferramentas/.venv (Python 3.14).
+# Gerado com `pip freeze`, inclui dependências transitivas. `pytest` entrou em
+# 2026-09-22 (rodada noturna), autorizado pelo usuário para os testes automáticos
+# da infraestrutura de gravação/desfazer (B1) e das ferramentas seguintes.
 annotated-doc==0.0.5
 annotated-types==0.8.0
 anyio==4.15.1
 click==8.5.0
+colorama==0.4.6
 fastapi==0.141.1
 h11==0.16.0
 idna==3.20
+iniconfig==2.3.0
 numpy==2.5.3
+packaging==26.3
 pillow==12.3.0
+pluggy==1.6.0
 pydantic==2.13.5
 pydantic_core==2.46.5
+Pygments==2.21.0
+pytest==9.1.1
 shapely==2.1.2
 starlette==1.6.0
 typing-inspection==0.4.4
