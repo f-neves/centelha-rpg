@@ -269,11 +269,26 @@ def gravar_resultado(id_camada, bounds, iou_score, bounds_anterior, usar_como_gu
     for camada in dados["camadas"]:
         if camada["id"] != id_camada:
             continue
-        camada["bounds_anterior_a_20260922"] = bounds_anterior
+        # Duas correções de 2026-09-23 (décima primeira rodada), achadas rodando o
+        # script pela segunda vez:
+        #
+        # 1. `bounds_anterior_a_20260922` era REESCRITO a cada gravação. O nome da
+        #    chave tem uma data dentro, então na segunda rodada ela passava a guardar
+        #    um valor de outro dia e o nome virava mentira (a primeira execução
+        #    perdeu, assim, o retângulo-placeholder original de -10/10). Aquela chave
+        #    agora é histórica e INTOCÁVEL; o valor de antes desta gravação vai para
+        #    `bounds_antes_do_alinhamento`, com a data em que foi substituído.
+        # 2. A data do alinhamento era o literal "2026-09-22", então toda gravação
+        #    futura mentiria a data. Passa a ser a data em que o script rodou.
+        hoje = time.strftime("%Y-%m-%d")
+        camada["bounds_antes_do_alinhamento"] = {
+            **bounds_anterior,
+            "substituido_em": hoje,
+        }
         camada["alinhamento_automatico"] = {
             "iou_terras": round(iou_score, 4),
             "usado_como_posicao": usar_como_guia,
-            "data": "2026-09-22",
+            "data": hoje,
             "metodo": "cor terra/mar, sem rotação, IoU (ver scripts/alinhar_chatgpt_auto.py)",
         }
         if usar_como_guia:
