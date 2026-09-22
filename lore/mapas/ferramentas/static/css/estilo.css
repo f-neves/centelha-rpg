@@ -127,7 +127,8 @@ kbd {
 #mapa.so-costa .leaflet-mar-pane { display: none; }
 /* Mesma razão para a cobertura automática (pane z 390, ver areas.js): sem esta
    linha, "só a costa" mostraria a costa inteira pintada de faixa de latitude. */
-#mapa.so-costa .leaflet-cobertura-automatica-pane { display: none; }
+#mapa.so-costa .leaflet-cobertura-automatica-pane,
+#mapa.so-costa .leaflet-relevo-automatico-pane { display: none; }
 
 #minimapa-caixa {
   position: relative;
@@ -368,3 +369,14 @@ kbd {
 /* A barra de ferramentas própria do Geoman fica escondida: quem liga o desenho
    são os botões desta ferramenta (o Geoman entra só como a caneta). */
 .leaflet-pm-toolbar { display: none; }
+
+/* Interruptor do relevo automático (décima rodada): mesma pegada dos outros
+   controles da seção de ferramentas, texto pequeno e caixa colada no rótulo. */
+.linha-relevo-automatico {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  margin: 4px 0;
+  cursor: pointer;
+}

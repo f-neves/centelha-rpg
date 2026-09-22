@@ -46,6 +46,23 @@ function iniciarFerramentaDeArea(mapa, areasIniciais, travasIniciais, coberturaA
     }),
   }).addTo(mapa);
 
+  // Relevo automático (planície): mesma máquina, pane logo abaixo da cobertura, e
+  // DESLIGADO por padrão. Planície é um valor só sobre toda a terra sem pintura, então
+  // ligado ele cobre as faixas de cobertura com uma cor chapada; como interruptor, ele
+  // responde à pergunta útil, "onde ainda não pintei relevo".
+  mapa.createPane("relevo-automatico");
+  mapa.getPane("relevo-automatico").style.zIndex = 380;
+  const camadaRelevoAutomatico = L.geoJSON(null, {
+    pane: "relevo-automatico",
+    interactive: false,
+    style: (feature) => ({
+      color: COR_POR_VALOR[feature.properties.valor] || "#888",
+      weight: 0,
+      fillColor: COR_POR_VALOR[feature.properties.valor] || "#888",
+      fillOpacity: 0.35,
+    }),
+  });
+
   const camadaDesenho = L.geoJSON(null, { style: estiloDaArea, onEachFeature: ligarFeature }).addTo(mapa);
   let featuresAtuais = [];
   let idSelecionada = null;
@@ -136,6 +153,24 @@ function iniciarFerramentaDeArea(mapa, areasIniciais, travasIniciais, coberturaA
   async function recarregarAutomatica() {
     const r = await chamar("GET", "/api/cobertura-automatica");
     if (r.dados) desenharAutomatica(r.dados);
+    await recarregarRelevoAutomatico();
+  }
+
+  const caixaRelevoAutomatico = document.getElementById("mostrar-relevo-automatico");
+  async function recarregarRelevoAutomatico() {
+    if (!caixaRelevoAutomatico || !caixaRelevoAutomatico.checked) {
+      camadaRelevoAutomatico.clearLayers();
+      mapa.removeLayer(camadaRelevoAutomatico);
+      return;
+    }
+    const r = await chamar("GET", "/api/relevo-automatico");
+    if (!r.dados) return;
+    camadaRelevoAutomatico.clearLayers();
+    if ((r.dados.features || []).length) camadaRelevoAutomatico.addData(r.dados);
+    camadaRelevoAutomatico.addTo(mapa);
+  }
+  if (caixaRelevoAutomatico) {
+    caixaRelevoAutomatico.addEventListener("change", recarregarRelevoAutomatico);
   }
 
   // Seleção de área e seleção de lugar são MUTUAMENTE EXCLUSIVAS. Sem isso a
