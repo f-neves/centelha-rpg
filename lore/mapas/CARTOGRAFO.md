@@ -9,72 +9,186 @@ confirmado pelo usuário; o que é recomendação de IA fica marcado como tal.
 *(Atualizar esta seção antes de encerrar toda sessão de trabalho no mapa — é a
 primeira coisa que `/cartografo` mostra.)*
 
-- **Última atualização:** 2026-09-21.
-- **Etapa:** **etapa 1 concluída, testada e aprovada pelo usuário; etapa 2 (camadas
-  de referência) preparada até a parada obrigatória** (sessão de remote-control).
-  **Commit feito** (`git show --stat` na mesma sessão): instalação, código da etapa
-  1, dados da terceira rodada dos ESPEC. Trabalho de etapa 2 (`camadas_referencia.json`
-  + backend + frontend) está pronto e testado, mas **ainda não commitado** (não foi
-  pedido). **Servidor deixado rodando** em `http://127.0.0.1:8420/`.
-- **Regra nova nas "Regras invioláveis" (pedida pelo usuário)**: toda validação
-  precisa de um controle negativo. Ver a regra abaixo e o achado que a motivou em
-  "Achados técnicos registrados".
+- **Última atualização:** 2026-09-23 (terceira rodada do dia). Duas tarefas
+  urgentes pedidas ("antes de qualquer outra coisa"): backup do trabalho sem
+  commit, e um hook de `pre-commit` novo que isola a validação do índice (não
+  mais a árvore de trabalho inteira) — as duas feitas, **hook só testado, NÃO
+  ativado** (aguardando aprovação). Uma quarta rodada de pedidos (resultado do
+  teste no navegador + 4 ajustes de UI: zoom por lista de níveis, botões
+  reset/automático no ChatGPT, régua com rótulo/múltiplos pontos/tempo de
+  viagem/salvar, cursor em cruz) **chegou registrada mas NÃO INICIADA** — as
+  duas tarefas urgentes vieram primeiro, por pedido explícito, e o orçamento da
+  rodada acabou nelas. Fica para a próxima sessão.
+- **BACKUP feito**: `C:\Users\Neves\ClaudeCode\backup-mapa\backup-mapa_20260922_122540.zip`
+  (947 KiB / 969.718 bytes), com os 31 arquivos modificados/novos de
+  `lore/mapas/` (sem `render/`, `.venv/`, `fonte/`, `referencias/` — nenhum
+  apareceu, os quatro já são ignorados pelo git) mais um `git diff` dos mesmos
+  caminhos (`git-diff-lore-mapas.txt`, dentro do zip). Nada em `.claude/` foi
+  incluído: os dois arquivos do mapa lá (`.claude/commands/cartografo.md`,
+  `.claude/skills/mapa-mundo/SKILL.md`) já estavam commitados, sem mudança —
+  nada pra fazer backup.
+- **Hook de `pre-commit` reescrito e testado, NÃO ativado**: rascunho em
+  `scripts/hooks/pre-commit.proposto` (nome diferente de propósito — o git só
+  invoca um arquivo chamado exatamente `pre-commit`, então este rascunho não
+  afeta nenhum commit de ninguém enquanto não for renomeado). Mecanismo: `git
+  checkout-index --all --prefix=PASTA/` materializa o que `$GIT_INDEX_FILE`
+  aponta (o índice — automaticamente o temporário do pathspec, num commit
+  `git commit -m ... -- caminho`) numa pasta separada; `node_modules` é
+  linkado por junction do Windows (PowerShell `New-Item -ItemType Junction`,
+  não copiado); `GIT_DIR`/`GIT_WORK_TREE` exportados pra scripts que leem
+  CONFIGURAÇÃO do git (achado rodando o primeiro teste: `test-portoes.mjs`
+  falhava achando `core.hooksPath` não configurada — falso, só não visível de
+  uma pasta sem `.git`). **Sem `git stash` em nenhum momento** (pedido
+  explícito). **Os dois testes pedidos, com índice de teste isolado (nunca
+  tocou o índice real nem a árvore de trabalho — `GIT_INDEX_FILE` apontado pra
+  um arquivo em `/tmp`, e conferido depois que nada mudou no repositório de
+  verdade)**:
+  1. **Controle negativo** (commit com erro real tem que ser recusado): índice
+     de teste com `src/data/armas.json` substituído por JSON quebrado de
+     propósito → **hook saiu com código 1**, apontando o `SyntaxError` exato.
+  2. **Controle positivo** (commit só do mapa, com outra frente suja na árvore
+     de trabalho, tem que passar): índice de teste só com os 31 arquivos do
+     mapa (conteúdo real, atual), rodado com a árvore de trabalho de verdade
+     cheia de outras frentes sujas (`src/lib/*`, `scripts/*`,
+     `src/data/armas.json` etc., inalterados) → **hook saiu com código 0**.
+     Achado a mais: essa mesma rodada mostrou que o bloqueio atual
+     (`combate-tempo-bench.html`) SOME quando a validação roda isolada do
+     índice — confirma que era mesmo trabalho não commitado de outra frente, não
+     um problema real.
+  - **Efeito colateral achado, registrado pra você decidir**: o hook antigo
+    checava `tsc` contra a ÁRVORE de propósito (comentário removido explicava:
+    "tipo é global, um typecheck só dos staged ficaria verde sobre um
+    repositório que não compila"). O hook novo muda esse desenho: valida o que
+    o repositório vai ficar DEPOIS deste commit (índice = HEAD + pathspec), não
+    o estado transitório de "todo mundo editando ao mesmo tempo". Isto é
+    coerente e resolve o problema que você pediu pra resolver, mas é uma
+    mudança de politica, não só mecanismo — por isso não ativei sozinho.
+  - **Pra ativar**: renomear `scripts/hooks/pre-commit.proposto` para
+    `scripts/hooks/pre-commit` (substituindo o atual). Não fiz isso ainda.
+- **Commit: AINDA BLOQUEADO** (pelo motivo de outra frente descrito abaixo, não
+  pelo hook — o hook novo ainda não está ativo). O bloqueio original
+  (`src/lib/rolagem.ts`/`mesa-core.ts`, 11 divergências) **foi resolvido** — os
+  dois arquivos estão limpos agora (`git status` confirma, e o log mostra
+  commits recentes de outra frente sobre o sistema de combate). Rodei
+  `npm run validate` de novo pra confirmar, e **o portão continua vermelho por
+  um motivo diferente e não relacionado ao mapa**: `combate-tempo-bench.html
+  está desatualizado. Rode: node scripts/gen-bench-tempo.mjs` — sinal de que
+  outra frente (equipamento/bestiário, a julgar pelo `git status` atual:
+  `armas.json`, `armaduras.json`, `escudos.json`, `equip.ts`, `bestiario.astro`
+  todos sujos) está no meio de um trabalho que ainda não gerou esse arquivo.
+  **Não é meu lugar mexer nisso** (não é arquivo do mapa) — só registrando que o
+  portão não abriu, para não fazer o usuário achar que já pode pedir pra
+  commitar. **Nada foi commitado ainda.**
+- **As 4 ações desta rodada (2026-09-23, segunda)**:
+  1. **`ESPEC-dados-revisao2.md` trazido para o repo** em `historico/`, e
+     comparado item por item com `ESPEC-dados.md` atual. **Achado corrigido**: a
+     rodada anterior tinha concluído (errado) que o esquema de `importancia`
+     "nunca existiu" — na verdade **existia em `ESPEC-dados-revisao2.md`
+     (guardado pelo usuário fora do repositório) e foi apagado pela terceira
+     reescrita, antes do commit `96e4188`.** Restaurado (era perda de fato, não
+     suposição): esquema de `capital`/`importancia` e a validação dos 17 pontos
+     de `massas.geojson` (as duas em `ESPEC-dados.md`, com nota de recuperação
+     no fim do arquivo). Mudanças intencionais da terceira rodada (atração de
+     5km em vez da tolerância de 300m, reestruturação de `regioes.json`,
+     `amb-*→ilha-*`, validação de rio por segmento, tolerância de foz, etc.) NÃO
+     foram restauradas — são decisão posterior, não perda. Dois gaps de prosa
+     (vocabulário de `valor` em áreas pintadas, motivo do relevo/cobertura
+     automático nunca virar feature) ganharam ponteiro pra `CARTOGRAFO.md`, sem
+     duplicar a lista.
+  2. **Resultado do teste do usuário no navegador**: não veio descrito na
+     mensagem (só um placeholder em branco) — não tenho como saber o que
+     funcionou e o que não. **Achado por evidência indireta**: `dados/
+     lugares.geojson` tem uma feature `"id": "teste"` (`tipo: "vila"`,
+     `lon=-13.96, lat=21.57`) que não veio de nenhum script meu — é rastro real
+     de o usuário ter usado o botão "+ lugar" da UI com sucesso. Deixei a
+     feature no arquivo (não é meu lugar apagar dado de teste do usuário sem
+     ele pedir). Fora isso, nenhuma outra informação sobre o teste.
+  3. **Portão de commit**: ver bullet acima — continua fechado, motivo novo, não
+     é do mapa. Nenhum commit feito.
+  4. **Rótulos: `--confirmo` rodado com sucesso.** Memória livre estava 3,39 GB
+     (acima do piso recomendado de ~2,4 GB medido ontem). Resultado: 4,5s,
+     pico 1.624 MB (bate com a previsão de 1.619 MB do `--teste`), 57 tiles no
+     zoom máximo (101 no total, 1,9 MB em disco). **Validado com controle
+     negativo**: pixel único no `rotulo` de Mère deu alfa=0 (não é bug — o ponto
+     de referência não cai necessariamente em cima de tinta); janela de ~50×50px
+     em volta achou 735 pixels com alfa>0 (controle positivo com janela, não
+     pixel único). Mar aberto longe de nome: 0 pixels com alfa>0 na mesma
+     janela — sem ruído de JPEG passando o limiar. Detalhe completo em
+     `ESPEC-ferramenta.md`. `rotulos.visivel` continua `false` em
+     `dados/camadas_referencia.json` — não liguei sozinho, é o usuário quem
+     decide pela ferramenta.
+- **Pendente:**
+  - **Aprovar (ou não) o hook novo** e, se aprovado, renomear
+    `pre-commit.proposto` → `pre-commit` — só depois disso os commits acontecem.
+  - **Ajustes de UI pedidos na rodada seguinte (2026-09-23, quarta), NÃO
+    INICIADOS**:
+    1. Zoom por lista de níveis fixos (5% a 800%, ~33 degraus), não mais passo
+       fixo — botões e roda do mouse vão pro nível mais próximo na direção do
+       clique; campo de porcentagem continua aceitando qualquer valor digitado.
+    2. Tirar o alinhamento manual por 2 pontos da UI das imagens do ChatGPT;
+       trocar por dois botões em "posição": "reset" (encaixa nos limites do
+       mundo) e "automático" (volta pros limites do alinhamento automático,
+       guardados num campo próprio pra nunca se perderem). Campos numéricos
+       continuam. Toda mudança de posição passa pelo desfazer (== tem que virar
+       uma operação em `operacoes.py`, não só uma chamada direta à API de
+       camadas de referência — hoje `camadas-referencia.js` não passa pelo B1).
+    3. Régua: rótulo de distância escrito sobre a linha (nunca de cabeça pra
+       baixo); apagar uma medição clicando nela; botão "limpar todas"; Esc
+       cancela a medição em andamento; vários pontos na mesma régua (trecho a
+       trecho + total); tempo de viagem junto do total (a pé 25km/dia, caravana
+       30, a cavalo 50, barco médio 100-130, como referência); botão salvar em
+       `dados/medicoes.json` com todos os pontos, nome opcional,
+       `"reproduzivel": true`.
+    4. Cursor em cruz (igual ao do modal de alinhamento) em toda ferramenta que
+       marca ponto: régua, Lugar, e as próximas.
+    - Pedido explícito: **testes com controle negativo pra tudo que grava
+      dado** (a régua salva medição agora; Lugar/posição do ChatGPT via
+      desfazer).
+  - **Portão de commit ainda fechado** (motivo novo, de outra frente — ver
+    acima). Nada commitado ainda: nem o trabalho de 2026-09-22 nem o de hoje.
+  - **B4 (Área/Geoman)** pode começar (o item 3/operacoes.py que o bloqueava já
+    foi feito na rodada anterior) — ainda não iniciado.
+  - **Testar no navegador**: alinhamento por 2 pontos, Ferramenta de Lugar
+    completa (o campo de importância é novo), régua, grade lat/lon, campo de
+    zoom, e agora também **os novos tiles de Rótulos** (ligar
+    `rotulos.visivel`).
+  - Confirmar a suposição de que a atração automática de 5km vale também pro
+    início de um braço de delta contra o rio-mãe.
+  - Gerar o cache de identidade de ilha: processamento pesado, ainda não
+    rodado — é o que destrava reconstruir "The Neck ↔ Calin" em
+    `dados/medicoes.json`.
+  - Confirmar na prática, na etapa 5, se o Leaflet-Geoman free cobre
+    cortar/rotacionar/dividir/escalar/snap (plugin nem foi instalado ainda).
+  - Nomear as massas de terra sem nome; decidir pertencimento das 9 ilhas `ilha-*`.
+- **Servidor: NO AR**, sem precisar reiniciar nesta rodada (só arquivo estático
+  novo, nenhum código do servidor mudou depois do último restart).
+  `http://127.0.0.1:8420/`. Para subir de novo, se cair:
+  ```
+  cd lore/mapas/ferramentas
+  .venv\Scripts\python.exe -m uvicorn backend.main:app --host 127.0.0.1 --port 8420
+  ```
+- **44 testes pytest, todos verdes** (`cd ferramentas &&
+  .venv/Scripts/python.exe -m pytest`).
 - **Instalação e código da etapa 1** — sem mudança desde a última atualização
-  (commitados nesta sessão): `.venv` próprio, Leaflet 1.9.4 baixado pronto (sem
-  npm/CDN), Geoman e `leaflet-minimap` de fora, minimapa próprio, CRS verificada
-  contra o código-fonte do Leaflet, 3.184 tiles de costa/mar gerados (10,4s, pico
-  298 MB). Detalhe completo em `ESPEC-ferramenta.md`.
-- **Validação dos 17 pontos de `massas.geojson` refeita com controle negativo**: um
-  ponto de oceano aberto conhecido, testado primeiro, devolveu `terra=False` como
-  tem que devolver — só depois disso os 17 pontos foram checados de novo (continuam
-  todos `terra=True`). Ver "Achados técnicos registrados".
+  (commitados): `.venv` próprio, Leaflet 1.9.4 baixado pronto (sem npm/CDN),
+  Geoman e `leaflet-minimap` de fora, minimapa próprio, CRS verificada contra o
+  código-fonte do Leaflet, 3.184 tiles de costa/mar gerados (10,4s, pico 298 MB).
+  Detalhe completo em `ESPEC-ferramenta.md`.
 - **Commit da etapa 1** (`96e41882`, sem push): `.gitignore` (mais a regra nova de
   `__pycache__/`), `CARTOGRAFO.md`, `ESPEC-dados.md`, `ESPEC-ferramenta.md`,
   `dados/regioes.json`, `dados/lugares.geojson` (criado) e `dados/lugares.json`
   (removido), `dados/massas.geojson`, `dados/coordenadas.json`, e todo
   `lore/mapas/ferramentas/` (sem `.venv/` nem `render/tiles/`, os dois fora do git).
-  Nada de outra frente foi tocado (`docs/simulacao/caixa/87-despacho.md` e
-  `jogador-novo-bestiario.md` seguem como estavam, intocados).
-- **Etapa 2 (camadas de referência), feito nesta sessão, sem commit ainda:**
-  - `dados/camadas_referencia.json` criado: as 4 imagens do ChatGPT
-    (retângulo-placeholder, o usuário ajusta) + `rotulos`
-    (`fonte/Mapa Teste1.jpg`, já nasce alinhado ao mundo inteiro — **testado,
-    os nomes caem exatamente em cima do contorno certo**).
-  - `backend/referencias.py` (leitura/gravação atômica) e `backend/main.py` ganharam
-    `GET`/`POST /api/camadas-referencia` e servem `/referencias` e `/fonte` crus
-    (sem processamento — o navegador decodifica como decodificaria um `<img>`
-    qualquer, não é o "processamento pesado" da regra abaixo).
-  - `static/js/camadas-referencia.js`: cada camada vira `L.imageOverlay`
-    (liga/desliga, opacidade, posição por 4 campos numéricos). Testado num
-    navegador de verdade: liga/desliga, opacidade, gravação em disco — tudo
-    funcionando, sem erro no console.
-  - **`scripts/extrair_ocean_deep.py` escrito, NÃO rodado — parada obrigatória
-    desta sessão.** Abre `fonte/Mapa.psd` (594 MB) por automação COM do Photoshop,
-    processamento mais pesado que o da costa. Ao contrário de `gerar_tiles.py`, essa
-    automação COM não foi testada de ponta a ponta (rodar de verdade é o próprio
-    processamento pesado). Reforço de código pra "regra de ouro" (nunca salvar o
-    original): trabalha só numa cópia (`Duplicate()`), confere
-    `doc_original.Saved` antes de fechar e recusa fechar sozinho se isso disparar.
-    Detalhe completo em `ESPEC-ferramenta.md`, seção "Etapa 2".
-- **Pendente:**
-  - **Rodar `scripts/extrair_ocean_deep.py --confirmo`** (Python global, não o
-    `.venv`) — precisa do Photoshop instalado, sem outro documento pesado aberto, e
-    do usuário confirmando depois de fechar navegadores/sessões.
-  - Depois da extração: plugar a pirâmide de tiles do Ocean Deep no
-    `app.js`/`camadas-referencia.js` (ainda não escrito, só faz sentido depois de
-    saber que os tiles existem).
-  - Ajustar posição/escala das 4 imagens do ChatGPT na ferramenta (hoje num
-    retângulo-placeholder pequeno, sem relação com a costa real).
-  - Confirmar a suposição de que a atração automática de 5km (correção 3 do
-    `ESPEC-dados.md`) vale também pro início de um braço de delta contra o rio-mãe.
-  - Gerar o cache de identidade de ilha (etapa 10 da ferramenta): processamento
-    pesado, ainda não rodado.
-  - Confirmar na prática, na etapa 5 da ferramenta, se o Leaflet-Geoman free cobre
-    cortar/rotacionar/dividir/escalar/snap.
-  - Nomear as massas de terra sem nome; decidir pertencimento das 9 ilhas `ilha-*`.
-- **Próximo passo:** o usuário decidir se autoriza rodar
-  `scripts/extrair_ocean_deep.py --confirmo` agora (com Photoshop aberto e pronto) ou
-  se prefere seguir por outra frente primeiro — é a parada obrigatória da etapa 2.
+- **Commit da etapa 2, primeira versão** (`f8565f8`, sem push): `CARTOGRAFO.md`,
+  `ESPEC-ferramenta.md`, `dados/camadas_referencia.json` (criado),
+  `ferramentas/backend/main.py`, `ferramentas/backend/referencias.py` (criado),
+  `ferramentas/scripts/extrair_ocean_deep.py` (criado), `ferramentas/static/css/estilo.css`,
+  `ferramentas/static/js/app.js`, `ferramentas/static/js/camadas-referencia.js`
+  (criado), `ferramentas/templates/index.html`. Nada de `render/tiles/` nem
+  `.venv/`.
+- **Próximo passo:** aguardar o usuário avisar que o bloqueio de commit foi
+  resolvido, então commitar por etapa; enquanto isso, testar tudo num navegador
+  de verdade (nada rodou fora de `curl`/pytest ainda).
 
 ## Objetivo e estilo
 
@@ -105,6 +219,23 @@ identificador; nome é opcional e entra depois.
   numa máscara que não tinha alfa de verdade, sempre 255) e aprovava **qualquer**
   ponto, terra ou mar — a conclusão até bateu por sorte, mas o teste não testava
   nada. Registrado por pedido explícito do usuário depois desse achado.
+- **Reescrita de ESPEC nunca apaga decisão registrada sem o usuário ter decidido
+  isso.** Motivo: em 2026-09-23 o usuário pediu para restaurar o esquema de
+  `importancia` (`"pequena"/"media"/"grande"`) de `ESPEC-dados.md`, supondo que
+  uma reescrita tinha apagado — a investigação (`git log -p` em todo o histórico
+  do arquivo) mostrou que na verdade a decisão nunca chegou a ser escrita em
+  nenhum commit (as duas revisões existentes são idênticas nessa seção), não que
+  foi apagada. A regra fica de qualquer forma: se uma reescrita de ESPEC (não só
+  a de dados) precisar remover ou substituir uma decisão já registrada, isso exige
+  o usuário decidir explicitamente, não uma inferência da IA de que "a versão
+  nova substitui a antiga".
+- **Toda distância real registrada neste documento guarda os pontos de origem e
+  destino (lat/lon) em `dados/medicoes.json`.** Regra criada em 2026-09-23 depois
+  de descobrir que a medição "The Neck ↔ Calin" (e, na mesma investigação, as duas
+  extensões de Waning) tinham o número final registrado mas os pontos usados para
+  chegar nele, não — impossível de reproduzir ou conferir depois. Uma medição sem
+  pontos guardados entra em `dados/medicoes.json` como `"reproduzivel": false`
+  com o motivo, nunca fica só como número solto no CARTOGRAFO.
 
 ## Estrutura de pastas (`lore/mapas/`)
 
@@ -159,7 +290,11 @@ Definição completa, com fórmulas, em `dados/coordenadas.json`. Resumo:
   | Leste-oeste (oeste de Syl ↔ leste de Mére) | 7.124,8 km | 285,0 dias | 237,5 dias | 142,5 dias |
 
   Ver `render/analise/rotas_distancias.png` (norte-sul) e
-  `render/analise/waning_leste_oeste.png` (leste-oeste).
+  `render/analise/waning_leste_oeste.png` (leste-oeste). **Marcada como NÃO
+  REPRODUZÍVEL em `dados/medicoes.json` (achado de 2026-09-23)**: os pontos
+  (lat/lon) usados nesta medição não sobreviveram em nenhum arquivo versionado —
+  só as imagens acima, sem coordenada legível. Mesmo achado da medição "The Neck
+  ↔ Calin" abaixo, encontrado ao investigar aquela.
 
 ## Decisões tomadas
 
@@ -173,7 +308,11 @@ Definição completa, com fórmulas, em `dados/coordenadas.json`. Resumo:
   Medido e corrigido: a primeira medição (3.177 km) usava só a ilha principal do Neck;
   refeita usando a ilha do arquipélago do Neck mais próxima de Calin, dá
   **2.217,9 km** em linha reta / **2.772,3 km** de rota real (+25%) — ver
-  `render/analise/rota_neck_calin_corrigida.png`.
+  `render/analise/rota_neck_calin_corrigida.png`. **Marcada como NÃO
+  REPRODUZÍVEL em `dados/medicoes.json` até o cache de identidade de ilha
+  existir** (pedido do usuário, 2026-09-23) — os pontos de referência de cada
+  ilha em `massas.geojson` são o centro de identificação, não o ponto de
+  aproximação mais próxima entre as duas costas que esta medição usou.
 
 ### Clima e bioma
 As descrições de clima e bioma por região em `historico/PROMPT-mapa-completo-svg.md` e

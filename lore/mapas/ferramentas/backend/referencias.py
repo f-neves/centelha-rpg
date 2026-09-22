@@ -1,10 +1,8 @@
-"""Camadas de referência com transparência (etapa 2, ESPEC-ferramenta.md correção 10):
-as 4 imagens do ChatGPT e os rótulos de fonte/Mapa Teste1.jpg, cada uma com posição
-(bounds em lat/lon), escala (o próprio bounds), opacidade e visibilidade ajustáveis
-pelo usuário e gravadas em dados/camadas_referencia.json.
-
-Não inclui a Ocean Deep: essa é tile (como a costa/mar), não imagem inteira — ver
-scripts/extrair_ocean_deep.py.
+"""Camadas de referência (etapa 2, ESPEC-ferramenta.md correção 10). Dois tipos
+(campo 'tipo'): 'imagem' (as 4 do ChatGPT — posição/escala em bounds, lat/lon,
+opacidade e visibilidade ajustáveis) e 'tile' (Rótulos e Ocean Deep — pirâmide de
+tiles pré-gerada, já alinhada ao mundo inteiro pela CRS, sem bounds próprio).
+Gravadas em dados/camadas_referencia.json.
 """
 
 import json
@@ -28,6 +26,11 @@ def _validar_camada(camada: dict) -> None:
     op = camada.get("opacidade")
     if not isinstance(op, (int, float)) or not (0 <= op <= 1):
         raise ValueError("'opacidade' tem que ser um número entre 0 e 1")
+    # Camada 'tile' (Rótulos, Ocean Deep) não tem bounds próprio: a pirâmide de
+    # tiles já cobre o mundo inteiro pela mesma CRS da costa, sem posição
+    # ajustável. Só 'imagem' (as 4 do ChatGPT) precisa de bounds válido.
+    if camada.get("tipo") == "tile":
+        return
     bounds = camada.get("bounds", {})
     for campo in CAMPOS_BOUNDS:
         if not isinstance(bounds.get(campo), (int, float)):

@@ -45,12 +45,50 @@ avise antes de tentar de novo -- não é para "destravar" o script removendo ess
 checagem sem entender por que disparou.
 """
 
+import ctypes
 import sys
 import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from backend.coordenadas import MAX_ZOOM, TILE_SIZE  # noqa: E402
+
+
+def pico_memoria_mb() -> float:
+    """Mesma leitura de scripts/gerar_tiles.py (PeakWorkingSetSize via psapi, sem
+    depender de psutil) — reportar tempo sem reportar pico seria voltar atrás na
+    mesma correção que aquele script já recebeu."""
+    if sys.platform != "win32":
+        return -1.0
+    import ctypes.wintypes as wintypes
+
+    class PROCESS_MEMORY_COUNTERS(ctypes.Structure):
+        _fields_ = [
+            ("cb", wintypes.DWORD),
+            ("PageFaultCount", wintypes.DWORD),
+            ("PeakWorkingSetSize", ctypes.c_size_t),
+            ("WorkingSetSize", ctypes.c_size_t),
+            ("QuotaPeakPagedPoolUsage", ctypes.c_size_t),
+            ("QuotaPagedPoolUsage", ctypes.c_size_t),
+            ("QuotaPeakNonPagedPoolUsage", ctypes.c_size_t),
+            ("QuotaNonPagedPoolUsage", ctypes.c_size_t),
+            ("PagefileUsage", ctypes.c_size_t),
+            ("PeakPagefileUsage", ctypes.c_size_t),
+        ]
+
+    kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+    psapi = ctypes.WinDLL("psapi", use_last_error=True)
+    kernel32.GetCurrentProcess.restype = wintypes.HANDLE
+    psapi.GetProcessMemoryInfo.argtypes = [wintypes.HANDLE, ctypes.c_void_p, wintypes.DWORD]
+    psapi.GetProcessMemoryInfo.restype = wintypes.BOOL
+
+    contadores = PROCESS_MEMORY_COUNTERS()
+    contadores.cb = ctypes.sizeof(PROCESS_MEMORY_COUNTERS)
+    handle = kernel32.GetCurrentProcess()
+    ok = psapi.GetProcessMemoryInfo(handle, ctypes.byref(contadores), contadores.cb)
+    if not ok:
+        return -1.0
+    return contadores.PeakWorkingSetSize / (1024 * 1024)
 
 RAIZ_MAPAS = Path(__file__).resolve().parents[2]
 CAMINHO_PSD = RAIZ_MAPAS / "fonte" / "Mapa.psd"
@@ -102,6 +140,32 @@ def _isolar_camada_visivel(doc, camada_alvo):
             camada.Visible = False
 
 
+RPC_E_SERVERCALL_RETRYLATER = -2147417846  # 0x8001010A
+
+
+def _com_retry(func, *, tentativas=10, espera_s=3.0, descricao=""):
+    """Executa `func()` tolerando o erro COM transitorio "o filtro de mensagens
+    indicou que o aplicativo esta ocupado" (RPC_E_SERVERCALL_RETRYLATER) -- achado
+    na primeira execucao real deste script (2026-09-22): o Photoshop ainda estava
+    processando o PSD de 594 MB internamente logo apos o Open() retornar, e a
+    chamada seguinte (Duplicate()) chegou cedo demais. Isto NAO e "inventar API":
+    e a mesma chamada COM documentada, so tolerando um "ocupado" do proprio Windows
+    (comportamento padrao de automacao COM de app pesado, nao especifico do
+    Photoshop). Qualquer outro erro sobe na hora, sem retry -- so este codigo
+    especifico e tratado como transitorio."""
+    import pywintypes
+
+    for tentativa in range(1, tentativas + 1):
+        try:
+            return func()
+        except pywintypes.com_error as e:
+            if e.args[0] != RPC_E_SERVERCALL_RETRYLATER or tentativa == tentativas:
+                raise
+            print(f"  ({descricao or 'chamada COM'}: Photoshop ocupado, tentativa "
+                  f"{tentativa}/{tentativas}, esperando {espera_s:.0f}s ...)")
+            time.sleep(espera_s)
+
+
 def extrair_camada_para_png() -> Path:
     import win32com.client
 
@@ -113,9 +177,18 @@ def extrair_camada_para_png() -> Path:
     app = win32com.client.gencache.EnsureDispatch("Photoshop.Application")
     from win32com.client import constants
 
+    # Achado na segunda execucao real (2026-09-22): sem isto, MergeVisibleLayers
+    # falhou com "O usuario cancelou a operacao" -- e o erro padrao quando uma
+    # chamada scriptavel dispararia uma caixa de dialogo (ICC, camadas ocultas
+    # etc.) e nao ha usuario para clicar nela. psDisplayNoDialogs suprime
+    # qualquer dialogo pelo resto da sessao COM (API documentada da Adobe, nao
+    # inventada). So afeta este processo automatizado, nao a sessao interativa
+    # do Photoshop que o usuario ve na tela.
+    app.DisplayDialogs = constants.psDisplayNoDialogs
+
     print(f"Abrindo {CAMINHO_PSD} (leitura) ...")
     t0 = time.time()
-    doc_original = app.Open(str(CAMINHO_PSD))
+    doc_original = _com_retry(lambda: app.Open(str(CAMINHO_PSD)), descricao="Open")
     print(f"  aberto em {time.time()-t0:.1f}s")
 
     try:
@@ -138,7 +211,14 @@ def extrair_camada_para_png() -> Path:
         print(f"Camada '{NOME_CAMADA}' encontrada. Duplicando documento (nao mexe no original) ...")
         # VERIFICAR NA PRIMEIRA EXECUCAO: Duplicate() aceita nome opcional; sem
         # argumento, o Photoshop nomeia a copia automaticamente.
-        doc_copia = doc_original.Duplicate()
+        doc_copia = _com_retry(lambda: doc_original.Duplicate(), descricao="Duplicate")
+
+        # Achado na terceira execucao real (2026-09-22): MergeVisibleLayers falhou
+        # com "o comando nao esta disponivel no momento" enquanto a copia nao era o
+        # ActiveDocument -- varios comandos de documento do Photoshop agem sobre o
+        # documento ATIVO, nao sobre o objeto Document referenciado em Python, e
+        # Duplicate() nao muda automaticamente qual documento esta ativo.
+        app.ActiveDocument = doc_copia
 
         camada_na_copia = _achar_camada_recursivo(doc_copia.Layers, NOME_CAMADA)
         if camada_na_copia is None:
@@ -146,35 +226,45 @@ def extrair_camada_para_png() -> Path:
 
         _isolar_camada_visivel(doc_copia, camada_na_copia)
 
-        print("Mesclando so as camadas visiveis ...")
-        # MergeVisibleLayers (em vez de Flatten): Flatten sempre preenche area vazia
-        # com a cor de fundo (perde transparencia); MergeVisibleLayers preserva
-        # transparencia quando nao ha "Background" travado. VERIFICAR NA PRIMEIRA
-        # EXECUCAO se o resultado tem alfa de verdade.
-        doc_copia.MergeVisibleLayers()
-
+        # Achado na quarta execucao real (2026-09-22): MergeVisibleLayers falhou
+        # com "comando nao disponivel no momento" -- 'Ocean Deep' e uma camada solta
+        # de topo (sem grupo ancestral), entao depois de isolar a visibilidade sobra
+        # UMA UNICA camada visivel, e o Photoshop desabilita "mesclar visiveis"
+        # quando nao ha mais de uma camada pra combinar. Isto nao bloqueia a
+        # exportacao: SaveAs para um formato sem camadas (PNG) sempre compoe o que
+        # esta visivel no momento do salvamento, sem precisar de um merge explicito
+        # antes -- comportamento documentado do Photoshop, nao suposicao. O merge
+        # foi removido; se 'Ocean Deep' vier a virar um grupo com mais de uma
+        # camada no futuro, o PNG exportado ainda vai sair certo, so que via
+        # composicao automatica do SaveAs em vez de um merge previo.
         SAIDA_TILES.parent.mkdir(parents=True, exist_ok=True)
         CAMINHO_PNG_EXPORTADO.parent.mkdir(parents=True, exist_ok=True)
 
         opcoes_png = win32com.client.Dispatch("Photoshop.PNGSaveOptions")
         print(f"Exportando para {CAMINHO_PNG_EXPORTADO} ...")
-        doc_copia.SaveAs(str(CAMINHO_PNG_EXPORTADO), opcoes_png, True)  # asCopy=True
-        doc_copia.Close(constants.psDoNotSaveChanges)
+        _com_retry(
+            lambda: doc_copia.SaveAs(str(CAMINHO_PNG_EXPORTADO), opcoes_png, True),
+            descricao="SaveAs",
+        )  # asCopy=True
+        _com_retry(lambda: doc_copia.Close(constants.psDoNotSaveChanges), descricao="Close copia")
 
         return CAMINHO_PNG_EXPORTADO
     finally:
         # Regra de ouro: o documento original nunca e alterado neste script (so
         # lido e duplicado) -- `.Saved` confirma isso antes de fechar; se por
         # algum motivo o Photoshop achar que ha mudanca nao salva, para tudo em vez
-        # de arriscar fechar com a opcao errada.
-        if not doc_original.Saved:
+        # de arriscar fechar com a opcao errada. O retry aqui e so pra tolerar
+        # "ocupado" -- qualquer outro erro, ou Saved==False de verdade, ainda para
+        # tudo sem fechar.
+        saved = _com_retry(lambda: doc_original.Saved, descricao="checar Saved")
+        if not saved:
             raise RuntimeError(
                 "Mapa.psd aparece como alterado (doc_original.Saved == False), e "
                 "este script nunca deveria mexer nele. Nao fechando automaticamente "
                 "-- feche o Photoshop a mao e confira o que aconteceu antes de "
                 "rodar de novo."
             )
-        doc_original.Close(constants.psDoNotSaveChanges)
+        _com_retry(lambda: doc_original.Close(constants.psDoNotSaveChanges), descricao="Close original")
 
 
 def gerar_piramide_de_um_arquivo(caminho_png: Path) -> None:
@@ -226,12 +316,21 @@ def main() -> None:
 
     t_inicio = time.time()
     caminho_png = extrair_camada_para_png()
-    print(f"Camada exportada em {time.time()-t_inicio:.1f}s: {caminho_png}")
+    t_extracao = time.time() - t_inicio
+    print(f"Camada exportada em {t_extracao:.1f}s: {caminho_png}")
+
+    from PIL import Image
+
+    with Image.open(caminho_png) as im:
+        print(f"  dimensoes: {im.size[0]}x{im.size[1]}px, modo: {im.mode}")
+        if im.size != (RESOLUCAO_ESPERADA, RESOLUCAO_ESPERADA):
+            print(f"  AVISO: esperava {RESOLUCAO_ESPERADA}x{RESOLUCAO_ESPERADA}px")
 
     print("Gerando piramide de tiles do Ocean Deep ...")
     gerar_piramide_de_um_arquivo(caminho_png)
 
     print(f"Pronto. Tempo total: {time.time()-t_inicio:.1f}s")
+    print(f"Pico de memoria do processo: {pico_memoria_mb():.0f} MB")
 
 
 if __name__ == "__main__":

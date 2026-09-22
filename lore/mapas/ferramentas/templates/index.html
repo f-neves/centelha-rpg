@@ -23,7 +23,12 @@
         <option>Alta montanha</option>
       </select>
     </span>
-    <span id="leitura-cursor">lat -- lon --</span>
+    <span id="controle-zoom">
+      <button type="button" id="zoom-menos" title="Reduz ~25%">-</button>
+      <input type="text" id="campo-zoom-porcentagem" value="100%" title="Zoom em porcentagem da resolução nativa (100% = 1px da máscara de 10240px = 1px de tela). Digite um valor e aperte Enter.">
+      <button type="button" id="zoom-mais" title="Amplia ~25%">+</button>
+    </span>
+    <span id="leitura-cursor">--,--°  -   --,--°  -</span>
   </header>
 
   <div id="corpo">
@@ -38,11 +43,23 @@
       <div class="secao">
         <h2>CAMADAS DE REFERENCIA</h2>
         <div id="lista-camadas-referencia"></div>
-        <p class="nota">Ocean Deep chega depois (extração pesada do PSD).</p>
+        <p class="nota">Rótulos e Ocean Deep são tiles (sem posição ajustável, já
+          alinhados ao mundo inteiro). As 4 imagens do ChatGPT têm "alinhar" (2
+          pontos, sem rotação) e os campos numéricos pra ajuste fino.</p>
       </div>
       <div class="secao">
         <h2>FERRAMENTAS</h2>
-        <p class="nota">chegam a partir da etapa 3 — ainda não ligadas aqui.</p>
+        <button type="button" id="lugar-adicionar">+ lugar</button>
+        <div id="controle-desfazer">
+          <button type="button" id="botao-desfazer" disabled>desfazer</button>
+          <button type="button" id="botao-refazer" disabled>refazer</button>
+        </div>
+        <button type="button" id="regua-ativar">régua</button>
+        <div id="regua-leitura" class="nota"></div>
+        <label class="nota"><input type="checkbox" id="grade-latlon-ativa"> grade lat/lon (10°)</label>
+        <p class="nota">Lugar: cria, arrasta pra mover, clique abre editar/apagar.
+          Régua: clique 2 pontos, mostra distância real (grande círculo). Demais
+          ferramentas (área, rio, estrada...) ainda não ligadas.</p>
       </div>
     </aside>
 
@@ -50,8 +67,18 @@
   </div>
 
   <footer id="painel-selecao">
-    <span id="status-salvamento">etapa 1: sem dado editável ainda</span>
+    <span id="status-salvamento">etapa 2: camadas de referência (posição/opacidade
+      editável e persistida; Rótulos e Ocean Deep em tiles); sem dado de mundo
+      editável ainda (fica pra etapa 3 em diante)</span>
   </footer>
+
+  <div id="modal-alinhamento" style="display:none">
+    <div id="modal-alinhamento-caixa">
+      <p id="modal-alinhamento-instrucao"></p>
+      <img id="modal-alinhamento-img" alt="imagem de referência para alinhar">
+      <button type="button" id="modal-alinhamento-cancelar">cancelar</button>
+    </div>
+  </div>
 
   <script src="/static/vendor/leaflet-1.9.4/leaflet.js"></script>
   <script>
@@ -60,9 +87,13 @@
     const PARAMETROS_LEAFLET = /*__PARAMETROS_LEAFLET__*/;
     // Injetado a partir de dados/camadas_referencia.json (backend/referencias.py).
     const CAMADAS_REFERENCIA_INICIAL = /*__CAMADAS_REFERENCIA__*/;
+    // Injetado a partir de dados/lugares.geojson (backend/lugares.py).
+    const LUGARES_INICIAL = /*__LUGARES__*/;
   </script>
   <script src="/static/js/minimapa.js"></script>
   <script src="/static/js/camadas-referencia.js"></script>
+  <script src="/static/js/lugares.js"></script>
+  <script src="/static/js/regua.js"></script>
   <script src="/static/js/app.js"></script>
 </body>
 </html>

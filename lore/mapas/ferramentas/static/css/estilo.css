@@ -17,7 +17,16 @@ html, body {
 }
 
 #titulo { font-weight: bold; }
-#leitura-cursor { margin-left: auto; }
+#leitura-cursor { }
+
+#controle-zoom { margin-left: auto; display: flex; align-items: center; gap: 2px; }
+#controle-zoom button { font-family: inherit; width: 22px; height: 22px; cursor: pointer; }
+#campo-zoom-porcentagem {
+  width: 52px;
+  text-align: center;
+  font-family: inherit;
+  font-size: 12px;
+}
 
 #corpo {
   display: flex;
@@ -81,6 +90,20 @@ html, body {
 .caixa-ajuste-bounds label { font-size: 10px; }
 .caixa-ajuste-bounds input { width: 55px; }
 
+#lugar-adicionar { width: 100%; margin-bottom: 6px; }
+#lugar-adicionar.ativo, #regua-ativar.ativo { background: #ffe082; }
+#controle-desfazer { display: flex; gap: 4px; margin-bottom: 6px; }
+#controle-desfazer button { flex: 1; }
+#regua-ativar { width: 100%; margin-bottom: 4px; }
+#regua-leitura { min-height: 14px; margin-bottom: 6px; }
+
+.icone-lugar div {
+  background: #b71c1c;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 2px rgba(0,0,0,0.6);
+}
+
 #painel-selecao {
   height: 30px;
   display: flex;
@@ -88,4 +111,32 @@ html, body {
   padding: 0 12px;
   border-top: 1px solid #333;
   background: #f2f2f2;
+}
+
+#modal-alinhamento {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+#modal-alinhamento-caixa {
+  background: #fff;
+  border: 1px solid #333;
+  padding: 12px;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+#modal-alinhamento-instrucao { font-size: 13px; margin: 0; }
+#modal-alinhamento-img {
+  max-width: 80vw;
+  max-height: 70vh;
+  cursor: crosshair;
+  border: 1px solid #999;
 }

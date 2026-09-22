@@ -231,6 +231,18 @@ etapa avançou até a segunda parada obrigatória, que segue pendente.
   a fonte de verdade para recriar o ambiente em outra máquina. **O shapely já
   instalado no Python global (2.1.2, sessão anterior) não foi tocado** — o do `.venv`
   é uma cópia isolada, própria da ferramenta.
+- **Exceção: `scripts/extrair_ocean_deep.py` roda no Python GLOBAL da máquina, não
+  no `.venv`.** Motivo: precisa de `win32com` (pywin32) pra automação COM do
+  Photoshop, e esse pacote já estava instalado no Python global (Python 3.14.5) de
+  uma sessão anterior de automação COM — instalar de novo, isolado, só pra um
+  script de uso único (a extração roda uma vez, não faz parte do ciclo normal da
+  ferramenta) não se justificava. **`win32com` não entra em `requirements.txt`**:
+  esse arquivo documenta o ambiente do `.venv` da ferramenta (FastAPI/servidor), e
+  `win32com` não é dependência dele — é dependência de um script avulso que nunca
+  roda dentro do `.venv`. Se um script de automação COM do Photoshop virar
+  recorrente (não é o caso hoje: Ocean Deep foi extraída uma vez, o script não
+  precisa rodar de novo), aí sim caberia perguntar ao usuário se instala
+  `pywin32` num ambiente próprio documentado — decisão futura, não tomada agora.
 - **Leaflet 1.9.4**: **sem npm, sem CDN** — baixados os arquivos prontos do release
   oficial (`leaflet.js`, `leaflet.css`, `images/`, `LICENSE`) para
   `ferramentas/static/vendor/leaflet-1.9.4/`. Licença conferida no arquivo baixado:
@@ -408,36 +420,229 @@ Conferido com `claude-in-chrome` nesta sessão:
   retângulo-placeholder, como esperado) e a gravação da mudança em
   `camadas_referencia.json` (conferida no arquivo em disco). Sem erro no console.
 
-### Ocean Deep — parada obrigatória, código escrito e NÃO executado
+### Ocean Deep — extraída, tiles gerados, ligada na ferramenta (2026-09-22)
 
-`scripts/extrair_ocean_deep.py` está escrito (abre `fonte/Mapa.psd` por automação
-COM do Photoshop, isola a camada "Ocean Deep", exporta um PNG a partir de uma
-**cópia** do documento — nunca do original — e gera uma pirâmide de tiles a partir
-dele, do mesmo jeito que `gerar_tiles.py`). **Não foi rodado.**
+`scripts/extrair_ocean_deep.py` rodou com sucesso em 2026-09-22, depois de três
+falhas na mesma sessão que corrigiram o código (ver "Achados desta execução"
+abaixo). Abre `fonte/Mapa.psd` por automação COM do Photoshop, isola a camada
+"Ocean Deep", exporta um PNG a partir de uma **cópia** do documento (nunca do
+original) e gera uma pirâmide de tiles em `render/tiles/ocean-deep/`, do mesmo
+jeito que `gerar_tiles.py` faz para a costa/mar.
 
-- **Mais pesado que a costa**: abre um arquivo de 594 MB pelo Photoshop (aplicação
-  inteira, não só decodificar um PNG) — cai na regra do CARTOGRAFO.md sobre
-  processamento pesado, com um agravante a mais: precisa do Photoshop instalado e
-  sem outro documento grande aberto.
-- **Não testado, ao contrário de `gerar_tiles.py`**: usa a API de automação COM do
-  Photoshop (`win32com`), que só se comprova rodando de verdade — e rodar de
-  verdade é exatamente o processamento pesado que está sendo evitado até o usuário
-  confirmar. Os pontos mais incertos (documentados como "VERIFICAR NA PRIMEIRA
-  EXECUÇÃO" no código): se "Ocean Deep" está solta ou dentro de um grupo de
-  camadas, e se `MergeVisibleLayers` preserva transparência do jeito esperado numa
-  camada que não cobre a tela inteira.
-- **Regra de ouro reforçada no código, não só na intenção**: o documento original
-  (`Mapa.psd` aberto) nunca leva `.Save()`, só é lido e duplicado; todo o trabalho
-  de isolar/exportar acontece na cópia. Antes de fechar o original, o script confere
-  `doc_original.Saved` (o Photoshop diria `False` se achasse que algo mudou) e
-  **recusa fechar sozinho** se isso disparar, em vez de arriscar a opção de
-  salvamento errada — prefere parar e pedir pra um humano olhar.
-- **Roda com o Python GLOBAL da máquina, não o `.venv` da ferramenta**: `win32com`
-  já está instalado nele (sessão anterior de automação COM) e não foi instalado no
-  `.venv` — instalar de novo só pra essa automação de uso único não faria sentido, e
-  entraria na regra de "nada instalado sem ok".
-- **Ao rodar com sucesso**, ainda falta plugar a pirâmide de tiles do Ocean Deep no
-  `app.js`/`camadas-referencia.js` (hoje eles só sabem de imagem inteira + tiles
-  costa/mar; Ocean Deep é tile, mas não é costa nem mar) — fica para depois da
-  extração, não fazia sentido escrever esse fiozinho antes de saber que os tiles
-  vão existir.
+- **Resultado da extração**: PNG em `render/ocean_deep_exportado.png` (fora do
+  git), 10240×10240px, modo RGBA. Tempo total (extração + tiles): 48,7s. Pico de
+  memória do processo: 1.074 MB. Tiles gravados: 1.925 (zoom 6: 1410, zoom 5: 377,
+  zoom 4: 99, zoom 3: 25, zoom 2: 9, zoom 1: 4, zoom 0: 1) — bem menos que
+  costa+mar porque Ocean Deep só tem dado sobre o mar, terra sai transparente.
+- **Alinhamento confirmado com controle negativo**: ponto de terra conhecido
+  (Mére, x=6211,y=7650, o mesmo usado para fixar `y_equador_px`) deu pixel
+  `(0,0,0,0)` — vazio, como tem que dar. Ponto de mar aberto conhecido (o mesmo
+  controle negativo da validação de `massas.geojson`, x=1000,y=5000) deu
+  `(1,1,1,128)` — valor presente. A camada bate com a mesma tela de 10240px da
+  costa oficial, sem transformação própria.
+- **Ligada na ferramenta**: `static/js/app.js` monta `/tiles/ocean-deep/{z}/{x}/{y}.png`
+  como `L.tileLayer` (mesma CRS/bounds da costa, sem alinhamento próprio
+  necessário). Checkbox + slider de opacidade em `templates/index.html`, seção
+  "OCEAN DEEP" — liga/desliga só na sessão do navegador, sem gravação em disco
+  (diferente das camadas de referência, que persistem em
+  `dados/camadas_referencia.json`). `backend/main.py` não precisou de rota nova: o
+  mount `/tiles` já serve qualquer pasta dentro de `render/tiles/`, incluindo
+  `ocean-deep/`.
+
+#### Achados desta execução (as 3 falhas corrigidas, registradas porque a próxima
+sessão que mexer em automação COM do Photoshop vai tropeçar nas mesmas)
+
+1. **`RPC_E_SERVERCALL_RETRYLATER` ("o filtro de mensagens indicou que o aplicativo
+   está ocupado") logo após o `Open()`**: o Photoshop ainda processava o PSD de
+   594 MB internamente quando a chamada seguinte (`Duplicate()`) chegou. Contenção
+   COM transitória, não específica do Photoshop — resolvida com um retry (até 10
+   tentativas, 3s de espera) ao redor de toda chamada COM arriscada
+   (`Open`/`Duplicate`/`MergeVisibleLayers`/`SaveAs`/`Close`/checagem de `Saved`).
+   Qualquer outro código de erro ainda sobe na hora, sem retry.
+2. **"O usuário cancelou a operação"** ao chamar `MergeVisibleLayers`: é o erro
+   padrão quando uma chamada scriptável dispararia uma caixa de diálogo (perfil
+   ICC, camadas ocultas etc.) e não há usuário pra clicar nela. Resolvido com
+   `app.DisplayDialogs = constants.psDisplayNoDialogs` logo após o `Dispatch`, API
+   documentada da Adobe pra automação sem interação.
+3. **"O comando 'Mesclar camadas visíveis' não está disponível no momento"**,
+   mesmo com diálogos suprimidos e com `app.ActiveDocument` apontando pra cópia:
+   "Ocean Deep" é uma camada solta de topo (sem grupo ancestral, resposta à dúvida
+   "VERIFICAR NA PRIMEIRA EXECUÇÃO" que estava aberta), então isolar a visibilidade
+   deixa **uma única camada visível** — e o Photoshop desabilita "mesclar
+   visíveis" quando não há mais de uma camada pra combinar. **O merge era
+   desnecessário**: `SaveAs` pra um formato sem camadas (PNG) sempre compõe o que
+   está visível no momento do salvamento, documentado assim pela Adobe, sem
+   precisar de um merge explícito antes. A chamada a `MergeVisibleLayers` foi
+   removida do script.
+4. **Alfa de verdade confirmado**: `MergeVisibleLayers` nunca chegou a rodar (item
+   3), então a dúvida original ("VERIFICAR NA PRIMEIRA EXECUÇÃO" sobre transparência
+   preservada) não se aplica mais — o alfa vem direto da camada isolada, e o
+   controle negativo acima confirma que ele é real (terra vazia, mar com valor).
+- **Roda com o Python GLOBAL da máquina, não o `.venv` da ferramenta** — motivo
+  registrado na seção "Instalação", mais abaixo neste documento.
+
+### Correções pedidas pelo usuário depois do primeiro teste da etapa 2 (2026-09-22)
+
+O usuário testou a etapa 2 (Ocean Deep + camadas de referência) e pediu 5 ajustes
+antes de aprovar o commit. Estado depois desta rodada:
+
+1. **"Rótulos" não é mais a imagem inteira de `Mapa Teste1.jpg`** (cobria os tiles
+   da costa com um JPG de 10240px por cima). Virou tipo `tile`, igual à Ocean Deep.
+   **Executado com sucesso em 2026-09-23** (`scripts/gerar_rotulos.py --confirmo`,
+   depois de um `--teste` medindo o pico de memória — ver "Rótulos: execução final",
+   abaixo). Roda no `.venv` (só Pillow, nenhuma automação COM, diferente de
+   `extrair_ocean_deep.py`).
+2. **Alinhamento por 2 pontos** para as camadas `imagem` (as 4 do ChatGPT): botão
+   "alinhar" em `static/js/camadas-referencia.js` abre um modal
+   (`templates/index.html`, `#modal-alinhamento`) com a imagem crua; o usuário
+   clica um ponto na imagem, depois o ponto correspondente no mapa (usa
+   `mapa.on("click", ...)` com listener de uso único), repete pro segundo par, e o
+   código calcula escala X/Y independentes (sem rotação:
+   `escala = (destino2-destino1)/(origem2-origem1)`, por eixo) e os `bounds`
+   resultantes, grava via o mesmo `POST /api/camadas-referencia/{id}` que os campos
+   numéricos já usavam. Os campos numéricos continuam existindo pro ajuste fino,
+   como pedido. Pontos quase colineares no mesmo eixo (diferença de pixel < 1) são
+   recusados com aviso, pra não dividir por um número perto de zero. **Não testado
+   num navegador de verdade ainda** (só sintaxe conferida com `node --check`) —
+   pedir pro usuário testar o clique real antes de considerar fechado.
+3. **Formato da leitura de cursor**: `"36,42° N  72,67° O"` (grau, espaço antes da
+   letra, vírgula decimal, dois espaços entre lat e lon) — `formatarCoordenada` em
+   `static/js/app.js`. Fora dos limites REAIS do mundo (`PARAMETROS_LEAFLET.limites`,
+   não o `maxBounds` com folga de 15% usado só pra não travar o pan bruscamente na
+   borda) mostra traços (`"--,--°  -   --,--°  -"`).
+4. **Estado da Ocean Deep (visível, opacidade) agora persiste** em
+   `dados/camadas_referencia.json`, junto com as outras camadas — antes vivia só
+   em memória do navegador (checkbox solto em `index.html`, sem gravação). Passou a
+   usar o mesmo mecanismo de tipo `tile` do item 1: `dados/camadas_referencia.json`
+   ganhou um campo `"tipo"` (`"imagem"` ou `"tile"`), `backend/referencias.py`
+   dispensa `bounds` pra `tipo: "tile"` (não existe posição ajustável — a pirâmide
+   já cobre o mundo inteiro pela CRS), e `backend/main.py` calcula a `url` de tile
+   como `/tiles/<id>/{z}/{x}/{y}.png` em vez de `/referencias/...`/`/fonte/...`.
+   `versao_esquema` subiu de 1 pra 2 no JSON.
+5. **Rodapé (`#status-salvamento`) atualizado** pra descrever a etapa 2 (antes
+   dizia "etapa 1: sem dado editável ainda", desatualizado desde que a etapa 2
+   começou).
+- **Estado pra teste**: `rotulos.visivel = false`, `ocean-deep.visivel = true`,
+  `ocean-deep.opacidade = 0.7` — pedido explícito do usuário pra essa rodada de
+  teste. Servidor reiniciado (os dois processos uvicorn antigos, de sessões
+  anteriores, foram encerrados antes de subir o novo, porque `main.py` mudou e o
+  uvicorn não roda com `--reload`).
+
+## Rodada noturna autônoma de 2026-09-22 — etapas 3 e 4, e correções da etapa 2
+
+Detalhe completo (números, achados, roteiro de teste) em `RELATORIO-NOITE.md`.
+Resumo do que muda nesta especificação:
+
+- **A1 (zoom fracionário)**: `zoomSnap`/`zoomDelta` deixam de ser 1 inteiro;
+  campo de porcentagem próprio na barra do topo substitui o controle de zoom
+  nativo do Leaflet (`zoomControl: false`). 100% = `MAX_ZOOM` (resolução nativa de
+  10240px), 800% = `MAX_ZOOM_MAPA` (`MAX_ZOOM + SOBRE_ZOOM`, já existia, não
+  precisou de número novo). Piso do zoom calculado por `map.getBoundsZoom`, não
+  mais fixo em 0.
+- **A2 (alinhamento automático ChatGPT)**: `scripts/alinhar_chatgpt_auto.py`,
+  roda no `.venv` (Pillow+numpy, sem instalação nova). Classifica terra/mar por
+  cor, busca escala (X/Y independentes, sem rotação) e posição que maximizam IoU
+  contra a costa oficial reduzida. Grava `bounds`, `bounds_anterior_a_20260922` e
+  `alinhamento_automatico` (IoU, método, data) em `camadas_referencia.json`. Gera
+  prévia em `render/analise/alinhamento_chatgpt-N.png`.
+  **Aceito pelo usuário em 2026-09-23**: as 4 imagens convergirem pra bounds quase
+  idênticos, cobrindo quase o mundo inteiro, não é resultado degenerado — as
+  imagens do ChatGPT foram geradas a partir do MAPA INTEIRO (ver
+  `historico/PROMPT-mapa-completo-svg.md`, que pede "um mapa de fantasia colorido
+  e completo, água E terreno" a partir do SVG da tela inteira de 10240px), então
+  cobrir o mundo todo é exatamente o esperado, não um sinal de otimizador preso
+  num mínimo raso. Nota de sobreposição (IoU) de cada imagem, gravada em
+  `dados/camadas_referencia.json` (`alinhamento_automatico.iou_terras`):
+
+  | Camada | IoU |
+  |---|---|
+  | chatgpt-1 | 70,4% |
+  | chatgpt-2 | 70,8% |
+  | chatgpt-3 | 55,3% |
+  | chatgpt-4 | 63,7% |
+- **Etapa 3 — Ferramenta de Lugar**: implementada. `backend/lugares.py` (tipo
+  fechado `cidade/vila/fortaleza/porto/ruina/marco`, `capital` só quando
+  `tipo=="cidade"`, ponto tem que cair em terra por `mascaras/costa_10240.png`,
+  cacheada em memória uma vez por processo). Todas as gravações passam pela
+  infraestrutura de desfazer/refazer (abaixo). Endpoints REST em `backend/main.py`
+  (`GET/POST /api/lugares`, `PUT .../posicao`, `PUT /api/lugares/{id}`,
+  `DELETE /api/lugares/{id}`). UI mínima em `static/js/lugares.js` (marcador
+  arrastável, criar por clique + `prompt()`, editar/apagar por `prompt()`/
+  `confirm()` nativos — não é a UI final, é o suficiente pra exercitar o B1/B2
+  de ponta a ponta).
+- **Infraestrutura de gravação (a "Gravação e histórico de operações" acima,
+  agora implementada)**: `backend/historico.py` (gravação atômica + últimas 5
+  versões em `dados/.historico/<arquivo>/`) e `backend/operacoes.py` (log de
+  operações em `dados/.operacoes/log.jsonl` + cursor em `cursor.json`, desfazer/
+  refazer com descarte do rabo de refazer numa operação nova — decisão da IA, não
+  estava no ESPEC). **Decidido nesta rodada**: sem limite de tamanho do log (o
+  ESPEC cogitava "as últimas 50 operações", não decidido; escala de uso de uma
+  ferramenta solo não justifica podar ainda). Endpoints genéricos `GET /api/pilha`,
+  `POST /api/desfazer`, `POST /api/refazer` — servem qualquer ferramenta futura
+  que grave por `operacoes.registrar_operacao`, não só Lugar.
+- **Etapa 4 — Régua e grade de lat/lon**: implementada. `static/js/regua.js`,
+  distância por grande círculo (haversine) sobre `PARAMETROS_LEAFLET.raio_km`
+  (novo campo, `backend/coordenadas.py`), nunca a régua da tela. Grade de lat/lon
+  a cada 10°, ligável por checkbox. Fórmula espelhada e testada em Python
+  (`tests/test_haversine.py`) contra dois casos de fórmula fechada.
+- **`pytest` instalado no `.venv`** (autorizado pelo usuário para a rodada
+  noturna), `requirements.txt` atualizado. 34 testes em `ferramentas/tests/`,
+  cobrindo `historico.py`, `operacoes.py`, `lugares.py` e a fórmula de
+  `regua.js` (espelhada em Python).
+- **Nada testado num navegador de verdade** nesta rodada (sem sessão de browser
+  automation) — tudo verificado por `pytest`, `node --check` e chamadas de API
+  reais via `curl` contra o servidor rodando. Ver `RELATORIO-NOITE.md` para o
+  roteiro de teste manual.
+- **Etapa 5 (Área/Geoman) não iniciada** — Leaflet-Geoman free 2.20.0 estava
+  autorizado para instalação nesta noite, mas não foi baixado (faltou tempo no
+  orçamento da rodada).
+
+## Correções pedidas em 2026-09-23 (depois do teste do usuário)
+
+- **`scripts/gerar_rotulos.py` reescrito** para comparar por faixa horizontal de
+  256px (uma linha de tiles por vez), em vez de montar um PNG de 10240px
+  intermediário — a versão anterior materializava ~8 cópias inteiras de 10240px
+  além das duas imagens de origem (diff, 3 canais, diferença máxima, máscara,
+  RGBA de saída). Zooms menores vêm de reduzir os TILES do zoom acima (canvas de
+  até 512px, nunca uma imagem de 10240px). Modo `--teste`: abre as duas imagens
+  de verdade e processa só 4 de 40 faixas, mede o pico e recomenda a memória
+  livre necessária pra rodar tudo (pico não cresce com o número de faixas —
+  domina o custo fixo de abrir as duas imagens).
+- **Esquema de `capital`/`importancia` corrigido**: a rodada anterior tinha
+  concluído (errado) que a decisão nunca fora escrita em documento nenhum — na
+  verdade estava em `lore/mapas/historico/ESPEC-dados-revisao2.md`, guardado
+  pelo usuário fora do repositório, e foi apagada pela reescrita que virou a
+  terceira revisão, antes do commit `96e4188`. Restaurada em `ESPEC-dados.md`
+  ("Nota de recuperação"); ver também a regra nova em `CARTOGRAFO.md`, "Regras
+  invioláveis".
+- **`backend/operacoes.py` reescrito**: cada operação grava só as FEATURES
+  afetadas (por id), não o `FeatureCollection` inteiro antes/depois — ver
+  docstring do módulo para o formato novo (`mudancas`).
+
+### Rótulos: execução final (2026-09-23)
+
+`scripts/gerar_rotulos.py --teste` rodou primeiro (autorizado só para medir):
+abriu as duas imagens de verdade, processou 4 de 40 faixas, pico medido **1.619
+MB**, recomendação **≥ 2.429 MB (~2,37 GB) de memória livre**.
+
+Com a memória em 3,39 GB (acima da recomendação), `scripts/gerar_rotulos.py
+--confirmo` rodou a versão completa:
+
+| Métrica | Valor |
+|---|---|
+| Tempo total | 4,5 s |
+| Pico de memória do processo | 1.624 MB (bate com a previsão do `--teste`, 1.619 MB) |
+| Tiles gravados (zoom máximo) | 57 (poucos — texto é esparso, a maior parte da tela fica transparente) |
+| Tiles totais (todos os zooms) | 101, 1,9 MB em disco |
+
+**Validação com controle negativo** (regra do CARTOGRAFO.md): um pixel único no
+centro do `rotulo` de "Mére" (`dados/regioes.json`) deu alfa=0 — **não é um
+bug**: o ponto de rótulo marca a posição de referência do texto, não
+necessariamente cai em cima de tinta (pode cair entre letras ou num espaço). Uma
+amostragem numa janela de ~50×50px em volta do mesmo ponto achou 735 pixels com
+alfa>0 (máximo 255) — controle positivo confirmado com janela, não com pixel
+único, exatamente como recomendado numa revisão anterior. Controle negativo (mar
+aberto longe de qualquer nome, x=1000,y=5000) deu 0 pixels com alfa>0 na mesma
+janela — sem ruído de compressão JPEG passando pelo limiar de 30.
+`rotulos.visivel` em `dados/camadas_referencia.json` continua `false` (estado
+que já estava lá) — não mudei sozinho, é o usuário quem liga pela ferramenta.

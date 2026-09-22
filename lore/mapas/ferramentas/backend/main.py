@@ -1,7 +1,8 @@
 """Servidor da ferramenta de pintura do mapa de Uldun. Etapa 1: serve a página com o
-Leaflet e a costa/mar em tiles. Etapa 2 (em andamento): camadas de referência (as 4
-imagens do ChatGPT e os rótulos, servidas inteiras — sem tile, sem processamento;
-Ocean Deep ainda não, é tile e processamento pesado — ver scripts/extrair_ocean_deep.py).
+Leaflet e a costa/mar em tiles. Etapa 2: camadas de referência (as 4 imagens do
+ChatGPT e os rótulos, servidas inteiras — sem tile, sem processamento) e a Ocean
+Deep (tiles em /tiles/ocean-deep, gerados por scripts/extrair_ocean_deep.py — mesmo
+mount genérico de /tiles usado pela costa, nenhuma rota nova precisou entrar aqui).
 
 Rodar (de dentro de lore/mapas/ferramentas/, com o venv ativado):
     .venv/Scripts/python.exe -m uvicorn backend.main:app --host 127.0.0.1 --port 8420
@@ -16,7 +17,7 @@ from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-from . import coordenadas, referencias
+from . import coordenadas, lugares, operacoes, referencias
 
 RAIZ_FERRAMENTA = Path(__file__).resolve().parents[1]
 RAIZ_MAPAS = RAIZ_FERRAMENTA.parent
@@ -49,6 +50,22 @@ class MudancaCamadaReferencia(BaseModel):
     bounds: dict[str, float] | None = None
 
 
+class NovoLugar(BaseModel):
+    id: str
+    lon: float
+    lat: float
+    propriedades: dict
+
+
+class MovimentoLugar(BaseModel):
+    lon: float
+    lat: float
+
+
+class EdicaoLugar(BaseModel):
+    propriedades: dict
+
+
 @app.get("/", response_class=HTMLResponse)
 def pagina_inicial() -> str:
     html = (TEMPLATES_DIR / "index.html").read_text(encoding="utf-8")
@@ -62,15 +79,24 @@ def pagina_inicial() -> str:
         "/*__CAMADAS_REFERENCIA__*/",
         json.dumps(camadas_ref, ensure_ascii=False),
     )
+    html = html.replace(
+        "/*__LUGARES__*/",
+        json.dumps(lugares.carregar(), ensure_ascii=False),
+    )
     return html
 
 
 def _camadas_referencia_com_url() -> dict:
     """Mesmo documento de dados/camadas_referencia.json, com uma `url` calculada
-    (para /referencias/... ou /fonte/...) somada a cada camada — o frontend não
-    precisa saber de onde cada arquivo vem."""
+    somada a cada camada — o frontend não precisa saber de onde cada arquivo vem.
+    Camada 'imagem' aponta pra /referencias/... ou /fonte/...; camada 'tile' aponta
+    pro template XYZ da sua própria pirâmide (/tiles/<id>/{z}/{x}/{y}.png — a pasta
+    em render/tiles/ tem o mesmo nome do id, por convenção: rotulos, ocean-deep)."""
     dados = referencias.carregar()
     for camada in dados["camadas"]:
+        if camada.get("tipo") == "tile":
+            camada["url"] = f"/tiles/{camada['id']}/{{z}}/{{x}}/{{y}}.png"
+            continue
         arquivo = camada["arquivo"]
         if arquivo.startswith("referencias/"):
             resto = arquivo[len("referencias/"):]
@@ -98,3 +124,77 @@ def salvar_camada_referencia(id_camada: str, mudanca: MudancaCamadaReferencia) -
     except ValueError as e:
         raise HTTPException(status_code=422, detail=str(e))
     return JSONResponse(_camadas_referencia_com_url())
+
+
+# --- Ferramenta de Lugar (B2, rodada noturna de 2026-09-22) ------------------------
+# Toda gravação passa por backend/operacoes.py (B1): cada criar/mover/editar/apagar
+# vira uma operação desfazível, e /api/desfazer e /api/refazer são genéricos (não
+# são "desfazer de lugar" -- vão servir sem mudança pras ferramentas seguintes, que
+# também vão gravar por operacoes.registrar_operacao).
+
+@app.get("/api/lugares")
+def obter_lugares() -> JSONResponse:
+    return JSONResponse(lugares.carregar())
+
+
+@app.post("/api/lugares")
+def criar_lugar(novo: NovoLugar) -> JSONResponse:
+    try:
+        lugares.criar_lugar(novo.id, novo.lon, novo.lat, novo.propriedades)
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
+    return JSONResponse(lugares.carregar())
+
+
+@app.put("/api/lugares/{id_lugar}/posicao")
+def mover_lugar(id_lugar: str, movimento: MovimentoLugar) -> JSONResponse:
+    try:
+        lugares.mover_lugar(id_lugar, movimento.lon, movimento.lat)
+    except KeyError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
+    return JSONResponse(lugares.carregar())
+
+
+@app.put("/api/lugares/{id_lugar}")
+def editar_lugar(id_lugar: str, edicao: EdicaoLugar) -> JSONResponse:
+    try:
+        lugares.editar_lugar(id_lugar, edicao.propriedades)
+    except KeyError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
+    return JSONResponse(lugares.carregar())
+
+
+@app.delete("/api/lugares/{id_lugar}")
+def apagar_lugar(id_lugar: str) -> JSONResponse:
+    try:
+        lugares.apagar_lugar(id_lugar)
+    except KeyError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    return JSONResponse(lugares.carregar())
+
+
+# --- Desfazer/refazer genérico (B1) -------------------------------------------------
+
+@app.get("/api/pilha")
+def obter_estado_pilha() -> JSONResponse:
+    return JSONResponse(operacoes.estado_pilha())
+
+
+@app.post("/api/desfazer")
+def desfazer() -> JSONResponse:
+    operacao = operacoes.desfazer()
+    if operacao is None:
+        raise HTTPException(status_code=409, detail="nada para desfazer")
+    return JSONResponse({"operacao": operacao, "pilha": operacoes.estado_pilha()})
+
+
+@app.post("/api/refazer")
+def refazer() -> JSONResponse:
+    operacao = operacoes.refazer()
+    if operacao is None:
+        raise HTTPException(status_code=409, detail="nada para refazer")
+    return JSONResponse({"operacao": operacao, "pilha": operacoes.estado_pilha()})

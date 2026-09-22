@@ -1,71 +1,126 @@
 {
-  "_comentario": "Camadas de referência com transparência (ESPEC-ferramenta.md, correção 10 / etapa 2). Posição/escala guardadas como um retângulo em lat/lon (bounds), não como pixel — a ferramenta desenha cada imagem esticada exatamente sobre esse retângulo. As 4 imagens do ChatGPT não batem com a costa oficial (nascem sem escala nem orientação definida) e começam com um retângulo-placeholder pequeno no centro do mundo; o usuário ajusta. 'Rótulos' é derivado do próprio mapa (fonte/Mapa Teste1.jpg, 10240px, mesma tela que costa_10240.png) e por isso já nasce alinhado ao mundo inteiro, sem precisar de ajuste.",
-  "versao_esquema": 1,
+  "_comentario": "Camadas de referência (ESPEC-ferramenta.md, correção 10 / etapa 2). Dois tipos: 'imagem' (imageOverlay esticado sobre um retângulo em lat/lon, bounds = posição e escala) e 'tile' (pirâmide de tiles pré-gerada, sempre alinhada ao mundo inteiro pela mesma CRS da costa — sem bounds próprio, sem posição ajustável). As 4 imagens do ChatGPT são 'imagem', sem escala nem orientação conhecida: nascem com um retângulo-placeholder pequeno no centro do mundo, e o usuário ajusta pelos campos numéricos OU pelo alinhamento por 2 pontos (clique na imagem + clique no mapa, duas vezes, sem rotação). 'rotulos' e 'ocean-deep' são 'tile' desde 2026-09-22 (antes 'rotulos' era a imagem inteira de fonte/Mapa Teste1.jpg — trocado a pedido do usuário, que cobria a costa com o JPG de 10240px inteiro; a nova versão vem de scripts/gerar_rotulos.py, diferença entre Mapa Teste1.jpg e Mapa Teste.jpg, só o texto, fundo transparente, tiles em render/tiles/rotulos/ — script escrito, ainda NÃO RODADO nesta sessão, pendente de confirmação do usuário por ser processamento pesado).",
+  "versao_esquema": 2,
   "camadas": [
     {
       "id": "chatgpt-1",
       "nome": "ChatGPT ref 1",
+      "tipo": "imagem",
       "arquivo": "referencias/ChatGPT Image 15 de jul. de 2026, 16_21_08.png",
       "visivel": false,
-      "opacidade": 0.6,
+      "opacidade": 1.0,
       "bounds": {
+        "oeste": -46.04526607585256,
+        "leste": 47.246518683711976,
+        "sul": -24.16872681169165,
+        "norte": 69.65079274538141
+      },
+      "bounds_anterior_a_20260922": {
         "sul": -10,
         "norte": 10,
         "oeste": -10,
         "leste": 10
+      },
+      "alinhamento_automatico": {
+        "iou_terras": 0.7036,
+        "usado_como_posicao": true,
+        "data": "2026-09-22",
+        "metodo": "cor terra/mar, sem rotação, IoU (ver scripts/alinhar_chatgpt_auto.py)"
       }
     },
     {
       "id": "chatgpt-2",
       "nome": "ChatGPT ref 2",
+      "tipo": "imagem",
       "arquivo": "referencias/ChatGPT Image 15 de jul. de 2026, 16_30_50.png",
-      "visivel": false,
+      "visivel": true,
       "opacidade": 0.6,
       "bounds": {
+        "oeste": -31.594789216355547,
+        "leste": 34.97262000664034,
+        "sul": 12.704182974254946,
+        "norte": 49.93010294716481
+      },
+      "bounds_anterior_a_20260922": {
         "sul": -10,
         "norte": 10,
         "oeste": -10,
         "leste": 10
+      },
+      "alinhamento_automatico": {
+        "iou_terras": 0.708,
+        "usado_como_posicao": true,
+        "data": "2026-09-22",
+        "metodo": "cor terra/mar, sem rotação, IoU (ver scripts/alinhar_chatgpt_auto.py)"
       }
     },
     {
       "id": "chatgpt-3",
       "nome": "ChatGPT ref 3",
+      "tipo": "imagem",
       "arquivo": "referencias/ChatGPT Image 15 de jul. de 2026, 17_20_46.png",
       "visivel": false,
       "opacidade": 0.6,
       "bounds": {
+        "oeste": -46.04526607585256,
+        "leste": 47.246518683711976,
+        "sul": -24.16872681169165,
+        "norte": 69.65079274538141
+      },
+      "bounds_anterior_a_20260922": {
         "sul": -10,
         "norte": 10,
         "oeste": -10,
         "leste": 10
+      },
+      "alinhamento_automatico": {
+        "iou_terras": 0.5529,
+        "usado_como_posicao": true,
+        "data": "2026-09-22",
+        "metodo": "cor terra/mar, sem rotação, IoU (ver scripts/alinhar_chatgpt_auto.py)"
       }
     },
     {
       "id": "chatgpt-4",
       "nome": "ChatGPT ref 4",
+      "tipo": "imagem",
       "arquivo": "referencias/ChatGPT Image 15 de jul. de 2026, 17_56_20.png",
       "visivel": false,
       "opacidade": 0.6,
       "bounds": {
+        "oeste": -46.04526607585256,
+        "leste": 47.246518683711976,
+        "sul": -24.16872681169165,
+        "norte": 69.65079274538141
+      },
+      "bounds_anterior_a_20260922": {
         "sul": -10,
         "norte": 10,
         "oeste": -10,
         "leste": 10
+      },
+      "alinhamento_automatico": {
+        "iou_terras": 0.6367,
+        "usado_como_posicao": true,
+        "data": "2026-09-22",
+        "metodo": "cor terra/mar, sem rotação, IoU (ver scripts/alinhar_chatgpt_auto.py)"
       }
     },
     {
       "id": "rotulos",
-      "nome": "Rótulos (Mapa Teste1)",
-      "arquivo": "fonte/Mapa Teste1.jpg",
+      "nome": "Rótulos (texto, transparente)",
+      "tipo": "tile",
+      "arquivo": null,
+      "visivel": false,
+      "opacidade": 0.45
+    },
+    {
+      "id": "ocean-deep",
+      "nome": "Ocean Deep (batimetria)",
+      "tipo": "tile",
+      "arquivo": null,
       "visivel": true,
-      "opacidade": 0.7,
-      "bounds": {
-        "sul": -23.292,
-        "norte": 68.798,
-        "oeste": -46.045,
-        "leste": 46.045
-      }
+      "opacidade": 1.0
     }
   ]
 }
