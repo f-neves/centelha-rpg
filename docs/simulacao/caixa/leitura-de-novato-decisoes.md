@@ -805,3 +805,43 @@ secundário perfurante que a decisão pede.
 `armas.json`, no mesmo envelope aninhado já usado pelo resto do catálogo (peso a estimar por
 comparação com arma de classe/mãos equivalente, descrição curta por arma). Depois, a tabela do
 capítulo virando gerada (item pendente da rodada anterior).
+
+## Fechado em 22/09/2026 pela Executora-4: as sete armas novas e a tabela do capítulo gerada
+
+Dois commits, os dois últimos que faltavam do catálogo de itens desde `a492010`.
+
+**`7c6ff2d` · as sete armas do item 13.** Machadinha, Machado Pesado, Martelo, Bastão, Lança
+Longa, Sabre e Maça Estrela entram em `armas.json` no envelope aninhado, com o dado e o preço
+exatos da tabela do item 13. **O peso é estimativa minha, não da decisão original** (o item 13
+não fixou peso): por comparação com arma de classe/mãos equivalente já no catálogo (Machadinha
+0,8 kg perto do Machado 1,2; Machado Pesado 3,0 kg perto do Montante 2,8 e do Martelo de Guerra
+2,5; Martelo 1,3 kg, cópia do peso da Maça, coerente com copiar o resto do stat block dela;
+Bastão 0,6 kg, mais leve que a Adaga por ser madeira; Lança Longa 2,4 kg, entre a Lança 2,0 e a
+Alabarda 2,7; Sabre 0,8 kg perto da Espada Curta 0,9; Maça Estrela 1,5 kg, um pouco acima da
+Maça 1,3 pelos espigões). Descrição curta por arma, no tom das já existentes.
+
+**`484c33f` · a tabela do capítulo vira gerada (item 7 da ordem sugerida).** `scripts/gen-cap-itens.mjs`
+novo monta a tabela de "Catálogo de Equipamento" de `custo-de-servico-e-itens.md` a partir de
+`armas.json`/`armaduras.json`/`escudos.json`/`municao.json`, entre marcadores
+`<!-- gen:catalogo-equipamento -->`, no mesmo padrão de `gen-cap-pericias.mjs`. Item sem `preco`
+decidido some da tabela em vez de mostrar "a definir": a fonte não tem número, a tabela gerada
+não inventa um. `--check` entra no `npm run validate`.
+
+Isso resolve o `CORRIGE 11` sozinho, do jeito que a §5 previu: "Super-pesada" já não existia mais
+na `classe` do schema, e com a tabela deixando de ser digitada à mão ela também não aparece mais
+no capítulo (conferido: zero ocorrências em `custo-de-servico-e-itens.md` depois do regen).
+
+**Achado no meio do trabalho, e corrigido no mesmo commit:** três armas que a §8 já tinha
+confirmado como "não são órfãs, nome idêntico na tabela antiga" (Machado 30 pp, Lança 5 pp,
+Alabarda 28 pp) tinham ficado sem `preco` no commit anterior (`cd4bef2`): a §3 não as listava
+porque não eram ambíguas, e isso não significava que o campo já tinha sido preenchido. Entram
+agora.
+
+`npm run validate`, `npx tsc --noEmit` e `npm run build` passam limpos nos dois commits. O
+portão `todo gerador se confere` (`test-portoes.mjs`) contou o gerador novo sozinho (10 de 15
+com `--check` agora), sem precisar editar o portão (a lista é dinâmica). Conferido à mão o HTML
+gerado em `/regras/custo-de-servico-e-itens` e `/equipamentos`: preços, nomes e a ausência de
+"Super-pesada", tudo batendo.
+
+**Com isto, o catálogo de itens inteiro (schema, migração dos três catálogos, munição,
+consumidores, as sete armas novas e a tabela gerada) está pronto para a Revisora.**
