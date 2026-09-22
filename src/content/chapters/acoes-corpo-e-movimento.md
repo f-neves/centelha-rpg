@@ -25,6 +25,9 @@ Esta é a família do corpo contra o mundo físico: distância, altura, água, p
 | **12** | pedra lisa e polida, madeira encerada, gelo com piqueta |
 | **14** | trecho invertido curto, vidro, gelo sem equipamento |
 
+*Esta tabela usa uma escala própria, mais fina que a régua comum de seis degraus, mas segue a
+mesma lógica: quanto maior o número, mais difícil.*
+
 **Acúmulo e intervalo** · o Acúmulo é a **altura em metros**. O intervalo é o botão de velocidade da cena: **Tick** na perseguição, **minuto** na infiltração, **hora** na parede longa com equipamento.
 
 **A Margem compra** · altura. Cada Margem sobe **mais 3 metros** naquele intervalo.
@@ -37,7 +40,19 @@ Esta é a família do corpo contra o mundo físico: distância, altura, água, p
 
 ## Nadar
 
-**Modo** · Acumulada com correnteza ou pressa, Longa na travessia calma.
+**Água calma é deslocamento, não teste.** Nadar em lago parado ou mar de bonança é contínuo, do
+mesmo tipo que andar ou correr: consulte a **Vel. de Natação** na ficha (aba de derivados, perto
+da Vel. de Corrida) e não role nada. Só a água brava, abaixo, continua exigindo jogada.
+
+<p class="formula">Vel. de Natação = 1 + Vigor × ¾ + (Atletismo + Natação) ÷ 2, em m/s</p>
+
+Uma pessoa comum (Vigor 2, Atletismo/Natação 0) nada a **2,5 m/s**, cerca de 45% da sua Vel. de
+Corrida: mais lento que correr, na proporção real entre os dois gestos. A carga usa uma curva
+própria, mais dura que a da Corrida: metade do peso máximo já zera a Vel. de Natação, contra três
+quartos na terra firme (o corpo para de nadar e começa a afundar, não só anda devagar). A tabela
+de Deslocamento com carga da ficha mostra os dois lado a lado.
+
+**Modo** · Acumulada, só para água brava.
 
 **Jogada** · Vigor + Atletismo, secundária **Natação**.
 
@@ -45,11 +60,12 @@ Esta é a família do corpo contra o mundo físico: distância, altura, água, p
 
 | Dif | Água |
 |:--:|---|
-| **4** | lago parado, mar de bonança |
-| **7** | rio de corrente mansa, mar com ondulação, água gelada |
 | **11** | correnteza forte, mar agitado, água muito fria |
 | **14** | corredeira, ressaca, arrebentação sobre pedra |
 | **18** | cachoeira, remoinho, mar de tempestade |
+
+*Esta tabela usa uma escala própria, mais fina que a régua comum de seis degraus, mas segue a
+mesma lógica: quanto maior o número, mais difícil.*
 
 **Acúmulo e intervalo** · o Acúmulo é a **distância em metros**. **Tick** na fuga ou no naufrágio, **minuto** na travessia curta, **hora** na longa.
 
@@ -57,7 +73,7 @@ Esta é a família do corpo contra o mundo físico: distância, altura, água, p
 
 **Falha** · o padrão, com uma divergência que importa: **zerar o Acúmulo sobre água funda é começar a afundar**, e daí em diante vale [Sufocamento](/regras/acoes-resistir).
 
-**Circunstância** · armadura pesada **+4** · carga acima da faixa Leve **+2** · roupa pesada **+2** · a favor da corrente **−4** · corda de segurança **−2** · boia, tábua ou odre inflado **−2**.
+**Circunstância** · armadura pesada **+4** · carga acima da faixa Leve **+2** · roupa pesada **+2** · a favor da corrente **−4** · corda de segurança **−2** · boia, tábua ou odre inflado **−2**. Estes três testes de água brava usam a carga como Circunstância fixa na Dificuldade, sem a curva da Vel. de Natação acima: são contas diferentes, de propósito, para não calibrar as duas juntas.
 
 ## Cair
 

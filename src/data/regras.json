@@ -491,7 +491,10 @@
     "arremessoTeto": 0.25,
     "arremessoQueda": 0.8,
     "levantamentoAcimaCabeca": 0.5,
-    "cargaCorte": 0.75
+    "cargaCorte": 0.75,
+    "notaCargaAgua": "Curva própria pra Vel. de Natação (mesmo formato da curva de Corrida, vel = 1 − (peso ÷ maxKg ÷ corte)^expoente), mais dura: corte 0,5 e expoente 2, contra 0,75/1,5 da Corrida. Metade da carga máxima já zera a velocidade de natação (a pessoa para de nadar e começa a afundar), e a queda é mais brusca antes disso. Vale só pra Vel. de Natação; os três testes de água brava usam a Circunstância fixa (armadura pesada +4, carga acima da Leve +2), sem essa curva.",
+    "cargaCorteAgua": 0.5,
+    "cargaExpoenteAgua": 2
   },
   "furtividadeCriatura": {
     "nota": "A Furtividade de uma criatura, por PORTE e CATEGORIA, sobre a Destreza. Existe porque o bestiário não guarda Habilidade nenhuma: das cinco que as regras de oposição pedem, quatro voltam invertendo a conta dos derivados (Prontidão de iniciativa - raciocínio, Esquiva da Defesa, Integridade da Defesa Mental, Sociabilidade da Defesa Social) e a Furtividade não volta de lugar nenhum: nada a consome. Sem ela não há comparação para o golpe vindo do escuro, e comparar contra um número fixo seria escrever a regra por omissão.",
@@ -866,6 +869,12 @@
         "base": 2,
         "destreza": 0.25,
         "atletismo": 0.25
+      },
+      "natacao": {
+        "base": 1,
+        "vigor": 0.75,
+        "atletismo": 0.5,
+        "natacao": 0.5
       },
       "saltoVertical": {
         "forca": 20,

@@ -285,7 +285,7 @@ export function iniciativa(traits: Record<string, number>) {
 
 /** Deslocamento: corrida (m/s) e normal (m fixo) de movimento, e pulo (cm). */
 export function deslocamento(
-  traits: { forca?: number; destreza?: number; atletismo?: number; centelha?: number },
+  traits: { forca?: number; destreza?: number; atletismo?: number; centelha?: number; vigor?: number; natacao?: number },
   // A fração da raça (baixa estatura: dois terços). Entra ANTES do
   // arredondamento, senão dois arredondamentos em sequência somam erro: 3,25
   // vira 3 e 3 × ⅔ vira 2, quando a conta certa é 3,25 × ⅔ = 2,17 → 2.
@@ -303,6 +303,7 @@ export function deslocamento(
       (s, [k, v]) => s + (k === 'base' ? v : ((traits as Record<string, number>)[k] ?? 0) * v), 0) * frac);
   return {
     arranque: calc(d.arranque), corrida: calc(d.corrida), normal: calc(d.normal),
+    natacao: calc(d.natacao),
     saltoVertical: calc(d.saltoVertical),
     saltoHorizontalParado: calc(d.saltoHorizontalParado),
     saltoHorizontalCorrendo: calc(d.saltoHorizontalCorrendo),

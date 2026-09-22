@@ -1568,7 +1568,8 @@ export function montarFicha(opts: FichaOpts) {
         // A fração entra dentro de `deslocamento`, antes do arredondamento.
         const fracR = (RACA[S.raca] as any)?.deslocamentoFrac ?? 1;
         const notaR = fracR !== 1 ? ` × ⅔ · baixa estatura` : '';
-        const dz = deslocamento({ forca: A('forca'), destreza: dex, atletismo: SK('atletismo'), centelha: C }, fracR);
+        const natSk = S.skills2['natacao'] || 0;
+        const dz = deslocamento({ forca: A('forca'), destreza: dex, atletismo: SK('atletismo'), centelha: C, vigor: vig, natacao: natSk }, fracR);
         const penMov = Math.floor(penFisica / 2);
         const mp = (v: number) => Math.max(0, v - penMov);
         const cmp = (v: number) => Math.max(0, v - penMov * 10);
@@ -1576,6 +1577,7 @@ export function montarFicha(opts: FichaOpts) {
         return r('Desloc. de Batalha', `${mp(dz.normal)} m/Tick`, `2 + (Destreza ${dex} + Atletismo ${SK('atletismo')}) ÷ 4${notaR}${ps} = ${mp(dz.normal)} m por Tick · o PRIMEIRO Tick é grátis durante outra ação (atacar, conjurar); daí em diante custa 1 Tick por Tick de movimento. Como o Tick é ~1 segundo, o número também é a sua velocidade em m/s: andar são 1,5 e correr passa de 5`, true) +
           r('Vel. de Arranque', `${mp(dz.arranque)} m/s`, `2 + Força ${A('forca')} ÷ 4 + Atletismo ${SK('atletismo')} ÷ 4 + Destreza ${dex} ÷ 2 · Ticks 1–3${notaR}${ps}`, true) +
           r('Vel. de Corrida', `${mp(dz.corrida)} m/s`, `4 + Destreza ${dex} × ¾ + Atletismo ${SK('atletismo')} ÷ 2 · Tick 4+${notaR}${ps}`, true) +
+          r('Vel. de Natação', `${mp(dz.natacao)} m/s`, `1 + Vigor ${vig} × ¾ + (Atletismo ${SK('atletismo')} + Natação ${natSk}) ÷ 2${notaR}${ps} · água calma, sem rolar; água brava continua teste (cap. Corpo e Movimento)`, true) +
           r('Salto Vertical', `${cmp(dz.saltoVertical)} cm`, `Força ${A('forca')}×20 + Atletismo ${SK('atletismo')}×10 + Destreza ${dex}×4 + Centelha ${C}×50${notaR}`, true) +
           r('Salto Horiz. Parado', `${mp(dz.saltoHorizontalParado)} m`, `(Força ${A('forca')} + Atletismo ${SK('atletismo')} + Centelha ${C}) ÷ 2${notaR}${ps}`, true) +
           r('Salto Horiz. Correndo', `${mp(dz.saltoHorizontalCorrendo)} m`, `Vel. de Corrida + Atletismo ${SK('atletismo')} ÷ 2 + Centelha ${C}${notaR}${ps}`, true); })();
@@ -1661,10 +1663,20 @@ export function montarFicha(opts: FichaOpts) {
     // para o mesmo personagem seriam um erro visível de longe.
     const penMov = Math.floor(((empilharArmaduras(pecasArmadura()).penalidade || 0)
       + (calcConj(conjAtivo()).penSum || 0)) / 2);
+    const dzFrac = (RACA[S.raca] as any)?.deslocamentoFrac ?? 1;
     const vBase = Math.max(0, deslocamento({
       forca, destreza: A('destreza'), atletismo: atl, centelha: S.centelha,
-    }, (RACA[S.raca] as any)?.deslocamentoFrac ?? 1).corrida - penMov);
+    }, dzFrac).corrida - penMov);
     const vel = (w: number) => vBase * velFrac(w);
+    // Curva própria pra água (regras.json → forca.cargaCorteAgua/cargaExpoenteAgua): mais dura
+    // que a de terra, metade da carga máxima já zera a Vel. de Natação. Reaproveita o mesmo
+    // maxKg do levantamento em vez de abrir uma segunda conta de peso máximo.
+    const corteAgua = F.cargaCorteAgua as number;
+    const velFracAgua = (w: number) => Math.max(0, 1 - Math.pow(w / maxKg / corteAgua, F.cargaExpoenteAgua));
+    const vBaseNatacao = Math.max(0, deslocamento({
+      vigor: A('vigor'), atletismo: atl, natacao: S.skills2['natacao'] || 0,
+    }, dzFrac).natacao - penMov);
+    const velNatacao = (w: number) => vBaseNatacao * velFracAgua(w);
     const cMin = maxKg / 8, cLeve = maxKg / 4, cMedia = maxKg / 2, cPesada = maxKg * corte;
     const bandas = [
       { de: 0, ate: cMin, nome: 'Mínima', op: '.03' },
@@ -1775,6 +1787,7 @@ export function montarFicha(opts: FichaOpts) {
           item('Pesada', kg(cPesada)), item('Máxima', kg(maxKg)),
         ].join(' '))
       + linha('Velocidade Máxima de Corrida', `<b>${r1(vBase)} m/s</b>`, true)
+      + linha('Velocidade Máxima de Natação', `<b>${r1(vBaseNatacao)} m/s</b>`, true)
       // A carga sai da soma das bolsas, do arsenal e da armadura vestida, e é a única
       // linha editável do cabeçalho: apagar o campo devolve a conta. A velocidade ao lado
       // é a mesma curva das tabelas, lida no ponto em que o personagem está agora.
@@ -1782,7 +1795,8 @@ export function montarFicha(opts: FichaOpts) {
       + `<span class="fa-edit"><input data-fa-carga value="${escapeHtml(S.cargaAtual || '')}" `
       + `placeholder="${r1(cargaCalculada())}" inputmode="decimal" aria-label="Carga atual, em quilos"`
       + `${opts.readOnly ? ' disabled' : ''} /> kg</span> `
-      + `<span class="fa-item">Velocidade atual <b data-fa-velatual>${r1(vel(carga))} m/s</b></span></div>`
+      + `<span class="fa-item">Velocidade atual <b data-fa-velatual>${r1(vel(carga))} m/s</b></span> `
+      + `<span class="fa-item">Natação atual <b data-fa-velatualnat>${r1(velNatacao(carga))} m/s</b></span></div>`
       + `</div>`;
     const botoes = `<div class="fa-curvas" role="group" aria-label="Gráficos">`
       + `<button type="button" data-fa-graf="arremesso">Arremesso × Peso</button>`
@@ -1800,6 +1814,8 @@ export function montarFicha(opts: FichaOpts) {
       S.cargaAtual = inpCarga.value;
       const alvo = box.querySelector('[data-fa-velatual]');
       if (alvo) alvo.textContent = `${r1(vel(cargaAtual()))} m/s`;
+      const alvoNat = box.querySelector('[data-fa-velatualnat]');
+      if (alvoNat) alvoNat.textContent = `${r1(velNatacao(cargaAtual()))} m/s`;
       save();
     });
 
