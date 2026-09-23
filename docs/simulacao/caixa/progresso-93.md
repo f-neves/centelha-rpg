@@ -47,3 +47,5 @@ branch.worktree-agent-a61135436a32b96cc.vscode-merge-base=origin/main
 ```
 
 A listagem DEPOIS vai na linha seguinte, num segundo commit deste arquivo (um commit não pode conter o que acontece durante ele).
+
+- **18:01:25** · commit `95e4733` feito (exit 0, 54 s, que é o tempo do gancho com `validate` e `tsc`). `git config --local --list` DEPOIS dele: **as mesmas 16 linhas, idênticas byte a byte** (`cmp` sem diferença) à listagem de 18:00:31 acima. Ressalva: o `rtk` resume a saída do `git commit` a "ok", então aquela vez não guardou o texto do gancho. Este segundo commit roda por `rtk proxy git commit`, para a saída do gancho ficar inteira, e a comparação antes e depois dele sai no relato ao Arquiteto.
