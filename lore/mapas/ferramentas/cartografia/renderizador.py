@@ -1,32 +1,53 @@
-"""Primeiro renderizador: dado + símbolos -> imagem (noite 2, 2026-09-23).
+"""Renderizador: dado + símbolos -> imagem (noite 2 e manhã de 2026-09-23).
 
-Desenha uma JANELA do mundo com: mar, costa, cor base da terra e os símbolos
-espalhados dentro das áreas pintadas. Nada mais (rio, estrada, rótulo e lugar ficam
-para depois).
+Desenha uma JANELA do mundo com: mar, costa, a cor de fundo de cada cobertura, os
+lagos e os símbolos espalhados dentro das áreas pintadas. Nada mais (rio, estrada,
+rótulo e lugar ficam para depois).
+
+**As camadas, de baixo para cima**:
+
+1. Papel na terra, mar fora dela.
+2. **Cor de fundo por cobertura** (pedido do usuário na manhã de 2026-09-23): cada área
+   da camada `cobertura` pinta uma cor chapada e suave, de atlas em pergaminho
+   (`CORES_COBERTURA`), com a borda irregular da etapa 11 e recortada pela costa.
+   Campo não tem cor: é o próprio papel. O relevo não pinta fundo.
+3. Lago (etapa 12) na cor da água, com margem.
+4. A linha da costa.
+5. Os símbolos, em traço, por cima.
 
 **Como um símbolo vai parar no mapa**:
 
-1. A área é rasterizada com a borda irregular da etapa 11 (`raster.py`) e recortada
-   pela costa oficial.
+1. A área é rasterizada com uma borda mais irregular que a da cor
+   (`AMPLITUDE_SIMBOLOS_KM`), recortada pela costa oficial e, se a área tem cor, pela
+   mancha de cor dela (nenhum símbolo de floresta fica no papel).
 2. Pontos por **Poisson-disc** (Bridson) dentro da máscara: nenhum ponto a menos de
-   `raio` de outro, o que dá a mancha regular sem parecer grade. O raio é a densidade
-   de cada tipo (`TIPOS`).
-3. Cada ponto é a ÂNCORA DE BASE de um símbolo sorteado na mistura do valor da área
-   (`MISTURAS`), com o tamanho variando ±20%, espelhado ao acaso se o símbolo aceita,
-   e com rotação leve se o tipo aceita.
-4. **Nenhum símbolo no mar**: a âncora e as duas pontas da base (35% da largura para
+   `raio` de outro. O raio é a densidade do tipo (`TIPOS`).
+3. **Profundidade**: quanto o ponto está para dentro da área, de 0 na beira a 1 a
+   `profundidade_km` dela (um borrão da máscara numa grade grossa). Ela controla o
+   tamanho (`borda` na beira, `miolo` no fundo: é o que dá espinha à cordilheira) e
+   quantos pontos ficam (`manter_na_borda`: a franja rala é o que esconde a reta do
+   polígono).
+4. Cada ponto é a ÂNCORA DE BASE de um símbolo sorteado na mistura do valor da área
+   (`MISTURAS`), com o tamanho variando `±variacao`, espelhado ao acaso só se o
+   símbolo aceita (a luz vem do noroeste: `recorte.ESPELHAVEL`, medido), e com
+   rotação leve se o tipo aceita.
+5. **Nenhum símbolo no mar**: a âncora e as duas pontas da base (35% da largura para
    cada lado) têm de cair em terra na máscara oficial, senão o ponto é descartado.
-5. **Desenho de cima para baixo**: ordena pela linha da âncora, e o que está mais ao
-   sul é desenhado depois, na frente. Símbolo de "só traço" leva um RECHEIO da cor da
-   terra na silhueta dele, senão a montanha da frente deixaria ver as linhas da de
-   trás através do branco que virou transparente.
+6. **Desenho de cima para baixo**: ordena pela linha da âncora, e o que está mais ao
+   sul é desenhado depois, na frente. Símbolo de "só traço" leva um RECHEIO na
+   silhueta, da cor do chão debaixo da âncora, senão a montanha da frente deixaria ver
+   as linhas da de trás através do branco que virou transparente.
+
+**Resolução**: tudo o que é tamanho está na resolução oficial (1,25 km/px) e é
+multiplicado por `janela.px_por_grau / 111,19`. O modo rápido é o mesmo código numa
+janela de resolução menor (`scripts/renderizar_regiao.py --rapido`).
 
 **Determinismo**: todo sorteio sai de um gerador com a semente da área
 (`semente_ruido`), e as áreas são processadas em ordem de id. O mesmo dado dá a
 mesma imagem, byte a byte.
 
 Tudo o que é número aqui (tamanhos, raios, misturas, cores) é RECOMENDAÇÃO do
-Cartógrafo para a primeira vez que o mapa aparece, e não decisão.
+Cartógrafo, e não decisão.
 """
 
 from __future__ import annotations
@@ -39,31 +60,55 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageFilter
 
-from . import raster, reducao
+from . import legibilidade, raster
 
 RAIZ_MAPAS = Path(__file__).resolve().parents[2]
+PX_POR_GRAU_OFICIAL = 111.194927
 
 COR_MAR = (158, 182, 190)
-COR_TERRA = (233, 221, 189)
+COR_TERRA = (233, 221, 189)      # o papel
 COR_COSTA = (72, 62, 50)
+COR_LAGO = (150, 184, 204)       # um azul mais limpo que o do mar
+
+# Paleta de atlas em pergaminho (recomendação do Cartógrafo, 2026-09-23): tons
+# chapados, dessaturados e claros, para o traço preto dos símbolos continuar lendo por
+# cima. Todos mais escuros que o papel só o bastante para a mancha aparecer.
+CORES_COBERTURA = {
+    "floresta-temperada": (206, 213, 168),   # verde sálvia
+    "floresta-boreal": (188, 201, 166),      # verde mais frio e fechado
+    "floresta-tropical": (195, 211, 155),    # verde mais quente
+    "selva": (170, 190, 138),                # o verde mais escuro
+    "deserto": (243, 229, 172),              # amarelo claro de areia
+    "pantano": (196, 203, 172),              # verde oliva acinzentado
+    "tundra": (210, 212, 194),               # cinza esverdeado
+    "geleira": (236, 243, 246),              # branco azulado
+    # "campo" fica sem cor: é o papel.
+}
+# Borrão da borda da cor: suaviza a transição com o papel sem perder a mancha chapada.
+SUAVE_COR_KM = 3.0
 
 # Irregularidade da borda da MANCHA DE SÍMBOLOS, maior e mais longa que a da etapa 11
 # (12 km, ondas de 40 e 12 km): com aquela, menor que um símbolo (uma árvore ocupa uns
-# 45 km), a fileira de símbolos na beira da área desenhava a reta do polígono. Achado
-# olhando o primeiro recorte; 40 km com as mesmas ondas ainda deixava a reta.
+# 45 km), a fileira de símbolos na beira da área desenhava a reta do polígono.
 AMPLITUDE_SIMBOLOS_KM = 90.0
 OITAVAS_SIMBOLOS = ((220.0, 0.5), (70.0, 0.3), (20.0, 0.2))
 
 
 @dataclass(frozen=True)
 class Tipo:
-    tamanho: int          # maior lado, em px, na resolução oficial (1,25 km/px)
-    raio: float           # distância mínima entre âncoras, em fração do tamanho
-    rotacao: float = 0.0  # graus, para cada lado
+    tamanho: int                  # maior lado, em px, na resolução oficial (1,25 km/px)
+    raio: float                   # distância mínima entre âncoras, em fração do tamanho
+    rotacao: float = 0.0          # graus, para cada lado
+    variacao: float = 0.20        # tamanho sorteado em ±variacao
+    borda: float = 1.0            # multiplicador de tamanho na beira da área
+    miolo: float = 1.0            # multiplicador de tamanho no fundo da área
+    manter_na_borda: float = 1.0  # fração dos pontos que fica na beira
+    profundidade_km: float = 80.0  # a partir de quantos km da beira é "fundo"
 
 
-# Tamanhos a partir das tiras de redução: nenhum abaixo do mínimo legível do tipo.
-TIPOS = {
+# Os valores da noite 2, guardados para comparar e para reproduzir a imagem daquela
+# noite (`ESTILO_NOITE2`).
+TIPOS_NOITE2 = {
     "montanha": Tipo(80, 0.50),
     "montanha-nevada": Tipo(90, 0.50),
     "colina": Tipo(52, 0.60),
@@ -80,8 +125,43 @@ TIPOS = {
     "geleira": Tipo(64, 0.75),
 }
 
-# Valor da área -> (tipo, peso). O raio do Poisson é o do PRIMEIRO tipo da mistura.
-MISTURAS = {
+# Densidade e tamanho da manhã de 2026-09-23 (pedido 8: "a cordilheira virou tapete
+# uniforme e a selva ficou pesada"). Tamanho base e piso legível iguais aos da noite 2.
+# - Montanha: pequena na beira (0,65) e grande no fundo (1,35) a 120 km: a espinha. A
+#   variação sorteada cai para ±15%, senão ela apaga a espinha.
+# - Selva: raio 0,55 -> 0,85 do tamanho (uns 40% menos peças), e a mistura ganha
+#   árvore tropical, que é aberta, no lugar de parte das moitas fechadas.
+# - Árvores: ±25%, um pouco menores e mais ralas na beira (a franja).
+# - Deserto: ±35%, e a franja rala entra fundo (na beira ficam 35% dos pontos, e a
+#   proporção sobe até 100% a 150 km para dentro), o que desmancha a grade de dunas.
+TIPOS = {
+    "montanha": Tipo(80, 0.50, variacao=0.15, borda=0.65, miolo=1.35,
+                     manter_na_borda=0.55, profundidade_km=120),
+    "montanha-nevada": Tipo(90, 0.50, variacao=0.15, borda=0.65, miolo=1.35,
+                            manter_na_borda=0.55, profundidade_km=120),
+    "colina": Tipo(52, 0.65, variacao=0.25, borda=0.8, miolo=1.1, manter_na_borda=0.6),
+    "arvore-folhosa": Tipo(38, 0.60, 4, variacao=0.25, borda=0.85, miolo=1.1,
+                           manter_na_borda=0.45, profundidade_km=60),
+    "arvore-conifera": Tipo(38, 0.55, 3, variacao=0.25, borda=0.85, miolo=1.1,
+                            manter_na_borda=0.45, profundidade_km=60),
+    "arvore-tropical": Tipo(40, 0.70, 4, variacao=0.25, borda=0.85, miolo=1.1,
+                            manter_na_borda=0.45, profundidade_km=60),
+    "palmeira": Tipo(40, 0.70, 4, variacao=0.25, borda=0.85, miolo=1.1,
+                     manter_na_borda=0.45, profundidade_km=60),
+    "selva": Tipo(46, 0.85, 3, variacao=0.25, borda=0.85, miolo=1.1,
+                  manter_na_borda=0.4, profundidade_km=60),
+    "pantano": Tipo(60, 0.90, 2, variacao=0.25, manter_na_borda=0.5),
+    "duna": Tipo(52, 1.10, variacao=0.35, borda=0.85, miolo=1.1,
+                 manter_na_borda=0.35, profundidade_km=150),
+    "rochedo": Tipo(46, 1.10, variacao=0.35),
+    "vegetacao-seca": Tipo(60, 1.20, 3, variacao=0.30),
+    "tundra": Tipo(100, 1.00, variacao=0.25, manter_na_borda=0.5),
+    "geleira": Tipo(64, 0.80, variacao=0.25, borda=0.85, miolo=1.15, manter_na_borda=0.5),
+}
+
+# Valor da área -> (tipo, peso). O raio do Poisson e a profundidade são os do PRIMEIRO
+# tipo da mistura.
+MISTURAS_NOITE2 = {
     ("relevo", "montanha"): [("montanha", 1.0)],
     ("relevo", "alta-montanha"): [("montanha-nevada", 1.0)],
     ("relevo", "colina"): [("colina", 1.0)],
@@ -94,9 +174,24 @@ MISTURAS = {
     ("cobertura", "tundra"): [("tundra", 1.0)],
     ("cobertura", "geleira"): [("geleira", 1.0)],
 }
+MISTURAS = dict(MISTURAS_NOITE2)
+MISTURAS[("cobertura", "selva")] = [("selva", 0.6), ("arvore-tropical", 0.25), ("palmeira", 0.15)]
 
 # O "chão rachado" (vegetacao-seca-04) é textura, não objeto: fica fora do sorteio.
 SIMBOLOS_EXCLUIDOS = {"vegetacao-seca-04"}
+
+
+@dataclass(frozen=True)
+class Estilo:
+    tipos: dict
+    misturas: dict
+    cores: dict            # valor de cobertura -> cor de fundo; vazio = tudo papel
+
+
+ESTILO_NOITE2 = Estilo(TIPOS_NOITE2, MISTURAS_NOITE2, {})
+ESTILO_COR = Estilo(TIPOS_NOITE2, MISTURAS_NOITE2, CORES_COBERTURA)
+ESTILO = Estilo(TIPOS, MISTURAS, CORES_COBERTURA)
+ESTILOS = {"noite2": ESTILO_NOITE2, "cor": ESTILO_COR, "cor-densidade": ESTILO}
 
 
 # --- Poisson-disc (Bridson) -------------------------------------------------------
@@ -173,32 +268,33 @@ class Biblioteca:
                 por_tipo.setdefault(s["tipo"], []).append(s)
         return cls(por_tipo, raiz)
 
-    def _sprite_base(self, s: dict) -> Image.Image:
+    def _sprite_base(self, s: dict, recheio: tuple) -> Image.Image:
         """O símbolo pronto para colar: no modo branco-opaco, o próprio PNG; no só
-        traço, a silhueta pintada da cor da terra com o traço por cima (o recheio que
-        faz a peça da frente esconder a de trás)."""
-        chave = ("base", s["id"])
+        traço, a silhueta pintada da cor do chão (`recheio`) com o traço por cima (o
+        que faz a peça da frente esconder a de trás)."""
+        chave = ("base", s["id"], recheio if s["modo_padrao"] == "so-traco" else None)
         if chave not in self._cache:
             with Image.open(self.raiz / s["arquivo"]) as im:
                 principal = im.convert("RGBA")
             if s["modo_padrao"] == "so-traco":
                 with Image.open(self.raiz / s["arquivos"]["branco-opaco"]) as im:
                     silhueta = np.asarray(im.convert("RGBA"))[..., 3]
-                recheio = np.zeros(silhueta.shape + (4,), dtype=np.uint8)
-                recheio[..., :3] = COR_TERRA
-                recheio[..., 3] = silhueta
-                sprite = Image.fromarray(recheio, "RGBA")
+                cheio = np.zeros(silhueta.shape + (4,), dtype=np.uint8)
+                cheio[..., :3] = recheio
+                cheio[..., 3] = silhueta
+                sprite = Image.fromarray(cheio, "RGBA")
                 sprite.alpha_composite(principal)
             else:
                 sprite = principal
             self._cache[chave] = sprite
         return self._cache[chave]
 
-    def sprite(self, s: dict, maior_lado: int, espelhar: bool, rotacao: float) -> tuple[Image.Image, tuple[int, int]]:
+    def sprite(self, s: dict, maior_lado: int, espelhar: bool, rotacao: float,
+               recheio: tuple = COR_TERRA) -> tuple[Image.Image, tuple[int, int]]:
         """Imagem pronta e a âncora de base nela, em pixels."""
-        chave = (s["id"], maior_lado, espelhar, round(rotacao))
+        chave = (s["id"], maior_lado, espelhar, round(rotacao), tuple(recheio))
         if chave not in self._cache:
-            base = self._sprite_base(s)
+            base = self._sprite_base(s, tuple(recheio))
             escala = maior_lado / max(base.width, base.height)
             im = base.resize((max(1, round(base.width * escala)), max(1, round(base.height * escala))),
                              Image.LANCZOS)
@@ -216,6 +312,17 @@ class Biblioteca:
 
 # --- colocação ----------------------------------------------------------------
 
+_PISOS: dict[str, int] = {}
+
+
+def pisos() -> dict[str, int]:
+    """O tamanho mínimo legível MEDIDO de cada tipo (`dados/tamanho-minimo-legivel.json`,
+    gerado por `scripts/medir_legibilidade.py`), em px na resolução oficial. É o limite
+    inferior do tamanho de todo símbolo colocado."""
+    if not _PISOS:
+        _PISOS.update(legibilidade.carregar())
+    return _PISOS
+
 @dataclass(frozen=True)
 class Colocacao:
     simbolo: str
@@ -224,6 +331,7 @@ class Colocacao:
     maior_lado: int
     espelhar: bool
     rotacao: float
+    recheio: tuple = COR_TERRA
 
 
 def base_em_terra(terra: np.ndarray, x: float, y: float, meia_base: float) -> bool:
@@ -235,56 +343,126 @@ def base_em_terra(terra: np.ndarray, x: float, y: float, meia_base: float) -> bo
     return True
 
 
+def profundidade(mascara: np.ndarray, alcance_px: float) -> np.ndarray:
+    """0 na beira da máscara, 1 a `alcance_px` para dentro (e 0 fora). Um borrão da
+    máscara: na beira ele vale 0,5, e no fundo 1. Feito numa grade grossa (um pixel
+    grosso a cada ~1/6 do alcance) e ampliado, porque o borrão largo na resolução
+    cheia custaria mais que o resto do mapa."""
+    altura, largura = mascara.shape
+    passo = max(1, int(alcance_px / 6))
+    pequena = Image.fromarray((mascara > 0).astype(np.uint8) * 255).resize(
+        (max(1, -(-largura // passo)), max(1, -(-altura // passo))), Image.BOX)
+    borrada = pequena.filter(ImageFilter.GaussianBlur(max(0.5, alcance_px / passo / 2)))
+    v = np.asarray(borrada.resize((largura, altura), Image.BILINEAR), dtype=np.float64) / 255.0
+    return np.clip((v - 0.5) * 2.0, 0.0, 1.0) * (mascara > 0)
+
+
 def colocar_na_area(area: dict, mascara: np.ndarray, terra: np.ndarray, bib: Biblioteca,
-                    escala: float = 1.0) -> list[Colocacao]:
+                    escala: float = 1.0, estilo: Estilo = ESTILO,
+                    chao: np.ndarray | None = None) -> list[Colocacao]:
+    """`chao` (opcional, altura x largura x 3) é a cor do chão por pixel; o recheio
+    do símbolo "só traço" é a cor debaixo da âncora."""
     props = area["properties"]
-    mistura = MISTURAS.get((props["camada"], props["valor"]))
+    mistura = estilo.misturas.get((props["camada"], props["valor"]))
     if not mistura:
         return []
     rng = np.random.default_rng(int(props.get("semente_ruido") or 0))
-    principal = TIPOS[mistura[0][0]]
+    principal = estilo.tipos[mistura[0][0]]
     raio = principal.tamanho * principal.raio * escala
     pontos = poisson_disc(mascara > 0, raio, rng)
+    fundo_da_area = profundidade(mascara, principal.profundidade_km / 1.25 * escala)
     tipos = [t for t, _ in mistura]
     pesos = np.array([p for _, p in mistura], dtype=float)
     pesos /= pesos.sum()
     saida = []
     for x, y in pontos:
         tipo = tipos[int(rng.choice(len(tipos), p=pesos))]
-        conf = TIPOS[tipo]
+        conf = estilo.tipos[tipo]
         candidatos = bib.simbolos.get(tipo, [])
         if not candidatos:
             continue
         s = candidatos[int(rng.integers(len(candidatos)))]
-        piso = reducao.TAMANHO_MINIMO_LEGIVEL.get(tipo, 0)
-        maior = max(piso, int(round(conf.tamanho * escala * rng.uniform(0.8, 1.2))))
+        t = float(fundo_da_area[int(y), int(x)])
+        piso = pisos().get(tipo, 0) * escala
+        perto = conf.borda + (conf.miolo - conf.borda) * t
+        maior = int(round(max(piso, conf.tamanho * escala * perto
+                              * rng.uniform(1 - conf.variacao, 1 + conf.variacao))))
         espelhar = bool(s["espelhavel"] and rng.random() < 0.5)
         rot = float(rng.uniform(-conf.rotacao, conf.rotacao)) if conf.rotacao else 0.0
+        fica = conf.manter_na_borda + (1 - conf.manter_na_borda) * t
+        if fica < 1.0 and rng.random() >= fica:
+            continue
         largura = maior * min(1.0, s["largura"] / max(s["largura"], s["altura"]))
         if not base_em_terra(terra, x, y, 0.35 * largura):
             continue
-        saida.append(Colocacao(s["id"], x, y, maior, espelhar, rot))
+        recheio = COR_TERRA if chao is None else tuple(int(c) for c in chao[int(y), int(x)])
+        saida.append(Colocacao(s["id"], x, y, maior, espelhar, rot, recheio))
     return saida
 
 
 # --- a imagem -----------------------------------------------------------------
 
-def fundo(terra: np.ndarray) -> Image.Image:
+def pintar_chao(areas: list[dict], janela: raster.Janela, terra: np.ndarray, km_por_grau: float,
+                cores: dict) -> tuple[np.ndarray, np.ndarray, dict]:
+    """A cor do chão da terra: papel, e por cima a cor de cada cobertura que tem cor.
+    Devolve a imagem suave (float, para o fundo), a chapada (uint8, sem o borrão da
+    beira, que dá o recheio dos símbolos) e a máscara da cor de cada área, por id."""
+    suave = np.zeros(terra.shape + (3,), dtype=np.float32)
+    suave[:] = COR_TERRA
+    chapada = np.zeros(terra.shape + (3,), dtype=np.uint8)
+    chapada[:] = COR_TERRA
+    suaviza_px = SUAVE_COR_KM / janela.km_por_px(km_por_grau)
+    folga = int(math.ceil(3 * suaviza_px)) + 1
+    altura, largura = terra.shape
+    mascaras = {}
+    for area in sorted(areas, key=lambda a: a["properties"]["id"]):
+        props = area["properties"]
+        cor = cores.get(props.get("valor")) if props.get("camada") == "cobertura" else None
+        if cor is None:
+            continue
+        m = raster.rasterizar(area["geometry"], int(props.get("semente_ruido") or 0),
+                              janela, km_por_grau, terra=terra)
+        linhas, colunas = np.flatnonzero(m.any(1)), np.flatnonzero(m.any(0))
+        if len(linhas) == 0:
+            continue
+        chapada[m > 0] = cor
+        mascaras[props["id"]] = m > 0
+        # Só a caixa da área (com a folga do borrão): a imagem inteira em ponto
+        # flutuante, uma vez por área, pesaria centenas de MB num recorte de região.
+        y0, y1 = max(0, linhas[0] - folga), min(altura, linhas[-1] + folga + 1)
+        x0, x1 = max(0, colunas[0] - folga), min(largura, colunas[-1] + folga + 1)
+        pedaco = Image.fromarray(np.ascontiguousarray(m[y0:y1, x0:x1]))
+        alfa = np.asarray(pedaco.filter(ImageFilter.GaussianBlur(suaviza_px)),
+                          dtype=np.float32)[..., None] / 255.0
+        suave[y0:y1, x0:x1] = suave[y0:y1, x0:x1] * (1 - alfa) + np.array(cor, dtype=np.float32) * alfa
+    return suave, chapada, mascaras
+
+
+def fundo(terra: np.ndarray, chao: np.ndarray | None = None,
+          lagos: np.ndarray | None = None) -> Image.Image:
+    """`terra` já sem os lagos. `chao` é a cor da terra por pixel (senão, o papel);
+    `lagos` pinta a água deles na cor do lago (senão, na do mar)."""
     img = np.zeros(terra.shape + (3,), dtype=np.uint8)
     img[:] = COR_MAR
-    img[terra] = COR_TERRA
+    if lagos is not None:
+        img[lagos] = COR_LAGO
+    if chao is None:
+        img[terra] = COR_TERRA
+    else:
+        img[terra] = np.clip(np.round(chao[terra]), 0, 255).astype(np.uint8)
     engordada = np.asarray(Image.fromarray(terra.astype(np.uint8) * 255).filter(ImageFilter.MaxFilter(3))) > 0
     img[engordada & ~terra] = COR_COSTA
     return Image.fromarray(img, "RGB").convert("RGBA")
 
 
-def desenhar(terra: np.ndarray, colocacoes: list[Colocacao], bib: Biblioteca) -> Image.Image:
-    tela = fundo(terra)
+def desenhar(terra: np.ndarray, colocacoes: list[Colocacao], bib: Biblioteca,
+             chao: np.ndarray | None = None, lagos: np.ndarray | None = None) -> Image.Image:
+    tela = fundo(terra, chao, lagos)
     por_id = {s["id"]: s for lista in bib.simbolos.values() for s in lista}
     # Norte primeiro, sul por cima; empate desfeito por x e pelo id, para a ordem não
     # depender de nada além do dado.
     for c in sorted(colocacoes, key=lambda c: (c.y, c.x, c.simbolo)):
-        im, (ax, ay) = bib.sprite(por_id[c.simbolo], c.maior_lado, c.espelhar, c.rotacao)
+        im, (ax, ay) = bib.sprite(por_id[c.simbolo], c.maior_lado, c.espelhar, c.rotacao, c.recheio)
         _colar_cortado(tela, im, int(round(c.x)) - ax, int(round(c.y)) - ay)
     return tela.convert("RGB")
 
@@ -315,11 +493,16 @@ def mascara_de_lagos(areas: list[dict], janela: raster.Janela, terra: np.ndarray
 
 
 def renderizar(areas: list[dict], janela: raster.Janela, terra: np.ndarray, bib: Biblioteca,
-               km_por_grau: float) -> tuple[Image.Image, list[Colocacao]]:
-    escala = janela.px_por_grau / 111.194927
-    # Lago vira água antes de tudo: o fundo o pinta da cor do mar com a margem
+               km_por_grau: float, estilo: Estilo = ESTILO) -> tuple[Image.Image, list[Colocacao]]:
+    escala = janela.px_por_grau / PX_POR_GRAU_OFICIAL
+    # Lago vira água antes de tudo: o fundo o pinta da cor do lago com a margem
     # desenhada (a mesma regra da costa), e símbolo nenhum apoia a base dentro dele.
-    terra = terra & ~mascara_de_lagos(areas, janela, terra, km_por_grau)
+    lagos = mascara_de_lagos(areas, janela, terra, km_por_grau)
+    terra = terra & ~lagos
+    suave = chapada = None
+    com_cor = {}
+    if estilo.cores:
+        suave, chapada, com_cor = pintar_chao(areas, janela, terra, km_por_grau, estilo.cores)
     colocacoes = []
     for area in sorted(areas, key=lambda a: a["properties"]["id"]):
         if area["properties"].get("camada") == "lago":
@@ -327,5 +510,9 @@ def renderizar(areas: list[dict], janela: raster.Janela, terra: np.ndarray, bib:
         mascara = raster.rasterizar(area["geometry"], int(area["properties"].get("semente_ruido") or 0),
                                     janela, km_por_grau, amplitude_km=AMPLITUDE_SIMBOLOS_KM,
                                     terra=terra, oitavas=OITAVAS_SIMBOLOS)
-        colocacoes.extend(colocar_na_area(area, mascara, terra, bib, escala))
-    return desenhar(terra, colocacoes, bib), colocacoes
+        if area["properties"]["id"] in com_cor:
+            # A mancha de símbolos não sai da mancha de cor: sem isso a borda de 90 km
+            # dos símbolos passava da de 12 km da cor, e sobrava árvore no papel.
+            mascara = np.where(com_cor[area["properties"]["id"]], mascara, 0).astype(np.uint8)
+        colocacoes.extend(colocar_na_area(area, mascara, terra, bib, escala, estilo, chapada))
+    return desenhar(terra, colocacoes, bib, suave, lagos if estilo.cores else None), colocacoes

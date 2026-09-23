@@ -73,16 +73,6 @@ def gerar_tiras(caminho_manifesto: Path, pasta_saida: Path, raiz_mapas: Path = R
     return saidas
 
 
-# Menor tamanho (maior lado, em px) em que cada tipo ainda se reconhece, julgado a olho
-# pelo Cartógrafo em 2026-09-23 nas tiras de 200/100/60/35 px. É RECOMENDAÇÃO, e é o
-# piso que o renderizador usa. Onde está 35, o tipo ainda se lê em 35; onde está 60,
-# em 35 ele vira mancha; onde está 100 ou 200, é peça de moldura e não de terreno.
-TAMANHO_MINIMO_LEGIVEL = {
-    "arvore-folhosa": 35, "arvore-conifera": 35, "palmeira": 35, "arvore-tropical": 35,
-    "selva": 35, "montanha": 35, "montanha-nevada": 35, "colina": 35, "duna": 35,
-    "rochedo": 35, "marco": 35, "fortaleza": 35, "cidade": 35,
-    "vila": 60, "porto": 60, "ruina": 60, "geleira": 60, "pantano": 60,
-    "vegetacao-seca": 60, "monstro-marinho": 60,
-    "tundra": 100,
-    "rosa-dos-ventos": 100, "barra-de-escala": 200, "cartela": 200,
-}
+# O piso de tamanho por tipo, que nasceu aqui julgado a olho nestas tiras (noite 2),
+# passou a ser MEDIDO em 2026-09-23 (decisão 7 do usuário): `cartografia/legibilidade.py`
+# e a tabela `dados/tamanho-minimo-legivel.json`. As tiras continuam, para ver.
