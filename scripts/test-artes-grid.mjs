@@ -782,6 +782,31 @@ eq(M.EFEITOS.filter((e) => e.acaoLivre).length, 1, 'só um Efeito é de ação l
   // Ninguém sai de uma área ficando parado: meio metro ainda é um metro de conta.
   eq(M.desvioDaArea(0).ticks, 1, 'o desvio nunca sai de graça');
 
+  // Ficar parado de propósito é teste de Virtude (capítulo III): a Virtude
+  // sozinha, sem Atributo, contra METADE da Dificuldade da linha "metade",
+  // arredondada para cima. A ficha chega inteira, com Vigor e Raciocínio, e
+  // nenhum dos dois pode entrar na soma.
+  eq([1, 2, 3].map((m) => M.desvioDaArea(m).difParado).join(' · '), '5 · 8 · 10',
+    'ficar parado: borda 10 vira 5, meio 15 vira 8, fundo 20 vira 10');
+  const quem = { virtudes: { valor: 4, temperanca: 3 }, atributos: { vigor: 3, raciocinio: 2 } };
+  eq(M.opcoesDeFicarParado(quem).map((o) => `${o.chave} ${o.rotulo} ${o.soma}`).join(' · '),
+    'valor Bravura 4 · temperanca Temperança 3', 'ficar parado rola a Virtude sozinha, sem Vigor nem Raciocínio');
+  // As chances de referência da decisão (§16), pela conversão de sempre.
+  const passa = (soma, dif) => {
+    let d = { 0: 1 };
+    for (let i = 0; i < Math.floor(soma / 2); i++) {
+      const e = {};
+      for (const k in d) for (let f = 1; f <= 6; f++) e[+k + f] = (e[+k + f] || 0) + d[k] / 6;
+      d = e;
+    }
+    let p = 0;
+    for (const k in d) if (+k + (soma % 2 ? 2 : 0) > dif) p += d[k];
+    return Math.round(p * 100);
+  };
+  const bravura = (v, m) => passa(M.opcoesDeFicarParado({ virtudes: { valor: v } })[0].soma, M.desvioDaArea(m).difParado);
+  eq(`${bravura(4, 1)} ${bravura(6, 1)} ${bravura(4, 2)} ${bravura(6, 3)}`, '72 95 28 50',
+    'ficar parado: Bravura 4 na borda 72%, Bravura 6 na borda 95%, Bravura 4 no meio 28%, Bravura 6 no fundo 50%');
+
   // A criatura não guarda Destreza e Esquiva separadas: elas saem da Defesa que
   // o bloco já traz. Se a inversão saísse do prumo, o bestiário inteiro rolaria
   // o desvio com o pool errado, e ninguém veria.

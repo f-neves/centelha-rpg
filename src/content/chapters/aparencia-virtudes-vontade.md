@@ -81,6 +81,8 @@ Quando a pressão é sobre a alma (o medo que manda correr, a provocação que p
 
 O Atributo fica de fora de propósito: somado, ele empurra todo mundo para perto da média e apaga a diferença entre uma Virtude e a vizinha, que é justamente o que o teste existe para mostrar.
 
+**Só a pressão da alma vai com a Virtude sozinha.** As resistências do **corpo** continuam somando Atributo: **Vigor + Convicção** contra os efeitos das [Artes](/artes/regras) que invadem o corpo, e para estancar o próprio sangramento ([Estabilizar](/regras/vida-ferimentos-cura#sangramento-e-estabilização)). Ali quem aguenta é a carne, e a Virtude só a empurra. Do mesmo jeito, as jogadas das Artes que já pedem **Vontade + Convicção** (o espírito que rola para não ser banido, a criatura que força a linha de um Círculo) continuam como estão.
+
 **A Dificuldade vem de uma régua própria, de dois em dois**, e não da régua de 5 em 5 do resto do jogo. Aquela foi feita para paradas que crescem sem limite; a da Virtude para em 3d6, 18 no máximo, e contra ela a Dificuldade 20 e a 25 nunca passam e a 15 só passa Virtude 6, 5% das vezes. Os rótulos também são outros, para ninguém ler "Dura" e pensar em 15. Sucesso continua sendo total **maior** que a Dificuldade.
 
 | Dificuldade | Rótulo | V1 | V2 | V3 | V4 | V5 | V6 |

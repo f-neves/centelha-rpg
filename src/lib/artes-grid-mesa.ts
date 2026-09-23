@@ -14,7 +14,7 @@ import {
   raioEmMetros, danoNoAlvo, rolar,
   turnosRestantes, venceu, jaMordido, rodadaDoTick, dentroDoEfeito, curaDoEfeito,
   curaPrecisaNivelArte,
-  metrosParaSair, metrosParaSairDosHexes, desvioDaArea, desEsqDaDefesa,
+  metrosParaSair, metrosParaSairDosHexes, desvioDaArea, desEsqDaDefesa, opcoesDeFicarParado,
   rotuloDuracao, TICKS_POR_TURNO, LARGURA_LINHA, montando,
   A_SAIR, deveSair, planoDaSaida, SEM_NIVEL_ARTE,
   type EfeitoAtivo, type Forma, type Figura, type Encaixe, type Desvio,
@@ -1704,16 +1704,11 @@ function desEsqDe(ctx: CtxGrid, alvo: any): { soma: number; nota: string } {
   return { soma, nota: `Destreza + Esquiva ${soma}, tirados da Defesa ${m.combate?.defesa ?? 0}` };
 }
 
-/** Virtude + Atributo de quem escolhe ficar parado, nos dois pares do capítulo III. */
+/** A Virtude sozinha de quem escolhe ficar parado: da ficha no PC, do bloco na criatura. */
 function paresDeCoragem(ctx: CtxGrid, alvo: any): { chave: string; rotulo: string; soma: number }[] {
   const f = alvo.tipo === 'pc' ? (ctx.fichas[alvo.personagem_id] || {}) : null;
   const m = f ? null : (MON[alvo.monstro_id] || {});
-  const v = (f?.virtues || m?.virtudes || {}) as Record<string, number>;
-  const a = (f?.attrs || m?.atributos || {}) as Record<string, number>;
-  return [
-    { chave: 'valor', rotulo: 'Bravura + Vigor', soma: Number(v.valor || 0) + Number(a.vigor || 0) },
-    { chave: 'temperanca', rotulo: 'Temperança + Raciocínio', soma: Number(v.temperanca || 0) + Number(a.raciocinio || 0) },
-  ];
+  return opcoesDeFicarParado({ virtudes: (f?.virtues || m?.virtudes || {}) as Record<string, number> });
 }
 
 /**
@@ -1767,7 +1762,7 @@ async function oferecerSaida(ctx: CtxGrid, ef: EfeitoAtivo, alvo: any): Promise<
     ...coragem.map((c) => ({
       valor: `parado:${c.chave}`,
       rotulo: `Ficar parado · ${c.rotulo} · ${dado(c.soma)}`,
-      nota: `Dif ${d.difMetade}. Passando, aguenta no lugar e come inteiro sem gastar Tick; falhando, o corpo sai sozinho`,
+      nota: `Dif ${d.difParado}. Passando, aguenta no lugar e come inteiro sem gastar Tick; falhando, o corpo sai sozinho`,
       grupo: 'Ficar parado',
     })),
     { valor: 'inteiro', rotulo: 'Não reage: come o dano inteiro', grupo: 'Nem uma coisa nem outra' },
@@ -1780,18 +1775,18 @@ async function oferecerSaida(ctx: CtxGrid, ef: EfeitoAtivo, alvo: any): Promise<
 
   if (!escolha || escolha === 'inteiro') return 1;
 
-  // Ficar parado: coragem contra a mesma Dificuldade da linha "metade". Passando,
-  // aguenta no lugar e ainda come inteiro, porque ficar parado nunca reduz o que
-  // a área faz: só evita o risco e o custo de tentar sair.
+  // Ficar parado: a Virtude sozinha contra metade da Dificuldade da linha
+  // "metade", para cima. Passando, aguenta no lugar e ainda come inteiro, porque
+  // ficar parado nunca reduz o que a área faz: só evita o risco e o custo de sair.
   if (escolha.startsWith('parado:')) {
     const c = coragem.find((x) => x.chave === escolha.slice(7))!;
     const r = rolarPool(c.soma);
-    if (r.total > d.difMetade) {
-      await ctx.logar(alvo, `${alvo.nome} ficou parado em ${ef.nome} e aguentou · ${c.rotulo} ${r.nota} vs ${d.difMetade}`
+    if (r.total > d.difParado) {
+      await ctx.logar(alvo, `${alvo.nome} ficou parado em ${ef.nome} e aguentou · ${c.rotulo} ${r.nota} vs ${d.difParado}`
         + ' · sofre o dano inteiro, sem gastar Tick', { acao: null });
       return 1;
     }
-    await ctx.logar(alvo, `${alvo.nome} não aguentou ficar parado em ${ef.nome} · ${c.rotulo} ${r.nota} vs ${d.difMetade}`
+    await ctx.logar(alvo, `${alvo.nome} não aguentou ficar parado em ${ef.nome} · ${c.rotulo} ${r.nota} vs ${d.difParado}`
       + ' · o corpo sai sozinho, e vira desvio', { acao: null });
   }
 

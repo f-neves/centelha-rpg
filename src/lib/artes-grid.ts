@@ -1817,6 +1817,8 @@ export interface Desvio {
   difMetade: number;
   /** Passando dela, o alvo não sofre nada. É o dobro da outra. */
   difNada: number;
+  /** Contra ela rola quem fica parado: metade da `difMetade`, para cima. */
+  difParado: number;
 }
 /**
  * A soma Destreza + Esquiva de uma criatura, tirada da Defesa que o bloco dela
@@ -1850,7 +1852,24 @@ export function desvioDaArea(metrosCrus: number): Desvio {
     ticks: metros * (n.ticksPorMetro ?? 1),
     difMetade,
     difNada: difMetade * (n.fatorDanoNenhum ?? 2),
+    difParado: Math.ceil(difMetade / 2),
   };
+}
+
+/**
+ * As duas Virtudes de quem escolhe ficar parado dentro da área.
+ *
+ * É teste de Virtude (capítulo III): a Virtude SOZINHA, sem Atributo, pela
+ * conversão de sempre. Recebe a ficha como ela vier (com Atributos e tudo) e
+ * lê só as Virtudes. Contra `Desvio.difParado`, e não contra a `difMetade`,
+ * porque a parada da Virtude para em 3d6.
+ */
+export function opcoesDeFicarParado(quem: { virtudes?: Record<string, number> }): { chave: 'valor' | 'temperanca'; rotulo: string; soma: number }[] {
+  const v = quem.virtudes || {};
+  return [
+    { chave: 'valor', rotulo: 'Bravura', soma: Number(v.valor || 0) },
+    { chave: 'temperanca', rotulo: 'Temperança', soma: Number(v.temperanca || 0) },
+  ];
 }
 
 /**

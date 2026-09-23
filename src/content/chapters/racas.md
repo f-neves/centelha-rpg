@@ -196,6 +196,8 @@ Entrar é um [teste de Temperança](/regras/aparencia-virtudes-vontade#o-teste-d
 
 Entrar não custa nada além do teste: é traço racial, e não Técnica paga.
 
+**O Frenesi racial não é a fúria do Caminho Sangue Fervente.** As Técnicas daquele [Caminho](/caminhos) que pedem estar "em fúria" (Ignorar Ferimentos, Fúria Redobrada, Sede de Sangue, Não Sentir Dor) só valem na fúria da Técnica **Fúria**, e não nesta. E a Técnica que o Caminho chama de **Frenesi** é outra coisa, com o mesmo nome: ataques repetidos sem a penalidade de múltiplos ataques, e não o traço do orc.
+
 ### Quanto dura
 
 A fúria dura **pela cena**, enquanto for alimentada. Não há relógio fixo nem teste periódico enquanto o orc está fazendo o que veio fazer. Três coisas obrigam ao **teste de manutenção**:
