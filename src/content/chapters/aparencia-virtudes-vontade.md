@@ -62,9 +62,41 @@ Se o Atributo é o que o personagem **consegue** fazer e a Habilidade é o que e
 
 As Virtudes não são só interpretação, elas têm peso mecânico em três frentes:
 
-- **Resistir.** Para aguentar uma pressão da alma, role a Virtude apropriada **somada a um Atributo**: medo = Bravura + Vigor; provocação = Temperança + Raciocínio; suportar a tortura = Convicção + Vigor.
+- **Resistir.** Para aguentar uma pressão da alma, role a Virtude que resiste a ela, **sozinha**: o teste de Virtude, logo abaixo.
 - **Transcender.** O Canalizar, abaixo.
 - **Conduta.** As Virtudes são a **régua moral** do personagem: cada nível descreve o que se espera dele. Viver fiel a essa régua devolve **Força de Vontade**.
+
+### O teste de Virtude
+
+Quando a pressão é sobre a alma (o medo que manda correr, a provocação que pede resposta, a tentação que agrada, a dor que pede para desistir), role a Virtude que resiste a ela **sem somar Atributo nenhum**. O valor da Virtude entra na mesma conversão de toda soma do jogo, como se já fosse a soma: metade em dados, e +2 se for ímpar.
+
+| Virtude | Parada |
+|:---:|---|
+| 1 | 2 (fixo, sem dado) |
+| 2 | 1d6 |
+| 3 | 1d6+2 |
+| 4 | 2d6 |
+| 5 | 2d6+2 |
+| 6 | 3d6 |
+
+O Atributo fica de fora de propósito: somado, ele empurra todo mundo para perto da média e apaga a diferença entre uma Virtude e a vizinha, que é justamente o que o teste existe para mostrar.
+
+**A Dificuldade vem de uma régua própria, de dois em dois**, e não da régua de 5 em 5 do resto do jogo. Aquela foi feita para paradas que crescem sem limite; a da Virtude para em 3d6, 18 no máximo, e contra ela a Dificuldade 20 e a 25 nunca passam e a 15 só passa Virtude 6, 5% das vezes. Os rótulos também são outros, para ninguém ler "Dura" e pensar em 15. Sucesso continua sendo total **maior** que a Dificuldade.
+
+| Dificuldade | Rótulo | V1 | V2 | V3 | V4 | V5 | V6 |
+|:---:|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| 3 | Branda | 0 | 50 | 83 | 92 | 100 | 100 |
+| 5 | Tensa | 0 | 17 | 50 | 72 | 92 | 95 |
+| 7 | Séria | 0 | 0 | 17 | 42 | 72 | 84 |
+| 9 | Dura | 0 | 0 | 0 | 17 | 42 | 62 |
+| 11 | Severa | 0 | 0 | 0 | 3 | 17 | 37 |
+| 13 | Extrema | 0 | 0 | 0 | 0 | 3 | 16 |
+
+<p class="muted">Chance de passar, em porcentagem, sem Firula. A escada não é lisa por causa do +2 do ímpar: da Tensa para a Séria a Virtude 3 cai de 50 para 17, e da Séria para a Dura a Virtude 4 cai de 42 para 17. É consequência da conversão, e não defeito.</p>
+
+A tabela é a régua de personalidade em números. A **Virtude 2** só segura a Branda, e cede na maior parte do cotidiano, que é o que ela descreve. A **Virtude 5** segura quase tudo até a Séria e começa a ceder na Dura: só cede se quiser, com uma margem de azar. A **Virtude 6** é a única que existe na Extrema, e ainda assim 16% das vezes. E a **Virtude 1 não passa em nada**, nem na Branda: ela é quase um defeito de caráter, e o único jeito de passar é a Firula.
+
+**A Firula vale aqui como em qualquer teste** (+2 no nível 1, +1d6 no 2, +2d6 no 3, pela tabela de [Habilidades](/regras/habilidades)), e pesa mais do que em outros lugares, porque a parada da Virtude é curta. A Firula de nível 2 desloca a linha inteira duas casas: Virtude 2 com Firula 2 rola igual a Virtude 4 sem ela. A descrição pesa mais que a ficha, e é também o que tira a Virtude 1 do chão: com Firula 2, ela passa metade das vezes na Tensa. **A Firula também pode ser negativa**: se a descrição do jogador prejudica a ação, ela tira dados ou pontos em vez de somar, e quem julga é o Mestre.
 
 <div class="callout regra"><span class="lbl">Canalizar Virtude</span>Uma vez por cena, por Virtude, numa ação coerente com ela, some o valor da Virtude à sua soma base: a rolagem passa a ser <strong>Atributo + Habilidade + Virtude</strong>. O herói que age movido por suas paixões transcende. (Sem risco nem contrapartida: aqui a Virtude é só impulso.)</div>
 

@@ -109,7 +109,7 @@ Filhos de humano e orc: a força e o porte da herança orc temperados pelo sangu
 - **`+1` de Força e de Vigor**: os dois começam em **2** e vão até **7**. A compleição forte da herança orc.
 - **`−1` teto de Compostura e de Inteligência** (máx 5, piso normal): o temperamento bruto e a lógica mais curta que a humana; o sangue humano poupa o tato social (a Perspicácia) que um orc puro perderia.
 - **Vitalidade**, couro grosso: ganha **+Vigor** pontos de vida adicionais (PV = 25 + Vigor×3 + Vigor).
-- **Frenesi contido**: pode entrar em fúria (só **ações físicas**, mais **Intimidar** como reflexo), **ignorando Machucado e Grave**. Ao entrar em **Crítico**, sai da fúria sozinho e volta a sentir a penalidade cheia; pode **reentrar** se a Vida voltar a Grave ou melhor. Forma menos intensa e mais controlável que a de um orc puro.
+- **Frenesi Contido**: pode entrar em fúria, **ignorando Machucado e Grave**, e sai dela sozinho ao entrar em **Crítico**. Forma menos intensa e mais controlável que a de um orc puro. A regra inteira está em [Frenesi](#frenesi), abaixo.
 - **Visão Noturna**: enxerga sem penalidade sob **penumbra**, mas não na escuridão completa.
 - **Sangue partido**, criado entre dois mundos, o meio-orc **não carrega inimizades naturais** de povo: ele parte do **Neutro** com os outros.
 - **Relações Sociais:** o inverso do "Sangue partido" pesa: os demais povos recebem o meio-orc em **−1 (Antipatia)** na Régua de Relação. Não é hostilidade, é a reserva que o sangue orc desperta; orcs e outros meio-orcs não têm essa reserva.
@@ -125,9 +125,115 @@ Humanóides de herança metamorfa, com constituição física superior a qualque
 - **`−1` teto de Perspicácia, Compostura e Inteligência** (máx 5, piso normal): a força não vem acompanhada de tato social nem de lógica fina.
 - **Aparência rebaixada**: a Aparência do orc vale **1 a menos** que o nível pago (paga Aparência 7, vale 6).
 - **Vitalidade**, couro grosso: ganha **+Vigor** pontos de vida adicionais (PV = 25 + Vigor×3 + Vigor).
-- **Frenesi**: pode entrar em fúria como certas feras. No frenesi só realiza **ações físicas** (mais **Intimidar**, que vira ação reflexa) e **ignora as penalidades de ferimento até Incapacitado**. Ao intimidar nesse estado, recebe **+2 dados** na parada.
+- **Frenesi**: pode entrar em fúria como certas feras, e nela **ignora as penalidades de ferimento até Incapacitado**. A regra inteira está em [Frenesi](#frenesi), abaixo.
 - **Visão Noturna**: enxerga sem penalidade sob **penumbra**, mas não na escuridão completa.
 - **Relações Sociais:** negociam com quem entende força bruta: **+1 (Simpatia)** pelo Anão. Devolvem ao Elfo o mesmo desprezo que recebem, **−2 (Desafeto)**. Preferem simplesmente evitar Gnomo e Halfling, sem que isso vire hostilidade: **Neutro**.
+
+## Frenesi
+
+O sangue orc guarda uma fúria que o corpo inteiro obedece. Ela vem em duas formas: o **Frenesi**, do Orc, e o **Frenesi Contido**, do Meio-Orc, que é o mesmo fogo com um freio humano. O que se segue vale para as duas, e o Frenesi Contido tem as suas diferenças no fim da seção.
+
+**Frenesi (Orc).** Em fúria, ignora **todas** as penalidades de ferimento (Machucado, Grave e Crítico) até a Vida chegar a Incapacitado.
+
+**Frenesi Contido (Meio-Orc).** Ignora só Machucado e Grave. Ao entrar em Crítico, **sai da fúria sozinho** e volta a sentir a penalidade cheia.
+
+### O que a fúria dá e o que ela tira
+
+**Ganha:**
+
+- **ignora a penalidade de ferimento**, como o traço de cada um diz acima;
+- **+2 no resultado** dos testes de ação física, que são os mesmos cuja penalidade de ferimento a fúria ignora: as ações que rolam Vigor ou Destreza ([Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura)). Atacar, agarrar, arrombar, escalar, nadar, investir e **arremessar** ganham, e saltar ou levantar peso também, quando forem teste. O **tiro** (Atirador: arco, besta) **não ganha**: a pontaria paciente é o oposto da fúria, e o machado arremessado é força bruta;
+- **+1 na soma** dos cálculos de ação física: distância de salto, deslocamento, capacidade de carga;
+- **Intimidar vira ação reflexa, com +2 dados** na parada. É a única ação social que a fúria permite.
+
+O +2 no teste e o +1 na soma não são a mesma vantagem: o +1 na soma vale cerca de 1,75 em média (às vezes vira +2 fixo, às vezes +1d6 −2), e o +2 no teste vale exatos 2.
+
+**Perde:**
+
+- **−2 em Esquiva e em Bloqueio.** O estado é pouco defensivo, e é por aqui que se mata um orc em fúria. Aparar é a Defesa por Bloqueio, e leva o −2 como ela;
+- **só realiza ações físicas**, e **não faz testes sociais** (exceto Intimidar);
+- **não pode ser convencido a nada.** Pode ser acalmado por um aliado, e só pela regra de sair da fúria, abaixo.
+
+### Entrar em fúria
+
+Entrar é um [teste de Temperança](/regras/aparencia-virtudes-vontade#o-teste-de-virtude), a Virtude sozinha, e **entrar em fúria é FALHAR nele**: tirar a Dificuldade ou menos. O personagem está literalmente perdendo o autocontrole. O teste é o mesmo seja ele forçado, seja por vontade própria; o que muda é o que o orc faz com a própria parada, conforme queira resistir ou ceder:
+
+- **a penalidade de ferimento é opcional.** Ela entra só se o personagem quiser ceder, na moeda de sempre (Machucado −2 pontos, Grave −1 dado, Crítico −2 dados), e **neste teste ela pode zerar a parada**: parada zerada entra em fúria sem rolar. Quem quer resistir não é obrigado a usá-la, e mesmo em Grave ou Crítico rola a Temperança inteira;
+- **1 ponto de Força de Vontade soma OU tira 1d6 da parada**, conforme ele queira resistir ou ceder. **Um ponto por teste, no máximo**, e tirar também pode zerar a parada;
+- **a Firula pode ser negativa**, e ajudar a ceder, se a descrição for nesse sentido.
+
+**O teste só é forçado em dois casos.** Fora deles, o orc só rola se quiser entrar, e a provocação de cotidiano (um insulto, um golpe que raspou, o cheiro de sangue) não obriga a nada.
+
+1. **Dano grande: um único golpe que tire 20% ou mais da Vida máxima**, arredondado para cima (orc de 40 PV: 8 de dano). Conta o dano que passou, depois da Absorção. **Dano acumulado não dispara**: o Frenesi é pela pancada, não pelo desgaste, e dez golpes pequenos levam o orc a Crítico sem teste nenhum.
+2. **Provocação importante.** O que conta como importante decide o Mestre, pela história e pelas relações do personagem. Quem provoca rola **Influência** com a Habilidade que a forma da provocação pedir (Manha para zombaria e deboche, Intimidação para ameaça, Empatia para achar a ferida certa, Oratória para humilhar em público), com uma descrição que combine com ela, contra **Força de Vontade do orc × 2 + Centelha dele**. Passando, o orc é obrigado ao teste de Frenesi. Aqui a Força de Vontade protege o orc.
+
+**A Dificuldade vem da situação** em que o orc está no momento do teste, e o Mestre a escolhe nesta escala:
+
+| Situação | Dificuldade |
+|---|:---:|
+| Calma, fora de batalha, ambiente tranquilo e sossegado | 4 |
+| Em batalha, com vantagem, sem motivo de alarme e sem ferimento | 5 |
+| Estresse: cercado de inimigos, em menor número, já sofreu algum dano | 6 a 7 |
+| Muito desfavorecido: grande desvantagem, muito dano, sendo provocado | 8 a 10 |
+| Situação muito crítica: tudo diz que ele deveria entrar em fúria, e manter-se são exige esforço monumental | acima de 10 |
+
+<div class="table-wrap">
+
+| Dificuldade | T1 | T2 | T3 | T4 | T5 | T6 |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| 4 | 100 | 67 | 33 | 17 | 3 | 2 |
+| 5 | 100 | 83 | 50 | 28 | 8 | 5 |
+| 6 | 100 | 100 | 67 | 42 | 17 | 9 |
+| 7 | 100 | 100 | 83 | 58 | 28 | 16 |
+| 8 | 100 | 100 | 100 | 72 | 42 | 26 |
+| 9 | 100 | 100 | 100 | 83 | 58 | 38 |
+| 10 | 100 | 100 | 100 | 92 | 72 | 50 |
+| 12 | 100 | 100 | 100 | 100 | 92 | 74 |
+
+</div>
+
+<p class="muted">Chance de ENTRAR em fúria, em porcentagem, rolando a Temperança limpa: sem ferimento, sem Força de Vontade, sem Firula.</p>
+
+Entrar não custa nada além do teste: é traço racial, e não Técnica paga.
+
+### Quanto dura
+
+A fúria dura **pela cena**, enquanto for alimentada. Não há relógio fixo nem teste periódico enquanto o orc está fazendo o que veio fazer. Três coisas obrigam ao **teste de manutenção**:
+
+1. **passar (Força de Vontade) Ticks sem nenhuma ação física de combate.** Tick em que o orc ataca, investe, sofre dano ou faz outra ação física de combate não conta, e a contagem recomeça do zero a cada uma delas: a janela nunca fecha no meio de uma sequência de golpes, qualquer que seja a arma;
+2. **o alvo da fúria cair ou fugir**, se era o único alvo disponível;
+3. **ficar parado, preso ou contido por (Força de Vontade) Ticks.**
+
+A janela é sempre pela Força de Vontade **máxima**, não pela atual: gastar pontos para entrar ou sair não encurta a fúria. Sem nenhum inimigo ao alcance, o orc não ataca, e a janela do primeiro item corre sozinha.
+
+O teste de manutenção é **Vigor + Resistência**, pela conversão normal (não é teste de Virtude): o desgaste físico de sustentar o estado. A Dificuldade **sobe uma banda a cada renovação**, pela régua de 5 em 5 do jogo: 5, depois 10, 15, 20. **Falhar encerra a fúria**, e traz a ressaca. Fechar a janela não encerra nada sozinho: só obriga ao teste. A fúria tem fim garantido sem ninguém escrever limite, e o teto sobe com a ficha.
+
+### Sair da fúria
+
+**Por vontade própria**, a saída espelha a entrada. Custa **1 ponto de Força de Vontade**, que soma **+1d6** à parada, e exige **sucesso num teste de Temperança** (total maior que a Dificuldade), com Firula se houver. A Temperança é rolada limpa, porque o orc em fúria já ignora a penalidade de ferimento. **A Dificuldade é a mesma da situação atual para entrar**, na escala acima: se o momento pede tirar mais de 8 para se segurar, sair também pede tirar mais de 8. E a situação muda durante a luta: quem entrou contra 5 pode precisar de 10 para sair depois de tomar dano e ser provocado. A fúria fica mais difícil de largar conforme a briga piora, e isso é desejado. **Crítico não bloqueia a saída.**
+
+<p class="muted">Isto pede que o Mestre mantenha a Dificuldade corrente da situação à vista durante a cena, como um número na mesa, e não de memória.</p>
+
+**Por um aliado.** Um aliado pode tentar acalmar o orc, normalmente com **Influência + Persuasão**, pela régua de 5 em 5; a jogada exata o Mestre decide conforme o argumento. A Dificuldade é o **dobro da Força de Vontade máxima do orc**. Pode tentar mais de uma vez, mas cada tentativa nova soma **+2** à Dificuldade e **não pode repetir o argumento** anterior (quem julga se o argumento é novo é o Mestre). Cada tentativa leva alguns segundos, e o orc em fúria age nesse intervalo.
+
+Se o aliado passa, o orc é **obrigado** ao teste de Temperança para sair, queira ou não, e sem gastar Força de Vontade nele (sem o +1d6, portanto). Passando, sai; falhando, **permanece** em fúria. O aliado não decide nada: ele força a rolagem.
+
+### Ressaca e o teto por cena
+
+**Metade do Vigor, arredondado para baixo, é o número de fúrias por cena.** Vigor 4 dá duas, Vigor 6 dá três, Vigor 3 dá uma, e Vigor 1 não entra em fúria. Passar do teto é possível, por deliberação do Mestre, e com um preço que doa fora da luta: **estourar o teto é o que produz a exaustão de dias**, o único ponto em que a fúria cobra do tempo de descanso, e não da cena.
+
+**A ressaca.** Ao sair da fúria, por qualquer motivo, o personagem **conta como um estado de ferimento pior do que está**, por **metade dos Ticks que passou em fúria**, somado a qualquer penalidade de ferimento real que já tivesse. **A ressaca acumula e nunca zera**: entrar em fúria de novo **suspende** a conta, não a apaga, e a segunda fúria esconde a primeira até a conta chegar inteira no fim. Segunda fúria na mesma cena, dois estados piores.
+
+**A ressaca nunca leva a Incapacitado.** Cada estado de ressaca que passaria de Crítico vira mais **−1d6 na ação física e −4 na Defesa Física**, o mesmo degrau que separa Grave de Crítico: Crítico com um estado de ressaca fica em −3d6 e −12; com dois, −4d6 e −16. Esse degrau abaixo de Crítico só existe para a ressaca (ver a tabela de [Limiares de Ferimento](/regras/vida-ferimentos-cura)).
+
+### Frenesi Contido
+
+O do Meio-Orc segue tudo o que está acima, com quatro diferenças:
+
+- **ignora só Machucado e Grave**, e não Crítico;
+- **−2 na Dificuldade, nos dois sentidos**: entra menos (porque entrar é falhar contra esse número) e sai mais. É o que "contido" quer dizer: mais controle nas duas pontas;
+- **sai sozinho ao entrar em Crítico**, quase desmaiando de ferimento somado ao desgaste da fúria (e a ressaca, que nunca leva a Incapacitado, o deixa consciente);
+- **depois de sair por Crítico, não pode reentrar enquanto continuar em Crítico.** Pode voltar ao Frenesi Contido quando a Vida voltar a Grave ou melhor. O limite do meio-orc é o corpo dele.
 
 ## Envelhecimento
 

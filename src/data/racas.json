@@ -130,7 +130,7 @@
     "descricao": "Altos, truculentos e de herança metamorfa, com constituição física superior a qualquer outra raça mediana; feições rudes e vida curta (60 anos). Mais bestial e menos temperado que o meio-orc.",
     "tracos": [
       "Vitalidade: +Vigor de PV extra.",
-      "Frenesi: pode entrar em fúria (só ações físicas, mais intimidar como reflexo, ignorando as penalidades de ferimento até Incapacitado); ao intimidar nesse estado, +2d6 na parada.",
+      "Frenesi: entra em fúria ao falhar num teste de Temperança; em fúria só faz ações físicas (+2 no teste), ignora as penalidades de ferimento até Incapacitado, tem −2 em Esquiva e Bloqueio, e Intimidar vira reflexo com +2d6 na parada. Regra inteira no capítulo Raças, seção Frenesi.",
       "Visão noturna: enxerga sem penalidade na penumbra, não na escuridão total.",
       "Aparência bruta: a Aparência efetiva de um Orc é 1 a menos do valor pago (já embutido na ficha)."
     ]
@@ -145,12 +145,13 @@
     "aparenciaUniversal": false,
     "longevidade": "curta",
     "bonusCondicional": [
-      { "bonus": "vigor", "campo": "pv", "escopo": "sempre", "nome": "Vitalidade" }
+      { "bonus": "vigor", "campo": "pv", "escopo": "sempre", "nome": "Vitalidade" },
+      { "bonus": "+2d6", "escopo": "Intimidar, em Frenesi Contido" }
     ],
     "descricao": "Filhos de humano e orc: a força e o porte da herança orc temperados pelo sangue humano. Robustos e brutos, mas menos bestiais que um orc puro (que vive na lore como criatura, não como raça jogável). Vida curta, cerca de 60 anos.",
     "tracos": [
       "Vitalidade: +Vigor de PV extra.",
-      "Frenesi contido: pode entrar em fúria (só ações físicas, mais intimidar como reflexo, ignorando Machucado e Grave); ao entrar em Crítico sai da fúria sozinho e passa a sentir a penalidade cheia, mas pode reentrar se a Vida voltar a Grave ou melhor: menos intenso e mais controlável que o de um orc puro.",
+      "Frenesi Contido: o Frenesi do orc com −2 na Dificuldade para entrar e para sair; ignora só Machucado e Grave, sai da fúria sozinho ao entrar em Crítico e só reentra quando a Vida voltar a Grave ou melhor. Regra inteira no capítulo Raças, seção Frenesi.",
       "Visão noturna: enxerga sem penalidade na penumbra, não na escuridão total.",
       "Sangue partido: não carrega inimizades naturais e parte do Neutro com os outros; em troca, os demais povos o recebem em Antipatia. Orcs e outros meio-orcs não têm essa reserva."
     ]
