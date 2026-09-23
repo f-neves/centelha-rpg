@@ -2,12 +2,25 @@
 
 > ## ▶ ESTE DESPACHO ESTÁ ABERTO desde 23/09/2026
 >
-> Abre depois do veredito da 95. Progresso em `progresso-96.md`, relato em `96-executora.md`.
+> A 95 fechou em 23/09/2026 (`f2641d4`), e o CORRIGE dela é o item 0 abaixo. Progresso em `progresso-96.md`, relato em `96-executora.md`.
 > **Tudo local, sem push**, enquanto o humano não decidir sobre os commits do Cartógrafo.
 
 O pedido é do humano, escrito para o despacho 94, que já fechou. Ele vem inteiro para cá, sem
 mudança de conteúdo. **Nada disto abre frente nova, e nenhum conserto que a varredura achar é
 aberto.**
+
+## 0 · Antes de tudo: o CORRIGE da 95
+
+A 95 fechou PROCEDE com um CORRIGE (`95-revisora.md`, no `main` como `f2641d4`, cherry-pick de
+`24ed00a`). **Uma cerca de código que abre e nunca fecha faz sumir, calado, tudo o que vem depois:**
+a Revisora pôs uma antes do A1, o `--check` saiu 0, o tema A ficou com zero itens e o total caiu
+para 221. É a omissão silenciosa de volta, pelo caminho que a 95 abriu. Hoje só o L tem cerca, em
+número par.
+
+**O conserto:** cerca aberta no fim do arquivo é recusada nos dois modos, como a linha que o gerador
+não lê. **A prova:** o caso plantado entra no `test-gen-pendencias.mjs`, com o vermelho visto no
+gerador de hoje. Aproveite para pôr no teste o `1. [ ]`, que já é recusado e não tem caso. O falso
+positivo do `- [x](url)` fica anotado e não se conserta agora.
 
 ## 1 · O J4 está morto e continua aberto
 
