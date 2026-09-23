@@ -260,6 +260,10 @@
     mapa, ESTRADAS_INICIAL, TRAVAS_INICIAL, LUGARES_INICIAL
   );
 
+  // Pincel (2026-09-23 noite, static/js/pincel.js): pinta e apaga área à mão livre.
+  // O km por grau sai do raio do planeta, que é o que o servidor usa.
+  iniciarPincel(mapa, (2 * Math.PI * PARAMETROS_LEAFLET.raio_km) / 360);
+
   // Painel de regiões (etapa 10 sem o cache de ilha, static/js/regioes.js): carrega
   // sozinho por GET, sem dado injetado na página.
   iniciarPainelDeRegioes(mapa);

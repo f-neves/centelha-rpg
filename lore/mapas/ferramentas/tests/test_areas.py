@@ -6,6 +6,7 @@ depois de cada recusa.
 """
 
 import json
+import math
 
 import pytest
 from shapely.geometry import shape
@@ -295,3 +296,114 @@ def test_editar_area_com_geometria_invalida_nao_grava(ambiente_isolado):
     with pytest.raises(KeyError):
         areas.editar_geometria("nao-existe", _quadrado(0, 0, 5, 5))
     assert areas.CAMINHO_DADOS.read_bytes() == antes
+
+
+# --- Pincel (2026-09-23, noite) --------------------------------------------------------
+# 139 km é 1 grau (km_por_grau de coordenadas.json), então os raios abaixo são em graus
+# redondos.
+UM_GRAU_KM = 138.993658
+
+
+def _ids_da_camada(camada):
+    return sorted(f["properties"]["id"] for f in areas.carregar()["features"] if f["properties"]["camada"] == camada)
+
+
+def test_pincelada_no_vazio_cria_area_nova(ambiente_isolado):
+    r = areas.pincelar("cobertura", "selva", [[0, 0], [4, 0]], UM_GRAU_KM, "pintar")
+    assert r == {"id": "area-0001", "mudou": True}
+    forma = shape(_feature("area-0001")["geometry"])
+    assert forma.area == pytest.approx(4 * 2 + math.pi, rel=0.05)   # cápsula de 4 x 2 graus
+
+
+def test_pincelada_funde_com_a_area_do_mesmo_valor_e_guarda_a_semente(ambiente_isolado):
+    areas.criar_area("b", "cobertura", "selva", _quadrado(0, 0, 3, 3), semente_ruido=77)
+    r = areas.pincelar("cobertura", "selva", [[3, 1.5], [6, 1.5]], UM_GRAU_KM / 2, "pintar")
+    assert r["id"] == "b" and _ids_da_camada("cobertura") == ["b"]
+    assert _feature("b")["properties"]["semente_ruido"] == 77
+    assert _area_de("b") > 9 + 2.5
+
+
+def test_pincelada_que_liga_duas_irmas_absorve_a_segunda(ambiente_isolado):
+    areas.criar_area("a", "cobertura", "selva", _quadrado(0, 0, 2, 2))
+    areas.criar_area("c", "cobertura", "selva", _quadrado(5, 0, 7, 2))
+    areas.pincelar("cobertura", "selva", [[1, 1], [6, 1]], UM_GRAU_KM / 2, "pintar")
+    assert _ids_da_camada("cobertura") == ["a"]
+    # Uma operação só: um desfazer devolve as duas separadas.
+    operacoes.desfazer()
+    assert _ids_da_camada("cobertura") == ["a", "c"]
+
+
+def test_pincelada_recorta_outro_valor_e_nao_funde_com_ele(ambiente_isolado):
+    """Controle negativo da fusão: valor diferente é recortado, nunca absorvido."""
+    areas.criar_area("d", "cobertura", "deserto", _quadrado(0, 0, 4, 4))
+    areas.pincelar("cobertura", "selva", [[2, 2]], UM_GRAU_KM, "pintar")
+    assert _ids_da_camada("cobertura") == ["area-0001", "d"]
+    assert _area_de("d") == pytest.approx(16 - math.pi, rel=0.05)
+
+
+def test_pincelada_cede_a_area_travada_e_nao_funde_com_irma_travada(ambiente_isolado):
+    areas.criar_area("t", "cobertura", "selva", _quadrado(0, 0, 4, 4))
+    areas.definir_trava("t", True)
+    antes = _feature("t")
+    r = areas.pincelar("cobertura", "selva", [[2, 2], [8, 2]], UM_GRAU_KM, "pintar")
+    assert r["id"] == "area-0001"
+    assert _feature("t") == antes
+    assert not shape(_feature("area-0001")["geometry"]).intersection(shape(antes["geometry"])).area > 1e-9
+
+
+def test_pincelada_toda_sobre_travada_nao_grava(ambiente_isolado):
+    areas.criar_area("t", "cobertura", "deserto", _quadrado(0, 0, 10, 10))
+    areas.definir_trava("t", True)
+    antes = areas.CAMINHO_DADOS.read_bytes()
+    assert areas.pincelar("cobertura", "selva", [[5, 5]], UM_GRAU_KM, "pintar") == {"id": None, "mudou": False}
+    assert areas.CAMINHO_DADOS.read_bytes() == antes
+
+
+def test_apagar_com_pincel_tira_das_livres_e_poupa_travadas(ambiente_isolado):
+    areas.criar_area("a", "cobertura", "selva", _quadrado(0, 0, 4, 4))
+    areas.criar_area("t", "cobertura", "deserto", _quadrado(4, 0, 8, 4))
+    areas.criar_area("r", "relevo", "montanha", _quadrado(0, 0, 8, 4))
+    areas.definir_trava("t", True)
+    areas.pincelar("cobertura", None, [[0, 2], [8, 2]], UM_GRAU_KM / 2, "apagar")
+    assert _area_de("a") == pytest.approx(16 - 4, rel=0.05)
+    assert _area_de("t") == pytest.approx(16)
+    assert _area_de("r") == pytest.approx(32)     # outra camada não é tocada
+
+
+def test_apagar_onde_nao_ha_nada_nao_grava(ambiente_isolado):
+    antes = areas.CAMINHO_DADOS.read_bytes()
+    assert areas.pincelar("cobertura", None, [[50, 50]], UM_GRAU_KM, "apagar") == {"id": None, "mudou": False}
+    assert areas.CAMINHO_DADOS.read_bytes() == antes
+
+
+@pytest.mark.parametrize("args", [
+    ("cobertura", "selva", [[0, 0]], 1.0, "pintar"),            # raio abaixo do mínimo
+    ("cobertura", "selva", [[0, 0]], 1000.0, "pintar"),         # raio acima do máximo
+    ("cobertura", "selva", [], 50.0, "pintar"),                 # traço vazio
+    ("cobertura", "selva", [[0, "x"]], 50.0, "pintar"),         # ponto torto
+    ("cobertura", "montanha", [[0, 0]], 50.0, "pintar"),        # valor de outra camada
+    ("cobertura", "selva", [[0, 0]], 50.0, "borrar"),           # modo inventado
+    ("nuvem", "selva", [[0, 0]], 50.0, "pintar"),               # camada inventada
+])
+def test_pincelada_invalida_nao_grava(ambiente_isolado, args):
+    antes = areas.CAMINHO_DADOS.read_bytes()
+    with pytest.raises(ValueError):
+        areas.pincelar(*args)
+    assert areas.CAMINHO_DADOS.read_bytes() == antes
+
+
+def test_pincel_com_camada_travada_e_recusado(ambiente_isolado):
+    travas.definir_trava_camada("cobertura", True)
+    antes = areas.CAMINHO_DADOS.read_bytes()
+    with pytest.raises(travas.Travado):
+        areas.pincelar("cobertura", "selva", [[0, 0]], 50.0, "pintar")
+    assert areas.CAMINHO_DADOS.read_bytes() == antes
+
+
+def test_pinceladas_repetidas_nao_incham_os_vertices(ambiente_isolado):
+    for i in range(30):
+        areas.pincelar("cobertura", "selva", [[i * 0.3, 0], [i * 0.3 + 0.5, 0.4]], UM_GRAU_KM / 2, "pintar")
+    f = _feature("area-0001")
+    anel = f["geometry"]["coordinates"][0]
+    assert len(areas.carregar()["features"]) == 1
+    assert len(anel) < 400

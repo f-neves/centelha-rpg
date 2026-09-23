@@ -1281,3 +1281,38 @@ igual), e `V` + `Enter` grava (pilha de 36 para 37, a área com os mesmos 99 vé
 semente e marca de exemplo), desfeito em seguida pelo botão desfazer. **Não
 conferido**: arrastar, criar ou apagar um vértice de verdade (precisa de mão no
 mouse) e a edição de rio na tela (não há rio salvo).
+
+## Pincel de tamanho ajustável (2026-09-23, noite)
+
+Botão **pincel** ou tecla **`P`**, seletor **pintar/apagar** e o **raio em km** (5 a
+250 na tela; o servidor aceita de 2 a 400). Camada e valor são os da barra de cima.
+Com o pincel na mão, apertar e arrastar pinta; espaço segurado arrasta o mapa; nada
+no mapa pega clique (senão apertar sobre uma área a selecionaria). O círculo que segue
+o mouse tem o raio na escala do zoom. Ao soltar, o traço vai para
+`POST /api/areas/pincel` (`static/js/pincel.js`, `areas.pincelar`), e a tela
+redesenha do que voltou.
+
+**Decisões do Cartógrafo (recomendação, para derrubar se for o caso):**
+
+1. **Pintar funde com a área do mesmo valor que o traço toca.** Sem isso, cada
+   pincelada seria uma área, e uma floresta pintada em vinte traços viraria vinte
+   áreas, vinte sementes de ruído e vinte bordas no meio da floresta. Sobrevive a de
+   menor id entre as tocadas, **com a semente dela** (a borda não muda de identidade);
+   as outras são absorvidas na mesma operação. Sem nenhuma tocada, nasce `area-NNNN`.
+2. Área de outro valor da mesma camada é recortada, e a travada não se toca (o traço
+   cede), como na criação. Traço inteiro sobre travada não grava nada.
+3. **Apagar** tira o traço de toda área LIVRE da camada; travada fica.
+4. O traço é simplificado a 15% do raio antes de tudo. Medido: 30 pinceladas
+   sobrepostas numa área só dão 126 vértices no contorno, não milhares.
+5. Uma pincelada é uma operação: um desfazer volta a pincelada inteira, inclusive as
+   áreas absorvidas.
+
+**Conferido**: 17 testes novos em `tests/test_areas.py`, com recusa e arquivo intacto
+byte a byte em cada validação, e o controle negativo da fusão (valor diferente é
+recortado, nunca absorvido). Por HTTP, raio fora da faixa dá 422 e o arquivo fica
+igual. **Na tela, por eventos disparados de dentro da página**: `P` liga o pincel, um
+traço de 10 movimentos em floresta temperada no norte de Syl **fundiu** com a
+`exemplo-temperada-syl-norte` (pilha de 36 para 37, geometria maior), e o botão
+desfazer voltou o arquivo de áreas **byte a byte** ao de antes. **Não conferido**: a
+sensação de pintar com o mouse de verdade (o tamanho do círculo, a fluidez, o espaço
+segurado no meio do traço) e o modo apagar na tela.

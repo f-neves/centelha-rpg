@@ -442,3 +442,10 @@ kbd {
 }
 .rotulo-regiao.selecionado span { color: #b0417a; }
 #mapa.so-costa .leaflet-regioes-rotulos-pane { display: none; }
+
+/* Pincel (2026-09-23 noite): com ele na mão, nada no mapa pega clique; o traço é do
+   mapa inteiro, senão apertar em cima de uma área a selecionaria em vez de pintar. */
+#mapa.pincelando .leaflet-interactive { pointer-events: none; }
+#mapa.pincelando { cursor: crosshair; }
+#controle-pincel { display: flex; gap: 4px; }
+#pincel-raio { width: 90px; }

@@ -106,6 +106,14 @@ class AtribuicaoMassa(BaseModel):
     regiao: str | None = None
 
 
+class Pincelada(BaseModel):
+    camada: str
+    valor: str | None = None
+    linha: list
+    raio_km: float
+    modo: str = "pintar"
+
+
 class NovaGeometria(BaseModel):
     geometria: dict
 
@@ -517,6 +525,18 @@ def apagar_area(id_area: str) -> JSONResponse:
     except travas.Travado as e:
         raise HTTPException(status_code=409, detail=str(e))
     return JSONResponse(areas.carregar())
+
+
+@app.post("/api/areas/pincel")
+def pincelar(p: Pincelada) -> JSONResponse:
+    """Devolve `{"areas": coleção, "id": área resultante ou null, "mudou": bool}`."""
+    try:
+        r = areas.pincelar(p.camada, p.valor, p.linha, p.raio_km, p.modo)
+    except travas.Travado as e:
+        raise HTTPException(status_code=409, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
+    return JSONResponse({"areas": areas.carregar(), **r})
 
 
 @app.put("/api/areas/{id_area}/geometria")

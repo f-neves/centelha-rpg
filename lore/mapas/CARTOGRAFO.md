@@ -79,6 +79,10 @@ primeira coisa que `/cartografo` mostra.)*
     lista afluentes e braços de delta a conferir. Detalhe em `ESPEC-ferramenta.md`.
     **A pilha de desfazer ficou com um "refazer" armado** (a minha gravação de teste,
     desfeita): a primeira ação nova do usuário o descarta.
+  - **Etapa F · pincel (feito)**: `P`, pintar/apagar, raio em km. Pintar funde com a
+    área do mesmo valor que o traço toca (guarda a semente dela), recorta as de outro
+    valor, cede às travadas; apagar tira de toda área livre da camada. Detalhe e as
+    cinco decisões em `ESPEC-ferramenta.md`, "Pincel". **297 testes verdes.**
 - **Rodada do fim da tarde de 2026-09-23 (CONCLUÍDA e COMMITADA, sem push).** Era a
   que deixava a próxima para o usuário pintar; ele pediu a rodada autônoma acima no
   lugar.

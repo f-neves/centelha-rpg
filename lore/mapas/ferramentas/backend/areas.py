@@ -25,10 +25,11 @@ import json
 import random
 from pathlib import Path
 
-from shapely.geometry import mapping, shape
+from shapely.geometry import LineString, Point, mapping, shape
+from shapely.ops import unary_union
 from shapely.geometry.base import BaseGeometry
 
-from . import operacoes, travas
+from . import coordenadas, operacoes, travas
 
 RAIZ_MAPAS = Path(__file__).resolve().parents[2]
 CAMINHO_DADOS = RAIZ_MAPAS / "dados" / "areas-pintadas.geojson"
@@ -202,3 +203,112 @@ def editar_geometria(id_area: str, geometria: dict) -> dict:
     mudancas[id_area] = {"antes": antiga, "depois": depois}
     operacoes.registrar_operacao("editar_area", CAMINHO_RELATIVO, mudancas)
     return depois
+
+
+# --- Pincel (2026-09-23, noite) ----------------------------------------------------
+#
+# Pintar e apagar à mão livre: o traço do mouse (uma linha de pontos) engordado pelo
+# raio do pincel vira um polígono, e esse polígono entra pelas mesmas regras de
+# sempre. Decisões do Cartógrafo (recomendação):
+#
+# 1. **Pintar FUNDE com a área do mesmo valor que o traço toca.** Sem isso cada
+#    pincelada seria uma área nova, e uma floresta pintada em vinte traços viraria
+#    vinte áreas com vinte sementes de ruído e vinte bordas entre elas. A área que
+#    sobrevive é a de menor id entre as tocadas, com a semente dela (a identidade da
+#    borda não muda); as outras tocadas são absorvidas (apagadas na mesma operação).
+#    Sem nenhuma do mesmo valor tocada, nasce uma área nova, `area-NNNN`.
+# 2. Área de OUTRO valor da mesma camada é recortada, e a travada não se toca (o
+#    traço cede), exatamente como na criação.
+# 3. **Apagar** tira o traço de toda área livre da mesma camada; travada fica.
+# 4. O traço é simplificado com tolerância de 15% do raio antes de tudo: pincelada
+#    repetida não pode inflar o número de vértices sem limite (cada operação do log
+#    custa umas duas vezes a geometria que toca).
+# 5. Uma pincelada é UMA operação: um desfazer volta a pincelada inteira.
+RAIO_PINCEL_KM = (2.0, 400.0)
+
+
+def _forma_do_traco(linha, raio_km: float):
+    if not isinstance(raio_km, (int, float)) or isinstance(raio_km, bool):
+        raise ValueError("'raio_km' tem que ser um número")
+    if not RAIO_PINCEL_KM[0] <= raio_km <= RAIO_PINCEL_KM[1]:
+        raise ValueError(f"'raio_km' tem que ficar entre {RAIO_PINCEL_KM[0]:g} e {RAIO_PINCEL_KM[1]:g}")
+    if not isinstance(linha, list) or not linha:
+        raise ValueError("o traço precisa de pelo menos um ponto")
+    for p in linha:
+        if not (isinstance(p, (list, tuple)) and len(p) == 2
+                and all(isinstance(v, (int, float)) and not isinstance(v, bool) for v in p)):
+            raise ValueError("cada ponto do traço é um par [longitude, latitude]")
+    raio = raio_km / coordenadas.carregar_coordenadas()["projecao"]["km_por_grau"]
+    base = Point(linha[0]) if len(linha) == 1 else LineString(linha)
+    return base.buffer(raio, quad_segs=8).simplify(raio * 0.15), raio
+
+
+def _id_novo(dados: dict) -> str:
+    maior = 0
+    for f in dados["features"]:
+        pedaco = f["properties"]["id"]
+        if pedaco.startswith("area-") and pedaco[5:].isdigit():
+            maior = max(maior, int(pedaco[5:]))
+    return f"area-{maior + 1:04d}"
+
+
+def pincelar(camada: str, valor: str | None, linha, raio_km: float, modo: str) -> dict:
+    """Devolve `{"id": área resultante ou None, "mudou": bool}`."""
+    if modo not in ("pintar", "apagar"):
+        raise ValueError("'modo' tem que ser 'pintar' ou 'apagar'")
+    if camada not in VALORES_POR_CAMADA:
+        raise ValueError(f"'camada' tem que ser um de {sorted(VALORES_POR_CAMADA)}, recebi {camada!r}")
+    if modo == "pintar" and valor not in VALORES_POR_CAMADA[camada]:
+        raise ValueError(f"'valor' {valor!r} não pertence à camada {camada!r}")
+    traco, raio = _forma_do_traco(linha, raio_km)
+    travas.exigir_camada_livre(camada, "pintar com o pincel" if modo == "pintar" else "apagar com o pincel")
+    dados = carregar()
+
+    if modo == "apagar":
+        mudancas = {}
+        for f in dados["features"]:
+            p = f["properties"]
+            if p["camada"] != camada or p.get("travado"):
+                continue
+            forma = shape(f["geometry"])
+            if not forma.intersects(traco):
+                continue
+            resto = _so_poligono(forma.difference(traco))
+            depois = None
+            if not resto.is_empty and resto.area > 0:
+                depois = json.loads(json.dumps(f))
+                depois["geometry"] = mapping(resto)
+            mudancas[p["id"]] = {"antes": f, "depois": depois}
+        if not mudancas:
+            return {"id": None, "mudou": False}
+        operacoes.registrar_operacao("pincel_apagar", CAMINHO_RELATIVO, mudancas)
+        return {"id": None, "mudou": True}
+
+    # Pintar: as do mesmo valor, livres, que o traço toca, são fundidas nele.
+    irmas = sorted((f for f in dados["features"]
+                    if f["properties"]["camada"] == camada and f["properties"]["valor"] == valor
+                    and not f["properties"].get("travado") and shape(f["geometry"]).intersects(traco)),
+                   key=lambda f: f["properties"]["id"])
+    ids_irmas = {f["properties"]["id"] for f in irmas}
+    outras = {**dados, "features": [f for f in dados["features"] if f["properties"]["id"] not in ids_irmas]}
+    traco, mudancas = _recortar_vizinhas(outras, camada, traco, ignorar=None)
+    traco = _so_poligono(traco)
+    if traco.is_empty or traco.area <= 0:
+        return {"id": None, "mudou": False}   # o traço inteiro caiu em área travada
+    if irmas:
+        alvo = irmas[0]
+        uniao = _so_poligono(unary_union([shape(f["geometry"]) for f in irmas] + [traco]))
+        depois = json.loads(json.dumps(alvo))
+        depois["geometry"] = mapping(uniao)
+        mudancas[alvo["properties"]["id"]] = {"antes": alvo, "depois": depois}
+        for f in irmas[1:]:
+            mudancas[f["properties"]["id"]] = {"antes": f, "depois": None}
+        id_final = alvo["properties"]["id"]
+    else:
+        id_final = _id_novo(dados)
+        mudancas[id_final] = {"antes": None, "depois": {
+            "type": "Feature", "geometry": mapping(traco),
+            "properties": {"id": id_final, "camada": camada, "valor": valor,
+                           "semente_ruido": random.randint(1, 99999), "travado": False}}}
+    operacoes.registrar_operacao("pincel_pintar", CAMINHO_RELATIVO, mudancas)
+    return {"id": id_final, "mudou": True}
