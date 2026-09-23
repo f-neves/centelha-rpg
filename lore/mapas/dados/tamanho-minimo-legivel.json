@@ -1,0 +1,253 @@
+{
+  "versao_esquema": 1,
+  "_comentario": "Silhueta (alfa do modo branco-opaco) reduzida ao maior lado s, binarizada em 50%, apoiada pela base num quadro s x s com a âncora no meio; símbolo espelhável entra também espelhado. Dois tipos são indistinguíveis em s quando a maior IoU entre uma silhueta de um e uma do outro é >= a IoU mediana de cada silhueta contra ela mesma deslocada meio pixel (o erro de arredondamento da âncora no renderizador). Piso = menor s a partir do qual o tipo se separa de todos os outros em todo tamanho maior. Grade: 8 a 200 px, de 2 em 2. Tamanhos em px na resolução oficial (1,25 km/px).",
+  "medido_em": "2026-09-23 13:53",
+  "simbolos_fora": [
+    "vegetacao-seca-04"
+  ],
+  "tipos": {
+    "arvore-conifera": {
+      "piso": 18,
+      "confunde_com": "montanha-nevada",
+      "ultimo_tamanho_confuso": 16,
+      "nunca_separa": false
+    },
+    "arvore-folhosa": {
+      "piso": 14,
+      "confunde_com": "porto",
+      "ultimo_tamanho_confuso": 12,
+      "nunca_separa": false
+    },
+    "arvore-tropical": {
+      "piso": 10,
+      "confunde_com": "arvore-folhosa",
+      "ultimo_tamanho_confuso": 8,
+      "nunca_separa": false
+    },
+    "barra-de-escala": {
+      "piso": 8,
+      "confunde_com": null,
+      "ultimo_tamanho_confuso": null,
+      "nunca_separa": false
+    },
+    "cartela": {
+      "piso": 8,
+      "confunde_com": null,
+      "ultimo_tamanho_confuso": null,
+      "nunca_separa": false
+    },
+    "cidade": {
+      "piso": 22,
+      "confunde_com": "montanha",
+      "ultimo_tamanho_confuso": 20,
+      "nunca_separa": false
+    },
+    "colina": {
+      "piso": 20,
+      "confunde_com": "geleira",
+      "ultimo_tamanho_confuso": 18,
+      "nunca_separa": false
+    },
+    "duna": {
+      "piso": 22,
+      "confunde_com": "vila",
+      "ultimo_tamanho_confuso": 20,
+      "nunca_separa": false
+    },
+    "fortaleza": {
+      "piso": 24,
+      "confunde_com": "rochedo",
+      "ultimo_tamanho_confuso": 22,
+      "nunca_separa": false
+    },
+    "geleira": {
+      "piso": 20,
+      "confunde_com": "rochedo",
+      "ultimo_tamanho_confuso": 18,
+      "nunca_separa": false
+    },
+    "marco": {
+      "piso": 10,
+      "confunde_com": "arvore-conifera",
+      "ultimo_tamanho_confuso": 8,
+      "nunca_separa": false
+    },
+    "monstro-marinho": {
+      "piso": 10,
+      "confunde_com": "pantano",
+      "ultimo_tamanho_confuso": 8,
+      "nunca_separa": false
+    },
+    "montanha": {
+      "piso": 34,
+      "confunde_com": "montanha-nevada",
+      "ultimo_tamanho_confuso": 32,
+      "nunca_separa": false
+    },
+    "montanha-nevada": {
+      "piso": 34,
+      "confunde_com": "montanha",
+      "ultimo_tamanho_confuso": 32,
+      "nunca_separa": false
+    },
+    "palmeira": {
+      "piso": 8,
+      "confunde_com": null,
+      "ultimo_tamanho_confuso": null,
+      "nunca_separa": false
+    },
+    "pantano": {
+      "piso": 24,
+      "confunde_com": "montanha",
+      "ultimo_tamanho_confuso": 22,
+      "nunca_separa": false
+    },
+    "porto": {
+      "piso": 24,
+      "confunde_com": "rochedo",
+      "ultimo_tamanho_confuso": 22,
+      "nunca_separa": false
+    },
+    "rochedo": {
+      "piso": 26,
+      "confunde_com": "selva",
+      "ultimo_tamanho_confuso": 24,
+      "nunca_separa": false
+    },
+    "rosa-dos-ventos": {
+      "piso": 10,
+      "confunde_com": "arvore-folhosa",
+      "ultimo_tamanho_confuso": 8,
+      "nunca_separa": false
+    },
+    "ruina": {
+      "piso": 24,
+      "confunde_com": "montanha",
+      "ultimo_tamanho_confuso": 22,
+      "nunca_separa": false
+    },
+    "selva": {
+      "piso": 26,
+      "confunde_com": "rochedo",
+      "ultimo_tamanho_confuso": 24,
+      "nunca_separa": false
+    },
+    "tundra": {
+      "piso": 18,
+      "confunde_com": "colina",
+      "ultimo_tamanho_confuso": 16,
+      "nunca_separa": false
+    },
+    "vegetacao-seca": {
+      "piso": 20,
+      "confunde_com": "montanha",
+      "ultimo_tamanho_confuso": 18,
+      "nunca_separa": false
+    },
+    "vila": {
+      "piso": 22,
+      "confunde_com": "duna",
+      "ultimo_tamanho_confuso": 20,
+      "nunca_separa": false
+    }
+  },
+  "ruido_por_tamanho": {
+    "8": 0.704,
+    "10": 0.735,
+    "12": 0.765,
+    "14": 0.787,
+    "16": 0.805,
+    "18": 0.813,
+    "20": 0.838,
+    "22": 0.849,
+    "24": 0.86,
+    "26": 0.871,
+    "28": 0.873,
+    "30": 0.873,
+    "32": 0.882,
+    "34": 0.887,
+    "36": 0.895,
+    "38": 0.9,
+    "40": 0.901,
+    "42": 0.907,
+    "44": 0.912,
+    "46": 0.913,
+    "48": 0.914,
+    "50": 0.918,
+    "52": 0.922,
+    "54": 0.923,
+    "56": 0.923,
+    "58": 0.926,
+    "60": 0.926,
+    "62": 0.931,
+    "64": 0.931,
+    "66": 0.932,
+    "68": 0.933,
+    "70": 0.937,
+    "72": 0.938,
+    "74": 0.94,
+    "76": 0.939,
+    "78": 0.942,
+    "80": 0.943,
+    "82": 0.943,
+    "84": 0.946,
+    "86": 0.946,
+    "88": 0.948,
+    "90": 0.946,
+    "92": 0.948,
+    "94": 0.95,
+    "96": 0.953,
+    "98": 0.953,
+    "100": 0.954,
+    "102": 0.954,
+    "104": 0.956,
+    "106": 0.955,
+    "108": 0.955,
+    "110": 0.955,
+    "112": 0.957,
+    "114": 0.958,
+    "116": 0.957,
+    "118": 0.958,
+    "120": 0.96,
+    "122": 0.96,
+    "124": 0.96,
+    "126": 0.962,
+    "128": 0.962,
+    "130": 0.963,
+    "132": 0.962,
+    "134": 0.963,
+    "136": 0.962,
+    "138": 0.964,
+    "140": 0.964,
+    "142": 0.963,
+    "144": 0.966,
+    "146": 0.967,
+    "148": 0.967,
+    "150": 0.969,
+    "152": 0.967,
+    "154": 0.967,
+    "156": 0.967,
+    "158": 0.967,
+    "160": 0.969,
+    "162": 0.969,
+    "164": 0.971,
+    "166": 0.97,
+    "168": 0.97,
+    "170": 0.97,
+    "172": 0.971,
+    "174": 0.972,
+    "176": 0.971,
+    "178": 0.971,
+    "180": 0.972,
+    "182": 0.972,
+    "184": 0.972,
+    "186": 0.973,
+    "188": 0.975,
+    "190": 0.974,
+    "192": 0.974,
+    "194": 0.974,
+    "196": 0.974,
+    "198": 0.974,
+    "200": 0.975
+  }
+}
