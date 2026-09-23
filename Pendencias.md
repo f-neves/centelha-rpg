@@ -28,7 +28,7 @@ vez.
 
 | Frente | Estado em 23/09/2026 | Quem decide o próximo passo | Onde mora |
 |---|---|---|---|
-| **Frenesi e teste de Virtude** | Regras decididas e no livro (rodadas 90 a 93, as quatro com PROCEDE). As três perguntas da Revisora foram decididas em 23/09 (§17) e **não estão implementadas**. | Execução | `FRENESI.md`; `leitura-de-novato-decisoes.md` §16 e §17 |
+| **Frenesi e teste de Virtude** | Regras decididas e no livro: o livro na rodada 90, com ajustes na 91 e na 92, e o "ficar parado" do Grid na 91 e na 92 (as três com PROCEDE). O teste de Frenesi não existe no motor. As três perguntas da Revisora foram decididas em 23/09 (§17) e **não estão implementadas**. | Execução | `FRENESI.md`; `leitura-de-novato-decisoes.md` §16 e §17 |
 | **Jogador novo** | 47 perguntas `M`: 32 feitas, 7 decididas e esperando mão de obra, 6 abertas ou adiadas, 2 decididas sem nada a fazer. 104 consertos `C`: 90 fechados, 4 abertos, 3 parciais, 3 marcados como feitos que não estão, 2 recusados pela Executora e 2 fechados sem ação. Contagem remedida em 23/09 (a de 18 e 78 é de 16/09). | Execução, para as 7 decididas; humano, para as abertas | `jogador-novo-decisoes.md`, `jogador-novo-consertos.md`, `jogador-novo-consertos-2.md`, `jogador-novo-bestiario.md`, todos em `docs/simulacao/caixa/` |
 | **Relações Sociais** | Rodadas 85 a 89 fechadas com PROCEDE. O item 9 (`acoes.longevidadeFirula` no `regras.json`) está **feito** (`6509801`, veredito `a6e7e41`). | Humano: a fronteira entre o dia a dia e o Combate Social, e os E4 a E8 | `ritmo-da-regua.md`; tema E |
 | **O Grid** | Simulação encerrada (06/09). Fases 2 e 2.5 fechadas. Fase 3 congelada até a mesa reavaliar o plano. Fase 4 bloqueada por uma batalha de verdade. | Humano (fila do `PLANO.md` §8, itens 3 e 4) | `PLANO.md` §8 e §9; `ESTADO.md`; tema L |
@@ -43,8 +43,9 @@ vez.
 
 ### O que a §16 e a §17 deixaram
 
-- **§16 (Frenesi e teste de Virtude): nada a executar.** O livro entrou nas rodadas 90 a 93, e o
-  "ficar parado" do Grid passou à Virtude sozinha na 91. O motor não tem caminho que role o teste
+- **§16 (Frenesi e teste de Virtude): nada a executar.** O livro entrou na rodada 90, com ajustes
+  na 91 e na 92, e o "ficar parado" do Grid passou à Virtude sozinha na 91 (a comparação foi para o
+  motor na 92). A 93 foi outra coisa, o `reapontar.mjs`. O motor não tem caminho que role o teste
   de Frenesi (conferido na rodada 90), então a exceção do piso de 1d6 não tem onde entrar.
 - **§17, três mudanças, todas de texto e dado:**
   1. **A Força entra na definição de ação física:** "as que rolam Força, Destreza ou Vigor", em
@@ -76,8 +77,9 @@ numeradas: a **M-05** (`7db14f1`, 17/09) e a **M-42** (`2520b5d`, 18/09, veredit
 - **Parciais:** C-12, C-47, C-85.
 - **Marcados como feitos, e o defeito continua no fonte:** C-22 (a frase do "Tick 0" em Relações
   Sociais), C-39 (a página de Regras das Artes imprime um objeto onde devia imprimir o molde da
-  aura), C-61 (a abreviação "Esp." sem legenda). A marca de 17/09 veio de um `grep` que este
-  ambiente encolhe. **Suspeitos, não conferidos no HTML gerado.**
+  aura), C-61 (a abreviação "Esp." sem legenda). Os três conferidos no fonte em 23/09, e o C-39
+  também no HTML gerado (pela Revisora, no veredito da rodada 94). Não se sabe por que foram
+  marcados como feitos.
 - **Recusados pela Executora, sem decisão de mesa:** C-72, C-87.
 
 ### Nos temas
@@ -191,8 +193,9 @@ o anel de Vida remoto).
 foi decidido.*
 
 1. **A §17 inteira, numa rodada.** Porque foi decidida hoje, é pequena (texto e dado), e fecha a
-   frente do Frenesi e do teste de Virtude, que é a corrente. Deixar para depois é deixar o livro
-   dizendo "Vigor ou Destreza" com a regra já trocada.
+   frente do Frenesi e do teste de Virtude **no livro**, que é a corrente. O motor continua sem o
+   teste de Frenesi, e isso não é desta rodada: nenhuma tela o rola. Deixar a §17 para depois é
+   deixar o livro dizendo "Vigor ou Destreza" com a regra já trocada.
 2. **As quatro M decididas e não feitas (M-01, M-07, M-24, M-33), mais os três C marcados como
    feitos que não estão (C-22, C-39, C-61).** Porque é execução pura sobre decisão que o humano já
    pagou, e os três C são defeitos publicados. A M-24 e a M-33 mexem em combate e no Grid, então

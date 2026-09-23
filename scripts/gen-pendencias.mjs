@@ -14,7 +14,16 @@
 // começo em maiúsculas do primeiro `[...]` depois da sigla (`DECIDIR`, `FAZER`, `AUTOR`...).
 //
 // O QUE ELE ACUSA, sem consertar (a caixa só muda com prova, e isso é de quem edita o tema):
-// sigla repetida no mesmo arquivo, item aberto com o título riscado, item sem sigla.
+// sigla repetida no mesmo arquivo, item aberto com o título riscado, item sem sigla, sigla com a
+// letra de outro tema. Isso vai para a lista de anomalias, e o `--check` continua verde.
+//
+// O QUE ELE RECUSA, e aqui o `--check` fica VERMELHO (rodada 95, CORRIGE da 94): toda linha com
+// cara de caixa que o formato de item não casa. A Revisora plantou onze casos numa cópia e seis
+// sumiam da contagem sem aviso (caixa aninhada com espaço ou tab, `[~]` em subitem, `* [ ]`,
+// `- [ ]**` colado, `- [?]`). Uma caixa que o gerador não lê é uma caixa do tema que o índice não
+// conta, e o índice promete que o `validate` acusa a divergência. Então ele não adivinha: recusa, e
+// diz a linha. O que está dentro de cerca de código (``` ou ~~~) é exemplo, e é pulado.
+// Os casos estão em `scripts/test-gen-pendencias.mjs`.
 //
 // O script reescreve só o miolo entre os marcadores
 //   <!-- gen:pendencias-contagem --> … <!-- /gen:pendencias-contagem -->
@@ -37,6 +46,10 @@ const INDICE = path.join(raiz, 'Pendencias.md');
 const ESTADO = { ' ': 'aberto', '~': 'parcial', x: 'fechado', X: 'fechado' };
 const ITEM = /^- \[( |~|x|X)\] (.*)$/;
 const SIGLA = /^([A-L]\d+[a-z]?)\b/;
+// Qualquer marcador de lista (`-`, `*`, `+`, `1.`, `1)`), com ou sem recuo, seguido de uma caixa de
+// no máximo um caractere. É a régua com que a Revisora varreu os temas na 94.
+const CARA_DE_CAIXA = /^\s*([-*+]|\d+[.)])\s*\[.?\]/;
+const CERCA = /^\s*(```|~~~)/;
 
 /** O começo em maiúsculas de um `[...]`: `[FAZER/DECIDIR]` → `FAZER/DECIDIR`, `[ANOTADO em 10/09]` → `ANOTADO`. */
 function marcacaoDe(txt) {
@@ -67,19 +80,30 @@ function tituloDe(resto, sigla) {
   return t.replace(/\|/g, '\\|');
 }
 
+const naoLidas = [];
 const temas = fs.readdirSync(DIR).filter((f) => /^[A-L]-.*\.md$/.test(f)).sort();
 const dados = temas.map((arq) => {
   const linhas = fs.readFileSync(path.join(DIR, arq), 'utf8').split(/\r?\n/);
   const tema = (linhas.find((l) => /^# /.test(l)) || '').replace(/^#\s*[A-L]\.\s*/, '').trim();
   const itens = [];
+  let naCerca = false;
   for (let i = 0; i < linhas.length; i += 1) {
+    if (CERCA.test(linhas[i])) { naCerca = !naCerca; continue; }
+    if (naCerca) continue;
     const m = linhas[i].match(ITEM);
-    if (!m) continue;
+    if (!m) {
+      if (CARA_DE_CAIXA.test(linhas[i])) naoLidas.push(`${arq}:${i + 1}  ${linhas[i].trim()}`);
+      continue;
+    }
     // O negrito do título às vezes quebra de linha (o L29, o K28): junta as seguintes até ele
-    // fechar, no máximo quatro, para o título não sair cortado na primeira palavra.
+    // fechar, no máximo quatro. SÓ quando o negrito foi aberto na primeira linha, e parando em
+    // linha em branco, cabeçalho ou qualquer coisa com cara de caixa (mesmo recuada): sem isso, um
+    // item de sigla sem negrito engolia a linha seguinte no título (caso da Revisora na 94).
     let resto = m[2];
-    for (let k = 1; k <= 4 && (resto.match(/\*\*/g) || []).length < 2 && linhas[i + k]
-      && !ITEM.test(linhas[i + k]) && !/^#/.test(linhas[i + k]); k += 1) {
+    const abriuNegrito = /^(~~)?\*\*/.test(resto);
+    for (let k = 1; abriuNegrito && k <= 4 && (resto.match(/\*\*/g) || []).length < 2 && linhas[i + k]
+      && linhas[i + k].trim() !== '' && !CARA_DE_CAIXA.test(linhas[i + k]) && !/^#/.test(linhas[i + k])
+      && !CERCA.test(linhas[i + k]); k += 1) {
       resto += ` ${linhas[i + k].trim()}`;
     }
     const riscado = /^~~/.test(resto);
@@ -102,6 +126,9 @@ for (const t of dados) {
   for (const it of t.itens) {
     if (!it.sigla) anomalias.push(`\`${t.arq}\`: item sem sigla, "${it.titulo}" (${it.estado})`);
     else (vistas[it.sigla] ??= []).push(it.estado + (it.riscado ? ', riscado' : ''));
+    if (it.sigla && it.sigla[0] !== t.letra) {
+      anomalias.push(`\`${t.arq}\`: a sigla **${it.sigla}** é de outro tema (${it.sigla[0]}), e está contada no tema ${t.letra}`);
+    }
     if (it.estado !== 'fechado' && it.riscado) {
       anomalias.push(`\`${t.arq}\`: **${it.sigla}** tem a caixa aberta e o título riscado (a contagem o conta como aberto)`);
     }
@@ -156,6 +183,15 @@ function montar() {
 
 const resumo = `${total.itens} itens (${total.aberto} abertos, ${total.parcial} parciais, ${total.fechado} fechados)`
   + ` em ${dados.length} temas, ${anomalias.length} anomalia(s) acusada(s)`;
+
+// Linha com cara de caixa que o formato não lê: recusa nos dois modos, e não escreve nada.
+if (naoLidas.length) {
+  console.error(`✘ ${naoLidas.length} linha(s) com cara de caixa que o gerador NÃO LÊ, e que por isso ficariam fora da contagem:`);
+  for (const n of naoLidas) console.error(`    docs/pendencias/${n}`);
+  console.error('  Um item é `- [ ] `, `- [~] ` ou `- [x] ` na coluna 0, com espaço depois da caixa.'
+    + ' Subitem com caixa não conta: vire item, ou tire a caixa.');
+  process.exit(1);
+}
 
 if (process.argv.includes('--check')) {
   const atual = fs.readFileSync(INDICE, 'utf8');
