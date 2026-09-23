@@ -68,17 +68,23 @@ class Janela:
         return km_por_grau / self.px_por_grau
 
 
-def rasterizar_reto(geometria: dict, janela: Janela) -> np.ndarray:
+def rasterizar_reto(geometria: dict, janela: Janela,
+                    recorte: tuple[int, int, int, int] | None = None) -> np.ndarray:
     """Máscara 0/255 do polígono sem ruído nenhum (Polygon ou MultiPolygon, com
-    buracos)."""
+    buracos). `recorte` = (x0, y0, x1, y1) em pixels da janela devolve só esse pedaço."""
     forma = shape(geometria)
     poligonos = list(forma.geoms) if forma.geom_type == "MultiPolygon" else [forma]
-    img = Image.new("L", (janela.largura, janela.altura), 0)
+    x0, y0, x1, y1 = recorte or (0, 0, janela.largura, janela.altura)
+    img = Image.new("L", (x1 - x0, y1 - y0), 0)
     desenho = ImageDraw.Draw(img)
+
+    def pixels(coords):
+        return [(px - x0, py - y0) for px, py in (janela.para_pixel(x, y) for x, y in coords)]
+
     for p in poligonos:
-        desenho.polygon([janela.para_pixel(x, y) for x, y in p.exterior.coords], fill=255)
+        desenho.polygon(pixels(p.exterior.coords), fill=255)
         for buraco in p.interiors:
-            desenho.polygon([janela.para_pixel(x, y) for x, y in buraco.coords], fill=0)
+            desenho.polygon(pixels(buraco.coords), fill=0)
     return np.asarray(img)
 
 
@@ -98,27 +104,52 @@ def _hash_uniforme(semente: int, i: np.ndarray, j: np.ndarray, oitava: int) -> n
     return (x >> np.uint64(11)).astype(np.float64) / float(1 << 53)
 
 
-def ruido(janela: Janela, semente: int, km_por_grau: float, oitavas=OITAVAS) -> np.ndarray:
-    """Ruído em [-0,5, 0,5] (aproximadamente), por pixel da janela, ancorado no mundo."""
+def ruido(janela: Janela, semente: int, km_por_grau: float, oitavas=OITAVAS,
+          recorte: tuple[int, int, int, int] | None = None) -> np.ndarray:
+    """Ruído em [-0,5, 0,5] (aproximadamente), por pixel da janela, ancorado no mundo.
+    `recorte` = (x0, y0, x1, y1) em pixels da janela devolve só esse pedaço, com os
+    mesmos valores que ele teria na janela inteira.
+
+    O hash é calculado uma vez por NÓ da grade do ruído, e não por pixel (a primeira
+    versão fazia quatro hashes por pixel por oitava, e era 90% dos 3 minutos de um
+    recorte de Mére). O valor de cada nó é o mesmo; só se deixou de recalculá-lo."""
     km_px = janela.km_por_px(km_por_grau)
+    x0, y0, x1, y1 = recorte or (0, 0, janela.largura, janela.altura)
     # coordenada do CENTRO de cada pixel, em km a partir da origem da projeção
-    xs_km = (janela.oeste * km_por_grau) + (np.arange(janela.largura) + 0.5) * km_px
-    ys_km = (-janela.norte * km_por_grau) + (np.arange(janela.altura) + 0.5) * km_px
-    total = np.zeros((janela.altura, janela.largura), dtype=np.float64)
+    xs_km = (janela.oeste * km_por_grau) + (np.arange(x0, x1) + 0.5) * km_px
+    ys_km = (-janela.norte * km_por_grau) + (np.arange(y0, y1) + 0.5) * km_px
+    total = np.zeros((y1 - y0, x1 - x0), dtype=np.float64)
     for oitava, (passo, peso) in enumerate(oitavas):
         gx, gy = xs_km / passo, ys_km / passo
         i0, j0 = np.floor(gx).astype(np.int64), np.floor(gy).astype(np.int64)
         fx, fy = gx - i0, gy - j0
         sx, sy = fx * fx * (3 - 2 * fx), fy * fy * (3 - 2 * fy)   # suavização
-        I0, J0 = np.meshgrid(i0, j0)
-        SX, SY = np.meshgrid(sx, sy)
-        v00 = _hash_uniforme(semente, I0, J0, oitava)
-        v10 = _hash_uniforme(semente, I0 + 1, J0, oitava)
-        v01 = _hash_uniforme(semente, I0, J0 + 1, oitava)
-        v11 = _hash_uniforme(semente, I0 + 1, J0 + 1, oitava)
+        nos_i = np.arange(i0.min(), i0.max() + 2)
+        nos_j = np.arange(j0.min(), j0.max() + 2)
+        NI, NJ = np.meshgrid(nos_i, nos_j)
+        valor = _hash_uniforme(semente, NI, NJ, oitava)          # [nó j, nó i]
+        a, b = i0 - nos_i[0], j0 - nos_j[0]
+        v00, v10 = valor[np.ix_(b, a)], valor[np.ix_(b, a + 1)]
+        v01, v11 = valor[np.ix_(b + 1, a)], valor[np.ix_(b + 1, a + 1)]
+        SX, SY = sx[None, :], sy[:, None]
         v = (v00 * (1 - SX) + v10 * SX) * (1 - SY) + (v01 * (1 - SX) + v11 * SX) * SY
         total += peso * (v - 0.5)
     return total
+
+
+def _caixa_em_pixels(geometria: dict, janela: Janela, folga_px: int):
+    """(x0, y0, x1, y1) em pixels da janela: a caixa do polígono com `folga_px` em volta,
+    cortada pela janela. None se não sobra nada."""
+    oeste, sul, leste, norte = shape(geometria).bounds
+    ax, ay = janela.para_pixel(oeste, norte)
+    bx, by = janela.para_pixel(leste, sul)
+    x0 = max(0, int(np.floor(ax)) - folga_px)
+    y0 = max(0, int(np.floor(ay)) - folga_px)
+    x1 = min(janela.largura, int(np.ceil(bx)) + folga_px + 1)
+    y1 = min(janela.altura, int(np.ceil(by)) + folga_px + 1)
+    if x1 <= x0 or y1 <= y0:
+        return None
+    return x0, y0, x1, y1
 
 
 def rasterizar(geometria: dict, semente: int, janela: Janela, km_por_grau: float,
@@ -138,11 +169,20 @@ def rasterizar(geometria: dict, semente: int, janela: Janela, km_por_grau: float
         folga = folga_px / janela.px_por_grau
         larga = Janela(janela.oeste - folga, janela.sul - folga, janela.leste + folga,
                        janela.norte + folga, janela.px_por_grau)
-        reta = rasterizar_reto(geometria, larga)
-        # A rampa: um borrão de meia amplitude dá uma transição de ~1 amplitude inteira.
-        rampa = np.asarray(Image.fromarray(reta).filter(ImageFilter.GaussianBlur(raio_px / 2)),
-                           dtype=np.float64) / 255.0
-        cheia = ((rampa + 0.9 * ruido(larga, semente, km_por_grau, oitavas)) > 0.5)
+        # Só se calcula o pedaço da janela larga em volta do polígono (a caixa dele mais
+        # a folga): longe dele a rampa é zero e o ruído (no máximo 0,45) não passa do
+        # corte, então fora da caixa a máscara é vazia de qualquer jeito. Antes se
+        # calculava a janela inteira para cada área, o que num recorte de região
+        # grande era a maior parte do tempo.
+        cheia = np.zeros((larga.altura, larga.largura), dtype=bool)
+        caixa = _caixa_em_pixels(geometria, larga, folga_px)
+        if caixa is not None:
+            x0, y0, x1, y1 = caixa
+            reta = rasterizar_reto(geometria, larga, caixa)
+            # A rampa: um borrão de meia amplitude dá uma transição de ~1 amplitude inteira.
+            rampa = np.asarray(Image.fromarray(reta).filter(ImageFilter.GaussianBlur(raio_px / 2)),
+                               dtype=np.float64) / 255.0
+            cheia[y0:y1, x0:x1] = (rampa + 0.9 * ruido(larga, semente, km_por_grau, oitavas, caixa)) > 0.5
         saida = cheia[folga_px: folga_px + janela.altura, folga_px: folga_px + janela.largura]
         saida = saida.astype(np.uint8) * 255
     if terra is not None:

@@ -96,3 +96,77 @@ def test_a_costa_recorta():
     m = raster.rasterizar(QUADRADO, 3, JANELA, KM_POR_GRAU, terra=terra)
     assert m[:, JANELA.largura // 2:].max() == 0
     assert m[:, : JANELA.largura // 2].max() == 255
+
+
+# --- a aceleração não muda um pixel (2026-09-23, rodada da manhã) -----------------
+# A versão da noite 2 fazia o hash por pixel e calculava a janela inteira para cada
+# área. Ela fica aqui, copiada, como REFERÊNCIA: a versão rápida tem de dar os mesmos
+# bytes que ela.
+
+from PIL import ImageFilter  # noqa: E402
+
+
+def _ruido_referencia(janela, semente, km_por_grau, oitavas, deslocar_no=0):
+    km_px = janela.km_por_px(km_por_grau)
+    xs_km = (janela.oeste * km_por_grau) + (np.arange(janela.largura) + 0.5) * km_px
+    ys_km = (-janela.norte * km_por_grau) + (np.arange(janela.altura) + 0.5) * km_px
+    total = np.zeros((janela.altura, janela.largura), dtype=np.float64)
+    for oitava, (passo, peso) in enumerate(oitavas):
+        gx, gy = xs_km / passo, ys_km / passo
+        i0, j0 = np.floor(gx).astype(np.int64), np.floor(gy).astype(np.int64)
+        fx, fy = gx - i0, gy - j0
+        sx, sy = fx * fx * (3 - 2 * fx), fy * fy * (3 - 2 * fy)
+        I0, J0 = np.meshgrid(i0 + deslocar_no, j0)
+        SX, SY = np.meshgrid(sx, sy)
+        v00 = raster._hash_uniforme(semente, I0, J0, oitava)
+        v10 = raster._hash_uniforme(semente, I0 + 1, J0, oitava)
+        v01 = raster._hash_uniforme(semente, I0, J0 + 1, oitava)
+        v11 = raster._hash_uniforme(semente, I0 + 1, J0 + 1, oitava)
+        v = (v00 * (1 - SX) + v10 * SX) * (1 - SY) + (v01 * (1 - SX) + v11 * SX) * SY
+        total += peso * (v - 0.5)
+    return total
+
+
+def _rasterizar_referencia(geometria, semente, janela, amplitude_km, oitavas, deslocar_no=0):
+    raio_px = amplitude_km / janela.km_por_px(KM_POR_GRAU)
+    folga_px = int(np.ceil(3 * raio_px)) + 2
+    folga = folga_px / janela.px_por_grau
+    larga = raster.Janela(janela.oeste - folga, janela.sul - folga, janela.leste + folga,
+                          janela.norte + folga, janela.px_por_grau)
+    reta = raster.rasterizar_reto(geometria, larga)
+    rampa = np.asarray(Image.fromarray(reta).filter(ImageFilter.GaussianBlur(raio_px / 2)),
+                       dtype=np.float64) / 255.0
+    cheia = (rampa + 0.9 * _ruido_referencia(larga, semente, KM_POR_GRAU, oitavas, deslocar_no)) > 0.5
+    return cheia[folga_px: folga_px + janela.altura, folga_px: folga_px + janela.largura].astype(np.uint8) * 255
+
+
+# Um polígono pequeno longe do meio de uma janela grande (é o caso que a caixa
+# acelera) e um que sai da janela pela borda (é o caso que a caixa corta).
+PEQUENO = {"type": "Polygon", "coordinates": [[[3, 3], [5.5, 2.6], [6, 5], [3.4, 5.8], [3, 3]]]}
+VAZANDO = {"type": "Polygon", "coordinates": [[[-2, 7], [4, 6.5], [4.5, 11], [-1, 12], [-2, 7]]]}
+JANELA_GRANDE = raster.Janela(0, 0, 12, 10, PX_POR_GRAU / 2)
+OITAVAS_LONGAS = ((220.0, 0.5), (70.0, 0.3), (20.0, 0.2))
+
+
+def test_a_versao_rapida_da_os_mesmos_bytes_da_referencia():
+    for geo in (PEQUENO, VAZANDO, QUADRADO):
+        for amplitude, oitavas in ((raster.AMPLITUDE_KM, raster.OITAVAS), (90.0, OITAVAS_LONGAS)):
+            rapida = raster.rasterizar(geo, 4242, JANELA_GRANDE, KM_POR_GRAU,
+                                       amplitude_km=amplitude, oitavas=oitavas)
+            referencia = _rasterizar_referencia(geo, 4242, JANELA_GRANDE, amplitude, oitavas)
+            assert rapida.any()
+            assert _png(rapida) == _png(referencia)
+
+
+def test_a_comparacao_com_a_referencia_pega_um_no_trocado():
+    """Controle negativo: a mesma referência com o nó do ruído deslocado de um tem de
+    dar bytes diferentes, senão o teste de cima não enxergaria erro de indexação."""
+    rapida = raster.rasterizar(PEQUENO, 4242, JANELA_GRANDE, KM_POR_GRAU)
+    errada = _rasterizar_referencia(PEQUENO, 4242, JANELA_GRANDE, raster.AMPLITUDE_KM,
+                                    raster.OITAVAS, deslocar_no=1)
+    assert _png(rapida) != _png(errada)
+
+
+def test_poligono_fora_da_janela_da_mascara_vazia():
+    longe = {"type": "Polygon", "coordinates": [[[40, 40], [41, 40], [41, 41], [40, 40]]]}
+    assert not raster.rasterizar(longe, 1, JANELA_GRANDE, KM_POR_GRAU).any()
