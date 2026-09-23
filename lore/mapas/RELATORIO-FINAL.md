@@ -24,7 +24,7 @@ estava parado (derrubado pelo Claude Code por falta de memória na rodada anteri
 | A6 braço de delta na tela | feita | ver diário |
 | B1 camada de nomes | feita | ver diário |
 | B2 elementos de cartografia | feita | ver diário |
-| B3 exportação parcial | pendente | |
+| B3 exportação parcial | feita | ver diário |
 | B4 rotas de comércio | pendente | |
 | B5 mapas distorcidos | pendente | |
 | C1 mapa de teste do mundo | pendente | |
@@ -148,4 +148,35 @@ estava parado (derrubado pelo Claude Code por falta de memória na rodada anteri
   gravados).
 - **Depende do teste do usuário**: arrastar os marcadores e o painel.
 
-### B3 · exportação parcial (começando)
+### B3 · exportação parcial (feita)
+
+- **Pronto**: `cartografia/exportar.py`, `scripts/exportar.py` (linha de comando),
+  `POST /api/exportar` (roda o script num PROCESSO SEPARADO, para a memória do
+  servidor não crescer), `GET /api/exportacoes` e o painel EXPORTAR.
+  - recorte por região (caixa das ilhas dela e das filhas, pelo cache de ilha, +6%)
+    ou por retângulo desenhado no mapa;
+  - camadas: relevo, cobertura, rios, estradas, rotas, nomes, cidades, grade,
+    moldura, elementos;
+  - versões mestre e jogador (`visivel_jogador: false` some, com o nome);
+  - PNG na largura pedida, ou PDF A4/A3 (deitado ou em pé pelo recorte), com moldura
+    de atlas (faixa alternada e graus escritos) e, nos cantos, rosa, escala calibrada
+    na latitude central do RECORTE (com a latitude escrita) e cartela com o título;
+  - registro em `dados/exportacoes.jsonl`: quando, arquivo, recorte, camadas, versão,
+    destinatário, distorção, resolução, commit e impressão digital dos dados.
+- **Conferido**: 13 testes (opções inválidas, recorte de Calin sem Mére, registro
+  gravado, PDF em A4 deitado medido no MediaBox, limite de tamanho recusando sem
+  registrar, e **jogador sem o oculto**: a imagem do jogador com um lugar oculto é
+  byte a byte igual à de um mapa sem esse lugar; controle negativo, a do mestre é
+  diferente). Por HTTP: opção inválida dá 422; Calin a 800 px em 7 s; o arquivo é
+  servido, e pedir `dados/regioes.json` pelo mesmo caminho dá 404.
+- **Decisões minhas**: limite de 60 Mpx por exportação (acima, recusa e manda para o
+  script); margem de 6% no recorte de região; moldura com 3,5% do lado; PDF a 300 dpi
+  por padrão com 10 mm de margem; arquivos em `render/exportacoes/` (fora do git) e o
+  registro em `dados/` (dado do mestre). **`dados/exportacoes.jsonl` NÃO foi
+  commitado**: ele tem uma linha do meu teste por HTTP (destinatário
+  "teste-do-cartografo"), e é arquivo de uso, que nasce na primeira exportação.
+- Imagem: `render/exportacoes/teste-calin.png` (e `teste-calin-a4.pdf`).
+- **Depende do teste do usuário**: o painel EXPORTAR na tela (desenhar retângulo,
+  marcar camadas, baixar o arquivo pelo link).
+
+### B4 · rotas de comércio (começando)

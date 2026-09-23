@@ -198,6 +198,28 @@
         </div>
       </section>
 
+      <section class="secao" data-secao="exportar">
+        <h2 class="cabecalho-secao">EXPORTAR</h2>
+        <div class="corpo-secao">
+          <label>recorte <select id="exp-regiao"></select></label>
+          <button type="button" id="exp-retangulo">desenhar retângulo</button>
+          <div id="exp-camadas" class="caixa-camadas"></div>
+          <label>versão <select id="exp-versao"><option value="mestre">mestre (tudo)</option>
+            <option value="jogador">jogador (sem o oculto)</option></select></label>
+          <label>formato <select id="exp-formato"><option value="png">PNG</option><option value="pdf">PDF</option></select></label>
+          <label>largura PNG (px) <input type="number" id="exp-largura" value="2400" min="200" max="20480" step="100"></label>
+          <label>papel PDF <select id="exp-papel"><option>A4</option><option>A3</option></select></label>
+          <label>para <input type="text" id="exp-destinatario" placeholder="jogador (opcional)"></label>
+          <label title="Mapa ruim de propósito (B5): 5 é fiel, 1 é mapa de feira. A distorção só existe na imagem.">
+            distorção <select id="exp-nivel"><option value="">nenhuma</option><option>5</option><option>4</option>
+            <option>3</option><option>2</option><option>1</option></select></label>
+          <label>mercador <input type="text" id="exp-mercador" placeholder="quem vendeu (muda os erros)"></label>
+          <button type="button" id="exp-exportar">exportar</button>
+          <div id="exp-leitura" class="nota"></div>
+          <ul id="exp-lista" class="nota"></ul>
+        </div>
+      </section>
+
       <section class="secao" data-secao="lugares">
         <h2 class="cabecalho-secao">LUGARES</h2>
         <div class="corpo-secao">
@@ -350,6 +372,7 @@
   <script src="/static/js/regioes.js"></script>
   <script src="/static/js/nomes.js"></script>
   <script src="/static/js/elementos.js"></script>
+  <script src="/static/js/exportar.js"></script>
   <script src="/static/js/regua.js"></script>
   <script src="/static/js/app.js"></script>
 </body>

@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import quote
 
 from fastapi import FastAPI, HTTPException
-from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, StrictBool
 
@@ -127,6 +127,21 @@ class ElementoDoMapa(BaseModel):
     latitude_escala: float | None = None
     visivel_jogador: StrictBool | None = None
     travado: StrictBool | None = None
+
+
+class PedidoDeExportacao(BaseModel):
+    regiao: str | None = None
+    retangulo: list[float] | None = None
+    camadas: list[str] | None = None
+    versao: str = "mestre"
+    formato: str = "png"
+    largura_px: int = 2400
+    papel: str = "A4"
+    dpi: int = 300
+    destinatario: str | None = None
+    titulo: str | None = None
+    distorcao: dict | None = None
+    nome: str | None = None
 
 
 class NovaMassa(BaseModel):
@@ -786,3 +801,51 @@ def apagar_elemento(id_elemento: str) -> JSONResponse:
     except travas.Travado as erro:
         raise HTTPException(status_code=409, detail=str(erro))
     return JSONResponse(elementos.carregar())
+
+
+# --- Exportação parcial (B3, 2026-09-23 noite) ---------------------------------------
+# A exportação roda num PROCESSO SEPARADO (scripts/exportar.py --json): a memória que
+# ela usa (a costa inteira, as máscaras do recorte) volta ao sistema quando ela acaba,
+# e o servidor não cresce a cada mapa. Recorte acima do limite de pixels é recusado
+# aqui e fica para o script, fora do servidor (pedido do usuário: nada de renderização
+# pesada com o servidor no ar).
+
+@app.post("/api/exportar")
+def exportar_recorte(p: PedidoDeExportacao) -> JSONResponse:
+    import subprocess
+    import sys as _sys
+    from cartografia import exportar as _exp
+    opcoes = {k: v for k, v in p.model_dump().items() if v is not None}
+    try:
+        _exp.validar(_exp.Opcoes(**opcoes))
+    except (ValueError, TypeError) as e:
+        raise HTTPException(status_code=422, detail=str(e))
+    script = RAIZ_FERRAMENTA / "scripts" / "exportar.py"
+    r = subprocess.run([_sys.executable, str(script), "--json", json.dumps(opcoes, ensure_ascii=False)],
+                       capture_output=True, text=True, encoding="utf-8", timeout=900)
+    linhas = [l for l in r.stdout.splitlines() if l.strip().startswith("{")]
+    if not linhas:
+        raise HTTPException(status_code=500, detail=f"a exportação falhou: {r.stderr[-500:]}")
+    saida = json.loads(linhas[-1])
+    if "erro" in saida:
+        raise HTTPException(status_code=422, detail=saida["erro"])
+    return JSONResponse(saida)
+
+
+@app.get("/api/exportacoes")
+def listar_exportacoes() -> JSONResponse:
+    caminho = RAIZ_MAPAS / "dados" / "exportacoes.jsonl"
+    if not caminho.exists():
+        return JSONResponse([])
+    linhas = caminho.read_text(encoding="utf-8").splitlines()
+    return JSONResponse([json.loads(l) for l in linhas[-200:] if l.strip()])
+
+
+@app.get("/api/exportacoes/arquivo")
+def baixar_exportacao(caminho: str):
+    """Só serve arquivo de render/exportacoes/ (nada de sair da pasta)."""
+    pasta = (RAIZ_MAPAS / "render" / "exportacoes").resolve()
+    alvo = (RAIZ_MAPAS / caminho).resolve()
+    if pasta not in alvo.parents or not alvo.is_file():
+        raise HTTPException(status_code=404, detail="arquivo de exportação não encontrado")
+    return FileResponse(alvo)

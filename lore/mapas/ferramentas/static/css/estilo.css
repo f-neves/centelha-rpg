@@ -474,3 +474,8 @@ kbd {
 .marcador-elemento span { display: inline-block; transform: translate(-50%, -50%); white-space: nowrap;
   background: rgba(244, 234, 210, 0.85); border: 1px solid #3a2a1c; padding: 1px 4px; font-size: 11px; cursor: move; }
 #mapa.so-costa .leaflet-elementos-pane { display: none; }
+
+/* Exportação (B3, 2026-09-23 noite). */
+.caixa-camadas { display: flex; flex-wrap: wrap; gap: 2px 8px; font-size: 11px; margin: 4px 0; }
+section[data-secao="exportar"] label { display: flex; justify-content: space-between; gap: 6px; font-size: 11px; }
+#exp-lista { list-style: none; padding: 0; max-height: 20vh; overflow-y: auto; }

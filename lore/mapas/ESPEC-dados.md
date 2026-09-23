@@ -520,3 +520,6 @@ Recomendação do Cartógrafo, registrada para o usuário revisar.
   (centro, lon/lat), tamanho em px na resolução oficial, texto (cartela), latitude
   em que a escala vale (escala) e `visivel_jogador`. Esquema no cabeçalho de
   `ferramentas/backend/elementos.py`.
+- **`dados/exportacoes.jsonl`** (B3): uma linha por exportação, só acrescentada.
+  Campos em `ferramentas/cartografia/exportar.py` (`registro`). Nasce na primeira
+  exportação.

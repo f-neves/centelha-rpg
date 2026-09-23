@@ -24,6 +24,9 @@ primeira coisa que `/cartografo` mostra.)*
     planeja os símbolos por área e costura blocos sem emenda (teste byte a byte).
   - **B2 (feita)**: rosa, barra de escala calibrada (21,87° N, latitude central de
     Waning), cartela e monstro, posicionáveis (`dados/elementos.json`).
+  - **B3 (feita)**: exportação parcial (região ou retângulo, camadas, mestre ou
+    jogador, PNG ou PDF A4/A3, moldura, escala do recorte) com registro em
+    `dados/exportacoes.jsonl`. Linha de comando: `scripts/exportar.py`.
 - **RODADA DA NOITE DE 2026-09-23, AUTÔNOMA (o usuário fora de casa, sem testar).**
   Pedido: montanha x nevada aprovada; piso x densidade; áreas de exemplo irregulares;
   renderizar e avaliar; etapa 10 sem cache, edição de vértice, pincel; lista do que
