@@ -449,3 +449,20 @@ kbd {
 #mapa.pincelando { cursor: crosshair; }
 #controle-pincel { display: flex; gap: 4px; }
 #pincel-raio { width: 90px; }
+
+/* Camada de nomes (B1, 2026-09-23 noite). */
+#lista-nomes { list-style: none; margin: 0; padding: 0; max-height: 25vh; overflow-y: auto; }
+.item-nome { display: flex; flex-wrap: wrap; align-items: center; gap: 3px; font-size: 11px; padding: 2px 0; }
+.item-nome span { flex: 1 1 100%; }
+.linha-nome-livre { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 4px; }
+.rotulo-nome span {
+  display: inline-block; transform: translate(-50%, -50%); white-space: nowrap;
+  font-family: "Palatino Linotype", Georgia, serif; color: #3a2a1c;
+  text-shadow: 0 0 3px #f4ead2, 0 0 3px #f4ead2; cursor: move;
+}
+.rotulo-nome.nivel-1 span { font-size: 10px; }
+.rotulo-nome.nivel-2 span { font-size: 12px; }
+.rotulo-nome.nivel-3 span { font-size: 14px; font-style: italic; }
+.rotulo-nome.nivel-4 span { font-size: 17px; letter-spacing: 0.1em; }
+.rotulo-nome.nivel-5 span { font-size: 20px; letter-spacing: 0.15em; }
+#mapa.so-costa .leaflet-nomes-pane { display: none; }

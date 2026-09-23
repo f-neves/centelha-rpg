@@ -278,6 +278,11 @@ class Biblioteca:
                 por_tipo.setdefault(s["tipo"], []).append(s)
         return cls(por_tipo, raiz)
 
+    def por_id(self, id_simbolo: str) -> dict:
+        if "_por_id" not in self._cache:
+            self._cache["_por_id"] = {s["id"]: s for lista in self.simbolos.values() for s in lista}
+        return self._cache["_por_id"][id_simbolo]
+
     def _sprite_base(self, s: dict, recheio: tuple) -> Image.Image:
         """O símbolo pronto para colar: no modo branco-opaco, o próprio PNG; no só
         traço, a silhueta pintada da cor do chão (`recheio`) com o traço por cima (o

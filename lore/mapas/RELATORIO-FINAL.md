@@ -22,7 +22,7 @@ estava parado (derrubado pelo Claude Code por falta de memória na rodada anteri
 | A4 vértice de área e rio | já feita na rodada anterior | `4336c16` |
 | A5 pincel | já feito na rodada anterior | `ac02fc3` |
 | A6 braço de delta na tela | feita | ver diário |
-| B1 camada de nomes | pendente | |
+| B1 camada de nomes | feita | ver diário |
 | B2 elementos de cartografia | pendente | |
 | B3 exportação parcial | pendente | |
 | B4 rotas de comércio | pendente | |
@@ -99,4 +99,33 @@ estava parado (derrubado pelo Claude Code por falta de memória na rodada anteri
 - **Depende do teste do usuário**: criar um braço de delta pela tela (não há rio
   salvo para ser mãe; o servidor valida `ramo_de` desde a etapa 8).
 
-### B1 · camada de NOMES (começando)
+### B1 · camada de NOMES (feita)
+
+- **Pronto**:
+  - dados: `dados/nomes.json` (ajustes e nomes livres; `backend/nomes.py`, rotas
+    `/api/nomes`), campo `visivel_jogador` em lugar e região;
+  - desenho: `cartografia/tipografia.py` (texto reto e texto na curva, letra a letra,
+    com halo cor de papel; espinha de forma alongada) e a composição nova,
+    `cartografia/composicao.py`, que é a base de toda a Parte B;
+  - tela: painel NOMES (nível, reto, jogador, curva desenhada à mão, nome livre, e
+    arrastar); nomes de região continuam no painel REGIÕES.
+- **A composição nova** planeja os símbolos por ÁREA, na janela da própria área, e
+  não por janela de saída: o mesmo recorte sai igual sozinho, dentro de um recorte
+  maior ou em blocos. **Teste de costura**: Mére em 1 bloco e em blocos de 37 linhas,
+  byte a byte iguais; controle negativo (sem folga nos blocos) diferente. Um defeito
+  achado por esse teste: `round()` do Python arredonda ,5 para o par, e a âncora
+  semeada em pixel + 0,5 caía em pixels diferentes conforme o bloco; virou
+  `floor(x + 0,5)`.
+- **Decisões minhas**: Palatino (Georgia de reserva); região e cordilheira em
+  maiúsculas espaçadas; mar e rio em itálico azul; rota em itálico vermelho-terra;
+  capital em negrito; tamanho por nível 15/21/30/46/70 px na resolução oficial;
+  nome de região e cordilheira cresce com a forma (até 3 vezes o nível); curva
+  automática só se a forma for 1,7 vez mais comprida que larga E a espinha tiver no
+  máximo 40° de inclinação (senão o nome sai reto: Mére, em pé, sai reta).
+- **O que ficou feio**: nome de cordilheira pequeno escrito por cima dos próprios
+  picos; nada de desvio automático de colisão entre nomes e símbolos.
+- Imagem: `render/teste-nomes-mere.png` (nomes de teste, não gravados).
+- **Depende do teste do usuário**: o painel NOMES inteiro na tela (arrastar, nível,
+  curva à mão, nome livre).
+
+### B2 · elementos de cartografia (começando)

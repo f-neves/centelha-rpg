@@ -268,6 +268,9 @@
   // sozinho por GET, sem dado injetado na página.
   iniciarPainelDeRegioes(mapa);
 
+  // Camada de nomes (B1 da empreitada, static/js/nomes.js): carrega sozinha por GET.
+  iniciarCamadaDeNomes(mapa);
+
   // Régua + grade de lat/lon (etapa 4 / B3, static/js/regua.js).
   iniciarRegua(mapa, PARAMETROS_LEAFLET.raio_km);
   iniciarGradeLatLon(mapa, limites);

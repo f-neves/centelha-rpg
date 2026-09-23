@@ -20,6 +20,8 @@ primeira coisa que `/cartografo` mostra.)*
     pico de 271 MB, 435 componentes) e ligado à ferramenta: "identificar ilha" e
     registrar massa nova com a regra dos 100 km. Achado em "Achados técnicos".
   - **A6 (feita)**: seletor "braço de delta de" no painel do Rio.
+  - **B1 (feita)**: camada de nomes (dados, tela e desenho) e a composição nova, que
+    planeja os símbolos por área e costura blocos sem emenda (teste byte a byte).
 - **RODADA DA NOITE DE 2026-09-23, AUTÔNOMA (o usuário fora de casa, sem testar).**
   Pedido: montanha x nevada aprovada; piso x densidade; áreas de exemplo irregulares;
   renderizar e avaliar; etapa 10 sem cache, edição de vértice, pincel; lista do que

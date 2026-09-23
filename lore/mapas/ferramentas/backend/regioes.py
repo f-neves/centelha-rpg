@@ -123,14 +123,21 @@ def criar_regiao(id_regiao: str, nome: str, tipo: str, pai: str | None = None, r
     return nova
 
 
-def editar_regiao(id_regiao: str, nome: str, tipo: str, pai: str | None) -> dict:
+def editar_regiao(id_regiao: str, nome: str, tipo: str, pai: str | None,
+                  visivel_jogador: bool | None = None) -> dict:
+    """`visivel_jogador` (B3): None mantém o que está; False tira a região (nome e
+    rótulo) da versão do jogador das exportações. Ausente no dado vale true."""
     dados = carregar_regioes()
     antes = _achar(dados, id_regiao)
     try:
         _validar_campos(dados, id_regiao, nome, tipo, pai)
     except KeyError as e:
         raise ValueError(e.args[0])
+    if visivel_jogador is not None and not isinstance(visivel_jogador, bool):
+        raise ValueError("'visivel_jogador' tem que ser booleano")
     depois = {**antes, "nome": nome.strip(), "tipo": tipo, "pai": pai}
+    if visivel_jogador is not None:
+        depois["visivel_jogador"] = visivel_jogador
     operacoes.registrar_operacao("editar_regiao", RELATIVO_REGIOES, {id_regiao: {"antes": antes, "depois": depois}},
                                  chave_lista="regioes")
     return depois

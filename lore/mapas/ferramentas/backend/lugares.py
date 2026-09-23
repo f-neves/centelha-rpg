@@ -84,6 +84,10 @@ def validar_propriedades(propriedades: dict) -> None:
     travado = propriedades.get("travado", False)
     if not isinstance(travado, bool):
         raise ValueError("'travado' tem que ser booleano")
+    # Visibilidade para o jogador (B3, 2026-09-23 noite): ausente vale true. False
+    # tira o lugar (e o nome dele) da versão do jogador de toda exportação.
+    if not isinstance(propriedades.get("visivel_jogador", True), bool):
+        raise ValueError("'visivel_jogador' tem que ser booleano")
 
 
 def criar_lugar(id_lugar: str, lon: float, lat: float, propriedades: dict) -> dict:

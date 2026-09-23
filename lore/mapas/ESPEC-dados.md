@@ -502,3 +502,17 @@ encontrou:
   gravada, e o vocabulário fechado de `valor` em áreas pintadas — os dois existem
   em `CARTOGRAFO.md` mas não eram citados aqui; adicionado um ponteiro (não uma
   cópia, para não criar uma segunda fonte que possa divergir de novo).
+
+## Parte B da empreitada (2026-09-23, noite) · campos e arquivos novos
+
+Recomendação do Cartógrafo, registrada para o usuário revisar.
+
+- **`visivel_jogador`** (booleano, ausente vale `true`) em `lugares.geojson`
+  (properties), `regioes.json` (cada região), `rotas.json` (properties),
+  `nomes.json` e `elementos.json`. `false` tira o objeto, e o nome dele, da versão do
+  jogador de toda exportação. A versão do mestre mostra tudo.
+- **`dados/nomes.json`** (B1): só AJUSTES de nomes que moram nos objetos (lugar,
+  região, rio, rota: nível, ângulo, curva, "reto", posição do texto, exceto região,
+  cuja posição continua no `rotulo`) e NOMES LIVRES (`alvo.tipo` `livre`, ou `area`
+  para cordilheira, com `texto` próprio). Esquema completo no cabeçalho de
+  `ferramentas/backend/nomes.py`. Um ajuste por alvo.

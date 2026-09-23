@@ -18,7 +18,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, StrictBool
 
 from . import (areas, cobertura_automatica, coordenadas, estradas, lugares,
-               ilhas, medicoes, operacoes, referencias, regioes, relevo_automatico, rios, travas)
+               ilhas, medicoes, nomes, operacoes, referencias, regioes, relevo_automatico, rios, travas)
 
 RAIZ_FERRAMENTA = Path(__file__).resolve().parents[1]
 RAIZ_MAPAS = RAIZ_FERRAMENTA.parent
@@ -96,6 +96,7 @@ class EdicaoRegiao(BaseModel):
     nome: str
     tipo: str
     pai: str | None = None
+    visivel_jogador: StrictBool | None = None
 
 
 class RotuloRegiao(BaseModel):
@@ -104,6 +105,18 @@ class RotuloRegiao(BaseModel):
 
 class AtribuicaoMassa(BaseModel):
     regiao: str | None = None
+
+
+class NomeDoMapa(BaseModel):
+    alvo: dict | None = None
+    texto: str | None = None
+    nivel: int | None = None
+    posicao: dict | None = None
+    angulo: float | None = None
+    curva: dict | None = None
+    reto: StrictBool | None = None
+    visivel_jogador: StrictBool | None = None
+    travado: StrictBool | None = None
 
 
 class NovaMassa(BaseModel):
@@ -607,7 +620,7 @@ def criar_regiao(nova: NovaRegiao) -> JSONResponse:
 @app.put("/api/regioes/{id_regiao}")
 def editar_regiao(id_regiao: str, edicao: EdicaoRegiao) -> JSONResponse:
     try:
-        regioes.editar_regiao(id_regiao, edicao.nome, edicao.tipo, edicao.pai)
+        regioes.editar_regiao(id_regiao, edicao.nome, edicao.tipo, edicao.pai, edicao.visivel_jogador)
     except KeyError as e:
         raise HTTPException(status_code=404, detail=str(e))
     except ValueError as e:
@@ -666,3 +679,51 @@ def criar_massa(nova: NovaMassa) -> JSONResponse:
     except ValueError as e:
         raise HTTPException(status_code=422, detail=str(e))
     return _regioes_e_massas()
+
+
+# --- Camada de nomes (B1, 2026-09-23 noite) ------------------------------------------
+
+def _nomes() -> JSONResponse:
+    return JSONResponse({"nomes": nomes.carregar(), "efetivos": nomes.efetivos()})
+
+
+@app.get("/api/nomes")
+def obter_nomes() -> JSONResponse:
+    """`nomes`: o arquivo (ajustes e nomes livres). `efetivos`: todo nome que o mapa
+    desenha, já resolvido a partir dos objetos (calculado, nunca gravado)."""
+    return _nomes()
+
+
+@app.post("/api/nomes")
+def criar_nome(n: NomeDoMapa) -> JSONResponse:
+    try:
+        nomes.criar({k: v for k, v in n.model_dump().items() if v is not None})
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
+    return _nomes()
+
+
+@app.put("/api/nomes/{id_nome}")
+def editar_nome(id_nome: str, n: NomeDoMapa) -> JSONResponse:
+    """Só os campos enviados mudam. Um campo enviado como null volta ao padrão (a
+    posição volta a sair do objeto, a curva volta a ser automática)."""
+    try:
+        nomes.editar(id_nome, n.model_dump(exclude_unset=True))
+    except KeyError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except travas.Travado as e:
+        raise HTTPException(status_code=409, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
+    return _nomes()
+
+
+@app.delete("/api/nomes/{id_nome}")
+def apagar_nome(id_nome: str) -> JSONResponse:
+    try:
+        nomes.apagar(id_nome)
+    except KeyError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except travas.Travado as e:
+        raise HTTPException(status_code=409, detail=str(e))
+    return _nomes()

@@ -170,6 +170,23 @@
         </div>
       </section>
 
+      <section class="secao" data-secao="nomes">
+        <h2 class="cabecalho-secao">NOMES</h2>
+        <div class="corpo-secao">
+          <p class="nota">Todo nome que o mapa final desenha (os de região estão no
+            painel REGIÕES). Arraste para mover; o texto de lugar, rio e rota mora no
+            próprio objeto.</p>
+          <label class="nota"><input type="checkbox" id="nomes-mostrar" checked> nomes no mapa</label>
+          <ul id="lista-nomes"></ul>
+          <div class="linha-nome-livre">
+            <input type="text" id="nome-livre-texto" placeholder="nome livre (mar, cordilheira...)">
+            <select id="nome-livre-area" title="Se o nome é de uma cordilheira, escolha a área de relevo: ele acompanha a espinha dela."></select>
+            <button type="button" id="nome-livre-por">pôr no mapa</button>
+          </div>
+          <div id="nome-leitura" class="nota"></div>
+        </div>
+      </section>
+
       <section class="secao" data-secao="lugares">
         <h2 class="cabecalho-secao">LUGARES</h2>
         <div class="corpo-secao">
@@ -320,6 +337,7 @@
   <script src="/static/js/geo.js"></script>
   <script src="/static/js/estradas.js"></script>
   <script src="/static/js/regioes.js"></script>
+  <script src="/static/js/nomes.js"></script>
   <script src="/static/js/regua.js"></script>
   <script src="/static/js/app.js"></script>
 </body>
