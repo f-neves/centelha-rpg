@@ -35,6 +35,7 @@ function iniciarFerramentaDeRio(mapa, riosIniciais, travasIniciais) {
   let desenhando = false;
 
   const seletorFim = document.getElementById("rio-termina-em");
+  const seletorRamo = document.getElementById("rio-ramo-de");
   const campoDestino = document.getElementById("rio-destino");
   const botaoDesenhar = document.getElementById("rio-desenhar");
   const botaoApagar = document.getElementById("rio-apagar");
@@ -101,6 +102,25 @@ function iniciarFerramentaDeRio(mapa, riosIniciais, travasIniciais) {
     camadaDesenho.clearLayers();
     if (featuresAtuais.length) camadaDesenho.addData(colecao);
     atualizarLeitura();
+    preencherRamos();
+  }
+
+  // Campo do braço de delta (A6 da empreitada, 2026-09-23 noite): a lista dos rios
+  // existentes, com "(não é braço)" como padrão. Separado do "termina em" de
+  // propósito (defeito 2 da revisão da etapa 8): afluente termina em rio e NÃO é braço.
+  function preencherRamos() {
+    const atual = seletorRamo.value;
+    seletorRamo.innerHTML = "";
+    const nenhum = document.createElement("option");
+    nenhum.value = ""; nenhum.textContent = "(não é braço)";
+    seletorRamo.appendChild(nenhum);
+    for (const f of featuresAtuais) {
+      const op = document.createElement("option");
+      op.value = f.properties.id;
+      op.textContent = f.properties.nome || f.properties.id;
+      seletorRamo.appendChild(op);
+    }
+    seletorRamo.value = featuresAtuais.some((f) => f.properties.id === atual) ? atual : "";
   }
 
   function selecionar(id) {
@@ -215,15 +235,13 @@ function iniciarFerramentaDeRio(mapa, riosIniciais, travasIniciais) {
       id: idNovo(),
       geometria: geojson.geometry,
       termina_em: { tipo, id: tipo === "mar" ? null : (campoDestino.value.trim() || null) },
-      // `ramo_de` fica SEMPRE null por aqui, de propósito. No esquema
-      // (`ESPEC-dados.md`) ele é o rio-mãe de um BRAÇO DE DELTA, que normalmente
-      // termina no mar; um afluente termina em rio e tem `ramo_de` null. Amarrar
-      // os dois no mesmo campo da tela marcaria todo afluente como braço de delta
-      // e tornaria o delta de verdade impossível de criar. Enquanto a tela não
-      // tiver um campo próprio para isso, braço de delta se cria pela API.
-      ramo_de: null,
+      // `ramo_de` vem do campo PRÓPRIO do braço de delta (A6), e não do "termina
+      // em": um afluente termina em rio e tem `ramo_de` null.
+      ramo_de: seletorRamo.value || null,
     });
     if (r.erro) return; // a recusa já apareceu; o traçado some, porque não foi gravado
+    // O campo do braço volta ao padrão: o próximo rio não herda o rio-mãe sem querer.
+    seletorRamo.value = "";
     redesenharTudo(r.dados);
     atualizarBotoesPilhaSeExistir();
   });

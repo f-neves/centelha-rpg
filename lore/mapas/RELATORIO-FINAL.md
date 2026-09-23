@@ -21,7 +21,7 @@ estava parado (derrubado pelo Claude Code por falta de memória na rodada anteri
 | A3 regiões + cache de ilha | feita | ver diário |
 | A4 vértice de área e rio | já feita na rodada anterior | `4336c16` |
 | A5 pincel | já feito na rodada anterior | `ac02fc3` |
-| A6 braço de delta na tela | pendente | |
+| A6 braço de delta na tela | feita | ver diário |
 | B1 camada de nomes | pendente | |
 | B2 elementos de cartografia | pendente | |
 | B3 exportação parcial | pendente | |
@@ -84,4 +84,19 @@ estava parado (derrubado pelo Claude Code por falta de memória na rodada anteri
   tem um "refazer" armado com o meu teste (`ilha-219`, desfeito).
 - Commit: (este registro vai no mesmo commit).
 
-### A6 · campo de braço de delta na tela (começando)
+### A6 · campo de braço de delta na tela (feita)
+
+- **Pronto**: seletor "braço de delta de" no painel do Rio, com "(não é braço)" como
+  padrão e a lista dos rios existentes; o `POST /api/rios` manda `ramo_de` dele. Volta
+  ao padrão depois de cada rio criado (o próximo não herda o rio-mãe sem querer).
+- **Decisão minha**: campo separado do "termina em" (o defeito 2 da revisão da
+  etapa 8 era justamente amarrar os dois). A atração do início do braço contra o
+  traçado do rio-mãe (5 km) continua não feita: não foi pedida aqui.
+- **Conferido** na página (servidor subido só para isso e derrubado depois): o
+  seletor existe com "(não é braço)", sem erro no console; e o "identificar ilha" da
+  A3 respondeu na tela a um clique disparado por evento ("ilha 191 · massa:
+  mere-principal, ilha-204 · a menos de 100 km da principal de: mere, syl").
+- **Depende do teste do usuário**: criar um braço de delta pela tela (não há rio
+  salvo para ser mãe; o servidor valida `ramo_de` desde a etapa 8).
+
+### B1 · camada de NOMES (começando)

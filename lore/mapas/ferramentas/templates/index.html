@@ -100,6 +100,10 @@
             </select>
             <input type="text" id="rio-destino" placeholder="id do destino" size="10">
           </label>
+          <label class="linha-relevo-automatico" title="Só para BRAÇO DE DELTA: o rio-mãe de onde este braço sai. Afluente não é braço de delta (afluente termina em rio, e fica em branco aqui).">
+            braço de delta de
+            <select id="rio-ramo-de"><option value="">(não é braço)</option></select>
+          </label>
           <button type="button" id="trava-camada-rios" class="botao-trava-camada">🔓 rios livres</button>
           <div id="rio-leitura" class="nota"></div>
           <div id="controle-estrada">
