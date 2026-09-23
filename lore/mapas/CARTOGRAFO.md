@@ -9,7 +9,152 @@ confirmado pelo usuário; o que é recomendação de IA fica marcado como tal.
 *(Atualizar esta seção antes de encerrar toda sessão de trabalho no mapa — é a
 primeira coisa que `/cartografo` mostra.)*
 
-- **Última atualização:** 2026-09-22 (décima primeira rodada). **Relevo automático
+- **Última atualização: 2026-09-23 à tarde (CONCLUÍDA e COMMITADA, sem push).** O
+  usuário respondeu as quatro decisões abertas da noite e mandou commitar a rodada da
+  manhã junto com esta.
+  - **Decisão 4 (modo de recorte)**: tundra passou a branco opaco (o branco dela é
+    neve). Conferido sobre a cor de fundo (`render/analise/modos-sobre-a-cor.png`):
+    rochedo, duna e pântano ficam em só traço (o branco deles é face iluminada ou cai
+    nas folhas; opaco, lê como neve).
+  - **Decisão 5 (borda da mancha)**: fica a franja rala, SEM mais ruído. Reavaliar
+    depois que o usuário pintar áreas de verdade: o que estraga a borda hoje é o
+    polígono de 5 lados do exemplo.
+  - **Decisão 7 (tamanho mínimo)**: MEDIDO, não mais a olho.
+    `cartografia/legibilidade.py` + `scripts/medir_legibilidade.py` gravam
+    `dados/tamanho-minimo-legivel.json`, e o renderizador usa como piso. Critério:
+    silhueta binarizada; dois tipos se confundem num tamanho quando a maior IoU entre
+    eles passa da IoU de um símbolo contra ele mesmo meio pixel ao lado (o erro de
+    arredondamento da âncora). Pisos: montanha e montanha nevada 34 px (confundem uma
+    com a outra), rochedo e selva 26, pântano/fortaleza/porto/ruína 24, cidade/duna/vila
+    22, colina/geleira/vegetação seca 20, conífera/tundra 18, folhosa 14, o resto 8 a
+    10. Bem abaixo dos 35 a 100 do olho: a medida olha só o contorno.
+  - **Decisão 8 (costa)**: âncora e as duas pontas da base em terra, corpo pode ir
+    sobre a água. Já era a regra; ganhou teste.
+  - **Como o usuário pinta e renderiza** (a partir daqui quem melhora o mapa é ele):
+    na ferramenta, escolher camada e valor na barra de cima, `A`, clicar o contorno e
+    duplo clique; depois `cd lore/mapas/ferramentas && .venv\Scripts\python.exe
+    scripts\renderizar_regiao.py mere --rapido` (4 s) ou sem `--rapido` (17 s).
+  - **235 testes verdes.**
+  - **Próximo passo:** o usuário pintar áreas de verdade e apagar os exemplos
+    (`exemplo-*`); reavaliar a borda da mancha (decisão 5) e a paleta em cima delas.
+    No código: edição de vértice (destravada pelo commit da etapa 9).
+- **Rodada da manhã de 2026-09-23 (commitada junto com a da tarde).**
+  - **Commitado nesta rodada, com ok do usuário**: `174614c`, a **etapa 9 (Estrada)**,
+    com os dois ESPEC. Destrava a edição de vértice.
+  - **Rios destravados**: `dados/camadas_travadas.json` voltou ao do commit (todas as
+    camadas destravadas). O log arquivado tem a operação que travou: `travar_camada` de
+    rios às 02:20, pela API.
+  - **Feito na manhã** (commitado à tarde):
+    1. **Cor de fundo por cobertura** (`cartografia/renderizador.py`,
+       `CORES_COBERTURA`): floresta temperada (206,213,168), boreal (188,201,166),
+       tropical (195,211,155), selva (170,190,138), deserto (243,229,172), pântano
+       (196,203,172), tundra (210,212,194), geleira (236,243,246); campo e relevo ficam
+       no papel (233,221,189); lago (150,184,204). Borda da cor = a da etapa 11 (12 km),
+       borrão de 3 km. O recheio dos símbolos "só traço" passou a ser a cor do chão
+       debaixo da âncora, e a mancha de símbolos é cortada pela mancha de cor.
+    2. **Modo rápido** (`scripts/renderizar_regiao.py --rapido`, 5 km/px): Mére em
+       **4,3 s** de parede. A alta resolução caiu de **202 s para 17 s**: o ruído fazia
+       o hash por pixel e na janela inteira para cada área (90% do tempo). A versão nova
+       dá os **mesmos bytes** (conferido na imagem real de Mére e por teste contra a
+       versão antiga copiada). Mexi em `cartografia/raster.py` (etapa 11, `8300d3d`) por
+       isso.
+    3. **Espelhamento medido**: `recorte.assimetria_de_luz` (tinta da metade direita
+       sobre a esquerda). Folhosa 1,53 e conífera 1,41, tão sombreadas quanto a montanha
+       (1,60): pararam de espelhar, junto com selva, tundra, vegetação seca e as
+       construções. Espelham só palmeira, árvore tropical, pântano e monstro marinho
+       (todos abaixo de 1,15). `dados/simbolos.json` regerado (só o campo `espelhavel`
+       mudou em 36 símbolos). Mexi em `cartografia/recorte.py` (`60fa358`).
+    4. **Densidade nova** (`TIPOS`, valores no comentário do código): montanha 0,65× na
+       beira a 1,35× a 120 km para dentro, ±15%; selva com raio 0,85 (era 0,55) e
+       mistura 60% selva, 25% árvore tropical, 15% palmeira; árvores ±25% e franja rala;
+       deserto ±35% e franja rala até 150 km. Mére: 1007 símbolos para 608.
+    5. **Estilos para comparar**: `noite2` (reproduz a imagem da noite byte a byte, com
+       o manifesto antigo), `cor`, `cor-densidade` (padrão).
+    6. `FOLHAS-A-REGENERAR.md`: a lista pedida.
+  - **Imagens**: `render/comparacao-mere.png` (noite 2, cor, cor + densidade, lado a
+    lado); `render/recorte-mere-cor-metade.png` e `recorte-mere-cor-densidade-metade.png`
+    (e as cheias sem `-metade`); prévias `render/recorte-*-cor-densidade-rapido.png` das 4
+    regiões. A imagem da noite 2 (`recorte-mere.png`) ficou intocada.
+  - **228 testes verdes.** Arquivos da rodada: `cartografia/raster.py`,
+    `renderizador.py`, `recorte.py`, `scripts/renderizar_regiao.py`,
+    `tests/test_raster.py`, `test_renderizador.py`, `test_simbolos.py`,
+    `dados/simbolos.json`, `FOLHAS-A-REGENERAR.md`, este documento.
+- **Atualização anterior: NOITE 2 (2026-09-23, trabalho autônomo, CONCLUÍDA).** O
+  registro completo, etapa a etapa, com o roteiro de teste da manhã, as imagens, as
+  decisões pendentes e o que só o teste do usuário cobre, está em
+  `RELATORIO-NOITE-2.md`. **Leia esse primeiro.**
+  - **Commits da noite, sem push**: `ed53eb2` as 9 folhas de símbolos em `icons/`,
+    renomeadas; `60fa358` o recorte da biblioteca (90 símbolos, `dados/simbolos.json`,
+    PNGs em `simbolos/` fora do git); `6081ba6` as tiras de redução e o mínimo legível
+    por tipo; `8300d3d` a **etapa 11** (rasterização com ruído de borda determinístico e
+    ancorado no mundo); `c09f4b5` o **primeiro renderizador** com os símbolos de verdade;
+    `b841341` a **etapa 12** no renderizador (lago vira água); `eb65ff4` o relatório.
+  - **Código novo** em `ferramentas/cartografia/` (recorte, redução, raster,
+    renderizador) e `ferramentas/scripts/` (`recortar_simbolos.py`,
+    `tiras_de_reducao.py`, `demo_borda.py`, `renderizar_regiao.py`). Nenhum deles é
+    importado pelo servidor. **213 testes, todos verdes.**
+  - **Imagens**: `render/recorte-mere-metade.png` (a principal), os outros
+    `render/recorte-*.png`, `render/analise/folha-de-contato.png`,
+    `render/analise/reducao/`, `render/analise/borda-ruido.png`.
+  - **Dados de exemplo, sem commit, para apagar**: 5 localidades `exemplo-*` e 7
+    áreas `exemplo-*` (montanha, deserto, selva e lago em Mére; floresta temperada em
+    Calin; coníferas em The Neck; geleira no White Wall). A pilha de desfazer foi limpa
+    no começo da noite (o log antigo foi guardado em
+    `dados/.operacoes/arquivado-2026-09-23-noite2/`), então ela tem só as 7 áreas.
+  - **Não feitas**: etapa 10 (depende do cache de identidade de ilha, proibido esta
+    noite) e edição de vértice (esbarra em `areas.js`/`rios.js` com a etapa 9 sem
+    commit).
+  - *(resolvido na rodada da manhã: rios destravados e etapa 9 commitada)*
+- **Próximo passo:** o usuário olhar as imagens e seguir o roteiro de teste do
+  `RELATORIO-NOITE-2.md` (Rio e Estrada na tela), responder as 9 decisões listadas lá,
+  e dar o ok para o commit da etapa 9.
+- **Última atualização antes da noite 2:** 2026-09-23 (décima terceira rodada). **Etapa 9, Ferramenta
+  de Estrada: FEITA, sem commit, esperando o teste do usuário junto com o Rio.**
+  - **Etapa 8 (Rio) commitada** na décima segunda rodada (22/09 às 21:12): `f9a8213`
+    o servidor, `53fca74` a tela, `3a6117c` o registro. Os blocos abaixo que dizem
+    "Rio sem commit" são anteriores a isso. O servidor da etapa 9 foi escrito logo
+    depois, e a sessão caiu com a queda de energia antes de atualizar esta seção.
+  - **As três recomendações do servidor foram decididas pelo Direcionamento**: via só
+    em terra aprovada como **limitação conhecida** (ponte, vau e balsa numa etapa
+    futura), `lugares` derivado da atração, e atração antes da checagem de terra (por
+    causa do antialiasing da costa). Registro nos dois ESPEC.
+  - **Pontas soltas acertadas**: o haversine tem uma fonte de cada lado,
+    `backend/geo.py` e `static/js/geo.js` (saiu de dentro de `regua.js`); a cópia de
+    `tests/test_haversine.py` foi apagada, e o teste roda o `geo.js` de verdade no
+    node contra o servidor em 8 pares, com controle negativo.
+  - **Tela da Estrada**: botão "+ estrada", **tecla `E`**, seletor estrada/trilha,
+    pane própria (z 455), seção ESTRADAS com "passa por: a → b", cadeado de camada,
+    `T`, desfazer e refazer. A atração aparece de dois jeitos: halo rosa permanente no
+    vértice que grudou (pane z 610, acima dos marcadores) e, logo depois de criar, linha
+    tracejada do clique até o lugar com a distância. Detalhe em `ESPEC-ferramenta.md`,
+    "Etapa 9".
+  - **Mexi em arquivo commitado da etapa 8**: `rios.js` (o `pm:create` agora exige a
+    caneta do Rio ativa, senão toda via ia também para `/api/rios`), `areas.js` e
+    `lugares.js` (seleção exclusiva entre as quatro ferramentas; antes, selecionar
+    área ou lugar deixava um rio selecionado e o `T` travava o rio), e o CSS (a tecla
+    `C` agora esconde também rios e vias, e o botão do Rio ganhou o destaque de ativo).
+  - **5 lugares de EXEMPLO criados pela API** (com `"exemplo": true` e uma `_nota`
+    para apagar depois), um em cada região que não é mãe de outra, nos pontos
+    principais de `massas.geojson`: `exemplo-mere` (cidade, 17,34 L 17,78 N),
+    `exemplo-syl` (vila, 6,16 O 14,48 N), `exemplo-calin` (fortaleza, 6,66 L 33,96 N),
+    `exemplo-the-neck` (vila, 25,44 O 52,71 N), `exemplo-white-wall` (marco,
+    22,74 O 65,34 N). **Waning não tem lugar próprio**: é o arquipélago-mãe de Mére,
+    Syl e Calin, e fica coberto por eles. Controle negativo na mesma sessão: um ponto
+    de oceano aberto mandado ao mesmo endpoint voltou 422. **Eles estão no log de
+    desfazer**: são as 5 últimas operações desfazíveis, então Ctrl+Z demais no teste
+    apaga os exemplos. **E o refazer está armado com o meu teste pela API** (cursor 27
+    de 32): apertar refazer ANTES de qualquer outra ação traz de volta as vias de teste
+    (`estrada-9001`, `trilha-9002`). A primeira gravação nova do usuário limpa essa
+    pilha.
+  - **Conferido pela API no servidor real**: via a 2,86 km de `exemplo-mere` gravou o
+    vértice exatamente na cidade, `lugares: ["exemplo-mere"]` e relatório com a
+    distância; trilha longe de tudo gravou `lugares: []` e relatório vazio; via na água
+    recusada com 422; travada, apagar recusado com 409; tudo desfeito depois (0 vias,
+    5 lugares).
+  - **NÃO conferido na tela**: a extensão do navegador não estava conectada nesta
+    rodada, então nada da tela foi exercitado por mim. Lista do que só o teste do
+    usuário cobre, no "Próximo passo".
+- **Rodada anterior (décima primeira), para referência:** 2026-09-22. **Relevo automático
   commitado**, o alinhamento das imagens do ChatGPT **regravado**, a conferência do
   git virou **registro em arquivo**, a medição de custo virou **bancada guardada**, e
   a **Ferramenta de Rio (etapa 8)** feita, sem commit.
@@ -451,14 +596,16 @@ primeira coisa que `/cartografo` mostra.)*
     corta, rotaciona e tem atração; escalar e dividir são pagos/inexistentes.
     Cortar e rotacionar existem mas ainda não foram usados pela ferramenta.
   - Nomear as massas de terra sem nome; decidir pertencimento das 9 ilhas `ilha-*`.
-- **Servidor: NO AR**, reiniciado nesta rodada (o HTML foi reestruturado e o
-  `interface.js` é arquivo novo). `http://127.0.0.1:8420/`. Para subir de novo,
-  se cair:
+- **Servidor: NO AR** em 2026-09-23 (décima terceira rodada), `http://127.0.0.1:8420/`,
+  subido por esta sessão: se a sessão fechar, ele cai junto. Para subir de novo:
   ```
   cd lore/mapas/ferramentas
   .venv\Scripts\python.exe -m uvicorn backend.main:app --host 127.0.0.1 --port 8420
   ```
-- **143 testes pytest, todos verdes** (`cd ferramentas &&
+  **Sem `--reload`**: nesta rodada o `--reload` recarregou uma vez e depois ficou
+  servindo o `main.py` antigo sem avisar (a rota nova respondia no formato velho).
+  Mudou código do servidor, derrube e suba de novo.
+- **172 testes pytest, todos verdes** (`cd ferramentas &&
   .venv/Scripts/python.exe -m pytest`).
 - **Instalação e código da etapa 1** — sem mudança desde a última atualização
   (commitados): `.venv` próprio, Leaflet 1.9.4 baixado pronto (sem npm/CDN),
@@ -477,21 +624,43 @@ primeira coisa que `/cartografo` mostra.)*
   `ferramentas/static/js/app.js`, `ferramentas/static/js/camadas-referencia.js`
   (criado), `ferramentas/templates/index.html`. Nada de `render/tiles/` nem
   `.venv/`.
-- **Próximo passo:** o usuário abrir `http://127.0.0.1:8420/` e testar a **Ferramenta
-  de Rio**: botão "+ rio" (ou tecla `I`), clicar o traçado da nascente para a foz,
-  duplo clique para terminar. O servidor recusa com faixa vermelha quando a nascente
-  cai na água, quando um trecho do meio passa por cima do mar (mesmo com os cliques em
-  terra) e quando a foz não chegou ao mar; aceita quando o último trecho termina na
-  água ou a menos de 2 km dela. Selecionar o rio, `T` trava, "apagar rio" apaga, e
-  desfazer volta. **Não commitado**, como pedido: fora do git estão `backend/rios.py`,
-  `tests/test_rios.py`, `static/js/rios.js`, `dados/rios.json`, `backend/main.py`,
-  `static/js/app.js`, `static/js/lugares.js`, `templates/index.html`, o
-  `CARTOGRAFO.md` e a seção nova do `ESPEC-ferramenta.md`.
-  Etapa seguinte da lista do ESPEC: a **9, Ferramenta de Estrada**, que é onde a
-  atração automática de 5 km finalmente vira código. Os outros candidatos
-  registrados: o **pincel de tamanho ajustável**, a **edição de vértice** de área e de
-  rio já salvos, e o **cache de identidade de ilha** (processamento pesado, com aviso
-  antes).
+- **Próximo passo:** o usuário abrir `http://127.0.0.1:8420/` e testar o **Rio e a
+  Estrada juntos**. **Nada desta rodada está commitado**, como pedido. Fora do git:
+  `backend/estradas.py`, `backend/geo.py`, `tests/test_estradas.py`,
+  `dados/estradas.json`, `static/js/estradas.js`, `static/js/geo.js` (novos); e
+  `backend/main.py`, `static/js/{app,areas,lugares,regua,rios}.js`,
+  `static/css/estilo.css`, `templates/index.html`, `tests/test_haversine.py`,
+  `dados/lugares.geojson` (os 5 exemplos), `CARTOGRAFO.md`, `ESPEC-dados.md`,
+  `ESPEC-ferramenta.md` (modificados).
+  **O que só o teste do usuário cobre, item a item** (nada da tela foi exercitado por
+  mim nesta rodada, porque nem a extensão do Chrome nem o `chrome-devtools-mcp`
+  conectaram):
+  0. A página abre: a seção ESTRADAS diz "nenhuma via ainda", os 5 lugares aparecem, e
+     o F12 não mostra erro. `node --check` só prova que os arquivos são JavaScript
+     válido; se a Estrada estourar ao iniciar, régua, atalhos e `T` caem junto.
+  1. Caminho feliz do Rio por clique (pendente desde a etapa 8).
+  2. Caminho feliz da Estrada por clique: `E`, clicar em cima de um lugar de exemplo
+     e terra adentro, duplo clique. Tem que aparecer a via, o halo rosa no lugar, a
+     linha tracejada com os km e o aviso "atração: ... grudaram".
+  3. Um desenho, UMA gravação: desenhar via não pode criar rio, e desenhar rio não
+     pode criar via (a separação dos dois `pm:create`). Sinal de erro: faixa vermelha
+     logo depois de um desenho que deu certo.
+  4. O clique em cima do marcador chega ao Geoman com a caneta da Estrada ligada (o
+     marcador fica sem clique enquanto ela está ligada).
+  5. O halo rosa aparece por cima do símbolo do lugar, e não escondido embaixo dele.
+  6. `T` com cada tipo de seleção (via, rio, área, lugar) trava o objeto certo.
+  7. A seção ESTRADAS mostra "passa por" na ordem, e o ⚠ ao arrastar um lugar que a
+     via usa.
+  8. Desfazer e refazer de via pelo botão e por Ctrl+Z/Y, e o cadeado da camada.
+  9. A tecla `C` escondendo rios e vias junto.
+  **Limite do teste com os exemplos**: há um lugar por ilha e a via não atravessa
+  água, então nenhuma via consegue passar por DOIS lugares, e a lista "passa por" com
+  mais de um nome não aparece. Para ver isso é preciso um segundo lugar na mesma ilha
+  (Mére é a maior); posso criar, se quiser.
+  Depois do teste: commit da etapa 9 (com o ok do usuário). Etapas seguintes
+  registradas: ponte, vau e balsa; o **pincel de tamanho ajustável**; a **edição de
+  vértice** de área, rio e via; e o **cache de identidade de ilha** (processamento
+  pesado, com aviso antes).
 
 ## Clone novo · o que a ferramenta precisa e o git não traz
 
