@@ -926,13 +926,18 @@ mudou a penalidade de obrigatória para opcional. **O bônus de ferimento do §1
   a Dificuldade da situação no momento. **Crítico não bloqueia a saída**: cai a "Consequência 2"
   do `FRENESI.md` §8 antigo, que prendia o Orc puro na fúria em Crítico. Com Temperança 4, sair
   vai de 95% em Dificuldade 5 para 50% em 10. Tabela completa no `FRENESI.md` §8.
+- **A janela da manutenção só corre fora da luta.** São (Força de Vontade máxima) Ticks sem
+  nenhuma ação física de combate: Tick em que o orc ataca, investe, sofre dano ou faz outra ação
+  física de combate não conta, e a contagem recomeça. Substitui o "sem iniciar ataque" do
+  `FRENESI.md` §7, que com Força de Vontade 4 ou 5 fechava a janela entre um ataque de 6 Ticks e o
+  seguinte e disparava o teste a cada golpe.
 
 **O `FRENESI.md` (raiz, ainda sem rastreio) foi atualizado com tudo isto em 23/09/2026:** o §6
 reescrito, o §8 (saída) reescrito, a justificativa do §10 corrigida, o §11 com a lista nova de pendências e a
 numeração interna consertada (§9/§10/§11). Cópia de antes da edição fora do repositório.
 
-**Ainda em aberto** (lista completa no `FRENESI.md` §11): a janela da manutenção contra o ataque de 6 Ticks; a
-ressaca em Crítico; Vigor 1 dando zero fúrias; a lista de ações físicas e os rótulos da régua de
+**Ainda em aberto** (lista completa no `FRENESI.md` §11): se fechar a janela encerra a fúria direto ou dispara o
+teste de manutenção; a ressaca em Crítico; Vigor 1 dando zero fúrias; a lista de ações físicas e os rótulos da régua de
 Virtude. Não implementado.
 
 ## Fechado em 22/09/2026 pela Executora-4: as sete armas novas e a tabela do capítulo gerada
