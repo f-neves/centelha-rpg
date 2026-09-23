@@ -83,6 +83,59 @@ primeira coisa que `/cartografo` mostra.)*
     área do mesmo valor que o traço toca (guarda a semente dela), recorta as de outro
     valor, cede às travadas; apagar tira de toda área livre da camada. Detalhe e as
     cinco decisões em `ESPEC-ferramenta.md`, "Pincel". **297 testes verdes.**
+  - **O QUE ESTÁ ACUMULADO ESPERANDO O TESTE DO USUÁRIO** (pedido desta rodada; várias
+    etapas se juntaram). Nada disto foi exercitado por clique de mouse de verdade. O
+    que eu consegui exercitar dispara eventos de dentro da página, e isso está dito
+    item a item nos ESPEC. **Abrir com Ctrl+F5**, porque o navegador guarda os `.js`
+    antigos.
+    - **Da tela, ferramentas antigas** (pendentes desde as etapas 8 e 9; o usuário não
+      relatou esse teste):
+      1. o caminho feliz do Rio por clique;
+      2. o caminho feliz da Estrada por clique: halo rosa, linha tracejada com os km,
+         aviso de atração, clique em cima do marcador chegando ao desenho;
+      3. um desenho, uma gravação, entre Rio e Estrada;
+      4. `T` com cada tipo de seleção;
+      5. a seção ESTRADAS com o "passa por" e o ⚠;
+      6. desfazer e refazer de via, e o cadeado;
+      7. a tecla `C` escondendo rios e vias.
+    - **Da tela, desta rodada**:
+      8. **Regiões**: criar uma, editar nome, tipo e pai, arrastar o nome no mapa,
+         "pôr rótulo", apagar (e a recusa ao apagar `mere`), trocar a região de uma
+         massa no seletor, "ver", e desfazer cada uma dessas;
+      9. **Vértices** (`V`): arrastar, criar e apagar vértice de uma área e ver a
+         vizinha da mesma camada ser recortada; `Esc` descartando; rio (não há
+         nenhum salvo, então ainda nunca foi aberto em edição);
+      10. **Pincel** (`P`): o tamanho do círculo, a fluidez do traço, espaço segurado
+          no meio, pintar colando numa área do mesmo valor, apagar, e o raio.
+    - **Das imagens** (`render/recorte-*-cor-densidade-rapido.png`, comparar com
+      `render/analise/pentagonos/`):
+      11. se a franja resolveu com contorno irregular, como eu avaliei;
+      12. relevo x cobertura no norte de Mére (coníferas por cima dos picos);
+      13. a geleira como papel de parede;
+      14. a colina, que quase some na prévia;
+      15. montanha x nevada com área de verdade (a decisão do usuário ficou para
+          quando houver área pintada).
+    - **Decisões minhas esperando o sim ou o não do usuário**:
+      16. piso x densidade: manter a contagem, consertar a palmeira na folha, bosque
+          como símbolo futuro, tundra fora do "poucos" ("Decisões em aberto");
+      17. relevo manda sobre cobertura, com a cobertura só em franja rala sob a
+          montanha (proposta, não implementada);
+      18. raio da geleira de 0,80 para ~1,6 (proposta, não implementada);
+      19. etapa 10: sem cadeado para regiões, apagar em uso recusado, rótulo novo no
+          centro da tela;
+      20. pincel: fundir com a área do mesmo valor tocada (e as outras quatro decisões
+          no ESPEC);
+      21. as 22 áreas `exemplo-*` e os 5 lugares de exemplo continuam fora do git,
+          para o usuário apagar quando pintar à mão.
+    - **Estado da pilha de desfazer**: 7 apagamentos e 22 criações de exemplo, e um
+      "refazer" armado (a pincelada de teste, desfeita). A primeira ação nova descarta
+      o refazer. Ctrl+Z em excesso volta aos exemplos pentágono.
+  - **Próximo passo**: o usuário testar a lista acima e responder as decisões 16 a 20.
+    Sem resposta, não começar etapa nova de ferramenta. No renderizador, a proposta 17
+    (relevo manda) é a que mais muda a imagem, e é a primeira a fazer se ele aprovar.
+  - **Commits desta rodada, sem push**: `37c7571` piso x densidade, `4dd2d20` área de
+    exemplo pela API, `e172ce4` Syl e avaliação, `6b1d9c3` regiões, `4336c16`
+    edição de vértice, `ac02fc3` pincel, e o deste registro.
 - **Rodada do fim da tarde de 2026-09-23 (CONCLUÍDA e COMMITADA, sem push).** Era a
   que deixava a próxima para o usuário pintar; ele pediu a rodada autônoma acima no
   lugar.
