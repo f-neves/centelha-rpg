@@ -299,11 +299,31 @@ def _colar_cortado(tela: Image.Image, im: Image.Image, x: int, y: int) -> None:
     tela.alpha_composite(im.crop((x0, y0, x1, y1)), (x + x0, y + y0))
 
 
+def mascara_de_lagos(areas: list[dict], janela: raster.Janela, terra: np.ndarray,
+                     km_por_grau: float) -> np.ndarray:
+    """Etapa 12 no mapa desenhado: toda área da camada `lago`, com a borda irregular da
+    etapa 11 (12 km, a mesma de qualquer área) e recortada pela costa (lago é água
+    DENTRO da terra; a parte que cair no mar já é mar)."""
+    lagos = np.zeros(terra.shape, dtype=bool)
+    for area in sorted(areas, key=lambda a: a["properties"]["id"]):
+        if area["properties"].get("camada") != "lago":
+            continue
+        m = raster.rasterizar(area["geometry"], int(area["properties"].get("semente_ruido") or 0),
+                              janela, km_por_grau, terra=terra)
+        lagos |= m > 0
+    return lagos
+
+
 def renderizar(areas: list[dict], janela: raster.Janela, terra: np.ndarray, bib: Biblioteca,
                km_por_grau: float) -> tuple[Image.Image, list[Colocacao]]:
     escala = janela.px_por_grau / 111.194927
+    # Lago vira água antes de tudo: o fundo o pinta da cor do mar com a margem
+    # desenhada (a mesma regra da costa), e símbolo nenhum apoia a base dentro dele.
+    terra = terra & ~mascara_de_lagos(areas, janela, terra, km_por_grau)
     colocacoes = []
     for area in sorted(areas, key=lambda a: a["properties"]["id"]):
+        if area["properties"].get("camada") == "lago":
+            continue
         mascara = raster.rasterizar(area["geometry"], int(area["properties"].get("semente_ruido") or 0),
                                     janela, km_por_grau, amplitude_km=AMPLITUDE_SIMBOLOS_KM,
                                     terra=terra, oitavas=OITAVAS_SIMBOLOS)

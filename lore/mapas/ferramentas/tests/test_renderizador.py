@@ -156,3 +156,49 @@ def test_todo_tipo_usado_tem_piso_legivel_e_mistura_valida():
         for tipo, peso in pares:
             assert tipo in renderizador.TIPOS and peso > 0
     assert math.isclose(sum(p for _, p in renderizador.MISTURAS[("cobertura", "deserto")]), 1.0)
+
+
+# --- etapa 12: lago no mapa desenhado -----------------------------------------
+
+def _lago(anel, semente=9):
+    return {"type": "Feature", "geometry": {"type": "Polygon", "coordinates": [anel + [anel[0]]]},
+            "properties": {"id": "lago-1", "camada": "lago", "valor": "lago", "semente_ruido": semente}}
+
+
+LAGO = _lago([[2.5, 2.5], [3.5, 2.5], [3.5, 3.5], [2.5, 3.5]])
+
+
+def test_lago_vira_agua_e_nao_recebe_simbolo(tmp_path):
+    bib = _biblioteca(tmp_path)
+    terra = np.ones((JANELA.altura, JANELA.largura), dtype=bool)
+    _, colocacoes = renderizador.renderizar([AREA, LAGO], JANELA, terra, bib, KM_POR_GRAU)
+    cx, cy = JANELA.para_pixel(3, 3)
+    lagos = renderizador.mascara_de_lagos([LAGO], JANELA, terra, KM_POR_GRAU)
+    assert lagos[int(cy), int(cx)]
+    for c in colocacoes:
+        assert not lagos[int(c.y), int(c.x)], "âncora dentro do lago"
+
+
+def test_sem_o_lago_o_miolo_tem_simbolo(tmp_path):
+    """Controle negativo do teste de cima: sem o lago, o mesmo miolo recebe âncora.
+    Senão 'nenhuma âncora no lago' poderia ser só uma área vazia ali."""
+    bib = _biblioteca(tmp_path)
+    terra = np.ones((JANELA.altura, JANELA.largura), dtype=bool)
+    lagos = renderizador.mascara_de_lagos([LAGO], JANELA, terra, KM_POR_GRAU)
+    _, colocacoes = renderizador.renderizar([AREA], JANELA, terra, bib, KM_POR_GRAU)
+    assert any(lagos[int(c.y), int(c.x)] for c in colocacoes)
+
+
+def test_lago_sem_simbolo_por_cima_fica_da_cor_da_agua(tmp_path):
+    bib = _biblioteca(tmp_path)
+    terra = np.ones((JANELA.altura, JANELA.largura), dtype=bool)
+    img, _ = renderizador.renderizar([LAGO], JANELA, terra, bib, KM_POR_GRAU)
+    cx, cy = JANELA.para_pixel(3, 3)
+    assert tuple(np.asarray(img)[int(cy), int(cx)]) == renderizador.COR_MAR
+    fora_x, fora_y = JANELA.para_pixel(0.5, 0.5)
+    assert tuple(np.asarray(img)[int(fora_y), int(fora_x)]) == renderizador.COR_TERRA
+
+
+def test_lago_no_mar_nao_muda_nada():
+    terra = np.zeros((JANELA.altura, JANELA.largura), dtype=bool)
+    assert not renderizador.mascara_de_lagos([LAGO], JANELA, terra, KM_POR_GRAU).any()
