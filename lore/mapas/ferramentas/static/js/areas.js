@@ -280,6 +280,11 @@ function iniciarFerramentaDeArea(mapa, areasIniciais, travasIniciais, coberturaA
   registrarFerramenta({ nome: "area", tecla: "a", ativar, desativar, estaAtiva: () => desenhando });
 
   mapa.on("pm:create", async (evento) => {
+    // O evento é do MAPA, então ele chega aqui para qualquer forma desenhada,
+    // inclusive a linha da ferramenta de Rio. Sem este filtro, desenhar um rio
+    // mandaria a LineString também para /api/areas, que a recusaria com 422 e
+    // pintaria a faixa vermelha por cima do rio recém-salvo.
+    if (evento.shape !== "Polygon") return;
     // O polígono que o Geoman acabou de criar é DESCARTADO: quem manda é o que
     // o servidor devolve depois do recorte (a forma gravada pode ser menor que a
     // desenhada, quando cede a uma área travada). Sem isso, a tela mostraria uma

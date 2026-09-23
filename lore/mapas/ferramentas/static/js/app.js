@@ -250,6 +250,10 @@
     mapa, AREAS_INICIAL, TRAVAS_INICIAL, COBERTURA_AUTOMATICA_INICIAL
   );
 
+  // Ferramenta de Rio (etapa 8, static/js/rios.js) -- desenho pelo Geoman em modo
+  // Line, validação por segmento contra a costa e gravação nossas.
+  const ferramentaDeRio = iniciarFerramentaDeRio(mapa, RIOS_INICIAL, TRAVAS_INICIAL);
+
   // Régua + grade de lat/lon (etapa 4 / B3, static/js/regua.js).
   iniciarRegua(mapa, PARAMETROS_LEAFLET.raio_km);
   iniciarGradeLatLon(mapa, limites);
@@ -266,6 +270,10 @@
     // seleção de área é a mais recente quando existe (clicar num polígono não
     // desmarca o lugar selecionado antes, e o contrário também não).
     alternarTravaDoSelecionado: async () => {
+      if (ferramentaDeRio.temSelecao()) {
+        const tratou = await ferramentaDeRio.alternarTravaDoSelecionado();
+        if (tratou) return;
+      }
       if (ferramentaDeArea.temSelecao()) {
         const tratou = await ferramentaDeArea.alternarTravaDoSelecionado();
         if (tratou) return;

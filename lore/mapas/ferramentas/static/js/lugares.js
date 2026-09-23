@@ -499,6 +499,7 @@ function iniciarFerramentaDeLugar(mapa, lugaresIniciais, travasIniciais) {
     if (typeof recarregarCamadasReferencia === "function") recarregarCamadasReferencia();
     // Idem para as áreas (B4): a operação desfeita pode ter sido um recorte.
     if (typeof window.recarregarAreas === "function") window.recarregarAreas();
+    if (typeof window.recarregarRios === "function") window.recarregarRios();
     atualizarBotoesPilha();
   }
   botaoDesfazer.addEventListener("click", () => desfazerOuRefazer("/api/desfazer"));

@@ -74,6 +74,21 @@
             <input type="checkbox" id="mostrar-relevo-automatico"> relevo automático (planície)
           </label>
           <div id="area-leitura" class="nota"></div>
+          <div id="controle-rio">
+            <button type="button" id="rio-desenhar" title="Desenha o traçado de um rio, da nascente para a foz. Duplo clique termina.">+ rio <kbd>I</kbd></button>
+            <button type="button" id="rio-apagar" disabled title="Apaga o rio selecionado">apagar rio</button>
+          </div>
+          <label class="linha-relevo-automatico" title="Onde o rio termina. O servidor confere: no mar vale a tolerância de 2 km da costa; em lago ou rio, o destino tem que existir.">
+            termina em
+            <select id="rio-termina-em">
+              <option value="mar">mar</option>
+              <option value="lago">lago</option>
+              <option value="rio">rio</option>
+            </select>
+            <input type="text" id="rio-destino" placeholder="id do destino" size="10">
+          </label>
+          <button type="button" id="trava-camada-rios" class="botao-trava-camada">🔓 rios livres</button>
+          <div id="rio-leitura" class="nota"></div>
           <div id="controle-desfazer">
             <button type="button" id="botao-desfazer" disabled>desfazer</button>
             <button type="button" id="botao-refazer" disabled>refazer</button>
@@ -182,6 +197,7 @@
         <tr><td><kbd>espaço</kbd> (segurado)</td><td>arrasta o mapa sem sair da ferramenta</td></tr>
         <tr><td><kbd>C</kbd> (segurado)</td><td>esconde tudo e mostra só a costa</td></tr>
         <tr><td><kbd>A</kbd></td><td>ferramenta de Área (liga/desliga)</td></tr>
+        <tr><td><kbd>I</kbd></td><td>ferramenta de Rio (liga/desliga)</td></tr>
         <tr><td><kbd>T</kbd></td><td>trava/destrava o objeto selecionado, área ou lugar (travado não se move nem se apaga)</td></tr>
         <tr><td><kbd>D</kbd></td><td>troca o tema claro/escuro (a escolha fica lembrada)</td></tr>
         <tr><td><kbd>[</kbd> / <kbd>]</kbd></td><td>opacidade da camada de referência ativa</td></tr>
@@ -209,6 +225,8 @@
     const LUGARES_INICIAL = /*__LUGARES__*/;
     // Injetado a partir de dados/camadas_travadas.json (backend/travas.py).
     const TRAVAS_INICIAL = /*__TRAVAS__*/;
+    // Injetado a partir de dados/rios.json (backend/rios.py).
+    const RIOS_INICIAL = /*__RIOS__*/;
     // Injetado a partir de dados/areas-pintadas.geojson (backend/areas.py).
     const AREAS_INICIAL = /*__AREAS__*/;
     // CALCULADA pelo servidor a cada pedido (backend/cobertura_automatica.py), nunca
@@ -222,6 +240,7 @@
   <script src="/static/js/camadas-referencia.js"></script>
   <script src="/static/js/lugares.js"></script>
   <script src="/static/js/areas.js"></script>
+  <script src="/static/js/rios.js"></script>
   <script src="/static/js/regua.js"></script>
   <script src="/static/js/app.js"></script>
 </body>
