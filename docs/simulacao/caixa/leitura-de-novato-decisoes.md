@@ -831,6 +831,8 @@ usa (`⌊soma÷2⌋d6, +2 fixo se ímpar`), sem somar nada. Ou seja:
 | 5 | 2d6+2 |
 | 6 | 3d6 |
 
+*Substituído em 23/09/2026 (§16): a régua do teste de Virtude é a PRÓPRIA, de dois em dois (3, 5,
+7, 9, 11, 13), do `FRENESI.md` §2, e não a travada. O texto abaixo fica como registro.*
 Compara contra a mesma tabela de Dificuldade de sempre (5/10/15/20/25, `acoes-e-sistema.md:19-24`),
 sucesso = total maior que a Dificuldade. Zero mecanismo novo, só um uso novo da função que já
 existe. Os números batem com a régua de intensidade de personalidade que o humano descreveu (1
@@ -943,6 +945,11 @@ mudou a penalidade de obrigatória para opcional. **O bônus de ferimento do §1
 - **O teto de fúrias fica como está: metade do Vigor, arredondado para baixo, sem piso.** O orc
   médio começa com Vigor 2 (uma fúria); o de Vigor 1 não entra em fúria, e é intencional por
   enquanto. Pode ser revisto depois.
+- **O teste de Virtude fora do Frenesi usa a régua PRÓPRIA de dois em dois: 3, 5, 7, 9, 11, 13**
+  (`FRENESI.md` §2), e não a travada 5/10/15/20/25 da §14. Na travada só a 5 e a 10 servem (a 15
+  passa Virtude 6 a 5%, a 20 e a 25 nunca). A §14 e `aparencia-virtudes-vontade.md` precisam dizer
+  que o teste de Virtude tem régua própria. O Frenesi fica com a escala situacional própria (4 a
+  acima de 10), que cai na mesma faixa de números.
 
 **O `FRENESI.md` (raiz, ainda sem rastreio) foi atualizado com tudo isto em 23/09/2026:** o §6
 reescrito, o §8 (saída) reescrito, a justificativa do §10 corrigida, o §11 com a lista nova de pendências e a
