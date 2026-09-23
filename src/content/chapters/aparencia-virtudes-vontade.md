@@ -68,7 +68,7 @@ As Virtudes não são só interpretação, elas têm peso mecânico em três fre
 
 ### O teste de Virtude
 
-Quando a pressão é sobre a alma (o medo que manda correr, a provocação que pede resposta, a tentação que agrada, a dor que pede para desistir), role a Virtude que resiste a ela **sem somar Atributo nenhum**. O valor da Virtude entra na mesma conversão de toda soma do jogo, como se já fosse a soma: metade em dados, e +2 se for ímpar.
+Quando a pressão é sobre a alma (o medo que manda correr, a provocação que pede resposta, a tentação que agrada, o desânimo que pede para desistir), role a Virtude que resiste a ela **sem somar Atributo nenhum**. O valor da Virtude entra na mesma conversão de toda soma do jogo, como se já fosse a soma: metade em dados, e +2 se for ímpar.
 
 | Virtude | Parada |
 |:---:|---|
