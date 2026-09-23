@@ -917,10 +917,21 @@ mudou a penalidade de obrigatória para opcional. **O bônus de ferimento do §1
   | 10 | 100 | 100 | 100 | 92 | 72 | 50 |
   | 12 | 100 | 100 | 100 | 100 | 92 | 74 |
 
-**Ainda em aberto:** a Habilidade da provocação por Influência, o efeito do gasto de Força de
-Vontade para entrar (o `FRENESI.md` §6 diz que ela "garante o resultado", o §15 dizia +2), a janela da manutenção contra o ataque de 6
-Ticks, a ressaca em Crítico, Vigor 1 dando zero fúrias, os três itens do `FRENESI.md` §11 e a
-numeração interna dele. Não implementado.
+- **Gastar 1 ponto de Força de Vontade tira 1d6 da parada** de quem quer entrar. Substitui o
+  "garante o resultado" do `FRENESI.md` §6 e o +2 do §15. Com Temperança 4 em Dificuldade 5, a
+  entrada vai de 28% para 83%.
+
+**O `FRENESI.md` (raiz, ainda sem rastreio) foi atualizado com tudo isto em 23/09/2026:** o §6
+reescrito, uma nota "A REVER" no §8 (a saída em Crítico foi escrita para a penalidade
+obrigatória), a justificativa do §10 corrigida, o §11 com a lista nova de pendências e a
+numeração interna consertada (§9/§10/§11). Cópia de antes da edição fora do repositório.
+
+**Ainda em aberto** (lista completa no `FRENESI.md` §11): a Habilidade da provocação por
+Influência; se o piso de 1d6 vale quando o próprio orc tira dados para falhar (com o piso, a Força
+de Vontade não faz nada para Temperança 2 e 3); se dá para gastar mais de 1 ponto no mesmo teste;
+a saída em Crítico e a Força de Vontade na saída; a janela da manutenção contra o ataque de 6
+Ticks; a ressaca em Crítico; Vigor 1 dando zero fúrias; a lista de ações físicas e os rótulos da
+régua de Virtude. Não implementado.
 
 ## Fechado em 22/09/2026 pela Executora-4: as sete armas novas e a tabela do capítulo gerada
 
