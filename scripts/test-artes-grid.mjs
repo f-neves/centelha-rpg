@@ -803,6 +803,11 @@ eq(M.EFEITOS.filter((e) => e.acaoLivre).length, 1, 'só um Efeito é de ação l
     for (const k in d) if (+k + (soma % 2 ? 2 : 0) > dif) p += d[k];
     return Math.round(p * 100);
   };
+  // Quem decide se aguentou é a função, contra a difParado e não a difMetade:
+  // na borda (5 e 10), 6 e 9 aguentam, 5 não. Com a difMetade, 6 e 9 cairiam.
+  const borda = M.desvioDaArea(1);
+  eq([5, 6, 9].map((t) => M.aguentouFicarParado(t, borda)).join(' '), 'false true true',
+    'ficar parado na borda: 5 não aguenta, 6 e 9 aguentam (contra 5, e não contra 10)');
   const bravura = (v, m) => passa(M.opcoesDeFicarParado({ virtudes: { valor: v } })[0].soma, M.desvioDaArea(m).difParado);
   eq(`${bravura(4, 1)} ${bravura(6, 1)} ${bravura(4, 2)} ${bravura(6, 3)}`, '72 95 28 50',
     'ficar parado: Bravura 4 na borda 72%, Bravura 6 na borda 95%, Bravura 4 no meio 28%, Bravura 6 no fundo 50%');

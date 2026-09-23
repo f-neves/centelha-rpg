@@ -14,7 +14,7 @@ import {
   raioEmMetros, danoNoAlvo, rolar,
   turnosRestantes, venceu, jaMordido, rodadaDoTick, dentroDoEfeito, curaDoEfeito,
   curaPrecisaNivelArte,
-  metrosParaSair, metrosParaSairDosHexes, desvioDaArea, desEsqDaDefesa, opcoesDeFicarParado,
+  metrosParaSair, metrosParaSairDosHexes, desvioDaArea, desEsqDaDefesa, opcoesDeFicarParado, aguentouFicarParado,
   rotuloDuracao, TICKS_POR_TURNO, LARGURA_LINHA, montando,
   A_SAIR, deveSair, planoDaSaida, SEM_NIVEL_ARTE,
   type EfeitoAtivo, type Forma, type Figura, type Encaixe, type Desvio,
@@ -1781,7 +1781,7 @@ async function oferecerSaida(ctx: CtxGrid, ef: EfeitoAtivo, alvo: any): Promise<
   if (escolha.startsWith('parado:')) {
     const c = coragem.find((x) => x.chave === escolha.slice(7))!;
     const r = rolarPool(c.soma);
-    if (r.total > d.difParado) {
+    if (aguentouFicarParado(r.total, d)) {
       await ctx.logar(alvo, `${alvo.nome} ficou parado em ${ef.nome} e aguentou · ${c.rotulo} ${r.nota} vs ${d.difParado}`
         + ' · sofre o dano inteiro, sem gastar Tick', { acao: null });
       return 1;

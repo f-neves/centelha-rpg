@@ -1857,6 +1857,16 @@ export function desvioDaArea(metrosCrus: number): Desvio {
 }
 
 /**
+ * Se quem ficou parado aguentou: o total rolado passa da `difParado`.
+ *
+ * Mora aqui, e não na caixa, porque escolher entre `difMetade` e `difParado` é
+ * a decisão da regra, e a caixa só coleta e rola.
+ */
+export function aguentouFicarParado(total: number, d: Desvio): boolean {
+  return total > d.difParado;
+}
+
+/**
  * As duas Virtudes de quem escolhe ficar parado dentro da área.
  *
  * É teste de Virtude (capítulo III): a Virtude SOZINHA, sem Atributo, pela
