@@ -865,6 +865,33 @@ Autocontrole e Vigor+Resistência), o relógio que dispara esse teste, e a penal
 ao sair (moeda, tamanho e duração escalando com quanto tempo o personagem ficou em fúria). Quando
 essa conversa fechar, as decisões voltam pra cá antes de ir pra Executora.
 
+## 16 · Frenesi, quando o teste é forçado e a penalidade opcional, decidido em 23/09/2026
+
+**A discussão externa voltou como `FRENESI.md`** (raiz, sem rastreio), que modela o contrário do
+§15: entrar em fúria é FALHAR no teste de Temperança, e a penalidade de ferimento entra com o sinal
+normal, diminuindo a parada de quem tenta se segurar. O humano confirmou esse modelo nesta sessão, e
+mudou a penalidade de obrigatória para opcional. **O bônus de ferimento do §15 fica substituído.**
+
+- **A penalidade de ferimento é opcional no teste de Frenesi.** Ela entra só se o personagem quiser
+  (para facilitar a entrada). Quem quer resistir rola a Temperança sem ela, e por isso um orc em
+  Crítico ainda tem chance de se segurar. Consequência: a "entrada automática em Crítico" do
+  `FRENESI.md` §6 deixa de existir, e as colunas Machucado/Grave/Crítico das tabelas de lá valem só
+  para quem escolheu entrar.
+- **O teste só é forçado em dois casos.** Fora deles, o personagem só rola se quiser entrar. A
+  provocação de cotidiano (Trivial 3, Leve 5 no `FRENESI.md` §6) deixa de forçar teste.
+  - **Dano grande: um único golpe que tire 20% ou mais da Vida máxima, arredondado para cima**
+    (orc de 40 PV: 8 de dano). O dano é o líquido, depois da Absorção. Pode subir para 25% se em
+    mesa parecer pouco. Medido antes de decidir com `scripts/dano-por-tipo.mjs` (dano médio por
+    golpe que acerta): Montante/Machado Pesado 14 sem armadura, 8 contra malha, 6 contra placa.
+  - **Provocação ou fúria por algo muito importante para o personagem.** Subjetivo, decide o
+    mestre, pela história e pelas relações pessoais do personagem. Sem campo na ficha.
+- **Dano acumulado não dispara teste**, de propósito: o Frenesi é pela pancada, não pelo desgaste.
+  Dez golpes pequenos levam o orc a Crítico sem nenhum teste.
+
+**Ainda em aberto:** a Dificuldade do teste forçado, a janela da manutenção contra o ataque de 6
+Ticks, a ressaca em Crítico, Vigor 1 dando zero fúrias, os três itens do `FRENESI.md` §11 e a
+numeração interna dele. Não implementado.
+
 ## Fechado em 22/09/2026 pela Executora-4: as sete armas novas e a tabela do capítulo gerada
 
 Dois commits, os dois últimos que faltavam do catálogo de itens desde `a492010`.
