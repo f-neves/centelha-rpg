@@ -879,7 +879,7 @@ mudou a penalidade de obrigatória para opcional. **O bônus de ferimento do §1
   §4f não vale aqui. Quem quer resistir não é obrigado a usá-la e, mesmo em Grave ou Crítico, rola
   a parada original de Temperança.
 - **Gastar 1 ponto de Força de Vontade soma OU tira 1d6 da parada**, conforme o personagem queira
-  resistir ou ceder. Substitui o "garante o resultado" do `FRENESI.md` §6 e o +2 do §15. Com
+  resistir ou ceder, **no máximo um ponto por teste**. Substitui o "garante o resultado" do `FRENESI.md` §6 e o +2 do §15. Com
   Temperança 4 em Dificuldade 5, a chance de entrar vai de 28% (limpo) para 83% (cedendo) ou 5%
   (resistindo).
 - **O teste só é forçado em dois casos.** Fora deles, o personagem só rola se quiser entrar. A
@@ -926,7 +926,7 @@ obrigatória), a justificativa do §10 corrigida, o §11 com a lista nova de pen
 numeração interna consertada (§9/§10/§11). Cópia de antes da edição fora do repositório.
 
 **Ainda em aberto** (lista completa no `FRENESI.md` §11): a Habilidade da provocação por
-Influência; se dá para gastar mais de 1 ponto de Força de Vontade no mesmo teste; a saída em
+Influência; a saída em
 Crítico e a Força de Vontade na saída; a janela da manutenção contra o ataque de 6 Ticks; a
 ressaca em Crítico; Vigor 1 dando zero fúrias; a lista de ações físicas e os rótulos da régua de
 Virtude. Não implementado.
