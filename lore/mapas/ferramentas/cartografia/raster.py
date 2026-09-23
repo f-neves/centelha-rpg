@@ -98,14 +98,14 @@ def _hash_uniforme(semente: int, i: np.ndarray, j: np.ndarray, oitava: int) -> n
     return (x >> np.uint64(11)).astype(np.float64) / float(1 << 53)
 
 
-def ruido(janela: Janela, semente: int, km_por_grau: float) -> np.ndarray:
+def ruido(janela: Janela, semente: int, km_por_grau: float, oitavas=OITAVAS) -> np.ndarray:
     """Ruído em [-0,5, 0,5] (aproximadamente), por pixel da janela, ancorado no mundo."""
     km_px = janela.km_por_px(km_por_grau)
     # coordenada do CENTRO de cada pixel, em km a partir da origem da projeção
     xs_km = (janela.oeste * km_por_grau) + (np.arange(janela.largura) + 0.5) * km_px
     ys_km = (-janela.norte * km_por_grau) + (np.arange(janela.altura) + 0.5) * km_px
     total = np.zeros((janela.altura, janela.largura), dtype=np.float64)
-    for oitava, (passo, peso) in enumerate(OITAVAS):
+    for oitava, (passo, peso) in enumerate(oitavas):
         gx, gy = xs_km / passo, ys_km / passo
         i0, j0 = np.floor(gx).astype(np.int64), np.floor(gy).astype(np.int64)
         fx, fy = gx - i0, gy - j0
@@ -122,7 +122,8 @@ def ruido(janela: Janela, semente: int, km_por_grau: float) -> np.ndarray:
 
 
 def rasterizar(geometria: dict, semente: int, janela: Janela, km_por_grau: float,
-               amplitude_km: float = AMPLITUDE_KM, terra: np.ndarray | None = None) -> np.ndarray:
+               amplitude_km: float = AMPLITUDE_KM, terra: np.ndarray | None = None,
+               oitavas=OITAVAS) -> np.ndarray:
     """Máscara 0/255 da área com a borda irregular. `terra` (opcional, mesma forma da
     janela, verdadeiro = terra) recorta pela costa oficial: correção 11, o dado é cru
     e quem some é só a imagem."""
@@ -141,7 +142,7 @@ def rasterizar(geometria: dict, semente: int, janela: Janela, km_por_grau: float
         # A rampa: um borrão de meia amplitude dá uma transição de ~1 amplitude inteira.
         rampa = np.asarray(Image.fromarray(reta).filter(ImageFilter.GaussianBlur(raio_px / 2)),
                            dtype=np.float64) / 255.0
-        cheia = ((rampa + 0.9 * ruido(larga, semente, km_por_grau)) > 0.5)
+        cheia = ((rampa + 0.9 * ruido(larga, semente, km_por_grau, oitavas)) > 0.5)
         saida = cheia[folga_px: folga_px + janela.altura, folga_px: folga_px + janela.largura]
         saida = saida.astype(np.uint8) * 255
     if terra is not None:
