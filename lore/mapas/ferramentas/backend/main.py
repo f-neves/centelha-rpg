@@ -106,6 +106,10 @@ class AtribuicaoMassa(BaseModel):
     regiao: str | None = None
 
 
+class NovaGeometria(BaseModel):
+    geometria: dict
+
+
 class NovoRio(BaseModel):
     id: str
     geometria: dict
@@ -451,6 +455,21 @@ def apagar_rio(id_rio: str) -> JSONResponse:
     return JSONResponse(rios.carregar())
 
 
+@app.put("/api/rios/{id_rio}/geometria")
+def editar_rio(id_rio: str, nova: NovaGeometria) -> JSONResponse:
+    """Devolve `{"rios": coleção, "dependentes": [...]}`: os afluentes e braços de
+    delta que apontam para este rio, para a tela avisar."""
+    try:
+        _, dependentes = rios.editar_geometria(id_rio, nova.geometria)
+    except KeyError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except travas.Travado as e:
+        raise HTTPException(status_code=409, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
+    return JSONResponse({"rios": rios.carregar(), "dependentes": dependentes})
+
+
 @app.post("/api/rios/{id_rio}/trava")
 def travar_rio(id_rio: str, mudanca: MudancaTrava) -> JSONResponse:
     try:
@@ -497,6 +516,19 @@ def apagar_area(id_area: str) -> JSONResponse:
         raise HTTPException(status_code=404, detail=str(e))
     except travas.Travado as e:
         raise HTTPException(status_code=409, detail=str(e))
+    return JSONResponse(areas.carregar())
+
+
+@app.put("/api/areas/{id_area}/geometria")
+def editar_area(id_area: str, nova: NovaGeometria) -> JSONResponse:
+    try:
+        areas.editar_geometria(id_area, nova.geometria)
+    except KeyError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except travas.Travado as e:
+        raise HTTPException(status_code=409, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
     return JSONResponse(areas.carregar())
 
 

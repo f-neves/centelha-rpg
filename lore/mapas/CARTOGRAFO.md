@@ -73,6 +73,12 @@ primeira coisa que `/cartografo` mostra.)*
     quando o cache for liberado. Detalhe em `ESPEC-ferramenta.md`, "Etapa 10 sem o
     cache". 19 testes; no navegador só leitura (carrega, lista, rótulos). **O
     navegador guarda o `app.js` antigo: abrir com Ctrl+F5.**
+  - **Etapa E · edição de vértice de área e de rio (feita)**: selecionar, `V` (ou o
+    botão "vértices"), arrastar, `Enter` salva e `Esc` descarta. A área recorta as
+    vizinhas pela mesma regra da criação; o rio passa pela validação inteira e a tela
+    lista afluentes e braços de delta a conferir. Detalhe em `ESPEC-ferramenta.md`.
+    **A pilha de desfazer ficou com um "refazer" armado** (a minha gravação de teste,
+    desfeita): a primeira ação nova do usuário o descarta.
 - **Rodada do fim da tarde de 2026-09-23 (CONCLUÍDA e COMMITADA, sem push).** Era a
   que deixava a próxima para o usuário pintar; ele pediu a rodada autônoma acima no
   lugar.

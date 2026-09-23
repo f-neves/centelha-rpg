@@ -67,6 +67,7 @@
           <button type="button" id="lugar-adicionar">+ lugar <kbd>L</kbd></button>
           <div id="controle-area">
             <button type="button" id="area-desenhar" title="Desenha um polígono na camada e no valor escolhidos na barra de cima. Duplo clique fecha a forma.">+ área <kbd>A</kbd></button>
+            <button type="button" id="area-editar" disabled title="Edita os vértices da área selecionada: arraste o vértice, clique no meio de um lado para criar, clique direito para apagar. Enter salva, Esc descarta.">vértices <kbd>V</kbd></button>
             <button type="button" id="area-apagar" disabled title="Apaga a área selecionada">apagar área</button>
           </div>
           <button type="button" id="trava-camada-areas" class="botao-trava-camada">🔓 relevo livre</button>
@@ -76,6 +77,7 @@
           <div id="area-leitura" class="nota"></div>
           <div id="controle-rio">
             <button type="button" id="rio-desenhar" title="Desenha o traçado de um rio, da nascente para a foz. Duplo clique termina.">+ rio <kbd>I</kbd></button>
+            <button type="button" id="rio-editar" disabled title="Edita os vértices do rio selecionado. Enter salva (o servidor valida o traçado inteiro de novo), Esc descarta.">vértices <kbd>V</kbd></button>
             <button type="button" id="rio-apagar" disabled title="Apaga o rio selecionado">apagar rio</button>
           </div>
           <label class="linha-relevo-automatico" title="Onde o rio termina. O servidor confere: no mar vale a tolerância de 2 km da costa; em lago ou rio, o destino tem que existir.">
@@ -247,6 +249,7 @@
         <tr><td><kbd>A</kbd></td><td>ferramenta de Área (liga/desliga)</td></tr>
         <tr><td><kbd>I</kbd></td><td>ferramenta de Rio (liga/desliga)</td></tr>
         <tr><td><kbd>E</kbd></td><td>ferramenta de Estrada (liga/desliga)</td></tr>
+        <tr><td><kbd>V</kbd></td><td>edita os vértices da área ou do rio selecionado (Enter salva, Esc descarta)</td></tr>
         <tr><td><kbd>T</kbd></td><td>trava/destrava o objeto selecionado, via, rio, área ou lugar (travado não se move nem se apaga)</td></tr>
         <tr><td><kbd>D</kbd></td><td>troca o tema claro/escuro (a escolha fica lembrada)</td></tr>
         <tr><td><kbd>[</kbd> / <kbd>]</kbd></td><td>opacidade da camada de referência ativa</td></tr>
@@ -289,6 +292,7 @@
   <script src="/static/js/terra-ou-mar.js"></script>
   <script src="/static/js/minimapa.js"></script>
   <script src="/static/js/camadas-referencia.js"></script>
+  <script src="/static/js/edicao-vertice.js"></script>
   <script src="/static/js/lugares.js"></script>
   <script src="/static/js/areas.js"></script>
   <script src="/static/js/rios.js"></script>

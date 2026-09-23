@@ -38,6 +38,7 @@ function iniciarFerramentaDeRio(mapa, riosIniciais, travasIniciais) {
   const campoDestino = document.getElementById("rio-destino");
   const botaoDesenhar = document.getElementById("rio-desenhar");
   const botaoApagar = document.getElementById("rio-apagar");
+  const botaoEditar = document.getElementById("rio-editar");
   const botaoTravaCamada = document.getElementById("trava-camada-rios");
   const leitura = document.getElementById("rio-leitura");
 
@@ -124,6 +125,7 @@ function iniciarFerramentaDeRio(mapa, riosIniciais, travasIniciais) {
   function atualizarLeitura() {
     const feature = featuresAtuais.find((f) => f.properties.id === idSelecionado);
     botaoApagar.disabled = !feature || estaTravado(feature);
+    botaoEditar.disabled = !feature || estaTravado(feature);
     leitura.textContent = feature
       ? `${feature.properties.nome || feature.properties.id} · termina em ` +
         `${feature.properties.termina_em.tipo}${estaTravado(feature) ? " · travado" : ""}`
@@ -233,6 +235,42 @@ function iniciarFerramentaDeRio(mapa, riosIniciais, travasIniciais) {
     idSelecionado = null;
     redesenharTudo(r.dados);
     atualizarBotoesPilhaSeExistir();
+  });
+
+  // --- Edição de vértice de rio já salvo (2026-09-23, noite) -------------------
+  // O servidor valida o traçado novo inteiro, como na criação, e devolve os
+  // afluentes e braços de delta que apontam para este rio: a foz deles pode ter
+  // deixado de encostar no traçado, e a tela avisa.
+  function editarSelecionado() {
+    const feature = featuresAtuais.find((f) => f.properties.id === idSelecionado);
+    if (!feature) return;
+    if (estaTravado(feature)) { mostrarAviso("este rio está travado"); return; }
+    desativarTodasAsFerramentas();
+    const id = feature.properties.id;
+    iniciarEdicaoDeVertices(mapa, feature, "#ffb300", async (geometria) => {
+      const r = await chamar("PUT", `/api/rios/${encodeURIComponent(id)}/geometria`, { geometria });
+      if (r.erro) return;
+      redesenharTudo(r.dados.rios);
+      if (r.dados.dependentes.length) {
+        const lista = r.dados.dependentes.map((d) => `${d.id} (${d.ligacao})`).join(", ");
+        leitura.textContent = `salvo · confira quem aponta para este rio: ${lista}`;
+      }
+      atualizarBotoesPilhaSeExistir();
+    });
+  }
+  botaoEditar.addEventListener("click", editarSelecionado);
+
+  // Tecla V (vértice): edita o objeto selecionado desta ferramenta. As seleções são
+  // exclusivas entre as ferramentas, então só uma delas responde.
+  document.addEventListener("keydown", (evento) => {
+    if (evento.key !== "v" && evento.key !== "V") return;
+    if (evento.ctrlKey || evento.metaKey || evento.altKey) return;
+    const alvo = evento.target;
+    const tag = ((alvo && alvo.tagName) || "").toLowerCase();
+    if (tag === "input" || tag === "textarea" || tag === "select") return;
+    if (idSelecionado === null || edicaoDeVerticesAtiva()) return;
+    evento.preventDefault();
+    editarSelecionado();
   });
 
   function atualizarBotoesPilhaSeExistir() {

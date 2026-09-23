@@ -230,3 +230,53 @@ def test_criar_e_apagar_passam_pelo_desfazer(ambiente_isolado):
     assert rios.carregar()["features"] == []
     operacoes.refazer()
     assert len(rios.carregar()["features"]) == 1
+
+
+# --- Edição de vértice (2026-09-23, noite) ------------------------------------------
+
+def _rio_valido(id_rio="rio-0001"):
+    ultimo_em_terra, primeiro_na_agua = _ponto_de_foz()
+    linha = {"type": "LineString", "coordinates": [
+        [ultimo_em_terra[0] - 0.1, ultimo_em_terra[1]], ultimo_em_terra, primeiro_na_agua]}
+    rios.criar_rio(id_rio, linha, {"tipo": "mar", "id": None})
+    return linha
+
+
+def test_editar_rio_valida_de_novo_e_grava(ambiente_isolado):
+    linha = _rio_valido()
+    nova = {"type": "LineString", "coordinates": [[linha["coordinates"][0][0] - 0.1,
+            linha["coordinates"][0][1]]] + linha["coordinates"]}
+    rio, dependentes = rios.editar_geometria("rio-0001", nova)
+    assert len(rio["geometry"]["coordinates"]) == 4 and dependentes == []
+    assert rios.carregar()["features"][0]["properties"]["termina_em"] == {"tipo": "mar", "id": None}
+
+
+def test_editar_rio_para_um_traçado_na_agua_e_recusado(ambiente_isolado):
+    """O controle negativo: a mesma validação da criação vale na edição."""
+    _rio_valido()
+    antes = rios.CAMINHO_DADOS.read_bytes()
+    na_agua = {"type": "LineString", "coordinates": [list(MAR_ABERTO), [MAR_ABERTO[0] + 0.1, MAR_ABERTO[1]]]}
+    with pytest.raises(ValueError, match="nascente"):
+        rios.editar_geometria("rio-0001", na_agua)
+    assert rios.CAMINHO_DADOS.read_bytes() == antes
+
+
+def test_rio_travado_nao_se_edita(ambiente_isolado):
+    linha = _rio_valido()
+    rios.definir_trava("rio-0001", True)
+    antes = rios.CAMINHO_DADOS.read_bytes()
+    with pytest.raises(travas.Travado):
+        rios.editar_geometria("rio-0001", linha)
+    assert rios.CAMINHO_DADOS.read_bytes() == antes
+
+
+def test_editar_rio_devolve_afluentes_e_bracos(ambiente_isolado):
+    linha = _rio_valido("mae")
+    lon, lat = TERRA
+    afluente = {"type": "LineString", "coordinates": [[lon, lat], [lon + 0.05, lat - 0.05]]}
+    rios.criar_rio("afluente", afluente, {"tipo": "rio", "id": "mae"})
+    rios.criar_rio("braco", linha, {"tipo": "mar", "id": None}, ramo_de="mae")
+    rios.criar_rio("solto", linha, {"tipo": "mar", "id": None})
+    _, dependentes = rios.editar_geometria("mae", linha)
+    assert sorted((d["id"], d["ligacao"]) for d in dependentes) == [
+        ("afluente", "afluente"), ("braco", "braco-de-delta")]

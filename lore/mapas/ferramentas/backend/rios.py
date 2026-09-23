@@ -223,3 +223,38 @@ def definir_trava(id_rio: str, travado: bool) -> dict:
         CAMINHO_RELATIVO, {id_rio: {"antes": antes, "depois": depois}},
     )
     return depois
+
+
+def dependentes(id_rio: str, dados: dict | None = None) -> list[dict]:
+    """Os rios que apontam para este: afluentes (`termina_em` rio = este) e braços de
+    delta (`ramo_de` = este). A validação deles não olha a geometria do rio-mãe, então
+    editar o traçado não os invalida; mas a foz de um afluente pode deixar de encostar
+    no rio, e quem tem de saber disso é o usuário."""
+    dados = dados or carregar()
+    saida = []
+    for f in dados["features"]:
+        p = f["properties"]
+        if p["id"] == id_rio:
+            continue
+        fim = p.get("termina_em") or {}
+        if fim.get("tipo") == "rio" and fim.get("id") == id_rio:
+            saida.append({"id": p["id"], "ligacao": "afluente"})
+        if p.get("ramo_de") == id_rio:
+            saida.append({"id": p["id"], "ligacao": "braco-de-delta"})
+    return saida
+
+
+def editar_geometria(id_rio: str, geometria: dict) -> tuple[dict, list[dict]]:
+    """Edição de vértice de rio já salvo (2026-09-23, noite): o traçado novo passa
+    pela validação INTEIRA da criação (segmento, nascente, foz, destino), com o
+    `termina_em` e o `ramo_de` que o rio já tem. Rio travado (ou camada travada) não
+    se edita. Devolve o rio e os dependentes (ver `dependentes`)."""
+    dados = carregar()
+    antes = _achar(dados, id_rio)
+    props = antes["properties"]
+    _validar(geometria, props["termina_em"], props.get("ramo_de"), dados)
+    travas.exigir_objeto_livre(CAMADA, props, "editar este rio")
+    depois = json.loads(json.dumps(antes))
+    depois["geometry"] = {"type": "LineString", "coordinates": geometria["coordinates"]}
+    operacoes.registrar_operacao("editar_rio", CAMINHO_RELATIVO, {id_rio: {"antes": antes, "depois": depois}})
+    return depois, dependentes(id_rio, dados)

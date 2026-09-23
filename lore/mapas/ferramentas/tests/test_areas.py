@@ -237,3 +237,61 @@ def test_a_rota_nao_aceita_marca_de_exemplo_em_texto():
     assert NovaArea(**base).exemplo is False
     with pytest.raises(ValidationError):
         NovaArea(**base, exemplo="yes")
+
+
+# --- Edição de vértice (2026-09-23, noite) ------------------------------------------
+
+def test_editar_area_troca_a_geometria_e_guarda_o_resto(ambiente_isolado):
+    areas.criar_area("a", "cobertura", "selva", _quadrado(0, 0, 5, 5), semente_ruido=42, exemplo=True)
+    areas.editar_geometria("a", _quadrado(0, 0, 8, 5))
+    f = _feature("a")
+    assert shape(f["geometry"]).area == pytest.approx(40)
+    assert f["properties"]["semente_ruido"] == 42 and f["properties"]["exemplo"] is True
+
+
+def test_editar_area_recorta_a_vizinha_da_mesma_camada(ambiente_isolado):
+    areas.criar_area("a", "cobertura", "selva", _quadrado(0, 0, 5, 5))
+    areas.criar_area("b", "cobertura", "deserto", _quadrado(5, 0, 10, 5))
+    areas.criar_area("r", "relevo", "montanha", _quadrado(5, 0, 10, 5))
+    areas.editar_geometria("a", _quadrado(0, 0, 7, 5))
+    assert _area_de("b") == pytest.approx(15)
+    assert _area_de("r") == pytest.approx(25)       # outra camada não se recorta
+    # Um desfazer devolve as duas de uma vez: é uma operação só.
+    operacoes.desfazer()
+    assert _area_de("a") == pytest.approx(25) and _area_de("b") == pytest.approx(25)
+
+
+def test_editar_area_cede_a_vizinha_travada(ambiente_isolado):
+    areas.criar_area("a", "cobertura", "selva", _quadrado(0, 0, 5, 5))
+    areas.criar_area("b", "cobertura", "deserto", _quadrado(5, 0, 10, 5))
+    areas.definir_trava("b", True)
+    areas.editar_geometria("a", _quadrado(0, 0, 7, 5))
+    assert _area_de("a") == pytest.approx(25) and _area_de("b") == pytest.approx(25)
+
+
+def test_area_travada_nao_se_edita(ambiente_isolado):
+    areas.criar_area("a", "cobertura", "selva", _quadrado(0, 0, 5, 5))
+    areas.definir_trava("a", True)
+    antes = areas.CAMINHO_DADOS.read_bytes()
+    with pytest.raises(travas.Travado):
+        areas.editar_geometria("a", _quadrado(0, 0, 8, 5))
+    assert areas.CAMINHO_DADOS.read_bytes() == antes
+
+
+def test_editar_area_com_camada_travada_e_recusado(ambiente_isolado):
+    areas.criar_area("a", "cobertura", "selva", _quadrado(0, 0, 5, 5))
+    travas.definir_trava_camada("cobertura", True)
+    antes = areas.CAMINHO_DADOS.read_bytes()
+    with pytest.raises(travas.Travado):
+        areas.editar_geometria("a", _quadrado(0, 0, 8, 5))
+    assert areas.CAMINHO_DADOS.read_bytes() == antes
+
+
+def test_editar_area_com_geometria_invalida_nao_grava(ambiente_isolado):
+    areas.criar_area("a", "cobertura", "selva", _quadrado(0, 0, 5, 5))
+    antes = areas.CAMINHO_DADOS.read_bytes()
+    with pytest.raises(ValueError):
+        areas.editar_geometria("a", {"type": "LineString", "coordinates": [[0, 0], [1, 1]]})
+    with pytest.raises(KeyError):
+        areas.editar_geometria("nao-existe", _quadrado(0, 0, 5, 5))
+    assert areas.CAMINHO_DADOS.read_bytes() == antes

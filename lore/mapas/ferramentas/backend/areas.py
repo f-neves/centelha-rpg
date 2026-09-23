@@ -96,6 +96,32 @@ def _validar(camada: str, valor: str, geometria: dict) -> BaseGeometry:
     return forma
 
 
+def _recortar_vizinhas(dados: dict, camada: str, forma_nova: BaseGeometry,
+                       ignorar: str | None) -> tuple[BaseGeometry, dict]:
+    """A regra do recorte (decisão 3), comum a criar e a editar: a forma nova recorta
+    as áreas da MESMA camada, e cede às travadas. Devolve a forma que sobrou e as
+    `mudancas` das vizinhas. `ignorar` é a própria área, quando é uma edição."""
+    mudancas: dict = {}
+    for antiga in dados["features"]:
+        propriedades = antiga["properties"]
+        if propriedades["camada"] != camada or propriedades["id"] == ignorar:
+            continue  # recorte NUNCA atravessa camada (ESPEC-dados, "Princípios gerais")
+        forma_antiga = shape(antiga["geometry"])
+        if not forma_antiga.intersects(forma_nova):
+            continue
+        if propriedades.get("travado"):
+            forma_nova = _so_poligono(forma_nova.difference(forma_antiga))
+            continue
+        resto = _so_poligono(forma_antiga.difference(forma_nova))
+        if resto.is_empty or resto.area <= 0:
+            mudancas[propriedades["id"]] = {"antes": antiga, "depois": None}
+        else:
+            depois = json.loads(json.dumps(antiga))
+            depois["geometry"] = mapping(resto)  # vira MultiPolygon sozinho se o corte partiu em dois
+            mudancas[propriedades["id"]] = {"antes": antiga, "depois": depois}
+    return forma_nova, mudancas
+
+
 def criar_area(id_area: str, camada: str, valor: str, geometria: dict, semente_ruido: int | None = None,
                exemplo: bool = False) -> dict:
     """`exemplo=True` grava `"exemplo": true` nas propriedades, como já se faz nos
@@ -112,25 +138,7 @@ def criar_area(id_area: str, camada: str, valor: str, geometria: dict, semente_r
     if any(f["properties"]["id"] == id_area for f in dados["features"]):
         raise ValueError(f"id já existe: {id_area}")
 
-    mudancas: dict = {}
-    for antiga in dados["features"]:
-        propriedades = antiga["properties"]
-        if propriedades["camada"] != camada:
-            continue  # recorte NUNCA atravessa camada (ESPEC-dados, "Princípios gerais")
-        forma_antiga = shape(antiga["geometry"])
-        if not forma_antiga.intersects(forma_nova):
-            continue
-        if propriedades.get("travado"):
-            forma_nova = _so_poligono(forma_nova.difference(forma_antiga))
-            continue
-        resto = _so_poligono(forma_antiga.difference(forma_nova))
-        if resto.is_empty or resto.area <= 0:
-            mudancas[propriedades["id"]] = {"antes": antiga, "depois": None}
-        else:
-            depois = json.loads(json.dumps(antiga))
-            depois["geometry"] = mapping(resto)  # vira MultiPolygon sozinho se o corte partiu em dois
-            mudancas[propriedades["id"]] = {"antes": antiga, "depois": depois}
-
+    forma_nova, mudancas = _recortar_vizinhas(dados, camada, forma_nova, ignorar=None)
     if forma_nova.is_empty or forma_nova.area <= 0:
         raise ValueError("a área nova ficou sem nada depois de ceder às áreas travadas embaixo dela")
 
@@ -173,4 +181,24 @@ def definir_trava(id_area: str, travado: bool) -> dict:
         "travar_area" if travado else "destravar_area", CAMINHO_RELATIVO,
         {id_area: {"antes": antiga, "depois": depois}},
     )
+    return depois
+
+
+def editar_geometria(id_area: str, geometria: dict) -> dict:
+    """Edição de vértice de área já salva (2026-09-23, noite): a geometria inteira
+    nova no lugar da antiga, com a MESMA regra da criação: valida, recorta as vizinhas
+    da mesma camada, cede às travadas, e uma operação só no log. Área travada (ou
+    camada travada) não se edita. Camada, valor, semente e marca de exemplo ficam."""
+    dados = carregar()
+    antiga = _achar(dados, id_area)
+    props = antiga["properties"]
+    forma_nova = _validar(props["camada"], props["valor"], geometria)
+    travas.exigir_objeto_livre(props["camada"], props, "editar esta área")
+    forma_nova, mudancas = _recortar_vizinhas(dados, props["camada"], forma_nova, ignorar=id_area)
+    if forma_nova.is_empty or forma_nova.area <= 0:
+        raise ValueError("a área editada ficou sem nada depois de ceder às áreas travadas vizinhas")
+    depois = json.loads(json.dumps(antiga))
+    depois["geometry"] = mapping(forma_nova)
+    mudancas[id_area] = {"antes": antiga, "depois": depois}
+    operacoes.registrar_operacao("editar_area", CAMINHO_RELATIVO, mudancas)
     return depois

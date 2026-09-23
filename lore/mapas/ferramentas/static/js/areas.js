@@ -73,6 +73,7 @@ function iniciarFerramentaDeArea(mapa, areasIniciais, travasIniciais, coberturaA
   const seletorValor = document.getElementById("seletor-valor");
   const botaoDesenhar = document.getElementById("area-desenhar");
   const botaoApagar = document.getElementById("area-apagar");
+  const botaoEditar = document.getElementById("area-editar");
   const botaoTravaCamada = document.getElementById("trava-camada-areas");
   const leitura = document.getElementById("area-leitura");
 
@@ -204,6 +205,7 @@ function iniciarFerramentaDeArea(mapa, areasIniciais, travasIniciais, coberturaA
   function atualizarLeitura() {
     const feature = featuresAtuais.find((f) => f.properties.id === idSelecionada);
     botaoApagar.disabled = !feature || estaTravada(feature);
+    botaoEditar.disabled = !feature || estaTravada(feature);
     leitura.textContent = feature
       ? `${feature.properties.valor} · ${feature.properties.camada}${estaTravada(feature) ? " · travada" : ""}`
       : `${featuresAtuais.length} área(s)`;
@@ -313,6 +315,37 @@ function iniciarFerramentaDeArea(mapa, areasIniciais, travasIniciais, coberturaA
     idSelecionada = null;
     redesenharTudo(r.dados);
     atualizarBotoesPilhaSeExistir();
+  });
+
+  // --- Edição de vértice de área já salva (2026-09-23, noite) -----------------
+  // A geometria inteira volta ao servidor, que aplica a mesma regra da criação
+  // (recorta as vizinhas da mesma camada, cede às travadas).
+  function editarSelecionada() {
+    const feature = featuresAtuais.find((f) => f.properties.id === idSelecionada);
+    if (!feature) return;
+    if (estaTravada(feature)) { mostrarAviso("esta área está travada"); return; }
+    desativarTodasAsFerramentas();
+    const id = feature.properties.id;
+    iniciarEdicaoDeVertices(mapa, feature, "#ffb300", async (geometria) => {
+      const r = await chamar("PUT", `/api/areas/${encodeURIComponent(id)}/geometria`, { geometria });
+      if (r.erro) return;
+      redesenharTudo(r.dados);
+      atualizarBotoesPilhaSeExistir();
+    });
+  }
+  botaoEditar.addEventListener("click", editarSelecionada);
+
+  // Tecla V (vértice): edita o objeto selecionado desta ferramenta. As seleções são
+  // exclusivas entre as ferramentas, então só uma delas responde.
+  document.addEventListener("keydown", (evento) => {
+    if (evento.key !== "v" && evento.key !== "V") return;
+    if (evento.ctrlKey || evento.metaKey || evento.altKey) return;
+    const alvo = evento.target;
+    const tag = ((alvo && alvo.tagName) || "").toLowerCase();
+    if (tag === "input" || tag === "textarea" || tag === "select") return;
+    if (idSelecionada === null || edicaoDeVerticesAtiva()) return;
+    evento.preventDefault();
+    editarSelecionada();
   });
 
   // Os botões de desfazer/refazer são da ferramenta de Lugar (foi onde nasceram,

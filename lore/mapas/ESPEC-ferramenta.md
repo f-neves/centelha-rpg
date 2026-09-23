@@ -1247,3 +1247,37 @@ depois); no navegador, **só leitura**: a página carrega sem erro no console, a
 mostra as 6 regiões em árvore, as 17 massas com a região certa no seletor e os 6
 rótulos no mapa. **Não conferido**: nenhum clique (criar, editar, arrastar rótulo,
 trocar a região de uma massa, desfazer na tela).
+
+## Edição de vértice de área e de rio já salvos (2026-09-23, noite)
+
+Selecionar a área ou o rio, botão **vértices** ou tecla **`V`**: uma cópia do objeto
+entra numa pane própria (z 620) com o `pm.enable()` do Geoman (arrastar vértice,
+clicar no meio de um lado para criar, clique direito no vértice para apagar).
+**Enter** manda a geometria inteira ao servidor; **Esc** descarta a cópia sem gravar.
+A tela redesenha do que o servidor devolveu, como na criação.
+`static/js/edicao-vertice.js` (comum às duas), `PUT /api/areas/{id}/geometria` e
+`PUT /api/rios/{id}/geometria`.
+
+- **Área**: a MESMA regra da criação, agora numa função só (`_recortar_vizinhas`):
+  valida, recorta as vizinhas da mesma camada, cede às travadas, e tudo numa operação
+  (um desfazer volta a área e as vizinhas juntas). Camada, valor, semente de ruído e
+  marca de exemplo ficam.
+- **Rio**: a validação INTEIRA da criação (segmento, nascente, foz, destino) com o
+  `termina_em` e o `ramo_de` que ele já tem. A resposta traz os **dependentes**
+  (afluentes que terminam nele e braços de delta que saem dele): a validação deles não
+  olha a geometria do rio-mãe, então nada é recusado, mas a foz de um afluente pode
+  ter deixado de encostar, e a tela lista quem conferir.
+- Objeto travado, ou camada travada, não entra em edição (409 no servidor, aviso na
+  tela, botão desligado).
+- **Fora**: a "via desalinhada" (ajustar a via até o lugar), que a lista de pendências
+  punha junto: o pedido desta rodada foi só área e rio. Vértice de via continua sem
+  edição.
+
+**Conferido**: 10 testes novos (6 de área, 4 de rio), com recusa e arquivo intacto
+byte a byte. **Na tela, por eventos disparados de dentro da página** (não por clique
+da automação, que não é confiável aqui): selecionar a área, `V` abre a edição (196
+alças de vértice na alta montanha do White Wall), `Esc` descarta sem gravar (pilha
+igual), e `V` + `Enter` grava (pilha de 36 para 37, a área com os mesmos 99 vértices,
+semente e marca de exemplo), desfeito em seguida pelo botão desfazer. **Não
+conferido**: arrastar, criar ou apagar um vértice de verdade (precisa de mão no
+mouse) e a edição de rio na tela (não há rio salvo).
