@@ -1,0 +1,5 @@
+d79206f5e40a · reancorada em d79206f, passo 0 conferido (18:00)
+cit: 107 conferidas pela âncora na linha nova (105 alinhadas + 2 do CONTEXTO), a 107ª é o condId (+2 do diff, já certo); 10 ambíguas intocadas (18:01)
+config: hook no clone com test novo = config idêntica; variante sem ENV_LIMPO no hook do clone = ganha core.worktree + core.autocrlf (reproduzido). Config compartilhada sem worktree/autocrlf (18:04)
+ambígua: variante que escolhe a mais próxima derruba 3 asserções (no clone); 10 ambíguas reais intocadas; riscos de config: só test-reapontar e test-rodada escrevem config, os dois limpam GIT_* (18:05)
+93-revisora.md escrito: PROCEDE; commitando (18:06)
