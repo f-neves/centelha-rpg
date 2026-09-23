@@ -1,0 +1,2611 @@
+{
+ "_comentario": "Biblioteca de símbolos recortada das folhas em icons/ por ferramentas/cartografia/recorte.py (regenerável: `.venv/Scripts/python.exe scripts/recortar_simbolos.py`). Os PNGs moram em simbolos/, fora do git. 'arquivo' é o do modo_padrao; para trocar o modo de um símbolo, troque modo_padrao e arquivo pelo outro valor de 'arquivos', sem recortar de novo. Âncora em pixels do próprio PNG, a partir do canto de cima à esquerda. Modo padrão e espelhável por tipo: recomendação do Cartógrafo (ver o docstring do recorte.py).",
+ "versao_esquema": 1,
+ "gerado_em": "2026-09-23 02:36",
+ "limiar_tinta": 200,
+ "limiar_alfa": 250,
+ "pecas_por_folha": {
+  "folha-arvores.png": 12,
+  "folha-assentamentos.png": 12,
+  "folha-colinas.png": 12,
+  "folha-montanhas.png": 12,
+  "folha-terreno-gelado.png": 12,
+  "folha-terreno-seco.png": 12,
+  "folha-vegetacao-quente.png": 12,
+  "folha-cartografia.png": 6
+ },
+ "simbolos": [
+  {
+   "id": "arvore-folhosa-01",
+   "tipo": "arvore-folhosa",
+   "folha": "icons/folha-arvores.png",
+   "celula": [
+    1,
+    1
+   ],
+   "caixa_na_folha": [
+    37,
+    53,
+    299,
+    419
+   ],
+   "largura": 262,
+   "altura": 366,
+   "ancora": {
+    "x": 131,
+    "y": 358,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/arvore-folhosa/so-traco/arvore-folhosa-01.png",
+   "arquivos": {
+    "so-traco": "simbolos/arvore-folhosa/so-traco/arvore-folhosa-01.png",
+    "branco-opaco": "simbolos/arvore-folhosa/branco-opaco/arvore-folhosa-01.png"
+   }
+  },
+  {
+   "id": "arvore-conifera-01",
+   "tipo": "arvore-conifera",
+   "folha": "icons/folha-arvores.png",
+   "celula": [
+    1,
+    2
+   ],
+   "caixa_na_folha": [
+    369,
+    71,
+    571,
+    419
+   ],
+   "largura": 202,
+   "altura": 348,
+   "ancora": {
+    "x": 101,
+    "y": 338,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/arvore-conifera/so-traco/arvore-conifera-01.png",
+   "arquivos": {
+    "so-traco": "simbolos/arvore-conifera/so-traco/arvore-conifera-01.png",
+    "branco-opaco": "simbolos/arvore-conifera/branco-opaco/arvore-conifera-01.png"
+   }
+  },
+  {
+   "id": "arvore-folhosa-02",
+   "tipo": "arvore-folhosa",
+   "folha": "icons/folha-arvores.png",
+   "celula": [
+    1,
+    3
+   ],
+   "caixa_na_folha": [
+    621,
+    117,
+    923,
+    421
+   ],
+   "largura": 302,
+   "altura": 304,
+   "ancora": {
+    "x": 151,
+    "y": 294,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/arvore-folhosa/so-traco/arvore-folhosa-02.png",
+   "arquivos": {
+    "so-traco": "simbolos/arvore-folhosa/so-traco/arvore-folhosa-02.png",
+    "branco-opaco": "simbolos/arvore-folhosa/branco-opaco/arvore-folhosa-02.png"
+   }
+  },
+  {
+   "id": "arvore-conifera-02",
+   "tipo": "arvore-conifera",
+   "folha": "icons/folha-arvores.png",
+   "celula": [
+    1,
+    4
+   ],
+   "caixa_na_folha": [
+    993,
+    69,
+    1205,
+    431
+   ],
+   "largura": 212,
+   "altura": 362,
+   "ancora": {
+    "x": 106,
+    "y": 352,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/arvore-conifera/so-traco/arvore-conifera-02.png",
+   "arquivos": {
+    "so-traco": "simbolos/arvore-conifera/so-traco/arvore-conifera-02.png",
+    "branco-opaco": "simbolos/arvore-conifera/branco-opaco/arvore-conifera-02.png"
+   }
+  },
+  {
+   "id": "arvore-folhosa-03",
+   "tipo": "arvore-folhosa",
+   "folha": "icons/folha-arvores.png",
+   "celula": [
+    2,
+    1
+   ],
+   "caixa_na_folha": [
+    21,
+    531,
+    325,
+    783
+   ],
+   "largura": 304,
+   "altura": 252,
+   "ancora": {
+    "x": 152,
+    "y": 244,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/arvore-folhosa/so-traco/arvore-folhosa-03.png",
+   "arquivos": {
+    "so-traco": "simbolos/arvore-folhosa/so-traco/arvore-folhosa-03.png",
+    "branco-opaco": "simbolos/arvore-folhosa/branco-opaco/arvore-folhosa-03.png"
+   }
+  },
+  {
+   "id": "arvore-conifera-03",
+   "tipo": "arvore-conifera",
+   "folha": "icons/folha-arvores.png",
+   "celula": [
+    2,
+    2
+   ],
+   "caixa_na_folha": [
+    371,
+    465,
+    571,
+    811
+   ],
+   "largura": 200,
+   "altura": 346,
+   "ancora": {
+    "x": 100,
+    "y": 336,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/arvore-conifera/so-traco/arvore-conifera-03.png",
+   "arquivos": {
+    "so-traco": "simbolos/arvore-conifera/so-traco/arvore-conifera-03.png",
+    "branco-opaco": "simbolos/arvore-conifera/branco-opaco/arvore-conifera-03.png"
+   }
+  },
+  {
+   "id": "arvore-folhosa-04",
+   "tipo": "arvore-folhosa",
+   "folha": "icons/folha-arvores.png",
+   "celula": [
+    2,
+    3
+   ],
+   "caixa_na_folha": [
+    649,
+    487,
+    875,
+    815
+   ],
+   "largura": 226,
+   "altura": 328,
+   "ancora": {
+    "x": 113,
+    "y": 319,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/arvore-folhosa/so-traco/arvore-folhosa-04.png",
+   "arquivos": {
+    "so-traco": "simbolos/arvore-folhosa/so-traco/arvore-folhosa-04.png",
+    "branco-opaco": "simbolos/arvore-folhosa/branco-opaco/arvore-folhosa-04.png"
+   }
+  },
+  {
+   "id": "arvore-folhosa-05",
+   "tipo": "arvore-folhosa",
+   "folha": "icons/folha-arvores.png",
+   "celula": [
+    2,
+    4
+   ],
+   "caixa_na_folha": [
+    937,
+    497,
+    1235,
+    807
+   ],
+   "largura": 298,
+   "altura": 310,
+   "ancora": {
+    "x": 149,
+    "y": 300,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/arvore-folhosa/so-traco/arvore-folhosa-05.png",
+   "arquivos": {
+    "so-traco": "simbolos/arvore-folhosa/so-traco/arvore-folhosa-05.png",
+    "branco-opaco": "simbolos/arvore-folhosa/branco-opaco/arvore-folhosa-05.png"
+   }
+  },
+  {
+   "id": "arvore-conifera-04",
+   "tipo": "arvore-conifera",
+   "folha": "icons/folha-arvores.png",
+   "celula": [
+    3,
+    1
+   ],
+   "caixa_na_folha": [
+    63,
+    839,
+    259,
+    1199
+   ],
+   "largura": 196,
+   "altura": 360,
+   "ancora": {
+    "x": 98,
+    "y": 352,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/arvore-conifera/so-traco/arvore-conifera-04.png",
+   "arquivos": {
+    "so-traco": "simbolos/arvore-conifera/so-traco/arvore-conifera-04.png",
+    "branco-opaco": "simbolos/arvore-conifera/branco-opaco/arvore-conifera-04.png"
+   }
+  },
+  {
+   "id": "arvore-folhosa-06",
+   "tipo": "arvore-folhosa",
+   "folha": "icons/folha-arvores.png",
+   "celula": [
+    3,
+    2
+   ],
+   "caixa_na_folha": [
+    329,
+    875,
+    583,
+    1195
+   ],
+   "largura": 254,
+   "altura": 320,
+   "ancora": {
+    "x": 127,
+    "y": 310,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/arvore-folhosa/so-traco/arvore-folhosa-06.png",
+   "arquivos": {
+    "so-traco": "simbolos/arvore-folhosa/so-traco/arvore-folhosa-06.png",
+    "branco-opaco": "simbolos/arvore-folhosa/branco-opaco/arvore-folhosa-06.png"
+   }
+  },
+  {
+   "id": "arvore-conifera-05",
+   "tipo": "arvore-conifera",
+   "folha": "icons/folha-arvores.png",
+   "celula": [
+    3,
+    3
+   ],
+   "caixa_na_folha": [
+    669,
+    871,
+    871,
+    1195
+   ],
+   "largura": 202,
+   "altura": 324,
+   "ancora": {
+    "x": 101,
+    "y": 314,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/arvore-conifera/so-traco/arvore-conifera-05.png",
+   "arquivos": {
+    "so-traco": "simbolos/arvore-conifera/so-traco/arvore-conifera-05.png",
+    "branco-opaco": "simbolos/arvore-conifera/branco-opaco/arvore-conifera-05.png"
+   }
+  },
+  {
+   "id": "arvore-folhosa-07",
+   "tipo": "arvore-folhosa",
+   "folha": "icons/folha-arvores.png",
+   "celula": [
+    3,
+    4
+   ],
+   "caixa_na_folha": [
+    927,
+    913,
+    1235,
+    1187
+   ],
+   "largura": 308,
+   "altura": 274,
+   "ancora": {
+    "x": 154,
+    "y": 265,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/arvore-folhosa/so-traco/arvore-folhosa-07.png",
+   "arquivos": {
+    "so-traco": "simbolos/arvore-folhosa/so-traco/arvore-folhosa-07.png",
+    "branco-opaco": "simbolos/arvore-folhosa/branco-opaco/arvore-folhosa-07.png"
+   }
+  },
+  {
+   "id": "cidade-01",
+   "tipo": "cidade",
+   "folha": "icons/folha-assentamentos.png",
+   "celula": [
+    1,
+    1
+   ],
+   "caixa_na_folha": [
+    15,
+    87,
+    343,
+    425
+   ],
+   "largura": 328,
+   "altura": 338,
+   "ancora": {
+    "x": 164,
+    "y": 324,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/cidade/so-traco/cidade-01.png",
+   "arquivos": {
+    "so-traco": "simbolos/cidade/so-traco/cidade-01.png",
+    "branco-opaco": "simbolos/cidade/branco-opaco/cidade-01.png"
+   }
+  },
+  {
+   "id": "cidade-02",
+   "tipo": "cidade",
+   "folha": "icons/folha-assentamentos.png",
+   "celula": [
+    1,
+    2
+   ],
+   "caixa_na_folha": [
+    351,
+    95,
+    649,
+    427
+   ],
+   "largura": 298,
+   "altura": 332,
+   "ancora": {
+    "x": 149,
+    "y": 320,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/cidade/so-traco/cidade-02.png",
+   "arquivos": {
+    "so-traco": "simbolos/cidade/so-traco/cidade-02.png",
+    "branco-opaco": "simbolos/cidade/branco-opaco/cidade-02.png"
+   }
+  },
+  {
+   "id": "vila-01",
+   "tipo": "vila",
+   "folha": "icons/folha-assentamentos.png",
+   "celula": [
+    1,
+    3
+   ],
+   "caixa_na_folha": [
+    655,
+    193,
+    931,
+    401
+   ],
+   "largura": 276,
+   "altura": 208,
+   "ancora": {
+    "x": 138,
+    "y": 196,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/vila/so-traco/vila-01.png",
+   "arquivos": {
+    "so-traco": "simbolos/vila/so-traco/vila-01.png",
+    "branco-opaco": "simbolos/vila/branco-opaco/vila-01.png"
+   }
+  },
+  {
+   "id": "vila-02",
+   "tipo": "vila",
+   "folha": "icons/folha-assentamentos.png",
+   "celula": [
+    1,
+    4
+   ],
+   "caixa_na_folha": [
+    943,
+    189,
+    1235,
+    407
+   ],
+   "largura": 292,
+   "altura": 218,
+   "ancora": {
+    "x": 146,
+    "y": 204,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/vila/so-traco/vila-02.png",
+   "arquivos": {
+    "so-traco": "simbolos/vila/so-traco/vila-02.png",
+    "branco-opaco": "simbolos/vila/branco-opaco/vila-02.png"
+   }
+  },
+  {
+   "id": "fortaleza-01",
+   "tipo": "fortaleza",
+   "folha": "icons/folha-assentamentos.png",
+   "celula": [
+    2,
+    1
+   ],
+   "caixa_na_folha": [
+    15,
+    485,
+    327,
+    805
+   ],
+   "largura": 312,
+   "altura": 320,
+   "ancora": {
+    "x": 156,
+    "y": 308,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/fortaleza/so-traco/fortaleza-01.png",
+   "arquivos": {
+    "so-traco": "simbolos/fortaleza/so-traco/fortaleza-01.png",
+    "branco-opaco": "simbolos/fortaleza/branco-opaco/fortaleza-01.png"
+   }
+  },
+  {
+   "id": "fortaleza-02",
+   "tipo": "fortaleza",
+   "folha": "icons/folha-assentamentos.png",
+   "celula": [
+    2,
+    2
+   ],
+   "caixa_na_folha": [
+    343,
+    485,
+    625,
+    791
+   ],
+   "largura": 282,
+   "altura": 306,
+   "ancora": {
+    "x": 141,
+    "y": 293,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/fortaleza/so-traco/fortaleza-02.png",
+   "arquivos": {
+    "so-traco": "simbolos/fortaleza/so-traco/fortaleza-02.png",
+    "branco-opaco": "simbolos/fortaleza/branco-opaco/fortaleza-02.png"
+   }
+  },
+  {
+   "id": "porto-01",
+   "tipo": "porto",
+   "folha": "icons/folha-assentamentos.png",
+   "celula": [
+    2,
+    3
+   ],
+   "caixa_na_folha": [
+    635,
+    545,
+    923,
+    783
+   ],
+   "largura": 288,
+   "altura": 238,
+   "ancora": {
+    "x": 144,
+    "y": 222,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/porto/so-traco/porto-01.png",
+   "arquivos": {
+    "so-traco": "simbolos/porto/so-traco/porto-01.png",
+    "branco-opaco": "simbolos/porto/branco-opaco/porto-01.png"
+   }
+  },
+  {
+   "id": "porto-02",
+   "tipo": "porto",
+   "folha": "icons/folha-assentamentos.png",
+   "celula": [
+    2,
+    4
+   ],
+   "caixa_na_folha": [
+    941,
+    527,
+    1241,
+    807
+   ],
+   "largura": 300,
+   "altura": 280,
+   "ancora": {
+    "x": 150,
+    "y": 263,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/porto/so-traco/porto-02.png",
+   "arquivos": {
+    "so-traco": "simbolos/porto/so-traco/porto-02.png",
+    "branco-opaco": "simbolos/porto/branco-opaco/porto-02.png"
+   }
+  },
+  {
+   "id": "ruina-01",
+   "tipo": "ruina",
+   "folha": "icons/folha-assentamentos.png",
+   "celula": [
+    3,
+    1
+   ],
+   "caixa_na_folha": [
+    25,
+    901,
+    309,
+    1161
+   ],
+   "largura": 284,
+   "altura": 260,
+   "ancora": {
+    "x": 142,
+    "y": 246,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/ruina/so-traco/ruina-01.png",
+   "arquivos": {
+    "so-traco": "simbolos/ruina/so-traco/ruina-01.png",
+    "branco-opaco": "simbolos/ruina/branco-opaco/ruina-01.png"
+   }
+  },
+  {
+   "id": "ruina-02",
+   "tipo": "ruina",
+   "folha": "icons/folha-assentamentos.png",
+   "celula": [
+    3,
+    2
+   ],
+   "caixa_na_folha": [
+    335,
+    905,
+    625,
+    1163
+   ],
+   "largura": 290,
+   "altura": 258,
+   "ancora": {
+    "x": 145,
+    "y": 244,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/ruina/so-traco/ruina-02.png",
+   "arquivos": {
+    "so-traco": "simbolos/ruina/so-traco/ruina-02.png",
+    "branco-opaco": "simbolos/ruina/branco-opaco/ruina-02.png"
+   }
+  },
+  {
+   "id": "marco-01",
+   "tipo": "marco",
+   "folha": "icons/folha-assentamentos.png",
+   "celula": [
+    3,
+    3
+   ],
+   "caixa_na_folha": [
+    663,
+    851,
+    901,
+    1185
+   ],
+   "largura": 238,
+   "altura": 334,
+   "ancora": {
+    "x": 119,
+    "y": 323,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/marco/so-traco/marco-01.png",
+   "arquivos": {
+    "so-traco": "simbolos/marco/so-traco/marco-01.png",
+    "branco-opaco": "simbolos/marco/branco-opaco/marco-01.png"
+   }
+  },
+  {
+   "id": "marco-02",
+   "tipo": "marco",
+   "folha": "icons/folha-assentamentos.png",
+   "celula": [
+    3,
+    4
+   ],
+   "caixa_na_folha": [
+    979,
+    869,
+    1205,
+    1185
+   ],
+   "largura": 226,
+   "altura": 316,
+   "ancora": {
+    "x": 113,
+    "y": 306,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/marco/so-traco/marco-02.png",
+   "arquivos": {
+    "so-traco": "simbolos/marco/so-traco/marco-02.png",
+    "branco-opaco": "simbolos/marco/branco-opaco/marco-02.png"
+   }
+  },
+  {
+   "id": "colina-01",
+   "tipo": "colina",
+   "folha": "icons/folha-colinas.png",
+   "celula": [
+    1,
+    1
+   ],
+   "caixa_na_folha": [
+    9,
+    233,
+    307,
+    375
+   ],
+   "largura": 298,
+   "altura": 142,
+   "ancora": {
+    "x": 149,
+    "y": 133,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/colina/so-traco/colina-01.png",
+   "arquivos": {
+    "so-traco": "simbolos/colina/so-traco/colina-01.png",
+    "branco-opaco": "simbolos/colina/branco-opaco/colina-01.png"
+   }
+  },
+  {
+   "id": "colina-02",
+   "tipo": "colina",
+   "folha": "icons/folha-colinas.png",
+   "celula": [
+    1,
+    2
+   ],
+   "caixa_na_folha": [
+    329,
+    211,
+    615,
+    379
+   ],
+   "largura": 286,
+   "altura": 168,
+   "ancora": {
+    "x": 143,
+    "y": 158,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/colina/so-traco/colina-02.png",
+   "arquivos": {
+    "so-traco": "simbolos/colina/so-traco/colina-02.png",
+    "branco-opaco": "simbolos/colina/branco-opaco/colina-02.png"
+   }
+  },
+  {
+   "id": "colina-03",
+   "tipo": "colina",
+   "folha": "icons/folha-colinas.png",
+   "celula": [
+    1,
+    3
+   ],
+   "caixa_na_folha": [
+    641,
+    211,
+    927,
+    375
+   ],
+   "largura": 286,
+   "altura": 164,
+   "ancora": {
+    "x": 143,
+    "y": 154,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/colina/so-traco/colina-03.png",
+   "arquivos": {
+    "so-traco": "simbolos/colina/so-traco/colina-03.png",
+    "branco-opaco": "simbolos/colina/branco-opaco/colina-03.png"
+   }
+  },
+  {
+   "id": "colina-04",
+   "tipo": "colina",
+   "folha": "icons/folha-colinas.png",
+   "celula": [
+    1,
+    4
+   ],
+   "caixa_na_folha": [
+    945,
+    209,
+    1245,
+    373
+   ],
+   "largura": 300,
+   "altura": 164,
+   "ancora": {
+    "x": 150,
+    "y": 154,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/colina/so-traco/colina-04.png",
+   "arquivos": {
+    "so-traco": "simbolos/colina/so-traco/colina-04.png",
+    "branco-opaco": "simbolos/colina/branco-opaco/colina-04.png"
+   }
+  },
+  {
+   "id": "colina-05",
+   "tipo": "colina",
+   "folha": "icons/folha-colinas.png",
+   "celula": [
+    2,
+    1
+   ],
+   "caixa_na_folha": [
+    9,
+    575,
+    315,
+    693
+   ],
+   "largura": 306,
+   "altura": 118,
+   "ancora": {
+    "x": 153,
+    "y": 110,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/colina/so-traco/colina-05.png",
+   "arquivos": {
+    "so-traco": "simbolos/colina/so-traco/colina-05.png",
+    "branco-opaco": "simbolos/colina/branco-opaco/colina-05.png"
+   }
+  },
+  {
+   "id": "colina-06",
+   "tipo": "colina",
+   "folha": "icons/folha-colinas.png",
+   "celula": [
+    2,
+    2
+   ],
+   "caixa_na_folha": [
+    331,
+    535,
+    619,
+    703
+   ],
+   "largura": 288,
+   "altura": 168,
+   "ancora": {
+    "x": 144,
+    "y": 158,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/colina/so-traco/colina-06.png",
+   "arquivos": {
+    "so-traco": "simbolos/colina/so-traco/colina-06.png",
+    "branco-opaco": "simbolos/colina/branco-opaco/colina-06.png"
+   }
+  },
+  {
+   "id": "colina-07",
+   "tipo": "colina",
+   "folha": "icons/folha-colinas.png",
+   "celula": [
+    2,
+    3
+   ],
+   "caixa_na_folha": [
+    629,
+    557,
+    935,
+    699
+   ],
+   "largura": 306,
+   "altura": 142,
+   "ancora": {
+    "x": 153,
+    "y": 133,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/colina/so-traco/colina-07.png",
+   "arquivos": {
+    "so-traco": "simbolos/colina/so-traco/colina-07.png",
+    "branco-opaco": "simbolos/colina/branco-opaco/colina-07.png"
+   }
+  },
+  {
+   "id": "colina-08",
+   "tipo": "colina",
+   "folha": "icons/folha-colinas.png",
+   "celula": [
+    2,
+    4
+   ],
+   "caixa_na_folha": [
+    939,
+    565,
+    1245,
+    697
+   ],
+   "largura": 306,
+   "altura": 132,
+   "ancora": {
+    "x": 153,
+    "y": 122,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/colina/so-traco/colina-08.png",
+   "arquivos": {
+    "so-traco": "simbolos/colina/so-traco/colina-08.png",
+    "branco-opaco": "simbolos/colina/branco-opaco/colina-08.png"
+   }
+  },
+  {
+   "id": "colina-09",
+   "tipo": "colina",
+   "folha": "icons/folha-colinas.png",
+   "celula": [
+    3,
+    1
+   ],
+   "caixa_na_folha": [
+    13,
+    887,
+    305,
+    1023
+   ],
+   "largura": 292,
+   "altura": 136,
+   "ancora": {
+    "x": 146,
+    "y": 127,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/colina/so-traco/colina-09.png",
+   "arquivos": {
+    "so-traco": "simbolos/colina/so-traco/colina-09.png",
+    "branco-opaco": "simbolos/colina/branco-opaco/colina-09.png"
+   }
+  },
+  {
+   "id": "colina-10",
+   "tipo": "colina",
+   "folha": "icons/folha-colinas.png",
+   "celula": [
+    3,
+    2
+   ],
+   "caixa_na_folha": [
+    321,
+    899,
+    623,
+    1011
+   ],
+   "largura": 302,
+   "altura": 112,
+   "ancora": {
+    "x": 151,
+    "y": 103,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/colina/so-traco/colina-10.png",
+   "arquivos": {
+    "so-traco": "simbolos/colina/so-traco/colina-10.png",
+    "branco-opaco": "simbolos/colina/branco-opaco/colina-10.png"
+   }
+  },
+  {
+   "id": "colina-11",
+   "tipo": "colina",
+   "folha": "icons/folha-colinas.png",
+   "celula": [
+    3,
+    3
+   ],
+   "caixa_na_folha": [
+    641,
+    879,
+    921,
+    1027
+   ],
+   "largura": 280,
+   "altura": 148,
+   "ancora": {
+    "x": 140,
+    "y": 139,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/colina/so-traco/colina-11.png",
+   "arquivos": {
+    "so-traco": "simbolos/colina/so-traco/colina-11.png",
+    "branco-opaco": "simbolos/colina/branco-opaco/colina-11.png"
+   }
+  },
+  {
+   "id": "colina-12",
+   "tipo": "colina",
+   "folha": "icons/folha-colinas.png",
+   "celula": [
+    3,
+    4
+   ],
+   "caixa_na_folha": [
+    939,
+    899,
+    1245,
+    1015
+   ],
+   "largura": 306,
+   "altura": 116,
+   "ancora": {
+    "x": 153,
+    "y": 106,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/colina/so-traco/colina-12.png",
+   "arquivos": {
+    "so-traco": "simbolos/colina/so-traco/colina-12.png",
+    "branco-opaco": "simbolos/colina/branco-opaco/colina-12.png"
+   }
+  },
+  {
+   "id": "montanha-01",
+   "tipo": "montanha",
+   "folha": "icons/folha-montanhas.png",
+   "celula": [
+    1,
+    1
+   ],
+   "caixa_na_folha": [
+    15,
+    99,
+    307,
+    409
+   ],
+   "largura": 292,
+   "altura": 310,
+   "ancora": {
+    "x": 146,
+    "y": 298,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/montanha/so-traco/montanha-01.png",
+   "arquivos": {
+    "so-traco": "simbolos/montanha/so-traco/montanha-01.png",
+    "branco-opaco": "simbolos/montanha/branco-opaco/montanha-01.png"
+   }
+  },
+  {
+   "id": "montanha-02",
+   "tipo": "montanha",
+   "folha": "icons/folha-montanhas.png",
+   "celula": [
+    1,
+    2
+   ],
+   "caixa_na_folha": [
+    319,
+    151,
+    629,
+    395
+   ],
+   "largura": 310,
+   "altura": 244,
+   "ancora": {
+    "x": 155,
+    "y": 233,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/montanha/so-traco/montanha-02.png",
+   "arquivos": {
+    "so-traco": "simbolos/montanha/so-traco/montanha-02.png",
+    "branco-opaco": "simbolos/montanha/branco-opaco/montanha-02.png"
+   }
+  },
+  {
+   "id": "montanha-03",
+   "tipo": "montanha",
+   "folha": "icons/folha-montanhas.png",
+   "celula": [
+    1,
+    3
+   ],
+   "caixa_na_folha": [
+    631,
+    167,
+    939,
+    409
+   ],
+   "largura": 308,
+   "altura": 242,
+   "ancora": {
+    "x": 154,
+    "y": 230,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/montanha/so-traco/montanha-03.png",
+   "arquivos": {
+    "so-traco": "simbolos/montanha/so-traco/montanha-03.png",
+    "branco-opaco": "simbolos/montanha/branco-opaco/montanha-03.png"
+   }
+  },
+  {
+   "id": "montanha-04",
+   "tipo": "montanha",
+   "folha": "icons/folha-montanhas.png",
+   "celula": [
+    1,
+    4
+   ],
+   "caixa_na_folha": [
+    951,
+    141,
+    1247,
+    401
+   ],
+   "largura": 296,
+   "altura": 260,
+   "ancora": {
+    "x": 148,
+    "y": 248,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/montanha/so-traco/montanha-04.png",
+   "arquivos": {
+    "so-traco": "simbolos/montanha/so-traco/montanha-04.png",
+    "branco-opaco": "simbolos/montanha/branco-opaco/montanha-04.png"
+   }
+  },
+  {
+   "id": "montanha-05",
+   "tipo": "montanha",
+   "folha": "icons/folha-montanhas.png",
+   "celula": [
+    2,
+    1
+   ],
+   "caixa_na_folha": [
+    3,
+    551,
+    361,
+    733
+   ],
+   "largura": 358,
+   "altura": 182,
+   "ancora": {
+    "x": 179,
+    "y": 172,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/montanha/so-traco/montanha-05.png",
+   "arquivos": {
+    "so-traco": "simbolos/montanha/so-traco/montanha-05.png",
+    "branco-opaco": "simbolos/montanha/branco-opaco/montanha-05.png"
+   }
+  },
+  {
+   "id": "montanha-06",
+   "tipo": "montanha",
+   "folha": "icons/folha-montanhas.png",
+   "celula": [
+    2,
+    2
+   ],
+   "caixa_na_folha": [
+    355,
+    457,
+    607,
+    783
+   ],
+   "largura": 252,
+   "altura": 326,
+   "ancora": {
+    "x": 126,
+    "y": 312,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/montanha/so-traco/montanha-06.png",
+   "arquivos": {
+    "so-traco": "simbolos/montanha/so-traco/montanha-06.png",
+    "branco-opaco": "simbolos/montanha/branco-opaco/montanha-06.png"
+   }
+  },
+  {
+   "id": "montanha-07",
+   "tipo": "montanha",
+   "folha": "icons/folha-montanhas.png",
+   "celula": [
+    2,
+    3
+   ],
+   "caixa_na_folha": [
+    621,
+    511,
+    939,
+    765
+   ],
+   "largura": 318,
+   "altura": 254,
+   "ancora": {
+    "x": 159,
+    "y": 240,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/montanha/so-traco/montanha-07.png",
+   "arquivos": {
+    "so-traco": "simbolos/montanha/so-traco/montanha-07.png",
+    "branco-opaco": "simbolos/montanha/branco-opaco/montanha-07.png"
+   }
+  },
+  {
+   "id": "montanha-08",
+   "tipo": "montanha",
+   "folha": "icons/folha-montanhas.png",
+   "celula": [
+    2,
+    4
+   ],
+   "caixa_na_folha": [
+    947,
+    551,
+    1251,
+    751
+   ],
+   "largura": 304,
+   "altura": 200,
+   "ancora": {
+    "x": 152,
+    "y": 190,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/montanha/so-traco/montanha-08.png",
+   "arquivos": {
+    "so-traco": "simbolos/montanha/so-traco/montanha-08.png",
+    "branco-opaco": "simbolos/montanha/branco-opaco/montanha-08.png"
+   }
+  },
+  {
+   "id": "montanha-09",
+   "tipo": "montanha",
+   "folha": "icons/folha-montanhas.png",
+   "celula": [
+    3,
+    1
+   ],
+   "caixa_na_folha": [
+    3,
+    861,
+    321,
+    1137
+   ],
+   "largura": 318,
+   "altura": 276,
+   "ancora": {
+    "x": 159,
+    "y": 262,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/montanha/so-traco/montanha-09.png",
+   "arquivos": {
+    "so-traco": "simbolos/montanha/so-traco/montanha-09.png",
+    "branco-opaco": "simbolos/montanha/branco-opaco/montanha-09.png"
+   }
+  },
+  {
+   "id": "montanha-10",
+   "tipo": "montanha",
+   "folha": "icons/folha-montanhas.png",
+   "celula": [
+    3,
+    2
+   ],
+   "caixa_na_folha": [
+    327,
+    917,
+    633,
+    1115
+   ],
+   "largura": 306,
+   "altura": 198,
+   "ancora": {
+    "x": 153,
+    "y": 187,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/montanha/so-traco/montanha-10.png",
+   "arquivos": {
+    "so-traco": "simbolos/montanha/so-traco/montanha-10.png",
+    "branco-opaco": "simbolos/montanha/branco-opaco/montanha-10.png"
+   }
+  },
+  {
+   "id": "montanha-11",
+   "tipo": "montanha",
+   "folha": "icons/folha-montanhas.png",
+   "celula": [
+    3,
+    3
+   ],
+   "caixa_na_folha": [
+    643,
+    889,
+    935,
+    1129
+   ],
+   "largura": 292,
+   "altura": 240,
+   "ancora": {
+    "x": 146,
+    "y": 227,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/montanha/so-traco/montanha-11.png",
+   "arquivos": {
+    "so-traco": "simbolos/montanha/so-traco/montanha-11.png",
+    "branco-opaco": "simbolos/montanha/branco-opaco/montanha-11.png"
+   }
+  },
+  {
+   "id": "montanha-12",
+   "tipo": "montanha",
+   "folha": "icons/folha-montanhas.png",
+   "celula": [
+    3,
+    4
+   ],
+   "caixa_na_folha": [
+    939,
+    891,
+    1251,
+    1133
+   ],
+   "largura": 312,
+   "altura": 242,
+   "ancora": {
+    "x": 156,
+    "y": 229,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/montanha/so-traco/montanha-12.png",
+   "arquivos": {
+    "so-traco": "simbolos/montanha/so-traco/montanha-12.png",
+    "branco-opaco": "simbolos/montanha/branco-opaco/montanha-12.png"
+   }
+  },
+  {
+   "id": "montanha-nevada-01",
+   "tipo": "montanha-nevada",
+   "folha": "icons/folha-terreno-gelado.png",
+   "celula": [
+    1,
+    1
+   ],
+   "caixa_na_folha": [
+    15,
+    147,
+    313,
+    445
+   ],
+   "largura": 298,
+   "altura": 298,
+   "ancora": {
+    "x": 149,
+    "y": 287,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "branco-opaco",
+   "arquivo": "simbolos/montanha-nevada/branco-opaco/montanha-nevada-01.png",
+   "arquivos": {
+    "so-traco": "simbolos/montanha-nevada/so-traco/montanha-nevada-01.png",
+    "branco-opaco": "simbolos/montanha-nevada/branco-opaco/montanha-nevada-01.png"
+   }
+  },
+  {
+   "id": "montanha-nevada-02",
+   "tipo": "montanha-nevada",
+   "folha": "icons/folha-terreno-gelado.png",
+   "celula": [
+    1,
+    2
+   ],
+   "caixa_na_folha": [
+    321,
+    169,
+    629,
+    431
+   ],
+   "largura": 308,
+   "altura": 262,
+   "ancora": {
+    "x": 154,
+    "y": 251,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "branco-opaco",
+   "arquivo": "simbolos/montanha-nevada/branco-opaco/montanha-nevada-02.png",
+   "arquivos": {
+    "so-traco": "simbolos/montanha-nevada/so-traco/montanha-nevada-02.png",
+    "branco-opaco": "simbolos/montanha-nevada/branco-opaco/montanha-nevada-02.png"
+   }
+  },
+  {
+   "id": "montanha-nevada-03",
+   "tipo": "montanha-nevada",
+   "folha": "icons/folha-terreno-gelado.png",
+   "celula": [
+    1,
+    3
+   ],
+   "caixa_na_folha": [
+    629,
+    195,
+    959,
+    447
+   ],
+   "largura": 330,
+   "altura": 252,
+   "ancora": {
+    "x": 165,
+    "y": 240,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "branco-opaco",
+   "arquivo": "simbolos/montanha-nevada/branco-opaco/montanha-nevada-03.png",
+   "arquivos": {
+    "so-traco": "simbolos/montanha-nevada/so-traco/montanha-nevada-03.png",
+    "branco-opaco": "simbolos/montanha-nevada/branco-opaco/montanha-nevada-03.png"
+   }
+  },
+  {
+   "id": "montanha-nevada-04",
+   "tipo": "montanha-nevada",
+   "folha": "icons/folha-terreno-gelado.png",
+   "celula": [
+    1,
+    4
+   ],
+   "caixa_na_folha": [
+    955,
+    83,
+    1237,
+    457
+   ],
+   "largura": 282,
+   "altura": 374,
+   "ancora": {
+    "x": 141,
+    "y": 362,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "branco-opaco",
+   "arquivo": "simbolos/montanha-nevada/branco-opaco/montanha-nevada-04.png",
+   "arquivos": {
+    "so-traco": "simbolos/montanha-nevada/so-traco/montanha-nevada-04.png",
+    "branco-opaco": "simbolos/montanha-nevada/branco-opaco/montanha-nevada-04.png"
+   }
+  },
+  {
+   "id": "geleira-01",
+   "tipo": "geleira",
+   "folha": "icons/folha-terreno-gelado.png",
+   "celula": [
+    2,
+    1
+   ],
+   "caixa_na_folha": [
+    9,
+    575,
+    327,
+    765
+   ],
+   "largura": 318,
+   "altura": 190,
+   "ancora": {
+    "x": 159,
+    "y": 181,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "branco-opaco",
+   "arquivo": "simbolos/geleira/branco-opaco/geleira-01.png",
+   "arquivos": {
+    "so-traco": "simbolos/geleira/so-traco/geleira-01.png",
+    "branco-opaco": "simbolos/geleira/branco-opaco/geleira-01.png"
+   }
+  },
+  {
+   "id": "geleira-02",
+   "tipo": "geleira",
+   "folha": "icons/folha-terreno-gelado.png",
+   "celula": [
+    2,
+    2
+   ],
+   "caixa_na_folha": [
+    327,
+    565,
+    627,
+    765
+   ],
+   "largura": 300,
+   "altura": 200,
+   "ancora": {
+    "x": 150,
+    "y": 191,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "branco-opaco",
+   "arquivo": "simbolos/geleira/branco-opaco/geleira-02.png",
+   "arquivos": {
+    "so-traco": "simbolos/geleira/so-traco/geleira-02.png",
+    "branco-opaco": "simbolos/geleira/branco-opaco/geleira-02.png"
+   }
+  },
+  {
+   "id": "geleira-03",
+   "tipo": "geleira",
+   "folha": "icons/folha-terreno-gelado.png",
+   "celula": [
+    2,
+    3
+   ],
+   "caixa_na_folha": [
+    639,
+    579,
+    943,
+    753
+   ],
+   "largura": 304,
+   "altura": 174,
+   "ancora": {
+    "x": 152,
+    "y": 164,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "branco-opaco",
+   "arquivo": "simbolos/geleira/branco-opaco/geleira-03.png",
+   "arquivos": {
+    "so-traco": "simbolos/geleira/so-traco/geleira-03.png",
+    "branco-opaco": "simbolos/geleira/branco-opaco/geleira-03.png"
+   }
+  },
+  {
+   "id": "geleira-04",
+   "tipo": "geleira",
+   "folha": "icons/folha-terreno-gelado.png",
+   "celula": [
+    2,
+    4
+   ],
+   "caixa_na_folha": [
+    943,
+    595,
+    1241,
+    757
+   ],
+   "largura": 298,
+   "altura": 162,
+   "ancora": {
+    "x": 149,
+    "y": 154,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "branco-opaco",
+   "arquivo": "simbolos/geleira/branco-opaco/geleira-04.png",
+   "arquivos": {
+    "so-traco": "simbolos/geleira/so-traco/geleira-04.png",
+    "branco-opaco": "simbolos/geleira/branco-opaco/geleira-04.png"
+   }
+  },
+  {
+   "id": "tundra-01",
+   "tipo": "tundra",
+   "folha": "icons/folha-terreno-gelado.png",
+   "celula": [
+    3,
+    1
+   ],
+   "caixa_na_folha": [
+    11,
+    921,
+    311,
+    1079
+   ],
+   "largura": 300,
+   "altura": 158,
+   "ancora": {
+    "x": 150,
+    "y": 147,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/tundra/so-traco/tundra-01.png",
+   "arquivos": {
+    "so-traco": "simbolos/tundra/so-traco/tundra-01.png",
+    "branco-opaco": "simbolos/tundra/branco-opaco/tundra-01.png"
+   }
+  },
+  {
+   "id": "tundra-02",
+   "tipo": "tundra",
+   "folha": "icons/folha-terreno-gelado.png",
+   "celula": [
+    3,
+    2
+   ],
+   "caixa_na_folha": [
+    323,
+    927,
+    621,
+    1075
+   ],
+   "largura": 298,
+   "altura": 148,
+   "ancora": {
+    "x": 149,
+    "y": 140,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/tundra/so-traco/tundra-02.png",
+   "arquivos": {
+    "so-traco": "simbolos/tundra/so-traco/tundra-02.png",
+    "branco-opaco": "simbolos/tundra/branco-opaco/tundra-02.png"
+   }
+  },
+  {
+   "id": "tundra-03",
+   "tipo": "tundra",
+   "folha": "icons/folha-terreno-gelado.png",
+   "celula": [
+    3,
+    3
+   ],
+   "caixa_na_folha": [
+    631,
+    945,
+    931,
+    1077
+   ],
+   "largura": 300,
+   "altura": 132,
+   "ancora": {
+    "x": 150,
+    "y": 124,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/tundra/so-traco/tundra-03.png",
+   "arquivos": {
+    "so-traco": "simbolos/tundra/so-traco/tundra-03.png",
+    "branco-opaco": "simbolos/tundra/branco-opaco/tundra-03.png"
+   }
+  },
+  {
+   "id": "tundra-04",
+   "tipo": "tundra",
+   "folha": "icons/folha-terreno-gelado.png",
+   "celula": [
+    3,
+    4
+   ],
+   "caixa_na_folha": [
+    937,
+    937,
+    1239,
+    1079
+   ],
+   "largura": 302,
+   "altura": 142,
+   "ancora": {
+    "x": 151,
+    "y": 133,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/tundra/so-traco/tundra-04.png",
+   "arquivos": {
+    "so-traco": "simbolos/tundra/so-traco/tundra-04.png",
+    "branco-opaco": "simbolos/tundra/branco-opaco/tundra-04.png"
+   }
+  },
+  {
+   "id": "duna-01",
+   "tipo": "duna",
+   "folha": "icons/folha-terreno-seco.png",
+   "celula": [
+    1,
+    1
+   ],
+   "caixa_na_folha": [
+    15,
+    239,
+    313,
+    407
+   ],
+   "largura": 298,
+   "altura": 168,
+   "ancora": {
+    "x": 149,
+    "y": 157,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/duna/so-traco/duna-01.png",
+   "arquivos": {
+    "so-traco": "simbolos/duna/so-traco/duna-01.png",
+    "branco-opaco": "simbolos/duna/branco-opaco/duna-01.png"
+   }
+  },
+  {
+   "id": "duna-02",
+   "tipo": "duna",
+   "folha": "icons/folha-terreno-seco.png",
+   "celula": [
+    1,
+    2
+   ],
+   "caixa_na_folha": [
+    329,
+    239,
+    627,
+    407
+   ],
+   "largura": 298,
+   "altura": 168,
+   "ancora": {
+    "x": 149,
+    "y": 158,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/duna/so-traco/duna-02.png",
+   "arquivos": {
+    "so-traco": "simbolos/duna/so-traco/duna-02.png",
+    "branco-opaco": "simbolos/duna/branco-opaco/duna-02.png"
+   }
+  },
+  {
+   "id": "duna-03",
+   "tipo": "duna",
+   "folha": "icons/folha-terreno-seco.png",
+   "celula": [
+    1,
+    3
+   ],
+   "caixa_na_folha": [
+    639,
+    251,
+    939,
+    413
+   ],
+   "largura": 300,
+   "altura": 162,
+   "ancora": {
+    "x": 150,
+    "y": 149,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/duna/so-traco/duna-03.png",
+   "arquivos": {
+    "so-traco": "simbolos/duna/so-traco/duna-03.png",
+    "branco-opaco": "simbolos/duna/branco-opaco/duna-03.png"
+   }
+  },
+  {
+   "id": "duna-04",
+   "tipo": "duna",
+   "folha": "icons/folha-terreno-seco.png",
+   "celula": [
+    1,
+    4
+   ],
+   "caixa_na_folha": [
+    953,
+    205,
+    1239,
+    417
+   ],
+   "largura": 286,
+   "altura": 212,
+   "ancora": {
+    "x": 143,
+    "y": 199,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/duna/so-traco/duna-04.png",
+   "arquivos": {
+    "so-traco": "simbolos/duna/so-traco/duna-04.png",
+    "branco-opaco": "simbolos/duna/branco-opaco/duna-04.png"
+   }
+  },
+  {
+   "id": "rochedo-01",
+   "tipo": "rochedo",
+   "folha": "icons/folha-terreno-seco.png",
+   "celula": [
+    2,
+    1
+   ],
+   "caixa_na_folha": [
+    15,
+    529,
+    305,
+    769
+   ],
+   "largura": 290,
+   "altura": 240,
+   "ancora": {
+    "x": 145,
+    "y": 229,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/rochedo/so-traco/rochedo-01.png",
+   "arquivos": {
+    "so-traco": "simbolos/rochedo/so-traco/rochedo-01.png",
+    "branco-opaco": "simbolos/rochedo/branco-opaco/rochedo-01.png"
+   }
+  },
+  {
+   "id": "rochedo-02",
+   "tipo": "rochedo",
+   "folha": "icons/folha-terreno-seco.png",
+   "celula": [
+    2,
+    2
+   ],
+   "caixa_na_folha": [
+    317,
+    535,
+    623,
+    763
+   ],
+   "largura": 306,
+   "altura": 228,
+   "ancora": {
+    "x": 153,
+    "y": 216,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/rochedo/so-traco/rochedo-02.png",
+   "arquivos": {
+    "so-traco": "simbolos/rochedo/so-traco/rochedo-02.png",
+    "branco-opaco": "simbolos/rochedo/branco-opaco/rochedo-02.png"
+   }
+  },
+  {
+   "id": "rochedo-03",
+   "tipo": "rochedo",
+   "folha": "icons/folha-terreno-seco.png",
+   "celula": [
+    2,
+    3
+   ],
+   "caixa_na_folha": [
+    627,
+    519,
+    917,
+    769
+   ],
+   "largura": 290,
+   "altura": 250,
+   "ancora": {
+    "x": 145,
+    "y": 239,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/rochedo/so-traco/rochedo-03.png",
+   "arquivos": {
+    "so-traco": "simbolos/rochedo/so-traco/rochedo-03.png",
+    "branco-opaco": "simbolos/rochedo/branco-opaco/rochedo-03.png"
+   }
+  },
+  {
+   "id": "rochedo-04",
+   "tipo": "rochedo",
+   "folha": "icons/folha-terreno-seco.png",
+   "celula": [
+    2,
+    4
+   ],
+   "caixa_na_folha": [
+    917,
+    545,
+    1245,
+    767
+   ],
+   "largura": 328,
+   "altura": 222,
+   "ancora": {
+    "x": 164,
+    "y": 211,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/rochedo/so-traco/rochedo-04.png",
+   "arquivos": {
+    "so-traco": "simbolos/rochedo/so-traco/rochedo-04.png",
+    "branco-opaco": "simbolos/rochedo/branco-opaco/rochedo-04.png"
+   }
+  },
+  {
+   "id": "vegetacao-seca-01",
+   "tipo": "vegetacao-seca",
+   "folha": "icons/folha-terreno-seco.png",
+   "celula": [
+    3,
+    1
+   ],
+   "caixa_na_folha": [
+    17,
+    917,
+    303,
+    1121
+   ],
+   "largura": 286,
+   "altura": 204,
+   "ancora": {
+    "x": 143,
+    "y": 192,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/vegetacao-seca/so-traco/vegetacao-seca-01.png",
+   "arquivos": {
+    "so-traco": "simbolos/vegetacao-seca/so-traco/vegetacao-seca-01.png",
+    "branco-opaco": "simbolos/vegetacao-seca/branco-opaco/vegetacao-seca-01.png"
+   }
+  },
+  {
+   "id": "vegetacao-seca-02",
+   "tipo": "vegetacao-seca",
+   "folha": "icons/folha-terreno-seco.png",
+   "celula": [
+    3,
+    2
+   ],
+   "caixa_na_folha": [
+    347,
+    871,
+    589,
+    1135
+   ],
+   "largura": 242,
+   "altura": 264,
+   "ancora": {
+    "x": 121,
+    "y": 252,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/vegetacao-seca/so-traco/vegetacao-seca-02.png",
+   "arquivos": {
+    "so-traco": "simbolos/vegetacao-seca/so-traco/vegetacao-seca-02.png",
+    "branco-opaco": "simbolos/vegetacao-seca/branco-opaco/vegetacao-seca-02.png"
+   }
+  },
+  {
+   "id": "vegetacao-seca-03",
+   "tipo": "vegetacao-seca",
+   "folha": "icons/folha-terreno-seco.png",
+   "celula": [
+    3,
+    3
+   ],
+   "caixa_na_folha": [
+    643,
+    839,
+    899,
+    1143
+   ],
+   "largura": 256,
+   "altura": 304,
+   "ancora": {
+    "x": 128,
+    "y": 294,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/vegetacao-seca/so-traco/vegetacao-seca-03.png",
+   "arquivos": {
+    "so-traco": "simbolos/vegetacao-seca/so-traco/vegetacao-seca-03.png",
+    "branco-opaco": "simbolos/vegetacao-seca/branco-opaco/vegetacao-seca-03.png"
+   }
+  },
+  {
+   "id": "vegetacao-seca-04",
+   "tipo": "vegetacao-seca",
+   "folha": "icons/folha-terreno-seco.png",
+   "celula": [
+    3,
+    4
+   ],
+   "caixa_na_folha": [
+    927,
+    937,
+    1233,
+    1135
+   ],
+   "largura": 306,
+   "altura": 198,
+   "ancora": {
+    "x": 153,
+    "y": 185,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/vegetacao-seca/so-traco/vegetacao-seca-04.png",
+   "arquivos": {
+    "so-traco": "simbolos/vegetacao-seca/so-traco/vegetacao-seca-04.png",
+    "branco-opaco": "simbolos/vegetacao-seca/branco-opaco/vegetacao-seca-04.png"
+   }
+  },
+  {
+   "id": "palmeira-01",
+   "tipo": "palmeira",
+   "folha": "icons/folha-vegetacao-quente.png",
+   "celula": [
+    1,
+    1
+   ],
+   "caixa_na_folha": [
+    55,
+    105,
+    271,
+    437
+   ],
+   "largura": 216,
+   "altura": 332,
+   "ancora": {
+    "x": 108,
+    "y": 323,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/palmeira/so-traco/palmeira-01.png",
+   "arquivos": {
+    "so-traco": "simbolos/palmeira/so-traco/palmeira-01.png",
+    "branco-opaco": "simbolos/palmeira/branco-opaco/palmeira-01.png"
+   }
+  },
+  {
+   "id": "arvore-tropical-01",
+   "tipo": "arvore-tropical",
+   "folha": "icons/folha-vegetacao-quente.png",
+   "celula": [
+    1,
+    2
+   ],
+   "caixa_na_folha": [
+    307,
+    153,
+    633,
+    429
+   ],
+   "largura": 326,
+   "altura": 276,
+   "ancora": {
+    "x": 163,
+    "y": 267,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/arvore-tropical/so-traco/arvore-tropical-01.png",
+   "arquivos": {
+    "so-traco": "simbolos/arvore-tropical/so-traco/arvore-tropical-01.png",
+    "branco-opaco": "simbolos/arvore-tropical/branco-opaco/arvore-tropical-01.png"
+   }
+  },
+  {
+   "id": "palmeira-02",
+   "tipo": "palmeira",
+   "folha": "icons/folha-vegetacao-quente.png",
+   "celula": [
+    1,
+    3
+   ],
+   "caixa_na_folha": [
+    683,
+    111,
+    907,
+    433
+   ],
+   "largura": 224,
+   "altura": 322,
+   "ancora": {
+    "x": 112,
+    "y": 313,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/palmeira/so-traco/palmeira-02.png",
+   "arquivos": {
+    "so-traco": "simbolos/palmeira/so-traco/palmeira-02.png",
+    "branco-opaco": "simbolos/palmeira/branco-opaco/palmeira-02.png"
+   }
+  },
+  {
+   "id": "arvore-tropical-02",
+   "tipo": "arvore-tropical",
+   "folha": "icons/folha-vegetacao-quente.png",
+   "celula": [
+    1,
+    4
+   ],
+   "caixa_na_folha": [
+    959,
+    141,
+    1229,
+    437
+   ],
+   "largura": 270,
+   "altura": 296,
+   "ancora": {
+    "x": 135,
+    "y": 287,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/arvore-tropical/so-traco/arvore-tropical-02.png",
+   "arquivos": {
+    "so-traco": "simbolos/arvore-tropical/so-traco/arvore-tropical-02.png",
+    "branco-opaco": "simbolos/arvore-tropical/branco-opaco/arvore-tropical-02.png"
+   }
+  },
+  {
+   "id": "selva-01",
+   "tipo": "selva",
+   "folha": "icons/folha-vegetacao-quente.png",
+   "celula": [
+    2,
+    1
+   ],
+   "caixa_na_folha": [
+    15,
+    551,
+    297,
+    797
+   ],
+   "largura": 282,
+   "altura": 246,
+   "ancora": {
+    "x": 141,
+    "y": 236,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/selva/so-traco/selva-01.png",
+   "arquivos": {
+    "so-traco": "simbolos/selva/so-traco/selva-01.png",
+    "branco-opaco": "simbolos/selva/branco-opaco/selva-01.png"
+   }
+  },
+  {
+   "id": "selva-02",
+   "tipo": "selva",
+   "folha": "icons/folha-vegetacao-quente.png",
+   "celula": [
+    2,
+    2
+   ],
+   "caixa_na_folha": [
+    325,
+    531,
+    615,
+    799
+   ],
+   "largura": 290,
+   "altura": 268,
+   "ancora": {
+    "x": 145,
+    "y": 258,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/selva/so-traco/selva-02.png",
+   "arquivos": {
+    "so-traco": "simbolos/selva/so-traco/selva-02.png",
+    "branco-opaco": "simbolos/selva/branco-opaco/selva-02.png"
+   }
+  },
+  {
+   "id": "selva-03",
+   "tipo": "selva",
+   "folha": "icons/folha-vegetacao-quente.png",
+   "celula": [
+    2,
+    3
+   ],
+   "caixa_na_folha": [
+    637,
+    543,
+    929,
+    801
+   ],
+   "largura": 292,
+   "altura": 258,
+   "ancora": {
+    "x": 146,
+    "y": 246,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/selva/so-traco/selva-03.png",
+   "arquivos": {
+    "so-traco": "simbolos/selva/so-traco/selva-03.png",
+    "branco-opaco": "simbolos/selva/branco-opaco/selva-03.png"
+   }
+  },
+  {
+   "id": "selva-04",
+   "tipo": "selva",
+   "folha": "icons/folha-vegetacao-quente.png",
+   "celula": [
+    2,
+    4
+   ],
+   "caixa_na_folha": [
+    955,
+    549,
+    1241,
+    795
+   ],
+   "largura": 286,
+   "altura": 246,
+   "ancora": {
+    "x": 143,
+    "y": 236,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/selva/so-traco/selva-04.png",
+   "arquivos": {
+    "so-traco": "simbolos/selva/so-traco/selva-04.png",
+    "branco-opaco": "simbolos/selva/branco-opaco/selva-04.png"
+   }
+  },
+  {
+   "id": "pantano-01",
+   "tipo": "pantano",
+   "folha": "icons/folha-vegetacao-quente.png",
+   "celula": [
+    3,
+    1
+   ],
+   "caixa_na_folha": [
+    15,
+    923,
+    297,
+    1125
+   ],
+   "largura": 282,
+   "altura": 202,
+   "ancora": {
+    "x": 141,
+    "y": 194,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/pantano/so-traco/pantano-01.png",
+   "arquivos": {
+    "so-traco": "simbolos/pantano/so-traco/pantano-01.png",
+    "branco-opaco": "simbolos/pantano/branco-opaco/pantano-01.png"
+   }
+  },
+  {
+   "id": "pantano-02",
+   "tipo": "pantano",
+   "folha": "icons/folha-vegetacao-quente.png",
+   "celula": [
+    3,
+    2
+   ],
+   "caixa_na_folha": [
+    325,
+    891,
+    603,
+    1139
+   ],
+   "largura": 278,
+   "altura": 248,
+   "ancora": {
+    "x": 139,
+    "y": 239,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/pantano/so-traco/pantano-02.png",
+   "arquivos": {
+    "so-traco": "simbolos/pantano/so-traco/pantano-02.png",
+    "branco-opaco": "simbolos/pantano/branco-opaco/pantano-02.png"
+   }
+  },
+  {
+   "id": "pantano-03",
+   "tipo": "pantano",
+   "folha": "icons/folha-vegetacao-quente.png",
+   "celula": [
+    3,
+    3
+   ],
+   "caixa_na_folha": [
+    645,
+    929,
+    923,
+    1143
+   ],
+   "largura": 278,
+   "altura": 214,
+   "ancora": {
+    "x": 139,
+    "y": 205,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/pantano/so-traco/pantano-03.png",
+   "arquivos": {
+    "so-traco": "simbolos/pantano/so-traco/pantano-03.png",
+    "branco-opaco": "simbolos/pantano/branco-opaco/pantano-03.png"
+   }
+  },
+  {
+   "id": "pantano-04",
+   "tipo": "pantano",
+   "folha": "icons/folha-vegetacao-quente.png",
+   "celula": [
+    3,
+    4
+   ],
+   "caixa_na_folha": [
+    949,
+    937,
+    1237,
+    1135
+   ],
+   "largura": 288,
+   "altura": 198,
+   "ancora": {
+    "x": 144,
+    "y": 190,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/pantano/so-traco/pantano-04.png",
+   "arquivos": {
+    "so-traco": "simbolos/pantano/so-traco/pantano-04.png",
+    "branco-opaco": "simbolos/pantano/branco-opaco/pantano-04.png"
+   }
+  },
+  {
+   "id": "rosa-dos-ventos-01",
+   "tipo": "rosa-dos-ventos",
+   "folha": "icons/folha-cartografia.png",
+   "celula": null,
+   "caixa_na_folha": [
+    77,
+    25,
+    589,
+    569
+   ],
+   "largura": 512,
+   "altura": 544,
+   "ancora": {
+    "x": 256,
+    "y": 525,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/rosa-dos-ventos/so-traco/rosa-dos-ventos-01.png",
+   "arquivos": {
+    "so-traco": "simbolos/rosa-dos-ventos/so-traco/rosa-dos-ventos-01.png",
+    "branco-opaco": "simbolos/rosa-dos-ventos/branco-opaco/rosa-dos-ventos-01.png"
+   }
+  },
+  {
+   "id": "rosa-dos-ventos-02",
+   "tipo": "rosa-dos-ventos",
+   "folha": "icons/folha-cartografia.png",
+   "celula": null,
+   "caixa_na_folha": [
+    713,
+    103,
+    1101,
+    521
+   ],
+   "largura": 388,
+   "altura": 418,
+   "ancora": {
+    "x": 194,
+    "y": 404,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/rosa-dos-ventos/so-traco/rosa-dos-ventos-02.png",
+   "arquivos": {
+    "so-traco": "simbolos/rosa-dos-ventos/so-traco/rosa-dos-ventos-02.png",
+    "branco-opaco": "simbolos/rosa-dos-ventos/branco-opaco/rosa-dos-ventos-02.png"
+   }
+  },
+  {
+   "id": "barra-de-escala-01",
+   "tipo": "barra-de-escala",
+   "folha": "icons/folha-cartografia.png",
+   "celula": null,
+   "caixa_na_folha": [
+    105,
+    577,
+    1149,
+    699
+   ],
+   "largura": 1044,
+   "altura": 122,
+   "ancora": {
+    "x": 522,
+    "y": 109,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/barra-de-escala/so-traco/barra-de-escala-01.png",
+   "arquivos": {
+    "so-traco": "simbolos/barra-de-escala/so-traco/barra-de-escala-01.png",
+    "branco-opaco": "simbolos/barra-de-escala/branco-opaco/barra-de-escala-01.png"
+   }
+  },
+  {
+   "id": "cartela-01",
+   "tipo": "cartela",
+   "folha": "icons/folha-cartografia.png",
+   "celula": null,
+   "caixa_na_folha": [
+    55,
+    705,
+    639,
+    999
+   ],
+   "largura": 584,
+   "altura": 294,
+   "ancora": {
+    "x": 292,
+    "y": 281,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/cartela/so-traco/cartela-01.png",
+   "arquivos": {
+    "so-traco": "simbolos/cartela/so-traco/cartela-01.png",
+    "branco-opaco": "simbolos/cartela/branco-opaco/cartela-01.png"
+   }
+  },
+  {
+   "id": "monstro-marinho-01",
+   "tipo": "monstro-marinho",
+   "folha": "icons/folha-cartografia.png",
+   "celula": null,
+   "caixa_na_folha": [
+    667,
+    787,
+    1233,
+    1187
+   ],
+   "largura": 566,
+   "altura": 400,
+   "ancora": {
+    "x": 283,
+    "y": 387,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": true,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/monstro-marinho/so-traco/monstro-marinho-01.png",
+   "arquivos": {
+    "so-traco": "simbolos/monstro-marinho/so-traco/monstro-marinho-01.png",
+    "branco-opaco": "simbolos/monstro-marinho/branco-opaco/monstro-marinho-01.png"
+   }
+  },
+  {
+   "id": "cartela-02",
+   "tipo": "cartela",
+   "folha": "icons/folha-cartografia.png",
+   "celula": null,
+   "caixa_na_folha": [
+    85,
+    1003,
+    613,
+    1205
+   ],
+   "largura": 528,
+   "altura": 202,
+   "ancora": {
+    "x": 264,
+    "y": 189,
+    "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
+   },
+   "espelhavel": false,
+   "modo_padrao": "so-traco",
+   "arquivo": "simbolos/cartela/so-traco/cartela-02.png",
+   "arquivos": {
+    "so-traco": "simbolos/cartela/so-traco/cartela-02.png",
+    "branco-opaco": "simbolos/cartela/branco-opaco/cartela-02.png"
+   }
+  }
+ ]
+}
