@@ -1,0 +1,8 @@
+{
+  "type": "FeatureCollection",
+  "properties": {
+    "versao_esquema": 1,
+    "_comentario": "Vias de Uldun (etapa 9, 2026-09-22). Esquema em ESPEC-dados.md: tipo fechado ('estrada' ou 'trilha') e 'lugares', a lista completa de ids de lugares por onde a via passa, NA ORDEM. O traçado gravado é o traçado ATRAÍDO, não o desenhado: um ponto a menos de 5 km de um lugar assume a coordenada exata dele, no servidor, ao salvar (backend/estradas.py). A lista 'lugares' é derivada dessa atração, não informada pelo navegador."
+  },
+  "features": []
+}

@@ -89,6 +89,19 @@
           </label>
           <button type="button" id="trava-camada-rios" class="botao-trava-camada">🔓 rios livres</button>
           <div id="rio-leitura" class="nota"></div>
+          <div id="controle-estrada">
+            <button type="button" id="estrada-desenhar" title="Desenha o traçado de uma via. Um clique a menos de 5 km de um lugar gruda nele (a atração é do servidor, ao salvar). Duplo clique termina.">+ estrada <kbd>E</kbd></button>
+            <button type="button" id="estrada-apagar" disabled title="Apaga a via selecionada">apagar via</button>
+          </div>
+          <label class="linha-relevo-automatico" title="O tipo da via nova. Estrada e trilha seguem as mesmas regras; só o traço muda.">
+            tipo
+            <select id="estrada-tipo">
+              <option value="estrada">estrada</option>
+              <option value="trilha">trilha</option>
+            </select>
+          </label>
+          <button type="button" id="trava-camada-estradas" class="botao-trava-camada">🔓 estradas livres</button>
+          <div id="estrada-leitura" class="nota"></div>
           <div id="controle-desfazer">
             <button type="button" id="botao-desfazer" disabled>desfazer</button>
             <button type="button" id="botao-refazer" disabled>refazer</button>
@@ -99,6 +112,15 @@
           </div>
           <div id="regua-leitura" class="nota"></div>
           <label class="nota"><input type="checkbox" id="grade-latlon-ativa"> grade lat/lon (10°)</label>
+        </div>
+      </section>
+
+      <section class="secao" data-secao="estradas">
+        <h2 class="cabecalho-secao">ESTRADAS</h2>
+        <div class="corpo-secao">
+          <p class="nota">Cada via com os lugares por onde passa, na ordem. O
+            círculo rosa no mapa marca o ponto que grudou num lugar.</p>
+          <ul id="lista-estradas"></ul>
         </div>
       </section>
 
@@ -198,7 +220,8 @@
         <tr><td><kbd>C</kbd> (segurado)</td><td>esconde tudo e mostra só a costa</td></tr>
         <tr><td><kbd>A</kbd></td><td>ferramenta de Área (liga/desliga)</td></tr>
         <tr><td><kbd>I</kbd></td><td>ferramenta de Rio (liga/desliga)</td></tr>
-        <tr><td><kbd>T</kbd></td><td>trava/destrava o objeto selecionado, área ou lugar (travado não se move nem se apaga)</td></tr>
+        <tr><td><kbd>E</kbd></td><td>ferramenta de Estrada (liga/desliga)</td></tr>
+        <tr><td><kbd>T</kbd></td><td>trava/destrava o objeto selecionado, via, rio, área ou lugar (travado não se move nem se apaga)</td></tr>
         <tr><td><kbd>D</kbd></td><td>troca o tema claro/escuro (a escolha fica lembrada)</td></tr>
         <tr><td><kbd>[</kbd> / <kbd>]</kbd></td><td>opacidade da camada de referência ativa</td></tr>
         <tr><td><kbd>+</kbd> / <kbd>-</kbd></td><td>zoom (nível a nível)</td></tr>
@@ -227,6 +250,8 @@
     const TRAVAS_INICIAL = /*__TRAVAS__*/;
     // Injetado a partir de dados/rios.json (backend/rios.py).
     const RIOS_INICIAL = /*__RIOS__*/;
+    // Injetado a partir de dados/estradas.json (backend/estradas.py).
+    const ESTRADAS_INICIAL = /*__ESTRADAS__*/;
     // Injetado a partir de dados/areas-pintadas.geojson (backend/areas.py).
     const AREAS_INICIAL = /*__AREAS__*/;
     // CALCULADA pelo servidor a cada pedido (backend/cobertura_automatica.py), nunca
@@ -241,6 +266,9 @@
   <script src="/static/js/lugares.js"></script>
   <script src="/static/js/areas.js"></script>
   <script src="/static/js/rios.js"></script>
+  <!-- geo.js antes da régua: é onde mora haversineKm. -->
+  <script src="/static/js/geo.js"></script>
+  <script src="/static/js/estradas.js"></script>
   <script src="/static/js/regua.js"></script>
   <script src="/static/js/app.js"></script>
 </body>

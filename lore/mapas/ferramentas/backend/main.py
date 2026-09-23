@@ -17,8 +17,8 @@ from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-from . import (areas, cobertura_automatica, coordenadas, lugares, medicoes,
-               operacoes, referencias, relevo_automatico, rios, travas)
+from . import (areas, cobertura_automatica, coordenadas, estradas, lugares,
+               medicoes, operacoes, referencias, relevo_automatico, rios, travas)
 
 RAIZ_FERRAMENTA = Path(__file__).resolve().parents[1]
 RAIZ_MAPAS = RAIZ_FERRAMENTA.parent
@@ -91,6 +91,13 @@ class NovoRio(BaseModel):
     ramo_de: str | None = None
 
 
+class NovaEstrada(BaseModel):
+    id: str
+    geometria: dict
+    tipo: str = "estrada"
+    nome: str | None = None
+
+
 class PontoMedicao(BaseModel):
     lat: float
     lon: float
@@ -127,6 +134,10 @@ def pagina_inicial() -> str:
     html = html.replace(
         "/*__AREAS__*/",
         json.dumps(areas.carregar(), ensure_ascii=False),
+    )
+    html = html.replace(
+        "/*__ESTRADAS__*/",
+        json.dumps(estradas.carregar(), ensure_ascii=False),
     )
     html = html.replace(
         "/*__RIOS__*/",
@@ -330,6 +341,58 @@ def refazer() -> JSONResponse:
 @app.get("/api/areas")
 def obter_areas() -> JSONResponse:
     return JSONResponse(areas.carregar())
+
+
+# --- Ferramenta de Estrada (etapa 9, 2026-09-22) ------------------------------
+# A atração automática de 5 km acontece AQUI DENTRO, ao salvar (backend/estradas.py):
+# o traçado devolvido pode ser diferente do enviado, e é o devolvido que vale.
+
+@app.get("/api/estradas")
+def obter_estradas() -> JSONResponse:
+    return JSONResponse(estradas.carregar())
+
+
+@app.post("/api/estradas")
+def criar_estrada(nova: NovaEstrada) -> JSONResponse:
+    # Única rota da estrada que NÃO devolve a coleção pura: devolve
+    # {"estradas": coleção, "atracao": relatório}, porque o relatório de quem grudou
+    # em quê só existe no momento da criação (não é gravado). GET, DELETE e trava
+    # continuam devolvendo a coleção, que é o que o recarregar do desfazer espera.
+    try:
+        _, relatorio = estradas.criar_estrada_relatando(nova.id, nova.geometria, nova.tipo, nova.nome)
+    except travas.Travado as e:
+        raise HTTPException(status_code=409, detail=str(e))
+    except KeyError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
+    return JSONResponse({"estradas": estradas.carregar(), "atracao": relatorio})
+
+
+@app.delete("/api/estradas/{id_estrada}")
+def apagar_estrada(id_estrada: str) -> JSONResponse:
+    try:
+        estradas.apagar_estrada(id_estrada)
+    except travas.Travado as e:
+        raise HTTPException(status_code=409, detail=str(e))
+    except KeyError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
+    return JSONResponse(estradas.carregar())
+
+
+@app.post("/api/estradas/{id_estrada}/trava")
+def travar_estrada(id_estrada: str, mudanca: MudancaTrava) -> JSONResponse:
+    try:
+        estradas.definir_trava(id_estrada, mudanca.travado)
+    except travas.Travado as e:
+        raise HTTPException(status_code=409, detail=str(e))
+    except KeyError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
+    return JSONResponse(estradas.carregar())
 
 
 # --- Ferramenta de Rio (etapa 8, 2026-09-22) ----------------------------------

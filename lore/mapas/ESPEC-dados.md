@@ -345,6 +345,40 @@ de alinhamento deixa de existir por construção, em vez de ser checado depois:
   escolher "ajustar o traçado até o lugar" ou "ignorar por agora". Isto continua sendo
   recomendação da IA, a confirmar na etapa 8.
 
+### Etapa 9 (2026-09-23): como o esquema das vias ficou no código
+
+Implementado em `ferramentas/backend/estradas.py`. O esquema acima vale como está,
+com `travado` (padrão `false`) como em todo objeto editável ("Travamento", acima).
+Três pontos **decididos pelo Direcionamento em 2026-09-23**, a partir de
+recomendações do Cartógrafo:
+
+- **A atração é do servidor, ao salvar**, e não do navegador durante o desenho (a
+  correção 3 diz "durante o desenho"; a decisão de ser nossa e em quilômetros, e não
+  a do Geoman em pixels, está em `ESPEC-ferramenta.md`, oitava rodada). O efeito para
+  o dado é o mesmo: o vértice gravado é bit a bit a coordenada do lugar. Quando mais
+  de um lugar está no raio, vence o mais próximo; cliques seguidos que grudam no mesmo
+  lugar viram um vértice só.
+- **`lugares` é DERIVADO da atração**, nunca informado à mão: é a lista, na ordem do
+  traçado, dos lugares em que algum vértice grudou. Uma via sem nenhum lugar no raio
+  grava `lugares: []`.
+- **A atração roda ANTES da checagem de terra.** Motivo do Direcionamento: um lugar
+  na costa pode ter a coordenada sobre a borda da água por antialiasing da máscara, e
+  a atração corrige o ponto antes de a checagem reprovar.
+
+**Limitação conhecida, não decisão definitiva: via só em terra.** Todo trecho é
+conferido contra a costa, pixel a pixel, como no rio e sem a exceção da foz. Hoje o
+esquema não tem **ponte, vau nem balsa**, e eles vão fazer falta: travessia de rio e
+rota marítima entre as ilhas de Waning. Entram numa etapa futura, com campo próprio
+no esquema; até lá, uma via não atravessa água.
+
+**"Desalinhada"** (a marcação da correção 3 para lugar movido depois): a tela da
+etapa 9 já MOSTRA (um ⚠ na lista e no texto da via quando um lugar de `lugares` não
+está mais em nenhum vértice), mas não oferece "ajustar o traçado" nem "ignorar", e
+nada disso é gravado. Continua recomendação do Cartógrafo, a confirmar.
+
+**Delta**: a atração do início de um braço de delta contra o rio-mãe (segundo item da
+correção 3) **não** foi feita nesta etapa; `backend/rios.py` não atrai nada.
+
 ## `dados/areas-pintadas.geojson` — relevo, cobertura e lagos
 
 ```json

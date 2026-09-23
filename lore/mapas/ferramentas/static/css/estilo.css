@@ -380,3 +380,42 @@ kbd {
   margin: 4px 0;
   cursor: pointer;
 }
+
+/* --- Ferramenta de Estrada (etapa 9) --------------------------------------- */
+#controle-estrada { display: flex; gap: 4px; margin-bottom: 4px; }
+#controle-estrada button { flex: 1; }
+#estrada-desenhar.ativo, #rio-desenhar.ativo {
+  background: var(--destaque-fraco);
+  border-color: var(--destaque);
+  color: var(--destaque);
+}
+#estrada-leitura { min-height: 14px; margin-bottom: 6px; }
+/* Com a caneta da estrada na mão, o marcador de lugar não pega clique: a atração
+   é de 5 km (uns 4 px em 100%), então o clique que deve grudar cai em cima do
+   marcador, e ele o engoliria antes do Geoman. O #mapa na frente é para vencer a
+   regra do Leaflet que devolve o clique a todo .leaflet-interactive. Idem para a
+   própria via e o rio já desenhados, senão começar uma via numa encruzilhada
+   selecionaria a via existente em vez de pôr o vértice. */
+#mapa.desenhando-estrada .icone-lugar,
+#mapa.desenhando-estrada .leaflet-estradas-pane .leaflet-interactive,
+#mapa.desenhando-estrada .leaflet-rios-pane .leaflet-interactive { pointer-events: none; }
+/* Tecla C: vias, rios e a indicação de atração também somem (panes próprias,
+   fora do overlay-pane que a regra geral alcança). */
+#mapa.so-costa .leaflet-estradas-pane,
+#mapa.so-costa .leaflet-estradas-atracao-pane,
+#mapa.so-costa .leaflet-rios-pane { display: none; }
+#lista-estradas { list-style: none; margin: 0; padding: 0; max-height: 30vh; overflow-y: auto; }
+.item-estrada { padding: 2px 3px; cursor: pointer; font-size: 11px; }
+.item-estrada:hover { background: var(--fundo-campo); }
+.item-estrada.selecionado { background: var(--destaque-fraco); outline: 1px solid var(--destaque); }
+.cabeca-estrada { display: flex; align-items: baseline; gap: 5px; }
+.lugares-estrada { color: var(--texto-fraco); font-size: 10px; padding-left: 4px; }
+.aviso-desalinhada { color: #ff5fa2; }
+.rotulo-atracao {
+  background: rgba(20, 20, 20, 0.8);
+  color: #ffd1e6;
+  border: 1px solid #ff5fa2;
+  font-size: 10px;
+  padding: 1px 4px;
+  box-shadow: none;
+}

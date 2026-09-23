@@ -1112,11 +1112,92 @@ que não se apaga e o cadeado de camada que não escreve no objeto.
    manda sempre `ramo_de: null`, e **braço de delta se cria pela API** enquanto não
    houver um campo próprio para ele.
 
+## Etapa 9 · Ferramenta de Estrada (2026-09-22 e 2026-09-23)
+
+Desenhar a via com o Geoman em modo `Line` (a mesma caneta do Rio), atrair ao salvar,
+validar contra a costa por segmento, gravar, apagar, travar, desfazer e refazer.
+`backend/estradas.py`, `backend/geo.py`, `dados/estradas.json`,
+`static/js/estradas.js`, `static/js/geo.js`. O esquema está em `ESPEC-dados.md`
+("Etapa 9: como o esquema das vias ficou no código"). O servidor foi escrito em
+22/09, logo depois dos commits da etapa 8; a tela, em 23/09.
+
+**Decididas pelo Direcionamento em 2026-09-23** (eram recomendações do Cartógrafo):
+
+1. **Via só em terra, por enquanto.** Registrada como **limitação conhecida**, não
+   como regra: ponte, vau e balsa entram numa etapa futura (travessia de rio e rota
+   marítima entre as ilhas de Waning).
+2. **`lugares` derivado da atração**, e não informado à mão.
+3. **Atração antes da checagem de terra**, porque um lugar na costa pode cair sobre a
+   borda da água por antialiasing, e a atração corrige antes de a checagem reprovar.
+
+**Decisões de código, sem pedido que as fixasse (recomendações, para derrubar se for
+o caso):**
+
+- **Tecla `E`.** Livre: `L` lugar, `A` área, `I` rio, `R` régua, `T` trava, `D` tema,
+  `C` costa.
+- **Pane da via em z 455**, entre o mar (450) e os rios (460): acima do mar pelo mesmo
+  motivo do rio, abaixo do rio porque o rio cruza por cima da via.
+- **Tipo escolhido num seletor** (`estrada`/`trilha`) antes de desenhar; o id sai do
+  tipo (`estrada-0001`, `trilha-0002`, numeração comum às duas).
+- **Com a caneta da via na mão, o marcador de lugar não pega clique** (classe
+  `desenhando-estrada` no mapa). Os 5 km da atração são uns 4 pixels em 100% de zoom,
+  então o clique que deve grudar cai EM CIMA do marcador, e o marcador o engoliria
+  antes do Geoman. Vale também para via e rio já desenhados, senão começar uma via
+  numa encruzilhada selecionaria a via existente.
+- **A resposta da criação muda de forma**: `POST /api/estradas` devolve
+  `{"estradas": coleção, "atracao": relatório}`. GET, DELETE e trava continuam
+  devolvendo a coleção pura, que é o que o recarregar do desfazer espera.
+
+**Como a tela mostra que a atração agiu** (pedido do Direcionamento):
+
+- **Relatório do servidor** (`atrair_detalhado`): uma entrada por ponto enviado que
+  grudou, com o índice, onde o clique estava, a coordenada do lugar, o id, a distância
+  em km e se foi fundido com o anterior. **Não é gravado**; só volta na resposta.
+- **Logo depois de criar**: linha tracejada rosa de cada clique até o lugar, com a
+  distância num rótulo, e um aviso na barra de baixo ("atração: 2 ponto(s) grudaram
+  em..."). Quando nada grudou, o aviso diz isso. Some na próxima seleção ou desenho.
+- **Permanente**: halo rosa em volta de todo vértice que está exatamente num lugar da
+  lista, numa pane ACIMA dos marcadores (z 610, sem pegar clique). Embaixo do marcador
+  (z 600) ele ficaria invisível, porque o vértice está bit a bit na coordenada do lugar.
+- **Seção ESTRADAS no painel**: cada via com "passa por: a → b → c", na ordem, e ⚠
+  quando está desalinhada (recomendação, ver `ESPEC-dados.md`).
+
+**Haversine com fonte única de cada lado.** `backend/geo.py` no servidor e
+`static/js/geo.js` no navegador (saiu de dentro de `regua.js`); a cópia que
+`tests/test_haversine.py` mantinha foi apagada, e o teste importa `geo.py`. Como as
+duas não podem ser uma só, o teste roda o `geo.js` DE VERDADE no node e compara com o
+servidor em 8 pares de pontos (5 km, trecho curto, arco longo, latitude alta cruzando
+180°, antípoda, quase antípoda, zero); o controle negativo troca um termo do `geo.js`
+e exige divergência. O teste FALHA, e não pula, se o node faltar. As duas funções
+ganharam o mesmo `min(1, ...)` antes do `asin` (perto do antípoda o JS dava `NaN`).
+
+**Defeito evitado antes de existir**: com duas ferramentas desenhando `Line`, o
+`pm:create` do Rio (que filtrava só pela forma) mandaria toda via também para
+`/api/rios`. Os dois handlers agora exigem a PRÓPRIA caneta ativa (`desenhando`). E a
+seleção passou a ser exclusiva entre as quatro ferramentas: antes, selecionar uma área
+ou um lugar deixava um rio selecionado, e a tecla `T` (que dava prioridade ao rio)
+travava o objeto errado.
+
+**Testes**: 25 em `tests/test_estradas.py` (eram 16 no servidor de 22/09), mais 4 novos
+em `tests/test_haversine.py`. Controle negativo no que grava: ponto fora do raio não
+se move e não entra no relatório, trecho sobre a água, tipo inventado, via que some na
+atração, id repetido, via travada, cadeado de camada, relatório que não pode ir para o
+disco, rota que recusa com 422 sem gravar, e espaço reservado `/*__X__*/` órfão na
+página (um só derruba o bloco de script inteiro).
+
 ## Pendências da ferramenta (lista viva)
 
 Cada linha diz o que falta e **em que etapa faz sentido**, para não virar lista de
 desejos sem dono. Decisão de quando fazer é do Direcionamento.
 
+- **Ponte, vau e balsa** (limitação conhecida da etapa 9). **Etapa**: própria, futura,
+  com campo novo no esquema das vias.
+- **Via desalinhada**: hoje só aparece marcada; "ajustar o traçado até o lugar" e
+  "ignorar por agora" não existem. **Etapa**: junto com a edição de vértice.
+- **Nome da via pela tela** (hoje só pela API, como o delta do rio). **Etapa**: quando
+  Rio e Estrada ganharem modal próprio.
+- **Atração do braço de delta contra o rio-mãe** (correção 3, segundo item): não
+  feita. **Etapa**: a revisão do Rio.
 - **Braço de delta pela tela.** Hoje `ramo_de` só se preenche pela API: o painel do
   Rio não tem campo para "braço de delta de", e amarrá-lo ao seletor "termina em"
   marcaria todo afluente como braço de delta (ver "Dois defeitos achados na revisão

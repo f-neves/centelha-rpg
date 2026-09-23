@@ -181,6 +181,12 @@ function iniciarFerramentaDeArea(mapa, areasIniciais, travasIniciais, coberturaA
     if (idSelecionada !== null && typeof window.limparSelecaoDeLugar === "function") {
       window.limparSelecaoDeLugar();
     }
+    // Rio e via também (etapa 9): sem isto, selecionar uma área deixava um rio
+    // selecionado, e a tecla T, que dá prioridade ao rio, travava o objeto errado.
+    if (idSelecionada !== null) {
+      if (typeof window.limparSelecaoDeRio === "function") window.limparSelecaoDeRio();
+      if (typeof window.limparSelecaoDeEstrada === "function") window.limparSelecaoDeEstrada();
+    }
     camadaDesenho.setStyle(estiloDaArea);
     atualizarLeitura();
   }

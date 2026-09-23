@@ -254,6 +254,12 @@
   // Line, validação por segmento contra a costa e gravação nossas.
   const ferramentaDeRio = iniciarFerramentaDeRio(mapa, RIOS_INICIAL, TRAVAS_INICIAL);
 
+  // Ferramenta de Estrada (etapa 9, static/js/estradas.js) -- mesma caneta Line do
+  // Rio; a atração de 5 km, a lista de lugares e a validação são do servidor.
+  const ferramentaDeEstrada = iniciarFerramentaDeEstrada(
+    mapa, ESTRADAS_INICIAL, TRAVAS_INICIAL, LUGARES_INICIAL
+  );
+
   // Régua + grade de lat/lon (etapa 4 / B3, static/js/regua.js).
   iniciarRegua(mapa, PARAMETROS_LEAFLET.raio_km);
   iniciarGradeLatLon(mapa, limites);
@@ -270,6 +276,12 @@
     // seleção de área é a mais recente quando existe (clicar num polígono não
     // desmarca o lugar selecionado antes, e o contrário também não).
     alternarTravaDoSelecionado: async () => {
+      // As seleções são mutuamente exclusivas (cada `selecionar` limpa as outras
+      // três), então a ordem aqui só decide empate que não deveria existir.
+      if (ferramentaDeEstrada.temSelecao()) {
+        const tratou = await ferramentaDeEstrada.alternarTravaDoSelecionado();
+        if (tratou) return;
+      }
       if (ferramentaDeRio.temSelecao()) {
         const tratou = await ferramentaDeRio.alternarTravaDoSelecionado();
         if (tratou) return;

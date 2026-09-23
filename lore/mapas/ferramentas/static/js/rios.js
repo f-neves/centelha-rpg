@@ -107,6 +107,7 @@ function iniciarFerramentaDeRio(mapa, riosIniciais, travasIniciais) {
     if (idSelecionado !== null) {
       if (typeof window.limparSelecaoDeArea === "function") window.limparSelecaoDeArea();
       if (typeof window.limparSelecaoDeLugar === "function") window.limparSelecaoDeLugar();
+      if (typeof window.limparSelecaoDeEstrada === "function") window.limparSelecaoDeEstrada();
     }
     camadaDesenho.setStyle(estiloDoRio);
     atualizarLeitura();
@@ -200,7 +201,10 @@ function iniciarFerramentaDeRio(mapa, riosIniciais, travasIniciais) {
   seletorFim.addEventListener("change", atualizarCampoDestino);
 
   mapa.on("pm:create", async (evento) => {
-    if (evento.shape !== "Line") return; // o polígono é da ferramenta de Área
+    // O polígono é da Área, e desde a etapa 9 a Estrada também desenha Line: sem a
+    // checagem de `desenhando`, uma via desenhada iria parar em /api/rios também
+    // (o mesmo defeito do pm:create da revisão da etapa 8, agora entre Rio e Estrada).
+    if (evento.shape !== "Line" || !desenhando) return;
     const geojson = evento.layer.toGeoJSON();
     evento.layer.remove();
     desativar();

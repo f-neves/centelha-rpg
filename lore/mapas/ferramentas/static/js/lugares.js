@@ -179,6 +179,9 @@ function iniciarFerramentaDeLugar(mapa, lugaresIniciais, travasIniciais) {
     for (const id in marcadoresPorId) delete marcadoresPorId[id];
     for (const feature of featuresAtuais) adicionarMarcador(feature);
     redesenharLista();
+    // A Estrada (estradas.js) marca os pontos que grudaram num lugar e as vias
+    // desalinhadas: mudou lugar, ela redesenha essas marcas.
+    if (typeof window.aoMudarLugares === "function") window.aoMudarLugares(featureCollection);
   }
 
   // --- Lista lateral com busca (item 3b) ------------------------------------
@@ -225,6 +228,9 @@ function iniciarFerramentaDeLugar(mapa, lugaresIniciais, travasIniciais) {
     // Selecionar um lugar desmarca a área selecionada, e vice-versa (areas.js):
     // a tecla T age sobre UM objeto, o último escolhido.
     if (id && typeof window.limparSelecaoDeArea === "function") window.limparSelecaoDeArea();
+    // Rio e via também (etapa 9), pelo mesmo motivo: T age sobre o último escolhido.
+    if (id && typeof window.limparSelecaoDeRio === "function") window.limparSelecaoDeRio();
+    if (id && typeof window.limparSelecaoDeEstrada === "function") window.limparSelecaoDeEstrada();
     for (const alvo of [anterior, id]) {
       if (!alvo) continue;
       const feature = featuresAtuais.find((f) => f.properties.id === alvo);
@@ -500,6 +506,7 @@ function iniciarFerramentaDeLugar(mapa, lugaresIniciais, travasIniciais) {
     // Idem para as áreas (B4): a operação desfeita pode ter sido um recorte.
     if (typeof window.recarregarAreas === "function") window.recarregarAreas();
     if (typeof window.recarregarRios === "function") window.recarregarRios();
+    if (typeof window.recarregarEstradas === "function") window.recarregarEstradas();
     atualizarBotoesPilha();
   }
   botaoDesfazer.addEventListener("click", () => desfazerOuRefazer("/api/desfazer"));
