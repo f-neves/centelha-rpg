@@ -983,6 +983,31 @@ de pé só o que é implementação: o capítulo (`aparencia-virtudes-vontade.md
 `vida-ferimentos-cura.md` com o degrau de ressaca abaixo de Crítico, o traço nas raças) e o motor
 (a parada de Virtude sem piso no teste de Frenesi). Não implementado.
 
+## 17 · As três perguntas da Revisora na rodada 90, decididas em 23/09/2026
+
+As três vieram do `90-revisora.md` §7 e ficaram com o humano pelas rodadas 91 a 93. Ele aceitou as
+três recomendações do Arquiteto, na sessão de 23/09/2026 à noite.
+
+- **A Força entra na definição de ação física.** A frase passa a ser "as que rolam Força, Destreza ou
+  Vigor", nos dois capítulos (`vida-ferimentos-cura.md`, `racas.md`) e nos dois documentos (`FRENESI.md`
+  §5 e a §16 acima, que citam "Vigor ou Destreza"). **O que isso muda para todo mundo, e não só para o
+  orc:** a penalidade de ferimento passa a valer no golpe das armas de `armas.json` que rolam Força (14 de
+  33 na contagem do `90-revisora.md`),
+  e o +2 da fúria também. **O contra comprado:** a penalidade de ferimento fica mais larga para todos os
+  personagens, e não só no Frenesi.
+- **A tortura se divide em corpo e alma.** Aguentar a dor do ferro é corpo, e rola Vigor + Convicção,
+  como o Estabilizar e as Artes; aguentar sem falar, sem ceder, sem trair, é alma, e rola a Convicção
+  sozinha no teste de Virtude. O capítulo (`aparencia-virtudes-vontade.md`, a tabela das Virtudes e o
+  item Resistir) diz as duas metades. **O contra comprado:** uma cena de tortura pode pedir dois testes, e
+  o mestre escolhe qual a situação pede.
+- **A Firula negativa vale só no teste de Virtude (e no Frenesi, que é teste de Virtude), e não
+  devolve nada.** Ela não entra no capítulo de Habilidades como regra geral, e a Firula de nível 2 que
+  devolve 1 de Força de Vontade (capítulo `habilidades.md`) não vale para ela. **O contra comprado:** a
+  Firula passa a ter duas formas com regras diferentes, e a negativa fica sem recompensa nenhuma além
+  do resultado.
+
+**Não implementado.** Fica como trabalho, junto com o que a §16 deixou.
+
 ## Fechado em 22/09/2026 pela Executora-4: as sete armas novas e a tabela do capítulo gerada
 
 Dois commits, os dois últimos que faltavam do catálogo de itens desde `a492010`.

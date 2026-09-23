@@ -24,17 +24,20 @@ fonte da regra é `FRENESI.md` (raiz); o registro de cada decisão, com o porqu�
 parte por ela).
 
 **Rodadas desta frente:** 90 (o livro), 91 (o "ficar parado" do Grid com a Virtude sozinha), 92
-(o CORRIGE da 91): as três com PROCEDE (`84228f3`, `12fb0be`, `25ffb62`). A **93** está aberta
-(`93-despacho.md`): o `reapontar.mjs` passa a gravar a linha onde a âncora está, porque a janela de
-±3 deixava citação torta continuar torta.
+(o CORRIGE da 91) e 93 (o `reapontar.mjs` grava a linha onde a âncora está): as quatro com PROCEDE
+(`84228f3`, `12fb0be`, `25ffb62`, `9127df5`).
 
-**Três perguntas da Revisora, com o humano e sem resposta:** a Força fora da definição de ação
-física (`vida-ferimentos-cura.md`, "Vigor ou Destreza"), de que lado cai a tortura (a palavra ficou
-de fora do Resistir de propósito), e se a Firula negativa é regra geral e devolve reserva. As
-recomendações do Arquiteto foram, nas três, a opção A (Força entra; a tortura se divide em corpo e
-alma; Firula negativa só no teste de Virtude, sem devolver nada).
+**As três perguntas da Revisora foram decididas em 23/09/2026, nas três recomendações do
+Arquiteto:** a Força entra na definição de ação física; a tortura se divide em corpo e alma; a
+Firula negativa vale só no teste de Virtude e não devolve nada. Registro e contra comprado:
+`leitura-de-novato-decisoes.md` §17. **Não implementado.**
 
-**Orçamento:** o humano liberou sem limite em 23/09/2026.
+**A rodada 94 é outra coisa, pedida pelo humano em 23/09/2026:** o `Pendencias.md` deixa de ser só
+índice e vira o documento completo do que está aberto, para outra instância dar os próximos
+direcionamentos a partir dele. Despacho em `94-despacho.md`.
+
+**Orçamento:** o humano liberou sem limite em 23/09/2026 (duas vezes, na sessão da tarde e na da
+noite). A leitora-novata não sobe nesta sessão, por decisão dele.
 
 ## Relações Sociais: estado em 20/09/2026, NÃO reconferido em 23/09
 
