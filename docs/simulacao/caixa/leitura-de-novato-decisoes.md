@@ -872,29 +872,30 @@ essa conversa fechar, as decisões voltam pra cá antes de ir pra Executora.
 normal, diminuindo a parada de quem tenta se segurar. O humano confirmou esse modelo nesta sessão, e
 mudou a penalidade de obrigatória para opcional. **O bônus de ferimento do §15 fica substituído.**
 
-- **A penalidade de ferimento é opcional no teste de Frenesi.** Ela entra só se o personagem quiser
-  (para facilitar a entrada). Quem quer resistir rola a Temperança sem ela, e por isso um orc em
-  Crítico ainda tem chance de se segurar. Consequência: a "entrada automática em Crítico" do
-  `FRENESI.md` §6 deixa de existir, e as colunas Machucado/Grave/Crítico das tabelas de lá valem só
-  para quem escolheu entrar.
+- **O teste de Frenesi é um só**, forçado ou por vontade própria: Temperança contra a Dificuldade
+  da situação, e entra em fúria quem falha (tirar a Dificuldade ou menos).
+- **A penalidade de ferimento é opcional.** Ela entra só se o personagem quiser ceder, e **neste
+  teste ela PODE zerar a parada** (Grave ou Crítico), o que é entrada automática: o piso de 1d6 do
+  §4f não vale aqui. Quem quer resistir não é obrigado a usá-la e, mesmo em Grave ou Crítico, rola
+  a parada original de Temperança.
+- **Gastar 1 ponto de Força de Vontade soma OU tira 1d6 da parada**, conforme o personagem queira
+  resistir ou ceder. Substitui o "garante o resultado" do `FRENESI.md` §6 e o +2 do §15. Com
+  Temperança 4 em Dificuldade 5, a chance de entrar vai de 28% (limpo) para 83% (cedendo) ou 5%
+  (resistindo).
 - **O teste só é forçado em dois casos.** Fora deles, o personagem só rola se quiser entrar. A
-  provocação de cotidiano (Trivial 3, Leve 5 no `FRENESI.md` §6) deixa de forçar teste.
+  provocação de cotidiano (Trivial 3, Leve 5 no `FRENESI.md` §6 antigo) deixa de forçar teste.
   - **Dano grande: um único golpe que tire 20% ou mais da Vida máxima, arredondado para cima**
     (orc de 40 PV: 8 de dano). O dano é o líquido, depois da Absorção. Pode subir para 25% se em
     mesa parecer pouco. Medido antes de decidir com `scripts/dano-por-tipo.mjs` (dano médio por
     golpe que acerta): Montante/Machado Pesado 14 sem armadura, 8 contra malha, 6 contra placa.
-  - **Provocação ou fúria por algo muito importante para o personagem.** Subjetivo, decide o
-    mestre, pela história e pelas relações pessoais do personagem. Sem campo na ficha.
+  - **Provocação importante.** O que é importante é subjetivo e decide o mestre, pela história e
+    pelas relações pessoais do personagem (sem campo na ficha). Quem provoca rola **Influência**
+    (a Habilidade ainda não foi fechada) contra **Força de Vontade do orc × 2 + Centelha dele**. Se
+    passar, o orc é obrigado a fazer o teste de Frenesi. Aqui a Força de Vontade protege o orc.
 - **Dano acumulado não dispara teste**, de propósito: o Frenesi é pela pancada, não pelo desgaste.
   Dez golpes pequenos levam o orc a Crítico sem nenhum teste.
-- **Provocar o orc de propósito é um teste social.** Outro personagem rola Influência (a
-  Habilidade ainda não foi fechada) contra **Força de Vontade do orc × 2 + Centelha dele**. Se
-  passar, o orc é obrigado a fazer o teste de Frenesi. Aqui a Força de Vontade protege o orc.
-- **O teste de Frenesi é um só**, forçado ou por vontade própria: Temperança contra a Dificuldade
-  da situação, e entra em fúria quem falha (tirar a Dificuldade ou menos). A única diferença do
-  voluntário é poder aplicar a penalidade de ferimento contra si mesmo.
 - **A Dificuldade vem da situação, e o mestre a escolhe nesta escala** (substitui a régua 3/5/7 e a
-  entrada automática do `FRENESI.md` §6):
+  entrada automática do `FRENESI.md` §6 antigo):
 
   | Situação | Dificuldade |
   |---|:--:|
@@ -917,9 +918,7 @@ mudou a penalidade de obrigatória para opcional. **O bônus de ferimento do §1
   | 10 | 100 | 100 | 100 | 92 | 72 | 50 |
   | 12 | 100 | 100 | 100 | 100 | 92 | 74 |
 
-- **Gastar 1 ponto de Força de Vontade tira 1d6 da parada** de quem quer entrar. Substitui o
-  "garante o resultado" do `FRENESI.md` §6 e o +2 do §15. Com Temperança 4 em Dificuldade 5, a
-  entrada vai de 28% para 83%.
+  As tabelas cedendo (−1d6) e resistindo (+1d6) com Força de Vontade estão no `FRENESI.md` §6.
 
 **O `FRENESI.md` (raiz, ainda sem rastreio) foi atualizado com tudo isto em 23/09/2026:** o §6
 reescrito, uma nota "A REVER" no §8 (a saída em Crítico foi escrita para a penalidade
@@ -927,11 +926,10 @@ obrigatória), a justificativa do §10 corrigida, o §11 com a lista nova de pen
 numeração interna consertada (§9/§10/§11). Cópia de antes da edição fora do repositório.
 
 **Ainda em aberto** (lista completa no `FRENESI.md` §11): a Habilidade da provocação por
-Influência; se o piso de 1d6 vale quando o próprio orc tira dados para falhar (com o piso, a Força
-de Vontade não faz nada para Temperança 2 e 3); se dá para gastar mais de 1 ponto no mesmo teste;
-a saída em Crítico e a Força de Vontade na saída; a janela da manutenção contra o ataque de 6
-Ticks; a ressaca em Crítico; Vigor 1 dando zero fúrias; a lista de ações físicas e os rótulos da
-régua de Virtude. Não implementado.
+Influência; se dá para gastar mais de 1 ponto de Força de Vontade no mesmo teste; a saída em
+Crítico e a Força de Vontade na saída; a janela da manutenção contra o ataque de 6 Ticks; a
+ressaca em Crítico; Vigor 1 dando zero fúrias; a lista de ações físicas e os rótulos da régua de
+Virtude. Não implementado.
 
 ## Fechado em 22/09/2026 pela Executora-4: as sete armas novas e a tabela do capítulo gerada
 
