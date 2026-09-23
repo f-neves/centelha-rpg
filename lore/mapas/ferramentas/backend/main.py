@@ -18,7 +18,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, StrictBool
 
 from . import (areas, cobertura_automatica, coordenadas, estradas, lugares,
-               ilhas, medicoes, nomes, operacoes, referencias, regioes, relevo_automatico, rios, travas)
+               elementos, ilhas, medicoes, nomes, operacoes, referencias, regioes, relevo_automatico, rios, travas)
 
 RAIZ_FERRAMENTA = Path(__file__).resolve().parents[1]
 RAIZ_MAPAS = RAIZ_FERRAMENTA.parent
@@ -115,6 +115,16 @@ class NomeDoMapa(BaseModel):
     angulo: float | None = None
     curva: dict | None = None
     reto: StrictBool | None = None
+    visivel_jogador: StrictBool | None = None
+    travado: StrictBool | None = None
+
+
+class ElementoDoMapa(BaseModel):
+    tipo: str | None = None
+    posicao: dict | None = None
+    tamanho: float | None = None
+    texto: str | None = None
+    latitude_escala: float | None = None
     visivel_jogador: StrictBool | None = None
     travado: StrictBool | None = None
 
@@ -727,3 +737,52 @@ def apagar_nome(id_nome: str) -> JSONResponse:
     except travas.Travado as e:
         raise HTTPException(status_code=409, detail=str(e))
     return _nomes()
+
+
+# --- Elementos de cartografia (B2, 2026-09-23 noite) -----------------------------------
+
+@app.get("/api/elementos")
+def obter_elementos() -> JSONResponse:
+    return JSONResponse(elementos.carregar())
+
+
+@app.post("/api/elementos")
+def criar_elemento(e: ElementoDoMapa) -> JSONResponse:
+    try:
+        elementos.criar({k: v for k, v in e.model_dump().items() if v is not None})
+    except ValueError as erro:
+        raise HTTPException(status_code=422, detail=str(erro))
+    return JSONResponse(elementos.carregar())
+
+
+@app.post("/api/elementos/padrao")
+def criar_elementos_padrao() -> JSONResponse:
+    """Cria os tipos que faltam (rosa, escala, cartela, monstro) nas posições padrão."""
+    elementos.criar_padroes()
+    return JSONResponse(elementos.carregar())
+
+
+@app.put("/api/elementos/{id_elemento}")
+def editar_elemento(id_elemento: str, e: ElementoDoMapa) -> JSONResponse:
+    mudancas = e.model_dump(exclude_unset=True)
+    mudancas.pop("tipo", None)
+    try:
+        elementos.editar(id_elemento, mudancas)
+    except KeyError as erro:
+        raise HTTPException(status_code=404, detail=str(erro))
+    except travas.Travado as erro:
+        raise HTTPException(status_code=409, detail=str(erro))
+    except ValueError as erro:
+        raise HTTPException(status_code=422, detail=str(erro))
+    return JSONResponse(elementos.carregar())
+
+
+@app.delete("/api/elementos/{id_elemento}")
+def apagar_elemento(id_elemento: str) -> JSONResponse:
+    try:
+        elementos.apagar(id_elemento)
+    except KeyError as erro:
+        raise HTTPException(status_code=404, detail=str(erro))
+    except travas.Travado as erro:
+        raise HTTPException(status_code=409, detail=str(erro))
+    return JSONResponse(elementos.carregar())

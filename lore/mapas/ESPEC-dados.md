@@ -516,3 +516,7 @@ Recomendação do Cartógrafo, registrada para o usuário revisar.
   cuja posição continua no `rotulo`) e NOMES LIVRES (`alvo.tipo` `livre`, ou `area`
   para cordilheira, com `texto` próprio). Esquema completo no cabeçalho de
   `ferramentas/backend/nomes.py`. Um ajuste por alvo.
+- **`dados/elementos.json`** (B2): rosa, escala, cartela e monstro, com posição
+  (centro, lon/lat), tamanho em px na resolução oficial, texto (cartela), latitude
+  em que a escala vale (escala) e `visivel_jogador`. Esquema no cabeçalho de
+  `ferramentas/backend/elementos.py`.

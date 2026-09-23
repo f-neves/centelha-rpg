@@ -466,3 +466,11 @@ kbd {
 .rotulo-nome.nivel-4 span { font-size: 17px; letter-spacing: 0.1em; }
 .rotulo-nome.nivel-5 span { font-size: 20px; letter-spacing: 0.15em; }
 #mapa.so-costa .leaflet-nomes-pane { display: none; }
+
+/* Elementos de cartografia (B2, 2026-09-23 noite). */
+#lista-elementos { list-style: none; margin: 0; padding: 0; }
+.item-elemento { display: flex; flex-wrap: wrap; align-items: center; gap: 3px; font-size: 11px; padding: 2px 0; }
+.item-elemento input[type=number] { width: 60px; }
+.marcador-elemento span { display: inline-block; transform: translate(-50%, -50%); white-space: nowrap;
+  background: rgba(244, 234, 210, 0.85); border: 1px solid #3a2a1c; padding: 1px 4px; font-size: 11px; cursor: move; }
+#mapa.so-costa .leaflet-elementos-pane { display: none; }

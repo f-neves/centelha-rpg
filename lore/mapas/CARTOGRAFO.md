@@ -22,6 +22,8 @@ primeira coisa que `/cartografo` mostra.)*
   - **A6 (feita)**: seletor "braço de delta de" no painel do Rio.
   - **B1 (feita)**: camada de nomes (dados, tela e desenho) e a composição nova, que
     planeja os símbolos por área e costura blocos sem emenda (teste byte a byte).
+  - **B2 (feita)**: rosa, barra de escala calibrada (21,87° N, latitude central de
+    Waning), cartela e monstro, posicionáveis (`dados/elementos.json`).
 - **RODADA DA NOITE DE 2026-09-23, AUTÔNOMA (o usuário fora de casa, sem testar).**
   Pedido: montanha x nevada aprovada; piso x densidade; áreas de exemplo irregulares;
   renderizar e avaliar; etapa 10 sem cache, edição de vértice, pincel; lista do que

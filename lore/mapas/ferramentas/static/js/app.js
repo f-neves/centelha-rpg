@@ -271,6 +271,9 @@
   // Camada de nomes (B1 da empreitada, static/js/nomes.js): carrega sozinha por GET.
   iniciarCamadaDeNomes(mapa);
 
+  // Elementos de cartografia (B2, static/js/elementos.js).
+  iniciarElementos(mapa);
+
   // Régua + grade de lat/lon (etapa 4 / B3, static/js/regua.js).
   iniciarRegua(mapa, PARAMETROS_LEAFLET.raio_km);
   iniciarGradeLatLon(mapa, limites);

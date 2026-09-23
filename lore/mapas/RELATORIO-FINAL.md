@@ -23,7 +23,7 @@ estava parado (derrubado pelo Claude Code por falta de memória na rodada anteri
 | A5 pincel | já feito na rodada anterior | `ac02fc3` |
 | A6 braço de delta na tela | feita | ver diário |
 | B1 camada de nomes | feita | ver diário |
-| B2 elementos de cartografia | pendente | |
+| B2 elementos de cartografia | feita | ver diário |
 | B3 exportação parcial | pendente | |
 | B4 rotas de comércio | pendente | |
 | B5 mapas distorcidos | pendente | |
@@ -128,4 +128,24 @@ estava parado (derrubado pelo Claude Code por falta de memória na rodada anteri
 - **Depende do teste do usuário**: o painel NOMES inteiro na tela (arrastar, nível,
   curva à mão, nome livre).
 
-### B2 · elementos de cartografia (começando)
+### B2 · elementos de cartografia (feita)
+
+- **Pronto**: `dados/elementos.json` (`backend/elementos.py`, rotas `/api/elementos`,
+  `/api/elementos/padrao`), desenho em `cartografia/elementos_desenho.py`, painel
+  ELEMENTOS com marcadores arrastáveis, tamanho, texto da cartela, latitude da escala
+  e visibilidade para o jogador.
+- **Barra de escala desenhada, não a peça da folha**: a peça `barra-de-escala-01` tem
+  divisões fixas e não calibra. A barra nova arredonda para 1, 2 ou 5 x 10^n km,
+  tem 4 divisões e escreve "escala verdadeira a 21,9° N". **21,87°** é a latitude
+  central de Waning, medida pelas caixas das três ilhas no cache de ilha. Teste mede a
+  barra desenhada em pixels e confere o número escrito; controle negativo: a 60° a
+  mesma barra tem o dobro dos km por pixel.
+- **Decisões minhas**: rosa a leste de Mére (36° L, 22° N), escala a sudoeste de Syl
+  (14° O, 2° N), cartela entre The Neck e Calin (12° O, 44° N) com "Uldun"
+  (provisório, como o nome do mundo), monstro no ponto de mar mais longe de terra
+  (25,2° O, 33,5° N, calculado). Tudo em mar aberto (teste confere contra a costa).
+- Imagem: `render/teste-elementos-mundo.png` (mundo a 1/8, elementos de teste não
+  gravados).
+- **Depende do teste do usuário**: arrastar os marcadores e o painel.
+
+### B3 · exportação parcial (começando)
