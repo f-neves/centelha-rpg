@@ -11,11 +11,37 @@ Três regras que o mantêm útil:
   de próprio é o que veio do chat e não mora em arquivo nenhum.** E apontar é dar nome,
   caminho e para que serve, nunca descrever o conteúdo do outro arquivo (`ARQUITETO.md §5.5`).
 
-Última reescrita: **20/09/2026**.
+Última reescrita: **23/09/2026** (só o primeiro assunto; o resto do documento é de 20/09).
 
 ---
 
-## Primeiro assunto ao reabrir: a rodada 85 em revisão
+## Primeiro assunto ao reabrir: o Frenesi e o teste de Virtude, fechando
+
+**Estado em 23/09/2026.** A frente da leitura de novato chegou ao Frenesi (Orc e Meio-Orc) e ao
+teste de Virtude, e as duas regras foram **decididas inteiras com o humano e estão no livro**. A
+fonte da regra é `FRENESI.md` (raiz); o registro de cada decisão, com o porquê, é
+`docs/simulacao/caixa/leitura-de-novato-decisoes.md` §16 (a §14 e a §15 foram substituídas em
+parte por ela).
+
+**Rodadas desta frente:** 90 (o livro), 91 (o "ficar parado" do Grid com a Virtude sozinha), 92
+(o CORRIGE da 91): as três com PROCEDE (`84228f3`, `12fb0be`, `25ffb62`). A **93** está aberta
+(`93-despacho.md`): o `reapontar.mjs` passa a gravar a linha onde a âncora está, porque a janela de
+±3 deixava citação torta continuar torta.
+
+**Três perguntas da Revisora, com o humano e sem resposta:** a Força fora da definição de ação
+física (`vida-ferimentos-cura.md`, "Vigor ou Destreza"), de que lado cai a tortura (a palavra ficou
+de fora do Resistir de propósito), e se a Firula negativa é regra geral e devolve reserva. As
+recomendações do Arquiteto foram, nas três, a opção A (Força entra; a tortura se divide em corpo e
+alma; Firula negativa só no teste de Virtude, sem devolver nada).
+
+**Orçamento:** o humano liberou sem limite em 23/09/2026.
+
+## Relações Sociais: estado em 20/09/2026, NÃO reconferido em 23/09
+
+O texto abaixo é o topo deste documento como estava em 20/09. As rodadas 85 a 89 fecharam depois
+dele; confira pelos vereditos na caixa antes de agir sobre qualquer item daqui.
+
+### A rodada 85 em revisão
 
 **Estado em 20/09/2026.** O ritmo de mover a Régua de Relação está **decidido nos quatro itens,
 construído e no ar**: o lote entrou em `d73a058` e `057b339` em 19/09 e o deploy é automático. O

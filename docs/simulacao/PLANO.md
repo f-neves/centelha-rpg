@@ -319,6 +319,11 @@ As decisões tomadas dentro do ciclo vão para o `CONTEXTO` como `D`, com motivo
 
 ## 8 · A ordem da fila
 
+> ### ▶ Em 23/09/2026: a frente corrente é o Frenesi e o teste de Virtude
+>
+> O estado dela está no topo do `CONTEXTO.md` (rodadas 90 a 93, e três perguntas da Revisora com o
+> humano). O quadro abaixo, de 20/09, é o da frente de Relações Sociais, e não foi reconferido.
+>
 > ### ⛔ ANTES DESTA FILA: há uma conversa aberta com o humano, e ela vem primeiro
 >
 > **Estado em 20/09/2026.** A fila numerada abaixo é da frente do **Grid**, e ela não é o próximo
