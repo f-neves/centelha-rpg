@@ -962,6 +962,22 @@ mudou a penalidade de obrigatória para opcional. **O bônus de ferimento do §1
 reescrito, o §8 (saída) reescrito, a justificativa do §10 corrigida, o §11 com a lista nova de pendências e a
 numeração interna consertada (§9/§10/§11). Cópia de antes da edição fora do repositório.
 
+**Quatro decisões a mais, de 23/09/2026, vindas do grupo 4 da rodada 90** (a Executora achou
+código e dado que o despacho não cobria; o humano aceitou as quatro recomendações do Arquiteto):
+
+- **O "ficar parado" do Grid** (`artes-grid-mesa.ts`, `paresDeCoragem`/`oferecerSaida`): a Virtude
+  sozinha (Bravura ou Temperança) rola contra **metade da Dificuldade da área, arredondada para
+  cima** (borda 10 vira 5, meio 15 vira 8, fundo 20 vira 10). Na borda as chances ficam quase iguais
+  às de hoje com Vigor 3 (Bravura 4: 74% hoje, 72% depois); no fundo a Virtude alta aguenta mais
+  (Bravura 6: 10% hoje, 50% depois).
+- **Só as resistências da alma viram Virtude sozinha.** As do corpo continuam somando Atributo:
+  Vigor + Convicção e Vontade + Convicção nos Efeitos das Artes (`efeitos.json`, a tabela de
+  `artes/regras.astro:74`) e o Estabilizar. O capítulo diz quando é uma e quando é outra.
+- **A fúria racial NÃO ativa as Técnicas "em fúria" do Caminho Sangue Fervente.** Só a Técnica
+  Fúria ativa. O nome "Frenesi" fica nos dois lugares (traço e Técnica), e o livro distingue.
+- **`racas.json`, descrição do meio-orc:** sai a frase que diz que o orc puro não é raça jogável
+  (ele é, com custo 40 e seção no capítulo), e a longevidade passa a 70 anos, como no capítulo.
+
 **Tudo o que estava aberto no Frenesi e no teste de Virtude foi fechado em 23/09/2026.** Fica
 de pé só o que é implementação: o capítulo (`aparencia-virtudes-vontade.md`, a tabela de
 `vida-ferimentos-cura.md` com o degrau de ressaca abaixo de Crítico, o traço nas raças) e o motor
