@@ -9,7 +9,22 @@ confirmado pelo usuário; o que é recomendação de IA fica marcado como tal.
 *(Atualizar esta seção antes de encerrar toda sessão de trabalho no mapa — é a
 primeira coisa que `/cartografo` mostra.)*
 
-- **Última atualização: 2026-09-23 à tarde (CONCLUÍDA e COMMITADA, sem push).** O
+- **Última atualização: 2026-09-23, fim da tarde (CONCLUÍDA e COMMITADA, sem push).
+  A PRÓXIMA RODADA É DO USUÁRIO**: ele vai pintar áreas de verdade na ferramenta e
+  renderizar, e o que encontrar vira a rodada seguinte. Não começar etapa nova antes.
+  - **Correção 1 (tamanho mínimo)**: a tabela de contorno virou
+    `dados/tamanho-minimo-silhueta.json` (campo `tamanho_minimo_silhueta`), com a
+    limitação registrada em "Achados técnicos"; entrou a medida de detalhe interno,
+    `dados/tamanho-minimo-detalhe.json` (campo `tamanho_minimo_detalhe`). Piso do
+    renderizador = o maior dos dois: barra de escala 80, monstro marinho 66, cartela 58,
+    rosa 54, duna e palmeira 46, montanha e nevada 44, pântano 40, conífera e geleira
+    38, vegetação seca 36, rochedo e tundra 32, folhosa e colina 30, cidade, fortaleza,
+    marco, selva e vila 28, árvore tropical 26, porto e ruína 24.
+  - **Correção 2 (montanha x nevada)**: registrada em "Decisões em aberto", com a
+    medida do tom e a recomendação (confiar no tom; nevada maior como segunda opção;
+    não pintar fundo por relevo).
+  - **239 testes verdes.** Servidor no ar em `http://127.0.0.1:8420/`.
+- **Rodada da tarde de 2026-09-23 (commitada).** O
   usuário respondeu as quatro decisões abertas da noite e mandou commitar a rodada da
   manhã junto com esta.
   - **Decisão 4 (modo de recorte)**: tundra passou a branco opaco (o branco dela é
@@ -19,7 +34,8 @@ primeira coisa que `/cartografo` mostra.)*
   - **Decisão 5 (borda da mancha)**: fica a franja rala, SEM mais ruído. Reavaliar
     depois que o usuário pintar áreas de verdade: o que estraga a borda hoje é o
     polígono de 5 lados do exemplo.
-  - **Decisão 7 (tamanho mínimo)**: MEDIDO, não mais a olho.
+  - **Decisão 7 (tamanho mínimo)**: MEDIDO, não mais a olho (corrigida no fim da
+    tarde: esta era só a silhueta, ver acima).
     `cartografia/legibilidade.py` + `scripts/medir_legibilidade.py` gravam
     `dados/tamanho-minimo-legivel.json`, e o renderizador usa como piso. Critério:
     silhueta binarizada; dois tipos se confundem num tamanho quando a maior IoU entre
@@ -1070,6 +1086,18 @@ prompts, IA pintando o mapa inteiro, está superada — ver seção Técnica). R
 
 ## Achados técnicos registrados (não são decisões, são fatos medidos)
 
+- **A medida de silhueta mede CONTORNO, não legibilidade** (2026-09-23, correção do
+  usuário). A primeira tabela de tamanho mínimo (`dados/tamanho-minimo-silhueta.json`,
+  antes chamada `tamanho-minimo-legivel.json`) deu 14 px para a árvore folhosa, e o
+  usuário viu a folhosa virar mancha cinza muito antes disso: a hachura de dentro
+  some antes do contorno. Por isso ela ganhou o nome de **tamanho mínimo de silhueta
+  distinguível** e uma segunda medida, o **tamanho mínimo de detalhe interno**
+  (`dados/tamanho-minimo-detalhe.json`: o símbolo reduzido comparado com ele mesmo
+  borrado na escala da própria hachura; equivalentes abaixo de 0,03 de diferença RMS
+  de luminância). O renderizador usa o MAIOR dos dois. A folhosa foi de 14 para 30 px;
+  o detalhe manda em quase todo tipo (só porto e ruína ficam no contorno, 24 px).
+  Critérios completos em `ferramentas/cartografia/legibilidade.py`.
+
 - **`mascaras/costa_10240.png` é modo "L" (escala de cinza, 1 canal), não RGBA — não
   tem canal alfa de verdade.** Achado em 2026-09-21 (sessão de geração de tiles):
   255 = terra, 0 = mar, confirmado por amostragem (5000 pixels aleatórios, só esses
@@ -1153,6 +1181,17 @@ prompts, IA pintando o mapa inteiro, está superada — ver seção Técnica). R
 
 ## Decisões em aberto
 
+- **Montanha comum x montanha nevada no mapa pequeno** (achado de 2026-09-23). As
+  duas têm a MESMA silhueta (a medida de contorno as confunde até 32 px), e a
+  diferença é a neve. Medi o tom: a luminância média dentro da silhueta, sobre o papel,
+  é 0,57 na comum e 0,65 na nevada em 40 px, e a diferença (0,08 a 0,09) se mantém até 12 px,
+  três vezes o limiar de detalhe (0,03). Ou seja, a neve continua lendo como TOM
+  depois que a hachura some. **Recomendação do Cartógrafo**: não pintar fundo por
+  relevo (a área de alta montanha fica por cima de coberturas, e uma cor de relevo
+  brigaria com a cor da floresta ou da tundra embaixo) e confiar no tom, com duas
+  garantias que já existem: a nevada em branco opaco e o piso medido (44 px, o mesmo
+  da comum). Se, pintando, as duas ainda se confundirem, a segunda opção é a nevada
+  maior (hoje 90 px contra 80), o que também diz "mais alto". Decisão do usuário.
 - Nome definitivo do mundo (hoje "Uldun" é provisório).
 - Nomes das massas de terra sem rótulo (a maioria do mapa).
 - Esquema completo de dados além de `lugares.geojson` (cidades, rios, estradas, marcos,
