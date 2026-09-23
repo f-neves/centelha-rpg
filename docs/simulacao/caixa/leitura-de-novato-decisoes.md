@@ -890,7 +890,9 @@ mudou a penalidade de obrigatória para opcional. **O bônus de ferimento do §1
     golpe que acerta): Montante/Machado Pesado 14 sem armadura, 8 contra malha, 6 contra placa.
   - **Provocação importante.** O que é importante é subjetivo e decide o mestre, pela história e
     pelas relações pessoais do personagem (sem campo na ficha). Quem provoca rola **Influência**
-    (a Habilidade ainda não foi fechada) contra **Força de Vontade do orc × 2 + Centelha dele**. Se
+    com a Habilidade que o mestre escolher pela forma da provocação (Manha para deboche,
+    Intimidação para ameaça, Empatia para achar a ferida, Oratória para humilhar em público; mesma
+    lógica do acalmar do `FRENESI.md` §8) contra **Força de Vontade do orc × 2 + Centelha dele**. Se
     passar, o orc é obrigado a fazer o teste de Frenesi. Aqui a Força de Vontade protege o orc.
 - **Dano acumulado não dispara teste**, de propósito: o Frenesi é pela pancada, não pelo desgaste.
   Dez golpes pequenos levam o orc a Crítico sem nenhum teste.
@@ -925,8 +927,7 @@ reescrito, uma nota "A REVER" no §8 (a saída em Crítico foi escrita para a pe
 obrigatória), a justificativa do §10 corrigida, o §11 com a lista nova de pendências e a
 numeração interna consertada (§9/§10/§11). Cópia de antes da edição fora do repositório.
 
-**Ainda em aberto** (lista completa no `FRENESI.md` §11): a Habilidade da provocação por
-Influência; a saída em
+**Ainda em aberto** (lista completa no `FRENESI.md` §11): a saída em
 Crítico e a Força de Vontade na saída; a janela da manutenção contra o ataque de 6 Ticks; a
 ressaca em Crítico; Vigor 1 dando zero fúrias; a lista de ações físicas e os rótulos da régua de
 Virtude. Não implementado.
