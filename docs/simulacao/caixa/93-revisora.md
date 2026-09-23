@@ -115,6 +115,26 @@ no repositório real: a config lida antes e depois de um commit pelo gancho, 16 
 (`test-rodada.mjs` e `test-reapontar.mjs`). Nenhum dos dois commits toca uma conclusão minha. Rebaseei
 (`§10`, contagem e não conclusão) e não li o registro como prova minha: a minha prova é a do clone.
 
+## Adendo · o anexo lido como parte do relato, conferido e não aceito
+
+O Arquiteto pediu, depois do veredito, que eu lesse `95e4733` e `2820332` como anexo do relato. A busca
+por testes de risco que está lá bate com o meu item 2, que eu fiz de forma independente. Duas coisas
+no anexo não se sustentam como escritas:
+
+- **O `2820332` não traz a saída do gancho.** A mensagem ao Arquiteto diz que o commit "traz a saída
+  inteira do gancho [...] com o test-reapontar rodando dentro dele". O que o commit acrescenta é uma
+  linha, e ela diz que a saída desse segundo commit "sai no relato ao Arquiteto", ou seja, numa
+  mensagem, e não no arquivo. No registro commitado há a config antes e depois (16 linhas, `cmp`), e
+  não há o texto do gancho. A prova de que o `test-reapontar` roda dentro do gancho sem mexer na
+  config, com a saída guardada, é a do meu item 1 (no clone).
+- **"54 s, que é o tempo do gancho com `validate` e `tsc`"** explica o tempo por uma causa que não
+  aconteceu. O `95e4733` só toca o `progresso-93.md`, e o gancho só roda o `tsc` quando o commit toca
+  `src/`, `scripts/` ou os arquivos de configuração (`scripts/hooks/pre-commit:192`). Não medi de
+  onde vieram os 54 s, e não ofereço outra causa. Só registro que a dada não vale para aquele
+  commit.
+
+Nenhuma das duas muda o veredito.
+
 ## Limpeza
 
 Tudo que foi transitório rodou no clone (`scratchpad/clone93`, apagado no fim, com a junção do
