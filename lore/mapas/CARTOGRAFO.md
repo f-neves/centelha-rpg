@@ -40,6 +40,33 @@ primeira coisa que `/cartografo` mostra.)*
     `render/analise/exemplos-irregulares.png`. **O dado continua sem commit**, como os
     exemplos de antes. **A pilha de desfazer tem agora 7 apagamentos e 22 criações**:
     Ctrl+Z em excesso na tela volta para os exemplos antigos.
+  - **Etapa C · render e avaliação (feita)**. `renderizar_regiao.py` ganhou **Syl**
+    (`-24,5 0,5 10,5 27`). Prévias em `render/recorte-<região>-cor-densidade-rapido.png`
+    para mere, syl, calin, the-neck e white-wall; as de pentágono, para comparar, ficaram
+    em `render/analise/pentagonos/`. Avaliação, sem maquiar:
+    - **A franja resolve.** Com contorno irregular, a borda da cor e a rala dos símbolos
+      somem como reta: deserto de Mére, florestas de Syl e Calin e a tropical da costa
+      leste leem como manchas pintadas à mão. O que estragava era o pentágono, e a
+      decisão 5 (sem mais ruído) fica de pé.
+    - **O mais feio: relevo e cobertura no mesmo lugar.** No norte de Mére, a floresta
+      boreal passa por cima da cordilheira, e as coníferas cobrem os picos nevados. O
+      renderizador não tem regra para isso, e toda a terra pintada de verdade vai ter
+      as duas camadas. **Proposta**: relevo manda. Onde há montanha ou alta montanha,
+      a cobertura só entra como franja rala (ou nada), e a cor dela continua embaixo.
+    - **Geleira vira papel de parede** no White Wall: a mesma peça repetida numa grade
+      densa. **Proposta**: raio da geleira de 0,80 para uns 1,6, e mais rala na beira.
+      Gelo em atlas é quase só cor, com pouca marca.
+    - **Colina some** na prévia: são pontinhos claros e soltos. Pode ser o modo rápido
+      (5 km/px), e só a alta resolução diz.
+    - **Tundra no Neck**: 8 símbolos numa ilha inteira. É rala de propósito (100 px,
+      raio 1,0), mas o aviso "poucos" dispara, com razão: a ilha lê como cor só.
+    - **Densidade e tamanho das florestas**: bons. Tropical e selva leem densas, e a
+      temperada de Calin é a melhor das imagens. A palmeira é a única com o piso agindo
+      de verdade: 21% a 26% "a menos" em toda floresta tropical.
+    - **Erro meu no exemplo**: a colina de Syl ficou metade no mar, numa ponta de
+      costa. Tem 18 colinas (contado), e mesmo assim quase não se vê: é o mesmo
+      problema da colina clara, não falta de símbolo. Não corrigi, é exemplo.
+    - **Proposta para o piso x densidade** (item 2): ver "Decisões em aberto".
 - **Rodada do fim da tarde de 2026-09-23 (CONCLUÍDA e COMMITADA, sem push).** Era a
   que deixava a próxima para o usuário pintar; ele pediu a rodada autônoma acima no
   lugar.
@@ -1212,6 +1239,27 @@ prompts, IA pintando o mapa inteiro, está superada — ver seção Técnica). R
 
 ## Decisões em aberto
 
+- **Piso x densidade: o que fazer quando o piso aperta** (pedido do usuário em
+  2026-09-23 à noite; o aviso já existe, ver "Estado atual", etapa A). **O que o
+  código faz hoje**: não reduz a contagem. Os pontos saem da densidade pedida e o piso
+  só aumenta o símbolo, então eles se sobrepõem mais. **O que as áreas de exemplo
+  mostraram**: o piso só pesa de verdade na **palmeira** (piso 46 contra tamanho 40,
+  70% da faixa pedida abaixo do piso, 21% a 26% "a menos" em toda floresta tropical);
+  na conífera ele come metade da faixa, mas quase não dispara aviso. O "poucos"
+  disparou na tundra do Neck (rala de propósito) e em pedaços de área cortados pela
+  janela. **Recomendação do Cartógrafo**, em três partes:
+  1. **Manter a contagem, aceitar a sobreposição.** Árvores que se encostam leem como
+     copa de floresta, que é a convenção de atlas; tirar símbolo para respeitar a
+     folga faria a floresta pequena ficar rala, que é o contrário do pedido.
+  2. **Consertar a palmeira na folha, não no número.** Aumentar o tamanho dela até o
+     piso parar de morder exigiria uns 70 px, grande demais ao lado da árvore
+     tropical (40). O conserto é regenerar a folha com hachura mais grossa, e ela já
+     está em `FOLHAS-A-REGENERAR.md`. Até lá, o aviso fica aparecendo.
+  3. **Área pequena demais para o tipo (o "poucos")**: a cor carrega o sentido e os
+     poucos símbolos ficam. Se o usuário achar muitas florestas pequenas assim, o
+     próximo passo é um símbolo de **bosque** (uma peça com 3 a 5 árvores juntas),
+     que diz "floresta" com um símbolo só; seria uma folha nova. Tundra fica fora do
+     "poucos" se o usuário confirmar que rala é o que ela deve ser.
 - **Montanha comum x montanha nevada no mapa pequeno** (achado de 2026-09-23). As
   duas têm a MESMA silhueta (a medida de contorno as confunde até 32 px), e a
   diferença é a neve. Medi o tom: a luminância média dentro da silhueta, sobre o papel,

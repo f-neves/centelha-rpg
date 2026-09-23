@@ -52,6 +52,8 @@ FATOR_RAPIDO = 4
 # Recortes em lon/lat (oeste, sul, leste, norte), pelas faixas do CARTOGRAFO.
 REGIOES = {
     "mere": (7.0, -1.5, 31.5, 41.5),
+    # Syl entrou em 2026-09-23 à noite, medida na costa reduzida (oeste em ~23°O).
+    "syl": (-24.5, 0.5, 10.5, 27.0),
     "calin": (-3.0, 24.0, 17.0, 44.0),
     "the-neck": (-34.0, 46.0, -18.0, 57.0),
     "white-wall": (-42.0, 57.0, -10.0, 68.7),
