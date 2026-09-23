@@ -954,12 +954,18 @@ mudou a penalidade de obrigatória para opcional. **O bônus de ferimento do §1
   Varridos capítulos e `src/data/*.json`: "Trivial" colidia com `qual-sistema.md` ("Rola dado? [...]
   Trivial, não") e "Leve" com a classe de arma/armadura/carga. "Comum" e "Firme" também não servem
   (rótulos de nível em `virtudes.json`). Branda e Tensa não aparecem em lugar nenhum.
+- **O +2 da fúria vale para ação física pela definição do capítulo de ferimentos** ("as que rolam
+  Vigor ou Destreza", `vida-ferimentos-cura.md`), sem lista. **Arremesso ganha; Atirador (arco,
+  besta) não.** Aparar é a Defesa por Bloqueio, que em fúria leva −2, e não ganha nada.
 
 **O `FRENESI.md` (raiz, ainda sem rastreio) foi atualizado com tudo isto em 23/09/2026:** o §6
 reescrito, o §8 (saída) reescrito, a justificativa do §10 corrigida, o §11 com a lista nova de pendências e a
 numeração interna consertada (§9/§10/§11). Cópia de antes da edição fora do repositório.
 
-**Ainda em aberto** (lista completa no `FRENESI.md` §11): a lista de ações físicas que ganham o bônus da fúria. Não implementado.
+**Tudo o que estava aberto no Frenesi e no teste de Virtude foi fechado em 23/09/2026.** Fica
+de pé só o que é implementação: o capítulo (`aparencia-virtudes-vontade.md`, a tabela de
+`vida-ferimentos-cura.md` com o degrau de ressaca abaixo de Crítico, o traço nas raças) e o motor
+(a parada de Virtude sem piso no teste de Frenesi). Não implementado.
 
 ## Fechado em 22/09/2026 pela Executora-4: as sete armas novas e a tabela do capítulo gerada
 
