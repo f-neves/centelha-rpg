@@ -415,7 +415,7 @@ que pedem uma escolha humana de verdade, que são 4% delas.
 próprio agregador calcula a partir do cenário PISO do avanço unificado (a versão
 pessimista, um cartão absorvido por parada e o resto sobrando), de um dia em que
 nenhum dos degraus existia em código. O código real que está no Grid hoje
-(`avancarAteParar`, `grid.astro:6163-6178`) entrega mais do que o PISO assumia:
+(`avancarAteParar`, `grid.astro:6162-6177`) entrega mais do que o PISO assumia:
 ele não absorve só o Tick morto, resolve TODO golpe vencido do Tick em que para
 (a medição de 06/09/2026, acima). Isso bate com o cenário SEM-GESTO do mesmo
 agregado, não o PISO, e é por isso que a tabela de PISO (que chegava a 573.255,
@@ -436,7 +436,7 @@ entregues nestes shas, e o total de 1.171.957 vem de `R:169`.
 número.** Uma leitura anterior chamava de "reconciliado" o fato de a subtração
 ingênua da tabela e o cenário SEM-GESTO do agregador baterem exato, como se
 fossem duas testemunhas independentes. **Não são: é o mesmo contador**
-(`golpeNoTick`, `scripts/sim/log.mjs:224-226`) **lido por duas exibições
+(`golpeNoTick`, `scripts/sim/log.mjs:226-228`) **lido por duas exibições
 algebricamente equivalentes** (`ticksComGolpe`, `scripts/sim/agregar.mjs:648`, e
 `comGolpe`, `agregar.mjs:481`, são `t − round(f·t)` e `round((1−f)·t)` sobre os
 mesmos `x.ticks`/`x.fracaoSemGolpe`). Perturbado à mão um golpe numa bateria real

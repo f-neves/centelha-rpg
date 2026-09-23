@@ -1193,7 +1193,7 @@ o commit são **seus**, e você decide. A Alabarda passando a bater de corte **n
    Três casos numa semana (04/09/2026), e **eles não têm a mesma forma**, o que
    muda como se procura:
 
-   - `gen-monsters.mjs:266` · `CAMPOS_MESA` · afirma GARANTIA, em letras: "esquecer disso aparece
+   - `gen-monsters.mjs:269` · `CAMPOS_MESA` · afirma GARANTIA, em letras: "esquecer disso aparece
      na hora: o valor chega `undefined` na tela". Chegou `null`, calado. É o caso
      puro, e é o que palavra de garantia acha;
    - `.github/workflows/validate.yml:54` · declarava TOLERÂNCIA com uma desculpa
@@ -1935,7 +1935,7 @@ aviso do lote chegar. São **baseline a refazer contra a árvore do aviso**, nã
 do produto. Citar qualquer um destes como se fosse de hoje é status velho, e é meu.
 
 **1 · Superfície da ponte · 44 nomes, 14 sem consumidor.**
-`scripts/sim/lib-ponte.mjs:28-45` (`penDadosDaRegua`) expõe **44 nomes**; o harness alcança 30 e **nunca
+`scripts/sim/lib-ponte.mjs:31-48` (`penDadosDaRegua`) expõe **44 nomes**; o harness alcança 30 e **nunca
 chama 14**: `HEX_CORPO_A_CORPO`, `HEX_HASTE`, `PERFIL_CORRENTE`, `contrapeDe`,
 `defesaEfetiva`, `deslocamento`, `errouPor`, `penDadosDaRegua`, `qaDaPeca`,
 `saidaDoAtaque`, `semeado`, `somarCondicoes`, `temGesto`, `vizinhos`.
@@ -1960,7 +1960,7 @@ laço ler igual à mesa"*: **item 6 na variante quieta**, presente do indicativo
 comportamento, sem nenhuma palavra de garantia, portanto fora de toda varredura por
 gatilho. **O comentário É a asserção que ninguém escreveu.**
 
-**A assimetria que fecha:** a cópia da lib tem teste (`test-combate-tempo.mjs:316` · `T.temGesto` e
+**A assimetria que fecha:** a cópia da lib tem teste (`test-combate-tempo.mjs:317` · `T.temGesto` e
 `:327`, via `T.temGesto`); a do harness não tem nenhum. **No dia da divergência o
 verde continua verde.**
 
@@ -1968,7 +1968,7 @@ verde continua verde.**
 nada vermelho, por construção**. É o caso raro em que "nada falhou" é a resposta
 certa, e **a prova da união é o portão, não teste de comportamento** · par que fica
 vermelho está medindo outra coisa. Conferir que a união pegou **os dois sítios**
-(`motor.mjs:354` · `function resolverContra` e `:357`) e que a cópia local saiu.
+(`motor.mjs:355` · `function resolverContra` e `:357`) e que a cópia local saiu.
 
 **3 · Importes mortos · quatro, e um que não é.**
 `penDadosDaRegua` (`grid.astro:2433` (citação histórica)), `contrapeAcaba` (`:2436`), `golpeDevido`

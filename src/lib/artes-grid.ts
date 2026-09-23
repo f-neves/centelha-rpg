@@ -1860,7 +1860,9 @@ export function desvioDaArea(metrosCrus: number): Desvio {
  * Se quem ficou parado aguentou: o total rolado passa da `difParado`.
  *
  * Mora aqui, e não na caixa, porque escolher entre `difMetade` e `difParado` é
- * a decisão da regra, e a caixa só coleta e rola.
+ * a decisão da regra. No ramo de ficar parado a caixa (`oferecerSaida`) só
+ * coleta e rola; no ramo de tentar sair ela ainda decide sozinha, contra
+ * `difMetade` e `difNada`.
  */
 export function aguentouFicarParado(total: number, d: Desvio): boolean {
   return total > d.difParado;

@@ -1,7 +1,18 @@
 // REAPONTA citações `arquivo.ext:NNN` pelo MAPA DE LINHAS DO DIFF, nunca por busca de âncora.
 //
 //   node scripts/reapontar.mjs          · reaponta e imprime o que mudou
+//   node scripts/reapontar.mjs --tudo   · passa também pelas citações de arquivo SEM diff, e
+//                                         endireita as que estão tortas dentro da janela
 //   node scripts/reapontar.mjs --check  · não escreve nada, só confere a cobertura
+//
+// DEPOIS DO MAPA, A ÂNCORA DECIDE A LINHA, DENTRO DA JANELA (rodada 93). O mapa diz para onde a
+// linha citada ANDOU; se a citação já nasceu torta (a âncora uma linha abaixo, digamos), o mapa a
+// leva adiante torta, e o portão, com a mesma folga de ±3, fica verde para sempre. Foi o caso do
+// `const condId` de `L-simulacao-simultaneo.md`, uma linha fora de 84228f3 até a rodada 92. Agora,
+// com a linha mapeada em mãos, o script procura a âncora na janela dela: se a própria linha a
+// tem, fica; se UMA só linha da janela a tem, grava essa; se duas ou mais têm, NÃO ESCOLHE e avisa.
+// Isto não é a busca que o `L65` proíbe: a busca é presa à janela da linha que o mapa deu, e
+// âncora repetida na janela não é resolvida por proximidade.
 //
 // POR QUE O MAPA E NÃO A BUSCA (`L65`): âncoras como `await SB.from` ou `LOG.splice` repetem
 // dezenas de vezes num arquivo vivo, então procurar a âncora pode casar na linha errada e o
@@ -26,7 +37,12 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const CHECK = process.argv.includes('--check');
+const TUDO = process.argv.includes('--tudo');
 const PORTAO = 'scripts/test-procedencia.mjs';
+// A MESMA do portão (`test-procedencia.mjs`, `JANELA = 3`). Serve às duas coisas: endireitar a
+// citação e conferir o próprio trabalho no fim.
+const JANELA = 3;
+const ehCitacaoTxt = (t) => /^[\w./-]+\.(?:ts|astro|mjs):\d+(?:-\d+)?$/.test(t.trim());
 
 // Os documentos cujas citações este script mantém. Superconjunto do `ALVOS` do portão.
 const DOCS = [
@@ -117,6 +133,54 @@ for (const [base, arq] of Object.entries(porNome)) {
   console.log(`alvo ${arq}: ${hunks.length} hunk(s)`);
 }
 
+// ---- 2b. no `--tudo`, todo arquivo citável do `src/` e do `scripts/`, pelo nome, como o portão
+// acha os dele. Nome repetido em dois lugares fica de fora: o nome não identifica o arquivo.
+const todos = {};
+if (TUDO) {
+  const varrer = (dir) => {
+    for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+      if (e.name === 'node_modules' || e.name.startsWith('.')) continue;
+      const p = path.join(dir, e.name).replace(/\\/g, '/');
+      if (e.isDirectory()) varrer(p);
+      else if (/\.(ts|astro|mjs)$/.test(e.name)) todos[e.name] = e.name in todos ? null : p;
+    }
+  };
+  for (const d of ['src', 'scripts']) if (fs.existsSync(d)) varrer(d);
+}
+/** O arquivo de uma citação: o do diff primeiro, depois (no `--tudo`) o da varredura. */
+const arquivoDe = (base) => porNome[base] || (TUDO ? todos[base] : null) || null;
+
+const cacheFonte = {};
+const fonteDe = (arq) => (cacheFonte[arq] ??= fs.readFileSync(arq, 'utf8').split(/\r?\n/));
+
+/**
+ * A âncora de uma citação: o trecho entre crases MAIS PRÓXIMO na linha que não seja outra
+ * citação nem só pontuação e número. É a mesma regra do portão, e devolve o miolo antes do
+ * primeiro parêntese, que é o que o portão compara.
+ */
+function ancoraDe(linhaDoc, emCit) {
+  const anc = [...linhaDoc.matchAll(/`([^`]+)`/g)].map((m) => ({ em: m.index, txt: m[1] }))
+    .filter((c) => !ehCitacaoTxt(c.txt) && !/^[\d\s.,:;()-]+$/.test(c.txt))
+    .sort((a, b) => Math.abs(a.em - emCit) - Math.abs(b.em - emCit))[0];
+  return anc ? anc.txt.split('(')[0].trim() : null;
+}
+
+/**
+ * A linha onde a âncora ESTÁ, procurada só na janela da linha `n` que o mapa deu.
+ * `{ linha, ambigua }`: a própria `n` se ela tem a âncora; a única da janela que a tem; ou `n`
+ * de volta, com `ambigua`, quando duas ou mais têm. Sem âncora na janela, `n` de volta: aí quem
+ * reclama é o portão, e com razão.
+ */
+function ancorar(fonte, n, chave) {
+  if (!chave || (fonte[n - 1] ?? '').includes(chave)) return { linha: n, ambigua: false };
+  const achadas = [];
+  for (let k = Math.max(1, n - JANELA); k <= Math.min(fonte.length, n + JANELA); k += 1) {
+    if (fonte[k - 1].includes(chave)) achadas.push(k);
+  }
+  if (achadas.length === 1) return { linha: achadas[0], ambigua: false };
+  return { linha: n, ambigua: achadas.length > 1 };
+}
+
 /** Onde a linha VELHA `L` de `base` foi parar. `null` se ela foi apagada. */
 function mapear(base, L) {
   let desloc = 0;
@@ -143,6 +207,8 @@ const CITACAO = /`?(?:[\w.-]+\/)*([A-Za-z0-9_.-]+\.(?:ts|astro|mjs)):(\d+)(?:-(\
 const MARCA_HISTORICA = /\(citaç[aã]o histórica\)/;
 let total = 0;
 let historicas = 0;
+let endireitadas = 0;
+const ambiguas = [];
 const caidas = [];
 /** Cada citação que este script moveu, para ele conferir o próprio trabalho no fim. */
 const movidas = [];
@@ -160,16 +226,25 @@ for (const doc of DOCS) {
       const [todo, base, a, b] = m;
       nova += l.slice(cursor, m.index);
       cursor = m.index + todo.length;
-      if (!mapas[base]) { nova += todo; continue; }
+      const alvo = arquivoDe(base);
+      if (!mapas[base] && !alvo) { nova += todo; continue; }
       const proximaEm = todas.map((o) => o.index).filter((em) => em > m.index)
         .sort((x, y) => x - y)[0] ?? l.length;
       if (MARCA_HISTORICA.test(l.slice(cursor, proximaEm))) { historicas += 1; nova += todo; continue; }
-      const na = mapear(base, +a);
-      if (na == null) { caidas.push(`${doc}:${i + 1} → ${base}:${a}`); nova += todo; continue; }
-      const nb = b ? mapear(base, +b) : null;
+      const mapeada = mapas[base] ? mapear(base, +a) : +a;
+      if (mapeada == null) { caidas.push(`${doc}:${i + 1} → ${base}:${a}`); nova += todo; continue; }
+      let na = mapeada;
+      if (alvo && fs.existsSync(alvo)) {
+        const r = ancorar(fonteDe(alvo), mapeada, ancoraDe(l, m.index));
+        if (r.ambigua) ambiguas.push(`${doc}:${i + 1} → ${base}:${mapeada}`);
+        na = r.linha;
+      }
+      if (na !== mapeada) endireitadas += 1;
+      const nbMapeada = b ? (mapas[base] ? mapear(base, +b) : +b) : null;
+      const nb = nbMapeada == null ? null : nbMapeada + (na - mapeada);
       if (na === +a && (!b || nb === +b)) { nova += todo; continue; }
       mudou += 1;
-      movidas.push({ doc, i, base, alvo: porNome[base], de: +a, para: na });
+      movidas.push({ doc, i, base, alvo, de: +a, para: na });
       nova += todo.replace(`${base}:${a}${b ? `-${b}` : ''}`, `${base}:${na}${b ? `-${nb ?? b}` : ''}`);
     }
     nova += l.slice(cursor);
@@ -180,6 +255,10 @@ for (const doc of DOCS) {
   if (mudou) console.log(`${doc}: ${mudou} citação(ões) reapontadas`);
 }
 for (const c of caidas) console.log(`  ! ${c} caiu dentro do diff, deixada como está`);
+for (const c of ambiguas) {
+  console.log(`  ! ${c}: a âncora aparece mais de uma vez na janela e a linha mapeada não a tem.`);
+  console.log('    Não escolhi por proximidade (`L65`). Reaponte à mão, olhando o que a citação afirma.');
+}
 
 // ---- 4. A CONFERÊNCIA DO PRÓPRIO TRABALHO, e ela existe por um estrago de verdade.
 //
@@ -193,8 +272,6 @@ for (const c of caidas) console.log(`  ! ${c} caiu dentro do diff, deixada como 
 // A conferência abaixo é a MESMA do portão (âncora entre crases mais próxima na linha,
 // janela de ±3, comparação pelo miolo antes do primeiro parêntese). Rodar duas vezes
 // continua sendo possível; o que muda é que agora ele GRITA na segunda.
-const JANELA = 3;
-const ehCitacaoTxt = (t) => /^[\w./-]+\.(?:ts|astro|mjs):\d+(?:-\d+)?$/.test(t.trim());
 const quebradas = [];
 for (const mv of movidas) {
   if (!mv.alvo || !fs.existsSync(mv.alvo)) continue;
@@ -234,6 +311,7 @@ if (quebradas.length) {
 }
 
 console.log(`\n${total} citação(ões) movidas pelo mapa do diff`
+  + (endireitadas ? ` (${endireitadas} delas endireitada(s) para a linha da âncora)` : '')
   + (historicas ? `, ${historicas} pulada(s) por \`(citação histórica)\`` : '') + '.');
 console.log('AGORA RODE O PORTÃO (`npm run validate`). O número acima fala só dos arquivos');
 console.log('mudados na árvore; o portão fala de todas as citações que existem.');

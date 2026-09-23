@@ -332,7 +332,7 @@ revistos por ela.
 
 - [ ] **K25 · [DECIDIR] A Defesa da arma e a do escudo somam, e o escudeiro vira parede.** A
   `defesas.md` escreve "**+ defesa da arma/escudo**", no singular, mas a ficha **soma as duas**
-  (`ficha-engine.ts:1530`, `Bloqueio soma a Defesa das armas/escudos do conjunto EM USO`). Com
+  (`ficha-engine.ts:1531`, `Bloqueio soma a Defesa das armas/escudos do conjunto EM USO`). Com
   espada longa (+1) e heater (+3) dá **+4** sobre a Defesa nua 21, e o acerto contra guarda cheia
   desaba: espada longa **6%**, adaga 10%, montante **3%** (com Centelha ×1, pool 5d6). Contra
   guarda comida pela Pressão (−4) o mesmo par vai a 40%, ou seja: **o combate contra escudeiro

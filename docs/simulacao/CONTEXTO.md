@@ -85,7 +85,7 @@ ESTÁ ENCERRADA".
 três: **51% aritmética** (597.714 gestos), **32% o ⏭**, a cadência do relógio (375.005),
 **17% julgamento** (199.238). E **o teto do que os consertos já desenhados tiram é
 76,7%** (273.445 de 1.171.957 gestos), e não são duas testemunhas independentes batendo:
-é o MESMO contador (`golpeNoTick`, `log.mjs:224-226`) lido por duas exibições
+é o MESMO contador (`golpeNoTick`, `log.mjs:226-228`) lido por duas exibições
 algebricamente equivalentes, que por isso nunca poderiam discordar. → `ESTADO.md`, seção
 "O que sobra depois de tudo, e o teto de verdade". (O `02-projeto-harness.md:33` arredonda
 os mesmos três termos como 50/33/17 · divergência registrada em **L63**, não corrigida.)
@@ -230,7 +230,7 @@ Quem tiver escrito a explicação com outras palavras continua contado como aber
 **Duas coisas que a rodada 75 mediu e que valem fora dela:**
 
 - **o Sangramento já escreve Vida negativa hoje**, por acidente: o tique da condição contínua
-  chama `gravarVida` sem piso e `curarPv` (`src/pages/mesa/grid.astro:2682`) só tem teto. É o único caminho do
+  chama `gravarVida` sem piso e `curarPv` (`src/pages/mesa/grid.astro:2681`) só tem teto. É o único caminho do
   projeto que atravessa o zero, e ninguém o desenhou assim;
 - **o servidor não conhece Centelha.** A tabela `combatentes` (`supabase/migracao-2.sql:128-142`)
   não tem a coluna, e quem sabe é o cliente, que monta a peça com `centelha` (`src/lib/combate-resumo.ts:161`). Cobra

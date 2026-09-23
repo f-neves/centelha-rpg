@@ -632,7 +632,7 @@ e a voz nunca escolhe pessoa. É também a opção que não faz a gramática mud
 mais do que a mesa entrega** (registrado em 11/09/2026, ao revisar a rodada 35). **A "peça
 clicada" não tem onde ser lida:** o Grid não guarda estado de seleção por clique separado do
 arrasto e do menu, e isso está registrado no próprio código desde a rodada 32 ·
-`src/pages/mesa/grid.astro:9199` · `A "PEÇA SELECIONADA" É`. Inventar esse estado pediria mexer
+`src/pages/mesa/grid.astro:9198` · `A "PEÇA SELECIONADA" É`. Inventar esse estado pediria mexer
 em `ligarArrasto`, que é refatorar coisa fora de toda esta frente.
 
 **Na prática, então, "de quem é a tela" é sempre `daVez()`**, que é a peça que a tela já destaca
@@ -682,7 +682,7 @@ seis" sem folha aberta abre **o golpe que está vencendo**, e não uma folha qua
 fala valer os 51%, porque abrir o cartão é 17% sozinho.
 
 **E a diferença entre as duas leituras não é de redação, é de possível e impossível.** A folha do
-golpe exige ATACANTE E ALVO (`src/pages/mesa/grid.astro:10011` · `function folhaDaAcao`). A decisão 4
+golpe exige ATACANTE E ALVO (`src/pages/mesa/grid.astro:10010` · `function folhaDaAcao`). A decisão 4
 dá o atacante e recusa nome próprio, então **não há de onde tirar o alvo**: "abrir a folha da peça
 da vez" não tem como ser construído sem reabrir a escolha de alvo por voz, que esta mesma régua
 fechou. O cartão vencido não tem esse problema **porque os dois lados já estão amarrados**: o golpe

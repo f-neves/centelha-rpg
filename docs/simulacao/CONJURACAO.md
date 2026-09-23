@@ -55,7 +55,7 @@ do humano e o motor concordam em quase tudo; onde as palavras diferem, aqui fica
 | Efeito (Improviso) | **Improviso** · `plano.efeito === null` | `regras.json:arcano.improviso`, `artes-grid-ui.ts:182` (`null = improviso`) |
 | Efeito Especial | **Efeito**, do catálogo, com `nivel` fixo | `src/data/efeitos.json`, `artes-grid.ts:23-33` (`interface Efeito`) |
 | Parâmetro | **Parâmetro**, com graus de 0 a 6 | `artes-grid.ts:35-45` (`interface Parametro`), `regras.json:arcano.improviso.graus` |
-| os Parâmetros declarados | **`Escolhas`**, o mapa nome→grau | `artes-grid.ts:328`, vivo só durante a caixa |
+| os Parâmetros declarados | **`Escolhas`**, o mapa nome→grau | `artes-grid.ts:329`, vivo só durante a caixa |
 | NÍVEL do Efeito | **nível efetivo** | `gravarEfeito`, `artes-grid-mesa.ts:1501` (`function gravarEfeito`) |
 
 **O "Nível = o maior Parâmetro declarado" JÁ EXISTE, ao pé da letra.** `gravarEfeito` calcula
@@ -70,8 +70,8 @@ nova reusa esse nome e essa fórmula, e não inventa um terceiro.
 
 | para quê | qual conta | onde está |
 |---|---|---|
-| **quanto CUSTA** (Mana) | a **SOMA** dos graus investidos | `artes-grid.ts:330-334` (`interface Custo`) e `regras.astro:382` (`Some os níveis investidos`) |
-| **quanto DEMORA** (Preparação) e o gating | o **MÁXIMO** · o nível efetivo | `artes-grid-mesa.ts:1526-1529`, `arcano.composta` |
+| **quanto CUSTA** (Mana) | a **SOMA** dos graus investidos | `artes-grid.ts:331-335` (`interface Custo`) e `regras.astro:382` (`Some os níveis investidos`) |
+| **quanto DEMORA** (Preparação) e o gating | o **MÁXIMO** · o nível efetivo | `artes-grid-mesa.ts:1527-1530`, `arcano.composta` |
 
 Isto não é contradição, é uma distinção que o sistema já tem. **Toda linha desta régua diz qual
 dos dois está usando.** Confundi-los é o erro mais provável da implementação, e ele sai como
@@ -99,7 +99,7 @@ distribuição aberta, que foi o que o humano pediu.
 **E O D-C1 NÃO TEM BURACO, corrigido em 10/09/2026 pelo humano, porque quem ler o §1 vai fazer
 esta pergunta.** Declarar nível efetivo 3 **não** libera distribuir 3 em todos os Parâmetros de
 graça. **Cada grau de cada Parâmetro é pago**, e a conta já existe (`custoDe`,
-`src/lib/artes-grid.ts:349-379` · `function custoDe`): o custo é a SOMA dos graus, com dois descontos · um pela
+`src/lib/artes-grid.ts:350-380` · `function custoDe`): o custo é a SOMA dos graus, com dois descontos · um pela
 **Centelha**, que abate do total, e outro pelo **material consumido**. Passar do nível de maestria
 num Parâmetro ainda multiplica o custo dele.
 
@@ -122,7 +122,7 @@ custa um Tick a mais" e mandou conferir contra o que existe. O que existe é
 `regras.json:2441-2444` · `preparoBase: 2, preparoPorNivel: 1`, consumido por `reguaDaArte`. **O
 incremento bate; a base 2 é o que a descrição não menciona.** Fica a base 2, porque a instrução foi
 "se a escala já estiver definida em outro lugar, vale a que existe", e porque ela já está publicada
-no site (`src/pages/artes/regras.astro:305-322` · `A Arte sai no último Tick`, a Arte sai no ÚLTIMO Tick da montagem).
+no site (`src/pages/artes/regras.astro:307-324` · `A Arte sai no último Tick`, a Arte sai no ÚLTIMO Tick da montagem).
 
 **A Arte sai no ÚLTIMO Tick, e esse Tick é o GOLPE.** É a §5.3 do Arcano, já no ar, e a régua nova
 não a toca.
@@ -134,7 +134,7 @@ ação de magia e o mestre manda deslocar, o deslocamento sai como caminhada, se
 Para usar Deslocamento de Batalha ou Corrida, é preciso interromper a Preparação.
 
 **Isto é estado NOVO, e não a regra de hoje.** Hoje quem está comprometido com um gesto não vê
-nem a caixa de modo: `moverSimultaneo` (`grid.astro:6322` · `function moverSimultaneo`) desvia direto para um
+nem a caixa de modo: `moverSimultaneo` (`grid.astro:6321` · `function moverSimultaneo`) desvia direto para um
 posicionamento cru, e a regra publicada para quem se mexe fora da vez no meio de um gesto é o
 **desvio de emergência**, a 1 Tick por metro (`src/content/chapters/combate.md:181-184`).
 
@@ -149,7 +149,7 @@ físico" de "Preparação de Arte" em todo lugar que hoje pergunta só `faseEm(.
 
 **Existe precedente para forçar modo sem perguntar**, e vale citar porque é o mecanismo que a
 implementação vai reusar: a fuga automática de criatura já monta o movimento com `modo: 'corrida'`
-direto, sem diálogo (`grid.astro:6255` · `modo: 'corrida'`).
+direto, sem diálogo (`grid.astro:6254` · `modo: 'corrida'`).
 
 #### Interromper por vontade própria
 
@@ -159,7 +159,7 @@ Preparação, que se perdem.
 **O Abortar já existe, publicado e implementado**, e é ele que se estende: `regras.json:2497-2508`
 · só na fase de Preparo, custa 1 Tick por metro para a saída, e **perde o investido**
 (`perdeOInvestido: true`). O código é `podeAbortar`/`abrirAbortar` e o botão "✋ Abortar o gesto"
-(`grid.astro:7798` · `Abortar o gesto`).
+(`grid.astro:7797` · `Abortar o gesto`).
 
 **O que muda:** hoje o Abortar serve só a ação física, e a lista `nuncaPara: "atacar"` o proíbe
 para ataque. **A Preparação de Arte entra como fase abortável**, com a mesma regra de perder o
@@ -220,7 +220,7 @@ quiser: desliga tudo, e ele religa quando quiser. Simples, sem granularidade.
 
 **Onde isso mora, e o precedente já existe:** "não me pergunte" não existe hoje em nenhuma forma.
 O que existe é o **Tempo da mesa**, que já é configuração persistida POR MESA e não por navegador
-· `combateDaMesa` (`grid.astro:2915`), o botão `#gr-tempo` e `abrirEscolhaDoTempo`
+· `combateDaMesa` (`grid.astro:2914`), o botão `#gr-tempo` e `abrirEscolhaDoTempo`
 (`src/lib/mesa-tempo-ui.ts`). O botão novo entra ao lado, no mesmo lugar e no mesmo mecanismo de
 persistência, sem inventar armazenamento.
 
@@ -345,8 +345,8 @@ a interface estaria oferecendo uma escolha vazia.**
   fácil de dissipar**. É uma consequência real, e negativa para quem conjura · o que faz dela um
   motivo para NÃO baixar, e não um prêmio por baixar;
 - **e o resto do gating não olha para ele.** O que filtra quais Efeitos o personagem pode escolher
-  é o `nivelArte`, a maestria da ficha (`efeitosDisponiveis`, `artes-grid.ts:432`), e o que
-  encarece Parâmetro acima da maestria também é o `nivelArte` (`custoDe`, `artes-grid.ts:349`).
+  é o `nivelArte`, a maestria da ficha (`efeitosDisponiveis`, `artes-grid.ts:433`), e o que
+  encarece Parâmetro acima da maestria também é o `nivelArte` (`custoDe`, `artes-grid.ts:350`).
   Nenhum dos dois enxerga o nível efetivo da conjuração.
 
 **Uma coisa achada de passagem que quem implementar precisa saber:** o `dissipar` compara
