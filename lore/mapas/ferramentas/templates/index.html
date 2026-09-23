@@ -124,6 +124,32 @@
         </div>
       </section>
 
+      <section class="secao" data-secao="regioes">
+        <h2 class="cabecalho-secao">REGIÕES</h2>
+        <div class="corpo-secao">
+          <p class="nota">Sem o cache de ilha: a massa se escolhe pela lista, não
+            por clique no mapa. Arraste o nome no mapa para mover o rótulo.</p>
+          <label class="nota"><input type="checkbox" id="regioes-mostrar-rotulos" checked> rótulos no mapa</label>
+          <ul id="lista-regioes"></ul>
+          <form id="form-regiao">
+            <label>id <input type="text" id="regiao-id" autocomplete="off" placeholder="mar-de-syl"
+              title="Slug minúsculo com hífen. Não muda depois de criado."></label>
+            <label>nome <input type="text" id="regiao-nome" autocomplete="off"></label>
+            <label>tipo <select id="regiao-tipo"></select></label>
+            <label>pai <select id="regiao-pai"></select></label>
+            <div class="botoes-regiao">
+              <button type="submit">salvar</button>
+              <button type="button" id="regiao-nova">nova</button>
+              <button type="button" id="regiao-por-rotulo" disabled title="O próximo clique no mapa vira a posição do nome">pôr rótulo</button>
+              <button type="button" id="regiao-apagar" disabled>apagar</button>
+            </div>
+          </form>
+          <div id="regiao-leitura" class="nota"></div>
+          <h3 class="nota">massas de terra</h3>
+          <ul id="lista-massas"></ul>
+        </div>
+      </section>
+
       <section class="secao" data-secao="lugares">
         <h2 class="cabecalho-secao">LUGARES</h2>
         <div class="corpo-secao">
@@ -269,6 +295,7 @@
   <!-- geo.js antes da régua: é onde mora haversineKm. -->
   <script src="/static/js/geo.js"></script>
   <script src="/static/js/estradas.js"></script>
+  <script src="/static/js/regioes.js"></script>
   <script src="/static/js/regua.js"></script>
   <script src="/static/js/app.js"></script>
 </body>

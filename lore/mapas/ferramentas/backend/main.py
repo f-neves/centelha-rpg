@@ -18,7 +18,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, StrictBool
 
 from . import (areas, cobertura_automatica, coordenadas, estradas, lugares,
-               medicoes, operacoes, referencias, relevo_automatico, rios, travas)
+               medicoes, operacoes, referencias, regioes, relevo_automatico, rios, travas)
 
 RAIZ_FERRAMENTA = Path(__file__).resolve().parents[1]
 RAIZ_MAPAS = RAIZ_FERRAMENTA.parent
@@ -82,6 +82,28 @@ class NovaArea(BaseModel):
     geometria: dict
     semente_ruido: int | None = None
     exemplo: StrictBool = False
+
+
+class NovaRegiao(BaseModel):
+    id: str
+    nome: str
+    tipo: str
+    pai: str | None = None
+    rotulo: dict | None = None
+
+
+class EdicaoRegiao(BaseModel):
+    nome: str
+    tipo: str
+    pai: str | None = None
+
+
+class RotuloRegiao(BaseModel):
+    rotulo: dict | None = None
+
+
+class AtribuicaoMassa(BaseModel):
+    regiao: str | None = None
 
 
 class NovoRio(BaseModel):
@@ -502,3 +524,67 @@ def salvar_medicao(nova: NovaMedicao) -> JSONResponse:
     except ValueError as e:
         raise HTTPException(status_code=422, detail=str(e))
     return JSONResponse(medicao)
+
+
+# --- Regiões e pertencimento de ilha (etapa 10 sem o cache, 2026-09-23 noite) ------
+
+def _regioes_e_massas() -> JSONResponse:
+    return JSONResponse({"regioes": regioes.carregar_regioes(), "massas": regioes.carregar_massas()})
+
+
+@app.get("/api/regioes")
+def obter_regioes() -> JSONResponse:
+    return _regioes_e_massas()
+
+
+@app.post("/api/regioes")
+def criar_regiao(nova: NovaRegiao) -> JSONResponse:
+    try:
+        regioes.criar_regiao(nova.id, nova.nome, nova.tipo, nova.pai, nova.rotulo)
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
+    return _regioes_e_massas()
+
+
+@app.put("/api/regioes/{id_regiao}")
+def editar_regiao(id_regiao: str, edicao: EdicaoRegiao) -> JSONResponse:
+    try:
+        regioes.editar_regiao(id_regiao, edicao.nome, edicao.tipo, edicao.pai)
+    except KeyError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
+    return _regioes_e_massas()
+
+
+@app.put("/api/regioes/{id_regiao}/rotulo")
+def mover_rotulo_regiao(id_regiao: str, mudanca: RotuloRegiao) -> JSONResponse:
+    try:
+        regioes.mover_rotulo(id_regiao, mudanca.rotulo)
+    except KeyError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
+    return _regioes_e_massas()
+
+
+@app.delete("/api/regioes/{id_regiao}")
+def apagar_regiao(id_regiao: str) -> JSONResponse:
+    try:
+        regioes.apagar_regiao(id_regiao)
+    except KeyError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except regioes.EmUso as e:
+        raise HTTPException(status_code=409, detail=str(e))
+    return _regioes_e_massas()
+
+
+@app.put("/api/massas/{id_massa}/regiao")
+def atribuir_massa(id_massa: str, atribuicao: AtribuicaoMassa) -> JSONResponse:
+    try:
+        regioes.atribuir_massa(id_massa, atribuicao.regiao)
+    except KeyError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
+    return _regioes_e_massas()

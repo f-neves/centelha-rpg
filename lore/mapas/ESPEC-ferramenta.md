@@ -1212,3 +1212,38 @@ desejos sem dono. Decisão de quando fazer é do Direcionamento.
   ferramenta não usa). **Etapa**: mesma revisão da Área acima.
 - **Cache de identidade de ilha** (processamento pesado, aviso antes). **Etapa**: 10,
   onde ele já está previsto.
+
+## Etapa 10 sem o cache de identidade de ilha · painel de regiões (2026-09-23, noite)
+
+Pedido do usuário: fazer a etapa 10 **sem** o cache de identidade de ilha, que continua
+proibido. `backend/regioes.py`, `static/js/regioes.js`, seção REGIÕES do painel,
+rótulos no mapa (pane `regioes-rotulos`, z 590, abaixo dos lugares). Esquema de
+`ESPEC-dados.md` sem mudança.
+
+**O que existe**: listar as regiões em árvore pelo `pai`; criar (id em slug, nome,
+tipo fechado, pai); editar nome, tipo e pai; mover o rótulo arrastando o nome no mapa
+ou com "pôr rótulo" + um clique; apagar; e, para cada uma das 17 massas de
+`massas.geojson`, um seletor de região (ou "sem região") e um botão "ver" que leva o
+mapa ao ponto de referência. Tudo passa por `operacoes.registrar_operacao`
+(`chave_lista="regioes"` para `regioes.json`), então desfazer e refazer valem, e o
+desfazer de `lugares.js` chama `window.recarregarRegioes`.
+
+**O que ficou fora, porque depende da geometria da ilha**: clicar numa ilha para
+saber qual é, a regra dos 100 km e criar massa nova. Quando o cache existir, eles
+entram aqui sem mexer no que foi feito.
+
+**Decisões de código, recomendação do Cartógrafo**: apagar região com filhas ou com
+massas é recusado com 409 (sem cascata); `pai` que formaria ciclo é recusado; id não
+muda depois de criado; **sem cadeado de camada para regiões** (acrescentar mexeria em
+`camadas_travadas.json`); o rótulo de região nova nasce no centro da tela. Gravar
+`regioes.json` ou `massas.geojson` pela ferramenta regrava o arquivo inteiro com a
+indentação do `historico.py`: o primeiro uso muda a formatação do arquivo inteiro no
+diff, sem mudar conteúdo.
+
+**Conferido**: 19 testes (`tests/test_regioes.py`), com recusa e arquivo intacto byte
+a byte em cada validação; por HTTP no servidor real, só leitura e recusas (409 ao
+apagar `mere`, 422 no tipo inventado e na região inexistente, arquivos iguais antes e
+depois); no navegador, **só leitura**: a página carrega sem erro no console, a lista
+mostra as 6 regiões em árvore, as 17 massas com a região certa no seletor e os 6
+rótulos no mapa. **Não conferido**: nenhum clique (criar, editar, arrastar rótulo,
+trocar a região de uma massa, desfazer na tela).

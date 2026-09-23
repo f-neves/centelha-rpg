@@ -260,6 +260,10 @@
     mapa, ESTRADAS_INICIAL, TRAVAS_INICIAL, LUGARES_INICIAL
   );
 
+  // Painel de regiões (etapa 10 sem o cache de ilha, static/js/regioes.js): carrega
+  // sozinho por GET, sem dado injetado na página.
+  iniciarPainelDeRegioes(mapa);
+
   // Régua + grade de lat/lon (etapa 4 / B3, static/js/regua.js).
   iniciarRegua(mapa, PARAMETROS_LEAFLET.raio_km);
   iniciarGradeLatLon(mapa, limites);

@@ -67,6 +67,12 @@ primeira coisa que `/cartografo` mostra.)*
       costa. Tem 18 colinas (contado), e mesmo assim quase não se vê: é o mesmo
       problema da colina clara, não falta de símbolo. Não corrigi, é exemplo.
     - **Proposta para o piso x densidade** (item 2): ver "Decisões em aberto".
+  - **Etapa D · etapa 10 sem o cache de ilha (feita)**: painel REGIÕES com a árvore
+    de regiões, criar/editar/apagar, rótulo arrastável no mapa e a região de cada uma
+    das 17 massas escolhida por lista. Clique-na-ilha e regra dos 100 km ficam para
+    quando o cache for liberado. Detalhe em `ESPEC-ferramenta.md`, "Etapa 10 sem o
+    cache". 19 testes; no navegador só leitura (carrega, lista, rótulos). **O
+    navegador guarda o `app.js` antigo: abrir com Ctrl+F5.**
 - **Rodada do fim da tarde de 2026-09-23 (CONCLUÍDA e COMMITADA, sem push).** Era a
   que deixava a próxima para o usuário pintar; ele pediu a rodada autônoma acima no
   lugar.
