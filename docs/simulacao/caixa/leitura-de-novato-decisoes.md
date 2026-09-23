@@ -887,8 +887,38 @@ mudou a penalidade de obrigatória para opcional. **O bônus de ferimento do §1
     mestre, pela história e pelas relações pessoais do personagem. Sem campo na ficha.
 - **Dano acumulado não dispara teste**, de propósito: o Frenesi é pela pancada, não pelo desgaste.
   Dez golpes pequenos levam o orc a Crítico sem nenhum teste.
+- **Provocar o orc de propósito é um teste social.** Outro personagem rola Influência (a
+  Habilidade ainda não foi fechada) contra **Força de Vontade do orc × 2 + Centelha dele**. Se
+  passar, o orc é obrigado a fazer o teste de Frenesi. Aqui a Força de Vontade protege o orc.
+- **O teste de Frenesi é um só**, forçado ou por vontade própria: Temperança contra a Dificuldade
+  da situação, e entra em fúria quem falha (tirar a Dificuldade ou menos). A única diferença do
+  voluntário é poder aplicar a penalidade de ferimento contra si mesmo.
+- **A Dificuldade vem da situação, e o mestre a escolhe nesta escala** (substitui a régua 3/5/7 e a
+  entrada automática do `FRENESI.md` §6):
 
-**Ainda em aberto:** a Dificuldade do teste forçado, a janela da manutenção contra o ataque de 6
+  | Situação | Dificuldade |
+  |---|:--:|
+  | Calma, fora de batalha, ambiente tranquilo | 4 |
+  | Em batalha, com vantagem, sem motivo de alarme, sem ferimento | 5 |
+  | Estresse: cercado, em menor número, já sofreu algum dano | 6 a 7 |
+  | Muito desfavorecido: grande desvantagem, muito dano, sendo provocado | 8 a 10 |
+  | Situação muito crítica, manter-se são exige esforço monumental | acima de 10 |
+
+  Chance de ENTRAR rolando a Temperança limpa (total igual ou menor que a Dificuldade):
+
+  | Dificuldade | T1 | T2 | T3 | T4 | T5 | T6 |
+  |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+  | 4 | 100 | 67 | 33 | 17 | 3 | 2 |
+  | 5 | 100 | 83 | 50 | 28 | 8 | 5 |
+  | 6 | 100 | 100 | 67 | 42 | 17 | 9 |
+  | 7 | 100 | 100 | 83 | 58 | 28 | 16 |
+  | 8 | 100 | 100 | 100 | 72 | 42 | 26 |
+  | 9 | 100 | 100 | 100 | 83 | 58 | 38 |
+  | 10 | 100 | 100 | 100 | 92 | 72 | 50 |
+  | 12 | 100 | 100 | 100 | 100 | 92 | 74 |
+
+**Ainda em aberto:** a Habilidade da provocação por Influência, o efeito do gasto de Força de
+Vontade para entrar (o `FRENESI.md` §6 diz que ela "garante o resultado", o §15 dizia +2), a janela da manutenção contra o ataque de 6
 Ticks, a ressaca em Crítico, Vigor 1 dando zero fúrias, os três itens do `FRENESI.md` §11 e a
 numeração interna dele. Não implementado.
 
