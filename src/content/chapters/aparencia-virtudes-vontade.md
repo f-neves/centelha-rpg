@@ -90,8 +90,8 @@ O Atributo fica de fora de propósito: somado, ele empurra todo mundo para perto
 | 3 | Branda | 0 | 50 | 83 | 92 | 100 | 100 |
 | 5 | Tensa | 0 | 17 | 50 | 72 | 92 | 95 |
 | 7 | Séria | 0 | 0 | 17 | 42 | 72 | 84 |
-| 9 | Dura | 0 | 0 | 0 | 17 | 42 | 62 |
-| 11 | Severa | 0 | 0 | 0 | 3 | 17 | 37 |
+| 9 | Dura | 0 | 0 | 0 | 17 | 42 | 63 |
+| 11 | Severa | 0 | 0 | 0 | 3 | 17 | 38 |
 | 13 | Extrema | 0 | 0 | 0 | 0 | 3 | 16 |
 
 <p class="muted">Chance de passar, em porcentagem, sem Firula. A escada não é lisa por causa do +2 do ímpar: da Tensa para a Séria a Virtude 3 cai de 50 para 17, e da Séria para a Dura a Virtude 4 cai de 42 para 17. É consequência da conversão, e não defeito.</p>
