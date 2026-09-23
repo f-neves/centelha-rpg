@@ -87,7 +87,8 @@ com `+`. Também `scripts/` por `frenesi`.
   com **Bravura + Vigor** e **Temperança + Raciocínio**, pela conversão normal, contra `d.difMetade`,
   a linha "metade" da escada da área, que está na régua de 5 em 5. Trocar só a parada contradiz o
   `FRENESI.md` §2. Ordem de grandeza: Bravura 4 + Vigor 3 é 3d6+2 contra 10, 74%; Bravura 4
-  sozinha é 2d6 contra 10, 17%. O texto de `regras.json:1995` já fala em "teste de Bravura ou
+  sozinha é 2d6 contra 10, 8% (*corrigido na rodada 91, CORRIGE 2 da Revisora em `90-revisora.md`:
+  este relato dizia 17%, que é 2d6 contra 9*). O texto de `regras.json:1995` já fala em "teste de Bravura ou
   Temperança (outra Virtude, com Firula)", sem Atributo, e diverge do código desde antes desta
   rodada. **Não toquei, por ordem do Arquiteto: decisão do humano.**
 - **Pares Virtude + Atributo fora do Resistir, que o despacho não cita e ficaram como estão:**

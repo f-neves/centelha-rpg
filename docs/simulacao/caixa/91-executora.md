@@ -75,6 +75,38 @@ só valem na fúria da Técnica Fúria, e a Técnica Frenesi é outra coisa com 
 entre si. O campo `longevidade` do meio-orc é categoria (`"curta"`), sem número, e não mudou.
 Nenhum outro lugar de `src/` diz que o orc não é jogável.
 
+## Os ajustes do veredito da 90 (`84228f3`), pedidos pelo Arquiteto
+
+**CORRIGE 1 · a fronteira do Resistir.** A frase do grupo 2 foi reescrita: o que pesa no corpo, a
+dor física inclusive, não é teste de Virtude, "mesmo quando a tabela acima põe a dor na Convicção";
+é Vigor + Convicção nas Artes e no Estabilizar. **Uma correção ao conserto sugerido no veredito**,
+que dizia "a dor física, o veneno, a doença, o sangramento continuam sendo Vigor + Convicção":
+veneno, doença e ambiente rolam **Vigor + Resistência** (`acoes-resistir.md:34`, `:68`, `:112`),
+e não Vigor + Convicção. O capítulo diz isso e aponta para Resistir. **A palavra "tortura" não
+entrou**, à espera da PERGUNTA 2.
+
+**CORRIGE 2 · o 17% do relato da 90.** Trocado por 8% em `90-executora.md`, com a nota de correção
+no próprio lugar, dizendo que o relato dizia 17% e quem achou. Atribuição preservada.
+
+**A nota do "obrigado a".** O Arquiteto a descreveu como o gatilho da provocação, mas a nota da
+Revisora (`90-revisora.md:60-63`) é sobre o **gatilho 3 da manutenção** ("ser obrigado a ficar
+parado, preso ou contido"). A provocação já dizia "o orc é obrigado ao teste de Frenesi". Devolvido
+o "ser obrigado a" no gatilho 3.
+
+**O arredondamento do .5: o livro não é uniforme.** Os casos .5 só aparecem com 3d6 (81/216 = 37,5%
+e 135/216 = 62,5%).
+
+- A tabela do teste de Virtude (`aparencia-virtudes-vontade.md`, cópia do §2) arredonda **para
+  baixo**: Virtude 6 dá 62 na Dura e 37 na Severa.
+- A tabela de entrar no Frenesi (`racas.md`, cópia do §6) arredonda **para cima**: Temperança 6 em
+  Dificuldade 9, 3d6 ≤ 9 = 37,5, aparece como **38**.
+- O que o site calcula sozinho usa `Math.round`, que arredonda o .5 **para cima**: a página
+  `/mestre` (`src/pages/mestre.astro:29`, `:39`, `:45`).
+
+A maioria (o §6, o §8 e o código) arredonda para cima; só o §2 e a cópia dele no capítulo III
+arredondam para baixo. Se o alinhamento for para cima, mudam duas células do livro: Virtude 6 na
+Dura, 62 → 63, e na Severa, 37 → 38. Não mudei nenhuma: o número é do Arquiteto.
+
 ## Em aberto
 
 Nada desta rodada. O ficar parado só oferece Bravura e Temperança; o texto do `regras.json` sempre

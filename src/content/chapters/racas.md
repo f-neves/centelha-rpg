@@ -204,7 +204,7 @@ A fúria dura **pela cena**, enquanto for alimentada. Não há relógio fixo nem
 
 1. **passar (Força de Vontade) Ticks sem nenhuma ação física de combate.** Tick em que o orc ataca, investe, sofre dano ou faz outra ação física de combate não conta, e a contagem recomeça do zero a cada uma delas: a janela nunca fecha no meio de uma sequência de golpes, qualquer que seja a arma;
 2. **o alvo da fúria cair ou fugir**, se era o único alvo disponível;
-3. **ficar parado, preso ou contido por (Força de Vontade) Ticks.**
+3. **ser obrigado a ficar parado, preso ou contido por (Força de Vontade) Ticks.**
 
 A janela é sempre pela Força de Vontade **máxima**, não pela atual: gastar pontos para entrar ou sair não encurta a fúria. Sem nenhum inimigo ao alcance, o orc não ataca, e a janela do primeiro item corre sozinha.
 
