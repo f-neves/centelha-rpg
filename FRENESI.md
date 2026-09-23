@@ -40,8 +40,8 @@ A régua da Virtude anda **de dois em dois**, e é esta (confirmada em 23/09/202
 | 3 | Branda | 0 | 50 | 83 | 92 | 100 | 100 |
 | 5 | Tensa | 0 | 17 | 50 | 72 | 92 | 95 |
 | 7 | Séria | 0 | 0 | 17 | 42 | 72 | 84 |
-| 9 | Dura | 0 | 0 | 0 | 17 | 42 | 62 |
-| 11 | Severa | 0 | 0 | 0 | 3 | 17 | 37 |
+| 9 | Dura | 0 | 0 | 0 | 17 | 42 | 63 |
+| 11 | Severa | 0 | 0 | 0 | 3 | 17 | 38 |
 | 13 | Extrema | 0 | 0 | 0 | 0 | 3 | 16 |
 
 Valores em porcentagem de **passar**. Sucesso continua sendo total MAIOR que a Dificuldade.
@@ -75,7 +75,7 @@ A Firula (equivalente ao stunt) vale aqui como em qualquer teste:
 
 **A Firula é o que torna as bandas altas alcançáveis.** Sem ela o teto é 3d6, e a Dura e a
 Extrema são raras (Virtude 4 passa na Dura 17%; na Extrema, só a Virtude 5 e a 6 passam, a 3% e
-16%). Com Firula 2, a Virtude 4 passa na Dura 62%; com Firula 3, passa na Extrema 56%.
+16%). Com Firula 2, a Virtude 4 passa na Dura 63%; com Firula 3, passa na Extrema 56%.
 
 **A Firula desloca a linha inteira duas casas.** Virtude 2 com Firula 2 rola igual a Virtude 4 sem
 Firula. Isso é decisão de design: a descrição pesa mais que a ficha. É também o que tira a Virtude
