@@ -30,6 +30,16 @@ primeira coisa que `/cartografo` mostra.)*
     inteira** uma área de até uns 110 km de lado, conforme a semente (medido: um
     quadrado de 0,8° com semente 8 fica com zero pixels). A cor aparece e os símbolos
     não, em silêncio. Agora isso sai como aviso "nenhum símbolo".
+  - **Etapa B · áreas de exemplo irregulares (feita)**. `scripts/pintar_exemplos.py`
+    gera 22 áreas de 20 a 102 vértices (forma base + lóbulos e baías por soma de
+    senoides + tremido de mão) e grava pela API: apagou os 7 exemplos pentágono e criou
+    as 22, todas com id `exemplo-*` e o campo novo **`"exemplo": true`** (a API de área
+    ganhou o campo, `StrictBool`; o servidor foi reiniciado para ele valer, e o script
+    confere no disco que a marca chegou). Controle negativo por HTTP: `"exemplo": "yes"`
+    devolve 422 e o arquivo fica igual byte a byte. Prévia das formas:
+    `render/analise/exemplos-irregulares.png`. **O dado continua sem commit**, como os
+    exemplos de antes. **A pilha de desfazer tem agora 7 apagamentos e 22 criações**:
+    Ctrl+Z em excesso na tela volta para os exemplos antigos.
 - **Rodada do fim da tarde de 2026-09-23 (CONCLUÍDA e COMMITADA, sem push).** Era a
   que deixava a próxima para o usuário pintar; ele pediu a rodada autônoma acima no
   lugar.

@@ -206,3 +206,34 @@ def test_desfazer_criacao_desfaz_o_recorte_junto(ambiente_isolado):
     assert _area_de("velha") == pytest.approx(100.0), "o recorte volta atrás junto com a área nova"
     operacoes.refazer()
     assert _area_de("velha") == pytest.approx(50.0)
+
+
+# --- Área de exemplo (2026-09-23, noite) ----------------------------------------------
+
+def test_area_de_exemplo_grava_a_marca(ambiente_isolado):
+    areas.criar_area("exemplo-1", "cobertura", "selva", _quadrado(0, 0, 5, 5), exemplo=True)
+    assert _feature("exemplo-1")["properties"]["exemplo"] is True
+
+
+def test_area_comum_nao_tem_a_marca(ambiente_isolado):
+    """Controle negativo: sem pedir, o campo não aparece (nem como false)."""
+    areas.criar_area("area-1", "cobertura", "selva", _quadrado(0, 0, 5, 5))
+    assert "exemplo" not in _feature("area-1")["properties"]
+
+
+def test_marca_de_exemplo_que_nao_e_booleana_e_recusada(ambiente_isolado):
+    antes = areas.CAMINHO_DADOS.read_bytes()
+    with pytest.raises(ValueError):
+        areas.criar_area("exemplo-1", "cobertura", "selva", _quadrado(0, 0, 5, 5), exemplo="sim")
+    assert areas.CAMINHO_DADOS.read_bytes() == antes
+
+
+def test_a_rota_nao_aceita_marca_de_exemplo_em_texto():
+    """O pydantic em modo frouxo converteria "yes" em True; o campo é StrictBool."""
+    from pydantic import ValidationError
+    from backend.main import NovaArea
+    base = {"id": "x", "camada": "cobertura", "valor": "selva", "geometria": _quadrado(0, 0, 1, 1)}
+    assert NovaArea(**base, exemplo=True).exemplo is True
+    assert NovaArea(**base).exemplo is False
+    with pytest.raises(ValidationError):
+        NovaArea(**base, exemplo="yes")

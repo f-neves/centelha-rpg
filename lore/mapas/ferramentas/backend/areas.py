@@ -96,7 +96,13 @@ def _validar(camada: str, valor: str, geometria: dict) -> BaseGeometry:
     return forma
 
 
-def criar_area(id_area: str, camada: str, valor: str, geometria: dict, semente_ruido: int | None = None) -> dict:
+def criar_area(id_area: str, camada: str, valor: str, geometria: dict, semente_ruido: int | None = None,
+               exemplo: bool = False) -> dict:
+    """`exemplo=True` grava `"exemplo": true` nas propriedades, como já se faz nos
+    lugares de exemplo: área pintada pela IA para teste, para o usuário substituir.
+    Falso não grava o campo."""
+    if not isinstance(exemplo, bool):
+        raise ValueError("'exemplo' tem que ser booleano")
     # Validar ANTES de checar a trava: camada inventada é dado inválido (422), e
     # `exigir_camada_livre` só sabe procurar camada que existe.
     forma_nova = _validar(camada, valor, geometria)
@@ -139,6 +145,8 @@ def criar_area(id_area: str, camada: str, valor: str, geometria: dict, semente_r
             "travado": False,
         },
     }
+    if exemplo:
+        feature["properties"]["exemplo"] = True
     mudancas[id_area] = {"antes": None, "depois": feature}
     operacoes.registrar_operacao("criar_area", CAMINHO_RELATIVO, mudancas)
     return feature

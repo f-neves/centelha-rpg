@@ -15,7 +15,7 @@ from urllib.parse import quote
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel
+from pydantic import BaseModel, StrictBool
 
 from . import (areas, cobertura_automatica, coordenadas, estradas, lugares,
                medicoes, operacoes, referencias, relevo_automatico, rios, travas)
@@ -81,6 +81,7 @@ class NovaArea(BaseModel):
     valor: str
     geometria: dict
     semente_ruido: int | None = None
+    exemplo: StrictBool = False
 
 
 class NovoRio(BaseModel):
@@ -458,7 +459,7 @@ def obter_cobertura_automatica() -> JSONResponse:
 @app.post("/api/areas")
 def criar_area(nova: NovaArea) -> JSONResponse:
     try:
-        areas.criar_area(nova.id, nova.camada, nova.valor, nova.geometria, nova.semente_ruido)
+        areas.criar_area(nova.id, nova.camada, nova.valor, nova.geometria, nova.semente_ruido, nova.exemplo)
     except travas.Travado as e:
         raise HTTPException(status_code=409, detail=str(e))
     except ValueError as e:
