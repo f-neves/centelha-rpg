@@ -935,12 +935,17 @@ mudou a penalidade de obrigatória para opcional. **O bônus de ferimento do §1
   `FRENESI.md` §7 já dizia: três gatilhos (a janela, o alvo cair ou fugir, ficar preso por (Força
   de Vontade) Ticks) obrigam a Vigor + Resistência contra 5, depois 10, 15, 20 a cada renovação, e
   só falhar encerra.
+- **A ressaca nunca leva a Incapacitado.** Cada estado de ressaca além de Crítico soma mais −1d6
+  na ação física e −4 na Defesa Física (Crítico com um estado de ressaca: −3d6 e −12). Evita que o
+  Meio-Orc, que sai sozinho ao entrar em Crítico, caia nocauteado na hora, e que um orc em Grave
+  desmaie na segunda fúria. O degrau abaixo de Crítico é exceção só da ressaca e tem de aparecer
+  na tabela de ferimento de `vida-ferimentos-cura.md` quando o capítulo for reescrito.
 
 **O `FRENESI.md` (raiz, ainda sem rastreio) foi atualizado com tudo isto em 23/09/2026:** o §6
 reescrito, o §8 (saída) reescrito, a justificativa do §10 corrigida, o §11 com a lista nova de pendências e a
 numeração interna consertada (§9/§10/§11). Cópia de antes da edição fora do repositório.
 
-**Ainda em aberto** (lista completa no `FRENESI.md` §11): a ressaca em Crítico; Vigor 1 dando zero fúrias; a lista de ações físicas e os rótulos da régua de
+**Ainda em aberto** (lista completa no `FRENESI.md` §11): Vigor 1 dando zero fúrias; a lista de ações físicas e os rótulos da régua de
 Virtude. Não implementado.
 
 ## Fechado em 22/09/2026 pela Executora-4: as sete armas novas e a tabela do capítulo gerada
