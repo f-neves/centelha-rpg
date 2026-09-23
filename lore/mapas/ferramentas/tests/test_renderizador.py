@@ -358,3 +358,85 @@ def test_o_corpo_do_simbolo_pode_avancar_sobre_a_agua(tmp_path):
     _, cs = renderizador.renderizar([AREA], JANELA, terra, bib, KM_POR_GRAU)
     assert all(terra[int(c.y), int(c.x)] for c in cs)
     assert any(not terra[int(c.y - 0.8 * c.maior_lado), int(c.x)] for c in cs)
+
+
+# --- piso x densidade (2026-09-23, noite) --------------------------------------------
+
+def _avisos(tmp_path, areas, janela=JANELA):
+    bib = _biblioteca(tmp_path)
+    terra = np.ones((janela.altura, janela.largura), dtype=bool)
+    avisos = []
+    img, cs = renderizador.renderizar(areas, janela, terra, bib, KM_POR_GRAU, avisos=avisos)
+    return avisos, img, cs
+
+
+def test_piso_que_aumenta_o_simbolo_gera_aviso(tmp_path, monkeypatch):
+    monkeypatch.setattr(renderizador, "_PISOS", {"montanha": 150})
+    avisos, _, cs = _avisos(tmp_path, [AREA])
+    piso = [a for a in avisos if "piso" in a.motivos]
+    assert len(piso) == 1
+    a = piso[0]
+    assert (a.area, a.tipo, a.n) == ("a", "montanha", len(cs))
+    assert a.no_piso == a.n and a.razao > 1.5
+    assert a.cabem == pytest.approx(a.n / a.razao ** 2, rel=0.01)
+    assert "a menos" in a.texto()
+
+
+def test_sem_piso_nao_ha_aviso(tmp_path, monkeypatch):
+    """Controle negativo: a mesma área, com piso que nunca age, não avisa nada."""
+    monkeypatch.setattr(renderizador, "_PISOS", {"montanha": 1})
+    avisos, _, cs = _avisos(tmp_path, [AREA])
+    assert len(cs) > renderizador.MINIMO_SIMBOLOS_NA_AREA
+    assert avisos == []
+
+
+def test_area_pequena_avisa_poucos(tmp_path, monkeypatch):
+    monkeypatch.setattr(renderizador, "_PISOS", {"montanha": 1})
+    pequena = _area([[2.8, 2.8], [3.6, 2.8], [3.6, 3.6], [2.8, 3.6]])
+    avisos, _, cs = _avisos(tmp_path, [pequena])
+    assert [a.motivos for a in avisos] == [("poucos",)]
+    assert avisos[0].cabem_na_area < renderizador.MINIMO_SIMBOLOS_NA_AREA
+    assert not avisos[0].cortada
+
+
+def test_area_sem_nenhum_simbolo_avisa(tmp_path, monkeypatch):
+    """Mancha dentro da janela e zero símbolos é o caso extremo, não silêncio."""
+    monkeypatch.setattr(renderizador, "_PISOS", {"montanha": 1})
+    minuscula = _area([[3.0, 3.0], [3.12, 3.0], [3.12, 3.12], [3.0, 3.12]])
+    avisos, _, cs = _avisos(tmp_path, [minuscula])
+    assert cs == []
+    assert len(avisos) == 1 and avisos[0].n == 0 and avisos[0].motivos == ("poucos",)
+
+
+def test_area_fora_da_janela_nao_avisa(tmp_path, monkeypatch):
+    monkeypatch.setattr(renderizador, "_PISOS", {"montanha": 150})
+    longe = _area([[20, 20], [24, 20], [24, 24], [20, 24]])
+    avisos, _, cs = _avisos(tmp_path, [longe])
+    assert cs == [] and avisos == []
+
+
+def test_area_cortada_pela_janela_e_marcada(tmp_path, monkeypatch):
+    monkeypatch.setattr(renderizador, "_PISOS", {"montanha": 150})
+    vaza = _area([[3, 1], [9, 1], [9, 5], [3, 5]])
+    avisos, _, _ = _avisos(tmp_path, [vaza])
+    assert avisos and all(a.cortada for a in avisos)
+    assert "cortada" in avisos[0].texto()
+
+
+def test_pedir_avisos_nao_muda_a_imagem(tmp_path, monkeypatch):
+    monkeypatch.setattr(renderizador, "_PISOS", {"montanha": 150})
+    bib = _biblioteca(tmp_path)
+    terra = np.ones((JANELA.altura, JANELA.largura), dtype=bool)
+    img1, cs1 = renderizador.renderizar([AREA], JANELA, terra, bib, KM_POR_GRAU)
+    img2, cs2 = renderizador.renderizar([AREA], JANELA, terra, bib, KM_POR_GRAU, avisos=[])
+    assert cs1 == cs2 and img1.tobytes() == img2.tobytes()
+
+
+def test_faixa_comida_pelo_piso(monkeypatch):
+    estilo = renderizador.Estilo({"montanha": renderizador.Tipo(100, 0.5, variacao=0.2)}, {}, {})
+    monkeypatch.setattr(renderizador, "_PISOS", {"montanha": 1})
+    assert renderizador.faixa_comida_pelo_piso(estilo) == {"montanha": 0.0}
+    monkeypatch.setattr(renderizador, "_PISOS", {"montanha": 100})
+    assert renderizador.faixa_comida_pelo_piso(estilo) == {"montanha": 0.5}
+    monkeypatch.setattr(renderizador, "_PISOS", {"montanha": 500})
+    assert renderizador.faixa_comida_pelo_piso(estilo) == {"montanha": 1.0}

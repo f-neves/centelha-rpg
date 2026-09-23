@@ -9,9 +9,30 @@ confirmado pelo usuário; o que é recomendação de IA fica marcado como tal.
 *(Atualizar esta seção antes de encerrar toda sessão de trabalho no mapa — é a
 primeira coisa que `/cartografo` mostra.)*
 
-- **Última atualização: 2026-09-23, fim da tarde (CONCLUÍDA e COMMITADA, sem push).
-  A PRÓXIMA RODADA É DO USUÁRIO**: ele vai pintar áreas de verdade na ferramenta e
-  renderizar, e o que encontrar vira a rodada seguinte. Não começar etapa nova antes.
+- **RODADA DA NOITE DE 2026-09-23, AUTÔNOMA (o usuário fora de casa, sem testar).**
+  Pedido: montanha x nevada aprovada; piso x densidade; áreas de exemplo irregulares;
+  renderizar e avaliar; etapa 10 sem cache, edição de vértice, pincel; lista do que
+  espera o teste dele. Tudo o que for decisão aqui é **recomendação do Cartógrafo**.
+  Commits por etapa, caminhos explícitos, sem push.
+  - **Montanha x nevada: decidido pelo usuário** como recomendado (fica como está,
+    sem fundo por relevo; nevada maior só se ainda se confundirem com área de verdade).
+  - **Etapa A · piso x densidade (feita)**. Achado primeiro: o piso **não** reduz a
+    contagem hoje. O raio do Poisson sai do tamanho pedido, então o piso só aumenta
+    os mesmos símbolos, que passam a se sobrepor mais do que a densidade pedia. O
+    renderizador agora mede e avisa (`renderizar(..., avisos=lista)`,
+    `renderizador.Aviso`): **"piso"** quando, mantida a folga pedida, caberiam 20% ou
+    mais a menos (`LIMIAR_PERDA_PELO_PISO`); **"poucos"** quando a área inteira comporta
+    menos de 10 símbolos (`MINIMO_SIMBOLOS_NA_AREA`), inclusive o caso de ZERO. O
+    script imprime e grava `render/avisos-<região>-<estilo>[-rapido].json`, e imprime
+    antes quanto da faixa de tamanho de cada tipo o piso come: **palmeira 70%, conífera
+    49%, duna 36%, folhosa 21%**, rochedo 6%, tropical 2%.
+  - **Achado da etapa A**: a borda irregular da mancha de símbolos (90 km) **apaga
+    inteira** uma área de até uns 110 km de lado, conforme a semente (medido: um
+    quadrado de 0,8° com semente 8 fica com zero pixels). A cor aparece e os símbolos
+    não, em silêncio. Agora isso sai como aviso "nenhum símbolo".
+- **Rodada do fim da tarde de 2026-09-23 (CONCLUÍDA e COMMITADA, sem push).** Era a
+  que deixava a próxima para o usuário pintar; ele pediu a rodada autônoma acima no
+  lugar.
   - **Correção 1 (tamanho mínimo)**: a tabela de contorno virou
     `dados/tamanho-minimo-silhueta.json` (campo `tamanho_minimo_silhueta`), com a
     limitação registrada em "Achados técnicos"; entrou a medida de detalhe interno,

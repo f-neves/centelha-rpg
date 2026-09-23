@@ -23,9 +23,15 @@ valores da primeira noite), `cor` (cor de fundo por cobertura, densidade da noit
 `cor-densidade` (o padrão: cor e a densidade nova). A imagem da noite 2 original é
 `recorte-<região>.png`, sem estilo no nome, e este script não a sobrescreve.
 
+**Piso x densidade** (2026-09-23, noite): antes de renderizar, imprime quanto da faixa
+de tamanho pedida de cada tipo fica abaixo do piso medido; depois de cada região,
+imprime os avisos de área em que o piso aumentou os símbolos além da folga pedida, ou
+em que cabem poucos símbolos, e grava a lista em `render/avisos-<região>-<estilo>[-rapido].json`.
+
 Lê `mascaras/costa_10240.png` inteira uma vez (uns 100 MB na memória).
 """
 
+import json
 import sys
 import time
 from pathlib import Path
@@ -132,11 +138,17 @@ def main(argv) -> int:
     bib = renderizador.Biblioteca.carregar(RAIZ_MAPAS / "dados" / "simbolos.json")
     todas = mod_areas.carregar()["features"]
     print(f"carregar a costa, a biblioteca e as áreas: {time.perf_counter() - t0:.1f} s")
+    comida = {t: f for t, f in renderizador.faixa_comida_pelo_piso(estilo).items() if f > 0}
+    if comida:
+        print("faixa de tamanho pedida que fica abaixo do piso: "
+              + ", ".join(f"{t} {f:.0%}" for t, f in sorted(comida.items(), key=lambda kv: -kv[1])))
     for nome in nomes:
         t = time.perf_counter()
         janela, terra = janela_e_terra(nome, costa, ref, proj["px_por_grau"], rapido)
         assert terra.shape == (janela.altura, janela.largura), (terra.shape, janela)
-        imagem, colocacoes = renderizador.renderizar(todas, janela, terra, bib, proj["km_por_grau"], estilo)
+        avisos = []
+        imagem, colocacoes = renderizador.renderizar(todas, janela, terra, bib, proj["km_por_grau"], estilo,
+                                                     avisos=avisos)
         base = f"recorte-{nome}-{estilo_nome}" + ("-rapido" if rapido else "")
         destino = RENDER / f"{base}.png"
         imagem.save(destino)
@@ -149,6 +161,11 @@ def main(argv) -> int:
             por_tipo[tipo] = por_tipo.get(tipo, 0) + 1
         print(f"{nome}: {imagem.width}x{imagem.height} px, {len(colocacoes)} símbolos {por_tipo}, "
               f"{time.perf_counter() - t:.1f} s -> {destino}")
+        (RENDER / f"avisos-{base.removeprefix('recorte-')}.json").write_text(
+            json.dumps([{**a.__dict__, "texto": a.texto()} for a in avisos], ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8")
+        for a in avisos:
+            print(f"  AVISO {a.texto()}")
     return 0
 
 

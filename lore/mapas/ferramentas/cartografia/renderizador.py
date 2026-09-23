@@ -358,11 +358,116 @@ def profundidade(mascara: np.ndarray, alcance_px: float) -> np.ndarray:
     return np.clip((v - 0.5) * 2.0, 0.0, 1.0) * (mascara > 0)
 
 
+# --- piso x densidade (pedido do usuário, 2026-09-23 à noite) ------------------
+#
+# O raio do Poisson sai do tamanho PEDIDO (`Tipo.tamanho`), e não do desenhado. Então,
+# quando o piso sobe um símbolo, a contagem NÃO cai: os mesmos pontos recebem símbolos
+# maiores, e eles se sobrepõem mais do que a densidade pedia. O aviso mede isso em
+# duas contas, e as duas são por área e por tipo:
+#
+# - `razao` = tamanho médio desenhado / tamanho médio pedido. Para manter a folga
+#   entre símbolos que a densidade pede (raio em fração do tamanho), só caberiam
+#   n / razao² deles. Aviso quando isso é pelo menos `LIMIAR_PERDA_PELO_PISO` a menos.
+# - `cabem` = n / razao², o número que caberia com a folga pedida. Aviso quando fica
+#   abaixo de `MINIMO_SIMBOLOS_NA_AREA`: a área é pequena demais para o tipo nesta
+#   escala (a "floresta de quatro árvores").
+#
+# Os dois números são recomendação do Cartógrafo.
+LIMIAR_PERDA_PELO_PISO = 0.20
+MINIMO_SIMBOLOS_NA_AREA = 10
+
+
+@dataclass
+class _Conta:
+    n: int = 0
+    no_piso: int = 0
+    pedido: float = 0.0
+    desenhado: float = 0.0
+
+
+@dataclass(frozen=True)
+class Aviso:
+    area: str
+    valor: str
+    tipo: str
+    n: int                 # símbolos colocados deste tipo nesta área
+    no_piso: int           # quantos deles o piso aumentou
+    razao: float           # tamanho médio desenhado / pedido
+    cabem: float           # quantos deste tipo caberiam com a folga pedida (n / razao²)
+    cabem_na_area: float   # a mesma conta somada em todos os tipos da área
+    motivos: tuple         # "piso" e/ou "poucos"
+    cortada: bool = False  # a mancha encosta na borda da janela: a conta é de um pedaço
+
+    def texto(self) -> str:
+        partes = []
+        if "piso" in self.motivos:
+            partes.append(f"o piso aumentou {self.no_piso} de {self.n} (tamanho médio {self.razao:.2f}x "
+                          f"o pedido); com a folga pedida caberiam {self.cabem:.0f}, "
+                          f"{1 - self.cabem / self.n:.0%} a menos")
+        if "poucos" in self.motivos and self.n == 0:
+            partes.append("nenhum símbolo: a área está na janela e ficou vazia (a borda "
+                          "irregular dos símbolos pode comê-la inteira)")
+        elif "poucos" in self.motivos:
+            partes.append(f"na área toda só {self.cabem_na_area:.0f} cabem com a folga pedida "
+                          f"(mínimo {MINIMO_SIMBOLOS_NA_AREA})")
+        corte = " [cortada pela janela: conta só o pedaço dentro dela]" if self.cortada else ""
+        return f"{self.area} ({self.valor}), {self.tipo}: " + "; ".join(partes) + corte
+
+
+def _avisos_da_area(props: dict, contas: dict[str, _Conta], principal: str,
+                    cortada: bool) -> list[Aviso]:
+    if not any(c.n for c in contas.values()):
+        # Mancha dentro da janela e nenhum símbolo: o caso extremo de "poucos".
+        return [Aviso(props["id"], props["valor"], principal, 0, 0, 1.0, 0.0, 0.0, ("poucos",), cortada)]
+    saida = []
+    total_cabem = 0.0
+    por_tipo = []
+    for tipo, c in contas.items():
+        if not c.n:
+            continue
+        razao = (c.desenhado / c.n) / (c.pedido / c.n)
+        cabem = c.n / razao ** 2
+        total_cabem += cabem
+        por_tipo.append((tipo, c, razao, cabem))
+    for tipo, c, razao, cabem in por_tipo:
+        motivos = []
+        if 1 - cabem / c.n >= LIMIAR_PERDA_PELO_PISO:
+            motivos.append("piso")
+        # "Poucos" olha a área INTEIRA: uma floresta com 30 folhosas e 3 coníferas não é
+        # pequena. O aviso sai no tipo principal da mistura, uma vez.
+        if tipo == por_tipo[0][0] and total_cabem < MINIMO_SIMBOLOS_NA_AREA:
+            motivos.append("poucos")
+        if motivos:
+            saida.append(Aviso(props["id"], props["valor"], tipo, c.n, c.no_piso, round(razao, 3),
+                               round(cabem, 1), round(total_cabem, 1), tuple(motivos), cortada))
+    return saida
+
+
+def faixa_comida_pelo_piso(estilo: Estilo = ESTILO) -> dict[str, float]:
+    """Por tipo, a fração da faixa de tamanho pedida (de `tamanho x borda x (1 -
+    variacao)` a `tamanho x miolo x (1 + variacao)`) que fica abaixo do piso: é quanto
+    da variação e da franja o piso apaga, antes de qualquer área."""
+    saida = {}
+    for tipo, t in estilo.tipos.items():
+        baixo = t.tamanho * t.borda * (1 - t.variacao)
+        alto = t.tamanho * t.miolo * (1 + t.variacao)
+        piso = pisos().get(tipo, 0)
+        saida[tipo] = round(min(1.0, max(0.0, (piso - baixo) / (alto - baixo))) if alto > baixo
+                            else float(piso > baixo), 3)
+    return saida
+
+
 def colocar_na_area(area: dict, mascara: np.ndarray, terra: np.ndarray, bib: Biblioteca,
                     escala: float = 1.0, estilo: Estilo = ESTILO,
-                    chao: np.ndarray | None = None) -> list[Colocacao]:
+                    chao: np.ndarray | None = None,
+                    avisos: list | None = None,
+                    na_janela: np.ndarray | None = None) -> list[Colocacao]:
     """`chao` (opcional, altura x largura x 3) é a cor do chão por pixel; o recheio
-    do símbolo "só traço" é a cor debaixo da âncora."""
+    do símbolo "só traço" é a cor debaixo da âncora. `avisos` (opcional) recebe os
+    `Aviso` de piso x densidade desta área; passar ou não passar não muda nada do que
+    é colocado. `na_janela` é a área crua (sem ruído) em terra dentro da janela: é
+    ela que diz se a área está aqui, porque a borda de 90 km dos símbolos pode comer
+    uma área pequena inteira (sem ela, `mascara`)."""
     props = area["properties"]
     mistura = estilo.misturas.get((props["camada"], props["valor"]))
     if not mistura:
@@ -370,12 +475,14 @@ def colocar_na_area(area: dict, mascara: np.ndarray, terra: np.ndarray, bib: Bib
     rng = np.random.default_rng(int(props.get("semente_ruido") or 0))
     principal = estilo.tipos[mistura[0][0]]
     raio = principal.tamanho * principal.raio * escala
-    pontos = poisson_disc(mascara > 0, raio, rng)
+    m = mascara > 0
+    pontos = poisson_disc(m, raio, rng)
     fundo_da_area = profundidade(mascara, principal.profundidade_km / 1.25 * escala)
     tipos = [t for t, _ in mistura]
     pesos = np.array([p for _, p in mistura], dtype=float)
     pesos /= pesos.sum()
     saida = []
+    contas: dict[str, _Conta] = {}
     for x, y in pontos:
         tipo = tipos[int(rng.choice(len(tipos), p=pesos))]
         conf = estilo.tipos[tipo]
@@ -386,8 +493,8 @@ def colocar_na_area(area: dict, mascara: np.ndarray, terra: np.ndarray, bib: Bib
         t = float(fundo_da_area[int(y), int(x)])
         piso = pisos().get(tipo, 0) * escala
         perto = conf.borda + (conf.miolo - conf.borda) * t
-        maior = int(round(max(piso, conf.tamanho * escala * perto
-                              * rng.uniform(1 - conf.variacao, 1 + conf.variacao))))
+        pedido = conf.tamanho * escala * perto * rng.uniform(1 - conf.variacao, 1 + conf.variacao)
+        maior = int(round(max(piso, pedido)))
         espelhar = bool(s["espelhavel"] and rng.random() < 0.5)
         rot = float(rng.uniform(-conf.rotacao, conf.rotacao)) if conf.rotacao else 0.0
         fica = conf.manter_na_borda + (1 - conf.manter_na_borda) * t
@@ -398,6 +505,19 @@ def colocar_na_area(area: dict, mascara: np.ndarray, terra: np.ndarray, bib: Bib
             continue
         recheio = COR_TERRA if chao is None else tuple(int(c) for c in chao[int(y), int(x)])
         saida.append(Colocacao(s["id"], x, y, maior, espelhar, rot, recheio))
+        c = contas.setdefault(tipo, _Conta())
+        c.n += 1
+        c.no_piso += piso > pedido
+        c.pedido += pedido
+        c.desenhado += maior
+    presente = m if na_janela is None else (na_janela > 0) | m
+    if avisos is not None and presente.any():
+        # Tipo principal primeiro: é nele que sai o aviso de "poucos".
+        ordem = {t: i for i, t in enumerate(tipos)}
+        cortada = bool(presente[0].any() or presente[-1].any() or presente[:, 0].any()
+                       or presente[:, -1].any())
+        avisos.extend(_avisos_da_area(props, dict(sorted(contas.items(), key=lambda kv: ordem[kv[0]])),
+                                      tipos[0], cortada))
     return saida
 
 
@@ -494,7 +614,10 @@ def mascara_de_lagos(areas: list[dict], janela: raster.Janela, terra: np.ndarray
 
 
 def renderizar(areas: list[dict], janela: raster.Janela, terra: np.ndarray, bib: Biblioteca,
-               km_por_grau: float, estilo: Estilo = ESTILO) -> tuple[Image.Image, list[Colocacao]]:
+               km_por_grau: float, estilo: Estilo = ESTILO,
+               avisos: list | None = None) -> tuple[Image.Image, list[Colocacao]]:
+    """`avisos` (opcional): lista que recebe os `Aviso` de piso x densidade de cada área.
+    Não muda a imagem nem as colocações."""
     escala = janela.px_por_grau / PX_POR_GRAU_OFICIAL
     # Lago vira água antes de tudo: o fundo o pinta da cor do lago com a margem
     # desenhada (a mesma regra da costa), e símbolo nenhum apoia a base dentro dele.
@@ -515,5 +638,9 @@ def renderizar(areas: list[dict], janela: raster.Janela, terra: np.ndarray, bib:
             # A mancha de símbolos não sai da mancha de cor: sem isso a borda de 90 km
             # dos símbolos passava da de 12 km da cor, e sobrava árvore no papel.
             mascara = np.where(com_cor[area["properties"]["id"]], mascara, 0).astype(np.uint8)
-        colocacoes.extend(colocar_na_area(area, mascara, terra, bib, escala, estilo, chapada))
+        na_janela = None
+        if avisos is not None:
+            na_janela = (raster.rasterizar_reto(area["geometry"], janela) > 0) & terra
+        colocacoes.extend(colocar_na_area(area, mascara, terra, bib, escala, estilo, chapada, avisos,
+                                          na_janela))
     return desenhar(terra, colocacoes, bib, suave, lagos if estilo.cores else None), colocacoes
