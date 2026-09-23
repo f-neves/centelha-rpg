@@ -18,7 +18,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from . import (areas, cobertura_automatica, coordenadas, lugares, medicoes,
-               operacoes, referencias, relevo_automatico, travas)
+               operacoes, referencias, relevo_automatico, rios, travas)
 
 RAIZ_FERRAMENTA = Path(__file__).resolve().parents[1]
 RAIZ_MAPAS = RAIZ_FERRAMENTA.parent
@@ -83,6 +83,14 @@ class NovaArea(BaseModel):
     semente_ruido: int | None = None
 
 
+class NovoRio(BaseModel):
+    id: str
+    geometria: dict
+    termina_em: dict
+    nome: str | None = None
+    ramo_de: str | None = None
+
+
 class PontoMedicao(BaseModel):
     lat: float
     lon: float
@@ -119,6 +127,10 @@ def pagina_inicial() -> str:
     html = html.replace(
         "/*__AREAS__*/",
         json.dumps(areas.carregar(), ensure_ascii=False),
+    )
+    html = html.replace(
+        "/*__RIOS__*/",
+        json.dumps(rios.carregar(), ensure_ascii=False),
     )
     # Calculada, nunca lida de arquivo: ver backend/cobertura_automatica.py.
     html = html.replace(
@@ -318,6 +330,52 @@ def refazer() -> JSONResponse:
 @app.get("/api/areas")
 def obter_areas() -> JSONResponse:
     return JSONResponse(areas.carregar())
+
+
+# --- Ferramenta de Rio (etapa 8, 2026-09-22) ----------------------------------
+
+@app.get("/api/rios")
+def obter_rios() -> JSONResponse:
+    return JSONResponse(rios.carregar())
+
+
+@app.post("/api/rios")
+def criar_rio(novo: NovoRio) -> JSONResponse:
+    try:
+        rios.criar_rio(novo.id, novo.geometria, novo.termina_em, novo.nome, novo.ramo_de)
+    except travas.Travado as e:
+        raise HTTPException(status_code=409, detail=str(e))
+    except KeyError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
+    return JSONResponse(rios.carregar())
+
+
+@app.delete("/api/rios/{id_rio}")
+def apagar_rio(id_rio: str) -> JSONResponse:
+    try:
+        rios.apagar_rio(id_rio)
+    except travas.Travado as e:
+        raise HTTPException(status_code=409, detail=str(e))
+    except KeyError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
+    return JSONResponse(rios.carregar())
+
+
+@app.post("/api/rios/{id_rio}/trava")
+def travar_rio(id_rio: str, mudanca: MudancaTrava) -> JSONResponse:
+    try:
+        rios.definir_trava(id_rio, mudanca.travado)
+    except travas.Travado as e:
+        raise HTTPException(status_code=409, detail=str(e))
+    except KeyError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
+    return JSONResponse(rios.carregar())
 
 
 @app.get("/api/relevo-automatico")

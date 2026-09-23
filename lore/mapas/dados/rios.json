@@ -1,0 +1,8 @@
+{
+  "type": "FeatureCollection",
+  "properties": {
+    "versao_esquema": 1,
+    "_comentario": "Cursos d'água de Uldun (etapa 8, 2026-09-22). Esquema em ESPEC-dados.md: coordinates[0] é a nascente, coordinates[-1] é a foz, termina_em diz onde o rio acaba (mar, lago ou rio) e ramo_de é o id do rio-mãe quando a feature é braço de delta. O traçado é gravado exatamente como desenhado; a validação de terra é por SEGMENTO (amostrado pixel a pixel contra mascaras/costa_10240.png), com exceção do último trecho quando o rio termina no mar e tolerância de 2 km na foz. Largura não é gravada: sai dos afluentes acumulados na rasterização."
+  },
+  "features": []
+}

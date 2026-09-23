@@ -1,0 +1,225 @@
+"""Ferramenta de Rio (etapa 8 da lista do ESPEC, 2026-09-22).
+
+Esquema em `ESPEC-dados.md` (`dados/rios.json`): `LineString`, `coordinates[0]` é a
+nascente e `coordinates[-1]` é a foz, `termina_em` diz onde o rio acaba (`"mar"`,
+`"lago"` ou `"rio"`) e `ramo_de` é o id do rio-mãe quando a feature é braço de delta.
+
+O que esta etapa implementa da correção 2 do ESPEC-dados:
+
+- **validação por SEGMENTO, não por vértice**: o trecho reto entre dois vértices é
+  amostrado pixel a pixel contra `costa_10240.png`, então um clique que "pula" um
+  istmo por cima da água é recusado mesmo com os dois vértices em terra;
+- **exceção do último segmento** quando o rio termina no mar: é o trecho que vai de
+  terra até a água, e sem a exceção nenhum rio conseguiria chegar ao mar;
+- **tolerância de foz de 2 km**: o último ponto vale se estiver na água OU a até 2 km
+  da costa. Na resolução oficial isso é pouco mais de um pixel e meio (1,25 km por
+  pixel), e o número vem do ESPEC, não daqui.
+
+Tudo grava por `operacoes.registrar_operacao` (B1), então desfazer e refazer valem
+sem código próprio, e toda escrita passa antes por `travas` (camada `rios`).
+
+**Fora desta etapa, de propósito**: a atração automática de 5 km (ela é da etapa das
+estradas, e a decisão registrada diz que é NOSSA, no servidor, ao salvar), a largura
+por afluentes acumulados (é da rasterização) e a edição de vértice de rio já salvo.
+"""
+
+import json
+import math
+from pathlib import Path
+
+from . import areas, coordenadas, historico, lugares, operacoes, travas
+
+RAIZ_MAPAS = Path(__file__).resolve().parents[2]
+CAMINHO_DADOS = RAIZ_MAPAS / "dados" / "rios.json"
+CAMINHO_RELATIVO = "dados/rios.json"
+CAMADA = "rios"
+
+TIPOS_DE_FIM = ("mar", "lago", "rio")
+TOLERANCIA_FOZ_KM = 2.0  # ESPEC-dados.md, correção 2
+PASSO_AMOSTRA_PX = 1.0   # "a cada pixel", para não pular canal fino
+
+
+def carregar() -> dict:
+    with open(CAMINHO_DADOS, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def _achar(dados: dict, id_rio: str) -> dict:
+    for f in dados["features"]:
+        if f["properties"]["id"] == id_rio:
+            return f
+    raise KeyError(f"rio desconhecido: {id_rio}")
+
+
+# --- geometria contra a costa -------------------------------------------------
+
+def _px(lon: float, lat: float) -> tuple[float, float]:
+    d = coordenadas.carregar_coordenadas()
+    p = d["projecao"]["px_por_grau"]
+    r = d["referencia"]
+    return lon * p + r["x_meridiano_zero_px"], -lat * p + r["y_equador_px"]
+
+
+def _km_por_px() -> float:
+    return coordenadas.carregar_coordenadas()["projecao"]["km_por_px_latitude"]
+
+
+def segmento_em_terra(a: list[float], b: list[float]) -> bool:
+    """Amostra o segmento inteiro, e não só os dois extremos.
+
+    É o coração da correção 2: dois vértices em terra não garantem que a reta entre
+    eles fique em terra. A amostragem é de um pixel por passo, medida em pixels da
+    resolução oficial, para não pular a espessura de um canal estreito.
+    """
+    (x0, y0), (x1, y1) = _px(*a), _px(*b)
+    passos = max(1, int(math.hypot(x1 - x0, y1 - y0) / PASSO_AMOSTRA_PX))
+    for i in range(passos + 1):
+        t = i / passos
+        lon = a[0] + (b[0] - a[0]) * t
+        lat = a[1] + (b[1] - a[1]) * t
+        if not lugares.ponto_em_terra(lon, lat):
+            return False
+    return True
+
+
+def distancia_ate_agua_km(lon: float, lat: float, teto_km: float = TOLERANCIA_FOZ_KM) -> float:
+    """Distância até o pixel de água mais próximo, parando no teto.
+
+    Devolve 0.0 se o próprio ponto já é água. Acima do teto devolve `inf`: a busca
+    não precisa saber a distância exata de um ponto que já está longe demais.
+    """
+    if not lugares.ponto_em_terra(lon, lat):
+        return 0.0
+    km_px = _km_por_px()
+    raio_px = int(math.ceil(teto_km / km_px))
+    d = coordenadas.carregar_coordenadas()
+    grau_por_px = 1.0 / d["projecao"]["px_por_grau"]
+    melhor = math.inf
+    for dy in range(-raio_px, raio_px + 1):
+        for dx in range(-raio_px, raio_px + 1):
+            dist_px = math.hypot(dx, dy)
+            if dist_px > raio_px or dist_px * km_px >= melhor:
+                continue
+            if not lugares.ponto_em_terra(lon + dx * grau_por_px, lat - dy * grau_por_px):
+                melhor = dist_px * km_px
+    return melhor
+
+
+# --- validação ----------------------------------------------------------------
+
+def _validar(geometria: dict, termina_em: dict, ramo_de, dados: dict) -> list:
+    if geometria.get("type") != "LineString":
+        raise ValueError("um rio é uma LineString")
+    pontos = geometria.get("coordinates") or []
+    if len(pontos) < 2:
+        raise ValueError("um rio precisa de pelo menos dois pontos")
+    for p in pontos:
+        if not (isinstance(p, (list, tuple)) and len(p) == 2):
+            raise ValueError("cada ponto é um par [longitude, latitude]")
+
+    tipo = (termina_em or {}).get("tipo")
+    if tipo not in TIPOS_DE_FIM:
+        raise ValueError(f"'termina_em.tipo' tem que ser um de {TIPOS_DE_FIM}")
+    id_destino = (termina_em or {}).get("id")
+    if tipo == "mar":
+        if id_destino is not None:
+            raise ValueError("rio que termina no mar não tem id de destino")
+    else:
+        if not id_destino:
+            raise ValueError(f"rio que termina em {tipo} precisa do id do destino")
+        _exigir_destino(tipo, id_destino, dados)
+
+    if ramo_de is not None:
+        _achar(dados, ramo_de)  # KeyError vira 404 lá em cima
+
+    # Nascente em terra, sempre. Um rio que nasce na água não é rio.
+    if not lugares.ponto_em_terra(*pontos[0]):
+        raise ValueError("a nascente cai fora de terra")
+
+    ultimo = len(pontos) - 2
+    for i in range(len(pontos) - 1):
+        ultimo_segmento = i == ultimo
+        if ultimo_segmento and tipo == "mar":
+            # Exceção do ESPEC: o trecho até a foz vai de terra até a água.
+            continue
+        if not segmento_em_terra(pontos[i], pontos[i + 1]):
+            raise ValueError(
+                f"o trecho {i + 1} passa por cima da água · o traçado tem que ficar em terra"
+            )
+
+    if tipo == "mar":
+        distancia = distancia_ate_agua_km(*pontos[-1])
+        if distancia > TOLERANCIA_FOZ_KM:
+            raise ValueError(
+                f"a foz não chegou ao mar · está a mais de {TOLERANCIA_FOZ_KM:g} km da água"
+            )
+    else:
+        if not lugares.ponto_em_terra(*pontos[-1]):
+            raise ValueError(f"um rio que termina em {tipo} não pode acabar no mar aberto")
+    return pontos
+
+
+def _exigir_destino(tipo: str, id_destino: str, dados: dict) -> None:
+    if tipo == "rio":
+        _achar(dados, id_destino)
+        return
+    # lago: o destino é uma área pintada da camada 'lago'
+    for f in areas.carregar()["features"]:
+        if f["properties"]["id"] == id_destino and f["properties"]["camada"] == "lago":
+            return
+    raise KeyError(f"lago desconhecido: {id_destino}")
+
+
+# --- operações ----------------------------------------------------------------
+
+def criar_rio(id_rio: str, geometria: dict, termina_em: dict, nome=None, ramo_de=None,
+              travado: bool = False) -> dict:
+    dados = carregar()
+    for f in dados["features"]:
+        if f["properties"]["id"] == id_rio:
+            raise ValueError(f"já existe um rio com o id {id_rio}")
+    # Validar ANTES de checar a trava, como nas áreas: dado inválido é 422, recusa por
+    # trava é 409, e os dois não podem se confundir.
+    _validar(geometria, termina_em, ramo_de, dados)
+    travas.exigir_camada_livre(CAMADA, "criar um rio")
+
+    feature = {
+        "type": "Feature",
+        "geometry": {"type": "LineString", "coordinates": geometria["coordinates"]},
+        "properties": {
+            "id": id_rio,
+            "nome": nome or None,
+            "termina_em": {"tipo": termina_em["tipo"], "id": termina_em.get("id")},
+            "ramo_de": ramo_de,
+            "travado": bool(travado),
+        },
+    }
+    operacoes.registrar_operacao(
+        "criar_rio", CAMINHO_RELATIVO, {id_rio: {"antes": None, "depois": feature}}
+    )
+    return feature
+
+
+def apagar_rio(id_rio: str) -> None:
+    dados = carregar()
+    antes = _achar(dados, id_rio)
+    travas.exigir_objeto_livre(CAMADA, antes["properties"], "apagar este rio")
+    operacoes.registrar_operacao(
+        "apagar_rio", CAMINHO_RELATIVO, {id_rio: {"antes": antes, "depois": None}}
+    )
+
+
+def definir_trava(id_rio: str, travado: bool) -> dict:
+    if not isinstance(travado, bool):
+        raise ValueError("'travado' tem que ser booleano")
+    dados = carregar()
+    antes = _achar(dados, id_rio)
+    # A trava da CAMADA continua valendo: com ela fechada, nada nesta camada muda.
+    travas.exigir_camada_livre(CAMADA, "mudar a trava deste rio")
+    depois = json.loads(json.dumps(antes))
+    depois["properties"]["travado"] = travado
+    operacoes.registrar_operacao(
+        "travar_rio" if travado else "destravar_rio",
+        CAMINHO_RELATIVO, {id_rio: {"antes": antes, "depois": depois}},
+    )
+    return depois
