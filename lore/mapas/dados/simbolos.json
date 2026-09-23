@@ -1,7 +1,7 @@
 {
  "_comentario": "Biblioteca de símbolos recortada das folhas em icons/ por ferramentas/cartografia/recorte.py (regenerável: `.venv/Scripts/python.exe scripts/recortar_simbolos.py`). Os PNGs moram em simbolos/, fora do git. 'arquivo' é o do modo_padrao; para trocar o modo de um símbolo, troque modo_padrao e arquivo pelo outro valor de 'arquivos', sem recortar de novo. Âncora em pixels do próprio PNG, a partir do canto de cima à esquerda. Modo padrão e espelhável por tipo: recomendação do Cartógrafo (ver o docstring do recorte.py).",
  "versao_esquema": 1,
- "gerado_em": "2026-09-23 02:36",
+ "gerado_em": "2026-09-23 13:52",
  "limiar_tinta": 200,
  "limiar_alfa": 250,
  "pecas_por_folha": {
@@ -36,7 +36,7 @@
     "y": 358,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/arvore-folhosa/so-traco/arvore-folhosa-01.png",
    "arquivos": {
@@ -65,7 +65,7 @@
     "y": 338,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/arvore-conifera/so-traco/arvore-conifera-01.png",
    "arquivos": {
@@ -94,7 +94,7 @@
     "y": 294,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/arvore-folhosa/so-traco/arvore-folhosa-02.png",
    "arquivos": {
@@ -123,7 +123,7 @@
     "y": 352,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/arvore-conifera/so-traco/arvore-conifera-02.png",
    "arquivos": {
@@ -152,7 +152,7 @@
     "y": 244,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/arvore-folhosa/so-traco/arvore-folhosa-03.png",
    "arquivos": {
@@ -181,7 +181,7 @@
     "y": 336,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/arvore-conifera/so-traco/arvore-conifera-03.png",
    "arquivos": {
@@ -210,7 +210,7 @@
     "y": 319,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/arvore-folhosa/so-traco/arvore-folhosa-04.png",
    "arquivos": {
@@ -239,7 +239,7 @@
     "y": 300,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/arvore-folhosa/so-traco/arvore-folhosa-05.png",
    "arquivos": {
@@ -268,7 +268,7 @@
     "y": 352,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/arvore-conifera/so-traco/arvore-conifera-04.png",
    "arquivos": {
@@ -297,7 +297,7 @@
     "y": 310,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/arvore-folhosa/so-traco/arvore-folhosa-06.png",
    "arquivos": {
@@ -326,7 +326,7 @@
     "y": 314,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/arvore-conifera/so-traco/arvore-conifera-05.png",
    "arquivos": {
@@ -355,7 +355,7 @@
     "y": 265,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/arvore-folhosa/so-traco/arvore-folhosa-07.png",
    "arquivos": {
@@ -384,7 +384,7 @@
     "y": 324,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/cidade/so-traco/cidade-01.png",
    "arquivos": {
@@ -413,7 +413,7 @@
     "y": 320,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/cidade/so-traco/cidade-02.png",
    "arquivos": {
@@ -442,7 +442,7 @@
     "y": 196,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/vila/so-traco/vila-01.png",
    "arquivos": {
@@ -471,7 +471,7 @@
     "y": 204,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/vila/so-traco/vila-02.png",
    "arquivos": {
@@ -500,7 +500,7 @@
     "y": 308,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/fortaleza/so-traco/fortaleza-01.png",
    "arquivos": {
@@ -529,7 +529,7 @@
     "y": 293,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/fortaleza/so-traco/fortaleza-02.png",
    "arquivos": {
@@ -558,7 +558,7 @@
     "y": 222,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/porto/so-traco/porto-01.png",
    "arquivos": {
@@ -587,7 +587,7 @@
     "y": 263,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/porto/so-traco/porto-02.png",
    "arquivos": {
@@ -616,7 +616,7 @@
     "y": 246,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/ruina/so-traco/ruina-01.png",
    "arquivos": {
@@ -645,7 +645,7 @@
     "y": 244,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/ruina/so-traco/ruina-02.png",
    "arquivos": {
@@ -674,7 +674,7 @@
     "y": 323,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/marco/so-traco/marco-01.png",
    "arquivos": {
@@ -703,7 +703,7 @@
     "y": 306,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/marco/so-traco/marco-02.png",
    "arquivos": {
@@ -1660,9 +1660,9 @@
     "y": 147,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
-   "modo_padrao": "so-traco",
-   "arquivo": "simbolos/tundra/so-traco/tundra-01.png",
+   "espelhavel": false,
+   "modo_padrao": "branco-opaco",
+   "arquivo": "simbolos/tundra/branco-opaco/tundra-01.png",
    "arquivos": {
     "so-traco": "simbolos/tundra/so-traco/tundra-01.png",
     "branco-opaco": "simbolos/tundra/branco-opaco/tundra-01.png"
@@ -1689,9 +1689,9 @@
     "y": 140,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
-   "modo_padrao": "so-traco",
-   "arquivo": "simbolos/tundra/so-traco/tundra-02.png",
+   "espelhavel": false,
+   "modo_padrao": "branco-opaco",
+   "arquivo": "simbolos/tundra/branco-opaco/tundra-02.png",
    "arquivos": {
     "so-traco": "simbolos/tundra/so-traco/tundra-02.png",
     "branco-opaco": "simbolos/tundra/branco-opaco/tundra-02.png"
@@ -1718,9 +1718,9 @@
     "y": 124,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
-   "modo_padrao": "so-traco",
-   "arquivo": "simbolos/tundra/so-traco/tundra-03.png",
+   "espelhavel": false,
+   "modo_padrao": "branco-opaco",
+   "arquivo": "simbolos/tundra/branco-opaco/tundra-03.png",
    "arquivos": {
     "so-traco": "simbolos/tundra/so-traco/tundra-03.png",
     "branco-opaco": "simbolos/tundra/branco-opaco/tundra-03.png"
@@ -1747,9 +1747,9 @@
     "y": 133,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
-   "modo_padrao": "so-traco",
-   "arquivo": "simbolos/tundra/so-traco/tundra-04.png",
+   "espelhavel": false,
+   "modo_padrao": "branco-opaco",
+   "arquivo": "simbolos/tundra/branco-opaco/tundra-04.png",
    "arquivos": {
     "so-traco": "simbolos/tundra/so-traco/tundra-04.png",
     "branco-opaco": "simbolos/tundra/branco-opaco/tundra-04.png"
@@ -2008,7 +2008,7 @@
     "y": 192,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/vegetacao-seca/so-traco/vegetacao-seca-01.png",
    "arquivos": {
@@ -2037,7 +2037,7 @@
     "y": 252,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/vegetacao-seca/so-traco/vegetacao-seca-02.png",
    "arquivos": {
@@ -2066,7 +2066,7 @@
     "y": 294,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/vegetacao-seca/so-traco/vegetacao-seca-03.png",
    "arquivos": {
@@ -2095,7 +2095,7 @@
     "y": 185,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/vegetacao-seca/so-traco/vegetacao-seca-04.png",
    "arquivos": {
@@ -2240,7 +2240,7 @@
     "y": 236,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/selva/so-traco/selva-01.png",
    "arquivos": {
@@ -2269,7 +2269,7 @@
     "y": 258,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/selva/so-traco/selva-02.png",
    "arquivos": {
@@ -2298,7 +2298,7 @@
     "y": 246,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/selva/so-traco/selva-03.png",
    "arquivos": {
@@ -2327,7 +2327,7 @@
     "y": 236,
     "metodo": "centro horizontal da caixa; linha onde a tinta acumulada de baixo para cima passa de 0,2%"
    },
-   "espelhavel": true,
+   "espelhavel": false,
    "modo_padrao": "so-traco",
    "arquivo": "simbolos/selva/so-traco/selva-04.png",
    "arquivos": {

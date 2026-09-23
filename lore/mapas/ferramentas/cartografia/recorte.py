@@ -96,30 +96,56 @@ PECAS_CARTOGRAFIA = [
 # repetidas. Fica guardada como referência de silhueta.
 
 # Modo padrão por tipo (pedido do Direcionamento: branco opaco só onde o branco é neve
-# ou gelo). Tundra, palmeira e árvore tropical não estavam em nenhuma das duas listas
-# do pedido: ficaram em so-traco, recomendação do Cartógrafo.
+# ou gelo). Em 2026-09-23 o usuário decidiu a tundra em branco opaco (o branco dela é
+# neve, e sumiria sobre a cor de fundo esverdeada); palmeira e árvore tropical ficam em
+# só traço. Conferido sobre a cor de fundo (`render/analise/modos-sobre-a-cor.png`):
+# rochedo e duna ficam em só traço, porque o branco deles é face iluminada e, opaco
+# sobre a areia, lê como neve; pântano também, porque o branco cai nas folhas e nos
+# juncos, não só na água, e a água já se lê pelas marolas do traço.
 MODO_PADRAO = {t: "so-traco" for t in (
     "montanha", "arvore-folhosa", "arvore-conifera", "colina", "palmeira",
     "arvore-tropical", "selva", "pantano", "cidade", "vila", "fortaleza", "porto",
-    "ruina", "marco", "tundra", "duna", "rochedo", "vegetacao-seca",
+    "ruina", "marco", "duna", "rochedo", "vegetacao-seca",
     "rosa-dos-ventos", "barra-de-escala", "cartela", "monstro-marinho",
 )}
-MODO_PADRAO.update({"montanha-nevada": "branco-opaco", "geleira": "branco-opaco"})
+MODO_PADRAO.update({"montanha-nevada": "branco-opaco", "geleira": "branco-opaco",
+                    "tundra": "branco-opaco"})
 
-# Espelhamento horizontal (recomendação do Cartógrafo): as gravuras têm luz vinda da
-# esquerda e sombra hachurada à direita. Em relevo (montanha, colina, rochedo, duna,
-# geleira) espelhar põe a sombra do lado errado, e numa cordilheira as peças
-# espelhadas brigam com as vizinhas. Vegetação e construção aguentam. Rosa dos
-# ventos, barra de escala e cartela têm orientação e não espelham.
+# Espelhamento horizontal. A luz do mapa vem sempre do noroeste: as gravuras têm o lado
+# esquerdo claro e a sombra hachurada à direita, e espelhar uma peça põe a sombra do
+# lado errado ao lado das vizinhas (decidido pelo usuário em 2026-09-23 para o relevo,
+# "e mesmo assim confira" na vegetação). A conferência é MEDIDA, e não a olho:
+# `assimetria_de_luz` dá a tinta média da metade direita da silhueta sobre a da
+# esquerda. Espelha só o tipo em que NENHUMA peça passa de `LIMIAR_ASSIMETRIA`. A
+# primeira versão (noite 2) espelhava toda vegetação e construção, e a medida mostrou
+# árvore folhosa em 1,53 e conífera em 1,41, tão sombreadas quanto a montanha (1,60).
+# Rosa dos ventos, barra de escala e cartela têm orientação e não espelham.
+LIMIAR_ASSIMETRIA = 1.15
 ESPELHAVEL = {
     "montanha": False, "montanha-nevada": False, "colina": False, "rochedo": False,
     "duna": False, "geleira": False,
-    "arvore-folhosa": True, "arvore-conifera": True, "palmeira": True,
-    "arvore-tropical": True, "selva": True, "pantano": True, "tundra": True,
-    "vegetacao-seca": True, "cidade": True, "vila": True, "fortaleza": True,
-    "porto": True, "ruina": True, "marco": True, "monstro-marinho": True,
+    "arvore-folhosa": False, "arvore-conifera": False, "selva": False, "tundra": False,
+    "vegetacao-seca": False, "cidade": False, "vila": False, "fortaleza": False,
+    "porto": False, "ruina": False, "marco": False,
+    "palmeira": True, "arvore-tropical": True, "pantano": True, "monstro-marinho": True,
     "rosa-dos-ventos": False, "barra-de-escala": False, "cartela": False,
 }
+
+
+def assimetria_de_luz(rgba: np.ndarray) -> float:
+    """Tinta média por pixel de silhueta na metade direita, dividida pela da metade
+    esquerda, cortando no centro de massa da silhueta. Maior que 1: sombra à direita.
+    Recebe o símbolo no modo branco-opaco (a silhueta é o alfa)."""
+    alfa = rgba[..., 3].astype(float) / 255
+    tinta = (1 - rgba[..., :3].astype(float).mean(-1) / 255) * alfa
+    dentro = alfa > 0.5
+    _, xs = np.nonzero(dentro)
+    if len(xs) == 0:
+        return 1.0
+    direita = np.arange(rgba.shape[1])[None, :] >= xs.mean()
+    esq = tinta[:, ~direita[0]].sum() / max(1, dentro[:, ~direita[0]].sum())
+    dir_ = tinta[:, direita[0]].sum() / max(1, dentro[:, direita[0]].sum())
+    return float(dir_ / max(esq, 1e-9))
 
 
 class ErroDeRecorte(ValueError):

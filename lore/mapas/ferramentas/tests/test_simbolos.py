@@ -59,8 +59,10 @@ def test_modos_padrao_pedidos(recorte_real):
     padroes = {s["tipo"]: s["modo_padrao"] for s in m["simbolos"]}
     assert padroes["montanha-nevada"] == "branco-opaco"
     assert padroes["geleira"] == "branco-opaco"
+    assert padroes["tundra"] == "branco-opaco"          # decisão de 2026-09-23
     for tipo in ("montanha", "colina", "arvore-folhosa", "selva", "pantano", "duna",
-                 "rochedo", "cidade", "ruina", "marco", "rosa-dos-ventos"):
+                 "rochedo", "cidade", "ruina", "marco", "rosa-dos-ventos",
+                 "palmeira", "arvore-tropical"):
         assert padroes[tipo] == "so-traco", tipo
 
 
@@ -178,3 +180,39 @@ def test_ancora_ignora_pedrinha_solta_embaixo():
     alfa[290:293, 100:103] = 255  # uma pedrinha solta
     assert 240 <= recorte.ancora_na_base(alfa)["y"] <= 250
 
+
+
+# --- espelhamento medido pela luz (2026-09-23, rodada da manhã) ------------------
+
+def _medidas_por_tipo(pasta, manifesto):
+    por_tipo = {}
+    for s in manifesto["simbolos"]:
+        with Image.open(pasta / s["arquivos"]["branco-opaco"]) as im:
+            rgba = np.asarray(im.convert("RGBA"))
+        por_tipo.setdefault(s["tipo"], []).append(recorte.assimetria_de_luz(rgba))
+    return por_tipo
+
+
+def test_so_espelha_o_tipo_que_a_luz_nao_denuncia(recorte_real):
+    pasta, m = recorte_real
+    for tipo, medidas in _medidas_por_tipo(pasta, m).items():
+        if recorte.ESPELHAVEL[tipo]:
+            assert max(medidas) < recorte.LIMIAR_ASSIMETRIA, (tipo, medidas)
+
+
+def test_a_regra_antiga_espelhava_arvore_sombreada(recorte_real):
+    """Controle negativo: a tabela da noite 2 (toda vegetação espelhava) reprova na
+    mesma medida. Se a medida não pegasse a folhosa, o teste de cima seria vazio."""
+    pasta, m = recorte_real
+    medidas = _medidas_por_tipo(pasta, m)
+    assert max(medidas["arvore-folhosa"]) > recorte.LIMIAR_ASSIMETRIA
+    assert max(medidas["arvore-conifera"]) > recorte.LIMIAR_ASSIMETRIA
+
+
+def test_assimetria_ve_a_sombra_e_o_espelho_a_inverte():
+    rgba = np.zeros((40, 40, 4), dtype=np.uint8)
+    rgba[..., 3] = 255
+    rgba[..., :3] = 230
+    rgba[:, 20:, :3] = 90                     # metade direita hachurada
+    assert recorte.assimetria_de_luz(rgba) > 2
+    assert recorte.assimetria_de_luz(rgba[:, ::-1]) < 0.5
