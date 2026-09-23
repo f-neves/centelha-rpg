@@ -140,8 +140,9 @@
       <section class="secao" data-secao="regioes">
         <h2 class="cabecalho-secao">REGIÕES</h2>
         <div class="corpo-secao">
-          <p class="nota">Sem o cache de ilha: a massa se escolhe pela lista, não
-            por clique no mapa. Arraste o nome no mapa para mover o rótulo.</p>
+          <p class="nota">"identificar ilha" e um clique dizem que ilha é (cache de ilha);
+            a região de cada massa se escolhe na lista. Arraste o nome no mapa para
+            mover o rótulo.</p>
           <label class="nota"><input type="checkbox" id="regioes-mostrar-rotulos" checked> rótulos no mapa</label>
           <ul id="lista-regioes"></ul>
           <form id="form-regiao">
@@ -158,6 +159,8 @@
             </div>
           </form>
           <div id="regiao-leitura" class="nota"></div>
+          <button type="button" id="regiao-identificar" title="O próximo clique no mapa diz que ilha é, que massa a representa e que região a regra dos 100 km sugere (precisa do cache de ilha).">identificar ilha</button>
+          <div id="regiao-ilha" class="nota"></div>
           <h3 class="nota">massas de terra</h3>
           <ul id="lista-massas"></ul>
         </div>

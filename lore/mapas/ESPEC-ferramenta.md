@@ -1316,3 +1316,35 @@ traço de 10 movimentos em floresta temperada no norte de Syl **fundiu** com a
 desfazer voltou o arquivo de áreas **byte a byte** ao de antes. **Não conferido**: a
 sensação de pintar com o mouse de verdade (o tamanho do círculo, a fluidez, o espaço
 segurado no meio do traço) e o modo apagar na tela.
+
+## Etapa 10 completa · cache de identidade de ilha (2026-09-23, noite, autorizado)
+
+`backend/ilhas.py`, `scripts/gerar_cache_ilhas.py`, saída em `render/cache-ilhas/`
+(fora do git): `rotulos.npy` (200 MB, 16 bits por pixel, lido por memmap),
+`componentes.json` (área e caixa de cada componente), `zonas-100km.npz` (a zona de
+100 km em volta de cada ilha principal, a 5 km/px) e `medida.json`.
+
+**Como**: rotulagem por corridas com união-busca, conectividade 4, lendo a máscara em
+faixas de 512 linhas e escrevendo os rótulos no disco faixa a faixa. **Medido**: 435
+componentes, **4,7 s**, pico do processo **271 MB**, com 2,2 GB livres antes (o script
+recusa começar com menos de 1,2 GB). Servidor parado durante a geração.
+
+**Validação com controle negativo**: rotulagem igual, pixel a pixel e na numeração, a
+um preenchimento por inundação ingênuo em 5 máscaras aleatórias; dois pixels só em
+diagonal são duas ilhas; forma de U funde entre faixas; no mapa de verdade, o ponto de
+oceano aberto dá 0 e as três principais de Waning dão três componentes diferentes
+(confere com a varredura exaustiva do CARTOGRAFO). Regra dos 100 km num mundo
+sintético: a ilhota a 60 km entra, a de 140 km não.
+
+**Na ferramenta**: `GET /api/ilha?lon&lat` (ilha, massas nela, área em km², regiões a
+menos de 100 km da principal e a sugerida) e `POST /api/massas` (registra a ilha
+clicada como `ilha-NNN`). Painel REGIÕES: botão "identificar ilha" e um clique.
+**A regra**: atribuição automática só quando UMA região tem a principal a menos de
+100 km; com duas ou mais (Mére e Syl estão a menos de 100 km uma da outra), fica
+`sem_regiao` e o usuário decide. Recusa ponto no mar e ilha que já tem massa.
+
+**Conferido por HTTP no servidor real**: Mére responde componente 191 com as massas
+`mere-principal` e `ilha-204`; o mar responde 0; registrar massa em Mére é recusado
+(422) com o arquivo igual; uma ilhota perto de Calin foi registrada como `ilha-219`,
+região `calin` pela regra, e desfeita pela API (o arquivo voltou byte a byte).
+**Não conferido**: o botão e o clique na tela.

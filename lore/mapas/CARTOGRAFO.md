@@ -16,6 +16,9 @@ primeira coisa que `/cartografo` mostra.)*
     padrão): onde há montanha ou alta montanha, a cobertura não põe símbolo, e a cor
     fica. Geleira com raio 1,6 (era 0,80). As coníferas saíram dos picos do norte de
     Mére e o White Wall deixou de ser papel de parede.
+  - **A3 (feita): cache de identidade de ilha gerado** (`render/cache-ilhas/`, 4,7 s,
+    pico de 271 MB, 435 componentes) e ligado à ferramenta: "identificar ilha" e
+    registrar massa nova com a regra dos 100 km. Achado em "Achados técnicos".
 - **RODADA DA NOITE DE 2026-09-23, AUTÔNOMA (o usuário fora de casa, sem testar).**
   Pedido: montanha x nevada aprovada; piso x densidade; áreas de exemplo irregulares;
   renderizar e avaliar; etapa 10 sem cache, edição de vértice, pincel; lista do que
@@ -1219,6 +1222,15 @@ prompts, IA pintando o mapa inteiro, está superada — ver seção Técnica). R
    automatizada de smart object vinculado — não existe API oficial documentada).
 
 ## Achados técnicos registrados (não são decisões, são fatos medidos)
+
+- **Duas "ilhas" de `massas.geojson` são pedaços das principais** (2026-09-23 noite,
+  cache de identidade de ilha, conectividade 4 na resolução oficial): `ilha-192` cai
+  no MESMO componente que `syl-principal`, e `ilha-204` no mesmo que `mere-principal`.
+  Na análise antiga (2048 px) elas pareciam separadas; na costa oficial, estão ligadas
+  por terra. **Não mexi no arquivo**: tirar ou renomear massa é decisão do usuário. A
+  ferramenta mostra as duas massas quando se identifica essa ilha. Também medido:
+  `mere-principal` e `syl-principal` estão a menos de 100 km uma da outra, então a
+  regra dos 100 km nunca atribui sozinha uma ilha que esteja perto das duas.
 
 - **A medida de silhueta mede CONTORNO, não legibilidade** (2026-09-23, correção do
   usuário). A primeira tabela de tamanho mínimo (`dados/tamanho-minimo-silhueta.json`,

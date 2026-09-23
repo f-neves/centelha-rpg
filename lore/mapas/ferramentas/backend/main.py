@@ -18,7 +18,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, StrictBool
 
 from . import (areas, cobertura_automatica, coordenadas, estradas, lugares,
-               medicoes, operacoes, referencias, regioes, relevo_automatico, rios, travas)
+               ilhas, medicoes, operacoes, referencias, regioes, relevo_automatico, rios, travas)
 
 RAIZ_FERRAMENTA = Path(__file__).resolve().parents[1]
 RAIZ_MAPAS = RAIZ_FERRAMENTA.parent
@@ -103,6 +103,12 @@ class RotuloRegiao(BaseModel):
 
 
 class AtribuicaoMassa(BaseModel):
+    regiao: str | None = None
+
+
+class NovaMassa(BaseModel):
+    lon: float
+    lat: float
     regiao: str | None = None
 
 
@@ -637,6 +643,26 @@ def atribuir_massa(id_massa: str, atribuicao: AtribuicaoMassa) -> JSONResponse:
         regioes.atribuir_massa(id_massa, atribuicao.regiao)
     except KeyError as e:
         raise HTTPException(status_code=404, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
+    return _regioes_e_massas()
+
+
+# --- Cache de identidade de ilha (etapa 10 completa, 2026-09-23 noite) -------------
+
+@app.get("/api/ilha")
+def identificar_ilha(lon: float, lat: float) -> JSONResponse:
+    """Que ilha está neste ponto, que massa a representa e que região a regra dos
+    100 km sugere. 409 se o cache não foi gerado (não é erro do pedido)."""
+    if not ilhas.existe():
+        raise HTTPException(status_code=409, detail="o cache de ilha não foi gerado (scripts/gerar_cache_ilhas.py)")
+    return JSONResponse(ilhas.descrever(lon, lat))
+
+
+@app.post("/api/massas")
+def criar_massa(nova: NovaMassa) -> JSONResponse:
+    try:
+        regioes.criar_massa(nova.lon, nova.lat, nova.regiao)
     except ValueError as e:
         raise HTTPException(status_code=422, detail=str(e))
     return _regioes_e_massas()

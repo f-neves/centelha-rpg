@@ -177,3 +177,50 @@ def atribuir_massa(id_massa: str, id_regiao: str | None) -> dict:
     depois["properties"]["status"] = "atribuida" if id_regiao else "sem_regiao"
     operacoes.registrar_operacao("atribuir_massa", RELATIVO_MASSAS, {id_massa: {"antes": antes, "depois": depois}})
     return depois
+
+
+# --- Massa nova pelo cache de ilha (2026-09-23 noite, cache autorizado) ------------
+
+def criar_massa(lon: float, lat: float, id_regiao: str | None = None, usar_regra: bool = True) -> dict:
+    """Registra a ilha que está em (lon, lat) em `massas.geojson`, com o ponto
+    clicado como referência. Sem região explícita e com `usar_regra`, vale a regra
+    dos 100 km: atribuída só se UMA região tiver a ilha principal a menos de 100 km;
+    senão `sem_regiao`, e quem decide é o usuário. Recusa ponto no mar, cache
+    ausente e ilha que já tem massa registrada (a identidade é uma por ilha)."""
+    from . import ilhas
+    if not ilhas.existe():
+        raise ValueError("o cache de ilha não foi gerado (scripts/gerar_cache_ilhas.py)")
+    info = ilhas.descrever(lon, lat)
+    if not info["terra"]:
+        raise ValueError("o ponto cai no mar")
+    if info["massas"]:
+        raise ValueError(f"esta ilha já tem massa registrada: {', '.join(info['massas'])}")
+    if id_regiao is not None:
+        try:
+            _achar(carregar_regioes(), id_regiao)
+        except KeyError as e:
+            raise ValueError(e.args[0])
+    elif usar_regra:
+        id_regiao = info["regiao_sugerida"]
+    massas = carregar_massas()
+    maior = 0
+    for f in massas["features"]:
+        m = re.match(r"^ilha-(\d+)$", f["properties"]["id"])
+        if m:
+            maior = max(maior, int(m.group(1)))
+    novo_id = f"ilha-{maior + 1:03d}"
+    area_px = ilhas.componentes()["componentes"][str(info["componente"])]["area_px"]
+    feature = {
+        "type": "Feature",
+        "geometry": {"type": "Point", "coordinates": [round(float(lon), 4), round(float(lat), 4)]},
+        "properties": {
+            "id": novo_id, "regiao": id_regiao,
+            "status": "atribuida" if id_regiao else "sem_regiao",
+            # Mesmo campo das massas antigas: área na escala 2048 (10240 / 5).
+            "area_px_2048": round(area_px / 25),
+            "nota": ("regra dos 100 km" if id_regiao and id_regiao == info["regiao_sugerida"] and usar_regra
+                     else "registrada pela ferramenta"),
+        },
+    }
+    operacoes.registrar_operacao("criar_massa", RELATIVO_MASSAS, {novo_id: {"antes": None, "depois": feature}})
+    return feature

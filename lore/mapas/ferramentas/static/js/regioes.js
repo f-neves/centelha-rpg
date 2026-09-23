@@ -5,9 +5,8 @@
 // rótulo de cada região no mapa, arrastável, e a lista das massas de terra com um
 // seletor de região em cada uma (o pertencimento mora só em massas.geojson).
 //
-// O que NÃO existe, porque depende da geometria da ilha e o cache continua proibido:
-// clicar numa ilha para saber qual é, e a regra dos 100 km. A massa se escolhe pela
-// lista, pelo id; o botão "ver" leva o mapa ao ponto de referência dela.
+// Com o cache de ilha (autorizado na empreitada): "identificar ilha" + um clique diz
+// que ilha é, a massa dela e a região da regra dos 100 km, e registra massa nova.
 //
 // Tudo passa pelo servidor (backend/regioes.py) e pelo desfazer comum. A tela
 // redesenha sempre do que o servidor devolveu.
@@ -279,6 +278,53 @@ function iniciarPainelDeRegioes(mapa) {
       esperandoRotulo = false;
       mapa.getContainer().style.cursor = "";
       preencherFormulario();
+    }
+  });
+
+  // --- identificar ilha pelo cache (etapa 10 completa) ---------------------------
+  // O próximo clique no mapa pergunta ao servidor que ilha está ali. Se ela ainda não
+  // tem massa, aparece o botão de registrar, com a região da regra dos 100 km.
+  const botaoIdentificar = document.getElementById("regiao-identificar");
+  const caixaIlha = document.getElementById("regiao-ilha");
+  let esperandoIlha = false;
+  botaoIdentificar.addEventListener("click", () => {
+    esperandoIlha = true;
+    caixaIlha.textContent = "clique numa ilha (Esc cancela)";
+    mapa.getContainer().style.cursor = "help";
+  });
+  document.addEventListener("keydown", (evento) => {
+    if (evento.key === "Escape" && esperandoIlha) {
+      esperandoIlha = false;
+      mapa.getContainer().style.cursor = "";
+      caixaIlha.textContent = "";
+    }
+  });
+  mapa.on("click", async (evento) => {
+    if (!esperandoIlha) return;
+    esperandoIlha = false;
+    mapa.getContainer().style.cursor = "";
+    const { lat, lng } = evento.latlng;
+    const r = await chamar("GET", `/api/ilha?lon=${lng}&lat=${lat}`);
+    if (r.erro) { caixaIlha.textContent = r.erro; return; }
+    const d = r.dados;
+    if (!d.terra) { caixaIlha.textContent = "mar"; return; }
+    const perto = d.regioes_a_100km.length ? d.regioes_a_100km.join(", ") : "nenhuma";
+    caixaIlha.innerHTML = "";
+    const texto = document.createElement("div");
+    texto.textContent = `ilha ${d.componente} · ${d.area_km2.toLocaleString("pt-BR")} km² · ` +
+      (d.massas.length ? `massa: ${d.massas.join(", ")}` : "sem massa registrada") +
+      ` · a menos de 100 km da principal de: ${perto}`;
+    caixaIlha.appendChild(texto);
+    if (!d.massas.length) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.textContent = d.regiao_sugerida ? `registrar em ${d.regiao_sugerida}` : "registrar sem região";
+      b.addEventListener("click", async () => {
+        const resp = await chamar("POST", "/api/massas", { lon: lng, lat });
+        if (resp.dados) { aplicar(resp.dados); caixaIlha.textContent = "massa registrada"; }
+        atualizarBotoesPilhaSeExistir();
+      });
+      caixaIlha.appendChild(b);
     }
   });
 

@@ -18,7 +18,7 @@ estava parado (derrubado pelo Claude Code por falta de memória na rodada anteri
 |---|---|---|
 | A1 áreas de verdade | já feita na rodada anterior; reavaliada aqui | `4dd2d20`, `e172ce4` |
 | A2 piso x densidade | já feita na rodada anterior | `37c7571` |
-| A3 regiões + cache de ilha | começando | |
+| A3 regiões + cache de ilha | feita | ver diário |
 | A4 vértice de área e rio | já feita na rodada anterior | `4336c16` |
 | A5 pincel | já feito na rodada anterior | `ac02fc3` |
 | A6 braço de delta na tela | pendente | |
@@ -64,4 +64,24 @@ estava parado (derrubado pelo Claude Code por falta de memória na rodada anteri
 - Imagens: `render/recorte-mere-cor-densidade-rapido.png`,
   `render/recorte-white-wall-cor-densidade-rapido.png`.
 
-### A3 · regiões com o cache de identidade de ilha (começando)
+### A3 · regiões com o cache de identidade de ilha (feita)
+
+- **Pronto**: `backend/ilhas.py`, `scripts/gerar_cache_ilhas.py`; cache em
+  `render/cache-ilhas/` (fora do git). Rotulagem por corridas e união-busca, lendo em
+  faixas e escrevendo por memmap. **Medido**: 4,7 s, pico de 271 MB, 435 componentes,
+  com o servidor parado e 2,2 GB livres antes. Não estourou nada: sem segunda
+  tentativa.
+- Endpoints `GET /api/ilha` e `POST /api/massas`, botão "identificar ilha" no painel.
+- **Decisões minhas**: conectividade 4 (a da varredura exaustiva já registrada);
+  zona dos 100 km medida a 5 km/px (erro de até uns 5 km na borda); atribuição
+  automática só com UMA região candidata; massa nova recusada em ilha que já tem
+  massa; id `ilha-NNN` seguindo a numeração existente.
+- **Achado**: `ilha-192` e `ilha-204` são pedaços de Syl e de Mére (mesmo
+  componente). Não mexi em `massas.geojson`: é decisão do usuário.
+- **Não fiz**: refazer a medição "The Neck ↔ Calin" (marcada não reproduzível até o
+  cache existir). Agora ela é possível, mas não foi pedida nesta lista.
+- **Depende do teste do usuário**: o botão e o clique na tela. A pilha de desfazer
+  tem um "refazer" armado com o meu teste (`ilha-219`, desfeito).
+- Commit: (este registro vai no mesmo commit).
+
+### A6 · campo de braço de delta na tela (começando)
