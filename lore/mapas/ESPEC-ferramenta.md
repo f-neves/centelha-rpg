@@ -1051,3 +1051,83 @@ Dois defeitos do próprio script, achados ao rodá-lo pela **segunda** vez:
    `bounds_antes_do_alinhamento`, com a data em que foi substituído.
 2. A data do alinhamento era o literal `"2026-09-22"` no código, então toda gravação
    futura mentiria a data. Passa a ser a data em que o script roda.
+
+## Etapa 8 · Ferramenta de Rio (2026-09-22)
+
+Desenhar o traçado com o Geoman em modo `Line`, validar contra a costa **por
+segmento**, gravar, apagar, travar, desfazer e refazer. `backend/rios.py`,
+`dados/rios.json`, `static/js/rios.js`, e o esquema de `ESPEC-dados.md` sem mudança.
+
+**O que a correção 2 do ESPEC-dados pedia, e como ficou:**
+
+- **Validação por segmento, não por vértice**: o trecho reto entre dois vértices é
+  amostrado de pixel em pixel contra `costa_10240.png`. Um clique que "pula" um braço
+  de mar é recusado mesmo com os dois vértices em terra. Conferido na tela: um traçado
+  de três cliques em terra firme foi recusado com "o trecho 2 passa por cima da água",
+  que é exatamente o caso que a validação por vértice deixaria passar.
+- **Exceção do último segmento** quando `termina_em.tipo == "mar"`: é o trecho que vai
+  de terra até a água, e sem ele nenhum rio chegaria ao mar.
+- **Tolerância de foz de 2 km**: o último ponto vale se estiver na água OU a até 2 km
+  da costa. Na resolução oficial isso é 1,6 pixel (1,25 km por pixel), então a busca é
+  um disco pequeno em volta do ponto; o número vem do ESPEC, não da implementação.
+- **Nascente sempre em terra**, e destino conferido: `lago` exige uma área pintada da
+  camada `lago` com aquele id, `rio` exige um rio existente, e `mar` não aceita id.
+
+**Decisões que o código precisou e o pedido não fixava:**
+
+1. **A tecla é `I`, não `R`**: `R` já é a régua, e duas ferramentas na mesma tecla
+   derrubariam uma delas em silêncio.
+2. **Pane própria em z 460**, acima da camada do mar (450). Rio corre em terra, mas a
+   foz encosta na água: debaixo do mar ele sumiria justamente na parte que importa. É
+   a ordem que o ESPEC já previa, e a nota registrada na nona rodada ("rio e estrada
+   vão precisar de pane acima de 450 quando chegarem") fica cumprida.
+3. **Validar antes de checar a trava**, como nas áreas: dado inválido é 422 e recusa
+   por trava é 409, e os dois não podem se confundir.
+4. O painel tem um seletor "termina em" com o campo de destino ao lado, que só aparece
+   quando o fim não é o mar. É o mínimo para o vocabulário fechado do ESPEC caber na
+   tela sem um modal novo.
+
+**Fora desta etapa, de propósito**: a atração automática de 5 km (é da etapa das
+estradas, e a decisão registrada diz que é nossa, no servidor, ao salvar), a largura
+por afluentes acumulados (é da rasterização), a edição de vértice de rio já salvo e a
+regra de cruzamento entre rios só na confluência.
+
+15 testes novos (`tests/test_rios.py`), com controle negativo em tudo que grava: o
+segmento que cruza água, a nascente na água, o rio solto no meio da terra, o tipo de
+fim inventado, o lago inexistente, o delta sem rio-mãe, o id repetido, o rio travado
+que não se apaga e o cadeado de camada que não escreve no objeto.
+
+### Dois defeitos achados na revisão da etapa 8, antes de entregar
+
+1. **`pm:create` é evento do MAPA, não da ferramenta.** O handler da Área não filtrava
+   a forma, então desenhar um rio mandava a `LineString` também para `/api/areas`, que
+   recusava com 422 e pintava a faixa vermelha por cima do rio recém-salvo. Os dois
+   handlers agora filtram por `evento.shape` (`Polygon` e `Line`). Os dois testes que
+   fiz no navegador não pegaram isso porque os dois eram recusas esperadas, e qualquer
+   faixa vermelha parecia certa.
+2. **`ramo_de` não é "termina em rio".** No esquema ele é o rio-mãe de um BRAÇO DE
+   DELTA, que normalmente termina no mar; um afluente termina em rio e tem `ramo_de`
+   null. A tela estava amarrando os dois no mesmo campo, o que marcaria todo afluente
+   como braço de delta e tornaria o delta de verdade impossível de criar. A tela agora
+   manda sempre `ramo_de: null`, e **braço de delta se cria pela API** enquanto não
+   houver um campo próprio para ele.
+
+## Pendências da ferramenta (lista viva)
+
+Cada linha diz o que falta e **em que etapa faz sentido**, para não virar lista de
+desejos sem dono. Decisão de quando fazer é do Direcionamento.
+
+- **Braço de delta pela tela.** Hoje `ramo_de` só se preenche pela API: o painel do
+  Rio não tem campo para "braço de delta de", e amarrá-lo ao seletor "termina em"
+  marcaria todo afluente como braço de delta (ver "Dois defeitos achados na revisão
+  da etapa 8"). **Etapa em que faz sentido**: quando o painel do Rio ganhar um modal
+  próprio, como o de Lugar, em vez de controles soltos · o mesmo modal resolve nome,
+  destino e `ramo_de` de uma vez. Enquanto isso, delta se cria pela API, e está
+  escrito no painel.
+- **Pincel de tamanho ajustável** para pintar e apagar área à mão livre (pedido do
+  usuário na nona rodada). **Etapa**: depois da 9, junto com a revisão da ferramenta
+  de Área, porque mexe no mesmo caminho de gravação.
+- **Edição de vértice** de área e de rio já salvos (o `editMode` do Geoman existe e a
+  ferramenta não usa). **Etapa**: mesma revisão da Área acima.
+- **Cache de identidade de ilha** (processamento pesado, aviso antes). **Etapa**: 10,
+  onde ele já está previsto.

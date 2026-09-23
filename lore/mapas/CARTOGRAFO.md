@@ -9,9 +9,176 @@ confirmado pelo usuário; o que é recomendação de IA fica marcado como tal.
 *(Atualizar esta seção antes de encerrar toda sessão de trabalho no mapa — é a
 primeira coisa que `/cartografo` mostra.)*
 
-- **Última atualização:** 2026-09-23 (oitava rodada do dia). **B4 commitada**, três
+- **Última atualização:** 2026-09-22 (décima primeira rodada). **Relevo automático
+  commitado**, o alinhamento das imagens do ChatGPT **regravado**, a conferência do
+  git virou **registro em arquivo**, a medição de custo virou **bancada guardada**, e
+  a **Ferramenta de Rio (etapa 8)** feita, sem commit.
+  - **Nota de data**: os blocos anteriores deste documento datam esta sequência de
+    rodadas como 2026-09-23, mas o relógio da máquina e os commits dizem
+    **2026-09-22**. Passei a usar a data da máquina no que é gravado por script
+    (registro do git, medições, alinhamento), que é o que se pode reproduzir depois,
+    e não reescrevi os blocos antigos.
+  - **Commits desta rodada, 7, sem push**: `4005854` o servidor do relevo automático
+    (com `backend/automatico.py`, a máquina comum das duas camadas automáticas);
+    `0435a04` o relevo automático na tela, no interruptor; `0921eeb` o alinhamento
+    regravado mais dois defeitos do alinhador; `d656fc5` a conferência do git que
+    registra e nunca conserta; `a7acfe6` o `/cartografo` usando essa conferência;
+    `3b80a22` a bancada do custo da cobertura automática; `e16588d` o registro de
+    tudo isso no ESPEC.
+  - **chatgpt-2 e as outras três: alinhamento regravado** (`--gravar`). As quatro
+    ficaram com `bounds == bounds_automatico`, e o botão "automático" leva à posição
+    certa: conferido ponta a ponta na chatgpt-2, que era a errada (reset leva aos
+    limites do mundo, automático devolve exatamente o alinhamento gravado, desfazer
+    devolve o estado inicial). **Método e data ficam gravados em cada camada**, no
+    campo `alinhamento_automatico`: cor terra/mar, sem rotação, IoU contra a costa
+    reduzida a 128×128; IoU de 70,4% (1), 70,8% (2), 55,3% (3) e 63,7% (4).
+  - **Dois defeitos do alinhador, achados por rodá-lo pela SEGUNDA vez**: ele
+    reescrevia `bounds_anterior_a_20260922` a cada gravação (o nome da chave tem uma
+    data dentro, então ela passava a guardar valor de outro dia · o valor histórico
+    original foi restaurado do git antes de regravar), e a data do alinhamento era um
+    literal no código, então toda gravação futura mentiria a data.
+  - **Conferência do git (item 2)**: `scripts/conferir_git.py` acrescenta uma linha em
+    `lore/mapas/registro-git.jsonl` a cada conferência, com data e hora, valor
+    encontrado, valor esperado, se estava certo e **o arquivo de configuração de onde
+    o valor veio**, que é a pista de quem mexeu. Ele **nunca conserta**: sai com
+    código 1 e o passo 1 do `/cartografo` passa a avisar em uma linha, pedir
+    autorização e seguir trabalhando no que não depende de commit. Nesta rodada o
+    valor estava certo (`scripts/hooks`), e as duas primeiras linhas do registro já
+    estão lá.
+  - **Bancada do custo (item 3)**: `scripts/medir_automatico.py` guarda cada medição
+    em `dados/medicoes_desempenho.json`, acrescentando em vez de substituir. A de hoje
+    está gravada: 50 áreas 12,9 ms, 200 áreas 46,0 ms, 500 áreas 97,2 ms, 1.000 áreas
+    175,7 ms, e o teto de 500 polígonos de 400 vértices em 653,0 ms. A decisão de
+    seguir fica mantida, agora com o número guardado para comparar.
+  - **Ferramenta de Rio, etapa 8 (etapa desta rodada, NÃO commitada)**: desenho com o
+    Geoman em modo `Line` (tecla `I`, porque `R` já é a régua), validação **por
+    segmento** contra a costa, exceção do último trecho quando termina no mar,
+    tolerância de foz de 2 km, destino conferido (lago e rio têm que existir), trava,
+    desfazer e refazer. Pane em z 460, acima da camada do mar, senão a foz sumiria
+    debaixo da água. **15 testes novos, 143 no total, todos verdes.**
+    - **Conferido na tela**: desenhar por cliques e o servidor recusar com a faixa
+      vermelha, nos dois casos que interessam · nascente na água, e "o trecho 2 passa
+      por cima da água" num traçado cujos vértices estavam todos em terra, que é
+      exatamente o caso que a validação por vértice deixaria passar. O caminho feliz
+      (rio válido desenhado, travado, recusado ao apagar com 409, e desfeito até zero)
+      foi exercitado **pela API dentro da própria página**, porque a leitura de
+      lat/lon sob o cursor parou de responder aos movimentos sintéticos no meio do
+      teste e eu não tinha como mirar um ponto de terra por coordenada.
+  - **Dois defeitos achados na revisão, antes de entregar, e já corrigidos**:
+    (1) `pm:create` é evento do MAPA, não da ferramenta, e o handler da Área não
+    filtrava a forma · desenhar um rio mandava a linha também para `/api/areas`, que
+    recusava com 422 e pintava a faixa vermelha por cima do rio recém-salvo. Os dois
+    handlers agora filtram por `evento.shape`. (2) A tela amarrava `ramo_de` a
+    "termina em rio", o que marcaria todo AFLUENTE como braço de delta e tornaria o
+    delta de verdade impossível; a tela agora manda sempre `ramo_de: null`, e braço de
+    delta se cria pela API enquanto não houver campo próprio.
+  - **O que NÃO consegui conferir na tela**: o caminho feliz por cliques e a correção
+    (1) acima. No meio do teste o navegador parou de entregar o clique (o movimento do
+    mouse continuou chegando · a leitura de lat/lon sob o cursor respondia certo, o
+    que é como sei que é a automação e não a página). As duas ficam por leitura de
+    código, e são a primeira coisa que o seu teste exercita.
+  - **Pendência registrada e ainda de pé**: o **pincel de tamanho ajustável** para
+    pintar e apagar à mão livre.
+- **Rodada anterior (décima), para referência:** **Cobertura automática
+  commitada, com as faixas corrigidas**, o **teste de arquivo fora do git dividido em
+  dois**, o **isolamento dos testes provado**, os **comentários dos dados
+  atualizados**, o **custo do desconto medido** e o **relevo automático planície**
+  feito, sem commit.
+  - **AVISO sobre a configuração do git**: `core.hooksPath` estava de novo com
+    CAMINHO ABSOLUTO no começo desta rodada, e o portão de commit recusa assim. É a
+    segunda vez: consertei na sétima rodada, e voltou sozinho entre rodadas. Rodei de
+    novo o comando que o `CLAUDE.md` da raiz manda
+    (`git config core.hooksPath scripts/hooks`) porque esta rodada tinha commit
+    pedido, mas **não sei o que reescreve isso**, e enquanto não se souber toda
+    sessão do mapa vai continuar tropeçando nele (a conferência do passo 1 do
+    `/cartografo` pegou, que é o que ela existe para fazer).
+  - **Commits desta rodada, 5, sem push**: `b75c5d0` o servidor da cobertura
+    automática, com os testes e o controle de isolamento; `24d703d` a cobertura
+    automática na tela; `13007a0` o teste de arquivo fora do git virando dois;
+    `2a04bbd` os comentários dos dados; `3b6daa1` o registro no ESPEC com a correção
+    das faixas e a medição.
+  - **Defeito que o usuário achou, e o que ele rendeu**: um teste da cobertura
+    automática chamava `colecao()` sem a fixture de isolamento e lia o
+    `dados/areas-pintadas.geojson` REAL, passando só porque ele estava vazio.
+    Corrigido, e a suíte inteira varrida: os outros testes sem fixture ou são
+    aritmética pura (haversine), ou leem só arquivos de leitura (a máscara da costa e
+    os tiles do mar), ou varrem o repositório de propósito. Nasceu daí o
+    `tests/test_isolamento.py`, que prova as duas metades: **sem** a fixture os
+    módulos apontam para produção (senão não haveria o que isolar), e **com** a
+    fixture gravar de verdade deixa o arquivo real byte a byte igual.
+  - **Faixas da cobertura automática corrigidas pelo usuário**: deserto e selva saem
+    do automático, porque são exceções REGIONAIS e não regra de latitude (na faixa de
+    15°N a 25°N está Syl, "a parte mais verdejante do mapa", e o automático a
+    pintaria inteira de deserto). A faixa quente virou `campo` e a equatorial
+    `floresta-tropical`; são 6 faixas agora, não 7. O critério que fica: **só entra no
+    automático o valor que vale para a latitude inteira**.
+  - **Custo do desconto, medido**: 50 áreas 12 ms, 200 áreas 44 ms, 500 áreas 99 ms,
+    1.000 áreas 170 ms por pedido (polígonos de desenho à mão). Os casos pedidos ficam
+    abaixo de 100 ms. **Meio segundo só aparece num caso que desenho à mão não
+    alcança** (500 polígonos de 400 vértices, 658 ms), e os três caminhos de conserto
+    estão escritos no ESPEC para o dia em que importar traçado existir.
+  - **chatgpt-2 NÃO é recorte regional** (investigado a pedido): a imagem tem a mesma
+    composição de mundo inteiro da chatgpt-1 (White Wall no alto, o crescente de
+    Waning no centro, as mesmas ilhas), só com enquadramento um pouco mais fechado. O
+    `bounds_automatico` de 12,7°N a 49,9°N que estava gravado é **resíduo de uma
+    rodada antiga do alinhador**: rodando o alinhador hoje, chatgpt-2 alinha no mundo
+    inteiro e com a MELHOR interseção das quatro (70,8%, contra 70,4, 55,3 e 63,7).
+    Consequência prática: o botão "automático" dessa camada devolve uma posição
+    errada. **Não regravei** (seria escrever dado sem pedido); o conserto é
+    `.venv/Scripts/python.exe scripts/alinhar_chatgpt_auto.py --gravar`, e o aviso
+    ficou escrito no próprio `camadas_referencia.json`.
+  - **Relevo automático planície (etapa desta rodada, NÃO commitada)**: fecha a etapa
+    7 da lista do ESPEC. Mesma máquina da cobertura (agora compartilhada em
+    `backend/automatico.py`), uma faixa só, nunca gravada, descontada do relevo
+    pintado. Na tela entra num **interruptor desligado por padrão**, e não numa camada
+    sempre visível: planície é um valor único sobre toda a terra sem pintura, então
+    sempre visível ele só cobriria as faixas de cobertura com cor chapada. **Decisão
+    de IA, registrada no ESPEC para você derrubar se preferir.** 4 testes novos,
+    **118 no total, todos verdes**.
+  - **Pendência registrada na rodada anterior e ainda de pé**: o **pincel de tamanho
+    ajustável** para pintar e apagar à mão livre.
+- **Rodada anterior (nona), para referência:** **Recorte pela costa
+  commitado** (o usuário testou e aprovou: "pintou só a terra"), **o achado do
+  `dist/` virou teste permanente e teste de clone limpo**, e a **cobertura automática
+  por latitude** feita e conferida na tela, sem commit.
+  - **Commits desta rodada, 3, sem push**: `74b2c01` o recorte pela costa na
+    renderização (`app.js`, `estilo.css`, `tests/test_mar.py`); `dd6663f` o teste que
+    pega arquivo necessário fora do git, mais a seção "Clone novo" deste documento;
+    `28f4d53` a mensagem desse teste separando "escondido pelo `.gitignore`" de
+    "ainda não commitado".
+  - **Clone limpo, rodado de verdade** (não estimado): clone em pasta temporária,
+    `venv` pelo `requirements.txt`, servidor no ar em outra porta, cada peça sondada
+    por HTTP. **A ferramenta sobe e a validação de terra funciona** (a máscara da
+    costa está no git); faltam só os tiles e as imagens de referência, e a tabela do
+    que copiar ou regerar está na seção "Clone novo", abaixo. Clone e venv apagados
+    depois.
+  - **Cobertura automática por latitude (etapa desta rodada, NÃO commitada)**: sete
+    faixas derivadas do guia de clima, calculadas em
+    `backend/cobertura_automatica.py` e desenhadas numa pane própria (z 390) abaixo
+    da área pintada e abaixo da camada do mar, que já recorta pela costa · então
+    terra sem pintura mostra o automático e o mar não mostra nada. **O automático
+    nunca é gravado**: não existe uma só chamada de gravação no módulo, e a coleção é
+    recalculada a cada pedido. As faixas saem do servidor **já descontadas** do que
+    está pintado de cobertura, porque área pintada tem `fillOpacity` 0,35 e
+    empilhar por cima daria mistura de cor, não sobrescrita. **Conferido na tela e ao
+    vivo**: pintar um polígono de 8 graus² dentro da faixa de deserto abriu um buraco
+    de exatamente 8 graus² nela, e o desfazer fechou o buraco e zerou as áreas. 6
+    testes novos, **110 no total**.
+  - **A suíte fica vermelha enquanto a etapa nova não for commitada, e isso vai se
+    repetir**: o teste do item 2 acusa `backend/cobertura_automatica.py` e
+    `tests/test_cobertura_automatica.py` como "ainda não commitado", que é
+    exatamente o que o pedido descreve ("falha se houver arquivo necessário fora do
+    git"). Como quase toda rodada termina com uma etapa nova sem commit, isso não é
+    um estado passageiro desta vez, é o fim de rodada padrão. **Decisão em aberto,
+    do usuário**: manter a forma estrita, ou estreitar o teste para só o caso
+    ESCONDIDO pelo `.gitignore` (que é o defeito invisível; arquivo apenas não
+    commitado já aparece no `git status`). Não estreitei por conta própria.
+  - **Pendência nova, pedida pelo usuário**: uma versão em **pincel** da pintura de
+    área, com tamanho ajustável, para pintar e apagar à mão livre. Registrada para
+    uma etapa futura, não construída nesta.
+- **Rodada anterior (oitava), para referência:** **B4 commitada**, três
   regras novas registradas, e o **recorte pela costa na renderização** feito e
-  conferido na tela, sem commit.
+  conferido na tela (commitado na nona rodada, em `74b2c01`).
   - **Commits desta rodada, 6, sem push** (os quatro primeiros são a B4, em ordem de
     dependência): `d9167a9` o Geoman free em `static/vendor`; `f7677cd` o `dist/` do
     Geoman, que o `.gitignore` da raiz escondia (a linha 3 é `dist/`, posta para o
@@ -21,7 +188,7 @@ primeira coisa que `/cartografo` mostra.)*
     vazio e os 18 testes); `00194ce` a Área na tela; `abc7b67` os documentos;
     `092b3fb` o `/cartografo` conferindo `core.hooksPath`, separado por ser arquivo
     fora do mapa.
-  - **Recorte pela costa na renderização (etapa desta rodada, NÃO commitada)**: o
+  - **Recorte pela costa na renderização** (commitado depois, em `74b2c01`): o
     polígono continua gravado cru, exatamente como desenhado, e quem esconde a parte
     que caiu na água é a pirâmide `render/tiles/mar`, que já existia, posta numa pane
     própria (z 450) acima da área vetorial e abaixo dos marcadores, com
@@ -291,7 +458,7 @@ primeira coisa que `/cartografo` mostra.)*
   cd lore/mapas/ferramentas
   .venv\Scripts\python.exe -m uvicorn backend.main:app --host 127.0.0.1 --port 8420
   ```
-- **100 testes pytest, todos verdes** (`cd ferramentas &&
+- **143 testes pytest, todos verdes** (`cd ferramentas &&
   .venv/Scripts/python.exe -m pytest`).
 - **Instalação e código da etapa 1** — sem mudança desde a última atualização
   (commitados): `.venv` próprio, Leaflet 1.9.4 baixado pronto (sem npm/CDN),
@@ -310,15 +477,21 @@ primeira coisa que `/cartografo` mostra.)*
   `ferramentas/static/js/app.js`, `ferramentas/static/js/camadas-referencia.js`
   (criado), `ferramentas/templates/index.html`. Nada de `render/tiles/` nem
   `.venv/`.
-- **Próximo passo:** o usuário abrir `http://127.0.0.1:8420/` e testar o **recorte
-  pela costa na renderização**: botão "+ área" (ou tecla `A`), desenhar um polígono
-  que atravesse a linha da costa, duplo clique para fechar, e ver que só a parte de
-  terra fica pintada. O dado continua inteiro: `GET /api/areas` devolve o polígono
-  como foi desenhado, mar incluído. **Não commitado**, como pedido · o que está
-  fora do git é `static/js/app.js`, `static/css/estilo.css` e `tests/test_mar.py`.
-  Depois disso, os candidatos a etapa seguinte são a **edição de vértice de área já
-  salva** (o `editMode` do Geoman existe e a ferramenta ainda não usa) e a **B5,
-  rios e estradas**, que é onde a atração de 5 km finalmente vira código.
+- **Próximo passo:** o usuário abrir `http://127.0.0.1:8420/` e testar a **Ferramenta
+  de Rio**: botão "+ rio" (ou tecla `I`), clicar o traçado da nascente para a foz,
+  duplo clique para terminar. O servidor recusa com faixa vermelha quando a nascente
+  cai na água, quando um trecho do meio passa por cima do mar (mesmo com os cliques em
+  terra) e quando a foz não chegou ao mar; aceita quando o último trecho termina na
+  água ou a menos de 2 km dela. Selecionar o rio, `T` trava, "apagar rio" apaga, e
+  desfazer volta. **Não commitado**, como pedido: fora do git estão `backend/rios.py`,
+  `tests/test_rios.py`, `static/js/rios.js`, `dados/rios.json`, `backend/main.py`,
+  `static/js/app.js`, `static/js/lugares.js`, `templates/index.html`, o
+  `CARTOGRAFO.md` e a seção nova do `ESPEC-ferramenta.md`.
+  Etapa seguinte da lista do ESPEC: a **9, Ferramenta de Estrada**, que é onde a
+  atração automática de 5 km finalmente vira código. Os outros candidatos
+  registrados: o **pincel de tamanho ajustável**, a **edição de vértice** de área e de
+  rio já salvos, e o **cache de identidade de ilha** (processamento pesado, com aviso
+  antes).
 
 ## Clone novo · o que a ferramenta precisa e o git não traz
 
@@ -373,6 +546,23 @@ Mapa de fantasia medieval clássico, estilo Faerûn (Forgotten Realms). Por enqu
 geografia e cidades; fronteiras de reino podem vir no futuro, e o formato de dados
 precisa aceitar isso sem refazer nada. Tudo que o usuário marcar recebe um
 identificador; nome é opcional e entra depois.
+
+## Papéis desta frente
+
+Registrado a pedido do usuário em 2026-09-22 (décima segunda rodada), para não ficar
+implícito:
+
+- **Direcionamento** é a conversa externa, com o usuário. **Ele decide e revisa.**
+- **Cartógrafo** é quem executa dentro do repositório: código, dados, documentos,
+  commits, medições.
+- **Decisão vem do Direcionamento.** Tudo que o Cartógrafo propõe (arquitetura,
+  ordem das etapas, valor padrão, o que fica de fora de uma etapa) é
+  **recomendação até ser aprovada**, e deve estar marcada como tal no documento onde
+  aparecer · é a mesma regra da abertura deste arquivo ("o que é recomendação de IA
+  fica marcado como tal"), agora com os nomes dos dois lados.
+- O que o Cartógrafo decide sozinho é o que o pedido não fixa e o código precisa para
+  existir; mesmo isso vira registro escrito, com o motivo, para o Direcionamento
+  poder derrubar.
 
 ## Regras invioláveis
 
@@ -433,6 +623,22 @@ identificador; nome é opcional e entra depois.
   depois de o portão ter recusado o primeiro commit da sétima rodada por
   `core.hooksPath` estar com caminho absoluto. A conferência está no passo 1 de
   `.claude/commands/cartografo.md`.
+- **Teste de tela que só exercita RECUSA não verifica nada além da recusa.** Um erro
+  diferente aparece igual: mesma faixa vermelha, mesma sensação de "funcionou". Todo
+  teste na tela precisa incluir o **caminho feliz**; se ele não puder ser exercitado,
+  isso se diz como **não verificado**, nunca como "conferido na tela". Registrado a
+  pedido do usuário em 2026-09-22, depois de a etapa 8 ser entregue com duas recusas
+  conferidas na tela e um defeito real escondido atrás delas (o `pm:create` da Área
+  respondendo à linha do Rio, que pintava a faixa vermelha por cima de um rio salvo
+  com sucesso · as duas recusas esperadas tornavam a faixa indistinguível).
+- **A automação de navegador desta máquina não entrega clique de forma confiável**
+  (três ocorrências registradas: sétima, décima primeira e décima segunda rodadas · o
+  movimento do mouse continua chegando, e por isso a leitura de lat/lon sob o cursor
+  responde certo enquanto o clique some). **Não insistir em testar caminho feliz por
+  clique automatizado.** O que der, exercitar pela API, inclusive de dentro da própria
+  página; o resto é declarado como dependente do teste do usuário. **Toda entrega
+  termina com a lista exata do que depende dele**, item a item, e não com um aviso
+  genérico.
 - **Nunca inferir o que o usuário fez, testou ou aprovou a partir de rastro de
   uso** — log de operações, arquivo de dados, histórico, horário de gravação,
   nada disso. Esses rastros dizem no máximo que uma AÇÃO ACONTECEU, nunca quem
