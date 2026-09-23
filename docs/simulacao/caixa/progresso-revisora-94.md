@@ -1,0 +1,5 @@
+526d1972b88a · reancorada em 526d197 (main local, não empurrado), passo 0 conferido (20:35)
+gerador lido; casos plantados: aninhada (espaço/tab), '* [ ]', '- [ ]**', '- [?]' somem em silêncio; cerca de código conta; sigla de outro tema não acusada; hoje 0 linhas assim nos temas (20:37)
+três sentidos refeitos na cópia: tema mudado sem regen=1, regen=0, mão entre marcadores=1, fora dos marcadores=0, marcador apagado=1 (20:37)
+7 caixas conferidas contra o item e o sha (todas provam o item); contagem 169+4=173 → 162+4=166, 76+7=83 (20:38)
+94-revisora.md escrito: PROCEDE, 1 CORRIGE (gerador omite caixa fora do formato), 3 notas; commitando SEM push (20:41)
