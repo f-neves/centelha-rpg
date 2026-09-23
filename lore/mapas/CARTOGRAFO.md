@@ -9,6 +9,13 @@ confirmado pelo usuário; o que é recomendação de IA fica marcado como tal.
 *(Atualizar esta seção antes de encerrar toda sessão de trabalho no mapa — é a
 primeira coisa que `/cartografo` mostra.)*
 
+- **EMPREITADA AUTÔNOMA (2026-09-23, noite, depois da rodada abaixo). O registro
+  completo, etapa a etapa, é `RELATORIO-FINAL.md`: comece por ele.** Tudo o que for
+  decisão ali é recomendação do Cartógrafo.
+  - **A1-bis (feita)**: relevo manda sobre cobertura (`Estilo.relevo_manda`, no estilo
+    padrão): onde há montanha ou alta montanha, a cobertura não põe símbolo, e a cor
+    fica. Geleira com raio 1,6 (era 0,80). As coníferas saíram dos picos do norte de
+    Mére e o White Wall deixou de ser papel de parede.
 - **RODADA DA NOITE DE 2026-09-23, AUTÔNOMA (o usuário fora de casa, sem testar).**
   Pedido: montanha x nevada aprovada; piso x densidade; áreas de exemplo irregulares;
   renderizar e avaliar; etapa 10 sem cache, edição de vértice, pincel; lista do que

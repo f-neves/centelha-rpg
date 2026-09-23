@@ -156,7 +156,9 @@ TIPOS = {
     "rochedo": Tipo(46, 1.10, variacao=0.35),
     "vegetacao-seca": Tipo(60, 1.20, 3, variacao=0.30),
     "tundra": Tipo(100, 1.00, variacao=0.25, manter_na_borda=0.5),
-    "geleira": Tipo(64, 0.80, variacao=0.25, borda=0.85, miolo=1.15, manter_na_borda=0.5),
+    # Geleira: raio 0,80 -> 1,6 e mais rala na beira (2026-09-23 noite): a grade densa
+    # virava papel de parede. Gelo de atlas é quase só cor.
+    "geleira": Tipo(64, 1.60, variacao=0.25, borda=0.85, miolo=1.15, manter_na_borda=0.4),
 }
 
 # Valor da área -> (tipo, peso). O raio do Poisson e a profundidade são os do PRIMEIRO
@@ -177,6 +179,10 @@ MISTURAS_NOITE2 = {
 MISTURAS = dict(MISTURAS_NOITE2)
 MISTURAS[("cobertura", "selva")] = [("selva", 0.6), ("arvore-tropical", 0.25), ("palmeira", 0.15)]
 
+# Os valores de relevo que tiram o símbolo da cobertura debaixo deles
+# (`Estilo.relevo_manda`). Colina fica de fora: árvore em colina é paisagem normal.
+RELEVO_QUE_MANDA = {"montanha", "alta-montanha"}
+
 # O "chão rachado" (vegetacao-seca-04) é textura, não objeto: fica fora do sorteio.
 SIMBOLOS_EXCLUIDOS = {"vegetacao-seca-04"}
 
@@ -186,11 +192,15 @@ class Estilo:
     tipos: dict
     misturas: dict
     cores: dict            # valor de cobertura -> cor de fundo; vazio = tudo papel
+    # Relevo manda (recomendação do Cartógrafo, 2026-09-23 noite): onde há montanha ou
+    # alta montanha, a cobertura não põe símbolo (a cor dela continua embaixo). Sem
+    # isso as coníferas cobriam os picos nevados do norte de Mére.
+    relevo_manda: bool = False
 
 
 ESTILO_NOITE2 = Estilo(TIPOS_NOITE2, MISTURAS_NOITE2, {})
 ESTILO_COR = Estilo(TIPOS_NOITE2, MISTURAS_NOITE2, CORES_COBERTURA)
-ESTILO = Estilo(TIPOS, MISTURAS, CORES_COBERTURA)
+ESTILO = Estilo(TIPOS, MISTURAS, CORES_COBERTURA, relevo_manda=True)
 ESTILOS = {"noite2": ESTILO_NOITE2, "cor": ESTILO_COR, "cor-densidade": ESTILO}
 
 
@@ -628,12 +638,29 @@ def renderizar(areas: list[dict], janela: raster.Janela, terra: np.ndarray, bib:
     if estilo.cores:
         suave, chapada, com_cor = pintar_chao(areas, janela, terra, km_por_grau, estilo.cores)
     colocacoes = []
+
+    def mascara_de_simbolos(area):
+        return raster.rasterizar(area["geometry"], int(area["properties"].get("semente_ruido") or 0),
+                                 janela, km_por_grau, amplitude_km=AMPLITUDE_SIMBOLOS_KM,
+                                 terra=terra, oitavas=OITAVAS_SIMBOLOS)
+
+    relevo_forte = None
+    ja_feitas = {}
+    if estilo.relevo_manda:
+        relevo_forte = np.zeros(terra.shape, dtype=bool)
+        for area in areas:
+            p = area["properties"]
+            if p.get("camada") == "relevo" and p.get("valor") in RELEVO_QUE_MANDA:
+                ja_feitas[p["id"]] = mascara_de_simbolos(area)
+                relevo_forte |= ja_feitas[p["id"]] > 0
     for area in sorted(areas, key=lambda a: a["properties"]["id"]):
         if area["properties"].get("camada") == "lago":
             continue
-        mascara = raster.rasterizar(area["geometry"], int(area["properties"].get("semente_ruido") or 0),
-                                    janela, km_por_grau, amplitude_km=AMPLITUDE_SIMBOLOS_KM,
-                                    terra=terra, oitavas=OITAVAS_SIMBOLOS)
+        mascara = ja_feitas.pop(area["properties"]["id"], None)
+        if mascara is None:
+            mascara = mascara_de_simbolos(area)
+        if relevo_forte is not None and area["properties"].get("camada") == "cobertura":
+            mascara = np.where(relevo_forte, 0, mascara).astype(np.uint8)
         if area["properties"]["id"] in com_cor:
             # A mancha de símbolos não sai da mancha de cor: sem isso a borda de 90 km
             # dos símbolos passava da de 12 km da cor, e sobrava árvore no papel.

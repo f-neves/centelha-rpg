@@ -440,3 +440,31 @@ def test_faixa_comida_pelo_piso(monkeypatch):
     assert renderizador.faixa_comida_pelo_piso(estilo) == {"montanha": 0.5}
     monkeypatch.setattr(renderizador, "_PISOS", {"montanha": 500})
     assert renderizador.faixa_comida_pelo_piso(estilo) == {"montanha": 1.0}
+
+
+# --- relevo manda sobre cobertura (2026-09-23, noite) --------------------------------
+
+def test_montanha_tira_o_simbolo_da_cobertura_debaixo(tmp_path, monkeypatch):
+    monkeypatch.setattr(renderizador, "_PISOS", {"montanha": 1})
+    bib = _biblioteca(tmp_path)
+    terra = np.ones((JANELA.altura, JANELA.largura), dtype=bool)
+    floresta = _cobertura("selva")
+    floresta["properties"]["id"] = "floresta"
+    serra = _area([[2, 2], [4, 2], [4, 4], [2, 4]])
+    serra["properties"]["id"] = "serra"
+    mistura = {("cobertura", "selva"): [("montanha", 1.0)], ("relevo", "montanha"): [("montanha", 1.0)]}
+    manda = renderizador.Estilo(renderizador.TIPOS, mistura, renderizador.CORES_COBERTURA, relevo_manda=True)
+    nao_manda = renderizador.Estilo(renderizador.TIPOS, mistura, renderizador.CORES_COBERTURA)
+    mancha_serra = raster.rasterizar(serra["geometry"], 7, JANELA, KM_POR_GRAU,
+                                     amplitude_km=renderizador.AMPLITUDE_SIMBOLOS_KM, terra=terra,
+                                     oitavas=renderizador.OITAVAS_SIMBOLOS) > 0
+
+    def da_floresta_na_serra(estilo):
+        _, cs = renderizador.renderizar([floresta, serra], JANELA, terra, bib, KM_POR_GRAU, estilo)
+        # A floresta tem semente 5 e a serra 7; separo pela colocação de cada área.
+        so_serra = {(c.x, c.y) for c in renderizador.renderizar([serra], JANELA, terra, bib, KM_POR_GRAU, estilo)[1]}
+        return [c for c in cs if (c.x, c.y) not in so_serra and mancha_serra[int(c.y), int(c.x)]]
+
+    assert da_floresta_na_serra(manda) == []
+    # Controle negativo: sem a regra, a floresta põe símbolo dentro da serra.
+    assert len(da_floresta_na_serra(nao_manda)) > 0
