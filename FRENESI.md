@@ -73,12 +73,13 @@ A Firula (equivalente ao stunt) vale aqui como em qualquer teste:
 | 2 | +1d6 na parada |
 | 3 | +2d6 na parada |
 
-**A Firula não é só bônus: é o que faz as bandas altas existirem.** Sem ela o teto é 3d6. Com
-Firula 2 a banda Dura abre para Virtude 4 e acima; a Extrema só existe com Firula 3.
+**A Firula é o que torna as bandas altas alcançáveis.** Sem ela o teto é 3d6, e a Dura e a
+Extrema são raras (Virtude 4 passa na Dura 17%; na Extrema, só a Virtude 5 e a 6 passam, a 3% e
+16%). Com Firula 2, a Virtude 4 passa na Dura 62%; com Firula 3, passa na Extrema 56%.
 
 **A Firula desloca a linha inteira duas casas.** Virtude 2 com Firula 2 rola igual a Virtude 4 sem
 Firula. Isso é decisão de design: a descrição pesa mais que a ficha. É também o que tira a Virtude
-1 do chão, e só isso: com Firula 2, ela passa metade das vezes na Tensa, e nada além.
+1 do chão, e pouco mais: com Firula 2, ela passa metade das vezes na Tensa e 17% na Séria.
 
 **Firula negativa existe.** Se a descrição do jogador for prejudicial à ação, ela tira dados ou
 pontos em vez de somar. Quem julga é o mestre.
