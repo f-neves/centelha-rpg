@@ -950,13 +950,16 @@ mudou a penalidade de obrigatória para opcional. **O bônus de ferimento do §1
   passa Virtude 6 a 5%, a 20 e a 25 nunca). A §14 e `aparencia-virtudes-vontade.md` precisam dizer
   que o teste de Virtude tem régua própria. O Frenesi fica com a escala situacional própria (4 a
   acima de 10), que cai na mesma faixa de números.
+- **Rótulos da régua de Virtude: 3 Branda, 5 Tensa, 7 Séria, 9 Dura, 11 Severa, 13 Extrema.**
+  Varridos capítulos e `src/data/*.json`: "Trivial" colidia com `qual-sistema.md` ("Rola dado? [...]
+  Trivial, não") e "Leve" com a classe de arma/armadura/carga. "Comum" e "Firme" também não servem
+  (rótulos de nível em `virtudes.json`). Branda e Tensa não aparecem em lugar nenhum.
 
 **O `FRENESI.md` (raiz, ainda sem rastreio) foi atualizado com tudo isto em 23/09/2026:** o §6
 reescrito, o §8 (saída) reescrito, a justificativa do §10 corrigida, o §11 com a lista nova de pendências e a
 numeração interna consertada (§9/§10/§11). Cópia de antes da edição fora do repositório.
 
-**Ainda em aberto** (lista completa no `FRENESI.md` §11): a lista de ações físicas e os rótulos da régua de
-Virtude. Não implementado.
+**Ainda em aberto** (lista completa no `FRENESI.md` §11): a lista de ações físicas que ganham o bônus da fúria. Não implementado.
 
 ## Fechado em 22/09/2026 pela Executora-4: as sete armas novas e a tabela do capítulo gerada
 
