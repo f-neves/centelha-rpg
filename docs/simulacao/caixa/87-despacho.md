@@ -9,6 +9,31 @@
 
 ## Grupo 1 · o `test-grid` ficou intermitente, e ele é o portão
 
+> ### ⛔ A PREMISSA DESTE GRUPO CAIU, e quem a derrubou foi a medida
+>
+> Escrito abaixo: *"desde as 22:26 de hoje"* e *"as quatro execuções de 19/09 fecharam todas
+> verdes"*. As duas são falsas. A Executora mediu primeiro e eu conferi as duas eu mesmo:
+>
+> - **a mesma falha, palavra por palavra, está no log de 18/09/2026** · run `35324942959`,
+>   commit `2054f9c`, 08:34, `conclusion: failure`. Não começou hoje, e naquele dia foram
+>   **7 falhas em 12 execuções**;
+> - **o verde de 19/09 não rodou a asserção.** No run `35444481487` (`057b339`, 19/09) e no
+>   run `35544785956` (`fe09550`, verde desta noite), `há peça para arrastar e casa livre para
+>   soltar` aparece **duas vezes** e `a peça saiu do lugar` / `mover custa de 2 a 7 idas ao
+>   banco` aparecem **zero**. O `break` mudo do `test-grid.mjs:1089` pula as cinco asserções do
+>   movimento quando não acha casa de destino, e a linha de fechamento ainda imprime
+>   `Grid OK · desenho, movimento, registro, névoa e card`, **nomeando o que não rodou**.
+>
+> **O que isso muda na tarefa.** O item 4 ("o que mudou entre 19/09 e hoje") está respondido, e a
+> resposta é *nada no repositório*: o que variou foi qual das duas saídas o portão deu. E o
+> portão **não é intermitente**: ele é cego metade das vezes, e o vermelho é a metade honesta.
+> A contagem "cinco de dez" também envelheceu no mesmo dia em que foi escrita: a Executora
+> recontou e deu **8 de 17**.
+>
+> **Os quatro itens da tarefa continuam válidos como estão escritos**, e este carimbo não os
+> substitui: ele diz o que já foi respondido, para ninguém gastar a medida duas vezes.
+
+
 **Conferido por mim no `gh run list`, não relatado:** desde as 22:26 de hoje, dez execuções do
 workflow `Validar dados e regras` fecharam e **cinco falharam**. Todas no mesmo job
 (`Smoke · test-grid`) e com a mesma assinatura:

@@ -869,7 +869,7 @@ essa conversa fechar, as decisões voltam pra cá antes de ir pra Executora.
 
 ## 16 · Frenesi, quando o teste é forçado e a penalidade opcional, decidido em 23/09/2026
 
-**A discussão externa voltou como `FRENESI.md`** (raiz, sem rastreio), que modela o contrário do
+**A discussão externa voltou como `FRENESI.md`** (raiz, ao lado de `virtude-jogada.md`), que modela o contrário do
 §15: entrar em fúria é FALHAR no teste de Temperança, e a penalidade de ferimento entra com o sinal
 normal, diminuindo a parada de quem tenta se segurar. O humano confirmou esse modelo nesta sessão, e
 mudou a penalidade de obrigatória para opcional. **O bônus de ferimento do §15 fica substituído.**
@@ -958,7 +958,7 @@ mudou a penalidade de obrigatória para opcional. **O bônus de ferimento do §1
   Vigor ou Destreza", `vida-ferimentos-cura.md`), sem lista. **Arremesso ganha; Atirador (arco,
   besta) não.** Aparar é a Defesa por Bloqueio, que em fúria leva −2, e não ganha nada.
 
-**O `FRENESI.md` (raiz, ainda sem rastreio) foi atualizado com tudo isto em 23/09/2026:** o §6
+**O `FRENESI.md` (raiz, commitado em 23/09/2026) foi atualizado com tudo isto em 23/09/2026:** o §6
 reescrito, o §8 (saída) reescrito, a justificativa do §10 corrigida, o §11 com a lista nova de pendências e a
 numeração interna consertada (§9/§10/§11). Cópia de antes da edição fora do repositório.
 
