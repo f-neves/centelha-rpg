@@ -1,0 +1,346 @@
+{
+  "versao_esquema": 1,
+  "_comentario": "Tamanho mínimo de DETALHE INTERNO: abaixo dele a hachura não informa. O símbolo no modo padrão, em cinza sobre o papel, reduzido ao maior lado s, comparado com o mesmo símbolo borrado na origem (sigma = metade do período da hachura medido no próprio símbolo) e então reduzido. Equivalentes quando a diferença RMS de luminância dentro da silhueta fica abaixo de 0,03 (~8% de contraste Michelson num cinza médio, umas duas vezes o limiar de detecção de uma grade de ~20 ciclos por grau, que é uma hachura de 2 px numa tela vista a 60 cm). Mínimo = menor s a partir do qual a mediana do tipo fica >= 0,03 em todo tamanho maior. Grade: 8 a 200 px, de 2 em 2.",
+  "medido_em": "2026-09-23 15:56",
+  "simbolos_fora": [
+    "vegetacao-seca-04"
+  ],
+  "tipos": {
+    "arvore-conifera": {
+      "tamanho_minimo_detalhe": 38,
+      "hachura_some_sempre": false,
+      "periodo_hachura_px": 6.0,
+      "diferenca_em": {
+        "12": 0.0037,
+        "20": 0.0109,
+        "30": 0.0219,
+        "40": 0.0334,
+        "60": 0.0635,
+        "100": 0.1214,
+        "200": 0.1866
+      }
+    },
+    "arvore-folhosa": {
+      "tamanho_minimo_detalhe": 30,
+      "hachura_some_sempre": false,
+      "periodo_hachura_px": 7.0,
+      "diferenca_em": {
+        "12": 0.0057,
+        "20": 0.0147,
+        "30": 0.0304,
+        "40": 0.0476,
+        "60": 0.0812,
+        "100": 0.1308,
+        "200": 0.1881
+      }
+    },
+    "arvore-tropical": {
+      "tamanho_minimo_detalhe": 26,
+      "hachura_some_sempre": false,
+      "periodo_hachura_px": 8.0,
+      "diferenca_em": {
+        "12": 0.0075,
+        "20": 0.0207,
+        "30": 0.0447,
+        "40": 0.0703,
+        "60": 0.1142,
+        "100": 0.1739,
+        "200": 0.2358
+      }
+    },
+    "barra-de-escala": {
+      "tamanho_minimo_detalhe": 80,
+      "hachura_some_sempre": false,
+      "periodo_hachura_px": 9.0,
+      "diferenca_em": {
+        "12": 0.0,
+        "20": 0.0,
+        "30": 0.0065,
+        "40": 0.0151,
+        "60": 0.0188,
+        "100": 0.065,
+        "200": 0.1064
+      }
+    },
+    "cartela": {
+      "tamanho_minimo_detalhe": 58,
+      "hachura_some_sempre": false,
+      "periodo_hachura_px": 7.0,
+      "diferenca_em": {
+        "12": 0.0021,
+        "20": 0.005,
+        "30": 0.0097,
+        "40": 0.0171,
+        "60": 0.0323,
+        "100": 0.0657,
+        "200": 0.1272
+      }
+    },
+    "cidade": {
+      "tamanho_minimo_detalhe": 28,
+      "hachura_some_sempre": false,
+      "periodo_hachura_px": 8.5,
+      "diferenca_em": {
+        "12": 0.0074,
+        "20": 0.0187,
+        "30": 0.0396,
+        "40": 0.059,
+        "60": 0.091,
+        "100": 0.1342,
+        "200": 0.1913
+      }
+    },
+    "colina": {
+      "tamanho_minimo_detalhe": 30,
+      "hachura_some_sempre": false,
+      "periodo_hachura_px": 8.0,
+      "diferenca_em": {
+        "12": 0.0063,
+        "20": 0.0151,
+        "30": 0.0309,
+        "40": 0.0473,
+        "60": 0.0753,
+        "100": 0.1118,
+        "200": 0.1578
+      }
+    },
+    "duna": {
+      "tamanho_minimo_detalhe": 46,
+      "hachura_some_sempre": false,
+      "periodo_hachura_px": 5.5,
+      "diferenca_em": {
+        "12": 0.0038,
+        "20": 0.0073,
+        "30": 0.015,
+        "40": 0.0244,
+        "60": 0.0449,
+        "100": 0.0804,
+        "200": 0.1311
+      }
+    },
+    "fortaleza": {
+      "tamanho_minimo_detalhe": 28,
+      "hachura_some_sempre": false,
+      "periodo_hachura_px": 8.0,
+      "diferenca_em": {
+        "12": 0.008,
+        "20": 0.0176,
+        "30": 0.0347,
+        "40": 0.0517,
+        "60": 0.0817,
+        "100": 0.1239,
+        "200": 0.1715
+      }
+    },
+    "geleira": {
+      "tamanho_minimo_detalhe": 38,
+      "hachura_some_sempre": false,
+      "periodo_hachura_px": 6.0,
+      "diferenca_em": {
+        "12": 0.0037,
+        "20": 0.0101,
+        "30": 0.0209,
+        "40": 0.0339,
+        "60": 0.0606,
+        "100": 0.1041,
+        "200": 0.1617
+      }
+    },
+    "marco": {
+      "tamanho_minimo_detalhe": 28,
+      "hachura_some_sempre": false,
+      "periodo_hachura_px": 8.5,
+      "diferenca_em": {
+        "12": 0.0079,
+        "20": 0.0196,
+        "30": 0.0341,
+        "40": 0.0533,
+        "60": 0.0857,
+        "100": 0.1317,
+        "200": 0.1808
+      }
+    },
+    "monstro-marinho": {
+      "tamanho_minimo_detalhe": 66,
+      "hachura_some_sempre": false,
+      "periodo_hachura_px": 6.0,
+      "diferenca_em": {
+        "12": 0.0014,
+        "20": 0.0037,
+        "30": 0.0082,
+        "40": 0.013,
+        "60": 0.0264,
+        "100": 0.0608,
+        "200": 0.1253
+      }
+    },
+    "montanha": {
+      "tamanho_minimo_detalhe": 44,
+      "hachura_some_sempre": false,
+      "periodo_hachura_px": 5.0,
+      "diferenca_em": {
+        "12": 0.0033,
+        "20": 0.0085,
+        "30": 0.0162,
+        "40": 0.0267,
+        "60": 0.0503,
+        "100": 0.0951,
+        "200": 0.1615
+      }
+    },
+    "montanha-nevada": {
+      "tamanho_minimo_detalhe": 44,
+      "hachura_some_sempre": false,
+      "periodo_hachura_px": 5.0,
+      "diferenca_em": {
+        "12": 0.0033,
+        "20": 0.0077,
+        "30": 0.0165,
+        "40": 0.027,
+        "60": 0.0519,
+        "100": 0.1004,
+        "200": 0.1713
+      }
+    },
+    "palmeira": {
+      "tamanho_minimo_detalhe": 46,
+      "hachura_some_sempre": false,
+      "periodo_hachura_px": 5.0,
+      "diferenca_em": {
+        "12": 0.0031,
+        "20": 0.0094,
+        "30": 0.0174,
+        "40": 0.0254,
+        "60": 0.0472,
+        "100": 0.0997,
+        "200": 0.1924
+      }
+    },
+    "pantano": {
+      "tamanho_minimo_detalhe": 40,
+      "hachura_some_sempre": false,
+      "periodo_hachura_px": 5.0,
+      "diferenca_em": {
+        "12": 0.0033,
+        "20": 0.0076,
+        "30": 0.0178,
+        "40": 0.0321,
+        "60": 0.0676,
+        "100": 0.1322,
+        "200": 0.2206
+      }
+    },
+    "porto": {
+      "tamanho_minimo_detalhe": 22,
+      "hachura_some_sempre": false,
+      "periodo_hachura_px": 9.0,
+      "diferenca_em": {
+        "12": 0.0124,
+        "20": 0.0273,
+        "30": 0.0505,
+        "40": 0.0718,
+        "60": 0.1055,
+        "100": 0.1468,
+        "200": 0.1974
+      }
+    },
+    "rochedo": {
+      "tamanho_minimo_detalhe": 32,
+      "hachura_some_sempre": false,
+      "periodo_hachura_px": 7.0,
+      "diferenca_em": {
+        "12": 0.0047,
+        "20": 0.0133,
+        "30": 0.0274,
+        "40": 0.0414,
+        "60": 0.0719,
+        "100": 0.1141,
+        "200": 0.1693
+      }
+    },
+    "rosa-dos-ventos": {
+      "tamanho_minimo_detalhe": 54,
+      "hachura_some_sempre": false,
+      "periodo_hachura_px": 5.5,
+      "diferenca_em": {
+        "12": 0.0021,
+        "20": 0.0049,
+        "30": 0.01,
+        "40": 0.018,
+        "60": 0.0362,
+        "100": 0.0706,
+        "200": 0.1401
+      }
+    },
+    "ruina": {
+      "tamanho_minimo_detalhe": 22,
+      "hachura_some_sempre": false,
+      "periodo_hachura_px": 9.0,
+      "diferenca_em": {
+        "12": 0.0124,
+        "20": 0.0282,
+        "30": 0.0542,
+        "40": 0.0782,
+        "60": 0.1122,
+        "100": 0.1578,
+        "200": 0.2091
+      }
+    },
+    "selva": {
+      "tamanho_minimo_detalhe": 28,
+      "hachura_some_sempre": false,
+      "periodo_hachura_px": 7.0,
+      "diferenca_em": {
+        "12": 0.0074,
+        "20": 0.0174,
+        "30": 0.0358,
+        "40": 0.0548,
+        "60": 0.0936,
+        "100": 0.1486,
+        "200": 0.2087
+      }
+    },
+    "tundra": {
+      "tamanho_minimo_detalhe": 32,
+      "hachura_some_sempre": false,
+      "periodo_hachura_px": 6.0,
+      "diferenca_em": {
+        "12": 0.0049,
+        "20": 0.014,
+        "30": 0.0265,
+        "40": 0.0427,
+        "60": 0.0745,
+        "100": 0.127,
+        "200": 0.2012
+      }
+    },
+    "vegetacao-seca": {
+      "tamanho_minimo_detalhe": 36,
+      "hachura_some_sempre": false,
+      "periodo_hachura_px": 6.0,
+      "diferenca_em": {
+        "12": 0.0048,
+        "20": 0.0118,
+        "30": 0.0228,
+        "40": 0.039,
+        "60": 0.076,
+        "100": 0.134,
+        "200": 0.209
+      }
+    },
+    "vila": {
+      "tamanho_minimo_detalhe": 28,
+      "hachura_some_sempre": false,
+      "periodo_hachura_px": 6.5,
+      "diferenca_em": {
+        "12": 0.0066,
+        "20": 0.0175,
+        "30": 0.0351,
+        "40": 0.0511,
+        "60": 0.0853,
+        "100": 0.1313,
+        "200": 0.1847
+      }
+    }
+  }
+}

@@ -75,4 +75,5 @@ def gerar_tiras(caminho_manifesto: Path, pasta_saida: Path, raiz_mapas: Path = R
 
 # O piso de tamanho por tipo, que nasceu aqui julgado a olho nestas tiras (noite 2),
 # passou a ser MEDIDO em 2026-09-23 (decisão 7 do usuário): `cartografia/legibilidade.py`
-# e a tabela `dados/tamanho-minimo-legivel.json`. As tiras continuam, para ver.
+# e as tabelas `dados/tamanho-minimo-silhueta.json` e `dados/tamanho-minimo-detalhe.json`.
+# As tiras continuam, para ver.

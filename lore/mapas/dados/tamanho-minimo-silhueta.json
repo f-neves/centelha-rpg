@@ -1,151 +1,151 @@
 {
   "versao_esquema": 1,
-  "_comentario": "Silhueta (alfa do modo branco-opaco) reduzida ao maior lado s, binarizada em 50%, apoiada pela base num quadro s x s com a âncora no meio; símbolo espelhável entra também espelhado. Dois tipos são indistinguíveis em s quando a maior IoU entre uma silhueta de um e uma do outro é >= a IoU mediana de cada silhueta contra ela mesma deslocada meio pixel (o erro de arredondamento da âncora no renderizador). Piso = menor s a partir do qual o tipo se separa de todos os outros em todo tamanho maior. Grade: 8 a 200 px, de 2 em 2. Tamanhos em px na resolução oficial (1,25 km/px).",
-  "medido_em": "2026-09-23 13:53",
+  "_comentario": "Tamanho mínimo de SILHUETA DISTINGUÍVEL: mede contorno, NÃO legibilidade (o miolo pode já ter virado mancha; ver tamanho-minimo-detalhe.json). Silhueta (alfa do modo branco-opaco) reduzida ao maior lado s, binarizada em 50%, apoiada pela base num quadro s x s com a âncora no meio; símbolo espelhável entra também espelhado. Dois tipos são indistinguíveis em s quando a maior IoU entre uma silhueta de um e uma do outro é >= a IoU mediana de cada silhueta contra ela mesma deslocada meio pixel (o erro de arredondamento da âncora no renderizador). Mínimo = menor s a partir do qual o tipo se separa de todos os outros em todo tamanho maior. Grade: 8 a 200 px, de 2 em 2. Tamanhos em px na resolução oficial (1,25 km/px).",
+  "medido_em": "2026-09-23 15:56",
   "simbolos_fora": [
     "vegetacao-seca-04"
   ],
   "tipos": {
     "arvore-conifera": {
-      "piso": 18,
+      "tamanho_minimo_silhueta": 18,
       "confunde_com": "montanha-nevada",
       "ultimo_tamanho_confuso": 16,
       "nunca_separa": false
     },
     "arvore-folhosa": {
-      "piso": 14,
+      "tamanho_minimo_silhueta": 14,
       "confunde_com": "porto",
       "ultimo_tamanho_confuso": 12,
       "nunca_separa": false
     },
     "arvore-tropical": {
-      "piso": 10,
+      "tamanho_minimo_silhueta": 10,
       "confunde_com": "arvore-folhosa",
       "ultimo_tamanho_confuso": 8,
       "nunca_separa": false
     },
     "barra-de-escala": {
-      "piso": 8,
+      "tamanho_minimo_silhueta": 8,
       "confunde_com": null,
       "ultimo_tamanho_confuso": null,
       "nunca_separa": false
     },
     "cartela": {
-      "piso": 8,
+      "tamanho_minimo_silhueta": 8,
       "confunde_com": null,
       "ultimo_tamanho_confuso": null,
       "nunca_separa": false
     },
     "cidade": {
-      "piso": 22,
+      "tamanho_minimo_silhueta": 22,
       "confunde_com": "montanha",
       "ultimo_tamanho_confuso": 20,
       "nunca_separa": false
     },
     "colina": {
-      "piso": 20,
+      "tamanho_minimo_silhueta": 20,
       "confunde_com": "geleira",
       "ultimo_tamanho_confuso": 18,
       "nunca_separa": false
     },
     "duna": {
-      "piso": 22,
+      "tamanho_minimo_silhueta": 22,
       "confunde_com": "vila",
       "ultimo_tamanho_confuso": 20,
       "nunca_separa": false
     },
     "fortaleza": {
-      "piso": 24,
+      "tamanho_minimo_silhueta": 24,
       "confunde_com": "rochedo",
       "ultimo_tamanho_confuso": 22,
       "nunca_separa": false
     },
     "geleira": {
-      "piso": 20,
+      "tamanho_minimo_silhueta": 20,
       "confunde_com": "rochedo",
       "ultimo_tamanho_confuso": 18,
       "nunca_separa": false
     },
     "marco": {
-      "piso": 10,
+      "tamanho_minimo_silhueta": 10,
       "confunde_com": "arvore-conifera",
       "ultimo_tamanho_confuso": 8,
       "nunca_separa": false
     },
     "monstro-marinho": {
-      "piso": 10,
+      "tamanho_minimo_silhueta": 10,
       "confunde_com": "pantano",
       "ultimo_tamanho_confuso": 8,
       "nunca_separa": false
     },
     "montanha": {
-      "piso": 34,
+      "tamanho_minimo_silhueta": 34,
       "confunde_com": "montanha-nevada",
       "ultimo_tamanho_confuso": 32,
       "nunca_separa": false
     },
     "montanha-nevada": {
-      "piso": 34,
+      "tamanho_minimo_silhueta": 34,
       "confunde_com": "montanha",
       "ultimo_tamanho_confuso": 32,
       "nunca_separa": false
     },
     "palmeira": {
-      "piso": 8,
+      "tamanho_minimo_silhueta": 8,
       "confunde_com": null,
       "ultimo_tamanho_confuso": null,
       "nunca_separa": false
     },
     "pantano": {
-      "piso": 24,
+      "tamanho_minimo_silhueta": 24,
       "confunde_com": "montanha",
       "ultimo_tamanho_confuso": 22,
       "nunca_separa": false
     },
     "porto": {
-      "piso": 24,
+      "tamanho_minimo_silhueta": 24,
       "confunde_com": "rochedo",
       "ultimo_tamanho_confuso": 22,
       "nunca_separa": false
     },
     "rochedo": {
-      "piso": 26,
+      "tamanho_minimo_silhueta": 26,
       "confunde_com": "selva",
       "ultimo_tamanho_confuso": 24,
       "nunca_separa": false
     },
     "rosa-dos-ventos": {
-      "piso": 10,
+      "tamanho_minimo_silhueta": 10,
       "confunde_com": "arvore-folhosa",
       "ultimo_tamanho_confuso": 8,
       "nunca_separa": false
     },
     "ruina": {
-      "piso": 24,
+      "tamanho_minimo_silhueta": 24,
       "confunde_com": "montanha",
       "ultimo_tamanho_confuso": 22,
       "nunca_separa": false
     },
     "selva": {
-      "piso": 26,
+      "tamanho_minimo_silhueta": 26,
       "confunde_com": "rochedo",
       "ultimo_tamanho_confuso": 24,
       "nunca_separa": false
     },
     "tundra": {
-      "piso": 18,
+      "tamanho_minimo_silhueta": 18,
       "confunde_com": "colina",
       "ultimo_tamanho_confuso": 16,
       "nunca_separa": false
     },
     "vegetacao-seca": {
-      "piso": 20,
+      "tamanho_minimo_silhueta": 20,
       "confunde_com": "montanha",
       "ultimo_tamanho_confuso": 18,
       "nunca_separa": false
     },
     "vila": {
-      "piso": 22,
+      "tamanho_minimo_silhueta": 22,
       "confunde_com": "duna",
       "ultimo_tamanho_confuso": 20,
       "nunca_separa": false

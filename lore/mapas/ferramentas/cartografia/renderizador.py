@@ -316,11 +316,12 @@ _PISOS: dict[str, int] = {}
 
 
 def pisos() -> dict[str, int]:
-    """O tamanho mínimo legível MEDIDO de cada tipo (`dados/tamanho-minimo-legivel.json`,
-    gerado por `scripts/medir_legibilidade.py`), em px na resolução oficial. É o limite
-    inferior do tamanho de todo símbolo colocado."""
+    """O piso MEDIDO de cada tipo, em px na resolução oficial: o maior entre o tamanho
+    mínimo de silhueta distinguível e o de detalhe interno
+    (`dados/tamanho-minimo-silhueta.json` e `dados/tamanho-minimo-detalhe.json`, gerados
+    por `scripts/medir_legibilidade.py`). É o limite inferior de todo símbolo colocado."""
     if not _PISOS:
-        _PISOS.update(legibilidade.carregar())
+        _PISOS.update(legibilidade.carregar_pisos())
     return _PISOS
 
 @dataclass(frozen=True)

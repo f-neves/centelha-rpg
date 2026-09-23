@@ -1,5 +1,16 @@
-"""Tamanho mínimo legível MEDIDO (2026-09-23, decisão 7 do usuário: "troque o
-julgamento a olho por uma medida").
+"""Tamanho mínimo de cada tipo de símbolo, MEDIDO em duas partes (2026-09-23).
+
+O renderizador usa como piso o MAIOR dos dois (`carregar_pisos`):
+
+1. **Tamanho mínimo de silhueta distinguível** (decisão 7 do usuário: "troque o
+   julgamento a olho por uma medida"): abaixo dele o CONTORNO de um tipo se confunde
+   com o de outro. Tabela `dados/tamanho-minimo-silhueta.json`.
+2. **Tamanho mínimo de detalhe interno** (correção do usuário no mesmo dia: a folhosa
+   "vira mancha cinza bem antes dos 14 px" que a silhueta deu, porque a hachura some
+   antes do contorno): abaixo dele a hachura de dentro não informa mais nada. Tabela
+   `dados/tamanho-minimo-detalhe.json`.
+
+## 1. Silhueta distinguível
 
 **O que se mede**: a silhueta de cada símbolo (o alfa do modo branco-opaco) reduzida a
 tamanhos decrescentes do maior lado, binarizada em 50% e apoiada pela base num quadro
@@ -16,13 +27,36 @@ lado está abaixo da precisão do próprio mapa: nada no desenho permite separá
 
 A e B são indistinguíveis em s quando semelhança(A, B) >= ruído(s).
 
-**O piso de um tipo** é o menor tamanho da grade a partir do qual ele se separa de
-TODOS os outros tipos em todo tamanho maior. Se ele se confunde com algum tipo até no
-maior tamanho medido, o piso é esse maior tamanho, com a marca `nunca_separa`.
+**O tamanho mínimo de silhueta de um tipo** é o menor tamanho da grade a partir do
+qual ele se separa de TODOS os outros tipos em todo tamanho maior. Se ele se confunde
+com algum tipo até no maior tamanho medido, é esse maior tamanho, com a marca
+`nunca_separa`.
 
-Limites da medida (ditos, e não escondidos): ela olha só a SILHUETA. Dois tipos com o
-mesmo contorno e miolos diferentes (hachura, neve) contam como iguais; é a leitura
-pessimista, a de quem vê o mapa de longe, onde o miolo some antes do contorno.
+**Limite, dito e não escondido**: ela olha só o CONTORNO, e por isso NÃO é medida de
+legibilidade. Dois tipos com o mesmo contorno e miolos diferentes (a montanha comum e
+a nevada) contam como iguais, e um tipo cujo contorno ainda se separa pode já ter
+virado mancha por dentro (a folhosa). É a segunda medida que cobre isso.
+
+## 2. Detalhe interno
+
+**O que se mede**: o símbolo no modo padrão, sobre o papel, em cinza (luminância 0 a
+1), reduzido ao maior lado s; e o MESMO símbolo borrado na origem na escala da
+própria hachura e só então reduzido. O borrão tem sigma = metade do PERÍODO DA
+HACHURA, medido em cada símbolo: a mediana da distância entre o começo de um traço e
+o do seguinte, ao longo das linhas do miolo da silhueta (5 a 8,5 px nas folhas
+atuais). Um borrão desse tamanho apaga a hachura e guarda as massas de claro e escuro.
+
+**Quando os dois ficam equivalentes**: a diferença RMS de luminância entre os dois,
+dentro da silhueta, fica abaixo de `LIMIAR_DETALHE` = 0,03. Justificativa: numa tela
+comum vista a 60 cm, um pixel é ~1,4 minuto de arco, e uma hachura de 2 px de
+período fica perto de 20 ciclos por grau, onde a vista humana só DETECTA uma grade a
+partir de uns 3% a 5% de contraste (Michelson). RMS 0,03 sobre um cinza médio é ~8%
+de Michelson: umas duas vezes o limiar de detecção, que é a margem entre ver que há
+algo e reconhecer que é hachura. Abaixo disso a hachura existe nos pixels, mas lê
+como cinza.
+
+**O tamanho mínimo de detalhe de um tipo** é o menor s a partir do qual a diferença
+MEDIANA dos símbolos do tipo fica >= o limiar em todo tamanho maior.
 """
 
 from __future__ import annotations
@@ -31,11 +65,14 @@ import json
 from pathlib import Path
 
 import numpy as np
-from PIL import Image
+from PIL import Image, ImageFilter
 
 RAIZ_MAPAS = Path(__file__).resolve().parents[2]
-CAMINHO_TABELA = RAIZ_MAPAS / "dados" / "tamanho-minimo-legivel.json"
+CAMINHO_SILHUETA = RAIZ_MAPAS / "dados" / "tamanho-minimo-silhueta.json"
+CAMINHO_DETALHE = RAIZ_MAPAS / "dados" / "tamanho-minimo-detalhe.json"
 TAMANHOS = tuple(range(8, 201, 2))
+LIMIAR_DETALHE = 0.03
+COR_PAPEL = (233, 221, 189)
 
 
 def silhueta(alfa: Image.Image, ancora_x: float, s: int, deslocar: float = 0.0,
@@ -70,8 +107,9 @@ def iou(a: np.ndarray, b: np.ndarray) -> np.ndarray:
     return np.where(uniao > 0, inter / np.maximum(uniao, 1), 1.0)
 
 
-def medir(simbolos: list[dict], raiz: Path = RAIZ_MAPAS, tamanhos=TAMANHOS) -> dict:
-    """Devolve {tipo: {piso, confunde_com, em, nunca_separa}} e o ruído por tamanho."""
+def medir_silhueta(simbolos: list[dict], raiz: Path = RAIZ_MAPAS, tamanhos=TAMANHOS) -> dict:
+    """Devolve {tipo: {tamanho_minimo_silhueta, confunde_com, ultimo_tamanho_confuso,
+    nunca_separa}} e o ruído por tamanho."""
     fontes = []
     for s in simbolos:
         with Image.open(raiz / s["arquivos"]["branco-opaco"]) as im:
@@ -119,12 +157,76 @@ def medir(simbolos: list[dict], raiz: Path = RAIZ_MAPAS, tamanhos=TAMANHOS) -> d
         nunca = em == tamanhos[-1]
         if em is not None and not nunca:
             piso = tamanhos[tamanhos.index(em) + 1]
-        tabela[tipo] = {"piso": piso, "confunde_com": com, "ultimo_tamanho_confuso": em,
+        tabela[tipo] = {"tamanho_minimo_silhueta": piso, "confunde_com": com, "ultimo_tamanho_confuso": em,
                         "nunca_separa": nunca}
     return {"tipos": tabela, "ruido_por_tamanho": {str(k): round(v, 3) for k, v in ruido.items()}}
 
 
-def carregar(caminho: Path = CAMINHO_TABELA) -> dict[str, int]:
-    """{tipo: piso em px na resolução oficial}, lido da tabela gravada."""
-    dados = json.loads(caminho.read_text(encoding="utf-8"))
-    return {t: v["piso"] for t, v in dados["tipos"].items()}
+def periodo_da_hachura(cinza: np.ndarray, miolo: np.ndarray) -> float:
+    """Mediana da distância, em px da origem, entre o começo de um traço escuro e o do
+    seguinte, ao longo de uma a cada 3 linhas, só dentro do miolo. 6 se não houver."""
+    tinta = cinza < 0.5
+    distancias = []
+    for y in range(0, tinta.shape[0], 3):
+        inicios = np.flatnonzero(np.diff(tinta[y].astype(np.int8)) == 1) + 1
+        inicios = inicios[miolo[y, inicios]]
+        distancias.extend(np.diff(inicios).tolist())
+    return float(np.median(distancias)) if distancias else 6.0
+
+
+def diferenca_de_detalhe(simbolo: dict, raiz: Path, tamanhos) -> tuple[float, list[float]]:
+    """(período da hachura, [diferença RMS entre o reduzido e o borrado-e-reduzido, por
+    tamanho]), dentro da silhueta."""
+    with Image.open(raiz / simbolo["arquivo"]) as im:
+        rgba = im.convert("RGBA")
+    with Image.open(raiz / simbolo["arquivos"]["branco-opaco"]) as im:
+        alfa = im.convert("RGBA").getchannel("A")
+    papel = Image.new("RGBA", rgba.size, COR_PAPEL + (255,))
+    papel.alpha_composite(rgba)
+    cinza = papel.convert("L")
+    miolo = np.asarray(alfa.filter(ImageFilter.MinFilter(9))) >= 250
+    periodo = periodo_da_hachura(np.asarray(cinza, dtype=np.float64) / 255, miolo)
+    borrado = cinza.filter(ImageFilter.GaussianBlur(periodo / 2))
+    saida = []
+    for s in tamanhos:
+        k = s / max(rgba.width, rgba.height)
+        tam = (max(1, round(rgba.width * k)), max(1, round(rgba.height * k)))
+        r = np.asarray(cinza.resize(tam, Image.LANCZOS), dtype=np.float64) / 255
+        b = np.asarray(borrado.resize(tam, Image.LANCZOS), dtype=np.float64) / 255
+        dentro = np.asarray(alfa.resize(tam, Image.LANCZOS)) >= 128
+        saida.append(float(np.sqrt(((r - b)[dentro] ** 2).mean())) if dentro.any() else 0.0)
+    return periodo, saida
+
+
+def medir_detalhe(simbolos: list[dict], raiz: Path = RAIZ_MAPAS, tamanhos=TAMANHOS,
+                  limiar: float = LIMIAR_DETALHE) -> dict:
+    """Devolve {tipo: {tamanho_minimo_detalhe, hachura_some_sempre, periodo_hachura_px,
+    diferenca_em}}."""
+    por_tipo: dict[str, list] = {}
+    for s in simbolos:
+        por_tipo.setdefault(s["tipo"], []).append(diferenca_de_detalhe(s, raiz, tamanhos))
+    tabela = {}
+    for tipo, medidas in sorted(por_tipo.items()):
+        mediana = np.median([d for _, d in medidas], axis=0)
+        minimo = None
+        for s, d in sorted(zip(tamanhos, mediana), reverse=True):
+            if d < limiar:
+                break
+            minimo = s
+        tabela[tipo] = {
+            "tamanho_minimo_detalhe": minimo if minimo is not None else max(tamanhos),
+            "hachura_some_sempre": minimo is None,   # nem no maior tamanho passa do limiar
+            "periodo_hachura_px": round(float(np.median([p for p, _ in medidas])), 1),
+            "diferenca_em": {str(s): round(float(d), 4) for s, d in zip(tamanhos, mediana)
+                             if s in (200, 100, 60, 40, 30, 20, 12)},
+        }
+    return {"tipos": tabela}
+
+
+def carregar_pisos(silhueta: Path = CAMINHO_SILHUETA, detalhe: Path = CAMINHO_DETALHE) -> dict[str, int]:
+    """{tipo: piso em px na resolução oficial} = o MAIOR entre o tamanho mínimo de
+    silhueta distinguível e o de detalhe interno."""
+    a = json.loads(silhueta.read_text(encoding="utf-8"))["tipos"]
+    b = json.loads(detalhe.read_text(encoding="utf-8"))["tipos"]
+    return {t: max(a[t]["tamanho_minimo_silhueta"], b.get(t, {}).get("tamanho_minimo_detalhe", 0))
+            for t in a}
