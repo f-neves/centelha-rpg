@@ -120,7 +120,7 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   de um **prisma** e não de uma pirâmide (0,433 n³ em vez de 0,289 n³, 50% alto), a conservação do
   volume era propriedade **do modelo** e não da forma, e baixar a altura pela metade dá **98,2°** e não
   120°.
-- [ ] **A22 · [DECIDIR] Quem paga a abertura: a distância ou a altura.** Aberta em 2026-08-17, e os
+- [x] **A22 · [DECIDIR] Quem paga a abertura: a distância ou a altura.** Aberta em 2026-08-17, e os
   dois modelos estão na bancada no controle **Abrir cobra**. A superfície comprada é n² nos dois, e com
   **uma** fatia eles são o mesmo desenho; a diferença só aparece ao abrir. Em **distância**, a aresta
   de cada fatia é n ÷ N: a base se aproxima, e o volume e o chão dividem por N. Em **altura**, a aresta
@@ -140,6 +140,7 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   não prende ninguém. A do modelo da **altura** tem raio de **5,20 m**: sair custa até 5 Ticks, e é o
   primeiro molde do jogo que não caiba num passo grátis. Se o Volume tem de valer contra quem pode se
   mexer, o modelo da altura é o único dos dois que entrega isso.
+  **Fechado na revisão da rodada 94 (23/09/2026), com prova:** esta é a entrada de ANTES da decisão, que ficou aberta. A decisão está no próprio arquivo, na outra A22 (AS DUAS, 19/08/2026), fechada.
 - [x] **A23 · [DECIDIDO 2026-08-18] O desvio da área: metade e dano nenhum.** Detalhe na **§5.5** do
   `Arcano_revisao.md`. A Dificuldade é da **tarefa, não de quem conjurou** (mesmo Efeito, mesma área,
   Arte 3 ou Arte 6, mesma Dificuldade: o nível da Arte compra tamanho, não uma dificuldade extra

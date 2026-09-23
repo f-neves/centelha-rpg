@@ -344,7 +344,7 @@ revistos por ela.
   (c) manter e assumir. Levantado em 20/08 ao medir o acerto com os bônus reais de catálogo, junto
   do **K22** (onde ficou registrado por que a convenção `>` não é o que conserta isto: o `>=`
   levaria o mesmo caso de 6% para 10%, e o ganho dele **encolhe** justamente nas Defesas altas).
-- [ ] **K12 · [DECIDIR] Como se conta um teste de Virtude.** Teste de Virtude **não soma Atributo
+- [x] **K12 · [DECIDIR] Como se conta um teste de Virtude.** Teste de Virtude **não soma Atributo
   nem Habilidade**, só a Virtude, e por isso a régua de pool de hoje (`[(A+H)/2]d6`, com +2 se
   ímpar) não se aplica a ele. Duas formas na mesa: **pool** (a Virtude vira dados pela mesma
   escada, `1d6 · 1d6+2 · 2d6 ...`) ou **soma única**, mais perto da Iniciativa (`1d6 + Virtude`).
@@ -352,13 +352,15 @@ revistos por ela.
   a dispersão fixa e faz a Virtude pesar linearmente. Aberto em **19/08/2026**, e vira urgente
   porque o combate passou a pedir teste de Virtude (continuar o golpe ignorando um perigo visível
   é teste de **Bravura**, §K).
-- [ ] **K13 · [CONSERTAR] A Guarda sob pressão está em dobro no motor.** `scripts/lib-tempo.mjs`
+  **Fechado na revisão da rodada 94 (23/09/2026), com prova:** decidido na §14 de `leitura-de-novato-decisoes.md` (a Virtude sozinha pela conversão de sempre, a forma pool), com régua de Dificuldade própria pela §16, e no livro desde `c5dd390`.
+- [x] **K13 · [CONSERTAR] A Guarda sob pressão está em dobro no motor.** `scripts/lib-tempo.mjs`
   faz `guard += R.pressao` (linha 225) e desconta `R.pressao * guard` (linha 153): com
   `pressao: 2`, cada ataque feito ou recebido tira **4** de Defesa, e não os **−2** que o capítulo
   IX (`combate.md:233`) e o comentário da própria linha 54 escrevem. O parâmetro entra ao
   quadrado. Consequência medida: a curva do **K4 inverte**. Com −4, o Preparo do arco custa win
   rate (a 45 m, P=0 dá 28,3% e P=2 dá 13,4%, que é a §7 publicada); com −2, o Preparo **paga** (a
   45 m, P=0 dá 11,7% e P=5 dá 54,0%). **O K4 não pode ser decidido antes disto.**
+  **Fechado na revisão da rodada 94 (23/09/2026), com prova:** `b6af150` (19/08/2026). O `scripts/lib-tempo.mjs` diz no cabeçalho que o motor cobrava em dobro até essa data, e guarda o regime antigo em `pressaoDupla`.
 - [ ] **K14 · [DECIDIR] A bancada só mede o canto "todo mundo esquiva".** O motor tem **uma**
   Defesa e ignora a `defesaArma`, que pelo `defesas.md:67` entra **só no Bloqueio**
   (`Bloqueio = (Des + Bloqueio)×2 + Centelha + Esp + defesa da arma`). Todo número de equilíbrio

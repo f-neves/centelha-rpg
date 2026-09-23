@@ -69,7 +69,7 @@
   no exemplo dos povos, e no duelo do Combate Social aceita **uma dança** com Defesa Social 18.
   Os três exemplos funcionam isolados e o leitor que ler o capítulo inteiro não reconhece a mesma
   pessoa. É `C`, não regra.
-- [ ] **E9 · [CONSERTAR] O `regras.json` também afirma a cláusula do Antecedente, e o dado vence o
+- [x] **E9 · [CONSERTAR] O `regras.json` também afirma a cláusula do Antecedente, e o dado vence o
   capítulo.** Achado pela Executora na rodada 86, varrendo `src/` inteiro por "move a régua" antes
   de fechar o grupo A: o bloco `aparencia` do `src/data/regras.json` (chave `nota`) diz que a pilha
   situacional dos Antecedentes "só move a Régua de Relação, teto +6", que é a mesma afirmação de
@@ -78,7 +78,8 @@
   nomeia só o capítulo. **Pela regra da casa o JSON é a fonte da verdade**, então consertar o
   capítulo e deixar esta frase faz o modelo morto vencer o vivo. Entra junto com a decisão do
   humano de 20/09/2026 sobre o Antecedente, não antes dela.
-- [ ] **E10 · [CONSERTAR] O registro da M-09 continua publicando o modelo que a rodada 86
+  **Fechado na revisão da rodada 94 (23/09/2026), com prova:** `b903a26` (20/09/2026) tirou a cláusula de `aparencia.nota`. Conferido hoje: a nota diz que os Antecedentes descontam passos do Neutro e não somam jogada.
+- [x] **E10 · [CONSERTAR] O registro da M-09 continua publicando o modelo que a rodada 86
   substituiu.** A `nota` de `acoes.longevidadeFirula` (`src/data/regras.json`) passou a dizer que o
   intervalo do cortejo é `intervaloBaseDias` vezes o multiplicador da faixa, e que isso SUBSTITUI o
   deslocamento de degrau da M-09. A decisão M-09 em si continua escrita como DECIDIDO e FEITO em
@@ -86,4 +87,5 @@
   povo", 17/09/2026), com o deslocamento +1/0/−1/−2 e o roteiro de como implementá-lo. É documento
   de outra frente e não foi tocado de propósito; quem ler o registro sem ler o dado reimplementa o
   modelo morto.
+  **Fechado na revisão da rodada 94 (23/09/2026), com prova:** `fb9310c` (20/09/2026) marcou, na seção da M-09 de `jogador-novo-decisoes.md`, o que caiu e o que continua valendo, citando este item.
 

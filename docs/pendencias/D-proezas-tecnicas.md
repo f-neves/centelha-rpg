@@ -2,9 +2,10 @@
 
 Detalhe em `Proezas_revisao.md`.
 
-- [ ] **D1 · [FAZER] Fase 3 da migração.** Matar a **banda** de vez (Velocidade independente por nível,
+- [x] **D1 · [FAZER] Fase 3 da migração.** Matar a **banda** de vez (Velocidade independente por nível,
   apagar o campo `banda` e tirar do schema) e **surfar o modificador da trilha na UI**, mostrando o
   valor ao lado da Técnica.
+  **Fechado na revisão da rodada 94 (23/09/2026), com prova:** `971b6f4` (17/07/2026) tirou a banda de dado, schema, validador e código e pôs o modificador ao lado da Técnica. Conferido hoje: nenhuma entrada de `tecnicas.json` tem `banda`, e a árvore de Técnicas mostra o modificador.
 - [x] **D2 · [FEITO, achado na auditoria de memória de 08/09] Reconciliado.** O texto já bate com a
   régua (`tecnicas.json` traz "+3 em Furtividade", nível×3), não "+2" como este item ainda dizia.
 - [ ] **D3 · [DECIDIR] Densidade dos funis.** Caminhos reaproveitados têm ~3 Técnicas no nível 1

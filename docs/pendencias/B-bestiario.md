@@ -93,7 +93,7 @@ limitações conhecidas, que são as três de baixo.
   editor) e o **validador falha o build** em qualquer palavra fora dele. O modal aceita palavra
   avulsa e a guarda no `localStorage`, o que serve para rascunhar mas não atravessa: quem quiser
   oficializar tem de editar o JSON à mão. Falta o passo que promove a palavra rascunhada.
-- [ ] **B13 (renumerado de B12 em 08/09/2026) · [FAZER] `roladaManual` dobra o bônus fixo em pool
+- [x] **B13 (renumerado de B12 em 08/09/2026) · [FAZER] `roladaManual` dobra o bônus fixo em pool
   "0d6" literal.** Colidia de código com o B12 da fraqueza/resistência: as rodadas 17-18 já o
   citavam como "D16c/B12" (`docs/simulacao/caixa/17-executora.md:53`, `18-revisora.md:99`) antes de
   este item entrar no mapa, e quando entrou o código já estava em uso por outro achado. Renumerado
@@ -105,4 +105,5 @@ limitações conhecidas, que são as três de baixo.
   `rolagem=site` e é relida como digitação manual, o `+2` fixo entra duas vezes: uma dentro do
   total rolado, outra somada de novo por `flatDeExpr`. Não corrigido ainda; a Executora contornou
   no teste novo usando um pool com dado de verdade (`3d6+21`) em vez de reproduzir o caso "0d6".
+  **Fechado na revisão da rodada 94 (23/09/2026), com prova:** `888a196` (22/09/2026), "roladaManual dobrava o bonus fixo de qualquer golpe com o bolo em zero dado", com asserção em `scripts/test-rolada-manual.mjs`.
 
