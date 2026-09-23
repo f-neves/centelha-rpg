@@ -1,0 +1,8 @@
+c88b93a6efa7 · reancorada, passo 0 conferido (17:06)
+95e1e90 conferido: Bastão 0,25 < Adaga 0,3, frase cita os dois, bench regenerado, schema min(0) nos dois espelhos (17:06)
+FRENESI.md: todas as tabelas recalculadas do zero (script próprio); batem, salvo arredondamento de 62,5/37,5 inconsistente entre §2 e §8 (17:07)
+diffs lidos (racas.md, aparencia, vida-ferimentos, racas.json), comparação regra a regra com FRENESI §4-§10 e §16 feita (17:09)
+build limpo (depois de apagar .astro próprio), âncoras #frenesi e #o-teste-de-virtude conferidas no HTML (17:11)
+achados formados: 2 CORRIGE (fronteira do Resistir; 17% do relato), 3 PERGUNTA, nota de livro x código; escrevendo 90-revisora.md (17:12)
+90-revisora.md escrito; commitando e empurrando (17:13)
+delta de a8ce2bc escrito no veredito (decisões do grupo 4), rebase do meu commit (17:14)
