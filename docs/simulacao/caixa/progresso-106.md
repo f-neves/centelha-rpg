@@ -1,0 +1,7 @@
+# Rodada 106 · Executora · progresso
+
+- **17:56** · rodada aberta: `status` vazio, `fetch`, `merge-base --is-ancestor` verdadeiro, `switch -C executora origin/main` em `5407b38`. Lendo o despacho.
+- **17:57** · as quatro contas escritas no relato antes de qualquer texto novo. Oficina e material somam à Dificuldade (`Acoes_Sistema.md:1172`). O braçal não soma em nenhuma oficina com material corrente, mas soma com material selecionado ou excepcional numa oficina boa (até 4 por dia): divergência para PRECISA DE MIM. O aprendiz de Habilidade 1 e 2 bate com o autor. As onze linhas das escalas de semanas e estações têm lado claro; a "cerca de 20 m" da escala de dias fica em dúvida.
+- **17:59** · texto escrito: capítulo de ofício (topo `:8`, Ajuda com a separação apoio/divisível, a herança, o +4 pessoal, a trava de dez, o exemplo novo, Direção de obra com o critério novo), Régua Comum (Ajudante é apoio numa jogada única, e o divisível aponta para condução e direção), `Acoes_Sistema.md` §3.5 (Apoiar alinhado à metade, +1 a cada 6) e §7.6. Mapeando as citações de linha deslocadas.
+- **18:03** · citações mapeadas pelos hunks do diff (27 trocas em 18 linhas de itens abertos, conferidas por conteúdo); validate, build e âncoras no `dist/` verdes; `b396c83` pelo gancho, publicado (fast-forward de `5407b38`).
+- **18:04** · G18 e G29 fechadas com a frase do autor, a data e `b396c83`; `Pendencias.md` regenerado (184 abertos, 88 fechados). Relato completo, com quatro itens em PRECISA DE MIM. Commitando.

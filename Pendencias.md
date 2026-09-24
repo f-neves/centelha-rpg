@@ -45,13 +45,13 @@ está na seção 3.
 | D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 8 | 5 | 0 | 3 | 2 | 1 | 0 | 0 | 0 | 2 |
 | E | Social, Mental e Antecedentes | [`E-social-mental-antecedentes.md`](docs/pendencias/E-social-mental-antecedentes.md) | 10 | 7 | 0 | 3 | 5 | 1 | 0 | 1 | 0 | 0 |
 | F | Lore | [`F-lore.md`](docs/pendencias/F-lore.md) | 10 | 9 | 0 | 1 | 6 | 0 | 3 | 0 | 0 | 0 |
-| G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 31 | 19 | 0 | 12 | 14 | 2 | 0 | 3 | 0 | 0 |
+| G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 31 | 17 | 0 | 14 | 12 | 2 | 0 | 3 | 0 | 0 |
 | H | Arremesso | [`H-arremesso.md`](docs/pendencias/H-arremesso.md) | 6 | 4 | 0 | 2 | 1 | 0 | 0 | 2 | 0 | 1 |
 | I | Mesa virtual · tempo real | [`I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 14 | 10 | 2 | 2 | 3 | 8 | 0 | 0 | 0 | 1 |
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 12 | 9 | 0 | 3 | 1 | 3 | 0 | 2 | 1 | 2 |
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 32 | 18 | 1 | 13 | 14 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
-| | **Total** | | **276** | **186** | **4** | **86** | **63** | **38** | **8** | **8** | **66** | **7** |
+| | **Total** | | **276** | **184** | **4** | **88** | **61** | **38** | **8** | **8** | **66** | **7** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -422,7 +422,6 @@ Fechados (1): F9.
 | G15 | aberto | DECIDIR | Como o bônus fixo de Proeza entra na Longa. |
 | G16 | aberto | DECIDIR | Alcance da regra da maior e da menor. |
 | G17 | aberto | CONSERTAR | Nomes de ofício divergentes. |
-| G18 | aberto | DECIDIR | Regra de ajudante divergente. |
 | G21 | aberto | DECIDIR | Direção sem custo. |
 | G22 | aberto | DECIDIR | O que é o "ganho por semana". |
 | G23 | aberto | CONSERTAR | Duas espadas no mesmo documento. |
@@ -431,9 +430,8 @@ Fechados (1): F9.
 | G26 | aberto | DECIDIR | O que é "arma marcial". |
 | G27 | aberto | DECIDIR | O machado da faca. |
 | G28 | aberto | CONSERTAR | O ofício Arcos não está na lista de ofícios. |
-| G29 | aberto | DECIDIR | O que a regra de condução herda, e de que lado fica a carroça. |
 
-Fechados (12): G1, G3, G4, "As cinco físicas de toda sessão.", G5, G5b, G7, G8, G9, G10, G19, G20.
+Fechados (14): G1, G3, G4, "As cinco físicas de toda sessão.", G5, G5b, G7, G8, G9, G10, G18, G19, G20, G29.
 
 ### H · Arremesso
 

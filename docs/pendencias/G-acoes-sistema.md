@@ -158,7 +158,7 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   que é a fonte, gerada de `habilidades-secundarias.json`). O capítulo `acoes-oficio-e-mundo.md:51`
   já segue o catálogo. Alinhar o documento de regra ao catálogo; Armaria (usada na tabela, `:176`)
   não existe como secundária e pede decisão à parte.
-- [ ] **G18 · [DECIDIR] Regra de ajudante divergente.** Levantado em 24/09/2026.
+- [x] **G18 · [DECIDIR] Regra de ajudante divergente.** Levantado em 24/09/2026.
   `Acoes_Sistema.md:256-282` (§3.5) tem dois modos: "Somar Acúmulo" em tarefa divisível e
   "Apoiar o principal", em que o ajudante rola contra a **mesma** Dificuldade, dá +2 ao passar e
   +1d6 por Margem ("Ajudar exige saber fazer"). O capítulo publicado (`acoes-e-sistema.md:172`)
@@ -167,6 +167,13 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   **Mais um endereço, achado pela Revisora na rodada 105 (`f8e3e1e`):** o topo do capítulo de
   ofício manda o leitor para "as regras de ajuda" da Régua Comum (`acoes-oficio-e-mundo.md:8`), que
   é a regra da metade, e ela agora choca com a regra de condução que a rodada 105 aplicou.
+  **Decidido pelo autor em 24/09/2026, aplicado em `b396c83`:** "As duas regras convivem com
+  alcances diferentes. A regra da metade (ajudante contra metade da Dificuldade; +1 a cada 6 acima)
+  vale para APOIO numa jogada única, ação indivisível. Condução (fabricação) e direção (obra) valem
+  para trabalho DIVISÍVEL, ação Longa com Acúmulo. Deixar isso escrito na Régua Comum e no capítulo
+  de ofício; acoes-oficio-e-mundo.md:8 passa a apontar para a condução. O modo 'Apoiar' do
+  Acoes_Sistema.md (mesma Dificuldade, +2) se alinha à regra publicada." As linhas citadas neste
+  item são do texto de antes da decisão (`5407b38`).
 - [x] **G19 · [DECIDIR] Alcance da direção de obra.** Levantado em 24/09/2026. A fórmula "Sob
   direção de quem tem o ofício, o ajudante sem ofício trabalha contra Dificuldade 4"
   (`Acoes_Sistema.md:1195`, `acoes-oficio-e-mundo.md:119`) é genérica, mas a moldura ("Direção de
@@ -237,7 +244,7 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   revisão econômica. "Arcos" aparece na tabela de fabricação (`Acoes_Sistema.md:1242` e `:1258`;
   `acoes-oficio-e-mundo.md:145` e `:161`), e não na lista de ofícios da §7.2
   (`Acoes_Sistema.md:1040-1042`) nem na do capítulo (`acoes-oficio-e-mundo.md:51`).
-- [ ] **G29 · [DECIDIR] O que a regra de condução herda, e de que lado fica a carroça.** Levantado
+- [x] **G29 · [DECIDIR] O que a regra de condução herda, e de que lado fica a carroça.** Levantado
   em 24/09/2026, pela Revisora no veredito da rodada 105 (`f8e3e1e`), depois de a G19 e a G20
   fecharem. Duas perguntas: (1) a "Dificuldade da peça" contra a qual o ajudante trabalha leva a
   oficina e o material (a tabela de `acoes-oficio-e-mundo.md:110-111`), e o +4 de quem não tem o
@@ -246,3 +253,16 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   de Destreza 2 passam a somar. (2) A linha "Carroça, barco de pesca" (`acoes-oficio-e-mundo.md:169`,
   `Acoes_Sistema.md:1259`) junta uma peça (a carroça) e o que pode ser obra de construção naval (o
   barco): de que lado cada uma fica.
+  **Decidido pelo autor em 24/09/2026, aplicado em `b396c83`.** Pergunta 1: "A regra de condução
+  HERDA os modificadores. Oficina e material (±2/±4 na Dificuldade) são circunstâncias da tarefa e
+  valem para todos que trabalham nela. O +4 de quem não tem o ofício específico é pessoal e pesa
+  sobre quem não o tem. Consequências a deixar explícitas no texto: o braçal (sem ofício) não soma
+  na espada em nenhuma oficina (7 − 4 + 4 = 7 na oficina de mestre); aprendizes (Habilidade 1 ou 2)
+  somam numa oficina bem equipada ou de mestre. Trava nova: a condução admite até DEZ ajudantes,
+  como a direção de obra. Trocar o exemplo por: 'numa oficina bem equipada ou de mestre, dez
+  aprendizes aceleram uma espada Comum e não fazem uma Ótima'." Pergunta 2: "obra = construção fixa
+  no lugar (casa, celeiro, forja, moinho, muralha, ponte, catedral) ou peça da escala de estações.
+  Todo o resto é fabricação. Carroça e barco de pesca são fabricação; navio de guerra é obra (escala
+  de estações). O critério não depende do ofício da linha." Fica em aberto, no relato da rodada 106
+  (`106-executora.md`), que o material também herda e, somado a uma oficina boa, faz o braçal somar.
+  As linhas citadas neste item são do texto de antes da decisão (`5407b38`).
