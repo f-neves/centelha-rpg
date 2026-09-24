@@ -270,10 +270,15 @@ A Executora e a Revisora não são sessões separadas: são teammates criados pe
 da sessão dele, e nascem do prompt. A Auditora é sessão à parte, aberta em
 `C:\Users\Neves\ClaudeCode`, e só quando for preciso.
 
-**Duas pastas, não três.** `rpg-system` é o repositório, e `centelha-techlead-revisora` é a
+**As pastas (o título dizia "duas pastas, não três", e envelheceu).** `rpg-system` é o repositório, e `centelha-techlead-revisora` é a
 worktree congelada da Revisora. São worktrees do mesmo repositório e não cópias: compartilham
 histórico e objetos, e o que muda é qual commit cada uma tem em disco. A `centelha-revisora`
-antiga foi removida e a `centelha-techlead` sumiu com a sessão que a criou.
+antiga foi removida. **A `centelha-techlead` deixou de ser worktree** (não aparece no
+`git worktree list`), **mas a pasta continua no disco**, como casca: uma `.claude/` vazia e um
+`bash.exe.stackdump` de 08/09/2026, 15:40, e nada mais (conferido em 24/09/2026). A frase antiga dizia
+que ela "sumiu", e o humano achou a pasta. **Desde 24/09/2026 são quatro árvores, e não duas**
+(`rpg-system`, `centelha-executora`, `centelha-mapa` e `centelha-techlead-revisora`), cada uma na sua
+branch: ver `docs/simulacao/caixa/plano-worktrees.md`, seção 11, e o `git worktree list`, que é a fonte.
 
 **Nota de 10/09/2026:** o veredito da rodada 27 (`168df15`, commitado pela Revisora na worktree
 dela) foi ao `main` por `cherry-pick` em vez de `push` direto, porque o `main` já tinha avançado
