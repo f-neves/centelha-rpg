@@ -75,3 +75,34 @@ com a linha "3ª faixa de distância (livre até 0 m, máximo 10 m): -9 no acert
   medição pergunta.
 - **O menos da mensagem saiu com o hífen ASCII** ("-6", e não "−6"). Só registro, porque não é a
   pergunta.
+
+## Refeita na rodada 103, depois do conserto (a folha cala para o arremesso)
+
+A mesma sonda, na mesma bancada (Herói 2, arma trocada pelo campo Arma da ficha do lance). Rodei
+antes do conserto (os dois arquivos do conserto guardados com `git stash push --`) e depois. Para
+ter alvos mais longe, fiz uma segunda volta num tabuleiro de 90 colunas.
+
+| arma | alvo | distância | ANTES | DEPOIS |
+|---|---|---|---|---|
+| besta-pequena | Criatura 5 · Herói 3 · Criatura 12 | 9 · 4 · 7 m | calada (dentro do livre de 40 m) | calada |
+| adaga-de-arremesso | Herói 3 | 4 m | "2ª faixa (livre até 0 m, máximo 10 m): -6 no acerto" | **calada** |
+| adaga-de-arremesso | Criatura 12 | 7 m | "3ª faixa (livre até 0 m, máximo 10 m): -9 no acerto" | **calada** |
+| adaga-de-arremesso | Herói 1 (90 colunas) | 3 m | "2ª faixa (livre até 0 m, máximo 10 m): -6 no acerto" | **calada** |
+| adaga-de-arremesso | Criatura 7 (90 colunas) | 15 m | "Além do alcance máximo da arma (10 m): não chega." | **calada** |
+| adaga-de-arremesso | Criatura 12 (90 colunas) | 30 m | "Além do alcance máximo da arma (10 m): não chega." | **calada** |
+| azagaia | Herói 3 · Criatura 12 | 4 · 7 m | "1ª faixa (livre até 0 m, máximo 40 m): -3 no acerto" | **calada** |
+| azagaia | Criatura 7 (90 colunas) | 15 m | "2ª faixa (livre até 0 m, máximo 40 m): -6 no acerto" | **calada** |
+| azagaia | Criatura 12 (90 colunas) | 30 m | "3ª faixa (livre até 0 m, máximo 40 m): -9 no acerto" | **calada** |
+| besta-pequena | Criatura 20 (bench 30, 120 colunas) | 54 m | (não medido antes) | "1ª faixa de distância (livre até 40 m, máximo 100 m): -3 no acerto, para somar à mão." |
+
+**A última linha é o par positivo na tela:** a besta fora do alcance livre continua mostrando a
+faixa depois do conserto. Nas bancadas de 12 peças nenhum alvo passava dos 40 m, por isso a
+medi numa de 30 peças e 120 colunas.
+
+Uma nota sobre a sonda: a volta de 90 colunas tentou levar o Herói 2 ao canto do tabuleiro, e ele
+andou pouco. Os alvos ficaram a 3 e 15 m, e não a mais de 40, e é por isso que a besta não serviu
+de par ali.
+
+**Continua não medido:** a arma de arremesso vinda da ficha de um PC equipado. A bancada não traz
+PC com arma de arremesso no equipamento, e para montar um seria preciso mexer no `mesa-mock.mjs`,
+que é código.

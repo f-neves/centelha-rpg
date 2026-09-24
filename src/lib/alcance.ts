@@ -32,10 +32,14 @@ export const PEN_POR_FAIXA: number = A?.faixas?.penPorParte ?? -3;
  * A arma diz a FRAÇÃO do livre, e não o número: quem joga mais longe também
  * acerta mais longe, então o livre acompanha o máximo.
  *
- * Devolve `null` para quem não tem alcance no catálogo, que é o caso de tudo
- * que se arremessa: ali o máximo sai da Força de Arremesso de quem joga, e não
- * da arma. Enquanto a mesa não tiver esse número na mão, é melhor não mostrar
- * faixa nenhuma do que mostrar uma inventada.
+ * Devolve `null` só para quem não tem `distMax` no catálogo (as armas de corpo
+ * a corpo, e o que não está no catálogo). **As 8 armas de Arremesso de
+ * `armas.json` TÊM `distMax`**, e nenhuma tem `alcanceLivreFrac`, então aqui
+ * elas saem com livre 0 e o máximo do catálogo. Esse número não é o da regra:
+ * pelo `Arremesso.md`, o máximo de uma arma atirada sai da Força de Arremesso
+ * de quem joga, e não da arma (a decisão de qual fonte vale é do I12). Por
+ * isso a FOLHA DA AÇÃO não lê esta função direto para o arremesso: ela passa
+ * por `faixaNaFolha`, que cala. O `alcanceInterpor` continua lendo esta.
  */
 export function alcanceDaArma(idOuNome?: string | null): { livre: number; max: number } | null {
   const w = armaDoCatalogo(idOuNome);
@@ -97,6 +101,26 @@ export function alcancaNoCorpoACorpo(
 ): boolean {
   return hexagonos <= (haste ? HEX_HASTE : HEX_CORPO_A_CORPO)
     + Math.max(0, raioAlvoHex) + Math.max(0, raioAtacanteHex);
+}
+
+/**
+ * A faixa que a FOLHA DA AÇÃO mostra: a de `faixaDeDistancia`, menos o arremesso.
+ *
+ * Para a classe `arremesso` ela devolve `null`, e a folha CALA nas duas frases (a
+ * faixa e o "além do alcance máximo"), porque os dois números viriam do
+ * `distMax` do catálogo, que não é o máximo da regra (ver `alcanceDaArma`).
+ * Calar é o que a folha fazia antes de o catálogo ganhar `distMax`, e é o que
+ * ela faz até o número certo chegar (I12). A classe `distancia` passa inteira.
+ *
+ * É função separada, e não um `null` dentro de `alcanceDaArma`, porque o
+ * `alcanceInterpor` também lê aquela, e lá o `null` mudaria comportamento: o
+ * interpositor deixaria de ser barrado pelo máximo e pela reta.
+ */
+export function faixaNaFolha(
+  idOuNome: string | null | undefined, metros: number, classe: string | null | undefined,
+): Faixa | null {
+  if (classe === 'arremesso') return null;
+  return faixaDeDistancia(idOuNome, metros);
 }
 
 /**

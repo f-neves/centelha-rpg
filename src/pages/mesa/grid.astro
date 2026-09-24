@@ -2464,7 +2464,7 @@ const SETAS = [
     PERFIL_CORRENTE, perfilDoEncontro, estadoDoCarimbo, type Perfil,
   } from '../../lib/bandeiras';
   import {
-    faixaDeDistancia, alcancaNoCorpoACorpo, HEX_CORPO_A_CORPO, HEX_HASTE, alcanceInterpor,
+    faixaNaFolha, alcancaNoCorpoACorpo, HEX_CORPO_A_CORPO, HEX_HASTE, alcanceInterpor,
   } from '../../lib/alcance';
   import { reconciliar, esquecerCaixa } from '../../lib/reconciliar';
   import { errouPor, saidaDoAtaque } from '../../lib/quase-acerto';
@@ -10153,7 +10153,9 @@ const SETAS = [
     // Ninguém mais na mesa sabe quantos metros separam duas peças, e até agora
     // esse número não entrava em nada. Ele AVISA e não impede: a caixa não
     // recusa ataque nenhum, porque a última palavra é de quem está mestrando.
-    const fx = hexes == null ? null : faixaDeDistancia(ra?.arma, dist!);
+    // O arremesso CALA aqui (`faixaNaFolha`): o máximo e o livre dele não
+    // saem do catálogo, e sim da Força de Arremesso de quem joga (I12).
+    const fx = hexes == null ? null : faixaNaFolha(ra?.arma, dist!, classe);
     const avisoAlcance = (() => {
       if (hexes == null) return '';
       if (classe === 'distancia' || classe === 'arremesso') {
