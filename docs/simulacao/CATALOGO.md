@@ -809,3 +809,29 @@ desempate, e um critério de desempate só serve depois de você saber quem est�
 **O conserto tem a mesma forma dos dois casos:** a decisão entra no DADO junto com o código. Enquanto
 ela mora só no documento, todo mundo que abrir o JSON vai ler o contrário, e vai estar lendo a
 melhor fonte que existe para aquela pergunta.
+
+## O ROTEIRO DE RECUPERAÇÃO ESCRITO SOBRE UM ESTADO QUE JÁ ANDOU (24/09/2026, caso do humano)
+
+**A forma é a da tabela, *a base que não é o HEAD*,** virada para o lado de quem manda: uma
+instrução que descreve o estado de memória de quem a escreveu, entregue quando o estado já tinha
+andado. Desta vez ela veio do humano, e é por isso que vale registrar: a forma não depende de quem
+escreve, e a autoridade de quem manda não torna o retrato mais novo.
+
+**O que aconteceu.** Às 23:35 de 23/09/2026 chegou ao Arquiteto um prompt de recuperação "depois de
+uma queda de energia", dizendo que o despacho aberto era a rodada 94, que a equipe tinha morrido
+com a sessão, e mandando remover `.git/index.lock` se nenhum processo git estivesse rodando. O
+disco dizia outra coisa: a sessão estava viva, a Executora e a Revisora apareciam no `ListAgents`,
+a 94 tinha fechado horas antes (veredito `43c7ad3`, no `main`), e as rodadas 95 a 98 também. O
+`.git/index.lock` e o `next-index-8700.lock` existiam, **e o processo `git.exe` 8700 também**: era
+o commit da Executora em curso (`64559c1`). Segundos depois os dois sumiram sozinhos.
+
+**O que teria custado obedecer.** Apagar a trava de um commit em curso corrompe o índice
+compartilhado no meio da escrita; recriar a equipe daria duas Executoras e duas Revisoras na mesma
+árvore; e "retomar o 94" reabriria uma rodada fechada, com o veredito já no `main`. Cada passo do
+roteiro estava certo para o estado que ele descrevia, e errado para o que existia.
+
+**O que protegeu foi a condição que o próprio roteiro escreveu** ("se nenhum processo git estiver
+rodando"), lida contra o `tasklist`, e não contra a premissa da queda. **A regra que sai disto:**
+roteiro de recuperação é hipótese sobre o estado, não o estado. Toda instrução dele que muda
+alguma coisa (remover trava, recriar instância, retomar rodada) se executa depois de o disco
+confirmar a premissa, e a divergência vai de volta a quem escreveu, antes de qualquer gesto.
