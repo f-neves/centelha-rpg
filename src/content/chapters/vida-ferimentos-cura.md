@@ -45,7 +45,7 @@ Conforme a Vida restante cai, a dor cobra seu preço nas **ações físicas** (a
 
 <p class="muted">A tabela para em Crítico, e só uma coisa passa dele sem cair em Incapacitado: a <strong>ressaca do Frenesi</strong> dos orcs e meio-orcs. Cada estado de ressaca além de Crítico soma mais −1d6 na ação física e −4 na Defesa Física, e nunca leva a Incapacitado. O degrau não existe fora dela (ver <a href="/centelha-rpg/regras/racas#frenesi">Frenesi</a>).</p>
 
-**O pool nunca desce abaixo de 1d6**, mesma trava do Desgaste: Grave e Crítico tiram dado de verdade, mas nunca zeram a ação física por inteiro. A única exceção é o teste para entrar no [Frenesi](/regras/racas#frenesi): ali a penalidade de ferimento e o ponto de Força de Vontade que o próprio orc aplica para ceder podem zerar a parada.
+**O pool nunca desce abaixo de 1d6**, mesma trava do Desgaste: Grave e Crítico tiram dado de verdade, mas nunca zeram a ação física por inteiro. O piso vale para quem tinha dado: quem já rolava zero dados (soma 1, o 2 fixo) continua no 2 fixo, e a penalidade não inventa um dado que não existia. A única exceção é o teste para entrar no [Frenesi](/regras/racas#frenesi): ali a penalidade de ferimento e o ponto de Força de Vontade que o próprio orc aplica para ceder podem zerar a parada.
 
 <div class="callout regra"><span class="lbl">As duas moedas, lado a lado no mesmo degrau</span>O jogo penaliza de dois jeitos: o <strong>ponto</strong> sai do <strong>total</strong> depois que os dados pararam de rolar, o <strong>dado</strong> sai do <strong>pool</strong>, antes de rolar. Nenhuma categoria converte um no outro, mas o Ferimento agora atravessa os dois: <strong>Machucado é ponto</strong> (−2 no total, sem tirar dado da mão), <strong>Grave e Crítico são dado</strong> (−1d6 e −2d6 do pool), a mesma moeda que até aqui era exclusiva do <strong>Desgaste</strong> (fome, sede, sono, veneno, exaustão, no capítulo <a href="/centelha-rpg/regras/acoes-resistir">Resistir</a>). Um personagem Grave ou Crítico <strong>e</strong> com Desgaste ao mesmo tempo (ferido e envenenado, por exemplo) tem as duas fontes cortando do <strong>mesmo</strong> pool, somando direto, com o piso comum em 1d6.</div>
 
@@ -63,7 +63,7 @@ Essa margem é a razão de a cena existir. Um aliado que caiu não está morto: 
 
 ## Sangramento e Estabilização
 
-Nem todo ferimento para de doer quando o golpe termina. O **Sangramento** representa feridas abertas que continuam drenando vida. A cada **6 Ticks desde o ferimento**, um Sangramento **N** causa **N de dano** (já passa direto pelo Absorção). O relógio é de cada um, e não da mesa: quem levou duas feridas em momentos diferentes sangra por dois contadores desalinhados. Ele é lento de propósito: há tempo de reagir antes que mate.
+Nem todo ferimento para de doer quando o golpe termina. O **Sangramento** representa feridas abertas que continuam drenando vida. A cada **6 [Ticks](/regras/combate#a-linha-do-tempo-ticks-velocidade-e-iniciativa) desde o ferimento**, um Sangramento **N** causa **N de dano** (já passa direto pelo Absorção). O relógio é de cada um, e não da mesa: quem levou duas feridas em momentos diferentes sangra por dois contadores desalinhados. Ele é lento de propósito: há tempo de reagir antes que mate.
 
 Há duas formas de começar a sangrar:
 

@@ -1144,7 +1144,7 @@
         "reducao": 6
       }
     },
-    "nota": "Errar por ≤ margem é um raspão (não passa pela Absorção normal). Valores FIXOS por classe: a classe da arma sai do dado (1d6 leve, 2d6 média, 3d6 pesada). A armadura SOMA seu Bônus QA à margem (o alvo blindado é maior e mais lento, então é raspado com mais frequência) e abate o dano do raspão com a Redução. Leve nica muito e raso; pesada nica raro e fundo; a placa é nicada o tempo todo, mas a redução come quase tudo. Pode receber modificadores situacionais, de encantamento, de Proeza e de magia (ver cap. Quase-Acerto)."
+    "nota": "Errar por ≤ margem é um raspão (não passa pela Absorção normal). Valores FIXOS por classe: a classe da arma sai do DANO MÉDIO dela (ver classePorDanoMedio), e não do número de dados. A armadura SOMA seu Bônus QA à margem (o alvo blindado é maior e mais lento, então é raspado com mais frequência) e abate o dano do raspão com a Redução. Leve nica muito e raso; pesada nica raro e fundo; a placa é nicada o tempo todo, mas a redução come quase tudo. Pode receber modificadores situacionais, de encantamento, de Proeza e de magia (ver cap. Quase-Acerto)."
   },
   "horda": {
     "nota": "Esquadrão único: muitos capangas iguais lutam como UMA unidade. A Magnitude mede o tamanho e soma dados; o dano acumulado vira baixas. Cumpre o pilar 'um herói vence vários fracos, mas perde para a multidão'.",

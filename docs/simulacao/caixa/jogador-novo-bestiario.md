@@ -40,7 +40,7 @@ de conversão grande, não troca de palavra pontual), como já registrado.
 
 ## C-102 · a página do bestiário conta "97 das 308", e hoje são 100 das 309
 
-> **FEITO** `bed1e91` (rodada 99). A contagem sai do `monsters.json` no frontmatter de `bestiario.astro`, a cada build; no build da rodada deu **101 das 309**, um a mais que este item, que já tinha envelhecido.
+> **FEITO** `bed1e91` (rodada 99). A contagem sai do `monsters.json` no frontmatter de `bestiario.astro`, a cada build; no build da rodada deu **101 das 309**, um a mais que este item. **A causa, medida na rodada 101 (CORRIGE da 99):** o 101 conta o **Espantalho Desperto** (`mon-exemplo-espantalho`, de `inimigos-custom.json`), a única criatura do `monsters.json` com fraqueza ou resistência que não está no satélite `elementos-bestiario.json` (100 chaves). Não é o satélite que cresceu.
 
 **O texto original:** `src/pages/bestiario.astro:67`, dentro do callout "Fraqueza & Resistência":
 

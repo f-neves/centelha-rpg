@@ -15,7 +15,7 @@ E o fato de a [Longa](/regras/acoes-e-sistema) ser uma **parede**, e não uma la
 
 Fabricar é **Longa** por padrão. Vira **Acumulada** só quando há pressa real com consequência, como consertar a ponte antes da cheia ou forjar as pontas de lança antes do cerco fechar.
 
-## A peça em cinco números
+## A peça em cinco números, e às vezes um Piso
 
 | Número | O que é |
 |---|---|

@@ -54,8 +54,8 @@ Cada ação tem uma **Velocidade**, quantos Ticks ela custa antes de você poder
 | 3 | Muito rápida | correr, saltar, abrir porta, sacar arma |
 | 4 | Utilitária | pegar item, interagir com o cenário (também é a Velocidade dos Dardos, uma arma de ataque) |
 | 5 | Ataque leve | faca, adaga, espada curta, bastão |
-| 6 | Ataque médio | espada longa, machado de uma mão, lança |
-| 7 | Ataque pesado | martelo de guerra, montante, alabarda |
+| 6 | Ataque médio | espada longa, machado de uma mão, lança, alabarda |
+| 7 | Ataque pesado | martelo de guerra, montante |
 | 9 a 15 | Ação longa | recarregar uma besta, conjurar uma Arte de grau alto |
 
 <p class="muted">Armas leves agem mais vezes e defendem melhor; as pesadas batem como um trovão, mas deixam você exposto entre os golpes. A arma define o seu estilo. A tabela é uma **lista de exemplos**, não um contrato: o "Tipo de ação" é só orientação de leitura, e a Velocidade real de cada arma está no catálogo de [Armas & Armaduras](/regras/armas-e-armaduras).</p>
@@ -83,9 +83,9 @@ O Preparo depende da **classe da arma**, não da Velocidade dela:
 | Arremesso | Velocidade − 2 |
 | Arte (conjuração) | Velocidade − 1 |
 
-Nas armas de Distância e Arremesso o Golpe cai no **último Tick do ciclo**: quase toda a
-Velocidade é Preparo, e é por isso que a Besta Grande (Velocidade 15) passa catorze Ticks
-armando antes do virote sair.
+Nas armas de Distância o Golpe cai no **último Tick do ciclo**: quase toda a Velocidade é
+Preparo, e é por isso que a Besta Grande (Velocidade 15) passa catorze Ticks armando antes do
+virote sair. No Arremesso sobra **um Tick de Recuperação** depois do Golpe, o de voltar à postura.
 
 Cada fase custa Defesa, pela mesma moeda: estar comprometido com um gesto abre a guarda.
 
@@ -113,16 +113,13 @@ Preparo, Golpe e Recuperação em Ticks distintos.
   é a mesma física do P/G/R rodando um Tick por vez no tabuleiro digital, com o deslocamento
   acontecendo passo a passo.
 
-A régua completa de P/G/R e da escada de Defesa vive em `regras.json → combate.pgr` e
-`combate.escada`, para quem joga na mesa tática.
-
 ## O ataque: acertar e a Margem
 
 Para atacar, monte o pool de **Atributo + Habilidade**, some o **Acerto da Arma**, aplique Firulas e Técnicas, e role. Você acerta se o total **superar a Defesa** do alvo (empate erra).
 
 <p class="muted"><strong>A Especialidade não é parcela somada numa rolagem.</strong> Se o escopo nomeado dela se aplica ao que você está fazendo (Armas <em>(machados)</em> com um machado na mão), ela rende <strong>+N dados, descartando os N menores</strong>, onde N é o nível. É por isso que ela sobe a confiança do golpe sem mexer no teto dele.</p>
 
-<p class="formula">Ataque = [(Atributo + Habilidade) ÷ 2]d6 (+2 se a soma for ímpar) + Especialidade + Arma + Centelha</p>
+<p class="formula">Ataque = [(Atributo + Habilidade) ÷ 2]d6 (+2 se a soma for ímpar) + Arma + Centelha</p>
 
 <p class="muted">O <strong>Atributo</strong> usado em combate corpo a corpo (armas ou punhos) é <strong>Destreza ou Força</strong>, à escolha de quem ataca, normalmente o maior dos dois (Força 5 e Destreza 2? use a Força). Para <strong>arremessos</strong>, sempre Destreza; para <strong>atirar</strong> (arco ou besta), sempre Percepção.</p>
 
@@ -169,7 +166,7 @@ Ao desferir os dois golpes:
   vez em cada);
 - podem cair no **mesmo alvo** ou em **alvos diferentes**, um por mão.
 
-O preço não está tanto nos dados (pela régua da Margem, um golpe que **encosta** já rende quase todo o dano), e sim na **exposição**: cada ataque que você faz baixa a Esquiva e o Bloqueio (ver *Guarda sob pressão*), então brigar com as duas mãos derruba a sua guarda o **dobro** de um golpe só, pelos próximos 6 Ticks. Em troca, a **Defesa das armas continua valendo** para aparar: empunhar duas lâminas ataca e defende ao mesmo tempo: o que custa é ficar aberto, não largar a guarda da arma.
+O preço não está tanto nos dados (pela régua da Margem, um golpe que **encosta** já rende quase todo o dano), e sim na **exposição**: cada ataque que você faz baixa a Esquiva e o Bloqueio (ver *Guarda sob pressão*), então brigar com as duas mãos derruba a sua guarda o **dobro** de um golpe só, até a sua próxima ação. Em troca, a **Defesa das armas continua valendo** para aparar: empunhar duas lâminas ataca e defende ao mesmo tempo: o que custa é ficar aberto, não largar a guarda da arma.
 
 Uma **arma de duas mãos** ocupa as duas e não permite o segundo ataque; um **escudo** na mão inábil troca o golpe extra por Bloqueio. É a terceira via da empunhadura, ao lado do dano concentrado das duas mãos e da muralha do escudo: **tempo e pressão**, dois golpes por vez ao custo da própria guarda.
 
@@ -177,7 +174,7 @@ Uma **arma de duas mãos** ocupa as duas e não permite o segundo ataque; um **e
 
 <p class="formula">Dano = (Dado da Arma + Margem) + Força − Absorção</p>
 
-O **Dado da Arma** vem da classe (leve 1d6−2, média 1d6, pesada 2d6, haste 1d6+2, distância/arremesso 1d6 a 1d6+2). Armas de uma mão somam a **Força**; as de duas mãos, o **dobro da Força**: **exceto as hastes de estocada** (Lança e afins), que ferem por alcance e precisão, não por peso, e somam apenas a **Força simples**. Cada Margem (6 pontos acima da Defesa) acrescenta +1d6.
+O **Dado da Arma** vem da classe (leve 1d6−2, média 1d6, pesada 2d6, haste 1d6+2, arremesso 1d6−2 a 1d6+2, distância 1d6−1 a 1d6+8). Armas de uma mão somam a **Força**; as de duas mãos, o **dobro da Força**: **exceto as hastes de estocada** (Lança e afins), que ferem por alcance e precisão, não por peso, e somam apenas a **Força simples**. Cada Margem (6 pontos acima da Defesa) acrescenta +1d6.
 
 ### Os três modos de dano
 
@@ -256,7 +253,7 @@ Aparar exige **força e tamanho para bancar o impacto**. Num golpe **corpo a cor
 - **Porte:** você não bloqueia um atacante **2 ou mais categorias de porte maior** que você. Um Médio ainda segura um Grande (ogro) com esforço, mas não um Enorme+: um humano não apara a clava de um gigante.
 - **Força:** mesmo do mesmo tamanho, você não bloqueia quem tem **Força pelo menos o dobro da sua e ao menos +4 acima** (o brutamontes que arranca a arma da sua mão no impacto).
 
-A **Centelha rompe o limite mortal:** cada ponto de Centelha do defensor **sobe o teto de porte em uma categoria** (com Centelha 2 já se apara um Enorme; um semideus segura um titã). E se a **sua Centelha for igual ou maior que a do atacante**, a regra de Força é ignorada: poder equipara poder.
+A **Centelha rompe o limite mortal:** cada ponto de Centelha do defensor **sobe o teto de porte em uma categoria** (com Centelha 1 já se apara um Enorme; um semideus segura um titã). E se a **sua Centelha for igual ou maior que a do atacante**, a regra de Força é ignorada: poder equipara poder.
 
 **Escudo grande escora:** plantar um escudo de tronco (heater, kite, scutum ou pavês) deixa você aguentar **uma categoria de porte acima** do seu limite, porque você escora a massa com o corpo todo em vez de aparar no braço.
 
@@ -413,13 +410,13 @@ Quando muitos capangas iguais avançam juntos, não role um por um: trate o band
 
 <div class="table-wrap">
 
-| Membros | 2–3 | 4–7 | 8–15 | 16–31 | 32–63 |
-|---|:---:|:---:|:---:|:---:|:---:|
-| **Magnitude** | 1 | 2 | 3 | 4 | 5 |
+| Membros | 2–3 | 4–7 | 8–15 | 16–31 | 32–63 | 64–127 |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| **Magnitude** | 1 | 2 | 3 | 4 | 5 | 6 |
 
 </div>
 
-- **Ataque**: o esquadrão faz **um ataque por inimigo engajado, até Magnitude + 1** (o teto é a frente de combate: só cabe tanta gente em volta). Contra um alvo só, os golpes **concentram numa rolagem**; contra vários, **espalham-se** um por inimigo. Cada ataque rola o pool de um capanga **+ Magnitude d6 no acerto e + Magnitude d6 no dano** (o enxame que conecta cai todo em cima). O esquadrão **não** aplica a penalidade de guarda da Pressão; sua ameaça já é a chuva de dados.
+- **Ataque**: o esquadrão faz **um ataque por inimigo engajado, até Magnitude + 1, a cada 6 Ticks** (o teto é a frente de combate: só cabe tanta gente em volta). Contra um alvo só, os golpes **concentram numa rolagem**; contra vários, **espalham-se** um por inimigo. Cada ataque rola o pool de um capanga **+ Magnitude d6 no acerto e + Magnitude d6 no dano** (o enxame que conecta cai todo em cima). O esquadrão **não** aplica a penalidade de guarda da Pressão; sua ameaça já é a chuva de dados.
 - **Modos**: os ataques podem misturar **Impacto / Corte / Perfuração** e **corpo a corpo ou à distância**. Um esquadrão **híbrido** o bastante (armas variadas) ataca sempre pelo **modo de menor Absorção do alvo**, achando a brecha na guarda.
 - **Defesa**, a de um capanga **−2**: multidão amontoada é alvo fácil.
 - **Baixas**: o esquadrão tem **PV = nº de membros × o PV-de-horda do capanga** (Comum **5**, Treinado **10**, Elite **15**). Na horda o capanga perde o **piso de durabilidade de 25**, que protege só heróis e NPCs nomeados. O dano que você causa **acumula**; cada vez que o total passa o PV-de-horda de um capanga, **cai um membro**: um golpe pesado derruba vários de uma vez. Conforme caem, a **Magnitude desce em degraus**, até sobrar um (Magnitude 0), que volta a ser um NPC comum. Ataques em **área** batem direto no PV do esquadrão.
@@ -445,7 +442,7 @@ Numa única ação você pode **empilhar várias Técnicas suplementares** sobre
 
 <p class="formula">Separado: golpe A com Téc. X (custo X) + golpe B com Téc. Y (custo Y) = X + Y, em duas ações.<br>Combo: um golpe com X e Y juntos = X + Y + 1, numa ação só.</p>
 
-Combinar é **mais caro em Energia**, mas economiza **Ticks** e concentra os efeitos: mais Margem, um único impacto demolidor em vez de dois mornos. O teto é o seu bolso: a Energia ((Vigor + Compostura + Raciocínio + Vontade) ÷ 2 + Centelha × 2) é que diz até onde o combo vai, e é por isso que a Centelha mais alta comba mais fundo. Bandas 4–5 ainda cobram Vontade (+1 e +2), o que torna combos de elite raros e climáticos.
+Combinar é **mais caro em Energia**, mas economiza **Ticks** e concentra os efeitos: mais Margem, um único impacto demolidor em vez de dois mornos. O teto é o seu bolso: a Energia ((Vigor + Compostura + Raciocínio + Vontade) ÷ 2 + Centelha × 2) é que diz até onde o combo vai, e é por isso que a Centelha mais alta comba mais fundo. Os níveis 5 e 6 ainda cobram Vontade (+1 e +2), o que torna combos de elite raros e climáticos.
 
 ### Posturas sustentadas
 

@@ -33,7 +33,7 @@ O *pool* básico é determinado pela soma de Atributo + Habilidade. A metade des
 
 <p class="muted">A tabela para em 12 porque é onde o mortal comum termina, mas a régua não tem teto: soma 14 rola 7d6, soma 16 rola 8d6, e assim por diante, na mesma proporção (Centelha, Proezas e Artes é que levam gente até lá).</p>
 
-<p class="muted">Soma **1** (Atributo 1 e Habilidade não treinada, o caso mais comum de personagem recém-criado) não rola dado nenhum: o total fixo de **2** nunca supera a Dificuldade **5**. É de propósito, não bug: quem não tem competência simplesmente não alcança as dificuldades altas, nem as fáceis. A saída não é mexer nesta fórmula (ela sustenta ataque, Defesa, perícia e o bestiário inteiro), é a **Firula de nível 2** (+1d6), que devolve o dado e torna a Dificuldade 5 possível com 4 ou mais.</p>
+<p class="muted">Soma **1** (Atributo 1 e Habilidade não treinada, o caso mais comum de personagem recém-criado) não rola dado nenhum: o total fixo de **2** nunca supera a Dificuldade **5**. É de propósito, não bug: quem não tem competência simplesmente não alcança as dificuldades altas, nem as fáceis. A saída não é mexer nesta fórmula (ela sustenta ataque, Defesa, perícia e o bestiário inteiro), é a **[Firula](/regras/habilidades#firulas--recompensa-à-ousadia) de nível 2** (+1d6), que devolve o dado e torna a Dificuldade 5 possível com 4 ou mais.</p>
 
 ### Quem escolhe o par
 
@@ -103,8 +103,8 @@ Quando os dois agem de fato (uma queda de braço, uma corrida), ambos rolam e o 
 | 9 | 18 |
 | 10 | 20 |
 
-## Ações Estendidas
+## Ações Acumuladas e Longas
 
-Tarefas longas (forjar uma lâmina, decifrar um tomo) usam três valores: uma **Dificuldade**, um **Intervalo** de tempo e um **Acúmulo** a atingir. A cada intervalo você rola; o quanto o total *passar* da Dificuldade soma ao Acúmulo. Ao alcançá-lo, a obra está pronta.
+Tarefas longas (forjar uma lâmina, decifrar um tomo) são os modos **Acumulada** e **Longa** de [Ações & Sistema](/regras/acoes-e-sistema), e usam três valores: uma **Dificuldade**, um **Intervalo** de tempo e um **Acúmulo** a atingir. A cada intervalo você rola; o quanto o total *passar* da Dificuldade soma ao Acúmulo. Ao alcançá-lo, a obra está pronta.
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span>Forjar uma espada fina: Dificuldade 12, intervalo semanal, Acúmulo 30. A cada semana o ferreiro rola e soma o excedente sobre 12: chegando a 30, a lâmina nasce.</div>

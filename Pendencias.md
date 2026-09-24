@@ -273,8 +273,9 @@ Só o que já tem decisão:
    do Frenesi e do teste de Virtude **no livro**. O motor continua sem o teste de Frenesi, porque
    nenhuma tela o rola. Deixar a §17 para depois é deixar o livro dizendo "Vigor ou Destreza" com a
    regra já trocada.
-2. **As M decididas e não feitas (M-01, M-07, M-24, M-33, e o texto da M-18), mais os três C
-   marcados como feitos que não estão (C-22, C-39, C-61) e os C abertos.** É execução pura sobre
+2. **As M decididas e não feitas (M-01, M-07, M-24, M-33, e o texto da M-18), mais os C parciais
+   que são execução (C-47, C-85).** Os três C que estavam marcados como feitos sem estar (C-22, C-39,
+   C-61) e os C abertos fecharam na rodada 99 (`bed1e91`). É execução pura sobre
    decisão que o humano já pagou. A M-24 e a M-33 mexem em combate e no Grid, então pedem revisão
    com cuidado.
 3. **Registro:** fechar com prova o que a seção 5 lista como suspeito, e reescrever o `CONTEXTO.md` e

@@ -49,6 +49,7 @@ O custo é para subir ao próximo ponto, em função do *novo* valor.
 | Virtude | 4 + (novo × 2) | 1→2 = 8 · 2→3 = 10 · 5→6 = 16 |
 | Força de Vontade | novo × 2 | piso 0 · 0→1 = 2 · 5→6 = 12 · 11→12 = 24 |
 | Aparência | novo × 2 | piso 0 · mesma trilha da Vontade |
+| Antecedente | novo × 3 | 0→1 = 3 · 2→3 = 9 · 5→6 = 18 · teto **3** na criação em Recursos e Relíquia |
 | Centelha | **grátis** | o tier vem do Mestre, não do XP |
 | Técnica de Proeza | 5 + (nível × 5) | 10 · 15 · 20 · 25 · 30 · 35 · **não acumula** |
 | Nível de Arte (Arcano) | 10 + (nível × 5) | 0→1 = 15 · 2→3 = 25 · 5→6 = 40 |
@@ -165,5 +166,7 @@ Passou a vida entre grimórios; a fagulha que carrega é mínima, mas o que sabe
 | Artes | sete: Adivinhação, Forças, Proteção, Cura e Fogo no **nível 5** · Fascinação e Conjuração no 3 | 745 |
 | Técnicas | 12, de Mente Afiada e Erudito (nível 1) | 120 |
 | **Total** | | **1868** |
+
+<p class="muted">O total deste exemplo ainda não se confere, e o dos outros três também não: a linha de Técnicas de Kael, Sora, Veil e Bram dá a contagem e as Proezas, e não a lista, então o preço delas não sai do catálogo.</p>
 
 <p class="muted">Derivados: PV 34 · Defesa 13 · Def. Mental 13 · Def. Social 9 · Energia 10 · <strong>Mana 11</strong> · Iniciativa 1d6+6. Fecha no orçamento. Repare no preço da fagulha mínima: com Centelha 1, sua <strong>Mana é só 11</strong>: ele conhece magia tão funda quanto Veil, mas o tanque o obriga a poucos Feitiços por cena. Largura de conhecimento, estreiteza de combustível: o feiticeiro de torre, não o de campo.</p>

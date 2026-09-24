@@ -13,7 +13,7 @@ A **Aparência** não é um Atributo, é um traço próprio, de **0 a 12** (como
 
 O **0 é o piso grátis**, e é onde o personagem nasce enquanto você não gastar XP nele. Não é o "normal": o normal é o **nível 6**, e chegar lá custa pontos como qualquer outra coisa. Deixar a Aparência no chão é uma escolha, com o preço que a tabela mostra.
 
-E ela é **direcional**: ajuda quando está alinhada ao seu objetivo (seduzir, impressionar, cativar) e **atrapalha** quando vai contra ele: o belo tem **−** ao intimidar, o feio tem **+**; e quem é marcante demais sofre ao tentar passar despercebido.
+E ela é **direcional**: ajuda quando está alinhada ao seu objetivo (seduzir, impressionar, cativar) e **atrapalha** quando vai contra ele: o belo tem **−** ao intimidar e o feio tem **+**, no mesmo tamanho da curva com o sinal trocado (a Aparência 0 dá −6 nas jogadas alinhadas e +6 ao intimidar); e quem é marcante demais sofre ao tentar passar despercebido.
 
 A **Compostura** mascara os dois lados do modificador, para os dois lados: sob controle ativo, e não como escudo automático. Quem quer passar despercebido numa multidão apesar de muito belo ou muito feio rola **Compostura + Furtividade** (além de disfarce, maquiagem ou máscara física, que continuam valendo à parte); com sucesso, **cada ponto de Compostura mascara um ponto do módulo do modificador de Aparência**, positivo ou negativo, até o piso zero.
 
@@ -98,7 +98,7 @@ O Atributo fica de fora de propósito: somado, ele empurra todo mundo para perto
 
 <p class="muted">Chance de passar, em porcentagem, sem Firula. A escada não é lisa por causa do +2 do ímpar: da Tensa para a Séria a Virtude 3 cai de 50 para 17, e da Séria para a Dura a Virtude 4 cai de 42 para 17. É consequência da conversão, e não defeito.</p>
 
-A tabela é a régua de personalidade em números. A **Virtude 2** só segura a Branda, e cede na maior parte do cotidiano, que é o que ela descreve. A **Virtude 5** segura quase tudo até a Séria e começa a ceder na Dura: só cede se quiser, com uma margem de azar. A **Virtude 6** é a única que existe na Extrema, e ainda assim 16% das vezes. E a **Virtude 1 não passa em nada**, nem na Branda: ela é quase um defeito de caráter, e o único jeito de passar é a Firula.
+A tabela é a régua de personalidade em números. A **Virtude 2** só segura a Branda, e cede na maior parte do cotidiano, que é o que ela descreve. A **Virtude 5** segura quase tudo até a Séria e começa a ceder na Dura: só cede se quiser, com uma margem de azar. Na Extrema só a **Virtude 5** e a **6** existem, e por pouco: 3% (um em trinta e seis) e 16%. E a **Virtude 1 não passa em nada**, nem na Branda: ela é quase um defeito de caráter, e o único jeito de passar é a Firula.
 
 **A Firula vale aqui como em qualquer teste** (+2 no nível 1, +1d6 no 2, +2d6 no 3, pela tabela de [Habilidades](/regras/habilidades)), e pesa mais do que em outros lugares, porque a parada da Virtude é curta. A Firula de nível 2 desloca a linha inteira duas casas: Virtude 2 com Firula 2 rola igual a Virtude 4 sem ela. A descrição pesa mais que a ficha, e é também o que tira a Virtude 1 do chão: com Firula 2, ela passa metade das vezes na Tensa. **A Firula também pode ser negativa**: se a descrição do jogador prejudica a ação, ela tira dados ou pontos em vez de somar, e quem julga é o Mestre. Essa Firula negativa é só do teste de Virtude (e do Frenesi, que é um teste de Virtude), e não devolve reserva nenhuma. Ela não é a **Firula Infeliz** das [Relações Sociais](/regras/relacoes-sociais), que é outra coisa: o gesto que desagrada, e que desce a régua de Relação.
 
@@ -112,7 +112,7 @@ A **Força de Vontade** é a reserva interior de determinação: o tanto de si q
 
 Você gasta Vontade para **turbinar uma ação importante**, **resistir** a medo e manipulação, **ignorar penalidades** e **conjurar** as Técnicas e Artes mais poderosas.
 
-**Ela volta por três caminhos.** O primeiro é uma **noite de sono**: 1 ponto, em meditação, descanso completo ou sono profundo, o mesmo repouso que a Mana pede. O segundo é uma **[Firula](/regras/habilidades)**, e aqui o número depende do nível: a de nível 2 devolve **1** e a de nível 3 devolve **3**, se for a Vontade que você escolher entre as três reservas. O terceiro é **agir fiel à própria régua moral** num momento em que isso custa: 1 ponto, a critério do Mestre (o callout acima).
+**Ela volta por três caminhos.** O primeiro é uma **noite de sono**: 1 ponto, em meditação, descanso completo ou sono profundo, o mesmo repouso que a Mana pede (ela volta Centelha por hora, e 2 × Centelha por hora nesse repouso; a Energia volta a cada cena). O segundo é uma **[Firula](/regras/habilidades)**, e aqui o número depende do nível: a de nível 2 devolve **1** e a de nível 3 devolve **3**, se for a Vontade que você escolher entre as três reservas. O terceiro é **agir fiel à própria régua moral** num momento em que isso custa: 1 ponto, a critério do Mestre (o callout acima).
 
 <p class="muted">Repare no relógio, porque ele é o que dá o peso: pela cama a Vontade volta <strong>1 por noite</strong>, e não há atalho. Uma Firula de nível 3 vale <strong>três noites de sono</strong> de uma vez, e é o número mais forte das três reservas. Não há teto por cena, e isso é decisão da mesa e não esquecimento: os números estão no ar para serem testados.</p>
 
@@ -120,9 +120,9 @@ Mais que isso, a Vontade é a **espinha dos seus traços derivados**: entra na *
 
 ## Integridade & Defesa Mental
 
-**Integridade** é a habilidade de firmeza moral e compostura: o quanto você se mantém inteiro sob pressão e resiste a manipulação e poderes mentais.
+**Integridade** é a habilidade de firmeza moral: o quanto você se mantém inteiro sob pressão e resiste a manipulação e poderes mentais.
 
-A **Defesa Mental** é o muro passivo que convencimentos, intimidações e poderes mentais precisam superar:
+A **Defesa Mental** é o muro passivo que o medo imposto, a ordem, a leitura da mente e os outros poderes mentais precisam superar (convencer e intimidar numa conversa batem na Defesa Social; o medo da cena é da Bravura, pela [régua do medo](/regras/defesas)):
 
 <p class="formula">Defesa Mental = Integridade + Raciocínio + Força de Vontade + Centelha + Especialidade</p>
 

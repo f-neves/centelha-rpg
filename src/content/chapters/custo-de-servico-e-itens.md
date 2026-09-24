@@ -7,7 +7,7 @@ resumo: "Moedas, renda por estrato, qualidade de armas e armaduras e o catálogo
 
 O dinheiro mede tempo e trabalho. Esta página reúne **o que se ganha**, **o que se gasta** e **como a qualidade muda o preço** de uma arma ou armadura: do raspão de cobre do servo ao lavor de joias da relíquia nobre.
 
-<div class="callout"><span class="lbl">Provisório</span>Os nomes das armaduras já foram <strong>traduzidos</strong> e alinhados ao vocabulário de <a href="/centelha-rpg/regras/armas-e-armaduras">Armas &amp; Armaduras</a> (Cap. XI): Couro, Camisa de malha, Peitoral, Cota de malha, Lamelar, Peitoral reforçado, Placa articulada, Malha completa, Placa completa. Ainda assim, as <strong>listas e os preços</strong> dos dois capítulos não batem por completo: use como referência de ordem de grandeza; a reconciliação final vem depois.</div>
+<div class="callout"><span class="lbl">Provisório</span>Os nomes das armaduras já foram <strong>traduzidos</strong> e alinhados ao vocabulário de <a href="/centelha-rpg/regras/armas-e-armaduras">Armas &amp; Armaduras</a> (Cap. XIII): Couro, Camisa de malha, Peitoral, Cota de malha, Lamelar, Peitoral reforçado, Placa articulada, Malha completa, Placa completa. Ainda assim, as <strong>listas e os preços</strong> dos dois capítulos não batem por completo: use como referência de ordem de grandeza; a reconciliação final vem depois.</div>
 
 ## Moedas & Conversão
 
@@ -122,7 +122,7 @@ Cada ponto compra um efeito. A soma dos modificadores tem de **fechar no orçame
 
 <p class="muted">Não há como deixar a arma <strong>mais rápida</strong> (−1 de Velocidade) só com melhoria de qualidade. Melhorar a qualidade também pode, a critério do Narrador, <strong>reduzir o peso</strong>, <strong>aumentar o alcance/distância</strong>, <strong>baixar o custo de Fôlego</strong> e afins: cada um equivale a uma melhoria de +1.</p>
 
-<div class="callout exemplo"><span class="lbl">Machado (base 30 pp)</span>Um <strong>Machado Péssimo</strong> sai por menos de <strong>15 pp</strong>; <strong>Ruim</strong> por até <strong>15 pp</strong>; <strong>Bom</strong> por ao menos <strong>45 pp</strong>; <strong>Ótimo</strong> por ao menos <strong>90 pp</strong>; <strong>Relíquia</strong> por ao menos <strong>150 pp</strong>. Um Machado <strong>Bom</strong> (+1) pode vir com <strong>+1 de Dano</strong> ou <strong>+2 de Acerto</strong>; um <em>Ótimo</em> (+2) com <strong>+1 de Dano</strong> e <strong>+2 de Acerto</strong> ou <strong>+1 nível de Penetração</strong> </div>
+<div class="callout exemplo"><span class="lbl">Machado (base 30 pp)</span>Um <strong>Machado Péssimo</strong> sai por menos de <strong>15 pp</strong>; <strong>Ruim</strong> por até <strong>15 pp</strong>; <strong>Bom</strong> por ao menos <strong>45 pp</strong>; <strong>Ótimo</strong> por ao menos <strong>90 pp</strong>; <strong>Relíquia</strong> por ao menos <strong>150 pp</strong>. Um Machado <strong>Bom</strong> (+1) pode vir com <strong>+1 de Dano</strong> ou <strong>+2 de Acerto</strong>; um <em>Ótimo</em> (+2) com <strong>+1 de Dano</strong> e <strong>+2 de Acerto</strong> ou <strong>+1 nível de Perfuração</strong> </div>
 
 ## Catálogo de Equipamento
 

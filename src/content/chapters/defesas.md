@@ -55,7 +55,7 @@ Medo é o caso que mais engana, então fica a régua fechada:
 | Compulsão mágica ("ataque seu aliado") | Mental |
 | Tortura, canto enlouquecedor, privação de sono, trauma | Mental |
 
-<p class="muted">Na tortura, a Defesa Mental é o muro contra quem <strong>interroga</strong>: ele rola contra ela. Aguentar a dor em si é outra coisa, um teste ativo de quem resiste, em duas metades (corpo e alma), no capítulo de <a href="/centelha-rpg/regras/acoes-resistir">Resistir</a>.</p>
+<p class="muted">Na tortura, a Defesa Mental é o muro contra quem <strong>interroga</strong>: ele rola contra ela. Aguentar a dor em si é outra coisa, um teste ativo de quem resiste, em duas metades (corpo e alma), no capítulo de <a href="/centelha-rpg/regras/acoes-resistir">Resistir</a>. A <strong>privação de sono</strong> segue a mesma divisão: quem a usa como arma rola contra a Defesa Mental, e o cansaço em si é o Desgaste do <a href="/centelha-rpg/regras/acoes-resistir#sono">Sono</a>, que chega sem jogada.</p>
 
 ## As fórmulas
 

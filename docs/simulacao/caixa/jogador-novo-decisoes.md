@@ -133,6 +133,14 @@ porque o levantamento não o alcançava sem rodar a conta.
 Consertar só a linha das Artes deixa cinco divergências de pé. **Isso é escolha consciente e
 fica registrada**, não descuido.
 
+**O porquê, escrito em 24/09/2026 (rodada 101, decisão do humano): nenhum total de exemplo é conferível hoje, e consertar as cinco linhas não mudaria isso.** O conferidor (`node scripts/cost-examples.mjs`) chama as mesmas funções da ficha, e mesmo assim supõe em três pontos:
+
+- **carrega os 120 de Técnicas do Bram sem conferir** (e os 450, 590 e 615 de Kael, Sora e Veil): a lista de Técnicas dos quatro exemplos não existe no dado, só a contagem e as Proezas (`A-03`);
+- **supõe os níveis das Secundárias**, porque o capítulo dá só a contagem ("oito"). Os 56 dele contra os 66 publicados não dizem qual dos dois está certo;
+- **supõe todas as Especialidades primárias de nível 1**. É a leitura que faz Kael, Sora e Veil baterem, e nada no capítulo a garante para o Bram.
+
+Enquanto ele supuser, nenhum total de exemplo se confere, e refazer as cinco linhas trocaria um número publicado por outro número suposto. **Isto fica escrito antes de qualquer reabertura da M-02.** O capítulo diz isso ao jogador numa linha logo abaixo da tabela do Bram.
+
 ---
 
 ## M-11 · como se recupera a Força de Vontade · DECIDIDO em 15/09/2026

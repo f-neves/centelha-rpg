@@ -99,7 +99,7 @@ Cada nível custa **8 + (nível × 4)** numa Habilidade primária (12 · 16 · 2
 ## Firulas · recompensa à ousadia
 
 Descrever uma ação com criatividade e uso do cenário rende uma **Firula**: um bônus naquele lance,
-e mais um pouco de fôlego que fica. O Mestre define o nível:
+e mais um pouco de fôlego que fica, numa das reservas ([Energia, Mana ou Força de Vontade](/regras/criacao-de-personagem#traços-derivados)). O Mestre define o nível:
 
 | Nível | Na jogada | E devolve |
 |:---:|---|---|

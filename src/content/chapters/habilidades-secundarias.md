@@ -12,7 +12,7 @@ Uma Secundária pode ser tão ampla quanto um campo inteiro (Herbologia, Direito
 **Duas coisas para ter em mente antes de comprar:**
 
 - Uma Secundária **não substitui a primária vizinha**, ela aprofunda. Ter Cura 4 não dispensa Investigação para examinar o corpo; ter Etiqueta 3 não dispensa Persuasão para conseguir a audiência.
-- Quando as duas cabem na mesma ação, **a maior entra no pool e a menor entra como bônus fixo**. Ninguém é punido por ter estudado o assunto por dois caminhos diferentes.
+- Quando as duas cabem na mesma ação, **a maior entra no pool e a menor entra como bônus fixo** (a tabela está em [Ações & Sistema](/regras/acoes-e-sistema#quando-a-primária-e-a-secundária-cobrem-a-mesma-ação)). Ninguém é punido por ter estudado o assunto por dois caminhos diferentes.
 
 O catálogo abaixo é uma **sugestão organizada**, não uma lista fechada: é o que a ficha já traz pronto. Se a sua mesa precisa de "Falcoaria" ou "Dialeto das Ilhas", crie e pronto.
 
@@ -90,7 +90,7 @@ O que se faz com as mãos e se vende. Ofícios Gerais dá conta do serviço comu
 
 As artes. Valem por si e valem como porta de entrada em qualquer corte, feira ou taverna.
 
-- <span id="sec-caligrafia"></span>**Caligrafia** · A letra como obra: traço firme, iluminura, capitular, dourado e o cuidado que separa um manuscrito de valor de um rascunho. Escrivania produz o documento que a lei aceita; a Caligrafia produz o documento que impressiona quem o recebe.
+- <span id="sec-caligrafia"></span>**Caligrafia** · A letra como obra: traço firme, iluminura, capitular, dourado e o cuidado que separa um manuscrito de valor de um rascunho. O Escrivão produz o documento que a lei aceita; a Caligrafia produz o documento que impressiona quem o recebe.
 - <span id="sec-canto"></span>**Canto** · A voz como instrumento: afinação, fôlego, projeção e o repertório que serve à ocasião, do lamento fúnebre à cantiga de marcha que faz uma tropa andar mais rápido. É a arte mais portátil que existe, não pesa nada e funciona em qualquer lugar.
 - <span id="sec-contacao-de-historias"></span>**Contação de Histórias** · Narrar de modo que quem ouve fique: escolher o que contar, guardar a virada para a hora certa, imitar as vozes e fazer uma sala inteira prender a respiração. É a Habilidade que transforma o que o grupo fez numa lenda, e lenda é influência que trabalha sozinha.
 - <span id="sec-danca"></span>**Dança** · Dançar bem, do salão de corte, onde saber os passos é obrigação social, à dança de festa e à dança ritual. Uma dança é uma conversa em público sem palavras, e é onde muita coisa importante se resolve sem que ninguém perceba.

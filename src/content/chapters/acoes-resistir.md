@@ -47,13 +47,13 @@ Esse valor sai do **pool total**, na unidade que o **Tipo** do veneno declara (P
 | Veneno | Potência | Início | Intervalo | Pool total | Tipo | Penalidade mínima |
 |---|:--:|---|---|---|---|---|
 | Bebida forte do senhor local | 5 | 10 min (ingerido) | — (efeito único) | 0 | — | Desgaste 1 |
-| Cicuta | 10 | minuto | 1 hora | 3 (Vigor) | atributo | Desgaste 1 |
-| Peçonha de víbora | 14 | minuto | 1 hora | 24 (PV) | pv | Desgaste 1 |
-| Curare | 14 | Tick | — (efeito único, duração 1 cena) | — | atributo | Desgaste 1 |
-| Peçonha de aranha gigante | 18 | Tick | 1 minuto | 4 (Destreza) | atributo | Desgaste 1 |
-| Hálito de basilisco | 22 | minuto | 1 minuto | 48 (PV) | pv | Desgaste 1 |
+| Cicuta | 10 | minuto (sangue) | 1 hora | 3 (Vigor) | atributo | Desgaste 1 |
+| Peçonha de víbora | 14 | minuto (sangue) | 1 hora | 24 (PV) | pv | Desgaste 1 |
+| Curare | 14 | Tick (sangue) | — (efeito único, duração 1 cena) | 3 (Destreza) | atributo | Desgaste 1 |
+| Peçonha de aranha gigante | 18 | Tick (sangue) | 1 minuto | 4 (Destreza) | atributo | Desgaste 1 |
+| Hálito de basilisco | 22 | minuto (inalado) | 1 minuto | 48 (PV) | pv | Desgaste 1 |
 
-**Quatro vias de entrada: toque, sangue, inalado, ingerido.** Cada veneno tem a via em que costuma chegar (a coluna Início já reflete isso: picada ou lâmina é sangue, hálito é inalado, bebida é ingerido). **Toque em pele intacta abate 4 da Potência** antes de calcular a Potência efetiva, o mesmo peso que a Circunstância abaixo já usa em Tratar. **Se o ponto de contato tem ferimento aberto ou mucosa exposta, a penalidade não se aplica**: o toque passa a valer como via sangue.
+**Quatro vias de entrada: toque, sangue, inalado, ingerido.** Cada veneno tem a via em que costuma chegar (a coluna Início já reflete isso: picada ou lâmina é sangue, hálito é inalado, bebida é ingerido). **Toque em pele intacta abate 4 da Potência** antes de calcular a Potência efetiva, o mesmo peso que a Circunstância abaixo já usa em Tratar. **Se o ponto de contato tem ferimento aberto ou mucosa exposta, o abatimento não se aplica**: o toque passa a valer como via sangue.
 
 **Atributo drenado volta a um ponto por dia de descanso**, salvo o Curare, que se resolve pela duração declarada (uma cena) em vez de recuperação diária. Um Atributo em **zero** incapacita naquele eixo: Vigor 0 é o corpo desligando, Destreza 0 é paralisia, Inteligência 0 é delírio. É por aqui que o veneno mata, sem precisar de regra de morte própria.
 
@@ -179,7 +179,7 @@ Vale igual para afogamento, estrangulamento, soterramento, fumaça e vácuo. A f
 
 Em **Desgaste 4 por sono**, o personagem **apaga sozinho** assim que a adrenalina baixa. Não é uma jogada, não é uma escolha: acabou a cena de perigo, ele dorme onde estiver.
 
-**Recuperar** · uma noite completa tira **um** degrau, doze horas tiram **dois**. A dívida de cinco noites custa três noites para pagar, e é isso que faz uma vigília longa ter preço depois que a crise passa. Cochilo não conta, e turnos de vigia também não: quem passou três horas de guarda dormiu, quem passou a noite inteira não dormiu.
+**Recuperar** · uma noite completa tira **um** degrau, doze horas tiram **dois**. A dívida de cinco noites (Desgaste 4) custa quatro noites para pagar, ou duas de doze horas, e é isso que faz uma vigília longa ter preço depois que a crise passa. Cochilo não conta, e turnos de vigia também não: quem passou três horas de guarda dormiu, quem passou a noite inteira não dormiu.
 
 **Não existe Centelha que compre noites.** Quem atravessa semanas sem dormir faz isso por Proeza ou Arte.
 
@@ -187,6 +187,6 @@ Em **Desgaste 4 por sono**, o personagem **apaga sozinho** assim que a adrenalin
 
 - **Dor e tortura.** Aguentar o que fazem com você para arrancar alguma coisa, e são duas metades. Aguentar a **dor do ferro** é corpo: Direta, **Vigor + Convicção**, como o Estabilizar. Aguentar **sem falar, sem ceder, sem trair** é alma: o [teste de Virtude](/regras/aparencia-virtudes-vontade#o-teste-de-virtude) de **Convicção**, sozinha. Uma cena pode pedir os dois, e o Mestre escolhe qual a situação pede. Quem interroga rola contra a [Defesa Mental](/regras/defesas) de quem resiste.
 - **Bebida e entorpecente.** Roda no motor de Veneno, com Potência baixa e efeito quase sempre em Desgaste.
-- **Medo, dominação e imposição** são [Defesa Mental](/regras/defesas), não Resistência.
+- **Medo, dominação e imposição** não são Resistência, e seguem a [régua do medo](/regras/defesas): a intimidação numa conversa é Defesa Social, o medo imposto e a dominação são Defesa Mental, e o medo da cena é o teste de Bravura.
 
 ---

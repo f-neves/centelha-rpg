@@ -36,8 +36,9 @@ O exemplo que resume o formato Nomeado:
 
 Antecedente se compra e se eleva com XP como o resto da ficha, a **×3 por ponto**: o próximo ponto
 custa o novo valor × 3, então sair de 2 para 3 custa 9 XP. O lugar dele na economia é deliberado,
-entre a Habilidade secundária (×2) e a primária (×5): é **poder de campanha, não poder de dado**,
-e não disputa de igual para igual com Atributo (×10) nem com Centelha (×15). Na criação, sai do
+entre a Habilidade secundária (2 + o novo valor) e a primária (4 + 2 × o novo valor): é **poder de
+campanha, não poder de dado**, e não disputa de igual para igual com Atributo (5 + 5 × o novo valor);
+a Centelha nem custa XP, é concedida pelo Mestre. Na criação, sai do
 mesmo orçamento de XP do resto do personagem.
 
 **E é volátil de propósito.** Diferente de um Atributo, um Antecedente **sobe e cai na ficção**: o
@@ -141,12 +142,12 @@ disso.
 
 | Nível | O que significa |
 |:---:|---|
-| **1** | Uns poucos serviçais ou capangas (2 a 3). | Magnitude 1 |
-| **2** | Um grupo pequeno (4 a 7): uma escolta, uma equipe. | Magnitude 2 |
-| **3** | Uma tropa (8 a 15): uma guarda, uma tripulação. | Magnitude 3 |
-| **4** | Uma companhia (16 a 31): um pelotão, uma casa de criados grande. | Magnitude 4 |
-| **5** | Um contingente (32 a 63): uma pequena hoste. | Magnitude 5 |
-| **6** | Uma pequena hoste (64 a 127): quase um exército. | Magnitude 6 |
+| **1** | Uns poucos serviçais ou capangas (2 a 3). |
+| **2** | Um grupo pequeno (4 a 7): uma escolta, uma equipe. |
+| **3** | Uma tropa (8 a 15): uma guarda, uma tripulação. |
+| **4** | Uma companhia (16 a 31): um pelotão, uma casa de criados grande. |
+| **5** | Um contingente (32 a 63): uma guarnição, a tripulação de um navio de guerra. |
+| **6** | Uma pequena hoste (64 a 127): quase um exército. |
 
 **Amarra com:** as **regras de Horda** já existentes: o nível é a Magnitude do esquadrão em combate. A qualidade (comum, treinado, elite) é separada do número e sai do Mestre ou de mais investimento.
 
@@ -180,7 +181,7 @@ disso.
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span><strong>Posição 3 (Exército real) · Posição 1 (Guilda dos Mercadores)</strong>.</div>
 
-**Amarra com:** "terreno social" na Régua e no Combate Social (você joga em casa em contextos onde tem posto); bônus a Etiqueta, Intimidação e comando em contexto; abre portas que Recursos e Reputação não abrem. Posição também **obriga**: quem tem posto responde por ele.
+**Amarra com:** "terreno social" na Régua de Relação (onde o posto pesa, o nível do traço desconta os passos que separam do Neutro, e não soma na jogada nem no Combate Social); abre portas que Recursos e Reputação não abrem. Posição também **obriga**: quem tem posto responde por ele.
 
 ### Reputação
 
@@ -197,7 +198,7 @@ disso.
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span><strong>Reputação 2 (Guarda-costas) · Reputação 3 (Cantor lírico) · Reputação 1 (Confiável)</strong>. A de guarda-costas ajuda a ser contratado e a intimidar, mas atrapalha a passar despercebido; a de cantor abre salões e atrapalha a ser levado a sério numa briga; a de confiável ajuda em tudo que dependa de palavra.</div>
 
-**Amarra com:** um **desconto nos passos que separam do Neutro** na Régua de Relação, no contexto em que a fama pesa (ver "Onde a régua já começa"): o nível do traço tira esse tanto dos três passos, vale com quem conhece aquela reputação, soma com os outros Antecedentes até +6, e **não** buffa o Combate Social nem Habilidades soltas. Uma boa reputação **acelera romper o Neutro** com quem já ouviu falar bem de você; uma temível ajuda a coagir e atrapalha a passar despercebido. Alimenta Proezas como Lenda Viva e Presença Aterradora.
+**Amarra com:** um **desconto nos passos que separam do Neutro** na Régua de Relação, no contexto em que a fama pesa (ver "Onde a régua já começa"): o nível do traço tira esse tanto dos três passos, vale com quem conhece aquela reputação, soma com os outros Antecedentes até +6, e **não** buffa o Combate Social nem Habilidades soltas. Uma boa reputação **acelera romper o Neutro** com quem já ouviu falar bem de você; uma temível dá o mesmo desconto a quem quer coagir quem a conhece, e atrapalha a passar despercebido. Alimenta Proezas como Lenda Viva e Presença Aterradora.
 
 ### Relíquia
 
@@ -227,7 +228,7 @@ disso.
 | **5** | Um bastião: um castelo, um santuário de poder, um lugar que é conhecido e temido. |
 | **6** | Uma cidadela lendária: uma fortaleza ou santuário conhecido no mundo todo, quase inexpugnável. |
 
-**Amarra com:** ações estendidas (Craft, Ritual, cura, planejamento) ganham bônus e tempo protegido em casa; "terreno social" quando você recebe alguém no seu território.
+**Amarra com:** ações Acumuladas e Longas (ofício, Ritual, cura, planejamento) ganham tempo protegido em casa, e não bônus na jogada; "terreno social" (o desconto nos passos do Neutro) quando você recebe alguém no seu território.
 
 ### Aliado Animal
 
@@ -317,7 +318,7 @@ disso.
   nível do traço por passo, somando entre os traços até +6.
 - **Voláteis:** sobem e caem na ficção, e o XP perdido volta como crédito.
 - **Pessoas** (Aliados, Contatos, Mentor, Séquito, Fé) vivem na Régua de Relação e esfriam se
-  maltratadas. **Reputação** dá modificador social direcional. **Segredo** e **Dívida** são meio
+  maltratadas. **Reputação** desconta passos do Neutro com quem a conhece, e não soma na jogada. **Segredo** e **Dívida** são meio
   consumíveis. **Relíquia** e **Aliado Animal** têm ficha própria por nível.
 - **A regra de ouro:** o número compra a **capacidade e a disposição inicial**, nunca a obediência
   eterna. O mundo continua vivo por baixo do Antecedente.

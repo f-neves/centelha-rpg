@@ -15,7 +15,7 @@ A família inteira ainda espera regra. O que segue é o que cada ação é e a j
 
 **Notar sem procurar** é [**Passiva**](/regras/acoes-e-sistema): o que o personagem percebe porque estava ali, não porque tentou. O número é (Percepção + Prontidão) × 2 + Centelha, e é o Mestre que o consulta, muitas vezes sem avisar que consultou.
 
-| Quem observa | Perc + Pront | Valor Passivo |
+| Quem observa | Perc + Pront | Valor Passivo (sem Centelha) |
 |---|:--:|:--:|
 | Servo distraído, bêbado, criança | 3 | 6 |
 | Guarda de portão, sentinela comum | 5 | 10 |

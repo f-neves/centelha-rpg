@@ -14,7 +14,7 @@ Cada arma é uma **classe-base** recombinada com **tags**. O pilar é simples: a
 Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra no [Combate](/regras/combate):
 
 - **Velocidade**: quantos **Ticks** o ataque custa na linha do tempo (leve 5, média 6, pesada 7): a leve age mais vezes; a pesada bate mais forte, mas te expõe entre os golpes.
-- **Dano**: o **dado de dano** do golpe (com um bônus fixo por classe), ao qual se somam a **Força** (o dobro nas de duas mãos) e cada Margem (+1d6). A régua por peso: leve **1d6−2**, média **1d6**, pesada **2d6**, haste **1d6+2**, arremesso **1d6 a 1d6+2**. **Arcos** somam Força (curto até +3, longo inteira, composto ×2); **bestas** não usam Força e já vêm com o bônus embutido (**1d6+2 / +4 / +8**).
+- **Dano**: o **dado de dano** do golpe (com um bônus fixo por classe), ao qual se somam a **Força** (o dobro nas de duas mãos) e cada Margem (+1d6). A régua por peso: leve **1d6−2**, média **1d6**, pesada **2d6**, haste **1d6+2**, arremesso **1d6−2 a 1d6+2**. **Arcos** somam Força (curto até +3, longo inteira, composto ×2); **bestas** não usam Força e já vêm com o bônus embutido (**1d6+2 / +4 / +8**).
 - **Acerto**: um bônus que **soma no seu pool de ataque** (a leve mira melhor; a pesada, pior).
 - **Def. (Defesa da Arma)**: quanto a arma acrescenta ao seu **Bloqueio**.
 - **Mãos**: uma ou duas; algumas são *Versáteis* e servem nas duas formas.
@@ -37,7 +37,7 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 | Média | 6 | 1d6 | +1 | +1 | 1\* | equilíbrio sem fraquezas (versátil) |
 | Pesada | 7 | 2d6 | +0 | −2 | 2 | dano que vence armadura, mas lenta e te expõe, com guarda baixa |
 | Haste | 6 | 1d6+2 | +1 | +2 | 2 | alcance: controla a distância e defende muito |
-| Distância | 6–7 | 1d6−1 a 1d6+2 (+Força) / 1d6+2 a +8 | +0 a +1 | — | 2 | domina antes do contato; arco soma Força, besta vem embutida; depende de munição. Alcance de 100 a 300 m |
+| Distância | 6–15 | 1d6−1 a 1d6+2 (+Força) / 1d6+2 a +8 | +0 a +1 | — | 2 | domina antes do contato; arco soma Força, besta vem embutida; depende de munição. Alcance de 100 a 300 m |
 | Arremesso | 4–6 | 1d6−2 a 1d6+2 | +0 a +2 | — | 1 | lançar com a mão: uma mão, projétil recuperável, alcance de 5 a 200 m conforme o objeto |
 
 </div>
@@ -66,7 +66,7 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 | Machado | Média | ★C · I | 6 | 1d6 | +1 | 0 | 1 | Corta ou bate de chapa. Guarda menor que a espada, mas alterna pro Impacto |
 | Espada Serrilhada | Média | ★C · P(N1) | 6 | 1d6 | +0 | +1 | 1 | Sangramento (−Acerto): feridas que continuam drenando |
 | Maça | Média | ★I | 6 | 1d6 | +1 | +1 | 1 | Anti-placa: o Impacto quase não é absorvido |
-| Picareta de Guerra | Média | ★P(N2) · I | 6 | 1d6 | +1 | +1 | 1 | O bico vence a placa pelo ponto |
+| Picareta de Guerra | Média | ★P(N2) · I | 6 | 1d6 | +1 | +1 | 1 | O bico vence placa de N2 pelo ponto |
 | Lança | Haste | ★P(N1) | 6 | 1d6+2 | +1 | +2 | 2 | Alcance, arremessável. Estocada que controla a distância; resvala na placa |
 | Alabarda | Haste | ★C · ★P(N1) · ★I | 6 | 1d6+2 | +1 | +2 | 2 | Alcance, pesada (lenta). Três modos principais num cabo; cobre tudo |
 | Montante | Pesada | ★C · P(N1) · I | 7 | 2d6 | +0 | −2 | 2 | Espadão; dano alto, guarda baixa, te expõe entre os golpes |
@@ -92,7 +92,7 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 | Bumerangue | Arremesso | ★I | 5 | 1d6 | +1 | 50 m | 1 | Atinge em curva e volta à mão se erra |
 | Azagaia | Arremesso | ★P(N1) | 5 | 1d6+1 | +1 | 40 m | 1 | Javelina: fura à distância ou na estocada em punho |
 | Dardos | Arremesso | ★P(N1) | 4 | 1d6 | +2 | 30 m | 1 | Ágil, munição. Velozes em sequência |
-| Pilum | Arremesso | ★P(N2) | 5 | 1d6+2 | +1 | 25 m | 1 | Anti-escudo: fura placa e entorta ao cravar |
+| Pilum | Arremesso | ★P(N2) | 5 | 1d6+2 | +1 | 25 m | 1 | Anti-escudo: fura placa de N2 e entorta ao cravar |
 | Machado de Arremesso | Arremesso | ★C · I | 5 | 1d6+2 | +1 | 12 m | 1 | Gira no ar; golpe forte e curto |
 | Adaga de Arremesso | Arremesso | ★P(N0) | 5 | 1d6−2 | +1 | 10 m | 1 | Ágil, munição. Facas às dezenas; só fura pele |
 | Rede | Arremesso | ★I | 5 | 1d6 | +0 | 5 m | 1 | Imobiliza. Prende o alvo em vez de ferir |
@@ -114,9 +114,14 @@ A armadura **absorve dano depois do acerto**, com **três Absorções**: **Impac
 | Nenhuma | — | 0 | 0 | 0 / N 0 | 0 |
 | Gambeson | leve | 3 | 4 | 1 / N 0 | −1 |
 | Couro endurecido | leve | 2 | 2 | 1 / N 1 | −1 |
+| Peitoral | leve | 3 | 3 | 1 / N 1 | −1 |
+| Camisa de malha | leve | 1 | 5 | 1 / N 1 | −1 |
 | Cota de malha | média | 1 | 6 | 1 / N 1 | −2 |
 | Brigandina | média | 4 | 6 | 3 / N 1 | −2 |
 | Lamelar | média | 3 | 6 | 3 / N 1 | −2 |
+| Peitoral reforçado | pesada | 4 | 7 | 2 / N 1 | −2 |
+| Placa articulada | pesada | 4 | 8 | 3 / N 2 | −2 |
+| Malha completa | pesada | 2 | 8 | 1 / N 2 | −3 |
 | Placa de transição | pesada | 4 | 8 | 3 / N 2 | −3 |
 | Placa de munição | pesada | 4 | 7 | 4 / N 2 | −3 |
 | Placa completa | pesada | 4 | 8 | 4 / N 3 | −3 |

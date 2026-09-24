@@ -7,7 +7,7 @@ resumo: "Os nove Atributos em três tríades, a régua de 1 a 6 e o que cada deg
 
 Quando o resultado de uma ação é incerto, o jogo a resolve somando um **Atributo** (o talento bruto que você *é*) a uma **Habilidade** (o treino que você *aprendeu*) e rolando esse tanto de dados. O passo a passo da rolagem está no [Coração do Sistema](/regras/coracao-do-sistema); este capítulo apresenta as peças, em três páginas: os **Atributos** aqui, as [Habilidades](/regras/habilidades) e as [Habilidades Secundárias](/regras/habilidades-secundarias).
 
-O par é sempre o mesmo par de perguntas: **do que você é capaz** e **o que você aprendeu a fazer com isso**. Um lenhador de Força 5 e Armas 0 tem o braço mas não a técnica; um mestre de armas de Força 2 e Armas 5 tem a técnica e não tem o braço. Os dois rolam cinco dados, e chegam lá por caminhos opostos.
+O par é sempre o mesmo par de perguntas: **do que você é capaz** e **o que você aprendeu a fazer com isso**. Um lenhador de Força 5 e Armas 0 tem o braço mas não a técnica; um mestre de armas de Força 2 e Armas 5 tem a técnica e não tem o braço. Os dois somam 5 e rolam o mesmo 2d6 + 2, e chegam lá por caminhos opostos.
 
 ## Como ler os verbetes
 

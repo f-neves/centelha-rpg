@@ -19,9 +19,9 @@ Em regra, o humano é o **baseline neutro**:
 
 - **Custo de XP:** 0, não se paga herança por ser humano.
 - **Atributos:** todos os nove respeitam o teto comum (**6** no jogo, 5 na criação fora do pico). Nenhum sobe a 7, nenhum trava em 5.
-- **Sem traços raciais:** nenhuma visão no escuro, nenhuma resistência inata. Em troca, **nada o limita**: o humano é o único povo sem um único Atributo rebaixado.
+- **Sem traços raciais:** nenhuma visão no escuro, nenhuma resistência inata. Em troca, **nada o limita**: o humano não tem um único Atributo rebaixado, e só o meio-elfo divide isso com ele.
 
-Em Relações Sociais, o humano não tem inimizades naturais: começa em **Neutro** com a maioria dos povos, e por isso transita e negocia onde outros não conseguem. Duas exceções, e nenhuma recíproca: olha o **Elfo** (e o **Meio-Elfo**, que puxa a ele) com **+1 (Simpatia)**, fascinado pela beleza élfica, e o **Orc** com **−1 (Antipatia)**, pela aparência bruta.
+Em Relações Sociais, o humano não tem inimizades naturais: começa em **Neutro** com a maioria dos povos, e por isso transita e negocia onde outros não conseguem. Três exceções, e nenhuma recíproca: olha o **Elfo** (e o **Meio-Elfo**, que puxa a ele) com **+1 (Simpatia)**, fascinado pela beleza élfica, o **Orc** com **−1 (Antipatia)**, pela aparência bruta, e o **Meio-Orc** também com **−1 (Antipatia)**, a reserva que todos os povos guardam do sangue partido.
 
 <p class="muted">O preço da versatilidade é não ter um pico de herança: onde o orc nasce forte e o elfo nasce ágil, o humano precisa <strong>construir</strong> cada vantagem com XP. É também o mais barato de jogar: todo o orçamento vai para o personagem, nada para a raça.</p>
 
@@ -52,7 +52,7 @@ Humanóides de baixa estatura, mas muito corpulentos. Vivem nas montanhas e coli
 - **Baixa estatura**, pernas curtas: **todo deslocamento vale dois terços** do de um humano, o passo em combate, o Arranque, a Corrida **e os Saltos**.
 - **Resistência a venenos**: todo teste para resistir a veneno é feito com **+1d6** na parada.
 - **Visão no escuro**: enxergam na escuridão total, mas **sem cores**; os olhos precisam de um tempo para se adaptar a mudanças de iluminação.
-- **Mestre dos Ofícios**, desde cedo trabalham pedra e metal: **+1d6** em testes de **Ofícios Gerais**, desde que já tenham ao menos 1 ponto na Habilidade.
+- **Mestre dos Ofícios**, desde cedo trabalham pedra e metal: **+1d6** em **qualquer Ofício** em que já tenham pontos.
 - **Relações Sociais:** partem de um fundo antigo e **assimétrico** com o Elfo: o Anão carrega **−4 (Hostilidade)**, o Elfo devolve só **−3 (Rancor)**, o mesmo ódio de origem esquecida, mas pesando diferente de cada lado. Contratam o **Orc** para o serviço pesado que ninguém mais quer fazer, e sentem **+1 (Simpatia)** por isso; o mesmo carinho torto vale para o **Meio-Elfo**, cuja origem violenta desperta pena, não desprezo. Com o resto (Humano, Gnomo, Halfling), Neutro.
 
 ### Elfo
@@ -69,7 +69,7 @@ Seres ligados ao mundo natural. Esguios, de aparência mais frágil que a das ou
 
 ### Gnomo
 
-Pequenos e resistentes. Pesam **20–45 kg** e medem **1,00–1,30 m**. Maturidade aos 18 anos; podem viver mais de **300 anos**.
+Pequenos e resistentes. Pesam **20–45 kg** e medem **1,00–1,30 m**. Idade adulta aos 18 anos; podem viver mais de **300 anos**.
 
 - **Custo de XP:** 30 <small>(provisório: desceu de 40 quando o Gnomo virou de porte **pequeno** e perdeu PV)</small>
 - **`+1` de Vigor**: começa em **2** e vai até **7**. Resistência teimosa num corpo pequeno.
@@ -78,13 +78,14 @@ Pequenos e resistentes. Pesam **20–45 kg** e medem **1,00–1,30 m**. Maturida
 - **Visão no escuro**: enxergam na escuridão total, sem distinguir cores; precisam de tempo para adaptar os olhos.
 - **Feitiçaria**, facilidade com ilusões: **+2** para **criar e detectar ilusões**.
 - **Empatia com animais**, o carisma natural alcança outros seres: **+2** ao lidar com animais.
-- **Relações Sociais:** o povo mais fácil de conviver: **Neutro** com Humano, Anão e Orc, e **+1 (Simpatia)** só com quem os entende de perto, **Elfo** e **Halfling** (este último, recíproco).
+- **Relações Sociais:** o povo mais fácil de conviver: **Neutro** com Humano, Anão e Orc, e **+1 (Simpatia)** só com quem os entende de perto, **Elfo** e **Halfling** (os dois, recíprocos).
 
 ### Halfling
 
-Povo pequeno e ágil. Medem de **80 cm a 1,20 m** e pesam **20–35 kg**. Atingem a maturidade por volta dos 18 anos e podem viver por volta de **200 anos**.
+Povo pequeno e ágil. Medem de **80 cm a 1,20 m** e pesam **20–35 kg**. Atingem a idade adulta por volta dos 18 anos e podem viver por volta de **200 anos**.
 
 - **Custo de XP:** 30
+- **Porte pequeno**: a Vida é **20 + Vigor × 2**, a linha Pequeno da tabela de [Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura).
 - **`+1` de Destreza**: começa em **2** e vai até **7**. Mãos e pés leves.
 - **`−1` teto de Força** (máx 5, piso normal): porte pequeno, sem massa para força bruta.
 - **Baixa estatura**: **todo deslocamento vale dois terços** do de um humano, o passo em combate, o Arranque, a Corrida **e os Saltos**.
@@ -103,7 +104,7 @@ Filhos de pais humanos com mães elfas. A concepção é rara, e o resultado se 
 
 ### Meio-Orc
 
-Filhos de humano e orc: a força e o porte da herança orc temperados pelo sangue humano. Pele e pelos puxam ao marrom ou ao verde e as feições são rudes, mas menos que as de um orc puro. São altos e robustos. Atingem a maturidade por volta dos 14 anos; vida curta, pouco mais de **70 anos**.
+Filhos de humano e orc: a força e o porte da herança orc temperados pelo sangue humano. Pele e pelos puxam ao marrom ou ao verde e as feições são rudes, mas menos que as de um orc puro. São altos e robustos. Atingem a idade adulta por volta dos 14 anos; vida curta, pouco mais de **70 anos**.
 
 - **Custo de XP:** 40
 - **`+1` de Força e de Vigor**: os dois começam em **2** e vão até **7**. A compleição forte da herança orc.
@@ -118,7 +119,7 @@ Filhos de humano e orc: a força e o porte da herança orc temperados pelo sangu
 
 ### Orc
 
-Humanóides de herança metamorfa, com constituição física superior a qualquer outra raça mediana. Pele e pelos variam do marrom ao verde; olhos e cabelos costumam ser pretos. Medem **1,80–2,30 m** e pesam **80–140 kg**. Maturidade por volta dos 14 anos; vivem pouco mais de **60 anos**. São mais bestiais que os meio-orcs, e pagam por isso em juízo e trato.
+Humanóides de herança metamorfa, com constituição física superior a qualquer outra raça mediana. Pele e pelos variam do marrom ao verde; olhos e cabelos costumam ser pretos. Medem **1,80–2,30 m** e pesam **80–140 kg**. Idade adulta por volta dos 14 anos; vivem pouco mais de **60 anos**. São mais bestiais que os meio-orcs, e pagam por isso em juízo e trato.
 
 - **Custo de XP:** 40
 - **`+1` de Força e de Vigor**: os dois começam em **2** e vão até **7**. Criaturas poderosas e truculentas.
@@ -142,9 +143,9 @@ O sangue orc guarda uma fúria que o corpo inteiro obedece. Ela vem em duas form
 **Ganha:**
 
 - **ignora a penalidade de ferimento**, como o traço de cada um diz acima;
-- **+2 no resultado** dos testes de ação física, que são os mesmos cuja penalidade de ferimento a fúria ignora: as ações que rolam Força, Destreza ou Vigor ([Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura)). Atacar, agarrar, arrombar, escalar, nadar, investir e **arremessar** ganham, e saltar ou levantar peso também, quando forem teste. O **tiro** (Atirador: arco, besta) **não ganha**: a pontaria paciente é o oposto da fúria, e o machado arremessado é força bruta;
+- **+2 no resultado** dos testes de ação física, que são os mesmos cuja penalidade de ferimento a fúria ignora, menos o tiro: as ações que rolam Força, Destreza ou Vigor ([Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura)). Atacar, agarrar, arrombar, escalar, nadar, investir e **arremessar** ganham, e saltar ou levantar peso também, quando forem teste. O **tiro** (Atirador: arco, besta) **não ganha**: a pontaria paciente é o oposto da fúria, e o machado arremessado é força bruta;
 - **+1 na soma** dos cálculos de ação física: distância de salto, deslocamento, capacidade de carga;
-- **Intimidar vira ação reflexa, com +2 dados** na parada. É a única ação social que a fúria permite.
+- **Intimidar vira ação Reflexiva, com +2 dados** na parada. É a única ação social que a fúria permite.
 
 O +2 no teste e o +1 na soma não são a mesma vantagem: o +1 na soma vale cerca de 1,75 em média (às vezes vira +2 fixo, às vezes +1d6 −2), e o +2 no teste vale exatos 2.
 
@@ -164,7 +165,7 @@ Entrar é um [teste de Temperança](/regras/aparencia-virtudes-vontade#o-teste-d
 
 **O teste só é forçado em dois casos.** Fora deles, o orc só rola se quiser entrar, e a provocação de cotidiano (um insulto, um golpe que raspou, o cheiro de sangue) não obriga a nada.
 
-1. **Dano grande: um único golpe que tire 20% ou mais da Vida máxima**, arredondado para cima (orc de 40 PV: 8 de dano). Conta o dano que passou, depois da Absorção. **Dano acumulado não dispara**: o Frenesi é pela pancada, não pelo desgaste, e dez golpes pequenos levam o orc a Crítico sem teste nenhum.
+1. **Dano grande: um único golpe que tire 20% ou mais da Vida máxima**, arredondado para cima (orc de 41 PV: 9 de dano). Conta o dano que passou, depois da Absorção. **Dano acumulado não dispara**: o Frenesi é pela pancada, não pelo desgaste, e dez golpes pequenos levam o orc a Crítico sem teste nenhum.
 2. **Provocação importante.** O que conta como importante decide o Mestre, pela história e pelas relações do personagem. Quem provoca rola **Influência** com a Habilidade que a forma da provocação pedir (Manha para zombaria e deboche, Intimidação para ameaça, Empatia para achar a ferida certa, Oratória para humilhar em público), com uma descrição que combine com ela, contra **Força de Vontade do orc × 2 + Centelha dele**. Passando, o orc é obrigado ao teste de Frenesi. Aqui a Força de Vontade protege o orc.
 
 **A Dificuldade vem da situação** em que o orc está no momento do teste, e o Mestre a escolhe nesta escala:

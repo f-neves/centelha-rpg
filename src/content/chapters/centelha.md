@@ -16,7 +16,7 @@ A régua vai de **0 a 12**, e a **faixa do jogador é de 0 a 6**: os seis degrau
 | Nível | Estatura | Raridade | O que abre |
 |:---:|---|---|---|
 | **0** | Mortal | ~95% das pessoas | Nada de sobrenatural, só Atributos e Habilidades |
-| **1** | Tocado | ~1 em 20 | Proezas de **nível 1**; ganha Energia e Mana |
+| **1** | Tocado | ~1 em 20 | Proezas de **nível 1**; a Energia e a Mana que todo mortal já tem passam a servir (Proezas, Artes) |
 | **2** | Desperto | raro | Proezas até o **nível 2** |
 | **3** | Herói | mais raro | Proezas até o **nível 3** |
 | **4** | Campeão | ~1 em 250 | Proezas até o **nível 4** |
@@ -66,7 +66,7 @@ Quando uma Técnica melhora uma **tarefa** (esquivar, agarrar, mirar, resistir a
 
 Mas nem toda melhora é um bônus de rolagem. Erguer peso não é o mesmo que mirar melhor, e pular longe não é o mesmo que resistir a veneno. Por isso cada **tipo** de efeito tem sua própria escala por nível:
 
-O nível 2 (Desperto) é o meio-degrau entre o Tocado (1) e o Herói (3): os valores interpolam entre os dois. Onde a trilha é discreta (dados de dano, tamanho), o Desperto repete o valor do Tocado e a Técnica carrega um efeito extra como degrau (um golpe do Desperto soma +1d6 mais um raspão).
+O nível 2 (Desperto) é o meio-degrau entre o Tocado (1) e o Herói (3): os valores interpolam entre os dois. Onde a trilha é discreta (dados de dano, tamanho), o Desperto repete o valor do Tocado e a Técnica carrega um efeito extra como degrau (um golpe do Desperto soma +1d6 mais um [raspão](/regras/quase-acerto)).
 
 | Trilha | O que cresce | N1 | N2 | N3 | N4 | N5 | N6 |
 |---|---|:---:|:---:|:---:|:---:|:---:|:---:|

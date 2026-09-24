@@ -95,7 +95,7 @@ Cobrar um favor grande **consome** o carinho que você juntou. Quando a pessoa c
 
 ### Favor comprado é alugado
 
-Suborno, presentes caros e mesada são **gestos**, e dinheiro compra pressa no cortejo: a régua sobe mais rápido. Mas o que sobe assim é **alugado**: no instante em que o dinheiro para, a régua **volta quase na hora**, e quem foi cortado pode até ficar **Desfavorável** por ressentimento. Lealdade comprada não é lealdade; só o vínculo de verdade fica quando o ouro some.
+Suborno, presentes caros e mesada são **gestos**, e dinheiro compra pressa no cortejo: a régua sobe mais rápido. Mas o que sobe assim é **alugado**: no instante em que o dinheiro para, a régua **volta quase na hora**, e quem foi cortado pode até ficar **abaixo do Neutro** por ressentimento. Lealdade comprada não é lealdade; só o vínculo de verdade fica quando o ouro some.
 
 ## Sair do Neutro é o mais difícil
 
@@ -135,9 +135,9 @@ Quem lê melhor a sala toma a palavra primeiro: entra sozinho no **Tick 1**, e o
 
 ### O ataque social
 
-<p class="formula">Ataque = [ (Influência + Habilidade) ÷ 2 ] d6  ( +2 se a soma for ímpar )  + Peso do argumento  + Centelha</p>
+<p class="formula">Ataque = [ (Influência + Habilidade) ÷ 2 ] d6  ( +2 se a soma for ímpar )  + Acerto da Abordagem  + Centelha</p>
 
-A **habilidade** é a da abordagem usada (Persuasão, Sedução, Intimidação, Manha…), como o golpe físico escolhe a sua, e a **Especialidade** entra aqui do mesmo jeito que entra lá: se o escopo nomeado dela se aplica (Persuasão *(na corte)* numa audiência), rende **+N dados descartando os N menores**, e não uma parcela somada. O **Peso** é um bônus de **+0 a +3** que o Mestre concede conforme a abordagem é certeira: uma provocação ou um elogio acertam fácil e somam mais; um discurso longo pesa mais e soma menos. Compara-se com a **Defesa Social** do alvo, que é o número passivo da ficha mais o termo da história, somado pela mesa na hora (logo abaixo):
+A **habilidade** é a da abordagem usada (Persuasão, Sedução, Intimidação, Manha…), como o golpe físico escolhe a sua, e a **Especialidade** entra aqui do mesmo jeito que entra lá: se o escopo nomeado dela se aplica (Persuasão *(na corte)* numa audiência), rende **+N dados descartando os N menores**, e não uma parcela somada. O **Acerto da Abordagem** (não confundir com o peso leve, média ou pesada, que só decide a Velocidade) é um bônus de **+0 a +3** que o Mestre concede conforme a abordagem é certeira: uma provocação ou um elogio acertam fácil e somam mais; um discurso longo pesa mais e soma menos. Compara-se com a **Defesa Social** do alvo, que é o número passivo da ficha mais o termo da história, somado pela mesa na hora (logo abaixo):
 
 - **Acerta** se o Ataque **superar** a Defesa Social; empatar ou ficar abaixo, a influência ricocheteia.
 - **Margem = [ (Ataque − Defesa Social) ÷ 6 ]**: o quanto o golpe apertou.
@@ -150,7 +150,7 @@ Um golpe que supera a Defesa **moveria** o alvo. Para **segurar firme**, ele gas
 
 | Ataque supera a Defesa por | Para segurar firme, gaste | Se não segurar |
 |---|:--:|---|
-| 0–5 (Margem 0) | **1** Vontade | cede o ponto daquela cena, no nível em que a relação já está |
+| 1–5 (Margem 0) | **1** Vontade | cede o ponto daquela cena, no nível em que a relação já está |
 | 6–11 (Margem 1) | **2** Vontade | cede, e o pedido chega **1 nível acima** da relação |
 | 12–17 (Margem 2) | **3** Vontade | cede, e o pedido chega **2 níveis acima** |
 | cada +6 além disso | **+1** Vontade | **+1 nível** de alcance |
@@ -271,6 +271,6 @@ O cortejo não concede pedido: o que ele faz é **andar a régua**, um passo por
 - **Move por:** atos (saltos fixos: +2 e +3 a seu favor, de −2 a −5 contra você) e gestos (só no cortejo, um por intervalo). Cobrar favor grande desce 1 passo. Sair do Neutro = 3 passos; **teto de vidro ±2** para tudo o que acumula, e só ato atravessa. Esfria 1 passo por estação.
 - **Cena com dado NÃO move a régua**, nem conversa nem duelo: rende **alcance do pedido**, +1 nível por 6 de folga, só naquela cena.
 - **A história pesa:** remar contra o que o alvo já sente soma o nível à Defesa Social dele; remar a favor subtrai. ×1, sem teto (o próprio ±6 já é o limite). Zera no Neutro.
-- **Combate Social:** Ataque = [(Influência+Habilidade)/2]d6 (+2 ímpar) + Peso + Centelha, contra a Defesa Social (o número da ficha, mais o termo da história somado na hora, acima); **Margem** = [(atk−def)/6]. Iniciativa = 1d6 + Perspicácia + Sociabilidade.
+- **Combate Social:** Ataque = [(Influência+Habilidade)/2]d6 (+2 ímpar) + Acerto da Abordagem + Centelha, contra a Defesa Social (o número da ficha, mais o termo da história somado na hora, acima); **Margem** = [(atk−def)/6]. Iniciativa = 1d6 + Perspicácia + Sociabilidade.
 - **Resistir:** para não ceder, gaste **1 + Margem** de Vontade no lance; se não pagar, cede o ponto e o pedido chega **Margem** níveis acima. Não vale contra leitura.
 - **Influência Estendida** (o modo devagar, sem dado): Ataque parado = Influência + Habilidade; Defesa parada = Compostura + Sociabilidade + Centelha + termo da régua; **Tempo do passo = máx(1, defesa − ataque − gestos)**, em intervalos de **8 dias ×½ ×1 ×2 ×4** pela longevidade de quem corteja. Gestos 0/+1/+2/+4, **um por intervalo**. Quem resiste paga **1 + [máx(0, ataque + gestos − defesa) ÷ 6]** de Vontade por intervalo, e essa Vontade fica **presa** até o cortejo acabar. Leitura vs Defesa Social (a com dado) para saber quanto falta.

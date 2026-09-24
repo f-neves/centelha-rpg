@@ -22,7 +22,8 @@ flowchart TD
   Q1 -->|"Ferir o corpo de alguém numa luta"| Fisico["Combate Físico (ver 'Qual defesa física')"]
   Q1 -->|"A vontade, a mente ou o vínculo de alguém"| SM["Social ou Mental? (ver fluxo)"]
   Q1 -->|"Notar ou perceber algo"| PP["Percepção ou Perspicácia? (ver fluxo)"]
-  Q1 -->|"Uma tarefa longa (forjar, pesquisar, cortejar sem pressa)"| Est["Ação estendida: Dificuldade + Intervalo + Acúmulo"]
+  Q1 -->|"Uma tarefa longa (forjar, pesquisar)"| Est["Acumulada ou Longa: Dificuldade + Intervalo + Acúmulo"]
+  Q1 -->|"Conquistar alguém sem pressa"| Cor["Cortejo com calma, em Relações Sociais"]
 ```
 
 ---
@@ -84,7 +85,7 @@ flowchart TD
 flowchart TD
   D(["Vão te acertar no corpo"]) --> D1{"Como você se protege deste golpe?"}
   D1 -->|"Desviando com corpo e reflexo"| DE["Esquiva = (Destreza + Esquiva) x2 + Centelha + Esp."]
-  D1 -->|"Aparando com arma ou escudo"| DB["Bloqueio = (Destreza + Habilidade que você escolher) x2 + Centelha + Esp. + defesa da arma/escudo"]
+  D1 -->|"Aparando com arma ou escudo"| DB["Bloqueio = (Destreza + Bloqueio) x2 + Centelha + Esp. + defesa da arma/escudo"]
   DE --> N["Você usa a maior das duas; a ficha mostra ambas"]
   DB --> N
 ```

@@ -49,7 +49,7 @@
       "inicio": { "tempo": "1 Tick", "viaEntrada": "sangue" },
       "intervalo": null,
       "efeitoUnico": true,
-      "pool": null,
+      "pool": 3,
       "tipo": "atributo",
       "atributo": "destreza",
       "duracao": "1 cena",
