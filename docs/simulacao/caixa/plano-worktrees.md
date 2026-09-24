@@ -101,8 +101,10 @@ porta seguinte quando a 4321 ou a 4399 estão ocupadas, ou se recusa; a regra ev
 
 ## 6 · Como a Executora fecha uma rodada
 
-1. Antes de começar: árvore limpa (`git status --short` vazio), `git fetch origin`,
-   `git checkout --detach origin/main`.
+1. Antes de começar: árvore limpa (`git status --short` vazio), `git fetch origin`, e a branch
+   `executora` posta no `origin/main`: `git merge-base --is-ancestor executora origin/main` (o que
+   ela publicou já está lá) e então `git switch -C executora origin/main`. **Desde 24/09/2026 a
+   árvore dela está na branch `executora`, e não destacada** (seção 11).
 2. Trabalho e commits com pathspec, como hoje (o índice passa a ser só dela, e a regra fica por
    hábito e por segurança).
 3. Antes de publicar: `git fetch origin` e `git rebase origin/main`. Conflito: `git rebase --abort`
@@ -209,17 +211,18 @@ que decide em duas janelas".
 | árvore | quem | ramo | estado em 24/09/2026, 02:50 |
 |---|---|---|---|
 | `rpg-system` | o humano e o Arquiteto | `main` | existe; o `main` local ainda carrega commits do mapa não empurrados (ver abaixo) |
-| `centelha-mapa` | o Cartógrafo | `mapa` (branch própria) | **NÃO EXISTE**: criada pelo Cartógrafo e desfeita às 02:38:56, quando ele leu o aviso de que o desenho aprovado era o da seção 3. A decisão final chegou depois. Recriar é com o humano e o Cartógrafo |
-| `centelha-executora` | a Executora | destacada em `origin/main` | existe desde 02:25, em uso na rodada 101 |
-| `centelha-techlead-revisora` | a Revisora | destacada no sha do aviso | existe, não muda |
+| `centelha-mapa` | o Cartógrafo | `mapa` (branch própria, levando os commits do mapa) | **A RECRIAR: decisão do humano de 24/09/2026, saída (a)**, e o `main` local do `rpg-system` volta ao `origin/main`. Antes disso: criada pelo Cartógrafo e desfeita às 02:38:56, quando ele leu o aviso de que o desenho aprovado era o da seção 3. A decisão final chegou depois. Recriar é com o humano e o Cartógrafo |
+| `centelha-executora` | a Executora | `executora` (branch própria, criada em 24/09/2026 depois do veredito da 101) | existe desde 02:25 |
+| `centelha-techlead-revisora` | a Revisora | `revisora` (branch própria, reposta no sha de cada aviso; `CONTRATO-REVISORA.md §0.1`) | existe; passa à branch no próximo aviso |
 | `centelha-arq-tmp` | o Arquiteto, provisória | destacada em `origin/main` | existe; sai quando o `rpg-system` puder publicar sem levar o mapa |
 
-**A branch própria, adotada como regra:** árvore de frente que commita sem publicar na hora mora num
-ramo próprio, e não destacada. Commit em HEAD destacado fica alcançável só pelo sha e some da vista
+**A branch própria, APROVADA como regra para todas as árvores (humano, 24/09/2026):** toda árvore do
+arranjo mora num ramo próprio, e não destacada. Commit em HEAD destacado fica alcançável só pelo sha e some da vista
 no próximo `checkout --detach` (foi assim que vereditos da Revisora se orfanaram nas rodadas 27 e
-28). **Para a Executora, proposta do Arquiteto:** criar o ramo `executora` na árvore dela depois que a
-101 fechar (`git switch -c executora`, que não muda arquivo nenhum), e seguir publicando por
-`git push origin HEAD:main`. Não se faz durante a rodada.
+28). **Executora: FEITO em 24/09/2026**, depois do veredito da 101 (`2acb5a4`): `git switch -c executora` no
+`origin/main` (`1dfdcad`), sem mudar arquivo; o `.git/config` ficou com o mesmo md5 e o `test-portoes`
+verde depois. Ela segue publicando por `git push origin HEAD:main`. **Revisora:** a branch `revisora`,
+com o congelamento preservado, está no `CONTRATO-REVISORA.md §0.1`; entra no próximo aviso.
 
 **O que ainda impede o Arquiteto de voltar a publicar pelo `rpg-system`:** o `main` local de lá tem
 commits do mapa que não subiram (conferido às 02:50: 11 commits à frente do `origin/main`, entre eles

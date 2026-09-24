@@ -61,6 +61,39 @@ vez que estava no worktree errado, com todos os resultados batendo mesmo assim
 estruturalmente antes de começar. Resultado certo por acaso não é resultado
 confiável; o passo 0 existe para não depender do acaso.
 
+### 0.1 · A branch própria, e por que ela não desfaz o congelamento (desde 24/09/2026)
+
+**Decidido pelo humano em 24/09/2026: toda árvore do arranjo trabalha numa branch própria, e não em
+HEAD destacado.** O motivo é deste contrato: commit em HEAD destacado fica alcançável só pelo sha e
+some da vista no próximo `checkout --detach`, que foi como os vereditos das rodadas 27 e 28 se
+perderam (§7).
+
+**Branch própria e congelamento NÃO se contradizem, e este parágrafo existe para a próxima Revisora
+não escolher uma das duas.** O congelamento é sobre a ÁRVORE: os arquivos em disco não andam
+enquanto a revisão corre. A branch é só um NOME para o commit que a revisão produz. A branch
+`revisora` não segue o `main`: ela só anda quando a Revisora commita o veredito, e só é reposta
+quando o Arquiteto manda reancorar.
+
+**O reancoramento passa a ser assim, no lugar do `git checkout --detach <sha>` do começo desta
+seção:**
+
+```
+git merge-base --is-ancestor revisora origin/main   # o veredito anterior está no main? (pule na primeira vez)
+git switch -C revisora <sha-do-aviso>               # a branch e a árvore vão para o sha do aviso
+```
+
+**O primeiro comando é o que torna o segundo seguro.** O `-C` repõe a branch onde o aviso manda, e
+se o veredito anterior ainda não tiver chegado ao `main`, ele deixa de estar na branch (continua no
+`reflog`, mas é o caminho que orfanou os vereditos 27 e 28). **Se o primeiro comando falhar, PARE e
+avise o Arquiteto**, antes de reancorar.
+
+**O passo 0 ganha uma linha:** além de `git rev-parse HEAD` bater com o sha do aviso,
+`git branch --show-current` tem de dar `revisora`. O push do veredito continua o do §7
+(`git push origin HEAD:main`, e aviso em vez de força se não for fast-forward).
+
+**As branches `revisora-59` a `revisora-66` que existem no repositório são de outro esquema, uma
+branch por rodada, e não se reusam.**
+
 ## 1 · Mensagem não é entrega
 
 **A regra:** o veredito de uma rodada só conta quando existe em

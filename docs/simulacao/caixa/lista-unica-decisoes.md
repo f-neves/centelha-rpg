@@ -69,6 +69,32 @@ Os achados a22, a23 e a24 (Corrida "50 a 67%", a Investida da Sora, o salto corr
 - **A Arte mirada ferida** (PERGUNTA da Revisora, rodada 98) · o livro diz que o ataque à distância é a única rolagem de Percepção que a dor alcança, "porque o arco e a besta pedem o corpo firme", e não diz se a Arte mirada (Percepção + Acerto Arcano) conta · opções: não sofre (recomendada: o motivo escrito é o corpo firme) / sofre como arco e besta / sofre só a Arte que lança projétil · trava a frase de `vida-ferimentos-cura.md`. **Hoje não muda nada na mesa: nenhum código rola a Arte mirada.**
 - **O contrapé na iniciativa social** (PERGUNTA da Revisora, rodada 99) · `relacoes-sociais.md` manda a iniciativa social "pela mesma regra da iniciativa física", e a seção linkada traz o contrapé na segunda linha · opções: vale no social / não vale, e o texto diz que não · trava a frase do C-22. Nada muda no Grid.
 
+## 3b · As duas PERGUNTAS da rodada 101 (24/09/2026)
+
+- **A Bravura contra a intimidação · DECIDIDO pelo humano em 24/09/2026:** vale o `defesas.md:37-39`
+  (intimidação na Defesa Social, medo imposto na Mental, medo da cena na Bravura). **A Bravura
+  resiste ao MEDO, e não à intimidação.** O a2 da rodada 101 alinhou um lado e deixou o
+  `virtudes.json` (`valor.resiste`: "ao medo e à intimidação") e a célula de
+  `aparencia-virtudes-vontade.md:45`: é conserto num lugar e não no outro, e entra como remendo na
+  rodada 102.
+- **A Temperança contra a provocação · ABERTO, é do humano** · a Revisora (veredito da 101) achou o
+  mesmo caso na Temperança: "provocação" (`defesas.md:54` e a Virtude) e a Defesa Social; ela
+  recomendou decidir as duas Virtudes juntas, e o humano decidiu só a Bravura · opções: a mesma régua
+  (a provocação numa conversa vai à Defesa Social, e a Temperança fica com o impulso da cena); ou a
+  provocação fica com a Temperança · trava a célula da Temperança e o `virtudes.json`.
+- **A tabela de renda contra o calendário de Uldun · ABERTO, é do humano, e ele não decide agora** ·
+  `custo-de-servico-e-itens.md`, a tabela de Serviços & Renda (colunas Renda/Sem, Renda/Mês,
+  Livre/Sem, Livre/Mês, Livre/Ano). O calendário de Uldun (`lore/Lore_Centelha.md` §9, TRAVADO, e o
+  que o b17 do monte A levou ao livro em outros capítulos): semana de 8 dias, mês de 32 (4 semanas),
+  ano de 384 (12 meses), estação de 88 mais 8. **Qual calendário a tabela usa hoje: nenhum, de forma
+  consistente.** Medido pelo Arquiteto, convertendo as moedas pela conversão do próprio capítulo:
+  Renda/Mês ÷ Renda/Sem vai de 3,57 a 4,00 (só o Destreinado dá 4, que é Uldun; nenhum dá os 4,3 de
+  um mês terrestre); Livre/Mês ÷ Livre/Sem vai de 2,57 a 4,00 (só Braçal, Destreinado e Treinado dão
+  4); Livre/Ano ÷ Livre/Mês vai de 5,53 a 9,75, e nenhuma linha chega a 12. As colunas também não
+  fecham entre si (a Renda e o Livre de uma mesma linha andam em razões diferentes). Nenhum dado
+  (`src/data/`) sustenta os números · opções: a semana manda e o resto se recalcula (× 4 e × 48); o mês
+  manda; o ano manda; ou a tabela é refeita de uma fonte nova · trava a economia de renda do capítulo.
+
 ## 4 · O resto dos `[DECIDIR]` dos temas A a K
 
 ## A · Arcano · As Artes

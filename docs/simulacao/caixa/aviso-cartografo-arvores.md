@@ -44,3 +44,27 @@ da Executora em 24/09/2026. `git worktree add` NÃO mexeu no arquivo: mesmo `md5
 (`b2ad263056b466b0be270e18d98b76b5`), mesmo mtime (23/09 23:38:53), `core.hooksPath` continuou
 `scripts/hooks`, e o `test-portoes` passou antes e depois. Falta medir a REMOÇÃO, que é o caso da sua
 nota: vai ser medida quando a worktree temporária do Arquiteto for removida.
+
+## ATUALIZAÇÃO · 24/09/2026, depois das 03:15 · a decisão final do humano, saída (a)
+
+**Você fez certo em desfazer a `centelha-mapa` quando o aviso chegou.** A recriação é consequência de
+uma decisão do humano que chegou depois, e não erro seu: ele autorizou os dois desenhos em duas
+janelas, com minutos de diferença, e registrou isso como caso no `CATALOGO.md` ("o humano como canal
+único que decide em duas janelas"), com o seu controle negativo de 28 segundos no `core.hooksPath`
+como o mérito do caso.
+
+**O que o humano decidiu:** você recria a `centelha-mapa` na branch `mapa`, **levando os commits do
+mapa**, e o `main` local do `rpg-system` volta ao `origin/main`. O motivo dele: com o mapa no
+`rpg-system`, o `main` local está 11 commits à frente do `origin/main`, e enquanto isso for verdade
+nenhum push dali é seguro. A branch própria leva esses commits junto e resolve a causa. O Arquiteto
+fica no `rpg-system`, com o humano.
+
+**O que o humano pede, e uma nota do Arquiteto:**
+
+- **(do humano) registre o custo do `.venv` refeito** (tempo, disco, o que for medível), para ele ver o preço do
+  que a decisão em duas janelas cobrou;
+- **(do Arquiteto) o `a5db998` está no `main` local e é uma cópia do `a4a9724`**, que já está no `origin/main`
+  (mesmo patch). Quando o `main` local voltar ao `origin/main`, ele sai de lá; se a branch `mapa`
+  nascer do `main` local, confira se ele não vai junto para a `mapa`.
+
+**A branch própria virou regra para todas as árvores** (a Executora já está na `executora`).

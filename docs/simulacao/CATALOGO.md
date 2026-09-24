@@ -954,6 +954,16 @@ arquitetura). O Arquiteto conferiu o disco antes de repassar a ordem ao Cartógr
 vezes em sentidos opostos; e uma rodada de mensagens entre duas instâncias para descobrir o que o
 humano tinha dito a cada uma.
 
+**O que saiu de bom do caso, e vale mais como precedente do que o caso (nomeado pelo humano):** o
+Cartógrafo, sem ninguém pedir, fez um CONTROLE NEGATIVO de infraestrutura. Das 02:40:29 às 02:40:57
+ele pôs o `core.hooksPath` comum num caminho que não existe, commitou (`ed15a3a`) e mostrou que a
+árvore com valor próprio passava pelo portão e a sem valor próprio ficaria sem gancho: prova de que o
+portão depende mesmo daquela chave, e de onde ela é lida. É o ensaio dos três sentidos
+(`ARQUITETO.md §9`) aplicado à configuração do git, e não a um teste. **O cuidado que o precedente pede junto:** durante
+os 28 segundos, um commit de outra árvore teria pulado o gancho em silêncio. O Arquiteto conferiu
+depois nos reflogs das três árvores do arranjo, e não houve nenhum. Quem repetir o gesto avisa antes
+as outras frentes, ou mede numa cópia do repositório.
+
 **A pergunta que a forma gera, e ela é do humano e também das instâncias:** antes de autorizar numa
 janela, o que eu já autorizei sobre este assunto na outra? E, do lado das instâncias: quando uma ordem
 toca o que outra frente faz, ela vem com o horário e com o "a outra frente sabe?", e quem a recebe
