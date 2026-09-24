@@ -1,0 +1,5 @@
+b910219ce98c · reancorada em b910219 (local), passo 0 conferido (21:07)
+52 contra 61: emulação do grep em 818b8b6 reproduz a tabela do humano célula por célula; DECIDIR 54 -2 fechados já no dia -3 fechados depois -5 adiados -1 sem sigla +2 compostas = 45 (21:08)
+cerca: teste com ocasião, controle (gerador da 95) derruba as 4 asserções novas; ADIADO depois do DECIDIR é contado como DECIDIR, sem aviso, e a marca some do título (21:09)
+J4 conferido nos 3 pontos da §8.2 (dois danoNoAlvo em artes-grid-mesa.ts:1865/1899 e mesa-bestiario.ts:330 por elementosCombate); I14 sem citação velha (git grep); L52 1a medida 08/09 recontada: 120/4/63 pelas duas regras (21:10)
+96-revisora.md escrito: PROCEDE, 1 CORRIGE (G12 na seção 6), 3 notas; commitando sem push (21:11)
