@@ -12,12 +12,16 @@ edição de qualquer uma das duas, que é a forma de defeito catalogada em
 
 ## O que fazer, nesta ordem
 
-0. **O NOME DA SESSÃO É `Arquiteto (RPG)`.** Se houver um jeito de renomear a sessão corrente
-   no seu ambiente, use e siga em frente sem comentar. **Se não houver, NÃO finja que nomeou:**
-   diga ao humano, em uma linha, que a sessão continua com o nome de origem e que o jeito de
-   abrir já nomeada é
+0. **O NOME DA SESSÃO É `Arquiteto (RPG)`, e quem dá o nome é um gancho, não você.** Desde
+   24/09/2026, `.claude/settings.json` liga um gancho `UserPromptSubmit`
+   (`.claude/hooks/titulo-arquiteto.mjs`) que devolve `sessionTitle` quando a mensagem começa
+   com `/arquiteto`; o efeito é o mesmo do `/rename`. Você não tem ferramenta para renomear, então
+   não tente e não comente. **Se o humano disser que o nome não apareceu, NÃO finja que nomeou:**
+   diga que o gancho falhou (confira com `/hooks`) e que os planos B são digitar
 
-       claude -n "Arquiteto (RPG)"
+       /rename Arquiteto (RPG)
+
+   ou abrir já nomeada com `claude -n "Arquiteto (RPG)"`.
 
    O nome aparece na caixa do prompt, no seletor do `/resume` e no título do terminal, e serve
    para o humano achar esta sessão entre várias abertas. Não é decoração: com Executora e
@@ -39,7 +43,8 @@ edição de qualquer uma das duas, que é a forma de defeito catalogada em
 
    As duas têm regra de formato de resposta própria, e ela está em `.claude/CLAUDE.local.md`:
    toda resposta delas começa com `Executora:` / `Revisora:` **dentro de um bloco de código**.
-   A resposta do Arquiteto ao chat NÃO vai em bloco.
+   Desde 23/09/2026 a resposta do Arquiteto ao chat TAMBÉM vai inteira num bloco de código
+   (mesmo arquivo, `.claude/CLAUDE.local.md`).
 
 3. **CONFIRA QUE OS DOIS SUBIRAM, e confira de verdade.** Chame `ListAgents` e veja as duas
    linhas, `Executora` e `Revisora`, com os próprios nomes. **Só depois disso diga que a equipe
