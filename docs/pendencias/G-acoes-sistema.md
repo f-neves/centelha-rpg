@@ -187,4 +187,10 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   (`custo-de-servico-e-itens.md:39-53`). Nenhum dos dois diz se o número é renda disponível, valor
   produzido em seis dias, resultado de uma Longa de intervalo semana, ou capacidade abstrata. Os
   casos de trabalho parcial (meia semana, trabalho entre aventuras, dias perdidos) dependem disso.
+- [ ] **G23 · [CONSERTAR] Duas espadas no mesmo documento.** Levantado em 24/09/2026. O exemplo da
+  Longa no §3.3 (`Acoes_Sistema.md:160-163`) diz "Forjar uma espada: Dificuldade 7, Acúmulo 10,
+  intervalo de uma semana". O §7 dá à espada Comum Acúmulo 22 (Montagem 12 + Peça 10) e intervalo
+  dia (`Acoes_Sistema.md:1139-1145`, `:1234`; capítulo `acoes-oficio-e-mundo.md:93`, `:152`). A
+  escada de intervalos publicada também põe "forjar a espada" em Semana (`acoes-e-sistema.md:143`).
+  Alinhar o exemplo e a escada ao §7.
 
