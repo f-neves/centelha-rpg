@@ -297,16 +297,100 @@ def _pontilhado(d: ImageDraw.ImageDraw, pts, cor, raio, espaco):
         s += comp
 
 
+# Largura do rio pela rede a montante (item b da rodada das pendências, 2026-09-23;
+# recomendação do Cartógrafo): px na resolução oficial = BASE + FATOR x raiz(km a
+# montante / 100), com teto. O braço de delta leva FRACAO_DO_BRACO do que chega ao
+# rio-mãe no ponto em que sai.
+LARGURA_RIO_BASE = 1.0
+LARGURA_RIO_FATOR = 0.9
+LARGURA_RIO_TETO = 6.0
+FRACAO_DO_BRACO = 0.5
+
+
+def _km(a, b) -> float:
+    from backend import geo
+    return geo.haversine_km(a[1], a[0], b[1], b[0])
+
+
+def _encontro(ponto, coords) -> tuple[int, float]:
+    """O trecho de `coords` mais perto de `ponto` (índice e fração ao longo dele), em
+    graus (a tela é equirretangular: é a mesma régua em que o rio foi desenhado)."""
+    p = np.asarray(ponto, dtype=float)
+    melhor = (0, 0.0, math.inf)
+    for i in range(len(coords) - 1):
+        a, b = np.asarray(coords[i], dtype=float), np.asarray(coords[i + 1], dtype=float)
+        ab = b - a
+        t = 0.0 if not ab.any() else float(np.clip(np.dot(p - a, ab) / np.dot(ab, ab), 0.0, 1.0))
+        d = float(np.hypot(*(a + ab * t - p)))
+        if d < melhor[2]:
+            melhor = (i, t, d)
+    return melhor[0], melhor[1]
+
+
+def km_a_montante(rios: list[dict]) -> dict[str, list[float]]:
+    """Para cada rio, os km de rede a montante em cada vértice: o próprio comprimento
+    até ali, mais tudo o que cada afluente (`termina_em.tipo == "rio"`) traz, a partir
+    do trecho em que ele deságua, mais a fração do rio-mãe no começo de um braço de
+    delta. Calculado com os rios recebidos inteiros, nunca com a janela."""
+    import sys
+    sys.path.insert(0, str(RAIZ_MAPAS / "ferramentas"))
+    por_id = {f["properties"]["id"]: f for f in rios}
+    filhos: dict[str, list[str]] = {}
+    for f in rios:
+        te = f["properties"].get("termina_em") or {}
+        if te.get("tipo") == "rio" and te.get("id") in por_id:
+            filhos.setdefault(te["id"], []).append(f["properties"]["id"])
+    memo: dict[str, list[float]] = {}
+    visitando: set[str] = set()
+
+    def calc(i: str) -> list[float] | None:
+        if i in memo:
+            return memo[i]
+        if i in visitando:          # ciclo: o dado não deveria ter, e não trava o desenho
+            return None
+        visitando.add(i)
+        coords = por_id[i]["geometry"]["coordinates"]
+        base = 0.0
+        mae = por_id[i]["properties"].get("ramo_de")
+        if mae in por_id:
+            vm = calc(mae)
+            if vm:
+                k, t = _encontro(coords[0], por_id[mae]["geometry"]["coordinates"])
+                base = FRACAO_DO_BRACO * (vm[k] + (vm[k + 1] - vm[k]) * t)
+        vals = [base]
+        for a, b in zip(coords[:-1], coords[1:]):
+            vals.append(vals[-1] + _km(a, b))
+        for filho in sorted(filhos.get(i, [])):
+            vf = calc(filho)
+            if vf:
+                k, _ = _encontro(por_id[filho]["geometry"]["coordinates"][-1], coords)
+                for v in range(k + 1, len(vals)):
+                    vals[v] += vf[-1]
+        visitando.discard(i)
+        memo[i] = vals
+        return vals
+
+    for i in sorted(por_id):
+        calc(i)
+    return memo
+
+
+def largura_do_rio_px(km: float) -> float:
+    """Largura na resolução oficial para `km` de rede a montante."""
+    return min(LARGURA_RIO_TETO, LARGURA_RIO_BASE + LARGURA_RIO_FATOR * math.sqrt(max(0.0, km) / 100.0))
+
+
 def desenhar_rios(tela: Image.Image, ctx: Contexto, rios: list[dict]) -> None:
-    """Linha fina que engrossa da nascente para a foz (de 1,2 a 3 px na resolução
-    oficial). Recomendação do Cartógrafo; a largura por afluentes acumulados do ESPEC
-    fica para quando houver rede de rios."""
+    """Linha fina que engrossa com a rede a montante (`km_a_montante`): da nascente
+    para a foz, e em degrau a cada afluente que chega. Cada trecho usa a média dos
+    dois vértices dele."""
     d = ImageDraw.Draw(tela)
+    montante = km_a_montante(rios)
     for f in rios:
         pts = [ctx.px(*c) for c in f["geometry"]["coordinates"]]
-        n = len(pts) - 1
+        km = montante.get(f["properties"]["id"]) or [0.0] * len(pts)
         for i, (a, b) in enumerate(zip(pts[:-1], pts[1:])):
-            larg = max(1, int(round((1.2 + 1.8 * (i + 0.5) / max(1, n)) * ctx.escala * 1.6)))
+            larg = max(1, int(round(largura_do_rio_px((km[i] + km[i + 1]) / 2) * ctx.escala * 1.6)))
             d.line([a, b], fill=COR_RIO + (255,), width=larg, joint="curve")
 
 

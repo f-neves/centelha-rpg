@@ -13,9 +13,9 @@ de montagem, nomes definitivos.
 
 | item | estado | commit |
 |---|---|---|
-| 0 git, push, `DECISOES-A-REVISAR.md` | feito | (o commit deste texto) |
-| a desvio de colisão entre nomes | feito | (o commit deste texto) |
-| b largura do rio por afluentes | a fazer | |
+| 0 git, push, `DECISOES-A-REVISAR.md` | feito | `4c5eedb`, `76b0c39` |
+| a desvio de colisão entre nomes | feito | `76b0c39` |
+| b largura do rio por afluentes | feito | (o commit deste texto) |
 | c cadeado de camada (regiões, nomes, elementos, rotas) | a fazer | |
 | d atração do braço de delta | a fazer | |
 | e via desalinhada | a fazer | |
@@ -62,3 +62,33 @@ Resultado:
   gesto dele.
 - **Depende do usuário**: se o lado escolhido lê bem; e a tela não mostra o lado
   (o marcador do NOMES fica à direita).
+
+### b · largura do rio pela soma dos afluentes (feito)
+
+Plano (recomendação do Cartógrafo):
+- Medida de "quanto rio chega" em cada ponto: o comprimento total da rede a montante,
+  em km no globo (haversine): o do próprio rio até ali mais o de todo afluente (e
+  afluente de afluente) que desaguou antes daquele ponto. Sem dado novo: o afluente é
+  quem tem `termina_em: {"tipo": "rio", "id": ...}`, e o ponto de encontro é o trecho
+  do rio-mãe mais perto da foz dele.
+- Largura na resolução oficial: `1,0 + 0,9 × raiz(km a montante / 100)` px, com teto de
+  6 px. Um rio sozinho de 500 km termina com uns 3 px, como hoje; com afluentes,
+  engrossa depois de cada encontro.
+- Braço de delta (`ramo_de`): recebe a metade do que chega ao rio-mãe no ponto em que
+  ele sai, mais o próprio comprimento.
+- Calculado com a rede inteira, não com a janela; nada gravado.
+
+Resultado:
+- Código em `composicao.py` (`km_a_montante`, `largura_do_rio_px`, `desenhar_rios`);
+  registro em `ESPEC-dados.md`, no fim. 7 testes em `tests/test_rio_largura.py`, com
+  controle negativo (a mesma linha terminando no mar não soma) e conferência em pixel
+  (a jusante do encontro mais grosso; a montante igual).
+- **Os dados de exemplo não têm afluente nenhum** (os 5 rios vão ao mar), então no mapa
+  de hoje a mudança é só a curva nova de largura. Para ver o efeito, a demonstração
+  põe dois afluentes **em memória**, sem gravar nada, no Rio Largo (exemplo): **onde
+  ver**, `render/pendencias/b-rio-largo-comparacao.png` (sem afluentes à esquerda, com
+  à direita; resolução oficial). Os km a montante do Rio Largo vão de 237 para 507
+  depois do primeiro afluente e para 770 depois do segundo.
+- **O que ficou fraco**: o degrau é discreto na resolução oficial (2,4 para 3,0 px
+  antes do fator de traço); com rede de verdade (dezenas de afluentes) ele cresce.
+  Se ler pouco, o número a mexer é `LARGURA_RIO_FATOR`.

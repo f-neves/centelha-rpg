@@ -526,3 +526,21 @@ Recomendação do Cartógrafo, registrada para o usuário revisar.
 - **`dados/rotas.json`** (B4): FeatureCollection de rotas de comércio; `controle`
   (pontos e tipo de cada trecho) manda, a `geometry` é o traçado interpolado. Esquema
   e regras no cabeçalho de `ferramentas/backend/rotas.py`.
+
+### Largura do rio por afluentes acumulados: como ficou no código (2026-09-23, rodada das pendências)
+
+A frase "sem largura gravada (calculada por afluentes acumulados)" da seção dos rios
+passou a ser verdade no desenho final (`cartografia/composicao.py`, `km_a_montante` e
+`largura_do_rio_px`). **Nada muda no esquema**: continua sem largura gravada.
+Recomendação do Cartógrafo, a revisar:
+
+- a medida é o comprimento da rede a montante, em km no globo: o próprio rio até o
+  ponto, mais o comprimento total de cada afluente (`termina_em.tipo == "rio"`, e os
+  afluentes dele) a partir do trecho do rio-mãe mais perto da foz do afluente;
+- largura na resolução oficial `1,0 + 0,9 × raiz(km / 100)` px, teto 6 px (antes: de
+  1,2 a 3 px pela posição no traçado, sem olhar afluente);
+- braço de delta (`ramo_de`) começa com metade do que chega ao rio-mãe no ponto de
+  saída (o rio-mãe não perde nada por isso);
+- a versão do jogador soma só os rios que ela mostra (rio oculto não engrossa o
+  rio-mãe no mapa do jogador);
+- ciclo no dado (não deveria existir) não trava o desenho: o rio do ciclo soma zero.
