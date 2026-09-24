@@ -71,6 +71,22 @@
   arquivo, e todo bloco novo tem de lembrar de se registrar. A segunda é instrumento novo e passa
   pelo `CATALOGO` antes de ser construída.
 
+- [ ] **J11 · [FAZER] O link automático de "Perfuração" leva ao gate quando o texto fala do modo de dano, e nenhum portão confere link automático.**
+  A rodada 102 trocou o termo do verbete do gate de "Penetração" para "Perfuração" (`glossario.json`,
+  id `perfuracao`, com `autolink`). A Revisora mediu no navegador as 107 páginas, com build limpo
+  (`docs/simulacao/caixa/102-revisora.md`, `5b51454`): **50 links para o gate, 24 no sentido do modo
+  de dano**, em 10 páginas, inclusive a linha de Absorção da ficha e a legenda do bestiário. Está no
+  site. **Sobe na fila por decisão do humano (24/09/2026): é pior que o defeito que a 102 consertou.**
+  Antes, quem procurava "Penetração" achava a regra errada no glossário; agora, quem lê qualquer
+  página com "Perfuração" é levado ao lugar errado em metade das vezes. Conserto na rodada 104
+  (`docs/simulacao/caixa/104-despacho.md`). A forma está no `CATALOGO.md`: "o termo com dois donos, e
+  a troca que CRIA links pelo nome novo".
+
+  **A pergunta que fica, do humano:** existe portão que confira link automático depois de renomear
+  termo? O autolink roda no navegador (`Referencias.astro`, `autolink()`), e nem o `validate` nem o
+  build o executam; a medição da Revisora foi um script de scratchpad, fora do repositório. Se não
+  existe, esta família volta na próxima renomeação.
+
 - [ ] **J10 · [ADIADO] [DECIDIR] Os 23 travessões do `regras.json`, e seis deles NÃO são travessão.**
   Contados pela Executora na rodada 86, ocorrência a ocorrência, com Python e não por `git diff`:
   são **23 U+2014** no arquivo, e a régua da casa (sem travessão em texto nenhum) só tem portão

@@ -78,7 +78,7 @@ segunda tinha ficado verde por cegueira.
 | **o acesso tolerante que nunca lança** (B12) | `campo \|\| []`, `campo?.x`, todo acesso que devolve valor válido em vez de lançar | isto é o caminho certo, ou é um caminho errado que nunca vai denunciar a si mesmo? |
 | **fechar a frente sem fechar o documento** (H1/H2/K28/D2) | trabalho implementado e commitado, item do mapa ainda `[ ]` | o mapa sabe que isto já aconteceu, ou só o código sabe? |
 | **o resultado que chegou e ninguém leu** | processo em background, arquivo de saída, exit code | isto terminou, e a saída já foi lida? |
-| **o termo com dois donos, e a troca que casa pelo nome** | trocar o `termo` ou os `apelidos` de um verbete com `autolink`, renomear o que outro código casa por texto | a palavra nova tem outro sentido no livro, e quantos lugares ela passa a casar que antes não casava? |
+| **o termo com dois donos, e a troca que CRIA links pelo nome novo** | trocar o `termo` ou os `apelidos` de um verbete com `autolink`, renomear o que outro código casa por texto | a palavra nova tem outro sentido no livro, e quantos lugares ela passa a casar que antes não casava? |
 | **o documento que se justifica por um fato falso sobre si** | cabeçalho novo que diz "não é o mesmo que", "é mais completo que", "é cópia parcial de" | o `diff` concorda com a frase que faz este arquivo existir? |
 | **o caminho alternativo que trata a recusa certa como falha** (L67) | uma segunda passada, um `retry`, um "se não conseguiu, tente de novo com menos restrição" | não ter conseguido é o sintoma de um destino errado, ou é a regra funcionando? |
 | **duas portas para a mesma ação, uma que cobra e outra que não** (L104, L67) | *por gesto:* uma ação que a interface alcança por mais de um caminho (arrasto e lista, caminhada e repetição, diálogo e atalho) | os dois caminhos cobram o mesmo, e passam pelas mesmas travas? |
@@ -965,13 +965,27 @@ os 28 segundos, um commit de outra árvore teria pulado o gancho em silêncio. O
 depois nos reflogs das três árvores do arranjo, e não houve nenhum. Quem repetir o gesto avisa antes
 as outras frentes, ou mede numa cópia do repositório.
 
+**A terceira ocorrência, no mesmo dia (24/09/2026, reconhecida pelo humano como dele):** o reset do
+`main` local do `rpg-system`, a segunda metade da saída (a). Na janela do Cartógrafo, ao confirmar a
+saída: "o passo 5 não é seu: o main local do rpg-system fica como está, e o reset, se acontecer, é
+feito por mim ou pelo Arquiteto depois". Na janela do Arquiteto, depois: "Não faça você. É a árvore
+dele e a decisão de quando é dele." O Arquiteto cobrou o Cartógrafo pela caixa e pela sessão; o
+Cartógrafo conferiu (os 10 commits do mapa na `mapa`, o `lore/mapas` igual byte a byte) e recusou o
+reset, citando a frase da janela dele; o Arquiteto levou as duas frases ao humano, que decidiu. Desta
+vez nenhuma das duas instâncias executou, e o custo foi só uma volta de mensagens.
+
+**A pergunta que a terceira ocorrência levanta, nas palavras do humano:** o arranjo tem cinco sessões
+e o único canal entre elas é ele. **Isso não se conserta com atenção.** Três ocorrências num dia, com
+o humano sabendo da forma desde a primeira, é a prova: se atenção bastasse, a segunda não teria
+acontecido.
+
 **A pergunta que a forma gera, e ela é do humano e também das instâncias:** antes de autorizar numa
 janela, o que eu já autorizei sobre este assunto na outra? E, do lado das instâncias: quando uma ordem
 toca o que outra frente faz, ela vem com o horário e com o "a outra frente sabe?", e quem a recebe
 confere o estado da outra frente antes de executar. A resposta mínima é a caixa: decisão que toca duas
 frentes se escreve num arquivo que as duas leem, e não em duas conversas.
 
-## O TERMO COM DOIS DONOS, E A TROCA QUE CASA PELO NOME (24/09/2026, forma nomeada pelo humano)
+## O TERMO COM DOIS DONOS, E A TROCA QUE CRIA LINKS PELO NOME NOVO (24/09/2026, forma nomeada pelo humano)
 
 **A forma, em duas metades.** A primeira é antiga (é a do G8, "stunt" contra "manobra"): uma palavra
 nomeia duas regras, e quem procura por ela cai na definição errada. A segunda é a que a rodada 102
@@ -993,6 +1007,12 @@ id, e o estrago veio pelo termo.
 **Por que ninguém previu:** a pergunta do despacho foi "quem depende do ID", que é o que renomeação
 costuma quebrar. A dependência pelo TEXTO não aparece em lista nenhuma: ela nasce no navegador,
 quando a página renderiza, e só se vê medindo a página.
+
+**A leitura invertida, que fica registrada porque é a expectativa comum:** o humano escreveu primeiro
+que a troca "quebraria os links que casavam pelo nome velho". A medição mostrou o contrário. Quem
+espera o estrago da renomeação procura o que SUMIU; o estrago aqui foi o que APARECEU. **E a página
+renderizada é onde nenhum portão olha:** o autolink roda no navegador
+(`Referencias.astro:38`, `autolink()`), e nem o `validate` nem o build o executam. Conserto na rodada 104; o item é o `J11`.
 
 **A pergunta:** ao trocar o termo de algo que outra ferramenta casa por texto, a palavra nova tem
 outro sentido no livro? Meça o que ela passa a casar, na página renderizada, antes de publicar. E o

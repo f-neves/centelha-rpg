@@ -231,6 +231,48 @@ o `a5db998`, a cópia da rodada 100). Enquanto eles estiverem no `main` do `rpg-
 para o ramo `mapa` leva esses commits junto, e o `main` local volta ao `origin/main`); até lá, o
 Arquiteto continua publicando pela `centelha-arq-tmp`.
 
+**FEITO em 24/09/2026, pelo Arquiteto, por decisão do humano (a opção 1):** conferido antes, por
+conteúdo e não por sha (`git cherry -v mapa main`), que os 10 commits do mapa estão na `mapa` e que o
+`a5db998` tem o seu equivalente no `origin/main` (`a4a9724`); o Cartógrafo conferiu o mesmo pelo lado
+dele (o `lore/mapas` da `mapa` igual byte a byte ao do `4643529`). Então `git reset --keep origin/main`
+no `rpg-system` (de `4643529` para `276bcad`), que guardou o `lore/mapas/dados/camadas_referencia.json`
+sujo (igual nos dois pontos) e não tocou o `lore/economia/` não versionado; depois
+`git worktree remove ../centelha-arq-tmp`. **A medição que ficou devendo, a da REMOÇÃO:** o
+`.git/config` ficou com o mesmo md5 (`f22331122c69ca04a8f0c1342fcefc42`) e o mesmo mtime (24/09
+03:55:45) antes do reset, depois dele e depois da remoção; o `.git/config.worktree` do `rpg-system`
+também não mudou (`77052069529f274a440ee8312487f669`); o `core.hooksPath` lido em cada uma das quatro
+árvores que ficaram deu `scripts/hooks`; o `test-portoes` passou depois. **O Arquiteto voltou a
+publicar pelo `rpg-system`.** Ficam quatro árvores: `rpg-system` (`main`), `centelha-executora`,
+`centelha-mapa` e `centelha-techlead-revisora`.
+
+**O QUE A REMOÇÃO QUEBROU, e a regra que sai dela.** A `centelha-arq-tmp` tinha um junction de
+`node_modules` apontando para o do `rpg-system`, e o `git worktree remove` desceu por ele: o
+`rpg-system/node_modules` ficou vazio às 04:07:40, o mesmo instante da remoção. Quem usa a pasta por
+junction (a Executora e o Cartógrafo) ficou sem node, e o gancho de commit parou em todas as árvores
+menos na da Revisora, que tem `node_modules` próprio. **A regra, que o `CLAUDE.local.md` da
+`centelha-mapa` já tinha e este plano não:** um junction se desfaz com `cmd /c rmdir <caminho>` ANTES
+de remover a árvore que o contém, e nunca por remoção recursiva (`git worktree remove`, `rm -rf`,
+`Remove-Item -Recurse`), que atravessa o junction e apaga o conteúdo do diretório real. O gancho de
+`pre-commit` já tratava o mesmo perigo na cópia dele (`remover_link_node_modules_com_seguranca`); o
+Arquiteto não levou o aviso ao gesto de remover uma árvore inteira.
+
+**O que a medição mostrou sozinha (o humano pediu que se registre):** a Revisora foi a ÚNICA que não
+caiu, porque é a única com `node_modules` próprio, e era ela que estava trabalhando (o veredito da 103
+saiu durante o incidente). O junction economiza cerca de 465 MB por árvore e custou a pasta inteira
+mais duas frentes paradas. **Restaurado por `npm ci` no `rpg-system`, por decisão do humano** (e não
+por cópia da pasta da Revisora: "cópia de árvore que ninguém montou volta como defeito estranho daqui
+a três semanas"): 18 s, 379 pacotes, 463 MB, `test-portoes` verde, e o `esbuild` carregando pela
+junction da Executora e da do mapa.
+
+**A conta que o humano pediu, para rever o junction (medida em 24/09/2026):** o disco `C:` tem 476 GB,
+372 GB usados e **105 GB livres** (78%). Um `node_modules` pelo `package-lock` de hoje ocupa **463 a
+466 MB** (463 no `rpg-system` recém-refeito, 466 no da Revisora). Hoje dependem do junction duas
+árvores (`centelha-executora` e `centelha-mapa`); dar a cada uma a sua custa **cerca de 0,93 GB**, menos
+de 1% do livre, mais um `npm ci` de uns 20 s em cada, com rede. **Cabe.** Se o humano decidir tirar o
+junction, a regra do `npm install` só no `rpg-system` muda junto (cada árvore passa a instalar a sua,
+pelo `npm ci`), e a regra do `rmdir` deixa de ser necessária para essas duas. **Decisão do humano;
+nada foi instalado nas outras árvores.**
+
 **O `.git/config` e a blindagem do Cartógrafo (fatos dele, medidos em 24/09/2026):**
 `extensions.worktreeConfig=true` no config comum, e um `.git/config.worktree` no `rpg-system` com
 `core.hooksPath=scripts/hooks`. No git 2.45.1, `git worktree add` COPIA o `config.worktree` da árvore

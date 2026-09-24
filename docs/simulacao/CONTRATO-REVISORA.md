@@ -23,8 +23,8 @@ enquanto ela ainda está no meio de julgar um diff · e nesse caso ela está
 revisando duas árvores achando que é uma, sem saber qual pedaço do veredito
 vale para qual commit.
 
-**Onde está agora:** `C:/Users/Neves/ClaudeCode/centelha-techlead-revisora`, detached, no sha
-que o último aviso de rodada mandou. **Qual sha é esse não se escreve aqui**, e a ausência é
+**Onde está agora:** `C:/Users/Neves/ClaudeCode/centelha-techlead-revisora`, na branch `revisora`
+(§0.1, desde 24/09/2026; até então era HEAD destacado), no sha que o último aviso de rodada mandou. **Qual sha é esse não se escreve aqui**, e a ausência é
 deliberada: quem sabe onde a árvore está é a própria árvore, e a resposta sai de
 `git rev-parse HEAD` rodado nela, que é o passo 0 logo abaixo.
 
@@ -78,11 +78,14 @@ quando o Arquiteto manda reancorar.
 seção:**
 
 ```
-git merge-base --is-ancestor revisora origin/main   # o veredito anterior está no main? (pule na primeira vez)
+git merge-base --is-ancestor HEAD origin/main       # o veredito anterior (o HEAD de agora) está no main?
 git switch -C revisora <sha-do-aviso>               # a branch e a árvore vão para o sha do aviso
 ```
 
-**O primeiro comando é o que torna o segundo seguro.** O `-C` repõe a branch onde o aviso manda, e
+**O primeiro comando usa `HEAD`, e não o nome da branch, para servir sempre**, inclusive na primeira
+vez, quando a branch ainda não existe e o `HEAD` é o veredito anterior em HEAD destacado. A versão
+de antes dizia "pule na primeira vez", que é justo a vez mais frágil (CORRIGE da Revisora na rodada
+102, `5b51454`). **O primeiro comando é o que torna o segundo seguro.** O `-C` repõe a branch onde o aviso manda, e
 se o veredito anterior ainda não tiver chegado ao `main`, ele deixa de estar na branch (continua no
 `reflog`, mas é o caminho que orfanou os vereditos 27 e 28). **Se o primeiro comando falhar, PARE e
 avise o Arquiteto**, antes de reancorar.

@@ -92,3 +92,13 @@ Enquanto não voltar, o `rpg-system` é a árvore mais desatualizada das cinco (
 **O pedido, do humano:** confirme que os commits do mapa estão na `mapa`. Se estão, o `main` local
 volta ao `origin/main`. Se falta algum, diga qual, e leve antes. **Quem faz é você**: a árvore é sua,
 e a hora também. O Arquiteto não toca no `rpg-system`.
+
+## FEITO · 24/09/2026 · o reset foi do Arquiteto, por decisão do humano
+
+**Você fez certo em recusar.** A frase da sua janela ("o passo 5 não é seu") e a da janela do Arquiteto
+("Não faça você") se contradiziam; o humano reconheceu as duas como dele e decidiu que o Arquiteto faz.
+Feito: `git reset --keep origin/main` no `rpg-system` (`4643529` → `276bcad`), com o
+`camadas_referencia.json` sujo guardado e o `lore/economia/` intocado, e a `centelha-arq-tmp`
+removida. O `.git/config` não mudou em nenhum dos dois gestos (md5 e mtime iguais), e o
+`core.hooksPath` dá `scripts/hooks` nas quatro árvores, a sua inclusive. Detalhe em
+`plano-worktrees.md`, seção 11. O caso virou a terceira ocorrência do mesmo dia no `CATALOGO.md`.
