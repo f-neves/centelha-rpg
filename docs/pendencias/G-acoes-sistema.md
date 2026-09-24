@@ -139,4 +139,23 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   são texto: nada disso é lido pelo motor nem aparece na ficha. Os melhores candidatos são a
   tabela de dano por queda, o Desgaste e os cinco números das peças do ofício, que destravariam
   o ajuste de peça na ficha deixar de ser um campo livre.
+- [ ] **G14 · [DECIDIR] Firula na ação Longa.** Levantado em 24/09/2026. O documento de regra
+  admite: `Acoes_Sistema.md:168` põe a Firula entre os meios de levantar a média, e `:331-334`
+  converte ("em modo Longa, Firula em dado vale a média do dado", nível 2 = +3,5, nível 3 = +7).
+  O capítulo publicado tirou a Firula da lista (`acoes-e-sistema.md:109`), e nenhum texto em
+  `src/` fala de Firula na Longa. Decidir se vale e alinhar os dois.
+- [ ] **G15 · [DECIDIR] Como o bônus fixo de Proeza entra na Longa.** Levantado em 24/09/2026.
+  `acoes-e-sistema.md:107-109` diz que Proezas e Artes quebram a parede da Longa e levantam a
+  média, mas não diz a forma. Um "+3 em Ofícios" (Mãos Hábeis) soma à média? Vale o mesmo para as
+  Técnicas de estado do Artesão (Obra Fina, Reparo Veloz), que não trazem número.
+- [ ] **G16 · [DECIDIR] Alcance da regra da maior e da menor.** Levantado em 24/09/2026.
+  `acoes-e-sistema.md:193` restringe à "secundária que a ação nomear"; `habilidades-secundarias.md:15`
+  formula sem a trava ("Quando as duas cabem na mesma ação"). E o documento de regra diz "que a
+  ficha nomear" (`Acoes_Sistema.md:593`). Decidir o alcance e alinhar os três textos.
+- [ ] **G17 · [CONSERTAR] Nomes de ofício divergentes.** Levantado em 24/09/2026.
+  `Acoes_Sistema.md:1043-1045` usa Ferraria, Armaria, Curtume, Alfaiataria e Culinária; o catálogo
+  publicado de secundárias usa Ferreiro, Couraria, Costura e Gastronomia (`habilidades-secundarias.md:69-87`,
+  que é a fonte, gerada de `habilidades-secundarias.json`). O capítulo `acoes-oficio-e-mundo.md:51`
+  já segue o catálogo. Alinhar o documento de regra ao catálogo; Armaria (usada na tabela, `:168`)
+  não existe como secundária e pede decisão à parte.
 

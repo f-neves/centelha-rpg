@@ -42,16 +42,16 @@ está na seção 3.
 | A | Arcano · As Artes | [`A-arcano-artes.md`](docs/pendencias/A-arcano-artes.md) | 28 | 18 | 1 | 9 | 11 | 4 | 4 | 0 | 0 | 0 |
 | B | Bestiário | [`B-bestiario.md`](docs/pendencias/B-bestiario.md) | 14 | 9 | 0 | 5 | 4 | 5 | 0 | 0 | 0 | 0 |
 | C | Trilhas de Feitiçaria | [`C-trilhas-feiticaria.md`](docs/pendencias/C-trilhas-feiticaria.md) | 4 | 4 | 0 | 0 | 2 | 1 | 0 | 0 | 0 | 1 |
-| D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 6 | 3 | 0 | 3 | 0 | 1 | 0 | 0 | 0 | 2 |
+| D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 8 | 5 | 0 | 3 | 2 | 1 | 0 | 0 | 0 | 2 |
 | E | Social, Mental e Antecedentes | [`E-social-mental-antecedentes.md`](docs/pendencias/E-social-mental-antecedentes.md) | 10 | 7 | 0 | 3 | 5 | 1 | 0 | 1 | 0 | 0 |
 | F | Lore | [`F-lore.md`](docs/pendencias/F-lore.md) | 10 | 9 | 0 | 1 | 6 | 0 | 3 | 0 | 0 | 0 |
-| G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 15 | 5 | 0 | 10 | 3 | 2 | 0 | 0 | 0 | 0 |
+| G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 19 | 9 | 0 | 10 | 6 | 2 | 0 | 1 | 0 | 0 |
 | H | Arremesso | [`H-arremesso.md`](docs/pendencias/H-arremesso.md) | 4 | 2 | 0 | 2 | 1 | 0 | 0 | 0 | 0 | 1 |
 | I | Mesa virtual · tempo real | [`I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 14 | 10 | 2 | 2 | 3 | 8 | 0 | 0 | 0 | 1 |
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 12 | 9 | 0 | 3 | 1 | 3 | 0 | 2 | 1 | 2 |
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 31 | 17 | 1 | 13 | 13 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
-| | **Total** | | **255** | **167** | **4** | **84** | **49** | **38** | **8** | **3** | **66** | **7** |
+| | **Total** | | **261** | **173** | **4** | **84** | **54** | **38** | **8** | **4** | **66** | **7** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -374,6 +374,8 @@ Fechados (0): nenhum.
 | D3 | aberto, ADIADO | DECIDIR | Densidade dos funis. |
 | D5 | aberto | FAZER | Reorg de conteúdo. |
 | D6 | aberto, ADIADO | DECIDIR | Custo de Técnica e de Arte em ×10. |
+| D7 | aberto | DECIDIR | Bônus de Centelha em ataque e defesa: +1 ou +2 por ponto? |
+| D8 | aberto | DECIDIR | Mãos Hábeis: +3 ou +2 em Ofícios? |
 
 Fechados (3): D1, D2, D4.
 
@@ -416,6 +418,10 @@ Fechados (1): F9.
 | G12 | aberto | DECIDIR | Desgaste e ferimento não se conhecem. |
 | G13 | aberto | FAZER | As sobras das duas famílias escritas. |
 | G11 | aberto | FAZER | `regras.json → acoes`. |
+| G14 | aberto | DECIDIR | Firula na ação Longa. |
+| G15 | aberto | DECIDIR | Como o bônus fixo de Proeza entra na Longa. |
+| G16 | aberto | DECIDIR | Alcance da regra da maior e da menor. |
+| G17 | aberto | CONSERTAR | Nomes de ofício divergentes. |
 
 Fechados (10): G1, G3, G4, "As cinco físicas de toda sessão.", G5, G5b, G7, G8, G9, G10.
 

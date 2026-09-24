@@ -30,4 +30,12 @@ Detalhe em `Proezas_revisao.md`.
 - [ ] **D6 · [ADIADO] [DECIDIR] Custo de Técnica e de Arte em ×10.** Ficou de fora da recalibração de XP de
   propósito (largura segue sendo o gasto caro). Confirmar que fica.
   **Adiado na rodada 96 (23/09/2026), por proposta do humano:** refinamento que ninguém sentiu falta em mesa.
+- [ ] **D7 · [DECIDIR] Bônus de Centelha em ataque e defesa: +1 ou +2 por ponto?** Levantado em
+  24/09/2026, numa leitura da frente de economia. `centelha.md:44` e `:65` dizem "+1 por ponto de
+  Centelha" no ataque e nas Defesas; `regras.json:114` (nota de `escalasProeza`) diz "+2/ponto de
+  Centelha". Decidir qual vale e alinhar o outro, conferindo também o que o motor usa.
+- [ ] **D8 · [DECIDIR] Mãos Hábeis: +3 ou +2 em Ofícios?** Levantado em 24/09/2026.
+  `tecnicas.json:6076` dá "+3 em Ofícios" (a régua de nível 1 da trilha Bônus); `Proezas_revisao.md:606`
+  dá "+2". O caso é o mesmo do D2 (o doc ficou na régua velha), mas a Técnica pesa direto no
+  ganho por ofício e pede confirmação antes de mexer.
 
