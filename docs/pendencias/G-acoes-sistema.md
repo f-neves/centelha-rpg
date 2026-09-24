@@ -164,18 +164,32 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   +1d6 por Margem ("Ajudar exige saber fazer"). O capítulo publicado (`acoes-e-sistema.md:172`)
   diz que o ajudante rola contra **metade** da Dificuldade e concede +1 a cada 6 pontos acima, com
   "forjar" como exemplo. Decidir qual vale e alinhar os dois.
-- [ ] **G19 · [DECIDIR] Alcance da direção de obra.** Levantado em 24/09/2026. A fórmula "Sob
+- [x] **G19 · [DECIDIR] Alcance da direção de obra.** Levantado em 24/09/2026. A fórmula "Sob
   direção de quem tem o ofício, o ajudante sem ofício trabalha contra Dificuldade 4"
   (`Acoes_Sistema.md:1195`, `acoes-oficio-e-mundo.md:119`) é genérica, mas a moldura ("Direção de
   obra", "mestre de obras", "em qualquer obra", `:1191-1200` e capítulo `:117-121`) e o único
   exemplo (a muralha, `:1260-1264`) são de obra. Decidir se vale para qualquer ofício (forja,
   alfaiataria, carpintaria de peça). Nota: se valer para forja, um braçal (média 7, contra 4)
   rende 3 pontos por dia numa espada, contra 3,5 do artesão comum (média 10,5, contra 7).
-- [ ] **G20 · [DECIDIR] Os aprendizes da espada.** Levantado em 24/09/2026. O §7.6 "Ajuda"
+  **Decidido pelo autor em 24/09/2026, aplicado em `0a934cf`:** "A Direção a Dificuldade 4 é regra
+  de OBRA (construção: alvenaria, engenharia, naval, carpintaria de construção, as obras das tabelas
+  de semanas e estações). Na FABRICAÇÃO de peças vale a regra nova: 'Quem ajuda a fabricar sob a
+  condução de alguém que cumpre o Requisito da peça não precisa cumprir o Requisito, mas trabalha
+  contra a Dificuldade da peça: se a média não passar dela, não soma Acúmulo.'" A nota acima deixa
+  de valer: na espada o braçal trabalha contra 7, e com média 7 não soma. As linhas citadas neste
+  item são do texto de antes da decisão (`bbec609`).
+- [x] **G20 · [DECIDIR] Os aprendizes da espada.** Levantado em 24/09/2026. O §7.6 "Ajuda"
   (`Acoes_Sistema.md:1189`, `acoes-oficio-e-mundo.md:115`) diz que "dez aprendizes aceleram uma
   espada Comum e não fazem uma Ótima", mas não diz se eles têm ofício, contra qual Dificuldade
   trabalham (a da peça ou a 4 da direção) nem como cumprem o Requisito 3 da espada: a dispensa de
   Requisito (`Acoes_Sistema.md:1079-1080`) só vale para o "ajudante sob direção".
+  **Decidido pelo autor em 24/09/2026, aplicado em `0a934cf`,** pela mesma frase da G19: "Quem ajuda
+  a fabricar sob a condução de alguém que cumpre o Requisito da peça não precisa cumprir o
+  Requisito, mas trabalha contra a Dificuldade da peça: se a média não passar dela, não soma
+  Acúmulo." Os aprendizes dispensam o Requisito 3 sob a condução do ferreiro e trabalham contra a
+  Dificuldade 7 da espada. Fica em aberto, no relato da rodada 105 (`105-executora.md`), se a média
+  de um aprendiz passa de 7: o livro chama de aprendiz a Habilidade 1, e só com Destreza 4 a soma
+  chega a 5. As linhas citadas neste item são do texto de antes da decisão (`bbec609`).
 - [ ] **G21 · [DECIDIR] Direção sem custo.** Levantado em 24/09/2026. No exemplo da muralha
   (`Acoes_Sistema.md:1272-1276`, `acoes-oficio-e-mundo.md:182`) o mestre de obras soma os 5 pontos
   próprios por estação além de dirigir dez ajudantes (5 + 10 × 3 = 35). Decidir se dirigir consome
