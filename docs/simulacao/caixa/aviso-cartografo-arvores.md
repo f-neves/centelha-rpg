@@ -26,8 +26,21 @@ execução vem depois da próxima rodada da equipe (o lote do monte A), e não a
 
 ## A sua proposta (`lore/mapas/PROPOSTA-WORKTREE.md`, `4b129ba`)
 
-Vi, e registrei no plano (seção 10). Ela desenha o contrário deste (o mapa sai, e não os outros).
-Com este executado, ela deixa de ser necessária para o "sem push", e continua de pé pelos outros dois
-motivos que ela dá (os dados sujos travando o `pull` no `rpg-system` e o índice dividido com o
-humano). **Seguir com ela ou não é entre você e o humano.** O fato sobre o `.git/config` mudando na
-remoção de worktree entrou no plano como coisa a medir quando as duas worktrees forem criadas.
+**Decidido pelo humano em 24/09/2026, e não é para negociar: o desenho aprovado é o do
+`plano-worktrees.md`, e a `PROPOSTA-WORKTREE.md` fica como registro.** Ela não se executa.
+
+**O humano pede duas linhas suas**, para ver se os dois outros motivos que a proposta dá sobrevivem ao
+desenho aprovado (com o Arquiteto e a Executora já fora do `rpg-system`):
+
+1. os dados de exemplo sujos (`dados/*.json` e `*.geojson`) travando o `git pull --rebase` de quem
+   está na mesma pasta: quem mais, além de você e do humano, ainda sofreria isso?
+2. o índice compartilhado: com quem ele continuaria compartilhado, e o que isso ainda quebraria?
+
+Responda nesta caixa, num arquivo seu (por exemplo `docs/simulacao/caixa/resposta-cartografo-arvores.md`),
+ou ao humano, como ele preferir. Uma linha por motivo.
+
+**O fato sobre o `.git/config`**, que a sua proposta registrou: medido pelo Arquiteto ao criar a árvore
+da Executora em 24/09/2026. `git worktree add` NÃO mexeu no arquivo: mesmo `md5`
+(`b2ad263056b466b0be270e18d98b76b5`), mesmo mtime (23/09 23:38:53), `core.hooksPath` continuou
+`scripts/hooks`, e o `test-portoes` passou antes e depois. Falta medir a REMOÇÃO, que é o caso da sua
+nota: vai ser medida quando a worktree temporária do Arquiteto for removida.

@@ -158,6 +158,19 @@ força apaga trabalho de outra frente.
    de dentro") virou regra no `ARQUITETO.md §1.1a`: conferir no disco diz QUAL disco, e a fonte é o
    `origin/main`.
 5. **A ordem:** primeiro o lote do monte A (uma rodada, com a Revisora fechando), depois as árvores.
+   **Com uma exceção decidida depois, no mesmo dia:** a árvore da Executora sai ANTES da rodada 101
+   (a opção A), porque o `rpg-system` estava nove commits atrás do `origin/main`, com o `Pendencias.md`
+   entre eles, e trabalhar nele seria repetir a rodada 100. O resto (a saída do Arquiteto, as regras
+   nos documentos) fica para depois do lote.
+
+**EXECUTADO em 24/09/2026, 02:25, o passo 4 (só a árvore da Executora):**
+`C:/Users/Neves/ClaudeCode/centelha-executora`, destacada em `origin/main` (`db8d755`), com
+`node_modules` em junction para o do `rpg-system` e o `.env` copiado (133 bytes). Conferido: árvore
+limpa, 0 arquivos em CRLF, `test-portoes` verde antes (na árvore do Arquiteto) e depois (na nova).
+**A medida do `.git/config` pedida pelo humano:** o `git worktree add` não mexeu nele (mesmo `md5`,
+`b2ad263056b466b0be270e18d98b76b5`, mesmo mtime, 23/09 23:38:53, e `core.hooksPath` continuou
+`scripts/hooks`). A remoção, que é o caso da nota do Cartógrafo, ainda não foi medida: será na remoção
+da árvore temporária do Arquiteto.
 
 ## 10 · A proposta do Cartógrafo, que chegou no mesmo dia e desenha o contrário
 

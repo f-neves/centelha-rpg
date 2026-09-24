@@ -47,11 +47,11 @@ está na seção 3.
 | F | Lore | [`F-lore.md`](docs/pendencias/F-lore.md) | 10 | 9 | 0 | 1 | 6 | 0 | 3 | 0 | 0 | 0 |
 | G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 15 | 5 | 0 | 10 | 3 | 2 | 0 | 0 | 0 | 0 |
 | H | Arremesso | [`H-arremesso.md`](docs/pendencias/H-arremesso.md) | 4 | 2 | 0 | 2 | 1 | 0 | 0 | 0 | 0 | 1 |
-| I | Mesa virtual · tempo real | [`I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 14 | 10 | 2 | 2 | 2 | 9 | 0 | 0 | 0 | 1 |
+| I | Mesa virtual · tempo real | [`I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 14 | 10 | 2 | 2 | 3 | 8 | 0 | 0 | 0 | 1 |
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 11 | 8 | 0 | 3 | 1 | 2 | 0 | 2 | 1 | 2 |
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 30 | 16 | 1 | 13 | 13 | 4 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
-| | **Total** | | **253** | **165** | **4** | **84** | **48** | **37** | **8** | **3** | **66** | **7** |
+| | **Total** | | **253** | **165** | **4** | **84** | **49** | **36** | **8** | **3** | **66** | **7** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -442,7 +442,7 @@ Fechados (2): H1, H2.
 | I9 | aberto | DECIDIR | O caderno de melhorias do tabuleiro. |
 | I10 | aberto | FAZER | As pontas soltas do jogador no tabuleiro. |
 | I11 | parcial | DECIDIR | A Arte sai no ÚLTIMO Tick, no tabuleiro. PARCIAL em 2026-08-21. |
-| I12 | parcial | FAZER | O Grid como copiloto: menos toque, mais escolha. FEITO em 21/08, menos uma decisão de regra. |
+| I12 | parcial | DECIDIR | O Grid como copiloto: menos toque, mais escolha. FEITO em 21/08, menos uma decisão de regra. |
 
 Fechados (2): I7, I13.
 

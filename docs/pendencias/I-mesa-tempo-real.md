@@ -89,7 +89,7 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   mira e a forma travadas cedo, quem se move durante o Preparo escapa; travadas tarde, não escapa.
   **A marca `[DECIDIR]` entrou em 24/09/2026**: o item carregava a pergunta sem marca, e o contador
   da lista não o via.
-- [~] **I12 · [FAZER] O Grid como copiloto: menos toque, mais escolha. FEITO em 21/08, menos uma decisão de regra.** Medido
+- [~] **I12 · [DECIDIR] O Grid como copiloto: menos toque, mais escolha. FEITO em 21/08, menos uma decisão de regra.** Medido
   antes: **um ataque custava seis toques e um número digitado, e só três dos sete eram escolha**; o
   resto era o mestre transcrevendo para o Grid um número que o Grid já tinha. O documento é o
   `Grid_Automacao.md`: a conta do atrito, o princípio (nunca perguntar o que dá para calcular · todo
@@ -123,10 +123,15 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   (o `RESUMO` não o carrega). Enquanto não chegar, a folha cala para o arremesso, que é melhor do
   que mostrar uma faixa inventada.
 
-  **A marca `[FAZER]` entrou em 24/09/2026, e não `[DECIDIR]`, apesar do título:** a regra do
-  arremesso existe (o alcance sai da Força de Arremesso de quem joga, `Arremesso.md`), e o que falta
-  é transporte, levar esse número até o `RESUMO`. A "decisão de regra" do título é a que a folha
-  tomou em 21/08 (mostrar e não aplicar). Se o humano ler diferente, a marca troca.
+  **A marca é `[DECIDIR]`, desde 24/09/2026.** O Arquiteto marcou `[FAZER]` ("é só transporte"), o
+  humano discordou, e a conferência no código deu razão a ele: (a) o catálogo dá um `distMax` fixo
+  às 8 armas de arremesso de `armas.json`, e o `Arremesso.md` diz que o máximo sai da Força de
+  Arremesso de quem joga, então há duas fontes para o mesmo número; (b) as frações do alcance livre
+  das armas arremessadas estão só na tabela do `Arremesso.md`, e nenhuma das 8 tem
+  `alcanceLivreFrac`; (c) "a folha cala" pode estar velho: `alcanceDaArma` só devolve nada quando a
+  arma não tem `distMax`, e essas 8 têm, então a folha mostraria faixas do catálogo com o livre em
+  zero (leitura de código, não exercitada na tela). Qual fonte vale é regra, e está na lista única
+  de decisões (`docs/simulacao/caixa/lista-unica-decisoes.md`, seção I).
 - [x] **I13 · O Grid no telefone. FEITO em 2026-08-21**, nas sete fases. O tabuleiro cresceu inteiro numa tela de notebook, e as
   oito emendas do I12 foram desenhadas com mouse na mão. Medido na bancada em 21/08, num viewport de
   390×844 com dedo: **456px de mobília antes do tabuleiro (54% da tela)**, a barra da arena quebrando

@@ -872,3 +872,53 @@ do diálogo de movimento, que diz na própria tela que não cobra) ou defeito.
 **O gatilho:** um caminho novo até uma ação que já existe, e um item que diz "só por este caminho"
 (o `L67` dizia "inalcançável pelo arrasto e pela barra de comando; só a perseguição automática o
 produz"). Quem escreve "só por este caminho" já está olhando para duas portas.
+
+## A METADE DE UMA REGRA PUBLICADA QUE O CÓDIGO LARGOU NUM COMENTÁRIO (24/09/2026, caso do humano, raiz 6)
+
+**A forma é a da tabela, *a regra publicada que nunca é chamada*,** com um agravante: aqui a regra é
+chamada pela metade, e o corte está justificado num comentário de código, que é o lugar em que
+ninguém que decide regra vai procurar.
+
+**O caso.** Desde 11/06/2026 (`1418de1`) a Corrida publicada tem duas fases: os 3 primeiros Ticks na
+velocidade de Arranque, e do 4º em diante na de Corrida (`combate.md:298-302`, e a nota de
+`regras.json` `derivados.deslocamento`). Em 28/08/2026 (`6ba575e`) o Grid passou a andar o passo real
+de cada peça, e a função que escolhe o passo (`passoNoModo`) anda o Arranque em TODOS os Ticks de uma
+Corrida e de uma Investida, com o porquê num comentário: "os três primeiros Ticks de uma corrida são
+a aceleração, e quase toda perseguição de combate cabe neles". A segunda fase nunca roda. Quem
+implementou tomou uma decisão de regra de jogo (a Corrida de combate é só o arranque), e ela nunca
+passou pelo humano. Achada pela leitura de novata (a22 a a24), que viu dois números para a mesma
+palavra, e lida como "dois motores" até o Arquiteto abrir o código.
+
+**O que torna o caso pior que "a regra publicada que nunca é chamada":** o comentário parece
+procedência. Quem lê o código acha a razão escrita e para ali; quem lê o capítulo acha a regra inteira
+e não sabe que metade dela não roda. As duas leituras estão certas sobre o próprio documento, e a
+divergência só aparece para quem abre os dois.
+
+**A pergunta que a forma gera:** este comentário explica COMO o código faz a regra, ou decide O QUE a
+regra é? "Os três primeiros Ticks são a aceleração" descreve; "e quase toda perseguição cabe neles,
+então só eles" decide. Comentário que troca "a regra diz" por "na prática basta" é decisão de regra, e
+vai para quem decide regra, com o texto da regra ao lado.
+
+## DUAS FRENTES DESENHANDO A MESMA REORGANIZAÇÃO, EM DIREÇÕES OPOSTAS (24/09/2026, caso do humano)
+
+**A forma é a das duas listas que precisam concordar** (a do "transporte que descarta"), agora em
+infraestrutura e não em dado: dois documentos que descrevem a mesma coisa, escritos por quem não sabia
+do outro.
+
+**O caso.** No mesmo dia, 24/09/2026, o Arquiteto escreveu `docs/simulacao/caixa/plano-worktrees.md`
+(o Arquiteto e a Executora saem do `rpg-system`, e o mapa fica) e o Cartógrafo escreveu
+`lore/mapas/PROPOSTA-WORKTREE.md` (`4b129ba`: o mapa sai, e o Arquiteto fica). Os dois partiram do mesmo
+defeito medido (o `HEAD` compartilhado fazendo "sem push" não existir), os dois citaram a mesma regra
+do `CLAUDE.md` ("uma worktree por frente"), e nenhum dos dois sabia do outro ao escrever. O Arquiteto
+só leu a proposta depois de o plano dele estar publicado e entregue ao humano, e só a achou porque foi
+conferir um commit novo no `main` local por outro motivo.
+
+**Por que aconteceu:** as duas frentes não têm canal uma com a outra. O Cartógrafo não commita na
+caixa do arranjo, e o Arquiteto não lê o `lore/mapas/` por hábito. E o próprio defeito que os dois
+planos consertam esconde um do outro: o que o Arquiteto publica pela árvore dele não aparece no disco
+do Cartógrafo, e o que o Cartógrafo commita sem push não aparece no `origin/main`.
+
+**A pergunta que a forma gera:** antes de desenhar uma mudança que toca outra frente (o diretório, o
+índice, o `main`, uma regra de convívio), quem mais pode estar desenhando a mesma coisa, e onde ela
+escreveria? A resposta mínima é olhar o `git log` do `main` LOCAL e do `origin/main` das últimas horas
+atrás de palavras do mesmo assunto, e avisar pela caixa antes de levar o plano ao humano.
