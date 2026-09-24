@@ -208,6 +208,8 @@ inteiro.
 **Escopo: só ações físicas**, definidas por atributo-base (Vigor ou Destreza), em todos os três
 graus — não há progressão para social/mental nos graus mais altos. Confirmado pelo humano: "todas
 as penalidades de dano entram nas ações físicas, o personagem está com dificuldade de se mover."
+*Trocado pela §17 (23/09/2026): o atributo-base passou a ser Força, Destreza ou Vigor. Aplicado no
+livro na rodada 98. Esta linha fica como registro.*
 
 **O piso do pool: mantido em 1d6, igual ao Desgaste.** Grave e Crítico nunca zeram o pool de
 verdade na prática (mesma regra que já protege o Desgaste, `acoes-resistir.md`), mesmo que a
@@ -957,6 +959,8 @@ mudou a penalidade de obrigatória para opcional. **O bônus de ferimento do §1
 - **O +2 da fúria vale para ação física pela definição do capítulo de ferimentos** ("as que rolam
   Vigor ou Destreza", `vida-ferimentos-cura.md`), sem lista. **Arremesso ganha; Atirador (arco,
   besta) não.** Aparar é a Defesa por Bloqueio, que em fúria leva −2, e não ganha nada.
+  *Trocado pela §17 (23/09/2026): a definição passou a ser "as que rolam Força, Destreza ou Vigor".
+  Aplicado no livro e no `FRENESI.md` na rodada 98. Esta linha fica como registro.*
 
 **O `FRENESI.md` (raiz, commitado em 23/09/2026) foi atualizado com tudo isto em 23/09/2026:** o §6
 reescrito, o §8 (saída) reescrito, a justificativa do §10 corrigida, o §11 com a lista nova de pendências e a

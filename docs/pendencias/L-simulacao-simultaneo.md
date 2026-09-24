@@ -6026,3 +6026,12 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   `aparencia-virtudes-vontade.md:69` perde o parêntese "sem risco nem contrapartida" e ganha a
   descrição do ciclo de carga/recarga.
 
+
+- [ ] **L103 · [ANOTADO, alcance registrado pela Revisora na rodada 97, 24/09/2026, sem conserto] O laço do
+  harness não soma ao ataque as condições nem o porte que a mesa soma.** A mesa monta o ajuste do
+  acerto em `ajAtq` (`src/pages/mesa/grid.astro`) com o ferimento, as condições do atacante
+  (`somarCondicoes`, que traz o Desgaste em dado) e o porte (quando a bandeira está ligada); o laço
+  (`resolverContra`, em `scripts/sim/motor.mjs`) passa só o ferimento, desde a rodada 97 nas duas
+  moedas. **O espelho de motor concorda só porque as cenas dele não têm condição nem diferença de
+  porte**, então ele não prova nada sobre essas duas parcelas. Se uma cena do espelho ganhar
+  qualquer uma delas, o laço precisa da mesma soma antes.

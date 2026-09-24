@@ -142,7 +142,7 @@ O sangue orc guarda uma fúria que o corpo inteiro obedece. Ela vem em duas form
 **Ganha:**
 
 - **ignora a penalidade de ferimento**, como o traço de cada um diz acima;
-- **+2 no resultado** dos testes de ação física, que são os mesmos cuja penalidade de ferimento a fúria ignora: as ações que rolam Vigor ou Destreza ([Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura)). Atacar, agarrar, arrombar, escalar, nadar, investir e **arremessar** ganham, e saltar ou levantar peso também, quando forem teste. O **tiro** (Atirador: arco, besta) **não ganha**: a pontaria paciente é o oposto da fúria, e o machado arremessado é força bruta;
+- **+2 no resultado** dos testes de ação física, que são os mesmos cuja penalidade de ferimento a fúria ignora: as ações que rolam Força, Destreza ou Vigor ([Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura)). Atacar, agarrar, arrombar, escalar, nadar, investir e **arremessar** ganham, e saltar ou levantar peso também, quando forem teste. O **tiro** (Atirador: arco, besta) **não ganha**: a pontaria paciente é o oposto da fúria, e o machado arremessado é força bruta;
 - **+1 na soma** dos cálculos de ação física: distância de salto, deslocamento, capacidade de carga;
 - **Intimidar vira ação reflexa, com +2 dados** na parada. É a única ação social que a fúria permite.
 

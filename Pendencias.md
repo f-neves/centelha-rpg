@@ -50,8 +50,8 @@ está na seção 3.
 | I | Mesa virtual · tempo real | [`I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 14 | 10 | 2 | 2 | 1 | 8 | 0 | 0 | 2 | 1 |
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 11 | 8 | 0 | 3 | 1 | 2 | 0 | 2 | 1 | 2 |
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 30 | 16 | 1 | 13 | 12 | 4 | 0 | 0 | 1 | 0 |
-| L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 103 | 70 | 0 | 33 | 0 | 8 | 1 | 0 | 61 | 0 |
-| | **Total** | | **249** | **161** | **4** | **84** | **45** | **36** | **8** | **3** | **66** | **7** |
+| L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 104 | 71 | 0 | 33 | 0 | 8 | 1 | 0 | 62 | 0 |
+| | **Total** | | **250** | **162** | **4** | **84** | **45** | **36** | **8** | **3** | **67** | **7** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -561,6 +561,7 @@ Fechados (13): K29, K1, K2, K3, K10, K7, K15, K16, K22, K23, K26, K12, K13.
 | L69 | aberto | ANOTADO | Nem toda criatura chega pelo caminho de borda. |
 | L66 | aberto | ANOTADO | `porNoMapa` recusa em silêncio, e quem a chama tem de trazer o próprio sinal. |
 | L102 | aberto | AUTOR | M-18, Canalizar Virtude: teto ou contrapartida. Regra nova de verdade, não conserto pontual. |
+| L103 | aberto | ANOTADO | O laço do harness não soma ao ataque as condições nem o porte que a mesa soma. |
 
 Fechados (33): L5, L6, L9, L11, L12, L13, L14, L15, L17, L18, L19, L21, L22, L34, L32, L31, L27, L37, L39, L44, L46, L49, L50, L53, L61, L64, L67, L72, L73, L75, L79, L85, L68.
 

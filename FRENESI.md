@@ -113,7 +113,8 @@ vale cerca de 1,75 em média (às vezes vira +2 fixo, às vezes vira +1d6 −2);
 exatos 2, sem variação.
 
 **Quais testes ganham o +2** (fechado em 23/09/2026): os de ação física, pela mesma definição do
-capítulo de ferimentos (`vida-ferimentos-cura.md`, "as que rolam Vigor ou Destreza"), que é o
+capítulo de ferimentos (`vida-ferimentos-cura.md`, "as que rolam Força, Destreza ou Vigor", a Força
+incluída pela §17 do registro em 23/09/2026; antes dizia "Vigor ou Destreza"), que é o
 mesmo conjunto cujas penalidades a fúria ignora. Agarrar, arrombar, escalar, investir e
 **arremessar** ganham. **O tiro (Atirador: arco, besta) NÃO ganha**: a pontaria paciente é o
 oposto da fúria, e o machado arremessado é força bruta. Aparar não é teste, é a Defesa por
