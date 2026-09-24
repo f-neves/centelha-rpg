@@ -137,6 +137,15 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   CALA, o item é o que o texto diz; se ela MOSTRA faixa, há número inventado em produção e o item
   sobe. Cinco minutos de navegador da Executora, olhando a folha de uma arma de arremesso, depois que
   a rodada 101 fechar. É medição, e não conserto.
+
+  **MEDIDO em 24/09/2026 pela Executora (`docs/simulacao/caixa/medicao-i12.md`, `8ffc7e0`): a folha
+  MOSTRA faixa, e o item sobe de prioridade.** Na bancada, com a arma trocada pelo campo Arma da ficha
+  do lance, a folha usa **livre 0 m e máximo = `distMax` do catálogo**, o palpite lido no código. A
+  adaga de arremesso (`distMax` 10) a 4 m já sai na "2ª faixa (livre até 0 m, máximo 10 m): -6 no
+  acerto", a 7 m na 3ª (−9), a 9 m na 4ª (−12); a azagaia (`distMax` 40) a 4 m e a 7 m, na 1ª (−3). O
+  alvo mais perto já leva penalidade. **"A folha cala para o arremesso" estava velho: há número
+  inventado em produção**, em toda mesa que arremessa pelo Grid. Não medido: a arma vinda da ficha de
+  um PC equipado (o caminho é o mesmo `ra.arma`, não exercitado).
 - [x] **I13 · O Grid no telefone. FEITO em 2026-08-21**, nas sete fases. O tabuleiro cresceu inteiro numa tela de notebook, e as
   oito emendas do I12 foram desenhadas com mouse na mão. Medido na bancada em 21/08, num viewport de
   390×844 com dedo: **456px de mobília antes do tabuleiro (54% da tela)**, a barra da arena quebrando
