@@ -158,4 +158,26 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   que é a fonte, gerada de `habilidades-secundarias.json`). O capítulo `acoes-oficio-e-mundo.md:51`
   já segue o catálogo. Alinhar o documento de regra ao catálogo; Armaria (usada na tabela, `:168`)
   não existe como secundária e pede decisão à parte.
+- [ ] **G18 · [DECIDIR] Regra de ajudante divergente.** Levantado em 24/09/2026.
+  `Acoes_Sistema.md:256-282` (§3.5) tem dois modos: "Somar Acúmulo" em tarefa divisível e
+  "Apoiar o principal", em que o ajudante rola contra a **mesma** Dificuldade, dá +2 ao passar e
+  +1d6 por Margem ("Ajudar exige saber fazer"). O capítulo publicado (`acoes-e-sistema.md:172`)
+  diz que o ajudante rola contra **metade** da Dificuldade e concede +1 a cada 6 pontos acima, com
+  "forjar" como exemplo. Decidir qual vale e alinhar os dois.
+- [ ] **G19 · [DECIDIR] Alcance da direção de obra.** Levantado em 24/09/2026. A fórmula "Sob
+  direção de quem tem o ofício, o ajudante sem ofício trabalha contra Dificuldade 4"
+  (`Acoes_Sistema.md:1195`, `acoes-oficio-e-mundo.md:119`) é genérica, mas a moldura ("Direção de
+  obra", "mestre de obras", "em qualquer obra", `:1191-1200` e capítulo `:117-121`) e o único
+  exemplo (a muralha, `:1260-1264`) são de obra. Decidir se vale para qualquer ofício (forja,
+  alfaiataria, carpintaria de peça). Nota: se valer para forja, um braçal (média 7, contra 4)
+  rende 3 pontos por dia numa espada, contra 3,5 do artesão comum (média 10,5, contra 7).
+- [ ] **G20 · [DECIDIR] Os aprendizes da espada.** Levantado em 24/09/2026. O §7.6 "Ajuda"
+  (`Acoes_Sistema.md:1189`, `acoes-oficio-e-mundo.md:115`) diz que "dez aprendizes aceleram uma
+  espada Comum e não fazem uma Ótima", mas não diz se eles têm ofício, contra qual Dificuldade
+  trabalham (a da peça ou a 4 da direção) nem como cumprem o Requisito 3 da espada: a dispensa de
+  Requisito (`Acoes_Sistema.md:1079-1080`) só vale para o "ajudante sob direção".
+- [ ] **G21 · [DECIDIR] Direção sem custo.** Levantado em 24/09/2026. No exemplo da muralha
+  (`Acoes_Sistema.md:1260-1264`, `acoes-oficio-e-mundo.md:178`) o mestre de obras soma os 5 pontos
+  próprios por estação além de dirigir dez ajudantes (5 + 10 × 3 = 35). Decidir se dirigir consome
+  parte da produção do supervisor.
 
