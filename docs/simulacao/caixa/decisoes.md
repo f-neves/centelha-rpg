@@ -53,6 +53,13 @@ frase exata>" · substitui D<m>, se for o caso · <o que aconteceu>`.
   `centelha-arq-tmp` removida, às 04:07:40 (a remoção apagou o `node_modules` compartilhado; ver
   `plano-worktrees.md`, seção 11).
 
+- **D8** · 24/09/2026, depois de 14:55 · janela do Arquiteto · frentes Arquiteto, mapa · "quero (a) e
+  (c)": um papel fixo por pasta. O gancho global `~/.claude/hooks/papel-fixo.mjs` dá o nome à sessão e,
+  se a pasta já tem aquele papel noutra sessão, bloqueia e diz como abrir a que existe
+  (`cc rpg-system -papel <comando>`) ou como criar outra (`/<comando> novo`). Toca a frente do mapa numa
+  linha só: o cabeçalho do `.claude/commands/cartografo.md` ganha `papel: "Cartógrafo"`. A cópia do
+  arquivo na branch `mapa` não muda; quem decide levar a linha para lá é o Cartógrafo.
+
 **As três ocorrências da forma, contadas como o humano contou:** D1 contra D2 (os dois desenhos), D3
 (a decisão que reconciliava, escrita sobre um estado que já tinha andado) e D5 contra D6 (quem faz o
 reset).

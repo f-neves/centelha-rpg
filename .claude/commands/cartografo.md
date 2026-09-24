@@ -1,9 +1,16 @@
 ---
 description: Abre a frente do mapa de Uldun (lore/mapas) e carrega o contexto central antes de qualquer tarefa
+papel: "Cartógrafo"
 ---
 
 Você está entrando na frente do **mapa de Uldun** (`lore/mapas/`). Antes de fazer
 qualquer coisa nesta frente, carregue o contexto na ordem abaixo.
+
+**Uma sessão de Cartógrafo por pasta** (desde 24/09/2026, `docs/simulacao/caixa/decisoes.md` D8). O
+`papel:` do cabeçalho liga este comando ao gancho global `~/.claude/hooks/papel-fixo.mjs`: ele dá o
+nome à sessão e, se outra sessão já for o Cartógrafo, bloqueia e mostra ao humano como reabrir a que
+existe (`cc rpg-system -papel cartografo`, no terminal) ou como criar outra (`/cartografo novo`). Se
+você recebeu `/cartografo novo`, ignore a palavra `novo` e siga.
 
 ## 1. Leia sempre
 
