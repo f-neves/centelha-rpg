@@ -190,7 +190,7 @@ Nenhum teste compara os links que o autolink produz com o sentido em que a palav
 - `npm run validate`: exit 0.
 - `npm run build`: exit 0.
 - `node scripts/test-portoes.mjs`: verde, rodado antes do commit, como pedido.
-- **Travessão:** contei "—" em cada arquivo tocado, lendo os arquivos. Não aumentou.
+- **Travessão:** contei o travessão (U+2014) em cada arquivo tocado, lendo os arquivos. Não aumentou em nenhum. A primeira versão deste relato tinha um, dentro das aspas desta mesma frase (o caractere citado), e ele saiu no commit seguinte.
 
 ## PRECISA DE MIM
 
