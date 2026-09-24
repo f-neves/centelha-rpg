@@ -1348,3 +1348,44 @@ clicada como `ilha-NNN`). Painel REGIÕES: botão "identificar ilha" e um clique
 (422) com o arquivo igual; uma ilhota perto de Calin foi registrada como `ilha-219`,
 região `calin` pela regra, e desfeita pela API (o arquivo voltou byte a byte).
 **Não conferido**: o botão e o clique na tela.
+
+## Desvio automático de colisão entre nomes (rodada das pendências, 2026-09-23)
+
+Recomendação do Cartógrafo, a revisar. Código em `cartografia/composicao.py`
+(`planejar_nomes`, `LADOS_DO_LUGAR`, `DESVIO_DE_NOMES`) e as caixas de letra em
+`cartografia/tipografia.py` (`caixas_reto`, `caixas_na_curva`, que saem da mesma
+conta do desenho).
+
+- **Quem se move**: só o nome de LUGAR sem posição dada à mão e sem trava. Nome de
+  região (a posição mora no `rotulo`), nome livre, de cordilheira, de rio e rota, nome
+  com curva e nome de lugar arrastado ou travado ficam onde estão e viram obstáculo,
+  com os símbolos dos outros lugares.
+- **Para onde**: seis lados em volta do símbolo, nesta ordem: direita em cima (o de
+  sempre), esquerda em cima, direita embaixo, esquerda embaixo, em cima, embaixo. Vence
+  o primeiro sem sobreposição; sem nenhum livre, o de menor sobreposição, e sai um
+  aviso `{"tipo": "nome", ...}` na mesma lista dos avisos de símbolo
+  (`compor(..., avisos=lista)`).
+- **Ordem**: nível maior primeiro, depois a chave do nome (determinístico). Cada nome
+  posto vira obstáculo do seguinte.
+- **Independente do recorte**: o plano usa TODOS os nomes, na grade global de pixels,
+  com a distorção aplicada. O `compor` calcula uma vez e passa a cada bloco; o
+  `compor_janela` chamado sozinho (a prova de costura do mapa do mundo) recalcula e
+  chega no mesmo.
+- **Nada é gravado**: o lado escolhido é só desenho. Para fixar, arrasta-se o rótulo
+  (vira `posicao` no ajuste do nome) ou trava-se o nome.
+- `backend/nomes.efetivos()` passou a devolver `travado` do ajuste (campo a mais na
+  resposta de `/api/nomes`, nada muda no arquivo).
+
+**Conferido**: 8 testes em `tests/test_nomes_colisao.py`, com a tinta de cada nome
+desenhada em tela separada (zero pixel em comum com o desvio; mais de 50 sem ele,
+controle negativo), o lado de sempre quando não há colisão, travado e posto à mão
+não se movem, aviso quando os seis lados estão tomados, e a armadilha do recorte (a
+âncora do obstáculo fora do recorte pequeno e o nome desviado dentro dele: igual ao
+pedaço do grande; o controle negativo, um plano que só olha a janela, sai diferente).
+Com o desvio desligado, Mére sai igual byte a byte ao desenho de antes da mudança.
+
+**Limites conhecidos**: nome de região por cima de SÍMBOLO de lugar não se resolve
+sozinho (a região não se move; "Oásis de Sal" continua com o símbolo debaixo do M de
+MÉRE, e o nome dele foi para a esquerda). Nome não desvia de linha (rio, via, rota).
+**A tela não mostra o lado escolhido**: o marcador do painel NOMES continua a 0,4° à
+direita do lugar, como antes; só a exportação e o mapa final usam o desvio.

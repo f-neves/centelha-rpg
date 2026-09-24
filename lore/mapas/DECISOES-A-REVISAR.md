@@ -3,25 +3,30 @@
 Todas são **recomendação do Cartógrafo**. Nenhuma está aprovada até o usuário dizer.
 Detalhe de cada uma em `RELATORIO-FINAL.md` (etapa entre parênteses).
 
+**Sobre as alternativas descartadas**: nas decisões 1, 6, 7, 8 e 9 a alternativa está
+registrada no próprio relatório ou no código. Nas 2, 3, 4 e 5 ela **não foi escrita em
+lugar nenhum na hora**; está marcada *(reconstruída)*, e é a alternativa óbvia que
+eu escreveria hoje, não um registro do que pesei naquela noite.
+
 1. **Símbolos planejados por área, não por janela de saída** (B1). Descartei planejar
    por janela, como o renderizador antigo: o mesmo lugar sairia diferente em cada
    recorte e o mundo em blocos teria costura. Se mudar: volta o renderizador antigo
    (ainda existe para as prévias), e exportação e mundo em blocos perdem a prova byte a byte.
 2. **Distorção: números, semente e o que não se distorce** (B5). Força de 0 (nível 5)
    a 1 (nível 1), até ~630 km de desvio; semente = mercador + recorte, sem o nível;
-   título, grade e moldura intactos. Descartei semente com o nível (o mesmo mercador
+   título, grade e moldura intactos. *(Reconstruída)* Descartei semente com o nível (o mesmo mercador
    erraria em direções diferentes). Se mudar: só `cartografia/distorcao.py`, dado nenhum.
 3. **Versão do jogador por `visivel_jogador`** em lugar, região, rota, nome e
-   elemento (B1, B3). Descartei camada separada "só mestre" (cada objeto teria dois
+   elemento (B1, B3). *(Reconstruída)* Descartei camada separada "só mestre" (cada objeto teria dois
    lugares para morar). Se mudar: o campo sai do esquema e as exportações de jogador
    já feitas deixam de ser reproduzíveis.
 4. **Rotas** (B4): navio 120 km/dia (mercante) e 80 (galera), barco 60 rio abaixo e
    25 rio acima; fluvial segue a regra da terra sem exigir rio desenhado; só as pontas
-   grudam em lugar (5 km); estilo pontilhado e traço-ponto. Descartei fluvial preso a
+   grudam em lugar (5 km); estilo pontilhado e traço-ponto. *(Reconstruída)* Descartei fluvial preso a
    rio desenhado (quase não há rio). Se mudar: números em `backend/rotas.py`, sem migrar dado.
 5. **Nomes** (B1): Palatino; região e cordilheira em maiúsculas espaçadas; tamanhos
    15/21/30/46/70 px por nível; curva só em forma 1,7× mais longa que larga e até 40°
-   de inclinação (Mére sai reta). Descartei curva sempre (nome de ilha em pé fica
+   de inclinação (Mére sai reta). *(Reconstruída)* Descartei curva sempre (nome de ilha em pé fica
    ilegível). Se mudar: só `cartografia/tipografia.py`; os ajustes gravados valem.
 6. **Barra de escala desenhada, calibrada a 21,87° N** no mundo e na latitude central
    de cada recorte (B2). Descartei a peça da folha, que tem divisões fixas e não

@@ -226,6 +226,7 @@ def efetivos() -> list[dict]:
             "posicao": aj.get("posicao") or posicao, "angulo": aj.get("angulo"),
             "curva": aj.get("curva"), "reto": aj.get("reto", False),
             "visivel_jogador": bool(visivel) and aj.get("visivel_jogador", True),
+            "travado": bool(aj.get("travado", False)),
             **(extra or {}),
         })
 

@@ -104,9 +104,9 @@ def _colar(tela: Image.Image, im: Image.Image, cx: float, cy: float) -> None:
         tela.alpha_composite(im.crop((x0, y0, x1, y1)), (x + x0, y + y0))
 
 
-def texto_reto(tela: Image.Image, texto: str, cx: float, cy: float, tamanho: int, estilo: dict,
-               angulo: float = 0.0, halo=COR_HALO) -> tuple[float, float, float, float]:
-    """Desenha centrado em (cx, cy). Devolve a caixa aproximada (x0, y0, x1, y1)."""
+def _layout_reto(texto: str, cx: float, cy: float, tamanho: int, estilo: dict, angulo: float = 0.0):
+    """As letras do texto reto: (fonte, [(letra, x, y, ângulo)]). Desenho e caixas
+    (desvio de colisão, item a de 2026-09-23) saem da MESMA conta."""
     if estilo["maiusculas"]:
         texto = texto.upper()
     f = fonte(estilo["peso"], tamanho)
@@ -115,13 +115,52 @@ def texto_reto(tela: Image.Image, texto: str, cx: float, cy: float, tamanho: int
     rad = math.radians(angulo)
     ux, uy = math.cos(rad), -math.sin(rad)
     pos = -total / 2
+    letras = []
     for c, w in zip(texto, larg):
         meio = pos + (w - estilo["espaco"] * tamanho) / 2
         if c.strip():
-            _colar(tela, _glifo(c, f, estilo["cor"], halo, angulo), cx + ux * meio, cy + uy * meio)
+            letras.append((c, cx + ux * meio, cy + uy * meio, angulo))
         pos += w
+    return f, letras, total
+
+
+def texto_reto(tela: Image.Image, texto: str, cx: float, cy: float, tamanho: int, estilo: dict,
+               angulo: float = 0.0, halo=COR_HALO) -> tuple[float, float, float, float]:
+    """Desenha centrado em (cx, cy). Devolve a caixa aproximada (x0, y0, x1, y1)."""
+    f, letras, total = _layout_reto(texto, cx, cy, tamanho, estilo, angulo)
+    for c, x, y, a in letras:
+        _colar(tela, _glifo(c, f, estilo["cor"], halo, a), x, y)
     meia = total / 2
     return (cx - meia, cy - tamanho, cx + meia, cy + tamanho)
+
+
+def caixas_das_letras(f: ImageFont.FreeTypeFont, letras) -> list[tuple[float, float, float, float]]:
+    """Caixa de cada letra (x0, y0, x1, y1), com a borda do halo e girada pelo ângulo
+    dela (a caixa alinhada aos eixos que contém a letra girada)."""
+    borda = max(1, f.size // 9)
+    saida = []
+    for c, x, y, a in letras:
+        x0, y0, x1, y1 = f.getbbox(c, anchor="mm", stroke_width=borda)
+        if a:
+            r = math.radians(a)
+            co, se = abs(math.cos(r)), abs(math.sin(r))
+            w, h = (x1 - x0) / 2, (y1 - y0) / 2
+            mx, my = (x0 + x1) / 2, (y0 + y1) / 2
+            ex, ey = w * co + h * se, w * se + h * co
+            x0, x1, y0, y1 = mx - ex, mx + ex, my - ey, my + ey
+        saida.append((x + x0, y + y0, x + x1, y + y1))
+    return saida
+
+
+def caixas_reto(texto: str, cx: float, cy: float, tamanho: int, estilo: dict, angulo: float = 0.0):
+    f, letras, _ = _layout_reto(texto, cx, cy, tamanho, estilo, angulo)
+    return caixas_das_letras(f, letras)
+
+
+def caixas_na_curva(texto: str, pontos, tamanho: int, estilo: dict, deslocamento: float = 0.0):
+    """As caixas das letras do texto na curva, ou None se ele não cabe (sai reto)."""
+    r = _layout_na_curva(texto, pontos, tamanho, estilo, deslocamento)
+    return None if r is None else caixas_das_letras(*r)
 
 
 def texto_na_curva(tela: Image.Image, texto: str, pontos: list[tuple[float, float]], tamanho: int,
@@ -130,11 +169,21 @@ def texto_na_curva(tela: Image.Image, texto: str, pontos: list[tuple[float, floa
     texto não cabe, encolhe até caber ou até o mínimo. `deslocamento` afasta o texto
     da linha, para o lado de cima (rio e rota não escrevem em cima do próprio traço).
     Devolve False se a linha é curta demais até para o tamanho mínimo."""
+    r = _layout_na_curva(texto, pontos, tamanho, estilo, deslocamento)
+    if r is None:
+        return False
+    f, letras = r
+    for c, x, y, ang in letras:
+        _colar(tela, _glifo(c, f, estilo["cor"], halo, ang), x, y)
+    return True
+
+
+def _layout_na_curva(texto: str, pontos, tamanho: int, estilo: dict, deslocamento: float = 0.0):
     if estilo["maiusculas"]:
         texto = texto.upper()
     p = np.asarray(pontos, dtype=float)
     if len(p) < 2:
-        return False
+        return None
     if p[-1, 0] < p[0, 0]:
         p = p[::-1]             # sempre da esquerda para a direita: nada de cabeça para baixo
     seg = np.hypot(*np.diff(p, axis=0).T)
@@ -148,7 +197,7 @@ def texto_na_curva(tela: Image.Image, texto: str, pontos: list[tuple[float, floa
             break
         tamanho = max(TAMANHO_MINIMO_PX, int(tamanho * 0.9))
     if total > comprimento:
-        return False
+        return None
 
     def ponto_e_angulo(s):
         s = min(max(s, 0.0), comprimento)
@@ -166,6 +215,7 @@ def texto_na_curva(tela: Image.Image, texto: str, pontos: list[tuple[float, floa
         return p[i] + (p[i + 1] - p[i]) * t
 
     pos = (comprimento - total) / 2
+    letras = []
     for c, w in zip(texto, larg):
         meio = pos + (w - estilo["espaco"] * tamanho) / 2
         if c.strip():
@@ -173,9 +223,9 @@ def texto_na_curva(tela: Image.Image, texto: str, pontos: list[tuple[float, floa
             if deslocamento:
                 r = math.radians(ang)
                 x, y = x - math.sin(r) * deslocamento, y - math.cos(r) * deslocamento
-            _colar(tela, _glifo(c, f, estilo["cor"], halo, ang), x, y)
+            letras.append((c, x, y, ang))
         pos += w
-    return True
+    return f, letras
 
 
 def espinha(pontos: np.ndarray, fatias: int = 9, miolo: float = 0.8) -> np.ndarray | None:

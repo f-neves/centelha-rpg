@@ -449,55 +449,191 @@ def curva_do_nome(n: dict, dados: dict) -> list[tuple[float, float]] | None:
     return [tuple(p) for p in e]
 
 
-def desenhar_nomes(tela: Image.Image, ctx: Contexto, nomes: list[dict], dados: dict) -> None:
+def _geometria_do_nome(n: dict, dados: dict, lugares: dict, px, ppg: float, escala: float) -> dict | None:
+    """Como o nome vai ser escrito, em pixels da função `px`: na curva (`pts`) ou reto
+    (`x`, `y`, `angulo`), com tamanho e estilo. Nome de lugar sem posição dada guarda
+    também o símbolo (`simbolo`: x, y, lado) e a largura do texto, para o desvio de
+    colisão poder trocar o lado. A conta é invariante por translação: a janela e a
+    grade global dão a mesma geometria, deslocada."""
+    tipo = n["alvo"]["tipo"]
+    capital = False
+    if tipo == "lugar":
+        lugar = lugares.get(n["alvo"]["id"])
+        if lugar is None:
+            return None
+        capital = bool(lugar["properties"].get("capital"))
+    estilo = tipografia.estilo_do_nome(tipo, n.get("subtipo"), capital)
+    tam = tipografia.tamanho_px(n["nivel"], escala)
+    texto = n.get("texto_mostrado") or n["texto"]
+    g = {"texto": texto, "estilo": estilo, "tipo": tipo}
+    curva = curva_do_nome(n, dados)
+    if curva is not None:
+        pts = [px(*p) for p in curva]
+        tam_c = tam
+        if tipo in ("regiao", "area") and not n.get("curva"):
+            comp = sum(math.hypot(b[0] - a[0], b[1] - a[1]) for a, b in zip(pts[:-1], pts[1:]))
+            w1 = tipografia.largura(texto, 100, estilo) / 100
+            tam_c = int(max(tam, min(tam * CRESCIMENTO_MAXIMO, comp * OCUPACAO_DA_ESPINHA / max(w1, 1e-6))))
+        desloca = tam_c * 0.9 if tipo in ("rio", "rota") else 0.0
+        if tipografia._layout_na_curva(texto, pts, tam_c, estilo, desloca) is not None:
+            return {**g, "modo": "curva", "pts": pts, "tam": tam_c, "desloca": desloca}
+        tam = tam_c
+    largura_da_forma = _largura_da_forma(n, dados)
+    if largura_da_forma and tipo in ("regiao", "area"):
+        # Nome reto de ilha grande também cresce com ela (até 3 vezes o nível).
+        w1 = tipografia.largura(texto, 100, estilo) / 100
+        larg_px = largura_da_forma * ppg
+        tam = int(max(tam, min(tam * CRESCIMENTO_MAXIMO, larg_px * OCUPACAO_RETA / max(w1, 1e-6))))
+    g.update(modo="reto", tam=tam, angulo=n.get("angulo") or 0.0)
+    if n.get("posicao"):
+        g["x"], g["y"] = px(*n["posicao"]["coordinates"])
+    elif tipo == "area":
+        area = next((a for a in dados["areas"] if a["properties"]["id"] == n["alvo"]["id"]), None)
+        if area is None:
+            return None
+        c = shape(area["geometry"]).representative_point()
+        g["x"], g["y"] = px(c.x, c.y)
+    elif tipo == "lugar":
+        lugar = lugares[n["alvo"]["id"]]
+        sx, sy = px(*lugar["geometry"]["coordinates"])
+        lado = tamanho_do_lugar(lugar["properties"]) * escala
+        f = tipografia.fonte(estilo["peso"], tam)
+        g["larg"] = f.getlength(texto)
+        g["simbolo"] = (sx, sy, lado)
+        g["x"], g["y"] = _lado_do_lugar(g, 0)
+    else:
+        return None
+    return g
+
+
+# Os lados em volta do símbolo de lugar, na ordem de preferência de atlas (o
+# primeiro é o de sempre, à direita e na altura do alto do símbolo). Recomendação do
+# Cartógrafo (item a, 2026-09-23): direita em cima, esquerda em cima, direita
+# embaixo, esquerda embaixo, em cima, embaixo.
+LADOS_DO_LUGAR = ("direita-cima", "esquerda-cima", "direita-baixo", "esquerda-baixo", "cima", "baixo")
+DESVIO_DE_NOMES = True
+
+
+def _lado_do_lugar(g: dict, i: int) -> tuple[float, float]:
+    sx, sy, lado = g["simbolo"]
+    tam, larg = g["tam"], g["larg"]
+    dx = lado * 0.45 + larg / 2 + tam * 0.3
+    nome = LADOS_DO_LUGAR[i]
+    if nome == "direita-cima":
+        return sx + dx, sy - lado * 0.45
+    if nome == "esquerda-cima":
+        return sx - dx, sy - lado * 0.45
+    if nome == "direita-baixo":
+        return sx + dx, sy + lado * 0.45
+    if nome == "esquerda-baixo":
+        return sx - dx, sy + lado * 0.45
+    if nome == "cima":
+        return sx, sy - lado * 0.55 - tam * 0.75
+    return sx, sy + lado * 0.55 + tam * 0.75
+
+
+def _caixas_do_nome(g: dict, x=None, y=None) -> list:
+    if g["modo"] == "curva":
+        return tipografia.caixas_na_curva(g["texto"], g["pts"], g["tam"], g["estilo"], g["desloca"]) or []
+    return tipografia.caixas_reto(g["texto"], g["x"] if x is None else x, g["y"] if y is None else y,
+                                  g["tam"], g["estilo"], g["angulo"])
+
+
+def _sobreposicao(caixas: list, obstaculos: np.ndarray) -> float:
+    if not caixas or not len(obstaculos):
+        return 0.0
+    c = np.asarray(caixas, dtype=float)[:, None, :]
+    o = obstaculos[None, :, :]
+    w = np.clip(np.minimum(c[..., 2], o[..., 2]) - np.maximum(c[..., 0], o[..., 0]), 0, None)
+    h = np.clip(np.minimum(c[..., 3], o[..., 3]) - np.maximum(c[..., 1], o[..., 1]), 0, None)
+    return float((w * h).sum())
+
+
+def _chave_do_nome(n: dict) -> tuple:
+    return (n["alvo"]["tipo"], n["alvo"].get("id"), n.get("id"), n.get("texto"))
+
+
+def planejar_nomes(nomes: list[dict], dados: dict, ppg: float, transformar=None,
+                   avisos: list | None = None) -> dict:
+    """Desvio automático de colisão (item a da rodada das pendências, 2026-09-23).
+
+    Devolve {chave do nome: índice em LADOS_DO_LUGAR} para os nomes de lugar que
+    podem se mover: sem posição dada à mão e sem trava. Tudo o mais fica onde está e
+    vira obstáculo (nome de região, livre, de área, de rio e rota, e nome de lugar
+    fixo), junto com os símbolos de lugar. Calculado com TODOS os nomes, na grade
+    global de pixels (`ppg`), e nunca pela janela: o mesmo nome sai no mesmo lado em
+    qualquer recorte e em qualquer bloco. Nada disto é gravado."""
+    if not DESVIO_DE_NOMES:
+        return {}
+    escala = ppg / PPG_OFICIAL
+
+    def px(lon, lat):
+        if transformar is not None:
+            lon, lat = transformar(lon, lat)
+        return para_pixel_global(lon, lat, ppg)
+
     lugares = {f["properties"]["id"]: f for f in dados["lugares"]}
+    obstaculos = []
+    moveis = []
+    # Símbolos de lugar, pelo tamanho com que são desenhados. O do PRÓPRIO lugar não
+    # entra na conta dele: os lados já são postos em volta do símbolo (e com o
+    # deslocamento de sempre, que mede o símbolo sem o piso).
+    simbolos = {}
+    for f in dados["lugares"]:
+        sx, sy = px(*f["geometry"]["coordinates"])
+        pr = f["properties"]
+        m = max(tamanho_do_lugar(pr), renderizador.pisos().get(pr.get("tipo"), 0)) * escala / 2
+        simbolos[pr["id"]] = (sx - m, sy - m, sx + m, sy + m)
+    for n in sorted(nomes, key=lambda n: (-n["nivel"], str(_chave_do_nome(n)))):
+        g = _geometria_do_nome(n, dados, lugares, px, ppg, escala)
+        if g is None:
+            continue
+        if "simbolo" in g and not n.get("travado"):
+            moveis.append((n, g))
+        else:
+            obstaculos.extend(_caixas_do_nome(g))
+    plano = {}
+    for n, g in moveis:
+        outros = [c for i, c in simbolos.items() if i != n["alvo"]["id"]]
+        obs = np.asarray(obstaculos + outros, dtype=float).reshape(-1, 4)
+        melhor, melhor_s, caixas_melhor = 0, None, None
+        for i in range(len(LADOS_DO_LUGAR)):
+            caixas = _caixas_do_nome(g, *_lado_do_lugar(g, i))
+            s = _sobreposicao(caixas, obs)
+            if melhor_s is None or s < melhor_s:
+                melhor, melhor_s, caixas_melhor = i, s, caixas
+            if s == 0:
+                break
+        plano[_chave_do_nome(n)] = melhor
+        obstaculos.extend(caixas_melhor)
+        if melhor_s and avisos is not None:
+            avisos.append({"tipo": "nome", "nome": g["texto"], "lado": LADOS_DO_LUGAR[melhor],
+                           "sobreposicao_px2": round(melhor_s, 1),
+                           "mensagem": f"nenhum lado livre para o nome '{g['texto']}': ficou no de menor "
+                                       f"sobreposição ({LADOS_DO_LUGAR[melhor]}); arraste o rótulo"})
+    return plano
+
+
+def desenhar_nomes(tela: Image.Image, ctx: Contexto, nomes: list[dict], dados: dict,
+                   lados: dict | None = None) -> None:
+    """`lados`: o plano do desvio de colisão (`planejar_nomes`); sem ele, é calculado
+    aqui, com os mesmos dados e a mesma grade global (sai igual)."""
+    lugares = {f["properties"]["id"]: f for f in dados["lugares"]}
+    if lados is None:
+        lados = planejar_nomes(nomes, dados, ctx.janela.px_por_grau, ctx.transformar)
     # Maiores primeiro: o nome pequeno fica por cima do grande quando se cruzam.
     for n in sorted(nomes, key=lambda n: -n["nivel"]):
-        tipo = n["alvo"]["tipo"]
-        capital = False
-        if tipo == "lugar":
-            lugar = lugares.get(n["alvo"]["id"])
-            if lugar is None:
-                continue
-            capital = bool(lugar["properties"].get("capital"))
-        estilo = tipografia.estilo_do_nome(tipo, n.get("subtipo"), capital)
-        tam = tipografia.tamanho_px(n["nivel"], ctx.escala)
-        texto = n.get("texto_mostrado") or n["texto"]
-        curva = curva_do_nome(n, dados)
-        if curva is not None:
-            pts = [ctx.px(*p) for p in curva]
-            if tipo in ("regiao", "area") and not n.get("curva"):
-                comp = sum(math.hypot(b[0] - a[0], b[1] - a[1]) for a, b in zip(pts[:-1], pts[1:]))
-                w1 = tipografia.largura(texto, 100, estilo) / 100
-                tam = int(max(tam, min(tam * CRESCIMENTO_MAXIMO, comp * OCUPACAO_DA_ESPINHA / max(w1, 1e-6))))
-            desloca = tam * 0.9 if tipo in ("rio", "rota") else 0.0
-            if tipografia.texto_na_curva(tela, texto, pts, tam, estilo, deslocamento=desloca):
-                continue
-        largura_da_forma = _largura_da_forma(n, dados)
-        if largura_da_forma and tipo in ("regiao", "area"):
-            # Nome reto de ilha grande também cresce com ela (até 3 vezes o nível).
-            w1 = tipografia.largura(texto, 100, estilo) / 100
-            larg_px = largura_da_forma * ctx.janela.px_por_grau
-            tam = int(max(tam, min(tam * CRESCIMENTO_MAXIMO, larg_px * OCUPACAO_RETA / max(w1, 1e-6))))
-        if n.get("posicao"):
-            x, y = ctx.px(*n["posicao"]["coordinates"])
-        elif tipo == "area":
-            area = next((a for a in dados["areas"] if a["properties"]["id"] == n["alvo"]["id"]), None)
-            if area is None:
-                continue
-            c = shape(area["geometry"]).representative_point()
-            x, y = ctx.px(c.x, c.y)
-        elif tipo == "lugar":
-            lugar = lugares[n["alvo"]["id"]]
-            x, y = ctx.px(*lugar["geometry"]["coordinates"])
-            lado = tamanho_do_lugar(lugar["properties"]) * ctx.escala
-            # À direita do símbolo, na altura do meio dele.
-            f = tipografia.fonte(estilo["peso"], tam)
-            larg = f.getlength(texto)
-            x, y = x + lado * 0.45 + larg / 2 + tam * 0.3, y - lado * 0.45
-        else:
+        g = _geometria_do_nome(n, dados, lugares, ctx.px, ctx.janela.px_por_grau, ctx.escala)
+        if g is None:
             continue
-        tipografia.texto_reto(tela, texto, x, y, tam, estilo, n.get("angulo") or 0.0)
+        if g["modo"] == "curva":
+            tipografia.texto_na_curva(tela, g["texto"], g["pts"], g["tam"], g["estilo"], deslocamento=g["desloca"])
+            continue
+        x, y = g["x"], g["y"]
+        i = lados.get(_chave_do_nome(n), 0)
+        if i and "simbolo" in g:
+            x, y = _lado_do_lugar(g, i)
+        tipografia.texto_reto(tela, g["texto"], x, y, g["tam"], g["estilo"], g["angulo"])
 
 
 def _passo_da_grade(janela: raster.Janela) -> int:
@@ -548,8 +684,12 @@ def estilo_das_camadas(camadas: frozenset) -> renderizador.Estilo:
     return renderizador.Estilo(e.tipos, misturas, cores, relevo_manda=e.relevo_manda)
 
 
+def _nomes_do_pedido(dados: dict, camadas) -> list[dict]:
+    return [n for n in dados["nomes"] if n["alvo"]["tipo"] != "lugar" or "cidades" in camadas]
+
+
 def compor_janela(janela: raster.Janela, dados: dict, plano: Plano, costa: Costa, bib, pedido: Pedido,
-                  transformar=None, pos_base=None) -> Image.Image:
+                  transformar=None, pos_base=None, lados_nomes: dict | None = None) -> Image.Image:
     """Uma janela (um bloco, ou o recorte inteiro se ele couber), SEM moldura. Desenha
     com folga em volta e corta, para o símbolo e o borrão que vêm do vizinho entrarem."""
     escala = janela.px_por_grau / PPG_OFICIAL
@@ -592,8 +732,10 @@ def compor_janela(janela: raster.Janela, dados: dict, plano: Plano, costa: Costa
     if "cidades" in pedido.camadas:
         desenhar_lugares(tela, ctx, dados["lugares"])
     if "nomes" in pedido.camadas:
-        nomes = [n for n in dados["nomes"] if n["alvo"]["tipo"] != "lugar" or "cidades" in pedido.camadas]
-        desenhar_nomes(tela, ctx, nomes, dados)
+        nomes = _nomes_do_pedido(dados, pedido.camadas)
+        if lados_nomes is None:
+            lados_nomes = planejar_nomes(nomes, dados, pedido.ppg, transformar)
+        desenhar_nomes(tela, ctx, nomes, dados, lados_nomes)
     if "grade" in pedido.camadas:
         desenhar_grade(tela, larga, escala, _passo_da_grade(raster.Janela(pedido.oeste, pedido.sul, pedido.leste,
                                                                           pedido.norte, pedido.ppg)))
@@ -635,6 +777,9 @@ def compor(pedido: Pedido, dados: dict | None = None, costa: Costa | None = None
         # cresce na mesma medida, senão a borda do bloco puxaria "nada".
         extra = math.ceil(relatorio["mentiras"]["deslocamento_maximo_km"] / KM_POR_GRAU * pedido.ppg) + 4
         plano = Plano(plano.ppg, plano.colocacoes, plano.folga_px + extra)
+    lados_nomes = None
+    if "nomes" in pedido.camadas:
+        lados_nomes = planejar_nomes(_nomes_do_pedido(dados, pedido.camadas), dados, pedido.ppg, transformar, avisos)
     janela = alinhar(pedido.oeste, pedido.sul, pedido.leste, pedido.norte, pedido.ppg)
     ox, oy = origem(janela)
     saida = Image.new("RGB", (janela.largura, janela.altura))
@@ -642,7 +787,8 @@ def compor(pedido: Pedido, dados: dict | None = None, costa: Costa | None = None
     for y0 in range(0, janela.altura, pedido.altura_bloco):
         y1 = min(janela.altura, y0 + pedido.altura_bloco)
         bloco = janela_de_pixels(ox, oy + y0, ox + janela.largura, oy + y1, pedido.ppg)
-        saida.paste(compor_janela(bloco, dados, plano, costa, bib, pedido, transformar, pos_base).convert("RGB"),
+        saida.paste(compor_janela(bloco, dados, plano, costa, bib, pedido, transformar, pos_base,
+                                 lados_nomes).convert("RGB"),
                     (0, y0))
         blocos += 1
     if "mentiras" in relatorio:
