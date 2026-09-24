@@ -140,7 +140,7 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   tabela de dano por queda, o Desgaste e os cinco números das peças do ofício, que destravariam
   o ajuste de peça na ficha deixar de ser um campo livre.
 - [ ] **G14 · [DECIDIR] Firula na ação Longa.** Levantado em 24/09/2026. O documento de regra
-  admite: `Acoes_Sistema.md:168` põe a Firula entre os meios de levantar a média, e `:331-334`
+  admite: `Acoes_Sistema.md:168` põe a Firula entre os meios de levantar a média, e `:328-331`
   converte ("em modo Longa, Firula em dado vale a média do dado", nível 2 = +3,5, nível 3 = +7).
   O capítulo publicado tirou a Firula da lista (`acoes-e-sistema.md:109`), e nenhum texto em
   `src/` fala de Firula na Longa. Decidir se vale e alinhar os dois.
@@ -149,14 +149,14 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   média, mas não diz a forma. Um "+3 em Ofícios" (Mãos Hábeis) soma à média? Vale o mesmo para as
   Técnicas de estado do Artesão (Obra Fina, Reparo Veloz), que não trazem número.
 - [ ] **G16 · [DECIDIR] Alcance da regra da maior e da menor.** Levantado em 24/09/2026.
-  `acoes-e-sistema.md:193` restringe à "secundária que a ação nomear"; `habilidades-secundarias.md:15`
+  `acoes-e-sistema.md:195` restringe à "secundária que a ação nomear"; `habilidades-secundarias.md:15`
   formula sem a trava ("Quando as duas cabem na mesma ação"). E o documento de regra diz "que a
-  ficha nomear" (`Acoes_Sistema.md:593`). Decidir o alcance e alinhar os três textos.
+  ficha nomear" (`Acoes_Sistema.md:590`). Decidir o alcance e alinhar os três textos.
 - [ ] **G17 · [CONSERTAR] Nomes de ofício divergentes.** Levantado em 24/09/2026.
-  `Acoes_Sistema.md:1043-1045` usa Ferraria, Armaria, Curtume, Alfaiataria e Culinária; o catálogo
+  `Acoes_Sistema.md:1040-1042` usa Ferraria, Armaria, Curtume, Alfaiataria e Culinária; o catálogo
   publicado de secundárias usa Ferreiro, Couraria, Costura e Gastronomia (`habilidades-secundarias.md:69-87`,
   que é a fonte, gerada de `habilidades-secundarias.json`). O capítulo `acoes-oficio-e-mundo.md:51`
-  já segue o catálogo. Alinhar o documento de regra ao catálogo; Armaria (usada na tabela, `:172`)
+  já segue o catálogo. Alinhar o documento de regra ao catálogo; Armaria (usada na tabela, `:176`)
   não existe como secundária e pede decisão à parte.
 - [ ] **G18 · [DECIDIR] Regra de ajudante divergente.** Levantado em 24/09/2026.
   `Acoes_Sistema.md:256-282` (§3.5) tem dois modos: "Somar Acúmulo" em tarefa divisível e
@@ -194,12 +194,12 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   de um aprendiz passa de 7: o livro chama de aprendiz a Habilidade 1, e só com Destreza 4 a soma
   chega a 5. As linhas citadas neste item são do texto de antes da decisão (`bbec609`).
 - [ ] **G21 · [DECIDIR] Direção sem custo.** Levantado em 24/09/2026. No exemplo da muralha
-  (`Acoes_Sistema.md:1272-1276`, `acoes-oficio-e-mundo.md:182`) o mestre de obras soma os 5 pontos
+  (`Acoes_Sistema.md:1283-1287`, `acoes-oficio-e-mundo.md:186`) o mestre de obras soma os 5 pontos
   próprios por estação além de dirigir dez ajudantes (5 + 10 × 3 = 35). Decidir se dirigir consome
   parte da produção do supervisor.
 - [ ] **G22 · [DECIDIR] O que é o "ganho por semana".** Levantado em 24/09/2026. O §7.9 dá
   "Ganho por semana = (média − 4) × 10 pc, limitado pela demanda do lugar"
-  (`Acoes_Sistema.md:1307`, `acoes-oficio-e-mundo.md:202`), e a tabela de Serviços & Renda dá
+  (`Acoes_Sistema.md:1318`, `acoes-oficio-e-mundo.md:206`), e a tabela de Serviços & Renda dá
   "Renda/Sem" e "Livre/Sem" por faixa de Recursos, com "Uma semana de trabalho vale 6 dias"
   (`custo-de-servico-e-itens.md:39-53`). Nenhum dos dois diz se o número é renda disponível, valor
   produzido em seis dias, resultado de uma Longa de intervalo semana, ou capacidade abstrata. Os
@@ -207,11 +207,11 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
 - [ ] **G23 · [CONSERTAR] Duas espadas no mesmo documento.** Levantado em 24/09/2026. O exemplo da
   Longa no §3.3 (`Acoes_Sistema.md:160-163`) diz "Forjar uma espada: Dificuldade 7, Acúmulo 10,
   intervalo de uma semana". O §7 dá à espada Comum Acúmulo 22 (Montagem 12 + Peça 10) e intervalo
-  dia (`Acoes_Sistema.md:1141-1147`, `:1246`; capítulo `acoes-oficio-e-mundo.md:93`, `:156`). A
+  dia (`Acoes_Sistema.md:1138-1144`, `:1257`; capítulo `acoes-oficio-e-mundo.md:93`, `:160`). A
   escada de intervalos publicada também põe "forjar a espada" em Semana (`acoes-e-sistema.md:143`).
   Alinhar o exemplo e a escada ao §7.
 - [ ] **G24 · [DECIDIR] Semântica do teto de demanda do ganho de ofício.** Levantado em 24/09/2026.
-  `acoes-oficio-e-mundo.md:202-204` e `Acoes_Sistema.md:1307-1311`: "uma aldeia absorve talvez 50
+  `acoes-oficio-e-mundo.md:206-208` e `Acoes_Sistema.md:1318-1322`: "uma aldeia absorve talvez 50
   pc por semana de qualquer ofício" representa o valor bruto das mercadorias vendidas, ou o
   ganho (valor adicionado) do artesão? O texto diz "Ganho por semana [...] limitado pela demanda do
   lugar"; "absorve" sugere gasto bruto. Muda quantas peças o mercado absorve (numa cidade, 500 pc:
@@ -221,22 +221,22 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   O §7 não tem regra para peça que exige dois ofícios (a arma de haste é cabeça de Ferraria e haste
   de Carpintaria ou Gerais): não diz se os Acúmulos das partes se somam, se cada ofício faz a sua
   parte, nem se há montagem final. As linhas da tabela com dois ofícios também não se explicam:
-  "Arco longo, besta" com Arcos e Carpintaria (`Acoes_Sistema.md:1247`, `acoes-oficio-e-mundo.md:157`)
-  e "Navio de guerra, catedral" com Naval e Alvenaria (`Acoes_Sistema.md:1270`,
-  `acoes-oficio-e-mundo.md:180`). Basta um, os dois são exigidos, ou um por parte?
+  "Arco longo, besta" com Arcos e Carpintaria (`Acoes_Sistema.md:1258`, `acoes-oficio-e-mundo.md:161`)
+  e "Navio de guerra, catedral" com Naval e Alvenaria (`Acoes_Sistema.md:1281`,
+  `acoes-oficio-e-mundo.md:184`). Basta um, os dois são exigidos, ou um por parte?
 - [ ] **G26 · [DECIDIR] O que é "arma marcial".** Levantado em 24/09/2026, na revisão econômica. A
-  linha "Espada, machado de guerra, arma marcial" (`Acoes_Sistema.md:1246`,
-  `acoes-oficio-e-mundo.md:156`) usa uma categoria que o livro não define e que o `armas.json` não
+  linha "Espada, machado de guerra, arma marcial" (`Acoes_Sistema.md:1257`,
+  `acoes-oficio-e-mundo.md:160`) usa uma categoria que o livro não define e que o `armas.json` não
   tem. Decidir quais armas entram nela, em particular maças, martelos, picareta e a cabeça da
   Alabarda.
 - [ ] **G27 · [DECIDIR] O machado da faca.** Levantado em 24/09/2026, na revisão econômica. A linha
-  "Faca, machado, ponta de lança" (`Acoes_Sistema.md:1243`, `acoes-oficio-e-mundo.md:153`) não diz
+  "Faca, machado, ponta de lança" (`Acoes_Sistema.md:1254`, `acoes-oficio-e-mundo.md:157`) não diz
   se o machado é ferramenta ou arma. O `armas.json` tem Machado, Machadinha, Machado de Arremesso e
   Machado Pesado; a revisão econômica cita Machado (média, 300 pc) e Machadinha (leve, 80 pc).
 - [ ] **G28 · [CONSERTAR] O ofício Arcos não está na lista de ofícios.** Levantado em 24/09/2026, na
-  revisão econômica. "Arcos" aparece na tabela de fabricação (`Acoes_Sistema.md:1231` e `:1247`;
-  `acoes-oficio-e-mundo.md:141` e `:157`), e não na lista de ofícios da §7.2
-  (`Acoes_Sistema.md:1043-1045`) nem na do capítulo (`acoes-oficio-e-mundo.md:51`).
+  revisão econômica. "Arcos" aparece na tabela de fabricação (`Acoes_Sistema.md:1242` e `:1258`;
+  `acoes-oficio-e-mundo.md:145` e `:161`), e não na lista de ofícios da §7.2
+  (`Acoes_Sistema.md:1040-1042`) nem na do capítulo (`acoes-oficio-e-mundo.md:51`).
 - [ ] **G29 · [DECIDIR] O que a regra de condução herda, e de que lado fica a carroça.** Levantado
   em 24/09/2026, pela Revisora no veredito da rodada 105 (`f8e3e1e`), depois de a G19 e a G20
   fecharem. Duas perguntas: (1) a "Dificuldade da peça" contra a qual o ajudante trabalha leva a

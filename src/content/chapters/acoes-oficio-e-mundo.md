@@ -5,7 +5,7 @@ titulo: "Ofício e Mundo"
 resumo: "Construir, reparar, melhorar e ganhar a vida com um ofício, mais viagem e obra. O maior subsistema do capítulo, e ele cabe inteiro na Jogada Longa."
 ---
 
-<p class="muted">Parte do capítulo <strong>Ações & Sistema</strong>. Os cinco modos de ação, de onde sai a Dificuldade, o que a Margem mede e as regras de ajuda estão em <a href="/centelha-rpg/regras/acoes-e-sistema">A Régua Comum</a>, e valem para tudo o que vem aqui.</p>
+<p class="muted">Parte do capítulo <strong>Ações & Sistema</strong>. Os cinco modos de ação, de onde sai a Dificuldade, o que a Margem mede e o apoio numa jogada única estão em <a href="/centelha-rpg/regras/acoes-e-sistema">A Régua Comum</a>, e valem para tudo o que vem aqui. O trabalho dividido do ofício tem regra própria: a condução e a direção de obra, em <a href="#oficina-material-e-ajuda">Oficina, material e ajuda</a>.</p>
 
 Construir alguma coisa parece pedir um sistema próprio, e não pede: **é a Jogada Longa com tabela.** A divisão de trabalho dos três números cai em cima do ofício com uma precisão que nenhuma outra ação teve.
 
@@ -112,17 +112,21 @@ São os ±2 e ±4 de circunstância, e no ofício eles são o principal caminho 
 
 O material precisa **alcançar o grau pretendido**: não sai peça Excepcional de aço corrente, por melhor que seja o ferreiro. Como regra de bolso, o material custa cerca de **um terço** do preço da peça pronta, e metade ou mais em alvenaria e construção naval, onde a pedra e a madeira é que pesam.
 
-**Ajuda.** Ofício é quase sempre tarefa divisível, então os **Acúmulos somam**: cinco carpinteiros levantam a casa em um quinto do tempo. Mas a qualidade é da mão que conduz, e **dez aprendizes aceleram uma espada Comum sem fazer uma Ótima**.
+**Ajuda.** Ofício é quase sempre tarefa divisível, então os **Acúmulos somam**: cinco carpinteiros levantam a casa em um quinto do tempo. Mas a qualidade é da mão que conduz.
+
+A ajuda da [Régua Comum](/regras/acoes-e-sistema) (o ajudante contra metade da Dificuldade, +1 a cada 6 pontos acima) é para **apoio numa jogada única**, em ação que não se divide. O trabalho **divisível** do ofício, uma Longa com Acúmulo, tem as duas regras abaixo: a **condução**, na fabricação, e a **direção**, na obra.
 
 <p class="formula">Quem ajuda a fabricar sob a condução de alguém que cumpre o Requisito da peça <b>não precisa cumprir o Requisito</b>, mas trabalha contra a <b>Dificuldade da peça</b>: se a média não passar dela, não soma Acúmulo</p>
 
-É por essa regra que os aprendizes entram na espada: sob a condução do ferreiro eles dispensam o Requisito 3, e cada um soma o que a sua média passar da Dificuldade 7. **Um braçal, de média 7, não soma nada na espada.**
+A condução **herda os modificadores**. Oficina e material são circunstâncias da tarefa e valem para todos que trabalham nela; o **+4** de quem não tem o ofício específico é pessoal, e pesa só sobre quem não o tem. Cada artesão conduz até **dez** ajudantes, como na direção de obra. Sob condução, os aprendizes dispensam o Requisito 3 da espada, e cada um soma o que a sua média passar da Dificuldade que a oficina deixou.
 
-**Direção de obra.** Esta regra é de **obra**, e não de fabricação de peças: alvenaria, engenharia, construção naval, carpintaria de construção, as obras das escalas de semanas e de estações, como a casa, o moinho, a muralha e o navio. O braçal tem média 7, e numa obra de Dificuldade 11 ele contribuiria com um número negativo: pela regra crua, carregar pedra atrapalharia. O que falta é a figura do mestre de obras.
+**O braçal, que não tem o ofício, não soma na espada em nenhuma oficina**: na de mestre, a Dificuldade dele é 7 − 4 + 4 = 7, e a média 7 não passa dela. Os aprendizes, de Habilidade 1 ou 2, somam numa oficina bem equipada ou de mestre: **numa oficina bem equipada ou de mestre, dez aprendizes aceleram uma espada Comum e não fazem uma Ótima**.
+
+**Direção de obra.** Esta regra é de **obra**, e não de fabricação. Obra é **construção fixa no lugar** (casa, celeiro, forja, moinho, muralha, ponte, catedral) ou peça da **escala de estações**; todo o resto é fabricação, qualquer que seja o ofício da linha. A carroça e o barco de pesca são fabricação; o navio de guerra é obra. O braçal tem média 7, e numa obra de Dificuldade 11 ele contribuiria com um número negativo: pela regra crua, carregar pedra atrapalharia. O que falta é a figura do mestre de obras.
 
 <p class="formula">Numa obra, sob direção de quem tem o ofício, o ajudante sem ofício trabalha contra <b>Dificuldade 4</b></p>
 
-Quem pensa é o mestre; o ajudante executa serviço simples, e serviço simples é Dificuldade 4 em qualquer obra. Cada supervisor dirige até **dez** ajudantes, e passar disso exige contramestres, que é como as obras grandes de fato se organizavam. O ajudante nunca contribui para a qualidade. Na forja, na bancada e no tear, a Dificuldade 4 não vale: quem ajuda trabalha contra a Dificuldade da peça, pela regra da Ajuda.
+Quem pensa é o mestre; o ajudante executa serviço simples, e serviço simples é Dificuldade 4 em qualquer obra. Cada supervisor dirige até **dez** ajudantes, e passar disso exige contramestres, que é como as obras grandes de fato se organizavam. O ajudante nunca contribui para a qualidade. Na fabricação, a Dificuldade 4 não vale: quem ajuda trabalha sob condução, contra a Dificuldade da peça.
 
 **Apressar.** Dobrar as horas rende um intervalo extra a cada dois, e custa **+2 na Dificuldade** pelo cansaço e pela pressa. Vale a pena em peça fácil e é ruinoso em peça fina.
 

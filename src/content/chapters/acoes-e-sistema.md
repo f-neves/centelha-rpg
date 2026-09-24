@@ -169,13 +169,15 @@ Tarefas em que cada pessoa a mais é trabalho extra completo: cavar um buraco, c
 
 ### Ajudante
 
-Servir de auxiliar numa tarefa que **outra pessoa realiza**: ajudar uma cirurgia, forjar, dar aula. O ajudante rola contra **metade da Dificuldade** (arredondado para cima); a cada **6 pontos** acima disso, concede **+1** à jogada de quem está realizando a tarefa. Numa jogada estendida, pode-se usar a média das jogadas do ajudante em vez de rolar a cada intervalo. Há um limite de ajudantes por tarefa, a critério do Mestre.
+Servir de auxiliar numa tarefa que **outra pessoa realiza**, em **apoio numa jogada única**, numa ação que não se divide: ajudar uma cirurgia, abrir uma fechadura, dar aula. O ajudante rola contra **metade da Dificuldade** (arredondado para cima); a cada **6 pontos** acima disso, concede **+1** à jogada de quem está realizando a tarefa. Numa jogada estendida, pode-se usar a média das jogadas do ajudante em vez de rolar a cada intervalo. Há um limite de ajudantes por tarefa, a critério do Mestre.
+
+O trabalho **divisível**, uma Longa com Acúmulo, não usa esta regra: quem ajuda a fabricar uma peça trabalha sob **condução**, e quem ajuda numa obra trabalha sob **direção**, as duas em [Ofício e Mundo](/regras/acoes-oficio-e-mundo).
 
 ### Teste Coletivo
 
 Um grupo inteiro precisa passar numa tarefa que é **responsabilidade de todos**: uma caça em grupo, um deslocamento furtivo coletivo, uma apresentação de dança. Quem rola é a pessoa com a **menor parada de dados** (empate: menor Habilidade; empate de novo, qualquer uma). **A Dificuldade sobe +2 por participante**, contando **todos** os participantes, inclusive quem rola. Um líder pode ser eleito e faz uma jogada própria: a cada **6 pontos** acima da Dificuldade, ele concede **+1d6** a quem tem a menor parada. A penalidade de cada participante entra na jogada final: um dançarino com −1 físico e dois furtivos com −2 de armadura somam −4 na jogada coletiva.
 
-<p class="formula">Ajudante: rola contra Dificuldade ÷ 2 (arredondado para cima) · +1 por 6 pontos acima<br>Teste Coletivo: Dificuldade +2 por participante · líder dá +1d6 por 6 pontos acima</p>
+<p class="formula">Ajudante, em apoio numa jogada única: rola contra Dificuldade ÷ 2 (arredondado para cima) · +1 por 6 pontos acima<br>Teste Coletivo: Dificuldade +2 por participante · líder dá +1d6 por 6 pontos acima</p>
 
 ## Quando a primária e a secundária cobrem a mesma ação
 

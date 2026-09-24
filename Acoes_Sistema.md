@@ -260,21 +260,18 @@ Duas formas, e a ficha diz qual vale para aquela tarefa.
 #### Somar Acúmulo
 
 Em tarefa **simples e divisível**, os Acúmulos somam: dois cavando o mesmo túnel produzem o dobro
-de progresso por intervalo. É o caso quando o trabalho pode ser fatiado sem perda.
+de progresso por intervalo. É o caso quando o trabalho pode ser fatiado sem perda. No ofício, o
+trabalho divisível tem duas regras próprias (§7.6): a **condução**, na fabricação, e a
+**direção**, na obra.
 
 #### Apoiar o principal
 
 Quando o trabalho **não se divide** (uma fechadura, um paciente, uma peça no torno), um age e os
-outros apoiam. O ajudante **rola contra a mesma Dificuldade**:
-
-| O ajudante | Dá ao principal |
-|---|---|
-| falhou | nada |
-| passou | **+2** |
-| passou com Margem | **+2** e mais **+1d6 por Margem** |
-
-É a mesma escala das Firulas (+2 fixo, depois dados), e pela mesma razão: excedente de expertise
-vira dado. Ajudar exige saber fazer, e quem não sabe não atrapalha nem ajuda.
+outros apoiam, numa **jogada única**. O ajudante rola contra **metade da Dificuldade**
+(arredondado para cima), e a cada **6 pontos** acima disso concede **+1** à jogada de quem está
+realizando a tarefa. É a regra publicada na Régua Comum (`acoes-e-sistema.md`, "Ajudante"), e este
+modo se alinha a ela por decisão do autor de 24/09/2026 (G18); antes, o ajudante rolava contra a
+mesma Dificuldade e dava +2, mais +1d6 por Margem.
 
 #### Teste coletivo
 
@@ -284,7 +281,7 @@ pedir um resultado único:
 
 1. A Dificuldade sobe **+2 por pessoa**.
 2. Rola quem tem o **pior pool**, e o resultado é o do grupo.
-3. Cada um dos outros pode rolar para ajudar, pela tabela de apoio acima.
+3. Cada um dos outros pode rolar para ajudar, pela regra de apoio acima.
 
 Repare no que esses números fazem sozinhos: cada pessoa a mais sobe a Dificuldade em 2, e essa
 mesma pessoa devolve +2 se passar. **O companheiro competente é neutro, o incompetente é peso, e
@@ -642,7 +639,7 @@ chão, e **quem volta ao chão de uma altura considerável não volta inteiro**:
 Cair.
 
 **Ajuda** · não soma, apoia. Um só sobe de cada vez. Quem já está em cima e larga uma corda dá o
-apoio pela tabela da §3.5, e quem tem a corda amarrada normalmente também abaixa a Dificuldade.
+apoio pela regra da §3.5, e quem tem a corda amarrada normalmente também abaixa a Dificuldade.
 
 **Circunstância** · corda e equipamento **−4**; superfície molhada ou com gelo **+2**; escuridão
 **+2**; carga acima da faixa Leve **+2**; escalar com uma das mãos ocupada **+4**.
@@ -1186,19 +1183,33 @@ Para as armaduras existe um atalho, porque elas já carregam um campo de acesso:
 O gambeson cai em 4, a cota de malha em 8, a brigandina em 6, a placa completa em 11. Bate com a
 tabela abaixo, que foi escrita antes da fórmula.
 
-**Ajuda** segue a §3.5. Ofício é quase sempre tarefa divisível, então os **Acúmulos somam**: cinco
+**Ajuda.** Ofício é quase sempre tarefa divisível, então os **Acúmulos somam**: cinco
 carpinteiros levantam a casa em um quinto do tempo. Mas atenção ao que **não** se divide: a
-qualidade é da mão que conduz. Dez aprendizes aceleram uma espada Comum e não fazem uma Ótima.
+qualidade é da mão que conduz.
+
+O apoio da §3.5 (metade da Dificuldade, +1 a cada 6 pontos acima) é para **apoio numa jogada
+única**, em ação que não se divide. O trabalho **divisível** do ofício, uma Longa com Acúmulo, tem
+as duas regras abaixo: a **condução**, na fabricação, e a **direção**, na obra (G18, decidida pelo
+autor em 24/09/2026).
 
 <p class="formula">Quem ajuda a fabricar sob a condução de alguém que cumpre o Requisito da peça <b>não precisa cumprir o Requisito</b>, mas trabalha contra a <b>Dificuldade da peça</b>: se a média não passar dela, não soma Acúmulo</p>
 
-É por essa regra que os aprendizes entram na espada: sob a condução do ferreiro eles dispensam o
-Requisito 3, e cada um soma o que a sua média passar da Dificuldade 7. **Um braçal, de média 7,
-não soma nada na espada.** Decidido pelo autor em 24/09/2026 (G19 e G20).
+A condução **herda os modificadores**. Oficina e material são circunstâncias da tarefa e valem para
+todos que trabalham nela; o **+4** de quem não tem o ofício específico é pessoal, e pesa só sobre
+quem não o tem. Cada artesão conduz até **dez** ajudantes, como na direção de obra. Sob condução,
+os aprendizes dispensam o Requisito 3 da espada, e cada um soma o que a sua média passar da
+Dificuldade que a oficina deixou.
 
-**Direção de obra.** Esta regra é de **obra**, e não de fabricação de peças: alvenaria,
-engenharia, construção naval, carpintaria de construção, as obras das escalas de semanas e de
-estações, como a casa, o moinho, a muralha e o navio. Aqui aparece um problema que a §3.5 sozinha
+**O braçal, que não tem o ofício, não soma na espada em nenhuma oficina**: na de mestre, a
+Dificuldade dele é 7 − 4 + 4 = 7, e a média 7 não passa dela. Os aprendizes, de Habilidade 1 ou 2,
+somam numa oficina bem equipada ou de mestre: **numa oficina bem equipada ou de mestre, dez
+aprendizes aceleram uma espada Comum e não fazem uma Ótima**. Decidido pelo autor em 24/09/2026
+(G19 e G20; a herança, o +4 pessoal e a trava de dez na G29).
+
+**Direção de obra.** Esta regra é de **obra**, e não de fabricação. Obra é **construção fixa no
+lugar** (casa, celeiro, forja, moinho, muralha, ponte, catedral) ou peça da **escala de
+estações**; todo o resto é fabricação, qualquer que seja o ofício da linha. A carroça e o barco de
+pesca são fabricação; o navio de guerra é obra (G29). Aqui aparece um problema que a §3.5 sozinha
 não resolve. O braçal tem soma 4 e média 7, então numa obra de Dificuldade 11 ele contribui com um
 número negativo: pela regra crua, carregar pedra atrapalha. O que falta é a figura do mestre de
 obras.
@@ -1208,8 +1219,8 @@ obras.
 Quem pensa é o mestre; o ajudante executa serviço simples, e serviço simples é Dificuldade 4 em
 qualquer obra. Cada supervisor dirige até **dez** ajudantes, e passar disso exige contramestres,
 que é como as obras grandes de fato se organizavam. O ajudante nunca contribui para a
-**qualidade**, só para o Acúmulo. Na forja, na bancada e no tear, a Dificuldade 4 não vale: quem
-ajuda trabalha contra a Dificuldade da peça, pela regra da Ajuda acima.
+**qualidade**, só para o Acúmulo. Na fabricação, a Dificuldade 4 não vale: quem ajuda trabalha
+sob condução, contra a Dificuldade da peça.
 
 **Apressar.** Dobrar as horas rende **um intervalo extra** a cada dois, e custa **+2 na
 Dificuldade** pelo cansaço e pela pressa. Vale a pena em peça fácil e é ruinoso em peça fina.
