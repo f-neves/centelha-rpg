@@ -274,6 +274,9 @@
   // Elementos de cartografia (B2, static/js/elementos.js).
   iniciarElementos(mapa);
 
+  // Rotas de comércio (B4, static/js/rotas.js).
+  const ferramentaDeRota = iniciarFerramentaDeRota(mapa);
+
   // Exportação parcial (B3, static/js/exportar.js).
   iniciarExportacao(mapa);
 
@@ -295,6 +298,10 @@
     alternarTravaDoSelecionado: async () => {
       // As seleções são mutuamente exclusivas (cada `selecionar` limpa as outras
       // três), então a ordem aqui só decide empate que não deveria existir.
+      if (ferramentaDeRota.temSelecao()) {
+        const tratou = await ferramentaDeRota.alternarTravaDoSelecionado();
+        if (tratou) return;
+      }
       if (ferramentaDeEstrada.temSelecao()) {
         const tratou = await ferramentaDeEstrada.alternarTravaDoSelecionado();
         if (tratou) return;

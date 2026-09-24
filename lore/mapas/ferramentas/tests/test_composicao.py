@@ -86,3 +86,17 @@ def test_versao_do_jogador_tira_o_oculto(base):
     assert [n["texto"] for n in j["nomes"]] == ["Aberta"]
     # Controle: o mestre continua vendo as duas.
     assert len(dados["lugares"]) == 2
+
+
+def test_intervalos_periodicos():
+    assert list(C.intervalos_periodicos(0, 25, 10, 0, 4)) == [(0, 4), (10, 14), (20, 24)]
+    assert list(C.intervalos_periodicos(12, 23, 10, 0, 4)) == [(12, 14), (20, 23)]
+
+
+def test_tracejado_nao_trava_com_numero_grande():
+    """O caso que travou a primeira versão (somar passos menores que a precisão do
+    número): um segmento que começa muito longe na linha. Tem de terminar e dar os
+    pedaços certos."""
+    s0 = 1e12
+    pedacos = list(C.intervalos_periodicos(s0, s0 + 30, 10, 0, 4))
+    assert 2 <= len(pedacos) <= 4

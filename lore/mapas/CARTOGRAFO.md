@@ -27,6 +27,9 @@ primeira coisa que `/cartografo` mostra.)*
   - **B3 (feita)**: exportação parcial (região ou retângulo, camadas, mestre ou
     jogador, PNG ou PDF A4/A3, moldura, escala do recorte) com registro em
     `dados/exportacoes.jsonl`. Linha de comando: `scripts/exportar.py`.
+  - **B4 (feita)**: rotas de comércio (`dados/rotas.json`), pontos de controle com
+    trecho reto ou curvo, campos econômicos, distância no globo e dias calculados,
+    tecla O. Dados de exemplo da Parte B por `scripts/exemplos_parte_b.py`.
 - **RODADA DA NOITE DE 2026-09-23, AUTÔNOMA (o usuário fora de casa, sem testar).**
   Pedido: montanha x nevada aprovada; piso x densidade; áreas de exemplo irregulares;
   renderizar e avaliar; etapa 10 sem cache, edição de vértice, pincel; lista do que

@@ -25,7 +25,7 @@ estava parado (derrubado pelo Claude Code por falta de memória na rodada anteri
 | B1 camada de nomes | feita | ver diário |
 | B2 elementos de cartografia | feita | ver diário |
 | B3 exportação parcial | feita | ver diário |
-| B4 rotas de comércio | pendente | |
+| B4 rotas de comércio | feita | ver diário |
 | B5 mapas distorcidos | pendente | |
 | C1 mapa de teste do mundo | pendente | |
 | C2 mapa de jogador e distorcido | pendente | |
@@ -179,4 +179,47 @@ estava parado (derrubado pelo Claude Code por falta de memória na rodada anteri
 - **Depende do teste do usuário**: o painel EXPORTAR na tela (desenhar retângulo,
   marcar camadas, baixar o arquivo pelo link).
 
-### B4 · rotas de comércio (começando)
+### B4 · rotas de comércio (feita)
+
+- **Pronto**: `dados/rotas.json` (`backend/rotas.py`, rotas `/api/rotas`), desenho em
+  `cartografia/rotas_desenho.py`, ferramenta na tela (tecla **O**, painel ROTAS DE
+  COMÉRCIO com o formulário de todos os campos, um botão por trecho para trocar
+  curvo/reto, "vértices" para mover os pontos de controle).
+  - traçado guardado como PONTOS DE CONTROLE + tipo por trecho (`reto`/`curvo`); o
+    curvo é Catmull-Rom passando pelos pontos; a `geometry` gravada é o traçado já
+    interpolado, recalculado a cada gravação;
+  - terrestre e fluvial não cruzam mar (regra da estrada, por segmento do traçado
+    interpolado); marítima cruza;
+  - campos: nome, mercadorias, sentido (ida/volta/ambos), risco (baixo/médio/alto),
+    sazonalidade, quem controla, observações, visível ao jogador, travado;
+  - distância no globo (haversine) e dias por transporte, calculados e NÃO gravados;
+  - pontas grudam num lugar a menos de 5 km (o meio não gruda);
+  - estilo: terrestre pontilhado vermelho-terra, marítima traço-ponto, fluvial
+    pontilhado azul; o nome acompanha a curva pela camada de nomes.
+- **Conferido**: 14 testes (interpolação passa pelos pontos, trecho curvo sai da reta
+  como controle negativo, terrestre no mar recusada e a MESMA linha marítima aceita,
+  sete recusas sem gravar, medidas no globo com o grau de longitude a 60° valendo
+  metade, edição de trecho e ponto, trava, desfazer, e o nome da rota nos nomes).
+- **Defeito achado e consertado**: o tracejado da estrada e o traço-ponto da rota
+  somavam passos, e quando o passo ficou menor que a precisão do número o laço nunca
+  terminava (a primeira exportação de Mére com estradas de exemplo rodou 10 minutos e
+  foi morta). Viraram contagem por índice inteiro de período, com teste do caso.
+- **Dados de exemplo** (`scripts/exemplos_parte_b.py`, apaga com `--apagar`; ids em
+  `render/analise/exemplos-parte-b.json`): 9 lugares com nome provisório (um oculto
+  do jogador), nomes nos 5 lugares antigos, 5 rios (descendo pela distância até o
+  mar), 5 vias (caminho por terra numa grade reduzida), 3 rotas (uma oculta), 5 nomes
+  livres (2 cordilheiras e 3 mares) e os 4 elementos padrão. **Nada disso foi
+  commitado** (`lugares.geojson`, `rios.json`, `estradas.json`, `rotas.json`,
+  `nomes.json`, `elementos.json`), como os exemplos de antes.
+- **Decisões minhas**: velocidades de navio (120 km/dia mercante, 80 galera) e barco
+  (60 rio abaixo, 25 rio acima); fluvial com a regra da terra e sem exigir rio
+  desenhado; sem cadeado de CAMADA para rotas (só por objeto), porque acrescentar
+  mexeria em `camadas_travadas.json`.
+- **O que ficou feio**: rio fino e da cor do mar lê pouco no recorte; nome de região
+  cai por cima de nome de lugar (MÉRE sobre "Oásis de Sal"): não há desvio de
+  colisão, só arrastar o rótulo.
+- Imagem: `render/exportacoes/teste-mere-mestre.png`.
+- **Depende do teste do usuário**: desenhar rota, o formulário, os botões de trecho,
+  "vértices" da rota.
+
+### B5 · mapas distorcidos (começando)

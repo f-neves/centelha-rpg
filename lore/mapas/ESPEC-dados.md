@@ -523,3 +523,6 @@ Recomendação do Cartógrafo, registrada para o usuário revisar.
 - **`dados/exportacoes.jsonl`** (B3): uma linha por exportação, só acrescentada.
   Campos em `ferramentas/cartografia/exportar.py` (`registro`). Nasce na primeira
   exportação.
+- **`dados/rotas.json`** (B4): FeatureCollection de rotas de comércio; `controle`
+  (pontos e tipo de cada trecho) manda, a `geometry` é o traçado interpolado. Esquema
+  e regras no cabeçalho de `ferramentas/backend/rotas.py`.

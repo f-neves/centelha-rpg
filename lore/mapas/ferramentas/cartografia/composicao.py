@@ -254,26 +254,31 @@ class Contexto:
         return self.janela.para_pixel(lon, lat)
 
 
-def _linha_tracejada(d: ImageDraw.ImageDraw, pts, cor, largura, traco, vao, fase=0.0):
-    """Linha em traços (PIL não tem tracejado). `fase` é a distância percorrida antes
-    do primeiro ponto, para o tracejado continuar igual de um bloco para o outro."""
-    s = fase
-    periodo = traco + vao
+def intervalos_periodicos(s0: float, s1: float, periodo: float, a: float, b: float):
+    """Os pedaços [k*periodo + a, k*periodo + b] que caem em [s0, s1], para k inteiro.
+    Por índice inteiro, e não somando passos: a versão que somava passos travou num
+    laço infinito quando o passo ficou menor que a precisão do número (achado ao
+    desenhar a primeira estrada de exemplo)."""
+    k0 = math.floor((s0 - b) / periodo)
+    k1 = math.floor(s1 / periodo)
+    for k in range(k0, k1 + 1):
+        x, y = max(s0, k * periodo + a), min(s1, k * periodo + b)
+        if y > x:
+            yield x, y
+
+
+def _linha_tracejada(d: ImageDraw.ImageDraw, pts, cor, largura, traco, vao):
+    """Linha em traços (PIL não tem tracejado), contados a partir do primeiro ponto:
+    o mesmo desenho em qualquer bloco."""
+    s = 0.0
     for (ax, ay), (bx, by) in zip(pts[:-1], pts[1:]):
         comp = math.hypot(bx - ax, by - ay)
-        t = 0.0
-        while t < comp:
-            dentro = s % periodo
-            if dentro < traco:
-                fim = min(comp, t + (traco - dentro))
-                d.line([(ax + (bx - ax) * t / comp, ay + (by - ay) * t / comp),
-                        (ax + (bx - ax) * fim / comp, ay + (by - ay) * fim / comp)], fill=cor, width=largura)
-                s += fim - t
-                t = fim
-            else:
-                passo = min(comp - t, periodo - dentro)
-                s += passo
-                t += passo
+        if comp > 0:
+            for x, y in intervalos_periodicos(s, s + comp, traco + vao, 0.0, traco):
+                u, v = (x - s) / comp, (y - s) / comp
+                d.line([(ax + (bx - ax) * u, ay + (by - ay) * u), (ax + (bx - ax) * v, ay + (by - ay) * v)],
+                       fill=cor, width=largura)
+        s += comp
 
 
 def _pontilhado(d: ImageDraw.ImageDraw, pts, cor, raio, espaco):

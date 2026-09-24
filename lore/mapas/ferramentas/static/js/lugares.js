@@ -510,6 +510,7 @@ function iniciarFerramentaDeLugar(mapa, lugaresIniciais, travasIniciais) {
     if (typeof window.recarregarRegioes === "function") window.recarregarRegioes();
     if (typeof window.recarregarNomes === "function") window.recarregarNomes();
     if (typeof window.recarregarElementos === "function") window.recarregarElementos();
+    if (typeof window.recarregarRotas === "function") window.recarregarRotas();
     atualizarBotoesPilha();
   }
   botaoDesfazer.addEventListener("click", () => desfazerOuRefazer("/api/desfazer"));

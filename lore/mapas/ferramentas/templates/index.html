@@ -132,6 +132,36 @@
         </div>
       </section>
 
+      <section class="secao" data-secao="rotas">
+        <h2 class="cabecalho-secao">ROTAS DE COMÉRCIO</h2>
+        <div class="corpo-secao">
+          <div class="botoes-regiao">
+            <button type="button" id="rota-desenhar" title="Clique os pontos de controle; duplo clique termina. As pontas grudam num lugar a menos de 5 km.">+ rota <kbd>O</kbd></button>
+            <select id="rota-tipo"><option value="terrestre">terrestre</option><option value="maritima">marítima</option><option value="fluvial">fluvial</option></select>
+            <select id="rota-trecho" title="Como os trechos nascem; depois troca um a um."><option value="curvo">trechos curvos</option><option value="reto">trechos retos</option></select>
+          </div>
+          <ul id="lista-rotas"></ul>
+          <div id="rota-leitura" class="nota"></div>
+          <form id="form-rota" style="display:none">
+            <label>nome <input type="text" id="rota-nome"></label>
+            <label>tipo <select id="rota-tipo-sel"></select></label>
+            <label>mercadorias <input type="text" id="rota-mercadorias" placeholder="sal, lã, ferro"></label>
+            <label>sentido <select id="rota-sentido"><option value="ambos">ambos</option><option value="ida">de ida</option><option value="volta">de volta</option></select></label>
+            <label>risco <select id="rota-risco"><option value="">(não dito)</option><option value="baixo">baixo</option><option value="medio">médio</option><option value="alto">alto</option></select></label>
+            <label>sazonalidade <input type="text" id="rota-sazonalidade" placeholder="ex.: só no verão"></label>
+            <label>quem controla <input type="text" id="rota-controlada_por"></label>
+            <label>observações <input type="text" id="rota-observacoes"></label>
+            <label><input type="checkbox" id="rota-jogador"> visível ao jogador</label>
+            <div id="rota-trechos" class="botoes-regiao" title="um botão por trecho: troca curvo/reto"></div>
+            <div class="botoes-regiao">
+              <button type="submit">salvar</button>
+              <button type="button" id="rota-vertices">vértices</button>
+              <button type="button" id="rota-apagar">apagar</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
       <section class="secao" data-secao="estradas">
         <h2 class="cabecalho-secao">ESTRADAS</h2>
         <div class="corpo-secao">
@@ -316,6 +346,7 @@
         <tr><td><kbd>C</kbd> (segurado)</td><td>esconde tudo e mostra só a costa</td></tr>
         <tr><td><kbd>A</kbd></td><td>ferramenta de Área (liga/desliga)</td></tr>
         <tr><td><kbd>I</kbd></td><td>ferramenta de Rio (liga/desliga)</td></tr>
+        <tr><td><kbd>O</kbd></td><td>rota de comércio (liga/desliga)</td></tr>
         <tr><td><kbd>E</kbd></td><td>ferramenta de Estrada (liga/desliga)</td></tr>
         <tr><td><kbd>P</kbd></td><td>pincel (liga/desliga): aperte e arraste para pintar ou apagar área</td></tr>
         <tr><td><kbd>V</kbd></td><td>edita os vértices da área ou do rio selecionado (Enter salva, Esc descarta)</td></tr>
@@ -369,6 +400,7 @@
   <!-- geo.js antes da régua: é onde mora haversineKm. -->
   <script src="/static/js/geo.js"></script>
   <script src="/static/js/estradas.js"></script>
+  <script src="/static/js/rotas.js"></script>
   <script src="/static/js/regioes.js"></script>
   <script src="/static/js/nomes.js"></script>
   <script src="/static/js/elementos.js"></script>

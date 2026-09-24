@@ -18,7 +18,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, StrictBool
 
 from . import (areas, cobertura_automatica, coordenadas, estradas, lugares,
-               elementos, ilhas, medicoes, nomes, operacoes, referencias, regioes, relevo_automatico, rios, travas)
+               elementos, ilhas, medicoes, nomes, operacoes, rotas, referencias, regioes, relevo_automatico, rios, travas)
 
 RAIZ_FERRAMENTA = Path(__file__).resolve().parents[1]
 RAIZ_MAPAS = RAIZ_FERRAMENTA.parent
@@ -142,6 +142,11 @@ class PedidoDeExportacao(BaseModel):
     titulo: str | None = None
     distorcao: dict | None = None
     nome: str | None = None
+
+
+class RotaDeComercio(BaseModel):
+    propriedades: dict | None = None
+    controle: dict | None = None
 
 
 class NovaMassa(BaseModel):
@@ -849,3 +854,47 @@ def baixar_exportacao(caminho: str):
     if pasta not in alvo.parents or not alvo.is_file():
         raise HTTPException(status_code=404, detail="arquivo de exportação não encontrado")
     return FileResponse(alvo)
+
+
+# --- Rotas de comércio (B4, 2026-09-23 noite) ---------------------------------------
+
+@app.get("/api/rotas")
+def obter_rotas() -> JSONResponse:
+    """`rotas`: o arquivo. `medidas`: distância no globo e dias por meio de transporte,
+    CALCULADAS a cada pedido e nunca gravadas."""
+    return JSONResponse(rotas.com_medidas())
+
+
+@app.post("/api/rotas")
+def criar_rota(r: RotaDeComercio) -> JSONResponse:
+    if r.controle is None:
+        raise HTTPException(status_code=422, detail="a rota precisa de 'controle' (pontos e trechos)")
+    try:
+        rotas.criar(r.propriedades or {}, r.controle)
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
+    return JSONResponse(rotas.com_medidas())
+
+
+@app.put("/api/rotas/{id_rota}")
+def editar_rota(id_rota: str, r: RotaDeComercio) -> JSONResponse:
+    try:
+        rotas.editar(id_rota, r.propriedades, r.controle)
+    except KeyError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except travas.Travado as e:
+        raise HTTPException(status_code=409, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
+    return JSONResponse(rotas.com_medidas())
+
+
+@app.delete("/api/rotas/{id_rota}")
+def apagar_rota(id_rota: str) -> JSONResponse:
+    try:
+        rotas.apagar(id_rota)
+    except KeyError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except travas.Travado as e:
+        raise HTTPException(status_code=409, detail=str(e))
+    return JSONResponse(rotas.com_medidas())
