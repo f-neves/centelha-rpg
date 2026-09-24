@@ -49,9 +49,9 @@ está na seção 3.
 | H | Arremesso | [`H-arremesso.md`](docs/pendencias/H-arremesso.md) | 4 | 2 | 0 | 2 | 1 | 0 | 0 | 0 | 0 | 1 |
 | I | Mesa virtual · tempo real | [`I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 14 | 10 | 2 | 2 | 3 | 8 | 0 | 0 | 0 | 1 |
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 11 | 8 | 0 | 3 | 1 | 2 | 0 | 2 | 1 | 2 |
-| K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 30 | 16 | 1 | 13 | 13 | 4 | 0 | 0 | 0 | 0 |
+| K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 31 | 17 | 1 | 13 | 13 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
-| | **Total** | | **253** | **165** | **4** | **84** | **49** | **36** | **8** | **3** | **66** | **7** |
+| | **Total** | | **254** | **166** | **4** | **84** | **49** | **37** | **8** | **3** | **66** | **7** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -483,6 +483,7 @@ Fechados (3): J1, J4, J5.
 | K25 | aberto | DECIDIR | A Defesa da arma e a do escudo somam, e o escudeiro vira parede. |
 | K14 | aberto | DECIDIR | A bancada só mede o canto "todo mundo esquiva". |
 | K5 | aberto | FAZER | A implementação: os DOIS sistemas. |
+| K31 | aberto | FAZER | O Grid anda a Corrida só na primeira fase: a regra publicada tem duas, e o código aplica metade. |
 
 Fechados (13): K29, K1, K2, K3, K10, K7, K15, K16, K22, K23, K26, K12, K13.
 

@@ -132,6 +132,11 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   arma não tem `distMax`, e essas 8 têm, então a folha mostraria faixas do catálogo com o livre em
   zero (leitura de código, não exercitada na tela). Qual fonte vale é regra, e está na lista única
   de decisões (`docs/simulacao/caixa/lista-unica-decisoes.md`, seção I).
+
+  **A leitura (c) decide a prioridade, e vai ser MEDIDA (pedido do humano, 24/09/2026):** se a folha
+  CALA, o item é o que o texto diz; se ela MOSTRA faixa, há número inventado em produção e o item
+  sobe. Cinco minutos de navegador da Executora, olhando a folha de uma arma de arremesso, depois que
+  a rodada 101 fechar. É medição, e não conserto.
 - [x] **I13 · O Grid no telefone. FEITO em 2026-08-21**, nas sete fases. O tabuleiro cresceu inteiro numa tela de notebook, e as
   oito emendas do I12 foram desenhadas com mouse na mão. Medido na bancada em 21/08, num viewport de
   390×844 com dedo: **456px de mobília antes do tabuleiro (54% da tela)**, a barra da arena quebrando

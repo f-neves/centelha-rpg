@@ -1,6 +1,6 @@
 # Plano · uma árvore por instância (24/09/2026)
 
-**Estado: APROVADO pelo humano em 24/09/2026 (seção 9), não executado. Executa DEPOIS do lote do monte A, e não no meio de uma rodada.** Pedido pelo humano em 24/09/2026, depois de a rodada 100 ter
+**Estado: O DESENHO FINAL É O DA SEÇÃO 11** (decisão do humano de 24/09/2026, depois do conflito com a proposta do Cartógrafo). As seções 3 e 9 ficam como registro do primeiro desenho aprovado. **A árvore da Executora já existe; a do mapa foi desfeita às 02:38:56, antes da decisão final, e recriá-la está com o humano.** Pedido pelo humano em 24/09/2026, depois de a rodada 100 ter
 existido sob dois shas (`a5db998` no `main` local, `a4a9724` no `origin/main`) e de o Arquiteto ter
 precisado de uma worktree temporária para publicar sem levar os commits do Cartógrafo. A decisão
 de dar worktree própria à Executora já era do humano; este arquivo é o como.
@@ -52,7 +52,7 @@ commits do Cartógrafo.
   (`lore/mapas/registro-git.jsonl`). Com mais árvores, o `test-portoes` precisa ser o passo 1 de
   toda sessão, e não só do Cartógrafo.
 
-## 3 · O desenho
+## 3 · O desenho (o PRIMEIRO aprovado; SUBSTITUÍDO pela seção 11)
 
 | árvore | quem | ramo | observação |
 |---|---|---|---|
@@ -172,7 +172,7 @@ limpa, 0 arquivos em CRLF, `test-portoes` verde antes (na árvore do Arquiteto) 
 `scripts/hooks`). A remoção, que é o caso da nota do Cartógrafo, ainda não foi medida: será na remoção
 da árvore temporária do Arquiteto.
 
-## 10 · A proposta do Cartógrafo, que chegou no mesmo dia e desenha o contrário
+## 10 · A proposta do Cartógrafo, e como as duas se fundiram
 
 O Cartógrafo escreveu `lore/mapas/PROPOSTA-WORKTREE.md` (commit `4b129ba`, só no `main` local do
 `rpg-system`, sem push), também não executada: **ele sai** para `centelha-mapa`, com a branch própria
@@ -193,3 +193,47 @@ toma.** Dois fatos da proposta dele que valem para esta:
   removida (`lore/mapas/registro-git.jsonl`). Criar e remover worktrees reescreve esse arquivo, e
   não está provado que isso troca a `core.hooksPath`. Criar duas worktrees é a ocasião de medir: o
   `test-portoes` antes e depois de cada `worktree add`.
+
+**Como as duas propostas se fundiram (decisão do humano, 24/09/2026, depois do conflito):** valem as
+duas. Da proposta do Cartógrafo fica a saída do MAPA para uma árvore própria, com **branch própria**
+(`mapa`, e não destacada), que é o que faz o "sem push" dele querer dizer alguma coisa: o trabalho do
+mapa mora num ramo que ninguém mais empurra. Deste plano fica a árvore da Executora. **O que sai deste
+plano:** a saída do Arquiteto do `rpg-system`. Motivo do humano: as árvores não conflitam no git, o
+portão está verde em todas, e remover trabalho feito para preservar a autoria de um desenho é caro e
+não compra nada. Com o mapa fora e a Executora fora, o problema original acaba: ninguém empurra
+trabalho alheio por acidente. O caso do conflito está no `CATALOGO.md`, "o humano como canal único
+que decide em duas janelas".
+
+## 11 · O desenho final
+
+| árvore | quem | ramo | estado em 24/09/2026, 02:50 |
+|---|---|---|---|
+| `rpg-system` | o humano e o Arquiteto | `main` | existe; o `main` local ainda carrega commits do mapa não empurrados (ver abaixo) |
+| `centelha-mapa` | o Cartógrafo | `mapa` (branch própria) | **NÃO EXISTE**: criada pelo Cartógrafo e desfeita às 02:38:56, quando ele leu o aviso de que o desenho aprovado era o da seção 3. A decisão final chegou depois. Recriar é com o humano e o Cartógrafo |
+| `centelha-executora` | a Executora | destacada em `origin/main` | existe desde 02:25, em uso na rodada 101 |
+| `centelha-techlead-revisora` | a Revisora | destacada no sha do aviso | existe, não muda |
+| `centelha-arq-tmp` | o Arquiteto, provisória | destacada em `origin/main` | existe; sai quando o `rpg-system` puder publicar sem levar o mapa |
+
+**A branch própria, adotada como regra:** árvore de frente que commita sem publicar na hora mora num
+ramo próprio, e não destacada. Commit em HEAD destacado fica alcançável só pelo sha e some da vista
+no próximo `checkout --detach` (foi assim que vereditos da Revisora se orfanaram nas rodadas 27 e
+28). **Para a Executora, proposta do Arquiteto:** criar o ramo `executora` na árvore dela depois que a
+101 fechar (`git switch -c executora`, que não muda arquivo nenhum), e seguir publicando por
+`git push origin HEAD:main`. Não se faz durante a rodada.
+
+**O que ainda impede o Arquiteto de voltar a publicar pelo `rpg-system`:** o `main` local de lá tem
+commits do mapa que não subiram (conferido às 02:50: 11 commits à frente do `origin/main`, entre eles
+o `a5db998`, a cópia da rodada 100). Enquanto eles estiverem no `main` do `rpg-system`, um
+`git push origin HEAD:main` dali leva o mapa. A saída depende do Cartógrafo e do humano (o mapa sair
+para o ramo `mapa` leva esses commits junto, e o `main` local volta ao `origin/main`); até lá, o
+Arquiteto continua publicando pela `centelha-arq-tmp`.
+
+**O `.git/config` e a blindagem do Cartógrafo (fatos dele, medidos em 24/09/2026):**
+`extensions.worktreeConfig=true` no config comum, e um `.git/config.worktree` no `rpg-system` com
+`core.hooksPath=scripts/hooks`. No git 2.45.1, `git worktree add` COPIA o `config.worktree` da árvore
+de onde roda, então uma árvore criada a partir do `rpg-system` nasce com a `hooksPath` própria (a da
+Executora foi criada antes da blindagem, e usa o valor comum). A remoção de uma worktree junto com
+`git branch -d`, às 02:38:56, trocou o mtime do `.git/config` e deixou o md5 igual. **E das 02:40:29
+às 02:40:57 o valor comum ficou de propósito num caminho que não existe**, como controle negativo do
+Cartógrafo: um commit de outra árvore nessa janela teria pulado o gancho. Conferido pelo Arquiteto
+nos reflogs das três árvores do arranjo: nenhum commit nesse intervalo.

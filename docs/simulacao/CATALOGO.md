@@ -81,6 +81,7 @@ segunda tinha ficado verde por cegueira.
 | **o documento que se justifica por um fato falso sobre si** | cabeçalho novo que diz "não é o mesmo que", "é mais completo que", "é cópia parcial de" | o `diff` concorda com a frase que faz este arquivo existir? |
 | **o caminho alternativo que trata a recusa certa como falha** (L67) | uma segunda passada, um `retry`, um "se não conseguiu, tente de novo com menos restrição" | não ter conseguido é o sintoma de um destino errado, ou é a regra funcionando? |
 | **duas portas para a mesma ação, uma que cobra e outra que não** (L104, L67) | *por gesto:* uma ação que a interface alcança por mais de um caminho (arrasto e lista, caminhada e repetição, diálogo e atalho) | os dois caminhos cobram o mesmo, e passam pelas mesmas travas? |
+| **o humano como canal único que decide em duas janelas** | *por gesto:* autorizar numa sessão algo que outra sessão também está desenhando | o que eu já autorizei sobre este assunto, e em qual janela? |
 | **a regra publicada que nunca é chamada** | *por gesto:* escrever "já existe" sobre uma peça, citando dados ou capítulo | existe em CÓDIGO com chamador, ou é texto publicado que ninguém executa? |
 | **o sinal de vida escrito no fim** | *por gesto:* escrever o arquivo de progresso, o log de etapas, o relatório com horários | esta linha está sendo escrita AGORA porque a etapa fechou agora, ou estou narrando de trás para a frente? |
 | **o rótulo de escopo do `git diff`** | `@@ -A,B +C,D @@ <texto>` | este texto depois do `@@` diz ONDE a edição está, ou é só a linha que PARECE cabeçalho de função mais próxima acima do hunk? |
@@ -922,3 +923,39 @@ do Cartógrafo, e o que o Cartógrafo commita sem push não aparece no `origin/m
 índice, o `main`, uma regra de convívio), quem mais pode estar desenhando a mesma coisa, e onde ela
 escreveria? A resposta mínima é olhar o `git log` do `main` LOCAL e do `origin/main` das últimas horas
 atrás de palavras do mesmo assunto, e avisar pela caixa antes de levar o plano ao humano.
+
+## O HUMANO COMO CANAL ÚNICO QUE DECIDE EM DUAS JANELAS (24/09/2026, forma nova, nomeada pelo humano)
+
+**A forma:** as frentes não conversam entre si; o humano é o único ponto por onde elas se comunicam.
+Quando ele decide o mesmo assunto em duas janelas, sem reler o que já autorizou na outra, ele passa a
+ser a FONTE da divergência, e as instâncias é que ficam com o trabalho de reconciliar duas ordens
+legítimas que se contradizem. Nenhuma das duas desobedeceu; cada uma seguiu a ordem que recebeu.
+
+**O caso, com os horários que o disco dá (24/09/2026):**
+
+- antes das 02:20, na janela do Arquiteto: o humano aprova o `plano-worktrees.md` (o Arquiteto e a
+  Executora saem do `rpg-system`, o mapa fica). O Arquiteto registra a aprovação em `8ac4ddc`, às 02:20;
+- antes das 02:33:20, na janela do Cartógrafo: o humano autoriza a proposta dele (o mapa sai para a
+  `centelha-mapa`, numa branch própria). Às 02:33:20 o Cartógrafo liga `extensions.worktreeConfig`, e
+  em seguida cria a árvore, com `.venv` novo;
+- 02:25: o Arquiteto cria a `centelha-executora`, pelo plano dele; 02:33:14, publica o despacho da
+  rodada 101 e manda o aviso ao Cartógrafo dizendo que o desenho aprovado é o dele;
+- 02:38:56: o Cartógrafo, ao ler o aviso, desfaz a `centelha-mapa` e a branch `mapa` (`4643529`, às
+  02:43:50, registra); pergunta ao humano qual vale;
+- depois disso, na janela do Arquiteto: o humano decide que **valem os dois**, e que a `centelha-mapa`
+  FICA. Ela já não existia quando a decisão chegou.
+
+**O segundo tempo do caso é a forma se repetindo dentro da própria reconciliação:** a decisão que
+reconciliava as duas ordens foi escrita sobre um estado que já tinha andado (é a forma "o roteiro de
+recuperação escrito sobre um estado que já andou", de 24/09/2026, virada para uma decisão de
+arquitetura). O Arquiteto conferiu o disco antes de repassar a ordem ao Cartógrafo, e não a repassou.
+
+**O que custou:** uma árvore criada e desfeita, com `.venv` recriado e apagado; um desenho aprovado duas
+vezes em sentidos opostos; e uma rodada de mensagens entre duas instâncias para descobrir o que o
+humano tinha dito a cada uma.
+
+**A pergunta que a forma gera, e ela é do humano e também das instâncias:** antes de autorizar numa
+janela, o que eu já autorizei sobre este assunto na outra? E, do lado das instâncias: quando uma ordem
+toca o que outra frente faz, ela vem com o horário e com o "a outra frente sabe?", e quem a recebe
+confere o estado da outra frente antes de executar. A resposta mínima é a caixa: decisão que toca duas
+frentes se escreve num arquivo que as duas leem, e não em duas conversas.
