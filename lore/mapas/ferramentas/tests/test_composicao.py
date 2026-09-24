@@ -100,3 +100,14 @@ def test_tracejado_nao_trava_com_numero_grande():
     s0 = 1e12
     pedacos = list(C.intervalos_periodicos(s0, s0 + 30, 10, 0, 4))
     assert 2 <= len(pedacos) <= 4
+
+
+def test_terra_na_resolucao_oficial_e_o_recorte_exato(base):
+    """O bloco que quebrou o mapa do mundo (arredondamento de uma linha a mais). Na
+    resolução oficial, a terra de uma janela de pixels é o recorte exato da máscara."""
+    _, costa, _ = base
+    for x0, y0, x1, y1 in ((0, 7168, 10240, 8421), (100, 3000, 900, 4100), (5120, 7650, 5300, 7700)):
+        j = C.janela_de_pixels(x0, y0, x1, y1, C.PPG_OFICIAL)
+        t = costa.terra(j)
+        assert t.shape == (y1 - y0, x1 - x0)
+        assert (t == (costa.m[y0:y1, x0:x1] >= 128)).all()

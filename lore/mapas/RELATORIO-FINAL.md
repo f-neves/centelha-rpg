@@ -252,4 +252,40 @@ estava parado (derrubado pelo Claude Code por falta de memória na rodada anteri
 - **Depende do teste do usuário**: se o nível 2 e o 3 "leem" como mapa ruim mas
   usável na mesa, que é o uso.
 
-### C1 · mapa de teste do mundo inteiro (começando)
+### C1 · mapa de teste do mundo inteiro (feita)
+
+- **Onde ver**: `render/mundo-1.png` (10.956 x 10.956 px: o mundo na resolução
+  oficial, 1,25 km/px, mais a moldura) e `render/mundo-1-metade.png`; a prévia a 1/4
+  em `render/mundo-4.png`. Relatório de cada um em `render/mundo-<fator>-relatorio.json`.
+- **Tem tudo o que existe**: cor, relevo, vegetação, lagos, rios, estradas, rotas,
+  cidades, nomes (regiões, lugares, rios, rotas, cordilheiras, mares), rosa, escala
+  (21,9° N), cartela ("Uldun"), monstro, grade e moldura com os graus.
+- **Em blocos** (10 blocos de 1.024 linhas), **medido**: 150 s no total (51 s de
+  planejamento dos símbolos, 81 s de composição), pico do processo **1.124 MB**, com
+  2,5 GB livres antes e o servidor parado.
+- **Prova de que a costura não aparece**: `scripts/mapa_do_mundo.py` redesenha, como
+  bloco único, uma faixa de 3.072 x 520 px que atravessa a junção y = 5.120 (no meio de
+  Waning) e compara com a mesma faixa do mapa juntado: **igual byte a byte**. O teste
+  `test_blocos_sem_costura` prova o mesmo em Mére com blocos de 37 linhas, e o controle
+  negativo (sem folga) mostra a costura.
+- **Defeito achado na primeira tentativa, consertado**: na resolução oficial, a terra
+  do bloco que começa em y = 7.168 saía com uma linha a mais (arredondamento de
+  7.650,000000001 para cima), e o mapa quebrou no bloco 8. Tolerância no
+  arredondamento e teste com os três casos, inclusive esse.
+- **O que ficou feio no mapa do mundo**: a maior parte da terra está sem pintura (é
+  papel liso) porque só as áreas de exemplo foram pintadas; rios de exemplo curtos e
+  finos; nome de região às vezes sobre nome de lugar.
+
+### C2 · mapa de jogador e distorcido de nível 2 (feita)
+
+- `render/exportacoes/c2-mere-jogador.png` (versão do jogador: sem a "Torre
+  Esquecida" nem a rota dos contrabandistas, que estão ocultas), o mesmo em PDF A4
+  (`c2-mere-jogador-a4.pdf`), e `c2-mere-jogador-nivel2.png` (mercador "Velho Tobias")
+  com `c2-mere-jogador-nivel2.mentiras.json`. Lado a lado:
+  `render/exportacoes/c2-mere-comparacao.png`. Os três estão no registro
+  `dados/exportacoes.jsonl`.
+- O nível 2 mentiu, em Mére: deslocamento máximo de 474 km, 4 lugares deslocados (até
+  218 km), 4 faltando, 2 nomes trocados ("Três Rios" aparece como "Vila Úmida"), nomes
+  escritos errado, vias simplificadas e 45% dos símbolos a menos.
+
+### C3 · RUNBOOK (começando)

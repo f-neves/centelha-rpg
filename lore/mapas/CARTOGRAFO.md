@@ -32,6 +32,9 @@ primeira coisa que `/cartografo` mostra.)*
     tecla O. Dados de exemplo da Parte B por `scripts/exemplos_parte_b.py`.
   - **B5 (feita)**: mapas distorcidos de propósito, nível 1 a 5, semente por mercador
     e recorte, só na imagem, com o registro do que cada mapa mentiu.
+  - **C1 e C2 (feitas)**: `render/mundo-1.png` (mundo inteiro na resolução oficial,
+    150 s, 1,1 GB, costura provada byte a byte) e os mapas de jogador de Mére, fiel e
+    nível 2, em `render/exportacoes/c2-*`.
 - **RODADA DA NOITE DE 2026-09-23, AUTÔNOMA (o usuário fora de casa, sem testar).**
   Pedido: montanha x nevada aprovada; piso x densidade; áreas de exemplo irregulares;
   renderizar e avaliar; etapa 10 sem cache, edição de vértice, pincel; lista do que

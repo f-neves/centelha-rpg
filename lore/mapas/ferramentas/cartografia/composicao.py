@@ -107,10 +107,13 @@ class Costa:
         dx1, dy1 = int(round((cx1 - x0) * escala)), int(round((cy1 - y0) * escala))
         if dx1 <= dx0 or dy1 <= dy0:
             return saida
-        ix0, iy0, ix1, iy1 = int(math.floor(cx0)), int(math.floor(cy0)), int(math.ceil(cx1)), int(math.ceil(cy1))
+        # Tolerância no arredondamento: na resolução oficial, 7650,000000001 não pode
+        # virar mais uma linha (achado no mapa do mundo, que quebrou por uma linha).
+        ix0, iy0 = int(math.floor(cx0 + 1e-6)), int(math.floor(cy0 + 1e-6))
+        ix1, iy1 = int(math.ceil(cx1 - 1e-6)), int(math.ceil(cy1 - 1e-6))
         pedaco = Image.fromarray(self.m[iy0:iy1, ix0:ix1])
-        if abs(escala - 1.0) < 1e-9 and abs(cx0 - ix0) < 1e-9 and abs(cy0 - iy0) < 1e-9:
-            reduzido = np.asarray(pedaco)
+        if abs(escala - 1.0) < 1e-6 and abs(cx0 - ix0) < 1e-6 and abs(cy0 - iy0) < 1e-6:
+            reduzido = np.asarray(pedaco)[: dy1 - dy0, : dx1 - dx0]
         else:
             reduzido = np.asarray(pedaco.resize((dx1 - dx0, dy1 - dy0), Image.BOX,
                                                 box=(cx0 - ix0, cy0 - iy0, cx1 - ix0, cy1 - iy0)))
