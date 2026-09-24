@@ -1,53 +1,53 @@
-# Rodada 97 · despacho · a §17 no livro, no dado e no motor
+# Rodada 97 · despacho · o espelho de motor vermelho há dois dias, e o CORRIGE da 96
 
 > ## ▶ ESTE DESPACHO ESTÁ ABERTO desde 24/09/2026
 >
-> Abre depois do veredito da 96. Progresso em `progresso-97.md`, relato em `97-executora.md`.
-> É o primeiro item da trilha de EXECUÇÃO do `Pendencias.md` §6.
+> A 96 fechou com **PROCEDE e um CORRIGE** (`96-revisora.md`, no `main` como `dd9e2d5`). Progresso
+> em `progresso-97.md`, relato em `97-executora.md`. A §17, que era a 97, passou para a
+> `98-despacho.md`: ela mexe no motor, e o instrumento que confere o motor está vermelho.
 
-As três decisões estão em `leitura-de-novato-decisoes.md` §17, com o contra que o humano comprou.
-Leia a §17 inteira antes de começar. **Nada aqui é regra nova:** se alguma frase pedir escolha entre
-duas leituras, pare e escreva no relato, que eu levo ao humano.
+## 0 · O CORRIGE da 96, e a nota
 
-## 1 · Medir antes de escrever
+- **Seção 6, raiz 4 (G12):** "Desgaste e ferimento não se conhecem, o mestre arbitra hoje" é falso
+  contra `vida-ferimentos-cura.md`, que desde `2b08d7a` (22/09) diz "mesmo pool, somando direto, piso
+  1d6", e a própria seção 5 já diz isso. Aberto de verdade está só o **teto 4 da soma**. Corrija a
+  frase no `Pendencias.md` e, se ela vier do próprio tema G, lá também.
+- **Nota da F7:** ela libera **dois** itens de autoria (F5 e F6), e não três.
+- **Nota da ordem das marcas:** `[DECIDIR] [ADIADO]`, com a ordem trocada, perde o adiamento calado.
+  Faça o gerador recusar (ou ler) a ordem trocada, com o caso no teste.
 
-Onde cada uma das três vive hoje, com arquivo e linha, em capítulo (`src/content/chapters/`), dado
-(`src/data/*.json`), código (`src/lib/`, `src/pages/`) e documento (`FRENESI.md`, a própria §16):
+## 1 · O espelho de motor está vermelho no CI desde 22/09/2026, e ninguém leu
 
-- **ação física:** toda definição ou uso de "Vigor ou Destreza" (e variações) como critério de
-  penalidade de ferimento, do +2 da fúria, ou de "ação física";
-- **tortura:** toda menção, e a tabela das Virtudes e o item Resistir de
-  `aparencia-virtudes-vontade.md`;
-- **Firula negativa:** toda menção, e o que o capítulo de Habilidades diz da Firula que devolve Força
-  de Vontade.
+**O fato, medido pelo `gh run list`:** o job `Smoke · test-espelho` do workflow `Validar dados e
+regras` falha em **todas** as execuções desde `6e8651e` (22/09, 03:59, "Migra Limiares de Ferimento
+na mesa para os 5 estados"). A última verde é `0934136`, catorze minutos antes. São cerca de 65
+pushes vermelhos, incluindo as rodadas 88 a 96. **Só esse job falha**; os outros da matriz estão
+verdes. O deploy é outro workflow, e está verde.
 
-**A pergunta que decide o tamanho:** o MOTOR aplica a penalidade de ferimento só a rolagens de Vigor
-ou Destreza? Se aplica, a §17 muda número em mesa (o golpe das armas de Força passa a sofrer a
-penalidade), e isso é o "muda para todo mundo" da decisão. Meça: quais caminhos do Grid e da ficha
-filtram por atributo, e quantas armas de `armas.json` rolam Força hoje (a §17 cita 14 de 33, contagem
-de antes das sete armas novas).
+**O que a primeira falha mostra** (log de `6e8651e`): a mesa e o laço divergem em `total`,
+`errouPor`, `danoBruto`, `dados.acerto` (mesa `3,4`, laço `3,4,6`), `chao` e `pv`. A leitura provável,
+**não testada**: a mesa passou a somar `penAcaoDados` e os cinco estados de ferimento, e o laço (o
+harness) continuou no modelo de seis estados em ponto. Os commits seguintes do mesmo dia (`888a196`,
+`4450055`, o piso condicional de `rolarExpr`) mexeram no mesmo caminho.
 
-Escreva a medição no progresso antes de mexer.
+**O que eu quero:**
 
-## 2 · O conserto
+1. **A causa, medida.** Rode o `test-espelho` localmente (é smoke, precisa de navegador) em
+   `0934136`, `6e8651e` e no topo, e diga qual divergência nasce em qual commit. Se a causa for mais
+   de uma, separe.
+2. **De que lado está o erro.** O espelho compara duas implementações da mesma regra. A decisão que
+   manda é a §4b e a §4f de `leitura-de-novato-decisoes.md`. **Se a mesa estiver certa pela
+   decisão**, o laço se alinha a ela. **Se o laço estiver certo**, é defeito de mesa em produção, e
+   aí você PARA e me diz antes de consertar, com o tamanho (o que muda para quem joga hoje).
+3. **O conserto, e a prova:** o `test-espelho` verde no CI, conferido na execução, e não por
+   suposição. Se o conserto tocar o harness, rode a bateria de regressão que o harness já tem.
+4. **Por que ninguém viu.** O `test-portoes.mjs` avisa "test-espelho nunca rodou aqui" e o gancho não
+   roda smoke. Diga, numa linha, o que teria feito este vermelho aparecer para alguém em horas e não
+   em dois dias. **Não construa** esse instrumento nesta rodada: ele passa pelo `CATALOGO.md` antes.
 
-- **Ação física:** "as que rolam Força, Destreza ou Vigor", em `vida-ferimentos-cura.md`, `racas.md`
-  e `FRENESI.md` §5. No motor, se o filtro existir, a Força entra nele. A §16 é registro de decisão e
-  não se reescreve: ganha uma linha dizendo que a §17 trocou a definição.
-- **Tortura:** a tabela das Virtudes e o item Resistir dizem as duas metades (a dor do ferro é Vigor +
-  Convicção; aguentar sem falar, sem ceder, é a Convicção sozinha no teste de Virtude).
-- **Firula negativa:** onde ela é introduzida, uma frase dizendo que vale só no teste de Virtude (e
-  no Frenesi) e não devolve nada. Ela NÃO entra no capítulo de Habilidades como regra geral.
+**Não abra outros consertos** que aparecerem no caminho: linha no `Pendencias.md` e segue.
 
-## 3 · A prova
+## O relato
 
-- Capítulo e dado: o `validate` verde, e nenhuma ocorrência restante de "Vigor ou Destreza" como
-  critério de ação física (liste as que ficarem, com o porquê).
-- **Se o motor mudar:** um teste em par, com uma arma de Força sob ferimento (a penalidade entra) e a
-  mesma cena sem ferimento (não entra), com o vermelho visto contra o código de antes.
-- Todo commit que toque `src/` abre com a linha do que muda para quem abre a mesa amanhã.
-
-## 4 · O relato
-
-`97-executora.md`, as quatro seções da casa, com a medição do item 1 e o tamanho da mudança em mesa.
-Commit com pathspec, pull `--rebase` antes, push depois.
+`97-executora.md`, as quatro seções da casa, com a linha do tempo da causa (commit por commit) e o
+que muda para quem joga. Commit com pathspec, `pull --rebase` antes, push depois.
