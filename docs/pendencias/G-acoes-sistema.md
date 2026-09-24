@@ -164,6 +164,9 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   +1d6 por Margem ("Ajudar exige saber fazer"). O capítulo publicado (`acoes-e-sistema.md:172`)
   diz que o ajudante rola contra **metade** da Dificuldade e concede +1 a cada 6 pontos acima, com
   "forjar" como exemplo. Decidir qual vale e alinhar os dois.
+  **Mais um endereço, achado pela Revisora na rodada 105 (`f8e3e1e`):** o topo do capítulo de
+  ofício manda o leitor para "as regras de ajuda" da Régua Comum (`acoes-oficio-e-mundo.md:8`), que
+  é a regra da metade, e ela agora choca com a regra de condução que a rodada 105 aplicou.
 - [x] **G19 · [DECIDIR] Alcance da direção de obra.** Levantado em 24/09/2026. A fórmula "Sob
   direção de quem tem o ofício, o ajudante sem ofício trabalha contra Dificuldade 4"
   (`Acoes_Sistema.md:1195`, `acoes-oficio-e-mundo.md:119`) é genérica, mas a moldura ("Direção de
@@ -204,7 +207,7 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
 - [ ] **G23 · [CONSERTAR] Duas espadas no mesmo documento.** Levantado em 24/09/2026. O exemplo da
   Longa no §3.3 (`Acoes_Sistema.md:160-163`) diz "Forjar uma espada: Dificuldade 7, Acúmulo 10,
   intervalo de uma semana". O §7 dá à espada Comum Acúmulo 22 (Montagem 12 + Peça 10) e intervalo
-  dia (`Acoes_Sistema.md:1141-1147`, `:1246`; capítulo `acoes-oficio-e-mundo.md:93`, `:152`). A
+  dia (`Acoes_Sistema.md:1141-1147`, `:1246`; capítulo `acoes-oficio-e-mundo.md:93`, `:156`). A
   escada de intervalos publicada também põe "forjar a espada" em Semana (`acoes-e-sistema.md:143`).
   Alinhar o exemplo e a escada ao §7.
 - [ ] **G24 · [DECIDIR] Semântica do teto de demanda do ganho de ofício.** Levantado em 24/09/2026.
@@ -234,3 +237,12 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   revisão econômica. "Arcos" aparece na tabela de fabricação (`Acoes_Sistema.md:1231` e `:1247`;
   `acoes-oficio-e-mundo.md:141` e `:157`), e não na lista de ofícios da §7.2
   (`Acoes_Sistema.md:1043-1045`) nem na do capítulo (`acoes-oficio-e-mundo.md:51`).
+- [ ] **G29 · [DECIDIR] O que a regra de condução herda, e de que lado fica a carroça.** Levantado
+  em 24/09/2026, pela Revisora no veredito da rodada 105 (`f8e3e1e`), depois de a G19 e a G20
+  fecharem. Duas perguntas: (1) a "Dificuldade da peça" contra a qual o ajudante trabalha leva a
+  oficina e o material (a tabela de `acoes-oficio-e-mundo.md:110-111`), e o +4 de quem não tem o
+  ofício vale para o braçal sob condução? Se a oficina entra, numa forja bem equipada o braçal soma, e
+  "um braçal não soma nada na espada" só vale na oficina comum; numa oficina de mestre, aprendizes
+  de Destreza 2 passam a somar. (2) A linha "Carroça, barco de pesca" (`acoes-oficio-e-mundo.md:169`,
+  `Acoes_Sistema.md:1259`) junta uma peça (a carroça) e o que pode ser obra de construção naval (o
+  barco): de que lado cada uma fica.
