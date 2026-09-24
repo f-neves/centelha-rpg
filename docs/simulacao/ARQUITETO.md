@@ -336,6 +336,18 @@ que sai é uma revisão sobre uma régua que já mudou. Desta vez saiu barato e 
 da rodada seguinte; o custo dela é invisível quando é caro, que é exatamente o motivo de estar
 escrita.
 
+### 5.2.3 · Quem fecha um item com resíduo abre o item novo no mesmo commit
+
+**Escrito em 24/09/2026, pela ESCALA da Revisora no veredito da 106 (`dc3e6ac`).** Duas rodadas
+seguidas (105 e 106) fecharam itens de pendência com resíduo real (a pergunta que a decisão não
+cobria, a frase de outro arquivo que ela deixou contraditória), e o resíduo ficou só na caixa: no
+PRECISA DE MIM do relato ou no veredito, com o item já `[x]`. A caixa não é lida por quem abre o
+`Pendencias.md`.
+
+**A regra:** todo despacho que manda fechar um item diz também que o resíduo achado no caminho vira
+item novo, com sigla, **no mesmo commit que fecha o antigo**. Quem executa abre; quem revisa
+confere que abriu.
+
 ### 5.3 · Quem revisa fala em três momentos
 
 Quando revisa um lote, quando acha algo que bloqueia, e quando é perguntado. Não a cada

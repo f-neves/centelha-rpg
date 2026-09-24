@@ -266,3 +266,31 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   de estações). O critério não depende do ofício da linha." Fica em aberto, no relato da rodada 106
   (`106-executora.md`), que o material também herda e, somado a uma oficina boa, faz o braçal somar.
   As linhas citadas neste item são do texto de antes da decisão (`5407b38`).
+- [ ] **G30 · [DECIDIR] O braçal soma com material bom.** Levantado em 24/09/2026, no relato da
+  rodada 106 e confirmado pela Revisora (`dc3e6ac`). A condução herda oficina e material (decisão da
+  G29), e com material selecionado ou excepcional numa oficina boa o braçal passa a somar (2 ou 4 por
+  intervalo). O texto diz "em nenhuma oficina", o que só vale com material corrente
+  (`acoes-oficio-e-mundo.md`, a regra de condução). Saídas: acrescentar "com material corrente"; o
+  material não valer para quem não tem o ofício; ou aceitar.
+- [ ] **G31 · [DECIDIR] A cerca é obra?** Levantado em 24/09/2026, na rodada 106. A linha "Porta,
+  banco, mesa tosca, cerca de 20 m" está na escala de dias (`acoes-oficio-e-mundo.md:154`), e pelo
+  critério de obra da G29 (construção fixa no lugar) a cerca seria obra, e as outras três peças não.
+- [ ] **G32 · [DECIDIR] O curandeiro ainda apoia pelo modo antigo.** Levantado em 24/09/2026, na
+  rodada 106. `Acoes_Sistema.md:1492-1493`: contra a Virulência, o curandeiro "apoia pela §3.5 (+2
+  passando, +1d6 por Margem)", e o §3.5 passou à metade da Dificuldade e +1 a cada 6 (G18). É regra
+  de doença: decidir se segue o §3.5 novo ou fica com números próprios.
+- [ ] **G33 · [DECIDIR] O teste coletivo perdeu o equilíbrio.** Levantado em 24/09/2026, pela
+  Revisora no veredito da 106 (`dc3e6ac`). `Acoes_Sistema.md:286-289` diz que cada pessoa a mais
+  sobe a Dificuldade em 2 e "devolve +2 se passar", e que "o companheiro competente é neutro". Com o
+  apoio novo (metade da Dificuldade, +1 a cada 6), o companheiro de média 10,5 custa +2 e devolve
+  menos, e o competente vira peso. O capítulo (`acoes-e-sistema.md:178`) dá ao líder +1d6 a cada 6, e
+  os dois lados já divergiam antes da 106.
+- [ ] **G34 · [DECIDIR] "Apoio numa jogada única" e "jogada estendida" no mesmo parágrafo.**
+  Levantado em 24/09/2026, pela Revisora no veredito da 106 (`dc3e6ac`). `acoes-e-sistema.md:172`
+  abre dizendo que o ajudante é apoio numa jogada única, numa ação que não se divide, e mantém a
+  frase "Numa jogada estendida, pode-se usar a média [...] a cada intervalo". O parágrafo se
+  contradiz: ou a frase sai, ou a jogada estendida indivisível tem regra própria.
+- [ ] **G35 · [CONSERTAR] O catálogo de ações ainda cita o apoio antigo.** Levantado em 24/09/2026,
+  pela Revisora no veredito da 106 (`dc3e6ac`). `Acoes_Catalogo.md:75` diz "o ajudante rola e dá +2
+  mais +1d6 por Margem. Ver §3.5", e o §3.5 mudou na 106. O verbete é registro da bancada: uma nota
+  apontando para o §3.5 novo basta.
