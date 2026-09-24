@@ -1012,6 +1012,23 @@ três recomendações do Arquiteto, na sessão de 23/09/2026 à noite.
 
 **Não implementado.** Fica como trabalho, junto com o que a §16 deixou.
 
+**Três leituras que a rodada 98 achou, decididas pelo humano em 24/09/2026** (a Executora mediu e
+parou; as três foram as recomendações do Arquiteto):
+
+- **O tiro também sofre a penalidade de ferimento.** O arco e a besta rolam Percepção, que fica fora
+  de "Força, Destreza ou Vigor"; o motor já penaliza o tiro, como qualquer golpe (`ajAtq`,
+  `ataqueAtual` e o laço do harness não filtram por atributo). O livro acrescenta que o ataque à
+  distância sofre a penalidade; a Percepção só entra aí. O +2 da fúria continua fora do Atirador, por
+  decisão própria. **Nada muda na mesa.** **O contra comprado:** a definição de ação física ganha uma
+  exceção nomeada.
+- **A Firula Infeliz de Relações Sociais fica.** É o gesto que desagrada na régua de Relação (−1/−2/−4),
+  e não a Firula que mexe na jogada; o "só no teste de Virtude" desta seção vale para a Firula de
+  jogada. **O contra comprado:** dois nomes parecidos para mecânicas diferentes.
+- **A tortura: a §17 manda no Resistir, e a Defesa Mental fica.** O capítulo de Resistir deixa o
+  "Dor e tortura: Vontade + Integridade" e passa às duas metades desta seção; a "Tortura" da Defesa
+  Mental continua como a defesa contra quem interroga (ele rola contra ela), com uma frase ligando as
+  duas. **O contra comprado:** a mesma cena pode pedir a defesa passiva e o teste ativo.
+
 ## Fechado em 22/09/2026 pela Executora-4: as sete armas novas e a tabela do capítulo gerada
 
 Dois commits, os dois últimos que faltavam do catálogo de itens desde `a492010`.
