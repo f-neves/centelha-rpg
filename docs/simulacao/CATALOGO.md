@@ -80,6 +80,7 @@ segunda tinha ficado verde por cegueira.
 | **o resultado que chegou e ninguém leu** | processo em background, arquivo de saída, exit code | isto terminou, e a saída já foi lida? |
 | **o documento que se justifica por um fato falso sobre si** | cabeçalho novo que diz "não é o mesmo que", "é mais completo que", "é cópia parcial de" | o `diff` concorda com a frase que faz este arquivo existir? |
 | **o caminho alternativo que trata a recusa certa como falha** (L67) | uma segunda passada, um `retry`, um "se não conseguiu, tente de novo com menos restrição" | não ter conseguido é o sintoma de um destino errado, ou é a regra funcionando? |
+| **duas portas para a mesma ação, uma que cobra e outra que não** (L104, L67) | *por gesto:* uma ação que a interface alcança por mais de um caminho (arrasto e lista, caminhada e repetição, diálogo e atalho) | os dois caminhos cobram o mesmo, e passam pelas mesmas travas? |
 | **a regra publicada que nunca é chamada** | *por gesto:* escrever "já existe" sobre uma peça, citando dados ou capítulo | existe em CÓDIGO com chamador, ou é texto publicado que ninguém executa? |
 | **o sinal de vida escrito no fim** | *por gesto:* escrever o arquivo de progresso, o log de etapas, o relatório com horários | esta linha está sendo escrita AGORA porque a etapa fechou agora, ou estou narrando de trás para a frente? |
 | **o rótulo de escopo do `git diff`** | `@@ -A,B +C,D @@ <texto>` | este texto depois do `@@` diz ONDE a edição está, ou é só a linha que PARECE cabeçalho de função mais próxima acima do hunk? |
@@ -835,3 +836,39 @@ rodando"), lida contra o `tasklist`, e não contra a premissa da queda. **A regr
 roteiro de recuperação é hipótese sobre o estado, não o estado. Toda instrução dele que muda
 alguma coisa (remover trava, recriar instância, retomar rodada) se executa depois de o disco
 confirmar a premissa, e a divergência vai de volta a quem escreveu, antes de qualquer gesto.
+
+## DUAS PORTAS PARA A MESMA AÇÃO, UMA QUE COBRA E OUTRA QUE NÃO (24/09/2026, nomeada pelo humano)
+
+**A forma:** a mesma ação tem dois caminhos na interface ou no motor. O caminho principal carrega as
+travas da regra (custo, pergunta, veto). O alternativo existe por outro motivo, legítimo, e ninguém
+conferiu se ele carrega as mesmas travas. Ele não carrega, e passa a ser um jeito de fazer a ação sem
+pagar por ela, sem que ninguém tenha decidido isso.
+
+**Caso 1 · `L104` (rodada 100, veredito da Revisora `bd347d6`).** Mover uma peça já posta no Grid
+pelo arrasto no mapa passa pela pergunta do `L68` (fora da vez) e pelo movimento do Simultâneo, que
+cobra o deslocamento. A lista lateral também arrasta peça já posta, porque ela existe para pôr peça
+em cena, e o soltar dela vai direto ao `porNoMapa`, que teleporta, sem nenhuma das duas perguntas.
+Apareceu de lado: um teste intermitente caía quando a peça na vez estava inteira debaixo de outra, e
+a lista era o único caminho até ela. A leitura é de código e não foi exercitada no navegador.
+
+**Caso 2 · `L67` (10/09/2026).** Na perseguição do corpo a corpo, a caminhada respeita o veto de
+casa ocupada; a repetição que dispara quando ela "não aproximou" afrouxa o veto para a casa exata do
+outro token. A repetição existia por outro motivo (o Enorme parado ao lado prendendo os seis
+vizinhos), e a peça terminava dentro do inimigo. É a forma "o caminho alternativo que trata a recusa
+certa como falha" vista pela outra face: lá a pergunta é por que a primeira tentativa falhou; aqui é
+se a segunda carrega as travas da primeira.
+
+**O que as duas têm em comum:** o caminho alternativo não é defeito de lógica, é conserto ou
+conveniência legítima de outro caso. O defeito é que as travas moram no caminho, e não na ação. É o
+mesmo desenho do `L70` (a invariante no chamador e não na escrita): cada porta decide sozinha o que
+cobra, e a porta nova não herda nada.
+
+**A pergunta que a forma gera, para toda ação que tem mais de um caminho:** os dois cobram o mesmo?
+Para responder, liste os caminhos até a ação (arrasto, lista, menu, diálogo, atalho, barra de
+comando, voz, repetição automática) e as travas de cada um (custo, pergunta, veto, registro). Uma
+célula vazia na tabela é ou decisão escrita ("ferramenta de mestre, sem gasto", como o "Pôr direto"
+do diálogo de movimento, que diz na própria tela que não cobra) ou defeito.
+
+**O gatilho:** um caminho novo até uma ação que já existe, e um item que diz "só por este caminho"
+(o `L67` dizia "inalcançável pelo arrasto e pela barra de comando; só a perseguição automática o
+produz"). Quem escreve "só por este caminho" já está olhando para duas portas.
