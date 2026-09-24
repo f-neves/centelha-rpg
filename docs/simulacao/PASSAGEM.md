@@ -14,13 +14,17 @@ O que segue é só o que não está nesses documentos.
 
 ## 1 · O arranjo
 
-Quatro instâncias de Claude Code, e uma conversa (esta).
+Cinco instâncias de Claude Code (a Leitora-novata entrou em 24/09/2026), e uma conversa (esta).
 
 **Arquiteto** · coordena. Roda com permissão total. Delega à Executora, recebe da Revisora,
 consulta a Auditora, e escala ao humano só quatro coisas: regra de jogo, dinheiro e token, o
 que vai para produção, e se uma frente continua ou encerra.
 
-**Executora** · constrói e testa. É teammate dentro da sessão do Arquiteto.
+**Executora** · constrói e testa. É teammate dentro da sessão do Arquiteto, e trabalha na
+worktree `C:/Users/Neves/ClaudeCode/centelha-executora` desde 24/09/2026.
+
+**Leitora-novata** · lê o livro e os dados como quem está aprendendo agora. Teammate fixa do
+Arquiteto desde 24/09/2026; só lê, e só por pedido dele.
 
 **Revisora** · revisa, num worktree congelado em
 `C:/Users/Neves/ClaudeCode/centelha-techlead-revisora`. Ela lê um commit e não a árvore em
@@ -261,7 +265,7 @@ sessão, não janelas próprias. Perder esta de vista entre várias abertas é p
 quando não estiver, ele avisa e devolve esta linha, em vez de dizer que nomeou.
 
 **E o `/arquiteto` CONFERE a equipe depois de criá-la**, por `ListAgents`, nome a nome. Se
-faltar uma das duas, ele para e avisa em vez de seguir: trabalhar sem revisão é decisão do
+faltar alguma das três, ele para e avisa em vez de seguir: trabalhar sem revisão é decisão do
 humano, e ela só é dele se ele souber que está tomando. É a regra do `ARQUITETO.md §1`
 ("conferir estado antes de afirmar estado") aplicada ao nascimento da própria equipe, e ela
 existe porque "criei as duas" é rótulo, não estado.
@@ -338,22 +342,22 @@ O docs/MAPA.md também fica sob demanda: ele diz o que é régua, trabalho e res
 repositório, e é retrato por citação de um dia (08/09/2026), não autoridade. Abra quando
 precisar decidir se um arquivo solto da raiz está vivo, não na abertura da sessão.
 
-Depois crie uma Agent Team com exatamente dois teammates:
+Depois crie uma Agent Team com exatamente três teammates:
 
-  Executora · implementa, roda testes, relata arquivos tocados e resultados
-  Revisora  · revisa o trabalho da Executora contra um commit congelado, e devolve
-              BLOQUEIA · CORRIGE · PERGUNTA · ESCALA · VEREDITO
+  Executora      · implementa, roda testes, relata arquivos tocados e resultados
+  Revisora       · revisa o trabalho da Executora contra um commit congelado, e devolve
+                   BLOQUEIA · CORRIGE · PERGUNTA · ESCALA · VEREDITO
+  Leitora-novata · lê o livro e os dados como quem está aprendendo agora, e lista
+                   inconsistências, contradições e pontos não definidos
 
-A Revisora trabalha no worktree C:/Users/Neves/ClaudeCode/centelha-techlead-revisora, com o
-contrato em docs/simulacao/CONTRATO-REVISORA.md. Reancore o worktree no sha do aviso, nunca no
-topo, e nunca no meio de uma revisão.
-
-Pergunte também ao humano se ele quer que você suba a leitora-novata: uma subagente (isolation
-worktree) que lê o sistema como alguém que está aprendendo agora, sem memória de decisões
-anteriores, e lista inconsistências, incoerências, contradições e pontos não definidos entre os
-capítulos (src/content/chapters/) e os dados (src/data/*.json). Ela não faz parte do arranjo
-fixo (não entra em ListAgents como teammate, é subagente sob demanda) e só sobe se o humano
-pedir nesta pergunta. Registrado em 21/09/2026, rodada que abriu essa frente pela primeira vez.
+A Executora trabalha na worktree C:/Users/Neves/ClaudeCode/centelha-executora, branch executora
+(docs/simulacao/caixa/plano-worktrees.md §6 e §11). A Revisora trabalha na worktree
+C:/Users/Neves/ClaudeCode/centelha-techlead-revisora, branch revisora, com o contrato em
+docs/simulacao/CONTRATO-REVISORA.md. Reancore a worktree dela no sha do aviso, nunca no topo, e
+nunca no meio de uma revisão. A Leitora-novata só lê, o estado publicado (origin/main), sem abrir
+docs/simulacao/ nem as pendências, e nasce parada: a leitura abre por pedido seu. Ela era
+subagente sob demanda desde 21/09/2026; desde 24/09/2026 é fixa no arranjo, por pedido do humano.
+O que cada uma recebe ao nascer está em .claude/commands/arquiteto.md, passo 2.
 
 No início da sessão, antes de qualquer trabalho, leia o arquivo de uso semanal e pergunte ao
 humano se há limite de sessão ou de semana, do jeito que o §0 do ARQUITETO.md descreve. Sem
