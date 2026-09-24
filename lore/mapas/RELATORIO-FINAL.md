@@ -16,22 +16,22 @@ estava parado (derrubado pelo Claude Code por falta de memória na rodada anteri
 
 | etapa | estado | commit |
 |---|---|---|
-| A1 áreas de verdade | já feita na rodada anterior; reavaliada aqui | `4dd2d20`, `e172ce4` |
-| A2 piso x densidade | já feita na rodada anterior | `37c7571` |
-| A3 regiões + cache de ilha | feita | ver diário |
-| A4 vértice de área e rio | já feita na rodada anterior | `4336c16` |
-| A5 pincel | já feito na rodada anterior | `ac02fc3` |
-| A6 braço de delta na tela | feita | ver diário |
-| B1 camada de nomes | feita | ver diário |
-| B2 elementos de cartografia | feita | ver diário |
-| B3 exportação parcial | feita | ver diário |
-| B4 rotas de comércio | feita | ver diário |
-| B5 mapas distorcidos | feita | ver diário |
-| C1 mapa de teste do mundo | pendente | |
-| C2 mapa de jogador e distorcido | pendente | |
-| C3 RUNBOOK | pendente | |
-| C4 fechamento deste relatório | pendente | |
-| C5 servidor parado | pendente | |
+| A1 áreas de verdade | feita (rodada anterior) e ajustada (A1-bis) | `4dd2d20`, `e172ce4`, `8f18663` |
+| A2 piso x densidade | feita (rodada anterior) | `37c7571` |
+| A3 regiões + cache de ilha | feita | `c37e34f` |
+| A4 vértice de área e rio | feita (rodada anterior) | `4336c16` |
+| A5 pincel | feita (rodada anterior) | `ac02fc3` |
+| A6 braço de delta na tela | feita | `a7e2b6c` |
+| B1 camada de nomes | feita | `eb0ef43` |
+| B2 elementos de cartografia | feita | `f495257` |
+| B3 exportação parcial | feita | `4355f27` |
+| B4 rotas de comércio | feita | `6cf51dd` |
+| B5 mapas distorcidos | feita | `ece7a9c` |
+| C1 mapa de teste do mundo | feita | `edbb119` |
+| C2 mapa de jogador e distorcido | feita (só imagens) | registrado em `edbb119` |
+| C3 RUNBOOK | feita | `12e02b3` |
+| C4 fechamento deste relatório | feita | o commit deste texto |
+| C5 servidor parado | feito | (nenhum processo em 8420) |
 
 ## Diário por etapa
 
@@ -298,4 +298,116 @@ estava parado (derrubado pelo Claude Code por falta de memória na rodada anteri
   legibilidade porque reescreveriam arquivo do git sem necessidade).
 - Uma tabela de "se algo falhar" no fim.
 
-### C4 · fechamento (começando)
+### C4 · fechamento (feita) e C5 · servidor (parado)
+
+O servidor está **parado** (nenhum processo escutando em 8420). Para subir:
+
+    cd lore/mapas/ferramentas
+    .venv\Scripts\python.exe -m uvicorn backend.main:app --host 127.0.0.1 --port 8420
+
+e abrir `http://127.0.0.1:8420/` com **Ctrl+F5** (o navegador guarda os `.js` antigos).
+
+## FECHAMENTO
+
+### Tudo o que foi feito, com os commits (todos sem push)
+
+`93533f8` relatório aberto · `8f18663` relevo manda sobre cobertura e geleira mais rala
+· `c37e34f` cache de identidade de ilha e regra dos 100 km · `a7e2b6c` braço de delta
+na tela · `eb0ef43` camada de nomes, tipografia e composição sem costura ·
+`f495257` rosa, escala calibrada, cartela e monstro · `4355f27` exportação parcial ·
+`6cf51dd` rotas de comércio e dados de exemplo da Parte B · `ece7a9c` mapas
+distorcidos · `edbb119` mapa do mundo em blocos · `12e02b3` RUNBOOK · e o deste
+fechamento. Da rodada anterior, na mesma noite: `37c7571`, `4dd2d20`, `e172ce4`,
+`6b1d9c3`, `4336c16`, `ac02fc3`, `dd086fc`. **380 testes verdes** na última rodada
+completa.
+
+### Onde olhar primeiro
+
+1. `render/mundo-1-metade.png` (o mundo inteiro, com tudo; o de tamanho cheio é
+   `render/mundo-1.png`).
+2. `render/exportacoes/c2-mere-comparacao.png` (Mére para o jogador, fiel e nível 2).
+3. `render/exportacoes/niveis-calin-comparacao.png` (os cinco níveis de distorção).
+4. `render/exportacoes/teste-calin.png` e `teste-calin-a4.pdf` (exportação com
+   moldura, rosa, escala e cartela).
+
+### O que ficou por fazer, e por quê
+
+- **Folhas de símbolos** (fora do escopo): a palmeira precisa de folha nova (o piso
+  come 70% da faixa dela); o "bosque" (símbolo de floresta pequena) seria folha nova;
+  a colina lê fraco na prévia (arte clara). Tudo em `FOLHAS-A-REGENERAR.md` e
+  "Decisões em aberto".
+- **PSD de montagem** e **nomes definitivos** (fora do escopo, do usuário). Os nomes
+  dos exemplos são provisórios e marcados.
+- **Desvio automático de colisão** entre nomes (nome de região por cima de nome de
+  lugar): não feito; hoje se arrasta o rótulo.
+- **Largura do rio por afluentes acumulados** (ESPEC): não feito; o rio engrossa da
+  nascente para a foz.
+- **Cadeado de CAMADA para regiões, nomes, elementos e rotas**: não feito (só trava
+  por objeto), porque mexeria em `camadas_travadas.json`.
+- **Atração do início do braço de delta contra o rio-mãe**, **via desalinhada**, e a
+  **medição Neck ↔ Calin** refeita com o cache: continuam na lista de pendências.
+- **Dados de exemplo NÃO commitados** (de propósito, como os anteriores):
+  `areas-pintadas.geojson`, `lugares.geojson`, `rios.json`, `estradas.json`,
+  `rotas.json`, `nomes.json`, `elementos.json`, `exportacoes.jsonl`. Para apagar os
+  da Parte B: `scripts/exemplos_parte_b.py --apagar` com o servidor no ar.
+
+### O que SÓ o teste do usuário cobre (nada disto foi clicado com mouse de verdade)
+
+Da tela (abrir com Ctrl+F5):
+1. **REGIÕES**: criar, editar, apagar, arrastar o nome, "pôr rótulo", trocar a
+   região de uma massa, e **"identificar ilha"** com um clique e "registrar".
+2. **NOMES**: arrastar um nome de lugar, trocar o nível, "reto", "jogador", desenhar
+   a "curva" à mão, criar um nome livre (e um de cordilheira, escolhendo a área).
+3. **ELEMENTOS**: arrastar os quatro marcadores, mudar tamanho, título e latitude.
+4. **EXPORTAR**: escolher região, desenhar retângulo, marcar camadas, versão, PNG e
+   PDF, destinatário, distorção e mercador, e baixar pelo link.
+5. **ROTAS** (tecla O): desenhar, preencher o formulário, trocar trechos, mover
+   pontos de controle ("vértices"), travar com T.
+6. **Rio**: o campo "braço de delta de".
+7. **Vértices** (V) e **pincel** (P), da rodada anterior.
+8. As ferramentas antigas ainda pendentes: Rio e Estrada pelo clique, `T` em cada
+   seleção, desfazer/refazer, tecla C.
+Das imagens:
+9. se o mapa do mundo e as exportações leem como mapa de atlas; tamanho dos nomes;
+   rios (finos e pálidos); estilo das rotas; a moldura;
+10. se os níveis 2 e 3 de distorção servem na mesa (ruins mas usáveis);
+11. relevo sobre cobertura (norte de Mére) e a geleira mais rala.
+
+### Decisões que tomei e que o usuário deveria revisar (as mais importantes primeiro)
+
+1. **A composição nova planeja os símbolos por área** (e não por janela): o mesmo
+   mapa em qualquer recorte. Mudou a arquitetura do desenho final; o renderizador
+   antigo continua para as prévias por região.
+2. **Distorção**: o que piora e quanto (números em `cartografia/distorcao.py`), a
+   semente sem o nível, e o título da cartela nunca distorcido.
+3. **Versão do jogador** por `visivel_jogador` em lugar, região, rota, nome e
+   elemento (campo novo no esquema).
+4. **Rotas**: velocidades de navio e barco; fluvial com a regra da terra; pontas
+   grudam, meio não; estilo pontilhado e traço-ponto.
+5. **Nomes**: fontes, tamanhos por nível, maiúsculas espaçadas para região e
+   cordilheira, curva só em forma alongada e pouco inclinada (Mére sai reta).
+6. **Barra de escala** desenhada (não a peça da folha), calibrada a 21,87° N no mundo
+   e na latitude central de cada recorte.
+7. **Regra dos 100 km** automática só com UMA região candidata; Mére e Syl estão a
+   menos de 100 km uma da outra.
+8. **Relevo manda sobre cobertura** e a geleira com o dobro do espaçamento.
+9. Limite de 60 Mpx para exportar pela tela; exportação em processo separado.
+10. **Achado para decidir**: `ilha-192` e `ilha-204` de `massas.geojson` são pedaços
+    de Syl e de Mére (não mexi).
+
+### Roteiro de teste para o usuário (uns 30 minutos)
+
+1. Olhar as quatro imagens de "Onde olhar primeiro".
+2. Subir o servidor (comando acima), abrir com Ctrl+F5, F12 aberto: nenhum erro.
+3. REGIÕES → "identificar ilha" → clicar numa ilhota perto de Calin → "registrar em
+   calin" → Ctrl+Z (tem de sumir).
+4. NOMES → arrastar "Porto das Brumas" → trocar para nível 5 → exportar Mére e ver o
+   nome maior no lugar novo → Ctrl+Z duas vezes.
+5. ROTAS (O) → desenhar uma rota marítima entre dois portos → ver km e dias no painel
+   → trocar um trecho para reto → ver o traçado mudar → apagar.
+6. EXPORTAR → região Calin, versão jogador, PDF A4, para "teste" → abrir o PDF pelo
+   link → conferir a barra de escala e a latitude escrita.
+7. EXPORTAR → a mesma, distorção 2, mercador "A", e depois mercador "B": dois mapas
+   ruins diferentes; abrir os `.mentiras.json` em `render/exportacoes/`.
+8. Rodar `scripts/exemplos_parte_b.py --apagar` quando quiser o mapa limpo para
+   pintar à mão.

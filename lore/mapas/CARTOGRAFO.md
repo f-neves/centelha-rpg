@@ -9,9 +9,15 @@ confirmado pelo usuário; o que é recomendação de IA fica marcado como tal.
 *(Atualizar esta seção antes de encerrar toda sessão de trabalho no mapa — é a
 primeira coisa que `/cartografo` mostra.)*
 
-- **EMPREITADA AUTÔNOMA (2026-09-23, noite, depois da rodada abaixo). O registro
-  completo, etapa a etapa, é `RELATORIO-FINAL.md`: comece por ele.** Tudo o que for
-  decisão ali é recomendação do Cartógrafo.
+- **EMPREITADA AUTÔNOMA (2026-09-23, noite) · CONCLUÍDA. O registro completo, etapa a
+  etapa, com o roteiro de teste e as decisões a revisar, é `RELATORIO-FINAL.md`:
+  comece por ele.** Tudo o que for decisão ali é recomendação do Cartógrafo. Como
+  reproduzir tudo do zero: `RUNBOOK.md`.
+  - **Todas as etapas feitas** (A1 a A6, B1 a B5, C1 a C5). 380 testes verdes.
+    Servidor PARADO; comando para subir no RELATORIO-FINAL.
+  - **Próximo passo: o usuário** olhar `render/mundo-1-metade.png` e as comparações,
+    seguir o roteiro de teste do RELATORIO-FINAL, e decidir as 10 decisões listadas
+    lá. Sem resposta, não começar etapa nova.
   - **A1-bis (feita)**: relevo manda sobre cobertura (`Estilo.relevo_manda`, no estilo
     padrão): onde há montanha ou alta montanha, a cobertura não põe símbolo, e a cor
     fica. Geleira com raio 1,6 (era 0,80). As coníferas saíram dos picos do norte de
