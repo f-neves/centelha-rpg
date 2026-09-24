@@ -146,6 +146,12 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   alvo mais perto já leva penalidade. **"A folha cala para o arremesso" estava velho: há número
   inventado em produção**, em toda mesa que arremessa pelo Grid. Não medido: a arma vinda da ficha de
   um PC equipado (o caminho é o mesmo `ra.arma`, não exercitado).
+
+  **Conserto imediato, decidido pelo humano em 24/09/2026, e que NÃO é a decisão do I12:** a folha
+  CALA para o arremesso enquanto o número certo não chega, que é o que este item dizia que ela fazia.
+  Rodada 103 (`docs/simulacao/caixa/103-despacho.md`). A escolha entre as três opções (o `distMax` do
+  catálogo, a Força de Arremesso de quem joga com o `RESUMO` carregando, ou calar de vez) continua do
+  humano; calar agora só tira da tela o que ninguém escolheu pôr lá.
 - [x] **I13 · O Grid no telefone. FEITO em 2026-08-21**, nas sete fases. O tabuleiro cresceu inteiro numa tela de notebook, e as
   oito emendas do I12 foram desenhadas com mouse na mão. Medido na bancada em 21/08, num viewport de
   390×844 com dedo: **456px de mobília antes do tabuleiro (54% da tela)**, a barra da arena quebrando

@@ -78,6 +78,7 @@ segunda tinha ficado verde por cegueira.
 | **o acesso tolerante que nunca lança** (B12) | `campo \|\| []`, `campo?.x`, todo acesso que devolve valor válido em vez de lançar | isto é o caminho certo, ou é um caminho errado que nunca vai denunciar a si mesmo? |
 | **fechar a frente sem fechar o documento** (H1/H2/K28/D2) | trabalho implementado e commitado, item do mapa ainda `[ ]` | o mapa sabe que isto já aconteceu, ou só o código sabe? |
 | **o resultado que chegou e ninguém leu** | processo em background, arquivo de saída, exit code | isto terminou, e a saída já foi lida? |
+| **o termo com dois donos, e a troca que casa pelo nome** | trocar o `termo` ou os `apelidos` de um verbete com `autolink`, renomear o que outro código casa por texto | a palavra nova tem outro sentido no livro, e quantos lugares ela passa a casar que antes não casava? |
 | **o documento que se justifica por um fato falso sobre si** | cabeçalho novo que diz "não é o mesmo que", "é mais completo que", "é cópia parcial de" | o `diff` concorda com a frase que faz este arquivo existir? |
 | **o caminho alternativo que trata a recusa certa como falha** (L67) | uma segunda passada, um `retry`, um "se não conseguiu, tente de novo com menos restrição" | não ter conseguido é o sintoma de um destino errado, ou é a regra funcionando? |
 | **duas portas para a mesma ação, uma que cobra e outra que não** (L104, L67) | *por gesto:* uma ação que a interface alcança por mais de um caminho (arrasto e lista, caminhada e repetição, diálogo e atalho) | os dois caminhos cobram o mesmo, e passam pelas mesmas travas? |
@@ -969,3 +970,31 @@ janela, o que eu já autorizei sobre este assunto na outra? E, do lado das inst�
 toca o que outra frente faz, ela vem com o horário e com o "a outra frente sabe?", e quem a recebe
 confere o estado da outra frente antes de executar. A resposta mínima é a caixa: decisão que toca duas
 frentes se escreve num arquivo que as duas leem, e não em duas conversas.
+
+## O TERMO COM DOIS DONOS, E A TROCA QUE CASA PELO NOME (24/09/2026, forma nomeada pelo humano)
+
+**A forma, em duas metades.** A primeira é antiga (é a do G8, "stunt" contra "manobra"): uma palavra
+nomeia duas regras, e quem procura por ela cai na definição errada. A segunda é a que a rodada 102
+mostrou: **o conserto da primeira é trocar o termo, e trocar o termo conserta o verbete e muda o que
+casa por nome em todo o resto.** Onde uma ferramenta casa texto pelo termo (o autolink do glossário,
+um índice, uma busca), o termo novo passa a agarrar a palavra em TODOS os sentidos dela, inclusive
+nos que ele não nomeia.
+
+**O caso.** O verbete do gate chamava-se "Penetração", que é o nome de outra regra (a Técnica). A
+rodada 102 deu a ele o termo "Perfuração", certo pela regra. Mas "Perfuração" também é o modo de dano
+(Impacto, Corte e Perfuração), e o verbete tem `autolink`. A Revisora mediu no navegador as 107
+páginas, com build limpo (`102-revisora.md`, `5b51454`): **50 links para o gate, 24 deles no sentido
+do modo de dano, em 10 páginas**, inclusive a linha de Absorção da ficha e a legenda do bestiário.
+Antes da rodada, nenhum desses 24 era link (conclusão pela lista de apelidos antiga, e não por
+medição da base). **O que a troca fez não foi quebrar os links que casavam pelo nome velho: foi criar
+links novos pelo nome novo.** A lista de dependência do id deu vazia, e estava certa; ela olhou o
+id, e o estrago veio pelo termo.
+
+**Por que ninguém previu:** a pergunta do despacho foi "quem depende do ID", que é o que renomeação
+costuma quebrar. A dependência pelo TEXTO não aparece em lista nenhuma: ela nasce no navegador,
+quando a página renderiza, e só se vê medindo a página.
+
+**A pergunta:** ao trocar o termo de algo que outra ferramenta casa por texto, a palavra nova tem
+outro sentido no livro? Meça o que ela passa a casar, na página renderizada, antes de publicar. E o
+conserto que ataca a causa é um termo que só tem um dono ("Nível de Perfuração"), e não uma marca
+caso a caso em cada frase que usa a palavra no outro sentido.

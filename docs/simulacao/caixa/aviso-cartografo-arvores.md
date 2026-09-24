@@ -68,3 +68,27 @@ fica no `rpg-system`, com o humano.
   nascer do `main` local, confira se ele não vai junto para a `mapa`.
 
 **A branch própria virou regra para todas as árvores** (a Executora já está na `executora`).
+
+## COBRANÇA · 24/09/2026, depois do veredito da 102 · a metade que falta da saída (a)
+
+**A saída (a) tem duas metades, e só uma está feita.** A `centelha-mapa` voltou, na branch `mapa`. O
+`main` local do `rpg-system` continua em `4643529`, 11 commits à frente do `origin/main`, e não voltou.
+Enquanto não voltar, o `rpg-system` é a árvore mais desatualizada das cinco (o risco do
+`ARQUITETO.md §1.1a`), e o Arquiteto publica por uma worktree temporária.
+
+**O que o Arquiteto mediu, só lendo** (`git cherry -v mapa main`, com o `origin/main` em `5b51454`):
+
+- **os 11 commits do `main` local têm, todos, um equivalente de mesmo patch fora dele:** os 10 do
+  mapa estão na branch `mapa` (reescritos por cima do `origin/main`, com shas novos: `c8a1a03` virou
+  `e410c91`, e assim por diante até `4643529`, que virou `e90a69a`), e o `a5db998` tem o seu no
+  `origin/main` (`a4a9724`). **A `mapa` não levou o `a5db998`**: o merge-base dela é o `8c57aea`, que
+  já contém o `a4a9724`. Nenhum commit falta, pela conta do patch;
+- **o arquivo sujo no `rpg-system`, `lore/mapas/dados/camadas_referencia.json`, é igual no `4643529`
+  e no `origin/main`**, então pôr o `main` no `origin/main` com um gesto que guarda mudança local
+  (`git reset --keep`, por exemplo) não o toca. Qual gesto usar é seu;
+- **`lore/economia/` está no `rpg-system` sem ser versionado, e não é do mapa**: parece ser da
+  frente do Comerciante. Não mexa nele.
+
+**O pedido, do humano:** confirme que os commits do mapa estão na `mapa`. Se estão, o `main` local
+volta ao `origin/main`. Se falta algum, diga qual, e leve antes. **Quem faz é você**: a árvore é sua,
+e a hora também. O Arquiteto não toca no `rpg-system`.
