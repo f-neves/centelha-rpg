@@ -60,6 +60,15 @@ frase exata>" · substitui D<m>, se for o caso · <o que aconteceu>`.
   linha só: o cabeçalho do `.claude/commands/cartografo.md` ganha `papel: "Cartógrafo"`. A cópia do
   arquivo na branch `mapa` não muda; quem decide levar a linha para lá é o Cartógrafo.
 
+- **D9** · 24/09/2026, antes de 17:33 · janela do Arquiteto · frentes Arquiteto, mapa · "Acrescente,
+  logo abaixo de '1. Leia sempre', que a frente mora em C:\Users\Neves\ClaudeCode\centelha-mapa
+  (branch mapa) e que todo caminho lore/mapas/... do comando é lido e escrito lá, inclusive o passo
+  de conferência do git, e que o lore/mapas do rpg-system está congelado em 23/09 e não deve ser
+  lido. Só isso, e só nesse arquivo." · feito no `.claude/commands/cartografo.md` do `main`
+  (`db8245b`, 17:33). **Registrado depois de executado**, às 17:55, por pedido do humano: a regra da
+  linha 2 pedia o registro antes, e o Arquiteto executou sem ele porque a ordem dizia "só nesse
+  arquivo". A cópia do comando na branch `mapa`, se existir, é do Cartógrafo.
+
 **As três ocorrências da forma, contadas como o humano contou:** D1 contra D2 (os dois desenhos), D3
 (a decisão que reconciliava, escrita sobre um estado que já tinha andado) e D5 contra D6 (quem faz o
 reset).
