@@ -27,6 +27,15 @@ está no ar, e `Arremesso_Regra.md` é a **proposta nova**, em três regimes. A 
   mesmo e o baralho chega a **22% do alcance**, não aos 50% que o ÷2 promete. Fica em ÷2 por
   simplicidade; se incomodar em mesa, o conserto é uma tecla.
   **Adiado na rodada 96 (23/09/2026), por proposta do humano:** refinamento que ninguém sentiu falta em mesa; o próprio item diz que o conserto é uma tecla, se incomodar.
+- [ ] **H5 · [CONSERTAR] O Arco de Guerra não existe no catálogo.** Levantado em 24/09/2026, na
+  revisão econômica (achado do Comerciante). A tabela de Força e alcance dos arcos em
+  `Arremesso.md:251-256` tem a linha "Arco de Guerra" (Força 6, livre 100 m), e o `armas.json` não
+  tem essa arma. Decidir se ela entra no catálogo ou sai do texto.
+- [ ] **H6 · [CONSERTAR] O teto de Força do Arco Curto diverge.** Levantado em 24/09/2026, na
+  revisão econômica (achado do Comerciante). `Arremesso.md:253` dá ao Arco Curto Força 2; o
+  `armas.json` (`arco-curto`) dá `forcaCap` 3 (`armas.json:461`) e a descrição diz "Soma Força até +3"
+  (`armas.json:443`). A mesma linha da tabela dá o alcance livre (40 m), então a correção tem de dizer
+  qual dos dois números esse alcance usa.
 
 ---
 

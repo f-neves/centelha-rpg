@@ -46,12 +46,12 @@ está na seção 3.
 | E | Social, Mental e Antecedentes | [`E-social-mental-antecedentes.md`](docs/pendencias/E-social-mental-antecedentes.md) | 10 | 7 | 0 | 3 | 5 | 1 | 0 | 1 | 0 | 0 |
 | F | Lore | [`F-lore.md`](docs/pendencias/F-lore.md) | 10 | 9 | 0 | 1 | 6 | 0 | 3 | 0 | 0 | 0 |
 | G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 30 | 18 | 0 | 12 | 13 | 2 | 0 | 3 | 0 | 0 |
-| H | Arremesso | [`H-arremesso.md`](docs/pendencias/H-arremesso.md) | 4 | 2 | 0 | 2 | 1 | 0 | 0 | 0 | 0 | 1 |
+| H | Arremesso | [`H-arremesso.md`](docs/pendencias/H-arremesso.md) | 6 | 4 | 0 | 2 | 1 | 0 | 0 | 2 | 0 | 1 |
 | I | Mesa virtual · tempo real | [`I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 14 | 10 | 2 | 2 | 3 | 8 | 0 | 0 | 0 | 1 |
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 12 | 9 | 0 | 3 | 1 | 3 | 0 | 2 | 1 | 2 |
-| K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 31 | 17 | 1 | 13 | 13 | 5 | 0 | 0 | 0 | 0 |
+| K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 32 | 18 | 1 | 13 | 14 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
-| | **Total** | | **272** | **182** | **4** | **86** | **61** | **38** | **8** | **6** | **66** | **7** |
+| | **Total** | | **275** | **185** | **4** | **86** | **62** | **38** | **8** | **8** | **66** | **7** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -440,6 +440,8 @@ Fechados (12): G1, G3, G4, "As cinco físicas de toda sessão.", G5, G5b, G7, G8
 |---|---|---|---|
 | H3 | aberto | DECIDIR | Os quatro assuntos que a proposta levanta e não fecha |
 | H4 | aberto, ADIADO | DECIDIR | O degrau de baixo do fator de forma: ÷2 ou ÷3? |
+| H5 | aberto | CONSERTAR | O Arco de Guerra não existe no catálogo. |
+| H6 | aberto | CONSERTAR | O teto de Força do Arco Curto diverge. |
 
 Fechados (2): H1, H2.
 
@@ -500,6 +502,7 @@ Fechados (3): J1, J4, J5.
 | K14 | aberto | DECIDIR | A bancada só mede o canto "todo mundo esquiva". |
 | K5 | aberto | FAZER | A implementação: os DOIS sistemas. |
 | K31 | aberto | FAZER | O Grid anda a Corrida só na primeira fase: a regra publicada tem duas, e o código aplica metade. |
+| K32 | aberto | DECIDIR | Tags de arma sem definição. |
 
 Fechados (13): K29, K1, K2, K3, K10, K7, K15, K16, K22, K23, K26, K12, K13.
 

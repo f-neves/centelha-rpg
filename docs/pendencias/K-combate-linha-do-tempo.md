@@ -461,3 +461,10 @@ revistos por ela.
   **Fica fora deste item e continua decisão do humano:** o salto correndo (o JSON `saltoHorizontalCorrendo`, `regras.json:888-891`, contra o capítulo e o rótulo da ficha), na lista única.
 
   **Quem consertar:** o Grid precisa saber há quantos Ticks a peça corre (o movimento declarado já vive em `acao.mov`), e a Investida herda a mesma troca de fase. A ficha e o resumo já mostram as duas velocidades. O teste cobra uma Corrida de 5 Ticks andando 3 × Arranque + 2 × Corrida, e o controle negativo é a mesma Corrida com o código de hoje, que dá 5 × Arranque.
+- [ ] **K32 · [DECIDIR] Tags de arma sem definição.** Levantado em 24/09/2026, na revisão econômica
+  (achado do Comerciante). A seção "Tags" de `armas-e-armaduras.md:45-52` define Alcance, Ágil,
+  Versátil, Sangramento, Arremessável, Munição, Pesada e Imobiliza, e não define quatro tags que o
+  `armas.json` usa: **distância** (6 armas), **projétil veloz** (9), **recarga** (3) e **caro** (1,
+  só o arco composto). Nenhum código lê a tag `caro` (busca em `src/`). Decidir se cada uma ganha
+  definição na seção ou sai do dado. (O pedido original listava também "pesada" e "imobiliza" como
+  sem definição; as duas estão definidas em `armas-e-armaduras.md:51` e `:52`.)
