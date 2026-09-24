@@ -97,6 +97,15 @@ avise o Arquiteto**, antes de reancorar.
 **As branches `revisora-59` a `revisora-66` que existem no repositório são de outro esquema, uma
 branch por rodada, e não se reusam.**
 
+### 0.2 · Ordem que toca outra frente só se executa citando a linha do `decisoes.md` (desde 24/09/2026)
+
+**Decidido pelo humano em 24/09/2026.** Decisão que toca duas frentes (árvore, branch,
+`node_modules`, `.git/config`, arquivo de outra instância) é escrita primeiro em
+`docs/simulacao/caixa/decisoes.md`, com data, hora, frentes e a frase exata. **A Revisora só executa
+uma ordem dessas citando a linha de lá.** Se não houver linha, ela escreve a frase que recebeu, com a
+hora e de quem, e ESPERA a confirmação do humano no arquivo. O reancoramento do §0.1 no sha de um
+aviso NÃO é ordem desse tipo: é a rotina da rodada, e o aviso já é o registro. O arquivo só cresce.
+
 ## 1 · Mensagem não é entrega
 
 **A regra:** o veredito de uma rodada só conta quando existe em

@@ -161,6 +161,23 @@ registro, para qual instância vai cada trabalho, e a forma dos instrumentos.
 Na dúvida entre engenharia e regra, é regra. O custo é assimétrico: escalar demais custa
 uma espera; escalar de menos custa o jogo virar consequência de um script.
 
+### 2.1 · Ordem que toca outra frente só se executa citando a linha do `decisoes.md` (desde 24/09/2026)
+
+**Decidido pelo humano em 24/09/2026**, depois de três ocorrências no mesmo dia de duas ordens dele,
+ditas em duas janelas, se contradizendo (`CATALOGO.md`, "o humano como canal único que decide em duas
+janelas"). O arranjo tem cinco sessões e o único canal entre elas é o humano; isso não se conserta com
+atenção. A regra mora em `docs/simulacao/caixa/decisoes.md`, e é esta:
+
+1. decisão que toca duas frentes é escrita lá primeiro, com data, hora, frentes e a frase exata;
+2. **o Arquiteto só executa, e só repassa a outra instância, uma ordem que toca outra frente citando a
+   linha de lá.** Se não houver linha, ele escreve a frase que recebeu, com a hora, e ESPERA a outra
+   frente ler e o humano confirmar lá;
+3. o arquivo só cresce: decisão nova cita a linha que substitui.
+
+**O que isto pede do Arquiteto em particular:** ele é quem mais repassa ordem (despachos, avisos,
+cobranças). Um despacho ou aviso que manda outra frente mexer em árvore, branch, `node_modules`,
+`.git/config` ou arquivo alheio cita a linha `D<n>`.
+
 ---
 
 ## 3 · Como decidir

@@ -102,3 +102,18 @@ Feito: `git reset --keep origin/main` no `rpg-system` (`4643529` → `276bcad`),
 removida. O `.git/config` não mudou em nenhum dos dois gestos (md5 e mtime iguais), e o
 `core.hooksPath` dá `scripts/hooks` nas quatro árvores, a sua inclusive. Detalhe em
 `plano-worktrees.md`, seção 11. O caso virou a terceira ocorrência do mesmo dia no `CATALOGO.md`.
+
+## A REGRA NOVA · 24/09/2026 · decisão que toca duas frentes é escrita antes de ser dita
+
+**Decidido pelo humano, depois das três ocorrências de hoje** (duas ordens dele, ditas em duas janelas,
+se contradizendo; a do reset foi a terceira, e a sua recusa foi o gesto certo). A regra mora em
+`docs/simulacao/caixa/decisoes.md`, e vale para você como para as outras frentes:
+
+1. decisão que toca duas frentes (árvore, branch, `node_modules`, `.git/config`, arquivo de outra
+   instância) é escrita lá primeiro, com data, hora, frentes e a frase exata;
+2. **você só executa uma ordem dessas citando a linha de lá.** Se não houver linha, escreva lá a frase
+   que recebeu, com a hora e a janela, e ESPERE a confirmação do humano no arquivo;
+3. o arquivo só cresce: decisão nova cita a linha que substitui.
+
+As ocorrências de hoje estão lá como D1 a D7, com os horários do disco, inclusive a sua frase da D5.
+Commit com pathspec, só daquele arquivo, e pelo seu jeito de publicar (com a palavra do humano).
