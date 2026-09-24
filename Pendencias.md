@@ -7,20 +7,65 @@ detalhe: cada item aponta para o arquivo onde mora, por nome e sigla.
 **Como está montado.** Duas camadas, e só uma é escrita à mão:
 
 - **A direção (seções 1 a 6), escrita à mão.** Frentes, o que está pronto, o que está com o
-  humano, os bloqueios, a revisão e a ordem proposta. Revista em **23/09/2026** (rodada 94).
-- **Os temas (seção 7), gerados.** A contagem e a lista dos itens abertos de `docs/pendencias/A`
-  a `L` saem de `scripts/gen-pendencias.mjs`, e o `npm run validate` fica vermelho se elas
-  divergirem dos arquivos de tema. **Não edite entre os marcadores:** mude a caixa no tema e rode
+  humano, os bloqueios, a revisão e a ordem proposta em três trilhas. Revista em **23/09/2026**
+  (rodadas 94 a 96).
+- **A contagem (seção 0) e a lista dos itens (seção 7), geradas.** Saem de
+  `scripts/gen-pendencias.mjs`, a partir de `docs/pendencias/A` a `L`, e o `npm run validate` fica
+  vermelho se divergirem dos arquivos de tema, ou se um tema tiver linha com cara de caixa que o
+  gerador não lê. **Não edite entre os marcadores:** mude a caixa ou a marca no tema e rode
   `node scripts/gen-pendencias.mjs`.
 
 **As marcas dos temas.** Cada item tem uma sigla estável (A1, B2, …), e as siglas não mudam de
 lugar nem de número. **[DECIDIR]** = precisa da palavra do humano. **[FAZER]** = já decidido, é
 execução. **[AUTOR]** = frente de escrita do humano. **[CONSERTAR]** = defeito conhecido, com o
-conserto claro.
+conserto claro. **[ADIADO]**, antes da outra marca, tira o item da fila de trabalho, com o
+motivo escrito no tema; ele continua contado como aberto.
 
-**Quando o humano pedir "traga as pendências"**, a resposta é mostrar as frentes (seção 1) e os
-temas (seção 7) para ele escolher, e não abrir todos os arquivos nem tentar resolver tudo de uma
-vez.
+**Quando o humano pedir "traga as pendências"**, a resposta é mostrar a contagem (seção 0), as
+frentes (seção 1) e as trilhas (seção 6) para ele escolher, e não abrir todos os arquivos nem
+tentar resolver tudo de uma vez.
+
+---
+
+## 0 · A contagem, e o que ela diz
+
+**Por que a fila não anda.** Nos temas A a K, a maior parte do que está aberto é **DECIDIR** e
+**AUTOR** (as duas colunas abaixo): só o humano move isso, e nenhuma instância pode. A coluna
+**Adiados** é o que saiu da fila de propósito, com o motivo no tema. O tema L quase não tem essas
+marcas porque a etiqueta dele é texto livre (a coluna "Outra marca"); o que ele tem de decisão
+está na seção 3.
+
+<!-- gen:pendencias-contagem -->
+
+| Letra | Tema | Arquivo | Itens | Abertos | Parciais | Fechados | DECIDIR | FAZER | AUTOR | CONSERTAR | Outra marca | Adiados |
+|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| A | Arcano · As Artes | [`A-arcano-artes.md`](docs/pendencias/A-arcano-artes.md) | 28 | 18 | 1 | 9 | 10 | 4 | 4 | 0 | 1 | 0 |
+| B | Bestiário | [`B-bestiario.md`](docs/pendencias/B-bestiario.md) | 14 | 9 | 0 | 5 | 4 | 5 | 0 | 0 | 0 | 0 |
+| C | Trilhas de Feitiçaria | [`C-trilhas-feiticaria.md`](docs/pendencias/C-trilhas-feiticaria.md) | 4 | 4 | 0 | 0 | 2 | 1 | 0 | 0 | 0 | 1 |
+| D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 6 | 3 | 0 | 3 | 0 | 1 | 0 | 0 | 0 | 2 |
+| E | Social, Mental e Antecedentes | [`E-social-mental-antecedentes.md`](docs/pendencias/E-social-mental-antecedentes.md) | 10 | 7 | 0 | 3 | 5 | 1 | 0 | 1 | 0 | 0 |
+| F | Lore | [`F-lore.md`](docs/pendencias/F-lore.md) | 10 | 9 | 0 | 1 | 6 | 0 | 3 | 0 | 0 | 0 |
+| G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 15 | 5 | 0 | 10 | 3 | 2 | 0 | 0 | 0 | 0 |
+| H | Arremesso | [`H-arremesso.md`](docs/pendencias/H-arremesso.md) | 4 | 2 | 0 | 2 | 1 | 0 | 0 | 0 | 0 | 1 |
+| I | Mesa virtual · tempo real | [`I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 14 | 10 | 2 | 2 | 1 | 8 | 0 | 0 | 2 | 1 |
+| J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 11 | 8 | 0 | 3 | 1 | 2 | 0 | 2 | 1 | 2 |
+| K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 30 | 16 | 1 | 13 | 12 | 4 | 0 | 0 | 1 | 0 |
+| L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 103 | 70 | 0 | 33 | 0 | 8 | 1 | 0 | 61 | 0 |
+| | **Total** | | **249** | **161** | **4** | **84** | **45** | **36** | **8** | **3** | **66** | **7** |
+
+*Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
+
+**O que a contagem esconde, e o gerador acusa sem consertar:**
+
+- `A-arcano-artes.md`: a sigla **A22** aparece 2 vezes (fechado · fechado)
+- `G-acoes-sistema.md`: item sem sigla, "As cinco físicas de toda sessão." (fechado)
+- `J-infraestrutura.md`: item sem sigla, "A linha de fechamento do `test-grid` é texto fixo · [DECIDIR]" (aberto)
+- `L-simulacao-simultaneo.md`: **L6** tem a caixa aberta e o título riscado (a contagem o conta como aberto)
+- `L-simulacao-simultaneo.md`: **L9** tem a caixa aberta e o título riscado (a contagem o conta como aberto)
+- `L-simulacao-simultaneo.md`: a sigla **L6** aparece 2 vezes (fechado · aberto, riscado)
+- `L-simulacao-simultaneo.md`: a sigla **L9** aparece 2 vezes (fechado · aberto, riscado)
+
+<!-- /gen:pendencias-contagem -->
 
 ---
 
@@ -35,7 +80,7 @@ vez.
 | **Voz** | Barra de comando, desfazer e captura de áudio fechados (rodadas 30 a 33). Parada de propósito até o humano usar a barra numa batalha. | Humano (a batalha); depois execução | `VOZ.md` §8; L62, L71, L74 |
 | **Mapa de Uldun** | Frente do Cartógrafo, em `lore/mapas/`. Empreitada autônoma na noite de 23/09, com o que é decisão marcado como recomendação dele, esperando o usuário testar. | Humano, pelo que o `RELATORIO-FINAL.md` lista | `lore/mapas/CARTOGRAFO.md`, `lore/mapas/RELATORIO-FINAL.md` |
 | **Economia** | Um catálogo unificado de preços e um pedido de revisão para outra IA, em `lore/economia/`, **não versionados**. Nada decidido. | Humano | `lore/economia/catalogo-unificado.md`, `lore/economia/prompt-revisao-economica.md` |
-| **Os temas A a L** | 249 itens; a contagem e a lista estão na seção 7. | Por item (a marca diz) | `docs/pendencias/` |
+| **Os temas A a L** | 249 itens; a contagem está na seção 0 e a lista na seção 7. | Por item (a marca diz) | `docs/pendencias/` |
 
 ---
 
@@ -108,9 +153,10 @@ feito estão na seção 5, e não entram aqui.
 - **Toda pergunta de regra aberta nos temas:** os itens da seção 7 com **DECIDIR** na coluna
   Marcação (no tema L a marca é livre, e as perguntas de regra aparecem como "DECISÃO DE MESA",
   "PEDIDO" e "PERGUNTADO"), mais o item sem sigla do tema J (a linha de fechamento do `test-grid`).
-  A lista não é repetida aqui de propósito: seria uma segunda lista para divergir da gerada. Duas
-  notas: **o K4 dizia que não podia ser decidido antes do K13, e o K13 está consertado desde
-  19/08**; e o **J4** tem o defeito já consertado pelo B12 (seção 5).
+  A lista não é repetida aqui de propósito: seria uma segunda lista para divergir da gerada; a
+  soma está na coluna DECIDIR da seção 0. As cinco que mais destravam estão no topo da trilha de
+  decisão (seção 6). Uma nota: **o K4 dizia que não podia ser decidido antes do K13, e o K13 está
+  consertado desde 19/08**.
 
 ---
 
@@ -133,16 +179,19 @@ Sem prova, o item fica aberto e aparece aqui como suspeito.
 
 ### Fechados nesta revisão, com prova no tema
 
-A22 (a entrada de antes da decisão; a decisão é a outra A22), B13 (`888a196`), D1 (`971b6f4`), E9
-(`b903a26`), E10 (`fb9310c`), K12 (§14 e §16 de `leitura-de-novato-decisoes.md`, e `c5dd390`), K13
-(`b6af150`).
+**Rodada 94:** A22 (a entrada de antes da decisão; a decisão é a outra A22), B13 (`888a196`), D1
+(`971b6f4`), E9 (`b903a26`), E10 (`fb9310c`), K12 (§14 e §16 de `leitura-de-novato-decisoes.md`, e
+`c5dd390`), K13 (`b6af150`). **Rodada 96:** J4, o mesmo defeito do B12, consertado em `20daeea`
+(conferido: nenhum leitor de fraqueza ou resistência no topo da criatura sobra em `src/`).
+
+Todos são a forma "fechar a frente sem fechar o documento" (`CATALOGO.md`): o trabalho estava
+pronto, e a caixa ficou aberta.
 
 ### Suspeitos de fechado, nos temas A a K
 
 | Item | A evidência | O que falta para fechar |
 |---|---|---|
-| **J4** | `20daeea` consertou o mesmo defeito do B12 (fraqueza e resistência lidas do lugar errado) | o J4 é [DECIDIR]: confirmar que o conserto do B12 é a decisão |
-| **C3**, **C4** | a M-10 decidiu que a Tradição é requisito de ficção e que Trilha não é palavra do Arcano | o C3 perde o sentido; o C4 ainda pede revisar o mortal-tocado (o Bram) |
+| **C3**, **C4** | a M-10 decidiu que a Tradição é requisito de ficção e que Trilha não é palavra do Arcano | o C3 perde o sentido (e está `[ADIADO]` desde a rodada 96); o C4 ainda pede revisar o mortal-tocado (o Bram) |
 | **K28** | o próprio item diz "fecha inteiro", e mantém aberto pela falta de zona de controle | registrar que a ausência é decisão |
 | **K20** | o deslocamento na Recuperação foi decidido no K28; o −1d6 está no código | escrever que o ataque normal não cabe, e listar as ações livres |
 | **K27** | a decisão que faltava ("o atacante acompanha com o próprio passo") está no K28 | a fatia 2 no código e a prova de mesa |
@@ -168,9 +217,10 @@ A maioria fecha em parte; **nenhum foi reconferido** (estão fora da zona das ro
 
 ### O que a contagem esconde
 
-Siglas repetidas (A22, I5, L6, L9), item aberto riscado e item sem sigla: o gerador as lista na
-seção 7, sem consertar. **O I5 são dois itens diferentes com a mesma sigla** (o editor de cenário e
-o anel de Vida remoto).
+Siglas repetidas (A22, L6, L9), item aberto riscado e item sem sigla: o gerador as lista na seção
+0, sem consertar. **O I5 eram dois itens diferentes com a mesma sigla**; na rodada 96 o editor de
+cenário ficou com ela (é o citado de fora) e o anel de Vida remoto virou **I14**, com a
+renumeração registrada no tema.
 
 ### Documentos de direção que envelheceram
 
@@ -187,69 +237,78 @@ o anel de Vida remoto).
 
 ---
 
-## 6 · Ordem sugerida · PROPOSTA DO ARQUITETO, e não decisão
+## 6 · As três trilhas · PROPOSTA DO ARQUITETO, e não decisão
 
-*Redigida pela Executora na rodada 94, para o Arquiteto revisar antes de o humano ver. Nada aqui
-foi decidido.*
+*Redigida pela Executora nas rodadas 94 e 96, para o Arquiteto revisar antes de o humano ver. Nada
+aqui foi decidido.*
 
-1. **A §17 inteira, numa rodada.** Porque foi decidida hoje, é pequena (texto e dado), e fecha a
-   frente do Frenesi e do teste de Virtude **no livro**, que é a corrente. O motor continua sem o
-   teste de Frenesi, e isso não é desta rodada: nenhuma tela o rola. Deixar a §17 para depois é
-   deixar o livro dizendo "Vigor ou Destreza" com a regra já trocada.
-2. **As quatro M decididas e não feitas (M-01, M-07, M-24, M-33), mais os três C marcados como
-   feitos que não estão (C-22, C-39, C-61).** Porque é execução pura sobre decisão que o humano já
-   pagou, e os três C são defeitos publicados. A M-24 e a M-33 mexem em combate e no Grid, então
-   pedem revisão com cuidado.
-3. **Registro: fechar o que a seção 5 lista como suspeito, com prova, e reescrever o `CONTEXTO.md`
-   e o §7 da `PASSAGEM.md`.** Porque são baratos, e cada suspeito aberto é uma pergunta que a
-   próxima instância refaz. O L tem dez itens que se declaram fechados por inteiro.
-4. **Uma lista única de perguntas para o humano**, pela regra da casa (pergunta de regra vem em
-   lista única): as M abertas, os E4 a E8 e os [DECIDIR] que destravam mais coisa. Começando pelo
-   **K4**, destravado desde que o K13 caiu, e pelo **C1**, que a ordem de agosto já apontava como o
-   que mais destrava (A11, C2, F3).
-5. **A batalha de verdade**, que é do humano e não de instância. Ela vem por último na lista, e não
-   na importância: é o único passo que destrava a fase 4, a voz e o L62 de uma vez, e nenhuma rodada
-   substitui o que ela revela.
+Não é uma fila só. São três trilhas que não disputam o mesmo recurso, e por isso correm ao mesmo
+tempo: uma gasta o tempo do humano, outra gasta token, a terceira gasta o tempo criativo dele.
+
+### Trilha de DECISÃO · custa tempo do humano, e zero token
+
+**No topo, as cinco decisões-raiz, ordenadas por quanto destravam, e não por urgência.** Elas são do
+humano, e ele responde em bloco:
+
+1. **F7 · travar o panteão.** Trava a F5 e a F6: uma decisão libera três itens de autoria.
+2. **F3 · a mecânica de clérigo, paladino e monge.** Trava a B4. Enquanto não sair, **47 das 309
+   criaturas** têm fraqueza a sagrado que nada no jogo dispara (conferido em 23/09 nos dois lugares
+   em que o dado mora, `monsters.json` e `elementos-bestiario.json`).
+3. **A camada de Tradição.** Trava a C1, a C2, metade da A11, e por consequência a C3 e a C4. É o
+   bloqueio mais antigo do mapa.
+4. **G12 · Desgaste e ferimento não se conhecem.** A única que já produz dívida em mesa: o mestre
+   arbitra hoje.
+5. **E4 com E8 · a régua de Relação.** O capítulo publicado depende delas. O E8 tem o dente medido:
+   15 pontos saem em 3 intervalos, e 14 saem em 6.
+
+**Depois delas, na mesma lista única** (a regra da casa: pergunta de regra vem em lista, não item a
+item): o **K4**, destravado desde que o K13 caiu; as perguntas M abertas e os E5 a E7 (seção 3); a
+conversa do modo site e os itens 3 e 4 do `PLANO.md` §8; a fronteira entre o dia a dia e o Combate
+Social; e o resto da coluna DECIDIR da seção 0.
+
+### Trilha de EXECUÇÃO · custa token, e zero tempo do humano
+
+Só o que já tem decisão:
+
+1. **A §17 inteira, numa rodada.** Foi decidida em 23/09, é pequena (texto e dado), e fecha a frente
+   do Frenesi e do teste de Virtude **no livro**. O motor continua sem o teste de Frenesi, porque
+   nenhuma tela o rola. Deixar a §17 para depois é deixar o livro dizendo "Vigor ou Destreza" com a
+   regra já trocada.
+2. **As M decididas e não feitas (M-01, M-07, M-24, M-33, e o texto da M-18), mais os três C
+   marcados como feitos que não estão (C-22, C-39, C-61) e os C abertos.** É execução pura sobre
+   decisão que o humano já pagou. A M-24 e a M-33 mexem em combate e no Grid, então pedem revisão
+   com cuidado.
+3. **Registro:** fechar com prova o que a seção 5 lista como suspeito, e reescrever o `CONTEXTO.md` e
+   o §7 da `PASSAGEM.md`. É barato, e cada suspeito aberto é uma pergunta que a próxima instância
+   refaz. O L tem dez itens que se declaram fechados por inteiro.
+4. **Os [FAZER] e [CONSERTAR] dos temas** (as colunas FAZER e CONSERTAR da seção 0).
+
+A fila do Grid (`PLANO.md` §8) está nesta trilha, e está parada: o que ela espera é a batalha de
+verdade, abaixo.
+
+### Trilha de AUTORIA · custa o tempo criativo do humano, e não trava nada técnico
+
+Os itens [AUTOR] dos temas (a coluna AUTOR da seção 0). Dois deles, a F5 e a F6, esperam a F7 da
+trilha de decisão. Nenhum item de autoria segura código.
+
+### O que não cabe em trilha: a batalha de verdade
+
+É tempo do humano, mas não é decisão: é jogar. Destrava de uma vez a fase 4, a voz e o L62, e nenhuma
+rodada substitui o que ela revela (`PLANO.md` §9).
+
+### O que saiu das trilhas: os adiados
+
+Sete itens foram marcados `[ADIADO]` na rodada 96, por proposta do humano, com o motivo escrito no
+tema: o catálogo das Artes (C3), os travessões em dado publicado (J0 e J10), o ponteiro ao vivo (I8)
+e três refinamentos que ninguém sentiu falta em mesa (H4, D3 e D6). Eles continuam contados como
+abertos, na coluna Adiados da seção 0, e fora das somas de trabalho.
 
 ---
 
 ## 7 · Os temas
 
-A contagem e a lista abaixo são geradas pelos arquivos de tema. **O detalhe de cada item mora no
-arquivo do tema**, e é lá que a caixa muda.
-
-<!-- gen:pendencias-contagem -->
-
-| Letra | Tema | Arquivo | Itens | Abertos | Parciais | Fechados |
-|---|---|---|---:|---:|---:|---:|
-| A | Arcano · As Artes | [`A-arcano-artes.md`](docs/pendencias/A-arcano-artes.md) | 28 | 18 | 1 | 9 |
-| B | Bestiário | [`B-bestiario.md`](docs/pendencias/B-bestiario.md) | 14 | 9 | 0 | 5 |
-| C | Trilhas de Feitiçaria | [`C-trilhas-feiticaria.md`](docs/pendencias/C-trilhas-feiticaria.md) | 4 | 4 | 0 | 0 |
-| D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 6 | 3 | 0 | 3 |
-| E | Social, Mental e Antecedentes | [`E-social-mental-antecedentes.md`](docs/pendencias/E-social-mental-antecedentes.md) | 10 | 7 | 0 | 3 |
-| F | Lore | [`F-lore.md`](docs/pendencias/F-lore.md) | 10 | 9 | 0 | 1 |
-| G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 15 | 5 | 0 | 10 |
-| H | Arremesso | [`H-arremesso.md`](docs/pendencias/H-arremesso.md) | 4 | 2 | 0 | 2 |
-| I | Mesa virtual · tempo real | [`I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 14 | 10 | 2 | 2 |
-| J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 11 | 9 | 0 | 2 |
-| K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 30 | 16 | 1 | 13 |
-| L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 103 | 70 | 0 | 33 |
-| | **Total** | | **249** | **162** | **4** | **83** |
-
-*Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
-
-**O que a contagem esconde, e o gerador acusa sem consertar:**
-
-- `A-arcano-artes.md`: a sigla **A22** aparece 2 vezes (fechado · fechado)
-- `G-acoes-sistema.md`: item sem sigla, "As cinco físicas de toda sessão." (fechado)
-- `I-mesa-tempo-real.md`: a sigla **I5** aparece 2 vezes (aberto · aberto)
-- `J-infraestrutura.md`: item sem sigla, "A linha de fechamento do `test-grid` é texto fixo · [DECIDIR]" (aberto)
-- `L-simulacao-simultaneo.md`: **L6** tem a caixa aberta e o título riscado (a contagem o conta como aberto)
-- `L-simulacao-simultaneo.md`: **L9** tem a caixa aberta e o título riscado (a contagem o conta como aberto)
-- `L-simulacao-simultaneo.md`: a sigla **L6** aparece 2 vezes (fechado · aberto, riscado)
-- `L-simulacao-simultaneo.md`: a sigla **L9** aparece 2 vezes (fechado · aberto, riscado)
-
-<!-- /gen:pendencias-contagem -->
+A lista abaixo é gerada pelos arquivos de tema (a contagem está na seção 0). **O detalhe de cada
+item mora no arquivo do tema**, e é lá que a caixa muda.
 
 Os itens abertos e parciais de cada tema, com a marca e o título; os fechados vão só pela sigla.
 
@@ -303,7 +362,7 @@ Fechados (5): B12, B1, B1b, B10, B13.
 |---|---|---|---|
 | C1 | aberto | DECIDIR, BLOQUEADO | Jogadas das Artes, casos de fronteira. |
 | C2 | aberto | DECIDIR, BLOQUEADO | A perícia de conjuração de cada Tradição. |
-| C3 | aberto | FAZER | O mapa Arte × Trilha. |
+| C3 | aberto, ADIADO | FAZER | O mapa Arte × Trilha. |
 | C4 | aberto | FAZER | Portar `trilhas.json` |
 
 Fechados (0): nenhum.
@@ -312,9 +371,9 @@ Fechados (0): nenhum.
 
 | Sigla | Estado | Marcação | Título |
 |---|---|---|---|
-| D3 | aberto | DECIDIR | Densidade dos funis. |
+| D3 | aberto, ADIADO | DECIDIR | Densidade dos funis. |
 | D5 | aberto | FAZER | Reorg de conteúdo. |
-| D6 | aberto | DECIDIR | Custo de Técnica e de Arte em ×10. |
+| D6 | aberto, ADIADO | DECIDIR | Custo de Técnica e de Arte em ×10. |
 
 Fechados (3): D1, D2, D4.
 
@@ -365,7 +424,7 @@ Fechados (10): G1, G3, G4, "As cinco físicas de toda sessão.", G5, G5b, G7, G8
 | Sigla | Estado | Marcação | Título |
 |---|---|---|---|
 | H3 | aberto | DECIDIR | Os quatro assuntos que a proposta levanta e não fecha |
-| H4 | aberto | DECIDIR | O degrau de baixo do fator de forma: ÷2 ou ÷3? |
+| H4 | aberto, ADIADO | DECIDIR | O degrau de baixo do fator de forma: ÷2 ou ÷3? |
 
 Fechados (2): H1, H2.
 
@@ -378,9 +437,9 @@ Fechados (2): H1, H2.
 | I5 | aberto | FAZER | Um editor de cenário no Grid. |
 | I3 | aberto | FAZER | As outras abas ainda não ouvem. |
 | I4 | aberto | FAZER | Nada garante entrega. |
-| I5 | aberto | FAZER | O anel de Vida remoto aparece em salto. |
+| I14 | aberto | FAZER | O anel de Vida remoto aparece em salto. |
 | I6 | aberto | FAZER | A presença não distingue quem está olhando. |
-| I8 | aberto | DECIDIR | Ponteiro ao vivo. |
+| I8 | aberto, ADIADO | DECIDIR | Ponteiro ao vivo. |
 | I9 | aberto | DECIDIR | O caderno de melhorias do tabuleiro. |
 | I10 | aberto | FAZER | As pontas soltas do jogador no tabuleiro. |
 | I11 | parcial |  | A Arte sai no ÚLTIMO Tick, no tabuleiro. PARCIAL em 2026-08-21. |
@@ -392,17 +451,16 @@ Fechados (2): I7, I13.
 
 | Sigla | Estado | Marcação | Título |
 |---|---|---|---|
-| J0 | aberto |  | 41 travessões sobreviveram dentro de `src/data/*.json` |
+| J0 | aberto, ADIADO |  | 41 travessões sobreviveram dentro de `src/data/*.json` |
 | J1b | aberto | FAZER | SMTP próprio no Supabase. |
 | J2 | aberto | DECIDIR | Qual hospedeiro. |
 | J3 | aberto | FAZER | Sair do GitHub Pages, e só então subir para o Astro 7. |
 | J6 | aberto | CONSERTAR | `/mesa/referencia` rola de lado no telefone, e a culpa é da classe do embrulho. |
 | J9 | aberto | CONSERTAR | `gen-mermaid.mjs` redesenha os seis diagramas a cada execução, e o `--check` não enxerga isso. |
 | (sem sigla) | aberto |  | A linha de fechamento do `test-grid` é texto fixo · [DECIDIR] |
-| J10 | aberto | DECIDIR | Os 23 travessões do `regras.json`, e seis deles NÃO são travessão. |
-| J4 | aberto | DECIDIR | Fraquezas e resistências do bestiário não chegam ao dano. |
+| J10 | aberto, ADIADO | DECIDIR | Os 23 travessões do `regras.json`, e seis deles NÃO são travessão. |
 
-Fechados (2): J1, J5.
+Fechados (3): J1, J4, J5.
 
 ### K · Combate · a linha do tempo
 

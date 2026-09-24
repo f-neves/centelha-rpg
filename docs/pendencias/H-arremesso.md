@@ -22,10 +22,11 @@ está no ar, e `Arremesso_Regra.md` é a **proposta nova**, em três regimes. A 
   machuca ninguém, e o corte da ponta leve é energia e não distância. **Limite de pegada**: acima
   de uns 13 cm de diâmetro não sai de uma mão. **Duas mãos**: no objeto leve saem 75% da velocidade
   de uma mão, no pesado empata, ou seja, é penalidade no leve e é a única opção no pesado.
-- [ ] **H4 · [DECIDIR] O degrau de baixo do fator de forma: ÷2 ou ÷3?** Ressalva já medida na §3 da
+- [ ] **H4 · [ADIADO] [DECIDIR] O degrau de baixo do fator de forma: ÷2 ou ÷3?** Ressalva já medida na §3 da
   proposta. Pela densidade seccional, um baralho de cartas e uma bola de beisebol pesam quase o
   mesmo e o baralho chega a **22% do alcance**, não aos 50% que o ÷2 promete. Fica em ÷2 por
   simplicidade; se incomodar em mesa, o conserto é uma tecla.
+  **Adiado na rodada 96 (23/09/2026), por proposta do humano:** refinamento que ninguém sentiu falta em mesa; o próprio item diz que o conserto é uma tecla, se incomodar.
 
 ---
 

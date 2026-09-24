@@ -32,10 +32,11 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
 - [ ] **I4 · [FAZER] Nada garante entrega.** Sem número de sequência, uma mensagem perdida deixa a
   tela velha até o próximo aviso, até religar o canal ou até voltar para a aba. Um contador por
   mesa (um `int` que sobe a cada campainha) deixaria o ouvinte perceber o buraco e pedir tudo.
-- [ ] **I5 · [FAZER] O anel de Vida remoto aparece em salto.** A peça que anda por ordem de outra
+- [ ] **I14 (renumerado de I5 em 23/09/2026) · [FAZER] O anel de Vida remoto aparece em salto.** A peça que anda por ordem de outra
   tela desliza; a Vida que muda por ordem de outra tela pula direto para o valor final, porque o
   desenho troca o nó e transição de CSS não roda em elemento recém-nascido. O caminho é o mesmo do
   `deslizarTokens`: mexer no `stroke-dashoffset` do nó que já está lá.
+  **Renumerado na rodada 96:** a sigla I5 era também a do editor de cenário (acima), que é o citado de fora (`02-projeto-harness.md` §0.4 P2) e ficou com ela. O conteúdo deste item não mudou, e nenhum documento citava este pela sigla velha.
 - [ ] **I6 · [FAZER] A presença não distingue quem está olhando.** Ela conta abas abertas, e uma
   aba em segundo plano conta igual. O navegador estrangula os timers da aba escondida, então ela
   também **atrasa a própria campainha** quando é ela que escreve (não incomoda na prática: quem
@@ -46,10 +47,11 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   **fica** (vira névoa leve, que mostra o chão e esconde quem está nele), e o alcance é um **raio da
   cena**, igual para todos. Migrações 23 e 25; o corte é na view `token_visao`, e não na tela. O
   quadro completo e os seis limites que sobraram estão em `Grid_melhorias.md`.
-- [ ] **I8 · [DECIDIR] Ponteiro ao vivo.** Hoje há o ping (dois cliques acendem uma casa para todo
+- [ ] **I8 · [ADIADO] [DECIDIR] Ponteiro ao vivo.** Hoje há o ping (dois cliques acendem uma casa para todo
   mundo, assinada). O passo seguinte é o cursor de cada um deslizando pelo mapa, que é o que as
   mesas virtuais grandes fazem. Custa uma mensagem a cada ~50 ms por pessoa que estiver mexendo o
   mouse, e é a única coisa desta lista que pesa de verdade: vale a pena?
+  **Adiado na rodada 96 (23/09/2026), por proposta do humano:** o próprio item pergunta se o ponteiro ao vivo vale a pena.
 - [ ] **I9 · [DECIDIR] O caderno de melhorias do tabuleiro.** `Grid_melhorias.md` guarda a lista
   inteira do que as mesas virtuais têm, do que os usuários reclamam que falta nelas e do que os
   jogos de combate por turno resolveram (Fire Emblem, FFT, Into the Breach, Grandia, Valkyria,

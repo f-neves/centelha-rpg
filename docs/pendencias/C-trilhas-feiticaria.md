@@ -12,7 +12,8 @@ Detalhe em `Trilhas_Feiticaria.md` §6. As seis Tradições já estão descritas
   Mesmo bloqueio do C1: sem a Tradição fechada, não há tabela para avaliar de verdade. A tabela está
   proposta e precisa de aval. A **Iniciação** provavelmente pede um traço de **Fé/Devoção** que não
   existe: criar?
-- [ ] **C3 · [FAZER] O mapa Arte × Trilha.** Só existe um exemplo (Terra). O catálogo das 24 Artes
+- [ ] **C3 · [ADIADO] [FAZER] O mapa Arte × Trilha.** Só existe um exemplo (Terra). O catálogo das 24 Artes
   é frente própria, do tamanho do bestiário, com os números de treino junto.
+  **Adiado na rodada 96 (23/09/2026), por proposta do humano:** o catálogo das 24 Artes é frente própria, do tamanho do bestiário, como o próprio item diz.
 - [ ] **C4 · [FAZER] Portar `trilhas.json`** quando a mecânica fechar, e revisar o mortal-tocado
   (Bram é Erudição).

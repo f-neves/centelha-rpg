@@ -8,8 +8,9 @@ Detalhe em `Proezas_revisao.md`.
   **Fechado na revisão da rodada 94 (23/09/2026), com prova:** `971b6f4` (17/07/2026) tirou a banda de dado, schema, validador e código e pôs o modificador ao lado da Técnica. Conferido hoje: nenhuma entrada de `tecnicas.json` tem `banda`, e a árvore de Técnicas mostra o modificador.
 - [x] **D2 · [FEITO, achado na auditoria de memória de 08/09] Reconciliado.** O texto já bate com a
   régua (`tecnicas.json` traz "+3 em Furtividade", nível×3), não "+2" como este item ainda dizia.
-- [ ] **D3 · [DECIDIR] Densidade dos funis.** Caminhos reaproveitados têm ~3 Técnicas no nível 1
+- [ ] **D3 · [ADIADO] [DECIDIR] Densidade dos funis.** Caminhos reaproveitados têm ~3 Técnicas no nível 1
   (funil 3·2·1·1·1), mais enxuto que o padrão de Força. Alargar ou aceitar.
+  **Adiado na rodada 96 (23/09/2026), por proposta do humano:** refinamento que ninguém sentiu falta em mesa.
 - [x] **D4 · [SEM CAUSA 2026-08-17] O retag já estava feito; o item nasceu de uma leitura errada.**
   A frase da auditoria (**"Defesa Mental agora só aparece em Comando e Marionete"**) fala dos dois
   **Caminhos**, não de duas Técnicas, e "Marionete" ser também o nome de uma Técnica de nível 6 é a
@@ -26,6 +27,7 @@ Detalhe em `Proezas_revisao.md`.
 - [ ] **D5 · [FAZER] Reorg de conteúdo.** As árvores novas do doc (Atlas reorganizado, Força de
   Guerra, Presença Aterradora, Arremesso, Salto, Vigarista/Confessor, as novas de Perspicácia) ainda
   não entraram na data viva.
-- [ ] **D6 · [DECIDIR] Custo de Técnica e de Arte em ×10.** Ficou de fora da recalibração de XP de
+- [ ] **D6 · [ADIADO] [DECIDIR] Custo de Técnica e de Arte em ×10.** Ficou de fora da recalibração de XP de
   propósito (largura segue sendo o gasto caro). Confirmar que fica.
+  **Adiado na rodada 96 (23/09/2026), por proposta do humano:** refinamento que ninguém sentiu falta em mesa.
 

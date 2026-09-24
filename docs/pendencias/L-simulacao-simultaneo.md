@@ -2612,6 +2612,18 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   pode ser o hábito de não atualizar `PLANO.md`/`CONTEXTO.md` no mesmo commit que fecha o
   item, não três incidentes soltos.
 
+  **SEGUNDA MEDIDA, 23/09/2026 (rodada 96), ao lado da primeira.** Contada pelas mesmas três caixas
+  (`- [ ]`, `- [~]`, `- [x]` na coluna 0), agora nos doze arquivos de tema em que o `Pendencias.md`
+  foi dividido em 17/09, por `scripts/gen-pendencias.mjs` (a tabela gerada do `Pendencias.md`).
+  **08/09/2026: 187 itens, 120 abertos, 4 parciais, 63 fechados. 23/09/2026: 249 itens, 161
+  abertos, 4 parciais, 84 fechados**, sendo 7 dos abertos marcados `[ADIADO]` na mesma rodada. Sem
+  percentual, de propósito. **O que a comparação NÃO pode dizer sozinha:** oito dos fechados a mais
+  são caixas de trabalho que já estava pronto e não tinha sido marcado, fechadas com prova nas
+  revisões das rodadas 94 (A22, B13, D1, E9, E10, K12, K13) e 96 (J4): é o mesmo padrão que a nota
+  da primeira medida previa, e ele não é progresso da semana. E os 62 itens catalogados a mais são
+  pendência nova registrada, e não trabalho que andou para trás. A primeira medida nasceu inflada
+  (a nota acima); esta é a primeira que tem com o que comparar.
+
 - [x] **L53 · [FEITO, levantamento de 08/09/2026] O mapa da raiz (`docs/MAPA.md`) e o que ele
   moveu.** Levantado por citação (`grep` do nome de cada arquivo/pasta contra o repositório
   inteiro) porque a raiz tinha quase oitenta entradas soltas sem nada que distinguisse régua

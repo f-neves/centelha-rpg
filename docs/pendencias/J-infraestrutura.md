@@ -1,6 +1,7 @@
 # J. Infraestrutura · endereço, hospedagem e versão
 
-- [ ] **J0 · 41 travessões sobreviveram dentro de `src/data/*.json`**, que é texto publicado e nenhum portão cobre: `regras.json` 21, `tecnicas.json` 15, `efeitos.json` 5 (o 22º do `regras.json` saiu na rodada 73, junto com a M-31, porque a M-31 mexia naquele bloco). O `test-travessao-capitulos.mjs` só varre `src/content/**`, por decisão do humano, e o dado ficou de fora. Achado na rodada 65 ao converter "turno" em Tick: um deles está na MESMA linha que eu editei, e consertá-lo sozinho seria arbitrário. É varredura de uma passada, e a pergunta que vem junto é se o portão passa a cobrir `src/data` depois dela.
+- [ ] **J0 · [ADIADO] 41 travessões sobreviveram dentro de `src/data/*.json`**, que é texto publicado e nenhum portão cobre: `regras.json` 21, `tecnicas.json` 15, `efeitos.json` 5 (o 22º do `regras.json` saiu na rodada 73, junto com a M-31, porque a M-31 mexia naquele bloco). O `test-travessao-capitulos.mjs` só varre `src/content/**`, por decisão do humano, e o dado ficou de fora. Achado na rodada 65 ao converter "turno" em Tick: um deles está na MESMA linha que eu editei, e consertá-lo sozinho seria arbitrário. É varredura de uma passada, e a pergunta que vem junto é se o portão passa a cobrir `src/data` depois dela.
+  **Adiado na rodada 96 (23/09/2026), por proposta do humano:** travessão em dado publicado não destrava nada; vira lote único, junto com o J10, para o dia em que outra coisa já for mexer nesses arquivos.
 
 - [x] **J1 · [DECIDIDO 15/08/2026] O endereço será `centelha.rec.br`.** R$ 40/ano no
   Registro.br, categoria de recreação e jogos, portátil, preço fixo em real, e **4,6× mais
@@ -70,7 +71,7 @@
   arquivo, e todo bloco novo tem de lembrar de se registrar. A segunda é instrumento novo e passa
   pelo `CATALOGO` antes de ser construída.
 
-- [ ] **J10 · [DECIDIR] Os 23 travessões do `regras.json`, e seis deles NÃO são travessão.**
+- [ ] **J10 · [ADIADO] [DECIDIR] Os 23 travessões do `regras.json`, e seis deles NÃO são travessão.**
   Contados pela Executora na rodada 86, ocorrência a ocorrência, com Python e não por `git diff`:
   são **23 U+2014** no arquivo, e a régua da casa (sem travessão em texto nenhum) só tem portão
   automático para `src/content/**`, por decisão do humano. A separação é o que decide o gesto:
@@ -81,15 +82,17 @@
   - **dezessete são prosa e caem**, em quinze linhas (`436`, `627`, `831`, `853`, `923`, `1017`,
     `1023`, `1145`, `1173`, `1175`, `1228`, `1263`, `2597`, `2598`, `2602`), dentro de `nota`,
     `nome` e `formula`. Duas dessas linhas trazem o caractere duas vezes.
+  **Adiado na rodada 96 (23/09/2026), por proposta do humano:** travessão em dado publicado não destrava nada; vira lote único, junto com o J0, para o dia em que outra coisa já for mexer nesses arquivos.
 
   Não foi consertado na rodada 86 de propósito: é edição em dado publicado, e quem decide o que
   vai para produção é o humano. Quando entrar, entra num lote só, com a palavra dele e com os seis
   de cima intocados.
 
-- [ ] **J4 · [DECIDIR] Fraquezas e resistências do bestiário não chegam ao dano.** Achado na
+- [x] **J4 · [DECIDIR] Fraquezas e resistências do bestiário não chegam ao dano.** Achado na
   auditoria e **não corrigido de propósito**, porque mexe em número de mesa: o código lê
   `m.fraquezas`/`m.resistencias` no topo da criatura, e elas moram dentro de `combate`.
   Zero das 309 têm no topo; 101 têm dentro. Detalhe em `Auditoria_Tecnica.md` seção 8.2.
+  **Fechado na revisão da rodada 96 (23/09/2026), com prova:** é o mesmo defeito do **B12** (tema B), fechado em `20daeea` (08/09/2026): `elementosCombate()` (`src/lib/mesa-core.ts`) lê `combate.fraquezas`/`combate.resistencias`, e os pontos que a `Auditoria_Tecnica.md` §8.2 nomeia (os dois do `artes-grid-mesa.ts` e o `cardCriaturaHTML` do `mesa-bestiario.ts`) passam por ela, com `scripts/test-elementos-combate.mjs` no `validate`. Conferido em 23/09: nenhum leitor de `fraquezas`/`resistencias` no topo da criatura sobra em `src/`. Era a forma "fechar a frente sem fechar o documento": o B12 fechou e este ficou aberto.
 
 - [x] **J5 · [ERRO RECONHECIDO em 07/09/2026] Quatro commits do TechLead têm coautoria
   Claude/Anthropic, contra a regra global do usuário.** `76c9b70`, `fc90e07`, `14dea09` e

@@ -52,19 +52,42 @@ const CARA_DE_CAIXA = /^\s*([-*+]|\d+[.)])\s*\[.?\]/;
 const CERCA = /^\s*(```|~~~)/;
 
 /** O começo em maiúsculas de um `[...]`: `[FAZER/DECIDIR]` → `FAZER/DECIDIR`, `[ANOTADO em 10/09]` → `ANOTADO`. */
-function marcacaoDe(txt) {
-  // Só o colchete que vem logo depois da sigla (e de um parêntese, como o do B13), e não um link
-  // `[texto](...)` do meio do parágrafo.
-  const m = txt.replace(/^\s*(\([^)]*\))?\s*·?\s*/, '').match(/^\[([^\]]*)\]?/);
-  if (!m) return '';
+function marcaDoColchete(dentro) {
   const fichas = [];
-  for (const f of m[1].split(/\s+/)) {
+  for (const f of dentro.split(/\s+/)) {
     const limpa = f.replace(/[,·]$/, '');
     if (!limpa || /\p{Ll}/u.test(limpa)) break;
     fichas.push(f);
   }
   const marca = fichas.join(' ').replace(/[,·]$/, '');
   return /\p{Lu}/u.test(marca) ? marca : '';
+}
+
+/**
+ * As etiquetas logo depois da sigla, e só elas: `[ADIADO] [DECIDIR] ...` dá `{ adiado, marcacao }`.
+ * Só os colchetes seguidos que vêm depois da sigla (e de um parêntese, como o do B13), e não um
+ * link `[texto](...)` do meio do parágrafo. `[ADIADO]` é marca de fila (rodada 96): o item sai das
+ * somas de trabalho e aparece como adiado; a outra etiqueta continua dizendo o que ele é.
+ */
+function etiquetasDe(txt) {
+  let resto = txt.replace(/^\s*(\([^)]*\))?\s*·?\s*/, '');
+  let adiado = false;
+  let marcacao = '';
+  for (let m = resto.match(/^\[([^\]]*)\]?\s*/); m; m = resto.match(/^\[([^\]]*)\]?\s*/)) {
+    const marca = marcaDoColchete(m[1]);
+    if (/^ADIADO\b/.test(marca)) adiado = true;
+    else if (!marcacao) marcacao = marca;
+    resto = resto.slice(m[0].length);
+    if (!adiado || marcacao) break;   // depois da primeira etiqueta de verdade, para
+  }
+  return { adiado, marcacao };
+}
+
+/** O tipo de trabalho, pela primeira palavra da casa que a marcação traz (`FAZER/DECIDIR` é FAZER). */
+const TIPOS = ['DECIDIR', 'FAZER', 'AUTOR', 'CONSERTAR'];
+function tipoDe(marcacao) {
+  const achados = TIPOS.map((t) => ({ t, em: marcacao.search(new RegExp(`\\b${t}\\b`)) })).filter((x) => x.em >= 0);
+  return achados.length ? achados.sort((a, b) => a.em - b.em)[0].t : 'outra';
 }
 
 /** O título: o negrito da primeira linha, sem sigla, sem marcação, sem risco, cortado em 110. */
@@ -75,7 +98,7 @@ function tituloDe(resto, sigla) {
   if (sigla) t = t.replace(new RegExp(`^${sigla}\\b[^·]*?·\\s*`), '').replace(new RegExp(`^${sigla}\\b\\s*`), '');
   // Quando o negrito é só a etiqueta (o L62), o título é o que está dentro dela.
   const soEtiqueta = t.match(/^\[([^\]]*)\]\s*$/);
-  t = soEtiqueta ? soEtiqueta[1].trim() : t.replace(/^\[[^\]]*\]\s*/, '').trim();
+  t = soEtiqueta ? soEtiqueta[1].trim() : t.replace(/^(\[[^\]]*\]\s*)+/, '').trim();
   if (t.length > 110) t = `${t.slice(0, 110).replace(/\s+\S*$/, '')} …`;
   return t.replace(/\|/g, '\\|');
 }
@@ -87,8 +110,9 @@ const dados = temas.map((arq) => {
   const tema = (linhas.find((l) => /^# /.test(l)) || '').replace(/^#\s*[A-L]\.\s*/, '').trim();
   const itens = [];
   let naCerca = false;
+  let cercaAbriuEm = 0;
   for (let i = 0; i < linhas.length; i += 1) {
-    if (CERCA.test(linhas[i])) { naCerca = !naCerca; continue; }
+    if (CERCA.test(linhas[i])) { naCerca = !naCerca; cercaAbriuEm = i + 1; continue; }
     if (naCerca) continue;
     const m = linhas[i].match(ITEM);
     if (!m) {
@@ -110,12 +134,15 @@ const dados = temas.map((arq) => {
     const semRisco = resto.replace(/^~~/, '').replace(/^\*\*(~~)?/, '');
     const s = semRisco.match(SIGLA);
     const sigla = s ? s[1] : null;
+    const { adiado, marcacao } = etiquetasDe(semRisco.slice(sigla ? sigla.length : 0));
     itens.push({
-      sigla, estado: ESTADO[m[1]], riscado,
-      marcacao: marcacaoDe(semRisco.slice(sigla ? sigla.length : 0)),
+      sigla, estado: ESTADO[m[1]], riscado, adiado, marcacao, tipo: tipoDe(marcacao),
       titulo: tituloDe(resto, sigla),
     });
   }
+  // Cerca que abre e não fecha pula, calada, o resto do arquivo (CORRIGE da rodada 95: uma cerca
+  // antes do A1 levou os 28 itens do tema A e o `--check` saiu verde). Recusa, dizendo onde abriu.
+  if (naCerca) naoLidas.push(`${arq}:${cercaAbriuEm}  cerca de código aberta aqui e nunca fechada: tudo depois dela ficaria fora da contagem`);
   return { letra: arq[0], arq, tema, itens };
 });
 
@@ -139,20 +166,30 @@ for (const t of dados) {
 }
 
 const conta = (its, e) => its.filter((i) => i.estado === e).length;
-const total = { itens: 0, aberto: 0, parcial: 0, fechado: 0 };
+// As somas por tipo contam o trabalho que está na fila: aberto ou parcial, e NÃO adiado.
+const naFila = (its, tipo) => its.filter((i) => i.estado !== 'fechado' && !i.adiado && i.tipo === tipo).length;
+const COLUNAS = ['itens', 'aberto', 'parcial', 'fechado', 'DECIDIR', 'FAZER', 'AUTOR', 'CONSERTAR', 'outra', 'adiado'];
+const total = Object.fromEntries(COLUNAS.map((k) => [k, 0]));
 const linhasContagem = dados.map((t) => {
-  const c = { itens: t.itens.length, aberto: conta(t.itens, 'aberto'), parcial: conta(t.itens, 'parcial'), fechado: conta(t.itens, 'fechado') };
-  for (const k of Object.keys(total)) total[k] += c[k];
-  return `| ${t.letra} | ${t.tema} | [\`${t.arq}\`](docs/pendencias/${t.arq}) | ${c.itens} | ${c.aberto} | ${c.parcial} | ${c.fechado} |`;
+  const c = {
+    itens: t.itens.length, aberto: conta(t.itens, 'aberto'), parcial: conta(t.itens, 'parcial'), fechado: conta(t.itens, 'fechado'),
+    ...Object.fromEntries([...TIPOS, 'outra'].map((k) => [k, naFila(t.itens, k)])),
+    adiado: t.itens.filter((i) => i.estado !== 'fechado' && i.adiado).length,
+  };
+  for (const k of COLUNAS) total[k] += c[k];
+  return `| ${t.letra} | ${t.tema} | [\`${t.arq}\`](docs/pendencias/${t.arq}) | ${COLUNAS.map((k) => c[k]).join(' | ')} |`;
 });
 
 const contagem = [
-  '| Letra | Tema | Arquivo | Itens | Abertos | Parciais | Fechados |',
-  '|---|---|---|---:|---:|---:|---:|',
+  '| Letra | Tema | Arquivo | Itens | Abertos | Parciais | Fechados | DECIDIR | FAZER | AUTOR | CONSERTAR | Outra marca | Adiados |',
+  '|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|',
   ...linhasContagem,
-  `| | **Total** | | **${total.itens}** | **${total.aberto}** | **${total.parcial}** | **${total.fechado}** |`,
+  `| | **Total** | | ${COLUNAS.map((k) => `**${total[k]}**`).join(' | ')} |`,
   '',
   '*Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado.'
+    + ' As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra'
+    + ' da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo'
+    + ' do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla.'
     + ' Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*',
   ...(anomalias.length ? ['', '**O que a contagem esconde, e o gerador acusa sem consertar:**', '', ...anomalias.map((a) => `- ${a}`)] : []),
 ].join('\n');
@@ -164,7 +201,7 @@ const itensMd = dados.map((t) => {
   if (abertos.length) {
     partes.push('| Sigla | Estado | Marcação | Título |', '|---|---|---|---|');
     for (const i of abertos) {
-      partes.push(`| ${i.sigla ?? '(sem sigla)'} | ${i.estado}${i.riscado ? ', riscado' : ''} | ${i.marcacao} | ${i.titulo} |`);
+      partes.push(`| ${i.sigla ?? '(sem sigla)'} | ${i.estado}${i.riscado ? ', riscado' : ''}${i.adiado ? ', ADIADO' : ''} | ${i.marcacao} | ${i.titulo} |`);
     }
   } else partes.push('Nenhum aberto.');
   partes.push('', `Fechados (${fechados.length}): ${fechados.map((i) => i.sigla ?? `"${i.titulo}"`).join(', ') || 'nenhum'}.`);
