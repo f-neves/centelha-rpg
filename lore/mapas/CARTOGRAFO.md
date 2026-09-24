@@ -30,6 +30,8 @@ primeira coisa que `/cartografo` mostra.)*
   - **B4 (feita)**: rotas de comércio (`dados/rotas.json`), pontos de controle com
     trecho reto ou curvo, campos econômicos, distância no globo e dias calculados,
     tecla O. Dados de exemplo da Parte B por `scripts/exemplos_parte_b.py`.
+  - **B5 (feita)**: mapas distorcidos de propósito, nível 1 a 5, semente por mercador
+    e recorte, só na imagem, com o registro do que cada mapa mentiu.
 - **RODADA DA NOITE DE 2026-09-23, AUTÔNOMA (o usuário fora de casa, sem testar).**
   Pedido: montanha x nevada aprovada; piso x densidade; áreas de exemplo irregulares;
   renderizar e avaliar; etapa 10 sem cache, edição de vértice, pincel; lista do que

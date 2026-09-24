@@ -26,7 +26,7 @@ estava parado (derrubado pelo Claude Code por falta de memória na rodada anteri
 | B2 elementos de cartografia | feita | ver diário |
 | B3 exportação parcial | feita | ver diário |
 | B4 rotas de comércio | feita | ver diário |
-| B5 mapas distorcidos | pendente | |
+| B5 mapas distorcidos | feita | ver diário |
 | C1 mapa de teste do mundo | pendente | |
 | C2 mapa de jogador e distorcido | pendente | |
 | C3 RUNBOOK | pendente | |
@@ -222,4 +222,34 @@ estava parado (derrubado pelo Claude Code por falta de memória na rodada anteri
 - **Depende do teste do usuário**: desenhar rota, o formulário, os botões de trecho,
   "vértices" da rota.
 
-### B5 · mapas distorcidos (começando)
+### B5 · mapas distorcidos (feita)
+
+- **Pronto**: `cartografia/distorcao.py`, ligado à composição e à exportação
+  (`--distorcao N --mercador "..."`, ou no painel EXPORTAR), e
+  `scripts/comparar_niveis.py` (os cinco níveis do mesmo recorte e uma folha lado a
+  lado). A distorção trabalha numa CÓPIA dos dados; o arquivo verdadeiro não muda.
+- O que piora conforme o nível cai (força k de 0 no nível 5 a 1 no nível 1): costa
+  deformada e distâncias erradas (campo de deslocamento suave em duas escalas, até
+  ~630 km no nível 1), lugares deslocados, lugares faltando, nomes trocados e escritos
+  errado, rios, vias e rotas simplificados e desviados, nomes de região ausentes, uma
+  ilha pequena apagada e uma ou duas ilhas inventadas com nome inventado, até 60% menos
+  símbolos, papel amarelado, manchas, dobras e cantos escuros.
+- **Semente**: mercador + recorte (o nível NÃO entra: o mesmo mercador erra na mesma
+  direção, mais ou menos). O mestre recebe `<arquivo>.mentiras.json` ao lado da
+  imagem, com o que o mapa mentiu DENTRO do recorte, e o registro de exportações
+  aponta para ele.
+- **Conferido**: 6 testes. O dado não muda (hash de todos os arquivos de `dados/`
+  antes e depois, e a cópia em memória igual); mesma semente, mesma imagem, e outro
+  mercador, outra (controle negativo); nível 5 igual ao mapa sem distorção, e nível 4
+  diferente (controle negativo); as mentiras crescem com o nível; o campo é suave,
+  determinístico e zero com força zero; nome escrito errado sempre muda.
+- **Imagens**: `render/exportacoes/niveis-calin-comparacao.png` (5 a 1, Velho Tobias,
+  versão do jogador) e cada nível em `niveis-calin-<n>.png` com o `.mentiras.json`;
+  também `teste-mere-nivel1.png` e `teste-mere-nivel3.png`.
+- **Decisões minhas**: todos os números da lista acima; o título da cartela não é
+  distorcido (é o que o mercador escreveu); a grade e a moldura também não (são do
+  papel).
+- **Depende do teste do usuário**: se o nível 2 e o 3 "leem" como mapa ruim mas
+  usável na mesa, que é o uso.
+
+### C1 · mapa de teste do mundo inteiro (começando)

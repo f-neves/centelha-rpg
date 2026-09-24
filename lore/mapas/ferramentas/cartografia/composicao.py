@@ -627,6 +627,11 @@ def compor(pedido: Pedido, dados: dict | None = None, costa: Costa | None = None
         if pedido.distorcao and pedido.distorcao.get("nivel", 5) < 5:
             from . import distorcao
             plano = distorcao.empobrecer_plano(plano, pedido)
+    if "mentiras" in relatorio:
+        # A deformação puxa pixels de até `deslocamento_maximo` longe: a folga do bloco
+        # cresce na mesma medida, senão a borda do bloco puxaria "nada".
+        extra = math.ceil(relatorio["mentiras"]["deslocamento_maximo_km"] / KM_POR_GRAU * pedido.ppg) + 4
+        plano = Plano(plano.ppg, plano.colocacoes, plano.folga_px + extra)
     janela = alinhar(pedido.oeste, pedido.sul, pedido.leste, pedido.norte, pedido.ppg)
     ox, oy = origem(janela)
     saida = Image.new("RGB", (janela.largura, janela.altura))
@@ -637,6 +642,9 @@ def compor(pedido: Pedido, dados: dict | None = None, costa: Costa | None = None
         saida.paste(compor_janela(bloco, dados, plano, costa, bib, pedido, transformar, pos_base).convert("RGB"),
                     (0, y0))
         blocos += 1
+    if "mentiras" in relatorio:
+        from . import distorcao
+        saida = distorcao.desgastar(saida, pedido.distorcao)
     relatorio.update({"janela": [janela.oeste, janela.sul, janela.leste, janela.norte], "blocos": blocos,
                       "simbolos": len(plano.colocacoes), "largura": janela.largura, "altura": janela.altura})
     return saida, relatorio
