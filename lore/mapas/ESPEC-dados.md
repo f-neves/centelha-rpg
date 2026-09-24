@@ -544,3 +544,21 @@ Recomendação do Cartógrafo, a revisar:
 - a versão do jogador soma só os rios que ela mostra (rio oculto não engrossa o
   rio-mãe no mapa do jogador);
 - ciclo no dado (não deveria existir) não trava o desenho: o rio do ciclo soma zero.
+
+### Travamento: quatro camadas novas no cadeado geral (2026-09-23, rodada das pendências)
+
+Acréscimo, sem apagar nada da seção "Travamento": o vocabulário fechado de
+`dados/camadas_travadas.json` passou de seis para **dez** camadas, com `regioes`,
+`nomes`, `elementos` e `rotas`. As regras 3 a 6 daquela seção valem iguais para elas
+(trava efetiva = objeto OU camada; camada travada não recebe objeto novo; travar a
+camada nunca escreve no objeto; recusa por trava é 409 e passa pelo desfazer).
+Recomendação do Cartógrafo, a revisar:
+
+- **O arquivo não foi reescrito.** Camada do vocabulário sem linha no arquivo vale
+  livre; a linha nasce na primeira vez que ela é travada, pela operação de desfazer
+  (então o Ctrl+Z tira a linha de novo). A tela recebe o estado com as dez
+  (`travas.estado()`), e o arquivo continua como está até alguém travar.
+- **Região não tem trava por objeto** (nunca teve). O cadeado de `regioes` cobre
+  também a região de cada massa (atribuir e registrar ilha em `massas.geojson`),
+  porque é o mesmo painel e o mesmo dado de pertencimento.
+- **Elemento, nome e rota** já tinham `travado` por objeto; o da camada soma a ele.

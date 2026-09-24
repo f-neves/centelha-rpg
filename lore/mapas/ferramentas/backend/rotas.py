@@ -190,7 +190,11 @@ def _feature(id_rota: str, props: dict, controle: dict, tracado: list, lugares: 
             "properties": {"id": id_rota, **props, "controle": controle, "lugares": lugares}}
 
 
+CAMADA = "rotas"   # cadeado geral (travas.py), rodada das pendências de 2026-09-23
+
+
 def criar(propriedades: dict, controle: dict) -> dict:
+    travas.exigir_camada_livre(CAMADA, "criar uma rota")
     props = _validar_propriedades(propriedades)
     controle, tracado, lugares = _validar_controle(controle, props["tipo"])
     dados = carregar()
@@ -204,6 +208,7 @@ def criar(propriedades: dict, controle: dict) -> dict:
 
 
 def editar(id_rota: str, propriedades: dict | None = None, controle: dict | None = None) -> dict:
+    travas.exigir_camada_livre(CAMADA, "editar esta rota")
     dados = carregar()
     antes = _achar(dados, id_rota)
     atual = antes["properties"]
@@ -224,6 +229,7 @@ def editar(id_rota: str, propriedades: dict | None = None, controle: dict | None
 
 
 def apagar(id_rota: str) -> None:
+    travas.exigir_camada_livre(CAMADA, "apagar esta rota")
     dados = carregar()
     antes = _achar(dados, id_rota)
     if antes["properties"].get("travado"):

@@ -19,9 +19,9 @@ Decisões que o código precisou e o pedido não fixava (recomendação do Cart�
 1. **Apagar região em uso é recusado** (409, como a trava): se alguma região a tem
    como `pai`, ou alguma massa a tem como `regiao`. Apagar em cascata mexeria em
    dado de outro arquivo sem o usuário ver.
-2. **Sem cadeado de camada para regiões**: `travas.CAMADAS_VALIDAS` não tem
-   `regioes`, e acrescentar mexe em `dados/camadas_travadas.json`. Fica para quando
-   o usuário pedir.
+2. **Cadeado de camada para regiões** (rodada das pendências, 2026-09-23, item c):
+   com a camada `regioes` travada nada deste módulo grava, nem a região de uma massa
+   (atribuir e registrar ilha). Região continua sem trava por objeto.
 3. **Id de região**: slug minúsculo com hífen (`ESPEC-dados.md`, correção 9), e
    não muda depois de criado (é o que `massas.geojson` e `pai` referenciam).
 4. **`pai` não pode formar ciclo** (região que seria avó de si mesma).
@@ -35,7 +35,9 @@ import json
 import re
 from pathlib import Path
 
-from . import coordenadas, operacoes
+from . import coordenadas, operacoes, travas
+
+CAMADA = "regioes"   # cadeado geral (travas.py), rodada das pendências de 2026-09-23
 
 RAIZ_MAPAS = Path(__file__).resolve().parents[2]
 CAMINHO_REGIOES = RAIZ_MAPAS / "dados" / "regioes.json"
@@ -109,6 +111,7 @@ def _validar_campos(dados: dict, id_regiao: str, nome, tipo, pai) -> None:
 def criar_regiao(id_regiao: str, nome: str, tipo: str, pai: str | None = None, rotulo=None) -> dict:
     if not isinstance(id_regiao, str) or not _SLUG.match(id_regiao):
         raise ValueError("'id' tem que ser slug minúsculo com hífen (ex.: 'mar-de-syl')")
+    travas.exigir_camada_livre(CAMADA, "criar uma região")
     dados = carregar_regioes()
     if any(r["id"] == id_regiao for r in dados["regioes"]):
         raise ValueError(f"id já existe: {id_regiao}")
@@ -127,6 +130,7 @@ def editar_regiao(id_regiao: str, nome: str, tipo: str, pai: str | None,
                   visivel_jogador: bool | None = None) -> dict:
     """`visivel_jogador` (B3): None mantém o que está; False tira a região (nome e
     rótulo) da versão do jogador das exportações. Ausente no dado vale true."""
+    travas.exigir_camada_livre(CAMADA, "editar esta região")
     dados = carregar_regioes()
     antes = _achar(dados, id_regiao)
     try:
@@ -144,6 +148,7 @@ def editar_regiao(id_regiao: str, nome: str, tipo: str, pai: str | None,
 
 
 def mover_rotulo(id_regiao: str, rotulo) -> dict:
+    travas.exigir_camada_livre(CAMADA, "mover o nome desta região")
     dados = carregar_regioes()
     antes = _achar(dados, id_regiao)
     depois = {**antes, "rotulo": _validar_rotulo(rotulo)}
@@ -153,6 +158,7 @@ def mover_rotulo(id_regiao: str, rotulo) -> dict:
 
 
 def apagar_regiao(id_regiao: str) -> None:
+    travas.exigir_camada_livre(CAMADA, "apagar esta região")
     dados = carregar_regioes()
     antes = _achar(dados, id_regiao)
     filhas = [r["id"] for r in dados["regioes"] if r.get("pai") == id_regiao]
@@ -170,6 +176,7 @@ def apagar_regiao(id_regiao: str) -> None:
 
 
 def atribuir_massa(id_massa: str, id_regiao: str | None) -> dict:
+    travas.exigir_camada_livre(CAMADA, "mudar a região desta ilha")
     massas = carregar_massas()
     antes = next((f for f in massas["features"] if f["properties"]["id"] == id_massa), None)
     if antes is None:
@@ -195,6 +202,7 @@ def criar_massa(lon: float, lat: float, id_regiao: str | None = None, usar_regra
     senão `sem_regiao`, e quem decide é o usuário. Recusa ponto no mar, cache
     ausente e ilha que já tem massa registrada (a identidade é uma por ilha)."""
     from . import ilhas
+    travas.exigir_camada_livre(CAMADA, "registrar esta ilha")
     if not ilhas.existe():
         raise ValueError("o cache de ilha não foi gerado (scripts/gerar_cache_ilhas.py)")
     info = ilhas.descrever(lon, lat)

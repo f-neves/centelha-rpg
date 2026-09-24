@@ -1389,3 +1389,30 @@ sozinho (a região não se move; "Oásis de Sal" continua com o símbolo debaixo
 MÉRE, e o nome dele foi para a esquerda). Nome não desvia de linha (rio, via, rota).
 **A tela não mostra o lado escolhido**: o marcador do painel NOMES continua a 0,4° à
 direita do lugar, como antes; só a exportação e o mapa final usam o desvio.
+
+## Cadeado de camada em ROTAS, REGIÕES, NOMES e ELEMENTOS (rodada das pendências, 2026-09-23)
+
+Recomendação do Cartógrafo, a revisar. Esquema em `ESPEC-dados.md`, "Travamento:
+quatro camadas novas".
+
+- **Servidor**: `travas.exigir_camada_livre` no começo de toda escrita de
+  `regioes.py` (criar, editar, mover rótulo, apagar, atribuir massa, registrar ilha),
+  `nomes.py`, `elementos.py` (inclusive "criar os que faltam") e `rotas.py`. A trava
+  vem ANTES da validação: numa camada travada até um pedido inválido volta como trava.
+  Um tratador geral em `main.py` transforma toda `Travado` em 409, inclusive nas rotas
+  que não a pegavam uma a uma (antes seriam erro 500).
+- **Tela**: um botão de cadeado no alto de cada um dos quatro painéis, num módulo só
+  (`static/js/cadeados.js`). Ele relê o estado antes de trocar, e quando a janela
+  volta ao foco ou se aperta Ctrl+Z/Ctrl+Y, porque o desfazer pode trocar um cadeado
+  por baixo. Os módulos de cada painel não mudaram: um gesto numa camada travada volta
+  do servidor com 409 e a mensagem da trava.
+
+**Conferido**: 9 testes em `tests/test_cadeado_camadas_novas.py`, numa cópia do
+`camadas_travadas.json` real (sem as linhas novas): todas as escritas das quatro
+camadas recusadas com o arquivo intacto e liberadas de novo ao destravar; travar
+cria a linha e o desfazer a tira; camada fora do vocabulário continua recusada;
+travar e destravar a camada não mexe no nome travado por objeto; o tratador devolve
+409. **Controle negativo**: com os quatro módulos de antes (guardados com `git stash
+push -- <os quatro>`, só os meus arquivos), 4 dos 9 testes falham. `node --check` no
+módulo novo. **Não conferido na tela**: os quatro botões e o aviso de 409 em cada
+painel (depende do teste do usuário).

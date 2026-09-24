@@ -32,7 +32,12 @@ CAMINHO_RELATIVO = "dados/camadas_travadas.json"
 
 # Vocabulário fechado, espelha ESPEC-dados.md ("Travamento"). Uma camada por tipo de
 # objeto editável; areas-pintadas.geojson tem três (o campo `camada` da feature).
-CAMADAS_VALIDAS = ("lugares", "rios", "estradas", "relevo", "cobertura", "lago")
+CAMADAS_VALIDAS = ("lugares", "rios", "estradas", "relevo", "cobertura", "lago",
+                   "regioes", "nomes", "elementos", "rotas")
+# As quatro últimas entraram em 2026-09-23 (rodada das pendências, item c). O arquivo
+# de dados NÃO foi reescrito para elas: camada sem linha no arquivo vale "livre", e a
+# linha nasce na primeira vez que ela é travada (pela operação de desfazer, então o
+# Ctrl+Z tira a linha de novo). Por isso `_achar_ou_nada` aceita a ausência.
 
 
 class Travado(Exception):
@@ -55,8 +60,27 @@ def _achar(dados: dict, id_camada: str) -> dict:
     raise KeyError(f"camada desconhecida: {id_camada}")
 
 
+def _achar_ou_nada(dados: dict, id_camada: str) -> dict | None:
+    try:
+        return _achar(dados, id_camada)
+    except KeyError:
+        if id_camada in CAMADAS_VALIDAS:
+            return None
+        raise
+
+
 def camada_travada(id_camada: str) -> bool:
-    return bool(_achar(carregar(), id_camada)["travada"])
+    c = _achar_ou_nada(carregar(), id_camada)
+    return bool(c and c["travada"])
+
+
+def estado() -> dict:
+    """O arquivo com TODAS as camadas do vocabulário (as que não têm linha, livres).
+    É o que a tela recebe; `carregar()` continua sendo o arquivo como está."""
+    dados = carregar()
+    presentes = {c["id"] for c in dados["camadas"]}
+    faltam = [{"id": c, "travada": False} for c in CAMADAS_VALIDAS if c not in presentes]
+    return {**dados, "camadas": dados["camadas"] + faltam}
 
 
 def definir_trava_camada(id_camada: str, travada: bool) -> dict:
@@ -65,8 +89,8 @@ def definir_trava_camada(id_camada: str, travada: bool) -> dict:
     if id_camada not in CAMADAS_VALIDAS:
         raise KeyError(f"camada desconhecida: {id_camada}")
     dados = carregar()
-    antes = _achar(dados, id_camada)
-    depois = {**antes, "travada": travada}
+    antes = _achar_ou_nada(dados, id_camada)
+    depois = {**(antes or {"id": id_camada}), "travada": travada}
     operacoes.registrar_operacao(
         "travar_camada" if travada else "destravar_camada",
         CAMINHO_RELATIVO,

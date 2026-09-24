@@ -135,6 +135,7 @@
       <section class="secao" data-secao="rotas">
         <h2 class="cabecalho-secao">ROTAS DE COMÉRCIO</h2>
         <div class="corpo-secao">
+          <button type="button" data-cadeado-camada="rotas" class="botao-trava-camada">🔓 rotas livres</button>
           <div class="botoes-regiao">
             <button type="button" id="rota-desenhar" title="Clique os pontos de controle; duplo clique termina. As pontas grudam num lugar a menos de 5 km.">+ rota <kbd>O</kbd></button>
             <select id="rota-tipo"><option value="terrestre">terrestre</option><option value="maritima">marítima</option><option value="fluvial">fluvial</option></select>
@@ -174,6 +175,7 @@
       <section class="secao" data-secao="regioes">
         <h2 class="cabecalho-secao">REGIÕES</h2>
         <div class="corpo-secao">
+          <button type="button" data-cadeado-camada="regioes" class="botao-trava-camada">🔓 regiões livres</button>
           <p class="nota">"identificar ilha" e um clique dizem que ilha é (cache de ilha);
             a região de cada massa se escolhe na lista. Arraste o nome no mapa para
             mover o rótulo.</p>
@@ -203,6 +205,7 @@
       <section class="secao" data-secao="nomes">
         <h2 class="cabecalho-secao">NOMES</h2>
         <div class="corpo-secao">
+          <button type="button" data-cadeado-camada="nomes" class="botao-trava-camada">🔓 nomes livres</button>
           <p class="nota">Todo nome que o mapa final desenha (os de região estão no
             painel REGIÕES). Arraste para mover; o texto de lugar, rio e rota mora no
             próprio objeto.</p>
@@ -220,6 +223,7 @@
       <section class="secao" data-secao="elementos">
         <h2 class="cabecalho-secao">ELEMENTOS</h2>
         <div class="corpo-secao">
+          <button type="button" data-cadeado-camada="elementos" class="botao-trava-camada">🔓 elementos livres</button>
           <p class="nota">Rosa, escala, cartela e monstro no mapa do mundo. Arraste o
             marcador para mover. Nas exportações de recorte, rosa, escala e cartela vão
             para os cantos do recorte.</p>
@@ -404,6 +408,7 @@
   <script src="/static/js/regioes.js"></script>
   <script src="/static/js/nomes.js"></script>
   <script src="/static/js/elementos.js"></script>
+  <script src="/static/js/cadeados.js"></script>
   <script src="/static/js/exportar.js"></script>
   <script src="/static/js/regua.js"></script>
   <script src="/static/js/app.js"></script>

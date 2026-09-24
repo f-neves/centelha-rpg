@@ -89,7 +89,12 @@ def _achar(dados: dict, id_elemento: str) -> dict:
     raise KeyError(f"elemento desconhecido: {id_elemento}")
 
 
+CAMADA = "elementos"   # cadeado geral (travas.py), rodada das pendências de 2026-09-23
+
+
 def criar(e: dict) -> dict:
+    from . import travas
+    travas.exigir_camada_livre(CAMADA, "criar um elemento")
     limpo = validar(e)
     dados = carregar()
     maior = max([int(m.group(1)) for x in dados["elementos"]
@@ -102,6 +107,8 @@ def criar(e: dict) -> dict:
 
 
 def editar(id_elemento: str, mudancas: dict) -> dict:
+    from . import travas
+    travas.exigir_camada_livre(CAMADA, "editar este elemento")
     dados = carregar()
     antes = _achar(dados, id_elemento)
     if antes.get("travado") and mudancas.get("travado") is not False:
@@ -117,6 +124,8 @@ def editar(id_elemento: str, mudancas: dict) -> dict:
 
 
 def apagar(id_elemento: str) -> None:
+    from . import travas
+    travas.exigir_camada_livre(CAMADA, "apagar este elemento")
     dados = carregar()
     antes = _achar(dados, id_elemento)
     if antes.get("travado"):

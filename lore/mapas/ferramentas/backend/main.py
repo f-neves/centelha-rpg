@@ -30,6 +30,15 @@ FONTE_DIR = RAIZ_MAPAS / "fonte"
 
 app = FastAPI(title="Uldun - editor do mapa")
 
+
+@app.exception_handler(travas.Travado)
+def _travado_vira_409(_pedido, erro: travas.Travado) -> JSONResponse:
+    """Rede de segurança (rodada das pendências, 2026-09-23, item c): toda recusa por
+    trava vira 409, mesmo nas rotas que não a pegam uma a uma (criar região, nome,
+    elemento, rota; atribuir e registrar ilha). Sem isto, o cadeado de camada nessas
+    rotas sairia como erro 500."""
+    return JSONResponse({"detail": str(erro)}, status_code=409)
+
 # Servidor só em 127.0.0.1 (ESPEC-ferramenta.md, "Segurança") — reforçado no comando
 # de execução acima, não aqui (FastAPI não decide a interface de rede, o uvicorn sim).
 
@@ -213,7 +222,7 @@ def pagina_inicial() -> str:
     )
     html = html.replace(
         "/*__TRAVAS__*/",
-        json.dumps(travas.carregar(), ensure_ascii=False),
+        json.dumps(travas.estado(), ensure_ascii=False),
     )
     html = html.replace(
         "/*__AREAS__*/",
@@ -383,7 +392,7 @@ def travar_lugar(id_lugar: str, mudanca: MudancaTrava) -> JSONResponse:
 
 @app.get("/api/travas")
 def obter_travas() -> JSONResponse:
-    return JSONResponse(travas.carregar())
+    return JSONResponse(travas.estado())
 
 
 @app.post("/api/travas/{id_camada}")
@@ -394,7 +403,7 @@ def travar_camada(id_camada: str, mudanca: MudancaTravaCamada) -> JSONResponse:
         raise HTTPException(status_code=404, detail=str(e))
     except ValueError as e:
         raise HTTPException(status_code=422, detail=str(e))
-    return JSONResponse(travas.carregar())
+    return JSONResponse(travas.estado())
 
 
 # --- Desfazer/refazer genérico (B1) -------------------------------------------------

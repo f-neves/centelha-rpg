@@ -32,7 +32,7 @@ import json
 import re
 from pathlib import Path
 
-from . import coordenadas, operacoes
+from . import coordenadas, operacoes, travas
 
 RAIZ_MAPAS = Path(__file__).resolve().parents[2]
 CAMINHO = RAIZ_MAPAS / "dados" / "nomes.json"
@@ -161,7 +161,11 @@ def _achar(dados: dict, id_nome: str) -> dict:
     raise KeyError(f"nome desconhecido: {id_nome}")
 
 
+CAMADA = "nomes"   # cadeado geral (travas.py), rodada das pendências de 2026-09-23
+
+
 def criar(n: dict) -> dict:
+    travas.exigir_camada_livre(CAMADA, "criar um nome")
     limpo = validar(n)
     dados = carregar()
     if limpo["alvo"]["tipo"] not in ("livre", "area"):
@@ -178,6 +182,7 @@ def criar(n: dict) -> dict:
 
 
 def editar(id_nome: str, mudancas: dict) -> dict:
+    travas.exigir_camada_livre(CAMADA, "editar este nome")
     dados = carregar()
     antes = _achar(dados, id_nome)
     if antes.get("travado") and mudancas.get("travado") is not False:
@@ -195,6 +200,7 @@ def editar(id_nome: str, mudancas: dict) -> dict:
 
 
 def apagar(id_nome: str) -> None:
+    travas.exigir_camada_livre(CAMADA, "apagar este nome")
     dados = carregar()
     antes = _achar(dados, id_nome)
     if antes.get("travado"):

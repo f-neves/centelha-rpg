@@ -15,8 +15,8 @@ de montagem, nomes definitivos.
 |---|---|---|
 | 0 git, push, `DECISOES-A-REVISAR.md` | feito | `4c5eedb`, `76b0c39` |
 | a desvio de colisão entre nomes | feito | `76b0c39` |
-| b largura do rio por afluentes | feito | (o commit deste texto) |
-| c cadeado de camada (regiões, nomes, elementos, rotas) | a fazer | |
+| b largura do rio por afluentes | feito | `b15dc25` |
+| c cadeado de camada (regiões, nomes, elementos, rotas) | feito | (o commit deste texto) |
 | d atração do braço de delta | a fazer | |
 | e via desalinhada | a fazer | |
 | f medição Neck ↔ Calin com o cache | a fazer | |
@@ -92,3 +92,28 @@ Resultado:
 - **O que ficou fraco**: o degrau é discreto na resolução oficial (2,4 para 3,0 px
   antes do fator de traço); com rede de verdade (dezenas de afluentes) ele cresce.
   Se ler pouco, o número a mexer é `LARGURA_RIO_FATOR`.
+
+### c · cadeado de camada para regiões, nomes, elementos e rotas (feito)
+
+Plano (recomendação do Cartógrafo):
+- Quatro camadas novas no vocabulário de `travas.py`: `regioes`, `nomes`,
+  `elementos`, `rotas`. A mesma regra das seis de antes: a trava efetiva é a do objeto
+  OU a da camada, a camada travada não recebe objeto novo, e travar a camada nunca
+  escreve no objeto.
+- `dados/camadas_travadas.json` **não é reescrito**: camada que não tem linha no
+  arquivo vale "livre", e a primeira vez que ela for travada a linha nasce pela
+  operação de desfazer (Ctrl+Z tira a linha de novo).
+- Região não tem trava por objeto (nunca teve); o cadeado de `regioes` cobre também a
+  região de cada massa (atribuir e registrar ilha), porque é dado do mesmo painel.
+- Na tela, um botão de cadeado em cada um dos quatro painéis, como nos outros.
+
+Resultado:
+- Servidor, tela e testes como no plano; detalhe em `ESPEC-ferramenta.md` e
+  `ESPEC-dados.md` (acréscimos no fim, nada reescrito). 411 testes verdes (9 novos),
+  com o controle negativo descrito lá.
+- **Decisão minha, a mais importante**: um tratador geral de 409 em `main.py`. Sem
+  ele, as rotas de criar (região, nome, elemento, rota) e as de massa respondiam 500
+  à trava, porque nunca tinham precisado pegá-la.
+- Não muda a aparência do mapa: sem recorte novo.
+- **Depende do usuário**: os quatro botões na tela (Ctrl+F5), e ver o aviso de trava
+  ao tentar criar algo numa camada travada.
