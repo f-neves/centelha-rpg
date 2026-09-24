@@ -14,6 +14,12 @@ você recebeu `/cartografo novo`, ignore a palavra `novo` e siga.
 
 ## 1. Leia sempre
 
+**A frente mora em `C:\Users\Neves\ClaudeCode\centelha-mapa`, na branch `mapa`** (desde
+24/09/2026). Todo caminho `lore/mapas/...` deste comando é lido e escrito LÁ, inclusive o passo 0,
+a conferência do git (o `cd lore/mapas/ferramentas` é o da `centelha-mapa`). **O `lore/mapas` do
+`rpg-system` está congelado em 23/09 e não deve ser lido**: ele fica para trás da `mapa` (45 commits
+à frente do `origin/main` em 24/09/2026), e quem o lê começa a sessão com um retrato velho.
+
 0. **Confira a configuração do git ANTES de qualquer trabalho, e REGISTRE**:
 
    ```sh
