@@ -2,12 +2,20 @@
 
 > ## ▶ ESTE DESPACHO ESTÁ ABERTO desde 24/09/2026
 >
-> Abre depois do veredito da 97 (o espelho de motor, que precisa estar verde antes de a §17 mexer no motor). Progresso em `progresso-98.md`, relato em `98-executora.md`.
+> A 97 fechou em 24/09/2026 com PROCEDE (`ee4dce1`), e o espelho está verde no CI desde `457915e`. Progresso em `progresso-98.md`, relato em `98-executora.md`.
 > É o primeiro item da trilha de EXECUÇÃO do `Pendencias.md` §6.
 
 As três decisões estão em `leitura-de-novato-decisoes.md` §17, com o contra que o humano comprou.
 Leia a §17 inteira antes de começar. **Nada aqui é regra nova:** se alguma frase pedir escolha entre
 duas leituras, pare e escreva no relato, que eu levo ao humano.
+
+## 0 · Um registro que a 97 deixou
+
+A 97 fechou com PROCEDE limpo (`ee4dce1`). A Revisora anotou um alcance: **o laço do harness continua
+sem as condições e o porte que a mesa soma ao ataque**, e o espelho concorda só porque as cenas dele
+não têm nenhum dos dois. Uma linha no tema L do `Pendencias.md`, com isso e sem conserto. É o mesmo
+lugar por onde a §17 pode passar: se o item 1 mostrar que ela muda o ataque na mesa, o laço precisa
+da mesma mudança, e o espelho só prova se a cena tiver ferimento com arma de Força.
 
 ## 1 · Medir antes de escrever
 
