@@ -160,7 +160,7 @@ Entrar é um [teste de Temperança](/regras/aparencia-virtudes-vontade#o-teste-d
 
 - **a penalidade de ferimento é opcional.** Ela entra só se o personagem quiser ceder, na moeda de sempre (Machucado −2 pontos, Grave −1 dado, Crítico −2 dados), e **neste teste ela pode zerar a parada**: parada zerada entra em fúria sem rolar. Quem quer resistir não é obrigado a usá-la, e mesmo em Grave ou Crítico rola a Temperança inteira;
 - **1 ponto de Força de Vontade soma OU tira 1d6 da parada**, conforme ele queira resistir ou ceder. **Um ponto por teste, no máximo**, e tirar também pode zerar a parada;
-- **a Firula pode ser negativa**, e ajudar a ceder, se a descrição for nesse sentido.
+- **a Firula pode ser negativa**, e ajudar a ceder, se a descrição for nesse sentido. Como no [teste de Virtude](/regras/aparencia-virtudes-vontade#o-teste-de-virtude), essa Firula negativa não devolve reserva nenhuma.
 
 **O teste só é forçado em dois casos.** Fora deles, o orc só rola se quiser entrar, e a provocação de cotidiano (um insulto, um golpe que raspou, o cheiro de sangue) não obriga a nada.
 

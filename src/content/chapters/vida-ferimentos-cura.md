@@ -33,7 +33,7 @@ A sua **Vida restante** é o PV máximo menos o dano total marcado; é a porcent
 
 ## Limiares de Ferimento
 
-Conforme a Vida restante cai, a dor cobra seu preço nas **ações físicas** (as que rolam Força, Destreza ou Vigor) e na **Defesa Física**. Social e mental não sentem nenhum dos quatro graus abaixo: um personagem Crítico ainda pensa e convence direito, só não corre nem briga direito.
+Conforme a Vida restante cai, a dor cobra seu preço nas **ações físicas** (as que rolam Força, Destreza ou Vigor) e na **Defesa Física**. O **ataque à distância** também sofre, mesmo rolando Percepção: é a única rolagem de Percepção que a dor alcança, porque o arco e a besta pedem o corpo firme. Social e mental não sentem nenhum dos quatro graus abaixo: um personagem Crítico ainda pensa e convence direito, só não corre nem briga direito.
 
 | Vida restante | Estado | Ações físicas | Defesa Física |
 |---|---|---|---|

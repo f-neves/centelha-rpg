@@ -44,6 +44,8 @@ Se o Atributo é o que o personagem **consegue** fazer e a Habilidade é o que e
 | **Temperança** | segurar o próprio impulso | à tentação e à provocação |
 | **Bravura** | ficar e encarar | ao medo e à intimidação |
 
+<p class="muted">A <strong>tortura</strong> pesa na Convicção pelas duas metades: aguentar sem falar, sem ceder, sem trair é alma, e rola a Convicção sozinha no <a href="#o-teste-de-virtude">teste de Virtude</a>; aguentar a dor do ferro é corpo, e rola Vigor + Convicção. Uma cena pode pedir os dois testes, e o Mestre escolhe qual a situação pede.</p>
+
 **Nota importante antes de escolher os números:** aqui **não existe Virtude ruim**. A régua corta dos dois lados, e uma Virtude **baixa** é conduta esperada tanto quanto uma alta: a Bravura 1 que abandona o posto e salva a pele está sendo tão fiel a si mesma quanto a Bravura 5 que marcha sozinha contra o exército, e as duas rendem a mesma recompensa. Um personagem de Virtudes todas altas não é melhor, é só mais previsível.
 
 ### Os verbetes
@@ -62,7 +64,7 @@ Se o Atributo é o que o personagem **consegue** fazer e a Habilidade é o que e
 
 As Virtudes não são só interpretação, elas têm peso mecânico em três frentes:
 
-- **Resistir.** Para aguentar uma pressão da alma, role a Virtude que resiste a ela, **sozinha**: o teste de Virtude, logo abaixo.
+- **Resistir.** Para aguentar uma pressão da alma, role a Virtude que resiste a ela, **sozinha**: o teste de Virtude, logo abaixo. Na tortura, é a metade de alma (não falar, não ceder); a dor do corpo continua somando Vigor.
 - **Transcender.** O Canalizar, abaixo.
 - **Conduta.** As Virtudes são a **régua moral** do personagem: cada nível descreve o que se espera dele. Viver fiel a essa régua devolve **Força de Vontade**.
 
@@ -98,7 +100,7 @@ O Atributo fica de fora de propósito: somado, ele empurra todo mundo para perto
 
 A tabela é a régua de personalidade em números. A **Virtude 2** só segura a Branda, e cede na maior parte do cotidiano, que é o que ela descreve. A **Virtude 5** segura quase tudo até a Séria e começa a ceder na Dura: só cede se quiser, com uma margem de azar. A **Virtude 6** é a única que existe na Extrema, e ainda assim 16% das vezes. E a **Virtude 1 não passa em nada**, nem na Branda: ela é quase um defeito de caráter, e o único jeito de passar é a Firula.
 
-**A Firula vale aqui como em qualquer teste** (+2 no nível 1, +1d6 no 2, +2d6 no 3, pela tabela de [Habilidades](/regras/habilidades)), e pesa mais do que em outros lugares, porque a parada da Virtude é curta. A Firula de nível 2 desloca a linha inteira duas casas: Virtude 2 com Firula 2 rola igual a Virtude 4 sem ela. A descrição pesa mais que a ficha, e é também o que tira a Virtude 1 do chão: com Firula 2, ela passa metade das vezes na Tensa. **A Firula também pode ser negativa**: se a descrição do jogador prejudica a ação, ela tira dados ou pontos em vez de somar, e quem julga é o Mestre.
+**A Firula vale aqui como em qualquer teste** (+2 no nível 1, +1d6 no 2, +2d6 no 3, pela tabela de [Habilidades](/regras/habilidades)), e pesa mais do que em outros lugares, porque a parada da Virtude é curta. A Firula de nível 2 desloca a linha inteira duas casas: Virtude 2 com Firula 2 rola igual a Virtude 4 sem ela. A descrição pesa mais que a ficha, e é também o que tira a Virtude 1 do chão: com Firula 2, ela passa metade das vezes na Tensa. **A Firula também pode ser negativa**: se a descrição do jogador prejudica a ação, ela tira dados ou pontos em vez de somar, e quem julga é o Mestre. Essa Firula negativa é só do teste de Virtude (e do Frenesi, que é um teste de Virtude), e não devolve reserva nenhuma. Ela não é a **Firula Infeliz** das [Relações Sociais](/regras/relacoes-sociais), que é outra coisa: o gesto que desagrada, e que desce a régua de Relação.
 
 <div class="callout regra"><span class="lbl">Canalizar Virtude</span>Uma vez por cena, por Virtude, numa ação coerente com ela, some o valor da Virtude à sua soma base: a rolagem passa a ser <strong>Atributo + Habilidade + Virtude</strong>. O herói que age movido por suas paixões transcende. (Sem risco nem contrapartida: aqui a Virtude é só impulso.)</div>
 

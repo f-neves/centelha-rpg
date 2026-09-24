@@ -55,6 +55,8 @@ Medo é o caso que mais engana, então fica a régua fechada:
 | Compulsão mágica ("ataque seu aliado") | Mental |
 | Tortura, canto enlouquecedor, privação de sono, trauma | Mental |
 
+<p class="muted">Na tortura, a Defesa Mental é o muro contra quem <strong>interroga</strong>: ele rola contra ela. Aguentar a dor em si é outra coisa, um teste ativo de quem resiste, em duas metades (corpo e alma), no capítulo de <a href="/centelha-rpg/regras/acoes-resistir">Resistir</a>.</p>
+
 ## As fórmulas
 
 Um ponto de **[Centelha](/regras/centelha)** soma **+1** a cada uma das defesas (e o mesmo +1 ao ataque). Como os dois lados ganham igual, entre Centelhas iguais o efeito se cancela e o duelo joga limpo; contra quem tem menos Centelha, a diferença vira vantagem de verdade.
