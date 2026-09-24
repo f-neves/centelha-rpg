@@ -288,4 +288,14 @@ estava parado (derrubado pelo Claude Code por falta de memória na rodada anteri
   218 km), 4 faltando, 2 nomes trocados ("Três Rios" aparece como "Vila Úmida"), nomes
   escritos errado, vias simplificadas e 45% dos símbolos a menos.
 
-### C3 · RUNBOOK (começando)
+### C3 · RUNBOOK (feita)
+
+- `RUNBOOK.md`: do clone ao mapa final, em 10 passos, com o que o git traz e o que
+  não traz (copiar à mão: `fonte/` e `referencias/`; regerar: tiles, símbolos, cache
+  de ilha, `render/`), cada comando, e tempo e memória. **Os números marcados
+  "medido" foram medidos nesta empreitada; os outros são estimativa e estão
+  escritos assim** (não rodei de novo o recorte de símbolos nem a medição de
+  legibilidade porque reescreveriam arquivo do git sem necessidade).
+- Uma tabela de "se algo falhar" no fim.
+
+### C4 · fechamento (começando)
