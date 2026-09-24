@@ -363,6 +363,23 @@ e ela é sobre a **âncora da revisão** · não mover a base debaixo de um julg
 o que o congelamento compra. Mover o `HEAD` depois do veredito escrito, para publicar, é outra
 coisa. A redação anterior não separava as duas, e a confusão foi do Arquiteto e não de quem leu.
 
+## 11 · O veredito diz o estado do CI da faixa
+
+**Acrescentado em 24/09/2026.** O `test-espelho` ficou vermelho no CI de 22/09 (`6e8651e`) em diante,
+em todas as execuções, e nove vereditos seguidos (rodadas 88 a 96) disseram PROCEDE sem que nenhum
+olhasse o CI. Nenhum estava errado sobre o que julgou: a revisão lê o commit congelado, e o
+`validate` local não roda os smoke. **O PROCEDE valia para a árvore, e era lido como se valesse
+para o projeto.** Quem apontou o alcance foi a própria Revisora, ao receber o achado.
+
+**A regra:** todo veredito traz uma linha com o estado do workflow `Validar dados e regras` no sha do
+trabalho (pelo `gh run list`/`gh run view`), com o nome de cada job vermelho. Se o run ainda não
+terminou, diga isso e a hora; se o vermelho for anterior à faixa, diga desde quando e que não é da
+rodada. **CI vermelho que a rodada causou é BLOQUEIA; vermelho herdado é ESCALA**, com o commit em
+que nasceu.
+
+**O que esta linha não é:** conferir o CI não substitui o veredito sobre a árvore, e o veredito sobre
+a árvore não substitui o CI. São duas medidas, e o veredito diz as duas.
+
 ## Como isto cresce
 
 Cada rodada de revisão pode render um item novo aqui, do mesmo jeito que
