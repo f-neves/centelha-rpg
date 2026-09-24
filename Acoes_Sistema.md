@@ -1057,7 +1057,7 @@ Cada peça do catálogo carrega cinco números, e às vezes um sexto:
 
 | Número | O que é |
 |---|---|
-| **Requisito** | o nível mínimo de Habilidade no ofício. Abaixo dele a peça não se tenta, e nenhum modificador abre a porta |
+| **Requisito** | o nível mínimo de Habilidade no ofício. Abaixo dele a peça não se tenta, e nenhum modificador abre a porta. A exceção é quem ajuda sob condução: na peça, de quem cumpre o Requisito; na obra, de quem tem o ofício (§7.6) |
 | **Dificuldade** | o atrito de cada intervalo: quem passa dela avança, e quanto mais passa, mais rápido |
 | **Montagem** | o Acúmulo que se paga **uma vez por lote**: acender a forja, montar o tear, bater a argamassa, armar o cavalete |
 | **Peça** | o Acúmulo de **cada unidade** |
@@ -1076,8 +1076,10 @@ nenhuma das duas.
 
 Só a **Habilidade** conta para o Requisito, nunca a soma com o Atributo: destreza de mão não
 substitui não saber. O Requisito confere contra a perícia que entra no pool pela §5.5, com Ofícios
-Gerais valendo metade (§7.2). O ajudante sob direção (§7.6) não tem Requisito nenhum: quem sabe é
-quem dirige.
+Gerais valendo metade (§7.2). As exceções são duas, e as duas estão na §7.6: na fabricação, quem
+ajuda sob a condução de alguém que cumpre o Requisito da peça não precisa cumpri-lo, mas trabalha
+contra a Dificuldade da peça; na obra, o ajudante sob direção de quem tem o ofício não tem
+Requisito nenhum e trabalha contra a Dificuldade 4. Nos dois casos, quem sabe é quem conduz.
 
 O **Piso** existe por um motivo concreto: há serviço que não é técnica, é mão. Uma cota de malha
 são milhares de anéis abertos, passados e rebitados um a um, e nenhuma perícia do mundo cria dedos
@@ -1188,16 +1190,26 @@ tabela abaixo, que foi escrita antes da fórmula.
 carpinteiros levantam a casa em um quinto do tempo. Mas atenção ao que **não** se divide: a
 qualidade é da mão que conduz. Dez aprendizes aceleram uma espada Comum e não fazem uma Ótima.
 
-**Direção de obra.** Aqui aparece um problema que a §3.5 sozinha não resolve. O braçal tem soma 4
-e média 7, então numa obra de Dificuldade 11 ele contribui com um número negativo: pela regra
-crua, carregar pedra atrapalha. O que falta é a figura do mestre de obras.
+<p class="formula">Quem ajuda a fabricar sob a condução de alguém que cumpre o Requisito da peça <b>não precisa cumprir o Requisito</b>, mas trabalha contra a <b>Dificuldade da peça</b>: se a média não passar dela, não soma Acúmulo</p>
 
-<p class="formula">Sob direção de quem tem o ofício, o ajudante sem ofício trabalha contra <b>Dificuldade 4</b></p>
+É por essa regra que os aprendizes entram na espada: sob a condução do ferreiro eles dispensam o
+Requisito 3, e cada um soma o que a sua média passar da Dificuldade 7. **Um braçal, de média 7,
+não soma nada na espada.** Decidido pelo autor em 24/09/2026 (G19 e G20).
+
+**Direção de obra.** Esta regra é de **obra**, e não de fabricação de peças: alvenaria,
+engenharia, construção naval, carpintaria de construção, as obras das escalas de semanas e de
+estações, como a casa, o moinho, a muralha e o navio. Aqui aparece um problema que a §3.5 sozinha
+não resolve. O braçal tem soma 4 e média 7, então numa obra de Dificuldade 11 ele contribui com um
+número negativo: pela regra crua, carregar pedra atrapalha. O que falta é a figura do mestre de
+obras.
+
+<p class="formula">Numa obra, sob direção de quem tem o ofício, o ajudante sem ofício trabalha contra <b>Dificuldade 4</b></p>
 
 Quem pensa é o mestre; o ajudante executa serviço simples, e serviço simples é Dificuldade 4 em
 qualquer obra. Cada supervisor dirige até **dez** ajudantes, e passar disso exige contramestres,
 que é como as obras grandes de fato se organizavam. O ajudante nunca contribui para a
-**qualidade**, só para o Acúmulo.
+**qualidade**, só para o Acúmulo. Na forja, na bancada e no tear, a Dificuldade 4 não vale: quem
+ajuda trabalha contra a Dificuldade da peça, pela regra da Ajuda acima.
 
 **Apressar.** Dobrar as horas rende **um intervalo extra** a cada dois, e custa **+2 na
 Dificuldade** pelo cansaço e pela pressa. Vale a pena em peça fácil e é ruinoso em peça fina.

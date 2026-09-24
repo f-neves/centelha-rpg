@@ -19,7 +19,7 @@ Fabricar é **Longa** por padrão. Vira **Acumulada** só quando há pressa real
 
 | Número | O que é |
 |---|---|
-| **Requisito** | o nível mínimo de Habilidade no ofício. Abaixo dele a peça não se tenta, e nenhum modificador abre a porta |
+| **Requisito** | o nível mínimo de Habilidade no ofício. Abaixo dele a peça não se tenta, e nenhum modificador abre a porta. A exceção é quem ajuda sob condução: na peça, de quem cumpre o Requisito; na obra, de quem tem o ofício (ver Ajuda e Direção de obra) |
 | **Dificuldade** | o atrito de cada intervalo: quem passa dela avança, e quanto mais passa, mais rápido |
 | **Montagem** | o Acúmulo que se paga **uma vez por lote**: acender a forja, montar o tear, bater a argamassa |
 | **Peça** | o Acúmulo de **cada unidade** |
@@ -30,7 +30,7 @@ Fabricar é **Longa** por padrão. Vira **Acumulada** só quando há pressa real
 
 Requisito e Dificuldade parecem a mesma coisa dita duas vezes, e não são. **O Requisito é conhecimento e a Dificuldade é execução**, e as duas se separam nos extremos da bancada: uma **cota de malha** é Requisito 2 com Acúmulo enorme, porque qualquer armeiro sabe abrir, passar e rebitar um anel, e são milhares deles; uma **fechadura de segredo** é Requisito 5 com Acúmulo pequeno, porque são poucos dias de trabalho que quase ninguém sabe fazer.
 
-Só a **Habilidade** conta para o Requisito, nunca a soma com o Atributo: destreza de mão não substitui não saber.
+Só a **Habilidade** conta para o Requisito, nunca a soma com o Atributo: destreza de mão não substitui não saber. As exceções são duas, as duas mais abaixo: na fabricação, quem ajuda sob a condução de alguém que cumpre o Requisito da peça não precisa cumpri-lo, mas trabalha contra a Dificuldade da peça (Ajuda); na obra, o ajudante sob direção de quem tem o ofício não tem Requisito nenhum e trabalha contra a Dificuldade 4 (Direção de obra). Nos dois casos, quem sabe é quem conduz.
 
 O **Piso** existe porque há serviço que não é técnica, é mão. Uma cota de malha são milhares de anéis rebitados um a um, e nenhuma Habilidade do mundo cria dedos extras: o mestre armeiro faz uma cota **melhor** que o oficial, não uma cota em três dias.
 
@@ -114,11 +114,15 @@ O material precisa **alcançar o grau pretendido**: não sai peça Excepcional d
 
 **Ajuda.** Ofício é quase sempre tarefa divisível, então os **Acúmulos somam**: cinco carpinteiros levantam a casa em um quinto do tempo. Mas a qualidade é da mão que conduz, e **dez aprendizes aceleram uma espada Comum sem fazer uma Ótima**.
 
-**Direção de obra.** O braçal tem média 7, e numa obra de Dificuldade 11 ele contribuiria com um número negativo: pela regra crua, carregar pedra atrapalharia. O que falta é a figura do mestre de obras.
+<p class="formula">Quem ajuda a fabricar sob a condução de alguém que cumpre o Requisito da peça <b>não precisa cumprir o Requisito</b>, mas trabalha contra a <b>Dificuldade da peça</b>: se a média não passar dela, não soma Acúmulo</p>
 
-<p class="formula">Sob direção de quem tem o ofício, o ajudante sem ofício trabalha contra <b>Dificuldade 4</b></p>
+É por essa regra que os aprendizes entram na espada: sob a condução do ferreiro eles dispensam o Requisito 3, e cada um soma o que a sua média passar da Dificuldade 7. **Um braçal, de média 7, não soma nada na espada.**
 
-Quem pensa é o mestre; o ajudante executa serviço simples, e serviço simples é Dificuldade 4 em qualquer obra. Cada supervisor dirige até **dez** ajudantes, e passar disso exige contramestres, que é como as obras grandes de fato se organizavam. O ajudante nunca contribui para a qualidade.
+**Direção de obra.** Esta regra é de **obra**, e não de fabricação de peças: alvenaria, engenharia, construção naval, carpintaria de construção, as obras das escalas de semanas e de estações, como a casa, o moinho, a muralha e o navio. O braçal tem média 7, e numa obra de Dificuldade 11 ele contribuiria com um número negativo: pela regra crua, carregar pedra atrapalharia. O que falta é a figura do mestre de obras.
+
+<p class="formula">Numa obra, sob direção de quem tem o ofício, o ajudante sem ofício trabalha contra <b>Dificuldade 4</b></p>
+
+Quem pensa é o mestre; o ajudante executa serviço simples, e serviço simples é Dificuldade 4 em qualquer obra. Cada supervisor dirige até **dez** ajudantes, e passar disso exige contramestres, que é como as obras grandes de fato se organizavam. O ajudante nunca contribui para a qualidade. Na forja, na bancada e no tear, a Dificuldade 4 não vale: quem ajuda trabalha contra a Dificuldade da peça, pela regra da Ajuda.
 
 **Apressar.** Dobrar as horas rende um intervalo extra a cada dois, e custa **+2 na Dificuldade** pelo cansaço e pela pressa. Vale a pena em peça fácil e é ruinoso em peça fina.
 

@@ -156,7 +156,7 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   `Acoes_Sistema.md:1043-1045` usa Ferraria, Armaria, Curtume, Alfaiataria e Culinária; o catálogo
   publicado de secundárias usa Ferreiro, Couraria, Costura e Gastronomia (`habilidades-secundarias.md:69-87`,
   que é a fonte, gerada de `habilidades-secundarias.json`). O capítulo `acoes-oficio-e-mundo.md:51`
-  já segue o catálogo. Alinhar o documento de regra ao catálogo; Armaria (usada na tabela, `:168`)
+  já segue o catálogo. Alinhar o documento de regra ao catálogo; Armaria (usada na tabela, `:172`)
   não existe como secundária e pede decisão à parte.
 - [ ] **G18 · [DECIDIR] Regra de ajudante divergente.** Levantado em 24/09/2026.
   `Acoes_Sistema.md:256-282` (§3.5) tem dois modos: "Somar Acúmulo" em tarefa divisível e
@@ -177,12 +177,12 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   trabalham (a da peça ou a 4 da direção) nem como cumprem o Requisito 3 da espada: a dispensa de
   Requisito (`Acoes_Sistema.md:1079-1080`) só vale para o "ajudante sob direção".
 - [ ] **G21 · [DECIDIR] Direção sem custo.** Levantado em 24/09/2026. No exemplo da muralha
-  (`Acoes_Sistema.md:1260-1264`, `acoes-oficio-e-mundo.md:178`) o mestre de obras soma os 5 pontos
+  (`Acoes_Sistema.md:1272-1276`, `acoes-oficio-e-mundo.md:182`) o mestre de obras soma os 5 pontos
   próprios por estação além de dirigir dez ajudantes (5 + 10 × 3 = 35). Decidir se dirigir consome
   parte da produção do supervisor.
 - [ ] **G22 · [DECIDIR] O que é o "ganho por semana".** Levantado em 24/09/2026. O §7.9 dá
   "Ganho por semana = (média − 4) × 10 pc, limitado pela demanda do lugar"
-  (`Acoes_Sistema.md:1295`, `acoes-oficio-e-mundo.md:198`), e a tabela de Serviços & Renda dá
+  (`Acoes_Sistema.md:1307`, `acoes-oficio-e-mundo.md:202`), e a tabela de Serviços & Renda dá
   "Renda/Sem" e "Livre/Sem" por faixa de Recursos, com "Uma semana de trabalho vale 6 dias"
   (`custo-de-servico-e-itens.md:39-53`). Nenhum dos dois diz se o número é renda disponível, valor
   produzido em seis dias, resultado de uma Longa de intervalo semana, ou capacidade abstrata. Os
@@ -190,7 +190,13 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
 - [ ] **G23 · [CONSERTAR] Duas espadas no mesmo documento.** Levantado em 24/09/2026. O exemplo da
   Longa no §3.3 (`Acoes_Sistema.md:160-163`) diz "Forjar uma espada: Dificuldade 7, Acúmulo 10,
   intervalo de uma semana". O §7 dá à espada Comum Acúmulo 22 (Montagem 12 + Peça 10) e intervalo
-  dia (`Acoes_Sistema.md:1139-1145`, `:1234`; capítulo `acoes-oficio-e-mundo.md:93`, `:152`). A
+  dia (`Acoes_Sistema.md:1141-1147`, `:1246`; capítulo `acoes-oficio-e-mundo.md:93`, `:152`). A
   escada de intervalos publicada também põe "forjar a espada" em Semana (`acoes-e-sistema.md:143`).
   Alinhar o exemplo e a escada ao §7.
+- [ ] **G24 · [DECIDIR] Semântica do teto de demanda do ganho de ofício.** Levantado em 24/09/2026.
+  `acoes-oficio-e-mundo.md:202-204` e `Acoes_Sistema.md:1307-1311`: "uma aldeia absorve talvez 50
+  pc por semana de qualquer ofício" representa o valor bruto das mercadorias vendidas, ou o
+  ganho (valor adicionado) do artesão? O texto diz "Ganho por semana [...] limitado pela demanda do
+  lugar"; "absorve" sugere gasto bruto. Muda quantas peças o mercado absorve (numa cidade, 500 pc:
+  2 espadas se for bruto, cerca de 3 se for líquido).
 
