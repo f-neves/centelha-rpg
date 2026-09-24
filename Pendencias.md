@@ -18,7 +18,7 @@ detalhe: cada item aponta para o arquivo onde mora, por nome e sigla.
 **As marcas dos temas.** Cada item tem uma sigla estável (A1, B2, …), e as siglas não mudam de
 lugar nem de número. **[DECIDIR]** = precisa da palavra do humano. **[FAZER]** = já decidido, é
 execução. **[AUTOR]** = frente de escrita do humano. **[CONSERTAR]** = defeito conhecido, com o
-conserto claro. **[ADIADO]**, antes da outra marca, tira o item da fila de trabalho, com o
+conserto claro. **[ADIADO]**, junto da outra marca (em qualquer ordem), tira o item da fila de trabalho, com o
 motivo escrito no tema; ele continua contado como aberto.
 
 **Quando o humano pedir "traga as pendências"**, a resposta é mostrar a contagem (seção 0), as
@@ -250,14 +250,15 @@ tempo: uma gasta o tempo do humano, outra gasta token, a terceira gasta o tempo 
 **No topo, as cinco decisões-raiz, ordenadas por quanto destravam, e não por urgência.** Elas são do
 humano, e ele responde em bloco:
 
-1. **F7 · travar o panteão.** Trava a F5 e a F6: uma decisão libera três itens de autoria.
+1. **F7 · travar o panteão.** Trava a F5 e a F6: uma decisão libera dois itens de autoria.
 2. **F3 · a mecânica de clérigo, paladino e monge.** Trava a B4. Enquanto não sair, **47 das 309
    criaturas** têm fraqueza a sagrado que nada no jogo dispara (conferido em 23/09 nos dois lugares
    em que o dado mora, `monsters.json` e `elementos-bestiario.json`).
 3. **A camada de Tradição.** Trava a C1, a C2, metade da A11, e por consequência a C3 e a C4. É o
    bloqueio mais antigo do mapa.
-4. **G12 · Desgaste e ferimento não se conhecem.** A única que já produz dívida em mesa: o mestre
-   arbitra hoje.
+4. **G12 · o teto 4 da soma de Desgaste e ferimento.** Os dois já cortam do mesmo pool, somando
+   direto e com o piso comum em 1d6 (`vida-ferimentos-cura.md`, desde `2b08d7a`, 22/09/2026). O que
+   continua aberto é só se o teto 4 do Desgaste vale para a soma dos dois.
 5. **E4 com E8 · a régua de Relação.** O capítulo publicado depende delas. O E8 tem o dente medido:
    15 pontos saem em 3 intervalos, e 14 saem em 6.
 

@@ -123,6 +123,10 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   **vão se somar em mesa** no primeiro personagem envenenado que também apanhou. Ou o teto 4 passa
   a valer para a soma dos dois, ou ferimento vira Desgaste, ou eles correm em paralelo de
   propósito. Enquanto não sair, o Mestre está arbitrando.
+  **Estado em 24/09/2026 (rodada 97, CORRIGE da 96):** a frase acima envelheceu em parte. Desde
+  `2b08d7a` (22/09/2026), `vida-ferimentos-cura.md` diz que ferimento e Desgaste cortam do MESMO
+  pool, somando direto, com o piso comum em 1d6: os dois já se conhecem, e o Mestre não arbitra a
+  soma. **Aberto de verdade está só se o teto 4 do Desgaste vale para a soma dos dois.**
 - [ ] **G13 · [FAZER] As sobras das duas famílias escritas.** Sete assuntos que as fichas
   encostaram e não cobriram. Do ofício (§7.10): **preço da peça pronta** (o `precos.json` não cobre
   arma, armadura nem obra), **material sobrenatural** como ponte com Artes e bestiário, **a oficina

@@ -371,13 +371,20 @@ function resolverContra(L, c, alvo, log, T, tg, opts, aid, tiraDaAgenda) {
     ...(presumida !== 'livre' ? { fase: presumida } : {}),
   });
   const fer = L.tierDe(alvo.pv, alvo.pvMax).penDefesa ?? 0;
-  const ferA = L.tierDe(c.pv, c.pvMax).penAcao ?? 0;
+  // O FERIMENTO DO ATACANTE TEM DUAS MOEDAS desde a §4f (22/09/2026): ponto em Machucado
+  // (`penAcao`) e DADO em Grave e Crítico (`penAcaoDados`, −1d6 e −2d6), que a mesa soma em
+  // `ajAtq` junto do Desgaste. O laço só passava o ponto, e o espelho ficou vermelho de
+  // `6e8651e` até a rodada 97: a mesa rolava um dado a menos que o laço em todo golpe de quem
+  // estava Grave ou Crítico.
+  const tA = L.tierDe(c.pv, c.pvMax);
+  const ferA = tA.penAcao ?? 0;
+  const ferADados = tA.penAcaoDados ?? 0;
 
   const entrada = {
     aid,
     atacante: {
       id: c.id, nome: c.nome, ataque: c.ataque, dano: c.dano,
-      ajusteFlat: ferA, ajusteDados: 0,
+      ajusteFlat: ferA, ajusteDados: ferADados,
       penDados: an?.penDados || [0],
       qaArmaBonus: c.qa.armaBonus, qaArmaDano: c.qa.armaDano,
     },

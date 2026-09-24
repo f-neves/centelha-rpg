@@ -122,6 +122,11 @@ for (const [nome, linha] of RECUSA) {
   ok(r.codigo === 0 && col.join(' ') === '2 2 0 0 0 1 0 0 0 1',
     'o adiado conta como aberto, fica fora do DECIDIR e entra na coluna de adiados', col.join(' '));
   ok(/aberto, ADIADO \| DECIDIR \| Adiado com motivo\./.test(linha), 'e a lista o mostra como adiado, com a marca de verdade ao lado', linha);
+  // Nota da 96: com a ordem trocada, o gerador parava na primeira etiqueta e perdia o adiamento.
+  const t = rodar('- [ ] **A85 · [DECIDIR] [ADIADO] Ordem trocada.**');
+  const colT = colunasDoTotal(t.indice);
+  ok(t.codigo === 0 && colT.join(' ') === '2 2 0 0 0 1 0 0 0 1',
+    'com a ordem trocada, `[DECIDIR] [ADIADO]`, o adiamento também é lido', colT.join(' '));
 }
 
 // ---- os cinco que já eram lidos, e o que cada um tem de dar

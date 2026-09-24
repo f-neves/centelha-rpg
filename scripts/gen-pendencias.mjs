@@ -78,7 +78,8 @@ function etiquetasDe(txt) {
     if (/^ADIADO\b/.test(marca)) adiado = true;
     else if (!marcacao) marcacao = marca;
     resto = resto.slice(m[0].length);
-    if (!adiado || marcacao) break;   // depois da primeira etiqueta de verdade, para
+    // Lê TODOS os colchetes seguidos, e não só até a primeira etiqueta de verdade: com a ordem
+    // trocada (`[DECIDIR] [ADIADO]`), parar no primeiro perdia o adiamento calado (nota da 96).
   }
   return { adiado, marcacao };
 }
