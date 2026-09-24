@@ -1,0 +1,6 @@
+# Rodada 104 · Executora · progresso
+
+- **04:26** · rodada aberta: `status` vazio, `fetch`, `merge-base --is-ancestor` verdadeiro, `switch -C executora origin/main` em `52c7fa1`. Despacho lido.
+- **04:33** · build limpo do código de hoje (`.astro/` e `dist/` apagados), guardado como 'antes'. Medidor novo (`medir-autolink.mjs`, no scratchpad): 107 páginas, **50 links para `perfuracao` e 6 para `penetracao`**, o mesmo 50 da Revisora. Conserto aplicado: termo 'Nível de Perfuração', apelidos 'resistência à perfuração', 'r.perf', 'gate'; id `perfuracao` igual.
+- **04:47** · depois do conserto, build limpo de novo: **20 links para `perfuracao`, todos no sentido do gate** ('Nível de Perfuração', 'Resistência à Perfuração', 'gate'), e 6 para `penetracao` (os mesmos 6 de antes). Saíram 33, dos quais **24 no sentido do modo de dano** (o mesmo 24 da Revisora) e 9 no sentido do gate; o 'Gate natural de Perfuração' continua link, agora pela palavra 'Gate'. Entraram 3 no sentido do gate, em blocos onde a palavra solta ocupava a vaga de um link por bloco. Segunda medição igual (20 e 6) em 376 s. Rodando validate, build e test-portoes.
+- **04:50** · validate, build e test-portoes verdes; travessão sem aumento. Relato escrito, commitando.

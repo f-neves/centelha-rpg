@@ -68,9 +68,8 @@
   },
   {
     "id": "perfuracao",
-    "termo": "Perfuração",
+    "termo": "Nível de Perfuração",
     "aliases": [
-      "nível de perfuração",
       "resistência à perfuração",
       "r.perf",
       "gate"
