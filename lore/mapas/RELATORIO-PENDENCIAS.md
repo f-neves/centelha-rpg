@@ -16,8 +16,8 @@ de montagem, nomes definitivos.
 | 0 git, push, `DECISOES-A-REVISAR.md` | feito | `4c5eedb`, `76b0c39` |
 | a desvio de colisão entre nomes | feito | `76b0c39` |
 | b largura do rio por afluentes | feito | `b15dc25` |
-| c cadeado de camada (regiões, nomes, elementos, rotas) | feito | (o commit deste texto) |
-| d atração do braço de delta | a fazer | |
+| c cadeado de camada (regiões, nomes, elementos, rotas) | feito | `16a83eb` |
+| d atração do braço de delta | feito | (o commit deste texto) |
 | e via desalinhada | a fazer | |
 | f medição Neck ↔ Calin com o cache | a fazer | |
 
@@ -117,3 +117,30 @@ Resultado:
 - Não muda a aparência do mapa: sem recorte novo.
 - **Depende do usuário**: os quatro botões na tela (Ctrl+F5), e ver o aviso de trava
   ao tentar criar algo numa camada travada.
+
+### d · atração do começo do braço de delta contra o rio-mãe (feito)
+
+Plano (recomendação do Cartógrafo):
+- Ao salvar um rio com `ramo_de` (criar ou editar vértices), a nascente dele gruda no
+  ponto mais perto do TRAÇADO do rio-mãe (em qualquer ponto de um trecho, não só nos
+  vértices) se estiver a até 5 km, no servidor, antes da checagem de terra, como a
+  atração das vias.
+- A mais de 5 km, o rio é **recusado** (422, arquivo intacto): um braço de delta que
+  não sai do rio-mãe é um dado errado. Até hoje nada conferia isso.
+- 5 km é a suposição já registrada no ESPEC (a mesma distância dos lugares), a
+  confirmar pelo usuário.
+
+Resultado:
+- `backend/rios.py` (`ponto_mais_perto_da_linha`, `atrair_nascente_do_braco`, chamada
+  dentro de `_validar`, que agora devolve o traçado grudado e é ele que se grava);
+  registro em `ESPEC-dados.md`, no fim. 5 testes novos em `tests/test_rios.py`: gruda
+  no meio de um trecho (e não num vértice), recusa a 8 km com o arquivo igual byte a
+  byte, rio sem `ramo_de` não gruda (controle), a edição de vértice também gruda e
+  recusa, e a distância é no globo (a 60°, 1° de longitude dá ~69 km). **Controle
+  negativo**: com o `rios.py` de antes (guardado com `git stash push -- backend/rios.py`),
+  os 4 testes de comportamento falham.
+- A resposta HTTP não mudou de forma (continua a coleção de rios); a nascente grudada
+  aparece no próprio dado devolvido. A tela não mostra "grudou" como mostra nas vias.
+- Não muda a aparência do mapa de hoje (não há braço de delta nos dados de exemplo).
+- **Depende do usuário**: confirmar os 5 km, e a recusa acima deles; e criar um braço
+  pela tela.

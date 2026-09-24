@@ -8,6 +8,7 @@ olhando vértice, como antes da correção 2 do ESPEC.
 """
 
 import json
+import math
 
 import pytest
 
@@ -280,3 +281,67 @@ def test_editar_rio_devolve_afluentes_e_bracos(ambiente_isolado):
     _, dependentes = rios.editar_geometria("mae", linha)
     assert sorted((d["id"], d["ligacao"]) for d in dependentes) == [
         ("afluente", "afluente"), ("braco", "braco-de-delta")]
+
+
+# --- atração do braço de delta (rodada das pendências, 2026-09-23, item d) -----------
+
+def _braco(linha_mae, dlat):
+    """Um braço que nasce `dlat` graus ao norte do meio do 1º trecho do rio-mãe e
+    termina num ponto do próprio rio-mãe (afluente dele), todo em terra."""
+    (ax, ay), (bx, _) = linha_mae["coordinates"][0], linha_mae["coordinates"][1]
+    meio = (ax + bx) / 2
+    pontos = [[meio, ay + dlat], [meio + 0.03, ay + dlat / 3], [meio + 0.035, ay]]
+    assert all(lugares.ponto_em_terra(*p) for p in pontos)
+    assert all(rios.segmento_em_terra(a, b) for a, b in zip(pontos[:-1], pontos[1:]))
+    return {"type": "LineString", "coordinates": pontos}
+
+
+def test_braco_perto_gruda_no_tracado_da_mae(ambiente_isolado):
+    mae = _rio_valido("mae")
+    braco = _braco(mae, 0.015)                                    # uns 2 km
+    rios.criar_rio("braco", braco, {"tipo": "rio", "id": "mae"}, ramo_de="mae")
+    nascente = rios._achar(rios.carregar(), "braco")["geometry"]["coordinates"][0]
+    (ax, ay), (bx, _) = mae["coordinates"][0], mae["coordinates"][1]
+    # Caiu NO trecho da mãe (mesma latitude, entre os dois vértices), e não num vértice.
+    assert math.isclose(nascente[1], ay, abs_tol=1e-9)
+    assert ax < nascente[0] < bx
+    assert math.isclose(nascente[0], braco["coordinates"][0][0], abs_tol=1e-9)
+    # O resto do traçado não mexe.
+    assert rios._achar(rios.carregar(), "braco")["geometry"]["coordinates"][1:] == braco["coordinates"][1:]
+
+
+def test_braco_longe_da_mae_e_recusado_sem_gravar(ambiente_isolado):
+    """Controle negativo: a mais de 5 km, recusa, e o arquivo fica igual byte a byte."""
+    mae = _rio_valido("mae")
+    braco = _braco(mae, 0.06)                                     # uns 8 km
+    antes = rios.CAMINHO_DADOS.read_bytes()
+    with pytest.raises(ValueError, match="braço de delta"):
+        rios.criar_rio("braco", braco, {"tipo": "rio", "id": "mae"}, ramo_de="mae")
+    assert rios.CAMINHO_DADOS.read_bytes() == antes
+
+
+def test_rio_que_nao_e_braco_nao_gruda(ambiente_isolado):
+    """Controle: o mesmo traçado, sem `ramo_de`, fica onde foi desenhado."""
+    mae = _rio_valido("mae")
+    braco = _braco(mae, 0.015)
+    rios.criar_rio("solto", braco, {"tipo": "rio", "id": "mae"})
+    assert rios._achar(rios.carregar(), "solto")["geometry"]["coordinates"] == braco["coordinates"]
+
+
+def test_editar_vertice_do_braco_tambem_gruda(ambiente_isolado):
+    mae = _rio_valido("mae")
+    rios.criar_rio("braco", _braco(mae, 0.015), {"tipo": "rio", "id": "mae"}, ramo_de="mae")
+    novo = _braco(mae, 0.02)
+    rio, _ = rios.editar_geometria("braco", novo)
+    assert math.isclose(rio["geometry"]["coordinates"][0][1], mae["coordinates"][0][1], abs_tol=1e-9)
+    antes = rios.CAMINHO_DADOS.read_bytes()
+    with pytest.raises(ValueError, match="braço de delta"):
+        rios.editar_geometria("braco", _braco(mae, 0.06))
+    assert rios.CAMINHO_DADOS.read_bytes() == antes
+
+
+def test_ponto_mais_perto_mede_no_globo():
+    """A 60° de latitude, um grau de longitude vale metade do de latitude: o ponto a 1°
+    de longitude de uma linha norte-sul fica a ~69 km (e não a 139)."""
+    _, km, _ = rios.ponto_mais_perto_da_linha(1.0, 60.0, [[0.0, 59.0], [0.0, 61.0]])
+    assert 65 < km < 72

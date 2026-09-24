@@ -562,3 +562,22 @@ Recomendação do Cartógrafo, a revisar:
   também a região de cada massa (atribuir e registrar ilha em `massas.geojson`),
   porque é o mesmo painel e o mesmo dado de pertencimento.
 - **Elemento, nome e rota** já tinham `travado` por objeto; o da camada soma a ele.
+
+### Atração do braço de delta: como ficou no código (2026-09-23, rodada das pendências)
+
+O segundo item da correção 3 ("Delta", acima: "não foi feita nesta etapa") passou a
+existir em `backend/rios.py` (`atrair_nascente_do_braco`). Recomendação do
+Cartógrafo, a revisar; o esquema não muda:
+
+- ao salvar um rio com `ramo_de` (criar ou editar vértices), `coordinates[0]` assume o
+  ponto mais perto do TRAÇADO do rio-mãe, em qualquer trecho (não só nos vértices),
+  se estiver a até **5 km** (`ATRACAO_DELTA_KM`, a suposição registrada acima, ainda a
+  confirmar pelo usuário); o resto do traçado não se mexe;
+- **a mais de 5 km o rio é recusado** (422, nada gravado): até aqui um braço de delta
+  podia nascer em qualquer lugar, e a sobreposição nascente/rio-mãe nunca era
+  conferida;
+- roda antes da checagem de terra, como a atração das vias;
+- a distância é medida no globo (haversine), com a projeção no trecho feita no plano
+  local (longitude encolhida por cos(latitude));
+- editar o traçado do rio-MÃE não move os braços: eles continuam na lista de
+  dependentes que a tela já mostra para conferir.

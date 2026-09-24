@@ -21,6 +21,11 @@ sem código próprio, e toda escrita passa antes por `travas` (camada `rios`).
 **Fora desta etapa, de propósito**: a atração automática de 5 km (ela é da etapa das
 estradas, e a decisão registrada diz que é NOSSA, no servidor, ao salvar), a largura
 por afluentes acumulados (é da rasterização) e a edição de vértice de rio já salvo.
+
+**Atração do braço de delta** (rodada das pendências, 2026-09-23, item d): ao salvar
+um rio com `ramo_de`, a nascente gruda no ponto mais perto do traçado do rio-mãe se
+estiver a até `ATRACAO_DELTA_KM`; mais longe, o rio é recusado. Roda antes da checagem
+de terra, como a atração das vias. Ver `atrair_nascente_do_braco`.
 """
 
 import json
@@ -36,6 +41,9 @@ CAMADA = "rios"
 
 TIPOS_DE_FIM = ("mar", "lago", "rio")
 TOLERANCIA_FOZ_KM = 2.0  # ESPEC-dados.md, correção 2
+# Suposição registrada no ESPEC-dados (correção 3): a mesma distância da atração dos
+# lugares. A confirmar pelo usuário.
+ATRACAO_DELTA_KM = 5.0
 PASSO_AMOSTRA_PX = 1.0   # "a cada pixel", para não pular canal fino
 
 
@@ -107,6 +115,43 @@ def distancia_ate_agua_km(lon: float, lat: float, teto_km: float = TOLERANCIA_FO
 
 # --- validação ----------------------------------------------------------------
 
+def ponto_mais_perto_da_linha(lon: float, lat: float, coords: list) -> tuple[list, float, int]:
+    """O ponto do traçado `coords` mais perto de (lon, lat), em qualquer trecho (não só
+    nos vértices), a distância dele em km no globo e o índice do trecho. A projeção no
+    trecho é feita no plano local, com a longitude encolhida por cos(latitude): em
+    trechos de poucos km o erro disso é desprezível, e a distância final é haversine."""
+    from . import geo
+    k = math.cos(math.radians(lat))
+    melhor = (None, math.inf, 0)
+    for i in range(len(coords) - 1):
+        (ax, ay), (bx, by) = coords[i], coords[i + 1]
+        ux, uy = (bx - ax) * k, by - ay
+        vx, vy = (lon - ax) * k, lat - ay
+        n = ux * ux + uy * uy
+        t = 0.0 if n == 0 else max(0.0, min(1.0, (vx * ux + vy * uy) / n))
+        px, py = ax + (bx - ax) * t, ay + (by - ay) * t
+        d = geo.haversine_km(lat, lon, py, px)
+        if d < melhor[1]:
+            melhor = ([px, py], d, i)
+    return melhor
+
+
+def atrair_nascente_do_braco(pontos: list, id_mae: str, dados: dict,
+                             raio_km: float = ATRACAO_DELTA_KM) -> tuple[list, dict]:
+    """A nascente do braço de delta assume o ponto mais perto do traçado do rio-mãe.
+    Devolve (pontos, relatório `{de, para, km, trecho}`). Recusa (ValueError) se a
+    nascente estiver a mais de `raio_km` do rio-mãe."""
+    mae = _achar(dados, id_mae)["geometry"]["coordinates"]
+    lon, lat = pontos[0]
+    para, km, trecho = ponto_mais_perto_da_linha(lon, lat, mae)
+    if para is None or km > raio_km:
+        raise ValueError(
+            f"o braço de delta tem que sair do rio-mãe '{id_mae}': a nascente está a "
+            f"{km:.1f} km dele, e a atração só alcança {raio_km:g} km")
+    return [para] + [list(p) for p in pontos[1:]], {
+        "de": [lon, lat], "para": para, "km": round(km, 3), "trecho": trecho}
+
+
 def _validar(geometria: dict, termina_em: dict, ramo_de, dados: dict) -> list:
     if geometria.get("type") != "LineString":
         raise ValueError("um rio é uma LineString")
@@ -131,6 +176,9 @@ def _validar(geometria: dict, termina_em: dict, ramo_de, dados: dict) -> list:
 
     if ramo_de is not None:
         _achar(dados, ramo_de)  # KeyError vira 404 lá em cima
+        # A atração vem ANTES da checagem de terra (a nascente grudada é que tem de
+        # estar em terra, e ela está no traçado de um rio que já passou por isso).
+        pontos, _ = atrair_nascente_do_braco(pontos, ramo_de, dados)
 
     # Nascente em terra, sempre. Um rio que nasce na água não é rio.
     if not lugares.ponto_em_terra(*pontos[0]):
@@ -180,12 +228,12 @@ def criar_rio(id_rio: str, geometria: dict, termina_em: dict, nome=None, ramo_de
             raise ValueError(f"já existe um rio com o id {id_rio}")
     # Validar ANTES de checar a trava, como nas áreas: dado inválido é 422, recusa por
     # trava é 409, e os dois não podem se confundir.
-    _validar(geometria, termina_em, ramo_de, dados)
+    pontos = _validar(geometria, termina_em, ramo_de, dados)
     travas.exigir_camada_livre(CAMADA, "criar um rio")
 
     feature = {
         "type": "Feature",
-        "geometry": {"type": "LineString", "coordinates": geometria["coordinates"]},
+        "geometry": {"type": "LineString", "coordinates": pontos},
         "properties": {
             "id": id_rio,
             "nome": nome or None,
@@ -252,9 +300,9 @@ def editar_geometria(id_rio: str, geometria: dict) -> tuple[dict, list[dict]]:
     dados = carregar()
     antes = _achar(dados, id_rio)
     props = antes["properties"]
-    _validar(geometria, props["termina_em"], props.get("ramo_de"), dados)
+    pontos = _validar(geometria, props["termina_em"], props.get("ramo_de"), dados)
     travas.exigir_objeto_livre(CAMADA, props, "editar este rio")
     depois = json.loads(json.dumps(antes))
-    depois["geometry"] = {"type": "LineString", "coordinates": geometria["coordinates"]}
+    depois["geometry"] = {"type": "LineString", "coordinates": pontos}
     operacoes.registrar_operacao("editar_rio", CAMINHO_RELATIVO, {id_rio: {"antes": antes, "depois": depois}})
     return depois, dependentes(id_rio, dados)
