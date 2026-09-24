@@ -380,6 +380,9 @@ const ORD=['forca','destreza','vigor','influencia','perspicacia','compostura','p
 /* size: medio|pequeno|minusculo|grande|enorme|imenso|colossal
    scores crus D&D/PF; '-' = não se aplica. cent = Centelha (definida pela natureza).
    src abrevia a origem. sk = perícias-chave já em Centelha (0-5). */
+/* Centelha dentro de note: em 57 das 88 notas que citam "Centelha N", o N é o de ANTES do +1 da Reescala (B10),
+   que foi somado no campo cent e não nas notas, de propósito (C-104): a nota guarda de onde a conta veio.
+   O que vale, e o que o gen-bestiario.mjs lê, é o campo cent. O note não é publicado. */
 const DATA = [
 /* ---- Humanoides & Gigantes ---- */
 {name:"Goblin",type:"humanoide Pequeno",src:"PF B1",cr:"1/3",str:11,dex:15,con:12,int:10,wis:9,cha:6,size:"pequeno",cent:0,sk:["Furtividade 2","Sobrevivência 1"],worked:true,note:"Mundano, sem nada sobrenatural: Centelha 0. O +4 racial em Furtividade vira especialidade."},

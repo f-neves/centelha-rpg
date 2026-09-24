@@ -131,7 +131,7 @@ Na conversa comum, a influência compra o alcance do pedido e vai embora (a seç
 
 <p class="formula">Iniciativa social = 1d6 + Perspicácia + Sociabilidade</p>
 
-Quem lê melhor a sala toma a palavra primeiro (começa no Tick 0; os demais no Tick 1, com a mesma regra de defasagem do físico). As abordagens vêm em três pesos, e o peso dá a **Velocidade** (Ticks até o próximo lance): **leve 5** (uma alfinetada, um elogio), **média 6** (um argumento, uma sedução), **pesada 7** (um discurso, um esquema). Rápido arranha; lento constrói.
+Quem lê melhor a sala toma a palavra primeiro: entra sozinho no **Tick 1**, e os demais entram um Tick depois por degrau de 6 pontos de atraso, arredondando para cima, pela mesma regra da [iniciativa física](/regras/combate#a-linha-do-tempo-ticks-velocidade-e-iniciativa). As abordagens vêm em três pesos, e o peso dá a **Velocidade** (Ticks até o próximo lance): **leve 5** (uma alfinetada, um elogio), **média 6** (um argumento, uma sedução), **pesada 7** (um discurso, um esquema). Rápido arranha; lento constrói.
 
 ### O ataque social
 

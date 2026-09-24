@@ -13,7 +13,7 @@ Quatro famílias reunidas aqui, e elas têm em comum mais do que o tema: são as
 
 A família inteira ainda espera regra. O que segue é o que cada ação é e a jogada de partida.
 
-**Notar sem procurar** é [**Passiva**](/regras/acoes-e-sistema): o que o personagem percebe porque estava ali, não porque tentou. O número é 2 × (Percepção + Prontidão), e é o Mestre que o consulta, muitas vezes sem avisar que consultou.
+**Notar sem procurar** é [**Passiva**](/regras/acoes-e-sistema): o que o personagem percebe porque estava ali, não porque tentou. O número é (Percepção + Prontidão) × 2 + Centelha, e é o Mestre que o consulta, muitas vezes sem avisar que consultou.
 
 | Quem observa | Perc + Pront | Valor Passivo |
 |---|:--:|:--:|

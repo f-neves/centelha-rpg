@@ -89,6 +89,8 @@ flowchart TD
   DB --> N
 ```
 
+**Esp.** é a [Especialidade](/regras/defesas#especialidade-o-foco-que-só-vale-às-vezes), que só soma quando o golpe cai na situação dela.
+
 ---
 
 ## Percepção ou Perspicácia?

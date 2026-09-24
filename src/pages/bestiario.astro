@@ -18,6 +18,8 @@ const d = await loadData();
 const ABERTAS = 40;
 // Fonte ÚNICA da página: monsters.json (gerado por scripts/gen-monsters.mjs a partir dos arquivos-fonte).
 const inimigos = ([...monsters] as any[]).sort((a, b) => a.nome.localeCompare(b.nome, 'pt'));
+// Contadas do dado a cada build: digitado, o número envelhecia na próxima criatura preenchida (C-102).
+const comElemento = inimigos.filter((i) => i.combate?.fraquezas?.length || i.combate?.resistencias?.length).length;
 const ECO_TERR: Record<string, string> = { Cold: 'Gélido', Desert: 'Deserto', Forest: 'Floresta', Jungle: 'Selva', Mountain: 'Montanha', Plains: 'Planície', Swamp: 'Pântano', Underground: 'Subterrâneo', Urban: 'Urbano', Water: 'Aquático', Coast: 'Litoral', Sky: 'Céu', Ruins: 'Ruínas', Any: 'Qualquer' };
 const ECO_CLIMA: Record<string, string> = { Cold: 'Frio', Temperate: 'Temperado', Tropical: 'Tropical', Extraplanar: 'Extraplanar' };
 // Atributos (ordem canônica: físico · social · mental) com rótulo curto e nome cheio
@@ -64,9 +66,9 @@ const opcoesEditor = {
 
   <div class="callout"><span class="lbl">Valores médios</span>Atributos, Habilidades, Proezas e dimensões (tamanho e peso) são a <strong>média da espécie</strong>: um indivíduo pode ser maior, mais forte ou mais fraco. Ajuste à vontade para dar cara a um chefe nomeado ou a um espécime fora da curva. Os números derivados (PV, Defesa, Absorção, Iniciativa) seguem as mesmas fórmulas dos personagens.</div>
 
-  <div class="callout"><span class="lbl">Fraqueza & Resistência</span>Poucas criaturas têm (97 das 308), e quando têm, muda a luta. <strong>Fraqueza</strong>: o dano daquele tipo <strong>não é absorvido por nada</strong> (nem armadura, nem Absorção natural, nem Centelha) e é <strong>agravado</strong>, ou seja, não fecha com descanso nem com a Habilidade Cura. <strong>Resistência</strong>: o dano cai <strong>pela metade</strong>, arredondando para cima, e nunca fica agravado; ela entra <strong>entre</strong> a armadura e a Absorção. As duas se anulam quando a mesma criatura tem as duas para o mesmo tipo. É por isso que se leva fogo para o treant e prata para o lobisomem.</div>
+  <div class="callout"><span class="lbl">Fraqueza & Resistência</span>Poucas criaturas têm ({comElemento} das {inimigos.length}), e quando têm, muda a luta. <strong>Fraqueza</strong>: o dano daquele tipo <strong>não é absorvido por nada</strong> (nem armadura, nem Absorção natural, nem Centelha) e é <strong>agravado</strong>, ou seja, não fecha com descanso nem com a Habilidade Cura. <strong>Resistência</strong>: o dano cai <strong>pela metade</strong>, arredondando para cima, e nunca fica agravado; ela entra <strong>entre</strong> a armadura e a Absorção. As duas se anulam quando a mesma criatura tem as duas para o mesmo tipo. É por isso que se leva fogo para o treant e prata para o lobisomem.</div>
 
-  <div class="callout"><span class="lbl">Regra de Horda</span>Muitos capangas iguais lutam como um <strong>esquadrão único</strong>: o tamanho vira <strong>Magnitude</strong> (2–3 = +1d6, 4–7 = +2, 8–15 = +3…), somada ao <strong>acerto e ao dano</strong>; a Defesa cai <strong>−2</strong> (aglomerado). <a href={url('regras/combate') + '#regra-de-horda'}>Regra completa →</a></div>
+  <div class="callout"><span class="lbl">Regra de Horda</span>Muitos capangas iguais lutam como um <strong>esquadrão único</strong>: o tamanho vira <strong>Magnitude</strong> (2–3 = +1d6, 4–7 = +2d6, 8–15 = +3d6…), somada ao <strong>acerto e ao dano</strong>; a Defesa cai <strong>−2</strong> (aglomerado). <a href={url('regras/combate') + '#regra-de-horda'}>Regra completa →</a></div>
 
   <div class="filtros panel">
     <button type="button" class="btn besta-nova" id="besta-nova">✚ Nova criatura</button>
@@ -322,7 +324,7 @@ const opcoesEditor = {
     .atr-full { display: inline; }
   }
 
-  /* Fraqueza e resistência. Só aparece em quem tem: 97 das 308 criaturas. */
+  /* Fraqueza e resistência. Só aparece em quem tem (a conta está no callout da página). */
   .besta-elem { margin: 0 0 .55rem; display: flex; flex-direction: column; gap: .25rem; }
   .el-linha { display: flex; align-items: center; flex-wrap: wrap; gap: .25rem; }
   .el-lbl { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .04em; color: var(--accent-strong); margin-right: .1rem; }

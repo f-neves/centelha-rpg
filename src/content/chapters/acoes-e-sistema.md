@@ -62,7 +62,7 @@ Nem todo modo é jogado. Dois deles dispensam o dado inteiramente.
 | **Acumulada** | sim | sim | Dificuldade **e** Acúmulo: cada jogada rende o que passou da Dificuldade, somando até fechar |
 | **Longa** | **não** | fora de cena | a mesma dupla, mas usando a **média** do pool por intervalo |
 | **Reflexiva** | sim | **não** | uma jogada avulsa, no meio de outra coisa |
-| **Passiva** | **não** | **não** | um valor parado: 2 × (Atributo + Habilidade) |
+| **Passiva** | **não** | **não** | um valor parado: (Atributo + Habilidade) × 2 + Centelha |
 
 ### Direta
 
