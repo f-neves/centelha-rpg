@@ -1416,3 +1416,27 @@ travar e destravar a camada não mexe no nome travado por objeto; o tratador dev
 push -- <os quatro>`, só os meus arquivos), 4 dos 9 testes falham. `node --check` no
 módulo novo. **Não conferido na tela**: os quatro botões e o aviso de 409 em cada
 painel (depende do teste do usuário).
+
+## Via desalinhada: ajustar e ignorar (rodada das pendências, 2026-09-23)
+
+Recomendação do Cartógrafo, a revisar. Fecha a pendência "Via desalinhada" da lista
+viva (acima), que hoje só marcava o ⚠.
+
+- **Ajustar o traçado até o lugar**: `POST /api/estradas/{id}/ajustar` com
+  `{"lugar": id}` (`backend/estradas.py`, `ajustar_ate_lugar`). Move UM vértice para a
+  coordenada atual do lugar: o mais perto dele, entre os vértices que não estão
+  grudados em outro lugar da lista (esses não se mexem). Vértice vizinho que já estava
+  no lugar se funde, como na atração. O traçado novo passa pela checagem de terra
+  inteira: trecho na água, 422 e nada gravado. Via ou camada travada, 409. Via que já
+  passa pelo lugar, lugar fora da lista ou lugar apagado: 422. Passa pelo desfazer.
+  Devolve `{"estradas": coleção, "ajuste": {vertice, de, para, km}}`.
+- **Ignorar por agora**: só na tela e só nesta sessão da página; nada é gravado, e o ⚠
+  volta ao recarregar. O dado continua dizendo a verdade.
+- **Tela**: na lista de ESTRADAS, cada lugar desalinhado ganha "ajustar até <lugar>"
+  (se o lugar existe) e "ignorar por agora".
+
+**Conferido**: 4 testes novos em `tests/test_estradas.py`: o ajuste move só o vértice
+do lugar movido e o desfazer volta byte a byte; ajuste até o mar recusado com o
+arquivo igual (controle negativo); via alinhada, lugar fora da lista e lugar apagado
+recusados; via travada recusada. `node --check` no `estradas.js`. Nos dados de exemplo
+nenhuma via está desalinhada hoje. **Não conferido na tela**: os dois botões.

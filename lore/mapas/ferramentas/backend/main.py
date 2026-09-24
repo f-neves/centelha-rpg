@@ -475,6 +475,25 @@ def apagar_estrada(id_estrada: str) -> JSONResponse:
     return JSONResponse(estradas.carregar())
 
 
+class AjusteDeVia(BaseModel):
+    lugar: str
+
+
+@app.post("/api/estradas/{id_estrada}/ajustar")
+def ajustar_estrada(id_estrada: str, ajuste: AjusteDeVia) -> JSONResponse:
+    """Via desalinhada: move o vértice mais perto até o lugar (rodada das pendências,
+    2026-09-23, item e). Devolve {"estradas": coleção, "ajuste": relatório}."""
+    try:
+        _, relatorio = estradas.ajustar_ate_lugar(id_estrada, ajuste.lugar)
+    except travas.Travado as e:
+        raise HTTPException(status_code=409, detail=str(e))
+    except KeyError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
+    return JSONResponse({"estradas": estradas.carregar(), "ajuste": relatorio})
+
+
 @app.post("/api/estradas/{id_estrada}/trava")
 def travar_estrada(id_estrada: str, mudanca: MudancaTrava) -> JSONResponse:
     try:

@@ -105,13 +105,26 @@ function iniciarFerramentaDeEstrada(mapa, estradasIniciais, travasIniciais, luga
   // movido (ou apagado) depois de a via ser desenhada. A via não se mexe sozinha
   // (ESPEC-dados.md, correção 3); aqui ela só aparece marcada. Recomendação do
   // Cartógrafo, a confirmar: o ESPEC deixa "desalinhada" em aberto.
+  // "Ignorar por agora" (rodada das pendências, 2026-09-23, item e): só nesta
+  // sessão da página, e nada é gravado. O aviso volta ao recarregar.
+  const ignoradas = new Set();
   function lugaresDesalinhados(feature) {
     const coords = feature.geometry.coordinates;
     return (feature.properties.lugares || []).filter((id) => {
+      if (ignoradas.has(`${feature.properties.id}|${id}`)) return false;
       const lugar = lugaresPorId[id];
       if (!lugar) return true;
       return !coords.some((c) => mesmaCoordenada(c, lugar.geometry.coordinates));
     });
+  }
+  // "Ajustar o traçado até o lugar": o servidor move o vértice mais perto (dos que
+  // não estão grudados em outro lugar) e confere a terra (backend/estradas.py).
+  async function ajustarAteLugar(idVia, idLugar) {
+    const r = await chamar("POST", `/api/estradas/${encodeURIComponent(idVia)}/ajustar`, { lugar: idLugar });
+    if (r.erro) return;
+    redesenharTudo(r.dados.estradas);
+    atualizarBotoesPilhaSeExistir();
+    mostrarAviso(`via ajustada até ${nomeDoLugar(idLugar)} (o vértice andou ${r.dados.ajuste.km} km)`);
   }
   function nomeDoLugar(id) {
     const lugar = lugaresPorId[id];
@@ -211,6 +224,28 @@ function iniciarFerramentaDeEstrada(mapa, estradasIniciais, travasIniciais, luga
       }
       item.appendChild(cabeca);
       item.appendChild(passa);
+      for (const idLugar of desalinhados) {
+        const botoes = document.createElement("div");
+        botoes.className = "botoes-desalinhada";
+        if (lugaresPorId[idLugar]) {
+          const ajustar = document.createElement("button");
+          ajustar.type = "button";
+          ajustar.textContent = `ajustar até ${nomeDoLugar(idLugar)}`;
+          ajustar.addEventListener("click", (e) => { e.stopPropagation(); ajustarAteLugar(p.id, idLugar); });
+          botoes.appendChild(ajustar);
+        }
+        const ignorar = document.createElement("button");
+        ignorar.type = "button";
+        ignorar.textContent = "ignorar por agora";
+        ignorar.title = "Só nesta sessão da página; nada é gravado e o aviso volta ao recarregar.";
+        ignorar.addEventListener("click", (e) => {
+          e.stopPropagation();
+          ignoradas.add(`${p.id}|${idLugar}`);
+          redesenharLista();
+        });
+        botoes.appendChild(ignorar);
+        item.appendChild(botoes);
+      }
       item.addEventListener("click", () => {
         if (idSelecionado !== p.id) selecionar(p.id);
         const camada = camadaDesenho.getLayers().find((c) => c.feature.properties.id === p.id);

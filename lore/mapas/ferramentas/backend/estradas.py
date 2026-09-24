@@ -188,6 +188,56 @@ def criar_estrada(id_estrada: str, geometria: dict, tipo: str = "estrada",
     return feature
 
 
+def desalinhados(feature: dict, lugares_por_id: dict | None = None) -> list[str]:
+    """Os lugares da lista `lugares` da via que não estão mais em NENHUM vértice dela
+    (movidos ou apagados depois do desenho). É a mesma conta da tela (estradas.js)."""
+    if lugares_por_id is None:
+        lugares_por_id = {i: [lon, lat] for i, lon, lat in _lugares_marcados()}
+    coords = [list(c) for c in feature["geometry"]["coordinates"]]
+    return [i for i in feature["properties"].get("lugares") or []
+            if lugares_por_id.get(i) is None or list(lugares_por_id[i]) not in coords]
+
+
+def ajustar_ate_lugar(id_estrada: str, id_lugar: str) -> tuple[dict, dict]:
+    """"Ajustar o traçado até o lugar" da via desalinhada (rodada das pendências,
+    2026-09-23, item e; recomendação do Cartógrafo). Move UM vértice para a
+    coordenada atual do lugar: o mais perto dele entre os vértices que não estão
+    grudados em outro lugar da lista. O traçado novo passa pela checagem de terra; se
+    algum trecho cair na água, recusa sem gravar. Devolve (via gravada, relatório
+    `{vertice, de, para, km}`)."""
+    dados = carregar()
+    antes = _achar(dados, id_estrada)
+    props = antes["properties"]
+    travas.exigir_objeto_livre(CAMADA, props, "ajustar esta via")
+    if id_lugar not in (props.get("lugares") or []):
+        raise ValueError(f"a via {id_estrada} não passa por '{id_lugar}'")
+    marcados = {i: [lon, lat] for i, lon, lat in _lugares_marcados()}
+    if id_lugar not in marcados:
+        raise ValueError(f"o lugar '{id_lugar}' não existe mais: não há para onde ajustar")
+    if id_lugar not in desalinhados(antes, marcados):
+        raise ValueError(f"a via {id_estrada} já passa por '{id_lugar}': não está desalinhada")
+    alvo = marcados[id_lugar]
+    pontos = [list(c) for c in antes["geometry"]["coordinates"]]
+    presos = [marcados[i] for i in props["lugares"] if i != id_lugar and i in marcados]
+    livres = [k for k, c in enumerate(pontos) if c not in presos]
+    if not livres:
+        raise ValueError("todos os vértices da via estão grudados em outros lugares")
+    k = min(livres, key=lambda k: geo.haversine_km(pontos[k][1], pontos[k][0], alvo[1], alvo[0]))
+    de = pontos[k]
+    km = geo.haversine_km(de[1], de[0], alvo[1], alvo[0])
+    pontos[k] = list(alvo)
+    # Vizinho que já estava exatamente no lugar: funde, como na atração.
+    fundidos = [c for j, c in enumerate(pontos) if j == 0 or c != pontos[j - 1]]
+    if len(fundidos) < 2:
+        raise ValueError("depois do ajuste sobrou um ponto só · a via ficaria sem traçado")
+    _exigir_em_terra(fundidos)
+    depois = json.loads(json.dumps(antes))
+    depois["geometry"]["coordinates"] = fundidos
+    operacoes.registrar_operacao("ajustar_estrada", CAMINHO_RELATIVO,
+                                 {id_estrada: {"antes": antes, "depois": depois}})
+    return depois, {"vertice": k, "de": de, "para": list(alvo), "km": round(km, 3)}
+
+
 def apagar_estrada(id_estrada: str) -> None:
     dados = carregar()
     antes = _achar(dados, id_estrada)

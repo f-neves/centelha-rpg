@@ -345,3 +345,77 @@ def test_controle_negativo_espaco_reservado_orfao_seria_pego(tmp_path, monkeypat
     (tmp_path / "index.html").write_text(original + "/*__NINGUEM_TROCA__*/", encoding="utf-8")
     monkeypatch.setattr(main, "TEMPLATES_DIR", tmp_path)
     assert "/*__" in main.pagina_inicial()
+
+
+# --- via desalinhada: ajustar o traçado até o lugar (rodada das pendências, item e) ---
+
+def _mover_lugar(id_lugar, lon, lat):
+    doc = lugares.carregar()
+    for f in doc["features"]:
+        if f["properties"]["id"] == id_lugar:
+            f["geometry"]["coordinates"] = [lon, lat]
+    lugares.CAMINHO_LUGARES.write_text(json.dumps(doc), encoding="utf-8")
+
+
+def _via_a_b():
+    _por_um_lugar("a", TERRA_LON, TERRA_LAT)
+    _por_um_lugar("b", TERRA_LON + 0.5, TERRA_LAT)
+    linha = {"type": "LineString", "coordinates": [
+        [TERRA_LON, TERRA_LAT], [TERRA_LON + 0.25, TERRA_LAT], [TERRA_LON + 0.5, TERRA_LAT]]}
+    via = estradas.criar_estrada("via-ab", linha)
+    assert via["properties"]["lugares"] == ["a", "b"]
+    return via
+
+
+def test_ajustar_move_so_o_vertice_do_lugar_movido(ambiente_isolado):
+    _via_a_b()
+    novo = [TERRA_LON + 0.5, TERRA_LAT + 0.05]
+    assert lugares.ponto_em_terra(*novo)
+    _mover_lugar("b", *novo)
+    via = estradas._achar(estradas.carregar(), "via-ab")
+    assert estradas.desalinhados(via) == ["b"]
+    antes = estradas.CAMINHO_DADOS.read_bytes()
+    depois, rel = estradas.ajustar_ate_lugar("via-ab", "b")
+    assert rel["vertice"] == 2 and rel["para"] == novo and 5 < rel["km"] < 8
+    assert depois["geometry"]["coordinates"] == [
+        [TERRA_LON, TERRA_LAT], [TERRA_LON + 0.25, TERRA_LAT], novo]
+    assert estradas.desalinhados(depois) == []
+    # Passa pelo desfazer: volta byte a byte.
+    operacoes.desfazer()
+    assert estradas.CAMINHO_DADOS.read_bytes() == antes
+
+
+def test_ajustar_ate_o_mar_e_recusado_sem_gravar(ambiente_isolado):
+    """Controle negativo: o lugar foi parar no mar (dado de teste, escrito direto);
+    o trecho novo cruzaria água, e nada é gravado."""
+    _via_a_b()
+    _mover_lugar("b", -37.052, 23.832)
+    antes = estradas.CAMINHO_DADOS.read_bytes()
+    with pytest.raises(ValueError, match="água"):
+        estradas.ajustar_ate_lugar("via-ab", "b")
+    assert estradas.CAMINHO_DADOS.read_bytes() == antes
+
+
+def test_ajustar_via_alinhada_ou_lugar_apagado_e_recusado(ambiente_isolado):
+    _via_a_b()
+    antes = estradas.CAMINHO_DADOS.read_bytes()
+    with pytest.raises(ValueError, match="não está desalinhada"):
+        estradas.ajustar_ate_lugar("via-ab", "b")
+    with pytest.raises(ValueError, match="não passa"):
+        estradas.ajustar_ate_lugar("via-ab", "outro")
+    doc = lugares.carregar()
+    doc["features"] = [f for f in doc["features"] if f["properties"]["id"] != "b"]
+    lugares.CAMINHO_LUGARES.write_text(json.dumps(doc), encoding="utf-8")
+    with pytest.raises(ValueError, match="não existe mais"):
+        estradas.ajustar_ate_lugar("via-ab", "b")
+    assert estradas.CAMINHO_DADOS.read_bytes() == antes
+
+
+def test_ajustar_via_travada_e_recusado(ambiente_isolado):
+    _via_a_b()
+    _mover_lugar("b", TERRA_LON + 0.5, TERRA_LAT + 0.05)
+    estradas.definir_trava("via-ab", True)
+    antes = estradas.CAMINHO_DADOS.read_bytes()
+    with pytest.raises(travas.Travado):
+        estradas.ajustar_ate_lugar("via-ab", "b")
+    assert estradas.CAMINHO_DADOS.read_bytes() == antes

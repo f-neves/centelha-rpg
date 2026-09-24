@@ -17,8 +17,8 @@ de montagem, nomes definitivos.
 | a desvio de colisão entre nomes | feito | `76b0c39` |
 | b largura do rio por afluentes | feito | `b15dc25` |
 | c cadeado de camada (regiões, nomes, elementos, rotas) | feito | `16a83eb` |
-| d atração do braço de delta | feito | (o commit deste texto) |
-| e via desalinhada | a fazer | |
+| d atração do braço de delta | feito | `8b1ffc6` |
+| e via desalinhada | feito | (o commit deste texto) |
 | f medição Neck ↔ Calin com o cache | a fazer | |
 
 ## Diário
@@ -144,3 +144,26 @@ Resultado:
 - Não muda a aparência do mapa de hoje (não há braço de delta nos dados de exemplo).
 - **Depende do usuário**: confirmar os 5 km, e a recusa acima deles; e criar um braço
   pela tela.
+
+### e · via desalinhada (feito)
+
+Plano (recomendação do Cartógrafo):
+- **"ajustar o traçado até o lugar"**: no servidor, move UM vértice da via para a
+  coordenada nova do lugar. O vértice é o mais perto do lugar entre os que NÃO estão
+  grudados em outro lugar da lista (esses continuam onde estão). O traçado novo passa
+  pela checagem de terra inteira; se algum trecho cair na água, recusa (422) e nada é
+  gravado. Via travada ou camada travada: 409. Passa pelo desfazer.
+- **"ignorar por agora"**: só na tela, e só nesta sessão (o ⚠ some até recarregar a
+  página). Nada é gravado: o dado continua dizendo a verdade (a via passa por um
+  lugar que não está mais nela), e o aviso volta na próxima vez.
+- Lugar apagado: não há para onde ajustar; só "ignorar".
+
+Resultado:
+- Servidor, rota HTTP, tela e 4 testes; detalhe em `ESPEC-ferramenta.md`, "Via
+  desalinhada: ajustar e ignorar". 420 testes verdes.
+- Não muda a aparência do mapa (nenhuma via de exemplo está desalinhada): sem recorte.
+- **Decisão minha**: "ignorar" não grava nada. Gravar um "ignorado" pediria campo novo
+  no esquema das vias, e esconder para sempre um aviso verdadeiro é o tipo de coisa
+  que o usuário decide.
+- **Depende do usuário**: mover um lugar que tem via, ver o ⚠ e os dois botões, e
+  ajustar (Ctrl+Z desfaz).
