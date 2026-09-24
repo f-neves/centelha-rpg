@@ -39,7 +39,7 @@ está na seção 3.
 
 | Letra | Tema | Arquivo | Itens | Abertos | Parciais | Fechados | DECIDIR | FAZER | AUTOR | CONSERTAR | Outra marca | Adiados |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| A | Arcano · As Artes | [`A-arcano-artes.md`](docs/pendencias/A-arcano-artes.md) | 28 | 18 | 1 | 9 | 10 | 4 | 4 | 0 | 1 | 0 |
+| A | Arcano · As Artes | [`A-arcano-artes.md`](docs/pendencias/A-arcano-artes.md) | 28 | 18 | 1 | 9 | 11 | 4 | 4 | 0 | 0 | 0 |
 | B | Bestiário | [`B-bestiario.md`](docs/pendencias/B-bestiario.md) | 14 | 9 | 0 | 5 | 4 | 5 | 0 | 0 | 0 | 0 |
 | C | Trilhas de Feitiçaria | [`C-trilhas-feiticaria.md`](docs/pendencias/C-trilhas-feiticaria.md) | 4 | 4 | 0 | 0 | 2 | 1 | 0 | 0 | 0 | 1 |
 | D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 6 | 3 | 0 | 3 | 0 | 1 | 0 | 0 | 0 | 2 |
@@ -47,11 +47,11 @@ está na seção 3.
 | F | Lore | [`F-lore.md`](docs/pendencias/F-lore.md) | 10 | 9 | 0 | 1 | 6 | 0 | 3 | 0 | 0 | 0 |
 | G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 15 | 5 | 0 | 10 | 3 | 2 | 0 | 0 | 0 | 0 |
 | H | Arremesso | [`H-arremesso.md`](docs/pendencias/H-arremesso.md) | 4 | 2 | 0 | 2 | 1 | 0 | 0 | 0 | 0 | 1 |
-| I | Mesa virtual · tempo real | [`I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 14 | 10 | 2 | 2 | 1 | 8 | 0 | 0 | 2 | 1 |
+| I | Mesa virtual · tempo real | [`I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 14 | 10 | 2 | 2 | 2 | 9 | 0 | 0 | 0 | 1 |
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 11 | 8 | 0 | 3 | 1 | 2 | 0 | 2 | 1 | 2 |
-| K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 30 | 16 | 1 | 13 | 12 | 4 | 0 | 0 | 1 | 0 |
+| K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 30 | 16 | 1 | 13 | 13 | 4 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
-| | **Total** | | **253** | **165** | **4** | **84** | **45** | **36** | **8** | **3** | **70** | **7** |
+| | **Total** | | **253** | **165** | **4** | **84** | **48** | **37** | **8** | **3** | **66** | **7** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -327,7 +327,7 @@ Os itens abertos e parciais de cada tema, com a marca e o título; os fechados v
 | A8 | aberto | FAZER | Revisar em mesa a primeira leva |
 | A9 | aberto | FAZER | O Efeito Especial no bestiário. |
 | A10 | aberto | FAZER | Abertura do capítulo para iniciante. |
-| A11 | parcial |  | Duas partes, dois estados |
+| A11 | parcial | DECIDIR | Duas partes, dois estados |
 | A13 | aberto | AUTOR | Revisar Área × Volume. |
 | A14 | aberto | FAZER | Revisar os textos de Regras das Artes |
 | A24 | aberto | AUTOR | Dar um molde a cada Efeito que ainda declara `zona`. |
@@ -441,8 +441,8 @@ Fechados (2): H1, H2.
 | I8 | aberto, ADIADO | DECIDIR | Ponteiro ao vivo. |
 | I9 | aberto | DECIDIR | O caderno de melhorias do tabuleiro. |
 | I10 | aberto | FAZER | As pontas soltas do jogador no tabuleiro. |
-| I11 | parcial |  | A Arte sai no ÚLTIMO Tick, no tabuleiro. PARCIAL em 2026-08-21. |
-| I12 | parcial |  | O Grid como copiloto: menos toque, mais escolha. FEITO em 21/08, menos uma decisão de regra. |
+| I11 | parcial | DECIDIR | A Arte sai no ÚLTIMO Tick, no tabuleiro. PARCIAL em 2026-08-21. |
+| I12 | parcial | FAZER | O Grid como copiloto: menos toque, mais escolha. FEITO em 21/08, menos uma decisão de regra. |
 
 Fechados (2): I7, I13.
 
@@ -478,7 +478,7 @@ Fechados (3): J1, J4, J5.
 | K24 | aberto | DECIDIR | O montante e o martelo pagam duas vezes, e o dano não conserta. |
 | K27 | aberto | DECIDIR | O Golpe sai depois, e a mesa ainda resolve na declaração. |
 | K30 | aberto | FAZER | A CAIXA QUE ABRE NO TICK EM QUE A ARTE SAI |
-| K28 | parcial |  | Deslocamento: sete decisões tomadas em 21/08, a oitava (código) já saiu; falta só a ausência. |
+| K28 | parcial | DECIDIR | Deslocamento: sete decisões tomadas em 21/08, a oitava (código) já saiu; falta só a ausência. |
 | K25 | aberto | DECIDIR | A Defesa da arma e a do escudo somam, e o escudeiro vira parede. |
 | K14 | aberto | DECIDIR | A bancada só mede o canto "todo mundo esquiva". |
 | K5 | aberto | FAZER | A implementação: os DOIS sistemas. |

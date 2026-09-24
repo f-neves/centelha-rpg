@@ -65,7 +65,7 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   dele**, a **caixa de acerto vem vazia** do lado dele, o **número de dano só aparece para quem
   enxerga o número**, e o adaptador `sbDoJogador` conhece cinco formas de escrita (nota de
   manutenção, para quando o módulo das Artes ganhar outra).
-- [~] **I11 · A Arte sai no ÚLTIMO Tick, no tabuleiro. PARCIAL em 2026-08-21.** O que entrou
+- [~] **I11 · [DECIDIR] A Arte sai no ÚLTIMO Tick, no tabuleiro. PARCIAL em 2026-08-21.** O que entrou
   (§15.6 do `Combate_Tempo.md`): conjurar declara a ação com a anatomia da Arte (Preparo = ciclo − 1,
   Golpe no último Tick), o relógio anda a Velocidade inteira, e o efeito **nasce no Tick do Golpe**
   em vez de na hora do clique; enquanto o relógio não o alcança ele não queima ninguém e não é
@@ -77,7 +77,19 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   se move durante o preparo escapa; com ela travada tarde, não escapa. Junto continua faltando a
   janela de **identificar o feitiço** (Inteligência + Ocultismo, Dificuldade caindo a cada Tick),
   que hoje é o +2 ou +4 que o mestre marca à mão.
-- [~] **I12 · O Grid como copiloto: menos toque, mais escolha. FEITO em 21/08, menos uma decisão de regra.** Medido
+
+  **A régua da conjuração (`docs/simulacao/CONJURACAO.md`) cobre só METADE desta pergunta, ligado
+  em 24/09/2026 a pedido do humano.** Ela fixa o nível efetivo na declaração, como teto, e reabre
+  os Parâmetros no Golpe só para baixar (§2.1 e §2.3). Sobre a forma, diz uma frase: "a
+  distribuição exata dos Parâmetros e o formato da figura não precisam estar decididos ainda" (na
+  declaração), e não diz quando a figura trava. **Sobre a mira (onde a Arte cai) ela não diz
+  nada.** Quem implementar a régua sem ler este item vai manter a mira travada na declaração, que
+  é o que o código faz hoje (`conjurar` posiciona a figura antes de montar). A pergunta, que é do
+  humano e está na lista única de decisões (`docs/simulacao/caixa/lista-unica-decisoes.md`): com a
+  mira e a forma travadas cedo, quem se move durante o Preparo escapa; travadas tarde, não escapa.
+  **A marca `[DECIDIR]` entrou em 24/09/2026**: o item carregava a pergunta sem marca, e o contador
+  da lista não o via.
+- [~] **I12 · [FAZER] O Grid como copiloto: menos toque, mais escolha. FEITO em 21/08, menos uma decisão de regra.** Medido
   antes: **um ataque custava seis toques e um número digitado, e só três dos sete eram escolha**; o
   resto era o mestre transcrevendo para o Grid um número que o Grid já tinha. O documento é o
   `Grid_Automacao.md`: a conta do atrito, o princípio (nunca perguntar o que dá para calcular · todo
@@ -110,6 +122,11 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   atirada sai da Força de Arremesso de QUEM joga, e não da arma, e esse número não chega ao Grid
   (o `RESUMO` não o carrega). Enquanto não chegar, a folha cala para o arremesso, que é melhor do
   que mostrar uma faixa inventada.
+
+  **A marca `[FAZER]` entrou em 24/09/2026, e não `[DECIDIR]`, apesar do título:** a regra do
+  arremesso existe (o alcance sai da Força de Arremesso de quem joga, `Arremesso.md`), e o que falta
+  é transporte, levar esse número até o `RESUMO`. A "decisão de regra" do título é a que a folha
+  tomou em 21/08 (mostrar e não aplicar). Se o humano ler diferente, a marca troca.
 - [x] **I13 · O Grid no telefone. FEITO em 2026-08-21**, nas sete fases. O tabuleiro cresceu inteiro numa tela de notebook, e as
   oito emendas do I12 foram desenhadas com mouse na mão. Medido na bancada em 21/08, num viewport de
   390×844 com dedo: **456px de mobília antes do tabuleiro (54% da tela)**, a barra da arena quebrando

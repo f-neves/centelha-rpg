@@ -307,7 +307,7 @@ revistos por ela.
   anotado no código (`conjurar`, em `artes-grid-mesa.ts`). Não é regressão, é a metade que faltava
   desde 21/08.
 
-- [~] **K28 · Deslocamento: sete decisões tomadas em 21/08, a oitava (código) já saiu; falta só a
+- [~] **K28 · [DECIDIR] Deslocamento: sete decisões tomadas em 21/08, a oitava (código) já saiu; falta só a
   ausência.** A varredura (§11 do `Golpe_Tardio.md`) achou **seis regras de andar** espalhadas por
   quatro lugares, mais dois modificadores esquecidos (a armadura tira metade da Penalidade em
   metros; baixa estatura) e uma ausência que segue **sem decisão registrada em lugar nenhum**:

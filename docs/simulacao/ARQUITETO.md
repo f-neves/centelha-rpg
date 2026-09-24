@@ -73,6 +73,24 @@ dito sem mtime, sem `git log`, sem nada — a regra tinha acabado de ser aplicad
 estava dando problema, e não à Revisora, que não estava. A regra é sobre afirmar estado de
 qualquer instância, não sobre a instância que chamou atenção primeiro.
 
+### 1.1a · "No disco" exige dizer QUAL disco, e a fonte é o `origin/main`
+
+**Escrito em 24/09/2026, por ordem do humano.** Com mais de uma árvore do mesmo repositório (o
+`rpg-system`, a do Arquiteto, a da Executora, a da Revisora), "conferir no disco" deixou de ter
+um lugar só. O que se commita e empurra de uma árvore não aparece no disco das outras até alguém
+atualizá-las, e o `rpg-system` é a que fica mais velha: o `pull` lá depende do `lore/` do
+Cartógrafo estar limpo, e a árvore suja de outro papel não se mexe. **É dela que se lê por
+hábito.** O caso que provou: o humano procurou o `plano-worktrees.md` no `rpg-system`, e ele
+existia no `origin/main` (`b362919`) e na árvore temporária do Arquiteto, e não ali.
+
+**A regra:** toda afirmação sobre o estado publicado diz de onde foi lida, e a fonte é o
+`origin/main`, depois de um `git fetch`: `git show origin/main:<caminho>`, `git log origin/main`,
+`git merge-base --is-ancestor <sha> origin/main`, ou a árvore do próprio Arquiteto recém-posta em
+`origin/main` (`git checkout --detach origin/main`, com ela limpa). O disco do `rpg-system` só vale
+para o que é do `rpg-system` (o trabalho não commitado de quem mora lá). **E ao apontar um arquivo
+para o humano, diz onde ele está**, e não só o caminho relativo: se não estiver no `rpg-system`,
+diz isso, com o link do GitHub ou o caminho da árvore em que ele está.
+
 ### 1.2 · Sinal de vida nasce com a tarefa, em disco
 
 Toda tarefa mandada para a Executora ou a Revisora inclui, no próprio pedido, a instrução de

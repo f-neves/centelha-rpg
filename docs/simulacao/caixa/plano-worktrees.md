@@ -1,6 +1,6 @@
 # Plano · uma árvore por instância (24/09/2026)
 
-**Estado: PLANO, não executado.** Pedido pelo humano em 24/09/2026, depois de a rodada 100 ter
+**Estado: APROVADO pelo humano em 24/09/2026 (seção 9), não executado. Executa DEPOIS do lote do monte A, e não no meio de uma rodada.** Pedido pelo humano em 24/09/2026, depois de a rodada 100 ter
 existido sob dois shas (`a5db998` no `main` local, `a4a9724` no `origin/main`) e de o Arquiteto ter
 precisado de uma worktree temporária para publicar sem levar os commits do Cartógrafo. A decisão
 de dar worktree própria à Executora já era do humano; este arquivo é o como.
@@ -142,3 +142,41 @@ força apaga trabalho de outra frente.
    deixam de subir por acidente e só sobem por um push de propósito. Quando subirem, um
    `pull --rebase` descarta sozinho o `a5db998` (cópia do `a4a9724`); um merge levaria os dois
    (`PASSAGEM.md`, terceira nota de 24/09/2026).
+
+## 9 · Decidido pelo humano em 24/09/2026
+
+1. **O desenho da seção 3 está aprovado, o Arquiteto saindo do `rpg-system` incluído.** A razão
+   que ele aceitou: ficando, o Arquiteto divide o `HEAD` com o Cartógrafo, e todo push dele leva o
+   mapa.
+2. **Junction, e não `npm install` próprio. A regra que vem junto: `npm install` só no
+   `rpg-system`, e só com a palavra do humano**, porque a junction faz um install mudar todas as
+   árvores de uma vez.
+3. **O mapa é publicado pelo Cartógrafo.** O Arquiteto não decide por ele: avisa pela caixa
+   (`docs/simulacao/caixa/aviso-cartografo-arvores.md`) que, com o Arquiteto e a Executora fora do
+   `rpg-system`, "sem push" volta a querer dizer que nada do mapa sobe até ele ou o humano empurrar.
+4. **O achado que o humano pôs acima das três decisões** (a seção 2, "a consequência que não se vê
+   de dentro") virou regra no `ARQUITETO.md §1.1a`: conferir no disco diz QUAL disco, e a fonte é o
+   `origin/main`.
+5. **A ordem:** primeiro o lote do monte A (uma rodada, com a Revisora fechando), depois as árvores.
+
+## 10 · A proposta do Cartógrafo, que chegou no mesmo dia e desenha o contrário
+
+O Cartógrafo escreveu `lore/mapas/PROPOSTA-WORKTREE.md` (commit `4b129ba`, só no `main` local do
+`rpg-system`, sem push), também não executada: **ele sai** para `centelha-mapa`, com a branch própria
+`mapa`, junções para `fonte/`, `render/`, `simbolos/` e `node_modules`, o `.venv` recriado e o
+histórico de desfazer copiado (cerca de 216 MB novos). Os dois planos resolvem o mesmo defeito por
+lados opostos: no deste, o mapa fica e saem o Arquiteto e a Executora; no dele, sai o mapa.
+
+**O desenho aprovado é o deste arquivo.** Com ele executado, a proposta do Cartógrafo deixa de ser
+necessária para o "sem push" valer, mas ela continua de pé por outros dois motivos que ela mesma dá:
+os dados sujos do mapa param de travar o `pull` de quem está no `rpg-system`, e o índice deixa de ser
+compartilhado com o humano. **A decisão sobre ela é do humano e do Cartógrafo, e o Arquiteto não a
+toma.** Dois fatos da proposta dele que valem para esta:
+
+- a memória do Claude Code é por pasta: uma sessão aberta noutra pasta nasce sem a memória. Aqui a
+  sessão do Arquiteto continua aberta a partir do `rpg-system`, e por isso a memória não muda; a da
+  Executora nasce desta sessão;
+- o `.git/config` mudou às 23:38:53 de 23/09/2026, no instante em que uma worktree de agente foi
+  removida (`lore/mapas/registro-git.jsonl`). Criar e remover worktrees reescreve esse arquivo, e
+  não está provado que isso troca a `core.hooksPath`. Criar duas worktrees é a ocasião de medir: o
+  `test-portoes` antes e depois de cada `worktree add`.

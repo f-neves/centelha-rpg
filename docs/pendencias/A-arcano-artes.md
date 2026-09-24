@@ -36,7 +36,7 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   como uma criatura carrega Efeitos no stat block.
 - [ ] **A10 · [FAZER] Abertura do capítulo para iniciante.** As seções 2 a 4 do `Arcano_revisao.md`
   (o que a feitiçaria é) ainda não viraram prosa no site.
-- [~] **A11 · Duas partes, dois estados** (achado na auditoria de memória de 08/09: fechar isto
+- [~] **A11 · [DECIDIR] Duas partes, dois estados** (achado na auditoria de memória de 08/09: fechar isto
   como um item só escondia uma condição futura dentro do "fechado", a forma que o `CATALOGO.md` da
   simulação agora cataloga). **[FECHADO em 2026-08-17, escopo elemental improvisado:]** o "Ocultismo
   + Atributo" saiu de todos os textos e do `regras.json`, porque nunca foi regra viva: a única

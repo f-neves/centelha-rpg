@@ -89,6 +89,15 @@ declara os Parâmetros.
 **O que fica FIXO na declaração é o NÍVEL EFETIVO, e ele é um TETO.** A distribuição exata dos
 Parâmetros e o formato da figura não precisam estar decididos ainda.
 
+**A METADE QUE ESTA RÉGUA NÃO RESPONDE, ligada em 24/09/2026 a pedido do humano:** quando a MIRA
+(onde a Arte cai) e a FORMA (a figura) travam, se na declaração ou no fim do Preparo. A frase acima
+diz só que a forma não precisa estar decidida na declaração, e nenhum ponto deste documento diz
+quando ela trava, nem fala da mira. O código de hoje trava as duas na declaração (`conjurar`
+posiciona a figura antes de montar). A `§5.5` do `Arcano_revisao.md` manda o contrário: "na declaração se compra o tamanho, no último Tick se dá a forma e a mira". A diferença
+é de regra: travadas cedo, quem se move durante o Preparo escapa; travadas tarde, não escapa. **Quem
+implementar esta régua lê antes o `I11`** (`docs/pendencias/I-mesa-tempo-real.md`), que está
+marcado `[DECIDIR]` e está na lista única de decisões do humano.
+
 **DECISÃO MINHA, D-C1 · o teto é o nível efetivo, e não a lista de Parâmetros.** A descrição do
 humano diz que o Nível fica fixo e a distribuição não. Escrevo isso como: nenhum Parâmetro pode,
 no Golpe, estar acima do nível efetivo declarado, e qualquer distribuição abaixo disso é válida.
