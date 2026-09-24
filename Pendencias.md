@@ -50,8 +50,8 @@ está na seção 3.
 | I | Mesa virtual · tempo real | [`I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 14 | 10 | 2 | 2 | 1 | 8 | 0 | 0 | 2 | 1 |
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 11 | 8 | 0 | 3 | 1 | 2 | 0 | 2 | 1 | 2 |
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 30 | 16 | 1 | 13 | 12 | 4 | 0 | 0 | 1 | 0 |
-| L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 105 | 72 | 0 | 33 | 0 | 8 | 1 | 0 | 63 | 0 |
-| | **Total** | | **251** | **163** | **4** | **84** | **45** | **36** | **8** | **3** | **68** | **7** |
+| L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
+| | **Total** | | **253** | **165** | **4** | **84** | **45** | **36** | **8** | **3** | **70** | **7** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -561,6 +561,8 @@ Fechados (13): K29, K1, K2, K3, K10, K7, K15, K16, K22, K23, K26, K12, K13.
 | L102 | aberto | AUTOR | M-18, Canalizar Virtude: teto ou contrapartida. Regra nova de verdade, não conserto pontual. |
 | L103 | aberto | ANOTADO | O laço do harness não soma ao ataque as condições nem o porte que a mesa soma. |
 | L104 | aberto | ESCALA | Uma asserção do `test-grid` cai às vezes: 3 falhas em 60 runs do CI, sempre na "Criatura 17". |
+| L105 | aberto | ANOTADO | A caixa que o mestre lê ao rolar a iniciativa no Grid ainda diz "Tick 0". |
+| L106 | aberto | ANOTADO | "No máximo 60 KB de HTML por movimento (foram 67,1 KB)". |
 
 Fechados (33): L5, L6, L9, L11, L12, L13, L14, L15, L17, L18, L19, L21, L22, L34, L32, L31, L27, L37, L39, L44, L46, L49, L50, L53, L61, L64, L67, L72, L73, L75, L79, L85, L68.
 

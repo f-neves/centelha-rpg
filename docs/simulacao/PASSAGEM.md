@@ -290,6 +290,21 @@ entrado no `main` — e não tinha: `efd8238` ficou órfão, irmão de `2ae91da`
 sumiu do disco depois do checkout da rodada 29. Recuperado por `cherry-pick` (`8f03ba5`), a tempo
 de um `git gc` não limpar o objeto órfão.
 
+**Terceira nota, 24/09/2026, e desta vez não é veredito:** o relato da rodada 100 existe sob dois
+shas. A Executora commitou `a5db998` no `main` LOCAL do clone principal, por cima de três commits
+do Cartógrafo que ele não empurra (`c8a1a03`, `05277d0`, `6ee7f79`), e publicou o mesmo trabalho
+como `a4a9724`, aplicado direto sobre o `origin/main`, para não levar os commits dele. Conferido
+pelo Arquiteto: `git diff a5db998 a4a9724 --stat` só mostra `lore/` (a diferença são os commits do
+mapa); fora de `lore/` o diff é vazio, os três arquivos da rodada são iguais byte a byte (`cmp`,
+com controle positivo), o `git patch-id --stable` dos dois é o mesmo (`94a78dd`), e o `git cherry
+origin/main main` marca o `a5db998` com `-`, "já está lá". **O que isso quer dizer para quem
+publicar o `main` local:** um `git pull --rebase` descarta o `a5db998` sozinho, porque o rebase pula
+commit cujo patch já está no destino; um `git merge` leva os dois, e o histórico passa a carregar a
+rodada 100 duas vezes, como os vereditos 27 e 28 acima. Não há conflito em nenhum dos dois casos. A
+causa é a mesma das duas notas acima vista de outro lado: duas instâncias publicando a partir de
+estados diferentes do mesmo repositório, e aqui a saída limpa (publicar sobre o `origin/main`)
+produziu a cópia. O conserto que o humano pediu é o isolamento por worktree (plano de 24/09/2026).
+
 **Regra daqui pra frente:** depois de qualquer veredito da Revisora, antes de registrar
 fechamento em Pendencias.md, conferir com `git merge-base --is-ancestor <sha-do-veredito> HEAD`
 (ou `git log --oneline --graph` em volta do commit) que o commit dela está de fato na história do
