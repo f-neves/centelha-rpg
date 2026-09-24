@@ -9,6 +9,22 @@ confirmado pelo usuário; o que é recomendação de IA fica marcado como tal.
 *(Atualizar esta seção antes de encerrar toda sessão de trabalho no mapa — é a
 primeira coisa que `/cartografo` mostra.)*
 
+- **RODADA DAS PENDÊNCIAS SEM O USUÁRIO (2026-09-23, 23h em diante) · EM ANDAMENTO.
+  Registro de reencontro: `RELATORIO-PENDENCIAS.md`** (atualizado antes de cada
+  item). Pedido: seis pendências que não dependem do usuário, na ordem a (desvio de
+  colisão de nomes), b (largura do rio por afluentes), c (cadeado de camada para
+  regiões, nomes, elementos e rotas), d (atração do braço de delta), e (via
+  desalinhada), f (Neck ↔ Calin com o cache). Fora: folhas de símbolos, PSD, nomes
+  definitivos. As 10 decisões da empreitada estão resumidas em
+  `DECISOES-A-REVISAR.md`, **nenhuma aprovada**.
+  - **Git (3ª volta ao caminho absoluto)**: registrado em `registro-git.jsonl` como
+    padrão recorrente de causa desconhecida, fora do repositório. Quando o usuário
+    autorizou, já estava certo: a sessão Arquiteto rodou o conserto às 23:22.
+  - **Push (esclarecido)**: o Cartógrafo NÃO empurrou nada. Os commits do mapa subiram
+    nos pushes do Arquiteto, que trabalha no MESMO diretório e no mesmo `HEAD`
+    (`git push origin HEAD:main` leva tudo o que está no `HEAD`). O primeiro foi às
+    21:11:49, 50 s depois do meu `6cf51dd`, pela sessão Arquiteto `3340b852`. Ver
+    "Achados técnicos", "Commit sem push não existe com o HEAD compartilhado".
 - **EMPREITADA AUTÔNOMA (2026-09-23, noite) · CONCLUÍDA. O registro completo, etapa a
   etapa, com o roteiro de teste e as decisões a revisar, é `RELATORIO-FINAL.md`:
   comece por ele.** Tudo o que for decisão ali é recomendação do Cartógrafo. Como
@@ -1244,6 +1260,26 @@ prompts, IA pintando o mapa inteiro, está superada — ver seção Técnica). R
    automatizada de smart object vinculado — não existe API oficial documentada).
 
 ## Achados técnicos registrados (não são decisões, são fatos medidos)
+
+- **Commit sem push não existe com o HEAD compartilhado** (2026-09-23, 23h, apurado a
+  pedido do usuário). A regra da empreitada era "commit sem push", e todos os commits
+  dela estavam no `origin/main` no fim. Apurado pelo reflog de `origin/main` e pelas
+  transcrições das sessões em `~/.claude/projects/`: **nenhuma sessão do Cartógrafo
+  rodou `git push`**. O primeiro push que levou commit do mapa foi às 21:11:49,
+  `6cf51dd` como ponta, 50 s depois de eu commitá-lo, pela sessão Arquiteto `3340b852`
+  (`git push origin HEAD:main`, depois de conferir que o que ia junto era só `lore/`,
+  `docs/` e afins). Os pushes seguintes do Arquiteto levaram o resto. Não é desvio de
+  regra do Cartógrafo nem do Arquiteto: a frente do mapa trabalha no MESMO diretório do
+  Arquiteto (não tem worktree própria), então o `HEAD` é um só e qualquer push dele
+  carrega os meus commits. **Recomendação do Cartógrafo**: se "sem push" precisa valer,
+  a frente do mapa precisa da própria worktree (o roteiro está no `CLAUDE.md` da raiz,
+  "uma worktree por frente"); sem isso, "sem push" quer dizer só "eu não empurro".
+
+- **`core.hooksPath` volta ao caminho absoluto entre sessões, causa desconhecida**
+  (três vezes até 2026-09-23). Nenhuma sessão do Claude registrada grava o valor
+  absoluto, e nenhum script versionado escreve a chave (varredura das transcrições e
+  do repositório, 2026-09-23). A origem é sempre `.git/config`. Sequência em
+  `registro-git.jsonl`, com a nota de padrão recorrente.
 
 - **Duas "ilhas" de `massas.geojson` são pedaços das principais** (2026-09-23 noite,
   cache de identidade de ilha, conectividade 4 na resolução oficial): `ilha-192` cai
