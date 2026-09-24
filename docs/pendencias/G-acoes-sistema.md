@@ -180,4 +180,11 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   (`Acoes_Sistema.md:1260-1264`, `acoes-oficio-e-mundo.md:178`) o mestre de obras soma os 5 pontos
   próprios por estação além de dirigir dez ajudantes (5 + 10 × 3 = 35). Decidir se dirigir consome
   parte da produção do supervisor.
+- [ ] **G22 · [DECIDIR] O que é o "ganho por semana".** Levantado em 24/09/2026. O §7.9 dá
+  "Ganho por semana = (média − 4) × 10 pc, limitado pela demanda do lugar"
+  (`Acoes_Sistema.md:1295`, `acoes-oficio-e-mundo.md:198`), e a tabela de Serviços & Renda dá
+  "Renda/Sem" e "Livre/Sem" por faixa de Recursos, com "Uma semana de trabalho vale 6 dias"
+  (`custo-de-servico-e-itens.md:39-53`). Nenhum dos dois diz se o número é renda disponível, valor
+  produzido em seis dias, resultado de uma Longa de intervalo semana, ou capacidade abstrata. Os
+  casos de trabalho parcial (meia semana, trabalho entre aventuras, dias perdidos) dependem disso.
 
