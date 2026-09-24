@@ -527,9 +527,10 @@ menor que a dos outros moldes."
 
 ### C-22 (172) · a iniciativa social inventa um Tick 0 e apaga os degraus
 
-> **JÁ RESOLVIDO**, achado ao conferir em 17/09/2026: `relacoes-sociais.md` não tem mais "Tick
-> 0"; a Iniciativa social hoje é `1d6 + Perspicácia + Sociabilidade`, mecânica diferente da
-> citada aqui. Não é meu sha.
+> **FEITO** `bed1e91` (rodada 99). A marca "JÁ RESOLVIDO" de 17/09 estava errada: o "Tick 0"
+> continuava na linha 134, e `git log -S` mostra a frase só no commit que a criou (`738aaee`),
+> então nunca houve conserto desfeito. A frase passou a Tick 1 com degraus de 6, e link para a
+> iniciativa física.
 
 `src/content/chapters/relacoes-sociais.md`: "começa no **Tick 0**; os demais no **Tick 1**,
 com a mesma regra de defasagem do físico".
@@ -540,6 +541,11 @@ A frase erra o Tick inicial, apaga os degraus, e ainda afirma ser "a mesma regra
 **Confere:** `grep -n "Tick 0" src/content/chapters/relacoes-sociais.md` = 0.
 
 ### C-23 (177) · três redações do Valor Passivo, e o motor não bate com duas
+
+> **FEITO** `bed1e91` (rodada 99), na sobra que o `Pendencias.md` registrava: a célula "Passiva"
+> da tabela dos modos em `acoes-e-sistema.md` e a mesma omissão em `acoes-sentidos-e-engano.md`
+> ganharam a Centelha, como `calc.ts` (`valorPassivo`) e o glossário. A fórmula do capítulo VIII
+> e o glossário já estavam alinhados, com a Especialidade por cima só na situação (M-03).
 
 - `acoes-e-sistema.md`: "Valor Passivo = 2 × (Atributo + Habilidade)"
 - `coracao-do-sistema.md` e `glossario.json`: "(Atributo + Habilidade) × 2 + Especialidade + Centelha"
@@ -767,8 +773,10 @@ próxima inserção de capítulo.
 
 ### C-39 (150) · "[object Object]" impresso no meio do capítulo das Artes
 
-> **JÁ RESOLVIDO**, achado ao conferir em 17/09/2026: `{MOLDES.aura}` não existe mais em
-> `artes/regras.astro`. Não é meu sha.
+> **FEITO** `bed1e91` (rodada 99). A marca "JÁ RESOLVIDO" de 17/09 estava errada: `{MOLDES.aura}`
+> continuava na linha 274, e `git log -S` mostra a expressão só no commit que a criou
+> (`86fb96d`). Passou a `{MOLDES.aura.nota}`, e depois do build nenhum HTML do `dist/` contém
+> "object Object".
 
 `src/pages/artes/regras.astro:**274**` tem `<p class="muted">{MOLDES.aura}</p>`, e
 `MOLDES.aura` é um **objeto** em `regras.json → arcano.moldes.aura`
@@ -997,7 +1005,7 @@ olha. Todos são uma frase ou um link.
 | --- | --- | --- |
 | C-59 (1, 3) | a capa usa "pool de d6" e conta Proeza, Técnica e Arte | uma linha do que são, ou link; os três têm verbete no glossário. **FEITO** `82313f5` |
 | C-60 (5, 6) | o capítulo XIX dá quatro números de Dificuldade | dizer que o número é o alvo do **total dos dados**, e que "cada 6" é 6 **pontos** de folga, não dados que caíram em 6. **FEITO** `82313f5` |
-| C-61 (7) | "Esp." em `qual-sistema.md` e `defesas.md` | legenda ou link: é Especialidade, e são as duas únicas páginas que abreviam. **JÁ RESOLVIDO** antes desta sessão, sem sha meu |
+| C-61 (7) | "Esp." em `qual-sistema.md` e `defesas.md` | legenda ou link: é Especialidade, e são as duas únicas páginas que abreviam. **FEITO** `bed1e91` (rodada 99): a marca "JÁ RESOLVIDO" estava errada, o "Esp." continuava sem legenda e `git log -S` não mostra conserto desfeito. Legenda com link na folha de referência de `defesas.md` e abaixo do fluxograma de `qual-sistema.md` |
 | C-62 (17) | o capítulo I põe a Especialidade numa fórmula | quanto ela vale: +1 por nível em valor fixo, +1d6 descartando o menor no pool. **FEITO** `82313f5` |
 | C-63 (18) | o capítulo I exige a Centelha | ela é o capítulo V; `derivados.defesa.centelhaMult` e `ataque.centelhaMult` valem 1. **FEITO** `82313f5` |
 | C-64 (21) | "empates favorecem quem defende" | isso é da **rolagem oposta**; contra Dificuldade e Valor Passivo a regra é `total > alvo` e o empate perde. O capítulo não separa os dois casos. **Conferido em 17/09/2026: já separa**: a frase mora só na seção "Rolagens Opostas" (`coracao-do-sistema.md:90`), e as seções de Dificuldade/Valor Passivo, acima, nunca mencionam empate favorecendo ninguém. Não mexi |

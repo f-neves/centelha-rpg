@@ -40,6 +40,8 @@ de conversão grande, não troca de palavra pontual), como já registrado.
 
 ## C-102 · a página do bestiário conta "97 das 308", e hoje são 100 das 309
 
+> **FEITO** `bed1e91` (rodada 99). A contagem sai do `monsters.json` no frontmatter de `bestiario.astro`, a cada build; no build da rodada deu **101 das 309**, um a mais que este item, que já tinha envelhecido.
+
 **O texto original:** `src/pages/bestiario.astro:67`, dentro do callout "Fraqueza & Resistência":
 
 > "Poucas criaturas têm (**97 das 308**), e quando têm, muda a luta."
@@ -72,6 +74,8 @@ envelheça de novo cada vez que alguém preencher mais uma criatura).
 
 ## C-103 · o resumo da Regra de Horda no bestiário troca "+Magnitude d6" por um número fixo
 
+> **FEITO** `bed1e91` (rodada 99): "(2–3 = +1d6, 4–7 = +2d6, 8–15 = +3d6…)".
+
 **O texto original:** `src/pages/bestiario.astro:69`, callout "Regra de Horda":
 
 > "o tamanho vira **Magnitude** (2–3 = +1d6, 4–7 = +2, 8–15 = +3…), somada ao **acerto e ao dano**"
@@ -98,6 +102,8 @@ que é a mesma tabela de `combate.md:416-418` com "d6" em todos os degraus, não
 ---
 
 ## C-104 · a nota de conversão do Dragão Vermelho Ancião (e mais 56 criaturas) descreve uma Centelha diferente da que o campo usa
+
+> **FEITO** `bed1e91` (rodada 99), por decisão do Arquiteto: as 57 notas ficam, e um comentário no topo do bloco `DATA` de `conversao-monstros.html` diz que a Centelha dentro de `note` é a de antes do +1 da Reescala (B10) e que o campo `cent` é o que vale.
 
 **Achado de menor prioridade: o campo `note` aqui NUNCA é publicado** (`gen-bestiario.mjs` lê
 `m.cent`, `m.name`, `m.type`, `m.sk` etc. da mesma linha, mas não lê `m.note` em lugar nenhum;

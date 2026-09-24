@@ -117,14 +117,12 @@ numeradas: a **M-05** (`7db14f1`, 17/09) e a **M-42** (`2520b5d`, 18/09, veredit
 
 ### Os consertos C que continuam abertos
 
-- **Abertos:** C-23 (sobra uma célula: o Valor Passivo sem a Centelha no capítulo de Ações), C-102,
-  C-103, C-104 (da leitura do bestiário de 18/09).
-- **Parciais:** C-12, C-47, C-85.
-- **Marcados como feitos, e o defeito continua no fonte:** C-22 (a frase do "Tick 0" em Relações
-  Sociais), C-39 (a página de Regras das Artes imprime um objeto onde devia imprimir o molde da
-  aura), C-61 (a abreviação "Esp." sem legenda). Os três conferidos no fonte em 23/09, e o C-39
-  também no HTML gerado (pela Revisora, no veredito da rodada 94). Não se sabe por que foram
-  marcados como feitos.
+- **Abertos:** nenhum. C-22, C-23, C-39, C-61, C-102, C-103 e C-104 fechados na rodada 99
+  (`bed1e91`). Os três que estavam marcados como feitos sem estar (C-22, C-39, C-61) nunca tinham
+  sido consertados: `git log -S` mostra cada frase só no commit que a criou.
+- **Parciais:** C-12 (falta decisão: as cinco linhas do Bram ficaram por escolha registrada na
+  M-02), C-47 (falta execução: os três números da M-07), C-85 (falta execução: o link do ☆ em
+  `/artes/catalogo` e em `/caminhos/<proeza>`).
 - **Recusados pela Executora, sem decisão de mesa:** C-72, C-87.
 
 ### Nos temas
