@@ -214,3 +214,23 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   lugar"; "absorve" sugere gasto bruto. Muda quantas peças o mercado absorve (numa cidade, 500 pc:
   2 espadas se for bruto, cerca de 3 se for líquido).
 
+- [ ] **G25 · [DECIDIR] Peça de mais de um ofício.** Levantado em 24/09/2026, na revisão econômica.
+  O §7 não tem regra para peça que exige dois ofícios (a arma de haste é cabeça de Ferraria e haste
+  de Carpintaria ou Gerais): não diz se os Acúmulos das partes se somam, se cada ofício faz a sua
+  parte, nem se há montagem final. As linhas da tabela com dois ofícios também não se explicam:
+  "Arco longo, besta" com Arcos e Carpintaria (`Acoes_Sistema.md:1247`, `acoes-oficio-e-mundo.md:157`)
+  e "Navio de guerra, catedral" com Naval e Alvenaria (`Acoes_Sistema.md:1270`,
+  `acoes-oficio-e-mundo.md:180`). Basta um, os dois são exigidos, ou um por parte?
+- [ ] **G26 · [DECIDIR] O que é "arma marcial".** Levantado em 24/09/2026, na revisão econômica. A
+  linha "Espada, machado de guerra, arma marcial" (`Acoes_Sistema.md:1246`,
+  `acoes-oficio-e-mundo.md:156`) usa uma categoria que o livro não define e que o `armas.json` não
+  tem. Decidir quais armas entram nela, em particular maças, martelos, picareta e a cabeça da
+  Alabarda.
+- [ ] **G27 · [DECIDIR] O machado da faca.** Levantado em 24/09/2026, na revisão econômica. A linha
+  "Faca, machado, ponta de lança" (`Acoes_Sistema.md:1243`, `acoes-oficio-e-mundo.md:153`) não diz
+  se o machado é ferramenta ou arma. O `armas.json` tem Machado, Machadinha, Machado de Arremesso e
+  Machado Pesado; a revisão econômica cita Machado (média, 300 pc) e Machadinha (leve, 80 pc).
+- [ ] **G28 · [CONSERTAR] O ofício Arcos não está na lista de ofícios.** Levantado em 24/09/2026, na
+  revisão econômica. "Arcos" aparece na tabela de fabricação (`Acoes_Sistema.md:1231` e `:1247`;
+  `acoes-oficio-e-mundo.md:141` e `:157`), e não na lista de ofícios da §7.2
+  (`Acoes_Sistema.md:1043-1045`) nem na do capítulo (`acoes-oficio-e-mundo.md:51`).
