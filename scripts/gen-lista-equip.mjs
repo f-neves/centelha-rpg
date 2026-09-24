@@ -68,7 +68,7 @@ const comImagem = (arr) => arr.filter((i) => !SEM_IMAGEM.has(i.id)).length;
 out.push(`## Armas (${armas.length}, ${comImagem(armas)} com imagem)`);
 out.push('');
 out.push('`Dado` é a quantidade de dados da arma e `Bônus` o modificador fixo de dano.');
-out.push('`Def` é a Defesa que a arma dá ao empunhá-la, `Pen` o nível de penetração,');
+out.push('`Def` é a Defesa que a arma dá ao empunhá-la, `Pen` o nível de Perfuração,');
 out.push('`Ticks` o tempo do golpe e `Fôlego` o custo do ataque.');
 out.push('');
 out.push(tabela(

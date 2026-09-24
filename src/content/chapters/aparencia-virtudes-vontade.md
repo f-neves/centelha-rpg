@@ -42,7 +42,7 @@ Se o Atributo é o que o personagem **consegue** fazer e a Habilidade é o que e
 | **Compaixão** | poupar, socorrer e cuidar | à crueldade |
 | **Convicção** | seguir apesar de tudo | à dor, à tortura e ao desânimo |
 | **Temperança** | segurar o próprio impulso | à tentação e à provocação |
-| **Bravura** | ficar e encarar | ao medo e à intimidação |
+| **Bravura** | ficar e encarar | ao medo |
 
 <p class="muted">A <strong>tortura</strong> pesa na Convicção pelas duas metades: aguentar sem falar, sem ceder, sem trair é alma, e rola a Convicção sozinha no <a href="#o-teste-de-virtude">teste de Virtude</a>; aguentar a dor do ferro é corpo, e rola Vigor + Convicção. Uma cena pode pedir os dois testes, e o Mestre escolhe qual a situação pede.</p>
 

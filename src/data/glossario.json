@@ -67,16 +67,23 @@
     "definicao": "Os três modos de um golpe: Cortante, Perfurante e Impacto. O Perfurante funde projétil e estocada (não há distinção). Cada arma tem um modo principal (sem custo) e, às vezes, secundários (−2 acerto e −1d6 de dano). A armadura tem três Absorções: Impacto, Corte e Perfuração (o dano Perfurante usa a de Perfuração)."
   },
   {
-    "id": "penetracao",
-    "termo": "Penetração",
+    "id": "perfuracao",
+    "termo": "Perfuração",
     "aliases": [
-      "pen",
       "nível de perfuração",
       "resistência à perfuração",
       "r.perf",
       "gate"
     ],
-    "definicao": "Nível de Perfuração da arma (0–3) vs Resistência à Perfuração da armadura. Só vale para o modo Perfurante: se a Perfuração da arma for menor que a Resistência, o golpe resvala (dano 0); se for igual ou maior, o gate abre e rola-se o dano menos a absorção. Cortante e Impacto não passam pelo gate."
+    "definicao": "Nível de Perfuração da arma (0–3) vs Resistência à Perfuração da armadura. Só vale para o modo Perfurante: se a Perfuração da arma for menor que a Resistência, o golpe resvala (dano 0); se for igual ou maior, o gate abre e rola-se o dano menos a absorção. Cortante e Impacto não passam pelo gate. Não confundir com a Penetração, que é efeito de Técnica."
+  },
+  {
+    "id": "penetracao",
+    "termo": "Penetração",
+    "aliases": [
+      "pen"
+    ],
+    "definicao": "Efeito de Técnica que ignora parte da Absorção do alvo: 2, 3, 4 e 6 pontos nos níveis 1 a 4, toda a armadura no 5, armadura mais Absorção natural no 6 (a tabela do bônus de nível, no capítulo A Centelha). Não é o gate de Perfuração da arma contra a armadura."
   },
   {
     "id": "defesa",

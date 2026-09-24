@@ -134,7 +134,7 @@
   {
     "id": "valor",
     "nome": "Bravura",
-    "resiste": "ao medo e à intimidação",
+    "resiste": "ao medo",
     "descricao": "A disposição de encarar o que assusta: ficar quando o corpo inteiro manda correr, avançar contra o que é maior, dizer não a quem tem poder de destruir você. É a Virtude que decide se a cena chega a acontecer, porque quase toda cena perigosa começa com alguém escolhendo não sair dali. Não é ausência de medo, é o medo não mandando: a Bravura decide se você fica, e a Temperança decide se você mantém a cabeça fria enquanto fica.",
     "niveis": [
       {
