@@ -338,3 +338,22 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   of plates" (`custo-de-servico-e-itens.md:192`, `:194`), que vêm do `nome` no `armaduras.json`, e o
   aviso "Provisório" (`:10`) passou a dizer isso em vez de afirmar que todos os nomes foram traduzidos.
   Decidir o nome final dos dois; renomear o `nome` não quebra ficha salva (a persistência é pelo id).
+- [ ] **G44 · [DECIDIR] Proposta de design do autor: empréstimo de XP por aulas pagas.** Levantado em
+  25/09/2026, na revisão econômica. O personagem paga aulas (em dinheiro) e compra um ponto de
+  Atributo, Habilidade ou Especialidade ANTES de ter o XP, ficando em débito; depois, metade do XP que
+  ganhar (por sessão ou pela Firula de nível 3) vai para quitar a dívida. **Já decidido pelo autor:** um
+  ponto por vez (só compra outro depois de quitar); o professor precisa ter pelo menos 1 ponto acima do
+  aluno naquilo que ensina; o Mestre julga o limite e se o empréstimo é possível; o preço da aula é o
+  tempo do professor × o salário dele (entra na futura tabela de serviços). **Aberto:** quanto tempo a
+  aula leva (provavelmente mais rápido que aprender sozinho, sem ser rápido demais); o que acontece
+  com a dívida se o XP não vier. Não aplicar agora.
+- [ ] **G45 · [DECIDIDO, APLICAR DEPOIS, junto com a G22] A jornada por ofício.** Decidido pelo autor
+  em 25/09/2026, na revisão econômica. Ofícios leves (escrivão, acadêmico) 5 a 6 h; artesão 8 h;
+  braçal e trabalho pesado 10 h; 6 dias por semana. Um "dia" da tabela de fabricação é uma jornada
+  daquele ofício; linhas em escala de hora convertem pela jornada do ofício; Apressar é dobrar a
+  jornada do próprio ofício; meia jornada é meio intervalo. **Não aplicar até a revisão econômica
+  fechar a G22.**
+- [ ] **G46 · [CONSERTAR] O tamanho do salto entre degraus da escada de intervalos diverge.** Levantado
+  em 25/09/2026, na revisão econômica. `Acoes_Sistema.md:216` diz que o salto "vai de dez a sessenta
+  vezes em tempo real"; `src/content/chapters/relacoes-sociais.md:215` diz que os saltos "multiplicam
+  de 8 a 24 vezes cada um". Com a jornada de 8 h (G45), hora → dia salta 8, fora da primeira faixa.
