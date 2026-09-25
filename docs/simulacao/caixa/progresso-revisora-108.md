@@ -12,3 +12,4 @@
 - 16:38 · lidas por inteiro também velocidade fora do bestiário (76); bestiário 309, todas no padrão 'Dano ... · Velocidade N' da linha de ataque, conferidas por regex e não uma a uma. Lendo nível (382).
 - 16:39 · lidas por inteiro nível/nível 382 (30 no sentido da Técnica, 227 nível de Arte separados, 125 em outro sentido). Parte 2 medida. Conferindo travessão e escrevendo o veredito.
 - 16:41 · veredito escrito (PROCEDE; Parte 2: 241 errados nas oito linhas, 562 com os 321, 789 com o nível da Arte). Commitando.
+- 16:56 · f28324b empurrado (fast-forward) e CI 36181288709 success. Rótulo da linha de total do §6 corrigido (a Defesa aparece em duas linhas).

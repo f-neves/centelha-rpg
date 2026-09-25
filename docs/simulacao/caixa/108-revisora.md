@@ -149,7 +149,7 @@ cobre em parte, e fica fora da soma, com o motivo ao lado.
 | Valor Passivo ← "passiva" | 22 | 0 | 11 | **9** | 7 | 22 |
 | Técnica ← "poder" | 12 | 0 | 8 | **11** | 1 | 12 |
 | Firula ← "manobra" | 7 | 0 | 7 | **7** | 0 | 7 |
-| **as oito** | **983** | | | **241** (240 fora do bestiário) | **29** | **674 + 309** |
+| **as oito linhas** (a da Defesa aparece em duas, "esquiva" e "bloqueio") | **983** | | | **241** (240 fora do bestiário) | **29** | **674 + 309** |
 
 **Soma dos errados das oito linhas: 241. Com os 321 da Compostura e do "alvo": 562.** Se o humano
 contar como errado o "nível" da Arte (abaixo), **789**.
