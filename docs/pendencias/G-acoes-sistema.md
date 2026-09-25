@@ -357,3 +357,101 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   em 25/09/2026, na revisão econômica. `Acoes_Sistema.md:216` diz que o salto "vai de dez a sessenta
   vezes em tempo real"; `src/content/chapters/relacoes-sociais.md:215` diz que os saltos "multiplicam
   de 8 a 24 vezes cada um". Com a jornada de 8 h (G45), hora → dia salta 8, fora da primeira faixa.
+
+**Revisão econômica, Etapas A, B e C: as decisões aprovadas (registradas em 25/09/2026, NÃO aplicadas).**
+
+Fonte: `lore/economia/etapas-abc/revisao-economica-etapas-abc.md` (fora do git; a seção de cada item é a
+do documento, e a linha é a do cabeçalho da seção). Aprovadas pelo autor; nada aplicado. As que o autor
+recusar saem desta lista quando ele disser quais. G47 a G60 são as marcadas **[DIVERGE]** no Resumo (mudam
+texto do livro, do JSON ou do `Acoes_Sistema.md`); G61 a G70 são as decisões novas.
+
+- [ ] **G47 · [DECIDIDO, APLICAR DEPOIS] A2 · Equipamento de aventura pela tabela de mercadorias.**
+  Documento §A2 (`:71`). Todo item de equipamento de aventura passa ao preço da tabela de mercadorias,
+  mantendo os ids do `precos.json`; entram duas linhas novas de fabricação (sapato; cadeado); a regra
+  Misto se refina (a tabela de fabricação vale para armas, armaduras, escudos, munição e sela). Afeta
+  `src/data/precos.json`, `custo-de-servico-e-itens.md:355` (Equipamento de Aventura) e a tabela de
+  fabricação de `acoes-oficio-e-mundo.md`.
+- [ ] **G48 · [DECIDIDO, APLICAR DEPOIS] A4 · Moeda e metais.** Documento §A4 (`:113`). O pc é a menor
+  moeda; metais por 100 g: ferro 1,5 pc (hoje ¼), cobre 3 pc (hoje 2), prata 3 pp, ouro 3 po, platina
+  3 pl (nova); joias e letras de câmbio com deságio e taxa. Afeta `custo-de-servico-e-itens.md:12`
+  (Moedas & Conversão).
+- [ ] **G49 · [DECIDIDO, APLICAR DEPOIS] B1 · O multiplicador do ofício: ×20.** Documento §B1 (`:146`).
+  A fórmula passa de `(média − 4) × 10 pc` para `× 20`, e o exemplo do capítulo muda para os valores da
+  curva da B2 (G50). Afeta `acoes-oficio-e-mundo.md:206` e o espelho em `Acoes_Sistema.md`.
+- [ ] **G50 · [DECIDIDO, APLICAR DEPOIS] B2 · A curva de renda convexa.** Documento §B2 (`:155`). Renda
+  de trabalho por semana = o melhor (média − Dif) × valor da faixa, entre as faixas que a Habilidade
+  alcança pelo Requisito: 20 / 37 / 67 pc por ponto-semana nas faixas de Dif 4 / 7 / 11. Afeta
+  `acoes-oficio-e-mundo.md:206` (a fórmula e o exemplo).
+- [ ] **G51 · [DECIDIDO, APLICAR DEPOIS] B4 · Tetos de mercado (resolve a G24).** Documento §B4
+  (`:217`). Aldeia 100, vila 300, cidade 1.000, capital sem teto; o teto limita o ganho, líquido de
+  material. Afeta `acoes-oficio-e-mundo.md:206` ("limitado pela demanda do lugar"). Ao aplicar, fecha a
+  G24.
+- [ ] **G52 · [DECIDIDO, APLICAR DEPOIS] B5 · A tabela de Renda nova.** Documento §B5 (`:235`). Rendas
+  mantidas; o Livre recalculado e decrescente (20% no braçal, 7% na nobreza); as colunas mês e ano
+  passam a 4 e 48 semanas exatas (hoje Braçal 22 pp/mês, deveria ser 24; Livre/ano 38 pp, deveria ser
+  48). Afeta `custo-de-servico-e-itens.md:33` (Serviços & Renda).
+- [ ] **G53 · [DECIDIDO, APLICAR DEPOIS] B6 · Recursos por faixas.** Documento §B6 (`:282`). Mapa de
+  faixas para Recursos 1 a 5; o Destreinado passa de ●● para ●. Afeta `custo-de-servico-e-itens.md:41-42`
+  (a coluna de Recursos da tabela de Renda) e `antecedentes.md:92` (Recursos).
+- [ ] **G54 · [DECIDIDO, APLICAR DEPOIS] B8 · A Placa completa sobe (~39%).** Documento §B8 (`:314`). A
+  Dif 11 é feita pelo perito, que ganha mais que o H-×20 supunha: de 2.600 para ~3.600 pc. Afeta
+  `src/data/armaduras.json` (`placa-completa`) e o catálogo gerado de `custo-de-servico-e-itens.md`
+  (rodada 107).
+- [ ] **G55 · [DECIDIDO, APLICAR DEPOIS] C5 · Montarias, animais, veículos e manutenção.** Documento §C5
+  (`:407`). Preços históricos (regra Misto); cavalo de guerra em dois graus e destrier entram; manutenção
+  semanal. Afeta `custo-de-servico-e-itens.md:261` (Montarias, Veículos & Animais) e o arquivo novo
+  `montarias-veiculos.json` (G70).
+- [ ] **G56 · [DECIDIDO, APLICAR DEPOIS] C6 · Viagens em km.** Documento §C6 (`:495`). Tudo em km;
+  velocidades pelo mapa de Uldun (a pé 25, caravana 30, a cavalo 50) e pelos tempos históricos; preços
+  de passagem, frete e pedágio; "Municipal 6 pc por milha" sai, e entram Transporte na cidade (2 pc o
+  trajeto) e Cavalo de aluguel (17 pc a cada 10 km). Afeta `custo-de-servico-e-itens.md:292` (Viagens,
+  `:298`) e o arquivo novo `viagens.json` (G70).
+- [ ] **G57 · [DECIDIDO, APLICAR DEPOIS] C8 · Servos e escravos.** Documento §C8 (`:632`). Criados com
+  salário e casa; escravo = 1,5 ano da renda bruta do trabalho que faz (companhia 2,25), de 3 a 6 vezes
+  o preço de hoje; sustento 15 pc por semana (o catálogo cobra 3 po por mês). Afeta
+  `custo-de-servico-e-itens.md:339` (Escravos).
+- [ ] **G58 · [DECIDIDO, APLICAR DEPOIS] E1 · Qualidade dos itens.** Documento §E1 (`:673`). Sai
+  "intervalo sobe um degrau a cada dois graus"; Piso de 1 e 2 semanas; Requisito máximo 6; preço pela
+  régua. Afeta `acoes-oficio-e-mundo.md:81` e `custo-de-servico-e-itens.md:57` (Qualidade de Itens).
+- [ ] **G59 · [DECIDIDO, APLICAR DEPOIS] E4 · Rações.** Documento §E4 (`:756`). Ração de viagem 3 pc;
+  ração de cavalo 4 pc; estábulo 7 pc. Afeta `custo-de-servico-e-itens.md:271` (Ração (dia), 2 pc hoje),
+  a seção Hospedagem & Comida (`:228`) e o `racao-dia` do `src/data/precos.json`.
+- [ ] **G60 · [DECIDIDO, APLICAR DEPOIS] E7 · Correções de texto.** Documento §E7 (`:783`). O salto
+  entre degraus (`Acoes_Sistema.md:216` × `relacoes-sociais.md:215`, a G46), a fórmula, os tetos, a
+  Renda, a Qualidade e os Itens Gerais (`custo-de-servico-e-itens.md:319`). Ao aplicar, fecha a G46.
+- [ ] **G61 · [DECIDIDO, APLICAR DEPOIS] A1 · Munição.** Documento §A1 (`:46`). Flechas de guerra e
+  virotes ficam 10 pc o maço de 10; entra Flechas rústicas (10) a 4 pc; regra de recuperação: metade.
+  Afeta `src/data/municao.json`, o catálogo de `custo-de-servico-e-itens.md` e a regra da tag Munição em
+  `armas-e-armaduras.md:51`.
+- [ ] **G62 · [DECIDIDO, APLICAR DEPOIS] A3 · Mercadorias.** Documento §A3 (`:95`). 190 itens, com as
+  correções da rodada A2 do Revisor, num arquivo próprio `mercadorias.json` (G70). Afeta
+  `custo-de-servico-e-itens.md` (Roupas `:304`, Itens Gerais `:319`, Hospedagem & Comida `:228`).
+- [ ] **G63 · [DECIDIDO, APLICAR DEPOIS] B3 · O "Ganho por semana" (resolve a G22).** Documento §B3
+  (`:211`). Ganho por semana = renda de 6 jornadas do ofício; meia jornada = meio intervalo. Aplica junto
+  com a jornada por ofício (G45). Afeta `acoes-oficio-e-mundo.md:206`. Ao aplicar, fecha a G22.
+- [ ] **G64 · [DECIDIDO, APLICAR DEPOIS] B7 · Status obrigatório.** Documento §B7 (`:298`). Regra nova
+  de viver abaixo do nível, com Temperança, e dívida para manter o status. Afeta
+  `custo-de-servico-e-itens.md:33` (Serviços & Renda) e o custo de vida (G65).
+- [ ] **G65 · [DECIDIDO, APLICAR DEPOIS] C4 · Custo de vida.** Documento §C4 (`:326`). Quatro cestas
+  por adulto-equivalente, cinco moradias, sete níveis de vida por pessoa e um pacote por família em cada
+  faixa da B5, no arquivo novo `custo-de-vida.json` (G70). Afeta `custo-de-servico-e-itens.md:228`
+  (Hospedagem & Comida).
+- [ ] **G66 · [DECIDIDO, APLICAR DEPOIS] C7 · Serviços contratados.** Documento §C7 (`:543`). Tarifa =
+  renda do perfil ÷ 6 (contrato) ou × 1,5 (avulso); lista de 38 serviços no arquivo novo `servicos.json`
+  (G70); o Séquito não custa dinheiro na mesa. O documento deixa aberta a regra do curandeiro contra a
+  Cura (`:625`). Afeta `custo-de-servico-e-itens.md:33` e `antecedentes.md:139` (Séquito).
+- [ ] **G67 · [DECIDIDO, APLICAR DEPOIS] E2 · Reparo e desgaste.** Documento §E2 (`:704`). Reparo em
+  fração do preço (1/6, 1/3, 3/4); desgaste opcional por marcas. Afeta `acoes-oficio-e-mundo.md`
+  (fabricação) e `armas-e-armaduras.md`.
+- [ ] **G68 · [DECIDIDO, APLICAR DEPOIS] E3 · Empréstimo de XP, a regra completa (completa a G44).**
+  Documento §E3 (`:726`). Tempo, preço e dívida, sobre o que o autor já decidiu na G44. Afeta
+  `criacao-de-personagem.md` (onde o XP se gasta). Ao aplicar, fecha a G44.
+- [ ] **G69 · [DECIDIDO, APLICAR DEPOIS] E5 · Pacote inicial pelo Recursos.** Documento §E5 (`:767`).
+  Bolsa de 4 semanas de Livre na criação (regra do Jogador). Afeta `criacao-de-personagem.md` e
+  `antecedentes.md:92` (Recursos).
+- [ ] **G70 · [DECIDIDO, APLICAR DEPOIS] E6 · Os arquivos do site.** Documento §E6 (`:771`).
+  `src/data/mercadorias.json` próprio (o `precos.json` deixa de ser a fonte do preço dos itens gerais,
+  com os ids mantidos); a procedência vai para `lore/economia/mercadorias.procedencia.json`, fora do
+  site; as tarifas em arquivos próprios (`custo-de-vida.json`, `renda.json`, `servicos.json`,
+  `viagens.json`, `montarias-veiculos.json`). Afeta `src/data/` e o gerador do catálogo
+  (`scripts/gen-cap-itens.mjs`).

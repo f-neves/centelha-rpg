@@ -45,13 +45,13 @@ está na seção 3.
 | D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 8 | 5 | 0 | 3 | 2 | 1 | 0 | 0 | 0 | 2 |
 | E | Social, Mental e Antecedentes | [`E-social-mental-antecedentes.md`](docs/pendencias/E-social-mental-antecedentes.md) | 10 | 7 | 0 | 3 | 5 | 1 | 0 | 1 | 0 | 0 |
 | F | Lore | [`F-lore.md`](docs/pendencias/F-lore.md) | 10 | 9 | 0 | 1 | 6 | 0 | 3 | 0 | 0 | 0 |
-| G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 48 | 34 | 0 | 14 | 26 | 2 | 0 | 5 | 1 | 0 |
+| G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 72 | 58 | 0 | 14 | 26 | 2 | 0 | 5 | 25 | 0 |
 | H | Arremesso | [`H-arremesso.md`](docs/pendencias/H-arremesso.md) | 6 | 4 | 0 | 2 | 1 | 0 | 0 | 2 | 0 | 1 |
 | I | Mesa virtual · tempo real | [`I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 14 | 10 | 2 | 2 | 3 | 8 | 0 | 0 | 0 | 1 |
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 12 | 9 | 0 | 3 | 1 | 3 | 0 | 2 | 1 | 2 |
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 32 | 18 | 1 | 13 | 14 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
-| | **Total** | | **293** | **201** | **4** | **88** | **75** | **38** | **8** | **10** | **67** | **7** |
+| | **Total** | | **317** | **225** | **4** | **88** | **75** | **38** | **8** | **10** | **91** | **7** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -447,6 +447,30 @@ Fechados (1): F9.
 | G44 | aberto | DECIDIR | Proposta de design do autor: empréstimo de XP por aulas pagas. |
 | G45 | aberto | DECIDIDO, APLICAR DEPOIS | A jornada por ofício. |
 | G46 | aberto | CONSERTAR | O tamanho do salto entre degraus da escada de intervalos diverge. |
+| G47 | aberto | DECIDIDO, APLICAR DEPOIS | A2 · Equipamento de aventura pela tabela de mercadorias. |
+| G48 | aberto | DECIDIDO, APLICAR DEPOIS | A4 · Moeda e metais. |
+| G49 | aberto | DECIDIDO, APLICAR DEPOIS | B1 · O multiplicador do ofício: ×20. |
+| G50 | aberto | DECIDIDO, APLICAR DEPOIS | B2 · A curva de renda convexa. |
+| G51 | aberto | DECIDIDO, APLICAR DEPOIS | B4 · Tetos de mercado (resolve a G24). |
+| G52 | aberto | DECIDIDO, APLICAR DEPOIS | B5 · A tabela de Renda nova. |
+| G53 | aberto | DECIDIDO, APLICAR DEPOIS | B6 · Recursos por faixas. |
+| G54 | aberto | DECIDIDO, APLICAR DEPOIS | B8 · A Placa completa sobe (~39%). |
+| G55 | aberto | DECIDIDO, APLICAR DEPOIS | C5 · Montarias, animais, veículos e manutenção. |
+| G56 | aberto | DECIDIDO, APLICAR DEPOIS | C6 · Viagens em km. |
+| G57 | aberto | DECIDIDO, APLICAR DEPOIS | C8 · Servos e escravos. |
+| G58 | aberto | DECIDIDO, APLICAR DEPOIS | E1 · Qualidade dos itens. |
+| G59 | aberto | DECIDIDO, APLICAR DEPOIS | E4 · Rações. |
+| G60 | aberto | DECIDIDO, APLICAR DEPOIS | E7 · Correções de texto. |
+| G61 | aberto | DECIDIDO, APLICAR DEPOIS | A1 · Munição. |
+| G62 | aberto | DECIDIDO, APLICAR DEPOIS | A3 · Mercadorias. |
+| G63 | aberto | DECIDIDO, APLICAR DEPOIS | B3 · O "Ganho por semana" (resolve a G22). |
+| G64 | aberto | DECIDIDO, APLICAR DEPOIS | B7 · Status obrigatório. |
+| G65 | aberto | DECIDIDO, APLICAR DEPOIS | C4 · Custo de vida. |
+| G66 | aberto | DECIDIDO, APLICAR DEPOIS | C7 · Serviços contratados. |
+| G67 | aberto | DECIDIDO, APLICAR DEPOIS | E2 · Reparo e desgaste. |
+| G68 | aberto | DECIDIDO, APLICAR DEPOIS | E3 · Empréstimo de XP, a regra completa (completa a G44). |
+| G69 | aberto | DECIDIDO, APLICAR DEPOIS | E5 · Pacote inicial pelo Recursos. |
+| G70 | aberto | DECIDIDO, APLICAR DEPOIS | E6 · Os arquivos do site. |
 
 Fechados (14): G1, G3, G4, "As cinco físicas de toda sessão.", G5, G5b, G7, G8, G9, G10, G18, G19, G20, G29.
 
