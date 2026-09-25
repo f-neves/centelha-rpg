@@ -327,3 +327,14 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   econômica, proposta de preços das Fases 1 a 3. Besta Pequena 3 po, Média 55 pp, Grande 95 pp
   (`custo-de-servico-e-itens.md:164-166`) ficaram como estavam, sem conta de fabricação por trás:
   dependem da G25 (peça de mais de um ofício).
+- [ ] **G42 · [DECIDIR] O preço unitário dos Dardos lido como preço de maço.** Levantado em
+  25/09/2026, na rodada 107 (ESCALA do veredito `ae1c526`). O catálogo lista "Dardos · 5 pc"
+  (`custo-de-servico-e-itens.md:170`) sob o título "Munição vendida em maços", e quem lê pode entender
+  que o maço custa 5 pc; o mesmo vale para a Adaga de Arremesso. O item é uma unidade (prova no
+  `107-executora.md`). Saídas: o nome no singular ("Dardo"), o gerador `gen-cap-itens.mjs` pôr
+  "(cada)", ou deixar.
+- [ ] **G43 · [DECIDIR] Dois nomes de armadura ainda de trabalho.** Levantado em 25/09/2026, no resíduo
+  do CORRIGE da rodada 107 (`ae1c526`). O catálogo mostra "Gambeson (acolchoado)" e "Brigandina / coat
+  of plates" (`custo-de-servico-e-itens.md:192`, `:194`), que vêm do `nome` no `armaduras.json`, e o
+  aviso "Provisório" (`:10`) passou a dizer isso em vez de afirmar que todos os nomes foram traduzidos.
+  Decidir o nome final dos dois; renomear o `nome` não quebra ficha salva (a persistência é pelo id).
