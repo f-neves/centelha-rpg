@@ -6,6 +6,15 @@ Escrito pelo Arquiteto em 25/09/2026, a pedido do humano, depois do `levantament
 não encosta em nada do Centelha. Pastas fora de escopo e as seis do "não sei": não abertas. No
 Defensor rodei só uma contagem de citações às nossas pastas, que o humano pediu (seção 3).
 
+**Aprovado pelo humano em 25/09/2026 (D10, `f679437`).** A execução é por script, fora do git, em
+`C:\Users\Neves\ClaudeCode\centelha-mudanca\`: `foto.ps1` (a foto de antes, gravada em
+`foto-antes.txt`), `mudanca.ps1` (passos 0 a 9), `volta.ps1` (a volta atrás, de qualquer ponto) e
+`comum.ps1` (as funções dos três). Os três foram ensaiados num Centelha de brinquedo no scratchpad, com
+a mesma forma (quatro árvores, sete atalhos, `.env`, sujeira, a confirmação do Cartógrafo): a ida e a
+volta completas, e três negativos (um atalho que virou pasta real para o passo 2 sem desfazer nenhum;
+uma recusa no passo 6, com as linkadas quebradas, recomposta pela volta; trabalho novo depois da foto
+para o passo 0 antes de criar a pasta).
+
 O desenho:
 
     C:/Users/Neves/ClaudeCode/centelha/
@@ -17,7 +26,7 @@ O desenho:
 
 ## 1 · O que quebra
 
-### (a) Os junctions: são SEIS, não dois
+### (a) Os junctions: são SETE, não dois (a primeira versão deste plano dizia seis e contou errado: a tabela abaixo sempre teve sete linhas)
 
 Varredura das quatro árvores, sem descer em nenhum atalho:
 
@@ -38,9 +47,9 @@ eles.
 
 **Como se resolve.** Junction guarda caminho absoluto, e não há junction relativo (o link simbólico de
 diretório pode ser relativo, mas pede modo de desenvolvedor ou administrador; fica como opção futura,
-não entra neste plano). Então os seis são **desfeitos antes e refeitos depois**, nesta ordem:
+não entra neste plano). Então os sete são **desfeitos antes e refeitos depois**, nesta ordem:
 
-1. antes de qualquer movimento, para cada um dos seis: conferir que é atalho
+1. antes de qualquer movimento, para cada um dos sete: conferir que é atalho
    (`(Get-Item -Force <caminho>).LinkType` tem de dar `Junction`; **se der vazio, PARE**, porque é pasta
    real) e desfazer com `cmd /c rmdir "<caminho>"`, **sem `/s`**. O `rmdir` sem `/s` remove só o ponto de
    reparse e recusa pasta com conteúdo, então ele não tem como descer;
@@ -166,7 +175,7 @@ projeto para o nome novo, antes de abrir qualquer sessão lá.
 
 **Tudo está em C:, o mesmo volume, então todo movimento é *rename*, instantâneo e atômico:** ou a
 pasta muda de nome inteira, ou nada muda. Se algum arquivo estiver aberto por um processo, o *rename*
-falha sem mover nada. **Nada precisa ser copiado.** O que precisa ser recriado: os seis atalhos, o
+falha sem mover nada. **Nada precisa ser copiado.** O que precisa ser recriado: os sete atalhos, o
 `.venv` do mapa (quando precisar) e as duas pastas de projeto do Claude (cópia).
 
 ## 1b · O ensaio (feito, no scratchpad, com um repositório de brinquedo)
@@ -209,14 +218,14 @@ foi medido, e é o passo mais longo.
 3. A foto de antes, gravada num arquivo fora das árvores (o scratchpad de quem roda o roteiro), para
    comparar depois:
    `git worktree list`; `git status --short` de cada árvore; o hash dos quatro `.env`; a contagem de
-   arquivos do `rpg-system\node_modules` e das cinco pastas reais de `lore\mapas`; os seis atalhos com
+   arquivos do `rpg-system\node_modules` e das cinco pastas reais de `lore\mapas`; os sete atalhos com
    o alvo.
 4. Fechar todas as sessões e processos acima.
 
 **Passo 1 · a pasta mãe**: `New-Item -ItemType Directory C:\Users\Neves\ClaudeCode\centelha`.
 
-**Passo 2 · desfazer os seis atalhos** (1a, com a conferência de `LinkType` antes de cada `rmdir`).
-Conferir: as seis entradas sumiram, as contagens dos alvos são as da foto.
+**Passo 2 · desfazer os sete atalhos** (1a, com a conferência de `LinkType` antes de cada `rmdir`).
+Conferir: as sete entradas sumiram, as contagens dos alvos são as da foto.
 
 **Passo 3 · a Executora**: `git -C C:\Users\Neves\ClaudeCode\rpg-system worktree move
 C:\Users\Neves\ClaudeCode\centelha-executora C:\Users\Neves\ClaudeCode\centelha\centelha-executora`.
@@ -235,7 +244,7 @@ processo e repetir. Nesta janela, ninguém roda git nas linkadas.
 pasta nova). Conferir: `git worktree list` com os quatro caminhos novos, e **`git status` dentro de cada
 uma** igual à foto (a armadilha da seção 1b).
 
-**Passo 7 · refazer os seis atalhos**, apontando para `C:\Users\Neves\ClaudeCode\centelha\rpg-system\...`.
+**Passo 7 · refazer os sete atalhos**, apontando para `C:\Users\Neves\ClaudeCode\centelha\rpg-system\...`.
 Conferir: um arquivo conhecido de cada alvo abre pelo atalho.
 
 **Passo 8 · os portões**: `node scripts/test-portoes.mjs` em cada uma das quatro, verde. E
