@@ -87,6 +87,25 @@
   build o executam; a medição da Revisora foi um script de scratchpad, fora do repositório. Se não
   existe, esta família volta na próxima renomeação.
 
+- [ ] **J12 · [DECIDIR] Os apelidos ambíguos do glossário: 241 links errados em oito linhas, depois do
+  conserto da Compostura e do "alvo".** Levantado em 25/09/2026, na rodada 108. A 108 tirou os dois
+  piores (`a26fda1`, `050ba5f`: 43 "Compostura" e 278 "alvo", PROCEDE em `f28324b`). A Revisora mediu
+  as outras oito linhas da tabela do `104-revisora.md` §5, lendo todas as ocorrências
+  (`108-revisora.md` §6): Ticks ← "Velocidade" 26, Nível ← "Nível" 125, Margem ← "Margem" 20,
+  Centelha ← "poder" 26, Defesa ← "esquiva" 13 e ← "bloqueio" 4, Valor Passivo ← "passiva" 9,
+  Técnica ← "poder" 11, Firula ← "manobra" 7. **241 errados; 562 com os 321 já consertados; 789 se os
+  227 "nível" da Arte contarem** (o verbete do Nível descreve a Técnica, e a Arte não tem o portão de
+  Centelha). Três formas: palavra com dois donos no glossário ("poder"), apelido que empata com o nome
+  de outra entidade (Esquiva e Bloqueio, como a Compostura), e verbete cuja palavra também nomeia
+  outra grandeza (a Margem de Quase-Acerto, o nível da Arte). **O humano decide se é rodada, frente
+  ou conserto de raiz** (por exemplo, o autolink deixar de casar palavra solta de mais de um sentido).
+- [ ] **J13 · [DECIDIR] O bestiário recebe link automático só nas fichas montadas quando o índice
+  chega.** Levantado em 25/09/2026, na rodada 108 (`108-revisora.md` §4). A página nasce com as
+  primeiras fichas e monta o resto em fatias (`bestiario.astro:142`, `:557-563`); o autolink roda uma
+  vez, no `requestIdleCallback` (`Referencias.astro:292`). Aberto sem `#`, o bestiário tem 493 links;
+  com `#` na URL (que monta todas as fichas antes, `bestiario.astro:568-569`), 1670. Anterior à 108.
+  Decidir se é defeito (o autolink rodar de novo quando o bestiário termina de montar) ou se fica.
+
 - [ ] **J10 · [ADIADO] [DECIDIR] Os 23 travessões do `regras.json`, e seis deles NÃO são travessão.**
   Contados pela Executora na rodada 86, ocorrência a ocorrência, com Python e não por `git diff`:
   são **23 U+2014** no arquivo, e a régua da casa (sem travessão em texto nenhum) só tem portão
