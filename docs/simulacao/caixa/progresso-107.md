@@ -5,4 +5,5 @@
 - **23:48** · 24 preços aplicados (15 em `armas.json`, 9 em `armaduras.json`, `preco` depois de `tipo`); `gen-cap-itens.mjs` (54 itens com preço, eram 35) e `gen-bench-tempo.mjs` regerados. Aviso "Provisório" ajustado: as armaduras agora batem com o Cap. XIII, as listas de armas não.
 - **23:50** · G36 a G41 registradas, citações conferidas no arquivo; a H6 cita linhas do `armas.json` que o preço novo deslocou (443 e 461 viraram 452 e 470), só o número mudou.
 - **23:51** · `Pendencias.md` regenerado (196 abertos); validate e build verdes; catálogo no `dist/` mostra "Dardos 5 pc" e "Placa completa 26 po". Travessão: nenhuma linha nova. Escrevendo o relato.
-- **23:54** · relato escrito (prova dos dardos, lista do que ficou, dois itens em PRECISA DE MIM); citações dele conferidas no arquivo. Commitando.
+- **23:53** · relato escrito (prova dos dardos, lista do que ficou, dois itens em PRECISA DE MIM); citações dele conferidas no arquivo. Commitando. (Esta linha saiu no `b475ab4` com "23:54", hora que escrevi sem ler a máquina; o relógio lido logo depois do commit dava 23:53.)
+- **23:53** · `b475ab4` publicado (fast-forward de `639851e`), gancho verde.
