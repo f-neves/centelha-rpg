@@ -69,6 +69,18 @@ frase exata>" · substitui D<m>, se for o caso · <o que aconteceu>`.
   linha 2 pedia o registro antes, e o Arquiteto executou sem ele porque a ordem dizia "só nesse
   arquivo". A cópia do comando na branch `mapa`, se existir, é do Cartógrafo.
 
+- **D10** · 25/09/2026, antes de 12:56 · janela do Arquiteto · frentes Arquiteto, Executora, Revisora,
+  mapa · "Aprovado: a mudança acontece agora, com o roteiro do plano-pasta-centelha.md." As quatro
+  árvores (`rpg-system`, `centelha-executora`, `centelha-techlead-revisora`, `centelha-mapa`) passam para
+  dentro de `C:/Users/Neves/ClaudeCode/centelha/`. Com três decisões do humano: (1) o estado do Claude
+  (`~/.claude/projects/...`) é COPIADO, não movido, e as pastas velhas ficam até uma sessão nova provar
+  que a memória carregou; (2) **o Cartógrafo commita o trabalho dele na branch `mapa` ANTES de qualquer
+  movimento e confirma por escrito na caixa; zip não vale; nada se move sem essa confirmação escrita**;
+  (3) a sujeira do `rpg-system` (`camadas_referencia.json`, `registro-git.jsonl`, `lore/economia/`) vai
+  junto no rename, e o destino dela se decide depois. Quem executa os passos 1 a 9 é o humano, pelo
+  script do Arquiteto, com todas as instâncias fechadas. Os textos do `main` que citam caminho são
+  corrigidos ANTES, descrevendo o destino (`plano-pasta-centelha.md` §1c).
+
 **As três ocorrências da forma, contadas como o humano contou:** D1 contra D2 (os dois desenhos), D3
 (a decisão que reconciliava, escrita sobre um estado que já tinha andado) e D5 contra D6 (quem faz o
 reset).
