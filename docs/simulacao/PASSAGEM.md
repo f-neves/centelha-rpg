@@ -21,13 +21,13 @@ consulta a Auditora, e escala ao humano só quatro coisas: regra de jogo, dinhei
 que vai para produção, e se uma frente continua ou encerra.
 
 **Executora** · constrói e testa. É teammate dentro da sessão do Arquiteto, e trabalha na
-worktree `C:/Users/Neves/ClaudeCode/centelha-executora` desde 24/09/2026.
+worktree `C:/Users/Neves/ClaudeCode/centelha/centelha-executora` desde 24/09/2026 (dentro de `centelha/` desde 25/09, D10).
 
 **Leitora-novata** · lê o livro e os dados como quem está aprendendo agora. Teammate fixa do
 Arquiteto desde 24/09/2026; só lê, e só por pedido dele.
 
 **Revisora** · revisa, num worktree congelado em
-`C:/Users/Neves/ClaudeCode/centelha-techlead-revisora`. Ela lê um commit e não a árvore em
+`C:/Users/Neves/ClaudeCode/centelha/centelha-techlead-revisora`. Ela lê um commit e não a árvore em
 movimento, e isso é o que a revisão compra. O contrato dela é
 `docs/simulacao/CONTRATO-REVISORA.md`.
 
@@ -253,7 +253,7 @@ sendo o bloco abaixo, precedido do comando de terminal.
 
 Abrir o Claude Code na pasta do repositório principal, **já com o nome da sessão**:
 
-    cd C:\Users\Neves\ClaudeCode\rpg-system
+    cd C:\Users\Neves\ClaudeCode\centelha\rpg-system
     claude -n "Arquiteto (RPG)"
 
 e, dentro dela, `/arquiteto`.
@@ -283,6 +283,9 @@ antiga foi removida. **A `centelha-techlead` deixou de ser worktree** (não apar
 que ela "sumiu", e o humano achou a pasta. **Desde 24/09/2026 são quatro árvores, e não duas**
 (`rpg-system`, `centelha-executora`, `centelha-mapa` e `centelha-techlead-revisora`), cada uma na sua
 branch: ver `docs/simulacao/caixa/plano-worktrees.md`, seção 11, e o `git worktree list`, que é a fonte.
+**Desde 25/09/2026 as quatro moram dentro de `C:\Users\Neves\ClaudeCode\centelha\`** (D10 do
+`decisoes.md`; o roteiro em `docs/simulacao/caixa/plano-pasta-centelha.md`), e continuam irmãs entre
+si: o que acha uma a partir da outra por `..` (o `rodada.mjs`, o `duo.mjs`) não mudou.
 
 **Nota de 10/09/2026:** o veredito da rodada 27 (`168df15`, commitado pela Revisora na worktree
 dela) foi ao `main` por `cherry-pick` em vez de `push` direto, porque o `main` já tinha avançado
@@ -350,9 +353,9 @@ Depois crie uma Agent Team com exatamente três teammates:
   Leitora-novata · lê o livro e os dados como quem está aprendendo agora, e lista
                    inconsistências, contradições e pontos não definidos
 
-A Executora trabalha na worktree C:/Users/Neves/ClaudeCode/centelha-executora, branch executora
+A Executora trabalha na worktree C:/Users/Neves/ClaudeCode/centelha/centelha-executora, branch executora
 (docs/simulacao/caixa/plano-worktrees.md §6 e §11). A Revisora trabalha na worktree
-C:/Users/Neves/ClaudeCode/centelha-techlead-revisora, branch revisora, com o contrato em
+C:/Users/Neves/ClaudeCode/centelha/centelha-techlead-revisora, branch revisora, com o contrato em
 docs/simulacao/CONTRATO-REVISORA.md. Reancore a worktree dela no sha do aviso, nunca no topo, e
 nunca no meio de uma revisão. A Leitora-novata só lê, o estado publicado (origin/main), sem abrir
 docs/simulacao/ nem as pendências, e nasce parada: a leitura abre por pedido seu. Ela era

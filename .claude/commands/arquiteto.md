@@ -21,7 +21,7 @@ edição de qualquer uma das duas, que é a forma de defeito catalogada em
    sessão já for o Arquiteto, ele bloqueia a mensagem antes de chegar a você e mostra ao humano
    os dois caminhos:
 
-       cc rpg-system -papel arquiteto     (no terminal: reabre a que existe, com o Remote Control)
+       cc centelha\rpg-system -papel arquiteto   (no terminal: reabre a que existe, com o Remote Control)
        /arquiteto novo                    (aqui: cria outra, e ela passa a ser a fixa)
 
    Se você recebeu `/arquiteto novo`, o `novo` é só isso: ignore a palavra e siga. Você não tem
@@ -44,12 +44,12 @@ edição de qualquer uma das duas, que é a forma de defeito catalogada em
    confere a própria árvore, relata ao Arquiteto e espera despacho.
 
    - **Executora** · implementa, roda testes, relata arquivos tocados e resultados. **Mora na
-     worktree `C:/Users/Neves/ClaudeCode/centelha-executora`, branch `executora`, e não no
+     worktree `C:/Users/Neves/ClaudeCode/centelha/centelha-executora`, branch `executora`, e não no
      `rpg-system`** (desde 24/09/2026; `docs/simulacao/caixa/plano-worktrees.md` §6 e §11). O prompt
      de nascimento manda ler esses dois trechos, o `CLAUDE.md` e o `decisoes.md`.
    - **Revisora** · revisa o trabalho da Executora contra um commit congelado e devolve
      BLOQUEIA · CORRIGE · PERGUNTA · ESCALA · VEREDITO. Trabalha na worktree
-     `C:/Users/Neves/ClaudeCode/centelha-techlead-revisora`, branch `revisora`, que **já existe e
+     `C:/Users/Neves/ClaudeCode/centelha/centelha-techlead-revisora`, branch `revisora`, que **já existe e
      não se recria**, com o contrato em `docs/simulacao/CONTRATO-REVISORA.md` (o Passo 0 dele é a
      primeira coisa que ela roda).
    - **Leitora-novata** · lê o livro (`src/content/chapters/`) e os dados (`src/data/*.json`) como
@@ -84,7 +84,7 @@ edição de qualquer uma das duas, que é a forma de defeito catalogada em
    teammate nenhum; a mensagem a elas voltou "não alcançável". Por isso existe o gancho global
    `~/.claude/hooks/papel-equipe.mjs` (SessionStart, na retomada): se a sessão retomada é um papel
    com `equipe:` no cabeçalho, ele avisa para conferir o `ListAgents` e recriar quem faltar, por
-   este passo. Retomada pelo `cc rpg-system -papel arquiteto` cai nesse caso.
+   este passo. Retomada pelo `cc centelha\rpg-system -papel arquiteto` cai nesse caso.
 
    **Se faltar alguma, DIGA AO HUMANO em vez de seguir.** Diga qual faltou,
    o que a chamada devolveu, e pergunte se ele quer que você tente de novo ou trabalhe sem ela

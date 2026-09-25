@@ -23,7 +23,7 @@ enquanto ela ainda está no meio de julgar um diff · e nesse caso ela está
 revisando duas árvores achando que é uma, sem saber qual pedaço do veredito
 vale para qual commit.
 
-**Onde está agora:** `C:/Users/Neves/ClaudeCode/centelha-techlead-revisora`, na branch `revisora`
+**Onde está agora:** `C:/Users/Neves/ClaudeCode/centelha/centelha-techlead-revisora`, na branch `revisora`
 (§0.1, desde 24/09/2026; até então era HEAD destacado), no sha que o último aviso de rodada mandou. **Qual sha é esse não se escreve aqui**, e a ausência é
 deliberada: quem sabe onde a árvore está é a própria árvore, e a resposta sai de
 `git rev-parse HEAD` rodado nela, que é o passo 0 logo abaixo.
@@ -50,7 +50,7 @@ sem erro. O histórico de qual rodada pinou onde continua legível nos avisos de
 **Passo 0, antes de qualquer outra coisa, em toda revisão:**
 
 ```
-git rev-parse --show-toplevel     # tem de dar C:/Users/Neves/ClaudeCode/centelha-techlead-revisora
+git rev-parse --show-toplevel     # tem de dar C:/Users/Neves/ClaudeCode/centelha/centelha-techlead-revisora
 git rev-parse HEAD                # tem de bater com o sha que o aviso da rodada citou
 ```
 

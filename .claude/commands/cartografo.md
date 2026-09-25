@@ -9,13 +9,13 @@ qualquer coisa nesta frente, carregue o contexto na ordem abaixo.
 **Uma sessão de Cartógrafo por pasta** (desde 24/09/2026, `docs/simulacao/caixa/decisoes.md` D8). O
 `papel:` do cabeçalho liga este comando ao gancho global `~/.claude/hooks/papel-fixo.mjs`: ele dá o
 nome à sessão e, se outra sessão já for o Cartógrafo, bloqueia e mostra ao humano como reabrir a que
-existe (`cc rpg-system -papel cartografo`, no terminal) ou como criar outra (`/cartografo novo`). Se
+existe (`cc centelha\rpg-system -papel cartografo`, no terminal) ou como criar outra (`/cartografo novo`). Se
 você recebeu `/cartografo novo`, ignore a palavra `novo` e siga.
 
 ## 1. Leia sempre
 
-**A frente mora em `C:\Users\Neves\ClaudeCode\centelha-mapa`, na branch `mapa`** (desde
-24/09/2026). Todo caminho `lore/mapas/...` deste comando é lido e escrito LÁ, inclusive o passo 0,
+**A frente mora em `C:\Users\Neves\ClaudeCode\centelha\centelha-mapa`, na branch `mapa`** (desde
+24/09/2026; dentro de `centelha\` desde 25/09/2026, pela D10). Todo caminho `lore/mapas/...` deste comando é lido e escrito LÁ, inclusive o passo 0,
 a conferência do git (o `cd lore/mapas/ferramentas` é o da `centelha-mapa`). **O `lore/mapas` do
 `rpg-system` está congelado em 23/09 e não deve ser lido**: ele fica para trás da `mapa` (45 commits
 à frente do `origin/main` em 24/09/2026), e quem o lê começa a sessão com um retrato velho.
