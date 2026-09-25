@@ -38,8 +38,7 @@
     "id": "dificuldade",
     "termo": "Dificuldade",
     "aliases": [
-      "dif",
-      "alvo"
+      "dif"
     ],
     "definicao": "O alvo de uma tarefa, na mesma régua de Atributo + Habilidade (5 fácil, 10 média, 15 difícil, 20 limite humano, 25 excepcional, 30 sobre-humano)."
   },
