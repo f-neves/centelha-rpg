@@ -87,18 +87,23 @@
   build o executam; a medição da Revisora foi um script de scratchpad, fora do repositório. Se não
   existe, esta família volta na próxima renomeação.
 
-- [ ] **J12 · [DECIDIR] Os apelidos ambíguos do glossário: 241 links errados em oito linhas, depois do
-  conserto da Compostura e do "alvo".** Levantado em 25/09/2026, na rodada 108. A 108 tirou os dois
-  piores (`a26fda1`, `050ba5f`: 43 "Compostura" e 278 "alvo", PROCEDE em `f28324b`). A Revisora mediu
-  as outras oito linhas da tabela do `104-revisora.md` §5, lendo todas as ocorrências
-  (`108-revisora.md` §6): Ticks ← "Velocidade" 26, Nível ← "Nível" 125, Margem ← "Margem" 20,
-  Centelha ← "poder" 26, Defesa ← "esquiva" 13 e ← "bloqueio" 4, Valor Passivo ← "passiva" 9,
-  Técnica ← "poder" 11, Firula ← "manobra" 7. **241 errados; 562 com os 321 já consertados; 789 se os
-  227 "nível" da Arte contarem** (o verbete do Nível descreve a Técnica, e a Arte não tem o portão de
-  Centelha). Três formas: palavra com dois donos no glossário ("poder"), apelido que empata com o nome
-  de outra entidade (Esquiva e Bloqueio, como a Compostura), e verbete cuja palavra também nomeia
-  outra grandeza (a Margem de Quase-Acerto, o nível da Arte). **O humano decide se é rodada, frente
-  ou conserto de raiz** (por exemplo, o autolink deixar de casar palavra solta de mais de um sentido).
+- [ ] **J12 · [DECIDIR] Os apelidos ambíguos do glossário: 116 links errados em seis linhas, depois
+  do conserto da Compostura e do "alvo", e depois de tirar o "Nível" (J16).** Levantado em
+  25/09/2026, na rodada 108, recontado em 25/09/2026 por decisão do humano (o "Nível" saiu para a
+  J16, mesma reclassificação que já tinha tirado a Margem de QA para a J14 e o "nível" da Arte para
+  a J15). A 108 tirou os dois piores (`a26fda1`, `050ba5f`: 43 "Compostura" e 278 "alvo", PROCEDE em
+  `f28324b`). A Revisora mediu as outras oito linhas da tabela do `104-revisora.md` §5, lendo todas
+  as ocorrências (`108-revisora.md` §6); com o "Nível" fora, ficam seis: Ticks ← "Velocidade" 26,
+  Margem ← "Margem" 5 (a parte que não é QA), Centelha ← "poder" 26, Defesa ← "esquiva" 13 e ←
+  "bloqueio" 4, Valor Passivo ← "passiva" 9, Técnica ← "poder" 11, Firula ← "manobra" 7. **116
+  errados** (241 menos os 125 do "Nível"; 437 com os 321 já consertados). Duas formas, das três
+  originais: palavra com dois donos no glossário ("poder": Centelha e Técnica; "esquiva" e
+  "bloqueio": Defesa e Habilidade) e o resto, sem forma comum. **A regra "o autolink não casa
+  palavra solta com mais de um dono" (proposta pelo humano) pega só os quatro casos de dois donos
+  (54 de 116), e tem efeito colateral conhecido no verbete `integridade`** (que também tem dois
+  donos por NOME, não por apelido): a J12 espera a medição de rodada curta do que essa regra
+  derruba (links certos perdidos), pedida junto com a J13. **O humano decide se o resto (62, sem a
+  forma de dois donos) é rodada, frente, ou fica.**
 - [ ] **J13 · [DECIDIR] O bestiário recebe link automático só nas fichas montadas quando o índice
   chega.** Levantado em 25/09/2026, na rodada 108 (`108-revisora.md` §4). A página nasce com as
   primeiras fichas e monta o resto em fatias (`bestiario.astro:142`, `:557-563`); o autolink roda uma
@@ -122,6 +127,22 @@
   personagem. Pelo texto de hoje do verbete, estão fora do que ele cobre; o caso é "misto", como na
   104, e quem decide se o verbete deve passar a cobrir a Arte também é o humano. **Por decisão do
   humano (rodada 108), fica fora de toda soma da J12** até essa decisão.
+- [ ] **J16 · [DECIDIR] "Nível" é o nome do próprio verbete, usado como palavra comum em todo o
+  sistema: 125 links errados, fora da conta da J12.** Levantado em 25/09/2026, na medição da J12
+  (`108-revisora.md` §6), reclassificado a pedido do humano na mesma sessão. **Diferença para a J14
+  e a J15:** a Margem de QA e o "nível" da Arte são cada um UMA grandeza específica que rivaliza
+  com o verbete (um nome próprio de sistema, dado publicado com fórmula ou seção dedicada); o
+  "Nível" errado não tem um rival único, é a palavra "nível" em português corrente aplicada a coisas
+  sem relação entre si: nível de Habilidade, de Atributo, de Especialidade, de Antecedente (32 numa
+  página), da relação social (22), da Firula, da Virtude, de Recursos, da própria Centelha ("o nível
+  de poder pessoal", "O nível 2 (Desperto)"), a penalidade de ferimento, e o "Nível" da Resistência à
+  Perfuração. Nenhum desses é candidato a virar entidade própria no glossário (ao contrário da Margem
+  de QA) nem candidato a o verbete estender a definição (ao contrário do "nível" da Arte, que é
+  sistema irmão da Técnica pelo mesmo portão de Centelha). **Por isso fica fora da J12** (a regra
+  dos dois donos não resolveria isto, e não é o mesmo defeito de forma que a Compostura e o "alvo"),
+  mas também fora da J14/J15 (não é uma grandeza rival, é o apelido genérico demais para o próprio
+  autolink casar em prosa comum). Decidir se `nivel` sai dos apelidos autolinkáveis do verbete
+  Nível, ou outra saída.
 
 - [ ] **J10 · [ADIADO] [DECIDIR] Os 23 travessões do `regras.json`, e seis deles NÃO são travessão.**
   Contados pela Executora na rodada 86, ocorrência a ocorrência, com Python e não por `git diff`:
