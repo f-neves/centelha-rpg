@@ -48,10 +48,10 @@ está na seção 3.
 | G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 72 | 58 | 0 | 14 | 26 | 2 | 0 | 5 | 25 | 0 |
 | H | Arremesso | [`H-arremesso.md`](docs/pendencias/H-arremesso.md) | 6 | 4 | 0 | 2 | 1 | 0 | 0 | 2 | 0 | 1 |
 | I | Mesa virtual · tempo real | [`I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 14 | 10 | 2 | 2 | 3 | 8 | 0 | 0 | 0 | 1 |
-| J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 14 | 11 | 0 | 3 | 3 | 3 | 0 | 2 | 1 | 2 |
+| J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 16 | 13 | 0 | 3 | 5 | 3 | 0 | 2 | 1 | 2 |
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 32 | 18 | 1 | 13 | 14 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
-| | **Total** | | **319** | **227** | **4** | **88** | **77** | **38** | **8** | **10** | **91** | **7** |
+| | **Total** | | **321** | **229** | **4** | **88** | **79** | **38** | **8** | **10** | **91** | **7** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -518,6 +518,8 @@ Fechados (2): I7, I13.
 | J11 | aberto | FAZER | O link automático de "Perfuração" leva ao gate quando o texto fala do modo de dano, e nenhum portão confere … |
 | J12 | aberto | DECIDIR | Os apelidos ambíguos do glossário: 241 links errados em oito linhas, depois do conserto da Compostura e do … |
 | J13 | aberto | DECIDIR | O bestiário recebe link automático só nas fichas montadas quando o índice chega. |
+| J14 | aberto | DECIDIR | "Margem" nomeia duas grandezas: a Margem do verbete e a Margem de Quase-Acerto. |
+| J15 | aberto | DECIDIR | "nível" no sentido da Arte: 227 links, fora da conta da J12. |
 | J10 | aberto, ADIADO | DECIDIR | Os 23 travessões do `regras.json`, e seis deles NÃO são travessão. |
 
 Fechados (3): J1, J4, J5.

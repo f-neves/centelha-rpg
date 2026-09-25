@@ -62,7 +62,18 @@ Regras de convívio:
   apaga em silêncio o que a outra instância acabou de escrever.
 - **Antes de `npm run build`, considere que a outra pode estar buildando.**
   `dist/` e `.astro/` são compartilhados; build simultâneo produz saída corrompida
-  e erros fantasma de "Duplicate id". Se aparecerem, apague `.astro/` e refaça.
+  e erros fantasma de "Duplicate id". Se aparecerem, refaça com `npx astro build --force`
+  (o próprio Astro limpa o cache de conteúdo), e **não apague pasta à mão**.
+- **"Build limpo" é o build seguido da PROVA NO GERADO, e nunca remoção de pasta.** Rode o
+  build e leia no `dist/` o artefato que a sua mudança tem de mudar (o `dist/ref-index.json`
+  para o glossário, o HTML da página para o texto dela): se ele traz o novo, o build é o
+  certo; se não traz, `--force` e prova de novo; se ainda não trouxer, pare e avise. Nada de `rm -rf`, `Remove-Item -Recurse` nem
+  `rmdir /s` em `.astro/`, `dist/` ou `node_modules/.astro/`: numa árvore com `node_modules`
+  por junction, o terceiro é a pasta do `rpg-system`, e uma remoção recursiva que atravessou
+  junction já esvaziou o `node_modules` de todas as árvores (24/09/2026,
+  `docs/simulacao/caixa/plano-worktrees.md` §11). Padrão da Revisora na rodada 108, que
+  recusou a ordem contrária do despacho (`docs/simulacao/CATALOGO.md`, "a regra que não
+  protege contra o hábito de quem a escreveu").
 - Ao terminar, **diga em uma linha quais arquivos você tocou**, para a outra frente
   saber o que mudou debaixo dela.
 - **Saída temporária vai para `../tmp/<papel>/`, e nunca para `../` sozinho.** Log de
@@ -77,7 +88,8 @@ Regras de convívio:
   motivo: em 23 e 24/09/2026 dezessete arquivos de saída caíram na raiz do ClaudeCode
   por `> ../x.txt` (`docs/simulacao/caixa/levantamento-pastas.md`). **A rede:** a seção
   7 do `test-portoes.mjs`, que roda em todo commit, acusa qualquer coisa solta em
-  `centelha\` além das quatro árvores, do `tmp/` e do `LEIA-ME.md`.
+  `centelha\` além das quatro árvores, do `tmp/`, do `LEIA-ME.md` e da `centelha-mudanca/`
+  (os scripts da mudança de pasta, D10, guardados para a próxima).
 - **Instância aberta fora do arranjo Arquiteto/Executora/Revisora/Auditora
   (`docs/simulacao/PASSAGEM.md`) não commita no `main`.** Escreve o achado em
   `docs/simulacao/caixa/`, e o Arquiteto absorve na próxima sessão dele. Registrado em

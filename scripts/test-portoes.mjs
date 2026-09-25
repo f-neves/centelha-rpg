@@ -481,10 +481,10 @@ if (!process.env.CI) {
   if (path.basename(mae).toLowerCase() === 'centelha') {
     secao('· nada solto na pasta mãe das árvores (' + mae + ')');
     const PERMITIDOS = new Set(['rpg-system', 'centelha-executora', 'centelha-techlead-revisora',
-      'centelha-mapa', 'tmp', 'LEIA-ME.md']);
+      'centelha-mapa', 'tmp', 'LEIA-ME.md', 'centelha-mudanca']);
     const soltos = fs.readdirSync(mae).filter((n) => !PERMITIDOS.has(n));
     ok(soltos.length === 0, soltos.length === 0
-      ? `só as quatro árvores, \`tmp/\` e o \`LEIA-ME.md\``
+      ? `só as quatro árvores, \`tmp/\`, o \`LEIA-ME.md\` e a \`centelha-mudanca/\``
       : `${soltos.length} coisa(s) solta(s) em ${mae}: ${soltos.join(', ')}. Saída temporária vai para \`../tmp/<papel>/\`; o que for de verdade vai para dentro de uma árvore`);
   }
 }

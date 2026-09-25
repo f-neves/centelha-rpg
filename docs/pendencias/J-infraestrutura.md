@@ -106,6 +106,23 @@
   com `#` na URL (que monta todas as fichas antes, `bestiario.astro:568-569`), 1670. Anterior à 108.
   Decidir se é defeito (o autolink rodar de novo quando o bestiário termina de montar) ou se fica.
 
+- [ ] **J14 · [DECIDIR] "Margem" nomeia duas grandezas: a Margem do verbete e a Margem de
+  Quase-Acerto.** Levantado em 25/09/2026, na medição da J12 (`108-revisora.md` §6). Dos 20 links
+  errados da linha Margem ← "Margem", 15 são "Margem de Quase-Acerto" (`regras/quase-acerto`,
+  `mesa/referencia`, `armas-e-armaduras`: "Margem de QA = Bônus QA da arma + Bônus QA da
+  armadura"), uma grandeza própria e não um apelido por engano. **Por decisão do humano (rodada
+  108), não entra na conta da J12**: essa família (palavra com dois donos no GLOSSÁRIO) não cobre o
+  caso de uma palavra que nomeia duas grandezas do SISTEMA. Decidir se a Margem de Quase-Acerto
+  ganha entidade própria no glossário, ou outra saída.
+- [ ] **J15 · [DECIDIR] "nível" no sentido da Arte: 227 links, fora da conta da J12.** Levantado em
+  25/09/2026, na medição da J12 (`108-revisora.md` §6, "à parte"). O verbete Nível descreve a
+  Técnica ("faixa de poder de uma Técnica, 1 a 6, o nível N exige Centelha ≥ N"); a Arte não tem
+  esse portão (`artes`: "basta Centelha > 0 ... a profundidade você compra"). 227 ocorrências de
+  "nível da Arte", quase todas em `artes/efeitos` (166), `artes`, `artes/regras` e a criação de
+  personagem. Pelo texto de hoje do verbete, estão fora do que ele cobre; o caso é "misto", como na
+  104, e quem decide se o verbete deve passar a cobrir a Arte também é o humano. **Por decisão do
+  humano (rodada 108), fica fora de toda soma da J12** até essa decisão.
+
 - [ ] **J10 · [ADIADO] [DECIDIR] Os 23 travessões do `regras.json`, e seis deles NÃO são travessão.**
   Contados pela Executora na rodada 86, ocorrência a ocorrência, com Python e não por `git diff`:
   são **23 U+2014** no arquivo, e a régua da casa (sem travessão em texto nenhum) só tem portão
