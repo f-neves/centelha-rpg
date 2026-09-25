@@ -87,7 +87,7 @@
   build o executam; a medição da Revisora foi um script de scratchpad, fora do repositório. Se não
   existe, esta família volta na próxima renomeação.
 
-- [ ] **J12 · [DECIDIR] Os apelidos ambíguos do glossário: 116 links errados em seis linhas, depois
+- [ ] **J12 · [DECIDIR] Os apelidos ambíguos do glossário: 101 links errados em seis linhas, depois
   do conserto da Compostura e do "alvo", e depois de tirar o "Nível" (J16).** Levantado em
   25/09/2026, na rodada 108, recontado em 25/09/2026 por decisão do humano (o "Nível" saiu para a
   J16, mesma reclassificação que já tinha tirado a Margem de QA para a J14 e o "nível" da Arte para
@@ -95,12 +95,14 @@
   `f28324b`). A Revisora mediu as outras oito linhas da tabela do `104-revisora.md` §5, lendo todas
   as ocorrências (`108-revisora.md` §6); com o "Nível" fora, ficam seis: Ticks ← "Velocidade" 26,
   Margem ← "Margem" 5 (a parte que não é QA), Centelha ← "poder" 26, Defesa ← "esquiva" 13 e ←
-  "bloqueio" 4, Valor Passivo ← "passiva" 9, Técnica ← "poder" 11, Firula ← "manobra" 7. **116
-  errados** (241 menos os 125 do "Nível"; 437 com os 321 já consertados). Duas formas, das três
-  originais: palavra com dois donos no glossário ("poder": Centelha e Técnica; "esquiva" e
-  "bloqueio": Defesa e Habilidade) e o resto, sem forma comum. **A regra "o autolink não casa
-  palavra solta com mais de um dono" (proposta pelo humano) pega só os quatro casos de dois donos
-  (54 de 116), e tem efeito colateral conhecido no verbete `integridade`** (que também tem dois
+  "bloqueio" 4, Valor Passivo ← "passiva" 9, Técnica ← "poder" 11, Firula ← "manobra" 7. **101
+  errados** (241 menos os 125 do "Nível" e menos 15 da Margem de QA, que já tinha saído para a J14;
+  422 com os 321 já consertados). **O número anterior desta linha (116) estava errado por soma; o
+  correto é 101, conferido em 25/09/2026.** Duas formas, das três originais: palavra com dois donos
+  no glossário ("poder": Centelha e Técnica; "esquiva" e "bloqueio": Defesa e Habilidade) e o resto,
+  sem forma comum. **A regra "o autolink não casa palavra solta com mais de um dono" (proposta pelo
+  humano) pega só os quatro casos de dois donos (54 de 101, mais da metade), e tem efeito colateral
+  conhecido no verbete `integridade`** (que também tem dois
   donos por NOME, não por apelido): a J12 espera a medição de rodada curta do que essa regra
   derruba (links certos perdidos), pedida junto com a J13. **O humano decide se o resto (62, sem a
   forma de dois donos) é rodada, frente, ou fica.**
