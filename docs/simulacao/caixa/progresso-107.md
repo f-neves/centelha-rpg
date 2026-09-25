@@ -1,0 +1,8 @@
+# Rodada 107 · Executora · progresso
+
+- **23:44** · rodada aberta: `status` vazio, `fetch`, `merge-base --is-ancestor` verdadeiro, `switch -C executora origin/main` em `639851e`. Lendo o despacho.
+- **23:47** · ids conferidos (todos os 24 existem; `preco` fica no nível de cima, depois de `tipo`). Dardos: é UMA unidade (peso 0,2 igual ao da adaga-de-arremesso, contra 0,3 kg do maço de dez flechas; munição vendida em maço é `tipo: "municao"` com "(10)" no nome, em `municao.json`; a tag `munição` também está no arco-curto). Aplico 5. Onde o preço aparece: só o catálogo gerado de `custo-de-servico-e-itens.md` e o JSON embutido do `combate-tempo-bench.html` (gerado, conferido pelo validate); a ficha não mostra preço de catálogo (a bolsa é texto livre); `armas-e-armaduras.md` não tem preço; `gen-lista-equip.mjs` escreve fora do repositório.
+- **23:48** · 24 preços aplicados (15 em `armas.json`, 9 em `armaduras.json`, `preco` depois de `tipo`); `gen-cap-itens.mjs` (54 itens com preço, eram 35) e `gen-bench-tempo.mjs` regerados. Aviso "Provisório" ajustado: as armaduras agora batem com o Cap. XIII, as listas de armas não.
+- **23:50** · G36 a G41 registradas, citações conferidas no arquivo; a H6 cita linhas do `armas.json` que o preço novo deslocou (443 e 461 viraram 452 e 470), só o número mudou.
+- **23:51** · `Pendencias.md` regenerado (196 abertos); validate e build verdes; catálogo no `dist/` mostra "Dardos 5 pc" e "Placa completa 26 po". Travessão: nenhuma linha nova. Escrevendo o relato.
+- **23:54** · relato escrito (prova dos dardos, lista do que ficou, dois itens em PRECISA DE MIM); citações dele conferidas no arquivo. Commitando.

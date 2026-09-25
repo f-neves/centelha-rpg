@@ -294,3 +294,36 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   pela Revisora no veredito da 106 (`dc3e6ac`). `Acoes_Catalogo.md:75` diz "o ajudante rola e dá +2
   mais +1d6 por Margem. Ver §3.5", e o §3.5 mudou na 106. O verbete é registro da bancada: uma nota
   apontando para o §3.5 novo basta.
+- [ ] **G36 · [DECIDIR] A Brigandina domina a Cota de malha e a Camisa de malha.** Levantado em
+  24/09/2026, na revisão econômica, proposta de preços das Fases 1 a 3. Pela tabela de armaduras
+  (`armas-e-armaduras.md:118-120`), a Brigandina (Impacto 4, Corte 6, Perfuração 3 / N1, −2) supera
+  a Cota de malha (1, 6, 1 / N1, −2) em tudo, e a Camisa de malha (1, 5, 1 / N1, −1) em tudo menos a
+  Penalidade; e custa menos que as duas (68 pp contra 13 po e 9 po,
+  `custo-de-servico-e-itens.md:190`, `:194-195`). O legado diz que ela era vestida "sobre malha"
+  (`legacy/raiz/armaduras_escudos_centelha.txt:187`), e a descrição do JSON repete "sobre malha"
+  (`src/data/armaduras.json:108`). As estatísticas dela supõem malha por baixo?
+- [ ] **G37 · [DECIDIR] A Placa articulada domina a Placa de transição.** Levantado em 24/09/2026, na
+  revisão econômica, proposta de preços das Fases 1 a 3. Absorções e Nível iguais (4, 8, 3 / N2), e
+  a articulada tem Penalidade menor (−2 contra −3, `armas-e-armaduras.md:123` e `:125`) e custa
+  menos (14 po contra 21 po, `custo-de-servico-e-itens.md:199` e `:202`).
+- [ ] **G38 · [DECIDIR] Kite × Heater e Pavês × Scutum.** Levantado em 24/09/2026, na revisão
+  econômica, proposta de preços das Fases 1 a 3. Kite e Heater têm as mesmas estatísticas (+3,
+  bloqueia, −2, `armas-e-armaduras.md:146-147`), e o Kite custa 2,5 vezes o Heater (25 pp contra
+  1 po, `custo-de-servico-e-itens.md:213` e `:215`). O Scutum (acesso 3, `src/data/escudos.json:145`)
+  custa menos que o Pavês (acesso 5, `:168`): 35 pp contra 45 pp (`custo-de-servico-e-itens.md:216-217`).
+- [ ] **G39 · [DECIDIR] O Machado custa mais que a Espada Longa.** Levantado em 24/09/2026, na
+  revisão econômica, proposta de preços das Fases 1 a 3. Machado 3 po, Espada Longa 25 pp
+  (`custo-de-servico-e-itens.md:148` e `:152`), com o machado mais leve (1,2 kg contra 1,4 kg,
+  `src/data/armas.json`) e, pela proposta, da mesma linha de fabricação. A linha em que o machado
+  cai ainda é a G27 ("Faca, machado, ponta de lança", `acoes-oficio-e-mundo.md:157`, ou "Espada,
+  machado de guerra, arma marcial", `:160`).
+- [ ] **G40 · [DECIDIR] Preços provisórios de baixa confiança, sem linha de fabricação.** Levantado
+  em 24/09/2026, na revisão econômica, proposta de preços das Fases 1 a 3. Dardos (5 pc cada, 5 vezes
+  a flecha), Funda (1 pp, cerca de uma corda de 15 m), Bumerangue (3 pp, abaixo do Bastão) e Rede
+  (3 pp, cerca de três cordas de 15 m, com a unidade de venda pendente) entraram com preço por
+  comparação, porque nenhuma delas tem linha na tabela de fabricação
+  (`custo-de-servico-e-itens.md:169-171`, `:174`).
+- [ ] **G41 · [DECIDIR] As três bestas sem base de custo.** Levantado em 24/09/2026, na revisão
+  econômica, proposta de preços das Fases 1 a 3. Besta Pequena 3 po, Média 55 pp, Grande 95 pp
+  (`custo-de-servico-e-itens.md:164-166`) ficaram como estavam, sem conta de fabricação por trás:
+  dependem da G25 (peça de mais de um ofício).

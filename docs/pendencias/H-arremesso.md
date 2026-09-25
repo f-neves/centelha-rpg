@@ -33,8 +33,8 @@ está no ar, e `Arremesso_Regra.md` é a **proposta nova**, em três regimes. A 
   tem essa arma. Decidir se ela entra no catálogo ou sai do texto.
 - [ ] **H6 · [CONSERTAR] O teto de Força do Arco Curto diverge.** Levantado em 24/09/2026, na
   revisão econômica (achado do Comerciante). `Arremesso.md:253` dá ao Arco Curto Força 2; o
-  `armas.json` (`arco-curto`) dá `forcaCap` 3 (`armas.json:461`) e a descrição diz "Soma Força até +3"
-  (`armas.json:443`). A mesma linha da tabela dá o alcance livre (40 m), então a correção tem de dizer
+  `armas.json` (`arco-curto`) dá `forcaCap` 3 (`armas.json:470`) e a descrição diz "Soma Força até +3"
+  (`armas.json:452`). A mesma linha da tabela dá o alcance livre (40 m), então a correção tem de dizer
   qual dos dois números esse alcance usa.
 
 ---

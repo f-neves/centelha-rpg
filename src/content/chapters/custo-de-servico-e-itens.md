@@ -7,7 +7,7 @@ resumo: "Moedas, renda por estrato, qualidade de armas e armaduras e o catálogo
 
 O dinheiro mede tempo e trabalho. Esta página reúne **o que se ganha**, **o que se gasta** e **como a qualidade muda o preço** de uma arma ou armadura: do raspão de cobre do servo ao lavor de joias da relíquia nobre.
 
-<div class="callout"><span class="lbl">Provisório</span>Os nomes das armaduras já foram <strong>traduzidos</strong> e alinhados ao vocabulário de <a href="/centelha-rpg/regras/armas-e-armaduras">Armas &amp; Armaduras</a> (Cap. XIII): Couro, Camisa de malha, Peitoral, Cota de malha, Lamelar, Peitoral reforçado, Placa articulada, Malha completa, Placa completa. Ainda assim, as <strong>listas e os preços</strong> dos dois capítulos não batem por completo: use como referência de ordem de grandeza; a reconciliação final vem depois.</div>
+<div class="callout"><span class="lbl">Provisório</span>Os nomes das armaduras já foram <strong>traduzidos</strong> e alinhados ao vocabulário de <a href="/centelha-rpg/regras/armas-e-armaduras">Armas &amp; Armaduras</a> (Cap. XIII): Couro, Camisa de malha, Peitoral, Cota de malha, Lamelar, Peitoral reforçado, Placa articulada, Malha completa, Placa completa. Toda arma e armadura de lá tem preço aqui (menos Desarmado e Nenhuma), mas as <strong>listas</strong> ainda não batem por completo: o catálogo traz armas que o Cap. XIII não descreve (Machadinha, Machado Pesado, Martelo, Bastão, Lança Longa, Sabre, Maça Estrela). Os <strong>preços</strong> são provisórios: use como referência de ordem de grandeza; a reconciliação final vem depois.</div>
 
 ## Moedas & Conversão
 
@@ -144,23 +144,34 @@ Cada ponto compra um efeito. A soma dos modificadores tem de **fechar no orçame
 | Bastão | 4 pp |
 | Espada Curta | 15 pp |
 | Machadinha | 8 pp |
-| Sabre | 3 po |
+| Sabre | 17 pp |
 | Espada Longa | 25 pp |
+| Espada Serrilhada | 25 pp |
+| Maça | 25 pp |
 | Maça Estrela | 32 pp |
 | Machado | 3 po |
 | Martelo | 25 pp |
-| Machado Pesado | 8 po |
-| Martelo de Guerra | 10 po |
+| Picareta de Guerra | 24 pp |
+| Machado Pesado | 65 pp |
+| Martelo de Guerra | 6 po |
 | Montante | 7 po |
 | Alabarda | 28 pp |
 | Lança | 5 pp |
 | Lança Longa | 9 pp |
 | Arco Composto | 55 pp |
-| Arco Curto | 8 pp |
+| Arco Curto | 1 po |
 | Arco Longo | 15 pp |
 | Besta Grande | 95 pp |
 | Besta Média | 55 pp |
 | Besta Pequena | 3 po |
+| Adaga de Arremesso | 5 pp |
+| Azagaia | 65 pc |
+| Bumerangue | 3 pp |
+| Dardos | 5 pc |
+| Funda | 1 pp |
+| Machado de Arremesso | 8 pp |
+| Pilum | 5 pp |
+| Rede | 3 pp |
 | Flechas (10) | 1 pp |
 | Virotes (10) | 1 pp |
 
@@ -176,11 +187,19 @@ Cada ponto compra um efeito. A soma dos modificadores tem de **fechar no orçame
 
 | Armadura | Classe | Preço |
 |---|:---:|:---:|
-| Camisa de malha | Leve | 2 po |
+| Camisa de malha | Leve | 9 po |
+| Couro endurecido | Leve | 13 pp |
+| Gambeson (acolchoado) | Leve | 14 pp |
 | Peitoral | Leve | 28 pp |
+| Brigandina / coat of plates | Média | 68 pp |
+| Cota de malha | Média | 13 po |
+| Lamelar | Média | 7 po |
 | Malha completa | Pesada | 18 po |
 | Peitoral reforçado | Pesada | 9 po |
 | Placa articulada | Pesada | 14 po |
+| Placa completa | Pesada | 26 po |
+| Placa de munição | Pesada | 14 po |
+| Placa de transição | Pesada | 21 po |
 
 </div>
 

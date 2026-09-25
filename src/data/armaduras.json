@@ -25,6 +25,9 @@
     "id": "gambeson",
     "nome": "Gambeson (acolchoado)",
     "tipo": "armadura",
+    "preco": {
+      "pc": 140
+    },
     "peso": 3.5,
     "acesso": 9,
     "descricao": "O que quase todo mundo vestia. Vinte a trinta camadas de linho. Bom contra corte e a melhor camada leve contra impacto; ponta passa fácil (Nível 0). Base sob qualquer outra armadura.",
@@ -47,6 +50,9 @@
     "id": "couro",
     "nome": "Couro endurecido",
     "tipo": "armadura",
+    "preco": {
+      "pc": 130
+    },
     "peso": 5,
     "acesso": 8,
     "descricao": "Kit barato; mais para defesas de membro. Para a adaga (N0), mas pouco além disso.",
@@ -69,6 +75,9 @@
     "id": "malha",
     "nome": "Cota de malha",
     "tipo": "armadura",
+    "preco": {
+      "pc": 1300
+    },
     "peso": 11,
     "acesso": 4,
     "descricao": "Campeã do corte, péssima contra impacto: sem acolchoado a energia passa direto e quebra o osso. Use sobre um gambeson. Cara.",
@@ -91,6 +100,9 @@
     "id": "brigandina",
     "nome": "Brigandina / coat of plates",
     "tipo": "armadura",
+    "preco": {
+      "pc": 680
+    },
     "peso": 9,
     "acesso": 6,
     "descricao": "Placas pequenas rebitadas em tecido, sobre malha. Melhor custo-benefício do período: defesa tipo-placa com acesso médio. Ponto fraco nas frestas.",
@@ -113,6 +125,9 @@
     "id": "lamelar",
     "nome": "Lamelar",
     "tipo": "armadura",
+    "preco": {
+      "pc": 700
+    },
     "peso": 12,
     "acesso": 3,
     "descricao": "Placas sobrepostas, ótimas contra flecha (cavalaria arqueira). Padrão no Oriente e na estepe. Os cordões de amarração são o ponto fraco.",
@@ -135,6 +150,9 @@
     "id": "placa-transicao",
     "nome": "Placa de transição",
     "tipo": "armadura",
+    "preco": {
+      "pc": 2100
+    },
     "peso": 18,
     "acesso": 2,
     "descricao": "Malha com as primeiras placas rígidas. Etapa cara e cavaleiresca rumo à placa completa.",
@@ -157,6 +175,9 @@
     "id": "placa-municao",
     "nome": "Placa de munição",
     "tipo": "armadura",
+    "preco": {
+      "pc": 1400
+    },
     "peso": 22,
     "acesso": 4,
     "descricao": "Placa produzida em série, aço pior, ajuste genérico. A armadura de tropa, oposta à placa sob medida do nobre.",
@@ -179,6 +200,9 @@
     "id": "placa-completa",
     "nome": "Placa completa",
     "tipo": "armadura",
+    "preco": {
+      "pc": 2600
+    },
     "peso": 25,
     "acesso": 1,
     "descricao": "A prova de arma comum: nenhuma flecha, besta ou picareta (N0–N2) a vence — resvalam (Nível 3). Um golpe bom ainda arranha (o aço não é intransponível), mas quem realmente entra é o Impacto (a placa mal segura a pancada), a perfuração nível 3+ (cerco, aríete, magia, armas épicas), a Proeza ou a feitiçaria; e quando furada, absorve pouco (Soak de Perfuração baixo).",
@@ -226,7 +250,7 @@
     "nome": "Camisa de malha",
     "tipo": "armadura",
     "preco": {
-      "pc": 200
+      "pc": 900
     },
     "peso": 7,
     "descricao": "Armadura órfã resolvida (§5, leitura de novato): números de simulação, sujeitos a balanceamento final, exceto o preço (herdado da tabela antiga).",
