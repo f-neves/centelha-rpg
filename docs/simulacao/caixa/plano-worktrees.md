@@ -282,3 +282,41 @@ Executora foi criada antes da blindagem, e usa o valor comum). A remoção de um
 às 02:40:57 o valor comum ficou de propósito num caminho que não existe**, como controle negativo do
 Cartógrafo: um commit de outra árvore nessa janela teria pulado o gancho. Conferido pelo Arquiteto
 nos reflogs das três árvores do arranjo: nenhum commit nesse intervalo.
+
+## 12 · A mudança para `ClaudeCode\centelha\` (25/09/2026, D10)
+
+**Feita às 13:43, pelo humano, com o `mudanca.ps1`** (o plano em `plano-pasta-centelha.md`; os scripts,
+a foto e os logs de cada tentativa em `C:\Users\Neves\ClaudeCode\centelha-mudanca\`). As quatro árvores
+moram em `C:\Users\Neves\ClaudeCode\centelha\`, continuam irmãs, e a foto de antes bate inteira depois
+(o `git status` dentro das quatro, os `.env` por hash, os arquivos com CRLF, os alvos e os sete atalhos).
+
+**O incidente: o aplicativo de desktop do Claude segurando a pasta.** O rename do `rpg-system`
+(passo 5) falhou com "Access to the path 'C:\Users\Neves\ClaudeCode\rpg-system' is denied" em três
+tentativas, segundo o humano; duas estão nos logs (`log-mudanca-20260925-132631.txt` e
+`-133216.txt`). Todas as sessões do Centelha estavam fechadas. A causa era o aplicativo de desktop do
+Claude: ele sobe sozinho com o Windows, sobrevive a fechar a janela, e só morre pela bandeja ou por
+`Stop-Process`. Nada se moveu em nenhuma das falhas, porque o rename é atômico: ou a pasta muda de
+nome inteira, ou nada muda. **O `Get-Process` que confirma, e o que fecha só o aplicativo sem
+derrubar sessão de terminal, estão na `PASSAGEM.md` §4**, que é onde a próxima sessão vai ler antes
+de mexer em pasta.
+
+**A volta atrás funcionou inteira, e foi ela que deixou tentar de novo sem medo.** Os logs mostram três
+voltas completas do `volta.ps1` (`log-volta-20260925-133140.txt`, `-133417.txt` e `-134121.txt`), cada
+uma terminando com a foto de antes batendo inteira, e duas delas partindo de árvores pela metade: as
+três linkadas já em `centelha\` e o `rpg-system` ainda na raiz, depois de cada falha do passo 5; e só
+a `centelha-executora` movida, depois de uma parada pedida pelo humano no passo 4 (`-133823.txt`).
+**Roteiro de disco sem volta atrás testada é roteiro de uma tentativa só.** Este teve a volta ensaiada
+num Centelha de brinquedo antes (a ida, a volta e três negativos), e depois foi usada de verdade.
+
+**A memória ainda não está provada.** A sessão do Arquiteto que reabriu depois da mudança era a mesma,
+retomada, e lembrar das coisas ali não prova a cópia de `~/.claude/projects`. A prova é a primeira
+abertura do zero (ver `PASSAGEM.md` §9, "O terminal"). As pastas de projeto velhas ficam até lá.
+
+**A limpeza da raiz, feita pelo Arquiteto no mesmo dia, a pedido do humano:** apagados, arquivo por
+arquivo e sem remoção recursiva, os catorze arquivos de saída das rodadas 99 a 104, os dois `.bak`
+(conferidos por `cmp` idênticos ao `main` e por hash como blobs do `3c931fd`), o `CENTELHA-PASTAS.md`
+e a casca `centelha-techlead` (um `bash.exe.stackdump` e uma `.claude\` vazia, tirada por `rmdir` sem
+`/s`, depois de conferir que não havia atalho dentro). O guia do humano foi reescrito em
+`C:\Users\Neves\ClaudeCode\centelha\LEIA-ME.md`. O `backup-mapa` é do Cartógrafo e espera a resposta
+dele (`pergunta-cartografo-backup-mapa.md`). A pasta `centelha-mudanca\` (os scripts, a foto e os
+logs) fica na raiz até o humano decidir.

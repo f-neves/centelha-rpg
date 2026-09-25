@@ -66,7 +66,10 @@ edição de qualquer uma das duas, que é a forma de defeito catalogada em
    toda resposta começa com `Executora:` / `Revisora:` / `Leitora-novata:` **dentro de um bloco
    de código**. Desde 23/09/2026 a resposta do Arquiteto ao chat TAMBÉM vai inteira num bloco de
    código. E o prompt de cada uma repete as regras permanentes: sem coautoria (nem
-   `Claude-Session:`), sem travessão, progresso em disco por etapa.
+   `Claude-Session:`), sem travessão, progresso em disco por etapa, e **saída temporária em
+   `../tmp/<papel>/`** (`../tmp/executora/`, `../tmp/revisora/`; mensagem de commit longa em
+   `../tmp/<papel>/msg.txt`, lida por `git commit -F`), nunca em `../` sozinho (a regra está no
+   `CLAUDE.md`, "Saída temporária", e a rede é a seção 7 do `test-portoes.mjs`).
 
 3. **CONFIRA QUE OS TRÊS SUBIRAM, e confira de verdade.** Chame `ListAgents` e veja as três
    linhas, `Executora`, `Revisora` e `Leitora-novata`, com os próprios nomes, e espere o relato

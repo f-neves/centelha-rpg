@@ -49,6 +49,9 @@
 //      quem lembrasse de rodar `npm run smoke`, e nunca no CI. É a MESMA forma
 //      do item 1 (teste fora de todo portão), um nível abaixo: aqui o teste
 //      está num portão, e o portão é que está incompleto.
+//   7. NADA SOLTO NA PASTA MÃE DAS ÁRVORES (desde 25/09/2026). Só na máquina do
+//      humano, onde as árvores moram em `ClaudeCode\centelha\`: saída temporária
+//      vai para `../tmp/<papel>/`, e o que cair solto ao lado das árvores acusa.
 //
 // A FORMA DAS CINCO É A MESMA, e é a do princípio do zero ambíguo: a ausência
 // nunca vale por si. Ou o instrumento está no portão, ou a ausência dele está
@@ -453,6 +456,36 @@ if (!process.env.CI) {
     // ficou fora da matriz sem nada aqui acusar.
     console.log(`    \`npm run smoke\` roda os ${smoke.length}. O CI roda os mesmos em matriz a cada push`
       + ' (conferido acima, item 6).');
+  }
+}
+
+// ===================================================================== 7
+// NADA SOLTO NA PASTA MÃE DAS ÁRVORES.
+//
+// Em 23 e 24/09/2026, dezessete arquivos de saída (logs de build e de validate,
+// mensagens de commit, cópias de controle negativo) caíram na raiz de
+// C:\Users\Neves\ClaudeCode, escritos por `> ../x.txt` de dentro de uma árvore
+// (`docs/simulacao/caixa/levantamento-pastas.md`). Desde 25/09/2026 (D10) as
+// árvores moram em `...\ClaudeCode\centelha\`, e o `../` sozinho passou a cair
+// ali. A regra é escrever em `../tmp/<papel>/` (CLAUDE.md, "Saída temporária");
+// esta seção é a rede, porque a regra em prosa sozinha produziu os dezessete.
+//
+// Só roda quando a pasta mãe da árvore se chama `centelha` (a máquina do humano).
+// No CI e em qualquer outro clone não há pasta mãe do arranjo, e cobrar uma
+// seria cobrar coisa que não existe. Dentro do `pre-commit` o portão roda numa
+// cópia temporária: a árvore real vem do `GIT_DIR` que o gancho exporta.
+{
+  const gitDir = process.env.GIT_DIR ? path.resolve(process.env.GIT_DIR) : '';
+  const arvore = gitDir && path.basename(gitDir) === '.git' ? path.dirname(gitDir) : RAIZ;
+  const mae = path.dirname(path.resolve(arvore));
+  if (path.basename(mae).toLowerCase() === 'centelha') {
+    secao('· nada solto na pasta mãe das árvores (' + mae + ')');
+    const PERMITIDOS = new Set(['rpg-system', 'centelha-executora', 'centelha-techlead-revisora',
+      'centelha-mapa', 'tmp', 'LEIA-ME.md']);
+    const soltos = fs.readdirSync(mae).filter((n) => !PERMITIDOS.has(n));
+    ok(soltos.length === 0, soltos.length === 0
+      ? `só as quatro árvores, \`tmp/\` e o \`LEIA-ME.md\``
+      : `${soltos.length} coisa(s) solta(s) em ${mae}: ${soltos.join(', ')}. Saída temporária vai para \`../tmp/<papel>/\`; o que for de verdade vai para dentro de uma árvore`);
   }
 }
 

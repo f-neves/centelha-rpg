@@ -54,6 +54,7 @@ segunda tinha ficado verde por cegueira.
 | **a negação categórica** | "não é preciso", "não há como", "nunca" | e a OUTRA DIREÇÃO? |
 | **a tolerância sem dono** | "por enquanto", "provisório", "até que" | quem decide que acabou, e o programa sabe responder? |
 | **o comentário que afirma garantia** | "aparece na hora", "garante", "é impossível" | o que RODA isso? |
+| **o comentário que promete o que o código não faz** | um número ou um nome escrito ao lado de uma coleção ("os seis junctions", "as três árvores") | este número sai da coleção (`.Count`, `length`)? Se não sai, ele envelhece calado, e sobrevive JUSTAMENTE porque o código está certo e nada quebra. |
 | **a medida batizada com o nome da causa** | nome de variável ou de coluna que afirma um porquê | o número mede o que o nome diz? |
 | **o instrumento de bancada citado como prova** | `?lances=1`, mock, dublê, fixture | isto existe FORA da bancada? |
 | **o dublê que não imita a forma da interface** | `async () =>` no lugar de um encadeável | o dublê tem as duas metades (aguardável E encadeável)? |
@@ -1018,3 +1019,28 @@ renderizada é onde nenhum portão olha:** o autolink roda no navegador
 outro sentido no livro? Meça o que ela passa a casar, na página renderizada, antes de publicar. E o
 conserto que ataca a causa é um termo que só tem um dono ("Nível de Perfuração"), e não uma marca
 caso a caso em cada frase que usa a palavra no outro sentido.
+
+## O COMENTÁRIO QUE PROMETE O QUE O CÓDIGO NÃO FAZ, E SOBREVIVE PORQUE NADA QUEBRA (25/09/2026, caso do humano)
+
+**A forma é a da tabela, *o comentário que promete o que o código não faz*,** e é parente do
+*comentário que afirma garantia*: lá o comentário afirma uma propriedade que nada roda; aqui ele
+afirma um número que a própria coleção ao lado já sabe, e o número está errado.
+
+**O caso.** O `comum.ps1` da mudança de pasta (`C:\Users\Neves\ClaudeCode\centelha-mudanca\`, D10)
+abria a lista dos atalhos com o comentário "Os seis junctions". A lista tinha sete (dois
+`node_modules` e cinco pastas de `lore\mapas`). O código usava a lista, e não o comentário: todo laço
+era `foreach ($j in $ATALHOS)`, e toda mensagem dizia `$ATALHOS.Count`. Os sete foram desfeitos e
+refeitos certos, a volta atrás também, e o ensaio no brinquedo passou. **O número errado nasceu do
+Arquiteto**: o plano que o precedeu dizia "SEIS, não dois" num título, sobre uma tabela de sete linhas,
+e o comentário copiou o título. O plano foi corrigido (`ad23b04`); o comentário ficou, e quem achou foi
+o humano, lendo o script depois da mudança feita.
+
+**Por que esta forma sobrevive:** nada falha. O teste passa, o ensaio passa, a execução real passa,
+porque ninguém lê o comentário para decidir o que fazer: o código lê a lista. O defeito só custa
+quando alguém confia no texto em vez da coleção (uma pessoa que revisa o roteiro contando "seis", uma
+instância que escreve o próximo documento a partir do comentário), e aí ele custa longe de onde
+nasceu.
+
+**A pergunta que a forma gera:** o número escrito ao lado desta coleção sai dela? Se o código já
+conta (`.Count`, `length`), o comentário não repete o número; ou diz de onde ele sai ("a contagem que
+vale é `$ATALHOS.Count`"), que foi o conserto aqui.

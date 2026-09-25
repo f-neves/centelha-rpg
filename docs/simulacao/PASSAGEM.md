@@ -100,6 +100,24 @@ Para processo de navegador, que roda local mesmo, o comando vale:
 
 Sem `node` e sem `msedge`, nenhum teste de navegador está executando.
 
+**O aplicativo de desktop do Claude segura pasta, e fechar a janela não o fecha** (achado em
+25/09/2026, na mudança para `ClaudeCode\centelha\`, D10). Três tentativas de mover o `rpg-system`
+falharam com "Access to the path ... is denied" (duas estão nos logs de
+`C:\Users\Neves\ClaudeCode\centelha-mudanca\`, às 13:26 e 13:32), com todas as sessões do Centelha
+fechadas. A causa era o aplicativo de desktop: ele sobe sozinho com o Windows, sobrevive a fechar a
+janela, e só morre pela bandeja (sair) ou por `Stop-Process`. **Antes de mover, renomear ou apagar
+qualquer pasta de árvore, confira:**
+
+    Get-Process claude -ErrorAction SilentlyContinue | Select-Object Id, Path, StartTime
+
+A linha cujo `Path` passa por `WindowsApps\Claude_` é o aplicativo de desktop; as de
+`npm\node_modules\@anthropic-ai\claude-code` são sessões de terminal (e uma delas pode ser a sua).
+Para fechar só o aplicativo, sem derrubar sessão de terminal:
+
+    Get-Process claude | Where-Object Path -like '*WindowsApps*' | Stop-Process
+
+Nunca `Stop-Process -Name claude`, que leva junto toda sessão aberta.
+
 E o rótulo "running" de um teammate provavelmente só quer dizer "não devolveu o turno ainda",
 não "computando agora". Nenhum sinal disponível desambigua isso melhor que olhar o disco.
 
@@ -257,6 +275,17 @@ Abrir o Claude Code na pasta do repositório principal, **já com o nome da sess
     claude -n "Arquiteto (RPG)"
 
 e, dentro dela, `/arquiteto`.
+
+**A PRIMEIRA SESSÃO ABERTA DO ZERO depois da mudança de pasta (25/09/2026, D10) confere a memória
+antes de qualquer trabalho.** A memória e os transcritos do Claude Code são guardados pelo CAMINHO da
+pasta, e a mudança os COPIOU de `~/.claude/projects/C--Users-Neves-ClaudeCode-rpg-system` para
+`C--Users-Neves-ClaudeCode-centelha-rpg-system`. A sessão que reabriu logo depois da mudança era a
+MESMA sessão, retomada, e lembrar das coisas ali não prova a cópia: parte do que ela sabia vinha do
+próprio contexto. **A prova vem na primeira abertura do zero:** a sessão nova diz, sem abrir arquivo,
+o que a memória traz (a equipe e onde cada uma mora, a regra do pathspec, a Leitora-novata fixa, o
+`cc centelha\rpg-system`), e se não souber, PARA e avisa o humano. Enquanto isso não acontecer, as
+pastas de projeto velhas ficam (decisão do humano: só se apagam depois dessa prova). Quem fizer a
+prova apaga este parágrafo no mesmo commit em que registrar o resultado.
 
 **O `-n` não é enfeite.** O nome aparece na caixa do prompt, no seletor do `/resume` e no título
 do terminal, e o arranjo inteiro tem UMA janela: a Executora e a Revisora são teammates desta

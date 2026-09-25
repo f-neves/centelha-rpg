@@ -65,6 +65,19 @@ Regras de convívio:
   e erros fantasma de "Duplicate id". Se aparecerem, apague `.astro/` e refaça.
 - Ao terminar, **diga em uma linha quais arquivos você tocou**, para a outra frente
   saber o que mudou debaixo dela.
+- **Saída temporária vai para `../tmp/<papel>/`, e nunca para `../` sozinho.** Log de
+  build ou de `validate`, mensagem de commit, cópia de controle negativo: tudo que é
+  de trabalho e não é do repositório mora em `C:\Users\Neves\ClaudeCode\centelha\tmp\`,
+  numa subpasta por papel (`arquiteto`, `executora`, `revisora`, `cartografo`), que de
+  dentro de qualquer árvore é `../tmp/<papel>/`. Uma por papel porque a Executora e a
+  Revisora rodam `validate` na mesma rodada, e um `../tmp/val.txt` comum sobrescreveria
+  o da outra calado. **A mensagem de commit longa** vai para `../tmp/<papel>/msg.txt` e
+  sai por `git commit -F ../tmp/<papel>/msg.txt -- <arquivos>`. Nada ali é prova (a
+  prova vai colada no arquivo commitado), e a pasta pode ser esvaziada pelo dono. O
+  motivo: em 23 e 24/09/2026 dezessete arquivos de saída caíram na raiz do ClaudeCode
+  por `> ../x.txt` (`docs/simulacao/caixa/levantamento-pastas.md`). **A rede:** a seção
+  7 do `test-portoes.mjs`, que roda em todo commit, acusa qualquer coisa solta em
+  `centelha\` além das quatro árvores, do `tmp/` e do `LEIA-ME.md`.
 - **Instância aberta fora do arranjo Arquiteto/Executora/Revisora/Auditora
   (`docs/simulacao/PASSAGEM.md`) não commita no `main`.** Escreve o achado em
   `docs/simulacao/caixa/`, e o Arquiteto absorve na próxima sessão dele. Registrado em

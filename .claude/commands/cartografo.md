@@ -20,6 +20,12 @@ a conferência do git (o `cd lore/mapas/ferramentas` é o da `centelha-mapa`). *
 `rpg-system` está congelado em 23/09 e não deve ser lido**: ele fica para trás da `mapa` (45 commits
 à frente do `origin/main` em 24/09/2026), e quem o lê começa a sessão com um retrato velho.
 
+**Saída temporária vai para `..\tmp\cartografo\`** (`C:\Users\Neves\ClaudeCode\centelha\tmp\cartografo\`,
+desde 25/09/2026): log de servidor ou de teste, mensagem de commit longa (`git commit -F
+..\tmp\cartografo\msg.txt -- <arquivos>`), cópia de controle negativo. Nunca em `..\` sozinho, que é a
+pasta mãe das quatro árvores. A regra está no `CLAUDE.md` ("Saída temporária"), e a seção 7 do
+`test-portoes.mjs` acusa o que cair solto em `centelha\`.
+
 0. **Confira a configuração do git ANTES de qualquer trabalho, e REGISTRE**:
 
    ```sh
