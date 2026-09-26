@@ -28,10 +28,12 @@ Mesma árvore/branch. `git status --short` vazio, `git fetch origin`, `git merge
 
 ## 1 · Registrar sugestões nas pendências (NÃO IMPLEMENTAR NADA DISTO)
 
-Cada bloco abaixo é uma sugestão do Comerciante, "não aprovada". **Antes de criar pendência
-nova, verifiquei onde cada uma já tem endereço** (pesquisa feita agora, na árvore em
-`8e383ee`); confirme os números de linha na sua árvore (podem ter andado) e siga esta lista, não
-crie duplicata:
+**O texto de cada bloco (1a a 1f) está no Apêndice, ao final deste despacho.** Copie o texto de
+lá para o endereço indicado abaixo; não escreva a sugestão com suas próprias palavras, e não
+resuma: é para entrar como o Comerciante escreveu. Cada bloco é uma sugestão dele, "não
+aprovada". **Antes de criar pendência nova, verifiquei onde cada uma já tem endereço** (pesquisa
+feita agora, na árvore em `8e383ee`); confirme os números de linha na sua árvore (podem ter
+andado) e siga esta lista, não crie duplicata:
 
 - **1a (desgaste e manutenção)** pertence à **G67**
   (`docs/pendencias/G-acoes-sistema.md:145`, "Reparo e desgaste... **Falta:** o desgaste opcional
@@ -236,3 +238,63 @@ Tarefa 5 o mapa seção→subpágina). `progresso-114.md` desde a primeira etapa
 Depois do relato: peça à **Leitora-novata** para ler a subpágina de Renda e a de Serviços e dizer,
 com as próprias palavras, o que um personagem recebe quando trabalha uma semana (é a checagem
 final pedida pelo autor, não é revisão técnica).
+
+## Apêndice · texto dos blocos 1a a 1f (do Comerciante, copiado sem alteração)
+
+**1a. NOVA pendência "Desgaste e manutenção (regra opcional)" (registre como sub-item da G67):**
+
+> Fim de cada combate: 1 marca em cada arma usada, em cada armadura que absorveu dano e em cada
+> escudo que bloqueou. O Mestre pode dar mais uma em combate longo, contra armadura pesada,
+> criatura grande ou falha crítica.
+> Estágios: dano leve (-1 num número da peça: dano, absorção ou bloqueio), dano pesado (-2),
+> arruinada (inútil até reparo).
+> Marcas por estágio, pelo grau: Sucata 1, Tosca 2, Comum 3, Boa 3, Ótima 4, Excelente 6
+> (Excelente 6/12/18 marcas para leve/pesado/arruinada). É o "Excelente dura mais".
+> Manutenção: 1 hora com o kit apaga 1 marca, sem jogada, com Ofícios Gerais 1 ou o ofício, com
+> tempo e abrigo. Só age antes do dano; depois, só o reparo.
+> Kit de manutenção ~20 pc (pedra de amolar, óleo, trapos, areia); óleo 10 pc a cada 4 semanas de
+> uso. Manutenção paga: ~2 pc por marca.
+> Referência: limpadores de cota da Torre de Londres, 4 a 6 d por dia (1344-51).
+> Fora da regra: roupa e ferramenta (já no custo de vida), cavalo (ferragem na manutenção
+> semanal), munição (regra de recuperar metade).
+> Reparo (se ainda não estiver no livro): leve sem Montagem, 1/4 da Peça, cerca de 1/10 do preço,
+> Ofícios Gerais faz no campo; pesado 1/2 Montagem + 1/2 Peça, cerca de 1/3; arruinada com
+> material, trabalho inteiro, cerca de 2/3 mais material.
+
+**1b. Pendência da Cura (Artes, Cura sem número fora do combate) (registre como pendência nova em
+`A-arcano-artes.md`):**
+
+> Curandeiro mortal acelera a recuperação em cerca de 10%, só um pouco melhor que descansar.
+> Preços mundanos baratos já no livro (atendimento 3, consulta 15, tratamento 10 por dia).
+> Cura com Proeza ou Magia encarece: preço pela tabela de serviços do perfil do curador, mais o
+> custo de Mana quando existir regra de Mana em ação Longa.
+
+**1c. G15 (Proezas em ação Longa) (registre como sub-item da G15):**
+
+> Na renda de ofício, a segunda Habilidade entra como bônus fixo, só uma. Firula não conta.
+> Proeza conta como bônus na média. Número a definir junto com D8.
+
+**1d. Pendências de Mana em ação Longa e de item mágico (registre a primeira frase como sub-item
+da A4; a segunda como pendência nova em `A-arcano-artes.md`):**
+
+> Serviço mágico = tabela de serviços pelo perfil do conjurador × tempo, mais Mana e material
+> quando houver regra. Raridade por lugar: usar os tetos de aldeia, vila, cidade e capital como
+> base.
+
+**1e. NOVA pendência "Empréstimo de XP" (desenho pronto, aguarda o autor) (registre como sub-item
+da G68, marcando o que é novo em relação à G44):**
+
+> Um ponto por vez, quitado antes do próximo; professor com pelo menos 1 ponto acima; vale para
+> Atributo, Habilidade e Especialidade; o Mestre julga.
+> Tempo de aula = custo em XP do ponto / 2, em jornadas (Habilidade 3 para 4: 6 jornadas;
+> Atributo 3 para 4: 12,5). O aluno não trabalha nesses dias.
+> Preço = jornadas × diária avulsa do professor.
+> Dívida: metade de todo XP ganho vai para a dívida até quitar; some no fim da campanha.
+> Mentor ensina sem cobrar dinheiro; a dívida de XP é a mesma. Aula em grupo: até 4 alunos, preço
+> total × 1,5 dividido.
+
+**1f. NOVA pendência "Comércio e modificador regional" (registre como pendência nova em
+`G-acoes-sistema.md`):**
+
+> Pechincha com teto de 20%; venda direta ao consumidor 70% a 100% do preço de tabela;
+> arbitragem entre regiões; números do modificador regional.
