@@ -34,12 +34,13 @@ const { caminho } = Astro.props;
 
 <script>
   import tecnicas from '../data/tecnicas.json';
+  import { tecnicaDisponivel } from '../lib/modulos';
   import caminhos from '../data/caminhos.json';
   import regras from '../data/regras.json';
 
   type Tec = { id: string; nome: string; caminho: string; nivel: number; efeito: string; tipo: string; custo: any; prereq: string[]; texto: string; pendente: boolean };
   const BASE = import.meta.env.BASE_URL; // /centelha-rpg/
-  const ALL = tecnicas as Tec[];
+  const ALL = tecnicas.filter((t) => tecnicaDisponivel(t)) as Tec[];
   const byId: Record<string, Tec> = Object.fromEntries(ALL.map((t) => [t.id, t]));
   const camNome: Record<string, string> = Object.fromEntries((caminhos as any[]).map((c) => [c.id, c.nome]));
   const perNivel = (regras as any).xp.tecnica.valor as number;

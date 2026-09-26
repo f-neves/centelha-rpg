@@ -2,7 +2,7 @@
 // Renderiza bolinhas/cards/derivados no esqueleto (FichaSkeleton.astro) e calcula XP ao vivo.
 // A persistência e o orçamento são configuráveis via opts, para servir tanto a /ficha
 // (localStorage) quanto a /personagem (Supabase, com XP definido pelo mestre).
-import { MODULOS } from './modulos';
+import { MODULOS, tecnicaDisponivel } from './modulos';
 import { pesoMaximoErguido, alcanceArremesso } from './forca-empurrao';
 import { custoPontos, custoTecnica, custoArte, custoEfeito, custoEspecialidade, pisoXp, pv, pvPorte, type Porte, comRequisitoDeForca, forcaFaltando, defesa, defesaMental, defesaSocial, energia, mana, folego, iniciativa, deslocamento, ataqueCentelha, aparenciaMod, empilharArmaduras, soakNatural, MODO_NOME, MODO_ORDEM, SOAK_CATS, regras } from './calc';
 import ATTRS_D from '../data/atributos.json';
@@ -120,11 +120,12 @@ export function montarFicha(opts: FichaOpts) {
     }
     if (p && (window as any).refModal) (window as any).refModal(p);
   }
-  const CAM_ORDER = (CAM_D as any[]).map((c) => c.id);
+  const TEC_VISIVEIS = (TEC_D as any[]).filter((t) => tecnicaDisponivel(t));
+  const CAM_ORDER = (CAM_D as any[]).filter((c) => TEC_VISIVEIS.some((t) => t.caminho === c.id)).map((c) => c.id);
   const CAM_NOME: Record<string, string> = Object.fromEntries((CAM_D as any[]).map((c) => [c.id, c.nome]));
   const CAM_ATR: Record<string, string> = Object.fromEntries((CAM_D as any[]).map((c) => [c.id, c.atributo]));
   const CAMTREE: Record<string, [string, string, number][]> = {};
-  for (const t of TEC_D as any[]) (CAMTREE[t.caminho] ??= []).push([t.id, t.nome, t.nivel]);
+  for (const t of TEC_VISIVEIS) (CAMTREE[t.caminho] ??= []).push([t.id, t.nome, t.nivel]);
   for (const k in CAMTREE) CAMTREE[k].sort((a, b) => a[2] - b[2]);
   const TECNIV: Record<string, number> = Object.fromEntries((TEC_D as any[]).map((t) => [t.id, t.nivel]));
   const TECPRE: Record<string, string[]> = Object.fromEntries((TEC_D as any[]).map((t) => [t.id, t.prereq || []]));

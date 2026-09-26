@@ -81,6 +81,7 @@ const tecnicas = defineCollection({
   schema: z.object({
     id: z.string(),
     nome: z.string(),
+    modulo: z.enum(['folego']).optional(),
     caminho: reference('caminhos'),
     atributo: reference('atributos'),
     nivel: z.number().int().min(1).max(6),

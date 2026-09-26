@@ -3233,6 +3233,7 @@
   },
   {
     "id": "folego-profundo",
+    "modulo": "folego",
     "nome": "Fôlego Profundo",
     "caminho": "coracao-incansavel",
     "atributo": "vigor",
@@ -3247,6 +3248,7 @@
   },
   {
     "id": "segundo-vento",
+    "modulo": "folego",
     "nome": "Segundo Vento",
     "caminho": "coracao-incansavel",
     "atributo": "vigor",
@@ -3265,6 +3267,7 @@
   },
   {
     "id": "marcha-forcada",
+    "modulo": "folego",
     "nome": "Marcha Forçada",
     "caminho": "coracao-incansavel",
     "atributo": "vigor",
@@ -3281,6 +3284,7 @@
   },
   {
     "id": "incansavel",
+    "modulo": "folego",
     "nome": "Incansável",
     "caminho": "coracao-incansavel",
     "atributo": "vigor",
@@ -3297,6 +3301,7 @@
   },
   {
     "id": "pulmoes-de-ferro",
+    "modulo": "folego",
     "nome": "Pulmões de Ferro",
     "caminho": "coracao-incansavel",
     "atributo": "vigor",
@@ -3315,6 +3320,7 @@
   },
   {
     "id": "sem-limites",
+    "modulo": "folego",
     "nome": "Sem Limites",
     "caminho": "coracao-incansavel",
     "atributo": "vigor",
@@ -3334,6 +3340,7 @@
   },
   {
     "id": "vigor-inesgotavel",
+    "modulo": "folego",
     "nome": "Vigor Inesgotável",
     "caminho": "coracao-incansavel",
     "atributo": "vigor",
@@ -3350,6 +3357,7 @@
   },
   {
     "id": "coracao-eterno",
+    "modulo": "folego",
     "nome": "Coração Eterno",
     "caminho": "coracao-incansavel",
     "atributo": "vigor",
@@ -7404,6 +7412,7 @@
   },
   {
     "id": "folego-de-sobra",
+    "modulo": "folego",
     "nome": "Fôlego de Sobra",
     "caminho": "coracao-incansavel",
     "atributo": "vigor",

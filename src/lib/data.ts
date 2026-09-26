@@ -1,5 +1,6 @@
 import { getCollection } from 'astro:content';
 import regras from '../data/regras.json';
+import { tecnicaDisponivel } from './modulos';
 
 /** Nome do tier por nível (1 a 6). */
 export const TIER_NOME = ['Tocado', 'Desperto', 'Herói', 'Campeão', 'Lendário', 'Semideus'];
@@ -24,15 +25,19 @@ export const TRILHA_SUB: Record<string, string> = {
 };
 
 export async function loadData() {
-  const [atributos, habilidades, secundarias, virtudes, caminhos, tecnicas, artes, efeitos, glossario] = await Promise.all([
+  const [atributos, habilidades, secundarias, virtudes, caminhosTodos, tecnicasTodas, artes, efeitos, glossario] = await Promise.all([
     getCollection('atributos'), getCollection('habilidades'), getCollection('habilidadesSecundarias'),
     getCollection('virtudes'),
     getCollection('caminhos'), getCollection('tecnicas'), getCollection('artes'),
     getCollection('efeitos'), getCollection('glossario'),
   ]);
 
+  const tecnicas = tecnicasTodas.filter((t) => tecnicaDisponivel(t.data));
+  const caminhosAtivos = new Set(tecnicas.map((t) => t.data.caminho.id));
+  const caminhos = caminhosTodos.filter((c) => caminhosAtivos.has(c.id));
+
   const A = Object.fromEntries(atributos.map((a) => [a.id, a.data]));
-  const C = Object.fromEntries(caminhos.map((c) => [c.id, c.data]));
+  const C = Object.fromEntries(caminhosTodos.map((c) => [c.id, c.data]));
   const T = Object.fromEntries(tecnicas.map((t) => [t.id, t.data]));
 
   // técnicas por caminho, ordenadas por nível

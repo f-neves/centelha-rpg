@@ -3,8 +3,10 @@ import Base from '../layouts/Base.astro';
 import CentelhaSpark from '../components/CentelhaSpark.astro';
 import { url, NAV, FERRAMENTAS } from '../lib/site';
 import { getCollection } from 'astro:content';
-const nTec = (await getCollection('tecnicas')).length;
-const nCam = (await getCollection('caminhos')).length;
+import { tecnicaDisponivel } from '../lib/modulos';
+const tecnicas = (await getCollection('tecnicas')).filter((t) => tecnicaDisponivel(t.data));
+const nTec = tecnicas.length;
+const nCam = new Set(tecnicas.map((t) => t.data.caminho.id)).size;
 const nArt = (await getCollection('artes')).length;
 const capitulos = NAV.filter((n) => n.numeral);
 ---

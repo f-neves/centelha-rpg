@@ -5,10 +5,9 @@ import { loadData, TIER_NOME, caminhoComArtigo } from '../../lib/data';
 import TecnicaItem from '../../components/TecnicaItem.astro';
 import ArvoreTecnicas from '../../components/ArvoreTecnicas.astro';
 import Icone from '../../components/Icone.astro';
-import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-  const caminhos = await getCollection('caminhos');
+  const { caminhos } = await loadData();
   return caminhos.map((c) => ({ params: { id: c.id }, props: { id: c.id } }));
 }
 const { id } = Astro.props;

@@ -81,6 +81,12 @@ Thumbs.db
 # o modelo do Vosk (voz-bench.html): 31 MB, nao versionado, cada maquina baixa o seu
 voz-bench-modelo/
 
+# material de exportação para avaliação externa (26/09/2026): dossiê e catálogo de Proezas
+# preparados para uma ferramenta fora do repositório (ChatGPT desktop), sem acesso ao site nem
+# ao histórico. É saída derivada da fonte (regenerável a qualquer momento) e trabalho de sessão,
+# não conteúdo do jogo; fica de fora do git pelo mesmo motivo de lore/mapas/dados/.historico/.
+docs/export/proezas/
+
 # o modelo do Vosk para o GRID: VERSIONADO desde 11/09/2026 (VOZ.md 10.2, decisao 14).
 # Nao esta mais ignorado, e e de proposito: o deploy monta o dist/ do que esta no
 # repositorio, entao modelo nao versionado nunca chega ao site publicado, e a voz

@@ -10,9 +10,10 @@ import { url } from '../lib/site';
 
 <script>
   import tecnicas from '../data/tecnicas.json';
+  import { tecnicaDisponivel } from '../lib/modulos';
   import artes from '../data/artes.json';
   const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-  const TEC: Record<string, any> = Object.fromEntries((tecnicas as any[]).map((t) => [t.id, t]));
+  const TEC: Record<string, any> = Object.fromEntries(tecnicas.filter((t) => tecnicaDisponivel(t)).map((t) => [t.id, t]));
   const ART: Record<string, any> = Object.fromEntries((artes as any[]).map((a) => [a.id, a]));
 
   function render() {
@@ -28,7 +29,7 @@ import { url } from '../lib/site';
     if (art.length) h += '<h2>Artes</h2><ul class="mk-list">' + art.map((a) =>
       `<li><a href="${base}/arcano#${a.id}">${a.nome}</a> <span class="muted">${a.categoria}</span>
        <button class="rm" data-bm="arte:${a.id}" aria-label="Remover">★</button></li>`).join('') + '</ul>';
-    out.innerHTML = h;
+    out.innerHTML = h || '<p class="muted">Nenhum marcador disponível nos módulos ativos.</p>';
   }
   render();
   document.addEventListener('marcadores:change', render);

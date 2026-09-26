@@ -12,3 +12,11 @@
 export const MODULOS = {
   folego: false,
 } as const;
+
+/** A marca no dado controla a exibição; nome e texto não decidem o módulo. */
+export function tecnicaDisponivel(
+  tecnica: { modulo?: string },
+  modulos: { folego: boolean } = MODULOS,
+): boolean {
+  return tecnica.modulo !== 'folego' || modulos.folego;
+}
