@@ -1,5 +1,5 @@
 {
-  "_nota": "Recompensa de caça: Bolsa = Valor do degrau × Semanas × Tarefa × Risco × 3 (o grupo de referência); degrau = desafio + quantidade + Centelha ÷ 4; o valor do degrau é a tarifa de base por caçador, por semana, base × fator^(degrau − 1), arredondado pela régua em `arredondamento` (a mesma do `arred` de lore/economia/v2/base.py). A Parte por caçador é a bolsa ÷ o grupo, para baixo; a sobra o grupo divide como quiser. Saída do modelo em lore/economia/v2/gerar.py: não edite preço à mão aqui; mude o modelo e gere de novo.",
+  "_nota": "Recompensa de caça: Bolsa = Valor do degrau × Semanas × Tarefa × Risco × 4 (o grupo de referência); degrau = desafio + quantidade + Centelha ÷ 4; o valor do degrau é a tarifa de base por caçador, por semana, base × fator^(degrau − 1), arredondado pela régua em `arredondamento` (a mesma do `arred` de lore/economia/v2/base.py). A Parte por caçador é a bolsa ÷ o grupo, para baixo; a sobra o grupo divide como quiser. Saída do modelo em lore/economia/v2/gerar.py: não edite preço à mão aqui; mude o modelo e gere de novo.",
   "base": 15,
   "fator": 1.75,
   "degraus": [

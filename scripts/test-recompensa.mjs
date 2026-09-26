@@ -1,11 +1,11 @@
 // test-recompensa.mjs · a conta da recompensa de caça (rodada 115), pela mesma função que a
 // calculadora usa (src/lib/recompensa.ts), com os parâmetros de src/data/recompensas.json.
-// Os cinco casos são os do despacho da rodada 115 (tom padrão, outro ×1, grupo real de 3 caçadores),
-// com o degrau, as semanas e a bolsa de cada um. Desde o B14 fase 2 (item D.14, 26/09/2026) o grupo
-// de REFERÊNCIA da fórmula (P.grupo, em recompensas.json) é 4, não 3: a bolsa de cada caso subiu na
-// mesma proporção (×4/3), pela régua do arred. O grupo real que recebe a bolsa (o `grupo` de cada
-// caso, usado só em porCacador/sobra) não mudou. Desde a rodada 118 a Parte por caçador é a bolsa ÷
-// o grupo PARA BAIXO, e a sobra é o que as partes não cobrem.
+// Os cinco casos são os do despacho da rodada 115 (tom padrão, outro ×1), com o degrau, as semanas
+// e a bolsa de cada um. Desde o B14 fase 2 (item D.14, 26/09/2026) o grupo de REFERÊNCIA da fórmula
+// (P.grupo, em recompensas.json) é 4, não 3: a bolsa de cada caso subiu na mesma proporção (×4/3),
+// pela régua do arred. O grupo real que recebe a bolsa (o `grupo` de cada caso, usado só em
+// porCacador/sobra) acompanhou e também passou a ser 4 caçadores. Desde a rodada 118 a Parte por
+// caçador é a bolsa ÷ o grupo PARA BAIXO, e a sobra é o que as partes não cobrem.
 import { build } from 'esbuild';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -28,13 +28,13 @@ let passou = 0; const falhas = [];
 const ok = (c, m) => { if (c) { passou++; console.log('  ✓ ' + m); } else { falhas.push(m); console.log('  ✗ ' + m); } };
 
 console.log('\n· os cinco casos do despacho da rodada 115');
-const base = { fracas: 0, tom: 'padrao', outro: 1, grupo: 3 };
+const base = { fracas: 0, tom: 'padrao', outro: 1, grupo: 4 };
 const CASOS = [
-  [{ desafio: 5, centelha: 5, fortes: 1, cacadaSemanas: 1, viagemDias: 16, tarefa: 'matar', risco: 'normal' }, 6, 2, 2000, 666, 2],
-  [{ desafio: 5, centelha: 5, fortes: 1, cacadaSemanas: 1, viagemDias: 16, tarefa: 'capturar-vivo', risco: 'normal' }, 6, 2, 3000, 1000, 0],
-  [{ desafio: 2, centelha: 0, fortes: 8, cacadaSemanas: 1, viagemDias: 0, tarefa: 'matar', risco: 'alto' }, 5, 1, 840, 280, 0],
-  [{ desafio: 3, centelha: 0, fortes: 1, cacadaSemanas: 2, viagemDias: 8, tarefa: 'capturar-intacto', risco: 'normal' }, 3, 2.5, 900, 300, 0],
-  [{ desafio: 2, centelha: 0, fortes: 1, cacadaSemanas: 1, viagemDias: 0, tarefa: 'trazer-parte', risco: 'normal' }, 2, 1, 100, 33, 1],
+  [{ desafio: 5, centelha: 5, fortes: 1, cacadaSemanas: 1, viagemDias: 16, tarefa: 'matar', risco: 'normal' }, 6, 2, 2000, 500, 0],
+  [{ desafio: 5, centelha: 5, fortes: 1, cacadaSemanas: 1, viagemDias: 16, tarefa: 'capturar-vivo', risco: 'normal' }, 6, 2, 3000, 750, 0],
+  [{ desafio: 2, centelha: 0, fortes: 8, cacadaSemanas: 1, viagemDias: 0, tarefa: 'matar', risco: 'alto' }, 5, 1, 840, 210, 0],
+  [{ desafio: 3, centelha: 0, fortes: 1, cacadaSemanas: 2, viagemDias: 8, tarefa: 'capturar-intacto', risco: 'normal' }, 3, 2.5, 900, 225, 0],
+  [{ desafio: 2, centelha: 0, fortes: 1, cacadaSemanas: 1, viagemDias: 0, tarefa: 'trazer-parte', risco: 'normal' }, 2, 1, 100, 25, 0],
 ];
 CASOS.forEach(([e, degrau, semanas, bolsa, parte, sobra], i) => {
   const r = R.calcularRecompensa({ ...base, ...e }, R.P);
