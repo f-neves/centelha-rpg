@@ -1221,3 +1221,168 @@ site.** Dentro do próprio `custo-de-servico-e-itens.md`, toda tabela com preço
    mão.
 
 Nada alterado. Sem commit, sem push.
+
+## Etapa D · Rodada D5 · conferência da rodada 113 (effc917) · VEREDITO
+
+Conferido item a item contra a decisão B2 (curva convexa) e as demais decisões da D4/D2. Contas
+à mão: oficial (10,5 − 4) × 20 = 130; perito (16 − 7) × 37,14 = 333,26 ≈ 330; mestre
+(21 − 11) × 66,86 = 668,6 ≈ 670. Batem com `renda.json.curva_por_soma` (130/330/670) e com os dois
+arquivos abaixo.
+
+1. Fórmula B2 (o melhor de (média − Dificuldade) × valor da faixa, entre as faixas que o Requisito
+   alcança), com os valores 130/330/670: ACEITO.
+   `acoes-oficio-e-mundo.md:211-233` (fórmula em :211; tabela de faixas 20/37/67 em :219-223; tabela
+   oficial/perito/mestre em :229-233); `Acoes_Sistema.md:1320-1337` (mesmo texto e tabelas). A
+   sugestão linear da própria D4 (130/240/340) não foi usada, e não é BLOQUEIO.
+2. Bônus da segunda Habilidade (uma só, fixa) e "Firula não conta": ACEITO.
+   `acoes-oficio-e-mundo.md:249`; `Acoes_Sistema.md:1349-1351`.
+3. Tetos 100/300/1.000, capital sem teto, limitando o ganho e não a venda: ACEITO.
+   `acoes-oficio-e-mundo.md:239-244` e `:251`; `Acoes_Sistema.md:1339-1344` e `:1353-1355`.
+4. Semana de 6 jornadas em 8 dias (7-8 na guerra/colheita, até 5 fora de estação), renda
+   proporcional aos dias: ACEITO. `acoes-oficio-e-mundo.md:253-254`; `Acoes_Sistema.md:1357-1358`.
+5. Em `Acoes_Sistema.md`: qualidade 5x/30x/70x com Requisito máximo 6 e degrau mantido (§7.5,
+   `:1115`, `:1118`, `:1119`); reparo sem "A Montagem se paga igual" (§7.8, `:1300`, frase velha
+   ausente); carroça em dias (`:1265`, 6,9 dias) separada do barco de pesca em semanas (`:1277`, 7
+   semanas); salto entre degraus "de oito a sessenta vezes" em `:216`. ACEITO nos quatro pontos.
+6. Jornada por ofício (leve 6h, artesão 8h, braçal 10h; o "dia" da tabela é uma jornada do ofício):
+   ACEITO. `acoes-oficio-e-mundo.md:137`; `Acoes_Sistema.md:1238` (§7.7).
+
+Veredito: os 6 itens ACEITO. A rodada 113 fechou exatamente o BLOQUEIO apontado na D4, com a curva
+certa (B2), não a sugestão linear que a própria D4 tinha oferecido por engano.
+
+Nada alterado. Sem commit, sem push.
+
+## Etapa D · Rodada D6 · levantamento de Centelha, Proezas, Artes e Mana para a precificação sobre-humana
+
+Só leitura, sem análise de preço. Objetivo: saber se essas quatro camadas estão estáveis o
+bastante para receber preço.
+
+### 1. Centelha: o bônus por ponto
+
+`centelha.md:44` ("cada ponto de Centelha soma +1 ao ataque e +1 às três Defesas") e `:65` ("esse
+bônus é por cima do +1 por ponto de Centelha") dizem +1. O motor também usa +1:
+`regras.json:790/798/808` (as três Defesas, `centelhaMult: 1`) e `:814` (ataque, `centelhaMult: 1`).
+Só a NOTA em prosa de `regras.json:114` (bloco `escalasProeza`) diz "+2/ponto de Centelha", e essa
+nota não é lida por código algum, é só texto explicativo desatualizado.
+
+Isso já seria um achado de documentação e não de mecânica, mas existe pendência aberta cobrando
+decisão formal: `Pendencias.md:377` (D7, "aberto, DECIDIR") e o detalhe em
+`docs/pendencias/D-proezas-tecnicas.md:33-36`, levantada em 24/09/2026. Enquanto D7 não fecha, o
+número que vale hoje na mesa é +1 (é o que o motor calcula), mas o sistema não está formalmente
+fechado nesse ponto.
+
+### 2. Proezas/Técnicas: a trilha de bônus e a entrada na Longa
+
+A trilha (regras.json `escalasProeza`, espelhada em `centelha.md:63-68`) vai de +3 (nível 1) a +15
+(nível 6). Como esse bônus soma numa ação Longa (ofício, renda, cura) é pendência aberta: `G15`
+(`Pendencias.md:422`; detalhe em `docs/pendencias/G-acoes-sistema.md:147-150`), levantada em
+24/09/2026: `acoes-e-sistema.md:107-109` diz que Proezas e Artes "quebram a parede da Longa e
+levantam a média", sem dizer a forma (um "+3 em Ofícios" soma direto à média? e as Técnicas de
+estado, sem número, como a Obra Fina?).
+
+`Proezas_revisao.md` é explicitamente um documento de trabalho: "não é a versão final nem entra no
+site" (`:3`), e ainda usa a numeração antiga de 5 níveis (nota em `:16`: "os detalhamentos... ainda
+usam a numeração antiga... na régua atual, cada um subiu +1"). O próprio doc reconhece que os
+números das Técnicas estão desatualizados: `:705`, "o texto de cada Técnica ainda traz o número
+antigo (\"+2 em Furtividade\"); a régua diz nível×3 (=+3 no N1)... é parte da Fase 3", ainda não
+feita.
+
+Divergência de exemplo, como o autor citou: **Mãos Hábeis** aparece com "+2 em Ofícios" em
+`Proezas_revisao.md:606` e com "+3 em Ofícios" em `tecnicas.json:6084` (nível 1, trilha Bônus, que
+dá +3). O `tecnicas.json` é o dado vivo e está certo pela régua; o doc de revisão ficou para trás.
+Pendência aberta: `D8` (`Pendencias.md:378`; detalhe em `docs/pendencias/D-proezas-tecnicas.md:37-40`),
+levantada em 24/09/2026, que já nomeia esse caso e pede confirmação "antes de mexer" porque a
+Técnica pesa direto no ganho por ofício.
+
+### 3. Artes/Magia
+
+**Cura** (`artes.json:744-826`): custo em Mana de 1 (nível 1) a 6 (nível 6), efeito descrito em
+prosa ("cura dano leve" até "traz o recém-morto"), sem fórmula numérica de quanto acelera a
+recuperação (nenhuma referência a dias ou semanas de `vida-ferimentos-cura.md`). No tabuleiro a
+implementação está incompleta: `L86` (`docs/pendencias/L-simulacao-simultaneo.md:5151-5158`),
+achado pela Revisora em 12/09/2026, mostra que dos sete efeitos marcados `grid.cura: true`, dois
+ainda não têm caminho de resolução (`cura-guardada`, `maos-sobre-a-multidao`), embora dois outros já
+tenham fechado (`mao-firme`, `acelerar-a-cura`).
+
+**Adivinhação** (`artes.json:1101-1188`): mesmo formato, Mana 1 a 6 por nível, efeito em prosa, sem
+número quantificado.
+
+**Bênção**: não existe Arte com esse nome no catálogo (`artes.json`, busca vazia).
+
+**Encantamento de item**: não existe regra geral de criar, encantar ou comprar item mágico. Só há
+um Efeito Especial isolado, `Vincular ao Objeto` (`efeitos.json:3644-3667`), nível 4 da Arte
+Espírito: "prende um espírito num objeto... é assim que se faz item encantado sem forja: por
+acordo, ou por captura". Não há preço nenhum: `custo-de-servico-e-itens.md` não cita "mágic",
+"encant" nem "Artefato" em lugar nenhum (busca vazia).
+
+**Tempo de conjuração**: `regras.json:1890-1905` (`tempoDaArte`) mede em Ticks de combate ("a Arte
+resolve no último Tick"; a conjuração comum leva de 5 a 7 Ticks de preparo). É escala de segundos,
+sem equivalente em horas/dias para um uso fora de combate (encantar um item, um ritual de cura
+prolongado).
+
+**Quem pode aprender**: Centelha 1+ já dá acesso a Mana e Artes (`centelha.md:19`), mas a Tradição
+(que perícia rola para conjurar, como se ensina) está bloqueada: `C1` e `C2`
+(`docs/pendencias/C-trilhas-feiticaria.md:5-14`), "DECIDIR, BLOQUEADO pela camada de Tradição",
+porque dependem de `trilhas-feiticaria.md` fechar (proposta de 28/07/2026, nunca batida).
+
+### 4. Mana e Energia
+
+Recuperação: `aparencia-virtudes-vontade.md:115`, "o mesmo repouso que a Mana pede (ela volta
+Centelha por hora, e 2 × Centelha por hora nesse repouso [sono/meditação]; a Energia volta a cada
+cena)". A Firula também devolve Mana: `habilidades.md:104-108` (Firula nível 2 devolve 1 de Mana,
+nível 3 devolve 3, à escolha entre as três reservas).
+
+Gasto de Mana numa ação Longa (trabalho de dias): não existe regra escrita. Nenhum capítulo liga
+Longa a gasto de Mana; a peça mais próxima é o Ritual (o "modo lento de conjurar", que troca Mana
+por tempo e Vontade), e mesmo aí a pendência `A4`
+(`docs/pendencias/A-arcano-artes.md:23-25`) segue aberta: "a regra antiga de 'metade do Mana no
+Ritual' morre de vez? Existe algum Efeito que só funciona no modo lento?".
+
+### 5. Item encantado e Artefato
+
+Sem regra de criar, encantar ou comprar (ver item 3: `Vincular ao Objeto` é único e estreito, preso
+à Arte Espírito). Artefato (ex-Relíquia) é só rótulo de acabamento: `Acoes_Sistema.md:1128-1130`,
+"o valor dela não está na função, e sim nos adornos, no lavor e no valor sentimental: o preço é o
+da peça pela qualidade que ela tiver, mais os adornos, com piso de 100× a peça Comum". Não tem
+nenhum vínculo com magia de verdade, e nenhum preço de item mágico existe em lugar nenhum do
+sistema.
+
+### 6. Raridade
+
+`centelha.md:14-20` só dá percentuais globais: Mortal "~95% das pessoas", Tocado "~1 em 20",
+Desperto "raro", Herói "mais raro", Campeão "~1 em 250", Lendário "quase-mito", Semideus "um
+punhado no mundo". Não existe conversão para número de pessoas por lugar (aldeia, vila, cidade,
+capital, as mesmas categorias que `renda.json.tetos_demanda` usa para o teto de renda). Não há
+pendência aberta acusando essa lacuna; é ausência pura, não achado de terceiro.
+
+### 7. Pendências abertas que tocam Centelha, Proezas, Artes ou Mana
+
+- `D6` (aberto, ADIADO) · Custo de Técnica e de Arte em ×10, deixado de fora da recalibração de XP.
+- `D7` (aberto) · Bônus de Centelha em ataque/defesa, +1 ou +2 por ponto (item 1 acima).
+- `D8` (aberto) · Mãos Hábeis, +3 ou +2 em Ofícios (item 2 acima).
+- `G15` (aberto) · Como o bônus fixo de Proeza entra na Longa (item 2 acima).
+- `A4` (aberto) · Rituais: a regra de metade do Mana morre ou fica (item 4 acima).
+- `A25` (aberto) · A geometria das Artes que não manifestam elemento: Cura, Fascinação,
+  Adivinhação, Conjuração e Metamorfose não têm parâmetro de chão decidido.
+- `C1`/`C2` (abertos, bloqueados) · Jogadas e perícia de conjuração da Tradição (item 3 acima).
+- `L59` (anotado) · As quatro reservas (Energia/Mana/Fôlego/Vontade) podem ser carga cognitiva
+  demais para a mesa.
+- `L86` (aberto, parcial) · Sete Artes marcadas como cura, quatro ainda sem caminho de resolução
+  no tabuleiro (item 3 acima).
+
+### Veredito da D6
+
+1. Centelha (bônus por ponto): **EM REVISÃO**. O motor usa +1 e bate com o capítulo, mas há uma
+   nota desatualizada dizendo +2 e uma pendência aberta (D7) cobrando o fechamento formal.
+2. Proezas/Técnicas (trilha e entrada na Longa): **EM REVISÃO**. `Proezas_revisao.md` é doc de
+   trabalho confesso, com números de uma régua velha; a forma de somar o bônus numa Longa é
+   pendência aberta (G15) e há pelo menos uma divergência nomeada e pendente (D8).
+3. Artes/Magia: **EM REVISÃO**. Cura e Adivinhação existem e têm custo em Mana, mas sem número
+   fora de combate; quem pode aprender depende da Tradição, ainda bloqueada (C1/C2); Bênção não
+   existe; encantamento de item não tem regra geral (ver item 5).
+4. Mana e Energia: recuperação por descanso/sono/Firula é **ESTÁVEL** (regra fechada, com número).
+   Gasto de Mana numa ação Longa de dias é **NÃO EXISTE**.
+5. Item encantado e Artefato: **NÃO EXISTE** regra de criar/encantar/comprar, nem preço.
+6. Raridade por lugar (aldeia, cidade): **NÃO EXISTE**; só há percentual global da população.
+
+Nada alterado. Sem commit, sem push.
