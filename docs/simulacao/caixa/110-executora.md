@@ -54,9 +54,16 @@ um `--check` que refaz a cópia a partir da fonte e exige o mesmo texto:
 | `viagens.json` | `_nota` nova |
 
 - **F5, o envelope.** `mercadorias` e `montarias-veiculos` são arrays na v2, e um array não tem onde
-  levar `_nota`. Perguntei ao Arquiteto e segui com o envelope `{_nota, itens}`, que o usuário prefere.
-  Sem resposta até o fim da rodada. Toda `_nota` diz: "Saída do modelo em lore/economia/v2/gerar.py:
-  não edite preço à mão aqui; mude o modelo e gere de novo."
+  levar `_nota`. Segui com o envelope `{_nota, itens}`, e o Arquiteto **confirmou a (a)** depois do
+  commit (preferência registrada do autor). Toda `_nota` diz: "Saída do modelo em
+  lore/economia/v2/gerar.py: não edite preço à mão aqui; mude o modelo e gere de novo."
+- **A garantia da cópia mudou, e por quê.** O `estado-revisao.md:947` promete o `mercadorias.json`
+  "byte-idêntico ao gerado por gerar.py". Com o envelope e a `_nota` nova, o byte a byte deixa de
+  valer. No lugar dele entra o `../tmp/executora/copiar-economia.mjs --check`: ele lê a fonte da v2,
+  aplica as três transformações declaradas (tira o `_procedencia`, põe a `_nota`, envelopa os dois
+  arrays), serializa e exige texto igual ao de `src/data`. Isso é mais forte que a igualdade
+  profunda, porque a ordem das chaves e a formatação também são conferidas. Deu "igual" nos 7
+  arquivos e nas 2 procedências, e o md5 dos 8 JSONs da v2 não mudou durante a rodada.
 - **F6, conferida antes de escrever.** Os `livre_semana` do `renda.json` seguem mesmo a curva D
   (12% × (60/R)^0,35, arredondado) nas 9 faixas: 7,2 → 7, 10,0 → 10 ... 200,2 → 200. Pela curva velha
   seriam 12, 18 ... 719.
@@ -67,10 +74,15 @@ um `--check` que refaz a cópia a partir da fonte e exige o mesmo texto:
   **Controle negativo:** enxertei um `_procedencia`, um id de pacote falso e um total errado. Deu
   "Unrecognized key(s) in object: '_procedencia'", "pacote Artista cita "mochila-x"" e "diz total_pc
   999, a soma dos itens dá 472". Arquivos restaurados e conferidos pelo `--check`.
-- **F4, a procedência: NÃO commitada, esperando a resposta do Arquiteto** (ver PRECISA DE MIM 1).
-  `mercadorias.procedencia.json` (cópia da v2) e `montarias.procedencia.json` (os 44 `_procedencia`
-  tirados, com o id) estão em `../tmp/executora/procedencia/`. A `_nota` das montarias não cita
-  caminho ("fica fora do site, com o modelo") até isso se decidir.
+- **F4, a procedência: NÃO commitada, por decisão do Arquiteto (a saída b).** `lore/economia/` não
+  está no git, e o destino dela é decisão em aberto da D10; commitar uma parte decidiria isso de lado,
+  sem o humano. Os dois arquivos ficam em `../tmp/executora/procedencia/`:
+  - `mercadorias.procedencia.json`: md5 `a2ee208f601c7bcdae88af158108a976`, igual ao da origem
+    (`rpg-system/lore/economia/v2/mercadorias.procedencia.json`);
+  - `montarias.procedencia.json`: md5 `c7223d4b3899c5b3c037af017c09fa02`, com os 44 `_procedencia`
+    tirados de `rpg-system/lore/economia/v2/montarias-veiculos.json` (md5 de origem
+    `d0f257f3b9935032915b23b50051f50e`), com o id de cada item.
+  A `_nota` das montarias diz só que a procedência "fica fora do site, com o modelo", sem caminho.
 - **Item 9:** conferi antes de apagar o `precos.json`. Só `scripts/precos.mjs` e
   `scripts/gen-lista-equip.mjs` o liam; procurei em `src`, `scripts`, `.github`, `package.json` e
   `astro.config.mjs`, e o `content.config.ts` não tem coleção sobre ele. A menção do capítulo
@@ -128,7 +140,7 @@ Sem isso, o livro teria duas regras de preço de qualidade. A v2 §9.3 lista as 
 **O Machado seguiu a v2, e não o `estado-revisao.md:993`.** O estado-revisao dá "Boa 6 po, Ótima 15
 po, Excelente 36 po pela base 3 po". A v2 §1, leitura 5, dá 15, 90 e 210 po, e 300 para a Relíquia.
 Com os multiplicadores que as duas fontes aceitam (5×, 30×, 70×, 100×) sobre 3 po, a conta dá a v2,
-e o despacho 4d aponta para ela. Avisei o Arquiteto na hora.
+e o despacho 4d aponta para ela. O Arquiteto confirmou a v2. **Achado:** o `estado-revisao.md:993` diverge da própria régua que ele aceita, e fica registrado aqui, sem parar a rodada por ele.
 
 **e) "rendem o mesmo":** a frase não existe no livro (procurei em `src/content` e no
 `Acoes_Sistema.md`). Nada escrito sobre fabricar contra alugar.
@@ -186,7 +198,7 @@ Nos outros capítulos: "6,3 dias" três vezes em `acoes-oficio-e-mundo`, a Cura 
 - **Abertas, sem toque:** G48 a G51 (moeda e metais; ×20, curva e tetos em
   `acoes-oficio-e-mundo.md:206`), G61 (munição: não há Flechas rústicas em `municao.json`), G64 (B7,
   como o despacho manda), G68 (o empréstimo de XP; a seção Aulas diz que a regra ainda não está no
-  livro), G69 (o pacote inicial) e G70 (os arquivos: só fecha com a F4).
+  livro), G69 (o pacote inicial) e G70 (os arquivos: fica aberta porque a procedência não foi para `lore/economia/`, pela decisão da F4).
 - **As quatro "novas" do despacho** (Artefato, revenda, escopo mundano, semanas de aventura) **não
   estão registradas** em nenhum `docs/pendencias/*.md`: não havia o que marcar. As quatro foram
   aplicadas: `a58e6f4`; `custo-de-servico-e-itens.md:345`; `:8`; `:65`.
@@ -195,16 +207,13 @@ Nos outros capítulos: "6,3 dias" três vezes em `acoes-oficio-e-mundo`, a Cura 
 
 ## PRECISA DE MIM
 
-1. **F4: onde moram as duas procedências.** Estão em `../tmp/executora/procedencia/`. Commitá-las em
-   `lore/economia/` versiona parte da pasta que a D10 deixou para decidir depois. Perguntei com três
-   saídas (commitar lá, deixar fora, ou esperar a pasta inteira entrar no git). A G70 fecha junto.
-2. **F5: o envelope `{_nota, itens}`** entrou sem resposta sua. Se a decisão for outra, a troca é
-   pequena: o `copiar-economia.mjs`, o esquema e três leitores (`gen-cap-economia.mjs`, `precos.mjs`,
-   `gen-lista-equip.mjs`).
-3. **Duas frases que a v2 pede ao livro e que não estão na lista final:** "fabricar para si vale
+1. **As duas procedências esperam o destino do `lore/economia/`** (D10, decisão 3). Estão em
+   `../tmp/executora/procedencia/`, com o md5 anotado na seção 1. Quando a pasta tiver destino, entram
+   lá, e a G70 fecha.
+2. **Duas frases que a v2 pede ao livro e que não estão na lista final:** "fabricar para si vale
    muito" (v2 §1, leitura 4) e "a Placa Ótima só existe como obra de Centelha" (leitura 3). Não
    escrevi.
-4. **A regra do pacote inicial** (v2 §7: um pacote de graça, e o Diplomata exige Recursos 3, mais 4
+3. **A regra do pacote inicial** (v2 §7: um pacote de graça, e o Diplomata exige Recursos 3, mais 4
    semanas de Livre) está só na `_nota` de `pacotes-equipamento.json`, e não no livro (G69).
 
 ## QUEBROU
@@ -213,4 +222,4 @@ Nada.
 
 ## BLOQUEADO
 
-A F4 (item 1 acima), e com ela a G70.
+Nada. A F4 foi decidida (saída b): as procedências ficam fora do git até a D10, e a G70 segue aberta por isso.
