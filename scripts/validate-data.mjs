@@ -952,7 +952,9 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
       faixas: z.array(z.object({ faixa: z.string(), recursos: z.number().int().min(1).max(6), renda: z.array(valor()).min(1), livre: z.array(valor()).min(1), custo: z.array(valor()).min(1), nivel_de_vida: z.string(), origem: z.string() }).strict()),
       curva_por_soma: z.array(z.object({ soma: z.number(), media: z.number(), renda: valor(), faixa_dificuldade: z.number() }).strict()),
       valor_por_ponto: z.record(valor()),
-      tetos_demanda: z.record(valorOuNada()),
+      tetos_demanda: z.record(valorOuNada())
+        .refine((r) => Object.entries(r).every(([k, v]) => v.preco !== null || k === 'capital'),
+          { message: 'preco null em tetos_demanda só é permitido na chave "capital"' }),
     }).strict(),
     'custo-de-vida.json': z.object({
       _nota: nota,

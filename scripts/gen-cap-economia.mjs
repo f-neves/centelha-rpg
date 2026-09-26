@@ -180,7 +180,13 @@ const blocosOficio = {
     Object.entries(PERFIL).map(([s, nome]) => { const c = curva[s]; if (!c) throw new Error(`curva_por_soma sem a soma ${s}`); return [nome, s, num(c.media), c.faixa_dificuldade, emPc(pcDe(c.renda))]; }),
   )) + '\n\n' + envolve(tabela(
     ['Lugar', 'Teto do ganho, por semana'], ['l', 'c'],
-    Object.entries(RENDA.tetos_demanda).map(([k, v]) => [TETO[k], v.preco ? emPc(v.preco.pc) : 'sem teto']),
+    Object.entries(RENDA.tetos_demanda).map(([k, v]) => {
+      if (!v.preco) {
+        if (k !== 'capital') throw new Error(`teto sem preço fora da capital em gen-cap-economia.mjs: ${k}`);
+        return [TETO[k], 'sem teto'];
+      }
+      return [TETO[k], emPc(v.preco.pc)];
+    }),
   )),
 };
 const CAP_OFICIO = path.join(raiz, 'src/content/chapters/acoes-oficio-e-mundo.md');
