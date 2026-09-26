@@ -71,18 +71,18 @@ A peça sai **Comum** por padrão. A régua vai para os dois lados, e cada grau 
 
 | Grau | −2 | −1 | 0 | +1 | +2 | +3 |
 |---|---|---|---|---|---|---|
-| | **Sucata** | **Tosca** | **Comum** | **Boa** | **Ótima** | **Excepcional** |
+| | **Sucata** | **Tosca** | **Comum** | **Boa** | **Ótima** | **Excelente** |
 
 | Por grau **acima** de Comum | Por grau **abaixo** |
 |---|---|
-| Requisito **+1** | Requisito **−1**, nunca abaixo de 1 |
+| Requisito **+1**, no máximo 6: cada ponto acima vira **+3** na Dificuldade | Requisito **−1**, nunca abaixo de 1 |
 | Dificuldade **+3** | Dificuldade **−3**, nunca abaixo de 1 |
 | Montagem e Peça **× 1,5** | Montagem e Peça **× 0,5** |
 | Intervalo sobe um degrau **a cada dois graus** | o Mestre pode descer um degrau em −2 |
-| Preço **dobra** | preço **cai pela metade** |
+| Preço fixo por grau: Boa **5×**, Ótima **30×**, Excelente **70×** a Comum ([Qualidade de Itens](/regras/custo-de-servico-e-itens)) | Tosca até **⅓**, Sucata até **⅙** |
 | **+1** num número da peça | **−1** num número da peça |
 
-O "número da peça" é o que aquela peça tem para dar: acerto, defesa da arma, dado de dano, Absorção de uma categoria, penalidade reduzida em 1, um degrau a menos de peso. No máximo **+2 ou −2 no mesmo número**, para que uma Excepcional espalhe o ganho em vez de empilhar.
+O "número da peça" é o que aquela peça tem para dar: acerto, defesa da arma, dado de dano, Absorção de uma categoria, penalidade reduzida em 1, um degrau a menos de peso. No máximo **+2 ou −2 no mesmo número**, para que uma Excelente espalhe o ganho em vez de empilhar.
 
 A espada serve de gabarito da régua inteira:
 
@@ -93,9 +93,9 @@ A espada serve de gabarito da régua inteira:
 | **Comum** | 3 | 7 | 22 | dia | oficial, 6,3 dias |
 | Boa | 4 | 10 | 33 | dia | Ferreiro 4 e soma 10, 4,4 dias |
 | Ótima | 5 | 13 | 50 | **semana** | mestre (soma 12), 6,3 semanas |
-| Excepcional | 6 | 16 | 74 | semana | mestre em oficina de mestre, ~15 semanas |
+| Excelente | 6 | 16 | 74 | semana | mestre em oficina de mestre, ~15 semanas |
 
-A subida do intervalo na Ótima é o que impede a peça fina de sair no ritmo da peça de tropa. E a última linha mostra o teto do sistema funcionando: a soma máxima de um humano é 12, o que dá média 21 e cinco pontos por semana contra a Dificuldade 16, ou seja quinze semanas. **Uma espada Excepcional não sai numa forja de vila**: exige a soma máxima humana (12) e a oficina de mestre da régua abaixo, não um bônus à parte somado por cima.
+A subida do intervalo na Ótima é o que impede a peça fina de sair no ritmo da peça de tropa. E a última linha mostra o teto do sistema funcionando: a soma máxima de um humano é 12, o que dá média 21 e cinco pontos por semana contra a Dificuldade 16, ou seja quinze semanas. **Uma espada Excelente não sai numa forja de vila**: exige a soma máxima humana (12) e a oficina de mestre da régua abaixo, não um bônus à parte somado por cima.
 
 Para baixo a régua serve à mesa tanto quanto para cima: é o que o bando forja no acampamento, o que o exército distribui à tropa, e o que o mercador tenta empurrar como Comum.
 
@@ -110,7 +110,7 @@ São os ±2 e ±4 de circunstância, e no ofício eles são o principal caminho 
 | **Oficina** | de mestre, completa | bem equipada | oficina comum | ferramenta de campo | improviso, sem bancada |
 | **Material** | excepcional, raro | selecionado | corrente | de segunda, remendado | sucata |
 
-O material precisa **alcançar o grau pretendido**: não sai peça Excepcional de aço corrente, por melhor que seja o ferreiro. Como regra de bolso, o material custa cerca de **um terço** do preço da peça pronta, e metade ou mais em alvenaria e construção naval, onde a pedra e a madeira é que pesam.
+O material precisa **alcançar o grau pretendido**: não sai peça Excelente de aço corrente, por melhor que seja o ferreiro. Como regra de bolso, o material custa cerca de **um terço** do preço da peça pronta, e metade ou mais em alvenaria e construção naval, onde a pedra e a madeira é que pesam.
 
 **Ajuda.** Ofício é quase sempre tarefa divisível, então os **Acúmulos somam**: cinco carpinteiros levantam a casa em um quinto do tempo. Mas a qualidade é da mão que conduz.
 
@@ -159,6 +159,7 @@ O tempo da última coluna é o do **oficial**, o artesão comum de vila (soma 6,
 | Móvel bem-acabado, arca | Carpintaria | 3 | 7 | 3 | 8 | 3 dias |
 | **Espada, machado de guerra, arma marcial** | Ferreiro | 3 | 7 | 12 | 10 | 6,3 dias |
 | Arco longo, besta (madeira já curada) | Arcos, Carpintaria | 3 | 7 | 4 | 12 | 4,5 dias |
+| Carroça | Carpintaria | 3 | 7 | 4 | 20 | 6,3 dias |
 | Anel, broche, peça de joalheria | Joalheria | 4 | 11 | 3 | 6 | fechada ao oficial |
 | Fechadura, engenho, autômato de corda | Serralheria | 5 | 11 | 4 | 10 | fechada ao oficial |
 
@@ -170,10 +171,12 @@ O tempo da última coluna é o do **oficial**, o artesão comum de vila (soma 6,
 | Cota de malha | Armaria | 2 | 8 | 2 | 12 | 3 | 6 semanas |
 | Brigandina | Armaria | 2 | 6 | 3 | 10 | 2 | 3 semanas |
 | Lamelar | Armaria | 3 | 9 | 3 | 10 | 3 | 9 semanas |
-| Carroça, barco de pesca | Carpintaria | 3 | 7 | 4 | 20 | 2 | 7 semanas |
+| Barco de pesca | Carpintaria | 3 | 7 | 4 | 20 | 2 | 7 semanas |
 | Forja, moinho, oficina montada | Alvenaria | 3 | 7 | 6 | 40 | 4 | 13 semanas |
 | Placa de munição | Armaria | 4 | 8 | 4 | 14 | 3 | 7 semanas |
 | Placa completa sob medida | Armaria | 5 | 11 | 6 | 24 | 6 | fechada ao oficial |
+
+<p class="muted">A <strong>carroça</strong> sai em dias: avulsa, cerca de 267 pc em 6,3 dias do oficial; em lote de três, cerca de 238 pc cada. O catálogo a vende a 300 pc, 1,12 vez o avulso. O <strong>barco de pesca</strong>, do mesmo ofício e dos mesmos números, fica na escala de semanas, a cerca de 1.600 pc.</p>
 
 ### Escala de estações
 
@@ -187,7 +190,7 @@ O tempo da última coluna é o do **oficial**, o artesão comum de vila (soma 6,
 
 ## Reparar, melhorar, improvisar, desmontar
 
-**Reparar.** Mesma Dificuldade e mesmo intervalo da peça, com o Acúmulo cortado: **um quarto** para dano leve, **metade** para dano pesado, **inteiro** para peça arruinada que ainda tem material aproveitável. A Montagem se paga igual. E há uma distinção que vale a pena:
+**Reparar.** Mesma Dificuldade e mesmo intervalo da peça, com o Acúmulo cortado. **Dano leve:** sem Montagem e um quarto da Peça; dá para fazer no campo, sem oficina, com Ofícios Gerais ou o ofício. **Dano pesado:** metade da Montagem e metade da Peça, e precisa de oficina. **Arruinada**, com material aproveitável: Montagem e Peça inteiras. Por encomenda, o reparo custa cerca de **1/10 do preço** da peça no dano leve, **1/3** no pesado e **2/3 mais o material que faltar** na arruinada. E há uma distinção que vale a pena:
 
 <p class="formula">Ofícios Gerais devolve a peça ao <b>uso</b> · só o ofício devolve a <b>qualidade</b></p>
 

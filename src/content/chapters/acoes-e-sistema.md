@@ -43,7 +43,7 @@ Fora do combate não existe uma conversão única: o Mestre escolhe, pela ação
 | Eixo | Um degrau é | A régua |
 |---|---|---|
 | **Tempo** | um degrau mais rápido | a mesma escada de intervalo desta seção: Estação → Semana → Dia → Hora → Minuto → Tick |
-| **Qualidade** | um grau melhor no resultado | a mesma régua dos [Ofícios](/regras/acoes-oficio-e-mundo): Sucata, Tosca, Comum, Boa, Ótima, Excepcional |
+| **Qualidade** | um grau melhor no resultado | a mesma régua dos [Ofícios](/regras/acoes-oficio-e-mundo): Sucata, Tosca, Comum, Boa, Ótima, Excelente |
 | **Duração** | mais um degrau de tempo que o efeito perdura | a mesma escada de intervalo, contada como quanto dura, não quanto demora |
 
 <p class="formula">Margem = 1 degrau, na régua que a ação escolher</p>

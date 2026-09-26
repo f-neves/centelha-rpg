@@ -1123,11 +1123,11 @@ Seis graus, e o eixo inteiro cabe numa linha:
 
 | Grau | −2 | −1 | 0 | +1 | +2 | +3 |
 |---|---|---|---|---|---|---|
-| | **Sucata** | **Tosca** | **Comum** | **Boa** | **Ótima** | **Excepcional** |
+| | **Sucata** | **Tosca** | **Comum** | **Boa** | **Ótima** | **Excelente** |
 
 O "número da peça" é o que aquela peça tem para dar: acerto, defesa da arma, dado de dano,
 Absorção de uma categoria, penalidade reduzida em 1, um degrau a menos de peso. No máximo **+2 ou
-−2 no mesmo número**, para que uma Excepcional espalhe o ganho em vez de empilhar. É exatamente o
+−2 no mesmo número**, para que uma Excelente espalhe o ganho em vez de empilhar. É exatamente o
 painel de **ajuste** que a ficha já oferece hoje, e que até agora não tinha como ser conquistado:
 uma Espada Longa Ótima deixa de ser um nome que o jogador escreve e passa a ser uma encomenda com
 Requisito, preço e prazo.
@@ -1144,12 +1144,12 @@ para quem não tem escola, e o Acúmulo já cobra o tempo. A espada, que é Requ
 | **Comum** | 3 | 7 | 22 | dia | oficial, 6,3 dias |
 | Boa | 4 | 10 | 33 | dia | Ferraria 4 e soma 10, 4,4 dias |
 | Ótima | 5 | 13 | 50 | **semana** | mestre (soma 12), 6,3 semanas |
-| Excepcional | 6 | 16 | 74 | semana | mestre em oficina de mestre, 8 semanas |
+| Excelente | 6 | 16 | 74 | semana | mestre em oficina de mestre, 8 semanas |
 
 A subida do intervalo em Ótima é o que impede a peça fina de sair no ritmo da peça de tropa. E a
 última linha mostra o teto do sistema funcionando: a soma máxima de um humano é **12** (Habilidade
 6 e Atributo 6), o que dá média 21 e cinco pontos por semana contra a Dificuldade 16. Quinze
-semanas. Uma espada Excepcional **não sai numa forja de vila**: o que a torna viável é a oficina
+semanas. Uma espada Excelente **não sai numa forja de vila**: o que a torna viável é a oficina
 de mestre, os quatro pontos de Dificuldade que ela derruba, o bônus fixo de Ofícios Gerais pela
 §5.5 e a Especialidade. É o que se quer: aço bom e boas ferramentas são metade de uma boa lâmina.
 
@@ -1171,7 +1171,7 @@ para a qualidade:
 | **Oficina** | de mestre, completa | bem equipada | oficina comum | ferramenta de campo | improviso, sem bancada |
 | **Material** | excepcional, raro | selecionado | corrente | de segunda, remendado | sucata |
 
-O material precisa **alcançar o grau pretendido**: não sai peça Excepcional de aço corrente, por
+O material precisa **alcançar o grau pretendido**: não sai peça Excelente de aço corrente, por
 melhor que seja o ferreiro. Regra de bolso para o Mestre: o material custa cerca de **um terço**
 do preço da peça pronta, e **metade ou mais** em alvenaria e construção naval, onde a pedra e a
 madeira é que pesam.
