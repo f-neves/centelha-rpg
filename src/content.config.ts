@@ -115,6 +115,15 @@ const artes = defineCollection({
       .min(5).max(6),
     aliases: z.array(z.string()),
     pendente: z.boolean(),
+    // Injetado por scripts/gen-grid-artes.mjs; o Grid (src/lib/artes-grid.ts) lê o
+    // JSON direto e sempre recebeu isto, mesmo sem o campo aqui (E06, inventário
+    // externo). O schema faltava por descuido, não porque o dado seja opcional.
+    grid: z.object({
+      elemento: z.string().nullable(),
+      cor: z.string(),
+      dadoPorNivel: z.number().int().min(1),
+      danoBruto: z.boolean(),
+    }).optional(),
   }),
 });
 
@@ -142,6 +151,25 @@ const efeitos = defineCollection({
     // arma da cintura ou a flecha da aljava. Ausente = a conjuração normal, que
     // custa Velocidade como qualquer outra.
     acaoLivre: z.boolean().optional(),
+    // Injetado por scripts/gen-grid-artes.mjs; o Grid (src/lib/artes-grid.ts) lê o
+    // JSON direto e sempre recebeu isto, mesmo sem o campo aqui (E06, inventário
+    // externo). O schema faltava por descuido, não porque o dado seja opcional.
+    grid: z.object({
+      forma: z.string(),
+      ancora: z.string(),
+      gatilho: z.string(),
+      alvo: z.string(),
+      persiste: z.boolean(),
+      materia: z.string().nullable(),
+      condicao: z.string().nullable(),
+      condicaoAparente: z.string().nullable(),
+      pegaItem: z.boolean(),
+      arenaInteira: z.boolean(),
+      dissipa: z.boolean(),
+      fere: z.boolean(),
+      cura: z.boolean(),
+      teste: z.boolean(),
+    }).optional(),
   }),
 });
 

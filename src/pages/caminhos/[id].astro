@@ -14,7 +14,7 @@ const { id } = Astro.props;
 const d = await loadData();
 const cam = d.C[id];
 const techs = d.porCaminho[id] ?? [];
-const niveis = Array.from({ length: 5 }, (_, i) => i + 1).map((b) => [b, techs.filter((t) => t.nivel === b)]).filter(([, l]) => (l as any[]).length);
+const niveis = Array.from({ length: TIER_NOME.length }, (_, i) => i + 1).map((b) => [b, techs.filter((t) => t.nivel === b)]).filter(([, l]) => (l as any[]).length);
 const attr = d.A[cam.atributo.id];
 const titulo = caminhoComArtigo(cam.nome);
 ---
