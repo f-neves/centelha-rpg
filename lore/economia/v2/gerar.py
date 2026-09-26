@@ -6,9 +6,93 @@ import mercadorias as M
 import modelo as m
 O = m.OUT
 OUTDIR = "out"; os.makedirs(OUTDIR, exist_ok=True)
+
+# ---------------- o formato do site (rodadas 111 e 112)
+# Todo valor em dinheiro sai como {"por": ..., "preco": {"pc": N}}, com `por` de um vocabulário
+# fechado. Os campos que qualificam a unidade vão entre os dois: `regime` (contrato/avulso),
+# `oficio` (leve/artesao/bracal), `nota` (o resto do texto). O modelo calcula com os números soltos,
+# e as tabelas em Markdown do documento também usam os números soltos: a forma nova é aplicada só na
+# saída, numa cópia (`dump`), e por isso não mexe em nada que o documento imprime.
+# Vocabulário: unidade, dia, hora, jornada, semana, mes, ano, km, 10 km, tonelada-km, trajeto, vez,
+# pagina, carta, consulta, atendimento, noite, cerimonia, apresentacao, animal, pessoa, e `ponto`
+# (o preço de uma aula é pelo ponto ensinado). Decididos pelo autor em 26/09/2026: a muda de roupa
+# lavada é `unidade`, o parto é `atendimento`; a missa encomendada é `cerimonia` (rodada 112).
+# REGRA: um serviço novo usa um valor que já existe sempre que couber; valor novo só quando nenhum
+# couber, e registrado aqui com o motivo.
+UNID_SERVICO = {
+    "dia (avulso)": {"por": "dia", "regime": "avulso"}, "dia": {"por": "dia"}, "hora": {"por": "hora"},
+    "semana": {"por": "semana"}, "jornada": {"por": "jornada"}, "vez": {"por": "vez"}, "página": {"por": "pagina"},
+    "muda": {"por": "unidade"}, "carta": {"por": "carta"}, "documento": {"por": "unidade"},
+    "atendimento": {"por": "atendimento"}, "consulta": {"por": "consulta"}, "parto": {"por": "atendimento"},
+    "missa": {"por": "cerimonia"}, "cerimônia": {"por": "cerimonia"}, "noite": {"por": "noite"},
+    "apresentação": {"por": "apresentacao"}, "cavalo": {"por": "animal"},
+}
+UNID_VIAGEM = {
+    "10 km": {"por": "10 km"}, "dia": {"por": "dia"},
+    "10 km (rio abaixo); x2 rio acima": {"por": "10 km", "nota": "rio abaixo; x2 rio acima"},
+    "tonelada por km": {"por": "tonelada-km"}, "2 toneladas por km": {"por": "tonelada-km", "nota": "2 toneladas"},
+    "trajeto curto": {"por": "trajeto", "nota": "curto"},
+    "pessoa; 5 com cavalo": {"por": "pessoa", "nota": "5 com cavalo"},
+    "pessoa; 3 por animal; 10 por carroça": {"por": "pessoa", "nota": "3 por animal; 10 por carroça"},
+}
+def P(pc, por, **extra):
+    return {"por": por, **extra, "preco": None if pc is None else {"pc": pc}}
+def pcx(n): return None if n is None else {"pc": n}
+def unid(mapa, u, onde):
+    if u not in mapa: raise SystemExit(f"{onde}: unidade sem mapa no formato do site: {u!r}")
+    return mapa[u]
+def criado(c): return {"id": c["id"], "nome": c["nome"], "salario": P(c["salario_semana"], "semana"), "custo_total": P(c["custo_total_semana"], "semana")}
+def formato_site(nome, o):
+    if nome == "servicos.json":
+        def servico(s):
+            u = unid(UNID_SERVICO, s["unidade"], "servicos." + s["id"])
+            texto = isinstance(s["pc"], str)
+            if texto and s["pc"] != "ver aulas": raise SystemExit(f"servicos.{s['id']}: preço em texto não previsto {s['pc']!r}")
+            d = {"grupo": s["grupo"], "id": s["id"], "nome": s["nome"], **u, "preco": None if texto else pcx(s["pc"]),
+                 "calculado": pcx(s["pc_calculado"]), "base": s["base"]}
+            if texto: d["ver"] = "aulas"
+            return d
+        return {"_nota": o["_nota"],
+                "tarifas_por_perfil": [{"perfil": t["perfil"], "soma": t["soma"], "tarifas": [
+                    P(t["semana"], "semana"), P(t["contrato"], "dia", regime="contrato"), P(t["avulsa"], "dia", regime="avulso"),
+                    P(t["hora_leve"], "hora", oficio="leve"), P(t["hora_artesao"], "hora", oficio="artesao"), P(t["hora_bracal"], "hora", oficio="bracal")]}
+                    for t in o["tarifas_por_perfil"]],
+                "servicos": [servico(s) for s in o["servicos"]],
+                "aulas": [{"tipo": a["tipo"], "novo": a["novo"], "xp": a["xp"], "jornadas": a["jornadas"], "prof_soma": a["prof_soma"],
+                           "por": "ponto", "preco": pcx(a["pc"]), "calculado": pcx(a["preco"])} for a in o["aulas"]],
+                "criados": [criado(c) for c in o["criados"]],
+                "escravos": [{"nome": e["nome"], "por": "pessoa", "preco": pcx(e["pc"]), "catalogo_anterior": pcx(e["pc_catalogo_atual"])} for e in o["escravos"]],
+                "escravo_sustento": P(o["escravo_sustento_semana"], "semana")}
+    if nome == "viagens.json":
+        return {**o, "precos": [{"id": p["id"], "nome": p["nome"], **unid(UNID_VIAGEM, p["unidade"], "viagens." + p["id"]), "preco": pcx(p["pc"])} for p in o["precos"]]}
+    if nome == "custo-de-vida.json":
+        def nomeado(d): return {k: {"nome": v["nome"], **P(v["pc"], "semana")} for k, v in d.items()}
+        return {"_nota": o["_nota"],
+                "niveis_pessoa": [{"nivel": n["nivel"], "composicao": n["composicao"], "custo": P(n["pc_semana"], "semana"),
+                                   "estalagem": None if n["estalagem_semana"] is None else P(n["estalagem_semana"], "semana")} for n in o["niveis_pessoa"]],
+                "cestas": nomeado(o["cestas_semana"]), "moradias": nomeado(o["moradia_semana"]),
+                "criados": [criado(c) for c in o["criados"]],
+                "manutencao_cavalo": P(o["cavalo_manutencao_semana"], "semana"),
+                "manutencao_cavalo_guerra": P(o["cavalo_guerra_manutencao_semana"], "semana"),
+                "pacotes_familia": {k: {"itens": [{"item": i["item"], **P(i["pc_semana"], "semana")} for i in p["itens"]],
+                                        "pacote": P(p["pacote"], "semana"), "estilo_de_vida": P(p["estilo_de_vida"], "semana")}
+                                    for k, p in o["pacotes_familia"].items()}}
+    if nome == "renda.json":
+        def tri(s, m_, a): return [P(s, "semana"), P(m_, "mes"), P(a, "ano")]
+        return {"_nota": o["_nota"],
+                "faixas": [{"faixa": x["faixa"], "recursos": x["recursos"], "renda": tri(x["renda_semana"], x["renda_mes"], x["renda_ano"]),
+                            "livre": tri(x["livre_semana"], x["livre_mes"], x["livre_ano"]), "custo": [P(x["custo_semana"], "semana")],
+                            "nivel_de_vida": x["nivel_de_vida"], "origem": x["origem"]} for x in o["faixas"]],
+                "curva_por_soma": [{"soma": c["soma"], "media": c["media"], "renda": P(c["renda_semana"], "semana"), "faixa_dificuldade": c["faixa_dificuldade"]} for c in o["curva_por_soma"]],
+                "valor_por_ponto": {k: P(v, "semana") for k, v in o["valor_por_ponto_semana"].items()},
+                "tetos_demanda": {k: P(v, "semana") for k, v in o["tetos_demanda_semana"].items()}}
+    if nome == "pacotes-equipamento.json":
+        return {"_nota": o["_nota"], "pacotes": {k: {"total": pcx(p["total_pc"]), "total_anterior": pcx(p["total_atual_pc"]), "itens": p["itens"]} for k, p in o["pacotes"].items()}}
+    return o
+
 def dump(nome, obj):
     with open(os.path.join(OUTDIR, nome), "w", encoding="utf-8", newline="\n") as f:
-        json.dump(obj, f, ensure_ascii=False, indent=2)
+        json.dump(formato_site(nome, json.loads(json.dumps(obj))), f, ensure_ascii=False, indent=2)
 def r1(x): return None if x is None else round(x, 1)
 
 # ---------------- mercadorias.json (envelope do site) + procedência (lore)

@@ -153,7 +153,7 @@ O preço de contratar sai da renda de quem trabalha: a **diária por contrato** 
 | Artesão (oficial) avulso | dia | 35 pc |
 | Artesão perito avulso | dia | 85 pc |
 | Mestre de ofício avulso | dia | 1 po 7 pp |
-| Lavar uma muda de roupa | vez | 2 pc |
+| Lavar uma muda de roupa | unidade | 2 pc |
 | Barba e cabelo | vez | 2 pc |
 | Banho de tina (casa de banhos) | vez | 2 pc |
 
@@ -194,7 +194,7 @@ O preço de contratar sai da renda de quem trabalha: a **diária por contrato** 
 
 | Serviço | Unidade | Preço |
 |---|---|:---:|
-| Carta redigida (com pergaminho) | unidade | 8 pc |
+| Carta redigida (com pergaminho) | carta | 8 pc |
 | Cópia simples | página | 2 pc |
 | Página iluminada, cópia fiel | página | 9 pc |
 | Ler ou traduzir um documento | unidade | 11 pc |
@@ -210,10 +210,10 @@ O preço de contratar sai da renda de quem trabalha: a **diária por contrato** 
 
 | Serviço | Unidade | Preço |
 |---|---|:---:|
-| Curandeiro ou barbeiro-cirurgião, atendimento | vez | 3 pc |
-| Médico sem magia, consulta | vez | 15 pc |
+| Curandeiro ou barbeiro-cirurgião, atendimento | atendimento | 3 pc |
+| Médico sem magia, consulta | consulta | 15 pc |
 | Tratamento diário (curandeiro ou médico sem magia) | dia | 1 pp |
-| Parteira | vez | 35 pc |
+| Parteira | atendimento | 35 pc |
 
 </div>
 
@@ -223,9 +223,9 @@ O preço de contratar sai da renda de quem trabalha: a **diária por contrato** 
 
 | Serviço | Unidade | Preço |
 |---|---|:---:|
-| Missa encomendada | vez | 25 pc |
+| Missa encomendada | cerimônia | 25 pc |
 | Bênção, oração, rito simples | vez | 5 pc |
-| Casamento ou funeral | vez | 6 pp |
+| Casamento ou funeral | cerimônia | 6 pp |
 
 </div>
 
@@ -235,8 +235,8 @@ O preço de contratar sai da renda de quem trabalha: a **diária por contrato** 
 
 | Serviço | Unidade | Preço |
 |---|---|:---:|
-| Músico ou artista, noite de taverna | vez | 35 pc |
-| Menestrel de corte, apresentação | vez | 1 po 1 pp |
+| Músico ou artista, noite de taverna | noite | 35 pc |
+| Menestrel de corte, apresentação | apresentação | 1 po 1 pp |
 
 </div>
 
@@ -246,8 +246,8 @@ O preço de contratar sai da renda de quem trabalha: a **diária por contrato** 
 
 | Serviço | Unidade | Preço |
 |---|---|:---:|
-| Adestrar cavalo para sela | unidade | 10 po |
-| Adestrar cavalo de guerra | unidade | 80 po |
+| Adestrar cavalo para sela | animal | 10 po |
+| Adestrar cavalo de guerra | animal | 80 po |
 | Ferrar um cavalo | vez | 4 pp |
 
 </div>
@@ -927,12 +927,12 @@ Cada ponto compra um efeito. A soma dos modificadores tem de **fechar no orçame
 | Barco de rio, passagem | 1 pc | 10 km (rio abaixo; x2 rio acima) |
 | Cavalo de aluguel (hackney) | 17 pc | 10 km |
 | Carroça com carroceiro e parelha | 6 pp | dia |
-| Frete por terra | 4 pc | km (por tonelada) |
-| Frete por rio | 2 pc | km (por tonelada) |
-| Frete por mar | 1 pc | km (por 2 toneladas) |
+| Frete por terra | 4 pc | tonelada por km |
+| Frete por rio | 2 pc | tonelada por km |
+| Frete por mar | 1 pc | tonelada por km (2 toneladas) |
 | Transporte na cidade (barqueiro, carroceiro, liteira) | 2 pc | trajeto (curto) |
-| Balsa | 2 pc | vez (por pessoa; 5 com cavalo) |
-| Pedágio de ponte ou estrada | 1 pc | vez (por pessoa; 3 por animal; 10 por carroça) |
+| Balsa | 2 pc | pessoa (5 com cavalo) |
+| Pedágio de ponte ou estrada | 1 pc | pessoa (3 por animal; 10 por carroça) |
 
 </div>
 

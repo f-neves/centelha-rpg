@@ -111,8 +111,7 @@
     {
       "id": "frete-terra",
       "nome": "Frete por terra",
-      "por": "km",
-      "nota": "por tonelada",
+      "por": "tonelada-km",
       "preco": {
         "pc": 4
       }
@@ -120,8 +119,7 @@
     {
       "id": "frete-rio",
       "nome": "Frete por rio",
-      "por": "km",
-      "nota": "por tonelada",
+      "por": "tonelada-km",
       "preco": {
         "pc": 2
       }
@@ -129,8 +127,8 @@
     {
       "id": "frete-mar",
       "nome": "Frete por mar",
-      "por": "km",
-      "nota": "por 2 toneladas",
+      "por": "tonelada-km",
+      "nota": "2 toneladas",
       "preco": {
         "pc": 1
       }
@@ -147,8 +145,8 @@
     {
       "id": "balsa",
       "nome": "Balsa",
-      "por": "vez",
-      "nota": "por pessoa; 5 com cavalo",
+      "por": "pessoa",
+      "nota": "5 com cavalo",
       "preco": {
         "pc": 2
       }
@@ -156,8 +154,8 @@
     {
       "id": "pedagio",
       "nome": "Pedágio de ponte ou estrada",
-      "por": "vez",
-      "nota": "por pessoa; 3 por animal; 10 por carroça",
+      "por": "pessoa",
+      "nota": "3 por animal; 10 por carroça",
       "preco": {
         "pc": 1
       }

@@ -51,6 +51,16 @@ D&D/
 # a pasta onde roda. O que o site usa sai dele por scripts/copiar-economia.mjs (rodada 111), e
 # duas copias do mesmo gerado descolariam. `**/` cobre rodar da pasta do modelo ou de cima dela.
 lore/economia/**/out/
+# e o resto que a pasta da economia acumula e não é versionado (rodada 112): os zips de entrega,
+# o cache do Python, os despejos do bash, as cópias soltas dos JSONs gerados ao lado do modelo (a
+# procedência é versionada, por isso a exceção) e os rascunhos de proposta
+lore/economia/**/*.zip
+lore/economia/**/__pycache__/
+lore/economia/**/*.stackdump
+lore/economia/*/*.json
+!lore/economia/*/*.procedencia.json
+lore/economia/*proposta*
+lore/economia/gerar_mercadorias.py
 
 # SO / editor
 *.stackdump

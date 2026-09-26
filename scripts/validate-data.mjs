@@ -905,18 +905,23 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
   }
 }
 
-// A ECONOMIA MUNDANA (rodadas 110 e 111): sete arquivos gerados pelo modelo de lore/economia/v2/gerar.py.
+// A ECONOMIA MUNDANA (rodadas 110 a 112): sete arquivos gerados pelo modelo de lore/economia/v2/gerar.py.
 // Um esquema `.strict()` por arquivo, porque o zod descarta chave desconhecida em silêncio e é o
 // `.strict()` que prova que nenhum `_procedencia` sobrou na cópia. Todo valor em dinheiro é
 // `{ preco: { pc }, por }` (F2, estendida na rodada 111 a tarifas, serviços, aulas, viagens, custo
-// de vida e renda), com `por` de um vocabulário fechado: número solto onde devia haver objeto falha
+// de vida e renda, e emitida pelo próprio gerar.py desde a 112), com `por` de um vocabulário fechado: número solto onde devia haver objeto falha
 // aqui. Peso pode faltar ou ser nulo (F3). Depois dos esquemas, a conta que o arquivo promete: todo
 // item de pacote existe em mercadorias.json e o total do pacote é a soma dos itens.
 {
   const preco = z.object({ pc: z.number().nonnegative() }).strict();
-  const POR = z.enum(['dia', 'hora', 'jornada', 'semana', 'km', '10 km', 'trajeto', 'vez', 'página', 'unidade', 'mes', 'ano', 'ponto']);
-  // um valor com unidade; `extra` são os campos que qualificam a unidade (regime, ofício, nota)
-  const valor = (extra = {}) => z.object({ por: POR, ...extra, preco: preco.nullable() }).strict();
+  // o vocabulário fechado de `por` (despacho da rodada 112), mais `ponto`, o preço de uma aula
+  const POR = z.enum(['unidade', 'dia', 'hora', 'jornada', 'semana', 'mes', 'ano', 'km', '10 km', 'tonelada-km', 'trajeto', 'vez',
+    'pagina', 'carta', 'consulta', 'atendimento', 'noite', 'cerimonia', 'apresentacao', 'animal', 'pessoa', 'ponto']);
+  // um valor com unidade; `extra` são os campos que qualificam a unidade (regime, ofício, nota).
+  // O preço é OBRIGATÓRIO (veredito da Revisora na 111, §4): `null` só passa onde o dado tem um
+  // null de propósito, o teto da capital (`valorOuNada`) e o professor, que aponta para as aulas.
+  const valor = (extra = {}) => z.object({ por: POR, ...extra, preco }).strict();
+  const valorOuNada = () => z.object({ por: POR, preco: preco.nullable() }).strict();
   const nota = z.string().min(1);
   const criado = z.object({ id: z.string(), nome: z.string(), salario: valor(), custo_total: valor() }).strict();
   const E = {
@@ -932,7 +937,8 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
     'servicos.json': z.object({
       _nota: nota,
       tarifas_por_perfil: z.array(z.object({ perfil: z.string(), soma: z.number(), tarifas: z.array(valor({ regime: z.enum(['contrato', 'avulso']).optional(), oficio: z.enum(['leve', 'artesao', 'bracal']).optional() })).min(1) }).strict()),
-      servicos: z.array(z.object({ grupo: z.string(), id: z.string(), nome: z.string(), por: POR, regime: z.enum(['contrato', 'avulso']).optional(), preco: preco.nullable(), calculado: preco.nullable(), base: z.string(), ver: z.literal('aulas').optional() }).strict()),
+      servicos: z.array(z.object({ grupo: z.string(), id: z.string(), nome: z.string(), por: POR, regime: z.enum(['contrato', 'avulso']).optional(), preco: preco.nullable(), calculado: preco.nullable(), base: z.string(), ver: z.literal('aulas').optional() }).strict()
+        .refine((s) => (s.preco === null) === (s.ver !== undefined), { message: 'preco null exige ver, e ver só existe com preco null' })),
       aulas: z.array(z.object({ tipo: z.string(), novo: z.number(), xp: z.number(), jornadas: z.number(), prof_soma: z.number(), por: POR, preco, calculado: preco }).strict()),
       criados: z.array(criado),
       escravos: z.array(z.object({ nome: z.string(), por: POR, preco, catalogo_anterior: preco.nullable() }).strict()),
@@ -946,7 +952,7 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
       faixas: z.array(z.object({ faixa: z.string(), recursos: z.number().int().min(1).max(6), renda: z.array(valor()).min(1), livre: z.array(valor()).min(1), custo: z.array(valor()).min(1), nivel_de_vida: z.string(), origem: z.string() }).strict()),
       curva_por_soma: z.array(z.object({ soma: z.number(), media: z.number(), renda: valor(), faixa_dificuldade: z.number() }).strict()),
       valor_por_ponto: z.record(valor()),
-      tetos_demanda: z.record(valor()),
+      tetos_demanda: z.record(valorOuNada()),
     }).strict(),
     'custo-de-vida.json': z.object({
       _nota: nota,

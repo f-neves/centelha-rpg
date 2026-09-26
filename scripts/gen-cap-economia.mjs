@@ -56,13 +56,16 @@ const envolve = (t) => `<div class="table-wrap">\n\n${t}\n\n</div>`;
 
 // Os valores em dinheiro vêm como { por, preco: { pc } } (F2, rodada 111). `de` acha num array o valor
 // daquela unidade (e, se pedido, daquele regime ou ofício), e falha alto se não houver exatamente um.
-const pcDe = (v) => (v && v.preco ? v.preco.pc : null);
+// Preço que falta é defeito, e não "·": falha alto (veredito da Revisora na 111, §4).
+const pcDe = (v) => { if (!v || !v.preco) throw new Error(`valor sem preço: ${JSON.stringify(v)}`); return v.preco.pc; };
 function de(arr, por, filtro = {}) {
   const achados = arr.filter((v) => v.por === por && Object.entries(filtro).every(([k, x]) => v[k] === x));
   if (achados.length !== 1) throw new Error(`esperava um valor por ${por} ${JSON.stringify(filtro)}, achei ${achados.length}`);
   return pcDe(achados[0]);
 }
-const rotuloPor = (v) => `${v.por}${v.regime === 'avulso' ? ' (avulso)' : ''}${v.nota ? ` (${v.nota})` : ''}`;
+// o `por` do dado é chave sem acento; na tabela ele sai escrito como palavra
+const POR_ROTULO = { pagina: 'página', cerimonia: 'cerimônia', apresentacao: 'apresentação', 'tonelada-km': 'tonelada por km' };
+const rotuloPor = (v) => `${POR_ROTULO[v.por] || v.por}${v.regime === 'avulso' ? ' (avulso)' : ''}${v.nota ? ` (${v.nota})` : ''}`;
 
 const blocos = {};
 
@@ -97,12 +100,15 @@ blocos.tarifas = envolve(tabela(
 const grupos = [...new Set(SERV.servicos.map((s) => s.grupo))];
 blocos.servicos = grupos.map((g) => `<p class="cat-cap">${g}</p>\n\n` + envolve(tabela(
   ['Serviço', 'Unidade', 'Preço'], ['l', 'l', 'c'],
-  SERV.servicos.filter((s) => s.grupo === g).map((s) => [s.nome, rotuloPor(s), s.preco ? fmt(s.preco.pc) : `ver ${s.ver}`]),
+  SERV.servicos.filter((s) => s.grupo === g).map((s) => {
+    if (!s.preco && !s.ver) throw new Error(`serviço ${s.id} sem preço e sem ver`);
+    return [s.nome, rotuloPor(s), s.preco ? fmt(s.preco.pc) : `ver ${s.ver}`];
+  }),
 ))).join('\n\n');
 blocos.aulas = envolve(tabela(
   ['O que se aprende', 'Nível novo', 'XP', 'Jornadas de aula', 'Professor (soma)', 'Preço'],
   ['l', 'c', 'c', 'c', 'c', 'c'],
-  SERV.aulas.map((a) => [a.tipo, a.novo, a.xp, num(a.jornadas), a.prof_soma, fmt(a.preco.pc)]),
+  SERV.aulas.map((a) => [a.tipo, a.novo, a.xp, num(a.jornadas), a.prof_soma, fmt(pcDe(a))]),
 ));
 
 // ----------------------------------------------------------- servos e escravos
@@ -112,7 +118,7 @@ blocos.criados = envolve(tabela(
 ));
 blocos.escravos = envolve(tabela(
   ['Escravo', 'Preço'], ['l', 'c'],
-  [...SERV.escravos.map((e) => [e.nome, fmt(e.preco.pc)]), [`Sustento (por ${SERV.escravo_sustento.por})`, fmt(pcDe(SERV.escravo_sustento))]],
+  [...SERV.escravos.map((e) => [e.nome, fmt(pcDe(e))]), [`Sustento (por ${SERV.escravo_sustento.por})`, fmt(pcDe(SERV.escravo_sustento))]],
 ));
 
 // ------------------------------------------------------------- mercadorias

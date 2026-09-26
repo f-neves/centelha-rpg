@@ -449,7 +449,7 @@
       "grupo": "Trabalho",
       "id": "lavadeira",
       "nome": "Lavar uma muda de roupa",
-      "por": "vez",
+      "por": "unidade",
       "preco": {
         "pc": 2
       },
@@ -631,7 +631,7 @@
       "grupo": "Saber",
       "id": "escrivao-carta",
       "nome": "Carta redigida (com pergaminho)",
-      "por": "unidade",
+      "por": "carta",
       "preco": {
         "pc": 8
       },
@@ -644,7 +644,7 @@
       "grupo": "Saber",
       "id": "copia-pagina",
       "nome": "Cópia simples",
-      "por": "página",
+      "por": "pagina",
       "preco": {
         "pc": 2
       },
@@ -657,7 +657,7 @@
       "grupo": "Saber",
       "id": "iluminura-pagina",
       "nome": "Página iluminada, cópia fiel",
-      "por": "página",
+      "por": "pagina",
       "preco": {
         "pc": 9
       },
@@ -719,7 +719,7 @@
       "grupo": "Saúde",
       "id": "curandeiro",
       "nome": "Curandeiro ou barbeiro-cirurgião, atendimento",
-      "por": "vez",
+      "por": "atendimento",
       "preco": {
         "pc": 3
       },
@@ -732,7 +732,7 @@
       "grupo": "Saúde",
       "id": "medico",
       "nome": "Médico sem magia, consulta",
-      "por": "vez",
+      "por": "consulta",
       "preco": {
         "pc": 15
       },
@@ -758,7 +758,7 @@
       "grupo": "Saúde",
       "id": "parteira",
       "nome": "Parteira",
-      "por": "vez",
+      "por": "atendimento",
       "preco": {
         "pc": 35
       },
@@ -771,7 +771,7 @@
       "grupo": "Fé",
       "id": "missa",
       "nome": "Missa encomendada",
-      "por": "vez",
+      "por": "cerimonia",
       "preco": {
         "pc": 25
       },
@@ -797,7 +797,7 @@
       "grupo": "Fé",
       "id": "casamento-funeral",
       "nome": "Casamento ou funeral",
-      "por": "vez",
+      "por": "cerimonia",
       "preco": {
         "pc": 60
       },
@@ -810,7 +810,7 @@
       "grupo": "Arte",
       "id": "menestrel-taverna",
       "nome": "Músico ou artista, noite de taverna",
-      "por": "vez",
+      "por": "noite",
       "preco": {
         "pc": 35
       },
@@ -823,7 +823,7 @@
       "grupo": "Arte",
       "id": "menestrel-corte",
       "nome": "Menestrel de corte, apresentação",
-      "por": "vez",
+      "por": "apresentacao",
       "preco": {
         "pc": 110
       },
@@ -836,7 +836,7 @@
       "grupo": "Animais",
       "id": "adestrar-sela",
       "nome": "Adestrar cavalo para sela",
-      "por": "unidade",
+      "por": "animal",
       "preco": {
         "pc": 1000
       },
@@ -849,7 +849,7 @@
       "grupo": "Animais",
       "id": "adestrar-guerra",
       "nome": "Adestrar cavalo de guerra",
-      "por": "unidade",
+      "por": "animal",
       "preco": {
         "pc": 8000
       },
@@ -1149,7 +1149,7 @@
   "escravos": [
     {
       "nome": "Destreinado",
-      "por": "unidade",
+      "por": "pessoa",
       "preco": {
         "pc": 4300
       },
@@ -1159,7 +1159,7 @@
     },
     {
       "nome": "Doméstico",
-      "por": "unidade",
+      "por": "pessoa",
       "preco": {
         "pc": 7200
       },
@@ -1169,7 +1169,7 @@
     },
     {
       "nome": "Treinado (ofício)",
-      "por": "unidade",
+      "por": "pessoa",
       "preco": {
         "pc": 9400
       },
@@ -1179,7 +1179,7 @@
     },
     {
       "nome": "Especializado",
-      "por": "unidade",
+      "por": "pessoa",
       "preco": {
         "pc": 18700
       },
@@ -1187,7 +1187,7 @@
     },
     {
       "nome": "Companhia (concubina)",
-      "por": "unidade",
+      "por": "pessoa",
       "preco": {
         "pc": 10800
       },

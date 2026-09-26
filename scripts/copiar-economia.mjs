@@ -1,12 +1,13 @@
 // Leva a saída do modelo da economia (lore/economia/v2/gerar.py) para os JSONs do site, com as
-// transformações declaradas, e nada mais. Rodadas 110 e 111 (docs/simulacao/caixa/110-executora.md
-// e 111-executora.md):
+// transformações declaradas, e nada mais. Rodadas 110 a 112 (docs/simulacao/caixa/110-executora.md,
+// 111-executora.md e 112-executora.md):
 //   - a `_nota` de cada arquivo é reescrita (F5: diz que é saída do modelo; F6: a curva D na renda);
 //   - mercadorias e montarias-veiculos, que são arrays, vão num envelope { _nota, itens } (F5);
 //   - montarias-veiculos perde o `_procedencia` de cada item, que vai para
 //     lore/economia/montarias.procedencia.json (F4);
-//   - todo valor em dinheiro vira { por, preco: { pc } } (F2 estendida, rodada 111);
 //   - mercadorias.procedencia.json vai como está para lore/economia/ e lore/economia/v2/.
+// A forma de todo valor em dinheiro, { por, preco: { pc } } (F2, rodadas 111 e 112), vem pronta do
+// gerar.py: este script não inventa forma nenhuma.
 //
 // A FONTE É O MODELO, e não uma cópia dos JSONs gerados: o script roda o gerar.py numa pasta
 // de trabalho do sistema, em os.tmpdir() (ele escreve em `out/`, relativo à pasta onde roda) e parte dessa saída. Assim o
@@ -54,79 +55,6 @@ const NOTAS = {
   'custo-de-vida.json': 'Semana de Uldun (8 dias). Cestas por adulto-equivalente (Allen). Criança = meio adulto-equivalente. ' + F5,
   'viagens.json': 'Distâncias em km. ' + F5,
 };
-// ---------------------------------------------------------------- F2 estendida (rodada 111)
-// Todo valor em dinheiro vira { preco: { pc }, por }, com `por` do vocabulário do despacho da 111
-// (dia, hora, jornada, semana, km, 10 km, trajeto, vez, página, unidade) mais os que não cabiam:
-// mes e ano (renda), ponto (aula). O que a unidade de hoje tinha além do tempo vai para campo
-// próprio: `regime` (contrato/avulso), `oficio` (leve/artesao/bracal), `nota` (o resto do texto).
-const P = (pc, por, extra = {}) => ({ por, ...extra, preco: pc == null ? null : { pc } });
-const pc = (n) => (n == null ? null : { pc: n });
-const UNID_SERVICO = {
-  'dia (avulso)': { por: 'dia', regime: 'avulso' }, dia: { por: 'dia' }, hora: { por: 'hora' }, semana: { por: 'semana' },
-  jornada: { por: 'jornada' }, 'página': { por: 'página' }, vez: { por: 'vez' },
-  muda: { por: 'vez' }, carta: { por: 'unidade' }, documento: { por: 'unidade' }, atendimento: { por: 'vez' },
-  consulta: { por: 'vez' }, parto: { por: 'vez' }, missa: { por: 'vez' }, 'cerimônia': { por: 'vez' },
-  noite: { por: 'vez' }, 'apresentação': { por: 'vez' }, cavalo: { por: 'unidade' },
-};
-const UNID_VIAGEM = {
-  '10 km': { por: '10 km' }, dia: { por: 'dia' },
-  '10 km (rio abaixo); x2 rio acima': { por: '10 km', nota: 'rio abaixo; x2 rio acima' },
-  'tonelada por km': { por: 'km', nota: 'por tonelada' }, '2 toneladas por km': { por: 'km', nota: 'por 2 toneladas' },
-  'trajeto curto': { por: 'trajeto', nota: 'curto' },
-  'pessoa; 5 com cavalo': { por: 'vez', nota: 'por pessoa; 5 com cavalo' },
-  'pessoa; 3 por animal; 10 por carroça': { por: 'vez', nota: 'por pessoa; 3 por animal; 10 por carroça' },
-};
-const unid = (mapa, u, onde) => { if (!mapa[u]) throw new Error(`${onde}: unidade sem mapa "${u}"`); return mapa[u]; };
-const criado = (c) => ({ id: c.id, nome: c.nome, salario: P(c.salario_semana, 'semana'), custo_total: P(c.custo_total_semana, 'semana') });
-function f2(f, o) {
-  if (f === 'servicos.json') return {
-    _nota: o._nota,
-    tarifas_por_perfil: o.tarifas_por_perfil.map((t) => ({ perfil: t.perfil, soma: t.soma, tarifas: [
-      P(t.semana, 'semana'), P(t.contrato, 'dia', { regime: 'contrato' }), P(t.avulsa, 'dia', { regime: 'avulso' }),
-      P(t.hora_leve, 'hora', { oficio: 'leve' }), P(t.hora_artesao, 'hora', { oficio: 'artesao' }), P(t.hora_bracal, 'hora', { oficio: 'bracal' }),
-    ] })),
-    servicos: o.servicos.map((s) => {
-      const u = unid(UNID_SERVICO, s.unidade, `servicos.${s.id}`);
-      const texto = typeof s.pc === 'string';
-      if (texto && s.pc !== 'ver aulas') throw new Error(`servicos.${s.id}: preço em texto não previsto "${s.pc}"`);
-      return { grupo: s.grupo, id: s.id, nome: s.nome, ...u, preco: texto ? null : pc(s.pc), calculado: pc(s.pc_calculado), base: s.base, ...(texto ? { ver: 'aulas' } : {}) };
-    }),
-    aulas: o.aulas.map((a) => ({ tipo: a.tipo, novo: a.novo, xp: a.xp, jornadas: a.jornadas, prof_soma: a.prof_soma, por: 'ponto', preco: pc(a.pc), calculado: pc(a.preco) })),
-    criados: o.criados.map(criado),
-    escravos: o.escravos.map((e) => ({ nome: e.nome, por: 'unidade', preco: pc(e.pc), catalogo_anterior: pc(e.pc_catalogo_atual) })),
-    escravo_sustento: P(o.escravo_sustento_semana, 'semana'),
-  };
-  if (f === 'viagens.json') return { ...o, precos: o.precos.map((p) => ({ id: p.id, nome: p.nome, ...unid(UNID_VIAGEM, p.unidade, `viagens.${p.id}`), preco: pc(p.pc) })) };
-  if (f === 'custo-de-vida.json') {
-    const nomeado = (d) => Object.fromEntries(Object.entries(d).map(([k, v]) => [k, { nome: v.nome, ...P(v.pc, 'semana') }]));
-    return {
-      _nota: o._nota,
-      niveis_pessoa: o.niveis_pessoa.map((n) => ({ nivel: n.nivel, composicao: n.composicao, custo: P(n.pc_semana, 'semana'), estalagem: n.estalagem_semana == null ? null : P(n.estalagem_semana, 'semana') })),
-      cestas: nomeado(o.cestas_semana),
-      moradias: nomeado(o.moradia_semana),
-      criados: o.criados.map(criado),
-      manutencao_cavalo: P(o.cavalo_manutencao_semana, 'semana'),
-      manutencao_cavalo_guerra: P(o.cavalo_guerra_manutencao_semana, 'semana'),
-      pacotes_familia: Object.fromEntries(Object.entries(o.pacotes_familia).map(([k, p]) => [k, {
-        itens: p.itens.map((i) => ({ item: i.item, ...P(i.pc_semana, 'semana') })),
-        pacote: P(p.pacote, 'semana'), estilo_de_vida: P(p.estilo_de_vida, 'semana'),
-      }])),
-    };
-  }
-  if (f === 'renda.json') {
-    const tri = (s, m, a) => [P(s, 'semana'), P(m, 'mes'), P(a, 'ano')];
-    return {
-      _nota: o._nota,
-      faixas: o.faixas.map((x) => ({ faixa: x.faixa, recursos: x.recursos, renda: tri(x.renda_semana, x.renda_mes, x.renda_ano), livre: tri(x.livre_semana, x.livre_mes, x.livre_ano), custo: [P(x.custo_semana, 'semana')], nivel_de_vida: x.nivel_de_vida, origem: x.origem })),
-      curva_por_soma: o.curva_por_soma.map((c) => ({ soma: c.soma, media: c.media, renda: P(c.renda_semana, 'semana'), faixa_dificuldade: c.faixa_dificuldade })),
-      valor_por_ponto: Object.fromEntries(Object.entries(o.valor_por_ponto_semana).map(([k, v]) => [k, P(v, 'semana')])),
-      tetos_demanda: Object.fromEntries(Object.entries(o.tetos_demanda_semana).map(([k, v]) => [k, P(v, 'semana')])),
-    };
-  }
-  if (f === 'pacotes-equipamento.json') return { _nota: o._nota, pacotes: Object.fromEntries(Object.entries(o.pacotes).map(([k, p]) => [k, { total: pc(p.total_pc), total_anterior: pc(p.total_atual_pc), itens: p.itens }])) };
-  return o;
-}
-
 const saida = {};
 const procMontarias = { _nota: 'Procedência dos preços de montarias-veiculos.json (tirada do arquivo do site na rodada 110, F4). Lore, não dado de jogo.', itens: [] };
 for (const [f, nota] of Object.entries(NOTAS)) {
@@ -142,7 +70,7 @@ for (const [f, nota] of Object.entries(NOTAS)) {
     if (typeof src._nota !== 'string') throw new Error(f + ': objeto sem _nota na saída do modelo');
     out = { ...src, _nota: nota }; // a _nota já é a 1ª chave na saída do modelo, e continua sendo
   }
-  saida[path.join(RAIZ, 'src/data', f)] = txt(f2(f, out));
+  saida[path.join(RAIZ, 'src/data', f)] = txt(out);
 }
 saida[path.join(LORE, 'montarias.procedencia.json')] = txt(procMontarias);
 const procMerc = fs.readFileSync(path.join(V2, 'mercadorias.procedencia.json'), 'utf8');
