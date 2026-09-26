@@ -731,15 +731,15 @@ Scripts do revisor: lore/economia/v2/ids_check2.py, carroca.py.
 pacotes (E6, conferido: os 7 totais recalculados batem exatamente com os declarados em
 pacotes-equipamento.json); nível de vida do Especialista/Doutor corrigido para Abastado (B5); rações
 recompostas (E4); cavalo de guerra/potro/burro corrigidos (C5); qualidade reescrita sem "intervalo sobe"
-como divergência nova — ver (3f) abaixo, achado importante.
+como divergência nova: ver (3f) abaixo, achado importante.
 **Seguem ABERTAS** (não tocadas pela v2, continuam valendo o veredito da A3): B2 BLOQUEIO de redação (a
-v2 não reproduz o parágrafo corrigido em lugar nenhum — G50 diz "redação corrigida" mas o texto não
+v2 não reproduz o parágrafo corrigido em lugar nenhum: G50 diz "redação corrigida" mas o texto não
 está em revisao-economica-v2.md nem nos JSONs; não dá para conferir se a frase "é a mesma regra T3/T3-F"
 foi mesmo trocada); B8 condicional (Transição/Articulada pelo oficial ou pelo mestre); a inconsistência
 de escravo especializado sem correspondente na v1; C7 "soldo por dia corrido" (G66, redação, conta não
 verificada aqui por falta de tempo).
 
-**(2) Achado novo, não estava em nenhuma rodada anterior — duas réguas de salário coexistindo sem
+**(2) Achado novo, não estava em nenhuma rodada anterior: duas réguas de salário coexistindo sem
 reconciliação [P].** `modelo.py`/`gerar.py` da v2 usa DUAS fórmulas de salário diferentes para a mesma
 Habilidade, sem nenhuma nota cruzando as duas:
 
@@ -792,7 +792,7 @@ do Piso da v1.
 **(4) Renomear "Excepcional" → "Excelente" (E1, ponto 1) colide com outro sentido da mesma palavra
 [P].** "Excepcional" aparece em DOIS vocabulários sem relação no repositório: o grau de qualidade
 (`acoes-oficio-e-mundo.md:74,85,96,98,113`; `Acoes_Sistema.md:1126,1130,1147,1152,1174`;
-`acoes-e-sistema.md:46`) — ESTE é o que a v2 quer renomear — e o degrau da escada de Dificuldade
+`acoes-e-sistema.md:46`), ESTE é o que a v2 quer renomear, e o degrau da escada de Dificuldade
 ("25 = Excepcional", `acoes-e-sistema.md:24`, `coracao-do-sistema.md:71`, `virtude-jogada.md:40`,
 `Acoes_Sistema.md:68,529,545`), que é um conceito diferente (dificuldade de uma jogada, não qualidade de
 item) e NÃO deve mudar de nome. Um `sed`/busca-e-substitui cego por "Excepcional" pega os dois. A lista
@@ -801,7 +801,7 @@ de implementação abaixo isola os arquivo:linha certos.
 **(5) Pacote inicial (E5/E5-v2) piora com a curva D, não melhora [P], atualiza a A3.** A A3 já achava
 que a bolsa de 4 semanas de Livre não comprava pacote nenhum até o Especialista. Com a curva D (G52,
 Livre 12%→2%, mais apertada que a curva anterior 20%→7%), o quadro piora: recalculado com
-`renda.json`/`pacotes-equipamento.json` da v2 —
+`renda.json`/`pacotes-equipamento.json` da v2:
 
 | Faixa | Livre/sem | Bolsa (4 sem) | Pacote mais barato (Explorador, 336) cabe? |
 |---|---|---|---|
@@ -854,7 +854,7 @@ que a v1), [P] (4) no escopo do rename · E2 ACEITO, contradiz o livro de propó
 E5 [P] (5), piorou com a curva D · E7 não reconferido nesta rodada (sem mudança de conteúdo na v2 além
 do já listado em (1)).
 
-**Depende do autor:** (2) qual régua de salário vale para fabricação — a linear das Fases 1-3 ou a
+**Depende do autor:** (2) qual régua de salário vale para fabricação: a linear das Fases 1-3 ou a
 convexa de B2, hoje inconsistentes; (5) aumentar a bolsa do pacote inicial ou aceitar o personagem
 pobre; B2 (BLOQUEIO antigo, ainda sem o texto corrigido para conferir); B8 (Transição/Articulada pelo
 oficial ou mestre, arrastado da A3); "Concubina" (nome, arrastado da A3); modificador regional (adiado).
@@ -869,7 +869,7 @@ Nada alterado em `src/`. Sem commit, sem push.
 byte-idênticos aos de antes, cmp). Cópia trocada em `lore/economia/v2/`. Confirmado: tem a seção
 "11. Adendo da Etapa D" (:218-237).
 
-**11.1 (texto do B2) — ACEITO.** O parágrafo novo distingue T3 (oficial, onde alcança) de T3-F (menor
+**11.1 (texto do B2): ACEITO.** O parágrafo novo distingue T3 (oficial, onde alcança) de T3-F (menor
 capaz, onde não alcança), que era exatamente a parte (i) do bloqueio da A3 ("cita errado: T3 = oficial
 da tabela, T1 só sensibilidade"). Contas conferidas: 10,5 − 4 = 6,5 × 20 = 130; 130 ÷ 3,5 = 37,1;
 16 − 7 = 9 × 37,1 = 334 (333,9); 334 ÷ 5 = 66,9 (66,8). Batem com V7/V11 de `base.py`.
@@ -879,7 +879,7 @@ fecha essa parte é a DECISÃO do 11.6 (Transição e Articulada ficam do oficia
 uma correção de redação. As duas juntas fecham o bloqueio da A3 por completo; separadas, nenhuma fecha
 sozinha.
 
-**11.2 (não há duas réguas) — DIVERGÊNCIA, testada em Python.** O 11.2 mostra que a fórmula do B2
+**11.2 (não há duas réguas): DIVERGÊNCIA, testada em Python.** O 11.2 mostra que a fórmula do B2
 ((média−Dif)×V) é uma identidade fechada consigo mesma (é assim que V7 e V11 foram definidos). Isso é
 verdade, mas não é o teste que decide a questão: o achado (2) da D1 não questionava a definição de V7/V11,
 questionava se um perito que FABRICA de verdade (Acúmulo/dias, a régua que decidiu os preços das Fases
@@ -901,35 +901,35 @@ real mistura a velocidade do produtor (que sobe com a soma) com um preço travad
 MAIS LENTO (o oficial); as duas coisas só coincidem por construção no ponto exato em que o produtor É a
 referência da própria régua (por isso bate em soma 6, onde oficial = oficial). Isso não reabre o
 bloqueio da A3 (que era só de redação) nem muda preço nenhum já fechado (Fases 1-3, munição), porque
-nenhum desses preços foi recalculado ao vivo pela fórmula do B2 — mas a FRASE "fabricar e alugar o
+nenhum desses preços foi recalculado ao vivo pela fórmula do B2, mas a FRASE "fabricar e alugar o
 trabalho rendem o mesmo em todas as faixas" (11.2) é falsa como generalização e deveria virar "coincidem
 no produtor de referência de cada faixa; fora dele, divergem, e o sinal muda com a soma" antes de entrar
 no livro ou em qualquer nota que cite essa equivalência. Fica **[P] exposto ao autor**, não bloqueio.
 
-**11.3 (pacote de graça, achado 5) — ACEITO, invalida o achado (5) da D1.** A regra sempre disse
+**11.3 (pacote de graça, achado 5): ACEITO, invalida o achado (5) da D1.** A regra sempre disse
 "ganha um pacote de graça ... **mais** uma bolsa de 4 semanas de Livre" (v2 §7). O achado (5) tratava a
 bolsa como se precisasse comprar o pacote, o que a própria frase já não pedia; o mesmo enquadramento
 errado vinha carregado desde a A3 ("a bolsa não compra pacote nenhum"). Aceito o 11.3 e retiro o achado
-(5) da D1 como problema — ele não sobrevive à releitura da regra.
+(5) da D1 como problema: ele não sobrevive à releitura da regra.
 
-**11.4 (rename) — ACEITO**, sem ressalva: é a mesma lista de arquivo:linha que eu já tinha levantado na
+**11.4 (rename): ACEITO**, sem ressalva: é a mesma lista de arquivo:linha que eu já tinha levantado na
 D1 (achado 4), com a exclusão explícita do degrau de Dificuldade.
 
-**11.5 (carroça) — ACEITO**, é a própria calibração que propus na D1 (achado 8): linha em dias
+**11.5 (carroça): ACEITO**, é a própria calibração que propus na D1 (achado 8): linha em dias
 (Req 3, Dif 7, Mont 4, Peça 20), avulso ~267, lote 3 ~238, 300 a 1,12× o avulso; barco de pesca separado,
 em semanas, ~1.600.
 
-**11.6 (B8 fechado) — ACEITO como decisão**; fecha também a parte (ii) do bloqueio de B2, como registrado
+**11.6 (B8 fechado): ACEITO como decisão**; fecha também a parte (ii) do bloqueio de B2, como registrado
 acima em 11.1.
 
-**11.7 ("Concubina") — ACEITO como decisão** do autor; fechado.
+**11.7 ("Concubina"): ACEITO como decisão** do autor; fechado.
 
-**11.8 (cura mortal e cópia) — ACEITO, contas conferidas.** Curandeiro: 10 × 6 = 60/semana, abaixo da
+**11.8 (cura mortal e cópia): ACEITO, contas conferidas.** Curandeiro: 10 × 6 = 60/semana, abaixo da
 renda do oficial por contrato (130) e mesmo da renda do Destreinado (100); só acima do Braçal (60=60,
 empate). Copista: 2 × 8 × 6 = 96/semana, entre o Destreinado (100) e o Oficial (130), como o texto diz.
 Ressalva pequena, não bloqueio: "custo de vida do oficial" não tem faixa própria na tabela de Renda
 (soma 6 fica entre Destreinado e Treinado); o texto quis dizer a RENDA do oficial (130), não um "custo
-de vida" tabelado — troca de palavra a fazer se o trecho for para o livro.
+de vida" tabelado; troca de palavra a fazer se o trecho for para o livro.
 
 **Decisões do autor que fecham itens da D1** (2, do resumo do Revisor): B8 fechado (11.6); "Concubina"
 mantida (11.7); carroça pela calibração do Revisor (11.5); rename só no grau de qualidade (11.4). Todas
@@ -937,7 +937,7 @@ conferidas acima.
 
 ---
 
-## LISTA DE IMPLEMENTAÇÃO — FINAL (Rodada D2, para o Arquiteto)
+## LISTA DE IMPLEMENTAÇÃO FINAL (Rodada D2, para o Arquiteto)
 
 Fecha as Etapas A a E (v1 + v2) e a Etapa D (auditoria). Nada pendente de redação além do que está
 listado em "Depende do autor" no fim. Ordenada por arquivo.
@@ -958,7 +958,7 @@ listado em "Depende do autor" no fim. Ordenada por arquivo.
 6. **`renda.json`** (novo): copiar de `lore/economia/v2/`. **Antes de copiar, corrigir a `_nota`**: ainda
    diz "Livre = Renda × 20% × (60/Renda)^0,2", que é a curva antiga; a curva usada de fato é a curva D
    (12% → 2%, `LIVRE_A=0.12, LIVRE_B=0.02` em `modelo.py`). Achado da D1 (item 1), não corrigido pela v2
-   até agora — reconferir se sobrevive na hora de gerar o JSON final.
+   até agora: reconferir se sobrevive na hora de gerar o JSON final.
 7. **`custo-de-vida.json`** (novo): copiar de `lore/economia/v2/`.
 8. **`viagens.json`** (novo): copiar de `lore/economia/v2/`.
 9. **`precos.json`**: aposentar (decisão da A3, E6). Os ids únicos que os 7 pacotes antigos usavam
@@ -975,50 +975,50 @@ listado em "Depende do autor" no fim. Ordenada por arquivo.
 
 ### `src/content/chapters/`
 
-12. **`acoes-oficio-e-mundo.md:190`** — tirar a frase "A Montagem se paga igual" (contradiz a regra nova
+12. **`acoes-oficio-e-mundo.md:190`**: tirar a frase "A Montagem se paga igual" (contradiz a regra nova
     de reparo, G67: leve sem Montagem, pesado com metade, arruinada com tudo).
-13. **`acoes-oficio-e-mundo.md:173`** (linha "Carroça, barco de pesca", hoje na escala de semanas) —
+13. **`acoes-oficio-e-mundo.md:173`** (linha "Carroça, barco de pesca", hoje na escala de semanas),
     separar em duas linhas:
     - **Carroça**: Carpintaria, Req 3, Dif 7, Montagem 4, Peça 20, **escala de dias** (não de semanas);
       avulso ~267 pc / 6,3 dias; lote de 3 ~238 pc; preço de catálogo 300 pc (1,12× o avulso, a mesma
       proporção do sapato).
     - **Barco de pesca**: mesma linha de origem, continua na **escala de semanas**; preço ~1.600 pc,
       mantido.
-14. **`acoes-oficio-e-mundo.md:74,85,96,98,113`** — trocar "Excepcional" por "Excelente" (grau de
+14. **`acoes-oficio-e-mundo.md:74,85,96,98,113`**: trocar "Excepcional" por "Excelente" (grau de
     qualidade, régua de seis graus).
-15. **`Acoes_Sistema.md:1126,1130,1147,1152,1174`** — mesma troca ("Excepcional" → "Excelente"), mesma
+15. **`Acoes_Sistema.md:1126,1130,1147,1152,1174`**: mesma troca ("Excepcional" → "Excelente"), mesma
     régua.
-16. **`acoes-e-sistema.md:46`** — mesma troca (menção à régua de qualidade).
+16. **`acoes-e-sistema.md:46`**: mesma troca (menção à régua de qualidade).
 17. **`custo-de-servico-e-itens.md:63-74`** (tabela de graus) e o exemplo do Machado (§1.7 da v2:
-    Boa 6 po, Ótima 15 po, Excelente 36 po pela base 3 po) — trocar para a régua v2: nomes
+    Boa 6 po, Ótima 15 po, Excelente 36 po pela base 3 po), trocar para a régua v2: nomes
     Sucata/Tosca/Comum/Boa/Ótima/**Excelente**; multiplicador fixo **Boa 5×, Ótima 30×, Excelente 70×**
     (Tosca até ⅓, Sucata até ⅙); acrescentar a regra do **Requisito máximo 6** (cada ponto acima vira
-    +3 na Dificuldade). **NÃO mexer** no degrau "intervalo sobe a cada dois graus" (:98) — ele já está
+    +3 na Dificuldade). **NÃO mexer** no degrau "intervalo sobe a cada dois graus" (:98), porque ele já está
     certo no livro e a v2 não diverge nesse ponto (achado 3f/11.4 da D1/D2).
-18. **`custo-de-servico-e-itens.md:125`** — mesma régua de qualidade, segunda ocorrência (E7 da v2).
+18. **`custo-de-servico-e-itens.md:125`**: mesma régua de qualidade, segunda ocorrência (E7 da v2).
 19. **NÃO trocar** "Excepcional" em: `acoes-e-sistema.md:24`, `coracao-do-sistema.md:71`,
-    `virtude-jogada.md:40`, `Acoes_Sistema.md:68,529,545` — é o degrau 25 da escada de Dificuldade,
+    `virtude-jogada.md:40`, `Acoes_Sistema.md:68,529,545`: é o degrau 25 da escada de Dificuldade,
     conceito diferente do grau de qualidade.
-20. **Tabela de Renda** (`custo-de-servico-e-itens.md`, seção "Serviços & Renda") — regerar da nova
+20. **Tabela de Renda** (`custo-de-servico-e-itens.md`, seção "Serviços & Renda"): regerar da nova
     `renda.json` (9 faixas, curva D, colunas de mês/ano em 4/48 semanas exatas).
 21. **Novas seções de capítulo** (sem local fixo hoje, decisão do Arquiteto onde entram): custo de vida
     por faixa e pacote familiar (`custo-de-vida.json`), tarifas de serviço e a lista de 38 serviços
     (`servicos.json`), tabela de viagens em km (`viagens.json`), montarias/animais/veículos/manutenção
     (`montarias-veiculos.json`), servos e escravos (dentro de `servicos.json`).
-22. **Regra de reparo** (E2, provavelmente perto de `acoes-oficio-e-mundo.md:190`) — entra a régua nova:
+22. **Regra de reparo** (E2, provavelmente perto de `acoes-oficio-e-mundo.md:190`), entra a régua nova:
     leve ~1/10 do preço (sem Montagem), pesado ~1/3 (meia Montagem), arruinada ~2/3 + material que
     faltar.
-23. **Regra de "semanas de aventura"** (seção 10 da v2, Jogador) — nova, sem custo de vida da faixa para
+23. **Regra de "semanas de aventura"** (seção 10 da v2, Jogador), nova, sem custo de vida da faixa para
     quem não tem casa fixa; renda proporcional a dias trabalhados em semana parcial.
-24. **Cura acelerada por Cura** (C7/G66) — "cada nível de Cura acelera a recuperação em 10%; 50% exige
+24. **Cura acelerada por Cura** (C7/G66): "cada nível de Cura acelera a recuperação em 10%; 50% exige
     Cura 5", perto de onde o livro já fala da perícia Cura.
 
 ### Scripts
 
-25. **`scripts/gen-cap-pericias.mjs`** (ou um gerador novo equivalente) — as tabelas de Renda, custo de
+25. **`scripts/gen-cap-pericias.mjs`** (ou um gerador novo equivalente): as tabelas de Renda, custo de
     vida, serviços, viagens e servos passam a ser GERADAS dos JSONs novos, e não escritas à mão nos
     capítulos (mesma disciplina que já vale para o catálogo de perícias).
-26. **`scripts/precos.mjs`**, **`scripts/gen-lista-equip.mjs`** — apontar para `mercadorias.json` /
+26. **`scripts/precos.mjs`**, **`scripts/gen-lista-equip.mjs`**: apontar para `mercadorias.json` /
     `pacotes-equipamento.json` em vez de `precos.json`.
 
 ### Depende do autor (não bloqueia a lista acima, mas falta decisão)
@@ -1029,7 +1029,7 @@ listado em "Depende do autor" no fim. Ordenada por arquivo.
   referência; fora dele, divergem"). Não impede a implementação dos preços já fechados.
 - **Modificador regional** (A4, adiado desde a A3, confirmado adiado na v2 §12).
 - **Impacto do Livre baixo no jogador** (v2 §12.2, "para depois").
-- **B7** ("quanto se poupa vivendo abaixo do nível") — não reconferido nesta rodada nem na D1 por falta
+- **B7** ("quanto se poupa vivendo abaixo do nível"): não reconferido nesta rodada nem na D1 por falta
   de tempo; sem achado contra, só não verificado.
 
 Nada alterado em `src/`. Sem commit, sem push.
@@ -1041,7 +1041,7 @@ item por item da lista, com contas em Python onde havia número. Nenhum arquivo 
 nesta rodada D3; a conferência rodou `node scripts/gen-cap-economia.mjs` e `npm run validate` sobre a
 árvore de trabalho e não deixou diff (`git status --short` limpo antes e depois).
 
-1. **JSONs de `src/data` vs `lore/economia/v2/`** — ACEITO. Comparado o CONTEÚDO dos itens (não os
+1. **JSONs de `src/data` vs `lore/economia/v2/`**: ACEITO. Comparado o CONTEÚDO dos itens (não os
    bytes): `mercadorias.json` e `montarias-veiculos.json` idênticos item a item; `servicos.json`,
    `pacotes-equipamento.json`, `custo-de-vida.json` e `viagens.json` idênticos em todas as chaves
    (`aulas`, `criados`, `tarifas_por_perfil`, `pacotes`, `cestas_semana`, `precos`, etc). Só a `_nota`
@@ -1051,7 +1051,7 @@ nesta rodada D3; a conferência rodou `node scripts/gen-cap-economia.mjs` e `npm
    aninhada própria de cada categoria (não é regressão, é o envelope por categoria já decidido em E6).
    `mercadorias.procedencia.json` ficou fora de `src/data/`, como mandava o item 2. Schema: `peso`
    virou `nullable().optional()` em `validate-data.mjs:924`, resolvendo a pendência do item 3.
-2. **B8 (Placa completa)** — ACEITO. `armaduras.json`: só `placa-completa` mudou (2.600→3.600 pc,
+2. **B8 (Placa completa)**: ACEITO. `armaduras.json`: só `placa-completa` mudou (2.600→3.600 pc,
    commit `a58e6f4`); as outras 12 armaduras do arquivo, intactas. Tabela velha de
    `custo-de-servico-e-itens.md:471` ("Placa completa | Pesada | 36 po") bate exatamente com 3.600 pc
    pela conversão do próprio capítulo (1 po = 100 pc, linha 14); não é preço divergente, é outra unidade
@@ -1059,14 +1059,14 @@ nesta rodada D3; a conferência rodou `node scripts/gen-cap-economia.mjs` e `npm
    rodada (ela cobre armas/armaduras/escudos/munição, não itens gerais). Nenhum capítulo de combate
    (`armas-e-armaduras.md`, `combate.md`, `vida-ferimentos-cura.md`) cita preço, só a mecânica de
    Absorção, que não muda.
-3. **Rename Relíquia → Artefato** — ACEITO. Zero ocorrências de "Relíquia/reliquia" sobrando em
+3. **Rename Relíquia → Artefato**: ACEITO. Zero ocorrências de "Relíquia/reliquia" sobrando em
    `src/` (a que tinha ficado em `regras.json:580` já foi tirada na 110, commit `63897c6`).
    `ficha-engine.ts:351` tem `RENOMES_ANTE = [['reliquia','artefato']]`, aplicado antes do laço que lê
    `S.ante`/`S.anteNom`; a migração está no lugar certo (migra e não trava a leitura de ficha antiga).
    Não testei no navegador uma ficha salva de verdade com Relíquia antiga (não tenho uma à mão), mas o
    código e o comentário da migração (`ficha-engine.ts:348-350`) são coerentes com o padrão que o
    projeto já usa para os outros `RENOMES`.
-4. **Rename Excepcional → Excelente** — ACEITO, escopo certo. Nos 4 lugares da régua de qualidade
+4. **Rename Excepcional → Excelente**: ACEITO, escopo certo. Nos 4 lugares da régua de qualidade
    (`acoes-oficio-e-mundo.md:74,82,85,96,98,113`, `acoes-e-sistema.md:46`,
    `custo-de-servico-e-itens.md:337,396`) o texto já diz "Excelente". Nos 2 lugares do degrau de
    Dificuldade 25 que ainda existem (`acoes-e-sistema.md:24`, `coracao-do-sistema.md:71`), continua
@@ -1077,7 +1077,7 @@ nesta rodada D3; a conferência rodou `node scripts/gen-cap-economia.mjs` e `npm
    antes mesmo da 110 e nunca existiu com esse nome no `src/` atual. Retiro a citação; não há ação
    pendente para o Arquiteto aqui, porque não há arquivo para corrigir.
 5. **Qualidade, reparo, carroça/barco, Renda, custo de vida/serviços/viagens/montarias, semanas de
-   aventura, cura, revenda** — ACEITO em bloco, item por item:
+   aventura, cura, revenda**: ACEITO em bloco, item por item:
    - Qualidade: `custo-de-servico-e-itens.md:330-345` traz Boa 5×/Ótima 30×/Excelente 70× (Tosca ⅓,
      Sucata ⅙), "Requisito máximo 6" com a regra dos +3 de Dificuldade por ponto excedente, Relíquia
      como rótulo com piso de 100×, e Revenda pela metade do preço. O degrau "intervalo sobe a cada dois
@@ -1093,12 +1093,12 @@ nesta rodada D3; a conferência rodou `node scripts/gen-cap-economia.mjs` e `npm
    - Cura acelerada: `vida-ferimentos-cura.md:90` tem "cada nível de Cura... acelera em 10%... 50%
      exigem Cura 5", igual ao G66.
    - Semanas de aventura: seção própria em `custo-de-servico-e-itens.md:65`.
-6. **Tabelas geradas, não digitadas** — ACEITO, testado de verdade: rodei
+6. **Tabelas geradas, não digitadas**: ACEITO, testado de verdade: rodei
    `node scripts/gen-cap-economia.mjs` de novo sobre a árvore já commitada e `git status --short` ficou
    limpo (nenhuma diferença entre o que está commitado e o que o gerador produz agora). `npm run
    validate` também confirma sozinho: "tabelas da economia em dia com a fonte (12 blocos: 9 faixas de
    renda, 193 mercadorias, 44 montarias e veículos, 38 serviços, 7 pacotes)", com `--check` no portão.
-7. **Preço antigo sobrando** — ACEITO, nada achado. Testei os 37 ids do extinto `precos.json` contra
+7. **Preço antigo sobrando**: ACEITO, nada achado. Testei os 37 ids do extinto `precos.json` contra
    `mercadorias.json`: todos sobrevivem por id (só `martelo` virou `martelo-ferramenta`, como o item 9
    da lista já previa), os preços mudaram onde a v2 mandava mudar (ex.: mochila 20→100 pc, corda de
    cânhamo 10→25 pc) e o texto do capítulo (`custo-de-servico-e-itens.md:694-953`) já reflete os valores
@@ -1120,3 +1120,104 @@ própria lista da D2 (a citação a `Acoes_Sistema.md`, que não existe e não p
 - Modificador regional, impacto do Livre baixo, B7: adiados, sem reconferência nesta rodada.
 
 Etapa D encerrada, salvo o "Depende do autor" acima. Nada alterado em `src/`. Sem commit, sem push.
+
+## Etapa D · Rodada D4 · o Acoes_Sistema.md que eu tinha dado por sumido · VEREDITO
+
+**Correção da D3.** Meu achado (4) da D3 estava errado: `Acoes_Sistema.md` NUNCA saiu do lugar. Ele
+mora na RAIZ do repositório (`C:\Users\Neves\ClaudeCode\centelha\rpg-system\Acoes_Sistema.md`, 1.684
+linhas), não em `src/content/chapters/`, e por isso a minha varredura da D3 (que só olhou
+`src/content/chapters` e depois um `find` que falhou em achar arquivo de raiz por um motivo que não
+apurei) não o encontrou. `git log --all --oneline -- 'Acoes_Sistema.md'` mostra o arquivo vivo desde
+`bdc58d0` (a abertura da frente de Ações & Sistema) até hoje, com o commit mais recente sendo
+`f9709bc` (a própria Rodada 110, "texto dos Ofícios pela revisão econômica"), que já mexeu nele.
+
+**O que `f9709bc` mudou em `Acoes_Sistema.md`**: só o rename Excepcional → Excelente, nas mesmas 5
+linhas (`:1126,:1130,:1147,:1152,:1174`) e preservando o degrau 25 intacto (`:68,:529,:545`), exatamente
+como a mensagem do commit diz. **O resto do arquivo não foi tocado**, e é aí que a divergência mora:
+
+- **§7.5 "A qualidade move os cinco números de uma vez" (`:1108-1128`)**: ainda descreve a régua VELHA:
+  "Preço **dobra**" por grau acima, "Preço **cai pela metade**" por grau abaixo (`:1119`). Não fala em
+  multiplicador fixo (5×/30×/70×) nem em "Requisito máximo 6". A tabela dos seis graus (`:1122-1126`)
+  já tem "Excelente" no lugar de "Excepcional", mas a REGRA de preço por trás dela é a antiga.
+- **§7.8 "Reparar, melhorar, improvisar, desmontar" (`:1291-1293`)**: ainda tem a frase **"A Montagem
+  se paga igual"** (linha 1293), a mesma frase que a D2 mandou tirar e que SAIU de
+  `acoes-oficio-e-mundo.md:190` mas não daqui. A régua descrita aqui (¼/½/inteiro do Acúmulo) também não
+  menciona "sem Montagem" no dano leve, diferente do texto novo do outro capítulo.
+- **A linha da carroça (`:1270`)**: ainda é **"Carroça, barco de pesca | Carpintaria | 3 | 7 | 4 | 20 |
+  2 | 7 semanas"**, uma linha só, na escala de semanas. Não foi separada em Carroça (dias, 6,9) e Barco
+  de pesca (semanas, 7), como já está em `acoes-oficio-e-mundo.md:162,174`.
+- **§7.9 "Ganhar a vida com o ofício" (`:1313-1322`)**: divergência que também existe **no site**, e
+  é a mais grave das quatro. Ver item 2 abaixo: a fórmula, os exemplos e os tetos estão desatualizados
+  tanto aqui quanto em `acoes-oficio-e-mundo.md:209-211`. Ninguém, em nenhuma rodada da Etapa D (nem a
+  minha D3), tinha reconferido esse parágrafo especificamente.
+- **Relíquia/Artefato**: não se aplica, o arquivo não cita Relíquia como antecedente.
+
+**Veredito do item 1**: o arquivo existe, na raiz, nunca foi movido. **[P]**: falta aplicar nele a
+régua de qualidade nova (preço fixo + Requisito máximo 6), tirar "A Montagem se paga igual", separar
+a linha da carroça, e corrigir §7.9 (item 2 abaixo). Não é BLOQUEIO porque `Acoes_Sistema.md` é um
+documento de trabalho fora de `src/` (a bancada da frente de Ações & Sistema, não uma página do site);
+mas ele é citado como referência viva em commits recentes, e ficar com quatro pontos desatualizados
+depois de uma rodada que mexeu justamente nesse capítulo é o tipo de deriva que rende confusão.
+
+**Item 2 (`acoes-oficio-e-mundo.md`, "Ganhar a vida com o ofício", `:205-211`)**: **BLOQUEIO**, achado
+novo, confirmado nos dois lugares (site e Acoes_Sistema.md). O texto do SITE ainda diz:
+
+```
+Ganho por semana = (média − 4) × 10 pc, limitado pela demanda do lugar
+O oficial tira 65 pc por semana, o perito 120, o mestre 170. [...] uma aldeia absorve talvez 50 pc
+por semana [...] uma vila 150, uma cidade 500, e uma capital não tem teto prático.
+```
+
+Isso é a fórmula de ANTES de Fases 1-3 fixarem `salario_x20` (`(média−4)×20`, `base.py`). Fazendo a
+conta com a fórmula nova, pelas mesmas somas que o texto velho já usava (oficial soma 6 média 10,5,
+perito soma 9 média 16, mestre soma 12 média 21):
+
+| Produtor | soma | média | (média−4)×20 |
+|---|:--:|:--:|:--:|
+| oficial | 6 | 10,5 | **130 pc** |
+| perito | 9 | 16 | **240 pc** |
+| mestre | 12 | 21 | **340 pc** |
+
+Esses três números batem exatamente com a coluna "linear (H-×20)" da tabela que eu já tinha levantado
+na Rodada D2 (11.2). Os tetos: `src/data/renda.json` já tem o campo `tetos_demanda` pronto e
+correto (**aldeia 100, vila 300, cidade 1.000, capital sem teto** = `null`), que bate com o número que
+o autor/Comerciante deu (100/300/1000). O texto do capítulo nunca foi atualizado para ler esse campo.
+Correção sugerida (mesma frase, números trocados):
+
+```
+Ganho por semana = (média − 4) × 20 pc, limitado pela demanda do lugar
+O oficial tira 130 pc por semana, o perito 240, o mestre 340. O teto é o mercado: uma aldeia absorve
+talvez 100 pc por semana de qualquer ofício, uma vila 300, uma cidade 1.000, e uma capital não tem
+teto prático.
+```
+
+A mesma correção vale para `Acoes_Sistema.md:1318-1322`, que tem a frase quase idêntica.
+
+**Item 3 (`custo-de-servico-e-itens.md:471`, tabela "Provisório" de armas/armaduras)**: **ACEITO**,
+não é digitada à mão. Está dentro do bloco `<!-- gen:catalogo-equipamento --> ... <!-- /gen:catalogo-
+equipamento -->` (`:402-497`), gerado por `scripts/gen-cap-itens.mjs`, que lê `armas.json`,
+`armaduras.json`, `escudos.json` e `municao.json` direto (não uma cópia) e converte pc → po/pp na
+saída. Rodei `gen-cap-itens.mjs --check` (dentro do `npm run validate`, que já tinha passado) e ele
+confere sozinho. A "Placa completa | Pesada | 36 po" bate com os 3.600 pc de `armaduras.json` pela
+própria tabela de conversão do capítulo (1 po = 100 pc): não é preço velho, é a mesma fonte em outra
+unidade. O aviso "Provisório" (`:10`) é sobre a lista de itens não bater 1:1 com o Cap. XIII, não
+sobre preço desatualizado.
+
+Varri as outras tabelas de preço dos capítulos (busquei o padrão `pc/po/pp/pl |` fora de
+`custo-de-servico-e-itens.md`): **nenhuma outra tabela de preço existe em nenhum outro capítulo do
+site.** Dentro do próprio `custo-de-servico-e-itens.md`, toda tabela com preço está dentro de um bloco
+`<!-- gen:... -->`; não sobrou nenhuma tabela de preço digitada à mão nesse arquivo.
+
+### Veredito da D4
+
+1. `Acoes_Sistema.md`: existe, na raiz, nunca foi movido; **[P]**, 4 pontos por aplicar (régua de
+   qualidade, "Montagem se paga igual", carroça, §7.9).
+2. §7.9 "Ganhar a vida com o ofício", no site E em Acoes_Sistema.md; **BLOQUEIO**: fórmula, exemplo
+   e tetos ainda são os de antes de Fases 1-3 (×10, 65/120/170, 50/150/500), enquanto o resto do
+   capítulo já usa a régua nova. Números corretos calculados acima (130/240/340 pc; tetos 100/300/1000,
+   já presentes em `renda.json.tetos_demanda`).
+3. `custo-de-servico-e-itens.md:471`: gerado por `gen-cap-itens.mjs` a partir dos JSONs de armas/
+   armaduras/escudos/munição, não digitado; nenhuma outra tabela de preço nos capítulos é digitada à
+   mão.
+
+Nada alterado. Sem commit, sem push.
