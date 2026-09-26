@@ -103,7 +103,14 @@ de 112 a 160 fichas. Os dois dão a mesma ordem de grandeza por ficha.
 **Nuance 1: a perda depende da máquina, e não só da hora.** Com a CPU normal, a 1ª passada deu 616,
 747 e 882 links (**perde de 47% a 63%**, dentro da faixa de 32% a 70% dela). **Com a CPU 4× mais
 lenta, a 1ª passada já pegou as 309 fichas** e deu 1670 nas cinco cargas: o `requestIdleCallback` só
-dispara depois que a montagem em fatias termina. **Quem perde link é quem tem a máquina rápida.** Na
+dispara depois que a montagem em fatias termina. **Quem perde link é quem tem a máquina rápida.**
+Essa corrida com a CPU 4× esperava a página por `load`, e a de CPU normal por `networkidle0`. Então
+separei as duas coisas: rodei de novo com a CPU normal e o mesmo `load`
+(`custo-cpu1-load.json`). A 1ª passada pegou **de 160 a 256 fichas** (882 a 1388 links), e em
+nenhuma carga pegou as 309. **O instrumento mexe na conta** (a espera por `load` consulta a página
+enquanto ela monta, e a 1ª passada pega mais fichas), **mas não explica a diferença**: com o mesmo
+instrumento, a CPU normal perde link e a lenta não. A passada cheia deu 731 ms e a semeada 696, com
+0 duplicado. Na
 108 eu escrevi que não reproduzia a variação dela (493 três vezes): agora reproduzo, no dist
 instrumentado, com 616, 747 e 882.
 
