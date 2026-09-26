@@ -65,31 +65,6 @@
       "ticks": 5
     }
   ],
-  "poderes": [
-    {
-      "efeito": "Corda de comando (Sp)",
-      "tipo": "feiticaria",
-      "alvo": "Fascinação · N2 / Forças",
-      "arte": "fascinacao"
-    },
-    {
-      "efeito": "Teleporte",
-      "tipo": "feiticaria",
-      "alvo": "Conjuração · N4",
-      "arte": "conjuracao"
-    },
-    {
-      "efeito": "Arco certeiro",
-      "tipo": "proeza",
-      "alvo": "Olho de Águia / Atirador",
-      "caminho": "olho-de-aguia"
-    },
-    {
-      "efeito": "Voo",
-      "tipo": "natural",
-      "alvo": "asas"
-    }
-  ],
   "fraquezas": [
     "luz",
     "sagrado"
@@ -175,5 +150,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 5
+  "ameacaLegada": 5,
+  "proezaFutura": [
+    {
+      "caminho": "olho-de-aguia"
+    }
+  ]
 }

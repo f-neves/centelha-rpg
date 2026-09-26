@@ -18,7 +18,8 @@
     "peso": "900 kg"
   },
   "locomocao": {
-    "terra": 4
+    "terra": 4,
+    "escalada": 3
   },
   "centelha": 0,
   "attrs": {

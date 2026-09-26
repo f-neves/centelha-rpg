@@ -18,7 +18,8 @@
     "peso": "4 t"
   },
   "locomocao": {
-    "terra": 2
+    "terra": 2,
+    "natacao": 2
   },
   "centelha": 1,
   "attrs": {
@@ -60,10 +61,15 @@
   ],
   "poderes": [
     {
-      "efeito": "Cabeças que rebrotam (Su)",
-      "tipo": "proeza",
-      "alvo": "Cerne Vital · Regeneração (b9)",
-      "caminho": "cerne-vital"
+      "id": "cabecas-que-rebrotam",
+      "nome": "Cabeças que rebrotam",
+      "tipo": "natural",
+      "resiste": "nenhum",
+      "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
+      "usos": {
+        "periodo": "passivo",
+        "recarga": "contínua"
+      }
     }
   ],
   "habilidades": [
@@ -134,5 +140,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 3
+  "ameacaLegada": 3,
+  "proezaFutura": [
+    {
+      "caminho": "cerne-vital"
+    }
+  ]
 }

@@ -18,7 +18,8 @@
     "peso": "180 kg"
   },
   "locomocao": {
-    "terra": 3
+    "terra": 3,
+    "escalada": 3
   },
   "centelha": 0,
   "attrs": {

@@ -65,14 +65,6 @@
       "ticks": 5
     }
   ],
-  "poderes": [
-    {
-      "efeito": "Fedor e telepatia (Sp)",
-      "tipo": "feiticaria",
-      "alvo": "Vento · N2 (fedor) + Fascinação · N1",
-      "arte": "vento"
-    }
-  ],
   "fraquezas": [
     "luz",
     "sagrado"

@@ -66,16 +66,18 @@
   ],
   "poderes": [
     {
-      "efeito": "Passo-arbóreo e enfeitiço (Sp)",
-      "tipo": "feiticaria",
-      "alvo": "Fascinação · N2 + Conjuração · N2",
-      "arte": "fascinacao"
-    },
-    {
+      "id": "fundir-se-a-arvore",
+      "nome": "Fundir-se à árvore",
+      "tipo": "natural",
+      "base": {
+        "arte": "materia",
+        "nivel": 2
+      },
+      "resiste": "nenhum",
       "efeito": "Fundir-se à árvore",
-      "tipo": "feiticaria",
-      "alvo": "Matéria · N2 / Espírito",
-      "arte": "materia"
+      "usos": {
+        "periodo": "avontade"
+      }
     }
   ],
   "habilidades": [

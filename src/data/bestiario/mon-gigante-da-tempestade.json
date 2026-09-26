@@ -19,7 +19,8 @@
     "peso": "11 t"
   },
   "locomocao": {
-    "terra": 5
+    "terra": 5,
+    "natacao": 4
   },
   "centelha": 3,
   "attrs": {
@@ -64,20 +65,6 @@
       "ticks": 7
     }
   ],
-  "poderes": [
-    {
-      "efeito": "Comandar o clima",
-      "tipo": "feiticaria",
-      "alvo": "Vento · N5 + Raio · N4",
-      "arte": "vento"
-    },
-    {
-      "efeito": "Ver e ouvir à distância",
-      "tipo": "feiticaria",
-      "alvo": "Adivinhação · N2",
-      "arte": "adivinhacao"
-    }
-  ],
   "habilidades": [
     {
       "nome": "Comandar o clima",
@@ -102,6 +89,10 @@
     {
       "nome": "Presença régia",
       "descricao": "falha de inimigos em teste de Vontade contra ele causa Abalado"
+    },
+    {
+      "nome": "Ver e ouvir à distância",
+      "descricao": "Sentido passivo."
     }
   ],
   "lore": [

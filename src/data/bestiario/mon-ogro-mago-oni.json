@@ -21,7 +21,8 @@
     "peso": "290 kg"
   },
   "locomocao": {
-    "terra": 4
+    "terra": 4,
+    "voo": 6
   },
   "centelha": 5,
   "attrs": {
@@ -72,22 +73,15 @@
   ],
   "poderes": [
     {
-      "efeito": "Regeneração (Su)",
-      "tipo": "proeza",
-      "alvo": "Cerne Vital · Regeneração (b9)",
-      "caminho": "cerne-vital"
-    },
-    {
-      "efeito": "Voo, invisibilidade, forma (Sp)",
-      "tipo": "feiticaria",
-      "alvo": "Vento · N5 + Fascinação · N1 + Matéria · N3",
-      "arte": "vento"
-    },
-    {
-      "efeito": "Cone de frio",
-      "tipo": "feiticaria",
-      "alvo": "Gelo · N2",
-      "arte": "gelo"
+      "id": "regeneracao",
+      "nome": "Regeneração",
+      "tipo": "natural",
+      "resiste": "nenhum",
+      "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
+      "usos": {
+        "periodo": "passivo",
+        "recarga": "contínua"
+      }
     }
   ],
   "habilidades": [
@@ -184,5 +178,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 5
+  "ameacaLegada": 5,
+  "proezaFutura": [
+    {
+      "caminho": "cerne-vital"
+    }
+  ]
 }

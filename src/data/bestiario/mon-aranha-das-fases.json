@@ -19,7 +19,8 @@
     "peso": "160 kg"
   },
   "locomocao": {
-    "terra": 4
+    "terra": 4,
+    "escalada": 2
   },
   "centelha": 3,
   "attrs": {
@@ -64,10 +65,18 @@
   ],
   "poderes": [
     {
-      "efeito": "Salto etéreo (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Espírito · N2 / Conjuração",
-      "arte": "espirito"
+      "id": "salto-etereo",
+      "nome": "Salto etéreo",
+      "tipo": "natural",
+      "base": {
+        "arte": "espirito",
+        "nivel": 2
+      },
+      "resiste": "nenhum",
+      "efeito": "Salto etéreo",
+      "usos": {
+        "periodo": "avontade"
+      }
     }
   ],
   "habilidades": [

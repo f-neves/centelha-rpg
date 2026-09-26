@@ -64,10 +64,18 @@
   ],
   "poderes": [
     {
-      "efeito": "Olhar petrificante (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Matéria · N3 (carne → pedra)",
-      "arte": "materia"
+      "id": "olhar-petrificante",
+      "nome": "Olhar petrificante",
+      "tipo": "natural",
+      "base": {
+        "arte": "materia",
+        "nivel": 3
+      },
+      "resiste": "corpo",
+      "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
+      "usos": {
+        "periodo": "cena"
+      }
     }
   ],
   "habilidades": [

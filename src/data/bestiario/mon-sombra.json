@@ -66,16 +66,33 @@
   ],
   "poderes": [
     {
-      "efeito": "Dreno de Força (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Morte · N1",
-      "arte": "morte"
+      "id": "dreno-de-forca",
+      "nome": "Dreno de Força",
+      "tipo": "natural",
+      "base": {
+        "arte": "morte",
+        "nivel": 1
+      },
+      "resiste": "corpo",
+      "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+      "usos": {
+        "periodo": "golpe"
+      },
+      "ataque": "Toque dilacerante"
     },
     {
+      "id": "incorporeo",
+      "nome": "Incorpóreo",
+      "tipo": "natural",
+      "base": {
+        "arte": "espirito",
+        "nivel": 2
+      },
+      "resiste": "nenhum",
       "efeito": "Incorpóreo",
-      "tipo": "feiticaria",
-      "alvo": "Espírito · N2 / Sombra · Manto de Sombras (b5)",
-      "arte": "espirito"
+      "usos": {
+        "periodo": "avontade"
+      }
     }
   ],
   "fraquezas": [

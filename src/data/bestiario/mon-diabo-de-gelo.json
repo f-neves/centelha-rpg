@@ -67,22 +67,19 @@
   ],
   "poderes": [
     {
-      "efeito": "Aura de frio (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Gelo · N3",
-      "arte": "gelo"
-    },
-    {
-      "efeito": "Lança e muralha de gelo",
-      "tipo": "feiticaria",
-      "alvo": "Gelo · N2–N3",
-      "arte": "gelo"
-    },
-    {
-      "efeito": "Feitiços",
-      "tipo": "feiticaria",
-      "alvo": "Gelo / Proteção · N3–N4",
-      "arte": "protecao"
+      "id": "aura-de-frio",
+      "nome": "Aura de frio",
+      "tipo": "natural",
+      "base": {
+        "arte": "gelo",
+        "nivel": 3
+      },
+      "resiste": "corpo",
+      "efeito": "Resiste ao entrar, 1 vez por cena.",
+      "usos": {
+        "periodo": "passivo",
+        "recarga": "contínua"
+      }
     }
   ],
   "fraquezas": [

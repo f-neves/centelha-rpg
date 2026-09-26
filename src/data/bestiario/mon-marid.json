@@ -18,7 +18,9 @@
     "peso": "1130 kg"
   },
   "locomocao": {
-    "terra": 2
+    "terra": 2,
+    "voo": 9,
+    "natacao": 6
   },
   "centelha": 5,
   "attrs": {

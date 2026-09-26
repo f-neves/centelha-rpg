@@ -65,27 +65,50 @@
   ],
   "poderes": [
     {
-      "efeito": "Sopro de fogo (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Fogo · N4",
-      "arte": "fogo"
+      "id": "sopro-de-fogo",
+      "nome": "Sopro de fogo",
+      "tipo": "natural",
+      "base": {
+        "arte": "fogo",
+        "nivel": 4
+      },
+      "resiste": "esquiva",
+      "efeito": "Cone ou linha. Esquiva para metade.",
+      "usos": {
+        "periodo": "ticks",
+        "quantidade": 1,
+        "recarga": "24 ticks"
+      }
     },
     {
-      "efeito": "Aura de fogo (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Fogo · N4 / Proteção",
-      "arte": "fogo"
+      "id": "aura-de-fogo",
+      "nome": "Aura de fogo",
+      "tipo": "natural",
+      "base": {
+        "arte": "fogo",
+        "nivel": 4
+      },
+      "resiste": "corpo",
+      "efeito": "Resiste ao entrar, 1 vez por cena.",
+      "usos": {
+        "periodo": "passivo",
+        "recarga": "contínua"
+      }
     },
     {
-      "efeito": "Presença aterradora",
-      "tipo": "feiticaria",
-      "alvo": "Morte · N3",
-      "arte": "morte"
-    },
-    {
-      "efeito": "Feitiços de feiticeiro",
-      "tipo": "feiticaria",
-      "alvo": "várias · N3"
+      "id": "presenca-aterradora",
+      "nome": "Presença aterradora",
+      "tipo": "natural",
+      "base": {
+        "arte": "morte",
+        "nivel": 3
+      },
+      "resiste": "mente",
+      "efeito": "Área; quem resiste fica imune na cena.",
+      "usos": {
+        "periodo": "cena",
+        "quantidade": 1
+      }
     }
   ],
   "resistencias": [

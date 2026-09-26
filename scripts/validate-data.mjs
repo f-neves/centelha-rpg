@@ -76,7 +76,21 @@ const S = {
     iniciativa: z.string(), atributos: z.record(z.number().int()),
     ataques: z.array(z.object({ nome: z.string(), pool: z.string(), dano: z.string(), ticks: z.number().int(), notas: z.string().optional() })),
     tecnicas: z.array(z.string()), artes: z.array(z.object({ id: z.string(), nivel: z.number().int() })),
-    poderes: z.array(z.object({ efeito: z.string(), tipo: z.enum(['proeza', 'feiticaria', 'natural']), alvo: z.string(), caminho: z.string().optional(), arte: z.string().optional() })).optional(),
+    // Dois formatos convivem desde o B14 fase 2 (ver scripts/criatura-schema.mjs, poderSchema).
+    poderes: z.array(z.union([
+      z.object({
+        id: z.string(), nome: z.string(), tipo: z.literal('natural'),
+        base: z.object({ arte: z.string(), nivel: z.number().int().min(1).max(6) }).optional(),
+        resiste: z.enum(['esquiva', 'corpo', 'mente', 'nenhum']),
+        area: z.string().optional(), efeito: z.string(), ataque: z.string().optional(),
+        usos: z.object({
+          quantidade: z.number().int().nonnegative().optional(),
+          periodo: z.enum(['ticks', 'cena', 'hora', 'dia', 'avontade', 'passivo', 'golpe']),
+          recarga: z.string().optional(),
+        }),
+      }),
+      z.object({ efeito: z.string(), tipo: z.enum(['proeza', 'feiticaria', 'natural']), alvo: z.string(), caminho: z.string().optional(), arte: z.string().optional() }),
+    ])).optional(),
     notas: z.string(), pendente: z.boolean(),
   }),
 };
@@ -1048,6 +1062,10 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
     for (const p of c.poderes || []) {
       if (p.arte && !ART.has(p.arte)) fail(`${onde}: poder cita a arte inexistente "${p.arte}"`);
       if (p.caminho && !C.has(p.caminho)) fail(`${onde}: poder cita o caminho inexistente "${p.caminho}"`);
+      if (p.base?.arte && !ART.has(p.base.arte)) fail(`${onde}: poder cita a arte inexistente "${p.base.arte}"`);
+    }
+    for (const pf of c.proezaFutura || []) {
+      if (pf.caminho && !C.has(pf.caminho)) fail(`${onde}: proezaFutura cita o caminho inexistente "${pf.caminho}"`);
     }
     for (const p of c.equip?.armaduras || []) {
       const base = typeof p === 'string' ? p : p?.base;

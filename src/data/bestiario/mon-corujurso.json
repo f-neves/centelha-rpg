@@ -61,14 +61,6 @@
       "ticks": 6
     }
   ],
-  "poderes": [
-    {
-      "efeito": "Abraço (agarrar)",
-      "tipo": "proeza",
-      "alvo": "Agarrão do Urso · Imobilizar (b2)",
-      "caminho": "agarrao-do-urso"
-    }
-  ],
   "habilidades": [
     {
       "nome": "Abraço esmagador",
@@ -89,6 +81,10 @@
     {
       "nome": "Fúria descontrolada",
       "descricao": "gravemente ferido, ganha bônus de dano mas ataca sem distinguir aliados"
+    },
+    {
+      "nome": "Abraço (agarrar)",
+      "descricao": "Depende do agarrão; engolir 1 alvo por vez."
     }
   ],
   "lore": [
@@ -144,5 +140,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 3
+  "ameacaLegada": 3,
+  "proezaFutura": [
+    {
+      "caminho": "agarrao-do-urso"
+    }
+  ]
 }

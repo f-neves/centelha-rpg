@@ -62,20 +62,6 @@
       "ticks": 7
     }
   ],
-  "poderes": [
-    {
-      "efeito": "Névoa e poderes do ar (Sp)",
-      "tipo": "feiticaria",
-      "alvo": "Vento · N2",
-      "arte": "vento"
-    },
-    {
-      "efeito": "Arremessar rocha",
-      "tipo": "proeza",
-      "alvo": "Atlas",
-      "caminho": "atlas"
-    }
-  ],
   "habilidades": [
     {
       "nome": "Névoa oculta",
@@ -157,5 +143,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 5
+  "ameacaLegada": 5,
+  "proezaFutura": [
+    {
+      "caminho": "atlas"
+    }
+  ]
 }

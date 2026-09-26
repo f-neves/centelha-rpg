@@ -263,13 +263,28 @@ const inimigos = defineCollection({
     ataques: z.array(z.object({ nome: z.string(), pool: z.string(), dano: z.string(), ticks: z.number().int(), notas: z.string().optional() })),
     tecnicas: z.array(reference('tecnicas')),
     artes: z.array(z.object({ id: reference('artes'), nivel: z.number().int().min(1).max(6) })),
-    poderes: z.array(z.object({
-      efeito: z.string(),
-      tipo: z.enum(['proeza', 'feiticaria', 'natural']),
-      alvo: z.string(),
-      caminho: z.string().optional(),
-      arte: z.string().optional(),
-    })).optional(),
+    // Dois formatos convivem desde o B14 fase 2 (ver scripts/criatura-schema.mjs, poderSchema):
+    // o natural novo (id/nome/base/resiste/area/usos/ataque) e o legado (efeito/tipo/alvo/arte/caminho).
+    poderes: z.array(z.union([
+      z.object({
+        id: z.string(), nome: z.string(), tipo: z.literal('natural'),
+        base: z.object({ arte: z.string(), nivel: z.number().int().min(1).max(6) }).optional(),
+        resiste: z.enum(['esquiva', 'corpo', 'mente', 'nenhum']),
+        area: z.string().optional(), efeito: z.string(), ataque: z.string().optional(),
+        usos: z.object({
+          quantidade: z.number().int().nonnegative().optional(),
+          periodo: z.enum(['ticks', 'cena', 'hora', 'dia', 'avontade', 'passivo', 'golpe']),
+          recarga: z.string().optional(),
+        }),
+      }),
+      z.object({
+        efeito: z.string(),
+        tipo: z.enum(['proeza', 'feiticaria', 'natural']),
+        alvo: z.string(),
+        caminho: z.string().optional(),
+        arte: z.string().optional(),
+      }),
+    ])).optional(),
     notas: z.string(),
     pendente: z.boolean(),
   }),

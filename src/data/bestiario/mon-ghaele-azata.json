@@ -19,7 +19,8 @@
     "peso": "90 kg"
   },
   "locomocao": {
-    "terra": 5
+    "terra": 5,
+    "voo": 15
   },
   "centelha": 6,
   "attrs": {
@@ -65,21 +66,18 @@
   ],
   "poderes": [
     {
-      "efeito": "Forma de globo de luz (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Espírito · N3 + Fogo (luz)",
-      "arte": "espirito"
-    },
-    {
-      "efeito": "Raio de luz",
-      "tipo": "feiticaria",
-      "alvo": "Raio · N3",
-      "arte": "raio"
-    },
-    {
-      "efeito": "Feitiços",
-      "tipo": "feiticaria",
-      "alvo": "várias · N3–N4"
+      "id": "forma-de-globo-de-luz",
+      "nome": "Forma de globo de luz",
+      "tipo": "natural",
+      "base": {
+        "arte": "espirito",
+        "nivel": 3
+      },
+      "resiste": "nenhum",
+      "efeito": "Forma de globo de luz",
+      "usos": {
+        "periodo": "avontade"
+      }
     }
   ],
   "fraquezas": [

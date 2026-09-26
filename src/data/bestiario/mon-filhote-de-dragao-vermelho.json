@@ -19,7 +19,9 @@
     "peso": "90 kg"
   },
   "locomocao": {
-    "terra": 4
+    "terra": 4,
+    "voo": 6,
+    "escalada": 3
   },
   "centelha": 4,
   "attrs": {
@@ -65,16 +67,35 @@
   ],
   "poderes": [
     {
-      "efeito": "Sopro de fogo (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Fogo · N2",
-      "arte": "fogo"
+      "id": "sopro-de-fogo",
+      "nome": "Sopro de fogo",
+      "tipo": "natural",
+      "base": {
+        "arte": "fogo",
+        "nivel": 2
+      },
+      "resiste": "esquiva",
+      "efeito": "Cone ou linha. Esquiva para metade.",
+      "usos": {
+        "periodo": "ticks",
+        "quantidade": 1,
+        "recarga": "24 ticks"
+      }
     },
     {
-      "efeito": "Presença medonha",
-      "tipo": "feiticaria",
-      "alvo": "Morte · N3",
-      "arte": "morte"
+      "id": "presenca-medonha",
+      "nome": "Presença medonha",
+      "tipo": "natural",
+      "base": {
+        "arte": "morte",
+        "nivel": 3
+      },
+      "resiste": "mente",
+      "efeito": "Área; quem resiste fica imune na cena.",
+      "usos": {
+        "periodo": "cena",
+        "quantidade": 1
+      }
     }
   ],
   "resistencias": [

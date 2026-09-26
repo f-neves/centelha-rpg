@@ -67,16 +67,19 @@
   ],
   "poderes": [
     {
-      "efeito": "Calor corporal (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Fogo · N2",
-      "arte": "fogo"
-    },
-    {
-      "efeito": "Constrição de cauda",
-      "tipo": "proeza",
-      "alvo": "Agarrão do Urso · Imobilizar (b2)",
-      "caminho": "agarrao-do-urso"
+      "id": "calor-corporal",
+      "nome": "Calor corporal",
+      "tipo": "natural",
+      "base": {
+        "arte": "fogo",
+        "nivel": 2
+      },
+      "resiste": "corpo",
+      "efeito": "Resiste ao entrar, 1 vez por cena.",
+      "usos": {
+        "periodo": "passivo",
+        "recarga": "contínua"
+      }
     }
   ],
   "fraquezas": [
@@ -105,6 +108,10 @@
     {
       "nome": "Resistente a calor extremo",
       "descricao": "move-se e sobrevive livremente em lava"
+    },
+    {
+      "nome": "Constrição de cauda",
+      "descricao": "Depende do agarrão; engolir 1 alvo por vez."
     }
   ],
   "lore": [
@@ -162,5 +169,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 4
+  "ameacaLegada": 4,
+  "proezaFutura": [
+    {
+      "caminho": "agarrao-do-urso"
+    }
+  ]
 }

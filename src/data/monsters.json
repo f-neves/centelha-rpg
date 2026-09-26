@@ -244,26 +244,20 @@
    {
     "nome": "Presença alienígena",
     "descricao": "quem falha ao resistir ao domínio também fica Abalado pelo contato mental"
+   },
+   {
+    "nome": "Telepatia",
+    "descricao": "Sentido passivo."
    }
   ],
   "poderes": [
    {
-    "efeito": "Muco que transforma pele (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Matéria · N3 + Água · N3",
-    "arte": "materia"
+    "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+    "tipo": "natural"
    },
    {
-    "efeito": "Domínio psíquico",
-    "tipo": "feiticaria",
-    "alvo": "Fascinação · N4",
-    "arte": "fascinacao"
-   },
-   {
-    "efeito": "Telepatia",
-    "tipo": "feiticaria",
-    "alvo": "Adivinhação · N2",
-    "arte": "adivinhacao"
+    "efeito": "Defesa Mental; dura enquanto o aboleth mantiver contato.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -415,21 +409,13 @@
    {
     "nome": "Nobreza selvagem",
     "descricao": "imune a Medo de criaturas menores que ela"
-   }
-  ],
-  "poderes": [
-   {
-    "efeito": "Visão aguçada",
-    "tipo": "proeza",
-    "alvo": "Olho Aguçado · Sentidos Apurados (b1)",
-    "caminho": "olho-agucado"
    },
    {
-    "efeito": "Voo",
-    "tipo": "natural",
-    "alvo": "asas (natural)"
+    "nome": "Visão aguçada",
+    "descricao": "Sentido passivo."
    }
   ],
+  "poderes": [],
   "tecnicas": [
    "sentidos-apurados"
   ],
@@ -803,10 +789,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Salto etéreo (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Espírito · N2 / Conjuração",
-    "arte": "espirito"
+    "efeito": "Salto etéreo",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -937,14 +921,12 @@
   ],
   "poderes": [
    {
-    "efeito": "Teia",
-    "tipo": "natural",
-    "alvo": "natural (Ex)"
+    "efeito": "Esquiva para não prender; escapar com Força ou Atletismo.",
+    "tipo": "natural"
    },
    {
-    "efeito": "Mordida venenosa",
-    "tipo": "natural",
-    "alvo": "veneno natural"
+    "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -1079,26 +1061,16 @@
    {
     "nome": "Círculo protetor",
     "descricao": "aliados a 3m ganham +1d de Absorção contra ataques malignos"
+   },
+   {
+    "nome": "Farejar o mal",
+    "descricao": "Sentido passivo."
    }
   ],
   "poderes": [
    {
-    "efeito": "Aura de menaça (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Fascinação · N2 (temor sagrado)",
-    "arte": "fascinacao"
-   },
-   {
-    "efeito": "Teleporte",
-    "tipo": "feiticaria",
-    "alvo": "Conjuração · N2",
-    "arte": "conjuracao"
-   },
-   {
-    "efeito": "Farejar o mal",
-    "tipo": "feiticaria",
-    "alvo": "Adivinhação · N1",
-    "arte": "adivinhacao"
+    "efeito": "Resiste ao entrar, 1 vez por cena.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -1770,16 +1742,12 @@
   ],
   "poderes": [
    {
-    "efeito": "Dreno de Constituição (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Morte · N2",
-    "arte": "morte"
+    "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+    "tipo": "natural"
    },
    {
     "efeito": "Incorpóreo",
-    "tipo": "feiticaria",
-    "alvo": "Espírito · N3",
-    "arte": "espirito"
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -2182,38 +2150,24 @@
    {
     "nome": "Visão verdadeira",
     "descricao": "enxerga através de ilusões, disfarces e invisibilidade"
+   },
+   {
+    "nome": "Espada e chicote flamejantes",
+    "descricao": "Manobra de combate, sem limite de uso."
+   },
+   {
+    "nome": "Comandar legiões",
+    "descricao": "Traço social (não é poder de combate): Lore; não é poder de combate."
    }
   ],
   "poderes": [
    {
-    "efeito": "Espada e chicote flamejantes",
-    "tipo": "feiticaria",
-    "alvo": "Fogo · N4",
-    "arte": "fogo"
-   },
-   {
-    "efeito": "Aura de fogo (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Fogo · N4 / Proteção",
-    "arte": "fogo"
+    "efeito": "Resiste ao entrar, 1 vez por cena.",
+    "tipo": "natural"
    },
    {
     "efeito": "Morte explosiva",
-    "tipo": "feiticaria",
-    "alvo": "Fogo · N5",
-    "arte": "fogo"
-   },
-   {
-    "efeito": "Comandar legiões",
-    "tipo": "proeza",
-    "alvo": "Comando / Estandarte",
-    "caminho": "estandarte"
-   },
-   {
-    "efeito": "Teleporte",
-    "tipo": "feiticaria",
-    "alvo": "Conjuração · N4",
-    "arte": "conjuracao"
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -2729,10 +2683,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Olhar petrificante (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Matéria · N3 (carne → pedra)",
-    "arte": "materia"
+    "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -3003,20 +2955,16 @@
    {
     "nome": "Corpo blindado",
     "descricao": "+1 Absorção contra ataques físicos"
+   },
+   {
+    "nome": "Engolir inteiro",
+    "descricao": "Depende do agarrão; engolir 1 alvo por vez."
    }
   ],
   "poderes": [
    {
-    "efeito": "Sopro elétrico (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Raio · N3",
-    "arte": "raio"
-   },
-   {
-    "efeito": "Engolir inteiro (Ex)",
-    "tipo": "proeza",
-    "alvo": "Agarrão do Urso · Aperto Esmagador (b10)",
-    "caminho": "agarrao-do-urso"
+    "efeito": "Cone ou linha. Esquiva para metade.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -3391,20 +3339,16 @@
    {
     "nome": "Prontidão felina",
     "descricao": "Prontidão 2"
+   },
+   {
+    "nome": "Tentáculos",
+    "descricao": "Depende do agarrão; engolir 1 alvo por vez."
    }
   ],
   "poderes": [
    {
-    "efeito": "Deslocamento (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Fascinação · N1 (ilusão) / Proteção",
-    "arte": "fascinacao"
-   },
-   {
-    "efeito": "Tentáculos",
-    "tipo": "proeza",
-    "alvo": "Agarrão do Urso · Imobilizar (b2)",
-    "caminho": "agarrao-do-urso"
+    "efeito": "Deslocamento",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [
@@ -3680,10 +3624,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Olhar mortal (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Morte · N5",
-    "arte": "morte"
+    "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -4582,21 +4524,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Fraqueza mística (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Morte · N2",
-    "arte": "morte"
-   },
-   {
-    "efeito": "Mímica e ilusão (Sp)",
-    "tipo": "feiticaria",
-    "alvo": "Fascinação · N2",
-    "arte": "fascinacao"
-   },
-   {
-    "efeito": "Feitiços",
-    "tipo": "feiticaria",
-    "alvo": "várias · N3"
+    "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -6827,16 +6756,13 @@
    {
     "nome": "Couro grosso",
     "descricao": "Absorção alta"
-   }
-  ],
-  "poderes": [
+   },
    {
-    "efeito": "Lampejo de premonição (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Fortuna · N1 / Adivinhação",
-    "arte": "fortuna"
+    "nome": "Lampejo de premonição",
+    "descricao": "Sentido passivo."
    }
   ],
+  "poderes": [],
   "tecnicas": [],
   "artes": [
    {
@@ -7083,16 +7009,13 @@
    {
     "nome": "Sem membros",
     "descricao": "resistente a Derrubar"
-   }
-  ],
-  "poderes": [
+   },
    {
-    "efeito": "Constrição",
-    "tipo": "proeza",
-    "alvo": "Agarrão do Urso · Aperto Esmagador (b10)",
-    "caminho": "agarrao-do-urso"
+    "nome": "Constrição",
+    "descricao": "Depende do agarrão; engolir 1 alvo por vez."
    }
   ],
+  "poderes": [],
   "tecnicas": [],
   "artes": [],
   "notas": "Habilidades notáveis: Furtividade 2, Atletismo 2.",
@@ -7353,10 +7276,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Toque que petrifica (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Matéria · N3",
-    "arte": "materia"
+    "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -7617,16 +7538,13 @@
    {
     "nome": "Fúria descontrolada",
     "descricao": "gravemente ferido, ganha bônus de dano mas ataca sem distinguir aliados"
-   }
-  ],
-  "poderes": [
+   },
    {
-    "efeito": "Abraço (agarrar)",
-    "tipo": "proeza",
-    "alvo": "Agarrão do Urso · Imobilizar (b2)",
-    "caminho": "agarrao-do-urso"
+    "nome": "Abraço (agarrar)",
+    "descricao": "Depende do agarrão; engolir 1 alvo por vez."
    }
   ],
+  "poderes": [],
   "tecnicas": [
    "imobilizar"
   ],
@@ -7871,31 +7789,20 @@
    {
     "nome": "Voo",
     "descricao": "voa com asas emplumadas"
+   },
+   {
+    "nome": "Telepatia",
+    "descricao": "Sentido passivo."
    }
   ],
   "poderes": [
    {
-    "efeito": "Feitiços (Sp)",
-    "tipo": "feiticaria",
-    "alvo": "várias · N3–N4"
-   },
-   {
-    "efeito": "Constrição venenosa",
-    "tipo": "proeza",
-    "alvo": "Agarrão do Urso + veneno",
-    "caminho": "agarrao-do-urso"
+    "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
+    "tipo": "natural"
    },
    {
     "efeito": "Mudar de forma",
-    "tipo": "feiticaria",
-    "alvo": "Matéria · N2",
-    "arte": "materia"
-   },
-   {
-    "efeito": "Telepatia",
-    "tipo": "feiticaria",
-    "alvo": "Adivinhação · N2",
-    "arte": "adivinhacao"
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -9177,26 +9084,16 @@
    {
     "nome": "Voo e imunidade",
     "descricao": "voa livremente; imune a doença e veneno"
+   },
+   {
+    "nome": "Maça estonteante",
+    "descricao": "Manobra de combate, sem limite de uso."
    }
   ],
   "poderes": [
    {
-    "efeito": "Feitiços celestiais (Sp)",
-    "tipo": "feiticaria",
-    "alvo": "Cura / Proteção / Raio · N3–N4",
-    "arte": "raio"
-   },
-   {
-    "efeito": "Maça estonteante",
-    "tipo": "feiticaria",
-    "alvo": "Fascinação · N2",
-    "arte": "fascinacao"
-   },
-   {
     "efeito": "Mudar de forma",
-    "tipo": "feiticaria",
-    "alvo": "Matéria · N2",
-    "arte": "materia"
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -9356,21 +9253,12 @@
   ],
   "poderes": [
    {
-    "efeito": "Doença infernal (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Morte · N2",
-    "arte": "morte"
+    "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+    "tipo": "natural"
    },
    {
-    "efeito": "Teleporte",
-    "tipo": "feiticaria",
-    "alvo": "Conjuração · N3",
-    "arte": "conjuracao"
-   },
-   {
-    "efeito": "Trava a ferida (Ex)",
-    "tipo": "natural",
-    "alvo": "natural"
+    "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -9653,22 +9541,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Aura de frio (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Gelo · N3",
-    "arte": "gelo"
-   },
-   {
-    "efeito": "Lança e muralha de gelo",
-    "tipo": "feiticaria",
-    "alvo": "Gelo · N2–N3",
-    "arte": "gelo"
-   },
-   {
-    "efeito": "Feitiços",
-    "tipo": "feiticaria",
-    "alvo": "Gelo / Proteção · N3–N4",
-    "arte": "protecao"
+    "efeito": "Resiste ao entrar, 1 vez por cena.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -9832,33 +9706,16 @@
   ],
   "poderes": [
    {
-    "efeito": "Aura de medo (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Morte · N3 / Lenda Viva",
-    "arte": "morte"
-   },
-   {
-    "efeito": "Feitiços e desejo",
-    "tipo": "feiticaria",
-    "alvo": "várias · N4–N5"
+    "efeito": "Resiste ao entrar, 1 vez por cena.",
+    "tipo": "natural"
    },
    {
     "efeito": "Convocar diabos",
-    "tipo": "feiticaria",
-    "alvo": "Espírito · N4",
-    "arte": "espirito"
+    "tipo": "natural"
    },
    {
-    "efeito": "Labareda",
-    "tipo": "feiticaria",
-    "alvo": "Fogo · N4",
-    "arte": "fogo"
-   },
-   {
-    "efeito": "Doença (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Morte · N3",
-    "arte": "morte"
+    "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -10148,22 +10005,12 @@
   ],
   "poderes": [
    {
-    "efeito": "Ferrão que enfraquece (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Morte · N2",
-    "arte": "morte"
-   },
-   {
-    "efeito": "Parede de gelo (Sp)",
-    "tipo": "feiticaria",
-    "alvo": "Gelo · N2",
-    "arte": "gelo"
+    "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+    "tipo": "natural"
    },
    {
     "efeito": "Invisibilidade",
-    "tipo": "feiticaria",
-    "alvo": "Fascinação · N1",
-    "arte": "fascinacao"
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -10319,27 +10166,12 @@
   ],
   "poderes": [
    {
-    "efeito": "Invisibilidade (Sp)",
-    "tipo": "feiticaria",
-    "alvo": "Fascinação · N1",
-    "arte": "fascinacao"
-   },
-   {
-    "efeito": "Adivinhação",
-    "tipo": "feiticaria",
-    "alvo": "Adivinhação · N1",
-    "arte": "adivinhacao"
-   },
-   {
     "efeito": "Forma alternativa",
-    "tipo": "feiticaria",
-    "alvo": "Matéria · N2",
-    "arte": "materia"
+    "tipo": "natural"
    },
    {
-    "efeito": "Ferrão venenoso",
-    "tipo": "natural",
-    "alvo": "natural"
+    "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -10496,22 +10328,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Ilusão, água e comida (Sp)",
-    "tipo": "feiticaria",
-    "alvo": "Água · N2 + Matéria · N2 + Fascinação · N1",
-    "arte": "agua"
-   },
-   {
     "efeito": "Forma de redemoinho",
-    "tipo": "feiticaria",
-    "alvo": "Vento · N4",
-    "arte": "vento"
-   },
-   {
-    "efeito": "Voo",
-    "tipo": "feiticaria",
-    "alvo": "Vento · N5",
-    "arte": "vento"
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -10773,26 +10591,16 @@
    {
     "nome": "Reflexos ágeis",
     "descricao": "+1 Esquiva, prefere fugir a lutar quando desmascarado"
+   },
+   {
+    "nome": "Ler pensamentos",
+    "descricao": "Sentido passivo."
    }
   ],
   "poderes": [
    {
-    "efeito": "Mudar de forma (Su)",
-    "tipo": "proeza",
-    "alvo": "Camaleão / Máscara",
-    "caminho": "camaleao"
-   },
-   {
-    "efeito": "(alternativa mágica)",
-    "tipo": "feiticaria",
-    "alvo": "Matéria · N2",
-    "arte": "materia"
-   },
-   {
-    "efeito": "Ler pensamentos (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Adivinhação · N1 / Empatia",
-    "arte": "adivinhacao"
+    "efeito": "Mudar de forma",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -11083,22 +10891,12 @@
   ],
   "poderes": [
    {
-    "efeito": "Sopro elétrico (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Raio · N4",
-    "arte": "raio"
+    "efeito": "Cone ou linha. Esquiva para metade.",
+    "tipo": "natural"
    },
    {
-    "efeito": "Miragem no deserto (Sp)",
-    "tipo": "feiticaria",
-    "alvo": "Fascinação · N3",
-    "arte": "fascinacao"
-   },
-   {
-    "efeito": "Presença",
-    "tipo": "feiticaria",
-    "alvo": "Morte · N3",
-    "arte": "morte"
+    "efeito": "Área; quem resiste fica imune na cena.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -11265,22 +11063,16 @@
   ],
   "poderes": [
    {
-    "efeito": "Sopro de frio (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Gelo · N3",
-    "arte": "gelo"
+    "efeito": "Cone ou linha. Esquiva para metade.",
+    "tipo": "natural"
    },
    {
-    "efeito": "Andar no gelo e nevasca",
-    "tipo": "feiticaria",
-    "alvo": "Gelo · N2",
-    "arte": "gelo"
+    "efeito": "Anda no gelo sem cair; nevasca vira Arte se for conjurada.",
+    "tipo": "natural"
    },
    {
-    "efeito": "Presença",
-    "tipo": "feiticaria",
-    "alvo": "Morte · N3",
-    "arte": "morte"
+    "efeito": "Área; quem resiste fica imune na cena.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -11449,28 +11241,16 @@
   ],
   "poderes": [
    {
-    "efeito": "Sopro de fogo (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Fogo · N4",
-    "arte": "fogo"
+    "efeito": "Cone ou linha. Esquiva para metade.",
+    "tipo": "natural"
    },
    {
-    "efeito": "Sopro debilitante",
-    "tipo": "feiticaria",
-    "alvo": "Fascinação · N3",
-    "arte": "fascinacao"
-   },
-   {
-    "efeito": "Feitiços divinos",
-    "tipo": "feiticaria",
-    "alvo": "Cura / Proteção · N4",
-    "arte": "protecao"
+    "efeito": "Cone ou linha. Esquiva para metade.",
+    "tipo": "natural"
    },
    {
     "efeito": "Mudar de forma",
-    "tipo": "feiticaria",
-    "alvo": "Matéria · N3",
-    "arte": "materia"
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -11636,26 +11416,16 @@
    {
     "nome": "Escamas verdes",
     "descricao": "Absorção +3d6 contra ataques físicos"
+   },
+   {
+    "nome": "Manipular",
+    "descricao": "Traço social (não é poder de combate): Lore e perícias sociais altas."
    }
   ],
   "poderes": [
    {
-    "efeito": "Sopro de gás (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Água · N3 / Morte (veneno)",
-    "arte": "agua"
-   },
-   {
-    "efeito": "Enredar (Sp)",
-    "tipo": "feiticaria",
-    "alvo": "Vida · N2",
-    "arte": "vida"
-   },
-   {
-    "efeito": "Manipular",
-    "tipo": "proeza",
-    "alvo": "Serpente das Palavras",
-    "caminho": "serpente-das-palavras"
+    "efeito": "Cone ou linha. Esquiva para metade.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -11819,27 +11589,16 @@
   ],
   "poderes": [
    {
-    "efeito": "Sopro de fogo (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Fogo · N4",
-    "arte": "fogo"
+    "efeito": "Cone ou linha. Esquiva para metade.",
+    "tipo": "natural"
    },
    {
-    "efeito": "Aura de fogo (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Fogo · N4 / Proteção",
-    "arte": "fogo"
+    "efeito": "Resiste ao entrar, 1 vez por cena.",
+    "tipo": "natural"
    },
    {
-    "efeito": "Presença aterradora",
-    "tipo": "feiticaria",
-    "alvo": "Morte · N3",
-    "arte": "morte"
-   },
-   {
-    "efeito": "Feitiços de feiticeiro",
-    "tipo": "feiticaria",
-    "alvo": "várias · N3"
+    "efeito": "Área; quem resiste fica imune na cena.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -12004,26 +11763,12 @@
   ],
   "poderes": [
    {
-    "efeito": "Sopro de fogo (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Fogo · N5",
-    "arte": "fogo"
+    "efeito": "Cone ou linha. Esquiva para metade.",
+    "tipo": "natural"
    },
    {
-    "efeito": "Presença que paralisa",
-    "tipo": "feiticaria",
-    "alvo": "Morte · N4 / Fascinação · N4",
-    "arte": "morte"
-   },
-   {
-    "efeito": "Feitiços",
-    "tipo": "feiticaria",
-    "alvo": "várias · N4–N5"
-   },
-   {
-    "efeito": "Voo",
-    "tipo": "natural",
-    "alvo": "asas"
+    "efeito": "Área; quem resiste fica imune na cena.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -12187,22 +11932,12 @@
   ],
   "poderes": [
    {
-    "efeito": "Sopro de fogo (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Fogo · N3",
-    "arte": "fogo"
+    "efeito": "Cone ou linha. Esquiva para metade.",
+    "tipo": "natural"
    },
    {
-    "efeito": "Presença aterradora",
-    "tipo": "proeza",
-    "alvo": "Lenda Viva · Temor Reverente (b5)",
-    "caminho": "lenda-viva"
-   },
-   {
-    "efeito": "Feitiços iniciais",
-    "tipo": "feiticaria",
-    "alvo": "Fogo · N2",
-    "arte": "fogo"
+    "efeito": "Área; quem resiste fica imune na cena.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [
@@ -12346,14 +12081,7 @@
     "descricao": "resistente a fogo, frio e ácido; imune a veneno"
    }
   ],
-  "poderes": [
-   {
-    "efeito": "Fedor e telepatia (Sp)",
-    "tipo": "feiticaria",
-    "alvo": "Vento · N2 (fedor) + Fascinação · N1",
-    "arte": "vento"
-   }
-  ],
+  "poderes": [],
   "tecnicas": [],
   "artes": [
    {
@@ -12499,16 +12227,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Passo-arbóreo e enfeitiço (Sp)",
-    "tipo": "feiticaria",
-    "alvo": "Fascinação · N2 + Conjuração · N2",
-    "arte": "fascinacao"
-   },
-   {
     "efeito": "Fundir-se à árvore",
-    "tipo": "feiticaria",
-    "alvo": "Matéria · N2 / Espírito",
-    "arte": "materia"
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -13292,22 +13012,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Conceder desejos (Sp)",
-    "tipo": "feiticaria",
-    "alvo": "Fortuna · N4 / Matéria",
-    "arte": "fortuna"
-   },
-   {
-    "efeito": "Muralha de fogo",
-    "tipo": "feiticaria",
-    "alvo": "Fogo · N3",
-    "arte": "fogo"
-   },
-   {
-    "efeito": "Corpo em chamas",
-    "tipo": "feiticaria",
-    "alvo": "Fogo · N4",
-    "arte": "fogo"
+    "efeito": "Resiste ao entrar, 1 vez por cena.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -13704,15 +13410,7 @@
   "poderes": [
    {
     "efeito": "Deslizar na pedra e empurrão",
-    "tipo": "feiticaria",
-    "alvo": "Terra · N2",
-    "arte": "terra"
-   },
-   {
-    "efeito": "Corpo de terra",
-    "tipo": "proeza",
-    "alvo": "Pele de Pedra · Carne de Granito (b7)",
-    "caminho": "pele-de-pedra"
+    "tipo": "natural"
    }
   ],
   "tecnicas": [
@@ -15310,31 +15008,7 @@
     "descricao": "enxerga através de ilusões, disfarces e invisibilidade"
    }
   ],
-  "poderes": [
-   {
-    "efeito": "Corda de comando (Sp)",
-    "tipo": "feiticaria",
-    "alvo": "Fascinação · N2 / Forças",
-    "arte": "fascinacao"
-   },
-   {
-    "efeito": "Teleporte",
-    "tipo": "feiticaria",
-    "alvo": "Conjuração · N4",
-    "arte": "conjuracao"
-   },
-   {
-    "efeito": "Arco certeiro",
-    "tipo": "proeza",
-    "alvo": "Olho de Águia / Atirador",
-    "caminho": "olho-de-aguia"
-   },
-   {
-    "efeito": "Voo",
-    "tipo": "natural",
-    "alvo": "asas"
-   }
-  ],
+  "poderes": [],
   "tecnicas": [],
   "artes": [
    {
@@ -15470,9 +15144,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Ferrão venenoso",
-    "tipo": "natural",
-    "alvo": "veneno natural (tag da arma)"
+    "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -15608,25 +15281,16 @@
    {
     "nome": "Enigma mortal",
     "descricao": "propõe um enigma; falha em Vontade causa dano ou deixa o alvo Abalado"
+   },
+   {
+    "nome": "Ver o invisível",
+    "descricao": "Sentido passivo."
    }
   ],
   "poderes": [
    {
-    "efeito": "Feitiços arcanos (Sp)",
-    "tipo": "feiticaria",
-    "alvo": "várias · N3–N4"
-   },
-   {
-    "efeito": "Rugido (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Forças · N2 / Vento",
-    "arte": "forcas"
-   },
-   {
-    "efeito": "Ver o invisível",
-    "tipo": "feiticaria",
-    "alvo": "Adivinhação · N2",
-    "arte": "adivinhacao"
+    "efeito": "Área; quem resiste fica imune na cena.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -15902,16 +15566,12 @@
   ],
   "poderes": [
    {
-    "efeito": "Dreno de nível (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Morte · N3",
-    "arte": "morte"
+    "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+    "tipo": "natural"
    },
    {
     "efeito": "Voo e incorpóreo",
-    "tipo": "feiticaria",
-    "alvo": "Espírito · N3",
-    "arte": "espirito"
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -17187,16 +16847,12 @@
   ],
   "poderes": [
    {
-    "efeito": "Sopro de fogo (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Fogo · N2",
-    "arte": "fogo"
+    "efeito": "Cone ou linha. Esquiva para metade.",
+    "tipo": "natural"
    },
    {
-    "efeito": "Presença medonha",
-    "tipo": "feiticaria",
-    "alvo": "Morte · N3",
-    "arte": "morte"
+    "efeito": "Área; quem resiste fica imune na cena.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -17348,22 +17004,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Invisibilidade natural (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Fascinação · N1",
-    "arte": "fascinacao"
-   },
-   {
-    "efeito": "Choque elétrico",
-    "tipo": "feiticaria",
-    "alvo": "Raio · N1",
-    "arte": "raio"
-   },
-   {
-    "efeito": "Pairar e voar",
-    "tipo": "feiticaria",
-    "alvo": "Vento · N3",
-    "arte": "vento"
+    "efeito": "Invisibilidade natural",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -17870,22 +17512,13 @@
    {
     "nome": "Corpo pétreo",
     "descricao": "imune a Veneno e não precisa respirar"
-   }
-  ],
-  "poderes": [
-   {
-    "efeito": "Pele de pedra / RD",
-    "tipo": "proeza",
-    "alvo": "Pele de Pedra · Pele de Pedra (b4)",
-    "caminho": "pele-de-pedra"
    },
    {
-    "efeito": "Imobilidade (freeze)",
-    "tipo": "proeza",
-    "alvo": "Máscara / Sombra",
-    "caminho": "mascara"
+    "nome": "Imobilidade (freeze)",
+    "descricao": "Manobra de combate, sem limite de uso."
    }
   ],
+  "poderes": [],
   "tecnicas": [],
   "artes": [],
   "notas": "Habilidades notáveis: Furtividade 3.",
@@ -18265,21 +17898,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Forma de globo de luz (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Espírito · N3 + Fogo (luz)",
-    "arte": "espirito"
-   },
-   {
-    "efeito": "Raio de luz",
-    "tipo": "feiticaria",
-    "alvo": "Raio · N3",
-    "arte": "raio"
-   },
-   {
-    "efeito": "Feitiços",
-    "tipo": "feiticaria",
-    "alvo": "várias · N3–N4"
+    "efeito": "Forma de globo de luz",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -18435,10 +18055,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Paralisia e fedor (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Morte · N2 + Vento (fedor)",
-    "arte": "morte"
+    "efeito": "Resiste ao entrar, 1 vez por cena.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -18578,20 +18196,16 @@
    {
     "nome": "Constituição de morto-vivo",
     "descricao": "imune a veneno e resistente a efeitos que exijam Fortitude"
+   },
+   {
+    "nome": "Faro do carniçal",
+    "descricao": "Sentido passivo."
    }
   ],
   "poderes": [
    {
-    "efeito": "Paralisia (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Morte · N2",
-    "arte": "morte"
-   },
-   {
-    "efeito": "Faro do carniçal",
-    "tipo": "proeza",
-    "alvo": "Caçador · Faro (b2)",
-    "caminho": "cacador"
+    "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [
@@ -19125,22 +18739,13 @@
    {
     "nome": "Presença régia",
     "descricao": "falha de inimigos em teste de Vontade contra ele causa Abalado"
-   }
-  ],
-  "poderes": [
-   {
-    "efeito": "Comandar o clima",
-    "tipo": "feiticaria",
-    "alvo": "Vento · N5 + Raio · N4",
-    "arte": "vento"
    },
    {
-    "efeito": "Ver e ouvir à distância",
-    "tipo": "feiticaria",
-    "alvo": "Adivinhação · N2",
-    "arte": "adivinhacao"
+    "nome": "Ver e ouvir à distância",
+    "descricao": "Sentido passivo."
    }
   ],
+  "poderes": [],
   "tecnicas": [],
   "artes": [
    {
@@ -19289,20 +18894,7 @@
     "descricao": "conhece rotas aéreas e pode convocar servos alados em seu domínio"
    }
   ],
-  "poderes": [
-   {
-    "efeito": "Névoa e poderes do ar (Sp)",
-    "tipo": "feiticaria",
-    "alvo": "Vento · N2",
-    "arte": "vento"
-   },
-   {
-    "efeito": "Arremessar rocha",
-    "tipo": "proeza",
-    "alvo": "Atlas",
-    "caminho": "atlas"
-   }
-  ],
+  "poderes": [],
   "tecnicas": [],
   "artes": [
    {
@@ -19442,20 +19034,7 @@
     "descricao": "comanda tropas próximas; aliados a até 9m ganham +1d em Ataque"
    }
   ],
-  "poderes": [
-   {
-    "efeito": "Imune a fogo",
-    "tipo": "proeza",
-    "alvo": "Sangue Imune · Imunidade (b7)",
-    "caminho": "sangue-imune"
-   },
-   {
-    "efeito": "Arremessar rocha",
-    "tipo": "proeza",
-    "alvo": "Atlas / Quebra-Muralhas",
-    "caminho": "quebra-muralhas"
-   }
-  ],
+  "poderes": [],
   "tecnicas": [],
   "artes": [],
   "notas": "Habilidades notáveis: Ofícios 2, Prontidão 2.",
@@ -19852,25 +19431,7 @@
     "descricao": "comunica-se mentalmente com qualquer criatura em até 30m"
    }
   ],
-  "poderes": [
-   {
-    "efeito": "Realizar desejo traiçoeiro (Sp)",
-    "tipo": "feiticaria",
-    "alvo": "Fortuna · N4 / Fascinação",
-    "arte": "fortuna"
-   },
-   {
-    "efeito": "Feitiços",
-    "tipo": "feiticaria",
-    "alvo": "várias · N3–N4"
-   },
-   {
-    "efeito": "Teleporte",
-    "tipo": "feiticaria",
-    "alvo": "Conjuração · N4",
-    "arte": "conjuracao"
-   }
-  ],
+  "poderes": [],
   "tecnicas": [],
   "artes": [
    {
@@ -21012,10 +20573,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Sopro petrificante (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Matéria · N4",
-    "arte": "materia"
+    "efeito": "Cone ou linha. Esquiva para metade.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -21298,27 +20857,12 @@
   ],
   "poderes": [
    {
-    "efeito": "Sopro cataclísmico",
-    "tipo": "feiticaria",
-    "alvo": "Fogo · N5",
-    "arte": "fogo"
+    "efeito": "Cone ou linha. Esquiva para metade.",
+    "tipo": "natural"
    },
    {
-    "efeito": "Dobrar o tempo",
-    "tipo": "feiticaria",
-    "alvo": "Tempo · N4",
-    "arte": "tempo"
-   },
-   {
-    "efeito": "Feitiços supremos",
-    "tipo": "feiticaria",
-    "alvo": "várias · N5"
-   },
-   {
-    "efeito": "Presença divina",
-    "tipo": "feiticaria",
-    "alvo": "Morte · N5 + Lenda Viva · Ícone (b15)",
-    "arte": "morte"
+    "efeito": "Área; quem resiste fica imune na cena.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -21956,16 +21500,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Canção cativante (Su)",
-    "tipo": "proeza",
-    "alvo": "Beleza Cativante · Olhar Cativante (b5)",
-    "caminho": "beleza-cativante"
-   },
-   {
-    "efeito": "(alternativa mágica)",
-    "tipo": "feiticaria",
-    "alvo": "Fascinação · N2",
-    "arte": "fascinacao"
+    "efeito": "Defesa Mental; área de audição.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -22113,16 +21649,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Fedor nauseante (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Vento · N2 / Morte",
-    "arte": "vento"
-   },
-   {
-    "efeito": "Convocar (Sp)",
-    "tipo": "feiticaria",
-    "alvo": "Espírito · N4",
-    "arte": "espirito"
+    "efeito": "Resiste ao entrar, 1 vez por cena.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -22262,10 +21790,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Cabeças que rebrotam (Su)",
-    "tipo": "proeza",
-    "alvo": "Cerne Vital · Regeneração (b9)",
-    "caminho": "cerne-vital"
+    "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -24162,25 +23688,16 @@
    {
     "nome": "Escala colossal",
     "descricao": "alcance de ataque muito maior que o normal, +2 Absorção"
+   },
+   {
+    "nome": "Constrição e afundar",
+    "descricao": "Depende do agarrão; engolir 1 alvo por vez."
    }
   ],
   "poderes": [
    {
-    "efeito": "Constrição e afundar (Ex)",
-    "tipo": "proeza",
-    "alvo": "Agarrão do Urso · Abraço do Titã (b14)",
-    "caminho": "agarrao-do-urso"
-   },
-   {
-    "efeito": "Tinta e tempestade (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Água · N4",
-    "arte": "agua"
-   },
-   {
-    "efeito": "Feitiços",
-    "tipo": "feiticaria",
-    "alvo": "várias · N4"
+    "efeito": "Esquiva para não prender; escapar com Força ou Atletismo.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [
@@ -24707,16 +24224,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Dreno de Sabedoria (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Morte · N2",
-    "arte": "morte"
-   },
-   {
-    "efeito": "Ilusões (Sp)",
-    "tipo": "feiticaria",
-    "alvo": "Fascinação · N3",
-    "arte": "fascinacao"
+    "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -24854,22 +24363,17 @@
    {
     "nome": "Passo silencioso",
     "descricao": "Furtividade alta em vegetação alta e savana"
-   }
-  ],
-  "poderes": [
-   {
-    "efeito": "Bote (pounce)",
-    "tipo": "proeza",
-    "alvo": "Sangue Fervente · Investida Furiosa (b5)",
-    "caminho": "sangue-fervente"
    },
    {
-    "efeito": "Emboscar",
-    "tipo": "proeza",
-    "alvo": "Sombra · Esgueirar (b3)",
-    "caminho": "sombra"
+    "nome": "Bote (pounce)",
+    "descricao": "Manobra de combate, sem limite de uso."
+   },
+   {
+    "nome": "Emboscar",
+    "descricao": "Manobra de combate, sem limite de uso."
    }
   ],
+  "poderes": [],
   "tecnicas": [],
   "artes": [],
   "notas": "Habilidades notáveis: Furtividade 3, Prontidão 2.",
@@ -25121,10 +24625,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Regeneração fraca (Ex)",
-    "tipo": "proeza",
-    "alvo": "Cerne Vital · Recuperação Acelerada (b1)",
-    "caminho": "cerne-vital"
+    "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [
@@ -25542,22 +25044,12 @@
   ],
   "poderes": [
    {
-    "efeito": "Feitiços de mago (Sp)",
-    "tipo": "feiticaria",
-    "alvo": "Fogo / Gelo / Morte / Proteção · N3–N5",
-    "arte": "protecao"
+    "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+    "tipo": "natural"
    },
    {
-    "efeito": "Toque paralisante (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Morte · N2",
-    "arte": "morte"
-   },
-   {
-    "efeito": "Aura de medo (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Morte · N3",
-    "arte": "morte"
+    "efeito": "Resiste ao entrar, 1 vez por cena.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -26076,16 +25568,13 @@
    {
     "nome": "Sentidos alerta",
     "descricao": "Iniciativa alta, dificilmente é Surpreendido"
-   }
-  ],
-  "poderes": [
+   },
    {
-    "efeito": "Faro e caça em matilha",
-    "tipo": "proeza",
-    "alvo": "Caçador · Faro (b2)",
-    "caminho": "cacador"
+    "nome": "Faro e caça em matilha",
+    "descricao": "Sentido passivo."
    }
   ],
+  "poderes": [],
   "tecnicas": [],
   "artes": [],
   "notas": "Habilidades notáveis: Prontidão 2, Furtividade 2, Sobrevivência 2.",
@@ -27089,22 +26578,17 @@
    {
     "nome": "Corpo enorme",
     "descricao": "PV muito altos, dificilmente é Derrubado"
-   }
-  ],
-  "poderes": [
-   {
-    "efeito": "Pisoteio",
-    "tipo": "proeza",
-    "alvo": "Quebra-Muralhas · Demolidor (b1)",
-    "caminho": "quebra-muralhas"
    },
    {
-    "efeito": "Agarrar com a tromba",
-    "tipo": "proeza",
-    "alvo": "Agarrão do Urso · Imobilizar (b2)",
-    "caminho": "agarrao-do-urso"
+    "nome": "Pisoteio",
+    "descricao": "Manobra de combate, sem limite de uso."
+   },
+   {
+    "nome": "Agarrar com a tromba",
+    "descricao": "Depende do agarrão; engolir 1 alvo por vez."
    }
   ],
+  "poderes": [],
   "tecnicas": [],
   "artes": [],
   "notas": "Habilidades notáveis: Prontidão 2.",
@@ -27227,18 +26711,7 @@
     "descricao": "Prontidão 2 e Atletismo 1; raramente perde o alvo de vista"
    }
   ],
-  "poderes": [
-   {
-    "efeito": "Espinhos de cauda",
-    "tipo": "natural",
-    "alvo": "ataque natural (Atirador)"
-   },
-   {
-    "efeito": "Voo",
-    "tipo": "natural",
-    "alvo": "asas (natural)"
-   }
-  ],
+  "poderes": [],
   "tecnicas": [],
   "artes": [],
   "notas": "Habilidades notáveis: Prontidão 2, Atletismo 1.",
@@ -27510,27 +26983,17 @@
    {
     "nome": "Presença aterradora",
     "descricao": "falha no teste de Vontade = Abalado ao vê-la em combate"
-   }
-  ],
-  "poderes": [
-   {
-    "efeito": "Seis lâminas (Ex)",
-    "tipo": "proeza",
-    "alvo": "Dança da Lâmina + Mão Veloz",
-    "caminho": "danca-da-lamina"
    },
    {
-    "efeito": "Constrição",
-    "tipo": "proeza",
-    "alvo": "Agarrão do Urso · Aperto Esmagador (b10)",
-    "caminho": "agarrao-do-urso"
+    "nome": "Seis lâminas",
+    "descricao": "Manobra de combate, sem limite de uso."
    },
    {
-    "efeito": "Feitiços (Sp)",
-    "tipo": "feiticaria",
-    "alvo": "várias · N3"
+    "nome": "Constrição",
+    "descricao": "Depende do agarrão; engolir 1 alvo por vez."
    }
   ],
+  "poderes": [],
   "tecnicas": [
    "aperto-esmagador"
   ],
@@ -27786,15 +27249,12 @@
   ],
   "poderes": [
    {
-    "efeito": "Olhar petrificante (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Matéria · N3",
-    "arte": "materia"
+    "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
+    "tipo": "natural"
    },
    {
-    "efeito": "Cabelos-serpente",
-    "tipo": "natural",
-    "alvo": "veneno natural"
+    "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -28183,15 +27643,12 @@
   ],
   "poderes": [
    {
-    "efeito": "Assumir forma de objeto (Su)",
-    "tipo": "proeza",
-    "alvo": "Camaleão",
-    "caminho": "camaleao"
+    "efeito": "Assumir forma de objeto",
+    "tipo": "natural"
    },
    {
-    "efeito": "Cola aderente",
-    "tipo": "natural",
-    "alvo": "natural (Ex)"
+    "efeito": "Esquiva para não prender; escapar com Força ou Atletismo.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -28322,22 +27779,17 @@
    {
     "nome": "Casco firme",
     "descricao": "resistente a Derrubar e terrenos difíceis"
-   }
-  ],
-  "poderes": [
-   {
-    "efeito": "Faro no labirinto (Su)",
-    "tipo": "proeza",
-    "alvo": "Caçador · Faro (b2)",
-    "caminho": "cacador"
    },
    {
-    "efeito": "Investida chifruda",
-    "tipo": "proeza",
-    "alvo": "Sangue Fervente · Investida Furiosa (b5)",
-    "caminho": "sangue-fervente"
+    "nome": "Faro no labirinto",
+    "descricao": "Sentido passivo."
+   },
+   {
+    "nome": "Investida chifruda",
+    "descricao": "Manobra de combate, sem limite de uso."
    }
   ],
+  "poderes": [],
   "tecnicas": [
    "faro"
   ],
@@ -28725,10 +28177,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Corrói metal (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Matéria · N2",
-    "arte": "materia"
+    "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -28867,22 +28317,13 @@
    {
     "nome": "Passo pesado, sentidos atentos",
     "descricao": "Prontidão 2 apesar da lentidão"
-   }
-  ],
-  "poderes": [
-   {
-    "efeito": "Absorve raio (Su)",
-    "tipo": "proeza",
-    "alvo": "Sangue Imune (raio)",
-    "caminho": "sangue-imune"
    },
    {
-    "efeito": "Constrição",
-    "tipo": "proeza",
-    "alvo": "Agarrão do Urso",
-    "caminho": "agarrao-do-urso"
+    "nome": "Constrição",
+    "descricao": "Depende do agarrão; engolir 1 alvo por vez."
    }
   ],
+  "poderes": [],
   "tecnicas": [],
   "artes": [],
   "notas": "Habilidades notáveis: Furtividade 3, Prontidão 2.",
@@ -29511,16 +28952,12 @@
   ],
   "poderes": [
    {
-    "efeito": "Podridão da múmia (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Morte · N2",
-    "arte": "morte"
+    "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+    "tipo": "natural"
    },
    {
-    "efeito": "Aura de desespero (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Morte · N3 (medo) / Lenda Viva · Temor Reverente (b5)",
-    "arte": "morte"
+    "efeito": "Resiste ao entrar, 1 vez por cena.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -29796,20 +29233,12 @@
   ],
   "poderes": [
    {
-    "efeito": "Olhar encantador (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Fascinação · N3",
-    "arte": "fascinacao"
+    "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
+    "tipo": "natural"
    },
    {
-    "efeito": "Cuspe venenoso",
-    "tipo": "natural",
-    "alvo": "natural"
-   },
-   {
-    "efeito": "Feitiços",
-    "tipo": "feiticaria",
-    "alvo": "várias · N3"
+    "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -30574,22 +30003,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Beleza cegante (Su)",
-    "tipo": "proeza",
-    "alvo": "Beleza Cativante · Beleza Inebriante (b8)",
-    "caminho": "beleza-cativante"
-   },
-   {
-    "efeito": "(alternativa mágica)",
-    "tipo": "feiticaria",
-    "alvo": "Fascinação · N3",
-    "arte": "fascinacao"
-   },
-   {
-    "efeito": "Feitiços druídicos",
-    "tipo": "feiticaria",
-    "alvo": "Vida / Água · N3",
-    "arte": "agua"
+    "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [
@@ -31003,22 +30418,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Regeneração (Su)",
-    "tipo": "proeza",
-    "alvo": "Cerne Vital · Regeneração (b9)",
-    "caminho": "cerne-vital"
-   },
-   {
-    "efeito": "Voo, invisibilidade, forma (Sp)",
-    "tipo": "feiticaria",
-    "alvo": "Vento · N5 + Fascinação · N1 + Matéria · N3",
-    "arte": "vento"
-   },
-   {
-    "efeito": "Cone de frio",
-    "tipo": "feiticaria",
-    "alvo": "Gelo · N2",
-    "arte": "gelo"
+    "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [
@@ -31168,9 +30569,18 @@
    {
     "nome": "Selvagem",
     "descricao": "luta até PV baixos, sem recuar"
+   },
+   {
+    "nome": "Frenesi",
+    "descricao": "entra em fúria ao falhar num teste de Temperança; em fúria só faz ações físicas (+2 no teste), ignora as penalidades de ferimento até Incapacitado, tem −2 em Esquiva e Bloqueio, e Intimidar vira reflexo com +2d6 na parada. Regra inteira no capítulo Raças, seção Frenesi."
    }
   ],
-  "poderes": [],
+  "poderes": [
+   {
+    "efeito": "+Vigor de PV extra, sempre.",
+    "tipo": "natural"
+   }
+  ],
   "tecnicas": [],
   "artes": [],
   "notas": "Habilidades notáveis: Prontidão 1.",
@@ -31668,21 +31078,13 @@
    {
     "nome": "Só o puro cavalga",
     "descricao": "só aceita cavaleiros de intenções verdadeiramente boas"
-   }
-  ],
-  "poderes": [
-   {
-    "efeito": "Detectar o bem e o mal (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Adivinhação · N1",
-    "arte": "adivinhacao"
    },
    {
-    "efeito": "Voo",
-    "tipo": "natural",
-    "alvo": "asas"
+    "nome": "Detectar o bem e o mal",
+    "descricao": "Sentido passivo."
    }
   ],
+  "poderes": [],
   "tecnicas": [],
   "artes": [
    {
@@ -32079,21 +31481,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Invisibilidade natural (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Fascinação · N1",
-    "arte": "fascinacao"
-   },
-   {
-    "efeito": "Flechas do sono / amnésia",
-    "tipo": "feiticaria",
-    "alvo": "Fascinação · N2",
-    "arte": "fascinacao"
-   },
-   {
-    "efeito": "Voo",
-    "tipo": "natural",
-    "alvo": "asas"
+    "efeito": "Invisibilidade natural",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -32248,22 +31637,12 @@
   ],
   "poderes": [
    {
-    "efeito": "Feitiços de clérigo (Sp)",
-    "tipo": "feiticaria",
-    "alvo": "Cura / Vida / Proteção / Morte · N4",
-    "arte": "morte"
+    "efeito": "Resiste ao entrar, 1 vez por cena.",
+    "tipo": "natural"
    },
    {
-    "efeito": "Aura sagrada",
-    "tipo": "feiticaria",
-    "alvo": "Proteção · N4",
-    "arte": "protecao"
-   },
-   {
-    "efeito": "Regeneração",
-    "tipo": "proeza",
-    "alvo": "Cerne Vital · Regeneração (b9)",
-    "caminho": "cerne-vital"
+    "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [
@@ -33127,22 +32506,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Invisibilidade e susto (Sp)",
-    "tipo": "feiticaria",
-    "alvo": "Fascinação · N1",
-    "arte": "fascinacao"
-   },
-   {
-    "efeito": "Adivinhação",
-    "tipo": "feiticaria",
-    "alvo": "Adivinhação · N1",
-    "arte": "adivinhacao"
-   },
-   {
     "efeito": "Forma alternativa",
-    "tipo": "feiticaria",
-    "alvo": "Matéria · N2",
-    "arte": "materia"
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -33294,15 +32659,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Sopro dracônico",
-    "tipo": "feiticaria",
-    "alvo": "Fogo · N2",
-    "arte": "fogo"
-   },
-   {
-    "efeito": "Voo",
-    "tipo": "natural",
-    "alvo": "asas (natural)"
+    "efeito": "Cone ou linha. Esquiva para metade.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -33681,22 +33039,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Ilusões e ler pensamentos (Sp)",
-    "tipo": "feiticaria",
-    "alvo": "Fascinação · N4 + Adivinhação · N2",
-    "arte": "fascinacao"
-   },
-   {
     "efeito": "Mudar de forma",
-    "tipo": "feiticaria",
-    "alvo": "Matéria · N3",
-    "arte": "materia"
-   },
-   {
-    "efeito": "Só arma benta fere (RM)",
-    "tipo": "feiticaria",
-    "alvo": "Proteção · N4",
-    "arte": "protecao"
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -34873,20 +34217,16 @@
    {
     "nome": "Resistente a calor extremo",
     "descricao": "move-se e sobrevive livremente em lava"
+   },
+   {
+    "nome": "Constrição de cauda",
+    "descricao": "Depende do agarrão; engolir 1 alvo por vez."
    }
   ],
   "poderes": [
    {
-    "efeito": "Calor corporal (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Fogo · N2",
-    "arte": "fogo"
-   },
-   {
-    "efeito": "Constrição de cauda",
-    "tipo": "proeza",
-    "alvo": "Agarrão do Urso · Imobilizar (b2)",
-    "caminho": "agarrao-do-urso"
+    "efeito": "Resiste ao entrar, 1 vez por cena.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [
@@ -35266,16 +34606,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Flautas encantadas (Su)",
-    "tipo": "proeza",
-    "alvo": "Musa / Beleza Cativante",
-    "caminho": "beleza-cativante"
-   },
-   {
-    "efeito": "(alternativa mágica)",
-    "tipo": "feiticaria",
-    "alvo": "Fascinação · N2",
-    "arte": "fascinacao"
+    "efeito": "Sono, medo ou encanto, à escolha; Defesa Mental.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -36461,27 +35793,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Feitiços supremos (Sp)",
-    "tipo": "feiticaria",
-    "alvo": "várias · N5"
-   },
-   {
-    "efeito": "Arco de luz que mata",
-    "tipo": "feiticaria",
-    "alvo": "Raio / Morte · N5",
-    "arte": "morte"
-   },
-   {
     "efeito": "Convocar anjos",
-    "tipo": "feiticaria",
-    "alvo": "Espírito · N5",
-    "arte": "espirito"
-   },
-   {
-    "efeito": "Ressurreição",
-    "tipo": "feiticaria",
-    "alvo": "Cura · N5",
-    "arte": "cura"
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -36767,16 +36080,12 @@
   ],
   "poderes": [
    {
-    "efeito": "Dreno de Força (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Morte · N1",
-    "arte": "morte"
+    "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+    "tipo": "natural"
    },
    {
     "efeito": "Incorpóreo",
-    "tipo": "feiticaria",
-    "alvo": "Espírito · N2 / Sombra · Manto de Sombras (b5)",
-    "arte": "espirito"
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -37047,32 +36356,16 @@
    {
     "nome": "Pele resistente",
     "descricao": "metade do dano de armas comuns não abençoadas"
+   },
+   {
+    "nome": "Sedução",
+    "descricao": "Traço social (não é poder de combate): Perícias sociais; o encanto mágico é Arte."
    }
   ],
   "poderes": [
    {
-    "efeito": "Beijo dreno e enfeitiçar (Sp)",
-    "tipo": "feiticaria",
-    "alvo": "Fascinação · N4",
-    "arte": "fascinacao"
-   },
-   {
-    "efeito": "Sedução",
-    "tipo": "proeza",
-    "alvo": "Beleza Cativante · Encanto Irresistível (b4)",
-    "caminho": "beleza-cativante"
-   },
-   {
     "efeito": "Mudar de forma",
-    "tipo": "feiticaria",
-    "alvo": "Matéria · N2",
-    "arte": "materia"
-   },
-   {
-    "efeito": "Teleporte",
-    "tipo": "feiticaria",
-    "alvo": "Conjuração · N4",
-    "arte": "conjuracao"
+    "tipo": "natural"
    }
   ],
   "tecnicas": [
@@ -37491,22 +36784,12 @@
   ],
   "poderes": [
    {
-    "efeito": "Carapaça reflete magia (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Proteção · N4",
-    "arte": "protecao"
+    "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
+    "tipo": "natural"
    },
    {
-    "efeito": "Regeneração implacável (Su)",
-    "tipo": "proeza",
-    "alvo": "Cerne Vital · Imortalidade Tênue (b15)",
-    "caminho": "cerne-vital"
-   },
-   {
-    "efeito": "Bramido de pânico (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Morte · N3 / Lenda Viva · Ícone (b15)",
-    "arte": "morte"
+    "efeito": "Área; quem resiste fica imune na cena.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [
@@ -38270,20 +37553,7 @@
     "descricao": "parece árvore comum quando imóvel, dificultando ser notado"
    }
   ],
-  "poderes": [
-   {
-    "efeito": "Animar árvores (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Vida · N2",
-    "arte": "vida"
-   },
-   {
-    "efeito": "Casca / RD",
-    "tipo": "proeza",
-    "alvo": "Pele de Pedra · Pele de Pedra (b4)",
-    "caminho": "pele-de-pedra"
-   }
-  ],
+  "poderes": [],
   "tecnicas": [
    "pele-de-pedra"
   ],
@@ -38798,10 +38068,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Regeneração",
-    "tipo": "proeza",
-    "alvo": "Cerne Vital · Regeneração (b9)",
-    "caminho": "cerne-vital"
+    "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -39180,22 +38448,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Cura pelo chifre (Sp)",
-    "tipo": "feiticaria",
-    "alvo": "Cura · N3",
-    "arte": "cura"
-   },
-   {
-    "efeito": "Teleporte",
-    "tipo": "feiticaria",
-    "alvo": "Conjuração · N2",
-    "arte": "conjuracao"
-   },
-   {
-    "efeito": "Imune a veneno e encanto",
-    "tipo": "proeza",
-    "alvo": "Sangue Imune · Imunidade (b7)",
-    "caminho": "sangue-imune"
+    "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [
@@ -39734,34 +38988,20 @@
   ],
   "poderes": [
    {
-    "efeito": "Dominar (Sp)",
-    "tipo": "feiticaria",
-    "alvo": "Fascinação · N3",
-    "arte": "fascinacao"
-   },
-   {
     "efeito": "Forma gasosa",
-    "tipo": "feiticaria",
-    "alvo": "Espírito / Vento · N3",
-    "arte": "vento"
+    "tipo": "natural"
    },
    {
     "efeito": "Filhos da noite (convoca)",
-    "tipo": "feiticaria",
-    "alvo": "Espírito · N2",
-    "arte": "espirito"
+    "tipo": "natural"
    },
    {
-    "efeito": "Regeneração",
-    "tipo": "proeza",
-    "alvo": "Cerne Vital · Regeneração (b9)",
-    "caminho": "cerne-vital"
+    "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
+    "tipo": "natural"
    },
    {
-    "efeito": "Dreno de sangue",
-    "tipo": "feiticaria",
-    "alvo": "Morte · N1",
-    "arte": "morte"
+    "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [
@@ -40679,16 +39919,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Esporos e dança da ruína (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Vida (esporos) + Morte · N3",
-    "arte": "morte"
-   },
-   {
-    "efeito": "Convocar demônios (Sp)",
-    "tipo": "feiticaria",
-    "alvo": "Espírito · N4",
-    "arte": "espirito"
+    "efeito": "Esporos em quem está colado; dança exige 3 vrocks.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -40840,10 +40072,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Dreno de energia (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Morte · N2",
-    "arte": "morte"
+    "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -41109,14 +40339,8 @@
   ],
   "poderes": [
    {
-    "efeito": "Ferrão venenoso",
-    "tipo": "natural",
-    "alvo": "veneno natural"
-   },
-   {
-    "efeito": "Voo",
-    "tipo": "natural",
-    "alvo": "asas (natural)"
+    "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],
@@ -41386,19 +40610,16 @@
    {
     "nome": "Faro para tesouro",
     "descricao": "detecta metais e gemas a até 18m"
+   },
+   {
+    "nome": "Devorar metal e gema",
+    "descricao": "Manobra de combate, sem limite de uso."
    }
   ],
   "poderes": [
    {
-    "efeito": "Deslizar pela pedra (Su)",
-    "tipo": "feiticaria",
-    "alvo": "Terra · N3",
-    "arte": "terra"
-   },
-   {
-    "efeito": "Devorar metal e gema",
-    "tipo": "natural",
-    "alvo": "natural (Ex)"
+    "efeito": "Deslizar pela pedra",
+    "tipo": "natural"
    }
   ],
   "tecnicas": [],

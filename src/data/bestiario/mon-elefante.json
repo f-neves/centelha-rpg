@@ -58,20 +58,6 @@
       "ticks": 7
     }
   ],
-  "poderes": [
-    {
-      "efeito": "Pisoteio",
-      "tipo": "proeza",
-      "alvo": "Quebra-Muralhas · Demolidor (b1)",
-      "caminho": "quebra-muralhas"
-    },
-    {
-      "efeito": "Agarrar com a tromba",
-      "tipo": "proeza",
-      "alvo": "Agarrão do Urso · Imobilizar (b2)",
-      "caminho": "agarrao-do-urso"
-    }
-  ],
   "habilidades": [
     {
       "nome": "Pisoteio",
@@ -92,6 +78,14 @@
     {
       "nome": "Corpo enorme",
       "descricao": "PV muito altos, dificilmente é Derrubado"
+    },
+    {
+      "nome": "Pisoteio",
+      "descricao": "Manobra de combate, sem limite de uso."
+    },
+    {
+      "nome": "Agarrar com a tromba",
+      "descricao": "Depende do agarrão; engolir 1 alvo por vez."
     }
   ],
   "lore": [
@@ -143,5 +137,13 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 4
+  "ameacaLegada": 4,
+  "proezaFutura": [
+    {
+      "caminho": "quebra-muralhas"
+    },
+    {
+      "caminho": "agarrao-do-urso"
+    }
+  ]
 }

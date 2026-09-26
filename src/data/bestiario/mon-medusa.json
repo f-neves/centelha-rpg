@@ -65,15 +65,30 @@
   ],
   "poderes": [
     {
-      "efeito": "Olhar petrificante (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Matéria · N3",
-      "arte": "materia"
+      "id": "olhar-petrificante",
+      "nome": "Olhar petrificante",
+      "tipo": "natural",
+      "base": {
+        "arte": "materia",
+        "nivel": 3
+      },
+      "resiste": "corpo",
+      "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
+      "usos": {
+        "periodo": "cena"
+      }
     },
     {
-      "efeito": "Cabelos-serpente",
+      "id": "cabelos-serpente",
+      "nome": "Cabelos-serpente",
       "tipo": "natural",
-      "alvo": "veneno natural"
+      "resiste": "corpo",
+      "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
+      "usos": {
+        "periodo": "cena",
+        "quantidade": 3,
+        "recarga": "1 hora"
+      }
     }
   ],
   "habilidades": [

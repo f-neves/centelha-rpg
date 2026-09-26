@@ -65,22 +65,19 @@
   ],
   "poderes": [
     {
-      "efeito": "Conceder desejos (Sp)",
-      "tipo": "feiticaria",
-      "alvo": "Fortuna · N4 / Matéria",
-      "arte": "fortuna"
-    },
-    {
-      "efeito": "Muralha de fogo",
-      "tipo": "feiticaria",
-      "alvo": "Fogo · N3",
-      "arte": "fogo"
-    },
-    {
-      "efeito": "Corpo em chamas",
-      "tipo": "feiticaria",
-      "alvo": "Fogo · N4",
-      "arte": "fogo"
+      "id": "corpo-em-chamas",
+      "nome": "Corpo em chamas",
+      "tipo": "natural",
+      "base": {
+        "arte": "fogo",
+        "nivel": 4
+      },
+      "resiste": "corpo",
+      "efeito": "Resiste ao entrar, 1 vez por cena.",
+      "usos": {
+        "periodo": "passivo",
+        "recarga": "contínua"
+      }
     }
   ],
   "fraquezas": [

@@ -18,7 +18,10 @@
     "peso": "14.000 kg"
   },
   "locomocao": {
-    "terra": 4
+    "terra": 4,
+    "voo": 10,
+    "natacao": 4,
+    "escalada": 4
   },
   "centelha": 6,
   "attrs": {

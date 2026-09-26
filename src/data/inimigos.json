@@ -1106,6 +1106,18 @@
     "artes": [],
     "notas": "Habilidades notáveis: Prontidão 1.",
     "pendente": true,
+    "poderes": [
+      {
+        "id": "vitalidade",
+        "nome": "Vitalidade",
+        "tipo": "natural",
+        "resiste": "nenhum",
+        "efeito": "+Vigor de PV extra, sempre.",
+        "usos": {
+          "periodo": "passivo"
+        }
+      }
+    ],
     "pericias": {
       "prontidao": 1,
       "esquiva": 0,
@@ -1557,10 +1569,15 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Regeneração",
-        "tipo": "proeza",
-        "alvo": "Cerne Vital · Regeneração (b9)",
-        "caminho": "cerne-vital"
+        "id": "regeneracao",
+        "nome": "Regeneração",
+        "tipo": "natural",
+        "resiste": "nenhum",
+        "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
+        "usos": {
+          "periodo": "passivo",
+          "recarga": "contínua"
+        }
       }
     ],
     "pericias": {
@@ -1733,20 +1750,6 @@
     "artes": [],
     "notas": "Habilidades notáveis: Ofícios 2, Prontidão 2.",
     "pendente": true,
-    "poderes": [
-      {
-        "efeito": "Imune a fogo",
-        "tipo": "proeza",
-        "alvo": "Sangue Imune · Imunidade (b7)",
-        "caminho": "sangue-imune"
-      },
-      {
-        "efeito": "Arremessar rocha",
-        "tipo": "proeza",
-        "alvo": "Atlas / Quebra-Muralhas",
-        "caminho": "quebra-muralhas"
-      }
-    ],
     "pericias": {
       "prontidao": 2,
       "esquiva": 0,
@@ -1867,20 +1870,6 @@
     ],
     "notas": "Habilidades notáveis: Prontidão 3, Ofícios 2.",
     "pendente": true,
-    "poderes": [
-      {
-        "efeito": "Névoa e poderes do ar (Sp)",
-        "tipo": "feiticaria",
-        "alvo": "Vento · N2",
-        "arte": "vento"
-      },
-      {
-        "efeito": "Arremessar rocha",
-        "tipo": "proeza",
-        "alvo": "Atlas",
-        "caminho": "atlas"
-      }
-    ],
     "pericias": {
       "prontidao": 2,
       "esquiva": 1,
@@ -1952,20 +1941,6 @@
     ],
     "notas": "Habilidades notáveis: Prontidão 4, Conhecimentos 2.",
     "pendente": true,
-    "poderes": [
-      {
-        "efeito": "Comandar o clima",
-        "tipo": "feiticaria",
-        "alvo": "Vento · N5 + Raio · N4",
-        "arte": "vento"
-      },
-      {
-        "efeito": "Ver e ouvir à distância",
-        "tipo": "feiticaria",
-        "alvo": "Adivinhação · N2",
-        "arte": "adivinhacao"
-      }
-    ],
     "pericias": {
       "prontidao": 3,
       "esquiva": 1,
@@ -2029,14 +2004,6 @@
     ],
     "notas": "Habilidades notáveis: Ofícios 2, Prontidão 2.",
     "pendente": true,
-    "poderes": [
-      {
-        "efeito": "Lampejo de premonição (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Fortuna · N1 / Adivinhação",
-        "arte": "fortuna"
-      }
-    ],
     "pericias": {
       "prontidao": 1,
       "esquiva": 0,
@@ -2093,14 +2060,6 @@
     "artes": [],
     "notas": "Habilidades notáveis: Prontidão 2, Furtividade 2, Sobrevivência 2.",
     "pendente": true,
-    "poderes": [
-      {
-        "efeito": "Faro e caça em matilha",
-        "tipo": "proeza",
-        "alvo": "Caçador · Faro (b2)",
-        "caminho": "cacador"
-      }
-    ],
     "pericias": {
       "prontidao": 1,
       "esquiva": 1,
@@ -2269,20 +2228,6 @@
     "artes": [],
     "notas": "Habilidades notáveis: Furtividade 3, Prontidão 2.",
     "pendente": true,
-    "poderes": [
-      {
-        "efeito": "Bote (pounce)",
-        "tipo": "proeza",
-        "alvo": "Sangue Fervente · Investida Furiosa (b5)",
-        "caminho": "sangue-fervente"
-      },
-      {
-        "efeito": "Emboscar",
-        "tipo": "proeza",
-        "alvo": "Sombra · Esgueirar (b3)",
-        "caminho": "sombra"
-      }
-    ],
     "pericias": {
       "prontidao": 2,
       "esquiva": 1,
@@ -2507,20 +2452,6 @@
     "artes": [],
     "notas": "Habilidades notáveis: Prontidão 2.",
     "pendente": true,
-    "poderes": [
-      {
-        "efeito": "Pisoteio",
-        "tipo": "proeza",
-        "alvo": "Quebra-Muralhas · Demolidor (b1)",
-        "caminho": "quebra-muralhas"
-      },
-      {
-        "efeito": "Agarrar com a tromba",
-        "tipo": "proeza",
-        "alvo": "Agarrão do Urso · Imobilizar (b2)",
-        "caminho": "agarrao-do-urso"
-      }
-    ],
     "pericias": {
       "prontidao": 1,
       "esquiva": 0,
@@ -2689,14 +2620,6 @@
     "artes": [],
     "notas": "Habilidades notáveis: Furtividade 2, Atletismo 2.",
     "pendente": true,
-    "poderes": [
-      {
-        "efeito": "Constrição",
-        "tipo": "proeza",
-        "alvo": "Agarrão do Urso · Aperto Esmagador (b10)",
-        "caminho": "agarrao-do-urso"
-      }
-    ],
     "pericias": {
       "prontidao": 1,
       "esquiva": 1,
@@ -2755,14 +2678,29 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Teia",
+        "id": "teia",
+        "nome": "Teia",
         "tipo": "natural",
-        "alvo": "natural (Ex)"
+        "resiste": "esquiva",
+        "efeito": "Esquiva para não prender; escapar com Força ou Atletismo.",
+        "usos": {
+          "periodo": "cena",
+          "quantidade": 3,
+          "recarga": "1 hora"
+        }
       },
       {
-        "efeito": "Mordida venenosa",
+        "id": "mordida-venenosa",
+        "nome": "Mordida venenosa",
         "tipo": "natural",
-        "alvo": "veneno natural"
+        "resiste": "corpo",
+        "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
+        "usos": {
+          "periodo": "cena",
+          "quantidade": 3,
+          "recarga": "1 hora"
+        },
+        "ataque": "Garras e presas"
       }
     ],
     "pericias": {
@@ -2823,9 +2761,17 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Ferrão venenoso",
+        "id": "ferrao-venenoso",
+        "nome": "Ferrão venenoso",
         "tipo": "natural",
-        "alvo": "veneno natural (tag da arma)"
+        "resiste": "corpo",
+        "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
+        "usos": {
+          "periodo": "cena",
+          "quantidade": 3,
+          "recarga": "1 hora"
+        },
+        "ataque": "Garras e presas"
       }
     ],
     "pericias": {
@@ -2887,19 +2833,6 @@
     "artes": [],
     "notas": "Habilidades notáveis: Prontidão 3, Atletismo 2.",
     "pendente": true,
-    "poderes": [
-      {
-        "efeito": "Visão aguçada",
-        "tipo": "proeza",
-        "alvo": "Olho Aguçado · Sentidos Apurados (b1)",
-        "caminho": "olho-agucado"
-      },
-      {
-        "efeito": "Voo",
-        "tipo": "natural",
-        "alvo": "asas (natural)"
-      }
-    ],
     "pericias": {
       "prontidao": 2,
       "esquiva": 1,
@@ -3071,14 +3004,6 @@
     "artes": [],
     "notas": "Habilidades notáveis: Prontidão 4.",
     "pendente": true,
-    "poderes": [
-      {
-        "efeito": "Abraço (agarrar)",
-        "tipo": "proeza",
-        "alvo": "Agarrão do Urso · Imobilizar (b2)",
-        "caminho": "agarrao-do-urso"
-      }
-    ],
     "pericias": {
       "prontidao": 1,
       "esquiva": 1,
@@ -3138,20 +3063,6 @@
     "artes": [],
     "notas": "Habilidades notáveis: Prontidão 3, Sobrevivência 2.",
     "pendente": true,
-    "poderes": [
-      {
-        "efeito": "Faro no labirinto (Su)",
-        "tipo": "proeza",
-        "alvo": "Caçador · Faro (b2)",
-        "caminho": "cacador"
-      },
-      {
-        "efeito": "Investida chifruda",
-        "tipo": "proeza",
-        "alvo": "Sangue Fervente · Investida Furiosa (b5)",
-        "caminho": "sangue-fervente"
-      }
-    ],
     "pericias": {
       "prontidao": 1,
       "esquiva": 0,
@@ -3217,16 +3128,18 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Canção cativante (Su)",
-        "tipo": "proeza",
-        "alvo": "Beleza Cativante · Olhar Cativante (b5)",
-        "caminho": "beleza-cativante"
-      },
-      {
-        "efeito": "(alternativa mágica)",
-        "tipo": "feiticaria",
-        "alvo": "Fascinação · N2",
-        "arte": "fascinacao"
+        "id": "cancao-cativante",
+        "nome": "Canção cativante",
+        "tipo": "natural",
+        "base": {
+          "arte": "fascinacao",
+          "nivel": 2
+        },
+        "resiste": "mente",
+        "efeito": "Defesa Mental; área de audição.",
+        "usos": {
+          "periodo": "cena"
+        }
       }
     ],
     "pericias": {
@@ -3286,20 +3199,6 @@
     "artes": [],
     "notas": "Habilidades notáveis: Furtividade 3.",
     "pendente": true,
-    "poderes": [
-      {
-        "efeito": "Pele de pedra / RD",
-        "tipo": "proeza",
-        "alvo": "Pele de Pedra · Pele de Pedra (b4)",
-        "caminho": "pele-de-pedra"
-      },
-      {
-        "efeito": "Imobilidade (freeze)",
-        "tipo": "proeza",
-        "alvo": "Máscara / Sombra",
-        "caminho": "mascara"
-      }
-    ],
     "pericias": {
       "prontidao": 1,
       "esquiva": 1,
@@ -3471,18 +3370,6 @@
     "artes": [],
     "notas": "Habilidades notáveis: Prontidão 2, Atletismo 1.",
     "pendente": true,
-    "poderes": [
-      {
-        "efeito": "Espinhos de cauda",
-        "tipo": "natural",
-        "alvo": "ataque natural (Atirador)"
-      },
-      {
-        "efeito": "Voo",
-        "tipo": "natural",
-        "alvo": "asas (natural)"
-      }
-    ],
     "pericias": {
       "prontidao": 1,
       "esquiva": 1,
@@ -3548,15 +3435,20 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Sopro dracônico",
-        "tipo": "feiticaria",
-        "alvo": "Fogo · N2",
-        "arte": "fogo"
-      },
-      {
-        "efeito": "Voo",
+        "id": "sopro-draconico",
+        "nome": "Sopro dracônico",
         "tipo": "natural",
-        "alvo": "asas (natural)"
+        "base": {
+          "arte": "fogo",
+          "nivel": 2
+        },
+        "resiste": "esquiva",
+        "efeito": "Cone ou linha. Esquiva para metade.",
+        "usos": {
+          "periodo": "ticks",
+          "quantidade": 1,
+          "recarga": "24 ticks"
+        }
       }
     ],
     "pericias": {
@@ -3618,14 +3510,17 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Ferrão venenoso",
+        "id": "ferrao-venenoso",
+        "nome": "Ferrão venenoso",
         "tipo": "natural",
-        "alvo": "veneno natural"
-      },
-      {
-        "efeito": "Voo",
-        "tipo": "natural",
-        "alvo": "asas (natural)"
+        "resiste": "corpo",
+        "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
+        "usos": {
+          "periodo": "cena",
+          "quantidade": 3,
+          "recarga": "1 hora"
+        },
+        "ataque": "Garras e mordida"
       }
     ],
     "pericias": {
@@ -3687,10 +3582,15 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Cabeças que rebrotam (Su)",
-        "tipo": "proeza",
-        "alvo": "Cerne Vital · Regeneração (b9)",
-        "caminho": "cerne-vital"
+        "id": "cabecas-que-rebrotam",
+        "nome": "Cabeças que rebrotam",
+        "tipo": "natural",
+        "resiste": "nenhum",
+        "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
+        "usos": {
+          "periodo": "passivo",
+          "recarga": "contínua"
+        }
       }
     ],
     "pericias": {
@@ -3758,10 +3658,18 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Olhar petrificante (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Matéria · N3 (carne → pedra)",
-        "arte": "materia"
+        "id": "olhar-petrificante",
+        "nome": "Olhar petrificante",
+        "tipo": "natural",
+        "base": {
+          "arte": "materia",
+          "nivel": 3
+        },
+        "resiste": "corpo",
+        "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
+        "usos": {
+          "periodo": "cena"
+        }
       }
     ],
     "pericias": {
@@ -3829,10 +3737,19 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Toque que petrifica (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Matéria · N3",
-        "arte": "materia"
+        "id": "toque-que-petrifica",
+        "nome": "Toque que petrifica",
+        "tipo": "natural",
+        "base": {
+          "arte": "materia",
+          "nivel": 3
+        },
+        "resiste": "corpo",
+        "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+        "usos": {
+          "periodo": "golpe"
+        },
+        "ataque": "Garras e presas"
       }
     ],
     "pericias": {
@@ -3900,10 +3817,20 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Sopro petrificante (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Matéria · N4",
-        "arte": "materia"
+        "id": "sopro-petrificante",
+        "nome": "Sopro petrificante",
+        "tipo": "natural",
+        "base": {
+          "arte": "materia",
+          "nivel": 4
+        },
+        "resiste": "esquiva",
+        "efeito": "Cone ou linha. Esquiva para metade.",
+        "usos": {
+          "periodo": "ticks",
+          "quantidade": 1,
+          "recarga": "24 ticks"
+        }
       }
     ],
     "pericias": {
@@ -3973,16 +3900,18 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Deslocamento (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Fascinação · N1 (ilusão) / Proteção",
-        "arte": "fascinacao"
-      },
-      {
-        "efeito": "Tentáculos",
-        "tipo": "proeza",
-        "alvo": "Agarrão do Urso · Imobilizar (b2)",
-        "caminho": "agarrao-do-urso"
+        "id": "deslocamento",
+        "nome": "Deslocamento",
+        "tipo": "natural",
+        "base": {
+          "arte": "fascinacao",
+          "nivel": 1
+        },
+        "resiste": "nenhum",
+        "efeito": "Deslocamento",
+        "usos": {
+          "periodo": "avontade"
+        }
       }
     ],
     "pericias": {
@@ -4050,10 +3979,18 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Salto etéreo (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Espírito · N2 / Conjuração",
-        "arte": "espirito"
+        "id": "salto-etereo",
+        "nome": "Salto etéreo",
+        "tipo": "natural",
+        "base": {
+          "arte": "espirito",
+          "nivel": 2
+        },
+        "resiste": "nenhum",
+        "efeito": "Salto etéreo",
+        "usos": {
+          "periodo": "avontade"
+        }
       }
     ],
     "pericias": {
@@ -4121,10 +4058,19 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Corrói metal (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Matéria · N2",
-        "arte": "materia"
+        "id": "corroi-metal",
+        "nome": "Corrói metal",
+        "tipo": "natural",
+        "base": {
+          "arte": "materia",
+          "nivel": 2
+        },
+        "resiste": "corpo",
+        "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+        "usos": {
+          "periodo": "golpe"
+        },
+        "ataque": "Garras e presas"
       }
     ],
     "pericias": {
@@ -4241,15 +4187,26 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Assumir forma de objeto (Su)",
-        "tipo": "proeza",
-        "alvo": "Camaleão",
-        "caminho": "camaleao"
+        "id": "assumir-forma-de-objeto",
+        "nome": "Assumir forma de objeto",
+        "tipo": "natural",
+        "resiste": "nenhum",
+        "efeito": "Assumir forma de objeto",
+        "usos": {
+          "periodo": "avontade"
+        }
       },
       {
-        "efeito": "Cola aderente",
+        "id": "cola-aderente",
+        "nome": "Cola aderente",
         "tipo": "natural",
-        "alvo": "natural (Ex)"
+        "resiste": "esquiva",
+        "efeito": "Esquiva para não prender; escapar com Força ou Atletismo.",
+        "usos": {
+          "periodo": "cena",
+          "quantidade": 3,
+          "recarga": "1 hora"
+        }
       }
     ],
     "pericias": {
@@ -4309,20 +4266,6 @@
     "artes": [],
     "notas": "Habilidades notáveis: Furtividade 3, Prontidão 2.",
     "pendente": true,
-    "poderes": [
-      {
-        "efeito": "Absorve raio (Su)",
-        "tipo": "proeza",
-        "alvo": "Sangue Imune (raio)",
-        "caminho": "sangue-imune"
-      },
-      {
-        "efeito": "Constrição",
-        "tipo": "proeza",
-        "alvo": "Agarrão do Urso",
-        "caminho": "agarrao-do-urso"
-      }
-    ],
     "pericias": {
       "prontidao": 1,
       "esquiva": 0,
@@ -4388,20 +4331,6 @@
     ],
     "notas": "Habilidades notáveis: Persuasão 2, Sobrevivência 3.",
     "pendente": true,
-    "poderes": [
-      {
-        "efeito": "Animar árvores (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Vida · N2",
-        "arte": "vida"
-      },
-      {
-        "efeito": "Casca / RD",
-        "tipo": "proeza",
-        "alvo": "Pele de Pedra · Pele de Pedra (b4)",
-        "caminho": "pele-de-pedra"
-      }
-    ],
     "pericias": {
       "prontidao": 2,
       "esquiva": 0,
@@ -4593,22 +4522,34 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Muco que transforma pele (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Matéria · N3 + Água · N3",
-        "arte": "materia"
+        "id": "muco-que-transforma-pele",
+        "nome": "Muco que transforma pele",
+        "tipo": "natural",
+        "base": {
+          "arte": "materia",
+          "nivel": 3
+        },
+        "resiste": "corpo",
+        "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+        "usos": {
+          "periodo": "golpe"
+        },
+        "ataque": "Garras e presas"
       },
       {
-        "efeito": "Domínio psíquico",
-        "tipo": "feiticaria",
-        "alvo": "Fascinação · N4",
-        "arte": "fascinacao"
-      },
-      {
-        "efeito": "Telepatia",
-        "tipo": "feiticaria",
-        "alvo": "Adivinhação · N2",
-        "arte": "adivinhacao"
+        "id": "dominio-psiquico",
+        "nome": "Domínio psíquico",
+        "tipo": "natural",
+        "base": {
+          "arte": "fascinacao",
+          "nivel": 4
+        },
+        "resiste": "mente",
+        "efeito": "Defesa Mental; dura enquanto o aboleth mantiver contato.",
+        "usos": {
+          "periodo": "dia",
+          "quantidade": 3
+        }
       }
     ],
     "pericias": {
@@ -4787,16 +4728,18 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Paralisia (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Morte · N2",
-        "arte": "morte"
-      },
-      {
-        "efeito": "Faro do carniçal",
-        "tipo": "proeza",
-        "alvo": "Caçador · Faro (b2)",
-        "caminho": "cacador"
+        "id": "paralisia",
+        "nome": "Paralisia",
+        "tipo": "natural",
+        "base": {
+          "arte": "morte",
+          "nivel": 2
+        },
+        "resiste": "corpo",
+        "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+        "usos": {
+          "periodo": "golpe"
+        }
       }
     ],
     "pericias": {
@@ -4864,10 +4807,19 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Paralisia e fedor (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Morte · N2 + Vento (fedor)",
-        "arte": "morte"
+        "id": "paralisia-e-fedor",
+        "nome": "Paralisia e fedor",
+        "tipo": "natural",
+        "base": {
+          "arte": "morte",
+          "nivel": 2
+        },
+        "resiste": "corpo",
+        "efeito": "Resiste ao entrar, 1 vez por cena.",
+        "usos": {
+          "periodo": "passivo",
+          "recarga": "contínua"
+        }
       }
     ],
     "pericias": {
@@ -4941,16 +4893,33 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Dreno de Força (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Morte · N1",
-        "arte": "morte"
+        "id": "dreno-de-forca",
+        "nome": "Dreno de Força",
+        "tipo": "natural",
+        "base": {
+          "arte": "morte",
+          "nivel": 1
+        },
+        "resiste": "corpo",
+        "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+        "usos": {
+          "periodo": "golpe"
+        },
+        "ataque": "Toque dilacerante"
       },
       {
+        "id": "incorporeo",
+        "nome": "Incorpóreo",
+        "tipo": "natural",
+        "base": {
+          "arte": "espirito",
+          "nivel": 2
+        },
+        "resiste": "nenhum",
         "efeito": "Incorpóreo",
-        "tipo": "feiticaria",
-        "alvo": "Espírito · N2 / Sombra · Manto de Sombras (b5)",
-        "arte": "espirito"
+        "usos": {
+          "periodo": "avontade"
+        }
       }
     ],
     "pericias": {
@@ -5018,10 +4987,18 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Dreno de energia (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Morte · N2",
-        "arte": "morte"
+        "id": "dreno-de-energia",
+        "nome": "Dreno de energia",
+        "tipo": "natural",
+        "base": {
+          "arte": "morte",
+          "nivel": 2
+        },
+        "resiste": "corpo",
+        "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+        "usos": {
+          "periodo": "golpe"
+        }
       }
     ],
     "pericias": {
@@ -5095,16 +5072,33 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Dreno de Constituição (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Morte · N2",
-        "arte": "morte"
+        "id": "dreno-de-constituicao",
+        "nome": "Dreno de Constituição",
+        "tipo": "natural",
+        "base": {
+          "arte": "morte",
+          "nivel": 2
+        },
+        "resiste": "corpo",
+        "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+        "usos": {
+          "periodo": "golpe"
+        },
+        "ataque": "Toque dilacerante"
       },
       {
+        "id": "incorporeo",
+        "nome": "Incorpóreo",
+        "tipo": "natural",
+        "base": {
+          "arte": "espirito",
+          "nivel": 3
+        },
+        "resiste": "nenhum",
         "efeito": "Incorpóreo",
-        "tipo": "feiticaria",
-        "alvo": "Espírito · N3",
-        "arte": "espirito"
+        "usos": {
+          "periodo": "avontade"
+        }
       }
     ],
     "pericias": {
@@ -5178,16 +5172,33 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Dreno de nível (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Morte · N3",
-        "arte": "morte"
+        "id": "dreno-de-nivel",
+        "nome": "Dreno de nível",
+        "tipo": "natural",
+        "base": {
+          "arte": "morte",
+          "nivel": 3
+        },
+        "resiste": "corpo",
+        "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+        "usos": {
+          "periodo": "golpe"
+        },
+        "ataque": "Toque dilacerante"
       },
       {
+        "id": "voo-e-incorporeo",
+        "nome": "Voo e incorpóreo",
+        "tipo": "natural",
+        "base": {
+          "arte": "espirito",
+          "nivel": 3
+        },
+        "resiste": "nenhum",
         "efeito": "Voo e incorpóreo",
-        "tipo": "feiticaria",
-        "alvo": "Espírito · N3",
-        "arte": "espirito"
+        "usos": {
+          "periodo": "avontade"
+        }
       }
     ],
     "pericias": {
@@ -5255,16 +5266,33 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Podridão da múmia (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Morte · N2",
-        "arte": "morte"
+        "id": "podridao-da-mumia",
+        "nome": "Podridão da múmia",
+        "tipo": "natural",
+        "base": {
+          "arte": "morte",
+          "nivel": 2
+        },
+        "resiste": "corpo",
+        "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+        "usos": {
+          "periodo": "golpe"
+        }
       },
       {
-        "efeito": "Aura de desespero (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Morte · N3 (medo) / Lenda Viva · Temor Reverente (b5)",
-        "arte": "morte"
+        "id": "aura-de-desespero",
+        "nome": "Aura de desespero",
+        "tipo": "natural",
+        "base": {
+          "arte": "morte",
+          "nivel": 3
+        },
+        "resiste": "corpo",
+        "efeito": "Resiste ao entrar, 1 vez por cena.",
+        "usos": {
+          "periodo": "passivo",
+          "recarga": "contínua"
+        }
       }
     ],
     "pericias": {
@@ -5332,10 +5360,18 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Olhar mortal (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Morte · N5",
-        "arte": "morte"
+        "id": "olhar-mortal",
+        "nome": "Olhar mortal",
+        "tipo": "natural",
+        "base": {
+          "arte": "morte",
+          "nivel": 5
+        },
+        "resiste": "corpo",
+        "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
+        "usos": {
+          "periodo": "cena"
+        }
       }
     ],
     "pericias": {
@@ -5417,34 +5453,54 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Dominar (Sp)",
-        "tipo": "feiticaria",
-        "alvo": "Fascinação · N3",
-        "arte": "fascinacao"
-      },
-      {
+        "id": "forma-gasosa",
+        "nome": "Forma gasosa",
+        "tipo": "natural",
+        "resiste": "nenhum",
         "efeito": "Forma gasosa",
-        "tipo": "feiticaria",
-        "alvo": "Espírito / Vento · N3",
-        "arte": "vento"
+        "usos": {
+          "periodo": "avontade"
+        }
       },
       {
+        "id": "filhos-da-noite-convoca",
+        "nome": "Filhos da noite (convoca)",
+        "tipo": "natural",
+        "base": {
+          "arte": "espirito",
+          "nivel": 2
+        },
+        "resiste": "nenhum",
         "efeito": "Filhos da noite (convoca)",
-        "tipo": "feiticaria",
-        "alvo": "Espírito · N2",
-        "arte": "espirito"
+        "usos": {
+          "periodo": "dia",
+          "quantidade": 1
+        }
       },
       {
-        "efeito": "Regeneração",
-        "tipo": "proeza",
-        "alvo": "Cerne Vital · Regeneração (b9)",
-        "caminho": "cerne-vital"
+        "id": "regeneracao",
+        "nome": "Regeneração",
+        "tipo": "natural",
+        "resiste": "nenhum",
+        "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
+        "usos": {
+          "periodo": "passivo",
+          "recarga": "contínua"
+        }
       },
       {
-        "efeito": "Dreno de sangue",
-        "tipo": "feiticaria",
-        "alvo": "Morte · N1",
-        "arte": "morte"
+        "id": "dreno-de-sangue",
+        "nome": "Dreno de sangue",
+        "tipo": "natural",
+        "base": {
+          "arte": "morte",
+          "nivel": 1
+        },
+        "resiste": "corpo",
+        "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+        "usos": {
+          "periodo": "golpe"
+        }
       }
     ],
     "pericias": {
@@ -5516,22 +5572,33 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Feitiços de mago (Sp)",
-        "tipo": "feiticaria",
-        "alvo": "Fogo / Gelo / Morte / Proteção · N3–N5",
-        "arte": "protecao"
+        "id": "toque-paralisante",
+        "nome": "Toque paralisante",
+        "tipo": "natural",
+        "base": {
+          "arte": "morte",
+          "nivel": 2
+        },
+        "resiste": "corpo",
+        "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+        "usos": {
+          "periodo": "golpe"
+        }
       },
       {
-        "efeito": "Toque paralisante (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Morte · N2",
-        "arte": "morte"
-      },
-      {
-        "efeito": "Aura de medo (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Morte · N3",
-        "arte": "morte"
+        "id": "aura-de-medo",
+        "nome": "Aura de medo",
+        "tipo": "natural",
+        "base": {
+          "arte": "morte",
+          "nivel": 3
+        },
+        "resiste": "corpo",
+        "efeito": "Resiste ao entrar, 1 vez por cena.",
+        "usos": {
+          "periodo": "passivo",
+          "recarga": "contínua"
+        }
       }
     ],
     "pericias": {
@@ -5601,14 +5668,6 @@
     ],
     "notas": "Habilidades notáveis: Prontidão 1.",
     "pendente": true,
-    "poderes": [
-      {
-        "efeito": "Fedor e telepatia (Sp)",
-        "tipo": "feiticaria",
-        "alvo": "Vento · N2 (fedor) + Fascinação · N1",
-        "arte": "vento"
-      }
-    ],
     "pericias": {
       "prontidao": 1,
       "esquiva": 0,
@@ -5682,22 +5741,18 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Invisibilidade e susto (Sp)",
-        "tipo": "feiticaria",
-        "alvo": "Fascinação · N1",
-        "arte": "fascinacao"
-      },
-      {
-        "efeito": "Adivinhação",
-        "tipo": "feiticaria",
-        "alvo": "Adivinhação · N1",
-        "arte": "adivinhacao"
-      },
-      {
+        "id": "forma-alternativa",
+        "nome": "Forma alternativa",
+        "tipo": "natural",
+        "base": {
+          "arte": "materia",
+          "nivel": 2
+        },
+        "resiste": "nenhum",
         "efeito": "Forma alternativa",
-        "tipo": "feiticaria",
-        "alvo": "Matéria · N2",
-        "arte": "materia"
+        "usos": {
+          "periodo": "avontade"
+        }
       }
     ],
     "pericias": {
@@ -5775,28 +5830,18 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Beijo dreno e enfeitiçar (Sp)",
-        "tipo": "feiticaria",
-        "alvo": "Fascinação · N4",
-        "arte": "fascinacao"
-      },
-      {
-        "efeito": "Sedução",
-        "tipo": "proeza",
-        "alvo": "Beleza Cativante · Encanto Irresistível (b4)",
-        "caminho": "beleza-cativante"
-      },
-      {
+        "id": "mudar-de-forma",
+        "nome": "Mudar de forma",
+        "tipo": "natural",
+        "base": {
+          "arte": "materia",
+          "nivel": 2
+        },
+        "resiste": "nenhum",
         "efeito": "Mudar de forma",
-        "tipo": "feiticaria",
-        "alvo": "Matéria · N2",
-        "arte": "materia"
-      },
-      {
-        "efeito": "Teleporte",
-        "tipo": "feiticaria",
-        "alvo": "Conjuração · N4",
-        "arte": "conjuracao"
+        "usos": {
+          "periodo": "avontade"
+        }
       }
     ],
     "pericias": {
@@ -5868,16 +5913,15 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Esporos e dança da ruína (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Vida (esporos) + Morte · N3",
-        "arte": "morte"
-      },
-      {
-        "efeito": "Convocar demônios (Sp)",
-        "tipo": "feiticaria",
-        "alvo": "Espírito · N4",
-        "arte": "espirito"
+        "id": "esporos-e-danca-da-ruina",
+        "nome": "Esporos e dança da ruína",
+        "tipo": "natural",
+        "resiste": "corpo",
+        "efeito": "Esporos em quem está colado; dança exige 3 vrocks.",
+        "usos": {
+          "periodo": "dia",
+          "quantidade": 1
+        }
       }
     ],
     "pericias": {
@@ -5949,16 +5993,19 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Fedor nauseante (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Vento · N2 / Morte",
-        "arte": "vento"
-      },
-      {
-        "efeito": "Convocar (Sp)",
-        "tipo": "feiticaria",
-        "alvo": "Espírito · N4",
-        "arte": "espirito"
+        "id": "fedor-nauseante",
+        "nome": "Fedor nauseante",
+        "tipo": "natural",
+        "base": {
+          "arte": "vento",
+          "nivel": 2
+        },
+        "resiste": "corpo",
+        "efeito": "Resiste ao entrar, 1 vez por cena.",
+        "usos": {
+          "periodo": "passivo",
+          "recarga": "contínua"
+        }
       }
     ],
     "pericias": {
@@ -6028,25 +6075,6 @@
     ],
     "notas": "Habilidades notáveis: Ocultismo 4, Persuasão 4, Prontidão 4.",
     "pendente": true,
-    "poderes": [
-      {
-        "efeito": "Realizar desejo traiçoeiro (Sp)",
-        "tipo": "feiticaria",
-        "alvo": "Fortuna · N4 / Fascinação",
-        "arte": "fortuna"
-      },
-      {
-        "efeito": "Feitiços",
-        "tipo": "feiticaria",
-        "alvo": "várias · N3–N4"
-      },
-      {
-        "efeito": "Teleporte",
-        "tipo": "feiticaria",
-        "alvo": "Conjuração · N4",
-        "arte": "conjuracao"
-      }
-    ],
     "pericias": {
       "prontidao": 3,
       "esquiva": 1,
@@ -6106,25 +6134,6 @@
     "artes": [],
     "notas": "Habilidades notáveis: Armas 5, Prontidão 4, Liderança 4. Centelha acima do teto mortal (entidade).",
     "pendente": true,
-    "poderes": [
-      {
-        "efeito": "Seis lâminas (Ex)",
-        "tipo": "proeza",
-        "alvo": "Dança da Lâmina + Mão Veloz",
-        "caminho": "danca-da-lamina"
-      },
-      {
-        "efeito": "Constrição",
-        "tipo": "proeza",
-        "alvo": "Agarrão do Urso · Aperto Esmagador (b10)",
-        "caminho": "agarrao-do-urso"
-      },
-      {
-        "efeito": "Feitiços (Sp)",
-        "tipo": "feiticaria",
-        "alvo": "várias · N3"
-      }
-    ],
     "pericias": {
       "prontidao": 2,
       "esquiva": 2,
@@ -6194,34 +6203,33 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Espada e chicote flamejantes",
-        "tipo": "feiticaria",
-        "alvo": "Fogo · N4",
-        "arte": "fogo"
+        "id": "aura-de-fogo",
+        "nome": "Aura de fogo",
+        "tipo": "natural",
+        "base": {
+          "arte": "fogo",
+          "nivel": 4
+        },
+        "resiste": "corpo",
+        "efeito": "Resiste ao entrar, 1 vez por cena.",
+        "usos": {
+          "periodo": "passivo",
+          "recarga": "contínua"
+        }
       },
       {
-        "efeito": "Aura de fogo (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Fogo · N4 / Proteção",
-        "arte": "fogo"
-      },
-      {
+        "id": "morte-explosiva",
+        "nome": "Morte explosiva",
+        "tipo": "natural",
+        "base": {
+          "arte": "fogo",
+          "nivel": 5
+        },
+        "resiste": "esquiva",
         "efeito": "Morte explosiva",
-        "tipo": "feiticaria",
-        "alvo": "Fogo · N5",
-        "arte": "fogo"
-      },
-      {
-        "efeito": "Comandar legiões",
-        "tipo": "proeza",
-        "alvo": "Comando / Estandarte",
-        "caminho": "estandarte"
-      },
-      {
-        "efeito": "Teleporte",
-        "tipo": "feiticaria",
-        "alvo": "Conjuração · N4",
-        "arte": "conjuracao"
+        "usos": {
+          "periodo": "avontade"
+        }
       }
     ],
     "pericias": {
@@ -6285,10 +6293,15 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Regeneração fraca (Ex)",
-        "tipo": "proeza",
-        "alvo": "Cerne Vital · Recuperação Acelerada (b1)",
-        "caminho": "cerne-vital"
+        "id": "regeneracao-fraca",
+        "nome": "Regeneração fraca",
+        "tipo": "natural",
+        "resiste": "nenhum",
+        "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
+        "usos": {
+          "periodo": "passivo",
+          "recarga": "contínua"
+        }
       }
     ],
     "pericias": {
@@ -6362,27 +6375,30 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Invisibilidade (Sp)",
-        "tipo": "feiticaria",
-        "alvo": "Fascinação · N1",
-        "arte": "fascinacao"
-      },
-      {
-        "efeito": "Adivinhação",
-        "tipo": "feiticaria",
-        "alvo": "Adivinhação · N1",
-        "arte": "adivinhacao"
-      },
-      {
-        "efeito": "Forma alternativa",
-        "tipo": "feiticaria",
-        "alvo": "Matéria · N2",
-        "arte": "materia"
-      },
-      {
-        "efeito": "Ferrão venenoso",
+        "id": "forma-alternativa",
+        "nome": "Forma alternativa",
         "tipo": "natural",
-        "alvo": "natural"
+        "base": {
+          "arte": "materia",
+          "nivel": 2
+        },
+        "resiste": "nenhum",
+        "efeito": "Forma alternativa",
+        "usos": {
+          "periodo": "avontade"
+        }
+      },
+      {
+        "id": "ferrao-venenoso",
+        "nome": "Ferrão venenoso",
+        "tipo": "natural",
+        "resiste": "corpo",
+        "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
+        "usos": {
+          "periodo": "cena",
+          "quantidade": 3,
+          "recarga": "1 hora"
+        }
       }
     ],
     "pericias": {
@@ -6454,21 +6470,29 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Doença infernal (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Morte · N2",
-        "arte": "morte"
-      },
-      {
-        "efeito": "Teleporte",
-        "tipo": "feiticaria",
-        "alvo": "Conjuração · N3",
-        "arte": "conjuracao"
-      },
-      {
-        "efeito": "Trava a ferida (Ex)",
+        "id": "doenca-infernal",
+        "nome": "Doença infernal",
         "tipo": "natural",
-        "alvo": "natural"
+        "base": {
+          "arte": "morte",
+          "nivel": 2
+        },
+        "resiste": "corpo",
+        "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+        "usos": {
+          "periodo": "golpe"
+        }
+      },
+      {
+        "id": "trava-a-ferida",
+        "nome": "Trava a ferida",
+        "tipo": "natural",
+        "resiste": "nenhum",
+        "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
+        "usos": {
+          "periodo": "passivo",
+          "recarga": "contínua"
+        }
       }
     ],
     "pericias": {
@@ -6538,31 +6562,6 @@
     ],
     "notas": "Habilidades notáveis: Atirador 4, Persuasão 3, Prontidão 4.",
     "pendente": true,
-    "poderes": [
-      {
-        "efeito": "Corda de comando (Sp)",
-        "tipo": "feiticaria",
-        "alvo": "Fascinação · N2 / Forças",
-        "arte": "fascinacao"
-      },
-      {
-        "efeito": "Teleporte",
-        "tipo": "feiticaria",
-        "alvo": "Conjuração · N4",
-        "arte": "conjuracao"
-      },
-      {
-        "efeito": "Arco certeiro",
-        "tipo": "proeza",
-        "alvo": "Olho de Águia / Atirador",
-        "caminho": "olho-de-aguia"
-      },
-      {
-        "efeito": "Voo",
-        "tipo": "natural",
-        "alvo": "asas"
-      }
-    ],
     "pericias": {
       "prontidao": 2,
       "esquiva": 2,
@@ -6636,22 +6635,32 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Ferrão que enfraquece (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Morte · N2",
-        "arte": "morte"
+        "id": "ferrao-que-enfraquece",
+        "nome": "Ferrão que enfraquece",
+        "tipo": "natural",
+        "base": {
+          "arte": "morte",
+          "nivel": 2
+        },
+        "resiste": "corpo",
+        "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+        "usos": {
+          "periodo": "golpe"
+        }
       },
       {
-        "efeito": "Parede de gelo (Sp)",
-        "tipo": "feiticaria",
-        "alvo": "Gelo · N2",
-        "arte": "gelo"
-      },
-      {
+        "id": "invisibilidade",
+        "nome": "Invisibilidade",
+        "tipo": "natural",
+        "base": {
+          "arte": "fascinacao",
+          "nivel": 1
+        },
+        "resiste": "nenhum",
         "efeito": "Invisibilidade",
-        "tipo": "feiticaria",
-        "alvo": "Fascinação · N1",
-        "arte": "fascinacao"
+        "usos": {
+          "periodo": "avontade"
+        }
       }
     ],
     "pericias": {
@@ -6723,22 +6732,19 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Aura de frio (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Gelo · N3",
-        "arte": "gelo"
-      },
-      {
-        "efeito": "Lança e muralha de gelo",
-        "tipo": "feiticaria",
-        "alvo": "Gelo · N2–N3",
-        "arte": "gelo"
-      },
-      {
-        "efeito": "Feitiços",
-        "tipo": "feiticaria",
-        "alvo": "Gelo / Proteção · N3–N4",
-        "arte": "protecao"
+        "id": "aura-de-frio",
+        "nome": "Aura de frio",
+        "tipo": "natural",
+        "base": {
+          "arte": "gelo",
+          "nivel": 3
+        },
+        "resiste": "corpo",
+        "efeito": "Resiste ao entrar, 1 vez por cena.",
+        "usos": {
+          "periodo": "passivo",
+          "recarga": "contínua"
+        }
       }
     ],
     "pericias": {
@@ -6818,22 +6824,18 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Ilusões e ler pensamentos (Sp)",
-        "tipo": "feiticaria",
-        "alvo": "Fascinação · N4 + Adivinhação · N2",
-        "arte": "fascinacao"
-      },
-      {
+        "id": "mudar-de-forma",
+        "nome": "Mudar de forma",
+        "tipo": "natural",
+        "base": {
+          "arte": "materia",
+          "nivel": 3
+        },
+        "resiste": "nenhum",
         "efeito": "Mudar de forma",
-        "tipo": "feiticaria",
-        "alvo": "Matéria · N3",
-        "arte": "materia"
-      },
-      {
-        "efeito": "Só arma benta fere (RM)",
-        "tipo": "feiticaria",
-        "alvo": "Proteção · N4",
-        "arte": "protecao"
+        "usos": {
+          "periodo": "avontade"
+        }
       }
     ],
     "pericias": {
@@ -6909,33 +6911,48 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Aura de medo (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Morte · N3 / Lenda Viva",
-        "arte": "morte"
+        "id": "aura-de-medo",
+        "nome": "Aura de medo",
+        "tipo": "natural",
+        "base": {
+          "arte": "morte",
+          "nivel": 3
+        },
+        "resiste": "corpo",
+        "efeito": "Resiste ao entrar, 1 vez por cena.",
+        "usos": {
+          "periodo": "passivo",
+          "recarga": "contínua"
+        }
       },
       {
-        "efeito": "Feitiços e desejo",
-        "tipo": "feiticaria",
-        "alvo": "várias · N4–N5"
-      },
-      {
+        "id": "convocar-diabos",
+        "nome": "Convocar diabos",
+        "tipo": "natural",
+        "base": {
+          "arte": "espirito",
+          "nivel": 4
+        },
+        "resiste": "nenhum",
         "efeito": "Convocar diabos",
-        "tipo": "feiticaria",
-        "alvo": "Espírito · N4",
-        "arte": "espirito"
+        "usos": {
+          "periodo": "dia",
+          "quantidade": 1
+        }
       },
       {
-        "efeito": "Labareda",
-        "tipo": "feiticaria",
-        "alvo": "Fogo · N4",
-        "arte": "fogo"
-      },
-      {
-        "efeito": "Doença (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Morte · N3",
-        "arte": "morte"
+        "id": "doenca",
+        "nome": "Doença",
+        "tipo": "natural",
+        "base": {
+          "arte": "morte",
+          "nivel": 3
+        },
+        "resiste": "corpo",
+        "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+        "usos": {
+          "periodo": "golpe"
+        }
       }
     ],
     "pericias": {
@@ -7011,22 +7028,19 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Aura de menaça (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Fascinação · N2 (temor sagrado)",
-        "arte": "fascinacao"
-      },
-      {
-        "efeito": "Teleporte",
-        "tipo": "feiticaria",
-        "alvo": "Conjuração · N2",
-        "arte": "conjuracao"
-      },
-      {
-        "efeito": "Farejar o mal",
-        "tipo": "feiticaria",
-        "alvo": "Adivinhação · N1",
-        "arte": "adivinhacao"
+        "id": "aura-de-menaca",
+        "nome": "Aura de menaça",
+        "tipo": "natural",
+        "base": {
+          "arte": "fascinacao",
+          "nivel": 2
+        },
+        "resiste": "corpo",
+        "efeito": "Resiste ao entrar, 1 vez por cena.",
+        "usos": {
+          "periodo": "passivo",
+          "recarga": "contínua"
+        }
       }
     ],
     "pericias": {
@@ -7102,22 +7116,18 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Feitiços celestiais (Sp)",
-        "tipo": "feiticaria",
-        "alvo": "Cura / Proteção / Raio · N3–N4",
-        "arte": "raio"
-      },
-      {
-        "efeito": "Maça estonteante",
-        "tipo": "feiticaria",
-        "alvo": "Fascinação · N2",
-        "arte": "fascinacao"
-      },
-      {
+        "id": "mudar-de-forma",
+        "nome": "Mudar de forma",
+        "tipo": "natural",
+        "base": {
+          "arte": "materia",
+          "nivel": 2
+        },
+        "resiste": "nenhum",
         "efeito": "Mudar de forma",
-        "tipo": "feiticaria",
-        "alvo": "Matéria · N2",
-        "arte": "materia"
+        "usos": {
+          "periodo": "avontade"
+        }
       }
     ],
     "pericias": {
@@ -7191,22 +7201,30 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Feitiços de clérigo (Sp)",
-        "tipo": "feiticaria",
-        "alvo": "Cura / Vida / Proteção / Morte · N4",
-        "arte": "morte"
+        "id": "aura-sagrada",
+        "nome": "Aura sagrada",
+        "tipo": "natural",
+        "base": {
+          "arte": "protecao",
+          "nivel": 4
+        },
+        "resiste": "corpo",
+        "efeito": "Resiste ao entrar, 1 vez por cena.",
+        "usos": {
+          "periodo": "passivo",
+          "recarga": "contínua"
+        }
       },
       {
-        "efeito": "Aura sagrada",
-        "tipo": "feiticaria",
-        "alvo": "Proteção · N4",
-        "arte": "protecao"
-      },
-      {
-        "efeito": "Regeneração",
-        "tipo": "proeza",
-        "alvo": "Cerne Vital · Regeneração (b9)",
-        "caminho": "cerne-vital"
+        "id": "regeneracao",
+        "nome": "Regeneração",
+        "tipo": "natural",
+        "resiste": "nenhum",
+        "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
+        "usos": {
+          "periodo": "passivo",
+          "recarga": "contínua"
+        }
       }
     ],
     "pericias": {
@@ -7282,27 +7300,19 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Feitiços supremos (Sp)",
-        "tipo": "feiticaria",
-        "alvo": "várias · N5"
-      },
-      {
-        "efeito": "Arco de luz que mata",
-        "tipo": "feiticaria",
-        "alvo": "Raio / Morte · N5",
-        "arte": "morte"
-      },
-      {
+        "id": "convocar-anjos",
+        "nome": "Convocar anjos",
+        "tipo": "natural",
+        "base": {
+          "arte": "espirito",
+          "nivel": 5
+        },
+        "resiste": "nenhum",
         "efeito": "Convocar anjos",
-        "tipo": "feiticaria",
-        "alvo": "Espírito · N5",
-        "arte": "espirito"
-      },
-      {
-        "efeito": "Ressurreição",
-        "tipo": "feiticaria",
-        "alvo": "Cura · N5",
-        "arte": "cura"
+        "usos": {
+          "periodo": "dia",
+          "quantidade": 1
+        }
       }
     ],
     "pericias": {
@@ -7374,27 +7384,30 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Feitiços (Sp)",
-        "tipo": "feiticaria",
-        "alvo": "várias · N3–N4"
+        "id": "constricao-venenosa",
+        "nome": "Constrição venenosa",
+        "tipo": "natural",
+        "resiste": "corpo",
+        "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
+        "usos": {
+          "periodo": "cena",
+          "quantidade": 3,
+          "recarga": "1 hora"
+        }
       },
       {
-        "efeito": "Constrição venenosa",
-        "tipo": "proeza",
-        "alvo": "Agarrão do Urso + veneno",
-        "caminho": "agarrao-do-urso"
-      },
-      {
+        "id": "mudar-de-forma",
+        "nome": "Mudar de forma",
+        "tipo": "natural",
+        "base": {
+          "arte": "materia",
+          "nivel": 2
+        },
+        "resiste": "nenhum",
         "efeito": "Mudar de forma",
-        "tipo": "feiticaria",
-        "alvo": "Matéria · N2",
-        "arte": "materia"
-      },
-      {
-        "efeito": "Telepatia",
-        "tipo": "feiticaria",
-        "alvo": "Adivinhação · N2",
-        "arte": "adivinhacao"
+        "usos": {
+          "periodo": "avontade"
+        }
       }
     ],
     "pericias": {
@@ -7466,21 +7479,18 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Forma de globo de luz (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Espírito · N3 + Fogo (luz)",
-        "arte": "espirito"
-      },
-      {
-        "efeito": "Raio de luz",
-        "tipo": "feiticaria",
-        "alvo": "Raio · N3",
-        "arte": "raio"
-      },
-      {
-        "efeito": "Feitiços",
-        "tipo": "feiticaria",
-        "alvo": "várias · N3–N4"
+        "id": "forma-de-globo-de-luz",
+        "nome": "Forma de globo de luz",
+        "tipo": "natural",
+        "base": {
+          "arte": "espirito",
+          "nivel": 3
+        },
+        "resiste": "nenhum",
+        "efeito": "Forma de globo de luz",
+        "usos": {
+          "periodo": "avontade"
+        }
       }
     ],
     "pericias": {
@@ -7560,22 +7570,18 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Ilusão, água e comida (Sp)",
-        "tipo": "feiticaria",
-        "alvo": "Água · N2 + Matéria · N2 + Fascinação · N1",
-        "arte": "agua"
-      },
-      {
+        "id": "forma-de-redemoinho",
+        "nome": "Forma de redemoinho",
+        "tipo": "natural",
+        "base": {
+          "arte": "vento",
+          "nivel": 4
+        },
+        "resiste": "nenhum",
         "efeito": "Forma de redemoinho",
-        "tipo": "feiticaria",
-        "alvo": "Vento · N4",
-        "arte": "vento"
-      },
-      {
-        "efeito": "Voo",
-        "tipo": "feiticaria",
-        "alvo": "Vento · N5",
-        "arte": "vento"
+        "usos": {
+          "periodo": "avontade"
+        }
       }
     ],
     "pericias": {
@@ -7647,22 +7653,19 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Conceder desejos (Sp)",
-        "tipo": "feiticaria",
-        "alvo": "Fortuna · N4 / Matéria",
-        "arte": "fortuna"
-      },
-      {
-        "efeito": "Muralha de fogo",
-        "tipo": "feiticaria",
-        "alvo": "Fogo · N3",
-        "arte": "fogo"
-      },
-      {
-        "efeito": "Corpo em chamas",
-        "tipo": "feiticaria",
-        "alvo": "Fogo · N4",
-        "arte": "fogo"
+        "id": "corpo-em-chamas",
+        "nome": "Corpo em chamas",
+        "tipo": "natural",
+        "base": {
+          "arte": "fogo",
+          "nivel": 4
+        },
+        "resiste": "corpo",
+        "efeito": "Resiste ao entrar, 1 vez por cena.",
+        "usos": {
+          "periodo": "passivo",
+          "recarga": "contínua"
+        }
       }
     ],
     "pericias": {
@@ -7732,16 +7735,19 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Calor corporal (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Fogo · N2",
-        "arte": "fogo"
-      },
-      {
-        "efeito": "Constrição de cauda",
-        "tipo": "proeza",
-        "alvo": "Agarrão do Urso · Imobilizar (b2)",
-        "caminho": "agarrao-do-urso"
+        "id": "calor-corporal",
+        "nome": "Calor corporal",
+        "tipo": "natural",
+        "base": {
+          "arte": "fogo",
+          "nivel": 2
+        },
+        "resiste": "corpo",
+        "efeito": "Resiste ao entrar, 1 vez por cena.",
+        "usos": {
+          "periodo": "passivo",
+          "recarga": "contínua"
+        }
       }
     ],
     "pericias": {
@@ -7811,16 +7817,18 @@
     "pendente": true,
     "poderes": [
       {
+        "id": "deslizar-na-pedra-e-empurrao",
+        "nome": "Deslizar na pedra e empurrão",
+        "tipo": "natural",
+        "base": {
+          "arte": "terra",
+          "nivel": 2
+        },
+        "resiste": "nenhum",
         "efeito": "Deslizar na pedra e empurrão",
-        "tipo": "feiticaria",
-        "alvo": "Terra · N2",
-        "arte": "terra"
-      },
-      {
-        "efeito": "Corpo de terra",
-        "tipo": "proeza",
-        "alvo": "Pele de Pedra · Carne de Granito (b7)",
-        "caminho": "pele-de-pedra"
+        "usos": {
+          "periodo": "avontade"
+        }
       }
     ],
     "pericias": {
@@ -7888,15 +7896,18 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Deslizar pela pedra (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Terra · N3",
-        "arte": "terra"
-      },
-      {
-        "efeito": "Devorar metal e gema",
+        "id": "deslizar-pela-pedra",
+        "nome": "Deslizar pela pedra",
         "tipo": "natural",
-        "alvo": "natural (Ex)"
+        "base": {
+          "arte": "terra",
+          "nivel": 3
+        },
+        "resiste": "nenhum",
+        "efeito": "Deslizar pela pedra",
+        "usos": {
+          "periodo": "avontade"
+        }
       }
     ],
     "pericias": {
@@ -7972,16 +7983,18 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Passo-arbóreo e enfeitiço (Sp)",
-        "tipo": "feiticaria",
-        "alvo": "Fascinação · N2 + Conjuração · N2",
-        "arte": "fascinacao"
-      },
-      {
+        "id": "fundir-se-a-arvore",
+        "nome": "Fundir-se à árvore",
+        "tipo": "natural",
+        "base": {
+          "arte": "materia",
+          "nivel": 2
+        },
+        "resiste": "nenhum",
         "efeito": "Fundir-se à árvore",
-        "tipo": "feiticaria",
-        "alvo": "Matéria · N2 / Espírito",
-        "arte": "materia"
+        "usos": {
+          "periodo": "avontade"
+        }
       }
     ],
     "pericias": {
@@ -8055,22 +8068,14 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Beleza cegante (Su)",
-        "tipo": "proeza",
-        "alvo": "Beleza Cativante · Beleza Inebriante (b8)",
-        "caminho": "beleza-cativante"
-      },
-      {
-        "efeito": "(alternativa mágica)",
-        "tipo": "feiticaria",
-        "alvo": "Fascinação · N3",
-        "arte": "fascinacao"
-      },
-      {
-        "efeito": "Feitiços druídicos",
-        "tipo": "feiticaria",
-        "alvo": "Vida / Água · N3",
-        "arte": "agua"
+        "id": "beleza-cegante",
+        "nome": "Beleza cegante",
+        "tipo": "natural",
+        "resiste": "corpo",
+        "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
+        "usos": {
+          "periodo": "cena"
+        }
       }
     ],
     "pericias": {
@@ -8138,16 +8143,19 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Flautas encantadas (Su)",
-        "tipo": "proeza",
-        "alvo": "Musa / Beleza Cativante",
-        "caminho": "beleza-cativante"
-      },
-      {
-        "efeito": "(alternativa mágica)",
-        "tipo": "feiticaria",
-        "alvo": "Fascinação · N2",
-        "arte": "fascinacao"
+        "id": "flautas-encantadas",
+        "nome": "Flautas encantadas",
+        "tipo": "natural",
+        "base": {
+          "arte": "fascinacao",
+          "nivel": 2
+        },
+        "resiste": "mente",
+        "efeito": "Sono, medo ou encanto, à escolha; Defesa Mental.",
+        "usos": {
+          "periodo": "cena",
+          "quantidade": 1
+        }
       }
     ],
     "pericias": {
@@ -8215,21 +8223,18 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Invisibilidade natural (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Fascinação · N1",
-        "arte": "fascinacao"
-      },
-      {
-        "efeito": "Flechas do sono / amnésia",
-        "tipo": "feiticaria",
-        "alvo": "Fascinação · N2",
-        "arte": "fascinacao"
-      },
-      {
-        "efeito": "Voo",
+        "id": "invisibilidade-natural",
+        "nome": "Invisibilidade natural",
         "tipo": "natural",
-        "alvo": "asas"
+        "base": {
+          "arte": "fascinacao",
+          "nivel": 1
+        },
+        "resiste": "nenhum",
+        "efeito": "Invisibilidade natural",
+        "usos": {
+          "periodo": "avontade"
+        }
       }
     ],
     "pericias": {
@@ -8305,22 +8310,18 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Invisibilidade natural (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Fascinação · N1",
-        "arte": "fascinacao"
-      },
-      {
-        "efeito": "Choque elétrico",
-        "tipo": "feiticaria",
-        "alvo": "Raio · N1",
-        "arte": "raio"
-      },
-      {
-        "efeito": "Pairar e voar",
-        "tipo": "feiticaria",
-        "alvo": "Vento · N3",
-        "arte": "vento"
+        "id": "invisibilidade-natural",
+        "nome": "Invisibilidade natural",
+        "tipo": "natural",
+        "base": {
+          "arte": "fascinacao",
+          "nivel": 1
+        },
+        "resiste": "nenhum",
+        "efeito": "Invisibilidade natural",
+        "usos": {
+          "periodo": "avontade"
+        }
       }
     ],
     "pericias": {
@@ -8388,15 +8389,30 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Olhar petrificante (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Matéria · N3",
-        "arte": "materia"
+        "id": "olhar-petrificante",
+        "nome": "Olhar petrificante",
+        "tipo": "natural",
+        "base": {
+          "arte": "materia",
+          "nivel": 3
+        },
+        "resiste": "corpo",
+        "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
+        "usos": {
+          "periodo": "cena"
+        }
       },
       {
-        "efeito": "Cabelos-serpente",
+        "id": "cabelos-serpente",
+        "nome": "Cabelos-serpente",
         "tipo": "natural",
-        "alvo": "veneno natural"
+        "resiste": "corpo",
+        "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
+        "usos": {
+          "periodo": "cena",
+          "quantidade": 3,
+          "recarga": "1 hora"
+        }
       }
     ],
     "pericias": {
@@ -8468,22 +8484,14 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Mudar de forma (Su)",
-        "tipo": "proeza",
-        "alvo": "Camaleão / Máscara",
-        "caminho": "camaleao"
-      },
-      {
-        "efeito": "(alternativa mágica)",
-        "tipo": "feiticaria",
-        "alvo": "Matéria · N2",
-        "arte": "materia"
-      },
-      {
-        "efeito": "Ler pensamentos (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Adivinhação · N1 / Empatia",
-        "arte": "adivinhacao"
+        "id": "mudar-de-forma",
+        "nome": "Mudar de forma",
+        "tipo": "natural",
+        "resiste": "nenhum",
+        "efeito": "Mudar de forma",
+        "usos": {
+          "periodo": "avontade"
+        }
       }
     ],
     "pericias": {
@@ -8549,19 +8557,6 @@
     ],
     "notas": "Habilidades notáveis: Prontidão 3, Atletismo 2.",
     "pendente": true,
-    "poderes": [
-      {
-        "efeito": "Detectar o bem e o mal (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Adivinhação · N1",
-        "arte": "adivinhacao"
-      },
-      {
-        "efeito": "Voo",
-        "tipo": "natural",
-        "alvo": "asas"
-      }
-    ],
     "pericias": {
       "prontidao": 1,
       "esquiva": 1,
@@ -8633,22 +8628,17 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Cura pelo chifre (Sp)",
-        "tipo": "feiticaria",
-        "alvo": "Cura · N3",
-        "arte": "cura"
-      },
-      {
-        "efeito": "Teleporte",
-        "tipo": "feiticaria",
-        "alvo": "Conjuração · N2",
-        "arte": "conjuracao"
-      },
-      {
-        "efeito": "Imune a veneno e encanto",
-        "tipo": "proeza",
-        "alvo": "Sangue Imune · Imunidade (b7)",
-        "caminho": "sangue-imune"
+        "id": "imune-a-veneno-e-encanto",
+        "nome": "Imune a veneno e encanto",
+        "tipo": "natural",
+        "resiste": "corpo",
+        "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
+        "usos": {
+          "periodo": "cena",
+          "quantidade": 3,
+          "recarga": "1 hora"
+        },
+        "ataque": "Garras e presas"
       }
     ],
     "pericias": {
@@ -8730,22 +8720,15 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Regeneração (Su)",
-        "tipo": "proeza",
-        "alvo": "Cerne Vital · Regeneração (b9)",
-        "caminho": "cerne-vital"
-      },
-      {
-        "efeito": "Voo, invisibilidade, forma (Sp)",
-        "tipo": "feiticaria",
-        "alvo": "Vento · N5 + Fascinação · N1 + Matéria · N3",
-        "arte": "vento"
-      },
-      {
-        "efeito": "Cone de frio",
-        "tipo": "feiticaria",
-        "alvo": "Gelo · N2",
-        "arte": "gelo"
+        "id": "regeneracao",
+        "nome": "Regeneração",
+        "tipo": "natural",
+        "resiste": "nenhum",
+        "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
+        "usos": {
+          "periodo": "passivo",
+          "recarga": "contínua"
+        }
       }
     ],
     "pericias": {
@@ -8817,21 +8800,19 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Feitiços arcanos (Sp)",
-        "tipo": "feiticaria",
-        "alvo": "várias · N3–N4"
-      },
-      {
-        "efeito": "Rugido (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Forças · N2 / Vento",
-        "arte": "forcas"
-      },
-      {
-        "efeito": "Ver o invisível",
-        "tipo": "feiticaria",
-        "alvo": "Adivinhação · N2",
-        "arte": "adivinhacao"
+        "id": "rugido",
+        "nome": "Rugido",
+        "tipo": "natural",
+        "base": {
+          "arte": "forcas",
+          "nivel": 2
+        },
+        "resiste": "mente",
+        "efeito": "Área; quem resiste fica imune na cena.",
+        "usos": {
+          "periodo": "cena",
+          "quantidade": 1
+        }
       }
     ],
     "pericias": {
@@ -8899,20 +8880,31 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Olhar encantador (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Fascinação · N3",
-        "arte": "fascinacao"
-      },
-      {
-        "efeito": "Cuspe venenoso",
+        "id": "olhar-encantador",
+        "nome": "Olhar encantador",
         "tipo": "natural",
-        "alvo": "natural"
+        "base": {
+          "arte": "fascinacao",
+          "nivel": 3
+        },
+        "resiste": "corpo",
+        "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
+        "usos": {
+          "periodo": "cena"
+        }
       },
       {
-        "efeito": "Feitiços",
-        "tipo": "feiticaria",
-        "alvo": "várias · N3"
+        "id": "cuspe-venenoso",
+        "nome": "Cuspe venenoso",
+        "tipo": "natural",
+        "resiste": "corpo",
+        "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
+        "usos": {
+          "periodo": "cena",
+          "quantidade": 3,
+          "recarga": "1 hora"
+        },
+        "ataque": "Garras e presas"
       }
     ],
     "pericias": {
@@ -8980,16 +8972,20 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Sopro elétrico (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Raio · N3",
-        "arte": "raio"
-      },
-      {
-        "efeito": "Engolir inteiro (Ex)",
-        "tipo": "proeza",
-        "alvo": "Agarrão do Urso · Aperto Esmagador (b10)",
-        "caminho": "agarrao-do-urso"
+        "id": "sopro-eletrico",
+        "nome": "Sopro elétrico",
+        "tipo": "natural",
+        "base": {
+          "arte": "raio",
+          "nivel": 3
+        },
+        "resiste": "esquiva",
+        "efeito": "Cone ou linha. Esquiva para metade.",
+        "usos": {
+          "periodo": "ticks",
+          "quantidade": 1,
+          "recarga": "24 ticks"
+        }
       }
     ],
     "pericias": {
@@ -9061,16 +9057,18 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Dreno de Sabedoria (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Morte · N2",
-        "arte": "morte"
-      },
-      {
-        "efeito": "Ilusões (Sp)",
-        "tipo": "feiticaria",
-        "alvo": "Fascinação · N3",
-        "arte": "fascinacao"
+        "id": "dreno-de-sabedoria",
+        "nome": "Dreno de Sabedoria",
+        "tipo": "natural",
+        "base": {
+          "arte": "morte",
+          "nivel": 2
+        },
+        "resiste": "corpo",
+        "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+        "usos": {
+          "periodo": "golpe"
+        }
       }
     ],
     "pericias": {
@@ -9142,21 +9140,18 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Fraqueza mística (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Morte · N2",
-        "arte": "morte"
-      },
-      {
-        "efeito": "Mímica e ilusão (Sp)",
-        "tipo": "feiticaria",
-        "alvo": "Fascinação · N2",
-        "arte": "fascinacao"
-      },
-      {
-        "efeito": "Feitiços",
-        "tipo": "feiticaria",
-        "alvo": "várias · N3"
+        "id": "fraqueza-mistica",
+        "nome": "Fraqueza mística",
+        "tipo": "natural",
+        "base": {
+          "arte": "morte",
+          "nivel": 2
+        },
+        "resiste": "corpo",
+        "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+        "usos": {
+          "periodo": "golpe"
+        }
       }
     ],
     "pericias": {
@@ -9226,21 +9221,20 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Constrição e afundar (Ex)",
-        "tipo": "proeza",
-        "alvo": "Agarrão do Urso · Abraço do Titã (b14)",
-        "caminho": "agarrao-do-urso"
-      },
-      {
-        "efeito": "Tinta e tempestade (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Água · N4",
-        "arte": "agua"
-      },
-      {
-        "efeito": "Feitiços",
-        "tipo": "feiticaria",
-        "alvo": "várias · N4"
+        "id": "tinta-e-tempestade",
+        "nome": "Tinta e tempestade",
+        "tipo": "natural",
+        "base": {
+          "arte": "agua",
+          "nivel": 4
+        },
+        "resiste": "esquiva",
+        "efeito": "Esquiva para não prender; escapar com Força ou Atletismo.",
+        "usos": {
+          "periodo": "cena",
+          "quantidade": 3,
+          "recarga": "1 hora"
+        }
       }
     ],
     "pericias": {
@@ -9314,22 +9308,30 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Carapaça reflete magia (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Proteção · N4",
-        "arte": "protecao"
+        "id": "regeneracao-implacavel",
+        "nome": "Regeneração implacável",
+        "tipo": "natural",
+        "resiste": "nenhum",
+        "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
+        "usos": {
+          "periodo": "passivo",
+          "recarga": "contínua"
+        }
       },
       {
-        "efeito": "Regeneração implacável (Su)",
-        "tipo": "proeza",
-        "alvo": "Cerne Vital · Imortalidade Tênue (b15)",
-        "caminho": "cerne-vital"
-      },
-      {
-        "efeito": "Bramido de pânico (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Morte · N3 / Lenda Viva · Ícone (b15)",
-        "arte": "morte"
+        "id": "bramido-de-panico",
+        "nome": "Bramido de pânico",
+        "tipo": "natural",
+        "base": {
+          "arte": "morte",
+          "nivel": 3
+        },
+        "resiste": "mente",
+        "efeito": "Área; quem resiste fica imune na cena.",
+        "usos": {
+          "periodo": "cena",
+          "quantidade": 1
+        }
       }
     ],
     "pericias": {
@@ -9401,16 +9403,35 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Sopro de fogo (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Fogo · N2",
-        "arte": "fogo"
+        "id": "sopro-de-fogo",
+        "nome": "Sopro de fogo",
+        "tipo": "natural",
+        "base": {
+          "arte": "fogo",
+          "nivel": 2
+        },
+        "resiste": "esquiva",
+        "efeito": "Cone ou linha. Esquiva para metade.",
+        "usos": {
+          "periodo": "ticks",
+          "quantidade": 1,
+          "recarga": "24 ticks"
+        }
       },
       {
-        "efeito": "Presença medonha",
-        "tipo": "feiticaria",
-        "alvo": "Morte · N3",
-        "arte": "morte"
+        "id": "presenca-medonha",
+        "nome": "Presença medonha",
+        "tipo": "natural",
+        "base": {
+          "arte": "morte",
+          "nivel": 3
+        },
+        "resiste": "mente",
+        "efeito": "Área; quem resiste fica imune na cena.",
+        "usos": {
+          "periodo": "cena",
+          "quantidade": 1
+        }
       }
     ],
     "pericias": {
@@ -9480,22 +9501,31 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Sopro de fogo (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Fogo · N3",
-        "arte": "fogo"
+        "id": "sopro-de-fogo",
+        "nome": "Sopro de fogo",
+        "tipo": "natural",
+        "base": {
+          "arte": "fogo",
+          "nivel": 3
+        },
+        "resiste": "esquiva",
+        "efeito": "Cone ou linha. Esquiva para metade.",
+        "usos": {
+          "periodo": "ticks",
+          "quantidade": 1,
+          "recarga": "24 ticks"
+        }
       },
       {
-        "efeito": "Presença aterradora",
-        "tipo": "proeza",
-        "alvo": "Lenda Viva · Temor Reverente (b5)",
-        "caminho": "lenda-viva"
-      },
-      {
-        "efeito": "Feitiços iniciais",
-        "tipo": "feiticaria",
-        "alvo": "Fogo · N2",
-        "arte": "fogo"
+        "id": "presenca-aterradora",
+        "nome": "Presença aterradora",
+        "tipo": "natural",
+        "resiste": "mente",
+        "efeito": "Área; quem resiste fica imune na cena.",
+        "usos": {
+          "periodo": "cena",
+          "quantidade": 1
+        }
       }
     ],
     "pericias": {
@@ -9567,27 +9597,50 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Sopro de fogo (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Fogo · N4",
-        "arte": "fogo"
+        "id": "sopro-de-fogo",
+        "nome": "Sopro de fogo",
+        "tipo": "natural",
+        "base": {
+          "arte": "fogo",
+          "nivel": 4
+        },
+        "resiste": "esquiva",
+        "efeito": "Cone ou linha. Esquiva para metade.",
+        "usos": {
+          "periodo": "ticks",
+          "quantidade": 1,
+          "recarga": "24 ticks"
+        }
       },
       {
-        "efeito": "Aura de fogo (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Fogo · N4 / Proteção",
-        "arte": "fogo"
+        "id": "aura-de-fogo",
+        "nome": "Aura de fogo",
+        "tipo": "natural",
+        "base": {
+          "arte": "fogo",
+          "nivel": 4
+        },
+        "resiste": "corpo",
+        "efeito": "Resiste ao entrar, 1 vez por cena.",
+        "usos": {
+          "periodo": "passivo",
+          "recarga": "contínua"
+        }
       },
       {
-        "efeito": "Presença aterradora",
-        "tipo": "feiticaria",
-        "alvo": "Morte · N3",
-        "arte": "morte"
-      },
-      {
-        "efeito": "Feitiços de feiticeiro",
-        "tipo": "feiticaria",
-        "alvo": "várias · N3"
+        "id": "presenca-aterradora",
+        "nome": "Presença aterradora",
+        "tipo": "natural",
+        "base": {
+          "arte": "morte",
+          "nivel": 3
+        },
+        "resiste": "mente",
+        "efeito": "Área; quem resiste fica imune na cena.",
+        "usos": {
+          "periodo": "cena",
+          "quantidade": 1
+        }
       }
     ],
     "pericias": {
@@ -9663,26 +9716,35 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Sopro de fogo (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Fogo · N5",
-        "arte": "fogo"
-      },
-      {
-        "efeito": "Presença que paralisa",
-        "tipo": "feiticaria",
-        "alvo": "Morte · N4 / Fascinação · N4",
-        "arte": "morte"
-      },
-      {
-        "efeito": "Feitiços",
-        "tipo": "feiticaria",
-        "alvo": "várias · N4–N5"
-      },
-      {
-        "efeito": "Voo",
+        "id": "sopro-de-fogo",
+        "nome": "Sopro de fogo",
         "tipo": "natural",
-        "alvo": "asas"
+        "base": {
+          "arte": "fogo",
+          "nivel": 5
+        },
+        "resiste": "esquiva",
+        "efeito": "Cone ou linha. Esquiva para metade.",
+        "usos": {
+          "periodo": "ticks",
+          "quantidade": 1,
+          "recarga": "24 ticks"
+        }
+      },
+      {
+        "id": "presenca-que-paralisa",
+        "nome": "Presença que paralisa",
+        "tipo": "natural",
+        "base": {
+          "arte": "morte",
+          "nivel": 4
+        },
+        "resiste": "mente",
+        "efeito": "Área; quem resiste fica imune na cena.",
+        "usos": {
+          "periodo": "cena",
+          "quantidade": 1
+        }
       }
     ],
     "pericias": {
@@ -9758,27 +9820,35 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Sopro cataclísmico",
-        "tipo": "feiticaria",
-        "alvo": "Fogo · N5",
-        "arte": "fogo"
+        "id": "sopro-cataclismico",
+        "nome": "Sopro cataclísmico",
+        "tipo": "natural",
+        "base": {
+          "arte": "fogo",
+          "nivel": 5
+        },
+        "resiste": "esquiva",
+        "efeito": "Cone ou linha. Esquiva para metade.",
+        "usos": {
+          "periodo": "ticks",
+          "quantidade": 1,
+          "recarga": "24 ticks"
+        }
       },
       {
-        "efeito": "Dobrar o tempo",
-        "tipo": "feiticaria",
-        "alvo": "Tempo · N4",
-        "arte": "tempo"
-      },
-      {
-        "efeito": "Feitiços supremos",
-        "tipo": "feiticaria",
-        "alvo": "várias · N5"
-      },
-      {
-        "efeito": "Presença divina",
-        "tipo": "feiticaria",
-        "alvo": "Morte · N5 + Lenda Viva · Ícone (b15)",
-        "arte": "morte"
+        "id": "presenca-divina",
+        "nome": "Presença divina",
+        "tipo": "natural",
+        "base": {
+          "arte": "morte",
+          "nivel": 5
+        },
+        "resiste": "mente",
+        "efeito": "Área; quem resiste fica imune na cena.",
+        "usos": {
+          "periodo": "cena",
+          "quantidade": 1
+        }
       }
     ],
     "pericias": {
@@ -9850,22 +9920,49 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Sopro de frio (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Gelo · N3",
-        "arte": "gelo"
+        "id": "sopro-de-frio",
+        "nome": "Sopro de frio",
+        "tipo": "natural",
+        "base": {
+          "arte": "gelo",
+          "nivel": 3
+        },
+        "resiste": "esquiva",
+        "efeito": "Cone ou linha. Esquiva para metade.",
+        "usos": {
+          "periodo": "ticks",
+          "quantidade": 1,
+          "recarga": "24 ticks"
+        }
       },
       {
-        "efeito": "Andar no gelo e nevasca",
-        "tipo": "feiticaria",
-        "alvo": "Gelo · N2",
-        "arte": "gelo"
+        "id": "andar-no-gelo-e-nevasca",
+        "nome": "Andar no gelo e nevasca",
+        "tipo": "natural",
+        "base": {
+          "arte": "gelo",
+          "nivel": 2
+        },
+        "resiste": "nenhum",
+        "efeito": "Anda no gelo sem cair; nevasca vira Arte se for conjurada.",
+        "usos": {
+          "periodo": "passivo"
+        }
       },
       {
-        "efeito": "Presença",
-        "tipo": "feiticaria",
-        "alvo": "Morte · N3",
-        "arte": "morte"
+        "id": "presenca",
+        "nome": "Presença",
+        "tipo": "natural",
+        "base": {
+          "arte": "morte",
+          "nivel": 3
+        },
+        "resiste": "mente",
+        "efeito": "Área; quem resiste fica imune na cena.",
+        "usos": {
+          "periodo": "cena",
+          "quantidade": 1
+        }
       }
     ],
     "pericias": {
@@ -9941,22 +10038,35 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Sopro elétrico (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Raio · N4",
-        "arte": "raio"
+        "id": "sopro-eletrico",
+        "nome": "Sopro elétrico",
+        "tipo": "natural",
+        "base": {
+          "arte": "raio",
+          "nivel": 4
+        },
+        "resiste": "esquiva",
+        "efeito": "Cone ou linha. Esquiva para metade.",
+        "usos": {
+          "periodo": "ticks",
+          "quantidade": 1,
+          "recarga": "24 ticks"
+        }
       },
       {
-        "efeito": "Miragem no deserto (Sp)",
-        "tipo": "feiticaria",
-        "alvo": "Fascinação · N3",
-        "arte": "fascinacao"
-      },
-      {
-        "efeito": "Presença",
-        "tipo": "feiticaria",
-        "alvo": "Morte · N3",
-        "arte": "morte"
+        "id": "presenca",
+        "nome": "Presença",
+        "tipo": "natural",
+        "base": {
+          "arte": "morte",
+          "nivel": 3
+        },
+        "resiste": "mente",
+        "efeito": "Área; quem resiste fica imune na cena.",
+        "usos": {
+          "periodo": "cena",
+          "quantidade": 1
+        }
       }
     ],
     "pericias": {
@@ -10028,22 +10138,20 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Sopro de gás (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Água · N3 / Morte (veneno)",
-        "arte": "agua"
-      },
-      {
-        "efeito": "Enredar (Sp)",
-        "tipo": "feiticaria",
-        "alvo": "Vida · N2",
-        "arte": "vida"
-      },
-      {
-        "efeito": "Manipular",
-        "tipo": "proeza",
-        "alvo": "Serpente das Palavras",
-        "caminho": "serpente-das-palavras"
+        "id": "sopro-de-gas",
+        "nome": "Sopro de gás",
+        "tipo": "natural",
+        "base": {
+          "arte": "agua",
+          "nivel": 3
+        },
+        "resiste": "esquiva",
+        "efeito": "Cone ou linha. Esquiva para metade.",
+        "usos": {
+          "periodo": "ticks",
+          "quantidade": 1,
+          "recarga": "24 ticks"
+        }
       }
     ],
     "pericias": {
@@ -10123,28 +10231,50 @@
     "pendente": true,
     "poderes": [
       {
-        "efeito": "Sopro de fogo (Su)",
-        "tipo": "feiticaria",
-        "alvo": "Fogo · N4",
-        "arte": "fogo"
+        "id": "sopro-de-fogo",
+        "nome": "Sopro de fogo",
+        "tipo": "natural",
+        "base": {
+          "arte": "fogo",
+          "nivel": 4
+        },
+        "resiste": "esquiva",
+        "efeito": "Cone ou linha. Esquiva para metade.",
+        "usos": {
+          "periodo": "ticks",
+          "quantidade": 1,
+          "recarga": "24 ticks"
+        }
       },
       {
-        "efeito": "Sopro debilitante",
-        "tipo": "feiticaria",
-        "alvo": "Fascinação · N3",
-        "arte": "fascinacao"
+        "id": "sopro-debilitante",
+        "nome": "Sopro debilitante",
+        "tipo": "natural",
+        "base": {
+          "arte": "fascinacao",
+          "nivel": 3
+        },
+        "resiste": "esquiva",
+        "efeito": "Cone ou linha. Esquiva para metade.",
+        "usos": {
+          "periodo": "ticks",
+          "quantidade": 1,
+          "recarga": "24 ticks"
+        }
       },
       {
-        "efeito": "Feitiços divinos",
-        "tipo": "feiticaria",
-        "alvo": "Cura / Proteção · N4",
-        "arte": "protecao"
-      },
-      {
+        "id": "mudar-de-forma",
+        "nome": "Mudar de forma",
+        "tipo": "natural",
+        "base": {
+          "arte": "materia",
+          "nivel": 3
+        },
+        "resiste": "nenhum",
         "efeito": "Mudar de forma",
-        "tipo": "feiticaria",
-        "alvo": "Matéria · N3",
-        "arte": "materia"
+        "usos": {
+          "periodo": "avontade"
+        }
       }
     ],
     "pericias": {

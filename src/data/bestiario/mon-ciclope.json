@@ -62,14 +62,6 @@
       "ticks": 6
     }
   ],
-  "poderes": [
-    {
-      "efeito": "Lampejo de premonição (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Fortuna · N1 / Adivinhação",
-      "arte": "fortuna"
-    }
-  ],
   "habilidades": [
     {
       "nome": "Lampejo de premonição",
@@ -90,6 +82,10 @@
     {
       "nome": "Couro grosso",
       "descricao": "Absorção alta"
+    },
+    {
+      "nome": "Lampejo de premonição",
+      "descricao": "Sentido passivo."
     }
   ],
   "lore": [

@@ -19,7 +19,8 @@
     "peso": "120 kg"
   },
   "locomocao": {
-    "terra": 4
+    "terra": 4,
+    "escalada": 1
   },
   "centelha": 1,
   "attrs": {
@@ -64,10 +65,19 @@
   ],
   "poderes": [
     {
-      "efeito": "Corrói metal (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Matéria · N2",
-      "arte": "materia"
+      "id": "corroi-metal",
+      "nome": "Corrói metal",
+      "tipo": "natural",
+      "base": {
+        "arte": "materia",
+        "nivel": 2
+      },
+      "resiste": "corpo",
+      "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+      "usos": {
+        "periodo": "golpe"
+      },
+      "ataque": "Garras e presas"
     }
   ],
   "habilidades": [

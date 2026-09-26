@@ -68,22 +68,14 @@
   ],
   "poderes": [
     {
-      "efeito": "Beleza cegante (Su)",
-      "tipo": "proeza",
-      "alvo": "Beleza Cativante · Beleza Inebriante (b8)",
-      "caminho": "beleza-cativante"
-    },
-    {
-      "efeito": "(alternativa mágica)",
-      "tipo": "feiticaria",
-      "alvo": "Fascinação · N3",
-      "arte": "fascinacao"
-    },
-    {
-      "efeito": "Feitiços druídicos",
-      "tipo": "feiticaria",
-      "alvo": "Vida / Água · N3",
-      "arte": "agua"
+      "id": "beleza-cegante",
+      "nome": "Beleza cegante",
+      "tipo": "natural",
+      "resiste": "corpo",
+      "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
+      "usos": {
+        "periodo": "cena"
+      }
     }
   ],
   "habilidades": [
@@ -172,5 +164,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 4
+  "ameacaLegada": 4,
+  "proezaFutura": [
+    {
+      "caminho": "beleza-cativante"
+    }
+  ]
 }

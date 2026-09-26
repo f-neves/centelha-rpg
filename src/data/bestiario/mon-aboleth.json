@@ -67,22 +67,34 @@
   ],
   "poderes": [
     {
-      "efeito": "Muco que transforma pele (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Matéria · N3 + Água · N3",
-      "arte": "materia"
+      "id": "muco-que-transforma-pele",
+      "nome": "Muco que transforma pele",
+      "tipo": "natural",
+      "base": {
+        "arte": "materia",
+        "nivel": 3
+      },
+      "resiste": "corpo",
+      "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+      "usos": {
+        "periodo": "golpe"
+      },
+      "ataque": "Garras e presas"
     },
     {
-      "efeito": "Domínio psíquico",
-      "tipo": "feiticaria",
-      "alvo": "Fascinação · N4",
-      "arte": "fascinacao"
-    },
-    {
-      "efeito": "Telepatia",
-      "tipo": "feiticaria",
-      "alvo": "Adivinhação · N2",
-      "arte": "adivinhacao"
+      "id": "dominio-psiquico",
+      "nome": "Domínio psíquico",
+      "tipo": "natural",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 4
+      },
+      "resiste": "mente",
+      "efeito": "Defesa Mental; dura enquanto o aboleth mantiver contato.",
+      "usos": {
+        "periodo": "dia",
+        "quantidade": 3
+      }
     }
   ],
   "habilidades": [
@@ -117,6 +129,10 @@
     {
       "nome": "Presença alienígena",
       "descricao": "quem falha ao resistir ao domínio também fica Abalado pelo contato mental"
+    },
+    {
+      "nome": "Telepatia",
+      "descricao": "Sentido passivo."
     }
   ],
   "lore": [

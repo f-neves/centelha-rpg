@@ -64,10 +64,18 @@
   ],
   "poderes": [
     {
-      "efeito": "Olhar mortal (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Morte · N5",
-      "arte": "morte"
+      "id": "olhar-mortal",
+      "nome": "Olhar mortal",
+      "tipo": "natural",
+      "base": {
+        "arte": "morte",
+        "nivel": 5
+      },
+      "resiste": "corpo",
+      "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
+      "usos": {
+        "periodo": "cena"
+      }
     }
   ],
   "fraquezas": [

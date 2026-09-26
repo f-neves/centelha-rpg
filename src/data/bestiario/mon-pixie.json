@@ -64,21 +64,18 @@
   ],
   "poderes": [
     {
-      "efeito": "Invisibilidade natural (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Fascinação · N1",
-      "arte": "fascinacao"
-    },
-    {
-      "efeito": "Flechas do sono / amnésia",
-      "tipo": "feiticaria",
-      "alvo": "Fascinação · N2",
-      "arte": "fascinacao"
-    },
-    {
-      "efeito": "Voo",
+      "id": "invisibilidade-natural",
+      "nome": "Invisibilidade natural",
       "tipo": "natural",
-      "alvo": "asas"
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 1
+      },
+      "resiste": "nenhum",
+      "efeito": "Invisibilidade natural",
+      "usos": {
+        "periodo": "avontade"
+      }
     }
   ],
   "habilidades": [

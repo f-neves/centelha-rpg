@@ -67,16 +67,18 @@
   ],
   "poderes": [
     {
+      "id": "deslizar-na-pedra-e-empurrao",
+      "nome": "Deslizar na pedra e empurrão",
+      "tipo": "natural",
+      "base": {
+        "arte": "terra",
+        "nivel": 2
+      },
+      "resiste": "nenhum",
       "efeito": "Deslizar na pedra e empurrão",
-      "tipo": "feiticaria",
-      "alvo": "Terra · N2",
-      "arte": "terra"
-    },
-    {
-      "efeito": "Corpo de terra",
-      "tipo": "proeza",
-      "alvo": "Pele de Pedra · Carne de Granito (b7)",
-      "caminho": "pele-de-pedra"
+      "usos": {
+        "periodo": "avontade"
+      }
     }
   ],
   "fraquezas": [
@@ -161,5 +163,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 4
+  "ameacaLegada": 4,
+  "proezaFutura": [
+    {
+      "caminho": "pele-de-pedra"
+    }
+  ]
 }

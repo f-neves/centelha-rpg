@@ -19,7 +19,8 @@
     "peso": "88 t"
   },
   "locomocao": {
-    "terra": 4
+    "terra": 4,
+    "voo": 20
   },
   "centelha": 9,
   "attrs": {
@@ -66,27 +67,35 @@
   ],
   "poderes": [
     {
-      "efeito": "Sopro cataclísmico",
-      "tipo": "feiticaria",
-      "alvo": "Fogo · N5",
-      "arte": "fogo"
+      "id": "sopro-cataclismico",
+      "nome": "Sopro cataclísmico",
+      "tipo": "natural",
+      "base": {
+        "arte": "fogo",
+        "nivel": 5
+      },
+      "resiste": "esquiva",
+      "efeito": "Cone ou linha. Esquiva para metade.",
+      "usos": {
+        "periodo": "ticks",
+        "quantidade": 1,
+        "recarga": "24 ticks"
+      }
     },
     {
-      "efeito": "Dobrar o tempo",
-      "tipo": "feiticaria",
-      "alvo": "Tempo · N4",
-      "arte": "tempo"
-    },
-    {
-      "efeito": "Feitiços supremos",
-      "tipo": "feiticaria",
-      "alvo": "várias · N5"
-    },
-    {
-      "efeito": "Presença divina",
-      "tipo": "feiticaria",
-      "alvo": "Morte · N5 + Lenda Viva · Ícone (b15)",
-      "arte": "morte"
+      "id": "presenca-divina",
+      "nome": "Presença divina",
+      "tipo": "natural",
+      "base": {
+        "arte": "morte",
+        "nivel": 5
+      },
+      "resiste": "mente",
+      "efeito": "Área; quem resiste fica imune na cena.",
+      "usos": {
+        "periodo": "cena",
+        "quantidade": 1
+      }
     }
   ],
   "resistencias": [

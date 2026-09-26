@@ -64,20 +64,31 @@
   ],
   "poderes": [
     {
-      "efeito": "Olhar encantador (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Fascinação · N3",
-      "arte": "fascinacao"
-    },
-    {
-      "efeito": "Cuspe venenoso",
+      "id": "olhar-encantador",
+      "nome": "Olhar encantador",
       "tipo": "natural",
-      "alvo": "natural"
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 3
+      },
+      "resiste": "corpo",
+      "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
+      "usos": {
+        "periodo": "cena"
+      }
     },
     {
-      "efeito": "Feitiços",
-      "tipo": "feiticaria",
-      "alvo": "várias · N3"
+      "id": "cuspe-venenoso",
+      "nome": "Cuspe venenoso",
+      "tipo": "natural",
+      "resiste": "corpo",
+      "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
+      "usos": {
+        "periodo": "cena",
+        "quantidade": 3,
+        "recarga": "1 hora"
+      },
+      "ataque": "Garras e presas"
     }
   ],
   "habilidades": [

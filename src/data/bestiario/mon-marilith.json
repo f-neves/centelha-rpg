@@ -63,25 +63,6 @@
       "ticks": 6
     }
   ],
-  "poderes": [
-    {
-      "efeito": "Seis lâminas (Ex)",
-      "tipo": "proeza",
-      "alvo": "Dança da Lâmina + Mão Veloz",
-      "caminho": "danca-da-lamina"
-    },
-    {
-      "efeito": "Constrição",
-      "tipo": "proeza",
-      "alvo": "Agarrão do Urso · Aperto Esmagador (b10)",
-      "caminho": "agarrao-do-urso"
-    },
-    {
-      "efeito": "Feitiços (Sp)",
-      "tipo": "feiticaria",
-      "alvo": "várias · N3"
-    }
-  ],
   "fraquezas": [
     "luz",
     "sagrado"
@@ -118,6 +99,14 @@
     {
       "nome": "Presença aterradora",
       "descricao": "falha no teste de Vontade = Abalado ao vê-la em combate"
+    },
+    {
+      "nome": "Seis lâminas",
+      "descricao": "Manobra de combate, sem limite de uso."
+    },
+    {
+      "nome": "Constrição",
+      "descricao": "Depende do agarrão; engolir 1 alvo por vez."
     }
   ],
   "lore": [
@@ -175,5 +164,13 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 6
+  "ameacaLegada": 6,
+  "proezaFutura": [
+    {
+      "caminho": "danca-da-lamina"
+    },
+    {
+      "caminho": "agarrao-do-urso"
+    }
+  ]
 }

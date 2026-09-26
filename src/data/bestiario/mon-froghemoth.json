@@ -18,7 +18,8 @@
     "peso": "3000 kg"
   },
   "locomocao": {
-    "terra": 2
+    "terra": 2,
+    "natacao": 3
   },
   "centelha": 5,
   "attrs": {

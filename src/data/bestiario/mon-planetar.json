@@ -19,7 +19,8 @@
     "peso": "225 kg"
   },
   "locomocao": {
-    "terra": 3
+    "terra": 3,
+    "voo": 9
   },
   "centelha": 7,
   "attrs": {
@@ -68,22 +69,30 @@
   ],
   "poderes": [
     {
-      "efeito": "Feitiços de clérigo (Sp)",
-      "tipo": "feiticaria",
-      "alvo": "Cura / Vida / Proteção / Morte · N4",
-      "arte": "morte"
+      "id": "aura-sagrada",
+      "nome": "Aura sagrada",
+      "tipo": "natural",
+      "base": {
+        "arte": "protecao",
+        "nivel": 4
+      },
+      "resiste": "corpo",
+      "efeito": "Resiste ao entrar, 1 vez por cena.",
+      "usos": {
+        "periodo": "passivo",
+        "recarga": "contínua"
+      }
     },
     {
-      "efeito": "Aura sagrada",
-      "tipo": "feiticaria",
-      "alvo": "Proteção · N4",
-      "arte": "protecao"
-    },
-    {
-      "efeito": "Regeneração",
-      "tipo": "proeza",
-      "alvo": "Cerne Vital · Regeneração (b9)",
-      "caminho": "cerne-vital"
+      "id": "regeneracao",
+      "nome": "Regeneração",
+      "tipo": "natural",
+      "resiste": "nenhum",
+      "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
+      "usos": {
+        "periodo": "passivo",
+        "recarga": "contínua"
+      }
     }
   ],
   "fraquezas": [
@@ -175,5 +184,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 6
+  "ameacaLegada": 6,
+  "proezaFutura": [
+    {
+      "caminho": "cerne-vital"
+    }
+  ]
 }

@@ -66,27 +66,30 @@
   ],
   "poderes": [
     {
-      "efeito": "Feitiços (Sp)",
-      "tipo": "feiticaria",
-      "alvo": "várias · N3–N4"
+      "id": "constricao-venenosa",
+      "nome": "Constrição venenosa",
+      "tipo": "natural",
+      "resiste": "corpo",
+      "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
+      "usos": {
+        "periodo": "cena",
+        "quantidade": 3,
+        "recarga": "1 hora"
+      }
     },
     {
-      "efeito": "Constrição venenosa",
-      "tipo": "proeza",
-      "alvo": "Agarrão do Urso + veneno",
-      "caminho": "agarrao-do-urso"
-    },
-    {
+      "id": "mudar-de-forma",
+      "nome": "Mudar de forma",
+      "tipo": "natural",
+      "base": {
+        "arte": "materia",
+        "nivel": 2
+      },
+      "resiste": "nenhum",
       "efeito": "Mudar de forma",
-      "tipo": "feiticaria",
-      "alvo": "Matéria · N2",
-      "arte": "materia"
-    },
-    {
-      "efeito": "Telepatia",
-      "tipo": "feiticaria",
-      "alvo": "Adivinhação · N2",
-      "arte": "adivinhacao"
+      "usos": {
+        "periodo": "avontade"
+      }
     }
   ],
   "habilidades": [
@@ -113,6 +116,10 @@
     {
       "nome": "Voo",
       "descricao": "voa com asas emplumadas"
+    },
+    {
+      "nome": "Telepatia",
+      "descricao": "Sentido passivo."
     }
   ],
   "lore": [
@@ -176,5 +183,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 5
+  "ameacaLegada": 5,
+  "proezaFutura": [
+    {
+      "caminho": "agarrao-do-urso"
+    }
+  ]
 }

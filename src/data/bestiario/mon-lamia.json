@@ -66,16 +66,18 @@
   ],
   "poderes": [
     {
-      "efeito": "Dreno de Sabedoria (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Morte · N2",
-      "arte": "morte"
-    },
-    {
-      "efeito": "Ilusões (Sp)",
-      "tipo": "feiticaria",
-      "alvo": "Fascinação · N3",
-      "arte": "fascinacao"
+      "id": "dreno-de-sabedoria",
+      "nome": "Dreno de Sabedoria",
+      "tipo": "natural",
+      "base": {
+        "arte": "morte",
+        "nivel": 2
+      },
+      "resiste": "corpo",
+      "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+      "usos": {
+        "periodo": "golpe"
+      }
     }
   ],
   "habilidades": [

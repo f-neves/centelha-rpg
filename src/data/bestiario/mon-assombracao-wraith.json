@@ -66,16 +66,33 @@
   ],
   "poderes": [
     {
-      "efeito": "Dreno de Constituição (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Morte · N2",
-      "arte": "morte"
+      "id": "dreno-de-constituicao",
+      "nome": "Dreno de Constituição",
+      "tipo": "natural",
+      "base": {
+        "arte": "morte",
+        "nivel": 2
+      },
+      "resiste": "corpo",
+      "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+      "usos": {
+        "periodo": "golpe"
+      },
+      "ataque": "Toque dilacerante"
     },
     {
+      "id": "incorporeo",
+      "nome": "Incorpóreo",
+      "tipo": "natural",
+      "base": {
+        "arte": "espirito",
+        "nivel": 3
+      },
+      "resiste": "nenhum",
       "efeito": "Incorpóreo",
-      "tipo": "feiticaria",
-      "alvo": "Espírito · N3",
-      "arte": "espirito"
+      "usos": {
+        "periodo": "avontade"
+      }
     }
   ],
   "fraquezas": [

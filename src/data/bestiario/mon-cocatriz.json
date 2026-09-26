@@ -64,10 +64,19 @@
   ],
   "poderes": [
     {
-      "efeito": "Toque que petrifica (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Matéria · N3",
-      "arte": "materia"
+      "id": "toque-que-petrifica",
+      "nome": "Toque que petrifica",
+      "tipo": "natural",
+      "base": {
+        "arte": "materia",
+        "nivel": 3
+      },
+      "resiste": "corpo",
+      "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+      "usos": {
+        "periodo": "golpe"
+      },
+      "ataque": "Garras e presas"
     }
   ],
   "habilidades": [

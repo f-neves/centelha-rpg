@@ -21,7 +21,8 @@
     "peso": "230 kg"
   },
   "locomocao": {
-    "terra": 3
+    "terra": 3,
+    "voo": 5
   },
   "centelha": 5,
   "attrs": {
@@ -67,16 +68,15 @@
   ],
   "poderes": [
     {
-      "efeito": "Esporos e dança da ruína (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Vida (esporos) + Morte · N3",
-      "arte": "morte"
-    },
-    {
-      "efeito": "Convocar demônios (Sp)",
-      "tipo": "feiticaria",
-      "alvo": "Espírito · N4",
-      "arte": "espirito"
+      "id": "esporos-e-danca-da-ruina",
+      "nome": "Esporos e dança da ruína",
+      "tipo": "natural",
+      "resiste": "corpo",
+      "efeito": "Esporos em quem está colado; dança exige 3 vrocks.",
+      "usos": {
+        "periodo": "dia",
+        "quantidade": 1
+      }
     }
   ],
   "fraquezas": [

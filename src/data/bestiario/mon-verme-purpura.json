@@ -18,7 +18,9 @@
     "peso": "36 t"
   },
   "locomocao": {
-    "terra": 2
+    "terra": 2,
+    "natacao": 1,
+    "escavacao": 2
   },
   "centelha": 1,
   "attrs": {

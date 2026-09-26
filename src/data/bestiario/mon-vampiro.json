@@ -19,7 +19,8 @@
     "peso": "75 kg"
   },
   "locomocao": {
-    "terra": 3
+    "terra": 3,
+    "escalada": 2
   },
   "centelha": 5,
   "attrs": {
@@ -70,34 +71,54 @@
   ],
   "poderes": [
     {
-      "efeito": "Dominar (Sp)",
-      "tipo": "feiticaria",
-      "alvo": "Fascinação · N3",
-      "arte": "fascinacao"
-    },
-    {
+      "id": "forma-gasosa",
+      "nome": "Forma gasosa",
+      "tipo": "natural",
+      "resiste": "nenhum",
       "efeito": "Forma gasosa",
-      "tipo": "feiticaria",
-      "alvo": "Espírito / Vento · N3",
-      "arte": "vento"
+      "usos": {
+        "periodo": "avontade"
+      }
     },
     {
+      "id": "filhos-da-noite-convoca",
+      "nome": "Filhos da noite (convoca)",
+      "tipo": "natural",
+      "base": {
+        "arte": "espirito",
+        "nivel": 2
+      },
+      "resiste": "nenhum",
       "efeito": "Filhos da noite (convoca)",
-      "tipo": "feiticaria",
-      "alvo": "Espírito · N2",
-      "arte": "espirito"
+      "usos": {
+        "periodo": "dia",
+        "quantidade": 1
+      }
     },
     {
-      "efeito": "Regeneração",
-      "tipo": "proeza",
-      "alvo": "Cerne Vital · Regeneração (b9)",
-      "caminho": "cerne-vital"
+      "id": "regeneracao",
+      "nome": "Regeneração",
+      "tipo": "natural",
+      "resiste": "nenhum",
+      "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
+      "usos": {
+        "periodo": "passivo",
+        "recarga": "contínua"
+      }
     },
     {
-      "efeito": "Dreno de sangue",
-      "tipo": "feiticaria",
-      "alvo": "Morte · N1",
-      "arte": "morte"
+      "id": "dreno-de-sangue",
+      "nome": "Dreno de sangue",
+      "tipo": "natural",
+      "base": {
+        "arte": "morte",
+        "nivel": 1
+      },
+      "resiste": "corpo",
+      "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+      "usos": {
+        "periodo": "golpe"
+      }
     }
   ],
   "fraquezas": [
@@ -204,5 +225,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 5
+  "ameacaLegada": 5,
+  "proezaFutura": [
+    {
+      "caminho": "cerne-vital"
+    }
+  ]
 }

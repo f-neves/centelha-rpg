@@ -68,22 +68,18 @@
   ],
   "poderes": [
     {
-      "efeito": "Ilusões e ler pensamentos (Sp)",
-      "tipo": "feiticaria",
-      "alvo": "Fascinação · N4 + Adivinhação · N2",
-      "arte": "fascinacao"
-    },
-    {
+      "id": "mudar-de-forma",
+      "nome": "Mudar de forma",
+      "tipo": "natural",
+      "base": {
+        "arte": "materia",
+        "nivel": 3
+      },
+      "resiste": "nenhum",
       "efeito": "Mudar de forma",
-      "tipo": "feiticaria",
-      "alvo": "Matéria · N3",
-      "arte": "materia"
-    },
-    {
-      "efeito": "Só arma benta fere (RM)",
-      "tipo": "feiticaria",
-      "alvo": "Proteção · N4",
-      "arte": "protecao"
+      "usos": {
+        "periodo": "avontade"
+      }
     }
   ],
   "habilidades": [

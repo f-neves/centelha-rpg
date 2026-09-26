@@ -68,33 +68,48 @@
   ],
   "poderes": [
     {
-      "efeito": "Aura de medo (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Morte · N3 / Lenda Viva",
-      "arte": "morte"
+      "id": "aura-de-medo",
+      "nome": "Aura de medo",
+      "tipo": "natural",
+      "base": {
+        "arte": "morte",
+        "nivel": 3
+      },
+      "resiste": "corpo",
+      "efeito": "Resiste ao entrar, 1 vez por cena.",
+      "usos": {
+        "periodo": "passivo",
+        "recarga": "contínua"
+      }
     },
     {
-      "efeito": "Feitiços e desejo",
-      "tipo": "feiticaria",
-      "alvo": "várias · N4–N5"
-    },
-    {
+      "id": "convocar-diabos",
+      "nome": "Convocar diabos",
+      "tipo": "natural",
+      "base": {
+        "arte": "espirito",
+        "nivel": 4
+      },
+      "resiste": "nenhum",
       "efeito": "Convocar diabos",
-      "tipo": "feiticaria",
-      "alvo": "Espírito · N4",
-      "arte": "espirito"
+      "usos": {
+        "periodo": "dia",
+        "quantidade": 1
+      }
     },
     {
-      "efeito": "Labareda",
-      "tipo": "feiticaria",
-      "alvo": "Fogo · N4",
-      "arte": "fogo"
-    },
-    {
-      "efeito": "Doença (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Morte · N3",
-      "arte": "morte"
+      "id": "doenca",
+      "nome": "Doença",
+      "tipo": "natural",
+      "base": {
+        "arte": "morte",
+        "nivel": 3
+      },
+      "resiste": "corpo",
+      "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+      "usos": {
+        "periodo": "golpe"
+      }
     }
   ],
   "fraquezas": [

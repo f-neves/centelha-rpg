@@ -19,7 +19,8 @@
     "peso": "360 kg"
   },
   "locomocao": {
-    "terra": 4
+    "terra": 4,
+    "escalada": 3
   },
   "centelha": 2,
   "attrs": {

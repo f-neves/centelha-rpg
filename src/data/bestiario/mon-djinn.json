@@ -67,22 +67,18 @@
   ],
   "poderes": [
     {
-      "efeito": "Ilusão, água e comida (Sp)",
-      "tipo": "feiticaria",
-      "alvo": "Água · N2 + Matéria · N2 + Fascinação · N1",
-      "arte": "agua"
-    },
-    {
+      "id": "forma-de-redemoinho",
+      "nome": "Forma de redemoinho",
+      "tipo": "natural",
+      "base": {
+        "arte": "vento",
+        "nivel": 4
+      },
+      "resiste": "nenhum",
       "efeito": "Forma de redemoinho",
-      "tipo": "feiticaria",
-      "alvo": "Vento · N4",
-      "arte": "vento"
-    },
-    {
-      "efeito": "Voo",
-      "tipo": "feiticaria",
-      "alvo": "Vento · N5",
-      "arte": "vento"
+      "usos": {
+        "periodo": "avontade"
+      }
     }
   ],
   "resistencias": [

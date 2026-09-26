@@ -76,13 +76,15 @@ pela lista `PERICIAS_LEGADAS` do `criatura-schema.mjs`, que diz para onde cada u
 | `tags` | marcas livres (`centelha`, `incorpóreo`, `mágico`...) | busca e editor; a Furtividade soma pela tag |
 | `imagem` | o caminho da arte em `public/`, ou `null` | `imagem` e `semImagem` no card |
 | `porte` | o rótulo: Miúdo, Pequeno, Médio, Grande, Enorme, Imenso, Colossal | PV por porte, couraça de porte, Furtividade; `porte` no card |
-| `dimensoes` | `{medida, peso}`, em texto | o card |
+| `dimensoes` | `{medida, peso}`, em texto, mais `comprimento`/`largura`/`altura`/`envergadura` (metros) e `forma` (humanoide, quadrupede, serpentiforme, alado, amorfo, radial), opcionais desde o B14 fase 2. Forma `humanoide` (ou ausente) é o padrão implícito do porte; qualquer outra forma exige as três medidas escritas | o card; as três medidas ainda não alimentam conta nenhuma (a régua é nova, o preenchimento fica para quando precisar) |
 | `material` | de que a criatura é feita (lista em `scripts/lib-materiais.mjs`) | fraquezas e resistências, quando a ficha não as escreve |
+| `constructo` | `{semVida: true}`, opcional (B14 fase 2). Marca o autômato sem vida: mantém Vigor (PV e Absorção pela fórmula normal), mas não testa Vigor, Resistência nem Virtude, não cura nem regenera sozinho, e fica imune a tudo que se resiste por "corpo" | nada ainda: só o dado está marcado, nenhum código de combate lê a flag para aplicar o comportamento |
 | `locomocao` | metros por Tick, por modo: `terra`, `voo`, `natacao`, `escalada`, `escavacao` | o `deslocamento` da mesa (ver abaixo) |
 | `ataques` | os ataques naturais, no formato compacto (`atrib`, `pericia`, `dado`, `mao`, `tipo`, `acerto`, `perf`, `ticks`, `distancia`, `notas`) | a parada, o dano, o nível de perfuração e a Velocidade de cada ataque |
 | `bonus` | soma por cima da conta: `pv`, `defesa`, `defesaSocial`, `defesaMental`, `vontade`, `resistPerf`, `iniciativa`, `absorcao` e `absorcao_<modo>` | os derivados. É visível de propósito: a criatura continua na régua e a diferença aparece |
 | `couraca` | `{couraca, resistPerf}` que substitui a couraça de porte | Absorção dos letais e Resistência à Perfuração. Só o roc usa (pássaro imenso sem couraça) |
-| `poderes` | `{efeito, tipo, alvo, arte?, caminho?}`, com `tipo` natural, proeza ou feitiçaria | `poderes` no card |
+| `poderes` | dois formatos convivem desde o B14 fase 2. **Natural** (novo): `{id, nome, tipo: "natural", base?: {arte, nivel}, resiste: "esquiva"\|"corpo"\|"mente"\|"nenhum", area?, efeito, usos: {quantidade?, periodo, recarga?}}`: não passa pelo portão de Centelha nem usa Mana. **Legado** (proeza/feitiçaria, e `natural` de antes da classificação da tabela de poderes): `{efeito, tipo, alvo, arte?, caminho?}` | `poderes` no card |
+| `proezaFutura` | `[{caminho, tecnica?}]`, opcional (B14 fase 2, item 2 da resposta): guarda a referência ao Caminho/Técnica de um poder que a tabela reclassificou como natural (ou moveu para `ataques`/`habilidades`), para quando as Proezas fecharem. Inerte: nenhum gerador lê | nada ainda |
 | `fraquezas`, `resistencias` | palavras do vocabulário fechado (`elementos-vocab.json`) | `combate.fraquezas` e `combate.resistencias` |
 | `habilidades` | `{nome, descricao}`: os dons em prosa | o card |
 | `lore` | `{titulo, texto}` | o card |
@@ -92,6 +94,7 @@ pela lista `PERICIAS_LEGADAS` do `criatura-schema.mjs`, que diz para onde cada u
 | `fonte` | a origem: `livro`, `nome`, `cr`, `tipo`, `tamanho`, `valores` (os seis valores de habilidade crus), `pericias`, `nota`, `exemplo`, e `deslocamento` (`ft`, `origem`, `nota` da semeadura) | nada na conta. É o rastro, para recalibrar sem voltar ao PDF |
 | `variantes` | `{id, nome, delta}`, vazio por enquanto | nada ainda |
 | `ameacaLegada` | o desafio de hoje, de 1 a 6 | só `ameaca` na saída, para exibir até a calibração nova |
+| `desafio` | a saída da recalibração (B14 fase 2, item A.3/item 5): `{individual?, maisUm?, bando?: {quantidade, desafio}}`, escala 0-12 (0 = feito para 4 personagens de Centelha 0). `maisUm` é quantos indivíduos juntos sobem o desafio em 1 grau. Vazio até a bancada rodar; a recompensa de caça usa só `individual` | nada ainda |
 
 ### O deslocamento
 

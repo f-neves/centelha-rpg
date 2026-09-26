@@ -62,20 +62,6 @@
       "ticks": 6
     }
   ],
-  "poderes": [
-    {
-      "efeito": "Faro no labirinto (Su)",
-      "tipo": "proeza",
-      "alvo": "Caçador · Faro (b2)",
-      "caminho": "cacador"
-    },
-    {
-      "efeito": "Investida chifruda",
-      "tipo": "proeza",
-      "alvo": "Sangue Fervente · Investida Furiosa (b5)",
-      "caminho": "sangue-fervente"
-    }
-  ],
   "habilidades": [
     {
       "nome": "Investida chifruda",
@@ -96,6 +82,14 @@
     {
       "nome": "Casco firme",
       "descricao": "resistente a Derrubar e terrenos difíceis"
+    },
+    {
+      "nome": "Faro no labirinto",
+      "descricao": "Sentido passivo."
+    },
+    {
+      "nome": "Investida chifruda",
+      "descricao": "Manobra de combate, sem limite de uso."
     }
   ],
   "lore": [
@@ -153,5 +147,13 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 3
+  "ameacaLegada": 3,
+  "proezaFutura": [
+    {
+      "caminho": "cacador"
+    },
+    {
+      "caminho": "sangue-fervente"
+    }
+  ]
 }

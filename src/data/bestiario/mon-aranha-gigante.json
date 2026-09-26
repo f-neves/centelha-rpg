@@ -18,7 +18,8 @@
     "peso": "25 kg"
   },
   "locomocao": {
-    "terra": 3
+    "terra": 3,
+    "escalada": 2
   },
   "centelha": 0,
   "attrs": {
@@ -60,14 +61,29 @@
   ],
   "poderes": [
     {
-      "efeito": "Teia",
+      "id": "teia",
+      "nome": "Teia",
       "tipo": "natural",
-      "alvo": "natural (Ex)"
+      "resiste": "esquiva",
+      "efeito": "Esquiva para não prender; escapar com Força ou Atletismo.",
+      "usos": {
+        "periodo": "cena",
+        "quantidade": 3,
+        "recarga": "1 hora"
+      }
     },
     {
-      "efeito": "Mordida venenosa",
+      "id": "mordida-venenosa",
+      "nome": "Mordida venenosa",
       "tipo": "natural",
-      "alvo": "veneno natural"
+      "resiste": "corpo",
+      "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
+      "usos": {
+        "periodo": "cena",
+        "quantidade": 3,
+        "recarga": "1 hora"
+      },
+      "ataque": "Garras e presas"
     }
   ],
   "habilidades": [

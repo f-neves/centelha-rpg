@@ -61,19 +61,6 @@
       "ticks": 6
     }
   ],
-  "poderes": [
-    {
-      "efeito": "Visão aguçada",
-      "tipo": "proeza",
-      "alvo": "Olho Aguçado · Sentidos Apurados (b1)",
-      "caminho": "olho-agucado"
-    },
-    {
-      "efeito": "Voo",
-      "tipo": "natural",
-      "alvo": "asas (natural)"
-    }
-  ],
   "habilidades": [
     {
       "nome": "Voo veloz",
@@ -94,6 +81,10 @@
     {
       "nome": "Nobreza selvagem",
       "descricao": "imune a Medo de criaturas menores que ela"
+    },
+    {
+      "nome": "Visão aguçada",
+      "descricao": "Sentido passivo."
     }
   ],
   "lore": [
@@ -152,5 +143,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 3
+  "ameacaLegada": 3,
+  "proezaFutura": [
+    {
+      "caminho": "olho-agucado"
+    }
+  ]
 }

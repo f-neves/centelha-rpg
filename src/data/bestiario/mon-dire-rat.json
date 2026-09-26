@@ -18,7 +18,9 @@
     "peso": "até 11 kg"
   },
   "locomocao": {
-    "terra": 4
+    "terra": 4,
+    "natacao": 2,
+    "escalada": 2
   },
   "centelha": 0,
   "attrs": {

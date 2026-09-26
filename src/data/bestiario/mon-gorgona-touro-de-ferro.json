@@ -64,10 +64,20 @@
   ],
   "poderes": [
     {
-      "efeito": "Sopro petrificante (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Matéria · N4",
-      "arte": "materia"
+      "id": "sopro-petrificante",
+      "nome": "Sopro petrificante",
+      "tipo": "natural",
+      "base": {
+        "arte": "materia",
+        "nivel": 4
+      },
+      "resiste": "esquiva",
+      "efeito": "Cone ou linha. Esquiva para metade.",
+      "usos": {
+        "periodo": "ticks",
+        "quantidade": 1,
+        "recarga": "24 ticks"
+      }
     }
   ],
   "habilidades": [

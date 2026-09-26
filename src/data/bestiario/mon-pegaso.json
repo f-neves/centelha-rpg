@@ -19,7 +19,8 @@
     "peso": "450 kg"
   },
   "locomocao": {
-    "terra": 6
+    "terra": 6,
+    "voo": 12
   },
   "centelha": 4,
   "attrs": {
@@ -62,19 +63,6 @@
       "ticks": 6
     }
   ],
-  "poderes": [
-    {
-      "efeito": "Detectar o bem e o mal (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Adivinhação · N1",
-      "arte": "adivinhacao"
-    },
-    {
-      "efeito": "Voo",
-      "tipo": "natural",
-      "alvo": "asas"
-    }
-  ],
   "habilidades": [
     {
       "nome": "Voo majestoso",
@@ -99,6 +87,10 @@
     {
       "nome": "Só o puro cavalga",
       "descricao": "só aceita cavaleiros de intenções verdadeiramente boas"
+    },
+    {
+      "nome": "Detectar o bem e o mal",
+      "descricao": "Sentido passivo."
     }
   ],
   "lore": [

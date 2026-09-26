@@ -19,7 +19,8 @@
     "peso": "450 kg"
   },
   "locomocao": {
-    "terra": 2
+    "terra": 2,
+    "escavacao": 2
   },
   "centelha": 3,
   "attrs": {
@@ -64,15 +65,18 @@
   ],
   "poderes": [
     {
-      "efeito": "Deslizar pela pedra (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Terra · N3",
-      "arte": "terra"
-    },
-    {
-      "efeito": "Devorar metal e gema",
+      "id": "deslizar-pela-pedra",
+      "nome": "Deslizar pela pedra",
       "tipo": "natural",
-      "alvo": "natural (Ex)"
+      "base": {
+        "arte": "terra",
+        "nivel": 3
+      },
+      "resiste": "nenhum",
+      "efeito": "Deslizar pela pedra",
+      "usos": {
+        "periodo": "avontade"
+      }
     }
   ],
   "fraquezas": [
@@ -101,6 +105,10 @@
     {
       "nome": "Faro para tesouro",
       "descricao": "detecta metais e gemas a até 18m"
+    },
+    {
+      "nome": "Devorar metal e gema",
+      "descricao": "Manobra de combate, sem limite de uso."
     }
   ],
   "lore": [

@@ -58,14 +58,6 @@
       "ticks": 5
     }
   ],
-  "poderes": [
-    {
-      "efeito": "Faro e caça em matilha",
-      "tipo": "proeza",
-      "alvo": "Caçador · Faro (b2)",
-      "caminho": "cacador"
-    }
-  ],
   "habilidades": [
     {
       "nome": "Caça em matilha",
@@ -82,6 +74,10 @@
     {
       "nome": "Sentidos alerta",
       "descricao": "Iniciativa alta, dificilmente é Surpreendido"
+    },
+    {
+      "nome": "Faro e caça em matilha",
+      "descricao": "Sentido passivo."
     }
   ],
   "lore": [
@@ -137,5 +133,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 2
+  "ameacaLegada": 2,
+  "proezaFutura": [
+    {
+      "caminho": "cacador"
+    }
+  ]
 }

@@ -65,10 +65,15 @@
   ],
   "poderes": [
     {
-      "efeito": "Regeneração fraca (Ex)",
-      "tipo": "proeza",
-      "alvo": "Cerne Vital · Recuperação Acelerada (b1)",
-      "caminho": "cerne-vital"
+      "id": "regeneracao-fraca",
+      "nome": "Regeneração fraca",
+      "tipo": "natural",
+      "resiste": "nenhum",
+      "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
+      "usos": {
+        "periodo": "passivo",
+        "recarga": "contínua"
+      }
     }
   ],
   "fraquezas": [
@@ -139,5 +144,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 2
+  "ameacaLegada": 2,
+  "proezaFutura": [
+    {
+      "caminho": "cerne-vital"
+    }
+  ]
 }

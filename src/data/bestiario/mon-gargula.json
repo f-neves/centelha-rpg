@@ -19,7 +19,8 @@
     "peso": "180 kg (pedra densa)"
   },
   "locomocao": {
-    "terra": 4
+    "terra": 4,
+    "voo": 6
   },
   "centelha": 1,
   "attrs": {
@@ -59,20 +60,6 @@
       "ticks": 5
     }
   ],
-  "poderes": [
-    {
-      "efeito": "Pele de pedra / RD",
-      "tipo": "proeza",
-      "alvo": "Pele de Pedra · Pele de Pedra (b4)",
-      "caminho": "pele-de-pedra"
-    },
-    {
-      "efeito": "Imobilidade (freeze)",
-      "tipo": "proeza",
-      "alvo": "Máscara / Sombra",
-      "caminho": "mascara"
-    }
-  ],
   "resistencias": [
     "corte",
     "fogo",
@@ -98,6 +85,10 @@
     {
       "nome": "Corpo pétreo",
       "descricao": "imune a Veneno e não precisa respirar"
+    },
+    {
+      "nome": "Imobilidade (freeze)",
+      "descricao": "Manobra de combate, sem limite de uso."
     }
   ],
   "lore": [
@@ -154,5 +145,13 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 3
+  "ameacaLegada": 3,
+  "proezaFutura": [
+    {
+      "caminho": "pele-de-pedra"
+    },
+    {
+      "caminho": "mascara"
+    }
+  ]
 }

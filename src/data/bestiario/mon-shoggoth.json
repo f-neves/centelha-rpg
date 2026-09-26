@@ -17,7 +17,9 @@
     "peso": "massa disforme de várias t"
   },
   "locomocao": {
-    "terra": 5
+    "terra": 5,
+    "natacao": 5,
+    "escalada": 2
   },
   "centelha": 0,
   "attrs": {

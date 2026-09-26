@@ -67,16 +67,18 @@
   ],
   "poderes": [
     {
-      "efeito": "Deslocamento (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Fascinação · N1 (ilusão) / Proteção",
-      "arte": "fascinacao"
-    },
-    {
-      "efeito": "Tentáculos",
-      "tipo": "proeza",
-      "alvo": "Agarrão do Urso · Imobilizar (b2)",
-      "caminho": "agarrao-do-urso"
+      "id": "deslocamento",
+      "nome": "Deslocamento",
+      "tipo": "natural",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 1
+      },
+      "resiste": "nenhum",
+      "efeito": "Deslocamento",
+      "usos": {
+        "periodo": "avontade"
+      }
     }
   ],
   "habilidades": [
@@ -99,6 +101,10 @@
     {
       "nome": "Prontidão felina",
       "descricao": "Prontidão 2"
+    },
+    {
+      "nome": "Tentáculos",
+      "descricao": "Depende do agarrão; engolir 1 alvo por vez."
     }
   ],
   "lore": [
@@ -155,5 +161,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 3
+  "ameacaLegada": 3,
+  "proezaFutura": [
+    {
+      "caminho": "agarrao-do-urso"
+    }
+  ]
 }

@@ -60,9 +60,17 @@
   ],
   "poderes": [
     {
-      "efeito": "Ferrão venenoso",
+      "id": "ferrao-venenoso",
+      "nome": "Ferrão venenoso",
       "tipo": "natural",
-      "alvo": "veneno natural (tag da arma)"
+      "resiste": "corpo",
+      "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
+      "usos": {
+        "periodo": "cena",
+        "quantidade": 3,
+        "recarga": "1 hora"
+      },
+      "ataque": "Garras e presas"
     }
   ],
   "habilidades": [

@@ -68,27 +68,30 @@
   ],
   "poderes": [
     {
-      "efeito": "Invisibilidade (Sp)",
-      "tipo": "feiticaria",
-      "alvo": "Fascinação · N1",
-      "arte": "fascinacao"
-    },
-    {
-      "efeito": "Adivinhação",
-      "tipo": "feiticaria",
-      "alvo": "Adivinhação · N1",
-      "arte": "adivinhacao"
-    },
-    {
-      "efeito": "Forma alternativa",
-      "tipo": "feiticaria",
-      "alvo": "Matéria · N2",
-      "arte": "materia"
-    },
-    {
-      "efeito": "Ferrão venenoso",
+      "id": "forma-alternativa",
+      "nome": "Forma alternativa",
       "tipo": "natural",
-      "alvo": "natural"
+      "base": {
+        "arte": "materia",
+        "nivel": 2
+      },
+      "resiste": "nenhum",
+      "efeito": "Forma alternativa",
+      "usos": {
+        "periodo": "avontade"
+      }
+    },
+    {
+      "id": "ferrao-venenoso",
+      "nome": "Ferrão venenoso",
+      "tipo": "natural",
+      "resiste": "corpo",
+      "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
+      "usos": {
+        "periodo": "cena",
+        "quantidade": 3,
+        "recarga": "1 hora"
+      }
     }
   ],
   "fraquezas": [

@@ -18,7 +18,8 @@
     "peso": "150 kg"
   },
   "locomocao": {
-    "terra": 1
+    "terra": 1,
+    "escalada": 1
   },
   "centelha": 1,
   "attrs": {
@@ -60,15 +61,26 @@
   ],
   "poderes": [
     {
-      "efeito": "Assumir forma de objeto (Su)",
-      "tipo": "proeza",
-      "alvo": "Camaleão",
-      "caminho": "camaleao"
+      "id": "assumir-forma-de-objeto",
+      "nome": "Assumir forma de objeto",
+      "tipo": "natural",
+      "resiste": "nenhum",
+      "efeito": "Assumir forma de objeto",
+      "usos": {
+        "periodo": "avontade"
+      }
     },
     {
-      "efeito": "Cola aderente",
+      "id": "cola-aderente",
+      "nome": "Cola aderente",
       "tipo": "natural",
-      "alvo": "natural (Ex)"
+      "resiste": "esquiva",
+      "efeito": "Esquiva para não prender; escapar com Força ou Atletismo.",
+      "usos": {
+        "periodo": "cena",
+        "quantidade": 3,
+        "recarga": "1 hora"
+      }
     }
   ],
   "habilidades": [
@@ -143,5 +155,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 3
+  "ameacaLegada": 3,
+  "proezaFutura": [
+    {
+      "caminho": "camaleao"
+    }
+  ]
 }

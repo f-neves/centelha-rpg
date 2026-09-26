@@ -19,7 +19,8 @@
     "peso": "sem peso material (incorpóreo)"
   },
   "locomocao": {
-    "terra": 3
+    "terra": 3,
+    "voo": 3
   },
   "centelha": 4,
   "attrs": {

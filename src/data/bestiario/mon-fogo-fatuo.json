@@ -66,22 +66,18 @@
   ],
   "poderes": [
     {
-      "efeito": "Invisibilidade natural (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Fascinação · N1",
-      "arte": "fascinacao"
-    },
-    {
-      "efeito": "Choque elétrico",
-      "tipo": "feiticaria",
-      "alvo": "Raio · N1",
-      "arte": "raio"
-    },
-    {
-      "efeito": "Pairar e voar",
-      "tipo": "feiticaria",
-      "alvo": "Vento · N3",
-      "arte": "vento"
+      "id": "invisibilidade-natural",
+      "nome": "Invisibilidade natural",
+      "tipo": "natural",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 1
+      },
+      "resiste": "nenhum",
+      "efeito": "Invisibilidade natural",
+      "usos": {
+        "periodo": "avontade"
+      }
     }
   ],
   "habilidades": [

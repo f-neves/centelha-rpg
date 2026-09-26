@@ -67,28 +67,50 @@
   ],
   "poderes": [
     {
-      "efeito": "Sopro de fogo (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Fogo · N4",
-      "arte": "fogo"
+      "id": "sopro-de-fogo",
+      "nome": "Sopro de fogo",
+      "tipo": "natural",
+      "base": {
+        "arte": "fogo",
+        "nivel": 4
+      },
+      "resiste": "esquiva",
+      "efeito": "Cone ou linha. Esquiva para metade.",
+      "usos": {
+        "periodo": "ticks",
+        "quantidade": 1,
+        "recarga": "24 ticks"
+      }
     },
     {
-      "efeito": "Sopro debilitante",
-      "tipo": "feiticaria",
-      "alvo": "Fascinação · N3",
-      "arte": "fascinacao"
+      "id": "sopro-debilitante",
+      "nome": "Sopro debilitante",
+      "tipo": "natural",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 3
+      },
+      "resiste": "esquiva",
+      "efeito": "Cone ou linha. Esquiva para metade.",
+      "usos": {
+        "periodo": "ticks",
+        "quantidade": 1,
+        "recarga": "24 ticks"
+      }
     },
     {
-      "efeito": "Feitiços divinos",
-      "tipo": "feiticaria",
-      "alvo": "Cura / Proteção · N4",
-      "arte": "protecao"
-    },
-    {
+      "id": "mudar-de-forma",
+      "nome": "Mudar de forma",
+      "tipo": "natural",
+      "base": {
+        "arte": "materia",
+        "nivel": 3
+      },
+      "resiste": "nenhum",
       "efeito": "Mudar de forma",
-      "tipo": "feiticaria",
-      "alvo": "Matéria · N3",
-      "arte": "materia"
+      "usos": {
+        "periodo": "avontade"
+      }
     }
   ],
   "resistencias": [

@@ -21,7 +21,8 @@
     "peso": "320 kg"
   },
   "locomocao": {
-    "terra": 3
+    "terra": 3,
+    "natacao": 3
   },
   "centelha": 5,
   "attrs": {
@@ -67,16 +68,19 @@
   ],
   "poderes": [
     {
-      "efeito": "Fedor nauseante (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Vento · N2 / Morte",
-      "arte": "vento"
-    },
-    {
-      "efeito": "Convocar (Sp)",
-      "tipo": "feiticaria",
-      "alvo": "Espírito · N4",
-      "arte": "espirito"
+      "id": "fedor-nauseante",
+      "nome": "Fedor nauseante",
+      "tipo": "natural",
+      "base": {
+        "arte": "vento",
+        "nivel": 2
+      },
+      "resiste": "corpo",
+      "efeito": "Resiste ao entrar, 1 vez por cena.",
+      "usos": {
+        "periodo": "passivo",
+        "recarga": "contínua"
+      }
     }
   ],
   "fraquezas": [

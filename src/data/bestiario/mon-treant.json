@@ -65,20 +65,6 @@
       "ticks": 7
     }
   ],
-  "poderes": [
-    {
-      "efeito": "Animar árvores (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Vida · N2",
-      "arte": "vida"
-    },
-    {
-      "efeito": "Casca / RD",
-      "tipo": "proeza",
-      "alvo": "Pele de Pedra · Pele de Pedra (b4)",
-      "caminho": "pele-de-pedra"
-    }
-  ],
   "fraquezas": [
     "fogo"
   ],
@@ -165,5 +151,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 5
+  "ameacaLegada": 5,
+  "proezaFutura": [
+    {
+      "caminho": "pele-de-pedra"
+    }
+  ]
 }

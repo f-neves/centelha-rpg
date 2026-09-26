@@ -68,22 +68,30 @@
   ],
   "poderes": [
     {
-      "efeito": "Carapaça reflete magia (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Proteção · N4",
-      "arte": "protecao"
+      "id": "regeneracao-implacavel",
+      "nome": "Regeneração implacável",
+      "tipo": "natural",
+      "resiste": "nenhum",
+      "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
+      "usos": {
+        "periodo": "passivo",
+        "recarga": "contínua"
+      }
     },
     {
-      "efeito": "Regeneração implacável (Su)",
-      "tipo": "proeza",
-      "alvo": "Cerne Vital · Imortalidade Tênue (b15)",
-      "caminho": "cerne-vital"
-    },
-    {
-      "efeito": "Bramido de pânico (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Morte · N3 / Lenda Viva · Ícone (b15)",
-      "arte": "morte"
+      "id": "bramido-de-panico",
+      "nome": "Bramido de pânico",
+      "tipo": "natural",
+      "base": {
+        "arte": "morte",
+        "nivel": 3
+      },
+      "resiste": "mente",
+      "efeito": "Área; quem resiste fica imune na cena.",
+      "usos": {
+        "periodo": "cena",
+        "quantidade": 1
+      }
     }
   ],
   "habilidades": [
@@ -173,5 +181,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 6
+  "ameacaLegada": 6,
+  "proezaFutura": [
+    {
+      "caminho": "cerne-vital"
+    }
+  ]
 }

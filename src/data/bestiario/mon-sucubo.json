@@ -21,7 +21,8 @@
     "peso": "59 kg"
   },
   "locomocao": {
-    "terra": 3
+    "terra": 3,
+    "voo": 5
   },
   "centelha": 4,
   "attrs": {
@@ -71,28 +72,18 @@
   ],
   "poderes": [
     {
-      "efeito": "Beijo dreno e enfeitiçar (Sp)",
-      "tipo": "feiticaria",
-      "alvo": "Fascinação · N4",
-      "arte": "fascinacao"
-    },
-    {
-      "efeito": "Sedução",
-      "tipo": "proeza",
-      "alvo": "Beleza Cativante · Encanto Irresistível (b4)",
-      "caminho": "beleza-cativante"
-    },
-    {
+      "id": "mudar-de-forma",
+      "nome": "Mudar de forma",
+      "tipo": "natural",
+      "base": {
+        "arte": "materia",
+        "nivel": 2
+      },
+      "resiste": "nenhum",
       "efeito": "Mudar de forma",
-      "tipo": "feiticaria",
-      "alvo": "Matéria · N2",
-      "arte": "materia"
-    },
-    {
-      "efeito": "Teleporte",
-      "tipo": "feiticaria",
-      "alvo": "Conjuração · N4",
-      "arte": "conjuracao"
+      "usos": {
+        "periodo": "avontade"
+      }
     }
   ],
   "fraquezas": [
@@ -127,6 +118,10 @@
     {
       "nome": "Pele resistente",
       "descricao": "metade do dano de armas comuns não abençoadas"
+    },
+    {
+      "nome": "Sedução",
+      "descricao": "Traço social (não é poder de combate): Perícias sociais; o encanto mágico é Arte."
     }
   ],
   "lore": [
@@ -184,5 +179,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 4
+  "ameacaLegada": 4,
+  "proezaFutura": [
+    {
+      "caminho": "beleza-cativante"
+    }
+  ]
 }

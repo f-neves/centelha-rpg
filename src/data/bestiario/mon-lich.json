@@ -65,22 +65,33 @@
   ],
   "poderes": [
     {
-      "efeito": "Feitiços de mago (Sp)",
-      "tipo": "feiticaria",
-      "alvo": "Fogo / Gelo / Morte / Proteção · N3–N5",
-      "arte": "protecao"
+      "id": "toque-paralisante",
+      "nome": "Toque paralisante",
+      "tipo": "natural",
+      "base": {
+        "arte": "morte",
+        "nivel": 2
+      },
+      "resiste": "corpo",
+      "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+      "usos": {
+        "periodo": "golpe"
+      }
     },
     {
-      "efeito": "Toque paralisante (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Morte · N2",
-      "arte": "morte"
-    },
-    {
-      "efeito": "Aura de medo (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Morte · N3",
-      "arte": "morte"
+      "id": "aura-de-medo",
+      "nome": "Aura de medo",
+      "tipo": "natural",
+      "base": {
+        "arte": "morte",
+        "nivel": 3
+      },
+      "resiste": "corpo",
+      "efeito": "Resiste ao entrar, 1 vez por cena.",
+      "usos": {
+        "periodo": "passivo",
+        "recarga": "contínua"
+      }
     }
   ],
   "fraquezas": [

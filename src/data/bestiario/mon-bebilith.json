@@ -20,7 +20,8 @@
     "peso": "2.700 kg"
   },
   "locomocao": {
-    "terra": 4
+    "terra": 4,
+    "escalada": 2
   },
   "centelha": 5,
   "attrs": {

@@ -57,6 +57,16 @@
       "ticks": 5
     }
   ],
+  "poderes": [
+    {
+      "id": "vitalidade",
+      "nome": "Vitalidade",
+      "tipo": "natural",
+      "resiste": "nenhum",
+      "efeito": "+Vigor de PV extra, sempre.",
+      "usos": { "periodo": "passivo" }
+    }
+  ],
   "habilidades": [
     {
       "nome": "Fúria de combate",
@@ -73,6 +83,10 @@
     {
       "nome": "Selvagem",
       "descricao": "luta até PV baixos, sem recuar"
+    },
+    {
+      "nome": "Frenesi",
+      "descricao": "entra em fúria ao falhar num teste de Temperança; em fúria só faz ações físicas (+2 no teste), ignora as penalidades de ferimento até Incapacitado, tem −2 em Esquiva e Bloqueio, e Intimidar vira reflexo com +2d6 na parada. Regra inteira no capítulo Raças, seção Frenesi."
     }
   ],
   "lore": [

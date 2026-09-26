@@ -18,7 +18,9 @@
     "peso": "500 g"
   },
   "locomocao": {
-    "terra": 2
+    "terra": 2,
+    "natacao": 2,
+    "escalada": 2
   },
   "centelha": 0,
   "attrs": {

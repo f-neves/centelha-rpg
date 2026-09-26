@@ -65,16 +65,18 @@
   ],
   "poderes": [
     {
-      "efeito": "Canção cativante (Su)",
-      "tipo": "proeza",
-      "alvo": "Beleza Cativante · Olhar Cativante (b5)",
-      "caminho": "beleza-cativante"
-    },
-    {
-      "efeito": "(alternativa mágica)",
-      "tipo": "feiticaria",
-      "alvo": "Fascinação · N2",
-      "arte": "fascinacao"
+      "id": "cancao-cativante",
+      "nome": "Canção cativante",
+      "tipo": "natural",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 2
+      },
+      "resiste": "mente",
+      "efeito": "Defesa Mental; área de audição.",
+      "usos": {
+        "periodo": "cena"
+      }
     }
   ],
   "habilidades": [
@@ -156,5 +158,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 3
+  "ameacaLegada": 3,
+  "proezaFutura": [
+    {
+      "caminho": "beleza-cativante"
+    }
+  ]
 }

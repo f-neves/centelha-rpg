@@ -19,7 +19,8 @@
     "peso": "18 kg"
   },
   "locomocao": {
-    "terra": 3
+    "terra": 3,
+    "voo": 4
   },
   "centelha": 2,
   "attrs": {

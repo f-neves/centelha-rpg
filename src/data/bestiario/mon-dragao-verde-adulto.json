@@ -65,22 +65,20 @@
   ],
   "poderes": [
     {
-      "efeito": "Sopro de gás (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Água · N3 / Morte (veneno)",
-      "arte": "agua"
-    },
-    {
-      "efeito": "Enredar (Sp)",
-      "tipo": "feiticaria",
-      "alvo": "Vida · N2",
-      "arte": "vida"
-    },
-    {
-      "efeito": "Manipular",
-      "tipo": "proeza",
-      "alvo": "Serpente das Palavras",
-      "caminho": "serpente-das-palavras"
+      "id": "sopro-de-gas",
+      "nome": "Sopro de gás",
+      "tipo": "natural",
+      "base": {
+        "arte": "agua",
+        "nivel": 3
+      },
+      "resiste": "esquiva",
+      "efeito": "Cone ou linha. Esquiva para metade.",
+      "usos": {
+        "periodo": "ticks",
+        "quantidade": 1,
+        "recarga": "24 ticks"
+      }
     }
   ],
   "habilidades": [
@@ -119,6 +117,10 @@
     {
       "nome": "Escamas verdes",
       "descricao": "Absorção +3d6 contra ataques físicos"
+    },
+    {
+      "nome": "Manipular",
+      "descricao": "Traço social (não é poder de combate): Lore e perícias sociais altas."
     }
   ],
   "lore": [
@@ -178,5 +180,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 5
+  "ameacaLegada": 5,
+  "proezaFutura": [
+    {
+      "caminho": "serpente-das-palavras"
+    }
+  ]
 }

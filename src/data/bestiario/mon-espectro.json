@@ -66,16 +66,33 @@
   ],
   "poderes": [
     {
-      "efeito": "Dreno de nível (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Morte · N3",
-      "arte": "morte"
+      "id": "dreno-de-nivel",
+      "nome": "Dreno de nível",
+      "tipo": "natural",
+      "base": {
+        "arte": "morte",
+        "nivel": 3
+      },
+      "resiste": "corpo",
+      "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+      "usos": {
+        "periodo": "golpe"
+      },
+      "ataque": "Toque dilacerante"
     },
     {
+      "id": "voo-e-incorporeo",
+      "nome": "Voo e incorpóreo",
+      "tipo": "natural",
+      "base": {
+        "arte": "espirito",
+        "nivel": 3
+      },
+      "resiste": "nenhum",
       "efeito": "Voo e incorpóreo",
-      "tipo": "feiticaria",
-      "alvo": "Espírito · N3",
-      "arte": "espirito"
+      "usos": {
+        "periodo": "avontade"
+      }
     }
   ],
   "fraquezas": [

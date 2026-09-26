@@ -19,7 +19,8 @@
     "peso": "320 kg"
   },
   "locomocao": {
-    "terra": 5
+    "terra": 5,
+    "voo": 15
   },
   "centelha": 9,
   "attrs": {
@@ -66,27 +67,19 @@
   ],
   "poderes": [
     {
-      "efeito": "Feitiços supremos (Sp)",
-      "tipo": "feiticaria",
-      "alvo": "várias · N5"
-    },
-    {
-      "efeito": "Arco de luz que mata",
-      "tipo": "feiticaria",
-      "alvo": "Raio / Morte · N5",
-      "arte": "morte"
-    },
-    {
+      "id": "convocar-anjos",
+      "nome": "Convocar anjos",
+      "tipo": "natural",
+      "base": {
+        "arte": "espirito",
+        "nivel": 5
+      },
+      "resiste": "nenhum",
       "efeito": "Convocar anjos",
-      "tipo": "feiticaria",
-      "alvo": "Espírito · N5",
-      "arte": "espirito"
-    },
-    {
-      "efeito": "Ressurreição",
-      "tipo": "feiticaria",
-      "alvo": "Cura · N5",
-      "arte": "cura"
+      "usos": {
+        "periodo": "dia",
+        "quantidade": 1
+      }
     }
   ],
   "fraquezas": [

@@ -58,14 +58,6 @@
       "ticks": 5
     }
   ],
-  "poderes": [
-    {
-      "efeito": "Constrição",
-      "tipo": "proeza",
-      "alvo": "Agarrão do Urso · Aperto Esmagador (b10)",
-      "caminho": "agarrao-do-urso"
-    }
-  ],
   "habilidades": [
     {
       "nome": "Constrição",
@@ -82,6 +74,10 @@
     {
       "nome": "Sem membros",
       "descricao": "resistente a Derrubar"
+    },
+    {
+      "nome": "Constrição",
+      "descricao": "Depende do agarrão; engolir 1 alvo por vez."
     }
   ],
   "lore": [
@@ -134,5 +130,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 2
+  "ameacaLegada": 2,
+  "proezaFutura": [
+    {
+      "caminho": "agarrao-do-urso"
+    }
+  ]
 }

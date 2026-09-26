@@ -19,7 +19,8 @@
     "peso": "600 kg"
   },
   "locomocao": {
-    "terra": 3
+    "terra": 3,
+    "voo": 5
   },
   "centelha": 3,
   "attrs": {
@@ -64,15 +65,20 @@
   ],
   "poderes": [
     {
-      "efeito": "Sopro dracônico",
-      "tipo": "feiticaria",
-      "alvo": "Fogo · N2",
-      "arte": "fogo"
-    },
-    {
-      "efeito": "Voo",
+      "id": "sopro-draconico",
+      "nome": "Sopro dracônico",
       "tipo": "natural",
-      "alvo": "asas (natural)"
+      "base": {
+        "arte": "fogo",
+        "nivel": 2
+      },
+      "resiste": "esquiva",
+      "efeito": "Cone ou linha. Esquiva para metade.",
+      "usos": {
+        "periodo": "ticks",
+        "quantidade": 1,
+        "recarga": "24 ticks"
+      }
     }
   ],
   "habilidades": [

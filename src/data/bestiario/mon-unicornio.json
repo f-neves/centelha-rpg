@@ -68,22 +68,17 @@
   ],
   "poderes": [
     {
-      "efeito": "Cura pelo chifre (Sp)",
-      "tipo": "feiticaria",
-      "alvo": "Cura · N3",
-      "arte": "cura"
-    },
-    {
-      "efeito": "Teleporte",
-      "tipo": "feiticaria",
-      "alvo": "Conjuração · N2",
-      "arte": "conjuracao"
-    },
-    {
-      "efeito": "Imune a veneno e encanto",
-      "tipo": "proeza",
-      "alvo": "Sangue Imune · Imunidade (b7)",
-      "caminho": "sangue-imune"
+      "id": "imune-a-veneno-e-encanto",
+      "nome": "Imune a veneno e encanto",
+      "tipo": "natural",
+      "resiste": "corpo",
+      "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
+      "usos": {
+        "periodo": "cena",
+        "quantidade": 3,
+        "recarga": "1 hora"
+      },
+      "ataque": "Garras e presas"
     }
   ],
   "habilidades": [
@@ -166,5 +161,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 3
+  "ameacaLegada": 3,
+  "proezaFutura": [
+    {
+      "caminho": "sangue-imune"
+    }
+  ]
 }

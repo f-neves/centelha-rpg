@@ -58,20 +58,6 @@
       "ticks": 6
     }
   ],
-  "poderes": [
-    {
-      "efeito": "Imune a fogo",
-      "tipo": "proeza",
-      "alvo": "Sangue Imune · Imunidade (b7)",
-      "caminho": "sangue-imune"
-    },
-    {
-      "efeito": "Arremessar rocha",
-      "tipo": "proeza",
-      "alvo": "Atlas / Quebra-Muralhas",
-      "caminho": "quebra-muralhas"
-    }
-  ],
   "habilidades": [
     {
       "nome": "Imune a fogo",
@@ -153,5 +139,13 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 5
+  "ameacaLegada": 5,
+  "proezaFutura": [
+    {
+      "caminho": "sangue-imune"
+    },
+    {
+      "caminho": "quebra-muralhas"
+    }
+  ]
 }

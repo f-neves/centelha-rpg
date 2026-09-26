@@ -66,22 +66,19 @@
   ],
   "poderes": [
     {
-      "efeito": "Aura de menaça (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Fascinação · N2 (temor sagrado)",
-      "arte": "fascinacao"
-    },
-    {
-      "efeito": "Teleporte",
-      "tipo": "feiticaria",
-      "alvo": "Conjuração · N2",
-      "arte": "conjuracao"
-    },
-    {
-      "efeito": "Farejar o mal",
-      "tipo": "feiticaria",
-      "alvo": "Adivinhação · N1",
-      "arte": "adivinhacao"
+      "id": "aura-de-menaca",
+      "nome": "Aura de menaça",
+      "tipo": "natural",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 2
+      },
+      "resiste": "corpo",
+      "efeito": "Resiste ao entrar, 1 vez por cena.",
+      "usos": {
+        "periodo": "passivo",
+        "recarga": "contínua"
+      }
     }
   ],
   "fraquezas": [
@@ -107,6 +104,10 @@
     {
       "nome": "Círculo protetor",
       "descricao": "aliados a 3m ganham +1d de Absorção contra ataques malignos"
+    },
+    {
+      "nome": "Farejar o mal",
+      "descricao": "Sentido passivo."
     }
   ],
   "lore": [

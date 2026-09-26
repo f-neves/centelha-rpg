@@ -64,10 +64,19 @@
   ],
   "poderes": [
     {
-      "efeito": "Paralisia e fedor (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Morte · N2 + Vento (fedor)",
-      "arte": "morte"
+      "id": "paralisia-e-fedor",
+      "nome": "Paralisia e fedor",
+      "tipo": "natural",
+      "base": {
+        "arte": "morte",
+        "nivel": 2
+      },
+      "resiste": "corpo",
+      "efeito": "Resiste ao entrar, 1 vez por cena.",
+      "usos": {
+        "periodo": "passivo",
+        "recarga": "contínua"
+      }
     }
   ],
   "fraquezas": [

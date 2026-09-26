@@ -67,16 +67,18 @@
   ],
   "poderes": [
     {
-      "efeito": "Paralisia (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Morte · N2",
-      "arte": "morte"
-    },
-    {
-      "efeito": "Faro do carniçal",
-      "tipo": "proeza",
-      "alvo": "Caçador · Faro (b2)",
-      "caminho": "cacador"
+      "id": "paralisia",
+      "nome": "Paralisia",
+      "tipo": "natural",
+      "base": {
+        "arte": "morte",
+        "nivel": 2
+      },
+      "resiste": "corpo",
+      "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+      "usos": {
+        "periodo": "golpe"
+      }
     }
   ],
   "fraquezas": [
@@ -102,6 +104,10 @@
     {
       "nome": "Constituição de morto-vivo",
       "descricao": "imune a veneno e resistente a efeitos que exijam Fortitude"
+    },
+    {
+      "nome": "Faro do carniçal",
+      "descricao": "Sentido passivo."
     }
   ],
   "lore": [
@@ -159,5 +165,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 2
+  "ameacaLegada": 2,
+  "proezaFutura": [
+    {
+      "caminho": "cacador"
+    }
+  ]
 }

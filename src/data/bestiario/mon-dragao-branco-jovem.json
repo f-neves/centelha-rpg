@@ -65,22 +65,49 @@
   ],
   "poderes": [
     {
-      "efeito": "Sopro de frio (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Gelo · N3",
-      "arte": "gelo"
+      "id": "sopro-de-frio",
+      "nome": "Sopro de frio",
+      "tipo": "natural",
+      "base": {
+        "arte": "gelo",
+        "nivel": 3
+      },
+      "resiste": "esquiva",
+      "efeito": "Cone ou linha. Esquiva para metade.",
+      "usos": {
+        "periodo": "ticks",
+        "quantidade": 1,
+        "recarga": "24 ticks"
+      }
     },
     {
-      "efeito": "Andar no gelo e nevasca",
-      "tipo": "feiticaria",
-      "alvo": "Gelo · N2",
-      "arte": "gelo"
+      "id": "andar-no-gelo-e-nevasca",
+      "nome": "Andar no gelo e nevasca",
+      "tipo": "natural",
+      "base": {
+        "arte": "gelo",
+        "nivel": 2
+      },
+      "resiste": "nenhum",
+      "efeito": "Anda no gelo sem cair; nevasca vira Arte se for conjurada.",
+      "usos": {
+        "periodo": "passivo"
+      }
     },
     {
-      "efeito": "Presença",
-      "tipo": "feiticaria",
-      "alvo": "Morte · N3",
-      "arte": "morte"
+      "id": "presenca",
+      "nome": "Presença",
+      "tipo": "natural",
+      "base": {
+        "arte": "morte",
+        "nivel": 3
+      },
+      "resiste": "mente",
+      "efeito": "Área; quem resiste fica imune na cena.",
+      "usos": {
+        "periodo": "cena",
+        "quantidade": 1
+      }
     }
   ],
   "fraquezas": [

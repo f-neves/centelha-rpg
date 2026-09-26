@@ -67,22 +67,14 @@
   ],
   "poderes": [
     {
-      "efeito": "Mudar de forma (Su)",
-      "tipo": "proeza",
-      "alvo": "Camaleão / Máscara",
-      "caminho": "camaleao"
-    },
-    {
-      "efeito": "(alternativa mágica)",
-      "tipo": "feiticaria",
-      "alvo": "Matéria · N2",
-      "arte": "materia"
-    },
-    {
-      "efeito": "Ler pensamentos (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Adivinhação · N1 / Empatia",
-      "arte": "adivinhacao"
+      "id": "mudar-de-forma",
+      "nome": "Mudar de forma",
+      "tipo": "natural",
+      "resiste": "nenhum",
+      "efeito": "Mudar de forma",
+      "usos": {
+        "periodo": "avontade"
+      }
     }
   ],
   "habilidades": [
@@ -105,6 +97,10 @@
     {
       "nome": "Reflexos ágeis",
       "descricao": "+1 Esquiva, prefere fugir a lutar quando desmascarado"
+    },
+    {
+      "nome": "Ler pensamentos",
+      "descricao": "Sentido passivo."
     }
   ],
   "lore": [
@@ -166,5 +162,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 3
+  "ameacaLegada": 3,
+  "proezaFutura": [
+    {
+      "caminho": "camaleao"
+    }
+  ]
 }

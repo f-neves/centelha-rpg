@@ -64,16 +64,19 @@
   ],
   "poderes": [
     {
-      "efeito": "Flautas encantadas (Su)",
-      "tipo": "proeza",
-      "alvo": "Musa / Beleza Cativante",
-      "caminho": "beleza-cativante"
-    },
-    {
-      "efeito": "(alternativa mágica)",
-      "tipo": "feiticaria",
-      "alvo": "Fascinação · N2",
-      "arte": "fascinacao"
+      "id": "flautas-encantadas",
+      "nome": "Flautas encantadas",
+      "tipo": "natural",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 2
+      },
+      "resiste": "mente",
+      "efeito": "Sono, medo ou encanto, à escolha; Defesa Mental.",
+      "usos": {
+        "periodo": "cena",
+        "quantidade": 1
+      }
     }
   ],
   "habilidades": [
@@ -157,5 +160,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 3
+  "ameacaLegada": 3,
+  "proezaFutura": [
+    {
+      "caminho": "beleza-cativante"
+    }
+  ]
 }

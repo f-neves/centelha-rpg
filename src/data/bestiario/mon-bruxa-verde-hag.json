@@ -20,7 +20,8 @@
     "peso": "80 kg"
   },
   "locomocao": {
-    "terra": 3
+    "terra": 3,
+    "natacao": 3
   },
   "centelha": 4,
   "attrs": {
@@ -66,21 +67,18 @@
   ],
   "poderes": [
     {
-      "efeito": "Fraqueza mística (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Morte · N2",
-      "arte": "morte"
-    },
-    {
-      "efeito": "Mímica e ilusão (Sp)",
-      "tipo": "feiticaria",
-      "alvo": "Fascinação · N2",
-      "arte": "fascinacao"
-    },
-    {
-      "efeito": "Feitiços",
-      "tipo": "feiticaria",
-      "alvo": "várias · N3"
+      "id": "fraqueza-mistica",
+      "nome": "Fraqueza mística",
+      "tipo": "natural",
+      "base": {
+        "arte": "morte",
+        "nivel": 2
+      },
+      "resiste": "corpo",
+      "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+      "usos": {
+        "periodo": "golpe"
+      }
     }
   ],
   "habilidades": [

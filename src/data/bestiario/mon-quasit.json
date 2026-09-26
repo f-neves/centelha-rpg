@@ -68,22 +68,18 @@
   ],
   "poderes": [
     {
-      "efeito": "Invisibilidade e susto (Sp)",
-      "tipo": "feiticaria",
-      "alvo": "Fascinação · N1",
-      "arte": "fascinacao"
-    },
-    {
-      "efeito": "Adivinhação",
-      "tipo": "feiticaria",
-      "alvo": "Adivinhação · N1",
-      "arte": "adivinhacao"
-    },
-    {
+      "id": "forma-alternativa",
+      "nome": "Forma alternativa",
+      "tipo": "natural",
+      "base": {
+        "arte": "materia",
+        "nivel": 2
+      },
+      "resiste": "nenhum",
       "efeito": "Forma alternativa",
-      "tipo": "feiticaria",
-      "alvo": "Matéria · N2",
-      "arte": "materia"
+      "usos": {
+        "periodo": "avontade"
+      }
     }
   ],
   "fraquezas": [

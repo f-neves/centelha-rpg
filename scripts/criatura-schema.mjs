@@ -49,6 +49,9 @@ export const poderNaturalSchema = z.object({
   resiste: z.enum(['esquiva', 'corpo', 'mente', 'nenhum']),
   area: texto.optional(),
   efeito: texto,
+  /** Só veneno e toque: o `nome` do ataque em `ataques` que carrega o poder, porque
+   *  o efeito sai no golpe (resposta da fase 2, item 1). */
+  ataque: texto.optional(),
   usos: z.object({
     quantidade: naoNeg.optional(),
     periodo: z.enum(['ticks', 'cena', 'hora', 'dia', 'avontade', 'passivo', 'golpe']),
@@ -139,6 +142,10 @@ export const criaturaSchema = z.object({
   }).strict().optional(),
   couraca: z.object({ couraca: naoNeg, resistPerf: naoNeg }).strict().optional(),
   poderes: z.array(poderSchema).optional(),
+  /** Referência ao Caminho/Técnica de um poder que a classificação da tabela (B14
+   *  fase 2) moveu para natural/ataques/habilidades, inerte até as Proezas fecharem
+   *  (resposta do autor, item 2). Nenhum gerador lê ainda. */
+  proezaFutura: z.array(z.object({ caminho: texto, tecnica: texto.optional() }).strict()).optional(),
   fraquezas: z.array(texto).optional(),
   resistencias: z.array(texto).optional(),
   habilidades: z.array(z.object({ nome: texto, descricao: texto }).strict()),
@@ -157,11 +164,15 @@ export const criaturaSchema = z.object({
   }).strict().optional(),
   variantes: z.array(z.object({ id: texto, nome: texto, delta: z.record(z.string(), z.any()) }).strict()),
   ameacaLegada: z.number().int().min(1),
-  /** Saída da recalibração B14 (item A.3): vazia até a bancada rodar. A recompensa
-   *  de caça usa só `individual`; `bando` é referência de leitura, não soma na conta. */
+  /** Saída da recalibração B14 (item A.3, mais o item 5 da resposta da fase 2):
+   *  vazia até a bancada rodar. A recompensa de caça usa só `individual`; `bando`
+   *  é referência de leitura, não soma na conta. Escala 0-12, onde 0 = feito para
+   *  4 personagens de Centelha 0. `maisUm` é quantos indivíduos juntos sobem o
+   *  desafio em 1 grau. */
   desafio: z.object({
-    individual: naoNeg.optional(),
-    bando: z.object({ quantidade: naoNeg, desafio: naoNeg }).strict().optional(),
+    individual: z.number().int().min(0).max(12).optional(),
+    maisUm: naoNeg.optional(),
+    bando: z.object({ quantidade: naoNeg, desafio: z.number().int().min(0).max(12) }).strict().optional(),
   }).strict().optional(),
 }).strict();
 

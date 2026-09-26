@@ -18,7 +18,8 @@
     "peso": "380 kg"
   },
   "locomocao": {
-    "terra": 3
+    "terra": 3,
+    "voo": 5
   },
   "centelha": 1,
   "attrs": {
@@ -56,18 +57,6 @@
       "tipo": "perfurante",
       "acerto": 0,
       "ticks": 6
-    }
-  ],
-  "poderes": [
-    {
-      "efeito": "Espinhos de cauda",
-      "tipo": "natural",
-      "alvo": "ataque natural (Atirador)"
-    },
-    {
-      "efeito": "Voo",
-      "tipo": "natural",
-      "alvo": "asas (natural)"
     }
   ],
   "habilidades": [

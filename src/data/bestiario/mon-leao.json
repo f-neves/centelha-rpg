@@ -58,20 +58,6 @@
       "ticks": 6
     }
   ],
-  "poderes": [
-    {
-      "efeito": "Bote (pounce)",
-      "tipo": "proeza",
-      "alvo": "Sangue Fervente · Investida Furiosa (b5)",
-      "caminho": "sangue-fervente"
-    },
-    {
-      "efeito": "Emboscar",
-      "tipo": "proeza",
-      "alvo": "Sombra · Esgueirar (b3)",
-      "caminho": "sombra"
-    }
-  ],
   "habilidades": [
     {
       "nome": "Bote",
@@ -88,6 +74,14 @@
     {
       "nome": "Passo silencioso",
       "descricao": "Furtividade alta em vegetação alta e savana"
+    },
+    {
+      "nome": "Bote (pounce)",
+      "descricao": "Manobra de combate, sem limite de uso."
+    },
+    {
+      "nome": "Emboscar",
+      "descricao": "Manobra de combate, sem limite de uso."
     }
   ],
   "lore": [
@@ -143,5 +137,13 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 3
+  "ameacaLegada": 3,
+  "proezaFutura": [
+    {
+      "caminho": "sangue-fervente"
+    },
+    {
+      "caminho": "sombra"
+    }
+  ]
 }

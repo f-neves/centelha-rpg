@@ -19,7 +19,8 @@
     "peso": "3,6 t"
   },
   "locomocao": {
-    "terra": 4
+    "terra": 4,
+    "escalada": 2
   },
   "centelha": 1,
   "attrs": {
@@ -64,16 +65,20 @@
   ],
   "poderes": [
     {
-      "efeito": "Sopro elétrico (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Raio · N3",
-      "arte": "raio"
-    },
-    {
-      "efeito": "Engolir inteiro (Ex)",
-      "tipo": "proeza",
-      "alvo": "Agarrão do Urso · Aperto Esmagador (b10)",
-      "caminho": "agarrao-do-urso"
+      "id": "sopro-eletrico",
+      "nome": "Sopro elétrico",
+      "tipo": "natural",
+      "base": {
+        "arte": "raio",
+        "nivel": 3
+      },
+      "resiste": "esquiva",
+      "efeito": "Cone ou linha. Esquiva para metade.",
+      "usos": {
+        "periodo": "ticks",
+        "quantidade": 1,
+        "recarga": "24 ticks"
+      }
     }
   ],
   "habilidades": [
@@ -96,6 +101,10 @@
     {
       "nome": "Corpo blindado",
       "descricao": "+1 Absorção contra ataques físicos"
+    },
+    {
+      "nome": "Engolir inteiro",
+      "descricao": "Depende do agarrão; engolir 1 alvo por vez."
     }
   ],
   "lore": [
@@ -153,5 +162,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 5
+  "ameacaLegada": 5,
+  "proezaFutura": [
+    {
+      "caminho": "agarrao-do-urso"
+    }
+  ]
 }

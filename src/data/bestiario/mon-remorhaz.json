@@ -18,7 +18,8 @@
     "peso": "4500 kg"
   },
   "locomocao": {
-    "terra": 3
+    "terra": 3,
+    "escavacao": 2
   },
   "centelha": 4,
   "attrs": {

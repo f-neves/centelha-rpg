@@ -60,10 +60,15 @@
   ],
   "poderes": [
     {
-      "efeito": "Regeneração",
-      "tipo": "proeza",
-      "alvo": "Cerne Vital · Regeneração (b9)",
-      "caminho": "cerne-vital"
+      "id": "regeneracao",
+      "nome": "Regeneração",
+      "tipo": "natural",
+      "resiste": "nenhum",
+      "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
+      "usos": {
+        "periodo": "passivo",
+        "recarga": "contínua"
+      }
     }
   ],
   "habilidades": [
@@ -143,5 +148,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 4
+  "ameacaLegada": 4,
+  "proezaFutura": [
+    {
+      "caminho": "cerne-vital"
+    }
+  ]
 }

@@ -18,7 +18,8 @@
     "peso": "80 kg"
   },
   "locomocao": {
-    "terra": 1
+    "terra": 1,
+    "natacao": 2
   },
   "centelha": 4,
   "attrs": {

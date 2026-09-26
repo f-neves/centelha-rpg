@@ -21,7 +21,8 @@
     "peso": "3,6 t"
   },
   "locomocao": {
-    "terra": 4
+    "terra": 4,
+    "voo": 9
   },
   "centelha": 9,
   "attrs": {
@@ -67,34 +68,33 @@
   ],
   "poderes": [
     {
-      "efeito": "Espada e chicote flamejantes",
-      "tipo": "feiticaria",
-      "alvo": "Fogo · N4",
-      "arte": "fogo"
+      "id": "aura-de-fogo",
+      "nome": "Aura de fogo",
+      "tipo": "natural",
+      "base": {
+        "arte": "fogo",
+        "nivel": 4
+      },
+      "resiste": "corpo",
+      "efeito": "Resiste ao entrar, 1 vez por cena.",
+      "usos": {
+        "periodo": "passivo",
+        "recarga": "contínua"
+      }
     },
     {
-      "efeito": "Aura de fogo (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Fogo · N4 / Proteção",
-      "arte": "fogo"
-    },
-    {
+      "id": "morte-explosiva",
+      "nome": "Morte explosiva",
+      "tipo": "natural",
+      "base": {
+        "arte": "fogo",
+        "nivel": 5
+      },
+      "resiste": "esquiva",
       "efeito": "Morte explosiva",
-      "tipo": "feiticaria",
-      "alvo": "Fogo · N5",
-      "arte": "fogo"
-    },
-    {
-      "efeito": "Comandar legiões",
-      "tipo": "proeza",
-      "alvo": "Comando / Estandarte",
-      "caminho": "estandarte"
-    },
-    {
-      "efeito": "Teleporte",
-      "tipo": "feiticaria",
-      "alvo": "Conjuração · N4",
-      "arte": "conjuracao"
+      "usos": {
+        "periodo": "avontade"
+      }
     }
   ],
   "fraquezas": [
@@ -137,6 +137,14 @@
     {
       "nome": "Visão verdadeira",
       "descricao": "enxerga através de ilusões, disfarces e invisibilidade"
+    },
+    {
+      "nome": "Espada e chicote flamejantes",
+      "descricao": "Manobra de combate, sem limite de uso."
+    },
+    {
+      "nome": "Comandar legiões",
+      "descricao": "Traço social (não é poder de combate): Lore; não é poder de combate."
     }
   ],
   "lore": [
@@ -199,5 +207,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 6
+  "ameacaLegada": 6,
+  "proezaFutura": [
+    {
+      "caminho": "estandarte"
+    }
+  ]
 }

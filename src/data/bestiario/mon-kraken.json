@@ -67,21 +67,20 @@
   ],
   "poderes": [
     {
-      "efeito": "Constrição e afundar (Ex)",
-      "tipo": "proeza",
-      "alvo": "Agarrão do Urso · Abraço do Titã (b14)",
-      "caminho": "agarrao-do-urso"
-    },
-    {
-      "efeito": "Tinta e tempestade (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Água · N4",
-      "arte": "agua"
-    },
-    {
-      "efeito": "Feitiços",
-      "tipo": "feiticaria",
-      "alvo": "várias · N4"
+      "id": "tinta-e-tempestade",
+      "nome": "Tinta e tempestade",
+      "tipo": "natural",
+      "base": {
+        "arte": "agua",
+        "nivel": 4
+      },
+      "resiste": "esquiva",
+      "efeito": "Esquiva para não prender; escapar com Força ou Atletismo.",
+      "usos": {
+        "periodo": "cena",
+        "quantidade": 3,
+        "recarga": "1 hora"
+      }
     }
   ],
   "habilidades": [
@@ -116,6 +115,10 @@
     {
       "nome": "Escala colossal",
       "descricao": "alcance de ataque muito maior que o normal, +2 Absorção"
+    },
+    {
+      "nome": "Constrição e afundar",
+      "descricao": "Depende do agarrão; engolir 1 alvo por vez."
     }
   ],
   "lore": [
@@ -173,5 +176,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 6
+  "ameacaLegada": 6,
+  "proezaFutura": [
+    {
+      "caminho": "agarrao-do-urso"
+    }
+  ]
 }

@@ -66,26 +66,35 @@
   ],
   "poderes": [
     {
-      "efeito": "Sopro de fogo (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Fogo · N5",
-      "arte": "fogo"
-    },
-    {
-      "efeito": "Presença que paralisa",
-      "tipo": "feiticaria",
-      "alvo": "Morte · N4 / Fascinação · N4",
-      "arte": "morte"
-    },
-    {
-      "efeito": "Feitiços",
-      "tipo": "feiticaria",
-      "alvo": "várias · N4–N5"
-    },
-    {
-      "efeito": "Voo",
+      "id": "sopro-de-fogo",
+      "nome": "Sopro de fogo",
       "tipo": "natural",
-      "alvo": "asas"
+      "base": {
+        "arte": "fogo",
+        "nivel": 5
+      },
+      "resiste": "esquiva",
+      "efeito": "Cone ou linha. Esquiva para metade.",
+      "usos": {
+        "periodo": "ticks",
+        "quantidade": 1,
+        "recarga": "24 ticks"
+      }
+    },
+    {
+      "id": "presenca-que-paralisa",
+      "nome": "Presença que paralisa",
+      "tipo": "natural",
+      "base": {
+        "arte": "morte",
+        "nivel": 4
+      },
+      "resiste": "mente",
+      "efeito": "Área; quem resiste fica imune na cena.",
+      "usos": {
+        "periodo": "cena",
+        "quantidade": 1
+      }
     }
   ],
   "resistencias": [

@@ -66,22 +66,18 @@
   ],
   "poderes": [
     {
-      "efeito": "Feitiços celestiais (Sp)",
-      "tipo": "feiticaria",
-      "alvo": "Cura / Proteção / Raio · N3–N4",
-      "arte": "raio"
-    },
-    {
-      "efeito": "Maça estonteante",
-      "tipo": "feiticaria",
-      "alvo": "Fascinação · N2",
-      "arte": "fascinacao"
-    },
-    {
+      "id": "mudar-de-forma",
+      "nome": "Mudar de forma",
+      "tipo": "natural",
+      "base": {
+        "arte": "materia",
+        "nivel": 2
+      },
+      "resiste": "nenhum",
       "efeito": "Mudar de forma",
-      "tipo": "feiticaria",
-      "alvo": "Matéria · N2",
-      "arte": "materia"
+      "usos": {
+        "periodo": "avontade"
+      }
     }
   ],
   "fraquezas": [
@@ -115,6 +111,10 @@
     {
       "nome": "Voo e imunidade",
       "descricao": "voa livremente; imune a doença e veneno"
+    },
+    {
+      "nome": "Maça estonteante",
+      "descricao": "Manobra de combate, sem limite de uso."
     }
   ],
   "lore": [

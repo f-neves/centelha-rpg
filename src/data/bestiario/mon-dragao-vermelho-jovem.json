@@ -67,22 +67,31 @@
   ],
   "poderes": [
     {
-      "efeito": "Sopro de fogo (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Fogo · N3",
-      "arte": "fogo"
+      "id": "sopro-de-fogo",
+      "nome": "Sopro de fogo",
+      "tipo": "natural",
+      "base": {
+        "arte": "fogo",
+        "nivel": 3
+      },
+      "resiste": "esquiva",
+      "efeito": "Cone ou linha. Esquiva para metade.",
+      "usos": {
+        "periodo": "ticks",
+        "quantidade": 1,
+        "recarga": "24 ticks"
+      }
     },
     {
-      "efeito": "Presença aterradora",
-      "tipo": "proeza",
-      "alvo": "Lenda Viva · Temor Reverente (b5)",
-      "caminho": "lenda-viva"
-    },
-    {
-      "efeito": "Feitiços iniciais",
-      "tipo": "feiticaria",
-      "alvo": "Fogo · N2",
-      "arte": "fogo"
+      "id": "presenca-aterradora",
+      "nome": "Presença aterradora",
+      "tipo": "natural",
+      "resiste": "mente",
+      "efeito": "Área; quem resiste fica imune na cena.",
+      "usos": {
+        "periodo": "cena",
+        "quantidade": 1
+      }
     }
   ],
   "resistencias": [
@@ -178,5 +187,10 @@
     }
   },
   "variantes": [],
-  "ameacaLegada": 5
+  "ameacaLegada": 5,
+  "proezaFutura": [
+    {
+      "caminho": "lenda-viva"
+    }
+  ]
 }

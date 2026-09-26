@@ -18,7 +18,8 @@
     "peso": "400 kg"
   },
   "locomocao": {
-    "terra": 4
+    "terra": 4,
+    "voo": 2
   },
   "centelha": 0,
   "attrs": {

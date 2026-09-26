@@ -20,7 +20,8 @@
     "peso": "800 kg"
   },
   "locomocao": {
-    "terra": 4
+    "terra": 4,
+    "voo": 9
   },
   "centelha": 4,
   "attrs": {

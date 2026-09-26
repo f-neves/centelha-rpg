@@ -66,22 +66,35 @@
   ],
   "poderes": [
     {
-      "efeito": "Sopro elétrico (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Raio · N4",
-      "arte": "raio"
+      "id": "sopro-eletrico",
+      "nome": "Sopro elétrico",
+      "tipo": "natural",
+      "base": {
+        "arte": "raio",
+        "nivel": 4
+      },
+      "resiste": "esquiva",
+      "efeito": "Cone ou linha. Esquiva para metade.",
+      "usos": {
+        "periodo": "ticks",
+        "quantidade": 1,
+        "recarga": "24 ticks"
+      }
     },
     {
-      "efeito": "Miragem no deserto (Sp)",
-      "tipo": "feiticaria",
-      "alvo": "Fascinação · N3",
-      "arte": "fascinacao"
-    },
-    {
-      "efeito": "Presença",
-      "tipo": "feiticaria",
-      "alvo": "Morte · N3",
-      "arte": "morte"
+      "id": "presenca",
+      "nome": "Presença",
+      "tipo": "natural",
+      "base": {
+        "arte": "morte",
+        "nivel": 3
+      },
+      "resiste": "mente",
+      "efeito": "Área; quem resiste fica imune na cena.",
+      "usos": {
+        "periodo": "cena",
+        "quantidade": 1
+      }
     }
   ],
   "resistencias": [

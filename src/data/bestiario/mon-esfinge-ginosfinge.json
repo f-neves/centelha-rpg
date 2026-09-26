@@ -65,21 +65,19 @@
   ],
   "poderes": [
     {
-      "efeito": "Feitiços arcanos (Sp)",
-      "tipo": "feiticaria",
-      "alvo": "várias · N3–N4"
-    },
-    {
-      "efeito": "Rugido (Su)",
-      "tipo": "feiticaria",
-      "alvo": "Forças · N2 / Vento",
-      "arte": "forcas"
-    },
-    {
-      "efeito": "Ver o invisível",
-      "tipo": "feiticaria",
-      "alvo": "Adivinhação · N2",
-      "arte": "adivinhacao"
+      "id": "rugido",
+      "nome": "Rugido",
+      "tipo": "natural",
+      "base": {
+        "arte": "forcas",
+        "nivel": 2
+      },
+      "resiste": "mente",
+      "efeito": "Área; quem resiste fica imune na cena.",
+      "usos": {
+        "periodo": "cena",
+        "quantidade": 1
+      }
     }
   ],
   "habilidades": [
@@ -106,6 +104,10 @@
     {
       "nome": "Enigma mortal",
       "descricao": "propõe um enigma; falha em Vontade causa dano ou deixa o alvo Abalado"
+    },
+    {
+      "nome": "Ver o invisível",
+      "descricao": "Sentido passivo."
     }
   ],
   "lore": [
