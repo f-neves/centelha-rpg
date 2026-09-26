@@ -124,8 +124,8 @@ nenhum erro de página:
     31.920; Nobreza 4.800 / 14.400 / 48.000, já com o Livre da 116); e o link para `/recompensa`.
   - `recompensa/index.html` existe, e o link dela aparece na barra de Ferramentas.
   - A seção "Recursos durante a aventura" mostra o texto novo.
-- Travessão: zero nos arquivos novos e tocados. O " — Centelha" do título da aba vem do `Base.astro`
-  de sempre, e não é texto meu.
+- Travessão: zero nos arquivos novos e tocados. O separador antes de "Centelha" no título da aba vem do
+  `Base.astro` de sempre, e não é texto meu.
 
 ## PRECISA DE MIM
 
