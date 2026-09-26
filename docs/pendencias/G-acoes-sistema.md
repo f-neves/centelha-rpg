@@ -370,7 +370,7 @@ texto do livro, do JSON ou do `Acoes_Sistema.md`); G61 a G70 são as decisões n
   mantendo os ids do `precos.json`; entram duas linhas novas de fabricação (sapato; cadeado); a regra
   Misto se refina (a tabela de fabricação vale para armas, armaduras, escudos, munição e sela). Afeta
   `src/data/precos.json`, `custo-de-servico-e-itens.md:355` (Equipamento de Aventura) e a tabela de
-  fabricação de `acoes-oficio-e-mundo.md`.
+  fabricação de `acoes-oficio-e-mundo.md`. **Rodada 110 (25/09/2026), em parte** (`3ee18df`): os pacotes somam os itens de `src/data/mercadorias.json` (`pacotes-equipamento.json`, seção gerada `src/content/chapters/custo-de-servico-e-itens.md:945-955`) e o `precos.json` foi apagado. **Falta:** as duas linhas novas de fabricação (sapato, cadeado) e o refinamento da regra Misto em `acoes-oficio-e-mundo.md`.
 - [ ] **G48 · [DECIDIDO, APLICAR DEPOIS] A4 · Moeda e metais.** Documento §A4 (`:113`). O pc é a menor
   moeda; metais por 100 g: ferro 1,5 pc (hoje ¼), cobre 3 pc (hoje 2), prata 3 pp, ouro 3 po, platina
   3 pl (nova); joias e letras de câmbio com deságio e taxa. Afeta `custo-de-servico-e-itens.md:12`
@@ -386,63 +386,63 @@ texto do livro, do JSON ou do `Acoes_Sistema.md`); G61 a G70 são as decisões n
   (`:217`). Aldeia 100, vila 300, cidade 1.000, capital sem teto; o teto limita o ganho, líquido de
   material. Afeta `acoes-oficio-e-mundo.md:206` ("limitado pela demanda do lugar"). Ao aplicar, fecha a
   G24.
-- [ ] **G52 · [DECIDIDO, APLICAR DEPOIS] B5 · A tabela de Renda nova.** Documento §B5 (`:235`). Rendas
+- [x] ~~**G52 · [DECIDIDO, APLICAR DEPOIS] B5 · A tabela de Renda nova.**~~ **Aplicado em 25/09/2026, rodada 110** (`3ee18df`): a tabela de Renda sai de `src/data/renda.json` pelo gerador `scripts/gen-cap-economia.mjs` (`src/content/chapters/custo-de-servico-e-itens.md:37-55`), com o Livre pela curva D da v2 §3 (12% no braçal, 2% na nobreza, e não os 20%/7% daqui) e mês e ano em 4 e 48 semanas. Registro original: Documento §B5 (`:235`). Rendas
   mantidas; o Livre recalculado e decrescente (20% no braçal, 7% na nobreza); as colunas mês e ano
   passam a 4 e 48 semanas exatas (hoje Braçal 22 pp/mês, deveria ser 24; Livre/ano 38 pp, deveria ser
   48). Afeta `custo-de-servico-e-itens.md:33` (Serviços & Renda).
 - [ ] **G53 · [DECIDIDO, APLICAR DEPOIS] B6 · Recursos por faixas.** Documento §B6 (`:282`). Mapa de
   faixas para Recursos 1 a 5; o Destreinado passa de ●● para ●. Afeta `custo-de-servico-e-itens.md:41-42`
-  (a coluna de Recursos da tabela de Renda) e `antecedentes.md:92` (Recursos).
-- [ ] **G54 · [DECIDIDO, APLICAR DEPOIS] B8 · A Placa completa sobe (~39%).** Documento §B8 (`:314`). A
+  (a coluna de Recursos da tabela de Renda) e `antecedentes.md:92` (Recursos). **Rodada 110 (25/09/2026), em parte** (`3ee18df`): a coluna de Recursos da tabela de Renda sai de `renda.json` e o Destreinado está em ● (`src/content/chapters/custo-de-servico-e-itens.md:44`). **Falta:** o mapa de faixas no Recursos de `antecedentes.md` (o verbete gerado de `antecedentes.json`).
+- [x] ~~**G54 · [DECIDIDO, APLICAR DEPOIS] B8 · A Placa completa sobe (~39%).**~~ **Aplicado em 25/09/2026, rodada 110** (`a58e6f4`): `src/data/armaduras.json:200-205`, `placa-completa` a 3.600 pc; o catálogo gerado mostra "Placa completa · Pesada · 36 po". Registro original: Documento §B8 (`:314`). A
   Dif 11 é feita pelo perito, que ganha mais que o H-×20 supunha: de 2.600 para ~3.600 pc. Afeta
   `src/data/armaduras.json` (`placa-completa`) e o catálogo gerado de `custo-de-servico-e-itens.md`
   (rodada 107).
-- [ ] **G55 · [DECIDIDO, APLICAR DEPOIS] C5 · Montarias, animais, veículos e manutenção.** Documento §C5
+- [x] ~~**G55 · [DECIDIDO, APLICAR DEPOIS] C5 · Montarias, animais, veículos e manutenção.**~~ **Aplicado em 25/09/2026, rodada 110** (`3ee18df`): `src/data/montarias-veiculos.json` (44 itens) e a seção gerada `src/content/chapters/custo-de-servico-e-itens.md:808-894`, com a manutenção semanal do cavalo e do cavalo de guerra. Registro original: Documento §C5
   (`:407`). Preços históricos (regra Misto); cavalo de guerra em dois graus e destrier entram; manutenção
   semanal. Afeta `custo-de-servico-e-itens.md:261` (Montarias, Veículos & Animais) e o arquivo novo
   `montarias-veiculos.json` (G70).
-- [ ] **G56 · [DECIDIDO, APLICAR DEPOIS] C6 · Viagens em km.** Documento §C6 (`:495`). Tudo em km;
+- [x] ~~**G56 · [DECIDIDO, APLICAR DEPOIS] C6 · Viagens em km.**~~ **Aplicado em 25/09/2026, rodada 110** (`3ee18df`): `src/data/viagens.json` e a seção gerada `src/content/chapters/custo-de-servico-e-itens.md:896-939` (velocidades em km por dia e os 13 preços de passagem, aluguel, frete e pedágio). Registro original: Documento §C6 (`:495`). Tudo em km;
   velocidades pelo mapa de Uldun (a pé 25, caravana 30, a cavalo 50) e pelos tempos históricos; preços
   de passagem, frete e pedágio; "Municipal 6 pc por milha" sai, e entram Transporte na cidade (2 pc o
   trajeto) e Cavalo de aluguel (17 pc a cada 10 km). Afeta `custo-de-servico-e-itens.md:292` (Viagens,
   `:298`) e o arquivo novo `viagens.json` (G70).
-- [ ] **G57 · [DECIDIDO, APLICAR DEPOIS] C8 · Servos e escravos.** Documento §C8 (`:632`). Criados com
+- [x] ~~**G57 · [DECIDIDO, APLICAR DEPOIS] C8 · Servos e escravos.**~~ **Aplicado em 25/09/2026, rodada 110** (`3ee18df`): criados e escravos de `src/data/servicos.json`, na seção gerada `src/content/chapters/custo-de-servico-e-itens.md:283-322`, com o sustento por semana. Registro original: Documento §C8 (`:632`). Criados com
   salário e casa; escravo = 1,5 ano da renda bruta do trabalho que faz (companhia 2,25), de 3 a 6 vezes
   o preço de hoje; sustento 15 pc por semana (o catálogo cobra 3 po por mês). Afeta
   `custo-de-servico-e-itens.md:339` (Escravos).
-- [ ] **G58 · [DECIDIDO, APLICAR DEPOIS] E1 · Qualidade dos itens.** Documento §E1 (`:673`). Sai
+- [x] ~~**G58 · [DECIDIDO, APLICAR DEPOIS] E1 · Qualidade dos itens.**~~ **Aplicado em 25/09/2026, rodada 110** (`3ee18df`, `f9709bc`), pela reescrita da v2 §1, que substitui este registro: graus Sucata a Excelente com preço fixo (`src/content/chapters/custo-de-servico-e-itens.md:332-337`), a Relíquia como rótulo com piso de 100× (`:341`), o Requisito máximo 6 (`:343` e `src/content/chapters/acoes-oficio-e-mundo.md:78`), o preço por grau em `src/content/chapters/acoes-oficio-e-mundo.md:82` e o exemplo do Machado (`src/content/chapters/custo-de-servico-e-itens.md:396`). **O degrau "sobe a cada dois graus" FICA** (v2 §1.2, e o despacho da 110, 4d), ao contrário do que diz este registro; o Piso de 1 e 2 semanas não está na v2 e não foi aplicado. Registro original: Documento §E1 (`:673`). Sai
   "intervalo sobe um degrau a cada dois graus"; Piso de 1 e 2 semanas; Requisito máximo 6; preço pela
   régua. Afeta `acoes-oficio-e-mundo.md:81` e `custo-de-servico-e-itens.md:57` (Qualidade de Itens).
-- [ ] **G59 · [DECIDIDO, APLICAR DEPOIS] E4 · Rações.** Documento §E4 (`:756`). Ração de viagem 3 pc;
+- [x] ~~**G59 · [DECIDIDO, APLICAR DEPOIS] E4 · Rações.**~~ **Aplicado em 25/09/2026, rodada 110** (`3ee18df`): ração de viagem 3 pc (`src/data/mercadorias.json`, `racao-dia`), ração de cavalo 4 pc e estábulo 7 pc (`src/data/montarias-veiculos.json`, `racao-cavalo` e `estabulo`); a seção Hospedagem & Comida saiu, e a estalagem está no Custo de Vida (`src/content/chapters/custo-de-servico-e-itens.md:78-94`). Registro original: Documento §E4 (`:756`). Ração de viagem 3 pc;
   ração de cavalo 4 pc; estábulo 7 pc. Afeta `custo-de-servico-e-itens.md:271` (Ração (dia), 2 pc hoje),
   a seção Hospedagem & Comida (`:228`) e o `racao-dia` do `src/data/precos.json`.
 - [ ] **G60 · [DECIDIDO, APLICAR DEPOIS] E7 · Correções de texto.** Documento §E7 (`:783`). O salto
   entre degraus (`Acoes_Sistema.md:216` × `relacoes-sociais.md:215`, a G46), a fórmula, os tetos, a
-  Renda, a Qualidade e os Itens Gerais (`custo-de-servico-e-itens.md:319`). Ao aplicar, fecha a G46.
+  Renda, a Qualidade e os Itens Gerais (`custo-de-servico-e-itens.md:319`). Ao aplicar, fecha a G46. **Rodada 110 (25/09/2026), em parte** (`3ee18df`, `f9709bc`): a Renda, a Qualidade e os Itens Gerais. **Falta:** o salto entre degraus (a G46) e a fórmula e os tetos de `src/content/chapters/acoes-oficio-e-mundo.md:206` (G49 a G51).
 - [ ] **G61 · [DECIDIDO, APLICAR DEPOIS] A1 · Munição.** Documento §A1 (`:46`). Flechas de guerra e
   virotes ficam 10 pc o maço de 10; entra Flechas rústicas (10) a 4 pc; regra de recuperação: metade.
   Afeta `src/data/municao.json`, o catálogo de `custo-de-servico-e-itens.md` e a regra da tag Munição em
   `armas-e-armaduras.md:51`.
-- [ ] **G62 · [DECIDIDO, APLICAR DEPOIS] A3 · Mercadorias.** Documento §A3 (`:95`). 190 itens, com as
+- [x] ~~**G62 · [DECIDIDO, APLICAR DEPOIS] A3 · Mercadorias.**~~ **Aplicado em 25/09/2026, rodada 110** (`3ee18df`): `src/data/mercadorias.json`, 193 itens da v2, na seção gerada `src/content/chapters/custo-de-servico-e-itens.md:499-806`; Roupas, Itens Gerais e Hospedagem & Comida à mão saíram. Registro original: Documento §A3 (`:95`). 190 itens, com as
   correções da rodada A2 do Revisor, num arquivo próprio `mercadorias.json` (G70). Afeta
   `custo-de-servico-e-itens.md` (Roupas `:304`, Itens Gerais `:319`, Hospedagem & Comida `:228`).
 - [ ] **G63 · [DECIDIDO, APLICAR DEPOIS] B3 · O "Ganho por semana" (resolve a G22).** Documento §B3
   (`:211`). Ganho por semana = renda de 6 jornadas do ofício; meia jornada = meio intervalo. Aplica junto
-  com a jornada por ofício (G45). Afeta `acoes-oficio-e-mundo.md:206`. Ao aplicar, fecha a G22.
+  com a jornada por ofício (G45). Afeta `acoes-oficio-e-mundo.md:206`. Ao aplicar, fecha a G22. **Rodada 110 (25/09/2026), em parte** (`3ee18df`): a semana de 6 dias e a renda proporcional aos dias trabalhados estão em `src/content/chapters/custo-de-servico-e-itens.md:61-63`. **Falta:** `src/content/chapters/acoes-oficio-e-mundo.md:206` e a jornada por ofício (G45).
 - [ ] **G64 · [DECIDIDO, APLICAR DEPOIS] B7 · Status obrigatório.** Documento §B7 (`:298`). Regra nova
   de viver abaixo do nível, com Temperança, e dívida para manter o status. Afeta
   `custo-de-servico-e-itens.md:33` (Serviços & Renda) e o custo de vida (G65).
-- [ ] **G65 · [DECIDIDO, APLICAR DEPOIS] C4 · Custo de vida.** Documento §C4 (`:326`). Quatro cestas
+- [x] ~~**G65 · [DECIDIDO, APLICAR DEPOIS] C4 · Custo de vida.**~~ **Aplicado em 25/09/2026, rodada 110** (`3ee18df`): `src/data/custo-de-vida.json`, com os níveis por pessoa (`src/content/chapters/custo-de-servico-e-itens.md:78-94`) e o pacote por família em cada faixa (`src/content/chapters/custo-de-servico-e-itens.md:100-118`). Registro original: Documento §C4 (`:326`). Quatro cestas
   por adulto-equivalente, cinco moradias, sete níveis de vida por pessoa e um pacote por família em cada
   faixa da B5, no arquivo novo `custo-de-vida.json` (G70). Afeta `custo-de-servico-e-itens.md:228`
   (Hospedagem & Comida).
 - [ ] **G66 · [DECIDIDO, APLICAR DEPOIS] C7 · Serviços contratados.** Documento §C7 (`:543`). Tarifa =
   renda do perfil ÷ 6 (contrato) ou × 1,5 (avulso); lista de 38 serviços no arquivo novo `servicos.json`
   (G70); o Séquito não custa dinheiro na mesa. O documento deixa aberta a regra do curandeiro contra a
-  Cura (`:625`). Afeta `custo-de-servico-e-itens.md:33` e `antecedentes.md:139` (Séquito).
+  Cura (`:625`). Afeta `custo-de-servico-e-itens.md:33` e `antecedentes.md:139` (Séquito). **Rodada 110 (25/09/2026), em parte** (`3ee18df`, `f9709bc`): as tarifas e os 38 serviços de `src/data/servicos.json` (`src/content/chapters/custo-de-servico-e-itens.md:120-257`), o soldo por dia corrido (`src/content/chapters/custo-de-servico-e-itens.md:257`) e a Cura acelerada, 10% por nível (`src/content/chapters/vida-ferimentos-cura.md:90`). **Falta:** "o Séquito não custa dinheiro na mesa" em `antecedentes.md` (Séquito).
 - [ ] **G67 · [DECIDIDO, APLICAR DEPOIS] E2 · Reparo e desgaste.** Documento §E2 (`:704`). Reparo em
   fração do preço (1/6, 1/3, 3/4); desgaste opcional por marcas. Afeta `acoes-oficio-e-mundo.md`
-  (fabricação) e `armas-e-armaduras.md`.
+  (fabricação) e `armas-e-armaduras.md`. **Rodada 110 (25/09/2026), em parte** (`f9709bc`): o reparo pela regra da v2 §8 (leve sem Montagem, pesado com metade, arruinada inteira; ~1/10, 1/3 e 2/3 do preço), em `src/content/chapters/acoes-oficio-e-mundo.md:193`. **Falta:** o desgaste opcional por marcas, em `armas-e-armaduras.md`.
 - [ ] **G68 · [DECIDIDO, APLICAR DEPOIS] E3 · Empréstimo de XP, a regra completa (completa a G44).**
   Documento §E3 (`:726`). Tempo, preço e dívida, sobre o que o autor já decidiu na G44. Afeta
   `criacao-de-personagem.md` (onde o XP se gasta). Ao aplicar, fecha a G44.
