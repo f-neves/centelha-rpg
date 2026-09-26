@@ -516,10 +516,10 @@ Fechados (2): I7, I13.
 | J9 | aberto | CONSERTAR | `gen-mermaid.mjs` redesenha os seis diagramas a cada execução, e o `--check` não enxerga isso. |
 | (sem sigla) | aberto |  | A linha de fechamento do `test-grid` é texto fixo · [DECIDIR] |
 | J11 | aberto | FAZER | O link automático de "Perfuração" leva ao gate quando o texto fala do modo de dano, e nenhum portão confere … |
-| J12 | aberto | DECIDIR | Os apelidos ambíguos do glossário: 101 links errados em seis linhas, depois do conserto da Compostura e do … |
+| J12 | aberto | DECIDIR | Os apelidos ambíguos do glossário: 99 links errados em oito linhas, depois do conserto da Compostura e do … |
 | J13 | aberto | DECIDIR | O bestiário recebe link automático só nas fichas montadas quando o índice chega. |
 | J14 | aberto | DECIDIR | "Margem" nomeia duas grandezas: a Margem do verbete e a Margem de Quase-Acerto. |
-| J15 | aberto | DECIDIR | "nível" no sentido da Arte: 227 links, fora da conta da J12. |
+| J15 | aberto | DECIDIR | "nível" no sentido da Arte: 202 links, fora da conta da J12. |
 | J16 | aberto | DECIDIR | "Nível" é o nome do próprio verbete, usado como palavra comum em todo o sistema: 125 links errados, fora da … |
 | J10 | aberto, ADIADO | DECIDIR | Os 23 travessões do `regras.json`, e seis deles NÃO são travessão. |
 

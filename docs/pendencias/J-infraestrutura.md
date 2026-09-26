@@ -87,31 +87,55 @@
   build o executam; a medição da Revisora foi um script de scratchpad, fora do repositório. Se não
   existe, esta família volta na próxima renomeação.
 
-- [ ] **J12 · [DECIDIR] Os apelidos ambíguos do glossário: 101 links errados em seis linhas, depois
-  do conserto da Compostura e do "alvo", e depois de tirar o "Nível" (J16).** Levantado em
-  25/09/2026, na rodada 108, recontado em 25/09/2026 por decisão do humano (o "Nível" saiu para a
-  J16, mesma reclassificação que já tinha tirado a Margem de QA para a J14 e o "nível" da Arte para
-  a J15). A 108 tirou os dois piores (`a26fda1`, `050ba5f`: 43 "Compostura" e 278 "alvo", PROCEDE em
-  `f28324b`). A Revisora mediu as outras oito linhas da tabela do `104-revisora.md` §5, lendo todas
-  as ocorrências (`108-revisora.md` §6); com o "Nível" fora, ficam seis: Ticks ← "Velocidade" 26,
-  Margem ← "Margem" 5 (a parte que não é QA), Centelha ← "poder" 26, Defesa ← "esquiva" 13 e ←
-  "bloqueio" 4, Valor Passivo ← "passiva" 9, Técnica ← "poder" 11, Firula ← "manobra" 7. **101
-  errados** (241 menos os 125 do "Nível" e menos 15 da Margem de QA, que já tinha saído para a J14;
-  422 com os 321 já consertados). **O número anterior desta linha (116) estava errado por soma; o
-  correto é 101, conferido em 25/09/2026.** Duas formas, das três originais: palavra com dois donos
-  no glossário ("poder": Centelha e Técnica; "esquiva" e "bloqueio": Defesa e Habilidade) e o resto,
-  sem forma comum. **A regra "o autolink não casa palavra solta com mais de um dono" (proposta pelo
-  humano) pega só os quatro casos de dois donos (54 de 101, mais da metade), e tem efeito colateral
-  conhecido no verbete `integridade`** (que também tem dois
-  donos por NOME, não por apelido): a J12 espera a medição de rodada curta do que essa regra
-  derruba (links certos perdidos), pedida junto com a J13. **O humano decide se o resto (62, sem a
-  forma de dois donos) é rodada, frente, ou fica.**
+- [ ] **J12 · [DECIDIR] Os apelidos ambíguos do glossário: 99 links errados em oito linhas, depois
+  do conserto da Compostura e do "alvo", depois de tirar o "Nível" (J16), e depois da correção da
+  página `artes` (109).** Levantado em 25/09/2026, na rodada 108, recontado em 25/09/2026 (o
+  "Nível" saiu para a J16) e de novo na rodada 109: a Revisora achou que `dist/artes/index.html` é
+  um redirecionamento para `artes/regras` e que todo medidor desde a 104 contava a página duas
+  vezes (`109-revisora.md` §2). Com a correção, as oito linhas ficam: Ticks ← "Velocidade" 26 → **25**,
+  Margem ← "Margem" 5 (a parte que não é QA, sem mudança), Centelha ← "poder" 26 (sem mudança),
+  Defesa ← "esquiva" 13 → **12**, Defesa ← "bloqueio" 4 (sem mudança), Valor Passivo ← "passiva" 9
+  (sem mudança), Técnica ← "poder" 11 (sem mudança), Firula ← "manobra" 7 (sem mudança). **99
+  errados** (era 101; 420 com os 321 já consertados, era 422). **Os números anteriores desta linha
+  (primeiro 116, depois 101) estavam errados: 116 por soma, 101 pela contagem dupla da `artes`; o
+  correto é 99, conferido em 26/09/2026.**
+
+  **A medição do que a regra "dois donos" derruba, pedida na rodada 108, saiu na 109
+  (`109-executora.md` §2, conferida por caminho independente em `109-revisora.md` §4).** Veredito
+  por verbete, nas duas formas de contar (só o lado do glossário, que é o que a J12 soma; e os dois
+  lados, glossário + Habilidade), com o mesmo resultado nas duas:
+
+  | palavra | errados × certos (só glossário) | veredito |
+  |---|---|---|
+  | `poder` | 37 × 3 | **entra** |
+  | `esquiva` | 12 × 8 | **entra** |
+  | `bloqueio` | 4 × 19 | **não entra** (mata mais certo do que errado) |
+  | `integridade` | 0 × 18 | **não entra** (só mata certo; efeito colateral confirmado) |
+
+  Se o humano aceitar o critério do próprio pedido (a regra não entra onde mata mais certo que
+  errado), ela resolve `poder` e `esquiva` (37+12 = 49 dos 99 errados) e deixa `bloqueio`
+  (4 errados) e o resto sem forma comum (99 − 53 = 46) para outra frente. **O humano decide se
+  aplica a regra a `poder`/`esquiva`, o que fica com `bloqueio` e o resto, e se isso é rodada,
+  frente, ou fica.**
 - [ ] **J13 · [DECIDIR] O bestiário recebe link automático só nas fichas montadas quando o índice
-  chega.** Levantado em 25/09/2026, na rodada 108 (`108-revisora.md` §4). A página nasce com as
-  primeiras fichas e monta o resto em fatias (`bestiario.astro:142`, `:557-563`); o autolink roda uma
-  vez, no `requestIdleCallback` (`Referencias.astro:292`). Aberto sem `#`, o bestiário tem 493 links;
-  com `#` na URL (que monta todas as fichas antes, `bestiario.astro:568-569`), 1670. Anterior à 108.
-  Decidir se é defeito (o autolink rodar de novo quando o bestiário termina de montar) ou se fica.
+  chega.** Levantado em 25/09/2026, na rodada 108 (`108-revisora.md` §4), tamanho medido na 109
+  (`109-executora.md` §1, conferido em `109-revisora.md` §3). A página nasce com as primeiras
+  fichas e monta o resto em fatias (`bestiario.astro:142`, `:557-563`); o autolink roda uma vez, no
+  `requestIdleCallback` (`Referencias.astro:292`), sem razão técnica escrita para isso (é como foi
+  escrito). Aberto sem `#`, o bestiário perde **32% a 70% dos links** (493 a 1138 de 1670), **e a
+  perda depende da máquina, não só da hora**: numa CPU 4× mais lenta o `requestIdleCallback` só
+  dispara depois que as 309 fichas já montaram, então quem tem máquina rápida é quem perde link. A
+  `ficha` também perde, raramente (1 carga em 13, causa não investigada), e a `marcadores` (sem
+  sessão, 2 links) não entra na medida de quem cresce depois do autolink por dar zero links na 1ª
+  passada.
+
+  **Uma 2ª passada é possível, mas não chamando `autolink()` como está** (ele não é idempotente: o
+  `used` nasce vazio a cada chamada, então uma 2ª passada ingênua duplica: 601 links em 46 páginas,
+  quase metade do site). **Uma 2ª passada que semeia o `used` com os links já existentes não duplica
+  nada** e fecha o bestiário em 1670 (igual à página montada inteira). **Custo da semeada no
+  bestiário: ~660-710 ms em CPU normal, ~2,9-3,3 s em CPU 4× mais lenta** (quase igual à passada
+  cheia; ela percorre o `main` inteiro de novo, só evita duplicata). Decidir se e onde chamar essa
+  2ª passada semeada (candidato: fim de `montarAosPoucos`, quando `restam` chega a zero).
 
 - [ ] **J14 · [DECIDIR] "Margem" nomeia duas grandezas: a Margem do verbete e a Margem de
   Quase-Acerto.** Levantado em 25/09/2026, na medição da J12 (`108-revisora.md` §6). Dos 20 links
@@ -121,13 +145,14 @@
   108), não entra na conta da J12**: essa família (palavra com dois donos no GLOSSÁRIO) não cobre o
   caso de uma palavra que nomeia duas grandezas do SISTEMA. Decidir se a Margem de Quase-Acerto
   ganha entidade própria no glossário, ou outra saída.
-- [ ] **J15 · [DECIDIR] "nível" no sentido da Arte: 227 links, fora da conta da J12.** Levantado em
-  25/09/2026, na medição da J12 (`108-revisora.md` §6, "à parte"). O verbete Nível descreve a
-  Técnica ("faixa de poder de uma Técnica, 1 a 6, o nível N exige Centelha ≥ N"); a Arte não tem
-  esse portão (`artes`: "basta Centelha > 0 ... a profundidade você compra"). 227 ocorrências de
-  "nível da Arte", quase todas em `artes/efeitos` (166), `artes`, `artes/regras` e a criação de
-  personagem. Pelo texto de hoje do verbete, estão fora do que ele cobre; o caso é "misto", como na
-  104, e quem decide se o verbete deve passar a cobrir a Arte também é o humano. **Por decisão do
+- [ ] **J15 · [DECIDIR] "nível" no sentido da Arte: 202 links, fora da conta da J12.** Levantado em
+  25/09/2026, na medição da J12 (`108-revisora.md` §6, "à parte"), recontado na 109 (227 → 202,
+  mesma correção da página `artes` contada duas vezes desde a 104, `109-revisora.md` §2). O verbete
+  Nível descreve a Técnica ("faixa de poder de uma Técnica, 1 a 6, o nível N exige Centelha ≥ N"); a
+  Arte não tem esse portão (`artes`: "basta Centelha > 0 ... a profundidade você compra"). 202
+  ocorrências de "nível da Arte", quase todas em `artes/efeitos` (166), `artes/regras` e a criação
+  de personagem. Pelo texto de hoje do verbete, estão fora do que ele cobre; o caso é "misto", como
+  na 104, e quem decide se o verbete deve passar a cobrir a Arte também é o humano. **Por decisão do
   humano (rodada 108), fica fora de toda soma da J12** até essa decisão.
 - [ ] **J16 · [DECIDIR] "Nível" é o nome do próprio verbete, usado como palavra comum em todo o
   sistema: 125 links errados, fora da conta da J12.** Levantado em 25/09/2026, na medição da J12

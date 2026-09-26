@@ -82,7 +82,7 @@ Arquiteto: `medir-autolink.mjs`/`medir-autolink-rev.mjs`; copie o que usar para
    Técnica←poder, Defesa←esquiva, Defesa←bloqueio): quantos links ficam sem nenhum link (nem para o
    sentido certo nem para o errado), porque a regra apaga os dois lados.
 
-**Se em algum verbete a regra matar mais link certo do que errado, diga isso explicitamente** — é o
+**Se em algum verbete a regra matar mais link certo do que errado, diga isso explicitamente**: é o
 critério que o humano deu para ela não entrar naquele verbete.
 
 **Desfaça o experimento** (nada entra no `glossario.json` nem em `Referencias.astro` versionado)
