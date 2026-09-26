@@ -20,9 +20,10 @@ instantânea → corpo; dano de área evitável → esquiva; dano de ambiente co
 **Achei um padrão de erro sistemático nas auras**, não pontual: meu critério da fase 2 tentava
 distinguir aura de medo (mente) de aura ambiental (corpo) comparando a Arte de base contra uma
 lista com acento (`'proteção'`, `'fascinação'`), mas o texto extraído da coluna Base da tabela
-tinha outro tratamento de acento, e a comparação nunca batia. Resultado: **todas as 13 auras
-saíram como `corpo`**, inclusive as de medo e as de fogo/frio puras. Corrigido por revisão manual
-de cada uma (não deu para confiar em nenhum critério automático de novo):
+tinha outro tratamento de acento, e a comparação nunca batia. Resultado: **as auras que achei
+por essa busca saíram todas como `corpo`**, inclusive as de medo e as de fogo/frio puras.
+Corrigido por revisão manual de cada uma (não deu para confiar em nenhum critério automático de
+novo):
 
 - **Viram `nenhum`** (dano de ambiente contínuo): `mon-balor` (aura-de-fogo), `mon-diabo-de-gelo`
   (aura-de-frio), `mon-dragao-vermelho-adulto` (aura-de-fogo), `mon-efreeti` (corpo-em-chamas),
@@ -32,6 +33,14 @@ de cada uma (não deu para confiar em nenhum critério automático de novo):
   (aura-sagrada).
 - **Ficaram `corpo`**, já corretas (fedor): `mon-ghast` (paralisia-e-fedor), `mon-hezrou`
   (fedor-nauseante).
+
+**CORRIGE da Revisora (fase 3, `b14-fase3-revisora.md`)**: a busca acima usava `usos.recarga ===
+'contínua'` como filtro, e isso deixou de fora `mon-vrock` ("Esporos e dança da ruína", base
+Vida+Morte), que tem `usos.periodo: "dia"` em vez de contínuo. Não é "as 13 auras", são as 12 que
+essa busca achou; a 13ª nunca entrou na varredura, e a frase original estava errada por afirmar
+cobertura que não houve. Revisei agora: esporos (doença) e a dança da ruína (dreno em área)
+cabem em "doença"/"dreno" → **corpo**, que já é o valor gravado desde a fase 2. Confirmado, sem
+mudança de dado.
 
 Também achei e corrigi dois `olhar`/gaze de encantamento que a mesma classe de bug (acento)
 tinha deixado em `corpo` quando deviam ser `mente` (encanto): `mon-naga-espirita`
