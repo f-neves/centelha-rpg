@@ -1,7 +1,7 @@
 // Gera D&D/armas&armaduras/lista-itens.md a partir dos dados do sistema.
 //
 // A lista NUNCA é digitada à mão: sai de armas.json, armaduras.json, escudos.json
-// e precos.json, para não descolar da fonte de verdade. Rodar de novo depois de
+// mercadorias.json e pacotes-equipamento.json, para não descolar da fonte de verdade. Rodar de novo depois de
 // mexer em qualquer um desses arquivos.
 //
 //   node scripts/gen-lista-equip.mjs
@@ -17,7 +17,8 @@ const ler = (n) => JSON.parse(readFileSync(resolve(raiz, 'src/data', n), 'utf8')
 const armas = achataCatalogo(ler('armas.json'));
 const armaduras = achataCatalogo(ler('armaduras.json'));
 const escudos = achataCatalogo(ler('escudos.json'));
-const precos = ler('precos.json');
+const mercadorias = ler('mercadorias.json').itens;
+const pacotes = Object.entries(ler('pacotes-equipamento.json').pacotes).map(([nome, p]) => ({ nome, ...p }));
 
 // "Desarmado", "Nenhuma" e "Nenhum" existem como opção de regra, não como peça:
 // entram nas tabelas, mas não recebem imagem.
@@ -170,30 +171,30 @@ const moeda = (pc) => {
   return `${pc} pc`;
 };
 
-out.push(`## Itens de equipamento (${precos.equipamento.length})`);
+out.push(`## Mercadorias (${mercadorias.length})`);
 out.push('');
 out.push('Preços em cobre (pc). Conversão: 1 po = 100 pc, 1 pp = 10 pc.');
 out.push('Sem imagem por enquanto: o acervo cobre só armas, armaduras e escudos.');
 out.push('');
 out.push(tabela(
-  ['id', 'Nome', 'Preço (pc)', 'Preço'],
-  precos.equipamento.map((i) => [`\`${i.id}\``, `**${i.nome}**`, String(i.pc), moeda(i.pc)]),
+  ['id', 'Nome', 'Categoria', 'Unidade', 'Preço (pc)', 'Preço'],
+  mercadorias.map((i) => [`\`${i.id}\``, `**${i.nome}**`, i.mercadoria.categoria, i.mercadoria.unidade, String(i.preco.pc), moeda(i.preco.pc)]),
 ));
 out.push('');
 
 // --------------------------------------------------------------- pacotes
-const porId = new Map(precos.equipamento.map((i) => [i.id, i]));
-out.push(`## Pacotes de equipamento (${precos.pacotes.length})`);
+const porId = new Map(mercadorias.map((i) => [i.id, i]));
+out.push(`## Pacotes de equipamento (${pacotes.length})`);
 out.push('');
 out.push('Conjuntos prontos; o total é a soma dos itens.');
 out.push('');
 out.push(tabela(
   ['Pacote', 'Itens', 'Total'],
-  precos.pacotes.map((p) => {
+  pacotes.map((p) => {
     let total = 0;
     const itens = p.itens.map(([id, qtd]) => {
       const it = porId.get(id);
-      total += (it ? it.pc : 0) * qtd;
+      total += (it ? it.preco.pc : 0) * qtd;
       return qtd > 1 ? `${it ? it.nome : id} ×${qtd}` : (it ? it.nome : id);
     }).join(', ');
     return [`**${p.nome}**`, itens, moeda(total)];
@@ -207,5 +208,5 @@ writeFileSync(destino, out.join('\n'), 'utf8');
 
 const total = comImagem(armas) + comImagem(armaduras) + comImagem(escudos);
 console.log(`lista-itens.md gerado: ${armas.length} armas, ${armaduras.length} armaduras, ` +
-  `${escudos.length} escudos, ${precos.equipamento.length} itens, ${precos.pacotes.length} pacotes.`);
+  `${escudos.length} escudos, ${mercadorias.length} mercadorias, ${pacotes.length} pacotes.`);
 console.log(`Imagens esperadas na pasta: ${total}.`);

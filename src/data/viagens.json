@@ -1,0 +1,133 @@
+{
+  "_nota": "Distâncias em km. Saída do modelo em lore/economia/v2/gerar.py: não edite preço à mão aqui; mude o modelo e gere de novo.",
+  "velocidades_km_dia": [
+    {
+      "modo": "A pé",
+      "km_dia": 25
+    },
+    {
+      "modo": "A pé, marcha forçada",
+      "km_dia": 40
+    },
+    {
+      "modo": "Caravana",
+      "km_dia": 30
+    },
+    {
+      "modo": "Carroça pesada ou carro de bois",
+      "km_dia": 15
+    },
+    {
+      "modo": "A cavalo, comitiva grande",
+      "km_dia": 30
+    },
+    {
+      "modo": "A cavalo, grupo pequeno",
+      "km_dia": 50
+    },
+    {
+      "modo": "Mensageiro a cavalo, sem troca",
+      "km_dia": 60
+    },
+    {
+      "modo": "Mensageiro com troca de cavalos",
+      "km_dia": 110
+    },
+    {
+      "modo": "Navio mercante",
+      "km_dia": 120
+    },
+    {
+      "modo": "Galera",
+      "km_dia": 80
+    },
+    {
+      "modo": "Barco, rio abaixo",
+      "km_dia": 60
+    },
+    {
+      "modo": "Barco, rio acima",
+      "km_dia": 25
+    }
+  ],
+  "precos": [
+    {
+      "id": "caravana-carroca",
+      "nome": "Caravana, lugar em carroça (bagagem até 20 kg)",
+      "pc": 6,
+      "unidade": "10 km"
+    },
+    {
+      "id": "caravana-pe",
+      "nome": "Caravana, a pé junto (proteção e bagagem leve)",
+      "pc": 5,
+      "unidade": "dia"
+    },
+    {
+      "id": "navio",
+      "nome": "Navio, passagem no convés",
+      "pc": 3,
+      "unidade": "10 km"
+    },
+    {
+      "id": "navio-cabine",
+      "nome": "Navio, lugar coberto",
+      "pc": 10,
+      "unidade": "10 km"
+    },
+    {
+      "id": "barco-rio",
+      "nome": "Barco de rio, passagem",
+      "pc": 1,
+      "unidade": "10 km (rio abaixo); x2 rio acima"
+    },
+    {
+      "id": "cavalo-aluguel",
+      "nome": "Cavalo de aluguel (hackney)",
+      "pc": 17,
+      "unidade": "10 km"
+    },
+    {
+      "id": "carroca-aluguel",
+      "nome": "Carroça com carroceiro e parelha",
+      "pc": 60,
+      "unidade": "dia"
+    },
+    {
+      "id": "frete-terra",
+      "nome": "Frete por terra",
+      "pc": 4,
+      "unidade": "tonelada por km"
+    },
+    {
+      "id": "frete-rio",
+      "nome": "Frete por rio",
+      "pc": 2,
+      "unidade": "tonelada por km"
+    },
+    {
+      "id": "frete-mar",
+      "nome": "Frete por mar",
+      "pc": 1,
+      "unidade": "2 toneladas por km"
+    },
+    {
+      "id": "transporte-cidade",
+      "nome": "Transporte na cidade (barqueiro, carroceiro, liteira)",
+      "pc": 2,
+      "unidade": "trajeto curto"
+    },
+    {
+      "id": "balsa",
+      "nome": "Balsa",
+      "pc": 2,
+      "unidade": "pessoa; 5 com cavalo"
+    },
+    {
+      "id": "pedagio",
+      "nome": "Pedágio de ponte ou estrada",
+      "pc": 1,
+      "unidade": "pessoa; 3 por animal; 10 por carroça"
+    }
+  ]
+}

@@ -1,0 +1,189 @@
+{
+  "_nota": "Renda por semana de trabalho (6 jornadas). Livre = Renda x 12% x (60/Renda)^0,35 (curva D: 12% no braçal, 2% na nobreza), arredondado. Custo = Renda - Livre; inclui o estilo de vida obrigatório da faixa. Saída do modelo em lore/economia/v2/gerar.py: não edite preço à mão aqui; mude o modelo e gere de novo.",
+  "faixas": [
+    {
+      "faixa": "Braçal",
+      "recursos": 1,
+      "renda_semana": 60,
+      "renda_mes": 240,
+      "renda_ano": 2880,
+      "livre_semana": 7,
+      "livre_mes": 28,
+      "livre_ano": 336,
+      "custo_semana": 53,
+      "nivel_de_vida": "Pobre",
+      "origem": "soma 4, trabalho simples"
+    },
+    {
+      "faixa": "Destreinado",
+      "recursos": 1,
+      "renda_semana": 100,
+      "renda_mes": 400,
+      "renda_ano": 4800,
+      "livre_semana": 10,
+      "livre_mes": 40,
+      "livre_ano": 480,
+      "custo_semana": 90,
+      "nivel_de_vida": "Pobre",
+      "origem": "soma 5, trabalho simples"
+    },
+    {
+      "faixa": "Treinado",
+      "recursos": 2,
+      "renda_semana": 270,
+      "renda_mes": 1080,
+      "renda_ano": 12960,
+      "livre_semana": 19,
+      "livre_mes": 76,
+      "livre_ano": 912,
+      "custo_semana": 251,
+      "nivel_de_vida": "Confortável",
+      "origem": "soma 8 (260 pela curva)"
+    },
+    {
+      "faixa": "Especialista",
+      "recursos": 3,
+      "renda_semana": 550,
+      "renda_mes": 2200,
+      "renda_ano": 26400,
+      "livre_semana": 30,
+      "livre_mes": 120,
+      "livre_ano": 1440,
+      "custo_semana": 520,
+      "nivel_de_vida": "Abastado",
+      "origem": "soma 11 (568 pela curva)"
+    },
+    {
+      "faixa": "Doutor",
+      "recursos": 3,
+      "renda_semana": 820,
+      "renda_mes": 3280,
+      "renda_ano": 39360,
+      "livre_semana": 40,
+      "livre_mes": 160,
+      "livre_ano": 1920,
+      "custo_semana": 780,
+      "nivel_de_vida": "Abastado",
+      "origem": "soma 12 + Proeza ou reputação (669 a 869)"
+    },
+    {
+      "faixa": "Abastado",
+      "recursos": 4,
+      "renda_semana": 1400,
+      "renda_mes": 5600,
+      "renda_ano": 67200,
+      "livre_semana": 55,
+      "livre_mes": 220,
+      "livre_ano": 2640,
+      "custo_semana": 1345,
+      "nivel_de_vida": "Rico",
+      "origem": "renda de capital: oficina com empregados, comércio"
+    },
+    {
+      "faixa": "Rico",
+      "recursos": 4,
+      "renda_semana": 2700,
+      "renda_mes": 10800,
+      "renda_ano": 129600,
+      "livre_semana": 85,
+      "livre_mes": 340,
+      "livre_ano": 4080,
+      "custo_semana": 2615,
+      "nivel_de_vida": "Rico",
+      "origem": "capital e posição"
+    },
+    {
+      "faixa": "Aristocrata",
+      "recursos": 5,
+      "renda_semana": 4200,
+      "renda_mes": 16800,
+      "renda_ano": 201600,
+      "livre_semana": 110,
+      "livre_mes": 440,
+      "livre_ano": 5280,
+      "custo_semana": 4090,
+      "nivel_de_vida": "Aristocrata",
+      "origem": "terra, cargo, título"
+    },
+    {
+      "faixa": "Nobreza",
+      "recursos": 5,
+      "renda_semana": 10000,
+      "renda_mes": 40000,
+      "renda_ano": 480000,
+      "livre_semana": 200,
+      "livre_mes": 800,
+      "livre_ano": 9600,
+      "custo_semana": 9800,
+      "nivel_de_vida": "Aristocrata",
+      "origem": "senhorio de terras e rendas"
+    }
+  ],
+  "curva_por_soma": [
+    {
+      "soma": 4,
+      "media": 7,
+      "renda_semana": 60,
+      "faixa_dificuldade": 4
+    },
+    {
+      "soma": 5,
+      "media": 9,
+      "renda_semana": 100,
+      "faixa_dificuldade": 4
+    },
+    {
+      "soma": 6,
+      "media": 10.5,
+      "renda_semana": 130,
+      "faixa_dificuldade": 4
+    },
+    {
+      "soma": 7,
+      "media": 12.5,
+      "renda_semana": 200,
+      "faixa_dificuldade": 7
+    },
+    {
+      "soma": 8,
+      "media": 14,
+      "renda_semana": 260,
+      "faixa_dificuldade": 7
+    },
+    {
+      "soma": 9,
+      "media": 16,
+      "renda_semana": 330,
+      "faixa_dificuldade": 7
+    },
+    {
+      "soma": 10,
+      "media": 17.5,
+      "renda_semana": 430,
+      "faixa_dificuldade": 11
+    },
+    {
+      "soma": 11,
+      "media": 19.5,
+      "renda_semana": 570,
+      "faixa_dificuldade": 11
+    },
+    {
+      "soma": 12,
+      "media": 21,
+      "renda_semana": 670,
+      "faixa_dificuldade": 11
+    }
+  ],
+  "valor_por_ponto_semana": {
+    "dif4": 20,
+    "dif7": 37.14,
+    "dif11": 66.86
+  },
+  "tetos_demanda_semana": {
+    "aldeia": 100,
+    "vila": 300,
+    "cidade": 1000,
+    "capital": null
+  }
+}

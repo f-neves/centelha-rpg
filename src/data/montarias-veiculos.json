@@ -1,0 +1,489 @@
+{
+  "_nota": "Montarias, animais, arreios e veículos, preço em cobre (pc). Os animais não têm peso. A procedência de cada preço fica fora do site, com o modelo. Saída do modelo em lore/economia/v2/gerar.py: não edite preço à mão aqui; mude o modelo e gere de novo.",
+  "itens": [
+    {
+      "id": "ponei",
+      "nome": "Pônei ou garrano",
+      "tipo": "montaria",
+      "preco": {
+        "pc": 400
+      },
+      "tags": [
+        "montaria"
+      ]
+    },
+    {
+      "id": "burro",
+      "nome": "Burro ou jumento",
+      "tipo": "montaria",
+      "preco": {
+        "pc": 330
+      },
+      "tags": [
+        "montaria"
+      ]
+    },
+    {
+      "id": "cavalo-carga",
+      "nome": "Cavalo de carga (sumpter)",
+      "tipo": "montaria",
+      "preco": {
+        "pc": 600
+      },
+      "tags": [
+        "montaria"
+      ]
+    },
+    {
+      "id": "cavalo-tracao",
+      "nome": "Cavalo de tração ou de arado",
+      "tipo": "montaria",
+      "preco": {
+        "pc": 1300
+      },
+      "tags": [
+        "montaria"
+      ]
+    },
+    {
+      "id": "boi-tracao",
+      "nome": "Boi de arado",
+      "tipo": "montaria",
+      "preco": {
+        "pc": 920
+      },
+      "tags": [
+        "montaria"
+      ]
+    },
+    {
+      "id": "mula",
+      "nome": "Mula de sela",
+      "tipo": "montaria",
+      "preco": {
+        "pc": 2400
+      },
+      "tags": [
+        "montaria"
+      ]
+    },
+    {
+      "id": "rocim",
+      "nome": "Rocim (cavalo de montaria comum)",
+      "tipo": "montaria",
+      "preco": {
+        "pc": 2400
+      },
+      "tags": [
+        "montaria"
+      ]
+    },
+    {
+      "id": "palafrem",
+      "nome": "Palafrém (montaria fina, de passo)",
+      "tipo": "montaria",
+      "preco": {
+        "pc": 7200
+      },
+      "tags": [
+        "montaria"
+      ]
+    },
+    {
+      "id": "corcel",
+      "nome": "Corcel (courser, caça e guerra leve)",
+      "tipo": "montaria",
+      "preco": {
+        "pc": 16000
+      },
+      "tags": [
+        "montaria"
+      ]
+    },
+    {
+      "id": "cavalo-guerra",
+      "nome": "Cavalo de guerra de escudeiro",
+      "tipo": "montaria",
+      "preco": {
+        "pc": 11200
+      },
+      "tags": [
+        "montaria"
+      ]
+    },
+    {
+      "id": "destrier",
+      "nome": "Destrier (cavalo de guerra de cavaleiro)",
+      "tipo": "montaria",
+      "preco": {
+        "pc": 48000
+      },
+      "tags": [
+        "montaria"
+      ]
+    },
+    {
+      "id": "camelo",
+      "nome": "Camelo",
+      "tipo": "montaria",
+      "preco": {
+        "pc": 6000
+      },
+      "tags": [
+        "montaria"
+      ]
+    },
+    {
+      "id": "elefante",
+      "nome": "Elefante adestrado",
+      "tipo": "montaria",
+      "preco": {
+        "pc": 96000
+      },
+      "tags": [
+        "montaria"
+      ]
+    },
+    {
+      "id": "cao-comum",
+      "nome": "Cão comum",
+      "tipo": "montaria",
+      "preco": {
+        "pc": 20
+      },
+      "tags": [
+        "montaria"
+      ]
+    },
+    {
+      "id": "cao-guarda",
+      "nome": "Cão de guarda adestrado",
+      "tipo": "montaria",
+      "preco": {
+        "pc": 150
+      },
+      "tags": [
+        "montaria"
+      ]
+    },
+    {
+      "id": "cao-caca",
+      "nome": "Cão de caça adestrado",
+      "tipo": "montaria",
+      "preco": {
+        "pc": 600
+      },
+      "tags": [
+        "montaria"
+      ]
+    },
+    {
+      "id": "cao-guerra",
+      "nome": "Cão de guerra",
+      "tipo": "montaria",
+      "preco": {
+        "pc": 1000
+      },
+      "tags": [
+        "montaria"
+      ]
+    },
+    {
+      "id": "falcao",
+      "nome": "Falcão adestrado",
+      "tipo": "montaria",
+      "preco": {
+        "pc": 3300
+      },
+      "tags": [
+        "montaria"
+      ]
+    },
+    {
+      "id": "pombo",
+      "nome": "Pombo-correio treinado",
+      "tipo": "montaria",
+      "preco": {
+        "pc": 1700
+      },
+      "tags": [
+        "montaria"
+      ]
+    },
+    {
+      "id": "galinha",
+      "nome": "Galinha",
+      "tipo": "animal",
+      "preco": {
+        "pc": 3
+      },
+      "tags": [
+        "animal"
+      ]
+    },
+    {
+      "id": "ganso",
+      "nome": "Ganso",
+      "tipo": "animal",
+      "preco": {
+        "pc": 40
+      },
+      "tags": [
+        "animal"
+      ]
+    },
+    {
+      "id": "porco",
+      "nome": "Porco",
+      "tipo": "animal",
+      "preco": {
+        "pc": 200
+      },
+      "tags": [
+        "animal"
+      ]
+    },
+    {
+      "id": "ovelha",
+      "nome": "Ovelha",
+      "tipo": "animal",
+      "preco": {
+        "pc": 110
+      },
+      "tags": [
+        "animal"
+      ]
+    },
+    {
+      "id": "carneiro",
+      "nome": "Carneiro capado",
+      "tipo": "animal",
+      "preco": {
+        "pc": 80
+      },
+      "tags": [
+        "animal"
+      ]
+    },
+    {
+      "id": "cabra",
+      "nome": "Cabra",
+      "tipo": "animal",
+      "preco": {
+        "pc": 65
+      },
+      "tags": [
+        "animal"
+      ]
+    },
+    {
+      "id": "vaca",
+      "nome": "Vaca",
+      "tipo": "animal",
+      "preco": {
+        "pc": 750
+      },
+      "tags": [
+        "animal"
+      ]
+    },
+    {
+      "id": "touro",
+      "nome": "Touro",
+      "tipo": "animal",
+      "preco": {
+        "pc": 1000
+      },
+      "tags": [
+        "animal"
+      ]
+    },
+    {
+      "id": "potro",
+      "nome": "Cavalo de criação (não adestrado para sela)",
+      "tipo": "animal",
+      "preco": {
+        "pc": 1300
+      },
+      "tags": [
+        "animal"
+      ]
+    },
+    {
+      "id": "sela",
+      "nome": "Sela comum",
+      "tipo": "arreio",
+      "preco": {
+        "pc": 130
+      },
+      "tags": [
+        "arreio"
+      ]
+    },
+    {
+      "id": "sela-guerra",
+      "nome": "Sela de guerra (qualidade Boa)",
+      "tipo": "arreio",
+      "preco": {
+        "pc": 290
+      },
+      "tags": [
+        "arreio"
+      ]
+    },
+    {
+      "id": "arreio",
+      "nome": "Arreio e rédeas",
+      "tipo": "arreio",
+      "preco": {
+        "pc": 60
+      },
+      "tags": [
+        "arreio"
+      ]
+    },
+    {
+      "id": "cangalha",
+      "nome": "Cangalha (sela de carga)",
+      "tipo": "arreio",
+      "preco": {
+        "pc": 45
+      },
+      "tags": [
+        "arreio"
+      ]
+    },
+    {
+      "id": "ferradura",
+      "nome": "Ferragem completa (4 ferraduras, cravos, ferrador)",
+      "tipo": "arreio",
+      "preco": {
+        "pc": 40
+      },
+      "tags": [
+        "arreio"
+      ]
+    },
+    {
+      "id": "racao-cavalo",
+      "nome": "Ração de cavalo (grão e feno)",
+      "tipo": "arreio",
+      "preco": {
+        "pc": 4
+      },
+      "tags": [
+        "arreio"
+      ]
+    },
+    {
+      "id": "estabulo",
+      "nome": "Estábulo com ração, por noite (estalagem)",
+      "tipo": "arreio",
+      "preco": {
+        "pc": 7
+      },
+      "tags": [
+        "arreio"
+      ]
+    },
+    {
+      "id": "carroca",
+      "nome": "Carroça de duas rodas",
+      "tipo": "veiculo",
+      "preco": {
+        "pc": 300
+      },
+      "tags": [
+        "veiculo"
+      ]
+    },
+    {
+      "id": "carro-quatro-rodas",
+      "nome": "Carroção de quatro rodas",
+      "tipo": "veiculo",
+      "preco": {
+        "pc": 800
+      },
+      "tags": [
+        "veiculo"
+      ]
+    },
+    {
+      "id": "carruagem",
+      "nome": "Carruagem",
+      "tipo": "veiculo",
+      "preco": {
+        "pc": 12800
+      },
+      "tags": [
+        "veiculo"
+      ]
+    },
+    {
+      "id": "carruagem-luxo",
+      "nome": "Carruagem de luxo",
+      "tipo": "veiculo",
+      "preco": {
+        "pc": 640000
+      },
+      "tags": [
+        "veiculo"
+      ]
+    },
+    {
+      "id": "treno",
+      "nome": "Trenó",
+      "tipo": "veiculo",
+      "preco": {
+        "pc": 100
+      },
+      "tags": [
+        "veiculo"
+      ]
+    },
+    {
+      "id": "barco-remo",
+      "nome": "Barco a remo",
+      "tipo": "veiculo",
+      "preco": {
+        "pc": 400
+      },
+      "tags": [
+        "veiculo"
+      ]
+    },
+    {
+      "id": "barco-pesca",
+      "nome": "Barco de pesca com vela",
+      "tipo": "veiculo",
+      "preco": {
+        "pc": 1600
+      },
+      "tags": [
+        "veiculo"
+      ]
+    },
+    {
+      "id": "coca",
+      "nome": "Navio mercante (coca)",
+      "tipo": "veiculo",
+      "preco": {
+        "pc": 400000
+      },
+      "tags": [
+        "veiculo"
+      ]
+    },
+    {
+      "id": "galera",
+      "nome": "Galera de guerra (~120 remos)",
+      "tipo": "veiculo",
+      "preco": {
+        "pc": 688000
+      },
+      "tags": [
+        "veiculo"
+      ]
+    }
+  ]
+}

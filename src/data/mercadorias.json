@@ -1,0 +1,3093 @@
+{
+  "_nota": "Mercadorias do mundo mundano, preço em cobre (pc): 193 itens em 12 categorias. Saída do modelo em lore/economia/v2/gerar.py: não edite preço à mão aqui; mude o modelo e gere de novo.",
+  "itens": [
+    {
+      "id": "trigo",
+      "nome": "Trigo",
+      "tipo": "comida",
+      "preco": {
+        "pc": 65
+      },
+      "peso": 27,
+      "tags": [
+        "graos"
+      ],
+      "mercadoria": {
+        "categoria": "graos",
+        "unidade": "alqueire (~27 kg)"
+      }
+    },
+    {
+      "id": "cevada",
+      "nome": "Cevada",
+      "tipo": "comida",
+      "preco": {
+        "pc": 40
+      },
+      "peso": 22,
+      "tags": [
+        "graos"
+      ],
+      "mercadoria": {
+        "categoria": "graos",
+        "unidade": "alqueire (~22 kg)"
+      }
+    },
+    {
+      "id": "aveia",
+      "nome": "Aveia",
+      "tipo": "comida",
+      "preco": {
+        "pc": 25
+      },
+      "peso": 15,
+      "tags": [
+        "graos"
+      ],
+      "mercadoria": {
+        "categoria": "graos",
+        "unidade": "alqueire (~15 kg)"
+      }
+    },
+    {
+      "id": "malte",
+      "nome": "Malte",
+      "tipo": "comida",
+      "preco": {
+        "pc": 50
+      },
+      "peso": 18,
+      "tags": [
+        "graos"
+      ],
+      "mercadoria": {
+        "categoria": "graos",
+        "unidade": "alqueire (~18 kg)"
+      }
+    },
+    {
+      "id": "feijao",
+      "nome": "Feijão ou fava",
+      "tipo": "comida",
+      "preco": {
+        "pc": 20
+      },
+      "peso": 27,
+      "tags": [
+        "graos"
+      ],
+      "mercadoria": {
+        "categoria": "graos",
+        "unidade": "alqueire (~27 kg)"
+      }
+    },
+    {
+      "id": "ervilha",
+      "nome": "Ervilha",
+      "tipo": "comida",
+      "preco": {
+        "pc": 50
+      },
+      "peso": 27,
+      "tags": [
+        "graos"
+      ],
+      "mercadoria": {
+        "categoria": "graos",
+        "unidade": "alqueire (~27 kg)"
+      }
+    },
+    {
+      "id": "arroz",
+      "nome": "Arroz",
+      "tipo": "comida",
+      "preco": {
+        "pc": 10
+      },
+      "peso": 0.45,
+      "tags": [
+        "graos"
+      ],
+      "mercadoria": {
+        "categoria": "graos",
+        "unidade": "libra (~0,45 kg)"
+      }
+    },
+    {
+      "id": "farinha",
+      "nome": "Farinha de trigo",
+      "tipo": "comida",
+      "preco": {
+        "pc": 3
+      },
+      "peso": 1,
+      "tags": [
+        "graos"
+      ],
+      "mercadoria": {
+        "categoria": "graos",
+        "unidade": "1 kg"
+      }
+    },
+    {
+      "id": "pao",
+      "nome": "Pão de trigo",
+      "tipo": "comida",
+      "preco": {
+        "pc": 3
+      },
+      "peso": 1,
+      "tags": [
+        "graos"
+      ],
+      "mercadoria": {
+        "categoria": "graos",
+        "unidade": "1 kg"
+      }
+    },
+    {
+      "id": "pao-pequeno",
+      "nome": "Pão pequeno",
+      "tipo": "comida",
+      "preco": {
+        "pc": 1
+      },
+      "peso": 0.4,
+      "tags": [
+        "graos"
+      ],
+      "mercadoria": {
+        "categoria": "graos",
+        "unidade": "unidade (~0,4 kg)"
+      }
+    },
+    {
+      "id": "pao-grosso",
+      "nome": "Pão grosseiro (cevada, centeio, mistura)",
+      "tipo": "comida",
+      "preco": {
+        "pc": 2
+      },
+      "peso": 1,
+      "tags": [
+        "graos"
+      ],
+      "mercadoria": {
+        "categoria": "graos",
+        "unidade": "1 kg"
+      }
+    },
+    {
+      "id": "carne",
+      "nome": "Carne (porco, carneiro ou boi)",
+      "tipo": "comida",
+      "preco": {
+        "pc": 4
+      },
+      "peso": 1,
+      "tags": [
+        "alimentos"
+      ],
+      "mercadoria": {
+        "categoria": "alimentos",
+        "unidade": "1 kg"
+      }
+    },
+    {
+      "id": "toucinho",
+      "nome": "Toucinho ou carne salgada",
+      "tipo": "comida",
+      "preco": {
+        "pc": 3
+      },
+      "peso": 0.45,
+      "tags": [
+        "alimentos"
+      ],
+      "mercadoria": {
+        "categoria": "alimentos",
+        "unidade": "libra (~0,45 kg)"
+      }
+    },
+    {
+      "id": "manteiga",
+      "nome": "Manteiga",
+      "tipo": "comida",
+      "preco": {
+        "pc": 9
+      },
+      "peso": 0.45,
+      "tags": [
+        "alimentos"
+      ],
+      "mercadoria": {
+        "categoria": "alimentos",
+        "unidade": "libra (~0,45 kg)"
+      }
+    },
+    {
+      "id": "queijo",
+      "nome": "Queijo",
+      "tipo": "comida",
+      "preco": {
+        "pc": 4
+      },
+      "peso": 0.45,
+      "tags": [
+        "alimentos"
+      ],
+      "mercadoria": {
+        "categoria": "alimentos",
+        "unidade": "libra (~0,45 kg)"
+      }
+    },
+    {
+      "id": "ovos",
+      "nome": "Ovos",
+      "tipo": "comida",
+      "preco": {
+        "pc": 3
+      },
+      "peso": 0.7,
+      "tags": [
+        "alimentos"
+      ],
+      "mercadoria": {
+        "categoria": "alimentos",
+        "unidade": "dúzia"
+      }
+    },
+    {
+      "id": "leite",
+      "nome": "Leite",
+      "tipo": "comida",
+      "preco": {
+        "pc": 3
+      },
+      "peso": 4.6,
+      "tags": [
+        "alimentos"
+      ],
+      "mercadoria": {
+        "categoria": "alimentos",
+        "unidade": "galão (~4,5 L)"
+      }
+    },
+    {
+      "id": "mel",
+      "nome": "Mel",
+      "tipo": "comida",
+      "preco": {
+        "pc": 7
+      },
+      "peso": 0.45,
+      "tags": [
+        "alimentos"
+      ],
+      "mercadoria": {
+        "categoria": "alimentos",
+        "unidade": "libra (~0,45 kg)"
+      }
+    },
+    {
+      "id": "arenque",
+      "nome": "Arenque salgado",
+      "tipo": "comida",
+      "preco": {
+        "pc": 7
+      },
+      "peso": 1,
+      "tags": [
+        "alimentos"
+      ],
+      "mercadoria": {
+        "categoria": "alimentos",
+        "unidade": "6 unidades"
+      }
+    },
+    {
+      "id": "peixe-fresco",
+      "nome": "Peixe fresco",
+      "tipo": "comida",
+      "preco": {
+        "pc": 3
+      },
+      "peso": 1,
+      "tags": [
+        "alimentos"
+      ],
+      "mercadoria": {
+        "categoria": "alimentos",
+        "unidade": "1 kg"
+      }
+    },
+    {
+      "id": "congro-salgado",
+      "nome": "Congro salgado",
+      "tipo": "comida",
+      "preco": {
+        "pc": 40
+      },
+      "peso": 3,
+      "tags": [
+        "alimentos"
+      ],
+      "mercadoria": {
+        "categoria": "alimentos",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "galinha-abatida",
+      "nome": "Frango ou galinha abatida",
+      "tipo": "comida",
+      "preco": {
+        "pc": 4
+      },
+      "peso": 1.2,
+      "tags": [
+        "alimentos"
+      ],
+      "mercadoria": {
+        "categoria": "alimentos",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "frutas",
+      "nome": "Frutas frescas (maçã, pera)",
+      "tipo": "comida",
+      "preco": {
+        "pc": 1
+      },
+      "peso": 1.5,
+      "tags": [
+        "alimentos"
+      ],
+      "mercadoria": {
+        "categoria": "alimentos",
+        "unidade": "dúzia"
+      }
+    },
+    {
+      "id": "legumes",
+      "nome": "Legumes e verduras (couve, cebola, alho-poró)",
+      "tipo": "comida",
+      "preco": {
+        "pc": 1
+      },
+      "peso": 1,
+      "tags": [
+        "alimentos"
+      ],
+      "mercadoria": {
+        "categoria": "alimentos",
+        "unidade": "maço (~1 kg)"
+      }
+    },
+    {
+      "id": "racao-dia",
+      "nome": "Ração de viagem (1 dia)",
+      "tipo": "comida",
+      "preco": {
+        "pc": 3
+      },
+      "peso": 0.7,
+      "tags": [
+        "alimentos"
+      ],
+      "mercadoria": {
+        "categoria": "alimentos",
+        "unidade": "1 dia"
+      }
+    },
+    {
+      "id": "cerveja-caneca",
+      "nome": "Cerveja (ale), caneca",
+      "tipo": "comida",
+      "preco": {
+        "pc": 1
+      },
+      "peso": 0.5,
+      "tags": [
+        "bebidas"
+      ],
+      "mercadoria": {
+        "categoria": "bebidas",
+        "unidade": "caneca (~0,5 L)"
+      }
+    },
+    {
+      "id": "cerveja-boa-caneca",
+      "nome": "Cerveja boa, caneca",
+      "tipo": "comida",
+      "preco": {
+        "pc": 2
+      },
+      "peso": 0.5,
+      "tags": [
+        "bebidas"
+      ],
+      "mercadoria": {
+        "categoria": "bebidas",
+        "unidade": "caneca (~0,5 L)"
+      }
+    },
+    {
+      "id": "cerveja-ruim-jarra",
+      "nome": "Cerveja fraca, jarra",
+      "tipo": "comida",
+      "preco": {
+        "pc": 2
+      },
+      "peso": 2,
+      "tags": [
+        "bebidas"
+      ],
+      "mercadoria": {
+        "categoria": "bebidas",
+        "unidade": "jarra (~2 L)"
+      }
+    },
+    {
+      "id": "cerveja-jarra",
+      "nome": "Cerveja média, jarra",
+      "tipo": "comida",
+      "preco": {
+        "pc": 3
+      },
+      "peso": 2,
+      "tags": [
+        "bebidas"
+      ],
+      "mercadoria": {
+        "categoria": "bebidas",
+        "unidade": "jarra (~2 L)"
+      }
+    },
+    {
+      "id": "cerveja-boa-jarra",
+      "nome": "Cerveja boa, jarra",
+      "tipo": "comida",
+      "preco": {
+        "pc": 4
+      },
+      "peso": 2,
+      "tags": [
+        "bebidas"
+      ],
+      "mercadoria": {
+        "categoria": "bebidas",
+        "unidade": "jarra (~2 L)"
+      }
+    },
+    {
+      "id": "cerveja-barril",
+      "nome": "Cerveja, barril",
+      "tipo": "comida",
+      "preco": {
+        "pc": 120
+      },
+      "peso": 90,
+      "tags": [
+        "bebidas"
+      ],
+      "mercadoria": {
+        "categoria": "bebidas",
+        "unidade": "barril (~80 L)"
+      }
+    },
+    {
+      "id": "sidra",
+      "nome": "Sidra",
+      "tipo": "comida",
+      "preco": {
+        "pc": 5
+      },
+      "peso": 4.6,
+      "tags": [
+        "bebidas"
+      ],
+      "mercadoria": {
+        "categoria": "bebidas",
+        "unidade": "galão (~4,5 L)"
+      }
+    },
+    {
+      "id": "hidromel",
+      "nome": "Hidromel",
+      "tipo": "comida",
+      "preco": {
+        "pc": 25
+      },
+      "peso": 4.6,
+      "tags": [
+        "bebidas"
+      ],
+      "mercadoria": {
+        "categoria": "bebidas",
+        "unidade": "galão (~4,5 L)"
+      }
+    },
+    {
+      "id": "vinho-ruim-caneca",
+      "nome": "Vinho ruim, caneca",
+      "tipo": "comida",
+      "preco": {
+        "pc": 2
+      },
+      "peso": 0.5,
+      "tags": [
+        "bebidas"
+      ],
+      "mercadoria": {
+        "categoria": "bebidas",
+        "unidade": "caneca (~0,5 L)"
+      }
+    },
+    {
+      "id": "vinho-caneca",
+      "nome": "Vinho comum, caneca",
+      "tipo": "comida",
+      "preco": {
+        "pc": 3
+      },
+      "peso": 0.5,
+      "tags": [
+        "bebidas"
+      ],
+      "mercadoria": {
+        "categoria": "bebidas",
+        "unidade": "caneca (~0,5 L)"
+      }
+    },
+    {
+      "id": "vinho-bom-caneca",
+      "nome": "Vinho bom, caneca",
+      "tipo": "comida",
+      "preco": {
+        "pc": 7
+      },
+      "peso": 0.5,
+      "tags": [
+        "bebidas"
+      ],
+      "mercadoria": {
+        "categoria": "bebidas",
+        "unidade": "caneca (~0,5 L)"
+      }
+    },
+    {
+      "id": "vinho-galao",
+      "nome": "Vinho comum, galão",
+      "tipo": "comida",
+      "preco": {
+        "pc": 25
+      },
+      "peso": 4.6,
+      "tags": [
+        "bebidas"
+      ],
+      "mercadoria": {
+        "categoria": "bebidas",
+        "unidade": "galão (~4,5 L)"
+      }
+    },
+    {
+      "id": "vinho-bom-galao",
+      "nome": "Vinho bom, galão",
+      "tipo": "comida",
+      "preco": {
+        "pc": 60
+      },
+      "peso": 4.6,
+      "tags": [
+        "bebidas"
+      ],
+      "mercadoria": {
+        "categoria": "bebidas",
+        "unidade": "galão (~4,5 L)"
+      }
+    },
+    {
+      "id": "vinho-fino",
+      "nome": "Vinho fino (safra rara ou importado)",
+      "tipo": "comida",
+      "preco": {
+        "pc": 200
+      },
+      "peso": 1.2,
+      "tags": [
+        "bebidas"
+      ],
+      "mercadoria": {
+        "categoria": "bebidas",
+        "unidade": "garrafa (~1 L)"
+      }
+    },
+    {
+      "id": "sal",
+      "nome": "Sal",
+      "tipo": "comida",
+      "preco": {
+        "pc": 13
+      },
+      "peso": 1,
+      "tags": [
+        "temperos"
+      ],
+      "mercadoria": {
+        "categoria": "temperos",
+        "unidade": "1 kg"
+      }
+    },
+    {
+      "id": "temperos-comuns",
+      "nome": "Temperos comuns (mostarda, cominho, ervas secas)",
+      "tipo": "comida",
+      "preco": {
+        "pc": 2
+      },
+      "peso": 0.1,
+      "tags": [
+        "temperos"
+      ],
+      "mercadoria": {
+        "categoria": "temperos",
+        "unidade": "100 g"
+      }
+    },
+    {
+      "id": "pimenta",
+      "nome": "Pimenta",
+      "tipo": "comida",
+      "preco": {
+        "pc": 40
+      },
+      "peso": 0.1,
+      "tags": [
+        "temperos"
+      ],
+      "mercadoria": {
+        "categoria": "temperos",
+        "unidade": "100 g"
+      }
+    },
+    {
+      "id": "cravo",
+      "nome": "Cravo",
+      "tipo": "comida",
+      "preco": {
+        "pc": 40
+      },
+      "peso": 0.1,
+      "tags": [
+        "temperos"
+      ],
+      "mercadoria": {
+        "categoria": "temperos",
+        "unidade": "100 g"
+      }
+    },
+    {
+      "id": "canela",
+      "nome": "Canela",
+      "tipo": "comida",
+      "preco": {
+        "pc": 40
+      },
+      "peso": 0.1,
+      "tags": [
+        "temperos"
+      ],
+      "mercadoria": {
+        "categoria": "temperos",
+        "unidade": "100 g"
+      }
+    },
+    {
+      "id": "gengibre",
+      "nome": "Gengibre",
+      "tipo": "comida",
+      "preco": {
+        "pc": 35
+      },
+      "peso": 0.1,
+      "tags": [
+        "temperos"
+      ],
+      "mercadoria": {
+        "categoria": "temperos",
+        "unidade": "100 g"
+      }
+    },
+    {
+      "id": "acafrao",
+      "nome": "Açafrão",
+      "tipo": "comida",
+      "preco": {
+        "pc": 25
+      },
+      "peso": 0.01,
+      "tags": [
+        "temperos"
+      ],
+      "mercadoria": {
+        "categoria": "temperos",
+        "unidade": "10 g"
+      }
+    },
+    {
+      "id": "acucar",
+      "nome": "Açúcar",
+      "tipo": "comida",
+      "preco": {
+        "pc": 95
+      },
+      "peso": 0.45,
+      "tags": [
+        "temperos"
+      ],
+      "mercadoria": {
+        "categoria": "temperos",
+        "unidade": "libra (~0,45 kg)"
+      }
+    },
+    {
+      "id": "amendoas",
+      "nome": "Amêndoas",
+      "tipo": "comida",
+      "preco": {
+        "pc": 13
+      },
+      "peso": 0.45,
+      "tags": [
+        "temperos"
+      ],
+      "mercadoria": {
+        "categoria": "temperos",
+        "unidade": "libra (~0,45 kg)"
+      }
+    },
+    {
+      "id": "tamaras",
+      "nome": "Tâmaras",
+      "tipo": "comida",
+      "preco": {
+        "pc": 12
+      },
+      "peso": 0.45,
+      "tags": [
+        "temperos"
+      ],
+      "mercadoria": {
+        "categoria": "temperos",
+        "unidade": "libra (~0,45 kg)"
+      }
+    },
+    {
+      "id": "figos",
+      "nome": "Figos secos",
+      "tipo": "comida",
+      "preco": {
+        "pc": 5
+      },
+      "peso": 0.45,
+      "tags": [
+        "temperos"
+      ],
+      "mercadoria": {
+        "categoria": "temperos",
+        "unidade": "libra (~0,45 kg)"
+      }
+    },
+    {
+      "id": "frutas-secas",
+      "nome": "Frutas secas (passas, ameixas)",
+      "tipo": "comida",
+      "preco": {
+        "pc": 13
+      },
+      "peso": 0.45,
+      "tags": [
+        "temperos"
+      ],
+      "mercadoria": {
+        "categoria": "temperos",
+        "unidade": "libra (~0,45 kg)"
+      }
+    },
+    {
+      "id": "linho-grosso",
+      "nome": "Linho comum",
+      "tipo": "geral",
+      "preco": {
+        "pc": 13
+      },
+      "peso": 0.25,
+      "tags": [
+        "materia-prima"
+      ],
+      "mercadoria": {
+        "categoria": "materia-prima",
+        "unidade": "jarda (~0,9 m)"
+      }
+    },
+    {
+      "id": "tecido-grosso",
+      "nome": "Tecido grosseiro (burel, lã crua)",
+      "tipo": "geral",
+      "preco": {
+        "pc": 55
+      },
+      "peso": 0.5,
+      "tags": [
+        "materia-prima"
+      ],
+      "mercadoria": {
+        "categoria": "materia-prima",
+        "unidade": "jarda (~0,9 m)"
+      }
+    },
+    {
+      "id": "tecido-comum",
+      "nome": "Tecido comum (lã tingida)",
+      "tipo": "geral",
+      "preco": {
+        "pc": 80
+      },
+      "peso": 0.5,
+      "tags": [
+        "materia-prima"
+      ],
+      "mercadoria": {
+        "categoria": "materia-prima",
+        "unidade": "jarda (~0,9 m)"
+      }
+    },
+    {
+      "id": "linho",
+      "nome": "Linho fino",
+      "tipo": "geral",
+      "preco": {
+        "pc": 100
+      },
+      "peso": 0.2,
+      "tags": [
+        "materia-prima"
+      ],
+      "mercadoria": {
+        "categoria": "materia-prima",
+        "unidade": "jarda (~0,9 m)"
+      }
+    },
+    {
+      "id": "la-fina",
+      "nome": "Lã fina",
+      "tipo": "geral",
+      "preco": {
+        "pc": 400
+      },
+      "peso": 0.5,
+      "tags": [
+        "materia-prima"
+      ],
+      "mercadoria": {
+        "categoria": "materia-prima",
+        "unidade": "jarda (~0,9 m)"
+      }
+    },
+    {
+      "id": "seda",
+      "nome": "Seda",
+      "tipo": "geral",
+      "preco": {
+        "pc": 880
+      },
+      "peso": 0.15,
+      "tags": [
+        "materia-prima"
+      ],
+      "mercadoria": {
+        "categoria": "materia-prima",
+        "unidade": "jarda (~0,9 m)"
+      }
+    },
+    {
+      "id": "lona",
+      "nome": "Lona",
+      "tipo": "geral",
+      "preco": {
+        "pc": 35
+      },
+      "peso": 0.4,
+      "tags": [
+        "materia-prima"
+      ],
+      "mercadoria": {
+        "categoria": "materia-prima",
+        "unidade": "jarda quadrada (~0,84 m²)"
+      }
+    },
+    {
+      "id": "la-crua",
+      "nome": "Lã crua",
+      "tipo": "geral",
+      "preco": {
+        "pc": 30
+      },
+      "peso": 0.45,
+      "tags": [
+        "materia-prima"
+      ],
+      "mercadoria": {
+        "categoria": "materia-prima",
+        "unidade": "libra (~0,45 kg)"
+      }
+    },
+    {
+      "id": "couro-vaca",
+      "nome": "Couro de vaca curtido",
+      "tipo": "geral",
+      "preco": {
+        "pc": 170
+      },
+      "peso": 6,
+      "tags": [
+        "materia-prima"
+      ],
+      "mercadoria": {
+        "categoria": "materia-prima",
+        "unidade": "couro inteiro"
+      }
+    },
+    {
+      "id": "sebo",
+      "nome": "Sebo",
+      "tipo": "geral",
+      "preco": {
+        "pc": 8
+      },
+      "peso": 0.45,
+      "tags": [
+        "materia-prima"
+      ],
+      "mercadoria": {
+        "categoria": "materia-prima",
+        "unidade": "libra (~0,45 kg)"
+      }
+    },
+    {
+      "id": "cera",
+      "nome": "Cera de abelha",
+      "tipo": "geral",
+      "preco": {
+        "pc": 35
+      },
+      "peso": 0.45,
+      "tags": [
+        "materia-prima"
+      ],
+      "mercadoria": {
+        "categoria": "materia-prima",
+        "unidade": "libra (~0,45 kg)"
+      }
+    },
+    {
+      "id": "ferro",
+      "nome": "Ferro em barra",
+      "tipo": "geral",
+      "preco": {
+        "pc": 15
+      },
+      "peso": 1,
+      "tags": [
+        "materia-prima"
+      ],
+      "mercadoria": {
+        "categoria": "materia-prima",
+        "unidade": "kg"
+      }
+    },
+    {
+      "id": "aco",
+      "nome": "Aço",
+      "tipo": "geral",
+      "preco": {
+        "pc": 30
+      },
+      "peso": 1,
+      "tags": [
+        "materia-prima"
+      ],
+      "mercadoria": {
+        "categoria": "materia-prima",
+        "unidade": "kg"
+      }
+    },
+    {
+      "id": "cobre",
+      "nome": "Cobre",
+      "tipo": "geral",
+      "preco": {
+        "pc": 30
+      },
+      "peso": 1,
+      "tags": [
+        "materia-prima"
+      ],
+      "mercadoria": {
+        "categoria": "materia-prima",
+        "unidade": "kg"
+      }
+    },
+    {
+      "id": "estanho",
+      "nome": "Estanho",
+      "tipo": "geral",
+      "preco": {
+        "pc": 90
+      },
+      "peso": 1,
+      "tags": [
+        "materia-prima"
+      ],
+      "mercadoria": {
+        "categoria": "materia-prima",
+        "unidade": "kg"
+      }
+    },
+    {
+      "id": "chumbo",
+      "nome": "Chumbo",
+      "tipo": "geral",
+      "preco": {
+        "pc": 13
+      },
+      "peso": 1,
+      "tags": [
+        "materia-prima"
+      ],
+      "mercadoria": {
+        "categoria": "materia-prima",
+        "unidade": "kg"
+      }
+    },
+    {
+      "id": "latao",
+      "nome": "Latão",
+      "tipo": "geral",
+      "preco": {
+        "pc": 60
+      },
+      "peso": 1,
+      "tags": [
+        "materia-prima"
+      ],
+      "mercadoria": {
+        "categoria": "materia-prima",
+        "unidade": "kg"
+      }
+    },
+    {
+      "id": "bronze",
+      "nome": "Bronze",
+      "tipo": "geral",
+      "preco": {
+        "pc": 35
+      },
+      "peso": 1,
+      "tags": [
+        "materia-prima"
+      ],
+      "mercadoria": {
+        "categoria": "materia-prima",
+        "unidade": "kg"
+      }
+    },
+    {
+      "id": "carvao",
+      "nome": "Carvão vegetal",
+      "tipo": "geral",
+      "preco": {
+        "pc": 25
+      },
+      "peso": 10,
+      "tags": [
+        "materia-prima"
+      ],
+      "mercadoria": {
+        "categoria": "materia-prima",
+        "unidade": "saco (~10 kg)"
+      }
+    },
+    {
+      "id": "lenha",
+      "nome": "Lenha",
+      "tipo": "geral",
+      "preco": {
+        "pc": 25
+      },
+      "peso": 100,
+      "tags": [
+        "materia-prima"
+      ],
+      "mercadoria": {
+        "categoria": "materia-prima",
+        "unidade": "carga de cavalo (~100 kg)"
+      }
+    },
+    {
+      "id": "canhamo",
+      "nome": "Cânhamo",
+      "tipo": "geral",
+      "preco": {
+        "pc": 3
+      },
+      "peso": 0.45,
+      "tags": [
+        "materia-prima"
+      ],
+      "mercadoria": {
+        "categoria": "materia-prima",
+        "unidade": "libra (~0,45 kg)"
+      }
+    },
+    {
+      "id": "roupa-usada",
+      "nome": "Roupa comum usada (conjunto)",
+      "tipo": "roupa",
+      "preco": {
+        "pc": 50
+      },
+      "peso": 1.5,
+      "tags": [
+        "roupas"
+      ],
+      "mercadoria": {
+        "categoria": "roupas",
+        "unidade": "conjunto"
+      }
+    },
+    {
+      "id": "roupa-comum",
+      "nome": "Roupa comum nova (conjunto)",
+      "tipo": "roupa",
+      "preco": {
+        "pc": 220
+      },
+      "peso": 1.5,
+      "tags": [
+        "roupas"
+      ],
+      "mercadoria": {
+        "categoria": "roupas",
+        "unidade": "conjunto"
+      }
+    },
+    {
+      "id": "roupa-viajante",
+      "nome": "Roupa de viajante (conjunto)",
+      "tipo": "roupa",
+      "preco": {
+        "pc": 300
+      },
+      "peso": 2.5,
+      "tags": [
+        "roupas"
+      ],
+      "mercadoria": {
+        "categoria": "roupas",
+        "unidade": "conjunto"
+      }
+    },
+    {
+      "id": "roupa-artesao",
+      "nome": "Roupa de artesão (conjunto)",
+      "tipo": "roupa",
+      "preco": {
+        "pc": 240
+      },
+      "peso": 2,
+      "tags": [
+        "roupas"
+      ],
+      "mercadoria": {
+        "categoria": "roupas",
+        "unidade": "conjunto"
+      }
+    },
+    {
+      "id": "roupa-entretenimento",
+      "nome": "Roupa de artista (conjunto)",
+      "tipo": "roupa",
+      "preco": {
+        "pc": 380
+      },
+      "peso": 2,
+      "tags": [
+        "roupas"
+      ],
+      "mercadoria": {
+        "categoria": "roupas",
+        "unidade": "conjunto"
+      }
+    },
+    {
+      "id": "robe",
+      "nome": "Robe (clérigo, estudioso)",
+      "tipo": "roupa",
+      "preco": {
+        "pc": 520
+      },
+      "peso": 3,
+      "tags": [
+        "roupas"
+      ],
+      "mercadoria": {
+        "categoria": "roupas",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "roupa-campones-rico",
+      "nome": "Roupa de camponês abastado (conjunto)",
+      "tipo": "roupa",
+      "preco": {
+        "pc": 600
+      },
+      "peso": 2.5,
+      "tags": [
+        "roupas"
+      ],
+      "mercadoria": {
+        "categoria": "roupas",
+        "unidade": "conjunto"
+      }
+    },
+    {
+      "id": "roupas-finas",
+      "nome": "Conjunto de roupas finas",
+      "tipo": "roupa",
+      "preco": {
+        "pc": 800
+      },
+      "peso": 2.5,
+      "tags": [
+        "roupas"
+      ],
+      "mercadoria": {
+        "categoria": "roupas",
+        "unidade": "conjunto"
+      }
+    },
+    {
+      "id": "roupa-nobre",
+      "nome": "Roupa de corte (conjunto)",
+      "tipo": "roupa",
+      "preco": {
+        "pc": 5000
+      },
+      "peso": 3,
+      "tags": [
+        "roupas"
+      ],
+      "mercadoria": {
+        "categoria": "roupas",
+        "unidade": "conjunto"
+      }
+    },
+    {
+      "id": "roupa-gala",
+      "nome": "Traje de gala (conjunto)",
+      "tipo": "roupa",
+      "preco": {
+        "pc": 16000
+      },
+      "peso": 4,
+      "tags": [
+        "roupas"
+      ],
+      "mercadoria": {
+        "categoria": "roupas",
+        "unidade": "conjunto"
+      }
+    },
+    {
+      "id": "vestes",
+      "nome": "Vestes cerimoniais simples",
+      "tipo": "roupa",
+      "preco": {
+        "pc": 50
+      },
+      "peso": 2,
+      "tags": [
+        "roupas"
+      ],
+      "mercadoria": {
+        "categoria": "roupas",
+        "unidade": "conjunto"
+      }
+    },
+    {
+      "id": "vestes-bordadas",
+      "nome": "Vestes eclesiásticas bordadas",
+      "tipo": "roupa",
+      "preco": {
+        "pc": 480
+      },
+      "peso": 3,
+      "tags": [
+        "roupas"
+      ],
+      "mercadoria": {
+        "categoria": "roupas",
+        "unidade": "conjunto"
+      }
+    },
+    {
+      "id": "manto",
+      "nome": "Manto",
+      "tipo": "roupa",
+      "preco": {
+        "pc": 50
+      },
+      "peso": 1.5,
+      "tags": [
+        "roupas"
+      ],
+      "mercadoria": {
+        "categoria": "roupas",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "camisa-linho",
+      "nome": "Camisa de linho",
+      "tipo": "roupa",
+      "preco": {
+        "pc": 55
+      },
+      "peso": 0.3,
+      "tags": [
+        "roupas"
+      ],
+      "mercadoria": {
+        "categoria": "roupas",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "sapatos",
+      "nome": "Sapatos",
+      "tipo": "roupa",
+      "preco": {
+        "pc": 40
+      },
+      "peso": 0.6,
+      "tags": [
+        "roupas"
+      ],
+      "mercadoria": {
+        "categoria": "roupas",
+        "unidade": "par"
+      }
+    },
+    {
+      "id": "botas",
+      "nome": "Botas de montar",
+      "tipo": "roupa",
+      "preco": {
+        "pc": 100
+      },
+      "peso": 1.2,
+      "tags": [
+        "roupas"
+      ],
+      "mercadoria": {
+        "categoria": "roupas",
+        "unidade": "par"
+      }
+    },
+    {
+      "id": "chapeu",
+      "nome": "Chapéu",
+      "tipo": "roupa",
+      "preco": {
+        "pc": 65
+      },
+      "peso": 0.2,
+      "tags": [
+        "roupas"
+      ],
+      "mercadoria": {
+        "categoria": "roupas",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "bolsa",
+      "nome": "Bolsa de cinto",
+      "tipo": "roupa",
+      "preco": {
+        "pc": 10
+      },
+      "peso": 0.1,
+      "tags": [
+        "roupas"
+      ],
+      "mercadoria": {
+        "categoria": "roupas",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "fantasia",
+      "nome": "Fantasia",
+      "tipo": "roupa",
+      "preco": {
+        "pc": 50
+      },
+      "peso": 1.5,
+      "tags": [
+        "roupas"
+      ],
+      "mercadoria": {
+        "categoria": "roupas",
+        "unidade": "conjunto"
+      }
+    },
+    {
+      "id": "colchao",
+      "nome": "Colchão de palha",
+      "tipo": "geral",
+      "preco": {
+        "pc": 13
+      },
+      "peso": 5,
+      "tags": [
+        "casa"
+      ],
+      "mercadoria": {
+        "categoria": "casa",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "colchao-penas",
+      "nome": "Colchão de penas",
+      "tipo": "geral",
+      "preco": {
+        "pc": 500
+      },
+      "peso": 8,
+      "tags": [
+        "casa"
+      ],
+      "mercadoria": {
+        "categoria": "casa",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "travesseiro",
+      "nome": "Travesseiro",
+      "tipo": "geral",
+      "preco": {
+        "pc": 7
+      },
+      "peso": 0.5,
+      "tags": [
+        "casa"
+      ],
+      "mercadoria": {
+        "categoria": "casa",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "lencol",
+      "nome": "Lençol",
+      "tipo": "geral",
+      "preco": {
+        "pc": 25
+      },
+      "peso": 0.6,
+      "tags": [
+        "casa"
+      ],
+      "mercadoria": {
+        "categoria": "casa",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "cobertor",
+      "nome": "Cobertor de lã grossa",
+      "tipo": "geral",
+      "preco": {
+        "pc": 65
+      },
+      "peso": 1.5,
+      "tags": [
+        "casa"
+      ],
+      "mercadoria": {
+        "categoria": "casa",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "cobertor-bom",
+      "nome": "Cobertor bom",
+      "tipo": "geral",
+      "preco": {
+        "pc": 100
+      },
+      "peso": 2,
+      "tags": [
+        "casa"
+      ],
+      "mercadoria": {
+        "categoria": "casa",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "mesa",
+      "nome": "Mesa",
+      "tipo": "geral",
+      "preco": {
+        "pc": 40
+      },
+      "peso": 20,
+      "tags": [
+        "casa"
+      ],
+      "mercadoria": {
+        "categoria": "casa",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "cadeira",
+      "nome": "Cadeira",
+      "tipo": "geral",
+      "preco": {
+        "pc": 20
+      },
+      "peso": 5,
+      "tags": [
+        "casa"
+      ],
+      "mercadoria": {
+        "categoria": "casa",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "banco",
+      "nome": "Banquinho",
+      "tipo": "geral",
+      "preco": {
+        "pc": 17
+      },
+      "peso": 3,
+      "tags": [
+        "casa"
+      ],
+      "mercadoria": {
+        "categoria": "casa",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "bau",
+      "nome": "Baú",
+      "tipo": "geral",
+      "preco": {
+        "pc": 50
+      },
+      "peso": 10,
+      "tags": [
+        "casa"
+      ],
+      "mercadoria": {
+        "categoria": "casa",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "bau-bom",
+      "nome": "Baú de boa qualidade (arca)",
+      "tipo": "geral",
+      "preco": {
+        "pc": 170
+      },
+      "peso": 15,
+      "tags": [
+        "casa"
+      ],
+      "mercadoria": {
+        "categoria": "casa",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "cofre",
+      "nome": "Cofre pequeno com fechadura",
+      "tipo": "geral",
+      "preco": {
+        "pc": 100
+      },
+      "peso": 6,
+      "tags": [
+        "casa"
+      ],
+      "mercadoria": {
+        "categoria": "casa",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "panela-barro",
+      "nome": "Panela de barro",
+      "tipo": "geral",
+      "preco": {
+        "pc": 3
+      },
+      "peso": 1,
+      "tags": [
+        "utensilios"
+      ],
+      "mercadoria": {
+        "categoria": "utensilios",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "panela-ferro",
+      "nome": "Panela de ferro",
+      "tipo": "geral",
+      "preco": {
+        "pc": 20
+      },
+      "peso": 2,
+      "tags": [
+        "utensilios"
+      ],
+      "mercadoria": {
+        "categoria": "utensilios",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "panela-latao",
+      "nome": "Panela de latão",
+      "tipo": "geral",
+      "preco": {
+        "pc": 160
+      },
+      "peso": 2,
+      "tags": [
+        "utensilios"
+      ],
+      "mercadoria": {
+        "categoria": "utensilios",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "caldeirao",
+      "nome": "Caldeirão",
+      "tipo": "geral",
+      "preco": {
+        "pc": 330
+      },
+      "peso": 10,
+      "tags": [
+        "utensilios"
+      ],
+      "mercadoria": {
+        "categoria": "utensilios",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "kit-refeicao",
+      "nome": "Kit de refeição (tigela, colher, caneca)",
+      "tipo": "geral",
+      "preco": {
+        "pc": 7
+      },
+      "peso": 0.5,
+      "tags": [
+        "utensilios"
+      ],
+      "mercadoria": {
+        "categoria": "utensilios",
+        "unidade": "conjunto"
+      }
+    },
+    {
+      "id": "balde",
+      "nome": "Balde",
+      "tipo": "geral",
+      "preco": {
+        "pc": 40
+      },
+      "peso": 1.5,
+      "tags": [
+        "utensilios"
+      ],
+      "mercadoria": {
+        "categoria": "utensilios",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "barril",
+      "nome": "Barril vazio",
+      "tipo": "geral",
+      "preco": {
+        "pc": 20
+      },
+      "peso": 8,
+      "tags": [
+        "utensilios"
+      ],
+      "mercadoria": {
+        "categoria": "utensilios",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "tina",
+      "nome": "Tina",
+      "tipo": "geral",
+      "preco": {
+        "pc": 25
+      },
+      "peso": 6,
+      "tags": [
+        "utensilios"
+      ],
+      "mercadoria": {
+        "categoria": "utensilios",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "cesto",
+      "nome": "Cesto",
+      "tipo": "geral",
+      "preco": {
+        "pc": 7
+      },
+      "peso": 1,
+      "tags": [
+        "utensilios"
+      ],
+      "mercadoria": {
+        "categoria": "utensilios",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "bacia",
+      "nome": "Bacia",
+      "tipo": "geral",
+      "preco": {
+        "pc": 13
+      },
+      "peso": 1,
+      "tags": [
+        "utensilios"
+      ],
+      "mercadoria": {
+        "categoria": "utensilios",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "jarra-metal",
+      "nome": "Jarra de metal",
+      "tipo": "geral",
+      "preco": {
+        "pc": 40
+      },
+      "peso": 1,
+      "tags": [
+        "utensilios"
+      ],
+      "mercadoria": {
+        "categoria": "utensilios",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "garrafa",
+      "nome": "Garrafa",
+      "tipo": "geral",
+      "preco": {
+        "pc": 25
+      },
+      "peso": 0.5,
+      "tags": [
+        "utensilios"
+      ],
+      "mercadoria": {
+        "categoria": "utensilios",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "frasco",
+      "nome": "Frasco de vidro",
+      "tipo": "geral",
+      "preco": {
+        "pc": 25
+      },
+      "peso": 0.3,
+      "tags": [
+        "utensilios"
+      ],
+      "mercadoria": {
+        "categoria": "utensilios",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "frasquinho",
+      "nome": "Frasquinho (vial)",
+      "tipo": "geral",
+      "preco": {
+        "pc": 13
+      },
+      "peso": 0.1,
+      "tags": [
+        "utensilios"
+      ],
+      "mercadoria": {
+        "categoria": "utensilios",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "cantil",
+      "nome": "Cantil ou odre",
+      "tipo": "geral",
+      "preco": {
+        "pc": 17
+      },
+      "peso": 0.3,
+      "tags": [
+        "utensilios"
+      ],
+      "mercadoria": {
+        "categoria": "utensilios",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "saco-grande",
+      "nome": "Saco grande",
+      "tipo": "geral",
+      "preco": {
+        "pc": 70
+      },
+      "peso": 0.5,
+      "tags": [
+        "utensilios"
+      ],
+      "mercadoria": {
+        "categoria": "utensilios",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "bolsinha",
+      "nome": "Bolsinha",
+      "tipo": "geral",
+      "preco": {
+        "pc": 7
+      },
+      "peso": 0.1,
+      "tags": [
+        "utensilios"
+      ],
+      "mercadoria": {
+        "categoria": "utensilios",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "mochila",
+      "nome": "Mochila",
+      "tipo": "geral",
+      "preco": {
+        "pc": 100
+      },
+      "peso": 1.5,
+      "tags": [
+        "utensilios"
+      ],
+      "mercadoria": {
+        "categoria": "utensilios",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "alforje",
+      "nome": "Alforje (par)",
+      "tipo": "geral",
+      "preco": {
+        "pc": 120
+      },
+      "peso": 2,
+      "tags": [
+        "utensilios"
+      ],
+      "mercadoria": {
+        "categoria": "utensilios",
+        "unidade": "par"
+      }
+    },
+    {
+      "id": "caixa-mapas",
+      "nome": "Caixa para mapas ou pergaminhos",
+      "tipo": "geral",
+      "preco": {
+        "pc": 35
+      },
+      "peso": 0.5,
+      "tags": [
+        "utensilios"
+      ],
+      "mercadoria": {
+        "categoria": "utensilios",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "caixa-esmolas",
+      "nome": "Caixa de esmolas",
+      "tipo": "geral",
+      "preco": {
+        "pc": 10
+      },
+      "peso": 0.5,
+      "tags": [
+        "utensilios"
+      ],
+      "mercadoria": {
+        "categoria": "utensilios",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "vela",
+      "nome": "Vela de sebo",
+      "tipo": "geral",
+      "preco": {
+        "pc": 2
+      },
+      "peso": 0.06,
+      "tags": [
+        "luz"
+      ],
+      "mercadoria": {
+        "categoria": "luz",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "vela-sebo-libra",
+      "nome": "Velas de sebo (~8)",
+      "tipo": "geral",
+      "preco": {
+        "pc": 13
+      },
+      "peso": 0.45,
+      "tags": [
+        "luz"
+      ],
+      "mercadoria": {
+        "categoria": "luz",
+        "unidade": "libra (~0,45 kg)"
+      }
+    },
+    {
+      "id": "vela-cera",
+      "nome": "Velas de cera",
+      "tipo": "geral",
+      "preco": {
+        "pc": 45
+      },
+      "peso": 0.45,
+      "tags": [
+        "luz"
+      ],
+      "mercadoria": {
+        "categoria": "luz",
+        "unidade": "libra (~0,45 kg)"
+      }
+    },
+    {
+      "id": "tocha",
+      "nome": "Tocha",
+      "tipo": "geral",
+      "preco": {
+        "pc": 7
+      },
+      "peso": 1,
+      "tags": [
+        "luz"
+      ],
+      "mercadoria": {
+        "categoria": "luz",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "lampada",
+      "nome": "Lâmpada (lamparina)",
+      "tipo": "geral",
+      "preco": {
+        "pc": 30
+      },
+      "peso": 0.5,
+      "tags": [
+        "luz"
+      ],
+      "mercadoria": {
+        "categoria": "luz",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "lanterna-coberta",
+      "nome": "Lanterna coberta",
+      "tipo": "geral",
+      "preco": {
+        "pc": 130
+      },
+      "peso": 1,
+      "tags": [
+        "luz"
+      ],
+      "mercadoria": {
+        "categoria": "luz",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "frasco-oleo",
+      "nome": "Frasco de óleo de lamparina",
+      "tipo": "geral",
+      "preco": {
+        "pc": 10
+      },
+      "peso": 0.5,
+      "tags": [
+        "luz"
+      ],
+      "mercadoria": {
+        "categoria": "luz",
+        "unidade": "frasco (~0,5 L)"
+      }
+    },
+    {
+      "id": "caixa-fogo",
+      "nome": "Pederneira e fuzil (caixa de fogo)",
+      "tipo": "geral",
+      "preco": {
+        "pc": 7
+      },
+      "peso": 0.2,
+      "tags": [
+        "luz"
+      ],
+      "mercadoria": {
+        "categoria": "luz",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "pa",
+      "nome": "Pá",
+      "tipo": "geral",
+      "preco": {
+        "pc": 20
+      },
+      "peso": 2,
+      "tags": [
+        "ferramentas"
+      ],
+      "mercadoria": {
+        "categoria": "ferramentas",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "enxadao",
+      "nome": "Enxadão",
+      "tipo": "geral",
+      "preco": {
+        "pc": 25
+      },
+      "peso": 2,
+      "tags": [
+        "ferramentas"
+      ],
+      "mercadoria": {
+        "categoria": "ferramentas",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "picareta",
+      "nome": "Picareta",
+      "tipo": "geral",
+      "preco": {
+        "pc": 25
+      },
+      "peso": 3,
+      "tags": [
+        "ferramentas"
+      ],
+      "mercadoria": {
+        "categoria": "ferramentas",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "machado-lenha",
+      "nome": "Machado de lenhador",
+      "tipo": "geral",
+      "preco": {
+        "pc": 35
+      },
+      "peso": 1.5,
+      "tags": [
+        "ferramentas"
+      ],
+      "mercadoria": {
+        "categoria": "ferramentas",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "machadinha-ferramenta",
+      "nome": "Machadinha (ferramenta)",
+      "tipo": "geral",
+      "preco": {
+        "pc": 25
+      },
+      "peso": 0.8,
+      "tags": [
+        "ferramentas"
+      ],
+      "mercadoria": {
+        "categoria": "ferramentas",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "martelo-ferramenta",
+      "nome": "Martelo (ferramenta)",
+      "tipo": "geral",
+      "preco": {
+        "pc": 25
+      },
+      "peso": 0.6,
+      "tags": [
+        "ferramentas"
+      ],
+      "mercadoria": {
+        "categoria": "ferramentas",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "marreta",
+      "nome": "Marreta",
+      "tipo": "geral",
+      "preco": {
+        "pc": 90
+      },
+      "peso": 5,
+      "tags": [
+        "ferramentas"
+      ],
+      "mercadoria": {
+        "categoria": "ferramentas",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "pe-de-cabra",
+      "nome": "Pé de cabra",
+      "tipo": "geral",
+      "preco": {
+        "pc": 50
+      },
+      "peso": 2,
+      "tags": [
+        "ferramentas"
+      ],
+      "mercadoria": {
+        "categoria": "ferramentas",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "faca-pequena",
+      "nome": "Faca pequena",
+      "tipo": "geral",
+      "preco": {
+        "pc": 20
+      },
+      "peso": 0.2,
+      "tags": [
+        "ferramentas"
+      ],
+      "mercadoria": {
+        "categoria": "ferramentas",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "formao",
+      "nome": "Formão",
+      "tipo": "geral",
+      "preco": {
+        "pc": 25
+      },
+      "peso": 0.3,
+      "tags": [
+        "ferramentas"
+      ],
+      "mercadoria": {
+        "categoria": "ferramentas",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "trado",
+      "nome": "Trado (broca)",
+      "tipo": "geral",
+      "preco": {
+        "pc": 20
+      },
+      "peso": 0.5,
+      "tags": [
+        "ferramentas"
+      ],
+      "mercadoria": {
+        "categoria": "ferramentas",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "foice",
+      "nome": "Foice",
+      "tipo": "geral",
+      "preco": {
+        "pc": 20
+      },
+      "peso": 0.5,
+      "tags": [
+        "ferramentas"
+      ],
+      "mercadoria": {
+        "categoria": "ferramentas",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "gadanha",
+      "nome": "Gadanha",
+      "tipo": "geral",
+      "preco": {
+        "pc": 50
+      },
+      "peso": 2,
+      "tags": [
+        "ferramentas"
+      ],
+      "mercadoria": {
+        "categoria": "ferramentas",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "relha",
+      "nome": "Relha de arado",
+      "tipo": "geral",
+      "preco": {
+        "pc": 35
+      },
+      "peso": 3,
+      "tags": [
+        "ferramentas"
+      ],
+      "mercadoria": {
+        "categoria": "ferramentas",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "pedra-amolar",
+      "nome": "Pedra de amolar",
+      "tipo": "geral",
+      "preco": {
+        "pc": 7
+      },
+      "peso": 0.5,
+      "tags": [
+        "ferramentas"
+      ],
+      "mercadoria": {
+        "categoria": "ferramentas",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "agulha-alfinetes",
+      "nome": "Agulha e 12 alfinetes",
+      "tipo": "geral",
+      "preco": {
+        "pc": 13
+      },
+      "peso": 0.02,
+      "tags": [
+        "ferramentas"
+      ],
+      "mercadoria": {
+        "categoria": "ferramentas",
+        "unidade": "conjunto"
+      }
+    },
+    {
+      "id": "linha",
+      "nome": "Linha (3 m)",
+      "tipo": "geral",
+      "preco": {
+        "pc": 1
+      },
+      "peso": 0.01,
+      "tags": [
+        "ferramentas"
+      ],
+      "mercadoria": {
+        "categoria": "ferramentas",
+        "unidade": "3 m"
+      }
+    },
+    {
+      "id": "pregos",
+      "nome": "Pregos",
+      "tipo": "geral",
+      "preco": {
+        "pc": 11
+      },
+      "peso": 0.5,
+      "tags": [
+        "ferramentas"
+      ],
+      "mercadoria": {
+        "categoria": "ferramentas",
+        "unidade": "100 unidades"
+      }
+    },
+    {
+      "id": "anzol",
+      "nome": "Anzóis",
+      "tipo": "geral",
+      "preco": {
+        "pc": 10
+      },
+      "peso": 0.05,
+      "tags": [
+        "ferramentas"
+      ],
+      "mercadoria": {
+        "categoria": "ferramentas",
+        "unidade": "dúzia"
+      }
+    },
+    {
+      "id": "rede-pesca",
+      "nome": "Rede de pesca",
+      "tipo": "geral",
+      "preco": {
+        "pc": 18
+      },
+      "peso": 0.3,
+      "tags": [
+        "ferramentas"
+      ],
+      "mercadoria": {
+        "categoria": "ferramentas",
+        "unidade": "m² (~11 pés²)"
+      }
+    },
+    {
+      "id": "roca",
+      "nome": "Roda de fiar",
+      "tipo": "geral",
+      "preco": {
+        "pc": 65
+      },
+      "peso": 8,
+      "tags": [
+        "ferramentas"
+      ],
+      "mercadoria": {
+        "categoria": "ferramentas",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "balanca",
+      "nome": "Balança de mercador",
+      "tipo": "geral",
+      "preco": {
+        "pc": 330
+      },
+      "peso": 3,
+      "tags": [
+        "ferramentas"
+      ],
+      "mercadoria": {
+        "categoria": "ferramentas",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "ampulheta",
+      "nome": "Ampulheta",
+      "tipo": "geral",
+      "preco": {
+        "pc": 120
+      },
+      "peso": 0.5,
+      "tags": [
+        "ferramentas"
+      ],
+      "mercadoria": {
+        "categoria": "ferramentas",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "ferramenta-pedreiro",
+      "nome": "Ferramenta de pedreiro",
+      "tipo": "geral",
+      "preco": {
+        "pc": 20
+      },
+      "peso": 1,
+      "tags": [
+        "ferramentas"
+      ],
+      "mercadoria": {
+        "categoria": "ferramentas",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "bigorna",
+      "nome": "Bigorna",
+      "tipo": "geral",
+      "preco": {
+        "pc": 1600
+      },
+      "peso": 50,
+      "tags": [
+        "ferramentas"
+      ],
+      "mercadoria": {
+        "categoria": "ferramentas",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "fole",
+      "nome": "Fole de forja",
+      "tipo": "geral",
+      "preco": {
+        "pc": 2400
+      },
+      "peso": 15,
+      "tags": [
+        "ferramentas"
+      ],
+      "mercadoria": {
+        "categoria": "ferramentas",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "morsa",
+      "nome": "Morsa",
+      "tipo": "geral",
+      "preco": {
+        "pc": 1100
+      },
+      "peso": 15,
+      "tags": [
+        "ferramentas"
+      ],
+      "mercadoria": {
+        "categoria": "ferramentas",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "oficina-armeiro",
+      "nome": "Ferramentas completas de armeiro",
+      "tipo": "geral",
+      "preco": {
+        "pc": 22200
+      },
+      "peso": null,
+      "tags": [
+        "ferramentas"
+      ],
+      "mercadoria": {
+        "categoria": "ferramentas",
+        "unidade": "conjunto"
+      }
+    },
+    {
+      "id": "saco-dormir",
+      "nome": "Saco de dormir (rolo de lona e lã)",
+      "tipo": "geral",
+      "preco": {
+        "pc": 80
+      },
+      "peso": 3,
+      "tags": [
+        "aventura"
+      ],
+      "mercadoria": {
+        "categoria": "aventura",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "tenda",
+      "nome": "Tenda pequena (2 pessoas)",
+      "tipo": "geral",
+      "preco": {
+        "pc": 470
+      },
+      "peso": 8,
+      "tags": [
+        "aventura"
+      ],
+      "mercadoria": {
+        "categoria": "aventura",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "pavilhao",
+      "nome": "Pavilhão de lona",
+      "tipo": "geral",
+      "preco": {
+        "pc": 1300
+      },
+      "peso": 40,
+      "tags": [
+        "aventura"
+      ],
+      "mercadoria": {
+        "categoria": "aventura",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "corda-canhamo",
+      "nome": "Corda de cânhamo (15 m)",
+      "tipo": "geral",
+      "preco": {
+        "pc": 25
+      },
+      "peso": 1.7,
+      "tags": [
+        "aventura"
+      ],
+      "mercadoria": {
+        "categoria": "aventura",
+        "unidade": "15 m (~1,7 kg)"
+      }
+    },
+    {
+      "id": "corrente",
+      "nome": "Corrente leve",
+      "tipo": "geral",
+      "preco": {
+        "pc": 40
+      },
+      "peso": 0.7,
+      "tags": [
+        "aventura"
+      ],
+      "mercadoria": {
+        "categoria": "aventura",
+        "unidade": "1 m"
+      }
+    },
+    {
+      "id": "gancho",
+      "nome": "Gancho de escalada (arpéu)",
+      "tipo": "geral",
+      "preco": {
+        "pc": 40
+      },
+      "peso": 1.5,
+      "tags": [
+        "aventura"
+      ],
+      "mercadoria": {
+        "categoria": "aventura",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "piton",
+      "nome": "Píton (cravo de ferro)",
+      "tipo": "geral",
+      "preco": {
+        "pc": 7
+      },
+      "peso": 0.2,
+      "tags": [
+        "aventura"
+      ],
+      "mercadoria": {
+        "categoria": "aventura",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "escada",
+      "nome": "Escada",
+      "tipo": "geral",
+      "preco": {
+        "pc": 65
+      },
+      "peso": 8,
+      "tags": [
+        "aventura"
+      ],
+      "mercadoria": {
+        "categoria": "aventura",
+        "unidade": "3 m"
+      }
+    },
+    {
+      "id": "vara",
+      "nome": "Vara",
+      "tipo": "geral",
+      "preco": {
+        "pc": 17
+      },
+      "peso": 2,
+      "tags": [
+        "aventura"
+      ],
+      "mercadoria": {
+        "categoria": "aventura",
+        "unidade": "3 m"
+      }
+    },
+    {
+      "id": "algemas",
+      "nome": "Algemas (grilhões)",
+      "tipo": "geral",
+      "preco": {
+        "pc": 45
+      },
+      "peso": 1,
+      "tags": [
+        "aventura"
+      ],
+      "mercadoria": {
+        "categoria": "aventura",
+        "unidade": "par"
+      }
+    },
+    {
+      "id": "cadeado",
+      "nome": "Cadeado simples",
+      "tipo": "geral",
+      "preco": {
+        "pc": 45
+      },
+      "peso": 0.3,
+      "tags": [
+        "aventura"
+      ],
+      "mercadoria": {
+        "categoria": "aventura",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "cataplasma",
+      "nome": "Cataplasma medicinal (emplastro)",
+      "tipo": "geral",
+      "preco": {
+        "pc": 10
+      },
+      "peso": 0.1,
+      "tags": [
+        "aventura"
+      ],
+      "mercadoria": {
+        "categoria": "aventura",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "sabao",
+      "nome": "Sabão (barra)",
+      "tipo": "geral",
+      "preco": {
+        "pc": 3
+      },
+      "peso": 0.1,
+      "tags": [
+        "aventura"
+      ],
+      "mercadoria": {
+        "categoria": "aventura",
+        "unidade": "barra (~0,1 kg)"
+      }
+    },
+    {
+      "id": "apito",
+      "nome": "Apito",
+      "tipo": "geral",
+      "preco": {
+        "pc": 20
+      },
+      "peso": 0.05,
+      "tags": [
+        "aventura"
+      ],
+      "mercadoria": {
+        "categoria": "aventura",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "espelho",
+      "nome": "Espelho de aço",
+      "tipo": "geral",
+      "preco": {
+        "pc": 35
+      },
+      "peso": 0.3,
+      "tags": [
+        "aventura"
+      ],
+      "mercadoria": {
+        "categoria": "aventura",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "sino",
+      "nome": "Sino de mão",
+      "tipo": "geral",
+      "preco": {
+        "pc": 25
+      },
+      "peso": 0.3,
+      "tags": [
+        "aventura"
+      ],
+      "mercadoria": {
+        "categoria": "aventura",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "esferas-metal",
+      "nome": "Esferas de metal (1000)",
+      "tipo": "geral",
+      "preco": {
+        "pc": 45
+      },
+      "peso": 1,
+      "tags": [
+        "aventura"
+      ],
+      "mercadoria": {
+        "categoria": "aventura",
+        "unidade": "1000 unidades"
+      }
+    },
+    {
+      "id": "saquinho-areia",
+      "nome": "Saquinho de areia",
+      "tipo": "geral",
+      "preco": {
+        "pc": 1
+      },
+      "peso": 0.5,
+      "tags": [
+        "aventura"
+      ],
+      "mercadoria": {
+        "categoria": "aventura",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "kit-disfarce",
+      "nome": "Kit de disfarce",
+      "tipo": "geral",
+      "preco": {
+        "pc": 250
+      },
+      "peso": 3,
+      "tags": [
+        "aventura"
+      ],
+      "mercadoria": {
+        "categoria": "aventura",
+        "unidade": "conjunto"
+      }
+    },
+    {
+      "id": "vidro-perfume",
+      "nome": "Vidro de perfume",
+      "tipo": "geral",
+      "preco": {
+        "pc": 50
+      },
+      "peso": 0.2,
+      "tags": [
+        "aventura"
+      ],
+      "mercadoria": {
+        "categoria": "aventura",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "bloco-incenso",
+      "nome": "Bloco de incenso",
+      "tipo": "geral",
+      "preco": {
+        "pc": 17
+      },
+      "peso": 0.05,
+      "tags": [
+        "aventura"
+      ],
+      "mercadoria": {
+        "categoria": "aventura",
+        "unidade": "unidade (~50 g)"
+      }
+    },
+    {
+      "id": "incensario",
+      "nome": "Incensário",
+      "tipo": "geral",
+      "preco": {
+        "pc": 75
+      },
+      "peso": 0.6,
+      "tags": [
+        "aventura"
+      ],
+      "mercadoria": {
+        "categoria": "aventura",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "folha-papel",
+      "nome": "Folha de papel",
+      "tipo": "geral",
+      "preco": {
+        "pc": 3
+      },
+      "peso": 0.01,
+      "tags": [
+        "escrita"
+      ],
+      "mercadoria": {
+        "categoria": "escrita",
+        "unidade": "folha"
+      }
+    },
+    {
+      "id": "folha-pergaminho",
+      "nome": "Folha de pergaminho",
+      "tipo": "geral",
+      "preco": {
+        "pc": 3
+      },
+      "peso": 0.01,
+      "tags": [
+        "escrita"
+      ],
+      "mercadoria": {
+        "categoria": "escrita",
+        "unidade": "folha"
+      }
+    },
+    {
+      "id": "velino",
+      "nome": "Folha de velino",
+      "tipo": "geral",
+      "preco": {
+        "pc": 10
+      },
+      "peso": 0.01,
+      "tags": [
+        "escrita"
+      ],
+      "mercadoria": {
+        "categoria": "escrita",
+        "unidade": "folha"
+      }
+    },
+    {
+      "id": "caneta-tinteiro",
+      "nome": "Pena de escrever",
+      "tipo": "geral",
+      "preco": {
+        "pc": 1
+      },
+      "peso": 0.01,
+      "tags": [
+        "escrita"
+      ],
+      "mercadoria": {
+        "categoria": "escrita",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "vidro-tinta",
+      "nome": "Vidro de tinta",
+      "tipo": "geral",
+      "preco": {
+        "pc": 25
+      },
+      "peso": 0.1,
+      "tags": [
+        "escrita"
+      ],
+      "mercadoria": {
+        "categoria": "escrita",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "livro-estudo",
+      "nome": "Livro de estudo",
+      "tipo": "geral",
+      "preco": {
+        "pc": 500
+      },
+      "peso": 2,
+      "tags": [
+        "escrita"
+      ],
+      "mercadoria": {
+        "categoria": "escrita",
+        "unidade": "volume"
+      }
+    },
+    {
+      "id": "caderno-notas",
+      "nome": "Caderno de notas",
+      "tipo": "geral",
+      "preco": {
+        "pc": 50
+      },
+      "peso": 0.5,
+      "tags": [
+        "escrita"
+      ],
+      "mercadoria": {
+        "categoria": "escrita",
+        "unidade": "unidade (~40 folhas)"
+      }
+    },
+    {
+      "id": "livro-raro",
+      "nome": "Livro iluminado ou raro",
+      "tipo": "geral",
+      "preco": {
+        "pc": 2000
+      },
+      "peso": 3,
+      "tags": [
+        "escrita"
+      ],
+      "mercadoria": {
+        "categoria": "escrita",
+        "unidade": "volume"
+      }
+    },
+    {
+      "id": "parafina",
+      "nome": "Parafina (lacre)",
+      "tipo": "geral",
+      "preco": {
+        "pc": 7
+      },
+      "peso": 0.05,
+      "tags": [
+        "escrita"
+      ],
+      "mercadoria": {
+        "categoria": "escrita",
+        "unidade": "barra (~10 usos)"
+      }
+    },
+    {
+      "id": "carta-nautica",
+      "nome": "Carta náutica",
+      "tipo": "geral",
+      "preco": {
+        "pc": 3300
+      },
+      "peso": 0.2,
+      "tags": [
+        "escrita"
+      ],
+      "mercadoria": {
+        "categoria": "escrita",
+        "unidade": "unidade"
+      }
+    },
+    {
+      "id": "mapa-comercial",
+      "nome": "Mapa de rotas comerciais",
+      "tipo": "geral",
+      "preco": {
+        "pc": 16700
+      },
+      "peso": 0.5,
+      "tags": [
+        "escrita"
+      ],
+      "mercadoria": {
+        "categoria": "escrita",
+        "unidade": "unidade"
+      }
+    }
+  ]
+}

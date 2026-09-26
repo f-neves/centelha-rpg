@@ -1,0 +1,373 @@
+{
+  "_nota": "Semana de Uldun (8 dias). Cestas por adulto-equivalente (Allen). Criança = meio adulto-equivalente. Saída do modelo em lore/economia/v2/gerar.py: não edite preço à mão aqui; mude o modelo e gere de novo.",
+  "niveis_pessoa": [
+    {
+      "nivel": "Miserável",
+      "pc_semana": 12,
+      "composicao": "Cesta de subsistência; dorme onde der.",
+      "estalagem_semana": null
+    },
+    {
+      "nivel": "Pobre",
+      "pc_semana": 16,
+      "composicao": "Subsistência e meia choupana (ou canto alugado).",
+      "estalagem_semana": 48
+    },
+    {
+      "nivel": "Modesto",
+      "pc_semana": 45,
+      "composicao": "Cesta respeitável e um quarto.",
+      "estalagem_semana": 128
+    },
+    {
+      "nivel": "Confortável",
+      "pc_semana": 65,
+      "composicao": "Respeitável, meia casa, parte de um criado.",
+      "estalagem_semana": 312
+    },
+    {
+      "nivel": "Abastado",
+      "pc_semana": 200,
+      "composicao": "Farta, meia casa de mercador, um criado, um cavalo.",
+      "estalagem_semana": 640
+    },
+    {
+      "nivel": "Rico",
+      "pc_semana": 700,
+      "composicao": "Luxo, casa de mercador, dois valetes, cavalo, roupa de corte.",
+      "estalagem_semana": 2320
+    },
+    {
+      "nivel": "Aristocrata",
+      "pc_semana": 1500,
+      "composicao": "Casa senhorial própria e séquito doméstico.",
+      "estalagem_semana": 6240
+    }
+  ],
+  "cestas_semana": {
+    "S": {
+      "nome": "Subsistência",
+      "pc": 11.6
+    },
+    "R": {
+      "nome": "Respeitável",
+      "pc": 31.3
+    },
+    "F": {
+      "nome": "Farta",
+      "pc": 65.8
+    },
+    "L": {
+      "nome": "Luxo",
+      "pc": 231.1
+    },
+    "M": {
+      "nome": "Modesta (meio a meio)",
+      "pc": 21.4
+    }
+  },
+  "moradia_semana": {
+    "choupana": {
+      "nome": "Choupana",
+      "pc": 8.8
+    },
+    "artesao": {
+      "nome": "Casa de artesão com oficina",
+      "pc": 35.1
+    },
+    "mercador": {
+      "nome": "Casa de mercador",
+      "pc": 87.7
+    },
+    "senhorial": {
+      "nome": "Casa senhorial pequena",
+      "pc": 350.7
+    },
+    "paco": {
+      "nome": "Paço, solar fortificado",
+      "pc": 1753.4
+    }
+  },
+  "criados": [
+    {
+      "id": "aprendiz",
+      "nome": "Aprendiz, menino de recados",
+      "salario_semana": 7,
+      "custo_total_semana": 18.6
+    },
+    {
+      "id": "criado",
+      "nome": "Criado ou criada de casa",
+      "salario_semana": 17.5,
+      "custo_total_semana": 48.8
+    },
+    {
+      "id": "cavalarico",
+      "nome": "Cavalariço",
+      "salario_semana": 17.5,
+      "custo_total_semana": 48.8
+    },
+    {
+      "id": "cozinheiro",
+      "nome": "Cozinheiro",
+      "salario_semana": 29.2,
+      "custo_total_semana": 60.5
+    },
+    {
+      "id": "valete",
+      "nome": "Valete, criado de casa rica",
+      "salario_semana": 52.6,
+      "custo_total_semana": 118.4
+    },
+    {
+      "id": "guarda",
+      "nome": "Guarda armado da casa",
+      "salario_semana": 30.4,
+      "custo_total_semana": 61.7
+    },
+    {
+      "id": "escudeiro",
+      "nome": "Escudeiro da casa",
+      "salario_semana": 35.1,
+      "custo_total_semana": 100.9
+    },
+    {
+      "id": "mordomo",
+      "nome": "Mordomo (administrador)",
+      "salario_semana": 175.3,
+      "custo_total_semana": 241.2
+    },
+    {
+      "id": "capelao",
+      "nome": "Capelão",
+      "salario_semana": 140.3,
+      "custo_total_semana": 206.1
+    }
+  ],
+  "cavalo_manutencao_semana": 41.6,
+  "cavalo_guerra_manutencao_semana": 288,
+  "pacotes_familia": {
+    "Braçal": {
+      "itens": [
+        {
+          "item": "3 adultos-equivalentes, cesta de subsistência",
+          "pc_semana": 34.8
+        },
+        {
+          "item": "Choupana",
+          "pc_semana": 8.8
+        }
+      ],
+      "pacote": 43.6,
+      "estilo_de_vida": 9.4
+    },
+    "Destreinado": {
+      "itens": [
+        {
+          "item": "3 AE, cesta modesta",
+          "pc_semana": 64.3
+        },
+        {
+          "item": "Choupana",
+          "pc_semana": 8.8
+        }
+      ],
+      "pacote": 73.1,
+      "estilo_de_vida": 16.9
+    },
+    "Treinado": {
+      "itens": [
+        {
+          "item": "3 AE, cesta respeitável",
+          "pc_semana": 93.8
+        },
+        {
+          "item": "Casa de artesão",
+          "pc_semana": 35.1
+        },
+        {
+          "item": "Aprendiz",
+          "pc_semana": 18.6
+        },
+        {
+          "item": "Roupa de artesão nova para o casal, por ano",
+          "pc_semana": 10
+        },
+        {
+          "item": "Mula ou cavalo dividido (meio)",
+          "pc_semana": 20.8
+        }
+      ],
+      "pacote": 178.2,
+      "estilo_de_vida": 72.8
+    },
+    "Especialista": {
+      "itens": [
+        {
+          "item": "3 AE, cesta respeitável",
+          "pc_semana": 93.8
+        },
+        {
+          "item": "Casa de mercador",
+          "pc_semana": 87.7
+        },
+        {
+          "item": "2 criados",
+          "pc_semana": 97.6
+        },
+        {
+          "item": "Um cavalo",
+          "pc_semana": 41.6
+        },
+        {
+          "item": "Roupa fina para o casal, por ano",
+          "pc_semana": 41.7
+        }
+      ],
+      "pacote": 362.3,
+      "estilo_de_vida": 157.7
+    },
+    "Doutor": {
+      "itens": [
+        {
+          "item": "3 AE, cesta farta",
+          "pc_semana": 197.5
+        },
+        {
+          "item": "Casa de mercador",
+          "pc_semana": 87.7
+        },
+        {
+          "item": "2 criados e 1 cozinheiro",
+          "pc_semana": 158.1
+        },
+        {
+          "item": "Um cavalo",
+          "pc_semana": 41.6
+        },
+        {
+          "item": "Roupa fina para o casal, por ano",
+          "pc_semana": 41.7
+        },
+        {
+          "item": "Livros, um por ano",
+          "pc_semana": 10.4
+        }
+      ],
+      "pacote": 536.9,
+      "estilo_de_vida": 243.1
+    },
+    "Abastado": {
+      "itens": [
+        {
+          "item": "3 AE, cesta farta",
+          "pc_semana": 197.5
+        },
+        {
+          "item": "Casa senhorial pequena",
+          "pc_semana": 350.7
+        },
+        {
+          "item": "4 criados, cozinheiro, cavalariço",
+          "pc_semana": 304.5
+        },
+        {
+          "item": "Dois cavalos",
+          "pc_semana": 83.1
+        },
+        {
+          "item": "Roupa fina, 2 por adulto por ano",
+          "pc_semana": 83.3
+        }
+      ],
+      "pacote": 1019.1,
+      "estilo_de_vida": 325.9
+    },
+    "Rico": {
+      "itens": [
+        {
+          "item": "3 AE, cesta de luxo",
+          "pc_semana": 693.3
+        },
+        {
+          "item": "Casa senhorial pequena",
+          "pc_semana": 350.7
+        },
+        {
+          "item": "Valete, 4 criados, cozinheiro, 2 cavalariços",
+          "pc_semana": 471.7
+        },
+        {
+          "item": "Quatro cavalos",
+          "pc_semana": 166.3
+        },
+        {
+          "item": "Roupa de corte, 1 por adulto por ano",
+          "pc_semana": 208.3
+        }
+      ],
+      "pacote": 1890.3,
+      "estilo_de_vida": 724.7
+    },
+    "Aristocrata": {
+      "itens": [
+        {
+          "item": "3 AE, cesta de luxo",
+          "pc_semana": 693.3
+        },
+        {
+          "item": "Casa senhorial",
+          "pc_semana": 350.7
+        },
+        {
+          "item": "Mordomo, 2 valetes, 6 criados, cozinheiro, 2 cavalariços",
+          "pc_semana": 928.9
+        },
+        {
+          "item": "4 guardas",
+          "pc_semana": 246.6
+        },
+        {
+          "item": "Cavalo de guerra e 3 cavalos",
+          "pc_semana": 412.7
+        },
+        {
+          "item": "Roupa de corte, 2 por adulto por ano",
+          "pc_semana": 416.7
+        }
+      ],
+      "pacote": 3048.8,
+      "estilo_de_vida": 1041.2
+    },
+    "Nobreza": {
+      "itens": [
+        {
+          "item": "3 AE, cesta de luxo",
+          "pc_semana": 693.3
+        },
+        {
+          "item": "Paço",
+          "pc_semana": 1753.4
+        },
+        {
+          "item": "Casa: mordomo, capelão, 2 escudeiros, 6 valetes, 12 criados, 3 cozinheiros, 4 cavalariços",
+          "pc_semana": 2321.8
+        },
+        {
+          "item": "12 guardas",
+          "pc_semana": 739.9
+        },
+        {
+          "item": "2 cavalos de guerra e 8 cavalos",
+          "pc_semana": 908.6
+        },
+        {
+          "item": "Roupa de corte 2 e gala 1 por adulto por ano",
+          "pc_semana": 1083.3
+        }
+      ],
+      "pacote": 7500.3,
+      "estilo_de_vida": 2299.7
+    }
+  }
+}

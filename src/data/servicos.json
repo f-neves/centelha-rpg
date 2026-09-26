@@ -1,0 +1,596 @@
+{
+  "_nota": "Preço de contratar. Diária por contrato = renda semanal / 6; avulsa x 1,5; hora = avulsa / jornada do ofício (leve 6 h, artesão 8 h, braçal 10 h). Saída do modelo em lore/economia/v2/gerar.py: não edite preço à mão aqui; mude o modelo e gere de novo.",
+  "tarifas_por_perfil": [
+    {
+      "perfil": "Braçal",
+      "soma": 4,
+      "semana": 60,
+      "contrato": 10,
+      "avulsa": 15,
+      "hora_leve": 2.5,
+      "hora_artesao": 1.9,
+      "hora_bracal": 1.5
+    },
+    {
+      "perfil": "Destreinado",
+      "soma": 5,
+      "semana": 100,
+      "contrato": 16.7,
+      "avulsa": 25,
+      "hora_leve": 4.2,
+      "hora_artesao": 3.1,
+      "hora_bracal": 2.5
+    },
+    {
+      "perfil": "Oficial",
+      "soma": 6,
+      "semana": 130,
+      "contrato": 21.7,
+      "avulsa": 32.5,
+      "hora_leve": 5.4,
+      "hora_artesao": 4.1,
+      "hora_bracal": 3.2
+    },
+    {
+      "perfil": "Profissional (soma 8)",
+      "soma": 8,
+      "semana": 260,
+      "contrato": 43.3,
+      "avulsa": 65,
+      "hora_leve": 10.8,
+      "hora_artesao": 8.1,
+      "hora_bracal": 6.5
+    },
+    {
+      "perfil": "Perito (soma 9)",
+      "soma": 9,
+      "semana": 334.3,
+      "contrato": 55.7,
+      "avulsa": 83.6,
+      "hora_leve": 13.9,
+      "hora_artesao": 10.4,
+      "hora_bracal": 8.4
+    },
+    {
+      "perfil": "Especialista (soma 10)",
+      "soma": 10,
+      "semana": 434.6,
+      "contrato": 72.4,
+      "avulsa": 108.6,
+      "hora_leve": 18.1,
+      "hora_artesao": 13.6,
+      "hora_bracal": 10.9
+    },
+    {
+      "perfil": "Especialista (soma 11)",
+      "soma": 11,
+      "semana": 568.3,
+      "contrato": 94.7,
+      "avulsa": 142.1,
+      "hora_leve": 23.7,
+      "hora_artesao": 17.8,
+      "hora_bracal": 14.2
+    },
+    {
+      "perfil": "Mestre (soma 12)",
+      "soma": 12,
+      "semana": 668.6,
+      "contrato": 111.4,
+      "avulsa": 167.1,
+      "hora_leve": 27.9,
+      "hora_artesao": 20.9,
+      "hora_bracal": 16.7
+    }
+  ],
+  "servicos": [
+    {
+      "grupo": "Trabalho",
+      "id": "carregador",
+      "nome": "Carregador, cavador, braçal",
+      "unidade": "dia (avulso)",
+      "pc": 15,
+      "base": "Braçal avulso: 10 x 1,5",
+      "pc_calculado": 15
+    },
+    {
+      "grupo": "Trabalho",
+      "id": "bracal-contrato",
+      "nome": "Braçal por contrato",
+      "unidade": "dia",
+      "pc": 10,
+      "base": "Braçal: 60 / 6",
+      "pc_calculado": 10
+    },
+    {
+      "grupo": "Trabalho",
+      "id": "artesao-dia",
+      "nome": "Artesão (oficial) avulso",
+      "unidade": "dia",
+      "pc": 35,
+      "base": "Oficial: 130 / 6 x 1,5",
+      "pc_calculado": 32.5
+    },
+    {
+      "grupo": "Trabalho",
+      "id": "artesao-perito-dia",
+      "nome": "Artesão perito avulso",
+      "unidade": "dia",
+      "pc": 85,
+      "base": "Soma 9",
+      "pc_calculado": 83.6
+    },
+    {
+      "grupo": "Trabalho",
+      "id": "mestre-dia",
+      "nome": "Mestre de ofício avulso",
+      "unidade": "dia",
+      "pc": 170,
+      "base": "Soma 12",
+      "pc_calculado": 167.1
+    },
+    {
+      "grupo": "Trabalho",
+      "id": "lavadeira",
+      "nome": "Lavar uma muda de roupa",
+      "unidade": "muda",
+      "pc": 2,
+      "base": "Uma hora de braçal",
+      "pc_calculado": 1.5
+    },
+    {
+      "grupo": "Trabalho",
+      "id": "barbeiro",
+      "nome": "Barba e cabelo",
+      "unidade": "vez",
+      "pc": 2,
+      "base": "Meia hora, destreinado",
+      "pc_calculado": 2.1
+    },
+    {
+      "grupo": "Trabalho",
+      "id": "banho",
+      "nome": "Banho de tina (casa de banhos)",
+      "unidade": "vez",
+      "pc": 2,
+      "base": "Lenha e água aquecida, meia hora de servente",
+      "pc_calculado": 2
+    },
+    {
+      "grupo": "Viagem",
+      "id": "guia-local",
+      "nome": "Guia local",
+      "unidade": "dia",
+      "pc": 35,
+      "base": "Sobrevivência de oficial, avulso",
+      "pc_calculado": 32.5
+    },
+    {
+      "grupo": "Viagem",
+      "id": "guia-expedicao",
+      "nome": "Guia de expedição (contrato)",
+      "unidade": "dia",
+      "pc": 45,
+      "base": "Soma 8, contrato, mais comida",
+      "pc_calculado": 43.3
+    },
+    {
+      "grupo": "Viagem",
+      "id": "mensageiro-pe",
+      "nome": "Mensageiro a pé",
+      "unidade": "dia",
+      "pc": 15,
+      "base": "Braçal avulso; ~40 km/dia. Hist.: 2 d/dia",
+      "pc_calculado": 15
+    },
+    {
+      "grupo": "Viagem",
+      "id": "mensageiro-cavalo",
+      "nome": "Mensageiro a cavalo",
+      "unidade": "dia",
+      "pc": 35,
+      "base": "Braçal avulso, cavalo e desgaste; ~60 km/dia",
+      "pc_calculado": 35.4
+    },
+    {
+      "grupo": "Guerra",
+      "id": "arqueiro",
+      "nome": "Arqueiro ou besteiro (mercenário)",
+      "unidade": "dia",
+      "pc": 20,
+      "base": "Hist. 3 d (1346). = oficial por contrato",
+      "pc_calculado": 20
+    },
+    {
+      "grupo": "Guerra",
+      "id": "infante",
+      "nome": "Infante com lança",
+      "unidade": "dia",
+      "pc": 15,
+      "base": "Hist. 2 d (1346)",
+      "pc_calculado": 15
+    },
+    {
+      "grupo": "Guerra",
+      "id": "arqueiro-montado",
+      "nome": "Arqueiro montado ou batedor",
+      "unidade": "dia",
+      "pc": 40,
+      "base": "Hist. 6 d; inclui o próprio cavalo",
+      "pc_calculado": 40
+    },
+    {
+      "grupo": "Guerra",
+      "id": "homem-armas",
+      "nome": "Homem de armas (armadura e cavalo próprios)",
+      "unidade": "dia",
+      "pc": 80,
+      "base": "Hist. 12 d; soma 8 (43) + cavalo de guerra (36) + desgaste",
+      "pc_calculado": 80
+    },
+    {
+      "grupo": "Guerra",
+      "id": "cavaleiro",
+      "nome": "Cavaleiro",
+      "unidade": "dia",
+      "pc": 160,
+      "base": "Hist. 2s",
+      "pc_calculado": 160
+    },
+    {
+      "grupo": "Guerra",
+      "id": "capitao",
+      "nome": "Capitão de companhia",
+      "unidade": "dia",
+      "pc": 320,
+      "base": "Hist. cavaleiro bandeirado, 4s",
+      "pc_calculado": 320
+    },
+    {
+      "grupo": "Guerra",
+      "id": "guarda-costas",
+      "nome": "Guarda-costas (escolta na cidade)",
+      "unidade": "dia",
+      "pc": 65,
+      "base": "Soma 8 avulso",
+      "pc_calculado": 65
+    },
+    {
+      "grupo": "Saber",
+      "id": "escrivao-carta",
+      "nome": "Carta redigida (com pergaminho)",
+      "unidade": "carta",
+      "pc": 8,
+      "base": "Uma hora de escrivão e uma folha",
+      "pc_calculado": 8.4
+    },
+    {
+      "grupo": "Saber",
+      "id": "copia-pagina",
+      "nome": "Cópia simples",
+      "unidade": "página",
+      "pc": 2,
+      "base": "Mundo letrado: metade do histórico (16-20 d o caderno de ~16 páginas)",
+      "pc_calculado": 2
+    },
+    {
+      "grupo": "Saber",
+      "id": "iluminura-pagina",
+      "nome": "Página iluminada, cópia fiel",
+      "unidade": "página",
+      "pc": 9,
+      "base": "Linha da tabela: 2 h de oficial, jornada leve",
+      "pc_calculado": 8.7
+    },
+    {
+      "grupo": "Saber",
+      "id": "leitura",
+      "nome": "Ler ou traduzir um documento",
+      "unidade": "documento",
+      "pc": 11,
+      "base": "Uma hora, soma 8",
+      "pc_calculado": 10.8
+    },
+    {
+      "grupo": "Saber",
+      "id": "advogado-consulta",
+      "nome": "Advogado ou notário, consulta",
+      "unidade": "hora",
+      "pc": 18,
+      "base": "Direito, soma 10",
+      "pc_calculado": 18.1
+    },
+    {
+      "grupo": "Saber",
+      "id": "advogado-causa",
+      "nome": "Advogado numa causa",
+      "unidade": "semana",
+      "pc": 430,
+      "base": "Contrato semanal, soma 10",
+      "pc_calculado": 434.6
+    },
+    {
+      "grupo": "Saber",
+      "id": "professor",
+      "nome": "Professor particular",
+      "unidade": "jornada",
+      "pc": "ver aulas",
+      "base": "Diária avulsa do professor",
+      "pc_calculado": null
+    },
+    {
+      "grupo": "Saúde",
+      "id": "curandeiro",
+      "nome": "Curandeiro ou barbeiro-cirurgião, atendimento",
+      "unidade": "atendimento",
+      "pc": 3,
+      "base": "Cura mortal é pouco eficaz (decisão do autor): abaixo da tarifa do perfil; material à parte",
+      "pc_calculado": 3
+    },
+    {
+      "grupo": "Saúde",
+      "id": "medico",
+      "nome": "Médico sem magia, consulta",
+      "unidade": "consulta",
+      "pc": 15,
+      "base": "Cura alta, mas mortal: preço baixo pela eficácia baixa",
+      "pc_calculado": 15
+    },
+    {
+      "grupo": "Saúde",
+      "id": "medico-tratamento",
+      "nome": "Tratamento diário (curandeiro ou médico sem magia)",
+      "unidade": "dia",
+      "pc": 10,
+      "base": "Cada nível de Cura de quem trata acelera a recuperação em 10%",
+      "pc_calculado": 10
+    },
+    {
+      "grupo": "Saúde",
+      "id": "parteira",
+      "nome": "Parteira",
+      "unidade": "parto",
+      "pc": 35,
+      "base": "Uma jornada de oficial",
+      "pc_calculado": 32.5
+    },
+    {
+      "grupo": "Fé",
+      "id": "missa",
+      "nome": "Missa encomendada",
+      "unidade": "missa",
+      "pc": 25,
+      "base": "Hist. 4 d",
+      "pc_calculado": 27
+    },
+    {
+      "grupo": "Fé",
+      "id": "bencao",
+      "nome": "Bênção, oração, rito simples",
+      "unidade": "vez",
+      "pc": 5,
+      "base": "",
+      "pc_calculado": 5
+    },
+    {
+      "grupo": "Fé",
+      "id": "casamento-funeral",
+      "nome": "Casamento ou funeral",
+      "unidade": "cerimônia",
+      "pc": 60,
+      "base": "Uma semana de braçal, mais esmolas",
+      "pc_calculado": 60
+    },
+    {
+      "grupo": "Arte",
+      "id": "menestrel-taverna",
+      "nome": "Músico ou artista, noite de taverna",
+      "unidade": "noite",
+      "pc": 35,
+      "base": "Performance de oficial",
+      "pc_calculado": 32.5
+    },
+    {
+      "grupo": "Arte",
+      "id": "menestrel-corte",
+      "nome": "Menestrel de corte, apresentação",
+      "unidade": "apresentação",
+      "pc": 110,
+      "base": "Soma 10",
+      "pc_calculado": 108.6
+    },
+    {
+      "grupo": "Animais",
+      "id": "adestrar-sela",
+      "nome": "Adestrar cavalo para sela",
+      "unidade": "cavalo",
+      "pc": 1000,
+      "base": "8 semanas de adestrador oficial; explica rocim 2.400 - potro 1.300",
+      "pc_calculado": 1040
+    },
+    {
+      "grupo": "Animais",
+      "id": "adestrar-guerra",
+      "nome": "Adestrar cavalo de guerra",
+      "unidade": "cavalo",
+      "pc": 8000,
+      "base": "24 semanas de perito sobre um rocim robusto (~3.100): o par dá o cavalo de guerra de escudeiro (11.200)",
+      "pc_calculado": 8022.9
+    },
+    {
+      "grupo": "Animais",
+      "id": "ferrar",
+      "nome": "Ferrar um cavalo",
+      "unidade": "vez",
+      "pc": 40,
+      "base": "Ver arreios",
+      "pc_calculado": 40
+    }
+  ],
+  "aulas": [
+    {
+      "tipo": "Habilidade primária",
+      "novo": 2,
+      "xp": 8,
+      "jornadas": 4,
+      "prof_soma": 6,
+      "preco": 130,
+      "pc": 130
+    },
+    {
+      "tipo": "Habilidade primária",
+      "novo": 3,
+      "xp": 10,
+      "jornadas": 5,
+      "prof_soma": 8,
+      "preco": 325,
+      "pc": 330
+    },
+    {
+      "tipo": "Habilidade primária",
+      "novo": 4,
+      "xp": 12,
+      "jornadas": 6,
+      "prof_soma": 9,
+      "preco": 501.4,
+      "pc": 500
+    },
+    {
+      "tipo": "Habilidade primária",
+      "novo": 5,
+      "xp": 14,
+      "jornadas": 7,
+      "prof_soma": 11,
+      "preco": 994.5,
+      "pc": 990
+    },
+    {
+      "tipo": "Habilidade secundária",
+      "novo": 3,
+      "xp": 5,
+      "jornadas": 2.5,
+      "prof_soma": 8,
+      "preco": 162.5,
+      "pc": 160
+    },
+    {
+      "tipo": "Atributo",
+      "novo": 3,
+      "xp": 20,
+      "jornadas": 10,
+      "prof_soma": 8,
+      "preco": 650,
+      "pc": 650
+    },
+    {
+      "tipo": "Atributo",
+      "novo": 4,
+      "xp": 25,
+      "jornadas": 12.5,
+      "prof_soma": 9,
+      "preco": 1044.6,
+      "pc": 1000
+    },
+    {
+      "tipo": "Atributo",
+      "novo": 5,
+      "xp": 30,
+      "jornadas": 15,
+      "prof_soma": 11,
+      "preco": 2131.1,
+      "pc": 2100
+    },
+    {
+      "tipo": "Especialidade primária",
+      "novo": 1,
+      "xp": 12,
+      "jornadas": 6,
+      "prof_soma": 9,
+      "preco": 501.4,
+      "pc": 500
+    }
+  ],
+  "criados": [
+    {
+      "id": "aprendiz",
+      "nome": "Aprendiz, menino de recados",
+      "salario_semana": 7,
+      "custo_total_semana": 18.6
+    },
+    {
+      "id": "criado",
+      "nome": "Criado ou criada de casa",
+      "salario_semana": 17.5,
+      "custo_total_semana": 48.8
+    },
+    {
+      "id": "cavalarico",
+      "nome": "Cavalariço",
+      "salario_semana": 17.5,
+      "custo_total_semana": 48.8
+    },
+    {
+      "id": "cozinheiro",
+      "nome": "Cozinheiro",
+      "salario_semana": 29.2,
+      "custo_total_semana": 60.5
+    },
+    {
+      "id": "valete",
+      "nome": "Valete, criado de casa rica",
+      "salario_semana": 52.6,
+      "custo_total_semana": 118.4
+    },
+    {
+      "id": "guarda",
+      "nome": "Guarda armado da casa",
+      "salario_semana": 30.4,
+      "custo_total_semana": 61.7
+    },
+    {
+      "id": "escudeiro",
+      "nome": "Escudeiro da casa",
+      "salario_semana": 35.1,
+      "custo_total_semana": 100.9
+    },
+    {
+      "id": "mordomo",
+      "nome": "Mordomo (administrador)",
+      "salario_semana": 175.3,
+      "custo_total_semana": 241.2
+    },
+    {
+      "id": "capelao",
+      "nome": "Capelão",
+      "salario_semana": 140.3,
+      "custo_total_semana": 206.1
+    }
+  ],
+  "escravos": [
+    {
+      "nome": "Destreinado",
+      "pc": 4300,
+      "pc_catalogo_atual": 800
+    },
+    {
+      "nome": "Doméstico",
+      "pc": 7200,
+      "pc_catalogo_atual": 1400
+    },
+    {
+      "nome": "Treinado (ofício)",
+      "pc": 9400,
+      "pc_catalogo_atual": 2000
+    },
+    {
+      "nome": "Especializado",
+      "pc": 18700,
+      "pc_catalogo_atual": null
+    },
+    {
+      "nome": "Companhia (concubina)",
+      "pc": 10800,
+      "pc_catalogo_atual": 3000
+    }
+  ],
+  "escravo_sustento_semana": 14.5
+}
