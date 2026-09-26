@@ -44,7 +44,7 @@ Se o Atributo é o que o personagem **consegue** fazer e a Habilidade é o que e
 | **Temperança** | segurar o próprio impulso | à tentação e à provocação |
 | **Bravura** | ficar e encarar | ao medo |
 
-<p class="muted">A <strong>tortura</strong> pesa na Convicção pelas duas metades: aguentar sem falar, sem ceder, sem trair é alma, e rola a Convicção sozinha no <a href="#o-teste-de-virtude">teste de Virtude</a>; aguentar a dor do ferro é corpo, e rola Vigor + Convicção. Uma cena pode pedir os dois testes, e o Mestre escolhe qual a situação pede.</p>
+<p class="muted">A <strong>tortura</strong> pesa pelas duas metades: aguentar sem falar, sem ceder, sem trair é alma, e rola a Convicção sozinha no <a href="#o-teste-de-virtude">teste de Virtude</a>; aguentar a dor do ferro é corpo, e rola Vigor + Resistência, como qualquer outra dor do corpo. Uma cena pode pedir os dois testes, e o Mestre escolhe qual a situação pede.</p>
 
 **Nota importante antes de escolher os números:** aqui **não existe Virtude ruim**. A régua corta dos dois lados, e uma Virtude **baixa** é conduta esperada tanto quanto uma alta: a Bravura 1 que abandona o posto e salva a pele está sendo tão fiel a si mesma quanto a Bravura 5 que marcha sozinha contra o exército, e as duas rendem a mesma recompensa. Um personagem de Virtudes todas altas não é melhor, é só mais previsível.
 
@@ -83,7 +83,9 @@ Quando a pressão é sobre a alma (o medo que manda correr, a provocação que p
 
 O Atributo fica de fora de propósito: somado, ele empurra todo mundo para perto da média e apaga a diferença entre uma Virtude e a vizinha, que é justamente o que o teste existe para mostrar.
 
-**Só a pressão da alma vai com a Virtude sozinha.** O que pesa no **corpo**, a dor física inclusive, não é teste de Virtude, mesmo quando a tabela acima põe a dor na Convicção: aí a Convicção continua somada ao **Vigor**. É **Vigor + Convicção** contra os efeitos das [Artes](/artes/regras) que invadem o corpo, e para estancar o próprio sangramento ([Estabilizar](/regras/vida-ferimentos-cura#sangramento-e-estabilização)); os do mundo (veneno, doença e ambiente hostil que não vêm de uma Arte) nem passam pela Virtude, e são **Vigor + Resistência** ([Resistir](/regras/acoes-resistir)). Ali quem aguenta é a carne, e a Virtude só a empurra. Do mesmo jeito, as jogadas das Artes que já pedem **Vontade + Convicção** (o espírito que rola para não ser banido, a criatura que força a linha de um Círculo) continuam como estão.
+**Só a pressão da alma vai com a Virtude sozinha, e o corpo não testa Virtude nenhuma.** O que pesa no **corpo**, a dor física inclusive, não é teste de Virtude, mesmo quando a tabela acima põe a dor na Convicção: a dor do ferro, os efeitos das [Artes](/artes/regras) que invadem o corpo e o próprio sangramento ([Estabilizar](/regras/vida-ferimentos-cura#sangramento-e-estabilização)) são **Vigor + Resistência**, a mesma Habilidade que já resolve veneno, doença e ambiente hostil no capítulo [Resistir](/regras/acoes-resistir). Ali quem aguenta é a carne, e nenhuma Virtude entra na conta. Do mesmo jeito, as jogadas das Artes que forçam a alma de outra coisa a ceder (Banir, Círculo) resistem pela [Defesa Mental](/regras/defesas), um número passivo, não um teste.
+
+**Fora do teste de Virtude sozinho, a única soma de Virtude com Atributo ou Habilidade no jogo é o Canalizar Virtude**, o callout logo abaixo: um bônus voluntário, não um teste, sem Dificuldade própria. Nenhuma outra regra do livro soma Virtude a Atributo ou Habilidade na mesma parada.
 
 **A Dificuldade vem de uma régua própria, de dois em dois**, e não da régua de 5 em 5 do resto do jogo. Aquela foi feita para paradas que crescem sem limite; a da Virtude para em 3d6, 18 no máximo, e contra ela a Dificuldade 20 e a 25 nunca passam e a 15 só passa Virtude 6, 5% das vezes. Os rótulos também são outros, para ninguém ler "Dura" e pensar em 15. Sucesso continua sendo total **maior** que a Dificuldade.
 

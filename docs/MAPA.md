@@ -78,7 +78,7 @@ tabela por mais que algumas semanas.
 | `ficha-xp-2.html` | RESTO, mas citado | só `XP_revisao.md` cita (que é ele mesmo candidato a arquivar). Os dois têm o mesmo destino |
 | `ficha-xp.html` | RESTO, mas citado | só `REVISAR.md` cita, que já é histórico por natureza. Consumidor fraco: não é código nem doc vivo |
 | `luas-bench.html` | TRABALHO | citado por `scripts/test-luas.mjs` (código real) |
-| `resumo-regras.txt` | TRABALHO | citado por `scripts/replace-floor.mjs` (código real) e `Pendencias.md` |
+| `resumo-regras.txt` | **APAGADO** em 26/09/2026 | desatualizado em mais de uma regra (achado na auditoria `docs/pendencias/M-virtude-somada.md`); tirado também de `scripts/replace-floor.mjs` |
 | `simulador-batalha.html` | RESTO, mas citado | só `docs/simulacao/00-diagnostico.md` cita, e é histórico da frente encerrada. Consumidor fraco |
 | `volume-bench.html` | TRABALHO | citado por `src/lib/artes-3d.ts` (código real), `Arcano_revisao.md` |
 | `bash.exe.stackdump` | **APAGADO** em 08/09/2026 | debris de um crash do bash, listado no `.gitignore`, nunca versionado. Removido direto, sem passar por `legacy/` |

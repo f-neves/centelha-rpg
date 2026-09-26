@@ -2005,7 +2005,7 @@
       {
         "nome": "Jogada",
         "tipo": "fixo",
-        "valor": "Vigor + Convicção",
+        "valor": "Vigor + Resistência",
         "nota": "só quando o alvo não quer o enxerto"
       },
       {
@@ -2111,7 +2111,7 @@
       {
         "nome": "Jogada",
         "tipo": "fixo",
-        "valor": "Vigor + Convicção",
+        "valor": "Vigor + Resistência",
         "nota": "o alvo rola para aguentar"
       },
       {
@@ -3161,7 +3161,7 @@
       {
         "nome": "Jogada",
         "tipo": "fixo",
-        "valor": "Vigor + Convicção",
+        "valor": "Vigor + Resistência",
         "nota": "o alvo rola para aguentar"
       },
       {
@@ -3392,7 +3392,7 @@
       {
         "nome": "Jogada",
         "tipo": "fixo",
-        "valor": "Vigor + Convicção",
+        "valor": "Vigor + Resistência",
         "nota": "o alvo rola para aguentar"
       },
       {
@@ -3703,15 +3703,9 @@
         "tipo": "padrao"
       },
       {
-        "nome": "Jogada",
-        "tipo": "fixo",
-        "valor": "Vontade + Convicção",
-        "nota": "o espírito rola para ficar"
-      },
-      {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 5"
+        "valor": "Defesa Mental do alvo"
       }
     ],
     "efeito": "Manda o espírito de volta para o lado de lá. Quem foi banido não volta tão cedo e não esquece quem o mandou embora.",
@@ -3809,15 +3803,9 @@
         "regua": "longa"
       },
       {
-        "nome": "Jogada",
-        "tipo": "fixo",
-        "valor": "Vontade + Convicção",
-        "nota": "para a criatura forçar a linha"
-      },
-      {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 5"
+        "valor": "Defesa Mental do alvo"
       }
     ],
     "efeito": "Um círculo desenhado que uma categoria de criatura não atravessa: mortos-vivos, espíritos, feras, corruptores. Você escolhe a categoria ao traçar. Quebrar a linha desfaz tudo, e quem está dentro pode quebrá-la por descuido.",
@@ -5478,7 +5466,7 @@
       {
         "nome": "Jogada",
         "tipo": "fixo",
-        "valor": "Vigor + Convicção",
+        "valor": "Vigor + Resistência",
         "nota": "o alvo rola para aguentar"
       },
       {
@@ -5586,7 +5574,7 @@
       {
         "nome": "Jogada",
         "tipo": "fixo",
-        "valor": "Vigor + Convicção",
+        "valor": "Vigor + Resistência",
         "nota": "o alvo rola para aguentar"
       },
       {
@@ -6092,7 +6080,7 @@
       {
         "nome": "Jogada",
         "tipo": "fixo",
-        "valor": "Vigor + Convicção",
+        "valor": "Vigor + Resistência",
         "nota": "o alvo rola para aguentar"
       },
       {
@@ -6148,7 +6136,7 @@
       {
         "nome": "Jogada",
         "tipo": "fixo",
-        "valor": "Vigor + Convicção",
+        "valor": "Vigor + Resistência",
         "nota": "o alvo rola para aguentar"
       },
       {
@@ -6208,7 +6196,7 @@
       {
         "nome": "Jogada",
         "tipo": "fixo",
-        "valor": "Vigor + Convicção",
+        "valor": "Vigor + Resistência",
         "nota": "o alvo rola para aguentar"
       },
       {

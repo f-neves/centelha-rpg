@@ -333,6 +333,10 @@
     "porPonto": "+1d6 numa jogada ativa, ou +4 numa Defesa (passiva)",
     "teto": "1 ponto por ação ou jogada, inclusive cada golpe que se defende (não empilha dois pontos no mesmo lance)."
   },
+  "virtudeSomaRegra": {
+    "nota": "Redigido por escrito em 26/09/2026, fechando a auditoria docs/pendencias/M-virtude-somada.md: nenhum teste soma Virtude a Atributo ou Habilidade na mesma parada. A Virtude rola sozinha (teste de Virtude, Frenesi) ou entra como bônus voluntário pelo Canalizar Virtude (aparencia-virtudes-vontade.md), que é a ÚNICA exceção. As 17 ocorrências de 'Vigor + Convicção' encontradas na auditoria viraram 'Vigor + Resistência' (a mesma Habilidade que já resolve veneno, doença e ambiente no capítulo Resistir); Banir e Círculo passaram a resistir pela Defesa Mental passiva.",
+    "excecao": "Canalizar Virtude: bônus voluntário, uma vez por cena por Virtude, some o valor cheio à rolagem normal (Atributo + Habilidade + Virtude). Não é teste: sem risco, sem Dificuldade própria. O teto ou contrapartida do bônus segue em aberto (M-18)."
+  },
   "escalaAparencia": [
     {
       "nivel": 0,
@@ -1102,7 +1106,7 @@
     "estabilizar": {
       "pericia": "Cura",
       "dif": 10,
-      "alternativa": "Vigor + Convicção (em si mesmo)"
+      "alternativa": "Vigor + Resistência (em si mesmo)"
     }
   },
   "quaseAcerto": {
@@ -1267,7 +1271,7 @@
         },
         {
           "efeito": "Corpo e veneno",
-          "resiste": "Vigor + Convicção (resistência de fortitude)",
+          "resiste": "Vigor + Resistência (resistência de fortitude)",
           "ex": "transmutação, doença, frio que enrijece, paralisia física"
         },
         {

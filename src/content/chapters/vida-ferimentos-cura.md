@@ -72,7 +72,7 @@ Há duas formas de começar a sangrar:
 
 Sangramentos não se somam livremente: vale o **maior**, e cada fonte adicional acrescenta apenas +1 (teto **5**).
 
-<div class="callout"><span class="lbl">Estabilizar</span>Uma ação dedicada e um teste de <strong>Cura vs Dif 10</strong> (pano limpo, pressão, sutura) encerra um Sangramento. Sozinho, cerrando os dentes, role <strong>Vigor + Convicção vs Dif 10</strong>. Qualquer cura de PV (descanso, Cura ou magia) também o estanca.</div>
+<div class="callout"><span class="lbl">Estabilizar</span>Uma ação dedicada e um teste de <strong>Cura vs Dif 10</strong> (pano limpo, pressão, sutura) encerra um Sangramento. Sozinho, cerrando os dentes, role <strong>Vigor + Resistência vs Dif 10</strong>. Qualquer cura de PV (descanso, Cura ou magia) também o estanca.</div>
 
 <p class="muted">Um aliado <strong>Incapacitado</strong> que ainda sangra continua perdendo Vida rumo ao limite: a margem de meio PV máximo encurta sozinha enquanto ninguém chega. É a hora em que parar para estabilizar o companheiro pesa tanto quanto desferir mais um golpe.</p>
 

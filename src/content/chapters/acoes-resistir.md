@@ -185,7 +185,7 @@ Em **Desgaste 4 por sono**, o personagem **apaga sozinho** assim que a adrenalin
 
 ## As que ainda não têm ficha
 
-- **Dor e tortura.** Aguentar o que fazem com você para arrancar alguma coisa, e são duas metades. Aguentar a **dor do ferro** é corpo: Direta, **Vigor + Convicção**, como o Estabilizar. Aguentar **sem falar, sem ceder, sem trair** é alma: o [teste de Virtude](/regras/aparencia-virtudes-vontade#o-teste-de-virtude) de **Convicção**, sozinha. Uma cena pode pedir os dois, e o Mestre escolhe qual a situação pede. Quem interroga rola contra a [Defesa Mental](/regras/defesas) de quem resiste.
+- **Dor e tortura.** Aguentar o que fazem com você para arrancar alguma coisa, e são duas metades. Aguentar a **dor do ferro** é corpo: Direta, **Vigor + Resistência**, como o Estabilizar. Aguentar **sem falar, sem ceder, sem trair** é alma: o [teste de Virtude](/regras/aparencia-virtudes-vontade#o-teste-de-virtude) de **Convicção**, sozinha. Uma cena pode pedir os dois, e o Mestre escolhe qual a situação pede. Quem interroga rola contra a [Defesa Mental](/regras/defesas) de quem resiste.
 - **Bebida e entorpecente.** Roda no motor de Veneno, com Potência baixa e efeito quase sempre em Desgaste.
 - **Medo, dominação e imposição** não são Resistência, e seguem a [régua do medo](/regras/defesas): a intimidação numa conversa é Defesa Social, o medo imposto e a dominação são Defesa Mental, e o medo da cena é o teste de Bravura.
 

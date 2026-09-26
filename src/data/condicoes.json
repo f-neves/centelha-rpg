@@ -133,7 +133,7 @@
     {
       "id": "sangrando", "nome": "Sangrando", "icone": "🩸", "grupo": "corpo", "cor": "perigo",
       "porSeisTicks": 1,
-      "nota": "A cada 6 Ticks desde o ferimento perde 1 de Vida (ignora Absorção). Estabilizar: Cura contra Dif 10, ou Vigor + Convicção em si mesmo.",
+      "nota": "A cada 6 Ticks desde o ferimento perde 1 de Vida (ignora Absorção). Estabilizar: Cura contra Dif 10, ou Vigor + Resistência em si mesmo.",
       "fonte": "regras.json · sangramento"
     },
     {

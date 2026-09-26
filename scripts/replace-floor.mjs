@@ -12,7 +12,6 @@ const FILES = [
   'src/data/glossario.json',
   'src/data/regras.json',
   'src/pages/rolador.astro',
-  'resumo-regras.txt',
   'legacy/livro.html',
   'legacy/build_livro.mjs',
   'legacy/migrate-to-json.mjs',
