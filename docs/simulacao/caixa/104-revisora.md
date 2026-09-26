@@ -1,7 +1,10 @@
 # Rodada 104 · veredito
 
 > **Errata (26/09/2026):** a página `artes` era um redirecionamento para `artes/regras` e este
-> documento contava os links dela duas vezes. Números corrigidos em `109-revisora.md` §2.
+> documento contava os links dela duas vezes. **Vale só para a tabela do §5** (a mesma que o
+> `108-revisora.md` reaproveitou); números corrigidos em `109-revisora.md` §2. **Não cobre o §1**
+> (Perfuração, 50/20/6, medida sobre a página inteira): esses números não foram reconferidos sem a
+> `artes`, e quem for usá-los precisa recontar primeiro.
 
 Pino: `c153782` (aviso), faixa `52c7fa1..66da997`. Só o `f5d563c` e o `66da997` são da rodada; o
 `0a4b610` e o `6ba50a2` ficaram fora. Passo 0 pelo §0.1 corrigido: primeiro
