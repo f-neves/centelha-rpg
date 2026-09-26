@@ -197,7 +197,9 @@ e menção em comentário também não. Um exemplo: o `gen-deslocamento.mjs` cit
 - `npm run validate` e `npm run build` verdes.
 - `test-editor-bestiario.mjs` (smoke, fora do `validate`) verde, com o espantalho vindo da pasta.
 - Fim de linha: LF nos arquivos novos.
-- Travessão: zero nas linhas acrescentadas (`rtk proxy git diff`).
+- Travessão: zero em prosa nova; sobram 2 num dado legado (`fonte.nota` de duas fichas, herdado
+  verbatim do `59d91ad`, "Oficina de conversão"), não tocado nesta fase (`rtk proxy git diff
+  d884b4a 5acefb0 | grep -c "^+.*—"` dá 2, as duas em `src/data/bestiario/`).
 
 ## PRECISA DE MIM
 
