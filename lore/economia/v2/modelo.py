@@ -443,7 +443,7 @@ OUT["reparo_v2"] = {nome: {d: (reparo_v3(mo, pe, d), reparo_v3(mo, pe, d)) for d
 # RECOMPENSAS DE CAÇA (rodada 115)
 # =====================================================================
 # Bolsa = Valor do degrau × Semanas × Tarefa × Risco × 3 (o grupo de referência). O valor do degrau é
-# o Livre por caçador por semana: base 15, fator 1,75 por degrau, arredondado pelo `arred`.
+# a tarifa de base por caçador, por semana: base 15, fator 1,75 por degrau, arredondado pelo `arred`.
 REC_BASE, REC_FATOR = 15, 1.75
 REC_DEGRAUS = [arred(REC_BASE * REC_FATOR ** (n - 1)) for n in range(1, 13)]
 REC_TAREFAS = [

@@ -45,7 +45,7 @@ A conta inteira, passo a passo, está na [Calculadora de Recompensa](/recompensa
 
 1. **Degrau** = desafio + quantidade + Centelha
    - a) Desafio: o da criatura mais forte.
-   - b) Quantidade: +1 cada vez que o número dobra (2 criaturas +1, 4 +2, 8 +3, 16 +4). Conte só as que têm desafio até 2 abaixo da mais forte; as mais fracas contam metade.
+   - b) Quantidade: criaturas com desafio até 2 abaixo da mais forte contam inteiras; as mais fracas que isso contam metade. Some tudo e ganhe +1 cada vez que o total dobra (2 +1, 4 +2, 8 +3, 16 +4).
    - c) Centelha da criatura: +1 a cada 4 pontos (0 a 3 +0, 4 a 7 +1, 8 a 11 +2, 12 +3).
 2. **Valor do degrau** (por caçador, por semana):
 
@@ -63,7 +63,7 @@ A conta inteira, passo a passo, está na [Calculadora de Recompensa](/recompensa
 
    Acima de 12: 15 × 1,75^(degrau − 1), arredondado.
 
-3. **Semanas** = caçada estimada (mínimo 1) + metade da viagem de ida e volta. A semana tem 8 dias. É estimativa de contrato: se levar mais, azar de quem caça; se levar menos, sorte.
+3. **Semanas** = caçada estimada (mínimo 1) + metade da viagem de ida e volta. A semana tem 8 dias. É estimativa de contrato: se levar mais, azar de quem caça; se levar menos, sorte. A viagem conta metade porque é tempo gasto, não perigo: paga o tempo, sem o prêmio de risco.
 4. **Tipo de tarefa** (exemplos): afugentar ou expulsar ×0,75; matar ×1; trazer parte ou prova ×1; recuperar alguém ou algo levado ×1; capturar vivo ×1,5; capturar vivo e sem ferimentos, ou domar ×2.
 5. **Risco**, além do que o desafio já prevê (exemplos): normal ×1; alto, um agravante sério (terreno hostil, alvo desconhecido, prazo curto, civis para proteger) ×1,5; muito alto, dois ou mais agravantes ×2; extremo, alguém provavelmente morre mesmo dando certo ×3.
 
@@ -96,9 +96,11 @@ A conta inteira, passo a passo, está na [Calculadora de Recompensa](/recompensa
 
 3. **Oferta:** o Mestre decide quantos trabalhos existem. Referência: aldeia, 1 por ano; vila, 1 por estação; cidade, 1 por mês; fronteira e terra selvagem, o dobro. Caçar só vira profissão onde há trabalho de sobra.
 
+A bolsa por semana é alta de propósito: paga o risco e o tempo sem trabalho entre uma caçada e outra. Compare com os pares do grupo, não com um trabalhador: o degrau 6 paga 250 pc por semana, perto do Livre de uma Nobreza (200). O que impede todo mundo de virar caçador são os três testes, principalmente a oferta.
+
 **Despesas e partes:**
 
-1. Comida e pouso na estrada já estão no custo de vida e não se cobram à parte. Munição, cura, reparo, transporte, iscas e cães saem da bolsa.
+1. Comida e pouso na estrada nunca são cobrados: fazem parte do custo de vida, que a bolsa já descontou. Em terra sem suprimento, o Mestre pode exigir que o grupo leve rações; aí contam o peso e os dias de autonomia, não o preço. Munição, cura, reparo, transporte, iscas e cães saem da bolsa.
 2. Se a bolsa é pela parte da criatura, a parte é de quem pagou. Parte avulsa vende no mercado pela metade do que um encomendante pagaria.
 
 O que acontece com o Livre de cada um durante a caçada está em <a href="/centelha-rpg/regras/custo-de-servico-e-itens#recursos-durante-a-aventura">Recursos durante a aventura</a>.
