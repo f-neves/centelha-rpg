@@ -905,14 +905,20 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
   }
 }
 
-// A ECONOMIA MUNDANA (rodada 110): sete arquivos gerados pelo modelo de lore/economia/v2/gerar.py.
+// A ECONOMIA MUNDANA (rodadas 110 e 111): sete arquivos gerados pelo modelo de lore/economia/v2/gerar.py.
 // Um esquema `.strict()` por arquivo, porque o zod descarta chave desconhecida em silêncio e é o
-// `.strict()` que prova que nenhum `_procedencia` sobrou na cópia. Preço sempre `{ pc }` (F2); peso
-// pode faltar ou ser nulo (F3). Depois dos esquemas, a conta que o arquivo promete: todo item de
-// pacote existe em mercadorias.json e o total do pacote é a soma dos itens.
+// `.strict()` que prova que nenhum `_procedencia` sobrou na cópia. Todo valor em dinheiro é
+// `{ preco: { pc }, por }` (F2, estendida na rodada 111 a tarifas, serviços, aulas, viagens, custo
+// de vida e renda), com `por` de um vocabulário fechado: número solto onde devia haver objeto falha
+// aqui. Peso pode faltar ou ser nulo (F3). Depois dos esquemas, a conta que o arquivo promete: todo
+// item de pacote existe em mercadorias.json e o total do pacote é a soma dos itens.
 {
   const preco = z.object({ pc: z.number().nonnegative() }).strict();
+  const POR = z.enum(['dia', 'hora', 'jornada', 'semana', 'km', '10 km', 'trajeto', 'vez', 'página', 'unidade', 'mes', 'ano', 'ponto']);
+  // um valor com unidade; `extra` são os campos que qualificam a unidade (regime, ofício, nota)
+  const valor = (extra = {}) => z.object({ por: POR, ...extra, preco: preco.nullable() }).strict();
   const nota = z.string().min(1);
+  const criado = z.object({ id: z.string(), nome: z.string(), salario: valor(), custo_total: valor() }).strict();
   const E = {
     'mercadorias.json': z.object({ _nota: nota, itens: z.array(z.object({
       id: z.string(), nome: z.string(), tipo: z.enum(['comida', 'geral', 'roupa']), preco,
@@ -925,36 +931,36 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
     }).strict()) }).strict(),
     'servicos.json': z.object({
       _nota: nota,
-      tarifas_por_perfil: z.array(z.object({ perfil: z.string(), soma: z.number(), semana: z.number(), contrato: z.number(), avulsa: z.number(), hora_leve: z.number(), hora_artesao: z.number(), hora_bracal: z.number() }).strict()),
-      servicos: z.array(z.object({ grupo: z.string(), id: z.string(), nome: z.string(), unidade: z.string(), pc: z.union([z.number().nonnegative(), z.string()]), base: z.string(), pc_calculado: z.number().nullable() }).strict()),
-      aulas: z.array(z.object({ tipo: z.string(), novo: z.number(), xp: z.number(), jornadas: z.number(), prof_soma: z.number(), preco: z.number(), pc: z.number() }).strict()),
-      criados: z.array(z.object({ id: z.string(), nome: z.string(), salario_semana: z.number(), custo_total_semana: z.number() }).strict()),
-      escravos: z.array(z.object({ nome: z.string(), pc: z.number(), pc_catalogo_atual: z.number().nullable() }).strict()),
-      escravo_sustento_semana: z.number(),
+      tarifas_por_perfil: z.array(z.object({ perfil: z.string(), soma: z.number(), tarifas: z.array(valor({ regime: z.enum(['contrato', 'avulso']).optional(), oficio: z.enum(['leve', 'artesao', 'bracal']).optional() })).min(1) }).strict()),
+      servicos: z.array(z.object({ grupo: z.string(), id: z.string(), nome: z.string(), por: POR, regime: z.enum(['contrato', 'avulso']).optional(), preco: preco.nullable(), calculado: preco.nullable(), base: z.string(), ver: z.literal('aulas').optional() }).strict()),
+      aulas: z.array(z.object({ tipo: z.string(), novo: z.number(), xp: z.number(), jornadas: z.number(), prof_soma: z.number(), por: POR, preco, calculado: preco }).strict()),
+      criados: z.array(criado),
+      escravos: z.array(z.object({ nome: z.string(), por: POR, preco, catalogo_anterior: preco.nullable() }).strict()),
+      escravo_sustento: valor(),
     }).strict(),
     'pacotes-equipamento.json': z.object({ _nota: nota, pacotes: z.record(z.object({
-      total_pc: z.number(), total_atual_pc: z.number(), itens: z.array(z.tuple([z.string(), z.number().int().positive()])),
+      total: preco, total_anterior: preco, itens: z.array(z.tuple([z.string(), z.number().int().positive()])),
     }).strict()) }).strict(),
     'renda.json': z.object({
       _nota: nota,
-      faixas: z.array(z.object({ faixa: z.string(), recursos: z.number().int().min(1).max(6), renda_semana: z.number(), renda_mes: z.number(), renda_ano: z.number(), livre_semana: z.number(), livre_mes: z.number(), livre_ano: z.number(), custo_semana: z.number(), nivel_de_vida: z.string(), origem: z.string() }).strict()),
-      curva_por_soma: z.array(z.object({ soma: z.number(), media: z.number(), renda_semana: z.number(), faixa_dificuldade: z.number() }).strict()),
-      valor_por_ponto_semana: z.record(z.number()),
-      tetos_demanda_semana: z.record(z.number().nullable()),
+      faixas: z.array(z.object({ faixa: z.string(), recursos: z.number().int().min(1).max(6), renda: z.array(valor()).min(1), livre: z.array(valor()).min(1), custo: z.array(valor()).min(1), nivel_de_vida: z.string(), origem: z.string() }).strict()),
+      curva_por_soma: z.array(z.object({ soma: z.number(), media: z.number(), renda: valor(), faixa_dificuldade: z.number() }).strict()),
+      valor_por_ponto: z.record(valor()),
+      tetos_demanda: z.record(valor()),
     }).strict(),
     'custo-de-vida.json': z.object({
       _nota: nota,
-      niveis_pessoa: z.array(z.object({ nivel: z.string(), pc_semana: z.number(), composicao: z.string(), estalagem_semana: z.number().nullable() }).strict()),
-      cestas_semana: z.record(z.object({ nome: z.string(), pc: z.number() }).strict()),
-      moradia_semana: z.record(z.object({ nome: z.string(), pc: z.number() }).strict()),
-      criados: z.array(z.object({ id: z.string(), nome: z.string(), salario_semana: z.number(), custo_total_semana: z.number() }).strict()),
-      cavalo_manutencao_semana: z.number(), cavalo_guerra_manutencao_semana: z.number(),
-      pacotes_familia: z.record(z.object({ itens: z.array(z.object({ item: z.string(), pc_semana: z.number() }).strict()), pacote: z.number(), estilo_de_vida: z.number() }).strict()),
+      niveis_pessoa: z.array(z.object({ nivel: z.string(), composicao: z.string(), custo: valor(), estalagem: valor().nullable() }).strict()),
+      cestas: z.record(valor({ nome: z.string() })),
+      moradias: z.record(valor({ nome: z.string() })),
+      criados: z.array(criado),
+      manutencao_cavalo: valor(), manutencao_cavalo_guerra: valor(),
+      pacotes_familia: z.record(z.object({ itens: z.array(valor({ item: z.string() })), pacote: valor(), estilo_de_vida: valor() }).strict()),
     }).strict(),
     'viagens.json': z.object({
       _nota: nota,
       velocidades_km_dia: z.array(z.object({ modo: z.string(), km_dia: z.number() }).strict()),
-      precos: z.array(z.object({ id: z.string(), nome: z.string(), pc: z.number(), unidade: z.string() }).strict()),
+      precos: z.array(z.object({ id: z.string(), nome: z.string(), por: POR, nota: z.string().optional(), preco }).strict()),
     }).strict(),
   };
   const eco = {};
@@ -971,7 +977,7 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
     for (const [nome, p] of Object.entries(eco['pacotes-equipamento.json'].pacotes)) {
       let soma = 0;
       for (const [id, q] of p.itens) { if (!M[id]) fail(`pacotes-equipamento.json: pacote ${nome} cita "${id}", que não existe em mercadorias.json`); else soma += M[id].preco.pc * q; }
-      if (Math.abs(soma - p.total_pc) > 1e-9) fail(`pacotes-equipamento.json: pacote ${nome} diz total_pc ${p.total_pc}, a soma dos itens dá ${soma}`);
+      if (Math.abs(soma - p.total.pc) > 1e-9) fail(`pacotes-equipamento.json: pacote ${nome} diz total ${p.total.pc} pc, a soma dos itens dá ${soma}`);
     }
   }
 }

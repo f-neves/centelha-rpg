@@ -54,80 +54,113 @@
     {
       "id": "caravana-carroca",
       "nome": "Caravana, lugar em carroça (bagagem até 20 kg)",
-      "pc": 6,
-      "unidade": "10 km"
+      "por": "10 km",
+      "preco": {
+        "pc": 6
+      }
     },
     {
       "id": "caravana-pe",
       "nome": "Caravana, a pé junto (proteção e bagagem leve)",
-      "pc": 5,
-      "unidade": "dia"
+      "por": "dia",
+      "preco": {
+        "pc": 5
+      }
     },
     {
       "id": "navio",
       "nome": "Navio, passagem no convés",
-      "pc": 3,
-      "unidade": "10 km"
+      "por": "10 km",
+      "preco": {
+        "pc": 3
+      }
     },
     {
       "id": "navio-cabine",
       "nome": "Navio, lugar coberto",
-      "pc": 10,
-      "unidade": "10 km"
+      "por": "10 km",
+      "preco": {
+        "pc": 10
+      }
     },
     {
       "id": "barco-rio",
       "nome": "Barco de rio, passagem",
-      "pc": 1,
-      "unidade": "10 km (rio abaixo); x2 rio acima"
+      "por": "10 km",
+      "nota": "rio abaixo; x2 rio acima",
+      "preco": {
+        "pc": 1
+      }
     },
     {
       "id": "cavalo-aluguel",
       "nome": "Cavalo de aluguel (hackney)",
-      "pc": 17,
-      "unidade": "10 km"
+      "por": "10 km",
+      "preco": {
+        "pc": 17
+      }
     },
     {
       "id": "carroca-aluguel",
       "nome": "Carroça com carroceiro e parelha",
-      "pc": 60,
-      "unidade": "dia"
+      "por": "dia",
+      "preco": {
+        "pc": 60
+      }
     },
     {
       "id": "frete-terra",
       "nome": "Frete por terra",
-      "pc": 4,
-      "unidade": "tonelada por km"
+      "por": "km",
+      "nota": "por tonelada",
+      "preco": {
+        "pc": 4
+      }
     },
     {
       "id": "frete-rio",
       "nome": "Frete por rio",
-      "pc": 2,
-      "unidade": "tonelada por km"
+      "por": "km",
+      "nota": "por tonelada",
+      "preco": {
+        "pc": 2
+      }
     },
     {
       "id": "frete-mar",
       "nome": "Frete por mar",
-      "pc": 1,
-      "unidade": "2 toneladas por km"
+      "por": "km",
+      "nota": "por 2 toneladas",
+      "preco": {
+        "pc": 1
+      }
     },
     {
       "id": "transporte-cidade",
       "nome": "Transporte na cidade (barqueiro, carroceiro, liteira)",
-      "pc": 2,
-      "unidade": "trajeto curto"
+      "por": "trajeto",
+      "nota": "curto",
+      "preco": {
+        "pc": 2
+      }
     },
     {
       "id": "balsa",
       "nome": "Balsa",
-      "pc": 2,
-      "unidade": "pessoa; 5 com cavalo"
+      "por": "vez",
+      "nota": "por pessoa; 5 com cavalo",
+      "preco": {
+        "pc": 2
+      }
     },
     {
       "id": "pedagio",
       "nome": "Pedágio de ponte ou estrada",
-      "pc": 1,
-      "unidade": "pessoa; 3 por animal; 10 por carroça"
+      "por": "vez",
+      "nota": "por pessoa; 3 por animal; 10 por carroça",
+      "preco": {
+        "pc": 1
+      }
     }
   ]
 }

@@ -54,54 +54,65 @@ const tabela = (cab, alin, linhas) => [
 ].join('\n');
 const envolve = (t) => `<div class="table-wrap">\n\n${t}\n\n</div>`;
 
+// Os valores em dinheiro vêm como { por, preco: { pc } } (F2, rodada 111). `de` acha num array o valor
+// daquela unidade (e, se pedido, daquele regime ou ofício), e falha alto se não houver exatamente um.
+const pcDe = (v) => (v && v.preco ? v.preco.pc : null);
+function de(arr, por, filtro = {}) {
+  const achados = arr.filter((v) => v.por === por && Object.entries(filtro).every(([k, x]) => v[k] === x));
+  if (achados.length !== 1) throw new Error(`esperava um valor por ${por} ${JSON.stringify(filtro)}, achei ${achados.length}`);
+  return pcDe(achados[0]);
+}
+const rotuloPor = (v) => `${v.por}${v.regime === 'avulso' ? ' (avulso)' : ''}${v.nota ? ` (${v.nota})` : ''}`;
+
 const blocos = {};
 
 // ----------------------------------------------------------------- renda
 blocos.renda = envolve(tabela(
   ['Recursos', 'Faixa', 'Renda/Sem', 'Renda/Mês', 'Livre/Sem', 'Livre/Mês', 'Livre/Ano', 'Custo/Sem', 'Nível de vida'],
   ['c', 'l', 'c', 'c', 'c', 'c', 'c', 'c', 'l'],
-  RENDA.faixas.map((f) => [bolas(f.recursos), f.faixa, fmt(f.renda_semana), fmt(f.renda_mes), fmt(f.livre_semana), fmt(f.livre_mes), fmt(f.livre_ano), fmt(f.custo_semana), f.nivel_de_vida]),
+  RENDA.faixas.map((f) => [bolas(f.recursos), f.faixa, fmt(de(f.renda, 'semana')), fmt(de(f.renda, 'mes')), fmt(de(f.livre, 'semana')), fmt(de(f.livre, 'mes')), fmt(de(f.livre, 'ano')), fmt(de(f.custo, 'semana')), f.nivel_de_vida]),
 ));
 
 // ------------------------------------------------------------ custo de vida
 blocos['custo-de-vida'] = envolve(tabela(
   ['Nível de vida', 'Por semana', 'O que compra', 'Na estalagem (semana)'],
   ['l', 'c', 'l', 'c'],
-  VIDA.niveis_pessoa.map((n) => [n.nivel, fmt(n.pc_semana), n.composicao, n.estalagem_semana == null ? 'não se hospeda' : fmt(n.estalagem_semana)]),
+  VIDA.niveis_pessoa.map((n) => [n.nivel, fmt(pcDe(n.custo)), n.composicao, n.estalagem == null ? 'não se hospeda' : fmt(pcDe(n.estalagem))]),
 ));
-const custoDaFaixa = Object.fromEntries(RENDA.faixas.map((f) => [f.faixa, f.custo_semana]));
+const custoDaFaixa = Object.fromEntries(RENDA.faixas.map((f) => [f.faixa, de(f.custo, 'semana')]));
 blocos['pacote-familia'] = envolve(tabela(
   ['Faixa', 'Custo/Sem', 'Pacote básico', 'Estilo de vida', 'O que o pacote cobre'],
   ['l', 'c', 'c', 'c', 'l'],
-  Object.entries(VIDA.pacotes_familia).map(([faixa, p]) => [faixa, fmt(custoDaFaixa[faixa]), fmt(Math.round(p.pacote)), fmt(Math.round(p.estilo_de_vida)),
-    p.itens.map((i) => `${i.item} (${fmt(Math.round(i.pc_semana))})`).join('; ')]),
+  Object.entries(VIDA.pacotes_familia).map(([faixa, p]) => [faixa, fmt(custoDaFaixa[faixa]), fmt(Math.round(pcDe(p.pacote))), fmt(Math.round(pcDe(p.estilo_de_vida))),
+    p.itens.map((i) => `${i.item} (${fmt(Math.round(pcDe(i)))})`).join('; ')]),
 ));
 
 // --------------------------------------------------------------- serviços
 blocos.tarifas = envolve(tabela(
   ['Perfil', 'Soma', 'Renda/Sem', 'Diária (contrato)', 'Diária avulsa', 'Hora, serviço leve', 'Hora, artesão', 'Hora, braçal'],
   ['l', 'c', 'c', 'c', 'c', 'c', 'c', 'c'],
-  SERV.tarifas_por_perfil.map((t) => [t.perfil, t.soma, fmt(t.semana), fmt(t.contrato), fmt(t.avulsa), fmt(t.hora_leve), fmt(t.hora_artesao), fmt(t.hora_bracal)]),
+  SERV.tarifas_por_perfil.map((t) => [t.perfil, t.soma, fmt(de(t.tarifas, 'semana')), fmt(de(t.tarifas, 'dia', { regime: 'contrato' })), fmt(de(t.tarifas, 'dia', { regime: 'avulso' })),
+    fmt(de(t.tarifas, 'hora', { oficio: 'leve' })), fmt(de(t.tarifas, 'hora', { oficio: 'artesao' })), fmt(de(t.tarifas, 'hora', { oficio: 'bracal' }))]),
 ));
 const grupos = [...new Set(SERV.servicos.map((s) => s.grupo))];
 blocos.servicos = grupos.map((g) => `<p class="cat-cap">${g}</p>\n\n` + envolve(tabela(
   ['Serviço', 'Unidade', 'Preço'], ['l', 'l', 'c'],
-  SERV.servicos.filter((s) => s.grupo === g).map((s) => [s.nome, s.unidade, typeof s.pc === 'number' ? fmt(s.pc) : s.pc]),
+  SERV.servicos.filter((s) => s.grupo === g).map((s) => [s.nome, rotuloPor(s), s.preco ? fmt(s.preco.pc) : `ver ${s.ver}`]),
 ))).join('\n\n');
 blocos.aulas = envolve(tabela(
   ['O que se aprende', 'Nível novo', 'XP', 'Jornadas de aula', 'Professor (soma)', 'Preço'],
   ['l', 'c', 'c', 'c', 'c', 'c'],
-  SERV.aulas.map((a) => [a.tipo, a.novo, a.xp, num(a.jornadas), a.prof_soma, fmt(a.pc)]),
+  SERV.aulas.map((a) => [a.tipo, a.novo, a.xp, num(a.jornadas), a.prof_soma, fmt(a.preco.pc)]),
 ));
 
 // ----------------------------------------------------------- servos e escravos
 blocos.criados = envolve(tabela(
   ['Criado', 'Salário/Sem', 'Custo total/Sem'], ['l', 'c', 'c'],
-  SERV.criados.map((c) => [c.nome, fmt(c.salario_semana), fmt(c.custo_total_semana)]),
+  SERV.criados.map((c) => [c.nome, fmt(pcDe(c.salario)), fmt(pcDe(c.custo_total))]),
 ));
 blocos.escravos = envolve(tabela(
   ['Escravo', 'Preço'], ['l', 'c'],
-  [...SERV.escravos.map((e) => [e.nome, fmt(e.pc)]), ['Sustento (por semana)', fmt(SERV.escravo_sustento_semana)]],
+  [...SERV.escravos.map((e) => [e.nome, fmt(e.preco.pc)]), [`Sustento (por ${SERV.escravo_sustento.por})`, fmt(pcDe(SERV.escravo_sustento))]],
 ));
 
 // ------------------------------------------------------------- mercadorias
@@ -124,7 +135,7 @@ for (const t of tipos) if (!TIPO[t]) throw new Error(`tipo sem rótulo em gen-ca
 blocos.montarias = tipos.map((t) => `<p class="cat-cap">${TIPO[t]}</p>\n\n` + envolve(tabela(
   ['Item', 'Preço'], ['l', 'c'],
   MONT.filter((m) => m.tipo === t).map((m) => [m.nome, fmt(m.preco.pc)]),
-))).join('\n\n') + `\n\n<p class="muted">Manter um cavalo custa <strong>${fmt(VIDA.cavalo_manutencao_semana)}</strong> por semana (ração, estábulo, ferragem); um cavalo de guerra, <strong>${fmt(VIDA.cavalo_guerra_manutencao_semana)}</strong>.</p>`;
+))).join('\n\n') + `\n\n<p class="muted">Manter um cavalo custa <strong>${fmt(pcDe(VIDA.manutencao_cavalo))}</strong> por ${VIDA.manutencao_cavalo.por} (ração, estábulo, ferragem); um cavalo de guerra, <strong>${fmt(pcDe(VIDA.manutencao_cavalo_guerra))}</strong>.</p>`;
 
 // ------------------------------------------------------------------ viagens
 blocos.viagens = envolve(tabela(
@@ -132,14 +143,14 @@ blocos.viagens = envolve(tabela(
   VIAG.velocidades_km_dia.map((v) => [v.modo, v.km_dia]),
 )) + '\n\n' + envolve(tabela(
   ['Passagem, aluguel e frete', 'Preço', 'Por'], ['l', 'c', 'l'],
-  VIAG.precos.map((p) => [p.nome, fmt(p.pc), p.unidade]),
+  VIAG.precos.map((p) => [p.nome, fmt(p.preco.pc), rotuloPor(p)]),
 ));
 
 // ------------------------------------------------------------------ pacotes
 const porId = Object.fromEntries(MERC.map((m) => [m.id, m]));
 blocos.pacotes = Object.entries(PAC).map(([nome, p]) => {
   const itens = p.itens.map(([id, q]) => { const m = porId[id]; if (!m) throw new Error(`pacote ${nome}: item ${id} não existe em mercadorias.json`); return q > 1 ? `${m.nome} ×${q}` : m.nome; });
-  return `- **${nome} (${fmtMisto(p.total_pc)})**: ${itens.join(', ')}.`;
+  return `- **${nome} (${fmtMisto(p.total.pc)})**: ${itens.join(', ')}.`;
 }).join('\n');
 
 // ------------------------------------------------------------------ escrever

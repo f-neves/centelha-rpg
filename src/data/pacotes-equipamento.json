@@ -2,8 +2,12 @@
   "_nota": "Soma dos itens de mercadorias.json. Regra: um pacote de graça na criação (Diplomata exige Recursos 3) mais bolsa de 4 semanas de Livre. Saída do modelo em lore/economia/v2/gerar.py: não edite preço à mão aqui; mude o modelo e gere de novo.",
   "pacotes": {
     "Artista": {
-      "total_pc": 572,
-      "total_atual_pc": 360,
+      "total": {
+        "pc": 572
+      },
+      "total_anterior": {
+        "pc": 360
+      },
       "itens": [
         [
           "mochila",
@@ -36,8 +40,12 @@
       ]
     },
     "Assaltante": {
-      "total_pc": 540,
-      "total_atual_pc": 186,
+      "total": {
+        "pc": 540
+      },
+      "total_anterior": {
+        "pc": 186
+      },
       "itens": [
         [
           "mochila",
@@ -98,8 +106,12 @@
       ]
     },
     "Aventureiro": {
-      "total_pc": 394,
-      "total_atual_pc": 110,
+      "total": {
+        "pc": 394
+      },
+      "total_anterior": {
+        "pc": 110
+      },
       "itens": [
         [
           "mochila",
@@ -140,8 +152,12 @@
       ]
     },
     "Diplomata": {
-      "total_pc": 1068,
-      "total_atual_pc": 1068,
+      "total": {
+        "pc": 1068
+      },
+      "total_anterior": {
+        "pc": 1068
+      },
       "itens": [
         [
           "bau",
@@ -186,8 +202,12 @@
       ]
     },
     "Estudioso": {
-      "total_pc": 677,
-      "total_atual_pc": 382,
+      "total": {
+        "pc": 677
+      },
+      "total_anterior": {
+        "pc": 382
+      },
       "itens": [
         [
           "mochila",
@@ -220,8 +240,12 @@
       ]
     },
     "Explorador": {
-      "total_pc": 336,
-      "total_atual_pc": 85,
+      "total": {
+        "pc": 336
+      },
+      "total_anterior": {
+        "pc": 85
+      },
       "itens": [
         [
           "mochila",
@@ -258,8 +282,12 @@
       ]
     },
     "Sacerdote": {
-      "total_pc": 384,
-      "total_atual_pc": 149,
+      "total": {
+        "pc": 384
+      },
+      "total_anterior": {
+        "pc": 149
+      },
       "itens": [
         [
           "mochila",

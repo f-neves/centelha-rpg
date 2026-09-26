@@ -4,117 +4,486 @@
     {
       "faixa": "Braçal",
       "recursos": 1,
-      "renda_semana": 60,
-      "renda_mes": 240,
-      "renda_ano": 2880,
-      "livre_semana": 7,
-      "livre_mes": 28,
-      "livre_ano": 336,
-      "custo_semana": 53,
+      "renda": [
+        {
+          "por": "semana",
+          "preco": {
+            "pc": 60
+          }
+        },
+        {
+          "por": "mes",
+          "preco": {
+            "pc": 240
+          }
+        },
+        {
+          "por": "ano",
+          "preco": {
+            "pc": 2880
+          }
+        }
+      ],
+      "livre": [
+        {
+          "por": "semana",
+          "preco": {
+            "pc": 7
+          }
+        },
+        {
+          "por": "mes",
+          "preco": {
+            "pc": 28
+          }
+        },
+        {
+          "por": "ano",
+          "preco": {
+            "pc": 336
+          }
+        }
+      ],
+      "custo": [
+        {
+          "por": "semana",
+          "preco": {
+            "pc": 53
+          }
+        }
+      ],
       "nivel_de_vida": "Pobre",
       "origem": "soma 4, trabalho simples"
     },
     {
       "faixa": "Destreinado",
       "recursos": 1,
-      "renda_semana": 100,
-      "renda_mes": 400,
-      "renda_ano": 4800,
-      "livre_semana": 10,
-      "livre_mes": 40,
-      "livre_ano": 480,
-      "custo_semana": 90,
+      "renda": [
+        {
+          "por": "semana",
+          "preco": {
+            "pc": 100
+          }
+        },
+        {
+          "por": "mes",
+          "preco": {
+            "pc": 400
+          }
+        },
+        {
+          "por": "ano",
+          "preco": {
+            "pc": 4800
+          }
+        }
+      ],
+      "livre": [
+        {
+          "por": "semana",
+          "preco": {
+            "pc": 10
+          }
+        },
+        {
+          "por": "mes",
+          "preco": {
+            "pc": 40
+          }
+        },
+        {
+          "por": "ano",
+          "preco": {
+            "pc": 480
+          }
+        }
+      ],
+      "custo": [
+        {
+          "por": "semana",
+          "preco": {
+            "pc": 90
+          }
+        }
+      ],
       "nivel_de_vida": "Pobre",
       "origem": "soma 5, trabalho simples"
     },
     {
       "faixa": "Treinado",
       "recursos": 2,
-      "renda_semana": 270,
-      "renda_mes": 1080,
-      "renda_ano": 12960,
-      "livre_semana": 19,
-      "livre_mes": 76,
-      "livre_ano": 912,
-      "custo_semana": 251,
+      "renda": [
+        {
+          "por": "semana",
+          "preco": {
+            "pc": 270
+          }
+        },
+        {
+          "por": "mes",
+          "preco": {
+            "pc": 1080
+          }
+        },
+        {
+          "por": "ano",
+          "preco": {
+            "pc": 12960
+          }
+        }
+      ],
+      "livre": [
+        {
+          "por": "semana",
+          "preco": {
+            "pc": 19
+          }
+        },
+        {
+          "por": "mes",
+          "preco": {
+            "pc": 76
+          }
+        },
+        {
+          "por": "ano",
+          "preco": {
+            "pc": 912
+          }
+        }
+      ],
+      "custo": [
+        {
+          "por": "semana",
+          "preco": {
+            "pc": 251
+          }
+        }
+      ],
       "nivel_de_vida": "Confortável",
       "origem": "soma 8 (260 pela curva)"
     },
     {
       "faixa": "Especialista",
       "recursos": 3,
-      "renda_semana": 550,
-      "renda_mes": 2200,
-      "renda_ano": 26400,
-      "livre_semana": 30,
-      "livre_mes": 120,
-      "livre_ano": 1440,
-      "custo_semana": 520,
+      "renda": [
+        {
+          "por": "semana",
+          "preco": {
+            "pc": 550
+          }
+        },
+        {
+          "por": "mes",
+          "preco": {
+            "pc": 2200
+          }
+        },
+        {
+          "por": "ano",
+          "preco": {
+            "pc": 26400
+          }
+        }
+      ],
+      "livre": [
+        {
+          "por": "semana",
+          "preco": {
+            "pc": 30
+          }
+        },
+        {
+          "por": "mes",
+          "preco": {
+            "pc": 120
+          }
+        },
+        {
+          "por": "ano",
+          "preco": {
+            "pc": 1440
+          }
+        }
+      ],
+      "custo": [
+        {
+          "por": "semana",
+          "preco": {
+            "pc": 520
+          }
+        }
+      ],
       "nivel_de_vida": "Abastado",
       "origem": "soma 11 (568 pela curva)"
     },
     {
       "faixa": "Doutor",
       "recursos": 3,
-      "renda_semana": 820,
-      "renda_mes": 3280,
-      "renda_ano": 39360,
-      "livre_semana": 40,
-      "livre_mes": 160,
-      "livre_ano": 1920,
-      "custo_semana": 780,
+      "renda": [
+        {
+          "por": "semana",
+          "preco": {
+            "pc": 820
+          }
+        },
+        {
+          "por": "mes",
+          "preco": {
+            "pc": 3280
+          }
+        },
+        {
+          "por": "ano",
+          "preco": {
+            "pc": 39360
+          }
+        }
+      ],
+      "livre": [
+        {
+          "por": "semana",
+          "preco": {
+            "pc": 40
+          }
+        },
+        {
+          "por": "mes",
+          "preco": {
+            "pc": 160
+          }
+        },
+        {
+          "por": "ano",
+          "preco": {
+            "pc": 1920
+          }
+        }
+      ],
+      "custo": [
+        {
+          "por": "semana",
+          "preco": {
+            "pc": 780
+          }
+        }
+      ],
       "nivel_de_vida": "Abastado",
       "origem": "soma 12 + Proeza ou reputação (669 a 869)"
     },
     {
       "faixa": "Abastado",
       "recursos": 4,
-      "renda_semana": 1400,
-      "renda_mes": 5600,
-      "renda_ano": 67200,
-      "livre_semana": 55,
-      "livre_mes": 220,
-      "livre_ano": 2640,
-      "custo_semana": 1345,
+      "renda": [
+        {
+          "por": "semana",
+          "preco": {
+            "pc": 1400
+          }
+        },
+        {
+          "por": "mes",
+          "preco": {
+            "pc": 5600
+          }
+        },
+        {
+          "por": "ano",
+          "preco": {
+            "pc": 67200
+          }
+        }
+      ],
+      "livre": [
+        {
+          "por": "semana",
+          "preco": {
+            "pc": 55
+          }
+        },
+        {
+          "por": "mes",
+          "preco": {
+            "pc": 220
+          }
+        },
+        {
+          "por": "ano",
+          "preco": {
+            "pc": 2640
+          }
+        }
+      ],
+      "custo": [
+        {
+          "por": "semana",
+          "preco": {
+            "pc": 1345
+          }
+        }
+      ],
       "nivel_de_vida": "Rico",
       "origem": "renda de capital: oficina com empregados, comércio"
     },
     {
       "faixa": "Rico",
       "recursos": 4,
-      "renda_semana": 2700,
-      "renda_mes": 10800,
-      "renda_ano": 129600,
-      "livre_semana": 85,
-      "livre_mes": 340,
-      "livre_ano": 4080,
-      "custo_semana": 2615,
+      "renda": [
+        {
+          "por": "semana",
+          "preco": {
+            "pc": 2700
+          }
+        },
+        {
+          "por": "mes",
+          "preco": {
+            "pc": 10800
+          }
+        },
+        {
+          "por": "ano",
+          "preco": {
+            "pc": 129600
+          }
+        }
+      ],
+      "livre": [
+        {
+          "por": "semana",
+          "preco": {
+            "pc": 85
+          }
+        },
+        {
+          "por": "mes",
+          "preco": {
+            "pc": 340
+          }
+        },
+        {
+          "por": "ano",
+          "preco": {
+            "pc": 4080
+          }
+        }
+      ],
+      "custo": [
+        {
+          "por": "semana",
+          "preco": {
+            "pc": 2615
+          }
+        }
+      ],
       "nivel_de_vida": "Rico",
       "origem": "capital e posição"
     },
     {
       "faixa": "Aristocrata",
       "recursos": 5,
-      "renda_semana": 4200,
-      "renda_mes": 16800,
-      "renda_ano": 201600,
-      "livre_semana": 110,
-      "livre_mes": 440,
-      "livre_ano": 5280,
-      "custo_semana": 4090,
+      "renda": [
+        {
+          "por": "semana",
+          "preco": {
+            "pc": 4200
+          }
+        },
+        {
+          "por": "mes",
+          "preco": {
+            "pc": 16800
+          }
+        },
+        {
+          "por": "ano",
+          "preco": {
+            "pc": 201600
+          }
+        }
+      ],
+      "livre": [
+        {
+          "por": "semana",
+          "preco": {
+            "pc": 110
+          }
+        },
+        {
+          "por": "mes",
+          "preco": {
+            "pc": 440
+          }
+        },
+        {
+          "por": "ano",
+          "preco": {
+            "pc": 5280
+          }
+        }
+      ],
+      "custo": [
+        {
+          "por": "semana",
+          "preco": {
+            "pc": 4090
+          }
+        }
+      ],
       "nivel_de_vida": "Aristocrata",
       "origem": "terra, cargo, título"
     },
     {
       "faixa": "Nobreza",
       "recursos": 5,
-      "renda_semana": 10000,
-      "renda_mes": 40000,
-      "renda_ano": 480000,
-      "livre_semana": 200,
-      "livre_mes": 800,
-      "livre_ano": 9600,
-      "custo_semana": 9800,
+      "renda": [
+        {
+          "por": "semana",
+          "preco": {
+            "pc": 10000
+          }
+        },
+        {
+          "por": "mes",
+          "preco": {
+            "pc": 40000
+          }
+        },
+        {
+          "por": "ano",
+          "preco": {
+            "pc": 480000
+          }
+        }
+      ],
+      "livre": [
+        {
+          "por": "semana",
+          "preco": {
+            "pc": 200
+          }
+        },
+        {
+          "por": "mes",
+          "preco": {
+            "pc": 800
+          }
+        },
+        {
+          "por": "ano",
+          "preco": {
+            "pc": 9600
+          }
+        }
+      ],
+      "custo": [
+        {
+          "por": "semana",
+          "preco": {
+            "pc": 9800
+          }
+        }
+      ],
       "nivel_de_vida": "Aristocrata",
       "origem": "senhorio de terras e rendas"
     }
@@ -123,67 +492,145 @@
     {
       "soma": 4,
       "media": 7,
-      "renda_semana": 60,
+      "renda": {
+        "por": "semana",
+        "preco": {
+          "pc": 60
+        }
+      },
       "faixa_dificuldade": 4
     },
     {
       "soma": 5,
       "media": 9,
-      "renda_semana": 100,
+      "renda": {
+        "por": "semana",
+        "preco": {
+          "pc": 100
+        }
+      },
       "faixa_dificuldade": 4
     },
     {
       "soma": 6,
       "media": 10.5,
-      "renda_semana": 130,
+      "renda": {
+        "por": "semana",
+        "preco": {
+          "pc": 130
+        }
+      },
       "faixa_dificuldade": 4
     },
     {
       "soma": 7,
       "media": 12.5,
-      "renda_semana": 200,
+      "renda": {
+        "por": "semana",
+        "preco": {
+          "pc": 200
+        }
+      },
       "faixa_dificuldade": 7
     },
     {
       "soma": 8,
       "media": 14,
-      "renda_semana": 260,
+      "renda": {
+        "por": "semana",
+        "preco": {
+          "pc": 260
+        }
+      },
       "faixa_dificuldade": 7
     },
     {
       "soma": 9,
       "media": 16,
-      "renda_semana": 330,
+      "renda": {
+        "por": "semana",
+        "preco": {
+          "pc": 330
+        }
+      },
       "faixa_dificuldade": 7
     },
     {
       "soma": 10,
       "media": 17.5,
-      "renda_semana": 430,
+      "renda": {
+        "por": "semana",
+        "preco": {
+          "pc": 430
+        }
+      },
       "faixa_dificuldade": 11
     },
     {
       "soma": 11,
       "media": 19.5,
-      "renda_semana": 570,
+      "renda": {
+        "por": "semana",
+        "preco": {
+          "pc": 570
+        }
+      },
       "faixa_dificuldade": 11
     },
     {
       "soma": 12,
       "media": 21,
-      "renda_semana": 670,
+      "renda": {
+        "por": "semana",
+        "preco": {
+          "pc": 670
+        }
+      },
       "faixa_dificuldade": 11
     }
   ],
-  "valor_por_ponto_semana": {
-    "dif4": 20,
-    "dif7": 37.14,
-    "dif11": 66.86
+  "valor_por_ponto": {
+    "dif4": {
+      "por": "semana",
+      "preco": {
+        "pc": 20
+      }
+    },
+    "dif7": {
+      "por": "semana",
+      "preco": {
+        "pc": 37.14
+      }
+    },
+    "dif11": {
+      "por": "semana",
+      "preco": {
+        "pc": 66.86
+      }
+    }
   },
-  "tetos_demanda_semana": {
-    "aldeia": 100,
-    "vila": 300,
-    "cidade": 1000,
-    "capital": null
+  "tetos_demanda": {
+    "aldeia": {
+      "por": "semana",
+      "preco": {
+        "pc": 100
+      }
+    },
+    "vila": {
+      "por": "semana",
+      "preco": {
+        "pc": 300
+      }
+    },
+    "cidade": {
+      "por": "semana",
+      "preco": {
+        "pc": 1000
+      }
+    },
+    "capital": {
+      "por": "semana",
+      "preco": null
+    }
   }
 }
