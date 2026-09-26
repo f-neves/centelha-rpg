@@ -165,3 +165,27 @@ Nada.
 ## BLOQUEADO
 
 Nada.
+
+## Adendo · os dois pedidos do Arquiteto depois do relato
+
+1. **`.gitignore`:** `lore/economia/**/out/`. O `gerar.py` escreve em `out/`, relativo à pasta onde
+   roda (`OUTDIR = "out"`), e lá caem os JSONs e os `tab_*.md`. Testado: rodei o modelo dentro de
+   `lore/economia/v2/`, o `git status` ficou limpo, e o `check-ignore` apontou a regra nova. Depois
+   apaguei o `out/` e o `__pycache__` que o teste criou.
+2. **`scripts/copiar-economia.mjs`** (versionado), com o `--check` no `npm run validate`, logo antes do
+   `gen-cap-economia.mjs`. **Mudou uma coisa em relação ao que morava no meu `tmp`:** a fonte agora é
+   o **modelo**, e não uma cópia dos JSONs gerados. O script copia os `.py` de `lore/economia/v2/`
+   para uma pasta temporária do sistema, roda o `gerar.py` lá e parte da saída. Assim o `--check`
+   prova a cadeia inteira (modelo → `gerar.py` → cópia → `src/data`) e pega também o modelo mudado
+   sem gerar de novo.
+   - **A saída do modelo versionado é byte a byte a dos JSONs da v2** que o autor tinha no
+     `rpg-system`: comparei o md5 dos 8 arquivos e deu igual em todos.
+   - O `--check` deu verde nos 10 arquivos (os 7 de `src/data` e as 3 procedências).
+   - Custo: o `gerar.py` roda em ~0,3 s.
+   - Precisa de Python 3. No Windows o `python3` é o atalho da loja, então o script testa `python`,
+     `py` e `python3` nessa ordem; no Linux do CI, `python3`. Sem Python, falha alto, e não pula.
+   - **Controle negativo, dois:** um preço mudado à mão em `src/data/renda.json` (60 → 61) deu
+     "fora de sincronia ... src/data/renda.json". Um número mudado no modelo (`mercadorias.py:26`,
+     75 → 80, sem gerar de novo) deu "fora de sincronia ... mercadorias.procedencia.json". Os dois
+     arquivos foram restaurados, com o md5 conferido.
+   - O `README.md` da pasta passou a citar o script.

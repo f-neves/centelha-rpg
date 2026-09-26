@@ -47,6 +47,11 @@ lore/mapas/dados/.historico/
 # material de referência (PDFs/artes de D&D e Pathfinder — pesado, fora do repo)
 D&D/
 
+# a saida do modelo da economia: o gerar.py escreve os JSONs e os tab_*.md em `out/`, relativo
+# a pasta onde roda. O que o site usa sai dele por scripts/copiar-economia.mjs (rodada 111), e
+# duas copias do mesmo gerado descolariam. `**/` cobre rodar da pasta do modelo ou de cima dela.
+lore/economia/**/out/
+
 # SO / editor
 *.stackdump
 .DS_Store

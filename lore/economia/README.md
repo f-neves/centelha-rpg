@@ -24,9 +24,14 @@ outra mudança:
 - o envelope `{_nota, itens}` nos dois que são lista;
 - a procedência tirada das montarias;
 - todo valor em dinheiro como `{por, preco: {pc}}`.
-Essa cópia foi feita nas rodadas 110 e 111 (`docs/simulacao/caixa/110-executora.md` e
-`111-executora.md`). As tabelas do capítulo Custo de Serviço & Itens saem desses JSONs por
+Quem faz a cópia é `scripts/copiar-economia.mjs`, que roda o `v2/gerar.py` numa pasta temporária
+e parte da saída dele. O `--check` desse script roda no `npm run validate` e exige que o modelo,
+refeito, dê exatamente o `src/data` e as procedências desta pasta. As transformações foram
+decididas nas rodadas 110 e 111 (`docs/simulacao/caixa/110-executora.md` e `111-executora.md`).
+As tabelas do capítulo Custo de Serviço & Itens saem desses JSONs por
 `scripts/gen-cap-economia.mjs`.
+
+Rodar o `gerar.py` à mão escreve os JSONs e os `tab_*.md` em `out/`, que o `.gitignore` ignora.
 
 ## O que há na pasta
 
