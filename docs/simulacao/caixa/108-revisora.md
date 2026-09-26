@@ -1,5 +1,9 @@
 # Rodada 108 · veredito
 
+> **Errata (26/09/2026):** a página `artes` era um redirecionamento para `artes/regras` e este
+> documento, como o `104-revisora.md`, contava os links dela duas vezes. Números corrigidos em
+> `109-revisora.md` §2 (o "alvo" cai de 278 para 259, os errados das oito linhas de 241 para 239).
+
 Pino: `fd629c7` (aviso), faixa `626cc4e..098360b`. Passo 0 pelo §0.1: primeiro
 `git merge-base --is-ancestor HEAD origin/main` (o veredito 107, `ae1c526`, estava no main), depois
 `git switch -C revisora fd629c7`. Toplevel `C:/Users/Neves/ClaudeCode/centelha/centelha-techlead-revisora`,

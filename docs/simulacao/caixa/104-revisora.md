@@ -1,5 +1,8 @@
 # Rodada 104 · veredito
 
+> **Errata (26/09/2026):** a página `artes` era um redirecionamento para `artes/regras` e este
+> documento contava os links dela duas vezes. Números corrigidos em `109-revisora.md` §2.
+
 Pino: `c153782` (aviso), faixa `52c7fa1..66da997`. Só o `f5d563c` e o `66da997` são da rodada; o
 `0a4b610` e o `6ba50a2` ficaram fora. Passo 0 pelo §0.1 corrigido: primeiro
 `git merge-base --is-ancestor HEAD origin/main` (o veredito 103, `9654fc6`, estava no main), e depois
