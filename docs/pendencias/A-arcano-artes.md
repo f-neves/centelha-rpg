@@ -222,12 +222,15 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   da areia é o mais visível: a escada da Terra desliza de solo solto para rocha viva conforme sobe,
   então um deserto cai perto do fundo de uma régua que trata material solto como fraco. Decidir
   quais materiais ganham escada própria, e se Som é escola de Ar ou outra coisa.
-- [ ] **A28 · [DECIDIR] A Cura mundana e a com Proeza ou Arte não têm número fora do combate.**
-  Registrado em 26/09/2026, na rodada 114, a partir de uma sugestão do Comerciante. A Arte Cura existe
-  e tem custo em Mana (`src/data/artes.json:744-826`), mas não há regra de quanto ela acelera a
-  recuperação fora do combate nem do preço de quem a vende. O levantamento da rodada D6 do Revisor
-  externo (`lore/economia/estado-revisao.md`, "3. Artes/Magia") mediu a mesma falta; ele é leitura, e
-  não decisão.
+- [ ] **A28 · [DECIDIR] A Cura com Proeza ou Arte não tem número fora do combate.**
+  Registrado em 26/09/2026, na rodada 114, a partir de uma sugestão do Comerciante. **A Cura mundana
+  já tem número desde a rodada 110** (`vida-ferimentos-cura.md:90`, 10% de aceleração por nível de
+  Cura de quem cuida, 50% exige Cura 5) e preço (`custo-servicos.md`, atendimento 3, consulta 15). A
+  Arte Cura existe e tem custo em Mana (`src/data/artes.json:744-826`), mas não há regra de quanto
+  ela acelera a recuperação fora do combate nem do preço de quem a vende. O levantamento da rodada D6
+  do Revisor externo (`lore/economia/estado-revisao.md`, "3. Artes/Magia") mediu a mesma falta; ele é
+  leitura, e não decisão. **Corrigido pela Revisora na rodada 114:** o título e o texto afirmavam que
+  a Cura mundana também não tinha número, o que o livro desmente desde a 110.
   - **Sugestão do Comerciante, não aprovada (registrada na rodada 114, texto dele sem alteração):**
     > Curandeiro mortal acelera a recuperação em cerca de 10%, só um pouco melhor que descansar.
     > Preços mundanos baratos já no livro (atendimento 3, consulta 15, tratamento 10 por dia).

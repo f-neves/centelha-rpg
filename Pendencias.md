@@ -337,7 +337,7 @@ Os itens abertos e parciais de cada tema, com a marca e o título; os fechados v
 | A26 | aberto | DECIDIR | O improviso pode começar em qualquer lugar? |
 | A19 | aberto | DECIDIR | O que a matéria dentro da fatia faz em número. |
 | A16 | aberto | DECIDIR | A Fonte do Elemento: os elementos que faltam. |
-| A28 | aberto | DECIDIR | A Cura mundana e a com Proeza ou Arte não têm número fora do combate. |
+| A28 | aberto | DECIDIR | A Cura com Proeza ou Arte não tem número fora do combate. |
 | A29 | aberto | DECIDIR | Preço de serviço e de item mágico, e raridade por lugar. |
 
 Fechados (9): A12, A17, A18, A22, A23, A27, A21, A22, A20.
